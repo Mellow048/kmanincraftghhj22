@@ -16,8 +16,8 @@ export const scene5 = defineScene({
     {
       at: 0,
       dur: 3.2,
-      from: [-0.1, 1.44, 6.9],
-      to: [0.0, 1.43, 7.5],
+      from: [0.26, 1.44, 6.7],
+      to: [0.28, 1.43, 6.9],
       target: [0.3, 1.25, 10.15],
       targetTo: [0.3, 1.18, 10.0],
       fov: 38,
@@ -30,8 +30,8 @@ export const scene5 = defineScene({
     {
       at: 3.2,
       dur: 1.4,
-      from: [0.0, 1.43, 7.5],
-      to: [0.05, 1.43, 7.6],
+      from: [0.28, 1.43, 6.9],
+      to: [0.29, 1.43, 7.0],
       target: [0.3, 1.18, 10.0],
       targetTo: [0.3, 1.16, 9.95],
       fov: 36,

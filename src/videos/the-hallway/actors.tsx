@@ -42,7 +42,7 @@ export const Kid: React.FC<{
   blendTime,
   time,
   position = KID_SEAT,
-  rotationY = 0.06,
+  rotationY = 0.4,
   headYaw = 0,
   headPitch = 0.08,
   headRoll = 0,

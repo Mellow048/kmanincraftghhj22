@@ -431,7 +431,7 @@ export const Curtains: React.FC<{
             />
           ))}
           {/* tie-back strap */}
-          <Block position={[0, -height * 0.28, 0.05]} size={[panel * 0.9, 0.07, 0.07]} color="#c8a24a" />
+          <Block position={[0, -height * 0.28, 0.05]} size={[panel * 0.9, 0.05, 0.05]} color="#5c4a2e" />
         </group>
       ))}
     </group>

@@ -109,8 +109,8 @@ export const World: React.FC = () => {
           shadow-bias={-0.0006}
           shadow-normalBias={0.02}
         />
-        <pointLight position={[-1.75, 1.9, -2.4]} color="#bcd8ff" intensity={12} distance={7} decay={2} />
-        <Glow position={[-1.75, 1.9, -2.66]} size={2.8} color="#9fc6ff" opacity={0.4} />
+        <pointLight position={[-1.75, 2.3, -1.9]} color="#bcd8ff" intensity={6} distance={7} decay={2} />
+        <Glow position={[-1.75, 1.9, -2.66]} size={2.8} color="#9fc6ff" opacity={0.26} />
         <GodRay position={[-1.75, 1.4, -1.5]} rotation={[0, 0, -0.3]} width={1.1} height={4.6} color="#a9c9ff" opacity={0.1} />
         <GodRay position={[-1.45, 1.2, -0.9]} rotation={[0, 0.2, -0.42]} width={1.5} height={4.2} color="#8fb6ee" opacity={0.08} />
         <LightPool position={[-1.4, 0.015, -0.85]} width={2.6} depth={2.0} color="#5f8fd6" opacity={0.14} />
@@ -139,11 +139,11 @@ export const World: React.FC = () => {
         <Block position={[1.11, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
         <Block position={[2.19, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
         <Block position={[1.65, 2.24, 3.03]} size={[1.18, 0.1, 0.18]} color="#2c374c" />
-        <Door position={[1.15, 0, 3.03]} width={1.0} height={2.18} open={-1.57} color="#22352d" />
+        <Door position={[1.15, 0, 3.03]} width={1.0} height={2.18} open={-Math.PI} color="#22352d" />
         <DoorPlate position={[2.34, 2.34, 2.99]} rotationY={Math.PI} label="9" width={0.24} />
 
         {/* the bed — rails up, teddy on the pillow, blanket folded */}
-        <Bed position={[-1.8, 0, -1.75]} length={2.2} width={1.15} sheet="#c3d7e8" blanket="#1b4a74" rails />
+        <Bed position={[-1.8, 0, -1.75]} length={2.2} width={1.15} sheet="#c3d7e8" blanket="#163c5e" rails />
         <Block position={[-1.8, 0.596, -0.78]} size={[1.21, 0.022, 0.22]} color="#e6eef6" />
         <Block position={[-1.8, 0.585, -1.02]} size={[1.19, 0.02, 0.06]} color="#8fb4d2" />
         <TeddyBear position={[-2.08, 0.64, -2.5]} rotationY={0.55} scale={1.15} />
