@@ -139,7 +139,9 @@ export const World: React.FC = () => {
         <Block position={[1.11, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
         <Block position={[2.19, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
         <Block position={[1.65, 2.24, 3.03]} size={[1.18, 0.1, 0.18]} color="#2c374c" />
-        <Door position={[1.15, 0, 3.03]} width={1.0} height={2.18} open={-Math.PI} color="#22352d" />
+        {/* Hinged on the right jamb so the leaf folds back against the corridor
+            wall and never blocks the sight line through the doorway. */}
+        <Door position={[2.15, 0, 3.03]} rotationY={Math.PI} width={1.0} height={2.18} open={-1.35} color="#22352d" />
         <DoorPlate position={[2.34, 2.34, 2.99]} rotationY={Math.PI} label="9" width={0.24} />
 
         {/* the bed — rails up, teddy on the pillow, blanket folded */}
@@ -252,8 +254,8 @@ export const World: React.FC = () => {
         {/* fire exit */}
         <DoorFrame position={[2.19, 0, 11.6]} rotationY={-Math.PI / 2} color="#3a1d1d" />
         <Door position={[2.17, 0, 11.6]} rotationY={-Math.PI / 2} width={1.0} height={2.15} open={0} color="#4a2020" />
-        <ExitSign position={[2.13, 2.36, 11.6]} rotationY={-Math.PI / 2} width={0.55} lit={0.9} />
-        <ExitSign position={[0, 2.62, 12.9]} rotationY={Math.PI} width={0.7} lit={0.75} />
+        <ExitSign position={[2.13, 2.36, 11.6]} rotationY={-Math.PI / 2} width={0.55} lit={0.55} />
+        <ExitSign position={[0, 2.62, 12.9]} rotationY={Math.PI} width={0.7} lit={0.5} />
 
         {/* abandoned wheelchair */}
         <Wheelchair position={[1.55, 0, 6.35]} rotationY={-0.45} />

@@ -16,10 +16,10 @@ export const scene5 = defineScene({
     {
       at: 0,
       dur: 3.2,
-      from: [0.26, 1.44, 6.7],
+      from: [0.3, 1.44, 6.7],
       to: [0.28, 1.43, 6.9],
-      target: [0.3, 1.25, 10.15],
-      targetTo: [0.3, 1.18, 10.0],
+      target: [0.3, 1.1, 10.15],
+      targetTo: [0.3, 1.05, 10.0],
       fov: 38,
       fovTo: 36,
       ease: "inOutSine",

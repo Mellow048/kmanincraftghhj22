@@ -122,7 +122,7 @@ export const Figure: React.FC<{
     hair="#0a0e16"
     outfit="shadow"
     faceGlow={faceGlow}
-    rim={0.3}
+    rim={0.45}
     headPitch={headPitch}
     headYaw={headYaw}
     headRoll={headRoll}
