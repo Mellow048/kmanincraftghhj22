@@ -19,8 +19,8 @@ export const film = defineFilm({
   height: 1280,
   look: "hospital-night",
   post: { exposure: 1.18, bloom: 1.35 },
-  fadeIn: 0.4,
-  fadeOut: 0.6,
+  fadeIn: 0.35,
+  fadeOut: 0.4,
   World,
   scenes: [scene1, scene2, scene3],
 });

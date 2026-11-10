@@ -6,7 +6,7 @@ import { MinecraftAvatar } from "../../engine";
  * stops the kid's clothes, height or bed position from drifting between scenes.
  */
 export const KID_SEAT: Vec3 = [-1.8, 0, -0.72];
-export const FIGURE_SPOT: Vec3 = [0.1, 0, 9.4];
+export const FIGURE_SPOT: Vec3 = [0.3, 0, 10.15];
 
 export const Kid: React.FC<{
   face?: FaceName;
@@ -50,8 +50,8 @@ export const Figure: React.FC<{
   phase?: number;
 }> = ({
   position = FIGURE_SPOT,
-  rotationY = Math.PI,
-  headPitch = 0.12,
+  rotationY = Math.PI - 0.32,
+  headPitch = 0.1,
   headYaw = 0,
   faceGlow = 0.85,
   animation = "idle",
@@ -61,7 +61,7 @@ export const Figure: React.FC<{
   <MinecraftAvatar
     position={position}
     rotationY={rotationY}
-    scale={1.12}
+    scale={1.06}
     animation={animation}
     animSpeed={animSpeed}
     phase={phase}
@@ -70,7 +70,7 @@ export const Figure: React.FC<{
     hair="#0a0e16"
     outfit="shadow"
     faceGlow={faceGlow}
-    rim={0.5}
+    rim={0.3}
     headPitch={headPitch}
     headYaw={headYaw}
   />
