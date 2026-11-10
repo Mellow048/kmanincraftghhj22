@@ -42,7 +42,7 @@ export const scene2 = defineScene({
   ],
   Component: () => (
     <>
-      <Kid face="scared" headYaw={0.95} headPitch={0.04} />
+      <Kid face="worried" headYaw={0.95} headPitch={0.04} />
       <Figure />
       <ContactShadow position={[0.3, 0.013, 10.15]} width={1.5} depth={0.75} opacity={0.55} />
     </>

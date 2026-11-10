@@ -29,7 +29,7 @@ export const scene1 = defineScene({
     const turn = smoothstep(clamp01((t - 1.8) / 0.55));
     return (
       <Kid
-        face={t > 2.15 ? "scared" : "worried"}
+        face={t > 1.95 ? "surprised" : "worried"}
         headYaw={turn * 0.8}
         headPitch={0.22 - turn * 0.16}
       />
