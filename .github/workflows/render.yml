@@ -14,7 +14,7 @@ permissions:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -35,32 +35,34 @@ jobs:
           sudo apt-get install -y ffmpeg
           ffmpeg -version | head -1
 
-      - name: Render MP4
+      - name: Render MP4 at 720x1280
         run: >
           npx remotion render src/index.ts
           "${{ inputs.composition }}"
-          "out/${{ inputs.composition }}.mp4"
+          "out/${{ inputs.composition }}-720p.mp4"
           --codec=h264
           --crf=20
-          --concurrency=2
+          --scale=0.6667
+          --concurrency=4
           --gl=swangle
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ inputs.composition }}-mp4"
-          path: "out/${{ inputs.composition }}.mp4"
+          name: "${{ inputs.composition }}-720p-mp4"
+          path: "out/${{ inputs.composition }}-720p.mp4"
           retention-days: 30
 
       - name: Publish release asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "render-${{ github.run_number }}"
-          name: "${{ inputs.composition }} — GitHub render ${{ github.run_number }}"
+          tag_name: "render-720p-${{ github.run_number }}"
+          name: "${{ inputs.composition }} — GitHub 720p test render ${{ github.run_number }}"
           body: |
-            Rendered automatically by GitHub Actions.
+            Rendered automatically by GitHub Actions at 720x1280.
 
             - Composition: `${{ inputs.composition }}`
+            - Scale: `0.6667` (1080x1920 -> 720x1280)
             - Commit: `${{ github.sha }}`
-          files: "out/${{ inputs.composition }}.mp4"
+          files: "out/${{ inputs.composition }}-720p.mp4"
           token: ${{ secrets.GITHUB_TOKEN }}
