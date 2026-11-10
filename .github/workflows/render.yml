@@ -42,7 +42,6 @@ jobs:
           "out/${{ inputs.composition }}-720p.mp4"
           --codec=h264
           --crf=20
-          --scale=0.6667
           --concurrency=4
           --gl=swangle
 
@@ -62,7 +61,7 @@ jobs:
             Rendered automatically by GitHub Actions at 720x1280.
 
             - Composition: `${{ inputs.composition }}`
-            - Scale: `0.6667` (1080x1920 -> 720x1280)
+            - Resolution: 720x1280 (test render)
             - Commit: `${{ github.sha }}`
           files: "out/${{ inputs.composition }}-720p.mp4"
           token: ${{ secrets.GITHUB_TOKEN }}

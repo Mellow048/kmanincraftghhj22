@@ -58,8 +58,13 @@ for (const slug of filmDirs) {
   const height = Number(film.match(/^\s*height:\s*(\d+)/m)?.[1] ?? 1920);
   const fps = Number(film.match(/^\s*fps:\s*(\d+)/m)?.[1] ?? 30);
 
-  if (width !== 1080 || height !== 1920) {
-    fail(`${slug}: must be 1080x1920 vertical, got ${width}x${height}`);
+  const is1080 = width === 1080 && height === 1920;
+  const is720 = width === 720 && height === 1280;
+  if (!is1080 && !is720) {
+    fail(`${slug}: must be 1080x1920 or 720x1280 vertical, got ${width}x${height}`);
+  }
+  if (is720) {
+    info(`${slug}: 720x1280 test render`);
   }
   if (fps !== 30) {
     fail(`${slug}: must be 30fps, got ${fps}`);
