@@ -179,8 +179,8 @@ export const World: React.FC = () => {
         {/* far window light on the floor */}
         <LightPool position={[0, 0.02, 11.7]} width={3.2} depth={3.2} color="#6f9fe0" opacity={0.2} />
         <Glow position={[0.3, 1.25, 10.55]} size={3.4} color="#6f9fd8" opacity={0.28} />
-        <Glow position={[0.3, 1.68, 10.3]} size={1.5} color="#a9c9ff" opacity={0.38} />
-        <Glow position={[0.3, 1.68, 10.34]} size={0.66} color="#d6e8ff" opacity={0.24} />
+        <Glow position={[0.3, 1.68, 10.6]} size={1.5} color="#a9c9ff" opacity={0.34} />
+        <Glow position={[0.3, 1.68, 10.64]} size={0.66} color="#d6e8ff" opacity={0.22} />
         <pointLight position={[1.05, 1.7, 10.32]} color="#8fb6ee" intensity={7} distance={2.2} decay={2} />
         <pointLight position={[-0.45, 1.55, 10.32]} color="#7fa8ee" intensity={6} distance={2.2} decay={2} />
         <pointLight position={[0.3, 1.42, 9.35]} color="#6f93c9" intensity={1.1} distance={2.4} decay={2} />

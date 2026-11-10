@@ -57,7 +57,7 @@ const OUTFITS: Record<
     legs: "#c9dcea",
     torsoTex: stripeTex("#f3a03f", "#f8eeda", { count: 4 }),
     armTex: stripeTex("#f3a03f", "#f8eeda", { count: 4 }),
-    legTex: pixelTex("#c9dcea"),
+    legTex: pixelTex("#e8b78d"),
   },
   pajamas: {
     torso: "#3f6fa8",

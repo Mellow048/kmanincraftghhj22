@@ -36,7 +36,7 @@ export const scene2 = defineScene({
       ],
       fov: 45,
       fovTo: 38,
-      ease: "inOutCubic",
+      ease: "inOutSine",
       note: "Leave the boy, physically pass through the doorway and follow the corridor until the figure is revealed. The reveal is the distance, not a cut.",
     },
   ],
