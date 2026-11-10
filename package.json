@@ -1,0 +1,34 @@
+{
+  "name": "zackcraft-films",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A Minecraft-native, Zack D Films-style 3D camera direction framework for vertical shorts. One folder per video, one TSX file per scene, one world file.",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "studio": "remotion studio src/index.ts",
+    "compositions": "remotion compositions src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "node scripts/check-films.mjs",
+    "new": "node scripts/new-video.mjs",
+    "render": "remotion render src/index.ts",
+    "still": "remotion still src/index.ts",
+    "bundle": "remotion bundle src/index.ts"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "@remotion/three": "4.0.542",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.542",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.542",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.187.0",
+    "typescript": "^5.9.0"
+  }
+}
