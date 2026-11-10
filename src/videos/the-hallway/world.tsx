@@ -45,7 +45,7 @@ import { floorTex } from "../../engine/textures";
  * One continuous location: a children's ward room at night, and the corridor
  * outside it. Built once and shared by every scene.
  *
- *   ROOM      x -2.6 .. 2.6   z -3.0 .. 3.0   bed left, moonlit window right
+ *   ROOM      x -2.6 .. 2.6   z -3.0 .. 3.0   bed left, moon window in back
  *   DOOR      x  1.15 .. 2.15 at z = 3.0      swings into the hall
  *   HALLWAY   x -2.2 .. 2.2   z  3.0 .. 13.0  runner, wheelchair, mop bucket,
  *                                             fire exit, The Figure at z 10.15
@@ -74,55 +74,57 @@ export const World: React.FC = () => {
   return (
     <group>
       {/* ───────────────────────── ROOM ─────────────────────────
-          A child's ward bed by a moonlit window. Everything soft is at child
-          height; everything hard is institutional. */}
+          A child's ward bed under a moonlit window. Everything soft is at
+          child height; everything hard is institutional. */}
       <group>
         <Block position={[0, -0.05, 0]} size={[5.2, 0.1, 6]} map={floorTex("#46555e", [5, 6])} />
+        <Block position={[0, 3.06, 0]} size={[5.2, 0.12, 6]} color="#0c1422" />
         <CeilingTiles position={[0, 2.995, 0]} size={[5.2, 6]} />
 
-        {/* back wall */}
-        <WardWall position={[0, 1.5, -3.06]} size={[5.2, 3, 0.12]} color="#3d5c74" repeat={[4, 2]} />
+        {/* back wall, split around the moon window (x -2.4 .. -1.1, y 1.2 .. 2.5) */}
+        <WardWall position={[-2.5, 1.5, -3.06]} size={[0.2, 3, 0.12]} color="#3d5c74" repeat={[1, 2]} />
+        <WardWall position={[0.75, 1.5, -3.06]} size={[3.7, 3, 0.12]} color="#3d5c74" repeat={[3, 2]} />
+        <WardWall position={[-1.75, 0.6, -3.06]} size={[1.3, 1.2, 0.12]} color="#3d5c74" repeat={[1, 1]} />
+        <WardWall position={[-1.75, 2.75, -3.06]} size={[1.3, 0.5, 0.12]} color="#3d5c74" repeat={[1, 1]} />
         <Block position={[0, 0.55, -2.99]} size={[5.2, 1.1, 0.04]} color="#2c4658" />
         <Block position={[0, 0.05, -2.98]} size={[5.2, 0.1, 0.05]} color="#1b2c3a" />
+
+        {/* the hero window: moon, stars, rooftops, directly over the bed */}
+        <MoonWindow position={[-1.75, 1.85, -2.98]} width={1.3} height={1.3} />
+        <Curtains position={[-1.75, 1.95, -2.9]} width={1.8} height={1.8} color="#2b4a7a" gap={0.4} />
+
+        {/* the moon itself: the only shadow-caster in the room */}
+        <directionalLight
+          color="#a9c9ff"
+          intensity={2.4}
+          position={[-1.8, 4.5, -8]}
+          castShadow
+          shadow-mapSize={[2048, 2048]}
+          shadow-camera-left={-7}
+          shadow-camera-right={7}
+          shadow-camera-top={7}
+          shadow-camera-bottom={-7}
+          shadow-camera-near={0.5}
+          shadow-camera-far={26}
+          shadow-bias={-0.0006}
+          shadow-normalBias={0.02}
+        />
+        <pointLight position={[-1.75, 1.9, -2.4]} color="#bcd8ff" intensity={12} distance={7} decay={2} />
+        <Glow position={[-1.75, 1.9, -2.66]} size={2.8} color="#9fc6ff" opacity={0.4} />
+        <GodRay position={[-1.75, 1.4, -1.5]} rotation={[0, 0, -0.3]} width={1.1} height={4.6} color="#a9c9ff" opacity={0.1} />
+        <GodRay position={[-1.45, 1.2, -0.9]} rotation={[0, 0.2, -0.42]} width={1.5} height={4.2} color="#8fb6ee" opacity={0.08} />
+        <LightPool position={[-1.4, 0.015, -0.85]} width={2.6} depth={2.0} color="#5f8fd6" opacity={0.14} />
 
         {/* left wall — carries the drawing */}
         <WardWall position={[-2.66, 1.5, 0]} size={[0.12, 3, 6]} color="#3a5a72" repeat={[4, 2]} />
         <Block position={[-2.59, 0.55, 0]} size={[0.04, 1.1, 6]} color="#2c4658" />
         <Block position={[-2.58, 0.05, 0]} size={[0.05, 0.1, 6]} color="#1b2c3a" />
 
-        {/* right wall, split around the window opening */}
-        <WardWall position={[2.66, 1.5, -1.7]} size={[0.12, 3, 2.6]} color="#3a5a72" repeat={[2, 2]} />
-        <WardWall position={[2.66, 1.5, 2.05]} size={[0.12, 3, 1.9]} color="#3a5a72" repeat={[2, 2]} />
-        <WardWall position={[2.66, 0.575, 0.35]} size={[0.12, 1.15, 1.5]} color="#3a5a72" repeat={[1, 1]} />
-        <WardWall position={[2.66, 2.675, 0.35]} size={[0.12, 0.65, 1.5]} color="#3a5a72" repeat={[1, 1]} />
-        <Block position={[2.59, 0.55, 0.35]} size={[0.04, 1.1, 1.5]} color="#2c4658" />
-
-        {/* the hero window: moon, stars, rooftops */}
-        <MoonWindow position={[2.58, 1.78, 0.35]} rotationY={-Math.PI / 2} width={1.6} height={1.4} />
-        <Curtains position={[2.46, 1.92, 0.35]} rotationY={-Math.PI / 2} width={2.1} height={1.9} color="#2b4a7a" gap={0.45} />
-        <Radiator position={[2.44, 0, 0.35]} rotationY={-Math.PI / 2} width={1.4} />
-
-        <pointLight position={[2.2, 1.95, 0.35]} color="#bcd8ff" intensity={11} distance={6} decay={2} />
-        <pointLight position={[0.1, 1.7, 1.5]} color="#cfdff5" intensity={3.6} distance={4.5} decay={2} />
-        <pointLight position={[-2.15, 1.5, -2.2]} color="#7fa8ff" intensity={5} distance={4.5} decay={2} />
-        <Glow position={[2.42, 1.85, 0.35]} size={2.8} color="#9fc6ff" opacity={0.42} />
-        <GodRay
-          position={[1.55, 1.35, 0.15]}
-          rotation={[0, 0.12, -1.02]}
-          width={0.9}
-          height={4.6}
-          color="#a9c9ff"
-          opacity={0.1}
-        />
-        <GodRay
-          position={[1.3, 1.2, 0.6]}
-          rotation={[0, -0.1, -1.05]}
-          width={1.25}
-          height={4.2}
-          color="#8fb6ee"
-          opacity={0.08}
-        />
-        <LightPool position={[1.5, 0.015, 0.3]} width={2.8} depth={2.2} color="#5f8fd6" opacity={0.22} />
+        {/* right wall — solid now, so the room has a place to hang things */}
+        <WardWall position={[2.66, 1.5, 0]} size={[0.12, 3, 6]} color="#3a5a72" repeat={[4, 2]} />
+        <Block position={[2.59, 0.55, 0]} size={[0.04, 1.1, 6]} color="#2c4658" />
+        <Block position={[2.58, 0.05, 0]} size={[0.05, 0.1, 6]} color="#1b2c3a" />
+        <Radiator position={[2.5, 0, -1.7]} rotationY={-Math.PI / 2} width={1.3} />
 
         {/* front wall around the door */}
         <WardWall position={[-0.725, 1.5, 3.06]} size={[3.75, 3, 0.12]} color="#3a5a72" repeat={[3, 2]} />
@@ -141,7 +143,7 @@ export const World: React.FC = () => {
         <DoorPlate position={[2.34, 2.34, 2.99]} rotationY={Math.PI} label="9" width={0.24} />
 
         {/* the bed — rails up, teddy on the pillow, blanket folded */}
-        <Bed position={[-1.8, 0, -1.75]} length={2.2} width={1.15} sheet="#c3d7e8" blanket="#24629e" rails />
+        <Bed position={[-1.8, 0, -1.75]} length={2.2} width={1.15} sheet="#c3d7e8" blanket="#1b4a74" rails />
         <Block position={[-1.8, 0.596, -0.78]} size={[1.21, 0.022, 0.22]} color="#e6eef6" />
         <Block position={[-1.8, 0.585, -1.02]} size={[1.19, 0.02, 0.06]} color="#8fb4d2" />
         <TeddyBear position={[-2.08, 0.64, -2.5]} rotationY={0.55} scale={1.15} />
@@ -155,7 +157,7 @@ export const World: React.FC = () => {
         <Block position={[-0.55, 0.86, -2.55]} size={[0.26, 0.14, 0.26]} color="#ffcf9a" emissive="#ffb066" emissiveIntensity={0.9} />
         <Glow position={[-0.55, 0.88, -2.5]} size={1.1} color="#ffb066" opacity={0.4} />
         <pointLight position={[-0.55, 0.92, -2.45]} color="#ffb066" intensity={4} distance={4} decay={2} />
-        <LightPool position={[-0.7, 0.02, -2.25]} width={1.4} depth={1.2} color="#ffb066" opacity={0.18} />
+        <LightPool position={[-0.7, 0.02, -2.25]} width={1.4} depth={1.2} color="#ffb066" opacity={0.1} />
 
         <Monitor position={[-0.28, 0, -2.32]} rotationY={0.25} />
         <Glow position={[-0.26, 0.53, -2.19]} size={0.9} color="#54e08a" opacity={0.4} />
@@ -163,10 +165,11 @@ export const World: React.FC = () => {
         <IVStand position={[-0.62, 0, -1.78]} rotationY={0.2} bag="#dce9f5" />
 
         {/* wall dressing: chart, notice board, timetable, clock, locker */}
-        <WallChart position={[-1.35, 1.35, -2.94]} width={0.4} />
-        <NoticeBoard position={[0.35, 1.85, -2.94]} width={0.85} seed={3} />
+        <WallChart position={[2.56, 1.5, -1.55]} rotationY={-Math.PI / 2} width={0.4} />
+        <NoticeBoard position={[2.56, 1.9, 0.5]} rotationY={-Math.PI / 2} width={0.85} seed={3} />
         <Sign
-          position={[1.45, 1.95, -2.94]}
+          position={[2.56, 1.95, 1.85]}
+          rotationY={-Math.PI / 2}
           width={1.1}
           height={0.9}
           title="MY TIMETABLE"
@@ -176,7 +179,7 @@ export const World: React.FC = () => {
           grid
           lit={0.28}
         />
-        <WallClock position={[-0.55, 2.5, -2.93]} radius={0.17} />
+        <WallClock position={[2.56, 2.5, -0.45]} rotationY={-Math.PI / 2} radius={0.17} />
         <Locker position={[1.95, 0, -2.62]} width={0.8} height={1.85} depth={0.42} doors={2} />
 
         {/* visitor chair with a coat, toy blocks on the floor */}
@@ -184,11 +187,11 @@ export const World: React.FC = () => {
         <ToyBlocks position={[-0.9, 0, 0.6]} count={8} seed={4} />
 
         {/* the crayon drawing — the hook, taped at child height on the left wall */}
-        <ChildDrawing position={[-2.56, 1.72, -1.35]} rotationY={Math.PI / 2} width={0.62} kind="shadow" seed={5} />
+        <ChildDrawing position={[-2.56, 1.8, -2.4]} rotationY={Math.PI / 2} width={0.62} kind="shadow" seed={5} />
 
         {/* light above the door, the one that starts misbehaving */}
-        <CeilingLight position={[1.55, 2.9, 2.45]} size={[0.34, 0.14]} color="#ffe9c9" lightColor="#ffdfae" intensity={3.8} flicker={FLICKER} />
-        <LightPool position={[1.55, 0.02, 2.35]} width={1.5} depth={1.6} color="#ff9a45" opacity={0.16} />
+        <CeilingLight position={[1.55, 2.9, 2.45]} size={[0.34, 0.14]} color="#ffe9c9" lightColor="#ffdfae" intensity={4.2} distance={8} flicker={FLICKER} />
+        <LightPool position={[1.55, 0.02, 2.35]} width={1.5} depth={1.6} color="#ff9a45" opacity={0.1} />
         <GodRay position={[1.35, 1.5, 2.6]} rotation={[0, 0.2, -0.35]} width={0.85} height={3.1} color="#8fb6ee" opacity={0.07} />
 
         <Pipes position={[1.9, 2.86, 0]} rotationY={Math.PI / 2} length={5.2} count={2} />
@@ -203,6 +206,7 @@ export const World: React.FC = () => {
           a fire exit, and a missing poster. */}
       <group>
         <Block position={[0, -0.05, 8]} size={[4.4, 0.1, 10]} map={floorTex("#3f4d55", [4, 10])} />
+        <Block position={[0, 3.06, 8]} size={[4.4, 0.12, 10]} color="#0a0f14" />
         <CeilingTiles position={[0, 2.995, 8]} size={[4.4, 10]} />
 
         <WardWall position={[-2.26, 1.5, 8]} size={[0.12, 3, 10]} color="#2f5147" repeat={[6, 2]} />
@@ -230,7 +234,7 @@ export const World: React.FC = () => {
         <Carpet position={[0, 0.012, 8]} width={1.65} length={9.6} />
 
         {/* far window light pooling on the floor */}
-        <LightPool position={[0, 0.02, 11.7]} width={3.2} depth={3.2} color="#6f9fe0" opacity={0.2} />
+        <LightPool position={[0, 0.02, 11.7]} width={3.2} depth={3.2} color="#6f9fe0" opacity={0.12} />
 
         {/* side doors with plates */}
         <DoorFrame position={[2.19, 0, 5.5]} rotationY={-Math.PI / 2} color="#0d241f" />
@@ -351,9 +355,9 @@ export const World: React.FC = () => {
         <pointLight position={[-1.15, 1.45, 9.6]} color="#7fa8ee" intensity={5} distance={2.6} decay={2} />
         <LightPool position={[0, 0.02, 8.6]} width={2.4} depth={2.6} color="#ff5b3a" opacity={0.07} />
 
-        {/* empty gurney, far end */}
+        {/* empty gurney, far end, tucked against the left wall */}
         <Bed
-          position={[-1.25, 0, 11.4]}
+          position={[-1.7, 0, 12.0]}
           rotationY={Math.PI / 2}
           width={0.95}
           length={1.95}

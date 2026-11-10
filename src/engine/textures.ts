@@ -416,34 +416,49 @@ export function crayonDrawingTex(options: CrayonDrawingOptions = {}): THREE.Canv
 
     if (kind === "shadow") {
       // sun
-      stroke("#e8c33c", 4, 4, 8, 8);
+      stroke("#e8c33c", 4, 4, 9, 9);
       // grass
-      stroke("#5a9b4a", 0, 52, 64, 8);
-      // house
-      stroke("#c8503c", 38, 26, 18, 22);
-      stroke("#8a5a34", 44, 36, 6, 12);
-      // the tall black figure — deliberately scribbled and wrong
-      for (let i = 0; i < 90; i++) {
-        const fx = 12 + rand() * 12;
-        const fy = 16 + rand() * 36;
-        ctx.fillStyle = shade("#12161f", (rand() * 2 - 1) * 0.25);
-        ctx.fillRect(Math.floor(fx), Math.floor(fy), 2, 2);
+      stroke("#5a9b4a", 0, 50, 64, 10);
+      // house on the right: walls, roof, door, window
+      stroke("#c8503c", 38, 24, 20, 24);
+      for (let i = 0; i < 11; i++) {
+        ctx.fillStyle = i % 2 === 0 ? "#8a2f26" : "#a83a2e";
+        ctx.fillRect(36 + i, 24 - i, 24 - i * 2, 2);
       }
-      // head blob
-      for (let i = 0; i < 30; i++) {
-        const a = rand() * Math.PI * 2;
-        const r = rand() * 6;
-        ctx.fillStyle = shade("#0d1119", (rand() * 2 - 1) * 0.2);
-        ctx.fillRect(Math.floor(17 + Math.cos(a) * r), Math.floor(14 + Math.sin(a) * r), 2, 2);
+      stroke("#6d4526", 45, 36, 6, 12);
+      stroke("#e8c33c", 40, 28, 5, 5);
+
+      // the tall black figure — the thing he keeps drawing
+      const blob = (cx: number, cy: number, r: number) => {
+        for (let y = -r; y <= r; y++) {
+          for (let x = -r; x <= r; x++) {
+            if (x * x + y * y > r * r) continue;
+            ctx.fillStyle = shade("#12161f", (rand() * 2 - 1) * 0.28);
+            ctx.fillRect(cx + x, cy + y, 1, 1);
+          }
+        }
+      };
+      blob(16, 10, 7); // head
+      stroke("#12161f", 11, 17, 10, 24); // torso
+      stroke("#12161f", 4, 19, 8, 3); // left arm
+      stroke("#12161f", 22, 19, 8, 3); // right arm
+      stroke("#12161f", 11, 40, 4, 10); // left leg
+      stroke("#12161f", 17, 40, 4, 10); // right leg
+      // long fingers
+      for (let i = 0; i < 4; i++) {
+        ctx.fillStyle = "#12161f";
+        ctx.fillRect(3, 19 + i, 2, 1);
+        ctx.fillRect(30, 19 + i, 2, 1);
       }
-      // two white eyes
-      ctx.fillStyle = "#f6fbff";
-      ctx.fillRect(15, 13, 2, 2);
-      ctx.fillRect(20, 13, 2, 2);
-      // long arms
-      ctx.fillStyle = "#12161f";
-      ctx.fillRect(8, 24, 5, 2);
-      ctx.fillRect(24, 24, 5, 2);
+      // two white eyes — the only bright thing in the drawing
+      ctx.fillStyle = "#f7fbff";
+      ctx.fillRect(13, 8, 3, 3);
+      ctx.fillRect(18, 8, 3, 3);
+      // a few crayon scrapes under the figure, like he kept going over it
+      for (let i = 0; i < 40; i++) {
+        ctx.fillStyle = shade("#12161f", (rand() * 2 - 1) * 0.3);
+        ctx.fillRect(9 + Math.floor(rand() * 14), 42 + Math.floor(rand() * 8), 2, 1);
+      }
     } else {
       // family drawing: house, sun, three stick people
       stroke("#e8c33c", 4, 4, 8, 8);

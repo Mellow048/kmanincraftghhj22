@@ -16,8 +16,8 @@ export const scene5 = defineScene({
     {
       at: 0,
       dur: 3.2,
-      from: [-0.6, 1.44, 7.7],
-      to: [-0.3, 1.43, 8.35],
+      from: [-0.1, 1.44, 6.9],
+      to: [0.0, 1.43, 7.5],
       target: [0.3, 1.25, 10.15],
       targetTo: [0.3, 1.18, 10.0],
       fov: 38,
@@ -30,8 +30,8 @@ export const scene5 = defineScene({
     {
       at: 3.2,
       dur: 1.4,
-      from: [-0.3, 1.43, 8.35],
-      to: [-0.2, 1.43, 8.5],
+      from: [0.0, 1.43, 7.5],
+      to: [0.05, 1.43, 7.6],
       target: [0.3, 1.18, 10.0],
       targetTo: [0.3, 1.16, 9.95],
       fov: 36,
@@ -51,7 +51,7 @@ export const scene5 = defineScene({
     const tilt = clamp01((t - 0.4) / 2.0) * 0.12;
     return (
       <>
-        <Kid face="scared" position={[1.6, 0, 3.5]} rotationY={0.05} headYaw={0.2} headPitch={0.12} animation="idle" />
+        <Kid face="scared" position={[1.5, 0, 3.3]} rotationY={0.1} headYaw={0.2} headPitch={0.12} animation="idle" />
         <Figure
           position={[0.3, 0, 10.15 - advance]}
           animation={perf.clip}

@@ -399,7 +399,7 @@ export const CeilingTiles: React.FC<{
   size?: [number, number];
   rotationY?: number;
 }> = ({ position = [0, 0, 0], size = [5.2, 6], rotationY = 0 }) => (
-  <mesh position={position} rotation={[-Math.PI / 2, 0, rotationY]}>
+  <mesh position={position} rotation={[Math.PI / 2, 0, rotationY]}>
     <planeGeometry args={size} />
     <meshStandardMaterial map={tileCeilingTex([Math.max(1, Math.round(size[0] / 0.6)), Math.max(1, Math.round(size[1] / 0.6))])} roughness={0.95} />
   </mesh>
