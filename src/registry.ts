@@ -1,7 +1,11 @@
 import { film as theSchedule } from "./videos/the-schedule/film";
+import { film as theHallway } from "./videos/the-hallway/film";
 
 /**
  * Every film in the project, registered for Remotion.
  * `npm run new -- "My Title"` appends to this list automatically.
  */
-export const FILMS = [theSchedule];
+export const FILMS = [
+  theSchedule,
+  theHallway,
+];

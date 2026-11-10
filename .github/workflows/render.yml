@@ -1,0 +1,60 @@
+name: Render short
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: "Remotion composition id"
+        required: true
+        default: "the-hallway"
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Render MP4
+        run: >
+          npx remotion render src/index.ts
+          "${{ inputs.composition }}"
+          "out/${{ inputs.composition }}.mp4"
+          --codec=h264
+          --crf=20
+          --concurrency=2
+          --gl=swangle
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ inputs.composition }}-mp4"
+          path: "out/${{ inputs.composition }}.mp4"
+          retention-days: 30
+
+      - name: Publish release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "render-${{ github.run_number }}"
+          name: "${{ inputs.composition }} — GitHub render ${{ github.run_number }}"
+          body: |
+            Rendered automatically by GitHub Actions.
+
+            - Composition: `${{ inputs.composition }}`
+            - Commit: `${{ github.sha }}`
+          files: "out/${{ inputs.composition }}.mp4"
+          token: ${{ secrets.GITHUB_TOKEN }}

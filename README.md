@@ -199,6 +199,28 @@ Give it charcoal albedo (`skin="#171d2a"`, `outfit="shadow"`), `rim={0.5}`, a ba
 
 ---
 
+## Render in the cloud (GitHub Actions)
+
+Rendering stays off the user's laptop. The `Render short` workflow runs on a
+GitHub-hosted runner, uploads the MP4 as an artifact and attaches it to a
+GitHub Release.
+
+1. Push the workflow to `main`.
+2. Open **Actions → Render short → Run workflow**.
+3. Composition: `the-hallway` (or `the-schedule`).
+4. Wait for the run. The MP4 is in the run artifact and in **Releases**.
+
+```bash
+gh workflow run render.yml -f composition=the-hallway
+gh run watch
+```
+
+The workflow uses `npm ci`, Remotion's `swangle` software WebGL renderer and
+2 concurrent frames. It does not need a GPU or any secrets beyond the built-in
+`GITHUB_TOKEN`.
+
+---
+
 ## Publishing
 
 The project is ready to push as a public framework:
