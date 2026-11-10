@@ -4,9 +4,10 @@ import { Figure, Kid } from "./actors";
 /**
  * BEAT 05 — IT SEES HIM (0:15.4–0:20.0)
  * The corridor lamp above the figure gives up at 16.3s. In the dark that is
- * left, the figure takes one small step towards the camera and stops. The camera
- * keeps a medium distance so the silhouette and the eyes do the work. We end
- * before it reaches us.
+ * left, the figure takes one small step towards the camera and stops. The
+ * camera stays wide enough to keep the whole silhouette, so the audience sees
+ * a shape the size of a person rather than a pair of eyes. We end before it
+ * reaches us.
  */
 export const scene5 = defineScene({
   id: "scene5",
@@ -16,25 +17,25 @@ export const scene5 = defineScene({
     {
       at: 0,
       dur: 3.2,
-      from: [0.3, 1.44, 6.7],
-      to: [0.28, 1.43, 6.9],
-      target: [0.3, 1.1, 10.15],
-      targetTo: [0.3, 1.05, 10.0],
-      fov: 38,
-      fovTo: 36,
+      from: [0.44, 1.44, 6.5],
+      to: [0.4, 1.43, 6.9],
+      target: [0.3, 1.05, 10.15],
+      targetTo: [0.3, 1.0, 10.0],
+      fov: 40,
+      fovTo: 38,
       ease: "inOutSine",
       handheld: 0.006,
       impacts: [{ at: 1.7, amp: 0.02, dur: 0.45 }],
-      note: "Push on the eyes while the lamp dies. The audience needs the dark to realise the two lights are a face and not a reflection.",
+      note: "Push on the figure while the lamp dies. The audience needs the dark to realise the two lights are a face and not a reflection.",
     },
     {
       at: 3.2,
       dur: 1.4,
-      from: [0.28, 1.43, 6.9],
-      to: [0.29, 1.43, 7.0],
-      target: [0.3, 1.18, 10.0],
-      targetTo: [0.3, 1.16, 9.95],
-      fov: 36,
+      from: [0.4, 1.43, 6.9],
+      to: [0.42, 1.43, 7.05],
+      target: [0.3, 1.0, 10.0],
+      targetTo: [0.3, 0.98, 9.95],
+      fov: 38,
       ease: "inOutSine",
       shake: 0.004,
       note: "Tighten on the face after the step lands. A tiny handheld tremor sells the impact without turning the ending into a music video.",

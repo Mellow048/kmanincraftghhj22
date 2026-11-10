@@ -360,10 +360,12 @@ export const Carpet: React.FC<{
   position?: Vec3;
   width?: number;
   length?: number;
-}> = ({ position = [0, 0.012, 0], width = 1.7, length = 8 }) => (
+  /** Base weave colour. Muted burgundy reads as institutional, bright red reads as a circus. */
+  tone?: string;
+}> = ({ position = [0, 0.012, 0], width = 1.7, length = 8, tone = "#6e1826" }) => (
   <mesh position={position} rotation-x={-Math.PI / 2} receiveShadow>
     <planeGeometry args={[width, length]} />
-    <meshStandardMaterial map={carpetTex([2, Math.max(2, Math.round(length / 1.2))])} roughness={1} />
+    <meshStandardMaterial map={carpetTex([2, Math.max(2, Math.round(length / 1.2))], tone)} roughness={1} />
   </mesh>
 );
 

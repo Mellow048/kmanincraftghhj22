@@ -279,22 +279,42 @@ export function blinkFaceTexture(name: FaceName, options: FaceOptions = {}): THR
   return buildFaceTexture(rows, key, options);
 }
 
-const SIDE_ROWS = [
+/**
+ * Side-of-head maps. In a Minecraft head the hair covers the whole back half
+ * and the top; only the cheek is skin. Getting this wrong makes a 3/4 shot
+ * read as a bald mannequin, so each side gets its own mirrored map.
+ *
+ * Texture u runs front→back on the +X face and back→front on the -X face,
+ * so the "right" map has hair on the high-u columns and the "left" map has
+ * it on the low-u columns.
+ */
+const SIDE_ROWS_RIGHT = [
   "hhhhhhhh",
   "hhhhhhhh",
-  "hh....hh",
-  "h......h",
-  "........",
-  "........",
-  "........",
-  "........",
+  "..hhhhhh",
+  "..hhhhhh",
+  "..hhhhhh",
+  "..hhhhhh",
+  "...hhhhh",
+  "....hh..",
 ];
 
+const SIDE_ROWS_LEFT = SIDE_ROWS_RIGHT.map((row) =>
+  row
+    .split("")
+    .reverse()
+    .join(""),
+);
+
+export type HeadSide = "left" | "right";
+
 /** Hair wraps around the sides of the head, so a 3/4 shot never looks bald. */
-export function headSideTexture(skin: string, hair: string): THREE.CanvasTexture {
-  const key = `headside|${skin}|${hair}`;
+export function headSideTexture(skin: string, hair: string, side: HeadSide = "right"): THREE.CanvasTexture {
+  const key = `headside|${side}|${skin}|${hair}`;
   const hit = CACHE.get(key);
   if (hit) return hit;
+
+  const rows = side === "right" ? SIDE_ROWS_RIGHT : SIDE_ROWS_LEFT;
 
   const canvas = document.createElement("canvas");
   canvas.width = 8;
@@ -304,7 +324,7 @@ export function headSideTexture(skin: string, hair: string): THREE.CanvasTexture
   const rand = mulberry32(hashString(key));
   for (let y = 0; y < 8; y++) {
     for (let x = 0; x < 8; x++) {
-      const ch = SIDE_ROWS[y][x];
+      const ch = rows[y][x];
       let color = (pal as Record<string, string>)[ch] ?? skin;
       if (ch === ".") color = shade(color, (rand() * 2 - 1) * 0.05);
       ctx.fillStyle = color;

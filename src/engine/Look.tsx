@@ -45,6 +45,22 @@ export const LOOKS: Record<LookPreset, Preset> = {
       { color: "#ff5b3a", intensity: 3.5, position: [0, 0.5, 8.5], distance: 4 },
     ],
   },
+  /**
+   * A children's ward at night. The room wants cold moon and one warm
+   * bedside lamp; the corridor wants warm fluorescent panels with a cold
+   * window at the end. A single global key can only be one of those, so this
+   * preset keeps the global light almost neutral and lets the world-local
+   * practicals do the colour work.
+   */
+  "ward-night": {
+    bg: "#040810",
+    fog: "#081019",
+    fogDensity: 0.052,
+    ambient: { color: "#26303f", intensity: 0.3 },
+    hemi: { sky: "#33445c", ground: "#080a10", intensity: 0.32 },
+    key: { color: "#cfe0f5", intensity: 0.9, position: [4, 6, -3], shadow: true },
+    fills: [{ color: "#ffc98a", intensity: 4, position: [1.5, 0.7, 2.4], distance: 6 }],
+  },
   "forest-night": {
     bg: "#020812",
     fog: "#061426",

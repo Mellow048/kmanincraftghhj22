@@ -118,19 +118,21 @@ export function plankTex(base = "#4a3524", repeat: [number, number] = [1, 1]): T
 }
 
 /** Red carpet with a woven border pattern. */
-export function carpetTex(repeat: [number, number] = [1, 1]): THREE.CanvasTexture {
-  const key = `carpet|${repeat.join(",")}`;
+export function carpetTex(repeat: [number, number] = [1, 1], tone = "#6e1826"): THREE.CanvasTexture {
+  const key = `carpet|${repeat.join(",")}|${tone}`;
   return texture(
     key,
     16,
     16,
     (ctx) => {
       const rand = mulberry32(88);
+      const edge = shade(tone, -0.42);
+      const motif = shade(tone, -0.18);
       for (let y = 0; y < 16; y++) {
         for (let x = 0; x < 16; x++) {
-          const edge = x < 1 || x > 14 || y < 1 || y > 14;
-          const motif = (x % 8 === 3 || x % 8 === 4) && (y % 8 === 3 || y % 8 === 4);
-          const base = edge ? "#3a0710" : motif ? "#650d1a" : "#7e1020";
+          const isEdge = x < 1 || x > 14 || y < 1 || y > 14;
+          const isMotif = (x % 8 === 3 || x % 8 === 4) && (y % 8 === 3 || y % 8 === 4);
+          const base = isEdge ? edge : isMotif ? motif : tone;
           ctx.fillStyle = shade(base, (rand() * 2 - 1) * 0.06);
           ctx.fillRect(x, y, 1, 1);
         }
@@ -280,15 +282,15 @@ export function tileCeilingTex(repeat: [number, number] = [1, 1]): THREE.CanvasT
     16,
     (ctx) => {
       const rand = mulberry32(hashString(key));
-      ctx.fillStyle = "#cfd6dd";
+      ctx.fillStyle = "#a7b0ba";
       ctx.fillRect(0, 0, 16, 16);
       for (let y = 0; y < 16; y++) {
         for (let x = 0; x < 16; x++) {
           const hole = (x % 3 === 1 && y % 3 === 1) || (x % 5 === 2 && y % 4 === 2);
           const edge = x === 0 || y === 0;
-          if (hole) ctx.fillStyle = shade("#cfd6dd", -0.3);
-          else if (edge) ctx.fillStyle = shade("#cfd6dd", -0.45);
-          else ctx.fillStyle = shade("#cfd6dd", (rand() * 2 - 1) * 0.045);
+          if (hole) ctx.fillStyle = shade("#a7b0ba", -0.22);
+          else if (edge) ctx.fillStyle = shade("#a7b0ba", -0.34);
+          else ctx.fillStyle = shade("#a7b0ba", (rand() * 2 - 1) * 0.04);
           ctx.fillRect(x, y, 1, 1);
         }
       }
@@ -697,14 +699,14 @@ export function floorTex(base = "#4a5a63", repeat: [number, number] = [1, 1]): T
       for (let y = 0; y < 16; y++) {
         for (let x = 0; x < 16; x++) {
           const speckle = rand();
-          let color = shade(base, (rand() * 2 - 1) * 0.045);
-          if (speckle > 0.93) color = shade(base, 0.28);
-          else if (speckle < 0.07) color = shade(base, -0.24);
+          let color = shade(base, (rand() * 2 - 1) * 0.04);
+          if (speckle > 0.94) color = shade(base, 0.18);
+          else if (speckle < 0.06) color = shade(base, -0.15);
           ctx.fillStyle = color;
           ctx.fillRect(x, y, 1, 1);
         }
       }
-      ctx.fillStyle = shade(base, -0.3);
+      ctx.fillStyle = shade(base, -0.2);
       ctx.fillRect(0, 0, 16, 1);
       ctx.fillRect(0, 0, 1, 16);
     },

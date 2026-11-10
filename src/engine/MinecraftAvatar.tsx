@@ -172,7 +172,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const materials = useMemo(() => {
     const skinMat = new THREE.MeshStandardMaterial({ color: skin, roughness: 0.95, metalness: 0 });
     const hairMat = new THREE.MeshStandardMaterial({ color: hair, roughness: 1, metalness: 0 });
-    const sideMat = new THREE.MeshStandardMaterial({ map: headSideTexture(skin, hair), roughness: 1, metalness: 0 });
+    const rightSideMat = new THREE.MeshStandardMaterial({ map: headSideTexture(skin, hair, "right"), roughness: 1, metalness: 0 });
+    const leftSideMat = new THREE.MeshStandardMaterial({ map: headSideTexture(skin, hair, "left"), roughness: 1, metalness: 0 });
     const faceMat = new THREE.MeshStandardMaterial({
       map: faceTexture(face, { skin, hair }),
       roughness: 1,
@@ -194,12 +195,12 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       legMat.color = new THREE.Color(kit.legs);
     }
     if (rim > 0) {
-      for (const m of [skinMat, hairMat, sideMat, torsoMat, armMat, legMat]) {
+      for (const m of [skinMat, hairMat, rightSideMat, leftSideMat, torsoMat, armMat, legMat]) {
         m.emissive = new THREE.Color("#12233f");
         m.emissiveIntensity = rim;
       }
     }
-    return { skinMat, hairMat, sideMat, faceMat, torsoMat, armMat, legMat };
+    return { skinMat, hairMat, rightSideMat, leftSideMat, faceMat, torsoMat, armMat, legMat };
   }, [skin, hair, face, faceGlow, outfit, rim, kit]);
 
   // Blink swaps the face map. Mutating the map keeps the material (and its shader)
@@ -266,8 +267,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
         {/* head */}
         <group position={[0, 12 * PX, 0]} rotation={[pose.head[0] + pitch, pose.head[1] + yaw, pose.head[2] + headRoll]}>
           <mesh castShadow receiveShadow position={[0, 4 * PX, 0]} material={[
-            materials.sideMat,
-            materials.sideMat,
+            materials.rightSideMat,
+            materials.leftSideMat,
             materials.hairMat,
             materials.skinMat,
             materials.faceMat,
@@ -292,26 +293,29 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           </mesh>
         </group>
 
-        {/* right leg (+X) — thigh + knee + shin, so sitting is not a plank */}
-        <group position={[2 * PX, 0, 0]} rotation={pose.legR}>
+        {/* right leg (+X) — thigh + knee + shin, so sitting is not a plank.
+            The legs are 0.4px narrower than a real Minecraft limb and sit 0.2px
+            further out, so a visible seam runs between them instead of the two
+            blocks fusing into one stone-coloured slab. */}
+        <group position={[2.2 * PX, 0, 0]} rotation={pose.legR}>
           <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
-            <boxGeometry args={[4 * PX, 6 * PX, 4 * PX]} />
+            <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
           </mesh>
           <group position={[0, -6 * PX, 0]} rotation={pose.kneeR}>
             <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
-              <boxGeometry args={[4 * PX, 6 * PX, 4 * PX]} />
+              <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
             </mesh>
           </group>
         </group>
 
         {/* left leg (-X) */}
-        <group position={[-2 * PX, 0, 0]} rotation={pose.legL}>
+        <group position={[-2.2 * PX, 0, 0]} rotation={pose.legL}>
           <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
-            <boxGeometry args={[4 * PX, 6 * PX, 4 * PX]} />
+            <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
           </mesh>
           <group position={[0, -6 * PX, 0]} rotation={pose.kneeL}>
             <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
-              <boxGeometry args={[4 * PX, 6 * PX, 4 * PX]} />
+              <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
             </mesh>
           </group>
         </group>

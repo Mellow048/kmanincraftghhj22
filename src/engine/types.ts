@@ -72,6 +72,7 @@ export type SceneDef = {
 export type LookPreset =
   | "hospital-night"
   | "hallway-night"
+  | "ward-night"
   | "forest-night"
   | "street-day"
   | "warm-room"
