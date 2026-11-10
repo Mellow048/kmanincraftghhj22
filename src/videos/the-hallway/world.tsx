@@ -85,7 +85,7 @@ export const World: React.FC = () => {
         <Block position={[2.19, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
         <Block position={[1.65, 2.24, 3.03]} size={[1.18, 0.1, 0.18]} color="#2c374c" />
 
-        <Door position={[1.15, 0, 3.03]} width={1.0} height={2.18} open={-1.35} color="#22352d" />
+        <Door position={[1.15, 0, 3.03]} width={1.0} height={2.18} open={-1.57} color="#22352d" />
 
         {/* bed */}
         <Bed position={[-1.8, 0, -1.75]} length={2.2} width={1.15} sheet="#c3d7e8" blanket="#24629e" />

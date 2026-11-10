@@ -16,29 +16,29 @@ export const scene3 = defineScene({
       at: 0,
       dur: 1.6,
       from: [0.35, 1.45, 6.6],
-      to: [0.32, 1.46, 6.82],
+      to: [0.33, 1.46, 6.72],
       target: [0.1, 1.38, 9.4],
-      targetTo: [0.1, 1.52, 9.4],
+      targetTo: [0.1, 1.48, 9.4],
       fov: 42,
-      fovTo: 40,
+      fovTo: 41,
       ease: "inOutSine",
       note: "Push on the eyes. The audience needs time to realise the two lights are a face, not a reflection.",
     },
     {
       at: 1.6,
       dur: 1.4,
-      from: [0.32, 1.46, 6.82],
-      to: [0.3, 1.47, 6.92],
-      target: [0.1, 1.52, 9.4],
-      targetTo: [0.1, 1.55, 9.4],
-      fov: 40,
+      from: [0.33, 1.46, 6.72],
+      to: [0.32, 1.46, 6.8],
+      target: [0.1, 1.48, 9.4],
+      targetTo: [0.1, 1.5, 9.4],
+      fov: 41,
       shake: 0.005,
       note: "The step lands. A tiny handheld tremor on the final push sells the impact without becoming a music video.",
     },
   ],
   Component: () => {
     const t = useTime();
-    const advance = clamp01((t - 1.2) / 1.6) * 0.22;
+    const advance = clamp01((t - 1.2) / 1.6) * 0.15;
     return (
       <>
         <FogCard position={[-0.1, 1.4, 8.4]} width={4.2} height={3.1} color="#0a1826" opacity={0.15} />
