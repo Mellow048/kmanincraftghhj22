@@ -1,136 +1,111 @@
-import { Bed, Block, Carpet, CeilingLight, Door, DoorFrame, Glow, GodRay, LightPool, Locker, Monitor, Sign, WallClock, WindowUnit } from "../../engine";
+import {
+  Bed,
+  BedsideTable,
+  Block,
+  Carpet,
+  CeilingLight,
+  CeilingMobile,
+  CeilingTiles,
+  CeilingVent,
+  ChildDrawing,
+  Curtains,
+  Door,
+  DoorFrame,
+  DoorPlate,
+  ExitSign,
+  Footprints,
+  Glow,
+  GodRay,
+  IVStand,
+  LightPool,
+  Locker,
+  MopBucket,
+  Monitor,
+  MoonWindow,
+  NoticeBoard,
+  Pipes,
+  Puddle,
+  Radiator,
+  Sign,
+  TeddyBear,
+  ToyBlocks,
+  VisitorChair,
+  WallChart,
+  WallClock,
+  WardWall,
+  WetFloorSign,
+  Wheelchair,
+} from "../../engine";
 import { Dust, FogCard } from "../../engine/fx";
-import { pixelTex, plankTex } from "../../engine/textures";
+import { floorTex } from "../../engine/textures";
 
 /**
  * THE HALLWAY — world.
  *
- * One continuous location, built once and shared by every scene:
+ * One continuous location: a children's ward room at night, and the corridor
+ * outside it. Built once and shared by every scene.
  *
- *   ROOM      x -2.6 .. 2.6   z -3.0 .. 3.0   (bed on the left, window right)
- *   DOOR      x  1.15 .. 2.15 at z = 3.0      (swings into the hall)
- *   HALLWAY   x -2.2 .. 2.2   z  3.0 .. 13.0  (red runner, The Figure at z 9.4)
+ *   ROOM      x -2.6 .. 2.6   z -3.0 .. 3.0   bed left, moonlit window right
+ *   DOOR      x  1.15 .. 2.15 at z = 3.0      swings into the hall
+ *   HALLWAY   x -2.2 .. 2.2   z  3.0 .. 13.0  runner, wheelchair, mop bucket,
+ *                                             fire exit, The Figure at z 10.15
  *
  * The camera must never teleport through these walls. If a scene is in the
  * hallway, the previous scene's camera needs a path through the door.
+ *
+ * STORY DETAILS — every one of these is a reason the room belongs to a child:
+ * the crayon drawing of a tall black figure (the hook), the ceiling mobile,
+ * the teddy on the pillow, toy blocks, the visitor's coat on the chair, the
+ * patient chart, the taped timetable. The corridor carries the wet floor, the
+ * footprints, the missing poster and the fire exit that nobody uses.
  */
 
-const ROOM = {
-  minX: -2.6,
-  maxX: 2.6,
-  minZ: -3.0,
-  maxZ: 3.0,
-  height: 3.0,
-};
-
-const HALL = {
-  minX: -2.2,
-  maxX: 2.2,
-  minZ: 3.0,
-  maxZ: 13.0,
-  height: 3.0,
-};
+/** Where the corridor lamp above the figure finally gives up. */
+const LAMP_DEATH = 16.3;
 
 const FLICKER: Array<[number, number]> = [
   [7.15, 8.25],
   [9.9, 10.35],
   [12.3, 14.1],
-  [17.15, 19.7],
+  [15.0, 15.6],
 ];
-
-const wallTex = (color: string, repeat: [number, number]) => pixelTex(color, repeat, { jitter: 0.06 });
 
 export const World: React.FC = () => {
   return (
     <group>
-      {/* ───────────────────────── ROOM ───────────────────────── */}
+      {/* ───────────────────────── ROOM ─────────────────────────
+          A child's ward bed by a moonlit window. Everything soft is at child
+          height; everything hard is institutional. */}
       <group>
-        <Block position={[0, -0.05, 0]} size={[5.2, 0.1, 6]} map={wallTex("#1a2a44", [4, 5])} />
-        <Block position={[0, 3.05, 0]} size={[5.2, 0.1, 6]} color="#0c1422" />
+        <Block position={[0, -0.05, 0]} size={[5.2, 0.1, 6]} map={floorTex("#46555e", [5, 6])} />
+        <CeilingTiles position={[0, 2.995, 0]} size={[5.2, 6]} />
 
-        {/* back wall (+ timetable) */}
-        <Block position={[0, 1.5, -3.06]} size={[5.2, 3, 0.12]} map={wallTex("#1d2f4c", [4, 2])} />
-        <Block position={[0, 0.09, -2.98]} size={[5.2, 0.18, 0.04]} color="#0b1526" />
+        {/* back wall */}
+        <WardWall position={[0, 1.5, -3.06]} size={[5.2, 3, 0.12]} color="#3d5c74" repeat={[4, 2]} />
+        <Block position={[0, 0.55, -2.99]} size={[5.2, 1.1, 0.04]} color="#2c4658" />
+        <Block position={[0, 0.05, -2.98]} size={[5.2, 0.1, 0.05]} color="#1b2c3a" />
 
-        {/* left wall */}
-        <Block position={[-2.66, 1.5, 0]} size={[0.12, 3, 6]} map={wallTex("#1a2b46", [4, 2])} />
-        <Block position={[-2.58, 0.09, 0]} size={[0.04, 0.18, 6]} color="#0b1526" />
+        {/* left wall — carries the drawing */}
+        <WardWall position={[-2.66, 1.5, 0]} size={[0.12, 3, 6]} color="#3a5a72" repeat={[4, 2]} />
+        <Block position={[-2.59, 0.55, 0]} size={[0.04, 1.1, 6]} color="#2c4658" />
+        <Block position={[-2.58, 0.05, 0]} size={[0.05, 0.1, 6]} color="#1b2c3a" />
 
         {/* right wall, split around the window opening */}
-        <Block position={[2.66, 1.5, -1.7]} size={[0.12, 3, 2.6]} map={wallTex("#1a2b46", [2, 2])} />
-        <Block position={[2.66, 1.5, 2.05]} size={[0.12, 3, 1.9]} map={wallTex("#1a2b46", [2, 2])} />
-        <Block position={[2.66, 0.575, 0.35]} size={[0.12, 1.15, 1.5]} map={wallTex("#1a2b46", [1, 1])} />
-        <Block position={[2.66, 2.675, 0.35]} size={[0.12, 0.65, 1.5]} map={wallTex("#1a2b46", [1, 1])} />
+        <WardWall position={[2.66, 1.5, -1.7]} size={[0.12, 3, 2.6]} color="#3a5a72" repeat={[2, 2]} />
+        <WardWall position={[2.66, 1.5, 2.05]} size={[0.12, 3, 1.9]} color="#3a5a72" repeat={[2, 2]} />
+        <WardWall position={[2.66, 0.575, 0.35]} size={[0.12, 1.15, 1.5]} color="#3a5a72" repeat={[1, 1]} />
+        <WardWall position={[2.66, 2.675, 0.35]} size={[0.12, 0.65, 1.5]} color="#3a5a72" repeat={[1, 1]} />
+        <Block position={[2.59, 0.55, 0.35]} size={[0.04, 1.1, 1.5]} color="#2c4658" />
 
-        <WindowUnit position={[2.58, 1.75, 0.35]} rotationY={-Math.PI / 2} width={1.5} height={1.2} />
+        {/* the hero window: moon, stars, rooftops */}
+        <MoonWindow position={[2.58, 1.78, 0.35]} rotationY={-Math.PI / 2} width={1.6} height={1.4} />
+        <Curtains position={[2.46, 1.92, 0.35]} rotationY={-Math.PI / 2} width={2.1} height={1.9} color="#2b4a7a" gap={0.45} />
+        <Radiator position={[2.44, 0, 0.35]} rotationY={-Math.PI / 2} width={1.4} />
+
         <pointLight position={[2.2, 1.95, 0.35]} color="#bcd8ff" intensity={11} distance={6} decay={2} />
         <pointLight position={[0.1, 1.7, 1.5]} color="#cfdff5" intensity={3.6} distance={4.5} decay={2} />
-        <Glow position={[2.42, 1.85, 0.35]} size={2.6} color="#9fc6ff" opacity={0.42} />
         <pointLight position={[-2.15, 1.5, -2.2]} color="#7fa8ff" intensity={5} distance={4.5} decay={2} />
-        <Block position={[2.5, 1.08, 0.35]} size={[0.22, 0.06, 1.7]} color="#37445c" />
-
-        {/* curtains */}
-        <Block position={[2.5, 1.72, -0.52]} size={[0.08, 1.4, 0.42]} color="#16294a" />
-        <Block position={[2.5, 1.72, 1.22]} size={[0.08, 1.4, 0.42]} color="#16294a" />
-
-        {/* front wall around the door */}
-        <Block position={[-0.725, 1.5, 3.06]} size={[3.75, 3, 0.12]} map={wallTex("#1a2b46", [3, 2])} />
-        <Block position={[2.375, 1.5, 3.06]} size={[0.45, 3, 0.12]} map={wallTex("#1a2b46", [1, 2])} />
-        <Block position={[1.65, 2.6, 3.06]} size={[1.0, 0.8, 0.12]} map={wallTex("#1a2b46", [1, 1])} />
-        <Block position={[-0.725, 0.09, 2.98]} size={[3.75, 0.18, 0.04]} color="#0b1526" />
-        <Block position={[2.375, 0.09, 2.98]} size={[0.45, 0.18, 0.04]} color="#0b1526" />
-
-        {/* door frame */}
-        <Block position={[1.11, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
-        <Block position={[2.19, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
-        <Block position={[1.65, 2.24, 3.03]} size={[1.18, 0.1, 0.18]} color="#2c374c" />
-
-        <Door position={[1.15, 0, 3.03]} width={1.0} height={2.18} open={-1.57} color="#22352d" />
-
-        {/* bed */}
-        <Bed position={[-1.8, 0, -1.75]} length={2.2} width={1.15} sheet="#c3d7e8" blanket="#24629e" />
-        <Block position={[-1.8, 0.596, -0.78]} size={[1.21, 0.022, 0.22]} color="#e6eef6" />
-        <Block position={[-1.8, 0.585, -1.02]} size={[1.19, 0.02, 0.06]} color="#8fb4d2" />
-
-        {/* nightstand + lamp + monitor */}
-        <Block position={[-0.55, 0.3, -2.55]} size={[0.55, 0.6, 0.45]} color="#2b3548" />
-        <Block position={[-0.55, 0.58, -2.55]} size={[0.6, 0.05, 0.5]} color="#3a4761" />
-        <Block position={[-0.55, 0.72, -2.55]} size={[0.06, 0.24, 0.06]} color="#1c2431" />
-        <Block position={[-0.55, 0.86, -2.55]} size={[0.26, 0.14, 0.26]} color="#ffcf9a" emissive="#ffb066" emissiveIntensity={0.9} />
-        <Glow position={[-0.55, 0.88, -2.5]} size={1.0} color="#ffb066" opacity={0.4} />
-
-        <Monitor position={[-0.28, 0, -2.32]} rotationY={0.25} />
-        <Glow position={[-0.26, 0.53, -2.19]} size={0.9} color="#54e08a" opacity={0.4} />
-
-        {/* IV stand */}
-        <Block position={[-0.55, 0.8, -2.05]} size={[0.035, 1.6, 0.035]} color="#8b97a8" metalness={0.5} roughness={0.4} />
-        <Block position={[-0.42, 1.55, -2.05]} size={[0.3, 0.03, 0.03]} color="#8b97a8" metalness={0.5} roughness={0.4} />
-        <Block position={[-0.28, 1.4, -2.05]} size={[0.16, 0.24, 0.05]} color="#dce9f5" emissive="#9fd8ff" emissiveIntensity={0.18} />
-        <Block position={[-0.55, 0.02, -2.05]} size={[0.34, 0.04, 0.34]} color="#6f7b8c" />
-
-        {/* wall details */}
-        <Sign
-          position={[-1.8, 1.95, -2.94]}
-          width={1.25}
-          height={1.0}
-          title="MY TIMETABLE"
-          bg="#e8e1cd"
-          fg="#26303c"
-          accent="#3963a8"
-          grid
-          lit={0.28}
-        />
-        <WallClock position={[0.95, 2.5, -2.93]} radius={0.17} />
-        <Locker position={[1.95, 0, -2.62]} width={0.8} height={1.85} depth={0.42} doors={2} />
-
-        {/* light above the door, the one that starts misbehaving */}
-        <CeilingLight position={[1.55, 2.9, 2.45]} size={[0.34, 0.14]} color="#ffe9c9" lightColor="#ffdfae" intensity={3.8} flicker={FLICKER} />
-
-        <LightPool position={[1.5, 0.015, 0.3]} width={2.8} depth={2.2} color="#5f8fd6" opacity={0.22} />
-        <LightPool position={[1.55, 0.02, 2.35]} width={1.5} depth={1.6} color="#ff9a45" opacity={0.16} />
-        <GodRay position={[1.35, 1.5, 2.6]} rotation={[0, 0.2, -0.35]} width={0.85} height={3.1} color="#8fb6ee" opacity={0.07} />
-        <LightPool position={[-0.7, 0.02, -2.25]} width={1.4} depth={1.2} color="#ffb066" opacity={0.18} />
-
+        <Glow position={[2.42, 1.85, 0.35]} size={2.8} color="#9fc6ff" opacity={0.42} />
         <GodRay
           position={[1.55, 1.35, 0.15]}
           rotation={[0, 0.12, -1.02]}
@@ -147,22 +122,100 @@ export const World: React.FC = () => {
           color="#8fb6ee"
           opacity={0.08}
         />
+        <LightPool position={[1.5, 0.015, 0.3]} width={2.8} depth={2.2} color="#5f8fd6" opacity={0.22} />
+
+        {/* front wall around the door */}
+        <WardWall position={[-0.725, 1.5, 3.06]} size={[3.75, 3, 0.12]} color="#3a5a72" repeat={[3, 2]} />
+        <WardWall position={[2.375, 1.5, 3.06]} size={[0.45, 3, 0.12]} color="#3a5a72" repeat={[1, 2]} />
+        <WardWall position={[1.65, 2.6, 3.06]} size={[1.0, 0.8, 0.12]} color="#3a5a72" repeat={[1, 1]} />
+        <Block position={[-0.725, 0.55, 2.99]} size={[3.75, 1.1, 0.04]} color="#2c4658" />
+        <Block position={[2.375, 0.55, 2.99]} size={[0.45, 1.1, 0.04]} color="#2c4658" />
+        <Block position={[-0.725, 0.05, 2.98]} size={[3.75, 0.1, 0.05]} color="#1b2c3a" />
+        <Block position={[2.375, 0.05, 2.98]} size={[0.45, 0.1, 0.05]} color="#1b2c3a" />
+
+        {/* door frame, door, plate, threshold */}
+        <Block position={[1.11, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
+        <Block position={[2.19, 1.12, 3.03]} size={[0.1, 2.25, 0.18]} color="#2c374c" />
+        <Block position={[1.65, 2.24, 3.03]} size={[1.18, 0.1, 0.18]} color="#2c374c" />
+        <Door position={[1.15, 0, 3.03]} width={1.0} height={2.18} open={-1.57} color="#22352d" />
+        <DoorPlate position={[2.34, 2.34, 2.99]} rotationY={Math.PI} label="9" width={0.24} />
+
+        {/* the bed — rails up, teddy on the pillow, blanket folded */}
+        <Bed position={[-1.8, 0, -1.75]} length={2.2} width={1.15} sheet="#c3d7e8" blanket="#24629e" rails />
+        <Block position={[-1.8, 0.596, -0.78]} size={[1.21, 0.022, 0.22]} color="#e6eef6" />
+        <Block position={[-1.8, 0.585, -1.02]} size={[1.19, 0.02, 0.06]} color="#8fb4d2" />
+        <TeddyBear position={[-2.08, 0.64, -2.5]} rotationY={0.55} scale={1.15} />
+
+        {/* hanging mobile above the bed */}
+        <CeilingMobile position={[-1.8, 2.98, -1.85]} scale={1.15} speed={0.1} />
+
+        {/* nightstand, lamp, monitor, IV */}
+        <BedsideTable position={[-0.55, 0, -2.55]} />
+        <Block position={[-0.55, 0.72, -2.55]} size={[0.06, 0.24, 0.06]} color="#1c2431" />
+        <Block position={[-0.55, 0.86, -2.55]} size={[0.26, 0.14, 0.26]} color="#ffcf9a" emissive="#ffb066" emissiveIntensity={0.9} />
+        <Glow position={[-0.55, 0.88, -2.5]} size={1.1} color="#ffb066" opacity={0.4} />
+        <pointLight position={[-0.55, 0.92, -2.45]} color="#ffb066" intensity={4} distance={4} decay={2} />
+        <LightPool position={[-0.7, 0.02, -2.25]} width={1.4} depth={1.2} color="#ffb066" opacity={0.18} />
+
+        <Monitor position={[-0.28, 0, -2.32]} rotationY={0.25} />
+        <Glow position={[-0.26, 0.53, -2.19]} size={0.9} color="#54e08a" opacity={0.4} />
+
+        <IVStand position={[-0.62, 0, -1.78]} rotationY={0.2} bag="#dce9f5" />
+
+        {/* wall dressing: chart, notice board, timetable, clock, locker */}
+        <WallChart position={[-1.35, 1.35, -2.94]} width={0.4} />
+        <NoticeBoard position={[0.35, 1.85, -2.94]} width={0.85} seed={3} />
+        <Sign
+          position={[1.45, 1.95, -2.94]}
+          width={1.1}
+          height={0.9}
+          title="MY TIMETABLE"
+          bg="#e8e1cd"
+          fg="#26303c"
+          accent="#3963a8"
+          grid
+          lit={0.28}
+        />
+        <WallClock position={[-0.55, 2.5, -2.93]} radius={0.17} />
+        <Locker position={[1.95, 0, -2.62]} width={0.8} height={1.85} depth={0.42} doors={2} />
+
+        {/* visitor chair with a coat, toy blocks on the floor */}
+        <VisitorChair position={[0.42, 0, -2.35]} rotationY={0.4} />
+        <ToyBlocks position={[-0.9, 0, 0.6]} count={8} seed={4} />
+
+        {/* the crayon drawing — the hook, taped at child height on the left wall */}
+        <ChildDrawing position={[-2.56, 1.72, -1.35]} rotationY={Math.PI / 2} width={0.62} kind="shadow" seed={5} />
+
+        {/* light above the door, the one that starts misbehaving */}
+        <CeilingLight position={[1.55, 2.9, 2.45]} size={[0.34, 0.14]} color="#ffe9c9" lightColor="#ffdfae" intensity={3.8} flicker={FLICKER} />
+        <LightPool position={[1.55, 0.02, 2.35]} width={1.5} depth={1.6} color="#ff9a45" opacity={0.16} />
+        <GodRay position={[1.35, 1.5, 2.6]} rotation={[0, 0.2, -0.35]} width={0.85} height={3.1} color="#8fb6ee" opacity={0.07} />
+
+        <Pipes position={[1.9, 2.86, 0]} rotationY={Math.PI / 2} length={5.2} count={2} />
+        <CeilingVent position={[-1.0, 2.96, 1.2]} size={0.5} />
+
+        <Dust position={[0, 1.45, 0]} area={[4.6, 2.6, 5.2]} count={150} size={0.026} color="#bcd8ff" opacity={0.3} seed={4} speed={0.35} />
       </group>
 
-      {/* ──────────────────────── HALLWAY ─────────────────────── */}
+      {/* ──────────────────────── HALLWAY ───────────────────────
+          The same institutional bones, but everything a child would notice:
+          footprints, a wet floor sign, a wheelchair abandoned mid-corridor,
+          a fire exit, and a missing poster. */}
       <group>
-        <Block position={[0, -0.05, 8]} size={[4.4, 0.1, 10]} map={plankTex("#2a2230", [4, 9])} />
-        <Block position={[0, 3.05, 8]} size={[4.4, 0.1, 10]} color="#0a0f14" />
+        <Block position={[0, -0.05, 8]} size={[4.4, 0.1, 10]} map={floorTex("#3f4d55", [4, 10])} />
+        <CeilingTiles position={[0, 2.995, 8]} size={[4.4, 10]} />
 
-        {/* hall walls */}
-        <Block position={[-2.26, 1.5, 8]} size={[0.12, 3, 10]} map={wallTex("#17362f", [6, 2])} />
-        <Block position={[2.26, 1.5, 8]} size={[0.12, 3, 10]} map={wallTex("#17362f", [6, 2])} />
-        <Block position={[-2.19, 0.45, 8]} size={[0.06, 0.9, 10]} map={wallTex("#0f2620", [6, 1])} />
-        <Block position={[2.19, 0.45, 8]} size={[0.06, 0.9, 10]} map={wallTex("#0f2620", [6, 1])} />
+        <WardWall position={[-2.26, 1.5, 8]} size={[0.12, 3, 10]} color="#2f5147" repeat={[6, 2]} />
+        <WardWall position={[2.26, 1.5, 8]} size={[0.12, 3, 10]} color="#2f5147" repeat={[6, 2]} />
+        <Block position={[-2.19, 0.5, 8]} size={[0.04, 1.0, 10]} color="#23403a" />
+        <Block position={[2.19, 0.5, 8]} size={[0.04, 1.0, 10]} color="#23403a" />
+        <Block position={[-2.18, 0.05, 8]} size={[0.05, 0.1, 10]} color="#16282a" />
+        <Block position={[2.18, 0.05, 8]} size={[0.05, 0.1, 10]} color="#16282a" />
 
-        {/* hall end wall + window */}
-        <Block position={[0, 1.5, 13.06]} size={[4.4, 3, 0.12]} map={wallTex("#0f2621", [4, 2])} />
-        <WindowUnit position={[0, 1.85, 12.98]} rotationY={Math.PI} width={1.6} height={1.3} dim={0.12} />
+        {/* end wall + window */}
+        <WardWall position={[0, 1.5, 13.06]} size={[4.4, 3, 0.12]} color="#26453c" repeat={[4, 2]} />
+        <MoonWindow position={[0, 1.85, 12.98]} rotationY={Math.PI} width={1.6} height={1.3} dim={0.45} />
+        <Curtains position={[0, 1.9, 12.9]} rotationY={Math.PI} width={2.0} height={1.7} color="#274b3f" gap={0.7} />
         <pointLight position={[0, 2.0, 12.45]} color="#9fc6ff" intensity={5} distance={6} decay={2} />
         <Glow position={[0, 2.0, 12.8]} size={3.2} color="#8fb6ee" opacity={0.16} />
         <GodRay
@@ -176,30 +229,38 @@ export const World: React.FC = () => {
 
         <Carpet position={[0, 0.012, 8]} width={1.65} length={9.6} />
 
-        {/* far window light on the floor */}
+        {/* far window light pooling on the floor */}
         <LightPool position={[0, 0.02, 11.7]} width={3.2} depth={3.2} color="#6f9fe0" opacity={0.2} />
-        <Glow position={[0.3, 1.25, 10.55]} size={3.4} color="#6f9fd8" opacity={0.28} />
-        <Glow position={[0.3, 1.68, 10.6]} size={1.5} color="#a9c9ff" opacity={0.34} />
-        <Glow position={[0.3, 1.68, 10.64]} size={0.66} color="#d6e8ff" opacity={0.22} />
-        <pointLight position={[1.05, 1.7, 10.32]} color="#8fb6ee" intensity={7} distance={2.2} decay={2} />
-        <pointLight position={[-0.45, 1.55, 10.32]} color="#7fa8ee" intensity={6} distance={2.2} decay={2} />
-        <pointLight position={[0.3, 1.42, 9.35]} color="#6f93c9" intensity={1.1} distance={2.4} decay={2} />
-        <pointLight position={[0.3, 2.35, 9.9]} color="#ffd9a8" intensity={2.6} distance={2.4} decay={2} />
-        <pointLight position={[-1.15, 1.45, 9.6]} color="#7fa8ee" intensity={5} distance={2.6} decay={2} />
-        <LightPool position={[0, 0.02, 8.6]} width={2.4} depth={2.6} color="#ff5b3a" opacity={0.07} />
 
-        {/* side doors */}
+        {/* side doors with plates */}
         <DoorFrame position={[2.19, 0, 5.5]} rotationY={-Math.PI / 2} color="#0d241f" />
         <DoorFrame position={[2.19, 0, 9.0]} rotationY={-Math.PI / 2} color="#0d241f" />
         <DoorFrame position={[-2.19, 0, 6.8]} rotationY={Math.PI / 2} color="#0d241f" />
         <DoorFrame position={[-2.19, 0, 10.6]} rotationY={Math.PI / 2} color="#0d241f" />
         <Door position={[2.17, 0, 5.5]} rotationY={-Math.PI / 2} width={1.0} height={2.15} open={-0.12} color="#1b3730" />
         <Door position={[2.17, 0, 9.0]} rotationY={-Math.PI / 2} width={1.0} height={2.15} open={-0.08} color="#1b3730" />
-        <pointLight position={[1.9, 1.35, 8.3]} color="#7fa8dd" intensity={2.8} distance={2.6} decay={2} />
         <Door position={[-2.17, 0, 6.8]} rotationY={Math.PI / 2} width={1.0} height={2.15} open={-0.1} color="#1b3730" />
         <Door position={[-2.17, 0, 10.6]} rotationY={Math.PI / 2} width={1.0} height={2.15} open={-0.06} color="#1b3730" />
+        <DoorPlate position={[2.14, 2.3, 4.85]} rotationY={-Math.PI / 2} label="8" width={0.2} />
+        <DoorPlate position={[2.14, 2.3, 9.65]} rotationY={-Math.PI / 2} label="10" width={0.2} />
+        <DoorPlate position={[-2.14, 2.3, 6.15]} rotationY={Math.PI / 2} label="7" width={0.2} />
 
-        {/* wall seams, rail, vents — the things that stop a corridor looking like a tube */}
+        {/* fire exit */}
+        <DoorFrame position={[2.19, 0, 11.6]} rotationY={-Math.PI / 2} color="#3a1d1d" />
+        <Door position={[2.17, 0, 11.6]} rotationY={-Math.PI / 2} width={1.0} height={2.15} open={0} color="#4a2020" />
+        <ExitSign position={[2.13, 2.36, 11.6]} rotationY={-Math.PI / 2} width={0.55} lit={0.9} />
+        <ExitSign position={[0, 2.62, 12.9]} rotationY={Math.PI} width={0.7} lit={0.75} />
+
+        {/* abandoned wheelchair */}
+        <Wheelchair position={[1.55, 0, 6.35]} rotationY={-0.45} />
+
+        {/* wet floor: bucket, sign, puddle, footprints heading away */}
+        <MopBucket position={[-1.62, 0, 7.5]} rotationY={0.3} />
+        <WetFloorSign position={[-1.02, 0, 7.95]} rotationY={0.25} />
+        <Puddle position={[-0.55, 0.016, 8.35]} rotationY={0.12} width={1.25} depth={0.8} opacity={0.45} />
+        <Footprints position={[0.15, 0.018, 9.4]} rotationY={0.1} length={3.4} />
+
+        {/* wall seams, rail, vents */}
         {[4.0, 6.2, 8.4, 10.6, 12.4].map((z) => (
           <group key={z}>
             <Block position={[-2.18, 1.55, z]} size={[0.03, 1.9, 0.05]} color="#0c211c" />
@@ -213,11 +274,16 @@ export const World: React.FC = () => {
         ))}
         <Block position={[-2.08, 0.62, 7.7]} size={[0.12, 0.5, 0.26]} color="#7d1420" />
         <Block position={[-2.08, 0.86, 7.7]} size={[0.06, 0.1, 0.06]} color="#2b2f36" />
+
+        {/* ceiling bones */}
         {[5.8, 8.6, 11.2].map((z) => (
           <Block key={z} position={[0, 2.93, z]} size={[4.4, 0.14, 0.2]} color="#0a1216" />
         ))}
+        <Pipes position={[-1.62, 2.86, 8]} length={9.6} count={3} />
+        <CeilingVent position={[1.2, 2.96, 5.6]} size={0.5} />
+        <CeilingVent position={[-1.0, 2.96, 9.4]} size={0.45} rotationY={0.4} />
 
-        {/* posters */}
+        {/* posters, notice board, missing poster */}
         <Sign
           position={[2.14, 1.82, 4.05]}
           rotationY={-Math.PI / 2}
@@ -243,12 +309,47 @@ export const World: React.FC = () => {
           accent="#e8c76a"
           lit={0.3}
         />
+        <NoticeBoard position={[2.14, 1.8, 7.6]} rotationY={-Math.PI / 2} width={0.8} seed={7} />
+        <Sign
+          position={[-2.14, 1.9, 8.9]}
+          rotationY={Math.PI / 2}
+          width={0.62}
+          height={0.82}
+          title="MISSING"
+          subtitle="WARD 9"
+          lines={["LAST SEEN", "FIRE EXIT"]}
+          bg="#e2d9c2"
+          fg="#1a2230"
+          accent="#a8322a"
+          lit={0.34}
+        />
+        <ChildDrawing position={[-2.14, 1.86, 9.9]} rotationY={Math.PI / 2} width={0.5} kind="family" seed={9} />
 
-        {/* ceiling lights */}
+        {/* ceiling lights — the one over the figure dies for good */}
         <CeilingLight position={[0, 2.98, 4.35]} size={[0.9, 0.2]} color="#ffe9c9" lightColor="#ffdfae" intensity={4} distance={7} flicker={FLICKER} />
         <CeilingLight position={[0, 2.98, 7.2]} size={[0.9, 0.2]} color="#ffe9c9" lightColor="#ffdfae" intensity={4} distance={7} flicker={FLICKER} />
-        <CeilingLight position={[0, 2.98, 9.9]} size={[0.9, 0.2]} color="#ffe9c9" lightColor="#ffdfae" intensity={4.5} distance={7} flicker={FLICKER} />
+        <CeilingLight
+          position={[0, 2.98, 9.9]}
+          size={[0.9, 0.2]}
+          color="#ffe9c9"
+          lightColor="#ffdfae"
+          intensity={4.5}
+          distance={7}
+          flicker={FLICKER}
+          dieAt={LAMP_DEATH}
+        />
         <CeilingLight position={[0, 2.98, 12.2]} size={[0.9, 0.2]} color="#ffe9c9" lightColor="#ffdfae" intensity={4.5} distance={6} flicker={FLICKER} />
+
+        {/* the figure's little world of light */}
+        <Glow position={[0.3, 1.25, 10.55]} size={3.4} color="#6f9fd8" opacity={0.28} />
+        <Glow position={[0.3, 1.68, 10.6]} size={1.5} color="#a9c9ff" opacity={0.34} />
+        <Glow position={[0.3, 1.68, 10.64]} size={0.66} color="#d6e8ff" opacity={0.22} />
+        <pointLight position={[1.05, 1.7, 10.32]} color="#8fb6ee" intensity={7} distance={2.2} decay={2} />
+        <pointLight position={[-0.45, 1.55, 10.32]} color="#7fa8ee" intensity={6} distance={2.2} decay={2} />
+        <pointLight position={[0.3, 1.42, 9.35]} color="#6f93c9" intensity={1.1} distance={2.4} decay={2} />
+        <pointLight position={[0.3, 2.35, 9.9]} color="#ffd9a8" intensity={2.6} distance={2.4} decay={2} />
+        <pointLight position={[-1.15, 1.45, 9.6]} color="#7fa8ee" intensity={5} distance={2.6} decay={2} />
+        <LightPool position={[0, 0.02, 8.6]} width={2.4} depth={2.6} color="#ff5b3a" opacity={0.07} />
 
         {/* empty gurney, far end */}
         <Bed
@@ -258,10 +359,10 @@ export const World: React.FC = () => {
           length={1.95}
           sheet="#d8e2ec"
           blanket="#dfe7ef"
+          pillow={false}
         />
 
         <FogCard position={[0, 1.5, 12.5]} width={4.2} height={2.9} color="#08151b" opacity={0.45} />
-
         <Dust position={[0, 1.55, 8]} area={[4, 2.7, 9]} count={220} size={0.03} color="#a9c9ff" opacity={0.32} seed={21} speed={0.5} />
       </group>
 

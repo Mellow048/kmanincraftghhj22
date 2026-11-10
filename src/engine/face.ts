@@ -24,7 +24,9 @@ export type FaceName =
   | "blank"
   | "smug"
   | "crying"
-  | "hollow";
+  | "hollow"
+  | "dizzy"
+  | "hurt";
 
 const FACES: Record<FaceName, string[]> = {
   neutral: [
@@ -147,6 +149,26 @@ const FACES: Record<FaceName, string[]> = {
     "xnnnnnnx",
     "xxxxxxxx",
   ],
+  dizzy: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    ".b....b.",
+    "..x..x..",
+    ".xx..xx.",
+    "........",
+    "..m..m..",
+    "...mm...",
+  ],
+  hurt: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    ".b....b.",
+    "..b..b..",
+    ".wp..pw.",
+    ".w....w.",
+    "..m..m..",
+    "...mm...",
+  ],
 };
 
 const CACHE = new Map<string, THREE.CanvasTexture>();
@@ -176,18 +198,16 @@ export type FaceOptions = {
   grain?: number;
 };
 
-/** Returns a cached 8×8 CanvasTexture for a face. */
-export function faceTexture(name: FaceName, options: FaceOptions = {}): THREE.CanvasTexture {
+function buildFaceTexture(rowsIn: string[], key: string, options: FaceOptions): THREE.CanvasTexture {
   const skin = options.skin ?? "#e8b78d";
   const hair = options.hair ?? "#4a2e1c";
   const grain = options.grain ?? 0.05;
-  const key = `face|${name}|${skin}|${hair}|${grain}`;
   const hit = CACHE.get(key);
   if (hit) return hit;
 
-  const rows = FACES[name] ?? FACES.neutral;
+  const rows = rowsIn;
   if (rows.length !== 8 || rows.some((r) => r.length !== 8)) {
-    throw new Error(`Face "${name}" must be an 8×8 pixel map.`);
+    throw new Error(`Face "${key}" must be an 8×8 pixel map.`);
   }
 
   const canvas = document.createElement("canvas");
@@ -216,6 +236,47 @@ export function faceTexture(name: FaceName, options: FaceOptions = {}): THREE.Ca
   tex.needsUpdate = true;
   CACHE.set(key, tex);
   return tex;
+}
+
+/** Returns a cached 8×8 CanvasTexture for a face. */
+export function faceTexture(name: FaceName, options: FaceOptions = {}): THREE.CanvasTexture {
+  const skin = options.skin ?? "#e8b78d";
+  const hair = options.hair ?? "#4a2e1c";
+  const grain = options.grain ?? 0.05;
+  const key = `face|${name}|${skin}|${hair}|${grain}`;
+  return buildFaceTexture(FACES[name] ?? FACES.neutral, key, options);
+}
+
+/**
+ * The same face with the eyes shut. Whites become skin, pupils become a thin
+ * shadow line, so a blink reads at a glance instead of looking like a new face.
+ * Faces with glowing eyes (hollow) do not blink.
+ */
+export function blinkFaceTexture(name: FaceName, options: FaceOptions = {}): THREE.CanvasTexture {
+  const skin = options.skin ?? "#e8b78d";
+  const hair = options.hair ?? "#4a2e1c";
+  const grain = options.grain ?? 0.05;
+  const key = `blink|${name}|${skin}|${hair}|${grain}`;
+
+  const source = FACES[name] ?? FACES.neutral;
+  const hasOpenEyes = source.some((row) => /[wp]/.test(row));
+
+  if (!hasOpenEyes) {
+    return buildFaceTexture(source, key, options);
+  }
+
+  const rows = source.map((row) =>
+    row
+      .split("")
+      .map((ch) => {
+        if (ch === "w") return ".";
+        if (ch === "p") return ",";
+        return ch;
+      })
+      .join(""),
+  );
+
+  return buildFaceTexture(rows, key, options);
 }
 
 const SIDE_ROWS = [

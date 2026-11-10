@@ -85,6 +85,32 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
     target.z += wobble(t * 6.9, 6) * amp * 1.2;
   }
 
+  // Operator breathing: slow, low amplitude, always present when enabled.
+  if (shot.handheld && shot.handheld > 0) {
+    const amp = shot.handheld;
+    position.x += wobble(t * 0.53, 11) * amp;
+    position.y += wobble(t * 0.41, 12) * amp * 0.8;
+    position.z += wobble(t * 0.47, 13) * amp * 0.6;
+    target.x += wobble(t * 0.61, 14) * amp * 1.4;
+    target.y += wobble(t * 0.57, 15) * amp;
+    target.z += wobble(t * 0.44, 16) * amp * 1.4;
+  }
+
+  // Timed impacts: a decaying burst of shake, for a footstep or a door slam.
+  if (shot.impacts && shot.impacts.length > 0) {
+    for (const impact of shot.impacts) {
+      const dur = impact.dur ?? 0.35;
+      const local = t - impact.at;
+      if (local < 0 || local > dur) continue;
+      const decay = Math.pow(1 - local / dur, 2);
+      const amp = impact.amp * decay;
+      position.x += wobble(local * 26 + impact.at * 7, 21) * amp;
+      position.y += wobble(local * 23 + impact.at * 5, 22) * amp * 0.9;
+      target.x += wobble(local * 31 + impact.at * 3, 23) * amp * 1.3;
+      target.y += wobble(local * 29 + impact.at * 9, 24) * amp;
+    }
+  }
+
   const baseFov = shot.fov ?? 38;
   const fov = shot.fovTo != null ? baseFov + (shot.fovTo - baseFov) * e : baseFov;
 

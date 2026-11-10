@@ -13,6 +13,7 @@
     "new": "node scripts/new-video.mjs",
     "render": "remotion render src/index.ts",
     "still": "remotion still src/index.ts",
+    "stills": "node scripts/stills.mjs",
     "bundle": "remotion bundle src/index.ts"
   },
   "dependencies": {

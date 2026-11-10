@@ -3,6 +3,7 @@ export * from "./Camera";
 export * from "./defineFilm";
 export * from "./face";
 export * from "./fx";
+export * from "./locomotion";
 export * from "./Look";
 export * from "./math";
 export * from "./MinecraftAvatar";

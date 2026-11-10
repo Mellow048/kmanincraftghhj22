@@ -1,0 +1,58 @@
+name: Render stills
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: "Remotion composition id"
+        required: true
+        default: "the-hallway"
+      frames:
+        description: "Comma separated frame numbers to render as PNG"
+        required: false
+        default: "30,100,150,210,270,330,420,480,520,590"
+
+permissions:
+  contents: write
+
+jobs:
+  stills:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Render stills
+        run: node scripts/stills.mjs "${{ inputs.composition }}" "${{ inputs.frames }}" out/stills
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "stills-${{ inputs.composition }}"
+          path: out/stills
+          retention-days: 30
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "stills-${{ inputs.composition }}-${{ github.run_number }}"
+          name: "${{ inputs.composition }} — stills ${{ github.run_number }}"
+          body: |
+            Diagnostic stills rendered by GitHub Actions at 720x1280.
+
+            - Composition: `${{ inputs.composition }}`
+            - Frames: `${{ inputs.frames }}`
+            - Commit: `${{ github.sha }}`
+          files: "out/stills/*.png"
+          token: ${{ secrets.GITHUB_TOKEN }}

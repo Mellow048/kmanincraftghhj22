@@ -40,6 +40,13 @@ export type Shot = {
   arc?: number;
   /** Handheld instability, in metres. Keep 0.005–0.03. Never shake everything. */
   shake?: number;
+  /**
+   * Low-frequency handheld drift in metres. Much slower and smaller than `shake`;
+   * this is the breathing of the operator, not the impact of a footstep.
+   */
+  handheld?: number;
+  /** Timed impact impulses: a short burst of shake at a specific second. */
+  impacts?: Array<{ at: number; amp: number; dur?: number }>;
   /** Camera roll in radians. */
   roll?: number;
   /** Raise/lower the look point, for headroom in the 9:16 frame. */

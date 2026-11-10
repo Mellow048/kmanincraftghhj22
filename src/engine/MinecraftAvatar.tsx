@@ -1,13 +1,13 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
-import type { AnimName } from "./anim";
-import { getPose } from "./anim";
+import type { AnimName, GaitName, Pose } from "./anim";
+import { blendPose, gaitPose, getPose } from "./anim";
 import type { FaceName } from "./face";
-import { faceTexture, headSideTexture } from "./face";
-import type { Vec3 } from "./math";
+import { blinkFaceTexture, faceTexture, headSideTexture } from "./face";
 import { clamp } from "./math";
-import { pixelTex, stripeTex } from "./textures";
+import type { Vec3 } from "./math";
+import { glowTex, pixelTex, stripeTex } from "./textures";
 
 export type OutfitName = "gown" | "pajamas" | "hoodie" | "tee" | "shadow" | "suit";
 
@@ -24,6 +24,22 @@ export type MinecraftAvatarProps = {
   /** Seconds of offset, so two walking characters are not in lockstep. */
   phase?: number;
 
+  /**
+   * Ground distance travelled in metres. When set, gait clips (walk/run/creep/
+   * stagger) take their phase from here instead of the clock, so the feet always
+   * match the ground and a character never walks in place.
+   */
+  animDistance?: number;
+
+  /** Second clip to blend towards. */
+  blendTo?: AnimName;
+  /** 0 = the `blendTo` pose, 1 = the `animation` pose. */
+  blend?: number;
+  /** Clock for the `blendTo` clip. Omit to reuse `time`/the scene clock. */
+  blendTime?: number;
+  /** Override the animation clock (seconds). Deterministic and scene-independent. */
+  time?: number;
+
   face?: FaceName;
   skin?: string;
   hair?: string;
@@ -32,8 +48,16 @@ export type MinecraftAvatarProps = {
   /** Additive head aim, radians. */
   headYaw?: number;
   headPitch?: number;
+  /** Extra head roll, radians. */
+  headRoll?: number;
   /** World point for the head to look at. Overrides headYaw/headPitch. */
   lookAt?: Vec3;
+
+  /** Deterministic blinking. Great for making a character feel alive in close-up. */
+  blink?: boolean;
+  /** Ground contact blob so the character never floats. */
+  shadow?: boolean;
+  shadowOpacity?: number;
 
   /** Make the pixel eyes emit light. 0 = off. Great for The Figure. */
   faceGlow?: number;
@@ -46,6 +70,10 @@ export type MinecraftAvatarProps = {
 
 const PX = 1.8 / 32; // one Minecraft pixel in metres
 const HIP = 12 * PX;
+
+const GAITS: AnimName[] = ["walk", "run", "creep", "stagger"];
+
+const isGait = (name: AnimName): name is GaitName => GAITS.includes(name);
 
 const OUTFITS: Record<
   OutfitName,
@@ -100,6 +128,14 @@ const OUTFITS: Record<
   },
 };
 
+/** Deterministic blink envelope: closed for ~0.13s every 2.6–4.8s. */
+function blinkAmount(time: number, phase: number): number {
+  const period = 2.6 + (Math.abs(phase) % 1.6);
+  const local = ((time + phase) % period + period) % period;
+  if (local > 0.13) return 0;
+  return Math.sin((local / 0.13) * Math.PI);
+}
+
 export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   position = [0, 0, 0],
   rotationY = 0,
@@ -107,21 +143,29 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   animation = "idle",
   animSpeed = 1,
   phase = 0,
+  animDistance,
+  blendTo,
+  blend = 1,
+  blendTime,
+  time,
   face = "neutral",
   skin = "#e8b78d",
   hair = "#4a2e1c",
   outfit = "gown",
   headYaw = 0,
   headPitch = 0,
+  headRoll = 0,
   lookAt,
+  blink = false,
+  shadow = false,
+  shadowOpacity = 0.5,
   faceGlow = 0,
   rim = 0,
   children,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const time = (frame / fps) * animSpeed + phase;
-  const pose = getPose(animation, time);
+  const clock = time !== undefined ? time : (frame / fps) * animSpeed + phase;
 
   const kit = OUTFITS[outfit];
 
@@ -158,6 +202,30 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     return { skinMat, hairMat, sideMat, faceMat, torsoMat, armMat, legMat };
   }, [skin, hair, face, faceGlow, outfit, rim, kit]);
 
+  // Blink swaps the face map. Mutating the map keeps the material (and its shader)
+  // alive; three only recompiles when the map goes null ↔ non-null.
+  const blinkClosed = blink && blinkAmount(clock, phase) > 0.35;
+  useEffect(() => {
+    const tex = blinkClosed ? blinkFaceTexture(face, { skin, hair }) : faceTexture(face, { skin, hair });
+    materials.faceMat.map = tex;
+    materials.faceMat.emissiveMap = faceGlow > 0 ? tex : null;
+    materials.faceMat.needsUpdate = true;
+  }, [materials, blinkClosed, face, skin, hair, faceGlow]);
+
+  // Pose
+  let pose: Pose;
+  if (animDistance !== undefined && isGait(animation)) {
+    pose = gaitPose(animation, animDistance);
+  } else {
+    pose = getPose(animation, clock);
+  }
+  if (blendTo) {
+    const otherClock = blendTime !== undefined ? blendTime : clock;
+    const other =
+      animDistance !== undefined && isGait(blendTo) ? gaitPose(blendTo, animDistance) : getPose(blendTo, otherClock);
+    pose = blendPose(other, pose, blend);
+  }
+
   // Head aim
   let yaw = headYaw;
   let pitch = headPitch;
@@ -173,8 +241,17 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     pitch = clamp(-Math.atan2(dy, Math.hypot(dx, dz)), -0.7, 0.65);
   }
 
+  const shadowTex = glowTex();
+
   return (
     <group position={position} rotation-y={rotationY} scale={scale}>
+      {shadow && (
+        <mesh position={[0, 0.014, 0]} rotation-x={-Math.PI / 2} renderOrder={1}>
+          <planeGeometry args={[0.95, 0.6]} />
+          <meshBasicMaterial map={shadowTex} color="#000000" transparent opacity={shadowOpacity} depthWrite={false} />
+        </mesh>
+      )}
+
       <group
         position={[0, HIP + pose.bodyY, 0]}
         rotation={[pose.bodyPitch, pose.bodyYaw, pose.bodyRoll]}
@@ -187,7 +264,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
         </group>
 
         {/* head */}
-        <group position={[0, 12 * PX, 0]} rotation={[pose.head[0] + pitch, pose.head[1] + yaw, pose.head[2]]}>
+        <group position={[0, 12 * PX, 0]} rotation={[pose.head[0] + pitch, pose.head[1] + yaw, pose.head[2] + headRoll]}>
           <mesh castShadow receiveShadow position={[0, 4 * PX, 0]} material={[
             materials.sideMat,
             materials.sideMat,
