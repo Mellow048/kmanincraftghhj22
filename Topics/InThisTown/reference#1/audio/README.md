@@ -13,7 +13,7 @@ The seven voice clips share the same user-selected narrator. They are authored a
 | 17.20 s | `08-stands.mp3` | “Now he stands by me.” |
 | 0–20 s | `bed.mp3` | Low evolving chord, shell tick, footsteps, two fire whooshes, three growth chimes. |
 
-`film.tsx` schedules these files relative to `public/` using `audio` and `audioCues`. The files in this folder are identical copies of `public/audio/in-this-town-monster-egg/`. For a fresh checkout, copy this folder's MP3s into that public path before rendering. These short recorded voice clips are the input audio; `make-bed.py` reproduces only the instrumental and effects bed.
+`film.tsx` schedules these files relative to `public/` using `audio` and `audioCues`. The raw voice recordings have inconsistent levels (some takes are ~16 dB quieter than others); the **per-cue volume multipliers in `film.tsx`** balance the narration to roughly −24 dBFS RMS while keeping the original bed underneath it. Preserve those multipliers when reproducing this MP4. The files in this folder are identical copies of `public/audio/in-this-town-monster-egg/`. For a fresh checkout, copy this folder's MP3s into that public path before rendering. These short recorded voice clips are the input audio; `make-bed.py` reproduces only the instrumental and effects bed.
 
 To rebuild just the sound bed from source:
 
