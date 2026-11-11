@@ -8,10 +8,9 @@ import { Kid } from "./actors";
  * the first real locomotion in the film: the legs are driven by ground distance,
  * not the clock, so his feet land where the floor actually is.
  *
- * The camera does not turn around. It stays behind him and backs through the
- * doorway, so he walks away from us, out of the room and into the corridor,
- * and the last thing in the frame is the back of his head against the long
- * dark hall.
+ * Two shots, cut on his exit. The first holds the bed as he stands and walks
+ * towards the lens; the second picks him up from inside the doorway as he
+ * passes through, so the walk itself is never a cropped back filling the frame.
  */
 const KID_PATH: Vec3[] = [
   [-1.8, 0, -1.35],
@@ -32,39 +31,31 @@ export const scene3 = defineScene({
   shots: [
     {
       at: 0,
-      dur: 1.6,
+      dur: 2.7,
       from: [1.15, 1.55, 2.0],
-      to: [0.5, 1.5, 0.7],
+      to: [0.95, 1.52, 1.7],
       target: [1.6, 1.5, 3.05],
       targetTo: [-1.8, 1.2, -1.35],
       fov: 42,
       fovTo: 44,
       ease: "inOutCubic",
-      note: "Turn off the door and push in on the boy as he gets up. The camera moves first and he follows it with his whole body.",
+      note: "Turn off the door and find the boy on the bed. The camera moves first and he follows it with his whole body, so standing up becomes the cut.",
     },
     {
-      at: 1.6,
-      dur: 3.2,
-      from: [0.5, 1.5, 0.7],
-      path: [
-        [0.5, 1.5, 0.7],
-        [1.0, 1.52, 1.5],
-        [1.35, 1.54, 2.15],
-        [1.5, 1.55, 2.6],
-      ],
-      target: [-1.8, 1.2, -1.35],
+      at: 2.7,
+      dur: 2.1,
+      from: [0.9, 1.5, 0.15],
+      target: [1.55, 1.3, 3.2],
       targetPath: [
-        [-1.8, 1.15, -1.35],
-        [-1.2, 1.15, 0.4],
-        [-0.2, 1.12, 1.8],
-        [0.8, 1.1, 3.2],
-        [1.0, 1.05, 5.5],
-        [0.4, 1.0, 8.5],
+        [1.55, 1.3, 3.2],
+        [1.56, 1.3, 3.35],
+        [1.62, 1.26, 3.75],
+        [1.68, 1.21, 4.15],
+        [1.72, 1.2, 4.35],
       ],
-      fov: 44,
-      fovTo: 42,
+      fov: 42,
       ease: "inOutSine",
-      note: "Stay behind him and back through the doorway as he walks out, so the last thing we see is his back against the long dark hall.",
+      note: "From inside the doorway, pick him up as he comes through and hold on his back. The walk-out happens at full body height, not as a shoulder across the lens.",
     },
   ],
   Component: () => {
