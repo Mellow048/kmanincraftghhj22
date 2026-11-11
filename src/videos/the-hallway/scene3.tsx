@@ -44,7 +44,7 @@ export const scene3 = defineScene({
     {
       at: 2.7,
       dur: 2.1,
-      from: [0.9, 1.5, 0.15],
+      from: [0.9, 1.5, -1.0],
       target: [1.55, 1.3, 3.2],
       targetPath: [
         [1.55, 1.3, 3.2],
@@ -55,7 +55,7 @@ export const scene3 = defineScene({
       ],
       fov: 42,
       ease: "inOutSine",
-      note: "From inside the doorway, pick him up as he comes through and hold on his back. The walk-out happens at full body height, not as a shoulder across the lens.",
+      note: "From deep in the room, pick him up as he comes through the door and hold on his back. The walk-out happens at full body height, with the hall still readable around him.",
     },
   ],
   Component: () => {

@@ -1,11 +1,11 @@
 import { defineScene } from "../../engine";
-import { Figure, Kid } from "./actors";
+import { Figure } from "./actors";
 
 /**
  * BEAT 04 — THE LONG HALL (0:11.6–0:15.4)
- * One unbroken flight that begins exactly where scene 3 stopped: inside the
- * doorway, behind the boy, looking down the hall. The camera passes him,
- * keeps going, and the figure resolves out of the dark at the far end.
+ * The cut leaves the boy at the threshold. The camera is already in the hall,
+ * moving after him, but the corridor is empty; the eye keeps going because the
+ * lamp at the far end has something under it.
  */
 export const scene4 = defineScene({
   id: "scene4",
@@ -15,45 +15,32 @@ export const scene4 = defineScene({
     {
       at: 0,
       dur: 3.8,
-      from: [0.9, 1.5, 0.15],
+      from: [0.9, 1.5, -1.0],
       path: [
-        [0.9, 1.5, 0.15],
-        [1.05, 1.51, 0.8],
-        [1.3, 1.52, 1.7],
-        [1.45, 1.53, 2.5],
-        [1.38, 1.51, 3.2],
-        [1.05, 1.49, 4.0],
-        [0.75, 1.48, 4.8],
-        [0.55, 1.47, 5.5],
+        [0.9, 1.5, -1.0],
+        [0.95, 1.5, -0.3],
+        [1.1, 1.51, 0.6],
+        [1.35, 1.52, 1.6],
+        [1.5, 1.53, 2.6],
+        [1.4, 1.51, 3.4],
+        [1.05, 1.49, 4.4],
+        [0.75, 1.48, 5.3],
         [0.4, 1.46, 6.2],
       ],
       target: [1.72, 1.2, 4.35],
       targetPath: [
         [1.72, 1.2, 4.35],
-        [1.6, 1.18, 4.9],
-        [1.3, 1.15, 5.6],
-        [0.9, 1.1, 6.8],
-        [0.5, 1.08, 8.4],
-        [0.3, 1.05, 10.15],
+        [1.55, 1.15, 5.3],
+        [1.0, 1.1, 6.8],
+        [0.45, 1.08, 8.4],
+        [0.0, 1.05, 10.15],
       ],
       fov: 42,
       fovTo: 40,
       ease: "inOutSine",
       handheld: 0.005,
-      note: "Take the boy's eyeline and walk it: through the doorway, past the wet floor, down the long hall to the figure waiting under the lamp.",
+      note: "Take the boy's eyeline and walk it: through the doorway, past the wet floor, down the long hall. He is gone; the figure under the lamp is not.",
     },
   ],
-  Component: () => (
-    <>
-      <Kid
-        face="scared"
-        position={[1.72, 0, 4.35]}
-        rotationY={0.15}
-        lookAt={[0.3, 1.5, 10.15]}
-        headPitch={0.12}
-        animation="idle"
-      />
-      <Figure />
-    </>
-  ),
+  Component: () => <Figure />,
 });

@@ -11,7 +11,7 @@ import { MinecraftAvatar } from "../../engine";
  */
 export const KID_SEAT: Vec3 = [-1.8, 0, -1.35];
 export const KID_END: Vec3 = [1.72, 0, 4.35];
-export const FIGURE_SPOT: Vec3 = [0.3, 0, 10.15];
+export const FIGURE_SPOT: Vec3 = [-0.3, 0, 10.15];
 
 export const Kid: React.FC<{
   face?: FaceName;
@@ -108,7 +108,7 @@ export const Figure: React.FC<{
   <MinecraftAvatar
     position={position}
     rotationY={rotationY}
-    scale={1.06}
+    scale={1.1}
     animation={animation}
     animSpeed={animSpeed}
     phase={phase}
@@ -122,7 +122,7 @@ export const Figure: React.FC<{
     hair="#0a0e16"
     outfit="shadow"
     faceGlow={faceGlow}
-    rim={0.45}
+    rim={0.6}
     headPitch={headPitch}
     headYaw={headYaw}
     headRoll={headRoll}
