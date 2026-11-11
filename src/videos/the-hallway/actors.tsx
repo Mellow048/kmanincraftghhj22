@@ -10,7 +10,7 @@ import { MinecraftAvatar } from "../../engine";
  * re-implementing the avatar.
  */
 export const KID_SEAT: Vec3 = [-1.8, 0, -1.35];
-export const KID_END: Vec3 = [1.6, 0, 3.5];
+export const KID_END: Vec3 = [1.72, 0, 4.35];
 export const FIGURE_SPOT: Vec3 = [0.3, 0, 10.15];
 
 export const Kid: React.FC<{
