@@ -253,7 +253,7 @@ export function faceTexture(name: FaceName, options: FaceOptions = {}): THREE.Ca
   const rows =
     gaze === 0
       ? source
-      : source.map((row) => (gaze > 0 ? row.replace(/wp/g, "pw") : row.replace(/pw/g, "wp")));
+      : source.map((row) => (gaze > 0 ? row.replace(/pw/g, "wp") : row.replace(/wp/g, "pw")));
   return buildFaceTexture(rows, key, options);
 }
 

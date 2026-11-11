@@ -61,6 +61,8 @@ export type MinecraftAvatarProps = {
   weightShift?: number;
   /** Deterministic eye darts. Default true; turn off for a dead stare. */
   saccade?: boolean;
+  /** Fix the pupils: -1 left, 1 right, 0 centre. Omit for automatic darts. */
+  gaze?: -1 | 0 | 1;
   /** Ground contact blob so the character never floats. */
   shadow?: boolean;
   shadowOpacity?: number;
@@ -166,6 +168,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   breath = 1,
   weightShift = 1,
   saccade = true,
+  gaze: gazeOverride,
   shadow = false,
   shadowOpacity = 0.5,
   faceGlow = 0,
@@ -186,9 +189,11 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const shiftWave = Math.sin(clock * TAU * 0.085 + phase * 1.9);
 
   // Eye darts: a new fixation roughly once a second, held between saccades.
+  // A scene can pin the gaze with `gaze` when the story needs a specific look.
   const gazeBucket = Math.floor(clock / 1.05);
   const gazeNoise = wobble(gazeBucket * 1.31, 7);
-  const gaze: -1 | 0 | 1 = !saccade ? 0 : gazeNoise > 0.62 ? 1 : gazeNoise < -0.62 ? -1 : 0;
+  const eyeDart: -1 | 0 | 1 = !saccade ? 0 : gazeNoise > 0.62 ? 1 : gazeNoise < -0.62 ? -1 : 0;
+  const gaze = gazeOverride ?? eyeDart;
 
   const kit = OUTFITS[outfit];
 

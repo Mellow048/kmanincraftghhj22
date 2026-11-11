@@ -134,7 +134,7 @@ A character is more than a clip:
 
 - `blink` gives deterministic blinks.
 - Breathing and idle weight shift are on by default; dial them with `breath` and `weightShift`.
-- Eye darts are on by default; `saccade={false}` for a dead stare.
+- Eye darts are on by default; `saccade={false}` for a dead stare, or pin a look with `gaze={-1 | 0 | 1}`.
 - `useWalkPath` returns `headYaw`; pass it to the avatar so the head leads a turn.
 - `focalLength={35}` on a shot is the same as `fov={38}`, but easier to reason about.
 
