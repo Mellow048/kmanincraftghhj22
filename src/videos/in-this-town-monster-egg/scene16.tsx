@@ -40,7 +40,7 @@ export const scene16 = storyScene(timing, {
       note: "'The whole town laughed': back in daylight, walking at us with the worm in the blanket from act two, and people pointing as he passes.",
       stage: (t, { p }) => (
         <>
-          <HeroBundle {...stride([11.5, 0, 1.2], STOPS, p)} animation="walk" face="frown" lift={0.4} />
+          <HeroBundle {...stride([11.5, 0, 1.2], STOPS, p)} animation="walk" face="frown" lift={0.24} />
           <Adult who={1} position={[13.0, 0, 0.25]} rotationY={-1.9} animation="laugh" face="laugh" />
           <Kid who={2} position={[12.3, 0, 2.15]} rotationY={-2.5} animation="laugh" face="laugh" />
           <Adult who={3} position={[14.4, 0, 2.0]} rotationY={-2.1} animation="laugh" face="laugh" />
@@ -51,14 +51,14 @@ export const scene16 = storyScene(timing, {
     },
     {
       cue: "16.sound",
-      ...cam.push({ on: [BUNDLE[0] - 0.08, BUNDLE[1] + 0.32, BUNDLE[2]], dist: 1.3, to: 0.92, yaw: -84, pitch: 8, fov: 36 }),
+      ...cam.push({ on: [BUNDLE[0] - 0.05, BUNDLE[1] + 0.36, BUNDLE[2]], dist: 1.5, to: 1.15, yaw: -66, pitch: 16, fov: 36 }),
       zone: "town",
       look: "overworld-day",
-      note: "'One tiny sound': the worm's head in the blanket, as close as the film gets to anything. Its mouth opens on 'tiny' and rings leave it.",
+      note: "'One tiny sound': the worm's head in the blanket low in the frame, his face above it looking down. Its mouth opens on 'tiny' and rings leave it.",
       stage: (t) => (
         <>
-          <HeroBundle position={STOPS} rotationY={WEST} face="frown" lift={0.7} mouth={ramp(t, TINY, TINY + 0.08)} />
-          <SoundRings position={[BUNDLE[0] - 0.24, BUNDLE[1] + 0.42, BUNDLE[2]]} rotationY={WEST} t={(t - TINY) * 1.1} reach={0.9} color="#fff3b0" />
+          <HeroBundle position={STOPS} rotationY={WEST} face={t < TINY ? "frown" : "wow"} headPitch={0.24} lift={0.22} mouth={ramp(t, TINY, TINY + 0.08)} />
+          <SoundRings position={[BUNDLE[0] - 0.24, BUNDLE[1] + 0.3, BUNDLE[2]]} rotationY={WEST} t={(t - TINY) * 1.1} reach={0.9} color="#fff3b0" />
         </>
       ),
     },
