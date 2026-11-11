@@ -1,7 +1,7 @@
 import { clamp01, defineScene, smoothstep, useTime, useWalkPath } from "../../engine";
 import type { Vec3 } from "../../engine";
 import { Dragon, FireStream, Phoenix, RankDisplay, Worm } from "../../../Topics/InThisTown/creatures";
-import { MARKS } from "../../../Topics/InThisTown/maps";
+import { MARKS, TOWN } from "../../../Topics/InThisTown/maps";
 import { Friend, Hero, Sister } from "./actors";
 
 /** Every route goes through x -1.15..1.15 at BOTH school doors. */
@@ -21,24 +21,25 @@ export const scene3 = defineScene({
     {
       at: 0,
       dur: 4.1,
-      from: [0.45, 1.58, -1.45],
+      from: [0.05, 1.78, -3.05],
       path: [
-        [0.45, 1.58, -1.45],
-        [0.35, 1.59, 0.8],
-        [0.25, 1.6, 2.65],
-        [0.2, 1.58, 4.15],
-        [0.15, 1.55, 6.25],
-        [0.2, 1.5, 8.92],
+        [0.05, 1.78, -3.05],
+        [-0.15, 1.78, -0.3],
+        [0.05, 1.7, 2.4],
+        [0.2, 1.65, 4.25],
+        [0.15, 1.6, 6.5],
+        [0.15, 1.58, 8.9],
       ],
-      target: [0.0, 1.45, 2.2],
+      target: [0.0, 1.4, 2.05],
       targetPath: [
-        [0.0, 1.45, 2.2],
-        [1.1, 1.4, 5.6],
-        [0.3, 1.28, 8.4],
-        [0.2, 0.85, 11.65],
+        [0.0, 1.4, 2.05],
+        [0.05, 1.4, 4.7],
+        [0.15, 1.45, 7.4],
+        [0.2, 1.45, 10.1],
+        [0.25, 1.45, 12.8],
       ],
-      fov: 51,
-      fovTo: 40,
+      fov: 74,
+      fovTo: 88,
       ease: "inOutSine",
       note: "Follow the kid past the laughing friend, cross the real school threshold, then pass the classroom door as the dragon's first flame reaches for someone vulnerable.",
     },
@@ -58,10 +59,11 @@ export const scene3 = defineScene({
         <Friend position={friend.position} rotationY={friend.yaw * (1 - turn) + Math.PI * turn} animation={friend.moving ? "walk" : "idle"} animDistance={friend.distance} headYaw={friend.headYaw} face={t > 3.5 ? "surprised" : "smug"} />
         <Sister position={sister.position} rotationY={sister.yaw * (1 - turn) + Math.PI * turn} animation={sister.moving ? "walk" : "idle"} animDistance={sister.distance} face={t > 3.3 ? "scared" : "happy"} />
         <Worm position={worm.position} scale={0.34} time={t + 7.3} />
-        <Dragon position={dragon.position} scale={0.82} time={t + 7.3} />
+        {/* Wings fold at each REAL doorway, then unfold in the hall/class. */}
+        <Dragon position={dragon.position} scale={0.82} time={t + 7.3} wingsFold={clamp01(Math.max(1 - Math.abs(dragon.position[2] - 3.55) / 1.1, 1 - Math.abs(dragon.position[2] - 8.65) / 1.1))} />
         <Phoenix position={phoenix.position} scale={0.83} time={t + 7.3} />
-        {t > 3.44 && <FireStream origin={[1.85, 1.18, 12.02]} target={[0.25, 0.38, 12.45]} progress={clamp01((t - 3.44) / 1.4)} />}
-        {t > 3.75 && <RankDisplay position={[0, 2.05, 16.0]} rank="1" width={1.65} />}
+        {t > 3.44 && <FireStream origin={[1.55, 1.18, 12.82]} target={[0.25, 0.38, 12.45]} progress={clamp01((t - 3.44) / 1.4)} />}
+        {t > 3.75 && <RankDisplay position={TOWN.rankBoard} rank="1" width={1.65} />}
       </>
     );
   },

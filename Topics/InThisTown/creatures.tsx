@@ -76,13 +76,13 @@ export const Worm: React.FC<{
         const y = 0.22 + lifted * Math.pow(1 - i / 5, 2) * 0.78 + Math.sin(time * 3.2 - i * 0.64) * 0.028;
         return (
           <group key={i} position={[Math.sin(time * 2 - i * 0.5) * 0.038, y, -0.24 + i * 0.23]}>
-            <Block size={[0.48 * taper, 0.38 * taper, 0.43]} color={i % 2 ? "#83aa75" : "#96b682"} emissive="#57cab5" emissiveIntensity={glow * 0.62} />
+            <Block size={[0.48 * taper, 0.38 * taper, 0.43]} color={i % 2 ? "#83aa75" : "#96b682"} emissive="#57cab5" emissiveIntensity={glow * 0.32} />
             <Block position={[0, 0.19 * taper, 0.02]} size={[0.36 * taper, 0.05, 0.29]} color="#b7ca8b" emissive="#8de4b8" emissiveIntensity={glow * 0.28} castShadow={false} />
           </group>
         );
       })}
       <group position={[0, 0.32 + lifted * 0.78, -0.46]} rotation-x={lifted * -0.11}>
-        <Block size={[0.57, 0.48, 0.55]} color="#a7c58a" emissive="#58d5b5" emissiveIntensity={glow * 0.65} />
+        <Block size={[0.57, 0.48, 0.55]} color="#a7c58a" emissive="#58d5b5" emissiveIntensity={glow * 0.3} />
         <Block position={[-0.15, 0.058, -0.29]} size={[0.095, 0.1, 0.022]} color="#fff7e5" emissive="#c9fff6" emissiveIntensity={glow * 0.7} castShadow={false} />
         <Block position={[0.15, 0.058, -0.29]} size={[0.095, 0.1, 0.022]} color="#fff7e5" emissive="#c9fff6" emissiveIntensity={glow * 0.7} castShadow={false} />
         <Block position={[-0.134, 0.052, -0.305]} size={[0.035, 0.054, 0.014]} color="#334f52" castShadow={false} />
@@ -90,7 +90,7 @@ export const Worm: React.FC<{
         <Block position={[0, -0.12, -0.294]} size={[0.17, 0.027, 0.02]} color="#5c755a" castShadow={false} />
         <Block position={[-0.2, 0.29, 0.04]} size={[0.06, 0.18, 0.06]} color="#b8d18f" rotation={[0, 0, -0.25]} />
         <Block position={[0.2, 0.29, 0.04]} size={[0.06, 0.18, 0.06]} color="#b8d18f" rotation={[0, 0, 0.25]} />
-        {glow > 0.02 && <Glow position={[0, 0.06, -0.38]} size={1.15} color="#80ffe2" opacity={glow * 0.42} />}
+        {glow > 0.02 && <Glow position={[0, 0.06, -0.38]} size={1.15} color="#80ffe2" opacity={glow * 0.16} />}
       </group>
     </group>
   );
@@ -111,8 +111,9 @@ export const Dragon: React.FC<{
   scale?: number;
   time?: number;
   bow?: number;
+  wingsFold?: number;
   color?: string;
-}> = ({ position, scale = 1, time = 0, bow = 0, color = "#615b9e" }) => (
+}> = ({ position, scale = 1, time = 0, bow = 0, wingsFold = 0, color = "#615b9e" }) => (
   <group position={position} scale={scale} rotation-y={Math.PI + bow * 0.14}>
     <Block position={[0, 0.88, 0]} size={[0.77, 0.82, 1.14]} color={color} />
     <Block position={[0, 1.33 - bow * 0.35, 0.63]} size={[0.68, 0.61, 0.62]} color="#756cb3" />
@@ -124,7 +125,7 @@ export const Dragon: React.FC<{
         <Block position={[s * 0.25, 1.79 - bow * 0.35, 0.56]} size={[0.15, 0.34, 0.18]} color="#c3b0cf" rotation={[0.2, 0, s * -0.3]} />
         <Block position={[s * 0.28, 0.37, 0.36]} size={[0.22, 0.66, 0.24]} color="#56578a" />
         <Block position={[s * 0.29, 0.37, -0.39]} size={[0.22, 0.66, 0.24]} color="#56578a" />
-        <group position={[s * 0.35, 1.22, -0.1]} rotation-z={s * (0.12 + Math.sin(time * 3.5) * 0.13 + bow * 0.18)} scale-x={s}>
+        <group position={[s * 0.35, 1.22, -0.1]} rotation-z={s * (0.12 + Math.sin(time * 3.5) * 0.13 + bow * 0.18)} scale-x={s * (1 - 0.48 * clamp01(wingsFold))}>
           <mesh castShadow>
             <extrudeGeometry args={[WING_SHAPE, { depth: 0.1, bevelEnabled: false, steps: 1 }]} />
             <meshStandardMaterial color="#7e78b8" side={THREE.DoubleSide} roughness={0.93} />
@@ -197,12 +198,12 @@ export const RankDisplay: React.FC<{
             <meshStandardMaterial color="#aaffdd" emissive="#70f6c2" emissiveIntensity={2} roughness={0.35} />
           </mesh>
           <Sign position={[0, -0.39, 0.095]} width={0.76} height={0.18} title="RANK" bg="#4b736e" fg="#f9f0d4" frame={false} lit={0.8} />
-          <Glow position={[0, 0.05, 0.22]} size={1.9} color="#83ffd4" opacity={0.55} />
+          <Glow position={[0, 0.05, 0.22]} size={1.9} color="#83ffd4" opacity={0.22} />
         </group>
       ) : (
-        <Sign position={[0, 0, 0.055]} width={width} height={width * 0.61} title={rank} subtitle="RANK" bg="#f4e7be" fg="#273f48" accent="#bc6652" lit={0.28 + glow * 0.5} frame={false} />
+        <Sign position={[0, 0, 0.055]} width={width} height={width * 0.61} title={rank} subtitle="RANK" bg="#f4e7be" fg="#273f48" accent="#bc6652" lit={0.18 + glow * 0.15} frame={false} />
       )}
-      {glow > 0.01 && !infinite && <Glow position={[0, 0, 0.24]} size={width * 1.4} color="#80e9c4" opacity={glow * 0.33} />}
+      {glow > 0.01 && !infinite && <Glow position={[0, 0, 0.24]} size={width * 1.4} color="#80e9c4" opacity={glow * 0.1} />}
     </group>
   );
 };
@@ -229,8 +230,8 @@ export const FireStream: React.FC<{
           </group>
         );
       })}
-      <Glow position={vlerp(origin, target, amount)} size={power * 1.2} color="#ffa35b" opacity={0.55} />
-      <pointLight position={vlerp(origin, target, amount)} color="#ff9d55" intensity={power * 4} distance={3} decay={2} />
+      <Glow position={vlerp(origin, target, amount)} size={power * 1.2} color="#ffa35b" opacity={0.28} />
+      <pointLight position={vlerp(origin, target, amount)} color="#ff9d55" intensity={power * 2.5} distance={3} decay={2} />
     </group>
   );
 };
