@@ -35,10 +35,15 @@ export const scene3 = defineScene({
       from: [1.15, 1.55, 2.0],
       to: [0.95, 1.52, 1.7],
       target: [1.6, 1.5, 3.05],
-      targetTo: [-1.8, 1.2, -1.35],
+      targetPath: [
+        [1.6, 1.5, 3.05],
+        [0.6, 1.45, 1.4],
+        [-0.9, 1.3, 0.0],
+        [-1.8, 1.2, -1.35],
+      ],
       fov: 42,
       fovTo: 44,
-      ease: "inOutCubic",
+      ease: "outCubic",
       note: "Turn off the door and find the boy on the bed. The camera moves first and he follows it with his whole body, so standing up becomes the cut.",
     },
     {
