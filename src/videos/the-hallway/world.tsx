@@ -368,14 +368,14 @@ export const World: React.FC = () => {
 
         {/* the figure's little world of light: a cold eye-light and a warm
             backlight, so the silhouette separates from the warm corridor */}
-        <Glow position={[0.3, 1.25, 10.5]} size={2.4} color="#6f9fd8" opacity={0.16} />
-        <Glow position={[0.3, 1.66, 10.6]} size={1.15} color="#a9c9ff" opacity={0.26} />
-        <Glow position={[0.3, 1.66, 10.64]} size={0.52} color="#d6e8ff" opacity={0.18} />
-        <pointLight position={[1.05, 1.7, 10.32]} color="#8fb6ee" intensity={5.5} distance={2.2} decay={2} />
-        <pointLight position={[-0.45, 1.55, 10.32]} color="#7fa8ee" intensity={4.5} distance={2.2} decay={2} />
-        <pointLight position={[0.3, 1.42, 9.35]} color="#6f93c9" intensity={0.9} distance={2.4} decay={2} />
+        <Glow position={[-0.3, 1.25, 10.5]} size={2.4} color="#6f9fd8" opacity={0.16} />
+        <Glow position={[-0.3, 1.66, 10.6]} size={1.15} color="#a9c9ff" opacity={0.26} />
+        <Glow position={[-0.3, 1.66, 10.64]} size={0.52} color="#d6e8ff" opacity={0.18} />
+        <pointLight position={[0.45, 1.7, 10.36]} color="#8fb6ee" intensity={5.5} distance={2.2} decay={2} />
+        <pointLight position={[-1.0, 1.55, 10.42]} color="#7fa8ee" intensity={4.0} distance={2.2} decay={2} />
+        <pointLight position={[-0.3, 1.42, 9.3]} color="#6f93c9" intensity={0.8} distance={2.4} decay={2} />
         {/* warm rim from behind — the corridor panels read as the light source */}
-        <pointLight position={[0.3, 2.05, 11.1]} color="#ffc07a" intensity={4.5} distance={2.6} decay={2} />
+        <pointLight position={[-0.3, 2.05, 11.1]} color="#ffc07a" intensity={4.5} distance={2.6} decay={2} />
         <pointLight position={[-1.15, 1.45, 9.6]} color="#7fa8ee" intensity={3.5} distance={2.6} decay={2} />
         <LightPool position={[0.3, 0.02, 10.2]} width={1.8} depth={2.0} color="#ff8a4a" opacity={0.08} />
 
