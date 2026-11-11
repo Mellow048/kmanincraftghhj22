@@ -5,7 +5,7 @@ import type { AnimName, GaitName, Pose } from "./anim";
 import { blendPose, gaitPose, getPose } from "./anim";
 import type { FaceName } from "./face";
 import { blinkFaceTexture, faceTexture, headSideTexture } from "./face";
-import { clamp } from "./math";
+import { clamp, TAU, wobble } from "./math";
 import type { Vec3 } from "./math";
 import { glowTex, pixelTex, stripeTex } from "./textures";
 
@@ -55,6 +55,12 @@ export type MinecraftAvatarProps = {
 
   /** Deterministic blinking. Great for making a character feel alive in close-up. */
   blink?: boolean;
+  /** Breathing amplitude. 0 = off. Default 1. */
+  breath?: number;
+  /** Idle weight-shift amplitude. 0 = off. Default 1. */
+  weightShift?: number;
+  /** Deterministic eye darts. Default true; turn off for a dead stare. */
+  saccade?: boolean;
   /** Ground contact blob so the character never floats. */
   shadow?: boolean;
   shadowOpacity?: number;
@@ -157,6 +163,9 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   headRoll = 0,
   lookAt,
   blink = false,
+  breath = 1,
+  weightShift = 1,
+  saccade = true,
   shadow = false,
   shadowOpacity = 0.5,
   faceGlow = 0,
@@ -166,6 +175,20 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const clock = time !== undefined ? time : (frame / fps) * animSpeed + phase;
+
+  // Layered secondary motion. A body that only plays a walk cycle reads as a
+  // puppet; a chest that breathes and hips that shift weight read as a person.
+  // Both are damped while travelling so they never fight a gait.
+  const travelling = animDistance !== undefined && isGait(animation);
+  const breathAmt = breath * (travelling ? 0.4 : 1);
+  const shiftAmt = weightShift * (travelling ? 0.18 : 1);
+  const breathWave = Math.sin(clock * TAU * 0.26 + phase * 2.7);
+  const shiftWave = Math.sin(clock * TAU * 0.085 + phase * 1.9);
+
+  // Eye darts: a new fixation roughly once a second, held between saccades.
+  const gazeBucket = Math.floor(clock / 1.05);
+  const gazeNoise = wobble(gazeBucket * 1.31, 7);
+  const gaze: -1 | 0 | 1 = !saccade ? 0 : gazeNoise > 0.62 ? 1 : gazeNoise < -0.62 ? -1 : 0;
 
   const kit = OUTFITS[outfit];
 
@@ -207,11 +230,13 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   // alive; three only recompiles when the map goes null ↔ non-null.
   const blinkClosed = blink && blinkAmount(clock, phase) > 0.35;
   useEffect(() => {
-    const tex = blinkClosed ? blinkFaceTexture(face, { skin, hair }) : faceTexture(face, { skin, hair });
+    const tex = blinkClosed
+      ? blinkFaceTexture(face, { skin, hair })
+      : faceTexture(face, { skin, hair, gaze });
     materials.faceMat.map = tex;
     materials.faceMat.emissiveMap = faceGlow > 0 ? tex : null;
     materials.faceMat.needsUpdate = true;
-  }, [materials, blinkClosed, face, skin, hair, faceGlow]);
+  }, [materials, blinkClosed, face, skin, hair, faceGlow, gaze]);
 
   // Pose
   let pose: Pose;
@@ -254,18 +279,35 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       )}
 
       <group
-        position={[0, HIP + pose.bodyY, 0]}
-        rotation={[pose.bodyPitch, pose.bodyYaw, pose.bodyRoll]}
+        position={[shiftWave * 0.005 * shiftAmt, HIP + pose.bodyY, 0]}
+        rotation={[
+          pose.bodyPitch + breathWave * 0.004 * breathAmt,
+          pose.bodyYaw,
+          pose.bodyRoll + shiftWave * 0.012 * shiftAmt,
+        ]}
       >
         {/* torso */}
         <group rotation={pose.torso}>
-          <mesh castShadow receiveShadow position={[0, 6 * PX, 0]} material={materials.torsoMat}>
+          <mesh
+            castShadow
+            receiveShadow
+            position={[0, 6 * PX + breathWave * 0.003 * breathAmt, 0]}
+            scale={[1, 1 + breathWave * 0.016 * breathAmt, 1]}
+            material={materials.torsoMat}
+          >
             <boxGeometry args={[8 * PX, 12 * PX, 4 * PX]} />
           </mesh>
         </group>
 
         {/* head */}
-        <group position={[0, 12 * PX, 0]} rotation={[pose.head[0] + pitch, pose.head[1] + yaw, pose.head[2] + headRoll]}>
+        <group
+          position={[0, 12 * PX, 0]}
+          rotation={[
+            pose.head[0] + pitch,
+            pose.head[1] + yaw,
+            pose.head[2] + headRoll - shiftWave * 0.008 * shiftAmt,
+          ]}
+        >
           <mesh castShadow receiveShadow position={[0, 4 * PX, 0]} material={[
             materials.rightSideMat,
             materials.leftSideMat,
@@ -279,7 +321,10 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
         </group>
 
         {/* right arm (+X) */}
-        <group position={[6 * PX, 12 * PX, 0]} rotation={pose.armR}>
+        <group
+          position={[6 * PX, 12 * PX, 0]}
+          rotation={[pose.armR[0], pose.armR[1], pose.armR[2] + breathWave * 0.02 * breathAmt]}
+        >
           <mesh castShadow receiveShadow position={[0, -6 * PX, 0]} material={materials.armMat}>
             <boxGeometry args={[4 * PX, 12 * PX, 4 * PX]} />
           </mesh>
@@ -287,7 +332,10 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
         </group>
 
         {/* left arm (-X) */}
-        <group position={[-6 * PX, 12 * PX, 0]} rotation={pose.armL}>
+        <group
+          position={[-6 * PX, 12 * PX, 0]}
+          rotation={[pose.armL[0], pose.armL[1], pose.armL[2] - breathWave * 0.02 * breathAmt]}
+        >
           <mesh castShadow receiveShadow position={[0, -6 * PX, 0]} material={materials.armMat}>
             <boxGeometry args={[4 * PX, 12 * PX, 4 * PX]} />
           </mesh>

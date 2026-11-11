@@ -80,7 +80,7 @@ export const scene3 = defineScene({
         animDistance={walk.distance}
         position={walk.position}
         rotationY={walk.yaw}
-        headYaw={0.15 * (1 - scared)}
+        headYaw={walk.headYaw + 0.15 * (1 - scared)}
         headPitch={0.06}
       />
     );

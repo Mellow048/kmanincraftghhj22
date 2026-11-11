@@ -11,6 +11,16 @@ export const remap = (v: number, a: number, b: number, c: number, d: number) =>
 export const smoothstep = (t: number) => t * t * (3 - 2 * t);
 export const TAU = Math.PI * 2;
 
+/**
+ * Vertical field of view (degrees) for a full-frame lens.
+ *
+ * The sensor is 24mm tall in the vertical 9:16 frame, so `focalMmToFov(35)`
+ * returns ~37.8° — the "house lens" from the camera bible. Shots can be written
+ * in millimetres and converted here instead of guessing degrees.
+ */
+export const focalMmToFov = (mm: number, sensorHeightMm = 24): number =>
+  (2 * Math.atan(sensorHeightMm / (2 * Math.max(1, mm))) * 180) / Math.PI;
+
 /** Smoothly approach a value, frame-rate independent. */
 export const damp = (current: number, target: number, lambda: number, dt: number) =>
   lerp(current, target, 1 - Math.exp(-lambda * dt));

@@ -1,4 +1,5 @@
 import { Bed, Block, Carpet, CeilingLight, Door, DoorFrame, Glow, GodRay, LightPool, Locker, Monitor, Sign, WallClock, WindowUnit } from "../../engine";
+import type { Vec3 } from "../../engine";
 import { Dust, FogCard } from "../../engine/fx";
 import { pixelTex, plankTex } from "../../engine/textures";
 
@@ -45,6 +46,22 @@ const FLICKER: Array<[number, number]> = [
 ];
 
 const wallTex = (color: string, repeat: [number, number]) => pixelTex(color, repeat, { jitter: 0.06 });
+
+/**
+ * Named stage marks. Every scene should place actors and camera targets on a
+ * mark instead of retyping coordinates; if the set moves, one file changes.
+ */
+export const MARKS: Record<string, Vec3> = {
+  bedHead: [-1.8, 0, -2.15],
+  bedSeat: [-1.8, 0, -0.72],
+  bedFoot: [-1.8, 0, 0.25],
+  nightstand: [-0.55, 0, -2.55],
+  window: [2.4, 1.7, 0.35],
+  door: [1.65, 0, 3.0],
+  hallwayStart: [1.2, 0, 4.2],
+  hallwayEnd: [0.1, 0, 12.2],
+  figure: [0.1, 0, 9.4],
+};
 
 export const World: React.FC = () => {
   return (

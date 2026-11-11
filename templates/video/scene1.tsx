@@ -1,5 +1,6 @@
 import { clamp01, defineScene, smoothstep, useTime } from "../../engine";
 import { Kid } from "./actors";
+import { MARKS } from "./world";
 
 /**
  * BEAT 01 — __TITLE__ (0:00–0:03.6)
@@ -23,8 +24,8 @@ export const scene1 = defineScene({
       to: [0.86, 1.62, 1.78],
       target: [-1.72, 1.24, -0.88],
       targetTo: [-1.8, 1.38, -0.72],
-      fov: 52,
-      fovTo: 44,
+      focalLength: 24,
+      focalLengthTo: 30,
       ease: "inOutSine",
       note: "Push in on the boy so the empty half of the bed becomes the second character. The room closes around him.",
     },
@@ -34,6 +35,7 @@ export const scene1 = defineScene({
     const turn = smoothstep(clamp01((t - 1.15) / 0.55));
     return (
       <Kid
+        position={MARKS.bedSeat}
         face={t > 1.9 ? "scared" : "worried"}
         headYaw={-0.08 + turn * 0.5}
         headPitch={0.24 - turn * 0.1}

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import * as THREE from "three";
-import { clamp01, easings, wobble } from "./math";
+import { clamp01, easings, focalMmToFov, wobble } from "./math";
 import type { Vec3 } from "./math";
 import type { Shot } from "./types";
 
@@ -111,8 +111,14 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
     }
   }
 
-  const baseFov = shot.fov ?? 38;
-  const fov = shot.fovTo != null ? baseFov + (shot.fovTo - baseFov) * e : baseFov;
+  // Lens: millimetres win over degrees, so a shot can say "35mm" and keep the
+  // framing legible to a human. See focalMmToFov() for the sensor assumption.
+  const baseFov = shot.focalLength != null ? focalMmToFov(shot.focalLength) : (shot.fov ?? 38);
+  const endFov =
+    shot.focalLength != null
+      ? focalMmToFov(shot.focalLengthTo ?? shot.focalLength)
+      : (shot.fovTo ?? baseFov);
+  const fov = baseFov + (endFov - baseFov) * e;
 
   useFrame(() => {
     camera.position.copy(position);

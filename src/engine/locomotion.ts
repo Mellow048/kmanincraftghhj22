@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import type { AnimName } from "./anim";
-import { clamp01, easings, smoothstep } from "./math";
+import { clamp, clamp01, easings, smoothstep } from "./math";
 import type { EaseName, Vec3 } from "./math";
 
 /**
@@ -29,6 +29,11 @@ export type WalkPathOptions = {
   tail?: number;
   /** Vertical bow in metres, for a gentle rise/fall over the move. */
   arc?: number;
+  /**
+   * Metres ahead on the path the head aims. Gives a character anticipation
+   * before the torso turns. Default 0.7.
+   */
+  lookAhead?: number;
 };
 
 export type WalkState = {
@@ -38,6 +43,11 @@ export type WalkState = {
   distance: number;
   /** Instantaneous ground speed in m/s. */
   speed: number;
+  /**
+   * Head yaw relative to the body, radians. Feed to the avatar's `headYaw` so
+   * the head leads a turn instead of arriving with the shoulders.
+   */
+  headYaw: number;
   /** 0..1 along the whole walk. */
   progress: number;
   moving: boolean;
@@ -104,7 +114,7 @@ export function useWalkPath(options: WalkPathOptions): WalkState {
   const { fps } = useVideoConfig();
   const t = frame / fps;
 
-  const { points, duration, ease = "inOutSine", yaw, delay = 0, tail = 0, arc = 0 } = options;
+  const { points, duration, ease = "inOutSine", yaw, delay = 0, tail = 0, arc = 0, lookAhead = 0.7 } = options;
 
   const { samples, total } = useMemo(() => buildSamples(points, 480), [points]);
 
@@ -132,15 +142,25 @@ export function useWalkPath(options: WalkPathOptions): WalkState {
 
     const facing = yaw !== undefined ? yaw : Math.atan2(now.sample.tangent.x, now.sample.tangent.z);
 
+    // Head-lead: sample the tangent a little further along the path and turn the
+    // head toward it before the body gets there. Damped at rest.
+    const ahead = sampleAt(samples, total, Math.min(total, now.sample.arc + lookAhead));
+    const aheadYaw = Math.atan2(ahead.tangent.x, ahead.tangent.z);
+    let lead = aheadYaw - facing;
+    while (lead > Math.PI) lead -= Math.PI * 2;
+    while (lead < -Math.PI) lead += Math.PI * 2;
+    const headYaw = clamp(lead, -0.55, 0.55) * (moving ? 1 : 0.45);
+
     return {
       position,
       yaw: facing,
       distance: now.sample.arc,
       speed,
+      headYaw,
       progress: now.eased,
       moving,
     };
-  }, [samples, total, t, duration, delay, tail, ease, yaw, arc, fps]);
+  }, [samples, total, t, duration, delay, tail, ease, yaw, arc, fps, lookAhead]);
 }
 
 export type PerformanceStep = {

@@ -196,6 +196,8 @@ export type FaceOptions = {
   hair?: string;
   /** Add per-pixel skin grain so the face does not look like flat vector art. */
   grain?: number;
+  /** Pupil offset: -1 left, 1 right, 0 centre. Gives a held eye-dart. */
+  gaze?: -1 | 0 | 1;
 };
 
 function buildFaceTexture(rowsIn: string[], key: string, options: FaceOptions): THREE.CanvasTexture {
@@ -243,8 +245,16 @@ export function faceTexture(name: FaceName, options: FaceOptions = {}): THREE.Ca
   const skin = options.skin ?? "#e8b78d";
   const hair = options.hair ?? "#4a2e1c";
   const grain = options.grain ?? 0.05;
-  const key = `face|${name}|${skin}|${hair}|${grain}`;
-  return buildFaceTexture(FACES[name] ?? FACES.neutral, key, options);
+  const gaze = options.gaze ?? 0;
+  const key = `face|${name}|${skin}|${hair}|${grain}|${gaze}`;
+  const source = FACES[name] ?? FACES.neutral;
+  // Eyes are 2px wide: swapping white/pupil moves the pupil one pixel and reads
+  // as a glance. Do it per pair so both eyes look the same way.
+  const rows =
+    gaze === 0
+      ? source
+      : source.map((row) => (gaze > 0 ? row.replace(/wp/g, "pw") : row.replace(/pw/g, "wp")));
+  return buildFaceTexture(rows, key, options);
 }
 
 /**

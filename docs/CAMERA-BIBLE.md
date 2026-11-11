@@ -113,6 +113,20 @@ Do not spend 8 seconds establishing. Do not reveal the monster at 19 seconds. Do
 - 48–60: establish, panic, tiny room.
 - 60+: only for a deliberate fish-eye / dream / fall.
 
+### Lenses
+Shots may be written in millimetres instead of degrees. `focalLength` overrides
+`fov`, and `focalLengthTo` gives a slow zoom. The conversion assumes a
+full-frame 24mm sensor height, which is the vertical dimension of the 9:16 frame.
+
+| lens | vertical FOV | use |
+|---|---|---|
+| 24mm | ~53° | establishing, tiny room, panic |
+| 35mm | ~38° | the house lens — most shots |
+| 50mm | ~27° | portrait, reaction, compression |
+| 85mm | ~16° | threat, isolate the face |
+
+A cut should change the lens *and* the position, not just the zoom.
+
 ### Subject placement
 - Eyes in the upper third, not the centre. Leave the lower third for the bed, the floor, the thing approaching.
 - Put a vertical line (door frame, wall seam, window edge) off-centre. Vertical video punishes symmetrical flatness.
@@ -165,7 +179,7 @@ The camera state is a contract:
 
 - `from` = previous scene's last `to` (or last `path` point).
 - `target` = previous scene's last `targetTo` (or last `targetPath` point).
-- `fov` = previous scene's last `fovTo`.
+- `fov` = previous scene's last `fovTo` (or `focalLength` = previous `focalLengthTo`).
 - No hidden teleport between files. Copy the numbers.
 
 If you intentionally cut between scenes, write a `note` that says so and make the cut motivated. The check script cannot see this. The audience can.

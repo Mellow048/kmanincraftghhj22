@@ -29,9 +29,18 @@ export type Shot = {
   /** Multi-point look path, for panning from one subject to another during a move. */
   targetPath?: Vec3[];
 
-  /** Vertical field of view, degrees. Default 38. */
+  /** Vertical field of view, degrees. Default 38. Ignored when `focalLength` is set. */
   fov?: number;
   fovTo?: number;
+
+  /**
+   * Lens focal length in millimetres (full-frame 24mm sensor height).
+   * Overrides `fov`/`fovTo` when present. 24 = wide, 35 = natural,
+   * 50 = portrait compression, 85 = threat. Matches docs/CAMERA-BIBLE.md.
+   */
+  focalLength?: number;
+  /** End focal length for a slow zoom. Defaults to `focalLength`. */
+  focalLengthTo?: number;
 
   /** Easing for the move. Default "inOutCubic". Use "linear" for constant tracking. */
   ease?: EaseName;

@@ -130,6 +130,14 @@ Before actors, build `world.tsx`:
 ### Step 4 — Build the actors
 Keep shared defaults in `actors.tsx` so the kid's height, skin, hair and outfit never drift. The `position` of `MinecraftAvatar` is the feet/ground point. `rotationY=0` faces +Z. 1 unit = 1 metre. A sitting pose must put the hips on the bed, not float above it.
 
+A character is more than a clip:
+
+- `blink` gives deterministic blinks.
+- Breathing and idle weight shift are on by default; dial them with `breath` and `weightShift`.
+- Eye darts are on by default; `saccade={false}` for a dead stare.
+- `useWalkPath` returns `headYaw`; pass it to the avatar so the head leads a turn.
+- `focalLength={35}` on a shot is the same as `fov={38}`, but easier to reason about.
+
 ### Step 5 — Build the scenes
 Each scene:
 

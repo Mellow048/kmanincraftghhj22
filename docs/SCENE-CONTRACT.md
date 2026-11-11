@@ -210,8 +210,14 @@ Use `path`/`targetPath` for a fly-through. The path is sampled with Catmull-Rom;
   faceGlow={0.85}
   rim={0.5}
   headPitch={0.1}
+  blink
 />
 ```
+
+Secondary motion is automatic: the chest breathes, the hips shift weight when
+idle, and the eyes dart. Damp it with `breath={0.5}` / `weightShift={0}` and
+disable the darts with `saccade={false}`. Walking actors should take their head
+yaw from `useWalkPath().headYaw`, not a hand-authored constant.
 
 - `position` is the ground/feet point, not the centre.
 - `rotationY=0` faces +Z; `Math.PI` faces the camera if the camera is at lower Z.

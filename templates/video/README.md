@@ -12,7 +12,9 @@
 
 The template is a working night-ward set, not a blockout. Keep the structure:
 
-- `world.tsx` — the set, lights and atmosphere.
+- `world.tsx` — the set, lights, atmosphere and the `MARKS` registry. Put every
+  actor position and camera target on a named mark so scenes never retype
+  coordinates.
 - `actors.tsx` — shared cast defaults.
 - `scene1.tsx` — one beat, one shot list, one performance.
 - `film.tsx` — metadata and scene order.

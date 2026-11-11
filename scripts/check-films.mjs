@@ -9,6 +9,7 @@
  *   - world has GodRay, LightPool, Glow and Dust
  *   - doors have frames, beds have bedding
  *   - no 2D overlays, no postprocessing package
+ *   - no Math.random / wall-clock time (renders must be deterministic)
  *   - total runtime <= 21s
  *
  * It cannot check whether the film is beautiful. A human still has to look.
@@ -41,6 +42,42 @@ if (filmDirs.length === 0) {
 
 const TWO_D = /<(div|img|video|canvas|AbsoluteFill)\b|backgroundImage|linear-gradient\(/i;
 const POST_FIELDS = /\b(vignette|grain|chromatic|toneMapping)\b/;
+
+/**
+ * Rendering is frame-deterministic: the same frame must produce the same image
+ * on every machine. Wall-clock time and Math.random break that, so they are
+ * banned in engine and film source. Comments are stripped first.
+ */
+const DETERMINISM = /\bMath\.random\s*\(|\bDate\.now\s*\(|\bperformance\.now\s*\(/;
+
+function stripComments(source) {
+  return source
+    .replace(/\/\*[\s\S]*?\*\//g, (block) => block.replace(/[^\n]/g, " "))
+    .replace(/(^|[^:\\])\/\/.*$/gm, "$1");
+}
+
+function scanDeterminism(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      scanDeterminism(full);
+    } else if (/\.(ts|tsx)$/.test(entry.name)) {
+      const rel = path.relative(root, full);
+      const lines = stripComments(fs.readFileSync(full, "utf8")).split("\n");
+      lines.forEach((line, index) => {
+        if (DETERMINISM.test(line)) {
+          fail(
+            `${rel}:${index + 1}: non-deterministic call. Use hashString/mulberry32/wobble instead of Math.random, Date.now or performance.now.`,
+          );
+        }
+      });
+    }
+  }
+}
+
+scanDeterminism(path.join(root, "src", "engine"));
+scanDeterminism(videosDir);
 
 for (const slug of filmDirs) {
   const dir = path.join(videosDir, slug);
@@ -160,6 +197,21 @@ for (const slug of filmDirs) {
       const note = noteMatch ? noteMatch[1] ?? noteMatch[2] ?? noteMatch[3] : "";
       if (!note || note.trim().length < 24) {
         fail(`${label}: note must explain the story reason (24+ chars)`);
+      }
+
+      const focal = shot.body.match(/\bfocalLength:\s*([\d.]+)/);
+      if (focal) {
+        const mm = Number(focal[1]);
+        if (mm < 8 || mm > 200) {
+          fail(`${label}: focalLength ${mm}mm is outside the supported 8–200mm range`);
+        }
+      }
+      const focalTo = shot.body.match(/\bfocalLengthTo:\s*([\d.]+)/);
+      if (focalTo) {
+        const mm = Number(focalTo[1]);
+        if (mm < 8 || mm > 200) {
+          fail(`${label}: focalLengthTo ${mm}mm is outside the supported 8–200mm range`);
+        }
       }
 
       if (!/(^|\n)\s*from:\s*\[/m.test(shot.body)) {
