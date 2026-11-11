@@ -18,7 +18,7 @@ export const scene5 = defineScene({
       at: 0,
       dur: 3.2,
       from: [0.4, 1.46, 6.2],
-      to: [0.38, 1.45, 6.62],
+      to: [0.38, 1.45, 6.45],
       target: [0.0, 1.05, 10.15],
       targetTo: [0.0, 1.03, 10.1],
       fov: 40,
@@ -31,8 +31,8 @@ export const scene5 = defineScene({
     {
       at: 3.2,
       dur: 1.4,
-      from: [0.38, 1.45, 6.62],
-      to: [0.4, 1.45, 6.78],
+      from: [0.38, 1.45, 6.45],
+      to: [0.4, 1.45, 6.55],
       target: [0.0, 1.03, 10.1],
       targetTo: [0.0, 1.01, 10.05],
       fov: 39,
@@ -43,7 +43,7 @@ export const scene5 = defineScene({
   ],
   Component: () => {
     const t = useTime();
-    const advance = clamp01((t - 1.7) / 1.2) * 0.18;
+    const advance = clamp01((t - 1.7) / 1.2) * 0.15;
     const perf = usePerformance([
       { at: 0, clip: "idle", blend: 0 },
       { at: 1.7, clip: "walk", blend: 0.25, speed: 0.6 },

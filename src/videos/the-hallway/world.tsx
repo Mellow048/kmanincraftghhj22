@@ -358,7 +358,7 @@ export const World: React.FC = () => {
           flicker={FLICKER}
           dieAt={LAMP_DEATH}
         />
-        <CeilingLight position={[0, 2.98, 12.2]} size={[0.9, 0.2]} color="#ffe9c9" lightColor="#ffdca8" intensity={8} distance={7} flicker={FLICKER} />
+        <CeilingLight position={[0, 2.98, 12.2]} size={[0.9, 0.2]} color="#ffe9c9" lightColor="#ffdca8" intensity={8} distance={7} flicker={FLICKER} dieAt={LAMP_DEATH + 0.2} />
 
         {/* warm pools under the panels, so the floor has a light rhythm */}
         <LightPool position={[0, 0.02, 4.5]} width={2.6} depth={2.4} color="#ffb469" opacity={0.14} />
