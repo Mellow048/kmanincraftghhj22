@@ -2,6 +2,10 @@
 
 The narration is not a description of the render. It is the other half of the shot. The image shows it; the voice makes it mean something.
 
+> **Voice first.** The words themselves are governed by
+> `docs/NARRATION-RULES.md`. Read it before writing a line. This file covers
+> structure, sync and the beat map; that file covers how the voice must sound.
+
 Read `AGENTS.md` and `docs/CAMERA-BIBLE.md` first.
 
 ---
@@ -44,7 +48,7 @@ The voice does not need a line for every shot. Silence is a line.
 ## 3. Rules
 
 1. **Present tense.** "He hears it." Not "he heard it."
-2. **Short sentences.** 4–12 words. One idea per line.
+2. **Short sentences.** 3–10 words. Twelve is the hard ceiling. One idea per line.
 3. **Concrete nouns.** Door, hallway, schedule, window, bed, light. Not "a sense of dread".
 4. **No exposition dumps.** The audience can see the room; do not describe the wallpaper.
 5. **The line and the image match.** If the line says "the door is open", the door is in frame and open.
@@ -145,6 +149,7 @@ The narration is 5 lines in 20 seconds. The longest silence is the reveal. That 
 
 - [ ] Hook in the first 1.5 seconds.
 - [ ] One story, one turn, one button.
+- [ ] One teller, one tense, plain words. No action list, no wise-old-man voice. See `docs/NARRATION-RULES.md`.
 - [ ] Every line is under 12 words.
 - [ ] Every line is paid off by the image.
 - [ ] No greetings, no logos, no exposition dump.

@@ -16,10 +16,13 @@ The template is a working night-ward set, not a blockout. Keep the structure:
   actor position and camera target on a named mark so scenes never retype
   coordinates.
 - `actors.tsx` — shared cast defaults.
+- `characters.tsx` — the two-lead + reusable-extra cast template, copied from
+  `templates/cast/`. Change `DUO` at the top to recast. See
+  `templates/cast/README.md`.
 - `scene1.tsx` — one beat, one shot list, one performance.
 - `film.tsx` — metadata and scene order.
 
-Then read `AGENTS.md`, `docs/CAMERA-BIBLE.md`, `docs/STYLE.md` and
-`docs/SCENE-CONTRACT.md` before adding scenes.
+Then read `AGENTS.md`, `docs/NARRATION-RULES.md`, `docs/CAMERA-BIBLE.md`,
+`docs/STYLE.md` and `docs/SCENE-CONTRACT.md` before adding scenes.
 
 Do not render on the user's laptop without explicit permission.

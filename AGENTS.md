@@ -7,13 +7,14 @@ This file is the hard contract. Read it before touching a film. Then read:
 1. `docs/CAMERA-BIBLE.md` — the Zack D camera grammar, translated to 9:16 Minecraft.
 2. `docs/STYLE.md` — the lighting, palette and copy-paste scenery recipes.
 3. `docs/SCENE-CONTRACT.md` — the exact scene/shot/world API.
-4. `docs/NARRATION.md` — hook-first writing and the 20-second beat map.
+4. `docs/NARRATION-RULES.md` — the voice contract: plain words, one teller, no robotic narration.
+5. `docs/NARRATION.md` — hook-first writing and the 20-second beat map.
 
 If a rule here conflicts with a clever idea, the rule wins. If the idea is genuinely better, change the rule in this file first, then build it.
 
 ---
 
-## 1. The twelve hard rules
+## 1. The thirteen hard rules
 
 ### 1. One film = one folder = one continuous world
 Every video lives in `src/videos/<slug>/` and contains `world.tsx`, `film.tsx`, and one TSX file per scene. The world is mounted once for the whole film by `defineFilm`. Scenes are Remotion `<Sequence layout="none">` children. Do not create a new `<ThreeCanvas>` per scene. Do not duplicate the room in two scene files.
@@ -82,6 +83,9 @@ Add at least one of each: a `GodRay`, a `LightPool`, a `Glow`, and `Dust` in the
 ### 12. The short is ~20 seconds, not a scene from a feature
 Target 18–20 seconds. Hard ceiling 21 seconds. 4–7 scenes. One idea, one turn, one button. If you cannot say the story in one sentence, cut it.
 
+### 13. The voice sounds like a person, not a summary
+Write every line the way you would say it to a 9-year-old. One teller, one tense. Short, concrete sentences. No action lists ("he stands, he walks, he opens the door"), no wise-old-man cadence ("and so it came to pass"), no fancy analogies, no AI-summary lines ("this wasn't just a door, it was a warning"). The image shows the action; the voice says what it means, what it costs, or what happens next. Read `docs/NARRATION-RULES.md` before writing a word.
+
 ---
 
 ## 2. The 20-second shape
@@ -110,6 +114,8 @@ Fill this in for the film:
 
 If a row has no "why", the shot is not ready.
 
+Write the narration in the same table. Read `docs/NARRATION-RULES.md` first: one teller, one tense, plain words, 3–10 words a line, no play-by-play.
+
 ### Step 2 — Scaffold
 ```bash
 npm run new -- "The Title"
@@ -137,6 +143,15 @@ A character is more than a clip:
 - Eye darts are on by default; `saccade={false}` for a dead stare, or pin a look with `gaze={-1 | 0 | 1}`.
 - `useWalkPath` returns `headYaw`; pass it to the avatar so the head leads a turn.
 - `focalLength={35}` on a shot is the same as `fov={38}`, but easier to reason about.
+
+#### Cast a duo, not a crowd
+
+Story films start from `characters.tsx` (copied from `templates/cast/`). It gives you two leads and a reusable `Extra`.
+
+- The two leads must contrast in at least three ways: want, status, silhouette, palette, posture.
+- The extra shares the same face and body but changes skin, hair and outfit. Use it for crowds and background roles.
+- Never give an extra a want, a close-up or a line. If an extra starts to matter, promote them to a lead.
+- Pick a preset (`noobVsPro`, `richVsPoor`, `bullyVsNerd`) or write your own. Read `templates/cast/README.md`.
 
 ### Step 5 — Build the scenes
 Each scene:
@@ -180,6 +195,7 @@ If any answer is no, fix it before calling it done.
 src/videos/<slug>/
   world.tsx       the set: geometry, lights, atmosphere, static props
   actors.tsx      shared cast defaults (optional but recommended)
+  characters.tsx  duo + extra cast template (optional; copied by npm run new)
   scene1.tsx      beat 1: shots + performance
   scene2.tsx      beat 2
   ...
@@ -259,6 +275,8 @@ Keep shadows on the key only. Point lights are expensive; use 4–7, not 20. A g
 | Black monster | A featureless silhouette | Dark charcoal albedo + rim/kicker + eye glints + back halo |
 | Empty walls | Clean planes | Baseboards, seams, vents, signs, clocks, posters, scuffs |
 | 2D title card | HTML text over the canvas | 3D `Sign` or a diegetic object in the set |
+| "He does this. She does that." | A play-by-play of the shot list | Say what the action means or what it costs |
+| Wise-old-man voice | "And so it came to pass..." | "He opened the door." |
 | "Good enough" | A blockout with a fade | One more detail pass on the hero frame; then check the next |
 
 ---
@@ -269,6 +287,7 @@ A film is not done until all of these are true:
 
 - [ ] Hook lands in the first 1.5 seconds.
 - [ ] The narration and the image say the same thing.
+- [ ] Every narration line passes the 9-year-old test: one teller, plain words, no action list, no banned phrase.
 - [ ] Every scene has camera or actor motion.
 - [ ] No view is static for more than 5 seconds; a longer shot is a real path move.
 - [ ] No more than 5 shots in a 20-second film.
@@ -278,6 +297,7 @@ A film is not done until all of these are true:
 - [ ] Every door has a frame; every bed is a bed; every window has a sill/curtain/light.
 - [ ] Foreground, midground and background are all doing work.
 - [ ] Faces are 8×8 pixel maps, never realistic.
+- [ ] The two leads contrast; extras are background, not leads.
 - [ ] No 2D overlays, HTML, images or postprocessing.
 - [ ] Total runtime ≤ 21 seconds.
 - [ ] `npm run typecheck` passes.

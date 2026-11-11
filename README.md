@@ -49,18 +49,19 @@ This copies `templates/video/` into `src/videos/the-title/` and adds it to `src/
 
 ```
 src/videos/the-title/
-  world.tsx     the set, lights, atmosphere
-  actors.tsx    shared cast defaults
-  scene1.tsx    the first beat
-  film.tsx      metadata + scene order
+  world.tsx       the set, lights, atmosphere
+  actors.tsx      shared cast defaults
+  characters.tsx  two-lead duo + reusable extra cast
+  scene1.tsx      the first beat
+  film.tsx        metadata + scene order
 ```
 
 Then:
 
-1. Read `AGENTS.md`, `docs/CAMERA-BIBLE.md`, `docs/STYLE.md`, `docs/SCENE-CONTRACT.md`, `docs/NARRATION.md`.
+1. Read `AGENTS.md`, `docs/NARRATION-RULES.md`, `docs/CAMERA-BIBLE.md`, `docs/STYLE.md`, `docs/SCENE-CONTRACT.md`, `docs/NARRATION.md`.
 2. Write the beat sheet before the code.
 3. Build `world.tsx` first: architecture, props, three lights, `GodRay`, `LightPool`, `Glow`, `Dust`.
-4. Build the actors and scenes. Copy `scene1.tsx` for each beat.
+4. Build the actors and scenes. For a story film, start from `characters.tsx` and cast a duo. Copy `scene1.tsx` for each beat.
 5. Match every scene boundary exactly: `to` → next `from`, `targetTo` → next `target`, `fovTo` → next `fov`.
 6. Run `npm run typecheck && npm run check`.
 7. Ask for permission before rendering.
@@ -75,6 +76,7 @@ The full contract is in `AGENTS.md`. The short version:
 - **One world.** `World` is mounted once per film. Scenes are Remotion sequences, not separate canvases.
 - **The camera never teleports.** Copy the exact end values into the next scene's start.
 - **Hook in 1.5s.** The first line and the first image arrive together.
+- **Talk like a person.** One teller, plain words, 3–10 words a line. No action lists, no wise-old-man voice, no AI summaries. See `docs/NARRATION-RULES.md`.
 - **Motion in every scene.** A new view every 4–5s; a continuous path move may run 5–7s.
 - **Cuts are earned.** 3–5 shots in a 20s film. No cut spam.
 - **Detailed sets.** A box is not a door, a bed or a locker. Use the engine props and add hardware, trim, seams, vents, signs, bedding and light spill.
@@ -163,7 +165,9 @@ A scene is just a shot list plus a `Component`. It does not own the room.
 
 ### The actors
 
-`MinecraftAvatar` is a classic 1.8m Minecraft rig with split thighs/shins and knee joints (so sitting is not a plank), procedural pixel textures, 12 outfit sets, 8×8 face maps, face glow, rim light and head/hand animation. `position` is the feet/ground point. `rotationY=0` faces +Z. 1 unit = 1 metre.
+`MinecraftAvatar` is a classic 1.8m Minecraft rig with split thighs/shins and knee joints (so sitting is not a plank), procedural pixel textures, six outfit presets, 8×8 face maps, face glow, rim light and head/hand animation. `position` is the feet/ground point. `rotationY=0` faces +Z. 1 unit = 1 metre.
+
+Story films also get `characters.tsx`, a ready-made duo + extra cast. The two leads contrast in want, status, silhouette, palette and posture. The extra keeps the same face and body while you change skin, hair and outfit. See `templates/cast/README.md`.
 
 ---
 
@@ -173,7 +177,9 @@ A scene is just a shot list plus a `Component`. It does not own the room.
 - `docs/CAMERA-BIBLE.md` — Zack D camera grammar for 9:16 Minecraft: shot types, moves, framing, cuts, continuity, worked example.
 - `docs/STYLE.md` — palette, three-light recipe, materials, detail hierarchy, copy-paste scenery recipes.
 - `docs/SCENE-CONTRACT.md` — exact `film.tsx` / `world.tsx` / `sceneN.tsx` API.
+- `docs/NARRATION-RULES.md` — the voice contract: plain words, one teller, no robotic narration.
 - `docs/NARRATION.md` — hook-first writing, 20-second beat map, line bank, sync.
+- `templates/cast/README.md` — how to cast a two-lead duo and repeat an extra.
 
 ---
 

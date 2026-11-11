@@ -12,6 +12,7 @@ Read `AGENTS.md`, `docs/CAMERA-BIBLE.md` and `docs/STYLE.md` first.
 src/videos/<slug>/
   world.tsx
   actors.tsx
+  characters.tsx   optional duo + extra cast (copied from templates/cast)
   scene1.tsx
   scene2.tsx
   ...

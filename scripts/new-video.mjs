@@ -37,6 +37,7 @@ const camel = slug
 
 const videoDir = path.join(root, "src", "videos", slug);
 const templateDir = path.join(root, "templates", "video");
+const castTemplatePath = path.join(root, "templates", "cast", "characters.tsx");
 
 if (fs.existsSync(videoDir)) {
   console.error(`src/videos/${slug}/ already exists. Pick another title or delete it first.`);
@@ -63,6 +64,20 @@ for (const file of templateFiles) {
     .replaceAll("__SLUG__", slug)
     .replaceAll("__CAMEL__", camel);
   fs.writeFileSync(path.join(videoDir, file), next);
+}
+
+// The duo + extra cast template travels with every new film. It is a separate
+// folder because it is useful to story films, not just the night-ward template.
+let copied = templateFiles.length;
+if (fs.existsSync(castTemplatePath)) {
+  const source = fs.readFileSync(castTemplatePath, "utf8");
+  const next = source
+    .replaceAll("__TITLE__", codeTitle)
+    .replaceAll("__ID__", slug)
+    .replaceAll("__SLUG__", slug)
+    .replaceAll("__CAMEL__", camel);
+  fs.writeFileSync(path.join(videoDir, "characters.tsx"), next);
+  copied += 1;
 }
 
 // --- register the film -----------------------------------------------------
@@ -104,13 +119,15 @@ registry = registry.replace(filmsRe, (_full, inner) => {
 
 fs.writeFileSync(registryPath, registry);
 
-console.log(`Created src/videos/${slug}/ (${templateFiles.length} files).`);
+console.log(`Created src/videos/${slug}/ (${copied} files).`);
 console.log(`Registered ${camel} in src/registry.ts.`);
 console.log("");
 console.log("Next:");
+console.log("  0. Write the narration first: docs/NARRATION-RULES.md.");
 console.log("  1. Build world.tsx: set, lights, GodRay/LightPool/Glow/Dust.");
-console.log("  2. Copy scene1.tsx to scene2.tsx... and add them to film.tsx.");
-console.log("  3. Match the camera across every scene boundary.");
-console.log("  4. npm run typecheck && npm run check");
+console.log("  2. Cast the duo in characters.tsx: two leads who contrast, extras repeat.");
+console.log("  3. Copy scene1.tsx to scene2.tsx... and add them to film.tsx.");
+console.log("  4. Match the camera across every scene boundary.");
+console.log("  5. npm run typecheck && npm run check");
 console.log("");
 console.log("Do not render on the user's laptop without explicit permission.");
