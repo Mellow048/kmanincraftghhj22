@@ -9,7 +9,7 @@ import { MinecraftAvatar } from "../../engine";
  * `blendTime`) straight through, so a scene can drive real travel without
  * re-implementing the avatar.
  */
-export const KID_SEAT: Vec3 = [-1.8, 0, -1.35];
+export const KID_SEAT: Vec3 = [-1.25, 0, -1.35];
 export const KID_END: Vec3 = [1.72, 0, 4.35];
 export const FIGURE_SPOT: Vec3 = [-0.3, 0, 10.15];
 
