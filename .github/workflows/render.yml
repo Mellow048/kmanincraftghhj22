@@ -1,5 +1,12 @@
 name: Render short
 
+# Renders one film on GitHub's machines, never on the owner's laptop.
+#
+# A long film is split into frame ranges that render side by side (one runner
+# each) and are joined at the end, so three minutes of film takes about as long
+# as twenty seconds. A short stays in one piece. The split is decided by
+# scripts/render-plan.mjs.
+
 on:
   workflow_dispatch:
     inputs:
@@ -7,27 +14,52 @@ on:
         description: "Remotion composition id"
         required: true
         default: "the-hallway"
+      scale:
+        description: "Size. 1 = the film's own size (1080x1920 for most). 0.75 = 810x1440, 0.5 = 540x960: quicker, for a review copy"
+        required: false
+        type: choice
+        default: "1"
+        options: ["1", "0.75", "0.5", "0.25"]
       commit_to:
-        description: "Optional renders/<name>.mp4 destination; commit the MP4 to this non-main branch (for sandboxes that cannot reach release assets)"
+        description: "Optional renders/<name>.mp4: also commit a copy to this non-main branch (for sandboxes that cannot reach release assets)"
         required: false
         type: string
         default: ""
-      scale:
-        description: "Output scale, 0.25 to 1. Leave at 1 for a 20-second short. A three-minute 1080x1920 film: 0.667 gives 720x1280 in about a third of the time"
+      commit_max_mb:
+        description: "Size limit of the committed copy in MB (5-95). A bigger render is re-encoded to fit; the release keeps the full-quality file"
         required: false
         type: string
-        default: "1"
+        default: "45"
 
 permissions:
   contents: write
 
 jobs:
-  render:
+  plan:
+    name: Check and plan
     runs-on: ubuntu-latest
-    # A three-minute story film is 5,300 frames of software WebGL. Twenty-second shorts finish in a few minutes.
-    timeout-minutes: 180
+    timeout-minutes: 20
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      chunks: ${{ steps.plan.outputs.chunks }}
+      frames: ${{ steps.plan.outputs.frames }}
+      size: ${{ steps.plan.outputs.size }}
 
     steps:
+      - name: Check the inputs
+        env:
+          DESTINATION: ${{ inputs.commit_to }}
+          MAX_MB: ${{ inputs.commit_max_mb }}
+        run: |
+          case "$DESTINATION" in
+            ""|renders/*.mp4) ;;
+            *) echo "commit_to must be renders/<name>.mp4, got '$DESTINATION'" >&2; exit 1 ;;
+          esac
+          case "$MAX_MB" in
+            [5-9]|[1-8][0-9]|9[0-5]) ;;
+            *) echo "commit_max_mb must be a whole number from 5 to 95, got '$MAX_MB'" >&2; exit 1 ;;
+          esac
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -43,62 +75,174 @@ jobs:
       - name: Verify contract
         run: npm run typecheck && npm run check
 
-      - name: Ensure ffmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-          ffmpeg -version | head -1
-
-      - name: Render MP4
+      - name: Split the film into chunks
+        id: plan
         env:
           COMPOSITION: ${{ inputs.composition }}
           SCALE: ${{ inputs.scale }}
+        run: node scripts/render-plan.mjs "$COMPOSITION" --scale "$SCALE"
+
+  render:
+    name: Frames ${{ matrix.from }}-${{ matrix.to }}
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: true
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # PCM sound in a .mov: the chunks then join without a click or a gap.
+      - name: Render frames ${{ matrix.from }}-${{ matrix.to }}
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          SCALE: ${{ inputs.scale }}
+          INDEX: ${{ matrix.index }}
+          FROM: ${{ matrix.from }}
+          TO: ${{ matrix.to }}
         run: |
-          case "$SCALE" in
-            1|0.[2-9]|0.[2-9][0-9]|0.[2-9][0-9][0-9]) ;;
-            *) echo "scale must be a number from 0.25 to 1, got '$SCALE'" >&2; exit 1 ;;
-          esac
-          npx remotion render src/index.ts "$COMPOSITION" "out/${COMPOSITION}-720p.mp4" \
-            --codec=h264 --crf=20 --concurrency=4 --gl=swangle --scale="$SCALE"
+          npx remotion render src/index.ts "$COMPOSITION" "out/chunk-$INDEX.mov" \
+            --frames="$FROM-$TO" --scale="$SCALE" \
+            --codec=h264 --crf=20 --audio-codec=pcm-16 --enforce-audio-track \
+            --concurrency=4 --gl=swangle
+
+      - name: Hand the chunk to the join job
+        uses: actions/upload-artifact@v4
+        with:
+          name: chunk-${{ matrix.index }}
+          path: out/chunk-${{ matrix.index }}.mov
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+  deliver:
+    name: Join and deliver
+    needs: [plan, render]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Only for the ffmpeg that ships with Remotion: the same one that made the chunks.
+      - name: Install
+        run: npm ci
+
+      - name: Collect the chunks
+        uses: actions/download-artifact@v4
+        with:
+          pattern: chunk-*
+          path: chunks
+          merge-multiple: true
+
+      - name: Join the chunks
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          CHUNKS: ${{ needs.plan.outputs.chunks }}
+          FRAMES: ${{ needs.plan.outputs.frames }}
+        run: |
+          mkdir -p out
+          found=$(ls chunks/chunk-*.mov | wc -l)
+          if [ "$found" -ne "$CHUNKS" ]; then
+            echo "Expected $CHUNKS chunks, found $found" >&2; exit 1
+          fi
+          for file in $(ls chunks/chunk-*.mov | sort); do
+            echo "file '$PWD/$file'"
+          done > chunks/list.txt
+          npx remotion ffmpeg -hide_banner -loglevel error -y -f concat -safe 0 -i chunks/list.txt \
+            -c:v copy -c:a aac -b:a 192k -movflags +faststart "out/$COMPOSITION.mp4"
+          joined=$(npx remotion ffprobe -v error -select_streams v:0 -count_packets \
+            -show_entries stream=nb_read_packets -of csv=p=0 "out/$COMPOSITION.mp4" | tr -dc '0-9')
+          if [ "$joined" -ne "$FRAMES" ]; then
+            echo "The joined film has $joined frames, the composition has $FRAMES" >&2; exit 1
+          fi
+          ls -la "out/$COMPOSITION.mp4"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ inputs.composition }}-720p-mp4"
-          path: "out/${{ inputs.composition }}-720p.mp4"
+          name: "${{ inputs.composition }}-mp4"
+          path: "out/${{ inputs.composition }}.mp4"
           retention-days: 30
+          compression-level: 0
 
       # Actions' artifact host is not accessible in some sandboxes. A requested
-      # reference is delivered inside the repository instead of only as a URL.
-      - name: Commit the MP4 to the current branch
+      # render is delivered inside the repository instead of only as a URL.
+      # GitHub refuses files over 100 MB, so a big render is re-encoded to fit.
+      - name: Commit a copy to the current branch
         if: ${{ inputs.commit_to != '' && github.ref_name != 'main' }}
         env:
           COMPOSITION: ${{ inputs.composition }}
           DESTINATION: ${{ inputs.commit_to }}
+          MAX_MB: ${{ inputs.commit_max_mb }}
           REF_NAME: ${{ github.ref_name }}
+          SIZE: ${{ needs.plan.outputs.size }}
         run: |
-          case "$DESTINATION" in
-            renders/*.mp4) ;;
-            *) echo "Destination must be renders/<name>.mp4" >&2; exit 1 ;;
-          esac
+          master="out/$COMPOSITION.mp4"
+          copy="out/copy-to-commit.mp4"
+          note="$SIZE"
+          if [ "$(stat -c %s "$master")" -le $((MAX_MB * 1024 * 1024)) ]; then
+            cp "$master" "$copy"
+          else
+            seconds=$(npx remotion ffprobe -v error -show_entries format=duration -of csv=p=0 "$master" | tr -dc '0-9.')
+            video_k=$(awk -v mb="$MAX_MB" -v s="$seconds" 'BEGIN { printf "%d", mb * 8192 * 0.94 / s - 128 }')
+            echo "The render is over $MAX_MB MB: re-encoding a copy at ${video_k}k, at most 720 wide."
+            npx remotion ffmpeg -hide_banner -loglevel error -y -i "$master" \
+              -vf "scale='min(720,iw)':-2" -c:v libx264 -preset medium \
+              -b:v "${video_k}k" -maxrate "$((video_k * 3 / 2))k" -bufsize "$((video_k * 3))k" \
+              -c:a aac -b:a 128k -movflags +faststart "$copy"
+            note="$SIZE master, re-encoded to fit $MAX_MB MB"
+          fi
+          ls -la "$copy"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p "$(dirname "$DESTINATION")"
-          cp "out/${COMPOSITION}-720p.mp4" "$DESTINATION"
-          git add -f -- "$DESTINATION"
-          git commit -m "Deliver ${COMPOSITION} render"
-          git push origin "HEAD:${REF_NAME}"
+          # The branch may have moved while the film rendered: commit on top of its newest tip.
+          for attempt in 1 2 3; do
+            git fetch --quiet --depth=1 origin "$REF_NAME"
+            git checkout --quiet --detach FETCH_HEAD
+            mkdir -p "$(dirname "$DESTINATION")"
+            cp "$copy" "$DESTINATION"
+            git add -f -- "$DESTINATION"
+            if git diff --cached --quiet; then
+              echo "The branch already has this exact file."; exit 0
+            fi
+            git commit --quiet -m "Deliver ${COMPOSITION} render (${note})"
+            if git push origin "HEAD:refs/heads/${REF_NAME}"; then exit 0; fi
+            echo "Push refused (attempt $attempt); trying again on the new tip."
+            sleep 5
+          done
+          exit 1
 
       - name: Publish release asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "render-720p-${{ github.run_number }}"
-          name: "${{ inputs.composition }} — GitHub 720p test render ${{ github.run_number }}"
+          tag_name: "render-${{ github.run_number }}"
+          target_commitish: ${{ github.sha }}
+          name: "${{ inputs.composition }} — render ${{ github.run_number }} (${{ needs.plan.outputs.size }})"
           body: |
-            Rendered automatically by GitHub Actions at 720x1280.
+            Rendered automatically by GitHub Actions.
 
             - Composition: `${{ inputs.composition }}`
-            - Resolution: 720x1280 (test render)
+            - Size: ${{ needs.plan.outputs.size }}, ${{ needs.plan.outputs.frames }} frames in ${{ needs.plan.outputs.chunks }} chunk(s)
             - Commit: `${{ github.sha }}`
-          files: "out/${{ inputs.composition }}-720p.mp4"
+          files: "out/${{ inputs.composition }}.mp4"
           token: ${{ secrets.GITHUB_TOKEN }}

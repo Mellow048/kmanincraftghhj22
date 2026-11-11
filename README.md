@@ -220,8 +220,8 @@ Give it charcoal albedo (`skin="#171d2a"`, `outfit="shadow"`), `rim={0.5}`, a ba
 
 ## Render in the cloud (GitHub Actions)
 
-Rendering stays off the user's laptop. The `Render short` workflow runs on a
-GitHub-hosted runner, uploads the MP4 as an artifact and attaches it to a
+Rendering stays off the user's laptop. The `Render short` workflow runs on
+GitHub-hosted runners, uploads the MP4 as an artifact and attaches it to a
 GitHub Release.
 
 1. Push the workflow to `main`.
@@ -237,16 +237,22 @@ gh run watch
 The workflow uses `npm ci` and Remotion's `swangle` software WebGL renderer. It
 does not need a GPU or any secrets beyond the built-in `GITHUB_TOKEN`.
 
-A three-minute topic film is 5,300 frames. Render it smaller with `scale`, and
-have the MP4 committed to the branch you run it from with `commit_to`:
+A three-minute topic film is 5,300 frames. The workflow splits a long film into
+frame ranges, renders them side by side on separate runners and joins them, so
+it takes minutes, not hours. A 20-second short stays in one piece.
 
 ```bash
 gh workflow run render.yml --ref <branch> \
-  -f composition=in-this-town-monster-egg -f scale=0.667 \
+  -f composition=in-this-town-monster-egg \
   -f commit_to=renders/in-this-town-monster-egg.mp4
 ```
 
-`scale=0.667` turns 1080×1920 into 720×1280. The job may run for up to three hours.
+| Input | |
+|---|---|
+| `composition` | The film id |
+| `scale` | `1` (the film's own size), `0.75`, `0.5` or `0.25`. Other values do not give whole pixels and Remotion refuses them |
+| `commit_to` | Optional `renders/<name>.mp4`. Also commits a copy to the branch the workflow ran on (never `main`) |
+| `commit_max_mb` | Size limit of that committed copy, default 45. A bigger render is re-encoded to fit. The release always has the full-quality file |
 
 ---
 

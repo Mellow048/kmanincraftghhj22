@@ -168,5 +168,13 @@ frame a second at half size on two cores, so budget an hour and more.
 npx remotion render src/index.ts <film> renders/<film>-preview-540p.mp4 --scale=0.5 --crf=25   # a review copy
 ```
 
-For full size use the **Render short** workflow on GitHub (`composition`, optional `scale`, and `commit_to` to have
-the MP4 committed to the branch). Its time limit is three hours.
+For the real thing use the **Render short** workflow on GitHub. It splits a long film into about a dozen frame
+ranges (`scripts/render-plan.mjs`), renders each on its own runner, and joins them: the whole film in the time one
+chunk takes.
+
+```bash
+gh workflow run render.yml --ref <branch> -f composition=<film> -f commit_to=renders/<film>.mp4
+```
+
+`scale` must be `1`, `0.75`, `0.5` or `0.25`. Remotion refuses a scale that does not give whole pixels (0.667 does not).
+The full-quality MP4 goes to the repo's Releases; `commit_to` also puts a copy of at most 45 MB on the branch.
