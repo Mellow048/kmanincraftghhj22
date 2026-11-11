@@ -34,6 +34,8 @@ The first line is an action. The second line is the turn. The voice says what th
 
 **One action line is allowed when it is a decision, not choreography.** "He opened the door" is a decision. "He stood, walked, reached, turned the handle and pulled" is a list.
 
+Switching teller makes it worse. "He does this. She does that. I pick this." is three people telling three different stories. Pick one teller and stay there.
+
 ### The wise old man
 
 Bad:
