@@ -237,9 +237,9 @@ gh run watch
 The workflow uses `npm ci` and Remotion's `swangle` software WebGL renderer. It
 does not need a GPU or any secrets beyond the built-in `GITHUB_TOKEN`.
 
-A three-minute topic film is 5,300 frames. The workflow splits a long film into
-frame ranges, renders them side by side on separate runners and joins them, so
-it takes minutes, not hours. A 20-second short stays in one piece.
+A three-minute topic film is 5,300 frames. The workflow splits every film into
+frame ranges of about nine seconds, renders them side by side on separate
+runners (at most twenty) and joins them, so a long film takes minutes, not hours.
 
 ```bash
 gh workflow run render.yml --ref <branch> \

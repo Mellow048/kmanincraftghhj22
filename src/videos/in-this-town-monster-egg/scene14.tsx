@@ -9,7 +9,7 @@ import {
   Hero,
   HeroEgg,
   Kid,
-  NORTH,
+  WEST,
   PLACE,
   Sister,
   ahead,
@@ -99,16 +99,16 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.kids",
-      ...cam.push({ on: [-20, 1.7, -1.7], dist: 6.3, to: 5.4, yaw: 0, pitch: 32 }),
+      ...cam.push({ on: [-19.3, 1.75, -1.3], dist: 7.3, to: 6.6, yaw: -14, pitch: 11, onTo: [-20.7, 1.75, -1.3] }),
       zone: "town",
       look: "overworld-day",
-      note: "The golem again, from over its shoulder, carrying its sleeping kid up to the school door. He has watched this every morning of his life.",
+      note: "The golem again, side on under the SCHOOL sign, its sleeping kid in its arms. He has watched this every morning of his life.",
       stage: (t, { p }) => (
         <>
-          <Golem position={[-20, 0, lerp(1.1, -0.3, p)]} rotationY={NORTH} walk={p * 1.4} carry={1}>
+          <Golem position={[lerp(-18.9, -20.5, p), 0, -0.9]} rotationY={WEST} walk={p * 1.6} carry={1}>
             <Kid who={0} position={[0, -0.18, 0.05]} rotationY={Math.PI / 2} animation="sleep" face="sleepy" />
           </Golem>
-          <Kid who={3} {...stride([-18.4, 0, 0.2], [-19.3, 0, -1.9], p)} animation="walk" face="sleepy" />
+          <Kid who={3} {...stride([-17.2, 0, 0.3], [-18.6, 0, 0.3], p)} animation="walk" face="sleepy" />
         </>
       ),
     },

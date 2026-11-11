@@ -18,7 +18,7 @@ export const BedBlanket: React.FC = () => <Blanket position={room(-1.1, 0.7, -0.
 const WithTorch: React.FC<{ face: "uneasy" | "wow" }> = ({ face }) => (
   <Hero position={ON_BED} rotationY={EAST} animation="sit" arms="reach" face={face} lookAt={EGG_GAZE}>
     <group rotation={[1.55, 0, 0]}>
-      <Torch position={[0, -0.25, 0]} light={7} seed={3} />
+      <Torch position={[0, -0.25, 0]} light={2.2} seed={3} />
     </group>
   </Hero>
 );

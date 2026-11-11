@@ -168,9 +168,9 @@ frame a second at half size on two cores, so budget an hour and more.
 npx remotion render src/index.ts <film> renders/<film>-preview-540p.mp4 --scale=0.5 --crf=25   # a review copy
 ```
 
-For the real thing use the **Render short** workflow on GitHub. It splits a long film into about a dozen frame
-ranges (`scripts/render-plan.mjs`), renders each on its own runner, and joins them: the whole film in the time one
-chunk takes.
+For the real thing use the **Render short** workflow on GitHub. It splits the film into twenty frame ranges
+(`scripts/render-plan.mjs`), renders each on its own runner, and joins them: the whole film in the time one
+range takes.
 
 ```bash
 gh workflow run render.yml --ref <branch> -f composition=<film> -f commit_to=renders/<film>.mp4

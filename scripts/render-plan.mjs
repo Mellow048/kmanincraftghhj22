@@ -4,13 +4,15 @@
  * several machines side by side and joined afterwards (.github/workflows/render.yml).
  *
  *   node scripts/render-plan.mjs in-this-town-monster-egg
- *   node scripts/render-plan.mjs the-hallway --chunk 450 --max 16 --scale 0.5
+ *   node scripts/render-plan.mjs the-hallway --chunk 270 --max 20 --scale 0.5
  *
  * Prints key=value lines, and inside GitHub Actions also appends them to $GITHUB_OUTPUT:
- *   matrix={"include":[{"index":"00","from":0,"to":441}, …]}
- *   chunks=12  frames=5300  fps=30  size=540x960
+ *   matrix={"include":[{"index":"00","from":0,"to":264}, …]}
+ *   chunks=20  frames=5300  fps=30  size=540x960
  *
- * A film of up to two chunks' worth of frames (a 20-second short) stays in one piece.
+ * A chunk is about nine seconds of film (--chunk 270 frames), and there are at most twenty
+ * (--max 20): that is how many jobs a free GitHub account runs at once. A 20-second short
+ * becomes three chunks, a three-minute film twenty.
  * It asks Remotion for the length, so it is right for every film, with or without narration.
  */
 import fs from "node:fs";
@@ -28,11 +30,11 @@ const opt = (name, fallback) => {
 };
 const id = args[0];
 if (!id || id.startsWith("--")) {
-  console.error("Usage: node scripts/render-plan.mjs <composition> [--chunk 450] [--max 16] [--scale 1]");
+  console.error("Usage: node scripts/render-plan.mjs <composition> [--chunk 270] [--max 20] [--scale 1]");
   process.exit(1);
 }
-const perChunk = Math.max(30, Number(opt("chunk", "450")) || 450);
-const maxChunks = Math.max(1, Number(opt("max", "16")) || 16);
+const perChunk = Math.max(30, Number(opt("chunk", "270")) || 270);
+const maxChunks = Math.max(1, Number(opt("max", "20")) || 20);
 const scale = Number(opt("scale", "1")) || 1;
 const chrome = opt("chrome", process.env.REMOTION_CHROME ?? null);
 
@@ -53,7 +55,7 @@ try {
 await browser.close({ silent: true });
 
 const frames = composition.durationInFrames;
-const count = frames <= perChunk * 2 ? 1 : Math.min(maxChunks, Math.ceil(frames / perChunk));
+const count = Math.min(maxChunks, Math.ceil(frames / perChunk));
 const include = [];
 for (let i = 0; i < count; i++) {
   const from = Math.floor((i * frames) / count);

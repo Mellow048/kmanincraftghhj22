@@ -2,10 +2,10 @@ name: Render short
 
 # Renders one film on GitHub's machines, never on the owner's laptop.
 #
-# A long film is split into frame ranges that render side by side (one runner
-# each) and are joined at the end, so three minutes of film takes about as long
-# as twenty seconds. A short stays in one piece. The split is decided by
-# scripts/render-plan.mjs.
+# The film is split into frame ranges of about nine seconds that render side by
+# side (one runner each, at most twenty) and are joined at the end, so three
+# minutes of film takes about as long as twenty seconds. The split is decided
+# by scripts/render-plan.mjs.
 
 on:
   workflow_dispatch:
