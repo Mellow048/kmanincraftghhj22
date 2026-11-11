@@ -1,5 +1,6 @@
 import { film as theSchedule } from "./videos/the-schedule/film";
 import { film as theHallway } from "./videos/the-hallway/film";
+import { film as monsterEgg } from "./videos/in-this-town-monster-egg/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -8,4 +9,5 @@ import { film as theHallway } from "./videos/the-hallway/film";
 export const FILMS = [
   theSchedule,
   theHallway,
+  monsterEgg,
 ];

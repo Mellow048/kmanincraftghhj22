@@ -46,6 +46,7 @@ Read `AGENTS.md`, `docs/CAMERA-BIBLE.md` and `docs/SCENE-CONTRACT.md` first.
 - `warm-room`: `#120b06` bg, `#2a1a0e` fog, `#ffcf9a` key, `#ff9b4a` practical.
 - `forest-night`: `#020812` bg, `#061426` fog, `#9dc0ff` moon, `#77aaff` rim.
 - `street-day`: `#b9d7ee` bg, `#cfe4f4` fog, `#fff3d6` sun, `#bfe0ff` sky fill.
+- `town-day`: softer pale blue sky (`#a9cde0`), sage fog (`#d6e6d8`), warm sun (`#ffe1aa`) and cool school-window fill (`#9bc6d9`); use for the InThisTown neighborhood. Still place visible practical lights and a cold rim in the world.
 - `void`: `#000000` for a dream/flashback; use sparingly.
 
 Do not use a preset as an excuse to skip a practical. A preset is a base; the world adds the story lights.

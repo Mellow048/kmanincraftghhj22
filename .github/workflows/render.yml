@@ -7,6 +7,11 @@ on:
         description: "Remotion composition id"
         required: true
         default: "the-hallway"
+      commit_to:
+        description: "Optional renders/<name>.mp4 destination; commit the MP4 to this non-main branch (for sandboxes that cannot reach release assets)"
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -54,6 +59,27 @@ jobs:
           name: "${{ inputs.composition }}-720p-mp4"
           path: "out/${{ inputs.composition }}-720p.mp4"
           retention-days: 30
+
+      # Actions' artifact host is not accessible in some sandboxes. A requested
+      # reference is delivered inside the repository instead of only as a URL.
+      - name: Commit the MP4 to the current branch
+        if: ${{ inputs.commit_to != '' && github.ref_name != 'main' }}
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          DESTINATION: ${{ inputs.commit_to }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          case "$DESTINATION" in
+            renders/*.mp4) ;;
+            *) echo "Destination must be renders/<name>.mp4" >&2; exit 1 ;;
+          esac
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p "$(dirname "$DESTINATION")"
+          cp "out/${COMPOSITION}-720p.mp4" "$DESTINATION"
+          git add -f -- "$DESTINATION"
+          git commit -m "Deliver ${COMPOSITION} render"
+          git push origin "HEAD:${REF_NAME}"
 
       - name: Publish release asset
         uses: softprops/action-gh-release@v2
