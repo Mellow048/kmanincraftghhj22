@@ -59,12 +59,16 @@ const Fade: React.FC<{ fadeIn?: number; fadeOut?: number; total: number }> = ({ 
 const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
   const { fps, width, height } = useVideoConfig();
 
+  // Lay the scenes out in FRAMES, not seconds. Rounding each scene's start and
+  // length independently can leave a one-frame gap or overlap between scenes
+  // (scene N ends on frame 101, scene N+1 starts on frame 102). Accumulating
+  // frames keeps every scene butt-joined to the previous one.
   const sequences = useMemo(() => {
-    let cursor = 0;
+    let cursorFrames = 0;
     return config.scenes.map((scene, index) => {
-      const from = Math.round(cursor * fps);
+      const from = cursorFrames;
       const durationInFrames = Math.max(1, Math.round(scene.duration * fps));
-      cursor += scene.duration;
+      cursorFrames += durationInFrames;
       return { scene, index, from, durationInFrames };
     });
   }, [config.scenes, fps]);

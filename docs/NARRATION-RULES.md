@@ -176,7 +176,28 @@ Why it works: short lines. One teller. Plain words. The actions are decisions, n
 
 ---
 
-## 9. Checklist
+## 9. Where the script lives
+
+Every new film gets a `narration.md` (copied by `npm run new`). Put the spoken
+lines in one block like this:
+
+````markdown
+```narration
+The light was on.
+He should have stayed in bed.
+The door opened by itself.
+Something was already in the hall.
+```
+````
+
+One line per beat, in order. `npm run check` lints the block and warns about
+lines over 12 words, banned phrases, and scripts with more than 9 lines. It
+cannot hear tone — that is still your job. Read the block out loud before you
+call it done.
+
+---
+
+## 10. Checklist
 
 - [ ] One teller. One tense.
 - [ ] Every line is 3–10 words (12 max).

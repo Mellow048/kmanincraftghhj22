@@ -12,6 +12,12 @@
  *   - no Math.random / wall-clock time (renders must be deterministic)
  *   - total runtime <= 21s
  *
+ * It also warns (does not fail) on:
+ *   - a camera jump across a scene boundary (position/target/FOV teleport);
+ *   - a `path`/`targetPath` whose first point is not `from`/`target`;
+ *   - an out-of-range `fov`, or a shot with both `focalLength` and `fov`;
+ *   - a `narration.md` with long lines or banned phrases.
+ *
  * It cannot check whether the film is beautiful. A human still has to look.
  */
 import fs from "node:fs";
@@ -55,6 +61,127 @@ function stripComments(source) {
     .replace(/\/\*[\s\S]*?\*\//g, (block) => block.replace(/[^\n]/g, " "))
     .replace(/(^|[^:\\])\/\/.*$/gm, "$1");
 }
+
+// --- shot parsing helpers --------------------------------------------------
+const NUM_RE = /-?\d+(?:\.\d+)?/g;
+
+/** The raw text of `key: [ ... ]` including every nested bracket. */
+function extractArray(body, key) {
+  const match = body.match(new RegExp(`(?:^|\\n)\\s*${key}:\\s*\\[`));
+  if (!match) return null;
+  let i = match.index + match[0].length - 1;
+  const start = i;
+  let depth = 0;
+  for (; i < body.length; i++) {
+    if (body[i] === "[") depth++;
+    else if (body[i] === "]") {
+      depth--;
+      if (depth === 0) {
+        i++;
+        break;
+      }
+    }
+  }
+  return body.slice(start, i);
+}
+
+function vecList(body, key) {
+  const arr = extractArray(body, key);
+  if (!arr) return [];
+  return [...arr.matchAll(/\[([^\[\]]*)\]/g)]
+    .map((m) => (m[1].match(NUM_RE) ?? []).map(Number))
+    .filter((v) => v.length >= 3)
+    .map((v) => v.slice(0, 3));
+}
+
+function vecAt(body, key) {
+  const list = vecList(body, key);
+  return list.length > 0 ? list[0] : null;
+}
+
+function numAt(body, key) {
+  const match = body.match(new RegExp(`(?:^|\\n)\\s*${key}:\\s*(-?[\\d.]+)`));
+  return match ? Number(match[1]) : null;
+}
+
+/** Vertical FOV for a full-frame lens. Mirrors src/engine/math.ts. */
+function focalMmToFov(mm, sensorHeightMm = 24) {
+  return (2 * Math.atan(sensorHeightMm / (2 * Math.max(1, mm))) * 180) / Math.PI;
+}
+
+/** The FOV a shot opens on. Millimetres win over degrees, as in Camera.tsx. */
+function shotFov(body) {
+  const fl = numAt(body, "focalLength");
+  if (fl != null) return focalMmToFov(fl);
+  return numAt(body, "fov") ?? 38;
+}
+
+/** The FOV a shot closes on. */
+function shotFovTo(body) {
+  const fl = numAt(body, "focalLength");
+  if (fl != null) return focalMmToFov(numAt(body, "focalLengthTo") ?? fl);
+  return numAt(body, "fovTo") ?? numAt(body, "fov") ?? 38;
+}
+
+/** Where the camera is on a shot's first frame (path wins over `to`). */
+function shotStart(body) {
+  const path = vecList(body, "path");
+  return path.length >= 2 ? path[0] : vecAt(body, "from");
+}
+
+/** Where the camera is on a shot's last frame. */
+function shotEnd(body) {
+  const path = vecList(body, "path");
+  if (path.length >= 2) return path[path.length - 1];
+  return vecAt(body, "to") ?? vecAt(body, "from");
+}
+
+function targetStart(body) {
+  const path = vecList(body, "targetPath");
+  return path.length >= 2 ? path[0] : vecAt(body, "target");
+}
+
+function targetEnd(body) {
+  const path = vecList(body, "targetPath");
+  if (path.length >= 2) return path[path.length - 1];
+  return vecAt(body, "targetTo") ?? vecAt(body, "target");
+}
+
+const dist = (a, b) => (a && b ? Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]) : 0);
+
+/** Phrases the voice contract bans. See docs/NARRATION-RULES.md. */
+const BANNED_PHRASES = [
+  "little did he know",
+  "little did she know",
+  "in that moment",
+  "at that moment",
+  "chill ran down",
+  "sense of dread",
+  "air was thick",
+  "everything changed",
+  "this wasn't just",
+  "this was not just",
+  "it was then that",
+  "without warning",
+  "in the blink of an eye",
+  "symphony of",
+  "tapestry of",
+  "silence was deafening",
+  "time stood still",
+  "blood ran cold",
+  "eerie",
+  "foreboding",
+  "malevolent",
+  "otherworldly",
+  "ethereal",
+  "juxtaposition",
+  "myriad",
+  "plethora",
+  "utilize",
+  "commence",
+  "endeavor",
+  "and so it came to pass",
+];
 
 function scanDeterminism(dir) {
   if (!fs.existsSync(dir)) return;
@@ -139,6 +266,7 @@ for (const slug of filmDirs) {
   }
 
   let total = 0;
+  const boundaries = [];
 
   for (const sceneId of sceneIds) {
     const scenePath = path.join(dir, `${sceneId}.tsx`);
@@ -214,6 +342,36 @@ for (const slug of filmDirs) {
         }
       }
 
+      const fovValue = numAt(shot.body, "fov");
+      if (fovValue != null && (fovValue < 10 || fovValue > 120)) {
+        info(`${label}: fov ${fovValue}° is outside the sensible 10–120° range.`);
+      }
+      const fovToValue = numAt(shot.body, "fovTo");
+      if (fovToValue != null && (fovToValue < 10 || fovToValue > 120)) {
+        info(`${label}: fovTo ${fovToValue}° is outside the sensible 10–120° range.`);
+      }
+      if (numAt(shot.body, "focalLength") != null && fovValue != null) {
+        info(`${label}: has both focalLength and fov. focalLength wins; delete fov to avoid confusion.`);
+      }
+
+      const fromVec = vecAt(shot.body, "from");
+      const targetVec = vecAt(shot.body, "target");
+      const pathVecs = vecList(shot.body, "path");
+      const targetPathVecs = vecList(shot.body, "targetPath");
+
+      if (pathVecs.length >= 2 && fromVec) {
+        const gap = dist(pathVecs[0], fromVec);
+        if (gap > 0.02) {
+          info(`${label}: path starts at [${pathVecs[0].join(", ")}] but from is [${fromVec.join(", ")}] (Δ${gap.toFixed(2)}). The camera would snap.`);
+        }
+      }
+      if (targetPathVecs.length >= 2 && targetVec) {
+        const gap = dist(targetPathVecs[0], targetVec);
+        if (gap > 0.02) {
+          info(`${label}: targetPath starts at [${targetPathVecs[0].join(", ")}] but target is [${targetVec.join(", ")}] (Δ${gap.toFixed(2)}). The look would snap.`);
+        }
+      }
+
       if (!/(^|\n)\s*from:\s*\[/m.test(shot.body)) {
         fail(`${label}: missing from[]`);
       }
@@ -232,6 +390,38 @@ for (const slug of filmDirs) {
 
     if (!/(^|\n)\s*(to|path|targetTo|targetPath|shake|arc):/m.test(scene)) {
       fail(`${slug}/${sceneId}: scene has no camera motion at all`);
+    }
+
+    const firstShot = shots[0].body;
+    const lastShot = shots[shots.length - 1].body;
+    boundaries.push({
+      sceneId,
+      startPos: shotStart(firstShot),
+      startTarget: targetStart(firstShot),
+      startFov: shotFov(firstShot),
+      endPos: shotEnd(lastShot),
+      endTarget: targetEnd(lastShot),
+      endFov: shotFovTo(lastShot),
+    });
+  }
+
+  // Camera continuity across scene cuts. A jump here is the classic teleport;
+  // it is a warning, not a failure, so a film with one deliberate small cheat
+  // can still ship — but a human must review every line printed.
+  for (let i = 1; i < boundaries.length; i++) {
+    const prev = boundaries[i - 1];
+    const cur = boundaries[i];
+    const dp = dist(prev.endPos, cur.startPos);
+    const dt = dist(prev.endTarget, cur.startTarget);
+    const df = Math.abs(prev.endFov - cur.startFov);
+    const jumps = [];
+    if (dp > 0.06) jumps.push(`position Δ${dp.toFixed(2)}m`);
+    if (dt > 0.06) jumps.push(`target Δ${dt.toFixed(2)}m`);
+    if (df > 0.75) jumps.push(`fov Δ${df.toFixed(1)}°`);
+    if (jumps.length > 0) {
+      info(
+        `${slug}: camera jump ${prev.sceneId}→${cur.sceneId} (${jumps.join(", ")}). Scene N should start where N-1 ended.`,
+      );
     }
   }
 
@@ -269,6 +459,39 @@ for (const slug of filmDirs) {
 
     if (TWO_D.test(world)) {
       fail(`${slug}: world.tsx contains a 2D overlay`);
+    }
+  }
+
+  // Optional narration script. If a film ships `narration.md`, the voice
+  // contract from docs/NARRATION-RULES.md is linted: short lines, plain words,
+  // no banned phrases. Missing file is fine; a bad one is a warning.
+  const narrationPath = path.join(dir, "narration.md");
+  if (fs.existsSync(narrationPath)) {
+    const raw = fs.readFileSync(narrationPath, "utf8");
+    const fence = raw.match(/```narration\s*([\s\S]*?)```/);
+    if (!fence) {
+      info(`${slug}: narration.md has no \`\`\`narration block. Wrap the spoken lines in one so they can be linted.`);
+    } else {
+      const lines = fence[1]
+        .split("\n")
+        .map((line) => line.replace(/^\s*[-*]\s*/, "").trim())
+        .filter((line) => line.length > 0 && !line.startsWith(">") && !line.startsWith("#"));
+      for (const line of lines) {
+        const clean = line.replace(/^["'`]|["'`]$/g, "").trim();
+        const words = clean.split(/\s+/).filter(Boolean).length;
+        const lower = clean.toLowerCase();
+        if (words > 12) {
+          info(`${slug}: narration line is ${words} words: "${clean}". Keep it under 12.`);
+        }
+        for (const phrase of BANNED_PHRASES) {
+          if (lower.includes(phrase)) {
+            info(`${slug}: narration uses a banned phrase "${phrase}": "${clean}". See docs/NARRATION-RULES.md.`);
+          }
+        }
+      }
+      if (lines.length > 9) {
+        info(`${slug}: narration has ${lines.length} lines. A 20-second short usually needs 4–7.`);
+      }
     }
   }
 

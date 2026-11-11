@@ -13,6 +13,7 @@ src/videos/<slug>/
   world.tsx
   actors.tsx
   characters.tsx   optional duo + extra cast (copied from templates/cast)
+  narration.md     optional spoken lines, in a ```narration block
   scene1.tsx
   scene2.tsx
   ...

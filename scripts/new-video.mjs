@@ -53,6 +53,11 @@ if (templateFiles.length === 0) {
   process.exit(1);
 }
 
+if (!fs.existsSync(castTemplatePath)) {
+  console.error("templates/cast/characters.tsx is missing. Restore the cast template before scaffolding.");
+  process.exit(1);
+}
+
 const codeTitle = title.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
 fs.mkdirSync(videoDir, { recursive: true });
@@ -66,9 +71,21 @@ for (const file of templateFiles) {
   fs.writeFileSync(path.join(videoDir, file), next);
 }
 
+// Optional narration script. Copying `narration.md` gives every film a place
+// to write the spoken lines, and `npm run check` lints the ```narration block.
+const narrationTemplatePath = path.join(templateDir, "narration.md");
+
 // The duo + extra cast template travels with every new film. It is a separate
 // folder because it is useful to story films, not just the night-ward template.
 let copied = templateFiles.length;
+if (fs.existsSync(narrationTemplatePath)) {
+  const source = fs.readFileSync(narrationTemplatePath, "utf8");
+  fs.writeFileSync(
+    path.join(videoDir, "narration.md"),
+    source.replaceAll("__TITLE__", title).replaceAll("__ID__", slug),
+  );
+  copied += 1;
+}
 if (fs.existsSync(castTemplatePath)) {
   const source = fs.readFileSync(castTemplatePath, "utf8");
   const next = source
@@ -123,7 +140,7 @@ console.log(`Created src/videos/${slug}/ (${copied} files).`);
 console.log(`Registered ${camel} in src/registry.ts.`);
 console.log("");
 console.log("Next:");
-console.log("  0. Write the narration first: docs/NARRATION-RULES.md.");
+console.log("  0. Write the narration first in narration.md: docs/NARRATION-RULES.md.");
 console.log("  1. Build world.tsx: set, lights, GodRay/LightPool/Glow/Dust.");
 console.log("  2. Cast the duo in characters.tsx: two leads who contrast, extras repeat.");
 console.log("  3. Copy scene1.tsx to scene2.tsx... and add them to film.tsx.");

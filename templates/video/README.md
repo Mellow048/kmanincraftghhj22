@@ -19,6 +19,7 @@ The template is a working night-ward set, not a blockout. Keep the structure:
 - `characters.tsx` — the two-lead + reusable-extra cast template, copied from
   `templates/cast/`. Change `DUO` at the top to recast. See
   `templates/cast/README.md`.
+- `narration.md` — the spoken lines in a ```narration block, linted by `npm run check`.
 - `scene1.tsx` — one beat, one shot list, one performance.
 - `film.tsx` — metadata and scene order.
 

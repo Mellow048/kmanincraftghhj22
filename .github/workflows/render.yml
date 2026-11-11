@@ -29,6 +29,9 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Verify contract
+        run: npm run typecheck && npm run check
+
       - name: Ensure ffmpeg
         run: |
           sudo apt-get update

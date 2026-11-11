@@ -23,7 +23,7 @@ Every video lives in `src/videos/<slug>/` and contains `world.tsx`, `film.tsx`, 
 A scene file may be yanked out and fixed without touching the other scenes. It owns its actors, performance, local timing and shot list. It must not own the walls, the bed, the hallway or the global lighting. Those live in `world.tsx`.
 
 ### 3. The camera never teleports
-Scene N's first shot must start at the exact position, target and FOV where scene N-1 ended. Copy the numbers. If you want a cut, make it a motivated cut inside one scene, not a silent teleport between files. `npm run check` is not smart enough to catch this; you are.
+Scene N's first shot must start at the exact position, target and FOV where scene N-1 ended. Copy the numbers. If you want a cut, make it a motivated cut inside one scene, not a silent teleport between files. `npm run check` now prints a warning for any boundary jump over 6cm / 0.75°; treat every line as a bug you meant to fix or a cheat you can justify out loud.
 
 ### 4. Hook in the first 1.5 seconds
 Open on the disturbing image, the question, or the line that makes a thumb stop. No logos. No walking into frame from a empty room. No "welcome back". The viewer must know what is wrong before they know why.

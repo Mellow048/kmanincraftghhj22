@@ -52,6 +52,7 @@ src/videos/the-title/
   world.tsx       the set, lights, atmosphere
   actors.tsx      shared cast defaults
   characters.tsx  two-lead duo + reusable extra cast
+  narration.md    the spoken lines, linted by npm run check
   scene1.tsx      the first beat
   film.tsx        metadata + scene order
 ```
