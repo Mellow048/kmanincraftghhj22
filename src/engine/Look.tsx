@@ -79,6 +79,15 @@ export const LOOKS: Record<LookPreset, Preset> = {
     key: { color: "#fff3d6", intensity: 3.4, position: [6, 9, 4], shadow: true },
     fills: [{ color: "#bfe0ff", intensity: 2.4, position: [-4, 3, -3], distance: 12 }],
   },
+  "town-day": {
+    bg: "#a9cde0",
+    fog: "#d6e6d8",
+    fogDensity: 0.009,
+    ambient: { color: "#d6e7e1", intensity: 0.65 },
+    hemi: { sky: "#d6eeef", ground: "#6c8073", intensity: 0.78 },
+    key: { color: "#ffe1aa", intensity: 2.6, position: [-6, 9, -3], shadow: true },
+    fills: [{ color: "#9bc6d9", intensity: 2.5, position: [4, 2.7, 9], distance: 12 }],
+  },
   "warm-room": {
     bg: "#120b06",
     fog: "#2a1a0e",

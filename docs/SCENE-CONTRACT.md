@@ -54,6 +54,8 @@ export const film = defineFilm({
 | `width`/`height` | no | default 1080×1920; keep vertical |
 | `look` | no | one of the presets in `src/engine/Look.tsx` |
 | `post` | no | `{ exposure, bloom }` only. No postprocessing package. |
+| `audio` | no | one music/voice track from `public/` via `{ src, volume? }` |
+| `audioCues` | no | timed voice/SFX clips from `public/`: `{ src, at, duration?, volume? }[]`, where `at` and `duration` are seconds |
 | `fadeIn`/`fadeOut` | no | seconds; the only 2D event allowed |
 | `World` | yes | mounted once for the whole film |
 | `scenes` | yes | ordered beats; total = sum of durations |
@@ -64,6 +66,7 @@ export const film = defineFilm({
 - One `ThreeCanvas` per film. `defineFilm` owns it.
 - Do not add a second canvas, a 2D overlay or an HTML layer.
 - `post.bloom` scales the 3D glow cards. It is not a screen-space bloom.
+- `audioCues` are sound only, scheduled outside the 3D canvas. Example: `{ src: "audio/scene1.mp3", at: 0.15, duration: 2.7, volume: 1 }`. File paths are relative to `public/`. A cue with no duration plays until its file ends; a duration can keep a spoken line inside its beat.
 - If you change `post`, do not re-add `@react-three/postprocessing`; it breaks under software WebGL.
 
 ---

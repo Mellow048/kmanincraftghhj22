@@ -84,6 +84,7 @@ export type LookPreset =
   | "ward-night"
   | "forest-night"
   | "street-day"
+  | "town-day"
   | "warm-room"
   | "void";
 
@@ -104,8 +105,10 @@ export type FilmConfig = {
   height?: number;
   look?: LookPreset;
   post?: PostSettings;
-  /** Optional music / voiceover file inside /public. */
+  /** Optional full-film music / voiceover file inside /public. */
   audio?: { src: string; volume?: number };
+  /** Timed voice or sound-design clips inside /public. `at` and `duration` are seconds. */
+  audioCues?: Array<{ src: string; at: number; duration?: number; volume?: number }>;
   /** Fade the video in/out of black, in seconds. */
   fadeIn?: number;
   fadeOut?: number;

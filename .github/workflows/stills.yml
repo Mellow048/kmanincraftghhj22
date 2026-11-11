@@ -11,6 +11,11 @@ on:
         description: "Comma separated frame numbers to render as PNG"
         required: false
         default: "30,100,150,210,270,330,420,480,520,590"
+      commit_review:
+        description: "Temporarily commit diagnostic stills to this branch for offline review"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -42,6 +47,21 @@ jobs:
           name: "stills-${{ inputs.composition }}"
           path: out/stills
           retention-days: 30
+
+      # For sandboxes that can fetch the repository but not Actions' external
+      # artifact-storage host. Delete these diagnostic frames after reviewing.
+      - name: Temporarily commit review frames
+        if: ${{ inputs.commit_review && github.ref_name != 'main' }}
+        env:
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p "Topics/InThisTown/reference#1/review"
+          cp out/stills/*.png "Topics/InThisTown/reference#1/review/"
+          git add "Topics/InThisTown/reference#1/review/"
+          git commit -m "Diagnostic review frames for ${{ inputs.composition }}"
+          git push origin "HEAD:${REF_NAME}"
 
       - name: Publish release assets
         uses: softprops/action-gh-release@v2

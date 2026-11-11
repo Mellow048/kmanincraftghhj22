@@ -110,6 +110,16 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
       {config.audio ? (
         <Audio src={staticFile(config.audio.src)} volume={config.audio.volume ?? 1} />
       ) : null}
+      {config.audioCues?.map((cue, index) => (
+        <Sequence
+          key={`audio-${index}`}
+          from={Math.round(cue.at * fps)}
+          durationInFrames={Math.max(1, Math.round((cue.duration ?? config.scenes.reduce((a, s) => a + s.duration, 0) - cue.at) * fps))}
+          layout="none"
+        >
+          <Audio src={staticFile(cue.src)} volume={cue.volume ?? 1} />
+        </Sequence>
+      ))}
 
       <Fade fadeIn={config.fadeIn} fadeOut={config.fadeOut} total={config.scenes.reduce((a, s) => a + s.duration, 0)} />
     </AbsoluteFill>
