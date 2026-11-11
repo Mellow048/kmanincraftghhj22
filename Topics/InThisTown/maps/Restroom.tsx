@@ -13,7 +13,8 @@ export const RestroomMap: React.FC<{ position?: Vec3; rotationY?: number }> = ({
     <Block position={[1.55, 1.65, -0.06]} size={[1.1, 3.3, 0.12]} color="#c0d0c3" />
     <Block position={[0, 2.76, -0.06]} size={[2.0, 1.08, 0.12]} color="#c0d0c3" />
     <DoorFrame position={[0, 0, -0.06]} width={1.9} height={2.23} />
-    <Door position={[-0.95, 0, -0.1]} width={1.9} height={2.2} open={Math.PI} color="#5c8179" />
+    {/* Swing inward: at SchoolMap's +90° rotation this clears the hall AND class wall. */}
+    <Door position={[-0.95, 0, -0.1]} width={1.9} height={2.2} open={-Math.PI / 2} color="#5c8179" />
     <Sign position={[1.44, 2.38, -0.14]} rotationY={Math.PI} title="RESTROOM" width={0.68} height={0.46} bg="#f1e9cd" fg="#304550" />
     {[0.5, 1.5].map((z) => (
       <group key={z}>

@@ -1,0 +1,97 @@
+name: Render short
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: "Remotion composition id"
+        required: true
+        default: "the-hallway"
+      commit_to:
+        description: "Optional Topics/<topic>/reference*/<name>.mp4 destination; commit to this non-main branch"
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Verify the Monster Egg source snapshot
+        if: ${{ inputs.composition == 'in-this-town-monster-egg' }}
+        run: node 'Topics/InThisTown/reference#1/freeze-source.mjs' --check
+
+      - name: Ensure ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version | head -1
+
+      - name: Render MP4 at 720x1280
+        run: >
+          npx remotion render src/index.ts
+          "${{ inputs.composition }}"
+          "out/${{ inputs.composition }}-720p.mp4"
+          --codec=h264
+          --crf=20
+          --concurrency=4
+          --gl=swangle
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ inputs.composition }}-720p-mp4"
+          path: "out/${{ inputs.composition }}-720p.mp4"
+          retention-days: 30
+
+      # Actions' artifact host is not accessible in some sandboxes. A requested
+      # reference is delivered inside the repository instead of only as a URL.
+      - name: Commit approved reference MP4 to the current branch
+        if: ${{ inputs.commit_to != '' && github.ref_name != 'main' }}
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          DESTINATION: ${{ inputs.commit_to }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          case "$DESTINATION" in
+            Topics/*/reference*/*.mp4) ;;
+            *) echo "Destination must be Topics/<topic>/reference*/<name>.mp4" >&2; exit 1 ;;
+          esac
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p "$(dirname "$DESTINATION")"
+          cp "out/${COMPOSITION}-720p.mp4" "$DESTINATION"
+          git add -f -- "$DESTINATION"
+          git commit -m "Deliver ${COMPOSITION} reference MP4"
+          git push origin "HEAD:${REF_NAME}"
+
+      - name: Publish release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "render-720p-${{ github.run_number }}"
+          name: "${{ inputs.composition }} — GitHub 720p test render ${{ github.run_number }}"
+          body: |
+            Rendered automatically by GitHub Actions at 720x1280.
+
+            - Composition: `${{ inputs.composition }}`
+            - Resolution: 720x1280 (test render)
+            - Commit: `${{ github.sha }}`
+          files: "out/${{ inputs.composition }}-720p.mp4"
+          token: ${{ secrets.GITHUB_TOKEN }}

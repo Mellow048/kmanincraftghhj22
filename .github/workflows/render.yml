@@ -34,6 +34,10 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Verify the Monster Egg source snapshot
+        if: ${{ inputs.composition == 'in-this-town-monster-egg' }}
+        run: node 'Topics/InThisTown/reference#1/freeze-source.mjs' --check
+
       - name: Ensure ffmpeg
         run: |
           sudo apt-get update
