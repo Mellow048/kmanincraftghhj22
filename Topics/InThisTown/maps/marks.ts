@@ -24,7 +24,7 @@ export const MARKS = {
   heroClass: [-1.1, 0, 11.3] as Vec3,
   friendClass: [1.25, 0, 11.25] as Vec3,
   sisterClass: [2.35, 0, 13.3] as Vec3,
-  dragonClass: [1.55, 0, 13.5] as Vec3,
+  dragonClass: [-0.4, 0, 14.5] as Vec3,
   phoenixClass: [3.05, 1.75, 14.1] as Vec3,
   wormClass: [0.25, 0, 12.45] as Vec3,
 } as const;

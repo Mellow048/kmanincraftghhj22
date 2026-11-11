@@ -20,8 +20,8 @@ export const film = defineFilm({
   // One human-scale thought per cue; the sound bed is original procedural audio.
   audioCues: [
     { src: "audio/in-this-town-monster-egg/01-rule.mp3", at: 0.04 },
-    { src: "audio/in-this-town-monster-egg/02-broken.mp3", at: 2.38 },
-    { src: "audio/in-this-town-monster-egg/03-comparison-short.mp3", at: 3.85 },
+    { src: "audio/in-this-town-monster-egg/02-broken.mp3", at: 2.51 },
+    { src: "audio/in-this-town-monster-egg/03-comparison-short.mp3", at: 4.02 },
     { src: "audio/in-this-town-monster-egg/05-rejection.mp3", at: 8.43 },
     { src: "audio/in-this-town-monster-egg/06-fire.mp3", at: 11.45 },
     { src: "audio/in-this-town-monster-egg/07-rescue.mp3", at: 13.68 },

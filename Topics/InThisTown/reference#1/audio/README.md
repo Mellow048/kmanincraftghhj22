@@ -5,8 +5,8 @@ The seven voice clips share the same user-selected narrator. They are authored a
 | Film time | File | Spoken line / purpose |
 |---:|---|---|
 | 0.04 s | `01-rule.mp3` | “At ten, we each get an egg.” |
-| 2.38 s | `02-broken.mp3` | “Mine is broken.” |
-| 3.85 s | `03-comparison-short.mp3` | “My friend's dragon. My sister's phoenix. My worm.” |
+| 2.51 s | `02-broken.mp3` | “Mine is broken.” |
+| 4.02 s | `03-comparison-short.mp3` | “My friend's dragon. My sister's phoenix. My worm.” |
 | 8.43 s | `05-rejection.mp3` | “My friend won't sit with me.” |
 | 11.45 s | `06-fire.mp3` | “Then it eats his fire.” |
 | 13.68 s | `07-rescue.mp3` | “It saves him from the next blast.” |

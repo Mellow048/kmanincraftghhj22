@@ -36,7 +36,7 @@ For a 20-second film, compress these into **4–7 beats, at most five shots**, w
 
 1. Write a premise of the form: “In this town, X decides Y. Mine is Z.” Name one mechanism for the underdog's strength.
 2. Copy the camera/beat discipline from `reference#1`, **not** its characters or script verbatim.
-3. Scaffold via `npm run new -- "Your Title"`; replace the hospital template world with `NeighborhoodMap` and `SchoolMap` (and optional `RestroomMap`) from `maps/`.
+3. Scaffold via `npm run new -- "Your Title"`; replace the hospital template world with `NeighborhoodMap` and `SchoolMap` from `maps/`. The connected `SchoolMap` already mounts its restroom; use `RestroomMap` alone only in a new layout with a matching doorway.
 4. Keep architecture in `world.tsx`/map components and performances in `sceneN.tsx`. The sample map is a starting place, not a license to leave an empty set.
 5. Use `film.audioCues` for precisely timed, diegetic narration/SFX, or a single `film.audio` for a mixed track. Keep the video intelligible muted.
 6. Run the checks. Render only when you have approval. Store a reference MP4 in your *own* reference folder when one is approved; do not commit `out/` or temporary stills.

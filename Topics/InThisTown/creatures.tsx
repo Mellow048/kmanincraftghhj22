@@ -262,7 +262,7 @@ export const FireStream: React.FC<{
       {Array.from({ length: count }, (_, i) => {
         const u = i / 12;
         const p = vlerp(origin, target, u);
-        const size = lerp(0.28, 0.11, u) * power;
+        const size = lerp(0.36, 0.16, u) * power;
         return (
           <group key={i} position={[p[0] + Math.sin(i * 4.7) * 0.09, p[1] + Math.sin(i * 2.4) * 0.08, p[2] + Math.cos(i * 3.9) * 0.07]}>
             <Block size={[size, size * 1.5, size]} color={i % 3 ? "#fa984e" : "#ffd076"} emissive="#ff7737" emissiveIntensity={1.5} rotation={[i * 0.21, i * 0.34, i * 0.3]} castShadow={false} />
