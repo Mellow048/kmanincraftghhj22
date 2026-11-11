@@ -58,11 +58,34 @@ export type Shot = {
   impacts?: Array<{ at: number; amp: number; dur?: number }>;
   /** Camera roll in radians. */
   roll?: number;
+  /** End roll in radians. The roll eases from `roll` to `rollTo` (a rotating top-down shot). */
+  rollTo?: number;
   /** Raise/lower the look point, for headroom in the 9:16 frame. */
   aim?: number;
 
+  /** Lighting preset for this shot only. Falls back to the film's `look`. */
+  look?: LookPreset;
+  /** World zone this shot plays in. `<Zone name>` groups in the world hide when another zone is on. */
+  zone?: string;
+  /** Narration cue this shot is cut to. Set by `storyScene`; see docs in Topics/. */
+  cue?: string;
+
   /** The storytelling purpose of this shot. REQUIRED for reviewability. */
   note: string;
+};
+
+/** One spoken word and when it is heard, in film seconds. */
+export type CaptionWord = { w: string; s: number; e: number };
+
+/** One-word captions. Engine-owned: scenes never draw text over the picture themselves. */
+export type CaptionSettings = {
+  words: CaptionWord[];
+  /** Vertical position, 0 = top of frame, 1 = bottom. Default 0.72. */
+  y?: number;
+  /** Size multiplier. Default 1. */
+  size?: number;
+  /** "upper" (default) or "lower". */
+  letterCase?: "upper" | "lower";
 };
 
 export type SceneDef = {
@@ -85,6 +108,10 @@ export type LookPreset =
   | "forest-night"
   | "street-day"
   | "town-day"
+  | "overworld-day"
+  | "overworld-night"
+  | "overworld-storm"
+  | "lava-shore"
   | "warm-room"
   | "void";
 
@@ -98,6 +125,11 @@ export type PostSettings = {
 export type FilmConfig = {
   /** Remotion composition id, kebab-case. Also the output filename. */
   id: string;
+  /**
+   * Topic id, e.g. "in-this-town". A topic is a folder under Topics/ with its
+   * own rules; `npm run check` lints the film against that topic's profile.
+   */
+  topic?: string;
   /** Human title. The folder is the slug of this title. */
   title: string;
   fps?: number;
@@ -109,6 +141,8 @@ export type FilmConfig = {
   audio?: { src: string; volume?: number };
   /** Timed voice or sound-design clips inside /public. `at` and `duration` are seconds. */
   audioCues?: Array<{ src: string; at: number; duration?: number; volume?: number }>;
+  /** One-word captions timed to the narration. Only for topics whose rules ask for them. */
+  captions?: CaptionSettings;
   /** Fade the video in/out of black, in seconds. */
   fadeIn?: number;
   fadeOut?: number;

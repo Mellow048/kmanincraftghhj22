@@ -2,14 +2,34 @@ import { createContext, useContext, useMemo } from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
 import * as THREE from "three";
-import { Camera } from "./Camera";
+import { Camera, pickShot } from "./Camera";
+import { Captions } from "./Captions";
 import { GlowProvider, Look } from "./Look";
-import type { FilmConfig, SceneDef } from "./types";
+import type { FilmConfig, SceneDef, Shot } from "./types";
 import { clamp01 } from "./math";
 
 type SceneInfo = { id: string; title: string; index: number; duration: number; elapsed: number };
 
 const SceneContext = createContext<SceneInfo | null>(null);
+
+/** The shot that is on screen right now, wherever you ask from (world, scene, engine). */
+export type ActiveShot = {
+  shot: Shot;
+  scene: SceneDef;
+  sceneIndex: number;
+  shotIndex: number;
+  /** Seconds since this shot's cut. */
+  t: number;
+  /** Seconds since the scene began. */
+  sceneT: number;
+};
+
+const ActiveShotContext = createContext<ActiveShot | null>(null);
+
+/** Which shot is on screen. Works in `World`, where `useTime()` has no scene. */
+export function useActiveShot(): ActiveShot | null {
+  return useContext(ActiveShotContext);
+}
 
 /** Seconds since the start of the current scene. */
 export function useTime(): number {
@@ -58,6 +78,7 @@ const Fade: React.FC<{ fadeIn?: number; fadeOut?: number; total: number }> = ({ 
 
 const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
   const { fps, width, height } = useVideoConfig();
+  const frame = useCurrentFrame();
 
   // Lay the scenes out in FRAMES, not seconds. Rounding each scene's start and
   // length independently can leave a one-frame gap or overlap between scenes
@@ -72,6 +93,23 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
       return { scene, index, from, durationInFrames };
     });
   }, [config.scenes, fps]);
+
+  // The shot on screen at this frame. The world, the lighting and the captions
+  // sit outside the scene <Sequence>s, so they get it from here.
+  const active = useMemo<ActiveShot>(() => {
+    const seq =
+      sequences.find((s) => frame >= s.from && frame < s.from + s.durationInFrames) ?? sequences[sequences.length - 1];
+    const sceneT = (frame - seq.from) / fps;
+    const shot = pickShot(seq.scene.shots, sceneT);
+    return {
+      shot,
+      scene: seq.scene,
+      sceneIndex: seq.index,
+      shotIndex: seq.scene.shots.indexOf(shot),
+      t: sceneT - shot.at,
+      sceneT,
+    };
+  }, [sequences, frame, fps]);
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
@@ -94,7 +132,8 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
         }}
       >
         <GlowProvider value={config.post?.bloom ?? 1}>
-          <Look preset={config.look} post={config.post} />
+        <ActiveShotContext.Provider value={active}>
+          <Look preset={active.shot.look ?? config.look} post={config.post} focus={active.shot.target} />
           {config.World ? <config.World /> : null}
 
           {sequences.map(({ scene, index, from, durationInFrames }) => (
@@ -108,6 +147,8 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
               <SceneMount def={scene} index={index} />
             </Sequence>
           ))}
+          {config.captions ? <Captions {...config.captions} /> : null}
+        </ActiveShotContext.Provider>
         </GlowProvider>
       </ThreeCanvas>
 

@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect } from "react";
-import { useThree } from "@react-three/fiber";
+import { createContext, useContext, useEffect, useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import type * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import { pulse, wobble } from "./math";
 import type { Vec3 } from "./math";
@@ -13,6 +14,14 @@ type Preset = {
   hemi: { sky: string; ground: string; intensity: number };
   key?: { color: string; intensity: number; position: Vec3; shadow?: boolean };
   fills: Array<{ color: string; intensity: number; position: Vec3; distance?: number }>;
+  /**
+   * Outdoor looks: the key light is a sun. It keeps its direction but follows
+   * the shot's subject, so a town 60 m across still gets shadows everywhere.
+   * `key.position` is then an offset from the subject, not a world position.
+   */
+  follow?: boolean;
+  /** Half-width of the shadow frustum in metres. Default 9. */
+  shadowSpan?: number;
 };
 
 /**
@@ -88,6 +97,54 @@ export const LOOKS: Record<LookPreset, Preset> = {
     key: { color: "#ffe1aa", intensity: 2.6, position: [-6, 9, -3], shadow: true },
     fills: [{ color: "#9bc6d9", intensity: 2.5, position: [4, 2.7, 9], distance: 12 }],
   },
+  /** Minecraft noon: saturated sky, hard warm sun, cool bounce. Built for phone screens. */
+  "overworld-day": {
+    bg: "#79a8ff",
+    fog: "#bcd6ff",
+    fogDensity: 0.0085,
+    ambient: { color: "#ffffff", intensity: 0.62 },
+    hemi: { sky: "#d2e6ff", ground: "#7d9a5e", intensity: 0.95 },
+    key: { color: "#fff0cf", intensity: 3.3, position: [-7, 12, 6], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 13,
+  },
+  /** Minecraft night: deep blue, a cold moon for shape. Torches in the world do the warm work. */
+  "overworld-night": {
+    bg: "#0a1230",
+    fog: "#101a3c",
+    fogDensity: 0.02,
+    ambient: { color: "#5f78c9", intensity: 0.5 },
+    hemi: { sky: "#5a78d6", ground: "#141c2c", intensity: 0.55 },
+    key: { color: "#a9c2ff", intensity: 1.25, position: [6, 11, -5], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 13,
+  },
+  /** The sky has gone wrong: bruise-purple above, and a low warm light from the west picks out whatever stands over the town. */
+  "overworld-storm": {
+    bg: "#1d1830",
+    fog: "#2a2140",
+    fogDensity: 0.011,
+    ambient: { color: "#8f8ac4", intensity: 0.6 },
+    hemi: { sky: "#7672b8", ground: "#2c2436", intensity: 0.75 },
+    key: { color: "#ffc79a", intensity: 2.0, position: [-8, 8, 5], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 13,
+  },
+  /** Beside lava: smoke for a sky, and the ground is the lamp. */
+  "lava-shore": {
+    bg: "#34130b",
+    fog: "#5a2210",
+    fogDensity: 0.012,
+    ambient: { color: "#ffb48c", intensity: 0.5 },
+    hemi: { sky: "#7a3320", ground: "#ff6a1e", intensity: 1.15 },
+    key: { color: "#ffd9b4", intensity: 2.1, position: [-6, 10, 5], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 13,
+  },
   "warm-room": {
     bg: "#120b06",
     fog: "#2a1a0e",
@@ -120,11 +177,29 @@ const Exposure: React.FC<{ value: number }> = ({ value }) => {
   return null;
 };
 
-export const Look: React.FC<{ preset?: LookPreset; post?: PostSettings }> = ({
+export const Look: React.FC<{ preset?: LookPreset; post?: PostSettings; focus?: Vec3 }> = ({
   preset = "hospital-night",
   post,
+  focus,
 }) => {
   const look = LOOKS[preset] ?? LOOKS["hospital-night"];
+  const span = look.shadowSpan ?? 9;
+  const keyRef = useRef<THREE.DirectionalLight>(null);
+  const follow = look.follow && focus ? focus : null;
+  const keyPosition: Vec3 =
+    follow && look.key
+      ? [follow[0] + look.key.position[0], follow[1] + look.key.position[1], follow[2] + look.key.position[2]]
+      : (look.key?.position ?? [0, 0, 0]);
+
+  // A directional light aims at its `target`, which is not in the scene graph,
+  // so its matrix has to be refreshed by hand when the sun follows a subject.
+  useFrame(() => {
+    const light = keyRef.current;
+    if (!light) return;
+    if (follow) light.target.position.set(follow[0], follow[1], follow[2]);
+    else light.target.position.set(0, 0, 0);
+    light.target.updateMatrixWorld();
+  });
 
   return (
     <>
@@ -137,17 +212,18 @@ export const Look: React.FC<{ preset?: LookPreset; post?: PostSettings }> = ({
 
       {look.key && (
         <directionalLight
+          ref={keyRef}
           color={look.key.color}
           intensity={look.key.intensity}
-          position={look.key.position}
+          position={keyPosition}
           castShadow={look.key.shadow}
           shadow-mapSize={[2048, 2048]}
-          shadow-camera-left={-9}
-          shadow-camera-right={9}
-          shadow-camera-top={9}
-          shadow-camera-bottom={-9}
+          shadow-camera-left={-span}
+          shadow-camera-right={span}
+          shadow-camera-top={span}
+          shadow-camera-bottom={-span}
           shadow-camera-near={0.5}
-          shadow-camera-far={40}
+          shadow-camera-far={40 + span}
           shadow-bias={-0.0006}
           shadow-normalBias={0.02}
         />

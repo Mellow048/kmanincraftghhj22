@@ -1,44 +1,78 @@
-# In This Town — Minecraft underdog shorts
+# In This Town — Minecraft storytime
 
-**One sentence:** In a town with one easy-to-understand rule, the kid who starts last discovers a strength nobody expected; the people who rejected them end up wanting to stand beside them.
+A kid tells you about the strange town he grew up in, the one rule nobody would explain, and what happened when he
+broke it. Two to three minutes. First person, a fast voice with no pauses, a new picture about every two seconds, one
+word of caption at a time, and a last line that turns the first line upside down.
 
-This is a **topic kit inside ZackCraft Films**, not a second renderer. Films still use the root Remotion registry, `defineFilm`, one mounted 3D world, `defineScene`, and the director's contract in `AGENTS.md`. Everything in this topic is original Minecraft-shaped 3D geometry; do not import Roblox characters or assets.
+The format is modelled on one Roblox video the owner supplied, "In This Town, Everyone Lived In A Treehouse"
+([`reference/treehouse/`](reference/treehouse/README.md)). We make the same **kind** of video out of Minecraft blocks.
+We do not copy its story, its sentences or any Roblox asset.
 
-## The formula
+## Read in this order
 
-1. **Rule:** Name it in one ordinary sentence, and show it as a physical object or sign. Examples: a rank on a school board, a numbered egg, a key above a door.
-2. **Underdog:** Put the weak lead and the strong leads *in the same frame*. A visual comparison is worth more than exposition.
-3. **Rejection:** Make one person reject them. Do not spend the whole film humiliating a child.
-4. **Discovery:** Their weakness does something specific and useful. Show what triggers it.
-5. **Progression:** At least two distinct, visible steps between 1 and the final rank. Each step should cause a new action or solve a harder problem; changing a number alone is not a story.
-6. **Reversal:** The people from step 3 now choose to help or stand beside the lead. It is about belonging, not merely winning.
-7. **Button:** End on one image that pays off the first image. Do not explain the lesson.
+1. This page.
+2. [`SCRIPT.md`](SCRIPT.md) — how the story is written. This is where version 1 failed.
+3. [`SHOTS.md`](SHOTS.md) — how it is cut and shot, and how each Roblox trick becomes a Minecraft one.
+4. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions.
+5. [`reference/monster-egg-v1/`](reference/monster-egg-v1/README.md) — one page on the attempt the owner rejected.
 
-For a 20-second film, compress these into **4–7 beats, at most five shots**, with one simple power mechanism and no tournament subplot. For a longer story, add challenges *between* discovery and reversal rather than adding new rules. Never jump from a powerless character straight to infinity.
+## What changes from the base rules
 
-## Visual grammar for this topic
+These apply to a film that declares `topic: "in-this-town"`, and to nothing else.
 
-- **Recurring geography:** a lived-in neighborhood street connects to a school entrance, hall and classroom. Keep it one physical world; do not teleport to a new map between scenes.
-- **Ranks are diegetic:** numbers and labels belong on 3D signs, egg stands, a school scoreboard, or the creature itself. No HTML captions or fake 2D HUD.
-- **Casting:** the hero and one contrasting rival/friend are leads; the sister and background students can be supporting silhouettes. If an extra starts talking, promote them to a lead.
-- **Progression has a visual language:** small and dull → warm spark → visible size change → protective action → bright, unmistakable final form. Preserve the creature's face/colours so it reads as the *same* companion.
-- **Performances stay grounded:** characters have feet on the floor and poses driven by scene time. Show the former rival turning toward the hero at the end instead of only changing a scoreboard.
-- **Voice:** one first-person teller, one tense, 3–10 plain words per line. A muted viewer must still follow the egg, the rejection, the power, and the change of heart. See `docs/NARRATION-RULES.md`.
-- **Production:** write a beat sheet before code, build the map once, copy exact camera end/target/FOV into the next scene, run `npm run typecheck && npm run check`, and review a few stills before the MP4. Rendering requires the user's permission; the reference MP4 was expressly requested.
+| Base rule (`AGENTS.md`) | In This Town |
+|---|---|
+| 18–20 s, ceiling 21 s | 150–178 s. Never over 180 s, the limit for a Short |
+| 4–7 scenes, 3–5 shots per 20 s | About 18 beats and 80–95 shots. A cut about every 2 s (median 1.4–2.3 s). No shot over 6 s |
+| No camera teleports; a scene starts where the last one ended | Hard cuts are the language. Cut on the noun |
+| Narration in the present tense, 3–10 words a line, 4–7 lines | Past tense, first person, full sentences. 640–770 words at 235–268 words a minute. No pauses |
+| No overlays; text only on 3D signs | One-word captions, drawn by the engine (`captions` in `defineFilm`). Scenes still add no overlays of their own |
+| Hook in the first 1.5 s | The first three words are "In this town," over the teller's face |
+| The last line is a button, not a moral | The last line is the twist, then a 4–6 word "Subscribe …" line that belongs to the story |
+| One world, mounted once | One world, split into zones. Each shot names its zone |
 
-## Reusable kit
+Everything else in `AGENTS.md` still holds: one folder per film, real 3D sets, something moving in every shot, the
+picture shows what the voice says, deterministic code, atmosphere in the world, and the render policy.
 
-- [`maps/`](maps/README.md): neighborhood with houses/cars; one connected school entrance, hall, classroom **and bathroom**. The bathroom module is also exported separately for other layouts. Use the named coordinates; do not redraw buildings in scene files.
-- `creatures.tsx`: topic-specific, reusable egg, worm, dragon, phoenix, rank board and fire effect. It is shared by future InThisTown films, **not** duplicated inside one film folder.
-- [`reference#1/`](reference%231/README.md): the worked example **In This Town, Everyone Gets a Monster Egg. Mine Was Broken.** It includes a beat sheet, a frozen copy of the source, audio, and the finished MP4. Its live implementation is registered at `src/videos/in-this-town-monster-egg/`.
+## What makes this kind of video work
 
-## Start the next InThisTown short
+The evidence for each line is in `SCRIPT.md` and `SHOTS.md`.
 
-1. Write a premise of the form: “In this town, X decides Y. Mine is Z.” Name one mechanism for the underdog's strength.
-2. Copy the camera/beat discipline from `reference#1`, **not** its characters or script verbatim.
-3. Scaffold via `npm run new -- "Your Title"`; replace the hospital template world with `NeighborhoodMap` and `SchoolMap` from `maps/`. The connected `SchoolMap` already mounts its restroom; use `RestroomMap` alone only in a new layout with a matching doorway.
-4. Keep architecture in `world.tsx`/map components and performances in `sceneN.tsx`. The sample map is a starting place, not a license to leave an empty set.
-5. Use `film.audioCues` for precisely timed, diegetic narration/SFX, or a single `film.audio` for a mixed track. Keep the video intelligible muted.
-6. Run the checks. Render only when you have approval. Store a reference MP4 in your *own* reference folder when one is approved; do not commit `out/` or temporary stills.
+1. **The title is the first sentence.** "In this town," plus one impossible fact, said over the teller's face.
+2. **Questions before answers.** Three open questions in the first 11 seconds.
+3. **A tour before a problem.** 23 seconds of how the town lives, all of it things you can point a camera at.
+4. **The wish is a question.** "What was down there?" The viewer stays to get the answer, not to see a goal reached.
+5. **The answer is planted.** The teller asks, out loud, the question whose answer is the twist, 90 seconds early.
+6. **Try, fail, try again.** One cheap funny failure, then one attempt that works.
+7. **Slow down at the edge.** The moment before the act gets the most words of any beat after the tour.
+8. **Picture, then explanation.** The reveal is one short sentence about what he saw. The reason comes second.
+9. **A new picture every two seconds.** 87 shots, 8 words each. Every shot is moving.
+10. **The ending rewrites the beginning.** The prison was a shelter. Then four words, and it is over.
 
-The topic is intentionally independent of future folders such as `Topics/RichVsPoor`. Share the film engine; do not force every topic to share the same neighborhood or monsters.
+## Work order
+
+1. Write the premise as four sentences: *In this town, X. Nobody would explain rule Y. I broke it. Y was really Z.*
+   If Z does not change what X means, you do not have a story yet.
+2. Write `src/videos/<film>/narration.md` to the 18-beat sheet in `SCRIPT.md`. One line of script per shot.
+3. `python3 scripts/narration.py build <film> --estimate`. Fix length and rhythm now, while it is only text.
+4. **Get the script approved by the owner before anything is built.** Then record one clip per `# clip` line and
+   run `build` again without `--estimate`.
+5. Build the world in zones, then the cast, then the scenes: one `sceneN.tsx` per beat, one shot per script line.
+   Each shot has a `cam.*` move, a `note` and a `stage`.
+6. `npm run typecheck && npm run check`.
+7. One still per shot (`npm run shots -- <film>`), read as a contact sheet, fixed, and looked at again. Expect
+   three or four passes. Then the render. The render policy in `AGENTS.md` applies.
+
+## What is in this folder
+
+| | |
+|---|---|
+| `topic.json` | The numbers `npm run check` enforces for this topic |
+| `SCRIPT.md`, `SHOTS.md` | The two playbooks |
+| `reference/treehouse/` | The model video, its transcript, a shot log and contact sheets |
+| `reference/monster-egg-v1/` | The rejected first attempt, as a warning |
+| `creatures.tsx` | The monsters, built from boxes: egg, worm, dragon, phoenix, golem, the mother, chicken, rank sign, fire, smoke, sound rings. Shared by this topic's films |
+
+Films live in `src/videos/`. The first one is `in-this-town-monster-egg`: 93 shots, 2:57. Read its `world.tsx` for
+how a town is laid out in zones, its `kit.tsx` for the cast and helpers, and any `sceneN.tsx` for what a shot looks
+like. The street and school that version 1 kept in a `maps/` folder here were removed; the town now lives with the film.

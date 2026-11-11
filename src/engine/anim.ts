@@ -55,7 +55,14 @@ export type AnimName =
   | "panic"
   | "collapse"
   | "peek"
-  | "lookAround";
+  | "lookAround"
+  | "hold"
+  | "lift"
+  | "hug"
+  | "cheer"
+  | "laugh"
+  | "shrug"
+  | "ache";
 
 /** Walking clips whose phase is driven by ground distance, not the clock. */
 export type GaitName = "walk" | "run" | "creep" | "stagger";
@@ -480,6 +487,77 @@ export function getPose(name: AnimName, t: number): Pose {
       return p;
     }
 
+    case "hold": {
+      // Both hands out in front at belly height: carrying something that matters.
+      p.armR = [-0.78 + Math.sin(time * 1.4) * 0.02, 0, -0.16];
+      p.armL = [-0.78 - Math.sin(time * 1.4) * 0.02, 0, 0.16];
+      p.head = [0.14 + Math.sin(time * 0.7) * 0.03, Math.sin(time * 0.45) * 0.06, 0];
+      p.bodyY = Math.sin(time * 1.4) * 0.01;
+      return p;
+    }
+
+    case "lift": {
+      // Both arms straight up, holding something over the head for everyone to see.
+      p.armR = [-2.95 + Math.sin(time * 1.7) * 0.03, 0, 0.1];
+      p.armL = [-2.95 - Math.sin(time * 1.7) * 0.03, 0, -0.1];
+      p.head = [-0.3, 0, 0];
+      p.bodyPitch = -0.05;
+      p.bodyY = Math.sin(time * 1.7) * 0.008;
+      return p;
+    }
+
+    case "hug": {
+      // Arms closed around something held to the chest, head bowed over it.
+      p.armR = [-1.02, 0, -0.5];
+      p.armL = [-1.02, 0, 0.5];
+      p.bodyPitch = 0.04;
+      p.head = [0.2, 0, 0.05];
+      p.bodyY = Math.sin(time * 1.2) * 0.008;
+      return p;
+    }
+
+    case "cheer": {
+      const bounce = Math.abs(Math.sin(time * 5.2));
+      p.bodyY = bounce * 0.07;
+      p.armR = [-2.75 + Math.sin(time * 5.2) * 0.2, 0, 0.3];
+      p.armL = [-2.75 - Math.sin(time * 5.2) * 0.2, 0, -0.3];
+      p.head = [-0.15, Math.sin(time * 2) * 0.1, 0];
+      return p;
+    }
+
+    case "laugh": {
+      // One hand points at the joke, the other holds the belly.
+      const shake = Math.abs(Math.sin(time * 9));
+      p.bodyY = shake * 0.03;
+      p.bodyPitch = -0.14 + shake * 0.05;
+      p.armR = [-1.5 + shake * 0.08, 0, 0.1];
+      p.armL = [-0.7, 0, 0.55];
+      p.head = [-0.22 + shake * 0.08, 0, 0.05];
+      return p;
+    }
+
+    case "shrug": {
+      const lift = 0.5 + 0.5 * Math.sin(time * 3.1);
+      p.armR = [-0.55, 0, 0.5 + lift * 0.25];
+      p.armL = [-0.55, 0, -0.5 - lift * 0.25];
+      p.bodyY = lift * 0.025;
+      p.head = [0.02, Math.sin(time * 1.6) * 0.35, 0.08];
+      return p;
+    }
+
+    case "ache": {
+      // Bent double, one hand on the small of the back.
+      const wince = Math.sin(time * 7) * 0.02;
+      p.bodyPitch = 0.6 + wince;
+      p.bodyY = -0.05;
+      p.legR = [-0.6, 0, 0.06];
+      p.legL = [-0.6, 0, -0.06];
+      p.armR = [0.95, 0, 0.3];
+      p.armL = [-0.75, 0, -0.25];
+      p.head = [-0.5, 0, 0.1];
+      return p;
+    }
+
     default:
       return p;
   }
@@ -511,4 +589,11 @@ export const ANIM_NAMES: AnimName[] = [
   "collapse",
   "peek",
   "lookAround",
+  "hold",
+  "lift",
+  "hug",
+  "cheer",
+  "laugh",
+  "shrug",
+  "ache",
 ];

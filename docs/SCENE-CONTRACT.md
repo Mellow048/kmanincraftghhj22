@@ -309,3 +309,29 @@ export const scene2 = defineScene({
 ```
 
 Two shots, one motivated cut, both under 5 seconds. This is the normal shape. The fly-through is the exception, not the default.
+
+---
+
+## Story scenes (narrated topic films)
+
+A film cut to a recorded voice does not use `at`/`dur`. Its scenes are built with `storyScene(timing, { shots })`,
+where each shot names the script line it plays over (`cue`) and brings its own `stage`. Everything else in this page
+(the world, the looks, the avatar, strictly 3D) is unchanged. The full contract is in
+[`STORY-FILMS.md`](STORY-FILMS.md).
+
+Engine pieces that came with story films and are free for any film to use:
+
+| | |
+|---|---|
+| `cam.push / orbit / pan / truck / top` | A camera move as one line. Spread it into a shot |
+| `<Zone name>` and `shot.zone` | Draw only the part of the world a shot needs |
+| `shot.look` | Change the lighting preset for one shot |
+| `useActiveShot()` | The shot on screen, readable from `World` |
+| `<Vox kind size>` | A box tiled with 16×16 Minecraft block faces, one per metre |
+| `<PixelText>` | Pixel lettering on a 3D surface: signs, boards |
+| `<Tree>`, `<Torch>`, `<Clouds>` | Outdoor dressing |
+| avatar `arms="hold"` | Arms from one clip, legs from another: walk while carrying |
+| avatar `colors={{ torso, arms, legs }}` | A cast of many without a new outfit each |
+| clips `hold lift hug cheer laugh shrug ache` | Carrying, celebrating, mocking, not knowing, hurting |
+| faces `smile grin laugh frown uneasy brave fear wow ouch calm` | Faces for a kid, without the heavy brow of the horror set |
+| looks `overworld-day`, `overworld-night`, `overworld-storm`, `lava-shore` | Outdoor presets whose sun follows the subject |

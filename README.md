@@ -69,6 +69,18 @@ Then:
 
 ---
 
+## Topics: more than one kind of video
+
+Everything above is the base format, the 20-second cinematic short. A **topic** is another kind of video with its own
+rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules are not.
+
+| Topic | What it makes | First film |
+|---|---|---|
+| [In This Town](Topics/InThisTown/README.md) | A three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. About 90 cuts, every word captioned | `in-this-town-monster-egg` |
+
+A topic film says `topic: "<id>"` in `defineFilm`, and `npm run check` then lints it against that topic's numbers.
+Narrated topics are cut to a recorded voice; the pipeline is in [`docs/STORY-FILMS.md`](docs/STORY-FILMS.md).
+
 ## The rules
 
 The full contract is in `AGENTS.md`. The short version:
@@ -222,9 +234,19 @@ gh workflow run render.yml -f composition=the-hallway
 gh run watch
 ```
 
-The workflow uses `npm ci`, Remotion's `swangle` software WebGL renderer and
-2 concurrent frames. It does not need a GPU or any secrets beyond the built-in
-`GITHUB_TOKEN`.
+The workflow uses `npm ci` and Remotion's `swangle` software WebGL renderer. It
+does not need a GPU or any secrets beyond the built-in `GITHUB_TOKEN`.
+
+A three-minute topic film is 5,300 frames. Render it smaller with `scale`, and
+have the MP4 committed to the branch you run it from with `commit_to`:
+
+```bash
+gh workflow run render.yml --ref <branch> \
+  -f composition=in-this-town-monster-egg -f scale=0.667 \
+  -f commit_to=renders/in-this-town-monster-egg.mp4
+```
+
+`scale=0.667` turns 1080×1920 into 720×1280. The job may run for up to three hours.
 
 ---
 

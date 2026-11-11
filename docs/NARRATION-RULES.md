@@ -1,5 +1,9 @@
 # NARRATION RULES — talk like a person, not a summary
 
+> **Topic films.** This page is written for the base 20-second short. A topic can replace the length and the beat map
+> (`Topics/InThisTown/SCRIPT.md` has an 18-beat, 700-word sheet). The voice rules still hold: plain words, one teller,
+> nothing the picture does not show.
+
 This is the voice contract. Read it before writing a line. If a line breaks a rule here, rewrite the line.
 
 The test is one question: **would you say this out loud to a 9-year-old?**

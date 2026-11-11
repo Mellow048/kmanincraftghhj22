@@ -1,43 +1,46 @@
-import { clamp01, defineScene, smoothstep, useTime } from "../../engine";
-import { MonsterEgg } from "../../../Topics/InThisTown/creatures";
-import { MARKS } from "../../../Topics/InThisTown/maps";
-import { Hero } from "./actors";
+import { cam, storyScene } from "../../engine";
+import { Dragon, Golem, MonsterEgg } from "../../../Topics/InThisTown/creatures";
+import { CARRIED, EGG_COLORS, Hero, Kid, NestEggs, WEST, carried, timing } from "./kit";
 
-/** 0–3.8s: the bad egg is already in the frame before anyone explains the town. */
-export const scene1 = defineScene({
+/** HOOK. The promise in one breath: this town, these kids, monster eggs. */
+export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "The Crack",
-  duration: 3.8,
+  title: "Hook",
   shots: [
     {
-      at: 0,
-      dur: 3.8,
-      from: [0.5, 1.38, -5.15],
-      to: [-2.65, 1.8, -8.25],
-      target: [-0.55, 0.5, -2.7],
-      targetTo: [-1.35, 1.0, -2.65],
-      fov: 46,
-      fovTo: 78,
-      ease: "inOutSine",
-      note: "Begin on the jagged crack, then ease back and turn to find the one kid whose egg looks wrong. The street and rank post answer what is at stake.",
+      cue: "1.me",
+      ...cam.push({ on: [2, 1.0, 1.2], dist: 2.4, to: 1.9, yaw: -90, pitch: -6 }),
+      zone: "town",
+      look: "overworld-day",
+      note: "The teller first, close, waving. A golem looks over his shoulder and a dragon crosses the sky: the town in one frame.",
+      stage: (t) => (
+        <>
+          <Hero position={[2, 0, 1.2]} rotationY={WEST} animation="wave" face="smile" />
+          <Golem position={[8.2 - t * 1.1, 0, 2.3]} rotationY={WEST} walk={t * 1.1} />
+          <Dragon position={[26 - t * 4, 9.5, -2.2]} rotationY={WEST} scale={1.15} fly />
+        </>
+      ),
+    },
+    {
+      cue: "1.eggs",
+      ...cam.truck({ on: [-32.6, 0.95, 5.2], dist: 2.3, yaw: 0, pitch: 4, by: [3.1, 0, 0] }),
+      zone: "town",
+      look: "overworld-day",
+      note: "The words are 'every kid' and 'monster egg': slide down a row of kids, each one holding an egg of a different colour.",
+      stage: (t) => (
+        <>
+          <NestEggs />
+          {[0, 1, 2, 3, 4].map((i) => {
+            const at: [number, number, number] = [-33 + i * 0.95, Math.abs(Math.sin(t * 6 + i * 1.3)) * 0.05, 5.2];
+            return (
+              <group key={i}>
+                <Kid who={i} position={at} animation="hold" face={i % 2 ? "grin" : "smile"} />
+                <MonsterEgg position={carried(at, 0)} scale={CARRIED} color={EGG_COLORS[i][0]} spots={EGG_COLORS[i][1]} />
+              </group>
+            );
+          })}
+        </>
+      ),
     },
   ],
-  Component: () => {
-    const t = useTime();
-    const turn = smoothstep(clamp01((t - 2.3) / 1.5));
-    return (
-      <>
-        <MonsterEgg position={MARKS.egg} />
-        <Hero
-          position={MARKS.heroHome}
-          animation="idle"
-          face={t < 2.4 ? "worried" : "sad"}
-          rotationY={Math.PI * (1 - turn)}
-          headPitch={0.4 - turn * 0.23}
-          headYaw={turn * -0.2}
-          gaze={0}
-        />
-      </>
-    );
-  },
 });

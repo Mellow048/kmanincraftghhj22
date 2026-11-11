@@ -1,0 +1,26 @@
+{
+  "id": "in-this-town",
+  "name": "In This Town",
+  "folder": "Topics/InThisTown",
+  "profile": "story",
+  "reference": "Topics/InThisTown/reference/treehouse",
+  "film": {
+    "seconds": [150, 178],
+    "hardMaxSeconds": 180,
+    "shotSeconds": [0.4, 6.0],
+    "medianShotSeconds": [1.4, 2.3],
+    "wordsPerMinute": [235, 268],
+    "words": [640, 770],
+    "maxWordsPerShot": 18,
+    "opensWith": "In this town",
+    "lastLineContains": "subscribe",
+    "captions": true
+  },
+  "measuredFromReference": {
+    "seconds": 166.5,
+    "shots": 87,
+    "medianShotSeconds": 1.73,
+    "words": 718,
+    "wordsPerMinute": 259
+  }
+}

@@ -713,3 +713,204 @@ export function floorTex(base = "#4a5a63", repeat: [number, number] = [1, 1]): T
     repeat,
   );
 }
+
+// ---------------------------------------------------------------------------
+// Minecraft blocks: 16×16 tiles, one tile per metre. Used by <Vox> in blocks.tsx.
+// ---------------------------------------------------------------------------
+
+export type BlockKind =
+  | "grass"
+  | "dirt"
+  | "path"
+  | "cobble"
+  | "mossy"
+  | "stone"
+  | "stoneBrick"
+  | "planks"
+  | "darkPlanks"
+  | "log"
+  | "leaves"
+  | "bricks"
+  | "wool"
+  | "sand"
+  | "hay"
+  | "basalt"
+  | "obsidian"
+  | "magma"
+  | "lava";
+
+export const BLOCK_COLORS: Record<BlockKind, string> = {
+  grass: "#5fa03c",
+  dirt: "#7a5536",
+  path: "#b79d63",
+  cobble: "#8b8b8b",
+  mossy: "#8b8b8b",
+  stone: "#8e8e8e",
+  stoneBrick: "#878787",
+  planks: "#b48d52",
+  darkPlanks: "#5c3f24",
+  log: "#5d4428",
+  leaves: "#3f7f2d",
+  bricks: "#9c5240",
+  wool: "#e9e9e9",
+  sand: "#dccf9a",
+  hay: "#c9a53a",
+  basalt: "#3d3944",
+  obsidian: "#1e172b",
+  magma: "#2b1c1c",
+  lava: "#ff7a14",
+};
+
+/** A tileable 16×16 block face. `tint` replaces the block's base colour (dyed wool, autumn leaves). */
+export function blockTex(kind: BlockKind, tint?: string): THREE.CanvasTexture {
+  const base = tint ?? BLOCK_COLORS[kind];
+  const N = 16;
+  return texture(`block|${kind}|${base}`, N, N, (ctx) => {
+    const rand = mulberry32(hashString(kind) * 31 + 7);
+    const put = (x: number, y: number, color: string) => {
+      ctx.fillStyle = color;
+      ctx.fillRect(((x % N) + N) % N, ((y % N) + N) % N, 1, 1);
+    };
+    const noise = (amount: number, colour = base) => {
+      for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) put(x, y, shade(colour, (rand() * 2 - 1) * amount));
+    };
+    const speckle = (count: number, amount: number, colour = base) => {
+      for (let i = 0; i < count; i++) put(Math.floor(rand() * N), Math.floor(rand() * N), shade(colour, amount));
+    };
+    /** Rounded stones with dark joints: each pixel belongs to its nearest seed, wrapping at the edges. */
+    const stones = (seeds: number, joint: string, fill: (seed: number) => string) => {
+      const pts = Array.from({ length: seeds }, () => [rand() * N, rand() * N, rand()] as const);
+      const owner = (x: number, y: number) => {
+        let best = 0;
+        let bestD = 1e9;
+        pts.forEach(([px, py], i) => {
+          const dx = Math.min(Math.abs(x - px), N - Math.abs(x - px));
+          const dy = Math.min(Math.abs(y - py), N - Math.abs(y - py));
+          const d = dx * dx + dy * dy * 1.6;
+          if (d < bestD) {
+            bestD = d;
+            best = i;
+          }
+        });
+        return best;
+      };
+      for (let y = 0; y < N; y++) {
+        for (let x = 0; x < N; x++) {
+          const o = owner(x, y);
+          const edge = owner(x + 1, y) !== o || owner(x, y + 1) !== o;
+          put(x, y, edge ? joint : shade(fill(o), (rand() * 2 - 1) * 0.05 + (pts[o][2] - 0.5) * 0.22));
+        }
+      }
+    };
+
+    switch (kind) {
+      case "grass":
+        noise(0.13);
+        speckle(26, 0.22);
+        speckle(22, -0.24);
+        break;
+      case "leaves":
+        noise(0.16);
+        speckle(40, -0.42);
+        speckle(18, 0.25);
+        break;
+      case "dirt":
+        noise(0.1);
+        speckle(20, -0.25);
+        speckle(10, 0.2);
+        break;
+      case "path":
+        noise(0.08);
+        speckle(18, -0.18);
+        speckle(10, 0.16);
+        break;
+      case "sand":
+        noise(0.06);
+        speckle(14, -0.12);
+        break;
+      case "wool":
+        noise(0.05);
+        for (let y = 0; y < N; y += 4) for (let x = 0; x < N; x++) if (rand() > 0.35) put(x, y + (x % 2), shade(base, -0.1));
+        break;
+      case "stone":
+        noise(0.06);
+        for (let i = 0; i < 12; i++) {
+          const x = Math.floor(rand() * N);
+          const y = Math.floor(rand() * N);
+          const len = 2 + Math.floor(rand() * 4);
+          for (let k = 0; k < len; k++) put(x + k, y, shade(base, -0.16));
+        }
+        break;
+      case "basalt":
+        noise(0.1);
+        for (let x = 0; x < N; x++) if (rand() > 0.55) for (let y = 0; y < N; y++) if (rand() > 0.3) put(x, y, shade(base, -0.28));
+        break;
+      case "obsidian":
+        noise(0.12);
+        speckle(16, 0.3, "#5b3f8c");
+        break;
+      case "cobble":
+        stones(9, shade(base, -0.5), () => base);
+        break;
+      case "mossy":
+        stones(9, shade(base, -0.5), (seed) => (seed % 3 === 0 ? "#5c8a3a" : base));
+        speckle(22, 0, "#6a9a40");
+        break;
+      case "magma":
+        stones(8, "#ff8a1e", () => base);
+        speckle(10, 0, "#ffd04a");
+        break;
+      case "stoneBrick":
+        for (let y = 0; y < N; y++) {
+          for (let x = 0; x < N; x++) {
+            const row = Math.floor(y / 8);
+            const mortar = y % 8 === 7 || (x + row * 8) % 16 === 15;
+            const top = y % 8 === 0;
+            put(x, y, mortar ? shade(base, -0.42) : shade(base, (rand() * 2 - 1) * 0.05 + (top ? 0.12 : 0)));
+          }
+        }
+        break;
+      case "bricks":
+        for (let y = 0; y < N; y++) {
+          for (let x = 0; x < N; x++) {
+            const row = Math.floor(y / 4);
+            const mortar = y % 4 === 3 || (x + (row % 2) * 4) % 8 === 7;
+            put(x, y, mortar ? "#c9bcae" : shade(base, (rand() * 2 - 1) * 0.09));
+          }
+        }
+        break;
+      case "planks":
+      case "darkPlanks": {
+        const joints = [3, 11, 7, 14];
+        for (let y = 0; y < N; y++) {
+          const row = Math.floor(y / 4);
+          const tone = (((row * 7) % 5) - 2) * 0.03;
+          for (let x = 0; x < N; x++) {
+            const seam = y % 4 === 3 || x === joints[row % 4];
+            put(x, y, seam ? shade(base, -0.34) : shade(base, tone + (rand() * 2 - 1) * 0.045));
+          }
+        }
+        break;
+      }
+      case "log":
+        for (let x = 0; x < N; x++) {
+          const column = (rand() * 2 - 1) * 0.2;
+          for (let y = 0; y < N; y++) put(x, y, shade(base, column + (rand() * 2 - 1) * 0.06 - (rand() > 0.9 ? 0.25 : 0)));
+        }
+        break;
+      case "hay":
+        for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) put(x, y, shade(base, (y % 3 === 0 ? -0.2 : 0.05) + (rand() * 2 - 1) * 0.08));
+        break;
+      case "lava":
+        for (let y = 0; y < N; y++) {
+          for (let x = 0; x < N; x++) {
+            const a = (x / N) * Math.PI * 2;
+            const b = (y / N) * Math.PI * 2;
+            const v = Math.sin(a + Math.sin(b) * 1.3) + Math.sin(b * 2 + Math.cos(a) * 1.1) + (rand() - 0.5) * 0.5;
+            put(x, y, v > 1.0 ? "#ffe066" : v > 0.3 ? "#ffab1e" : v > -0.7 ? "#f5700f" : "#c93c08");
+          }
+        }
+        break;
+    }
+  });
+}

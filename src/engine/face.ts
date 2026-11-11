@@ -26,7 +26,18 @@ export type FaceName =
   | "crying"
   | "hollow"
   | "dizzy"
-  | "hurt";
+  | "hurt"
+  // Story faces: no heavy brow, so they read as a kid and not as a threat.
+  | "smile"
+  | "grin"
+  | "laugh"
+  | "frown"
+  | "uneasy"
+  | "brave"
+  | "fear"
+  | "wow"
+  | "ouch"
+  | "calm";
 
 const FACES: Record<FaceName, string[]> = {
   neutral: [
@@ -169,6 +180,107 @@ const FACES: Record<FaceName, string[]> = {
     "..m..m..",
     "...mm...",
   ],
+  // A mouth that curves UP at the corners is a smile; one that curves down is a frown.
+  smile: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "........",
+    ".wp..pw.",
+    "........",
+    "..m..m..",
+    "...mm...",
+    "........",
+  ],
+  grin: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "........",
+    ".wp..pw.",
+    "........",
+    "..rrrr..",
+    "...rr...",
+    "........",
+  ],
+  laugh: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "........",
+    ".pp..pp.",
+    "........",
+    "..rrrr..",
+    "..rttr..",
+    "...rr...",
+  ],
+  frown: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "..B..B..",
+    ".B....B.",
+    ".wp..pw.",
+    "........",
+    "...mm...",
+    "..m..m..",
+  ],
+  uneasy: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "..B..B..",
+    ".B....B.",
+    ".wp..pw.",
+    "........",
+    "...mm...",
+    "........",
+  ],
+  brave: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    ".b....b.",
+    "..b..b..",
+    ".wp..pw.",
+    "........",
+    "..mmmm..",
+    "........",
+  ],
+  fear: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "..B..B..",
+    ".ww..ww.",
+    ".wp..pw.",
+    "........",
+    "...rr...",
+    "...rr...",
+  ],
+  wow: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "........",
+    ".ww..ww.",
+    ".wp..pw.",
+    "........",
+    "...rr...",
+    "........",
+  ],
+  ouch: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    ".b....b.",
+    "..b..b..",
+    ".pp..pp.",
+    "........",
+    "..rrrr..",
+    "..rrrr..",
+  ],
+  calm: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "........",
+    "........",
+    ".pp..pp.",
+    "........",
+    "...mm...",
+    "........",
+  ],
 };
 
 const CACHE = new Map<string, THREE.CanvasTexture>();
@@ -179,6 +291,8 @@ const PALETTE = (skin: string, hair: string) => ({
   h: hair,
   H: shade(hair, -0.25),
   b: shade(hair, -0.45),
+  // A soft brow: a shadow on the skin, not a black bar. For faces that should read as worry, not threat.
+  B: shade(skin, -0.3),
   w: "#efece2",
   p: "#161a22",
   m: "#7a4038",

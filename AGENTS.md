@@ -12,6 +12,20 @@ This file is the hard contract. Read it before touching a film. Then read:
 
 If a rule here conflicts with a clever idea, the rule wins. If the idea is genuinely better, change the rule in this file first, then build it.
 
+### Topics: when the film is not a 20-second short
+
+This file describes the **base format**: the 20-second cinematic short. The framework also makes other kinds of video,
+and each kind is a **topic** with its own folder in `Topics/` and its own rules.
+
+- A film that says `topic: "<id>"` in `defineFilm` follows that topic's `README.md` wherever it differs from this file.
+  Example: `Topics/InThisTown/` films run three minutes, are narrated, cut about 90 times, and caption every word.
+- A film with no `topic` follows this file unchanged.
+- If the task names a topic, read `Topics/README.md` and that topic's `README.md` **before** this file's sections 1–3.
+- These always apply, topic or not: strictly 3D (rule 9), detailed lit sets (rules 10–11), shot notes (section 5),
+  the render policy (section 9), API discipline (section 10).
+
+`npm run check` reads the `topic` field and applies the right rule set to each film.
+
 ---
 
 ## 1. The thirteen hard rules
@@ -202,6 +216,14 @@ src/videos/<slug>/
   film.tsx        metadata, look, post, World, scene order
 ```
 
+A narrated topic film (see `docs/STORY-FILMS.md`) adds three files to the same folder:
+
+```
+  narration.md    the script: one [cue] line per shot
+  timing.json     when each word is said. Written by scripts/narration.py; never edited by hand
+  kit.tsx         this film's cast, props and helpers (replaces actors.tsx)
+```
+
 `src/engine/` is the shared toolbox. Do not fork a prop into a video folder because it is "faster". Add the prop to `src/engine/props.tsx`, export it from `src/engine/index.ts`, then use it everywhere. Consistency is the product.
 
 ---
@@ -341,9 +363,13 @@ npm run typecheck           # TypeScript
 npm run check               # director/contract lint
 npm run still -- the-title out/frame.png --frame=0
 npm run render -- the-title out/the-title.mp4
+
+# narrated topic films (docs/STORY-FILMS.md)
+python3 scripts/narration.py build the-title    # recordings → narration.mp3 + timing.json
+npm run shots -- the-title --only 3.            # one still per shot: the review tool for 90-shot films
 ```
 
-`npm run still` and `npm run render` are **permission-only** on the user's machine.
+`npm run still`, `npm run shots` and `npm run render` are **permission-only** on the user's machine.
 
 ---
 
