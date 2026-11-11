@@ -41,8 +41,8 @@ export const scene2 = defineScene({
         <Sister position={MARKS.sisterGate} rotationY={Math.PI * (1 - towardSchool)} face="surprised" headYaw={0.2} />
         <Dragon position={MARKS.dragonGate} scale={0.82} time={t + 3.8} />
         <Phoenix position={MARKS.phoenixGate} scale={0.83} time={t + 3.8} />
-        <RankDisplay position={[1.38, 2.35, 2.7]} rank="1M" width={0.85} />
-        <RankDisplay position={[-1.5, 2.45, 2.5]} rank="10K" width={0.85} />
+        <RankDisplay position={[0.55, 2.62, 1.05]} rank="1M" width={0.85} />
+        <RankDisplay position={[-1.75, 3.5, 1.2]} rank="10K" width={0.85} />
       </>
     );
   },

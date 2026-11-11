@@ -3,6 +3,7 @@ import {
   NoticeBoard, Sign, WallClock, WindowUnit, pixelTex,
 } from "../../../src/engine";
 import type { Vec3 } from "../../../src/engine";
+import { RestroomMap } from "./Restroom";
 
 /** School desk and chair with legs, drawer and an open book; room for a walking aisle. */
 export const ClassDesk: React.FC<{ position: Vec3; rotationY?: number; book?: string }> = ({
@@ -51,16 +52,24 @@ export const SchoolMap: React.FC = () => (
     <Block position={[0, 3.64, 6.1]} size={[6.2, 0.12, 5.1]} color="#d8d8c8" />
     <CeilingTiles position={[0, 3.56, 6.1]} size={[6.2, 5.1]} />
     <Block position={[-3.15, 1.8, 6.1]} size={[0.12, 3.6, 5.1]} color="#c3d2c6" />
-    <Block position={[3.15, 1.8, 6.1]} size={[0.12, 3.6, 5.1]} color="#c3d2c6" />
+    {/* A real cut in the right wall leads to the bathroom, not a decal. */}
+    <Block position={[3.15, 1.8, 4.425]} size={[0.12, 3.6, 1.75]} color="#c3d2c6" />
+    <Block position={[3.15, 1.8, 7.925]} size={[0.12, 3.6, 1.45]} color="#c3d2c6" />
+    <Block position={[3.15, 2.98, 6.25]} size={[0.12, 1.24, 1.9]} color="#c3d2c6" />
     <Block position={[-3.07, 0.52, 6.1]} size={[0.07, 1.04, 5.1]} color="#61847f" />
-    <Block position={[3.07, 0.52, 6.1]} size={[0.07, 1.04, 5.1]} color="#61847f" />
+    <Block position={[3.07, 0.52, 4.425]} size={[0.07, 1.04, 1.75]} color="#61847f" />
+    <Block position={[3.07, 0.52, 7.925]} size={[0.07, 1.04, 1.45]} color="#61847f" />
     <Block position={[-3.05, 0.05, 6.1]} size={[0.08, 0.1, 5.1]} color="#426466" />
-    <Block position={[3.05, 0.05, 6.1]} size={[0.08, 0.1, 5.1]} color="#426466" />
+    <Block position={[3.05, 0.05, 4.425]} size={[0.08, 0.1, 1.75]} color="#426466" />
+    <Block position={[3.05, 0.05, 7.925]} size={[0.08, 0.1, 1.45]} color="#426466" />
+    <RestroomMap position={[3.15, 0, 6.25]} rotationY={Math.PI / 2} />
+    <Block position={[3.15, 0.03, 6.25]} size={[0.4, 0.06, 2.0]} color="#e0d2b0" />
+    <Sign position={[2.72, 2.66, 5.45]} rotationY={Math.PI} width={0.7} height={0.35} title="RESTROOM" bg="#e8e3c9" fg="#345f60" />
     <Block position={[0, 0.014, 6.1]} size={[0.1, 0.012, 5.0]} color="#dbd0a9" />
     {[4.25, 6.2, 8.1].map((z) => (
       <group key={z}>
         <Block position={[-3.04, 1.75, z]} size={[0.04, 2.6, 0.08]} color="#5f8078" />
-        <Block position={[3.04, 1.75, z]} size={[0.04, 2.6, 0.08]} color="#5f8078" />
+        {z !== 6.2 && <Block position={[3.04, 1.75, z]} size={[0.04, 2.6, 0.08]} color="#5f8078" />}
       </group>
     ))}
     <Locker position={[-2.72, 0, 5.05]} rotationY={Math.PI / 2} width={1.1} height={2.1} color="#739ca0" doors={2} />

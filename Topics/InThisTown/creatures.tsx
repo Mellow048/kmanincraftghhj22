@@ -112,9 +112,10 @@ export const Dragon: React.FC<{
   time?: number;
   bow?: number;
   wingsFold?: number;
+  facing?: number;
   color?: string;
-}> = ({ position, scale = 1, time = 0, bow = 0, wingsFold = 0, color = "#615b9e" }) => (
-  <group position={position} scale={scale} rotation-y={Math.PI + bow * 0.14}>
+}> = ({ position, scale = 1, time = 0, bow = 0, wingsFold = 0, facing = Math.PI, color = "#615b9e" }) => (
+  <group position={position} scale={scale} rotation-y={facing + bow * 0.14}>
     <Block position={[0, 0.88, 0]} size={[0.77, 0.82, 1.14]} color={color} />
     <Block position={[0, 1.33 - bow * 0.35, 0.63]} size={[0.68, 0.61, 0.62]} color="#756cb3" />
     <Block position={[0, 1.15 - bow * 0.35, 1.03]} size={[0.56, 0.23, 0.47]} color="#9080bc" />
@@ -173,6 +174,40 @@ export const Phoenix: React.FC<{
   </group>
 );
 
+/** Wide pixel sign with a number that actually fills the plate at mobile size. */
+const RANK_TEXTURES = new Map<string, THREE.CanvasTexture>();
+function rankTexture(rank: string): THREE.CanvasTexture {
+  const cached = RANK_TEXTURES.get(rank);
+  if (cached) return cached;
+  const canvas = document.createElement("canvas");
+  canvas.width = 128;
+  canvas.height = 80;
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "#f0e3be";
+  ctx.fillRect(0, 0, 128, 80);
+  ctx.strokeStyle = "#bb6d58";
+  ctx.lineWidth = 4;
+  ctx.strokeRect(3, 3, 122, 74);
+  ctx.fillStyle = "#476d67";
+  ctx.fillRect(8, 8, 112, 8);
+  ctx.fillStyle = "#263e45";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = "bold 11px monospace";
+  ctx.fillText("MONSTER RANK", 64, 12);
+  ctx.font = `bold ${rank.length > 4 ? 38 : rank.length > 2 ? 55 : 65}px monospace`;
+  ctx.fillText(rank, 64, 46, 114);
+  ctx.fillStyle = "#a45c4d";
+  ctx.fillRect(34, 70, 60, 3);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.magFilter = THREE.NearestFilter;
+  texture.minFilter = THREE.NearestFilter;
+  texture.needsUpdate = true;
+  RANK_TEXTURES.set(rank, texture);
+  return texture;
+}
+
 /** Diegetic, framed score plate; infinity is a real 3D tube, never an HTML overlay. */
 export const RankDisplay: React.FC<{
   position: Vec3;
@@ -188,6 +223,7 @@ export const RankDisplay: React.FC<{
     }), true, "centripetal",
   ), []);
   const infinite = rank === "∞";
+  const scoreTex = useMemo(() => infinite ? null : rankTexture(rank), [infinite, rank]);
   return (
     <group position={position} rotation-y={rotationY}>
       <Block position={[0, 0, -0.045]} size={[width + 0.14, width * 0.63 + 0.14, 0.11]} color={infinite ? "#456765" : "#445d63"} />
@@ -201,7 +237,10 @@ export const RankDisplay: React.FC<{
           <Glow position={[0, 0.05, 0.22]} size={1.9} color="#83ffd4" opacity={0.22} />
         </group>
       ) : (
-        <Sign position={[0, 0, 0.055]} width={width} height={width * 0.61} title={rank} subtitle="RANK" bg="#f4e7be" fg="#273f48" accent="#bc6652" lit={0.18 + glow * 0.15} frame={false} />
+        <mesh position={[0, 0, 0.055]} castShadow>
+          <planeGeometry args={[width, width * 0.61]} />
+          <meshStandardMaterial map={scoreTex} emissiveMap={scoreTex} emissive="#ffffff" emissiveIntensity={0.11 + glow * 0.11} roughness={0.95} />
+        </mesh>
       )}
       {glow > 0.01 && !infinite && <Glow position={[0, 0, 0.24]} size={width * 1.4} color="#80e9c4" opacity={glow * 0.1} />}
     </group>

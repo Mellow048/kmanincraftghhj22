@@ -28,7 +28,7 @@ For a 20-second film, compress these into **4–7 beats, at most five shots**, w
 
 ## Reusable kit
 
-- [`maps/`](maps/README.md): neighborhood + houses/cars, connected school entrance/hall/classroom, and an optional restroom. Use the exported coordinates; do not redraw the same building in scene files.
+- [`maps/`](maps/README.md): neighborhood with houses/cars; one connected school entrance, hall, classroom **and bathroom**. The bathroom module is also exported separately for other layouts. Use the named coordinates; do not redraw buildings in scene files.
 - `creatures.tsx`: topic-specific, reusable egg, worm, dragon, phoenix, rank board and fire effect. It is shared by future InThisTown films, **not** duplicated inside one film folder.
 - [`reference#1/`](reference%231/README.md): the worked example **In This Town, Everyone Gets a Monster Egg. Mine Was Broken.** It includes a beat sheet, a frozen copy of the source, audio, and the finished MP4. Its live implementation is registered at `src/videos/in-this-town-monster-egg/`.
 

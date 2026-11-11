@@ -97,7 +97,7 @@ export const NeighborhoodMap: React.FC = () => (
     <House position={[5.7, 0, -6.7]} rotationY={-Math.PI / 2} walls="#bfd4c1" roof="#ad6959" name="14" />
     <House position={[5.7, 0, -1.1]} rotationY={-Math.PI / 2} walls="#c7d4d8" roof="#606f83" name="16" />
     <TownCar position={[3.55, 0, -3.2]} rotationY={0.1} color="#cd7963" />
-    <TownCar position={[-3.75, 0, -7.5]} rotationY={Math.PI} color="#6b9ea0" />
+    <TownCar position={[-3.05, 0, -4.3]} rotationY={Math.PI} color="#6b9ea0" />
     <StreetTree position={[-8.1, 0, -8.3]} />
     <StreetTree position={[8.0, 0, -2.8]} leaf="#71a774" />
     <Streetlamp position={[3.4, 0, 0.8]} />

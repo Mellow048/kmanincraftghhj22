@@ -7,8 +7,9 @@ import { NeighborhoodMap, SchoolMap, MARKS } from "../../../Topics/InThisTown/ma
  * ONE WORLD, mounted once for the film. 1 unit = 1 metre, y=0 is the floor.
  * STREET x -2.8..2.8, z -10..3.55; hero's house x=-5.5,z=-4.5.
  * SCHOOL front opening x -1.15..1.15 at z=3.55; hall z=3.55..8.65.
+ * RESTROOM doorway x=3.15,z=6.25 leads right to a complete bathroom.
  * CLASSROOM opening x -1.15..1.15 at z=8.65; room x -4.5..4.5,z=8.65..16.25.
- * The camera enters through BOTH real doorways. Nothing teleports or owns its own canvas.
+ * The camera enters through BOTH main doorways. Nothing teleports or owns its own canvas.
  */
 export const World: React.FC = () => (
   <group>

@@ -2,5 +2,7 @@ node_modules
 out
 .remotion
 *.mp4
+# A requested reference film is a deliverable, not a disposable render.
+!Topics/InThisTown/reference#1/monster-egg.mp4
 *.mov
 .DS_Store
