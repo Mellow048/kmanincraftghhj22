@@ -1,6 +1,6 @@
 # Freeze Bell — production record
 
-**Narration, pictures and sound are built and checked. The final cloud render is next; no finished MP4 has been delivered yet.**
+**Rendered and checked. The complete narrated, captioned and sound-designed film is ready for owner review.** A full-HD master is published, and a smaller complete MP4 is available in this repository. Sound was measured, not listened to.
 
 ## Approval and source
 
@@ -8,6 +8,7 @@
 - The spoken script in `narration.md` is unchanged: **697 words, 18 beats, 82 shots, 9 recording groups**.
 - Approved narration-block SHA-256: `46e51b9c116ffe6730e4f672abe451a08fc07d70440c73baedc31cc62ef63c5e`.
 - Framework base: `main` at `74296927c66583a7903dc26671e1283d5df32957`, merged into active branch `arena/90c86f33-kmanincraftghhj22`. Existing engine, approved pack models and reference-film sources remain unchanged.
+- Completed a full refresh reading of all **28 Markdown files in that main revision**, in addition to the branch-owned pelican documentation and this film's script/production notes. The historical 21-file reading belonged to the earlier capability test.
 
 ## Measured narration and cut
 
@@ -43,7 +44,7 @@ All 82 shots are implemented in `scene1.tsx`–`scene18.tsx` and registered in `
 - New reusable props are additive in `Topics/InThisTown/everyday.tsx`, exported and catalogued by the topic. They are **not yet owner-reviewed**.
 - Multiple estimated-clock picture passes repaired ground contact, blocked faces, the dark pocket behind the boards, outside lighting, the lid's rope fastening and moving hinge straps, and the empty stool's visibility.
 - **Measured-clock review:** rendered and viewed **all 82 midpoint stills** at 270 × 480, plus **26 paired 10%/90% frames** for freeze/restart, hay fall and burial, packing, crawl, rope jerk, torch/light change, screw climb, lid replay/closure, hand shadow and ending.
-- The earlier half-scale box/boy/rope reveal frames and six final mechanism endpoints were also viewed. Final delivery still requires checking the encoded MP4; these stills are not a substitute for playback or owner approval.
+- The earlier half-scale box/boy/rope reveal frames and six final mechanism endpoints were also viewed. After rendering, **all 82 midpoint images extracted from the encoded MP4** were viewed too. Frame review and numerical motion checks are not a human full-motion playback or owner approval.
 - A separate Three.js transform check placed the right lid rail inside the giant's terminal block-hand region at the held pose. The rail point maps to approximately `[0.0086, -0.6309, -0.0553]` in arm-local coordinates, inside the distal `y=-0.675…-0.5625` region. This verifies contact geometrically, not merely from the camera's apparent overlap. The approved Player model was not modified.
 
 ### Continuity contract
@@ -91,13 +92,48 @@ The effects report and four-track timeline were inspected; stems are available a
 - Sampled before/after renders were pixel-identical at scale 0.25: Same Face frames 0/1240 and Monster Egg frames 0/4600. This is **four sampled frames**, not a full per-shot regression sweep.
 - Picture review and numerical audio checks are not an owner approval or a listening review.
 
-## Remaining delivery work
+## Render and delivery — 12 November 2026
 
-1. Commit/push this production only to the active Arena branch.
-2. Dispatch `.github/workflows/render.yml` for `in-this-town-freeze-bell`, **scale 1**. The existing workflow renders on GitHub, never on the owner's laptop, and joins H.264 chunks with an AAC stereo track.
-3. Retrieve and probe the actual rendered MP4: dimensions, frame count/rate, duration, codecs, audio presence, decoding and representative frames. Keep the full-quality release master separate from any size-limited branch copy.
-4. Present the actual film, not a contact sheet, silent animatic, script or reference film. State clearly if a downloadable branch copy was re-encoded, and link the full-resolution master.
-5. Disclose that sound was measured, not heard, and ask for a phone-speaker listen. Update this record with the actual render run and final probe results.
+The existing cloud workflow completed successfully; no render was run on the owner's laptop.
+
+- Production source commit: `08c323ef677e1e16ee5036b0d233b80ebcc638cc`.
+- [Render run 21 — success](https://github.com/Mellow048/kmanincraftghhj22/actions/runs/43203227682): scale **1**, **19 chunks**, **4,954 frames**, 1080 × 1920 master.
+- [Download the full-HD master](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-21/in-this-town-freeze-bell.mp4) · [Release page](https://github.com/Mellow048/kmanincraftghhj22/releases/tag/render-21).
+- Complete local playback/download copy: [`renders/in-this-town-freeze-bell.mp4`](../../../renders/in-this-town-freeze-bell.mp4), committed by the workflow as `e878a92` on the same Arena branch.
+
+| File | Size | Resolution | Integrity |
+|---|---|---|---|
+| Release master | 91,536,052 bytes | 1080 × 1920, per cloud render/release metadata | Published asset state `uploaded`; GitHub-reported SHA-256 `74a9e4721474113ae2dbf6e86cdf6791d5a31e1b3fee1db1a6444d98aa0a883c` |
+| Repository copy | 57,751,995 bytes | **720 × 1280**, independently probed | Locally computed SHA-256 `03407a4b8d759e5269f4a03ea7a0872249e27f84561b51d142030754495752d1` |
+
+The master exceeded the requested 60 MiB branch-copy limit, so the existing workflow re-encoded the repository copy at 720 pixels wide. **It is not the 1080p master.** Both are complete films with the same narration, captions, music and effects. Do not describe the repository file as full HD.
+
+The sandbox cannot reach GitHub's release-asset download host (the download returned EOF). Consequently, the full-HD master was **not independently downloaded or decoded locally**. Its published size/digest and successful workflow are verified through the GitHub API. The tests below are of the actual repository copy, retrieved by fast-forwarding the same branch, not of a reference film.
+
+### Encoded MP4 validation
+
+| Check on the repository copy | Result |
+|---|---|
+| Video | H.264, `yuv420p`, **720 × 1280 at 30 fps** |
+| Audio | AAC stereo, 48 kHz; the full authored mix, not voice only |
+| Decoded video frames | **4,954 / 4,954** |
+| Video duration | **165.133333 s** |
+| Audio/container duration | 165.145 s (11.7 ms encoder padding) |
+| Full video + audio decode | **0 errors** |
+| MP4 streaming | Fast start: `moov` before `mdat` |
+| Black segments | None at 98% near-black for 0.1 s |
+| Unexpected frozen segments | None lasting over 0.8 s at the analysis threshold |
+| Encoded soundtrack vs committed mix | Correlation **0.999345**, best alignment **0.0 ms** offset |
+| Worst five-second audio window | Correlation **0.998874** |
+| All 18 chunk joins | Worst one-second join-window correlation **0.997160**; no missing or shifted audio chunk detected |
+| Encoded loudness | **−14.83 LUFS**, true peak **−2.85 dB** |
+| Encoded picture review | **82 / 82** cue-midpoint images extracted and viewed |
+
+The audio comparison decodes both the MP4 and committed mix to the same mono sample clock, finds their lag, and compares the whole track, five-second windows, and each cloud-chunk boundary. It is an identity/synchronization test, **not a listening test**. No claim of human listening or full-motion playback is made.
+
+### Owner review
+
+The requested complete film is available above. The remaining review is the owner's: **listen once on a phone speaker** for voice delivery, the bell/scrape character, music and effect balance. Picture and new-prop approval are also pending. Do not promote this film to an approved topic model until the owner says so.
 
 ## Reproducing checks
 
