@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Brother, CHAOS, FireLight, Folk, Hero, MOM_FAR, Mom, NORTH, PLACE, Pig, SOUTH, Sock, WEST, Wisps, ZONE, ease, faceOf, ramp, timing, villagerFace, waddle, wordAt } from "./kit";
+import { Blaze, Brother, CHAOS, FireLight, Folk, Hero, MOM_FAR, Mom, NORTH, PLACE, Pig, SOUTH, Sock, WEST, Wisps, ZONE, ease, faceOf, ramp, timing, villagerFace, waddle, wordAt } from "./kit";
 import { NEAR, STOOD } from "./scene12";
 
 const PEN = PLACE.pen;
@@ -94,6 +94,9 @@ export const scene13 = storyScene(timing, {
       note: "What he sees: the houses across the street with every roof alight and smoke pouring up, and along the road below them the whole town running one way.",
       stage: (t, { p }) => (
         <>
+          <Blaze position={[15, 4.6, 11]} size={5} height={3.2} count={14} seed={2} />
+          <Blaze position={[13.4, 3.6, 9.6]} size={2.4} height={2.2} count={8} seed={5} />
+          <FireLight position={[13, 3, 7.5]} power={30} reach={14} seed={4} />
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <Folk key={i} n={i} {...waddle([4 + i * 1.7, 0, 3 + (i % 3) * 0.9], [9 + i * 1.7, 0, 3.3 + (i % 3) * 0.9], p)} lean={0.25} />
           ))}

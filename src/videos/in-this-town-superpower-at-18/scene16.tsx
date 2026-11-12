@@ -40,13 +40,13 @@ export const scene16 = storyScene(timing, {
       look: CHAOS,
       note: "We go with him: a red shirt turning over in the air above the burning town, the bell and the well going by underneath, and then the pig pen coming up fast and a wall of mud.",
       stage: (t, { p }) => {
-        const k = 0.5 - 0.5 * Math.cos(Math.PI * Math.min(1, p / 0.9));
-        const pos: Vec3 = [FROM[0] + (MUD[0] - FROM[0]) * k, FROM[1] * (1 - k) + Math.sin(k * Math.PI) * 6.5, FROM[2] + (MUD[2] - FROM[2]) * k];
+        const k = 0.5 - 0.5 * Math.cos(Math.PI * p);
+        const pos: Vec3 = [FROM[0] + (MUD[0] - FROM[0]) * k, FROM[1] * (1 - k) + Math.sin(k * Math.PI) * 2.4, FROM[2] + (MUD[2] - FROM[2]) * k];
         return (
           <>
             <Hero position={pos} rotationY={-1.1 + t * 5} animation="fall" face="scared" />
-            <Bits position={[MUD[0], 0.2, MUD[2]]} t={(p - 0.9) * 3.4} color="#5a4030" count={20} seed={5} power={1.8} />
-            <Bits position={[MUD[0] + 0.3, 0.2, MUD[2] - 0.2]} t={(p - 0.9) * 3.4 - 0.05} color="#4a3324" count={14} seed={7} power={1.3} />
+            <Bits position={[MUD[0], 0.2, MUD[2]]} t={(p - 0.93) * 3.4} color="#5a4030" count={20} seed={5} power={1.8} />
+            <Bits position={[MUD[0] + 0.3, 0.2, MUD[2] - 0.2]} t={(p - 0.93) * 3.4 - 0.05} color="#4a3324" count={14} seed={7} power={1.3} />
           </>
         );
       },

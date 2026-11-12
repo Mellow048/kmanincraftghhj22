@@ -35,7 +35,7 @@ export const scene11 = storyScene(timing, {
         <>
           <BedBox position={BED} />
           <Hero position={room(1.3, 0, -1.55)} rotationY={NORTH} animation="scared" />
-          <Block position={[WINDOW[0], WINDOW[1], WINDOW[2] - 0.02]} size={[1.06, 1.06, 0.04]} color="#ff8a2a" emissive="#ff7a1e" emissiveIntensity={0.7} castShadow={false} />
+          <Block position={[WINDOW[0], WINDOW[1], WINDOW[2] - 0.02]} size={[1.06, 1.06, 0.04]} color="#ff8a2a" emissive="#ff7a1e" emissiveIntensity={0.3} castShadow={false} />
           <Wisps position={[WINDOW[0], 1.9, WINDOW[2] + 0.5]} t={t + 3} count={10} reach={2.4} size={0.6} opacity={0.55} color="#4a403a" dir={[-1, 0.2, 0.4]} seed={4} />
           <FireLight position={room(1.3, 1.9, -1.6)} power={18} reach={8} seed={3} />
         </>

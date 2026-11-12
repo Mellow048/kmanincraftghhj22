@@ -70,7 +70,7 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Tip position={[-2, 0, 3]} rotationY={NORTH + (1 - k) * 5} />
-            {t >= NORTHW ? <North position={[-2, 0.04, 1.75]} /> : null}
+            {t >= NORTHW ? <North position={[-1.1, 0.04, 2.3]} /> : null}
           </>
         );
       },
