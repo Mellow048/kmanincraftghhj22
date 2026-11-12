@@ -5,6 +5,12 @@ it"). The six clips are recorded (`public/audio/in-this-town-nobody-looked-at-th
 them (`timing.json`), and the sound is mixed (`sound.json`). Changing a word now means recording that clip again,
 rebuilding the timing, and checking every shot and every effect that hangs on the words after it.
 
+**Delivered 2026-11-12** as render 24: 1080×1920, 3351 frames, 1:51.7. The master is the release asset
+(`render-24`, 80 MB); `renders/in-this-town-nobody-looked-at-the-moon.mp4` is a 720×1280 copy that fits in the
+repository, and `renders/in-this-town-nobody-looked-at-the-moon-shots.jpg` is one frame of it per shot. Measured on
+the delivered file: the sound sits 0.0 ms from `mix.mp3`, −15.0 LUFS, true peak −1.2 dB. **Nobody has listened to
+the sound: an agent cannot.** The owner had not yet answered on the finished film when this was written.
+
 This is a remake of *Never Look at the Moon*, the 19.6-second film another agent made
 (`Topics/InThisTown/reference/moon-20-seconds/`). The owner: "it wasnt really what i wanted … maybe put it in a
 village where you woke up with the moon and stuff". So: the same idea, told as a real film of this topic, in the
