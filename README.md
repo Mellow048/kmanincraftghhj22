@@ -103,11 +103,13 @@ src/
     Look.tsx           6 lighting presets, exposure, flicker
     MinecraftAvatar.tsx  classic 1.8m rig, knee joints, outfits, face glow
     props.tsx          Bed, Door, DoorFrame, Sign, WindowUnit, CeilingLight,
-                       Locker, Monitor, Carpet, WallClock
+                       Locker, Monitor, Carpet, WallClock, GlassWindow, Curtains,
+                       Radiator, TownHouse, StarField, SkyBoard, MoonEye
     textures.ts        procedural canvas textures, NearestFilter
     types.ts           Shot, SceneDef, FilmConfig, PostSettings
   videos/
     the-schedule/      the demo film
+    never-look-at-the-moon/  5 beats, one continuous camera, generated voice
       world.tsx
       actors.tsx
       scene1.tsx … scene5.tsx
@@ -116,6 +118,7 @@ src/
   Root.tsx             maps FILMS to Remotion compositions
   index.ts             registerRoot
 
+public/audio/          narration and beds, referenced by film.tsx
 templates/video/       copy-paste starter set
 scripts/new-video.mjs  scaffold + registry
 scripts/check-films.mjs director lint
@@ -181,6 +184,7 @@ Story films also get `characters.tsx`, a ready-made duo + extra cast. The two le
 - `docs/NARRATION-RULES.md` — the voice contract: plain words, one teller, no robotic narration.
 - `docs/NARRATION.md` — hook-first writing, 20-second beat map, line bank, sync.
 - `templates/cast/README.md` — how to cast a two-lead duo and repeat an extra.
+- `docs/CASE-STUDY-MOON.md` — the numbers behind *Never Look at the Moon*: window crop geometry, 9:16 framing table, iris UVs, light jobs.
 
 ---
 

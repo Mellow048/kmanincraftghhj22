@@ -79,6 +79,17 @@ export const LOOKS: Record<LookPreset, Preset> = {
     key: { color: "#fff3d6", intensity: 3.4, position: [6, 9, 4], shadow: true },
     fills: [{ color: "#bfe0ff", intensity: 2.4, position: [-4, 3, -3], distance: 12 }],
   },
+  "town-night": {
+    bg: "#050a16",
+    fog: "#0b1428",
+    fogDensity: 0.014,
+    ambient: { color: "#22334f", intensity: 0.3 },
+    hemi: { sky: "#2b4570", ground: "#04060b", intensity: 0.32 },
+    // A whisper of a key only: the film places the real moon light itself so it
+    // can be dimmed when the eye shuts. A second shadow-caster here would fight it.
+    key: { color: "#c3d8ff", intensity: 0.3, position: [1.4, 11, -26], shadow: false },
+    fills: [],
+  },
   "warm-room": {
     bg: "#120b06",
     fog: "#2a1a0e",

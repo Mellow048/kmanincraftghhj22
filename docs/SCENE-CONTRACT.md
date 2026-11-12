@@ -56,6 +56,7 @@ export const film = defineFilm({
 | `look` | no | one of the presets in `src/engine/Look.tsx` |
 | `post` | no | `{ exposure, bloom }` only. No postprocessing package. |
 | `fadeIn`/`fadeOut` | no | seconds; the only 2D event allowed |
+| `audio` | no | one track or an array of `{ src, volume?, at? }`; `src` is a path under `public/`, `at` is seconds from the film's start |
 | `World` | yes | mounted once for the whole film |
 | `scenes` | yes | ordered beats; total = sum of durations |
 
@@ -66,6 +67,22 @@ export const film = defineFilm({
 - Do not add a second canvas, a 2D overlay or an HTML layer.
 - `post.bloom` scales the 3D glow cards. It is not a screen-space bloom.
 - If you change `post`, do not re-add `@react-three/postprocessing`; it breaks under software WebGL.
+
+### Sound
+
+Sound is one narration line per beat plus, at most, one bed. Put the files in
+`public/audio/<film-id>/` and reference them by path, never by URL:
+
+```tsx
+audio: [
+  { src: "audio/the-moon/bed.mp3", at: 0, volume: 0.55 },
+  { src: "audio/the-moon/line1.mp3", at: 0.35 },
+],
+```
+
+Every cue is placed in seconds against the film clock, so a line can straddle a
+scene boundary. Nothing else may make noise: no music sting under a line, no
+sound effect that is not visible in frame if there were sound.
 
 ---
 

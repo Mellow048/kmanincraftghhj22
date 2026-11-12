@@ -9,7 +9,7 @@ import { clamp, TAU, wobble } from "./math";
 import type { Vec3 } from "./math";
 import { glowTex, pixelTex, stripeTex } from "./textures";
 
-export type OutfitName = "gown" | "pajamas" | "hoodie" | "tee" | "shadow" | "suit";
+export type OutfitName = "gown" | "pajamas" | "pajamasWarm" | "hoodie" | "tee" | "shadow" | "suit";
 
 export type MinecraftAvatarProps = {
   /** Feet position on the floor. 1 unit = 1 metre. */
@@ -102,6 +102,15 @@ const OUTFITS: Record<
     torsoTex: stripeTex("#3f6fa8", "#8fb7d8", { count: 4, horizontal: true }),
     armTex: stripeTex("#3f6fa8", "#8fb7d8", { count: 4, horizontal: true }),
     legTex: pixelTex("#315a8c"),
+  },
+  /** Flannel pyjamas in warm stripes: reads against a blue night room. */
+  pajamasWarm: {
+    torso: "#bf5a38",
+    arms: "#bf5a38",
+    legs: "#e2c7a4",
+    torsoTex: stripeTex("#bf5a38", "#f0c9a0", { count: 4, horizontal: true }),
+    armTex: stripeTex("#bf5a38", "#f0c9a0", { count: 4, horizontal: true }),
+    legTex: pixelTex("#e2c7a4", [1, 1], { jitter: 0.05 }),
   },
   hoodie: {
     torso: "#2f7d4f",

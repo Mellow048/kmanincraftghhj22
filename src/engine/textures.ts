@@ -713,3 +713,103 @@ export function floorTex(base = "#4a5a63", repeat: [number, number] = [1, 1]): T
     repeat,
   );
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   IN THIS TOWN — night sky, moon-eye and street dressing.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/** Pale sclera with faint veins, for the moon-eye's eyeball. Pixel-crisp by design. */
+/**
+ * Iris, in polar coordinates: x is the angle around the eye, y is the distance
+ * from the pupil out to the limbal ring. Mapping a radial pattern this way is
+ * what lets a spherical cap carry striations instead of reading as a target.
+ * Pair with uv.y = theta / capAngle (see MoonEye).
+ */
+export function irisTex(): THREE.CanvasTexture {
+  return texture("iris-radial", 256, 96, (ctx) => {
+    const w = 256;
+    const h = 96;
+    const img = ctx.createImageData(w, h);
+    const stops: [number, number, number, number][] = [
+      [0.0, 9, 13, 23],
+      [0.13, 27, 40, 64],
+      [0.36, 74, 104, 146],
+      [0.58, 120, 154, 198],
+      [0.74, 88, 118, 160],
+      [0.9, 32, 48, 74],
+      [1.0, 92, 114, 148],
+    ];
+    const hh = (n: number) => {
+      const v = Math.sin(n * 12.9898) * 43758.5453;
+      return v - Math.floor(v);
+    };
+    for (let y = 0; y < h; y++) {
+      // flipY: the canvas top row is v = 1, so the pupil end is the bottom row
+      const v = 1 - y / (h - 1);
+      let i = 0;
+      while (i < stops.length - 2 && stops[i + 1][0] < v) i++;
+      const a = stops[i];
+      const b = stops[i + 1];
+      const k = (v - a[0]) / Math.max(1e-5, b[0] - a[0]);
+      const fade = Math.min(1, v * 6) * Math.max(0, 1 - Math.max(0, (v - 0.88) / 0.12));
+      for (let x = 0; x < w; x++) {
+        // periodic in x, so the texture tiles across the seam at 12 o'clock
+        const u = (x / w) * Math.PI * 2;
+        const fine = 0.5 + 0.25 * Math.sin(u * 61 + 0.7) + 0.25 * Math.sin(u * 23 + 2.1);
+        const broad = 0.5 + 0.5 * Math.sin(u * 7 + 4.2);
+        const f = 1 + (0.8 + 0.28 * fine + 0.16 * broad - 1) * fade;
+        const o = (y * w + x) * 4;
+        img.data[o] = Math.min(255, Math.round((a[1] + (b[1] - a[1]) * k) * f));
+        img.data[o + 1] = Math.min(255, Math.round((a[2] + (b[2] - a[2]) * k) * f));
+        img.data[o + 2] = Math.min(255, Math.round((a[3] + (b[3] - a[3]) * k) * f));
+        img.data[o + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+  });
+}
+
+export function eyeBallTex(dim = 1): THREE.CanvasTexture {
+  const key = `eyeball|${dim}`;
+  return texture(key, 64, 64, (ctx) => {
+    const rand = mulberry32(4711);
+    for (let y = 0; y < 64; y++) {
+      for (let x = 0; x < 64; x++) {
+        // Limb darkening: the front of the eyeball (the middle of the map) is
+        // bright, and it falls away towards the edges so the sphere reads round.
+        const dx = (x - 31.5) / 31.5;
+        const dy = (y - 31.5) / 31.5;
+        const edge = Math.min(1, Math.hypot(dx, dy));
+        const base = shade("#dce9fb", -0.06 - edge * edge * 0.42 + (rand() * 2 - 1) * 0.028);
+        ctx.fillStyle = base;
+        ctx.fillRect(x, y, 1, 1);
+      }
+    }
+    // veins: a few red-blue threads creeping in from the edges
+    for (let i = 0; i < 14; i++) {
+      let x = rand() * 64;
+      let y = rand() < 0.5 ? rand() * 8 : 56 + rand() * 8;
+      const dir = rand() * Math.PI * 2;
+      const len = 8 + rand() * 18;
+      for (let s = 0; s < len; s++) {
+        x += Math.cos(dir + Math.sin(s * 0.4) * 0.5);
+        y += Math.sin(dir + Math.sin(s * 0.4) * 0.5);
+        ctx.fillStyle = `rgba(120,140,190,${(0.5 - s / len / 2) * dim})`;
+        ctx.fillRect(Math.round(x), Math.round(y), 1, 1);
+      }
+    }
+  });
+}
+
+/** Vertical night-sky gradient. Used as an unlit backdrop behind a town. */
+export function skyGradTex(): THREE.CanvasTexture {
+  const key = "skygrad";
+  return texture(key, 4, 64, (ctx) => {
+    for (let y = 0; y < 64; y++) {
+      const k = y / 63; // 0 = top of the canvas
+      const c = shade("#122344", -0.34 + k * 0.5);
+      ctx.fillStyle = c;
+      ctx.fillRect(0, y, 4, 1);
+    }
+  });
+}

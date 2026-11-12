@@ -85,6 +85,7 @@ export type LookPreset =
   | "forest-night"
   | "street-day"
   | "warm-room"
+  | "town-night"
   | "void";
 
 export type PostSettings = {
@@ -92,6 +93,14 @@ export type PostSettings = {
   exposure?: number;
   /** Multiplier on every 3D glow card in the film. This is our bloom. */
   bloom?: number;
+};
+
+export type AudioTrack = {
+  /** Path inside /public, e.g. "audio/line1.mp3". */
+  src: string;
+  volume?: number;
+  /** Seconds into the film where this cue starts. Default 0. */
+  at?: number;
 };
 
 export type FilmConfig = {
@@ -104,8 +113,14 @@ export type FilmConfig = {
   height?: number;
   look?: LookPreset;
   post?: PostSettings;
-  /** Optional music / voiceover file inside /public. */
-  audio?: { src: string; volume?: number };
+  /**
+   * Optional music / voiceover inside /public. One track, or a list of cues:
+   * each cue starts at `at` seconds into the film, so a narration line can land
+   * on its beat without re-timing the whole film.
+   */
+  audio?: AudioTrack | AudioTrack[];
+  /** Synthesiser-free ambience generated at build time lives here too. */
+
   /** Fade the video in/out of black, in seconds. */
   fadeIn?: number;
   fadeOut?: number;

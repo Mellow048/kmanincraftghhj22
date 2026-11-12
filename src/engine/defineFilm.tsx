@@ -58,6 +58,7 @@ const Fade: React.FC<{ fadeIn?: number; fadeOut?: number; total: number }> = ({ 
 
 const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
   const { fps, width, height } = useVideoConfig();
+  const audioTracks = config.audio ? (Array.isArray(config.audio) ? config.audio : [config.audio]) : [];
 
   // Lay the scenes out in FRAMES, not seconds. Rounding each scene's start and
   // length independently can leave a one-frame gap or overlap between scenes
@@ -111,9 +112,16 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
         </GlowProvider>
       </ThreeCanvas>
 
-      {config.audio ? (
-        <Audio src={staticFile(config.audio.src)} volume={config.audio.volume ?? 1} />
-      ) : null}
+      {audioTracks.map((track, i) => (
+        <Sequence
+          key={`audio-${i}-${track.src}`}
+          from={Math.max(0, Math.round((track.at ?? 0) * fps))}
+          layout="none"
+          name={`audio · ${track.src}`}
+        >
+          <Audio src={staticFile(track.src)} volume={track.volume ?? 1} />
+        </Sequence>
+      ))}
 
       <Fade fadeIn={config.fadeIn} fadeOut={config.fadeOut} total={config.scenes.reduce((a, s) => a + s.duration, 0)} />
     </AbsoluteFill>

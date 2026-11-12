@@ -1,6 +1,7 @@
+import { useMemo } from "react";
 import * as THREE from "three";
 import type { Vec3 } from "./math";
-import { mulberry32 } from "./math";
+import { clamp01, lerp, mulberry32 } from "./math";
 import { useFlicker } from "./Look";
 import { useFilmTime } from "./defineFilm";
 import {
@@ -10,12 +11,15 @@ import {
   crayonDrawingTex,
   doorPlateTex,
   exitSignTex,
+  eyeBallTex,
+  irisTex,
   footprintTex,
   moonWindowTex,
   noticeBoardTex,
   pixelTex,
   plankTex,
   posterTex,
+  skyGradTex,
   stripeTex,
   tileCeilingTex,
   wardWallTex,
@@ -407,7 +411,14 @@ export const CeilingTiles: React.FC<{
   </mesh>
 );
 
-/** Curtain rail with two folded panels. `gap` is how far the panels are drawn apart. */
+/**
+ * Curtain rail with two folded panels. `gap` is how far the panels are drawn
+ * apart when they are closed.
+ *
+ * `pullLeft` / `pullRight` (0..1) gather one panel towards its edge of the rail
+ * without moving the other, so a character can hold one curtain aside and peek
+ * through the gap. 0 = the panel covers its half of the window (closed).
+ */
 export const Curtains: React.FC<{
   position?: Vec3;
   rotationY?: number;
@@ -415,27 +426,47 @@ export const Curtains: React.FC<{
   height?: number;
   color?: string;
   gap?: number;
-}> = ({ position = [0, 0, 0], rotationY = 0, width = 1.8, height = 1.7, color = "#2b4a7a", gap = 0.25 }) => {
-  const panel = width / 2 - gap / 2;
-  const folds = 5;
+  pullLeft?: number;
+  pullRight?: number;
+}> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  width = 1.8,
+  height = 1.7,
+  color = "#2b4a7a",
+  gap = 0.25,
+  pullLeft = 0,
+  pullRight = 0,
+}) => {
+  const full = width / 2 - gap / 2;
+  const folds = 6;
   return (
     <group position={position} rotation-y={rotationY}>
       {/* rail */}
       <Block position={[0, height / 2 + 0.06, 0.06]} size={[width + 0.24, 0.05, 0.06]} color="#1a2432" />
-      {[-1, 1].map((side) => (
-        <group key={side} position={[side * (width / 4 + gap / 4), 0, 0]}>
-          {Array.from({ length: folds }).map((_, i) => (
-            <Block
-              key={i}
-              position={[-panel / 2 + (panel / (folds - 1)) * i, -height / 2, (i % 2 === 0 ? 1 : -1) * 0.022]}
-              size={[panel / folds + 0.02, height, 0.05]}
-              map={curtainTex(color, [1, 3])}
-            />
-          ))}
-          {/* tie-back strap */}
-          <Block position={[0, -height * 0.28, 0.05]} size={[panel * 0.9, 0.05, 0.05]} color="#5c4a2e" />
-        </group>
-      ))}
+      {[-1, 1].map((side) => {
+        const pull = clamp01(side < 0 ? pullLeft : pullRight);
+        const panel = full * lerp(1, 0.3, pull);
+        const centre = side * (width / 2 - panel / 2);
+        return (
+          <group key={side} position={[centre, 0, 0]}>
+            {Array.from({ length: folds }).map((_, i) => (
+              <Block
+                key={i}
+                position={[
+                  -panel / 2 + (panel / (folds - 1)) * i,
+                  -height / 2,
+                  (i % 2 === 0 ? 1 : -1) * lerp(0.022, 0.062, pull),
+                ]}
+                size={[panel / folds + 0.02, height, lerp(0.05, 0.03, pull)]}
+                map={curtainTex(color, [1, 3])}
+              />
+            ))}
+            {/* tie-back strap */}
+            <Block position={[0, -height * 0.28, 0.05]} size={[panel * 0.92, 0.05, 0.05]} color="#5c4a2e" />
+          </group>
+        );
+      })}
     </group>
   );
 };
@@ -856,4 +887,332 @@ export const WardWall: React.FC<{
   rotationY?: number;
 }> = ({ position = [0, 0, 0], size, color = "#3a5a72", repeat = [4, 2], rotationY = 0 }) => (
   <Block position={position} size={size} map={wardWallTex(color, repeat)} rotationY={rotationY} />
+);
+
+/* ──────────────────────────────────────────────────────────────────────────
+   IN THIS TOWN — the town at night
+   A bedroom window you can see through, a town outside it, a sky, and the
+   thing in the sky. These are set pieces, not film-specific hacks: every
+   "In This Town" short can build on them.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * A window opening you can actually see through: casing, sill, mullions and a
+ * nearly invisible pane. `WindowUnit` and `MoonWindow` are painted glass; this
+ * is the hole in the wall that a street and a sky live behind.
+ *
+ * Cut the wall into four blocks around the opening and centre this on the hole.
+ */
+export const GlassWindow: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  width?: number;
+  height?: number;
+  frame?: string;
+  /** Vertical mullion in the middle. */
+  centreBar?: boolean;
+  /** Horizontal transom bar, as a fraction of the height from the bottom. */
+  transom?: number;
+}> = ({ position = [0, 0, 0], rotationY = 0, width = 1.6, height = 1.4, frame = "#233149", centreBar = false, transom }) => (
+  <group position={position} rotation-y={rotationY}>
+    {/* casing */}
+    <Block position={[-width / 2 - 0.07, 0, 0]} size={[0.14, height + 0.3, 0.2]} color={frame} />
+    <Block position={[width / 2 + 0.07, 0, 0]} size={[0.14, height + 0.3, 0.2]} color={frame} />
+    <Block position={[0, height / 2 + 0.07, 0]} size={[width + 0.3, 0.14, 0.2]} color={frame} />
+    {/* sill, inside and out */}
+    <Block position={[0, -height / 2 - 0.09, 0.06]} size={[width + 0.4, 0.1, 0.36]} color="#37445c" />
+    <Block position={[0, -height / 2 - 0.15, 0.1]} size={[width + 0.24, 0.04, 0.28]} color="#4a5a74" />
+    {centreBar && <Block position={[0, 0, 0]} size={[0.06, height, 0.08]} color={frame} />}
+    {transom != null && (
+      <Block position={[0, -height / 2 + height * transom, 0]} size={[width, 0.05, 0.08]} color={frame} />
+    )}
+    {/* the pane: a whisper of reflection, no colour of its own */}
+    <mesh position={[0, 0, 0.02]}>
+      <planeGeometry args={[width, height]} />
+      <meshStandardMaterial
+        color="#cfe4ff"
+        transparent
+        opacity={0.025}
+        roughness={0.1}
+        metalness={0}
+        depthWrite={false}
+      />
+    </mesh>
+  </group>
+);
+
+/**
+ * THE MOON IS AN EYE.
+ *
+ * An emissive eyeball with a dilating pupil, a lid that can close, and a look
+ * direction (yaw/pitch) so it can scan a town and then snap onto a window.
+ * The pupil and iris are spherical caps hugging the eyeball, so they never
+ * float or clip at any distance.
+ *
+ * Facing: the pupil looks out along +Z when yaw and pitch are zero.
+ */
+export const MoonEye: React.FC<{
+  position?: Vec3;
+  radius?: number;
+  /** 0 = wide open, 1 = shut. */
+  lid?: number;
+  /** Look direction, radians. Positive yaw looks towards +X. */
+  yaw?: number;
+  pitch?: number;
+  /** 0.25 = pinprick, 1 = fully dilated. */
+  pupil?: number;
+  /** Emissive multiplier. Drive this down during a blink. */
+  glow?: number;
+  color?: string;
+  /** Halo sprite multiplier. */
+  halo?: number;
+  /** 0..1 whiteout when the gaze lands on the lens. */
+  flash?: number;
+}> = ({
+  position = [0, 0, 0],
+  radius = 6,
+  lid = 0,
+  yaw = 0,
+  pitch = 0,
+  pupil = 0.55,
+  glow = 1,
+  color = "#e6eeff",
+  halo = 1,
+  flash = 0,
+}) => {
+  const open = 1 - clamp01(lid);
+  // Lid caps measured from their poles. At open they leave a wide band; at
+  // shut they overlap somewhere in the middle of the eye.
+  const upper = lerp(0.55, 0.055, open) * Math.PI;
+  const lower = lerp(0.45, 0.05, open) * Math.PI;
+  const r = radius;
+  const lidMat = { color: "#20304a", roughness: 1, metalness: 0 };
+  // Iris cap with polar UVs (u = angle, v = theta / cap) so the radial iris map
+  // lands as striations instead of one smeared band of a sphere's default UVs.
+  const irisGeo = useMemo(() => {
+    const cap = 0.30;
+    const g = new THREE.SphereGeometry(r * 1.005, 128, 20, 0, Math.PI * 2, 0, cap);
+    const pos = g.attributes.position;
+    const uv = g.attributes.uv;
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const y = pos.getY(i);
+      const z = pos.getZ(i);
+      const len = Math.max(1e-6, Math.hypot(x, y, z));
+      const theta = Math.acos(Math.max(-1, Math.min(1, y / len)));
+      uv.setXY(i, Math.atan2(x, z) / (Math.PI * 2) + 0.5, theta / cap);
+    }
+    uv.needsUpdate = true;
+    return g;
+  }, [r]);
+  const rimY = r * 1.02 * Math.cos(upper);
+  const rimR = r * 1.02 * Math.sin(upper);
+  return (
+    <group position={position}>
+      {/* the eyeball */}
+      <mesh castShadow={false} receiveShadow={false}>
+        <sphereGeometry args={[r, 48, 32]} />
+        <meshStandardMaterial
+          map={eyeBallTex()}
+          emissiveMap={eyeBallTex()}
+          emissive={color}
+          emissiveIntensity={1.05 * glow}
+          roughness={1}
+          metalness={0}
+          color="#ffffff"
+        />
+      </mesh>
+
+      {/* pupil assembly: caps hugging the surface, aimed by yaw/pitch. */}
+      <group rotation={[pitch, yaw, 0]}>
+        <mesh geometry={irisGeo} rotation={[Math.PI / 2, 0, 0]}>
+          <meshStandardMaterial
+            map={irisTex()}
+            emissiveMap={irisTex()}
+            emissive="#cfe2ff"
+            emissiveIntensity={0.5 * glow}
+            roughness={0.55}
+          />
+        </mesh>
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <sphereGeometry args={[r * 1.009, 48, 16, 0, Math.PI * 2, 0, 0.235 * pupil]} />
+          <meshStandardMaterial color="#04070d" emissive="#04070d" emissiveIntensity={0} roughness={0.35} />
+        </mesh>
+        {/* a wet highlight sitting on the pupil's edge, so the eye reads as a
+            wet surface instead of a hole. Small: bloom does the rest. */}
+        <mesh rotation={[Math.PI / 2 + 0.085, 0.05, 0]}>
+          <sphereGeometry args={[r * 1.012, 24, 10, 0, Math.PI * 2, 0, 0.021]} />
+          <meshBasicMaterial color="#f4f9ff" toneMapped={false} />
+        </mesh>
+      </group>
+
+      {/* lids */}
+      <mesh rotation={[0, 0, 0]}>
+        <sphereGeometry args={[r * 1.02, 40, 20, 0, Math.PI * 2, 0, upper]} />
+        <meshStandardMaterial {...lidMat} />
+      </mesh>
+      <mesh>
+        <sphereGeometry args={[r * 1.018, 40, 20, 0, Math.PI * 2, Math.PI - lower, lower]} />
+        <meshStandardMaterial {...lidMat} />
+      </mesh>
+      {/* eyelid crease catches the rim light */}
+      <mesh position={[0, rimY, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[Math.max(0.001, rimR), r * 0.012, 6, 48]} />
+        <meshStandardMaterial color="#8fb4e0" emissive="#9fc6ff" emissiveIntensity={0.5 * glow} roughness={0.8} />
+      </mesh>
+
+      <Glow position={[0, 0, r * 0.2]} size={r * 3.2} color="#bcd8ff" opacity={0.42 * halo * glow} />
+      <Glow position={[0, 0, r * 0.2]} size={r * 6.4} color="#7fa8e8" opacity={0.16 * halo * glow} />
+      {flash > 0.002 && (
+        <Glow position={[0, 0, r * 0.6]} size={r * (4 + 26 * flash)} color="#eaf3ff" opacity={0.5 * flash} />
+      )}
+    </group>
+  );
+};
+
+/**
+ * A blocky town house: body, gable roof, chimney, door, and windows that can be
+ * lit one at a time (`lit` 0..1) so a street can go dark window by window.
+ */
+export const TownHouse: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  width?: number;
+  depth?: number;
+  height?: number;
+  roofHeight?: number;
+  wall?: string;
+  roof?: string;
+  lit?: number;
+  windowColor?: string;
+  chimney?: boolean;
+  seed?: number;
+}> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  width = 2.8,
+  depth = 2.4,
+  height = 2.6,
+  roofHeight = 1.2,
+  wall = "#2b3550",
+  roof = "#1a2233",
+  lit = 1,
+  windowColor = "#ffcf7a",
+  chimney = true,
+  seed = 1,
+}) => {
+  const slope = Math.hypot(width / 2, roofHeight);
+  const angle = Math.atan2(roofHeight, width / 2);
+  const windows: Array<[number, number]> = [
+    [-width * 0.24, height * 0.62],
+    [width * 0.24, height * 0.62],
+    [-width * 0.24, height * 0.26],
+    [width * 0.24, height * 0.26],
+  ];
+  const rand = mulberry32(seed * 733 + 19);
+  return (
+    <group position={position} rotation-y={rotationY}>
+      <Block position={[0, height / 2, 0]} size={[width, height, depth]} color={wall} />
+      {/* gable ends */}
+      <Block position={[0, height + roofHeight / 2, -depth / 2 + 0.02]} size={[width, roofHeight, 0.08]} color={wall} />
+      <Block position={[0, height + roofHeight / 2, depth / 2 - 0.02]} size={[width, roofHeight, 0.08]} color={wall} />
+      {/* roof slabs */}
+      <Block
+        position={[-width / 4, height + roofHeight / 2, 0]}
+        size={[slope + 0.16, 0.14, depth + 0.34]}
+        color={roof}
+        rotation={[0, 0, angle]}
+      />
+      <Block
+        position={[width / 4, height + roofHeight / 2, 0]}
+        size={[slope + 0.16, 0.14, depth + 0.34]}
+        color={roof}
+        rotation={[0, 0, -angle]}
+      />
+      <Block position={[0, height + roofHeight, 0]} size={[0.16, 0.16, depth + 0.36]} color="#0f1622" />
+      {chimney && (
+        <>
+          <Block position={[width * 0.3, height + roofHeight * 0.92, depth * 0.2]} size={[0.34, 1.15, 0.34]} color="#222b3d" />
+          <Block position={[width * 0.3, height + roofHeight * 0.92 + 0.6, depth * 0.2]} size={[0.42, 0.1, 0.42]} color="#39445c" />
+        </>
+      )}
+      {/* door */}
+      <Block position={[0, 0.55, depth / 2 + 0.03]} size={[0.62, 1.1, 0.06]} color="#151c29" />
+      <Block position={[0, 1.14, depth / 2 + 0.04]} size={[0.78, 0.1, 0.1]} color="#39445c" />
+      {/* windows */}
+      {windows.map(([x, y], i) => {
+        const on = clamp01(lit * (0.55 + rand() * 0.9));
+        return (
+          <group key={i} position={[x, y, depth / 2 + 0.03]}>
+            <Block size={[0.46, 0.52, 0.05]} color="#151c29" />
+            <Block
+              position={[0, 0, 0.03]}
+              size={[0.38, 0.44, 0.02]}
+              color={windowColor}
+              emissive={windowColor}
+              emissiveIntensity={1.15 * on}
+              castShadow={false}
+            />
+            <Block position={[0, 0, 0.05]} size={[0.03, 0.44, 0.01]} color="#151c29" castShadow={false} />
+            <Block position={[0, 0, 0.05]} size={[0.38, 0.03, 0.01]} color="#151c29" castShadow={false} />
+            {on > 0.05 && <Glow position={[0, 0, 0.05]} size={0.95 * on} color={windowColor} opacity={0.32 * on} />}
+          </group>
+        );
+      })}
+    </group>
+  );
+};
+
+/** Static star field. Deterministic, unlit, unaffected by fog. */
+export const StarField: React.FC<{
+  position?: Vec3;
+  /** Half-extents of the box the stars are scattered in. */
+  area?: Vec3;
+  count?: number;
+  size?: number;
+  color?: string;
+  opacity?: number;
+  seed?: number;
+}> = ({ position = [0, 0, 0], area = [120, 40, 30], count = 320, size = 0.55, color = "#cfe0ff", opacity = 0.9, seed = 11 }) => {
+  const geometry = useMemo(() => {
+    const rand = mulberry32(seed * 5171 + 3);
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      positions[i * 3] = (rand() - 0.5) * area[0];
+      // bias upward: few stars near the rooftop line
+      positions[i * 3 + 1] = Math.pow(rand(), 0.7) * area[1] + 1.5;
+      positions[i * 3 + 2] = (rand() - 0.5) * area[2];
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    return geo;
+  }, [count, area[0], area[1], area[2], seed]);
+  return (
+    <points position={position} geometry={geometry} frustumCulled={false}>
+      <pointsMaterial
+        color={color}
+        size={size}
+        sizeAttenuation
+        transparent
+        opacity={opacity}
+        depthWrite={false}
+        fog={false}
+        toneMapped={false}
+      />
+    </points>
+  );
+};
+
+/** Unlit night-sky backdrop. Put it far behind the town and disable fog on it. */
+export const SkyBoard: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  width?: number;
+  height?: number;
+  color?: string;
+}> = ({ position = [0, 16, -70], rotationY = 0, width = 220, height = 90, color = "#0e1a36" }) => (
+  <mesh position={position} rotation-y={rotationY}>
+    <planeGeometry args={[width, height]} />
+    <meshBasicMaterial map={skyGradTex()} color={color} fog={false} />
+  </mesh>
 );
