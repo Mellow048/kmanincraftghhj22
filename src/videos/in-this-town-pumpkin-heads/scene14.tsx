@@ -114,7 +114,7 @@ export const scene14 = storyScene(timing, {
       ...cam.push({ on: [PUT[0], 0.5, PUT[2]], dist: 1.7, to: 2.9, yaw: 12, pitch: 12, fov: 40 }),
       zone: "village",
       look: "overworld-day",
-      note: "Back on the pumpkin, and the camera starts backing away from it. His best friend, in yellow, is standing over it looking down. There is no kid in blue anywhere.",
+      note: "Back on the pumpkin, and the camera starts backing away from it. His best friend is standing over it looking down. There is no kid in blue anywhere.",
       stage: () => <Finders />,
     },
     {
