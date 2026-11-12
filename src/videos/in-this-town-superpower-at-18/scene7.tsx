@@ -61,7 +61,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.tip",
-      ...cam.push({ on: [-2, 0.7, 2.3], dist: 3.9, to: 3.3, yaw: 34, pitch: 30, fov: 40 }),
+      ...cam.push({ on: [-2, 0.8, 2.5], dist: 4.8, to: 4.2, yaw: 0, pitch: 28, fov: 40 }),
       zone: ZONE.day,
       look: DAY,
       note: "From above: Tip, in yellow, spins on the spot and stops dead facing up the street. On 'north' a red arrow appears on the ground in front of him, pointing the same way.",

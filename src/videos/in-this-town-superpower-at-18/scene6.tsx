@@ -62,16 +62,16 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.friends",
-      ...cam.push({ on: [0, 1.15, 3.1], dist: 4.6, to: 3.9, yaw: 4, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [0, 1.15, 3.1], dist: 7.0, to: 6.3, yaw: 4, pitch: 3, fov: 40 }),
       zone: ZONE.day,
       look: DAY,
       note: "Four in a row facing us: green, blue, yellow, and him in red at the end. Each friend gives a little hop as he is named: Bo, Mira, Tip.",
       stage: (t) => (
         <>
-          <Bo position={[-1.5, hop(t, BO, 0.3, 0.35), 3]} rotationY={0.15} />
-          <Mira position={[-0.5, hop(t, MIRA, 0.3, 0.35), 3.15]} rotationY={0.05} />
-          <Tip position={[0.5, hop(t, TIP, 0.3, 0.35), 3]} rotationY={-0.05} />
-          <Hero position={[1.5, 0, 3.1]} rotationY={-0.25} animation="idle" face="grin" />
+          <Bo position={[-1.1, hop(t, BO, 0.3, 0.35), 3]} rotationY={0.15} />
+          <Mira position={[-0.37, hop(t, MIRA, 0.3, 0.35), 3.15]} rotationY={0.05} />
+          <Tip position={[0.37, hop(t, TIP, 0.3, 0.35), 3]} rotationY={-0.05} />
+          <Hero position={[1.1, 0, 3.1]} rotationY={-0.25} animation="idle" face="grin" />
         </>
       ),
     },

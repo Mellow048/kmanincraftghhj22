@@ -1,7 +1,7 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import { Brother, Burst, CHAOS, Daisy, FireLight, Hero, Lawn, MUD, Orbs, SubscribeSign, ZONE, ahead, ease, faceOf, ramp, timing, wordAt } from "./kit";
-import { Glow } from "../../engine";
+import { Block } from "../../engine";
 
 const HIM: Vec3 = [-7.0, 0, 7.1];
 /** The way the teller faces: at his brother. */
@@ -38,7 +38,7 @@ export const scene18 = storyScene(timing, {
           <>
             <Hero position={MUD} rotationY={AT} animation="crouch" arms="press" time={0.3} face="wow" headPitch={0.4} />
             <Garden k={k} />
-            <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={10 * k} distance={7} decay={2} />
+            <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={5 * k} distance={7} decay={2} />
           </>
         );
       },
@@ -65,7 +65,7 @@ export const scene18 = storyScene(timing, {
     },
     {
       cue: "18.know",
-      ...cam.push({ on: faceOf(MUD), dist: 2.6, to: 1.7, yaw: (AT * 180) / Math.PI - 8, pitch: -4, fov: 36 }),
+      ...cam.push({ on: faceOf(MUD), dist: 3.0, to: 2.0, yaw: (AT * 180) / Math.PI - 8, pitch: -4, fov: 36 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He stands up out of the daisies, and we push in on his face as he says it. It is the first time in the film he is not afraid of his brother.",
@@ -73,24 +73,25 @@ export const scene18 = storyScene(timing, {
         <>
           <Hero position={MUD} rotationY={AT} animation="crouch" blendTo="idle" blend={ease(ramp(p, 0, 0.4))} face="brave" gaze={0} />
           <Garden k={1} />
-          <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={10} distance={7} decay={2} />
-          <FireLight position={[MUD[0] + 2.4, 1.8, MUD[2] - 1.2]} power={8} reach={7} seed={4} />
+          <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={4} distance={7} decay={2} />
+          <FireLight position={ahead(MUD, AT, 2.2, 1.8)} power={14} reach={7} seed={4} />
         </>
       ),
     },
     {
       cue: "18.sub",
-      ...cam.push({ on: [MUD[0], 1.08, MUD[2]], dist: 3.0, to: 2.7, yaw: (AT * 180) / Math.PI + 3, pitch: 0, fov: 38 }),
+      ...cam.push({ on: [MUD[0], 1.2, MUD[2]], dist: 4.0, to: 3.6, yaw: (AT * 180) / Math.PI + 3, pitch: 2, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "The same face, and now a SUBSCRIBE sign held in front of his red shirt, with green light coming up round it from the grass. He is not smiling. To be continued.",
+      note: "The same face, and a SUBSCRIBE sign standing in the daisies in front of him. He is not smiling. To be continued.",
       stage: (t) => (
         <>
-          <Hero position={MUD} rotationY={AT} animation="hold" face="brave" gaze={0} />
-          <SubscribeSign position={ahead(MUD, AT, 0.42, 0.9)} rotationY={AT} scale={0.3} tilt={Math.sin(t * 17) * 0.02} />
+          <Hero position={MUD} rotationY={AT} animation="idle" face="brave" gaze={0} />
+          <SubscribeSign position={ahead(MUD, AT, 0.9, 0.95)} rotationY={AT} scale={0.42} tilt={Math.sin(t * 17) * 0.02} />
+          <Block position={ahead(MUD, AT, 0.88, 0.45)} size={[0.05, 0.9, 0.05]} color="#5c3f24" />
+          <FireLight position={ahead(MUD, AT, 2.4, 1.9)} power={12} reach={7} seed={9} />
           <Garden k={1} />
-          <Glow position={ahead(MUD, AT, 0.3, 0.6)} size={2.6} color="#9dff8a" opacity={0.22} />
-          <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={10} distance={7} decay={2} />
+                    <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={4} distance={7} decay={2} />
         </>
       ),
     },

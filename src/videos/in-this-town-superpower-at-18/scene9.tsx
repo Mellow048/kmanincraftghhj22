@@ -14,7 +14,7 @@ export const scene9 = storyScene(timing, {
   shots: [
     {
       cue: "9.bell",
-      ...cam.push({ on: chestOf(U), dist: 6.0, to: 5.0, yaw: 5, pitch: 7, fov: 42 }),
+      ...cam.push({ on: chestOf(U), dist: 7.2, to: 6.2, yaw: 3, pitch: 17, fov: 42 }),
       zone: ZONE.day,
       look: DAY,
       note: "Over the backs of the whole town: him, alone under the bell, facing everyone. On 'rang' the rings go out.",
@@ -22,9 +22,9 @@ export const scene9 = storyScene(timing, {
         <>
           <Hero position={U} rotationY={SOUTH} animation="idle" face="uneasy" />
           <SoundRings position={[0, 2.7, -2.2]} t={t - RANG} color="#ffe08a" reach={2.8} />
-          <Mom position={[-0.9, 0, 2.3]} rotationY={Math.PI} />
-          <Bo position={[0.3, 0, 2.6]} rotationY={Math.PI} />
-          <Mira position={[1.4, 0, 2.2]} rotationY={Math.PI} />
+          <Mom position={[-1.0, 0, 2.3]} rotationY={Math.PI} />
+          <Bo position={[0.8, 0, 2.6]} rotationY={Math.PI} />
+          <Mira position={[1.7, 0, 2.2]} rotationY={Math.PI} />
           <Tip position={[-2.1, 0, 2.6]} rotationY={Math.PI} />
           <Baker position={[2.5, 0, 2.7]} rotationY={Math.PI} />
           <Folk n={0} position={[-3.2, 0, 2.2]} rotationY={Math.PI} />

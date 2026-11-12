@@ -14,7 +14,7 @@ export const scene13 = storyScene(timing, {
   shots: [
     {
       cue: "13.king",
-      ...cam.push({ on: faceOf(NEAR), dist: 2.9, to: 2.3, yaw: 14, pitch: 0, fov: 40 }),
+      ...cam.push({ on: faceOf(NEAR), dist: 3.6, to: 3.0, yaw: 42, pitch: 0, fov: 40 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Past the teller's red shoulder: his brother talking, easy, as if they had met at a market. The house burns behind him.",
@@ -84,7 +84,11 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.roofs",
-      ...cam.push({ on: [8, 3.2, 11], dist: 14.5, to: 13, yaw: 178, pitch: 3, fov: 44 }),
+      from: [8.4, 1.9, 0.2],
+      to: [9.0, 2.1, 1.2],
+      target: [14.2, 2.7, 10],
+      fov: 46,
+      ease: "inOutSine",
       zone: ZONE.ruin,
       look: CHAOS,
       note: "What he sees: the houses across the street with every roof alight and smoke pouring up, and along the road below them the whole town running one way.",

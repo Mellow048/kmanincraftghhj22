@@ -27,7 +27,7 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.street",
-      ...cam.push({ on: WINDOW, dist: 3.2, to: 2.3, yaw: -8, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [WINDOW[0], 1.5, WINDOW[2]], dist: 4.2, to: 3.6, yaw: 24, pitch: 4, fov: 42 }),
       zone: ZONE.room,
       look: CHAOS,
       note: "He is at his window. The glass is solid orange, and smoke is crawling in round the frame.",
@@ -35,7 +35,7 @@ export const scene11 = storyScene(timing, {
         <>
           <BedBox position={BED} />
           <Hero position={room(1.3, 0, -1.55)} rotationY={NORTH} animation="scared" />
-          <Block position={[WINDOW[0], WINDOW[1], WINDOW[2] - 0.02]} size={[1.06, 1.06, 0.04]} color="#ff8a2a" emissive="#ff7a1e" emissiveIntensity={2.2} castShadow={false} />
+          <Block position={[WINDOW[0], WINDOW[1], WINDOW[2] - 0.02]} size={[1.06, 1.06, 0.04]} color="#ff8a2a" emissive="#ff7a1e" emissiveIntensity={0.7} castShadow={false} />
           <Wisps position={[WINDOW[0], 1.9, WINDOW[2] + 0.5]} t={t + 3} count={10} reach={2.4} size={0.6} opacity={0.55} color="#4a403a" dir={[-1, 0.2, 0.4]} seed={4} />
           <FireLight position={room(1.3, 1.9, -1.6)} power={18} reach={8} seed={3} />
         </>
@@ -43,14 +43,14 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.tip",
-      ...cam.push({ on: [7.2, 1.35, 2.4], dist: 4.4, to: 3.7, yaw: 22, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [7.2, 1.35, 2.4], dist: 6.2, to: 5.4, yaw: 22, pitch: 3, fov: 42 }),
       zone: ZONE.fire,
       look: CHAOS,
       note: "Outside. Every roof is burning. Tip, in yellow, pelts down the street past us shouting, and for once his power means something. Others run the other way.",
       stage: (t, { p }) => (
         <>
           <Tip {...waddle([4.2, 0, 2.3], [10.4, 0, 2.6], p)} hmm={1} lean={0.25} />
-          <Folk n={1} {...waddle([11, 0, 3.6], [6.5, 0, 4.0], p)} lean={0.25} />
+          <Folk n={1} {...waddle([11, 0, 1.4], [6.5, 0, 1.6], p)} lean={0.25} />
           <Folk n={4} {...waddle([9.5, 0, 0.6], [4.5, 0, 0.9], p)} lean={0.25} />
           <Wisps position={[7, 1.6, 1.6]} t={t} count={12} reach={6} size={0.8} opacity={0.5} color="#4a403a" dir={[1, 0.1, 0.3]} seed={7} />
         </>

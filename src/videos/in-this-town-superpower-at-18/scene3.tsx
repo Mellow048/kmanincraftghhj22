@@ -17,7 +17,7 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "3.twins",
-      ...cam.push({ on: [0, 0.85, 3], dist: 2.9, to: 2.3, yaw: 0, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [0, 0.85, 3], dist: 4.6, to: 3.9, yaw: 0, pitch: 2, fov: 38 }),
       zone: ZONE.day,
       look: DAY,
       note: "Two eight-year-olds side by side, facing us. The same height, the same hair, the same face. One red shirt, one black.",
@@ -30,7 +30,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.shirts",
-      ...cam.pan({ from: [0, 1.1, 5.0], on: kidFace(ME), onTo: kidFace(HIM), fov: 30 }),
+      ...cam.pan({ from: [0, 1.1, 6.4], on: kidFace(ME), onTo: kidFace(HIM), fov: 30 }),
       zone: ZONE.day,
       look: DAY,
       note: "Close, sliding from one face to the other: the boy in red is smiling. The boy in black is smirking.",

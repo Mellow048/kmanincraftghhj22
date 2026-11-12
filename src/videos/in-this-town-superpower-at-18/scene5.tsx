@@ -21,10 +21,10 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.next",
-      ...cam.push({ on: [G[0], 1.3, G[2]], dist: 6.4, to: 5.8, yaw: -14, pitch: 5, fov: 40 }),
+      ...cam.push({ on: kidFace(WAIT), dist: 3.8, to: 3.3, yaw: 172, pitch: 8, fov: 40 }),
       zone: ZONE.day,
       look: NIGHT,
-      note: "The next night, from behind: the same gate, the same moon, and now he is sitting down to wait.",
+      note: "The next night, from the road: the same gate, the same moon, and now he is sitting down to wait.",
       stage: () => <Hero kid position={WAIT} rotationY={NORTH} animation="sit" />,
     },
     {

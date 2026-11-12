@@ -31,14 +31,14 @@ export const scene12 = storyScene(timing, {
     },
     {
       cue: "12.shirt",
-      ...cam.push({ on: chestOf(BRO), dist: 1.6, to: 1.3, yaw: -12, pitch: 0, fov: 36 }),
+      ...cam.push({ on: [BRO[0], 1.05, BRO[2]], dist: 2.9, to: 2.4, yaw: -14, pitch: 0, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Under a second: the shirt. Black. And down by his side, his right hand is on fire and he does not mind.",
       stage: (t) => (
         <>
           <Brother position={BRO} rotationY={SOUTH} animation="idle" flame={t} />
-          <FireLight position={[BRO[0] - 1.2, 1.6, BRO[2] + 1.6]} power={8} reach={6} seed={2} />
+          <FireLight position={[BRO[0] - 1.2, 1.6, BRO[2] + 1.6]} power={16} reach={7} seed={2} />
         </>
       ),
     },

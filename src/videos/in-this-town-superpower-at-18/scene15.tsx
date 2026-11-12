@@ -34,7 +34,7 @@ export const scene15 = storyScene(timing, {
     },
     {
       cue: "15.caught",
-      ...cam.push({ on: [8.05, 1.45, 0.25], dist: 2.6, to: 2.2, yaw: 20, pitch: 0, fov: 38 }),
+      ...cam.push({ on: [8.05, 1.35, 0.25], dist: 4.4, to: 3.9, yaw: 4, pitch: 2, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He has him: one arm out, without even turning his body, and Bo hanging from the end of it with his feet off the ground.",
@@ -48,7 +48,7 @@ export const scene15 = storyScene(timing, {
     },
     {
       cue: "15.light",
-      ...cam.push({ on: [8.0, 1.3, 0.25], dist: 2.4, to: 2.0, yaw: -16, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [8.05, 1.3, 0.25], dist: 3.9, to: 3.3, yaw: -6, pitch: 3, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Green lights come out of Bo's chest, cross the arm, and go into the black shirt. As the last one leaves, Bo's robe goes from green to grey and he sags.",

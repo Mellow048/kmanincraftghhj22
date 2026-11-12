@@ -14,7 +14,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.who",
-      ...cam.orbit({ on: [0, 2.3, -2.5], dist: 5.2, yaw: 30, pitch: -8, yawTo: 6 }),
+      ...cam.orbit({ on: [0, 1.7, -1.6], dist: 6.6, yaw: 22, pitch: 5, yawTo: -8 }),
       zone: ZONE.day,
       look: DAY,
       note: "Round the bell, low. Three villagers stand under it with their heads tipped back, staring up at it. It tells them nothing.",

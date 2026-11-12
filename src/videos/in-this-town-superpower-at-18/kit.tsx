@@ -21,7 +21,7 @@ export { stride } from "../../engine";
  */
 
 export {
-  ADULT, CHILD, DEG, EAST, KID, NORTH, ROBE, SOUTH, WEST, ahead, beside, chestOf, ease, faceOf, jolt, pop, ramp,
+  ADULT, CHILD, DEG, EAST, KID, NORTH, ROBE, SOUTH, WEST, ahead, beside, ease, jolt, pop, ramp,
   villagerChest, villagerFace,
   BedBox, Bits, Blaze, FireLight, Smoke, SoundRings, SubscribeSign, Villager, Wisps,
 } from "../../../Topics/InThisTown";
@@ -104,6 +104,9 @@ export const Brother: React.FC<A & { kid?: boolean; flame?: number }> = ({ kid =
     {flame === undefined ? null : <Flame t={flame} />}
   </MinecraftAvatar>
 );
+/** A grown player's face and chest (the pack's own default to a child's height). */
+export const faceOf = (p: Vec3): Vec3 => [p[0], p[1] + 1.56, p[2]];
+export const chestOf = (p: Vec3): Vec3 => [p[0], p[1] + 1.12, p[2]];
 export const kidFace = (p: Vec3): Vec3 => [p[0], p[1] + 1.53 * KID8, p[2]];
 export const kidChest = (p: Vec3): Vec3 => [p[0], p[1] + 1.12 * KID8, p[2]];
 

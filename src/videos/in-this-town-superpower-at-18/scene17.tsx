@@ -33,9 +33,9 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.wait",
-      from: [MUD[0] + 0.5, 0.45, MUD[2] - 0.2],
-      to: [MUD[0] + 0.5, 0.5, MUD[2] - 0.5],
-      target: [-6.2, 1.3, 6.2],
+      from: [-9.4, 1.1, 10.5],
+      to: [-9.3, 1.2, 10.3],
+      target: [-6.5, 1.3, 9.0],
       fov: 42,
       ease: "inOutSine",
       zone: ZONE.ruin,
@@ -43,7 +43,7 @@ export const scene17 = storyScene(timing, {
       note: "From the mud, looking up over the fence rail: his brother strolling across the square towards the pen with the fire in his hand, in no hurry at all.",
       stage: (t, { p }) => (
         <>
-          <Brother {...stride([-3.6, 0, 3.6], [-5.6, 0, 5.6], p)} animation="walk" face="smug" flame={t} />
+          <Brother {...stride([-5.2, 0, 8.5], [-6.9, 0, 9.2], p)} animation="walk" face="smug" flame={t} />
           <FireLight position={[-7, 2, 8]} power={10} reach={8} seed={3} />
         </>
       ),
@@ -95,7 +95,7 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.did",
-      ...cam.top({ on: FACE, height: 1.35, to: 1.15, fov: 38 }),
+      ...cam.top({ on: FACE, height: 2.1, to: 1.8, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Under a second: his face from above, eyes wide, green light on it from below.",
@@ -108,7 +108,7 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.pig",
-      ...cam.push({ on: [PIGGY[0] + 0.55, 0.72, PIGGY[2]], dist: 2.3, to: 1.8, yaw: 14, pitch: 10, fov: 38 }),
+      ...cam.push({ on: [PIGGY[0] + 0.6, 0.7, PIGGY[2]], dist: 4.0, to: 3.4, yaw: -4, pitch: 16, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He is sitting up beside the pig. One of its ears is burned black. On 'touched' he puts a hand to it, and on 'grew' the ear is whole and pink again in a puff of green sparks. The pig is as surprised as he is.",

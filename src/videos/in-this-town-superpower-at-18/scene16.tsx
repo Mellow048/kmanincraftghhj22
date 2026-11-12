@@ -13,7 +13,7 @@ export const scene16 = storyScene(timing, {
   shots: [
     {
       cue: "16.flick",
-      ...cam.push({ on: [8.4, 1.2, 0.7], dist: 2.5, to: 2.1, yaw: 64, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [8.4, 1.2, 0.7], dist: 3.3, to: 2.9, yaw: 64, pitch: 2, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Side on, close. The brother lifts one hand to the teller's chest, lazily. On 'flicked' there is a white crack and the red shirt is gone out of the frame.",
