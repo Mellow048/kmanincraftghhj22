@@ -12,7 +12,7 @@ const Finders = () => (
   <>
     <Loose position={PUT} rotation={[0, 0.45, 0]} carve="flat" />
     <Townie who={5} scale={KID} position={[PUT[0] - 0.85, 0, PUT[2] - 0.1]} rotationY={EAST} animation="idle" headPitch={0.5} carve="fear" />
-    <Townie who={4} position={[PUT[0] - 1.5, 0, PUT[2] - 1.5]} rotationY={0.6} animation="lookAround" carve="fear" />
+    <Townie who={4} position={[PUT[0] - 1.9, 0, PUT[2] - 0.5]} rotationY={0.6} animation="lookAround" carve="fear" />
     <Townie who={1} position={[PUT[0] + 2.6, 0, PUT[2] - 2.6]} rotationY={-0.6} animation="lookAround" carve="wow" />
   </>
 );
@@ -111,7 +111,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.found",
-      ...cam.push({ on: [PUT[0], 0.5, PUT[2]], dist: 1.7, to: 3.0, yaw: 26, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [PUT[0], 0.5, PUT[2]], dist: 1.7, to: 2.9, yaw: 12, pitch: 12, fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "Back on the pumpkin, and the camera starts backing away from it. His best friend, in yellow, is standing over it looking down. There is no kid in blue anywhere.",
@@ -119,7 +119,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.gone",
-      ...cam.push({ on: [PUT[0], 0.6, PUT[2]], dist: 3.0, to: 4.6, yaw: 26, pitch: 17, fov: 40 }),
+      ...cam.push({ on: [PUT[0], 0.6, PUT[2]], dist: 2.9, to: 4.0, yaw: 12, pitch: 17, fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "The same move, still backing away and rising. The pumpkin gets smaller. People search around it. The place beside it where he knelt is empty. He is gone.",
@@ -127,7 +127,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.sub",
-      ...cam.push({ on: [PUT[0], 0.7, PUT[2]], dist: 4.6, to: 6.4, yaw: 26, pitch: 22, fov: 40 }),
+      ...cam.push({ on: [PUT[0], 0.7, PUT[2]], dist: 4.0, to: 5.1, yaw: 12, pitch: 22, fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "Still backing away, higher. On 'Subscribe' a sign pops up out of the ground beside the pumpkin: SUBSCRIBE. Nobody put it there. The pumpkin and the sign are all that is left of him. To be continued.",
@@ -138,8 +138,8 @@ export const scene14 = storyScene(timing, {
             <Finders />
             {k > 0 ? (
               <>
-                <SubscribeSign position={[PUT[0] + 0.85, 1.25 * k, PUT[2] + 0.1]} rotationY={0.45} scale={0.62 * k} tilt={Math.sin(t * 19) * 0.02} />
-                <Block position={[PUT[0] + 0.85, 0.55 * k, PUT[2] + 0.08]} size={[0.06, 1.1 * k, 0.05]} color="#5c3f24" />
+                <SubscribeSign position={[PUT[0] + 0.6, 1.1 * k, PUT[2] + 0.1]} rotationY={0.2} scale={0.42 * k} tilt={Math.sin(t * 19) * 0.02} />
+                <Block position={[PUT[0] + 0.6, 0.5 * k, PUT[2] + 0.08]} size={[0.05, 1.0 * k, 0.04]} color="#5c3f24" />
               </>
             ) : null}
           </>
