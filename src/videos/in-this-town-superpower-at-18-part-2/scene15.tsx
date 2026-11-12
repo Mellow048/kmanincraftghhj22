@@ -9,7 +9,7 @@ import {
 import { Kneeling } from "./scene14";
 
 /** HE RAISES HIS HAND. For three seconds it could be either thing. */
-const PALM: Vec3 = [HSTOP[0] + 0.35, 2.25, HSTOP[2] + 0.3];
+const PALM: Vec3 = [HSTOP[0] + 0.3, 1.8, HSTOP[2] - 0.42];
 const KD: Array<[number, number]> = [[-0.7, 0.8], [0.5, 0.9], [-0.5, -0.8], [0.6, -0.7], [-1.0, 0.1]];
 const Flowers = ({ k }: { k: number }) => (
   <>
@@ -31,7 +31,7 @@ export const scene15 = storyScene(timing, {
       stage: (t, { p }) => (
         <>
           <Hero position={HSTOP} rotationY={EAST} animation="idle" blendTo="reachUp" blend={1 - ease(p)} face="neutral" headPitch={0.25} />
-          <Glow position={PALM} size={0.4 + 1.2 * p} color="#9dff8a" opacity={0.7 * p} />
+          <Glow position={PALM} size={0.3 + 0.6 * p} color="#9dff8a" opacity={0.7 * p} />
           <FireLight position={[17.6, 1.6, 4.0]} power={16} reach={7} seed={3} />
         </>
       ),
@@ -46,9 +46,9 @@ export const scene15 = storyScene(timing, {
         const pulse = 0.5 + 0.5 * Math.sin(t * 5);
         return (
           <>
-            <Kneeling face="hollow" headPitch={0.6} />
+            <Kneeling face="sad" headPitch={0.6} />
             <Flowers k={1 - 0.6 * ease(p)} />
-            <pointLight position={[BKNEEL[0] - 1, 2.4, BKNEEL[2] + 0.3]} color="#7dff6a" intensity={10 + 30 * p * pulse} distance={7} decay={2} />
+            <pointLight position={[BKNEEL[0] - 1, 2.4, BKNEEL[2] + 0.3]} color="#7dff6a" intensity={3 + 9 * p * pulse} distance={7} decay={2} />
             <Glow position={[BKNEEL[0] - 1.1, 2.3, BKNEEL[2] + 0.3]} size={1.4 + p} color="#7dff6a" opacity={0.3 + 0.4 * p * pulse} />
             <FireLight position={[16.6, 1.8, 4.4]} power={12} reach={7} seed={3} />
           </>
@@ -57,14 +57,14 @@ export const scene15 = storyScene(timing, {
     },
     {
       cue: "15.open",
-      ...cam.push({ on: [16.85, 1.2, STREET], dist: 3.0, to: 2.5, yaw: 6, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [16.85, 1.1, STREET], dist: 4.8, to: 4.3, yaw: 6, pitch: 4, fov: 46 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Side on, close. The hand comes down. It is not a fist. It opens, and stops in the air in front of his brother's bowed head. The green light goes out of it, and the daisies stand back up.",
       stage: (t, { p }) => (
         <>
           <Hero position={HSTOP} rotationY={EAST} animation="reachUp" blendTo="reach" blend={1 - ease(ramp(p, 0, 0.5))} face="calm" headPitch={0.3} />
-          <Kneeling face="hollow" headPitch={0.6} />
+          <Kneeling face="sad" headPitch={0.6} />
           <Flowers k={0.4 + 0.6 * ease(ramp(p, 0.4, 1))} />
           <Glow position={[HSTOP[0] + 0.7, 1.3, HSTOP[2] + 0.3]} size={1.2} color="#9dff8a" opacity={0.6 * (1 - p)} />
           <FireLight position={[16.9, 2, 4.4]} power={20} reach={8} seed={3} />
@@ -73,7 +73,7 @@ export const scene15 = storyScene(timing, {
     },
     {
       cue: "15.smile",
-      ...cam.push({ on: faceOf(HSTOP), dist: 2.9, to: 2.0, yaw: 104, pitch: -12, fov: 38 }),
+      ...cam.push({ on: [HSTOP[0], 1.35, HSTOP[2]], dist: 3.0, to: 2.2, yaw: 104, pitch: -8, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "From his brother's place, looking up at him. He is smiling: the small, ordinary smile from the first film. He says it gently, and on 'okay?' tips his head.",
@@ -81,7 +81,6 @@ export const scene15 = storyScene(timing, {
         <>
           <Hero position={HSTOP} rotationY={EAST} animation="reach" face="smile" headPitch={0.3} headYaw={t > wordAt("15.smile", "okay") ? 0.2 : 0} gaze={0} />
           <FireLight position={[17.6, 1.7, 4.0]} power={18} reach={7} seed={3} />
-          <pointLight position={[17.4, 1.2, 2.2]} color="#c8ffb0" intensity={8} distance={6} decay={2} />
         </>
       ),
     },

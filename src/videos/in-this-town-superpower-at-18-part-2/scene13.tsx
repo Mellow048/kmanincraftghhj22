@@ -48,14 +48,14 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.thought",
-      ...cam.push({ on: [8.6, 1.56, 2.8], dist: 2.6, to: 2.1, yaw: 74, pitch: -2, fov: 36 }),
+      ...cam.push({ on: [8.6, 1.35, 2.8], dist: 2.8, to: 2.3, yaw: 74, pitch: -2, fov: 36 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "His face, still in slow motion. The fight goes out of it. He is not looking at an enemy; he is looking at someone he has missed for ten years.",
       stage: (t, { p }) => (
         <>
           <Hero position={[8.4 + 0.4 * p, 0, 2.8]} rotationY={EAST} animation="run" time={0.31 + t * SLOW} face={p < 0.3 ? "brave" : "sad"} gaze={0} />
-          <Bits position={[9.0, 1.8, 3.0]} t={0.5 + t * 0.05} color="#d81f3a" count={10} seed={5} power={1.0} />
+          <Bits position={[9.4, 1.8, 1.6]} t={0.5 + t * 0.05} color="#d81f3a" count={10} seed={5} power={1.0} />
           <pointLight position={[10.4, 2, 4.2]} color="#ffb070" intensity={16} distance={8} decay={2} />
         </>
       ),
@@ -68,8 +68,8 @@ export const scene13 = storyScene(timing, {
       note: "What he is running at: his brother, swaying in the road, scratched, a rose in his hair. He looks eighteen. He looks eight.",
       stage: (t) => (
         <>
-          <Brother position={BKNEEL} rotationY={WEST} animation="ache" time={t * 0.3} face="dizzy" />
-          <Rose position={[BKNEEL[0], 1.84, BKNEEL[2]]} scale={1.5} />
+          <Brother position={BKNEEL} rotationY={WEST} animation="idle" time={t * 0.3} headPitch={0.2} face="dizzy" />
+          <Rose position={[BKNEEL[0], 1.74, BKNEEL[2]]} scale={1.1} />
           <Lit at={BKNEEL} side={-1} />
         </>
       ),

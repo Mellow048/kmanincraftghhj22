@@ -17,7 +17,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.lie",
-      ...cam.push({ on: faceOf(MUD), dist: 2.1, to: 2.5, yaw: 132, pitch: -4, fov: 36 }),
+      ...cam.push({ on: [MUD[0], 1.3, MUD[2]], dist: 2.3, to: 2.7, yaw: 132, pitch: -2, fov: 36 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "The same face, the same frame, and the brave look slides off it. His eyes go left, then right. He has nothing.",
@@ -31,13 +31,17 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.up",
-      ...cam.push({ on: [-8.3, 1.1, 8.6], dist: 6.4, to: 5.8, yaw: 52, pitch: 6, fov: 42 }),
+      from: [-4.9, 1.9, 6.0],
+      to: [-5.1, 1.8, 6.2],
+      target: [-8.6, 1.1, 9.2],
+      fov: 48,
+      ease: "inOutSine",
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "Side on, the two of them: him in the pen, still straightening up; his brother a few steps off, waiting, fire in one hand.",
+      note: "Over his brother's shoulder: him in the pen, still straightening up; his brother a few steps off, waiting, fire in one hand.",
       stage: (t, { p }) => (
         <>
-          <Hero position={MUD} rotationY={AT} animation="crouch" blendTo="idle" blend={ease(ramp(p, 0.1, 0.9))} face="uneasy" />
+          <Hero position={MUD} rotationY={AT} animation="crouch" blendTo="idle" blend={1 - ease(ramp(p, 0.1, 0.9))} face="uneasy" />
           <Garden />
           <Brother position={B0} rotationY={BACK} animation="idle" face="smug" flame={t} />
           <Lit at={B0} />
@@ -46,7 +50,11 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.tip",
-      ...cam.push({ on: [-4.6, 1.2, 5.8], dist: 7.2, to: 6.2, yaw: 20, pitch: 6, fov: 42 }),
+      from: [-8.2, 1.7, 9.4],
+      to: [-8.0, 1.6, 9.2],
+      target: [-5.05, 1.2, 5.5],
+      fov: 50,
+      ease: "inOutSine",
       zone: ZONE.ruin,
       look: CHAOS,
       note: "From the right a yellow robe comes pelting across the square, nose first, straight at the brother's back: Tip. On 'north' a little red arrow pops up over his head, pointing the wrong way.",

@@ -59,10 +59,10 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.plan",
-      ...cam.pan({ from: [-1.4, 1.5, 5.6], on: [-3.4, 1.55, 4.2], onTo: [-1.0, 1.5, 3.5], fov: 40 }),
+      ...cam.push({ on: [-2.1, 1.35, 3.9], dist: 6.4, to: 5.8, yaw: 10, pitch: 3, fov: 50 }),
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "Bo's long grey face, asking. Then across to him, on his feet now, opening his mouth, shutting it, and shrugging.",
+      note: "Bo's long grey face on the left, asking. Him on the right, on his feet now, opening his mouth, shutting it, and shrugging.",
       stage: (t) => {
         const not = t > wordAt("8.plan", "not") - 0.2;
         return (

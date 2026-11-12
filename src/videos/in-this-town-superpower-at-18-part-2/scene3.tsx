@@ -42,14 +42,18 @@ export const scene3 = storyScene(timing, {
         <>
           <Hero position={MUD} rotationY={EAST} animation="crouch" arms="press" time={0.3} face="brave" headPitch={0.35} />
           <Garden />
-          <Glow position={[HANDS[0], 0.3, HANDS[2]]} size={1.6 + 1.6 * p} color="#9dff8a" opacity={0.75} />
-          <pointLight position={[HANDS[0], 0.5, HANDS[2]]} color="#9dff8a" intensity={10 + 20 * p} distance={7} decay={2} />
+          <Glow position={[HANDS[0], 0.3, HANDS[2]]} size={0.7 + 0.5 * p} color="#9dff8a" opacity={0.4} />
+          <pointLight position={[HANDS[0], 0.5, HANDS[2]]} color="#9dff8a" intensity={4 + 8 * p} distance={7} decay={2} />
         </>
       ),
     },
     {
       cue: "3.roots",
-      ...cam.push({ on: [-7.4, 0.7, 9.4], dist: 5.6, to: 6.6, yaw: -112, pitch: 16, fov: 46 }),
+      from: [-12.0, 2.2, 11.2],
+      to: [-12.6, 2.6, 11.5],
+      target: [-7.0, 0.5, 8.9],
+      fov: 48,
+      ease: "inOutSine",
       zone: ZONE.ruin,
       look: CHAOS,
       note: "From behind him: the ground splits in front of his hands and roots as thick as his arm come boiling up out of it, through the fence, and away across the town.",
@@ -65,10 +69,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.chase",
-      from: [-3.5, 2.2, 15.5],
-      to: [3.5, 2.2, 13.5],
-      target: [-4.4, 3.2, 8.2],
-      targetTo: [3.2, 3.0, 5.2],
+      from: [-4, 2.0, 9.2],
+      to: [2.5, 2.0, 9.0],
+      target: [-3, 1.6, 6.6],
+      targetTo: [4.2, 1.6, 4.6],
       fov: 52,
       ease: "linear",
       zone: ZONE.ruin,
@@ -83,7 +87,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.leaf",
-      ...cam.push({ on: [LEAF[0], 2.4, LEAF[2]], dist: 7.6, to: 6.6, yaw: 16, pitch: 4, fov: 46 }),
+      ...cam.push({ on: [LEAF[0], 2.4, LEAF[2]], dist: 7.4, to: 6.6, yaw: 40, pitch: 4, fov: 46 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "The road. Tip is one second from it. The roots arrive underneath him, rear up, and on 'leaf' open into a single green leaf the size of a cart.",

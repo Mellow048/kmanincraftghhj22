@@ -42,7 +42,7 @@ export const scene16 = storyScene(timing, {
     },
     {
       cue: "16.wrong",
-      ...cam.push({ on: [16.85, 1.1, STREET], dist: 5.6, to: 4.4, yaw: 0, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [16.85, 1.0, STREET], dist: 6.0, to: 5.0, yaw: 0, pitch: 3, fov: 46 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Wide, side on, a slow push in, and nothing happens: one of them kneeling with his face turned away, the other standing with his hand held out, and he does not lower it, and he does not lower it.",
@@ -70,7 +70,7 @@ export const scene16 = storyScene(timing, {
     },
     {
       cue: "16.shook",
-      ...cam.push({ on: [16.85, 1.15, STREET], dist: 2.9, to: 2.5, yaw: 4, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [16.8, 1.0, STREET], dist: 4.4, to: 4.0, yaw: 4, pitch: 2, fov: 46 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Under a second, side on: a black sleeve comes up and takes the red one. Green sparks jump where the hands meet.",
@@ -78,9 +78,9 @@ export const scene16 = storyScene(timing, {
         <>
           <Hero position={HSTOP} rotationY={EAST} animation="reach" face="smile" headPitch={0.3} />
           <Brother position={[BKNEEL[0] - 0.35, -0.3, BKNEEL[2]]} rotationY={WEST} animation="reach" face="uneasy" headPitch={-0.3} />
-          <Rose position={[BKNEEL[0] - 0.35, 1.54, BKNEEL[2]]} scale={1.5} />
+          <Rose position={[BKNEEL[0] - 0.35, 1.2, BKNEEL[2]]} scale={1.1} />
           <Bits position={[16.75, 1.3, STREET + 0.3]} t={t - 0.15} color="#8dff7a" count={16} seed={4} power={0.9} />
-          <Glow position={[16.75, 1.3, STREET + 0.3]} size={1.4} color="#9dff8a" opacity={0.5} />
+          <Glow position={[16.75, 1.3, STREET + 0.3]} size={0.8} color="#9dff8a" opacity={0.4} />
           <FireLight position={[16.9, 2, 4.4]} power={20} reach={8} seed={3} />
         </>
       ),

@@ -16,7 +16,7 @@ export const scene12 = storyScene(timing, {
   shots: [
     {
       cue: "12.push",
-      ...cam.push({ on: [3.0, 1.5, STREET], dist: 6.4, to: 5.6, yaw: -36, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [2.6, 1.4, STREET], dist: 5.6, to: 5.0, yaw: -62, pitch: 5, fov: 46 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He plants his feet and shoves the air with both hands, exactly as his brother did. The wall goes.",
@@ -24,7 +24,7 @@ export const scene12 = storyScene(timing, {
         <>
           <Hero position={STAND} rotationY={EAST} animation="press" face="brave" />
           <Wall x={4.4 + 1.6 * ease(p) * ease(p)} kind="grass" />
-          <pointLight position={[2.4, 2.4, STREET + 1.6]} color="#c8ffb0" intensity={20} distance={9} decay={2} />
+          <pointLight position={[2.4, 2.4, STREET + 1.6]} color="#c8ffb0" intensity={7} distance={9} decay={2} />
         </>
       ),
     },
@@ -57,16 +57,17 @@ export const scene12 = storyScene(timing, {
         <>
           <Brother position={BFAR} rotationY={WEST} animation="panic" face={p < 0.3 ? "wow" : "scared"} flame={p < 0.5 ? t : undefined} gaze={0} />
           <Orbs position={BFAR} t={t * 3.5} count={18} />
-          <pointLight position={[BFAR[0] - 2.2, 1.8, BFAR[2] + 0.4]} color="#b8ff9a" intensity={6 + 34 * p} distance={9} decay={2} />
+          <Lit at={BFAR} side={-1} />
+          <pointLight position={[BFAR[0] - 2.2, 1.8, BFAR[2] + 0.4]} color="#b8ff9a" intensity={2 + 10 * p} distance={9} decay={2} />
         </>
       ),
     },
     {
       cue: "12.hit",
-      ...cam.push({ on: [15.6, 1.6, STREET], dist: 8.6, to: 8.0, yaw: -24, pitch: 5, fov: 48 }),
+      ...cam.push({ on: [16.4, 1.4, STREET], dist: 7.6, to: 7.0, yaw: 35, pitch: 5, fov: 48 }),
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "Side on, wide. The hedge arrives. On 'hit' it takes him off his feet and carries him back down the road in a cloud of leaves and petals, and then stops, and he does not.",
+      note: "Wide. The hedge arrives. On 'hit' it takes him off his feet and carries him back down the road in a cloud of leaves and petals, and then stops, and he does not.",
       stage: (t) => {
         const hit = wordAt("12.hit", "hit");
         const k = ease(ramp(t, 0, hit));
@@ -85,14 +86,14 @@ export const scene12 = storyScene(timing, {
     },
     {
       cue: "12.dizzy",
-      ...cam.push({ on: faceOf(BKNEEL), dist: 3.0, to: 2.4, yaw: -70, pitch: -2, fov: 38 }),
+      ...cam.push({ on: [BKNEEL[0], 1.2, BKNEEL[2]], dist: 3.5, to: 3.0, yaw: -70, pitch: 0, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He is on his feet, just. He rocks forward and back with his eyes going round, scratched all over, and there is one red rose standing straight up in his hair. Petals come down round him like snow.",
       stage: (t) => (
         <>
-          <Brother position={BKNEEL} rotationY={WEST + Math.sin(t * 2.4) * 0.25} animation="ache" face="dizzy" headYaw={Math.sin(t * 3.1) * 0.3} headPitch={Math.sin(t * 2.4) * 0.15} />
-          <Rose position={[BKNEEL[0], 1.84, BKNEEL[2]]} scale={1.5} />
+          <Brother position={BKNEEL} rotationY={WEST + Math.sin(t * 2.4) * 0.25} animation="idle" face="dizzy" headYaw={Math.sin(t * 3.1) * 0.3} headPitch={Math.sin(t * 2.4) * 0.15} />
+          <Rose position={[BKNEEL[0], 1.74, BKNEEL[2]]} scale={1.1} />
           <Bits position={[BKNEEL[0], 2.6, BKNEEL[2]]} t={0.5 + t * 0.25} color="#d81f3a" count={14} seed={4} power={0.6} />
           <Lit at={BKNEEL} side={-1} />
         </>

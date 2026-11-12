@@ -93,13 +93,13 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.know",
-      ...cam.push({ on: faceOf(MUD), dist: 3.0, to: 2.1, yaw: 132, pitch: -4, fov: 36 }),
+      ...cam.push({ on: [MUD[0], 1.3, MUD[2]], dist: 3.0, to: 2.3, yaw: 132, pitch: -2, fov: 36 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He stands up out of the daisies and says it, straight at his brother. The last shot of part one.",
       stage: (t, { p }) => (
         <>
-          <Hero position={MUD} rotationY={AT} animation="crouch" blendTo="idle" blend={ease(ramp(p, 0, 0.4))} face="brave" gaze={0} />
+          <Hero position={MUD} rotationY={AT} animation="crouch" blendTo="idle" blend={1 - ease(ramp(p, 0, 0.4))} face="brave" gaze={0} />
           <Garden />
           <FireLight position={ahead(MUD, AT, 2.2, 1.8)} power={14} reach={7} seed={4} />
         </>

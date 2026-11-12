@@ -8,7 +8,7 @@ import {
 } from "./kit";
 
 /** ONE WEEK LATER. Daylight. He gives it all back. */
-const ROW: Vec3[] = [[-2.4, 0, 2.6], [-0.8, 0, 2.6], [0.8, 0, 2.6], [2.4, 0, 2.6]];
+const ROW: Vec3[] = [[-1.65, 0, 2.6], [-0.55, 0, 2.6], [0.55, 0, 2.6], [1.65, 0, 2.6]];
 const HUE = ["#ffd24a", "#7ac8ff", "#c58aff", "#8dff7a"];
 const PEN = PLACE.pen;
 export const scene17 = storyScene(timing, {
@@ -31,25 +31,25 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.gave",
-      ...cam.truck({ on: [-1.6, 1.3, 2.9], dist: 6.4, yaw: 0, pitch: 5, by: [3.2, 0, 0], fov: 44 }),
+      ...cam.push({ on: [0, 1.0, 3.0], dist: 7.4, to: 6.6, yaw: 0, pitch: 22, fov: 50 }),
       zone: ZONE.day,
       look: DAY,
       note: "A line of villagers in grey, drained robes, in the sun. The boy in black walks along it, and as he passes each one a coloured light leaves his chest and goes home, and the robe takes its colour back.",
       stage: (t, { p }) => {
-        const bx = -3.4 + 6.8 * p;
+        const bx = -2.3 + 4.6 * p;
         return (
           <>
             {ROW.map((at, i) => {
-              const k = ramp(bx, at[0] - 0.5, at[0] + 0.9);
+              const k = ramp(bx, at[0] - 0.4, at[0] + 0.4);
               return (
                 <group key={i}>
                   {k >= 1 ? <Folk n={i} position={at} rotationY={SOUTH} nod={0.2} /> : <Bo drained position={at} rotationY={SOUTH} />}
-                  <Drain from={[bx, 1.15, 3.5]} to={[at[0], 1.2, at[2]]} k={k * 0.98} color={HUE[i]} />
-                  <Bits position={[at[0], 1.3, at[2]]} t={k >= 1 ? (bx - at[0] - 0.9) * 0.4 : -1} color={HUE[i]} count={10} seed={i + 2} power={0.8} />
+                  <Drain from={[bx, 1.15, 3.8]} to={[at[0], 1.2, at[2]]} k={k * 0.98} color={HUE[i]} />
+                  <Bits position={[at[0], 1.3, at[2]]} t={k >= 1 ? (bx - at[0] - 0.4) * 0.6 : -1} color={HUE[i]} count={10} seed={i + 2} power={0.8} />
                 </group>
               );
             })}
-            <Brother {...stride([-3.4, 0, 3.5], [3.4, 0, 3.5], p)} animation="walk" face="uneasy" />
+            <Brother {...stride([-2.3, 0, 3.8], [2.3, 0, 3.8], p)} animation="walk" face="uneasy" />
           </>
         );
       },
@@ -64,38 +64,38 @@ export const scene17 = storyScene(timing, {
         const y = Math.abs(Math.sin(t * 3.4)) * 2.1;
         return (
           <>
-            <Bo position={[0, y, 1.6]} rotationY={SOUTH} />
-            <Hero position={[-1.5, 0, 2.6]} rotationY={0.9} animation="idle" face="grin" headPitch={-0.2 - y * 0.12} />
-            <Brother position={[1.5, 0, 2.6]} rotationY={-0.9} animation="idle" face="smile" headPitch={-0.2 - y * 0.12} />
+            <Bo position={[0, y, 1.2]} rotationY={SOUTH} />
+            <Hero position={[-1.0, 0, 2.6]} rotationY={0.5} animation="idle" face="grin" headPitch={-0.2 - y * 0.12} />
+            <Brother position={[1.0, 0, 2.6]} rotationY={-0.5} animation="idle" face="smile" headPitch={-0.2 - y * 0.12} />
           </>
         );
       },
     },
     {
       cue: "17.fix",
-      ...cam.push({ on: [9.3, 1.4, -3.4], dist: 6.2, to: 5.4, yaw: 14, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [9.2, 1.2, -3.2], dist: 6.0, to: 5.4, yaw: 22, pitch: 14, fov: 46 }),
       zone: ZONE.day,
       look: DAY,
       note: "Their own house, whole again but for one gap by the door. On 'he carries' the boy in black comes past with an oak log on his shoulder. On 'I grow' the boy in red puts his palm on the gap, there is a green flash, and new planks fill it.",
       stage: (t, { p }) => {
         const g0 = wordAt("17.fix", "grow");
         const grow = ease(ramp(t, g0, g0 + 0.6));
-        const bro = stride([6.2, 0, -2.4], [9.6, 0, -2.6], ease(ramp(p, 0.2, 0.9)));
+        const bro = stride([7.4, 0, -2.5], [8.8, 0, -2.7], ease(ramp(p, 0.1, 0.9)));
         return (
           <>
             <Brother {...bro} animation="walk" arms="hold" face="smile" />
             <Block position={[bro.position[0], 1.72, bro.position[2]]} size={[1.5, 0.34, 0.34]} color="#6b4a2a" />
-            <Hero position={[10.6, 0, -3.3]} rotationY={NORTH} animation="idle" arms="press" time={0.3} face="grin" />
-            <Block position={[10.6, 1.2, -3.95]} size={[1.0 * grow, 1.0 * grow, 0.1]} color="#caa268" />
-            <Glow position={[10.6, 1.2, -3.8]} size={2.2 * grow} color="#9dff8a" opacity={0.6 * (1 - Math.abs(grow * 2 - 1))} />
-            <Bits position={[10.6, 1.2, -3.7]} t={t - g0 - 0.2} color="#8dff7a" count={12} seed={3} power={0.8} />
+            <Hero position={[9.9, 0, -3.3]} rotationY={NORTH} animation="idle" arms="press" time={0.3} face="grin" />
+            <Block position={[9.9, 1.2, -3.95]} size={[1.0 * grow, 1.0 * grow, 0.1]} color="#caa268" />
+            <Glow position={[9.9, 1.2, -3.8]} size={2.2 * grow} color="#9dff8a" opacity={0.6 * (1 - Math.abs(grow * 2 - 1))} />
+            <Bits position={[9.9, 1.2, -3.7]} t={t - g0 - 0.2} color="#8dff7a" count={12} seed={3} power={0.8} />
           </>
         );
       },
     },
     {
       cue: "17.pigs",
-      ...cam.push({ on: [PEN[0] + 0.2, 0.6, PEN[2]], dist: 4.4, to: 3.6, yaw: 16, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [PEN[0] + 0.1, 0.5, PEN[2]], dist: 5.6, to: 5.0, yaw: 8, pitch: 28, fov: 46 }),
       zone: ZONE.day,
       look: DAY,
       note: "The pig pen, grass in it now, and daisies. The boy in black is kneeling in front of three pigs with his head down. Two have their backs to him. On 'thinking' the third turns round, slowly, and looks at him.",
@@ -108,10 +108,10 @@ export const scene17 = storyScene(timing, {
             <Daisy position={[PEN[0] + 1.6, 0.07, PEN[2] + 1.2]} />
             <Daisy position={[PEN[0] - 1.5, 0.07, PEN[2] + 1.4]} />
             <Daisy position={[PEN[0] + 0.3, 0.07, PEN[2] + 1.7]} />
-            <Brother position={[PEN[0] - 1.1, -0.42, PEN[2] + 0.2]} rotationY={EAST} animation="sit" face="sad" headPitch={0.45} />
-            <Pig position={[PEN[0] + 0.5, 0, PEN[2] - 0.5]} rotationY={1.1} />
-            <Pig position={[PEN[0] + 1.3, 0, PEN[2] + 0.5]} rotationY={1.9} />
-            <Pig position={[PEN[0] + 0.5, 0, PEN[2] + 0.6]} rotationY={1.5708 - 3.14 * turn} />
+            <Brother position={[PEN[0] - 0.9, -0.42, PEN[2] + 0.1]} rotationY={EAST} animation="sit" face="sad" headPitch={0.45} />
+            <Pig position={[PEN[0] + 0.45, 0, PEN[2] - 0.75]} rotationY={1.1} scale={0.8} />
+            <Pig position={[PEN[0] + 1.15, 0, PEN[2] + 0.1]} rotationY={1.9} scale={0.8} />
+            <Pig position={[PEN[0] + 0.35, 0, PEN[2] + 0.75]} rotationY={1.5708 - 3.14 * turn} scale={0.8} />
           </>
         );
       },

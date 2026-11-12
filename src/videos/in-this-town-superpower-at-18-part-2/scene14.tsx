@@ -14,7 +14,7 @@ type KFaceName = "sad" | "fear" | "dizzy" | "wow" | "crying" | "uneasy" | "smile
 export const Kneeling = ({ face = "sad", headPitch = 0.3, headYaw = 0 }: { face?: KFaceName; headPitch?: number; headYaw?: number }) => (
   <>
     <Brother position={KN} rotationY={WEST} animation="sit" face={face} headPitch={headPitch} headYaw={headYaw} gaze={0} />
-    <Rose position={[KN[0], 1.42, KN[2]]} scale={1.5} />
+    <Rose position={[KN[0] - 0.12 * headPitch, 1.06, KN[2]]} scale={1.1} />
   </>
 );
 export const scene14 = storyScene(timing, {
@@ -23,7 +23,7 @@ export const scene14 = storyScene(timing, {
   shots: [
     {
       cue: "14.kneel",
-      ...cam.push({ on: [16.85, 1.0, STREET], dist: 5.4, to: 4.8, yaw: 4, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [16.85, 1.0, STREET], dist: 6.2, to: 5.6, yaw: 4, pitch: 4, fov: 46 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Side on, the two of them. He arrives at a run and pulls up a step short. His brother's legs fold, and he is on his knees in the road.",
@@ -32,8 +32,8 @@ export const scene14 = storyScene(timing, {
         return (
           <>
             <Hero {...stride([13.6, 0, 2.8], HSTOP, ease(Math.min(1, p * 2.2)))} animation={p < 0.45 ? "run" : "idle"} face="sad" />
-            <Brother position={[BKNEEL[0], -0.42 * k, BKNEEL[2]]} rotationY={WEST} animation="ache" blendTo="sit" blend={1 - k} face="dizzy" headPitch={0.3 * k} />
-            <Rose position={[BKNEEL[0], 1.84 - 0.42 * k, BKNEEL[2]]} scale={1.5} />
+            <Brother position={[BKNEEL[0], -0.42 * k, BKNEEL[2]]} rotationY={WEST} animation="idle" blendTo="sit" blend={1 - k} face="dizzy" headPitch={0.3 * k} />
+            <Rose position={[BKNEEL[0], 1.74 - 0.68 * k, BKNEEL[2]]} scale={1.1} />
             <FireLight position={[16.9, 2, 4.6]} power={22} reach={9} seed={3} />
           </>
         );
@@ -67,7 +67,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.win",
-      ...cam.push({ on: [16.85, 1.0, STREET], dist: 4.4, to: 4.0, yaw: -6, pitch: 2, fov: 42 }),
+      ...cam.push({ on: [16.85, 1.0, STREET], dist: 5.6, to: 5.1, yaw: -6, pitch: 2, fov: 46 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "The two of them, side on, and nothing moving but the fires. One standing. One kneeling with his head bowed, saying it to the road.",

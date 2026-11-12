@@ -44,10 +44,14 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.lava",
-      ...cam.push({ on: [-8.3, 1.1, 8.7], dist: 6.4, to: 5.8, yaw: 52, pitch: 5, fov: 44 }),
+      from: [-4.9, 1.9, 6.0],
+      to: [-5.0, 1.85, 6.1],
+      target: [-8.6, 1.1, 9.2],
+      fov: 48,
+      ease: "linear",
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "Side on: a rope of lava jumps from his fingertip across the gap, at the teller, who is still on his knees.",
+      note: "Over his shoulder: a rope of lava jumps from his fingertip across the gap, at the teller, who is still on his knees.",
       stage: (t, { p }) => (
         <>
           <Brother position={B0} rotationY={BACK} animation="point" face="angry" />
@@ -59,7 +63,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.tree",
-      ...cam.push({ on: [-8.6, 3.2, 9.0], dist: 11.5, to: 12.5, yaw: 52, pitch: 4, fov: 50 }),
+      ...cam.push({ on: [-9.2, 3.4, 9.2], dist: 10, to: 11.5, yaw: 100, pitch: 2, fov: 52 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "The same view, pulling back. On 'tree' a whole oak comes up out of the mud under his feet like a fist and carries him six blocks into the air. The lava hits the trunk where he was.",

@@ -29,7 +29,7 @@ export const scene18 = storyScene(timing, {
     },
     {
       cue: "18.three",
-      ...cam.push({ on: [TABLE[0], 1.0, TABLE[2]], dist: 4.4, to: 3.7, yaw: 8, pitch: 12, fov: 44 }),
+      ...cam.push({ on: [TABLE[0], 0.9, TABLE[2]], dist: 4.6, to: 4.2, yaw: 0, pitch: 20, fov: 58 }),
       zone: ZONE.room,
       look: DAY,
       note: "From the empty side of the table: his mother at the far side, a boy in red on her left and a boy in black on her right, all three sitting down. The plate nearest us is clean and empty.",
@@ -37,8 +37,8 @@ export const scene18 = storyScene(timing, {
         <>
           <Table position={TABLE} />
           <Mom position={[TABLE[0], 0, TABLE[2] - 1.35]} rotationY={SOUTH} nod={0.15} />
-          <Hero position={[TABLE[0] - 1.3, -0.3, TABLE[2]]} rotationY={EAST} animation="sit" face="grin" />
-          <Brother position={[TABLE[0] + 1.3, -0.3, TABLE[2]]} rotationY={WEST} animation="sit" face="smile" headPitch={0.15} />
+          <Hero position={[TABLE[0] - 1.15, -0.3, TABLE[2]]} rotationY={EAST} animation="sit" face="grin" />
+          <Brother position={[TABLE[0] + 1.15, -0.3, TABLE[2]]} rotationY={WEST} animation="sit" face="smile" headPitch={0.15} />
         </>
       ),
     },
@@ -57,14 +57,14 @@ export const scene18 = storyScene(timing, {
     },
     {
       cue: "18.sub",
-      ...cam.push({ on: [0, 1.2, 3.2], dist: 4.6, to: 4.1, yaw: 0, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [0, 1.15, 3.0], dist: 5.4, to: 4.9, yaw: 0, pitch: 2, fov: 46 }),
       zone: ZONE.day,
       look: DAY,
       note: "Under the bell. The twins side by side facing us, red and black, grown. A SUBSCRIBE sign stands in the daisies between them. The one in black gives a small, embarrassed wave.",
       stage: (t) => (
         <>
-          <Hero position={[-0.95, 0, 2.6]} rotationY={0.15} animation="idle" face="grin" />
-          <Brother position={[0.95, 0, 2.6]} rotationY={-0.15} animation="wave" face="smile" />
+          <Hero position={[-0.78, 0, 2.6]} rotationY={0.15} animation="idle" face="grin" />
+          <Brother position={[0.78, 0, 2.6]} rotationY={-0.15} animation="wave" face="smile" />
           <SubscribeSign position={[SIGN[0], 0.95, SIGN[2]]} rotationY={0} scale={0.42} />
           <Block position={[SIGN[0], 0.45, SIGN[2] - 0.03]} size={[0.05, 0.9, 0.05]} color="#5c3f24" />
           <Daisy position={[SIGN[0] - 0.4, 0, SIGN[2] + 0.3]} />

@@ -79,17 +79,12 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.fell",
-      from: [2.6, 0.9, 7.4],
-      to: [2.2, 0.8, 6.9],
-      target: [-2.6, 3.6, 4.7],
-      targetTo: [-0.5, 0.6, 3.4],
-      fov: 46,
-      ease: "inSine",
+      ...cam.push({ on: [LAND[0] - 0.6, 1.7, LAND[2] + 0.4], dist: 6.2, to: 5.2, yaw: 60, pitch: -6, fov: 50 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "From the ground in the square, looking up: he comes down out of the smoke spinning, the torn leaf flapping uselessly, and hits the road. On 'not far' he stops, flat on his face.",
       stage: (t, { p }) => {
-        const k = Math.min(1, p / 0.55);
+        const k = Math.min(1, p / 0.5);
         const at = lerp3(glideAt(0.86), [LAND[0], 0.9, LAND[2]], k * k);
         return (
           <>
@@ -98,8 +93,8 @@ export const scene7 = storyScene(timing, {
             ) : (
               <Glider position={at} yaw={GLIDE_YAW + k * 5} pitch={1.15 + k * 2} roll={0.5 + k * 3} hole face="scared" />
             )}
-            <Bits position={[LAND[0], 0.2, LAND[2]]} t={(p - 0.55) * 3} color="#8a7a66" count={18} seed={5} power={1.5} />
-            <Bits position={[LAND[0], 0.4, LAND[2]]} t={(p - 0.55) * 3} color="#5cbd48" count={12} seed={8} power={1.1} />
+            <Bits position={[LAND[0], 0.2, LAND[2]]} t={(p - 0.5) * 3} color="#8a7a66" count={18} seed={5} power={1.5} />
+            <Bits position={[LAND[0], 0.4, LAND[2]]} t={(p - 0.5) * 3} color="#5cbd48" count={12} seed={8} power={1.1} />
             <Lit at={LAND} />
           </>
         );
