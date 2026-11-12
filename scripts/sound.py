@@ -32,7 +32,12 @@ seconds. Rebuild the narration and one `build` moves every sound with it.
     { "cue": "8.under", "sfx": "whoosh" }                      on the cut into 8.under
     { "cue": "7.walk", "at": 0.2, "sfx": "step_grass", "repeat": 4, "every": 0.3 }
     { "cue": "13.burn", "sfx": "riser", "dur": 1.6 }           a riser ENDS on its time
-    { "cue": "5.stare", "p": 0.5, "sfx": "tick", "gain": -20, "pan": -0.4 }   halfway through, quieter, to the left
+    { "cue": "5.stare", "p": 0.5, "sfx": "tick", "trim": -4, "pan": -0.4 }    halfway through, 4 dB quieter, to the left
+
+Every level is in dB AGAINST THE VOICE, as a phone speaker plays it: 0 is as loud as the
+voice, -10 is clear, under -18 nobody hears it. `build` measures the result and prints it,
+because whoever runs this may not be able to listen. The guide for a topic's films is in
+the topic's folder (Topics/InThisTown/SOUND.md).
 
 Needs Python 3.9+, numpy, and ffmpeg (system ffmpeg, or `pip install imageio-ffmpeg`).
 `pip install pillow` adds the timeline picture. Rendering a film needs none of this:
@@ -1830,7 +1835,7 @@ def scene_table(video_dir: str) -> dict:
 
 
 def topic_sound(video_dir: str) -> dict:
-    """The `sound` block of the film's topic.json, if the film names a topic."""
+    """The `sound` block of the film's topic.json, if the film names a topic. `guide` is the topic's page on sound."""
     film_file = os.path.join(video_dir, "film.tsx")
     if not os.path.exists(film_file):
         return {}
@@ -1857,6 +1862,7 @@ def draft(film: str, force: bool) -> int:
     table = scene_table(p["video"])
     rules = topic_sound(p["video"])
     by_look, by_zone = rules.get("bedForLook", {}), rules.get("bedForZone", {})
+    guide = f"Read {rules['guide']} first." if rules.get("guide") else "The format is at the top of scripts/sound.py."
 
     beds, run = [], None
     for cue_id in clock.order:
@@ -1879,7 +1885,7 @@ def draft(film: str, force: bool) -> int:
 
     sheet = {
         "film": film,
-        "README": "The sound sheet. Read Topics/InThisTown/SOUND.md. Times are cues and words, never seconds. Then: python3 scripts/sound.py build " + film,
+        "README": f"The sound sheet. {guide} Times are cues and words, never seconds. Then: python3 scripts/sound.py build {film}",
         "music": {
             "gain": -16,
             "sections": [{"from": clock.order[0], "mood": "town", "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."}],
@@ -1892,7 +1898,7 @@ def draft(film: str, force: bool) -> int:
         fh.write("\n")
     print(f"Wrote {rel(p['sheet'])}: 1 music section, {len(beds)} beds from the zones, {len(effects)} effects on the scene changes.")
     print("It is a start, not a soundtrack. Add the music sections act by act, and an effect for every thing that")
-    print(f"happens on screen. Then: python3 scripts/sound.py build {film}")
+    print(f"happens on screen. {guide} Then: python3 scripts/sound.py build {film}")
     return 0
 
 
@@ -1901,10 +1907,10 @@ def listing() -> int:
     print("MUSIC MOODS  (sound.json: music.sections[].mood)")
     for name, spec in MOODS.items():
         print(f"  {name:<12} {spec['about']}")
-    print("\nBEDS  (sound.json: beds[].bed)   the air of a place, under a run of shots")
+    print("\nBEDS  (sound.json: beds[].bed)   the air of a place, under a run of shots. dB is against the voice")
     for name, spec in BEDS.items():
         print(f"  {name:<12} {spec['gain']:>4.0f} dB  {spec['about']}")
-    print("\nEFFECTS  (sound.json: sfx[].sfx)   dB is the default peak; the voice peaks near -2")
+    print("\nEFFECTS  (sound.json: sfx[].sfx)   dB is against the voice: 0 is as loud as the voice, -10 is clear, under -18 is lost")
     for name, spec in SFX.items():
         where = {"start": "", "center": "  [centred on its time]", "end": "  [ends on its time]"}[spec["align"]]
         print(f"  {name:<12} {spec['gain']:>4.0f} dB  {spec['about']}{where}")

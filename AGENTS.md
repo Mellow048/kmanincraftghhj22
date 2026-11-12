@@ -1,8 +1,77 @@
 # AGENTS.md — The Director's Contract
 
+## 0. First: which kind of film were you asked for?
+
+This framework makes more than one kind of video. **Decide which one before you read another rule or write a line of
+code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown away, and that has happened twice.
+
+| The request… | It is | Read | Start with |
+|---|---|---|---|
+| says "In This Town"; or tells a story that begins "In this town, …"; or asks for a storytime, a narrated story of a minute or more, or a film "like Same Face", "like the monster egg" or "like the treehouse video" | The topic **In This Town** | [`Topics/InThisTown/README.md`](Topics/InThisTown/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "In This Town, …" --topic in-this-town` |
+| names another folder in `Topics/` | That topic | [`Topics/README.md`](Topics/README.md), then the topic's `README.md` | `npm run new -- "…" --topic <id>` |
+| asks for a 20-second short, or for none of the above | The **base film** | This file, from "The base film" down | `npm run new -- "The Title"` |
+| could be either | | | Ask the owner one question. Do not guess |
+
+**"In This Town" is the name of a format, not a title.** It runs one to three minutes. One kid tells it in the past
+tense. It cuts about every two seconds to a recorded voice, captions every word, has music and sound effects, and ends
+on a twist that was planted in the first minute. A 20-second film with that name is not a short version of it. The
+short version is the topic's own `cut: "short"`: one to two minutes.
+
+What a topic gives a film, that the base does not:
+
+| | Where |
+|---|---|
+| Its own rules, and the numbers the lint enforces | `Topics/<Folder>/README.md`, its playbooks, `topic.json` |
+| Finished films the owner approved, to model the build on | `models` in `topic.json` |
+| A pack of approved people, places and things | `Topics/<Folder>/PACK.md` |
+| A starter film | `Topics/<Folder>/template/`, through `npm run new -- "…" --topic <id>` |
+| Music and sound effects | `scripts/sound.py`, and the topic's `SOUND.md` |
+
+### The framework refuses the wrong kind of film
+
+- `npm run new` will not scaffold a title that opens the way a topic opens ("In This Town …") without `--topic`.
+- `npm run check` fails a film with no `topic` whose title or narration opens that way, or whose `film.tsx` names the
+  format.
+- `npm run check` holds a film that declares a topic to that topic's numbers: length, words, cut rate, captions, first
+  and last line, and sound.
+- The render workflow runs `npm run check` first. A film that fails is not rendered.
+
+Do not get past a refusal by renaming the film, rewording its first line, deleting the `topic` line, or writing an
+excuse into `topic.json`. The excuses there (`sound.voiceOnly`, a new `cut`) are the owner's to give. If you think a
+check is wrong, say so and ask.
+
+### Five things that hold for every topic film
+
+1. **The owner approves the script before anything is built.** Ideas, then the script, then stop and wait.
+2. **Build from the topic's pack and its starter.** Do not rebuild a villager, a house or a helper that already exists.
+3. **The film has sound**: music that changes with the story, and a sound effect for each thing that happens. A film
+   with only a voice is not finished.
+4. **An approved film does not change.** If you touch the engine or a pack, prove that the model films' stills are the
+   same before and after: `scripts/compare-stills.py`.
+5. **Copy how a model is built. Never copy its story**, its sentences or its twist.
+
+### If the topic's folder is not there
+
+If the request names a topic and your checkout has no `Topics/<Folder>/`, **stop**. You are on an old copy of the
+framework, where the only rules are the 20-second ones. Start again from the current `main`. That is how the second
+rejected film was made: [`Topics/InThisTown/reference/moon-20-seconds/`](Topics/InThisTown/reference/moon-20-seconds/README.md).
+
+### Which rules of this file a topic film still follows
+
+- A film that says `topic: "<id>"` in `defineFilm` follows that topic's `README.md` wherever it differs from this file.
+- A film with no `topic` follows this file unchanged.
+- These always apply, topic or not: strictly 3D (rule 9), detailed lit sets (rules 10–11), shot notes (section 5),
+  the render policy (section 9), API discipline (section 10).
+
+---
+
+## The base film: the 20-second short
+
+Everything from here to the end describes the **base format**. Come here only if section 0 sent you.
+
 You are not filling TSX with props. You are directing a 20-second Minecraft short that a stranger will watch on a phone, with the sound off, and still understand.
 
-This file is the hard contract. Read it before touching a film. Then read:
+This is the hard contract. Read it before touching a base film. Then read:
 
 1. `docs/CAMERA-BIBLE.md` — the Zack D camera grammar, translated to 9:16 Minecraft.
 2. `docs/STYLE.md` — the lighting, palette and copy-paste scenery recipes.
@@ -11,20 +80,6 @@ This file is the hard contract. Read it before touching a film. Then read:
 5. `docs/NARRATION.md` — hook-first writing and the 20-second beat map.
 
 If a rule here conflicts with a clever idea, the rule wins. If the idea is genuinely better, change the rule in this file first, then build it.
-
-### Topics: when the film is not a 20-second short
-
-This file describes the **base format**: the 20-second cinematic short. The framework also makes other kinds of video,
-and each kind is a **topic** with its own folder in `Topics/` and its own rules.
-
-- A film that says `topic: "<id>"` in `defineFilm` follows that topic's `README.md` wherever it differs from this file.
-  Example: `Topics/InThisTown/` films run three minutes, are narrated, cut about 90 times, and caption every word.
-- A film with no `topic` follows this file unchanged.
-- If the task names a topic, read `Topics/README.md` and that topic's `README.md` **before** this file's sections 1–3.
-- These always apply, topic or not: strictly 3D (rule 9), detailed lit sets (rules 10–11), shot notes (section 5),
-  the render policy (section 9), API discipline (section 10).
-
-`npm run check` reads the `topic` field and applies the right rule set to each film.
 
 ---
 
@@ -135,7 +190,7 @@ Write the narration in the same table. Read `docs/NARRATION-RULES.md` first: one
 npm run new -- "The Title"
 ```
 
-This creates `src/videos/the-title/` from `templates/video/` and registers it in `src/registry.ts`. It does not write the film for you.
+This creates `src/videos/the-title/` from `templates/video/` and registers it in `src/registry.ts`. It does not write the film for you. A title that opens the way a topic opens ("In This Town …") is refused: go back to section 0.
 
 ### Step 3 — Build the world first
 Before actors, build `world.tsx`:
@@ -216,13 +271,17 @@ src/videos/<slug>/
   film.tsx        metadata, look, post, World, scene order
 ```
 
-A narrated topic film (see `docs/STORY-FILMS.md`) adds three files to the same folder:
+A narrated topic film (see `docs/STORY-FILMS.md`) adds these to the same folder:
 
 ```
-  narration.md    the script: one [cue] line per shot
-  timing.json     when each word is said. Written by scripts/narration.py; never edited by hand
-  kit.tsx         this film's cast, props and helpers (replaces actors.tsx)
+  narration.md      the script: one [cue] line per shot
+  timing.json       when each word is said. Written by scripts/narration.py; never edited by hand
+  kit.tsx           passes on the topic's pack, and adds this film's own cast and places (replaces actors.tsx)
+  sound.json        the sound sheet: which music, which effect, on which word
+  sound.lock.json   what the mix was built from. Written by scripts/sound.py; never edited by hand
 ```
+
+Its voice and its mix live in `public/audio/<slug>/` (`narration.mp3`, `mix.mp3`).
 
 `src/engine/` is the shared toolbox. Do not fork a prop into a video folder because it is "faster". Add the prop to `src/engine/props.tsx`, export it from `src/engine/index.ts`, then use it everywhere. Consistency is the product.
 
@@ -305,6 +364,8 @@ Keep shadows on the key only. Point lights are expensive; use 4–7, not 20. A g
 
 ## 8. Review gate
 
+This is the gate for a **base film**. A topic film's gate is `npm run check` and the work order in its topic's `README.md`.
+
 A film is not done until all of these are true:
 
 - [ ] Hook lands in the first 1.5 seconds.
@@ -358,7 +419,8 @@ The user pays for every tool call. Work in batches:
 ```bash
 npm install                 # once
 npm run dev                 # Remotion Studio
-npm run new -- "The Title"  # scaffold a film folder + registry entry
+npm run new -- "The Title"  # scaffold a base film folder + registry entry
+npm run new -- "In This Town, …" --topic in-this-town   # scaffold a topic film from the topic's own starter
 npm run typecheck           # TypeScript
 npm run check               # director/contract lint
 npm run still -- the-title out/frame.png --frame=0
@@ -367,6 +429,9 @@ npm run render -- the-title out/the-title.mp4
 # narrated topic films (docs/STORY-FILMS.md)
 python3 scripts/narration.py build the-title    # recordings → narration.mp3 + timing.json
 npm run shots -- the-title --only 3.            # one still per shot: the review tool for 90-shot films
+python3 scripts/sound.py draft the-title        # a first sound.json
+python3 scripts/sound.py build the-title        # sound.json + the voice → mix.mp3, and a report to read
+python3 scripts/compare-stills.py out/before/x out/after/x   # did a shared change move a pixel of a finished film?
 ```
 
 `npm run still`, `npm run shots` and `npm run render` are **permission-only** on the user's machine.
