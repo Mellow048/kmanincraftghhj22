@@ -55,7 +55,7 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.father",
-      ...cam.pan({ from: [10.3, 1.5, 0.9], on: faceOf(STOOD), onTo: faceOf(NEAR), fov: 32 }),
+      ...cam.pan({ from: [10.3, 1.6, 2.5], on: faceOf(STOOD), onTo: faceOf(NEAR), fov: 32 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "From his worried face, asking, across to his brother's: who says nothing, and on 'smiled' smiles.",

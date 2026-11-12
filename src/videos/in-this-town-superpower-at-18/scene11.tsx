@@ -13,7 +13,7 @@ export const scene11 = storyScene(timing, {
   shots: [
     {
       cue: "11.woke",
-      ...cam.top({ on: room(-0.9, 0.5, -1.5), height: 2.6, to: 2.1, spin: [-10, 8], fov: 44 }),
+      ...cam.top({ on: room(-0.9, 0.5, -1.5), height: 3.3, to: 2.9, spin: [-10, 8], fov: 44 }),
       zone: ZONE.room,
       look: CHAOS,
       note: "Straight down on his bed. His eyes snap open. The light on him is orange, and it is moving.",
@@ -27,7 +27,7 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.street",
-      ...cam.push({ on: [WINDOW[0], 1.5, WINDOW[2]], dist: 4.2, to: 3.6, yaw: 24, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [WINDOW[0], 1.6, WINDOW[2]], dist: 3.4, to: 3.0, yaw: -6, pitch: 6, fov: 42 }),
       zone: ZONE.room,
       look: CHAOS,
       note: "He is at his window. The glass is solid orange, and smoke is crawling in round the frame.",
