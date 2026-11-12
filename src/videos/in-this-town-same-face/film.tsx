@@ -33,7 +33,8 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "short",
   look: "overworld-day",
-  audio: { src: "audio/in-this-town-same-face/narration.mp3" },
+  // The mix is the voice plus music, beds and effects, built from sound.json by scripts/sound.py.
+  audio: { src: "audio/in-this-town-same-face/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [
