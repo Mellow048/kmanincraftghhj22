@@ -8,7 +8,7 @@ All of it is made in Python by `scripts/sound.py`. Nothing is downloaded, sample
 noise is computed from a seed, so the same sheet always gives the same track.
 
 The model is `src/videos/in-this-town-same-face/sound.json`. Read it next to the film's `narration.md` before you
-write a sheet of your own: 11 music sections, 14 beds, 141 effects of 35 kinds, in 1:45.
+write a sheet of your own: 11 music sections (one of them silence), 14 beds, 141 effects of 35 kinds, in 1:45.
 
 ## 1. When, and with what
 
@@ -105,7 +105,7 @@ thing it rises into.
 ## 3. Music: one mood for each part of the story
 
 The music is not a loop under the film. It changes on a cut, when the story turns, and each change says something.
-The model has eleven sections; the lint wants at least five.
+The model has eleven sections, one of them silence; the lint wants at least five that play.
 
 | Script beats (`SCRIPT.md`) | What is happening | Mood |
 |---|---|---|

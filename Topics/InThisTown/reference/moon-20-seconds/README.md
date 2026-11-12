@@ -34,8 +34,10 @@ started from a copy of the framework from before this topic existed. The only ru
    the film starts from the topic's own starter (`../../template/`), not from the 20-second template.
 3. `npm run check` fails a film with no `topic` whose title or narration opens "In this town", or whose `film.tsx`
    names the format. This film fails on two of the three.
-4. `npm run check` holds a film that does declare the topic to the topic's length, word count, cut rate, captions,
-   first and last line, and sound. The render workflow runs the check first, so a film that fails cannot be rendered.
+4. `npm run check` holds a film that does declare the topic to the topic's cut rate, captions, first and last line,
+   and sound, and fails one under the topic's floor of 60 seconds and 250 words. Writing `topic: "in-this-town"` on
+   this film would not have saved it: it is 19.6 seconds and 30 words.
+5. The render workflow runs the check first, so a film that fails cannot be rendered.
 
 None of that helps an agent working on an **old copy** of the repo. If you were asked for an "In This Town" film
 and this folder is not in your checkout, stop and start from the current `main`.

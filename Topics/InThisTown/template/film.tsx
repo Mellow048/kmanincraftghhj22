@@ -19,9 +19,10 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "short",
   look: "overworld-day",
-  // The film is silent until its sound exists. When public/audio/__ID__/mix.mp3 has been built
-  // (voice, then `python3 scripts/sound.py build __ID__`), put this line back:
-  // audio: { src: "audio/__ID__/mix.mp3" },
+  // Sound, in two steps. Add the line when its file exists:
+  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },
+  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/__ID__/mix.mp3" },
+  // A finished film plays the mix. `npm run check` fails one that does not.
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1],

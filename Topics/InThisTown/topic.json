@@ -10,6 +10,8 @@
       178
     ],
     "hardMaxSeconds": 180,
+    "hardMinSeconds": 60,
+    "hardMinWords": 250,
     "shotSeconds": [
       0.4,
       6.0
@@ -54,7 +56,7 @@
   "pack": "Topics/InThisTown/PACK.md",
   "template": "Topics/InThisTown/template",
   "models": {
-    "note": "Finished films the owner approved. Copy how they are built; never copy their story.",
+    "note": "Finished films to build like. Copy how they are built; never copy their story.",
     "in-this-town-same-face": "The model for everything: script shape (short cut), shots, kit use, and sound. The owner: 'everything is perfect top to bottom'.",
     "in-this-town-monster-egg": "The long cut (18 beats). Voice only: it was made before the sound rule."
   },

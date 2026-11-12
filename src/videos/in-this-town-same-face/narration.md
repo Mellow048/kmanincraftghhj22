@@ -1,14 +1,23 @@
 # Narration — In This Town, Everyone Had the Same Face Except Me
 
-**Status: script APPROVED by the owner ("yes good enough give me the tts"), RECORDED, and BUILT on the owner's word
-("build"): 14 scenes, 57 shots, one per line below. The owner has not yet said anything about the finished film.**
+**Status: FINISHED. The script was approved by the owner ("yes good enough give me the tts"), recorded, and built on
+the owner's word ("build"): 14 scenes, 57 shots, one per line below. The owner on the finished picture: "everything
+is perfect top to bottom", "i like the assets". The owner then asked for background music and sound effects made in
+Python. They are in: `sound.json`, 11 music sections (one of them silence), 14 beds, 141 effects. The owner has not yet said anything about
+the sound.**
 
-Rendered on GitHub (run 14): the full 1080×1920 file is in the release `render-14`; `renders/in-this-town-same-face.mp4`
-is a 720×1280 copy that fits in the repository, and `renders/in-this-town-same-face-shots.jpg` is one frame per shot.
+Rendered on GitHub (run 15, with sound): the full 1080×1920 file is in the release `render-15`;
+`renders/in-this-town-same-face.mp4` is a 720×1280 copy that fits in the repository, and
+`renders/in-this-town-same-face-shots.jpg` is one frame per shot. The picture is the picture of run 14, the one the
+owner approved (release `render-14`, voice only): the two were compared frame by frame.
 
 Recorded with `voice-00` (the Monster Egg voice) as six clips; built to 104.7 seconds (1:44.7) at 254 words a
-minute, 57 shots, median shot 1.70 s. Nobody has listened to it yet: the agent cannot hear audio. For the owner's
-ear: the voice, and the three "hmm" at about 0:17, 0:31 and 0:46.
+minute, 57 shots, median shot 1.70 s. Nobody has listened to any of it: the agent cannot hear audio. The mix was
+measured, and the numbers are in `sound.lock.json`. For the owner's ear: the voice, the three "hmm" at about 0:17,
+0:31 and 0:46, and now the music and the effects.
+
+This film is the topic's model (`Topics/InThisTown/README.md`). Its people, places and things were moved into the
+topic's pack, so its `kit.tsx` now holds only what belongs to this story.
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word.
 

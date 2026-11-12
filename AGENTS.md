@@ -34,6 +34,9 @@ What a topic gives a film, that the base does not:
   format.
 - `npm run check` holds a film that declares a topic to that topic's numbers: length, words, cut rate, captions, first
   and last line, and sound.
+- `npm run check` fails a topic film that is under the topic's floor once its voice is recorded or its last line has
+  a shot. For In This Town the floor is 60 seconds and 250 words. Declaring the topic on a 20-second film does not
+  make it one.
 - The render workflow runs `npm run check` first. A film that fails is not rendered.
 
 Do not get past a refusal by renaming the film, rewording its first line, deleting the `topic` line, or writing an

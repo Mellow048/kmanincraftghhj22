@@ -242,7 +242,10 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
       if (lower.includes(phrase)) info(`${tag}: line [${cue.id}] uses a banned phrase "${phrase}".`);
     }
   }
-  if (lim.words && (totalWords < lim.words[0] || totalWords > lim.words[1])) {
+  // Under the topic's floor it is not a short film of this topic; it is another kind of video. That is judged
+  // further down, once it is known whether the film is still a draft. Above the floor, the range is advice.
+  const underWords = Boolean(lim.hardMinWords) && totalWords < lim.hardMinWords;
+  if (!underWords && lim.words && (totalWords < lim.words[0] || totalWords > lim.words[1])) {
     info(`${tag}: the script is ${totalWords} words. ${rules[0].toUpperCase()}${rules.slice(1)} asks for ${lim.words[0]}–${lim.words[1]}.`);
   }
 
@@ -271,9 +274,10 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   }
 
   const seconds = timing.duration;
+  const underSeconds = Boolean(lim.hardMinSeconds) && seconds < lim.hardMinSeconds;
   if (lim.hardMaxSeconds && seconds > lim.hardMaxSeconds) {
     fail(`${tag}: ${seconds.toFixed(1)}s is over the hard limit of ${lim.hardMaxSeconds}s.`);
-  } else if (lim.seconds && (seconds < lim.seconds[0] || seconds > lim.seconds[1])) {
+  } else if (!underSeconds && lim.seconds && (seconds < lim.seconds[0] || seconds > lim.seconds[1])) {
     info(`${tag}: ${seconds.toFixed(1)}s is outside ${rules}'s ${lim.seconds[0]}–${lim.seconds[1]}s.`);
   }
   const durations = timing.cues.map((cue) => cue.end - cue.start);
@@ -374,6 +378,22 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     const order = used.filter((id) => ids.has(id));
     const wrong = order.findIndex((id, i) => id !== want[i]);
     if (wrong >= 0) fail(`${tag}: shots are out of script order at [${order[wrong]}] (expected [${want[wrong]}])`);
+  }
+
+  // ---- the floor ------------------------------------------------------------
+  // A 20-second film with this topic's name on it has been built twice and rejected twice. While a film is a
+  // draft (the voice not recorded, lines still without a shot) being short is only reported. Once the voice is
+  // recorded, or every line has a shot, a film under the floor is not a film of this topic, and it fails.
+  if (underWords || underSeconds) {
+    const least = [lim.hardMinSeconds ? `${lim.hardMinSeconds}s` : null, lim.hardMinWords ? `${lim.hardMinWords} words` : null].filter(Boolean).join(" or ");
+    const size = `${seconds.toFixed(1)}s and ${totalWords} words`;
+    const model = Object.keys(topic.models ?? {}).find((key) => key !== "note");
+    const how = `Write the script to the beat sheet in ${topic.folder}/SCRIPT.md${model ? `, and build like src/videos/${model}` : ""}.`;
+    if (missing.length === 0 || !timing.estimated) {
+      fail(`${tag}: this film is ${size}. A film of this topic is never under ${least}: this is a different kind of video with the topic's name on it. ${how}`);
+    } else {
+      info(`${tag}: the script is ${size} so far. A film of this topic is never under ${least}; shorter than that fails once the voice is recorded or the last line has a shot. ${how}`);
+    }
   }
 
   // ---- 5. the world -------------------------------------------------------
