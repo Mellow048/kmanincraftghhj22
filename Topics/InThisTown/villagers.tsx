@@ -2,6 +2,7 @@ import type React from "react";
 import { Block, Vox, clamp, shade, useFilmTime } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
 import { beside } from "./staging";
+import { StrawHat } from "./things";
 
 /**
  * VILLAGERS — the people of the town in "Everyone Had the Same Face": one face, no hands, one word.
@@ -47,9 +48,12 @@ export type VillagerProps = {
   strain?: number;
   /** Body pitch, radians: a bow. */
   lean?: number;
-  hat?: "none" | "straw";
+  /** "straw" is a farmer's small hat. "wide" is a hat as wide as a door (`StrawHat`), for a town that never looks up. */
+  hat?: "none" | "straw" | "wide";
   /** A child: the same face on a slightly bigger head. */
   kid?: boolean;
+  /** Sitting, the way a doll sits: legs straight out in front. Put `position` 0.56 m × scale under the seat. */
+  sit?: boolean;
   phase?: number;
 };
 
@@ -72,6 +76,7 @@ export const Villager: React.FC<VillagerProps> = ({
   lean = 0,
   hat = "none",
   kid = false,
+  sit = false,
   phase = 0,
 }) => {
   const t = useFilmTime();
@@ -102,7 +107,7 @@ export const Villager: React.FC<VillagerProps> = ({
   return (
     <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
       {[-1, 1].map((s) => (
-        <group key={s} position={[s * 2 * u, 12 * u, 0]} rotation={[s * swing, 0, 0]}>
+        <group key={s} position={[s * 2 * u, 12 * u, 0]} rotation={[sit ? -Math.PI / 2 : s * swing, 0, 0]}>
           <Block position={[0, -6 * u, 0]} size={[3.8 * u, 12 * u, 4 * u]} color={shade(robe, -0.3)} />
         </group>
       ))}
@@ -146,6 +151,7 @@ export const Villager: React.FC<VillagerProps> = ({
               <Block position={[0, 11.6 * u, 0]} size={[7 * u, 1.8 * u, 7 * u]} color="#c9a53a" />
             </>
           ) : null}
+          {hat === "wide" ? <StrawHat position={[0, 10 * u, 0]} width={1.1} crown={0.52} /> : null}
         </group>
       </group>
     </group>
@@ -187,7 +193,9 @@ export const IronGolem: React.FC<{
   bow?: number;
   /** A poppy in the right hand (+X). */
   flower?: boolean;
-}> = ({ position = [0, 0, 0], rotationY = 0, scale = 1, walk = 0, armR, armL, headPitch = 0, headYaw = 0, bow = 0, flower = false }) => {
+  /** A straw hat as wide as a barn door. */
+  hat?: boolean;
+}> = ({ position = [0, 0, 0], rotationY = 0, scale = 1, walk = 0, armR, armL, headPitch = 0, headYaw = 0, bow = 0, flower = false, hat = false }) => {
   const t = useFilmTime();
   const swing = Math.sin(walk * 2.4) * 0.4;
   const bob = Math.abs(Math.sin(walk * 2.4)) * 0.05 + Math.sin(t * 1.1) * 0.008;
@@ -213,6 +221,7 @@ export const IronGolem: React.FC<{
             <Block key={s} position={[s * 0.13, 0.345, 0.254]} size={[0.11, 0.075, 0.02]} color="#8a1c16" emissive="#ff3a24" emissiveIntensity={0.55} castShadow={false} />
           ))}
           <Vox kind="stone" tint={shade(IRON, -0.08)} position={[0, 0.15, 0.31]} size={[0.125, 0.27, 0.125]} />
+          {hat ? <StrawHat position={[0, 0.62, 0]} width={1.7} crown={0.6} /> : null}
         </group>
         {[-1, 1].map((s) => (
           <group key={s} position={[s * 0.69, 1.0, 0]} rotation={[angle(s), 0, 0]}>

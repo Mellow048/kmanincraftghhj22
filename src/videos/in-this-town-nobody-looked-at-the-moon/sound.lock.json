@@ -1,0 +1,161 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-nobody-looked-at-the-moon",
+  "mix": "public/audio/in-this-town-nobody-looked-at-the-moon/mix.mp3",
+  "seconds": 111.7,
+  "built_from": {
+    "timing.json": "ae352d5e9c2546fc3df6dda50728609333b38c8b",
+    "sound.json": "d6f02d8f7b2eeb51e372ccb1767fa09d6e530340",
+    "narration.mp3": "e0ac830864bab52de9c990ca281276dc0635d3b5"
+  },
+  "mix_sha1": "f6735c93825b77cbb6cca77920a36b117dc66c89",
+  "music_sections": [
+    {
+      "from": "1.wake",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "4.good",
+      "mood": "curious",
+      "at": 25.67
+    },
+    {
+      "from": "7.tip",
+      "mood": "playful",
+      "at": 39.4
+    },
+    {
+      "from": "8.down",
+      "mood": "sneak",
+      "at": 47.4
+    },
+    {
+      "from": "10.gap",
+      "mood": "tense",
+      "at": 60.5
+    },
+    {
+      "from": "11.moon",
+      "mood": "none",
+      "at": 69.87
+    },
+    {
+      "from": "11.eye",
+      "mood": "dark",
+      "at": 73.77
+    },
+    {
+      "from": "11.up",
+      "mood": "hope",
+      "at": 76.87
+    },
+    {
+      "from": "12.dark",
+      "mood": "none",
+      "at": 86.33
+    },
+    {
+      "from": "12.walk",
+      "mood": "dark",
+      "at": 88.47
+    },
+    {
+      "from": "13.held",
+      "mood": "sad",
+      "at": 93.17
+    },
+    {
+      "from": "13.hat",
+      "mood": "drone",
+      "at": 97.7
+    },
+    {
+      "from": "14.knows",
+      "mood": "dark",
+      "at": 103.9
+    }
+  ],
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 18.2,
+    "secondsWithoutMusic": 8.1,
+    "bedsUnderVoiceDb": 24.3,
+    "sfx": 249,
+    "sfxPerMinute": 133.8,
+    "sfxKinds": 34,
+    "longestGapSeconds": 1.6,
+    "longestGapAt": 81.7,
+    "sfxBuried": 3,
+    "voiceOverRestMedianDb": 12.4,
+    "voiceOverRestWorstDb": 0.8,
+    "voiceOverRestWorst": [
+      {
+        "db": 0.8,
+        "t": 90.5,
+        "cue": "13.never",
+        "sounding": [
+          "boom",
+          "creak",
+          "step_stick",
+          "sting"
+        ]
+      },
+      {
+        "db": 1.7,
+        "t": 13.0,
+        "cue": "3.golem",
+        "sounding": [
+          "clank",
+          "rustle",
+          "swish"
+        ]
+      },
+      {
+        "db": 2.5,
+        "t": 84.2,
+        "cue": "11.light",
+        "sounding": [
+          "hit",
+          "sparkle",
+          "step_stone",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 2.9,
+        "t": 6.7,
+        "cue": "2.awake",
+        "sounding": [
+          "step_stone",
+          "swish",
+          "tick"
+        ]
+      },
+      {
+        "db": 3.0,
+        "t": 38.9,
+        "cue": "6.decide",
+        "sounding": [
+          "riser",
+          "rustle"
+        ]
+      },
+      {
+        "db": 3.1,
+        "t": 47.0,
+        "cue": "7.knock",
+        "sounding": [
+          "clank",
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.9,
+    "truePeakDb": -1.0,
+    "limiterMaxDb": 1.6
+  },
+  "failures": [
+    "at 90.5s [13.never] the words are covered: the voice is only 0.8 dB over the rest (boom, creak, step_stick, sting). Turn that down, or move it off the words."
+  ]
+}

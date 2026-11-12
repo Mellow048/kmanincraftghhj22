@@ -1,56 +1,60 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, stride } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import { HAT_BACK, Hero, Lantern, ROBE, Walker, ease, ramp, timing, wordAt } from "./kit";
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+const ALLOWED = wordAt("1.look", "allowed");
 
-/**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * NOT BUILT YET. The script is a draft (narration.md); these two shots are the starter's staging with this
- * film's cue ids, so that the film compiles. Nothing is built until the owner approves the script.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
- */
+/** Where he stops, three steps out of his own door. He faces north, into the square. */
+const OUT: Vec3 = [0, 0, 7.4];
+/** Where the second picture finds him: at the mouth of the lane, with the whole town behind him and the moon on top of it. */
+const LANE: Vec3 = [0, 0, -5.3];
+
+/** HOOK. The moon comes up, the town comes out, and nobody is allowed to look. The premise in two pictures. */
 export const scene1 = storyScene(timing, {
   id: "scene1",
   title: "Hook",
   shots: [
     {
       cue: "1.wake",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
+      ...cam.push({ on: [0, 5.2, 8], dist: 13.5, to: 12.2, yaw: 180, pitch: -15, fov: 56 }),
       zone: "village",
-      look: "overworld-day",
-      note: "TODO (starter staging). To be: moonrise behind the roofs, the bell rings, and a town of wide straw hats comes out of its doors with every head down.",
-      stage: () => (
+      note: "'We woke up with the moon': from the lane, low. The moon climbs behind his roof, twice the size it will ever be again, and the town walks out under it in hats as wide as doors. Not one head is up.",
+      stage: (t) => (
         <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
+          <Hero {...stride([0, 0, 9.1], OUT, ease(ramp(t, 0.25, 1.75)))} animation="walk" face="smile" headPitch={0.3} />
+          <Walker from={[-3.6, 0, 6.2]} to={[3.8, 0, 5.6]} t={t + 1.2} speed={0.95} robe={ROBE.blue} phase={3.4} />
+          <Walker from={[3.4, 0, 4.4]} to={[-3.6, 0, 4.0]} t={t + 0.8} speed={0.85} robe={ROBE.white} phase={1.9} />
+          <Walker from={[-2.6, 0, 0.2]} to={[-2.2, 0, 7]} t={t + 0.5} speed={0.8} robe={ROBE.farmer} phase={2.7} />
+          <Walker from={[2.3, 0, -1.6]} to={[2.9, 0, 4]} t={t} speed={0.9} robe={ROBE.red} phase={0.9} />
         </>
       ),
     },
     {
       cue: "1.look",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
+      ...cam.push({ on: [LANE[0], 1.33, LANE[2]], dist: 2.6, to: 2.25, yaw: 180, pitch: -8, fov: 46 }),
       zone: "village",
-      look: "overworld-day",
-      note: "TODO (starter staging). To be: the teller under his brim. His eyes go up as far as the straw, and come down again.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      note: "'Nobody was allowed to look at it': the poster. Him, from under his own brim, his town behind him, and the whole moon sitting on top of his hat where he cannot see it. His head starts to go back. On 'allowed' his own hand pulls the brim down.",
+      stage: (t) => {
+        const up = ease(ramp(t, 0.05, 0.45)) * (1 - ease(ramp(t, ALLOWED, ALLOWED + 0.16)));
+        const down = ease(ramp(t, ALLOWED, ALLOWED + 0.2));
+        return (
+          <>
+            <Hero
+              position={LANE}
+              rotationY={Math.PI}
+              animation="idle"
+              blendTo="reachUp"
+              blend={1 - down}
+              face={t < ALLOWED + 0.08 ? "wow" : "uneasy"}
+              gaze={0}
+              headPitch={-0.34 * up + 0.1 * down}
+              hatTilt={HAT_BACK - 0.12 * up + 0.42 * down}
+            />
+            {/* Every light in town is behind him here. One lantern on the ground beside the lens, so that he is red and not a shadow. */}
+            <Lantern position={[1.25, 0.47, -7.3]} chain={0.06} light={9} reach={7} seed={41} />
+          </>
+        );
+      },
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;

@@ -729,6 +729,57 @@ def _slide_down(rng, dur=0.5, **_):
     return norm((tone(f) + 0.25 * tone(f * 2)) * bell(n, 0.5))
 
 
+# ---- eyes, and things made of sticks
+@sfx("blink", "a very big eye blinking: the lids come down, meet with a soft tap, and open again. The tap is 0.08 s after its time", -8)
+def _blink(rng, dur=0.12, **_):
+    """`dur` is how long the lids stay shut. Give it the blink's own `hold`, so the eye opens when the sound does."""
+    shut = n_of(0.08)
+    opening = n_of(0.1)
+    y = np.zeros(shut + n_of(dur) + opening + n_of(0.06))
+    k = np.linspace(0.0, 1.0, shut)
+    y[:shut] += 0.55 * sweep(shut, 2600.0 * (420.0 / 2600.0) ** k, rng, 0.6) * bell(shut, 0.9)  # down: the pitch falls
+    n = n_of(0.09)
+    t = t_of(n)
+    tap = np.sin(2 * np.pi * 560 * t) * np.exp(-t / 0.016) + 0.6 * np.sin(2 * np.pi * 1340 * t) * np.exp(-t / 0.008)
+    tap += 0.5 * noise(n, 900, 4200, rng) * np.exp(-t / 0.006)
+    y[shut : shut + n] += norm(tap)
+    weight = _thud(120.0, 70.0, 0.045, 0.3, rng, 0.14)  # it is the size of a moon: a little weight under the tap
+    y[shut : shut + len(weight)] += 0.3 * weight
+    a = shut + n_of(dur)
+    k = np.linspace(0.0, 1.0, opening)
+    y[a : a + opening] += 0.4 * sweep(opening, 520.0 * (2400.0 / 520.0) ** k, rng, 0.6) * bell(opening, 0.9)  # up again, quieter
+    return edges(norm(y), 0.001, 0.02)
+
+
+@sfx("creak", "dry wood giving under a load: a scarecrow shifting, a neck that is a stick, an old door", -10)
+def _creak(rng, dur=0.5, **_):
+    n = n_of(dur)
+    t = t_of(n)
+    # Stick and slip: clicks that come faster as the wood gives, each one ringing in it for a moment.
+    rate = 16.0 + 26.0 * (t / dur) ** 1.5 + 3.0 * np.sin(2 * np.pi * 2.3 * t)
+    clicks = (np.diff(np.floor(np.cumsum(rate) / SR), prepend=0.0) > 0).astype(float) * rng.uniform(0.6, 1.0, n)
+    m = n_of(0.03)
+    r = t_of(m)
+    f = rng.uniform(820.0, 980.0)
+    ring = np.sin(2 * np.pi * f * r) * np.exp(-r / 0.006) + 0.5 * np.sin(2 * np.pi * f * 2.3 * r) * np.exp(-r / 0.004)
+    ring += 0.35 * np.sin(2 * np.pi * f * 0.52 * r) * np.exp(-r / 0.009)
+    y = convolve(clicks, ring)[:n]
+    y += 0.12 * float(np.max(np.abs(y))) * noise(n, 1200, 5200, rng)  # the dry rasp between the clicks
+    return edges(norm(y * bell(n, 0.45)), 0.002, 0.03)
+
+
+@sfx("step_stick", "one step of a thing with sticks for legs: a dry knock, and a little straw after it. A scarecrow walking", -10)
+def _step_stick(rng, **_):
+    n = n_of(0.2)
+    t = t_of(n)
+    y = np.zeros(n)
+    knock = woodblock(1.0, rng.uniform(360.0, 440.0))  # pitched where a phone can play it; a footstep on planks is not
+    y[: len(knock)] += knock
+    y += 0.35 * np.sin(2 * np.pi * rng.uniform(170.0, 200.0) * t) * np.exp(-t / 0.03)  # the ground under it
+    y += 0.3 * noise(n, 1800, 7000, rng, -2) * np.exp(-(((t - 0.05) / 0.035) ** 2))  # the straw, settling just after
+    return edges(norm(y), 0.0008, 0.02)
+
+
 # ---- feet, hands, blocks
 def _grain(rng, lo, hi, tau, n_sec=0.09):
     n = n_of(n_sec)
