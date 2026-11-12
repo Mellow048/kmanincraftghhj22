@@ -35,7 +35,7 @@ export const scene5 = defineScene({
         [0.4, 2.3, -1.9],
         [0.45, 2.1, -0.5],
         [0.35, 1.62, 1.2],
-        [0.15, 1.25, 2.28],
+        [0.3, 1.25, 2.28],
       ],
       target: [-0.95, 4.6, -30],
       targetPath: [
@@ -73,7 +73,7 @@ export const scene5 = defineScene({
         animDistance={walk.distance}
         face="scared"
         headYaw={lerp(0.25, -0.1, arrival)}
-        headPitch={lerp(-0.05, 0.16, arrival)}
+        headPitch={lerp(-0.05, -0.17, arrival)}
         headRoll={lerp(0, 0.05, arrival)}
         breath={1.05}
       />

@@ -54,6 +54,8 @@ export type Cues = {
   roomMoon: number;
   /** The final blade finding the empty half of the bed. */
   bedBlade: number;
+  /** A cool rim on the boy for the last beat, so he is not a hole in frame. */
+  rim: number;
   /** The moon's position, nudged so its blade creeps across the bedroom floor. */
   moonX: number;
   moonY: number;
@@ -95,6 +97,7 @@ export function cues(t: number): Cues {
     beam,
     roomMoon: 1 - 0.92 * lid,
     bedBlade: ramp(t, 18.3, 19.3),
+    rim: ramp(t, 16.35, 17.35),
     // The moon drifts a hand's width across the sky while the boy stands there,
     // so the blade of light on his floor is never quite still.
     moonX: lerp(-0.45, -0.95, ramp(t, 3.2, 8.2)),

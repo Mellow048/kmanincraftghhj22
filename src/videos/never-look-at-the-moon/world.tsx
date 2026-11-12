@@ -320,6 +320,9 @@ export const World: React.FC = () => {
         <pointLight position={[0.3, 1.9, -2.15]} color="#a9c9ff" intensity={3.2 * c.roomMoon} distance={3.4} decay={2} />
         {/* bounce off the far wall: lifts the boy's back just enough to read as a body */}
         <pointLight position={[1.15, 1.72, 0.8]} color="#a9c4e6" intensity={2.2 * c.roomMoon} distance={4.6} decay={2} />
+        {/* last beat: a rim from behind camera. Without it he is a silhouette
+            against the eye and the frame's lower third reads as a hole. */}
+        <pointLight position={[0.75, 1.62, 1.95]} color="#bcd6ff" intensity={2.6 * c.rim} distance={3.4} decay={2} />
 
         {/* atmosphere: the shaft, the pool it makes, and dust in the shaft */}
         <GodRay position={[0, 1.15, -0.6]} rotation={[1.18, 0, 0]} width={1.85} height={5.0} color="#a9c9ff" opacity={0.095 * c.roomMoon} />
