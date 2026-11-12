@@ -366,6 +366,10 @@ export const Villager: React.FC<VillagerProps> = ({
             <Block key={s} position={[s * 6 * u, -2 * u, 0]} size={[4 * u, 8 * u, 4 * u]} color={sleeve} />
           ))}
           <Block position={[0, -4 * u, 0]} size={[8 * u, 4 * u, 4 * u]} color={sleeve} />
+          {/* The cuffs: a dark seam where each sleeve ends. No hand ever comes out of it. */}
+          {[-1, 1].map((s) => (
+            <Block key={`cuff${s}`} position={[s * 4 * u, -4 * u, 0]} size={[0.8 * u, 4.3 * u, 4.3 * u]} color={shade(robe, -0.42)} castShadow={false} />
+          ))}
         </group>
         <group position={[0, 12 * u, 0]} rotation={[pitch + hmmBob, yaw, tilt]} scale={kid ? 1.16 : 1}>
           <Block position={[0, 5 * u, 0]} size={[8 * u, 10 * u, 8 * u]} color={VILLAGER_SKIN} />

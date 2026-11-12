@@ -54,10 +54,11 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.sleeves",
-      ...cam.pan({ from: room(-1.05, 0.86, -0.55), on: room(-1.2, 0.76, -2.0), onTo: room(-1.2, 1.02, -2.0), fov: 22, fovTo: 32 }),
+      // Wide enough to hold both cuffs (the arms are 0.63 m across; at fov 22 the frame saw 0.29 m of plain green).
+      ...cam.pan({ from: room(-1.05, 0.86, -0.55), on: room(-1.2, 0.64, -2.0), onTo: room(-1.2, 1.04, -2.0), fov: 36, fovTo: 33 }),
       zone: "room",
       look: "overworld-night",
-      note: "'His arms stayed in his sleeves': on the sleeves, filling the frame, as they give up and go still. Then up and back to the one face he has, which cannot say it either.",
+      note: "'His arms stayed in his sleeves': on the two sleeves and the seam that joins them, as they heave, give up and go still. Then up to the one face he has, which cannot say it either.",
       stage: (t) => (
         <>
           <Set />

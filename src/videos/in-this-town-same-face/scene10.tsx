@@ -98,7 +98,8 @@ export const scene10 = storyScene(timing, {
     },
     {
       cue: "10.steps",
-      ...cam.push({ on: [45.8, 11.5, 0], dist: 4.6, to: 3.8, yaw: -90, pitch: -14, fov: 42 }),
+      // Far enough back that the hop (1.3 m up, from 5 m away) stays inside the frame: from 3 m his head left the top of it.
+      ...cam.push({ on: [45.8, 11.5, 0], dist: 6.8, to: 4.4, yaw: -90, pitch: -14, fov: 42 }),
       zone: "hill",
       look: "overworld-day",
       note: "'I climbed the last few steps': from below and behind, he hops up onto the top and walks to the far edge, and dark smoke stands up beyond it.",
