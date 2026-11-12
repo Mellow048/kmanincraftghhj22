@@ -47,11 +47,8 @@ timing. Rendering needs none of these: the outputs are committed.
 ## 3. The scenes: `storyScene`
 
 ```tsx
-import { cam, storyScene, type Timing } from "../../engine";
-import timingJson from "./timing.json";
-import { Hero } from "./actors";
-
-const timing = timingJson as Timing;
+import { cam, storyScene } from "../../engine";
+import { Hero, timing } from "./kit"; // the film's cast and helpers. kit.tsx loads timing.json once, for every scene
 
 export const scene1 = storyScene(timing, {
   id: "scene1",
@@ -70,7 +67,8 @@ export const scene1 = storyScene(timing, {
 ```
 
 - `cue` ties the shot to a script line. Its length comes from the voice. There is no `at` or `dur`.
-- The camera is a `cam.*` recipe (see `Topics/InThisTown/SHOTS.md`) or the usual `from`/`to`/`target` fields.
+- The camera is a `cam.*` recipe (see `Topics/InThisTown/SHOTS.md`) or the usual `from`/`to`/`target` fields,
+  written as plain `[x, y, z]` arrays: the lint reads the file as text and does not follow a helper call.
 - `stage(t, { dur, p })` returns who and what is in the shot. `t` is seconds since the cut, `p` runs 0→1. It is a
   plain function: no hooks in it. For a straight walk use `stride(a, b, p)`.
 - `look` changes the lighting preset for that shot. `zone` picks the part of the world to draw.
