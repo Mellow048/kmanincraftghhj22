@@ -130,6 +130,11 @@ export type FilmConfig = {
    * own rules; `npm run check` lints the film against that topic's profile.
    */
   topic?: string;
+  /**
+   * A named cut of the topic, e.g. "short". The topic's topic.json lists its cuts;
+   * a cut's length and word limits replace the topic's when `npm run check` runs.
+   */
+  cut?: string;
   /** Human title. The folder is the slug of this title. */
   title: string;
   fps?: number;

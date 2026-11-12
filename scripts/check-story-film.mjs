@@ -1,9 +1,12 @@
 /**
  * Lint for STORY films: narrated films cut to their voice (docs/STORY-FILMS.md).
  * A film opts in by naming a topic whose topic.json says `"profile": "story"`.
+ * It may also name a cut (`cut: "short"`): topic.json `cuts.<name>` then replaces
+ * the topic's length and word numbers for that film.
  *
  * The base contract in check-films.mjs still covers every other film.
  */
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -23,6 +26,136 @@ export function loadTopic(root, topicId) {
     }
   }
   return null;
+}
+
+/** Every topic.json under Topics/. */
+export function loadTopics(root) {
+  const topicsDir = path.join(root, "Topics");
+  if (!fs.existsSync(topicsDir)) return [];
+  const topics = [];
+  for (const entry of fs.readdirSync(topicsDir, { withFileTypes: true })) {
+    const file = path.join(topicsDir, entry.name, "topic.json");
+    if (!entry.isDirectory() || !fs.existsSync(file)) continue;
+    try {
+      topics.push(JSON.parse(fs.readFileSync(file, "utf8")));
+    } catch {
+      /* reported elsewhere */
+    }
+  }
+  return topics;
+}
+
+const sha1 = (data) => crypto.createHash("sha1").update(data).digest("hex");
+/** The same hashes scripts/sound.py writes into sound.lock.json. Text is hashed without its line endings, so git cannot change it. */
+const textHash = (file) => sha1(Buffer.from(fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n").trim(), "utf8"));
+const fileHash = (file) => sha1(fs.readFileSync(file));
+
+/**
+ * THE SOUND. A story film is not finished until it has music, beds and effects under the voice:
+ * a sound sheet (sound.json), and the mix scripts/sound.py built from it. This checks that the mix
+ * exists, that it was built from the files as they are now, that the film plays it, and that the
+ * numbers the tool measured are inside the topic's limits. It needs no Python: it reads sound.lock.json.
+ */
+function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail, info }) {
+  const rules = topic.sound;
+  if (!rules?.required) return;
+  const build = `python3 scripts/sound.py build ${slug}`;
+  const guide = rules.guide ? ` See ${rules.guide}.` : "";
+  const excused = rules.voiceOnly?.[slug];
+  const sheetPath = path.join(dir, "sound.json");
+  if (excused && !fs.existsSync(sheetPath)) {
+    info(`${tag}: VOICE ONLY, no music or effects. ${excused}`);
+    return;
+  }
+  if (timing.estimated) {
+    info(`${tag}: no sound yet. It is built after the voice is recorded.${guide}`);
+    return;
+  }
+  // A film still being built is told what is missing; a finished one is failed for it.
+  const need = complete ? fail : info;
+  if (!fs.existsSync(sheetPath)) {
+    need(`${tag}: no sound.json. This topic's films have music and sound effects. Start with: python3 scripts/sound.py draft ${slug}${guide}`);
+    return;
+  }
+  const lockPath = path.join(dir, "sound.lock.json");
+  if (!fs.existsSync(lockPath)) {
+    need(`${tag}: sound.json has not been built. Run: ${build}`);
+    return;
+  }
+  let lock;
+  try {
+    lock = JSON.parse(fs.readFileSync(lockPath, "utf8"));
+  } catch {
+    fail(`${tag}: sound.lock.json is not valid JSON. Rebuild it: ${build}`);
+    return;
+  }
+  const mixPath = path.join(root, lock.mix ?? "");
+  if (!lock.mix || !fs.existsSync(mixPath)) {
+    fail(`${tag}: the mix (${lock.mix ?? "?"}) is missing. Run: ${build}`);
+    return;
+  }
+  const voicePath = path.join(root, "public", "audio", slug, "narration.mp3");
+  const from = lock.built_from ?? {};
+  const changed = [];
+  if (from["timing.json"] !== textHash(path.join(dir, "timing.json"))) changed.push("timing.json");
+  if (from["sound.json"] !== textHash(sheetPath)) changed.push("sound.json");
+  if (!fs.existsSync(voicePath) || from["narration.mp3"] !== fileHash(voicePath)) changed.push("narration.mp3");
+  if (changed.length > 0) {
+    fail(`${tag}: the mix is out of date: ${changed.join(", ")} changed after it was built. Run: ${build}`);
+    return;
+  }
+  if (lock.mix_sha1 !== fileHash(mixPath)) {
+    fail(`${tag}: ${lock.mix} is not the file sound.lock.json describes. Run: ${build}`);
+    return;
+  }
+  const played = film.match(/\baudio\s*:\s*\{[^}]*?\bsrc\s*:\s*["']([^"']+)["']/)?.[1];
+  const wanted = lock.mix.replace(/^public\//, "");
+  if (played !== wanted) {
+    need(`${tag}: film.tsx plays "${played ?? "nothing"}". It must play the mix: audio: { src: "${wanted}" }`);
+  }
+  for (const line of lock.failures ?? []) fail(`${tag}: sound: ${line}`);
+
+  const m = lock.measured ?? {};
+  const sections = (lock.music_sections ?? []).filter((part) => part.mood !== "none");
+  if (rules.minMusicSections && sections.length < rules.minMusicSections) {
+    fail(`${tag}: the music has ${sections.length} section(s). The music changes when the story does: at least ${rules.minMusicSections}.${guide}`);
+  }
+  if (rules.musicUnderVoiceDb && m.musicUnderVoiceDb != null) {
+    const [lo, hi] = rules.musicUnderVoiceDb;
+    if (m.musicUnderVoiceDb < lo) fail(`${tag}: the music is only ${m.musicUnderVoiceDb} dB under the voice. It must be at least ${lo}: turn music.gain down.`);
+    else if (m.musicUnderVoiceDb > hi) fail(`${tag}: the music is ${m.musicUnderVoiceDb} dB under the voice. Past ${hi} nobody hears it: turn music.gain up.`);
+  } else if (rules.musicUnderVoiceDb) {
+    fail(`${tag}: the mix has no music.${guide}`);
+  }
+  if (rules.maxSecondsWithoutMusic != null && m.secondsWithoutMusic > rules.maxSecondsWithoutMusic) {
+    fail(`${tag}: ${m.secondsWithoutMusic}s of the film has no music. Silence is for one held breath: at most ${rules.maxSecondsWithoutMusic}s.`);
+  }
+  if (rules.minSfxPerMinute && m.sfxPerMinute < rules.minSfxPerMinute) {
+    fail(`${tag}: ${m.sfx} sound effects is ${m.sfxPerMinute} a minute. This topic wants at least ${rules.minSfxPerMinute}: one for each thing that happens on screen.${guide}`);
+  }
+  if (rules.maxGapSeconds && m.longestGapSeconds > rules.maxGapSeconds) {
+    fail(`${tag}: ${m.longestGapSeconds}s with no sound effect, from ${m.longestGapAt}s. Nothing goes longer than ${rules.maxGapSeconds}s.`);
+  }
+  if (rules.maxBuried != null && m.sfxBuried > rules.maxBuried) {
+    fail(`${tag}: ${m.sfxBuried} sound effect(s) cannot be heard under the music. Run ${build} and raise or cut the ones it lists.`);
+  }
+  if (rules.minVoiceOverRestDb != null && m.voiceOverRestWorstDb != null && m.voiceOverRestWorstDb < rules.minVoiceOverRestDb) {
+    const w = m.voiceOverRestWorst?.[0];
+    fail(`${tag}: the words are covered at ${w?.t}s [${w?.cue}]: the voice is only ${m.voiceOverRestWorstDb} dB over the rest.`);
+  }
+  if (rules.minVoiceOverRestMedianDb != null && m.voiceOverRestMedianDb != null && m.voiceOverRestMedianDb < rules.minVoiceOverRestMedianDb) {
+    fail(`${tag}: the voice is only ${m.voiceOverRestMedianDb} dB over the music and effects on average. It needs ${rules.minVoiceOverRestMedianDb}.`);
+  }
+  if (rules.lufs && m.lufs != null && (m.lufs < rules.lufs[0] || m.lufs > rules.lufs[1])) {
+    fail(`${tag}: the mix is ${m.lufs} LUFS. It must be between ${rules.lufs[0]} and ${rules.lufs[1]}.`);
+  }
+  if (rules.maxTruePeakDb != null && m.truePeakDb != null && m.truePeakDb > rules.maxTruePeakDb) {
+    fail(`${tag}: the mix peaks at ${m.truePeakDb} dB. Over ${rules.maxTruePeakDb} it can clip.`);
+  }
+  info(
+    `${tag}: sound: ${sections.length} music sections, ${lock.beds ?? 0} beds, ${m.sfx} effects (${m.sfxPerMinute}/min); ` +
+      `music ${m.musicUnderVoiceDb} dB under the voice; voice ${m.voiceOverRestMedianDb} dB over the rest (worst ${m.voiceOverRestWorstDb}); ${m.lufs} LUFS`,
+  );
 }
 
 const wordsOf = (text) => text.split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w));
@@ -50,8 +183,16 @@ export function readScript(raw) {
 }
 
 export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D, BANNED_PHRASES }) {
-  const lim = topic.film ?? {};
-  const tag = `${slug} [${topic.id}]`;
+  // A film may name a cut of its topic (`cut: "short"`). The cut's numbers replace the topic's, one by one.
+  const cutId = film.match(/^\s*cut:\s*["']([^"']+)["']/m)?.[1];
+  const cut = cutId ? topic.cuts?.[cutId] : null;
+  if (cutId && !cut) {
+    const known = Object.keys(topic.cuts ?? {});
+    fail(`${slug} [${topic.id}]: cut "${cutId}" is not in the topic's topic.json${known.length ? ` (it has: ${known.join(", ")})` : ""}`);
+  }
+  const lim = { ...(topic.film ?? {}), ...(cut ?? {}) };
+  const rules = cut ? `the ${cutId} cut` : "the topic";
+  const tag = `${slug} [${topic.id}${cut ? `, ${cutId} cut` : ""}]`;
 
   // ---- 1. the script ------------------------------------------------------
   const narrationPath = path.join(dir, "narration.md");
@@ -101,8 +242,11 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
       if (lower.includes(phrase)) info(`${tag}: line [${cue.id}] uses a banned phrase "${phrase}".`);
     }
   }
-  if (lim.words && (totalWords < lim.words[0] || totalWords > lim.words[1])) {
-    info(`${tag}: the script is ${totalWords} words. The topic asks for ${lim.words[0]}–${lim.words[1]}.`);
+  // Under the topic's floor it is not a short film of this topic; it is another kind of video. That is judged
+  // further down, once it is known whether the film is still a draft. Above the floor, the range is advice.
+  const underWords = Boolean(lim.hardMinWords) && totalWords < lim.hardMinWords;
+  if (!underWords && lim.words && (totalWords < lim.words[0] || totalWords > lim.words[1])) {
+    info(`${tag}: the script is ${totalWords} words. ${rules[0].toUpperCase()}${rules.slice(1)} asks for ${lim.words[0]}–${lim.words[1]}.`);
   }
 
   // ---- 2. the timing ------------------------------------------------------
@@ -130,10 +274,11 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   }
 
   const seconds = timing.duration;
+  const underSeconds = Boolean(lim.hardMinSeconds) && seconds < lim.hardMinSeconds;
   if (lim.hardMaxSeconds && seconds > lim.hardMaxSeconds) {
     fail(`${tag}: ${seconds.toFixed(1)}s is over the hard limit of ${lim.hardMaxSeconds}s.`);
-  } else if (lim.seconds && (seconds < lim.seconds[0] || seconds > lim.seconds[1])) {
-    info(`${tag}: ${seconds.toFixed(1)}s is outside the topic's ${lim.seconds[0]}–${lim.seconds[1]}s.`);
+  } else if (!underSeconds && lim.seconds && (seconds < lim.seconds[0] || seconds > lim.seconds[1])) {
+    info(`${tag}: ${seconds.toFixed(1)}s is outside ${rules}'s ${lim.seconds[0]}–${lim.seconds[1]}s.`);
   }
   const durations = timing.cues.map((cue) => cue.end - cue.start);
   if (lim.shotSeconds) {
@@ -235,6 +380,22 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     if (wrong >= 0) fail(`${tag}: shots are out of script order at [${order[wrong]}] (expected [${want[wrong]}])`);
   }
 
+  // ---- the floor ------------------------------------------------------------
+  // A 20-second film with this topic's name on it has been built twice and rejected twice. While a film is a
+  // draft (the voice not recorded, lines still without a shot) being short is only reported. Once the voice is
+  // recorded, or every line has a shot, a film under the floor is not a film of this topic, and it fails.
+  if (underWords || underSeconds) {
+    const least = [lim.hardMinSeconds ? `${lim.hardMinSeconds}s` : null, lim.hardMinWords ? `${lim.hardMinWords} words` : null].filter(Boolean).join(" or ");
+    const size = `${seconds.toFixed(1)}s and ${totalWords} words`;
+    const model = Object.keys(topic.models ?? {}).find((key) => key !== "note");
+    const how = `Write the script to the beat sheet in ${topic.folder}/SCRIPT.md${model ? `, and build like src/videos/${model}` : ""}.`;
+    if (missing.length === 0 || !timing.estimated) {
+      fail(`${tag}: this film is ${size}. A film of this topic is never under ${least}: this is a different kind of video with the topic's name on it. ${how}`);
+    } else {
+      info(`${tag}: the script is ${size} so far. A film of this topic is never under ${least}; shorter than that fails once the voice is recorded or the last line has a shot. ${how}`);
+    }
+  }
+
   // ---- 5. the world -------------------------------------------------------
   const worldPath = path.join(dir, "world.tsx");
   if (!fs.existsSync(worldPath)) {
@@ -249,6 +410,16 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     if (!/<Zone\b/.test(world)) info(`${tag}: world.tsx has no <Zone>. A long film should not draw every set in every shot.`);
     if (TWO_D.test(world)) fail(`${tag}: world.tsx contains a 2D overlay`);
   }
+
+  // ---- 6. the pack and the sound -------------------------------------------
+  if (topic.folder && topic.pack) {
+    const kitPath = path.join(dir, "kit.tsx");
+    const sources = [kitPath, worldPath].filter((file) => fs.existsSync(file)).map((file) => fs.readFileSync(file, "utf8"));
+    if (!sources.some((source) => source.includes(topic.folder))) {
+      info(`${tag}: nothing is imported from ${topic.folder}. The topic has a pack of people, places and props (${topic.pack}): use it before building new ones.`);
+    }
+  }
+  checkSound({ root, slug, dir, film, topic, tag, timing, complete: missing.length === 0, fail, info });
 
   info(
     `${tag}: ${used.length}/${cues.length} shots, ${totalWords} words, ${seconds.toFixed(1)}s, ` +

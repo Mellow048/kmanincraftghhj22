@@ -1,7 +1,8 @@
 import type React from "react";
-import { Block, Glow, MinecraftAvatar, PixelText, Torch, Vox, clamp01, lerp, smoothstep } from "../../engine";
+import { Block, Glow, MinecraftAvatar, Torch, Vox, clamp01, lerp, smoothstep } from "../../engine";
 import type { AnimName, FaceName, MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
 import { MonsterEgg, Worm } from "../../../Topics/InThisTown/creatures";
+import { KID, ahead, ease, ramp, wordClock } from "../../../Topics/InThisTown/staging";
 import timingJson from "./timing.json";
 
 /**
@@ -12,51 +13,11 @@ export const timing = timingJson as unknown as Timing;
 
 // ----------------------------------------------------------------------------- maths
 
+// The staging maths is the topic's (Topics/InThisTown/staging.ts). It is passed on from here, so a scene imports only from "./kit".
+export { EAST, KID, NORTH, SOUTH, WEST, ahead, chestOf, ease, faceOf, jolt, pop, ramp } from "../../../Topics/InThisTown/staging";
+
 /** Seconds into its shot at which a word is said: `wordAt("12.pack", "bread")`. */
-export function wordAt(cueId: string, word: string, nth = 0): number {
-  const cue = timing.cues.find((c) => c.id === cueId);
-  if (!cue) throw new Error(`wordAt: no cue "${cueId}"`);
-  let seen = 0;
-  for (const w of timing.words) {
-    if (w.s < cue.start - 0.05 || w.s >= cue.end) continue;
-    if (w.w.toLowerCase().replace(/[^a-z']/g, "") === word.toLowerCase()) {
-      if (seen === nth) return Math.max(0, w.s - cue.start);
-      seen++;
-    }
-  }
-  throw new Error(`wordAt: cue "${cueId}" has no word "${word}" (#${nth})`);
-}
-
-/** 0 before `a`, 1 after `b`, straight in between. */
-export const ramp = (t: number, a: number, b: number) => clamp01((t - a) / (b - a));
-export const ease = (k: number) => smoothstep(clamp01(k));
-/** Scale for a thing that pops into being at `at`: 0, a small overshoot, then 1. */
-export const pop = (t: number, at: number, dur = 0.24) => {
-  const k = clamp01((t - at) / dur);
-  return k <= 0 ? 0 : (1 - (1 - k) ** 3) * (1 + 0.3 * Math.sin(k * Math.PI));
-};
-/** A short decaying rattle that starts at `at`: a tap, a jolt. */
-export const jolt = (t: number, at: number, size = 0.2) => {
-  const x = t - at;
-  return x <= 0 ? 0 : Math.exp(-x * 13) * Math.sin(x * 42) * size;
-};
-
-/** A point `dist` metres in front of someone (behind, if negative) and `up` metres above their feet. */
-export const ahead = (p: Vec3, rotY: number, dist: number, up = 0): Vec3 => [
-  p[0] + Math.sin(rotY) * dist,
-  p[1] + up,
-  p[2] + Math.cos(rotY) * dist,
-];
-
-/** Facing directions, as `rotationY`. The street runs east–west; the camera usually stands to the south. */
-export const SOUTH = 0;
-export const EAST = Math.PI / 2;
-export const NORTH = Math.PI;
-export const WEST = -Math.PI / 2;
-
-export const KID = 0.8;
-export const faceOf = (p: Vec3, scale = KID): Vec3 => [p[0], p[1] + 1.53 * scale, p[2]];
-export const chestOf = (p: Vec3, scale = KID): Vec3 => [p[0], p[1] + 1.12 * scale, p[2]];
+export const wordAt = wordClock(timing);
 
 // ----------------------------------------------------------------------------- places
 
@@ -453,21 +414,8 @@ export const Ripples: React.FC<{ position: Vec3; t: number; color?: string; reac
   </group>
 );
 
-/** The last picture of every film in this topic: a red sign, held up to the lens. Origin: the middle of the board. */
-export const SubscribeSign: React.FC<{ position: Vec3; rotationY?: number; scale?: number; tilt?: number }> = ({
-  position,
-  rotationY = 0,
-  scale = 1,
-  tilt = 0,
-}) => (
-  <group position={position} rotation={[0, rotationY, tilt]} scale={scale}>
-    <Vox kind="wool" tint="#e3261c" size={[1.7, 0.56, 0.08]} />
-    <Block position={[0, 0.3, 0]} size={[1.78, 0.06, 0.12]} color="#8a120c" />
-    <Block position={[0, -0.3, 0]} size={[1.78, 0.06, 0.12]} color="#8a120c" />
-    <PixelText text="SUBSCRIBE" position={[0, 0, 0.046]} height={0.4} maxWidth={1.56} />
-    <Block position={[0, -0.75, -0.02]} size={[0.1, 0.9, 0.08]} color="#5c3f24" />
-  </group>
-);
+/** The last picture of every film in this topic. It lives with the topic, so every film holds up the same sign. */
+export { SubscribeSign } from "../../../Topics/InThisTown/creatures";
 
 /** Two eyes in the dark, and nothing else. */
 export const Eyes: React.FC<{ position: Vec3; rotationY?: number; open?: number; color?: string }> = ({

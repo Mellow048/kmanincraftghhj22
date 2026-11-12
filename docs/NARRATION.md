@@ -147,6 +147,10 @@ The narration is 5 lines in 20 seconds. The longest silence is the reveal. That 
 - Duck the music under the voice. The voice is the story.
 - Do not add a jumpscare sound if the image is not a jumpscare. The button is quieter and worse.
 
+That is the base film. A **topic film** has a full soundtrack that is made in Python and mixed under the voice by
+`scripts/sound.py`: see `docs/STORY-FILMS.md` section 6 and the topic's `SOUND.md`. Its sounds can be used in a base
+film too: `python3 scripts/sound.py list`.
+
 ---
 
 ## 8. Checklist
