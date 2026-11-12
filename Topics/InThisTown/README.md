@@ -45,6 +45,8 @@ goes into a new one.
 6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
 7. [`reference/monster-egg-v1/`](reference/monster-egg-v1/README.md) and
    [`reference/moon-20-seconds/`](reference/moon-20-seconds/README.md) — one page each on the attempts the owner rejected.
+8. [`reference/superpower-at-18/`](reference/superpower-at-18/README.md) — a film the owner approved ("i love it"), its source,
+   and the ending he threw out first. What to aim at.
 
 ## What changes from the base rules
 
@@ -157,6 +159,7 @@ still an estimate, and whether the mix is older than the script.
 | `template/` | The starter film that `npm run new -- … --topic in-this-town` copies |
 | `reference/treehouse/` | The model video, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
+| `reference/superpower-at-18/` | **A film the owner approved**, with its source and what he rejected on the way: the target |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
 of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second
