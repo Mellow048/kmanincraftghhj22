@@ -14,9 +14,11 @@ power.
 > **PROVISIONAL.** The owner asked for this topic to be built before its reference: "reference which we will do
 > later once youre done". So nothing here is measured from a real "What if" video yet. Every number in
 > [`topic.json`](topic.json) is In This Town's (its one-to-two-minute short cut), and the beat sheet in
-> [`SCRIPT.md`](SCRIPT.md) is In This Town's fourteen beats, re-cast for a power. When the reference arrives,
-> measure it and correct this folder ([`reference/`](reference/README.md) says how). No film of this topic has
-> been approved yet.
+> [`SCRIPT.md`](SCRIPT.md) is In This Town's fourteen beats, re-cast for a power. **The reference will be our own
+> first film** (the owner, asked for a video: "you are the one making that reference!"):
+> `src/videos/what-if-you-could-see-who-had-a-crush-on-you/`, whose script is waiting for his yes. When that film
+> is approved, measure it and correct this folder ([`reference/`](reference/README.md) says how). No film of this
+> topic has been approved yet.
 
 **It is never a 20-second short.** A film with this opening that is built to the base rules is the mistake In This
 Town made twice. `npm run new` refuses a title that starts "What if" without `--topic`, and `npm run check` fails a
@@ -126,7 +128,7 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
 | `cast.tsx` | Twelve classmates, and a teacher |
 | `template/` | The starter film that `npm run new -- … --topic what-if` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
-| `reference/` | Empty until the owner supplies a reference. What to do when it arrives |
+| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. What to do when it is |
 
 Parts used by more than one topic (numbers and icons in cubes, staging, a kid's bedroom, a village street, the red
 "Subscribe" sign) are in [`Topics/Shared`](../Shared/README.md) and are passed on by this pack.

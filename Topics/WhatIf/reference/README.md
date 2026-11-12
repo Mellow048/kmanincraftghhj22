@@ -5,7 +5,17 @@ youre done". Until a reference is here, every number in this topic is In This To
 This Town's re-cast for a power: see the note at the top of [`../README.md`](../README.md) and the `provisional`
 block in [`../topic.json`](../topic.json).
 
-## When the owner supplies a reference
+## The owner's decision: we make the reference ourselves
+
+Asked for a reference video (2026-11-12), the owner answered: **"you are the one making that reference!"** Nobody is
+going to send a video. The reference of this topic will be **our own first film of it**, once he has approved it:
+
+    src/videos/what-if-you-could-see-who-had-a-crush-on-you/        "What If You Could See Who Had a Crush on You"
+
+Its script is drafted in its `narration.md` and waits for his yes (`AGENTS.md` §0: ideas, then the script, then
+stop). When the finished film is approved, do the steps below with it, exactly as for a video somebody sent.
+
+## When the reference exists
 
 A reference is a real "What if" video the owner chose, or a finished film of ours that the owner approved. Do
 this, in this order, before changing a rule:

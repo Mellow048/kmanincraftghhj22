@@ -4,7 +4,17 @@ This topic was built before its reference, on the owner's instruction: "referenc
 youre done". Until a reference is here, everything in this topic is a first setting: see the note at the top of
 [`../README.md`](../README.md) and the `provisional` block in [`../topic.json`](../topic.json).
 
-## When the owner supplies a reference
+## The owner's decision: we make the reference ourselves
+
+Asked for a reference video (2026-11-12), the owner answered: **"you are the one making that reference!"** Nobody is
+going to send a video. The reference of this topic will be **our own first film of it**, once he has approved it:
+
+    src/videos/why-does-bread-cost-more-every-year/        "Why Does Bread Cost More Every Year"
+
+Its script is drafted in its `narration.md` and waits for his yes (`AGENTS.md` §0: ideas, then the script, then
+stop). When the finished film is approved, do the steps below with it, exactly as for a video somebody sent.
+
+## When the reference exists
 
 A reference is a real video the owner chose (for this topic, a Zack D Films short or one like it), or a finished
 film of ours that the owner approved. Do this, in this order, before changing a rule:

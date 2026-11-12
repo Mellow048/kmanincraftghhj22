@@ -10,7 +10,9 @@ The subjects the owner named for this topic: money lessons, and what inflation i
 > later once youre done". So nothing here is measured from a real video yet. The camera is the framework's own
 > (`docs/CAMERA-BIBLE.md`); the voice, the captions and the sound are the story pipeline's
 > (`docs/STORY-FILMS.md`); the numbers in [`topic.json`](topic.json) are a first setting, so that `npm run check`
-> has something to hold a film to. When the reference arrives, measure it and correct this folder
+> has something to hold a film to. **The reference will be our own first film** (the owner, asked for a video:
+> "you are the one making that reference!"): `src/videos/why-does-bread-cost-more-every-year/`, whose script is
+> waiting for his yes. When that film is approved, measure it and correct this folder
 > ([`reference/`](reference/README.md) says how). No film of this topic has been approved yet.
 
 ## Start here
@@ -116,7 +118,7 @@ still an estimate, and whether the mix is older than the script.
 | `goods.tsx` | Bread, Apple, Crate, BreadShelf |
 | `template/` | The starter film that `npm run new -- … --topic explainer` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
-| `reference/` | Empty until the owner supplies a reference. What to do when it arrives |
+| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. What to do when it is |
 
 Parts used by more than one topic (numbers and icons in cubes, the film's clock, twelve people, the villagers and
 their houses, the red "Subscribe" sign) are in [`Topics/Shared`](../Shared/README.md) and are passed on by this pack.
