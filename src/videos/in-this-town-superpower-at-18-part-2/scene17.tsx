@@ -95,7 +95,7 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.pigs",
-      ...cam.push({ on: [PEN[0] + 0.1, 0.5, PEN[2]], dist: 5.6, to: 5.0, yaw: 8, pitch: 28, fov: 46 }),
+      ...cam.push({ on: [PEN[0] - 0.1, 0.5, PEN[2]], dist: 6.0, to: 5.4, yaw: 8, pitch: 28, fov: 48 }),
       zone: ZONE.day,
       look: DAY,
       note: "The pig pen, grass in it now, and daisies. The boy in black is kneeling in front of three pigs with his head down. Two have their backs to him. On 'thinking' the third turns round, slowly, and looks at him.",

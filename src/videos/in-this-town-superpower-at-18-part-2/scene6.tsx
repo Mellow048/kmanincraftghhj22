@@ -57,8 +57,8 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.glide",
-      from: [-4, 5.5, 17],
-      to: [-1.5, 5, 15],
+      from: [-2.5, 5.0, 5.5],
+      to: [-1.5, 4.6, 4.5],
       target: [-9.6, 6.6, 10.2],
       targetTo: [-6.4, 5.2, 7.6],
       fov: 46,
@@ -72,14 +72,15 @@ export const scene6 = storyScene(timing, {
           <>
             <GrowTree position={MUD} grow={1} />
             <Glider position={[at[0], at[1] - Math.sin(Math.min(1, p * 2.5) * Math.PI) * 0.7, at[2]]} yaw={GLIDE_YAW} pitch={1.15 * ease(ramp(p, 0, 0.3))} roll={Math.sin(t * 2.2) * 0.12} face="fear" />
+            <pointLight position={[at[0] + 2, at[1] + 0.5, at[2] - 2]} color="#ffc890" intensity={20} distance={9} decay={2} />
           </>
         );
       },
     },
     {
       cue: "6.me",
-      from: [-2.2, 5.6, 9.6],
-      to: [-0.4, 4.8, 7.8],
+      from: [-2.4, 4.0, 5.6],
+      to: [-0.6, 3.2, 4.2],
       target: [-6.4, 5.2, 7.6],
       targetTo: [-4.3, 4.4, 6.0],
       fov: 44,
@@ -90,7 +91,7 @@ export const scene6 = storyScene(timing, {
       stage: (t, { p }) => (
         <>
           <Glider position={glideAt(0.4 + 0.26 * p)} yaw={GLIDE_YAW} roll={Math.sin(t * 2.2) * 0.14} face={p < 0.45 ? "wow" : "laugh"} />
-          <pointLight position={[glideAt(0.4 + 0.26 * p)[0] + 1.5, 5.5, glideAt(0.4 + 0.26 * p)[2] + 0.6]} color="#ffc890" intensity={16} distance={7} decay={2} />
+          <pointLight position={[glideAt(0.4 + 0.26 * p)[0] + 1.5, 3.6, glideAt(0.4 + 0.26 * p)[2] - 1.2]} color="#ffc890" intensity={16} distance={7} decay={2} />
         </>
       ),
     },

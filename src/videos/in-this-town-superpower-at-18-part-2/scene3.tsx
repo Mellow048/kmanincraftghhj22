@@ -34,7 +34,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.green",
-      ...cam.push({ on: [HANDS[0], 0.25, HANDS[2]], dist: 2.2, to: 1.7, yaw: 70, pitch: 30, fov: 40 }),
+      ...cam.push({ on: [HANDS[0] - 0.2, 0.5, HANDS[2]], dist: 3.0, to: 2.5, yaw: 60, pitch: 22, fov: 40 }),
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Under a second: his arms in the mud, and green light pouring up out of the ground round them.",
@@ -42,8 +42,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Hero position={MUD} rotationY={EAST} animation="crouch" arms="press" time={0.3} face="brave" headPitch={0.35} />
           <Garden />
-          <Glow position={[HANDS[0], 0.3, HANDS[2]]} size={0.7 + 0.5 * p} color="#9dff8a" opacity={0.4} />
-          <pointLight position={[HANDS[0], 0.5, HANDS[2]]} color="#9dff8a" intensity={4 + 8 * p} distance={7} decay={2} />
+          <pointLight position={[HANDS[0], 0.5, HANDS[2]]} color="#9dff8a" intensity={1.5 + 2.5 * p} distance={7} decay={2} />
         </>
       ),
     },
@@ -69,10 +68,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.chase",
-      from: [-4, 2.0, 9.2],
-      to: [2.5, 2.0, 9.0],
-      target: [-3, 1.6, 6.6],
-      targetTo: [4.2, 1.6, 4.6],
+      from: [-5.5, 2.6, 11.0],
+      to: [2.0, 2.6, 9.0],
+      target: [-4.7, 0.5, 8.2],
+      targetTo: [3.9, 0.5, 4.9],
       fov: 52,
       ease: "linear",
       zone: ZONE.ruin,

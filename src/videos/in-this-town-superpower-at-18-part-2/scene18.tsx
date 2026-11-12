@@ -29,7 +29,7 @@ export const scene18 = storyScene(timing, {
     },
     {
       cue: "18.three",
-      ...cam.push({ on: [TABLE[0], 0.9, TABLE[2]], dist: 4.6, to: 4.2, yaw: 0, pitch: 20, fov: 58 }),
+      ...cam.push({ on: [TABLE[0], 0.9, TABLE[2]], dist: 4.6, to: 4.2, yaw: 0, pitch: 20, fov: 66 }),
       zone: ZONE.room,
       look: DAY,
       note: "From the empty side of the table: his mother at the far side, a boy in red on her left and a boy in black on her right, all three sitting down. The plate nearest us is clean and empty.",
@@ -37,8 +37,8 @@ export const scene18 = storyScene(timing, {
         <>
           <Table position={TABLE} />
           <Mom position={[TABLE[0], 0, TABLE[2] - 1.35]} rotationY={SOUTH} nod={0.15} />
-          <Hero position={[TABLE[0] - 1.15, -0.3, TABLE[2]]} rotationY={EAST} animation="sit" face="grin" />
-          <Brother position={[TABLE[0] + 1.15, -0.3, TABLE[2]]} rotationY={WEST} animation="sit" face="smile" headPitch={0.15} />
+          <Hero position={[TABLE[0] - 1.1, -0.3, TABLE[2]]} rotationY={EAST} animation="sit" face="grin" />
+          <Brother position={[TABLE[0] + 1.1, -0.3, TABLE[2]]} rotationY={WEST} animation="sit" face="smile" headPitch={0.15} />
         </>
       ),
     },

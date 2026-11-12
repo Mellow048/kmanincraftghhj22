@@ -44,8 +44,8 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.lava",
-      from: [-4.9, 1.9, 6.0],
-      to: [-5.0, 1.85, 6.1],
+      from: [-4.3, 2.3, 6.7],
+      to: [-4.4, 2.2, 6.8],
       target: [-8.6, 1.1, 9.2],
       fov: 48,
       ease: "linear",
