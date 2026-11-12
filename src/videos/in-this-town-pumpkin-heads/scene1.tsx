@@ -1,53 +1,44 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import { BED, BedBox, Hero, IN_BED, SOUTH, Townie, WEST, EAST, chestOf, room, stride, timing } from "./kit";
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+const ME: Vec3 = [0, 0, 3.2];
 
-/**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
- */
+/** THE HOOK. The rule, and how far it goes. */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Hook",
+  title: "Everyone wore a pumpkin",
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
+      ...cam.push({ on: chestOf(ME), dist: 2.9, to: 2.2, yaw: 8, pitch: 3, fov: 40 }),
       zone: "village",
       look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
-      stage: () => (
+      note: "The square in daylight. A kid in blue looks straight at us with a grinning pumpkin for a head, and behind him, stacked up the street, everyone else has one too.",
+      stage: (t, { p }) => (
         <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
+          <Hero position={ME} rotationY={SOUTH} animation="idle" carve="grin" />
+          <Townie who={1} position={[-1.15, 0, 1.3]} rotationY={0.3} animation="wave" carve="glad" />
+          <Townie who={2} {...stride([2.6, 0, 0.2], [0.6, 0, 0.0], p)} animation="walk" carve="flat" />
+          <Townie who={3} position={[1.3, 0, -1.6]} rotationY={-0.4} animation="talk" carve="grin" />
+          <Townie who={7} position={[0.35, 0, -1.9]} rotationY={EAST} animation="idle" carve="wow" />
+          <Townie who={8} {...stride([-3.2, 0, -0.6], [-1.6, 0, -0.9], p)} animation="walk" carve="grin" />
+          <Townie who={9} position={[-0.4, 0, -3.4]} rotationY={WEST} animation="idle" carve="frown" />
         </>
       ),
     },
     {
-      cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      cue: "1.bed",
+      ...cam.top({ on: room(-0.9, 0.5, -1.3), height: 3.5, to: 3.0, spin: [-10, 6], fov: 44 }),
+      zone: "room",
+      look: "overworld-night",
+      note: "'Even in bed': straight down on his bed at night. He is asleep under the blanket with the pumpkin still on. Its carved eyes are shut.",
+      stage: () => (
+        <>
+          <BedBox position={BED} />
+          <Hero position={IN_BED} animation="lie" carve="sleep" />
+        </>
+      ),
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;
