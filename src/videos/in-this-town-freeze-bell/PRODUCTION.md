@@ -1,6 +1,6 @@
 # Freeze Bell — production record
 
-**V2 is recorded, mixed and picture-checked; its new cloud render is next.** The old forced subscribe beat has been replaced with the owner's golem/look-up ending. Until the new render is delivered, `renders/in-this-town-freeze-bell.mp4` is still v1. Sound is measured, not listened to.
+**V2 is rendered and verified. The complete full-HD film is ready for owner review.** The golem/look-up ending replaces the forced subscribe beat. `renders/in-this-town-freeze-bell.mp4` is now the **1080 × 1920 v2 master**, identical to the published release asset—not the earlier 720p copy. Sound was measured, not listened to.
 
 ## Owner direction and scope
 
@@ -65,7 +65,8 @@ Current narration-block SHA-256: `deb25d5442e0b464bd3db7048d8084c600e5093005cdd5
 - **24 final 10%/90% endpoint stills**, covering freeze/restart, golem, hay fall, packing, crawl, screw climb, lid replay/closure, remembered thought, upward look and final black. Both sheets viewed.
 - Earlier v2 ending passes: 21 half-scale diagnostic frames, followed by eight half-scale refinement/cut-boundary frames, all viewed. They are diagnostic history, not a claim that the first pass was final.
 - Exact cut test: frame **5,132 has picture**; **5,133 and 5,146 are pixel-black**, including the caption layer.
-- These are still/endpoint reviews, not a human full-motion playback or owner approval.
+- After export, **all 86 cue-midpoint images extracted from the actual full-HD MP4** were also viewed. The encoded frame on each side of the final cut was decoded and checked.
+- These are still/endpoint reviews and numerical motion checks, not a human full-motion playback or owner approval.
 
 ## Sound
 
@@ -104,9 +105,49 @@ The effects/audibility report and four-track timeline were inspected. Stems exis
 - Existing pack model source and both model-film folders are unchanged. The new golem is a use of the pack, not a redesign.
 - The owner has not approved the new pictures or promoted this film/new props to topic-model status.
 
-## Render / delivery status
+## Render and delivery — 12 November 2026
 
-**V2 cloud render not dispatched yet.** The next action is to commit/push only the active branch, dispatch the existing full-scale workflow, then probe and review the encoded output before delivery. The current local MP4 remains v1 until the render workflow replaces it.
+- **Successful full-scale cloud run:** [render 25](https://github.com/Mellow048/kmanincraftghhj22/actions/runs/43224168989), **20 chunks / 5,147 frames**.
+- Production source commit: `0a6c1df9dab92acf09c2000913032c4f69e4766d`.
+- Workflow delivery commit on the same branch: `d83aa8936c43448892cabcb6120187e00008a208`.
+- **Local playback/download master:** [`renders/in-this-town-freeze-bell.mp4`](../../../renders/in-this-town-freeze-bell.mp4).
+- **Published full-HD master:** [download](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-25/in-this-town-freeze-bell.mp4) · [release page](https://github.com/Mellow048/kmanincraftghhj22/releases/tag/render-25).
+- Size: **95,695,640 bytes** (about 91.26 MiB). It fits the requested 95 MiB branch-copy limit, so the workflow copied it **without re-encoding or downscaling**.
+- SHA-256: **`03b91639e3e63c7a22271c1ef8f667936ccf111a374dd6279d313cff311fa8f2`**. The locally computed digest and size match the GitHub release API's uploaded asset exactly.
+
+The master was retrieved through the workflow's commit by fast-forwarding this same branch. Unlike v1, the actual full-HD release master was independently decoded here. No download from an inaccessible release-asset host was needed. V1 remains available in Git and release 21 below.
+
+### Encoded master validation
+
+| Check | Result |
+|---|---|
+| Video | **H.264, yuv420p, 1080 × 1920, nominal 30 fps** |
+| Audio | **AAC stereo, 48 kHz**, complete narration/music/effects mix |
+| Decoded video frames | **5,147 / 5,147** |
+| Nominal composition duration | **171.5667 s** |
+| Encoded video/container duration | **171.568875 s** |
+| Encoded audio duration | **171.568 s** |
+| Full video + audio decode | **0 errors** |
+| MP4 streaming | Fast start: `moov` precedes `mdat` |
+| Encoded cue-midpoint pictures | **86 / 86 extracted and viewed** |
+| Unexpected black segments | **None**; only the intended final black cut |
+| Unexpected freezes over 0.8 s | **None** at the analysis threshold |
+| Hard-cut frames | **5,132 has picture; 5,133 and 5,146 are exact RGB black** |
+| Intended black tail | **14 frames** |
+| Audio lag versus source mix | **0.0 ms** |
+| Whole-track correlation versus source mix | **0.999868** |
+| Worst five-second audio window | **0.999671** correlation |
+| All 19 cloud joins | Worst one-second join-window correlation **0.999695**; no missing or shifted audio chunk detected |
+| Encoded loudness | **−14.80 LUFS** |
+| Encoded true peak | **−2.98 dB** |
+
+The stream-copy master retains small mux-clock rounding across the chunks: its time base is 1/16000, frame intervals are approximately 33.0–34.001 ms, and maximum timestamp drift from the ideal frame clock is **2.230 ms**, well below one frame. All 5,147 presentation timestamps were checked. This explains the roughly 2.2 ms difference between nominal and container duration; it is not a missing or repeated frame. The black detector finds the cut at 171.101562 s on that encoded clock, matching frame 5,133.
+
+The audio comparison decodes the MP4 and committed mix onto the same sample clock, finds their lag, and compares the full track, five-second windows and every chunk boundary. It proves identity and synchronization, **not how the mix sounds**. Sound was never listened to by this agent.
+
+### Owner review
+
+The revised film is ready. Please **listen once on a phone speaker**, especially to the last thought and the cut. Picture approval, the new golem clue and the overall feel of the ending remain the owner's judgment. Do not promote this film to an approved topic model until the owner says so.
 
 Active branch: `arena/90c86f33-kmanincraftghhj22`. Framework base: merged `main` at `74296927c66583a7903dc26671e1283d5df32957`. All 28 Markdown files in that studied main revision were previously read; relevant topic, sound, narration, engine and workflow guidance was refreshed for this revision.
 
