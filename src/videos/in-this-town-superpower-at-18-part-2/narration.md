@@ -1,6 +1,6 @@
 # Narration — In This Town, Everyone Got a Superpower at 18, Part 2
 
-**Status: DRAFT 1, recorded so the owner can hear it. The script is NOT approved yet.** The story is the owner's own
+**Status: APPROVED by the owner ("awesome cant wait for the mp4"). Do not change a line.** The story is the owner's own
 outline, beat for beat. No shot is built until he approves the script.
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word. Part one is

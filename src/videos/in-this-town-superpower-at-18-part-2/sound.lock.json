@@ -1,0 +1,191 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-superpower-at-18-part-2",
+  "mix": "public/audio/in-this-town-superpower-at-18-part-2/mix.mp3",
+  "seconds": 170.5,
+  "built_from": {
+    "timing.json": "d43ee5316a7d6781f05946d216a19d78c4098e78",
+    "sound.json": "b2b35ac19db59a7e77061cf4da8a4f914a9af3dd",
+    "narration.mp3": "eed040a079fef5d30e47d7f051a5b8b819a6211b"
+  },
+  "mix_sha1": "f34eb98c7f9451d2f6fceb609cdcea63a028eda5",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "1.his",
+      "mood": "dark",
+      "at": 4.87
+    },
+    {
+      "from": "1.life",
+      "mood": "hope",
+      "at": 9.83
+    },
+    {
+      "from": "2.lie",
+      "mood": "playful",
+      "at": 15.53
+    },
+    {
+      "from": "3.fast",
+      "mood": "tense",
+      "at": 29.03
+    },
+    {
+      "from": "3.catch",
+      "mood": "playful",
+      "at": 40.13
+    },
+    {
+      "from": "5.point",
+      "mood": "tense",
+      "at": 49.5
+    },
+    {
+      "from": "6.wing",
+      "mood": "hope",
+      "at": 59.4
+    },
+    {
+      "from": "7.stop",
+      "mood": "dark",
+      "at": 65.77
+    },
+    {
+      "from": "8.land",
+      "mood": "sad",
+      "at": 73.9
+    },
+    {
+      "from": "9.wall",
+      "mood": "tense",
+      "at": 85.23
+    },
+    {
+      "from": "10.eyes",
+      "mood": "none",
+      "at": 95.8
+    },
+    {
+      "from": "11.grass",
+      "mood": "hope",
+      "at": 100.1
+    },
+    {
+      "from": "12.push",
+      "mood": "tense",
+      "at": 105.07
+    },
+    {
+      "from": "13.slow",
+      "mood": "sad",
+      "at": 118.33
+    },
+    {
+      "from": "14.win",
+      "mood": "drone",
+      "at": 128.57
+    },
+    {
+      "from": "15.open",
+      "mood": "sad",
+      "at": 133.93
+    },
+    {
+      "from": "16.shook",
+      "mood": "hope",
+      "at": 146.9
+    },
+    {
+      "from": "17.week",
+      "mood": "town",
+      "at": 147.6
+    },
+    {
+      "from": "17.pigs",
+      "mood": "playful",
+      "at": 157.47
+    },
+    {
+      "from": "18.plates",
+      "mood": "hope",
+      "at": 160.6
+    }
+  ],
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 18.4,
+    "secondsWithoutMusic": 5.9,
+    "bedsUnderVoiceDb": 22.2,
+    "sfx": 189,
+    "sfxPerMinute": 66.5,
+    "sfxKinds": 35,
+    "longestGapSeconds": 3.1,
+    "longestGapAt": 136.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.4,
+    "voiceOverRestWorstDb": 3.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.6,
+        "t": 104.6,
+        "cue": "11.mine",
+        "sounding": [
+          "ding",
+          "whoosh",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 4.3,
+        "t": 101.5,
+        "cue": "11.grass",
+        "sounding": [
+          "boom",
+          "chime"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 76.6,
+        "cue": "8.them",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 57.8,
+        "cue": "6.fly",
+        "sounding": [
+          "fire_whoosh",
+          "slide_up"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 0.2,
+        "cue": "1.town",
+        "sounding": [
+          "bell"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 11.0,
+        "cue": "1.life",
+        "sounding": [
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.4
+  },
+  "failures": []
+}

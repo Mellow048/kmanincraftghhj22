@@ -1,0 +1,1224 @@
+{
+  "film": "in-this-town-superpower-at-18-part-2",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-superpower-at-18-part-2",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The recap opens where part one opened: the bright town."
+      },
+      {
+        "from": "1.his",
+        "mood": "dark",
+        "why": "His twin, and the town on fire."
+      },
+      {
+        "from": "1.life",
+        "mood": "hope",
+        "why": "What the daisy was."
+      },
+      {
+        "from": "2.lie",
+        "mood": "playful",
+        "why": "He was bluffing, and Tip has a go: it is funny until it is not."
+      },
+      {
+        "from": "3.fast",
+        "mood": "tense",
+        "why": "Tip is falling. The roots race him."
+      },
+      {
+        "from": "3.catch",
+        "mood": "playful",
+        "why": "Caught, like a baby in a blanket."
+      },
+      {
+        "from": "5.point",
+        "mood": "tense",
+        "why": "Lava, the tree, the chase."
+      },
+      {
+        "from": "6.wing",
+        "mood": "hope",
+        "why": "He is gliding. Him. The daisy boy."
+      },
+      {
+        "from": "7.stop",
+        "mood": "dark",
+        "why": "The brother stops chasing and takes aim."
+      },
+      {
+        "from": "8.land",
+        "mood": "sad",
+        "why": "He has led him to everyone he loves."
+      },
+      {
+        "from": "9.wall",
+        "mood": "tense",
+        "why": "The wall of lava; it climbs to the closed eyes."
+      },
+      {
+        "from": "10.eyes",
+        "mood": "none",
+        "why": "Eyes shut: nothing but the heat."
+      },
+      {
+        "from": "11.grass",
+        "mood": "hope",
+        "why": "A wall of grass."
+      },
+      {
+        "from": "12.push",
+        "mood": "tense",
+        "why": "He sends it back, with thorns."
+      },
+      {
+        "from": "13.slow",
+        "mood": "sad",
+        "why": "Slow motion: he sees his brother, not an enemy."
+      },
+      {
+        "from": "14.win",
+        "mood": "drone",
+        "why": "\"You win. Do it.\" The wait."
+      },
+      {
+        "from": "15.open",
+        "mood": "sad",
+        "why": "The open hand, and a brother who cannot believe it."
+      },
+      {
+        "from": "16.shook",
+        "mood": "hope",
+        "why": "He takes the hand."
+      },
+      {
+        "from": "17.week",
+        "mood": "town",
+        "why": "One week later: the town again, mended."
+      },
+      {
+        "from": "17.pigs",
+        "mood": "playful",
+        "why": "The pigs are thinking about it."
+      },
+      {
+        "from": "18.plates",
+        "mood": "hope",
+        "why": "Four plates, three chairs filled, and a daisy."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "1.mine",
+      "bed": "village"
+    },
+    {
+      "from": "1.his",
+      "to": "13.enemy",
+      "bed": "fire"
+    },
+    {
+      "from": "6.wing",
+      "to": "7.fell",
+      "bed": "wind"
+    },
+    {
+      "from": "8.them",
+      "to": "8.plan",
+      "bed": "crowd"
+    },
+    {
+      "from": "13.brother",
+      "to": "13.brother",
+      "bed": "village"
+    },
+    {
+      "from": "14.kneel",
+      "to": "16.shook",
+      "bed": "fire"
+    },
+    {
+      "from": "17.week",
+      "to": "17.pigs",
+      "bed": "village"
+    },
+    {
+      "from": "18.plates",
+      "to": "18.three",
+      "bed": "room"
+    },
+    {
+      "from": "18.daisy",
+      "to": "18.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "The town bell on the first frame, as in part one."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "sparkle",
+      "word": "superpower",
+      "why": "'Superpower': his motif."
+    },
+    {
+      "cue": "1.mine",
+      "sfx": "pop",
+      "word": "daisy",
+      "pitch": 1.4,
+      "why": "The daisy pops up: the daisy pop from part one."
+    },
+    {
+      "cue": "1.mine",
+      "sfx": "bonk",
+      "word": "hated",
+      "why": "'I hated it'."
+    },
+    {
+      "cue": "1.his",
+      "sfx": "fire_whoosh",
+      "why": "Cut to the fire and his twin."
+    },
+    {
+      "cue": "1.his",
+      "sfx": "sting",
+      "word": "powers",
+      "trim": -3,
+      "why": "Taking powers."
+    },
+    {
+      "cue": "1.back",
+      "sfx": "hit",
+      "word": "burned",
+      "why": "The ruin blows again."
+    },
+    {
+      "cue": "1.back",
+      "sfx": "debris",
+      "p": 0.75,
+      "why": "Bits come down."
+    },
+    {
+      "cue": "1.life",
+      "sfx": "sparkle",
+      "word": "daisy",
+      "why": "Grass spreads from his hand."
+    },
+    {
+      "cue": "1.life",
+      "sfx": "chime",
+      "word": "life",
+      "why": "'Life'."
+    },
+    {
+      "cue": "1.know",
+      "sfx": "swish",
+      "why": "Close on his face."
+    },
+    {
+      "cue": "1.know",
+      "sfx": "ding",
+      "word": "beat",
+      "trim": -3,
+      "why": "'I know how to beat you': the cliffhanger of part one."
+    },
+    {
+      "cue": "2.lie",
+      "sfx": "bonk",
+      "word": "lie",
+      "why": "'That was a lie'."
+    },
+    {
+      "cue": "2.lie",
+      "sfx": "blip",
+      "word": "idea",
+      "pitch": 0.8,
+      "why": "His eyes go left and right."
+    },
+    {
+      "cue": "2.up",
+      "sfx": "swish",
+      "why": "Cut wide."
+    },
+    {
+      "cue": "2.up",
+      "sfx": "dig",
+      "word": "mud",
+      "why": "Getting up out of the mud."
+    },
+    {
+      "cue": "2.tip",
+      "sfx": "step_stone",
+      "repeat": 5,
+      "every": 0.22,
+      "pitchStep": 0.03,
+      "why": "Tip running."
+    },
+    {
+      "cue": "2.tip",
+      "sfx": "pop",
+      "word": "north",
+      "why": "The north arrow pops up."
+    },
+    {
+      "cue": "2.look",
+      "sfx": "swish",
+      "why": "The brother turns his head."
+    },
+    {
+      "cue": "2.look",
+      "sfx": "tick",
+      "p": 0.7,
+      "why": "A beat of waiting."
+    },
+    {
+      "cue": "2.fling",
+      "sfx": "hit",
+      "p": 0.45,
+      "trim": -2,
+      "why": "The flick."
+    },
+    {
+      "cue": "2.fling",
+      "sfx": "zip",
+      "p": 0.55,
+      "why": "Tip leaves."
+    },
+    {
+      "cue": "2.north",
+      "sfx": "slide_up",
+      "why": "Up over the rooftops."
+    },
+    {
+      "cue": "2.north",
+      "sfx": "gust",
+      "p": 0.5,
+      "why": "Air."
+    },
+    {
+      "cue": "3.fast",
+      "sfx": "swish",
+      "why": "Cut: he moves."
+    },
+    {
+      "cue": "3.fast",
+      "sfx": "dig",
+      "word": "arms",
+      "why": "Both arms into the mud."
+    },
+    {
+      "cue": "3.green",
+      "sfx": "sparkle",
+      "why": "They glow green: his power."
+    },
+    {
+      "cue": "3.roots",
+      "sfx": "crack",
+      "why": "The ground splits."
+    },
+    {
+      "cue": "3.roots",
+      "sfx": "whoosh_low",
+      "word": "raced",
+      "why": "Roots race away."
+    },
+    {
+      "cue": "3.chase",
+      "sfx": "riser",
+      "p": 0.98,
+      "trim": -3,
+      "why": "Roots against the fall: it ends on the leaf."
+    },
+    {
+      "cue": "3.chase",
+      "sfx": "scrape",
+      "p": 0.2,
+      "why": "Roots tearing over the ground."
+    },
+    {
+      "cue": "3.leaf",
+      "sfx": "slide_down",
+      "why": "Tip coming down."
+    },
+    {
+      "cue": "3.leaf",
+      "sfx": "pop",
+      "word": "leaf",
+      "pitch": 0.7,
+      "why": "One giant leaf opens."
+    },
+    {
+      "cue": "3.catch",
+      "sfx": "thud",
+      "p": 0.12,
+      "trim": -2,
+      "why": "He lands in it."
+    },
+    {
+      "cue": "3.catch",
+      "sfx": "boing",
+      "p": 0.4,
+      "why": "The leaf bounces him."
+    },
+    {
+      "cue": "3.thanks",
+      "sfx": "blip",
+      "p": 0.1,
+      "why": "Perfectly calm."
+    },
+    {
+      "cue": "3.thanks",
+      "sfx": "pop",
+      "word": "north",
+      "why": "The arrow again."
+    },
+    {
+      "cue": "4.tired",
+      "sfx": "whoosh",
+      "why": "Scene 4: back in the pen."
+    },
+    {
+      "cue": "4.tired",
+      "sfx": "thud",
+      "word": "knees",
+      "why": "His knees give out."
+    },
+    {
+      "cue": "4.big",
+      "sfx": "heartbeat",
+      "p": 0.1,
+      "why": "Spent."
+    },
+    {
+      "cue": "4.big",
+      "sfx": "plink",
+      "p": 0.8,
+      "why": "The glow gutters out."
+    },
+    {
+      "cue": "4.along",
+      "sfx": "blip",
+      "pitch": 1.2,
+      "why": "He looks at his hands."
+    },
+    {
+      "cue": "4.along",
+      "sfx": "bonk",
+      "word": "Nobody",
+      "why": "'Nobody told me'."
+    },
+    {
+      "cue": "5.point",
+      "sfx": "sting",
+      "trim": -3,
+      "why": "The brother points."
+    },
+    {
+      "cue": "5.red",
+      "sfx": "crackle",
+      "why": "His fingertip heats."
+    },
+    {
+      "cue": "5.red",
+      "sfx": "riser",
+      "p": 0.98,
+      "trim": -3,
+      "why": "Hotter: it ends on the lava."
+    },
+    {
+      "cue": "5.lava",
+      "sfx": "fire_whoosh",
+      "p": 0.3,
+      "why": "Lava."
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "crack",
+      "word": "tree",
+      "at": -0.2,
+      "why": "The mud breaks."
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "whoosh_low",
+      "word": "tree",
+      "why": "A whole oak comes up under him."
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "debris",
+      "word": "threw",
+      "why": "Mud and lava spatter."
+    },
+    {
+      "cue": "5.breath",
+      "sfx": "rustle",
+      "why": "In the leaves, one breath."
+    },
+    {
+      "cue": "6.fly",
+      "sfx": "fire_whoosh",
+      "p": 0.3,
+      "why": "He lifts off on fire."
+    },
+    {
+      "cue": "6.fly",
+      "sfx": "slide_up",
+      "word": "flying",
+      "trim": -3,
+      "why": "Up."
+    },
+    {
+      "cue": "6.fly",
+      "sfx": "bonk",
+      "word": "course",
+      "trim": -3,
+      "why": "'Of course he could fly'."
+    },
+    {
+      "cue": "6.wing",
+      "sfx": "swish",
+      "why": "Cut to the treetop."
+    },
+    {
+      "cue": "6.wing",
+      "sfx": "sparkle",
+      "word": "leaf",
+      "why": "A leaf grows across his back."
+    },
+    {
+      "cue": "6.wing",
+      "sfx": "whoosh_low",
+      "word": "wide",
+      "why": "It unrolls."
+    },
+    {
+      "cue": "6.glide",
+      "sfx": "drop",
+      "word": "jumped",
+      "why": "He jumps."
+    },
+    {
+      "cue": "6.glide",
+      "sfx": "gust",
+      "word": "wind",
+      "why": "The wind takes him."
+    },
+    {
+      "cue": "6.me",
+      "sfx": "whoosh",
+      "why": "Flying with him."
+    },
+    {
+      "cue": "6.me",
+      "sfx": "chime",
+      "word": "daisy",
+      "why": "'Me. The daisy boy.'"
+    },
+    {
+      "cue": "7.stop",
+      "sfx": "sting",
+      "trim": -3,
+      "why": "He stops."
+    },
+    {
+      "cue": "7.aim",
+      "sfx": "crackle",
+      "p": 0.25,
+      "why": "Fire runs down his arm."
+    },
+    {
+      "cue": "7.aim",
+      "sfx": "riser",
+      "p": 0.98,
+      "trim": -2,
+      "why": "The spear draws out: white hot."
+    },
+    {
+      "cue": "7.aim",
+      "sfx": "tick",
+      "word": "eye",
+      "why": "He shuts one eye."
+    },
+    {
+      "cue": "7.shot",
+      "sfx": "zip",
+      "word": "through",
+      "at": -0.15,
+      "why": "The spear."
+    },
+    {
+      "cue": "7.shot",
+      "sfx": "crack",
+      "word": "through",
+      "why": "Through the wing like paper."
+    },
+    {
+      "cue": "7.fell",
+      "sfx": "slide_down",
+      "why": "He falls."
+    },
+    {
+      "cue": "7.fell",
+      "sfx": "thud",
+      "p": 0.56,
+      "trim": -1,
+      "why": "Not far."
+    },
+    {
+      "cue": "7.fell",
+      "sfx": "debris",
+      "p": 0.75,
+      "why": "Dust and leaf.",
+      "trim": 3
+    },
+    {
+      "cue": "8.land",
+      "sfx": "whoosh",
+      "why": "Scene 8: the square."
+    },
+    {
+      "cue": "8.land",
+      "sfx": "rustle",
+      "p": 0.3,
+      "why": "He pushes himself up."
+    },
+    {
+      "cue": "8.land",
+      "sfx": "blip",
+      "word": "looked",
+      "pitch": 0.7,
+      "why": "He looks up."
+    },
+    {
+      "cue": "8.them",
+      "sfx": "ding",
+      "word": "mother",
+      "note": "E6",
+      "trim": 0,
+      "why": "His mother: the sock note."
+    },
+    {
+      "cue": "8.them",
+      "sfx": "tick",
+      "word": "Bo",
+      "why": "Bo."
+    },
+    {
+      "cue": "8.them",
+      "sfx": "tick",
+      "word": "Mira",
+      "pitch": 1.1,
+      "why": "Mira."
+    },
+    {
+      "cue": "8.them",
+      "sfx": "tick",
+      "word": "Tip",
+      "pitch": 1.2,
+      "why": "Tip."
+    },
+    {
+      "cue": "8.them",
+      "sfx": "swish",
+      "word": "Half",
+      "why": "Half the town."
+    },
+    {
+      "cue": "8.led",
+      "sfx": "drop",
+      "word": "led",
+      "why": "What he has done."
+    },
+    {
+      "cue": "8.led",
+      "sfx": "heartbeat",
+      "word": "loved",
+      "at": -0.4,
+      "why": "Everyone he loves."
+    },
+    {
+      "cue": "8.plan",
+      "sfx": "blip",
+      "word": "plan",
+      "pitch": 1.2,
+      "why": "Bo asks."
+    },
+    {
+      "cue": "8.plan",
+      "sfx": "bonk",
+      "word": "not",
+      "why": "It was not a plan."
+    },
+    {
+      "cue": "9.wall",
+      "sfx": "whoosh",
+      "why": "Scene 9: far down the street."
+    },
+    {
+      "cue": "9.wall",
+      "sfx": "riser",
+      "p": 0.98,
+      "trim": -3,
+      "why": "Both hands go up."
+    },
+    {
+      "cue": "9.lava",
+      "sfx": "crack",
+      "why": "The road cracks."
+    },
+    {
+      "cue": "9.lava",
+      "sfx": "fire_whoosh",
+      "word": "lava",
+      "why": "A wall of lava."
+    },
+    {
+      "cue": "9.high",
+      "sfx": "bell",
+      "word": "bell",
+      "trim": -4,
+      "why": "As high as the bell."
+    },
+    {
+      "cue": "9.push",
+      "sfx": "whoosh_low",
+      "word": "pushed",
+      "why": "He pushes it."
+    },
+    {
+      "cue": "9.push",
+      "sfx": "scrape",
+      "p": 0.6,
+      "why": "It eats the road."
+    },
+    {
+      "cue": "10.none",
+      "sfx": "heartbeat",
+      "word": "leaf",
+      "at": -0.3,
+      "why": "No leaf."
+    },
+    {
+      "cue": "10.none",
+      "sfx": "heartbeat",
+      "word": "tree",
+      "at": -0.3,
+      "why": "No tree."
+    },
+    {
+      "cue": "10.none",
+      "sfx": "heartbeat",
+      "word": "idea",
+      "at": -0.3,
+      "why": "No idea."
+    },
+    {
+      "cue": "10.finger",
+      "sfx": "swish",
+      "why": "His arm comes up."
+    },
+    {
+      "cue": "10.finger",
+      "sfx": "tick",
+      "word": "finger",
+      "why": "One finger."
+    },
+    {
+      "cue": "10.eyes",
+      "sfx": "whoosh_low",
+      "word": "closed",
+      "at": 0.2,
+      "why": "The lids close: ours too."
+    },
+    {
+      "cue": "10.heat",
+      "sfx": "fire_whoosh",
+      "trim": -2,
+      "why": "Heat on the face, in the dark."
+    },
+    {
+      "cue": "10.heat",
+      "sfx": "heartbeat",
+      "p": 0.6,
+      "why": "Waiting."
+    },
+    {
+      "cue": "10.cool",
+      "sfx": "plink",
+      "word": "not",
+      "why": "The heat stops."
+    },
+    {
+      "cue": "10.open",
+      "sfx": "sparkle",
+      "trim": -2,
+      "why": "The lids part: green."
+    },
+    {
+      "cue": "11.grass",
+      "sfx": "boom",
+      "word": "grass",
+      "trim": -6,
+      "why": "The reveal: a wall of grass."
+    },
+    {
+      "cue": "11.grass",
+      "sfx": "chime",
+      "p": 0.75,
+      "why": "Living green."
+    },
+    {
+      "cue": "11.how",
+      "sfx": "blip",
+      "pitch": 1.3,
+      "why": "He looks at his finger."
+    },
+    {
+      "cue": "11.how",
+      "sfx": "boing",
+      "word": "know",
+      "dur": 0.3,
+      "trim": -2,
+      "why": "Shrug."
+    },
+    {
+      "cue": "11.mine",
+      "sfx": "ding",
+      "word": "mine",
+      "why": "Mine."
+    },
+    {
+      "cue": "12.push",
+      "sfx": "whoosh",
+      "why": "He shoves it back."
+    },
+    {
+      "cue": "12.push",
+      "sfx": "whoosh_low",
+      "word": "pushed",
+      "why": "The wall goes."
+    },
+    {
+      "cue": "12.thorns",
+      "sfx": "pop",
+      "word": "roses",
+      "why": "Roses.",
+      "trim": 3,
+      "pitch": 1.2
+    },
+    {
+      "cue": "12.thorns",
+      "sfx": "crack",
+      "word": "thorns",
+      "why": "Thorns."
+    },
+    {
+      "cue": "12.late",
+      "sfx": "swish",
+      "why": "Cut to the brother."
+    },
+    {
+      "cue": "12.late",
+      "sfx": "zip",
+      "word": "hundred",
+      "why": "A hundred powers in a blur."
+    },
+    {
+      "cue": "12.late",
+      "sfx": "tick",
+      "word": "second",
+      "repeat": 3,
+      "every": 0.14,
+      "why": "Not one second."
+    },
+    {
+      "cue": "12.late",
+      "sfx": "riser",
+      "p": 0.98,
+      "trim": -3,
+      "why": "Here it comes."
+    },
+    {
+      "cue": "12.hit",
+      "sfx": "hit",
+      "word": "hit",
+      "why": "It hits him."
+    },
+    {
+      "cue": "12.hit",
+      "sfx": "rustle",
+      "word": "garden",
+      "why": "A garden falling off a roof."
+    },
+    {
+      "cue": "12.hit",
+      "sfx": "debris",
+      "word": "roof",
+      "why": "Leaves and petals."
+    },
+    {
+      "cue": "12.dizzy",
+      "sfx": "boing",
+      "dur": 0.4,
+      "trim": -3,
+      "why": "Swaying."
+    },
+    {
+      "cue": "12.dizzy",
+      "sfx": "pop",
+      "word": "rose",
+      "pitch": 1.4,
+      "why": "A rose in his hair."
+    },
+    {
+      "cue": "13.chance",
+      "sfx": "whoosh",
+      "why": "He runs."
+    },
+    {
+      "cue": "13.chance",
+      "sfx": "step_stone",
+      "word": "ran",
+      "repeat": 5,
+      "every": 0.16,
+      "why": "Running."
+    },
+    {
+      "cue": "13.slow",
+      "sfx": "drop",
+      "word": "slow",
+      "why": "Everything goes slow."
+    },
+    {
+      "cue": "13.thought",
+      "sfx": "heartbeat",
+      "p": 0.05,
+      "why": "Slow motion."
+    },
+    {
+      "cue": "13.thought",
+      "sfx": "heartbeat",
+      "p": 0.55,
+      "why": "Slow motion."
+    },
+    {
+      "cue": "13.enemy",
+      "sfx": "swish",
+      "pitch": 0.6,
+      "why": "What he is running at."
+    },
+    {
+      "cue": "13.brother",
+      "sfx": "chime",
+      "trim": -2,
+      "why": "Two boys under the bell."
+    },
+    {
+      "cue": "14.kneel",
+      "sfx": "whoosh",
+      "why": "Scene 14: he reaches him."
+    },
+    {
+      "cue": "14.kneel",
+      "sfx": "thud",
+      "word": "knees",
+      "why": "On his knees."
+    },
+    {
+      "cue": "14.up",
+      "sfx": "swish",
+      "pitch": 0.8,
+      "why": "He looks up."
+    },
+    {
+      "cue": "14.down",
+      "sfx": "rustle",
+      "word": "down",
+      "why": "His head goes down."
+    },
+    {
+      "cue": "14.win",
+      "sfx": "sting",
+      "word": "Do",
+      "trim": -4,
+      "why": "You win. Do it."
+    },
+    {
+      "cue": "15.hand",
+      "sfx": "whoosh_low",
+      "word": "raised",
+      "why": "He raises his hand."
+    },
+    {
+      "cue": "15.take",
+      "sfx": "heartbeat",
+      "p": 0.05,
+      "why": "It could go either way."
+    },
+    {
+      "cue": "15.take",
+      "sfx": "heartbeat",
+      "word": "knew",
+      "at": -0.3,
+      "why": "He knew it."
+    },
+    {
+      "cue": "15.take",
+      "sfx": "heartbeat",
+      "word": "did",
+      "at": -0.3,
+      "why": "So did I."
+    },
+    {
+      "cue": "15.open",
+      "sfx": "sparkle",
+      "word": "opened",
+      "why": "He opens it."
+    },
+    {
+      "cue": "15.open",
+      "sfx": "swish",
+      "word": "held",
+      "pitch": 0.8,
+      "why": "And holds it out."
+    },
+    {
+      "cue": "15.smile",
+      "sfx": "chime",
+      "word": "smiled",
+      "trim": -2,
+      "why": "The smile from part one."
+    },
+    {
+      "cue": "15.smile",
+      "sfx": "blip",
+      "word": "Okay",
+      "pitch": 1.3,
+      "why": "Okay?"
+    },
+    {
+      "cue": "16.worse",
+      "sfx": "swish",
+      "pitch": 0.8,
+      "why": "His face comes up."
+    },
+    {
+      "cue": "16.worse",
+      "sfx": "heartbeat",
+      "word": "worse",
+      "at": -0.3,
+      "why": "Waiting for something worse."
+    },
+    {
+      "cue": "16.believe",
+      "sfx": "drop",
+      "word": "forgiven",
+      "trim": -3,
+      "why": "Could not be forgiven."
+    },
+    {
+      "cue": "16.wrong",
+      "sfx": "tick",
+      "word": "stood",
+      "repeat": 3,
+      "every": 0.4,
+      "why": "He stands there."
+    },
+    {
+      "cue": "16.look",
+      "sfx": "swish",
+      "pitch": 0.8,
+      "why": "He looks at the hand."
+    },
+    {
+      "cue": "16.shook",
+      "sfx": "place",
+      "p": 0.3,
+      "why": "The hands meet."
+    },
+    {
+      "cue": "16.shook",
+      "sfx": "sparkle",
+      "p": 0.4,
+      "why": "Green sparks."
+    },
+    {
+      "cue": "17.week",
+      "sfx": "boom",
+      "trim": -2,
+      "why": "One week later: daylight."
+    },
+    {
+      "cue": "17.week",
+      "sfx": "bell",
+      "p": 0.4,
+      "trim": -3,
+      "why": "The bell, mended."
+    },
+    {
+      "cue": "17.gave",
+      "sfx": "step_grass",
+      "repeat": 4,
+      "every": 0.6,
+      "why": "He walks the line."
+    },
+    {
+      "cue": "17.gave",
+      "sfx": "sparkle",
+      "p": 0.25,
+      "why": "A power goes home."
+    },
+    {
+      "cue": "17.gave",
+      "sfx": "sparkle",
+      "p": 0.5,
+      "pitch": 1.15,
+      "why": "And another."
+    },
+    {
+      "cue": "17.gave",
+      "sfx": "sparkle",
+      "p": 0.75,
+      "pitch": 1.3,
+      "why": "And another."
+    },
+    {
+      "cue": "17.bo",
+      "sfx": "boing",
+      "word": "jump",
+      "why": "Bo jumps."
+    },
+    {
+      "cue": "17.bo",
+      "sfx": "boing",
+      "word": "stopped",
+      "pitch": 1.15,
+      "why": "And again."
+    },
+    {
+      "cue": "17.bo",
+      "sfx": "boing",
+      "p": 0.9,
+      "pitch": 1.3,
+      "why": "And again."
+    },
+    {
+      "cue": "17.fix",
+      "sfx": "whoosh",
+      "why": "Their house."
+    },
+    {
+      "cue": "17.fix",
+      "sfx": "place",
+      "word": "fixed",
+      "why": "Fixed."
+    },
+    {
+      "cue": "17.fix",
+      "sfx": "step_wood",
+      "word": "carries",
+      "repeat": 2,
+      "every": 0.25,
+      "why": "He carries."
+    },
+    {
+      "cue": "17.fix",
+      "sfx": "sparkle",
+      "word": "grow",
+      "why": "I grow the wood."
+    },
+    {
+      "cue": "17.fix",
+      "sfx": "place",
+      "word": "wood",
+      "why": "New planks.",
+      "trim": 3
+    },
+    {
+      "cue": "17.pigs",
+      "sfx": "swish",
+      "why": "The pig pen."
+    },
+    {
+      "cue": "17.pigs",
+      "sfx": "rustle",
+      "word": "sorry",
+      "why": "Sorry."
+    },
+    {
+      "cue": "17.pigs",
+      "sfx": "blip",
+      "word": "thinking",
+      "pitch": 0.7,
+      "why": "The pigs are thinking."
+    },
+    {
+      "cue": "18.plates",
+      "sfx": "whoosh",
+      "why": "Scene 18: home."
+    },
+    {
+      "cue": "18.plates",
+      "sfx": "place",
+      "word": "four",
+      "repeat": 4,
+      "every": 0.12,
+      "pitchStep": 0.05,
+      "why": "Four plates."
+    },
+    {
+      "cue": "18.three",
+      "sfx": "scrape",
+      "word": "three",
+      "trim": -2,
+      "why": "Chairs."
+    },
+    {
+      "cue": "18.three",
+      "sfx": "chime",
+      "word": "sat",
+      "why": "Three of us sat down."
+    },
+    {
+      "cue": "18.daisy",
+      "sfx": "swish",
+      "why": "Outside his door."
+    },
+    {
+      "cue": "18.daisy",
+      "sfx": "pop",
+      "word": "daisy",
+      "pitch": 1.4,
+      "why": "One small daisy: the first sound his power ever made."
+    },
+    {
+      "cue": "18.daisy",
+      "sfx": "sparkle",
+      "word": "put",
+      "why": "I did not put it there."
+    },
+    {
+      "cue": "18.sub",
+      "sfx": "ding",
+      "word": "subscribe",
+      "why": "Subscribe."
+    },
+    {
+      "cue": "18.sub",
+      "sfx": "pop",
+      "p": 0.1,
+      "why": "The sign."
+    }
+  ]
+}
