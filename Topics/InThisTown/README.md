@@ -34,6 +34,40 @@ These apply to a film that declares `topic: "in-this-town"`, and to nothing else
 Everything else in `AGENTS.md` still holds: one folder per film, real 3D sets, something moving in every shot, the
 picture shows what the voice says, deterministic code, atmosphere in the world, and the render policy.
 
+## The short cut: one to two minutes
+
+The owner may ask for a shorter film ("keep it short like 1 min to 2 minute max"). That is a **cut** of this topic,
+not a different topic. A film takes it by adding one line to `defineFilm`, next to `topic`:
+
+```ts
+topic: "in-this-town",
+cut: "short",
+```
+
+`npm run check` then holds the film to `cuts.short` in `topic.json` in place of the topic's length and word count.
+Nothing else changes.
+
+| | Full film | Short cut |
+|---|---|---|
+| Length | 150–178 s, never over 180 s | 60–118 s, **never over 120 s** |
+| Words | 640–770 | 250–520 |
+| Beats | 18 | About 14 |
+| Shots | 80–95 | 35–65 |
+| Pace, shot length, captions, first line, last line | as in the table above | the same |
+
+What to keep, and what to drop from the 18 beats of `SCRIPT.md`:
+
+- **Keep:** the hook, the mysteries, the tour, the itch, the elder's rule, the decision with its planted question,
+  one funny failure, one success, the friend, the edge, the act, the wait, the reveal, the button.
+- **Drop first:** the adults' sensible reasons (beat 5), the tease (6), the price (11), the packing (12), and the
+  friend's two lines of dialogue (13: he can act instead of speak).
+- **Do not drop:** anything that is paid back at the end. A short cut has less room, so every planted thing has to
+  come back. Write the table of what is planted and where it pays off before you cut a line.
+
+The tour and the edge shrink in words, not in number of pictures: they are where the film is fastest.
+
+The first film in this cut is `in-this-town-same-face`: 14 beats, 57 shots, 441 words, 1:45.
+
 ## What makes this kind of video work
 
 The evidence for each line is in `SCRIPT.md` and `SHOTS.md`.
@@ -67,12 +101,13 @@ The evidence for each line is in `SCRIPT.md` and `SHOTS.md`.
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic |
+| `topic.json` | The numbers `npm run check` enforces for this topic, and for its short cut |
 | `SCRIPT.md`, `SHOTS.md` | The two playbooks |
 | `reference/treehouse/` | The model video, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/` | The rejected first attempt, as a warning |
-| `creatures.tsx` | The monsters, built from boxes: egg, worm, dragon, phoenix, golem, the mother, chicken, rank sign, fire, smoke, sound rings. Shared by this topic's films |
+| `creatures.tsx` | The monsters, built from boxes: egg, worm, dragon, phoenix, golem, the mother, chicken, rank sign, fire, smoke, sound rings, and the red "Subscribe" sign every film ends on. Shared by this topic's films |
 
 Films live in `src/videos/`. The first one is `in-this-town-monster-egg`: 93 shots, 2:57. Read its `world.tsx` for
 how a town is laid out in zones, its `kit.tsx` for the cast and helpers, and any `sceneN.tsx` for what a shot looks
-like. The street and school that version 1 kept in a `maps/` folder here were removed; the town now lives with the film.
+like. The second is `in-this-town-same-face`, a short cut: 57 shots, 1:45. Its `kit.tsx` has the villagers, the iron
+golem, speech bubbles and soft smoke. The street and school that version 1 kept in a `maps/` folder here were removed; the town now lives with the film.

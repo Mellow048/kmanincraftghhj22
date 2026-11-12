@@ -5,7 +5,7 @@ its own references and its own kit. The engine in `src/engine/` is shared by all
 
 | Topic | Folder | What it makes | State |
 |---|---|---|---|
-| In This Town | [`InThisTown/`](InThisTown/README.md) | A 2–3 minute first-person Minecraft story: "In this town, …", a rule nobody explains, and a twist | Rules written. First film built: `in-this-town-monster-egg` |
+| In This Town | [`InThisTown/`](InThisTown/README.md) | A 2–3 minute first-person Minecraft story: "In this town, …", a rule nobody explains, and a twist. Also has a 1–2 minute short cut | Rules written. Films built: `in-this-town-monster-egg`, `in-this-town-same-face` (short cut) |
 
 More topics are planned by the owner (money lessons, what inflation is). Do not write rules for a topic until the
 owner supplies a reference for it.
@@ -25,7 +25,7 @@ against the base contract.
 | | |
 |---|---|
 | `README.md` | Start here. One page: what the format is, what changes from the base, the work order |
-| `topic.json` | The numbers the lint enforces: length, cut rate, voice pace |
+| `topic.json` | The numbers the lint enforces: length, cut rate, voice pace. `cuts.<name>` holds other lengths of the same format; a film picks one with `cut: "<name>"` |
 | Playbooks (`SCRIPT.md`, `SHOTS.md`, …) | How to write it and how to shoot it |
 | `reference/<name>/` | The video or script the topic is modelled on, and the evidence taken from it: contact sheets, a shot log, the transcript |
 | Kit code | Maps, creatures and props shared by that topic's films. Films themselves stay in `src/videos/` |

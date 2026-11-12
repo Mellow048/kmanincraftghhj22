@@ -1,6 +1,8 @@
 /**
  * Lint for STORY films: narrated films cut to their voice (docs/STORY-FILMS.md).
  * A film opts in by naming a topic whose topic.json says `"profile": "story"`.
+ * It may also name a cut (`cut: "short"`): topic.json `cuts.<name>` then replaces
+ * the topic's length and word numbers for that film.
  *
  * The base contract in check-films.mjs still covers every other film.
  */
@@ -50,8 +52,16 @@ export function readScript(raw) {
 }
 
 export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D, BANNED_PHRASES }) {
-  const lim = topic.film ?? {};
-  const tag = `${slug} [${topic.id}]`;
+  // A film may name a cut of its topic (`cut: "short"`). The cut's numbers replace the topic's, one by one.
+  const cutId = film.match(/^\s*cut:\s*["']([^"']+)["']/m)?.[1];
+  const cut = cutId ? topic.cuts?.[cutId] : null;
+  if (cutId && !cut) {
+    const known = Object.keys(topic.cuts ?? {});
+    fail(`${slug} [${topic.id}]: cut "${cutId}" is not in the topic's topic.json${known.length ? ` (it has: ${known.join(", ")})` : ""}`);
+  }
+  const lim = { ...(topic.film ?? {}), ...(cut ?? {}) };
+  const rules = cut ? `the ${cutId} cut` : "the topic";
+  const tag = `${slug} [${topic.id}${cut ? `, ${cutId} cut` : ""}]`;
 
   // ---- 1. the script ------------------------------------------------------
   const narrationPath = path.join(dir, "narration.md");
@@ -102,7 +112,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     }
   }
   if (lim.words && (totalWords < lim.words[0] || totalWords > lim.words[1])) {
-    info(`${tag}: the script is ${totalWords} words. The topic asks for ${lim.words[0]}–${lim.words[1]}.`);
+    info(`${tag}: the script is ${totalWords} words. ${rules[0].toUpperCase()}${rules.slice(1)} asks for ${lim.words[0]}–${lim.words[1]}.`);
   }
 
   // ---- 2. the timing ------------------------------------------------------
@@ -133,7 +143,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   if (lim.hardMaxSeconds && seconds > lim.hardMaxSeconds) {
     fail(`${tag}: ${seconds.toFixed(1)}s is over the hard limit of ${lim.hardMaxSeconds}s.`);
   } else if (lim.seconds && (seconds < lim.seconds[0] || seconds > lim.seconds[1])) {
-    info(`${tag}: ${seconds.toFixed(1)}s is outside the topic's ${lim.seconds[0]}–${lim.seconds[1]}s.`);
+    info(`${tag}: ${seconds.toFixed(1)}s is outside ${rules}'s ${lim.seconds[0]}–${lim.seconds[1]}s.`);
   }
   const durations = timing.cues.map((cue) => cue.end - cue.start);
   if (lim.shotSeconds) {

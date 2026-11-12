@@ -16,6 +16,13 @@
     "lastLineContains": "subscribe",
     "captions": true
   },
+  "cuts": {
+    "short": {
+      "seconds": [60, 118],
+      "hardMaxSeconds": 120,
+      "words": [250, 520]
+    }
+  },
   "measuredFromReference": {
     "seconds": 166.5,
     "shots": 87,

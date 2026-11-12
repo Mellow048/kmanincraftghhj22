@@ -127,7 +127,8 @@ pixel font, so it needs no font file and no HTML layer. Options: `y` (0 top … 
 
 - every script line has exactly one shot, in order, and every shot has a note, a move and a stage;
 - `timing.json` matches the script (if not: rebuild) and says whether it was measured or estimated;
-- length, shot lengths, pace and word count against the topic's `topic.json`;
+- length, shot lengths, pace and word count against the topic's `topic.json`, or against one of its named cuts
+  if the film says `cut: "<name>"` (for example `cut: "short"`, the one-to-two-minute In This Town film);
 - the first and last lines the topic asks for;
 - the usual: no 2D overlays in scenes, deterministic code, atmosphere and lights in the world.
 
