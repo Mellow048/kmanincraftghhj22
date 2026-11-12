@@ -1,7 +1,8 @@
 # Narration — In This Town, Everyone Wore a Pumpkin on Their Head
 
-**Status: DRAFT 1. Not approved, not recorded** (three voice samples of the hook are in `public/audio/in-this-town-pumpkin-heads/samples/`; the owner has not chosen yet).
-Nothing is built until the owner approves the script.
+**Status: DRAFT 1, recorded so the owner can hear it. The script is NOT approved yet.** Recorded with `voice-00`
+(the voice the owner picked) as six clips; built to 115.9 seconds (1:55.9) at 244 words a minute, 53 shots, median
+shot 2.13 s. Nobody has listened to it: the agent cannot hear audio. No shot is built until the owner approves the script.
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word, and read the model,
 `src/videos/in-this-town-same-face/narration.md`, to see what a finished one looks like. Copy its SHAPE, never its story.
