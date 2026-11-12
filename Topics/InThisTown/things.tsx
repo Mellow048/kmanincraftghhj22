@@ -257,7 +257,7 @@ const STRAW = "#d9b84a";
 /**
  * A straw hat with a flat square brim, as wide as you like. `position` is where it sits: the middle of the
  * top of the head. Put it in a head's own group (a villager's `hat="wide"`, the golem's `hat`, an avatar's
- * `headwear`) and it nods with the head. `tilt` tips it about X: negative tips it back, positive pulls it down in front.
+ * `head`, whose origin is the MIDDLE of the head: the top is 0.225 m over it) and it nods with the head. `tilt` tips it about X: negative tips it back, positive pulls it down in front.
  */
 export const StrawHat: React.FC<{
   position?: Vec3;

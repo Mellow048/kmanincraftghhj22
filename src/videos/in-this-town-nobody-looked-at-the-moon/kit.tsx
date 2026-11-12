@@ -132,15 +132,21 @@ export const Hero: React.FC<A & { hat?: "on" | "off" | "bucket"; hatTilt?: numbe
     colors={{ torso: "#d8342a", arms: "#f1ece0", legs: "#2f3a7a" }}
     faceGlow={0.3}
     blink
-    headwear={
-      hat === "on" ? (
-        <HeadHat tilt={hatTilt} />
-      ) : hat === "bucket" ? (
-        <>
-          <Bucket position={[0, -0.05, 0]} rotation={[Math.PI, 0, 0]} handle={false} />
-          <HeadHat tilt={hatTilt} y={0.5 + hatLift} />
-        </>
-      ) : null
+    head={
+      // `head` has its origin at the MIDDLE of the head cube. The hat and the bucket are placed from the neck
+      // (0.45 is the top of the head), so step down half a head first: 1.8 / 8 m at scale 1.
+      hat === "off" ? undefined : (
+        <group position={[0, -1.8 / 8, 0]}>
+          {hat === "on" ? (
+            <HeadHat tilt={hatTilt} />
+          ) : (
+            <>
+              <Bucket position={[0, -0.05, 0]} rotation={[Math.PI, 0, 0]} handle={false} />
+              <HeadHat tilt={hatTilt} y={0.5 + hatLift} />
+            </>
+          )}
+        </group>
+      )
     }
     {...p}
   />
