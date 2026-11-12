@@ -3,6 +3,9 @@
 **Status: script APPROVED by the owner ("yes good enough give me the tts"), RECORDED, and BUILT on the owner's word
 ("build"): 14 scenes, 57 shots, one per line below. The owner has not yet said anything about the finished film.**
 
+Rendered on GitHub (run 14): the full 1080×1920 file is in the release `render-14`; `renders/in-this-town-same-face.mp4`
+is a 720×1280 copy that fits in the repository, and `renders/in-this-town-same-face-shots.jpg` is one frame per shot.
+
 Recorded with `voice-00` (the Monster Egg voice) as six clips; built to 104.7 seconds (1:44.7) at 254 words a
 minute, 57 shots, median shot 1.70 s. Nobody has listened to it yet: the agent cannot hear audio. For the owner's
 ear: the voice, and the three "hmm" at about 0:17, 0:31 and 0:46.

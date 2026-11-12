@@ -79,6 +79,8 @@ rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules ar
 | [In This Town](Topics/InThisTown/README.md) | A three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. About 90 cuts, every word captioned | `in-this-town-monster-egg` |
 
 A topic film says `topic: "<id>"` in `defineFilm`, and `npm run check` then lints it against that topic's numbers.
+A topic can also have named cuts. In This Town has `cut: "short"`, one to two minutes; the first film in that cut is
+`in-this-town-same-face`.
 Narrated topics are cut to a recorded voice; the pipeline is in [`docs/STORY-FILMS.md`](docs/STORY-FILMS.md).
 
 ## The rules
