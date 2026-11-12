@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Glow, MinecraftAvatar, PixelText, Torch, Vox, clamp01, lerp, smoothstep } from "../../engine";
+import { Block, Glow, MinecraftAvatar, Torch, Vox, clamp01, lerp, smoothstep } from "../../engine";
 import type { AnimName, FaceName, MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
 import { MonsterEgg, Worm } from "../../../Topics/InThisTown/creatures";
 import timingJson from "./timing.json";
@@ -453,21 +453,8 @@ export const Ripples: React.FC<{ position: Vec3; t: number; color?: string; reac
   </group>
 );
 
-/** The last picture of every film in this topic: a red sign, held up to the lens. Origin: the middle of the board. */
-export const SubscribeSign: React.FC<{ position: Vec3; rotationY?: number; scale?: number; tilt?: number }> = ({
-  position,
-  rotationY = 0,
-  scale = 1,
-  tilt = 0,
-}) => (
-  <group position={position} rotation={[0, rotationY, tilt]} scale={scale}>
-    <Vox kind="wool" tint="#e3261c" size={[1.7, 0.56, 0.08]} />
-    <Block position={[0, 0.3, 0]} size={[1.78, 0.06, 0.12]} color="#8a120c" />
-    <Block position={[0, -0.3, 0]} size={[1.78, 0.06, 0.12]} color="#8a120c" />
-    <PixelText text="SUBSCRIBE" position={[0, 0, 0.046]} height={0.4} maxWidth={1.56} />
-    <Block position={[0, -0.75, -0.02]} size={[0.1, 0.9, 0.08]} color="#5c3f24" />
-  </group>
-);
+/** The last picture of every film in this topic. It lives with the topic, so every film holds up the same sign. */
+export { SubscribeSign } from "../../../Topics/InThisTown/creatures";
 
 /** Two eyes in the dark, and nothing else. */
 export const Eyes: React.FC<{ position: Vec3; rotationY?: number; open?: number; color?: string }> = ({
