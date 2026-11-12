@@ -1,0 +1,1168 @@
+{
+  "film": "in-this-town-pumpkin-heads",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-pumpkin-heads",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "Hook, mysteries and tour: the town as he knew it, and it is a cheerful one."
+      },
+      {
+        "from": "4.wish",
+        "mood": "curious",
+        "why": "'But I had never seen my own face': the question starts, and nobody answers it."
+      },
+      {
+        "from": "7.well",
+        "mood": "playful",
+        "why": "Attempt one, in daylight. It fails and it is funny: twenty hands."
+      },
+      {
+        "from": "8.moon",
+        "mood": "sneak",
+        "why": "The full moon: out of the window, past his friend, down the street on tiptoe."
+      },
+      {
+        "from": "10.knelt",
+        "mood": "tense",
+        "why": "He kneels at the well. The last steps before the forbidden thing."
+      },
+      {
+        "from": "11.air",
+        "mood": "hope",
+        "why": "He has a face and it is smiling. The music believes him; it is as wrong as he is."
+      },
+      {
+        "from": "12.behind",
+        "mood": "none",
+        "why": "One held breath: the reflection has one head too many. A riser runs through the silence."
+      },
+      {
+        "from": "13.tall",
+        "mood": "dark",
+        "why": "The reveal: what the rule was hiding."
+      },
+      {
+        "from": "13.always",
+        "mood": "sad",
+        "why": "They had always been there. He understands, too late."
+      },
+      {
+        "from": "14.looked",
+        "mood": "dark",
+        "why": "The button. It does not turn cheerful for the subscribe line."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "1.town",
+      "bed": "village"
+    },
+    {
+      "from": "1.bed",
+      "to": "1.bed",
+      "bed": "room"
+    },
+    {
+      "from": "2.who",
+      "to": "3.carve",
+      "bed": "village"
+    },
+    {
+      "from": "3.golem",
+      "to": "3.ground",
+      "bed": "night"
+    },
+    {
+      "from": "4.liked",
+      "to": "5.away",
+      "bed": "village"
+    },
+    {
+      "from": "6.sleep",
+      "to": "6.decide",
+      "bed": "room"
+    },
+    {
+      "from": "6.plant",
+      "to": "6.plant",
+      "bed": "night",
+      "trim": -3
+    },
+    {
+      "from": "7.well",
+      "to": "7.rope",
+      "bed": "village"
+    },
+    {
+      "from": "8.moon",
+      "to": "13.windows",
+      "bed": "night"
+    },
+    {
+      "from": "13.always",
+      "to": "13.always",
+      "bed": "village"
+    },
+    {
+      "from": "13.eyes",
+      "to": "14.sub",
+      "bed": "night"
+    },
+    {
+      "from": "13.tall",
+      "to": "14.sub",
+      "bed": "wind",
+      "trim": -5
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "The town bell on the first frame. It comes back when he understands."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "pop",
+      "word": "pumpkin",
+      "why": "'Pumpkin': the hook lands on the grinning head."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "step_stone",
+      "at": 0.5,
+      "repeat": 3,
+      "every": 0.55,
+      "pan": 0.5,
+      "trim": -3,
+      "why": "A man walks across the square behind him."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "rustle",
+      "p": 0.75,
+      "pan": -0.5,
+      "why": "A wave from the left."
+    },
+    {
+      "cue": "1.bed",
+      "sfx": "whoosh",
+      "why": "Cut to his room at night."
+    },
+    {
+      "cue": "1.bed",
+      "sfx": "blip",
+      "word": "bed",
+      "pitch": 0.8,
+      "why": "'Even in bed': the pumpkin on the pillow."
+    },
+    {
+      "cue": "2.who",
+      "sfx": "whoosh",
+      "why": "Scene 2: back in the street."
+    },
+    {
+      "cue": "2.who",
+      "sfx": "boing",
+      "word": "who",
+      "dur": 0.3,
+      "trim": -2,
+      "why": "Three shrugs in a row."
+    },
+    {
+      "cue": "2.who",
+      "sfx": "blip",
+      "p": 0.8,
+      "pitch": 0.9,
+      "why": "The shrug passes down the line."
+    },
+    {
+      "cue": "2.mother",
+      "sfx": "swish",
+      "why": "Cut to looking up at his mother."
+    },
+    {
+      "cue": "2.mother",
+      "sfx": "rustle",
+      "word": "mother",
+      "why": "She bends her pumpkin down to him."
+    },
+    {
+      "cue": "2.mother",
+      "sfx": "chime",
+      "word": "looked",
+      "trim": -3,
+      "why": "Her carved smile: all he has ever seen of her."
+    },
+    {
+      "cue": "2.why",
+      "sfx": "swish",
+      "why": "Cut to his own pumpkin, frowning."
+    },
+    {
+      "cue": "2.why",
+      "sfx": "tick",
+      "word": "why",
+      "why": "He looks left."
+    },
+    {
+      "cue": "2.why",
+      "sfx": "tick",
+      "word": "why",
+      "at": 0.5,
+      "pitch": 1.2,
+      "why": "He looks right."
+    },
+    {
+      "cue": "2.why",
+      "sfx": "drop",
+      "word": "never",
+      "dur": 0.7,
+      "trim": -4,
+      "why": "'Never take them off': the rule."
+    },
+    {
+      "cue": "3.soup",
+      "sfx": "whoosh",
+      "why": "Scene 3: the tour."
+    },
+    {
+      "cue": "3.soup",
+      "sfx": "plink",
+      "word": "soup",
+      "why": "The spoon in the soup."
+    },
+    {
+      "cue": "3.soup",
+      "sfx": "slide_up",
+      "word": "long",
+      "dur": 0.5,
+      "why": "A very long spoon goes up to the mouth hole."
+    },
+    {
+      "cue": "3.soup",
+      "sfx": "plink",
+      "p": 0.85,
+      "pitch": 1.2,
+      "why": "And in again."
+    },
+    {
+      "cue": "3.shoes",
+      "sfx": "swish",
+      "why": "Cut down to the feet."
+    },
+    {
+      "cue": "3.shoes",
+      "sfx": "step_stone",
+      "at": 0.3,
+      "repeat": 4,
+      "every": 0.32,
+      "pitchStep": 1.06,
+      "why": "Feet shuffle along the row."
+    },
+    {
+      "cue": "3.shoes",
+      "sfx": "pop",
+      "word": "shoes",
+      "why": "'Shoes': the small blue pair."
+    },
+    {
+      "cue": "3.knock",
+      "sfx": "swish",
+      "why": "Cut to the two kids."
+    },
+    {
+      "cue": "3.knock",
+      "sfx": "bonk",
+      "word": "knocking",
+      "at": 0.2,
+      "why": "The first knock on his pumpkin. This hollow knock is the town's hello: it comes back on her window."
+    },
+    {
+      "cue": "3.knock",
+      "sfx": "bonk",
+      "word": "twice",
+      "at": 0.2,
+      "pitch": 1.1,
+      "why": "The second knock."
+    },
+    {
+      "cue": "3.carve",
+      "sfx": "swish",
+      "why": "Cut to the porch."
+    },
+    {
+      "cue": "3.carve",
+      "sfx": "scrape",
+      "at": 0.5,
+      "dur": 0.6,
+      "why": "The knife in the pumpkin."
+    },
+    {
+      "cue": "3.carve",
+      "sfx": "scrape",
+      "at": 1.4,
+      "dur": 0.5,
+      "why": "Another cut."
+    },
+    {
+      "cue": "3.carve",
+      "sfx": "crack",
+      "word": "carved",
+      "why": "'Carved': the face is cut and the chips fly."
+    },
+    {
+      "cue": "3.carve",
+      "sfx": "sparkle",
+      "word": "baby",
+      "dur": 0.6,
+      "trim": -2,
+      "why": "A new pumpkin for every baby."
+    },
+    {
+      "cue": "3.golem",
+      "sfx": "whoosh",
+      "why": "Cut to night."
+    },
+    {
+      "cue": "3.golem",
+      "sfx": "stomp",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.62,
+      "trim": -2,
+      "why": "The golem's footfalls, down the middle of the empty street."
+    },
+    {
+      "cue": "3.golem",
+      "sfx": "clank",
+      "word": "walked",
+      "trim": -3,
+      "why": "Iron joints."
+    },
+    {
+      "cue": "3.ground",
+      "sfx": "swish",
+      "why": "Cut to under its face."
+    },
+    {
+      "cue": "3.ground",
+      "sfx": "stomp",
+      "at": 0.4,
+      "repeat": 2,
+      "every": 0.8,
+      "trim": -3,
+      "why": "It keeps walking."
+    },
+    {
+      "cue": "3.ground",
+      "sfx": "drop",
+      "word": "looked",
+      "dur": 0.8,
+      "trim": -3,
+      "why": "'Never once looked up': it knows what is up there."
+    },
+    {
+      "cue": "4.liked",
+      "sfx": "whoosh",
+      "why": "Scene 4: daylight, him and his friend."
+    },
+    {
+      "cue": "4.liked",
+      "sfx": "cheer",
+      "at": 0.3,
+      "dur": 0.8,
+      "trim": -5,
+      "why": "Two kids laughing."
+    },
+    {
+      "cue": "4.liked",
+      "sfx": "step_stone",
+      "at": 0.5,
+      "repeat": 2,
+      "every": 0.5,
+      "pan": -0.5,
+      "trim": -3,
+      "why": "Someone walks by behind them."
+    },
+    {
+      "cue": "4.wish",
+      "sfx": "swish",
+      "why": "Cut to him alone.",
+      "trim": 3
+    },
+    {
+      "cue": "4.wish",
+      "sfx": "slide_down",
+      "word": "never",
+      "dur": 0.6,
+      "why": "'Never seen my own face': his head sinks."
+    },
+    {
+      "cue": "4.what",
+      "sfx": "swish",
+      "why": "Cut into the two eye holes."
+    },
+    {
+      "cue": "4.what",
+      "sfx": "blip",
+      "word": "look",
+      "pitch": 0.7,
+      "why": "'What did I look like?'"
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "whoosh",
+      "why": "Scene 5: the oldest woman's porch."
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "step_stone",
+      "at": 0.25,
+      "repeat": 2,
+      "every": 0.35,
+      "why": "He steps up to the porch."
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "pop",
+      "word": "mine",
+      "pitch": 0.8,
+      "why": "'Carved mine': she made his face."
+    },
+    {
+      "cue": "5.tap",
+      "sfx": "swish",
+      "why": "Cut to her old pumpkin."
+    },
+    {
+      "cue": "5.tap",
+      "sfx": "bonk",
+      "at": 0.35,
+      "repeat": 4,
+      "every": 0.38,
+      "trim": -4,
+      "pitch": 0.8,
+      "why": "She taps her pumpkin, thinking."
+    },
+    {
+      "cue": "5.rule",
+      "sfx": "swish",
+      "why": "Cut to looking up at her."
+    },
+    {
+      "cue": "5.rule",
+      "sfx": "tick",
+      "word": "keep",
+      "why": "'We keep them on.'"
+    },
+    {
+      "cue": "5.rule",
+      "sfx": "sting",
+      "word": "all",
+      "trim": -5,
+      "why": "'That is all I was ever told': nobody alive knows why."
+    },
+    {
+      "cue": "5.away",
+      "sfx": "swish",
+      "why": "Cut to him from the porch."
+    },
+    {
+      "cue": "5.away",
+      "sfx": "step_wood",
+      "at": 0.2,
+      "repeat": 3,
+      "every": 0.4,
+      "pan": 0.5,
+      "why": "She walks to her door."
+    },
+    {
+      "cue": "5.away",
+      "sfx": "hit",
+      "word": "shut",
+      "trim": -2,
+      "why": "The door shuts."
+    },
+    {
+      "cue": "6.sleep",
+      "sfx": "whoosh",
+      "why": "Scene 6: his room, that night."
+    },
+    {
+      "cue": "6.sleep",
+      "sfx": "rustle",
+      "at": 0.5,
+      "why": "He rolls over."
+    },
+    {
+      "cue": "6.sleep",
+      "sfx": "rustle",
+      "at": 1.4,
+      "pitch": 0.9,
+      "why": "And back."
+    },
+    {
+      "cue": "6.plant",
+      "sfx": "swish",
+      "why": "Cut to him at the window."
+    },
+    {
+      "cue": "6.plant",
+      "sfx": "step_wood",
+      "at": 0.2,
+      "repeat": 2,
+      "every": 0.4,
+      "trim": -3,
+      "why": "Bare feet on the boards."
+    },
+    {
+      "cue": "6.plant",
+      "sfx": "drop",
+      "word": "hiding",
+      "dur": 1.0,
+      "trim": -3,
+      "why": "'Hiding its face from?': the question of the film."
+    },
+    {
+      "cue": "6.decide",
+      "sfx": "swish",
+      "why": "Cut to his face."
+    },
+    {
+      "cue": "6.decide",
+      "sfx": "rustle",
+      "word": "take",
+      "why": "Both hands go up to the pumpkin."
+    },
+    {
+      "cue": "6.decide",
+      "sfx": "crack",
+      "word": "off",
+      "trim": -5,
+      "why": "'Off': it shifts a finger's width."
+    },
+    {
+      "cue": "7.well",
+      "sfx": "whoosh",
+      "why": "Scene 7: morning at the well."
+    },
+    {
+      "cue": "7.well",
+      "sfx": "step_stone",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.4,
+      "why": "He walks up to the rim."
+    },
+    {
+      "cue": "7.well",
+      "sfx": "plink",
+      "word": "well",
+      "why": "Water, down in the well. This drop returns at night."
+    },
+    {
+      "cue": "7.well",
+      "sfx": "plink",
+      "word": "reflection",
+      "pitch": 0.85,
+      "why": "Another."
+    },
+    {
+      "cue": "7.back",
+      "sfx": "swish",
+      "why": "Cut straight down into the water."
+    },
+    {
+      "cue": "7.back",
+      "sfx": "bonk",
+      "word": "pumpkin",
+      "why": "A pumpkin looked back. Of course."
+    },
+    {
+      "cue": "7.lift",
+      "sfx": "swish",
+      "why": "Cut to him facing us."
+    },
+    {
+      "cue": "7.lift",
+      "sfx": "rustle",
+      "word": "grabbed",
+      "why": "He grabs it with both hands."
+    },
+    {
+      "cue": "7.lift",
+      "sfx": "slide_up",
+      "word": "lift",
+      "dur": 0.6,
+      "why": "'Lift': it starts to come up."
+    },
+    {
+      "cue": "7.hands",
+      "sfx": "swish",
+      "why": "Cut wide."
+    },
+    {
+      "cue": "7.hands",
+      "sfx": "slide_up",
+      "at": 0.2,
+      "dur": 0.6,
+      "pitch": 1.15,
+      "why": "Up to his chin."
+    },
+    {
+      "cue": "7.hands",
+      "sfx": "step_grass",
+      "word": "twenty",
+      "at": -0.1,
+      "repeat": 6,
+      "every": 0.08,
+      "trim": -1,
+      "why": "Six people run in from every side."
+    },
+    {
+      "cue": "7.hands",
+      "sfx": "hit",
+      "word": "down",
+      "trim": -2,
+      "why": "Every hand slams it back down."
+    },
+    {
+      "cue": "7.hands",
+      "sfx": "slide_down",
+      "word": "down",
+      "at": 0.15,
+      "dur": 0.5,
+      "why": "And that was attempt one."
+    },
+    {
+      "cue": "7.rope",
+      "sfx": "swish",
+      "why": "Cut to the rope."
+    },
+    {
+      "cue": "7.rope",
+      "sfx": "scrape",
+      "word": "tied",
+      "dur": 0.5,
+      "why": "His mother pulls the knot tight."
+    },
+    {
+      "cue": "7.rope",
+      "sfx": "boing",
+      "word": "rope",
+      "dur": 0.3,
+      "trim": -2,
+      "why": "Tied on. For a week."
+    },
+    {
+      "cue": "8.moon",
+      "sfx": "whoosh",
+      "why": "Scene 8: night."
+    },
+    {
+      "cue": "8.moon",
+      "sfx": "sparkle",
+      "word": "moon",
+      "dur": 0.9,
+      "trim": -2,
+      "why": "The full moon."
+    },
+    {
+      "cue": "8.window",
+      "sfx": "swish",
+      "why": "Cut to the front of his house."
+    },
+    {
+      "cue": "8.window",
+      "sfx": "scrape",
+      "word": "asleep",
+      "dur": 0.5,
+      "trim": -2,
+      "why": "The window slides up."
+    },
+    {
+      "cue": "8.window",
+      "sfx": "zip",
+      "word": "climbed",
+      "why": "He drops out of it."
+    },
+    {
+      "cue": "8.window",
+      "sfx": "thud",
+      "word": "climbed",
+      "at": 0.45,
+      "trim": -2,
+      "why": "And lands in a crouch."
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "whoosh",
+      "why": "Scene 9: his friend's window."
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "step_grass",
+      "at": 0.3,
+      "repeat": 2,
+      "every": 0.45,
+      "trim": -2,
+      "why": "He creeps up to it."
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "crackle",
+      "word": "window",
+      "trim": -2,
+      "why": "One candle in one window."
+    },
+    {
+      "cue": "9.knock",
+      "sfx": "swish",
+      "why": "Cut close on her."
+    },
+    {
+      "cue": "9.knock",
+      "sfx": "tick",
+      "word": "knocked",
+      "at": 0.2,
+      "pitch": 0.8,
+      "trim": 3,
+      "why": "She knocks on the glass: the town's hello, from scene 3."
+    },
+    {
+      "cue": "9.knock",
+      "sfx": "tick",
+      "word": "twice",
+      "at": 0.2,
+      "pitch": 0.9,
+      "trim": 3,
+      "why": "Twice."
+    },
+    {
+      "cue": "9.shook",
+      "sfx": "swish",
+      "why": "Cut closer."
+    },
+    {
+      "cue": "9.shook",
+      "sfx": "rustle",
+      "word": "shook",
+      "why": "Her pumpkin turns left, right, left."
+    },
+    {
+      "cue": "9.shook",
+      "sfx": "sting",
+      "word": "No",
+      "trim": -4,
+      "why": "'No.'"
+    },
+    {
+      "cue": "10.street",
+      "sfx": "whoosh",
+      "why": "Scene 10: the empty street."
+    },
+    {
+      "cue": "10.street",
+      "sfx": "step_stone",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.5,
+      "trim": -3,
+      "why": "He creeps down the middle of it."
+    },
+    {
+      "cue": "10.golem",
+      "sfx": "swish",
+      "why": "Cut to the golem."
+    },
+    {
+      "cue": "10.golem",
+      "sfx": "stomp",
+      "at": 0.2,
+      "repeat": 4,
+      "every": 0.55,
+      "trim": -2,
+      "pan": -0.3,
+      "why": "The golem walks past him."
+    },
+    {
+      "cue": "10.golem",
+      "sfx": "clank",
+      "word": "eyes",
+      "trim": -3,
+      "why": "Its eyes on its feet."
+    },
+    {
+      "cue": "10.holes",
+      "sfx": "swish",
+      "why": "Cut to his pumpkin."
+    },
+    {
+      "cue": "10.holes",
+      "sfx": "heartbeat",
+      "at": 0.4,
+      "repeat": 3,
+      "every": 0.95,
+      "trim": 2,
+      "why": "His own heart, inside the pumpkin."
+    },
+    {
+      "cue": "10.look",
+      "sfx": "swish",
+      "why": "He turns his head back."
+    },
+    {
+      "cue": "10.look",
+      "sfx": "gust",
+      "word": "houses",
+      "dur": 0.9,
+      "trim": -2,
+      "why": "A breath of wind down the street."
+    },
+    {
+      "cue": "10.asleep",
+      "sfx": "swish",
+      "why": "Cut to the house fronts."
+    },
+    {
+      "cue": "10.asleep",
+      "sfx": "tick",
+      "word": "dark",
+      "pitch": 0.7,
+      "why": "Every window dark."
+    },
+    {
+      "cue": "10.asleep",
+      "sfx": "plink",
+      "word": "asleep",
+      "pitch": 0.8,
+      "trim": -2,
+      "why": "Far off, the well."
+    },
+    {
+      "cue": "10.knelt",
+      "sfx": "whoosh",
+      "why": "Cut to the well."
+    },
+    {
+      "cue": "10.knelt",
+      "sfx": "step_stone",
+      "at": 0.15,
+      "repeat": 2,
+      "every": 0.4,
+      "why": "The last steps."
+    },
+    {
+      "cue": "10.knelt",
+      "sfx": "thud",
+      "word": "knelt",
+      "at": 0.2,
+      "trim": -4,
+      "why": "He goes down on his knees."
+    },
+    {
+      "cue": "10.knelt",
+      "sfx": "gust",
+      "word": "breath",
+      "dur": 0.6,
+      "why": "One deep breath."
+    },
+    {
+      "cue": "10.off",
+      "sfx": "riser",
+      "p": 0.85,
+      "dur": 0.8,
+      "trim": -3,
+      "why": "He pulls."
+    },
+    {
+      "cue": "10.off",
+      "sfx": "pop",
+      "p": 0.85,
+      "pitch": 0.7,
+      "trim": 2,
+      "why": "It comes off."
+    },
+    {
+      "cue": "11.air",
+      "sfx": "swish",
+      "why": "Cut to the empty pumpkin on the ground."
+    },
+    {
+      "cue": "11.air",
+      "sfx": "place",
+      "at": 0.2,
+      "why": "He puts it down."
+    },
+    {
+      "cue": "11.air",
+      "sfx": "gust",
+      "word": "cold",
+      "dur": 1.0,
+      "why": "Cold air on his cheeks."
+    },
+    {
+      "cue": "11.face",
+      "sfx": "swish",
+      "why": "Cut straight down into the well: the same shot as the morning."
+    },
+    {
+      "cue": "11.face",
+      "sfx": "sparkle",
+      "word": "moon",
+      "dur": 0.9,
+      "why": "The moon comes out and the water turns silver."
+    },
+    {
+      "cue": "11.face",
+      "sfx": "chime",
+      "word": "there",
+      "why": "'There I was': the first face in the film."
+    },
+    {
+      "cue": "11.nose",
+      "sfx": "swish",
+      "why": "Closer."
+    },
+    {
+      "cue": "11.nose",
+      "sfx": "ding",
+      "word": "nose",
+      "note": "C6",
+      "trim": -3,
+      "why": "A nose."
+    },
+    {
+      "cue": "11.nose",
+      "sfx": "ding",
+      "word": "eyes",
+      "note": "E6",
+      "trim": -3,
+      "why": "Two eyes."
+    },
+    {
+      "cue": "11.nose",
+      "sfx": "ding",
+      "word": "chin",
+      "note": "G6",
+      "trim": -3,
+      "why": "A chin."
+    },
+    {
+      "cue": "11.smile",
+      "sfx": "swish",
+      "why": "Cut to his real face."
+    },
+    {
+      "cue": "11.smile",
+      "sfx": "slide_up",
+      "word": "smiling",
+      "dur": 0.5,
+      "why": "It was smiling."
+    },
+    {
+      "cue": "12.behind",
+      "sfx": "plink",
+      "at": 0.3,
+      "pitch": 0.7,
+      "why": "The well drips, as it did in the morning."
+    },
+    {
+      "cue": "12.behind",
+      "sfx": "heartbeat",
+      "at": 0.7,
+      "repeat": 2,
+      "every": 0.8,
+      "why": "Something is wrong with the picture."
+    },
+    {
+      "cue": "12.behind",
+      "sfx": "riser",
+      "p": 1.0,
+      "dur": 2.2,
+      "trim": -2,
+      "why": "It climbs through the silence into the reveal."
+    },
+    {
+      "cue": "12.behind",
+      "sfx": "sting",
+      "word": "saw",
+      "trim": -3,
+      "why": "'Saw': a second head, above his."
+    },
+    {
+      "cue": "13.tall",
+      "sfx": "boom",
+      "why": "THE REVEAL: it is standing over him."
+    },
+    {
+      "cue": "13.tall",
+      "sfx": "drop",
+      "word": "thin",
+      "dur": 1.2,
+      "trim": -3,
+      "why": "Tall, and thin."
+    },
+    {
+      "cue": "13.tall",
+      "sfx": "gust",
+      "word": "darker",
+      "dur": 1.0,
+      "trim": -2,
+      "why": "Darker than the night."
+    },
+    {
+      "cue": "13.every",
+      "sfx": "whoosh_low",
+      "why": "Cut to the whole street of them."
+    },
+    {
+      "cue": "13.every",
+      "sfx": "tick",
+      "at": 0.4,
+      "repeat": 3,
+      "every": 0.35,
+      "pitchStep": 0.94,
+      "pitch": 0.7,
+      "why": "One. And one. And one."
+    },
+    {
+      "cue": "13.windows",
+      "sfx": "swish",
+      "why": "Cut to the one at his own window."
+    },
+    {
+      "cue": "13.windows",
+      "sfx": "sting",
+      "word": "window",
+      "trim": -4,
+      "why": "It is bent to the window he climbed out of."
+    },
+    {
+      "cue": "13.always",
+      "sfx": "whoosh",
+      "why": "A cut to broad daylight."
+    },
+    {
+      "cue": "13.always",
+      "sfx": "bell",
+      "word": "always",
+      "trim": -3,
+      "why": "The town bell again, from the first frame: they were in that shot too."
+    },
+    {
+      "cue": "13.eyes",
+      "sfx": "swish",
+      "why": "Cut to his pumpkin on the ground."
+    },
+    {
+      "cue": "13.eyes",
+      "sfx": "bonk",
+      "word": "pumpkins",
+      "pitch": 0.7,
+      "trim": -2,
+      "why": "The pumpkins. The hollow knock, one last time."
+    },
+    {
+      "cue": "13.eyes",
+      "sfx": "heartbeat",
+      "at": 1.2,
+      "repeat": 2,
+      "every": 0.9,
+      "why": "Into the two holes."
+    },
+    {
+      "cue": "13.eyes",
+      "sfx": "drop",
+      "word": "eyes",
+      "dur": 0.9,
+      "trim": -2,
+      "why": "'They were hiding our eyes.'"
+    },
+    {
+      "cue": "13.find",
+      "sfx": "swish",
+      "why": "Cut to its head."
+    },
+    {
+      "cue": "13.find",
+      "sfx": "crack",
+      "word": "look",
+      "trim": -3,
+      "why": "'Look': two pale eyes open."
+    },
+    {
+      "cue": "14.looked",
+      "sfx": "hit",
+      "word": "looked",
+      "trim": -3,
+      "why": "'And I had just looked.'"
+    },
+    {
+      "cue": "14.looked",
+      "sfx": "heartbeat",
+      "at": 0.1,
+      "trim": -2,
+      "why": "His heart."
+    },
+    {
+      "cue": "14.turned",
+      "sfx": "whoosh_low",
+      "why": "Cut to the street."
+    },
+    {
+      "cue": "14.turned",
+      "sfx": "scrape",
+      "at": 0.15,
+      "repeat": 5,
+      "every": 0.38,
+      "dur": 0.3,
+      "pitchStep": 0.95,
+      "trim": -1,
+      "why": "A head turns. Then the next. Then the next."
+    },
+    {
+      "cue": "14.still",
+      "sfx": "swish",
+      "why": "Cut to behind the closest one."
+    },
+    {
+      "cue": "14.still",
+      "sfx": "heartbeat",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.8,
+      "trim": -2,
+      "why": "Neither of them moves."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "pop",
+      "at": 0.1,
+      "pitch": 0.8,
+      "why": "The sign goes up."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "ding",
+      "word": "Subscribe",
+      "note": "A4",
+      "trim": -3,
+      "why": "Subscribe. One low note; it does not turn cheerful."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "tick",
+      "word": "blink",
+      "pitch": 0.6,
+      "why": "Before he blinks."
+    }
+  ]
+}

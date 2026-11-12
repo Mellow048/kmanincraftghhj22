@@ -35,10 +35,10 @@ export const film = defineFilm({
   cut: "short",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-pumpkin-heads/narration.mp3" },
+  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-pumpkin-heads/mix.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/in-this-town-pumpkin-heads/mix.mp3" },
   // A finished film plays the mix. `npm run check` fails one that does not.
-  audio: { src: "audio/in-this-town-pumpkin-heads/narration.mp3" },
+  audio: { src: "audio/in-this-town-pumpkin-heads/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [

@@ -1,0 +1,139 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-pumpkin-heads",
+  "mix": "public/audio/in-this-town-pumpkin-heads/mix.mp3",
+  "seconds": 111.2667,
+  "built_from": {
+    "timing.json": "a933765db81b868ecc0db05adb450182636a3cb3",
+    "sound.json": "fe293b51dc32cc4cb1c59afad6497ab763a503b9",
+    "narration.mp3": "04be24bcf44f6709bb58e9d72ed06aec88abf266"
+  },
+  "mix_sha1": "5a43cc613c65682bb51e3795daec85790ae0d05e",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "4.wish",
+      "mood": "curious",
+      "at": 25.63
+    },
+    {
+      "from": "7.well",
+      "mood": "playful",
+      "at": 43.4
+    },
+    {
+      "from": "8.moon",
+      "mood": "sneak",
+      "at": 55.27
+    },
+    {
+      "from": "10.knelt",
+      "mood": "tense",
+      "at": 76.17
+    },
+    {
+      "from": "11.air",
+      "mood": "hope",
+      "at": 79.23
+    },
+    {
+      "from": "12.behind",
+      "mood": "none",
+      "at": 88.53
+    },
+    {
+      "from": "13.tall",
+      "mood": "dark",
+      "at": 91.33
+    },
+    {
+      "from": "13.always",
+      "mood": "sad",
+      "at": 97.57
+    },
+    {
+      "from": "14.looked",
+      "mood": "dark",
+      "at": 103.73
+    }
+  ],
+  "beds": 12,
+  "measured": {
+    "musicUnderVoiceDb": 18.3,
+    "secondsWithoutMusic": 6.5,
+    "bedsUnderVoiceDb": 26.2,
+    "sfx": 196,
+    "sfxPerMinute": 105.7,
+    "sfxKinds": 35,
+    "longestGapSeconds": 1.6,
+    "longestGapAt": 48.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.9,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 97.2,
+        "cue": "13.windows",
+        "sounding": [
+          "sting",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 82.6,
+        "cue": "11.face",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 1.9,
+        "cue": "1.town",
+        "sounding": [
+          "bell",
+          "rustle",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 106.6,
+        "cue": "14.turned",
+        "sounding": [
+          "scrape",
+          "swish"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 90.7,
+        "cue": "12.behind",
+        "sounding": [
+          "heartbeat",
+          "riser",
+          "sting"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 0.2,
+        "cue": "1.town",
+        "sounding": [
+          "bell",
+          "step_stone"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.4,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}
