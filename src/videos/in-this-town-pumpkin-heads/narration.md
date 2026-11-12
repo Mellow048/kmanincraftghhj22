@@ -113,6 +113,6 @@ What is planted, and where it pays off:
 [14.day]     Night turned to day.
 [14.search]  Everyone came looking for me.
 [14.found]   All they found was my pumpkin.
-[14.here]    I am standing right beside it.
-[14.sub]     Subscribe, before they look up.
+[14.gone]    And I was gone.
+[14.sub]     Subscribe for part two.
 ```

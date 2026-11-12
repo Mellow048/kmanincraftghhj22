@@ -60,9 +60,9 @@
         "why": "Night turned to day: the town searches, and the music already knows."
       },
       {
-        "from": "14.here",
+        "from": "14.gone",
         "mood": "dark",
-        "why": "He is standing right beside it. It does not turn cheerful for the subscribe line."
+        "why": "And I was gone. It does not turn cheerful for the subscribe line."
       }
     ]
   },
@@ -1221,50 +1221,44 @@
       "why": "'All they found was my pumpkin.'"
     },
     {
-      "cue": "14.here",
+      "cue": "14.gone",
       "sfx": "sting",
-      "word": "standing",
+      "word": "gone",
       "trim": -2,
-      "why": "Something is standing beside it."
+      "why": "'Gone': the empty place beside the pumpkin."
     },
     {
-      "cue": "14.here",
+      "cue": "14.gone",
       "sfx": "gust",
-      "at": 0.2,
+      "at": 0.1,
       "dur": 0.9,
       "trim": -2,
-      "why": "The cold air again, in daylight."
+      "why": "The cold air from the night, in daylight."
     },
     {
       "cue": "14.sub",
       "sfx": "pop",
-      "at": 0.1,
+      "word": "Subscribe",
       "pitch": 0.8,
-      "why": "The sign in the ground."
+      "why": "The sign pops up out of the ground."
     },
     {
       "cue": "14.sub",
       "sfx": "ding",
       "word": "Subscribe",
+      "at": 0.15,
       "note": "A4",
       "trim": -3,
       "why": "Subscribe. One low note."
     },
     {
       "cue": "14.sub",
-      "sfx": "riser",
-      "word": "look",
-      "dur": 0.7,
-      "trim": -3,
-      "why": "It lifts its head."
-    },
-    {
-      "cue": "14.sub",
-      "sfx": "crack",
-      "word": "look",
-      "at": 0.1,
-      "trim": -2,
-      "why": "'Look': two pale eyes open, as they did at night."
+      "sfx": "heartbeat",
+      "word": "two",
+      "repeat": 2,
+      "every": 0.7,
+      "trim": -1,
+      "why": "To be continued."
     }
   ]
 }

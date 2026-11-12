@@ -1,13 +1,11 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import { Block } from "../../engine";
-import { CLOSE, EAST, Fill, Hero, KID, KNEEL, Loose, PLACE, PUT, SOUTH, SubscribeSign, Tall, Townie, Watchers, ease, faceOf, ramp, stride, timing, wordAt } from "./kit";
+import { CLOSE, EAST, Fill, Hero, KID, KNEEL, Loose, PLACE, PUT, SOUTH, SubscribeSign, Tall, Townie, Watchers, ease, faceOf, pop, ramp, stride, timing, wordAt } from "./kit";
 
 const W = PLACE.well;
 const BLINKED = wordAt("14.blink", "blinked");
-const LOOK = wordAt("14.sub", "look");
-/** Where he is standing now. */
-const BESIDE: Vec3 = [PUT[0] + 0.95, 0, PUT[2] - 0.25];
+const SUB = wordAt("14.sub", "Subscribe");
 
 /** The morning after: his pumpkin, his best friend standing over it, his mother coming. */
 const Finders = () => (
@@ -19,7 +17,7 @@ const Finders = () => (
   </>
 );
 
-/** THE END. He blinks. Then the morning after: the town looks for him, finds a pumpkin, and cannot see who is standing beside it. */
+/** THE END. He blinks. Then the morning after: the town looks for him and finds a pumpkin. He is gone. Part two picks it up. */
 export const scene14 = storyScene(timing, {
   id: "scene14",
   title: "Neither have I",
@@ -113,41 +111,37 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.found",
-      ...cam.push({ on: [PUT[0], 0.5, PUT[2]], dist: 1.7, to: 3.3, yaw: 26, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [PUT[0], 0.5, PUT[2]], dist: 1.7, to: 3.0, yaw: 26, pitch: 12, fov: 40 }),
       zone: "village",
       look: "overworld-day",
-      note: "Back on the pumpkin, and the camera backs away from it. His best friend, in yellow, is standing over it looking down. There is no kid in blue anywhere.",
+      note: "Back on the pumpkin, and the camera starts backing away from it. His best friend, in yellow, is standing over it looking down. There is no kid in blue anywhere.",
       stage: () => <Finders />,
     },
     {
-      cue: "14.here",
-      ...cam.push({ on: [PUT[0] + 0.3, 0.8, PUT[2] - 0.1], dist: 3.3, to: 4.6, yaw: 26, pitch: 15, fov: 40 }),
+      cue: "14.gone",
+      ...cam.push({ on: [PUT[0], 0.6, PUT[2]], dist: 3.0, to: 4.6, yaw: 26, pitch: 17, fov: 40 }),
       zone: "village",
       look: "overworld-day",
-      note: "The same move, still backing away, and now something is standing beside the pumpkin that was not there a frame ago: thin, black, no taller than a child. His friend is looking straight through it.",
-      stage: () => (
-        <>
-          <Finders />
-          <Tall position={BESIDE} rotationY={0.45} scale={0.52} headPitch={0.3} />
-          <Watchers />
-        </>
-      ),
+      note: "The same move, still backing away and rising. The pumpkin gets smaller. People search around it. The place beside it where he knelt is empty. He is gone.",
+      stage: () => <Finders />,
     },
     {
       cue: "14.sub",
-      ...cam.push({ on: [BESIDE[0] - 0.25, 1.0, BESIDE[2]], dist: 4.6, to: 3.6, yaw: 26, pitch: 8, fov: 38 }),
+      ...cam.push({ on: [PUT[0], 0.7, PUT[2]], dist: 4.6, to: 6.4, yaw: 26, pitch: 22, fov: 40 }),
       zone: "village",
       look: "overworld-day",
-      note: "We stop backing away and start coming in. A SUBSCRIBE sign is stuck in the ground by the pumpkin. On 'look' the small black thing lifts its head to us, and two pale eyes open.",
+      note: "Still backing away, higher. On 'Subscribe' a sign pops up out of the ground beside the pumpkin: SUBSCRIBE. Nobody put it there. The pumpkin and the sign are all that is left of him. To be continued.",
       stage: (t) => {
-        const k = ease(ramp(t, LOOK - 0.25, LOOK + 0.15));
+        const k = pop(t, SUB, 0.25);
         return (
           <>
             <Finders />
-            <Tall position={BESIDE} rotationY={0.45} scale={0.52} headPitch={0.3 * (1 - k)} eyes={k} />
-            <SubscribeSign position={[BESIDE[0] - 0.5, 1.0, BESIDE[2] + 0.3]} rotationY={0.45} scale={0.3} tilt={Math.sin(t * 19) * 0.02} />
-            <Block position={[BESIDE[0] - 0.5, 0.4, BESIDE[2] + 0.29]} size={[0.035, 0.8, 0.03]} color="#5c3f24" />
-            <Watchers />
+            {k > 0 ? (
+              <>
+                <SubscribeSign position={[PUT[0] + 0.85, 1.25 * k, PUT[2] + 0.1]} rotationY={0.45} scale={0.62 * k} tilt={Math.sin(t * 19) * 0.02} />
+                <Block position={[PUT[0] + 0.85, 0.55 * k, PUT[2] + 0.08]} size={[0.06, 1.1 * k, 0.05]} color="#5c3f24" />
+              </>
+            ) : null}
           </>
         );
       },
