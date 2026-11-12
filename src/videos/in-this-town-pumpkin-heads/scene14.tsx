@@ -145,7 +145,8 @@ export const scene14 = storyScene(timing, {
           <>
             <Finders />
             <Tall position={BESIDE} rotationY={0.45} scale={0.52} headPitch={0.3 * (1 - k)} eyes={k} />
-            <SubscribeSign position={[PUT[0] - 0.15, 0.62, PUT[2] + 0.75]} rotationY={0.45} scale={0.34} tilt={Math.sin(t * 19) * 0.02} />
+            <SubscribeSign position={[BESIDE[0] - 0.5, 1.0, BESIDE[2] + 0.3]} rotationY={0.45} scale={0.3} tilt={Math.sin(t * 19) * 0.02} />
+            <Block position={[BESIDE[0] - 0.5, 0.4, BESIDE[2] + 0.29]} size={[0.035, 0.8, 0.03]} color="#5c3f24" />
             <Watchers />
           </>
         );
