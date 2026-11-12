@@ -37,7 +37,9 @@ export type FaceName =
   | "fear"
   | "wow"
   | "ouch"
-  | "calm";
+  | "calm"
+  // A grown-up with a full beard, in the hair colour.
+  | "bearded";
 
 const FACES: Record<FaceName, string[]> = {
   neutral: [
@@ -280,6 +282,16 @@ const FACES: Record<FaceName, string[]> = {
     "........",
     "...mm...",
     "........",
+  ],
+  bearded: [
+    "hhhhhhhh",
+    "hhhhhhhh",
+    "........",
+    ".bb..bb.",
+    ".wp..pw.",
+    "h......h",
+    "hhhmmhhh",
+    "hhhhhhhh",
   ],
 };
 

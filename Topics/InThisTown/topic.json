@@ -5,16 +5,46 @@
   "profile": "story",
   "reference": "Topics/InThisTown/reference/treehouse",
   "film": {
-    "seconds": [150, 178],
+    "seconds": [
+      150,
+      178
+    ],
     "hardMaxSeconds": 180,
-    "shotSeconds": [0.4, 6.0],
-    "medianShotSeconds": [1.4, 2.3],
-    "wordsPerMinute": [235, 268],
-    "words": [640, 770],
+    "hardMinSeconds": 60,
+    "hardMinWords": 250,
+    "shotSeconds": [
+      0.4,
+      6.0
+    ],
+    "medianShotSeconds": [
+      1.4,
+      2.3
+    ],
+    "wordsPerMinute": [
+      235,
+      268
+    ],
+    "words": [
+      640,
+      770
+    ],
     "maxWordsPerShot": 18,
     "opensWith": "In this town",
     "lastLineContains": "subscribe",
     "captions": true
+  },
+  "cuts": {
+    "short": {
+      "seconds": [
+        60,
+        118
+      ],
+      "hardMaxSeconds": 120,
+      "words": [
+        250,
+        520
+      ]
+    }
   },
   "measuredFromReference": {
     "seconds": 166.5,
@@ -22,5 +52,61 @@
     "medianShotSeconds": 1.73,
     "words": 718,
     "wordsPerMinute": 259
+  },
+  "pack": "Topics/InThisTown/PACK.md",
+  "template": "Topics/InThisTown/template",
+  "models": {
+    "note": "Finished films to build like. Copy how they are built; never copy their story.",
+    "in-this-town-same-face": "The model for everything: script shape (short cut), shots, kit use, and sound. The owner: 'everything is perfect top to bottom'.",
+    "in-this-town-monster-egg": "The long cut (18 beats). Voice only: it was made before the sound rule."
+  },
+  "sound": {
+    "required": true,
+    "guide": "Topics/InThisTown/SOUND.md",
+    "voiceOnly": {
+      "in-this-town-monster-egg": "It was built before the sound rule; its sound sheet is not written yet."
+    },
+    "minMusicSections": 5,
+    "musicUnderVoiceDb": [
+      15,
+      24
+    ],
+    "maxSecondsWithoutMusic": 8,
+    "minSfxPerMinute": 40,
+    "maxGapSeconds": 6,
+    "maxBuried": 0,
+    "minVoiceOverRestDb": 3,
+    "minVoiceOverRestMedianDb": 10,
+    "lufs": [
+      -16.5,
+      -13
+    ],
+    "maxTruePeakDb": -0.3,
+    "bedForLook": {
+      "overworld-night": "night",
+      "lava-shore": "fire"
+    },
+    "bedForZone": {
+      "village": "village",
+      "town": "village",
+      "street": "village",
+      "square": "village",
+      "room": "room",
+      "bedroom": "room",
+      "house": "room",
+      "tunnel": "cave",
+      "cave": "cave",
+      "well": "cave",
+      "hill": "wind",
+      "wall": "wind",
+      "edge": "wind",
+      "lake": "wind"
+    },
+    "measuredFromReference": {
+      "lufs": -13.6,
+      "truePeakDb": -0.3,
+      "quietFramesUnderSpeechDb": 20.7,
+      "note": "The reference has music under every second of it. Its quietest 8% of 20 ms frames (the gaps between words, where only music is left) are 20.7 dB under its loudest 40% (speech). The same measure on in-this-town-same-face reads 22: our music is a little further back."
+    }
   }
 }

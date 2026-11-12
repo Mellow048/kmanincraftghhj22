@@ -6,6 +6,11 @@ One folder per video. One TSX file per scene. One shared `world.tsx`. One camera
 
 This is not a template for "a Minecraft video". It is a director's framework with a working 20-second demo, a camera bible, a style bible, a scene contract and a lint script that fails lazy work.
 
+> **It makes more than one kind of video.** The 20-second short below is the base. A narrated one-to-three-minute
+> story that begins "In this town, …" is a different kind, a **topic**, with its own rules, pack, starter and
+> sound: see [Topics](#topics-more-than-one-kind-of-video). Decide which one you are making first.
+> [`AGENTS.md`](AGENTS.md) starts with that question.
+
 ---
 
 ## The demo
@@ -45,7 +50,8 @@ Open the `the-schedule` composition. Scrub it. Then read `AGENTS.md` before maki
 npm run new -- "The Title"
 ```
 
-This copies `templates/video/` into `src/videos/the-title/` and adds it to `src/registry.ts`. It creates:
+This is the **base film**, the 20-second short. (For a film of a topic, add `--topic <id>`; see the next section.)
+It copies `templates/video/` into `src/videos/the-title/` and adds it to `src/registry.ts`. It creates:
 
 ```
 src/videos/the-title/
@@ -74,12 +80,29 @@ Then:
 Everything above is the base format, the 20-second cinematic short. A **topic** is another kind of video with its own
 rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules are not.
 
-| Topic | What it makes | First film |
+| Topic | What it makes | Model films |
 |---|---|---|
-| [In This Town](Topics/InThisTown/README.md) | A three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. About 90 cuts, every word captioned | `in-this-town-monster-egg` |
+| [In This Town](Topics/InThisTown/README.md) | A one-to-three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. A cut about every two seconds, every word captioned, music and sound effects under the voice | `in-this-town-same-face` (1:45, with sound), `in-this-town-monster-egg` (2:57, voice only) |
 
-A topic film says `topic: "<id>"` in `defineFilm`, and `npm run check` then lints it against that topic's numbers.
+```bash
+npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
+```
+
+That starts a film from the topic's own starter. A topic also has:
+
+- **rules and numbers**: its `README.md`, playbooks and `topic.json`. A topic film says `topic: "<id>"` in
+  `defineFilm`, and `npm run check` lints it against that topic's numbers. A topic can have named cuts: In This Town
+  has `cut: "short"`, one to two minutes;
+- **a pack**: the people, places and things of its finished films, ready to use
+  ([`Topics/InThisTown/PACK.md`](Topics/InThisTown/PACK.md));
+- **sound made in Python**: `scripts/sound.py` computes the music, the air of each place and every sound effect
+  with numpy, and mixes them under the voice from a sheet that names cues and words
+  ([`Topics/InThisTown/SOUND.md`](Topics/InThisTown/SOUND.md)).
+
 Narrated topics are cut to a recorded voice; the pipeline is in [`docs/STORY-FILMS.md`](docs/STORY-FILMS.md).
+
+**A film that begins "In this town" and is built as a 20-second base short is refused**, by `npm run new` and by
+`npm run check`. It has been built twice and rejected twice.
 
 ## The rules
 
@@ -128,11 +151,16 @@ src/
   Root.tsx             maps FILMS to Remotion compositions
   index.ts             registerRoot
 
-templates/video/       copy-paste starter set
-scripts/new-video.mjs  scaffold + registry
+templates/video/       copy-paste starter set for the base film
+Topics/<Folder>/       one kind of video each: rules, playbooks, pack, starter, references
+scripts/new-video.mjs  scaffold + registry (--topic <id> for a topic film)
 scripts/check-films.mjs director lint
-docs/                  camera, style, scene contract, narration
-AGENTS.md              the director's contract
+scripts/narration.py   recorded voice → narration.mp3 + timing.json
+scripts/sound.py       music and sound effects made in Python → mix.mp3
+scripts/shots.mjs      one still per shot
+scripts/compare-stills.py  did a shared change move a pixel of a finished film?
+docs/                  camera, style, scene contract, narration, story films
+AGENTS.md              the director's contract. It starts with: which kind of film?
 ```
 
 ---
@@ -142,11 +170,15 @@ AGENTS.md              the director's contract
 | Command | What it does |
 |---|---|
 | `npm run dev` | Remotion Studio |
-| `npm run new -- "Title"` | Scaffold a film and register it |
+| `npm run new -- "Title"` | Scaffold a base film and register it |
+| `npm run new -- "Title" --topic <id>` | Scaffold a film of a topic from that topic's starter |
 | `npm run typecheck` | TypeScript |
 | `npm run check` | Shot/scene/world contract lint |
 | `npm run still -- <id> out/frame.png --frame=N` | Render one still (permission only) |
 | `npm run render -- <id> out/<id>.mp4` | Render the film (permission only) |
+| `npm run shots -- <id>` | One still per shot of a story film (permission only) |
+| `python3 scripts/narration.py build <id>` | Recorded clips → `narration.mp3` and `timing.json` |
+| `python3 scripts/sound.py build <id>` | `sound.json` and the voice → `mix.mp3`, with a report. `list` shows every sound |
 | `npm run compositions` | List Remotion compositions |
 | `npm run bundle` | Bundle the Remotion project |
 

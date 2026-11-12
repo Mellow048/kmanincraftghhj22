@@ -1,20 +1,50 @@
 # In This Town — Minecraft storytime
 
 A kid tells you about the strange town he grew up in, the one rule nobody would explain, and what happened when he
-broke it. Two to three minutes. First person, a fast voice with no pauses, a new picture about every two seconds, one
-word of caption at a time, and a last line that turns the first line upside down.
+broke it. One to three minutes. First person, a fast voice with no pauses, a new picture about every two seconds, one
+word of caption at a time, music and sound effects under all of it, and a last line that turns the first line upside
+down.
+
+**It is never a 20-second short.** A film that carries this name and is built to the base rules has been rejected
+twice ([`reference/moon-20-seconds/`](reference/moon-20-seconds/README.md),
+[`reference/monster-egg-v1/`](reference/monster-egg-v1/README.md)). `npm run check` now fails one.
 
 The format is modelled on one Roblox video the owner supplied, "In This Town, Everyone Lived In A Treehouse"
 ([`reference/treehouse/`](reference/treehouse/README.md)). We make the same **kind** of video out of Minecraft blocks.
 We do not copy its story, its sentences or any Roblox asset.
+
+## Start here
+
+```bash
+npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
+```
+
+That gives you a film folder made from this topic's starter ([`template/`](template/)): a script page to fill in, a
+`kit.tsx` wired to the pack, a town to change, and one scene with two shots that already render. It does not give
+you a story.
+
+## The models
+
+Two finished films. Open them before you write anything.
+
+| Film | The owner said | Use it as the model for |
+|---|---|---|
+| `src/videos/in-this-town-same-face/` (short cut: 14 beats, 57 shots, 441 words, 1:45) | "everything is perfect top to bottom", "i like the assets" | **Everything.** `narration.md` for the shape of a script. `kit.tsx` for how a film uses the pack. `world.tsx` for a town in zones. Any `sceneN.tsx` for what a shot is. `sound.json` for the sound. Watch `renders/in-this-town-same-face.mp4` |
+| `src/videos/in-this-town-monster-egg/` (full film: 18 beats, 93 shots, 746 words, 2:57) | Merged to `main` | The long cut: how 18 beats are spread over three minutes. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
+
+Copy how they are **built**. Never copy what they **tell**: no premise, sentence, joke or twist from a finished film
+goes into a new one.
 
 ## Read in this order
 
 1. This page.
 2. [`SCRIPT.md`](SCRIPT.md) — how the story is written. This is where version 1 failed.
 3. [`SHOTS.md`](SHOTS.md) — how it is cut and shot, and how each Roblox trick becomes a Minecraft one.
-4. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions.
-5. [`reference/monster-egg-v1/`](reference/monster-egg-v1/README.md) — one page on the attempt the owner rejected.
+4. [`PACK.md`](PACK.md) — the people, places and things that already exist. One picture, one table for each file.
+5. [`SOUND.md`](SOUND.md) — the music, the air and the effects, and how to write the sound sheet.
+6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
+7. [`reference/monster-egg-v1/`](reference/monster-egg-v1/README.md) and
+   [`reference/moon-20-seconds/`](reference/moon-20-seconds/README.md) — one page each on the attempts the owner rejected.
 
 ## What changes from the base rules
 
@@ -30,9 +60,46 @@ These apply to a film that declares `topic: "in-this-town"`, and to nothing else
 | Hook in the first 1.5 s | The first three words are "In this town," over the teller's face |
 | The last line is a button, not a moral | The last line is the twist, then a 4–6 word "Subscribe …" line that belongs to the story |
 | One world, mounted once | One world, split into zones. Each shot names its zone |
+| "Music: low drone, one pulse"; a hit on the reveal | Music in five or more sections that change with the story, the air of each place, and 40 or more sound effects a minute. All of it built by `scripts/sound.py` from the film's `sound.json` |
+| Started from `templates/video/` | Started from this topic's `template/`, and built from its pack |
 
 Everything else in `AGENTS.md` still holds: one folder per film, real 3D sets, something moving in every shot, the
 picture shows what the voice says, deterministic code, atmosphere in the world, and the render policy.
+
+## The short cut: one to two minutes
+
+The owner may ask for a shorter film ("keep it short like 1 min to 2 minute max"). That is a **cut** of this topic,
+not a different topic. A film takes it by adding one line to `defineFilm`, next to `topic`:
+
+```ts
+topic: "in-this-town",
+cut: "short",
+```
+
+`npm run check` then holds the film to `cuts.short` in `topic.json` in place of the topic's length and word count.
+Nothing else changes.
+
+| | Full film | Short cut |
+|---|---|---|
+| Length | 150–178 s, never over 180 s | 60–118 s, **never over 120 s** |
+| Words | 640–770 | 250–520 |
+| The floor, for both | Never under 60 s or 250 words. Under that it is not a short film of this topic; it is a different kind of video, and `npm run check` fails it | the same |
+| Beats | 18 | About 14 |
+| Shots | 80–95 | 35–65 |
+| Pace, shot length, captions, first line, last line | as in the table above | the same |
+
+What to keep, and what to drop from the 18 beats of `SCRIPT.md`:
+
+- **Keep:** the hook, the mysteries, the tour, the itch, the elder's rule, the decision with its planted question,
+  one funny failure, one success, the friend, the edge, the act, the wait, the reveal, the button.
+- **Drop first:** the adults' sensible reasons (beat 5), the tease (6), the price (11), the packing (12), and the
+  friend's two lines of dialogue (13: he can act instead of speak).
+- **Do not drop:** anything that is paid back at the end. A short cut has less room, so every planted thing has to
+  come back. Write the table of what is planted and where it pays off before you cut a line.
+
+The tour and the edge shrink in words, not in number of pictures: they are where the film is fastest.
+
+The first film in this cut is `in-this-town-same-face`: 14 beats, 57 shots, 441 words, 1:45.
 
 ## What makes this kind of video work
 
@@ -51,28 +118,46 @@ The evidence for each line is in `SCRIPT.md` and `SHOTS.md`.
 
 ## Work order
 
-1. Write the premise as four sentences: *In this town, X. Nobody would explain rule Y. I broke it. Y was really Z.*
+1. `npm run new -- "In This Town, …" --topic in-this-town`.
+2. Write the premise as four sentences: *In this town, X. Nobody would explain rule Y. I broke it. Y was really Z.*
    If Z does not change what X means, you do not have a story yet.
-2. Write `src/videos/<film>/narration.md` to the 18-beat sheet in `SCRIPT.md`. One line of script per shot.
-3. `python3 scripts/narration.py build <film> --estimate`. Fix length and rhythm now, while it is only text.
-4. **Get the script approved by the owner before anything is built.** Then record one clip per `# clip` line and
+3. Write `src/videos/<film>/narration.md` to the beat sheet in `SCRIPT.md` (18 beats, or about 14 for the short
+   cut). One line of script per shot.
+4. `python3 scripts/narration.py build <film> --estimate`. Fix length and rhythm now, while it is only text.
+5. **Get the script approved by the owner before anything is built.** Then record one clip per `# clip` line and
    run `build` again without `--estimate`.
-5. Build the world in zones, then the cast, then the scenes: one `sceneN.tsx` per beat, one shot per script line.
+6. Lay out the town in zones in `world.tsx` with the pack's places, and build the one new place this story needs.
+   Then the scenes: one `sceneN.tsx` per beat, one shot per script line, cast from the pack through `kit.tsx`.
    Each shot has a `cam.*` move, a `note` and a `stage`.
-6. `npm run typecheck && npm run check`.
-7. One still per shot (`npm run shots -- <film>`), read as a contact sheet, fixed, and looked at again. Expect
-   three or four passes. Then the render. The render policy in `AGENTS.md` applies.
+7. `npm run typecheck && npm run check`.
+8. One still per shot (`npm run shots -- <film>`), read as a contact sheet, fixed, and looked at again. Expect
+   three or four passes.
+9. **The sound** ([`SOUND.md`](SOUND.md)): `python3 scripts/sound.py draft <film>`, write the sheet shot by shot,
+   `python3 scripts/sound.py build <film>`, read the report, and point `film.tsx` at the mix.
+10. `npm run typecheck && npm run check` again, then the render. The render policy in `AGENTS.md` applies.
+11. Hand it over with what you could not judge: the sound was measured, not heard.
+
+`npm run check` tells you where you are at every step: which script line has no shot yet, whether the timing is
+still an estimate, and whether the mix is older than the script.
 
 ## What is in this folder
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic |
-| `SCRIPT.md`, `SHOTS.md` | The two playbooks |
+| `topic.json` | The numbers `npm run check` enforces for this topic and its short cut, the limits of the sound, and the list of model films |
+| `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the story, the picture, the sound |
+| `PACK.md`, `pack.jpg` | The catalogue of the pack |
+| `index.ts` | The pack, from one import: `import { Villager, Hut, pop } from "../../../Topics/InThisTown"` |
+| `staging.ts` | When a word is said, how a thing pops in, where "in front of him" is, how to climb a hill |
+| `villagers.tsx` | The villager, the iron golem, the poppy |
+| `players.tsx` | Twelve players, no two alike, and the pumpkin head |
+| `things.tsx` | Speech bubble, bed, hole, flying bits, smoke of three kinds, a burning roof, firelight |
+| `places.tsx` | House (new, burned out, on fire), bell, well, stall, lamp post, stepped hill, bedroom, tunnel |
+| `creatures.tsx` | Egg, worm, dragon, phoenix, stone golem, the mother, chicken, rank sign, fire, puffs, sound rings, and the red "Subscribe" sign every film ends on |
+| `template/` | The starter film that `npm run new -- … --topic in-this-town` copies |
 | `reference/treehouse/` | The model video, its transcript, a shot log and contact sheets |
-| `reference/monster-egg-v1/` | The rejected first attempt, as a warning |
-| `creatures.tsx` | The monsters, built from boxes: egg, worm, dragon, phoenix, golem, the mother, chicken, rank sign, fire, smoke, sound rings. Shared by this topic's films |
+| `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
 
-Films live in `src/videos/`. The first one is `in-this-town-monster-egg`: 93 shots, 2:57. Read its `world.tsx` for
-how a town is laid out in zones, its `kit.tsx` for the cast and helpers, and any `sceneN.tsx` for what a shot looks
-like. The street and school that version 1 kept in a `maps/` folder here were removed; the town now lives with the film.
+Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
+of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second
+film could use goes into the pack ([`PACK.md`](PACK.md) says how).
