@@ -148,30 +148,6 @@ export const LOOKS: Record<LookPreset, Preset> = {
     follow: true,
     shadowSpan: 13,
   },
-  /** The moon is staring at this place: hard white-blue light from the south, and long shadows. */
-  "moon-stare": {
-    bg: "#0a1232",
-    fog: "#121c44",
-    fogDensity: 0.013,
-    ambient: { color: "#6f88dc", intensity: 0.5 },
-    hemi: { sky: "#7f9cf0", ground: "#141c2c", intensity: 0.55 },
-    key: { color: "#d6e2ff", intensity: 2.7, position: [-4, 11, 8], shadow: true },
-    fills: [],
-    follow: true,
-    shadowSpan: 13,
-  },
-  /** The moon has looked away from here. No key to speak of: shapes, and whatever small light the world gives them. */
-  moonless: {
-    bg: "#03050e",
-    fog: "#060918",
-    fogDensity: 0.024,
-    ambient: { color: "#34407e", intensity: 0.34 },
-    hemi: { sky: "#2c3a7a", ground: "#050505", intensity: 0.34 },
-    key: { color: "#7f95d8", intensity: 0.16, position: [-4, 11, 8], shadow: false },
-    fills: [],
-    follow: true,
-    shadowSpan: 13,
-  },
   /** Beside lava: smoke for a sky, and the ground is the lamp. */
   "lava-shore": {
     bg: "#34130b",

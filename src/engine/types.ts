@@ -112,8 +112,6 @@ export type LookPreset =
   | "overworld-night"
   | "overworld-storm"
   | "lantern-night"
-  | "moon-stare"
-  | "moonless"
   | "lava-shore"
   | "warm-room"
   | "void";

@@ -12,7 +12,14 @@ first sixteen and the last), and `in-this-town-monster-egg`.
 ![The night parts: one still for each](pack-night.jpg)
 
 The second sheet is the night: the fields, the moon, the lanterns, and what is worn. Every still on it is a shot
-from `in-this-town-nobody-looked-at-the-moon`. Those parts are listed under [Fields and night](#fields-and-night--fieldstsx).
+from `in-this-town-nobody-looked-at-the-moon`. Those parts are listed under "Fields and night" below, and in the
+rows for `things.tsx` and `places.tsx`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-nobody-looked-at-the-moon --scale 0.5 --at 0.6 --out out/night \
+  --only 1.wake,2.awake,2.crows,3.crows,3.forest,3.golem,3.eyes,3.lid,4.good,7.week,8.lid,10.town,10.hat,10.lean,11.light,13.held
+python3 scripts/pack-sheet.py out/night Topics/InThisTown/pack-night.jpg --labels Topics/InThisTown/pack-night.labels.txt
+```
 
 ## How a film uses it
 
@@ -184,16 +191,21 @@ Built for the monster-egg film. Any film may use them.
 2. Same look as the rest: boxes, flat colours, the engine's block kinds. Feet on `position`, facing +Z, 1 unit = 1 m.
 3. Export it from its file; `index.ts` already passes every file on. Add a row to this page.
 4. **A change here changes every film that uses it, and the finished films are approved exactly as they are.** Before
-   you touch a part that exists, take the stills of both; after, take them again; they must not differ by a pixel:
+   you touch a part that exists, take the stills of every finished film of the topic; after, take them again; they
+   must not differ by a pixel. The same goes for a change to `src/engine/`.
 
    ```bash
-   node scripts/shots.mjs in-this-town-same-face --scale 0.4 --at 0.55 --out out/before/same-face
-   node scripts/shots.mjs in-this-town-monster-egg --scale 0.4 --at 0.55 --out out/before/egg
+   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon"
+   for f in $FILMS; do node scripts/shots.mjs $f --scale 0.4 --at 0.55 --out out/before/$f; done
    #   …the change…
-   node scripts/shots.mjs in-this-town-same-face --scale 0.4 --at 0.55 --out out/after/same-face
-   node scripts/shots.mjs in-this-town-monster-egg --scale 0.4 --at 0.55 --out out/after/egg
-   python3 scripts/compare-stills.py out/before/same-face out/after/same-face
-   python3 scripts/compare-stills.py out/before/egg out/after/egg
+   for f in $FILMS; do
+     node scripts/shots.mjs $f --scale 0.4 --at 0.55 --out out/after/$f
+     python3 scripts/compare-stills.py out/before/$f out/after/$f
+   done
    ```
+
+   Each must end "N of N stills are the same, pixel for pixel". One pass over the five films is 361 stills: about
+   twenty minutes on two cores, so run one film at a time and never two jobs at once. When your film is finished,
+   add it to the list.
 
    If your film needs a part to look different, give the part a new prop whose default is the old look.
