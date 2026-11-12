@@ -1474,7 +1474,7 @@ def render(film: str, clock: Clock, sheet: dict, vox: dict):
         last = i + 1 == len(sections)
         keep = min(len(y), n_of(seconds + (0.0 if last else 0.5)))
         y = y[:keep].copy()
-        out = min(keep, n_of(0.06 if last else 0.45))
+        out = min(keep, n_of(0.5 if last else 0.45))  # the last section fades with the film
         y[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
         y[: n_of(0.012)] *= np.linspace(0.0, 1.0, n_of(0.012))[:, None]
         place(music, y, part["t"])

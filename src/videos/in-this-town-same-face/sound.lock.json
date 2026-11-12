@@ -5,10 +5,10 @@
   "seconds": 104.6667,
   "built_from": {
     "timing.json": "324953ec5bce962a258f9131b102a066c60e638b",
-    "sound.json": "c4044393073eecf9aedfc178cc205af415f77234",
+    "sound.json": "e025a13604f37894a58d820d404b109b1380541d",
     "narration.mp3": "3fb685a48b9439bbf420604b44a4dad50d27197e"
   },
-  "mix_sha1": "f5ca64870c6abbbd3414e72caf791eba39f1f792",
+  "mix_sha1": "933c199fce593d6d1146a4cc044c058b91a53bee",
   "music_sections": [
     {
       "from": "1.face",
@@ -69,15 +69,15 @@
   "beds": 14,
   "measured": {
     "musicUnderVoiceDb": 18.6,
-    "secondsWithoutMusic": 4.4,
+    "secondsWithoutMusic": 4.5,
     "bedsUnderVoiceDb": 24.0,
-    "sfx": 142,
-    "sfxPerMinute": 81.4,
+    "sfx": 141,
+    "sfxPerMinute": 80.8,
     "sfxKinds": 35,
-    "longestGapSeconds": 3.4,
+    "longestGapSeconds": 3.9,
     "longestGapAt": 62.7,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 14.1,
+    "voiceOverRestMedianDb": 14.2,
     "voiceOverRestWorstDb": 5.7,
     "voiceOverRestWorst": [
       {
@@ -121,7 +121,8 @@
         "t": 44.2,
         "cue": "7.flower",
         "sounding": [
-          "sparkle"
+          "sparkle",
+          "stomp"
         ]
       },
       {

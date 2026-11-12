@@ -76,7 +76,7 @@
     { "cue": "7.half", "at": 0.12, "sfx": "stomp", "why": "Right behind him." },
     { "cue": "7.half", "at": 0.5, "sfx": "clank", "trim": -3 },
     { "cue": "7.golem", "word": "tucked", "sfx": "boing", "why": "Picked up like a plank." },
-    { "cue": "7.golem", "at": 0.02, "sfx": "stomp", "repeat": 3, "every": 1.03, "trim": -1, "why": "The golem's footfalls, as it is animated." },
+    { "cue": "7.golem", "at": 0.51, "sfx": "stomp", "repeat": 3, "every": 1.03, "trim": -1, "why": "The golem's footfalls. Its legs are at full stride at 0.51s, 1.54s and 2.57s (scene7: walk = 3.4 * p)." },
     { "cue": "7.golem", "word": "carried", "sfx": "slide_down", "why": "Carried home." },
     { "cue": "7.flower", "word": "flower", "sfx": "sparkle", "why": "The poppy again." },
     { "cue": "7.laugh", "word": "hmm", "at": -0.35, "sfx": "pop", "repeat": 6, "every": 0.16, "pitchStep": 1.07, "trim": -2, "why": "Six HMM bubbles, one after another, each a note higher. The times are the scene's." },
@@ -100,7 +100,7 @@
     { "cue": "10.smell", "p": 0.45, "sfx": "gust", "why": "Smoke over the top of the hill." },
     { "cue": "10.look", "at": 0.15, "sfx": "bell", "trim": -6, "why": "The town bell, a long way off now. The second of three." },
     { "cue": "10.oneface", "sfx": "swish" },
-    { "cue": "10.steps", "at": 0.25, "sfx": "step_grass", "repeat": 5, "every": 0.3, "why": "The last few steps." },
+    { "cue": "10.steps", "at": 0.76, "sfx": "step_grass", "repeat": 4, "every": 0.3, "why": "The last few steps: he lands the hop at 0.76s (scene10: p = 0.42) and walks to the edge." },
     { "cue": "11.smoke", "sfx": "riser", "dur": 1.5, "why": "Up to the top. It ends on the cut where the colour changes." },
 
     { "cue": "11.smoke", "sfx": "drop", "why": "The music is gone. The floor goes out from under the film." },
