@@ -5,10 +5,10 @@
   "seconds": 168.1333,
   "built_from": {
     "timing.json": "5dbb52f990f8536cdbd35263a9bda3a684feb45e",
-    "sound.json": "4d38b938efa9058139bdefb8b4cae8553a0ba25a",
+    "sound.json": "3a79786744e34268c8aa58f134254ba0fe91e3a0",
     "narration.mp3": "d2aaf1b53305cfad24a8f25c1fbc63d31ec9480c"
   },
-  "mix_sha1": "c6fc2bd19cc8ab507b20e2f5f87ad5e3b0cfc2a7",
+  "mix_sha1": "290b62b5fdf04915c39b99b7b3b6f00c274d889f",
   "music_sections": [
     {
       "from": "1.town",
@@ -108,17 +108,8 @@
     "longestGapAt": 90.0,
     "sfxBuried": 0,
     "voiceOverRestMedianDb": 13.3,
-    "voiceOverRestWorstDb": 1.1,
+    "voiceOverRestWorstDb": 3.8,
     "voiceOverRestWorst": [
-      {
-        "db": 1.1,
-        "t": 161.8,
-        "cue": "18.break",
-        "sounding": [
-          "boom",
-          "sparkle"
-        ]
-      },
       {
         "db": 3.8,
         "t": 165.8,
@@ -163,13 +154,21 @@
         "sounding": [
           "sparkle"
         ]
+      },
+      {
+        "db": 4.8,
+        "t": 136.3,
+        "cue": "15.took",
+        "sounding": [
+          "drop",
+          "sparkle",
+          "swish"
+        ]
       }
     ],
     "lufs": -14.8,
     "truePeakDb": -2.2,
     "limiterMaxDb": 1.5
   },
-  "failures": [
-    "at 161.8s [18.break] the words are covered: the voice is only 1.1 dB over the rest (boom, sparkle). Turn that down, or move it off the words."
-  ]
+  "failures": []
 }

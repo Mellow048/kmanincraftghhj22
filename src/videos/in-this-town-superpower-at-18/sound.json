@@ -1502,7 +1502,7 @@
       "cue": "18.life",
       "sfx": "boom",
       "word": "life",
-      "trim": -3,
+      "trim": -6,
       "why": "'Life': the pen turns green. The second and last boom, and this one is his."
     },
     {
@@ -1510,8 +1510,8 @@
       "sfx": "sparkle",
       "word": "life",
       "at": 0.1,
-      "dur": 1.2,
-      "trim": 3,
+      "dur": 0.9,
+      "trim": 0,
       "why": "Daisies, one after another."
     },
     {
@@ -1525,7 +1525,8 @@
       "word": "hundred",
       "pitch": 0.7,
       "dur": 0.9,
-      "why": "'A hundred powers', turning round him."
+      "why": "'A hundred powers', turning round him.",
+      "trim": -3
     },
     {
       "cue": "18.break",
