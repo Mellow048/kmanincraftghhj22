@@ -84,25 +84,24 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.roofs",
-      from: [8.2, 6.4, -9.5],
-      to: [8.2, 5.6, -7.5],
-      target: [8.2, 2.2, 10],
-      fov: 62,
+      from: [8.4, 1.9, 0.2],
+      to: [9.0, 2.1, 1.2],
+      target: [14.2, 2.9, 10],
+      fov: 50,
       ease: "inOutSine",
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "From over the ruin of his own house: the houses across the street with every roof alight and smoke pouring up, and along the road below them the whole town running one way.",
+      note: "What he sees: the houses across the street with every roof alight and smoke pouring up, and along the road below them the whole town running one way.",
       stage: (t, { p }) => (
         <>
           <Blaze position={[15, 4.4, 11]} size={5.5} height={4.2} count={22} seed={2} />
           <Blaze position={[1.5, 4.0, 12.5]} size={5} height={4} count={22} seed={5} />
           <Blaze position={[8.4, 0.6, 9.5]} size={1.6} height={2.4} count={8} seed={7} />
-          <Blaze position={[10, 1.0, -4.6]} size={3} height={2.6} count={12} seed={8} />
-          <Smoke position={[15, 6, 11]} rise={9} spread={3} size={2.4} count={12} color="#2b2420" opacity={0.7} seed={3} />
+                    <Smoke position={[15, 6, 11]} rise={9} spread={3} size={2.4} count={12} color="#2b2420" opacity={0.7} seed={3} />
           <Smoke position={[1.5, 5.5, 12.5]} rise={9} spread={3} size={2.4} count={12} color="#2b2420" opacity={0.7} seed={6} />
-          <FireLight position={[8, 3.5, 8]} power={60} reach={20} seed={4} />
+          <FireLight position={[12.5, 3, 7.5]} power={40} reach={16} seed={4} />
           {[0, 1, 2, 3, 4, 5].map((i) => (
-            <Folk key={i} n={i} {...waddle([2.5 + i * 1.5, 0, 2.6 + (i % 3) * 1.3], [6.5 + i * 1.5, 0, 3 + (i % 3) * 1.3], p)} lean={0.25} />
+            <Folk key={i} n={i} {...waddle([7 + i * 1.3, 0, 4.5 + (i % 3) * 1.2], [11 + i * 1.3, 0, 5 + (i % 3) * 1.2], p)} lean={0.25} />
           ))}
         </>
       ),

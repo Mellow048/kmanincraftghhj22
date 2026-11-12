@@ -216,9 +216,9 @@ export const Flame: React.FC<{ t: number; position?: Vec3; size?: number }> = ({
           position={[Math.sin(i * 2.1 + t * 7) * 0.07 * (1 - k), -0.02 + k * 0.62, Math.cos(i * 1.7 + t * 5) * 0.07 * (1 - k)]}
           rotation={[k * 3 + i, i, k * 2]}
           size={[s, s, s]}
-          color={c}
+          color="#000000"
           emissive={c}
-          emissiveIntensity={1.1}
+          emissiveIntensity={1}
           castShadow={false}
         />
       );
@@ -237,14 +237,14 @@ export const Burst: React.FC<{ position: Vec3; t: number; size?: number; seed?: 
   const flash = Math.max(0, 1 - t / 0.22);
   return (
     <group position={position}>
-      {flash > 0 ? <Glow position={[0, 0.4, 0]} size={size * 3.2} color="#fff3c4" opacity={0.9 * flash} /> : null}
+      {flash > 0 ? <Glow position={[0, 0.4, 0]} size={size * 3.2} color="#ffd27a" opacity={0.6 * flash} /> : null}
       <Glow position={[0, 0.5, 0]} size={size * 2.6 * (0.5 + 0.5 * k)} color="#ff6a1a" opacity={0.55 * fade} />
-      {Array.from({ length: 40 }, (_, i) => {
+      {Array.from({ length: 64 }, (_, i) => {
         const a = i * 2.399 + seed;
         const up = ((i * 0.618 + seed * 0.37) % 1) * 1.7 - 0.4;
         const d = r * (0.25 + ((i * 0.37) % 1) * 0.85);
-        const smoke = i % 4 === 3;
-        const s = size * (smoke ? 0.34 : 0.14 + ((i * 0.29) % 1) * 0.2) * (t < 0.3 ? k : smoke ? 0.6 + 0.4 * fade : fade) + 0.04;
+        const smoke = i % 5 === 4;
+        const s = size * (smoke ? 0.26 : 0.08 + ((i * 0.29) % 1) * 0.14) * (t < 0.3 ? k : smoke ? 0.6 + 0.4 * fade : fade) + 0.04;
         const c = smoke ? "#2b2420" : ["#ffd23a", "#ff8a1c", "#f2501a", "#c92a12"][Math.min(3, Math.floor(((i * 0.41) % 1) * 2 + t * 2.2))];
         return (
           <Block
@@ -252,14 +252,14 @@ export const Burst: React.FC<{ position: Vec3; t: number; size?: number; seed?: 
             position={[Math.cos(a) * d, up * r * 0.7 + t * (smoke ? 1.6 : 0.7), Math.sin(a) * d]}
             rotation={[i + t * 3, i * 0.7, t * 2 + i]}
             size={[s, s, s]}
-            color={c}
+            color={smoke ? c : "#000000"}
             emissive={smoke ? "#000000" : c}
-            emissiveIntensity={smoke ? 0 : 0.9 + 0.5 * fade}
+            emissiveIntensity={smoke ? 0 : 1}
             castShadow={false}
           />
         );
       })}
-      <pointLight position={[0, 1, 0]} color="#ffb060" intensity={70 * fade} distance={size * 6} decay={2} />
+      <pointLight position={[0, 1, 0]} color="#ff8a3a" intensity={30 * fade} distance={size * 6} decay={2} />
     </group>
   );
 };
