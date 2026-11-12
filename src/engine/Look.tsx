@@ -133,6 +133,21 @@ export const LOOKS: Record<LookPreset, Preset> = {
     follow: true,
     shadowSpan: 13,
   },
+  /**
+   * A town that lives by lantern light. The night is nearly black and the moon gives only a thin cold
+   * edge from the south: the lanterns in the world (point lights, pools, glows) do the lighting.
+   */
+  "lantern-night": {
+    bg: "#060a1c",
+    fog: "#0a1028",
+    fogDensity: 0.016,
+    ambient: { color: "#5468b8", intensity: 0.42 },
+    hemi: { sky: "#4a62c0", ground: "#2a1c12", intensity: 0.45 },
+    key: { color: "#9fb8ff", intensity: 0.55, position: [-4, 11, 8], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 13,
+  },
   /** Beside lava: smoke for a sky, and the ground is the lamp. */
   "lava-shore": {
     bg: "#34130b",

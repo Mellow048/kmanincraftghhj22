@@ -8,6 +8,8 @@ code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown
 | The request… | It is | Read | Start with |
 |---|---|---|---|
 | says "In This Town"; or tells a story that begins "In this town, …"; or asks for a storytime, a narrated story of a minute or more, or a film "like Same Face", "like the monster egg" or "like the treehouse video" | The topic **In This Town** | [`Topics/InThisTown/README.md`](Topics/InThisTown/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "In This Town, …" --topic in-this-town` |
+| asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation; or asks a "What if …" that is answered with facts | The topic **Explainer** (provisional) | [`Topics/Explainer/README.md`](Topics/Explainer/README.md) and what it lists. From this file, sections 9–11, and rule 3: the camera never teleports | `npm run new -- "Why Bread Costs More" --topic explainer` |
+| says "What if you could …"; or tells the story of a kid who gets a power | The topic **What If** (provisional) | [`Topics/WhatIf/README.md`](Topics/WhatIf/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "What If You Could …" --topic what-if` |
 | names another folder in `Topics/` | That topic | [`Topics/README.md`](Topics/README.md), then the topic's `README.md` | `npm run new -- "…" --topic <id>` |
 | asks for a 20-second short, or for none of the above | The **base film** | This file, from "The base film" down | `npm run new -- "The Title"` |
 | could be either | | | Ask the owner one question. Do not guess |
@@ -17,21 +19,29 @@ tense. It cuts about every two seconds to a recorded voice, captions every word,
 on a twist that was planted in the first minute. A 20-second film with that name is not a short version of it. The
 short version is the topic's own `cut: "short"`: one to two minutes.
 
+**Explainer and What If are PROVISIONAL.** The owner asked for them before their references. Their rules, packs,
+starters and sounds are in place and `npm run check` holds a film to their numbers, but no number is measured from
+a real video yet, and no film of either has been approved. When the owner supplies a reference, measure it and
+correct the topic before building: `Topics/<Folder>/reference/README.md` says how. An Explainer is not a story: its
+camera does not cut. It flies from one thing to the next (`flightScene`), which is this file's rule 3 driven by a
+recorded voice.
+
 What a topic gives a film, that the base does not:
 
 | | Where |
 |---|---|
 | Its own rules, and the numbers the lint enforces | `Topics/<Folder>/README.md`, its playbooks, `topic.json` |
-| Finished films the owner approved, to model the build on | `models` in `topic.json` |
+| A reference film: a finished film of ours that the owner approved and chose, to build like | `reference` in `topic.json`, and its page in `Topics/<Folder>/reference/` |
 | A pack of approved people, places and things | `Topics/<Folder>/PACK.md` |
 | A starter film | `Topics/<Folder>/template/`, through `npm run new -- "…" --topic <id>` |
 | Music and sound effects | `scripts/sound.py`, and the topic's `SOUND.md` |
 
 ### The framework refuses the wrong kind of film
 
-- `npm run new` will not scaffold a title that opens the way a topic opens ("In This Town …") without `--topic`.
-- `npm run check` fails a film with no `topic` whose title or narration opens that way, or whose `film.tsx` names the
-  format.
+- `npm run new` will not scaffold a title that opens the way a topic opens ("In This Town …", "What If …") without
+  `--topic`.
+- `npm run check` fails a film with no `topic` whose title or first narration line opens that way, or whose
+  `film.tsx` names the format.
 - `npm run check` holds a film that declares a topic to that topic's numbers: length, words, cut rate, captions, first
   and last line, and sound.
 - `npm run check` fails a topic film that is under the topic's floor once its voice is recorded or its last line has
@@ -49,9 +59,10 @@ check is wrong, say so and ask.
 2. **Build from the topic's pack and its starter.** Do not rebuild a villager, a house or a helper that already exists.
 3. **The film has sound**: music that changes with the story, and a sound effect for each thing that happens. A film
    with only a voice is not finished.
-4. **An approved film does not change.** If you touch the engine or a pack, prove that the model films' stills are the
+4. **An approved film does not change.** If you touch the engine or a pack, prove that the finished films' stills are the
    same before and after: `scripts/compare-stills.py`.
-5. **Copy how a model is built. Never copy its story**, its sentences or its twist.
+5. **Copy how the reference film is built. Never copy its story**, its sentences or its twist. A provisional topic
+   has no reference film yet: its `README.md` names the finished film to learn the building from.
 
 ### If the topic's folder is not there
 
@@ -424,6 +435,8 @@ npm install                 # once
 npm run dev                 # Remotion Studio
 npm run new -- "The Title"  # scaffold a base film folder + registry entry
 npm run new -- "In This Town, …" --topic in-this-town   # scaffold a topic film from the topic's own starter
+npm run new -- "Why Bread Costs More" --topic explainer # …an explainer: one question, a camera that flies
+npm run new -- "What If You Could …" --topic what-if    # …a "What if" story: a kid and one power
 npm run typecheck           # TypeScript
 npm run check               # director/contract lint
 npm run still -- the-title out/frame.png --frame=0

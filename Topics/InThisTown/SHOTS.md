@@ -65,11 +65,11 @@ and low. The bright town again for one second. Then the subscribe sign, straight
 
 | The original | Ours |
 |---|---|
-| Blocky R6 figure, arm loops of two keyframes | `MinecraftAvatar` clips: `idle`, `talk`, `walk`, `run`, `reach`, `reachUp`, `point`, `wave`, `sit`, `lie`, `sleep`, `scared`, `panic`, `cower`, `crouch`, `peek`, `lookAround`, `jump`, `fall` |
+| Blocky R6 figure, arm loops of two keyframes | `MinecraftAvatar` clips: `idle`, `talk`, `walk`, `run`, `reach`, `reachUp`, `point`, `wave`, `sit`, `lie`, `sleep`, `scared`, `panic`, `cower`, `crouch`, `peek`, `lookAround`, `jump`, `fall`, `leanOver` (over the rim of a well), `push` (something heavy) |
 | Six face pictures | The `face` prop. Bored → `neutral`. Glare → `angry`. Happy → `happy`. Nervous → `worried`. Asleep → `sleepy`. Scream → `scared` or `surprised` |
 | Hair meshes and printed shirts | Block colours: `skin`, `hair`, and `colors={{ torso, arms, legs }}`. One loud colour per character, so a phone can tell them apart |
 | Roblox props | `Block`, `Sign`, the creatures in this folder. A prop used by more than one film goes in `src/engine/` |
-| Skybox and sun | `look: "overworld-day"`. Night is `"overworld-night"` |
+| Skybox and sun | `look: "overworld-day"`. Night is `"overworld-night"` (an even blue), or `"lantern-night"` (nearly black: the lamps in the world light it; see "A film at night" in `PACK.md`) |
 | Three places | `<Zone name="…">` groups in `world.tsx`. A shot sets `zone` and the others are not drawn |
 | Captions: bold lowercase, white with a black edge | Engine captions: pixel capitals, white with a black edge, same height on the frame, a small pop on each word |
 | A fast male voice | One recorded narrator, sped up by `scripts/narration.py` to the pace in `topic.json` |

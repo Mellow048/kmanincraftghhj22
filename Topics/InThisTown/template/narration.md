@@ -2,8 +2,9 @@
 
 **Status: DRAFT. Not approved, not recorded.** Nothing is built until the owner approves the script.
 
-Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before writing a word, and read the model,
-`src/videos/in-this-town-same-face/narration.md`, to see what a finished one looks like. Copy its SHAPE, never its story.
+Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before writing a word, and read the script of the
+reference film, `src/videos/in-this-town-same-face/narration.md`, to see what a finished one looks like. Copy its SHAPE,
+never its story.
 
 **The premise, in four sentences.** TODO. In this town, … . Nobody would explain … . I … . On the other side … .
 

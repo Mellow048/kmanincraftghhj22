@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Glow, PixelText, Vox, clamp01, glowTex, mulberry32, shade, useFilmTime } from "../../src/engine";
+import { Block, Glow, PixelText, Vox, clamp01, glowTex, mulberry32, pixelTex, shade, useFilmTime, wobble } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
 
 /**
@@ -247,5 +247,128 @@ export const FireLight: React.FC<{ position: Vec3; power?: number; reach?: numbe
       <pointLight position={position} color="#ff8a3a" intensity={power * flicker} distance={reach} decay={2} />
       <Glow position={position} size={2.2} color="#ff7a2a" opacity={0.25} />
     </>
+  );
+};
+
+// ----------------------------------------------------------------------------- worn and carried
+
+const STRAW = "#d9b84a";
+
+/**
+ * A straw hat with a flat square brim, as wide as you like. `position` is where it sits: the middle of the
+ * top of the head. Put it in a head's own group (a villager's `hat="wide"`, the golem's `hat`, an avatar's
+ * `head`, whose origin is the MIDDLE of the head: the top is 0.225 m over it) and it nods with the head. `tilt` tips it about X: negative tips it back, positive pulls it down in front.
+ */
+export const StrawHat: React.FC<{
+  position?: Vec3;
+  rotation?: Vec3;
+  /** Brim, edge to edge, in metres. 1.1 is "as wide as a door" on a grown villager. */
+  width?: number;
+  /** Width of the crown: a little wider than the head under it. */
+  crown?: number;
+  tilt?: number;
+  band?: string;
+  scale?: number;
+}> = ({ position = [0, 0, 0], rotation, width = 1.1, crown = 0.52, tilt = 0, band = "#8a3b2a", scale = 1 }) => {
+  const weave = pixelTex(STRAW, [4, 4], { size: 8, jitter: 0.1 });
+  const half = width / 2 - 0.035;
+  return (
+    <group position={position} rotation={rotation ?? [tilt, 0, 0]} scale={scale}>
+      <Block position={[0, 0.022, 0]} size={[width, 0.045, width]} map={weave} />
+      {/* The underside is in its own shade, and the edge is bound: from below it still reads as a hat. */}
+      <Block position={[0, -0.004, 0]} size={[width - 0.12, 0.01, width - 0.12]} color="#a8892e" emissive="#7a5f1c" emissiveIntensity={0.24} castShadow={false} />
+      {[-1, 1].map((s) => (
+        <group key={s}>
+          <Block position={[0, 0.022, s * half]} size={[width + 0.02, 0.062, 0.07]} color="#b08f2c" castShadow={false} />
+          <Block position={[s * half, 0.022, 0]} size={[0.07, 0.062, width + 0.02]} color="#b08f2c" castShadow={false} />
+        </group>
+      ))}
+      <Block position={[0, 0.145, 0]} size={[crown, 0.2, crown]} map={pixelTex("#c9a53a", [2, 1], { size: 8, jitter: 0.1 })} />
+      <Block position={[0, 0.082, 0]} size={[crown + 0.03, 0.066, crown + 0.03]} color={band} castShadow={false} />
+    </group>
+  );
+};
+
+/**
+ * An iron bucket. `position` is the middle of its rim; the body hangs below it. Turn it over
+ * (`rotation={[Math.PI, 0, 0]}`) and it fits over a head: 0.5 m across inside, 0.5 m deep.
+ */
+export const Bucket: React.FC<{ position?: Vec3; rotation?: Vec3; scale?: number; handle?: boolean; /** Radians the handle has swung from upright, about the rim. */ swing?: number; color?: string }> = ({
+  position = [0, 0, 0],
+  rotation,
+  scale = 1,
+  handle = true,
+  swing = 0,
+  color = "#a4b0c2",
+}) => {
+  // Cold grey, and hardly any metalness: with no sky to mirror, real metal goes the colour of the nearest lamp.
+  const iron = { color, metalness: 0.15, roughness: 0.55 };
+  const dark = shade(color, -0.42);
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      {[-1, 1].map((s) => (
+        <group key={s}>
+          <Block position={[0, -0.25, s * 0.265]} size={[0.56, 0.5, 0.03]} {...iron} />
+          <Block position={[s * 0.265, -0.25, 0]} size={[0.03, 0.5, 0.5]} {...iron} />
+          <Block position={[0, -0.03, s * 0.285]} size={[0.64, 0.06, 0.05]} color={dark} />
+          <Block position={[s * 0.285, -0.03, 0]} size={[0.05, 0.06, 0.64]} color={dark} />
+          <Block position={[0, -0.36, s * 0.283]} size={[0.58, 0.045, 0.012]} color={dark} castShadow={false} />
+          <Block position={[s * 0.283, -0.36, 0]} size={[0.012, 0.045, 0.58]} color={dark} castShadow={false} />
+          {/* Rivets under the rim, and a worn patch of lighter iron: it is a pail, not a box. */}
+          {[-0.2, 0, 0.2].map((x) => (
+            <group key={x}>
+              <Block position={[x, -0.12, s * 0.284]} size={[0.045, 0.045, 0.012]} color={dark} castShadow={false} />
+              <Block position={[s * 0.284, -0.12, x]} size={[0.012, 0.045, 0.045]} color={dark} castShadow={false} />
+            </group>
+          ))}
+          <Block position={[s * 0.1, -0.24, s * 0.284]} size={[0.16, 0.1, 0.01]} color={shade(color, 0.3)} castShadow={false} />
+        </group>
+      ))}
+      <Block position={[0, -0.5, 0]} size={[0.56, 0.03, 0.56]} {...iron} />
+      {handle ? (
+        <group position={[0, -0.03, 0]} rotation={[swing, 0, 0]}>
+          {[-1, 1].map((s) => (
+            <Block key={s} position={[s * 0.33, 0.17, 0]} size={[0.035, 0.34, 0.035]} color={dark} castShadow={false} />
+          ))}
+          <Block position={[0, 0.34, 0]} size={[0.695, 0.035, 0.035]} color={dark} castShadow={false} />
+        </group>
+      ) : null}
+    </group>
+  );
+};
+
+/**
+ * A lantern on a chain. `position` is the point it hangs from. The flame is always bright;
+ * `light` > 0 makes it a real light as well (use that on a few, not on all). `sway` swings it, in radians.
+ */
+export const Lantern: React.FC<{ position: Vec3; chain?: number; light?: number; reach?: number; seed?: number; sway?: number; scale?: number; color?: string }> = ({
+  position,
+  chain = 0.3,
+  light = 0,
+  reach = 11,
+  seed = 1,
+  sway = 0,
+  scale = 1,
+  color = "#ffb347",
+}) => {
+  const t = useFilmTime();
+  const flicker = 1 + wobble(t * 7, seed) * 0.1;
+  const frame = "#2c2c33";
+  const y = -chain - 0.19;
+  return (
+    <group position={position} rotation={[0, 0, sway ? Math.sin(t * 1.4 + seed * 2.1) * sway : 0]} scale={scale}>
+      <Block position={[0, -chain / 2, 0]} size={[0.035, chain, 0.035]} color={frame} castShadow={false} />
+      <Block position={[0, -chain - 0.025, 0]} size={[0.22, 0.05, 0.22]} color={frame} />
+      {[-1, 1].map((sx) =>
+        [-1, 1].map((sz) => <Block key={`${sx}${sz}`} position={[sx * 0.1, y, sz * 0.1]} size={[0.035, 0.28, 0.035]} color={frame} castShadow={false} />),
+      )}
+      <mesh position={[0, y, 0]}>
+        <boxGeometry args={[0.17, 0.24, 0.17]} />
+        <meshBasicMaterial color="#ffdf8f" toneMapped={false} />
+      </mesh>
+      <Block position={[0, y - 0.15, 0]} size={[0.24, 0.04, 0.24]} color={frame} />
+      <Glow position={[0, y, 0]} size={1.5 * flicker} color={color} opacity={0.55} />
+      {light > 0 ? <pointLight position={[0, y, 0]} color="#ffb060" intensity={light * flicker} distance={reach} decay={2} /> : null}
+    </group>
   );
 };
