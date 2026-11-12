@@ -1,8 +1,8 @@
 # Narration — In This Town, Everyone Wore a Pumpkin on Their Head
 
-**Status: DRAFT 1, recorded so the owner can hear it. The script is NOT approved yet.** Recorded with `voice-01`
+**Status: DRAFT 2. The owner approved draft 1 and asked for a new ending: no "Subscribe before I blink", but night turning to day, the town searching, and the pumpkin on the ground without him.** Recorded with `voice-01`
 (the voice the owner picked) as six clips; built to 111.3 seconds (1:51.3) at 254 words a minute, 53 shots, median
-shot 1.93 s. Nobody has listened to it: the agent cannot hear audio. No shot is built until the owner approves the script.
+shot 1.93 s. Nobody has listened to it: the agent cannot hear audio.
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word, and read the model,
 `src/videos/in-this-town-same-face/narration.md`, to see what a finished one looks like. Copy its SHAPE, never its story.
@@ -108,6 +108,11 @@ What is planted, and where it pays off:
 [13.find]    They cannot find you until you look at them.
 [14.looked]  And I had just looked.
 [14.turned]  One by one, every head turned to me.
-[14.still]   The closest one has not moved yet. Neither have I.
-[14.sub]     Subscribe before I blink.
+[14.still]   The closest one did not move. Neither did I.
+[14.blink]   Then I blinked.
+[14.day]     Night turned to day.
+[14.search]  Everyone came looking for me.
+[14.found]   All they found was my pumpkin.
+[14.here]    I am standing right beside it.
+[14.sub]     Subscribe, before they look up.
 ```

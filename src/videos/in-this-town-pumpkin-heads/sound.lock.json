@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-pumpkin-heads",
   "mix": "public/audio/in-this-town-pumpkin-heads/mix.mp3",
-  "seconds": 111.2667,
+  "seconds": 116.9333,
   "built_from": {
-    "timing.json": "a933765db81b868ecc0db05adb450182636a3cb3",
-    "sound.json": "fe293b51dc32cc4cb1c59afad6497ab763a503b9",
-    "narration.mp3": "04be24bcf44f6709bb58e9d72ed06aec88abf266"
+    "timing.json": "b74d8848305e7df5acb3f36d9ee44f7f1163bd51",
+    "sound.json": "76cd485d8c049fbe7f1b28ee77b1da6ac2402109",
+    "narration.mp3": "4ac2b7995015ab6dfb2ceaaf0c0a665111a60e51"
   },
-  "mix_sha1": "5a43cc613c65682bb51e3795daec85790ae0d05e",
+  "mix_sha1": "b34447fa47b683b54460fb3a066d50cb02280961",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,82 +18,75 @@
     {
       "from": "4.wish",
       "mood": "curious",
-      "at": 25.63
+      "at": 25.53
     },
     {
       "from": "7.well",
       "mood": "playful",
-      "at": 43.4
+      "at": 43.23
     },
     {
       "from": "8.moon",
       "mood": "sneak",
-      "at": 55.27
+      "at": 55.07
     },
     {
       "from": "10.knelt",
       "mood": "tense",
-      "at": 76.17
+      "at": 75.87
     },
     {
       "from": "11.air",
       "mood": "hope",
-      "at": 79.23
+      "at": 78.93
     },
     {
       "from": "12.behind",
       "mood": "none",
-      "at": 88.53
+      "at": 88.2
     },
     {
       "from": "13.tall",
       "mood": "dark",
-      "at": 91.33
+      "at": 90.87
     },
     {
       "from": "13.always",
       "mood": "sad",
-      "at": 97.57
+      "at": 97.5
     },
     {
       "from": "14.looked",
       "mood": "dark",
-      "at": 103.73
+      "at": 103.33
+    },
+    {
+      "from": "14.day",
+      "mood": "sad",
+      "at": 109.47
+    },
+    {
+      "from": "14.here",
+      "mood": "dark",
+      "at": 113.53
     }
   ],
-  "beds": 12,
+  "beds": 13,
   "measured": {
     "musicUnderVoiceDb": 18.3,
-    "secondsWithoutMusic": 6.5,
+    "secondsWithoutMusic": 6.2,
     "bedsUnderVoiceDb": 26.2,
-    "sfx": 196,
-    "sfxPerMinute": 105.7,
+    "sfx": 214,
+    "sfxPerMinute": 109.8,
     "sfxKinds": 35,
     "longestGapSeconds": 1.6,
-    "longestGapAt": 48.1,
+    "longestGapAt": 47.9,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 14.9,
-    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestMedianDb": 14.3,
+    "voiceOverRestWorstDb": 5.2,
     "voiceOverRestWorst": [
       {
-        "db": 4.0,
-        "t": 97.2,
-        "cue": "13.windows",
-        "sounding": [
-          "sting",
-          "whoosh"
-        ]
-      },
-      {
-        "db": 5.8,
-        "t": 82.6,
-        "cue": "11.face",
-        "sounding": [
-          "sparkle"
-        ]
-      },
-      {
-        "db": 5.9,
+        "db": 5.2,
         "t": 1.9,
         "cue": "1.town",
         "sounding": [
@@ -103,37 +96,55 @@
         ]
       },
       {
-        "db": 6.0,
-        "t": 106.6,
-        "cue": "14.turned",
-        "sounding": [
-          "scrape",
-          "swish"
-        ]
-      },
-      {
-        "db": 6.0,
-        "t": 90.7,
+        "db": 5.4,
+        "t": 90.5,
         "cue": "12.behind",
         "sounding": [
+          "boom",
           "heartbeat",
           "riser",
           "sting"
         ]
       },
       {
-        "db": 6.2,
+        "db": 6.3,
         "t": 0.2,
         "cue": "1.town",
         "sounding": [
           "bell",
           "step_stone"
         ]
+      },
+      {
+        "db": 6.7,
+        "t": 101.3,
+        "cue": "13.eyes",
+        "sounding": [
+          "drop",
+          "heartbeat",
+          "swish"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 13.4,
+        "cue": "3.shoes",
+        "sounding": [
+          "swish"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 82.3,
+        "cue": "11.face",
+        "sounding": [
+          "sparkle"
+        ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.4,
-    "limiterMaxDb": 0.0
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.7
   },
   "failures": []
 }

@@ -52,7 +52,17 @@
       {
         "from": "14.looked",
         "mood": "dark",
-        "why": "The button. It does not turn cheerful for the subscribe line."
+        "why": "He has looked. They turn."
+      },
+      {
+        "from": "14.day",
+        "mood": "sad",
+        "why": "Night turned to day: the town searches, and the music already knows."
+      },
+      {
+        "from": "14.here",
+        "mood": "dark",
+        "why": "He is standing right beside it. It does not turn cheerful for the subscribe line."
       }
     ]
   },
@@ -110,14 +120,19 @@
     },
     {
       "from": "13.eyes",
-      "to": "14.sub",
+      "to": "14.blink",
       "bed": "night"
     },
     {
       "from": "13.tall",
-      "to": "14.sub",
+      "to": "14.blink",
       "bed": "wind",
       "trim": -5
+    },
+    {
+      "from": "14.day",
+      "to": "14.sub",
+      "bed": "village"
     }
   ],
   "sfx": [
@@ -388,7 +403,7 @@
       "repeat": 2,
       "every": 0.5,
       "pan": -0.5,
-      "trim": -3,
+      "trim": 1,
       "why": "Someone walks by behind them."
     },
     {
@@ -1143,11 +1158,89 @@
       "why": "Neither of them moves."
     },
     {
+      "cue": "14.blink",
+      "sfx": "heartbeat",
+      "at": 0.05,
+      "trim": -2,
+      "why": "His eyes, held open."
+    },
+    {
+      "cue": "14.blink",
+      "sfx": "hit",
+      "word": "blinked",
+      "trim": -1,
+      "why": "'Blinked': the picture shuts like an eyelid."
+    },
+    {
+      "cue": "14.day",
+      "sfx": "whoosh",
+      "why": "A hard cut to morning."
+    },
+    {
+      "cue": "14.day",
+      "sfx": "bell",
+      "at": 0.25,
+      "trim": -3,
+      "why": "The town bell a third time: morning, and he is not in it."
+    },
+    {
+      "cue": "14.search",
+      "sfx": "swish",
+      "why": "Cut to the town searching."
+    },
+    {
+      "cue": "14.search",
+      "sfx": "step_grass",
+      "at": 0.15,
+      "repeat": 6,
+      "every": 0.2,
+      "trim": -1,
+      "why": "People running across the square."
+    },
+    {
+      "cue": "14.search",
+      "sfx": "bonk",
+      "word": "looking",
+      "repeat": 2,
+      "every": 0.22,
+      "pitch": 0.75,
+      "trim": -3,
+      "why": "They knock on doors, twice: the town's hello, with nobody to answer."
+    },
+    {
+      "cue": "14.found",
+      "sfx": "swish",
+      "why": "Back to the pumpkin."
+    },
+    {
+      "cue": "14.found",
+      "sfx": "drop",
+      "word": "pumpkin",
+      "dur": 0.8,
+      "trim": -2,
+      "why": "'All they found was my pumpkin.'"
+    },
+    {
+      "cue": "14.here",
+      "sfx": "sting",
+      "word": "standing",
+      "trim": -2,
+      "why": "Something is standing beside it."
+    },
+    {
+      "cue": "14.here",
+      "sfx": "gust",
+      "at": 0.2,
+      "dur": 0.9,
+      "trim": -2,
+      "why": "The cold air again, in daylight."
+    },
+    {
       "cue": "14.sub",
       "sfx": "pop",
       "at": 0.1,
       "pitch": 0.8,
-      "why": "The sign goes up."
+      "why": "The sign in the ground."
     },
     {
       "cue": "14.sub",
@@ -1155,14 +1248,23 @@
       "word": "Subscribe",
       "note": "A4",
       "trim": -3,
-      "why": "Subscribe. One low note; it does not turn cheerful."
+      "why": "Subscribe. One low note."
     },
     {
       "cue": "14.sub",
-      "sfx": "tick",
-      "word": "blink",
-      "pitch": 0.6,
-      "why": "Before he blinks."
+      "sfx": "riser",
+      "word": "look",
+      "dur": 0.7,
+      "trim": -3,
+      "why": "It lifts its head."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "crack",
+      "word": "look",
+      "at": 0.1,
+      "trim": -2,
+      "why": "'Look': two pale eyes open, as they did at night."
     }
   ]
 }
