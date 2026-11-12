@@ -28,7 +28,7 @@ export const scene8 = storyScene(timing, {
       ...cam.push({ on: [WIN[0], 1.3, WIN[2] + 0.7], dist: 3.9, to: 3.2, yaw: 18, pitch: 2, fov: 40 }),
       zone: "village",
       look: "overworld-night",
-      note: "The front of his house in moonlight, every other window black. On 'climbed' a small blue figure with a pumpkin drops out of his own window and lands in a crouch.",
+      note: "The front of his house in moonlight, every other window black. On 'climbed' a small red figure with a pumpkin drops out of his own window and lands in a crouch.",
       stage: (t) => {
         const k = ramp(t, CLIMB - 0.1, CLIMB + 0.45);
         const y = 1.45 * (1 - k * k);

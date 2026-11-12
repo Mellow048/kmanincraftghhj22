@@ -37,12 +37,12 @@ export const scene3 = storyScene(timing, {
       ...cam.truck({ on: [-0.9, 0.42, 1.2], dist: 3.3, yaw: -14, pitch: 6, by: [1.5, 0, 0] }),
       zone: "village",
       look: "overworld-day",
-      note: "Down at the ground, sliding along a row of feet. Every pair of shoes is a different colour. One pair is small and blue.",
+      note: "Down at the ground, sliding along a row of feet. Every pair of shoes is a different colour. One pair is small and red.",
       stage: () => (
         <>
           {(
             [
-              [1, -1.5, "#d8362e", 1],
+              [1, -1.5, "#2f6bff", 1],
               [2, -0.75, "#f2c230", 1],
               [7, 0.75, "#38a04a", 1],
               [8, 1.5, "#a04ad0", 1],
@@ -54,7 +54,7 @@ export const scene3 = storyScene(timing, {
             </group>
           ))}
           <Hero position={[0, 0, 1.2]} rotationY={SOUTH} animation="idle" carve="grin" />
-          <Shoes position={[0, 0, 1.2]} color="#2f6bff" scale={KID} />
+          <Shoes position={[0, 0, 1.2]} color="#d8262e" scale={KID} />
         </>
       ),
     },

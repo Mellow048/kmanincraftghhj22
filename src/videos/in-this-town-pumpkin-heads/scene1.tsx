@@ -14,7 +14,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: chestOf(ME), dist: 2.9, to: 2.2, yaw: 8, pitch: 3, fov: 40 }),
       zone: "village",
       look: "overworld-day",
-      note: "The square in daylight. A kid in blue looks straight at us with a grinning pumpkin for a head, and behind him, stacked up the street, everyone else has one too.",
+      note: "The square in daylight. A kid in red looks straight at us with a grinning pumpkin for a head, and behind him, stacked up the street, everyone else has one too.",
       stage: (t, { p }) => (
         <>
           <Hero position={ME} rotationY={SOUTH} animation="idle" carve="grin" />

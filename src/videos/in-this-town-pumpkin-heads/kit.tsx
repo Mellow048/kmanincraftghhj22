@@ -15,7 +15,7 @@ import timingJson from "./timing.json";
  * What belongs to this story alone, and is built here:
  *   - CARVED    a pumpkin worn on a head, with a carved face that can change on the cut. In this town it IS the face.
  *   - TOWNIE    one of the pack's twelve players, under a pumpkin.
- *   - HERO      the teller: a kid in royal blue. His real face is seen once, when the pumpkin comes off.
+ *   - HERO      the teller: a kid in red. His real face is seen once, when the pumpkin comes off.
  *   - TALL      what the rule was hiding. Never named.
  */
 
@@ -171,7 +171,7 @@ export const Townie: React.FC<A & { who: number; carve?: Carve; old?: boolean; r
 };
 
 /**
- * The teller: a kid in royal blue, which nobody else in the film wears. Until he takes it off his face is a pumpkin:
+ * The teller: a kid in red, which nobody else in the film wears. Until he takes it off his face is a pumpkin:
  * change `carve` on the cut. `raise` lifts it off his head, in metres. `bare` is the one time we see what is under it.
  * Faces for a kid, once bare: smile grin laugh frown uneasy brave fear wow ouch calm.
  */
@@ -181,7 +181,7 @@ export const Hero: React.FC<A & { carve?: Carve; rope?: boolean; bare?: boolean;
     outfit="tee"
     skin="#dba47c"
     hair="#3a2415"
-    colors={{ torso: "#2f6bff", arms: "#2f6bff", legs: "#e9e6dc" }}
+    colors={{ torso: "#d8262e", arms: "#d8262e", legs: "#e9e6dc" }}
     blink
     head={bare ? undefined : <Carved carve={carve} rope={rope} raise={raise} />}
     {...p}
@@ -337,7 +337,7 @@ export const WaterFace: React.FC<{ position: Vec3; scale?: number; smile?: numbe
     {smile > 0.5
       ? [-1, 1].map((s) => <Block key={s} position={[s * 0.13, -0.105, 0.006]} size={[0.055, 0.055, 0.01]} color="#7a3a34" castShadow={false} />)
       : null}
-    <Block position={[0, -0.31, 0]} size={[0.5, 0.16, 0.01]} color="#2a5ad0" castShadow={false} />
+    <Block position={[0, -0.31, 0]} size={[0.5, 0.16, 0.01]} color="#b81f27" castShadow={false} />
   </Lying>
 );
 
