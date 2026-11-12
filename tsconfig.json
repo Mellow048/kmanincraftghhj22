@@ -17,5 +17,6 @@
     "noUnusedParameters": false,
     "types": ["node"]
   },
-  "include": ["src", "remotion.config.ts", "scripts", "Topics"]
+  "include": ["src", "remotion.config.ts", "scripts", "Topics"],
+  "exclude": ["Topics/**/template"]
 }

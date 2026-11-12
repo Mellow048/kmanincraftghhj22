@@ -27,7 +27,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { checkStoryFilm, loadTopic } from "./check-story-film.mjs";
+import { checkStoryFilm, loadTopic, loadTopics } from "./check-story-film.mjs";
 
 const root = process.cwd();
 const videosDir = path.join(root, "src", "videos");
@@ -41,6 +41,8 @@ if (!fs.existsSync(videosDir)) {
   console.error("No src/videos directory. Nothing to check.");
   process.exit(1);
 }
+
+const allTopics = loadTopics(root);
 
 const filmDirs = fs
   .readdirSync(videosDir, { withFileTypes: true })
@@ -252,6 +254,24 @@ for (const slug of filmDirs) {
 
   // A topic film follows its topic's rules, not the 20-second base contract.
   const topicId = film.match(/^\s*topic:\s*["']([^"']+)["']/m)?.[1];
+  if (!topicId) {
+    // A film that opens the way a topic opens IS that topic. Building it as a 20-second base film is the
+    // mistake this check exists for: the result has the title of the format and none of the format.
+    const title = film.match(/^\s*title:\s*["'`]([^"'`]+)["'`]/m)?.[1] ?? "";
+    const narrationFile = path.join(dir, "narration.md");
+    const narration = fs.existsSync(narrationFile) ? fs.readFileSync(narrationFile, "utf8") : "";
+    for (const topic of allTopics) {
+      const opens = topic.film?.opensWith;
+      if (!opens) continue;
+      const first = new RegExp(`^\\s*(?:[-*>]\\s*)?(?:\\[[^\\]]*\\]\\s*)?["'“*_]*${opens.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "im");
+      if (first.test(title) || first.test(narration) || new RegExp(`["'“]${opens}["'”]`, "i").test(film)) {
+        fail(
+          `${slug}: this film opens "${opens}…", so it belongs to the topic "${topic.name}", but film.tsx does not say topic: "${topic.id}". ` +
+            `That topic has its own length, script shape, shots, sound and kit: read ${topic.folder}/README.md and start again with: npm run new -- "<title>" --topic ${topic.id}`,
+        );
+      }
+    }
+  }
   if (topicId) {
     const topic = loadTopic(root, topicId);
     if (!topic) {
