@@ -112,6 +112,23 @@ Built for the monster-egg film. Any film may use them.
 | `RankSign` | A wooden board with a number | `rank`, `gold`, `post` |
 | `SubscribeSign` | The red sign the last shot of **every** film holds | `position`, `rotationY`, `scale`, `tilt` |
 
+## Everyday props — `everyday.tsx`
+
+Additive parts introduced for the **Freeze Bell** production. They do not change any approved actor or building.
+These new parts are not yet owner-reviewed.
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `Bread` | A scored block loaf or a small bun; origin at the underside | `position`, `rotationY`, `scale`, `bun`, `bitten` |
+| `Basket` | An open slatted basket with a square handle | `position`, `rotationY`, `scale`, `filled` |
+| `Backpack` | A canvas bag with straps; an open packing version uses the same colours | `position`, `rotationY`, `scale`, `open` |
+| `WaterBottle` | A blue-capped bottle | `position`, `rotationY`, `scale` |
+| `RopeLine` | A six-sided rope between two world points | `from`, `to`, `radius`, `color` |
+| `RopeCoil` | Three coils resting on the floor | `position`, `rotationY`, `scale` |
+| `Stool` | A four-legged stool; seat top at y = 0.56 | `position`, `rotationY`, `scale` |
+| `GlassJar` | An inverted faceted jar, open mouth at ground level; glass does not write depth | `position`, `rotationY`, `scale`, `radius`, `height` |
+| `Screw` | A slotted metal screw with visible threads; head top at `height + 0.09` | `position`, `rotationY`, `scale`, `height` |
+
 ## What is not in the pack
 
 - **The story.** Never reuse a premise, a line or a twist from a finished film.

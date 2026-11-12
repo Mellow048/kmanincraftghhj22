@@ -152,6 +152,7 @@ still an estimate, and whether the mix is older than the script.
 | `villagers.tsx` | The villager, the iron golem, the poppy |
 | `players.tsx` | Twelve players, no two alike, and the pumpkin head |
 | `things.tsx` | Speech bubble, bed, hole, flying bits, smoke of three kinds, a burning roof, firelight |
+| `everyday.tsx` | Additive bread, basket, backpack, bottle, rope, stool, jar and screw props; see the review status in `PACK.md` |
 | `places.tsx` | House (new, burned out, on fire), bell, well, stall, lamp post, stepped hill, bedroom, tunnel |
 | `creatures.tsx` | Egg, worm, dragon, phoenix, stone golem, the mother, chicken, rank sign, fire, puffs, sound rings, and the red "Subscribe" sign every film ends on |
 | `template/` | The starter film that `npm run new -- … --topic in-this-town` copies |

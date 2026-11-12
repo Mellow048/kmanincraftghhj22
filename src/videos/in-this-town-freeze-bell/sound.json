@@ -1,0 +1,1333 @@
+{
+  "film": "in-this-town-freeze-bell",
+  "README": "Cue/word-aligned music, air and effects for the approved Freeze Bell story. Build with scripts/sound.py. The opening at 17.rope is a replay; there is no extra strike on the reveal or subscribe line.",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "A warm, ordinary life built around one strange rule."
+      },
+      {
+        "from": "4.itch",
+        "mood": "curious",
+        "why": "Comfort turns into the question of who rings the bell."
+      },
+      {
+        "from": "7.ask",
+        "mood": "curious",
+        "gain": -1,
+        "why": "The elder takes her time and gives a rule instead of an answer."
+      },
+      {
+        "from": "8.awake",
+        "mood": "drone",
+        "why": "The first blue night: his still body becomes the planted question."
+      },
+      {
+        "from": "9.hay",
+        "mood": "playful",
+        "why": "The hay lookout is a cheap failure that costs dignity, not injury."
+      },
+      {
+        "from": "10.nights",
+        "mood": "sneak",
+        "why": "Secret work, the cost, packing and the private goodbye."
+      },
+      {
+        "from": "14.morning",
+        "mood": "tense",
+        "why": "The last look home grows into the first scrape overhead."
+      },
+      {
+        "from": "15.ring",
+        "mood": "drone",
+        "why": "He breaks the rule and squeezes through the dark space."
+      },
+      {
+        "from": "16.look",
+        "mood": "none",
+        "why": "A brief held breath while he climbs to the answer."
+      },
+      {
+        "from": "17.box",
+        "mood": "dark",
+        "why": "Picture first: the whole town is an object in someone else's room."
+      },
+      {
+        "from": "17.jar",
+        "mood": "sad",
+        "why": "Recognition and the extra bun turn the reveal into a rescue attempt."
+      },
+      {
+        "from": "17.shadow",
+        "mood": "dark",
+        "why": "The moving hand is noticed. Stay in the danger through the subscribe line."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "7.door",
+      "bed": "village",
+      "trim": -1,
+      "why": "The air of the same inhabited little village."
+    },
+    {
+      "from": "3.lessons",
+      "to": "3.noses",
+      "bed": "crowd",
+      "trim": -3,
+      "why": "A busy school and market before the routine freeze; voices do not continue through it."
+    },
+    {
+      "from": "8.awake",
+      "to": "8.decide",
+      "bed": "room",
+      "why": "The boy's quiet room at night."
+    },
+    {
+      "from": "9.hay",
+      "to": "9.laugh",
+      "bed": "village",
+      "trim": -1,
+      "why": "Daylight, the same wall behind the failed lookout."
+    },
+    {
+      "from": "9.bury",
+      "to": "9.laugh",
+      "bed": "crowd",
+      "trim": -3,
+      "why": "The town laughs with his friend, just off camera."
+    },
+    {
+      "from": "10.nights",
+      "to": "11.cost",
+      "bed": "night",
+      "trim": -1,
+      "why": "Secret tests after dark, not the live opening."
+    },
+    {
+      "from": "11.day",
+      "to": "11.door",
+      "bed": "village",
+      "trim": -1,
+      "why": "Daylight match cut and the closed house."
+    },
+    {
+      "from": "12.pack",
+      "to": "13.stay",
+      "bed": "room",
+      "why": "Packing in his own room, then the friend in morning light."
+    },
+    {
+      "from": "14.morning",
+      "to": "15.move",
+      "bed": "village",
+      "trim": -1,
+      "why": "The last look at home before leaving its floor."
+    },
+    {
+      "from": "15.narrow",
+      "to": "15.light",
+      "bed": "room",
+      "trim": 1,
+      "why": "A cramped wooden pocket, not a dripping underground cave."
+    },
+    {
+      "from": "15.floor",
+      "to": "16.look",
+      "bed": "room",
+      "trim": 1,
+      "why": "The giant bedroom, first heard before it is understood."
+    },
+    {
+      "from": "17.box",
+      "to": "18.sub",
+      "bed": "room",
+      "why": "Same shelf and same bedroom through the ending."
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "swish",
+      "trim": -1,
+      "align": "start",
+      "why": "The first moving portrait, already inside the little town."
+    },
+    {
+      "cue": "1.freeze",
+      "word": "bell",
+      "sfx": "bell",
+      "f": 460,
+      "ring": 0.85,
+      "trim": -3,
+      "why": "The warning motif: the people stop on this word, never the camera."
+    },
+    {
+      "cue": "1.freeze",
+      "word": "freeze",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The teller settles his arms into the holding pose."
+    },
+    {
+      "cue": "2.ringer",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The cut up to an empty bell tower."
+    },
+    {
+      "cue": "2.ringer",
+      "word": "Nobody",
+      "sfx": "blip",
+      "trim": -2,
+      "pitch": 0.8,
+      "why": "There is no one beside the bell."
+    },
+    {
+      "cue": "2.scrape",
+      "word": "scraping",
+      "sfx": "scrape",
+      "dur": 0.7,
+      "trim": -1,
+      "pan": -0.15,
+      "why": "The first lid scrape, still heard only through the rope slot. Same sound character returns at 17.rope."
+    },
+    {
+      "cue": "2.neighbor",
+      "word": "moved",
+      "sfx": "swish",
+      "trim": -1,
+      "why": "Only the neighbor turns his head in this memory."
+    },
+    {
+      "cue": "2.neighbor",
+      "sfx": "whoosh_low",
+      "p": 0.7,
+      "dur": 0.45,
+      "trim": -3,
+      "pan": 0.2,
+      "why": "The broad shadow passes the neighbor before the cut to his empty home."
+    },
+    {
+      "cue": "2.empty",
+      "word": "empty",
+      "sfx": "drop",
+      "trim": -4,
+      "why": "The closed blue-roofed house is the consequence of his movement."
+    },
+    {
+      "cue": "3.lessons",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Daylight school: the practical town tour starts."
+    },
+    {
+      "cue": "3.lessons",
+      "word": "bread",
+      "sfx": "place",
+      "trim": -1,
+      "why": "A bun balanced on the child's head, the school exercise."
+    },
+    {
+      "cue": "3.cheat",
+      "word": "ate",
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "The friend ate his lesson. A tiny hollow joke, not an injury."
+    },
+    {
+      "cue": "3.cheat",
+      "word": "before",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "His sleeves close around the bun at his mouth."
+    },
+    {
+      "cue": "3.market",
+      "sfx": "swish",
+      "why": "The list moves to the bakery counter."
+    },
+    {
+      "cue": "3.market",
+      "sfx": "place",
+      "p": 0.82,
+      "trim": -1,
+      "pan": 0.1,
+      "why": "The baker sets one more loaf onto a low pile."
+    },
+    {
+      "cue": "3.noses",
+      "word": "scratched",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "The two children rub their noses before carrying anything."
+    },
+    {
+      "cue": "3.noses",
+      "sfx": "swish",
+      "trim": -1,
+      "why": "A quick cut in to the teller's tilted face."
+    },
+    {
+      "cue": "3.baskets",
+      "word": "froze",
+      "sfx": "bell",
+      "f": 460,
+      "ring": 0.85,
+      "trim": -3,
+      "why": "The first ring in this routine: a basket is held in two hands, not stopped in midair."
+    },
+    {
+      "cue": "3.baskets",
+      "word": "baskets",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The customer steadies the basket halfway to the counter."
+    },
+    {
+      "cue": "3.lookdown",
+      "word": "heads",
+      "sfx": "swish",
+      "trim": -1,
+      "why": "They lower their eyes to their shoes."
+    },
+    {
+      "cue": "3.lookdown",
+      "word": "shadows",
+      "sfx": "whoosh_low",
+      "dur": 0.55,
+      "trim": -3,
+      "pan": -0.2,
+      "why": "The same unidentified shadow keeps moving over the still people."
+    },
+    {
+      "cue": "3.second",
+      "word": "ring",
+      "sfx": "bell",
+      "f": 460,
+      "ring": 0.85,
+      "trim": -3,
+      "why": "The second ring releases the market. Do not repeat the strike for the restart gesture."
+    },
+    {
+      "cue": "3.second",
+      "word": "started",
+      "sfx": "rustle",
+      "dur": 0.35,
+      "trim": -1,
+      "why": "Hands and sleeves start moving again at the market."
+    },
+    {
+      "cue": "3.bun",
+      "sfx": "swish",
+      "why": "A clearly motivated memory of the neighbor sharing his food."
+    },
+    {
+      "cue": "3.bun",
+      "word": "bun",
+      "sfx": "plink",
+      "pitch": 0.85,
+      "trim": 1,
+      "why": "One warm pluck for the bun he saved. The same small note returns at 17.bun."
+    },
+    {
+      "cue": "3.bun",
+      "word": "save",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The loaf passes from his hands to the teller's."
+    },
+    {
+      "cue": "3.home",
+      "word": "liked",
+      "sfx": "blip",
+      "pitch": 1.0,
+      "trim": -1,
+      "why": "The small smile: he likes home."
+    },
+    {
+      "cue": "4.itch",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The unanswered question returns at the empty house."
+    },
+    {
+      "cue": "4.itch",
+      "word": "question",
+      "sfx": "blip",
+      "trim": -2,
+      "pitch": 0.8,
+      "why": "His glance back at the empty door."
+    },
+    {
+      "cue": "4.who",
+      "word": "Who",
+      "sfx": "tick",
+      "trim": -1,
+      "why": "One plain question and a close face."
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The adults at the foot of the tower."
+    },
+    {
+      "cue": "5.ask",
+      "word": "warned",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "The older person raises a hand between the child and the bell."
+    },
+    {
+      "cue": "5.tug",
+      "word": "tug",
+      "sfx": "whoosh_low",
+      "dur": 0.4,
+      "trim": -2,
+      "why": "The camera looks up the high rope he cannot reach."
+    },
+    {
+      "cue": "5.no",
+      "word": "near",
+      "sfx": "swish",
+      "trim": -1,
+      "why": "The refusing palm comes between the boy and the tower."
+    },
+    {
+      "cue": "5.no",
+      "word": "rope",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The arm remains across his route."
+    },
+    {
+      "cue": "5.watch",
+      "word": "watched",
+      "sfx": "swish",
+      "why": "His glance takes the lens from the square back to the bell."
+    },
+    {
+      "cue": "6.twitch",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The tiny movement that gives his curiosity a route."
+    },
+    {
+      "cue": "6.twitch",
+      "word": "twitch",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": 0,
+      "why": "The rope lifts a fraction at the named action."
+    },
+    {
+      "cue": "6.wall",
+      "word": "hole",
+      "sfx": "swish",
+      "why": "Follow the same rope into its high slot."
+    },
+    {
+      "cue": "6.scrape",
+      "word": "scraping",
+      "sfx": "scrape",
+      "dur": 0.7,
+      "trim": -1,
+      "pan": 0.15,
+      "why": "The lid noise again, heard from the other side of the scenery."
+    },
+    {
+      "cue": "6.shadow",
+      "word": "bell",
+      "sfx": "bell",
+      "f": 460,
+      "ring": 0.85,
+      "trim": -3,
+      "why": "The afternoon warning; the feet stop on the same word as the striker."
+    },
+    {
+      "cue": "6.shadow",
+      "word": "shadow",
+      "sfx": "whoosh_low",
+      "dur": 0.5,
+      "trim": -3,
+      "pan": -0.2,
+      "why": "A moving shadow reaches the shoes while the boy stays still."
+    },
+    {
+      "cue": "6.still",
+      "word": "head",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "His downward gaze stays held. Only a soft settling sleeve."
+    },
+    {
+      "cue": "7.ask",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The raised porch of the oldest woman."
+    },
+    {
+      "cue": "7.ask",
+      "word": "woman",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "Her sleeve at the doorway."
+    },
+    {
+      "cue": "7.empty",
+      "word": "looked",
+      "sfx": "swish",
+      "why": "Her glance takes us to the empty blue mat."
+    },
+    {
+      "cue": "7.rule",
+      "sfx": "scrape",
+      "p": 0.17,
+      "dur": 0.4,
+      "trim": -1,
+      "why": "She brushes dust from the porch before answering."
+    },
+    {
+      "cue": "7.rule",
+      "word": "moment",
+      "sfx": "tick",
+      "trim": -1,
+      "why": "The held moment before she gives only a rule."
+    },
+    {
+      "cue": "7.rule",
+      "word": "Then",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "She straightens from the doorstep to speak."
+    },
+    {
+      "cue": "7.rule",
+      "word": "Don't",
+      "sfx": "drop",
+      "trim": -5,
+      "why": "The warning lands without an explanation."
+    },
+    {
+      "cue": "7.door",
+      "sfx": "scrape",
+      "p": 0.25,
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The working hinged door swings shut."
+    },
+    {
+      "cue": "7.door",
+      "sfx": "thud",
+      "p": 0.85,
+      "trim": -3,
+      "why": "It reaches the closed stop at 85 percent of the shot, as animated."
+    },
+    {
+      "cue": "8.awake",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Night in the boy's own room."
+    },
+    {
+      "cue": "8.awake",
+      "word": "bed",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The blanket settles under a deliberately motionless child."
+    },
+    {
+      "cue": "8.awake",
+      "word": "look",
+      "sfx": "tick",
+      "trim": -1,
+      "why": "The question about what they look like when still."
+    },
+    {
+      "cue": "8.awake",
+      "sfx": "heartbeat",
+      "p": 0.78,
+      "trim": -4,
+      "why": "One restrained beat under the long, slowly turning bed shot."
+    },
+    {
+      "cue": "8.decide",
+      "word": "wanted",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "He sits at the edge of the bed."
+    },
+    {
+      "cue": "8.decide",
+      "word": "rope",
+      "sfx": "blip",
+      "trim": -2,
+      "pitch": 0.8,
+      "why": "He has decided to find the ringer."
+    },
+    {
+      "cue": "9.hay",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The first, cheap plan starts in bright daylight."
+    },
+    {
+      "cue": "9.hay",
+      "word": "bales",
+      "sfx": "place",
+      "trim": -1,
+      "why": "Another bale added to the ridiculous lookout."
+    },
+    {
+      "cue": "9.hay",
+      "word": "piled",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "Straw and sleeves as he holds the bale."
+    },
+    {
+      "cue": "9.high",
+      "word": "up",
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "trim": 0,
+      "why": "Up to the high perch, still one bale below the wall."
+    },
+    {
+      "cue": "9.high",
+      "sfx": "step_grass",
+      "p": 0.7,
+      "trim": -1,
+      "why": "His feet settle on the top bale."
+    },
+    {
+      "cue": "9.lean",
+      "word": "whole",
+      "sfx": "scrape",
+      "dur": 0.35,
+      "trim": -1,
+      "why": "The stack starts to tip on whole, as HayFailure is staged."
+    },
+    {
+      "cue": "9.lean",
+      "word": "leaned",
+      "sfx": "slide_down",
+      "dur": 0.45,
+      "trim": 1,
+      "why": "The fall starts on leaned. This is the joke, not a threatening impact."
+    },
+    {
+      "cue": "9.lean",
+      "word": "leaned",
+      "sfx": "debris",
+      "at": 0.08,
+      "dur": 0.45,
+      "trim": -1,
+      "why": "The hay bales separate and tumble."
+    },
+    {
+      "cue": "9.bury",
+      "sfx": "thud",
+      "trim": 0,
+      "why": "The soft hay landing at the cut, with two shoes left sticking out."
+    },
+    {
+      "cue": "9.bury",
+      "word": "shoes",
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "The friend finds only his shoes."
+    },
+    {
+      "cue": "9.laugh",
+      "word": "laughed",
+      "sfx": "cheer",
+      "dur": 0.5,
+      "trim": -1,
+      "why": "The laughter of people just off camera; the friend is visibly laughing."
+    },
+    {
+      "cue": "9.laugh",
+      "word": "spitting",
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "Little pieces of straw leave the teller's mouth."
+    },
+    {
+      "cue": "10.nights",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "A colder night and a more careful second plan."
+    },
+    {
+      "cue": "10.nights",
+      "sfx": "step_grass",
+      "p": 0.14,
+      "trim": -1,
+      "pan": 0.1,
+      "why": "Creep gait contact 1: 2 m path, 1.12 m stride, alternating full extensions."
+    },
+    {
+      "cue": "10.nights",
+      "sfx": "step_grass",
+      "p": 0.42,
+      "trim": -1,
+      "pan": -0.1,
+      "why": "Creep gait contact 2: 2 m path, 1.12 m stride, alternating full extensions."
+    },
+    {
+      "cue": "10.nights",
+      "sfx": "step_grass",
+      "p": 0.7,
+      "trim": -1,
+      "pan": 0.1,
+      "why": "Creep gait contact 3: 2 m path, 1.12 m stride, alternating full extensions."
+    },
+    {
+      "cue": "10.nights",
+      "sfx": "step_grass",
+      "p": 0.98,
+      "trim": -1,
+      "pan": -0.1,
+      "why": "Creep gait contact 4: 2 m path, 1.12 m stride, alternating full extensions."
+    },
+    {
+      "cue": "10.nights",
+      "word": "evenings",
+      "sfx": "crackle",
+      "dur": 0.45,
+      "trim": -1,
+      "why": "The real torch in his right hand."
+    },
+    {
+      "cue": "10.follow",
+      "word": "followed",
+      "sfx": "swish",
+      "why": "The lens tracks along the rope instead of climbing again."
+    },
+    {
+      "cue": "10.boards",
+      "sfx": "scrape",
+      "p": 0.2,
+      "dur": 0.55,
+      "trim": 0,
+      "why": "The boards start parting at p=0.2; the sound follows the physical opening."
+    },
+    {
+      "cue": "10.boards",
+      "sfx": "rustle",
+      "p": 0.7,
+      "dur": 0.25,
+      "why": "His sleeve reaches into the newly exposed opening."
+    },
+    {
+      "cue": "10.wedge",
+      "word": "wedged",
+      "sfx": "place",
+      "trim": 0,
+      "why": "The wooden wedge is pushed between the boards."
+    },
+    {
+      "cue": "10.wedge",
+      "sfx": "scrape",
+      "p": 0.6,
+      "dur": 0.35,
+      "trim": -1,
+      "why": "Each secret evening opens them a little further."
+    },
+    {
+      "cue": "10.fit",
+      "word": "squeeze",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "Shoulder and clothes brush the narrow frame."
+    },
+    {
+      "cue": "10.fit",
+      "word": "without",
+      "sfx": "blip",
+      "pitch": 1.05,
+      "trim": -1,
+      "why": "His first successful test fits; no bell is sounded."
+    },
+    {
+      "cue": "11.cost",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The successful gap no longer feels safe."
+    },
+    {
+      "cue": "11.cost",
+      "word": "dark",
+      "sfx": "crackle",
+      "dur": 0.35,
+      "trim": -1,
+      "why": "The same hand-held torch: this test was only at night."
+    },
+    {
+      "cue": "11.day",
+      "sfx": "swish",
+      "why": "A daylight match cut on the same face and opening."
+    },
+    {
+      "cue": "11.day",
+      "word": "needed",
+      "sfx": "blip",
+      "trim": -2,
+      "pitch": 0.8,
+      "why": "He has to be there while the ringer is watching."
+    },
+    {
+      "cue": "11.help",
+      "word": "stuck",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "His shoulder in the opening makes the cost physical."
+    },
+    {
+      "cue": "11.help",
+      "word": "nobody",
+      "sfx": "drop",
+      "trim": -5,
+      "why": "Nobody would come to pull him back."
+    },
+    {
+      "cue": "11.door",
+      "sfx": "swish",
+      "why": "The closed blue-roofed house again."
+    },
+    {
+      "cue": "11.door",
+      "sfx": "step_grass",
+      "p": 0.29583333333333334,
+      "trim": -1,
+      "why": "Walk contact 1: the 1.2 m walk uses the engine's 1.42 m stride."
+    },
+    {
+      "cue": "11.door",
+      "sfx": "step_grass",
+      "p": 0.8875,
+      "trim": -1,
+      "why": "Walk contact 2: the 1.2 m walk uses the engine's 1.42 m stride."
+    },
+    {
+      "cue": "12.pack",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The moving overhead view of an open bag, at home."
+    },
+    {
+      "cue": "12.pack",
+      "word": "water",
+      "sfx": "place",
+      "trim": -1,
+      "why": "The bottle lands inside the open bag."
+    },
+    {
+      "cue": "12.pack",
+      "word": "torch",
+      "sfx": "place",
+      "trim": -1,
+      "why": "The little torch goes beside the bottle."
+    },
+    {
+      "cue": "12.pack",
+      "word": "rope",
+      "sfx": "rustle",
+      "trim": -1,
+      "dur": 0.23,
+      "why": "The coil of his own rope lands in the bag."
+    },
+    {
+      "cue": "12.pack",
+      "word": "bread",
+      "sfx": "place",
+      "trim": -1,
+      "why": "The loaf goes in on its spoken noun."
+    },
+    {
+      "cue": "12.pack",
+      "word": "bun",
+      "sfx": "rustle",
+      "trim": -1,
+      "dur": 0.23,
+      "why": "The last bun arrives on clean cloth; this is for the neighbor."
+    },
+    {
+      "cue": "12.neighbor",
+      "word": "bigger",
+      "sfx": "plink",
+      "pitch": 0.85,
+      "trim": 1,
+      "why": "The little food-gift motif from 3.bun, now held by the boy."
+    },
+    {
+      "cue": "12.neighbor",
+      "word": "gave",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "He holds the wrapped bun carefully."
+    },
+    {
+      "cue": "13.friend",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Morning; his friend has found him packing."
+    },
+    {
+      "cue": "13.friend",
+      "word": "caught",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The bag is caught between the two children."
+    },
+    {
+      "cue": "13.ask",
+      "sfx": "swish",
+      "why": "Reverse to the friend's serious face."
+    },
+    {
+      "cue": "13.ask",
+      "word": "back",
+      "sfx": "blip",
+      "trim": -2,
+      "pitch": 0.8,
+      "why": "The question changes the joke between them."
+    },
+    {
+      "cue": "13.reply",
+      "word": "bun",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "A small answering gesture, not a heroic speech."
+    },
+    {
+      "cue": "13.reply",
+      "word": "me",
+      "sfx": "plink",
+      "pitch": 0.85,
+      "trim": 0,
+      "why": "One quiet pluck on the answer about saving a bun."
+    },
+    {
+      "cue": "13.stay",
+      "word": "didn't",
+      "sfx": "tick",
+      "trim": -1,
+      "why": "The friend holds his expression. No laugh or comedy slide this time."
+    },
+    {
+      "cue": "14.morning",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Daylight at the opening: this time he has packed his red bag."
+    },
+    {
+      "cue": "14.morning",
+      "word": "hands",
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "Bare hands settle on the cold boards."
+    },
+    {
+      "cue": "14.rope",
+      "word": "rope",
+      "sfx": "swish",
+      "why": "The glance follows the rope into the dark slot."
+    },
+    {
+      "cue": "14.back",
+      "word": "back",
+      "sfx": "swish",
+      "why": "Look back into the same town, through the houses."
+    },
+    {
+      "cue": "14.baker",
+      "sfx": "place",
+      "p": 0.82,
+      "trim": -1,
+      "pan": 0.1,
+      "why": "The same baker, the same low piles. Repeats the placement in 3.market."
+    },
+    {
+      "cue": "14.friend",
+      "word": "eating",
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "His friend is still eating his lesson; the same gentle joke as 3.cheat."
+    },
+    {
+      "cue": "14.friend",
+      "word": "again",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "The bun stays in his hands at his mouth."
+    },
+    {
+      "cue": "14.empty",
+      "word": "empty",
+      "sfx": "drop",
+      "trim": -5,
+      "why": "The third remembered thing is the empty stool."
+    },
+    {
+      "cue": "14.strap",
+      "word": "straps",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": 0,
+      "why": "Both straps tighten against his shoulders."
+    },
+    {
+      "cue": "14.strap",
+      "word": "knees",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "The crouch starts as he bends his knees."
+    },
+    {
+      "cue": "14.strap",
+      "word": "breath",
+      "sfx": "gust",
+      "dur": 0.38,
+      "trim": -3,
+      "align": "start",
+      "why": "One small steady breath from the boy, not outdoor wind."
+    },
+    {
+      "cue": "14.scrape",
+      "word": "scraping",
+      "sfx": "scrape",
+      "dur": 0.8,
+      "trim": -1,
+      "why": "The opening-lid scrape comes directly overhead. It is paid back in the replay at 17.rope."
+    },
+    {
+      "cue": "15.ring",
+      "word": "ring",
+      "sfx": "bell",
+      "f": 460,
+      "ring": 0.85,
+      "trim": -3,
+      "why": "The first ring of the final opening. Replayed, not repeated in present time, at 17.rope."
+    },
+    {
+      "cue": "15.ring",
+      "word": "ring",
+      "sfx": "rustle",
+      "dur": 0.23,
+      "trim": -1,
+      "why": "The loose boards rattle on the same ring as the animation."
+    },
+    {
+      "cue": "15.freeze",
+      "word": "stopped",
+      "sfx": "step_grass",
+      "trim": -1,
+      "why": "His shoes stop against the ground."
+    },
+    {
+      "cue": "15.move",
+      "word": "made",
+      "sfx": "rustle",
+      "dur": 0.6,
+      "trim": 0,
+      "why": "He forces his shoulders and bag through the real opening."
+    },
+    {
+      "cue": "15.move",
+      "sfx": "scrape",
+      "p": 0.8,
+      "dur": 0.22,
+      "trim": -2,
+      "why": "The bag brushes the timber as it vanishes through the opening."
+    },
+    {
+      "cue": "15.narrow",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Inside the compressed space behind the scenery."
+    },
+    {
+      "cue": "15.narrow",
+      "word": "bag",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "The red bag presses against the narrow passage."
+    },
+    {
+      "cue": "15.rope",
+      "word": "rope",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "The vertical return rope jumps beside his face. Same motion as the earlier twitch."
+    },
+    {
+      "cue": "15.rope",
+      "word": "jerked",
+      "sfx": "clank",
+      "f": 780,
+      "trim": -4,
+      "why": "The distant guide wheel takes the tension; this is not an extra bell."
+    },
+    {
+      "cue": "15.light",
+      "sfx": "scrape",
+      "p": 0.3,
+      "dur": 0.45,
+      "trim": -2,
+      "why": "A thin seam opens overhead as the lid lifts."
+    },
+    {
+      "cue": "15.light",
+      "word": "light",
+      "sfx": "swish",
+      "trim": -1,
+      "why": "The small flame is put away on light; the outside seam now lights him."
+    },
+    {
+      "cue": "15.floor",
+      "sfx": "step_wood",
+      "p": 0.4307692307692308,
+      "trim": -1,
+      "why": "First full creep-gait foot extension on the smooth shelf: 0.65 m path, 1.12 m stride."
+    },
+    {
+      "cue": "15.floor",
+      "word": "wood",
+      "sfx": "blip",
+      "pitch": 0.7,
+      "trim": -1,
+      "why": "Wood, not the dirt and grass he expected."
+    },
+    {
+      "cue": "16.dark",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Outside at his own scale, still withholding the wide room."
+    },
+    {
+      "cue": "16.dark",
+      "word": "crouched",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "He crouches behind the scenery with his bag against his back."
+    },
+    {
+      "cue": "16.dark",
+      "word": "scraping",
+      "sfx": "scrape",
+      "dur": 0.5,
+      "trim": -1,
+      "why": "The scrape dies away while he waits."
+    },
+    {
+      "cue": "16.bread",
+      "word": "gone",
+      "sfx": "tick",
+      "trim": -1,
+      "why": "A breath and a puzzled frown: the home smell is gone."
+    },
+    {
+      "cue": "16.breath",
+      "word": "breathed",
+      "sfx": "whoosh_low",
+      "dur": 0.8,
+      "trim": -3,
+      "align": "start",
+      "why": "The unseen child breathes through his nose. Soft low air, not an unrelated monster roar."
+    },
+    {
+      "cue": "16.look",
+      "word": "climbed",
+      "sfx": "scrape",
+      "dur": 0.6,
+      "trim": -1,
+      "why": "His own rope takes his weight against the screw threads."
+    },
+    {
+      "cue": "16.look",
+      "sfx": "clank",
+      "p": 0.75,
+      "f": 900,
+      "trim": -4,
+      "why": "One shoe reaches the top of the slotted screw at p=0.75."
+    },
+    {
+      "cue": "17.box",
+      "sfx": "riser",
+      "dur": 1.2,
+      "trim": -3,
+      "why": "The brief music-free climb ends in the first revealing picture."
+    },
+    {
+      "cue": "17.box",
+      "sfx": "boom",
+      "trim": -6,
+      "why": "The one big reveal of the film: the entire unchanged town is in a toy box."
+    },
+    {
+      "cue": "17.boy",
+      "sfx": "whoosh_low",
+      "dur": 0.65,
+      "trim": -2,
+      "why": "The reveal angle finds an ordinary child at an enormous scale."
+    },
+    {
+      "cue": "17.boy",
+      "word": "holding",
+      "sfx": "rustle",
+      "dur": 0.3,
+      "trim": -1,
+      "why": "The red sleeve holding the lid. Do not add a bell here."
+    },
+    {
+      "cue": "17.rope",
+      "sfx": "scrape",
+      "p": 0.12,
+      "dur": 0.8,
+      "trim": -1,
+      "why": "Replay of the opening heard at 14.scrape and 15.ring, now with its source visible."
+    },
+    {
+      "cue": "17.rope",
+      "word": "bell",
+      "sfx": "bell",
+      "f": 460,
+      "ring": 0.85,
+      "trim": -3,
+      "why": "Replay of 15.ring with the same 460 Hz bell and ring length. This is NOT a third strike in the present."
+    },
+    {
+      "cue": "17.second",
+      "sfx": "scrape",
+      "p": 0.12,
+      "dur": 0.5,
+      "trim": -1,
+      "why": "Advance the present: the hinge straps lower with the lid."
+    },
+    {
+      "cue": "17.second",
+      "word": "shut",
+      "sfx": "bell",
+      "f": 460,
+      "ring": 0.85,
+      "trim": -3,
+      "why": "The second ring as the lid closes; now the town inside is safe, but the boy outside is not."
+    },
+    {
+      "cue": "17.second",
+      "word": "shut",
+      "sfx": "thud",
+      "trim": -5,
+      "why": "The lid seats against the case rim on shut."
+    },
+    {
+      "cue": "17.toys",
+      "word": "pretending",
+      "sfx": "drop",
+      "trim": -5,
+      "why": "The opening pose now means deliberately pretending to be a toy."
+    },
+    {
+      "cue": "17.jar",
+      "sfx": "whoosh_low",
+      "dur": 0.5,
+      "trim": -2,
+      "why": "The lens rises over the yellow shoulder to find the inverted glass jar."
+    },
+    {
+      "cue": "17.jar",
+      "word": "jar",
+      "sfx": "plink",
+      "pitch": 1.2,
+      "trim": 0,
+      "why": "The new glass edge catches the light."
+    },
+    {
+      "cue": "17.alive",
+      "word": "alive",
+      "sfx": "pop",
+      "trim": -3,
+      "why": "The neighbor's reaching hand and moving eyes, still alive."
+    },
+    {
+      "cue": "17.bun",
+      "word": "bun",
+      "sfx": "plink",
+      "pitch": 0.85,
+      "trim": 1,
+      "why": "The exact little gift motif from the memory and the packing; the extra bun is his."
+    },
+    {
+      "cue": "17.bun",
+      "word": "held",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "The boy lifts his hands with the wrapped food."
+    },
+    {
+      "cue": "17.reach",
+      "word": "reached",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "why": "The rescuing movement begins on reached, as in the stage."
+    },
+    {
+      "cue": "17.reach",
+      "word": "reached",
+      "sfx": "plink",
+      "at": 0.45,
+      "pitch": 1.1,
+      "trim": -1,
+      "why": "His hand nears the lower glass edge a fraction after the reach."
+    },
+    {
+      "cue": "17.shadow",
+      "word": "shadow",
+      "sfx": "whoosh_low",
+      "dur": 0.6,
+      "trim": -2,
+      "why": "The giant palm moves across the light and over his real hand; the same shadow motif now has a source."
+    },
+    {
+      "cue": "17.shadow",
+      "word": "hand",
+      "sfx": "heartbeat",
+      "trim": -4,
+      "why": "He knows the movement has been noticed."
+    },
+    {
+      "cue": "18.sub",
+      "sfx": "pop",
+      "trim": -3,
+      "why": "The familiar red subscribe sign appears in his hands. No extra bell or ding after the second strike."
+    },
+    {
+      "cue": "18.sub",
+      "word": "caught",
+      "sfx": "whoosh_low",
+      "at": -0.12,
+      "dur": 0.45,
+      "trim": -3,
+      "why": "The palm approaches from overhead; cut before it touches him."
+    }
+  ]
+}

@@ -12,3 +12,4 @@ export * from "./villagers";
 export * from "./things";
 export * from "./places";
 export * from "./creatures";
+export * from "./everyday";
