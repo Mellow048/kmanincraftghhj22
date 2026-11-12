@@ -9,7 +9,7 @@ This is the **second** time it happened. The first is [`../monster-egg-v1/`](../
 
 It is not a bad 20-second short. It is the wrong kind of video:
 
-| | The model: `in-this-town-same-face` | Never Look at the Moon |
+| | The reference film: `in-this-town-same-face` | Never Look at the Moon |
 |---|---|---|
 | Length | 104.7 s (the short cut: 60–118 s) | 19.6 s |
 | Cuts | 56. A new picture every 1.7 s | **0.** "One room, one continuous camera, five beats, no cuts" |

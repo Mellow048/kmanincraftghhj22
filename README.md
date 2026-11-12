@@ -80,9 +80,9 @@ Then:
 Everything above is the base format, the 20-second cinematic short. A **topic** is another kind of video with its own
 rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules are not.
 
-| Topic | What it makes | Model films |
+| Topic | What it makes | Reference film |
 |---|---|---|
-| [In This Town](Topics/InThisTown/README.md) | A one-to-three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. A cut about every two seconds, every word captioned, music and sound effects under the voice | `in-this-town-same-face` (1:45, with sound), `in-this-town-monster-egg` (2:57, voice only) |
+| [In This Town](Topics/InThisTown/README.md) | A one-to-three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. A cut about every two seconds, every word captioned, music and sound effects under the voice | `in-this-town-same-face` (1:45, with sound): [its page](Topics/InThisTown/reference/same-face/README.md). Also finished: `in-this-town-monster-egg` (2:57, voice only) |
 
 ```bash
 npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town

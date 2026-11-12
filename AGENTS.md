@@ -22,7 +22,7 @@ What a topic gives a film, that the base does not:
 | | Where |
 |---|---|
 | Its own rules, and the numbers the lint enforces | `Topics/<Folder>/README.md`, its playbooks, `topic.json` |
-| Finished films the owner approved, to model the build on | `models` in `topic.json` |
+| A reference film: a finished film of ours that the owner approved and chose, to build like | `reference` in `topic.json`, and its page in `Topics/<Folder>/reference/` |
 | A pack of approved people, places and things | `Topics/<Folder>/PACK.md` |
 | A starter film | `Topics/<Folder>/template/`, through `npm run new -- "…" --topic <id>` |
 | Music and sound effects | `scripts/sound.py`, and the topic's `SOUND.md` |
@@ -49,9 +49,9 @@ check is wrong, say so and ask.
 2. **Build from the topic's pack and its starter.** Do not rebuild a villager, a house or a helper that already exists.
 3. **The film has sound**: music that changes with the story, and a sound effect for each thing that happens. A film
    with only a voice is not finished.
-4. **An approved film does not change.** If you touch the engine or a pack, prove that the model films' stills are the
+4. **An approved film does not change.** If you touch the engine or a pack, prove that the finished films' stills are the
    same before and after: `scripts/compare-stills.py`.
-5. **Copy how a model is built. Never copy its story**, its sentences or its twist.
+5. **Copy how the reference film is built. Never copy its story**, its sentences or its twist.
 
 ### If the topic's folder is not there
 

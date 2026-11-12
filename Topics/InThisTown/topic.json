@@ -3,7 +3,16 @@
   "name": "In This Town",
   "folder": "Topics/InThisTown",
   "profile": "story",
-  "reference": "Topics/InThisTown/reference/treehouse",
+  "reference": {
+    "film": "in-this-town-same-face",
+    "page": "Topics/InThisTown/reference/same-face",
+    "owner": "yes its good put it as the topic's reference",
+    "use": "Our own finished film, picture and sound approved by the owner. Build like it. Never retell it."
+  },
+  "origin": {
+    "page": "Topics/InThisTown/reference/treehouse",
+    "what": "The Roblox video the format was taken from. The numbers in `film` come from measuring it. Studied, never copied."
+  },
   "film": {
     "seconds": [
       150,
@@ -47,6 +56,18 @@
     }
   },
   "measuredFromReference": {
+    "film": "in-this-town-same-face",
+    "cut": "short",
+    "seconds": 104.7,
+    "shots": 57,
+    "medianShotSeconds": 1.7,
+    "words": 441,
+    "wordsPerMinute": 254,
+    "musicSections": 11,
+    "soundEffects": 141,
+    "soundEffectsPerMinute": 80.8
+  },
+  "measuredFromOrigin": {
     "seconds": 166.5,
     "shots": 87,
     "medianShotSeconds": 1.73,
@@ -56,8 +77,8 @@
   "pack": "Topics/InThisTown/PACK.md",
   "template": "Topics/InThisTown/template",
   "models": {
-    "note": "Finished films to build like. Copy how they are built; never copy their story.",
-    "in-this-town-same-face": "The model for everything: script shape (short cut), shots, kit use, and sound. The owner: 'everything is perfect top to bottom'.",
+    "note": "Finished films to build like. The first is the topic's reference film. Copy how they are built; never copy their story.",
+    "in-this-town-same-face": "THE REFERENCE FILM (see `reference`). Script shape (short cut), shots, kit use, and sound. The owner: 'everything is perfect top to bottom', then 'yes its good put it as the topic's reference'.",
     "in-this-town-monster-egg": "The long cut (18 beats). Voice only: it was made before the sound rule."
   },
   "sound": {
@@ -102,11 +123,21 @@
       "edge": "wind",
       "lake": "wind"
     },
-    "measuredFromReference": {
+    "measuredFromOrigin": {
       "lufs": -13.6,
       "truePeakDb": -0.3,
       "quietFramesUnderSpeechDb": 20.7,
-      "note": "The reference has music under every second of it. Its quietest 8% of 20 ms frames (the gaps between words, where only music is left) are 20.7 dB under its loudest 40% (speech). The same measure on in-this-town-same-face reads 22: our music is a little further back."
+      "note": "The treehouse video has music under every second of it. Its quietest 8% of 20 ms frames (the gaps between words, where only music is left) are 20.7 dB under its loudest 40% (speech). The same measure on in-this-town-same-face reads 22: our music is a little further back."
+    },
+    "measuredFromReference": {
+      "film": "in-this-town-same-face",
+      "lufs": -14.8,
+      "truePeakDb": -1.4,
+      "musicUnderVoiceDb": 18.6,
+      "voiceOverRestMedianDb": 14.2,
+      "voiceOverRestWorstDb": 5.7,
+      "sfxPerMinute": 80.8,
+      "note": "The mix of the reference film, as scripts/sound.py measured it (src/videos/in-this-town-same-face/sound.lock.json)."
     }
   }
 }

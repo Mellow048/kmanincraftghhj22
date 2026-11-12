@@ -23,21 +23,29 @@ That gives you a film folder made from this topic's starter ([`template/`](templ
 `kit.tsx` wired to the pack, a town to change, and one scene with two shots that already render. It does not give
 you a story.
 
-## The models
+## The reference film
 
-Two finished films. Open them before you write anything.
+**`in-this-town-same-face`, "In This Town, Everyone Had the Same Face Except Me".** The owner on the picture:
+"everything is perfect top to bottom", "i like the assets". On the finished film with its sound: "yes its good put it
+as the topic's reference". Open it before you write anything, and build like it.
 
-| Film | The owner said | Use it as the model for |
+Its page is [`reference/same-face/`](reference/same-face/README.md): where every part of it is, its shape measured
+beat by beat, its sound in numbers, and a log of all 57 shots with the reason for each.
+
+| Film | The owner said | Use it for |
 |---|---|---|
-| `src/videos/in-this-town-same-face/` (short cut: 14 beats, 57 shots, 441 words, 1:45) | "everything is perfect top to bottom", "i like the assets" | **Everything.** `narration.md` for the shape of a script. `kit.tsx` for how a film uses the pack. `world.tsx` for a town in zones. Any `sceneN.tsx` for what a shot is. `sound.json` for the sound. Watch `renders/in-this-town-same-face.mp4` |
+| `src/videos/in-this-town-same-face/` (short cut: 14 beats, 57 shots, 441 words, 1:45). **The reference** | "yes its good put it as the topic's reference" | **Everything.** `narration.md` for the shape of a script. `kit.tsx` for how a film uses the pack. `world.tsx` for a town in zones. Any `sceneN.tsx` for what a shot is. `sound.json` for the sound. Watch `renders/in-this-town-same-face.mp4` |
 | `src/videos/in-this-town-monster-egg/` (full film: 18 beats, 93 shots, 746 words, 2:57) | Merged to `main` | The long cut: how 18 beats are spread over three minutes. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
 
 Copy how they are **built**. Never copy what they **tell**: no premise, sentence, joke or twist from a finished film
 goes into a new one.
 
+The treehouse video in `reference/treehouse/` is where the format came from. It is a Roblox video by someone else,
+studied for its shape. The reference film is ours.
+
 ## Read in this order
 
-1. This page.
+1. This page, then the reference film's page: [`reference/same-face/`](reference/same-face/README.md).
 2. [`SCRIPT.md`](SCRIPT.md) — how the story is written. This is where version 1 failed.
 3. [`SHOTS.md`](SHOTS.md) — how it is cut and shot, and how each Roblox trick becomes a Minecraft one.
 4. [`PACK.md`](PACK.md) — the people, places and things that already exist. One picture, one table for each file.
@@ -144,7 +152,7 @@ still an estimate, and whether the mix is older than the script.
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic and its short cut, the limits of the sound, and the list of model films |
+| `topic.json` | The numbers `npm run check` enforces for this topic and its short cut, the limits of the sound, the reference film and the other finished films |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the story, the picture, the sound |
 | `PACK.md`, `pack.jpg` | The catalogue of the pack |
 | `index.ts` | The pack, from one import: `import { Villager, Hut, pop } from "../../../Topics/InThisTown"` |
@@ -155,7 +163,8 @@ still an estimate, and whether the mix is older than the script.
 | `places.tsx` | House (new, burned out, on fire), bell, well, stall, lamp post, stepped hill, bedroom, tunnel |
 | `creatures.tsx` | Egg, worm, dragon, phoenix, stone golem, the mother, chicken, rank sign, fire, puffs, sound rings, and the red "Subscribe" sign every film ends on |
 | `template/` | The starter film that `npm run new -- … --topic in-this-town` copies |
-| `reference/treehouse/` | The model video, its transcript, a shot log and contact sheets |
+| `reference/same-face/` | **The reference film**: where its parts are, its shape and its sound measured, and a log of every shot |
+| `reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map

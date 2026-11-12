@@ -2,12 +2,12 @@
 
 A film of this topic is never voice only. Under the voice there is **music that changes when the story does**, the
 **air of the place** the shot is in, and a **sound effect for each thing that happens on screen**: about eighty a
-minute in the model film.
+minute in the reference film.
 
 All of it is made in Python by `scripts/sound.py`. Nothing is downloaded, sampled or licensed: every note and every
 noise is computed from a seed, so the same sheet always gives the same track.
 
-The model is `src/videos/in-this-town-same-face/sound.json`. Read it next to the film's `narration.md` before you
+The reference is the sheet of the topic's reference film, `src/videos/in-this-town-same-face/sound.json`. Read it next to the film's `narration.md` before you
 write a sheet of your own: 11 music sections (one of them silence), 14 beds, 141 effects of 35 kinds, in 1:45.
 
 ## 1. When, and with what
@@ -105,7 +105,7 @@ thing it rises into.
 ## 3. Music: one mood for each part of the story
 
 The music is not a loop under the film. It changes on a cut, when the story turns, and each change says something.
-The model has eleven sections, one of them silence; the lint wants at least five that play.
+The reference film has eleven sections, one of them silence; the lint wants at least five that play.
 
 | Script beats (`SCRIPT.md`) | What is happening | Mood |
 |---|---|---|
@@ -121,7 +121,7 @@ The model has eleven sections, one of them silence; the lint wants at least five
 | 17: he understands | Too late | `sad` |
 | 18: the button | Stay where you are. Never turn cheerful for the subscribe line | `dark` or `sad` |
 
-- **Change the music on the cut where the picture changes colour or place.** In the model the film goes from
+- **Change the music on the cut where the picture changes colour or place.** In the reference film the picture goes from
   daylight to smoke at `11.smoke`, and the music goes from a pulse to one low note on the same frame.
 - **Silence is a sound.** `none` for the one to four seconds before the reveal, with a `riser` through it, and the
   `boom` on the reveal's first word. The lint allows eight seconds of silence in a whole film: it is one held breath,
@@ -156,14 +156,14 @@ moves, appears, lands, breaks, or is named?** Each answer is an effect.
 | Bad news | `sting`, `drop` |
 | **The reveal** | `boom`. Once in a film, twice at most |
 
-Rules that come from building the model:
+Rules that come from building the reference film:
 
 1. **Put the sound on the word that names the thing**, not on the cut: `"word": "nose"`, and the nose wags and
    boings together. The scene already hangs the action on that word with `wordAt`; use the same cue and word.
 2. **Feet and fists follow the animation, not a guess.** Read the scene: if the legs are at full stride at 0.51 s,
    1.54 s and 2.57 s, that is `"at": 0.51, "repeat": 3, "every": 1.03`. Footsteps that miss the feet are worse than
    none.
-3. **Give each kind of thing its own sound, and keep it.** In the model every bubble pops, every villager rustles,
+3. **Give each kind of thing its own sound, and keep it.** In the reference film every bubble pops, every villager rustles,
    wind is the hill. The viewer learns it in ten seconds, and after that the sound alone tells them what they see.
 4. **Plant a sound the way the script plants a question.** The town bell rings on the first frame, again when he
    looks back from the hill, and a third time when he understands. A crackle under "burned" in the first ten

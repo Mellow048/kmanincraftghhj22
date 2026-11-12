@@ -6,7 +6,7 @@ them, and do not restyle them.**
 
 ![The pack: one still for each part](pack.jpg)
 
-Every still above is a shot from one of the two model films, `in-this-town-same-face` (the first sixteen and the
+Every still above is a shot from one of the two finished films: the reference film, `in-this-town-same-face` (the first sixteen and the
 last) and `in-this-town-monster-egg`.
 
 ## How a film uses it
@@ -21,7 +21,7 @@ src/videos/<film>/world.tsx     lays the town out with the pack's places
 ```
 
 `npm run new -- "In This Town, …" --topic in-this-town` gives you a `kit.tsx` and a `world.tsx` that are already
-wired this way. The model for both is `src/videos/in-this-town-same-face/`.
+wired this way. The reference for both is `src/videos/in-this-town-same-face/`.
 
 **Before you build anything, look for it here.** If it is not here and a second film could use it, build it here
 (the rules are at the bottom). Only what belongs to one story stays in that film's `kit.tsx`.
@@ -125,7 +125,7 @@ Built for the monster-egg film. Any film may use them.
 1. A pack part takes a `position` (or `at`) and knows nothing about any film's town. No film's coordinates in it.
 2. Same look as the rest: boxes, flat colours, the engine's block kinds. Feet on `position`, facing +Z, 1 unit = 1 m.
 3. Export it from its file; `index.ts` already passes every file on. Add a row to this page.
-4. **A change here changes every film that uses it, and the model films are approved exactly as they are.** Before
+4. **A change here changes every film that uses it, and the finished films are approved exactly as they are.** Before
    you touch a part that exists, take the stills of both; after, take them again; they must not differ by a pixel:
 
    ```bash

@@ -387,7 +387,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   if (underWords || underSeconds) {
     const least = [lim.hardMinSeconds ? `${lim.hardMinSeconds}s` : null, lim.hardMinWords ? `${lim.hardMinWords} words` : null].filter(Boolean).join(" or ");
     const size = `${seconds.toFixed(1)}s and ${totalWords} words`;
-    const model = Object.keys(topic.models ?? {}).find((key) => key !== "note");
+    const model = topic.reference?.film ?? Object.keys(topic.models ?? {}).find((key) => key !== "note");
     const how = `Write the script to the beat sheet in ${topic.folder}/SCRIPT.md${model ? `, and build like src/videos/${model}` : ""}.`;
     if (missing.length === 0 || !timing.estimated) {
       fail(`${tag}: this film is ${size}. A film of this topic is never under ${least}: this is a different kind of video with the topic's name on it. ${how}`);

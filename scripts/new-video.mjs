@@ -210,8 +210,12 @@ if (topic) {
     console.log(`     then python3 scripts/sound.py build ${slug}, and point film.tsx at the mix.`);
   }
   console.log("  5. npm run typecheck && npm run check, then render (AGENTS.md §10).");
-  const model = Object.keys(topic.models ?? {}).find((key) => key !== "note");
-  if (model) console.log(`\nThe model to copy the BUILD of (never the story): src/videos/${model}/`);
+  // The topic's reference film: a finished film of ours that the owner chose. Older topic files only list `models`.
+  const model = topic.reference?.film ?? Object.keys(topic.models ?? {}).find((key) => key !== "note");
+  if (model) {
+    console.log(`\nThe reference film. Copy how it is BUILT, never its story: src/videos/${model}/`);
+    if (topic.reference?.page) console.log(`Its page, with its shape and its sound measured: ${topic.reference.page}/README.md`);
+  }
 } else {
   console.log("Next:");
   console.log("  0. Write the narration first in narration.md: docs/NARRATION-RULES.md.");
