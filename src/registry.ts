@@ -4,6 +4,7 @@ import { film as monsterEgg } from "./videos/in-this-town-monster-egg/film";
 import { film as sameFace } from "./videos/in-this-town-same-face/film";
 import { film as pumpkinHeads } from "./videos/in-this-town-pumpkin-heads/film";
 import { film as superpowerAt18 } from "./videos/in-this-town-superpower-at-18/film";
+import { film as superpowerAt18Part2 } from "./videos/in-this-town-superpower-at-18-part-2/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -16,4 +17,5 @@ export const FILMS = [
   sameFace,
   pumpkinHeads,
   superpowerAt18,
+  superpowerAt18Part2,
 ];
