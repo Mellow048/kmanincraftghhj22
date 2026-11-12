@@ -30,11 +30,12 @@ export const scene11 = storyScene(timing, {
       ...cam.push({ on: [WINDOW[0], 1.6, WINDOW[2]], dist: 3.4, to: 3.0, yaw: -6, pitch: 6, fov: 42 }),
       zone: ZONE.room,
       look: CHAOS,
-      note: "He is at his window. The glass is solid orange, and smoke is crawling in round the frame.",
+      note: "He has his back to his window and is staring at us. The glass behind him is solid orange, and smoke is crawling in round the frame.",
       stage: (t) => (
         <>
           <BedBox position={BED} />
-          <Hero position={room(1.3, 0, -1.55)} rotationY={NORTH} animation="scared" />
+          <Hero position={room(1.3, 0, -1.55)} rotationY={NORTH + 2.2} animation="scared" face="scared" headYaw={-0.3} />
+          <pointLight position={room(0.9, 1.9, 0.2)} color="#ffd9b0" intensity={9} distance={6} decay={2} />
           <Block position={[WINDOW[0], WINDOW[1], WINDOW[2] - 0.02]} size={[1.06, 1.06, 0.04]} color="#ff8a2a" emissive="#ff7a1e" emissiveIntensity={0.3} castShadow={false} />
           <Wisps position={[WINDOW[0], 1.9, WINDOW[2] + 0.5]} t={t + 3} count={10} reach={2.4} size={0.6} opacity={0.55} color="#4a403a" dir={[-1, 0.2, 0.4]} seed={4} />
           <FireLight position={room(1.3, 1.9, -1.6)} power={18} reach={8} seed={3} />

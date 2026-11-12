@@ -108,16 +108,16 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.pig",
-      ...cam.push({ on: [PIGGY[0] + 0.6, 0.7, PIGGY[2]], dist: 4.0, to: 3.4, yaw: -4, pitch: 16, fov: 38 }),
+      ...cam.push({ on: [PIGGY[0] + 0.25, 0.75, PIGGY[2]], dist: 3.1, to: 2.5, yaw: 38, pitch: 12, fov: 38 }),
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "He is sitting up beside the pig. One of its ears is burned black. On 'touched' he puts a hand to it, and on 'grew' the ear is whole and pink again in a puff of green sparks. The pig is as surprised as he is.",
+      note: "He is kneeling behind the pig, facing us, and the pig is looking our way. One of its ears is burned black. On 'touched' he puts a hand to it, and on 'grew' the ear is whole and pink again in a puff of green sparks. The pig is as surprised as he is.",
       stage: (t) => (
         <>
           <Pig position={PIGGY} rotationY={EAST} burnt={t < GREW} t={t} shake={t < TOUCHED ? 1 : 0} />
-          <Hero position={[MUD[0] - 0.1, 0, MUD[2] - 0.2]} rotationY={WEST} animation="sit" arms={t > TOUCHED - 0.3 ? "press" : undefined} time={0.3} face={t < GREW ? "uneasy" : "wow"} />
-          <Bits position={[PIGGY[0] + 0.55, 0.9, PIGGY[2] + 0.2]} t={t - GREW} color="#8dff7a" count={14} seed={4} power={0.7} />
-          {t > TOUCHED ? <Glow position={[PIGGY[0] + 0.55, 0.85, PIGGY[2] + 0.2]} size={1.1} color="#9dff8a" opacity={0.45} /> : null}
+          <Hero position={[PIGGY[0] + 0.55, 0, PIGGY[2] - 0.8]} rotationY={0} animation="crouch" arms={t > TOUCHED - 0.3 ? "press" : undefined} time={0.3} face={t < GREW ? "uneasy" : "wow"} />
+          <Bits position={[PIGGY[0] + 0.55, 0.9, PIGGY[2] - 0.2]} t={t - GREW} color="#8dff7a" count={14} seed={4} power={0.7} />
+          {t > TOUCHED ? <Glow position={[PIGGY[0] + 0.55, 0.85, PIGGY[2] - 0.2]} size={1.1} color="#9dff8a" opacity={0.45} /> : null}
           <Lawn position={[MUD[0] + 0.42, 0.06, MUD[2] - 0.05]} size={0.84} seed={2} />
         </>
       ),

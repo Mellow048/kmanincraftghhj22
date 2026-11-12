@@ -41,7 +41,7 @@ export const scene16 = storyScene(timing, {
       note: "We go with him: a red shirt turning over in the air above the burning town, the bell and the well going by underneath, and then the pig pen coming up fast and a wall of mud.",
       stage: (t, { p }) => {
         const k = 0.5 - 0.5 * Math.cos(Math.PI * p);
-        const pos: Vec3 = [FROM[0] + (MUD[0] - FROM[0]) * k, FROM[1] * (1 - k) + Math.sin(k * Math.PI) * 2.4, FROM[2] + (MUD[2] - FROM[2]) * k];
+        const pos: Vec3 = [FROM[0] + (MUD[0] - FROM[0]) * k, FROM[1] * (1 - k) + Math.sin(k * Math.PI) * 1.5, FROM[2] + (MUD[2] - FROM[2]) * k];
         return (
           <>
             <Hero position={pos} rotationY={-1.1 + t * 5} animation="fall" face="scared" />
