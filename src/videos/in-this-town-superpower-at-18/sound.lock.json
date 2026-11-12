@@ -1,0 +1,175 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-superpower-at-18",
+  "mix": "public/audio/in-this-town-superpower-at-18/mix.mp3",
+  "seconds": 168.1333,
+  "built_from": {
+    "timing.json": "5dbb52f990f8536cdbd35263a9bda3a684feb45e",
+    "sound.json": "4d38b938efa9058139bdefb8b4cae8553a0ba25a",
+    "narration.mp3": "d2aaf1b53305cfad24a8f25c1fbc63d31ec9480c"
+  },
+  "mix_sha1": "c6fc2bd19cc8ab507b20e2f5f87ad5e3b0cfc2a7",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.twins",
+      "mood": "curious",
+      "at": 13.97
+    },
+    {
+      "from": "4.father",
+      "mood": "sad",
+      "at": 22.1
+    },
+    {
+      "from": "6.help",
+      "mood": "town",
+      "at": 39.6
+    },
+    {
+      "from": "7.bo",
+      "mood": "playful",
+      "at": 47.73
+    },
+    {
+      "from": "8.plant",
+      "mood": "drone",
+      "at": 57.37
+    },
+    {
+      "from": "9.bell",
+      "mood": "playful",
+      "at": 61.9
+    },
+    {
+      "from": "10.hate",
+      "mood": "sad",
+      "at": 70.8
+    },
+    {
+      "from": "10.grass",
+      "mood": "hope",
+      "at": 80.1
+    },
+    {
+      "from": "11.woke",
+      "mood": "tense",
+      "at": 82.73
+    },
+    {
+      "from": "11.ground",
+      "mood": "dark",
+      "at": 93.4
+    },
+    {
+      "from": "14.anger",
+      "mood": "tense",
+      "at": 119.3
+    },
+    {
+      "from": "15.saw",
+      "mood": "dark",
+      "at": 129.97
+    },
+    {
+      "from": "17.nothing",
+      "mood": "none",
+      "at": 143.5
+    },
+    {
+      "from": "17.wait",
+      "mood": "drone",
+      "at": 145.8
+    },
+    {
+      "from": "17.hands",
+      "mood": "hope",
+      "at": 148.67
+    },
+    {
+      "from": "18.break",
+      "mood": "tense",
+      "at": 161.1
+    }
+  ],
+  "beds": 13,
+  "measured": {
+    "musicUnderVoiceDb": 18.2,
+    "secondsWithoutMusic": 3.7,
+    "bedsUnderVoiceDb": 23.2,
+    "sfx": 275,
+    "sfxPerMinute": 98.1,
+    "sfxKinds": 35,
+    "longestGapSeconds": 2.6,
+    "longestGapAt": 90.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.3,
+    "voiceOverRestWorstDb": 1.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 1.1,
+        "t": 161.8,
+        "cue": "18.break",
+        "sounding": [
+          "boom",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 3.8,
+        "t": 165.8,
+        "cue": "18.know",
+        "sounding": [
+          "pop",
+          "sting"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 112.6,
+        "cue": "13.roofs",
+        "sounding": [
+          "fire_whoosh",
+          "step_stone",
+          "sting"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 135.4,
+        "cue": "15.took",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 97.0,
+        "cue": "12.shirt",
+        "sounding": [
+          "crackle",
+          "sting",
+          "swish"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 149.5,
+        "cue": "17.hands",
+        "sounding": [
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 1.5
+  },
+  "failures": [
+    "at 161.8s [18.break] the words are covered: the voice is only 1.1 dB over the rest (boom, sparkle). Turn that down, or move it off the words."
+  ]
+}

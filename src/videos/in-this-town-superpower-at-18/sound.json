@@ -1,0 +1,1592 @@
+{
+  "film": "in-this-town-superpower-at-18",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-superpower-at-18",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "Hook and tour: a town of small, silly powers."
+      },
+      {
+        "from": "3.twins",
+        "mood": "curious",
+        "why": "The twin: something is wrong with one of them."
+      },
+      {
+        "from": "4.father",
+        "mood": "sad",
+        "why": "The father takes him away and does not come back."
+      },
+      {
+        "from": "6.help",
+        "mood": "town",
+        "why": "He grows up anyway, and it is a good life."
+      },
+      {
+        "from": "7.bo",
+        "mood": "playful",
+        "why": "The friends' powers, and they are funny."
+      },
+      {
+        "from": "8.plant",
+        "mood": "drone",
+        "why": "Over the hills, the other birthday."
+      },
+      {
+        "from": "9.bell",
+        "mood": "playful",
+        "why": "His turn: one daisy, and the town laughs."
+      },
+      {
+        "from": "10.hate",
+        "mood": "sad",
+        "why": "He hates it and goes home early."
+      },
+      {
+        "from": "10.grass",
+        "mood": "hope",
+        "why": "The grass by his bed knows what he does not."
+      },
+      {
+        "from": "11.woke",
+        "mood": "tense",
+        "why": "Smoke and screaming; it grows to the blast."
+      },
+      {
+        "from": "11.ground",
+        "mood": "dark",
+        "why": "On his back in the road; someone in the smoke."
+      },
+      {
+        "from": "14.anger",
+        "mood": "tense",
+        "why": "He goes for his brother, and then Bo does."
+      },
+      {
+        "from": "15.saw",
+        "mood": "dark",
+        "why": "What the power is."
+      },
+      {
+        "from": "17.nothing",
+        "mood": "none",
+        "why": "One held breath in the mud: it should hurt, and it does not."
+      },
+      {
+        "from": "17.wait",
+        "mood": "drone",
+        "why": "Waiting for the end."
+      },
+      {
+        "from": "17.hands",
+        "mood": "hope",
+        "why": "His hands. This time the hope is right."
+      },
+      {
+        "from": "18.break",
+        "mood": "tense",
+        "why": "A hundred powers against one: part one stops while it is still climbing."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "4.road",
+      "bed": "village"
+    },
+    {
+      "from": "5.wait",
+      "to": "5.forgot",
+      "bed": "night"
+    },
+    {
+      "from": "5.winter",
+      "to": "5.ten",
+      "bed": "wind"
+    },
+    {
+      "from": "5.plates",
+      "to": "5.plates",
+      "bed": "room"
+    },
+    {
+      "from": "6.help",
+      "to": "7.told",
+      "bed": "village"
+    },
+    {
+      "from": "8.plant",
+      "to": "8.what",
+      "bed": "wind"
+    },
+    {
+      "from": "9.bell",
+      "to": "10.never",
+      "bed": "village"
+    },
+    {
+      "from": "9.bell",
+      "to": "9.town",
+      "bed": "crowd"
+    },
+    {
+      "from": "10.grass",
+      "to": "10.grass",
+      "bed": "night"
+    },
+    {
+      "from": "11.woke",
+      "to": "11.street",
+      "bed": "room"
+    },
+    {
+      "from": "11.woke",
+      "to": "18.sub",
+      "bed": "fire"
+    },
+    {
+      "from": "11.tip",
+      "to": "11.mom",
+      "bed": "crowd"
+    },
+    {
+      "from": "13.roofs",
+      "to": "13.mother",
+      "bed": "crowd"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "The town bell on the first frame. It rings for every birthday in the film."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "sparkle",
+      "word": "superpower",
+      "why": "'Superpower': a power arrives."
+    },
+    {
+      "cue": "1.day",
+      "sfx": "swish",
+      "why": "Cut."
+    },
+    {
+      "cue": "1.day",
+      "sfx": "pop",
+      "word": "eighteen",
+      "why": "'Eighteen'."
+    },
+    {
+      "cue": "1.bell",
+      "sfx": "bell",
+      "word": "rang",
+      "why": "'The bell rang once'."
+    },
+    {
+      "cue": "1.bell",
+      "sfx": "chime",
+      "word": "had",
+      "trim": -2,
+      "why": "'And you had one'.",
+      "at": 0.2
+    },
+    {
+      "cue": "2.who",
+      "sfx": "whoosh",
+      "why": "Scene 2: round the town."
+    },
+    {
+      "cue": "2.who",
+      "sfx": "boing",
+      "word": "who",
+      "dur": 0.3,
+      "trim": -2,
+      "why": "Shrugs: nobody knows."
+    },
+    {
+      "cue": "2.good",
+      "sfx": "swish",
+      "why": "Cut."
+    },
+    {
+      "cue": "2.good",
+      "sfx": "bonk",
+      "word": "good",
+      "why": "'Nobody got a good one'."
+    },
+    {
+      "cue": "2.mother",
+      "sfx": "swish",
+      "why": "Cut to his mother."
+    },
+    {
+      "cue": "2.mother",
+      "sfx": "rustle",
+      "why": "She reaches under the bed."
+    },
+    {
+      "cue": "2.mother",
+      "sfx": "ding",
+      "word": "sock",
+      "note": "E6",
+      "trim": -2,
+      "why": "'Sock': found it."
+    },
+    {
+      "cue": "2.socks",
+      "sfx": "blip",
+      "word": "socks",
+      "pitch": 0.8,
+      "why": "'Only socks'."
+    },
+    {
+      "cue": "2.old",
+      "sfx": "swish",
+      "why": "Cut to the pond."
+    },
+    {
+      "cue": "2.old",
+      "sfx": "plink",
+      "word": "underwater",
+      "why": "'Underwater': he goes under."
+    },
+    {
+      "cue": "2.old",
+      "sfx": "plink",
+      "p": 0.8,
+      "pitch": 1.3,
+      "why": "Bubbles."
+    },
+    {
+      "cue": "2.two",
+      "sfx": "tick",
+      "repeat": 2,
+      "every": 0.35,
+      "why": "'Two seconds': one, two."
+    },
+    {
+      "cue": "2.two",
+      "sfx": "pop",
+      "p": 0.85,
+      "why": "And up he comes."
+    },
+    {
+      "cue": "3.twins",
+      "sfx": "whoosh",
+      "why": "Scene 3: two boys."
+    },
+    {
+      "cue": "3.twins",
+      "sfx": "blip",
+      "word": "brother",
+      "why": "'Brother'."
+    },
+    {
+      "cue": "3.shirts",
+      "sfx": "pop",
+      "word": "red",
+      "pan": -0.4,
+      "pitch": 1.2,
+      "why": "'Red'."
+    },
+    {
+      "cue": "3.shirts",
+      "sfx": "pop",
+      "word": "black",
+      "pan": 0.4,
+      "pitch": 0.7,
+      "why": "'Black'."
+    },
+    {
+      "cue": "3.pigs",
+      "sfx": "swish",
+      "why": "Cut to the pen."
+    },
+    {
+      "cue": "3.pigs",
+      "sfx": "thud",
+      "word": "kicked",
+      "why": "'Kicked'."
+    },
+    {
+      "cue": "3.pigs",
+      "sfx": "boing",
+      "word": "pigs",
+      "dur": 0.3,
+      "trim": -3,
+      "why": "The pig bounces off."
+    },
+    {
+      "cue": "3.sheep",
+      "sfx": "whoosh_low",
+      "word": "pushed",
+      "why": "'Pushed': the sheep goes."
+    },
+    {
+      "cue": "3.sheep",
+      "sfx": "plink",
+      "word": "pond",
+      "pitch": 0.7,
+      "repeat": 3,
+      "every": 0.12,
+      "why": "'Pond': splash."
+    },
+    {
+      "cue": "3.sheep",
+      "sfx": "slide_down",
+      "word": "laughed",
+      "trim": -2,
+      "why": "'He laughed'."
+    },
+    {
+      "cue": "3.me",
+      "sfx": "swish",
+      "why": "Cut."
+    },
+    {
+      "cue": "3.me",
+      "sfx": "scrape",
+      "word": "pulled",
+      "dur": 0.5,
+      "why": "'Pulled' a wet sheep out."
+    },
+    {
+      "cue": "3.me",
+      "sfx": "plink",
+      "p": 0.55,
+      "why": "It drips."
+    },
+    {
+      "cue": "3.me",
+      "sfx": "blip",
+      "word": "laughed",
+      "pitch": 0.8,
+      "why": "'Laughed at that too'."
+    },
+    {
+      "cue": "4.father",
+      "sfx": "whoosh",
+      "why": "Scene 4: the morning he is taken."
+    },
+    {
+      "cue": "4.father",
+      "sfx": "rustle",
+      "word": "hand",
+      "why": "'Hand': the father takes it."
+    },
+    {
+      "cue": "4.father",
+      "sfx": "step_stone",
+      "p": 0.6,
+      "repeat": 2,
+      "every": 0.4,
+      "trim": 1,
+      "why": "They start to walk."
+    },
+    {
+      "cue": "4.village",
+      "sfx": "gust",
+      "word": "hills",
+      "dur": 1.2,
+      "why": "'Over the hills'."
+    },
+    {
+      "cue": "4.village",
+      "sfx": "blip",
+      "word": "kind",
+      "why": "'Kind'."
+    },
+    {
+      "cue": "4.soon",
+      "sfx": "swish",
+      "why": "Cut to the father."
+    },
+    {
+      "cue": "4.soon",
+      "sfx": "chime",
+      "word": "soon",
+      "trim": -3,
+      "why": "'Back soon': a promise. It is never kept."
+    },
+    {
+      "cue": "4.road",
+      "sfx": "step_grass",
+      "at": 0.2,
+      "repeat": 4,
+      "every": 0.45,
+      "trim": -3,
+      "why": "Two walking away up the road."
+    },
+    {
+      "cue": "4.road",
+      "sfx": "drop",
+      "word": "dot",
+      "trim": -4,
+      "why": "'A dot'."
+    },
+    {
+      "cue": "5.wait",
+      "sfx": "whoosh",
+      "why": "Scene 5: the gate at night."
+    },
+    {
+      "cue": "5.wait",
+      "sfx": "tick",
+      "word": "gate",
+      "repeat": 2,
+      "every": 0.5,
+      "why": "Waiting."
+    },
+    {
+      "cue": "5.next",
+      "sfx": "swish",
+      "why": "Cut: the next night."
+    },
+    {
+      "cue": "5.next",
+      "sfx": "tick",
+      "p": 0.5,
+      "why": "Still waiting."
+    },
+    {
+      "cue": "5.winter",
+      "sfx": "gust",
+      "dur": 0.9,
+      "why": "'Winter': snow."
+    },
+    {
+      "cue": "5.ten",
+      "sfx": "swish",
+      "why": "Ten winters."
+    },
+    {
+      "cue": "5.ten",
+      "sfx": "tick",
+      "at": 0.15,
+      "repeat": 5,
+      "every": 0.17,
+      "pitchStep": 1.05,
+      "why": "Years counted off."
+    },
+    {
+      "cue": "5.forgot",
+      "sfx": "swish",
+      "why": "Cut."
+    },
+    {
+      "cue": "5.forgot",
+      "sfx": "drop",
+      "word": "forgot",
+      "trim": -5,
+      "why": "'Forgot'."
+    },
+    {
+      "cue": "5.plates",
+      "sfx": "place",
+      "at": 0.3,
+      "repeat": 4,
+      "every": 0.42,
+      "why": "'Four plates', set one at a time."
+    },
+    {
+      "cue": "5.plates",
+      "sfx": "blip",
+      "p": 0.9,
+      "pitch": 0.7,
+      "why": "The fourth place is empty."
+    },
+    {
+      "cue": "6.help",
+      "sfx": "whoosh",
+      "why": "Scene 6: growing up."
+    },
+    {
+      "cue": "6.help",
+      "sfx": "slide_up",
+      "word": "grew",
+      "trim": -2,
+      "why": "'Grew up'."
+    },
+    {
+      "cue": "6.water",
+      "sfx": "swish",
+      "why": "Cut."
+    },
+    {
+      "cue": "6.water",
+      "sfx": "plink",
+      "word": "water",
+      "repeat": 2,
+      "every": 0.3,
+      "why": "A bucket of water, slopping."
+    },
+    {
+      "cue": "6.water",
+      "sfx": "step_grass",
+      "at": 0.2,
+      "repeat": 2,
+      "every": 0.45,
+      "trim": -3,
+      "why": "Carrying it."
+    },
+    {
+      "cue": "6.roof",
+      "sfx": "swish",
+      "why": "Cut to the roof."
+    },
+    {
+      "cue": "6.roof",
+      "sfx": "place",
+      "word": "fixed",
+      "repeat": 3,
+      "every": 0.3,
+      "why": "Hammering a roof block in."
+    },
+    {
+      "cue": "6.friends",
+      "sfx": "swish",
+      "why": "Cut."
+    },
+    {
+      "cue": "6.friends",
+      "sfx": "pop",
+      "word": "Bo",
+      "pitch": 0.8,
+      "pan": -0.5,
+      "why": "'Bo'."
+    },
+    {
+      "cue": "6.friends",
+      "sfx": "pop",
+      "word": "Mira",
+      "pitch": 1.0,
+      "why": "'Mira'."
+    },
+    {
+      "cue": "6.friends",
+      "sfx": "pop",
+      "word": "Tip",
+      "pitch": 1.25,
+      "pan": 0.5,
+      "why": "'Tip'."
+    },
+    {
+      "cue": "6.good",
+      "sfx": "chime",
+      "word": "good",
+      "why": "'A pretty good life'."
+    },
+    {
+      "cue": "7.bo",
+      "sfx": "whoosh",
+      "why": "Scene 7: the friends' birthdays."
+    },
+    {
+      "cue": "7.bo",
+      "sfx": "bell",
+      "word": "bell",
+      "why": "Bo's bell."
+    },
+    {
+      "cue": "7.jump",
+      "sfx": "zip",
+      "word": "jump",
+      "why": "'Jump'."
+    },
+    {
+      "cue": "7.jump",
+      "sfx": "thud",
+      "word": "jump",
+      "at": 0.9,
+      "trim": -3,
+      "why": "And down again. Bo's landing: it comes back when it is stolen."
+    },
+    {
+      "cue": "7.mira",
+      "sfx": "swish",
+      "why": "Cut to Mira."
+    },
+    {
+      "cue": "7.mira",
+      "sfx": "sparkle",
+      "word": "warm",
+      "why": "'Warm': the loaf glows."
+    },
+    {
+      "cue": "7.mira",
+      "sfx": "rustle",
+      "word": "touching",
+      "why": "'Touching it'."
+    },
+    {
+      "cue": "7.tip",
+      "sfx": "swish",
+      "why": "Cut to Tip."
+    },
+    {
+      "cue": "7.tip",
+      "sfx": "ding",
+      "word": "north",
+      "note": "A5",
+      "why": "'North': the arrow."
+    },
+    {
+      "cue": "7.told",
+      "sfx": "blip",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.3,
+      "pitchStep": 1.06,
+      "why": "He points. Again. And again."
+    },
+    {
+      "cue": "8.plant",
+      "sfx": "whoosh",
+      "why": "Scene 8: over the hills."
+    },
+    {
+      "cue": "8.plant",
+      "sfx": "gust",
+      "p": 0.3,
+      "dur": 1.4,
+      "why": "Hills."
+    },
+    {
+      "cue": "8.plant",
+      "sfx": "sting",
+      "word": "brother",
+      "trim": -5,
+      "why": "'My brother'."
+    },
+    {
+      "cue": "8.what",
+      "sfx": "heartbeat",
+      "at": 0.2,
+      "repeat": 2,
+      "every": 0.7,
+      "why": "What would the bell give him?"
+    },
+    {
+      "cue": "8.what",
+      "sfx": "thud",
+      "word": "kicked",
+      "trim": -3,
+      "why": "'Kicked pigs'."
+    },
+    {
+      "cue": "9.bell",
+      "sfx": "whoosh",
+      "why": "Scene 9: his own birthday."
+    },
+    {
+      "cue": "9.bell",
+      "sfx": "bell",
+      "word": "rang",
+      "why": "His bell."
+    },
+    {
+      "cue": "9.bell",
+      "sfx": "rustle",
+      "word": "watched",
+      "why": "The whole town turns to look."
+    },
+    {
+      "cue": "9.nothing",
+      "sfx": "tick",
+      "at": 0.2,
+      "repeat": 3,
+      "every": 0.4,
+      "why": "Nothing. Nothing."
+    },
+    {
+      "cue": "9.daisy",
+      "sfx": "pop",
+      "word": "daisy",
+      "pitch": 1.4,
+      "why": "'Daisy': up it comes. The same pop comes back in the mud."
+    },
+    {
+      "cue": "9.daisy",
+      "sfx": "plink",
+      "word": "foot",
+      "pitch": 1.4,
+      "why": "A very small power."
+    },
+    {
+      "cue": "9.that",
+      "sfx": "bonk",
+      "word": "it",
+      "why": "'That was it'."
+    },
+    {
+      "cue": "9.that",
+      "sfx": "slide_down",
+      "word": "power",
+      "why": "'My power'."
+    },
+    {
+      "cue": "9.town",
+      "sfx": "cheer",
+      "dur": 1.1,
+      "trim": -2,
+      "why": "The town laughs."
+    },
+    {
+      "cue": "10.hate",
+      "sfx": "whoosh",
+      "why": "Scene 10."
+    },
+    {
+      "cue": "10.hate",
+      "sfx": "hit",
+      "word": "hated",
+      "trim": -2,
+      "why": "'Hated'."
+    },
+    {
+      "cue": "10.them",
+      "sfx": "zip",
+      "word": "jump",
+      "pan": -0.5,
+      "why": "'Jump'."
+    },
+    {
+      "cue": "10.them",
+      "sfx": "sparkle",
+      "word": "warm",
+      "why": "'Warm'."
+    },
+    {
+      "cue": "10.them",
+      "sfx": "ding",
+      "word": "north",
+      "note": "A5",
+      "pan": 0.5,
+      "why": "'North'."
+    },
+    {
+      "cue": "10.me",
+      "sfx": "plink",
+      "word": "flower",
+      "pitch": 1.4,
+      "why": "'A flower'."
+    },
+    {
+      "cue": "10.envy",
+      "sfx": "swish",
+      "why": "Cut."
+    },
+    {
+      "cue": "10.envy",
+      "sfx": "step_stone",
+      "at": 0.2,
+      "repeat": 5,
+      "every": 0.45,
+      "trim": -3,
+      "why": "Walking home alone."
+    },
+    {
+      "cue": "10.envy",
+      "sfx": "cheer",
+      "p": 0.2,
+      "dur": 1.0,
+      "trim": -5,
+      "pan": -0.5,
+      "why": "Behind him, the others showing off."
+    },
+    {
+      "cue": "10.never",
+      "sfx": "swish",
+      "why": "Cut to his door."
+    },
+    {
+      "cue": "10.never",
+      "sfx": "tick",
+      "word": "once",
+      "why": "'Not once'."
+    },
+    {
+      "cue": "10.grass",
+      "sfx": "whoosh_low",
+      "why": "Cut to his room, at night."
+    },
+    {
+      "cue": "10.grass",
+      "sfx": "sparkle",
+      "word": "grass",
+      "dur": 1.4,
+      "trim": 2,
+      "why": "Grass coming up round the bed, unseen. This is the sound of his power."
+    },
+    {
+      "cue": "10.grass",
+      "sfx": "pop",
+      "p": 0.85,
+      "pitch": 1.4,
+      "trim": -3,
+      "why": "A daisy."
+    },
+    {
+      "cue": "11.woke",
+      "sfx": "sting",
+      "why": "Scene 11: screaming."
+    },
+    {
+      "cue": "11.woke",
+      "sfx": "cheer",
+      "word": "screaming",
+      "dur": 1.0,
+      "trim": -3,
+      "why": "'Screaming', outside."
+    },
+    {
+      "cue": "11.street",
+      "sfx": "whoosh",
+      "why": "To the window."
+    },
+    {
+      "cue": "11.street",
+      "sfx": "fire_whoosh",
+      "word": "smoke",
+      "why": "'Smoke'."
+    },
+    {
+      "cue": "11.tip",
+      "sfx": "step_stone",
+      "at": 0.1,
+      "repeat": 8,
+      "every": 0.22,
+      "why": "Tip running."
+    },
+    {
+      "cue": "11.tip",
+      "sfx": "ding",
+      "word": "North",
+      "note": "A5",
+      "trim": 2,
+      "why": "'North!' For once it matters."
+    },
+    {
+      "cue": "11.mom",
+      "sfx": "swish",
+      "why": "Cut to the door."
+    },
+    {
+      "cue": "11.mom",
+      "sfx": "heartbeat",
+      "at": 0.2,
+      "repeat": 2,
+      "every": 0.7,
+      "why": "Where is she?"
+    },
+    {
+      "cue": "11.boom",
+      "sfx": "riser",
+      "word": "exploded",
+      "dur": 1.6,
+      "why": "Rising into the blast."
+    },
+    {
+      "cue": "11.boom",
+      "sfx": "boom",
+      "word": "exploded",
+      "why": "'Exploded'."
+    },
+    {
+      "cue": "11.boom",
+      "sfx": "debris",
+      "word": "exploded",
+      "at": 0.25,
+      "dur": 1.0,
+      "trim": 3,
+      "why": "His house coming down."
+    },
+    {
+      "cue": "11.ground",
+      "sfx": "thud",
+      "word": "landed",
+      "trim": 2,
+      "why": "'Landed'."
+    },
+    {
+      "cue": "11.ground",
+      "sfx": "debris",
+      "p": 0.4,
+      "dur": 0.9,
+      "why": "Bits landing round him."
+    },
+    {
+      "cue": "12.smoke",
+      "sfx": "whoosh_low",
+      "why": "Scene 12: the smoke rolls across."
+    },
+    {
+      "cue": "12.smoke",
+      "sfx": "step_stone",
+      "p": 0.5,
+      "repeat": 2,
+      "every": 0.5,
+      "trim": -2,
+      "why": "Someone in it."
+    },
+    {
+      "cue": "12.shirt",
+      "sfx": "sting",
+      "word": "black",
+      "trim": -2,
+      "why": "'A black shirt'."
+    },
+    {
+      "cue": "12.shirt",
+      "sfx": "crackle",
+      "p": 0.4,
+      "trim": 3,
+      "why": "His hand is on fire."
+    },
+    {
+      "cue": "12.brother",
+      "sfx": "swish",
+      "why": "Cut to the face."
+    },
+    {
+      "cue": "12.brother",
+      "sfx": "drop",
+      "word": "brother",
+      "why": "'My brother'."
+    },
+    {
+      "cue": "12.brother",
+      "sfx": "crackle",
+      "word": "smiling",
+      "trim": 3,
+      "why": "Lit by his own hand."
+    },
+    {
+      "cue": "12.hand",
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 0.35,
+      "trim": -2,
+      "why": "He walks up."
+    },
+    {
+      "cue": "12.hand",
+      "sfx": "rustle",
+      "word": "hand",
+      "why": "'Hand': held out."
+    },
+    {
+      "cue": "12.up",
+      "sfx": "scrape",
+      "word": "up",
+      "dur": 0.4,
+      "why": "'Got up'."
+    },
+    {
+      "cue": "12.up",
+      "sfx": "step_stone",
+      "p": 0.75,
+      "why": "On his own feet."
+    },
+    {
+      "cue": "13.king",
+      "sfx": "whoosh",
+      "why": "Scene 13: the offer."
+    },
+    {
+      "cue": "13.king",
+      "sfx": "crackle",
+      "p": 0.3,
+      "trim": 3,
+      "why": "Fire in his hand as he talks."
+    },
+    {
+      "cue": "13.king",
+      "sfx": "gust",
+      "word": "hills",
+      "dur": 0.9,
+      "why": "'Over the hills'."
+    },
+    {
+      "cue": "13.want",
+      "sfx": "swish",
+      "why": "Closer."
+    },
+    {
+      "cue": "13.want",
+      "sfx": "blip",
+      "word": "brother",
+      "pitch": 0.7,
+      "why": "'Brother'."
+    },
+    {
+      "cue": "13.want",
+      "sfx": "crackle",
+      "p": 0.3,
+      "trim": 3,
+      "why": "The hand."
+    },
+    {
+      "cue": "13.pigs",
+      "sfx": "swish",
+      "why": "Cut to the pen."
+    },
+    {
+      "cue": "13.pigs",
+      "sfx": "rustle",
+      "at": 0.2,
+      "repeat": 4,
+      "every": 0.3,
+      "why": "Three pigs shaking."
+    },
+    {
+      "cue": "13.father",
+      "sfx": "swish",
+      "why": "Across to the brother."
+    },
+    {
+      "cue": "13.father",
+      "sfx": "tick",
+      "word": "He",
+      "why": "No answer."
+    },
+    {
+      "cue": "13.father",
+      "sfx": "sting",
+      "word": "smiled",
+      "trim": -3,
+      "why": "'Smiled'. The question stays open."
+    },
+    {
+      "cue": "13.behind",
+      "sfx": "swish",
+      "word": "behind",
+      "why": "'Behind': he turns."
+    },
+    {
+      "cue": "13.roofs",
+      "sfx": "fire_whoosh",
+      "word": "burning",
+      "trim": 0,
+      "why": "'Burning'."
+    },
+    {
+      "cue": "13.roofs",
+      "sfx": "step_stone",
+      "at": 0.2,
+      "repeat": 8,
+      "every": 0.25,
+      "trim": -2,
+      "why": "Everyone running."
+    },
+    {
+      "cue": "13.roofs",
+      "sfx": "cheer",
+      "word": "running",
+      "dur": 1.0,
+      "trim": -4,
+      "why": "Shouts."
+    },
+    {
+      "cue": "13.mother",
+      "sfx": "whoosh_low",
+      "why": "The long push down the road."
+    },
+    {
+      "cue": "13.mother",
+      "sfx": "heartbeat",
+      "word": "saw",
+      "repeat": 3,
+      "every": 0.8,
+      "why": "'I saw her'."
+    },
+    {
+      "cue": "13.sock",
+      "sfx": "ding",
+      "word": "sock",
+      "note": "E6",
+      "trim": -3,
+      "why": "'One sock': her power, from the second scene, and all she could do."
+    },
+    {
+      "cue": "14.anger",
+      "sfx": "heartbeat",
+      "word": "hot",
+      "why": "'Hot'."
+    },
+    {
+      "cue": "14.anger",
+      "sfx": "fire_whoosh",
+      "trim": -2,
+      "why": "Scene 14."
+    },
+    {
+      "cue": "14.push",
+      "sfx": "riser",
+      "word": "pushed",
+      "dur": 0.7,
+      "why": "Into the push."
+    },
+    {
+      "cue": "14.push",
+      "sfx": "step_stone",
+      "at": 0.05,
+      "repeat": 2,
+      "every": 0.2,
+      "why": "He runs at him."
+    },
+    {
+      "cue": "14.push",
+      "sfx": "hit",
+      "word": "pushed",
+      "trim": -2,
+      "why": "'Pushed'."
+    },
+    {
+      "cue": "14.inch",
+      "sfx": "bonk",
+      "word": "move",
+      "why": "'Did not move'."
+    },
+    {
+      "cue": "14.inch",
+      "sfx": "tick",
+      "word": "inch",
+      "why": "Not an inch."
+    },
+    {
+      "cue": "15.bo",
+      "sfx": "zip",
+      "word": "jumped",
+      "dur": 0.6,
+      "trim": 0,
+      "why": "Scene 15: Bo, in the air."
+    },
+    {
+      "cue": "15.bo",
+      "sfx": "whoosh",
+      "p": 0.6,
+      "why": "He sails in."
+    },
+    {
+      "cue": "15.caught",
+      "sfx": "hit",
+      "word": "caught",
+      "trim": -3,
+      "why": "'Caught'."
+    },
+    {
+      "cue": "15.caught",
+      "sfx": "rustle",
+      "p": 0.5,
+      "repeat": 2,
+      "every": 0.25,
+      "why": "Bo kicking in the air."
+    },
+    {
+      "cue": "15.light",
+      "sfx": "slide_down",
+      "word": "jump",
+      "trim": 3,
+      "why": "His jump going out of him."
+    },
+    {
+      "cue": "15.light",
+      "sfx": "sparkle",
+      "p": 0.2,
+      "dur": 1.0,
+      "why": "The green lights crossing."
+    },
+    {
+      "cue": "15.light",
+      "sfx": "drop",
+      "word": "light",
+      "why": "'Like a light'."
+    },
+    {
+      "cue": "15.jumped",
+      "sfx": "zip",
+      "word": "jumped",
+      "trim": 2,
+      "why": "'Jumped': Bo's jump, in the wrong legs."
+    },
+    {
+      "cue": "15.jumped",
+      "sfx": "thud",
+      "word": "jumped",
+      "at": 0.85,
+      "why": "Bo's landing, from scene 7."
+    },
+    {
+      "cue": "15.jumped",
+      "sfx": "slide_down",
+      "p": 0.85,
+      "trim": -2,
+      "why": "He laughs."
+    },
+    {
+      "cue": "15.saw",
+      "sfx": "swish",
+      "why": "Cut to his face."
+    },
+    {
+      "cue": "15.saw",
+      "sfx": "sting",
+      "word": "saw",
+      "trim": -3,
+      "why": "'I saw it'."
+    },
+    {
+      "cue": "15.not",
+      "sfx": "fire_whoosh",
+      "word": "fire",
+      "trim": 2,
+      "why": "'Fire'."
+    },
+    {
+      "cue": "15.not",
+      "sfx": "hit",
+      "word": "explosions",
+      "trim": -1,
+      "why": "'Explosions'."
+    },
+    {
+      "cue": "15.not",
+      "sfx": "debris",
+      "word": "explosions",
+      "at": 0.2,
+      "dur": 0.7,
+      "why": "And what it leaves."
+    },
+    {
+      "cue": "15.not",
+      "sfx": "stomp",
+      "word": "strength",
+      "why": "'Strength': the road cracks."
+    },
+    {
+      "cue": "15.not",
+      "sfx": "crack",
+      "word": "strength",
+      "at": 0.1,
+      "trim": -2,
+      "why": "The road."
+    },
+    {
+      "cue": "15.took",
+      "sfx": "riser",
+      "word": "taking",
+      "dur": 1.0,
+      "why": "Into 'taking'."
+    },
+    {
+      "cue": "15.took",
+      "sfx": "sparkle",
+      "word": "taking",
+      "dur": 1.4,
+      "pitch": 0.7,
+      "trim": 2,
+      "why": "'Taking': every stolen light comes out."
+    },
+    {
+      "cue": "15.took",
+      "sfx": "drop",
+      "word": "village",
+      "why": "'A whole village'."
+    },
+    {
+      "cue": "15.scared",
+      "sfx": "swish",
+      "why": "Cut to him."
+    },
+    {
+      "cue": "15.scared",
+      "sfx": "heartbeat",
+      "at": 0.2,
+      "repeat": 3,
+      "every": 0.6,
+      "why": "'Scared'."
+    },
+    {
+      "cue": "15.scared",
+      "sfx": "step_stone",
+      "p": 0.6,
+      "trim": -2,
+      "why": "One step back."
+    },
+    {
+      "cue": "16.flick",
+      "sfx": "tick",
+      "p": 0.2,
+      "why": "Scene 16: one finger, lifted."
+    },
+    {
+      "cue": "16.flick",
+      "sfx": "hit",
+      "word": "flicked",
+      "why": "'Flicked'."
+    },
+    {
+      "cue": "16.flick",
+      "sfx": "zip",
+      "word": "flicked",
+      "at": 0.05,
+      "dur": 0.5,
+      "why": "And he is gone."
+    },
+    {
+      "cue": "16.flew",
+      "sfx": "whoosh",
+      "p": 0.15,
+      "dur": 1.4,
+      "trim": 2,
+      "why": "In the air."
+    },
+    {
+      "cue": "16.flew",
+      "sfx": "plink",
+      "word": "well",
+      "why": "'The well'."
+    },
+    {
+      "cue": "16.flew",
+      "sfx": "bell",
+      "word": "bell",
+      "trim": -5,
+      "why": "'The bell', going by underneath."
+    },
+    {
+      "cue": "16.flew",
+      "sfx": "thud",
+      "p": 0.9,
+      "trim": 3,
+      "why": "'Mud'."
+    },
+    {
+      "cue": "16.flew",
+      "sfx": "debris",
+      "p": 0.92,
+      "dur": 0.6,
+      "why": "Mud flying."
+    },
+    {
+      "cue": "17.nothing",
+      "sfx": "whoosh_low",
+      "why": "Scene 17: stillness."
+    },
+    {
+      "cue": "17.nothing",
+      "sfx": "crack",
+      "word": "broken",
+      "trim": -5,
+      "why": "'Broken'."
+    },
+    {
+      "cue": "17.nothing",
+      "sfx": "tick",
+      "word": "nothing",
+      "repeat": 2,
+      "every": 0.4,
+      "why": "'Nothing'."
+    },
+    {
+      "cue": "17.wait",
+      "sfx": "step_grass",
+      "at": 0.2,
+      "repeat": 5,
+      "every": 0.52,
+      "why": "He walks over, slowly."
+    },
+    {
+      "cue": "17.wait",
+      "sfx": "crackle",
+      "p": 0.5,
+      "trim": 2,
+      "why": "Fire in his hand."
+    },
+    {
+      "cue": "17.wait",
+      "sfx": "heartbeat",
+      "word": "waited",
+      "repeat": 2,
+      "every": 0.7,
+      "why": "'The end'."
+    },
+    {
+      "cue": "17.hands",
+      "sfx": "swish",
+      "why": "Cut to a hand."
+    },
+    {
+      "cue": "17.hands",
+      "sfx": "sparkle",
+      "word": "hands",
+      "dur": 0.9,
+      "trim": 0,
+      "why": "Green round the fingers: the sound from his bedroom floor."
+    },
+    {
+      "cue": "17.mud",
+      "sfx": "rustle",
+      "word": "lifted",
+      "why": "'Lifted'."
+    },
+    {
+      "cue": "17.mud",
+      "sfx": "sparkle",
+      "word": "grass",
+      "dur": 0.9,
+      "trim": 0,
+      "why": "'Grass'."
+    },
+    {
+      "cue": "17.daisy",
+      "sfx": "pop",
+      "word": "daisy",
+      "pitch": 1.4,
+      "trim": 2,
+      "why": "'Daisy': the pop from the day of the bell."
+    },
+    {
+      "cue": "17.did",
+      "sfx": "blip",
+      "word": "I",
+      "pitch": 1.2,
+      "why": "'Did I do this?'"
+    },
+    {
+      "cue": "17.did",
+      "sfx": "swish",
+      "why": "Cut to his face."
+    },
+    {
+      "cue": "17.pig",
+      "sfx": "swish",
+      "why": "Cut to the pig."
+    },
+    {
+      "cue": "17.pig",
+      "sfx": "rustle",
+      "word": "touched",
+      "why": "'Touched'."
+    },
+    {
+      "cue": "17.pig",
+      "sfx": "sparkle",
+      "word": "grew",
+      "dur": 0.9,
+      "trim": 3,
+      "why": "'Grew back'."
+    },
+    {
+      "cue": "17.pig",
+      "sfx": "ding",
+      "word": "back",
+      "note": "E6",
+      "why": "A whole ear."
+    },
+    {
+      "cue": "18.life",
+      "sfx": "riser",
+      "word": "life",
+      "dur": 1.6,
+      "why": "Scene 18: into 'life'."
+    },
+    {
+      "cue": "18.life",
+      "sfx": "boom",
+      "word": "life",
+      "trim": -3,
+      "why": "'Life': the pen turns green. The second and last boom, and this one is his."
+    },
+    {
+      "cue": "18.life",
+      "sfx": "sparkle",
+      "word": "life",
+      "at": 0.1,
+      "dur": 1.2,
+      "trim": 3,
+      "why": "Daisies, one after another."
+    },
+    {
+      "cue": "18.break",
+      "sfx": "swish",
+      "why": "Cut to the brother."
+    },
+    {
+      "cue": "18.break",
+      "sfx": "sparkle",
+      "word": "hundred",
+      "pitch": 0.7,
+      "dur": 0.9,
+      "why": "'A hundred powers', turning round him."
+    },
+    {
+      "cue": "18.break",
+      "sfx": "hit",
+      "word": "break",
+      "trim": -2,
+      "why": "'Break'."
+    },
+    {
+      "cue": "18.break",
+      "sfx": "debris",
+      "word": "break",
+      "at": 0.15,
+      "dur": 0.6,
+      "why": "The town again."
+    },
+    {
+      "cue": "18.know",
+      "sfx": "scrape",
+      "word": "stood",
+      "dur": 0.4,
+      "why": "'Stood up'."
+    },
+    {
+      "cue": "18.know",
+      "sfx": "step_grass",
+      "word": "up",
+      "why": "On grass he made."
+    },
+    {
+      "cue": "18.know",
+      "sfx": "heartbeat",
+      "word": "said",
+      "why": "Before he says it."
+    },
+    {
+      "cue": "18.know",
+      "sfx": "sting",
+      "word": "beat",
+      "trim": -2,
+      "why": "'Beat you'."
+    },
+    {
+      "cue": "18.sub",
+      "sfx": "pop",
+      "trim": 1,
+      "why": "The sign."
+    },
+    {
+      "cue": "18.sub",
+      "sfx": "ding",
+      "word": "subscribe",
+      "note": "E6",
+      "why": "'Subscribe'."
+    },
+    {
+      "cue": "18.sub",
+      "sfx": "bell",
+      "p": 0.8,
+      "trim": -3,
+      "why": "The bell, one last time: part two."
+    }
+  ]
+}
