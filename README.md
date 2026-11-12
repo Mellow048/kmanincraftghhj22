@@ -110,6 +110,7 @@ src/
   videos/
     the-schedule/      the demo film
     never-look-at-the-moon/  5 beats, one continuous camera, generated voice
+renders/               finished MP4s kept for review (see renders/README.md)
       world.tsx
       actors.tsx
       scene1.tsx … scene5.tsx
