@@ -94,10 +94,11 @@ export const scene13 = storyScene(timing, {
       note: "What he sees: the houses across the street with every roof alight and smoke pouring up, and along the road below them the whole town running one way.",
       stage: (t, { p }) => (
         <>
-          <Blaze position={[15, 4.4, 11]} size={5.5} height={4.2} count={22} seed={2} />
-          <Blaze position={[1.5, 4.0, 12.5]} size={5} height={4} count={22} seed={5} />
-          <Blaze position={[8.4, 0.6, 9.5]} size={1.6} height={2.4} count={8} seed={7} />
-                    <Smoke position={[15, 6, 11]} rise={9} spread={3} size={2.4} count={12} color="#2b2420" opacity={0.7} seed={3} />
+          <Blaze position={[13.4, 4.0, 10.4]} size={1.3} height={3.6} count={16} seed={2} />
+          <Blaze position={[15.2, 4.4, 10.8]} size={1.5} height={4.2} count={18} seed={3} />
+          <Blaze position={[16.8, 4.0, 10.4]} size={1.3} height={3.6} count={16} seed={4} />
+          <Blaze position={[14.2, 1.6, 7.9]} size={0.8} height={2.2} count={8} seed={9} />
+          <Smoke position={[15, 6, 11]} rise={9} spread={3} size={2.4} count={12} color="#2b2420" opacity={0.7} seed={3} />
           <Smoke position={[1.5, 5.5, 12.5]} rise={9} spread={3} size={2.4} count={12} color="#2b2420" opacity={0.7} seed={6} />
           <FireLight position={[12.5, 3, 7.5]} power={40} reach={16} seed={4} />
           {[0, 1, 2, 3, 4, 5].map((i) => (
