@@ -1,0 +1,8 @@
+Classroom, from the back row. Overhead
+Classroom, from the board. Classmate
+Chalkboard, Teacher
+SchoolHall, from outside it
+SchoolHall, along it
+Overhead: heart, skull, clock, a number
+Aura, Swirl, Echo
+Countdown, Streaks, Beam

@@ -5,11 +5,14 @@ three-minute narrated film with 85 cuts. For those, the narration decides when e
 
     narration.md  →  recorded clips  →  timing.json  →  storyScene  →  captions  →  sound.json  →  mix.mp3
 
-Any topic can use this. `Topics/InThisTown` is the first that does. Start a film of a topic from the topic's own
-starter, which is already wired to all of it:
+Any topic can use this. `Topics/InThisTown` was the first; `Topics/WhatIf` uses it unchanged; `Topics/Explainer`
+uses all of it except `storyScene`, because its camera does not cut (section 3b). Start a film of a topic from the
+topic's own starter, which is already wired to all of it:
 
 ```bash
 npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
+npm run new -- "What If You Could See Who Has a Crush on You" --topic what-if
+npm run new -- "Why Bread Costs More" --topic explainer
 ```
 
 ## 1. The script: `src/videos/<film>/narration.md`
@@ -90,6 +93,30 @@ stage: (t) => (pop(t, BREAD) > 0 ? <Bread scale={pop(t, BREAD)} /> : null)
 `wordAt`, `pop`, `ramp`, `jolt` and the rest come from the topic's pack (`Topics/InThisTown/staging.ts`,
 catalogue in `Topics/InThisTown/PACK.md`). A film's `kit.tsx` passes the pack on and adds one line of its own,
 `export const wordAt = wordClock(timing);`, so a scene imports everything from `"./kit"`.
+
+## 3b. A camera that does not cut: `flightScene`
+
+`storyScene` is a film of hard cuts. A topic can bring its own scene builder for the same script and the same
+timing. The Explainer does (`Topics/Explainer/flight.tsx`): each line is a **stop**, and the camera flies to it as
+the line begins.
+
+```tsx
+export const scene2 = flightScene(timing, {
+  id: "scene2",
+  title: "One loaf, one emerald",
+  from: STOPS.sam,                                   // the last stop of the scene before
+  shots: [{ cue: "2.loaf", to: STOPS.loaf, note: "The one thing everybody knows the price of…" }],
+});
+```
+
+- A shot has no `stage`. A camera that flies away from a thing still sees it, so what a line shows is mounted in
+  the world for the whole film and asks the film's clock when its word is said:
+  `filmClock(timing).useSince("2.loaf", "price")` (`Topics/Shared/clock.ts`).
+- `film.tsx` calls `unbroken(film.scenes)`, which throws if the camera jumps between two shots.
+- The topic's `topic.json` names the builder and the guard in a `camera` block, and `npm run check` holds a film
+  to it. Everything else on this page (the script, the voice, the captions, the sound, the stills) is the same.
+
+`Topics/Explainer/SHOTS.md` is the guide.
 
 ## 4. The world: zones
 
@@ -173,7 +200,7 @@ Needs Python 3.9+, `numpy` and ffmpeg (or `pip install imageio-ffmpeg`). Renderi
 - the usual: no 2D overlays in scenes, deterministic code, atmosphere and lights in the world.
 
 And for a film that declares **no** topic: it must not open the way a topic opens. A base film whose title or
-narration begins "In this town" fails, with the command that starts it again as a topic film.
+first narration line begins "In this town" or "What if" fails, with the command that starts it again as a topic film.
 
 ## 8. Review: one still per shot
 

@@ -1,0 +1,73 @@
+{
+  "id": "what-if",
+  "name": "What If",
+  "folder": "Topics/WhatIf",
+  "profile": "story",
+  "state": "PROVISIONAL",
+  "provisional": {
+    "why": "The owner asked for this topic to be built before its reference: \"reference which we will do later once youre done\". The numbers in `film` and `sound` are therefore not measured from a \"What if\" video.",
+    "from": "The owner: \"its a story just like the InThisTown it has the same camera technique\". So every number here is In This Town's: its one-to-two-minute short cut is this topic's film, and its three-minute film is this topic's `long` cut. Only the opening is this topic's own.",
+    "whenTheReferenceArrives": "Put it in Topics/WhatIf/reference/<name>/, measure it (length, words, words a minute, seconds per shot, the beats), and replace every number below that it disagrees with, and the beat sheet in SCRIPT.md. Then delete this block and set `state` to \"MEASURED\"."
+  },
+  "film": {
+    "seconds": [60, 118],
+    "hardMaxSeconds": 120,
+    "hardMinSeconds": 60,
+    "hardMinWords": 250,
+    "shotSeconds": [0.4, 6.0],
+    "medianShotSeconds": [1.4, 2.3],
+    "wordsPerMinute": [235, 268],
+    "words": [250, 520],
+    "maxWordsPerShot": 18,
+    "opensWith": "What if",
+    "opensWithHint": "A \"What if\" that is answered with facts and not with a story is an explainer: use --topic explainer.",
+    "lastLineContains": "subscribe",
+    "captions": true
+  },
+  "cuts": {
+    "long": {
+      "seconds": [150, 178],
+      "hardMaxSeconds": 180,
+      "words": [640, 770]
+    }
+  },
+  "pack": "Topics/WhatIf/PACK.md",
+  "template": "Topics/WhatIf/template",
+  "models": {
+    "note": "No finished film yet. The first \"What if\" film the owner approves is named here, and becomes the model to build like. Until then, the films of In This Town show how a film of this pipeline is built (src/videos/in-this-town-same-face/): copy how it is BUILT, never what it tells."
+  },
+  "sound": {
+    "required": true,
+    "guide": "Topics/WhatIf/SOUND.md",
+    "minMusicSections": 5,
+    "musicUnderVoiceDb": [15, 24],
+    "maxSecondsWithoutMusic": 8,
+    "minSfxPerMinute": 40,
+    "maxGapSeconds": 6,
+    "maxBuried": 0,
+    "minVoiceOverRestDb": 3,
+    "minVoiceOverRestMedianDb": 10,
+    "lufs": [-16.5, -13],
+    "maxTruePeakDb": -0.3,
+    "moodDefault": "wonder",
+    "bedForLook": {
+      "overworld-night": "night"
+    },
+    "bedForZone": {
+      "class": "classroom",
+      "classroom": "classroom",
+      "hall": "classroom",
+      "hallway": "classroom",
+      "school": "classroom",
+      "room": "room",
+      "bedroom": "room",
+      "house": "room",
+      "street": "village",
+      "yard": "village",
+      "park": "village",
+      "pool": "pool",
+      "roof": "wind",
+      "hill": "wind"
+    }
+  }
+}
