@@ -76,6 +76,16 @@ export const scene3 = storyScene(timing, {
       </>),
     },
     {
+      cue: "3.golem",
+      ...cam.push({ on: [-3.4, 1.65, -2.1], dist: 5.4, to: 4.8, yaw: 38, pitch: 6, fov: 40 }),
+      zone: "village",
+      look: "overworld-day",
+      note: "After the market restarts, the iron golem alone keeps his eyes on the ground. The kid glances up at him; the same lowered face will return in the last memory.",
+      stage: (t) => (<>
+        <Hero position={[-2.7, 0, -0.75]} rotationY={NORTH} animation="idle" face="frown" headPitch={-0.2} headYaw={0.35} time={t + 0.8} /><TownPeople t={t} />
+      </>),
+    },
+    {
       cue: "3.bun",
       ...cam.push({ on: [3.2, 1.12, -0.5], dist: 3.9, to: 3.3, yaw: -32, pitch: 12, fov: 40 }),
       zone: "village",

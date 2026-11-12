@@ -158,6 +158,24 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
   );
 }
 
+/** A topic may record an owner-requested exact ending for one named film, never a blanket waiver. */
+export function checkStoryEnding({ lastLine, contains, override }) {
+  if (override !== undefined) {
+    if (!override || typeof override.exactLine !== "string" || !override.exactLine.trim() ||
+        typeof override.reason !== "string" || !override.reason.trim()) {
+      return { error: "an ending override requires a nonempty exactLine and the owner's reason." };
+    }
+    if (lastLine.trim() !== override.exactLine.trim()) {
+      return { error: `the owner-requested last line must be exactly "${override.exactLine}". It is "${lastLine}".` };
+    }
+    return { note: `owner-requested ending "${override.exactLine}" — ${override.reason}` };
+  }
+  if (contains && !lastLine.toLowerCase().includes(contains.toLowerCase())) {
+    return { error: `the last line must be the "${contains}" line. It is "${lastLine}".` };
+  }
+  return {};
+}
+
 const wordsOf = (text) => text.split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w));
 const median = (list) => [...list].sort((a, b) => a - b)[Math.floor(list.length / 2)];
 
@@ -226,9 +244,13 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   if (lim.opensWith && !clean(cues[0].text).startsWith(lim.opensWith.toLowerCase())) {
     fail(`${tag}: the first line must start "${lim.opensWith}". It starts "${cues[0].text}".`);
   }
-  if (lim.lastLineContains && !cues[cues.length - 1].text.toLowerCase().includes(lim.lastLineContains.toLowerCase())) {
-    fail(`${tag}: the last line must be the "${lim.lastLineContains}" line. It is "${cues[cues.length - 1].text}".`);
-  }
+  const ending = checkStoryEnding({
+    lastLine: cues[cues.length - 1].text,
+    contains: lim.lastLineContains,
+    override: topic.endingOverrides?.[slug],
+  });
+  if (ending.error) fail(`${tag}: ${ending.error}`);
+  if (ending.note) info(`${tag}: ${ending.note}`);
   for (const cue of cues) {
     const n = wordsOf(cue.text).length;
     if (lim.maxWordsPerShot && n > lim.maxWordsPerShot) {

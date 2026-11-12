@@ -65,13 +65,14 @@ export function defineScene(def: SceneDef): SceneDef {
   return def;
 }
 
-const Fade: React.FC<{ fadeIn?: number; fadeOut?: number; total: number }> = ({ fadeIn = 0, fadeOut = 0, total }) => {
+const Fade: React.FC<{ fadeIn?: number; fadeOut?: number; cutToBlackAt?: number; total: number }> = ({ fadeIn = 0, fadeOut = 0, cutToBlackAt, total }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
   const inAlpha = fadeIn > 0 ? 1 - clamp01(t / fadeIn) : 0;
   const outAlpha = fadeOut > 0 ? clamp01((t - (total - fadeOut)) / fadeOut) : 0;
-  const alpha = Math.max(inAlpha, outAlpha);
+  const cutAlpha = cutToBlackAt !== undefined && frame >= Math.round(cutToBlackAt * fps) ? 1 : 0;
+  const alpha = Math.max(inAlpha, outAlpha, cutAlpha);
   if (alpha <= 0) return null;
   return <AbsoluteFill style={{ backgroundColor: "#000", opacity: alpha, pointerEvents: "none" }} />;
 };
@@ -166,7 +167,7 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
         </Sequence>
       ))}
 
-      <Fade fadeIn={config.fadeIn} fadeOut={config.fadeOut} total={config.scenes.reduce((a, s) => a + s.duration, 0)} />
+      <Fade fadeIn={config.fadeIn} fadeOut={config.fadeOut} cutToBlackAt={config.cutToBlackAt} total={config.scenes.reduce((a, s) => a + s.duration, 0)} />
     </AbsoluteFill>
   );
 };
@@ -207,6 +208,9 @@ export function defineFilm(config: FilmConfig): Film {
 
   const totalSeconds = config.scenes.reduce((a, s) => a + s.duration, 0);
   const durationInFrames = Math.max(1, Math.round(totalSeconds * fps));
+  if (config.cutToBlackAt !== undefined && (!Number.isFinite(config.cutToBlackAt) || config.cutToBlackAt < 0 || config.cutToBlackAt >= totalSeconds)) {
+    throw new Error("cutToBlackAt must be a finite time inside the film.");
+  }
 
   const Component: React.FC = () => <FilmView config={config} />;
 

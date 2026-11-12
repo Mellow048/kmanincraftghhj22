@@ -1,7 +1,7 @@
 import type React from "react";
 import { Block, Dust, Glow, GodRay, LightPool, Torch, Tree, Vox, Zone, useActiveShot } from "../../engine";
 import { Bell, BedBox, GlassJar, Hut, LampPost, Room, RopeLine, Screw, Stall, Stool, Well } from "../../../Topics/InThisTown";
-import { BED, Loaves, PLACE, ramp, room, tunnel, wordAt } from "./kit";
+import { BED, DownwardGolem, Loaves, PLACE, ramp, room, tunnel, wordAt } from "./kit";
 
 /**
  * MAP — the same 52 × 36 m miniature town is used in the opening and inside the final toy box.
@@ -115,6 +115,7 @@ const Village: React.FC = () => <>
   <Stall position={PLACE.stall} />
   <Loaves />
   <Stool position={PLACE.stool} />
+  <DownwardGolem />
   <Well position={[-6.7, 0, 7]} />
   {/* Outdoor school bench: the lesson is standing still, so the benches sit behind the pupils. */}
   {[10.3, 12.8].map((x) => <group key={x}>
@@ -168,7 +169,7 @@ export const Case: React.FC = () => {
   let open = 0.55;
   if (cue === "17.rope") open = 0.55 * ramp(t, 0, Math.max(0.3, wordAt(cue, "bell") + 0.15));
   else if (cue === "17.second") open = 0.55 * (1 - ramp(t, 0, Math.max(0.3, wordAt(cue, "shut"))));
-  else if (["17.toys", "17.jar", "17.alive", "17.bun", "17.reach", "17.shadow", "18.sub"].includes(cue)) open = 0;
+  else if (["17.toys", "17.jar", "17.alive", "17.bun", "17.reach", "17.shadow", "18.memory", "18.down", "18.look", "18.saw"].includes(cue)) open = 0;
   else if (cue === "15.light") open = 0.55 * ramp(t / dur, 0, 0.9);
   return <>
     <Vox kind="darkPlanks" position={[0, -0.7, 1]} size={[54, 1.3, 38]} />
@@ -260,12 +261,12 @@ export const World: React.FC = () => {
   const lens = a?.shot.from ?? [focus[0], focus[1], focus[2] + 3];
   const lensDist = Math.max(1, Math.hypot(lens[0] - focus[0], lens[2] - focus[2]));
   const faceKey: [number, number, number] = [focus[0] + (lens[0] - focus[0]) / lensDist * 3, focus[1] + 2, focus[2] + (lens[2] - focus[2]) / lensDist * 3];
-  const handShadow = a?.shot.cue === "17.shadow" ? ramp((a?.t ?? 0) / (a?.shot.dur ?? 1),0.15,0.8) : a?.shot.cue === "18.sub" ? 1 : 0;
+  const handShadow = a?.shot.cue === "17.shadow" ? ramp((a?.t ?? 0) / (a?.shot.dur ?? 1),0.15,0.8) : ["18.memory", "18.look", "18.saw"].includes(a?.shot.cue ?? "") ? 1 : 0;
   return <>
     <Zone name="village" with={["shelf", "bedroom"]}><Village /></Zone>
     <Zone name="village"><pointLight position={[focus[0] + 1, focus[1] + 2.6, focus[2] + 3]} color={night ? "#b5cbff" : "#fff3db"} intensity={night ? 24 : 5} distance={9} decay={2} /></Zone>
     <Zone name="room"><Room at={PLACE.room} night={night} /><BedBox position={BED} /></Zone>
     <Zone name="passage"><Passage /></Zone>
-    <Zone name="shelf" with={["bedroom"]}><Case /><Shelf /><Bedroom />{handShadow > 0 ? <pointLight position={[12,0.4,-19]} color="#ffd9ab" intensity={4} distance={11} decay={2} /> : null}<pointLight position={faceKey} color="#ffdcad" intensity={26 * (1 - handShadow)} distance={9} decay={2} /></Zone>
+    <Zone name="shelf" with={["bedroom"]}><Case /><Shelf /><Bedroom />{handShadow > 0 ? <pointLight position={[12,0.4,-19]} color="#ffd9ab" intensity={4} distance={11} decay={2} /> : null}<pointLight position={faceKey} color="#ffdcad" intensity={26 * (1 - handShadow)} distance={9} decay={2} />{["18.memory", "18.look", "18.saw"].includes(a?.shot.cue ?? "") ? <pointLight position={[9.8, 2.4, -25]} color="#ffddc0" intensity={3.5} distance={6} decay={2} /> : null}</Zone>
   </>;
 };

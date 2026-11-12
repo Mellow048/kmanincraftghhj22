@@ -1,6 +1,6 @@
 {
   "film": "in-this-town-freeze-bell",
-  "README": "Cue/word-aligned music, air and effects for the approved Freeze Bell story. Build with scripts/sound.py. The opening at 17.rope is a replay; there is no extra strike on the reveal or subscribe line.",
+  "README": "Cue/word-aligned sound for the owner-directed golem/look-up revision. The last words are And I saw, followed by black: no CTA, no part-two promise, no invented offscreen creature sound. The lid replay still uses the established scrape and bell.",
   "music": {
     "gain": -16,
     "sections": [
@@ -63,7 +63,13 @@
       {
         "from": "17.shadow",
         "mood": "dark",
-        "why": "The moving hand is noticed. Stay in the danger through the subscribe line."
+        "why": "His movement has been noticed. Stay in danger, not an advertisement."
+      },
+      {
+        "from": "18.memory",
+        "mood": "drone",
+        "gain": -1,
+        "why": "The remembered downward gaze opens an unanswered question. A low sustained bed continues to the hard black cut, with no cheerful outro."
       }
     ]
   },
@@ -145,9 +151,22 @@
     },
     {
       "from": "17.box",
-      "to": "18.sub",
+      "to": "18.memory",
       "bed": "room",
-      "why": "Same shelf and same bedroom through the ending."
+      "why": "The same shelf and bedroom through the thought that triggers the golem memory."
+    },
+    {
+      "from": "18.down",
+      "to": "18.down",
+      "bed": "village",
+      "trim": -2,
+      "why": "A brief daylight memory, matched to the moving market of 3.golem."
+    },
+    {
+      "from": "18.look",
+      "to": "18.saw",
+      "bed": "room",
+      "why": "Back on the same shelf for the upward look. No new world or creature is heard."
     }
   ],
   "sfx": [
@@ -323,6 +342,21 @@
       "dur": 0.35,
       "trim": -1,
       "why": "Hands and sleeves start moving again at the market."
+    },
+    {
+      "cue": "3.golem",
+      "sfx": "whoosh_low",
+      "trim": -3,
+      "dur": 0.45,
+      "why": "The camera finds the tall iron golem after the market resumes; he does not lift his head."
+    },
+    {
+      "cue": "3.golem",
+      "word": "down",
+      "sfx": "blip",
+      "trim": -2,
+      "pitch": 0.7,
+      "why": "A small noticing sound for the fixed downward eyes, recalled in 18.down. Not a new bell."
     },
     {
       "cue": "3.bun",
@@ -922,7 +956,7 @@
       "word": "me",
       "sfx": "plink",
       "pitch": 0.85,
-      "trim": 0,
+      "trim": -1,
       "why": "One quiet pluck on the answer about saving a bun."
     },
     {
@@ -1007,7 +1041,7 @@
       "word": "breath",
       "sfx": "gust",
       "dur": 0.38,
-      "trim": -3,
+      "trim": 0,
       "align": "start",
       "why": "One small steady breath from the boy, not outdoor wind."
     },
@@ -1315,19 +1349,55 @@
       "why": "He knows the movement has been noticed."
     },
     {
-      "cue": "18.sub",
-      "sfx": "pop",
-      "trim": -3,
-      "why": "The familiar red subscribe sign appears in his hands. No extra bell or ding after the second strike."
+      "cue": "18.memory",
+      "sfx": "swish",
+      "trim": -2,
+      "why": "Stay with the kid as the thought arrives instead of producing a subscribe sign."
     },
     {
-      "cue": "18.sub",
-      "word": "caught",
+      "cue": "18.memory",
+      "word": "remembered",
+      "sfx": "tick",
+      "trim": -1,
+      "why": "His eyes settle as he remembers the golem."
+    },
+    {
+      "cue": "18.down",
       "sfx": "whoosh_low",
-      "at": -0.12,
-      "dur": 0.45,
       "trim": -3,
-      "why": "The palm approaches from overhead; cut before it touches him."
+      "dur": 0.45,
+      "why": "The same restrained camera sound as 3.golem marks the recalled downward gaze."
+    },
+    {
+      "cue": "18.down",
+      "word": "quiet",
+      "sfx": "blip",
+      "trim": -2,
+      "pitch": 0.7,
+      "why": "The repeated clue: this head never came up even when the second ring had passed."
+    },
+    {
+      "cue": "18.look",
+      "word": "looked",
+      "sfx": "rustle",
+      "dur": 0.28,
+      "trim": -1,
+      "why": "His collar and pack move as he finally raises his head on the same recorded word."
+    },
+    {
+      "cue": "18.look",
+      "word": "up",
+      "sfx": "riser",
+      "dur": 0.65,
+      "trim": -5,
+      "why": "A restrained breath of anticipation ending at the upward gaze, not a reveal boom."
+    },
+    {
+      "cue": "18.saw",
+      "word": "And",
+      "sfx": "heartbeat",
+      "trim": -5,
+      "why": "One small pulse under the reaction, with no monster noise, chime or call-to-action effect."
     }
   ]
 }

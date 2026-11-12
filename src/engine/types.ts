@@ -151,6 +151,8 @@ export type FilmConfig = {
   /** Fade the video in/out of black, in seconds. */
   fadeIn?: number;
   fadeOut?: number;
+  /** Hard cut to black at this film time, in seconds; omitted means no hard cut. */
+  cutToBlackAt?: number;
   /** Static geometry and anything that exists for the whole film. */
   World?: React.FC;
   /** Ordered beats. Total runtime = sum of durations. */

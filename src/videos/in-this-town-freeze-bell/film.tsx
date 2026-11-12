@@ -23,7 +23,8 @@ import { scene18 } from "./scene18";
 /**
  * A boy follows the bell rope outside a town that freezes at every chime.
  * The whole town is a model in a child's toy box. People who move are collected.
- * Approved 697-word script, measured from all nine selected-voice recordings.
+ * Owner-directed 724-word revision: the golem keeps looking down; the kid looks up.
+ * Cut after "And I saw...". No subscribe interruption and no promised sequel.
  * The cue-aligned mix includes narration, changing music, room tone and effects.
  */
 export const film = defineFilm({
@@ -33,6 +34,7 @@ export const film = defineFilm({
   look: "overworld-day",
   audio: { src: "audio/in-this-town-freeze-bell/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
+  cutToBlackAt: timing.words[timing.words.length - 1].e + 1 / timing.fps,
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene11, scene12, scene13, scene14, scene15, scene16, scene17, scene18],
 });

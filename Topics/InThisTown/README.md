@@ -63,6 +63,15 @@ These apply to a film that declares `topic: "in-this-town"`, and to nothing else
 | "Music: low drone, one pulse"; a hit on the reveal | Music in five or more sections that change with the story, the air of each place, and 40 or more sound effects a minute. All of it built by `scripts/sound.py` from the film's `sound.json` |
 | Started from `templates/video/` | Started from this topic's `template/`, and built from its pack |
 
+### Owner-requested final-line exceptions
+
+The normal ending still includes the topic's subscribe line. If the owner explicitly requests a different ending,
+record **only that film** in `topic.json` → `endingOverrides`, with an `exactLine` and the owner's `reason`.
+The checker requires that exact last line, logs the exception, and keeps all length, pace, caption and sound rules.
+It is not an open-ended waiver and is not copied to other films. Freeze Bell's owner requested “And I saw...”
+and a cut instead of its forced subscribe ending. `node --test scripts/check-story-ending.test.mjs` verifies that
+scope and the unchanged default for other films.
+
 Everything else in `AGENTS.md` still holds: one folder per film, real 3D sets, something moving in every shot, the
 picture shows what the voice says, deterministic code, atmosphere in the world, and the render policy.
 

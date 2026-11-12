@@ -2,9 +2,9 @@ import type React from "react";
 import { useMemo } from "react";
 import { Object3D } from "three";
 import { Freeze } from "remotion";
-import { Block, Door, MinecraftAvatar, Torch, Vox } from "../../engine";
+import { Block, Door, MinecraftAvatar, Torch, Vox, getPose } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { Backpack, Bread, Basket, KID, Player, ROBE, RopeCoil, Villager, WaterBottle, ahead, pop, ramp, wordClock } from "../../../Topics/InThisTown";
+import { Backpack, Bread, Basket, IronGolem, KID, Player, ROBE, RopeCoil, Villager, WaterBottle, ahead, pop, ramp, wordClock } from "../../../Topics/InThisTown";
 import timingJson from "./timing.json";
 
 /** Film-owned cast and map. Approved pack models are reused, never restyled or forked. */
@@ -15,6 +15,7 @@ export const wordAt = wordClock(timing);
 /** One metre per block in the village. In the reveal this same village is on a 32× child's shelf. */
 export const PLACE = {
   square: [0, 0, 4.2] as Vec3,
+  golem: [-3.5, 0, -2.8] as Vec3,
   stall: [6, 0, -1.6] as Vec3,
   baker: [6, 0, -2.65] as Vec3,
   customer: [6.1, 0, 0.25] as Vec3,
@@ -61,6 +62,25 @@ export const Giant: React.FC<A> = (p) => <><Player who={8} position={PLACE.giant
 
 /** Freeze ONLY the performer. The camera, dust, loose objects and light do not stop. */
 export const Still: React.FC<{ children: React.ReactNode; active?: boolean }> = ({ children, active = true }) => <Freeze frame={24} active={active}>{children}</Freeze>;
+
+/** This clue belongs to this film: the approved iron golem never raises its gaze, even after the market restarts. */
+export const DownwardGolem: React.FC = () => <Still><IronGolem position={PLACE.golem} rotationY={0.08} headPitch={0.85} walk={0} /></Still>;
+
+/** Keep the gift in the spare hand while the right reaches for the jar. These are the real avatar pivots, not a floating prop. */
+export const ReachWithBun: React.FC<{ position: Vec3; rotationY?: number; face?: MinecraftAvatarProps["face"]; headPitch?: number; headYaw?: number }> = ({ position, rotationY = -2.46, face = "fear", headPitch = 0, headYaw = 0 }) => {
+  const pose = getPose("reach", 0.8);
+  const px = 1.8 / 32;
+  return <>
+    <Hero position={position} rotationY={rotationY} animation="reach" time={0.8} face={face} headPitch={headPitch} headYaw={headYaw} blink={false} saccade={false} breath={0} weightShift={0} pack />
+    <group position={position} rotation-y={rotationY} scale={KID}>
+      <group position={[0, 12 * px + pose.bodyY, 0]} rotation={[pose.bodyPitch, pose.bodyYaw, pose.bodyRoll]}>
+        <group position={[-6 * px, 12 * px, 0]} rotation={pose.armL}>
+          <group position={[0, -11 * px, 0]}><Bread position={[0, -0.28, 0.08]} bun scale={1.15 / KID} /></group>
+        </group>
+      </group>
+    </group>
+  </>;
+};
 
 export const TownPeople: React.FC<{ t?: number; frozen?: boolean; compact?: boolean }> = ({ t = 0, frozen = false, compact = false }) => {
   const run = frozen ? 0 : t;

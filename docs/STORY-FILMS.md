@@ -124,6 +124,11 @@ export const film = defineFilm({
 });
 ```
 
+For a deliberate hard ending, `cutToBlackAt` is an optional film time in seconds. The engine's existing black
+transition covers the whole image, including captions, starting at the nearest frame. The default is off and
+leaves existing films unchanged. A narrated cliffhanger can set it to the final aligned word's `e` plus one frame,
+leaving the generated half-second tail black. Do not invent an end-card overlay in a scene.
+
 `audio` plays one file for the whole film. While the film is being shot that is the voice,
 `audio/<film>/narration.mp3`. A finished film plays the mix (section 6).
 

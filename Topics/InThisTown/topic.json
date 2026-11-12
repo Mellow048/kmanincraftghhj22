@@ -108,5 +108,11 @@
       "quietFramesUnderSpeechDb": 20.7,
       "note": "The reference has music under every second of it. Its quietest 8% of 20 ms frames (the gaps between words, where only music is left) are 20.7 dB under its loudest 40% (speech). The same measure on in-this-town-same-face reads 22: our music is a little further back."
     }
+  },
+  "endingOverrides": {
+    "in-this-town-freeze-bell": {
+      "exactLine": "And I saw...",
+      "reason": "Owner requested the downward-looking golem recall, an upward look and an unfinished saw line followed by a cut, instead of the forced subscribe ending; no part-two promise. 2026-11-12."
+    }
   }
 }

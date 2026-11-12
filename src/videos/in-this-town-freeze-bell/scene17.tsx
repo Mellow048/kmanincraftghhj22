@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { CarryBun, Giant, Hero, JarNeighbor, NORTH, EAST, ReachingHand, ShadowKey, ramp, timing, wordAt } from "./kit";
+import { CarryBun, Giant, Hero, JarNeighbor, NORTH, EAST, ReachWithBun, ReachingHand, ShadowKey, ramp, timing, wordAt } from "./kit";
 /** Beat 17: A child and his toys. The recorded words, not hand-set seconds, own every cut. */
 export const scene17 = storyScene(timing, {
   id: "scene17",
@@ -92,7 +92,7 @@ export const scene17 = storyScene(timing, {
       look: "void",
       note: "The movement has a reason: he reaches toward the lower edge to free his neighbor. His hand approaches the glass on reached; no rescue teleport.",
       stage: (t, { p, dur }) => (<>
-        <Hero position={[8.65 - ramp(t,wordAt("17.reach","reached"),wordAt("17.reach","reached") + 0.6) * 0.29,0,-21.7 - ramp(t,wordAt("17.reach","reached"),wordAt("17.reach","reached") + 0.6) * 0.345]} rotationY={-2.46} animation="reach" face="brave" time={0.8} pack /><JarNeighbor alive t={t} />
+        <ReachWithBun position={[8.65 - ramp(t,wordAt("17.reach","reached"),wordAt("17.reach","reached") + 0.6) * 0.29,0,-21.7 - ramp(t,wordAt("17.reach","reached"),wordAt("17.reach","reached") + 0.6) * 0.345]} face="brave" /><JarNeighbor alive t={t} />
       </>),
     },
     {
@@ -102,7 +102,7 @@ export const scene17 = storyScene(timing, {
       look: "void",
       note: "The same shadow returns, now with its source just overhead. Light the reaching hand so the passing shadow actually falls across it, not merely across the floor.",
       stage: (t, { p, dur }) => (<>
-        <Hero position={[8.36,0,-22.045]} rotationY={-2.46} animation="reach" face="fear" time={0.8} pack /><JarNeighbor alive t={t} /><ReachingHand progress={0.3 + p * 0.35} /><ShadowKey />
+        <ReachWithBun position={[8.36,0,-22.045]} /><JarNeighbor alive t={t} /><ReachingHand progress={0.3 + p * 0.35} /><ShadowKey />
       </>),
     },
   ],
