@@ -1,5 +1,8 @@
 export * from "./anim";
+export * from "./blocks";
+export * from "./cam";
 export * from "./Camera";
+export * from "./Captions";
 export * from "./defineFilm";
 export * from "./face";
 export * from "./fx";
@@ -8,5 +11,6 @@ export * from "./Look";
 export * from "./math";
 export * from "./MinecraftAvatar";
 export * from "./props";
+export * from "./story";
 export * from "./textures";
 export * from "./types";

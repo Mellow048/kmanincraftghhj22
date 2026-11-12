@@ -46,6 +46,7 @@ Read `AGENTS.md`, `docs/CAMERA-BIBLE.md` and `docs/SCENE-CONTRACT.md` first.
 - `warm-room`: `#120b06` bg, `#2a1a0e` fog, `#ffcf9a` key, `#ff9b4a` practical.
 - `forest-night`: `#020812` bg, `#061426` fog, `#9dc0ff` moon, `#77aaff` rim.
 - `street-day`: `#b9d7ee` bg, `#cfe4f4` fog, `#fff3d6` sun, `#bfe0ff` sky fill.
+- `town-day`: softer pale blue sky (`#a9cde0`), sage fog (`#d6e6d8`), warm sun (`#ffe1aa`) and cool school-window fill (`#9bc6d9`); use for the InThisTown neighborhood. Still place visible practical lights and a cold rim in the world.
 - `void`: `#000000` for a dream/flashback; use sparingly.
 
 Do not use a preset as an excuse to skip a practical. A preset is a base; the world adds the story lights.
@@ -369,3 +370,22 @@ A frame is ready when:
 - and there is one detail you did not need but are glad is there.
 
 If it looks like a blockout with a blue filter, it is not ready.
+
+---
+
+## Daylight, and real blocks
+
+The recipes above are for dark interiors. An outdoor Minecraft film is the opposite problem: too much light and
+nothing to look at. Three things carry it.
+
+**Blocks, not colours.** `<Vox kind="cobble" size={[12, 5, 1]} />` is a wall of sixty cobblestone blocks, each a
+16×16 face, one per metre. Kinds: `grass dirt path cobble mossy stone stoneBrick planks darkPlanks log leaves bricks
+wool sand hay basalt obsidian magma lava`. `tint` recolours one (dyed wool, a painted roof); `side` gives grass its dirt.
+Build a house from five or six big `Vox`, never from unit cubes. A flat-coloured `Block` next to a `Vox` looks unfinished.
+
+**One colour world per act.** `overworld-day` (blue sky, hard warm sun), `overworld-night` (blue, with torches doing
+the warm work), `lava-shore` (the ground is the lamp), `overworld-storm` (purple sky, low warm light). Set `look` on
+the shot. A viewer should know where in the story they are from one frame.
+
+**Fill for faces at night.** A face turned to the lens at night is lit by nothing. Put a soft light on the camera's
+side of the set (the bedroom in `in-this-town-monster-egg` has one) or give someone a `<Torch light>` to hold.

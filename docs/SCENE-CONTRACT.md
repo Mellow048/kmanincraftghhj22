@@ -55,6 +55,8 @@ export const film = defineFilm({
 | `width`/`height` | no | default 1080×1920; keep vertical |
 | `look` | no | one of the presets in `src/engine/Look.tsx` |
 | `post` | no | `{ exposure, bloom }` only. No postprocessing package. |
+| `audio` | no | one music/voice track from `public/` via `{ src, volume? }` |
+| `audioCues` | no | timed voice/SFX clips from `public/`: `{ src, at, duration?, volume? }[]`, where `at` and `duration` are seconds |
 | `fadeIn`/`fadeOut` | no | seconds; the only 2D event allowed |
 | `World` | yes | mounted once for the whole film |
 | `scenes` | yes | ordered beats; total = sum of durations |
@@ -65,6 +67,7 @@ export const film = defineFilm({
 - One `ThreeCanvas` per film. `defineFilm` owns it.
 - Do not add a second canvas, a 2D overlay or an HTML layer.
 - `post.bloom` scales the 3D glow cards. It is not a screen-space bloom.
+- `audioCues` are sound only, scheduled outside the 3D canvas. Example: `{ src: "audio/scene1.mp3", at: 0.15, duration: 2.7, volume: 1 }`. File paths are relative to `public/`. A cue with no duration plays until its file ends; a duration can keep a spoken line inside its beat.
 - If you change `post`, do not re-add `@react-three/postprocessing`; it breaks under software WebGL.
 
 ---
@@ -306,3 +309,29 @@ export const scene2 = defineScene({
 ```
 
 Two shots, one motivated cut, both under 5 seconds. This is the normal shape. The fly-through is the exception, not the default.
+
+---
+
+## Story scenes (narrated topic films)
+
+A film cut to a recorded voice does not use `at`/`dur`. Its scenes are built with `storyScene(timing, { shots })`,
+where each shot names the script line it plays over (`cue`) and brings its own `stage`. Everything else in this page
+(the world, the looks, the avatar, strictly 3D) is unchanged. The full contract is in
+[`STORY-FILMS.md`](STORY-FILMS.md).
+
+Engine pieces that came with story films and are free for any film to use:
+
+| | |
+|---|---|
+| `cam.push / orbit / pan / truck / top` | A camera move as one line. Spread it into a shot |
+| `<Zone name>` and `shot.zone` | Draw only the part of the world a shot needs |
+| `shot.look` | Change the lighting preset for one shot |
+| `useActiveShot()` | The shot on screen, readable from `World` |
+| `<Vox kind size>` | A box tiled with 16×16 Minecraft block faces, one per metre |
+| `<PixelText>` | Pixel lettering on a 3D surface: signs, boards |
+| `<Tree>`, `<Torch>`, `<Clouds>` | Outdoor dressing |
+| avatar `arms="hold"` | Arms from one clip, legs from another: walk while carrying |
+| avatar `colors={{ torso, arms, legs }}` | A cast of many without a new outfit each |
+| clips `hold lift hug cheer laugh shrug ache` | Carrying, celebrating, mocking, not knowing, hurting |
+| faces `smile grin laugh frown uneasy brave fear wow ouch calm` | Faces for a kid, without the heavy brow of the horror set |
+| looks `overworld-day`, `overworld-night`, `overworld-storm`, `lava-shore` | Outdoor presets whose sun follows the subject |

@@ -69,6 +69,18 @@ Then:
 
 ---
 
+## Topics: more than one kind of video
+
+Everything above is the base format, the 20-second cinematic short. A **topic** is another kind of video with its own
+rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules are not.
+
+| Topic | What it makes | First film |
+|---|---|---|
+| [In This Town](Topics/InThisTown/README.md) | A three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. About 90 cuts, every word captioned | `in-this-town-monster-egg` |
+
+A topic film says `topic: "<id>"` in `defineFilm`, and `npm run check` then lints it against that topic's numbers.
+Narrated topics are cut to a recorded voice; the pipeline is in [`docs/STORY-FILMS.md`](docs/STORY-FILMS.md).
+
 ## The rules
 
 The full contract is in `AGENTS.md`. The short version:
@@ -208,8 +220,8 @@ Give it charcoal albedo (`skin="#171d2a"`, `outfit="shadow"`), `rim={0.5}`, a ba
 
 ## Render in the cloud (GitHub Actions)
 
-Rendering stays off the user's laptop. The `Render short` workflow runs on a
-GitHub-hosted runner, uploads the MP4 as an artifact and attaches it to a
+Rendering stays off the user's laptop. The `Render short` workflow runs on
+GitHub-hosted runners, uploads the MP4 as an artifact and attaches it to a
 GitHub Release.
 
 1. Push the workflow to `main`.
@@ -222,9 +234,25 @@ gh workflow run render.yml -f composition=the-hallway
 gh run watch
 ```
 
-The workflow uses `npm ci`, Remotion's `swangle` software WebGL renderer and
-2 concurrent frames. It does not need a GPU or any secrets beyond the built-in
-`GITHUB_TOKEN`.
+The workflow uses `npm ci` and Remotion's `swangle` software WebGL renderer. It
+does not need a GPU or any secrets beyond the built-in `GITHUB_TOKEN`.
+
+A three-minute topic film is 5,300 frames. The workflow splits every film into
+frame ranges of about nine seconds, renders them side by side on separate
+runners (at most twenty) and joins them, so a long film takes minutes, not hours.
+
+```bash
+gh workflow run render.yml --ref <branch> \
+  -f composition=in-this-town-monster-egg \
+  -f commit_to=renders/in-this-town-monster-egg.mp4
+```
+
+| Input | |
+|---|---|
+| `composition` | The film id |
+| `scale` | `1` (the film's own size), `0.75`, `0.5` or `0.25`. Other values do not give whole pixels and Remotion refuses them |
+| `commit_to` | Optional `renders/<name>.mp4`. Also commits a copy to the branch the workflow ran on (never `main`) |
+| `commit_max_mb` | Size limit of that committed copy, default 45. A bigger render is re-encoded to fit. The release always has the full-quality file |
 
 ---
 

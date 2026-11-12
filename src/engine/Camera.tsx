@@ -45,7 +45,7 @@ function samplePath(
   return p;
 }
 
-function pickShot(shots: Shot[], t: number): Shot {
+export function pickShot(shots: Shot[], t: number): Shot {
   let active = shots[0];
   for (const shot of shots) {
     if (shot.at <= t + 1e-6) active = shot;
@@ -119,12 +119,13 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
       ? focalMmToFov(shot.focalLengthTo ?? shot.focalLength)
       : (shot.fovTo ?? baseFov);
   const fov = baseFov + (endFov - baseFov) * e;
+  const roll = (shot.roll ?? 0) + ((shot.rollTo ?? shot.roll ?? 0) - (shot.roll ?? 0)) * e;
 
   useFrame(() => {
     camera.position.copy(position);
     camera.up.set(0, 1, 0);
     camera.lookAt(target);
-    if (shot.roll) camera.rotateZ(shot.roll);
+    if (roll) camera.rotateZ(roll);
     if (Math.abs(camera.fov - fov) > 1e-4) {
       camera.fov = fov;
       camera.updateProjectionMatrix();

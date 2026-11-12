@@ -31,6 +31,12 @@ export type MinecraftAvatarProps = {
    */
   animDistance?: number;
 
+  /**
+   * Take the ARMS from this clip and everything else from `animation`.
+   * `animation="walk" arms="hold"` is a character walking while carrying something.
+   */
+  arms?: AnimName;
+
   /** Second clip to blend towards. */
   blendTo?: AnimName;
   /** 0 = the `blendTo` pose, 1 = the `animation` pose. */
@@ -44,6 +50,12 @@ export type MinecraftAvatarProps = {
   skin?: string;
   hair?: string;
   outfit?: OutfitName;
+  /**
+   * Custom clothes. Overrides the outfit's colours part by part, so a town can
+   * have a baker, an elder and thirty kids without a new preset for each.
+   * `arms: "skin"` gives short sleeves.
+   */
+  colors?: { torso?: string; arms?: string; legs?: string };
 
   /** Additive head aim, radians. */
   headYaw?: number;
@@ -152,6 +164,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   animSpeed = 1,
   phase = 0,
   animDistance,
+  arms,
   blendTo,
   blend = 1,
   blendTime,
@@ -160,6 +173,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   skin = "#e8b78d",
   hair = "#4a2e1c",
   outfit = "gown",
+  colors,
   headYaw = 0,
   headPitch = 0,
   headRoll = 0,
@@ -222,6 +236,19 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       armMat.color = new THREE.Color(kit.arms);
       legMat.color = new THREE.Color(kit.legs);
     }
+    if (colors?.torso) {
+      torsoMat.map = pixelTex(colors.torso, [1, 1], { jitter: 0.07 });
+      torsoMat.color = new THREE.Color("#ffffff");
+    }
+    if (colors?.arms) {
+      const arm = colors.arms === "skin" ? skin : colors.arms;
+      armMat.map = pixelTex(arm, [1, 1], { jitter: 0.07 });
+      armMat.color = new THREE.Color("#ffffff");
+    }
+    if (colors?.legs) {
+      legMat.map = pixelTex(colors.legs, [1, 1], { jitter: 0.06 });
+      legMat.color = new THREE.Color("#ffffff");
+    }
     if (rim > 0) {
       for (const m of [skinMat, hairMat, rightSideMat, leftSideMat, torsoMat, armMat, legMat]) {
         m.emissive = new THREE.Color("#12233f");
@@ -229,7 +256,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       }
     }
     return { skinMat, hairMat, rightSideMat, leftSideMat, faceMat, torsoMat, armMat, legMat };
-  }, [skin, hair, face, faceGlow, outfit, rim, kit]);
+  }, [skin, hair, face, faceGlow, outfit, rim, kit, colors?.torso, colors?.arms, colors?.legs]);
 
   // Blink swaps the face map. Mutating the map keeps the material (and its shader)
   // alive; three only recompiles when the map goes null ↔ non-null.
@@ -255,6 +282,10 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     const other =
       animDistance !== undefined && isGait(blendTo) ? gaitPose(blendTo, animDistance) : getPose(blendTo, otherClock);
     pose = blendPose(other, pose, blend);
+  }
+  if (arms) {
+    const upper = getPose(arms, clock);
+    pose = { ...pose, armR: upper.armR, armL: upper.armL };
   }
 
   // Head aim

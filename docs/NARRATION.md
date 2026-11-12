@@ -1,5 +1,9 @@
 # NARRATION — hook first, pay it off
 
+> **Topic films.** This page is written for the base 20-second short. A topic can replace the length and the beat map
+> (`Topics/InThisTown/SCRIPT.md` has an 18-beat, 700-word sheet). The voice rules still hold: plain words, one teller,
+> nothing the picture does not show.
+
 The narration is not a description of the render. It is the other half of the shot. The image shows it; the voice makes it mean something.
 
 > **Voice first.** The words themselves are governed by

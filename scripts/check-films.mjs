@@ -18,10 +18,16 @@
  *   - an out-of-range `fov`, or a shot with both `focalLength` and `fov`;
  *   - a `narration.md` with long lines or banned phrases.
  *
+ * A film that names a topic (`topic: "in-this-town"`) whose topic.json has
+ * `"profile": "story"` is checked by check-story-film.mjs instead: those films
+ * are long, narrated and cut to the voice, so the 20-second numbers above do
+ * not apply to them. See Topics/README.md.
+ *
  * It cannot check whether the film is beautiful. A human still has to look.
  */
 import fs from "node:fs";
 import path from "node:path";
+import { checkStoryFilm, loadTopic } from "./check-story-film.mjs";
 
 const root = process.cwd();
 const videosDir = path.join(root, "src", "videos");
@@ -205,6 +211,7 @@ function scanDeterminism(dir) {
 
 scanDeterminism(path.join(root, "src", "engine"));
 scanDeterminism(videosDir);
+scanDeterminism(path.join(root, "Topics"));
 
 for (const slug of filmDirs) {
   const dir = path.join(videosDir, slug);
@@ -241,6 +248,21 @@ for (const slug of filmDirs) {
   }
   if (TWO_D.test(film)) {
     fail(`${slug}: film.tsx contains a 2D overlay`);
+  }
+
+  // A topic film follows its topic's rules, not the 20-second base contract.
+  const topicId = film.match(/^\s*topic:\s*["']([^"']+)["']/m)?.[1];
+  if (topicId) {
+    const topic = loadTopic(root, topicId);
+    if (!topic) {
+      fail(`${slug}: topic "${topicId}" has no Topics/<Folder>/topic.json`);
+      continue;
+    }
+    if (topic.profile === "story") {
+      checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D, BANNED_PHRASES });
+      info(`${slug}: ${width}x${height}@${fps}${id ? `, id=${id}` : ""}, topic=${topicId}`);
+      continue;
+    }
   }
 
   const scenesBlock = film.match(/scenes:\s*\[([\s\S]*?)\]/);
