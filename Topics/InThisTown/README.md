@@ -156,14 +156,15 @@ still an estimate, and whether the mix is older than the script.
 |---|---|
 | `topic.json` | The numbers `npm run check` enforces for this topic and its short cut, the limits of the sound, the reference film and the other finished films |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the story, the picture, the sound |
-| `PACK.md`, `pack.jpg` | The catalogue of the pack |
+| `PACK.md`, `pack.jpg`, `pack-night.jpg` | The catalogue of the pack, and one still for each part |
 | `index.ts` | The pack, from one import: `import { Villager, Hut, pop } from "../../../Topics/InThisTown"` |
 | `staging.ts` | When a word is said, how a thing pops in, where "in front of him" is, how to climb a hill |
 | `villagers.tsx` | The villager, the iron golem, the poppy |
 | `players.tsx` | Twelve players, no two alike, and the pumpkin head |
-| `things.tsx` | Speech bubble, bed, hole, flying bits, smoke of three kinds, a burning roof, firelight |
-| `places.tsx` | House (new, burned out, on fire), bell, well, stall, lamp post, stepped hill, bedroom, tunnel |
+| `things.tsx` | Speech bubble, bed, hole, flying bits, smoke of three kinds, a burning roof, firelight; a wide straw hat, a bucket, a lantern |
+| `places.tsx` | House (new, burned out, on fire, lit, door open), bell, well and its lid, stall, lamp post, lantern post, lantern line, fence, stepped hill, bedroom, tunnel |
 | `creatures.tsx` | Egg, worm, dragon, phoenix, stone golem, the mother, chicken, rank sign, fire, puffs, sound rings, and the red "Subscribe" sign every film ends on |
+| `fields.tsx` | What lies round the town and over it at night: wheat, scarecrows that stand and walk, pines and the edge of a forest, a moon, moonlight that falls on one place, stars |
 | `template/` | The starter film that `npm run new -- … --topic in-this-town` copies |
 | `reference/same-face/` | **The reference film**: where its parts are, its shape and its sound measured, and a log of every shot |
 | `reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |

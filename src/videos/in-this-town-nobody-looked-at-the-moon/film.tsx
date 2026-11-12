@@ -42,8 +42,9 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "short",
   look: "lantern-night",
-  // The voice alone, until the sound is built (scripts/sound.py build): then this becomes mix.mp3.
-  audio: { src: "audio/in-this-town-nobody-looked-at-the-moon/narration.mp3" },
+  // Voice, music, air and effects, mixed by `python3 scripts/sound.py build` from sound.json.
+  // narration.mp3 beside it is the voice alone: the mix is built from it, so never point this at it again.
+  audio: { src: "audio/in-this-town-nobody-looked-at-the-moon/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [

@@ -333,5 +333,7 @@ Engine pieces that came with story films and are free for any film to use:
 | avatar `arms="hold"` | Arms from one clip, legs from another: walk while carrying |
 | avatar `colors={{ torso, arms, legs }}` | A cast of many without a new outfit each |
 | clips `hold lift hug cheer laugh shrug ache` | Carrying, celebrating, mocking, not knowing, hurting |
+| clips `leanOver push` | Bent over a rim or a sill with both hands on it (stand 0.55 m × scale short of the edge); both hands on something heavy, the back leg braced |
 | faces `smile grin laugh frown uneasy brave fear wow ouch calm` | Faces for a kid, without the heavy brow of the horror set |
 | looks `overworld-day`, `overworld-night`, `overworld-storm`, `lava-shore` | Outdoor presets whose sun follows the subject |
+| look `lantern-night` | A night that is nearly black: the lamps in the world do the lighting. See "A film at night" in `Topics/InThisTown/PACK.md` |

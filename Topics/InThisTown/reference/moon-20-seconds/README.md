@@ -41,3 +41,13 @@ started from a copy of the framework from before this topic existed. The only ru
 
 None of that helps an agent working on an **old copy** of the repo. If you were asked for an "In This Town" film
 and this folder is not in your checkout, stop and start from the current `main`.
+
+## The remake
+
+The owner on this film: "it wasnt really what i wanted … maybe put it in a village where you woke up with the moon
+and stuff". So the idea was kept and the film was made again as a real film of the topic:
+`src/videos/in-this-town-nobody-looked-at-the-moon/` (the short cut: 111.7 s, 63 shots, 471 words). All six lines
+of this version are still in it; `narration.md` there says where each one went. What the 20 seconds had no room for
+is what the remake is made of: the town, the tour, the reason for the rule, and what breaking it costs.
+
+Read the two side by side if you want to see the difference between a premise and a film of this topic.

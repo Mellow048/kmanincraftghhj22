@@ -1,6 +1,9 @@
 # Narration — In This Town, Nobody Looked at the Moon
 
-**Status: DRAFT 1. Not approved, not recorded.** Nothing is built until the owner approves the script.
+**Status: APPROVED and RECORDED.** The owner approved this script on 2026-11-11 ("yes go i trust you on making
+it"). The six clips are recorded (`public/audio/in-this-town-nobody-looked-at-the-moon/raw/`), the film is cut to
+them (`timing.json`), and the sound is mixed (`sound.json`). Changing a word now means recording that clip again,
+rebuilding the timing, and checking every shot and every effect that hangs on the words after it.
 
 This is a remake of *Never Look at the Moon*, the 19.6-second film another agent made
 (`Topics/InThisTown/reference/moon-20-seconds/`). The owner: "it wasnt really what i wanted … maybe put it in a
@@ -62,19 +65,21 @@ what was up there? · So I decided to look. · I saw one white edge. · Everybod
 nights. · Nobody looked up. · Then it blinked. · It was an eye. · The scarecrows were walking. · Nobody had put them
 there. · They were just a lot closer. · But it knows me now. · Subscribe before it blinks again.
 
-**For the owner to decide with this draft:**
+**What was put to the owner with the draft, and how it was settled.** He answered all four with "yes go i trust
+you on making it", so each was built as proposed:
 
-1. The story: is this the film you meant by "a village where you woke up with the moon"?
-2. The title. Working title: *In This Town, Nobody Looked at the Moon*. The other candidate is your own phrase:
-   *In This Town, We Woke Up With the Moon*.
-3. The length: 1:51, the short cut. A full three-minute version would add the adults, a tease, the price and
-   the packing.
-4. The voice: `voice-00`, as in both finished films, unless you want another.
+1. The story: the village that wakes up with the moon.
+2. The title: *In This Town, Nobody Looked at the Moon*. (His own phrase, "we woke up with the moon", is the
+   first line instead.)
+3. The length: 1:52, the short cut. A three-minute version would add the adults, a tease, the price and the packing.
+4. The voice: `voice-00`, as in the other films of the topic.
 
-**What the pack does not have yet** (built after the script is approved, into the pack where a second film could
-use it): the moon that is an eye; the scarecrows, standing and walking; a straw hat a player and a golem can wear;
-the bucket; a lid for the well; wheat; hanging lanterns; the edge of a forest. The whole film is at night: the town
-is warm lantern light, the fields are cold moonlight, and the story is told by where the cold light is.
+**What was built for it, and where it lives.** In the pack, for any film (`Topics/InThisTown/PACK.md`, "Fields and
+night"): a moon, moonlight that falls on one place, stars, wheat, scarecrows that stand and walk, the edge of a
+forest, the wide straw hat, the bucket, the lid of the well, the lanterns, and the look `lantern-night`. In this
+film's `kit.tsx` only, because they are this story: the eye in the moon (`MoonEye`), who stands where, and `skyAt()`,
+which says for every shot what the moon is staring at. The whole film is at night: the town is warm lantern light,
+the fields are cold moonlight, and the story is told by where the cold light is.
 
 ```narration
 # clip 01-hook
