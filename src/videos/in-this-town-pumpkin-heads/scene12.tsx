@@ -19,8 +19,8 @@ export const scene12 = storyScene(timing, {
       stage: (t) => (
         <>
           <MoonOnWater />
-          <WaterFace position={[WATER[0], WATER[1], WATER[2] + 0.22]} smile={t < SAW ? 1 : 0} />
-          {t >= SAW ? <WaterTall position={[WATER[0], WATER[1] + 0.004, WATER[2] - 0.36]} scale={0.6 + 0.4 * pop(t, SAW, 0.3)} eyes={ease(ramp(t, BEHIND, BEHIND + 0.4))} /> : null}
+          <WaterFace position={[WATER[0], WATER[1], WATER[2] + 0.32]} smile={t < SAW ? 1 : 0} />
+          {t >= SAW ? <WaterTall position={[WATER[0], WATER[1] - 0.006, WATER[2] - 0.46]} scale={0.6 + 0.4 * pop(t, SAW, 0.3)} eyes={ease(ramp(t, BEHIND, BEHIND + 0.4))} /> : null}
         </>
       ),
     },

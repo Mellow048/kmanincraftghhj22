@@ -218,7 +218,7 @@ export const Tall: React.FC<{ position: Vec3; rotationY?: number; headYaw?: numb
   scale = 1,
   lean = 0,
 }) => {
-  const body = { color: DARK, emissive: "#3a2a6a", emissiveIntensity: 0.16 };
+  const body = { color: DARK, emissive: "#4a3a8a", emissiveIntensity: 0.3 };
   return (
     <group position={position} rotation={[lean, rotationY, 0]} scale={scale}>
       {[-1, 1].map((s) => (

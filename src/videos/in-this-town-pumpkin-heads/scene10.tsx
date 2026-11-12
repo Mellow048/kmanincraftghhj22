@@ -54,14 +54,14 @@ export const scene10 = storyScene(timing, {
     },
     {
       cue: "10.look",
-      ...cam.orbit({ on: faceOf(NEAR), dist: 2.1, yaw: -40, pitch: 2, yawTo: -22 }),
+      ...cam.orbit({ on: faceOf(NEAR), dist: 2.1, yaw: -150, pitch: 2, yawTo: -128 }),
       zone: "village",
       look: "overworld-night",
       note: "By the well now. He stops and turns his pumpkin back over his shoulder, towards the houses, one last time.",
       stage: (t, { p }) => (
         <>
           <Hero position={NEAR} rotationY={WEST} animation="idle" headYaw={-1.1 * ease(ramp(p, 0.1, 0.6))} carve="wow" />
-          <Fill at={[NEAR[0] - 2, 1.6, NEAR[2] + 2]} power={8} />
+          <Fill at={[NEAR[0] - 1.6, 1.6, NEAR[2] - 2]} power={8} />
         </>
       ),
     },

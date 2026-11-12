@@ -33,8 +33,8 @@ export const scene14 = storyScene(timing, {
       stage: (t, { dur }) => (
         <>
           <Watchers toward={KNEEL} turned={(i) => ease(ramp(t, 0.1 + i * (dur - 0.7) * 0.2, 0.5 + i * (dur - 0.7) * 0.2))} />
-          <Fill at={[-22, 3, 0]} power={20} color="#c9b8ff" />
-          <Fill at={[-10, 3, 0]} power={20} color="#c9b8ff" />
+          <Fill at={[-22, 3, 0]} power={46} color="#c9b8ff" />
+          <Fill at={[-10, 3, 0]} power={46} color="#c9b8ff" />
         </>
       ),
     },
@@ -54,14 +54,14 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.sub",
-      ...cam.push({ on: [KNEEL[0] + 0.12, 1.02, KNEEL[2] + 0.1], dist: 2.2, to: 1.85, yaw: 4, pitch: -4, fov: 38 }),
+      ...cam.push({ on: [KNEEL[0] + 0.12, 1.02, KNEEL[2] + 0.1], dist: 2.3, to: 1.95, yaw: 4, pitch: 0, fov: 38 }),
       zone: "village",
       look: "overworld-night",
       note: "From where it stands, looking down at him. He has not blinked. Without taking his eyes off us he holds up a sign that says SUBSCRIBE, and it shakes.",
       stage: (t) => (
         <>
           <Hero bare position={KNEEL} rotationY={SOUTH} animation="hold" headPitch={-0.3} face="fear" gaze={0} blink={false} />
-          <SubscribeSign position={[KNEEL[0] + 0.3, 0.02, KNEEL[2] + 0.42]} rotationY={SOUTH} scale={0.34} tilt={Math.sin(t * 19) * 0.03} />
+          <SubscribeSign position={[KNEEL[0] + 0.02, 0.8, KNEEL[2] + 0.42]} rotationY={SOUTH} scale={0.34} tilt={Math.sin(t * 19) * 0.03} />
           <Fill at={[KNEEL[0] - 0.6, 1.7, KNEEL[2] + 2]} power={8} color="#cfdcff" />
         </>
       ),

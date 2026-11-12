@@ -33,8 +33,10 @@ const Bay: React.FC = () => {
       {[-1, 1].map((s) => (
         <Vox key={s} kind="log" position={[s * 0.78, 0, 0.36]} size={[0.16, 1.5, 0.8]} />
       ))}
-      <Block position={[0, 0, 0.72]} size={[1.4, 0.06, 0.04]} color="#5c3f24" castShadow={false} />
-      <Block position={[0, 0, 0.72]} size={[0.06, 1.5, 0.04]} color="#5c3f24" castShadow={false} />
+      <Block position={[0, -0.42, 0.72]} size={[1.4, 0.06, 0.04]} color="#5c3f24" castShadow={false} />
+      {[-1, 1].map((s) => (
+        <Block key={s} position={[s * 0.5, 0, 0.72]} size={[0.05, 1.5, 0.04]} color="#5c3f24" castShadow={false} />
+      ))}
     </group>
   );
 };
@@ -108,8 +110,8 @@ const Village: React.FC<{ night: boolean }> = ({ night }) => (
     {night ? (
       <>
         {/* The full moon he waited for, low in the north, over the roofs. It is the key light's excuse. */}
-        <Block position={[-22, 62, -110]} size={[11, 11, 1]} color="#f4f7ff" emissive="#e6eeff" emissiveIntensity={1.6} castShadow={false} />
-        <Glow position={[-22, 62, -108]} size={46} color="#9fb8ff" opacity={0.3} />
+        <Block position={[-14, 30, -45]} size={[5, 5, 0.5]} color="#f4f7ff" emissive="#e6eeff" emissiveIntensity={1.6} castShadow={false} />
+        <Glow position={[-14, 30, -44]} size={20} color="#9fb8ff" opacity={0.3} />
         <Clouds y={52} center={[0, 0, 0]} color="#3a4674" opacity={0.35} />
         <GodRay position={[-6.5, 5, 3.5]} rotation={[0, 0, 0.42]} width={3.2} height={11} color="#a9c2ff" opacity={0.07} />
         <LightPool position={[-5, 0.07, 5.5]} width={6} depth={6} color="#8fb0ff" opacity={0.2} />

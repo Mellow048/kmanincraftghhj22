@@ -25,7 +25,7 @@ export const scene13 = storyScene(timing, {
         <>
           <Hero bare position={KNEEL} rotationY={SOUTH} animation="scared" headPitch={-0.5} face="fear" gaze={0} blink={false} />
           <Tall position={CLOSE} rotationY={Math.PI} headPitch={0.35} />
-          <Fill at={[KNEEL[0] - 2, 2.2, KNEEL[2] + 1]} power={14} color="#c9b8ff" />
+          <Fill at={[KNEEL[0] - 2, 2.2, KNEEL[2] + 1]} power={34} color="#c9b8ff" />
         </>
       ),
     },
@@ -42,21 +42,21 @@ export const scene13 = storyScene(timing, {
       stage: () => (
         <>
           <Watchers />
-          <Fill at={[-22, 3, 0]} power={20} color="#c9b8ff" />
-          <Fill at={[-10, 3, 0]} power={20} color="#c9b8ff" />
+          <Fill at={[-22, 3, 0]} power={46} color="#c9b8ff" />
+          <Fill at={[-10, 3, 0]} power={46} color="#c9b8ff" />
         </>
       ),
     },
     {
       cue: "13.windows",
-      ...cam.push({ on: [HOME_WINDOW[0] + 0.5, 2.3, HOME_WINDOW[2] + 0.5], dist: 3.6, to: 3.0, yaw: -28, pitch: -8, fov: 40 }),
+      ...cam.push({ on: [HOME_WINDOW[0] + 0.6, 2.2, HOME_WINDOW[2] + 0.6], dist: 4.2, to: 3.5, yaw: 16, pitch: -6, fov: 40 }),
       zone: "village",
       look: "overworld-night",
       note: "The one at his own house, close. It is bent to his bedroom window with its face almost on the glass. That is the window he climbed out of.",
       stage: () => (
         <>
           <Tall position={AT_HOME[0]} rotationY={AT_HOME[1]} headPitch={0.3} />
-          <Fill at={[HOME_WINDOW[0] - 1, 2.6, HOME_WINDOW[2] + 3]} power={12} color="#c9b8ff" />
+          <Fill at={[HOME_WINDOW[0] + 1.5, 2.6, HOME_WINDOW[2] + 3]} power={26} color="#c9b8ff" />
         </>
       ),
     },
@@ -90,14 +90,14 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.find",
-      ...cam.push({ on: [CLOSE[0], 2.72, CLOSE[2]], dist: 2.0, to: 1.5, yaw: 172, pitch: -12, fov: 36 }),
+      ...cam.push({ on: [CLOSE[0], 2.72, CLOSE[2]], dist: 2.5, to: 2.0, yaw: 172, pitch: -12, fov: 36 }),
       zone: "village",
       look: "overworld-night",
       note: "Its head, from below, blank. On 'look' two pale eyes open in it.",
       stage: (t) => (
         <>
           <Tall position={CLOSE} rotationY={Math.PI} headPitch={0.4} eyes={ease(ramp(t, LOOK, LOOK + 0.35))} />
-          <Fill at={[CLOSE[0] - 1, 1.8, CLOSE[2] - 2]} power={9} color="#c9b8ff" />
+          <Fill at={[CLOSE[0] - 0.8, 2.4, CLOSE[2] - 1.6]} power={22} color="#c9b8ff" />
         </>
       ),
     },

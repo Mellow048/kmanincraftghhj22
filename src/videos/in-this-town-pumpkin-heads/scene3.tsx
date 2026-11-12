@@ -34,7 +34,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.shoes",
-      ...cam.truck({ on: [-0.2, 0.3, 1.2], dist: 1.9, yaw: 0, pitch: 4, by: [1.3, 0, 0] }),
+      ...cam.truck({ on: [-0.9, 0.42, 1.2], dist: 3.3, yaw: -14, pitch: 6, by: [1.5, 0, 0] }),
       zone: "village",
       look: "overworld-day",
       note: "Down at the ground, sliding along a row of feet. Every pair of shoes is a different colour. One pair is small and blue.",
@@ -60,7 +60,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.knock",
-      ...cam.push({ on: [0, 1.05, 2], dist: 2.5, to: 2.0, yaw: 0, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [0, 1.0, 2], dist: 3.5, to: 3.0, yaw: 0, pitch: 2, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "Two kids face to face, side on. His best friend, in yellow, raps on his pumpkin: once on 'knocking', once on 'twice'. His head bobs each time. Remember it: this is how the town says hello.",

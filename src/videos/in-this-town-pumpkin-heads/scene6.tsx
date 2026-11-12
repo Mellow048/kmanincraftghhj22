@@ -25,7 +25,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.plant",
-      ...cam.push({ on: room(1.3, 1.6, -2.3), dist: 3.3, to: 2.5, yaw: -8, pitch: 2, fov: 40 }),
+      ...cam.push({ on: room(1.3, 1.15, -2.2), dist: 3.6, to: 2.9, yaw: -8, pitch: 2, fov: 40 }),
       zone: "room",
       look: "overworld-night",
       note: "He is up, at his window, a small back in the moonlight looking out at the town. We push in past him at the glass. Whatever a whole town hides from is out there.",
