@@ -1,7 +1,7 @@
 import type React from "react";
 import { Block, MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { Classmate, DEG, KID, NORTH, Overhead, Teacher, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
+import { Bits, Classmate, DEG, KID, NORTH, Overhead, Teacher, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
 import timingJson from "./timing.json";
 
 /**
@@ -31,6 +31,13 @@ export const timing = timingJson as unknown as Timing;
 
 /** Seconds into its shot at which a word is said: `wordAt("3.heart", "heart")`. Hang every action on a word. */
 export const wordAt = wordClock(timing);
+
+/** The film second at which a line starts: for ONE action that runs across a cut (`cueStart("7.door") - cueStart("7.walk")`). */
+export const cueStart = (id: string): number => {
+  const cue = timing.cues.find((c) => c.id === id);
+  if (!cue) throw new Error(`cueStart: no cue "${id}"`);
+  return cue.start;
+};
 
 // ----------------------------------------------------------------------------- places
 
@@ -104,7 +111,7 @@ export const Heart: React.FC<{ over: Vec3; size?: number; t?: number; yaw?: numb
 /** How big a heart is. Jo's, with him at the next desk, is `jo`: nothing else in the school comes near it until the dance. */
 export const HEART = { tiny: 0.13, small: 0.2, mid: 0.34, big: 0.62, jo: 0.95 };
 /** How tall the one under a heart is, in metres. */
-export const TALL = { kid: 1.44, seated: 1.34, leo: 1.64, adult: 1.8, dog: 0.82, dogSitting: 0.86 };
+export const TALL = { kid: 1.44, seated: 1.34, leo: 1.64, leoSeated: 1.53, adult: 1.8, dog: 0.82, dogSitting: 0.86 };
 
 // ----------------------------------------------------------------------------- the teller, and the people the story is about
 
@@ -189,6 +196,11 @@ export const Mom: React.FC<A> = (p) => (
   <MinecraftAvatar scale={1} outfit="tee" skin="#dba47c" hair="#5a3a1e" colors={{ torso: "#2f8a5a", arms: "#2f8a5a", legs: "#3a3f52" }} face="smile" blink phase={0.4} head={longHair("#5a3a1e")} {...p} />
 );
 
+/** The cook behind the lunch counter: white coat, white cap. */
+export const Cook: React.FC<A> = (p) => (
+  <MinecraftAvatar scale={1} outfit="tee" skin="#c99a74" hair="#6a4a32" colors={{ torso: "#f4f7fb", arms: "#f4f7fb", legs: "#59606b" }} face="smile" blink phase={2.6} head={<Block position={[0, 0.27, 0]} size={[0.44, 0.12, 0.44]} color="#f4f7fb" />} {...p} />
+);
+
 /** Dad: a white shirt. His tie is drawn by the scene (`Tie`), because one night it is not on him. */
 export const Dad: React.FC<A> = (p) => (
   <MinecraftAvatar scale={1.02} outfit="tee" skin="#dba47c" hair="#3a2415" colors={{ torso: "#f2f2f2", arms: "#f2f2f2", legs: "#4a4a58" }} face="smile" blink phase={1.7} {...p} />
@@ -230,3 +242,38 @@ export const Held: React.FC<{ by: Vec3; facing: number; out?: number; up?: numbe
 
 /** Straight-line blend between two points. */
 export const mix = (a: Vec3, b: Vec3, k: number): Vec3 => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
+
+/**
+ * Walk a BENT line: `stride` over more than one leg. `metres` is how far along it he is (hang it on the clock);
+ * the feet follow the ground because the distance is real. Past the end he stands on the last point.
+ *
+ *   <Hero {...route([A, B, C], 1.4 * t)} animation="walk" />
+ */
+export const route = (points: Vec3[], metres: number): { position: Vec3; rotationY: number; animDistance: number } => {
+  let left = Math.max(0, metres);
+  let walked = 0;
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = points[i];
+    const b = points[i + 1];
+    const len = Math.hypot(b[0] - a[0], b[2] - a[2]);
+    const last = i === points.length - 2;
+    if (left <= len || last) {
+      const k = len > 0 ? Math.min(1, left / len) : 1;
+      return { position: [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k], rotationY: Math.atan2(b[0] - a[0], b[2] - a[2]), animDistance: walked + len * k };
+    }
+    left -= len;
+    walked += len;
+  }
+  return { position: points[0], rotationY: 0, animDistance: 0 };
+};
+
+/** A knock on the head: yellow stars that fly from where it landed. `t` is seconds since the knock. */
+export const Stars: React.FC<{ position: Vec3; t: number; seed?: number }> = ({ position, t, seed = 2 }) => <Bits position={position} t={t} color="#ffd24a" count={9} seed={seed} power={0.75} />;
+
+/** Something that is growing fast overshoots and settles: 0 before `at`, past 1, then 1. `dur` is the whole wobble. */
+export const boing = (t: number, at: number, dur = 0.5): number => {
+  const k = (t - at) / dur;
+  if (k <= 0) return 0;
+  if (k >= 1) return 1;
+  return 1 - Math.exp(-6 * k) * Math.cos(k * 15);
+};
