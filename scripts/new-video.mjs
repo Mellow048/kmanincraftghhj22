@@ -67,6 +67,7 @@ if (topicId !== null) {
     console.error(`"${title}" opens "${belongs.film.opensWith}…": it is a film of the topic "${belongs.name}".`);
     console.error(`That topic has its own length, script shape, shots, sound and kit. Read ${belongs.folder}/README.md, then run:\n`);
     console.error(`  npm run new -- "${title}" --topic ${belongs.id}\n`);
+    if (belongs.film.opensWithHint) console.error(`${belongs.film.opensWithHint}\n`);
     process.exit(1);
   }
 }
@@ -203,15 +204,26 @@ if (topic) {
   console.log("The order of work, and each step needs the owner's yes before the next:");
   console.log(`  1. IDEAS, then the SCRIPT in narration.md (${topic.folder}/SCRIPT.md). Stop. The owner approves the script.`);
   console.log(`  2. VOICE: python3 scripts/narration.py clips ${slug}, record each clip, then narration.py build ${slug}.`);
-  console.log(`  3. SHOTS: one per script line (${topic.folder}/SHOTS.md), from the pack (${topic.pack ?? topic.folder}).`);
+  if (topic.camera?.continuous) {
+    console.log(`  3. STOPS: one for each script line, flown to (${topic.folder}/SHOTS.md), from the pack (${topic.pack ?? topic.folder}).`);
+  } else {
+    console.log(`  3. SHOTS: one per script line (${topic.folder}/SHOTS.md), from the pack (${topic.pack ?? topic.folder}).`);
+  }
   console.log(`     Review with: node scripts/shots.mjs ${slug}`);
   if (topic.sound?.required) {
     console.log(`  4. SOUND: python3 scripts/sound.py draft ${slug}, fill in sound.json (${topic.sound.guide}),`);
     console.log(`     then python3 scripts/sound.py build ${slug}, and point film.tsx at the mix.`);
   }
-  console.log("  5. npm run typecheck && npm run check, then render (AGENTS.md §10).");
-  const model = Object.keys(topic.models ?? {}).find((key) => key !== "note");
-  if (model) console.log(`\nThe model to copy the BUILD of (never the story): src/videos/${model}/`);
+  console.log("  5. npm run typecheck && npm run check, then render (AGENTS.md §9).");
+  // The topic's reference film: a finished film of ours that the owner chose. Older topic files only list `models`.
+  const model = topic.reference?.film ?? Object.keys(topic.models ?? {}).find((key) => key !== "note");
+  if (model) {
+    console.log(`\nThe reference film. Copy how it is BUILT, never its story: src/videos/${model}/`);
+    if (topic.reference?.page) console.log(`Its page, with its shape and its sound measured: ${topic.reference.page}/README.md`);
+  }
+  if (topic.state === "PROVISIONAL") {
+    console.log(`\nThis topic is PROVISIONAL: it has no reference yet, and its numbers are a first setting (${topic.folder}/README.md).`);
+  }
 } else {
   console.log("Next:");
   console.log("  0. Write the narration first in narration.md: docs/NARRATION-RULES.md.");

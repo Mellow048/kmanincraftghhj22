@@ -1,0 +1,70 @@
+{
+  "id": "explainer",
+  "name": "Explainer",
+  "folder": "Topics/Explainer",
+  "profile": "story",
+  "state": "PROVISIONAL",
+  "provisional": {
+    "why": "The owner asked for this topic to be built before its reference: \"reference which we will do later once youre done\". So the numbers in `film` and `sound` are NOT measured from anything. They are a first setting, chosen so that the lint has something to hold a film to.",
+    "from": "The camera is the framework's own Zack D grammar (docs/CAMERA-BIBLE.md: one world, a camera that never teleports). The voice, the captions and the sound are the story pipeline's (docs/STORY-FILMS.md). The subjects the owner named: money lessons, and what inflation is.",
+    "whenTheReferenceArrives": "Put it in Topics/Explainer/reference/<name>/, measure it (length, words, words a minute, seconds per stop, hard cuts, sound), and replace every number below that it disagrees with. Then delete this block and set `state` to \"MEASURED\"."
+  },
+  "camera": {
+    "builder": "flightScene",
+    "continuous": true,
+    "guard": "unbroken",
+    "maxHardCuts": 2,
+    "note": "Scenes are built with flightScene(): one stop for each line, flown to. film.tsx calls unbroken(), which throws if the camera teleports. A film may declare at most `maxHardCuts` shots with `cut: true`."
+  },
+  "film": {
+    "seconds": [30, 58],
+    "hardMaxSeconds": 60,
+    "hardMinSeconds": 20,
+    "hardMinWords": 70,
+    "shotSeconds": [0.8, 7.0],
+    "medianShotSeconds": [1.8, 4.0],
+    "wordsPerMinute": [200, 268],
+    "words": [110, 250],
+    "maxWordsPerShot": 18,
+    "lastLineContains": "subscribe",
+    "captions": true
+  },
+  "cuts": {
+    "long": {
+      "seconds": [60, 118],
+      "hardMaxSeconds": 120,
+      "words": [250, 500]
+    }
+  },
+  "pack": "Topics/Explainer/PACK.md",
+  "template": "Topics/Explainer/template",
+  "models": {
+    "note": "No finished film yet. The first explainer the owner approves is named here, and becomes the model to build like."
+  },
+  "sound": {
+    "required": true,
+    "guide": "Topics/Explainer/SOUND.md",
+    "minMusicSections": 3,
+    "musicUnderVoiceDb": [15, 24],
+    "maxSecondsWithoutMusic": 4,
+    "minSfxPerMinute": 40,
+    "maxGapSeconds": 6,
+    "maxBuried": 0,
+    "minVoiceOverRestDb": 3,
+    "minVoiceOverRestMedianDb": 10,
+    "lufs": [-16.5, -13],
+    "maxTruePeakDb": -0.3,
+    "bedDefault": "sky",
+    "moodDefault": "explain",
+    "bedForLook": {
+      "overworld-night": "night"
+    },
+    "bedForZone": {
+      "room": "room",
+      "bank": "room",
+      "shop": "room",
+      "cave": "cave",
+      "mine": "cave"
+    }
+  }
+}

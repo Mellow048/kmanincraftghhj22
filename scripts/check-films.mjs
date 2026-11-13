@@ -260,14 +260,18 @@ for (const slug of filmDirs) {
     const title = film.match(/^\s*title:\s*["'`]([^"'`]+)["'`]/m)?.[1] ?? "";
     const narrationFile = path.join(dir, "narration.md");
     const narration = fs.existsSync(narrationFile) ? fs.readFileSync(narrationFile, "utf8") : "";
+    // "Opens" means the title or the FIRST spoken line. A later line may say "what if" in any kind of film.
+    const spoken = narration.match(/```narration\s*([\s\S]*?)```/)?.[1] ?? "";
+    const firstLine = spoken.split("\n").map((line) => line.trim()).find((line) => line && !line.startsWith("#")) ?? "";
     for (const topic of allTopics) {
       const opens = topic.film?.opensWith;
       if (!opens) continue;
       const first = new RegExp(`^\\s*(?:[-*>]\\s*)?(?:\\[[^\\]]*\\]\\s*)?["'“*_]*${opens.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "im");
-      if (first.test(title) || first.test(narration) || new RegExp(`["'“]${opens}["'”]`, "i").test(film)) {
+      if (first.test(title) || first.test(firstLine) || new RegExp(`["'“]${opens}["'”]`, "i").test(film)) {
         fail(
           `${slug}: this film opens "${opens}…", so it belongs to the topic "${topic.name}", but film.tsx does not say topic: "${topic.id}". ` +
-            `That topic has its own length, script shape, shots, sound and kit: read ${topic.folder}/README.md and start again with: npm run new -- "<title>" --topic ${topic.id}`,
+            `That topic has its own length, script shape, shots, sound and kit: read ${topic.folder}/README.md and start again with: npm run new -- "<title>" --topic ${topic.id}` +
+            (topic.film.opensWithHint ? ` (${topic.film.opensWithHint})` : ""),
         );
       }
     }
