@@ -180,6 +180,13 @@ moves every sound with it:
 music, how loud is the file) and writes `sound.lock.json`, which records what the mix was built from. Then
 `film.tsx` plays `audio/<film>/mix.mp3`.
 
+**The music is made from moods, or it is one recorded track.** A sheet names a mood for each stretch of the story
+(`"mood": "town"`, `"curious"`, … `"none"` for silence), and the tool makes that music. Or the sheet names a file
+(`"music": { "file": "Topics/<Folder>/<track>", … }`) and its sections play it with `"mood": "track"`: the file runs
+on the film's clock, under the voice, and a section can pull it back (`"gain": -4`) or stop it (`"none"`). A topic
+whose owner has chosen a track names it in its `topic.json` (`sound.music.file`); `draft` then writes it into every
+new sheet and `build` refuses a sheet without it. In This Town has one: `Topics/InThisTown/SOUND.md`, section 3.
+
 How to write a sheet, what each level means and what the limits are: the topic's own page,
 `Topics/InThisTown/SOUND.md`. A topic turns the sound rule on with `sound.required` in its `topic.json`.
 

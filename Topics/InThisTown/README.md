@@ -84,7 +84,7 @@ These apply to a film that declares `topic: "in-this-town"`, and to nothing else
 | Hook in the first 1.5 s | The first three words are "In this town," over the teller's face |
 | The last line is a button, not a moral | The last line is the twist, then a 4–6 word "Subscribe …" line that belongs to the story |
 | One world, mounted once | One world, split into zones. Each shot names its zone |
-| "Music: low drone, one pulse"; a hit on the reveal | Music in five or more sections that change with the story, the air of each place, and 40 or more sound effects a minute. All of it built by `scripts/sound.py` from the film's `sound.json` |
+| "Music: low drone, one pulse"; a hit on the reveal | The owner's own track under the whole film ([`InThisTownMusic.aac`](InThisTownMusic.aac)), the air of each place, and 40 or more sound effects a minute. All of it mixed by `scripts/sound.py` from the film's `sound.json` |
 | Started from `templates/video/` | Started from this topic's `template/`, and built from its pack |
 
 Everything else in `AGENTS.md` still holds: one folder per film, real 3D sets, something moving in every shot, the
@@ -185,7 +185,7 @@ still an estimate, and whether the mix is older than the script.
 | `reference/nobody-looked-at-the-moon/`, `reference/monster-egg/`, `reference/superpower-at-18/` | **Three more films the owner approved**, each with its mp4, its source, a log of every shot, and what was hard |
 | `reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
-| `InThisTownMusic.aac` | Background music the owner added on 2026-11-13 ("backround music for InThisTown Videos"): 3:36, stereo. **No film uses it yet**, and `scripts/sound.py` does not read it: the films so far play music the tool makes. Ask the owner how he wants it used before you put it in a film |
+| `InThisTownMusic.aac` | **The background music of every In This Town short.** The owner added it on 2026-11-13: "the music is used thats the new backround music for the in this town shorts". 3:42, stereo. A film's `sound.json` names it and `scripts/sound.py` mixes it under the voice ([`SOUND.md`](SOUND.md), section 3). The four films finished before that day keep the music they were approved with |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
 of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second

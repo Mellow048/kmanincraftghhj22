@@ -100,6 +100,9 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
   if (from["timing.json"] !== textHash(path.join(dir, "timing.json"))) changed.push("timing.json");
   if (from["sound.json"] !== textHash(sheetPath)) changed.push("sound.json");
   if (!fs.existsSync(voicePath) || from["narration.mp3"] !== fileHash(voicePath)) changed.push("narration.mp3");
+  // A mix that plays a recorded track was built from that file too.
+  const track = lock.music_file;
+  if (track && (!fs.existsSync(path.join(root, track.path)) || track.sha1 !== fileHash(path.join(root, track.path)))) changed.push(`${track.path} (the music)`);
   if (changed.length > 0) {
     fail(`${tag}: the mix is out of date: ${changed.join(", ")} changed after it was built. Run: ${build}`);
     return;
@@ -117,7 +120,16 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
 
   const m = lock.measured ?? {};
   const sections = (lock.music_sections ?? []).filter((part) => part.mood !== "none");
-  if (rules.minMusicSections && sections.length < rules.minMusicSections) {
+  // A topic can have ONE track for all its films, chosen by the owner (`sound.music.file`). `scripts/sound.py build`
+  // refuses a sheet that does not play it, so every mix built since the rule has it. A mix built before the rule
+  // still passes here: its film is either finished (`madeBefore`) or will be told on its next build.
+  const own = rules.music?.file;
+  const playsOwn = own && track?.path === own;
+  if (own && !playsOwn && !(rules.music.madeBefore ?? []).includes(slug)) {
+    info(`${tag}: its music is not the topic's track (${own}). The owner chose that track for this topic's films: the next \`${build}\` will ask for it.${guide}`);
+  }
+  // The count of sections is for music made from moods. One recorded track is one piece of music.
+  if (rules.minMusicSections && !track && sections.length < rules.minMusicSections) {
     fail(`${tag}: the music has ${sections.length} section(s). The music changes when the story does: at least ${rules.minMusicSections}.${guide}`);
   }
   if (rules.musicUnderVoiceDb && m.musicUnderVoiceDb != null) {
@@ -153,7 +165,7 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
     fail(`${tag}: the mix peaks at ${m.truePeakDb} dB. Over ${rules.maxTruePeakDb} it can clip.`);
   }
   info(
-    `${tag}: sound: ${sections.length} music sections, ${lock.beds ?? 0} beds, ${m.sfx} effects (${m.sfxPerMinute}/min); ` +
+    `${tag}: sound: ${track ? `music from ${path.basename(track.path)}` : `${sections.length} music sections`}, ${lock.beds ?? 0} beds, ${m.sfx} effects (${m.sfxPerMinute}/min); ` +
       `music ${m.musicUnderVoiceDb} dB under the voice; voice ${m.voiceOverRestMedianDb} dB over the rest (worst ${m.voiceOverRestWorstDb}); ${m.lufs} LUFS`,
   );
 }

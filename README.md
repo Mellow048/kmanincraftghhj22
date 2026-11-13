@@ -99,8 +99,9 @@ That starts a film from the topic's own starter. A topic also has:
   has `cut: "short"`, one to two minutes;
 - **a pack**: the people, places and things of its finished films, ready to use
   ([`Topics/InThisTown/PACK.md`](Topics/InThisTown/PACK.md));
-- **sound made in Python**: `scripts/sound.py` computes the music, the air of each place and every sound effect
-  with numpy, and mixes them under the voice from a sheet that names cues and words
+- **sound made in Python**: `scripts/sound.py` computes the air of each place and every sound effect with numpy,
+  and mixes them under the voice from a sheet that names cues and words. The music is the owner's own track for
+  In This Town shorts, and is made by the same tool for the other topics
   ([`Topics/InThisTown/SOUND.md`](Topics/InThisTown/SOUND.md)).
 
 Narrated topics are cut to a recorded voice; the pipeline is in [`docs/STORY-FILMS.md`](docs/STORY-FILMS.md).

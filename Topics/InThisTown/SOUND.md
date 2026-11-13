@@ -1,14 +1,22 @@
 # The sound of an "In This Town" film
 
-A film of this topic is never voice only. Under the voice there is **music that changes when the story does**, the
-**air of the place** the shot is in, and a **sound effect for each thing that happens on screen**: about eighty a
-minute in the reference film.
+A film of this topic is never voice only. Under the voice there is **music**, the **air of the place** the shot is
+in, and a **sound effect for each thing that happens on screen**: about eighty a minute in the reference film.
 
-All of it is made in Python by `scripts/sound.py`. Nothing is downloaded, sampled or licensed: every note and every
-noise is computed from a seed, so the same sheet always gives the same track.
+> **The music is the owner's own track: [`InThisTownMusic.aac`](InThisTownMusic.aac).** He added it on 2026-11-13
+> and said: "the music is used thats the new backround music for the in this town shorts". Every In This Town
+> short made from that day plays it, from the first frame to the last. Section 3 says how. `scripts/sound.py
+> draft` writes it into a new sheet, and `build` refuses a sheet that does not play it.
+>
+> The four films finished before that day keep the music they were approved with, which the tool made from moods
+> (`sound.music.madeBefore` in [`topic.json`](topic.json)). An approved film does not change.
 
-The reference is the sheet of the topic's reference film, `src/videos/in-this-town-same-face/sound.json`. Read it next to the film's `narration.md` before you
-write a sheet of your own: 11 music sections (one of them silence), 14 beds, 141 effects of 35 kinds, in 1:45.
+The beds and the effects are made in Python by `scripts/sound.py`: computed from a seed, nothing downloaded or
+sampled, so the same sheet always gives the same mix.
+
+The reference is the sheet of the topic's reference film, `src/videos/in-this-town-same-face/sound.json`. Read it
+next to the film's `narration.md` before you write a sheet of your own: 14 beds and 141 effects of 35 kinds in 1:45.
+Its music is from before the track: read it for the beds and the effects, and section 3 for the music.
 
 ## 1. When, and with what
 
@@ -47,12 +55,14 @@ sound moves with the voice. `npm run check` fails a film whose mix is older than
 
 ```json
 {
-  "film": "in-this-town-same-face",
+  "film": "in-this-town-nobody-rang-the-bell",
   "music": {
-    "gain": -16,
+    "file": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -17,
     "sections": [
-      { "from": "1.face", "mood": "town", "why": "Hook, mysteries and tour: the town as he knew it." },
-      { "from": "5.ask", "mood": "curious", "why": "He asks, and gets a rule and no reason." }
+      { "from": "1.face", "mood": "track", "why": "The topic's track, from the first frame." },
+      { "from": "16.wait", "mood": "none", "why": "The held breath before the reveal: nothing." },
+      { "from": "17.truth", "mood": "track", "gain": -3, "why": "It comes back lower, under the truth." }
     ]
   },
   "beds": [
@@ -77,9 +87,10 @@ sound moves with the voice. `npm run check` fails a film whose mix is older than
 | `"cue": "2.hill", "p": 0.5` | Halfway through the shot (`p` runs 0 → 1) |
 | any of the above, plus `"at": 0.6` | 0.6 seconds later. Negative is earlier |
 
-**Music.** `sections` is a list of `{ from, mood, why }`. Each runs from its cue to the next section's cue, starts on
-its own first beat, and fades as the next one starts. The first must start on the film's first cue. `gain` on the
-music is its level under the voice (default −16); `gain` on one section moves that section up or down from there.
+**Music.** `file` is the track. `sections` is a list of `{ from, mood, why }`: each runs from its cue to the next
+section's cue, and the first must start on the film's first cue. `"mood": "track"` plays the file; `"none"` is
+silence. `gain` on the music is its level under the voice (−17 for the track); `gain` on one section moves that
+section up or down from there. Section 3 has the rest.
 
 **Beds.** `{ from, to, bed }`: the air of a place, from the cut into `from` to the end of `to`. `trim` makes one
 louder or quieter. Two beds may overlap: the `crowd` is heard over the `fire` before the crowd is seen.
@@ -102,10 +113,43 @@ louder or quieter. Two beds may overlap: the `crowd` is heard over the `fire` be
 A whoosh is **centred** on its time, so it straddles the cut. A `riser` **ends** on its time: give it the cue of the
 thing it rises into.
 
-## 3. Music: one mood for each part of the story
+## 3. Music: the owner's track
 
-The music is not a loop under the film. It changes on a cut, when the story turns, and each change says something.
-The reference film has eleven sections, one of them silence; the lint wants at least five that play.
+**One track, under the whole film.** `"file": "Topics/InThisTown/InThisTownMusic.aac"`, and `"mood": "track"` on
+the sections that play it. It is 3:42 long, so it covers the longest film of this topic without repeating, and it
+is steady: measured second by second, its level stays inside a band of 5 dB until its own fade begins at 3:32.
+
+- **It runs on the film's clock.** At film second 40 the track is at its own second 40. A section that mutes it and
+  a later one that brings it back do not restart it: it has simply been playing. A change of level, a mute and a
+  return each take 0.4 seconds.
+- **Leave `gain` at −17.** That puts the track about 19 dB under the voice, where the music of the approved films
+  sits (18.2 to 18.9). The tool also steps it back 2 dB while the voice speaks and cuts a pocket in it around
+  2 kHz, where the consonants are.
+- **What still changes with the story is its level, and silence.**
+
+  | The story | The sheet |
+  |---|---|
+  | Hook, tour, the tries: the film as it runs | `{ "from": "<first cue>", "mood": "track" }` |
+  | A whisper, a secret, the night work | `{ "from": …, "mood": "track", "gain": -4 }`: the track steps back |
+  | The one to four seconds before the reveal | `{ "from": …, "mood": "none" }`, with a `riser` through it and the `boom` on the reveal's first word |
+  | The reveal, and after | `{ "from": …, "mood": "track", "gain": -3 }`: it comes back lower, under the truth |
+
+- **Silence is one held breath.** The lint allows eight seconds without music in a whole film, and the track must
+  play under at least 80% of it.
+- **Do not put a mood in its place.** The tool can still make music (the table below), and the four films from
+  before the track use it. A new film does not, unless the owner asks for it in that film.
+- **The effects carry the turns now.** The track does not know that the story has turned dark. The `sting`, the
+  `drop`, the `heartbeat` and the `boom` do (section 4). Tune them against the track: read
+  `out/sound/<film>/effects.txt` after each build, because an effect that stood clear of a made mood can be buried
+  under a recorded one.
+- **The file is part of the mix.** `sound.lock.json` records its hash. If the owner replaces the track,
+  `npm run check` says which mixes are older than it.
+
+### The moods the tool can make (the four films before the track)
+
+In those films the music is not a loop: it changes on a cut, when the story turns, and each change says something.
+The reference film has eleven sections, one of them silence; the lint wants at least five that play in a film whose
+music is made this way.
 
 | Script beats (`SCRIPT.md`) | What is happening | Mood |
 |---|---|---|
@@ -187,13 +231,15 @@ plays it** (almost nothing under 200 Hz, a little extra over 2 kHz).
 | under −18 | Nobody hears it |
 
 `build` sets each effect to its level by its loudest tenth of a second, so a short tick and a long whoosh with the
-same number sound equally loud. Use `trim` to move one up or down a few dB. Leave `music.gain` near −16.
+same number sound equally loud. Use `trim` to move one up or down a few dB. Leave `music.gain` at −17 for the
+track (−16 for music made from moods).
 
 What `build` reports, and what `npm run check` then holds the film to (`sound` in `topic.json`):
 
 | Measured | Limit | If it fails |
 |---|---|---|
-| Music sections | at least 5 | The music is a loop. Section 3 |
+| The topic's track | played, under at least 80% of the film | `build` stops and says what to write. Section 3 |
+| Music sections, in a film whose music is made from moods | at least 5 | Only the four films from before the track |
 | Music under the voice | 15–24 dB | Move `music.gain` |
 | Film with no music | at most 8 s | Too much `none` |
 | Effects | at least 40 a minute | Section 4 |
