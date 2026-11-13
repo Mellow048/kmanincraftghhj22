@@ -74,7 +74,7 @@ the mix in the film the owner then approved.
 
 | | |
 |---|---|
-| Music | 9 sections, one of them silence: `wonder` → `curious` → `playful` → `curious` → `tense` → `hope` → `none` → `sad` → `hope` |
+| Music | 8 sections and one silence: `wonder` → `curious` → `playful` → `curious` → `tense` → `hope` → (silence) → `sad` → `hope` |
 | Music under the voice | 18.6 dB. 2.3 s of the film has no music, before the reveal |
 | The air of each place | 18 beds, 28.4 dB under the voice |
 | Sound effects | 321, of 39 kinds: 170 a minute. The longest stretch without one is 2.1 s |
