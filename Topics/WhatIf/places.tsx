@@ -349,8 +349,11 @@ export function gym(at: Vec3) {
     drinks: p(3.0, 0, 8.3),
     /** The school gate, 14 m out along the path. */
     gate: p(0, 0, 24),
-    /** Under the lamp, just inside the gate. */
-    lamp: p(1.25, 0, 22.9),
+    /**
+     * Under the lamp, just inside the gate: a metre from the lantern, so that a heart over a head clears it.
+     * Somebody who stands here and looks back at the gym (NORTH) has the lamp's light on their face.
+     */
+    lamp: p(0.7, 0, 23.1),
     /** The street outside the gate. It runs west–east. */
     street: p(0, 0, 27),
     /** Any point, in gym coordinates. */
@@ -519,6 +522,8 @@ export const Gym: React.FC<{ at: Vec3; night?: boolean; dance?: boolean; banner?
           <pointLight position={[-3.5, 3.4, 3.5]} color="#5a8cff" intensity={36} distance={11} decay={2} />
           <pointLight position={[3.5, 3.2, 5.5]} color="#ffd98a" intensity={40} distance={11} decay={2} />
           <pointLight position={[0, 2.6, 8.2]} color="#ffe9c4" intensity={30} distance={9} decay={2} />
+          {/* White from behind the middle of the floor: without it the back of a fair head under the lights is green. */}
+          <pointLight position={[0, 2.6, -3.4]} color="#fff3e0" intensity={30} distance={10} decay={2} />
         </>
       ) : (
         <>
@@ -649,8 +654,11 @@ export const Gym: React.FC<{ at: Vec3; night?: boolean; dance?: boolean; banner?
         <Block position={[-0.6, 2.62, 0]} size={[0.38, 0.06, 0.38]} color="#3a2c1c" castShadow={false} />
         {night ? (
           <>
-            <pointLight position={[-0.6, 2.3, 0.2]} color="#ffd9a0" intensity={46} distance={10} decay={2} />
-            <Glow position={[-0.6, 2.42, 0]} size={2.6} color="#ffd9a0" opacity={0.55} />
+            {/* The lantern itself is weak: at 46 it bleached the gate post, and anything floating over a head, to white. */}
+            <pointLight position={[-0.6, 2.3, 0.2]} color="#ffd9a0" intensity={10} distance={10} decay={2} />
+            {/* What lights the one who stands under it (`lamp`): the same lamp, from where a face can catch it. */}
+            <pointLight position={[-2.1, 2.3, -1.7]} color="#ffd9a0" intensity={30} distance={8} decay={2} />
+            <Glow position={[-0.6, 2.42, 0]} size={1.7} color="#ffd9a0" opacity={0.42} />
             <LightPool position={[-0.9, 0.13, 0]} width={5.4} depth={5.4} color="#ffd9a0" opacity={0.5} />
             <GodRay position={[-0.6, 1.2, 0]} width={2.2} height={2.5} color="#ffd9a0" opacity={0.13} />
           </>

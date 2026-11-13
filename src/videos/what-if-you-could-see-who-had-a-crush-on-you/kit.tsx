@@ -104,9 +104,10 @@ export const FACE = { me: SPOT.face(1, 1), jo: SPOT.face(1, 2), mia: SPOT.face(0
  * THE POWER HAS ONE LOOK: a pink heart over a head. This is the only way it is ever drawn.
  * `yaw` is the camera's yaw in degrees (the heart turns to face the lens); `tall` is how tall the one under it
  * is (see TALL). `t` pops it in as it passes 0: leave it out for a heart that was already there.
+ * `steady`: for the gate at night, where a lantern hangs a metre from it (see `Overhead`).
  */
-export const Heart: React.FC<{ over: Vec3; size?: number; t?: number; yaw?: number; tall?: number; fade?: number }> = ({ over, size = HEART.mid, t = 9, yaw = 0, tall = TALL.kid, fade = 0 }) => (
-  <Overhead over={over} kind="heart" size={size} t={t} tall={tall} rotationY={yaw * DEG} fade={fade} />
+export const Heart: React.FC<{ over: Vec3; size?: number; t?: number; yaw?: number; tall?: number; fade?: number; steady?: boolean }> = ({ over, size = HEART.mid, t = 9, yaw = 0, tall = TALL.kid, fade = 0, steady = false }) => (
+  <Overhead over={over} kind="heart" size={size} t={t} tall={tall} rotationY={yaw * DEG} fade={fade} steady={steady} />
 );
 /** How big a heart is. Jo's, with him at the next desk, is `jo`: nothing else in the school comes near it until the dance. */
 export const HEART = { tiny: 0.13, small: 0.2, mid: 0.34, big: 0.62, jo: 0.95 };

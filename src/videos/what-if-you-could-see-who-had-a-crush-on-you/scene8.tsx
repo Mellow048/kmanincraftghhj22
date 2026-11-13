@@ -27,9 +27,11 @@ const HIS_SEAT = LUNCH.seat(0, "n", 0);
 const MIAS_SEAT = LUNCH.seat(0, "n", -0.9);
 const KIDS_SEAT = LUNCH.seat(0, "n", 0.9);
 /** Jo comes from the line with her tray, stops behind the bench, and goes. */
-const JO_IN = LUNCH.at(-1.0, 0, -2.72);
-const JO_STOPS = LUNCH.at(-2.36, 0, -2.72);
-const JO_OUT = LUNCH.at(-0.6, 0, -2.62);
+// A step and a half back from the bench: any nearer, and the lens (which looks down over the table) loses her
+// face behind the heads of the ones who are sitting.
+const JO_IN = LUNCH.at(-0.9, 0, -3.3);
+const JO_STOPS = LUNCH.at(-2.36, 0, -3.3);
+const JO_OUT = LUNCH.at(-0.5, 0, -3.2);
 /** Where she eats: the far corner of the room, alone. */
 const JOS_SEAT = LUNCH.seat(3, "n", 0);
 
@@ -144,9 +146,8 @@ export const scene8 = storyScene(timing, {
             <Carried by={me} facing={WEST} />
             <Leo position={leo} rotationY={WEST} animation="idle" arms="hold" face="grin" headPitch={-0.2} gaze={0} />
             <Carried by={leo} facing={WEST} />
-            <Mia position={MIA_AT} rotationY={WEST + 0.8} animation="idle" arms="hold" face="grin" headYaw={0.85} />
-            {/* The heart is not drawn: the lens is inside it. Its light is on their faces. */}
-            <pointLight position={[MIA_AT[0] + 0.15, 2.3, MIA_AT[2] + 0.3]} color="#ff9cc0" intensity={9} distance={6} decay={2} />
+            {/* Neither the heart nor the girl under it is drawn: the lens is inside the one and over the head of the other. Its light is on their faces. */}
+            <pointLight position={[MIA_AT[0] + 0.15, 2.3, MIA_AT[2] + 0.3]} color="#ff9cc0" intensity={6} distance={6} decay={2} />
           </>
         );
       },

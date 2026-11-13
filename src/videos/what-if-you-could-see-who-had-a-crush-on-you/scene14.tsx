@@ -1,6 +1,7 @@
-import { cam, storyScene, stride } from "../../engine";
+import type React from "react";
+import { Block, cam, storyScene, stride } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Classmate, EAST, Heart, Held, Hero, Jo, NORTH, SOUTH, SoundRings, Stars, SubscribeSign, WEST, apart, ease, hall, joHeart, pop, ramp, timing, wordAt } from "./kit";
+import { Classmate, DEG, EAST, Figure, Heart, Held, Hero, Icon, Jo, NORTH, SOUTH, Stars, SubscribeSign, WEST, apart, ease, hall, joHeart, pop, ramp, timing, wordAt } from "./kit";
 import { HER_LOCKER } from "./scene1";
 import { HALL_KIDS, hallKid } from "./scene3";
 
@@ -21,6 +22,25 @@ const HE_FACES = EAST - 0.4;
 const JO_FACES = WEST + 0.4;
 /** Jo with her back to the hall, at her locker: north, reached by turning away from the lens. */
 const TO_LOCKER = -Math.PI;
+
+/**
+ * WHAT HE SAYS, out loud: the film's question in two signs. The bubble is the one Jo's ASK HER came in (9.ask);
+ * the heart in it is the only one in the school that anybody but him can see.
+ */
+const Asks: React.FC<{ position: Vec3; rotationY: number; scale: number }> = ({ position, rotationY, scale }) => {
+  if (scale <= 0.01) return null;
+  const w = 0.86;
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      <Block size={[w + 0.09, 0.53, 0.03]} color="#15151a" castShadow={false} />
+      <Block position={[0, 0, 0.012]} size={[w, 0.44, 0.03]} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.45} castShadow={false} />
+      <Block position={[-w * 0.24, -0.3, 0]} size={[0.15, 0.15, 0.03]} color="#15151a" castShadow={false} />
+      <Block position={[-w * 0.24, -0.27, 0.012]} size={[0.09, 0.13, 0.03]} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.45} castShadow={false} />
+      <Icon kind="heart" position={[-0.19, 0, 0.05]} height={0.3} depth={0.4} glow={0.5} shadow={false} castShadow={false} />
+      <Figure text="?" position={[0.21, 0, 0.05]} height={0.3} depth={0.4} color="#16161c" shadow={false} castShadow={false} />
+    </group>
+  );
+};
 
 /**
  * THE OLD WAY. The power goes in the night, the way it came. What is left is the hall, Jo's locker, and a thing
@@ -62,7 +82,7 @@ export const scene14 = storyScene(timing, {
       ...cam.orbit({ on: hall(1.0, 1.36, -0.8), dist: 4.6, distTo: 3.95, yaw: 68, yawTo: 8, pitch: 2, fov: 46 }),
       handheld: 0.012,
       zone: "hall",
-      note: "Jo at her locker, where the film began, and him coming up the hall to her. Nobody in this school has a heart over their head any more: except that we can see one over his, and it is swelling with every step he takes towards her, the way hers did. The lens swings round to face them as he stops. On 'out loud' he opens his mouth.",
+      note: "Jo at her locker, where the film began, and him coming up the hall to her. Nobody in this school has a heart over their head any more: except that we can see one over his, and it is swelling with every step he takes towards her, the way hers did. The lens swings round to face them as he stops. On 'out loud' he opens his mouth, and what comes out is a heart and a question mark.",
       stage: (t, { p }) => {
         const walk = stride(HE_FROM, HE_ASKS, 1 - (1 - ramp(t, -0.1, JO_W + 0.55)) ** 1.6);
         const there = t > JO_W + 0.55;
@@ -79,9 +99,7 @@ export const scene14 = storyScene(timing, {
             )}
             <Heart over={walk.position} size={joHeart(apart(walk.position, HER_LOCKER))} yaw={yaw} />
             <Jo position={HER_LOCKER} rotationY={TO_LOCKER + (JO_FACES - TO_LOCKER) * turn} animation="idle" arms={turn < 0.3 ? "reach" : undefined} face={says ? "wow" : turn > 0.5 ? "smile" : "calm"} gaze={0} />
-            {[0, 0.22].map((d) => (
-              <SoundRings key={d} position={[HE_ASKS[0] + 0.24, 1.2, HE_ASKS[2] + 0.1]} t={(t - LOUD - d) / 0.5} color="#ffffff" reach={0.55} />
-            ))}
+            <Asks position={[HE_ASKS[0] + 0.52, 1.74, HE_ASKS[2] + 0.12]} rotationY={yaw * DEG} scale={0.62 * pop(t, LOUD - 0.2)} />
             <Classmate who={6} position={hall(-4.4, 0, -0.95)} rotationY={SOUTH + 0.4} animation="talk" face="smile" />
             <Classmate who={9} position={hall(-5.3, 0, 1.35)} rotationY={NORTH - 0.4} animation="idle" face="grin" />
             <Classmate who={4} position={hall(-3.5, 0, 1.35)} rotationY={NORTH + 0.5} animation="idle" face="smile" />

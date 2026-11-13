@@ -39,10 +39,10 @@ export const scene12 = storyScene(timing, {
     {
       cue: "12.shook",
       look: "overworld-night",
-      ...cam.push({ on: GYM.at(0, 1.72, 0), dist: 1.9, to: 1.7, yaw: 24, pitch: -4, fov: 36 }),
+      ...cam.push({ on: GYM.at(0, 1.38, 0), dist: 2.45, to: 2.25, yaw: 50, pitch: 0, fov: 36 }),
       impacts: [{ at: SHOOK, amp: 0.06, dur: 0.4 }],
       zone: "gym",
-      note: "The heart over her head, close: small, still, and on 'shook' it rattles like a thing that has been knocked. Under it her eyes have left the card and gone past him, to the door.",
+      note: "Her face and the heart over it, from his other side and closer: small, still, and on 'shook' it rattles like a thing that has been knocked. Under it her eyes have left the card and gone past him, to the door.",
       stage: (t) => {
         const x = t - SHOOK;
         const rattle = x > 0 ? Math.exp(-x * 6) * Math.sin(x * 52) : 0;
@@ -50,8 +50,12 @@ export const scene12 = storyScene(timing, {
         return (
           <>
             <Dancers t={t} keep={(_, z) => z < -1} />
-            <Mia position={MIA_AT} rotationY={SOUTH} animation="idle" face={seen > 0.5 ? "wow" : "smile"} headPitch={0.25 * (1 - seen) - 0.1 * seen} headYaw={0.14 * seen} gaze={0} />
-            <Heart over={[MIA_AT[0] + 0.05 * rattle, MIA_AT[1] + 0.025 * Math.abs(rattle), MIA_AT[2]]} size={HEART.small * (1 + 0.3 * Math.abs(rattle))} yaw={24} />
+            {seen > 0.5 ? (
+              <Mia position={MIA_AT} rotationY={SOUTH} animation="idle" face="wow" lookAt={faceOf(LEO_FROM)} gaze={0} />
+            ) : (
+              <Mia position={MIA_AT} rotationY={SOUTH} animation="idle" face="smile" headPitch={0.25} gaze={0} />
+            )}
+            <Heart over={[MIA_AT[0] + 0.05 * rattle, MIA_AT[1] + 0.025 * Math.abs(rattle), MIA_AT[2]]} size={HEART.small * (1 + 0.3 * Math.abs(rattle))} yaw={50} />
           </>
         );
       },
@@ -96,12 +100,11 @@ export const scene12 = storyScene(timing, {
         return (
           <>
             <Dancers t={t} aisle keep={(_, z) => z > 4.8} />
-            <Mia position={MIA_AT} rotationY={SOUTH} animation="idle" face="grin" gaze={0} />
             <HeroInTie t={t} position={ME_AT} rotationY={NORTH} animation="idle" face={sure > 0 ? "laugh" : "grin"} headPitch={-0.5} headRoll={sure > 0 ? Math.sin(sure * 9) * 0.07 * Math.exp(-sure * 2) : 0} gaze={0} />
             <Leo position={LEO_AT} rotationY={facing} animation="idle" arms={offer > 0.3 ? "reach" : "hold"} face="grin" headPitch={-0.2} gaze={0} />
             <Cups by={LEO_AT} facing={facing} offer={offer} />
-            {/* The heart is not drawn: the lens is inside it. Its light is on their faces. */}
-            <pointLight position={GYM.at(0.1, 2.4, 0.45)} color="#ff9cc0" intensity={14} distance={7} decay={2} />
+            {/* Neither the heart nor the girl under it is drawn: the lens is inside the one and over the head of the other. Its light is on their faces. */}
+            <pointLight position={GYM.at(0.1, 2.4, 0.45)} color="#ff9cc0" intensity={6} distance={7} decay={2} />
           </>
         );
       },

@@ -136,7 +136,8 @@ export const scene10 = storyScene(timing, {
         const x = ON_DESK[0] - 0.17 + 0.34 * (Math.min(written, QUESTION.length) / QUESTION.length);
         return (
           <>
-            <Hero position={[DESK[0], 0, DESK[2] + 0.62]} rotationY={NORTH} animation="sit" arms="hold" face="brave" headPitch={0.4} />
+            {/* He sits well back: from straight above, a head of dark hair any nearer the card is a black square under the caption. */}
+            <Hero position={[DESK[0], 0, DESK[2] + 0.76]} rotationY={NORTH} animation="sit" arms="hold" face="brave" headPitch={0.3} />
             <Card position={ON_DESK} rotation={[-Math.PI / 2, 0, 0]} text={QUESTION} written={written} scale={1.2} ink={INK} />
             <group position={[x + Math.sin(t * 38) * (done ? 0 : 0.006), 0.75 + (done ? 0.05 : 0), ON_DESK[2] + 0.09 + Math.cos(t * 31) * (done ? 0 : 0.006)]} rotation={[-0.95, 0, 0.35]}>
               <Block size={[0.024, 0.024, 0.17]} color="#f2c230" castShadow={false} />
@@ -161,13 +162,16 @@ export const scene10 = storyScene(timing, {
         const dog: Vec3 = [DOG_SITS[0], hop, DOG_SITS[2]];
         return (
           <>
-            <Hero position={HE_KNEELS} rotationY={EAST - 0.25} animation="crouch" arms={yes > 0.12 ? "cheer" : "reach"} face={yes > 0.05 ? "grin" : "fear"} gaze={0} />
+            {/* Both turned a third of the way to the lens: side on, a head is the side of a box. */}
+            <Hero position={HE_KNEELS} rotationY={EAST - 0.6} animation="crouch" arms={yes > 0.12 ? "cheer" : "reach"} face={yes > 0.05 ? "grin" : "fear"} gaze={0} />
+            {/* The room's own night light comes from behind the lens and is blue; this is the lamp, on his face. */}
+            <pointLight position={room(1.9, 1.3, 2.2)} color="#ffe2b8" intensity={14} distance={6} decay={2} />
             {yes > 0.12 ? null : (
-              <Held by={HE_KNEELS} facing={EAST - 0.6} out={0.44} up={0.72}>
+              <Held by={HE_KNEELS} facing={EAST - 0.85} out={0.44} up={0.72}>
                 <Card text={QUESTION} scale={0.95} ink={INK} />
               </Held>
             )}
-            <Dog position={dog} rotationY={WEST} pose={yes > 0 ? "stand" : "sit"} wag={yes > 0 ? 5 : 1.2} headTilt={yes > 0 ? 0 : 0.28} headPitch={-0.25} bark={yes > 0 && yes < 0.5} />
+            <Dog position={dog} rotationY={WEST + 0.4} pose={yes > 0 ? "stand" : "sit"} wag={yes > 0 ? 5 : 1.2} headTilt={yes > 0 ? 0 : 0.28} headPitch={-0.25} bark={yes > 0 && yes < 0.5} />
             <Heart over={dog} tall={TALL.dogSitting} size={HEART.small} yaw={16} />
           </>
         );
@@ -201,7 +205,8 @@ export const scene10 = storyScene(timing, {
       note: "The dance, from the door, and in through it: everybody jumping in the coloured light, and in the middle of the floor, in the one white beam, Mia, standing still. The lens goes between the dancers all the way to her. The heart over her is small.",
       stage: (t) => (
         <>
-          <Dancers t={t} aisle />
+          {/* The lens goes in along the right of the aisle: nobody dances with an arm up within a metre of it. */}
+          <Dancers t={t} aisle keep={(x, z) => !(x > 0.5 && x < 1.6 && z > 3.8)} />
           <Mia position={GYM.lights} rotationY={SOUTH} animation="idle" face="smile" headRoll={Math.sin(t * 2.6) * 0.1} headYaw={Math.sin(t * 1.3) * 0.25} gaze={0} />
           <Heart over={GYM.lights} size={HEART.small} yaw={5} />
         </>

@@ -81,7 +81,8 @@ export const scene11 = storyScene(timing, {
             <Mia position={MIA_AT} rotationY={SOUTH} animation="idle" face={up > 0.5 ? "grin" : "smile"} headPitch={0.3 * (1 - up)} gaze={0} />
             <Heart over={MIA_AT} size={HEART.small} yaw={24} />
             <HeroInTie t={t} position={ME_AT} rotationY={NORTH} animation="idle" arms="reach" face="brave" gaze={0} />
-            <Held by={ME_AT} facing={NORTH} out={0.56} up={1.15}>
+            {/* Held at his chest, not his chin: from past his shoulder a card any higher is in front of her mouth. */}
+            <Held by={ME_AT} facing={NORTH} out={0.5} up={0.9}>
               <Card text={QUESTION} scale={1.05} ink={INK} />
             </Held>
           </>

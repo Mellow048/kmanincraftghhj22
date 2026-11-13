@@ -74,7 +74,7 @@ export const scene9 = storyScene(timing, {
               gaze={0}
             />
             <Heart over={JO_STOPS} size={joHeart(apart(JO_STOPS, HE_LEANS))} yaw={-28} />
-            <Bubble text="ASK HER" position={[JO_STOPS[0] + 0.46, 1.74, JO_STOPS[2] + 0.3]} rotationY={-28 * DEG} scale={0.3 * pop(t, ASK - 0.32)} tail={-1} />
+            <Bubble text="ASK HER" position={[JO_STOPS[0] + 0.31, 1.64, JO_STOPS[2] + 0.3]} rotationY={-28 * DEG} scale={0.33 * pop(t, ASK - 0.32)} tail={-1} />
           </>
         );
       },
