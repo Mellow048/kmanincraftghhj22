@@ -4,9 +4,13 @@
 ("yesboth", to the two scripts that were put to him together). The six clips are recorded with `voice-00`
 (`public/audio/what-if-you-could-see-who-had-a-crush-on-you/raw/`) and the film is timed to them (`timing.json`):
 1:53.6 at 254 words a minute. The picture (55 shots in six places) and the sound (`sound.json`: 321 sounds) are
-built, and the film is rendered: `renders/what-if-you-could-see-who-had-a-crush-on-you.mp4`, 1080×1920, with one
-frame of each shot in `renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg`. **The sound was measured,
-never listened to.** Changing a word now means recording that clip again and rebuilding the timing.
+built. Changing a word now means recording that clip again and rebuilding the timing.
+
+**Delivered 2026-11-13** as render 44: 1080×1920, 3409 frames, 1:53.6. The master is the release asset
+(`render-44`, 62 MB); `renders/what-if-you-could-see-who-had-a-crush-on-you.mp4` is a 720×1280 copy that fits in
+the repository, and `renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg` is one frame of it per shot.
+Measured on the delivered file: −15.0 LUFS, true peak −0.3 dB. **Nobody has listened to the sound: an agent
+cannot.**
 
 Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. **This film is meant to become the
 topic's reference** (the owner: "you are the one making that reference!"): once he approves it, it is measured and

@@ -137,7 +137,9 @@ def main() -> int:
         if a.sheet is not None and tiles:
             out = Path(a.sheet) if a.sheet else ROOT / "renders" / f"{a.film}-shots.jpg"
             tw, th = tiles[0].size
-            cols = a.cols or max(1, round((len(tiles) * th / tw) ** 0.5 * 1.25))
+            # About a square sheet; of the widths near that, the one that leaves the fewest empty places in the last row.
+            near = max(1, round((len(tiles) * th / tw) ** 0.5 * 1.25))
+            cols = a.cols or min(range(max(1, near - 2), near + 3), key=lambda c: ((-len(tiles)) % c, abs(c - near)))
             rows = (len(tiles) + cols - 1) // cols
             sheet = Image.new("RGB", (cols * tw, rows * th), (12, 12, 16))
             for i, im in enumerate(tiles):
