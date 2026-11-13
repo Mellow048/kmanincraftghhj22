@@ -93,7 +93,7 @@ const Mouth: React.FC<{ mood: Mood; y: number; z: number; color: string }> = ({ 
 
 const Brows: React.FC<{ mood: Mood; y: number; z: number; color: string; gap?: number }> = ({ mood, y, z, color, gap = 2 }) => {
   const u = U;
-  const a = mood === "angry" ? -0.42 : mood === "sad" || mood === "scared" ? 0.38 : 0;
+  const a = mood === "angry" ? 0.42 : mood === "sad" || mood === "scared" ? -0.38 : 0;
   const lift = mood === "scared" ? 0.7 * u : mood === "happy" ? 0.4 * u : 0;
   return (
     <>
