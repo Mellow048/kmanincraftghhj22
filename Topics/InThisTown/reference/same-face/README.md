@@ -10,18 +10,26 @@ studied and never copied. This film is our own, in Minecraft blocks, and it is t
 
 ## Where everything is
 
-| What | Where |
+In this folder:
+
+| File | What it is |
 |---|---|
-| The film, 720×1280 with sound | [`renders/in-this-town-same-face.mp4`](../../../../renders/in-this-town-same-face.mp4) |
-| The film, 1080×1920 | Release `render-15` of this repository |
-| One frame per shot, on one sheet | [`renders/in-this-town-same-face-shots.jpg`](../../../../renders/in-this-town-same-face-shots.jpg) |
-| Every shot: time, words, camera, and why | [`shot-log.md`](shot-log.md) |
-| The script, with what is planted and where it pays off | `src/videos/in-this-town-same-face/narration.md` |
-| The shots | `src/videos/in-this-town-same-face/scene1.tsx` … `scene14.tsx`, one file per beat |
-| How a film uses the pack | `src/videos/in-this-town-same-face/kit.tsx` |
-| A town laid out in zones | `src/videos/in-this-town-same-face/world.tsx` |
-| The sound sheet | `src/videos/in-this-town-same-face/sound.json` |
-| Its people, places and things, for the next film | The pack: [`../../PACK.md`](../../PACK.md) |
+| `in-this-town-same-face.mp4` | The film as delivered: 720×1280, 1:45, with its sound. A copy of `renders/in-this-town-same-face.mp4`. The 1080×1920 master is the asset of release `render-15` |
+| `contact-sheet-one-frame-per-shot.jpg` | One frame of that file for each of the 57 shots, with its number, its cue and its time. **Read this first** |
+| [`shot-log.md`](shot-log.md) | Every shot: when, how long, the words, the place, the camera, and why this picture |
+| `source/narration.md` | The script, with what is planted and where it pays off |
+| `source/scene1.tsx` … `scene14.tsx` | The shots, one file for each beat |
+| `source/kit.tsx` | How a film uses the pack: its teller, its map of places, and nothing a second film could use |
+| `source/world.tsx` | A town laid out in zones |
+| `source/sound.json` | The sound sheet |
+| `source/film.tsx`, `timing.json`, `sound.lock.json` | The film's definition, the voice measured word by word, and the numbers of the mix |
+
+`source/` is a snapshot to read: it is not compiled and nothing imports it. The film that renders lives in
+`src/videos/in-this-town-same-face/`, and its voice and mix in `public/audio/in-this-town-same-face/`. An approved
+film does not change, so the two are the same; if they ever differ, the one in `src/videos/` is the film.
+
+Its people, places and things are in the pack, for the next film: [`../../PACK.md`](../../PACK.md). The other films
+the owner approved are beside this one: [`../README.md`](../README.md).
 
 ## Its shape, measured
 

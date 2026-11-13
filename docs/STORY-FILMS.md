@@ -219,6 +219,12 @@ face, is anything cut off by the edge, would I know which act this is from the c
 A film still being built is fine: shots that do not exist yet are skipped, and `npm run check` reports
 `IN PROGRESS — 24 of 93`.
 
+A finished film can also be **read**. `node scripts/shot-log.mjs <film>` writes every shot down on one page: when it
+starts, how long it holds, the words, the place, the camera, and the shot's own `note`. `--shape` gives the table of
+beats and the numbers. It renders nothing. Every film the owner approved is kept with such a log, its source and its
+mp4 in the topic's `reference/` folder: read one before you build
+([`Topics/InThisTown/reference/README.md`](../Topics/InThisTown/reference/README.md)).
+
 The first film went through four passes of this. What the stills caught, so the next film can skip the mistakes:
 
 | Seen in the stills | Cause | Fix |

@@ -11,8 +11,9 @@ going to send a video. The reference of this topic will be **our own first film 
 
     src/videos/why-does-bread-cost-more-every-year/        "Why Does Bread Cost More Every Year"
 
-Its script is drafted in its `narration.md` and waits for his yes (`AGENTS.md` §0: ideas, then the script, then
-stop). When the finished film is approved, do the steps below with it, exactly as for a video somebody sent.
+He approved its script on 2026-11-13 ("yesboth"). Its voice is recorded and its clock is measured (`narration.md`
+and `timing.json` in that folder); its picture and its sound are not built yet. When the finished film is approved,
+do the steps below with it, exactly as for a video somebody sent.
 
 ## When the reference exists
 

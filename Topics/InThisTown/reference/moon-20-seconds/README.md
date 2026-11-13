@@ -50,4 +50,7 @@ and stuff". So the idea was kept and the film was made again as a real film of t
 of this version are still in it; `narration.md` there says where each one went. What the 20 seconds had no room for
 is what the remake is made of: the town, the tour, the reason for the rule, and what breaking it costs.
 
+The owner approved the remake ("every single one u made is good", 2026-11-13). It is kept beside this folder with
+its source and its mp4: [`../nobody-looked-at-the-moon/`](../nobody-looked-at-the-moon/README.md).
+
 Read the two side by side if you want to see the difference between a premise and a film of this topic.

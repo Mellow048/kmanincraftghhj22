@@ -9,7 +9,11 @@ rebuilding the timing, and checking every shot and every effect that hangs on th
 (`render-24`, 80 MB); `renders/in-this-town-nobody-looked-at-the-moon.mp4` is a 720×1280 copy that fits in the
 repository, and `renders/in-this-town-nobody-looked-at-the-moon-shots.jpg` is one frame of it per shot. Measured on
 the delivered file: the sound sits 0.0 ms from `mix.mp3`, −15.0 LUFS, true peak −1.2 dB. **Nobody has listened to
-the sound: an agent cannot.** The owner had not yet answered on the finished film when this was written.
+the sound: an agent cannot.**
+
+**The finished film: approved 2026-11-13.** The owner, on the films this agent had built for him, this one among
+them: "every single one u made is good". He asked for its source and its mp4 to be kept as a reference:
+`Topics/InThisTown/reference/nobody-looked-at-the-moon/`. An approved film does not change.
 
 This is a remake of *Never Look at the Moon*, the 19.6-second film another agent made
 (`Topics/InThisTown/reference/moon-20-seconds/`). The owner: "it wasnt really what i wanted … maybe put it in a

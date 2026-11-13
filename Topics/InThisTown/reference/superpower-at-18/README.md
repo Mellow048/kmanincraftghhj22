@@ -1,13 +1,15 @@
 # Reference: "In This Town, Everyone Got a Superpower at 18" (part one)
 
 **A film the owner approved.** His words on seeing it: "wow i love it, i love how u made the short". He asked for it
-to be kept here so that the next agent can see what a short he likes looks like. The other two folders beside the
-treehouse are warnings; this one is a target.
+to be kept here so that the next agent can see what a short he likes looks like. `monster-egg-v1/` and
+`moon-20-seconds/` are warnings; this one is a target, and so are the three approved films beside it
+([`../README.md`](../README.md) lists them).
 
 | File | What it is |
 |---|---|
-| `in-this-town-superpower-at-18.mp4` | The film as delivered: 1080×1920, 2:48, long cut, 90 shots |
+| `in-this-town-superpower-at-18.mp4` | The film as delivered: 2:48, long cut, 90 shots. This copy is 720×1280; the 1080×1920 master is the asset of release `render-23` |
 | `contact-sheet-every-2-seconds.jpg` | One frame every two seconds, all 84, on one sheet |
+| [`shot-log.md`](shot-log.md) | Every shot: when, how long, the words, the place, the camera, and why this picture. Written by `node scripts/shot-log.mjs in-this-town-superpower-at-18` |
 | `source/` | A **snapshot** of the film's source on the day it was approved: `narration.md`, `timing.json`, `kit.tsx`, `world.tsx`, `scene1.tsx` … `scene18.tsx`, `film.tsx`, `sound.json` |
 
 The film that renders lives in `src/videos/in-this-town-superpower-at-18/`. `source/` here is a copy to read; it is

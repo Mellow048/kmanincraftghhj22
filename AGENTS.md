@@ -21,8 +21,9 @@ short version is the topic's own `cut: "short"`: one to two minutes.
 
 **Explainer and What If are PROVISIONAL.** The owner asked for them before their references. Their rules, packs,
 starters and sounds are in place and `npm run check` holds a film to their numbers, but no number is measured from
-a real video yet, and no film of either has been approved. When the owner supplies a reference, measure it and
-correct the topic before building: `Topics/<Folder>/reference/README.md` says how. An Explainer is not a story: its
+a real video yet, and no film of either has been approved. The owner decided that we make each reference ourselves
+("you are the one making that reference!"): the first film of each topic that he approves becomes it. When that
+happens, measure it and correct the topic: `Topics/<Folder>/reference/README.md` says how. An Explainer is not a story: its
 camera does not cut. It flies from one thing to the next (`flightScene`), which is this file's rule 3 driven by a
 recorded voice.
 
@@ -32,6 +33,7 @@ What a topic gives a film, that the base does not:
 |---|---|
 | Its own rules, and the numbers the lint enforces | `Topics/<Folder>/README.md`, its playbooks, `topic.json` |
 | A reference film: a finished film of ours that the owner approved and chose, to build like | `reference` in `topic.json`, and its page in `Topics/<Folder>/reference/` |
+| Every other film of ours that the owner approved, each with its source code, its mp4, a log of every shot and what was hard. **Open these before you build** | `Topics/<Folder>/reference/README.md`. For In This Town: four films |
 | A pack of approved people, places and things | `Topics/<Folder>/PACK.md` |
 | A starter film | `Topics/<Folder>/template/`, through `npm run new -- "…" --topic <id>` |
 | Music and sound effects | `scripts/sound.py`, and the topic's `SOUND.md` |
@@ -448,6 +450,7 @@ npm run shots -- the-title --only 3.            # one still per shot: the review
 python3 scripts/sound.py draft the-title        # a first sound.json
 python3 scripts/sound.py build the-title        # sound.json + the voice → mix.mp3, and a report to read
 python3 scripts/compare-stills.py out/before/x out/after/x   # did a shared change move a pixel of a finished film?
+node scripts/shot-log.mjs the-title             # a finished film on one page: every shot, its words, its camera, and why
 ```
 
 `npm run still`, `npm run shots` and `npm run render` are **permission-only** on the user's machine.

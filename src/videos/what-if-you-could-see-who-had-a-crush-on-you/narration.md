@@ -1,6 +1,10 @@
 # Narration — What If You Could See Who Had a Crush on You
 
-**Status: DRAFT 1. Not approved, not recorded.** Nothing is built until the owner approves the script.
+**Status: APPROVED and RECORDED. The picture and the sound are not built yet.** The owner approved this script on
+2026-11-13 ("yesboth", to the two scripts that were put to him together). The six clips are recorded with `voice-00`
+(`public/audio/what-if-you-could-see-who-had-a-crush-on-you/raw/`) and the film is timed to them (`timing.json`):
+1:53.6 at 254 words a minute. Only the starter's two shots exist. Changing a word now means recording that clip
+again and rebuilding the timing.
 
 Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. **This film is meant to become the
 topic's reference** (the owner: "you are the one making that reference!"): once he approves it, it is measured and
@@ -29,7 +33,8 @@ with Jo; the second is Jo walking home the other way.
 - Only one other person speaks: Jo, three words (9.ask). Mia never says a word. Nobody explains the power.
 - The power has ONE look in the whole film: a pink heart over a head (`Overhead`), small or big.
 
-**Length.** 479 words in 55 lines: about 1:53 at the topic's pace (the limits are 60–118 seconds, 250–520 words).
+**Length.** 479 words in 55 lines. As recorded: 1:53.6 (113.6 seconds) at 254 words a minute (the limits are 60–118
+seconds, 250–520 words).
 
 What is planted, and where it pays off:
 
@@ -57,7 +62,9 @@ see my own. · I watched it the whole way. · I did not watch the door. · It ha
 seat. · Will you dance with me? · Her heart shook. · She was looking over my shoulder. · It had never been big. ·
 Out loud.
 
-**For the owner to decide with this draft:**
+**What was put to the owner with the draft, and how it was settled.** He answered "yesboth", so each point stands
+as proposed: this is the story, this is the title, the ending does not say what Jo answers, and the voice is
+`voice-00`.
 
 1. The story: is this the "What if" you want as the topic's reference? Two others were considered and are one line
    each at the bottom of this page.

@@ -1,0 +1,100 @@
+# The reference folder: what a good film of this topic is
+
+Open this before you write a film of this topic. Four folders here are films of ours that the owner approved, each
+with its **source code** and its **mp4**. Two are attempts he rejected. One is the video the format came from.
+
+The owner, 2026-11-13, when he asked for the films to be kept here:
+
+> "every single one u made is good, put them into the reference + the mp4 in main branch so that other agents know
+> how to make a good short"
+
+## Films the owner approved: build like these
+
+| Folder | Film | Size | The owner said | Open it for |
+|---|---|---|---|---|
+| [`same-face/`](same-face/README.md) | *In This Town, Everyone Had the Same Face Except Me* | Short cut. 1:45, 14 beats, 57 shots, 441 words. Day. Full sound | "everything is perfect top to bottom"; "yes its good put it as the topic's reference" | **Everything. This is the topic's reference film** (`reference` in `topic.json`). Start here |
+| [`nobody-looked-at-the-moon/`](nobody-looked-at-the-moon/README.md) | *In This Town, Nobody Looked at the Moon* | Short cut. 1:52, 14 beats, 63 shots, 471 words. Night. Full sound | "every single one u made is good" | A film at **night**. How a rejected 20-second idea became a real film. The densest sound sheet (127 effects a minute) and what had to be cut from it to keep the words clear |
+| [`monster-egg/`](monster-egg/README.md) | *In This Town: The Monster Egg* | Full film. 2:57, 18 beats, 93 shots, 746 words. Day, night and a lava lake | "every single one u made is good" | The **long cut**: all 18 beats of `SCRIPT.md`, and three places in one world. **It has a voice and no other sound.** Do not copy that |
+| [`superpower-at-18/`](superpower-at-18/README.md) | *In This Town, Everyone Got a Superpower at 18* (part one) | Full film. 2:48, 18 beats, 90 shots, 710 words. Full sound | "wow i love it, i love how u made the short" | The long cut **with** sound. A story the owner outlined himself, and the ending he threw out first |
+
+The first three were built by one agent, the fourth by another. All four use the same pack
+([`../PACK.md`](../PACK.md)), the same engine and the same checks.
+
+## What is in a film's folder
+
+| File | What it is |
+|---|---|
+| `README.md` | What the owner said, what the film is good for, its shape and its sound in numbers, and what was hard |
+| `<film id>.mp4` | The film as delivered: 720×1280, with its sound. A copy of `renders/<film id>.mp4`. The 1080×1920 master is a release asset of the repository; each page names the release |
+| `contact-sheet-*.jpg` | The film as one picture. An agent cannot watch a video: **read this first** |
+| `shot-log.md` | Every shot on one page: when it starts, how long it holds, the words, the place, the camera, and why this picture for these words |
+| `source/` | A **snapshot** of the film's source: `narration.md` (the script, with what is planted and where it pays off), `timing.json`, `kit.tsx`, `world.tsx`, one `sceneN.tsx` for each beat, `film.tsx`, and `sound.json` if the film has sound |
+
+`source/` is a copy to read. It is not compiled (`tsconfig.json` leaves out `Topics/**/reference`) and nothing
+imports it, so its `import` lines point at folders that are not beside it. **The film that renders lives in
+`src/videos/<film id>/`.** An approved film does not change, so the two are the same; if they ever differ, the one
+in `src/videos/` is the film.
+
+## How to use them
+
+1. **Read the contact sheet, then the shot log, then `source/narration.md`.** That is the whole film in ten minutes.
+2. **Open one beat in `source/`** next to its row in the shot log, and see how a line of script became a camera
+   move, a `note` and a `stage`. Then open `source/kit.tsx` to see how little a film builds for itself: its teller,
+   its map of places, and what no other film could use. Everything else comes from the pack.
+3. **Build like them.** The same order of work, the same kind of shot, the same density of cuts and sounds. When a
+   number of yours is far from theirs, look at why.
+4. **Never retell them.** No premise, sentence, joke or twist of a finished film goes into a new one. A new film
+   borrows the shape and nothing else.
+5. **They do not change.** If you touch the engine or the pack, prove with `scripts/compare-stills.py` that the
+   stills of every finished film are the same as before ([`../PACK.md`](../PACK.md), "Adding to the pack").
+
+## Where the format came from
+
+[`treehouse/`](treehouse/README.md): "In This Town, Everyone Lived In A Treehouse", a Roblox video by someone else
+that the owner supplied. Its transcript, a shot log and contact sheets. It was studied for its shape and never
+copied. `SCRIPT.md` and `SHOTS.md` are built on it.
+
+## What the owner rejected: read these as warnings
+
+| Folder | What it was | Why it was rejected |
+|---|---|---|
+| [`monster-egg-v1/`](monster-egg-v1/README.md) | The first Monster Egg: 20 seconds, one drifting camera, 41 words | Weak narration, nothing moved, a dull first shot, a rushed ending. [`monster-egg/`](monster-egg/README.md) is the film that replaced it |
+| [`moon-20-seconds/`](moon-20-seconds/README.md) | *Never Look at the Moon*: 19.6 seconds | "it wasnt really what i wanted". [`nobody-looked-at-the-moon/`](nobody-looked-at-the-moon/README.md) is the same idea made as a film of this topic |
+
+Each rejected film has an approved film beside it that tells the same idea. Read a pair side by side to see the
+difference between a premise and a film.
+
+## Adding a film to this folder
+
+Do it when the owner has approved a **finished** film and asks for it to be kept. Not before: a film he has not
+seen with its sound is not a model.
+
+```bash
+FILM=in-this-town-<name>            # the film's id
+DIR=Topics/InThisTown/reference/<name>
+mkdir -p $DIR/source
+cp src/videos/$FILM/* $DIR/source/                              # the snapshot
+cp renders/$FILM.mp4 $DIR/                                      # the film as delivered
+cp renders/$FILM-shots.jpg $DIR/contact-sheet-one-frame-per-shot.jpg
+node scripts/shot-log.mjs $FILM --out $DIR/shot-log.md          # every shot, on one page
+node scripts/shot-log.mjs $FILM --shape                         # the beat table and the numbers, for the README
+```
+
+Then write `README.md`: the owner's own words about the film, what to open it for, the output of `--shape`, the
+numbers of the sound (they are in `src/videos/$FILM/sound.lock.json`, under `measured`), and what was hard. Add a
+row to the table at the top of this page, to the table in [`../README.md`](../README.md), and to `models` in
+[`../topic.json`](../topic.json).
+
+`renders/$FILM-shots.jpg` is one frame of the delivered mp4 for each shot. If the film has none, a sheet of one
+frame every two seconds does the same job, and ffmpeg makes it in one line (60 frames here; change `tile` to fit
+the film's length):
+
+```bash
+ffmpeg -i renders/$FILM.mp4 -vf "fps=1/2,scale=180:-1,tile=10x6" -frames:v 1 -q:v 3 $DIR/contact-sheet-every-2-seconds.jpg
+```
+
+With no ffmpeg installed: `pip install imageio-ffmpeg`, and the program is at
+`python3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())"`.
+
+**Check the copy before you commit it:** `diff -rq src/videos/$FILM $DIR/source` prints nothing when the snapshot
+is the film.

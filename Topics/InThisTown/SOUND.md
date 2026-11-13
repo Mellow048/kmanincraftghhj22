@@ -253,3 +253,10 @@ def _bonk(rng, **_):
 | The limiter worked all the time | The mix was pushed to −14 LUFS; the voice alone is already −14.4 | The target is −14.5. Do not raise it |
 | Footsteps that did not match the feet | They were spaced by guess | Read the animation (section 4, rule 2) |
 | The last note cut off with the film | The final section had a 60 ms fade | It fades over half a second |
+
+**What a dense sheet runs into.** The moon film has 127 effects a minute, and its sheet took four rounds to pass
+the limits. What failed and what fixed it is on its page,
+[`reference/nobody-looked-at-the-moon/`](reference/nobody-looked-at-the-moon/README.md), under "What was hard: the
+sound". The short form: the last word of a sentence is 9–13 dB quieter than the rest of it, so put an effect on a
+loud word early in the line; a `sting` hangs for over a second; effects inside the same quarter second bury each
+other; and when a quiet line end still fails with the effects gone, lower that one music section's `gain`.

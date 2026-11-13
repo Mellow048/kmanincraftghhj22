@@ -82,9 +82,9 @@ rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules ar
 
 | Topic | What it makes | Reference film |
 |---|---|---|
-| [In This Town](Topics/InThisTown/README.md) | A one-to-three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. A cut about every two seconds, every word captioned, music and sound effects under the voice | `in-this-town-same-face` (1:45, with sound): [its page](Topics/InThisTown/reference/same-face/README.md). Also finished: `in-this-town-monster-egg` (2:57, voice only) |
-| [Explainer](Topics/Explainer/README.md) | A 30–60 second answer to one question: a money lesson, what inflation is. One narrator, every sentence shown as a thing in the world, and a camera that never cuts: it flies from one floating island to the next | None yet: **provisional** until the owner supplies one |
-| [What If](Topics/WhatIf/README.md) | A one-to-two-minute story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town, with a school to tell it in and parts that show a power | None yet: **provisional** until the owner supplies one |
+| [In This Town](Topics/InThisTown/README.md) | A one-to-three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. A cut about every two seconds, every word captioned, music and sound effects under the voice | `in-this-town-same-face` (1:45, with sound): [its page](Topics/InThisTown/reference/same-face/README.md). **Four films the owner approved are kept with their source code and their mp4 in [`Topics/InThisTown/reference/`](Topics/InThisTown/reference/README.md)**: Same Face, Nobody Looked at the Moon (1:52, at night), The Monster Egg (2:57, voice only) and Superpower at 18 (2:48) |
+| [Explainer](Topics/Explainer/README.md) | A 30–60 second answer to one question: a money lesson, what inflation is. One narrator, every sentence shown as a thing in the world, and a camera that never cuts: it flies from one floating island to the next | None yet: **provisional**. The owner decided we make it ourselves: `why-does-bread-cost-more-every-year` (script approved, voice recorded, not built yet) |
+| [What If](Topics/WhatIf/README.md) | A one-to-two-minute story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town, with a school to tell it in and parts that show a power | None yet: **provisional**. The owner decided we make it ourselves: `what-if-you-could-see-who-had-a-crush-on-you` (script approved, voice recorded, not built yet) |
 
 ```bash
 npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
@@ -164,6 +164,7 @@ scripts/narration.py   recorded voice → narration.mp3 + timing.json
 scripts/sound.py       music and sound effects made in Python → mix.mp3
 scripts/shots.mjs      one still per shot
 scripts/compare-stills.py  did a shared change move a pixel of a finished film?
+scripts/shot-log.mjs   a finished film on one page: every shot, its words, its camera, and why
 scripts/pack-sheet.py  lays a pack's stills out as its catalogue picture (Topics/<Folder>/pack.jpg)
 docs/                  camera, style, scene contract, narration, story films
 AGENTS.md              the director's contract. It starts with: which kind of film?
@@ -183,6 +184,7 @@ AGENTS.md              the director's contract. It starts with: which kind of fi
 | `npm run still -- <id> out/frame.png --frame=N` | Render one still (permission only) |
 | `npm run render -- <id> out/<id>.mp4` | Render the film (permission only) |
 | `npm run shots -- <id>` | One still per shot of a story film (permission only) |
+| `npm run shot-log -- <id>` | A film written down: every shot, its words, its place, its camera and why. `--shape` gives the beat table. Renders nothing |
 | `python3 scripts/narration.py build <id>` | Recorded clips → `narration.mp3` and `timing.json` |
 | `python3 scripts/sound.py build <id>` | `sound.json` and the voice → `mix.mp3`, with a report. `list` shows every sound |
 | `npm run compositions` | List Remotion compositions |

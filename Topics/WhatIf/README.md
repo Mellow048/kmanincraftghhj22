@@ -16,8 +16,9 @@ power.
 > [`topic.json`](topic.json) is In This Town's (its one-to-two-minute short cut), and the beat sheet in
 > [`SCRIPT.md`](SCRIPT.md) is In This Town's fourteen beats, re-cast for a power. **The reference will be our own
 > first film** (the owner, asked for a video: "you are the one making that reference!"):
-> `src/videos/what-if-you-could-see-who-had-a-crush-on-you/`, whose script is waiting for his yes. When that film
-> is approved, measure it and correct this folder ([`reference/`](reference/README.md) says how). No film of this
+> `src/videos/what-if-you-could-see-who-had-a-crush-on-you/`. He approved its script on 2026-11-13 ("yesboth") and
+> its voice is recorded; its picture and its sound are not built yet. When the finished film is approved, measure it
+> and correct this folder ([`reference/`](reference/README.md) says how). No film of this
 > topic has been approved yet.
 
 **It is never a 20-second short.** A film with this opening that is built to the base rules is the mistake In This

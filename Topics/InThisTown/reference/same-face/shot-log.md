@@ -1,9 +1,9 @@
 # Shot log: In This Town, Everyone Had the Same Face Except Me
 
-Every shot of the topic's reference film: when it starts, how long it holds, the words heard over it, where it
-plays, how the camera moves, and why this picture for these words (the shot's own `note`).
+Every shot of the film: when it starts, how long it holds, the words heard over it, where it plays, how the
+camera moves, and why this picture for these words (the shot's own `note`).
 
-Made from `src/videos/in-this-town-same-face/scene*.tsx` and `timing.json`. 57 shots in 1:44.7.
+Made by `node scripts/shot-log.mjs in-this-town-same-face` from `src/videos/in-this-town-same-face/scene*.tsx` and `timing.json`. 57 shots in 1:44.7.
 
 ## 1. Hook  (0:00.0, 2.6 s, 10 words, 2 shots)
 
