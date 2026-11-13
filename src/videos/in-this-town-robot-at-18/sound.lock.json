@@ -5,10 +5,10 @@
   "seconds": 174.0333,
   "built_from": {
     "timing.json": "3d61195c0f5387ad182a8106532dbf13663e7349",
-    "sound.json": "a6e8ebea5cc08a9f0b2b001d2ac707ec5f790fcf",
+    "sound.json": "97d785c9d0cc6e167441a522d05cdae34c887d40",
     "narration.mp3": "7e9153fc7b8d9341e4c89ad4bf39e6a790dfbe47"
   },
-  "mix_sha1": "a70d25d1743afc7b2fb94c257c541aed3888c5e3",
+  "mix_sha1": "21512bd15ddf249c4c60de7442d74c00c2530915",
   "music_sections": [
     {
       "from": "1.town",
@@ -120,17 +120,36 @@
     "musicUnderVoiceDb": 17.5,
     "secondsWithoutMusic": 3.2,
     "bedsUnderVoiceDb": 27.1,
-    "sfx": 183,
-    "sfxPerMinute": 63.1,
+    "sfx": 185,
+    "sfxPerMinute": 63.8,
     "sfxKinds": 39,
     "longestGapSeconds": 4.3,
     "longestGapAt": 87.6,
     "sfxBuried": 0,
     "voiceOverRestMedianDb": 14.6,
-    "voiceOverRestWorstDb": 4.8,
+    "voiceOverRestWorstDb": 4.2,
     "voiceOverRestWorst": [
       {
-        "db": 4.8,
+        "db": 4.2,
+        "t": 163.9,
+        "cue": "15.broke",
+        "sounding": [
+          "debris",
+          "hit"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 141.1,
+        "cue": "13.reboot",
+        "sounding": [
+          "buzz",
+          "power_down",
+          "riser"
+        ]
+      },
+      {
+        "db": 5.1,
         "t": 142.8,
         "cue": "14.bush",
         "sounding": [
@@ -138,16 +157,6 @@
           "step_grass",
           "thud",
           "whoosh"
-        ]
-      },
-      {
-        "db": 5.1,
-        "t": 141.1,
-        "cue": "13.reboot",
-        "sounding": [
-          "buzz",
-          "power_down",
-          "riser"
         ]
       },
       {
@@ -170,15 +179,6 @@
         ]
       },
       {
-        "db": 5.8,
-        "t": 163.9,
-        "cue": "15.broke",
-        "sounding": [
-          "debris",
-          "hit"
-        ]
-      },
-      {
         "db": 6.4,
         "t": 145.7,
         "cue": "14.slide",
@@ -188,7 +188,7 @@
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.2,
+    "truePeakDb": -2.1,
     "limiterMaxDb": 1.4
   },
   "failures": []

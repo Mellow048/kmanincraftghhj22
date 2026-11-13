@@ -922,6 +922,19 @@
     },
     {
       "cue": "13.cannon",
+      "sfx": "fire_whoosh",
+      "offset": 0.15,
+      "trim": -1,
+      "why": "He drops out of the sky on his jets."
+    },
+    {
+      "cue": "13.cannon",
+      "sfx": "thud",
+      "offset": 0.45,
+      "why": "He lands."
+    },
+    {
+      "cue": "13.cannon",
       "sfx": "clank",
       "word": "folded",
       "repeat": 4,

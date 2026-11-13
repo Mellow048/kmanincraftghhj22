@@ -39,13 +39,18 @@ export const scene7 = storyScene(timing, {
       zone: ZONE.forest,
       look: DUSK,
       note: "The camera comes round him as his other arm lifts. Its plates unfold one after another, click, click, click, into the barrel of a cannon as long as he is tall.",
-      impacts: [{ at: 0.9, amp: 0.03, dur: 0.15 }, { at: 1.2, amp: 0.03, dur: 0.15 }, { at: 1.5, amp: 0.04, dur: 0.15 }],
+      impacts: [{ at: 0.45, amp: 0.1, dur: 0.3 }, { at: 0.9, amp: 0.03, dur: 0.15 }, { at: 1.2, amp: 0.03, dur: 0.15 }, { at: 1.5, amp: 0.04, dur: 0.15 }],
       stage: (t) => {
         const o = wordAt("13.cannon", "folded");
+        const drop = 5.5 * (1 - ramp(t, 0, 0.45)) ** 2;
         return (
           <>
-            <OldMan position={OLDC} rotationY={W} animation="guard" suit={1} />
-            <Cannon position={GUN} to={AIM} open={ease(ramp(t, o - 0.1, o + 0.9))} />
+            {/* He has to be seen to arrive: he drops out of the sky on his jets in the first half second. */}
+            <OldMan position={[OLDC[0], drop, OLDC[2]]} rotationY={W} animation={drop > 0.05 ? "fall" : "guard"} suit={1} />
+            <Jets position={[OLDC[0], drop, OLDC[2]]} power={drop > 0.05 ? 1 : 0} t={t} color={RED} />
+            <DustRing position={OLDC} t={t - 0.45} size={1.8} color="#6a7a5a" />
+            <Bits position={[OLDC[0], 0.1, OLDC[2]]} t={t - 0.45} color="#6a7a5a" count={12} power={2} />
+            {t > 0.5 ? <Cannon position={GUN} to={AIM} open={ease(ramp(t, o - 0.1, o + 0.9))} /> : null}
             <Bits position={GUN} t={t - o} color="#8a8a96" count={8} power={1.4} />
             <Bits position={lerp3(GUN, AIM, 0.2)} t={t - o - 0.4} color={RED} count={8} power={1.4} />
             <Fill on={[OLDC[0], 1.3, OLDC[2]]} yaw={-28} power={4} />
