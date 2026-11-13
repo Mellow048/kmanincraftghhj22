@@ -189,7 +189,7 @@ export const scene10 = storyScene(timing, {
     },
     {
       cue: "22.armor",
-      ...cam.push({ on: [-4.5, 1.45, 2.4], dist: 4.2, to: 3.4, yaw: -38, pitch: -5, fov: 40 }),
+      ...cam.push({ on: [-4.45, 1.42, 2.75], dist: 4.1, to: 3.4, yaw: -84, pitch: -5, fov: 40 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "From in front of him and low. On 'helmet' the straw hat goes off backwards and an iron helmet is on his head. On 'chestplate' his chest is iron. On 'sword' his arm comes up with one in it, pointed at the hill. Firelight on all of it.",
@@ -206,7 +206,7 @@ export const scene10 = storyScene(timing, {
         const flick = 0.8 + 0.2 * Math.sin(t * 17);
         return (
           <>
-            <Fill on={MO_FACE} yaw={-38} power={8} d={2.2} />
+            <Fill on={MO_FACE} yaw={-84} power={8} d={2.2} />
             <pointLight position={[-7.4, 1.9, 1.4]} color="#ff9040" intensity={18 * flick} distance={8} decay={2} />
             <Mo position={MID} rotationY={W} animation="idle" arms={t > s ? "point" : undefined} hat={t < h} helmet={t >= h ? pop(t, h, 0.2) : 0} chest={t >= c} scarf={0} wiped={1} face={t > s ? "brave" : "neutral"} headPitch={jolt(t, h, 0.3) + jolt(t, c, 0.15)} saccade={false} gaze={0}>
               {t > s ? <Sword /> : null}
@@ -235,7 +235,7 @@ export const scene10 = storyScene(timing, {
             <Mo position={MID} rotationY={W} animation="idle" arms="point" hat={false} helmet={1} chest scarf={0} wiped={1} face="brave" saccade={false} gaze={0}>
               <Sword />
             </Mo>
-            <group position={[-4.75, 0, 3.55]} rotation={[0, W, 0]} scale={pop(t, 0.1)}>
+            <group position={[-4.75, 0, 3.4]} rotation={[0, W, 0]} scale={pop(t, 0.1)}>
               <SubscribeSign position={[0, 0.95, 0]} rotationY={0} scale={0.42} />
               <Block position={[0, 0.45, -0.03]} size={[0.05, 0.9, 0.05]} color="#5c3f24" />
             </group>
