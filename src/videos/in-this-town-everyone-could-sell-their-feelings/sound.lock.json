@@ -5,10 +5,10 @@
   "seconds": 116.2,
   "built_from": {
     "timing.json": "1d0ed01b7dbf917ecaee7c7969de5008e29ccafb",
-    "sound.json": "5bef1df47da627abd38ed5da10dc6d8d37979fb9",
+    "sound.json": "cf2072763d9aea2fa69c4b7dc9951e4317317add",
     "narration.mp3": "69c401441e38af13d0432f9978276445ea920690"
   },
-  "mix_sha1": "61f789910f9adae4ae5fc3d5d81baed03e9fce09",
+  "mix_sha1": "b4ba731552f8c98198c942faf69be1e7f49997c3",
   "music_sections": [
     {
       "from": "1.town",
@@ -68,8 +68,8 @@
   ],
   "beds": 9,
   "measured": {
-    "musicUnderVoiceDb": 18.4,
-    "secondsWithoutMusic": 3.9,
+    "musicUnderVoiceDb": 19.7,
+    "secondsWithoutMusic": 2.6,
     "bedsUnderVoiceDb": 26.5,
     "sfx": 124,
     "sfxPerMinute": 64.0,
@@ -77,20 +77,11 @@
     "longestGapSeconds": 2.5,
     "longestGapAt": 91.1,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 15.5,
-    "voiceOverRestWorstDb": 3.7,
+    "voiceOverRestMedianDb": 16.2,
+    "voiceOverRestWorstDb": 4.8,
     "voiceOverRestWorst": [
       {
-        "db": 3.7,
-        "t": 106.3,
-        "cue": "13.known",
-        "sounding": [
-          "bell",
-          "chime"
-        ]
-      },
-      {
-        "db": 5.6,
+        "db": 4.8,
         "t": 68.6,
         "cue": "8.money",
         "sounding": [
@@ -100,16 +91,16 @@
         ]
       },
       {
-        "db": 6.0,
-        "t": 67.9,
-        "cue": "8.money",
+        "db": 5.2,
+        "t": 106.3,
+        "cue": "13.known",
         "sounding": [
-          "coins",
-          "register"
+          "bell",
+          "chime"
         ]
       },
       {
-        "db": 6.9,
+        "db": 6.1,
         "t": 0.2,
         "cue": "1.town",
         "sounding": [
@@ -118,26 +109,34 @@
         ]
       },
       {
-        "db": 7.8,
-        "t": 12.5,
-        "cue": "3.shop",
+        "db": 6.3,
+        "t": 19.4,
+        "cue": "3.calm",
         "sounding": [
-          "tick"
+          "chime"
         ]
       },
       {
-        "db": 8.1,
-        "t": 113.0,
-        "cue": "14.waved",
+        "db": 6.4,
+        "t": 67.9,
+        "cue": "8.money",
         "sounding": [
-          "ding",
-          "heartbeat",
-          "pop"
+          "coins",
+          "register"
+        ]
+      },
+      {
+        "db": 8.2,
+        "t": 34.1,
+        "cue": "3.golem",
+        "sounding": [
+          "boing",
+          "chime"
         ]
       }
     ],
     "lufs": -14.7,
-    "truePeakDb": -3.0,
+    "truePeakDb": -2.9,
     "limiterMaxDb": 0.0
   },
   "failures": []

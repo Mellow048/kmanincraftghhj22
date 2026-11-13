@@ -2,7 +2,7 @@
   "film": "in-this-town-everyone-could-sell-their-feelings",
   "README": "Sound sheet for sell-feelings. 11 music sections, 9 beds, ~140 effects ~80/min. Plant: plink, coins, bottle.",
   "music": {
-    "gain": -16,
+    "gain": -18,
     "sections": [
       {
         "from": "1.town",
@@ -59,7 +59,8 @@
         "mood": "dark",
         "why": "Friend pulls cart, both shaking to end \u2014 heartbeat over low note."
       }
-    ]
+    ],
+    "track": "Topics/InThisTown/InThisTownMusic.aac"
   },
   "beds": [
     {
@@ -223,7 +224,7 @@
     {
       "cue": "3.calm",
       "sfx": "chime",
-      "trim": -2,
+      "trim": 2,
       "why": "Wrong calm smile",
       "word": "smiled"
     },
@@ -308,7 +309,7 @@
     {
       "cue": "3.golem",
       "sfx": "boing",
-      "trim": -6,
+      "trim": -2,
       "why": "Stood taller",
       "word": "taller"
     },
@@ -424,7 +425,7 @@
     {
       "cue": "7.helmet",
       "sfx": "buzz",
-      "trim": -4,
+      "trim": 0,
       "word": "helmet"
     },
     {
@@ -581,7 +582,7 @@
     {
       "cue": "10.line",
       "sfx": "cheer",
-      "trim": -6,
+      "trim": -2,
       "why": "Line for lemonade",
       "word": "line"
     },
@@ -664,7 +665,7 @@
     {
       "cue": "11.caught",
       "sfx": "rustle",
-      "trim": -4,
+      "trim": 0,
       "why": "Didn't wave cloth still",
       "word": "wave"
     },
@@ -672,7 +673,7 @@
       "cue": "11.caught",
       "sfx": "scrape",
       "dur": 0.35,
-      "trim": -5,
+      "trim": -1,
       "why": "Stared at cart",
       "word": "cart"
     },
@@ -735,7 +736,7 @@
     {
       "cue": "12.held",
       "sfx": "buzz",
-      "trim": -6,
+      "trim": -2,
       "why": "Witch holding it still hum hold",
       "word": "holding"
     },
@@ -753,7 +754,7 @@
     {
       "cue": "12.greedy2",
       "sfx": "tick",
-      "trim": -6,
+      "trim": -2,
       "why": "Still staring flat",
       "word": "staring"
     },
@@ -768,13 +769,13 @@
     {
       "cue": "13.known",
       "sfx": "bell",
-      "trim": -2,
+      "trim": -6,
       "why": "Town had always known second bell like reference"
     },
     {
       "cue": "13.known",
       "sfx": "chime",
-      "trim": -5,
+      "trim": -9,
       "why": "Which feeling to keep lesson",
       "word": "keep"
     },
@@ -801,7 +802,7 @@
       "cue": "14.seen",
       "sfx": "scrape",
       "dur": 0.7,
-      "trim": -2,
+      "trim": 2,
       "why": "Pulled cart",
       "word": "pulled"
     },
@@ -831,7 +832,7 @@
       "sfx": "heartbeat",
       "repeat": 3,
       "every": 0.52,
-      "trim": -1,
+      "trim": 3,
       "why": "Finally shaking with her shared heartbeat",
       "word": "finally"
     },
