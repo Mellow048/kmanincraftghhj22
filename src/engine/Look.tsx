@@ -133,6 +133,18 @@ export const LOOKS: Record<LookPreset, Preset> = {
     follow: true,
     shadowSpan: 13,
   },
+  /** The last of the sun: an orange sky, a low hard warm key, long shadows. Bright enough for a fight. */
+  "overworld-sunset": {
+    bg: "#f2a66e",
+    fog: "#e9a276",
+    fogDensity: 0.012,
+    ambient: { color: "#ffe0cc", intensity: 0.62 },
+    hemi: { sky: "#ffc9a0", ground: "#5c6a48", intensity: 0.9 },
+    key: { color: "#ffbe84", intensity: 3.0, position: [-9, 7, 6], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 13,
+  },
   /**
    * A town that lives by lantern light. The night is nearly black and the moon gives only a thin cold
    * edge from the south: the lanterns in the world (point lights, pools, glows) do the lighting.

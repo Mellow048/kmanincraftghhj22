@@ -79,7 +79,7 @@ export const TROUBLE: Vec3 = [0.6, 0, 2.8];
 export const ZONE = { town: "village", room: "room", living: "living", classN: "class+classS", classS: "class+classN", forest: "forest" };
 export const DAY = "overworld-day";
 export const NIGHT = "overworld-night";
-export const DUSK = "overworld-storm";
+export const DUSK = "overworld-sunset";
 
 export const lerp = (a: number, b: number, k: number): number => a + (b - a) * k;
 export const lerp3 = (a: Vec3, b: Vec3, k: number): Vec3 => [lerp(a[0], b[0], k), lerp(a[1], b[1], k), lerp(a[2], b[2], k)];
@@ -263,9 +263,12 @@ export const OldMan: React.FC<A & { suit?: number }> = ({ suit = 0, ...p }) => (
     {...p}
   />
 );
-/** The katana, for a right hand: the grip in the fist, the blade out along +Z. `out` 0..1 slides it out. */
-export const Katana: React.FC<{ out?: number }> = ({ out = 1 }) => (
-  <group>
+/**
+ * The katana, for a right hand: the grip in the fist, the blade out along +Z (straight ahead of a hanging arm).
+ * `out` 0..1 slides it out. `lance` 0..1 turns it to lie along the arm, so a reaching arm reaches with the blade.
+ */
+export const Katana: React.FC<{ out?: number; lance?: number }> = ({ out = 1, lance = 0 }) => (
+  <group rotation={[(lance * Math.PI) / 2, 0, 0]}>
     <Block position={[0, 0, 0.06]} size={[0.05, 0.05, 0.2]} color="#1a1a20" />
     <Block position={[0, 0, 0.17]} size={[0.14, 0.03, 0.03]} color="#c9a23a" />
     {out > 0.02 ? (

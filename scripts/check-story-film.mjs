@@ -345,7 +345,9 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     marks.forEach((mark, i) => {
       const body = scene.slice(mark.index, i + 1 < marks.length ? marks[i + 1].index : scene.length);
       const shot = `${label} [${mark[1]}]`;
-      used.push(mark[1]);
+      // A line may be cut into several shots: every shot after the first says where in the line it starts (`cut: seconds`).
+      const isCut = /(^|\n)\s*cut:\s*[\w.(]/.test(body) && used[used.length - 1] === mark[1];
+      if (!isCut) used.push(mark[1]);
 
       const note = body.match(/note:\s*(?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'|`([^`]*)`)/);
       const noteText = note ? (note[1] ?? note[2] ?? note[3]) : "";
@@ -358,7 +360,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
         return;
       }
       const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top)\s*\(/.test(body);
-      const literal = /(^|\n)\s*from:\s*\[/.test(body) && /(^|\n)\s*target:\s*\[/.test(body);
+      const literal = /(^|\n)\s*from:\s*[\[A-Za-z]/.test(body) && /(^|\n)\s*target:\s*[\[A-Za-z]/.test(body);
       if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give from[] and target[].`);
       if (!recipe && !/(^|\n)\s*(to|path|targetTo|targetPath|arc|shake):/.test(body)) {
         fail(`${shot}: static shot. Every shot in a story film moves.`);
@@ -381,7 +383,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   for (const id of unknown) fail(`${tag}: a shot uses cue "${id}", which is not in narration.md`);
   const seen = new Set();
   for (const id of used) {
-    if (seen.has(id)) fail(`${tag}: cue "${id}" has two shots. One line, one shot.`);
+    if (seen.has(id)) fail(`${tag}: cue "${id}" has two shots. One line, one shot, unless the later shots give cut: <seconds into the line>.`);
     seen.add(id);
   }
   if (missing.length > 0) {

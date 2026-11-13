@@ -4,6 +4,7 @@ import {
   Beam, Bits, Bubble, Bush, Cannon, Crate, DUSK, DustRing, Fill, Hero, Jets, Katana, Mate, Nora, OldMan, PLACE, Shield, Smoke, Streaks, SubscribeSign, ZONE,
   ease, f, front, hop, jolt, lerp, lerp3, pop, ramp, timing, toward, wordAt,
 } from "./kit";
+import { P } from "./fight";
 import { BUSH } from "./scene5";
 import { CR, Woods } from "./scene6";
 
@@ -16,12 +17,15 @@ const MUZZLE = lerp3(GUN, AIM, 0.42);
 const LIE: Vec3 = [CR[0], 0.04, CR[2] - 0.25];
 /** Where Nora stops, between the hole and the cannon. */
 const SH: Vec3 = f(2.35, 0, -0.25);
-const RUN0: Vec3 = [BUSH[0] + 0.7, 0, BUSH[2] - 0.2];
-const RUN1: Vec3 = f(0.9, 0, 0.55);
+/** Where she lands out of the bush, and where she drops into the slide. */
+const N0: Vec3 = f(2.95, 0, -1.95);
+const N1: Vec3 = f(2.75, 0, -1.4);
+const LEAPN = P({ air: true, pitch: 0.35, R: [-1.3, 1.2], L: [0.7, 0.9], aR: [-2.6, 0, 0.5], aL: [0.5, 0, -0.6], head: [-0.2, 0, 0] });
+const LANDN = P({ pitch: 0.45, R: [-0.9, 1.3], L: [0.3, 1.0], aR: [0.6, 0, 0.5], aL: [-0.8, 0, -0.3], head: [-0.3, 0, 0] });
 const RED = "#ff3b2e";
 const W = -Math.PI / 2;
 const E = Math.PI / 2;
-const All: React.FC = () => <Woods cut2={1} sap={1} big={1} hole />;
+const All: React.FC = () => <Woods cut2={1} hole />;
 /** Where he stands once she has pulled him out. */
 const UP: Vec3 = [CR[0] + 0.1, 0, CR[2] + 0.75];
 
@@ -142,71 +146,54 @@ export const scene7 = storyScene(timing, {
       ),
     },
     {
-      cue: "14.follow",
-      ...cam.truck({ on: [0.0, 1.2, 3.1], dist: 7.6, yaw: 0, pitch: 5, fov: 44, by: [0.7, 0, 0] }),
-      zone: ZONE.town,
-      look: DUSK,
-      note: "Earlier that evening, in the street: him in the suit, tiptoeing out of town towards the forest and looking over his shoulder. Thirty steps behind, a girl with red hair in a ponytail and a teal hoodie, keeping low, her little white drone at her shoulder. He looks back. She is behind a crate. He goes on. So does she.",
-      stage: (t, { p }) => {
-        const fol = wordAt("14.follow", "followed");
-        const hx = lerp(0.6, 1.7, p);
-        const look = jolt(t, fol - 0.5, 0.9);
-        const hide = ease(ramp(t, fol - 0.75, fol - 0.5)) * (1 - ease(ramp(t, fol + 0.25, fol + 0.5)));
-        const nx = lerp(-2.6, -1.35, ease(ramp(t, 0, fol - 0.55))) + 1.3 * ease(ramp(t, fol + 0.3, 2.97));
-        return (
-          <>
-            <Hero position={[hx, 0, 3.0]} rotationY={E} animation="creep" animDistance={1.1 * p} suit={1} headYaw={-2.2 * look} />
-            <pointLight position={[0.3, 3, 6]} color="#ffe8d0" intensity={60} distance={12} decay={2} />
-            <Crate position={[-0.75, 0, 3.3]} s={1.0} />
-            <Nora position={[nx, 0, 3.0]} rotationY={E} animation={hide > 0.5 ? "crouch" : "creep"} animDistance={nx + 2.6} face={hide > 0.5 ? "uneasy" : "brave"} />
-            <Shield position={[nx - 0.45, 1.75 - 0.8 * hide + 0.05 * Math.sin(t * 5), 3.0]} rotationY={E} on={0} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "14.nora",
-      ...cam.push({ on: [BUSH[0] + 0.1, 1.0, BUSH[2]], dist: 4.4, to: 3.0, yaw: 0, pitch: 4, fov: 42 }),
+      cue: "14.bush",
+      ...cam.push({ on: [BUSH[0] - 0.1, 1.2, BUSH[2] + 0.4], onTo: [N0[0] - 0.1, 1.15, N0[2]], dist: 5.2, to: 4.5, yaw: -10, pitch: 3, fov: 44 }),
       zone: ZONE.forest,
       look: DUSK,
-      note: "The bush at the edge of the clearing. Her head comes up over the top of it, with leaves in her hair, and the drone's one eye beside her. Blue light and red light go across her face from the fight we just watched. Her mouth is open.",
+      note: "The cannon is glowing on the right of the frame and the bush at the back of the clearing is shaking. On 'jumped' somebody comes out over the top of it in one leap, in a cloud of leaves: red ponytail, teal hoodie, a small white drone at her shoulder. She lands running.",
+      impacts: [{ at: 0.7, amp: 0.06, dur: 0.25 }, { at: 1.15, amp: 0.05, dur: 0.2 }],
       stage: (t) => {
-        const w = wordAt("14.nora", "watched");
-        const up = ease(ramp(t, 0.1, 0.5));
-        const fl = Math.sin(t * 17) > 0.2;
+        const j = wordAt("14.bush", "jumped");
+        const k = ramp(t, j, j + 0.45);
+        const N: Vec3 = [lerp(BUSH[0], N0[0], k), k > 0 && k < 1 ? 0.5 + 1.25 * 4 * k * (1 - k) * (1 - 0.35 * k) : k >= 1 ? 0 : -0.6, lerp(BUSH[2] - 0.2, N0[2], k)];
+        const yaw = toward(BUSH, N1);
         return (
           <>
-            <Bush position={BUSH} shake={t < 0.5 ? 1 : 0} t={t} />
-            <Nora position={[BUSH[0] + 0.1, -0.75 + 0.45 * up, BUSH[2] - 0.7]} animation="idle" face={t > w ? "fear" : "wow"} headYaw={0.5 * Math.sin(t * 3.2)} headPitch={-0.1} />
-            <Shield position={[BUSH[0] - 0.55, 0.75 + 0.45 * up, BUSH[2] - 0.6]} on={0} />
-            <Bits position={[BUSH[0], 0.9, BUSH[2] + 0.3]} t={t - 0.1} color="#3a7d34" count={10} power={1.6} />
-            <pointLight position={[BUSH[0] + 1.2, 1.6, BUSH[2] + 1.2]} color={fl ? "#4fe3ff" : RED} intensity={10 + 14 * jolt(t, w, 0.5)} distance={5} decay={2} />
-            <Fill on={[BUSH[0], 1.2, BUSH[2]]} yaw={0} power={4} />
+            <Hero position={LIE} animation="lie" suit={1} visor={1} face="fear" />
+            <Bush position={BUSH} shake={t < j + 0.3 ? 1 : 0} t={t} />
+            {k > 0 ? <Nora position={N} rotationY={yaw} pose={k < 1 ? LEAPN : LANDN} face="brave" /> : null}
+            {k > 0 ? <Shield position={[N[0] - 0.55, N[1] + 1.55, N[2] - 0.1]} rotationY={yaw} on={0} /> : null}
+            <Bits position={[BUSH[0], 1.0, BUSH[2] + 0.2]} t={t - j} color="#3a7d34" count={30} power={3.4} />
+            <Bits position={[BUSH[0], 1.0, BUSH[2] + 0.2]} t={t - j + 0.02} color="#2f6a2c" count={20} power={2.4} seed={4} />
+            <DustRing position={N0} t={t - j - 0.45} size={1.3} color="#8a8a66" />
+            <OldMan position={OLDC} rotationY={W} animation="guard" suit={1} />
+            <Cannon position={GUN} to={AIM} open={1} charge={0.6 + 0.4 * ramp(t, 0, 1.35)} />
+            <pointLight position={[GUN[0] - 0.6, 1.4, GUN[2] + 0.6]} color="#ffb060" intensity={10 + 14 * ramp(t, 0, 1.35)} distance={7} decay={2} />
+            <All />
           </>
         );
       },
     },
     {
-      cue: "14.run",
-      ...cam.push({ on: [RUN0[0] + 0.4, 1.15, RUN0[2]], onTo: [RUN1[0] - 0.2, 1.15, RUN1[2]], dist: 5.4, to: 5.0, yaw: -18, pitch: 4, fov: 44 }),
+      cue: "14.bush",
+      cut: 1.35,
+      ...cam.push({ on: [N0[0] - 0.05, 1.45, N0[2] + 0.2], onTo: [N1[0], 1.45, N1[2]], dist: 2.9, to: 2.3, yaw: -24, pitch: -6, fov: 42 }),
       zone: ZONE.forest,
       look: DUSK,
-      note: "Orange light floods the clearing from the right. She comes out of the bush flat out, leaves flying, head down, arms pumping, the drone racing ahead of her, and the camera runs with her.",
-      shake: 0.012,
-      stage: (t, { p }) => {
-        const k = ease(ramp(t, 0.05, 2.17));
-        const N = lerp3(RUN0, RUN1, k);
-        const d = Math.hypot(RUN1[0] - RUN0[0], RUN1[2] - RUN0[2]);
-        const yaw = toward(RUN0, RUN1);
+      note: "Slow, and close, from where he is lying: her face as she runs at the cannon, teeth shut, ponytail straight out behind her, the orange light coming up on her. 'It was Nora.'",
+      stage: (t, { dur }) => {
+        const k = ease(t / dur);
+        const N = lerp3(N0, N1, k);
+        const d = Math.hypot(N1[0] - N0[0], N1[2] - N0[2]);
+        const yaw = toward(N0, N1);
         return (
           <>
-            <Bush position={BUSH} shake={t < 0.4 ? 1 : 0} t={t} />
-            <Nora position={[N[0], hop(t, 0.05, 0.5, 0.4), N[2]]} rotationY={yaw} animation="run" animDistance={d * k} face="brave" />
-            <Shield position={[N[0] + 0.9, 1.5 + 0.08 * Math.sin(t * 20), N[2] - 0.2]} rotationY={yaw} on={0} />
-            <Bits position={[BUSH[0] + 0.3, 0.9, BUSH[2]]} t={t - 0.05} color="#3a7d34" count={20} power={3} />
-            <Bits position={[N[0] - 0.3, 0.1, N[2]]} t={t % 0.28} color="#8aa070" count={5} power={1.3} />
-            <Streaks position={[N[0] - 0.8, 1.2, N[2]]} yaw={yaw + Math.PI} t={t} n={9} spread={0.9} speed={18} color="#ffe0c0" />
-            <pointLight position={[N[0] + 2.2, 1.6, N[2] + 0.6]} color="#ffb060" intensity={14 + 30 * p} distance={8} decay={2} />
+            <Nora position={N} rotationY={yaw} animation="run" animDistance={0.6 + d * k} face="brave" />
+            <Shield position={[N[0] - 0.5, 1.72 + 0.04 * Math.sin(t * 9), N[2] + 0.15]} rotationY={yaw} on={0} />
+            <Streaks position={[N[0], 1.3, N[2] - 0.8]} yaw={yaw} t={t * 0.3} n={8} spread={0.9} speed={12} color="#ffe0c0" />
+            <Bits position={[N0[0], 0.1, N0[2]]} t={t * 0.5 + 0.05} color="#8aa070" count={8} power={1.4} />
+            <pointLight position={[N[0] + 1.3, 1.5, N[2] + 0.9]} color="#ffb060" intensity={8 + 16 * k} distance={6} decay={2} />
+            <Fill on={[N[0], 1.45, N[2]]} yaw={-24} power={2.5} color="#ffe6d0" />
             <All />
           </>
         );
@@ -223,14 +210,14 @@ export const scene7 = storyScene(timing, {
         const s = wordAt("14.slide", "shield");
         const k = ramp(t, 0, 0.95);
         const sl = 1 - (1 - k) * (1 - k);
-        const N = lerp3(RUN1, SH, sl);
+        const N = lerp3(N1, SH, sl);
         const upk = ease(ramp(t, 0.95, 1.3));
         return (
           <>
             <Hero position={LIE} animation="lie" suit={1} visor={1} face="fear" />
-            <Nora position={N} rotationY={lerp(toward(RUN1, SH), E, upk)} animation={upk > 0.5 ? "push" : "crouch"} face="brave" />
+            <Nora position={N} rotationY={lerp(toward(N1, SH), E, upk)} animation={upk > 0.5 ? "push" : "crouch"} face="brave" />
             {[0.15, 0.4, 0.65, 0.9].map((w, i) => (
-              <Bits key={i} position={lerp3(RUN1, SH, 1 - (1 - w) * (1 - w))} t={t - w} color="#7a6a4a" count={8} power={1.8} />
+              <Bits key={i} position={lerp3(N1, SH, 1 - (1 - w) * (1 - w))} t={t - w} color="#7a6a4a" count={8} power={1.8} />
             ))}
             <DustRing position={SH} t={t - 0.9} size={1.2} color="#7a6a4a" />
             <Shield position={[lerp(N[0] + 0.9, SH[0] + 0.62, upk), lerp(1.5, 1.2, upk), SH[2]]} rotationY={E * 0.75} on={ease(ramp(t, s - 0.2, s))} hit={jolt(t, s, 0.35)} r={1.2} />

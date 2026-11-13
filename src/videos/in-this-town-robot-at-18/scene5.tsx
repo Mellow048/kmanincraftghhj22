@@ -8,7 +8,7 @@ import {
 export const ME: Vec3 = f(-0.8, 0, 0.4);
 export const TREE: Vec3 = f(-3.0, 0, -2.6);
 export const OLD: Vec3 = f(2.2, 0, -1.4);
-export const BUSH: Vec3 = f(-2.7, 0, 1.5);
+export const BUSH: Vec3 = f(2.9, 0, -3.0);
 const CYAN = "#4fe3ff";
 
 /** Where his flying takes him: up, and not in a straight line. */

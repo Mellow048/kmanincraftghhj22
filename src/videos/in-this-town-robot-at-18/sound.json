@@ -86,14 +86,9 @@
         "why": "The second he cannot move."
       },
       {
-        "from": "14.follow",
-        "mood": "sneak",
-        "why": "Somebody followed him."
-      },
-      {
-        "from": "14.run",
+        "from": "14.bush",
         "mood": "tense",
-        "why": "She runs."
+        "why": "Somebody runs in."
       },
       {
         "from": "14.gone",
@@ -179,12 +174,7 @@
       "bed": "night"
     },
     {
-      "from": "14.follow",
-      "to": "14.follow",
-      "bed": "village"
-    },
-    {
-      "from": "14.nora",
+      "from": "14.bush",
       "to": "15.threw",
       "bed": "night"
     },
@@ -747,7 +737,7 @@
       "cue": "12.suit",
       "sfx": "sting",
       "word": "not",
-      "why": "Not an old man."
+      "why": "He is not an old man."
     },
     {
       "cue": "12.suit",
@@ -756,35 +746,35 @@
       "offset": 0.1,
       "repeat": 3,
       "every": 0.12,
-      "why": "His suit shuts."
+      "why": "Plates slam on."
     },
     {
       "cue": "12.suit",
       "sfx": "power_up",
       "word": "suit",
       "trim": -3,
-      "why": "Red eyes."
+      "why": "His suit lights."
     },
     {
       "cue": "12.katana",
       "sfx": "scrape",
-      "word": "katana",
+      "word": "slid",
       "trim": 3,
-      "why": "The blade."
+      "why": "The blade slides out."
     },
     {
       "cue": "12.katana",
       "sfx": "whoosh",
-      "word": "jumped",
+      "offset": 1.56,
       "trim": 2,
-      "why": "He jumps."
+      "why": "He leaps."
     },
     {
       "cue": "12.duck",
       "sfx": "riser",
       "word": "duck",
       "trim": -2,
-      "why": "Slow, coming down."
+      "why": "Slow motion, the blade coming."
     },
     {
       "cue": "12.duck",
@@ -793,140 +783,144 @@
       "why": "The helmet speaks."
     },
     {
-      "cue": "12.ducked",
-      "sfx": "swish",
-      "word": "ducked",
+      "cue": "12.duck",
+      "sfx": "whoosh_low",
+      "offset": 1.9,
       "trim": 3,
-      "why": "The blade over him."
+      "why": "The blade passes over his head."
     },
     {
       "cue": "12.ducked",
-      "sfx": "thud",
-      "word": "blade",
-      "why": "The old man lands."
+      "sfx": "swish",
+      "offset": 0.15,
+      "trim": 2,
+      "why": "He peeks up."
     },
     {
       "cue": "12.ducked",
       "sfx": "crack",
-      "word": "tree",
-      "why": "Into a tree."
+      "offset": 1.45,
+      "why": "The tree is cut."
     },
     {
       "cue": "12.ducked",
       "sfx": "step_grass",
-      "word": "went",
+      "offset": 1.5,
       "repeat": 4,
-      "every": 0.18,
-      "why": "He runs."
+      "every": 0.16,
+      "trim": 2,
+      "why": "He scrambles away."
+    },
+    {
+      "cue": "12.ducked",
+      "sfx": "hit",
+      "offset": 2.6,
+      "trim": -2,
+      "why": "The tree lands."
     },
     {
       "cue": "12.again",
       "sfx": "swish",
-      "word": "again",
-      "nth": 0,
+      "offset": 0.12,
       "trim": 4,
-      "why": "Cut one."
-    },
-    {
-      "cue": "12.again",
-      "sfx": "swish",
-      "word": "again",
-      "nth": 1,
-      "trim": 4,
-      "why": "Cut two."
-    },
-    {
-      "cue": "12.again",
-      "sfx": "crack",
-      "word": "again",
-      "nth": 1,
-      "offset": 0.1,
-      "why": "A young tree."
-    },
-    {
-      "cue": "12.again",
-      "sfx": "swish",
-      "word": "again",
-      "nth": 2,
-      "trim": 4,
-      "why": "Cut three."
-    },
-    {
-      "cue": "12.again",
-      "sfx": "zip",
-      "word": "again",
-      "nth": 2,
-      "offset": -0.05,
-      "why": "A jet, just in time."
+      "why": "Spin sweep."
     },
     {
       "cue": "12.again",
       "sfx": "boing",
-      "word": "spun",
+      "offset": 0.5,
       "trim": -3,
-      "why": "He skips back."
+      "why": "He jumps it."
+    },
+    {
+      "cue": "12.again",
+      "sfx": "whoosh_low",
+      "offset": 0.93,
+      "trim": 2,
+      "why": "Second sweep."
+    },
+    {
+      "cue": "12.again",
+      "sfx": "hit",
+      "offset": 1.66,
+      "trim": -1,
+      "why": "The chop goes into the ground."
+    },
+    {
+      "cue": "12.again",
+      "sfx": "debris",
+      "offset": 1.8,
+      "trim": 3,
+      "why": "Dirt."
+    },
+    {
+      "cue": "12.again",
+      "sfx": "swish",
+      "offset": 2.86,
+      "trim": 4,
+      "why": "The third cut, over his nose."
     },
     {
       "cue": "12.back",
       "sfx": "step_grass",
       "word": "went",
-      "repeat": 8,
+      "repeat": 7,
       "every": 0.16,
       "trim": 2,
-      "why": "Backwards, fast."
+      "why": "Backpedalling."
     },
     {
       "cue": "12.back",
-      "sfx": "scrape",
-      "word": "backwards",
-      "trim": 1,
-      "why": "The blade along the ground."
-    },
-    {
-      "cue": "12.back",
-      "sfx": "hit",
-      "word": "forest",
-      "trim": -3,
-      "why": "His back hits a tree."
+      "sfx": "thud",
+      "offset": 1.6,
+      "why": "His back meets a tree."
     },
     {
       "cue": "12.up",
       "sfx": "swish",
-      "offset": 0.28,
+      "offset": 0.3,
       "trim": 4,
-      "why": "Neck height."
+      "why": "The lunge."
     },
     {
       "cue": "12.up",
       "sfx": "fire_whoosh",
-      "word": "up",
+      "offset": 0.4,
       "trim": 3,
-      "why": "Up."
+      "why": "He rockets up."
     },
     {
       "cue": "12.up",
       "sfx": "crack",
-      "offset": 0.4,
-      "why": "The tree instead."
+      "offset": 0.47,
+      "why": "The blade goes into the trunk."
     },
     {
       "cue": "12.follow",
-      "sfx": "thud",
+      "sfx": "creak",
       "word": "looked",
-      "why": "The tree comes down."
+      "why": "He pulls the blade out and looks up."
     },
     {
       "cue": "12.follow",
       "sfx": "power_up",
       "word": "feet",
-      "why": "His boots."
+      "trim": -2,
+      "why": "Red jets."
     },
     {
       "cue": "12.follow",
       "sfx": "fire_whoosh",
-      "word": "lit",
-      "trim": 3,
-      "why": "After him."
+      "offset": 1.75,
+      "trim": 4,
+      "why": "He launches."
+    },
+    {
+      "cue": "12.follow",
+      "sfx": "hit",
+      "offset": 1.75,
+      "trim": 0,
+      "why": "The ground kicks."
     },
     {
       "cue": "12.chase",
@@ -938,21 +932,56 @@
     {
       "cue": "12.chase",
       "sfx": "gust",
-      "word": "trees",
-      "why": "Speed."
+      "offset": 1.3,
+      "why": "Cut to the front."
     },
     {
       "cue": "12.chase",
       "sfx": "zip",
-      "word": "better",
-      "why": "He closes."
+      "offset": 2.45,
+      "why": "He barrel-rolls right round him."
     },
     {
       "cue": "12.chase",
-      "sfx": "slide_down",
-      "word": "flying",
-      "trim": -2,
-      "why": "The teller wobbling."
+      "sfx": "whoosh",
+      "offset": 2.9,
+      "trim": 1,
+      "why": "And past."
+    },
+    {
+      "cue": "12.dodge",
+      "sfx": "swish",
+      "word": "left",
+      "trim": 3,
+      "why": "He banks left."
+    },
+    {
+      "cue": "12.dodge",
+      "sfx": "swish",
+      "word": "left",
+      "nth": 1,
+      "trim": 3,
+      "why": "So does the old man."
+    },
+    {
+      "cue": "12.dodge",
+      "sfx": "zip",
+      "word": "up",
+      "why": "Up through the cloud."
+    },
+    {
+      "cue": "12.dodge",
+      "sfx": "sting",
+      "word": "already",
+      "trim": -3,
+      "why": "He is already there."
+    },
+    {
+      "cue": "12.beam",
+      "sfx": "power_up",
+      "offset": 0.05,
+      "trim": -3,
+      "why": "Charging."
     },
     {
       "cue": "12.beam",
@@ -963,43 +992,48 @@
     },
     {
       "cue": "12.beam",
-      "sfx": "swish",
-      "word": "cut",
-      "trim": 4,
-      "why": "The blade through it."
+      "sfx": "hit",
+      "offset": 1.56,
+      "trim": -3,
+      "why": "The blade meets it."
     },
     {
       "cue": "12.beam",
       "sfx": "sparkle",
       "word": "two",
       "trim": 2,
-      "why": "Two halves."
+      "why": "The two halves scatter."
     },
     {
       "cue": "12.swat",
       "sfx": "zip",
-      "word": "then",
-      "trim": 2,
-      "why": "Across the gap."
+      "offset": 0.12,
+      "why": "He dashes."
     },
     {
       "cue": "12.swat",
       "sfx": "hit",
-      "word": "bumped",
-      "why": "Out of the sky."
+      "offset": 0.32,
+      "why": "The hit."
     },
     {
       "cue": "12.swat",
       "sfx": "slide_down",
-      "word": "down",
-      "trim": 2,
-      "why": "Down he goes."
+      "offset": 1.1,
+      "trim": 1,
+      "why": "Falling."
+    },
+    {
+      "cue": "12.swat",
+      "sfx": "gust",
+      "offset": 2.3,
+      "why": "Seen from the ground."
     },
     {
       "cue": "12.hole",
       "sfx": "boom",
-      "offset": 0.12,
-      "why": "The ground."
+      "offset": 0.08,
+      "why": "He lands."
     },
     {
       "cue": "12.hole",
@@ -1088,75 +1122,43 @@
       "why": "Not even blink."
     },
     {
-      "cue": "14.follow",
+      "cue": "14.bush",
+      "sfx": "rustle",
+      "offset": 0.1,
+      "repeat": 3,
+      "every": 0.18,
+      "trim": 5,
+      "why": "The bush shakes."
+    },
+    {
+      "cue": "14.bush",
       "sfx": "whoosh",
-      "why": "Earlier."
-    },
-    {
-      "cue": "14.follow",
-      "sfx": "step_stone",
-      "word": "what",
-      "repeat": 5,
-      "every": 0.3,
+      "word": "jumped",
       "trim": 2,
-      "why": "Tiptoe."
+      "why": "Somebody comes out of it."
     },
     {
-      "cue": "14.follow",
-      "sfx": "swish",
-      "word": "followed",
-      "offset": -0.5,
-      "why": "He looks back."
-    },
-    {
-      "cue": "14.follow",
-      "sfx": "blip",
-      "word": "followed",
-      "why": "She is behind the crate."
-    },
-    {
-      "cue": "14.nora",
-      "sfx": "rustle",
-      "word": "nora",
-      "trim": 5,
-      "why": "The bush."
-    },
-    {
-      "cue": "14.nora",
-      "sfx": "swish",
-      "word": "watched",
+      "cue": "14.bush",
+      "sfx": "thud",
+      "offset": 1.15,
       "trim": -2,
-      "why": "The fight, from over there."
+      "why": "She lands."
     },
     {
-      "cue": "14.nora",
-      "sfx": "sting",
-      "word": "bush",
-      "trim": -5,
-      "why": "She saw all of it."
-    },
-    {
-      "cue": "14.run",
-      "sfx": "riser",
-      "word": "lit",
-      "trim": -2,
-      "why": "The cannon."
-    },
-    {
-      "cue": "14.run",
-      "sfx": "rustle",
-      "word": "already",
-      "trim": 5,
-      "why": "Out of the bush."
-    },
-    {
-      "cue": "14.run",
+      "cue": "14.bush",
       "sfx": "step_grass",
-      "word": "cannon",
-      "repeat": 9,
-      "every": 0.17,
+      "offset": 1.4,
+      "repeat": 4,
+      "every": 0.22,
       "trim": 3,
-      "why": "Running flat out."
+      "why": "Running at the cannon."
+    },
+    {
+      "cue": "14.bush",
+      "sfx": "riser",
+      "offset": 2.7,
+      "trim": -3,
+      "why": "The cannon is nearly ready."
     },
     {
       "cue": "14.slide",
@@ -1303,14 +1305,15 @@
       "cue": "15.same",
       "sfx": "sting",
       "word": "same",
-      "why": "The same robot."
+      "why": "The same robot.",
+      "trim": -4
     },
     {
       "cue": "15.same",
       "sfx": "clank",
       "word": "his",
       "offset": 0.4,
-      "trim": 2,
+      "trim": -2,
       "why": "The visor shuts by itself."
     },
     {
@@ -1318,7 +1321,7 @@
       "sfx": "glitch",
       "word": "his",
       "offset": 0.75,
-      "trim": 2,
+      "trim": -2,
       "why": "Red."
     },
     {

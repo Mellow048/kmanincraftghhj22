@@ -87,29 +87,36 @@ What is planted, and where it pays off:
 [11.lost]    I thought he was lost. I thought he needed help.
 [11.landed]  So I landed, and I walked over to him.
 
-# clip 07-fight
+# clip 07a-suit
 [12.suit]    In half a second, he was not an old man. He was wearing a suit too.
 [12.katana]  A katana slid out of his arm, and he jumped at me.
 [12.duck]    My helmet said one word: "Duck."
+# clip 07b-ducked wait 0.5
 [12.ducked]  I ducked. The blade went over my head and into a tree.
+# clip 07c-again wait 1.0
 [12.again]   He spun around and tried again. And again. And again.
 [12.back]    I went backwards so fast I ran out of forest.
 [12.up]      So I went up.
-# clip 07b-sky
+# clip 07d-chase wait 0.8
 [12.follow]  He looked up at me. Then his feet lit up too.
 [12.chase]   He chased me over the trees, and he was a lot better at flying than I was.
+# clip 07e-dodge wait 0.6
+[12.dodge]   I went left. He went left. I went up. He was already there.
+# clip 07f-beam wait 0.9
 [12.beam]    I threw a beam of light at him. He cut it in two.
+# clip 07g-swat wait 1.0
 [12.swat]    Then he bumped me out of the sky, and down I went.
+# clip 07h-hole wait 1.0
 [12.hole]    I landed so hard I made a hole shaped like me.
-# clip 08-shield
+# clip 08a-cannon wait 0.6
 [13.more]    And that was not all his robot could do.
 [13.cannon]  His other arm folded open into a cannon.
 [13.fired]   He pointed it at me, and it lit up.
 [13.reboot]  I tried to get up. My suit said, "Rebooting. Please wait."
 [13.fast]    I could not move. I could not even blink.
-[14.follow]  What I did not know was that somebody had followed me from school.
-[14.nora]    Nora. She had watched the whole thing from a bush.
-[14.run]     When the cannon lit up, she was already running.
+# clip 08b-bush wait 0.5
+[14.bush]    Then somebody jumped out of the bush. It was Nora.
+# clip 08c-shield wait 0.3
 [14.slide]   She slid in front of me and threw her shield open.
 [14.blast]   The blast hit it and went straight up into the sky.
 [14.push]    It pushed her back, one step, then two. But nothing got through.
