@@ -77,9 +77,11 @@
   "pack": "Topics/InThisTown/PACK.md",
   "template": "Topics/InThisTown/template",
   "models": {
-    "note": "Finished films to build like. The first is the topic's reference film. Copy how they are built; never copy their story.",
-    "in-this-town-same-face": "THE REFERENCE FILM (see `reference`). Script shape (short cut), shots, kit use, and sound. The owner: 'everything is perfect top to bottom', then 'yes its good put it as the topic's reference'.",
-    "in-this-town-monster-egg": "The long cut (18 beats). Voice only: it was made before the sound rule."
+    "note": "Finished films the owner approved, to build like. The first is the topic's reference film. Each is kept with its source and its mp4 in Topics/InThisTown/reference (README.md there lists them). Copy how they are built; never copy their story.",
+    "in-this-town-same-face": "THE REFERENCE FILM (see `reference`). Script shape (short cut), shots, kit use, and sound. The owner: 'everything is perfect top to bottom', then 'yes its good put it as the topic's reference'. Page, source and mp4: Topics/InThisTown/reference/same-face.",
+    "in-this-town-nobody-looked-at-the-moon": "A film at night, and a remake of a rejected 20-second film (short cut, 63 shots). The owner: 'every single one u made is good'. Page, source and mp4: Topics/InThisTown/reference/nobody-looked-at-the-moon.",
+    "in-this-town-monster-egg": "The long cut (18 beats, 93 shots). Voice only: it was made before the sound rule. The owner: 'every single one u made is good'. Page, source and mp4: Topics/InThisTown/reference/monster-egg.",
+    "in-this-town-superpower-at-18": "The long cut with sound (90 shots), from the owner's own outline. The owner: 'wow i love it, i love how u made the short'. Page, source and mp4: Topics/InThisTown/reference/superpower-at-18."
   },
   "sound": {
     "required": true,

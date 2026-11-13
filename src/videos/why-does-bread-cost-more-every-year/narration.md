@@ -1,6 +1,14 @@
 # Narration — Why Does Bread Cost More Every Year
 
-**Status: DRAFT 1. Not approved, not recorded.** Nothing is built until the owner approves the script.
+**Status: APPROVED and RECORDED. The picture and the sound are not built yet.** The owner approved this script on
+2026-11-13 ("yesboth", to the two scripts that were put to him together). The three clips are recorded with
+`voice-00` (`public/audio/why-does-bread-cost-more-every-year/raw/`) and the film's clock is measured from them
+(`timing.json`): 49.2 seconds. Only the starter's two shots exist. Changing a word now means recording that clip
+again and rebuilding the timing.
+
+**Rebuild the timing with `--wpm 225`**, or every stop of the film moves:
+`python3 scripts/narration.py build why-does-bread-cost-more-every-year --wpm 225`. An explanation is read slower
+than a story (224 words a minute here; the story films run at 254).
 
 Topic: `Topics/Explainer`. Read `Topics/Explainer/SCRIPT.md` before changing a word. **This film is meant to become
 the topic's reference** (the owner: "you are the one making that reference!"; his subjects: "money lessons, what
@@ -23,7 +31,8 @@ coins for one loaf.
 - The word "inflation" is said once, late (5.name), as the name of what the viewer has just watched.
 - The last line is the subscribe line, and it is part of the explanation.
 
-**Length.** 182 words in 19 lines: about 43 seconds at the topic's pace (the limits are 30–58 seconds, 110–250 words).
+**Length.** 182 words in 19 lines. As recorded: 49.2 seconds at 224 words a minute (the limits are 30–58 seconds,
+110–250 words, 200–268 words a minute).
 
 What each line SHOWS:
 
@@ -51,15 +60,16 @@ What each line SHOWS:
 
 ## The claims, and where each came from
 
-An explainer that is wrong is worse than none. Every factual claim of the script is listed here. The pages were
-read on 2026-11-12.
+An explainer that is wrong is worse than none. Every factual claim of the script is listed here. The Minneapolis
+table was read in full on 2026-11-12. **The other three pages were read only as the excerpts a search returned:
+read each of them in full before the film is delivered**, and correct this table if a page says something else.
 
 | Line | Claim | Source |
 |---|---|---|
 | 3.mom | Thirty years ago things cost about half of what they cost today. True for the United States: the consumer price index was 156.9 in 1996 and is about 333 in 2026, which is 2.1 times | Federal Reserve Bank of Minneapolis, "Consumer Price Index, 1913–": https://www.minneapolisfed.org/about-us/monetary-policy/inflation-calculator/consumer-price-index-1913- |
 | 4.village … 4.nobody | Twice the money and the same bread gives twice the price, and nobody richer. This is a thought experiment, not a fact about a place: the picture behind "too much money chasing too few goods" | Federal Reserve Education, "Inflation": https://www.federalreserveeducation.org/teaching-resources/economics/inflation/inflation |
 | 5.faster | Prices rise when the amount of money grows faster than the amount of goods | The same page ("if the money supply increases too quickly, the supply of goods and services might not keep up"), and USAFacts, "What is the money supply, and how does it relate to inflation?": https://usafacts.org/articles/what-is-the-money-supply-and-how-does-it-relate-to-inflation-and-the-federal-reserve/ |
-| 5.name | A general, lasting rise of prices is called inflation; in the United States prices have risen in every year since 1955 but one (2009) | Federal Reserve Education (the definition); the Minneapolis table (the years) |
+| 5.name | A general, lasting rise of prices is called inflation; in the United States prices have risen in every year from 1956 on but one (2009; 1955 was the last fall before it) | Federal Reserve Education (the definition); the Minneapolis table (the years) |
 | 5.germany, 5.billion | Germany printed money in 1922–23 until a loaf of bread cost 200,000,000,000 marks in the autumn of 1923 | The Holocaust Explained (The Wiener Holocaust Library), "Hyperinflation and the invasion of the Ruhr": https://www.theholocaustexplained.org/the-nazi-rise-to-power/the-weimar-republic/invasion-of-the-ruhr/ |
 | 7.chest | Money that is kept buys a little less each year | Federal Reserve Education: "A 2 percent annual inflation rate means that, on average, a dollar buys 2 percent fewer goods and services than it did the year before" |
 
@@ -68,7 +78,9 @@ It does not say that prices also jump when a thing gets scarce (a bad harvest, a
 too, or that central banks aim for a little inflation (about two percent a year) and call it healthy. Each of
 those is its own film. Nothing in this one contradicts them.
 
-**For the owner to decide with this draft:**
+**What was put to the owner with the draft, and how it was settled.** He answered "yesboth", so each point stands
+as proposed: the subject is inflation through the price of bread, the German loaf stays, and the voice is
+`voice-00`.
 
 1. The subject: inflation, through the price of bread. Two other first films were considered and are one line each
    at the bottom of this page.
@@ -102,8 +114,6 @@ The islands, the stall, the loaf, the coins, the tags, the printer, the bars, th
 [5.name]      So year after year, prices creep up. That creep is called inflation.
 [5.germany]   A hundred years ago, Germany printed money far too fast.
 [5.billion]   By the end, one loaf of bread cost two hundred billion.
-
-# clip 04-you
 [6.answer]    So your bread never changed. There is more money, and each coin buys less.
 [7.chest]     Which means the coins in your chest buy a little less every year.
 [7.sub]       So subscribe now. It still costs nothing.

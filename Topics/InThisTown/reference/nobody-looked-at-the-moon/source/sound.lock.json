@@ -1,0 +1,162 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-nobody-looked-at-the-moon",
+  "mix": "public/audio/in-this-town-nobody-looked-at-the-moon/mix.mp3",
+  "seconds": 111.7,
+  "built_from": {
+    "timing.json": "ae352d5e9c2546fc3df6dda50728609333b38c8b",
+    "sound.json": "43b2ebb2cdf74dd568f21be558bce951330dee85",
+    "narration.mp3": "e0ac830864bab52de9c990ca281276dc0635d3b5"
+  },
+  "mix_sha1": "71ce1c621acbc3ba86e7ea89d9a85bf6e790e223",
+  "music_sections": [
+    {
+      "from": "1.wake",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "4.good",
+      "mood": "curious",
+      "at": 25.67
+    },
+    {
+      "from": "7.tip",
+      "mood": "playful",
+      "at": 39.4
+    },
+    {
+      "from": "8.down",
+      "mood": "sneak",
+      "at": 47.4
+    },
+    {
+      "from": "9.friend",
+      "mood": "curious",
+      "at": 55.67
+    },
+    {
+      "from": "10.gap",
+      "mood": "tense",
+      "at": 60.5
+    },
+    {
+      "from": "11.moon",
+      "mood": "none",
+      "at": 69.87
+    },
+    {
+      "from": "11.eye",
+      "mood": "dark",
+      "at": 73.77
+    },
+    {
+      "from": "11.up",
+      "mood": "hope",
+      "at": 76.87
+    },
+    {
+      "from": "12.dark",
+      "mood": "none",
+      "at": 86.33
+    },
+    {
+      "from": "12.walk",
+      "mood": "dark",
+      "at": 88.47
+    },
+    {
+      "from": "13.held",
+      "mood": "sad",
+      "at": 93.17
+    },
+    {
+      "from": "13.hat",
+      "mood": "drone",
+      "at": 97.7
+    },
+    {
+      "from": "14.knows",
+      "mood": "dark",
+      "at": 103.9
+    }
+  ],
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 18.9,
+    "secondsWithoutMusic": 6.6,
+    "bedsUnderVoiceDb": 24.6,
+    "sfx": 237,
+    "sfxPerMinute": 127.3,
+    "sfxKinds": 34,
+    "longestGapSeconds": 1.8,
+    "longestGapAt": 12.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.7,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 79.7,
+        "cue": "11.ground",
+        "sounding": [
+          "rustle",
+          "step_stone"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 74.4,
+        "cue": "11.eye",
+        "sounding": [
+          "sting",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 4.6,
+        "t": 67.2,
+        "cue": "10.hat",
+        "sounding": [
+          "pop",
+          "rustle"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 106.6,
+        "cue": "14.blinks",
+        "sounding": [
+          "blink",
+          "sparkle",
+          "step_stick"
+        ]
+      },
+      {
+        "db": 4.8,
+        "t": 110.9,
+        "cue": "14.sub",
+        "sounding": [
+          "blink",
+          "creak",
+          "ding",
+          "step_stick"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 99.8,
+        "cue": "13.bored",
+        "sounding": [
+          "heartbeat",
+          "step_stick",
+          "whoosh_low"
+        ]
+      }
+    ],
+    "lufs": -14.9,
+    "truePeakDb": -1.3,
+    "limiterMaxDb": 1.8
+  },
+  "failures": []
+}
