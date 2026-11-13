@@ -112,6 +112,10 @@ export const scene10 = storyScene(timing, {
       note: "Night. The lens runs up the path to the gym: the door open and gold, DANCE over it, the windows lit, kids running in ahead of us and the music coming out in rings.",
       stage: (t) => (
         <>
+          {/* Three lamps along the path, left and right: without them the kids running ahead of the lens are black cut-outs against the door. */}
+          {[19.2, 16.4, 13.6].map((z, i) => (
+            <pointLight key={z} position={GYM.at(i % 2 ? -1.3 : 1.3, 1.9, z)} color="#ffe2b0" intensity={10} distance={5.5} decay={2} />
+          ))}
           <Classmate who={6} {...stride(GYM.at(-0.5, 0, 16.5), GYM.at(-0.35, 0, 11.4), ramp(t, -0.2, 1.6))} animation="run" face="grin" />
           <Classmate who={1} {...stride(GYM.at(0.55, 0, 18.2), GYM.at(0.4, 0, 12.6), ramp(t, -0.2, 1.6))} animation="run" face="laugh" phase={0.5} />
           <Classmate who={9} position={GYM.at(1.5, Math.abs(Math.sin(t * 6)) * 0.08, 11.3)} rotationY={WEST + 0.5} animation="idle" arms="wave" face="grin" />
