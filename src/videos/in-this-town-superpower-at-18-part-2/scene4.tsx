@@ -47,7 +47,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[PLANT[0], Math.sin(t * 9) * 0.04, PLANT[2]]} rotationY={ROOTWAY} animation="crouch" time={t * 2.2} face="dizzy" headPitch={0.25 + Math.sin(t * 9) * 0.14} />
-          <Garden />
+          <Garden light={0.6} />
           <Roots from={HANDS} to={LEAF} k={1} />
           <FireLight position={ahead(PLANT, ROOTWAY, 2.2, 1.8)} power={14} reach={7} seed={4} />
         </>
@@ -66,7 +66,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Hero position={[PLANT[0], jolt(t, w, 0.12), PLANT[2]]} rotationY={ROOTWAY} animation="sit" arms={told ? "shrug" : "lift"} face={told ? "frown" : "wow"} headPitch={told ? -0.1 : 0.3} headYaw={told ? jolt(t, w, 0.5) : Math.sin(t * 5) * 0.15} gaze={0} />
-            <Garden />
+            <Garden light={0.6} />
             <FireLight position={ahead(PLANT, ROOTWAY, 2.2, 1.8)} power={14} reach={7} seed={4} />
           </>
         );

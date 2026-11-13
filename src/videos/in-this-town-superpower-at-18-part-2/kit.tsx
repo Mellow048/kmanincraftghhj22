@@ -336,7 +336,7 @@ export const Lit: React.FC<{ at: Vec3; side?: number; power?: number }> = ({ at,
 );
 
 /** Everything he grew in the pen at the end of part one. */
-export const Garden: React.FC = () => (
+export const Garden: React.FC<{ light?: number }> = ({ light = 4 }) => (
   <>
     <Vox kind="grass" position={[MUD[0], 0.08, MUD[2]]} size={[3.7, 0.05, 3.7]} castShadow={false} />
     {(
@@ -351,7 +351,7 @@ export const Garden: React.FC = () => (
     ).map(([x, z], i) => (
       <Daisy key={i} position={[MUD[0] + x, 0.09, MUD[2] + z]} />
     ))}
-    <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={4} distance={7} decay={2} />
+    <pointLight position={[MUD[0], 1.2, MUD[2]]} color="#9dff8a" intensity={light} distance={7} decay={2} />
   </>
 );
 

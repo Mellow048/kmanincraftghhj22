@@ -119,10 +119,10 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Brother position={B0} rotationY={EAST - 0.5 * wind + 0.5 * ramp(t, FLICK - 0.08, FLICK)} animation="idle" blendTo="point" blend={1 - ramp(t, FLICK - 0.1, FLICK)} face="smug" />
-            <Tip position={[TIP1[0] + x * 2.6, x * 9 - x * x * 2, TIP1[2]]} rotationY={WEST + x * 9} tilt={x * 6} strain={1} />
+            <Tip position={[TIP1[0] + x * 0.5, x * 9 - x * x * 2, TIP1[2]]} rotationY={WEST + x * 9} tilt={x * 6} strain={1} />
             <Bits position={[-6.4, 1.3, 7.2]} t={t - FLICK} color="#ffffff" count={16} seed={3} power={1.6} />
             <DustRing position={TIP1} t={t - FLICK} size={1.8} />
-            <Streaks position={[TIP1[0] + x * 2.6, x * 6, TIP1[2]]} yaw={0} pitch={-1.5708} t={t} n={x > 0 ? 8 : 0} spread={0.5} speed={20} color="#ffffff" />
+            <Streaks position={[TIP1[0] + x * 0.5, x * 6, TIP1[2]]} yaw={0} pitch={-1.5708} t={t} n={x > 0 ? 8 : 0} spread={0.5} speed={20} color="#ffffff" />
             <FireLight position={[-6.4, 1.8, 9.0]} power={14} reach={7} seed={2} />
           </>
         );

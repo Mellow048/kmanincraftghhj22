@@ -21,7 +21,7 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "3.fast",
-      ...cam.push({ on: [HANDS[0] - 0.25, 0.8, HANDS[2]], dist: 5.6, to: 4.6, yaw: 19, pitch: 8, fov: 44 }),
+      ...cam.push({ on: [HANDS[0] + 0.3, 0.7, HANDS[2]], dist: 5.0, to: 3.9, yaw: 19, pitch: 8, fov: 44 }),
       impacts: [{ at: SLAM, amp: 0.1, dur: 0.45 }],
       zone: ZONE.ruin,
       look: CHAOS,
