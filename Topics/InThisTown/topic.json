@@ -109,7 +109,9 @@
     "in-this-town-same-face": "THE REFERENCE FILM (see `reference`). Script shape (short cut), shots, kit use, and sound. The owner: 'everything is perfect top to bottom', then 'yes its good put it as the topic's reference'. Page, source and mp4: Topics/InThisTown/reference/same-face.",
     "in-this-town-nobody-looked-at-the-moon": "A film at night, and a remake of a rejected 20-second film (short cut, 63 shots). The owner: 'every single one u made is good'. Page, source and mp4: Topics/InThisTown/reference/nobody-looked-at-the-moon.",
     "in-this-town-monster-egg": "The long cut (18 beats, 93 shots). Voice only: it was made before the sound rule. The owner: 'every single one u made is good'. Page, source and mp4: Topics/InThisTown/reference/monster-egg.",
-    "in-this-town-superpower-at-18": "The long cut with sound (90 shots), from the owner's own outline. The owner: 'wow i love it, i love how u made the short'. Page, source and mp4: Topics/InThisTown/reference/superpower-at-18."
+    "in-this-town-superpower-at-18": "The long cut with sound (90 shots), from the owner's own outline. The owner: 'wow i love it, i love how u made the short'. Page, source and mp4: Topics/InThisTown/reference/superpower-at-18.",
+    "in-this-town-monster-village": "The extended cut (95 shots), monsters as a family, night. The owner: 'i liked the superhero and this one'. Page and source: Topics/InThisTown/reference/monster-village; mp4: renders/in-this-town-monster-village.mp4.",
+    "in-this-town-monster-village-part-2": "The middle cut (54 shots): a sequel on part one's world, from the owner's own outline. The owner: 'perfect'. Page and source: Topics/InThisTown/reference/monster-village-part-2; mp4: renders/in-this-town-monster-village-part-2.mp4."
   },
   "sound": {
     "required": true,
