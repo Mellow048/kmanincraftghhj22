@@ -120,16 +120,22 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
 
   const m = lock.measured ?? {};
   const sections = (lock.music_sections ?? []).filter((part) => part.mood !== "none");
-  // A topic can have ONE track for all its films, chosen by the owner (`sound.music.file`). `scripts/sound.py build`
-  // refuses a sheet that does not play it, so every mix built since the rule has it. A mix built before the rule
-  // still passes here: its film is either finished (`madeBefore`) or will be told on its next build.
+  // A topic can have ONE track for all its films, chosen by the owner (`sound.music.file` in topic.json). A film's
+  // sheet names it in `music.track`, and `scripts/sound.py build` refuses a sheet of that topic without it. A film
+  // finished before the rule (`madeBefore`) keeps the music it was approved with.
   const own = rules.music?.file;
-  const playsOwn = own && track?.path === own;
-  if (own && !playsOwn && !(rules.music.madeBefore ?? []).includes(slug)) {
-    info(`${tag}: its music is not the topic's track (${own}). The owner chose that track for this topic's films: the next \`${build}\` will ask for it.${guide}`);
+  let sheetTrack = null;
+  try {
+    sheetTrack = JSON.parse(fs.readFileSync(sheetPath, "utf8")).music?.track ?? null;
+  } catch {
+    sheetTrack = null;
   }
-  // The count of sections is for music made from moods. One recorded track is one piece of music.
-  if (rules.minMusicSections && !track && sections.length < rules.minMusicSections) {
+  const playsOwn = own && sheetTrack && path.normalize(sheetTrack) === path.normalize(own);
+  if (own && !playsOwn && !(rules.music.madeBefore ?? []).includes(slug)) {
+    info(`${tag}: its music is not the topic's track (${own}). The owner chose that track for this topic's films: add "track": "${own}" to "music" in sound.json; the next \`${build}\` will ask for it.${guide}`);
+  }
+  // The sections are written with a track too: each one is a turn of the story (silence, or the track stepping back).
+  if (rules.minMusicSections && sections.length < rules.minMusicSections) {
     fail(`${tag}: the music has ${sections.length} section(s). The music changes when the story does: at least ${rules.minMusicSections}.${guide}`);
   }
   if (rules.musicUnderVoiceDb && m.musicUnderVoiceDb != null) {

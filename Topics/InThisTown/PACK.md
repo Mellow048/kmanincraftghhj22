@@ -177,6 +177,30 @@ Built for the monster-egg film. Any film may use them.
 | `RankSign` | A wooden board with a number | `rank`, `gold`, `post` |
 | `SubscribeSign` | The red sign the last shot of **every** film holds | `position`, `rotationY`, `scale`, `tilt` |
 
+## Monsters — `monsters.tsx`
+
+The people of a monster village. Built for the owner to reuse: characters who can act, not enemies. Same pixel grid
+as the villagers, so they stand beside one.
+
+![The monsters, with a villager for scale](monsters.jpg)
+
+Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a world point) or `nod` / `turn` /
+`tilt`, `mood` (`calm happy sad angry scared`), `hat` (`straw`, `bow`) and `phase`. All but the slime take `scarf`
+(a colour: how you tell two zombies apart), and all but the spider and the slime take `lean`.
+
+| Name | What it is | Its own props |
+|---|---|---|
+| `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs` |
+| `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1 |
+| `Creeper` | 1.6 m, no arms, four short legs, that face | `fuse` 0–1 (swells and flashes white), `color`. `mood="happy"` turns the mouth over |
+| `Spider` | 2 m across, under 1 m tall, glowing red eyes | `rear` 0–1 (front legs up), `color`, `eyes`. Wide: turn it three-quarters on in a tall frame |
+| `Enderman` | 2.9 m, black, purple eyes | `jaw` 0–1 (the scream), `shake` 0–1, `carry` 0–1 with `children` (the block it holds) |
+| `Slime` | A see-through cube with a face | `size` in metres (0.5, 1, 2), `squash` −1…1 (flat on landing, tall on leaving), `color` |
+| `MONSTER` | Their colours, and four scarf colours | |
+| `monsterFace(kind, p, scale?)` | Where a monster's face is, for the camera's `on` | `kind`: `zombie skeleton creeper spider enderman slime` |
+
+Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build it in `monsters.tsx` the same way.
+
 ## What is not in the pack
 
 - **The story.** Never reuse a premise, a line or a twist from a finished film.
