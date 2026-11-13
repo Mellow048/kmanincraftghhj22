@@ -62,6 +62,9 @@ def read_script(slug: str):
         m = re.match(r"#\s*clip\s+(\S+)", line)
         if m:
             current = {"name": m.group(1), "cues": []}
+            w = re.search(r"\bwait\s+([0-9.]+)", line)
+            if w:
+                current["wait"] = float(w.group(1))
             clips.append(current)
             continue
         if line.startswith("#") or line.startswith(">"):
@@ -175,6 +178,7 @@ SAY = {
     "hideout": "HH AY D AW T",
     "dodgeballs": "D AA JH B AO L Z",
     "massager": "M AH S AA ZH ER",
+    "rebooting": "R IY B UW T IH NG",
 }
 
 def align(pcm16k, words):
@@ -305,6 +309,10 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
         # then speed the clip up. A tempo change moves every word time by the same factor.
         track, t = [], 0.0
         for clip, p in zip(clips, raws):
+            # `# clip 10-sub wait 1.0` holds a second of silence before the clip: breathing room.
+            if clip.get("wait"):
+                track.append(np.zeros(int(clip["wait"] * SR_OUT), dtype=np.float32))
+                t += clip["wait"]
             xn = decode(p, SR_ALIGN)
             a, b = speech_span(xn, SR_ALIGN)
             natural_dur = (b - a) / SR_ALIGN

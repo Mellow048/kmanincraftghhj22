@@ -7,6 +7,7 @@ import { scene3 } from "./scene3";
 import { scene4 } from "./scene4";
 import { scene5 } from "./scene5";
 import { scene6 } from "./scene6";
+import { scene7 } from "./scene7";
 
 /**
  * In This Town, Everyone Gets a Robot at 18
@@ -22,9 +23,10 @@ export const film = defineFilm({
   id: "in-this-town-robot-at-18",
   title: "In This Town, Everyone Gets a Robot at 18",
   topic: "in-this-town",
+  cut: "extended",
   look: "overworld-day",
   audio: { src: "audio/in-this-town-robot-at-18/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
-  scenes: [scene1, scene2, scene3, scene4, scene5, scene6],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7],
 });

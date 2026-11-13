@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-robot-at-18",
   "mix": "public/audio/in-this-town-robot-at-18/mix.mp3",
-  "seconds": 164.3333,
+  "seconds": 200.3667,
   "built_from": {
-    "timing.json": "ffee288d9a8be464eec9fd78c047529203d433fc",
-    "sound.json": "e4c2da26726850c7aacc20fc175b1b14c319c936",
-    "narration.mp3": "87373ce20a716ad2667b729300c96a5d1c7545ed"
+    "timing.json": "d14bd532a7d45cd20908050f60eb4c778fbcfb0c",
+    "sound.json": "a7652b09b9a7a3917077c347d48505a970c068b9",
+    "narration.mp3": "36ff4260b9af7e7a1c63af5ee37a6de2caf8e24d"
   },
-  "mix_sha1": "563f7d164ec28b9ba13bdc9beab46fe802b3d905",
+  "mix_sha1": "1e710fd3f0283997977e8812c61730208ab8c18c",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,153 +18,176 @@
     {
       "from": "2.mum",
       "mood": "playful",
-      "at": 12.0
+      "at": 12.07
     },
     {
       "from": "3.friends",
       "mood": "wonder",
-      "at": 21.33
+      "at": 21.5
     },
     {
       "from": "4.turn",
       "mood": "playful",
-      "at": 32.8
+      "at": 33.03
     },
     {
       "from": "5.home",
       "mood": "sad",
-      "at": 55.57
+      "at": 56.0
     },
     {
       "from": "6.lunch",
       "mood": "tense",
-      "at": 58.5
+      "at": 58.9
     },
     {
       "from": "7.head",
       "mood": "playful",
-      "at": 77.33
+      "at": 77.9
     },
     {
       "from": "8.night",
       "mood": "sneak",
-      "at": 80.07
+      "at": 80.67
     },
     {
       "from": "8.button",
       "mood": "curious",
-      "at": 86.4
+      "at": 87.07
     },
     {
       "from": "9.opened",
       "mood": "wonder",
-      "at": 90.47
+      "at": 91.13
     },
     {
       "from": "10.forest",
       "mood": "town",
-      "at": 102.9
+      "at": 103.67
     },
     {
       "from": "11.saw",
       "mood": "curious",
-      "at": 113.63
+      "at": 114.47
     },
     {
       "from": "12.suit",
       "mood": "tense",
-      "at": 122.53
+      "at": 123.47
+    },
+    {
+      "from": "12.hole",
+      "mood": "playful",
+      "at": 150.63
+    },
+    {
+      "from": "13.more",
+      "mood": "dark",
+      "at": 153.03
     },
     {
       "from": "13.fast",
       "mood": "drone",
-      "at": 138.33
+      "at": 162.0
     },
     {
-      "from": "14.bush",
-      "mood": "hope",
-      "at": 141.43
+      "from": "14.follow",
+      "mood": "sneak",
+      "at": 163.87
+    },
+    {
+      "from": "14.run",
+      "mood": "tense",
+      "at": 169.4
+    },
+    {
+      "from": "14.gone",
+      "mood": "curious",
+      "at": 179.83
     },
     {
       "from": "15.who",
       "mood": "dark",
-      "at": 149.5
+      "at": 182.9
+    },
+    {
+      "from": "15.same",
+      "mood": "none",
+      "at": 195.4
     },
     {
       "from": "15.sub",
       "mood": "town",
-      "at": 162.63
+      "at": 198.57
     }
   ],
-  "beds": 12,
+  "beds": 16,
   "measured": {
     "musicUnderVoiceDb": 17.6,
-    "secondsWithoutMusic": 0.3,
+    "secondsWithoutMusic": 3.2,
     "bedsUnderVoiceDb": 27.2,
-    "sfx": 130,
-    "sfxPerMinute": 47.5,
-    "sfxKinds": 40,
+    "sfx": 214,
+    "sfxPerMinute": 64.1,
+    "sfxKinds": 41,
     "longestGapSeconds": 4.3,
-    "longestGapAt": 113.6,
+    "longestGapAt": 114.5,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 15.1,
-    "voiceOverRestWorstDb": 5.2,
+    "voiceOverRestMedianDb": 14.4,
+    "voiceOverRestWorstDb": 4.1,
     "voiceOverRestWorst": [
       {
-        "db": 5.2,
-        "t": 156.7,
-        "cue": "15.broke",
+        "db": 4.1,
+        "t": 197.0,
+        "cue": "15.same",
         "sounding": [
-          "debris",
-          "hit"
+          "clank",
+          "glitch",
+          "sting"
         ]
       },
       {
-        "db": 5.5,
-        "t": 157.9,
+        "db": 4.9,
+        "t": 141.8,
+        "cue": "12.follow",
+        "sounding": [
+          "fire_whoosh",
+          "power_up"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 88.8,
+        "cue": "8.button",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 41.3,
+        "cue": "4.shook",
+        "sounding": []
+      },
+      {
+        "db": 5.1,
+        "t": 191.5,
         "cue": "15.took",
         "sounding": [
           "power_down"
         ]
       },
       {
-        "db": 5.6,
-        "t": 142.6,
-        "cue": "14.bush",
+        "db": 5.3,
+        "t": 72.5,
+        "cue": "7.stood",
         "sounding": [
-          "rustle"
-        ]
-      },
-      {
-        "db": 6.4,
-        "t": 123.8,
-        "cue": "12.suit",
-        "sounding": [
-          "clank",
-          "sting"
-        ]
-      },
-      {
-        "db": 6.6,
-        "t": 61.9,
-        "cue": "6.brick",
-        "sounding": [
-          "clank",
-          "sting"
-        ]
-      },
-      {
-        "db": 6.6,
-        "t": 2.4,
-        "cue": "1.town",
-        "sounding": [
-          "chime"
+          "riser"
         ]
       }
     ],
-    "lufs": -14.7,
-    "truePeakDb": -2.2,
-    "limiterMaxDb": 0.5
+    "lufs": -14.8,
+    "truePeakDb": -2.0,
+    "limiterMaxDb": 1.1
   },
   "failures": []
 }

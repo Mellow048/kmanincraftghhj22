@@ -175,10 +175,38 @@ export const chestOf = (p: Vec3): Vec3 => [p[0], p[1] + 1.12, p[2]];
 
 export const Mum: React.FC<A> = (p) => <MinecraftAvatar outfit="gown" skin={SKIN} hair="#6b3a1e" colors={{ torso: "#8a5cc2", arms: "#8a5cc2", legs: "#8a5cc2" }} blink phase={0.7} {...p} />;
 export const Dad: React.FC<A> = (p) => <MinecraftAvatar outfit="tee" skin={SKIN} hair="#3a2415" face="bearded" colors={{ torso: "#3f8a55", arms: "#3f8a55", legs: "#5a4a3a" }} blink phase={1.6} {...p} />;
+/** Long hair for a head: down the back and beside the face, a fringe, a bow; `tail` adds a ponytail. */
+export const LongHair: React.FC<{ color: string; bow?: string; tail?: boolean }> = ({ color, bow, tail = false }) => (
+  <group>
+    <Block position={[0, -0.2, -0.285]} size={[0.56, 0.66, 0.07]} color={color} />
+    <Block position={[-0.285, -0.17, -0.06]} size={[0.07, 0.6, 0.38]} color={color} />
+    <Block position={[0.285, -0.17, -0.06]} size={[0.07, 0.6, 0.38]} color={color} />
+    <Block position={[0, 0.275, 0]} size={[0.56, 0.05, 0.56]} color={color} />
+    <Block position={[-0.13, 0.2, 0.275]} size={[0.3, 0.12, 0.04]} color={color} castShadow={false} />
+    <Block position={[0.17, 0.215, 0.275]} size={[0.2, 0.08, 0.04]} color={color} castShadow={false} />
+    {tail ? (
+      <group position={[0, 0.12, -0.34]} rotation={[0.5, 0, 0]}>
+        <Block position={[0, -0.22, -0.05]} size={[0.2, 0.56, 0.16]} color={color} />
+      </group>
+    ) : null}
+    {bow ? (
+      <>
+        <Block position={[0.2, 0.33, 0.06]} size={[0.14, 0.1, 0.06]} color={bow} />
+        <Block position={[0.06, 0.33, 0.06]} size={[0.1, 0.08, 0.06]} color={bow} />
+        <Block position={[0.13, 0.33, 0.06]} size={[0.05, 0.06, 0.08]} color="#ffffff" />
+      </>
+    ) : null}
+    {/* eyelashes */}
+    <Block position={[-0.155, 0.045, 0.262]} size={[0.035, 0.03, 0.01]} color="#1a1210" castShadow={false} />
+    <Block position={[0.155, 0.045, 0.262]} size={[0.035, 0.03, 0.01]} color="#1a1210" castShadow={false} />
+  </group>
+);
 /** Nora: teal. Her robot is the shield. */
-export const Nora: React.FC<A> = (p) => <MinecraftAvatar outfit="hoodie" skin="#c98e62" hair="#1d1a22" colors={{ torso: "#1fa6a0", arms: "#1fa6a0", legs: "#3a3a48" }} blink phase={2.3} {...p} />;
+export const Nora: React.FC<A> = (p) => (
+  <MinecraftAvatar outfit="hoodie" skin="#e2b08a" hair="#b5482a" colors={{ torso: "#1fa6a0", arms: "#1fa6a0", legs: "#e8e2f0" }} blink phase={2.3} head={<LongHair color="#b5482a" bow="#ffd24a" tail />} {...p} />
+);
 /** The one with the clever robot: purple. */
-export const Ada: React.FC<A> = (p) => <MinecraftAvatar outfit="tee" skin="#e8bf9a" hair="#b5651d" colors={{ torso: "#7b4fd0", arms: "#7b4fd0", legs: "#2f3560" }} blink phase={3.1} {...p} />;
+export const Ada: React.FC<A> = (p) => <MinecraftAvatar outfit="tee" skin="#e8bf9a" hair="#b5651d" colors={{ torso: "#7b4fd0", arms: "#7b4fd0", legs: "#2f3560" }} head={<LongHair color="#e8c24a" bow="#ff7ab0" />} blink phase={3.1} {...p} />;
 /** The one with the floating hand: orange. */
 export const Sam: React.FC<A> = (p) => <MinecraftAvatar outfit="tee" skin="#a8744c" hair="#15120f" colors={{ torso: "#f08a1c", arms: "#f08a1c", legs: "#3a4a3a" }} blink phase={3.9} {...p} />;
 /** Pip: small, green, and his robot is the glasses on his face. `lens` lights them. */
@@ -447,20 +475,20 @@ export const Beam: React.FC<{ from: Vec3; to: Vec3; width?: number; color?: stri
 };
 
 /** Jets under two feet: `position` is where he stands (his feet), `power` 0..1, `t` the clock. */
-export const Jets: React.FC<{ position: Vec3; power?: number; t: number; rotationY?: number }> = ({ position, power = 1, t, rotationY = 0 }) =>
+export const Jets: React.FC<{ position: Vec3; power?: number; t: number; rotationY?: number; color?: string }> = ({ position, power = 1, t, rotationY = 0, color = CYAN }) =>
   power > 0.02 ? (
     <group position={position} rotation={[0, rotationY, 0]}>
       {[-0.13, 0.13].map((x, i) => {
         const fl = 0.8 + 0.2 * Math.sin(t * 40 + i * 2);
         return (
           <group key={i} position={[x, 0, 0]}>
-            <Block position={[0, -0.22 * power * fl, 0]} size={[0.14, 0.44 * power * fl, 0.14]} color="#000000" emissive={CYAN} emissiveIntensity={1} transparent opacity={0.8} castShadow={false} />
+            <Block position={[0, -0.22 * power * fl, 0]} size={[0.14, 0.44 * power * fl, 0.14]} color="#000000" emissive={color} emissiveIntensity={1} transparent opacity={0.8} castShadow={false} />
             <Block position={[0, -0.14 * power * fl, 0]} size={[0.07, 0.28 * power * fl, 0.07]} color="#000000" emissive="#ffffff" emissiveIntensity={1} castShadow={false} />
           </group>
         );
       })}
-      <Glow position={[0, -0.3, 0]} size={0.9 * power} color={CYAN} opacity={0.5} />
-      <pointLight position={[0, -0.3, 0]} color={CYAN} intensity={6 * power} distance={5} decay={2} />
+      <Glow position={[0, -0.3, 0]} size={0.9 * power} color={color} opacity={0.5} />
+      <pointLight position={[0, -0.3, 0]} color={color} intensity={6 * power} distance={5} decay={2} />
     </group>
   ) : null;
 
@@ -534,4 +562,51 @@ export const LunchSet: React.FC = () => (
     <Block position={[BENCH[0], 0.25, BENCH[2]]} size={[1.0, 0.5, 0.5]} color="#8a6238" />
     <Block position={[BENCH[0] - 1.0, 0.42, BENCH[2]]} size={[0.8, 0.84, 0.7]} color="#a87a48" />
   </>
+);
+
+export { DustRing, Streaks } from "../in-this-town-superpower-at-18-part-2/kit";
+
+/**
+ * The mark a blade leaves in the air: an arc of light, gone in a quarter of a second. `position` is the shoulder,
+ * `rotationY` the way the swing goes; `flat` lays the arc on its side for a sweep. `t` is seconds since the swing.
+ */
+export const Slash: React.FC<{ position: Vec3; rotationY?: number; t: number; r?: number; flat?: boolean; color?: string }> = ({ position, rotationY = 0, t, r = 1.35, flat = false, color = "#ffd8cc" }) => {
+  if (t < 0 || t > 0.3) return null;
+  const k = t / 0.3;
+  return (
+    <group position={position} rotation={[0, rotationY, 0]}>
+      <group rotation={flat ? [0, 0, Math.PI / 2] : [0, 0, 0]}>
+        {Array.from({ length: 12 }, (_, i) => {
+          const a = 2.0 - (i / 11) * 2.5;
+          const w = (0.03 + 0.15 * Math.sin((i / 11) * Math.PI)) * (1 - k);
+          return (
+            <Block key={i} position={[0, Math.sin(a) * r, Math.cos(a) * r]} rotation={[-(a + Math.PI / 2), 0, 0]} size={[0.03, w, 0.34]} color="#000000" emissive={i % 3 === 0 ? RED : color} emissiveIntensity={1} castShadow={false} />
+          );
+        })}
+      </group>
+    </group>
+  );
+};
+
+/** The hole he makes: the shape of somebody lying on his back with his arms out, head to the north. */
+export const Crater: React.FC<{ position: Vec3 }> = ({ position }) => (
+  <group position={[position[0], position[1] + 0.015, position[2]]}>
+    {(
+      [
+        [0, -1.05, 0.74, 0.74],
+        [0, -0.3, 0.8, 0.95],
+        [-0.72, -0.5, 0.7, 0.36],
+        [0.72, -0.5, 0.7, 0.36],
+        [-0.2, 0.62, 0.36, 1.0],
+        [0.2, 0.62, 0.36, 1.0],
+      ] as Array<[number, number, number, number]>
+    ).map(([x, z, w, d], i) => (
+      <Block key={i} position={[x, 0, z]} size={[w, 0.03, d]} color="#1c1a16" castShadow={false} />
+    ))}
+    {Array.from({ length: 14 }, (_, i) => {
+      const a = (i / 14) * Math.PI * 2;
+      const rr = 1.5 + 0.3 * Math.sin(i * 5.1);
+      return <Block key={`c${i}`} position={[Math.cos(a) * rr, 0.06, Math.sin(a) * rr * 1.1 - 0.2]} rotation={[i, i * 2, 0]} size={[0.22, 0.14, 0.2]} color={i % 2 ? "#5a4a36" : "#4a6a3a"} />;
+    })}
+  </group>
 );

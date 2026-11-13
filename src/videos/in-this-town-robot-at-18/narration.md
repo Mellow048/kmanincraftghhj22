@@ -20,7 +20,8 @@ What is planted, and where it pays off:
 | "Nora got a shield robot. Nothing gets through it." (3.nora) | She blocks the cannon (14.blast) |
 | "Just a head." (4.just) | "It was never a broken robot. It was a suit." (9.suit) |
 | "I sat down again." (7.sat) | The suit; part two |
-| "They took it away from him" (15.took) | She looks at the helmet (15.helmet); part two |
+| "Somebody had followed me from school" (14.follow) | Nora slides in with the shield (14.slide) |
+| "They took it away from him" (15.took) | "That is the same robot as his." (15.same); part two |
 
 ```narration
 # clip 01-hook
@@ -91,20 +92,35 @@ What is planted, and where it pays off:
 [12.katana]  A katana slid out of his arm, and he jumped at me.
 [12.duck]    My helmet said one word: "Duck."
 [12.ducked]  I ducked. The blade went over my head and into a tree.
+[12.again]   He spun around and tried again. And again. And again.
+[12.back]    I went backwards so fast I ran out of forest.
+[12.up]      So I went up.
+# clip 07b-sky
+[12.follow]  He looked up at me. Then his feet lit up too.
+[12.chase]   He chased me over the trees, and he was a lot better at flying than I was.
+[12.beam]    I threw a beam of light at him. He cut it in two.
+[12.swat]    Then he bumped me out of the sky, and down I went.
+[12.hole]    I landed so hard I made a hole shaped like me.
+# clip 08-shield
 [13.more]    And that was not all his robot could do.
 [13.cannon]  His other arm folded open into a cannon.
 [13.fired]   He pointed it at me, and it lit up.
-[13.fast]    It was too fast. I could not move. I could not even blink.
-
-# clip 08-shield
-[14.bush]    Then somebody jumped out of a bush.
-[14.nora]    Nora. And her shield.
+[13.reboot]  I tried to get up. My suit said, "Rebooting. Please wait."
+[13.fast]    I could not move. I could not even blink.
+[14.follow]  What I did not know was that somebody had followed me from school.
+[14.nora]    Nora. She had watched the whole thing from a bush.
+[14.run]     When the cannon lit up, she was already running.
+[14.slide]   She slid in front of me and threw her shield open.
 [14.blast]   The blast hit it and went straight up into the sky.
+[14.push]    It pushed her back, one step, then two. But nothing got through.
 [14.gone]    The old man looked at her. He looked at me. And then he was gone.
+# clip 09-end
 [15.who]     I said, "Who was that? Why me?"
 [15.threw]   She said, "That is the one this town threw out."
 [15.broke]   "He got his robot at eighteen, like everybody. He used it to break things."
 [15.took]    "They took it away from him, a long time ago."
-[15.helmet]  Then she looked at my helmet, and she stopped talking.
+[15.helmet]  Then she looked at my helmet, and she went white.
+[15.same]    "No way. That is the same robot as his."
+# clip 10-sub wait 1.0
 [15.sub]     Like and subscribe for part two.
 ```
