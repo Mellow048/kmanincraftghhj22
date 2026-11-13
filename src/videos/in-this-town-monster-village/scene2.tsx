@@ -1,6 +1,6 @@
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Bits, Bubble, DAY, Dad, DustRing, Hero, Hiss, Mo, Mum, NIGHT, NORTH, PLACE, Puffs, Stew, ZONE, ease, faceOf, hop, jolt, manFace, pop, ramp, timing, tossed, wordAt } from "./kit";
+import { Bits, Bubble, DAY, Fill, Dad, DustRing, Hero, Hiss, Mo, Mum, NIGHT, NORTH, PLACE, Puffs, Stew, ZONE, ease, faceOf, hop, jolt, manFace, pop, ramp, timing, tossed, wordAt } from "./kit";
 
 const MO_DOOR: Vec3 = [22.2, 0, -4.3];
 
@@ -33,7 +33,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.me",
-      ...cam.push({ on: [0, 0.9, 3.2], dist: 3.2, to: 6.2, yaw: 10, pitch: 12, fov: 42 }),
+      ...cam.push({ on: [-2, 0.9, 2.6], dist: 3.2, to: 6.0, yaw: 8, pitch: 12, fov: 42 }),
       zone: ZONE.day,
       look: DAY,
       note: "He is out in the square in full sun, bouncing a ball. The camera pulls away and he gets small: there is nobody else out here.",
@@ -43,10 +43,10 @@ export const scene2 = storyScene(timing, {
         const roll = t > play ? (t - play) * 0.7 : 0;
         return (
           <>
-            <Hero position={[0, 0, 3.2]} rotationY={0.3} animation={t < play ? "press" : "idle"} face={t < play ? "smile" : "frown"} headYaw={t > play ? 0.5 * ease(ramp(t, play, play + 0.6)) : 0} />
-            <Block position={[0.5 + roll, ballY, 3.5]} size={[0.3, 0.3, 0.3]} color="#e2463a" rotation={[t * 3, 0, t * 2]} />
-            <Mum position={[-4.2, 0, -1.6]} mood="sad" lookAt={[0, 1, 3.2]} />
-            <Dad position={[-2.9, 0, -1.9]} mood="sad" lookAt={[0, 1, 3.2]} />
+            <Hero position={[-2, 0, 2.6]} rotationY={0.3} animation={t < play ? "press" : "idle"} face={t < play ? "smile" : "frown"} headYaw={t > play ? 0.5 * ease(ramp(t, play, play + 0.6)) : 0} />
+            <Block position={[-1.5 + roll, ballY, 2.9]} size={[0.3, 0.3, 0.3]} color="#e2463a" rotation={[t * 3, 0, t * 2]} />
+            <Mum position={[-2.6, 0, -1.6]} mood="sad" lookAt={[-2, 1, 2.6]} />
+            <Dad position={[-1.4, 0, -1.9]} mood="sad" lookAt={[-2, 1, 2.6]} />
           </>
         );
       },
@@ -80,7 +80,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.dark",
-      ...cam.push({ on: [8.7, 1.0, -4.2], dist: 4.6, to: 4.0, yaw: 38, pitch: 8, fov: 42 }),
+      ...cam.push({ on: [9.5, 1.0, -4.0], dist: 4.8, to: 4.2, yaw: 30, pitch: 8, fov: 42 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "Night. Mum and Dad walk straight in through the door. He follows, arms out in front of him, and on 'doors' walks flat into the wall beside it and bounces off.",
@@ -106,7 +106,12 @@ export const scene2 = storyScene(timing, {
       zone: ZONE.night,
       look: NIGHT,
       note: "His face, rubbing his nose, alone in the dark outside his own door.",
-      stage: (t) => <Hero position={[9.9, 0, -4.0]} rotationY={0.4} animation="idle" arms="reachUp" face="frown" headPitch={0.15 + jolt(t, 0.2, 0.3)} />,
+      stage: (t) => (
+        <>
+          <Hero position={[9.9, 0, -4.0]} rotationY={0.4} animation="idle" arms="reachUp" face="frown" headPitch={0.15 + jolt(t, 0.2, 0.3)} />
+          <Fill on={faceOf([9.9, 0, -4.0])} yaw={20} />
+        </>
+      ),
     },
     {
       cue: "4.mo",
@@ -130,7 +135,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.alone",
-      ...cam.push({ on: [21.6, 1.3, -4.0], dist: 4.5, to: 9.5, yaw: -62, pitch: 7, fov: 42 }),
+      ...cam.push({ on: [21.6, 1.3, -4.0], dist: 4.5, to: 9.5, yaw: -40, pitch: 7, fov: 42 }),
       zone: ZONE.day,
       look: DAY,
       note: "Back down the street, fast: his house is the last one and there is nobody near it. The boy waves from far off. On 'word' a bubble with three dots pops over Mo and that is all.",
@@ -140,7 +145,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Mo position={MO_DOOR} rotationY={-1.1} animation="idle" face="neutral" gaze={0} />
             <Hero position={[16.8, hop(t, 0.9, 0.2, 0.3), -0.6]} rotationY={1.3} animation="wave" face="smile" />
-            <Bubble text="..." position={[21.9, 2.75, -4.2]} rotationY={-1.08} scale={0.8 * pop(t, word)} tail={1} />
+            <Bubble text="..." position={[21.9, 2.75, -4.2]} rotationY={-0.7} scale={0.8 * pop(t, word)} tail={1} />
           </>
         );
       },

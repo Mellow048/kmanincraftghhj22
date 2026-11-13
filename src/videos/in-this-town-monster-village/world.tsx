@@ -37,7 +37,7 @@ const Village: React.FC = () => (
     <Vox kind="cobble" position={[PLACE.pond[0] - 2.7, 0.15, PLACE.pond[2]]} size={[0.5, 0.3, 4.4]} />
 
     {/* The market hall: a dark roof on six posts. The monsters keep under it by day. */}
-    {[-8, -3.5, 1].map((x) => [-4.6, -0.4].map((z) => <Vox key={`${x}${z}`} kind="log" position={[x, 1.7, z]} size={[0.3, 3.4, 0.3]} />))}
+    {([[-8, -4.6], [-3.5, -4.6], [1, -4.6], [-8, -0.4], [1, -0.4]] as Array<[number, number]>).map(([x, z]) => [ <Vox key={`${x}${z}`} kind="log" position={[x, 1.7, z]} size={[0.3, 3.4, 0.3]} />])}
     <Vox kind="darkPlanks" position={[PLACE.shade[0], 3.5, PLACE.shade[2]]} size={[9.8, 0.2, 5]} />
 
     {/* North side, west to east. Fronts face south. Dark roofs: this is not the villagers' town. */}
@@ -99,8 +99,12 @@ const Night: React.FC = () => (
     <LightPool position={[9.5, 0.07, -1.5]} width={9} depth={7} color="#b8c8ff" opacity={0.12} />
     <Glow position={[8.7, 2.6, -4.2]} size={1.8} color="#ffb347" opacity={0.3} />
     <Dust position={[0, 2.2, 1]} area={[36, 4, 14]} count={50} size={0.04} color="#cfd8ff" opacity={0.5} seed={7} speed={0.15} />
-    <pointLight position={[-4, 3.5, 6]} color="#9fb4ff" intensity={14} distance={18} decay={2} />
-    <pointLight position={[9, 3.5, 2]} color="#9fb4ff" intensity={12} distance={16} decay={2} />
+    {/* The moon does not reach the street: these do. One over the square where the fight is, one each way along it. */}
+    <pointLight position={[-4.5, 4.2, 5.6]} color="#b4c2ff" intensity={46} distance={16} decay={2} />
+    <pointLight position={[-10, 4.2, 4.6]} color="#b4c2ff" intensity={34} distance={15} decay={2} />
+    <pointLight position={[2, 4.2, 5]} color="#b4c2ff" intensity={30} distance={15} decay={2} />
+    <pointLight position={[10, 4.2, 1.5]} color="#b4c2ff" intensity={34} distance={15} decay={2} />
+    <pointLight position={[-25, 6.5, 2]} color="#b4c2ff" intensity={40} distance={16} decay={2} />
   </>
 );
 

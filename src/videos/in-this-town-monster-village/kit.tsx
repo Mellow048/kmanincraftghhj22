@@ -50,8 +50,8 @@ export const PLACE = {
   room: [0, 0, 80] as Vec3,
 };
 /** Where each of them sits on the ledge, facing south. The kid is lifted so his seat meets the stone. */
-export const ME_SIT: Vec3 = [2.6, 0.06, 6.45];
-export const MO_SIT: Vec3 = [3.9, -0.05, 6.45];
+export const ME_SIT: Vec3 = [2.85, 0.06, 6.45];
+export const MO_SIT: Vec3 = [3.75, -0.05, 6.45];
 /** The hill the players come over: flat top at y = 3 west of x = −28, six steps down to the street at x = −22. */
 export const hillY = (x: number): number => Math.max(0, Math.min(3, Math.ceil(-22 - x) * 0.5));
 /** The ring they stand in round his house every night, west to east. Each faces OUT: its rotationY is its angle. */
@@ -72,7 +72,7 @@ export const BIG: Vec3 = [-6.1, 0, 2.4];
 export const BIG_SCALE = 1.12;
 /** Where Mo's open hand meets the blade, and where he has to stand (facing west) for his raised right hand to be there. */
 export const CATCH: Vec3 = [-4.95, 1.9, 2.02];
-export const MO_CATCH: Vec3 = [CATCH[0] + 0.32, 0, CATCH[2] - 0.34];
+export const MO_CATCH: Vec3 = [CATCH[0] - 0.32, 0, CATCH[2] + 0.34];
 
 /** Seconds a cue lasts. */
 export const dur = (cue: string): number => {
@@ -167,7 +167,7 @@ export const Raider: React.FC<A & { who: number; sword?: boolean; torch?: boolea
         <>
           <Block position={[0, 0.12, 0.08]} size={[0.07, 0.5, 0.07]} color="#6b4a2a" />
           <Block position={[0, 0.42, 0.08]} size={[0.11, 0.13, 0.11]} color="#000000" emissive="#ffb030" emissiveIntensity={1} castShadow={false} />
-          <pointLight position={[0, 0.5, 0.1]} color="#ffa040" intensity={who % 2 ? 0 : 5} distance={7} decay={2} />
+          <pointLight position={[0, 0.5, 0.1]} color="#ffa040" intensity={who % 2 ? 0 : 14} distance={8} decay={2} />
         </>
       ) : sword ? (
         <Sword />
@@ -183,6 +183,11 @@ export const Fallen: React.FC<{ position: Vec3; rotationY: number; k: number; ch
       {children}
     </group>
   </group>
+);
+
+/** A soft light on the camera's side of a face at night: `on` is the face, `yaw` the camera's yaw in degrees. */
+export const Fill: React.FC<{ on: Vec3; yaw: number; power?: number; d?: number }> = ({ on, yaw, power = 5, d = 1.7 }) => (
+  <pointLight position={[on[0] + d * Math.sin((yaw * Math.PI) / 180), on[1] + 0.35, on[2] + d * Math.cos((yaw * Math.PI) / 180)]} color="#e6ecff" intensity={power} distance={6} decay={2} />
 );
 
 /** A sword in the world, not in a hand: `position` is the grip, `yaw` the way it points, `pitch` radians above flat. */

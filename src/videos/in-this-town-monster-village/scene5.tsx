@@ -1,7 +1,7 @@
 import { Block, Glow, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  AimSword, Bits, Bubble, Bus, Dad, DustRing, Hiss, MONSTER, Mum, NIGHT, Postman, Puffs, Raider, Streaks, ZONE,
+  AimSword, Bits, Bubble, Bus, Dad, DustRing, Fill, Hiss, MONSTER, Mum, NIGHT, Postman, Puffs, Raider, Streaks, ZONE,
   ease, flat, handOf, hillY, hop, jolt, manFace, monsterFace, pop, ramp, timing, wordAt,
 } from "./kit";
 
@@ -47,6 +47,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <Raider who={0} position={[-28.4, 3, 2]} rotationY={E} animation="point" blendTo="reachUp" blend={k} face="angry" headPitch={0.25} />
+            <Fill on={manFace([-28.4, 3, 2])} yaw={70} power={7} />
             <Raider who={1} position={[-29.3, 3, 1.1]} rotationY={E} animation="idle" arms="reachUp" torch face="angry" />
           </>
         );
@@ -68,9 +69,9 @@ export const scene5 = storyScene(timing, {
             <Raider who={2} position={[-29.3, 3 + hop(t, get + 0.05, 0.3, 0.3), 2.9]} rotationY={E} animation="idle" arms="reachUp" face="angry" />
             <Raider who={4} position={[-30.3, 3 + hop(t, get + 0.1, 0.3, 0.3), 2.0]} rotationY={E} animation="cheer" torch face="angry" />
             {t < get ? (
-              <Bubble text="MONSTERS!" position={[-28.2, 5.55, 2]} rotationY={E} scale={0.9 * pop(t, 0.05)} dark tail={-1} />
+              <Bubble text="MONSTERS!" position={[-28.2, 5.5, 2]} rotationY={E} scale={0.5 * pop(t, 0.05)} dark tail={-1} />
             ) : (
-              <Bubble text="GET THEM ALL!" position={[-28.2, 5.55, 2]} rotationY={E} scale={0.9 * pop(t, get)} dark tail={-1} />
+              <Bubble text="GET THEM ALL!" position={[-28.2, 5.5, 2]} rotationY={E} scale={0.42 * pop(t, get)} dark tail={-1} />
             )}
           </>
         );
@@ -171,7 +172,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.post",
-      ...cam.push({ on: [-11.0, 2.3, 5.9], onTo: [-11.8, 5.6, 6.4], dist: 6.4, to: 6.6, yaw: 18, pitch: -4, fov: 44 }),
+      ...cam.push({ on: [-11.0, 2.3, 5.9], onTo: [-11.8, 5.6, 6.4], dist: 6.4, to: 6.8, yaw: 158, pitch: -4, fov: 44 }),
       ease: "inOutCubic",
       zone: ZONE.night,
       look: NIGHT,
@@ -180,13 +181,13 @@ export const scene5 = storyScene(timing, {
       stage: (t) => {
         const toss = wordAt("11.post", "one") + 0.05;
         const k = ramp(t, toss, toss + 0.55);
-        const from: Vec3 = [-10.5, 1.9, 6.1];
+        const from: Vec3 = [-10.5, 1.9, 4.2];
         const at: Vec3 = [from[0] + (TREE[0] - from[0]) * k, from[1] + (TREE[1] - from[1]) * k + 1.6 * 4 * k * (1 - k), from[2] + (TREE[2] - from[2]) * k];
         return (
           <>
-            <Postman position={[-10.4, 0, 5.3]} rotationY={0.2} carry={k > 0 ? 1 - k : 1} nod={k > 0 ? -0.5 * k : 0.2} turn={-0.4} lean={k > 0 ? -0.2 * Math.sin(k * Math.PI) : 0.1 * Math.sin(t * 6)} />
+            <Postman position={[-10.4, 0, 5.0]} rotationY={Math.PI - 0.2} carry={k > 0 ? 1 - k : 1} nod={k > 0 ? -0.5 * k : 0.2} turn={-0.4} lean={k > 0 ? -0.2 * Math.sin(k * Math.PI) : 0.1 * Math.sin(t * 6)} />
             <group position={k >= 1 ? [TREE[0] + jolt(t, toss + 0.55, 0.3), TREE[1], TREE[2]] : at} rotation={[0, 0, k < 1 ? k * 6.28 : 0]}>
-              <Raider who={5} position={[0, t < toss ? Math.sin(t * 20) * 0.03 : 0, 0]} rotationY={0.2} animation={k >= 1 ? "cower" : "panic"} face={k >= 1 ? "fear" : "ouch"} sword={k <= 0} scale={0.9} />
+              <Raider who={5} position={[0, t < toss ? Math.sin(t * 20) * 0.03 : 0, 0]} rotationY={Math.PI} animation={k >= 1 ? "cower" : "panic"} face={k >= 1 ? "fear" : "ouch"} sword={k <= 0} scale={0.9} />
             </group>
             <Bits position={[TREE[0], TREE[1] + 0.2, TREE[2]]} t={t - toss - 0.55} color="#3f7f2d" count={14} power={2.8} />
           </>
@@ -195,7 +196,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.hiss",
-      ...cam.push({ on: monsterFace("creeper", [-5.0, 0, 3.6]), dist: 3.8, to: 3.0, yaw: 24, pitch: 4, fov: 40 }),
+      ...cam.push({ on: monsterFace("creeper", [-5.3, 0, 3.6]), dist: 5.0, to: 4.3, yaw: 24, pitch: 4, fov: 40 }),
       shake: 0.012,
       zone: ZONE.night,
       look: NIGHT,

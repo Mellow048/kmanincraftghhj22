@@ -1,7 +1,7 @@
 import { Block, Glow, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  AT_WINDOW, Basket, Bits, Bus, DUSK, Dad, DustRing, Gran, Hero, Hiss, Mo, Mum, NIGHT, NORTH, OpenWindow, Postman, Puffs, Raider, Ring, SPY, UNDER_WINDOW, ZONE,
+  AT_WINDOW, Basket, Fill, Bits, Bus, DUSK, Dad, DustRing, Gran, Hero, Hiss, Mo, Mum, NIGHT, NORTH, OpenWindow, Postman, Puffs, Raider, Ring, SPY, UNDER_WINDOW, ZONE,
   ease, faceOf, hop, jolt, manFace, monsterFace, pop, ramp, ringAt, timing, wordAt,
 } from "./kit";
 
@@ -152,7 +152,12 @@ export const scene4 = storyScene(timing, {
       zone: ZONE.night,
       look: NIGHT,
       note: "He stops dead. His face: he has seen something, and it is not what he expected.",
-      stage: (t) => <Hero position={[SPY[0], hop(t, 0.05, 0.1, 0.2), SPY[2]]} rotationY={-0.2} animation="idle" face="wow" headPitch={jolt(t, 0.05, 0.2)} />,
+      stage: (t) => (
+        <>
+          <Hero position={[SPY[0], hop(t, 0.05, 0.1, 0.2), SPY[2]]} rotationY={-0.2} animation="idle" face="wow" headPitch={jolt(t, 0.05, 0.2)} />
+          <Fill on={faceOf(SPY)} yaw={-14} />
+        </>
+      ),
     },
     {
       cue: "9.ring",
@@ -170,7 +175,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.out",
-      ...cam.push({ on: [10.2, 1.5, -1.0], dist: 3.6, to: 2.9, yaw: 176, pitch: 8, fov: 44 }),
+      ...cam.push({ on: [10.2, 1.3, -0.9], dist: 4.2, to: 3.8, yaw: 178, pitch: 20, fov: 46 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "From behind him: his head, and past it their backs. They are all looking out at the dark, away from the house.",
@@ -183,7 +188,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.every",
-      ...cam.push({ on: [10.2, 0.5, -2.9], dist: 4.4, to: 2.4, yaw: 150, pitch: 24, fov: 42 }),
+      ...cam.push({ on: [10.3, 0.5, -2.7], dist: 2.5, to: 1.9, yaw: 180, pitch: 42, fov: 46 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "The same backs, the same curve. On 'basket' he is gone and the basket is there where he stood, a baby in it: this is the first night, and they were already standing guard.",
@@ -200,18 +205,17 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.hill",
-      ...cam.pan({ from: [3.5, 2.2, 1.5], on: [6.3, 1.2, -3.8], onTo: HILL, fov: 40 }),
-      ease: "inOutCubic",
+      ...cam.push({ on: [-28.6, 4.3, 2], dist: 16, to: 7.5, yaw: 88, pitch: -4, fov: 42 }),
+      ease: "outExpo",
       zone: ZONE.night,
       look: NIGHT,
-      note: "The camera whips from the bus, past the dark street, to the hill in the west. On 'torches' six lights come up over the top of it, one after another.",
+      note: "A rush down the dark street to the hill in the west. On 'torches' six lights come up over the top of it, one after another.",
       stage: (t) => {
         const at = wordAt("9.hill", "torches") - 0.2;
         return (
           <>
-            <Ring look={HILL} mood="angry" />
             {[0, 1, 2, 3, 4, 5].map((i) => (
-              <group key={i} position={[-28.4 - (i % 2) * 1.1, 3, -1.6 + i * 1.4]} scale={pop(t, at + i * 0.09)}>
+              <group key={i} position={[-28.4 - (i % 2) * 1.1, 3, 0.4 + i * 0.62]} scale={pop(t, at + i * 0.09)}>
                 <Raider who={i} position={[0, 0, 0]} rotationY={Math.PI / 2} animation="idle" arms="reachUp" torch face="angry" />
                 <Glow position={[0.3, 2.2, 0]} size={2.2} color="#ffa040" opacity={0.6} />
               </group>

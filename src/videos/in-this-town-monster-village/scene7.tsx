@@ -1,7 +1,7 @@
 import { Block, Glow, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  AimSword, BIG, BIG_SCALE, Bits, Bubble, CATCH, Drops, Hero, MO_CATCH, Mo, NIGHT, Raider, STAND, Streaks, ZONE,
+  AimSword, BIG, BIG_SCALE, Bits, Bubble, CATCH, Drops, Fill, Hero, MO_CATCH, Mo, NIGHT, Raider, STAND, Streaks, ZONE,
   ease, faceOf, handOf, jolt, manFace, pop, ramp, timing, wordAt,
 } from "./kit";
 import { MumDown } from "./scene6";
@@ -31,7 +31,7 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "15.clang",
-      ...cam.push({ on: CATCH, dist: 2.6, to: 2.0, yaw: -8, pitch: -4, fov: 40 }),
+      ...cam.push({ on: [CATCH[0] - 0.1, CATCH[1] - 0.25, CATCH[2]], dist: 3.4, to: 2.8, yaw: 24, pitch: -4, fov: 42 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "The blade comes down and stops dead in the air, in a green hand that was not there a frame ago. Sparks.",
@@ -39,14 +39,15 @@ export const scene7 = storyScene(timing, {
       stage: (t) => {
         const fall = Math.min(1, (t / 0.2) ** 2);
         const inn = 1 - (1 - ramp(t, 0, 0.2)) ** 2;
-        const mo: Vec3 = [MO_CATCH[0] + 1.6 * (1 - inn), 0, MO_CATCH[2] - 1.2 * (1 - inn)];
+        const mo: Vec3 = [MO_CATCH[0] + 0.4 * (1 - inn), 0, MO_CATCH[2] + 2.4 * (1 - inn)];
         return (
           <>
             <Caught t={t} fall={fall} />
-            <Mo position={mo} rotationY={W} animation="idle" arms="reachUp" face="angry" gaze={0} />
+            <Mo position={mo} rotationY={E} animation="idle" arms="reachUp" face="angry" gaze={0} />
             <Hero position={STAND} rotationY={W} animation="guard" face="calm" headPitch={0.2} />
-            {t < 0.25 ? <Streaks position={mo} yaw={2.2} t={t} n={7} spread={0.8} speed={14} /> : null}
+            {t < 0.25 ? <Streaks position={[mo[0], 1, mo[2]]} yaw={0} t={t} n={7} spread={0.8} speed={14} /> : null}
             <Bits position={CATCH} t={t - 0.2} color="#fff2b0" count={14} power={3.4} />
+            <Fill on={MOFACE} yaw={24} power={7} />
             <Glow position={CATCH} size={1.6} color="#fff2b0" opacity={0.8 * Math.max(0, 1 - Math.abs(t - 0.22) / 0.14)} />
           </>
         );
@@ -54,7 +55,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "15.mo",
-      ...cam.orbit({ on: [-4.9, 1.5, 2.0], dist: 2.6, yaw: -24, pitch: 0, yawTo: 14, pitchTo: 6, distTo: 4.8, onTo: [-5.0, 1.3, 2.1], fov: 42 }),
+      ...cam.orbit({ on: [-5.1, 1.5, 2.2], dist: 2.8, yaw: 50, pitch: 0, yawTo: 14, pitchTo: 6, distTo: 5.6, onTo: [-5.1, 1.25, 2.3], fov: 44 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "The camera swings out and there he is: the straw hat, the scarf, one arm up, holding a sword by the blade. The big man is pushing on it with both feet dug in, and it is not moving.",
@@ -64,7 +65,8 @@ export const scene7 = storyScene(timing, {
           <>
             <MumDown reach={0.4} />
             <Caught t={t} />
-            <Mo position={[MO_CATCH[0], 0, MO_CATCH[2]]} rotationY={W} animation="idle" arms="reachUp" face="angry" gaze={0} />
+            <Mo position={[MO_CATCH[0], 0, MO_CATCH[2]]} rotationY={E} animation="idle" arms="reachUp" face="angry" gaze={0} />
+            <Fill on={MOFACE} yaw={30} power={8} d={2.4} />
             <Hero position={STAND} rotationY={W} animation={open ? "idle" : "guard"} face={open ? "wow" : "calm"} lookAt={open ? CATCH : undefined} />
           </>
         );
@@ -72,7 +74,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "15.red",
-      ...cam.push({ on: [CATCH[0], CATCH[1] - 0.05, CATCH[2]], onTo: [CATCH[0], CATCH[1] - 0.3, CATCH[2]], dist: 1.6, to: 1.15, yaw: 6, pitch: -2, fov: 36 }),
+      ...cam.push({ on: [CATCH[0], CATCH[1] - 0.05, CATCH[2]], onTo: [CATCH[0], CATCH[1] - 0.3, CATCH[2]], dist: 1.7, to: 1.2, yaw: 172, pitch: -2, fov: 36 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "The hand on the blade. Something runs down the wrist and drips. On 'red' we are close enough to see the colour.",
@@ -81,10 +83,11 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Caught t={t} />
-            <Mo position={MO_CATCH} rotationY={W} animation="idle" arms="reachUp" face="angry" gaze={0} />
-            <Block position={[CATCH[0] + 0.02, CATCH[1] - 0.06, CATCH[2] + 0.115]} size={[0.07, 0.2 * ease(ramp(t, 0.1, 0.8)) + 0.02, 0.02]} color="#000000" emissive="#d8141c" emissiveIntensity={1} castShadow={false} />
-            <Drops position={[CATCH[0] + 0.02, CATCH[1] - 0.15, CATCH[2] + 0.12]} t={t - 0.3} />
-            <Glow position={[CATCH[0], CATCH[1] - 0.2, CATCH[2] + 0.2]} size={0.9} color="#ff2a2a" opacity={0.35 * Math.max(0, 1 - Math.abs(t - red - 0.1) / 0.3)} />
+            <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" face="angry" gaze={0} />
+            <Fill on={CATCH} yaw={172} power={4} d={1.4} />
+            <Block position={[CATCH[0] + 0.02, CATCH[1] - 0.06, CATCH[2] - 0.115]} size={[0.07, 0.2 * ease(ramp(t, 0.1, 0.8)) + 0.02, 0.02]} color="#000000" emissive="#d8141c" emissiveIntensity={1} castShadow={false} />
+            <Drops position={[CATCH[0] + 0.02, CATCH[1] - 0.15, CATCH[2] - 0.12]} t={t - 0.3} />
+            <Glow position={[CATCH[0], CATCH[1] - 0.2, CATCH[2] - 0.2]} size={0.9} color="#ff2a2a" opacity={0.35 * Math.max(0, 1 - Math.abs(t - red - 0.1) / 0.3)} />
           </>
         );
       },
@@ -98,7 +101,8 @@ export const scene7 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={STAND} rotationY={W + 0.5} animation="idle" face="wow" lookAt={CATCH} />
-          <Mo position={MO_CATCH} rotationY={W} animation="idle" arms="reachUp" face="angry" gaze={0} />
+          <Fill on={faceOf(STAND)} yaw={-30} />
+          <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" face="angry" gaze={0} />
           <Drops position={[CATCH[0] + 0.02, CATCH[1] - 0.15, CATCH[2] + 0.12]} t={t + 1} />
           {t > 0.5 ? <Block position={[STAND[0] - 0.02, 1.085, STAND[2] + 0.2]} size={[0.07, 0.03, 0.07]} color="#000000" emissive="#d8141c" emissiveIntensity={1} castShadow={false} /> : null}
         </>
@@ -106,7 +110,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "16.scarf",
-      ...cam.push({ on: MOFACE, dist: 2.2, to: 1.8, yaw: -28, pitch: -6, fov: 36 }),
+      ...cam.push({ on: MOFACE, dist: 2.3, to: 1.9, yaw: 34, pitch: -6, fov: 36 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "Mo turns his head to the boy. On 'pulled' the scarf comes down off his face for the first time in the film.",
@@ -116,14 +120,15 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Caught t={t} />
-            <Mo position={MO_CATCH} rotationY={W} animation="idle" arms="reachUp" scarf={1 - k} face="neutral" headYaw={1.0 * ease(ramp(t, 0, 0.35))} headPitch={0.1} gaze={0} />
+            <Fill on={MOFACE} yaw={34} power={6} />
+            <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" scarf={1 - k} face="neutral" headYaw={-0.9 * (1 - ease(ramp(t, 0, 0.35)))} headPitch={0.1} gaze={0} />
           </>
         );
       },
     },
     {
       cue: "16.paint",
-      ...cam.push({ on: MOFACE, dist: 1.8, to: 1.35, yaw: -30, pitch: -4, fov: 34 }),
+      ...cam.push({ on: MOFACE, dist: 1.8, to: 1.35, yaw: 36, pitch: -4, fov: 34 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "His sleeve goes across his cheek, once, hard. Behind it the green is gone, and flakes of it are falling.",
@@ -133,30 +138,32 @@ export const scene7 = storyScene(timing, {
         const k = ease(ramp(t, wipe, wipe + 0.55));
         return (
           <>
-            <Mo position={MO_CATCH} rotationY={W} animation="idle" arms="reachUp" scarf={0} sleeve={k > 0 && k < 1 ? k : undefined} wiped={k} face="neutral" headYaw={1.0} headPitch={0.1} headRoll={-0.12 * Math.sin(k * Math.PI)} gaze={0} />
-            <Bits position={[MOFACE[0] - 0.2, MOFACE[1] - 0.05, MOFACE[2] + 0.2]} t={t - came + 0.2} color="#5f9a4e" count={12} power={1.4} />
-            <Bits position={[MOFACE[0] - 0.2, MOFACE[1] - 0.05, MOFACE[2] + 0.2]} t={t - wipe - 0.2} color="#5f9a4e" count={8} power={1.2} />
+            <Fill on={MOFACE} yaw={36} power={6} />
+            <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" scarf={0} sleeve={k > 0 && k < 1 ? k : undefined} wiped={k} face="neutral" headPitch={0.1} headRoll={-0.12 * Math.sin(k * Math.PI)} gaze={0} />
+            <Bits position={[MOFACE[0] + 0.25, MOFACE[1] - 0.05, MOFACE[2] + 0.1]} t={t - came + 0.2} color="#5f9a4e" count={12} power={1.4} />
+            <Bits position={[MOFACE[0] + 0.25, MOFACE[1] - 0.05, MOFACE[2] + 0.1]} t={t - wipe - 0.2} color="#5f9a4e" count={8} power={1.2} />
           </>
         );
       },
     },
     {
       cue: "16.skin",
-      ...cam.pan({ from: [-5.75, 1.45, 3.75], on: [MOFACE[0], MOFACE[1], MOFACE[2]], onTo: faceOf(STAND), fov: 26 }),
+      ...cam.pan({ from: [-4.55, 1.4, 4.6], on: [MOFACE[0] + 0.1, MOFACE[1], MOFACE[2]], onTo: faceOf(STAND), fov: 24 }),
       ease: "inOutCubic",
       zone: ZONE.night,
       look: NIGHT,
       note: "The bare patch on his cheek: skin. Then across to the boy's face beside it. The same colour.",
       stage: (t) => (
         <>
-          <Mo position={MO_CATCH} rotationY={W} animation="idle" arms="reachUp" scarf={0} wiped={1} face="neutral" headYaw={1.0} headPitch={0.1} gaze={0} />
-          <Hero position={STAND} rotationY={W + 0.9} animation="idle" face="wow" headPitch={-0.3} />
+          <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" scarf={0} wiped={1} face="neutral" headPitch={0.1} gaze={0} />
+          <Hero position={STAND} rotationY={W + 1.2} animation="idle" face="wow" headPitch={-0.3} />
+          <Fill on={[-4.8, 1.4, 2.4]} yaw={10} power={8} d={2.0} />
         </>
       ),
     },
     {
       cue: "16.say",
-      ...cam.push({ on: MOFACE, dist: 2.6, to: 1.9, yaw: -26, pitch: -8, fov: 38 }),
+      ...cam.push({ on: MOFACE, dist: 2.7, to: 2.0, yaw: 30, pitch: -8, fov: 38 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "Mo, hat pushed back, scarf down, one cheek clean, still holding the sword up without looking at it. He says it to the boy as if it were nothing.",
@@ -166,8 +173,9 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Caught t={t} />
-            <Mo position={MO_CATCH} rotationY={W} animation="idle" arms="reachUp" scarf={0} wiped={1} face={t > i ? "smile" : "neutral"} headYaw={1.0} headPitch={0.12 + jolt(t, i, 0.1)} />
-            <Bubble text="I am human too." position={[MOFACE[0] + 0.25, MOFACE[1] + 0.95, MOFACE[2] + 0.2]} rotationY={-0.45} scale={0.62 * pop(t, i)} tail={-1} />
+            <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" scarf={0} wiped={1} face={t > i ? "smile" : "neutral"} headPitch={0.12 + jolt(t, i, 0.1)} />
+            <Bubble text="I am human too." position={[MOFACE[0] + 0.1, MOFACE[1] + 0.85, MOFACE[2] + 0.3]} rotationY={0.52} scale={0.42 * pop(t, i)} tail={-1} />
+            <Fill on={MOFACE} yaw={30} power={6} />
           </>
         );
       },

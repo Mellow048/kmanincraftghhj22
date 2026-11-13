@@ -1,7 +1,7 @@
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  AimSword, BIG, BIG_SCALE, Bits, Bubble, Bus, Dad, DustRing, Fallen, Hero, Hiss, MUM_DOWN, Mum, NIGHT, Raider, SPY, STAND, Streaks, ZONE,
+  AimSword, BIG, BIG_SCALE, Bits, Bubble, Bus, Dad, DustRing, Fallen, Fill, Hero, Hiss, MUM_DOWN, Mum, NIGHT, Raider, SPY, STAND, Streaks, ZONE,
   dur, ease, faceOf, handOf, hop, jolt, manFace, pop, ramp, timing, wordAt,
 } from "./kit";
 
@@ -58,6 +58,7 @@ export const scene6 = storyScene(timing, {
         const down = ease(ramp(t, look, look + 0.3));
         return (
           <>
+            <Fill on={faceOf(SPY)} yaw={-22} />
             <Hero position={SPY} rotationY={-0.5} animation="idle" arms={down > 0 ? "hold" : undefined} face={down > 0 ? "wow" : "fear"} headYaw={down > 0 ? 0 : -0.6 + 1.6 * pass} headPitch={0.45 * down} />
             <Raider who={4} position={[6.6 + 7.5 * pass, 0, -1.6]} rotationY={E} animation="run" arms="reachUp" animDistance={7.5 * pass} face="angry" />
           </>
@@ -87,7 +88,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "13.ran",
-      ...cam.truck({ on: [RUN_FROM - 0.9, 1.0, 2.0], dist: 5.6, yaw: -14, pitch: 7, fov: 44, by: [-RUN_LEN, 0, 0] }),
+      ...cam.truck({ on: [RUN_FROM - 0.3, 1.45, 2.0], dist: 6.6, yaw: -12, pitch: 6, fov: 46, by: [-RUN_LEN, 0, 0] }),
       ease: "linear",
       shake: 0.025,
       zone: ZONE.night,
@@ -102,7 +103,7 @@ export const scene6 = storyScene(timing, {
         const x = xAt(t);
         const duck = Math.max(0, 1 - Math.abs(t - tS) / 0.28);
         const slide = Math.max(0, 1 - Math.abs(t - tL) / 0.3);
-        const jump = hop(t, tB - 0.36, 2.5, 0.72);
+        const jump = hop(t, tB - 0.36, 2.15, 0.72);
         const low = Math.max(duck, slide);
         const swing = ramp(t, tS - 0.22, tS + 0.12);
         const RS: Vec3 = [xAt(tS) - 0.25, 0, 0.95];
@@ -125,7 +126,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "13.front",
-      ...cam.push({ on: [-3.7, 1.0, 2.5], dist: 5.4, to: 4.6, yaw: -6, pitch: 7, fov: 42 }),
+      ...cam.push({ on: [-3.9, 1.0, 2.5], dist: 5.8, to: 5.0, yaw: 14, pitch: 7, fov: 42 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "He comes round mum at a run, skids to a stop between her and the swords in a cloud of dust, and throws his arms out.",
@@ -158,6 +159,7 @@ export const scene6 = storyScene(timing, {
       stage: (t) => (
         <>
           <MumDown reach={1} />
+          <Fill on={faceOf(STAND)} yaw={-52} />
           <Hero position={[STAND[0], hop(t, 0.05, 0.08, 0.2), STAND[2]]} rotationY={W} animation="guard" face="brave" headPitch={-0.12 + jolt(t, wordAt("13.stop", "family"), 0.15)} />
           <Bubble text="STOP!" position={[STAND[0] - 0.75, 1.95, STAND[2] + 0.5]} rotationY={-0.9} scale={0.7 * pop(t, 0.05) * (t < wordAt("13.stop", "i") + 0.4 ? 1 : 0)} tail={1} />
         </>
@@ -165,7 +167,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "14.quiet",
-      ...cam.push({ on: [-4.9, 1.15, 2.4], dist: 6.4, to: 6.9, yaw: 4, pitch: 8, fov: 44 }),
+      ...cam.push({ on: [-4.9, 1.15, 2.4], dist: 5.8, to: 6.3, yaw: 28, pitch: 8, fov: 44 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "Nothing moves. Then the big one in dark red walks up, one slow step at a time, until he is standing over him, twice his height.",
@@ -194,22 +196,28 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Raider who={0} position={BIG} rotationY={E} animation="idle" arms={t > one - 0.15 ? "point" : undefined} face="angry" headPitch={0.4} />
-            <Bubble text="It is a trick." position={[BIG[0] + 0.1, 2.75, BIG[2]]} rotationY={1.2} scale={0.7 * pop(t, wordAt("14.trick", "it")) * (t < one ? 1 : 0)} dark tail={-1} />
-            <Bubble text="One of THEM." position={[BIG[0] + 0.1, 2.75, BIG[2]]} rotationY={1.2} scale={0.7 * pop(t, one)} dark tail={-1} />
+            <Fill on={manFace(BIG)} yaw={68} power={7} />
+            <Bubble text="It is a trick." position={[BIG[0] + 0.1, 2.55, BIG[2]]} rotationY={1.2} scale={0.4 * pop(t, wordAt("14.trick", "it")) * (t < one ? 1 : 0)} dark tail={-1} />
+            <Bubble text="One of THEM." position={[BIG[0] + 0.1, 2.55, BIG[2]]} rotationY={1.2} scale={0.4 * pop(t, one)} dark tail={-1} />
           </>
         );
       },
     },
     {
       cue: "14.sword",
-      ...cam.push({ on: [BIG[0] + 0.2, 1.9, BIG[2] - 0.2], dist: 3.4, to: 2.8, yaw: 60, pitch: -24, fov: 44 }),
+      ...cam.push({ on: [BIG[0] + 0.2, 2.0, BIG[2] - 0.2], dist: 4.4, to: 3.6, yaw: 50, pitch: -20, fov: 44 }),
       ease: "outExpo",
       zone: ZONE.night,
       look: NIGHT,
       note: "The sword goes up over his head, all the way, and hangs there against the stars.",
       stage: (t) => {
         const k = ease(ramp(t, 0.05, 0.55));
-        return <Raider who={0} position={BIG} rotationY={E} animation="reachUp" blendTo="point" blend={k} face="angry" headPitch={0.4} />;
+        return (
+          <>
+            <Raider who={0} position={BIG} rotationY={E} animation="reachUp" blendTo="point" blend={k} face="angry" headPitch={0.4} />
+            <Fill on={[BIG[0], 2.0, BIG[2]]} yaw={50} power={9} d={2.2} />
+          </>
+        );
       },
     },
     {
@@ -218,7 +226,12 @@ export const scene6 = storyScene(timing, {
       zone: ZONE.night,
       look: NIGHT,
       note: "His face. He does not run. He screws his eyes shut.",
-      stage: (t) => <Hero position={STAND} rotationY={W} animation="guard" face={t > 0.25 ? "calm" : "fear"} headPitch={0.2 * ease(ramp(t, 0.2, 0.45))} />,
+      stage: (t) => (
+        <>
+          <Hero position={STAND} rotationY={W} animation="guard" face={t > 0.25 ? "calm" : "fear"} headPitch={0.2 * ease(ramp(t, 0.2, 0.45))} />
+          <Fill on={faceOf(STAND)} yaw={-70} />
+        </>
+      ),
     },
   ],
 });
