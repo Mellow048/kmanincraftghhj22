@@ -72,6 +72,16 @@ What changed from the draft, and why:
 | A signpost rises: INFLATION | The price hangs under a balloon, and the word is on the balloon | Inflation is something being blown up. The picture is the meaning of the word |
 | At the answer, one coin buys the loaf, then three quarters, then half | The loaf comes apart in two, as the village's did | One device for "buys less", used twice, so the second time needs no explaining |
 
+**What was left in.** Seen in the frames of the delivered film and kept:
+
+| Stop | What is there |
+|---|---|
+| 3.same | The camera rests on the two stalls for about a second and a half: only the loaves, the tags and the arrow move |
+| 5.real, 5.germany | The picture is nearly still once the camera has arrived |
+| 5.billion | The wheelbarrow of notes is cut by the right edge of the frame: the man is whole, his barrow is not |
+| 6.answer | On the way up from 1923 the frame is empty sky for a moment, at about 40.7 s |
+| 7.sub | The subscribe sign is whole in the frame from 47.7 s, a second and a half before the film ends |
+
 ## The claims, and where each came from
 
 An explainer that is wrong is worse than none. Every factual claim of the script is listed here. The Minneapolis
