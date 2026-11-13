@@ -52,7 +52,7 @@ Use ONE kind of money in a film, and keep it. A village trades in emeralds: `kin
 | `BillStack` | `position`, `count`, `rotationY` | A banded stack of notes |
 | `MoneyBag` | `position`, `full` 0–1, `sign` | Money that belongs to somebody |
 | `Chest` | `position`, `open` 0–1, `gold` 0–1 | A saving: something kept. Open it on the word |
-| `Printer` | `position`, `out` (notes so far; may be a fraction), `tray`, `running` | More money being made. `out={t * 3}` prints three a second |
+| `Printer` | `position`, `out` (notes so far; may be a fraction), `tray`, `running`, `sign` | More money being made. `out={t * 3}` prints three a second. `sign` is the letter on its side: `$` unless you say so (`sign="M"` for marks) |
 
 ## Numbers you can stand next to — `charts.tsx` (pictures 5–6, 8)
 
@@ -85,6 +85,24 @@ Use ONE kind of money in a film, and keep it. A village trades in emeralds: `kin
 | `Player`, `Villager`, `ROBE`, `Hut`, `Stall`, `LampPost` | People and a village, from In This Town ([its pack](../InThisTown/PACK.md)) |
 | `Bubble`, `Bits`, `Puffs` | A speech bubble; bits that fly when something breaks; puffs of dust |
 | `SubscribeSign` | The red sign every film of the channel ends on |
+
+## Parts waiting in the first film
+
+The pack was made before its first film, and that film found out what it lacked. These are in
+[`src/videos/why-does-bread-cost-more-every-year/parts.tsx`](../../src/videos/why-does-bread-cost-more-every-year/parts.tsx),
+built to the rules below (a `position`, seconds, no knowledge of that film's islands). Import them from there until
+the owner has approved the film; then they move into this folder unchanged, and get a row above and a place on the sheet.
+
+| Part | What it is FOR |
+|---|---|
+| `Oven` | A baker's oven: `fire` 0–1 flares on a word, and its flat top holds a stack of what it made |
+| `Loaf` | The pack's `Bread` in two halves. `split` (metres) pulls them apart: "each coin buys less" |
+| `PriceRoll` | A price too long for a tag. `rows` unroll one at a time (`shown`): 200 / ,000 / ,000 / ,000 |
+| `Balloon` | Tie a price to its knot and grow `size` on the word: the thing called inflation |
+| `FigureBubble` | A speech bubble that says a NUMBER. `Bubble` writes in the caption font, whose black edge turns a dark "10" into two blobs |
+| `Wheelbarrow`, `NoteHeap` | What a man brings to pay for one loaf, and the heaps nobody picks up |
+| `NoteFall` | Notes pouring off the edge of an island for as long as the film runs |
+| `NoteBundle` | One banded bundle, for a stack that is counted by its height |
 
 ## Adding a part
 

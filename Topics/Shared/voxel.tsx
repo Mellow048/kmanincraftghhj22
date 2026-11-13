@@ -97,6 +97,12 @@ export type VoxelProps = {
   color?: string;
   /** 0–1: how much it glows in its own colour. Use it at night, and for anything magic. */
   glow?: number;
+  /**
+   * 0–1: how much of the light that falls on it it gives back (1 is a solid thing). A sign that is its own light
+   * wants about 0.25 and a `glow` of about 0.85: then it is the same colour in the dark and half a metre from a lamp,
+   * where a solid one goes black or white.
+   */
+  lit?: number;
   /** The darker copy behind, down and to the right: Minecraft's own text shadow. It keeps the shape readable on most backgrounds. */
   shadow?: boolean;
   /** A dark edge all the way round, one cube wide, in place of the shadow: for a sign that has to read against ANYTHING (a white wall, the sky). */
@@ -122,6 +128,7 @@ export const Voxels: React.FC<VoxelProps & { rows: string[] }> = ({
   depth = 1,
   color = "#ffffff",
   glow = 0,
+  lit = 1,
   shadow = true,
   outline = false,
   scale = 1,
@@ -137,7 +144,7 @@ export const Voxels: React.FC<VoxelProps & { rows: string[] }> = ({
   return (
     <group position={position} rotation={rotation ?? [0, rotationY, 0]} scale={[s, s, s]}>
       <mesh geometry={geometry} castShadow={castShadow}>
-        <meshStandardMaterial color={color} vertexColors roughness={0.82} emissive={color} emissiveIntensity={glow} transparent={opacity < 1} opacity={opacity} />
+        <meshStandardMaterial color={lit < 1 ? shade(color, Math.max(-1, lit - 1)) : color} vertexColors roughness={0.82} emissive={color} emissiveIntensity={glow} transparent={opacity < 1} opacity={opacity} />
       </mesh>
       {outline ? (
         <mesh geometry={gridGeometry(grown(rows), depth * 0.5)} position={[0, 0, -depth * 0.3]}>

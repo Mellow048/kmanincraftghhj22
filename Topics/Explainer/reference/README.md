@@ -11,9 +11,26 @@ going to send a video. The reference of this topic will be **our own first film 
 
     src/videos/why-does-bread-cost-more-every-year/        "Why Does Bread Cost More Every Year"
 
-He approved its script on 2026-11-13 ("yesboth"). Its voice is recorded and its clock is measured (`narration.md`
-and `timing.json` in that folder); its picture and its sound are not built yet. When the finished film is approved,
-do the steps below with it, exactly as for a video somebody sent.
+He approved its script on 2026-11-13 ("yesboth"). The film is built: 49.2 seconds, 19 lines, one camera that
+never cuts, rendered to `renders/why-does-bread-cost-more-every-year.mp4`. **He has not watched it yet.** Its sound
+was measured and never listened to: an agent cannot hear. When he approves the film, do the steps below with it,
+exactly as for a video somebody sent, and keep it here with its source and its mp4, the way
+[`Topics/InThisTown/reference/`](../../InThisTown/reference/README.md) keeps its films. If he asks for changes,
+make them first: only an approved film is a reference.
+
+What the film already taught, before any measuring (each is in the film's `kit.tsx` or `narration.md`, with its reason):
+
+- **The caption decides the framing.** It sits at 72% of the height. A stop that looks 2.2 m up at a 5.6 m rack from
+  9 to 10 m puts the caption on the plank cabinet under the loaves; from 7.6 m it lay across a row of them.
+- **Nobody stands between the lens and the exhibit.** The village had four villagers; two of them were in front of
+  one close frame or another, and they were taken out. The two who are left stand at the rack's posts.
+- **A long line is one slow move.** "Nobody can buy any more bread than before. Each coin just buys less." is one
+  line and 3.9 seconds: the flight is given `travel: 2.1`, so it pushes in for the whole first sentence and lands
+  for the second.
+- **Dark writing on a pale board is written in cubes** (`Figure`), not in `PixelText`: that font carries a black
+  edge, and "10" came out as two blobs.
+- **Leave the right-hand edge and the bottom fifth to the phone.** The like and comment buttons sit on the right
+  from the middle down, and the channel's name along the bottom.
 
 ## When the reference exists
 

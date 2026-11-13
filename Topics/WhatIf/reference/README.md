@@ -12,9 +12,26 @@ going to send a video. The reference of this topic will be **our own first film 
 
     src/videos/what-if-you-could-see-who-had-a-crush-on-you/        "What If You Could See Who Had a Crush on You"
 
-He approved its script on 2026-11-13 ("yesboth"). Its voice is recorded and its clock is measured (`narration.md`
-and `timing.json` in that folder); its picture and its sound are not built yet. When the finished film is approved,
-do the steps below with it, exactly as for a video somebody sent.
+He approved its script on 2026-11-13 ("yesboth"). The film is built: 1:53.6, 479 words in 55 lines and 55 shots,
+six places, 321 sounds, rendered to `renders/what-if-you-could-see-who-had-a-crush-on-you.mp4` (one frame of each
+shot: `renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg`). **He has not watched it yet.** Its sound
+was measured and never listened to: an agent cannot hear. When he approves the film, do the steps below with it,
+exactly as for a video somebody sent, and keep it here with its source and its mp4, the way
+[`Topics/InThisTown/reference/`](../../InThisTown/reference/README.md) keeps its films. If he asks for changes,
+make them first: only an approved film is a reference.
+
+What the film already taught, before any measuring:
+
+- **The picture**: [`../SHOTS.md`](../SHOTS.md) §5. Who stands between the lens and a face, what a sign does when
+  it is big, words in the picture, night.
+- **The sound**: [`../SOUND.md`](../SOUND.md), "How the first film does it". One sound for the power, one note for
+  the heart that matters, the cause of a swelling heart in one ear.
+- **The pack**: the kitchen, the lunch room, the gym and its gate, a dog, a card, a tie and seven more things were
+  built for it and are in the pack now ([`../PACK.md`](../PACK.md)).
+- **The story's own rule**: a sign changes size only when the one it is for moves, by one function of the distance
+  (`joHeart` in the film's `kit.tsx`). The twist is on screen from the first second because of it.
+- **What was left in**: a few shots where a near head or shoulder is a dark shape at the edge of the frame. They
+  are listed in the film's `narration.md`, for whoever measures it.
 
 ## When the reference exists
 

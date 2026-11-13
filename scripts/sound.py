@@ -34,6 +34,21 @@ seconds. Rebuild the narration and one `build` moves every sound with it.
     { "cue": "13.burn", "sfx": "riser", "dur": 1.6 }           a riser ENDS on its time
     { "cue": "5.stare", "p": 0.5, "sfx": "tick", "trim": -4, "pan": -0.4 }    halfway through, 4 dB quieter, to the left
 
+The music is made here too, one mood for each stretch of the story. Or it is ONE RECORDED TRACK, when the
+owner has chosen one: the sheet names the file in `music.track`, and it plays instead of the written moods.
+
+    "music": { "track": "Topics/InThisTown/InThisTownMusic.aac", "gain": -16, "sections": [
+        { "from": "1.wake", "mood": "town" },                   the track, from the first frame
+        { "from": "11.moon", "mood": "none" },                  silence: the held breath before the reveal
+        { "from": "11.eye", "mood": "dark", "gain": -3 } ] }    back, 3 dB lower
+
+With a track the sections are still written, one for each turn of the story: a "none" section is silence and a
+section's `gain` lifts or lowers the track; the mood names say what the story is doing there and make no sound.
+`music.trackFrom` is the second of the file the film starts on.
+
+A topic can name the track for all its films (`sound.music.file` in its topic.json). `build` then refuses a
+sheet that does not play it, and `draft` writes it in.
+
 Every level is in dB AGAINST THE VOICE, as a phone speaker plays it: 0 is as loud as the
 voice, -10 is clear, under -18 nobody hears it. `build` measures the result and prints it,
 because whoever runs this may not be able to listen. The guide for a topic's films is in
@@ -1764,6 +1779,11 @@ def read_sheet(p: dict, clock: Clock) -> dict:
             problems.append(f'music: section "{b["from"]}" does not come after "{a["from"]}"')
     if sections and sections[0]["t"] > 0.01:
         problems.append(f'music: the first section must start on the first cue ("{clock.order[0]}"). Use mood "none" for silence.')
+    # One recorded track, named by the sheet (`music.track`, a path from the top of the repository).
+    if music.get("track") and not os.path.isfile(os.path.join(ROOT, music["track"])):
+        problems.append(f'music.track: there is no "{music["track"]}". The path starts at the top of the repository')
+    if music.get("file"):
+        problems.append(f'music.file is not read. Name the track in "track": "music": {{ "track": "{music["file"]}", … }}')
 
     beds = []
     for i, part in enumerate(sheet.get("beds", [])):
@@ -1814,6 +1834,32 @@ def voice_levels(voice):
     speaking = frames > np.percentile(frames, 95) * 0.1
     level = math.sqrt(float(np.mean(frames[speaking] ** 2)))
     return {"heard": as_heard, "level": level, "speaking": speaking, "peak": float(np.percentile(np.abs(voice), 99.99))}
+
+
+def topic_music(p: dict, film: str, clock: Clock, sheet: dict) -> list[str]:
+    """
+    A topic can name ONE track for all its films (`sound.music.file` in its topic.json): the owner chose it.
+    Returns what is wrong with this sheet by that rule. Films finished before the rule are listed in
+    `sound.music.madeBefore`, and keep the music they were approved with.
+    """
+    rule = topic_sound(p["video"]).get("music") or {}
+    want = rule.get("file")
+    if not want or film in rule.get("madeBefore", []):
+        return []
+    fix = (
+        f'In sound.json: "music": {{ "track": "{want}", "gain": {rule.get("gain", -16)}, "sections": [ … ] }}. '
+        + (f"See {rule['guide']}. " if rule.get("guide") else "")
+        + "(A film that was finished before the rule keeps its music: add its id to sound.music.madeBefore in the topic's topic.json.)"
+    )
+    if os.path.normpath(sheet["music"].get("track") or "") != os.path.normpath(want):
+        return [f"this topic's films play the owner's track, {want}, and this sheet does not. {fix}"]
+    sections = sheet["sections"]
+    ends = [part["t"] for part in sections[1:]] + [clock.duration]
+    played = sum(end - part["t"] for part, end in zip(sections, ends) if part["mood"] != "none")
+    least = float(rule.get("minShare", 0.5))
+    if played < least * clock.duration:
+        return [f"the owner's track plays under only {played:.0f}s of {clock.duration:.0f}s. It is this topic's background music: at least {least:.0%} of the film. {fix}"]
+    return []
 
 
 def render(film: str, clock: Clock, sheet: dict, vox: dict):
@@ -2115,6 +2161,9 @@ def stale(p: dict) -> list[str]:
     for name, path, fn in (("timing.json", p["timing"], text_hash), ("sound.json", p["sheet"], text_hash), ("narration.mp3", p["voice"], file_hash)):
         if lock.get("built_from", {}).get(name) != fn(path):
             changed.append(f"{name} changed after the mix was built")
+    track = lock.get("music_file")
+    if track and (not os.path.isfile(os.path.join(ROOT, track["path"])) or track.get("sha1") != file_hash(os.path.join(ROOT, track["path"]))):
+        changed.append(f"{track['path']} (the music) changed after the mix was built")
     if not os.path.exists(p["mix"]):
         changed.append("mix.mp3 is missing")
     elif lock.get("mix_sha1") != file_hash(p["mix"]):
@@ -2128,6 +2177,9 @@ def build(film: str, stems: bool, check_only: bool = False) -> int:
     sheet = read_sheet(p, clock)
     if not os.path.exists(p["voice"]):
         sys.exit(f"No {rel(p['voice'])}. Record the voice and run: python3 scripts/narration.py build {film}")
+    wrong_music = topic_music(p, film, clock, sheet)
+    if wrong_music and not check_only:
+        sys.exit(f"{rel(p['sheet'])}: " + " ".join(wrong_music))
     total = n_of(clock.duration)
     voice_mono = decode(p["voice"])
     voice_mono = np.concatenate([voice_mono, np.zeros(max(0, total - len(voice_mono)))])[:total]
@@ -2141,7 +2193,7 @@ def build(film: str, stems: bool, check_only: bool = False) -> int:
     if check_only:
         _, lift, gain = master(unmastered, -2.0)
         lufs, peak = loudness(p["mix"]) if os.path.exists(p["mix"]) else (None, None)
-        fails = report(film, m, placed, lufs, peak, lift, gain) + stale(p)
+        fails = report(film, m, placed, lufs, peak, lift, gain) + stale(p) + wrong_music
     else:
         # mp3 puts back a little of what a limiter takes off, so the ceiling comes down until the file itself reads right.
         ceiling = -2.0
@@ -2161,6 +2213,7 @@ def build(film: str, stems: bool, check_only: bool = False) -> int:
             "built_from": {"timing.json": text_hash(p["timing"]), "sound.json": text_hash(p["sheet"]), "narration.mp3": file_hash(p["voice"])},
             "mix_sha1": file_hash(p["mix"]),
             "music_sections": [{"from": s["from"], "mood": s["mood"], "at": round(s["t"], 2)} for s in sheet["sections"]],
+            **({"music_file": {"path": sheet["music"]["track"], "sha1": file_hash(os.path.join(ROOT, sheet["music"]["track"]))}} if sheet["music"].get("track") else {}),
             "beds": len(sheet["beds"]),
             "measured": {**m, "lufs": lufs, "truePeakDb": peak, "limiterMaxDb": round(abs(to_db(float(gain.min()))), 1)},
             "failures": fails,
@@ -2254,22 +2307,31 @@ def draft(film: str, force: bool) -> int:
         last_scene = scene
     effects.append({"cue": clock.order[-1], "sfx": "ding", "why": "the subscribe line"})
 
+    own = rules.get("music") or {}
+    first = rules.get("moodDefault", "town") if rules.get("moodDefault", "town") in MOODS else "town"
+    music = {"gain": -16, "sections": [{"from": clock.order[0], "mood": first, "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."}]}
+    if own.get("file") and film not in own.get("madeBefore", []):
+        # The topic has ONE track for all its films: the owner chose it. The sections still say where the story turns:
+        # a "none" section is silence, and a section's `gain` lifts or lowers the track.
+        music = {"track": own["file"], "gain": own.get("gain", -16), "sections": music["sections"]}
     sheet = {
         "film": film,
         "README": f"The sound sheet. {guide} Times are cues and words, never seconds. Then: python3 scripts/sound.py build {film}",
-        "music": {
-            "gain": -16,
-            "sections": [{"from": clock.order[0], "mood": rules.get("moodDefault", "town") if rules.get("moodDefault", "town") in MOODS else "town", "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."}],
-        },
+        "music": music,
         "beds": beds,
         "sfx": effects,
     }
     with open(p["sheet"], "w", encoding="utf8") as fh:
         json.dump(sheet, fh, indent=2)
         fh.write("\n")
-    print(f"Wrote {rel(p['sheet'])}: 1 music section, {len(beds)} beds from the zones, {len(effects)} effects on the scene changes.")
-    print("It is a start, not a soundtrack. Add the music sections act by act, and an effect for every thing that")
-    print(f"happens on screen. {guide} Then: python3 scripts/sound.py build {film}")
+    if music.get("track"):
+        print(f"Wrote {rel(p['sheet'])}: the topic's track ({music['track']}), {len(beds)} beds from the zones, {len(effects)} effects on the scene changes.")
+        print("It is a start, not a soundtrack. Add an effect for every thing that happens on screen, and a music section for")
+        print(f"each turn of the story: \"none\" is silence, \"gain\" steps the track back. {guide} Then: python3 scripts/sound.py build {film}")
+    else:
+        print(f"Wrote {rel(p['sheet'])}: 1 music section, {len(beds)} beds from the zones, {len(effects)} effects on the scene changes.")
+        print("It is a start, not a soundtrack. Add the music sections act by act, and an effect for every thing that")
+        print(f"happens on screen. {guide} Then: python3 scripts/sound.py build {film}")
     return 0
 
 

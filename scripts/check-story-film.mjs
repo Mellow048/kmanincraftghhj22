@@ -100,6 +100,9 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
   if (from["timing.json"] !== textHash(path.join(dir, "timing.json"))) changed.push("timing.json");
   if (from["sound.json"] !== textHash(sheetPath)) changed.push("sound.json");
   if (!fs.existsSync(voicePath) || from["narration.mp3"] !== fileHash(voicePath)) changed.push("narration.mp3");
+  // A mix that plays a recorded track was built from that file too.
+  const track = lock.music_file;
+  if (track && (!fs.existsSync(path.join(root, track.path)) || track.sha1 !== fileHash(path.join(root, track.path)))) changed.push(`${track.path} (the music)`);
   if (changed.length > 0) {
     fail(`${tag}: the mix is out of date: ${changed.join(", ")} changed after it was built. Run: ${build}`);
     return;
@@ -117,6 +120,21 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
 
   const m = lock.measured ?? {};
   const sections = (lock.music_sections ?? []).filter((part) => part.mood !== "none");
+  // A topic can have ONE track for all its films, chosen by the owner (`sound.music.file` in topic.json). A film's
+  // sheet names it in `music.track`, and `scripts/sound.py build` refuses a sheet of that topic without it. A film
+  // finished before the rule (`madeBefore`) keeps the music it was approved with.
+  const own = rules.music?.file;
+  let sheetTrack = null;
+  try {
+    sheetTrack = JSON.parse(fs.readFileSync(sheetPath, "utf8")).music?.track ?? null;
+  } catch {
+    sheetTrack = null;
+  }
+  const playsOwn = own && sheetTrack && path.normalize(sheetTrack) === path.normalize(own);
+  if (own && !playsOwn && !(rules.music.madeBefore ?? []).includes(slug)) {
+    info(`${tag}: its music is not the topic's track (${own}). The owner chose that track for this topic's films: add "track": "${own}" to "music" in sound.json; the next \`${build}\` will ask for it.${guide}`);
+  }
+  // The sections are written with a track too: each one is a turn of the story (silence, or the track stepping back).
   if (rules.minMusicSections && sections.length < rules.minMusicSections) {
     fail(`${tag}: the music has ${sections.length} section(s). The music changes when the story does: at least ${rules.minMusicSections}.${guide}`);
   }
@@ -153,7 +171,7 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
     fail(`${tag}: the mix peaks at ${m.truePeakDb} dB. Over ${rules.maxTruePeakDb} it can clip.`);
   }
   info(
-    `${tag}: sound: ${sections.length} music sections, ${lock.beds ?? 0} beds, ${m.sfx} effects (${m.sfxPerMinute}/min); ` +
+    `${tag}: sound: ${track ? `music from ${path.basename(track.path)}` : `${sections.length} music sections`}, ${lock.beds ?? 0} beds, ${m.sfx} effects (${m.sfxPerMinute}/min); ` +
       `music ${m.musicUnderVoiceDb} dB under the voice; voice ${m.voiceOverRestMedianDb} dB over the rest (worst ${m.voiceOverRestWorstDb}); ${m.lufs} LUFS`,
   );
 }
@@ -358,8 +376,9 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
         return;
       }
       const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top)\s*\(/.test(body);
-      const literal = /(^|\n)\s*from:\s*\[/.test(body) && /(^|\n)\s*target:\s*\[/.test(body);
-      if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give from[] and target[].`);
+      // The camera as two points: written out (`from: [x, y, z]`) or from a place's own helper (`from: GYM.at(x, y, z)`).
+      const literal = /(^|\n)\s*from:\s*[\[\w]/.test(body) && /(^|\n)\s*target:\s*[\[\w]/.test(body);
+      if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give \`from:\` and \`target:\` (two points).`);
       if (!recipe && !/(^|\n)\s*(to|path|targetTo|targetPath|arc|shake):/.test(body)) {
         fail(`${shot}: static shot. Every shot in a story film moves.`);
       }

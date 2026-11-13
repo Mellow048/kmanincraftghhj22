@@ -180,6 +180,13 @@ moves every sound with it:
 music, how loud is the file) and writes `sound.lock.json`, which records what the mix was built from. Then
 `film.tsx` plays `audio/<film>/mix.mp3`.
 
+**The music is made from moods, or it is one recorded track.** A sheet names a mood for each stretch of the story
+(`"mood": "town"`, `"curious"`, … `"none"` for silence), and the tool makes that music. Or the sheet names a file
+(`"music": { "track": "Topics/<Folder>/<track>", … }`) and that plays instead: the file runs on the film's clock,
+under the voice, and the sections still shape it: one can pull it back (`"gain": -4`) or stop it (`"none"`). A topic
+whose owner has chosen a track names it in its `topic.json` (`sound.music.file`); `draft` then writes it into every
+new sheet and `build` refuses a sheet without it. In This Town has one: `Topics/InThisTown/SOUND.md`, section 3.
+
 How to write a sheet, what each level means and what the limits are: the topic's own page,
 `Topics/InThisTown/SOUND.md`. A topic turns the sound rule on with `sound.required` in its `topic.json`.
 
@@ -255,3 +262,16 @@ gh workflow run render.yml --ref <branch> -f composition=<film> -f commit_to=ren
 
 `scale` must be `1`, `0.75`, `0.5` or `0.25`. Remotion refuses a scale that does not give whole pixels (0.667 does not).
 The full-quality MP4 goes to the repo's Releases; `commit_to` also puts a copy of at most 45 MB on the branch.
+
+The mp4 is committed on top of whatever the branch is when the render ends, so other work can be pushed meanwhile.
+**Do not push a change to the film itself while it renders**: the mp4 would be of the code before it. When the run
+is done, `git pull --rebase`, and check what came back:
+
+```bash
+python3 scripts/render-check.py <film> --sheet        # the numbers, and renders/<film>-shots.jpg
+```
+
+It compares the file with the film (length, frames, size, loudness, and whether its sound is the mix, in step with
+the picture) and makes a sheet of one frame of the mp4 for each shot. **Look at the sheet**: it is the film as delivered, not as planned. A first render at
+`-f scale=0.5` is quicker and shows the same faults. `--at 0.03` and `--at 0.97` give the first and
+the last frame of every shot, which the stills of the build (taken in the middle of a shot) never showed.

@@ -176,9 +176,10 @@ export const Chest: React.FC<{ position?: Vec3; rotationY?: number; scale?: numb
 /**
  * THE PRINTER: a machine that makes more money. `position` is the floor under it; notes come out towards +Z.
  * `out` is how many notes have come out so far, and may be a fraction: `out={t * 4}` prints four a second.
- * The newest note is still sliding; the rest lie in the tray, up to `tray` of them.
+ * The newest note is still sliding; the rest lie in the tray, up to `tray` of them. `sign` is the money it
+ * prints: "$" unless the film is about another country's.
  */
-export const Printer: React.FC<{ position?: Vec3; rotationY?: number; out?: number; tray?: number; color?: string; running?: boolean }> = ({ position = [0, 0, 0], rotationY = 0, out = 0, tray = 24, color = "#6fbf73", running = true }) => {
+export const Printer: React.FC<{ position?: Vec3; rotationY?: number; out?: number; tray?: number; color?: string; running?: boolean; sign?: string }> = ({ position = [0, 0, 0], rotationY = 0, out = 0, tray = 24, color = "#6fbf73", running = true, sign = "$" }) => {
   const done = Math.min(tray, Math.floor(out));
   const sliding = out - Math.floor(out);
   return (
@@ -206,7 +207,7 @@ export const Printer: React.FC<{ position?: Vec3; rotationY?: number; out?: numb
         <Block position={[0.1, 0.16, 0]} size={[0.05, 0.36, 0.05]} color="#c8402f" />
         <Block position={[0.16, 0.32, 0]} size={[0.14, 0.07, 0.07]} color="#2b2f36" />
       </group>
-      <Figure text="$" position={[0.28, 0.82, 0.44]} height={0.26} depth={0.4} color="#3d7a34" shadow={false} />
+      <Figure text={sign} position={[0.28, 0.82, 0.44]} height={0.26} depth={0.4} color="#3d7a34" shadow={false} />
       {/* the notes */}
       {Array.from({ length: done }, (_, i) => (
         <Bill key={i} position={[((i * 37) % 11) * 0.006 - 0.03, 0.38 + i * 0.013, 0.74 + ((i * 53) % 7) * 0.008 - 0.024]} rotationY={Math.PI / 2 + (((i * 29) % 9) - 4) * 0.03} color={color} />

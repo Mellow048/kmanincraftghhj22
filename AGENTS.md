@@ -59,8 +59,10 @@ check is wrong, say so and ask.
 
 1. **The owner approves the script before anything is built.** Ideas, then the script, then stop and wait.
 2. **Build from the topic's pack and its starter.** Do not rebuild a villager, a house or a helper that already exists.
-3. **The film has sound**: music that changes with the story, and a sound effect for each thing that happens. A film
-   with only a voice is not finished.
+3. **The film has sound**: music, and a sound effect for each thing that happens. A film with only a voice is not
+   finished. An In This Town short plays the owner's own track, `Topics/InThisTown/InThisTownMusic.aac` ("thats the
+   new backround music for the in this town shorts"); the other topics' music is made by `scripts/sound.py` and
+   changes with the story. The topic's `SOUND.md` says which.
 4. **An approved film does not change.** If you touch the engine or a pack, prove that the finished films' stills are the
    same before and after: `scripts/compare-stills.py`.
 5. **Copy how the reference film is built. Never copy its story**, its sentences or its twist. A provisional topic

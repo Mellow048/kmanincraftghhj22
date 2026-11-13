@@ -12,8 +12,8 @@ The subjects the owner named for this topic: money lessons, and what inflation i
 > (`docs/STORY-FILMS.md`); the numbers in [`topic.json`](topic.json) are a first setting, so that `npm run check`
 > has something to hold a film to. **The reference will be our own first film** (the owner, asked for a video:
 > "you are the one making that reference!"): `src/videos/why-does-bread-cost-more-every-year/`. He approved its
-> script on 2026-11-13 ("yesboth") and its voice is recorded; its picture and its sound are not built yet. When the
-> finished film is approved, measure it and correct this folder
+> script on 2026-11-13 ("yesboth"). The film is built and rendered (`renders/why-does-bread-cost-more-every-year.mp4`),
+> and it is waiting for him to watch it. When he approves it, measure it and correct this folder
 > ([`reference/`](reference/README.md) says how). No film of this topic has been approved yet.
 
 ## Start here

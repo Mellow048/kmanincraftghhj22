@@ -34,7 +34,7 @@
   "pack": "Topics/WhatIf/PACK.md",
   "template": "Topics/WhatIf/template",
   "models": {
-    "note": "No finished film yet. The first \"What if\" film the owner approves is named here, and becomes the model to build like. Until then, the films of In This Town show how a film of this pipeline is built (src/videos/in-this-town-same-face/): copy how it is BUILT, never what it tells."
+    "note": "No APPROVED film yet. The first \"What if\" film is built and waiting for the owner: src/videos/what-if-you-could-see-who-had-a-crush-on-you/. If he approves it, name it here: it becomes the model to build like. Until then it shows how a film of this topic is put together, and the films of In This Town (src/videos/in-this-town-same-face/) are the approved ones of the same pipeline: copy how a film is BUILT, never what it tells."
   },
   "sound": {
     "required": true,
@@ -62,6 +62,10 @@
       "room": "room",
       "bedroom": "room",
       "house": "room",
+      "kitchen": "room",
+      "lunch": "crowd",
+      "lunchroom": "crowd",
+      "gym": "crowd",
       "street": "village",
       "yard": "village",
       "park": "village",
