@@ -74,27 +74,6 @@ export const scene2 = storyScene(timing, {
       },
     },
     {
-      cue: "3.smart",
-      ...cam.push({ on: c(-0.1, 1.55, -2.8), dist: 3.5, to: 3.1, yaw: 0, pitch: 6, fov: 44 }),
-      zone: ZONE.classS,
-      look: DAY,
-      note: "The front of the classroom. The friend in purple stands with her arms out, doing nothing, while a floating screen with eyes writes her homework. On 'corrected' the screen turns to the board and says WRONG.",
-      stage: (t) => {
-        const hw = wordAt("3.smart", "homework");
-        const cor = wordAt("3.smart", "corrected");
-        const k = ease(ramp(t, cor - 0.15, cor + 0.2));
-        return (
-          <>
-            <Ada position={c(-0.65, 0, -2.7)} animation="shrug" face="smug" />
-            <SmartBot position={c(lerp(0.25, 0.5, k), 1.7 + 0.1 * jolt(t, hw, 0.3) + 0.2 * k, lerp(-2.7, -3.2, k))} rotationY={-0.2 + Math.PI * 0.0} t={t} text={t > cor ? "WRONG" : t > hw ? "A+" : "..."} />
-            <group scale={pop(t, cor + 0.1)}>
-              <Bubble text="WRONG!" position={c(0.2, 2.75, -3.0)} scale={0.45} tail={1} />
-            </group>
-          </>
-        );
-      },
-    },
-    {
       cue: "3.hand",
       ...cam.truck({ on: [-1.2, 1.15, 3], dist: 6.8, yaw: 0, pitch: 5, fov: 44, by: [1.6, 0, 0] }),
       zone: ZONE.town,
@@ -196,29 +175,6 @@ export const scene2 = storyScene(timing, {
       },
     },
     {
-      cue: "4.shook",
-      ...cam.push({ on: [STEP[0] + 0.8, 1.5, STEP[2]], dist: 4.2, to: 3.8, yaw: 10, pitch: 2, fov: 42 }),
-      zone: ZONE.town,
-      look: DAY,
-      note: "He holds the empty crate upside down over his own head and shakes it. On 'nothing' one piece of fluff drifts out and lands on his nose.",
-      stage: (t) => {
-        const H: Vec3 = [STEP[0] + 0.8, 0, STEP[2]];
-        const n = wordAt("4.shook", "nothing");
-        const sh = t < n ? Math.sin(t * 34) * 0.09 : 0;
-        const fl = ramp(t, n - 0.1, n + 0.5);
-        return (
-          <>
-            <Hero position={H} animation="reachUp" face={t > n ? "blank" : "worried"} headPitch={-0.5} />
-            <group position={[H[0] + sh, 2.75 + Math.abs(sh) * 0.6, H[2] + 0.25]} rotation={[Math.PI, 0, sh]}>
-              <Crate position={[0, 0, 0]} s={0.62} lid={1} />
-            </group>
-            <HeadAt position={[H[0] - 0.9, 0.27, H[2] + 0.5]} rotation={[0, 0.4, 0]} />
-            {fl > 0 ? <Ball position={[H[0], 2.3 - 0.55 * fl, H[2] + 0.34]} color="#cfc8b8" /> : null}
-          </>
-        );
-      },
-    },
-    {
       cue: "4.tuesday",
       ...cam.push({ on: l(0.2, 1.05, -1.0), dist: 5.2, to: 4.4, yaw: 0, pitch: 6, fov: 44 }),
       zone: ZONE.living,
@@ -282,28 +238,6 @@ export const scene2 = storyScene(timing, {
             </group>
             <group scale={pop(t, walk - 0.15) * (t > head + 0.5 ? 0 : 1)}>
               <Bubble text="WALK?" position={c(1.5, 2.25, -1.2)} rotationY={Math.PI} scale={0.5} />
-            </group>
-          </>
-        );
-      },
-    },
-    {
-      cue: "5.off",
-      ...cam.push({ on: c(-0.1, 1.2, -1.1), dist: 3.6, to: 3.1, yaw: 196, pitch: 10, fov: 44 }),
-      zone: ZONE.classN,
-      look: DAY,
-      note: "The classmate behind him, very helpful, leaning over his shoulder and pointing at the head: off, and on again. The teller looks at the camera.",
-      stage: (t) => {
-        const off = wordAt("5.off", "off");
-        return (
-          <>
-            <Hero position={ME} rotationY={NORTH} animation="sit" face="blank" />
-            <HeadAt position={ON_DESK} rotation={[0, Math.PI, 0]} eyes={0} />
-            <Mate n={1} position={[ME[0] + 0.55, 0, ME[2] + 0.75]} rotationY={NORTH + 0.25} animation="point" face="grin" />
-            <Ada position={at(0, 0)} rotationY={NORTH} animation="sit" face="smile" headYaw={-0.5} />
-            <Nora position={at(2, 0)} rotationY={NORTH} animation="sit" face="uneasy" headYaw={0.5} />
-            <group scale={pop(t, off - 0.2)}>
-              <Bubble text="OFF AND ON?" position={c(0.5, 2.35, -0.6)} rotationY={Math.PI} scale={0.4} />
             </group>
           </>
         );

@@ -34,29 +34,6 @@ export const scene7 = storyScene(timing, {
   title: "Nora",
   shots: [
     {
-      cue: "13.more",
-      ...cam.push({ on: [OLDC[0], 3.4, OLDC[2]], onTo: [OLDC[0], 1.4, OLDC[2]], dist: 5.6, to: 4.2, yaw: -16, pitch: -6, fov: 44 }),
-      zone: ZONE.forest,
-      look: DUSK,
-      note: "The old man comes down out of the sky slowly, standing straight, on two red flames. He touches the grass without a sound and the blade slides back into his arm. He is not out of breath.",
-      stage: (t) => {
-        const down = ease(ramp(t, 0, 1.25));
-        const P: Vec3 = [OLDC[0], 4.2 * (1 - down), OLDC[2]];
-        return (
-          <>
-            <OldMan position={P} rotationY={W * 0.6} suit={1} animation="idle" headPitch={0.25}>
-              <Katana out={1 - ease(ramp(t, 1.2, 1.7))} />
-            </OldMan>
-            <Jets position={P} power={1 - ramp(t, 1.15, 1.35)} t={t} color={RED} />
-            <DustRing position={OLDC} t={t - 1.2} size={1.6} color="#6a7a5a" />
-            <pointLight position={[OLDC[0] - 0.4, P[1] + 1.6, OLDC[2] + 0.9]} color={RED} intensity={6} distance={4} decay={2} />
-            <Fill on={[OLDC[0], 1.3, OLDC[2]]} yaw={-16} power={3} />
-            <All />
-          </>
-        );
-      },
-    },
-    {
       cue: "13.cannon",
       ...cam.orbit({ on: [OLDC[0] - 0.5, 1.25, OLDC[2]], dist: 3.8, distTo: 3.2, yaw: -40, yawTo: -8, pitch: 2, fov: 42 }),
       zone: ZONE.forest,
@@ -129,21 +106,6 @@ export const scene7 = storyScene(timing, {
           </>
         );
       },
-    },
-    {
-      cue: "13.fast",
-      ...cam.push({ on: [CR[0], 0.35, CR[2] - 1.0], dist: 2.6, to: 1.7, yaw: 0, pitch: 62, fov: 40 }),
-      zone: ZONE.forest,
-      look: DUSK,
-      note: "His face, from above, visor up, frozen: wide eyes, mouth open, the orange light climbing across it.",
-      shake: 0.01,
-      stage: (t, { p }) => (
-        <>
-          <Hero position={LIE} animation="lie" suit={1} visor={1} face="fear" />
-          <pointLight position={[CR[0] + 1.2 - 0.6 * p, 1.3, CR[2]]} color="#ffb060" intensity={3 + 7 * p} distance={5} decay={2} />
-          <All />
-        </>
-      ),
     },
     {
       cue: "14.bush",

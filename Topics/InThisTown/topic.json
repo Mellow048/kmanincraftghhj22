@@ -16,9 +16,9 @@
   "film": {
     "seconds": [
       150,
-      178
+      176
     ],
-    "hardMaxSeconds": 180,
+    "hardMaxSeconds": 178,
     "hardMinSeconds": 60,
     "hardMinWords": 250,
     "shotSeconds": [
@@ -40,7 +40,8 @@
     "maxWordsPerShot": 18,
     "opensWith": "In this town",
     "lastLineContains": "subscribe",
-    "captions": true
+    "captions": true,
+    "shortsRule": "A vertical video over 3:00 is not a YouTube Short: YouTube files it as a long video. Two films were delivered at 3:41 and 3:25 and had to be cut down after the owner saw that (2026-11-13). No film of this topic runs over 2:58, and there is no longer cut."
   },
   "cuts": {
     "short": {
@@ -69,18 +70,6 @@
         2.5
       ],
       "note": "For in-this-town-monster-village-part-2: the owner's own outline, approved as a script, runs two minutes, between the short cut and the long one."
-    },
-    "extended": {
-      "seconds": [
-        178,
-        225
-      ],
-      "hardMaxSeconds": 230,
-      "words": [
-        770,
-        960
-      ],
-      "note": "Asked for by the owner for in-this-town-monster-village: a three-minute film with a longer ending. Use it only when he asks for more than the long cut holds."
     }
   },
   "measuredFromReference": {
