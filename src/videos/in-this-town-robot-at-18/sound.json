@@ -1,0 +1,881 @@
+{
+  "film": "in-this-town-robot-at-18",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-robot-at-18",
+  "music": {
+    "gain": -16,
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The rule, and it is a happy one."
+      },
+      {
+        "from": "2.mum",
+        "mood": "playful",
+        "why": "The butler and the foot massager."
+      },
+      {
+        "from": "3.friends",
+        "mood": "wonder",
+        "why": "The friends' good robots."
+      },
+      {
+        "from": "4.turn",
+        "mood": "playful",
+        "why": "A head. Just a head."
+      },
+      {
+        "from": "5.home",
+        "mood": "sad",
+        "why": "Not smiling at home."
+      },
+      {
+        "from": "6.lunch",
+        "mood": "tense",
+        "why": "Brick and Pip."
+      },
+      {
+        "from": "7.head",
+        "mood": "playful",
+        "why": "He is holding a head."
+      },
+      {
+        "from": "8.night",
+        "mood": "sneak",
+        "why": "Alone with it at night."
+      },
+      {
+        "from": "8.button",
+        "mood": "curious",
+        "why": "A button."
+      },
+      {
+        "from": "9.opened",
+        "mood": "wonder",
+        "why": "The suit."
+      },
+      {
+        "from": "10.forest",
+        "mood": "town",
+        "why": "Trying it out."
+      },
+      {
+        "from": "11.saw",
+        "mood": "curious",
+        "why": "Somebody down there."
+      },
+      {
+        "from": "12.suit",
+        "mood": "tense",
+        "why": "The fight."
+      },
+      {
+        "from": "13.fast",
+        "mood": "drone",
+        "why": "The second he cannot move."
+      },
+      {
+        "from": "14.bush",
+        "mood": "hope",
+        "why": "Nora."
+      },
+      {
+        "from": "15.who",
+        "mood": "dark",
+        "why": "Who the old man is."
+      },
+      {
+        "from": "15.sub",
+        "mood": "town",
+        "why": "See you in part two."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "1.cleaner",
+      "bed": "village"
+    },
+    {
+      "from": "2.mum",
+      "to": "2.hear",
+      "bed": "room"
+    },
+    {
+      "from": "3.friends",
+      "to": "3.friends",
+      "bed": "village"
+    },
+    {
+      "from": "3.smart",
+      "to": "3.smart",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.hand",
+      "to": "4.shook",
+      "bed": "village"
+    },
+    {
+      "from": "4.tuesday",
+      "to": "4.tuesday",
+      "bed": "room"
+    },
+    {
+      "from": "5.school",
+      "to": "5.laugh",
+      "bed": "classroom"
+    },
+    {
+      "from": "5.home",
+      "to": "7.sat",
+      "bed": "village"
+    },
+    {
+      "from": "8.night",
+      "to": "9.suit",
+      "bed": "room"
+    },
+    {
+      "from": "10.forest",
+      "to": "15.threw",
+      "bed": "night"
+    },
+    {
+      "from": "15.broke",
+      "to": "15.took",
+      "bed": "wind"
+    },
+    {
+      "from": "15.helmet",
+      "to": "15.sub",
+      "bed": "night"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "whoosh",
+      "why": "We are in."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "chime",
+      "word": "robot",
+      "why": "Everybody's robot."
+    },
+    {
+      "cue": "1.crate",
+      "sfx": "hit",
+      "word": "lands",
+      "why": "The crate lands."
+    },
+    {
+      "cue": "1.crate",
+      "sfx": "creak",
+      "word": "inside",
+      "why": "The lid."
+    },
+    {
+      "cue": "1.kinds",
+      "sfx": "stomp",
+      "word": "huge",
+      "why": "The big one.",
+      "trim": 3
+    },
+    {
+      "cue": "1.kinds",
+      "sfx": "blip",
+      "word": "tiny",
+      "why": "The small one."
+    },
+    {
+      "cue": "1.kinds",
+      "sfx": "power_up",
+      "word": "hero",
+      "trim": -3,
+      "why": "The hero one."
+    },
+    {
+      "cue": "1.cleaner",
+      "sfx": "bonk",
+      "word": "loses",
+      "why": "Beaten by dust."
+    },
+    {
+      "cue": "2.mum",
+      "sfx": "whoosh",
+      "why": "Home."
+    },
+    {
+      "cue": "2.mum",
+      "sfx": "plink",
+      "word": "poured",
+      "why": "Tea."
+    },
+    {
+      "cue": "2.dad",
+      "sfx": "buzz",
+      "word": "foot",
+      "trim": -6,
+      "why": "The massager."
+    },
+    {
+      "cue": "2.whole",
+      "sfx": "buzz",
+      "word": "whole",
+      "trim": -3,
+      "why": "Still buzzing."
+    },
+    {
+      "cue": "2.whole",
+      "sfx": "cheer",
+      "word": "best",
+      "trim": -2,
+      "why": "Dad is happy."
+    },
+    {
+      "cue": "2.hear",
+      "sfx": "tick",
+      "offset": 0.3,
+      "why": "Mum says nothing."
+    },
+    {
+      "cue": "3.friends",
+      "sfx": "whoosh",
+      "why": "The friends."
+    },
+    {
+      "cue": "3.friends",
+      "sfx": "thud",
+      "offset": 0.5,
+      "repeat": 3,
+      "every": 0.6,
+      "why": "Three crates."
+    },
+    {
+      "cue": "3.smart",
+      "sfx": "sparkle",
+      "word": "homework",
+      "why": "Homework done."
+    },
+    {
+      "cue": "3.smart",
+      "sfx": "buzz",
+      "word": "corrected",
+      "why": "WRONG."
+    },
+    {
+      "cue": "3.hand",
+      "sfx": "zip",
+      "word": "floating",
+      "why": "The hand."
+    },
+    {
+      "cue": "3.hand",
+      "sfx": "rustle",
+      "word": "bag",
+      "trim": 3,
+      "why": "The bag."
+    },
+    {
+      "cue": "3.nora",
+      "sfx": "power_up",
+      "word": "shield",
+      "trim": -3,
+      "why": "The shield comes on."
+    },
+    {
+      "cue": "3.nora",
+      "sfx": "boing",
+      "word": "nothing",
+      "why": "A ball bounces off."
+    },
+    {
+      "cue": "3.nora",
+      "sfx": "boing",
+      "word": "dodgeballs",
+      "repeat": 2,
+      "every": 0.4,
+      "why": "Two more."
+    },
+    {
+      "cue": "4.turn",
+      "sfx": "whoosh",
+      "why": "His turn."
+    },
+    {
+      "cue": "4.turn",
+      "sfx": "place",
+      "word": "crate",
+      "trim": 3,
+      "why": "A very small crate."
+    },
+    {
+      "cue": "4.open",
+      "sfx": "creak",
+      "word": "opened",
+      "why": "The lid."
+    },
+    {
+      "cue": "4.open",
+      "sfx": "bonk",
+      "word": "head",
+      "why": "A head."
+    },
+    {
+      "cue": "4.just",
+      "sfx": "tick",
+      "word": "body",
+      "repeat": 3,
+      "every": 0.45,
+      "why": "No, no, no."
+    },
+    {
+      "cue": "4.shook",
+      "sfx": "rustle",
+      "word": "shook",
+      "trim": 4,
+      "repeat": 3,
+      "every": 0.2,
+      "why": "Shaking the crate."
+    },
+    {
+      "cue": "4.shook",
+      "sfx": "plink",
+      "word": "nothing",
+      "why": "One piece of fluff."
+    },
+    {
+      "cue": "4.tuesday",
+      "sfx": "slide_down",
+      "word": "not",
+      "why": "It was not."
+    },
+    {
+      "cue": "5.school",
+      "sfx": "school_bell",
+      "offset": 0.1,
+      "trim": -3,
+      "why": "School."
+    },
+    {
+      "cue": "5.school",
+      "sfx": "place",
+      "word": "anyway",
+      "why": "The head on the desk."
+    },
+    {
+      "cue": "5.talk",
+      "sfx": "pop",
+      "word": "talk",
+      "why": "A question."
+    },
+    {
+      "cue": "5.talk",
+      "sfx": "pop",
+      "word": "walk",
+      "why": "Another."
+    },
+    {
+      "cue": "5.off",
+      "sfx": "pop",
+      "word": "off",
+      "why": "Very helpful."
+    },
+    {
+      "cue": "5.laugh",
+      "sfx": "cheer",
+      "word": "laughed",
+      "trim": -2,
+      "why": "The class laughing."
+    },
+    {
+      "cue": "5.laugh",
+      "sfx": "hit",
+      "word": "slapped",
+      "trim": -4,
+      "why": "The glove on the desk."
+    },
+    {
+      "cue": "5.home",
+      "sfx": "step_grass",
+      "word": "went",
+      "repeat": 4,
+      "every": 0.3,
+      "why": "Walking home."
+    },
+    {
+      "cue": "5.home",
+      "sfx": "drop",
+      "word": "not",
+      "trim": -4,
+      "why": "The smile goes."
+    },
+    {
+      "cue": "6.lunch",
+      "sfx": "whoosh",
+      "why": "Lunch."
+    },
+    {
+      "cue": "6.lunch",
+      "sfx": "sting",
+      "word": "picked",
+      "trim": -5,
+      "why": "Trouble."
+    },
+    {
+      "cue": "6.brick",
+      "sfx": "clank",
+      "word": "wears",
+      "why": "The arms."
+    },
+    {
+      "cue": "6.brick",
+      "sfx": "stomp",
+      "word": "arms",
+      "why": "He flexes."
+    },
+    {
+      "cue": "6.pip",
+      "sfx": "sparkle",
+      "word": "everything",
+      "why": "The glasses."
+    },
+    {
+      "cue": "6.knew",
+      "sfx": "count",
+      "word": "exactly",
+      "why": "Working it out."
+    },
+    {
+      "cue": "6.knew",
+      "sfx": "pop",
+      "word": "trouble",
+      "why": "100%."
+    },
+    {
+      "cue": "6.lift",
+      "sfx": "whoosh_low",
+      "word": "lifted",
+      "why": "The arm."
+    },
+    {
+      "cue": "6.lift",
+      "sfx": "slide_up",
+      "word": "up",
+      "why": "Up he goes."
+    },
+    {
+      "cue": "7.stood",
+      "sfx": "riser",
+      "word": "stood",
+      "trim": -3,
+      "why": "He is going to do it."
+    },
+    {
+      "cue": "7.down",
+      "sfx": "pop",
+      "word": "put",
+      "why": "Put him down."
+    },
+    {
+      "cue": "7.looked",
+      "sfx": "swish",
+      "word": "looked",
+      "why": "Brick's head turns."
+    },
+    {
+      "cue": "7.looked",
+      "sfx": "heartbeat",
+      "word": "hands",
+      "why": "Uh oh."
+    },
+    {
+      "cue": "7.head",
+      "sfx": "bonk",
+      "word": "head",
+      "why": "A head."
+    },
+    {
+      "cue": "7.sat",
+      "sfx": "thud",
+      "offset": 0.22,
+      "why": "Sat."
+    },
+    {
+      "cue": "8.night",
+      "sfx": "whoosh",
+      "why": "Night."
+    },
+    {
+      "cue": "8.night",
+      "sfx": "place",
+      "word": "desk",
+      "why": "On the desk."
+    },
+    {
+      "cue": "8.how",
+      "sfx": "blip",
+      "offset": 0.15,
+      "why": "?"
+    },
+    {
+      "cue": "8.nose",
+      "sfx": "rustle",
+      "word": "over",
+      "trim": 3,
+      "why": "Turning it."
+    },
+    {
+      "cue": "8.nose",
+      "sfx": "slide_up",
+      "word": "nose",
+      "trim": 2,
+      "why": "Up its nose."
+    },
+    {
+      "cue": "8.button",
+      "sfx": "rustle",
+      "word": "dust",
+      "trim": 3,
+      "why": "Wiping the dust."
+    },
+    {
+      "cue": "8.button",
+      "sfx": "sparkle",
+      "word": "button",
+      "why": "A button."
+    },
+    {
+      "cue": "8.press",
+      "sfx": "tick",
+      "offset": 0.3,
+      "trim": 4,
+      "why": "Click."
+    },
+    {
+      "cue": "9.opened",
+      "sfx": "power_up",
+      "word": "opened",
+      "why": "It opens."
+    },
+    {
+      "cue": "9.on",
+      "sfx": "clank",
+      "offset": 0.55,
+      "why": "Helmet on."
+    },
+    {
+      "cue": "9.metal",
+      "sfx": "clank",
+      "word": "neck",
+      "why": "Neck."
+    },
+    {
+      "cue": "9.metal",
+      "sfx": "clank",
+      "word": "arms",
+      "why": "Arms."
+    },
+    {
+      "cue": "9.metal",
+      "sfx": "clank",
+      "word": "legs",
+      "why": "Legs."
+    },
+    {
+      "cue": "9.metal",
+      "sfx": "ding",
+      "word": "toes",
+      "why": "Done."
+    },
+    {
+      "cue": "9.armor",
+      "sfx": "boom",
+      "word": "silver",
+      "trim": -6,
+      "why": "The suit."
+    },
+    {
+      "cue": "9.suit",
+      "sfx": "chime",
+      "word": "suit",
+      "why": "A suit."
+    },
+    {
+      "cue": "10.forest",
+      "sfx": "whoosh",
+      "why": "The forest."
+    },
+    {
+      "cue": "10.forest",
+      "sfx": "bonk",
+      "word": "fall",
+      "why": "Trips."
+    },
+    {
+      "cue": "10.beam",
+      "sfx": "fire_whoosh",
+      "word": "beam",
+      "trim": 2,
+      "why": "The beam."
+    },
+    {
+      "cue": "10.beam",
+      "sfx": "crack",
+      "word": "cut",
+      "why": "The tree."
+    },
+    {
+      "cue": "10.beam",
+      "sfx": "thud",
+      "word": "half",
+      "why": "The top comes off."
+    },
+    {
+      "cue": "10.sorry",
+      "sfx": "blip",
+      "word": "sorry",
+      "why": "Sorry."
+    },
+    {
+      "cue": "10.feet",
+      "sfx": "power_up",
+      "word": "lit",
+      "why": "Boots."
+    },
+    {
+      "cue": "10.feet",
+      "sfx": "fire_whoosh",
+      "word": "flying",
+      "trim": 2,
+      "why": "Up."
+    },
+    {
+      "cue": "10.badly",
+      "sfx": "slide_down",
+      "word": "badly",
+      "why": "Badly."
+    },
+    {
+      "cue": "10.badly",
+      "sfx": "ding",
+      "word": "flying",
+      "why": "But flying."
+    },
+    {
+      "cue": "11.saw",
+      "sfx": "gust",
+      "offset": 0.3,
+      "why": "High up."
+    },
+    {
+      "cue": "11.old",
+      "sfx": "creak",
+      "word": "shaking",
+      "why": "His knees."
+    },
+    {
+      "cue": "11.lost",
+      "sfx": "pop",
+      "word": "lost",
+      "why": "Lost?"
+    },
+    {
+      "cue": "11.landed",
+      "sfx": "thud",
+      "word": "landed",
+      "why": "Lands."
+    },
+    {
+      "cue": "11.landed",
+      "sfx": "step_grass",
+      "word": "walked",
+      "repeat": 3,
+      "every": 0.3,
+      "why": "Walks over."
+    },
+    {
+      "cue": "12.suit",
+      "sfx": "sting",
+      "word": "not",
+      "why": "Not an old man."
+    },
+    {
+      "cue": "12.suit",
+      "sfx": "clank",
+      "word": "not",
+      "offset": 0.1,
+      "why": "His suit shuts."
+    },
+    {
+      "cue": "12.katana",
+      "sfx": "scrape",
+      "word": "katana",
+      "trim": 3,
+      "why": "The blade."
+    },
+    {
+      "cue": "12.katana",
+      "sfx": "whoosh",
+      "word": "jumped",
+      "why": "He jumps."
+    },
+    {
+      "cue": "12.duck",
+      "sfx": "glitch",
+      "word": "duck",
+      "why": "The helmet speaks."
+    },
+    {
+      "cue": "12.ducked",
+      "sfx": "swish",
+      "word": "ducked",
+      "why": "Down."
+    },
+    {
+      "cue": "12.ducked",
+      "sfx": "crack",
+      "word": "tree",
+      "why": "Into a tree."
+    },
+    {
+      "cue": "13.more",
+      "sfx": "heartbeat",
+      "word": "all",
+      "why": "Not finished.",
+      "trim": 3
+    },
+    {
+      "cue": "13.cannon",
+      "sfx": "clank",
+      "word": "folded",
+      "repeat": 3,
+      "every": 0.25,
+      "why": "The arm unfolds."
+    },
+    {
+      "cue": "13.fired",
+      "sfx": "riser",
+      "word": "lit",
+      "why": "Charging."
+    },
+    {
+      "cue": "13.fast",
+      "sfx": "heartbeat",
+      "word": "fast",
+      "repeat": 3,
+      "every": 0.9,
+      "why": "He cannot move."
+    },
+    {
+      "cue": "14.bush",
+      "sfx": "rustle",
+      "word": "bush",
+      "trim": 5,
+      "why": "The bush."
+    },
+    {
+      "cue": "14.bush",
+      "sfx": "zip",
+      "word": "jumped",
+      "why": "Out she comes."
+    },
+    {
+      "cue": "14.nora",
+      "sfx": "power_up",
+      "word": "shield",
+      "why": "The shield."
+    },
+    {
+      "cue": "14.blast",
+      "sfx": "boom",
+      "word": "hit",
+      "why": "The blast on the shield."
+    },
+    {
+      "cue": "14.blast",
+      "sfx": "fire_whoosh",
+      "word": "sky",
+      "trim": 2,
+      "why": "Up into the sky."
+    },
+    {
+      "cue": "14.gone",
+      "sfx": "swish",
+      "word": "her",
+      "why": "He looks at her."
+    },
+    {
+      "cue": "14.gone",
+      "sfx": "swish",
+      "word": "me",
+      "why": "At him."
+    },
+    {
+      "cue": "14.gone",
+      "sfx": "power_down",
+      "word": "gone",
+      "why": "Gone."
+    },
+    {
+      "cue": "15.who",
+      "sfx": "pop",
+      "word": "why",
+      "why": "Why me?"
+    },
+    {
+      "cue": "15.threw",
+      "sfx": "sting",
+      "word": "threw",
+      "trim": -4,
+      "why": "The one they threw out."
+    },
+    {
+      "cue": "15.broke",
+      "sfx": "whoosh",
+      "why": "Long ago."
+    },
+    {
+      "cue": "15.broke",
+      "sfx": "hit",
+      "word": "break",
+      "why": "The bell."
+    },
+    {
+      "cue": "15.broke",
+      "sfx": "debris",
+      "word": "things",
+      "why": "Bits."
+    },
+    {
+      "cue": "15.took",
+      "sfx": "power_down",
+      "word": "away",
+      "why": "Taken off him."
+    },
+    {
+      "cue": "15.helmet",
+      "sfx": "glitch",
+      "word": "stopped",
+      "offset": 0.35,
+      "why": "Red, for one blink."
+    },
+    {
+      "cue": "15.sub",
+      "sfx": "pop",
+      "word": "subscribe",
+      "why": "The sign."
+    },
+    {
+      "cue": "15.sub",
+      "sfx": "ding",
+      "word": "subscribe",
+      "offset": 0.15,
+      "why": "Subscribe."
+    }
+  ]
+}
