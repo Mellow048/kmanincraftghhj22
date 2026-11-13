@@ -1,8 +1,8 @@
-import { Block, Glow, cam, storyScene } from "../../engine";
+import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  AimSword, BIG, BIG_SCALE, Basket, Bread, Bubble, DAY, DustRing, Fill, Hero, Lantern, MO_CATCH, Mo, NIGHT, NORTH, Puffs, Raider, STAND, SubscribeSign, ZONE,
-  ease, faceOf, hop, jolt, manFace, pop, ramp, timing, wordAt,
+  AimSword, BIG, BIG_SCALE, Basket, Bread, Bubble, DAY, DustRing, Fill, Hero, Lantern, MO_CATCH, Mo, NIGHT, NORTH, Raider, STAND, ZONE,
+  ease, faceOf, jolt, manFace, pop, ramp, timing, wordAt,
 } from "./kit";
 import { MumDown } from "./scene6";
 
@@ -11,10 +11,10 @@ const W = -Math.PI / 2;
 const F = faceOf(STAND);
 const MO_DOOR: Vec3 = [22.2, 0, -4.3];
 
-/** IT ALL FITS, and then the last turn: they did not come for the monsters. */
+/** IT ALL FITS, and then the turn: they did not come for the village. They came for him. */
 export const scene8 = storyScene(timing, {
   id: "scene8",
-  title: "We are here for you",
+  title: "They had come for him",
   shots: [
     {
       cue: "17.list",
@@ -105,20 +105,37 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "18.you",
-      ...cam.orbit({ on: [-4.7, 1.25, 2.2], dist: 3.4, yaw: 10, pitch: 6, yawTo: 58, pitchTo: 30, distTo: 7.0, fov: 44 }),
+      ...cam.push({ on: [-5.75, 1.5, 2.5], dist: 5.3, to: 4.6, yaw: 12, pitch: 3, fov: 42 }),
       zone: ZONE.night,
       look: NIGHT,
-      note: "He points. And as the camera lifts, every sword in the street swings away from the monsters and round to Mo. Mo puts his arm across the boy.",
+      note: "The two men face to face, side on. The big one points at Mo: he is not talking to a zombie, he is talking to somebody he used to know. Mo does not move.",
       impacts: [{ at: 0.2, amp: 0.05, dur: 0.3 }],
+      stage: (t) => (
+        <>
+          <Fill on={manFace([BIG[0] - 0.5, 0, BIG[2]])} yaw={12} power={8} />
+          <Fill on={manFace(MO_CATCH)} yaw={12} power={7} />
+          <Raider who={0} position={[BIG[0] - 0.5, 0, BIG[2]]} rotationY={E} animation="idle" arms={t > 0.1 ? "point" : undefined} sword={false} face="angry" headPitch={jolt(t, 0.15, 0.3)} />
+          <Mo position={MO_CATCH} rotationY={W} animation="idle" scarf={0} wiped={1} face="neutral" saccade={false} gaze={0} />
+          <Hero position={[STAND[0] + 0.2, 0, STAND[2] + 0.1]} rotationY={W + 0.4} animation="idle" face="wow" lookAt={manFace(MO_CATCH)} />
+          <Bubble text="YOU." position={[BIG[0] - 0.35, 2.62, BIG[2] + 0.2]} rotationY={0.2} scale={0.5 * pop(t, 0.08)} tail={-1} />
+        </>
+      ),
+    },
+    {
+      cue: "18.hunt",
+      ...cam.orbit({ on: [-4.7, 1.25, 2.2], dist: 3.6, yaw: 10, pitch: 8, yawTo: 52, pitchTo: 30, distTo: 7.0, fov: 44 }),
+      zone: ZONE.night,
+      look: NIGHT,
+      note: "The camera lifts, and every sword in the street swings away from the monsters and round to Mo. They close in on him. He puts his arm across the boy. Nobody is watching the monsters any more.",
       stage: (t) => {
-        const here = wordAt("18.you", "we", 1) - 0.1;
-        const turn = ease(ramp(t, here, here + 0.5));
-        const close = ease(ramp(t, here + 0.2, here + 1.4));
+        const here = wordAt("18.hunt", "come", 1) - 0.6;
+        const turn = ease(ramp(t, here, here + 0.45));
+        const close = ease(ramp(t, here + 0.15, here + 1.0));
         const C: Vec3 = [-4.5, 0, 2.1];
         return (
           <>
             <MumDown reach={0.3} />
-            <Raider who={0} position={[BIG[0] - 0.8, 0, BIG[2]]} rotationY={E} animation="idle" arms={t > 0.1 ? "point" : undefined} sword={false} face="angry" />
+            <Raider who={0} position={[BIG[0] - 0.5, 0, BIG[2]]} rotationY={E} animation="idle" arms="point" sword={false} face="angry" />
             <Mo position={[MO_CATCH[0] + 0.1 * close, 0, MO_CATCH[2] + 0.3 * close]} rotationY={W + 0.3} animation={close > 0.2 ? "guard" : "idle"} scarf={0} wiped={1} face="angry" />
             <Hero position={[STAND[0] + 0.2, 0, STAND[2] + 0.1]} rotationY={W + 0.6} animation="idle" face="fear" headYaw={Math.sin(t * 3) * 0.7} />
             {[150, 205, 255, 20, 70].map((deg, i) => {
@@ -132,24 +149,6 @@ export const scene8 = storyScene(timing, {
           </>
         );
       },
-    },
-    {
-      cue: "18.sub",
-      ...cam.push({ on: [-4.4, 1.05, 2.9], dist: 5.4, to: 4.8, yaw: 16, pitch: 5, fov: 40 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "The two humans of the monster village, side by side, and the sign.",
-      stage: (t) => (
-        <>
-          <Fill on={[-4.4, 1.3, 2.9]} yaw={16} power={10} d={2.6} />
-          <Hero position={[-4.98, hop(t, 0.2, 0.15, 0.3), 2.7]} rotationY={0.15} animation="wave" face="grin" />
-          <Mo position={[-3.82, 0, 2.7]} rotationY={-0.15} animation="idle" scarf={0} wiped={1} face="smile" />
-          <group position={[-4.4, 0, 3.4]} scale={pop(t, 0.1)}>
-            <SubscribeSign position={[0, 0.95, 0]} rotationY={0} scale={0.42} />
-            <Block position={[0, 0.45, -0.03]} size={[0.05, 0.9, 0.05]} color="#5c3f24" />
-          </group>
-        </>
-      ),
     },
   ],
 });

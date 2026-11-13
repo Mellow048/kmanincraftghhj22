@@ -1,6 +1,6 @@
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Bits, Bubble, DAY, Fill, Dad, DustRing, Hero, Hiss, Mo, Mum, NIGHT, NORTH, PLACE, Puffs, Stew, ZONE, ease, faceOf, hop, jolt, manFace, pop, ramp, timing, tossed, wordAt } from "./kit";
+import { Folk, Bits, Bubble, DAY, Fill, Dad, DustRing, Hero, Hiss, Mo, Mum, NIGHT, NORTH, PLACE, Puffs, Stew, ZONE, ease, faceOf, hop, jolt, manFace, pop, ramp, timing, tossed, wordAt } from "./kit";
 
 const MO_DOOR: Vec3 = [22.2, 0, -4.3];
 
@@ -27,6 +27,10 @@ export const scene2 = storyScene(timing, {
             {t > burn - 0.15 && t < burn + 0.7 ? <Puffs position={[-3.2, 1.3, z]} color="#e8e8e8" count={9} rise={1.4} spread={0.35} size={0.16} speed={1.2} opacity={0.8} /> : null}
             <Mum position={[-4.6, 0, -2.2]} rotationY={0.5} mood="scared" lookAt={[-3.2, 1, 0]} />
             <Dad position={[-1.9, 0, -2.4]} rotationY={-0.5} mood="scared" rattle={t > burn ? 0.8 : 0} lookAt={[-3.2, 1, 0]} />
+            <Folk kind="zombie" n={0} position={[-5.7, 0, -3.3]} rotationY={0.5} mood="scared" lookAt={[-3.2, 1, 0]} />
+            <Folk kind="skeleton" n={1} position={[-0.8, 0, -3.5]} rotationY={-0.5} mood="scared" lookAt={[-3.2, 1, 0]} />
+            <Folk kind="creeper" n={2} position={[-3.9, 0, -3.4]} mood="scared" lookAt={[-3.2, 1, 0]} />
+            <Folk kind="enderman" n={1} position={[-2.7, 0, -4.1]} lookAt={[-3.2, 1, 0]} />
           </>
         );
       },

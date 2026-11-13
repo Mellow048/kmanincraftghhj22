@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-monster-village",
   "mix": "public/audio/in-this-town-monster-village/mix.mp3",
-  "seconds": 168.3333,
+  "seconds": 221.1,
   "built_from": {
-    "timing.json": "dd2ba82180e9f62529e6f0a93623a781a9a75ba9",
-    "sound.json": "964f5e351b4a6953731f54e4daadb5913a11e566",
-    "narration.mp3": "51d15565a4b49ed07197707be79db3d437b0ce33"
+    "timing.json": "057587f722bce56e045447f76c221b40c75e6368",
+    "sound.json": "d1bcb2e792c7821b9c1df1020409c359a198e6f7",
+    "narration.mp3": "c9ef275db1e58a5312d82c4e2b7faf93c6e3d3a8"
   },
-  "mix_sha1": "8e335a2950e19f5d5a66178360ee7128de7ef8fb",
+  "mix_sha1": "17962157575028a9133fecbe16b0dcb352a702be",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,143 +18,181 @@
     {
       "from": "3.sun",
       "mood": "curious",
-      "at": 18.1
+      "at": 23.2
     },
     {
       "from": "4.mo",
       "mood": "sneak",
-      "at": 29.73
+      "at": 34.53
     },
     {
       "from": "5.wall",
       "mood": "playful",
-      "at": 40.37
+      "at": 44.9
     },
     {
       "from": "6.every",
       "mood": "hope",
-      "at": 53.63
+      "at": 57.83
     },
     {
       "from": "7.sunset",
       "mood": "curious",
-      "at": 71.8
+      "at": 75.53
     },
     {
       "from": "8.night",
       "mood": "sneak",
-      "at": 80.8
+      "at": 84.3
     },
     {
       "from": "9.ring",
       "mood": "drone",
-      "at": 86.63
+      "at": 90.0
     },
     {
       "from": "10.players",
       "mood": "tense",
-      "at": 96.0
+      "at": 98.17
     },
     {
       "from": "12.mum",
       "mood": "dark",
-      "at": 113.27
+      "at": 115.97
     },
     {
       "from": "13.ran",
       "mood": "tense",
-      "at": 120.47
+      "at": 122.97
     },
     {
       "from": "14.quiet",
       "mood": "none",
-      "at": 128.53
+      "at": 130.83
     },
     {
-      "from": "15.clang",
+      "from": "14.eyes",
       "mood": "dark",
-      "at": 136.23
+      "at": 137.5
     },
     {
       "from": "17.list",
       "mood": "sad",
-      "at": 152.33
+      "at": 154.03
     },
     {
       "from": "18.player",
       "mood": "dark",
-      "at": 159.67
+      "at": 161.43
+    },
+    {
+      "from": "19.look",
+      "mood": "sneak",
+      "at": 169.73
+    },
+    {
+      "from": "19.tap",
+      "mood": "playful",
+      "at": 172.83
+    },
+    {
+      "from": "20.gather",
+      "mood": "hope",
+      "at": 182.1
+    },
+    {
+      "from": "20.mo",
+      "mood": "sad",
+      "at": 186.9
+    },
+    {
+      "from": "20.mum",
+      "mood": "hope",
+      "at": 192.83
+    },
+    {
+      "from": "21.boom",
+      "mood": "tense",
+      "at": 198.9
+    },
+    {
+      "from": "22.back",
+      "mood": "sad",
+      "at": 210.73
+    },
+    {
+      "from": "22.armor",
+      "mood": "dark",
+      "at": 215.83
     }
   ],
-  "beds": 8,
+  "beds": 11,
   "measured": {
-    "musicUnderVoiceDb": 17.7,
+    "musicUnderVoiceDb": 17.6,
     "secondsWithoutMusic": 7.7,
-    "bedsUnderVoiceDb": 26.5,
-    "sfx": 218,
-    "sfxPerMinute": 77.7,
-    "sfxKinds": 43,
-    "longestGapSeconds": 3.0,
-    "longestGapAt": 162.5,
+    "bedsUnderVoiceDb": 25.9,
+    "sfx": 315,
+    "sfxPerMinute": 85.5,
+    "sfxKinds": 44,
+    "longestGapSeconds": 3.2,
+    "longestGapAt": 165.9,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 14.5,
-    "voiceOverRestWorstDb": 4.3,
+    "voiceOverRestMedianDb": 14.0,
+    "voiceOverRestWorstDb": 3.1,
     "voiceOverRestWorst": [
       {
-        "db": 4.3,
-        "t": 95.3,
-        "cue": "9.hill",
+        "db": 3.1,
+        "t": 207.8,
+        "cue": "21.order",
+        "sounding": []
+      },
+      {
+        "db": 4.0,
+        "t": 175.2,
+        "cue": "19.tap",
+        "sounding": [
+          "boing",
+          "clank",
+          "step_stick",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 208.6,
+        "cue": "21.order",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 163.4,
+        "cue": "18.player",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 202.6,
+        "cue": "21.army",
         "sounding": [
           "fire_whoosh"
         ]
       },
       {
-        "db": 5.0,
-        "t": 162.0,
-        "cue": "18.player",
-        "sounding": [
-          "hit",
-          "sting"
-        ]
-      },
-      {
-        "db": 5.2,
-        "t": 9.6,
-        "cue": "2.hiss",
-        "sounding": [
-          "boing",
-          "slide_down"
-        ]
-      },
-      {
         "db": 5.3,
-        "t": 33.6,
-        "cue": "4.hat",
+        "t": 183.1,
+        "cue": "20.gather",
         "sounding": [
-          "gust"
-        ]
-      },
-      {
-        "db": 5.3,
-        "t": 64.6,
-        "cue": "6.fish",
-        "sounding": [
-          "splash"
-        ]
-      },
-      {
-        "db": 6.0,
-        "t": 96.2,
-        "cue": "10.players",
-        "sounding": [
-          "clank",
-          "sting"
+          "creak"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.3,
-    "limiterMaxDb": 0.2
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.5
   },
   "failures": []
 }

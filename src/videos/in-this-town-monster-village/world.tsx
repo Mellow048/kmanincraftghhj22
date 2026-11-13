@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone } from "../../engine";
+import { Block, Clouds, Dust, Glow, GodRay, LightPool, PixelText, Tree, Vox, Zone } from "../../engine";
 import { Hut, LampPost, Lantern, Moon, Pine, Stars, Well } from "../../../Topics/InThisTown";
 import { PLACE } from "./kit";
 
@@ -11,6 +11,7 @@ import { PLACE } from "./kit";
  *            to a hill: that is where the players come from.
  *   day      Sun, clouds, the shade the monsters keep to.
  *   night    Stars, a moon, lit windows, lamps.
+ *   class    The classroom, far off to the south-east: "class+classS+day" seen from the board, "class+classN+day" seen from the back.
  *
  * A shot's zone is "village+day" or "village+night". 1 unit = 1 block = 1 metre. Ground is y = 0.
  */
@@ -52,6 +53,13 @@ const Village: React.FC = () => (
     <Hut at={[-2, 0, 13]} w={6} h={3.6} wall="cobble" roof="#3a2f4a" windows={[1.5]} door={-1.2} turn={Math.PI} />
     <Hut at={[22, 0, 12]} w={6.5} wall="cobble" roof="#2f4a3a" windows={[-1.6]} door={1.3} turn={Math.PI} />
 
+{/* The school: red, the last building on the street, with its name over the door. */}
+    <Hut at={PLACE.school} w={8} d={7} h={4.4} tint="#b5523a" roof="#34343e" windows={[-2.7, 2.7]} />
+    <Block position={[PLACE.school[0], 3.35, PLACE.school[2] + 0.16]} size={[3.5, 0.72, 0.08]} color="#f1ece0" />
+    <PixelText text="SCHOOL" position={[PLACE.school[0], 3.35, PLACE.school[2] + 0.22]} height={0.46} maxWidth={3.2} color="#2a2a33" />
+    <LampPost position={[26.3, 0, -3.2]} seed={7} />
+    <Vox kind="path" position={[31, 0.02, -2.4]} size={[2.4, 0.06, 6.6]} />
+
     <Well position={[-6, 0, 7]} />
 
     {(
@@ -59,10 +67,10 @@ const Village: React.FC = () => (
         [-16, -13.5, 4],
         [6, -15.5, 4.4],
         [16, -13, 3.8],
-        [28, -11, 4.6],
+        [39, -12, 4.6],
         [8, 17, 4.4],
         [30, 13, 4],
-        [33, 3, 4.4],
+        [39, 5, 4.4],
       ] as Array<[number, number, number]>
     ).map(([x, z, height], i) => (
       <Tree key={i} position={[x, 0, z]} height={height} leaf={i % 2 ? "#3f7f2d" : "#4a8c33"} />
@@ -72,11 +80,67 @@ const Village: React.FC = () => (
     {[-31, -34, -37, -33, -39].map((x, i) => (
       <Pine key={i} position={[x, 3, -9 + i * 5.5]} height={6 + (i % 2)} />
     ))}
+    {/* The forest behind the hill: where the second lot come from. Nothing stands in the lane the players use. */}
+    {(
+      [
+        [-36, -6], [-40, -3.5], [-43, -8], [-46, -4.5], [-38, -12], [-44, -14], [-41, 8.5], [-45, 7], [-37, 10.5], [-43, 12],
+        [-46.5, 1.5], [-47, 16], [-35, 17], [-40, 19], [-33, -15], [-47.5, -11],
+      ] as Array<[number, number]>
+    ).map(([x, z], i) => (
+      <Pine key={`f${i}`} position={[x, 3, z]} height={6.4 + (i % 3) * 0.8} />
+    ))}
     <LampPost position={[-9.2, 0, -0.4]} seed={2} />
     <LampPost position={[7.4, 0, 5.0]} seed={3} />
     <LampPost position={[15.6, 0, -1.0]} seed={4} />
     <LampPost position={[-16, 0, 4.9]} seed={5} />
   </>
+);
+
+const CL = PLACE.classroom;
+const SEAT_X = [-1, 0, 1];
+const SEAT_Z = [0, 1.6];
+
+/** The classroom: six desks in two rows, facing north to the board. Its two end walls are zones of their own, so a camera can stand where either one is. */
+const Classroom: React.FC = () => (
+  <group position={CL}>
+    <Vox kind="planks" position={[0, -0.1, 0]} size={[9, 0.2, 11]} />
+    <Vox kind="planks" tint="#cdb48c" position={[-4.5, 2.3, 0]} size={[0.2, 4.6, 11]} castShadow={false} />
+    <Vox kind="planks" tint="#cdb48c" position={[4.5, 2.3, 0]} size={[0.2, 4.6, 11]} castShadow={false} />
+    {SEAT_Z.map((z) =>
+      SEAT_X.map((x) => (
+        <group key={`${x}${z}`} position={[x, 0, z - 0.55]}>
+          <Block position={[0, 0.6, 0]} size={[0.8, 0.07, 0.48]} color="#9a6a34" />
+          <Block position={[-0.34, 0.29, 0]} size={[0.07, 0.58, 0.4]} color="#6b4a2a" />
+          <Block position={[0.34, 0.29, 0]} size={[0.07, 0.58, 0.4]} color="#6b4a2a" />
+          <Block position={[0.1, 0.65, 0.02]} size={[0.3, 0.03, 0.22]} color="#f1ece0" castShadow={false} />
+        </group>
+      )),
+    )}
+    <pointLight position={[0, 3.6, 0]} color="#fff0d0" intensity={24} distance={12} decay={2} />
+  </group>
+);
+const ClassSouth: React.FC = () => (
+  <group position={CL}>
+    <Vox kind="planks" tint="#c8ad84" position={[0, 2.3, 4.2]} size={[9, 4.6, 0.2]} castShadow={false} />
+    {[-2.4, 2.4].map((x) => (
+      <group key={x} position={[x, 2.2, 4.08]}>
+        <Block size={[1.7, 1.5, 0.06]} color="#5c3f24" castShadow={false} />
+        <Block position={[0, 0, -0.03]} size={[1.46, 1.26, 0.06]} color="#000000" emissive="#bfe2ff" emissiveIntensity={1} castShadow={false} />
+      </group>
+    ))}
+    <Block position={[0, 1.1, 4.08]} size={[1.1, 2.2, 0.08]} color="#7a5632" castShadow={false} />
+    <Vox kind="log" position={[0, 3.5, 4.05]} size={[9, 0.3, 0.3]} />
+  </group>
+);
+const ClassNorth: React.FC = () => (
+  <group position={CL}>
+    <Vox kind="planks" tint="#c8ad84" position={[0, 2.3, -3.6]} size={[9, 4.6, 0.2]} castShadow={false} />
+    <Block position={[-0.7, 2.05, -3.46]} size={[4.3, 2.0, 0.08]} color="#5c3f24" castShadow={false} />
+    <Block position={[-0.7, 2.05, -3.42]} size={[4.0, 1.7, 0.06]} color="#23402f" castShadow={false} />
+    <PixelText text="LOOK HERE" position={[-0.7, 2.3, -3.36]} height={0.44} maxWidth={3.4} color="#f1ece0" />
+    <Block position={[-0.7, 1.7, -3.37]} size={[2.6, 0.06, 0.03]} color="#f1ece0" castShadow={false} />
+    <Vox kind="log" position={[0, 4.2, -3.45]} size={[9, 0.3, 0.3]} />
+  </group>
 );
 
 const Day: React.FC = () => (
@@ -105,6 +169,7 @@ const Night: React.FC = () => (
     <pointLight position={[2, 4.2, 5]} color="#b4c2ff" intensity={30} distance={15} decay={2} />
     <pointLight position={[10, 4.2, 1.5]} color="#b4c2ff" intensity={34} distance={15} decay={2} />
     <pointLight position={[-25, 6.5, 2]} color="#b4c2ff" intensity={40} distance={16} decay={2} />
+    <pointLight position={[23, 4.2, 4]} color="#b4c2ff" intensity={34} distance={15} decay={2} />
   </>
 );
 
@@ -112,6 +177,15 @@ export const World: React.FC = () => (
   <>
     <Zone name="village">
       <Village />
+    </Zone>
+    <Zone name="class">
+      <Classroom />
+    </Zone>
+    <Zone name="classS">
+      <ClassSouth />
+    </Zone>
+    <Zone name="classN">
+      <ClassNorth />
     </Zone>
     <Zone name="day">
       <Day />

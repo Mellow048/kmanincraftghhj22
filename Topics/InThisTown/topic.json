@@ -53,6 +53,18 @@
         250,
         520
       ]
+    },
+    "extended": {
+      "seconds": [
+        178,
+        225
+      ],
+      "hardMaxSeconds": 230,
+      "words": [
+        770,
+        960
+      ],
+      "note": "Asked for by the owner for in-this-town-monster-village: a three-minute film with a longer ending. Use it only when he asks for more than the long cut holds."
     }
   },
   "measuredFromReference": {

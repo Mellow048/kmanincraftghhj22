@@ -5,7 +5,7 @@ humans, they must have something in common and do the big reveal in the ending. 
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word.
 
-**Length: the long cut.** `film.tsx` has no `cut` line.
+**Length: the extended cut** (`cut: "extended"` in `film.tsx`; `Topics/InThisTown/topic.json` → `cuts.extended`). The owner asked for a longer ending after the first render: an ambush, the village accepting Mo, a second army, and Mo staying behind alone in iron armour. He also asked for a school and for more than one monster of each kind.
 
 **The owner's outline.** The teller lives in a village of monsters: zombies, skeletons, a creeper, an enderman, a
 spider, a slime (the pack's `monsters.tsx`). He is the only human. One villager, a zombie in a straw hat with a scarf
@@ -40,6 +40,8 @@ What is planted, and where it pays off:
 [2.post]     The postman was an enderman. You could not look at him,
 [2.sign]     so we all signed for our parcels with our eyes shut.
 [2.bus]      The school bus was a slime. You got in. You got out wet.
+[2.school]   School was me, some zombies, and two creepers.
+[2.board]    The teacher was an enderman. So nobody ever looked at the board.
 
 # clip 02-different
 [3.sun]      Every monster stayed out of the sun. The sun burned them.
@@ -119,6 +121,32 @@ What is planted, and where it pays off:
 [17.why]     He had not been looking at me because he hated humans.
 [17.basket]  "Who do you think carried the basket here?" he said.
 [18.player]  The big player took one step back. He knew that face.
-[18.you]     "You," he said. "We are not here for the monsters. We are here for you."
-[18.sub]     Like and subscribe for part two.
+[18.you]     "You," he said. "The player who ran away to live with monsters."
+[18.hunt]    They had not come for the village. They had come for him.
+
+# clip 09-ambush
+[19.look]    Every player was staring at Mo. Not one of them looked behind.
+[19.tap]     My dad tapped one on the shoulder. With the arm he was not wearing.
+[19.bus]     The bus rolled through the rest like a bowling ball.
+[19.hiss]    And Hiss only had to say one word. "Hug."
+[19.run]     They dropped their swords and ran for the hill.
+
+# clip 10-accept
+[20.gather]  Then the whole village came out. Every zombie. Every skeleton. Every kid from my school.
+[20.mo]      Mo stood in the middle, with his hat in his hands. He did not look up.
+[20.fear]    He had lied to them for years. He thought they would hate him too.
+[20.mum]     My mum walked up to him. And put the hat back on his head.
+[20.knew]    "We always knew," she said. "Zombies do not eat bread."
+
+# clip 11-army
+[21.boom]    Then something blew up in the forest.
+[21.army]    Players. Not ten of them. Hundreds, pouring out of the trees.
+[21.order]   "Run," Mo said. "East, past the pond. I dug a hideout for you, years ago."
+[21.ran]     So we ran. Everybody ran.
+
+# clip 12-alone
+[22.back]    At the last house, I looked back. Mo was not with us.
+[22.alone]   He was standing in the street. Alone.
+[22.armor]   He put on an iron helmet. An iron chestplate. And he drew a sword.
+[22.sub]     Like and subscribe for part two.
 ```

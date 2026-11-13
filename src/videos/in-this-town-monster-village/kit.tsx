@@ -16,6 +16,7 @@ export {
   Creeper, Enderman, MONSTER, Skeleton, Slime, Spider, Zombie, monsterFace,
 } from "../../../Topics/InThisTown";
 export { DustRing, Streaks, tossed, lerp3, stride, hop, flat } from "../in-this-town-superpower-at-18-part-2/kit";
+export { Burst } from "../in-this-town-superpower-at-18/kit";
 
 export const timing = timingJson as unknown as Timing;
 
@@ -48,6 +49,10 @@ export const PLACE = {
   stop: [-9, 0, 2.4] as Vec3,
   pond: [13, 0, 8] as Vec3,
   room: [0, 0, 80] as Vec3,
+  /** The school, past Mo's house: the last building on the street. */
+  school: [31, 0, -6] as Vec3,
+  /** The classroom is a set of its own: zones "class" (floor, desks, side walls), "classS" (the back wall) and "classN" (the board wall). */
+  classroom: [60, 0, 80] as Vec3,
 };
 /** Where each of them sits on the ledge, facing south. The kid is lifted so his seat meets the stone. */
 export const ME_SIT: Vec3 = [2.85, 0.06, 6.45];
@@ -92,6 +97,7 @@ export const handOf = (p: Vec3, rotY: number, a: number, scale = 1): Vec3 => {
 
 type A = Partial<MinecraftAvatarProps>;
 const SKIN = "#dba47c";
+const IRON = "#d3dae2";
 
 /** The teller: a boy in YELLOW. Faces for a kid: smile grin laugh frown uneasy brave fear wow ouch calm. */
 export const Hero: React.FC<A> = (p) => (
@@ -109,24 +115,34 @@ export const manFace = (p: Vec3): Vec3 => [p[0], p[1] + 1.56, p[2]];
  * not the pack's Zombie: he can sit, fish, laugh and catch a sword. `scarf` 1 is up over his nose, 0 is pulled
  * down round his neck. `wiped` 0–1 is how much green has come off his cheek.
  */
-export const Mo: React.FC<A & { scarf?: number; wiped?: number; hat?: boolean; sleeve?: number }> = ({ scarf = 1, wiped = 0, hat = true, sleeve, children, ...p }) => (
+export const Mo: React.FC<A & { scarf?: number; wiped?: number; hat?: boolean; sleeve?: number; helmet?: number; chest?: boolean }> = ({ scarf = 1, wiped = 0, hat = true, sleeve, helmet = 0, chest = false, children, ...p }) => (
   <MinecraftAvatar
     outfit="tee"
     skin={MONSTER.zombieSkin}
     hair="#4c7f3e"
-    colors={{ torso: MONSTER.zombieShirt, arms: MONSTER.zombieShirt, legs: MONSTER.zombieLegs }}
+    colors={{ torso: chest ? IRON : MONSTER.zombieShirt, arms: chest ? "#b9c1cb" : MONSTER.zombieShirt, legs: MONSTER.zombieLegs }}
     blink
     phase={2.3}
     head={
       <>
-        {hat ? <StrawHat position={[0, 0.225, 0]} width={0.92} /> : null}
+        {hat && helmet <= 0 ? <StrawHat position={[0, 0.225, 0]} width={0.92} /> : null}
+        {helmet > 0 ? (
+          <group scale={helmet}>
+            {/* An iron helmet: it stops above the brows, so the eyes stay in the open. */}
+            <Block position={[0, 0.17, 0]} size={[0.57, 0.2, 0.57]} color={IRON} metalness={0.3} roughness={0.45} />
+            <Block position={[0, -0.02, -0.2]} size={[0.57, 0.2, 0.17]} color={IRON} metalness={0.3} roughness={0.45} />
+            <Block position={[0.27, -0.02, -0.03]} size={[0.03, 0.2, 0.2]} color={IRON} />
+            <Block position={[-0.27, -0.02, -0.03]} size={[0.03, 0.2, 0.2]} color={IRON} />
+            <Block position={[0, 0.08, 0.288]} size={[0.57, 0.035, 0.015]} color="#8d96a2" />
+          </group>
+        ) : null}
         <Block position={[0, -0.12 - (1 - scarf) * 0.17, 0]} size={[0.5 + (1 - scarf) * 0.04, 0.2 - (1 - scarf) * 0.08, 0.5 + (1 - scarf) * 0.04]} color={MONSTER.scarfRed} />
         <Block position={[0.14, -0.34, 0.26]} size={[0.11, 0.24, 0.05]} color="#9c2c22" />
         {sleeve === undefined ? null : <Block position={[-0.3 + 0.36 * sleeve, 0.0, 0.31]} size={[0.14, 0.22, 0.14]} color={MONSTER.zombieShirt} />}
         {wiped > 0 ? (
           <>
-            <Block position={[-0.225 + 0.1 * wiped, -0.01, 0.228]} size={[0.2 * wiped, 0.2, 0.012]} color={SKIN} castShadow={false} />
-            <Block position={[-0.228, -0.01, 0.225 - 0.07 * wiped]} size={[0.012, 0.2, 0.14 * wiped]} color={SKIN} castShadow={false} />
+            <Block position={[-0.225 + 0.075 * wiped, -0.135, 0.228]} size={[0.15 * wiped, 0.13, 0.012]} color={SKIN} castShadow={false} />
+            <Block position={[-0.228, -0.1, 0.225 - 0.08 * wiped]} size={[0.012, 0.2, 0.16 * wiped]} color={SKIN} castShadow={false} />
           </>
         ) : null}
       </>
@@ -151,6 +167,47 @@ export const Postman: React.FC<M & { jaw?: number; carry?: number; shake?: numbe
 /** The school bus. */
 export const Bus: React.FC<M & { squash?: number; size?: number }> = (p) => <Slime size={1.9} phase={1.2} {...p} />;
 export const Gran: React.FC<M & { rear?: number }> = (p) => <Spider hat="bow" phase={2.2} {...p} />;
+
+export type Kind = "zombie" | "skeleton" | "creeper" | "enderman" | "slime" | "spider";
+const SCARVES = ["#7a4fb0", "#e07a2e", "#e8e4d8", "#e0b83a", "#3f6fc2", "#8a5a2a"];
+/**
+ * One more villager. A monster village has many of each kind: `n` tells two of a kind apart (scarf, bow, the beat
+ * they sway on). The named ones (Mum, Dad, Hiss, the postman, the bus) keep their own colours.
+ */
+export const Folk: React.FC<M & { kind: Kind; n?: number; arms?: number; wave?: number; fuse?: number; rattle?: number; size?: number; jaw?: number; shake?: number }> = ({
+  kind, n = 0, arms, wave, fuse, rattle, size, jaw, shake, ...p
+}) => {
+  const scarf = SCARVES[n % SCARVES.length];
+  const phase = n * 1.7 + 0.3;
+  if (kind === "zombie") return <Zombie scarf={scarf} hat={n % 3 === 1 ? "bow" : "none"} phase={phase} arms={arms} wave={wave} {...p} />;
+  if (kind === "skeleton") return <Skeleton scarf={scarf} phase={phase} rattle={rattle} wave={wave} {...p} />;
+  if (kind === "creeper") return <Creeper phase={phase} fuse={fuse} {...p} />;
+  if (kind === "enderman") return <Enderman scarf={n % 2 ? scarf : undefined} phase={phase} jaw={jaw} shake={shake} {...p} />;
+  if (kind === "slime") return <Slime size={size ?? 0.8} phase={phase} {...p} />;
+  return <Spider phase={phase} {...p} />;
+};
+
+/** A group of villagers: [kind, x, z, scale?] each, all turned and moved together. `n0` shifts who they are. */
+export const Crowd: React.FC<{
+  who: Array<[Kind, number, number, number?]>;
+  dx?: number;
+  dz?: number;
+  face?: number;
+  look?: Vec3;
+  mood?: M["mood"];
+  walk?: number;
+  nod?: number;
+  n0?: number;
+  hopAt?: number;
+  t?: number;
+}> = ({ who, dx = 0, dz = 0, face = 0, look, mood, walk, nod, n0 = 0, hopAt, t = 0 }) => (
+  <>
+    {who.map(([kind, x, z, scale], i) => {
+      const up = hopAt === undefined ? 0 : Math.max(0, Math.sin(Math.min(1, Math.max(0, (t - hopAt - i * 0.04) / 0.3)) * Math.PI)) * 0.3;
+      return <Folk key={i} kind={kind} n={n0 + i} position={[x + dx, up, z + dz]} rotationY={face} scale={scale ?? 1} lookAt={look} mood={mood} walk={walk} nod={look ? undefined : nod} />;
+    })}
+  </>
+);
 
 const RAIDERS = [
   { skin: "#c68e62", hair: "#1c1410", torso: "#5a1f1f", legs: "#22222a" },
@@ -180,6 +237,44 @@ export const Raider: React.FC<A & { who: number; sword?: boolean; torch?: boolea
     </MinecraftAvatar>
   );
 };
+
+/**
+ * A lot of players a long way off: block people, cheap enough to have a hundred and fifty. They fill a column `rows`
+ * deep going west from x = `from`, between z = `z0` and `z1`, and bob as they come. `adv` is metres advanced.
+ */
+export const Army: React.FC<{ t: number; from: number; rows?: number; cols?: number; adv?: number; z0?: number; z1?: number; ground?: (x: number) => number }> = ({
+  t, from, rows = 18, cols = 7, adv = 0, z0 = -1.2, z1 = 5.2, ground = hillY,
+}) => (
+  <>
+    {Array.from({ length: rows * cols }, (_, i) => {
+      const row = Math.floor(i / cols);
+      const col = i % cols;
+      const r1 = ((i * 0.618) % 1) - 0.5;
+      const r2 = ((i * 0.377 + 0.2) % 1) - 0.5;
+      const x = from - row * 1.12 + r1 * 0.5 + adv;
+      const z = z0 + ((col + 0.5) / cols) * (z1 - z0) + r2 * 0.5;
+      const c = RAIDERS[(i * 5 + row) % RAIDERS.length];
+      const bob = Math.abs(Math.sin(t * 9 + i * 1.9)) * 0.14;
+      const torch = i % 6 === 2;
+      return (
+        <group key={i} position={[x, ground(x) + bob, z]}>
+          <Block position={[0, 0.36, 0]} size={[0.44, 0.72, 0.24]} color={c.legs} />
+          <Block position={[0, 1.06, 0]} size={[0.6, 0.68, 0.28]} color={c.torso} />
+          <Block position={[0, 1.62, 0]} size={[0.44, 0.44, 0.44]} color={c.skin} />
+          <Block position={[0, 1.8, -0.02]} size={[0.47, 0.12, 0.47]} color={c.hair} />
+          {torch ? (
+            <>
+              <Block position={[0.34, 1.5, 0.14]} size={[0.07, 0.6, 0.07]} color="#6b4a2a" castShadow={false} />
+              <Block position={[0.34, 1.86, 0.14]} size={[0.15, 0.17, 0.15]} color="#000000" emissive="#ffb030" emissiveIntensity={1} castShadow={false} />
+            </>
+          ) : (
+            <Block position={[0.34, 1.62, 0.14]} size={[0.06, 0.84, 0.05]} color="#dfe6ee" emissive="#8fa0b4" emissiveIntensity={0.25} castShadow={false} />
+          )}
+        </group>
+      );
+    })}
+  </>
+);
 
 /** A monster knocked flat on its back: `k` 0 is standing, 1 is down. `position` is where the feet are. */
 export const Fallen: React.FC<{ position: Vec3; rotationY: number; k: number; children: React.ReactNode }> = ({ position, rotationY, k, children }) => (
@@ -214,6 +309,14 @@ export const Ring: React.FC<{ t?: number; look?: Vec3; mood?: "calm" | "angry" |
     {mo ? <Mo {...ringAt(26)} animation="idle" face="neutral" lookAt={look} gaze={0} /> : null}
     <Postman {...ringAt(52)} mood={mood} lookAt={look} />
     <Gran {...ringAt(78)} scale={0.8} mood={mood} />
+    <Folk kind="zombie" n={0} {...ringAt(-39)} mood={mood} lookAt={look} />
+    <Folk kind="skeleton" n={1} {...ringAt(-13)} mood={mood} lookAt={look} />
+    <Folk kind="creeper" n={2} {...ringAt(13)} mood={mood} lookAt={look} />
+    <Folk kind="zombie" n={4} {...ringAt(39)} mood={mood} lookAt={look} />
+    <Folk kind="skeleton" n={3} {...ringAt(65)} mood={mood} lookAt={look} />
+    <Folk kind="enderman" n={0} {...ringAt(-104)} mood={mood} lookAt={look} />
+    <Folk kind="zombie" n={5} {...ringAt(100)} mood={mood} lookAt={look} />
+    <Folk kind="creeper" n={5} {...ringAt(-122)} mood={mood} lookAt={look} />
   </>
 );
 

@@ -1,6 +1,6 @@
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Basket, Bits, Bus, DAY, Dad, Hero, Hiss, Mum, NORTH, Parcel, Postman, Puffs, ZONE, ease, faceOf, hop, jolt, monsterFace, pop, ramp, timing, wordAt } from "./kit";
+import { Basket, Bits, Bus, DAY, Dad, Folk, Hero, Hiss, Mum, NORTH, PLACE, Parcel, Postman, Puffs, ZONE, ease, faceOf, hop, jolt, monsterFace, pop, ramp, timing, wordAt } from "./kit";
 
 /** Under the market hall, at its sunny edge. */
 const ME: Vec3 = [-3.5, 0, 0.5];
@@ -9,6 +9,15 @@ const DAD: Vec3 = [-2.65, 0, -1.3];
 const HISS: Vec3 = [-3.5, 0, -2.3];
 const POST: Vec3 = [-3.5, 0, -3.3];
 const LENS: Vec3 = [-3.5, 1.6, 6];
+const CL = PLACE.classroom;
+/** Who sits where in class, apart from him (front row, middle): kind, x, z, which one. */
+const SEATS: Array<["zombie" | "creeper", number, number, number]> = [
+  ["zombie", -1, 0, 0],
+  ["creeper", 1, 0, 1],
+  ["zombie", -1, 1.6, 4],
+  ["creeper", 0, 1.6, 3],
+  ["zombie", 1, 1.6, 2],
+];
 
 /** HOOK and the jokes: who lives here. Everything is under the hall roof, out of the sun, and he is not. */
 export const scene1 = storyScene(timing, {
@@ -28,6 +37,13 @@ export const scene1 = storyScene(timing, {
           <Dad position={DAD} scale={pop(t, 0.5)} wave={1} mood="happy" lookAt={LENS} />
           <Hiss position={HISS} scale={pop(t, 0.75)} mood="happy" lookAt={LENS} />
           <Postman position={POST} scale={pop(t, 1.0)} lookAt={LENS} />
+          {/* And the rest of the village, further back in the shade. */}
+          <Folk kind="zombie" n={0} position={[-5.35, 0, -2.7]} scale={pop(t, 1.15)} wave={1} mood="happy" lookAt={LENS} />
+          <Folk kind="skeleton" n={1} position={[-1.65, 0, -2.7]} scale={pop(t, 1.3)} wave={1} mood="happy" lookAt={LENS} />
+          <Folk kind="creeper" n={2} position={[-5.0, 0, -3.9]} scale={pop(t, 1.45)} mood="happy" lookAt={LENS} />
+          <Folk kind="zombie" n={4} position={[-2.0, 0, -4.0]} scale={pop(t, 1.6)} mood="happy" lookAt={LENS} />
+          <Folk kind="enderman" n={1} position={[-4.4, 0, -4.3]} scale={pop(t, 1.75)} lookAt={LENS} />
+          <Folk kind="skeleton" n={3} position={[-2.7, 0, -4.4]} scale={pop(t, 1.9)} mood="happy" lookAt={LENS} />
         </>
       ),
     },
@@ -154,6 +170,62 @@ export const scene1 = storyScene(timing, {
             <Bits position={[-5.3, 1.0, -2.4]} t={t - inn} color="#8fe07a" count={10} power={2.4} />
             <Bits position={[-5.3, 1.0, -2.4]} t={t - out} color="#8fe07a" count={16} power={3.6} toward={[1, 0.4, 0.3]} />
             {t > out + 0.4 ? <Puffs position={[-3.0, 0.9, -2.4]} color="#8fe07a" count={5} rise={-0.7} spread={0.25} size={0.07} speed={1.4} opacity={0.9} /> : null}
+          </>
+        );
+      },
+    },
+    {
+      cue: "2.school",
+      ...cam.push({ on: [CL[0], 1.05, CL[2] + 0.7], dist: 7.5, to: 6.7, yaw: 180, pitch: 12, fov: 42 }),
+      zone: "class+classS+day",
+      look: DAY,
+      note: "The classroom from the board: six desks. He is in the middle of the front row in yellow. On 'zombies' three zombie kids wave. On 'creepers' the two creepers swell and hiss hello, and he leans away.",
+      stage: (t) => {
+        const zom = wordAt("2.school", "zombies");
+        const cre = wordAt("2.school", "creepers");
+        const fuse = t > cre ? 0.55 * Math.exp(-(t - cre) * 2.2) * (0.6 + 0.4 * Math.sin((t - cre) * 30)) : 0;
+        return (
+          <>
+            <Hero position={[CL[0], hop(t, 0.05, 0.2, 0.3), CL[2]]} rotationY={NORTH} animation={t < cre ? "wave" : "idle"} face={t > cre ? "fear" : "grin"} headYaw={t > cre ? -0.5 * ease(ramp(t, cre, cre + 0.2)) : 0} gaze={0} />
+            {SEATS.map(([kind, sx, sz, n], i) => (
+              <Folk
+                key={i}
+                kind={kind}
+                n={n}
+                position={[CL[0] + sx, kind === "zombie" ? hop(t, zom + i * 0.07, 0.22, 0.3) : 0, CL[2] + sz]}
+                rotationY={NORTH}
+                scale={(sz > 0 ? 0.82 : 0.76) * (kind === "creeper" ? 1 + 0.12 * fuse : 1)}
+                wave={kind === "zombie" && t > zom ? 1 : 0}
+                fuse={kind === "creeper" ? fuse : 0}
+                mood="happy"
+                lookAt={[CL[0], 1.6, CL[2] - 7]}
+              />
+            ))}
+            {t > cre && t < cre + 0.9 ? <Puffs position={[CL[0] - 0.5, 1.2, CL[2] + 0.2]} color="#e8ffe0" count={6} rise={0.8} spread={0.5} size={0.08} speed={1.4} opacity={0.7} /> : null}
+          </>
+        );
+      },
+    },
+    {
+      cue: "2.board",
+      ...cam.push({ on: [CL[0] + 0.1, 1.75, CL[2] - 1.3], dist: 7.8, to: 7.0, yaw: 0, pitch: 7, fov: 42 }),
+      zone: "class+classN+day",
+      look: DAY,
+      note: "From the back of the class: the board says LOOK HERE and the teacher, an enderman, turns round from it. Every head in the room snaps away to the side. He peeks; the teacher's jaw drops; he ducks.",
+      impacts: [{ at: 2.46, amp: 0.04, dur: 0.3 }],
+      stage: (t) => {
+        const turn = wordAt("2.board", "enderman") - 0.15;
+        const k = ease(ramp(t, turn, turn + 0.3));
+        const peek = wordAt("2.board", "looked");
+        const caught = peek + 0.3;
+        const pk = ease(ramp(t, peek - 0.1, peek + 0.1)) * (1 - ease(ramp(t, caught, caught + 0.12)));
+        return (
+          <>
+            <Folk kind="enderman" n={0} position={[CL[0] + 1.3, 0, CL[2] - 2.5]} rotationY={NORTH * (1 - k)} jaw={t > caught ? 1 : 0} shake={t > caught ? 1 : 0} />
+            <Hero position={[CL[0], hop(t, caught, 0.25, 0.25), CL[2]]} rotationY={NORTH} animation="idle" face={t > caught ? "fear" : "uneasy"} headYaw={-1.3 * k * (1 - pk)} headPitch={t > caught ? 0.7 : 0.1} gaze={0} />
+            {SEATS.map(([kind, sx, sz, n], i) => (
+              <Folk key={i} kind={kind} n={n} position={[CL[0] + sx, 0, CL[2] + sz]} rotationY={NORTH} scale={sz > 0 ? 0.82 : 0.76} turn={(sx < 0 || (sx === 0 && sz > 0) ? 1.35 : -1.35) * k} nod={0.25 * k} mood={k > 0.5 ? "scared" : "calm"} />
+            ))}
           </>
         );
       },
