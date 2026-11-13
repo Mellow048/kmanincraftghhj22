@@ -162,9 +162,9 @@
     },
     {
       "cue": "2.vote",
-      "word": "purple",
+      "word": "leader",
       "sfx": "pop",
-      "why": "The purple hat with a gold band lands on A."
+      "why": "The purple hat with a gold band lands on A (the leader)."
     },
     {
       "cue": "2.judge",
@@ -174,9 +174,9 @@
     },
     {
       "cue": "2.judge",
-      "word": "hammer",
+      "word": "rule",
       "sfx": "clank",
-      "why": "The gavel appears over the bench."
+      "why": "The gavel appears over the bench (the rule)."
     },
     {
       "cue": "2.judge",
@@ -224,15 +224,15 @@
     },
     {
       "cue": "2.again",
-      "word": "wins",
+      "word": "lose",
       "sfx": "pop",
-      "why": "B's pile wins."
+      "why": "B's pile wins (the vote again, and he can lose)."
     },
     {
       "cue": "2.again",
-      "word": "hat",
+      "word": "vote",
       "sfx": "pop",
-      "why": "The hat crosses to B."
+      "why": "The hat crosses to B (the vote again)."
     },
     {
       "cue": "2.again",
@@ -281,9 +281,9 @@
     },
     {
       "cue": "4.won",
-      "word": "hat",
+      "word": "vote",
       "sfx": "pop",
-      "why": "The hat lands on him."
+      "why": "The hat lands on him (the fair vote)."
     },
     {
       "cue": "4.judge",
@@ -294,10 +294,10 @@
     },
     {
       "cue": "4.judge",
-      "word": "hammer",
+      "word": "judge",
       "sfx": "clank",
       "trim": -1,
-      "why": "His hammer drops on the desk."
+      "why": "His hammer drops on the desk (the judge)."
     },
     {
       "cue": "4.judge",
@@ -307,9 +307,9 @@
     },
     {
       "cue": "4.jail",
-      "word": "NO",
+      "word": "wrong",
       "sfx": "pop",
-      "why": "The woman who ran against him says NO."
+      "why": "The woman who ran against him says NO (he is wrong)."
     },
     {
       "cue": "4.jail",
@@ -359,13 +359,14 @@
       "cue": "4.name",
       "at": 0.1,
       "sfx": "place",
+      "trim": -1,
       "why": "DICTATOR is cut into the balcony front."
     },
     {
       "cue": "4.name",
-      "word": "DICTATOR",
+      "word": "job",
       "sfx": "stamp",
-      "why": "The word is said."
+      "why": "The word is said (the job)."
     },
     {
       "cue": "4.name",
@@ -390,9 +391,9 @@
     },
     {
       "cue": "5.word",
-      "word": "purple",
+      "word": "job",
       "sfx": "pop",
-      "why": "A purple cloak."
+      "why": "A purple cloak (the job)."
     },
     {
       "cue": "5.word",
@@ -445,9 +446,9 @@
     },
     {
       "cue": "6.answer",
-      "word": "fifth",
+      "word": "no",
       "sfx": "clank",
-      "why": "His hammer the fifth."
+      "why": "His hammer the fifth (the no)."
     },
     {
       "cue": "7.you",
@@ -465,7 +466,7 @@
     },
     {
       "cue": "7.you",
-      "word": "NO",
+      "word": "slot",
       "sfx": "pop",
       "why": "A NO nearly your size grows out of the slot."
     },
@@ -478,7 +479,7 @@
     },
     {
       "cue": "7.sub",
-      "word": "sign",
+      "word": "subscribe",
       "sfx": "pop",
       "why": "The subscribe sign over your head."
     },
@@ -491,9 +492,9 @@
     },
     {
       "cue": "7.sub",
-      "word": "sub",
+      "word": "can",
       "sfx": "ding",
-      "why": "The subscribe line."
+      "why": "The subscribe line (you still can)."
     }
   ]
 }
