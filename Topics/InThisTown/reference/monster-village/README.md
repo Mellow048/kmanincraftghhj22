@@ -6,7 +6,7 @@ player who watches him, Mo, turns out to have been guarding them all along.
 
 | File | What it is |
 |---|---|
-| [`../../../../renders/in-this-town-monster-village.mp4`](../../../../renders/in-this-town-monster-village.mp4) | **The film as delivered**: 720×1280, 3:41, 95 shots, full sound. It is not copied into this folder, to keep the repository small |
+| `in-this-town-monster-village.mp4` | **The film as delivered**: 720×1280, 3:41, 95 shots, full sound. A copy of `renders/in-this-town-monster-village.mp4` |
 | `contact-sheet-every-5-seconds.jpg` | One frame every five seconds, on one sheet. An agent cannot watch a video: read this first |
 | `shot-log.md` | Every shot on one page: start, length, words, place, camera, and why this picture |
 | `source/` | A **snapshot** of the source: `narration.md`, `timing.json`, `kit.tsx`, `world.tsx`, `scene1.tsx` … `scene10.tsx`, `film.tsx`, `sound.json` |

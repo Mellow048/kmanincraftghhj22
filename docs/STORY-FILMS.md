@@ -79,6 +79,12 @@ export const scene1 = storyScene(timing, {
   written as plain `[x, y, z]` arrays: the lint reads the file as text and does not follow a helper call.
 - `stage(t, { dur, p })` returns who and what is in the shot. `t` is seconds since the cut, `p` runs 0→1. It is a
   plain function: no hooks in it. For a straight walk use `stride(a, b, p)`.
+- `cut: <seconds>` cuts **inside** a line: a second shot with the same `cue` that starts that many seconds into it.
+  The shot before it ends there, and its own `t` counts from its cut (so an action on a word is
+  `wordAt(cue, word) - cut`). Use it in action, where one line of script needs two or three angles. The fight in
+  `Topics/InThisTown/reference/robot-at-18/` is built this way.
+- `pose` on an avatar sets every joint by hand instead of playing an `animation`. A fight needs it: see
+  `fight.tsx` in the same reference.
 - `look` changes the lighting preset for that shot. `zone` picks the part of the world to draw.
 - Shots in a scene must follow the script line by line. `storyScene` throws if one is skipped.
 

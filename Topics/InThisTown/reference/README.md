@@ -1,12 +1,18 @@
 # The reference folder: what a good film of this topic is
 
-Open this before you write a film of this topic. Four folders here are films of ours that the owner approved, each
-with its **source code** and its **mp4**. Two are attempts he rejected. One is the video the format came from.
+Open this before you write a film of this topic. Nine folders here are films of ours that the owner approved, each
+with its **source code** and its **mp4**. **For a fight or a chase, open [`robot-at-18/`](robot-at-18/README.md)
+first.** Two are attempts he rejected. One is the video the format came from.
 
 The owner, 2026-11-13, when he asked for the films to be kept here:
 
 > "every single one u made is good, put them into the reference + the mp4 in main branch so that other agents know
 > how to make a good short"
+
+And again that night, after the robot film's fight:
+
+> "make the other shorts that u made go into the reference including this robot short. source code + mp4 so other
+> agents can see how to make a good fight scenes!"
 
 ## Films the owner approved: build like these
 
@@ -17,10 +23,12 @@ The owner, 2026-11-13, when he asked for the films to be kept here:
 | [`monster-egg/`](monster-egg/README.md) | *In This Town: The Monster Egg* | Full film. 2:57, 18 beats, 93 shots, 746 words. Day, night and a lava lake | "every single one u made is good" | The **long cut**: all 18 beats of `SCRIPT.md`, and three places in one world. **It has a voice and no other sound.** Do not copy that |
 | [`superpower-at-18/`](superpower-at-18/README.md) | *In This Town, Everyone Got a Superpower at 18* (part one) | Full film. 2:48, 18 beats, 90 shots, 710 words. Full sound | "wow i love it, i love how u made the short" | The long cut **with** sound. A story the owner outlined himself, and the ending he threw out first |
 | [`superpower-at-18-part-2/`](superpower-at-18-part-2/README.md) | *In This Town, Everyone Got a Superpower at 18, Part 2* | Full film. 2:49, 18 beats, 83 shots, 713 words. Full sound, the owner's music track | "a banger and a massive upgrade! i totally felt like i was watching peak!" | **Fast action.** Why its first render was rejected (no motion, "it just teleports to B") and the eight things that fixed it. A sequel that picks up on the second part one stopped |
-| [`monster-village/`](monster-village/README.md) | *In This Town, I Live in a Monster Village* (part one) | Extended cut. 3:41, 95 shots. Day and night. Full sound | "i liked the superhero and this one" | **Monsters as a family**, the extended cut, night scenes. Its mp4 is `renders/in-this-town-monster-village.mp4` (not copied into the folder) |
-| [`monster-village-part-2/`](monster-village-part-2/README.md) | *In This Town, I Live in a Monster Village, Part 2* | Middle cut. 2:08, 54 shots. Full sound | "pretty good", then "perfect" | **A sequel on a reused world**, built from the owner's own outline. Framing for a narrow phone frame; replacing one shot without a full render. Its mp4 is `renders/in-this-town-monster-village-part-2.mp4` |
+| [`monster-village/`](monster-village/README.md) | *In This Town, I Live in a Monster Village* (part one) | Extended cut. 3:41, 95 shots. Day and night. Full sound | "i liked the superhero and this one" | **Monsters as a family**, the extended cut, night scenes. Its mp4 is in the folder |
+| [`monster-village-part-2/`](monster-village-part-2/README.md) | *In This Town, I Live in a Monster Village, Part 2* | Middle cut. 2:08, 54 shots. Full sound | "pretty good", then "perfect" | **A sequel on a reused world**, built from the owner's own outline. Framing for a narrow phone frame; replacing one shot without a full render. Its mp4 is in the folder |
+| [`robot-at-18/`](robot-at-18/README.md) | *In This Town, Everyone Gets a Robot at 18* | Extended cut. 3:25, 99 shots, 833 words. Sunset forest and sky. Full sound | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A fight.** Sword against a kid in a suit, on the ground and in the air: posed bodies, hit-freezes, cuts inside a line, flying poses. Two rejected fights and what was wrong with each. A sheet of the whole fight at five frames a second |
+| [`pumpkin-heads/`](pumpkin-heads/README.md) | *In This Town, Everyone Wore a Pumpkin on Their Head* | Short cut. 1:56, 14 beats, 58 shots, 490 words. Day and night. Full sound | He approved the script and asked for another ending | A second **short cut** with sound; a teller whose face is a carved pumpkin; an ending that is a picture and not a punchline |
 
-The first three were built by one agent, the fourth by another. All four use the same pack
+All of them use the same pack
 ([`../PACK.md`](../PACK.md)), the same engine and the same checks.
 
 ## What is in a film's folder
@@ -28,7 +36,7 @@ The first three were built by one agent, the fourth by another. All four use the
 | File | What it is |
 |---|---|
 | `README.md` | What the owner said, what the film is good for, its shape and its sound in numbers, and what was hard |
-| `<film id>.mp4` | The film as delivered: 720×1280, with its sound. A copy of `renders/<film id>.mp4`. The 1080×1920 master is a release asset of the repository; each page names the release |
+| `<film id>.mp4` | The film as delivered (720×1280 for the older films, 1080×1920 for the newer), with its sound. A copy of `renders/<film id>.mp4`. The 1080×1920 master is a release asset of the repository; each page names the release |
 | `contact-sheet-*.jpg` | The film as one picture. An agent cannot watch a video: **read this first** |
 | `shot-log.md` | Every shot on one page: when it starts, how long it holds, the words, the place, the camera, and why this picture for these words |
 | `source/` | A **snapshot** of the film's source: `narration.md` (the script, with what is planted and where it pays off), `timing.json`, `kit.tsx`, `world.tsx`, one `sceneN.tsx` for each beat, `film.tsx`, and `sound.json` if the film has sound |

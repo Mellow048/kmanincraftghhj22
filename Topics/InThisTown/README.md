@@ -42,7 +42,8 @@ shots, a log of every shot, a snapshot of its source, and a page on what it is g
 | [`reference/nobody-looked-at-the-moon/`](reference/nobody-looked-at-the-moon/README.md): `in-this-town-nobody-looked-at-the-moon` (short cut: 14 beats, 63 shots, 471 words, 1:52) | "every single one u made is good" | A film at NIGHT: a town in warm lantern light, cold moonlight that lies on one place at a time and moves like a character (`skyAt()` in its `kit.tsx`), and every part under "Fields and night" in [`PACK.md`](PACK.md). A remake of a rejected 20-second film. The densest sound sheet, and what was cut from it |
 | [`reference/monster-egg/`](reference/monster-egg/README.md): `in-this-town-monster-egg` (full film: 18 beats, 93 shots, 746 words, 2:57) | "every single one u made is good" | The long cut: how 18 beats are spread over three minutes, and three places in one world. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
 | [`reference/superpower-at-18/`](reference/superpower-at-18/README.md): `in-this-town-superpower-at-18` (full film: 18 beats, 90 shots, 710 words, 2:48) | "wow i love it, i love how u made the short" | The long cut WITH sound, and a story the owner outlined himself. Its page says what he rejected on the way |
-| `src/videos/in-this-town-pumpkin-heads/` (short cut: 58 shots, 490 words, 1:56). Not in `reference/` | He approved the script and asked for another ending; its `narration.md` says which | A second short cut with sound, and an ending that is not the subscribe sign held to camera |
+| [`reference/pumpkin-heads/`](reference/pumpkin-heads/README.md): `in-this-town-pumpkin-heads` (short cut: 14 beats, 58 shots, 490 words, 1:56) | He approved the script and asked for another ending; its `narration.md` says which | A second short cut with sound, and an ending that is not the subscribe sign held to camera |
+| [`reference/robot-at-18/`](reference/robot-at-18/README.md): `in-this-town-robot-at-18` (extended cut: 99 shots, 833 words, 3:25) | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A FIGHT.** `scene6.tsx` and `fight.tsx`: bodies posed joint by joint, hit-freezes, cuts inside a line, flying poses, and the two fights he rejected first |
 
 Copy how they are **built**. Never copy what they **tell**: no premise, sentence, joke or twist from a finished film
 goes into a new one.
@@ -71,6 +72,8 @@ studied for its shape. The reference film is ours.
    ending the owner threw out first ([`reference/superpower-at-18/`](reference/superpower-at-18/README.md)).
 9. [`reference/superpower-at-18-part-2/`](reference/superpower-at-18-part-2/README.md) — the film the owner rated highest
    ("a banger… peak"), its source, and why its first render was rejected: motion and pace. Read it before any action scene.
+10. [`reference/robot-at-18/`](reference/robot-at-18/README.md) — **the fight** the owner scored 8.8/10, after he rejected
+    two ("it's like I'm watching a png fight another png"). Read it, and its five-frames-a-second sheet, before any fight.
 
 ## What changes from the base rules
 
@@ -187,6 +190,8 @@ still an estimate, and whether the mix is older than the script.
 | `reference/nobody-looked-at-the-moon/`, `reference/monster-egg/`, `reference/superpower-at-18/` | **Three more films the owner approved**, each with its mp4, its source, a log of every shot, and what was hard |
 | `reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
+| `reference/robot-at-18/` | **The fight reference**, with its mp4 and source: `scene6.tsx` is the fight, `fight.tsx` the poses, moves and hit effects |
+| `reference/pumpkin-heads/`, `reference/monster-village/`, `reference/monster-village-part-2/` | **Three more approved films**, each with its mp4, its source and a shot log |
 | `reference/superpower-at-18-part-2/` | **The owner's favourite so far**, with its mp4 and source: how to stage fast action and show the process |
 | `monsters.tsx` | The people of a monster village: zombie, skeleton, creeper, spider, enderman, slime. All of them can act |
 | `InThisTownMusic.aac` | **The background music of every In This Town short.** The owner added it on 2026-11-13: "the music is used thats the new backround music for the in this town shorts". 3:36, stereo. A film's `sound.json` names it (`"track"` in `music`) and `scripts/sound.py` mixes it under the voice ([`SOUND.md`](SOUND.md), section 3). Superpower part 2 was the first to play it. The four films finished before that day keep the music they were approved with |
