@@ -1,5 +1,5 @@
 {
-  "status": "Approved, recorded, animated and mixed; encoded delivery pending",
+  "status": "Approved full film rendered and encoded MP4 QA passed",
   "script": "narration.md",
   "spoken_text_sha256": "e3f31d5c18859fb8f573edc246b9d1a79c4ecf157a77b869f23768f823e8bb15",
   "words": 674,
@@ -85,7 +85,6 @@
     "requested recognition is the final line"
   ],
   "not_yet_validated": [
-    "Encoded full-HD MP4 delivery",
     "Subjective real-time listening/playback (not available to this agent)"
   ],
   "ending_exception": "Separate exact prince-ending override is installed and tested for this film only.",
@@ -100,5 +99,6 @@
   "timing": "src/videos/in-this-town-five-seconds/timing.json",
   "production_frames": 4848,
   "trip_approval_quote": "okay this seems more kid friendly go ahead and do the mp4",
-  "script_equality": "91 production cues, proposal cues, readable narration, and timing cue texts match exactly"
+  "script_equality": "91 production cues, proposal cues, readable narration, and timing cue texts match exactly",
+  "encoded_delivery_qa": "src/videos/in-this-town-five-seconds/delivery-qa.json"
 }

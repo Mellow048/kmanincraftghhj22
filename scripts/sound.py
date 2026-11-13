@@ -2127,7 +2127,9 @@ def track_fingerprint(raw: dict) -> dict | None:
     path = os.path.join(ROOT, track)
     if not os.path.isfile(path):
         raise ValueError(f"music.track: no file at {track}")
-    return {"path": track, "sha256": hashlib.sha256(open(path, "rb").read()).hexdigest()}
+    with open(path, "rb") as source:
+        digest = hashlib.sha256(source.read()).hexdigest()
+    return {"path": track, "sha256": digest}
 
 
 def stale(p: dict) -> list[str]:

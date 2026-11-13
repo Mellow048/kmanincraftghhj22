@@ -1,0 +1,13 @@
+{
+  "method": "Lossless setts bitstream-filter remux; quantize existing PTS/DTS to 30 fps in 1/30000 time base. No picture or audio re-encoding.",
+  "original_release_sha256": "325fa918152337d94a8533eb988ea3da6861c91fd26bd0ae2e3324d87c95356f",
+  "normalized_sha256": "ada21dde26a3c2e198abb51c8684da1f868356023cdbed4db8f83cc4d259568d",
+  "original_max_pts_grid_error_seconds": 0.0019166666666876608,
+  "normalized_max_pts_grid_error_seconds": 3.333333467026023e-07,
+  "h264_packet_payloads_bit_identical": 4848,
+  "aac_packet_payloads_bit_identical": 7576,
+  "frame_count": 4848,
+  "video_duration_seconds": 161.6,
+  "ffmpeg_version": "9.0.2",
+  "video_bitstream_filter": "setts=prescale=1:time_base=1/30000:pts=round(PTS*TB*30)*1000:dts=round(DTS*TB*30)*1000:duration=1000"
+}

@@ -1,6 +1,6 @@
 # Five Seconds — production status
 
-## Approved, assembled and mixed
+## Approved full-HD MP4 complete
 
 The owner approved Draft 2 and then the exact trip replacement: **“okay this seems more kid friendly go ahead and do the mp4.”** No further approval is outstanding. The rejected face-hit recording is superseded, not pending. All nine `voice-00` originals, including the approved clip 08, are present and aligned; the successful originals were not regenerated.
 
@@ -29,4 +29,8 @@ Part 2 was studied from actual source and sequential frames: reference `cda5695d
 
 ## Delivery
 
-The full-HD encoded master still needs rendering and container/audio/ending checks. The live delivery record is `src/videos/in-this-town-five-seconds/PRODUCTION.md`; update it with the source commit, render run and verified MP4 when delivery completes. Do not describe the finished master as delivered until those steps succeed.
+The full-HD master is `renders/in-this-town-five-seconds.mp4`: **1080×1920 at constant 30 fps, 161.6 seconds, 75,535,985 bytes**, SHA256 `ada21dde26a3c2e198abb51c8684da1f868356023cdbed4db8f83cc4d259568d`.
+
+Render run `43365245351` succeeded from source `4f2e9be6e216f02cf7c59098d266f9d15ca995de`. A lossless timestamp-only remux removes the chunk join rounding: all H.264/AAC payloads are unchanged, and all seven 150-frame intervals are five seconds in the actual encoded video. Every frame decodes, all PTS are checked, and the only black frames are 4833–4847. The encoded mix has zero measured lag, 0.999866 source correlation, −14.77 LUFS and −2.36 dB true peak.
+
+All 91 final encoded shot midpoints and 111 action/boundary samples have now been viewed. Thirteen Node and eleven Python regression tests pass. See `src/videos/in-this-town-five-seconds/PRODUCTION.md` and `delivery-qa.json` for the evidence, reproduction commands and explicit no-listening/no-real-time-playback boundary. Release publication uses the verified-file workflow because the sandbox cannot reach GitHub's upload host.

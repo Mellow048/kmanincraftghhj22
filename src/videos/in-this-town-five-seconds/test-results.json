@@ -1,0 +1,32 @@
+{
+  "render_source_commit": "4f2e9be6e216f02cf7c59098d266f9d15ca995de",
+  "node_tests": {
+    "passed": 13,
+    "suites": [
+      "scripts/check-story-ending.test.mjs",
+      "scripts/check-music-track.test.mjs"
+    ]
+  },
+  "python_tests": {
+    "passed": 11,
+    "suite": "scripts/test_sound_inputs.py",
+    "covers": [
+      "supplied-track byte fingerprint and same-path changes",
+      "missing supplied file",
+      "v2 requires digest, legacy v1 preserved",
+      "changed mix and voice inputs",
+      "no procedural mood function evaluated when a track is supplied",
+      "five-second ambience gate with eight-millisecond edge ramps",
+      "music and action-effect isolation",
+      "invalid and out-of-film intervals"
+    ]
+  },
+  "typecheck": "passed",
+  "film_contract": "passed",
+  "final_mp4": "passed; see delivery-qa.json",
+  "review_limitation": "These are mechanical tests, not an artistic/playback/listening certification.",
+  "encoded_midpoints_viewed": 91,
+  "encoded_action_samples_viewed": 111,
+  "supplied_audio_stem_identity": "passed; see audio-input-audit.json",
+  "workflow_yaml": "parsed; ordinary render default preserved, independent SHA/source-verified publication path"
+}

@@ -1,0 +1,384 @@
+{
+  "file": "renders/in-this-town-five-seconds.mp4",
+  "kind": "master",
+  "sha256": "ada21dde26a3c2e198abb51c8684da1f868356023cdbed4db8f83cc4d259568d",
+  "bytes": 75535985,
+  "width": 1080,
+  "height": 1920,
+  "fps": "30/1",
+  "decoded_frames": 4848,
+  "video_duration": 161.6,
+  "audio_duration": 161.601,
+  "container_duration": 161.601,
+  "video_codec": "h264",
+  "pixel_format": "yuv420p",
+  "audio_codec": "aac",
+  "channels": 2,
+  "sample_rate": "48000",
+  "fast_start": true,
+  "full_decode_errors": 0,
+  "max_video_timestamp_error_seconds": 3.333333467026023e-07,
+  "intentional_black_frames": [
+    4833,
+    4834,
+    4835,
+    4836,
+    4837,
+    4838,
+    4839,
+    4840,
+    4841,
+    4842,
+    4843,
+    4844,
+    4845,
+    4846,
+    4847
+  ],
+  "encoded_stop_intervals": [
+    {
+      "id": "teaser",
+      "start_frame": 0,
+      "resume_frame": 150,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "glass",
+      "start_frame": 923,
+      "resume_frame": 1073,
+      "frames": 150,
+      "encoded_seconds": 4.9999999999999964
+    },
+    {
+      "id": "touch",
+      "start_frame": 1093,
+      "resume_frame": 1243,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "chalk",
+      "start_frame": 1261,
+      "resume_frame": 1411,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "locker",
+      "start_frame": 1847,
+      "resume_frame": 1997,
+      "frames": 150,
+      "encoded_seconds": 4.999999999999993
+    },
+    {
+      "id": "elder",
+      "start_frame": 2679,
+      "resume_frame": 2829,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "counter",
+      "start_frame": 4171,
+      "resume_frame": 4321,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    }
+  ],
+  "black_segments": [
+    "[Parsed_blackdetect_1 @ 0x7fe2d400f880] black_start:161.1 black_end:161.566667 black_duration:0.466667"
+  ],
+  "freeze_segments_over_0_8s": [],
+  "audio_lag_ms": 0.0,
+  "source_mix_correlation": 0.999866,
+  "worst_5s_audio_correlation": 0.999736,
+  "join_windows": [
+    {
+      "frame": 269,
+      "at": 8.966667,
+      "correlation": 0.999868
+    },
+    {
+      "frame": 538,
+      "at": 17.933333,
+      "correlation": 0.999815
+    },
+    {
+      "frame": 808,
+      "at": 26.933333,
+      "correlation": 0.999964
+    },
+    {
+      "frame": 1077,
+      "at": 35.9,
+      "correlation": 0.999872
+    },
+    {
+      "frame": 1346,
+      "at": 44.866667,
+      "correlation": 0.999902
+    },
+    {
+      "frame": 1616,
+      "at": 53.866667,
+      "correlation": 0.999899
+    },
+    {
+      "frame": 1885,
+      "at": 62.833333,
+      "correlation": 0.999887
+    },
+    {
+      "frame": 2154,
+      "at": 71.8,
+      "correlation": 0.999971
+    },
+    {
+      "frame": 2424,
+      "at": 80.8,
+      "correlation": 0.99994
+    },
+    {
+      "frame": 2693,
+      "at": 89.766667,
+      "correlation": 0.999934
+    },
+    {
+      "frame": 2962,
+      "at": 98.733333,
+      "correlation": 0.999933
+    },
+    {
+      "frame": 3232,
+      "at": 107.733333,
+      "correlation": 0.999832
+    },
+    {
+      "frame": 3501,
+      "at": 116.7,
+      "correlation": 0.999617
+    },
+    {
+      "frame": 3770,
+      "at": 125.666667,
+      "correlation": 0.999921
+    },
+    {
+      "frame": 4040,
+      "at": 134.666667,
+      "correlation": 0.99986
+    },
+    {
+      "frame": 4309,
+      "at": 143.633333,
+      "correlation": 0.999791
+    },
+    {
+      "frame": 4578,
+      "at": 152.6,
+      "correlation": 0.999927
+    }
+  ],
+  "audio_windows": [
+    {
+      "at": 0.0,
+      "seconds": 5.0,
+      "correlation": 0.999831
+    },
+    {
+      "at": 5.0,
+      "seconds": 5.0,
+      "correlation": 0.999867
+    },
+    {
+      "at": 10.0,
+      "seconds": 5.0,
+      "correlation": 0.999736
+    },
+    {
+      "at": 15.0,
+      "seconds": 5.0,
+      "correlation": 0.999918
+    },
+    {
+      "at": 20.0,
+      "seconds": 5.0,
+      "correlation": 0.999903
+    },
+    {
+      "at": 25.0,
+      "seconds": 5.0,
+      "correlation": 0.999896
+    },
+    {
+      "at": 30.0,
+      "seconds": 5.0,
+      "correlation": 0.999858
+    },
+    {
+      "at": 35.0,
+      "seconds": 5.0,
+      "correlation": 0.999835
+    },
+    {
+      "at": 40.0,
+      "seconds": 5.0,
+      "correlation": 0.99988
+    },
+    {
+      "at": 45.0,
+      "seconds": 5.0,
+      "correlation": 0.999883
+    },
+    {
+      "at": 50.0,
+      "seconds": 5.0,
+      "correlation": 0.9999
+    },
+    {
+      "at": 55.0,
+      "seconds": 5.0,
+      "correlation": 0.999911
+    },
+    {
+      "at": 60.0,
+      "seconds": 5.0,
+      "correlation": 0.999857
+    },
+    {
+      "at": 65.0,
+      "seconds": 5.0,
+      "correlation": 0.99982
+    },
+    {
+      "at": 70.0,
+      "seconds": 5.0,
+      "correlation": 0.999939
+    },
+    {
+      "at": 75.0,
+      "seconds": 5.0,
+      "correlation": 0.999899
+    },
+    {
+      "at": 80.0,
+      "seconds": 5.0,
+      "correlation": 0.999915
+    },
+    {
+      "at": 85.0,
+      "seconds": 5.0,
+      "correlation": 0.999849
+    },
+    {
+      "at": 90.0,
+      "seconds": 5.0,
+      "correlation": 0.999844
+    },
+    {
+      "at": 95.0,
+      "seconds": 5.0,
+      "correlation": 0.999835
+    },
+    {
+      "at": 100.0,
+      "seconds": 5.0,
+      "correlation": 0.999874
+    },
+    {
+      "at": 105.0,
+      "seconds": 5.0,
+      "correlation": 0.999836
+    },
+    {
+      "at": 110.0,
+      "seconds": 5.0,
+      "correlation": 0.999905
+    },
+    {
+      "at": 115.0,
+      "seconds": 5.0,
+      "correlation": 0.999797
+    },
+    {
+      "at": 120.0,
+      "seconds": 5.0,
+      "correlation": 0.999873
+    },
+    {
+      "at": 125.0,
+      "seconds": 5.0,
+      "correlation": 0.999889
+    },
+    {
+      "at": 130.0,
+      "seconds": 5.0,
+      "correlation": 0.999881
+    },
+    {
+      "at": 135.0,
+      "seconds": 5.0,
+      "correlation": 0.999851
+    },
+    {
+      "at": 140.0,
+      "seconds": 5.0,
+      "correlation": 0.999806
+    },
+    {
+      "at": 145.0,
+      "seconds": 5.0,
+      "correlation": 0.999765
+    },
+    {
+      "at": 150.0,
+      "seconds": 5.0,
+      "correlation": 0.999854
+    },
+    {
+      "at": 155.0,
+      "seconds": 5.0,
+      "correlation": 0.999955
+    },
+    {
+      "at": 160.0,
+      "seconds": 1.599,
+      "correlation": 0.999947
+    }
+  ],
+  "encoded_loudness_input": {
+    "input_i": "-14.77",
+    "input_tp": "-2.36",
+    "input_lra": "2.30",
+    "input_thresh": "-25.01"
+  },
+  "midpoint_images": 91,
+  "review_limit": "Numerical checks and extracted encoded frames. This does not constitute real-time playback or subjective listening.",
+  "action_images": 111,
+  "action_sheets": 11,
+  "status": "passed",
+  "source_commit": "4f2e9be6e216f02cf7c59098d266f9d15ca995de",
+  "render_run": 43365245351,
+  "render_url": "https://github.com/Mellow048/kmanincraftghhj22/actions/runs/43365245351",
+  "reviewed_encoded_sheets": [
+    "sheet-01",
+    "sheet-02",
+    "sheet-03",
+    "sheet-04",
+    "sheet-05",
+    "action-glass",
+    "action-touch",
+    "action-chalk",
+    "action-locker",
+    "action-elder",
+    "action-rabbit-pickup",
+    "action-ice",
+    "action-counter",
+    "action-trip-recovery",
+    "action-ending",
+    "action-framing"
+  ],
+  "viewed_midpoints": 91,
+  "viewed_action_samples": 111
+}

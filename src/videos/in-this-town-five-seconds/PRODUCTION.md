@@ -1,6 +1,6 @@
 # Five Seconds — production and delivery
 
-## Source ready for full-HD render
+## Full-HD master complete and verified
 
 Approved Draft 2 plus the separately approved kid-friendly trip counter. The authoritative narration and both readable/cue proposal copies match exactly; see `script-integrity.json`. No age, cooldown, superspeed, teleport, CTA or sequel promise was added.
 
@@ -49,9 +49,35 @@ python3 src/videos/in-this-town-five-seconds/write-sound.py
 PYTHONPATH="$PWD/out/film-tools" python3 scripts/sound.py build in-this-town-five-seconds --stems
 npm run typecheck && npm run check
 node --test scripts/check-story-ending.test.mjs scripts/check-music-track.test.mjs
+PYTHONPATH="$PWD/out/film-tools" python3 -m unittest discover -s scripts -p 'test_sound_inputs.py' -v
 REMOTION_CHROME=/tmp/chromium node scripts/five-seconds-audit.mjs --clocks
 ```
 
 In this sandbox Chromium also needs the previously provisioned `out/pelican-qa/runtime/lib` and `/tmp` in `LD_LIBRARY_PATH`. The tools under `out/` are transient; normal installations can use Remotion's Chrome and ordinary Python dependencies.
 
-Full-HD delivery is pending. Record the actual source commit, Actions run, release/master digest, decoded frame count, encoded soundtrack comparison and final black frames here after the render, not beforehand.
+## Verified encoded master
+
+- File: `renders/in-this-town-five-seconds.mp4`, **75,535,985 bytes**.
+- SHA256: `ada21dde26a3c2e198abb51c8684da1f868356023cdbed4db8f83cc4d259568d`.
+- Render source: `4f2e9be6e216f02cf7c59098d266f9d15ca995de`.
+- [Render run 43365245351](https://github.com/Mellow048/kmanincraftghhj22/actions/runs/43365245351): all 20 jobs succeeded (planning, 18 chunks, delivery). Initial branch delivery: `e76bac4`.
+- H.264 / yuv420p / **1080×1920 / constant 30 fps**, 4,848 decoded frames. Video duration **161.600 s**; AAC 48 kHz stereo, audio/container duration 161.601 s (one millisecond of codec/container padding).
+- Every decoded video PTS checked against its frame number; all seven 150-frame stop intervals are exactly five seconds on the encoded video clock. Frames 4833–4847 are the intentional black tail, with frame 4832 still showing the reaction. No other black frames or whole-picture freeze over 0.8 s; zero full-decode errors; fast-start MP4.
+- Encoded soundtrack vs the authored mix: **0 ms lag**, 0.999866 correlation overall, minimum 0.999736 across five-second windows, minimum 0.999617 across all 17 chunk joins. Encoded **−14.77 LUFS / −2.36 dB true peak**.
+- **91 encoded midpoints and 111 encoded action/boundary samples were viewed**, across all 16 generated sheets, after the last choreography/camera changes. Preparation, movement, handoffs, projectiles, foot/rock contact, spin/back landing, rabbit lift and the prince/black ending were inspected. See `action-review-frames.json` and `delivery-qa.json`. This remains sequential-frame review, not real-time playback or listening.
+- TypeScript and the film contract pass. **13 Node + 11 Python tests pass**; the recorded-track fingerprint, missing input, legacy behavior, ambience-only five-second gates and their invalid inputs are covered. `audio-input-audit.json` additionally verifies the actual rendered stems against the supplied music and approved narration; all seven ambience intervals are zero.
+
+### Timestamp-only correction
+
+The joined Actions file had a maximum 1.917 ms deviation from the 30 fps grid (millisecond chunk timestamps). Rather than waive the exact timing requirement, it was remuxed losslessly with FFmpeg 9.0.2 and the `setts` bitstream filter. **All 4,848 H.264 and 7,576 AAC packet payloads are bit-identical before/after**; no picture or audio was re-encoded. Original render digest: `325fa918152337d94a8533eb988ea3da6861c91fd26bd0ae2e3324d87c95356f`. See `timestamp-normalization.json`.
+
+```bash
+ffmpeg -i original-render-31.mp4 -map 0 -c copy \
+  -bsf:v 'setts=prescale=1:time_base=1/30000:pts=round(PTS*TB*30)*1000:dts=round(DTS*TB*30)*1000:duration=1000' \
+  -video_track_timescale 30000 -movflags +faststart normalized.mp4
+PYTHONPATH="$PWD/out/film-tools" python3 scripts/check-five-seconds-delivery.py renders/in-this-town-five-seconds.mp4 master
+```
+
+The `prescale` form above is for FFmpeg 9; do not apply its timestamp expression blindly to an older filter version. This correction is scoped to the new film, not the delivered Freeze Bell master.
+
+Release destination: [render-31](https://github.com/Mellow048/kmanincraftghhj22/releases/tag/render-31). Direct upload from the sandbox could not reach `uploads.github.com`; the `publish_release` mode of the existing render workflow publishes only a committed MP4 whose passing QA digest and source match the existing release. Normal rendering is unchanged when that option is empty. Release publication must be confirmed against the final digest before handoff.

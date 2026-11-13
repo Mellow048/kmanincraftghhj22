@@ -30,12 +30,18 @@ on:
         required: false
         type: string
         default: "45"
+      publish_release:
+        description: "Optional existing render-N release: publish the committed MP4 only, after verifying its passing delivery-qa.json and SHA256. Empty = render normally."
+        required: false
+        type: string
+        default: ""
 
 permissions:
   contents: write
 
 jobs:
   plan:
+    if: ${{ inputs.publish_release == '' }}
     name: Check and plan
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -83,6 +89,7 @@ jobs:
         run: node scripts/render-plan.mjs "$COMPOSITION" --scale "$SCALE"
 
   render:
+    if: ${{ inputs.publish_release == '' }}
     name: Frames ${{ matrix.from }}-${{ matrix.to }}
     needs: plan
     runs-on: ubuntu-latest
@@ -128,6 +135,7 @@ jobs:
           if-no-files-found: error
 
   deliver:
+    if: ${{ inputs.publish_release == '' }}
     name: Join and deliver
     needs: [plan, render]
     runs-on: ubuntu-latest
@@ -246,3 +254,45 @@ jobs:
             - Commit: `${{ github.sha }}`
           files: "out/${{ inputs.composition }}.mp4"
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_verified:
+    if: ${{ inputs.publish_release != '' }}
+    name: Publish verified MP4
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout the verified file
+        uses: actions/checkout@v4
+      # The sandbox may read GitHub but not reach uploads.github.com. This path
+      # republishes a verified container correction without rerendering any 3D.
+      - name: Verify identity, publish and verify the uploaded digest
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          RELEASE_TAG: ${{ inputs.publish_release }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, re, subprocess
+          from pathlib import Path
+          slug, tag = os.environ['COMPOSITION'], os.environ['RELEASE_TAG']
+          assert re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug), 'Invalid composition slug'
+          assert re.fullmatch(r'render-[1-9][0-9]*', tag), 'Expected an existing render-N release'
+          assert os.environ['GITHUB_REF_NAME'] != 'main', 'Publish from the working branch, not main'
+          media = Path('renders') / f'{slug}.mp4'
+          qa = json.loads((Path('src/videos') / slug / 'delivery-qa.json').read_text())
+          assert qa['status'] == 'passed', 'Encoded delivery QA must pass first'
+          assert qa['file'] == str(media), 'QA names a different file'
+          digest = hashlib.sha256(media.read_bytes()).hexdigest()
+          assert digest == qa['sha256'], 'The MP4 differs from the verified file'
+          endpoint = f"repos/{os.environ['GITHUB_REPOSITORY']}/releases/tags/{tag}"
+          def release():
+              return json.loads(subprocess.check_output(['gh', 'api', endpoint]))
+          current = release()
+          assert current['target_commitish'] == qa['source_commit'], 'Release and QA have different render sources'
+          assert slug in current['name'], 'Release belongs to a different film'
+          subprocess.run(['gh', 'release', 'upload', tag, str(media), '--clobber'], check=True)
+          asset = next(a for a in release()['assets'] if a['name'] == media.name)
+          assert asset['digest'] == f'sha256:{digest}', 'Uploaded bytes did not match'
+          assert asset['size'] == media.stat().st_size
+          print(f"Verified release asset: {asset['browser_download_url']}\nSHA256: {digest}")
+          PY
