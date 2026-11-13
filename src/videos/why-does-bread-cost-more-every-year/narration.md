@@ -102,8 +102,6 @@ The islands, the stall, the loaf, the coins, the tags, the printer, the bars, th
 [5.name]      So year after year, prices creep up. That creep is called inflation.
 [5.germany]   A hundred years ago, Germany printed money far too fast.
 [5.billion]   By the end, one loaf of bread cost two hundred billion.
-
-# clip 04-you
 [6.answer]    So your bread never changed. There is more money, and each coin buys less.
 [7.chest]     Which means the coins in your chest buy a little less every year.
 [7.sub]       So subscribe now. It still costs nothing.

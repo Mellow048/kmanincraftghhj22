@@ -134,8 +134,6 @@ an eraser, a card, a tie. The classroom, the hall, the classmates, the teachers 
 [13.gate]     Jo was out by the gate, a long way off. Her heart was tiny.
 [13.step]     I took one step, and it grew.
 [13.near]     It had never been big. It had only ever been near me.
-
-# clip 07-button
 [14.gone]     The next morning, every heart was gone.
 [14.loud]     So I had to ask Jo the old way. Out loud.
 [14.sub]      Subscribe, and I will tell you what she threw at me.
