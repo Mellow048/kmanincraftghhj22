@@ -1,0 +1,107 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-is-a-dictator",
+  "mix": "public/audio/what-is-a-dictator/mix.mp3",
+  "seconds": 53.7333,
+  "built_from": {
+    "timing.json": "1244f400f915aad87185fd7aa02a0dcc05e2083e",
+    "sound.json": "06028eb8fd985a6537b00b12e05a9f4dec4dc4b7",
+    "narration.mp3": "99dbbc160010896c05c16c3cd064935dd570fde2"
+  },
+  "mix_sha1": "629d0aba78e71f5147b775bdd5c0e7869b57954f",
+  "music_sections": [
+    {
+      "from": "1.ask",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "2.vote",
+      "mood": "explain",
+      "at": 1.33
+    },
+    {
+      "from": "5.word",
+      "mood": "tense",
+      "at": 29.93
+    },
+    {
+      "from": "6.answer",
+      "mood": "hope",
+      "at": 43.73
+    }
+  ],
+  "beds": 19,
+  "measured": {
+    "musicUnderVoiceDb": 19.1,
+    "secondsWithoutMusic": 0.0,
+    "bedsUnderVoiceDb": 24.0,
+    "sfx": 57,
+    "sfxPerMinute": 63.6,
+    "sfxKinds": 9,
+    "longestGapSeconds": 5.8,
+    "longestGapAt": 33.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.4,
+    "voiceOverRestWorstDb": 1.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 1.4,
+        "t": 29.5,
+        "cue": "4.name",
+        "sounding": [
+          "stamp",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.0,
+        "t": 52.8,
+        "cue": "7.sub",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 6.3,
+        "t": 14.6,
+        "cue": "3.hates",
+        "sounding": [
+          "pop",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 12.5,
+        "cue": "2.again",
+        "sounding": [
+          "pop",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 8.2,
+        "t": 4.1,
+        "cue": "2.vote",
+        "sounding": [
+          "place"
+        ]
+      },
+      {
+        "db": 8.6,
+        "t": 43.2,
+        "cue": "5.now",
+        "sounding": [
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.9,
+    "truePeakDb": -1.3,
+    "limiterMaxDb": 1.2
+  },
+  "failures": [
+    "at 29.5s [4.name] the words are covered: the voice is only 1.4 dB over the rest (stamp, whoosh). Turn that down, or move it off the words."
+  ]
+}

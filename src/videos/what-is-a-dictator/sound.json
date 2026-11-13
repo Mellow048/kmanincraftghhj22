@@ -364,9 +364,9 @@
     },
     {
       "cue": "4.name",
-      "word": "job",
+      "word": "leave",
       "sfx": "stamp",
-      "why": "The word is said (the job)."
+      "why": "The word is said (no vote can make him leave)."
     },
     {
       "cue": "4.name",
@@ -466,9 +466,9 @@
     },
     {
       "cue": "7.you",
-      "word": "slot",
+      "word": "no",
       "sfx": "pop",
-      "why": "A NO nearly your size grows out of the slot."
+      "why": "A NO nearly your size grows out of the slot (how you say no)."
     },
     {
       "cue": "7.sub",
