@@ -44,7 +44,7 @@ The full performance integration and current review evidence are now documented 
 - Carry the agreed performance style across the rest of the full film: opening, classroom/chalk, locker rescue, elder rescue, bedroom/window, chase, impacts, rock placement/sidestep, trip/fall and rabbit transfer.
 - Recheck every revised action in sequence at its actual pacing, not only at a midpoint. Revisit physical contacts, eye lines and reaction holds; do not solve weak acting with extra camera shake.
 - Retiming of remaining effects must follow the revised action, without changing approved words or five-second intervals.
-- Full-film, 1080×1920 render and a new complete encoded review happen **after** the short proof. The current 161.6-second master is still V1.
+- The full-film 1080×1920 render and new encoded review were completed **after** the short proof. The separate result is `renders/in-this-town-five-seconds-v2.mp4`; see `V2-REVIEW.md` and `v2-delivery-qa.json`. The original `renders/in-this-town-five-seconds.mp4` remains V1. The owner has not yet accepted the full V2 picture.
 
 ## Reproduce the proof
 

@@ -40,7 +40,17 @@ All **189 temporal samples** from the corrected locker, rescue and counter/fall/
 
 A final time-resume check found the bully following the relocated door handle when time resumed. The initial full render (`43390252549`, source `ec6314c`) was canceled before delivery. The correction keeps his old planted root, adds him to both all-frame route tests, and passes fresh 36-test/typecheck and 4,848-frame browser checks. Six new boundary stills (1996, 1997, 2002, 2005, 2008, 2012) were viewed. The earlier locker clip remains pre-correction evidence; it is not a claim about those final frames.
 
-The **corrected full-resolution master render and its final encoded QA are next**. Historical V1 and short-proof reports retain their names and meaning; full-revision reports use the `v2-` prefix. Passing measurements are not artistic acceptance.
+## Full encoded V2 — ready for owner review
+
+The separate full-HD master is **`renders/in-this-town-five-seconds-v2.mp4`**, **87,257,811 bytes**; SHA256 **`44919df07668ea21b63c0d90e21c1f7b1b21d640ebff33826659bf0682b1a64b`**. [Render run 43391756533](https://github.com/Mellow048/kmanincraftghhj22/actions/runs/43391756533) succeeded from **`17811ef3c4eb5c3382f2958b93de0d4cbf59c302`** (20 successful jobs: plan, 18 chunks and delivery). The initial branch delivery was `bef70ec`.
+
+- **1080×1920, H.264/yuv420p, constant 30 fps, 4,848 decoded frames / 161.600 seconds**. AAC 48 kHz stereo; audio/container duration 161.601 seconds. Fast-start; zero full-decode errors.
+- All 4,848 presentation timestamps checked, with a maximum reported-grid error of **0.0000003334 seconds**. Every encoded stop spans exactly 150 frames / five seconds. Only frames **4833–4847** are black; frame 4832 still shows the reaction. No unexpected whole-picture freeze over 0.8 seconds.
+- Encoded soundtrack vs the current authored mix: **0 ms lag**, **0.999865** overall correlation, **0.999753** minimum five-second correlation, **0.999314** minimum across all 17 chunk joins. Encoded level **−14.87 LUFS / −2.22 dB true peak**. The protected-input audit separately confirms all nine original recordings and the exact supplied AAC.
+- **All 31 generated final-master review sheets were viewed:** 91 shot-midpoint views, 170 action/boundary samples, and 191 temporal motion samples (400 unique source frames; sets overlap). These are extracted from this exact encoded master, not substituted lower-resolution pre-render clips. They include the corrected bully resume boundary and the final mother gaze. See **`v2-delivery-qa.json`** and **`v2-master-motion-review.json`**.
+- Chunk-join millisecond rounding was corrected **without re-encoding**: all 4,848 H.264 and 7,576 AAC packet payloads remain bit-identical. Only the separate V2 container was normalized. Original render SHA256 `7acfa6f0966e4255d49f5a234c2cfb9084fd62bbd6df5a175c32d0c74e52bdb5`; see **`v2-timestamp-normalization.json`**.
+
+Verified-file publication to `render-41` is pending. Historical V1 and short-proof reports retain their names and meaning; full-revision reports use the `v2-` prefix. **This is sequential encoded-image and numerical audio review, not real-time playback or subjective listening. Full V2 artistic acceptance remains the owner's; it is not an official reference.**
 
 ## Reproduce this revision (do not rebuild narration)
 
@@ -59,11 +69,13 @@ python3 scripts/five-seconds-v2-clips-review.py
 # REGRESSION_BASELINE names an isolated source snapshot of cc8ed55, never another branch.
 REGRESSION_BASELINE=/path/to/snapshot node scripts/five-seconds-v2-regression.mjs
 # Compare each before/after folder with scripts/compare-stills.py.
-# Final master, after rendering:
+# Final separate master, after rendering and timestamp normalization if needed:
 QA_OUTPUT=out/five-seconds/full-v2/delivery \
 MODEL_AUDIT=src/videos/in-this-town-five-seconds/v2-model-audit.json \
 ACTION_FRAMES=src/videos/in-this-town-five-seconds/v2-action-review-frames.json \
 python3 scripts/check-five-seconds-delivery.py renders/in-this-town-five-seconds-v2.mp4 master
+python3 scripts/five-seconds-v2-master-motion.py renders/in-this-town-five-seconds-v2.mp4
+# View every extracted sheet before marking its review manifest complete.
 ```
 
 Sandbox rendering uses `REMOTION_CHROME=/tmp/chromium` and `LD_LIBRARY_PATH="$PWD/out/pelican-qa/runtime/lib:/tmp"`; Python analysis uses `PYTHONPATH="$PWD/out/film-tools"` and `OPENBLAS_NUM_THREADS=1`. Large diagnostic intermediates remain in ignored `out/`. A source snapshot for regression is not a switched or newly created Git branch.

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "input": "out/five-seconds/full-v2/original-render-41.mp4",
+  "output": "renders/in-this-town-five-seconds-v2.mp4",
+  "input_sha256": "7acfa6f0966e4255d49f5a234c2cfb9084fd62bbd6df5a175c32d0c74e52bdb5",
+  "output_sha256": "44919df07668ea21b63c0d90e21c1f7b1b21d640ebff33826659bf0682b1a64b",
+  "original_max_pts_error_seconds": 0.0019166666666876608,
+  "final_max_pts_error_seconds": 3.333333467026023e-07,
+  "lossless": true,
+  "payload_identical_packets_by_stream": {
+    "0": 4848,
+    "1": 7576
+  },
+  "filter": "setts=prescale=1:time_base=1/30000:pts=round(PTS*TB*30)*1000:dts=round(DTS*TB*30)*1000:duration=1000",
+  "note": "Only container timestamps normalized when necessary; H.264 and AAC packet payloads are unchanged. Full decoded delivery QA is still required."
+}
