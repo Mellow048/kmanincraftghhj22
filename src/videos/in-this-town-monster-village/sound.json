@@ -1,0 +1,1675 @@
+{
+  "film": "in-this-town-monster-village",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-monster-village",
+  "music": {
+    "gain": -16,
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "Hook and jokes: the village as he knew it."
+      },
+      {
+        "from": "3.sun",
+        "mood": "curious",
+        "why": "How he is different."
+      },
+      {
+        "from": "4.mo",
+        "mood": "sneak",
+        "why": "Mo, who stares."
+      },
+      {
+        "from": "5.wall",
+        "mood": "playful",
+        "why": "The wall and the bread."
+      },
+      {
+        "from": "6.every",
+        "mood": "hope",
+        "why": "A friend."
+      },
+      {
+        "from": "7.sunset",
+        "mood": "curious",
+        "why": "The rule: the locked door."
+      },
+      {
+        "from": "8.night",
+        "mood": "sneak",
+        "why": "Out of the window."
+      },
+      {
+        "from": "9.ring",
+        "mood": "drone",
+        "why": "The ring facing out."
+      },
+      {
+        "from": "10.players",
+        "mood": "tense",
+        "why": "Players, and the fight."
+      },
+      {
+        "from": "12.mum",
+        "mood": "dark",
+        "why": "Mum goes down."
+      },
+      {
+        "from": "13.ran",
+        "mood": "tense",
+        "why": "The run."
+      },
+      {
+        "from": "14.quiet",
+        "mood": "none",
+        "why": "It went quiet."
+      },
+      {
+        "from": "14.eyes",
+        "mood": "dark",
+        "why": "The hand, and the red."
+      },
+      {
+        "from": "17.list",
+        "mood": "sad",
+        "why": "It all adds up."
+      },
+      {
+        "from": "18.player",
+        "mood": "dark",
+        "why": "They are here for him."
+      },
+      {
+        "from": "19.look",
+        "mood": "sneak",
+        "why": "Nobody is watching the monsters."
+      },
+      {
+        "from": "19.tap",
+        "mood": "playful",
+        "why": "The ambush is a joke on the players."
+      },
+      {
+        "from": "20.gather",
+        "mood": "hope",
+        "why": "The village comes out."
+      },
+      {
+        "from": "20.mo",
+        "mood": "sad",
+        "why": "He thinks they will hate him."
+      },
+      {
+        "from": "20.mum",
+        "mood": "hope",
+        "why": "The hat goes back on."
+      },
+      {
+        "from": "21.boom",
+        "mood": "tense",
+        "why": "The second lot."
+      },
+      {
+        "from": "22.back",
+        "mood": "sad",
+        "why": "Mo is not with us."
+      },
+      {
+        "from": "22.armor",
+        "mood": "dark",
+        "why": "Iron."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "2.bus",
+      "bed": "village"
+    },
+    {
+      "from": "2.school",
+      "to": "2.board",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.sun",
+      "to": "3.stew",
+      "bed": "village"
+    },
+    {
+      "from": "3.dark",
+      "to": "3.one",
+      "bed": "night"
+    },
+    {
+      "from": "4.mo",
+      "to": "6.every",
+      "bed": "village"
+    },
+    {
+      "from": "6.lamp",
+      "to": "6.cold",
+      "bed": "night"
+    },
+    {
+      "from": "6.sneeze",
+      "to": "7.mo",
+      "bed": "village"
+    },
+    {
+      "from": "8.night",
+      "to": "17.list",
+      "bed": "night"
+    },
+    {
+      "from": "17.why",
+      "to": "17.why",
+      "bed": "village"
+    },
+    {
+      "from": "17.basket",
+      "to": "21.boom",
+      "bed": "night"
+    },
+    {
+      "from": "21.army",
+      "to": "22.sub",
+      "bed": "fire"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "The boy hops in."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "pop",
+      "word": "only",
+      "repeat": 4,
+      "every": 0.25,
+      "why": "Monsters pop up behind him."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "pop",
+      "offset": 1.15,
+      "repeat": 6,
+      "every": 0.15,
+      "pitch": 1.15,
+      "trim": -3,
+      "why": "The rest of the village pops up behind them."
+    },
+    {
+      "cue": "1.mum",
+      "sfx": "blip",
+      "word": "zombie",
+      "why": "Mum waves."
+    },
+    {
+      "cue": "1.dad",
+      "sfx": "step_stick",
+      "word": "skeleton",
+      "repeat": 3,
+      "every": 0.09,
+      "why": "Dad rattles."
+    },
+    {
+      "cue": "1.me",
+      "sfx": "thud",
+      "word": "boy",
+      "why": "The basket lands."
+    },
+    {
+      "cue": "1.me",
+      "sfx": "chime",
+      "word": "basket",
+      "trim": -3,
+      "why": "A baby."
+    },
+    {
+      "cue": "2.hiss",
+      "sfx": "whoosh",
+      "why": "New beat."
+    },
+    {
+      "cue": "2.hiss",
+      "sfx": "boing",
+      "word": "hugs",
+      "why": "They all jump back."
+    },
+    {
+      "cue": "2.hiss",
+      "sfx": "slide_down",
+      "word": "nobody",
+      "why": "He droops."
+    },
+    {
+      "cue": "2.post",
+      "sfx": "stomp",
+      "word": "postman",
+      "trim": -4,
+      "why": "Three metres of postman."
+    },
+    {
+      "cue": "2.post",
+      "sfx": "sting",
+      "word": "look",
+      "trim": -3,
+      "why": "He looks at you."
+    },
+    {
+      "cue": "2.sign",
+      "sfx": "paper",
+      "word": "signed",
+      "repeat": 3,
+      "every": 0.2,
+      "why": "Blind scribbling."
+    },
+    {
+      "cue": "2.bus",
+      "sfx": "swish",
+      "why": "cut"
+    },
+    {
+      "cue": "2.bus",
+      "sfx": "splash",
+      "word": "in",
+      "why": "Into the slime."
+    },
+    {
+      "cue": "2.bus",
+      "sfx": "boing",
+      "word": "out",
+      "why": "Spat out."
+    },
+    {
+      "cue": "2.bus",
+      "sfx": "plink",
+      "word": "wet",
+      "repeat": 3,
+      "every": 0.12,
+      "why": "Dripping."
+    },
+    {
+      "cue": "2.school",
+      "sfx": "school_bell",
+      "why": "School."
+    },
+    {
+      "cue": "2.school",
+      "sfx": "pop",
+      "word": "zombies",
+      "repeat": 3,
+      "every": 0.07,
+      "why": "Three zombie kids wave."
+    },
+    {
+      "cue": "2.school",
+      "sfx": "crackle",
+      "word": "creepers",
+      "why": "Two creepers hiss hello."
+    },
+    {
+      "cue": "2.board",
+      "sfx": "whoosh",
+      "word": "enderman",
+      "offset": -0.15,
+      "why": "The teacher turns round."
+    },
+    {
+      "cue": "2.board",
+      "sfx": "swish",
+      "word": "enderman",
+      "offset": 0.1,
+      "why": "Every head snaps away."
+    },
+    {
+      "cue": "2.board",
+      "sfx": "sting",
+      "word": "looked",
+      "offset": 0.3,
+      "trim": -3,
+      "why": "He peeked, and got caught."
+    },
+    {
+      "cue": "3.sun",
+      "sfx": "whoosh",
+      "why": "New beat."
+    },
+    {
+      "cue": "3.sun",
+      "sfx": "step_grass",
+      "word": "stayed",
+      "why": "One foot out."
+    },
+    {
+      "cue": "3.sun",
+      "sfx": "crackle",
+      "word": "burned",
+      "why": "He smokes."
+    },
+    {
+      "cue": "3.sun",
+      "sfx": "zip",
+      "word": "burned",
+      "offset": 0.2,
+      "why": "Back inside."
+    },
+    {
+      "cue": "3.me",
+      "sfx": "bonk",
+      "word": "played",
+      "trim": -3,
+      "why": "The ball."
+    },
+    {
+      "cue": "3.me",
+      "sfx": "slide_down",
+      "word": "alone",
+      "trim": -2,
+      "why": "Alone."
+    },
+    {
+      "cue": "3.stew",
+      "sfx": "plink",
+      "word": "stew",
+      "why": "Stew."
+    },
+    {
+      "cue": "3.stew",
+      "sfx": "buzz",
+      "word": "smell",
+      "trim": -0.5,
+      "why": "No."
+    },
+    {
+      "cue": "3.dark",
+      "sfx": "step_stone",
+      "word": "see",
+      "repeat": 3,
+      "every": 0.25,
+      "why": "Walking in the dark."
+    },
+    {
+      "cue": "3.dark",
+      "sfx": "bonk",
+      "word": "doors",
+      "why": "Into the wall."
+    },
+    {
+      "cue": "3.one",
+      "sfx": "blip",
+      "word": "only",
+      "pitch": 0.7,
+      "why": "Alone."
+    },
+    {
+      "cue": "4.mo",
+      "sfx": "whoosh",
+      "why": "The rush down the street."
+    },
+    {
+      "cue": "4.mo",
+      "sfx": "sting",
+      "word": "mo",
+      "trim": -5,
+      "why": "Mo."
+    },
+    {
+      "cue": "4.hat",
+      "sfx": "rustle",
+      "word": "hat",
+      "why": "The hat."
+    },
+    {
+      "cue": "4.hat",
+      "sfx": "rustle",
+      "word": "scarf",
+      "why": "He tugs the scarf up."
+    },
+    {
+      "cue": "4.alone",
+      "sfx": "gust",
+      "why": "Pull back."
+    },
+    {
+      "cue": "4.alone",
+      "sfx": "pop",
+      "word": "never",
+      "why": "The three dots."
+    },
+    {
+      "cue": "4.stare",
+      "sfx": "heartbeat",
+      "word": "looked",
+      "why": "The stare."
+    },
+    {
+      "cue": "4.stare",
+      "sfx": "heartbeat",
+      "word": "long",
+      "why": "Too long."
+    },
+    {
+      "cue": "4.think",
+      "sfx": "step_grass",
+      "word": "thought",
+      "repeat": 4,
+      "every": 0.22,
+      "why": "Hurrying off."
+    },
+    {
+      "cue": "5.wall",
+      "sfx": "whoosh",
+      "why": "New beat."
+    },
+    {
+      "cue": "5.wall",
+      "sfx": "zip",
+      "word": "hiding",
+      "why": "He flings it."
+    },
+    {
+      "cue": "5.wall",
+      "sfx": "splash",
+      "word": "stew",
+      "trim": -4,
+      "why": "Into the bush."
+    },
+    {
+      "cue": "5.sat",
+      "sfx": "step_grass",
+      "word": "mo",
+      "repeat": 2,
+      "every": 0.25,
+      "why": "Mo walks up."
+    },
+    {
+      "cue": "5.sat",
+      "sfx": "thud",
+      "word": "sat",
+      "offset": 0.35,
+      "why": "He sits.",
+      "trim": 4
+    },
+    {
+      "cue": "5.burn",
+      "sfx": "ding",
+      "word": "burn",
+      "trim": -3,
+      "why": "No smoke."
+    },
+    {
+      "cue": "5.burn",
+      "sfx": "pop",
+      "word": "it",
+      "why": "The bubble."
+    },
+    {
+      "cue": "5.burn",
+      "sfx": "tick",
+      "word": "hat",
+      "why": "Tap on the brim."
+    },
+    {
+      "cue": "5.bread",
+      "sfx": "slide_up",
+      "word": "loaf",
+      "why": "Out it comes."
+    },
+    {
+      "cue": "5.bread",
+      "sfx": "crack",
+      "word": "broke",
+      "why": "Snapped in two."
+    },
+    {
+      "cue": "5.eat",
+      "sfx": "zip",
+      "word": "ask",
+      "why": "Snatched.",
+      "trim": 3.5
+    },
+    {
+      "cue": "5.eat",
+      "sfx": "dig",
+      "word": "hungry",
+      "repeat": 3,
+      "every": 0.18,
+      "trim": -3,
+      "why": "Chomp."
+    },
+    {
+      "cue": "6.every",
+      "sfx": "pop",
+      "word": "after",
+      "why": "Day one."
+    },
+    {
+      "cue": "6.every",
+      "sfx": "pop",
+      "word": "sat",
+      "pitch": 1.15,
+      "why": "Day two."
+    },
+    {
+      "cue": "6.every",
+      "sfx": "pop",
+      "word": "every",
+      "pitch": 1.3,
+      "why": "Day three."
+    },
+    {
+      "cue": "6.lamp",
+      "sfx": "swish",
+      "why": "cut"
+    },
+    {
+      "cue": "6.lamp",
+      "sfx": "bonk",
+      "word": "either",
+      "why": "Into the lamp post."
+    },
+    {
+      "cue": "6.lamp",
+      "sfx": "clank",
+      "word": "lantern",
+      "trim": -4,
+      "why": "Lanterns up."
+    },
+    {
+      "cue": "6.cold",
+      "sfx": "gust",
+      "word": "cold",
+      "why": "Cold."
+    },
+    {
+      "cue": "6.sneeze",
+      "sfx": "riser",
+      "word": "sneezed",
+      "trim": 0,
+      "why": "Aaah."
+    },
+    {
+      "cue": "6.sneeze",
+      "sfx": "hit",
+      "word": "sneezed",
+      "trim": -3,
+      "offset": 0.05,
+      "why": "Choo."
+    },
+    {
+      "cue": "6.sneeze",
+      "sfx": "blip",
+      "word": "monsters",
+      "pitch": 0.8,
+      "why": "Hm."
+    },
+    {
+      "cue": "6.fish",
+      "sfx": "splash",
+      "word": "fish",
+      "why": "The fish comes out."
+    },
+    {
+      "cue": "6.fish",
+      "sfx": "slide_up",
+      "word": "whistle",
+      "why": "A whistle."
+    },
+    {
+      "cue": "6.laugh",
+      "sfx": "bonk",
+      "word": "showed",
+      "trim": -4,
+      "why": "Tries to laugh."
+    },
+    {
+      "cue": "6.laugh",
+      "sfx": "chime",
+      "word": "forgotten",
+      "why": "It catches."
+    },
+    {
+      "cue": "6.like",
+      "sfx": "sparkle",
+      "word": "like",
+      "trim": -3,
+      "why": "Like me."
+    },
+    {
+      "cue": "6.like",
+      "sfx": "blip",
+      "word": "why",
+      "pitch": 0.7,
+      "why": "Why."
+    },
+    {
+      "cue": "7.sunset",
+      "sfx": "whoosh",
+      "why": "New beat."
+    },
+    {
+      "cue": "7.sunset",
+      "sfx": "bell",
+      "word": "rule",
+      "trim": -4,
+      "why": "One rule."
+    },
+    {
+      "cue": "7.sunset",
+      "sfx": "step_grass",
+      "word": "walked",
+      "repeat": 5,
+      "every": 0.2,
+      "why": "The procession."
+    },
+    {
+      "cue": "7.lock",
+      "sfx": "hit",
+      "word": "locked",
+      "why": "The bar drops."
+    },
+    {
+      "cue": "7.lock",
+      "sfx": "clank",
+      "word": "outside",
+      "trim": -3,
+      "why": "From outside."
+    },
+    {
+      "cue": "7.weak",
+      "sfx": "creak",
+      "word": "thought",
+      "why": "The shutters."
+    },
+    {
+      "cue": "7.weak",
+      "sfx": "slide_down",
+      "word": "weak",
+      "trim": -2,
+      "why": "He slumps."
+    },
+    {
+      "cue": "7.mo",
+      "sfx": "heartbeat",
+      "word": "mo",
+      "why": "Mo watching.",
+      "trim": 3.5
+    },
+    {
+      "cue": "8.night",
+      "sfx": "swish",
+      "why": "Night."
+    },
+    {
+      "cue": "8.night",
+      "sfx": "hit",
+      "word": "enough",
+      "why": "Shutters bang open."
+    },
+    {
+      "cue": "8.window",
+      "sfx": "zip",
+      "word": "went",
+      "why": "Over the sill."
+    },
+    {
+      "cue": "8.window",
+      "sfx": "thud",
+      "word": "window",
+      "why": "Lands."
+    },
+    {
+      "cue": "8.see",
+      "sfx": "step_grass",
+      "word": "wanted",
+      "repeat": 4,
+      "every": 0.3,
+      "trim": -2,
+      "why": "Creeping."
+    },
+    {
+      "cue": "8.nothing",
+      "sfx": "sting",
+      "word": "anything",
+      "trim": -4,
+      "why": "He stops dead."
+    },
+    {
+      "cue": "9.ring",
+      "sfx": "gust",
+      "why": "The sweep."
+    },
+    {
+      "cue": "9.ring",
+      "sfx": "drop",
+      "word": "ring",
+      "why": "The ring."
+    },
+    {
+      "cue": "9.out",
+      "sfx": "swish",
+      "why": "cut"
+    },
+    {
+      "cue": "9.out",
+      "sfx": "heartbeat",
+      "word": "out",
+      "why": "Facing out."
+    },
+    {
+      "cue": "9.every",
+      "sfx": "pop",
+      "word": "basket",
+      "why": "The basket."
+    },
+    {
+      "cue": "9.every",
+      "sfx": "chime",
+      "word": "basket",
+      "trim": -4,
+      "offset": 0.1,
+      "why": "The first night."
+    },
+    {
+      "cue": "9.hill",
+      "sfx": "whoosh",
+      "word": "why",
+      "why": "Whip to the hill."
+    },
+    {
+      "cue": "9.hill",
+      "sfx": "fire_whoosh",
+      "word": "torches",
+      "repeat": 3,
+      "every": 0.15,
+      "why": "Torches."
+    },
+    {
+      "cue": "10.players",
+      "sfx": "sting",
+      "word": "players",
+      "why": "Players."
+    },
+    {
+      "cue": "10.players",
+      "sfx": "clank",
+      "word": "swords",
+      "why": "Blades up."
+    },
+    {
+      "cue": "10.clear",
+      "sfx": "scrape",
+      "word": "clear",
+      "trim": -2,
+      "why": "The sword levels."
+    },
+    {
+      "cue": "10.shout",
+      "sfx": "pop",
+      "word": "monsters",
+      "why": "Bubble."
+    },
+    {
+      "cue": "10.shout",
+      "sfx": "cheer",
+      "word": "get",
+      "why": "They roar."
+    },
+    {
+      "cue": "11.charge",
+      "sfx": "riser",
+      "word": "fast",
+      "why": "Down the hill."
+    },
+    {
+      "cue": "11.charge",
+      "sfx": "step_grass",
+      "word": "came",
+      "repeat": 6,
+      "every": 0.12,
+      "why": "Running."
+    },
+    {
+      "cue": "11.dad",
+      "sfx": "swish",
+      "word": "lost",
+      "why": "The swing."
+    },
+    {
+      "cue": "11.dad",
+      "sfx": "crack",
+      "word": "lost",
+      "offset": 0.1,
+      "why": "Arm off."
+    },
+    {
+      "cue": "11.dad",
+      "sfx": "slide_up",
+      "word": "picked",
+      "why": "Picks it up."
+    },
+    {
+      "cue": "11.dad",
+      "sfx": "bonk",
+      "word": "bonked",
+      "offset": 0.1,
+      "why": "Bonk."
+    },
+    {
+      "cue": "11.dad",
+      "sfx": "thud",
+      "word": "with",
+      "why": "He folds."
+    },
+    {
+      "cue": "11.bus",
+      "sfx": "slide_down",
+      "word": "bus",
+      "why": "Coming down."
+    },
+    {
+      "cue": "11.bus",
+      "sfx": "splash",
+      "word": "sat",
+      "offset": 0.1,
+      "why": "Squelch."
+    },
+    {
+      "cue": "11.bus",
+      "sfx": "stomp",
+      "word": "sat",
+      "offset": 0.12,
+      "trim": -2,
+      "why": "On three of them."
+    },
+    {
+      "cue": "11.post",
+      "sfx": "whoosh_low",
+      "word": "one",
+      "why": "The throw."
+    },
+    {
+      "cue": "11.post",
+      "sfx": "slide_up",
+      "word": "top",
+      "trim": 1.5,
+      "why": "Up he goes."
+    },
+    {
+      "cue": "11.post",
+      "sfx": "rustle",
+      "word": "tree",
+      "why": "Into the leaves."
+    },
+    {
+      "cue": "11.hiss",
+      "sfx": "riser",
+      "word": "white",
+      "why": "The fuse."
+    },
+    {
+      "cue": "11.hiss",
+      "sfx": "crackle",
+      "word": "shook",
+      "why": "Hissing."
+    },
+    {
+      "cue": "11.hiss",
+      "sfx": "power_down",
+      "word": "off",
+      "why": "He lets it go."
+    },
+    {
+      "cue": "11.losing",
+      "sfx": "step_grass",
+      "word": "nobody",
+      "repeat": 4,
+      "every": 0.25,
+      "why": "Backing away."
+    },
+    {
+      "cue": "11.losing",
+      "sfx": "sting",
+      "word": "losing",
+      "trim": -2,
+      "why": "Losing."
+    },
+    {
+      "cue": "12.mum",
+      "sfx": "whoosh_low",
+      "word": "knocked",
+      "offset": -0.2,
+      "why": "The shove."
+    },
+    {
+      "cue": "12.mum",
+      "sfx": "thud",
+      "word": "knocked",
+      "offset": 0.3,
+      "trim": 2,
+      "why": "She hits the dirt."
+    },
+    {
+      "cue": "12.mum",
+      "sfx": "debris",
+      "word": "dirt",
+      "why": "Dust."
+    },
+    {
+      "cue": "12.think",
+      "sfx": "heartbeat",
+      "word": "thought",
+      "why": "Thinking."
+    },
+    {
+      "cue": "12.think",
+      "sfx": "zip",
+      "word": "players",
+      "why": "One runs past him."
+    },
+    {
+      "cue": "12.think",
+      "sfx": "blip",
+      "word": "look",
+      "why": "His hands."
+    },
+    {
+      "cue": "12.only",
+      "sfx": "scrape",
+      "word": "only",
+      "trim": -3,
+      "why": "Sets his feet."
+    },
+    {
+      "cue": "12.only",
+      "sfx": "zip",
+      "word": "touch",
+      "offset": -0.25,
+      "why": "Gone."
+    },
+    {
+      "cue": "13.ran",
+      "sfx": "whoosh",
+      "why": "The run."
+    },
+    {
+      "cue": "13.ran",
+      "sfx": "step_grass",
+      "word": "ran",
+      "repeat": 10,
+      "every": 0.11,
+      "why": "Feet."
+    },
+    {
+      "cue": "13.ran",
+      "sfx": "swish",
+      "word": "sword",
+      "offset": 0.05,
+      "why": "Blade overhead."
+    },
+    {
+      "cue": "13.ran",
+      "sfx": "boing",
+      "word": "bus",
+      "offset": -0.2,
+      "why": "Over the bus."
+    },
+    {
+      "cue": "13.ran",
+      "sfx": "scrape",
+      "word": "legs",
+      "why": "Slides under dad."
+    },
+    {
+      "cue": "13.ran",
+      "sfx": "step_stick",
+      "word": "legs",
+      "offset": 0.1,
+      "repeat": 2,
+      "every": 0.08,
+      "why": "Dad rattles."
+    },
+    {
+      "cue": "13.front",
+      "sfx": "scrape",
+      "word": "front",
+      "offset": -0.15,
+      "why": "Skid."
+    },
+    {
+      "cue": "13.front",
+      "sfx": "thud",
+      "word": "arms",
+      "why": "Arms out."
+    },
+    {
+      "cue": "13.stop",
+      "sfx": "hit",
+      "word": "stop",
+      "trim": 1,
+      "why": "STOP."
+    },
+    {
+      "cue": "13.stop",
+      "sfx": "pop",
+      "word": "stop",
+      "offset": 0.05,
+      "why": "Bubble."
+    },
+    {
+      "cue": "14.quiet",
+      "sfx": "drop",
+      "word": "quiet",
+      "why": "Silence."
+    },
+    {
+      "cue": "14.quiet",
+      "sfx": "stomp",
+      "word": "big",
+      "trim": -5,
+      "why": "His step."
+    },
+    {
+      "cue": "14.quiet",
+      "sfx": "stomp",
+      "word": "looked",
+      "trim": -5,
+      "why": "Another."
+    },
+    {
+      "cue": "14.trick",
+      "sfx": "pop",
+      "word": "it",
+      "why": "Bubble."
+    },
+    {
+      "cue": "14.trick",
+      "sfx": "sting",
+      "word": "one",
+      "trim": -3,
+      "why": "One of them."
+    },
+    {
+      "cue": "14.sword",
+      "sfx": "riser",
+      "word": "sword",
+      "why": "Up it goes."
+    },
+    {
+      "cue": "14.sword",
+      "sfx": "clank",
+      "word": "lifted",
+      "why": "Steel."
+    },
+    {
+      "cue": "14.eyes",
+      "sfx": "heartbeat",
+      "word": "shut",
+      "why": "Eyes shut."
+    },
+    {
+      "cue": "15.clang",
+      "sfx": "whoosh_low",
+      "word": "it",
+      "offset": -0.05,
+      "why": "It comes down."
+    },
+    {
+      "cue": "15.clang",
+      "sfx": "clank",
+      "word": "it",
+      "offset": 0.2,
+      "trim": 3,
+      "why": "Caught."
+    },
+    {
+      "cue": "15.clang",
+      "sfx": "boom",
+      "word": "did",
+      "trim": -4,
+      "why": "The stop."
+    },
+    {
+      "cue": "15.mo",
+      "sfx": "gust",
+      "word": "mo",
+      "why": "The camera swings out."
+    },
+    {
+      "cue": "15.mo",
+      "sfx": "creak",
+      "word": "caught",
+      "why": "Pushing on it."
+    },
+    {
+      "cue": "15.red",
+      "sfx": "plink",
+      "word": "bleeding",
+      "why": "A drop."
+    },
+    {
+      "cue": "15.red",
+      "sfx": "plink",
+      "word": "red",
+      "pitch": 0.8,
+      "why": "Red."
+    },
+    {
+      "cue": "15.red",
+      "sfx": "sting",
+      "word": "red",
+      "offset": 0.1,
+      "trim": -4,
+      "why": "Red."
+    },
+    {
+      "cue": "15.zombie",
+      "sfx": "plink",
+      "word": "zombies",
+      "why": "On his shoulder."
+    },
+    {
+      "cue": "15.zombie",
+      "sfx": "blip",
+      "word": "red",
+      "pitch": 0.7,
+      "why": "Not right."
+    },
+    {
+      "cue": "16.scarf",
+      "sfx": "rustle",
+      "word": "pulled",
+      "why": "The scarf comes down."
+    },
+    {
+      "cue": "16.paint",
+      "sfx": "rustle",
+      "word": "wiped",
+      "why": "Sleeve."
+    },
+    {
+      "cue": "16.paint",
+      "sfx": "debris",
+      "word": "green",
+      "trim": -2,
+      "why": "Flakes."
+    },
+    {
+      "cue": "16.skin",
+      "sfx": "swish",
+      "word": "skin",
+      "nth": 1,
+      "why": "Across to the boy."
+    },
+    {
+      "cue": "16.skin",
+      "sfx": "heartbeat",
+      "word": "there",
+      "why": "Skin."
+    },
+    {
+      "cue": "16.say",
+      "sfx": "pop",
+      "word": "i",
+      "why": "Bubble."
+    },
+    {
+      "cue": "16.say",
+      "sfx": "boom",
+      "word": "human",
+      "why": "The reveal."
+    },
+    {
+      "cue": "17.list",
+      "sfx": "pop",
+      "word": "bread",
+      "why": "Bread."
+    },
+    {
+      "cue": "17.list",
+      "sfx": "pop",
+      "word": "lantern",
+      "pitch": 1.1,
+      "why": "Lantern."
+    },
+    {
+      "cue": "17.list",
+      "sfx": "pop",
+      "word": "sneeze",
+      "pitch": 1.2,
+      "why": "Sneeze."
+    },
+    {
+      "cue": "17.list",
+      "sfx": "ding",
+      "word": "sun",
+      "why": "Sun."
+    },
+    {
+      "cue": "17.why",
+      "sfx": "whoosh",
+      "why": "Back to the doorway."
+    },
+    {
+      "cue": "17.why",
+      "sfx": "sparkle",
+      "word": "because",
+      "trim": -4,
+      "why": "The little wave."
+    },
+    {
+      "cue": "17.basket",
+      "sfx": "swish",
+      "why": "Years ago."
+    },
+    {
+      "cue": "17.basket",
+      "sfx": "step_grass",
+      "word": "who",
+      "repeat": 4,
+      "every": 0.3,
+      "why": "Up the path."
+    },
+    {
+      "cue": "17.basket",
+      "sfx": "place",
+      "word": "basket",
+      "offset": 0.3,
+      "why": "Set down."
+    },
+    {
+      "cue": "18.player",
+      "sfx": "clank",
+      "word": "big",
+      "why": "The sword drops."
+    },
+    {
+      "cue": "18.player",
+      "sfx": "step_grass",
+      "word": "step",
+      "why": "One step back."
+    },
+    {
+      "cue": "18.player",
+      "sfx": "sting",
+      "word": "knew",
+      "trim": -3,
+      "why": "He knows him."
+    },
+    {
+      "cue": "18.you",
+      "sfx": "hit",
+      "word": "you",
+      "trim": -4,
+      "why": "You."
+    },
+    {
+      "cue": "18.you",
+      "sfx": "sting",
+      "word": "ran",
+      "trim": -3,
+      "why": "He was one of them."
+    },
+    {
+      "cue": "18.hunt",
+      "sfx": "clank",
+      "word": "come",
+      "nth": 1,
+      "offset": -0.5,
+      "repeat": 3,
+      "every": 0.12,
+      "why": "Every sword turns to Mo."
+    },
+    {
+      "cue": "18.hunt",
+      "sfx": "boom",
+      "word": "him",
+      "trim": -2,
+      "why": "For him."
+    },
+    {
+      "cue": "19.look",
+      "sfx": "heartbeat",
+      "word": "staring",
+      "why": "All eyes on Mo."
+    },
+    {
+      "cue": "19.look",
+      "sfx": "step_grass",
+      "word": "not",
+      "repeat": 4,
+      "every": 0.2,
+      "why": "Monsters step in behind them."
+    },
+    {
+      "cue": "19.look",
+      "sfx": "pop",
+      "word": "behind",
+      "why": "Hiss comes up in the gap."
+    },
+    {
+      "cue": "19.tap",
+      "sfx": "bonk",
+      "word": "tapped",
+      "repeat": 2,
+      "every": 0.26,
+      "pitch": 1.2,
+      "why": "Tap, tap, with a bone."
+    },
+    {
+      "cue": "19.tap",
+      "sfx": "step_stick",
+      "word": "wearing",
+      "why": "Dad waves his own arm.",
+      "repeat": 3,
+      "every": 0.09
+    },
+    {
+      "cue": "19.tap",
+      "sfx": "boing",
+      "word": "wearing",
+      "offset": -0.15,
+      "why": "The player jumps."
+    },
+    {
+      "cue": "19.tap",
+      "sfx": "clank",
+      "word": "wearing",
+      "offset": 0.35,
+      "why": "His sword lands."
+    },
+    {
+      "cue": "19.bus",
+      "sfx": "whoosh",
+      "why": "The bus rolls in."
+    },
+    {
+      "cue": "19.bus",
+      "sfx": "hit",
+      "offset": 0.44,
+      "repeat": 4,
+      "every": 0.155,
+      "why": "Four players, one after another."
+    },
+    {
+      "cue": "19.bus",
+      "sfx": "splash",
+      "word": "bowling",
+      "trim": -3,
+      "why": "Slime."
+    },
+    {
+      "cue": "19.hiss",
+      "sfx": "crackle",
+      "word": "hug",
+      "why": "Hiss lights up."
+    },
+    {
+      "cue": "19.hiss",
+      "sfx": "pop",
+      "word": "hug",
+      "offset": -0.08,
+      "why": "The bubble."
+    },
+    {
+      "cue": "19.hiss",
+      "sfx": "clank",
+      "word": "hug",
+      "offset": 0.45,
+      "repeat": 2,
+      "every": 0.1,
+      "why": "Two swords dropped."
+    },
+    {
+      "cue": "19.run",
+      "sfx": "step_grass",
+      "repeat": 8,
+      "every": 0.17,
+      "why": "They run for the hill."
+    },
+    {
+      "cue": "19.run",
+      "sfx": "slide_down",
+      "offset": 0.2,
+      "trim": -3,
+      "why": "The players lose."
+    },
+    {
+      "cue": "20.gather",
+      "sfx": "whoosh",
+      "why": "Along the street."
+    },
+    {
+      "cue": "20.gather",
+      "sfx": "creak",
+      "word": "village",
+      "why": "Doors open."
+    },
+    {
+      "cue": "20.gather",
+      "sfx": "pop",
+      "word": "zombie",
+      "why": "The zombies."
+    },
+    {
+      "cue": "20.gather",
+      "sfx": "step_stick",
+      "word": "skeleton",
+      "why": "The skeletons.",
+      "repeat": 3,
+      "every": 0.09
+    },
+    {
+      "cue": "20.gather",
+      "sfx": "pop",
+      "word": "kid",
+      "pitch": 1.3,
+      "repeat": 3,
+      "every": 0.05,
+      "why": "The kids hop."
+    },
+    {
+      "cue": "20.mo",
+      "sfx": "rustle",
+      "word": "hat",
+      "why": "The hat in his hands."
+    },
+    {
+      "cue": "20.fear",
+      "sfx": "heartbeat",
+      "word": "lied",
+      "why": "Waiting for it."
+    },
+    {
+      "cue": "20.fear",
+      "sfx": "heartbeat",
+      "word": "hate",
+      "why": "Waiting for it."
+    },
+    {
+      "cue": "20.mum",
+      "sfx": "step_grass",
+      "word": "walked",
+      "repeat": 3,
+      "every": 0.3,
+      "why": "Mum walks up."
+    },
+    {
+      "cue": "20.mum",
+      "sfx": "rustle",
+      "word": "put",
+      "why": "She takes the hat."
+    },
+    {
+      "cue": "20.mum",
+      "sfx": "place",
+      "word": "head",
+      "why": "Back on his head."
+    },
+    {
+      "cue": "20.mum",
+      "sfx": "sparkle",
+      "word": "head",
+      "offset": 0.15,
+      "why": "He looks up."
+    },
+    {
+      "cue": "20.knew",
+      "sfx": "ding",
+      "word": "knew",
+      "why": "They always knew."
+    },
+    {
+      "cue": "20.knew",
+      "sfx": "pop",
+      "word": "bread",
+      "offset": -0.05,
+      "why": "The loaf."
+    },
+    {
+      "cue": "21.boom",
+      "sfx": "boom",
+      "word": "blew",
+      "why": "The forest goes up."
+    },
+    {
+      "cue": "21.boom",
+      "sfx": "debris",
+      "word": "up",
+      "why": "What comes down after."
+    },
+    {
+      "cue": "21.army",
+      "sfx": "riser",
+      "word": "hundreds",
+      "why": "Hundreds."
+    },
+    {
+      "cue": "21.army",
+      "sfx": "fire_whoosh",
+      "word": "pouring",
+      "why": "Torches out of the trees."
+    },
+    {
+      "cue": "21.order",
+      "sfx": "hit",
+      "word": "run",
+      "trim": -4,
+      "why": "Run."
+    },
+    {
+      "cue": "21.order",
+      "sfx": "swish",
+      "word": "east",
+      "why": "His arm goes out."
+    },
+    {
+      "cue": "21.order",
+      "sfx": "whoosh",
+      "word": "ago",
+      "offset": 0.3,
+      "why": "They go, all at once."
+    },
+    {
+      "cue": "21.ran",
+      "sfx": "whoosh",
+      "why": "Everybody runs."
+    },
+    {
+      "cue": "21.ran",
+      "sfx": "step_grass",
+      "offset": 0.1,
+      "repeat": 8,
+      "every": 0.16,
+      "why": "Feet."
+    },
+    {
+      "cue": "21.ran",
+      "sfx": "step_stick",
+      "word": "everybody",
+      "why": "Dad at a run.",
+      "repeat": 3,
+      "every": 0.09
+    },
+    {
+      "cue": "22.back",
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.22,
+      "why": "He slows."
+    },
+    {
+      "cue": "22.back",
+      "sfx": "swish",
+      "word": "looked",
+      "why": "He turns round."
+    },
+    {
+      "cue": "22.back",
+      "sfx": "drop",
+      "word": "mo",
+      "why": "Mo is not there."
+    },
+    {
+      "cue": "22.alone",
+      "sfx": "gust",
+      "why": "The empty street."
+    },
+    {
+      "cue": "22.alone",
+      "sfx": "sting",
+      "word": "alone",
+      "trim": -3,
+      "why": "Alone."
+    },
+    {
+      "cue": "22.armor",
+      "sfx": "clank",
+      "word": "helmet",
+      "offset": -0.1,
+      "why": "Helmet."
+    },
+    {
+      "cue": "22.armor",
+      "sfx": "clank",
+      "word": "chestplate",
+      "offset": -0.1,
+      "pitch": 0.85,
+      "why": "Chestplate."
+    },
+    {
+      "cue": "22.armor",
+      "sfx": "swish",
+      "word": "sword",
+      "offset": -0.12,
+      "why": "The sword."
+    },
+    {
+      "cue": "22.armor",
+      "sfx": "boom",
+      "word": "sword",
+      "offset": 0.1,
+      "trim": -3,
+      "why": "He stays."
+    },
+    {
+      "cue": "22.sub",
+      "sfx": "pop",
+      "word": "like",
+      "why": "The sign."
+    },
+    {
+      "cue": "22.sub",
+      "sfx": "ding",
+      "word": "subscribe",
+      "why": "Subscribe."
+    }
+  ]
+}

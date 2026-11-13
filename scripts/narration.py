@@ -163,6 +163,18 @@ def find_raw(slug: str, clip: str):
 
 
 # ----------------------------------------------------------------------------- alignment
+# Words the aligner's dictionary lacks, in its own phones. Without them a whole clip is timed by guesswork and the
+# captions drift off the voice. Add a word here when `build` says it does not know it.
+SAY = {
+    "creeper": "K R IY P ER",
+    "creepers": "K R IY P ER Z",
+    "enderman": "EH N D ER M AE N",
+    "endermen": "EH N D ER M EH N",
+    "bonked": "B AA NG K T",
+    "chestplate": "CH EH S T P L EY T",
+    "hideout": "HH AY D AW T",
+}
+
 def align(pcm16k, words):
     """[(start, end)] in seconds for each word, or None if the aligner cannot do it."""
     try:
@@ -177,6 +189,10 @@ def align(pcm16k, words):
         if decoder.lookup_word(t) is None:
             base = re.sub(r"(?:'s|s)$", "", t)
             phones = decoder.lookup_word(base) if base != t else None
+            if phones is None and t in SAY:
+                decoder.add_word(t, SAY[t], True)
+                tokens.append(t)
+                continue
             if phones is None:
                 print(f"    aligner does not know the word '{t}'; this clip falls back to an estimate")
                 return None
