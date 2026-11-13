@@ -19,7 +19,14 @@ import { scene14 } from "./scene14";
 /**
  * What If You Could See Who Had a Crush on You
  *
- * TODO: the film in three sentences. The power, what the teller used it for, and what it was really doing.
+ * One morning a boy can see a pink heart over the head of anybody who has a crush, and a heart grows when the one it
+ * is for comes close. He uses it to find out whether Mia's small heart is for him, and twice he watches it swell with
+ * him standing right behind her: in the lunch line, and at the dance. Both times it was for the tall kid standing
+ * behind HIM. The biggest heart in the school was his best friend Jo's, and it had never been big: it had only ever
+ * been near him.
+ *
+ * The rule that every picture keeps: a heart changes size only when the one it is for moves. Jo's is `joHeart(metres
+ * from him)` in every shot she is in (kit.tsx), so the answer is on screen from the first second.
  *
  * A "WHAT IF" film (Topics/WhatIf): a kid gets one impossible power and tells what happened. The recorded
  * narration is the clock, and every line of narration.md is one shot. Read Topics/WhatIf/README.md before
@@ -32,10 +39,9 @@ export const film = defineFilm({
   title: "What If You Could See Who Had a Crush on You",
   topic: "what-if",
   look: "overworld-day",
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/what-if-you-could-see-who-had-a-crush-on-you/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/what-if-you-could-see-who-had-a-crush-on-you/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
+  // Voice, music, the air of each place and an effect for each thing that happens: sound.json, built by
+  // `python3 scripts/sound.py build what-if-you-could-see-who-had-a-crush-on-you`. Change a word or a cut: build it again.
+  audio: { src: "audio/what-if-you-could-see-who-had-a-crush-on-you/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene11, scene12, scene13, scene14],

@@ -376,8 +376,9 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
         return;
       }
       const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top)\s*\(/.test(body);
-      const literal = /(^|\n)\s*from:\s*\[/.test(body) && /(^|\n)\s*target:\s*\[/.test(body);
-      if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give from[] and target[].`);
+      // The camera as two points: written out (`from: [x, y, z]`) or from a place's own helper (`from: GYM.at(x, y, z)`).
+      const literal = /(^|\n)\s*from:\s*[\[\w]/.test(body) && /(^|\n)\s*target:\s*[\[\w]/.test(body);
+      if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give \`from:\` and \`target:\` (two points).`);
       if (!recipe && !/(^|\n)\s*(to|path|targetTo|targetPath|arc|shake):/.test(body)) {
         fail(`${shot}: static shot. Every shot in a story film moves.`);
       }
