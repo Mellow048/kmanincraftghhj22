@@ -1,6 +1,8 @@
 # Narration — What If You Could See Who Had a Crush on You
 
-**Status: BUILT and RENDERED. Waiting for the owner to watch it.** The owner approved this script on 2026-11-13
+**Status: APPROVED. This film does not change.** The owner watched it on 2026-11-13: "okay i love both really, this
+can be uploaded too!", "i like how you made these!". It is the reference film of its topic
+(`Topics/WhatIf/reference/crush/`). He had approved this script on 2026-11-13
 ("yesboth", to the two scripts that were put to him together). The six clips are recorded with `voice-00`
 (`public/audio/what-if-you-could-see-who-had-a-crush-on-you/raw/`) and the film is timed to them (`timing.json`):
 1:53.6 at 254 words a minute. The picture (55 shots in six places) and the sound (`sound.json`: 321 sounds) are
@@ -13,9 +15,9 @@ Measured on the delivered file (`python3 scripts/render-check.py what-if-you-cou
 sound sits 0.0 ms from `mix.mp3`, −15.0 LUFS, true peak −0.3 dB. **Nobody has listened to the sound: an agent
 cannot.**
 
-Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. **This film is meant to become the
-topic's reference** (the owner: "you are the one making that reference!"): once he approves it, it is measured and
-the provisional numbers of the topic are corrected from it (`Topics/WhatIf/reference/README.md`).
+Topic: `Topics/WhatIf`. **This film is the topic's reference** (the owner: "you are the one making that
+reference!"). It is measured on its page, `Topics/WhatIf/reference/crush/README.md`, and the beat sheet in
+`Topics/WhatIf/SCRIPT.md` is this film's.
 
 **The premise, in four sentences.** What if I could see a heart over anybody who liked somebody. I used it to find
 out whether Mia, the girl by the window, liked me. It worked: her heart grew every time I came close, until the

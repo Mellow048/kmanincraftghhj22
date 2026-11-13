@@ -1,6 +1,8 @@
 # Narration — Why Does Bread Cost More Every Year
 
-**Status: BUILT and RENDERED. Waiting for the owner to watch it.** The owner approved this script on 2026-11-13
+**Status: APPROVED. This film does not change.** The owner watched it on 2026-11-13: "okay i love both really, this
+can be uploaded too!", "i like how you made these!". It is the reference film of its topic
+(`Topics/Explainer/reference/bread/`). He had approved this script on 2026-11-13
 ("yesboth", to the two scripts that were put to him together). The three clips are recorded with `voice-00`
 (`public/audio/why-does-bread-cost-more-every-year/raw/`) and the film's clock is measured from them
 (`timing.json`): 49.2 seconds. The picture (19 stops, one flight) and the sound (`sound.json`) are built, and the
@@ -12,10 +14,9 @@ word now means recording that clip again and rebuilding the timing.
 `python3 scripts/narration.py build why-does-bread-cost-more-every-year --wpm 225`. An explanation is read slower
 than a story (224 words a minute here; the story films run at 254).
 
-Topic: `Topics/Explainer`. Read `Topics/Explainer/SCRIPT.md` before changing a word. **This film is meant to become
-the topic's reference** (the owner: "you are the one making that reference!"; his subjects: "money lessons, what
-inflation is"): once he approves it, it is measured and the provisional numbers of the topic are corrected from it
-(`Topics/Explainer/reference/README.md`).
+Topic: `Topics/Explainer`. **This film is the topic's reference** (the owner: "you are the one making that
+reference!"; his subjects: "money lessons, what inflation is"). It is measured on its page,
+`Topics/Explainer/reference/bread/README.md`.
 
 **The question:** Why does bread cost more every year?
 
@@ -119,8 +120,8 @@ as proposed: the subject is inflation through the price of bread, the German loa
 what it lacked: an oven, a loaf that comes apart, a price too long for a tag, a balloon, a speech bubble that says
 a number, a wheelbarrow and its heap of notes, notes falling off an island, a bundle of notes for a tall stack.
 They are in this film's `parts.tsx`,
-built so that they can move into the pack unchanged once the owner has approved the film
-(`Topics/Explainer/PACK.md`, "Adding a part"). In `kit.tsx`, because they are this film's own: the five islands,
+built so that they can move into the pack unchanged (`Topics/Explainer/PACK.md`, "Parts built for the first
+film": the move is the first step of building the next explainer). In `kit.tsx`, because they are this film's own: the five islands,
 the route, the shop (the same on "today" and "then") and the village's rack.
 
 ```narration

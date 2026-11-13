@@ -8,8 +8,8 @@ code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown
 | The request… | It is | Read | Start with |
 |---|---|---|---|
 | says "In This Town"; or tells a story that begins "In this town, …"; or asks for a storytime, a narrated story of a minute or more, or a film "like Same Face", "like the monster egg" or "like the treehouse video" | The topic **In This Town** | [`Topics/InThisTown/README.md`](Topics/InThisTown/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "In This Town, …" --topic in-this-town` |
-| asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation; or asks a "What if …" that is answered with facts | The topic **Explainer** (provisional) | [`Topics/Explainer/README.md`](Topics/Explainer/README.md) and what it lists. From this file, sections 9–11, and rule 3: the camera never teleports | `npm run new -- "Why Bread Costs More" --topic explainer` |
-| says "What if you could …"; or tells the story of a kid who gets a power | The topic **What If** (provisional) | [`Topics/WhatIf/README.md`](Topics/WhatIf/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "What If You Could …" --topic what-if` |
+| asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation; or asks a "What if …" that is answered with facts | The topic **Explainer** | [`Topics/Explainer/README.md`](Topics/Explainer/README.md) and what it lists. From this file, sections 9–11, and rule 3: the camera never teleports | `npm run new -- "Why Bread Costs More" --topic explainer` |
+| says "What if you could …"; or tells the story of a kid who gets a power | The topic **What If** | [`Topics/WhatIf/README.md`](Topics/WhatIf/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "What If You Could …" --topic what-if` |
 | names another folder in `Topics/` | That topic | [`Topics/README.md`](Topics/README.md), then the topic's `README.md` | `npm run new -- "…" --topic <id>` |
 | asks for a 20-second short, or for none of the above | The **base film** | This file, from "The base film" down | `npm run new -- "The Title"` |
 | could be either | | | Ask the owner one question. Do not guess |
@@ -19,13 +19,12 @@ tense. It cuts about every two seconds to a recorded voice, captions every word,
 on a twist that was planted in the first minute. A 20-second film with that name is not a short version of it. The
 short version is the topic's own `cut: "short"`: one to two minutes.
 
-**Explainer and What If are PROVISIONAL.** The owner asked for them before their references. Their rules, packs,
-starters and sounds are in place and `npm run check` holds a film to their numbers, but no number is measured from
-a real video yet, and no film of either has been approved. The owner decided that we make each reference ourselves
-("you are the one making that reference!"): the first film of each topic that he approves becomes it. When that
-happens, measure it and correct the topic: `Topics/<Folder>/reference/README.md` says how. An Explainer is not a story: its
-camera does not cut. It flies from one thing to the next (`flightScene`), which is this file's rule 3 driven by a
-recorded voice.
+**Explainer and What If each have a reference film of our own.** The owner asked for both topics before their
+references, and then for us to make each reference ourselves ("you are the one making that reference!"). The first
+film of each is built, approved (2026-11-13: "okay i love both really, this can be uploaded too!") and measured:
+`Topics/Explainer/reference/bread/` and `Topics/WhatIf/reference/crush/`. Open the one for your topic before you
+build. An Explainer is not a story: its camera does not cut. It flies from one thing to the next (`flightScene`),
+which is this file's rule 3 driven by a recorded voice.
 
 What a topic gives a film, that the base does not:
 
@@ -65,8 +64,8 @@ check is wrong, say so and ask.
    changes with the story. The topic's `SOUND.md` says which.
 4. **An approved film does not change.** If you touch the engine or a pack, prove that the finished films' stills are the
    same before and after: `scripts/compare-stills.py`.
-5. **Copy how the reference film is built. Never copy its story**, its sentences or its twist. A provisional topic
-   has no reference film yet: its `README.md` names the finished film to learn the building from.
+5. **Copy how the reference film is built. Never copy its story**, its sentences or its twist. Every topic has
+   one: `reference` in its `topic.json` names it, and `Topics/<Folder>/reference/README.md` lists the others.
 
 ### If the topic's folder is not there
 

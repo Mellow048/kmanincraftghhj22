@@ -10,13 +10,13 @@ A film's `kit.tsx` imports from the pack and passes the names on, so its scenes 
 
 ![Every part of the pack](pack.jpg)
 
-> **Not yet approved in a film.** Every part here has been rendered and looked at. The topic's first film uses
-> all of them except six of the seven looks of a power (`Echo`, `Aura`, `Swirl`, `Streaks`, `Countdown`, `Beam`:
-> its power is a heart over a head, `Overhead`) and a `Chalkboard` on its own
-> (`src/videos/what-if-you-could-see-who-had-a-crush-on-you/`, one frame of each of its shots:
+> **Approved in a film.** The topic's reference film uses every part here except six of the seven looks of a power
+> (`Echo`, `Aura`, `Swirl`, `Streaks`, `Countdown`, `Beam`: its power is a heart over a head, `Overhead`) and a
+> `Chalkboard` on its own. The owner approved that film on 2026-11-13
+> ([`reference/crush/`](reference/crush/README.md); one frame of each of its shots:
 > [`renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg`](../../renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg)).
-> The owner has not given his verdict on that film yet: it decides what stays. The parts passed on from In This
-> Town are the exception: those come from approved films.
+> The six looks it did not use have been rendered and looked at, and never seen by him in a film. The parts passed
+> on from In This Town come from approved films of that topic.
 >
 > The picture above is the sheet of the school, the powers and the cast. The places and the things further down
 > were built for the first film and are not on the sheet: look at them in the film's frames.

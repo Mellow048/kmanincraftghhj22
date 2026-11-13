@@ -1,0 +1,675 @@
+{
+  "film": "why-does-bread-cost-more-every-year",
+  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build why-does-bread-cost-more-every-year",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.ask",
+        "mood": "curious",
+        "why": "The question, the loaf, and the same loaf when your mom was your age: something ordinary, and something odd about it."
+      },
+      {
+        "from": "4.village",
+        "mood": "explain",
+        "why": "The cause, step by step, in a village small enough to count. Facts, one after another: the steady step of the topic."
+      },
+      {
+        "from": "5.real",
+        "mood": "town",
+        "why": "Up and out to the real world: bigger, busier, the same thing happening all the time."
+      },
+      {
+        "from": "5.germany",
+        "mood": "tense",
+        "why": "A hundred years down, where it went wrong fast. A pulse that will not stop, under the press and the price nobody could pay."
+      },
+      {
+        "from": "6.answer",
+        "mood": "hope",
+        "why": "Home, and now it makes sense. It stays in this mood through your chest and the subscribe line: never a new tune for the last three seconds."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.ask",
+      "to": "3.same",
+      "bed": "sky"
+    },
+    {
+      "from": "4.village",
+      "to": "4.nobody",
+      "bed": "village"
+    },
+    {
+      "from": "5.real",
+      "to": "5.name",
+      "bed": "village"
+    },
+    {
+      "from": "5.germany",
+      "to": "5.billion",
+      "bed": "wind",
+      "why": "A bare stone island a long way down: wind, and no birds."
+    },
+    {
+      "from": "6.answer",
+      "to": "7.sub",
+      "bed": "sky"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.ask",
+      "at": 0.02,
+      "sfx": "pop",
+      "why": "The question mark over his head: there on the first frame."
+    },
+    {
+      "cue": "1.ask",
+      "at": 0.42,
+      "sfx": "whoosh",
+      "dur": 0.8,
+      "trim": -2,
+      "why": "The flight in from the whole stall to the kid: a whoosh as long as the flight."
+    },
+    {
+      "cue": "1.ask",
+      "word": "more",
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "The shrug."
+    },
+    {
+      "cue": "2.loaf",
+      "at": 0.28,
+      "sfx": "swish",
+      "why": "Past his shoulder to the loaf.",
+      "trim": 2
+    },
+    {
+      "cue": "2.loaf",
+      "word": "costs",
+      "sfx": "paper",
+      "trim": 3,
+      "why": "The tag swings round to face us. Every tag in the film turns with this sound."
+    },
+    {
+      "cue": "2.loaf",
+      "word": "two",
+      "at": 0.2,
+      "sfx": "coin",
+      "pan": -0.2,
+      "why": "The first coin lands under the loaf, 0.2 s after it is let go (dropped() in kit.tsx)."
+    },
+    {
+      "cue": "2.loaf",
+      "word": "coins",
+      "at": 0.2,
+      "sfx": "coin",
+      "pitch": 1.12,
+      "pan": 0.2,
+      "why": "The second coin, beside it: a little higher."
+    },
+    {
+      "cue": "3.mom",
+      "at": 0.45,
+      "sfx": "whoosh",
+      "dur": 0.9,
+      "trim": -2,
+      "why": "Over the edge of the island and down."
+    },
+    {
+      "cue": "3.mom",
+      "at": 0.3,
+      "sfx": "slide_down",
+      "dur": 0.6,
+      "trim": 1,
+      "why": "Down into the past: the whistle goes the way the camera goes."
+    },
+    {
+      "cue": "3.mom",
+      "word": "cost",
+      "sfx": "paper",
+      "trim": 3,
+      "why": "Her tag swings round, as today's did."
+    },
+    {
+      "cue": "3.mom",
+      "word": "one",
+      "at": 0.2,
+      "sfx": "coin",
+      "pitch": 0.9,
+      "why": "Her one coin lands. The same coin sound, lower: an older coin."
+    },
+    {
+      "cue": "3.same",
+      "at": 0.3,
+      "sfx": "whoosh",
+      "dur": 0.6,
+      "trim": -3,
+      "why": "Back, fast, until both stalls are in the frame."
+    },
+    {
+      "cue": "3.same",
+      "word": "bread",
+      "at": 0.28,
+      "sfx": "boing",
+      "dur": 0.35,
+      "trim": -1,
+      "why": "The two loaves hop together, a beat after 'bread'."
+    },
+    {
+      "cue": "3.same",
+      "word": "oven",
+      "sfx": "fire_whoosh",
+      "dur": 0.5,
+      "why": "The two ovens flare together."
+    },
+    {
+      "cue": "3.same",
+      "word": "price",
+      "sfx": "blip",
+      "why": "The two tags swell: the one thing that is not the same."
+    },
+    {
+      "cue": "3.same",
+      "word": "moved",
+      "at": -0.05,
+      "sfx": "slide_up",
+      "dur": 0.4,
+      "trim": 2,
+      "why": "The arrow grows from the one up to the two. Up is dearer, in this film."
+    },
+    {
+      "cue": "4.village",
+      "at": 0.55,
+      "sfx": "whoosh",
+      "dur": 1.1,
+      "trim": -1,
+      "why": "The flight down and west to the village."
+    },
+    {
+      "cue": "4.village",
+      "word": "village",
+      "sfx": "bell",
+      "trim": -3,
+      "ring": 0.7,
+      "why": "A village has a bell. One stroke, small, on its name."
+    },
+    {
+      "cue": "4.ten",
+      "at": 0.3,
+      "sfx": "swish",
+      "why": "Round to the front of the rack."
+    },
+    {
+      "cue": "4.ten",
+      "word": "ten",
+      "sfx": "count",
+      "dur": 0.55,
+      "why": "Ten loaves pop on to the rack one after another (0.05 s apart): one count that runs up, not ten pops."
+    },
+    {
+      "cue": "4.ten",
+      "word": "ten",
+      "nth": 1,
+      "at": 0.15,
+      "sfx": "coins",
+      "dur": 0.5,
+      "why": "Ten coins drop in two rows at the foot of the rack. Short and low: the end of the sentence ('to buy them with') is quiet, and a longer spill covered it.",
+      "trim": -2.5
+    },
+    {
+      "cue": "4.one",
+      "at": 0.25,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "In, and round to the left."
+    },
+    {
+      "cue": "4.one",
+      "word": "each",
+      "sfx": "coin",
+      "repeat": 4,
+      "every": 0.2,
+      "pitchStep": 1.06,
+      "trim": -1,
+      "why": "The coins fly up, each to its own loaf, for 0.8 s: four coins going up the scale stand for ten."
+    },
+    {
+      "cue": "4.one",
+      "word": "one",
+      "sfx": "stamp",
+      "why": "The big tag over the rack pops: a price is fixed. One."
+    },
+    {
+      "cue": "4.more",
+      "at": 0.25,
+      "sfx": "swish",
+      "trim": 0,
+      "why": "Back and round, with sky over the rack."
+    },
+    {
+      "cue": "4.more",
+      "word": "hand",
+      "sfx": "slide_down",
+      "dur": 0.5,
+      "why": "Ten more coins come down out of the sky."
+    },
+    {
+      "cue": "4.more",
+      "word": "ten",
+      "at": -0.1,
+      "sfx": "coins",
+      "dur": 0.75,
+      "trim": 1,
+      "why": "They land where the first ten waited."
+    },
+    {
+      "cue": "4.still",
+      "at": 0.25,
+      "sfx": "swish",
+      "trim": 0,
+      "why": "To the baker."
+    },
+    {
+      "cue": "4.still",
+      "word": "still",
+      "sfx": "count",
+      "dur": 0.85,
+      "trim": -1,
+      "why": "He counts the rack with his head, and each loaf hops as he gets to it."
+    },
+    {
+      "cue": "4.still",
+      "word": "ten",
+      "at": -0.05,
+      "sfx": "pop",
+      "why": "The bubble: 10. The same ten."
+    },
+    {
+      "cue": "4.two",
+      "at": 0.25,
+      "sfx": "swish",
+      "trim": 0,
+      "why": "The whole rack again."
+    },
+    {
+      "cue": "4.two",
+      "word": "each",
+      "sfx": "coin",
+      "repeat": 4,
+      "every": 0.2,
+      "pitchStep": 1.06,
+      "trim": -1,
+      "why": "The ten new coins fly up: the same run of coins as the first time."
+    },
+    {
+      "cue": "4.two",
+      "word": "sells",
+      "sfx": "paper",
+      "trim": 3,
+      "why": "The big tag spins once."
+    },
+    {
+      "cue": "4.two",
+      "word": "two",
+      "sfx": "stamp",
+      "why": "It comes round as 2: the same stamp as the first price."
+    },
+    {
+      "cue": "4.nobody",
+      "word": "buy",
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "The farmer and the baker shake their heads, as the camera pushes slowly in: no more bread than before."
+    },
+    {
+      "cue": "4.nobody",
+      "word": "bread",
+      "at": 0.1,
+      "sfx": "rustle",
+      "trim": -1,
+      "why": "Two heads still shaking, a robe and a straw hat: the only things that move while the camera closes in."
+    },
+    {
+      "cue": "4.nobody",
+      "word": "buys",
+      "sfx": "crack",
+      "trim": -1,
+      "why": "Every loaf comes apart down the middle: half a loaf over each coin."
+    },
+    {
+      "cue": "5.real",
+      "at": 0.6,
+      "sfx": "whoosh",
+      "dur": 1.2,
+      "why": "Up and out to the west."
+    },
+    {
+      "cue": "5.real",
+      "at": 0.3,
+      "sfx": "gust",
+      "dur": 1.2,
+      "trim": -2,
+      "why": "A long climb through open sky."
+    },
+    {
+      "cue": "5.real",
+      "word": "same",
+      "at": 0.25,
+      "sfx": "paper",
+      "trim": 1,
+      "why": "A bundle of notes hops from the tray to the printer's roof: slowly, here."
+    },
+    {
+      "cue": "5.real",
+      "word": "only",
+      "sfx": "pop",
+      "pitch": 0.8,
+      "trim": -2,
+      "why": "A loaf hops out of the oven on to its stack."
+    },
+    {
+      "cue": "5.real",
+      "word": "slowly",
+      "at": 0.35,
+      "sfx": "paper",
+      "trim": 1,
+      "why": "And one more bundle."
+    },
+    {
+      "cue": "5.faster",
+      "at": 0.3,
+      "sfx": "swish",
+      "why": "In to the two machines.",
+      "trim": 2
+    },
+    {
+      "cue": "5.faster",
+      "word": "money",
+      "sfx": "paper",
+      "repeat": 8,
+      "every": 0.26,
+      "trim": 1.5,
+      "why": "The printer speeds up: nine bundles in 2.3 s (money in scene5.tsx)."
+    },
+    {
+      "cue": "5.faster",
+      "word": "faster",
+      "sfx": "count",
+      "dur": 1.1,
+      "trim": -2,
+      "why": "The stack of money runs up past the stack of bread."
+    },
+    {
+      "cue": "5.faster",
+      "word": "bread",
+      "sfx": "pop",
+      "pitch": 0.8,
+      "repeat": 2,
+      "every": 0.55,
+      "trim": -2,
+      "why": "Loaves hop out too, but not as often."
+    },
+    {
+      "cue": "5.name",
+      "at": 0.25,
+      "sfx": "swish",
+      "trim": -1,
+      "why": "Down to the loaf in front of the stage."
+    },
+    {
+      "cue": "5.name",
+      "word": "year",
+      "sfx": "slide_up",
+      "dur": 0.3,
+      "why": "The balloon takes a breath and the price goes up a step: 3.",
+      "trim": 2
+    },
+    {
+      "cue": "5.name",
+      "word": "year",
+      "nth": 1,
+      "sfx": "slide_up",
+      "dur": 0.3,
+      "trim": 2.5,
+      "why": "And again: 4."
+    },
+    {
+      "cue": "5.name",
+      "word": "up",
+      "at": -0.2,
+      "sfx": "slide_up",
+      "dur": 0.35,
+      "trim": 3,
+      "why": "And again: 5. The scenes start this step 0.2 s before 'up'."
+    },
+    {
+      "cue": "5.name",
+      "word": "inflation",
+      "at": -0.05,
+      "sfx": "riser",
+      "dur": 0.5,
+      "align": "start",
+      "trim": -3,
+      "why": "The last, biggest breath."
+    },
+    {
+      "cue": "5.name",
+      "word": "inflation",
+      "at": 0.3,
+      "sfx": "stamp",
+      "why": "The word is on the balloon: the thing has its name."
+    },
+    {
+      "cue": "5.germany",
+      "at": 0.78,
+      "sfx": "whoosh",
+      "dur": 1.5,
+      "trim": 1,
+      "why": "The longest flight of the film: a hundred years down."
+    },
+    {
+      "cue": "5.germany",
+      "at": 0.25,
+      "sfx": "drop",
+      "dur": 1.2,
+      "trim": -1,
+      "why": "The floor goes out from under you."
+    },
+    {
+      "cue": "5.germany",
+      "word": "Germany",
+      "at": 0.25,
+      "sfx": "clank",
+      "f": 300,
+      "why": "The press, as big as a house: iron."
+    },
+    {
+      "cue": "5.germany",
+      "word": "printed",
+      "sfx": "paper",
+      "repeat": 7,
+      "every": 0.14,
+      "trim": 1,
+      "why": "It prints as fast as it can be cranked (16 notes a second in scene5.tsx): a flutter of paper."
+    },
+    {
+      "cue": "5.germany",
+      "word": "far",
+      "sfx": "gust",
+      "dur": 1.0,
+      "trim": -1,
+      "why": "The notes pour off the edge of the island and the wind takes them."
+    },
+    {
+      "cue": "5.billion",
+      "at": 0.35,
+      "sfx": "swish",
+      "why": "Along the edge to the loaf."
+    },
+    {
+      "cue": "5.billion",
+      "word": "loaf",
+      "sfx": "pop",
+      "pitch": 0.9,
+      "why": "One loaf, on top of its plinth."
+    },
+    {
+      "cue": "5.billion",
+      "word": "cost",
+      "at": -0.1,
+      "sfx": "paper",
+      "trim": 3,
+      "why": "Its price starts to unroll: 200."
+    },
+    {
+      "cue": "5.billion",
+      "word": "two",
+      "sfx": "tick",
+      "pitch": 0.9,
+      "trim": 2,
+      "why": "A row of zeros."
+    },
+    {
+      "cue": "5.billion",
+      "word": "hundred",
+      "sfx": "tick",
+      "pitch": 0.8,
+      "trim": 2,
+      "why": "Another."
+    },
+    {
+      "cue": "5.billion",
+      "word": "billion",
+      "sfx": "boom",
+      "trim": -2,
+      "why": "And the last row lands, 0.22 s after 'billion' begins: 200,000,000,000. The one big hit of the film, on the number that is its surprise.",
+      "at": 0.22
+    },
+    {
+      "cue": "6.answer",
+      "at": 0.7,
+      "sfx": "whoosh",
+      "dur": 1.4,
+      "why": "Home: up out of 1923, past the stall where your mom paid one."
+    },
+    {
+      "cue": "6.answer",
+      "at": 0.3,
+      "sfx": "slide_up",
+      "dur": 0.9,
+      "trim": -2,
+      "why": "Up is later: the whistle climbs with the camera, as it fell going down."
+    },
+    {
+      "cue": "6.answer",
+      "at": 1.42,
+      "sfx": "ding",
+      "note": "E6",
+      "trim": -1,
+      "why": "The loaf of the first ten seconds, unchanged: the right answer starts here."
+    },
+    {
+      "cue": "6.answer",
+      "word": "more",
+      "sfx": "coins",
+      "dur": 0.75,
+      "why": "Two stacks of coins rise at the ends of the counter."
+    },
+    {
+      "cue": "6.answer",
+      "word": "buys",
+      "sfx": "crack",
+      "trim": -1,
+      "why": "Today's loaf comes apart, as the village's ten did: half over each coin."
+    },
+    {
+      "cue": "6.answer",
+      "word": "less",
+      "at": 0.36,
+      "sfx": "stamp",
+      "trim": -1,
+      "why": "The answer is given. After the word, in the breath before the next line."
+    },
+    {
+      "cue": "7.chest",
+      "at": 0.35,
+      "sfx": "swish",
+      "why": "Along the island to your own door."
+    },
+    {
+      "cue": "7.chest",
+      "word": "chest",
+      "at": -0.1,
+      "sfx": "creak",
+      "dur": 0.4,
+      "why": "The lid."
+    },
+    {
+      "cue": "7.chest",
+      "word": "chest",
+      "at": 0.22,
+      "sfx": "sparkle",
+      "dur": 0.5,
+      "trim": -1,
+      "why": "It is full."
+    },
+    {
+      "cue": "7.chest",
+      "word": "little",
+      "sfx": "pop",
+      "pitch": 0.95,
+      "pan": 0.3,
+      "why": "A loaf goes from the stack beside it."
+    },
+    {
+      "cue": "7.chest",
+      "word": "less",
+      "sfx": "pop",
+      "pitch": 0.85,
+      "pan": 0.3,
+      "why": "And another."
+    },
+    {
+      "cue": "7.chest",
+      "word": "year",
+      "sfx": "pop",
+      "pitch": 0.75,
+      "pan": 0.3,
+      "trim": -1,
+      "why": "And another: each one lower. Nothing has left the chest."
+    },
+    {
+      "cue": "7.sub",
+      "at": 0.3,
+      "sfx": "swish",
+      "trim": -1,
+      "why": "In to you, as you jump clear of the chest with the sign."
+    },
+    {
+      "cue": "7.sub",
+      "word": "subscribe",
+      "sfx": "pop",
+      "why": "The red sign goes up over your head."
+    },
+    {
+      "cue": "7.sub",
+      "word": "costs",
+      "sfx": "paper",
+      "trim": 3,
+      "why": "The tag on it swings round: the same sound as the first tag of the film."
+    },
+    {
+      "cue": "7.sub",
+      "word": "nothing",
+      "at": 0.3,
+      "sfx": "ding",
+      "note": "G6",
+      "why": "0. The subscribe line, after its last word."
+    }
+  ]
+}

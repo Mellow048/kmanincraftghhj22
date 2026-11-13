@@ -3,11 +3,15 @@
   "name": "Explainer",
   "folder": "Topics/Explainer",
   "profile": "story",
-  "state": "PROVISIONAL",
-  "provisional": {
-    "why": "The owner asked for this topic to be built before its reference: \"reference which we will do later once youre done\". So the numbers in `film` and `sound` are NOT measured from anything. They are a first setting, chosen so that the lint has something to hold a film to.",
-    "from": "The camera is the framework's own Zack D grammar (docs/CAMERA-BIBLE.md: one world, a camera that never teleports). The voice, the captions and the sound are the story pipeline's (docs/STORY-FILMS.md). The subjects the owner named: money lessons, and what inflation is.",
-    "whenTheReferenceArrives": "Put it in Topics/Explainer/reference/<name>/, measure it (length, words, words a minute, seconds per stop, hard cuts, sound), and replace every number below that it disagrees with. Then delete this block and set `state` to \"MEASURED\"."
+  "state": "MEASURED",
+  "reference": {
+    "film": "why-does-bread-cost-more-every-year",
+    "page": "Topics/Explainer/reference/bread",
+    "owner": "okay i love both really, this can be uploaded too!",
+    "use": "Our own first film of the topic, picture and sound approved by the owner (2026-11-13). The owner asked us to make the reference ourselves: \"you are the one making that reference!\". Build like it. Never retell it."
+  },
+  "origin": {
+    "note": "The camera is the framework's own Zack D grammar (docs/CAMERA-BIBLE.md: one world, a camera that never teleports). The voice, the captions and the sound are the story pipeline's (docs/STORY-FILMS.md). The subjects the owner named first: money lessons, and what inflation is. The numbers in `film` and `sound` were a first setting; the reference film was built to them and sits inside every one, so none had to change: `measuredFromReference` says where in each range it landed. The `long` cut has not been built."
   },
   "camera": {
     "builder": "flightScene",
@@ -36,10 +40,29 @@
       "words": [250, 500]
     }
   },
+  "measuredFromReference": {
+    "film": "why-does-bread-cost-more-every-year",
+    "seconds": 49.2,
+    "stops": 19,
+    "beats": 7,
+    "hardCuts": 0,
+    "medianStopSeconds": 2.43,
+    "shortestStopSeconds": 1.63,
+    "longestStopSeconds": 4.0,
+    "words": 182,
+    "wordsPerMinute": 224,
+    "wordsPerStop": 9.6,
+    "musicSections": 5,
+    "musicUnderVoiceDb": 18.2,
+    "soundEffects": 99,
+    "soundEffectsPerMinute": 120.7,
+    "lufs": -14.8
+  },
   "pack": "Topics/Explainer/PACK.md",
   "template": "Topics/Explainer/template",
   "models": {
-    "note": "No APPROVED film yet. The first explainer is built and waiting for the owner: src/videos/why-does-bread-cost-more-every-year/. If he approves it, name it here: it becomes the model to build like."
+    "note": "Finished films the owner approved, to build like. The first is the topic's reference film. Each is kept with its source in Topics/Explainer/reference (README.md there lists them). Copy how they are built; never copy their sentences or their pictures.",
+    "why-does-bread-cost-more-every-year": "THE REFERENCE FILM (see `reference`). 0:49, 7 beats, 19 stops, 182 words, one flight over five islands, full sound. The owner: 'okay i love both really, this can be uploaded too!', 'i like how you made these!'. Page and source: Topics/Explainer/reference/bread; mp4: renders/why-does-bread-cost-more-every-year.mp4."
   },
   "sound": {
     "required": true,

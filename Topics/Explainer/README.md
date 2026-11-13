@@ -4,17 +4,17 @@ A narrator asks one question a nine-year-old would ask ("Why does bread cost mor
 with things you can point a camera at. Thirty to sixty seconds. Every sentence is shown, literally, as it is said.
 And the camera never cuts: it **flies** from each thing to the next, through one small world in the sky.
 
-The subjects the owner named for this topic: money lessons, and what inflation is.
+The subjects the owner has asked for: money lessons, what inflation is, and "What is a dictator?". Any one question fits.
 
-> **PROVISIONAL.** The owner asked for this topic to be built before its reference: "reference which we will do
-> later once youre done". So nothing here is measured from a real video yet. The camera is the framework's own
-> (`docs/CAMERA-BIBLE.md`); the voice, the captions and the sound are the story pipeline's
-> (`docs/STORY-FILMS.md`); the numbers in [`topic.json`](topic.json) are a first setting, so that `npm run check`
-> has something to hold a film to. **The reference will be our own first film** (the owner, asked for a video:
-> "you are the one making that reference!"): `src/videos/why-does-bread-cost-more-every-year/`. He approved its
-> script on 2026-11-13 ("yesboth"). The film is built and rendered (`renders/why-does-bread-cost-more-every-year.mp4`),
-> and it is waiting for him to watch it. When he approves it, measure it and correct this folder
-> ([`reference/`](reference/README.md) says how). No film of this topic has been approved yet.
+> **The reference is our own first film.** The owner asked for this topic before its reference, and then for us to
+> make the reference ourselves ("you are the one making that reference!"). The film is
+> `src/videos/why-does-bread-cost-more-every-year/` (0:49, 7 beats, 19 stops, 182 words, one flight, full sound). He
+> approved it on 2026-11-13: "okay i love both really, this can be uploaded too!", "i like how you made these!".
+> It is measured, and it is kept with its source, a log of every stop and a contact sheet in
+> [`reference/bread/`](reference/bread/README.md). The numbers in [`topic.json`](topic.json) were a first setting
+> made before the film existed; the film was built to them and sits inside every one, so they stand. The camera is
+> the framework's own (`docs/CAMERA-BIBLE.md`); the voice, the captions and the sound are the story pipeline's
+> (`docs/STORY-FILMS.md`). **Open the reference before you build.**
 
 ## Start here
 
@@ -46,6 +46,8 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 5. [`SOUND.md`](SOUND.md) — the sounds of money and of numbers, and what differs from a story film's sound.
 6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → picture → captions → sound.
 7. [`docs/CAMERA-BIBLE.md`](../../docs/CAMERA-BIBLE.md) — the camera grammar this topic flies by.
+8. The reference film, to see what "built" means: [`reference/bread/`](reference/bread/README.md). Its contact
+   sheet first, then its shot log, then `source/`. Copy how it is BUILT. Never copy its sentences or its pictures.
 
 ## What changes from the base rules
 
@@ -69,7 +71,7 @@ says, deterministic code, atmosphere in the world, and the render policy.
 
 ## What makes an explanation work
 
-These are the rules this folder is built on. They are a first setting, like the numbers, until a reference is measured.
+These are the rules this folder is built on. Each of them held in the reference film.
 
 1. **One question.** The title is the question. The film ends when it is answered.
 2. **One thing everybody knows.** A loaf of bread and its price. Every later number is measured against it.
@@ -108,7 +110,7 @@ still an estimate, and whether the mix is older than the script.
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic, its camera rule, the limits of the sound. `state: "PROVISIONAL"` until a reference is measured |
+| `topic.json` | The numbers `npm run check` enforces for this topic, its camera rule, the limits of the sound. `state: "MEASURED"`: `reference` names the film, `measuredFromReference` its numbers |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the explanation, the flight, the sound |
 | `PACK.md`, `pack.jpg` | The catalogue of the pack |
 | `index.ts` | The pack, from one import: `import { Island, Coin, flightScene } from "../../../Topics/Explainer"` |
@@ -119,7 +121,7 @@ still an estimate, and whether the mix is older than the script.
 | `goods.tsx` | Bread, Apple, Crate, BreadShelf |
 | `template/` | The starter film that `npm run new -- … --topic explainer` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
-| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. What to do when it is |
+| `reference/` | The films of this topic that the owner approved, each with its source, a log of every stop and a contact sheet. The first is the reference film |
 
 Parts used by more than one topic (numbers and icons in cubes, the film's clock, twelve people, the villagers and
 their houses, the red "Subscribe" sign) are in [`Topics/Shared`](../Shared/README.md) and are passed on by this pack.

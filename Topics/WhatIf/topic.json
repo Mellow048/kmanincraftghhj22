@@ -3,11 +3,15 @@
   "name": "What If",
   "folder": "Topics/WhatIf",
   "profile": "story",
-  "state": "PROVISIONAL",
-  "provisional": {
-    "why": "The owner asked for this topic to be built before its reference: \"reference which we will do later once youre done\". The numbers in `film` and `sound` are therefore not measured from a \"What if\" video.",
-    "from": "The owner: \"its a story just like the InThisTown it has the same camera technique\". So every number here is In This Town's: its one-to-two-minute short cut is this topic's film, and its three-minute film is this topic's `long` cut. Only the opening is this topic's own.",
-    "whenTheReferenceArrives": "Put it in Topics/WhatIf/reference/<name>/, measure it (length, words, words a minute, seconds per shot, the beats), and replace every number below that it disagrees with, and the beat sheet in SCRIPT.md. Then delete this block and set `state` to \"MEASURED\"."
+  "state": "MEASURED",
+  "reference": {
+    "film": "what-if-you-could-see-who-had-a-crush-on-you",
+    "page": "Topics/WhatIf/reference/crush",
+    "owner": "okay i love both really, this can be uploaded too!",
+    "use": "Our own first film of the topic, picture and sound approved by the owner (2026-11-13). The owner asked us to make the reference ourselves: \"you are the one making that reference!\". Build like it. Never retell it."
+  },
+  "origin": {
+    "note": "The owner: \"its a story just like the InThisTown it has the same camera technique\". The numbers in `film` and `sound` were first borrowed from In This Town's one-to-two-minute short cut. The reference film was built to them and sits inside every one, so none had to change: `measuredFromReference` says where in each range it landed. Only the opening (\"What if\") and the beat sheet in SCRIPT.md are this topic's own. The `long` cut is still In This Town's three-minute film and has not been built in this topic."
   },
   "film": {
     "seconds": [60, 118],
@@ -31,10 +35,28 @@
       "words": [640, 770]
     }
   },
+  "measuredFromReference": {
+    "film": "what-if-you-could-see-who-had-a-crush-on-you",
+    "seconds": 113.6,
+    "shots": 55,
+    "beats": 14,
+    "medianShotSeconds": 1.97,
+    "shortestShotSeconds": 0.9,
+    "longestShotSeconds": 3.5,
+    "words": 479,
+    "wordsPerMinute": 254,
+    "wordsPerShot": 8.7,
+    "musicSections": 9,
+    "musicUnderVoiceDb": 18.6,
+    "soundEffects": 321,
+    "soundEffectsPerMinute": 169.5,
+    "lufs": -14.9
+  },
   "pack": "Topics/WhatIf/PACK.md",
   "template": "Topics/WhatIf/template",
   "models": {
-    "note": "No APPROVED film yet. The first \"What if\" film is built and waiting for the owner: src/videos/what-if-you-could-see-who-had-a-crush-on-you/. If he approves it, name it here: it becomes the model to build like. Until then it shows how a film of this topic is put together, and the films of In This Town (src/videos/in-this-town-same-face/) are the approved ones of the same pipeline: copy how a film is BUILT, never what it tells."
+    "note": "Finished films the owner approved, to build like. The first is the topic's reference film. Each is kept with its source in Topics/WhatIf/reference (README.md there lists them). Copy how they are built; never copy their story.",
+    "what-if-you-could-see-who-had-a-crush-on-you": "THE REFERENCE FILM (see `reference`). 1:54, 14 beats, 55 shots, 479 words, six places, full sound. The owner: 'okay i love both really, this can be uploaded too!', 'i like how you made these!'. Page and source: Topics/WhatIf/reference/crush; mp4: renders/what-if-you-could-see-who-had-a-crush-on-you.mp4."
   },
   "sound": {
     "required": true,
