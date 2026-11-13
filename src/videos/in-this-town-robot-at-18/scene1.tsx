@@ -42,8 +42,8 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <Hero position={[2, 0, z + 0.4]} animation="walk" animDistance={2.2 * p} face="smile" />
-            <Mate n={0} position={[0.95, 0, z - 0.7]} animation="walk" animDistance={2.2 * p} face="grin" />
-            <Bot position={[0.75, hop(t, robot, 0.4), z - 1.7]} s={1.5} color="#d9c36a" eye="#ffd24a" />
+            <Mate n={0} position={[0.75, 0, z - 1.5]} animation="walk" animDistance={2.2 * p} face="grin" />
+            <Bot position={[0.95, hop(t, robot, 0.4), z - 0.2]} s={1.45} color="#d9c36a" eye="#ffd24a" />
             <Mate n={2} position={[3.05, 0, z - 0.5]} animation="walk" animDistance={2.2 * p} face="grin" />
             <SmartBot position={[3.3, 2.0 + hop(t, robot + 0.08, 0.3), z - 0.6]} t={t} text=":)" />
           </>

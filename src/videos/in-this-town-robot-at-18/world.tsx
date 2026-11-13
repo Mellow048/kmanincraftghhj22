@@ -2,7 +2,7 @@ import type React from "react";
 import { Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
 import { Block, PixelText } from "../../engine";
 import { Bell, Hut, LampPost, Pine, Room, Stall, Well } from "../../../Topics/InThisTown";
-import { BENCH, CLASS, COLS, Desk, FOREST, LIVING, PLACE, ROWS } from "./kit";
+import { CLASS, COLS, Desk, FOREST, LIVING, PLACE, ROWS } from "./kit";
 
 /**
  * THE TOWN, in zones. A shot names the zone it plays in, and the others are not drawn.
@@ -40,8 +40,6 @@ const Village: React.FC = () => (
     <Hut at={[15, 0, 11]} w={6.5} tint="#caa268" roof="#5a4a6a" windows={[-1.6]} door={1.3} turn={Math.PI} />
 
     {/* The lunch bench and table in the square. */}
-    <Block position={[BENCH[0], 0.25, BENCH[2]]} size={[1.6, 0.5, 0.5]} color="#8a6238" />
-    <Block position={[BENCH[0], 0.42, BENCH[2] + 0.9]} size={[1.8, 0.84, 0.7]} color="#a87a48" />
     <Bell position={PLACE.bell} />
     <Well position={PLACE.well} />
     <Stall position={PLACE.stall} />

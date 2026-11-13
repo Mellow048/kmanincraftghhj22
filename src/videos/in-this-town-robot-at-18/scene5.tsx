@@ -28,7 +28,7 @@ export const scene5 = storyScene(timing, {
       stage: (t, { p }) => {
         const fall = wordAt("10.forest", "fall");
         const trip = jolt(t, fall, 0.5);
-        const z = -1.4 + 2.2 * Math.min(1, p * 1.4);
+        const z = ME[2] - 2.2 + 2.2 * Math.min(1, p * 1.4);
         return (
           <>
             <Hero position={[ME[0], 0, z]} animation={trip > 0.05 ? "stagger" : p < 0.7 ? "walk" : "lookAround"} animDistance={2.2 * p} suit={1} headPitch={0.5 * trip} />
@@ -40,7 +40,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "10.beam",
-      ...cam.push({ on: f(-1.8, 1.5, -1.0), dist: 7.4, to: 6.8, yaw: 0, pitch: 3, fov: 44 }),
+      ...cam.push({ on: f(-1.75, 1.5, -1.0), dist: 8.4, to: 7.8, yaw: 0, pitch: 3, fov: 44 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "He holds one hand out at a tree. A beam of blue-white light comes out of his palm and goes straight through the trunk. The top of the tree slides off and falls over.",
@@ -117,7 +117,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.saw",
-      ...cam.top({ on: OLD, height: 13, to: 10.5, fov: 40 }),
+      ...cam.top({ on: OLD, height: 7, to: 5.5, fov: 40 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "Straight down from where he is flying: the clearing, the cut tree, and one small grey figure standing alone between the trunks.",

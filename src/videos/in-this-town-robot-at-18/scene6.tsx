@@ -4,12 +4,14 @@ import {
   Beam, Bits, Bubble, Bush, Cannon, CutTree, DUSK, Fill, Hero, Katana, Mate, Nora, OldMan, PLACE, Shield, Smoke, SubscribeSign, ZONE,
   ease, f, front, hop, jolt, lerp, lerp3, pop, ramp, timing, toward, wordAt,
 } from "./kit";
-import { BUSH, OLD, TREE } from "./scene5";
+import { BUSH, TREE } from "./scene5";
+
+const OLD: Vec3 = f(2.7, 0, -1.2);
 
 /** The fight: him on the left, the old man on the right, a tree behind him for the blade. */
-const ME: Vec3 = f(0.1, 0, -0.5);
-const TREE2: Vec3 = f(-1.5, 0, -1.3);
-const SHE: Vec3 = f(0.95, 0, -0.75);
+const ME: Vec3 = f(0.6, 0, -0.7);
+const TREE2: Vec3 = f(-0.9, 0, -1.5);
+const SHE: Vec3 = f(1.3, 0, -0.35);
 const RED = "#ff3b2e";
 const toMe = toward(OLD, ME);
 const toHim = toward(ME, OLD);
@@ -17,7 +19,7 @@ const toHim = toward(ME, OLD);
 const GUN: Vec3 = [OLD[0] - 0.25, 1.2, OLD[2] + 0.42];
 const AIM: Vec3 = [ME[0], 1.15, ME[2]];
 /** Her shield, between the two of them. */
-const WALL: Vec3 = [SHE[0] + 0.55, 1.2, SHE[2] + 0.05];
+const WALL: Vec3 = [SHE[0] + 0.55, 1.2, SHE[2] - 0.2];
 
 const Woods: React.FC<{ cut2?: number; shake?: number; t?: number }> = ({ cut2 = 0, shake = 0, t = 0 }) => (
   <>
@@ -55,7 +57,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "12.katana",
-      ...cam.push({ on: f(1.2, 1.25, -1.0), dist: 6.2, to: 5.4, yaw: 0, pitch: 3, fov: 44 }),
+      ...cam.push({ on: f(1.65, 1.35, -1.0), dist: 7.6, to: 6.8, yaw: 0, pitch: 3, fov: 44 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "Both of them, side on. A long thin blade slides out of the old man's right arm. On 'jumped' he is off the ground and coming across the clearing at the teller, blade first.",
@@ -78,7 +80,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "12.duck",
-      ...cam.push({ on: [ME[0], 1.56, ME[2]], dist: 2.2, to: 1.8, yaw: 20, pitch: 0, fov: 40 }),
+      ...cam.push({ on: [ME[0], 1.8, ME[2]], dist: 3.0, to: 2.6, yaw: 20, pitch: 0, fov: 40 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "His helmet, close. The eyes flash, and one word comes up beside them: DUCK.",
@@ -88,7 +90,7 @@ export const scene6 = storyScene(timing, {
           <>
             <Hero position={ME} rotationY={toHim * 0.5} animation="scared" suit={1} eyes={1 + 2 * jolt(t, d, 0.5)} />
             <group scale={pop(t, d - 0.1)}>
-              <Bubble text="DUCK" position={[ME[0] - 0.1, 2.4, ME[2]]} rotationY={0.3} scale={0.6} dark />
+              <Bubble text="DUCK" position={[ME[0], 2.3, ME[2]]} rotationY={0.3} scale={0.55} dark />
             </group>
             <Fill on={[ME[0], 1.5, ME[2]]} yaw={20} power={4} />
           </>
@@ -97,7 +99,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "12.ducked",
-      ...cam.push({ on: f(-0.5, 1.2, -0.8), dist: 5.6, to: 5.0, yaw: 0, pitch: 3, fov: 44 }),
+      ...cam.push({ on: f(0.1, 1.2, -1.0), dist: 5.8, to: 5.2, yaw: 0, pitch: 3, fov: 44 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "He drops. The old man and the blade go over the top of him, and the blade goes clean through the tree behind. The top of the tree slides off.",
@@ -196,7 +198,7 @@ export const scene6 = storyScene(timing, {
       note: "A bush at the edge of the clearing. It shakes. On 'jumped' somebody in teal comes out of the top of it with leaves in her hair, already running.",
       stage: (t) => {
         const j = wordAt("14.bush", "jumped");
-        const out = ease(ramp(t, j - 0.1, j + 0.5));
+        const out = 0.6 * ease(ramp(t, j - 0.1, j + 0.5));
         return (
           <>
             <Bush position={BUSH} shake={t < j + 0.2 ? 1 : 0} t={t} />
@@ -208,7 +210,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "14.nora",
-      ...cam.push({ on: [SHE[0] - 0.1, 1.3, SHE[2]], dist: 3.4, to: 2.8, yaw: 24, pitch: 0, fov: 42 }),
+      ...cam.push({ on: [SHE[0] + 0.05, 1.3, SHE[2]], dist: 4.6, to: 4.0, yaw: 0, pitch: 0, fov: 42 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "Nora, in front of him, feet planted, one hand out. Her little drone snaps a square of blue light open between them and the cannon.",
@@ -217,8 +219,8 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Hero position={ME} rotationY={toHim} animation="scared" suit={1} visor={1} face="wow" />
-            <Nora position={SHE} rotationY={toHim} animation="push" face="brave" />
-            <Shield position={WALL} rotationY={toHim} on={ease(ramp(t, s - 0.25, s))} hit={jolt(t, s, 0.3)} r={1.2} />
+            <Nora position={SHE} rotationY={toHim * 0.6} animation="guard" face="brave" />
+            <Shield position={WALL} rotationY={toHim * 0.6} on={ease(ramp(t, s - 0.25, s))} hit={jolt(t, s, 0.3)} r={1.2} />
             <Fill on={[SHE[0], 1.4, SHE[2]]} yaw={24} power={5} />
           </>
         );
@@ -226,7 +228,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "14.blast",
-      ...cam.push({ on: f(1.2, 2.6, -1.0), dist: 8.4, to: 9.4, yaw: 0, pitch: -8, fov: 46 }),
+      ...cam.push({ on: f(1.7, 2.6, -1.0), dist: 8.4, to: 9.4, yaw: 0, pitch: -8, fov: 46 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "Wide. The cannon fires: a bar of orange light from the old man to the shield. It hits, the shield goes white, and the whole blast turns and goes straight up out of the forest into the sky.",
@@ -238,9 +240,9 @@ export const scene6 = storyScene(timing, {
         const P: Vec3 = [WALL[0] + 0.25, 1.2, WALL[2]];
         return (
           <>
-            <Hero position={ME} rotationY={toHim} animation="cower" suit={1} />
-            <Nora position={SHE} rotationY={toHim} animation="push" face="brave" />
-            <Shield position={WALL} rotationY={toHim} on={1} hit={on ? 1 : 0} r={1.2} />
+            <Hero position={ME} rotationY={toHim * 0.5} animation="scared" suit={1} />
+            <Nora position={SHE} rotationY={toHim * 0.6} animation="guard" face="brave" />
+            <Shield position={WALL} rotationY={toHim * 0.6} on={1} hit={on ? 1 : 0} r={1.2} />
             <OldMan position={OLD} rotationY={toMe} animation="guard" suit={1} />
             <Cannon position={GUN} to={AIM} open={1} charge={on ? 1 : 0.5} />
             {on ? <Beam from={lerp3(GUN, AIM, 0.25)} to={P} width={w} color="#ff8a2a" core="#fff2c0" /> : null}
@@ -276,17 +278,17 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "15.who",
-      ...cam.push({ on: [ME[0] + 0.4, 1.4, ME[2]], dist: 3.4, to: 2.9, yaw: -8, pitch: 0, fov: 42 }),
+      ...cam.push({ on: [ME[0] + 0.4, 1.45, ME[2]], dist: 4.4, to: 3.9, yaw: 0, pitch: 0, fov: 42 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "The two of them. He has his visor up and both hands out: WHY ME? She is still looking at the place where the old man was.",
       stage: (t) => (
         <>
-          <Hero position={ME} rotationY={0.9} animation="shrug" suit={1} visor={1} face="worried" />
-          <Nora position={SHE} rotationY={toHim} animation="idle" face="uneasy" />
+          <Hero position={ME} rotationY={0.5} animation="shrug" suit={1} visor={1} face="worried" />
+          <Nora position={SHE} rotationY={0.9} animation="idle" face="uneasy" />
           <Shield position={[SHE[0] + 0.5, 1.9, SHE[2] - 0.3]} rotationY={toHim} on={0} />
           <group scale={pop(t, wordAt("15.who", "why") - 0.1)}>
-            <Bubble text="WHY ME?" position={[ME[0] - 0.1, 2.5, ME[2]]} scale={0.42} dark />
+            <Bubble text="WHY ME?" position={[ME[0] + 0.1, 2.45, ME[2]]} scale={0.4} dark />
           </group>
           <Fill on={[ME[0] + 0.4, 1.4, ME[2]]} yaw={-8} power={5} />
         </>
@@ -300,7 +302,7 @@ export const scene6 = storyScene(timing, {
       note: "Nora, close, turning to him. She is not smiling.",
       stage: (t) => (
         <>
-          <Nora position={SHE} rotationY={toHim + (Math.PI * 0.75) * ease(ramp(t, 0.1, 0.7))} animation="talk" face="uneasy" />
+          <Nora position={SHE} rotationY={0.9 - 1.3 * ease(ramp(t, 0.1, 0.7))} animation="talk" face="uneasy" />
           <Fill on={[SHE[0], 1.5, SHE[2]]} yaw={-16} power={5} />
         </>
       ),
@@ -315,7 +317,7 @@ export const scene6 = storyScene(timing, {
       stage: (t, { p }) => {
         const br = wordAt("15.broke", "break");
         const on = t > br - 0.1;
-        const HE: Vec3 = [1.8, 0, 3.2];
+        const HE: Vec3 = [1.1, 0, 3.4];
         const yaw = toward(HE, PLACE.bell);
         return (
           <>
@@ -362,7 +364,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "15.helmet",
-      ...cam.push({ on: [ME[0] + 0.4, 1.45, ME[2]], dist: 3.0, to: 2.3, yaw: -8, pitch: 0, fov: 42 }),
+      ...cam.push({ on: [ME[0] + 0.4, 1.45, ME[2]], dist: 3.6, to: 2.9, yaw: 0, pitch: 0, fov: 42 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "Back in the forest. She looks at his helmet. Her mouth shuts. The visor has come down by itself, and for one blink its blue eyes are red.",
@@ -372,7 +374,7 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Hero position={ME} rotationY={0.5} animation="idle" suit={1} visor={1 - ease(ramp(t, 0.5, st))} face="worried" glow={red ? RED : undefined} eyes={red ? 2 : 1} />
-            <Nora position={SHE} rotationY={toHim + Math.PI * 0.75} animation="idle" face={t > st - 0.2 ? "fear" : "uneasy"} headPitch={-0.1} />
+            <Nora position={SHE} rotationY={-0.7} animation="idle" face={t > st - 0.2 ? "fear" : "uneasy"} headPitch={-0.1} />
             <Fill on={[ME[0] + 0.4, 1.4, ME[2]]} yaw={-8} power={5} />
           </>
         );
@@ -380,7 +382,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "15.sub",
-      ...cam.push({ on: [ME[0] + 0.45, 1.3, ME[2]], dist: 4.4, to: 4.0, yaw: 0, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [ME[0] + 0.45, 1.7, ME[2]], dist: 5.0, to: 4.6, yaw: 0, pitch: 2, fov: 44 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "The two of them in the clearing, him in the suit, her with the drone over her shoulder. A sign comes up out of the grass between them: like, and subscribe.",
@@ -391,10 +393,14 @@ export const scene6 = storyScene(timing, {
             <Hero position={[ME[0] - 0.35, 0, ME[2]]} rotationY={0.2} animation="wave" suit={1} visor={1} face="smile" />
             <Nora position={[SHE[0] + 0.45, 0, SHE[2]]} rotationY={-0.2} animation="idle" face="smile" />
             <Shield position={[SHE[0] + 1.0, 1.95, SHE[2] - 0.3]} on={0} />
-            <group position={[ME[0] + 0.45, 0, ME[2] + 0.9]} scale={pop(t, sub - 0.2)}>
-              <SubscribeSign position={[0, 0.75, 0]} rotationY={0} scale={0.45} />
+            <group position={[ME[0] + 0.45, 2.75, ME[2]]} scale={pop(t, sub - 0.2)}>
+              <SubscribeSign position={[0, 0, 0]} rotationY={0} scale={0.55} />
+              <mesh position={[0, -1.55, -0.04]}>
+                <boxGeometry args={[0.07, 2.4, 0.05]} />
+                <meshStandardMaterial color="#5c3f24" />
+              </mesh>
             </group>
-            <Bits position={[ME[0] + 0.45, 0.1, ME[2] + 0.9]} t={t - sub + 0.2} color="#6a8a4a" count={10} power={1.8} />
+            <Bits position={[ME[0] + 0.45, 2.75, ME[2]]} t={t - sub + 0.2} color="#6a8a4a" count={10} power={1.8} />
             <Fill on={[ME[0] + 0.45, 1.4, ME[2]]} yaw={0} power={5} />
           </>
         );

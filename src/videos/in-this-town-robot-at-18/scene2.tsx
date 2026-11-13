@@ -12,7 +12,7 @@ const at = (col: number, row: number): Vec3 => {
 };
 const ME = at(1, 0);
 /** The head on his desk, looking at the class with him. */
-const ON_DESK: Vec3 = [ME[0] + 0.02, 1.02, ME[2] - 0.62];
+const ON_DESK: Vec3 = [ME[0] - 0.36, 1.02, ME[2] - 0.6];
 
 /** Everybody in the class but the teller. `laugh` has them all laughing; `look` turns their heads to him. */
 const Class: React.FC<{ face?: FaceName; laugh?: boolean; t: number; slap?: number }> = ({ face = "neutral", laugh = false, t, slap = -9 }) => {
@@ -75,7 +75,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.smart",
-      ...cam.push({ on: c(0, 1.7, -3.6), dist: 5.6, to: 4.6, yaw: 0, pitch: 4, fov: 44 }),
+      ...cam.push({ on: c(-0.1, 1.55, -2.8), dist: 3.5, to: 3.1, yaw: 0, pitch: 6, fov: 44 }),
       zone: ZONE.classS,
       look: DAY,
       note: "The front of the classroom. The friend in purple stands with her arms out, doing nothing, while a floating screen with eyes writes her homework. On 'corrected' the screen turns to the board and says WRONG.",
@@ -85,10 +85,10 @@ export const scene2 = storyScene(timing, {
         const k = ease(ramp(t, cor - 0.15, cor + 0.2));
         return (
           <>
-            <Ada position={c(-1.1, 0, -2.9)} animation="shrug" face="smug" />
-            <SmartBot position={c(lerp(-0.1, 1.0, k), 1.75 + 0.1 * jolt(t, hw, 0.3), lerp(-2.9, -3.6, k))} rotationY={-0.2 + Math.PI * 0.0} t={t} text={t > cor ? "WRONG" : t > hw ? "A+" : "..."} />
+            <Ada position={c(-0.65, 0, -2.7)} animation="shrug" face="smug" />
+            <SmartBot position={c(lerp(0.25, 0.5, k), 1.7 + 0.1 * jolt(t, hw, 0.3) + 0.2 * k, lerp(-2.7, -3.2, k))} rotationY={-0.2 + Math.PI * 0.0} t={t} text={t > cor ? "WRONG" : t > hw ? "A+" : "..."} />
             <group scale={pop(t, cor + 0.1)}>
-              <Bubble text="WRONG!" position={c(0.9, 2.95, -3.5)} scale={0.5} tail={1} />
+              <Bubble text="WRONG!" position={c(0.2, 2.75, -3.0)} scale={0.45} tail={1} />
             </group>
           </>
         );
@@ -96,7 +96,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.hand",
-      ...cam.truck({ on: [-1.2, 1.15, 3], dist: 5.6, yaw: 0, pitch: 5, fov: 44, by: [1.6, 0, 0] }),
+      ...cam.truck({ on: [-1.2, 1.15, 3], dist: 6.8, yaw: 0, pitch: 5, fov: 44, by: [1.6, 0, 0] }),
       zone: ZONE.town,
       look: DAY,
       note: "The friend in orange walks up the street with his hands in his pockets. A big white glove floats along behind him, carrying his school bag by the strap.",
@@ -105,7 +105,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Sam position={[x, 0, 3]} rotationY={Math.PI / 2} animation="walk" animDistance={2.4 * p} face="smug" headYaw={-0.5} />
-            <FloatHand position={[x - 1.15, 1.45 + 0.06 * Math.sin(t * 4), 3]} rotation={[0, 0, Math.PI]} grip={1}>
+            <FloatHand position={[x - 0.9, 1.45 + 0.06 * Math.sin(t * 4), 3]} rotation={[0, 0, Math.PI]} grip={1}>
               <Bag position={[0, 0.55, 0]} />
             </FloatHand>
           </>
@@ -176,7 +176,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.just",
-      ...cam.push({ on: [STEP[0] + 0.8, 1.3, STEP[2] + 0.3], dist: 3.4, to: 2.8, yaw: 0, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [STEP[0] + 0.8, 1.2, STEP[2] + 0.3], dist: 3.6, to: 3.0, yaw: 0, pitch: 8, fov: 42 }),
       zone: ZONE.town,
       look: DAY,
       note: "He holds the head up in front of him in both hands and turns it round: no body under it, nothing on the sides, nothing written on the bottom. His face goes flat.",
@@ -190,7 +190,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Hero position={H} animation="hold" face={t > ins ? "blank" : "frown"} headPitch={0.25} />
-            <HeadAt position={front(H, 0, 0.5, 1.05)} rotation={[-tip, spin, 0]} />
+            <HeadAt position={front(H, 0, 0.5, 0.8)} rotation={[-tip, spin, 0]} />
           </>
         );
       },
@@ -226,18 +226,18 @@ export const scene2 = storyScene(timing, {
       note: "The sitting room. Dad, feet on his massager, shrugs: maybe Tuesday. The teller stands beside the sofa holding the head and stares at it. On 'not' a calendar page with a big X goes by.",
       stage: (t) => {
         const not = wordAt("4.tuesday", "not");
-        const H = l(-1.0, 0, -0.9);
+        const H = l(-0.5, 0, -0.5);
         return (
           <>
             <Dad position={l(0.65, 0, -1.55)} animation={t < not - 0.4 ? "shrug" : "sit"} face="bearded" headYaw={-0.5} />
             <Massager position={l(0.65, 0, -0.85)} buzz={1} t={t} />
             <Hero position={H} rotationY={0.3} animation="hold" face={t > not ? "sad" : "uneasy"} headPitch={0.3} />
-            <HeadAt position={front(H, 0.3, 0.5, 1.05)} rotation={[-0.3, 0.3, 0]} />
+            <HeadAt position={front(H, 0.3, 0.5, 0.8)} rotation={[0, 0.3, 0]} />
             <group scale={pop(t, wordAt("4.tuesday", "tuesday") - 0.1) * (t > not ? 0 : 1)}>
-              <Bubble text="TUESDAY?" position={l(0.9, 2.3, -1.4)} scale={0.42} />
+              <Bubble text="TUESDAY?" position={l(0.6, 2.25, -1.4)} scale={0.4} />
             </group>
             <group scale={pop(t, not - 0.05)}>
-              <Bubble text="X" position={l(-0.9, 2.35, -0.8)} scale={0.7} />
+              <Bubble text="X" position={l(-0.5, 2.3, -0.5)} scale={0.7} />
             </group>
           </>
         );
@@ -245,7 +245,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.school",
-      ...cam.push({ on: [ME[0], 1.15, ME[2]], dist: 3.6, to: 3.0, yaw: 180, pitch: 14, fov: 44 }),
+      ...cam.push({ on: [ME[0], 1.15, ME[2]], dist: 3.6, to: 3.0, yaw: 192, pitch: 14, fov: 44 }),
       zone: ZONE.classN,
       look: DAY,
       note: "The classroom, from the front. He sits at his desk with the head set in front of him like a lunch box, and smiles at everybody. Everybody else has a robot. On 'mistake' the smile slips.",

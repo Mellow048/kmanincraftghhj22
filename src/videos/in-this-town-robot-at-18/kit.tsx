@@ -39,7 +39,7 @@ export const PLACE = {
   /** The middle of the square. The bell is north of it, the well south-west. */
   square: [0, 0, 2] as Vec3,
   bell: [0, 0, -2.5] as Vec3,
-  stall: [6.4, 0, -2.6] as Vec3,
+  stall: [4.4, 0, -2.6] as Vec3,
   well: [-5, 0, 5.5] as Vec3,
   /** The oldest villager's porch. It is half a block high, so she stands over a kid and the two stack in a tall frame. */
   porch: [-10, 0.5, -4.1] as Vec3,
@@ -73,8 +73,8 @@ export const STEP: Vec3 = [PLACE.home[0] - 1.3, 0, PLACE.home[2] + 1.3];
 /** The top of the chest in his room, where the head sits. */
 export const DESK: Vec3 = room(2.15, 0.7, -1.7);
 /** The lunch bench in the square, and where the trouble is. */
-export const BENCH: Vec3 = [-1.6, 0, 3.4];
-export const TROUBLE: Vec3 = [1.0, 0, 2.6];
+export const BENCH: Vec3 = [-1.0, 0, 3.2];
+export const TROUBLE: Vec3 = [0.6, 0, 2.8];
 
 export const ZONE = { town: "village", room: "room", living: "living", classN: "class+classS", classS: "class+classN", forest: "forest" };
 export const DAY = "overworld-day";
@@ -124,8 +124,10 @@ export const RoboHead: React.FC<{ open?: number; eyes?: number; neck?: boolean; 
       {/* a fin on top */}
       <Block position={[0, s / 2 + 0.07, -0.04]} size={[0.06, 0.12, 0.3]} color={glow === CYAN ? "#e2463a" : RED} />
       {/* the visor: slides up over the forehead as it opens */}
-      <group position={[0, open * s * 0.72, s / 2 - open * 0.08]}>
-        <Block size={[s + t, s * (1 - 0.35 * open), t]} color={metal} metalness={0.5} roughness={0.35} castShadow={false} />
+      <group position={[0, open * s * 0.41, s / 2]}>
+        <Block size={[s + t, s * (1 - 0.82 * open), t]} color={metal} metalness={0.5} roughness={0.35} castShadow={false} />
+      </group>
+      <group position={[0, open * s * 0.41, s / 2]} scale={[1, Math.max(0.001, 1 - open * 1.4), 1]} visible={open < 0.7}>
         <Block position={[0, 0.03, 0.02]} size={[s * 0.8, s * 0.3, 0.03]} color="#10141c" castShadow={false} />
         {[-1, 1].map((x) => (
           <Block key={x} position={[x * s * 0.2, 0.03, 0.035]} size={[s * 0.22, s * 0.1, 0.02]} color={eyes > 0.05 ? "#000000" : "#2a3340"} emissive={glow} emissiveIntensity={eyes} castShadow={false} />
@@ -525,3 +527,11 @@ export const HeadAt: React.FC<{ position: Vec3; rotation?: Vec3; open?: number; 
 );
 /** A dodgeball. */
 export const Ball: React.FC<{ position: Vec3; color?: string }> = ({ position, color = "#d5322b" }) => <Block position={position} size={[0.3, 0.3, 0.3]} color={color} />;
+
+/** The lunch bench he sits on, and the table beside it (to the west) where the head goes. */
+export const LunchSet: React.FC = () => (
+  <>
+    <Block position={[BENCH[0], 0.25, BENCH[2]]} size={[1.0, 0.5, 0.5]} color="#8a6238" />
+    <Block position={[BENCH[0] - 1.0, 0.42, BENCH[2]]} size={[0.8, 0.84, 0.7]} color="#a87a48" />
+  </>
+);
