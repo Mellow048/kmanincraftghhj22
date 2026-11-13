@@ -54,6 +54,22 @@
         520
       ]
     },
+    "middle": {
+      "seconds": [
+        118,
+        150
+      ],
+      "hardMaxSeconds": 150,
+      "words": [
+        500,
+        640
+      ],
+      "medianShotSeconds": [
+        1.4,
+        2.5
+      ],
+      "note": "For in-this-town-monster-village-part-2: the owner's own outline, approved as a script, runs two minutes, between the short cut and the long one."
+    },
     "extended": {
       "seconds": [
         178,

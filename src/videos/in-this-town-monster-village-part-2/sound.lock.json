@@ -1,0 +1,176 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-monster-village-part-2",
+  "mix": "public/audio/in-this-town-monster-village-part-2/mix.mp3",
+  "seconds": 128.0667,
+  "built_from": {
+    "timing.json": "3b42b0acb4c9fa685fb44d7843d8ae80efe98679",
+    "sound.json": "7905e3f4bb00029eeec094c77f362294b8c61156",
+    "narration.mp3": "02c4f4f564dddd65e8a4e95e56d06df8fc6dcd93"
+  },
+  "mix_sha1": "1a1b31d4cec40a46811415fe0269641e7fbcde62",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "tense",
+      "at": 0.0
+    },
+    {
+      "from": "1.farm",
+      "mood": "sad",
+      "at": 7.77
+    },
+    {
+      "from": "2.step",
+      "mood": "playful",
+      "at": 15.8
+    },
+    {
+      "from": "3.room",
+      "mood": "wonder",
+      "at": 25.07
+    },
+    {
+      "from": "3.cheer",
+      "mood": "town",
+      "at": 33.27
+    },
+    {
+      "from": "3.hiss",
+      "mood": "sad",
+      "at": 35.33
+    },
+    {
+      "from": "4.ender",
+      "mood": "dark",
+      "at": 41.27
+    },
+    {
+      "from": "4.think",
+      "mood": "sneak",
+      "at": 52.33
+    },
+    {
+      "from": "5.boots",
+      "mood": "tense",
+      "at": 59.17
+    },
+    {
+      "from": "5.breath",
+      "mood": "drone",
+      "at": 67.17
+    },
+    {
+      "from": "5.sigh",
+      "mood": "playful",
+      "at": 76.63
+    },
+    {
+      "from": "6.explore",
+      "mood": "town",
+      "at": 78.4
+    },
+    {
+      "from": "6.last",
+      "mood": "curious",
+      "at": 85.03
+    },
+    {
+      "from": "6.love",
+      "mood": "hope",
+      "at": 92.67
+    },
+    {
+      "from": "7.ladder",
+      "mood": "sneak",
+      "at": 101.93
+    },
+    {
+      "from": "7.head",
+      "mood": "tense",
+      "at": 109.43
+    },
+    {
+      "from": "7.street",
+      "mood": "drone",
+      "at": 119.2
+    },
+    {
+      "from": "7.ground",
+      "mood": "sad",
+      "at": 121.27
+    }
+  ],
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 17.6,
+    "secondsWithoutMusic": 0.5,
+    "bedsUnderVoiceDb": 27.4,
+    "sfx": 156,
+    "sfxPerMinute": 73.1,
+    "sfxKinds": 42,
+    "longestGapSeconds": 2.6,
+    "longestGapAt": 20.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.3,
+    "voiceOverRestWorstDb": 4.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.6,
+        "t": 101.5,
+        "cue": "6.liked",
+        "sounding": [
+          "cheer",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 93.4,
+        "cue": "6.love",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 4.8,
+        "t": 31.4,
+        "cue": "3.animals",
+        "sounding": [
+          "bonk",
+          "ding"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 44.9,
+        "cue": "4.trap",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 17.5,
+        "cue": "2.step",
+        "sounding": [
+          "drop",
+          "splash",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 11.0,
+        "cue": "1.mud",
+        "sounding": [
+          "creak"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}
