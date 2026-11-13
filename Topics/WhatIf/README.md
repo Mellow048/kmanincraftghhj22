@@ -16,10 +16,10 @@ power.
 > [`topic.json`](topic.json) is In This Town's (its one-to-two-minute short cut), and the beat sheet in
 > [`SCRIPT.md`](SCRIPT.md) is In This Town's fourteen beats, re-cast for a power. **The reference will be our own
 > first film** (the owner, asked for a video: "you are the one making that reference!"):
-> `src/videos/what-if-you-could-see-who-had-a-crush-on-you/`. He approved its script on 2026-11-13 ("yesboth") and
-> its voice is recorded; its picture and its sound are not built yet. When the finished film is approved, measure it
-> and correct this folder ([`reference/`](reference/README.md) says how). No film of this
-> topic has been approved yet.
+> `src/videos/what-if-you-could-see-who-had-a-crush-on-you/`. He approved its script on 2026-11-13 ("yesboth"). The
+> film is built and rendered (`renders/what-if-you-could-see-who-had-a-crush-on-you.mp4`, 1:54, 55 shots), and it is
+> waiting for him to watch it. When he approves it, measure it and correct this folder
+> ([`reference/`](reference/README.md) says how). No film of this topic has been approved yet.
 
 **It is never a 20-second short.** A film with this opening that is built to the base rules is the mistake In This
 Town made twice. `npm run new` refuses a title that starts "What if" without `--topic`, and `npm run check` fails a
@@ -54,7 +54,9 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 4. [`PACK.md`](PACK.md) — what already exists: a school, the signs of a power, a class of kids.
 5. [`SOUND.md`](SOUND.md) — the sounds of a power, and the rest by reference to In This Town's sound.
 6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
-7. A finished film of the same pipeline, to see what "built" means: `src/videos/in-this-town-same-face/` and
+7. A finished film, to see what "built" means. Of this topic there is one, not yet approved:
+   `src/videos/what-if-you-could-see-who-had-a-crush-on-you/` (its `kit.tsx`, `world.tsx`, fourteen scenes and
+   `sound.json`). An approved one of the same pipeline: `src/videos/in-this-town-same-face/` and
    [its page](../InThisTown/reference/same-face/README.md). Copy how it is BUILT. Never copy what it tells.
 
 ## What changes from the base rules
@@ -110,7 +112,8 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
    move, a `zone`, a `note` and a `stage`.
 7. `npm run typecheck && npm run check`.
 8. One still per shot (`npm run shots -- <film>`), read as a contact sheet, fixed, and looked at again. Expect
-   three or four passes.
+   three or four passes: the first film took five. [`SHOTS.md`](SHOTS.md) §5 lists what they found, so that the
+   next film does not find it again.
 9. **The sound** ([`SOUND.md`](SOUND.md)): `python3 scripts/sound.py draft <film>`, write the sheet shot by shot,
    `python3 scripts/sound.py build <film>`, read the report, and point `film.tsx` at the mix.
 10. `npm run typecheck && npm run check` again, then the render. The render policy in `AGENTS.md` applies.
@@ -125,11 +128,13 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
 | `PACK.md`, `pack.jpg` | The catalogue of the pack |
 | `index.ts` | The pack, from one import: `import { Classroom, Overhead, Echo } from "../../../Topics/WhatIf"` |
 | `school.tsx` | Classroom, Desk, Chalkboard, SchoolHall, and `classroom(at)` for the places in one |
+| `places.tsx` | Kitchen (with a mirror that reflects), LunchRoom, Gym (by day, and dressed for a dance at night, with a yard, a gate and a street), and a function for the places in each |
+| `things.tsx` | Dog, DogBowl, Tray, Cup, Sandwich, Cookie, CookieStack, Eraser, Card, Tie |
 | `powers.tsx` | Overhead, Aura, Echo, Streaks, Swirl, Countdown, Beam |
 | `cast.tsx` | Twelve classmates, and a teacher |
 | `template/` | The starter film that `npm run new -- … --topic what-if` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
-| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. What to do when it is |
+| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. The film is built and waiting for him. What to do when he approves it |
 
 Parts used by more than one topic (numbers and icons in cubes, staging, a kid's bedroom, a village street, the red
 "Subscribe" sign) are in [`Topics/Shared`](../Shared/README.md) and are passed on by this pack.

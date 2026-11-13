@@ -39,7 +39,7 @@
   "pack": "Topics/Explainer/PACK.md",
   "template": "Topics/Explainer/template",
   "models": {
-    "note": "No finished film yet. The first explainer the owner approves is named here, and becomes the model to build like."
+    "note": "No APPROVED film yet. The first explainer is built and waiting for the owner: src/videos/why-does-bread-cost-more-every-year/. If he approves it, name it here: it becomes the model to build like."
   },
   "sound": {
     "required": true,

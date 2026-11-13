@@ -57,6 +57,34 @@ These were added for this topic. `python3 scripts/sound.py list` has all of them
 pops with a `pop` the first time, every heart pops with that `pop`, at that `pitch`. After ten seconds the viewer
 hears the power before they see it, and at the reveal the same sound means something else.
 
+### How the first film does it
+
+`src/videos/what-if-you-could-see-who-had-a-crush-on-you/sound.json` (321 sounds of 39 kinds in 1:54). Read it
+beside the film's `narration.md`. What it shows:
+
+| The power does this | The sheet does this |
+|---|---|
+| A heart appears | `pop`, `"pitch": 1.3`. Every heart, the same. Eight in a row down the hall are eight pops 0.11 s apart, as in the scene |
+| A heart grows | `sparkle`, as long as the growing (`dur`). A heart that grows too big gets a `slide_up` on top: three times in the film, and the third is the mistake |
+| A heart does not grow | One small `plink`, `"pitch": 1.3`. The sparkle that does not come is the point |
+| A heart shrinks | `power_down`, short and quiet |
+| The one heart that matters | `ding`, `"note": "A6"`, with its pop in the first second of the film. The note returns each time that heart is named, an octave up when it is "tiny", and at the end over a different head |
+| Hearts go out | The same `pop` eight times, falling (`"pitchStep": 0.94`), then one `power_down`. The film's first sound is a `power_up` |
+
+- **Put the cause in one ear.** Twice a heart swells for somebody who walks up behind the teller. His steps are
+  panned to one side (`"pan": 0.6`), under the sparkle. The picture shows him and the words do not name him; the
+  sound is a third way of telling the viewer before the teller knows.
+- **Give a person a sound, too.** Every time the teller hurts his friend without noticing, one low `plink`
+  (`"pitch": 0.7`): six times in the film. Nobody will count them.
+- **The same music twice.** `hope` plays when he is sure and wrong (beat 12), stops for the reveal, and comes back
+  at the turn, when he is right. Nothing else in the sheet says "this time it is true".
+- **A speech bubble pops lower than a sign** (`"pitch": 0.8`), so that a bubble is never taken for the power.
+- **Effects on a word stay under the word.** A `hit`, a `bonk` and a `boing` on the word that names them covered
+  the word. Turn the effect down, or put the tail of it (the `boing`, the `chime`) just after the word. The limit
+  is the voice 3 dB over everything else in its worst half second.
+- **Under a `crowd` bed and `tense` music a quiet effect is gone.** `build` lists the ones that cannot be heard,
+  and `out/sound/<film>/effects.txt` marks the faint ones. Raise them or cut them.
+
 ## Beds
 
 `draft` chooses a bed from each shot's zone (`bedForZone` in `topic.json`).
@@ -67,6 +95,10 @@ hears the power before they see it, and at the reveal the same sound means somet
 | `pool` | An indoor pool: water lapping, and every drip with an echo |
 | `room` | His room at home |
 | `village`, `wind`, `night` | A street or a yard; a roof; anywhere after dark |
+| `crowd` | A lunch room, a gym class, a dance: a lot of kids, some way off |
+
+`draft` gives `night` to every shot with a night look, indoors too. Check the beds it wrote against the places:
+the first film's were corrected by hand (a dance is `crowd`; his room at night is `room`).
 
 ## Before the film is handed over
 

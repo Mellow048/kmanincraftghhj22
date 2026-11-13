@@ -7,8 +7,10 @@
  * A film's kit.tsx imports from here and passes the names on, so its scenes import only from "./kit".
  */
 export * from "./school";
+export * from "./places";
 export * from "./powers";
 export * from "./cast";
+export * from "./things";
 // Shared with the other topics: when a word is said, how a thing pops in, numbers and icons in cubes,
 // a kid's bedroom, a village street, a speech bubble, and the red sign every film ends on.
 // See Topics/Shared/index.ts.

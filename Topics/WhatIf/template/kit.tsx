@@ -19,6 +19,10 @@ export {
   Classmate, KIDS, Teacher,
   // the school
   Chalkboard, Classroom, Desk, SchoolHall, classroom,
+  // where a story goes when it leaves the classroom, and a function for the places in each (PACK.md)
+  Gym, Kitchen, LunchRoom, Reflection, gym, kitchen, lunchRoom,
+  // the small things
+  Card, Cookie, CookieStack, Cup, Dog, DogBowl, Eraser, Sandwich, Tie, Tray,
   // shared with the other topics: a kid's bedroom, a village street, cubes that spell, the last picture
   BedBox, Bits, Bubble, Figure, Hut, Icon, LampPost, Player, Puffs, Room, SoundRings, SubscribeSign, Voxels,
   // staging: when a word is said, how a thing pops in, where "in front of him" is

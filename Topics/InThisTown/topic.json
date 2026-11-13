@@ -119,7 +119,24 @@
     "voiceOnly": {
       "in-this-town-monster-egg": "It was built before the sound rule; its sound sheet is not written yet."
     },
+    "music": {
+      "file": "Topics/InThisTown/InThisTownMusic.aac",
+      "owner": "the music is used thats the new backround music for the in this town shorts",
+      "since": "2026-11-13",
+      "guide": "Topics/InThisTown/SOUND.md",
+      "gain": -16,
+      "minShare": 0.8,
+      "note": "The owner's own track is the background music of every In This Town short from this date. A film's sound.json names it in `music.track`; `scripts/sound.py build` refuses a sheet that does not, or one where it plays under less than `minShare` of the film (a `none` section is silence); `draft` writes it in. `gain` is the level to start from: -16, the level of Superpower part 2, the first film that played it.",
+      "madeBefore": [
+        "in-this-town-same-face",
+        "in-this-town-pumpkin-heads",
+        "in-this-town-superpower-at-18",
+        "in-this-town-nobody-looked-at-the-moon"
+      ],
+      "madeBeforeNote": "Finished before the owner chose the track. An approved film does not change: these keep the music they were approved with, which scripts/sound.py makes from moods."
+    },
     "minMusicSections": 5,
+    "minMusicSectionsNote": "Counts only for a film whose music is made from moods (the films in music.madeBefore). A film that plays the owner's track has one piece of music.",
     "musicUnderVoiceDb": [
       15,
       24

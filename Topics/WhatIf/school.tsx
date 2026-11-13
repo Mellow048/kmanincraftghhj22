@@ -13,6 +13,9 @@ import type { Vec3 } from "../../src/engine";
  * board over the class (lens behind the back row, and there must be no wall in the way). So the south wall of
  * both sets, and what hangs on it, can be seen from INSIDE only: a lens behind it looks straight through.
  * The other three walls and the ceiling are solid. Keep the lens under 3.3 m, and inside the east and west walls.
+ *
+ * NOTHING HERE IS PINK: no bag, no book, no paper on a wall. A power is nearly always shown in a bright colour that
+ * nobody wears (SHOTS.md §1), and pink is the first one a film reaches for. Keep it free.
  */
 
 /** A wall, or a sheet of paper on one, that exists only for a lens in front of it. `facing` is the way its face points (rotationY). */
@@ -122,7 +125,7 @@ export const Classroom: React.FC<{ at: Vec3; board?: string; boardSub?: string; 
       <OneSided position={[-2.75, 2.35, 3.97]} size={[0.8, 0.6]} facing={Math.PI} color="#7ab86a" />
       <OneSided position={[-1.95, 2.05, 3.97]} size={[0.6, 0.5]} facing={Math.PI} color="#d9c27a" />
       {[0.4, 1.3, 2.2, 3.1].map((x, i) => (
-        <OneSided key={x} position={[x, 2.2 + (i % 2 ? 0.12 : -0.08), 3.98]} size={[0.62, 0.8]} facing={Math.PI} color={["#fff4d6", "#ffd9d2", "#d9f0d0", "#d6e6ff"][i]} />
+        <OneSided key={x} position={[x, 2.2 + (i % 2 ? 0.12 : -0.08), 3.98]} size={[0.62, 0.8]} facing={Math.PI} color={["#fff4d6", "#fde9b8", "#d9f0d0", "#d6e6ff"][i]} />
       ))}
       {[0.4, 1.3, 2.2, 3.1].map((x, i) => (
         <OneSided key={`d${x}`} position={[x, 2.2 + (i % 2 ? 0.12 : -0.08), 3.97]} size={[0.34, 0.34]} facing={Math.PI} color={["#e8433a", "#3f6fb8", "#e8a21c", "#3f8a4f"][i]} />
@@ -130,7 +133,7 @@ export const Classroom: React.FC<{ at: Vec3; board?: string; boardSub?: string; 
       {/* a row of pegs with a bag on each */}
       <OneSided position={[0.4, 1.32, 3.98]} size={[7.6, 0.08]} facing={Math.PI} color="#7a5a3a" />
       {[-3.0, -2.2, -1.4, -0.6, 0.2, 1.0, 1.8, 2.6, 3.4].map((x, i) => (
-        <OneSided key={`b${x}`} position={[x + 0.4, 1.05, 3.97]} size={[0.4, 0.5]} facing={Math.PI} color={["#c8402f", "#3f6fb8", "#e8a21c", "#3f8a4f", "#6a4aa8", "#e85a9a", "#4ad6d0", "#8a6a44", "#59606b"][i]} />
+        <OneSided key={`b${x}`} position={[x + 0.4, 1.05, 3.97]} size={[0.4, 0.5]} facing={Math.PI} color={["#c8402f", "#3f6fb8", "#e8a21c", "#3f8a4f", "#6a4aa8", "#d9d2bf", "#4ad6d0", "#8a6a44", "#59606b"][i]} />
       ))}
 
       <Chalkboard position={[0, 1.95, -3.9]} text={board} sub={boardSub} />
@@ -138,7 +141,7 @@ export const Classroom: React.FC<{ at: Vec3; board?: string; boardSub?: string; 
       {/* a strip of paper letters over the board, the way every classroom has */}
       {["A", "B", "C", "D", "E", "F", "G"].map((letter, i) => (
         <group key={letter} position={[-1.8 + i * 0.6, 3.05, -3.97]}>
-          <Block size={[0.42, 0.42, 0.02]} color={["#ffd24a", "#58a6ff", "#ff7a4a", "#58d66a", "#c77dff", "#ff5a8a", "#4ad6d0"][i]} castShadow={false} />
+          <Block size={[0.42, 0.42, 0.02]} color={["#ffd24a", "#58a6ff", "#ff7a4a", "#58d66a", "#c77dff", "#8fd14f", "#4ad6d0"][i]} castShadow={false} />
           <PixelText text={letter} position={[0, 0, 0.015]} height={0.3} />
         </group>
       ))}
@@ -177,7 +180,7 @@ export const Classroom: React.FC<{ at: Vec3; board?: string; boardSub?: string; 
       {/* a shelf of books at the back of the east wall */}
       <Vox kind="darkPlanks" position={[4.45, 0.7, 2.4]} size={[0.5, 1.4, 1.8]} />
       {[0.5, 1.0].map((y) =>
-        [0, 1, 2, 3, 4, 5].map((i) => <Block key={`${y}${i}`} position={[4.2, y + 0.16, 1.7 + i * 0.27]} size={[0.2, 0.3, 0.2]} color={["#c8402f", "#3f6fb8", "#e8a21c", "#3f8a4f", "#6a4aa8", "#e85a9a"][(i + (y > 0.6 ? 2 : 0)) % 6]} />),
+        [0, 1, 2, 3, 4, 5].map((i) => <Block key={`${y}${i}`} position={[4.2, y + 0.16, 1.7 + i * 0.27]} size={[0.2, 0.3, 0.2]} color={["#c8402f", "#3f6fb8", "#e8a21c", "#3f8a4f", "#6a4aa8", "#8a6a44"][(i + (y > 0.6 ? 2 : 0)) % 6]} />),
       )}
 
       {/* ceiling lamps, and a fill from the open side so that a face turned to the lens is never black */}
@@ -254,7 +257,7 @@ export const SchoolHall: React.FC<{ at: Vec3; length?: number; sign?: string }> 
       {/* a notice board, and a bin: the things a real hallway collects */}
       <Vox kind="planks" tint="#b48d52" position={[0, 2.95, -1.98]} size={[2.2, 0.56, 0.05]} />
       {[-0.7, -0.2, 0.3, 0.75].map((x, i) => (
-        <Block key={x} position={[x, 2.95 + (i % 2 ? 0.05 : -0.04), -1.945]} size={[0.3, 0.34, 0.01]} color={["#fff4d6", "#ffd9d2", "#d9f0d0", "#d6e6ff"][i]} castShadow={false} />
+        <Block key={x} position={[x, 2.95 + (i % 2 ? 0.05 : -0.04), -1.945]} size={[0.3, 0.34, 0.01]} color={["#fff4d6", "#fde9b8", "#d9f0d0", "#d6e6ff"][i]} castShadow={false} />
       ))}
       <Block position={[half - 0.7, 0.3, -1.6]} size={[0.4, 0.6, 0.4]} color="#59606b" />
 

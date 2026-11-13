@@ -1,10 +1,17 @@
 # Narration — What If You Could See Who Had a Crush on You
 
-**Status: APPROVED and RECORDED. The picture and the sound are not built yet.** The owner approved this script on
-2026-11-13 ("yesboth", to the two scripts that were put to him together). The six clips are recorded with `voice-00`
+**Status: BUILT and RENDERED. Waiting for the owner to watch it.** The owner approved this script on 2026-11-13
+("yesboth", to the two scripts that were put to him together). The six clips are recorded with `voice-00`
 (`public/audio/what-if-you-could-see-who-had-a-crush-on-you/raw/`) and the film is timed to them (`timing.json`):
-1:53.6 at 254 words a minute. Only the starter's two shots exist. Changing a word now means recording that clip
-again and rebuilding the timing.
+1:53.6 at 254 words a minute. The picture (55 shots in six places) and the sound (`sound.json`: 321 sounds) are
+built. Changing a word now means recording that clip again and rebuilding the timing.
+
+**Delivered 2026-11-13** as render 44: 1080×1920, 3409 frames, 1:53.6. The master is the release asset
+(`render-44`, 62 MB); `renders/what-if-you-could-see-who-had-a-crush-on-you.mp4` is a 720×1280 copy that fits in
+the repository, and `renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg` is one frame of it per shot.
+Measured on the delivered file (`python3 scripts/render-check.py what-if-you-could-see-who-had-a-crush-on-you`): the
+sound sits 0.0 ms from `mix.mp3`, −15.0 LUFS, true peak −0.3 dB. **Nobody has listened to the sound: an agent
+cannot.**
 
 Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. **This film is meant to become the
 topic's reference** (the owner: "you are the one making that reference!"): once he approves it, it is measured and
@@ -73,9 +80,33 @@ as proposed: this is the story, this is the title, the ending does not say what 
    threw at me"). Say so if you would rather it ended on her answer.
 4. The voice: `voice-00`, as in the In This Town films, unless you want another for this topic.
 
-**What the pack does not have yet** (built after the script is approved; into the pack where a second film could
-use it): a kitchen at breakfast, a dog, a lunch room with a line, a gym with dance lights, a school gate at night,
-an eraser, a card, a tie. The classroom, the hall, the classmates, the teachers and the heart are in the pack.
+**What was built for this film, and is in the pack now** (`Topics/WhatIf/places.tsx`, `things.tsx`): a kitchen at
+breakfast with a mirror that reflects, a dog and its bowl, a lunch room with a line, a gym that is dressed for a
+dance at night, the school gate and the street outside it, an eraser, a card, a tie, a tray, a cup, a sandwich,
+cookies. The classroom, the hall, the classmates, the teachers and the heart were in the pack already.
+
+**How the picture keeps the story honest** (the film's `kit.tsx`):
+
+- Jo's heart is never given a size by hand. It is `joHeart(metres between her and him)` in every shot she is in:
+  0.95 m when she is at the next desk, 0.42 m at four metres, 0.13 m from the gate. So "the biggest heart in the
+  school" is on screen from the first second, and it is small in the one wide shot where she sits across the lunch
+  room (8.apart), a minute before he works it out.
+- Mia's heart is small except on two occasions, and on both Leo is walking up behind the teller: the lunch line
+  (scene 8) and the dance (scene 12). Leo is not in the room when the teller walks past her desk (scene 7), and her
+  heart does not move.
+- A heart changes size only when the one it is for moves. No heart swells on a word.
+
+**What was left in.** Seen in the stills and kept, because the fix cost more than the fault:
+
+| Shot | What is there |
+|---|---|
+| 2.mirror | His own shoulder is a dark block on the right edge: the lens looks past it into the glass |
+| 3.grew | The waving arm of the boy who walks up leaves the right edge of the frame |
+| 6.jo, 6.lucky | Jo's heart is cut by the top of the frame. It is the biggest in the school: it does not fit, and it should not |
+| 7.walk | Mia's fair head is a large pale block on the left of the frame |
+| 10.card | In the first frames his head is a small dark shape at the bottom, under the card |
+| 11.card | The card is half behind Mia's hair. It was read, whole, in the shot before |
+| 13.over | The back of his head is a dark strip on the right edge: the lens is behind his shoulder, as the line says |
 
 ```narration
 # clip 01-hook

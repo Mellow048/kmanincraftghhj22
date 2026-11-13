@@ -39,19 +39,26 @@ export const Overhead: React.FC<{
   glow?: number;
   /** 0–1: fade it out (a power switching off). */
   fade?: number;
-}> = ({ over, kind = "heart", text, t = 1, tall = 1.44, size = 0.34, color, rotationY = 0, spin = 0, glow = 0.55, fade = 0 }) => {
+  /**
+   * It is its own light, and takes almost none of the room's. Set it in a night shot with a lamp near the head it
+   * floats over: without it a pink heart half a metre from a lantern is white, and one in the dark is maroon.
+   */
+  steady?: boolean;
+}> = ({ over, kind = "heart", text, t = 1, tall = 1.44, size = 0.34, color, rotationY = 0, spin = 0, glow = 0.55, fade = 0, steady = false }) => {
   const scale = pop(t, 0, 0.3) * (1 - clamp01(fade));
   if (scale <= 0.001) return null;
   const at: Vec3 = [over[0], over[1] + tall + 0.34 + size / 2 + Math.sin(t * 2.6) * 0.035, over[2]];
   const turn = rotationY + spin * t;
+  const light = steady ? { glow: 0.85, lit: 0.25 } : { glow };
   return (
     <>
       {text !== undefined ? (
-        <Figure text={text} position={at} rotationY={turn} height={size} depth={0.9} color={color ?? "#ffffff"} glow={glow} scale={scale} castShadow={false} outline />
+        <Figure text={text} position={at} rotationY={turn} height={size} depth={0.9} color={color ?? "#ffffff"} {...light} scale={scale} castShadow={false} outline />
       ) : (
-        <Icon kind={kind} position={at} rotationY={turn} height={size} depth={1.2} color={color} glow={glow} scale={scale} castShadow={false} outline />
+        <Icon kind={kind} position={at} rotationY={turn} height={size} depth={1.2} color={color} {...light} scale={scale} castShadow={false} outline />
       )}
-      <Glow position={[at[0], at[1], at[2] - 0.05]} size={size * 2.6 * scale} color={color ?? "#ffb0cc"} opacity={0.28} />
+      {/* The glow behind it. A small heart glows wide; a heart the size of a door must not white out the frame. */}
+      <Glow position={[at[0], at[1], at[2] - 0.05]} size={Math.min(size * 2.6, size + 0.9) * scale} color={color ?? "#ffb0cc"} opacity={0.28 * Math.min(1, Math.sqrt(0.6 / Math.max(size, 0.01)))} />
     </>
   );
 };
