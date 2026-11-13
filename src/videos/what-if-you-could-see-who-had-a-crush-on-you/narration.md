@@ -1,10 +1,12 @@
 # Narration — What If You Could See Who Had a Crush on You
 
-**Status: APPROVED and RECORDED. The picture and the sound are not built yet.** The owner approved this script on
-2026-11-13 ("yesboth", to the two scripts that were put to him together). The six clips are recorded with `voice-00`
+**Status: BUILT and RENDERED. Waiting for the owner to watch it.** The owner approved this script on 2026-11-13
+("yesboth", to the two scripts that were put to him together). The six clips are recorded with `voice-00`
 (`public/audio/what-if-you-could-see-who-had-a-crush-on-you/raw/`) and the film is timed to them (`timing.json`):
-1:53.6 at 254 words a minute. Only the starter's two shots exist. Changing a word now means recording that clip
-again and rebuilding the timing.
+1:53.6 at 254 words a minute. The picture (55 shots in six places) and the sound (`sound.json`: 321 sounds) are
+built, and the film is rendered: `renders/what-if-you-could-see-who-had-a-crush-on-you.mp4`, 1080×1920, with one
+frame of each shot in `renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg`. **The sound was measured,
+never listened to.** Changing a word now means recording that clip again and rebuilding the timing.
 
 Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. **This film is meant to become the
 topic's reference** (the owner: "you are the one making that reference!"): once he approves it, it is measured and
