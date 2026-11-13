@@ -227,7 +227,7 @@ export const STOPS = {
   answer: stop(GREY.p(GATE_X, 4.75, -2.5), 7.2, 11, 3, 40),
 
   /** Home: you at the vote box. */
-  home: stop(HOME.p(-0.3, 1.3, -0.1), 6.4, 12, 8, 40),
+  home: stop(HOME.p(-0.25, 1.05, -0.1), 6.4, 12, 8, 40),
   /** Round to your other side: the sign over your head and the NO beside it, stacked in a tall frame. */
   sub: stop(HOME.p(-0.21, 1.72, -0.3), 6.1, -8, 3, 40),
 };

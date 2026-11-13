@@ -239,7 +239,8 @@ export const scene2 = flightScene(timing, {
     {
       cue: "2.vote",
       to: STOPS.vote,
-      note: "Up off the statue and over the gap to the square at home. Stones fly in from both sides and drop through the slot of the box; each one is counted on one of two piles, and when the left pile is the taller the purple hat comes down on the head beside it.",
+      lift: 3.2,
+      note: "Up off the statue, over the gap and over the roofs of your village to the square. Stones fly in from both sides and drop through the slot of the box; each one is counted on one of two piles, and when the left pile is the taller the purple hat comes down on the head beside it.",
     },
     {
       cue: "2.judge",

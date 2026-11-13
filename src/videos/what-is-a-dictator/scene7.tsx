@@ -35,7 +35,7 @@ export const Exhibit7: React.FC = () => {
   const sign: [number, number, number] = [you[0] + 0.24, you[1] + 2.28, you[2] - 0.02];
   return (
     <>
-      <No position={[HOME.slot[0] + 0.06, HOME.slot[1] + 0.52 * size, HOME.slot[2]]} scale={size} rotationY={0.1} tilt={grown < 1 ? (1 - grown) * 0.2 : 0} tail={-1} />
+      <No position={[HOME.slot[0] + 0.16, HOME.slot[1] + 0.52 * size, HOME.slot[2]]} scale={size} rotationY={0.1} tilt={grown < 1 ? (1 - grown) * 0.2 : 0} tail={-1} />
       <SubscribeSign
         position={sign}
         scale={0.72 * pop(sub, -0.02, 0.26) * (1 + again(T.here - 0.03) * 0.5)}

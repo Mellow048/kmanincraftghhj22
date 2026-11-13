@@ -1,0 +1,499 @@
+{
+  "film": "what-is-a-dictator",
+  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build what-is-a-dictator",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.ask",
+        "mood": "curious",
+        "why": "The question, and the thing you know: something ordinary, and a question about it."
+      },
+      {
+        "from": "2.vote",
+        "mood": "explain",
+        "why": "The cause, step by step: facts, one after another, the body of the explainer."
+      },
+      {
+        "from": "5.word",
+        "mood": "tense",
+        "why": "The part you did not know: it turns, the last steps before the edge, a pulse that will not stop."
+      },
+      {
+        "from": "6.answer",
+        "mood": "hope",
+        "why": "The answer: now it makes sense. Stay in this mood through the subscribe line."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.ask",
+      "to": "2.vote",
+      "bed": "sky"
+    },
+    {
+      "from": "2.vote",
+      "to": "2.judge",
+      "bed": "village"
+    },
+    {
+      "from": "2.judge",
+      "to": "2.loud",
+      "bed": "sky"
+    },
+    {
+      "from": "2.loud",
+      "to": "2.again",
+      "bed": "village"
+    },
+    {
+      "from": "2.again",
+      "to": "3.hates",
+      "bed": "sky"
+    },
+    {
+      "from": "3.hates",
+      "to": "4.army",
+      "bed": "sky"
+    },
+    {
+      "from": "4.army",
+      "to": "4.won",
+      "bed": "village"
+    },
+    {
+      "from": "4.won",
+      "to": "4.judge",
+      "bed": "sky"
+    },
+    {
+      "from": "4.judge",
+      "to": "4.jail",
+      "bed": "village"
+    },
+    {
+      "from": "4.jail",
+      "to": "4.vote",
+      "bed": "sky"
+    },
+    {
+      "from": "4.vote",
+      "to": "4.name",
+      "bed": "village"
+    },
+    {
+      "from": "4.name",
+      "to": "5.word",
+      "bed": "sky"
+    },
+    {
+      "from": "5.word",
+      "to": "5.rome",
+      "bed": "village"
+    },
+    {
+      "from": "5.rome",
+      "to": "5.six",
+      "bed": "sky"
+    },
+    {
+      "from": "5.six",
+      "to": "5.caesar",
+      "bed": "village"
+    },
+    {
+      "from": "5.caesar",
+      "to": "5.now",
+      "bed": "sky"
+    },
+    {
+      "from": "5.now",
+      "to": "6.answer",
+      "bed": "village"
+    },
+    {
+      "from": "6.answer",
+      "to": "7.you",
+      "bed": "sky"
+    },
+    {
+      "from": "7.you",
+      "to": "7.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.ask",
+      "sfx": "pop",
+      "why": "The question mark over your head: there from the first frame."
+    },
+    {
+      "cue": "1.ask",
+      "at": 0.42,
+      "sfx": "whoosh",
+      "dur": 0.8,
+      "trim": -2,
+      "why": "The flight from the stone man to the village square: a whoosh as long as the flight."
+    },
+    {
+      "cue": "2.vote",
+      "sfx": "whoosh",
+      "dur": 1.1,
+      "trim": -1,
+      "why": "The flight from the square to the bridge: a whoosh centred on the first half second."
+    },
+    {
+      "cue": "2.vote",
+      "at": 0.2,
+      "sfx": "coin",
+      "pitch": 1.12,
+      "pan": -0.2,
+      "why": "The stones from the left side land."
+    },
+    {
+      "cue": "2.vote",
+      "at": 0.25,
+      "sfx": "coin",
+      "pitch": 0.88,
+      "pan": 0.2,
+      "why": "The stones from the right side land."
+    },
+    {
+      "cue": "2.vote",
+      "word": "purple",
+      "sfx": "pop",
+      "why": "The purple hat with a gold band lands on A."
+    },
+    {
+      "cue": "2.judge",
+      "at": 0.2,
+      "sfx": "place",
+      "why": "The baker's loaf hops into the leader's folded arms."
+    },
+    {
+      "cue": "2.judge",
+      "word": "hammer",
+      "sfx": "clank",
+      "why": "The gavel appears over the bench."
+    },
+    {
+      "cue": "2.judge",
+      "at": 0.5,
+      "sfx": "place",
+      "why": "The loaf goes back."
+    },
+    {
+      "cue": "2.loud",
+      "at": 0.2,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Two planks drop out of the new bridge."
+    },
+    {
+      "cue": "2.loud",
+      "word": "anyone",
+      "sfx": "pop",
+      "why": "The NO over you."
+    },
+    {
+      "cue": "2.loud",
+      "word": "say",
+      "sfx": "pop",
+      "why": "The NO over the neighbour."
+    },
+    {
+      "cue": "2.loud",
+      "word": "out",
+      "sfx": "pop",
+      "why": "The NO over the baker."
+    },
+    {
+      "cue": "2.loud",
+      "at": 0.7,
+      "sfx": "stomp",
+      "why": "The leader's head goes down."
+    },
+    {
+      "cue": "2.again",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "The piles are swept."
+    },
+    {
+      "cue": "2.again",
+      "word": "wins",
+      "sfx": "pop",
+      "why": "B's pile wins."
+    },
+    {
+      "cue": "2.again",
+      "word": "hat",
+      "sfx": "pop",
+      "why": "The hat crosses to B."
+    },
+    {
+      "cue": "2.again",
+      "at": 0.8,
+      "sfx": "place",
+      "why": "A walks home."
+    },
+    {
+      "cue": "3.hates",
+      "sfx": "whoosh",
+      "dur": 1.2,
+      "trim": -1,
+      "why": "The flight between the islands: a whoosh centred on the first half second."
+    },
+    {
+      "cue": "3.hates",
+      "word": "NO",
+      "sfx": "pop",
+      "why": "A NO floats up from the crowd."
+    },
+    {
+      "cue": "3.hates",
+      "at": 0.4,
+      "sfx": "hit",
+      "why": "He breaks it with his head."
+    },
+    {
+      "cue": "4.army",
+      "sfx": "whoosh",
+      "dur": 1.0,
+      "trim": -1,
+      "why": "The flight to the grey island: a whoosh centred on the first half second."
+    },
+    {
+      "cue": "4.army",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Six soldiers out of the gate."
+    },
+    {
+      "cue": "4.won",
+      "at": 0.1,
+      "sfx": "place",
+      "why": "A fair vote."
+    },
+    {
+      "cue": "4.won",
+      "word": "hat",
+      "sfx": "pop",
+      "why": "The hat lands on him."
+    },
+    {
+      "cue": "4.judge",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Two soldiers come out of the door behind the bench and take the judge."
+    },
+    {
+      "cue": "4.judge",
+      "word": "hammer",
+      "sfx": "clank",
+      "trim": -1,
+      "why": "His hammer drops on the desk."
+    },
+    {
+      "cue": "4.judge",
+      "at": 0.4,
+      "sfx": "place",
+      "why": "The man climbs the steps and takes it."
+    },
+    {
+      "cue": "4.jail",
+      "word": "NO",
+      "sfx": "pop",
+      "why": "The woman who ran against him says NO."
+    },
+    {
+      "cue": "4.jail",
+      "at": 0.2,
+      "sfx": "place",
+      "trim": -1,
+      "why": "A cage drops."
+    },
+    {
+      "cue": "4.jail",
+      "at": 0.5,
+      "sfx": "place",
+      "why": "Her pile goes."
+    },
+    {
+      "cue": "4.vote",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "His face on a banner over the chair."
+    },
+    {
+      "cue": "4.vote",
+      "at": 0.2,
+      "sfx": "place",
+      "why": "Three stones in."
+    },
+    {
+      "cue": "4.vote",
+      "at": 0.4,
+      "sfx": "place",
+      "why": "Nine on his pile."
+    },
+    {
+      "cue": "4.vote",
+      "word": "never",
+      "sfx": "stamp",
+      "why": "The padlock on never."
+    },
+    {
+      "cue": "4.vote",
+      "at": 0.7,
+      "sfx": "place",
+      "why": "The next stone bounces off."
+    },
+    {
+      "cue": "4.name",
+      "at": 0.1,
+      "sfx": "place",
+      "why": "DICTATOR is cut into the balcony front."
+    },
+    {
+      "cue": "4.name",
+      "word": "DICTATOR",
+      "sfx": "stamp",
+      "why": "The word is said."
+    },
+    {
+      "cue": "4.name",
+      "at": 0.4,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Two thrown votes bounce off."
+    },
+    {
+      "cue": "5.word",
+      "sfx": "whoosh",
+      "dur": 1.0,
+      "trim": -1,
+      "why": "The flight from the grey island to Rome: a whoosh centred on the first half second."
+    },
+    {
+      "cue": "5.word",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Two men."
+    },
+    {
+      "cue": "5.word",
+      "word": "purple",
+      "sfx": "pop",
+      "why": "A purple cloak."
+    },
+    {
+      "cue": "5.word",
+      "at": 0.4,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Two bowls of fire."
+    },
+    {
+      "cue": "5.rome",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Six moons."
+    },
+    {
+      "cue": "5.caesar",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Caesar gets the cloak and a wreath."
+    },
+    {
+      "cue": "5.caesar",
+      "at": 0.4,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Three more moons to the end of the beam."
+    },
+    {
+      "cue": "5.now",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "The man on the balcony in the cloak."
+    },
+    {
+      "cue": "6.answer",
+      "sfx": "whoosh",
+      "dur": 0.8,
+      "trim": -1,
+      "why": "The flight to the final square: a whoosh centred on the first half second."
+    },
+    {
+      "cue": "6.answer",
+      "at": 0.2,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Spears break four NOs."
+    },
+    {
+      "cue": "6.answer",
+      "word": "fifth",
+      "sfx": "clank",
+      "why": "His hammer the fifth."
+    },
+    {
+      "cue": "7.you",
+      "sfx": "whoosh",
+      "dur": 1.0,
+      "trim": -1,
+      "why": "The flight home: a whoosh centred on the first half second."
+    },
+    {
+      "cue": "7.you",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "Your stone goes in."
+    },
+    {
+      "cue": "7.you",
+      "word": "NO",
+      "sfx": "pop",
+      "why": "A NO nearly your size grows out of the slot."
+    },
+    {
+      "cue": "7.sub",
+      "at": 0.1,
+      "sfx": "place",
+      "trim": -1,
+      "why": "You turn to us."
+    },
+    {
+      "cue": "7.sub",
+      "word": "sign",
+      "sfx": "pop",
+      "why": "The subscribe sign over your head."
+    },
+    {
+      "cue": "7.sub",
+      "at": 0.4,
+      "sfx": "place",
+      "trim": -1,
+      "why": "The NO beside it."
+    },
+    {
+      "cue": "7.sub",
+      "word": "sub",
+      "sfx": "ding",
+      "why": "The subscribe line."
+    }
+  ]
+}

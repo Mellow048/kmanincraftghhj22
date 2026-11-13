@@ -63,7 +63,6 @@ const Home: React.FC = () => (
     <Hut at={HOME.p(6.0, 0, -1.9)} w={3} d={2.4} h={2.8} roof="#3f6fa8" door={-0.5} windows={[0.75]} turn={-0.2} />
     <Hut at={HOME.p(7.3, 0, 1.6)} w={2.2} d={1.8} h={2.3} wall="cobble" roof="#4a6a3a" turn={-1.25} />
     <Tree position={HOME.p(8.4, 0, -3.5)} height={3.8} />
-    <Tree position={HOME.p(9.1, 0, 1.4)} height={3.0} spread={0.75} leaf="#4a8c33" />
     <LampPost position={HOME.p(4.5, 0, -2.9)} seed={2} />
     <Flowers at={HOME.p(1.9, 0, 3.0)} />
     <Flowers at={HOME.p(-1.9, 0, 3.3)} colors={["#f4f1ea", "#f2d23a"]} />
