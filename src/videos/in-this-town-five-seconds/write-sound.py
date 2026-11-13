@@ -27,6 +27,7 @@ for n in [2,3,4,6,7,9,10,12,13,14,15,18]:
     fx(c['id'],'whoosh','Change of place, time or dramatic focus; not a diegetic moving object.',gain=-14,dur=.18)
 for name,a in S.items():
     event(a,'power_down','The shared five-second world clock stops: '+name,gain=-12,dur=.25)
+    event(a,'glitch','A short television-like interruption accompanies the camera desaturation: '+name,gain=-16,dur=.18)
     event(a+5,'power_up','The SAME stop ends after exactly 150 frames: '+name,gain=-13,dur=.2)
 # The inner count is non-diegetic, not the frozen wall clock ticking.
 for name in ['glass','counter']:

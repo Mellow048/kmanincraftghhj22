@@ -1,3 +1,4 @@
+import { withStopColor } from "./stop-camera";
 import { defineFilm } from "../../engine";
 import { timing, BLACK_AT } from "./kit";
 import { World } from "./world";
@@ -26,7 +27,7 @@ import { scene18 } from "./scene18";
  * The narration is exact Draft 2 plus the separately approved trip revision.
  * Default full-film limits, NOT cut:"short". This ending has its own scoped owner exception.
  */
-export const film=defineFilm({
+const baseFilm=defineFilm({
  id:"in-this-town-five-seconds",
  title:"In This Town, I Was the Only One Who Could Stop Time for Five Seconds",
  topic:"in-this-town",
@@ -38,3 +39,4 @@ export const film=defineFilm({
  World,
  scenes:[scene1,scene2,scene3,scene4,scene5,scene6,scene7,scene8,scene9,scene10,scene11,scene12,scene13,scene14,scene15,scene16,scene17,scene18],
 });
+export const film={...baseFilm,Component:withStopColor(baseFilm.Component)};

@@ -116,3 +116,7 @@ test('trip catches the same rock, carries momentum into a half-turn and grounded
 test('pursuer goes through the gate opening rather than through the fence or posts',()=>{
  for(const t of frames(m.HERO_RUN,STOP.counter.a)){const p=m.counterHero(t).position;if(Math.abs(p[0]-2.7)<.5)assert.ok(p[2]>.65&&p[2]<1.8,`Fence overlap at ${t}: ${p}`);}
 });
+
+test('brief monochrome camera pulse fires on every stop without altering its five-second clock',()=>{
+ const {stopColor}=loadFilm('stop-color');for(const s of STOPS){assert.equal(stopColor(s.start),1);assert.equal(stopColor(s.start+8),1);assert.ok(stopColor(s.start+15)>0&&stopColor(s.start+15)<1);assert.equal(stopColor(s.start+24),0);if(s.start>0)assert.equal(stopColor(s.start-1),0);assert.equal(s.end-s.start,150);}
+});

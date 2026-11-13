@@ -166,7 +166,8 @@ for n,(title,default,shots) in enumerate(scenes,1):
   }};}})(),'''
         items.append(item)
     (P/f'scene{n}.tsx').write_text(imports+('import { curtainsMother } from "./domestic-motion";\n' if n==2 else '')+f'\n/** Beat {n}: {title}. Camera cuts do not reset the underlying performance. */\nexport const scene{n}=storyScene(timing,{{\n id:"scene{n}",title:{json.dumps(title)},shots:[\n'+'\n'.join(items)+'\n]});\n')
-film='''import { defineFilm } from "../../engine";
+film='''import { withStopColor } from "./stop-camera";
+import { defineFilm } from "../../engine";
 import { timing, BLACK_AT } from "./kit";
 import { World } from "./world";
 '''+''.join(f'import {{ scene{i} }} from "./scene{i}";\n' for i in range(1,19))+'''
@@ -176,7 +177,7 @@ import { World } from "./world";
  * The narration is exact Draft 2 plus the separately approved trip revision.
  * Default full-film limits, NOT cut:"short". This ending has its own scoped owner exception.
  */
-export const film=defineFilm({
+const baseFilm=defineFilm({
  id:"in-this-town-five-seconds",
  title:"In This Town, I Was the Only One Who Could Stop Time for Five Seconds",
  topic:"in-this-town",
@@ -188,6 +189,7 @@ export const film=defineFilm({
  World,
  scenes:['''+','.join(f'scene{i}' for i in range(1,19))+'''],
 });
+export const film={...baseFilm,Component:withStopColor(baseFilm.Component)};
 '''
 (P/'film.tsx').write_text(film)
 print('Wrote 18 scenes, 91 authored shots, full-film configuration. Authored mix wired in.')

@@ -365,6 +365,14 @@
       "dur": 0.25
     },
     {
+      "cue": "1.town",
+      "at": 0.0,
+      "sfx": "glitch",
+      "why": "A short television-like interruption accompanies the camera desaturation: teaser",
+      "gain": -16,
+      "dur": 0.18
+    },
+    {
       "cue": "1.friend",
       "at": 0.8,
       "sfx": "power_up",
@@ -379,6 +387,14 @@
       "why": "The shared five-second world clock stops: glass",
       "gain": -12,
       "dur": 0.25
+    },
+    {
+      "cue": "4.stop",
+      "at": 0.866667,
+      "sfx": "glitch",
+      "why": "A short television-like interruption accompanies the camera desaturation: glass",
+      "gain": -16,
+      "dur": 0.18
     },
     {
       "cue": "4.five",
@@ -397,6 +413,14 @@
       "dur": 0.25
     },
     {
+      "cue": "5.touch",
+      "at": 0.100033,
+      "sfx": "glitch",
+      "why": "A short television-like interruption accompanies the camera desaturation: touch",
+      "gain": -16,
+      "dur": 0.18
+    },
+    {
       "cue": "5.release",
       "at": 2.933333,
       "sfx": "power_up",
@@ -411,6 +435,14 @@
       "why": "The shared five-second world clock stops: chalk",
       "gain": -12,
       "dur": 0.25
+    },
+    {
+      "cue": "5.chalk",
+      "at": 0.433333,
+      "sfx": "glitch",
+      "why": "A short television-like interruption accompanies the camera desaturation: chalk",
+      "gain": -16,
+      "dur": 0.18
     },
     {
       "cue": "5.bonk",
@@ -429,6 +461,14 @@
       "dur": 0.25
     },
     {
+      "cue": "7.stop",
+      "at": 0.099967,
+      "sfx": "glitch",
+      "why": "A short television-like interruption accompanies the camera desaturation: locker",
+      "gain": -16,
+      "dur": 0.18
+    },
+    {
       "cue": "8.bang",
       "at": 0.533367,
       "sfx": "power_up",
@@ -445,6 +485,14 @@
       "dur": 0.25
     },
     {
+      "cue": "11.stop",
+      "at": 0.6667,
+      "sfx": "glitch",
+      "why": "A short television-like interruption accompanies the camera desaturation: elder",
+      "gain": -16,
+      "dur": 0.18
+    },
+    {
       "cue": "11.hit",
       "at": 0.3,
       "sfx": "power_up",
@@ -459,6 +507,14 @@
       "why": "The shared five-second world clock stops: counter",
       "gain": -12,
       "dur": 0.25
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.266633,
+      "sfx": "glitch",
+      "why": "A short television-like interruption accompanies the camera desaturation: counter",
+      "gain": -16,
+      "dur": 0.18
     },
     {
       "cue": "17.resume",
