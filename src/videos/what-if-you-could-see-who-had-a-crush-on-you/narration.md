@@ -73,9 +73,33 @@ as proposed: this is the story, this is the title, the ending does not say what 
    threw at me"). Say so if you would rather it ended on her answer.
 4. The voice: `voice-00`, as in the In This Town films, unless you want another for this topic.
 
-**What the pack does not have yet** (built after the script is approved; into the pack where a second film could
-use it): a kitchen at breakfast, a dog, a lunch room with a line, a gym with dance lights, a school gate at night,
-an eraser, a card, a tie. The classroom, the hall, the classmates, the teachers and the heart are in the pack.
+**What was built for this film, and is in the pack now** (`Topics/WhatIf/places.tsx`, `things.tsx`): a kitchen at
+breakfast with a mirror that reflects, a dog and its bowl, a lunch room with a line, a gym that is dressed for a
+dance at night, the school gate and the street outside it, an eraser, a card, a tie, a tray, a cup, a sandwich,
+cookies. The classroom, the hall, the classmates, the teachers and the heart were in the pack already.
+
+**How the picture keeps the story honest** (the film's `kit.tsx`):
+
+- Jo's heart is never given a size by hand. It is `joHeart(metres between her and him)` in every shot she is in:
+  0.95 m when she is at the next desk, 0.42 m at four metres, 0.13 m from the gate. So "the biggest heart in the
+  school" is on screen from the first second, and it is small in the one wide shot where she sits across the lunch
+  room (8.apart), a minute before he works it out.
+- Mia's heart is small except on two occasions, and on both Leo is walking up behind the teller: the lunch line
+  (scene 8) and the dance (scene 12). Leo is not in the room when the teller walks past her desk (scene 7), and her
+  heart does not move.
+- A heart changes size only when the one it is for moves. No heart swells on a word.
+
+**What was left in.** Seen in the stills and kept, because the fix cost more than the fault:
+
+| Shot | What is there |
+|---|---|
+| 2.mirror | His own shoulder is a dark block on the right edge: the lens looks past it into the glass |
+| 3.grew | The waving arm of the boy who walks up leaves the right edge of the frame |
+| 6.jo, 6.lucky | Jo's heart is cut by the top of the frame. It is the biggest in the school: it does not fit, and it should not |
+| 7.walk | Mia's fair head is a large pale block on the left of the frame |
+| 10.card | In the first frames his head is a small dark shape at the bottom, under the card |
+| 11.card | The card is half behind Mia's hair. It was read, whole, in the shot before |
+| 13.over | The back of his head is a dark strip on the right edge: the lens is behind his shoulder, as the line says |
 
 ```narration
 # clip 01-hook

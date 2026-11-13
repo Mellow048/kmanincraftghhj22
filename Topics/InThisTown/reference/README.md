@@ -86,9 +86,9 @@ numbers of the sound (they are in `src/videos/$FILM/sound.lock.json`, under `mea
 row to the table at the top of this page, to the table in [`../README.md`](../README.md), and to `models` in
 [`../topic.json`](../topic.json).
 
-`renders/$FILM-shots.jpg` is one frame of the delivered mp4 for each shot. If the film has none, a sheet of one
-frame every two seconds does the same job, and ffmpeg makes it in one line (60 frames here; change `tile` to fit
-the film's length):
+`renders/$FILM-shots.jpg` is one frame of the delivered mp4 for each shot: `python3 scripts/render-check.py $FILM
+--sheet` makes it. A sheet of one frame every two seconds does the same job, and ffmpeg makes it in one line (60
+frames here; change `tile` to fit the film's length):
 
 ```bash
 ffmpeg -i renders/$FILM.mp4 -vf "fps=1/2,scale=180:-1,tile=10x6" -frames:v 1 -q:v 3 $DIR/contact-sheet-every-2-seconds.jpg

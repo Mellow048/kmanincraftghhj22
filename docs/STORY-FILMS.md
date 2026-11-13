@@ -262,3 +262,15 @@ gh workflow run render.yml --ref <branch> -f composition=<film> -f commit_to=ren
 
 `scale` must be `1`, `0.75`, `0.5` or `0.25`. Remotion refuses a scale that does not give whole pixels (0.667 does not).
 The full-quality MP4 goes to the repo's Releases; `commit_to` also puts a copy of at most 45 MB on the branch.
+
+**Do not push to the branch while a render with `commit_to` is running**: it commits the mp4 to the branch it was
+started from. Wait for it, `git pull --rebase`, and then check what came back:
+
+```bash
+python3 scripts/render-check.py <film> --sheet        # the numbers, and renders/<film>-shots.jpg
+```
+
+It compares the file with the film (length, frames, size, sound, loudness) and makes a sheet of one frame of the
+mp4 for each shot. **Look at the sheet**: it is the film as delivered, not as planned. A first render at
+`-f scale=0.5` is quicker and shows the same faults. `--at 0.03` and `--at 0.97` give the first and
+the last frame of every shot, which the stills of the build (taken in the middle of a shot) never showed.
