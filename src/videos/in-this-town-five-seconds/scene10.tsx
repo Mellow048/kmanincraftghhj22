@@ -1,10 +1,11 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 10: The arrow left first. Camera cuts do not reset the underlying performance. */
 export const scene10=storyScene(timing,{
@@ -25,7 +26,7 @@ export const scene10=storyScene(timing,{
     stage:(local:number)=><RescueAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),
   (()=>{const id="10.bow";return {cue:"10.bow",zone:"rescue",look:"overworld-night" as const,
-    ...cam.push({on:[0,1.5,8.4],dist:2.8,to:2.4,yaw:180,pitch:4,fov:42}),
+    ...cam.push({on:[-.12,1.15,8.25],dist:3.6,to:3.35,yaw:170,pitch:5,fov:46}),
     note:"Behind them, the existing skeleton raises and draws its bow. Leave space in front of the arrowhead for the flight.",
     stage:(local:number)=><RescueAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),

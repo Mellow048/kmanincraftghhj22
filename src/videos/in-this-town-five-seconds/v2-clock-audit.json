@@ -1,0 +1,9 @@
+{
+  "revision": "full-motion-v2",
+  "frames": 4848,
+  "sceneAndWorldClocks": "passed",
+  "cuts": 91,
+  "stops": 7,
+  "frozenFramesPerStop": 150,
+  "browserErrors": []
+}

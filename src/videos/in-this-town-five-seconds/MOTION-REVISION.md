@@ -18,9 +18,9 @@ The assistant committed to a short motion preview before another full-length ren
 
 Total: **471 frames / 15.7 seconds**. Excerpts cut only between completed lines; 8 ms audio edge fades avoid clicks. The renderer uses the existing original voice-00 narration and the supplied InThisTownMusic.aac; no narration was regenerated. Effects were retimed for the new footsteps, cloth pull, bread push and book opening.
 
-The preview is rendered and presented for feedback. All 471 frames decode at constant 30 fps; its soundtrack matches the same original-mix excerpts at 0.999879 zero-lag correlation. All 82 encoded temporal samples across the three review sheets were viewed. The preview's encoded checks and source hashes are in `motion-preview.json`; the 20 Node / 11 Python test results and 14 sampled legacy comparisons are recorded separately in `motion-preview-checks.json`. **Owner judgment of the motion remains the next gate.** Do not call the full visual revision finished because this file renders.
+The preview is rendered and presented for feedback. All 471 frames decode at constant 30 fps; its soundtrack matches the same original-mix excerpts at 0.999879 zero-lag correlation. All 82 encoded temporal samples across the three review sheets were viewed. The preview's encoded checks and source hashes are in `motion-preview.json`; the 20 Node / 11 Python test results and 14 sampled legacy comparisons are recorded separately in `motion-preview-checks.json`. **The owner approved this motion/background direction:** “okay i like this kind of motion and detail in the backround! go ahead”. The full-film revision and render are now authorized. Do not call the full visual revision finished because this file renders.
 
-## What was actually rebuilt
+## What was rebuilt for the approved short proof
 
 - `domestic-motion.ts` owns continuous curtain, bowl and lunch performances across camera cuts. Contact positions come from the actual rig transform, rather than an independent prop tween.
 - Villagers remain villagers: same face, long nose and joined sleeves. Optional `foldedArms`, `bodyBob`, `bodyRoll` and `walkAmount` enable authored reach, bow and planted-foot recovery. No fingers or player arms were substituted.
@@ -37,7 +37,9 @@ Seven new tests check continuous walking, actual sleeve/cord and sleeve/bowl con
 
 The 14 existing-film before/after stills (frames 0 and 1240 in seven films, including Part 2 and Freeze Bell) remain pixel-identical after the shared opt-in extensions. This is a sampled regression, not an all-frame claim. Freeze Bell's source, audio and master are unchanged. The V1 Five Seconds master and release are also retained, not silently replaced by a preview.
 
-## Still to do after motion feedback
+## Full-film continuation — authorized
+
+The full performance integration and current review evidence are now documented in **`V2-REVIEW.md`**. The proof-specific counts above stay historical; they are not the new mix or full-film QA.
 
 - Carry the agreed performance style across the rest of the full film: opening, classroom/chalk, locker rescue, elder rescue, bedroom/window, chase, impacts, rock placement/sidestep, trip/fall and rabbit transfer.
 - Recheck every revised action in sequence at its actual pacing, not only at a midpoint. Revisit physical contacts, eye lines and reaction holds; do not solve weak acting with extra camera shake.

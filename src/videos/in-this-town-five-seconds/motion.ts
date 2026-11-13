@@ -49,23 +49,31 @@ export const stoop=(amount:number):Partial<Pose>=>({bodyY:-.4*amount,bodyPitch:.
 export const kneel=(amount:number):Partial<Pose>=>({bodyY:-.43*amount,bodyPitch:.12*amount,legR:[-1.4*amount,0,.1],legL:[.2*amount,0,-.1],kneeR:[1.8*amount,0,0],kneeL:[1.9*amount,0,0]});
 
 export const LOCKER={friend:[0,0,-.88] as Vec3, safe:[-.95,0,.16] as Vec3, book:[-.74,.08,.54] as Vec3};
+export const LOCKER_HOLD=-.24;
+export const LOCKER_CLEAR=-3.05;
+export const LOCKER_OPEN_START=STOP.locker.a+.35,LOCKER_OPEN_END=STOP.locker.a+.72;
+export const LOCKER_GRAB=STOP.locker.a+1.12;
 export function lockerMotion(t:number){
-  const s=STOP.locker.a, pull=smooth(phase(t,s+1.12,s+1.93));
-  const friend=v(LOCKER.friend,LOCKER.safe,pull);
-  let hero=route(t,[[cue('7.locker').start,[-2.4,0,.5]],[s-.15,[-.6,0,-.48]],[s+1.12,[-.6,0,-.48]],[s+1.93,[-1.55,0,.56]],[s+2.28,[-1.12,0,.55]],[s+3.25,[-1.45,0,.65]],[s+4.5,[-1.86,0,.16]],[cue('8.secret').end,[-1.86,0,.16]]]);
-  if(t>=s+1.12&&t<=s+1.93)hero={...hero,position:add(friend,[-.6,0,.4])};
-  const door=t<s?mix(-1.65,-.18,smooth(phase(t,at('7.door','swung'),s))):t<STOP.locker.b?-.18:mix(-.18,0,smooth(phase(t,STOP.locker.b,STOP.locker.b+.18)));
+  const s=STOP.locker.a, pull=smooth(phase(t,LOCKER_GRAB,s+1.93));
+  // First out through the opening, then around the open panel's tip, then left to safety.
+  // A diagonal straight through the side wall is not a rescue trajectory.
+  const friend=route(t,[[LOCKER_GRAB,LOCKER.friend],[s+1.59,[0,0,.64]],[s+1.83,[-.95,0,.64]],[s+1.93,LOCKER.safe]],true).position;
+  let hero=route(t,[[cue('7.locker').start,[-2.4,0,.5]],[s-.15,[-.70,0,-.48]],[s+.73,[-.70,0,-.48]],[s+1.03,[.30,0,-.18]],[LOCKER_GRAB,[.30,0,-.18]],[s+1.59,[.30,0,1.34]],[s+1.83,[-.65,0,1.34]],[s+1.93,[-.65,0,.86]],[s+2.28,[-1.12,0,.55]],[s+3.05,[-1.45,0,.65]],[s+3.65,[-1.45,0,.65]],[s+4.5,[-1.86,0,.16]],[cue('8.secret').end,[-1.86,0,.16]]]);
+  if(t>=LOCKER_GRAB&&t<=s+1.93)hero={...hero,position:add(friend,[.30,0,.70])};
+  // Only the touched door moves. Once his hand releases it, the open panel waits for time.
+  const door=t<s?mix(-1.65,LOCKER_HOLD,smooth(phase(t,at('7.door','swung'),s))):t<STOP.locker.b?mix(LOCKER_HOLD,LOCKER_CLEAR,smooth(phase(t,LOCKER_OPEN_START,LOCKER_OPEN_END))):mix(LOCKER_CLEAR,0,smooth(phase(t,STOP.locker.b,STOP.locker.b+.28)));
   return {s,friend,hero,door,pull};
 }
 
-export const RESCUE={elder:[0,.34,-.1] as Vec3, inside:[0,.34,-2.2] as Vec3, door:[0,0,-2] as Vec3, arrow:[0,.7,-.9] as Vec3};
+export const RESCUE={elder:[0,.34,-.1] as Vec3, inside:[0,.34,-2.8] as Vec3, door:[0,0,-2] as Vec3, arrow:[0,.7,-.9] as Vec3};
+export const DOOR_KICK=at('11.door','kicked')+.12, DOOR_SHUT=DOOR_KICK+.55;
 export function rescueMotion(t:number){
- const s=STOP.elder.a, drag=smooth(phase(t,s+1.05,s+3.05));
+ const s=STOP.elder.a, drag=smooth(phase(t,s+1.05,s+2.85));
  const elder=v(RESCUE.elder,RESCUE.inside,drag);
- let hero=route(t,[[cue('10.night').start,[-5,0,-1.2]],[cue('10.bow').start,[-3.4,0,.0]],[s,[-.48,0,-1.55]],[s+1.05,[-.48,0,-1.55]],[s+3.05,[-.48,0,-3.65]],[s+4.25,[-.48,0,-2.5]],[cue('11.safe').end,[-.48,0,-2.5]]]);
- if(t>=s+1.05&&t<=s+3.05)hero={...hero,position:[elder[0]-.48,0,elder[2]-1.45]};
- const shut=smooth(phase(t,s+3.2,s+4.15));
- return {s,drag,elder,hero,door:-1.7*(1-shut)};
+ let hero=route(t,[[cue('10.night').start,[-5,0,-1.2]],[cue('10.bow').start,[-3.4,0,.0]],[s,[-.48,0,-1.55]],[s+1.05,[-.48,0,-1.55]],[s+2.85,[-.48,0,-4.25]],[DOOR_KICK,[-.5,0,-3.05]],[DOOR_SHUT,[-.3,0,-2.45]],[s+4.85,[-.48,0,-2.5]],[cue('11.safe').end-.55,[-.48,0,-2.5]],[cue('12.thanks').start+.15,[.1,0,-2.3]],[cue('12.rabbit').end,[.1,0,-2.3]]]);
+ if(t>=s+1.05&&t<=s+2.85)hero={...hero,position:[elder[0]-.48,0,elder[2]-1.45]};
+ const shut=smooth(phase(t,DOOR_KICK,DOOR_SHUT));
+ return {s,drag,elder,hero,door:1.7*(1-shut)};
 }
 
 export const MAN_START:Vec3=[1.3,0,1.2];
@@ -86,16 +94,18 @@ export function counterHero(t:number){
  if(t<s){
    const k=phase(t,HERO_RUN,s); return {position:v(start,HERO_FREEZE,k),distance:distance(start,HERO_FREEZE)*k,yaw:Math.PI/2};
  }
- return route(t,[[s,HERO_FREEZE],[s+.6,HERO_FREEZE],[s+1.25,[HERO_FREEZE[0],0,.52]],[s+2.85,[MAN_FREEZE[0]+.4,0,.52]],[s+3.65,[MAN_FREEZE[0]+.4,0,.52]],[s+4.65,HERO_SIDE],[at('17.rabbit','lifted')-.5,HERO_SIDE],[at('17.rabbit','lifted')+.1,[MAN_FREEZE[0]+1.12,0,1.9]],[cue('18.prince').end,[MAN_FREEZE[0]+1.12,0,1.9]]]);
+ const pickup=at('16.stop','grabbed'), place=at('16.throw','path')+.04;
+ const routed=route(t,[[s,HERO_FREEZE],[pickup+.10,HERO_FREEZE],[cue('16.front').start-.02,[HERO_FREEZE[0],0,.52]],[at('16.throw','Set')-.2,[MAN_FREEZE[0]+.4,0,.52]],[place+.25,[MAN_FREEZE[0]+.4,0,.52]],[at('16.side','aside')+.42,HERO_SIDE],[at('17.rabbit','lifted')-.5,HERO_SIDE],[at('17.rabbit','lifted')+.1,[MAN_FREEZE[0]+1.12,0,1.9]],[at('17.rabbit','lifted')+1.10,[MAN_FREEZE[0]+1.12,0,1.9]],[at('17.rabbit','lifted')+1.90,[MAN_FREEZE[0]+.85,0,2.7]],[cue('18.prince').end,[MAN_FREEZE[0]+.85,0,2.7]]]);
+ return {...routed,distance:distance(start,HERO_FREEZE)+routed.distance};
 }
 export function manMotion(t:number){
  const s=STOP.counter, resumed=Math.max(0,t-s.b);
  if(t<s.a){const k=Math.max(0,t-RUN_START),step=smooth(phase(t,at('13.kneel','knelt')-.25,at('13.kneel','rabbit')));return {position:[mix(MAN_START[0],MAN_RUN_ORIGIN[0],step)+3*k,0,1.2] as Vec3,yaw:mix(0,Math.PI/2,smooth(phase(t,RUN_START-.25,RUN_START+.2))),travel:3*k,trip:0,fall:0};}
  if(t<s.b)return {position:MAN_FREEZE,yaw:Math.PI/2,travel:3*(s.a-RUN_START),trip:0,fall:0};
- const brake=.38*smooth(phase(resumed,0,.25));
- const trip=phase(t,HIT-.12,HIT+.24),spin=smooth(phase(t,HIT+.25,LAND-.45)),fall=smooth(phase(t,LAND-1.05,LAND));
+ const brake=.38*(1-(1-phase(resumed,0,.30))**3);
+ const trip=phase(t,HIT-.12,HIT+.24),spin=smooth(phase(t,at('17.fall','spun')-.15,at('17.fall','around')+.43)),fall=phase(t,at('17.fall','landed')-.22,LAND)**1.7;
  const x=MAN_FREEZE[0]+brake+.42*smooth(trip)+.85*spin;
- return {position:[x,0,1.2+.13*Math.sin(spin*Math.PI)] as Vec3,yaw:Math.PI/2+Math.PI*2*spin-2.2*smooth(phase(t,cue("18.look").start,cue("18.look").end)),travel:3*(s.a-RUN_START)+brake+.42*trip,trip,fall};
+ return {position:[x,0,1.2+.13*Math.sin(spin*Math.PI)] as Vec3,yaw:Math.PI/2+Math.PI*2*spin-2.06*smooth(phase(t,cue("18.look").start,cue("18.look").end)),travel:3*(s.a-RUN_START)+brake+.42*trip,trip,fall};
 }
 
 export const FIRST_FIRE=at('15.blocks','shot');
@@ -108,7 +118,7 @@ export const SECOND_HOLD:Vec3=[HERO_FREEZE[0]+.52,1.46,1.2];
 export const THIRD_HOLD:Vec3=[HERO_FREEZE[0]+1.05,1.25,1.2];
 
 export const ARROW_LAUNCH=STOP.elder.a-1.2;
-export function rescueArrow(t:number):Vec3{const s=STOP.elder;return t<s.a?v([.28,1.26,7.78],RESCUE.arrow,phase(t,ARROW_LAUNCH,s.a)):t<s.b?RESCUE.arrow:v(RESCUE.arrow,[0,.7,-1.91],phase(t,s.b,s.b+.13));}
+export function rescueArrow(t:number):Vec3{const s=STOP.elder;return t<s.a?v([-.28125,1.2803,7.7583],RESCUE.arrow,phase(t,ARROW_LAUNCH,s.a)):t<s.b?RESCUE.arrow:v(RESCUE.arrow,[0,.7,-1.55],phase(t,s.b,s.b+.13));}
 
 /** The joined villager sleeves can reach/bow without turning a villager into a player model. */
 export function sleevePoint(p:Vec3,yaw:number,scale:number,arm:Vec3,offset:Vec3=[0,0,0],lean=0,bob=0,point:Vec3=[0,-.225,.13]):Vec3{
@@ -124,4 +134,10 @@ export const recoil=(t:number,hit:number,amount=.08)=>t<hit?0:amount*Math.sin((t
 export function shoulderWorld(p:Vec3,yaw:number,scale:number,pose:Partial<Pose>,side:1|-1=1):Vec3 {
  const q=new Vector3(side*.3375,.675,0).applyEuler(new Euler(pose.bodyPitch??0,pose.bodyYaw??0,pose.bodyRoll??0));
  q.y+=.675+(pose.bodyY??0);q.multiplyScalar(scale).applyEuler(new Euler(0,yaw,0)).add(new Vector3(...p));return [q.x,q.y,q.z];
+}
+
+/** Translate the joined sleeve pivot by the small offset needed for a world-space rail/prop contact. */
+export function sleeveOffset(root:Vec3,yaw:number,scale:number,arm:Vec3,target:Vec3,lean=0,bob=0,point:Vec3=[0,-.225,.13]):Vec3{
+ const existing=sleevePoint(root,yaw,scale,arm,[0,0,0],lean,bob,point);
+ const q=new Vector3(...target).sub(new Vector3(...existing)).applyEuler(new Euler(0,-yaw,0)).divideScalar(scale).applyEuler(new Euler(-lean,0,0));return q.toArray() as Vec3;
 }

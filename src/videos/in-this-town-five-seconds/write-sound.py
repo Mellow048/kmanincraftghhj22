@@ -1,9 +1,12 @@
 """Five Seconds' sound sheet: the owner's AAC, cue-relative events, and measured action anchors.
 Does NOT rebuild narration. Run sound.py build separately after picture QA.
 """
-import json, math, re
+import json, math, re, subprocess
 from pathlib import Path
 P=Path(__file__).resolve().parent
+ROOT=P.parents[2]
+A=json.loads(subprocess.check_output(['node','scripts/five-seconds-action-anchors.mjs'],cwd=ROOT))
+(P/'action-anchors.json').write_text(json.dumps(A,indent=2)+'\n')
 T=json.loads((P/'timing.json').read_text());C={c['id']:c for c in T['cues']}
 def word(cue,word):
     return next(w['s'] for w in T['words'] if C[cue]['start']-.05<=w['s']<C[cue]['end'] and re.sub("[^a-z']",'',w['w'].lower())==word.lower())
@@ -51,20 +54,20 @@ fx('2.curtains','scrape','The cord and rings move under her pull.',word='closed'
 fx('2.curtains','place','The two top-hung panels meet, then settle.',word='closed',at=.38,gain=-15)
 for t in [.45,1.05,1.65]:fx('3.school','step_wood','The teenager leaves the breakfast table.',at=t,gain=-13)
 fx('3.class','school_bell','The classroom transition.',gain=-13)
-fx('3.class','zip','The teacher releases the first chalk demonstration.',word='threw',at=.05,gain=-12,dur=.18)
+event(A['classChalkFire'],'zip','The chalk leaves the actual throwing hand after the wind-up.',gain=-12,dur=.18)
 fx('3.seat','rustle','The friend turns toward his saved seat.',word='seat',gain=-12)
 fx('3.lunch','scrape','His friend pushes the share of bread along the wood with his sleeve.',word='split',dur=.47,gain=-12)
-fx('3.rabbit','place','Carrot reaches the ground beside the rabbit.',word='rabbit',gain=-12)
+event(A['feedPlace'],'place','The carrot leaves the hand exactly at ground contact.',gain=-12)
 fx('3.ear','rustle','Tiny rabbit mouth and shoelace movement.',at=.45,gain=-13,dur=.25)
 fx('3.ear','blip','A fond look at the black ear.',word='black',gain=-13)
-event(S['glass']-.43,'plink','The glass leaves his supporting hand.',gain=-13)
-event(S['glass']+5.13,'break','Glass contacts the floor after time resumes.',gain=-10)
-event(S['glass']+5.2,'debris','The visible glass fragments settle.',gain=-12,dur=.45)
-event(S['touch']+.35,'paper','Fingers contact the book.',gain=-12)
-event(S['touch']+2.7,'rustle','He withdraws his hand; the released book waits.',gain=-12,dur=.2)
-event(S['touch']+5.15,'place','The book drops the final centimeters onto the table.',gain=-12)
+event(A['glassDrop'],'plink','The glass leaves his supporting hand.',gain=-13)
+event(A['glassHit'],'break','Glass contacts the floor after time resumes.',gain=-10)
+event(A['glassHit']+.07,'debris','The visible glass fragments settle.',gain=-12,dur=.45)
+event(A['bookTouch'],'paper','Fingers contact the book.',gain=-12)
+event(A['bookRelease'],'rustle','He withdraws his hand; the released book waits.',gain=-12,dur=.2)
+event(A['bookLand'],'place','The book drops the final centimeters onto the table.',gain=-12)
 event(S['chalk']-.32,'zip','The teacher sends chalk through the classroom.',gain=-12,dur=.17)
-event(S['chalk']+5.08,'bonk','Chalk taps his nose; the future sidestep is earned.',gain=-10)
+event(A['chalkHit'],'bonk','Chalk taps his nose; the future sidestep is earned.',gain=-10)
 fx('6.hands','place','Bowl reaches the washing counter.',word='bowl',at=.12,gain=-12)
 fx('6.rule','tick','The warning lands, a subjective accent.',word='see',gain=-13)
 fx('6.question','blip','His worried glance.',word='hiding',gain=-13)
@@ -73,7 +76,7 @@ fx('7.locker','thud','The bully pushes the friend backward into the open locker.
 fx('7.book','place','The blue book contacts the floor.',word='floor',gain=-11)
 fx('7.door','creak','The hinge starts its visible swing.',word='swung',gain=-12,dur=.35)
 a=S['locker']
-for off,sfx,why in [(.22,'rustle','Hand reaches the sleeve.'),(1.12,'rustle','Sleeve contact, then the whole body is pulled.'),(1.4,'step_stone','The hero braces and steps back.'),(1.82,'step_stone','He completes the pull into the aisle.'),(2.32,'paper','Hand contacts the fallen book.'),(3.5,'place','The book reaches the folded arms.'),(3.95,'step_stone','First step back beside his friend.'),(4.4,'step_stone','Second step into the safe position.'),(5.18,'clank','The empty locker slams after time returns.')]:event(a+off,sfx,why,gain=-12)
+for off,sfx,why in [(A['lockerOpen']-a,'creak','His hand opens the stopped door; it waits again after release.'),(.90,'step_stone','He steps into the open doorway to reach the sleeves.'),(A['lockerGrip']-a,'rustle','Sleeve contact, then the whole body is pulled.'),(1.4,'step_stone','The hero braces and steps back.'),(1.82,'step_stone','He completes the pull into the aisle.'),(2.32,'paper','Hand contacts the fallen book.'),(A['lockerPlace']-a,'place','The book reaches the folded arms.'),(3.95,'step_stone','First step back beside his friend.'),(4.4,'step_stone','Second step into the safe position.'),(5.28,'clank','The empty locker slams after time returns.')]:event(a+off,sfx,why,gain=-12)
 fx('8.friend','blip','The friend looks from the book to the red sleeve.',word='thought',gain=-13)
 fx('8.secret','swish','A small evasive look from the hero.',at=.18,gain=-13,dur=.14)
 fx('9.lunch','scrape','The sleeve-led push keeps the whole loaf on the same tabletop.',word='pushed',dur=.65,gain=-12)
@@ -88,14 +91,15 @@ fx('10.neighbor','rustle','The fallen villager struggles on the threshold.',at=.
 for off in [.1,.65,1.25]:fx('10.mobs','step_grass','Zombies advancing through the gate, not a golem.',at=off,gain=-13)
 fx('10.bow','creak','The skeleton visibly draws its bow.',at=.45,gain=-11,dur=.45)
 a=S['elder'];event(a-1.2,'zip','The arrow launches on its authored travel frame.',gain=-13.5,dur=.2)
-for off,sfx,why,kw in [(.55,'rustle','Collar contact.',{}),(1.05,'scrape','Continuous drag over the real doorstep.',{'dur':2.0}),(1.7,'step_stone','Hero backs through the opening.',{}),(2.5,'step_wood','His feet reach the indoor floor.',{}),(3.25,'whoosh_low','The boot pushes the door toward the jamb.',{'dur':.25}),(4.15,'thud','Door meets the jamb before time returns.',{}),(5.13,'hit','Arrow tip contacts the closed wood.',{'gain':-10}),(6.65,'scrape','First zombie scratches outside, after resumption.',{'dur':.3}),(7.45,'scrape','The other claw scrapes the exterior.',{'dur':.3}),(8.25,'scrape','Another unsuccessful scrape on the same door.',{'dur':.3})]:event(a+off,sfx,why,**({'gain':-12}|kw))
-fx('12.thanks','rustle','The old man raises himself to sit.',at=.25,gain=-13)
-fx('12.thanks','place','The carrot passes between their hands.',word='carrot',at=.12,gain=-12)
+for off,sfx,why,kw in [(A['elderGrip']-a,'rustle','Collar contact.',{}),(1.05,'scrape','Continuous drag over the real doorstep.',{'dur':1.8}),(1.7,'step_stone','Hero backs through the opening.',{}),(2.5,'step_wood','His feet reach the indoor floor.',{}),(A['doorKick']-a,'whoosh_low','The toe catches the inward-opening door and follows it closed.',{'dur':.4}),(A['doorShut']-a,'thud','Door meets the jamb before the boot releases it, still in stopped time.',{}),(5.13,'hit','Arrow tip contacts the closed wood.',{'gain':-10}),(6.65,'scrape','First zombie scratches outside, after resumption.',{'dur':.3}),(7.45,'scrape','The other claw scrapes the exterior.',{'dur':.3}),(8.25,'scrape','Another unsuccessful scrape on the same door.',{'dur':.3})]:event(a+off,sfx,why,**({'gain':-12}|kw))
+fx('12.thanks','rustle','The old man rocks forward and gets off the floor.',at=.25,gain=-13)
+event(A['carrotPass'],'place','The carrot transfers from the folded sleeves to the receiving palm.',gain=-12)
 fx('12.rabbit','chime','The carrot connects the rescued neighbor to the rabbit.',word='rabbit',gain=-14)
 fx('12.mother','rustle','Mother checks the sleeve for scratches.',word='checked',gain=-12)
 fx('12.lie','swish','He looks away on the ordinary explanation.',word='golem',gain=-13,dur=.13)
-fx('12.window','creak','The window and curtain close.',word='shut',gain=-12,dur=.45)
-fx('13.sound','step_stone','The approved crunch outside that wakes him.',word='crunch',gain=-10)
+event(A['windowPull'],'scrape','The sleeves pull the lower sash down its tracks.',gain=-12,dur=.44)
+event(A['windowShut'],'place','The lower rail lands, then the sleeves withdraw.',gain=-13)
+fx('13.sound','step_stone','The crunch leads his wake-up; the narration names the sound a moment later.',at=.08,gain=-10)
 fx('13.sound','rustle','He rises from the bed.',at=.75,gain=-12)
 fx('13.white','gust','Air at the actual window, very low under the voice.',at=.5,dur=.5,gain=-16)
 fx('13.beard','swish','Push into the bearded player face.',word='beard',gain=-13,dur=.16)
@@ -103,30 +107,33 @@ fx('13.kneel','step_stone','His repositioning step beside the rabbit.',at=.35,ga
 fx('13.kneel','rustle','Knees bend and the white sleeve reaches down.',word='knelt',gain=-12)
 fx('13.frost','crackle','Small ice growth at the feet; not flame.',word='Ice',gain=-12,dur=.5)
 fx('13.frost','sparkle','The frost reaches the legs.',word='legs',gain=-12,dur=.3)
-fx('13.dinner','rustle','Supporting arm lifts the rabbit continuously.',word='picked',gain=-11,dur=.5)
+event(A['rabbitLift'],'rustle','The supporting palm scoops the rabbit up continuously.',gain=-11,dur=.5)
 fx('14.ear','blip','The living little nose and familiar black ear.',word='nose',gain=-13)
 fx('14.out','creak','The hero opens and crosses his actual doorway.',at=.15,gain=-12)
 for off in [.45,.95,1.45]:fx('14.out','step_stone','A visible running step out to the path.',at=off,gain=-13)
 fx('14.saw','swish','The man turns at the shout.',word='looked',gain=-12,dur=.16)
-# Distance-derived footfalls: both runners at normal running speed, none for the frozen stranger.
-run=word('14.run','ran')-.2;hero=word('14.follow','chased')-.6;end=S['counter'];manDistance=3*(end-run);heroDistance=2.1+manDistance-2.05-(-3.75);heroSpeed=heroDistance/(end-hero)
-for start,speed,who,pan in [(run,3,'white-clothed runner',.2),(hero,heroSpeed,'red-shirted pursuer',-.2)]:
-    n=1
-    while start+n*1.05/speed<end:
-        event(start+n*1.05/speed,'step_stone','Half-stride ground contact from the distance-driven '+who+'.',gain=-15,pan=pan);n+=1
+# Actual 30 fps landing frames from the same distance/stride used by the picture.
+for step in A['chaseSteps']:
+    event(step['t'],'step_stone','A distance-driven half-stride of the '+step['who']+'.',gain=-16,pan=step['pan'])
 fx('14.secret','blip','His worry is exposure, not a cooldown.',word='see',gain=-14)
 fx('14.stay','rustle','The supported rabbit remains in the white arm.',word='rabbit',gain=-13)
 fx('15.hand','whoosh','The free-arm wind-up.',word='threw',gain=-12,dur=.22)
 fire=word('15.blocks','shot');event(fire,'zip','The first ice block leaves the throwing hand.',gain=-10,dur=.16)
 event(fire+.36,'break','The first block contacts and opens the stone wall.',gain=-10)
-event(fire+.42,'debris','Visible stone and ice fragments fall from the hole.',gain=-12,dur=.65)
+event(fire+.42,'debris','Visible stone and ice fragments fall from the hole; tucked under the spoken line.',gain=-14,dur=.65)
 event(S['counter']-.13,'zip','Second ice projectile travels toward his face.',gain=-11,dur=.09)
 event(S['counter']-.067,'zip','Third ice projectile follows, then both stop.',gain=-12,dur=.06)
 fx('15.chalk','blip','The chalk lesson is remembered before the counter.',word='remembered',gain=-13)
 a=S['counter']
-for off,sfx,why in [(.78,'scrape','Hand contacts the grounded rock.'),(1.49,'step_stone','First running footfall past the frozen man.'),(2.17,'step_stone','Second footfall to get in front.'),(3.56,'place','The rock is set down in the path, not thrown.'),(4.15,'step_stone','The deliberate sidestep starts.'),(4.55,'step_stone','The hero clears the old ice lane.'),(5.23,'break','Second ice block hits the old position.'),(5.32,'debris','Third ice block breaks and shards settle.')]:event(a+off,sfx,why,gain=-11 if sfx=='break' else -13)
+event(A['rockPickup'],'scrape','The palm grips the loose rock; it starts moving only under contact.',gain=-13)
+event(A['rockPlace'],'place','The rock reaches the ground and is released, not thrown.',gain=-13)
+for step in A['counterSteps']:
+    event(step['t'],'step_stone','Ground contact during '+step['who']+'.',gain=-14)
+event(a+5.23,'break','Second ice block hits the old position.',gain=-11)
+event(a+5.32,'debris','Third ice block breaks and shards settle.',gain=-13)
 hit=word('17.hit','caught');land=word('17.fall','back')-.04
-for t,sfx,why in [(hit-.1,'bonk','The planted toe catches the visible rock, no face hit.'),(hit+.35,'rustle','The stumble starts.'),(hit+1.0,'swish','He tries to turn and recover.'),(land,'thud','The supported back landing.'),(land+.12,'debris','A little ground dust from the landing.'),(word('17.rabbit','lifted')+.12,'rustle','Both hands lift the supported living rabbit.'),(word('17.rabbit','lifted')+1.05,'chime','The transfer is complete and the nose still twitches.')]:event(t,sfx,why,gain=-11 if sfx=='thud' else -13)
+for t,sfx,why in [(hit-.1,'bonk','The planted toe catches the visible rock, no face hit.'),(hit+.35,'rustle','The stumble starts.'),(A['spinStart'],'swish','He spins in the failed recovery attempt.'),(land,'thud','The supported back landing.'),(land+.12,'debris','A little ground dust from the landing.'),(A['rabbitTake'],'rustle','Both hands lift the supported living rabbit.'),(word('17.rabbit','lifted')+1.05,'chime','The transfer is complete and the nose still twitches.')]:event(t,sfx,why,gain=-11 if sfx=='thud' else -13)
+event(word('17.rabbit','lifted')+1.53,'step_stone','He takes a real backwards step with the supported rabbit, giving the man room to rise.',gain=-14)
 fx('17.breathe','blip','A small relief accent on the living nose.',word='twitching',gain=-14)
 fx('18.look','rustle','He rubs his head and gets onto one knee.',word='rubbed',gain=-12,dur=.35)
 fx('18.look','step_stone','His knee meets the path during the continuous rise.',word='knee',gain=-13)
@@ -134,8 +141,8 @@ fx('18.home','swish','Mother watching from the established doorway.',word='mothe
 fx('18.power','sting','Recognition of the power, not another attack.',word='ability',gain=-14)
 fx('18.found','riser','A short rise into the prince recognition.',at=C['18.found']['end']-C['18.found']['start'],dur=.7,gain=-13)
 fx('18.prince','boom','The one final reveal: prince. No subscribe cue or sequel promise.',word='prince',gain=-7)
-# Phone-band measurements from mix pass one: raise only buried footfalls, not the entire chase bus.
-foot_trims={127.57:3,128.62:2,130.18:6,132.05:2,132.12:3,133.30:4,135.17:6,135.27:2,136.32:3.5,138.60:2}
+# V2 phone-band measurements, AFTER retiming: lift only masked steps, never the whole effects bus.
+foot_trims={127.13: 5.5, 127.53: 5.0, 127.93: 1.5, 128.6: 2.5, 128.7: 2.0, 128.83: 1.5, 130.13: 4.5, 130.23: 5.5, 131.0: 2.0, 132.07: 4.0, 132.1: 4.5, 132.53: 4.5, 132.57: 4.5, 133.33: 3.5, 133.6: 1.5, 134.07: 4.5, 135.17: 7.0, 135.93: 3.5, 136.27: 3.5, 137.13: 2.0, 137.47: 2.0, 138.23: 3.0}
 for entry in FX:
     if entry['sfx']=='step_stone' and 'at' in entry:
         t=round(C[entry['cue']]['start']+entry['at'],2)

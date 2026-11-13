@@ -1,10 +1,11 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 15: Remember the chalk. Camera cuts do not reset the underlying performance. */
 export const scene15=storyScene(timing,{
@@ -15,7 +16,7 @@ export const scene15=storyScene(timing,{
     stage:(local:number)=><ChaseAction t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
   (()=>{const id="15.blocks";return {cue:"15.blocks",zone:"street",look:"overworld-night" as const,
-    ...cam.push({on:add(FIRST_WALL,[1.3,.12,-.65]),dist:6.4,to:5.9,yaw:95,pitch:13,fov:52}),
+    ...cam.push({on:(t=>t<FIRST_FIRE?add(manMotion(t).position,[0,1.05,0]):t<FIRST_IMPACT?iceAt(t,0):FIRST_WALL)(cue(id).start),onTo:(t=>t<FIRST_FIRE?add(manMotion(t).position,[0,1.05,0]):t<FIRST_IMPACT?iceAt(t,0):FIRST_WALL)(cue(id).end-1/30),dist:4.6,to:(4.6)-.08,yaw:35,pitch:12,fov:51}), ...follow(id,t=>t<FIRST_FIRE?add(manMotion(t).position,[0,1.05,0]):t<FIRST_IMPACT?iceAt(t,0):FIRST_WALL,4.6,35,12,51),
     note:"The first ice block crosses the path at speed, with the white arm, red pursuer and stone wall all spatially connected.",
     stage:(local:number)=><ChaseAction t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),

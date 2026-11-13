@@ -30,6 +30,11 @@ on:
         required: false
         type: string
         default: "45"
+      verified_qa:
+        description: "For verified publication only: QA JSON basename in src/videos/<composition> (for example v2-delivery-qa.json)"
+        required: false
+        type: string
+        default: "delivery-qa.json"
       publish_release:
         description: "Optional existing render-N release: publish the committed MP4 only, after verifying its passing delivery-qa.json and SHA256. Empty = render normally."
         required: false
@@ -269,6 +274,8 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
           RELEASE_TAG: ${{ inputs.publish_release }}
+          VERIFIED_QA: ${{ inputs.verified_qa }}
+          COMMITTED_MEDIA: ${{ inputs.commit_to }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 - <<'PY'
@@ -278,8 +285,12 @@ jobs:
           assert re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug), 'Invalid composition slug'
           assert re.fullmatch(r'render-[1-9][0-9]*', tag), 'Expected an existing render-N release'
           assert os.environ['GITHUB_REF_NAME'] != 'main', 'Publish from the working branch, not main'
-          media = Path('renders') / f'{slug}.mp4'
-          qa = json.loads((Path('src/videos') / slug / 'delivery-qa.json').read_text())
+          media_name = os.environ.get('COMMITTED_MEDIA') or f'renders/{slug}.mp4'
+          qa_name = os.environ.get('VERIFIED_QA') or 'delivery-qa.json'
+          assert re.fullmatch(r'renders/[a-z0-9][a-z0-9/-]*\.mp4', media_name), 'Invalid committed MP4 path'
+          assert re.fullmatch(r'[a-z0-9][a-z0-9-]*\.json', qa_name), 'Invalid QA basename'
+          media = Path(media_name)
+          qa = json.loads((Path('src/videos') / slug / qa_name).read_text())
           assert qa['status'] == 'passed', 'Encoded delivery QA must pass first'
           assert qa['file'] == str(media), 'QA names a different file'
           digest = hashlib.sha256(media.read_bytes()).hexdigest()

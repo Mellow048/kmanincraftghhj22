@@ -1,0 +1,373 @@
+{
+  "status": "passed",
+  "revision": "full-motion-v2",
+  "spoken_sha256": "e3f31d5c18859fb8f573edc246b9d1a79c4ecf157a77b869f23768f823e8bb15",
+  "words": 674,
+  "cues": 91,
+  "voice": "voice-00",
+  "originalRecordings": 9,
+  "duration": 161.6,
+  "protected": {
+    "reference": "cc8ed559fea2b23c1cc8e9d27cfd373ff8d522e8",
+    "paths": [
+      "src/videos/in-this-town-five-seconds/narration.md",
+      "src/videos/in-this-town-five-seconds/timing.json",
+      "src/videos/in-this-town-five-seconds/timeline.ts",
+      "src/videos/in-this-town-five-seconds/narration-production.json",
+      "src/videos/in-this-town-five-seconds/domestic-motion.ts",
+      "public/audio/in-this-town-five-seconds/raw",
+      "public/audio/in-this-town-five-seconds/narration.mp3",
+      "Topics/InThisTown/InThisTownMusic.aac",
+      "renders/in-this-town-five-seconds.mp4",
+      "renders/previews/five-seconds-motion-v2.mp4",
+      "docs/story-proposals/in-this-town-five-seconds/narration.md",
+      "docs/story-proposals/in-this-town-five-seconds/SCRIPT-FOR-APPROVAL.md"
+    ],
+    "diff": []
+  },
+  "freezeBell": {
+    "reference": "aa2fb0f",
+    "paths": [
+      "src/videos/in-this-town-freeze-bell",
+      "public/audio/in-this-town-freeze-bell",
+      "renders/in-this-town-freeze-bell.mp4"
+    ],
+    "diff": []
+  },
+  "preservedMasters": {
+    "renders/in-this-town-five-seconds.mp4": "ada21dde26a3c2e198abb51c8684da1f868356023cdbed4db8f83cc4d259568d",
+    "renders/previews/five-seconds-motion-v2.mp4": "87cbeba24775762bb7c0bf2d4ed9b323d0f17d1b83953e5d8a5906f8e4be6aaf",
+    "renders/in-this-town-freeze-bell.mp4": "03b91639e3e63c7a22271c1ef8f667936ccf111a374dd6279d313cff311fa8f2"
+  },
+  "music_sha256": "5adf61371ab3f4fe5c1eff93bfa15ef940a7be3f9888da5807cececf2fafaca3",
+  "mix_sha256": "b232688ceb4bdd835d981115781e71fc9abddd4a8552ffe7b1992210b01415c3",
+  "current_sound_lock": true,
+  "measured_mix": {
+    "musicUnderVoiceDb": 19.9,
+    "secondsWithoutMusic": 4.7,
+    "bedsUnderVoiceDb": 28.7,
+    "sfx": 272,
+    "sfxPerMinute": 101.0,
+    "sfxKinds": 32,
+    "longestGapSeconds": 5.0,
+    "longestGapAt": 42.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.2,
+    "voiceOverRestWorstDb": 4.3,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.3,
+        "t": 134.6,
+        "cue": "15.blocks",
+        "sounding": [
+          "break",
+          "debris",
+          "step_stone"
+        ]
+      },
+      {
+        "db": 4.3,
+        "t": 88.1,
+        "cue": "10.arrow",
+        "sounding": [
+          "zip"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 35.8,
+        "cue": "4.five",
+        "sounding": [
+          "break",
+          "debris",
+          "power_up"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 157.4,
+        "cue": "18.power",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.8,
+        "t": 63.4,
+        "cue": "8.clear",
+        "sounding": [
+          "step_stone"
+        ]
+      },
+      {
+        "db": 8.7,
+        "t": 123.1,
+        "cue": "14.out",
+        "sounding": [
+          "creak",
+          "step_stone"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.6
+  },
+  "voice_stem_correlation": 0.9999999994710104,
+  "music_stem": {
+    "method": "Same-time mono one-second windows, no lag correction. Authored gain/ducking and EQ remain.",
+    "minimum": 0.990643,
+    "median": 0.995867,
+    "windows": [
+      {
+        "at": 1.5,
+        "correlation": 0.994861
+      },
+      {
+        "at": 4.5,
+        "correlation": 0.99648
+      },
+      {
+        "at": 7.5,
+        "correlation": 0.996711
+      },
+      {
+        "at": 10.5,
+        "correlation": 0.997189
+      },
+      {
+        "at": 13.5,
+        "correlation": 0.990643
+      },
+      {
+        "at": 16.5,
+        "correlation": 0.994871
+      },
+      {
+        "at": 19.5,
+        "correlation": 0.996392
+      },
+      {
+        "at": 22.5,
+        "correlation": 0.997166
+      },
+      {
+        "at": 25.5,
+        "correlation": 0.994465
+      },
+      {
+        "at": 28.5,
+        "correlation": 0.99624
+      },
+      {
+        "at": 31.5,
+        "correlation": 0.995507
+      },
+      {
+        "at": 34.5,
+        "correlation": 0.997298
+      },
+      {
+        "at": 37.5,
+        "correlation": 0.994623
+      },
+      {
+        "at": 40.5,
+        "correlation": 0.995852
+      },
+      {
+        "at": 43.5,
+        "correlation": 0.995713
+      },
+      {
+        "at": 46.5,
+        "correlation": 0.996381
+      },
+      {
+        "at": 49.5,
+        "correlation": 0.994703
+      },
+      {
+        "at": 52.5,
+        "correlation": 0.994708
+      },
+      {
+        "at": 55.5,
+        "correlation": 0.995587
+      },
+      {
+        "at": 58.5,
+        "correlation": 0.997553
+      },
+      {
+        "at": 61.5,
+        "correlation": 0.995867
+      },
+      {
+        "at": 64.5,
+        "correlation": 0.995155
+      },
+      {
+        "at": 67.5,
+        "correlation": 0.995892
+      },
+      {
+        "at": 70.5,
+        "correlation": 0.9969
+      },
+      {
+        "at": 73.5,
+        "correlation": 0.995661
+      },
+      {
+        "at": 76.5,
+        "correlation": 0.993592
+      },
+      {
+        "at": 79.5,
+        "correlation": 0.994445
+      },
+      {
+        "at": 82.5,
+        "correlation": 0.997445
+      },
+      {
+        "at": 85.5,
+        "correlation": 0.996717
+      },
+      {
+        "at": 88.5,
+        "correlation": 0.992507
+      },
+      {
+        "at": 91.5,
+        "correlation": 0.992951
+      },
+      {
+        "at": 94.5,
+        "correlation": 0.996745
+      },
+      {
+        "at": 97.5,
+        "correlation": 0.992685
+      },
+      {
+        "at": 100.5,
+        "correlation": 0.995286
+      },
+      {
+        "at": 103.5,
+        "correlation": 0.995034
+      },
+      {
+        "at": 106.5,
+        "correlation": 0.996809
+      },
+      {
+        "at": 109.5,
+        "correlation": 0.99662
+      },
+      {
+        "at": 112.5,
+        "correlation": 0.995926
+      },
+      {
+        "at": 115.5,
+        "correlation": 0.994327
+      },
+      {
+        "at": 118.5,
+        "correlation": 0.99702
+      },
+      {
+        "at": 121.5,
+        "correlation": 0.994164
+      },
+      {
+        "at": 124.5,
+        "correlation": 0.99535
+      },
+      {
+        "at": 127.5,
+        "correlation": 0.995871
+      },
+      {
+        "at": 130.5,
+        "correlation": 0.996515
+      },
+      {
+        "at": 133.5,
+        "correlation": 0.997082
+      },
+      {
+        "at": 136.5,
+        "correlation": 0.994965
+      },
+      {
+        "at": 145.5,
+        "correlation": 0.996355
+      },
+      {
+        "at": 148.5,
+        "correlation": 0.995966
+      },
+      {
+        "at": 151.5,
+        "correlation": 0.995417
+      },
+      {
+        "at": 154.5,
+        "correlation": 0.996102
+      },
+      {
+        "at": 157.5,
+        "correlation": 0.996641
+      }
+    ]
+  },
+  "ambienceStops": [
+    {
+      "stop": "teaser",
+      "startFrame": 0,
+      "resumeFrame": 150,
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "glass",
+      "startFrame": 923,
+      "resumeFrame": 1073,
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "touch",
+      "startFrame": 1093,
+      "resumeFrame": 1243,
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "chalk",
+      "startFrame": 1261,
+      "resumeFrame": 1411,
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "locker",
+      "startFrame": 1847,
+      "resumeFrame": 1997,
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "elder",
+      "startFrame": 2679,
+      "resumeFrame": 2829,
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "counter",
+      "startFrame": 4171,
+      "resumeFrame": 4321,
+      "maxAbsAmbience": 0.0
+    }
+  ],
+  "reviewLimit": "Hash/signal analysis only. No subjective listening or artistic acceptance is implied."
+}

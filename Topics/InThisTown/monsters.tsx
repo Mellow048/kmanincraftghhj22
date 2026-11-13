@@ -1,6 +1,7 @@
 import type React from "react";
 import { Block, clamp, shade, useFilmTime } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
+import { Cord } from "./small-props";
 
 /**
  * MONSTERS — the people of a monster village: zombie, skeleton, creeper, spider, enderman, slime.
@@ -217,7 +218,7 @@ export const Zombie: React.FC<
 // ----------------------------------------------------------------------------- skeleton
 
 /** A skeleton, 1.8 m: grey bone, thin limbs, ribs. `bow` puts a bow in its right hand; `rattle` 0–1 makes it shake. */
-export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number; wave?: number }> = ({
+export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number; wave?: number; /** Optional authored raise/draw; legacy bow stays identical when omitted. */ bowRaise?: number; bowDraw?: number }> = ({
   position = [0, 0, 0],
   rotationY = 0,
   scale = 1,
@@ -234,6 +235,8 @@ export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number;
   bow = false,
   rattle = 0,
   wave = 0,
+  bowRaise,
+  bowDraw,
 }) => {
   const t = useFilmTime();
   const u = U;
@@ -241,7 +244,7 @@ export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number;
   const dark = "#2b2b2b";
   const gait = walk * 5.2;
   const swing = Math.sin(gait) * 0.7;
-  const bob = Math.abs(Math.sin(gait)) * 0.03 + Math.sin(t * 1.3 + phase) * 0.005;
+  const bob = bowRaise===undefined ? Math.abs(Math.sin(gait)) * 0.03 + Math.sin(t * 1.3 + phase) * 0.005 : 0;
   const shake = rattle * Math.sin(t * 43 + phase);
   const [pitch, yaw] = headAngles(position, rotationY, MONSTER_FACE.skeleton * scale, lookAt, nod, turn);
   return (
@@ -260,18 +263,21 @@ export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number;
         <Block position={[0, 11.2 * u, 0]} size={[8 * u, 1.6 * u, 4 * u]} color={shade(bone, 0.04)} />
         <Scarf color={scarf} y={11.6 * u} />
         {[-1, 1].map((s) => {
-          const base = s === 1 && bow ? -1.35 : -s * swing * 0.8;
+          const base = s === 1 && bow ? (bowRaise===undefined ? -1.35 : -.18-1.37*bowRaise) : -s * swing * 0.8;
           const lift = s === -1 ? -wave * 2.8 : 0;
           return (
-            <group key={s} position={[s * 5 * u, 11 * u, 0]} rotation={[base + lift + shake * 0.08, 0, s === -1 ? wave * (0.25 + Math.sin(t * 9 + phase) * 0.3) : 0]}>
+            <group key={s} position={[s * 5 * u, 11 * u, 0]} rotation={s===-1&&bowDraw!==undefined ? [(-1.52+.10*bowDraw)*(bowRaise??1),0,Math.asin(.5625/Math.hypot(.5625,.57-.24*bowDraw))*(bowRaise??1)] : [base + lift + shake * 0.08, 0, s === -1 ? wave * (0.25 + Math.sin(t * 9 + phase) * 0.3) : 0]}>
               <Block position={[0, -6 * u, 0]} size={[2 * u, 12 * u, 2 * u]} color={bone} />
               {s === 1 && bow ? (
-                <group position={[0, -11.5 * u, 0]} rotation={[1.35, 0, 0]}>
+                <group position={[0, -11.5 * u, 0]} rotation={[bowRaise===undefined?1.35:-base, 0, 0]}>
                   <Block position={[0, 0, 1 * u]} size={[0.9 * u, 15 * u, 0.9 * u]} color="#6b4a2a" />
                   {[-1, 1].map((e) => (
                     <Block key={e} position={[0, e * 7.4 * u, -0.6 * u]} rotation={[e * 0.6, 0, 0]} size={[0.9 * u, 3 * u, 0.9 * u]} color="#6b4a2a" />
                   ))}
-                  <Block position={[0, 0, -1.6 * u]} size={[0.25 * u, 16 * u, 0.25 * u]} color="#e8e8e8" castShadow={false} />
+                  {bowDraw===undefined?<Block position={[0, 0, -1.6 * u]} size={[0.25 * u, 16 * u, 0.25 * u]} color="#e8e8e8" castShadow={false} />:<>
+                   <Cord from={[0,-8*u,-1.6*u]} to={[0,0,-1.6*u-.24*bowDraw]} radius={.007} color="#e8e8e8"/>
+                   <Cord from={[0,8*u,-1.6*u]} to={[0,0,-1.6*u-.24*bowDraw]} radius={.007} color="#e8e8e8"/>
+                  </>}
                 </group>
               ) : null}
             </group>

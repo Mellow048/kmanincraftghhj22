@@ -21,7 +21,8 @@ import { scene17 } from "./scene17";
 import { scene18 } from "./scene18";
 
 /** Owner-approved STORY: same teenage hero, a secret five-second power, and a prince recognition.
- * Picture is under revision after V1 motion/visual feedback; it is not owner-approved.
+ * The owner approved the short V2 motion/background proof and authorized this full revision.
+ * Approval of the finished full-length picture remains a separate owner judgment.
  * The narration is exact Draft 2 plus the separately approved trip revision.
  * Default full-film limits, NOT cut:"short". This ending has its own scoped owner exception.
  */

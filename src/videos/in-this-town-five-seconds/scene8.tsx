@@ -1,21 +1,22 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 8: An empty locker. Camera cuts do not reset the underlying performance. */
 export const scene8=storyScene(timing,{
  id:"scene8",title:"An empty locker",shots:[
   (()=>{const id="8.clear";return {cue:"8.clear",zone:"hall",look:"overworld-day" as const,
-    ...cam.push({on:(t=>add(lockerMotion(t).friend,[-.4,.95,.2]))(cue(id).start),onTo:(t=>add(lockerMotion(t).friend,[-.4,.95,.2]))(cue(id).end-1/30),dist:4.8,to:(4.8)-.08,yaw:8,pitch:10,fov:50}), ...follow(id,t=>add(lockerMotion(t).friend,[-.4,.95,.2]),4.8,8,10,50),
-    note:"Do not cut past the rescue: his hand reaches the sleeve and he pulls the friend's whole frozen body into the aisle.",
+    ...cam.push({on:(t=>add(lockerMotion(t).friend,[-.1,.95,.32]))(cue(id).start),onTo:(t=>add(lockerMotion(t).friend,[-.1,.95,.32]))(cue(id).end-1/30),dist:4.9,to:(4.9)-.08,yaw:-60,pitch:10,fov:50}), ...follow(id,t=>add(lockerMotion(t).friend,[-.1,.95,.32]),4.9,-60,10,50),
+    note:"After opening and releasing the door, he grips the joined sleeves and pulls the friend forward through the opening, around the panel and into the aisle. No diagonal through the locker wall.",
     stage:(local:number)=><LockerAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),
   (()=>{const id="8.book";return {cue:"8.book",zone:"hall",look:"overworld-day" as const,
-    ...cam.push({on:[-1.1,.8,.52],dist:3.4,to:3.05,yaw:20,pitch:18,fov:47}),
+    ...cam.push({on:[-1.2,.83,.48],dist:3.65,to:3.35,yaw:20,pitch:18,fov:49}),
     note:"Knees bend and the hand goes down to the established blue book, then raises it into the friend's folded arms.",
     stage:(local:number)=><LockerAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),
@@ -26,7 +27,7 @@ export const scene8=storyScene(timing,{
   };})(),
   (()=>{const id="8.bang";return {cue:"8.bang",zone:"hall",look:"overworld-day" as const,
     ...cam.push({on:[-.15,1.05,-.5],dist:5.7,to:5.2,yaw:8,pitch:8,fov:50}),
-    note:"At frame 150 time returns: the door travels its last few degrees and bangs shut on an empty locker. Both rescued figures are still beside it.",
+    note:"At frame 150 time returns: the released open door resumes its closing swing and bangs shut on an empty locker. Both rescued figures are still beside it.",
     stage:(local:number)=><LockerAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),
   (()=>{const id="8.friend";return {cue:"8.friend",zone:"hall",look:"overworld-day" as const,

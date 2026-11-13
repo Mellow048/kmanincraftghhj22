@@ -1,10 +1,11 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 3: A seat, a loaf, one black ear. Camera cuts do not reset the underlying performance. */
 export const scene3=storyScene(timing,{
@@ -15,12 +16,18 @@ export const scene3=storyScene(timing,{
     stage:(local:number)=><MotherStory t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
   (()=>{const id="3.class";return {cue:"3.class",zone:"class",look:"overworld-day" as const,
-    ...cam.push({on:[0,1.1,.2],dist:10.2,to:9.5,yaw:0,pitch:3,fov:58}),
-    note:"From behind the class toward the chalkboard: villagers and player children, nine desks, the teacher winding up and throwing chalk.",
+    ...({
+    from:[3.6,3.15,-3.7],
+    to:[3.3,2.95,-3.4],
+    target:[-.2,1.0,1.15],fov:57,ease:'inOutSine' as const}),
+    note:"From the board-side aisle, look across the faces and rows: villagers and player children share the same furnished classroom; nobody blocks both leads.",
     stage:(local:number)=><SchoolDay t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
   (()=>{const id="3.seat";return {cue:"3.seat",zone:"class",look:"overworld-day" as const,
-    ...cam.push({on:[-1.2,1.25,1.25],dist:4.7,to:4.3,yaw:125,pitch:4,fov:52}),
+    ...({
+    from:[-3.9,2.4,.25],
+    to:[-3.6,2.24,.3],
+    target:[-1.2,1.3,1.25],fov:52,ease:'inOutSine' as const}),
     note:"Stack the two adjoining desks in depth. His green-robed friend turns toward the seat he has saved.",
     stage:(local:number)=><SchoolDay t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),

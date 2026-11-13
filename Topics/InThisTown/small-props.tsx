@@ -103,3 +103,26 @@ export const HingedBook:React.FC<Prop&{opening:number;color?:string}>=({position
   <Block position={[.15,.016,0]} size={[.13,.008,.18]} color='#d7be7a'/>
  </group>
 </group>;
+
+/** A double-hung cottage window. The lower sash lifts into the upper one, not through the wall. */
+export const SashWindow:React.FC<Prop&{open?:number;width?:number;height?:number;night?:boolean}>=({position=[0,0,0],rotationY=0,scale=1,open=0,width=1.4,height=1.2,night=true})=><group position={position} rotation={[0,rotationY,0]} scale={scale}>
+ {[-1,1].map(s=><Block key={s} position={[s*width/2,0,0]} size={[.065,height+.12,.09]} color="#755233"/>)}
+ {[-1,1].map(s=><Block key={s} position={[0,s*height/2,0]} size={[width+.12,.065,.09]} color="#755233"/>)}
+ <Block position={[0,height*.25,.012]} size={[width-.06,height*.5-.06,.02]} color={night?'#9dbbd7':'#bde0e7'} opacity={.10} castShadow={false}/>
+ <Block position={[0,height*.25,.03]} size={[.045,height*.5,.045]} color="#755233"/>
+ <group position={[0,-height/2+Math.max(0,Math.min(1,open))*.36,-.055]}>
+  <Block position={[0,height*.25,0]} size={[width-.07,height*.5-.07,.024]} color={night?'#9dbbd7':'#bde0e7'} opacity={.12} castShadow={false}/>
+  {[0,height*.5].map(y=><Block key={y} position={[0,y,-.015]} size={[width,.05,.065]} color="#8d6b45"/>)}
+  {[-1,1].map(s=><Block key={s} position={[s*(width/2-.02),height*.25,-.015]} size={[.045,height*.5,.06]} color="#8d6b45"/>)}
+  <Block position={[0,.075,-.07]} size={[.24,.045,.07]} color="#b1b6a2"/>
+ </group>
+ <Block position={[0,-height/2-.065,.03]} size={[width+.23,.085,.32]} color="#896842"/>
+</group>;
+/** Small physical debris, with an explicit age so time-stop scenes can freeze every fragment. */
+export const BlockBurst:React.FC<{position:Vec3;age:number;color?:string;count?:number;power?:number;life?:number;size?:number}>=({position,age,color='#b6a385',count=12,power=1,life=.65,size=.075})=>{
+ if(age<0||age>life)return null;
+ return <group position={position}>{Array.from({length:count},(_,i)=>{
+  const angle=i*2.399963,velocity=power*(.48+(i%4)*.17),fall=Math.max(.025,age*(.7+(i%3)*.3)-3.6*age*age);
+  return <Block key={i} position={[Math.cos(angle)*age*velocity,fall,Math.sin(angle)*age*velocity]} rotation={[i,age*3,i*.8]} size={[size*(1+i%3*.22),size,size]} color={color} opacity={Math.min(1,(life-age)*6)} castShadow={false}/>;
+ })}</group>;
+};

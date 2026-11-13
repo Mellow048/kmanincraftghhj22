@@ -1,8 +1,8 @@
 # Five Seconds — production status
 
-## Current: motion/visual revision after V1 delivery
+## Current: full V2 motion revision authorized
 
-The owner rejected V1's feel, specifically its motion, curtain visuals and entertainment value. A 15.7-second V2 motion preview is ready for feedback at `renders/previews/five-seconds-motion-v2.mp4`; another full-length render has not been made. The approved story, voice and 161.6-second full-film scope stay intact. See `src/videos/in-this-town-five-seconds/MOTION-REVISION.md`.
+The owner rejected V1's feel, then approved the 15.7-second proof's motion/background detail and said to continue. Full performances are integrated in the source; action-sequence, shared-default and final master review are separate from that short-proof approval. The approved story, original voice-00 recordings, supplied AAC and 161.6-second full-film scope stay intact. See `src/videos/in-this-town-five-seconds/V2-REVIEW.md` for the current review/delivery state. V1 and the approved proof remain separately preserved.
 
 The sections below are **V1 delivery history**, not approval or certification of the revised working picture.
 

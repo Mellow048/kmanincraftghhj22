@@ -1,10 +1,11 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 6: Who was she hiding me from?. Camera cuts do not reset the underlying performance. */
 export const scene6=storyScene(timing,{

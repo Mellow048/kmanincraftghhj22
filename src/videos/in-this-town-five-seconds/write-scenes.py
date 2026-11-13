@@ -16,8 +16,8 @@ scenes=[
 ('2.curtains','kitchen',"({from:[-.65,2.08,1.25],to:[-.40,2.0,1.1],target:[1.85,1.5,-2.07],targetTo:[1.88,1.5,-2.07],fov:50,ease:'inOutSine' as const})","Keep sleeves, cord, rail and cloth in frame. She reaches, catches the cord, pulls decisively on closed, then releases as the top-hung panels settle and the window light dims.")]),
 ('A seat, a loaf, one black ear','SchoolDay',[
 ('3.school','kitchen',"push([-.2,1.15,-.3],4.8,4.4,10,6,48)","Breakfast first: the teenager leaves the table for the door, showing where the school-day transition begins."),
-('3.class','class',"push([0,1.1,.2],10.2,9.5,0,3,58)","From behind the class toward the chalkboard: villagers and player children, nine desks, the teacher winding up and throwing chalk."),
-('3.seat','class',"push([-1.2,1.25,1.25],4.7,4.3,125,4,52)","Stack the two adjoining desks in depth. His green-robed friend turns toward the seat he has saved."),
+('3.class','class',"({from:[3.6,3.15,-3.7],to:[3.3,2.95,-3.4],target:[-.2,1.0,1.15],fov:57,ease:'inOutSine' as const})","From the board-side aisle, look across the faces and rows: villagers and player children share the same furnished classroom; nobody blocks both leads."),
+('3.seat','class',"({from:[-3.9,2.4,.25],to:[-3.6,2.24,.3],target:[-1.2,1.3,1.25],fov:52,ease:'inOutSine' as const})","Stack the two adjoining desks in depth. His green-robed friend turns toward the seat he has saved."),
 ('3.lunch','lunch',"push([.02,1.04,-.02],4.1,3.85,-90,22,49)","His sleeve pushes a share of the bread across the wood; the red-shirted boy leans forward to receive it. The other share stays on the friend's side."),
 ('3.rabbit','street',"push([1.25,.8,1.2],3.7,3.3,40,13,46)","The two friends bend to the neighbor's rabbit. See the carrot leave the boy's hand and reach the ground."),
 ('3.ear','street',"push([1.28,.4,1.1],1.65,1.45,135,15,42)","The rabbit's unmistakable black ear and twitching nose, then its mouth at his pale shoelace: an affectionate identification, not a disposable animal.")]),
@@ -41,13 +41,13 @@ scenes=[
 ('An inch from his nose','LockerAction',[
 ('7.locker','hall',"push([.15,1.08,-.4],6.4,5.8,0,8,50)","Two player bullies crowd the green-robed friend into a hollow locker. The red hero is approaching from the left of the same hallway."),
 ('7.book','hall',"push([-.55,.35,.28],2.65,2.3,15,20,46)","Follow his blue book down to the floor and keep the nearby shoes in frame; its pickup position is established before the rescue."),
-('7.door','hall',"push([.05,1.35,-.8],3.6,3.2,0,4,48)","The blue door visibly swings from its left hinge toward the villager's nose. The bully's arm supplies the wind-up."),
-('7.stop','hall',"({from:[.68,1.49,-.65],to:[.63,1.47,-.64],target:[0,1.34,-.59],fov:46,ease:'inOutSine' as const})","A close profile of door edge and long nose as the swing stops. All bullies, background children and light motion stop with it.")]),
+('7.door','hall',"push([.05,1.02,-.35],4.0,3.65,24,12,50)","The blue door visibly swings from its left hinge toward the villager's nose. The bully's arm supplies the wind-up."),
+('7.stop','hall',"({from:[.45,2.50,-.55],to:[.42,2.43,-.55],target:[0,1.42,-.63],fov:47,ease:'inOutSine' as const})","The blue panel stops an inch from his nose. Then the hero visibly reaches the near hinge and swings the touched door clear; the untouched bully, background children and lights stay frozen.")]),
 ('An empty locker','LockerAction',[
-('8.clear','hall',"follow(id,t=>add(lockerMotion(t).friend,[-.4,.95,.2]),4.8,8,10,50)","Do not cut past the rescue: his hand reaches the sleeve and he pulls the friend's whole frozen body into the aisle."),
-('8.book','hall',"push([-1.1,.8,.52],3.4,3.05,20,18,47)","Knees bend and the hand goes down to the established blue book, then raises it into the friend's folded arms."),
+('8.clear','hall',"follow(id,t=>add(lockerMotion(t).friend,[-.1,.95,.32]),4.9,-60,10,50)","After opening and releasing the door, he grips the joined sleeves and pulls the friend forward through the opening, around the panel and into the aisle. No diagonal through the locker wall."),
+('8.book','hall',"push([-1.2,.83,.48],3.65,3.35,20,18,49)","Knees bend and the hand goes down to the established blue book, then raises it into the friend's folded arms."),
 ('8.beside','hall',"follow(id,t=>add(lockerMotion(t).hero.position,[.35,1.1,0]),4.5,10,8,48)","The book is released and stays with the frozen friend. Show the hero actually taking his last two steps back beside him."),
-('8.bang','hall',"push([-.15,1.05,-.5],5.7,5.2,8,8,50)","At frame 150 time returns: the door travels its last few degrees and bangs shut on an empty locker. Both rescued figures are still beside it."),
+('8.bang','hall',"push([-.15,1.05,-.5],5.7,5.2,8,8,50)","At frame 150 time returns: the released open door resumes its closing swing and bangs shut on an empty locker. Both rescued figures are still beside it."),
 ('8.friend','hall',"push([-.95,1.42,.16],2,1.8,-45,4,38)","The friend's puzzled glance moves from the blue book to the red sleeve. He has a reasonable, wrong explanation."),
 ('8.secret','hall',"push([-1.86,1.46,.16],2,1.8,60,3,38)","A tiny look away from the hero: he accepts the ordinary explanation instead of bragging.")]),
 ('He protected me, too','Lunch',[
@@ -59,26 +59,26 @@ scenes=[
 ('10.night','street',"follow(id,t=>add(rescueMotion(t).hero.position,[0,1.3,0]),3.7,0,6,44)","Warm doorway against the blue street. He hears the shout and steps out toward the neighbor, not straight into a new danger pose."),
 ('10.neighbor','rescue',"push([0,.4,-.85],4.6,4.3,35,48,50)","The old villager has fallen immediately outside the open threshold; show the small real distance to safety."),
 ('10.mobs','rescue',"push([0,1.2,3.45],4.1,3.7,180,5,50)","The existing two zombie models come through the gate, one a little behind the other. Their full bodies advance with distance-driven feet."),
-('10.bow','rescue',"push([0,1.5,8.4],2.8,2.4,180,4,42)","Behind them, the existing skeleton raises and draws its bow. Leave space in front of the arrowhead for the flight."),
+('10.bow','rescue',"push([-.12,1.15,8.25],3.6,3.35,170,5,46)","Behind them, the existing skeleton raises and draws its bow. Leave space in front of the arrowhead for the flight."),
 ('10.arrow','rescue',"({from:[1.4,1.9,8.0],to:[1.2,1.75,7.7],target:[0,.8,-.75],fov:44,ease:'linear' as const})","A side-long view down the lane shows the red-shirted runner and the arrow's fast travel toward the old man's chest.")]),
 ('Over the doorstep','RescueAction',[
 ('11.stop','rescue',"push([0,.72,-.95],2.35,2.1,45,28,45)","The arrow stops just above the old villager's chest; its feathers, head and small remaining gap all read in the same frame."),
-('11.drag','rescue',"push([-.1,.85,-1.7],5.3,4.8,10,16,50)","A wide enough view to see the hand reach, collar contact and the whole villager slide continuously over the visible sill."),
-('11.door','rescue',"push([-.2,.86,-2.2],3.6,3.3,180,16,58)","From inside the same opening: the hero's foot swings into the door and the hinge takes it all the way shut before time returns."),
-('11.hit','rescue',"push([0,.76,-1.91],2.8,2.45,25,5,44)","Outside again, still the same door. Exactly five seconds end, and the arrow completes the short remaining flight into the wood."),
-('11.safe','rescue',"push([-.25,.72,-3.35],2.3,2.1,78,22,50)","Inside the protected room, the old villager breathes and the boy stays beside him. Keep the doorway behind the lens, not between us and their faces.")]),
+('11.drag','rescue',"({from:[.45,2.3,2.35],to:[.35,1.9,1.85],target:[-.2,.65,-2.1],fov:55,ease:'inOutSine' as const})","A wide enough view to see the hand reach, collar contact and the whole villager slide continuously over the visible sill."),
+('11.door','rescue',"({from:[1.5,1.8,-4.6],to:[1.3,1.65,-4.4],target:[-.2,.8,-2.6],fov:55,ease:'inOutSine' as const})","From inside the same opening: the foot catches the inward-opening door and stays on the panel all the way through its closing arc. He withdraws only when it meets the frame; released objects do not move during a stop."),
+('11.hit','rescue',"({from:[-.8,.98,-1.53],to:[-.74,.94,-1.53],target:[0,.7,-1.68],fov:54,ease:'inOutSine' as const})","Outside again, still the same door. Exactly five seconds end, and the arrow completes the short remaining flight into the wood."),
+('11.safe','rescue',"push([-.2,.58,-3.98],2.35,2.15,78,22,50)","Inside the protected room, the old villager breathes and the boy stays beside him. Keep the doorway behind the lens, not between us and their faces.")]),
 ('For the rabbit','RescueAction',[
-('12.thanks','rescue',"push([-.12,1,-3.2],2.25,2.05,80,9,48)","The old man raises himself from the ground into a seated position and offers a carrot. Recovery is an action, not a new standing pose."),
+('12.thanks','rescue',"({from:[1.95,1.8,-2.6],to:[1.75,1.7,-2.65],target:[-.15,.95,-3.1],fov:55,ease:'inOutSine' as const})","The old man rocks forward, rises from the floor and offers the carrot on his joined sleeves. The boy steps closer and reaches to receive it; neither actor resets at the cut."),
 ('12.rabbit','rescue',"push([-.1,1.06,-2.8],1.55,1.35,90,8,42)","The carrot passes across the gap between them, with the old neighbor's long nose in the background. The black-eared rabbit has an owner."),
 ('12.mother','bedroom',"push([-4.9,1.3,-3.7],2.7,2.4,0,5,48)","Home inside the lit doorway: mother leans toward the sleeve he holds out and checks him for scratches."),
-('12.lie','bedroom',"push([-4.55,1.46,-3.35],1.85,1.65,0,3,38)","The boy looks away on the golem excuse. Do not materialize a golem that did not actually perform this rescue."),
-('12.window','bedroom',"push([-3.65,1.65,-2.25],2.7,2.35,-100,5,46)","Mother walks the last steps to his real window and closes it. Warm interior, cool glass; the night is not over.")]),
+('12.lie','bedroom',"({from:[-4.55,2.5,-2.25],to:[-4.5,2.4,-2.25],target:[-4.55,1.42,-3.35],fov:48,ease:'inOutSine' as const})","The boy looks away on the golem excuse as mother starts toward the window behind him. Keep her real walk visible; do not materialize a golem that did not perform this rescue."),
+('12.window','bedroom',"({from:[-3.95,1.65,-.5],to:[-3.85,1.62,-.65],target:[-3.5,1.40,-2.13],fov:46,ease:'inOutSine' as const})","Her sleeves meet the lower sash handle, draw it down through the real window tracks and withdraw after the rail lands. The curtain settles; this is the same clear window he looks through later.")]),
 ('A man with no lantern','ChaseAction',[
-('13.sound','bedroom',"push([-5.3,1,-4.1],2.7,2.35,65,14,46)","From beside the bed: a crunch makes him rise and go to the window. The same bed and real doorway remain around him."),
+('13.sound','bedroom',"({from:[-6.95,2.25,-5.15],to:[-6.65,2.05,-4.7],target:[-5.5,1.0,-4.45],targetPath:[0,.25,.5,.75,1].map(k=>add(homeHero(cue(id).start+(cue(id).end-cue(id).start-1/30)*k).position,[0,1.02,0])),fov:58,ease:'linear' as const})","From beside the bed: a crunch makes him rise and go to the window. The same bed and real doorway remain around him."),
 ('13.white','street',"({from:[-3.9,1.82,-2.35],to:[-3.82,1.8,-2.3],target:[1.3,1.3,1.2],fov:43,ease:'inOutSine' as const})","His actual view through the clear panes: a white-clothed player stands beside the rabbit outside. The window's timber edges frame the discovery."),
 ('13.beard','street',"push([1.3,1.55,1.2],2.1,1.8,-20,3,38)","A clear bearded player face, white sleeves and empty free hand. No villager nose and no lantern are substituted."),
 ('13.kneel','street',"push([1.45,.9,1.4],3.6,3.2,20,10,47)","Show knees bend and the man lower his hand all the way beside the rabbit's feet."),
-('13.frost','street',"push([1.78,.3,1.66],1.65,1.35,25,22,43)","Ice grows outward from the lowered fingers around the rabbit's legs, never across its living face."),
+('13.frost','street',"push([2.0,.4,1.65],2.05,1.85,25,24,46)","Ice grows outward from the lowered fingers around the rabbit's legs, never across its living face."),
 ('13.dinner','street',"follow(id,t=>add(v(manMotion(t).position,carriedRabbit(t),.5),[0,.65,0]),2.25,0,12,56)","Stay with the supported rabbit as his arm lifts it from the ground and he straightens. The food line lands on the beard, not on an empty yard.")]),
 ('I could not leave it','ChaseAction',[
 ('14.ear','street',"follow(id,t=>add(carriedRabbit(t),[0,.38,.15]),1.7,10,7,39)","A close look at the same black ear and twitching nose, held above the man's supporting forearm."),
@@ -90,36 +90,37 @@ scenes=[
 ('14.stay','street',"follow(id,t=>add(carriedRabbit(t),[0,.36,.12]),1.85,80,5,40)","The small living nose under the white arm supplies his answer. Keep the chase moving behind it.")]),
 ('Remember the chalk','ChaseAction',[
 ('15.hand','street',"follow(id,t=>add(manMotion(t).position,[0,1.25,0]),3.1,125,7,44)","Side/rear three-quarter: see the free arm wind up while the other continues to support the rabbit."),
-('15.blocks','street',"push(add(FIRST_WALL,[1.3,.12,-.65]),6.4,5.9,95,13,52)","The first ice block crosses the path at speed, with the white arm, red pursuer and stone wall all spatially connected."),
+('15.blocks','street',"follow(id,t=>t<FIRST_FIRE?add(manMotion(t).position,[0,1.05,0]):t<FIRST_IMPACT?iceAt(t,0):FIRST_WALL,4.6,35,12,51)","The first ice block crosses the path at speed, with the white arm, red pursuer and stone wall all spatially connected."),
 ('15.wall','street',"push(FIRST_WALL,3.7,3.3,18,10,46)","Reveal the real hole punched through the wall, with stone and ice fragments still dropping. Do not merely hide the intact wall."),
 ('15.close','street',"follow(id,t=>add(counterHero(t).position,[.4,1.25,0]),3.2,35,13,48)","Come close to the approaching second ice block and the hero; the loose rock is already on the ground beside his route."),
 ('15.chalk','street',"follow(id,t=>add(counterHero(t).position,[.1,1.46,0]),1.9,65,3,40)","Match the earlier nose-and-chalk framing with ice. He remembers before acting; the second and third blocks freeze on the shared clock, not in slow motion.")]),
 ('Five seconds to move','ChaseAction',[
-('16.stop','street',"push(add(ROCK_START,[.1,.65,0]),3.8,3.6,100,22,52)","Show him bend, make contact with the rock and lift it. The bearded man, rabbit, projectiles and drifting dust remain absolutely frozen."),
+('16.stop','street',"push(add(ROCK_START,[0,.45,0]),3.6,3.3,-145,28,50)","Show him bend, make contact with the rock and lift it. The bearded man, rabbit, projectiles and drifting dust remain absolutely frozen."),
 ('16.front','street',"follow(id,t=>add(v(counterHero(t).position,MAN_FREEZE,.4),[0,1,0]),5.2,100,16,50)","Track the full run around the frozen man's side. The path passes outside his body; no cut substitutes for getting in front."),
-('16.throw','street',"push(add(ROCK_END,[0,.4,0]),2.65,2.3,110,24,47)","Despite the historic cue name, this is the approved placement: hand lowers the rock into the path, releases it and visibly withdraws. Nothing is thrown at a face."),
+('16.throw','street',"push(add(ROCK_END,[0,.46,0]),3.15,2.85,35,23,49)","Despite the historic cue name, this is the approved placement: hand lowers the rock into the path, releases it and visibly withdraws. Nothing is thrown at a face."),
 ('16.side','street',"push(add(MAN_FREEZE,[.6,1,0.6]),5.4,5,25,10,50)","Keep the frozen man and old projectile lane in frame while the hero takes the entire sidestep out of it.")]),
 ('The empty space, and the rabbit','ChaseAction',[
 ('17.resume','street',"push(add(HERO_FREEZE,[1.25,.95,.45]),5.8,5.3,25,14,50)","Exactly 150 frozen frames finish. Ice, breath and background dust resume together; the boy is already clear of the old lane."),
 ('17.ice','street',"push(add(HERO_FREEZE,[-.3,.6,0]),3.6,3.1,15,20,47)","Ice smashes into the space the red shirt occupied, leaving visible shards. The runner brakes and looks back, giving his next step a readable wind-up."),
-('17.hit','street',"push(add(ROCK_END,[0,.27,0]),1.8,1.55,90,17,44)","Foot, rock, contact: the next planted toe catches the placed rock. No face injury and no unexplained fall."),
-('17.fall','street',"push(add(MAN_FREEZE,[1.35,.95,.45]),5.1,4.7,25,13,50)","One continuous stumble, full turning recovery attempt, then the supported back landing. The rabbit never leaves his arm."),
-('17.rabbit','street',"push(add(MAN_FREEZE,[1.35,.72,.35]),3.15,2.85,45,17,46)","The hero walks the last step, bends and lifts the rabbit from the supporting arm into both hands. Follow the entire transfer."),
+('17.hit','street',"push(add(ROCK_END,[0,.20,0]),2.1,1.85,25,20,46)","Foot, rock, contact: the next planted toe catches the placed rock. No face injury and no unexplained fall."),
+('17.fall','street',"push(add(MAN_FREEZE,[1.3,.72,.1]),4.25,3.75,121,23,52)","One continuous stumble, full turning recovery attempt, then the supported back landing. The rabbit never leaves his arm."),
+('17.rabbit','street',"push(add(MAN_FREEZE,[1.25,.82,.65]),3.65,3.4,50,19,48)","The hero walks the last step, bends and lifts the rabbit from the supporting palm into both hands. Follow the entire transfer; then he takes a real step back so the injured man has space to rise."),
 ('17.breathe','street',"follow(id,t=>add(rescuedRabbit(t),[0,.35,0]),1.8,100,8,40)","Its black ear and twitching nose fill the frame. Alive, supported, no ice over the face.")]),
 ('The prince of our village','ChaseAction',[
-('18.look','street',"follow(id,t=>add(manMotion(t).position,[0,.85,0]),3.5,-90,15,48)","The man rubs his head, then raises his body from his back onto one knee. Keep the whole recovery in view before the recognition close-up."),
+('18.look','street',"follow(id,t=>add(manMotion(t).position,[0,.80,0]),4.3,32,24,52)","The man rubs his head, then raises his body from his back onto one knee. Keep the whole recovery in view before the recognition close-up."),
 ('18.home','street',"push([-5,1.47,-1.82],2.7,2.35,65,4,41)","Mother is still in their own warm doorway, watching down the same road. Her reaction pays off the curtains and lock."),
 ('18.power','street',"follow(id,t=>add(manMotion(t).position,[0,1.1,0]),2.45,18,4,39)","Now kneeling toward the boy, the beard is clear as he recognizes a time-stop ability. No new magic is added."),
 ('18.found','street',"follow(id,t=>add(counterHero(t).position,[0,1.46,0]),2.05,100,4,39)","The child's eyes register that he has been sought, with the rescued rabbit still in his hands."),
 ('18.prince','street',"follow(id,t=>add(counterHero(t).position,[0,1.37,.08]),2.25,100,4,40)","The prince line lands on the boy's stunned face. Hold the small reaction, then hard black; no subscribe sign, sequel promise or added spoken line.")]),
 ]
 imports='''import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 '''
 def args_of(call):
     inner=call[call.index('(')+1:-1]; out=[];level=0;start=0
@@ -167,7 +168,8 @@ import { timing, BLACK_AT } from "./kit";
 import { World } from "./world";
 '''+''.join(f'import {{ scene{i} }} from "./scene{i}";\n' for i in range(1,19))+'''
 /** Owner-approved STORY: same teenage hero, a secret five-second power, and a prince recognition.
- * Picture is under revision after V1 motion/visual feedback; it is not owner-approved.
+ * The owner approved the short V2 motion/background proof and authorized this full revision.
+ * Approval of the finished full-length picture remains a separate owner judgment.
  * The narration is exact Draft 2 plus the separately approved trip revision.
  * Default full-film limits, NOT cut:"short". This ending has its own scoped owner exception.
  */

@@ -1,16 +1,20 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 13: A man with no lantern. Camera cuts do not reset the underlying performance. */
 export const scene13=storyScene(timing,{
  id:"scene13",title:"A man with no lantern",shots:[
   (()=>{const id="13.sound";return {cue:"13.sound",zone:"bedroom",look:"overworld-night" as const,
-    ...cam.push({on:[-5.3,1,-4.1],dist:2.7,to:2.35,yaw:65,pitch:14,fov:46}),
+    ...({
+    from:[-6.95,2.25,-5.15],
+    to:[-6.65,2.05,-4.7],
+    target:[-5.5,1.0,-4.45],targetPath:[0,.25,.5,.75,1].map(k=>add(homeHero(cue(id).start+(cue(id).end-cue(id).start-1/30)*k).position,[0,1.02,0])),fov:58,ease:'linear' as const}),
     note:"From beside the bed: a crunch makes him rise and go to the window. The same bed and real doorway remain around him.",
     stage:(local:number)=><ChaseAction t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
@@ -33,7 +37,7 @@ export const scene13=storyScene(timing,{
     stage:(local:number)=><ChaseAction t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
   (()=>{const id="13.frost";return {cue:"13.frost",zone:"street",look:"overworld-night" as const,
-    ...cam.push({on:[1.78,.3,1.66],dist:1.65,to:1.35,yaw:25,pitch:22,fov:43}),
+    ...cam.push({on:[2.0,.4,1.65],dist:2.05,to:1.85,yaw:25,pitch:24,fov:46}),
     note:"Ice grows outward from the lowered fingers around the rabbit's legs, never across its living face.",
     stage:(local:number)=><ChaseAction t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),

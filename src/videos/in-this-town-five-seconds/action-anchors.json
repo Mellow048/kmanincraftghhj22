@@ -1,0 +1,566 @@
+{
+  "glassDrop": 30.446666666666665,
+  "glassHit": 35.89981124903358,
+  "bookTouch": 36.98333333333333,
+  "bookRelease": 39.13333333333333,
+  "bookLand": 41.59629695572747,
+  "feedPlace": 25.059,
+  "classChalkFire": 19.246000000000002,
+  "chalkHit": 47.123333333333335,
+  "lockerOpen": 61.91666666666667,
+  "lockerOpenEnd": 62.28666666666667,
+  "lockerGrip": 62.68666666666667,
+  "lockerPickup": 63.88666666666667,
+  "lockerPlace": 65.04666666666667,
+  "elderGrip": 89.92,
+  "doorKick": 92.562,
+  "doorShut": 93.112,
+  "carrotPass": 100.602,
+  "windowPull": 107.464,
+  "windowShut": 107.9,
+  "rabbitLift": 118.432,
+  "rockPickup": 140.387,
+  "rockPlace": 142.569,
+  "spinStart": 148.01,
+  "land": 149.453,
+  "rabbitTake": 150.173,
+  "chaseSteps": [
+    {
+      "t": 127.13333333333334,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 127.4,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 127.66666666666667,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 127.93333333333334,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 128.16666666666666,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 128.43333333333334,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 128.7,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 128.96666666666667,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 129.2,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 129.46666666666667,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 129.73333333333332,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 130,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 130.23333333333332,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 130.5,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 130.76666666666668,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 131.03333333333333,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 131.26666666666668,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 131.53333333333333,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 131.8,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 132.06666666666666,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 132.3,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 132.56666666666666,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 132.83333333333334,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 133.1,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 133.33333333333334,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 133.6,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 133.86666666666667,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 134.13333333333333,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 134.36666666666667,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 134.63333333333333,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 134.9,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 135.16666666666666,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 135.4,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 135.66666666666666,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 135.93333333333334,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 136.2,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 136.43333333333334,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 136.7,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 136.96666666666667,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 137.23333333333332,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 137.46666666666667,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 137.73333333333332,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 138,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 138.26666666666668,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 138.5,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 138.76666666666668,
+      "who": "white-clothed runner",
+      "pan": 0.2
+    },
+    {
+      "t": 127.3,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 127.53333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 127.73333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 127.96666666666667,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 128.16666666666666,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 128.4,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 128.6,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 128.83333333333334,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 129.03333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 129.26666666666668,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 129.5,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 129.7,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 129.93333333333334,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 130.13333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 130.36666666666667,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 130.56666666666666,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 130.8,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 131,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 131.23333333333332,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 131.46666666666667,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 131.66666666666666,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 131.9,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 132.1,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 132.33333333333334,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 132.53333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 132.76666666666668,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 132.96666666666667,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 133.2,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 133.43333333333334,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 133.63333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 133.86666666666667,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 134.06666666666666,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 134.3,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 134.5,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 134.73333333333332,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 134.93333333333334,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 135.16666666666666,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 135.4,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 135.6,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 135.83333333333334,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 136.03333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 136.26666666666668,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 136.46666666666667,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 136.7,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 136.9,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 137.13333333333333,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 137.36666666666667,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 137.56666666666666,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 137.8,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 138,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 138.23333333333332,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 138.43333333333334,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 138.66666666666666,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    },
+    {
+      "t": 138.9,
+      "who": "red-shirted pursuer",
+      "pan": -0.2
+    }
+  ],
+  "counterSteps": [
+    {
+      "t": 141.13333333333333,
+      "who": "the run in front",
+      "pan": 0
+    },
+    {
+      "t": 141.4,
+      "who": "the run in front",
+      "pan": 0
+    },
+    {
+      "t": 141.63333333333333,
+      "who": "the run in front",
+      "pan": 0
+    },
+    {
+      "t": 142.9,
+      "who": "the sidestep",
+      "pan": 0
+    },
+    {
+      "t": 143.2,
+      "who": "the sidestep",
+      "pan": 0
+    },
+    {
+      "t": 143.5,
+      "who": "the sidestep",
+      "pan": 0
+    },
+    {
+      "t": 143.76666666666668,
+      "who": "the sidestep",
+      "pan": 0
+    }
+  ]
+}

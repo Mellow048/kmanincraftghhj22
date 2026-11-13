@@ -1,0 +1,426 @@
+{
+  "revision": "full-motion-v2",
+  "stops": [
+    {
+      "id": "teaser",
+      "start": 0,
+      "end": 150,
+      "seconds": 5,
+      "worldFrame": 0,
+      "renderedCutFrames": [
+        44,
+        89,
+        126
+      ]
+    },
+    {
+      "id": "glass",
+      "start": 923,
+      "end": 1073,
+      "seconds": 5,
+      "worldFrame": 773,
+      "renderedCutFrames": [
+        946,
+        1015
+      ]
+    },
+    {
+      "id": "touch",
+      "start": 1093,
+      "end": 1243,
+      "seconds": 5,
+      "worldFrame": 793,
+      "renderedCutFrames": [
+        1155
+      ]
+    },
+    {
+      "id": "chalk",
+      "start": 1261,
+      "end": 1411,
+      "seconds": 5,
+      "worldFrame": 811,
+      "renderedCutFrames": [
+        1318,
+        1364
+      ]
+    },
+    {
+      "id": "locker",
+      "start": 1847,
+      "end": 1997,
+      "seconds": 5,
+      "worldFrame": 1247,
+      "renderedCutFrames": [
+        1883,
+        1907,
+        1946,
+        1981
+      ]
+    },
+    {
+      "id": "elder",
+      "start": 2679,
+      "end": 2829,
+      "seconds": 5,
+      "worldFrame": 1929,
+      "renderedCutFrames": [
+        2730,
+        2768,
+        2820
+      ]
+    },
+    {
+      "id": "counter",
+      "start": 4171,
+      "end": 4321,
+      "seconds": 5,
+      "worldFrame": 3271,
+      "renderedCutFrames": [
+        4191,
+        4232,
+        4261,
+        4290,
+        4320
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "id": "locker hero",
+      "maxFrameStep": 0.23004444444442895,
+      "maxMetresPerSecond": 6.901333333332868,
+      "atFrame": 1904
+    },
+    {
+      "id": "pulled friend",
+      "maxFrameStep": 0.23004444444442895,
+      "maxMetresPerSecond": 6.901333333332868,
+      "atFrame": 1904
+    },
+    {
+      "id": "rescue hero",
+      "maxFrameStep": 0.09710086206263127,
+      "maxMetresPerSecond": 2.913025861878938,
+      "atFrame": 2767
+    },
+    {
+      "id": "dragged elder",
+      "maxFrameStep": 0.07499142661179303,
+      "maxMetresPerSecond": 2.249742798353791,
+      "atFrame": 2738
+    },
+    {
+      "id": "bedroom hero",
+      "maxFrameStep": 0.10952380952380558,
+      "maxMetresPerSecond": 3.2857142857141675,
+      "atFrame": 3684
+    },
+    {
+      "id": "stranger",
+      "maxFrameStep": 0.11311385459533341,
+      "maxMetresPerSecond": 3.393415637860002,
+      "atFrame": 4322
+    },
+    {
+      "id": "chase hero",
+      "maxFrameStep": 0.11227369765599282,
+      "maxMetresPerSecond": 3.3682109296797846,
+      "atFrame": 4166
+    }
+  ],
+  "untouched": [
+    {
+      "stop": "counter",
+      "name": "stranger root",
+      "states": 1
+    },
+    {
+      "stop": "counter",
+      "name": "stranger pose",
+      "states": 1
+    },
+    {
+      "stop": "counter",
+      "name": "rabbit",
+      "states": 1
+    },
+    {
+      "stop": "counter",
+      "name": "witness gaze",
+      "states": 1
+    },
+    {
+      "stop": "counter",
+      "name": "second ice",
+      "states": 1
+    },
+    {
+      "stop": "counter",
+      "name": "third ice",
+      "states": 1
+    },
+    {
+      "stop": "elder",
+      "name": "arrow",
+      "states": 1
+    },
+    {
+      "stop": "elder",
+      "name": "bow",
+      "states": 1
+    },
+    {
+      "stop": "elder",
+      "name": "zombies",
+      "states": 1
+    },
+    {
+      "stop": "locker",
+      "name": "untouched closed door",
+      "states": 1
+    },
+    {
+      "stop": "locker",
+      "name": "released open door",
+      "states": 1
+    },
+    {
+      "stop": "locker",
+      "name": "bully",
+      "states": 1
+    },
+    {
+      "stop": "glass",
+      "name": "cup",
+      "states": 1
+    }
+  ],
+  "contacts": [
+    {
+      "id": "glass in left hand",
+      "samples": 75,
+      "maxErrorMetres": 0,
+      "atFrame": 0,
+      "limit": 0.012
+    },
+    {
+      "id": "touch book",
+      "samples": 64,
+      "maxErrorMetres": 2.220446049250313e-16,
+      "atFrame": 1133,
+      "limit": 0.012
+    },
+    {
+      "id": "locker sleeve grip",
+      "samples": 24,
+      "maxErrorMetres": 4.839349969133126e-16,
+      "atFrame": 1890,
+      "limit": 0.012
+    },
+    {
+      "id": "touched door hand",
+      "samples": 11,
+      "maxErrorMetres": 3.3306690738754696e-16,
+      "atFrame": 1867,
+      "limit": 0.012
+    },
+    {
+      "id": "locker book",
+      "samples": 34,
+      "maxErrorMetres": 0,
+      "atFrame": 0,
+      "limit": 0.012
+    },
+    {
+      "id": "elder collar",
+      "samples": 67,
+      "maxErrorMetres": 4.996003610813204e-16,
+      "atFrame": 2756,
+      "limit": 0.012
+    },
+    {
+      "id": "door toe",
+      "samples": 17,
+      "maxErrorMetres": 0.004363898305946376,
+      "atFrame": 2791,
+      "limit": 0.012
+    },
+    {
+      "id": "thank-you carrot",
+      "samples": 86,
+      "maxErrorMetres": 0,
+      "atFrame": 0,
+      "limit": 0.012
+    },
+    {
+      "id": "sash sleeves",
+      "samples": 16,
+      "maxErrorMetres": 4.440892098500626e-16,
+      "atFrame": 3235,
+      "limit": 0.012
+    },
+    {
+      "id": "rock carry",
+      "samples": 65,
+      "maxErrorMetres": 0,
+      "atFrame": 0,
+      "limit": 0.012
+    },
+    {
+      "id": "stranger rabbit support",
+      "samples": 952,
+      "maxErrorMetres": 0,
+      "atFrame": 0,
+      "limit": 0.012
+    },
+    {
+      "id": "hero rabbit support",
+      "samples": 343,
+      "maxErrorMetres": 0,
+      "atFrame": 0,
+      "limit": 0.012
+    }
+  ],
+  "toe": [
+    {
+      "t": 146.56666666666666,
+      "foot": [
+        39.24230058045974,
+        0.06516756782986455,
+        1.006067719763753
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.6,
+      "foot": [
+        39.253179597141646,
+        0.07982606272584025,
+        1.0009045893402146
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.63333333333333,
+      "foot": [
+        39.235910799403925,
+        0.07777121231948592,
+        0.9872582258877749
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.66666666666666,
+      "foot": [
+        39.198331703558644,
+        0.06918277507093351,
+        0.9546255674280748
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.7,
+      "foot": [
+        39.18404117278267,
+        0.0671424951653058,
+        0.9264243113921271
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.73333333333332,
+      "foot": [
+        39.19307248422599,
+        0.06902562953304503,
+        0.9047674695071544
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.76666666666668,
+      "foot": [
+        39.22384518075398,
+        0.07177030560600772,
+        0.8911117726325757
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.8,
+      "foot": [
+        39.27347695363459,
+        0.07302947683717176,
+        0.8862869818636465
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    },
+    {
+      "t": 146.83333333333334,
+      "foot": [
+        39.33827449698733,
+        0.07190465918266986,
+        0.8905679681952974
+      ],
+      "rock": [
+        39.23600000000001,
+        0,
+        0.95
+      ]
+    }
+  ],
+  "land": {
+    "t": 149.453,
+    "man": {
+      "position": [
+        40.246000000000016,
+        0,
+        1.2
+      ],
+      "yaw": 7.853981633974483,
+      "travel": 37.296000000000014,
+      "trip": 1,
+      "fall": 1
+    },
+    "rabbit": [
+      39.96664864694512,
+      0.5245680034297613,
+      1.4145733515705559
+    ]
+  },
+  "black": 161.1,
+  "frames": 4848,
+  "limitations": "State/contact and frame-clock assertions; not a claim of entertaining performance or subjective playback."
+}

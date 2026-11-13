@@ -1,16 +1,17 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 18: The prince of our village. Camera cuts do not reset the underlying performance. */
 export const scene18=storyScene(timing,{
  id:"scene18",title:"The prince of our village",shots:[
   (()=>{const id="18.look";return {cue:"18.look",zone:"street",look:"overworld-night" as const,
-    ...cam.push({on:(t=>add(manMotion(t).position,[0,.85,0]))(cue(id).start),onTo:(t=>add(manMotion(t).position,[0,.85,0]))(cue(id).end-1/30),dist:3.5,to:(3.5)-.08,yaw:-90,pitch:15,fov:48}), ...follow(id,t=>add(manMotion(t).position,[0,.85,0]),3.5,-90,15,48),
+    ...cam.push({on:(t=>add(manMotion(t).position,[0,.80,0]))(cue(id).start),onTo:(t=>add(manMotion(t).position,[0,.80,0]))(cue(id).end-1/30),dist:4.3,to:(4.3)-.08,yaw:32,pitch:24,fov:52}), ...follow(id,t=>add(manMotion(t).position,[0,.80,0]),4.3,32,24,52),
     note:"The man rubs his head, then raises his body from his back onto one knee. Keep the whole recovery in view before the recognition close-up.",
     stage:(local:number)=><ChaseAction t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),

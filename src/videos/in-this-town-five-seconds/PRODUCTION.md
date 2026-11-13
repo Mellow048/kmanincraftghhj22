@@ -1,10 +1,12 @@
 # Five Seconds — production and delivery
 
-## Current status — V2 motion preview ready for feedback
+## Current status — full V2 motion revision authorized
 
-The owner rejected V1's feel: **“it lacks motion and visuals need improving like the curtains one and other stuff.. it just felt like it wasnt entertaining”.** The technical passes below document the delivered **V1**, not artistic acceptance and not certification of the new source.
+The owner rejected V1's feel, then approved the **15.7-second motion/background proof**: “okay i like this kind of motion and detail in the backround! go ahead”. That authorizes the full revision; it is not acceptance of an unseen full V2. The approved story, all nine original voice-00 recordings, exact supplied AAC and 161.6-second full-film scope remain unchanged.
 
-The revision preserves the approved story, all nine original voice-00 recordings, the supplied AAC and the 161.6-second full-film timeline. A short, actual-motion proof of the curtain/bowl/bread-and-book scenes comes **before** another full-length render. This preview is not a shorter final film. The finished Freeze Bell remains immutable. The 15.7-second preview is `renders/previews/five-seconds-motion-v2.mp4` (720×1280 / 30 fps); the full-length V2 has not been rendered. See `MOTION-REVISION.md`, `motion-preview.json` and `motion-preview-checks.json` for scope and review status.
+Full performance integration is now in the source: ordinary interactions, locker clearance, elder/door rescue, bedroom/window, chase, rock placement/sidestep, stumble/spin/back landing and supported rabbit transfer. See **`V2-REVIEW.md`** for current scope, tests and delivery status, and `MOTION-REVISION.md` for the approved proof history. `renders/in-this-town-five-seconds.mp4` remains V1; the full revision will use `renders/in-this-town-five-seconds-v2.mp4`. Freeze Bell and the proof are retained unchanged.
+
+**Everything below is V1 delivery history**, not artistic acceptance or certification of the revised source. V2 reports use the `v2-` prefix so old measurements are not silently represented as current.
 
 ## V1 — full-HD master delivered and technically verified
 
@@ -12,7 +14,7 @@ Approved Draft 2 plus the separately approved kid-friendly trip counter. The aut
 
 **674 words · 18 scenes · 91 shots · 161.6 s · 4,848 frames · 1080×1920 at 30 fps.** Nine original `voice-00` clips, all aligned. The final line is **“The prince of our village.”** Picture ends on the boy's reaction; frames **4833–4847** are black (161.1 s onward).
 
-## Audio
+## V1 audio
 
 - `audio/in-this-town-five-seconds/mix.mp3` is wired into `film.tsx`.
 - Music input: the exact `Topics/InThisTown/InThisTownMusic.aac`; SHA256 `5adf61371ab3f4fe5c1eff93bfa15ef940a7be3f9888da5807cececf2fafaca3`.
@@ -21,7 +23,7 @@ Approved Draft 2 plus the separately approved kid-friendly trip counter. The aut
 - The seven stops mute diegetic ambience for the same 150 frames. The score and the moving hero's actions are not the stopped world's clock.
 - **Limitation:** audio was measured, aligned and hashed, not subjectively listened to. Do not describe these checks as a listening review.
 
-## Timing and movement
+## V1 timing and movement
 
 `timeline.ts` defines these half-open frame intervals; every one has length 150:
 
@@ -39,7 +41,7 @@ The global performance time is quantized to rendered frames before a stage consu
 
 The action modules share routes across cuts, including sleeve contact and pulling the friend, collar contact and dragging over the sill, projectiles, rock pickup/carry/placement/sidestep, toe contact/stumble/spin/back landing, and the two-hand rabbit transfer. Per-frame root samples reject teleports; untouched stranger/rabbit poses, the arrow and locker door are checked during their stops. Sequential action/boundary stills were viewed, in addition to all 91 shot midpoints and targeted framing/contact revisions. This is source/state and sequential-frame review, not a real-time playback claim.
 
-## Legacy protection
+## V1 legacy protection
 
 `legacy-regression.json`: 14/14 stills pixel-identical, at frames 0 and 1240 in Same Face, Monster Egg, Pumpkin Heads, Superpower at 18, Part 2, Nobody Looked at the Moon, and Freeze Bell. These are sampled regression frames, not an all-frame comparison.
 
@@ -61,7 +63,7 @@ REMOTION_CHROME=/tmp/chromium node scripts/five-seconds-audit.mjs --clocks
 
 In this sandbox Chromium also needs the previously provisioned `out/pelican-qa/runtime/lib` and `/tmp` in `LD_LIBRARY_PATH`. The tools under `out/` are transient; normal installations can use Remotion's Chrome and ordinary Python dependencies.
 
-## Verified encoded master
+## V1 verified encoded master
 
 - File: `renders/in-this-town-five-seconds.mp4`, **75,535,985 bytes**.
 - SHA256: `ada21dde26a3c2e198abb51c8684da1f868356023cdbed4db8f83cc4d259568d`.

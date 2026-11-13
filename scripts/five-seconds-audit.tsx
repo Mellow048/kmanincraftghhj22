@@ -1,31 +1,64 @@
 /** Isolated runtime QA entry. Rendered by five-seconds-audit.mjs, never by src/registry.ts. */
 import React from 'react';
 import {registerRoot,Composition,Sequence,useCurrentFrame,AbsoluteFill} from 'remotion';
-import {Euler,Vector3} from 'three';
-import {getPose} from '../src/engine/anim';
+import type {Vec3} from '../src/engine';
 import {film} from '../src/videos/in-this-town-five-seconds/film';
-import {WorldClock,TEEN,STOPS,STOP,worldFrame,activeStop,timing,cue,at} from '../src/videos/in-this-town-five-seconds/kit';
-import {handWorld,lockerMotion,rescueMotion,counterHero,manMotion,rescueArrow,ROCK_START,ROCK_END,HIT,LAND,RUN_START,HERO_RUN,MAN_FREEZE,distance,add,aimHand,stoop} from '../src/videos/in-this-town-five-seconds/motion';
-import {heroState,strangerPose,rockAt,carriedRabbit,rescuedRabbit} from '../src/videos/in-this-town-five-seconds/chase-action';
-function foot(t:number,side:1|-1){const q=manMotion(t),p={...getPose('idle',t),...strangerPose(t)},px=1.8/32;
- const f=new Vector3(0,-6*px,1.5*px).applyEuler(new Euler(...(side===1?p.kneeR:p.kneeL)));
- f.y-=6*px;f.applyEuler(new Euler(...(side===1?p.legR:p.legL)));f.x+=side*2.2*px;
- f.applyEuler(new Euler(p.bodyPitch,p.bodyYaw,p.bodyRoll));f.y+=12*px+p.bodyY;f.applyEuler(new Euler(0,q.yaw,0)).add(new Vector3(...q.position));return [f.x,f.y,f.z] as [number,number,number];}
+import {WorldClock,STOPS,STOP,worldFrame,activeStop,timing,cue} from '../src/videos/in-this-town-five-seconds/kit';
+import {handWorld,lockerMotion,rescueMotion,counterHero,manMotion,rescueArrow,ROCK_END,HIT,LAND,HERO_RUN,distance,add,DOOR_KICK,DOOR_SHUT,LOCKER_GRAB,LOCKER_OPEN_START,LOCKER_OPEN_END,sleevePoint} from '../src/videos/in-this-town-five-seconds/motion';
+import {heroState,strangerPose,rockAt,carriedRabbit,rescuedRabbit,homeHero,iceAt,rabbitAt,PICK_ROCK,PLACE_ROCK,LIFT_START,TAKE_RABBIT,motherGazeTarget} from '../src/videos/in-this-town-five-seconds/chase-motion';
+import {lockerState,bullyState,lockerDoorContact,LOCKER_PICK,LOCKER_PLACE} from '../src/videos/in-this-town-five-seconds/school-motion';
+import {rescueState,doorContact,bowState,zombiesAt,ELDER_GRAB,ELDER_RELEASE,CARROT_PASS} from '../src/videos/in-this-town-five-seconds/rescue-motion';
+import {glassState,touchState,motherCheck,windowState,GLASS_DROP,GLASS_ROOT,GLASS_YAW,BOOK_TOUCH,BOOK_RELEASE,SASH_DOWN,SASH_CLOSED} from '../src/videos/in-this-town-five-seconds/home-motion';
+import {footWorld,palmMid} from '../src/videos/in-this-town-five-seconds/performance';
+
+const samples=(a:number,b:number)=>Array.from({length:Math.max(0,Math.floor(b*30)-Math.ceil(a*30)+1)},(_,i)=>(Math.ceil(a*30)+i)/30);
 function audit(){
- const stops=STOPS.map(s=>{const fs=Array.from({length:s.end-s.start},(_,i)=>s.start+i);if(fs.length!==150||!fs.every(f=>activeStop(f/30)?.id===s.id))throw Error('Stop length '+s.id);if(new Set(fs.map(worldFrame)).size!==1)throw Error('Background clock moves '+s.id);return {...s,seconds:5,worldFrame:worldFrame(s.start),renderedCutFrames:timing.cues.map(c=>Math.round(c.start*30)).filter(f=>f>s.start&&f<s.end)};});
- const freeze=Array.from({length:150},(_,i)=>(STOP.counter.start+i)/30);
- const same=(fn:(t:number)=>unknown)=>new Set(freeze.map(t=>JSON.stringify(fn(t)))).size;
- if(same(manMotion)!==1||same(strangerPose)!==1||same(carriedRabbit)!==1)throw Error('Untouched stranger/rabbit moves during stop');
- for(let f=STOP.elder.start;f<STOP.elder.end;f++)if(distance(rescueArrow(f/30),rescueArrow(STOP.elder.a))>1e-9)throw Error('Arrow moves');
- for(let f=STOP.locker.start;f<STOP.locker.end;f++)if(lockerMotion(f/30).door!==lockerMotion(STOP.locker.a).door)throw Error('Locker door moves');
- const trajectories=[['locker hero',(t:number)=>lockerMotion(t).hero.position,cue('7.locker').start,cue('8.secret').end],['pulled friend',(t:number)=>lockerMotion(t).friend,STOP.locker.a,STOP.locker.b],['rescue hero',(t:number)=>rescueMotion(t).hero.position,cue('10.night').start,cue('11.safe').end],['dragged elder',(t:number)=>rescueMotion(t).elder,STOP.elder.a,STOP.elder.b],['stranger',(t:number)=>manMotion(t).position,cue('13.sound').start,cue('18.prince').end],['chase hero',(t:number)=>counterHero(t).position,HERO_RUN,cue('18.prince').end]] as const;
- const paths=trajectories.map(([id,fn,a,b])=>{let max=0,when=0;for(let f=Math.ceil(a*30)+1;f<Math.floor(b*30);f++){const d=distance(fn(f/30),fn((f-1)/30));if(d>max){max=d;when=f;}}return {id,maxFrameStep:max,maxMetresPerSecond:max*30,atFrame:when};});
+ const stops=STOPS.map(s=>{
+  const fs=Array.from({length:s.end-s.start},(_,i)=>s.start+i);
+  if(fs.length!==150||!fs.every(f=>activeStop(f/30)?.id===s.id))throw Error('Stop length '+s.id);
+  if(new Set(fs.map(worldFrame)).size!==1)throw Error('Background clock moves '+s.id);
+  return {...s,seconds:5,worldFrame:worldFrame(s.start),renderedCutFrames:timing.cues.map(c=>Math.round(c.start*30)).filter(f=>f>s.start&&f<s.end)};
+ });
+ const held=(id:keyof typeof STOP,name:string,fn:(t:number)=>unknown,a=STOP[id].a,b=STOP[id].b-1/30)=>{
+  const s=STOP[id],states=new Set(samples(a,b).map(t=>JSON.stringify(fn(t)))).size;
+  if(states!==1)throw Error(`Untouched ${name} moves during ${id}`);
+  return {stop:id,name,states};
+ };
+ const untouched=[held('counter','stranger root',manMotion),held('counter','stranger pose',strangerPose),held('counter','rabbit',carriedRabbit),held('counter','witness gaze',motherGazeTarget),held('counter','second ice',t=>iceAt(t,1)),held('counter','third ice',t=>iceAt(t,2)),held('elder','arrow',rescueArrow),held('elder','bow',bowState),held('elder','zombies',zombiesAt),held('locker','untouched closed door',t=>lockerMotion(t).door,STOP.locker.a,LOCKER_OPEN_START),held('locker','released open door',t=>lockerMotion(t).door,LOCKER_OPEN_END,STOP.locker.b-1/30),held('locker','bully',bullyState),held('glass','cup',t=>glassState(t).cup)];
+ const trajectories=[
+  ['locker hero',(t:number)=>lockerMotion(t).hero.position,cue('7.locker').start,cue('8.secret').end],
+  ['pulled friend',(t:number)=>lockerMotion(t).friend,STOP.locker.a,STOP.locker.b],
+  ['rescue hero',(t:number)=>rescueMotion(t).hero.position,cue('10.night').start,cue('12.rabbit').end],
+  ['dragged elder',(t:number)=>rescueMotion(t).elder,STOP.elder.a,STOP.elder.b],
+  ['bedroom hero',(t:number)=>homeHero(t).position,cue('13.sound').start,HERO_RUN],
+  ['stranger',(t:number)=>manMotion(t).position,cue('13.sound').start,cue('18.prince').end],
+  ['chase hero',(t:number)=>counterHero(t).position,HERO_RUN,cue('18.prince').end],
+ ] as const;
+ const paths=trajectories.map(([id,fn,a,b])=>{let max=0,when=0;for(const t of samples(a+1/30,b)){const d=distance(fn(t),fn(t-1/30));if(d>max){max=d;when=Math.round(t*30);}}return {id,maxFrameStep:max,maxMetresPerSecond:max*30,atFrame:when};});
  if(paths.some(p=>p.maxMetresPerSecond>7.5))throw Error('Root speed/teleport '+JSON.stringify(paths));
- const contacts=[];
- for(const off of [.76,.9,1.1,2.85,3.18,3.56]){const t=STOP.counter.a+off,h=heroState(t);contacts.push({action:'rock',off,hero:h.position,hand:handWorld(h.position,h.yaw,TEEN,h.pose),rock:rockAt(t),distance:distance(handWorld(h.position,h.yaw,TEEN,h.pose),add(rockAt(t),[0,.1,0]))});}
- for(const off of [.3,.6,1,1.5,2]){const t=STOP.locker.a+off,q=lockerMotion(t),h=q.hero.position,target=add(q.friend,[-.22,1.14,.08]),yaw=Math.atan2(q.friend[0]-h[0],q.friend[2]-h[2]);const pose={bodyY:0,bodyPitch:0,bodyYaw:0,bodyRoll:0};const arm=aimHand(h,yaw,TEEN,pose,target);contacts.push({action:'sleeve',off,distance:distance(handWorld(h,yaw,TEEN,{...pose,armR:arm}),target)});}
- const toe=Array.from({length:24},(_,i)=>{const t=HIT-.3+i/30;return {t,foot:foot(t,1),rock:ROCK_END,distance:distance(foot(t,1),add(ROCK_END,[0,.13,0]))};});
- console.log('MODEL_AUDIT '+JSON.stringify({stops,paths,untouchedCounterStates:{man:same(manMotion),pose:same(strangerPose),rabbit:same(carriedRabbit)},contacts,toe,land:{t:LAND,man:manMotion(LAND),rabbit:carriedRabbit(LAND)},black:film.cutToBlackAt,frames:film.durationInFrames}));
+ const contact=(id:string,a:number,b:number,fn:(t:number)=>[Vec3,Vec3],limit=.012)=>{
+  let max=0,when=0;const times=samples(a,b);
+  for(const t of times){const points=fn(t),error=distance(...points);if(error>max){max=error;when=Math.round(t*30);}}
+  if(max>limit)throw Error(`Lost contact ${id}: ${max} at ${when}`);
+  return {id,samples:times.length,maxErrorMetres:max,atFrame:when,limit};
+ };
+ const contacts=[
+  contact('glass in left hand',cue('4.first').start,GLASS_DROP-1/30,t=>{const q=glassState(t);return [q.cup,add(handWorld(GLASS_ROOT,GLASS_YAW,.95,q.pose,-1),[0,-.14,0])];}),
+  contact('touch book',BOOK_TOUCH,BOOK_RELEASE-1/30,t=>{const q=touchState(t);return [q.book,add(handWorld(q.position,0,.95,q.pose),[0,-.055,0])];}),
+  contact('locker sleeve grip',LOCKER_GRAB,STOP.locker.a+1.93,t=>{const q=lockerState(t);return [handWorld(q.hero.position,q.yaw,.95,q.pose),q.target];}),
+  contact('touched door hand',LOCKER_OPEN_START,LOCKER_OPEN_END,t=>{const q=lockerState(t);return [handWorld(q.hero.position,q.yaw,.95,q.pose),lockerDoorContact(t)];}),
+  contact('locker book',LOCKER_PICK,LOCKER_PLACE-1/30,t=>{const q=lockerState(t);return [q.book,add(handWorld(q.hero.position,q.yaw,.95,q.pose),[0,.055,0])];}),
+  contact('elder collar',ELDER_GRAB,ELDER_RELEASE,t=>{const q=rescueState(t);return [handWorld(q.hero.position,q.yaw,.95,q.pose),q.shoulder];}),
+  contact('door toe',DOOR_KICK,DOOR_SHUT,t=>{const q=rescueState(t);return [footWorld(q.hero.position,q.yaw,.95,q.pose),doorContact(t)];}),
+  contact('thank-you carrot',CARROT_PASS,cue('12.rabbit').end,t=>{const q=rescueState(t);return [q.carrot,add(handWorld(q.hero.position,q.yaw,.95,q.pose),[0,-.13,0])];}),
+  contact('sash sleeves',SASH_DOWN,SASH_CLOSED+.07,t=>{const q=motherCheck(t);return [sleevePoint(q.position,q.yaw,.96,q.arm,q.offset,q.lean,0),windowState(t).handle];}),
+  contact('rock carry',PICK_ROCK,PLACE_ROCK-1/30,t=>{const h=heroState(t);return [rockAt(t),add(handWorld(h.position,h.yaw,.95,h.pose),[0,-.29,0])];}),
+  contact('stranger rabbit support',LIFT_START,TAKE_RABBIT-1/30,t=>{const q=manMotion(t);return [rabbitAt(t),add(handWorld(q.position,q.yaw,1,strangerPose(t),-1),[0,-.18,0])];}),
+  contact('hero rabbit support',TAKE_RABBIT,cue('18.prince').end,t=>{const q=heroState(t);return [rescuedRabbit(t),add(palmMid(q.position,q.yaw,.95,q.pose),[0,-.18,0])];}),
+ ];
+ const toe=samples(HIT-.18,HIT+.10).map(t=>{const q=manMotion(t);return {t,foot:footWorld(q.position,q.yaw,1,strangerPose(t)),rock:ROCK_END};});
+ if(!toe.some(q=>Math.abs(q.foot[0]-ROCK_END[0])<.126&&q.foot[1]>=0&&q.foot[1]<.25&&Math.abs(q.foot[2]-ROCK_END[2])<.108))throw Error('Toe misses placed rock');
+ console.log('MODEL_AUDIT '+JSON.stringify({revision:'full-motion-v2',stops,paths,untouched,contacts,toe,land:{t:LAND,man:manMotion(LAND),rabbit:carriedRabbit(LAND)},black:film.cutToBlackAt,frames:film.durationInFrames,limitations:'State/contact and frame-clock assertions; not a claim of entertaining performance or subjective playback.'}));
 }
 const Probe:React.FC<{expected:number;where:string}>=({expected,where})=>{const observed=useCurrentFrame();if(observed!==expected)throw Error(`Freeze clock ${where}: observed ${observed}, expected ${expected}`);return null;};
 let cursor=0;const seqs=film.scenes.map(s=>{const r={scene:s,from:cursor,duration:Math.round(s.duration*30)};cursor+=r.duration;return r;});

@@ -208,7 +208,7 @@ Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a w
 | Name | What it is | Its own props |
 |---|---|---|
 | `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs` |
-| `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1 |
+| `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1; optional `bowRaise` / `bowDraw` 0–1 for authored raise, string pull and release. Omit both to retain the legacy pose/string exactly |
 | `Creeper` | 1.6 m, no arms, four short legs, that face | `fuse` 0–1 (swells and flashes white), `color`. `mood="happy"` turns the mouth over |
 | `Spider` | 2 m across, under 1 m tall, glowing red eyes | `rear` 0–1 (front legs up), `color`, `eyes`. Wide: turn it three-quarters on in a tall frame |
 | `Enderman` | 2.9 m, black, purple eyes | `jaw` 0–1 (the scream), `shake` 0–1, `carry` 0–1 with `children` (the block it holds) |
@@ -265,6 +265,8 @@ Additive parts introduced for Five Seconds, not yet an owner-approved reference.
 | `IceCube` | Size, position, rotation, scale; opaque-enough body and bright cracked front |
 | `Arrow` | Points -Z, with head, wooden shaft and feathers |
 | `HingedLocker` | Truly hollow body and an `open` angle; regular `Locker` remains unchanged |
+| `SashWindow` | `open` 0–1, `width`, `height`, `night`; the lower sash slides on its tracks, with a real sleeve-height handle |
+| `BlockBurst` | `age`, `color`, `count`, `power`, `life`, `size`; pass the correct paused clock for physical debris in a time-stop scene |
 
 The shared `MinecraftAvatar` rig also has optional `poseOverride` and `leftHand`. They are default-off and leave existing performances unchanged; use them for authored contact and two-handed props, not pose jumps.
 

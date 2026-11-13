@@ -5,7 +5,7 @@ Requires numpy, Pillow, imageio-ffmpeg and the repo's Remotion ffprobe.
 Outputs reports and encoded-film contact sheets into out/five-seconds/delivery-qa/.
 """
 from pathlib import Path
-import sys, json, subprocess, hashlib, re, math, struct
+import sys, json, subprocess, hashlib, re, math, struct, os
 import numpy as np
 import imageio_ffmpeg
 from PIL import Image, ImageDraw, ImageFont
@@ -14,7 +14,7 @@ ROOT=Path.cwd()
 FILM='in-this-town-five-seconds'
 media=Path(sys.argv[1]).resolve()
 kind=sys.argv[2] if len(sys.argv)>2 else 'master'
-out=ROOT/'out/five-seconds/delivery-qa'/kind
+out=Path(os.environ.get('QA_OUTPUT',str(ROOT/'out/five-seconds/delivery-qa'/kind)))
 out.mkdir(parents=True,exist_ok=True)
 ffmpeg=imageio_ffmpeg.get_ffmpeg_exe()
 ffprobe=str(ROOT/'node_modules/@remotion/compositor-linux-x64-gnu/ffprobe')
@@ -62,7 +62,8 @@ assert len(pts)==frames
 pts_error=float(np.max(np.abs(pts-np.arange(frames)/30)))
 assert pts_error<2e-6, f'Nonuniform or shifted video timestamps: {pts_error}'
 encoded_stops=[]
-for stop in json.loads((ROOT/'src/videos'/FILM/'model-audit.json').read_text())['stops']:
+model_file=Path(os.environ.get('MODEL_AUDIT',str(ROOT/'src/videos'/FILM/'model-audit.json')))
+for stop in json.loads(model_file.read_text())['stops']:
     first_frozen, first_resumed = stop['start'], stop['end']
     held_seconds = float(pts[first_resumed] - pts[first_frozen])
     assert first_resumed-first_frozen == 150 and abs(held_seconds-5) < 1e-6
@@ -206,7 +207,7 @@ assert float(loudness['input_tp'])<=-0.3
 assert all(abs(float(re.search(r'black_start:([0-9.]+)',line).group(1))-expected_black/30)<1/30 for line in black),'Unexpected black interval'
 assert not frozen,'Review the unexpectedly frozen segments before delivery'
 # Additional preparation/travel/contact/recovery samples from the encoded master.
-cases=json.loads((ROOT/'src/videos'/FILM/'action-review-frames.json').read_text())
+cases=json.loads(Path(os.environ.get('ACTION_FRAMES',str(ROOT/'src/videos'/FILM/'action-review-frames.json'))).read_text())
 action_dir=out/'actions';action_dir.mkdir(exist_ok=True)
 action_frames=sorted({f for group in cases.values() for f in group})
 selected=selector(action_frames)

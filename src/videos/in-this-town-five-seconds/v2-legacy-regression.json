@@ -1,0 +1,186 @@
+{
+  "revision": "full-motion-v2",
+  "baselineSource": "cc8ed559fea2b23c1cc8e9d27cfd373ff8d522e8",
+  "status": "passed",
+  "filmSamples": 16,
+  "defaultSkeletonSamples": 2,
+  "pixelIdenticalSamples": 18,
+  "results": [
+    {
+      "filmOrFixture": "default-skeleton",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "50571ff24320627ab2caea0703a722927fca84cfae8c41a9f2ef57adc64f25d2",
+          "afterSha256": "50571ff24320627ab2caea0703a722927fca84cfae8c41a9f2ef57adc64f25d2",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-00039.png",
+          "frame": 39,
+          "beforeSha256": "0279f41becb958c9b69d5303a5726fa18585c142034d3059879090f3f61c3593",
+          "afterSha256": "0279f41becb958c9b69d5303a5726fa18585c142034d3059879090f3f61c3593",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "2 of 2 stills are the same, pixel for pixel."
+    },
+    {
+      "filmOrFixture": "in-this-town-freeze-bell",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "7eb72f7fb326732b47e19914263386de2046f86d47fabb4e3f297f5ffda800d1",
+          "afterSha256": "7eb72f7fb326732b47e19914263386de2046f86d47fabb4e3f297f5ffda800d1",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-01240.png",
+          "frame": 1240,
+          "beforeSha256": "98a792cf89f91d6dd940b9196d936b1b89126d29d8c8974b8b245e1fbae5ab55",
+          "afterSha256": "98a792cf89f91d6dd940b9196d936b1b89126d29d8c8974b8b245e1fbae5ab55",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-04770.png",
+          "frame": 4770,
+          "beforeSha256": "ee50b1c7d53cca08b9c41b8a744e3630ac42b6cdb55b77fdd773e051a2d3e9ce",
+          "afterSha256": "ee50b1c7d53cca08b9c41b8a744e3630ac42b6cdb55b77fdd773e051a2d3e9ce",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-05132.png",
+          "frame": 5132,
+          "beforeSha256": "59a7c68f62814fcf443942ee3df3dc6bbb8d1175cf251d6c1be5945b98c0ddf7",
+          "afterSha256": "59a7c68f62814fcf443942ee3df3dc6bbb8d1175cf251d6c1be5945b98c0ddf7",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "4 of 4 stills are the same, pixel for pixel."
+    },
+    {
+      "filmOrFixture": "in-this-town-monster-egg",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "fbf1f54290d676b18917914574884a37c1908634a1e9bf6a1f26973bab0138af",
+          "afterSha256": "fbf1f54290d676b18917914574884a37c1908634a1e9bf6a1f26973bab0138af",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-01240.png",
+          "frame": 1240,
+          "beforeSha256": "ab21f8dcdc298dff80440178f97fd8b075cb7fdb374160291d1d63f7ec72970a",
+          "afterSha256": "ab21f8dcdc298dff80440178f97fd8b075cb7fdb374160291d1d63f7ec72970a",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "2 of 2 stills are the same, pixel for pixel."
+    },
+    {
+      "filmOrFixture": "in-this-town-nobody-looked-at-the-moon",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "3ba4f0d95f0730ab08d39f732d2881f1ba18435ce417256b1fbb647fc86cdc37",
+          "afterSha256": "3ba4f0d95f0730ab08d39f732d2881f1ba18435ce417256b1fbb647fc86cdc37",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-01240.png",
+          "frame": 1240,
+          "beforeSha256": "3391ee1740fd00a9329de5c2bfb3a57c78caa37add185dd736297666c9a775d4",
+          "afterSha256": "3391ee1740fd00a9329de5c2bfb3a57c78caa37add185dd736297666c9a775d4",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "2 of 2 stills are the same, pixel for pixel."
+    },
+    {
+      "filmOrFixture": "in-this-town-pumpkin-heads",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "2e9395cc3743323a8483c6d6480adfcbd2f9d3cb77a9164dc7422081cbc15945",
+          "afterSha256": "2e9395cc3743323a8483c6d6480adfcbd2f9d3cb77a9164dc7422081cbc15945",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-01240.png",
+          "frame": 1240,
+          "beforeSha256": "6934f7b9fd6a03cd67ce995f1b04d56716c1fd0609a4212d9abc7137464f0d94",
+          "afterSha256": "6934f7b9fd6a03cd67ce995f1b04d56716c1fd0609a4212d9abc7137464f0d94",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "2 of 2 stills are the same, pixel for pixel."
+    },
+    {
+      "filmOrFixture": "in-this-town-same-face",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "b06a6c68776f327fc0c9656d95012d51d349e89e8f932c94f925e3d8d307d209",
+          "afterSha256": "b06a6c68776f327fc0c9656d95012d51d349e89e8f932c94f925e3d8d307d209",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-01240.png",
+          "frame": 1240,
+          "beforeSha256": "625a8af9c679e9229682706675be71913e095040e2da972c4b93af88c4184ad4",
+          "afterSha256": "625a8af9c679e9229682706675be71913e095040e2da972c4b93af88c4184ad4",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "2 of 2 stills are the same, pixel for pixel."
+    },
+    {
+      "filmOrFixture": "in-this-town-superpower-at-18",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "5e83113c39ff97b2254329f5156fd87678e0d50c7cca399f452f5a73a161efc3",
+          "afterSha256": "5e83113c39ff97b2254329f5156fd87678e0d50c7cca399f452f5a73a161efc3",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-01240.png",
+          "frame": 1240,
+          "beforeSha256": "ae4de8a5b0270dada8e95c8f3c1d754df392d1355850f7ea350204b418f1a6d6",
+          "afterSha256": "ae4de8a5b0270dada8e95c8f3c1d754df392d1355850f7ea350204b418f1a6d6",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "2 of 2 stills are the same, pixel for pixel."
+    },
+    {
+      "filmOrFixture": "in-this-town-superpower-at-18-part-2",
+      "samples": [
+        {
+          "name": "frame-00000.png",
+          "frame": 0,
+          "beforeSha256": "a596918ab9a0d3e51f969d05ef710d17b1b15f6b6a9b507d9657200870c69799",
+          "afterSha256": "a596918ab9a0d3e51f969d05ef710d17b1b15f6b6a9b507d9657200870c69799",
+          "pixelsEqual": true
+        },
+        {
+          "name": "frame-01240.png",
+          "frame": 1240,
+          "beforeSha256": "180a7b4b611021f5aa3d9c1ee7adb79493a7cff817a992167e1bc512c3636956",
+          "afterSha256": "180a7b4b611021f5aa3d9c1ee7adb79493a7cff817a992167e1bc512c3636956",
+          "pixelsEqual": true
+        }
+      ],
+      "comparison": "2 of 2 stills are the same, pixel for pixel."
+    }
+  ],
+  "scope": "Sampled frames in seven films, including two additional Freeze Bell ending views, plus two explicit default Skeleton-bow states. Not an all-frame regression.",
+  "noLegacySourceOrAudioRebuild": true
+}

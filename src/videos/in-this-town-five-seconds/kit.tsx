@@ -22,7 +22,7 @@ export const TABLE_FRIEND:Vec3=[.65,0,-.65];
 
 /** SAME Freeze Bell identity, grown to a teen; only the requested shirt/scale change. */
 export const Hero:React.FC<Partial<MinecraftAvatarProps>>=p=><MinecraftAvatar scale={TEEN} outfit="tee" skin="#dba47c" hair="#3b2319" colors={{torso:"#d83832",arms:"skin",legs:"#314b79"}} face="calm" blink phase={.31} {...p}/>;
-export const Stranger:React.FC<Partial<MinecraftAvatarProps>>=p=><MinecraftAvatar scale={1} outfit="tee" skin="#cf9e7c" hair="#645247" colors={{torso:"#f3efe4",arms:"#e9e6de",legs:"#d6d2c8"}} face="bearded" blink phase={1.12} {...p}/>;
+export const Stranger:React.FC<Partial<MinecraftAvatarProps>>=p=><MinecraftAvatar scale={1} outfit="tee" skin="#cf9e7c" hair="#645247" colors={{torso:"#f3efe4",arms:"#e9e6de",legs:"#d6d2c8"}} face="bearded" blink phase={1.12} leftHand={<Block position={[0,-.012,0]} size={[.228,.12,.228]} color="#cf9e7c"/>} {...p}><Block position={[0,-.012,0]} size={[.228,.12,.228]} color="#cf9e7c"/></MinecraftAvatar>;
 export const Friend:React.FC<React.ComponentProps<typeof Villager>>=p=><Villager scale={.88} robe={ROBE.friend} phase={1.2} {...p}/>;
 export const Mother:React.FC<React.ComponentProps<typeof Villager>>=p=><Villager scale={.96} robe={ROBE.white} phase={2.1} {...p}/>;
 export const Elder:React.FC<React.ComponentProps<typeof Villager>>=p=><Villager scale={.92} robe={ROBE.elder} phase={.6} {...p}/>;

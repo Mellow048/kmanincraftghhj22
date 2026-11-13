@@ -1,10 +1,11 @@
 import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL } from "./kit";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { homeHero, iceAt } from "./chase-motion";
 
 /** Beat 7: An inch from his nose. Camera cuts do not reset the underlying performance. */
 export const scene7=storyScene(timing,{
@@ -20,16 +21,16 @@ export const scene7=storyScene(timing,{
     stage:(local:number)=><LockerAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),
   (()=>{const id="7.door";return {cue:"7.door",zone:"hall",look:"overworld-day" as const,
-    ...cam.push({on:[.05,1.35,-.8],dist:3.6,to:3.2,yaw:0,pitch:4,fov:48}),
+    ...cam.push({on:[.05,1.02,-.35],dist:4.0,to:3.65,yaw:24,pitch:12,fov:50}),
     note:"The blue door visibly swings from its left hinge toward the villager's nose. The bully's arm supplies the wind-up.",
     stage:(local:number)=><LockerAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),
   (()=>{const id="7.stop";return {cue:"7.stop",zone:"hall",look:"overworld-day" as const,
     ...({
-    from:[.68,1.49,-.65],
-    to:[.63,1.47,-.64],
-    target:[0,1.34,-.59],fov:46,ease:'inOutSine' as const}),
-    note:"A close profile of door edge and long nose as the swing stops. All bullies, background children and light motion stop with it.",
+    from:[.45,2.50,-.55],
+    to:[.42,2.43,-.55],
+    target:[0,1.42,-.63],fov:47,ease:'inOutSine' as const}),
+    note:"The blue panel stops an inch from his nose. Then the hero visibly reaches the near hinge and swings the touched door clear; the untouched bully, background children and lights stay frozen.",
     stage:(local:number)=><LockerAction t={Math.round((cue(id).start+local)*30)/30}/>,
   };})(),
 ]});
