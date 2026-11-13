@@ -1,9 +1,11 @@
 import type React from "react";
-import { Block, Clouds, Curtains, Door, DoorFrame, Dust, Glow, GodRay, LightPool, PixelText, Tree, Vox, WallClock, useActiveShot, useFilmTime } from "../../engine";
+import { Block, CeilingLight, Clouds, Curtains, Door, DoorFrame, Dust, Glow, GodRay, LightPool, PixelText, Tree, Vox, WallClock, WindowUnit, useActiveShot, useFilmTime } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { BedBox, Bread, Fence, Hut, LanternPost, Bowl, GlassCup, Book, HingedLocker, Rock } from "../../../Topics/InThisTown";
+import { BedBox, Bread, Fence, Hut, LanternPost, Bowl, GlassCup, Book, HingedLocker, Rock, Cord } from "../../../Topics/InThisTown";
 import { Classroom, SchoolHall } from "../../../Topics/WhatIf/school";
 import { WorldClock, HOME, HOME_BED, STOP, cue, at, phase, smooth, mix, lockerMotion, rescueMotion, MAN_FREEZE, ROCK_START, Table, v, worldTime, FIRST_WALL, FIRST_IMPACT } from "./kit";
+
+import { curtainState } from "./domestic-motion";
 
 /** A shared continuous street, not a new set at every cut.
  * x east. z north is negative. The hero's real doorway is (-5,-2), elder's (0,-2).
@@ -32,7 +34,7 @@ const Facade:React.FC<{at:Vec3;door:number;home?:boolean;night:boolean;curtain?:
   <Block position={[1.5,1.65,.075]} size={[1.4,.055,.04]} color="#63452e"/>
   <Block position={[1.5,1.65,.075]} size={[.06,1.26,.04]} color="#63452e"/>
   <Vox kind="planks" position={[1.5,1.04,.14]} size={[1.7,.1,.35]}/>
-  <Curtains position={[1.5,1.68,-.16]} width={1.65} height={1.32} gap={curtain} color={home?"#537e85":"#866387"}/>
+  <Curtains position={[1.5,1.68,-.16]} width={1.65} height={1.32} gap={curtain} color={home?"#537e85":"#866387"} topHung/>
   <LanternPost position={[-1.04,0,.2]} height={2.25} light={night?3:0} seed={home?23:29}/>
   {night?<><pointLight position={[0,1.6,-1.8]} color="#ffcc8b" intensity={9} distance={6}/><LightPool position={[0,.075,.72]} width={2.7} depth={2.8} color="#e7b879" opacity={.22}/></>:null}
   {home?<>
@@ -42,7 +44,7 @@ const Facade:React.FC<{at:Vec3;door:number;home?:boolean;night:boolean;curtain?:
   </>:<><Table position={[1.5,0,-2.7]} size={[1.3,.8]}/><Bowl position={[1.4,.82,-2.7]}/><Block position={[-1.4,.3,-2.9]} size={[1.2,.6,.6]} color="#694c39"/></>}
 </group>;
 const Kitchen:React.FC<{t:number;night:boolean}>=({t,night})=>{
- const curtain=t<cue('2.curtains').start?1.25:t<cue('3.school').start?mix(1.25,.03,smooth(phase(t,at('2.curtains','closed'),cue('2.curtains').end-.12))):t>=cue('6.told').start?.08:1.25;
+ const curtain=curtainState(t);
  return <>
  <Vox kind="planks" position={[0,-.08,.3]} size={[6.4,.16,16]}/>
  <Vox kind="planks" tint="#c7ab7c" position={[0,1.7,-2.55]} size={[6.4,3.4,.18]} castShadow={false}/>
@@ -52,19 +54,27 @@ const Kitchen:React.FC<{t:number;night:boolean}>=({t,night})=>{
  <Block position={[1.48,1.82,-2.42]} size={[1.6,1.4,.1]} color="#695139"/>
  <Block position={[1.48,1.82,-2.35]} size={[1.42,1.24,.035]} color={night?"#577397":"#bbe0eb"} emissive="#c0d4df" emissiveIntensity={night?.15:.35}/>
  <Block position={[1.48,1.82,-2.31]} size={[.06,1.24,.035]} color="#695139"/>
- <Curtains position={[1.48,1.82,-2.22]} width={1.9} height={1.65} gap={curtain} color="#537e85"/>
+ <Block position={[1.48,1.82,-2.31]} size={[1.42,.055,.035]} color="#695139"/>
+ <Vox kind="planks" tint="#876545" position={[1.48,1.06,-2.23]} size={[1.88,.12,.38]}/>
+ <pointLight position={[1.48,2.2,-1.97]} color="#c7e1f0" intensity={3.2*(1-curtain.amount)} distance={4.5}/>
+ <Curtains position={[1.48,1.82,-2.22]} width={1.9} height={1.65} gap={curtain.gap} color="#537e85" topHung flutter={curtain.flutter}/>
+ <Cord from={[2.42,2.72,-2.13]} to={curtain.grip}/><Block position={curtain.grip} size={[.065,.1,.06]} color="#80613c"/>
  <DoorFrame position={[-1.75,0,-2.4]} width={1.1} height={2.2}/><Door position={[-2.25,0,-2.36]} width={1} color="#82613c"/>
  <TickClock position={[-.25,2.3,-2.35]}/>
  <Table position={[.1,0,.18]} size={[2.15,.8]}/>
  <Vox kind="cobble" position={[-2.1,.45,-1.3]} size={[1.4,.9,.72]}/><Block position={[-2.1,.92,-1.3]} size={[1.48,.06,.8]} color="#728d93"/>
- {t<cue('6.told').start||t>=cue('6.rule').start?<Bowl position={[-2.1,.96,-1.3]}/>:null}
+ {t<cue('6.told').start||t>=cue('7.locker').start?<Bowl position={[-2.1,.96,-1.3]}/>:null}
+ <Block position={[-2.38,.955,-1.3]} size={[.60,.018,.52]} color="#546d79"/>
+ <Block position={[-2.38,.966,-1.3]} size={[.48,.008,.4]} color="#8fb9c1" opacity={.42}/>
+ <Block position={[-2.41,1.1,-1.62]} size={[.055,.30,.06]} color="#b5c2bf" metalness={.55}/>
+ <Block position={[-2.41,1.24,-1.51]} size={[.055,.055,.26]} color="#d7dfd7" metalness={.55}/>
  <Vox kind="planks" position={[-2.7,1.85,-2.35]} size={[.78,.08,.35]}/>
  <GlassCup position={[-2.75,1.9,-2.27]}/><Book position={[-2.5,1.94,-2.27]} scale={.65}/>
  <Block position={[2.45,.02,.55]} size={[.8,.04,2]} color="#6c877e"/>
  <LanternPost position={[2.7,0,-1.5]} height={2.4} light={4}/>
- <pointLight position={[-.5,2.5,2.5]} color="#d7e8ee" intensity={5} distance={7}/>
- <GodRay position={[1.4,1.5,-.5]} rotation={[.45,0,.3]} width={1.3} height={4} color="#c5e6f3" opacity={.06}/>
- <LightPool position={[1.2,.03,.65]} width={2.4} depth={3} color="#a7c9df" opacity={.13}/>
+ <pointLight position={[-.5,2.5,2.5]} color="#d7e8ee" intensity={3.5+1.5*(1-curtain.amount)} distance={7}/>
+ <GodRay position={[1.4,1.5,-.5]} rotation={[.45,0,.3]} width={1.3} height={4} color="#c5e6f3" opacity={.06*(1-curtain.amount)}/>
+ <LightPool position={[1.2,.03,.65]} width={2.4} depth={3} color="#a7c9df" opacity={.13*(1-curtain.amount)}/>
  <Glow position={[2.7,2.35,-1.5]} size={1.3} color="#ffd49c" opacity={.2}/>
  <Dust position={[0,1.7,0]} area={[5,2.7,4]} count={30} size={.022} opacity={.3} speed={.15}/>
  </>;
@@ -101,10 +111,26 @@ const Street:React.FC<{t:number;night:boolean;rescue:boolean}>=({t,night,rescue}
  </>;
 };
 const LunchSet:React.FC=()=> <>
+ <Vox kind="planks" tint="#c4ad7f" position={[0,1.7,3.8]} size={[12,3.4,.18]} castShadow={false}/>
+ {[-1,1].map(s=><group key={s}>
+  <Vox kind="planks" tint="#c4ad7f" position={[s*6,1.7,.8]} size={[.18,3.4,6.2]} castShadow={false}/>
+  <Vox kind="log" position={[s*5.83,.16,.8]} size={[.14,.32,6.1]}/>
+  <Vox kind="log" position={[s*5.83,3.12,.8]} size={[.14,.24,6.1]}/>
+  {[-.65,2.15].map(z=><WindowUnit key={z} position={[s*5.87,1.94,z]} rotationY={-s*Math.PI/2} width={1.65} height={1.35} dim={.4}/>)}
+ </group>)}
+ {[-2.2,.25,2.7].map(x=><WindowUnit key={x} position={[x,1.95,3.66]} rotationY={Math.PI} width={1.75} height={1.4} dim={.4}/>)}
+ <Vox kind="planks" tint="#b9ab8b" position={[0,3.43,.8]} size={[12,.12,6.2]} castShadow={false}/>
+ <Vox kind="log" position={[0,3.1,3.62]} size={[12,.24,.2]}/>
+ <Vox kind="log" position={[0,.16,3.62]} size={[12,.32,.2]}/>
+ <CeilingLight position={[0,3.23,.75]} size={[1.2,.24]} intensity={4.5} lightColor="#f7e8cb"/>
+ <GodRay position={[3,1.45,1.3]} rotation={[0,0,.72]} width={1.2} height={4.5} color="#d2e6f0" opacity={.045}/>
+ <Tree position={[4.8,0,2.8]} height={1.6} leaf="#4f7944"/><Vox kind="planks" position={[4.8,.17,2.8]} size={[.52,.34,.52]}/>
+ {[-1,1].flatMap(z=>[-1,1].map(x=><Vox key={`${x}-${z}`} kind="log" position={[x*1.15,.17,z*.78]} size={[.12,.34,.35]}/>))}
  <Vox kind="stone" position={[0,-.07,0]} size={[12,.14,9]}/><Vox kind="planks" tint="#c4ad7f" position={[0,1.5,-2.2]} size={[12,3,.2]} castShadow={false}/>
  <Block position={[0,2.1,-2.05]} size={[2.4,.55,.04]} color="#3e7582"/><PixelText text="LUNCH" position={[0,2.1,-2.02]} height={.3} color="#f4e9ca"/>
- <Table position={[0,0,0]} size={[2.9,1.05]}/><Vox kind="planks" position={[0,.38,.92]} size={[2.9,.12,.35]}/><Vox kind="planks" position={[0,.38,-.95]} size={[2.9,.12,.35]}/>
- {[-4,4].map(x=><group key={x}><Table position={[x,0,-.5]}/><Vox kind="planks" position={[x,.38,.45]} size={[2.7,.12,.35]}/><Book position={[x,.85,-.4]}/></group>)}
+ <Table position={[0,0,0]} size={[2.9,1.05]}/><Vox kind="planks" position={[0,.38,.78]} size={[2.9,.12,.48]}/><Vox kind="planks" position={[0,.38,-.78]} size={[2.9,.12,.48]}/>
+ {[-4,4].map(x=><group key={x}><Table position={[x,0,-.5]}/><Vox kind="planks" position={[x,.38,.45]} size={[2.7,.12,.35]}/><Book position={[x,.85,-.4]}/>{[-1,1].map(s=><Vox key={s} kind="log" position={[x+s*1.05,.17,.45]} size={[.12,.34,.27]}/>)}</group>)}
+ <pointLight position={[1.6,2.3,-1.5]} intensity={3} distance={5} color="#bad5e3"/>
  <LightPool position={[1,.03,.5]} width={5} depth={4} color="#f5e9bb" opacity={.12}/><Dust position={[0,1.8,0]} area={[9,3,6]} count={25} size={.025} speed={.1} opacity={.25}/>
 </>;
 export const World:React.FC=()=>{

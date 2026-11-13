@@ -55,6 +55,13 @@ export type VillagerProps = {
   /** Sitting, the way a doll sits: legs straight out in front. Put `position` 0.56 m × scale under the seat. */
   sit?: boolean;
   phase?: number;
+  /** Optional authored movement of the SAME joined sleeves. No fingers, new face or separate hands. */
+  foldedArms?: { rotation?: Vec3; offset?: Vec3 };
+  /** Deterministic body accents for a contact performance; omit to preserve the original idle exactly. */
+  bodyBob?: number;
+  bodyRoll?: number;
+  /** Blend the authored distance gait into planted feet at arrival. Default keeps the legacy gait. */
+  walkAmount?: number;
 };
 
 /**
@@ -78,13 +85,17 @@ export const Villager: React.FC<VillagerProps> = ({
   kid = false,
   sit = false,
   phase = 0,
+  foldedArms,
+  bodyBob,
+  bodyRoll,
+  walkAmount = 1,
 }) => {
   const t = useFilmTime();
   const u = U;
   const gait = walk * 5.4;
-  const swing = Math.sin(gait) * 0.55;
-  const bob = Math.abs(Math.sin(gait)) * 0.03 + Math.sin(t * 1.3 + phase) * 0.005;
-  const sway = Math.sin(gait) * 0.035;
+  const swing = Math.sin(gait) * 0.55 * walkAmount;
+  const bob = bodyBob ?? (Math.abs(Math.sin(gait)) * 0.03 + Math.sin(t * 1.3 + phase) * 0.005);
+  const sway = bodyRoll ?? Math.sin(gait) * 0.035;
 
   let yaw = turn;
   let pitch = nod;
@@ -115,7 +126,7 @@ export const Villager: React.FC<VillagerProps> = ({
         <Block position={[0, 6 * u, 0]} size={[8 * u, 12 * u, 6 * u]} color={robe} />
         <Block position={[0, -2.6 * u, 0]} size={[8.7 * u, 7.2 * u, 6.7 * u]} color={shade(robe, -0.09)} />
         {/* The arms: two sleeves and the block that joins them. They are one piece, and they stay one piece. */}
-        <group position={[0, (9 + strain * 1.6) * u + shake * 0.007, 1 * u]} rotation={[-0.75 - strain * 0.3 + shake * 0.05, 0, 0]}>
+        <group position={[foldedArms?.offset?.[0] ?? 0, (9 + strain * 1.6) * u + shake * 0.007 + (foldedArms?.offset?.[1] ?? 0), 1 * u + (foldedArms?.offset?.[2] ?? 0)]} rotation={foldedArms?.rotation ?? [-0.75 - strain * 0.3 + shake * 0.05, 0, 0]}>
           {[-1, 1].map((s) => (
             <Block key={s} position={[s * 6 * u, -2 * u, 0]} size={[4 * u, 8 * u, 4 * u]} color={sleeve} />
           ))}

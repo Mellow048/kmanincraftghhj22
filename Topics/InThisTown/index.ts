@@ -18,3 +18,5 @@ export * from "./monsters";
 export * from "./fields";
 
 export * from "./small-props";
+
+export { Cord, HingedBook } from "./small-props";

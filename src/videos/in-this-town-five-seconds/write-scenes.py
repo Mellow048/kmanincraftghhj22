@@ -12,13 +12,13 @@ scenes=[
 ('2.mother','kitchen',"push([-.05,1.25,.0],4.9,4.5,10,6,48)","Put the long-nosed white-robed mother and the red-shirted player face in one frame: their difference is immediately readable."),
 ('2.adopted','kitchen',"push([-1.08,1.16,-.1],2.8,2.6,15,9,44)","A memory of her folded arms supporting the same child as a small baby. No age is invented."),
 ('2.where','kitchen',"push([.8,1.46,.75],1.8,1.6,-35,3,38)","His question, on his face; the mother looks away in the background instead of answering."),
-('2.answer','kitchen',"push([-.9,1.47,-.4],2.0,1.8,10,3,38)","The mother deliberately turns her nose away toward breakfast. This is evasion, not an exposition speech."),
-('2.curtains','kitchen',"push([1.45,1.6,-2.15],2.25,2.05,0,4,46)","Follow her actual walk to the window and watch the two curtains meet. Her secrecy is planted in a physical action.")]),
+('2.answer','kitchen',"({from:[-1.8,1.85,2.6],to:[-1.55,1.9,2.3],target:[-.9,1.05,-.4],targetPath:[0,.25,.5,.75,1].map(k=>add(curtainsMother(cue(id).start+(cue(id).end-cue(id).start-1/30)*k).position,[0,1.05,0])),fov:49,ease:'linear' as const})","Her head leads the evasive turn, then her feet carry her to the window. Track the whole walk rather than cutting from one standing position to another."),
+('2.curtains','kitchen',"({from:[-.65,2.08,1.25],to:[-.40,2.0,1.1],target:[1.85,1.5,-2.07],targetTo:[1.88,1.5,-2.07],fov:50,ease:'inOutSine' as const})","Keep sleeves, cord, rail and cloth in frame. She reaches, catches the cord, pulls decisively on closed, then releases as the top-hung panels settle and the window light dims.")]),
 ('A seat, a loaf, one black ear','SchoolDay',[
 ('3.school','kitchen',"push([-.2,1.15,-.3],4.8,4.4,10,6,48)","Breakfast first: the teenager leaves the table for the door, showing where the school-day transition begins."),
 ('3.class','class',"push([0,1.1,.2],10.2,9.5,0,3,58)","From behind the class toward the chalkboard: villagers and player children, nine desks, the teacher winding up and throwing chalk."),
 ('3.seat','class',"push([-1.2,1.25,1.25],4.7,4.3,125,4,52)","Stack the two adjoining desks in depth. His green-robed friend turns toward the seat he has saved."),
-('3.lunch','lunch',"push([0,.96,.25],3.4,3,0,23,45)","A half loaf slides across the real tabletop between them, with the friend's half still beside his book."),
+('3.lunch','lunch',"push([.02,1.04,-.02],4.1,3.85,-90,22,49)","His sleeve pushes a share of the bread across the wood; the red-shirted boy leans forward to receive it. The other share stays on the friend's side."),
 ('3.rabbit','street',"push([1.25,.8,1.2],3.7,3.3,40,13,46)","The two friends bend to the neighbor's rabbit. See the carrot leave the boy's hand and reach the ground."),
 ('3.ear','street',"push([1.28,.4,1.1],1.65,1.45,135,15,42)","The rabbit's unmistakable black ear and twitching nose, then its mouth at his pale shoelace: an affectionate identification, not a disposable animal.")]),
 ('The first stop','GlassDiscovery',[
@@ -33,10 +33,10 @@ scenes=[
 ('5.proud','class',"push([1.2,1.46,.9],1.8,1.6,170,3,36)","Proud eyes right over the frozen chalk. He never steps away: the mistake is visible before the punchline."),
 ('5.bonk','class',"push([1.2,1.46,.78],2.2,1.95,165,4,40)","Hold the same spatial relationship through the exact fifth second. Chalk taps his nose, powder scatters, his head recoils.")]),
 ('Who was she hiding me from?','MotherStory',[
-('6.told','kitchen',"push([.25,1.25,.2],3.8,3.5,-15,5,43)","Over the mother's side of the kitchen, he tells her what happened, still in his recognizable red shirt."),
-('6.hands','kitchen',"push([-1.68,1.1,-.5],3.5,3.15,15,15,46)","The bowl lowers to the washing counter. Her interruption is the answer before her words are."),
-('6.rule','kitchen',"push([-1.4,1.49,-.5],2.1,1.75,10,3,38)","Mother's one long eyebrow fills the frame. A warning from someone who already knows what he is."),
-('6.question','kitchen',"push([.8,1.46,.75],1.85,1.65,-25,3,38)","His eyes search her face. No invented explanation answers the question."),
+('6.told','kitchen',"({from:[1.9,1.95,3.6],to:[1.65,1.9,3.4],target:[-.65,1.12,-.8],fov:49,ease:'inOutSine' as const})","The boy gestures about the glass across the kitchen; mother is actually washing the bowl before she hears him. Her head stops first, before she sets it down."),
+('6.hands','kitchen',"push([-1.70,1.17,-1.25],3.35,3.18,10,12,46)","Stay on the same joined sleeves and bowl through the lowering, countertop contact, release and her turn toward him. The bowl never travels independently of its support."),
+('6.rule','kitchen',"push([-1.16,1.48,-1.3],2.15,1.99,50,5,40)","She has finished setting the bowl down. Now the white-robed mother turns toward the boy and gives the warning, rather than holding a generic idle pose."),
+('6.question','kitchen',"push([.8,1.46,.75],1.85,1.65,-110,3,38)","His eyes search her face. No invented explanation answers the question."),
 ('6.lock','kitchen',"push([-1.65,1.3,-1.8],2.9,2.55,15,5,43)","Track her last steps to the actual door; the latch slides home rather than cutting straight to an already locked door.")]),
 ('An inch from his nose','LockerAction',[
 ('7.locker','hall',"push([.15,1.08,-.4],6.4,5.8,0,8,50)","Two player bullies crowd the green-robed friend into a hollow locker. The red hero is approaching from the left of the same hallway."),
@@ -51,9 +51,9 @@ scenes=[
 ('8.friend','hall',"push([-.95,1.42,.16],2,1.8,-45,4,38)","The friend's puzzled glance moves from the blue book to the red sleeve. He has a reasonable, wrong explanation."),
 ('8.secret','hall',"push([-1.86,1.46,.16],2,1.8,60,3,38)","A tiny look away from the hero: he accepts the ordinary explanation instead of bragging.")]),
 ('He protected me, too','Lunch',[
-('9.lunch','lunch',"push([0,.85,.1],3.3,2.8,0,25,46)","This time an entire loaf crosses the same tabletop. Reusing the geography makes the change in generosity immediate."),
-('9.why','lunch',"push([.65,1.28,-.65],2,1.8,0,3,40)","The villager friend leans toward the hero and speaks; his wish is sincere, not a throwaway joke."),
-('9.math','lunch',"push([0,.93,-.08],2.5,2.15,0,38,46)","Tilt to the open exercise book, then the red-shirted boy follows the lines and understands. The friend has something real to give back."),
+('9.lunch','lunch',"push([.02,1.04,-.02],4.1,3.85,-90,22,49)","The same table, but a whole loaf: the friend leans into a real sleeve-led push and the boy reaches forward to meet it. No loaf floats between the actors."),
+('9.why','lunch',"push([.6,1.32,-.78],2.25,2.10,-5,8,41)","He releases the loaf and straightens, then leans into his sincere wish to protect the boy too. The generosity and the hesitation belong to the same performance."),
+('9.math','lunch',"({from:[-2.8,2.15,-1.55],to:[-2.5,1.86,-1.4],target:[-.61,.99,.2],targetTo:[-.43,1.26,.54],fov:44,ease:'inOutSine' as const})","The boy's hand hinges the blue cover open, revealing the actual multiplication exercise. Lift the view with his understanding and small nod, while his friend explains across the table."),
 ('9.help','class',"push([0,1.35,1.25],2.2,1.95,125,4,44)","Back at the recognizable middle desk, his hand rises and his face changes: he has the answer without stopping time.")]),
 ('The arrow left first','RescueAction',[
 ('10.night','street',"follow(id,t=>add(rescueMotion(t).hero.position,[0,1.3,0]),3.7,0,6,44)","Warm doorway against the blue street. He hears the shout and steps out toward the neighbor, not straight into a new danger pose."),
@@ -161,12 +161,13 @@ for n,(title,default,shots) in enumerate(scenes,1):
     stage:(local:number)=><{stage} t={{Math.round((cue(id).start+local)*30)/30}}{prop}/>,
   }};}})(),'''
         items.append(item)
-    (P/f'scene{n}.tsx').write_text(imports+f'\n/** Beat {n}: {title}. Camera cuts do not reset the underlying performance. */\nexport const scene{n}=storyScene(timing,{{\n id:"scene{n}",title:{json.dumps(title)},shots:[\n'+'\n'.join(items)+'\n]});\n')
+    (P/f'scene{n}.tsx').write_text(imports+('import { curtainsMother } from "./domestic-motion";\n' if n==2 else '')+f'\n/** Beat {n}: {title}. Camera cuts do not reset the underlying performance. */\nexport const scene{n}=storyScene(timing,{{\n id:"scene{n}",title:{json.dumps(title)},shots:[\n'+'\n'.join(items)+'\n]});\n')
 film='''import { defineFilm } from "../../engine";
 import { timing, BLACK_AT } from "./kit";
 import { World } from "./world";
 '''+''.join(f'import {{ scene{i} }} from "./scene{i}";\n' for i in range(1,19))+'''
-/** Owner-approved full film: same teenage hero, a secret five-second power, and a prince recognition.
+/** Owner-approved STORY: same teenage hero, a secret five-second power, and a prince recognition.
+ * Picture is under revision after V1 motion/visual feedback; it is not owner-approved.
  * The narration is exact Draft 2 plus the separately approved trip revision.
  * Default full-film limits, NOT cut:"short". This ending has its own scoped owner exception.
  */

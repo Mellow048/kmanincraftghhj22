@@ -258,10 +258,14 @@ Additive parts introduced for Five Seconds, not yet an owner-approved reference.
 | Name | Useful controls |
 |---|---|
 | `Rabbit` | `blackEar`, `hop`, `frost`, `twitch`; origin at feet, nose +Z; eyes and nose stay readable while carried |
-| `Book` | `open`, `color` |
+| `Book` | `open`, `color`; original simple prop remains unchanged |
+| `HingedBook` | `opening` 0–1, `color`; the cover rotates continuously about its spine, revealing the pages |
+| `Cord` | `from`, `to`, `radius`, `color`; a real 3D segment between authored contacts |
 | `Rock`, `GlassCup`, `Bowl` | Position, rotation, scale; cup also has `water` |
 | `IceCube` | Size, position, rotation, scale; opaque-enough body and bright cracked front |
 | `Arrow` | Points -Z, with head, wooden shaft and feathers |
 | `HingedLocker` | Truly hollow body and an `open` angle; regular `Locker` remains unchanged |
 
 The shared `MinecraftAvatar` rig also has optional `poseOverride` and `leftHand`. They are default-off and leave existing performances unchanged; use them for authored contact and two-handed props, not pose jumps.
+
+Five Seconds' **motion revision is under review, not a reference**. It adds opt-in villager `foldedArms: {rotation, offset}` (the same joined sleeves, never player hands), `bodyBob`, `bodyRoll`, and `walkAmount` for settling the distance-driven gait into planted feet. Omit them to keep the existing performance exactly. The engine `Curtains` similarly opts into corrected top-hung panels with `topHung` and authored `flutter`; old defaults are preserved. Contact choreography must include the actual actor transform rather than sliding a prop toward an ideal hand point.

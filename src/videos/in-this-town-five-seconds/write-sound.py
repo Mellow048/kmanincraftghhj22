@@ -32,14 +32,28 @@ for t in [1.52,3.15,3.92]:event(t,'step_wood','The only moving student takes a v
 fx('1.friend','rustle','His glance to the friend, not movement from the frozen friend.',at=.3,gain=-14)
 fx('2.adopted','rustle','Mother supports the small child in the memory.',word='adopted',gain=-12)
 fx('2.where','blip','A question on his face.',word='where',gain=-13)
-fx('2.answer','swish','Her evasive turn away.',word='changed',gain=-13,dur=.14)
+fx('2.answer','swish','Her head leads the evasive turn before her walk.',word='I',at=-.12,gain=-13,dur=.14)
 fx('2.curtains','rustle','The curtains physically meet.',word='closed',dur=.65,gain=-11)
-for t in [.25,.65]:fx('2.curtains','step_wood','Her walk to the window.',at=t,gain=-14)
+# The curtain walk begins in 2.answer, not after the cut. Same distance/anchors as domestic-motion.ts.
+walk_start=word('2.answer','asked')-.13;arrive=word('2.curtains','closed')-.3
+walk_length=math.hypot(2.52+.9,-1.72+.4)
+for n in range(1,7):
+    fraction=(n*math.pi/5.4)/walk_length
+    lo,hi=0.,1.
+    for _ in range(35):
+        k=(lo+hi)/2
+        if k*k*(3-2*k)<fraction:lo=k
+        else:hi=k
+    event(walk_start+(arrive-walk_start)*(lo+hi)/2,'step_wood','A planted half-stride on the continuous walk to the curtain cord.',gain=-14,**({'trim':3} if n==4 else {}))
+event(arrive,'step_wood','Her last foot settles before she pulls.',gain=-15)
+fx('2.curtains','swish','The joined sleeve reaches the curtain cord.',word='closed',at=-.43,dur=.2,gain=-14)
+fx('2.curtains','scrape','The cord and rings move under her pull.',word='closed',dur=.38,gain=-14)
+fx('2.curtains','place','The two top-hung panels meet, then settle.',word='closed',at=.38,gain=-15)
 for t in [.45,1.05,1.65]:fx('3.school','step_wood','The teenager leaves the breakfast table.',at=t,gain=-13)
 fx('3.class','school_bell','The classroom transition.',gain=-13)
 fx('3.class','zip','The teacher releases the first chalk demonstration.',word='threw',at=.05,gain=-12,dur=.18)
 fx('3.seat','rustle','The friend turns toward his saved seat.',word='seat',gain=-12)
-fx('3.lunch','scrape','The half loaf crosses the tabletop.',at=.25,dur=.65,gain=-12)
+fx('3.lunch','scrape','His friend pushes the share of bread along the wood with his sleeve.',word='split',dur=.47,gain=-12)
 fx('3.rabbit','place','Carrot reaches the ground beside the rabbit.',word='rabbit',gain=-12)
 fx('3.ear','rustle','Tiny rabbit mouth and shoelace movement.',at=.45,gain=-13,dur=.25)
 fx('3.ear','blip','A fond look at the black ear.',word='black',gain=-13)
@@ -62,9 +76,11 @@ a=S['locker']
 for off,sfx,why in [(.22,'rustle','Hand reaches the sleeve.'),(1.12,'rustle','Sleeve contact, then the whole body is pulled.'),(1.4,'step_stone','The hero braces and steps back.'),(1.82,'step_stone','He completes the pull into the aisle.'),(2.32,'paper','Hand contacts the fallen book.'),(3.5,'place','The book reaches the folded arms.'),(3.95,'step_stone','First step back beside his friend.'),(4.4,'step_stone','Second step into the safe position.'),(5.18,'clank','The empty locker slams after time returns.')]:event(a+off,sfx,why,gain=-12)
 fx('8.friend','blip','The friend looks from the book to the red sleeve.',word='thought',gain=-13)
 fx('8.secret','swish','A small evasive look from the hero.',at=.18,gain=-13,dur=.14)
-fx('9.lunch','scrape','The whole loaf crosses the same table.',at=.25,dur=.65,gain=-12)
+fx('9.lunch','scrape','The sleeve-led push keeps the whole loaf on the same tabletop.',word='pushed',dur=.65,gain=-12)
+fx('9.lunch','rustle','The boy leans forward and meets the loaf.',word='pushed',at=.40,dur=.24,gain=-14)
 fx('9.why','chime','His sincere wish to protect the boy too.',word='protect',gain=-13)
-fx('9.math','paper','Open book and the lesson he actually understands.',word='math',gain=-12)
+fx('9.math','paper','The real hand lifts and hinges the cover open.',word='Then',at=.115,dur=.60,gain=-12)
+fx('9.math','place','The blue cover lands on the table beside the revealed pages.',word='math',at=-.10,gain=-14)
 fx('9.help','ding','He raises his hand with the right answer.',word='answer',gain=-12,note='E5')
 fx('10.night','creak','The real doorway opens onto the night.',at=.15,gain=-13)
 for off in [.45,1.2,1.95]:fx('10.night','step_stone','The hero moves toward his neighbor.',at=off,gain=-13)

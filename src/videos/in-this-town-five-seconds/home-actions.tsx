@@ -1,24 +1,38 @@
 import type React from "react";
-import { Block } from "../../engine";
+import { Block, gaitPose } from "../../engine";
 import type { Pose, Vec3 } from "../../engine";
-import { Hero, Mother, Elder, Friend, WorldClock, StopHalo, GlassCup, Book, Bowl, Carrot, Rabbit, Bread, TEEN, STOP, at, cue, worldTime, phase, smooth, mix, v, add, route, aimHand, handWorld, stoop, poseMix, HOME, HOME_WINDOW, HOME_BED, RABBIT_START } from "./kit";
+import { Hero, Mother, Elder, Friend, WorldClock, StopHalo, GlassCup, Book, Bowl, Carrot, Rabbit, Bread, TEEN, STOP, at, cue, worldTime, phase, smooth, mix, v, add, route, aimHand, handWorld, stoop, poseMix, punch, recoil, sleevePoint, HOME, HOME_WINDOW, HOME_BED, RABBIT_START } from "./kit";
+
+import { curtainsMother, curtainState, washingMother, CURTAIN_PULL, CURTAIN_MEET } from "./domestic-motion";
 
 export const MotherStory:React.FC<{t:number;id:string}>=({t,id})=>{
- const closes=id==='2.curtains', rule=id.startsWith('6.'), breakfast=id==='3.school';
- const m=closes?route(t,[[cue(id).start,[-.9,0,-.4]],[cue(id).start+.8,[1.05,0,-1.85]],[cue(id).end,[1.05,0,-1.85]]],true):rule?route(t,[[cue('6.told').start,[-1.72,0,-.65]],[cue('6.rule').start,[-1.4,0,-.5]],[cue('6.lock').start,[-1.4,0,-.5]],[cue('6.lock').end-.2,[-1.75,0,-1.8]]],true):{position:[-.9,0,-.4] as Vec3,distance:0,yaw:.3};
- const hp=breakfast?route(t,[[cue(id).start,[.75,0,.7]],[cue(id).end,[-1.45,0,-1.5]]],true):null;
- const adopted=id==='2.adopted';
- const put=smooth(phase(t,at('6.hands','put'),at('6.hands','bowl')+.12));
+ const rule=id.startsWith('6.'), breakfast=id==='3.school', adopted=id==='2.adopted';
+ const window=curtainsMother(t), wash=washingMother(t);
+ const atWindow=(t>=cue('2.answer').start&&t<cue('3.school').end);
+ const babySway=adopted?Math.sin((t-cue(id).start)*3.7)*.07:0;
+ const p=rule?wash.position:atWindow?window.position:[-.9,0,-.4] as [number,number,number];
+ const yaw=rule?wash.rotationY:atWindow?window.rotationY:.35;
+ const arm=rule?wash.arm:atWindow?window.arm:[-.75,0,babySway*.5] as [number,number,number];
+ const offset=rule?wash.offset:atWindow?window.offset:[0,0,0] as [number,number,number];
+ const lean=rule?wash.lean:atWindow?window.lean:0;
+ const bob=rule?wash.bob:atWindow?window.bob:Math.abs(babySway)*.12;
+ const hp=breakfast?route(t,[[cue(id).start,[.8,0,.75]],[cue(id).start+.5,[.8,0,.75]],[cue(id).end,[-1.45,0,-1.5]]],true):null;
+ const ask=punch(t,at('2.where','tell')-.25,.25)*(1-punch(t,at('2.where','me',1)+.05,.28));
+ const tell=rule?punch(t,at('6.told','told'),.22)*(1-punch(t,at('6.told','glass')+.1,.22)):0;
+ const warning=rule?punch(t,at('6.rule','see')-.22,.22)*(1-punch(t,at('6.rule','that')+.1,.2)):0;
+ const baby=sleevePoint(p,yaw,.96,arm,offset,lean,bob,[.26,-.18,.15]);
+ const heroPose:Partial<Pose>=breakfast?gaitPose('walk',hp!.distance):{bodyPitch:.07*ask-.045*warning,bodyRoll:.03*ask,armR:[-.12-1.05*ask-.85*tell,0,.12+.3*ask+.15*tell],armL:[-.1-.45*ask-.52*tell,0,-.14-.2*ask-.16*tell],head:[.08*ask,0,.12*ask]};
  return <>
   <WorldClock t={t}>
-   <Mother position={m.position} rotationY={closes||id==='6.lock'?Math.PI:.35} walk={m.distance} hmm={id==='6.rule'?.6:0} nod={id==='2.answer'?.2:0} turn={id==='2.where'?-.8:0} lean={closes?.1:0}/>
-   {adopted?<group position={[-.57,1.16,.01]} rotation={[0,0,Math.PI/2]}><Hero scale={.42} position={[0,0,0]} colors={{torso:'#d9a137',arms:'skin',legs:'#314b79'}} animation="idle" face="calm"/></group>:null}
-   {rule&&t<cue('6.rule').start?<Bowl position={v([-1.7,1.04,-.2],[-2.1,.97,-1.3],put)}/>:null}
+   <Mother position={p} rotationY={yaw} walk={rule?wash.walk:window.distance} walkAmount={rule?wash.step:atWindow?window.step:0} foldedArms={{rotation:arm,offset}} bodyBob={bob} bodyRoll={adopted?babySway:0} lean={lean}
+    turn={atWindow?-Math.sin(phase(t,at('2.answer','I'),CURTAIN_PULL)*Math.PI)*.6:id==='2.where'?-.55:0}
+    hmm={rule?wash.warning*.25:0} nod={rule?.06:adopted?.17:0} lookAt={rule&&t>at('6.told','glass')?[.8,1.46,.75]:undefined}/>
+   {adopted?<group position={baby} rotation={[0,yaw,Math.PI/2]}><Hero scale={.42} position={[-.05,0,0]} colors={{torso:'#d9a137',arms:'skin',legs:'#314b79'}} poseOverride={{armR:[-.4,0,.6],armL:[-.7,0,-.5],kneeR:[.5,0,0],kneeL:[.35,0,0]}} face="calm"/></group>:null}
+   {rule?<Bowl position={wash.bowl}/>:null}
    <Bread position={[.05,.82,.14]} scale={.6}/>
   </WorldClock>
-  {!adopted?<Hero position={hp?.position??[.8,0,.75]} rotationY={hp?.yaw??-.85} animation={breakfast?'walk':'talk'} animDistance={hp?.distance} time={t} face={id==='6.question'?'uneasy':'calm'} headYaw={closes?-.4:0}/>:null}
-  {breakfast?<Book position={[.73,1,.8]} color="#4c7596"/>:null}
-  {id==='6.lock'?<Block position={[-1.35+smooth(phase(t,at(id,'checked'),at(id,'lock')+.15))*.08,1.13,-2.28]} size={[.2,.045,.06]} color="#a7b0ae"/>:null}
+  {!adopted?<Hero position={hp?.position??[.8,0,.75]} rotationY={hp?.yaw??(rule?-1.65:-.85)} animation={breakfast?'walk':'idle'} animDistance={hp?.distance} time={t} poseOverride={heroPose} breath={.45} weightShift={0} face={id==='6.question'?'uneasy':id==='2.where'?'uneasy':'calm'} lookAt={rule||atWindow?add(p,[0,1.46,0]):undefined}/>:null}
+  {id==='6.lock'?<Block position={[-1.35+punch(t,at(id,'lock'),.14)*.08,1.13,-2.28]} size={[.2,.045,.06]} color="#a7b0ae"/>:null}
  </>;
 };
 export const GlassDiscovery:React.FC<{t:number}>=({t})=>{

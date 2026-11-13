@@ -1,0 +1,74 @@
+{
+  "status": "motion preview \u2014 owner judgment pending; not the revised full film",
+  "file": "renders/previews/five-seconds-motion-v2.mp4",
+  "bytes": 7998873,
+  "sha256": "87cbeba24775762bb7c0bf2d4ed9b323d0f17d1b83953e5d8a5906f8e4be6aaf",
+  "width": 720,
+  "height": 1280,
+  "fps": 30,
+  "frames": 471,
+  "video_seconds": 15.7,
+  "audio_seconds": 15.7,
+  "max_video_pts_error_seconds": 3.333333342681044e-07,
+  "full_decode": "passed",
+  "audio_excerpt_zero_lag_correlation": 0.9998793078674993,
+  "audio_by_excerpt": [
+    {
+      "name": "curtains",
+      "zero_lag_correlation": 0.9998529504950686
+    },
+    {
+      "name": "bowl",
+      "zero_lag_correlation": 0.9999008879323703
+    },
+    {
+      "name": "friendship",
+      "zero_lag_correlation": 0.999884103579916
+    }
+  ],
+  "ranges": [
+    {
+      "name": "curtains",
+      "first_source_frame": 270,
+      "last_source_frame_inclusive": 428,
+      "frames": 159
+    },
+    {
+      "name": "bowl",
+      "first_source_frame": 1437,
+      "last_source_frame_inclusive": 1569,
+      "frames": 133
+    },
+    {
+      "name": "friendship",
+      "first_source_frame": 2125,
+      "last_source_frame_inclusive": 2303,
+      "frames": 179
+    }
+  ],
+  "source_film_frames": 4848,
+  "source_film_seconds": 161.6,
+  "audio": "Original approved voice-00 recordings and supplied InThisTownMusic.aac. Effects retimed to the revised contacts. 8 ms edge fades only at preview excerpt joins.",
+  "review_sheets": [
+    "out/five-seconds/motion-v2/encoded-review/curtains.jpg",
+    "out/five-seconds/motion-v2/encoded-review/bowl.jpg",
+    "out/five-seconds/motion-v2/encoded-review/friendship.jpg"
+  ],
+  "review_boundary": "Encoded sequential frames and contact/source checks; no agent claim of real-time playback, subjective listening or owner approval.",
+  "source_hashes": {
+    "src/videos/in-this-town-five-seconds/domestic-motion.ts": "9ec7d30c82381d908a48c2df7377e67f5719e21b53153550f37b7fc33efc2799",
+    "src/videos/in-this-town-five-seconds/home-actions.tsx": "f3f26a88a4bf03db9423ac705410a90af096e935a31774074b8be8d894b761ba",
+    "src/videos/in-this-town-five-seconds/school-actions.tsx": "c071411a490526d9b2549be5b05b483b6659a56a29782d91bfb6779e8518afc3",
+    "src/videos/in-this-town-five-seconds/motion.ts": "03fda9de202a28d946c5ad92e7a96f0ef981cf6b9a3bf206850d56467b2f2d53",
+    "src/videos/in-this-town-five-seconds/world.tsx": "aa162d7948a5af03ff29f1ad751ad4a2cbf52a5abf9b62a4cfad7671484e91d3",
+    "src/videos/in-this-town-five-seconds/scene2.tsx": "522e5ccf4d12bc93d32442fd8160486942cbb8d79c209d275f94ec6b724dea07",
+    "src/videos/in-this-town-five-seconds/scene6.tsx": "375ab74e8cc0c8e63be6c0735fe171511edf17fe905733de96ae51dd011ecc46",
+    "src/videos/in-this-town-five-seconds/scene9.tsx": "5085faa8fd9de05a55c4d346a2a0a01e78b6d253184d47d02a493db53a9e0b32",
+    "src/videos/in-this-town-five-seconds/timing.json": "b95e214a3a8f2de355a37b1c14e75af171debbc5edb6c8291c45d8c45d636890",
+    "src/videos/in-this-town-five-seconds/sound.json": "3a9f39f3f9c2b0efd49519d22931cf9c8f894e7751b590fc4ae27c924145f643",
+    "Topics/InThisTown/villagers.tsx": "3aa57ff704993bf98045e1dffb875776a71a9d3183249782c43335821b8cad3e",
+    "Topics/InThisTown/small-props.tsx": "4ce1320bed8d49b448529401a4c0505a30d4eca3de9f6bb06884d79b6e3c038c",
+    "src/engine/props.tsx": "bd9b1a6a6892f7f58972e4021cedbe0cf09bdb58a8c7e7bdb9ff9f95d7079c31",
+    "public/audio/in-this-town-five-seconds/mix.mp3": "595561d50902b9bca6744725c47cc70fb15b6d2c55a62fcf720277c9a3939a70"
+  }
+}

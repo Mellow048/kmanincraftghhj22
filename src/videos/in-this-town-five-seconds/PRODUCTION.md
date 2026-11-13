@@ -1,6 +1,12 @@
 # Five Seconds — production and delivery
 
-## Full-HD master complete and verified
+## Current status — V2 motion preview ready for feedback
+
+The owner rejected V1's feel: **“it lacks motion and visuals need improving like the curtains one and other stuff.. it just felt like it wasnt entertaining”.** The technical passes below document the delivered **V1**, not artistic acceptance and not certification of the new source.
+
+The revision preserves the approved story, all nine original voice-00 recordings, the supplied AAC and the 161.6-second full-film timeline. A short, actual-motion proof of the curtain/bowl/bread-and-book scenes comes **before** another full-length render. This preview is not a shorter final film. The finished Freeze Bell remains immutable. The 15.7-second preview is `renders/previews/five-seconds-motion-v2.mp4` (720×1280 / 30 fps); the full-length V2 has not been rendered. See `MOTION-REVISION.md`, `motion-preview.json` and `motion-preview-checks.json` for scope and review status.
+
+## V1 — full-HD master delivered and technically verified
 
 Approved Draft 2 plus the separately approved kid-friendly trip counter. The authoritative narration and both readable/cue proposal copies match exactly; see `script-integrity.json`. No age, cooldown, superspeed, teleport, CTA or sequel promise was added.
 

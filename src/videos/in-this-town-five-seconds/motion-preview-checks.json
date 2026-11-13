@@ -1,0 +1,133 @@
+{
+  "scope": "V2 motion preview only; complete-film V2 and owner motion feedback pending",
+  "parent_commit": "a11fe340ffdbb510203cfa66d6635952d3511a49",
+  "preview_sha256": "87cbeba24775762bb7c0bf2d4ed9b323d0f17d1b83953e5d8a5906f8e4be6aaf",
+  "typescript": "passed",
+  "film_contract": "passed",
+  "node_tests": {
+    "passed": 20,
+    "failed": 0,
+    "new_domestic_contact_tests": 7
+  },
+  "python_sound_input_tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "legacy_comparisons": [
+    {
+      "film": "in-this-town-freeze-bell",
+      "file": "frame-00000.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "b81300c6bab3b0f1ddd695e7475f11c40112cb0354ed6f88684af542c90b7805"
+    },
+    {
+      "film": "in-this-town-freeze-bell",
+      "file": "frame-01240.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "a6dd80c8d10e4cdf853872fa06069c9348993cefd285313a603ddf80a714077d"
+    },
+    {
+      "film": "in-this-town-monster-egg",
+      "file": "frame-00000.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "b5e6dde50a564ac0f4d1479f0fcbc16dff9501540b61bcdf5ce249ac74423614"
+    },
+    {
+      "film": "in-this-town-monster-egg",
+      "file": "frame-01240.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "b065d3ccb4bbf184f9674dd3e67d08b54fff30c94905365e27d20eade9138e75"
+    },
+    {
+      "film": "in-this-town-nobody-looked-at-the-moon",
+      "file": "frame-00000.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "54b7b9cd7f3c1622024cc0c2748c0309210724879c99a5da15a64af911dee3dd"
+    },
+    {
+      "film": "in-this-town-nobody-looked-at-the-moon",
+      "file": "frame-01240.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "c8612fb73fdf805f7737b39491958a9c7b17c1da07d1636b7a13776fb6e62c21"
+    },
+    {
+      "film": "in-this-town-pumpkin-heads",
+      "file": "frame-00000.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "6bed6f771bac528b806936975763ad51c88027db0ae700e80a05812b00dba0dd"
+    },
+    {
+      "film": "in-this-town-pumpkin-heads",
+      "file": "frame-01240.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "efe37a590067d84ec30529aaad5d92785f4deff72834db5b607fdeeed9a582f8"
+    },
+    {
+      "film": "in-this-town-same-face",
+      "file": "frame-00000.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "1065c910aae64448896d6daf9c99ceacd33ec868d60dcaf182ed716885c9f7cb"
+    },
+    {
+      "film": "in-this-town-same-face",
+      "file": "frame-01240.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "d00badc3662571afb373ab3d07594f2fa81f73b1bdd34c5b89907ef54f98808b"
+    },
+    {
+      "film": "in-this-town-superpower-at-18",
+      "file": "frame-00000.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "d119add0f6b3a1bcea40e58ba196bb1fc8b85cbca5ae60e458ef2adabd8f81bf"
+    },
+    {
+      "film": "in-this-town-superpower-at-18",
+      "file": "frame-01240.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "3dacf3466f1360b4089de4a8a1648f19f237cbde746da057688e43b50d3cfd3d"
+    },
+    {
+      "film": "in-this-town-superpower-at-18-part-2",
+      "file": "frame-00000.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "c9b81e35ccc8a8af8a3aa1531369914df99af781e83459ee186bc92e901c5aef"
+    },
+    {
+      "film": "in-this-town-superpower-at-18-part-2",
+      "file": "frame-01240.jpg",
+      "pixel_identical": true,
+      "rgb_sha256": "5703d9f0adc75a155563008d34da2eff3befbcba6a423c75dee6a91a03bb09b8"
+    }
+  ],
+  "preserved": {
+    "freeze_bell_source_audio_master": "empty diff against aa2fb0f",
+    "five_seconds_approved_script_timing_narration_and_nine_raw_recordings": "empty diff against a11fe34",
+    "supplied_aac": "empty diff against a11fe34",
+    "five_seconds_v1_master": "empty diff against a11fe34"
+  },
+  "encoded_review": {
+    "frames": 471,
+    "seconds": 15.7,
+    "dimensions": [
+      720,
+      1280
+    ],
+    "fps": 30,
+    "all_frames_decode": true,
+    "sample_frames_viewed": 82,
+    "temporal_sheets_viewed": 3,
+    "subjective_playback_or_listening": false,
+    "owner_approval": false
+  },
+  "mix_report": {
+    "music_source": "Topics/InThisTown/InThisTownMusic.aac",
+    "effects": 238,
+    "music_gain_sections": 23,
+    "ambience_beds": 13,
+    "five_second_ambience_mutes": 7,
+    "lufs": -14.7,
+    "true_peak_db": -2.3,
+    "worst_voice_margin_db": 4.4,
+    "buried_effects": 0
+  }
+}

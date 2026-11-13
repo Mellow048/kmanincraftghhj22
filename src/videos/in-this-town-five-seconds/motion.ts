@@ -109,3 +109,19 @@ export const THIRD_HOLD:Vec3=[HERO_FREEZE[0]+1.05,1.25,1.2];
 
 export const ARROW_LAUNCH=STOP.elder.a-1.2;
 export function rescueArrow(t:number):Vec3{const s=STOP.elder;return t<s.a?v([.28,1.26,7.78],RESCUE.arrow,phase(t,ARROW_LAUNCH,s.a)):t<s.b?RESCUE.arrow:v(RESCUE.arrow,[0,.7,-1.91],phase(t,s.b,s.b+.13));}
+
+/** The joined villager sleeves can reach/bow without turning a villager into a player model. */
+export function sleevePoint(p:Vec3,yaw:number,scale:number,arm:Vec3,offset:Vec3=[0,0,0],lean=0,bob=0,point:Vec3=[0,-.225,.13]):Vec3{
+ const q=new Vector3(...point).applyEuler(new Euler(...arm));
+ q.add(new Vector3(offset[0],.50625+offset[1],.05625+offset[2])).applyEuler(new Euler(lean,0,0));
+ q.y+=.675+bob;q.multiplyScalar(scale).applyEuler(new Euler(0,yaw,0)).add(new Vector3(...p));return [q.x,q.y,q.z];
+}
+/** A decisive act followed by a small recovery, instead of a constant-speed pose interpolation. */
+export const punch=(t:number,start:number,dur:number)=>{const p=phase(t,start,start+dur);return p*p*(3-2*p);};
+export const recoil=(t:number,hit:number,amount=.08)=>t<hit?0:amount*Math.sin((t-hit)*21)*Math.exp(-(t-hit)*7);
+
+/** Actual shoulder pivot used by the straight-arm rig, for a reach with no scaling/stretching. */
+export function shoulderWorld(p:Vec3,yaw:number,scale:number,pose:Partial<Pose>,side:1|-1=1):Vec3 {
+ const q=new Vector3(side*.3375,.675,0).applyEuler(new Euler(pose.bodyPitch??0,pose.bodyYaw??0,pose.bodyRoll??0));
+ q.y+=.675+(pose.bodyY??0);q.multiplyScalar(scale).applyEuler(new Euler(0,yaw,0)).add(new Vector3(...p));return [q.x,q.y,q.z];
+}

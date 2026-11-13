@@ -415,7 +415,11 @@ export const Curtains: React.FC<{
   height?: number;
   color?: string;
   gap?: number;
-}> = ({ position = [0, 0, 0], rotationY = 0, width = 1.8, height = 1.7, color = "#2b4a7a", gap = 0.25 }) => {
+  /** Opt-in correctly top-hung cloth. Legacy geometry stays unchanged in already-delivered films. */
+  topHung?: boolean;
+  /** Radians of cloth follow-through around the rail; supplied by the scene, not a hidden clock. */
+  flutter?: number;
+}> = ({ position = [0, 0, 0], rotationY = 0, width = 1.8, height = 1.7, color = "#2b4a7a", gap = 0.25, topHung = false, flutter = 0 }) => {
   const panel = width / 2 - gap / 2;
   const folds = 5;
   return (
@@ -423,17 +427,20 @@ export const Curtains: React.FC<{
       {/* rail */}
       <Block position={[0, height / 2 + 0.06, 0.06]} size={[width + 0.24, 0.05, 0.06]} color="#1a2432" />
       {[-1, 1].map((side) => (
-        <group key={side} position={[side * (width / 4 + gap / 4), 0, 0]}>
+        <group key={side} position={[side * (width / 4 + gap / 4), topHung ? height / 2 : 0, 0]} rotation={[topHung ? flutter * side : 0, 0, 0]}>
           {Array.from({ length: folds }).map((_, i) => (
             <Block
               key={i}
-              position={[-panel / 2 + (panel / (folds - 1)) * i, -height / 2, (i % 2 === 0 ? 1 : -1) * 0.022]}
+              position={[-panel / 2 + (topHung ? panel / folds * (i + .5) : (panel / (folds - 1)) * i), -height / 2, (i % 2 === 0 ? 1 : -1) * 0.022]}
               size={[panel / folds + 0.02, height, 0.05]}
               map={curtainTex(color, [1, 3])}
             />
           ))}
           {/* tie-back strap */}
-          <Block position={[0, -height * 0.28, 0.05]} size={[panel * 0.9, 0.05, 0.05]} color="#5c4a2e" />
+          {topHung ? <>
+            <Block position={[0, -height + .025, .025]} size={[panel+.03,.045,.065]} color={color}/>
+            {[0,1,2].map(i=><Block key={i} position={[(i-1)*panel*.32,.04,.025]} size={[.028,.075,.08]} color="#8f957e"/>)}
+          </> : <Block position={[0, -height * 0.28, 0.05]} size={[panel * 0.9, 0.05, 0.05]} color="#5c4a2e" />}
         </group>
       ))}
     </group>

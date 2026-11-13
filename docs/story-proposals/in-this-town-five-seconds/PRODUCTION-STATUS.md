@@ -1,8 +1,14 @@
 # Five Seconds — production status
 
-## Approved full-HD MP4 complete
+## Current: motion/visual revision after V1 delivery
 
-The owner approved Draft 2 and then the exact trip replacement: **“okay this seems more kid friendly go ahead and do the mp4.”** No further approval is outstanding. The rejected face-hit recording is superseded, not pending. All nine `voice-00` originals, including the approved clip 08, are present and aligned; the successful originals were not regenerated.
+The owner rejected V1's feel, specifically its motion, curtain visuals and entertainment value. A 15.7-second V2 motion preview is ready for feedback at `renders/previews/five-seconds-motion-v2.mp4`; another full-length render has not been made. The approved story, voice and 161.6-second full-film scope stay intact. See `src/videos/in-this-town-five-seconds/MOTION-REVISION.md`.
+
+The sections below are **V1 delivery history**, not approval or certification of the revised working picture.
+
+## V1: approved story rendered to full-HD MP4
+
+The owner approved Draft 2 and then the exact trip replacement: **“okay this seems more kid friendly go ahead and do the mp4.”** No further **script** approval is outstanding; the visual revision still needs the owner’s judgment. The rejected face-hit recording is superseded, not pending. All nine `voice-00` originals, including the approved clip 08, are present and aligned; the successful originals were not regenerated.
 
 Authoritative narration: `src/videos/in-this-town-five-seconds/narration.md`.
 
@@ -13,7 +19,7 @@ Authoritative narration: `src/videos/in-this-town-five-seconds/narration.md`.
 - Sound: 23 recorded-track gain sections, 13 ambience beds, 228 action effects; seven five-second ambience mutes. Numerical mix checks pass: −14.7 LUFS, −2.3 dB true peak, zero buried effects, worst voice/rest margin 4.4 dB. This is **not** a subjective listening review.
 - A separate exact prince-ending exception is installed and tested. Freeze Bell's scoped exception is unchanged. No CTA, sequel promise, age or cooldown was added.
 
-## Picture and continuity checks completed
+## V1 picture and continuity checks completed
 
 91 shot midpoints, then 111 action/boundary samples and targeted follow-up frames were rendered and inspected. Corrections included contact/foot-to-rock placement, the boy's path around the frozen man, rabbit pickup/support, foreground obstructions, the recognition face, and the hovering/released book.
 
@@ -27,7 +33,7 @@ Current main `011c7eefa3dbb73b9343336360cd8a3f0d952899` was merged on this same 
 
 Part 2 was studied from actual source and sequential frames: reference `cda5695dc2b9b7f758bcf9c0abfa2c2b347a877f`, render source `6b928a4f1ab7fe3f4fcd37630c37cee2fe00721b`. The craft study did not authorize copying its plot, and the new film is not promoted as an official reference.
 
-## Delivery
+## V1 delivery (retained, not replaced by the preview)
 
 The full-HD master is `renders/in-this-town-five-seconds.mp4`: **1080×1920 at constant 30 fps, 161.6 seconds, 75,535,985 bytes**, SHA256 `ada21dde26a3c2e198abb51c8684da1f868356023cdbed4db8f83cc4d259568d`.
 

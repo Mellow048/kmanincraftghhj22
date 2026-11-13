@@ -5,6 +5,7 @@ import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-act
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
+import { curtainsMother } from "./domestic-motion";
 
 /** Beat 2: She closed the curtains first. Camera cuts do not reset the underlying performance. */
 export const scene2=storyScene(timing,{
@@ -25,13 +26,19 @@ export const scene2=storyScene(timing,{
     stage:(local:number)=><MotherStory t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
   (()=>{const id="2.answer";return {cue:"2.answer",zone:"kitchen",look:"overworld-day" as const,
-    ...cam.push({on:[-.9,1.47,-.4],dist:2.0,to:1.8,yaw:10,pitch:3,fov:38}),
-    note:"The mother deliberately turns her nose away toward breakfast. This is evasion, not an exposition speech.",
+    ...({
+    from:[-1.8,1.85,2.6],
+    to:[-1.55,1.9,2.3],
+    target:[-.9,1.05,-.4],targetPath:[0,.25,.5,.75,1].map(k=>add(curtainsMother(cue(id).start+(cue(id).end-cue(id).start-1/30)*k).position,[0,1.05,0])),fov:49,ease:'linear' as const}),
+    note:"Her head leads the evasive turn, then her feet carry her to the window. Track the whole walk rather than cutting from one standing position to another.",
     stage:(local:number)=><MotherStory t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
   (()=>{const id="2.curtains";return {cue:"2.curtains",zone:"kitchen",look:"overworld-day" as const,
-    ...cam.push({on:[1.45,1.6,-2.15],dist:2.25,to:2.05,yaw:0,pitch:4,fov:46}),
-    note:"Follow her actual walk to the window and watch the two curtains meet. Her secrecy is planted in a physical action.",
+    ...({
+    from:[-.65,2.08,1.25],
+    to:[-.40,2.0,1.1],
+    target:[1.85,1.5,-2.07],targetTo:[1.88,1.5,-2.07],fov:50,ease:'inOutSine' as const}),
+    note:"Keep sleeves, cord, rail and cloth in frame. She reaches, catches the cord, pulls decisively on closed, then releases as the top-hung panels settle and the window light dims.",
     stage:(local:number)=><MotherStory t={Math.round((cue(id).start+local)*30)/30} id={id}/>,
   };})(),
 ]});

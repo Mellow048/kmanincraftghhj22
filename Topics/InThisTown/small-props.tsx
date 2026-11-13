@@ -1,5 +1,6 @@
 import type React from "react";
-import { Block, Vox, useFilmTime } from "../../src/engine";
+import { Quaternion, Vector3 } from "three";
+import { Block, Vox, PixelText, useFilmTime } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
 
 /** Additive, reusable parts introduced by Five Seconds. Existing pack parts are untouched. */
@@ -82,4 +83,23 @@ export const HingedLocker: React.FC<Prop & { open?: number }> = ({position=[0,0,
     {[0,1,2,3].map(i=><Block key={i} position={[.51,1.68-i*.075,.036]} size={[.65,.024,.01]} color="#18364b"/>)}
     <Block position={[.5,1.22,.04]} size={[.18,.11,.012]} color="#d6d6c7"/>
   </group>
+</group>;
+
+/** Taut cord between actual contacts. Useful for curtain pulls; no screen-space line. */
+export const Cord:React.FC<{from:Vec3;to:Vec3;radius?:number;color?:string}>=({from,to,radius=.009,color='#d2c39c'})=>{
+ const direction=new Vector3(...to).sub(new Vector3(...from));
+ const length=direction.length();if(length<.001)return null;
+ const q=new Quaternion().setFromUnitVectors(new Vector3(0,1,0),direction.normalize());
+ return <mesh position={[(from[0]+to[0])/2,(from[1]+to[1])/2,(from[2]+to[2])/2]} quaternion={q} castShadow><cylinderGeometry args={[radius,radius,length,5]}/><meshStandardMaterial color={color} roughness={.9}/></mesh>;
+};
+/** The cover hinges through space instead of swapping a closed box for an open box on a cut. */
+export const HingedBook:React.FC<Prop&{opening:number;color?:string}>=({position=[0,0,0],rotationY=0,scale=1,opening,color='#4e789a'})=><group position={position} rotation={[0,rotationY,0]} scale={scale}>
+ <Block position={[.15,0,0]} size={[.34,.02,.4]} color={color}/><Block position={[.15,.026,0]} size={[.3,.04,.36]} color='#eee5d0'/>
+ <Block position={[0,.03,0]} size={[.025,.08,.4]} color='#426278'/>
+ <PixelText text="56" height={.09} position={[.15,.05,.04]} rotation={[-Math.PI/2,0,0]} color='#365975'/>
+ <group position={[0,.055,0]} rotation={[0,0,Math.PI*Math.min(1,Math.max(0,opening))]}>
+  <Block position={[.15,0,0]} size={[.34,.022,.4]} color={color}/><Block position={[.15,-.014,0]} size={[.29,.008,.35]} color='#f0e7d1'/>
+  <PixelText text="8 X 7" height={.045} position={[.15,-.021,.02]} rotation={[Math.PI/2,0,0]} color='#365975'/>
+  <Block position={[.15,.016,0]} size={[.13,.008,.18]} color='#d7be7a'/>
+ </group>
 </group>;

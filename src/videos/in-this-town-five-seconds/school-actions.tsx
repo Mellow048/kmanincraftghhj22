@@ -1,7 +1,9 @@
 import type React from "react";
 import { Block, MinecraftAvatar, getPose, gaitPose } from "../../engine";
 import type { Pose, Vec3 } from "../../engine";
-import { Hero, Friend, Villager, Classmate, Teacher, WorldClock, StopHalo, Bread, Book, Chalk, CLASS_HERO, CLASS_FRIEND, TABLE_HERO, TABLE_FRIEND, ROBE, TEEN, STOP, at, cue, worldTime, phase, smooth, mix, turn, v, add, route, lockerMotion, LOCKER, aimHand, handWorld, stoop, poseMix } from "./kit";
+import { Hero, Friend, Villager, Classmate, Teacher, WorldClock, StopHalo, Bread, Book, Chalk, CLASS_HERO, CLASS_FRIEND, TABLE_HERO, TABLE_FRIEND, ROBE, TEEN, STOP, at, cue, worldTime, phase, smooth, mix, turn, v, add, route, lockerMotion, LOCKER, aimHand, handWorld, stoop, poseMix, punch, recoil, HingedBook } from "./kit";
+
+import { lunchMotion, LUNCH_HERO, LUNCH_FRIEND, LUNCH_BOOK, BOOK_TOUCH, BOOK_END } from "./domestic-motion";
 
 export const SchoolCrowd:React.FC<{t:number;teacher?:boolean}>=({t,teacher=true})=><WorldClock t={t}>
  {[-2.4,0,2.4].flatMap((x,col)=>[-.4,1.25,2.9].map((z,row)=>{
@@ -34,20 +36,26 @@ export const SchoolDay:React.FC<{t:number;id:string}>=({t,id})=>{
  </>;
 };
 export const Lunch:React.FC<{t:number;id:string}>=({t,id})=>{
- const first=id==='3.lunch';
- const start=first?cue('3.lunch').start:cue('9.lunch').start;
- const breadSlide=smooth(phase(t,start+.2,start+1.05));
- const bookOpen=id==='9.math';
+ const first=id==='3.lunch',q=lunchMotion(t,first);
+ const maths=!first&&t>=cue('9.math').start;
+ const rest:Partial<Pose>={...getPose('sit',0),bodyY:-.125,bodyPitch:-.04,bodyRoll:0,bodyYaw:0,head:[0,0,0],armL:[-.4,0,-.08],armR:[-.35,0,.08]};
+ let pose=poseMix(rest,{...rest,...q.receiver},q.receive);
+ pose=poseMix(pose,{...rest,...q.opener},q.openReach);
+ const nod=q.understand*Math.sin(phase(t,at('9.math','finally'),cue('9.math').end)*Math.PI*2.3)*.08;
+ pose.head=[(maths?mix(.46,.02,q.understand):.06)+nod,maths?.38:-.55,maths?-.03:.06];
+ // The real hand leaves only after the hinged cover has landed; the book stays put.
+ const friendNod=maths?.22+Math.sin((t-cue('9.math').start)*11)*.035:q.retract>.1?.02: .15;
  return <>
  <WorldClock t={t}>
-  <Friend position={TABLE_FRIEND} rotationY={0} sit lookAt={[-.65,1.26,.64]} hmm={id==='9.why'?.75:bookOpen?.4:0}/>
-  <Book position={[0,.855,-.12]} open={bookOpen} color="#4e789a"/>
-  <Bread position={[mix(.62,-.43,breadSlide),.82,.14]} scale={first?.52:.8}/>
-  {first?<Bread position={[.66,.82,-.15]} scale={.45} bun/>:null}
+  <Friend position={q.position} rotationY={q.yaw} sit foldedArms={{rotation:q.arm,offset:q.offset}} bodyBob={0} bodyRoll={0} lean={q.lean}
+   nod={friendNod} lookAt={maths?add(LUNCH_BOOK,[0,.15,0]):q.retract>.2?add(LUNCH_HERO,[0,1.32,0]):undefined} hmm={id==='9.why'?.24:maths?.12:0}/>
+  <HingedBook position={LUNCH_BOOK} opening={q.opening} />
+  <Bread position={q.bread} rotationY={q.yaw} scale={q.size}/>
+  {first?<Bread position={[.73,.815,-.35]} rotationY={q.yaw} scale={.5}/>:null}
   <Classmate who={2} position={[-4.1,0,.5]} animation="sit" rotationY={Math.PI}/><Villager position={[4.2,0,.5]} scale={.86} robe={ROBE.blue} sit rotationY={Math.PI}/>
-  {bookOpen?<><Block position={[-.13,.902,-.11]} size={[.16,.008,.018]} color="#365975"/><Block position={[.13,.902,-.11]} size={[.16,.008,.018]} color="#365975"/></>:null}
  </WorldClock>
- <Hero position={TABLE_HERO} rotationY={Math.PI} animation="sit" time={t} face={id==='9.math'?'smile':id==='9.why'?'uneasy':'smile'} headYaw={-.4} headPitch={bookOpen?.28:.06} poseOverride={bookOpen?{armR:[-.95,0,.15]}:undefined}/>
+ <Hero position={LUNCH_HERO} rotationY={Math.PI} animation="sit" time={t} poseOverride={pose} breath={0} weightShift={0}
+  face={q.understand>.4?'smile':maths?'uneasy':id==='9.why'?'uneasy':'smile'} gaze={0} saccade={false}/>
  </>;
 };
 export const ChalkLesson:React.FC<{t:number}>=({t})=>{

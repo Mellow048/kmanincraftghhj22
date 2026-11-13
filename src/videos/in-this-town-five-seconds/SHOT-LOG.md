@@ -1,5 +1,7 @@
 # Shot log: In This Town, I Was the Only One Who Could Stop Time for Five Seconds
 
+> **V1 delivery log.** The owner subsequently requested stronger motion and visuals. Revised working shot notes live in `write-scenes.py` and the generated scenes; see `MOTION-REVISION.md`. This historical log is not approval of the V2 picture.
+
 Every shot of the film: when it starts, how long it holds, the words heard over it, where it plays, how the
 camera moves, and why this picture for these words (the shot's own `note`).
 

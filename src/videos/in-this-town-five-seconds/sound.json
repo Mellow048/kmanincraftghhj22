@@ -569,8 +569,9 @@
     {
       "cue": "2.answer",
       "sfx": "swish",
-      "why": "Her evasive turn away.",
-      "word": "changed",
+      "why": "Her head leads the evasive turn before her walk.",
+      "word": "I",
+      "at": -0.12,
       "gain": -13,
       "dur": 0.14
     },
@@ -583,18 +584,79 @@
       "gain": -11
     },
     {
-      "cue": "2.curtains",
+      "cue": "2.answer",
+      "at": 0.805607,
       "sfx": "step_wood",
-      "why": "Her walk to the window.",
-      "at": 0.25,
+      "why": "A planted half-stride on the continuous walk to the curtain cord.",
+      "gain": -14
+    },
+    {
+      "cue": "2.answer",
+      "at": 1.064907,
+      "sfx": "step_wood",
+      "why": "A planted half-stride on the continuous walk to the curtain cord.",
+      "gain": -14
+    },
+    {
+      "cue": "2.answer",
+      "at": 1.292343,
+      "sfx": "step_wood",
+      "why": "A planted half-stride on the continuous walk to the curtain cord.",
+      "gain": -14
+    },
+    {
+      "cue": "2.answer",
+      "at": 1.516528,
+      "sfx": "step_wood",
+      "why": "A planted half-stride on the continuous walk to the curtain cord.",
+      "gain": -14,
+      "trim": 3
+    },
+    {
+      "cue": "2.answer",
+      "at": 1.761539,
+      "sfx": "step_wood",
+      "why": "A planted half-stride on the continuous walk to the curtain cord.",
       "gain": -14
     },
     {
       "cue": "2.curtains",
+      "at": 0.031235,
       "sfx": "step_wood",
-      "why": "Her walk to the window.",
-      "at": 0.65,
+      "why": "A planted half-stride on the continuous walk to the curtain cord.",
       "gain": -14
+    },
+    {
+      "cue": "2.curtains",
+      "at": 0.3087,
+      "sfx": "step_wood",
+      "why": "Her last foot settles before she pulls.",
+      "gain": -15
+    },
+    {
+      "cue": "2.curtains",
+      "sfx": "swish",
+      "why": "The joined sleeve reaches the curtain cord.",
+      "word": "closed",
+      "at": -0.43,
+      "dur": 0.2,
+      "gain": -14
+    },
+    {
+      "cue": "2.curtains",
+      "sfx": "scrape",
+      "why": "The cord and rings move under her pull.",
+      "word": "closed",
+      "dur": 0.38,
+      "gain": -14
+    },
+    {
+      "cue": "2.curtains",
+      "sfx": "place",
+      "why": "The two top-hung panels meet, then settle.",
+      "word": "closed",
+      "at": 0.38,
+      "gain": -15
     },
     {
       "cue": "3.school",
@@ -642,9 +704,9 @@
     {
       "cue": "3.lunch",
       "sfx": "scrape",
-      "why": "The half loaf crosses the tabletop.",
-      "at": 0.25,
-      "dur": 0.65,
+      "why": "His friend pushes the share of bread along the wood with his sleeve.",
+      "word": "split",
+      "dur": 0.47,
       "gain": -12
     },
     {
@@ -862,10 +924,19 @@
     {
       "cue": "9.lunch",
       "sfx": "scrape",
-      "why": "The whole loaf crosses the same table.",
-      "at": 0.25,
+      "why": "The sleeve-led push keeps the whole loaf on the same tabletop.",
+      "word": "pushed",
       "dur": 0.65,
       "gain": -12
+    },
+    {
+      "cue": "9.lunch",
+      "sfx": "rustle",
+      "why": "The boy leans forward and meets the loaf.",
+      "word": "pushed",
+      "at": 0.4,
+      "dur": 0.24,
+      "gain": -14
     },
     {
       "cue": "9.why",
@@ -877,9 +948,19 @@
     {
       "cue": "9.math",
       "sfx": "paper",
-      "why": "Open book and the lesson he actually understands.",
-      "word": "math",
+      "why": "The real hand lifts and hinges the cover open.",
+      "word": "Then",
+      "at": 0.115,
+      "dur": 0.6,
       "gain": -12
+    },
+    {
+      "cue": "9.math",
+      "sfx": "place",
+      "why": "The blue cover lands on the table beside the revealed pages.",
+      "word": "math",
+      "at": -0.1,
+      "gain": -14
     },
     {
       "cue": "9.help",
