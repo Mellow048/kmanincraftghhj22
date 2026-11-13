@@ -54,8 +54,9 @@ export const Exhibit5: React.FC = () => {
   const pump = ease(ramp(inflation, -0.05, 0.32));
   // The loaf, its tag and its balloon are not there until the line that is about them.
   const here = pop(name, 0.1, 0.26);
-  const size = (0.42 + 0.17 * steps + 0.22 * pump + (inflation > 0 ? Math.sin(inflation * 7) * 0.02 * Math.exp(-inflation * 1.5) : 0)) * here;
-  const knot: Vec3 = [CREEP[0], PLACE.real[1] + 2.78 + 0.15 * steps + 0.04 * pump + Math.sin(film * 1.4) * 0.015, CREEP[2] + 0.05];
+  const size = (0.42 + 0.16 * steps + 0.17 * pump + (inflation > 0 ? Math.sin(inflation * 7) * 0.02 * Math.exp(-inflation * 1.5) : 0)) * here;
+  // The tag hangs close over the loaf, so loaf, price and balloon are one tall thing in the upper two thirds of the frame.
+  const knot: Vec3 = [CREEP[0], PLACE.real[1] + 2.5 + 0.15 * steps + 0.04 * pump + Math.sin(film * 1.4) * 0.015, CREEP[2] + 0.05];
   const cardBottom = knot[1] - 0.97;
   const loafTop = CREEP[1] + 0.39;
 

@@ -1,7 +1,7 @@
 import type React from "react";
-import { Block, Glow, MinecraftAvatar, PixelText, Vox } from "../../engine";
+import { Block, Glow, MinecraftAvatar, Vox } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { Coin, KID, PriceTag, Stall, ease, filmClock, near, ramp, stop } from "../../../Topics/Explainer";
+import { Coin, Figure, KID, PriceTag, Stall, ease, filmClock, near, ramp, stop } from "../../../Topics/Explainer";
 import { Loaf, Oven } from "./parts";
 import timingJson from "./timing.json";
 
@@ -29,7 +29,7 @@ export {
   // staging: how a thing pops in, where "in front of him" is
   ADULT, CHILD, DEG, EAST, KID, NORTH, SOUTH, WEST, ahead, beside, chestOf, ease, faceOf, jolt, pop, ramp, villagerChest, villagerFace,
 } from "../../../Topics/Explainer";
-export { Balloon, Loaf, NoteBundle, NoteFall, NoteHeap, Oven, PriceRoll, Wheelbarrow } from "./parts";
+export { Balloon, FigureBubble, Loaf, NoteBundle, NoteFall, NoteHeap, Oven, PriceRoll, Wheelbarrow } from "./parts";
 
 export const timing = timingJson as unknown as Timing;
 
@@ -67,7 +67,7 @@ export const PLACE = {
 };
 /** Width (x) and depth (z) of each island's top. */
 export const SIZE = {
-  now: [11, 7] as [number, number],
+  now: [13, 7] as [number, number],
   then: [8, 6] as [number, number],
   village: [10, 8] as [number, number],
   real: [14, 11] as [number, number],
@@ -130,7 +130,7 @@ export const STOPS = {
   /** You: head to knee, the question over your head. */
   you: stop(up(NOW.kid, 1.04), 3.5, 16, 2, 40),
   /** The loaf, its coins under it and its tag over it. */
-  loaf: stop([NOW.loaf[0] + 0.05, NOW.stall[1] + 1.5, NOW.loaf[2]], 3.9, -9, 7, 40),
+  loaf: stop([NOW.loaf[0] + 0.05, NOW.stall[1] + 1.54, NOW.loaf[2]], 4.3, -9, 6, 40),
   /** The same stall, thirty years down: the loaf, its one coin, and the girl who is buying it. */
   then: stop([THEN.loaf[0] + 0.42, THEN.stall[1] + 1.42, THEN.loaf[2]], 5.0, -4, 7, 40),
   /** Both stalls in one frame, through a long lens from far back: `then` below, `now` above, nearly the same size. */
@@ -139,7 +139,7 @@ export const STOPS = {
   /** The tiny village, whole: its huts, its baker, its one rack. */
   village: stop(on(PLACE.village, 0.2, 2.3, -0.4), 12.4, 12, 11, 46),
   /** The rack from the front: its big tag at the top of the frame, its ten places, and the ground at its foot. */
-  rack: stop(on(PLACE.village, 0.2, 2.6, -0.9), 9.0, 0, 3, 42),
+  rack: stop(on(PLACE.village, 0.2, 2.08, -0.9), 9.0, 0, 3, 42),
 };
 /**
  * THE REAL WORLD: a stage with the two machines on it. Both stand so that their roofs are level (`RACE_LINE`),
@@ -161,9 +161,19 @@ export const TOTEM = on(PLACE.old, 3.55, 0, 3.6);
 export const TOTEM_HIGH = 2.7;
 
 /** HOME, on `now`: your chest, the bread its coins would buy, and where you stand beside them. */
-export const CHEST = on(PLACE.now, 3.75, 0, 0.45);
-export const TOWER = on(PLACE.now, 4.78, 0, 0.45);
-export const HOME_KID = on(PLACE.now, 2.6, 0, 0.5);
+export const CHEST = on(PLACE.now, 4.55, 0, 0.45);
+export const TOWER = on(PLACE.now, 5.42, 0, 0.45);
+export const HOME_KID = on(PLACE.now, 3.72, 0, 0.5);
+/**
+ * Where you land when you jump forward with the sign: in the gap between the stall's hay bale and your chest, so
+ * that neither is in the last picture, with your own wall behind you.
+ */
+export const SUB_KID = on(PLACE.now, 2.75, 0, 1.4);
+/** Where you stand at home, `since` seconds after 'subscribe' (negative before it): one hop, from the chest to the lens. */
+export const homeSpot = (since: number): Vec3 => {
+  const k = ease(ramp(since, -0.15, 0.2));
+  return [HOME_KID[0] + (SUB_KID[0] - HOME_KID[0]) * k, HOME_KID[1] + Math.sin(k * Math.PI) * 0.22, HOME_KID[2] + (SUB_KID[2] - HOME_KID[2]) * k];
+};
 
 /** The stops of beats 5 to 7. */
 export const LATER = {
@@ -172,26 +182,35 @@ export const LATER = {
   /** The race: both machines, and the two stacks on their roofs. */
   race: stop([STAGE[0], STAGE[1] + 3.15, STAGE[2]], 7.9, -6, 3, 42),
   /** The loaf in front of the stage, and all the room over it that its price needs. */
-  creep: stop([CREEP[0], PLACE.real[1] + 2.62, CREEP[2]], 6.3, -12, 4, 40),
+  creep: stop([CREEP[0], PLACE.real[1] + 2.0, CREEP[2]], 7.0, 12, 4, 40),
   /** Germany, 1923: the press at the edge of its island, and the notes pouring off it into the clouds. */
   old: stop([PRESS[0] + 0.2, PLACE.old[1] + 1.5, PRESS[2] + 2.0], 13.5, 9, 11, 46),
   /** One loaf, and its price all the way down the plinth it stands on. */
   totem: stop([TOTEM[0] + 0.3, PLACE.old[1] + 1.2, TOTEM[2] + 0.4], 7.3, -9, 5, 40),
   /** Home again: today's loaf, from a little nearer and the other side. */
-  answer: near(STOPS.loaf, { closer: 0.25, turn: 15, on: [NOW.loaf[0] + 0.02, NOW.stall[1] + 1.46, NOW.loaf[2]] }),
+  answer: near(STOPS.loaf, { closer: 0.15, turn: 15, on: [NOW.loaf[0] + 0.02, NOW.stall[1] + 1.5, NOW.loaf[2]] }),
   /** Your chest, the bread beside it, and you. */
-  chest: stop([CHEST[0] + 0.1, PLACE.now[1] + 1.22, CHEST[2]], 6.9, 5, 8, 40),
+  chest: stop([CHEST[0] + 0.055, PLACE.now[1] + 1.22, CHEST[2]], 7.5, 5, 8, 40),
   /** You, and the sign over your head. */
-  sub: stop([HOME_KID[0] - 0.12, PLACE.now[1] + 1.5, HOME_KID[2]], 3.8, -14, 3, 40),
+  sub: stop([SUB_KID[0] - 0.1, PLACE.now[1] + 1.5, SUB_KID[2]], 4.1, -8, 3, 40),
 };
 
-/** The rack from one side or the other, a little nearer or further: one stop for each line about it. */
+/** Where the baker stands: at the right-hand post of his rack, a step in front of it. */
+export const RACK_BAKER = on(PLACE.village, 1.67, 0, -0.35);
+
+/**
+ * The rack, once for each line about it. The whole rack and its tag are 5.6 m tall, so every stop that shows all of
+ * it stands 9 to 10 m back and looks at a point 2.2 m up: that puts the caption (72% of the height) on the plank
+ * cabinet under the loaves, and never on a loaf. What changes from line to line is the side the camera stands on.
+ */
+const rackAt = (y: number): Vec3 => on(PLACE.village, 0.2, y, -0.9);
 export const RACKS = {
-  one: near(STOPS.rack, { closer: 1.4, turn: -15, raise: 2, on: on(PLACE.village, 0.2, 3.0, -0.9) }),
-  more: near(STOPS.rack, { closer: 0.2, turn: 13, raise: 1, on: on(PLACE.village, 0.2, 2.5, -0.9) }),
-  still: stop(on(PLACE.village, 1.32, 1.95, 0), 5.1, 17, 4, 40),
-  two: near(STOPS.rack, { closer: 1.2, turn: -11, raise: 2, on: on(PLACE.village, 0.2, 2.95, -0.9) }),
-  nobody: stop(on(PLACE.village, 0.2, 2.62, -0.9), 4.7, 9, 2, 40),
+  one: stop(rackAt(2.2), 9.5, -15, 5, 42),
+  more: stop(rackAt(2.3), 9.9, 13, 4, 42),
+  still: stop([RACK_BAKER[0] - 0.14, PLACE.village[1] + 1.95, RACK_BAKER[2] - 0.1], 5.1, 17, 4, 40),
+  two: stop(rackAt(2.2), 9.2, -11, 5, 42),
+  /** Close, on the four lowest rows: eight loaves across the whole frame, and the cabinet under the caption. */
+  nobody: stop(rackAt(1.42), 5.1, 8, 4, 42),
 };
 
 // ----------------------------------------------------------------------------- the people
@@ -258,7 +277,8 @@ export const ShopSet: React.FC<{ at: ReturnType<typeof shop>; name: string }> = 
     {/* the board on the front of the canopy */}
     <Block position={at.name} size={[1.12, 0.34, 0.06]} color="#5c3f24" />
     <Block position={[at.name[0], at.name[1], at.name[2] + 0.02]} size={[1.03, 0.26, 0.05]} color="#f6ecd2" emissive="#f6ecd2" emissiveIntensity={0.2} castShadow={false} />
-    <PixelText text={name} position={[at.name[0], at.name[1], at.name[2] + 0.05]} height={0.22} maxWidth={0.92} color="#3b2a16" />
+    {/* In cubes, not in PixelText: that font has a black edge, which closes up dark letters on a pale board. */}
+    <Figure text={name} position={[at.name[0], at.name[1], at.name[2] + 0.05]} height={0.17} maxWidth={0.9} depth={0.2} color="#3b2a16" shadow={false} castShadow={false} />
   </>
 );
 
@@ -290,9 +310,12 @@ export const ShopGoods: React.FC<{
       <Loaf position={[at.loaf[0], at.loaf[1] + hop * 0.16, at.loaf[2]]} rotationY={hop * 0.12} scale={LOAF * (1 + hop * 0.08)} split={split} />
       {/* It swells about the middle of its card, not about its knot: a tag that grew downward would cover the loaf. */}
       <PriceTag text={price} position={[at.tag[0], at.tag[1] + swell * 0.36, at.tag[2] + swell * 0.1]} rotationY={Math.PI * (1 - turned)} scale={1.6 * (1 + swell * 0.55)} swing={settle + hop * 0.1} />
-      {coinsSince.map((since, i) => (
-        <PriceCoin key={i} rest={at.coin(i, coinsSince.length)} since={since} />
-      ))}
+      {coinsSince.map((since, i) => {
+        // When the loaf comes apart, each coin moves out with its half and stays under it.
+        const rest = at.coin(i, coinsSince.length);
+        const out = coinsSince.length > 1 ? (i - (coinsSince.length - 1) / 2) * 2 * ((split * LOAF) / 2) : 0;
+        return <PriceCoin key={i} rest={[rest[0] + out, rest[1], rest[2]]} since={since} />;
+      })}
       <Oven position={[at.oven[0], at.oven[1] + 0.6, at.oven[2]]} fire={fire} />
     </>
   );

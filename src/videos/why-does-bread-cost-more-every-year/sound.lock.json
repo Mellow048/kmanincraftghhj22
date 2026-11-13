@@ -5,10 +5,10 @@
   "seconds": 49.2,
   "built_from": {
     "timing.json": "4767a8be630bcd134fa08718bdcdfcc7e8ad3958",
-    "sound.json": "acff43d3af05e4b59a46e8aab4302ac8841f31c8",
+    "sound.json": "3beaef86870eceb253e76bc782fa2bac2fc0795c",
     "narration.mp3": "283bbb57da391a437edd564f57f32063126b6614"
   },
-  "mix_sha1": "84d030a901ab3645f54cc54459533ca5039d36ef",
+  "mix_sha1": "2b0732d046d776b0da2778fb3ccf9b82131a9b21",
   "music_sections": [
     {
       "from": "1.ask",
@@ -44,8 +44,8 @@
     "sfx": 99,
     "sfxPerMinute": 120.7,
     "sfxKinds": 26,
-    "longestGapSeconds": 2.8,
-    "longestGapAt": 21.8,
+    "longestGapSeconds": 2.1,
+    "longestGapAt": 22.4,
     "sfxBuried": 0,
     "voiceOverRestMedianDb": 12.8,
     "voiceOverRestWorstDb": 5.5,

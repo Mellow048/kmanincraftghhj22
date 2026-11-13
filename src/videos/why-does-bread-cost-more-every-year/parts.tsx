@@ -60,6 +60,25 @@ export const Loaf: React.FC<{ position?: Vec3; rotationY?: number; scale?: numbe
 };
 
 /**
+ * A speech bubble that says a NUMBER. The town's `Bubble` writes in the caption font, which has a black edge:
+ * right for HMM, but it closes up a dark "10" into two blobs. This one writes in cubes (`Figure`).
+ * `position` is the middle of the paper; it faces +Z, so give it the camera's yaw. `tail` −1 hangs left, 1 right.
+ */
+export const FigureBubble: React.FC<{ text: string; position?: Vec3; rotationY?: number; scale?: number; tail?: number; ink?: string }> = ({ text, position = [0, 0, 0], rotationY = 0, scale = 1, tail = -1, ink = "#1c1a22" }) => {
+  if (scale <= 0.01) return null;
+  const w = 0.3 + text.length * 0.25;
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      <Block size={[w + 0.09, 0.57, 0.03]} color="#15151a" castShadow={false} />
+      <Block position={[0, 0, 0.012]} size={[w, 0.48, 0.03]} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.45} castShadow={false} />
+      <Block position={[tail * w * 0.24, -0.32, 0]} size={[0.15, 0.15, 0.03]} color="#15151a" castShadow={false} />
+      <Block position={[tail * w * 0.24, -0.29, 0.012]} size={[0.09, 0.13, 0.03]} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.45} castShadow={false} />
+      <Figure text={text} position={[0, 0, 0.035]} height={0.3} maxWidth={w - 0.14} depth={0.2} color={ink} shadow={false} castShadow={false} />
+    </group>
+  );
+};
+
+/**
  * A PRICE TOO LONG FOR A TAG: a paper roll that hangs from a rod and unrolls downward, one row at a time.
  * `position` is the middle of the rod. `rows` are the groups of the number, top first: ["200", ",000", ",000", ",000"].
  * `shown` is how many rows have unrolled, and may be a fraction: `shown={1 + 3 * ease(k)}`.

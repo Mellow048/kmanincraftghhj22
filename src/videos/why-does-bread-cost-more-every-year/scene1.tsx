@@ -1,5 +1,5 @@
 import type React from "react";
-import { CHEST, HOME_KID, Icon, NOW, ROBE, STOPS, Villager, You, clock, ease, flightScene, ramp, timing } from "./kit";
+import { CHEST, Icon, NOW, ROBE, STOPS, Villager, You, clock, ease, flightScene, homeSpot, ramp, timing } from "./kit";
 
 /**
  * BEAT 1 — THE QUESTION. One kid, one stall, and the question the film answers.
@@ -42,7 +42,7 @@ export const Exhibit1: React.FC = () => {
         />
       ) : (
         <You
-          position={HOME_KID}
+          position={homeSpot(subscribe)}
           rotationY={0.55 - 0.75 * lift}
           animation="idle"
           blendTo="lift"

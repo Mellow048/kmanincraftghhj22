@@ -34,35 +34,50 @@ coins for one loaf.
 **Length.** 182 words in 19 lines. As recorded: 49.2 seconds at 224 words a minute (the limits are 30–58 seconds,
 110–250 words, 200–268 words a minute).
 
-What each line SHOWS:
+What each line SHOWS, as built. (The words are the ones the owner approved. Six pictures changed between the draft
+and the film; the last column of the second table says why.)
 
 | Line | Island | The picture |
 |---|---|---|
-| 1.ask | Today | You at the baker's stall, a loaf on the counter. Its price tag is turned away |
-| 2.loaf | Today | The loaf, close. The tag swings round: **2**. Two coins drop on the counter |
-| 3.mom | Thirty years ago | The camera slides back along a bridge to an older island: the same stall, a girl in the same shirt, the same loaf. Its tag: **1** |
-| 3.same | Both | Pull back until both islands are in the frame: two loaves that match, two tags that do not |
-| 4.village | The village | Fly down to a tiny island: three huts, one baker, one shelf |
-| 4.ten | The village | Ten loaves in a row on the shelf; ten coins in a row on the ground in front of them |
-| 4.one | The village | Each coin slides to a loaf. Ten tags pop up, all **1** |
-| 4.more | The village | Ten more coins fall out of the sky and land beside the first ten |
-| 4.still | The village | The shelf, close: the baker counts with his head. Still ten |
-| 4.two | The village | The coins pair up, two to a loaf. Every tag flips to **2** |
-| 4.nobody | The village | The villagers walk away with one loaf each, exactly as before, and twice the coins spent |
-| 5.real | The real world | Up and out to the biggest island: a mint on one side, a bakery on the other |
-| 5.faster | The real world | A race: notes come out of the `Printer` faster than loaves come out of the oven. Two bars grow beside them; the money bar pulls ahead |
-| 5.name | The real world | The price tag on the nearest loaf creeps up, a little, then a little more. A signpost rises: **INFLATION** |
-| 5.germany | Germany, 1923 | Fly on to a grey island: a printer as big as a house, notes pouring off the edge of the island like a waterfall |
-| 5.billion | Germany, 1923 | One loaf on a plinth. Its tag unrolls down the plinth and along the ground: **200,000,000,000**. Beside it, a cart heaped with notes |
-| 6.answer | Today | Back along the whole flight to the first stall. The loaf has not changed. The coin in your hand is the thing that has: it buys the loaf, then three quarters of it, then half |
-| 7.chest | Today | Your chest at home, open, full of coins. Not one coin leaves, and the stack of loaves they would buy, beside it, gets shorter |
-| 7.sub | Today | The red subscribe sign, with a price tag hanging on it: **0** |
+| 1.ask | Today | You at the baker's stall, shrugging, a question mark over your head. The loaf's price tag has its back to us |
+| 2.loaf | Today | The loaf, close. The tag swings round on "costs": **2**. Two coins land under the loaf, one on "two" and one on "coins" |
+| 3.mom | Then | Over the edge of the island and DOWN to the island under it: the same stall, the same loaf, a girl in your shirt. Her tag swings round on "cost": **1**, and one coin lands |
+| 3.same | Both | Back until both stalls are in one frame, "then" below and "today" above. The two loaves hop together, the two ovens flare together, the two tags swell, and an arrow grows from the 1 up to the 2 |
+| 4.village | The village | Down and west to a tiny island: three huts, a baker, a farmer who buys from him, and one empty rack between them |
+| 4.ten | The village | Square on to the rack. Ten loaves pop on to it, two across and five up; ten coins drop in two rows at its foot |
+| 4.one | The village | Each coin flies up and lands under its own loaf. One big tag over the rack pops: **1** |
+| 4.more | The village | Ten more coins fall out of the sky and land where the first ten waited. The farmer looks up |
+| 4.still | The village | The baker, close. He counts the rack with his head, each loaf hopping as he gets to it, and says what he finds: **10** |
+| 4.two | The village | The ten new coins fly up; every first coin makes room. Two coins under each loaf, and the tag spins round as **2** |
+| 4.nobody | The village | One slow push in, from the whole rack to eight of its loaves. On the way the farmer and the baker shake their heads. On "buys less" every loaf comes apart down the middle and its two coins move out with the halves: half a loaf over each coin |
+| 5.real | The real world | Up and out to the biggest island: a mint and a bakery, and a stage with a printer and an oven on it. What they make is stacked on their roofs |
+| 5.faster | The real world | The race. Bundles of notes hop on to the printer's stack, loaves hop on to the oven's: two stacks that start level, and the money pulls ahead |
+| 5.name | The real world | A loaf in front of the stage, its price hanging under a red balloon. A step up on each "year": 3, 4, 5. On the last word the balloon swells, with **INFLATION** written on it |
+| 5.germany | Germany, 1923 | A hundred years DOWN: a grey island far below the two stalls, a printer as big as a house with "1923" over it, and notes pouring off the edge into the clouds |
+| 5.billion | Germany, 1923 | One loaf on a tall plinth. Its price unrolls down the plinth a row at a time: **200 ,000 ,000 ,000**. Beside it, a man with a wheelbarrow of notes |
+| 6.answer | Today | Home: up past "then" to the first stall. The loaf has not changed. Coins pile up beside it on "more money"; on "buys less" it comes apart, and each of its two coins moves out under its own half |
+| 7.chest | Today | Your chest by your own door, open, full. Beside it, the bread those coins would buy: the stack loses three loaves, and not one coin leaves the chest |
+| 7.sub | Today | You jump clear of the chest with the red subscribe sign over your head, and the tag on it swings round: **0** |
+
+What changed from the draft, and why:
+
+| In the draft | In the film | Why |
+|---|---|---|
+| "Thirty years ago" was an older island beside today's, reached along a bridge | It hangs BELOW today's. Germany, 1923 is far below both | Time became height: down is earlier, up is later and dearer. The arrow from 1 to 2 points up, the flight to 1923 is the longest fall, and the flight home rises past your mom's stall |
+| Ten tags on the shelf, flipping from 1 to 2 | One big tag over the rack; the price of each loaf is the coins standing under it | Ten tags were too small to read in a tall frame. One coin under a loaf, then two, IS the price, and it needs no reading |
+| The villagers walk away with one loaf each | The loaves come apart: half a loaf over each coin | "Each coin just buys less" is the sentence. A loaf in two halves over two coins says it in one picture, and the answer (6.answer) can repeat it |
+| Two bars beside the printer and the oven | What the machines make is stacked on their own roofs | A bar is a chart. A stack of notes beside a stack of loaves is the thing itself |
+| A signpost rises: INFLATION | The price hangs under a balloon, and the word is on the balloon | Inflation is something being blown up. The picture is the meaning of the word |
+| At the answer, one coin buys the loaf, then three quarters, then half | The loaf comes apart in two, as the village's did | One device for "buys less", used twice, so the second time needs no explaining |
 
 ## The claims, and where each came from
 
 An explainer that is wrong is worse than none. Every factual claim of the script is listed here. The Minneapolis
-table was read in full on 2026-11-12. **The other three pages were read only as the excerpts a search returned:
-read each of them in full before the film is delivered**, and correct this table if a page says something else.
+table, the Federal Reserve Education page (its full transcript) and the Wiener Holocaust Library page were read in
+full on 2026-11-13, before the film was delivered, and each says what this table says it does: the index is 156.9
+for 1996 and 333.2 (an estimate) for 2026; the only falls since 1955 are 1955 and 2009; "By the autumn of 1923 a
+loaf of bread cost 200,000,000,000 marks". The USAFacts page was read only as the excerpt a search returned; the
+claim it is listed for stands on the Federal Reserve page alone.
 
 | Line | Claim | Source |
 |---|---|---|
@@ -88,9 +103,13 @@ as proposed: the subject is inflation through the price of bread, the German loa
    country and a real year. Without it the film is nine seconds shorter and has no surprise.
 3. The voice: `voice-00`, as in the In This Town films, or another voice for explainers.
 
-**What the pack does not have yet** (built after the script is approved; into the pack where a second film could
-use it): a cart of notes, a waterfall of notes, a tag long enough for twelve digits, a slice taken out of a loaf.
-The islands, the stall, the loaf, the coins, the tags, the printer, the bars, the chest and the sign are in the pack.
+**What was built for it, and where it lives.** The pack was made before its first film, and this film found out
+what it lacked: an oven, a loaf that comes apart, a price too long for a tag, a balloon, a speech bubble that says
+a number, a wheelbarrow and its heap of notes, notes falling off an island, a bundle of notes for a tall stack.
+They are in this film's `parts.tsx`,
+built so that they can move into the pack unchanged once the owner has approved the film
+(`Topics/Explainer/PACK.md`, "Adding a part"). In `kit.tsx`, because they are this film's own: the five islands,
+the route, the shop (the same on "today" and "then") and the village's rack.
 
 ```narration
 # clip 01-question

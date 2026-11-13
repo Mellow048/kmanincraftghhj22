@@ -1,6 +1,6 @@
 import type React from "react";
 import {
-  Bubble, COIN, Coin, Loaf, PLACE, PriceTag, RACKS, RACK_LOAF, RACK_TOP, ROBE, STOPS, Villager,
+  COIN, Coin, FigureBubble, Loaf, PLACE, PriceTag, RACKS, RACK_BAKER, RACK_LOAF, RACK_TOP, ROBE, STOPS, Villager,
   clock, dropped, ease, flightScene, on, pop, rackCoin, rackFoot, rackLoaf, ramp, swung, timing,
 } from "./kit";
 import type { Vec3 } from "../../engine";
@@ -38,7 +38,9 @@ export const Exhibit4: React.FC = () => {
   // The big tag over the rack: "1" on 'one'; it spins once on 'sells' and comes round as "2".
   const flip = swung(sells / 0.42);
   const price = sells > 0.21 ? "2" : "1";
-  const split = 0.18 * ease(ramp(buys, 0, 0.3));
+  // "Each coin just buys less": every loaf comes apart, and its two coins move out with the halves, one under each.
+  const apart = ease(ramp(buys, 0, 0.32));
+  const split = 0.2 * apart;
 
   return (
     <>
@@ -52,8 +54,11 @@ export const Exhibit4: React.FC = () => {
         const up1 = ramp(each - i * 0.045, 0, 0.42);
         const up2 = ramp(each2 - i * 0.045, 0, 0.42);
         const n = 1 + ease(up2);
+        const out = 0.125 * apart;
         const first = arc(rackFoot(i), rackCoin(i, 0, n), up1);
         const second = arc(rackFoot(i), rackCoin(i, 1, 2), up2);
+        first[0] -= out;
+        second[0] += out;
         const fell1 = coins - i * 0.055;
         const fell2 = hand - i * 0.06;
         return (
@@ -69,33 +74,25 @@ export const Exhibit4: React.FC = () => {
 
       {/* The baker, beside his rack. He counts it with his head on 'still', and says what he finds. */}
       <Villager
-        position={on(PLACE.village, 1.6, 0, 0.1)}
+        position={RACK_BAKER}
         rotationY={still > 0 && nobody < 0 ? -0.9 : -0.35}
         robe={ROBE.white}
         nod={still > 0 && ten < 0.3 ? -0.35 + ramp(still, 0, 0.85) * 0.7 : 0.08 + Math.sin(walk * 1.6) * 0.05}
         turn={nobody > 0 ? Math.sin(nobody * 7) * 0.4 * (1 - ease(ramp(nobody, 1.2, 1.8))) : 0}
       />
-      <Bubble text="10" position={on(PLACE.village, 1.9, 2.38, 0.3)} rotationY={0.4} scale={1.25 * pop(ten, -0.05, 0.22) * (1 - ease(ramp(two, 0, 0.25)))} tail={-1} />
+      <FigureBubble text="10" position={[RACK_BAKER[0] + 0.31, RACK_BAKER[1] + 2.38, RACK_BAKER[2] + 0.2]} rotationY={0.4} scale={1.25 * pop(ten, -0.05, 0.22) * (1 - ease(ramp(two, 0, 0.25)))} tail={-1} />
 
-      {/* The village: three who buy bread here. They watch the rack; they shake their heads when the price doubles. */}
-      {(
-        [
-          { at: [-1.95, 0, 0.3], turn: 0.8, robe: ROBE.farmer, hat: "straw" as const },
-          { at: [-2.7, 0, 1.4], turn: 0.95, robe: ROBE.blue, hat: "none" as const },
-          { at: [2.75, 0, 1.3], turn: -0.9, robe: ROBE.red, hat: "none" as const },
-        ] as const
-      ).map((v, i) => (
-        <Villager
-          key={i}
-          position={on(PLACE.village, v.at[0], v.at[1], v.at[2])}
-          rotationY={v.turn}
-          robe={v.robe}
-          hat={v.hat}
-          phase={i * 1.7}
-          nod={0.02 + Math.sin(walk * 1.3 + i * 2) * 0.05 - (hand > 0.3 && hand < 1.4 ? 0.5 * Math.sin(ramp(hand, 0.3, 1.4) * Math.PI) : 0)}
-          turn={nobody > 0.1 ? Math.sin((nobody - i * 0.12) * 7) * 0.42 * (1 - ease(ramp(nobody, 1.3, 1.9))) : 0}
-        />
-      ))}
+      {/* The one who buys his bread here. He stands at the rack's other post, so he and the baker are in every
+          picture of the whole rack and in none of the close ones: anybody nearer the lens would stand in front of it.
+          He looks up at the new coins, and shakes his head when the price doubles. */}
+      <Villager
+        position={on(PLACE.village, -1.23, 0, -0.42)}
+        rotationY={1.15}
+        robe={ROBE.farmer}
+        hat="straw"
+        nod={0.02 + Math.sin(walk * 1.3) * 0.05 - (hand > 0.3 && hand < 1.4 ? 0.5 * Math.sin(ramp(hand, 0.3, 1.4) * Math.PI) : 0)}
+        turn={nobody > 0.1 ? Math.sin(nobody * 7) * 0.42 * (1 - ease(ramp(nobody, 1.3, 1.9))) : 0}
+      />
     </>
   );
 };
@@ -108,7 +105,7 @@ export const scene4 = flightScene(timing, {
     {
       cue: "4.village",
       to: STOPS.village,
-      note: "Away from the two prices and down to the west, to a place small enough to count: three huts, four people, a baker and one empty rack. The real world hangs behind it, out of reach for now.",
+      note: "Away from the two prices and down to the west, to a place small enough to count: three huts, a baker, a farmer who buys from him, and one empty rack between them.",
     },
     {
       cue: "4.ten",
@@ -118,12 +115,12 @@ export const scene4 = flightScene(timing, {
     {
       cue: "4.one",
       to: RACKS.one,
-      note: "In, and round to the left, as each coin flies up from the ground and lands under its own loaf: one coin, one loaf, ten times. The big tag over the rack pops on 'one'.",
+      note: "Round to the left, as each coin flies up from the ground and lands under its own loaf: one coin, one loaf, ten times. The big tag over the rack pops on 'one'.",
     },
     {
       cue: "4.more",
       to: RACKS.more,
-      note: "Back and round to the other side, with sky over the rack, because that is where the new money comes from: ten more coins fall into the frame and land where the first ten waited. The villagers look up.",
+      note: "Round to the other side and a step back, with sky over the rack, because that is where the new money comes from: ten more coins fall into the frame and land where the first ten waited. The farmer looks up.",
     },
     {
       cue: "4.still",
@@ -138,8 +135,9 @@ export const scene4 = flightScene(timing, {
     {
       cue: "4.nobody",
       to: RACKS.nobody,
-      drift: 0.5,
-      note: "Close on the middle of the rack: the same ten loaves as before, and three villagers shaking their heads. On 'buys less' every loaf comes apart down the middle: half a loaf over each coin.",
+      travel: 2.1,
+      lift: 0,
+      note: "One slow push in, the length of the first sentence, from the whole rack to eight of its loaves. On the way the farmer and the baker shake their heads: the same ten loaves as before. It lands for 'each coin', and on 'buys less' every loaf comes apart down the middle, half a loaf over each of its two coins.",
     },
   ],
 });

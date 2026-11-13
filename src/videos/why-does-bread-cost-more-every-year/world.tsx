@@ -51,8 +51,9 @@ const Sets: React.FC = () => (
     <Island position={PLACE.now} size={SIZE.now} seed={1} />
     <ShopSet at={NOW} name="TODAY" />
     <Tree position={on(PLACE.now, -3.75, 0, -2.5)} height={3.4} />
-    <Hut at={on(PLACE.now, 3.85, 0, -1.3)} w={2.6} d={2} h={2.7} wall="planks" roof="#3f6fa8" door={0} />
-    <LampPost position={on(PLACE.now, 5.1, 0, -3.0)} seed={2} />
+    {/* Your house: wide enough to be the whole wall behind you in the last picture. */}
+    <Hut at={on(PLACE.now, 4.0, 0, -1.3)} w={4.4} d={2} h={2.7} wall="planks" roof="#3f6fa8" door={0.5} />
+    <LampPost position={on(PLACE.now, 5.9, 0, -3.0)} seed={2} />
     <Flowers at={on(PLACE.now, -3.4, 0, 2.5)} />
     <Flowers at={on(PLACE.now, 1.6, 0, 3.0)} colors={["#f2d23a", "#e8433a"]} />
 
@@ -101,7 +102,7 @@ const Sets: React.FC = () => (
 
 /** Rocks with a tree on them, a long way off: nothing happens there. They are what makes the sky deep. */
 const FAR: Array<{ at: [number, number, number]; size: [number, number]; tree?: number; seed: number }> = [
-  { at: [-8, 5, -24], size: [4, 3], tree: 2.6, seed: 21 },
+  { at: [15, 10, -40], size: [4, 3], tree: 2.6, seed: 21 },
   { at: [12, 9, -30], size: [3, 3], seed: 22 },
   { at: [-22, 1, -26], size: [5, 4], tree: 3.2, seed: 23 },
   { at: [-40, 9, -24], size: [4, 4], tree: 2.8, seed: 24 },

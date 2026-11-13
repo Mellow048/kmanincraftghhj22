@@ -321,17 +321,18 @@
     },
     {
       "cue": "4.nobody",
-      "at": 0.3,
-      "sfx": "swish",
-      "trim": -2,
-      "why": "In close on the middle of the rack."
-    },
-    {
-      "cue": "4.nobody",
       "word": "buy",
       "sfx": "buzz",
       "trim": -3,
-      "why": "The villagers shake their heads: no more bread than before."
+      "why": "The farmer and the baker shake their heads, as the camera pushes slowly in: no more bread than before."
+    },
+    {
+      "cue": "4.nobody",
+      "word": "bread",
+      "at": 0.1,
+      "sfx": "rustle",
+      "trim": -1,
+      "why": "Two heads still shaking, a robe and a straw hat: the only things that move while the camera closes in."
     },
     {
       "cue": "4.nobody",
@@ -647,7 +648,7 @@
       "at": 0.3,
       "sfx": "swish",
       "trim": -1,
-      "why": "In to you."
+      "why": "In to you, as you jump clear of the chest with the sign."
     },
     {
       "cue": "7.sub",
