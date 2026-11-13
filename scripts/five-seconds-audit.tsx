@@ -26,6 +26,7 @@ function audit(){
  };
  const untouched=[held('counter','stranger root',manMotion),held('counter','stranger pose',strangerPose),held('counter','rabbit',carriedRabbit),held('counter','witness gaze',motherGazeTarget),held('counter','second ice',t=>iceAt(t,1)),held('counter','third ice',t=>iceAt(t,2)),held('elder','arrow',rescueArrow),held('elder','bow',bowState),held('elder','zombies',zombiesAt),held('locker','untouched closed door',t=>lockerMotion(t).door,STOP.locker.a,LOCKER_OPEN_START),held('locker','released open door',t=>lockerMotion(t).door,LOCKER_OPEN_END,STOP.locker.b-1/30),held('locker','bully',bullyState),held('glass','cup',t=>glassState(t).cup)];
  const trajectories=[
+  ['locker bully',(t:number)=>bullyState(t).position,cue('7.locker').start,cue('8.secret').end],
   ['locker hero',(t:number)=>lockerMotion(t).hero.position,cue('7.locker').start,cue('8.secret').end],
   ['pulled friend',(t:number)=>lockerMotion(t).friend,STOP.locker.a,STOP.locker.b],
   ['rescue hero',(t:number)=>rescueMotion(t).hero.position,cue('10.night').start,cue('12.rabbit').end],

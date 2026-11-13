@@ -87,6 +87,12 @@
   ],
   "paths": [
     {
+      "id": "locker bully",
+      "maxFrameStep": 0.0514426541067652,
+      "maxMetresPerSecond": 1.543279623202956,
+      "atFrame": 2007
+    },
+    {
       "id": "locker hero",
       "maxFrameStep": 0.23004444444442895,
       "maxMetresPerSecond": 6.901333333332868,

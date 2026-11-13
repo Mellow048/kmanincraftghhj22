@@ -70,7 +70,9 @@ export function lockerState(t:number){
  return {...q,friend,friendLean,target,bookRest,book,yaw,pose};
 }
 export function bullyState(t:number){
- const s=STOP.locker,pt=paused(t,'locker'),door=t>=s.a&&t<s.b?LOCKER_HOLD:lockerMotion(t).door;
+ const s=STOP.locker,pt=paused(t,'locker'),door=t>=s.a?LOCKER_HOLD:lockerMotion(t).door;
+ // He did not touch the moved panel during the stop. Keep his planted root at its old contact
+ // when time resumes; following the newly opened handle would teleport him across the aisle.
  const doorStart=at('7.door','swung'),touch=doorStart-.13;
  const hinge:Vec3=[-.52,0,-.66];
  const handle:Vec3=[hinge[0]+Math.cos(door)*.87+Math.sin(door)*.056,1.05,hinge[2]-Math.sin(door)*.87+Math.cos(door)*.056];

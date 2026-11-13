@@ -83,7 +83,7 @@ test('rabbit stays supported through pickup, chase, fall and the two-handed resc
  for(const t of frames(c.TAKE_RABBIT,cue('18.prince').end)){const q=c.heroState(t);near(c.rabbitAt(t),m.add(p.palmMid(q.position,q.yaw,.95,q.pose),[0,-.18,0]),1e-8);}
 });
 test('continuous A to B routes have ordinary speeds and finite poses at every frame',()=>{
- const routes=[['locker',t=>m.lockerMotion(t).hero.position,cue('7.locker').start,cue('8.secret').end],['elder',t=>m.rescueMotion(t).hero.position,cue('10.night').start,cue('12.rabbit').end],['bedroom',t=>c.homeHero(t).position,cue('13.sound').start,m.HERO_RUN],['counter',t=>c.heroState(t).position,m.HERO_RUN,cue('18.prince').end],['stranger',t=>m.manMotion(t).position,cue('13.sound').start,cue('18.prince').end]];
+ const routes=[['bully',t=>l.bullyState(t).position,cue('7.locker').start,cue('8.secret').end],['locker',t=>m.lockerMotion(t).hero.position,cue('7.locker').start,cue('8.secret').end],['elder',t=>m.rescueMotion(t).hero.position,cue('10.night').start,cue('12.rabbit').end],['bedroom',t=>c.homeHero(t).position,cue('13.sound').start,m.HERO_RUN],['counter',t=>c.heroState(t).position,m.HERO_RUN,cue('18.prince').end],['stranger',t=>m.manMotion(t).position,cue('13.sound').start,cue('18.prince').end]];
  for(const [name,fn,a,b] of routes)for(const t of frames(a+1/30,b))assert.ok(m.distance(fn(t),fn(t-1/30))*30<7.5,`Root teleport ${name} at ${t}`);
  for(const t of frames(cue('13.sound').start,cue('18.prince').end)){for(const pose of [c.heroState(t).pose,c.strangerPose(t)])for(const val of Object.values(pose))for(const n of (Array.isArray(val)?val:[val]))assert.ok(Number.isFinite(n));}
 });

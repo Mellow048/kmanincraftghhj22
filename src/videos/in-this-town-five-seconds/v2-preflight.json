@@ -269,7 +269,24 @@
   "currentTemporalSamplesViewed": 189,
   "reviewHistory": "20 staging and 89 story stills were viewed before targeted framing/contact corrections. The first locker clip exposed clearance problems and was superseded by the separately rendered locker-final clip.",
   "audioReview": "Numeric signal analysis, not subjective listening. Rescue/counter clips predate the final locker-only SFX change; final soundtrack identity is verified on the full master.",
-  "fullMaster": "not yet rendered",
+  "fullMaster": "First render attempt (43390252549 / render-40) canceled before delivery to correct the bully resume jump. Corrected full master not yet rendered.",
   "ownerAcceptance": "Short proof style/direction approved; full V2 not yet reviewed by owner.",
-  "generatedFilePolicy": "Large stills/clips/stems remain in ignored out/; the final separate V2 master is the deliverable."
+  "generatedFilePolicy": "Large stills/clips/stems remain in ignored out/; the final separate V2 master is the deliverable.",
+  "timeResumeBoundaryReview": {
+    "issue": "The untouched bully followed the relocated locker handle at resume, causing a root jump.",
+    "correction": "Keep the old planted root when time resumes; only the authored recoil then moves him.",
+    "sourceFramesViewed": [
+      1996,
+      1997,
+      2002,
+      2005,
+      2008,
+      2012
+    ],
+    "maxBullyMetresPerSecond": 1.543279623202956,
+    "nodeRoutesIncludeBully": true,
+    "browserClocksRerun": 4848,
+    "cancelledRun": 43390252549
+  },
+  "clipProvenance": "All 189 temporal samples were viewed. Locker-final predates the final bully time-resume correction, covered separately by six new boundary stills and fresh all-frame route checks. Rescue/counter clips predate the final mother-gaze clamp and locker-only SFX change. Final encoded-master review is still required."
 }
