@@ -13,7 +13,7 @@ const GUN: Vec3 = [OLDC[0] - 0.42, 1.2, OLDC[2] + 0.25];
 const AIM: Vec3 = [CR[0], 0.45, CR[2]];
 const MUZZLE = lerp3(GUN, AIM, 0.42);
 /** The teller in his hole: `lie` puts his feet here and his head to the north. */
-const LIE: Vec3 = [CR[0], 0.04, CR[2] + 0.75];
+const LIE: Vec3 = [CR[0], 0.04, CR[2] - 0.25];
 /** Where Nora stops, between the hole and the cannon. */
 const SH: Vec3 = f(2.35, 0, -0.25);
 const RUN0: Vec3 = [BUSH[0] + 0.7, 0, BUSH[2] - 0.2];
@@ -108,13 +108,13 @@ export const scene7 = storyScene(timing, {
           <>
             <Hero position={LIE} animation="lie" blendTo="sit" blend={1 - 0.55 * rise} suit={1} eyes={t > re ? (Math.sin(t * 9) > 0.6 ? 0.5 : 0) : 1} />
             <group scale={pop(t, re - 0.08) * (t > pl - 0.05 ? 0 : 1)}>
-              <Bubble text="REBOOTING" position={[CR[0], 1.75, CR[2] - 0.6]} scale={0.4} dark />
+              <Bubble text="REBOOTING" position={[CR[0], 1.2, CR[2] - 1.5]} scale={0.4} dark />
             </group>
             <group scale={pop(t, pl - 0.05)}>
-              <Bubble text="PLEASE WAIT" position={[CR[0], 1.75, CR[2] - 0.6]} scale={0.36} dark />
+              <Bubble text="PLEASE WAIT" position={[CR[0], 1.2, CR[2] - 1.5]} scale={0.36} dark />
             </group>
             {t > pl ? (
-              <mesh position={[CR[0] - 0.5 + 0.2 * ramp(t, pl, 3.4), 1.42, CR[2] - 0.55]}>
+              <mesh position={[CR[0] - 0.5 + 0.2 * ramp(t, pl, 3.4), 0.86, CR[2] - 1.45]}>
                 <boxGeometry args={[0.02 + 0.4 * ramp(t, pl, 3.4), 0.06, 0.02]} />
                 <meshBasicMaterial color="#4fe3ff" />
               </mesh>
@@ -128,7 +128,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "13.fast",
-      ...cam.push({ on: [CR[0], 0.35, CR[2] - 0.75], dist: 2.6, to: 1.7, yaw: 0, pitch: 62, fov: 40 }),
+      ...cam.push({ on: [CR[0], 0.35, CR[2] - 1.0], dist: 2.6, to: 1.7, yaw: 0, pitch: 62, fov: 40 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "His face, from above, visor up, frozen: wide eyes, mouth open, the orange light climbing across it.",
@@ -136,28 +136,29 @@ export const scene7 = storyScene(timing, {
       stage: (t, { p }) => (
         <>
           <Hero position={LIE} animation="lie" suit={1} visor={1} face="fear" />
-          <pointLight position={[CR[0] + 1.2 - 0.6 * p, 1.3, CR[2]]} color="#ffb060" intensity={6 + 16 * p} distance={5} decay={2} />
+          <pointLight position={[CR[0] + 1.2 - 0.6 * p, 1.3, CR[2]]} color="#ffb060" intensity={3 + 7 * p} distance={5} decay={2} />
           <All />
         </>
       ),
     },
     {
       cue: "14.follow",
-      ...cam.truck({ on: [-0.8, 1.2, 3.1], dist: 8.6, yaw: 0, pitch: 5, fov: 44, by: [1.4, 0, 0] }),
+      ...cam.truck({ on: [0.0, 1.2, 3.1], dist: 7.6, yaw: 0, pitch: 5, fov: 44, by: [0.7, 0, 0] }),
       zone: ZONE.town,
       look: DUSK,
       note: "Earlier that evening, in the street: him in the suit, tiptoeing out of town towards the forest and looking over his shoulder. Thirty steps behind, a girl with red hair in a ponytail and a teal hoodie, keeping low, her little white drone at her shoulder. He looks back. She is behind a crate. He goes on. So does she.",
       stage: (t, { p }) => {
         const fol = wordAt("14.follow", "followed");
-        const hx = lerp(0.2, 2.4, p);
+        const hx = lerp(0.6, 1.7, p);
         const look = jolt(t, fol - 0.5, 0.9);
         const hide = ease(ramp(t, fol - 0.75, fol - 0.5)) * (1 - ease(ramp(t, fol + 0.25, fol + 0.5)));
-        const nx = lerp(-3.4, -1.75, ease(ramp(t, 0, fol - 0.55))) + 1.5 * ease(ramp(t, fol + 0.3, 2.97));
+        const nx = lerp(-2.6, -1.35, ease(ramp(t, 0, fol - 0.55))) + 1.3 * ease(ramp(t, fol + 0.3, 2.97));
         return (
           <>
-            <Hero position={[hx, 0, 3.0]} rotationY={E} animation="creep" animDistance={2.2 * p} suit={1} headYaw={-2.2 * look} />
-            <Crate position={[-1.15, 0, 3.3]} s={1.0} />
-            <Nora position={[nx, 0, 3.0]} rotationY={E} animation={hide > 0.5 ? "crouch" : "creep"} animDistance={nx + 3.4} face={hide > 0.5 ? "uneasy" : "brave"} />
+            <Hero position={[hx, 0, 3.0]} rotationY={E} animation="creep" animDistance={1.1 * p} suit={1} headYaw={-2.2 * look} />
+            <pointLight position={[0.3, 3, 6]} color="#ffe8d0" intensity={60} distance={12} decay={2} />
+            <Crate position={[-0.75, 0, 3.3]} s={1.0} />
+            <Nora position={[nx, 0, 3.0]} rotationY={E} animation={hide > 0.5 ? "crouch" : "creep"} animDistance={nx + 2.6} face={hide > 0.5 ? "uneasy" : "brave"} />
             <Shield position={[nx - 0.45, 1.75 - 0.8 * hide + 0.05 * Math.sin(t * 5), 3.0]} rotationY={E} on={0} />
           </>
         );
@@ -312,7 +313,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "14.gone",
-      ...cam.push({ on: [OLDC[0], 1.35, OLDC[2]], onTo: [OLDC[0], 2.6, OLDC[2]], dist: 3.6, to: 5.2, yaw: -12, pitch: -4, fov: 42 }),
+      ...cam.push({ on: [OLDC[0], 1.35, OLDC[2]], onTo: [OLDC[0], 1.9, OLDC[2]], dist: 3.6, to: 5.2, yaw: -12, pitch: -4, fov: 42 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "The cannon folds away, smoking. The red eyes turn to her. Then to him, for longer. Then his boots light, and he is a red line going up into the dark, and the grass where he stood is burning in two small circles.",
@@ -459,8 +460,8 @@ export const scene7 = storyScene(timing, {
       stage: (t) => {
         const same = wordAt("15.same", "same");
         const his = wordAt("15.same", "his");
-        const shut = ease(ramp(t, his + 0.25, his + 0.6));
-        const red = t > his + 0.75;
+        const shut = ease(ramp(t, his + 0.15, his + 0.45));
+        const red = t > his + 0.55;
         return (
           <>
             <Hero position={UP} rotationY={0.5 * (1 - shut)} animation="idle" suit={1} visor={1 - shut} face="worried" headPitch={-0.25 * ease(ramp(t, same, his)) * (1 - shut)} glow={red ? RED : undefined} eyes={red ? 1.6 + 0.6 * Math.sin(t * 9) : 1} />

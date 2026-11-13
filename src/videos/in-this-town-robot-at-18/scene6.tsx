@@ -14,8 +14,8 @@ import { BUSH, TREE } from "./scene5";
 export const ME0: Vec3 = f(0.6, 0, -0.7);
 export const OLD0: Vec3 = f(2.7, 0, -1.2);
 const TREE2: Vec3 = f(-0.9, 0, -1.5);
-const SAPLING: Vec3 = f(2.0, 0, -1.7);
-export const BIG: Vec3 = f(5.8, 0, -0.7);
+const SAPLING: Vec3 = f(2.3, 0, -2.9);
+export const BIG: Vec3 = f(5.9, 0, -1.5);
 /** Where he comes down. */
 export const CR: Vec3 = f(1.2, 0, -0.2);
 /** How high "over the trees" is. */
@@ -123,7 +123,7 @@ export const scene6 = storyScene(timing, {
             <group scale={pop(t, d - 0.12)}>
               <Bubble text="DUCK!" position={[H[0] - 0.15, 2.38, H[2] + 0.2]} rotationY={0.5} scale={0.5} dark />
             </group>
-            <pointLight position={[H[0] + 0.8, 1.8, H[2] + 0.8]} color={RED} intensity={4 + 10 * p} distance={4} decay={2} />
+            <pointLight position={[H[0] + 0.8, 1.8, H[2] + 0.8]} color={RED} intensity={0.6 + 1.6 * p} distance={4} decay={2} />
             <Fill on={[H[0], 1.5, H[2]]} yaw={38} power={3} />
           </>
         );
@@ -181,7 +181,7 @@ export const scene6 = storyScene(timing, {
             {a.map((w, i) => (
               <group key={i}>
                 <Slash position={at(-0.4 + [0.5, 1.25, 2.0][i] + 0.2, 1.45, -0.75)} rotationY={E} t={t - w} flat={i === 1} r={1.4} />
-                <Bits position={at(-0.4 + [0.5, 1.25, 2.0][i] + 1.1, i === 1 ? 1.5 : 0.2, i === 1 ? -1.4 : -0.6)} t={t - w - 0.03} color={i === 1 ? "#ffb060" : "#8aa070"} count={14} power={2.6} />
+                <Bits position={at(-0.4 + [0.5, 1.25, 2.0][i] + 1.1, i === 1 ? 1.5 : 0.2, i === 1 ? -2.6 : -0.6)} t={t - w - 0.03} color={i === 1 ? "#ffb060" : "#8aa070"} count={14} power={2.6} />
               </group>
             ))}
             <Woods cut2={1} sap={ease(ramp(t, a[1], a[1] + 0.7))} />
@@ -204,7 +204,7 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Hero position={at(hx)} rotationY={W} animation={k < 1 ? "stagger" : "scared"} animDistance={-2.5 * k * 1.6} suit={1} />
-            <Bits position={at(5.4, 1.3, -0.5)} t={t - hit} color="#3a7d34" count={14} power={2.2} />
+            <Bits position={at(5.5, 1.3, -1.0)} t={t - hit} color="#3a7d34" count={14} power={2.2} />
             <Bits position={at(5.2, 0.1, -0.6)} t={t - hit} color="#8aa070" count={8} power={1.4} />
             <OldMan position={at(ox, 0, -0.75)} rotationY={E} suit={1} animation="walk" animDistance={ox - 1.6}>
               <Katana out={1} />
@@ -233,7 +233,7 @@ export const scene6 = storyScene(timing, {
             <DustRing position={at(5.25)} t={t - 0.12} size={2.2} color="#6a7a5a" />
             <Blade position={at(lerp(3.9, 4.55, ease(ramp(t, 0, 0.3))), 0, -0.75)} yaw={E} swing={chop(t, 0.28)} />
             <Slash position={at(4.7, 1.5, -0.75)} rotationY={E} t={t - 0.28} flat r={1.5} />
-            <Bits position={at(5.6, 1.7, -0.5)} t={t - 0.3} color="#ffb060" count={18} power={3} />
+            <Bits position={at(5.7, 1.7, -1.2)} t={t - 0.3} color="#ffb060" count={18} power={3} />
             <Woods cut2={1} sap={1} big={ease(ramp(t, 0.3, 1.2))} />
           </>
         );
@@ -241,7 +241,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "12.follow",
-      ...cam.push({ on: at(4.55, 1.5, -0.75), onTo: at(4.55, 4.4, -0.75), dist: 4.6, to: 6.0, yaw: -14, pitch: -10, fov: 44 }),
+      ...cam.push({ on: at(4.55, 1.5, -0.75), onTo: at(4.55, 3.4, -0.75), dist: 4.6, to: 6.6, yaw: -14, pitch: -10, fov: 44 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "The old man lets the blade drop and tips his head back to look up at him. The tree behind him is still falling. Then red fire comes out of his own boots, and he goes up after him, faster.",
@@ -273,7 +273,7 @@ export const scene6 = storyScene(timing, {
       shake: 0.012,
       stage: (t, { p }) => {
         const hx = lerp(-3.4, 3.6, p);
-        const ox = lerp(-7.6, 2.0, p);
+        const ox = hx - lerp(2.7, 1.3, p);
         const hy = SKY + 0.7 * Math.sin(t * 6.5) + 0.25 * Math.sin(t * 15);
         const H = at(hx, hy, -1 + 0.4 * Math.sin(t * 4));
         const O = at(ox, SKY + 0.3, -1);
@@ -367,7 +367,7 @@ export const scene6 = storyScene(timing, {
         const hole = wordAt("12.hole", "hole");
         return (
           <>
-            <Hero position={[CR[0], down ? 0.04 : 5 * (1 - t / hit), CR[2] + 0.75]} rotationY={0} animation={down ? "lie" : "fall"} suit={1} visor={ease(ramp(t, hole - 0.3, hole))} face="dizzy" eyes={0.4} />
+            <Hero position={[CR[0], down ? 0.04 : 5 * (1 - t / hit), CR[2] - 0.25]} rotationY={0} animation={down ? "lie" : "fall"} suit={1} visor={ease(ramp(t, hole - 0.3, hole))} face="dizzy" eyes={0.4} />
             {down ? <Crater position={CR} /> : null}
             <DustRing position={CR} t={t - hit} size={3.4} color="#7a6a4a" />
             <DustRing position={CR} t={t - hit - 0.12} size={2.2} color="#6a7a5a" />
