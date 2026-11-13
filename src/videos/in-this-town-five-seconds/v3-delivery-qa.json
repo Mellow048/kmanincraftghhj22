@@ -1,0 +1,365 @@
+{
+  "file": "renders/in-this-town-five-seconds-v3.mp4",
+  "kind": "master",
+  "sha256": "a9aade2af640d57fd109c5c453d5d6cb46d4101b130f4111b1c0b690c12fbfa0",
+  "bytes": 90995924,
+  "width": 1080,
+  "height": 1920,
+  "fps": "30/1",
+  "decoded_frames": 4848,
+  "video_duration": 161.6,
+  "audio_duration": 161.601,
+  "container_duration": 161.601,
+  "video_codec": "h264",
+  "pixel_format": "yuv420p",
+  "audio_codec": "aac",
+  "channels": 2,
+  "sample_rate": "48000",
+  "fast_start": true,
+  "full_decode_errors": 0,
+  "max_video_timestamp_error_seconds": 3.333333467026023e-07,
+  "intentional_black_frames": [
+    4833,
+    4834,
+    4835,
+    4836,
+    4837,
+    4838,
+    4839,
+    4840,
+    4841,
+    4842,
+    4843,
+    4844,
+    4845,
+    4846,
+    4847
+  ],
+  "encoded_stop_intervals": [
+    {
+      "id": "teaser",
+      "start_frame": 0,
+      "resume_frame": 150,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "glass",
+      "start_frame": 923,
+      "resume_frame": 1073,
+      "frames": 150,
+      "encoded_seconds": 4.9999999999999964
+    },
+    {
+      "id": "touch",
+      "start_frame": 1093,
+      "resume_frame": 1243,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "chalk",
+      "start_frame": 1261,
+      "resume_frame": 1411,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "locker",
+      "start_frame": 1847,
+      "resume_frame": 1997,
+      "frames": 150,
+      "encoded_seconds": 4.999999999999993
+    },
+    {
+      "id": "elder",
+      "start_frame": 2679,
+      "resume_frame": 2829,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    },
+    {
+      "id": "counter",
+      "start_frame": 4171,
+      "resume_frame": 4321,
+      "frames": 150,
+      "encoded_seconds": 5.0
+    }
+  ],
+  "black_segments": [
+    "[Parsed_blackdetect_1 @ 0x7f60b000f880] black_start:161.1 black_end:161.566667 black_duration:0.466667"
+  ],
+  "freeze_segments_over_0_8s": [],
+  "audio_lag_ms": 0.0,
+  "source_mix_correlation": 0.999861,
+  "worst_5s_audio_correlation": 0.999726,
+  "join_windows": [
+    {
+      "frame": 269,
+      "at": 8.966667,
+      "correlation": 0.999836
+    },
+    {
+      "frame": 538,
+      "at": 17.933333,
+      "correlation": 0.99985
+    },
+    {
+      "frame": 808,
+      "at": 26.933333,
+      "correlation": 0.999917
+    },
+    {
+      "frame": 1077,
+      "at": 35.9,
+      "correlation": 0.999835
+    },
+    {
+      "frame": 1346,
+      "at": 44.866667,
+      "correlation": 0.999894
+    },
+    {
+      "frame": 1616,
+      "at": 53.866667,
+      "correlation": 0.999891
+    },
+    {
+      "frame": 1885,
+      "at": 62.833333,
+      "correlation": 0.999955
+    },
+    {
+      "frame": 2154,
+      "at": 71.8,
+      "correlation": 0.999855
+    },
+    {
+      "frame": 2424,
+      "at": 80.8,
+      "correlation": 0.999819
+    },
+    {
+      "frame": 2693,
+      "at": 89.766667,
+      "correlation": 0.999926
+    },
+    {
+      "frame": 2962,
+      "at": 98.733333,
+      "correlation": 0.999944
+    },
+    {
+      "frame": 3232,
+      "at": 107.733333,
+      "correlation": 0.999878
+    },
+    {
+      "frame": 3501,
+      "at": 116.7,
+      "correlation": 0.999631
+    },
+    {
+      "frame": 3770,
+      "at": 125.666667,
+      "correlation": 0.999953
+    },
+    {
+      "frame": 4040,
+      "at": 134.666667,
+      "correlation": 0.999816
+    },
+    {
+      "frame": 4309,
+      "at": 143.633333,
+      "correlation": 0.99991
+    },
+    {
+      "frame": 4578,
+      "at": 152.6,
+      "correlation": 0.999911
+    }
+  ],
+  "audio_windows": [
+    {
+      "at": 0.0,
+      "seconds": 5.0,
+      "correlation": 0.999865
+    },
+    {
+      "at": 5.0,
+      "seconds": 5.0,
+      "correlation": 0.99983
+    },
+    {
+      "at": 10.0,
+      "seconds": 5.0,
+      "correlation": 0.999726
+    },
+    {
+      "at": 15.0,
+      "seconds": 5.0,
+      "correlation": 0.999906
+    },
+    {
+      "at": 20.0,
+      "seconds": 5.0,
+      "correlation": 0.999861
+    },
+    {
+      "at": 25.0,
+      "seconds": 5.0,
+      "correlation": 0.999867
+    },
+    {
+      "at": 30.0,
+      "seconds": 5.0,
+      "correlation": 0.999838
+    },
+    {
+      "at": 35.0,
+      "seconds": 5.0,
+      "correlation": 0.999782
+    },
+    {
+      "at": 40.0,
+      "seconds": 5.0,
+      "correlation": 0.999882
+    },
+    {
+      "at": 45.0,
+      "seconds": 5.0,
+      "correlation": 0.999855
+    },
+    {
+      "at": 50.0,
+      "seconds": 5.0,
+      "correlation": 0.999886
+    },
+    {
+      "at": 55.0,
+      "seconds": 5.0,
+      "correlation": 0.999904
+    },
+    {
+      "at": 60.0,
+      "seconds": 5.0,
+      "correlation": 0.999907
+    },
+    {
+      "at": 65.0,
+      "seconds": 5.0,
+      "correlation": 0.999836
+    },
+    {
+      "at": 70.0,
+      "seconds": 5.0,
+      "correlation": 0.99989
+    },
+    {
+      "at": 75.0,
+      "seconds": 5.0,
+      "correlation": 0.999794
+    },
+    {
+      "at": 80.0,
+      "seconds": 5.0,
+      "correlation": 0.999918
+    },
+    {
+      "at": 85.0,
+      "seconds": 5.0,
+      "correlation": 0.99988
+    },
+    {
+      "at": 90.0,
+      "seconds": 5.0,
+      "correlation": 0.999841
+    },
+    {
+      "at": 95.0,
+      "seconds": 5.0,
+      "correlation": 0.999864
+    },
+    {
+      "at": 100.0,
+      "seconds": 5.0,
+      "correlation": 0.999911
+    },
+    {
+      "at": 105.0,
+      "seconds": 5.0,
+      "correlation": 0.999879
+    },
+    {
+      "at": 110.0,
+      "seconds": 5.0,
+      "correlation": 0.999905
+    },
+    {
+      "at": 115.0,
+      "seconds": 5.0,
+      "correlation": 0.999803
+    },
+    {
+      "at": 120.0,
+      "seconds": 5.0,
+      "correlation": 0.999915
+    },
+    {
+      "at": 125.0,
+      "seconds": 5.0,
+      "correlation": 0.999887
+    },
+    {
+      "at": 130.0,
+      "seconds": 5.0,
+      "correlation": 0.999823
+    },
+    {
+      "at": 135.0,
+      "seconds": 5.0,
+      "correlation": 0.999824
+    },
+    {
+      "at": 140.0,
+      "seconds": 5.0,
+      "correlation": 0.999847
+    },
+    {
+      "at": 145.0,
+      "seconds": 5.0,
+      "correlation": 0.999754
+    },
+    {
+      "at": 150.0,
+      "seconds": 5.0,
+      "correlation": 0.999899
+    },
+    {
+      "at": 155.0,
+      "seconds": 5.0,
+      "correlation": 0.999951
+    },
+    {
+      "at": 160.0,
+      "seconds": 1.599,
+      "correlation": 0.999954
+    }
+  ],
+  "encoded_loudness_input": {
+    "input_i": "-14.77",
+    "input_tp": "-2.38",
+    "input_lra": "2.40",
+    "input_thresh": "-25.01"
+  },
+  "midpoint_images": 91,
+  "review_limit": "Numerical checks and extracted encoded frames. This does not constitute real-time playback or subjective listening.",
+  "action_images": 170,
+  "action_sheets": 12,
+  "status": "passed",
+  "source_commit": "caa46693cd4dc6ccad42d5ad63f1290a73223de3",
+  "render_run": 43412292979,
+  "review": "Five encoded action sheets inspected: stop boundaries, classroom/chalk, rock, fall, ending. Preview sequential sheets inspected separately. Not subjective real-time playback or listening.",
+  "publication": "Verified release upload pending"
+}

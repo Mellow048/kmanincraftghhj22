@@ -8,9 +8,9 @@ import imageio_ffmpeg
 
 root=Path.cwd();src=Path(sys.argv[1]).resolve();dst=Path(sys.argv[2]).resolve()
 assert src!=dst
-assert dst==root/'renders/in-this-town-five-seconds-v2.mp4','This normalizer is scoped to the separate V2 master'
+assert dst in {root/'renders/in-this-town-five-seconds-v2.mp4',root/'renders/in-this-town-five-seconds-v3.mp4'},'Only separate revision masters are allowed'
 ffmpeg=imageio_ffmpeg.get_ffmpeg_exe();ffprobe=root/'node_modules/@remotion/compositor-linux-x64-gnu/ffprobe'
-out=root/'out/five-seconds/full-v2';out.mkdir(parents=True,exist_ok=True)
+out=root/('out/five-seconds/v3' if dst.name.endswith('-v3.mp4') else 'out/five-seconds/full-v2');out.mkdir(parents=True,exist_ok=True)
 def run(args):return subprocess.run(args,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 def sha(p):
  h=hashlib.sha256()

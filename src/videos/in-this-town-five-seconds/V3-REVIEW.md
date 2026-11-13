@@ -15,3 +15,7 @@ Review to date: 99 sampled source frames across ten sequential sheets viewed; fi
 ## Owner authorization for full render
 
 Owner approved the corrections proof and requested an additional 2D black-and-white/old-TV camera effect plus SFX at time-stop activation, then authorized a full render. A film-local wrapper desaturates the picture immediately for nine frames, restores color over the following 15, and does not alter the 150-frame stopped-world interval. Each stop also has a short glitch layered with its existing power-down cue; the authored music and original voice recordings are unchanged. Still frames at start and color return were viewed; typecheck, contract, 35 Node tests, protected-input checks and soundtrack signal checks pass. This is not subjective playback/listening. Full-HD render and final encoded QA are pending; retain V2 separately.
+
+## Full V3 master
+
+Full 1080×1920 render run `43412292979` succeeded from `caa46693cd4dc6ccad42d5ad63f1290a73223de3`. The separate V3 file has 4,848 frames / 161.6 seconds, and SHA256 `a9aade2af640d57fd109c5c453d5d6cb46d4101b130f4111b1c0b690c12fbfa0`. Encoded decode, all presentation timestamps, seven five-second stops, black tail, audio alignment and 17 joins pass (`v3-delivery-qa.json`). Timestamp normalization was lossless across 4,848 video and 7,576 audio packets (`v3-timestamp-normalization.json`). Five relevant encoded action/boundary sheets were viewed, in addition to the prior proof review. No subjective real-time playback or listening performed. Verified release publication pending.
