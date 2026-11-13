@@ -1572,6 +1572,52 @@ def ffmpeg_exe() -> str:
         sys.exit("ffmpeg not found. Install ffmpeg, or:  pip install imageio-ffmpeg")
 
 
+def decode_stereo(path: str):
+    """Any audio file -> stereo float samples at SR, shape (n, 2)."""
+    raw = subprocess.run([ffmpeg_exe(), "-v", "error", "-i", path, "-ac", "2", "-ar", str(SR), "-f", "f32le", "-"], capture_output=True)
+    if raw.returncode != 0:
+        sys.exit(f"ffmpeg could not read {path}: {raw.stderr.decode(errors='replace')[:300]}")
+    return np.frombuffer(raw.stdout, dtype="<f4").astype(float).reshape(-1, 2)
+
+
+def track_music(track: str, sheet, sections, clock, total: int, v_level: float, music_gain: float):
+    """
+    The music from a recorded file: `music.track` in the sound sheet. `music.trackFrom` is the second of
+    the file the film starts on. It loops if the film is longer. It is levelled like the written music
+    (`music.gain` dB against the voice), fades out with the film, and follows the sections: silence under
+    a "none" section, and each section's own `gain`, with half-second ramps between them.
+    """
+    path = os.path.join(ROOT, track)
+    if not os.path.exists(path):
+        sys.exit(f"music.track: no file at {track}")
+    y = decode_stereo(path)
+    start = n_of(float(sheet["music"].get("trackFrom", 0.0)))
+    y = y[start:]
+    if len(y) < SR:
+        sys.exit(f"music.track: {track} is too short after trackFrom")
+    while len(y) < total:
+        y = np.concatenate([y, y])
+    y = y[:total].copy()
+    frames = rms_frames(heard(y), 0.05)
+    level = math.sqrt(float(np.mean(frames[frames > frames.max() * 0.05] ** 2))) if frames.max() > 0 else 1.0
+    y *= v_level * db(music_gain) / max(level, 1e-9)
+    # one gain per 20 ms, from the sections, then smoothed so a change is a ramp and not a click
+    hop = 0.02
+    steps = int(total / SR / hop) + 2
+    curve = np.ones(steps)
+    for i, part in enumerate(sections):
+        end = sections[i + 1]["t"] if i + 1 < len(sections) else clock.duration
+        a, b = int(part["t"] / hop), int(end / hop) + 1
+        curve[a:b] = 0.0 if part["mood"] == "none" else db(float(part.get("gain", 0.0)))
+    width = int(0.5 / hop)
+    curve = np.convolve(np.pad(curve, width, mode="edge"), np.ones(width) / width, mode="same")[width:-width]
+    y *= np.interp(np.arange(total) / SR, (np.arange(steps) + 0.5) * hop, curve)[:, None]
+    y[: n_of(0.05)] *= np.linspace(0.0, 1.0, n_of(0.05))[:, None]
+    out = n_of(0.8)
+    y[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
+    return y
+
+
 def decode(path: str):
     """Any audio file -> mono float samples at SR."""
     raw = subprocess.run([ffmpeg_exe(), "-v", "error", "-i", path, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"], capture_output=True)
@@ -1802,8 +1848,14 @@ def render(film: str, clock: Clock, sheet: dict, vox: dict):
         y[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
         y[: n_of(0.012)] *= np.linspace(0.0, 1.0, n_of(0.012))[:, None]
         place(music, y, part["t"])
-    music = reverb(music, 1.1, 0.16, 300, 6000, 3)[:total]
-    music = filt(music, 60, 13000, 2)
+    track = sheet["music"].get("track")
+    if track:
+        # A recorded track (music.track, a path from the repository root) plays instead of the written moods.
+        # The sections still shape it: a "none" section is silence, and a section's `gain` lifts or lowers it.
+        music = track_music(track, sheet, sections, clock, total, v_level, music_gain)
+    else:
+        music = reverb(music, 1.1, 0.16, 300, 6000, 3)[:total]
+        music = filt(music, 60, 13000, 2)
     music = tilt_eq(music, 2200.0, -3.0, 0.9)  # a pocket where the voice lives
     # The music steps back a little while the voice is speaking, and comes up in a real pause.
     duck = float(sheet["music"].get("duck", 2.0))

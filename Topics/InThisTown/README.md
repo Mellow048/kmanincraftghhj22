@@ -69,6 +69,8 @@ studied for its shape. The reference film is ours.
 8. The page of the approved film nearest to yours: night ([`reference/nobody-looked-at-the-moon/`](reference/nobody-looked-at-the-moon/README.md)),
    the long cut ([`reference/monster-egg/`](reference/monster-egg/README.md)), or the long cut with sound and the
    ending the owner threw out first ([`reference/superpower-at-18/`](reference/superpower-at-18/README.md)).
+9. [`reference/superpower-at-18-part-2/`](reference/superpower-at-18-part-2/README.md) — the film the owner rated highest
+   ("a banger… peak"), its source, and why its first render was rejected: motion and pace. Read it before any action scene.
 
 ## What changes from the base rules
 
@@ -185,7 +187,9 @@ still an estimate, and whether the mix is older than the script.
 | `reference/nobody-looked-at-the-moon/`, `reference/monster-egg/`, `reference/superpower-at-18/` | **Three more films the owner approved**, each with its mp4, its source, a log of every shot, and what was hard |
 | `reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
-| `InThisTownMusic.aac` | Background music the owner added on 2026-11-13 ("backround music for InThisTown Videos"): 3:36, stereo. **No film uses it yet**, and `scripts/sound.py` does not read it: the films so far play music the tool makes. Ask the owner how he wants it used before you put it in a film |
+| `reference/superpower-at-18-part-2/` | **The owner's favourite so far**, with its mp4 and source: how to stage fast action and show the process |
+| `monsters.tsx` | The people of a monster village: zombie, skeleton, creeper, spider, enderman, slime. All of them can act |
+| `InThisTownMusic.aac` | Background music the owner added on 2026-11-13: 3:36, stereo. Superpower part 2 plays it: put `"track"` in a film's `sound.json` `music` (see `SOUND.md`) |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
 of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second
