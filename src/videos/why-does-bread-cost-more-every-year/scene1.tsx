@@ -1,31 +1,61 @@
 import type React from "react";
-import { Bread, LOAF, MINT, PriceTag, Printer, SAM, STOPS, Sam, clock, ease, flightScene, pop, ramp, timing } from "./kit";
+import { CHEST, HOME_KID, Icon, NOW, ROBE, STOPS, Villager, You, clock, ease, flightScene, ramp, timing } from "./kit";
 
 /**
- * THE QUESTION. One person, one thing everybody knows the price of, and the question the film answers.
+ * BEAT 1 — THE QUESTION. One kid, one stall, and the question the film answers.
  *
- * One scene file per BEAT of the script (Topics/Explainer/SCRIPT.md). A scene file holds two things:
- *
- *   ExhibitN   what the beat SHOWS. It is mounted by world.tsx for the whole film, because a camera that
- *              flies away from a thing still sees it. It is driven by the film's clock: it waits in its first
- *              state until its word is said, and keeps its last state afterwards.
+ * A scene file holds two things:
+ *   ExhibitN   what the beat SHOWS. world.tsx mounts it for the whole film, because a camera that flies away from
+ *              a thing still sees it. It is driven by the film's clock: it waits in its first state until its
+ *              word is said, and keeps its last state afterwards.
  *   sceneN     where the camera GOES: one stop for each line of narration.md, flown to as the line begins.
  *
- * Copy this file to scene2.tsx, scene3.tsx…, add each scene to film.tsx and each exhibit to world.tsx.
- * `npm run check` tells you the next line that has no stop.
+ * This exhibit is the two people of the stall: you, and the baker. Everything they do in the film is here.
  */
 export const Exhibit1: React.FC = () => {
-  // Seconds since a word was said. Negative before it: so `pop(…, 0)` is 0 until the word, and 1 after.
-  const price = clock.useSince("2.loaf", "costs");
-  const asks = clock.useSince("1.ask");
-  // The machine on the next island is already running when the camera gets there.
-  const printing = clock.useSince("1.ask");
+  const ask = clock.useSince("1.ask");
+  const today = clock.useSince("2.loaf");
+  const two = clock.useSince("2.loaf", "two");
+  // The question mark is there on the first frame: that frame is the film's poster.
+  const question = today < 0 ? 1 + 0.25 * Math.max(0, 1 - ask / 0.25) : 1 - ease(ramp(today, 0, 0.18));
+  // He shrugs at the question, and lets the shrug go when the answer starts.
+  const shrug = 1 - ease(ramp(today, 0.05, 0.4));
+  // While the film is away (from the village on) he goes home: the answer finds him beside his chest.
+  const away = clock.useSince("4.village");
+  const chest = clock.useSince("7.chest", "chest");
+  const less = clock.useSince("7.chest", "less");
+  const subscribe = clock.useSince("7.sub", "subscribe");
+  const lift = ease(ramp(subscribe, -0.05, 0.25));
   return (
     <>
-      <Sam position={SAM} rotationY={0.5} animation="idle" blendTo="shrug" blend={1 - ease(ramp(asks, 0.3, 0.7))} face={price > 0 ? "wow" : "uneasy"} lookAt={price > 0 ? [LOAF[0], LOAF[1] + 0.3, LOAF[2]] : undefined} />
-      <Bread position={LOAF} rotationY={-0.3} scale={2} />
-      <PriceTag text="2" position={[LOAF[0] + 0.1, LOAF[1] + 1.5, LOAF[2] + 0.1]} rotationY={-0.2} scale={pop(price, 0) * 1.25} swing={Math.sin(price * 5) * 0.12 * Math.exp(-Math.max(0, price) * 1.5)} />
-      <Printer position={MINT} rotationY={0.35} out={Math.max(0, printing) * 3} />
+      {away < 1 ? (
+        <You
+          position={NOW.kid}
+          rotationY={0.3 - 0.55 * ease(ramp(today, 0.1, 0.5))}
+          animation="idle"
+          blendTo="shrug"
+          blend={1 - shrug}
+          face={two > 0 ? "wow" : today > 0.2 ? "calm" : "uneasy"}
+          saccade={false}
+          gaze={0}
+          lookAt={today > 0.25 ? [NOW.loaf[0], NOW.loaf[1] + 0.6, NOW.loaf[2]] : undefined}
+        />
+      ) : (
+        <You
+          position={HOME_KID}
+          rotationY={0.55 - 0.75 * lift}
+          animation="idle"
+          blendTo="lift"
+          blend={1 - lift}
+          face={subscribe > 0 ? "grin" : less > 0 ? "uneasy" : chest > 0 ? "smile" : "calm"}
+          saccade={false}
+          gaze={0}
+          lookAt={chest > -0.2 && subscribe < 0 ? [CHEST[0] + (less > 0 ? 1.03 : 0), CHEST[1] + (less > 0 ? 1.0 : 0.7), CHEST[2] + 0.3] : undefined}
+        />
+      )}
+      <Icon kind="question" position={[NOW.kid[0], NOW.kid[1] + 1.92 + Math.sin(ask * 5) * 0.03, NOW.kid[2]]} rotationY={0.25} height={0.44} color="#ffd24a" outline glow={0.25} scale={question} />
+      {/* The baker: behind his counter the whole film. He nods at whoever is buying. */}
+      <Villager position={NOW.baker} rotationY={0.12} robe={ROBE.white} nod={0.1 + Math.sin(ask * 1.7) * 0.05} turn={today > 0 ? 0.35 : 0.2} />
     </>
   );
 };
@@ -33,18 +63,14 @@ export const Exhibit1: React.FC = () => {
 export const scene1 = flightScene(timing, {
   id: "scene1",
   title: "The question",
-  // Scene 1 opens the film: `from` is where the first frame is. For scene 2 it is the LAST stop of scene 1.
+  // Scene 1 opens the film: `from` is where the first frame is.
   from: STOPS.open,
   shots: [
     {
       cue: "1.ask",
-      to: STOPS.sam,
-      note: "TODO. The question, on the face of the person it is a problem for. Fly in from the whole island to Sam: small world, then one man.",
-    },
-    {
-      cue: "2.loaf",
-      to: STOPS.loaf,
-      note: "TODO. The one thing everybody knows the price of, and its price, popping on as the word is said. Every later number is measured against this one.",
+      to: STOPS.you,
+      travel: 0.85,
+      note: "The question, on the face of the kid it is a problem for. The first frame is his whole world, a baker's stall on a rock in the sky; then in to him, shrugging, with the question over his head.",
     },
   ],
 });
