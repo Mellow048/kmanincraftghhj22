@@ -64,7 +64,8 @@ export type AnimName =
   | "shrug"
   | "ache"
   | "leanOver"
-  | "push";
+  | "push"
+  | "guard";
 
 /** Walking clips whose phase is driven by ground distance, not the clock. */
 export type GaitName = "walk" | "run" | "creep" | "stagger";
@@ -538,6 +539,14 @@ export function getPose(name: AnimName, t: number): Pose {
       return p;
     }
 
+    case "guard": {
+      // Arms straight out to the sides, feet planted: standing between somebody and what is coming.
+      p.armR = [0, 0, 1.42 + Math.sin(time * 2.1) * 0.03];
+      p.armL = [0, 0, -1.42 - Math.sin(time * 2.1) * 0.03];
+      p.bodyPitch = -0.04;
+      p.bodyY = Math.sin(time * 2.1) * 0.006;
+      return p;
+    }
     case "shrug": {
       const lift = 0.5 + 0.5 * Math.sin(time * 3.1);
       p.armR = [-0.55, 0, 0.5 + lift * 0.25];
@@ -630,4 +639,5 @@ export const ANIM_NAMES: AnimName[] = [
   "ache",
   "leanOver",
   "push",
+  "guard",
 ];
