@@ -5,10 +5,10 @@
   "seconds": 53.7333,
   "built_from": {
     "timing.json": "1244f400f915aad87185fd7aa02a0dcc05e2083e",
-    "sound.json": "06028eb8fd985a6537b00b12e05a9f4dec4dc4b7",
+    "sound.json": "ca3a26d8e523108f994b24f2948151ccfe2abafa",
     "narration.mp3": "99dbbc160010896c05c16c3cd064935dd570fde2"
   },
-  "mix_sha1": "629d0aba78e71f5147b775bdd5c0e7869b57954f",
+  "mix_sha1": "a67cb7e1ef7a03c3ae0df70a2ba52d19aba58064",
   "music_sections": [
     {
       "from": "1.ask",
@@ -43,10 +43,10 @@
     "longestGapAt": 33.5,
     "sfxBuried": 0,
     "voiceOverRestMedianDb": 15.4,
-    "voiceOverRestWorstDb": 1.4,
+    "voiceOverRestWorstDb": 3.6,
     "voiceOverRestWorst": [
       {
-        "db": 1.4,
+        "db": 3.6,
         "t": 29.5,
         "cue": "4.name",
         "sounding": [
@@ -101,7 +101,5 @@
     "truePeakDb": -1.3,
     "limiterMaxDb": 1.2
   },
-  "failures": [
-    "at 29.5s [4.name] the words are covered: the voice is only 1.4 dB over the rest (stamp, whoosh). Turn that down, or move it off the words."
-  ]
+  "failures": []
 }

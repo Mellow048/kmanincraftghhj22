@@ -366,7 +366,8 @@
       "cue": "4.name",
       "word": "leave",
       "sfx": "stamp",
-      "why": "The word is said (no vote can make him leave)."
+      "trim": -5,
+      "why": "The word is said (no vote can make him leave). Lowered -5 dB to avoid covering the voice."
     },
     {
       "cue": "4.name",
