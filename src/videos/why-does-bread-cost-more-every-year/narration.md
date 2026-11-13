@@ -1,10 +1,12 @@
 # Narration — Why Does Bread Cost More Every Year
 
-**Status: APPROVED and RECORDED. The picture and the sound are not built yet.** The owner approved this script on
-2026-11-13 ("yesboth", to the two scripts that were put to him together). The three clips are recorded with
-`voice-00` (`public/audio/why-does-bread-cost-more-every-year/raw/`) and the film's clock is measured from them
-(`timing.json`): 49.2 seconds. Only the starter's two shots exist. Changing a word now means recording that clip
-again and rebuilding the timing.
+**Status: BUILT and RENDERED. Waiting for the owner to watch it.** The owner approved this script on 2026-11-13
+("yesboth", to the two scripts that were put to him together). The three clips are recorded with `voice-00`
+(`public/audio/why-does-bread-cost-more-every-year/raw/`) and the film's clock is measured from them
+(`timing.json`): 49.2 seconds. The picture (19 stops, one flight) and the sound (`sound.json`) are built, and the
+film is rendered: `renders/why-does-bread-cost-more-every-year.mp4`, 1080×1920, with one frame of each stop in
+`renders/why-does-bread-cost-more-every-year-shots.jpg`. **The sound was measured, never listened to.** Changing a
+word now means recording that clip again and rebuilding the timing.
 
 **Rebuild the timing with `--wpm 225`**, or every stop of the film moves:
 `python3 scripts/narration.py build why-does-bread-cost-more-every-year --wpm 225`. An explanation is read slower
