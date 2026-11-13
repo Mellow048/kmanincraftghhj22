@@ -1,6 +1,9 @@
 # Narration — What Is a Dictator
 
-**Status: DRAFT. Not approved, not recorded.** Nothing is built until the owner approves the script.
+**Status: SCRIPT APPROVED, VOICE RECORDED. The picture is being built.** The owner approved this script on
+2026-11-13 ("yes both go", to the two scripts that were put to him together). The three clips are recorded with
+`voice-00` (`public/audio/what-is-a-dictator/raw/`) and the film's clock is measured from them (`timing.json`):
+53.7 seconds, 224 words a minute. Changing a word now means recording that clip again and rebuilding the timing.
 
 **Build the timing with `--wpm 225`**, as the reference film does: an explanation is read slower than a story.
 `python3 scripts/narration.py build what-is-a-dictator --wpm 225` (add `--estimate` until the voice is recorded).

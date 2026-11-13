@@ -1,6 +1,10 @@
 # Narration — What If You Could See People's Future
 
-**Status: DRAFT. Not approved, not recorded.** Nothing is built until the owner approves the script.
+**Status: SCRIPT APPROVED, VOICE RECORDED. The picture is being built.** The owner approved this script on
+2026-11-13 ("yes both go", to the two scripts that were put to him together). The six clips are recorded with
+`voice-00` (`public/audio/what-if-you-could-see-peoples-future/raw/`) and the film's clock is measured from them
+(`timing.json`): 115.7 seconds, 254 words a minute. Changing a word now means recording that clip again and
+rebuilding the timing.
 
 Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. The reference film, to build like
 and never to retell: `Topics/WhatIf/reference/crush/`.
