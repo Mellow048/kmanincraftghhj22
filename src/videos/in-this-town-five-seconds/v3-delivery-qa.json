@@ -361,5 +361,11 @@
   "source_commit": "caa46693cd4dc6ccad42d5ad63f1290a73223de3",
   "render_run": 43412292979,
   "review": "Five encoded action sheets inspected: stop boundaries, classroom/chalk, rock, fall, ending. Preview sequential sheets inspected separately. Not subjective real-time playback or listening.",
-  "publication": "Verified release upload pending"
+  "publication": {
+    "status": "published and verified",
+    "run": 43414401685,
+    "asset_id": 743339373,
+    "url": "https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-46/in-this-town-five-seconds-v3.mp4",
+    "sha256": "a9aade2af640d57fd109c5c453d5d6cb46d4101b130f4111b1c0b690c12fbfa0"
+  }
 }
