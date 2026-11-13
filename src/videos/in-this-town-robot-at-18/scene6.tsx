@@ -149,7 +149,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "12.suit",
       cut: C_SUIT,
-      ...cam.push({ on: [OLD0[0], 1.3, OLD0[2]], dist: 5.2, to: 3.9, yaw: -55, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [OLD0[0] + 0.3, 1.3, OLD0[2]], dist: 5.2, to: 3.9, yaw: -55, pitch: 3, fov: 42 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "Past the teller's shoulder. The old man rolls his head on his neck, once, like somebody who has waited a long time. Then on 'suit' he drops into a fighting stance and his eyes burn red.",
@@ -160,7 +160,7 @@ export const scene6 = storyScene(timing, {
             <Old position={OLD0} pose={keys(t, [[0, TALL], [0.4, NECK], [0.75, TALL], [st + 0.05, READY, snap]])} blade={0} />
             <Glow position={[OLD0[0] - 0.3, 1.62, OLD0[2] + 0.1]} size={0.5 + 0.9 * ramp(t, st, st + 0.3)} color={RED} opacity={0.5} />
             <DustRing position={OLD0} t={t - st - 0.05} size={1.4} color="#8a8a66" />
-            <Me position={[ME0[0] - 0.6 - 0.3 * ease(ramp(t, st, st + 0.5)), 0, ME0[2]]} pose={blendPose(TALL, WARY, ease(ramp(t, 0.1, 0.6)))} />
+            <Me position={[ME0[0] - 0.6 - 0.3 * ease(ramp(t, st, st + 0.5)), 0, ME0[2]]} pose={blendPose(TALL, WARY, 0.35 * ease(ramp(t, 0.1, 0.6)))} />
             <Woods />
           </>
         );
@@ -503,7 +503,7 @@ export const scene6 = storyScene(timing, {
     // ------------------------------------------------------------------ his feet lit up too
     {
       cue: "12.follow",
-      ...cam.push({ on: at(-7.0, 1.45, -0.9), dist: 3.0, to: 2.4, yaw: 24, pitch: -16, fov: 42 }),
+      ...cam.push({ on: at(-7.0, 1.45, -0.9), dist: 3.0, to: 2.4, yaw: -35, pitch: -16, fov: 42 }),
       zone: ZONE.forest,
       look: DUSK,
       note: "From below him. He pulls the blade out of the trunk without looking at it, and tips his head back. Two red eyes, looking straight up.",
@@ -514,7 +514,7 @@ export const scene6 = storyScene(timing, {
             <Old position={at(x, 0, -0.85)} pose={keys(t, [[0, THRUST], [0.12, THRUST], [0.32, TALL, out], [0.45, TALL], [0.85, LOOKUP]])} lance={1 - ramp(t, 0.2, 0.45)} />
             <Bits position={at(PINE.x + 0.3, 1.3, PINE.z)} t={t - 0.12} color="#6b4a2a" count={12} power={1.6} />
             <Glow position={at(x - 0.25, 1.68, -0.6)} size={0.5 + 0.8 * ramp(t, 0.5, 0.9)} color={RED} opacity={0.5} />
-            <Fill on={at(x, 1.4, -0.85)} yaw={24} power={3} color="#ffe0c8" />
+            <Fill on={at(x, 1.4, -0.85)} yaw={-35} power={3} color="#ffe0c8" />
             <Woods cut2={1} />
           </>
         );
@@ -680,7 +680,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "12.dodge",
       cut: C_DG2,
-      ...cam.push({ on: S(0.4, 27.4, 3.2), onTo: S(-1.2, 27.5, 3.2), dist: 5.6, to: 4.7, yaw: -8, pitch: -2, fov: 44 }),
+      ...cam.push({ on: S(0.45, 27.4, 3.2), onTo: S(-0.3, 27.5, 3.2), dist: 5.6, to: 6.2, yaw: -8, pitch: -2, fov: 44 }),
       zone: "sky",
       look: DUSK,
       note: "Above the clouds, quiet. The teller pops up through them, stops, and looks back down the way he came, pleased with himself. The camera slides left. The old man is standing on the air right in front of him with the blade on his shoulder, waiting. The teller jumps a foot.",
@@ -693,15 +693,15 @@ export const scene6 = storyScene(timing, {
             <SkyRun origin={SKY0} scroll={scroll("12.dodge", C_DG1, 0.85) + 5 * t} clouds={24.0} />
             <Flyer
               who="hero"
-              at={S(0.2 + jump, lerp(25.2, 27.3, out(k)) + 0.05 * Math.sin(t * 3) + 0.3 * Math.abs(jolt(t, there - 0.08, 1)), 3.2)}
+              at={S(0.5 + jump, lerp(25.2, 27.3, out(k)) + 0.05 * Math.sin(t * 3) + 0.3 * Math.abs(jolt(t, there - 0.08, 1)), 3.2)}
               yaw={W}
               pose={keys(t, [[0, rocket(t, 1)], [0.3, RELIEF, out], [there - 0.12, RELIEF], [there + 0.02, JUMPY, out], [there + 0.6, JUMPY], [there + 1.05, AIMED]])}
               t={t}
             />
-            <Bits position={S(0.2, 25.4, 3.2)} t={t + 0.02} color="#fff3ea" count={18} power={2} />
-            <Flyer who="old" at={S(-2.7, 27.5 + 0.04 * Math.sin(t * 2.5), 3.2)} yaw={E} pose={{ ...COOL, head: [0.1, 0, 0.3 - 0.6 * ease(ramp(t, there + 0.25, there + 0.6))] }} t={t} lance={0} />
+            <Bits position={S(0.5, 25.4, 3.2)} t={t + 0.02} color="#fff3ea" count={18} power={2} />
+            <Flyer who="old" at={S(-1.2, 27.5 + 0.04 * Math.sin(t * 2.5), 3.2)} yaw={E} pose={{ ...COOL, head: [0.1, 0, 0.3 - 0.6 * ease(ramp(t, there + 0.25, there + 0.6))] }} t={t} lance={0} />
             <group scale={pop(t, there - 0.08)}>
-              <Bubble text="!" position={S(0.75, 28.95, 3.3)} scale={0.6} dark />
+              <Bubble text="!" position={S(0.9, 28.95, 3.3)} scale={0.6} dark />
             </group>
           </>
         );
@@ -710,7 +710,7 @@ export const scene6 = storyScene(timing, {
     // ------------------------------------------------------------------ the beam
     {
       cue: "12.beam",
-      ...cam.push({ on: S(-1.1, 27.5, 3.2), dist: 5.2, to: 4.5, yaw: 8, pitch: 0, fov: 44 }),
+      ...cam.push({ on: S(-0.25, 27.6, 3.2), dist: 6.6, to: 6.0, yaw: 8, pitch: 0, fov: 44 }),
       zone: "sky",
       look: DUSK,
       note: "He throws his hand out, his palm fills with light, and on 'beam' he fires at him from three steps away. The old man only turns the blade up on its edge in front of his face. The light hits it and the whole frame goes white-blue.",
@@ -718,15 +718,15 @@ export const scene6 = storyScene(timing, {
       stage: (t) => {
         const b = w("12.beam", "beam");
         const on = t > b;
-        const hx = 0.6 + 0.25 * ramp(t, b, 1.35);
+        const hx = 0.7 + 0.2 * ramp(t, b, 1.35);
         const palm = S(hx - 0.72, 27.92, 3.2);
-        const edge = S(-2.06, 27.95, 3.2);
+        const edge = S(-0.56, 27.95, 3.2);
         return (
           <>
             <SkyRun origin={SKY0} scroll={scroll("12.dodge", C_DG1, 0.85) + 5 * (1.87 + t)} clouds={24.0} />
             <Flyer who="hero" at={S(hx, 27.3 + 0.04 * Math.sin(t * 9), 3.2)} yaw={W} pose={AIMED} t={t} eyes={on ? 2.5 : 1} />
             <Glow position={palm} size={0.3 + 1.4 * ramp(t, 0.12, b)} color={CYAN} opacity={0.8} />
-            <Flyer who="old" at={S(-2.7, 27.5, 3.2)} yaw={E} pose={keys(t, [[0, COOL], [b - 0.2, COOL], [b - 0.04, GUARD, snap]])} t={t} lance={0} />
+            <Flyer who="old" at={S(-1.2, 27.5, 3.2)} yaw={E} pose={keys(t, [[0, COOL], [b - 0.2, COOL], [b - 0.04, GUARD, snap]])} t={t} lance={0} />
             {on ? <Beam from={palm} to={edge} width={0.24 + 0.05 * Math.sin(t * 60)} /> : null}
             {on ? <Beam from={edge} to={S(-12, 32.5, 1.2)} width={0.14} /> : null}
             {on ? <Beam from={edge} to={S(-12, 23.5, 5.2)} width={0.14} /> : null}
@@ -786,7 +786,7 @@ export const scene6 = storyScene(timing, {
     // ------------------------------------------------------------------ out of the sky
     {
       cue: "12.swat",
-      ...cam.push({ on: S(-0.6, 27.3, 3.2), onTo: S(0.5, 26.6, 3.2), dist: 6.8, to: 6.2, yaw: 4, pitch: 0, fov: 46 }),
+      ...cam.push({ on: S(0.1, 27.4, 3.2), onTo: S(0.9, 26.3, 3.2), dist: 7.2, to: 7.0, yaw: 4, pitch: 0, fov: 46 }),
       zone: "sky",
       look: DUSK,
       note: "The old man leans forward and is not there any more: a red line straight through where the teller is, one white frame, and the old man is on the far side with his arm out. The teller folds in half round nothing and starts to fall.",
@@ -796,17 +796,17 @@ export const scene6 = storyScene(timing, {
         const tt = hold(t, hit, 0.12);
         const k = ramp(tt, hit - 0.08, hit);
         const ft = Math.max(0, tt - hit);
-        const H = S(0.85 + 3.0 * ft, 27.3 - 15 * Math.pow(ft, 1.5), 3.2);
+        const H = S(0.7 + 1.3 * ft, 27.3 - 9 * Math.pow(ft, 1.5), 3.2);
         return (
           <>
             <SkyRun origin={SKY0} scroll={scroll("12.dodge", C_DG1, 0.85) + 5 * (5.14 + t)} clouds={24.0} />
             <Flyer who="hero" at={H} yaw={W} pose={ft > 0 ? tumble(ft) : tt > hit - 0.03 ? STRUCK : MYHAND} t={t} jets={ft > 0 ? (Math.sin(t * 30) > 0.3 ? 0.5 : 0) : 1} eyes={ft > 0 ? 0.4 : 1} />
-            <Flyer who="old" at={S(lerp(-2.7, 2.6, k), 27.5, 3.2)} yaw={E} pose={keys(tt, [[0, COOL], [hit - 0.1, soar(t)], [hit, PAST, snap], [hit + 0.3, PAST], [hit + 0.6, COOL]])} t={t} lance={ramp(tt, hit - 0.1, hit) * (1 - ramp(tt, hit + 0.3, hit + 0.6))} />
-            <Dash from={S(-2.7, 27.7, 3.2)} to={S(2.6, 27.7, 3.2)} t={tt - hit + 0.04} life={0.34} width={0.34} />
-            <Arc position={S(0.4, 27.9, 3.2)} yaw={E} t={tt - hit + 0.03} a0={-1.5} a1={1.5} r={1.7} flat color="#ffffff" />
-            <Flash position={S(0.85, 27.8, 3.2)} t={tt - hit} size={8} life={0.14} />
-            <Bits position={S(0.85, 27.8, 3.2)} t={tt - hit} color="#eaffff" count={28} power={4} />
-            <Bits position={S(0.85 + 3.0 * 0.3, 25.0, 3.2)} t={ft - 0.3} color="#fff3ea" count={18} power={2.4} />
+            <Flyer who="old" at={S(lerp(-1.2, 1.9, k), 27.5, 3.2)} yaw={E} pose={keys(tt, [[0, COOL], [hit - 0.1, soar(t)], [hit, PAST, snap], [hit + 0.3, PAST], [hit + 0.6, COOL]])} t={t} lance={ramp(tt, hit - 0.1, hit) * (1 - ramp(tt, hit + 0.3, hit + 0.6))} />
+            <Dash from={S(-1.2, 27.7, 3.2)} to={S(1.9, 27.7, 3.2)} t={tt - hit + 0.04} life={0.34} width={0.34} />
+            <Arc position={S(0.3, 27.9, 3.2)} yaw={E} t={tt - hit + 0.03} a0={-1.5} a1={1.5} r={1.7} flat color="#ffffff" />
+            <Flash position={S(0.7, 27.8, 3.2)} t={tt - hit} size={8} life={0.14} />
+            <Bits position={S(0.7, 27.8, 3.2)} t={tt - hit} color="#eaffff" count={28} power={4} />
+            <Bits position={S(0.7 + 1.3 * 0.42, 24.9, 3.2)} t={ft - 0.3} color="#fff3ea" count={18} power={2.4} />
           </>
         );
       },
