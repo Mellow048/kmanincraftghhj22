@@ -81,6 +81,12 @@ sound moves with the voice. `npm run check` fails a film whose mix is older than
 its own first beat, and fades as the next one starts. The first must start on the film's first cue. `gain` on the
 music is its level under the voice (default −16); `gain` on one section moves that section up or down from there.
 
+**The topic's own track.** The owner chose a background track for this topic: `Topics/InThisTown/InThisTownMusic.aac`
+(3:35). To play it instead of the written moods, add `"track": "Topics/InThisTown/InThisTownMusic.aac"` to `music`
+(and `"trackFrom": seconds` to start later in the file). It is levelled against the voice like the written music. The
+sections still matter: a `none` section is silence, and a section's `gain` lifts or lowers the track for that part
+of the story, so write them as before. First used in `in-this-town-superpower-at-18-part-2`.
+
 **Beds.** `{ from, to, bed }`: the air of a place, from the cut into `from` to the end of `to`. `trim` makes one
 louder or quieter. Two beds may overlap: the `crowd` is heard over the `fire` before the crowd is seen.
 

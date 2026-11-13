@@ -109,7 +109,8 @@
         "mood": "hope",
         "why": "Four plates, three chairs filled, and a daisy."
       }
-    ]
+    ],
+    "track": "Topics/InThisTown/InThisTownMusic.aac"
   },
   "beds": [
     {
@@ -257,44 +258,6 @@
       "why": "Getting up out of the mud."
     },
     {
-      "cue": "2.tip",
-      "sfx": "step_stone",
-      "repeat": 5,
-      "every": 0.22,
-      "pitchStep": 0.03,
-      "why": "Tip running."
-    },
-    {
-      "cue": "2.tip",
-      "sfx": "pop",
-      "word": "north",
-      "why": "The north arrow pops up."
-    },
-    {
-      "cue": "2.look",
-      "sfx": "swish",
-      "why": "The brother turns his head."
-    },
-    {
-      "cue": "2.look",
-      "sfx": "tick",
-      "p": 0.7,
-      "why": "A beat of waiting."
-    },
-    {
-      "cue": "2.fling",
-      "sfx": "hit",
-      "p": 0.45,
-      "trim": -2,
-      "why": "The flick."
-    },
-    {
-      "cue": "2.fling",
-      "sfx": "zip",
-      "p": 0.55,
-      "why": "Tip leaves."
-    },
-    {
       "cue": "2.north",
       "sfx": "slide_up",
       "why": "Up over the rooftops."
@@ -306,92 +269,9 @@
       "why": "Air."
     },
     {
-      "cue": "3.fast",
-      "sfx": "swish",
-      "why": "Cut: he moves."
-    },
-    {
-      "cue": "3.fast",
-      "sfx": "dig",
-      "word": "arms",
-      "why": "Both arms into the mud."
-    },
-    {
       "cue": "3.green",
       "sfx": "sparkle",
       "why": "They glow green: his power."
-    },
-    {
-      "cue": "3.roots",
-      "sfx": "crack",
-      "why": "The ground splits."
-    },
-    {
-      "cue": "3.roots",
-      "sfx": "whoosh_low",
-      "word": "raced",
-      "why": "Roots race away."
-    },
-    {
-      "cue": "3.chase",
-      "sfx": "riser",
-      "p": 0.98,
-      "trim": -3,
-      "why": "Roots against the fall: it ends on the leaf."
-    },
-    {
-      "cue": "3.chase",
-      "sfx": "scrape",
-      "p": 0.2,
-      "why": "Roots tearing over the ground."
-    },
-    {
-      "cue": "3.leaf",
-      "sfx": "slide_down",
-      "why": "Tip coming down."
-    },
-    {
-      "cue": "3.leaf",
-      "sfx": "pop",
-      "word": "leaf",
-      "pitch": 0.7,
-      "why": "One giant leaf opens."
-    },
-    {
-      "cue": "3.catch",
-      "sfx": "thud",
-      "p": 0.12,
-      "trim": -2,
-      "why": "He lands in it."
-    },
-    {
-      "cue": "3.catch",
-      "sfx": "boing",
-      "p": 0.4,
-      "why": "The leaf bounces him."
-    },
-    {
-      "cue": "3.thanks",
-      "sfx": "blip",
-      "p": 0.1,
-      "why": "Perfectly calm."
-    },
-    {
-      "cue": "3.thanks",
-      "sfx": "pop",
-      "word": "north",
-      "why": "The arrow again."
-    },
-    {
-      "cue": "4.tired",
-      "sfx": "whoosh",
-      "why": "Scene 4: back in the pen."
-    },
-    {
-      "cue": "4.tired",
-      "sfx": "thud",
-      "word": "knees",
-      "why": "His knees give out."
     },
     {
       "cue": "4.big",
@@ -436,54 +316,9 @@
       "why": "Hotter: it ends on the lava."
     },
     {
-      "cue": "5.lava",
-      "sfx": "fire_whoosh",
-      "p": 0.3,
-      "why": "Lava."
-    },
-    {
-      "cue": "5.tree",
-      "sfx": "crack",
-      "word": "tree",
-      "at": -0.2,
-      "why": "The mud breaks."
-    },
-    {
-      "cue": "5.tree",
-      "sfx": "whoosh_low",
-      "word": "tree",
-      "why": "A whole oak comes up under him."
-    },
-    {
-      "cue": "5.tree",
-      "sfx": "debris",
-      "word": "threw",
-      "why": "Mud and lava spatter."
-    },
-    {
       "cue": "5.breath",
       "sfx": "rustle",
       "why": "In the leaves, one breath."
-    },
-    {
-      "cue": "6.fly",
-      "sfx": "fire_whoosh",
-      "p": 0.3,
-      "why": "He lifts off on fire."
-    },
-    {
-      "cue": "6.fly",
-      "sfx": "slide_up",
-      "word": "flying",
-      "trim": -3,
-      "why": "Up."
-    },
-    {
-      "cue": "6.fly",
-      "sfx": "bonk",
-      "word": "course",
-      "trim": -3,
-      "why": "'Of course he could fly'."
     },
     {
       "cue": "6.wing",
@@ -562,25 +397,6 @@
       "sfx": "crack",
       "word": "through",
       "why": "Through the wing like paper."
-    },
-    {
-      "cue": "7.fell",
-      "sfx": "slide_down",
-      "why": "He falls."
-    },
-    {
-      "cue": "7.fell",
-      "sfx": "thud",
-      "p": 0.56,
-      "trim": -1,
-      "why": "Not far."
-    },
-    {
-      "cue": "7.fell",
-      "sfx": "debris",
-      "p": 0.75,
-      "why": "Dust and leaf.",
-      "trim": 3
     },
     {
       "cue": "8.land",
@@ -1045,7 +861,8 @@
       "cue": "16.shook",
       "sfx": "place",
       "p": 0.3,
-      "why": "The hands meet."
+      "why": "The hands meet.",
+      "trim": 3
     },
     {
       "cue": "16.shook",
@@ -1219,6 +1036,235 @@
       "sfx": "pop",
       "p": 0.1,
       "why": "The sign."
+    },
+    {
+      "cue": "2.tip",
+      "sfx": "step_stone",
+      "why": "Tip pelting along the square",
+      "repeat": 10,
+      "every": 0.2
+    },
+    {
+      "cue": "2.tip",
+      "sfx": "whoosh",
+      "why": "the camera runs with him"
+    },
+    {
+      "cue": "2.tip",
+      "sfx": "pop",
+      "why": "his arrow pops up",
+      "word": "north"
+    },
+    {
+      "cue": "2.look",
+      "sfx": "scrape",
+      "why": "he skids to a stop",
+      "trim": 3
+    },
+    {
+      "cue": "2.look",
+      "sfx": "tick",
+      "why": "the brother looks down at him",
+      "p": 0.7
+    },
+    {
+      "cue": "2.fling",
+      "sfx": "hit",
+      "why": "the flick",
+      "word": "flicked",
+      "at": -0.1,
+      "trim": -2
+    },
+    {
+      "cue": "2.fling",
+      "sfx": "zip",
+      "why": "Tip leaves the ground",
+      "word": "flicked"
+    },
+    {
+      "cue": "3.fast",
+      "sfx": "swish",
+      "why": "he lunges"
+    },
+    {
+      "cue": "3.fast",
+      "sfx": "hit",
+      "why": "both arms into the mud",
+      "word": "arms",
+      "trim": -3
+    },
+    {
+      "cue": "3.fast",
+      "sfx": "dig",
+      "why": "mud",
+      "word": "arms",
+      "at": 0.05
+    },
+    {
+      "cue": "3.roots",
+      "sfx": "crack",
+      "why": "the ground bursts",
+      "at": 0.1
+    },
+    {
+      "cue": "3.roots",
+      "sfx": "whoosh_low",
+      "why": "the roots go",
+      "word": "raced"
+    },
+    {
+      "cue": "3.chase",
+      "sfx": "whoosh",
+      "why": "flat out behind the roots"
+    },
+    {
+      "cue": "3.chase",
+      "sfx": "scrape",
+      "why": "roots tearing the ground",
+      "p": 0.15,
+      "trim": 3
+    },
+    {
+      "cue": "3.chase",
+      "sfx": "riser",
+      "why": "they are gaining",
+      "p": 0.98,
+      "trim": -3
+    },
+    {
+      "cue": "3.leaf",
+      "sfx": "slide_down",
+      "why": "Tip coming down"
+    },
+    {
+      "cue": "3.leaf",
+      "sfx": "pop",
+      "why": "the leaf snaps open",
+      "word": "leaf",
+      "at": -0.3,
+      "pitch": 0.7
+    },
+    {
+      "cue": "3.leaf",
+      "sfx": "thud",
+      "why": "caught",
+      "word": "leaf",
+      "at": 0.3,
+      "trim": -2
+    },
+    {
+      "cue": "3.catch",
+      "sfx": "boing",
+      "why": "thrown back up",
+      "at": 0.1
+    },
+    {
+      "cue": "3.catch",
+      "sfx": "boing",
+      "why": "and again",
+      "at": 0.85,
+      "pitch": 1.2,
+      "trim": -3
+    },
+    {
+      "cue": "4.tired",
+      "sfx": "whoosh",
+      "why": "back in the pen"
+    },
+    {
+      "cue": "4.tired",
+      "sfx": "thud",
+      "why": "his legs go",
+      "at": 0.8
+    },
+    {
+      "cue": "5.lava",
+      "sfx": "fire_whoosh",
+      "why": "the lava jumps",
+      "at": 0.05
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "hit",
+      "why": "the oak punches up",
+      "word": "grew",
+      "trim": -2
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "crack",
+      "why": "wood",
+      "word": "grew",
+      "at": 0.05
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "slide_up",
+      "why": "he is thrown",
+      "word": "grew",
+      "at": 0.25
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "rustle",
+      "why": "into the leaves",
+      "word": "grew",
+      "at": 1.22,
+      "trim": 0
+    },
+    {
+      "cue": "5.tree",
+      "sfx": "boing",
+      "why": "he bounces",
+      "word": "grew",
+      "at": 1.25,
+      "trim": 2
+    },
+    {
+      "cue": "6.fly",
+      "sfx": "hit",
+      "why": "lift-off",
+      "at": 0.55,
+      "trim": -4
+    },
+    {
+      "cue": "6.fly",
+      "sfx": "fire_whoosh",
+      "why": "column of fire",
+      "at": 0.55
+    },
+    {
+      "cue": "6.fly",
+      "sfx": "bonk",
+      "why": "of course",
+      "word": "course",
+      "trim": -3
+    },
+    {
+      "cue": "7.fell",
+      "sfx": "slide_down",
+      "why": "falling"
+    },
+    {
+      "cue": "7.fell",
+      "sfx": "hit",
+      "why": "the road",
+      "at": 0.62,
+      "trim": -3
+    },
+    {
+      "cue": "7.fell",
+      "sfx": "scrape",
+      "why": "he skids",
+      "at": 0.75,
+      "trim": 3
+    },
+    {
+      "cue": "7.fell",
+      "sfx": "thud",
+      "why": "second bounce",
+      "at": 1.1,
+      "trim": -3
     }
   ]
 }

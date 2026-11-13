@@ -5,6 +5,7 @@ import {
   GLIDE_YAW, Garden, Glider, GrowTree, HSTOP, Hero, LAND, LEAF, LavaJet, Lawn, Lids, Lit, MUD, Mira, Mom, NIGHT, NORTH, North, Old, Orbs, PLACE, Pig,
   Roots, Rose, SNIPE, SOUTH, STAND, STREET, SoundRings, Spear, SubscribeSign, TREETOP, Table, Tip, U, WEST, Wall, Wisps, ZONE, ahead, chestOf, ease,
   faceOf, flat, glideAt, hop, kidFace, lerp3, ramp, room, stride, timing, tipAt, waddle, wordAt,
+  DustRing, HANDS, Plunger, ROOTWAY, Streaks, Veins, jolt, pathAt, pop, tossed,
 } from "./kit";
 
 /** HE LOOKS UP, AND SEES WHO HE HAS LANDED NEXT TO. */
@@ -23,7 +24,7 @@ export const scene8 = storyScene(timing, {
         const up = t > wordAt("8.land", "looked") - 0.1;
         return (
           <>
-            <Hero position={LAND} rotationY={WEST} animation="crouch" arms="press" time={0.3} face={up ? "fear" : "ouch"} headPitch={up ? -0.35 : 0.4} gaze={0} />
+            <Hero position={[LAND[0], jolt(t, 0.15, 0.1), LAND[2]]} rotationY={WEST} animation="lie" blendTo="crouch" blend={1 - ease(ramp(t, 0.1, 0.7))} arms="press" time={0.3} face={up ? "fear" : "ouch"} headPitch={up ? -0.35 : 0.4} headYaw={up ? 0 : Math.sin(t * 14) * 0.25 * ramp(t, 0.6, 0.8)} gaze={0} />
             <Bits position={[LAND[0] - 0.5, 0.5, LAND[2]]} t={t - 0.4} color="#5cbd48" count={6} seed={3} power={0.5} />
             <Lit at={LAND} side={-1} />
           </>
@@ -33,6 +34,7 @@ export const scene8 = storyScene(timing, {
     {
       cue: "8.them",
       ...cam.truck({ on: [-3.2, 1.45, 4.3], dist: 4.4, yaw: 82, pitch: 2, by: [0, 0, 2.2], fov: 42 }),
+      handheld: 0.025,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "What he sees, sliding along the faces as he names them: his mother in white. Bo, grey. Mira. Tip. And more behind, pressed together in front of the well, every one of them looking at him.",

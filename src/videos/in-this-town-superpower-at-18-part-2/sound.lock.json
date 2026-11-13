@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-superpower-at-18-part-2",
   "mix": "public/audio/in-this-town-superpower-at-18-part-2/mix.mp3",
-  "seconds": 170.5,
+  "seconds": 168.8667,
   "built_from": {
-    "timing.json": "d43ee5316a7d6781f05946d216a19d78c4098e78",
-    "sound.json": "b2b35ac19db59a7e77061cf4da8a4f914a9af3dd",
-    "narration.mp3": "eed040a079fef5d30e47d7f051a5b8b819a6211b"
+    "timing.json": "aee29892fc31b2b6ff10173ef27d4949b9127506",
+    "sound.json": "5a15a91875240116f90a2b1b63561e87cf8b46b3",
+    "narration.mp3": "71d3b74862824714db600c7a65db51f88140a2b9"
   },
-  "mix_sha1": "f34eb98c7f9451d2f6fceb609cdcea63a028eda5",
+  "mix_sha1": "39702d5a0cc95fbdadff8b1a5db99b5169c6e359",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,168 +18,167 @@
     {
       "from": "1.his",
       "mood": "dark",
-      "at": 4.87
+      "at": 4.83
     },
     {
       "from": "1.life",
       "mood": "hope",
-      "at": 9.83
+      "at": 9.77
     },
     {
       "from": "2.lie",
       "mood": "playful",
-      "at": 15.53
+      "at": 15.47
     },
     {
       "from": "3.fast",
       "mood": "tense",
-      "at": 29.03
+      "at": 29.2
     },
     {
       "from": "3.catch",
       "mood": "playful",
-      "at": 40.13
+      "at": 40.63
     },
     {
       "from": "5.point",
       "mood": "tense",
-      "at": 49.5
+      "at": 48.4
     },
     {
       "from": "6.wing",
       "mood": "hope",
-      "at": 59.4
+      "at": 58.27
     },
     {
       "from": "7.stop",
       "mood": "dark",
-      "at": 65.77
+      "at": 64.6
     },
     {
       "from": "8.land",
       "mood": "sad",
-      "at": 73.9
+      "at": 72.7
     },
     {
       "from": "9.wall",
       "mood": "tense",
-      "at": 85.23
+      "at": 83.97
     },
     {
       "from": "10.eyes",
       "mood": "none",
-      "at": 95.8
+      "at": 94.5
     },
     {
       "from": "11.grass",
       "mood": "hope",
-      "at": 100.1
+      "at": 98.8
     },
     {
       "from": "12.push",
       "mood": "tense",
-      "at": 105.07
+      "at": 103.73
     },
     {
       "from": "13.slow",
       "mood": "sad",
-      "at": 118.33
+      "at": 116.93
     },
     {
       "from": "14.win",
       "mood": "drone",
-      "at": 128.57
+      "at": 127.1
     },
     {
       "from": "15.open",
       "mood": "sad",
-      "at": 133.93
+      "at": 132.47
     },
     {
       "from": "16.shook",
       "mood": "hope",
-      "at": 146.9
+      "at": 145.37
     },
     {
       "from": "17.week",
       "mood": "town",
-      "at": 147.6
+      "at": 146.07
     },
     {
       "from": "17.pigs",
       "mood": "playful",
-      "at": 157.47
+      "at": 155.87
     },
     {
       "from": "18.plates",
       "mood": "hope",
-      "at": 160.6
+      "at": 159.0
     }
   ],
   "beds": 9,
   "measured": {
-    "musicUnderVoiceDb": 18.4,
-    "secondsWithoutMusic": 5.9,
+    "musicUnderVoiceDb": 17.8,
+    "secondsWithoutMusic": 4.4,
     "bedsUnderVoiceDb": 22.2,
-    "sfx": 189,
-    "sfxPerMinute": 66.5,
+    "sfx": 199,
+    "sfxPerMinute": 70.7,
     "sfxKinds": 35,
     "longestGapSeconds": 3.1,
-    "longestGapAt": 136.0,
+    "longestGapAt": 134.5,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 14.4,
-    "voiceOverRestWorstDb": 3.6,
+    "voiceOverRestMedianDb": 13.8,
+    "voiceOverRestWorstDb": 3.5,
     "voiceOverRestWorst": [
       {
-        "db": 3.6,
-        "t": 104.6,
-        "cue": "11.mine",
+        "db": 3.5,
+        "t": 166.8,
+        "cue": "18.daisy",
         "sounding": [
-          "ding",
-          "whoosh",
-          "whoosh_low"
+          "sparkle"
         ]
       },
       {
-        "db": 4.3,
-        "t": 101.5,
-        "cue": "11.grass",
+        "db": 3.6,
+        "t": 53.3,
+        "cue": "5.tree",
         "sounding": [
-          "boom",
-          "chime"
+          "boing",
+          "rustle"
         ]
       },
       {
         "db": 4.5,
-        "t": 76.6,
-        "cue": "8.them",
+        "t": 20.2,
+        "cue": "2.tip",
         "sounding": [
-          "ding"
+          "step_stone"
         ]
       },
       {
-        "db": 5.6,
-        "t": 57.8,
-        "cue": "6.fly",
+        "db": 4.6,
+        "t": 71.8,
+        "cue": "7.fell",
         "sounding": [
-          "fire_whoosh",
-          "slide_up"
+          "hit",
+          "scrape",
+          "thud"
         ]
       },
       {
-        "db": 5.8,
-        "t": 0.2,
-        "cue": "1.town",
-        "sounding": [
-          "bell"
-        ]
-      },
-      {
-        "db": 5.9,
+        "db": 4.8,
         "t": 11.0,
         "cue": "1.life",
         "sounding": [
           "sparkle"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 154.3,
+        "cue": "17.fix",
+        "sounding": [
+          "step_wood"
         ]
       }
     ],

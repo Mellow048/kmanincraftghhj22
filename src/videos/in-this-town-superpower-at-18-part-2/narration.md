@@ -38,7 +38,7 @@ What part one planted, and where this pays it off:
 | Planted in part one | Pays off here |
 |---|---|
 | The brother offers a hand; "I got up by myself" (12.hand, 12.up) | The teller offers his hand, and it is taken (15.open, 16.shook) |
-| Tip's north (7.tip, 7.told) | 2.north, 3.thanks |
+| Tip's north (7.tip, 7.told) | 2.north (once; the owner cut the second north joke) |
 | Bo's jump is taken (15.light) | It is given back (17.bo) |
 | He kicked the pigs (3.pigs) | He says sorry to them (17.pigs) |
 | The four plates (5.plates) | Three are used (18.three). The fourth is still the father's |
@@ -66,7 +66,6 @@ What part one planted, and where this pays it off:
 [3.chase]    over the pig pen, over the well, faster than he fell.
 [3.leaf]     And just before he hit the road, the roots grew one giant leaf.
 [3.catch]    Tip landed in it like a baby in a blanket.
-[3.thanks]   He said, "That way is still north."
 
 # clip 03-lava
 [4.tired]    Then my knees gave out.

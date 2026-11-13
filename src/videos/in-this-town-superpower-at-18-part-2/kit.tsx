@@ -26,7 +26,7 @@ export const B0: Vec3 = [-7.0, 0, 7.1];
 export const AT = Math.atan2(B0[0] - MUD[0], B0[2] - MUD[2]);
 export const BACK = Math.atan2(MUD[0] - B0[0], MUD[2] - B0[2]);
 /** Where the giant leaf catches Tip: on the road, east of the square. */
-export const LEAF: Vec3 = [5, 0, 4.5];
+export const LEAF: Vec3 = [7.5, 0, 4.3];
 /** The top of the tree he grows under his own feet. */
 export const TREETOP: Vec3 = [MUD[0], 6.15, MUD[2]];
 /** Where the brother hangs in the air to take his shot. */
@@ -356,3 +356,101 @@ export const Garden: React.FC = () => (
 );
 
 export const U = PLACE.under;
+
+// ----------------------------------------------------------------------------- motion (pass 2: the owner asked for speed)
+
+/** Where his hands go into the mud, and the straight line the roots run from there to the leaf. */
+export const HANDS: Vec3 = [MUD[0] + 0.62, 0.05, MUD[2] - 0.2];
+export const pathAt = (u: number, y = 0): Vec3 => [HANDS[0] + (LEAF[0] - HANDS[0]) * u, y, HANDS[2] + (LEAF[2] - HANDS[2]) * u];
+/** The way the roots run, as a `rotationY`. */
+export const ROOTWAY = Math.atan2(LEAF[0] - HANDS[0], LEAF[2] - HANDS[2]);
+
+/**
+ * The teller on his knees with BOTH ARMS IN THE MUD. `k` 0 is standing, 1 is arms buried to the elbow.
+ * `lift` raises the arms over his head first (the wind-up before the slam). The body pitches forward from the feet
+ * and the arms point straight out of the chest, so at k = 1 they go down into the ground.
+ */
+export const Plunger: React.FC<{ position: Vec3; yaw: number; k: number; lift?: number; face?: FaceName; headPitch?: number; shake?: number; t?: number }> = ({
+  position,
+  yaw,
+  k,
+  lift = 0,
+  face = "brave",
+  headPitch = -0.5,
+  shake = 0,
+  t = 0,
+}) => (
+  <group position={[position[0] + Math.sin(t * 47) * 0.012 * shake, position[1] - 0.3 * k, position[2]]} rotation={[0, yaw, 0]}>
+    <group rotation={[1.0 * k, 0, 0]}>
+      <Hero position={[0, 0, 0]} animation="crouch" time={0.3} arms={lift > 0.5 ? "reachUp" : "reach"} face={face} headPitch={headPitch * k} gaze={0} />
+    </group>
+  </group>
+);
+
+/** Green cracks running out across the ground from a point: his power going into the earth. `k` 0–1 is how far. */
+export const Veins: React.FC<{ position: Vec3; k: number; reach?: number; yaw?: number; n?: number }> = ({ position, k, reach = 2.6, yaw = 0, n = 7 }) =>
+  k <= 0 ? null : (
+    <group position={[position[0], 0.1, position[2]]} rotation={[0, yaw, 0]}>
+      {Array.from({ length: n }, (_, i) => {
+        const a = (i / (n - 1) - 0.5) * 2.6;
+        const len = reach * k * (0.6 + 0.4 * Math.abs(Math.sin(i * 2.3)));
+        return (
+          <group key={i} rotation={[0, a, 0]}>
+            <Block position={[0, 0, len / 2]} size={[0.07, 0.04, len]} color="#000000" emissive="#7dff5a" emissiveIntensity={1.1} castShadow={false} />
+            <Block position={[0.1, 0, len * 0.7]} size={[0.05, 0.04, len * 0.4]} rotation={[0, 0.5, 0]} color="#000000" emissive="#b8ff8a" emissiveIntensity={1.1} castShadow={false} />
+          </group>
+        );
+      })}
+    </group>
+  );
+
+/** Speed lines: thin pale streaks flying past, along `yaw`. For anything that is supposed to be FAST. */
+export const Streaks: React.FC<{ position: Vec3; yaw: number; t: number; n?: number; spread?: number; speed?: number; color?: string; pitch?: number }> = ({
+  position,
+  yaw,
+  t,
+  n = 12,
+  spread = 2.2,
+  speed = 14,
+  color = "#d8ffd0",
+  pitch = 0,
+}) => (
+  <group position={position} rotation={[0, yaw, 0]}>
+    <group rotation={[pitch, 0, 0]}>
+      {Array.from({ length: n }, (_, i) => {
+        const z = 6 - ((t * speed + i * 3.7) % 12);
+        const x = Math.sin(i * 12.9) * spread;
+        const y = Math.cos(i * 7.3) * spread * 0.6;
+        return <Block key={i} position={[x, y, z]} size={[0.025, 0.025, 1.1]} color="#000000" emissive={color} emissiveIntensity={0.9} castShadow={false} />;
+      })}
+    </group>
+  </group>
+);
+
+/** A ring of dust thrown out along the ground by a landing or a take-off. `t` is seconds since it happened. */
+export const DustRing: React.FC<{ position: Vec3; t: number; size?: number; color?: string }> = ({ position, t, size = 1.6, color = "#b8a890" }) => {
+  if (t <= 0 || t > 0.7) return null;
+  const k = t / 0.7;
+  const r = size * (1 - (1 - k) * (1 - k));
+  return (
+    <group position={[position[0], position[1] + 0.12, position[2]]}>
+      {Array.from({ length: 12 }, (_, i) => {
+        const a = (i / 12) * Math.PI * 2;
+        const s = 0.26 * (1 - k * 0.7);
+        return <Block key={i} position={[Math.cos(a) * r, k * 0.25, Math.sin(a) * r]} size={[s, s, s]} rotation={[i, k * 3, i * 2]} color={color} castShadow={false} />;
+      })}
+    </group>
+  );
+};
+
+/** A thrown body's height: launched at `at`, `height` at the top, back down `dur` later, then two small bounces. */
+export const tossed = (t: number, at: number, height: number, dur: number): number => {
+  const x = t - at;
+  if (x <= 0) return 0;
+  if (x < dur) return 4 * height * (x / dur) * (1 - x / dur);
+  const b1 = dur * 0.38;
+  if (x < dur + b1) return 4 * height * 0.22 * ((x - dur) / b1) * (1 - (x - dur) / b1);
+  const b2 = dur * 0.22;
+  if (x < dur + b1 + b2) return 4 * height * 0.07 * ((x - dur - b1) / b2) * (1 - (x - dur - b1) / b2);
+  return 0;
+};
