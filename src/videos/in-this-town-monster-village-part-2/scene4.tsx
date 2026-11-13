@@ -103,7 +103,7 @@ export const scene4 = storyScene(timing, {
               <Block position={[0.5, 1.0, 0]} size={[1.0, 2.0, 0.08]} color="#6b4a2a" castShadow={false} />
               <Block position={[0.84, 1.0, 0.05]} size={[0.08, 0.08, 0.06]} color="#e0b83a" castShadow={false} />
             </group>
-            <pointLight position={hall(10, 1.4, -1.0)} color="#ffc078" intensity={16 * k} distance={6} decay={2} />
+            <pointLight position={hall(10, 1.5, -2.6)} color="#ffc078" intensity={10 * k} distance={6} decay={2} />
             <Glint position={hall(10, 2.42, -1.5)} t={t - wordAt("6.last", "name")} size={1.3} />
           </>
         );

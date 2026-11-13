@@ -179,7 +179,24 @@ const Hall: React.FC = () => (
   <group position={HALL}>
     <Vox kind="planks" position={[5, -0.1, 1.5]} size={[17, 0.2, 7]} />
     <Vox kind="darkPlanks" position={[5, 3.5, 1.5]} size={[17, 0.2, 7]} castShadow={false} />
-    <Vox kind="planks" tint="#b89868" position={[5, 1.7, -1.7]} size={[17, 3.4, 0.2]} castShadow={false} />
+    {/* The north wall, with a real doorway at x 10: Mo's room is behind it. */}
+    <Vox kind="planks" tint="#b89868" position={[3, 1.7, -1.7]} size={[13, 3.4, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#b89868" position={[12, 1.7, -1.7]} size={[3, 3.4, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#b89868" position={[10, 2.7, -1.7]} size={[1, 1.4, 0.2]} castShadow={false} />
+    {/* What the door opens on: the near end of Mo's room. Floor, rug, the bed with its straw blanket, the hat on its peg, a lamp. */}
+    <Vox kind="planks" position={[10, -0.1, -3.7]} size={[4.4, 0.2, 3.8]} />
+    <Vox kind="darkPlanks" position={[10, 3.5, -3.7]} size={[4.4, 0.2, 3.8]} castShadow={false} />
+    <Vox kind="planks" tint="#b09060" position={[10, 1.7, -5.6]} size={[4.4, 3.4, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#a88858" position={[7.8, 1.7, -3.7]} size={[0.2, 3.4, 3.8]} castShadow={false} />
+    <Vox kind="planks" tint="#a88858" position={[12.2, 1.7, -3.7]} size={[0.2, 3.4, 3.8]} castShadow={false} />
+    <Block position={[10, 0.012, -3.3]} size={[1.6, 0.02, 2.2]} color="#9a3a30" castShadow={false} />
+    <Block position={[10.1, 0.25, -4.95]} size={[1.9, 0.5, 1.0]} color="#6b4a2a" />
+    <Block position={[10.35, 0.54, -4.95]} size={[1.3, 0.1, 0.92]} color="#d9b84a" castShadow={false} />
+    <Block position={[9.45, 0.6, -4.95]} size={[0.5, 0.16, 0.7]} color="#f1ece0" castShadow={false} />
+    <Block position={[9.45, 0.72, -4.95]} size={[0.26, 0.07, 0.34]} color="#6b3a22" castShadow={false} />
+    <Block position={[10.3, 1.95, -5.46]} size={[0.08, 0.08, 0.2]} color="#5c3f24" />
+    <StrawHat position={[10.3, 1.8, -5.34]} width={0.8} rotation={[0.95, 0, 0.18]} />
+    <Lantern position={[10, 3.0, -3.6]} chain={0.3} light={14} reach={7} seed={13} />
     <Vox kind="planks" tint="#b09060" position={[12.6, 1.7, 1.5]} size={[0.2, 3.4, 7]} castShadow={false} />
     <Block position={[5, 0.012, -0.3]} size={[15, 0.02, 1.4]} color="#9a3a30" castShadow={false} />
     {NAMES.map((name, i) => (
@@ -192,7 +209,6 @@ const Hall: React.FC = () => (
     ))}
     {/* The last door has a board over it like the others, and nothing written on the board. The door is the shot's. */}
     <Block position={[10, 2.42, -1.58]} size={[1.5, 0.46, 0.06]} color="#e6d2a4" castShadow={false} />
-    <Block position={[10, 1.0, -1.66]} size={[1.0, 2.0, 0.04]} color="#000000" emissive="#ffb868" emissiveIntensity={1} castShadow={false} />
     <Lantern position={[1.25, 3.0, -0.3]} chain={0.3} light={14} reach={10} seed={7} />
     <Lantern position={[6.25, 3.0, -0.3]} chain={0.3} light={14} reach={10} seed={8} />
     <Lantern position={[10.9, 3.0, -0.3]} chain={0.3} light={12} reach={9} seed={9} />
