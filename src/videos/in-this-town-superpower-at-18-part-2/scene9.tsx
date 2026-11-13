@@ -33,6 +33,8 @@ export const scene9 = storyScene(timing, {
     {
       cue: "9.lava",
       ...cam.push({ on: [13.5, 2.6, STREET], dist: 12.5, to: 11.5, yaw: -90, pitch: 2, fov: 52 }),
+      shake: 0.025,
+      impacts: [{ at: 0.15, amp: 0.09, dur: 0.5 }],
       zone: ZONE.ruin,
       look: CHAOS,
       note: "From where the town is standing: the road in front of him cracks from one side of the street to the other, and a wall of lava climbs up out of the crack, from house to house, hiding him.",
@@ -52,6 +54,7 @@ export const scene9 = storyScene(timing, {
       target: [6, 3.4, 0.5],
       fov: 56,
       ease: "inOutSine",
+      shake: 0.02,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Under a second, from the ground: the bell on its post on the left, and the wall beyond it, exactly as tall, lighting the whole street orange.",
@@ -60,6 +63,8 @@ export const scene9 = storyScene(timing, {
     {
       cue: "9.push",
       ...cam.push({ on: [11.5, 2.3, STREET], dist: 10.5, to: 9.5, yaw: -58, pitch: 6, fov: 50 }),
+      shake: 0.03,
+      impacts: [{ at: 0.2, amp: 0.07, dur: 0.4 }],
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He shoves both palms forward, and the whole wall starts to slide up the street towards us, eating the road as it comes.",

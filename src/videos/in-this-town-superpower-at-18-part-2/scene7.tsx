@@ -84,7 +84,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.fell",
-      ...cam.push({ on: [LAND[0] - 0.6, 1.7, LAND[2] + 0.4], dist: 6.2, to: 5.2, yaw: 60, pitch: -6, fov: 50 }),
+      ...cam.push({ on: [LAND[0] - 0.6, 1.7, LAND[2] + 0.4], dist: 7.0, to: 6.2, yaw: 60, pitch: -6, fov: 50 }),
       impacts: [
         { at: 0.62, amp: 0.1, dur: 0.4 },
         { at: 1.1, amp: 0.04, dur: 0.25 },
@@ -97,7 +97,7 @@ export const scene7 = storyScene(timing, {
         const HIT = 0.62;
         const k = Math.min(1, t / HIT);
         const from = glideAt(0.86);
-        const down: Vec3 = [LAND[0] - 1.6, 0.9, LAND[2] + 0.7];
+        const down: Vec3 = [LAND[0] - 1.0, 0.9, LAND[2] + 0.45];
         const at = lerp3(from, down, k);
         const skid = 1 - Math.exp(-Math.max(0, t - HIT) * 4);
         const on = lerp3(flat(down), flat(LAND), skid);

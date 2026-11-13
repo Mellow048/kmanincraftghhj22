@@ -18,13 +18,16 @@ export const scene12 = storyScene(timing, {
     {
       cue: "12.push",
       ...cam.push({ on: [2.6, 1.4, STREET], dist: 5.6, to: 5.0, yaw: -62, pitch: 5, fov: 46 }),
+      impacts: [{ at: 0.25, amp: 0.09, dur: 0.5 }],
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He plants his feet and shoves the air with both hands, exactly as his brother did. The wall goes.",
       stage: (t, { p }) => (
         <>
-          <Hero position={STAND} rotationY={EAST} animation="press" face="brave" />
-          <Wall x={4.4 + 1.6 * ease(p) * ease(p)} kind="grass" />
+          <Hero position={[STAND[0] - 0.3 * ease(ramp(t, 0, 0.18)) + 0.75 * ease(ramp(t, 0.18, 0.3)), 0, STAND[2]]} rotationY={EAST} animation={t < 0.2 ? "idle" : "press"} face="brave" />
+          <Wall x={4.4 + 1.6 * ramp(p, 0.15, 1) ** 2} kind="grass" />
+          <DustRing position={STAND} t={t - 0.25} size={1.8} />
+          <Bits position={[4.2, 1.2, STREET]} t={t - 0.25} color="#5cbd48" count={16} seed={4} power={1.6} />
           <pointLight position={[2.4, 2.4, STREET + 1.6]} color="#c8ffb0" intensity={7} distance={9} decay={2} />
         </>
       ),
@@ -37,6 +40,7 @@ export const scene12 = storyScene(timing, {
       targetTo: [12.0, 2.4, 2.8],
       fov: 50,
       ease: "linear",
+      shake: 0.025,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Running ahead of the wall and looking back at its face as it comes down the street. On 'roses' red roses open all over it, dozens of them. On 'thorns' a thorn as long as an arm comes out beside every one.",
@@ -51,6 +55,7 @@ export const scene12 = storyScene(timing, {
     {
       cue: "12.late",
       ...cam.push({ on: faceOf(BFAR), dist: 3.6, to: 2.6, yaw: -128, pitch: -3, fov: 38 }),
+      shake: 0.02,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "The brother. Every stolen light he owns comes out and goes round him in a blur while he tries one hand, then the other, fire, then nothing, and green light climbs up his face. He is, for the first time, frightened.",
@@ -66,6 +71,8 @@ export const scene12 = storyScene(timing, {
     {
       cue: "12.hit",
       ...cam.push({ on: [16.4, 1.4, STREET], dist: 7.6, to: 7.0, yaw: 35, pitch: 5, fov: 48 }),
+      impacts: [{ at: Math.max(0.1, wordAt("12.hit", "hit")), amp: 0.12, dur: 0.5 }],
+      shake: 0.015,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Wide. The hedge arrives. On 'hit' it takes him off his feet and carries him back down the road in a cloud of leaves and petals, and then stops, and he does not.",

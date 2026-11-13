@@ -45,7 +45,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.wing",
-      ...cam.orbit({ on: [TREETOP[0], TREETOP[1] + 1.2, TREETOP[2]], dist: 5.0, yaw: -50, pitch: 8, yawTo: -10, distTo: 4.2, fov: 42 }),
+      ...cam.orbit({ on: [TREETOP[0], TREETOP[1] + 1.2, TREETOP[2]], dist: 5.4, yaw: 175, pitch: 6, yawTo: 120, distTo: 4.6, fov: 44 }),
       handheld: 0.02,
       zone: ZONE.ruin,
       look: CHAOS,
@@ -79,7 +79,7 @@ export const scene6 = storyScene(timing, {
         const run = Math.min(1, p / 0.28);
         const g = 0.4 * ramp(p, 0.28, 1);
         const at = glideAt(g);
-        const dropped = Math.sin(ramp(p, 0.28, 0.75) * Math.PI) * 1.1;
+        const dropped = Math.sin(ramp(p, 0.28, 0.75) * Math.PI) * 0.5;
         return (
           <>
             <GrowTree position={MUD} grow={1} />

@@ -5,6 +5,7 @@ import {
   GLIDE_YAW, Garden, Glider, GrowTree, HSTOP, Hero, LAND, LEAF, LavaJet, Lawn, Lids, Lit, MUD, Mira, Mom, NIGHT, NORTH, North, Old, Orbs, PLACE, Pig,
   Roots, Rose, SNIPE, SOUTH, STAND, STREET, SoundRings, Spear, SubscribeSign, TREETOP, Table, Tip, U, WEST, Wall, Wisps, ZONE, ahead, chestOf, ease,
   faceOf, flat, glideAt, hop, kidFace, lerp3, ramp, room, stride, timing, tipAt, waddle, wordAt,
+  DustRing, HANDS, Plunger, ROOTWAY, Streaks, Veins, jolt, pathAt, pop, tossed,
 } from "./kit";
 
 /** THE STORY SO FAR, in six shots. Then it starts on the second part one stopped. */
@@ -17,6 +18,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.town",
       ...cam.orbit({ on: [0, 1.7, -1.6], dist: 6.6, yaw: 18, pitch: 5, yawTo: -6 }),
+      impacts: [{ at: wordAt("1.town", "superpower"), amp: 0.06, dur: 0.4 }],
       zone: ZONE.day,
       look: DAY,
       note: "The town as it was, in the sun: the bell, and three neighbours under it. On 'superpower' the bell rings and Bo, in green, jumps.",
@@ -24,8 +26,8 @@ export const scene1 = storyScene(timing, {
         <>
           <SoundRings position={[0, 2.7, -2.2]} t={t - wordAt("1.town", "superpower")} color="#ffe08a" reach={2.8} />
           <Bo position={[1.3, hop(t, wordAt("1.town", "superpower"), 1.6, 0.8), -0.6]} rotationY={Math.PI} />
-          <Mira position={[-1.3, 0, -0.6]} rotationY={Math.PI} lookAt={[0, 3, -2.5]} />
-          <Tip position={[0, 0, 0.2]} rotationY={Math.PI} lookAt={[0, 3, -2.5]} />
+          <Mira position={[-1.3, hop(t, wordAt("1.town", "superpower") + 0.12, 1.2, 0.5), -0.6]} rotationY={Math.PI} lookAt={[0, 3, -2.5]} />
+          <Tip position={[0, hop(t, wordAt("1.town", "superpower") + 0.22, 1.2, 0.6), 0.2]} rotationY={Math.PI} lookAt={[0, 3, -2.5]} />
         </>
       ),
     },
@@ -37,8 +39,8 @@ export const scene1 = storyScene(timing, {
       note: "Him, in red, under the bell, scowling down at one small daisy by his foot.",
       stage: (t, { p }) => (
         <>
-          <Hero position={U} rotationY={SOUTH} animation="idle" face={p < 0.5 ? "uneasy" : "angry"} headPitch={0.4} />
-          <Daisy position={[U[0] + 0.45, 0, U[2] + 0.3]} grow={ease(ramp(p, 0, 0.35))} scale={1.6} />
+          <Hero position={U} rotationY={SOUTH} animation="idle" face={p < 0.5 ? "uneasy" : "angry"} headPitch={0.4} headYaw={p > 0.5 ? Math.sin(t * 12) * 0.22 : 0} />
+          <Daisy position={[U[0] + 0.45, 0, U[2] + 0.3]} grow={Math.min(1.2, pop(t, 0.15, 0.3))} scale={1.6} />
         </>
       ),
     },
@@ -59,6 +61,11 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.back",
       ...cam.push({ on: [8.6, 1.9, -0.6], dist: 7.6, to: 6.6, yaw: 10, pitch: 3, fov: 44 }),
+      impacts: [
+        { at: wordAt("1.back", "burned"), amp: 0.1, dur: 0.5 },
+        { at: wordAt("1.back", "burned") + 0.25, amp: 0.06, dur: 0.4 },
+      ],
+      shake: 0.012,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Wider: on 'burned' the ruin behind him blows up again. He does not even look round.",
@@ -74,11 +81,12 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.life",
       ...cam.push({ on: [MUD[0], 0.4, MUD[2]], dist: 4.8, to: 4.0, yaw: 30, pitch: 36, fov: 42 }),
+      handheld: 0.02,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "The pig pen from above: him on one knee, palm on the mud, and on 'life' the mud turning to grass and daisies all round him.",
       stage: (t) => {
-        const k = ease(ramp(t, LIFE - 1.4, LIFE + 0.3));
+        const k = ease(ramp(t, LIFE - 0.7, LIFE + 0.1));
         return (
           <>
             <Hero position={MUD} rotationY={AT} animation="crouch" arms="press" time={0.3} face="wow" headPitch={0.4} />

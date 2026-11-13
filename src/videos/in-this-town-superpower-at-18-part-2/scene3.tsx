@@ -21,7 +21,7 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "3.fast",
-      ...cam.push({ on: [PLANT[0] + 0.5, 0.8, PLANT[2] - 0.2], dist: 4.6, to: 3.4, yaw: 19, pitch: 8, fov: 44 }),
+      ...cam.push({ on: [HANDS[0] - 0.25, 0.8, HANDS[2]], dist: 5.6, to: 4.6, yaw: 19, pitch: 8, fov: 44 }),
       impacts: [{ at: SLAM, amp: 0.1, dur: 0.45 }],
       zone: ZONE.ruin,
       look: CHAOS,
@@ -49,11 +49,11 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.green",
-      ...cam.push({ on: [HANDS[0] - 0.3, 0.45, HANDS[2]], dist: 2.6, to: 1.9, yaw: 150, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [HANDS[0] - 0.35, 0.5, HANDS[2]], dist: 3.6, to: 2.9, yaw: 19, pitch: 22, fov: 42 }),
       shake: 0.03,
       zone: ZONE.ruin,
       look: CHAOS,
-      note: "Under a second, from in front: his arms buried in the mud, shaking, and green light running out of them along the cracks in the ground.",
+      note: "Under a second, closer and from above: his arms buried in the mud, shaking, and green light running out of them along the cracks in the ground.",
       stage: (t, { p }) => (
         <>
           <Plunger position={PLANT} yaw={ROOTWAY} k={1} t={t} shake={2} />

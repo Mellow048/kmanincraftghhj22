@@ -17,6 +17,7 @@ export const scene10 = storyScene(timing, {
     {
       cue: "10.none",
       ...cam.push({ on: faceOf(STAND), dist: 3.4, to: 2.8, yaw: 66, pitch: -2, fov: 40 }),
+      shake: 0.015,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Him, standing in the road between the wall and his town, lit brighter and brighter orange. He looks at his hands, at the ground, behind him. On each 'no' there is nothing there.",
@@ -66,6 +67,7 @@ export const scene10 = storyScene(timing, {
       target: [6, 1.6, 2.8],
       fov: 44,
       ease: "linear",
+      shake: 0.03,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "Black. Our eyes are shut. Only a red-orange glow coming through the lids, swelling: the wall is nearly on us.",

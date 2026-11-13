@@ -21,6 +21,7 @@ export const scene13 = storyScene(timing, {
     {
       cue: "13.chance",
       ...cam.truck({ on: [R0[0] + 1, 1.2, 2.8], dist: 4.6, yaw: 62, pitch: 3, by: [6.5, 0, 0], fov: 44 }),
+      shake: 0.03,
       zone: ZONE.ruin,
       look: CHAOS,
       note: "He goes. Flat out down the middle of the burning street, running backwards ahead of him as he comes.",

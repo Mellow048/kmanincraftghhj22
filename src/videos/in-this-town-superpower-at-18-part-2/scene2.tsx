@@ -55,8 +55,8 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.tip",
-      from: [5.2, 1.9, 9.1],
-      to: [-3.4, 1.6, 8.3],
+      from: [6.6, 2.3, 10.0],
+      to: [-2.0, 2.0, 9.4],
       target: [1.5, 1.2, 8.0],
       targetTo: [-7, 1.2, 7.1],
       fov: 50,
@@ -82,7 +82,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.look",
-      ...cam.push({ on: [-6.5, 1.4, 7.2], dist: 3.9, to: 3.2, yaw: 0, pitch: 2, fov: 42 }),
+      ...cam.push({ on: [-6.5, 1.4, 7.2], dist: 5.2, to: 4.5, yaw: 0, pitch: 2, fov: 42 }),
       handheld: 0.02,
       zone: ZONE.ruin,
       look: CHAOS,
@@ -106,7 +106,7 @@ export const scene2 = storyScene(timing, {
       from: [-6.5, 1.6, 10.8],
       to: [-6.2, 1.9, 11.4],
       target: [-6.5, 1.4, 7.2],
-      targetTo: [-5.8, 4.4, 7.1],
+      targetTo: [-5.6, 5.6, 7.1],
       fov: 46,
       ease: "inCubic",
       impacts: [{ at: FLICK, amp: 0.09, dur: 0.4 }],
@@ -119,7 +119,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Brother position={B0} rotationY={EAST - 0.5 * wind + 0.5 * ramp(t, FLICK - 0.08, FLICK)} animation="idle" blendTo="point" blend={1 - ramp(t, FLICK - 0.1, FLICK)} face="smug" />
-            <Tip position={[TIP1[0] + x * 2.6, x * 12 - x * x * 3, TIP1[2]]} rotationY={WEST + x * 9} tilt={x * 6} strain={1} />
+            <Tip position={[TIP1[0] + x * 2.6, x * 9 - x * x * 2, TIP1[2]]} rotationY={WEST + x * 9} tilt={x * 6} strain={1} />
             <Bits position={[-6.4, 1.3, 7.2]} t={t - FLICK} color="#ffffff" count={16} seed={3} power={1.6} />
             <DustRing position={TIP1} t={t - FLICK} size={1.8} />
             <Streaks position={[TIP1[0] + x * 2.6, x * 6, TIP1[2]]} yaw={0} pitch={-1.5708} t={t} n={x > 0 ? 8 : 0} spread={0.5} speed={20} color="#ffffff" />
