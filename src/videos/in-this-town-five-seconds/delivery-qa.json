@@ -380,5 +380,11 @@
     "action-framing"
   ],
   "viewed_midpoints": 91,
-  "viewed_action_samples": 111
+  "viewed_action_samples": 111,
+  "release_url": "https://github.com/Mellow048/kmanincraftghhj22/releases/tag/render-31",
+  "download_url": "https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-31/in-this-town-five-seconds.mp4",
+  "release_asset_id": 742326227,
+  "release_asset_sha256_verified": true,
+  "publication_run": 43368636167,
+  "publication_source_commit": "1cbdce590e81fad8e8e7a306cbfad4a205e9a7d3"
 }
