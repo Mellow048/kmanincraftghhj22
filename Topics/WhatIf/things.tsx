@@ -201,9 +201,10 @@ export const Eraser: React.FC<{ position: Vec3; rotation?: Vec3; scale?: number 
 /**
  * A CARD with a word on it, in letters a phone can read. It faces +Z; `position` is its middle.
  * `written` is how many letters are on it yet (leave it out for all of them): somebody writing it.
+ * `ink` is the colour of the letters: under a desk lamp, close up, use a darker one than the blue it comes with.
  * In a hand (an avatar's child) held out in front: `<Card rotation={[Math.PI / 2, 0, 0]} position={[0, -0.02, 0.1]} … />`.
  */
-export const Card: React.FC<{ position?: Vec3; rotation?: Vec3; text: string; written?: number; width?: number; height?: number; scale?: number }> = ({
+export const Card: React.FC<{ position?: Vec3; rotation?: Vec3; text: string; written?: number; width?: number; height?: number; scale?: number; ink?: string }> = ({
   position = [0, 0, 0],
   rotation,
   text,
@@ -211,6 +212,7 @@ export const Card: React.FC<{ position?: Vec3; rotation?: Vec3; text: string; wr
   width = 0.34,
   height = 0.22,
   scale = 1,
+  ink = "#1f3a8a",
 }) => {
   const shown = written === undefined ? text : text.slice(0, Math.max(0, Math.floor(written)));
   // Every letter keeps its place while the word is being written: pad the rest with spaces.
@@ -219,7 +221,7 @@ export const Card: React.FC<{ position?: Vec3; rotation?: Vec3; text: string; wr
     <group position={position} rotation={rotation} scale={scale}>
       <Block size={[width, height, 0.012]} color="#fbf8ee" />
       <Block position={[0, 0, -0.004]} size={[width + 0.02, height + 0.02, 0.008]} color="#1f3a8a" castShadow={false} />
-      {shown.trim() ? <Figure text={padded} position={[0, 0, 0.012]} height={height * 0.42} maxWidth={width * 0.86} depth={0.35} color="#1f3a8a" shadow={false} castShadow={false} /> : null}
+      {shown.trim() ? <Figure text={padded} position={[0, 0, 0.012]} height={height * 0.42} maxWidth={width * 0.86} depth={0.35} color={ink} shadow={false} castShadow={false} /> : null}
     </group>
   );
 };

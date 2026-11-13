@@ -1,7 +1,7 @@
 import type React from "react";
 import { Block, MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { Bits, Classmate, DEG, KID, NORTH, Overhead, Teacher, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
+import { Bits, Classmate, DEG, KID, NORTH, Overhead, Teacher, Tie, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
 import timingJson from "./timing.json";
 
 /**
@@ -119,10 +119,12 @@ export const joHeart = (metres: number): number => {
   const pts: Array<[number, number]> = [
     [1.7, HEART.jo],
     [2.6, 0.6],
-    [4, 0.4],
-    [6, 0.27],
-    [10, 0.2],
-    [20, HEART.tiny],
+    [4, 0.42],
+    [6, 0.3],
+    [10, 0.24],
+    // The dance: from the gym door to the lamp at the gate is 13.6 m, and one step out of the door is 12.4.
+    [12.4, 0.22],
+    [13.6, HEART.tiny],
   ];
   if (metres <= pts[0][0]) return pts[0][1];
   for (let i = 1; i < pts.length; i++) {
@@ -133,6 +135,8 @@ export const joHeart = (metres: number): number => {
   }
   return pts[pts.length - 1][1];
 };
+/** Which way to turn (a `rotationY`) to face `to` from `from`. */
+export const toward = (from: Vec3, to: Vec3): number => Math.atan2(to[0] - from[0], to[2] - from[2]);
 /** How far apart two people are, on the ground. */
 export const apart = (a: Vec3, b: Vec3): number => Math.hypot(a[0] - b[0], a[2] - b[2]);
 /** How tall the one under a heart is, in metres. */
@@ -160,6 +164,17 @@ const Bunches = (
         <Block position={[s * 0.245, 0.1, -0.08]} size={[0.05, 0.1, 0.18]} color="#ffd24a" castShadow={false} />
       </group>
     ))}
+  </>
+);
+
+/**
+ * The teller on the night of the dance: himself, in his dad's tie, which reaches his knees. `t` swings it;
+ * `swing` is how hard he is moving (0 standing, 1 running).
+ */
+export const HeroInTie: React.FC<A & { t: number; swing?: number }> = ({ t, swing = 0, ...p }) => (
+  <>
+    <Hero {...p} />
+    <Tie position={(p.position ?? [0, 0, 0]) as Vec3} rotationY={p.rotationY ?? 0} scale={KID} reach={0.25} swing={swing * (0.22 + 0.2 * Math.sin(t * 12))} sway={Math.sin(t * (3 + swing * 7)) * (0.04 + 0.1 * swing)} />
   </>
 );
 

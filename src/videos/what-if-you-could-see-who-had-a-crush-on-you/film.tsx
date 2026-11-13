@@ -11,6 +11,10 @@ import { scene7 } from "./scene7";
 import { scene8 } from "./scene8";
 import { scene9 } from "./scene9";
 import { scene10 } from "./scene10";
+import { scene11 } from "./scene11";
+import { scene12 } from "./scene12";
+import { scene13 } from "./scene13";
+import { scene14 } from "./scene14";
 
 /**
  * What If You Could See Who Had a Crush on You
@@ -34,5 +38,5 @@ export const film = defineFilm({
   // A finished film plays the mix. `npm run check` fails one that does not.
   captions: { words: timing.words, y: 0.72 },
   World,
-  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene11, scene12, scene13, scene14],
 });

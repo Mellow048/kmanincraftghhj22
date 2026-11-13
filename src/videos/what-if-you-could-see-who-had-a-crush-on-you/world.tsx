@@ -49,8 +49,8 @@ export const World: React.FC = () => {
         <Block position={room(-1.02, 0.7, -2.16)} size={[0.12, 0.04, 0.12]} color="#2b3340" />
         <Block position={room(-1.02, 0.86, -2.16)} size={[0.03, 0.3, 0.03]} color="#2b3340" />
         <Block position={room(-0.96, 1.02, -2.1)} size={[0.2, 0.08, 0.2]} color="#ffe9a8" emissive="#ffd27a" emissiveIntensity={night ? 2.2 : 0.4} castShadow={false} />
-        <pointLight position={room(-0.9, 1.0, -1.95)} color="#ffe2a8" intensity={night ? 5 : 1} distance={3} decay={2} />
-        <Glow position={room(-0.96, 0.98, -2.05)} size={0.9} color="#ffd9a0" opacity={night ? 0.5 : 0.1} />
+        <pointLight position={room(-0.9, 1.0, -1.95)} color="#ffe2a8" intensity={night ? 0.7 : 0.3} distance={3} decay={2} />
+        <Glow position={room(-0.96, 0.98, -2.05)} size={0.7} color="#ffd9a0" opacity={night ? 0.3 : 0.1} />
       </Zone>
       <Zone name="lunch">
         <LunchRoom at={PLACE.lunch} />

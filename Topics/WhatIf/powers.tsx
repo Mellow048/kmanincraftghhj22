@@ -51,7 +51,8 @@ export const Overhead: React.FC<{
       ) : (
         <Icon kind={kind} position={at} rotationY={turn} height={size} depth={1.2} color={color} glow={glow} scale={scale} castShadow={false} outline />
       )}
-      <Glow position={[at[0], at[1], at[2] - 0.05]} size={size * 2.6 * scale} color={color ?? "#ffb0cc"} opacity={0.28} />
+      {/* The glow behind it. A small heart glows wide; a heart the size of a door must not white out the frame. */}
+      <Glow position={[at[0], at[1], at[2] - 0.05]} size={Math.min(size * 2.6, size + 0.9) * scale} color={color ?? "#ffb0cc"} opacity={0.28 * Math.min(1, Math.sqrt(0.6 / Math.max(size, 0.01)))} />
     </>
   );
 };

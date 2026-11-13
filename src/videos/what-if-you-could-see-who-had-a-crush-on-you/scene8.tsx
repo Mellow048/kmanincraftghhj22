@@ -22,15 +22,14 @@ const LEO_FROM = LUNCH.at(3.3, 0, -2.45);
 const MID = 0.5;
 const FULL = 3.5 - TALL.kid - 0.34 - 0.04;
 
-/** The table he sits at: Mia on his right hand, the tall kid across from her. No place left on the bench. */
+/** The table he sits at: Mia on his right hand, a kid on his left. No place left on the bench. */
 const HIS_SEAT = LUNCH.seat(0, "n", 0);
 const MIAS_SEAT = LUNCH.seat(0, "n", -0.9);
 const KIDS_SEAT = LUNCH.seat(0, "n", 0.9);
-const LEOS_SEAT = LUNCH.seat(0, "s", -0.9);
-/** Jo comes from the line with her tray, stops behind him, and goes. */
-const JO_FROM = LUNCH.at(0.3, 0, -2.7);
-const JO_STOPS = LUNCH.at(-2.2, 0, -2.66);
-const JO_GOES = LUNCH.at(-0.9, 0, -2.5);
+/** Jo comes from the line with her tray, stops behind the bench, and goes. */
+const JO_IN = LUNCH.at(-1.0, 0, -2.72);
+const JO_STOPS = LUNCH.at(-2.36, 0, -2.72);
+const JO_OUT = LUNCH.at(-0.6, 0, -2.62);
 /** Where she eats: the far corner of the room, alone. */
 const JOS_SEAT = LUNCH.seat(3, "n", 0);
 
@@ -41,19 +40,20 @@ const Carried: React.FC<{ by: Vec3; facing: number }> = ({ by, facing }) => (
   </Held>
 );
 
-/** His table at lunch, as it is once they have sat down: seen close in 8.seat and from across the room in 8.apart. */
-const HisTable: React.FC<{ t: number; yaw: number; me?: boolean }> = ({ t, yaw, me = true }) => (
+/**
+ * His table at lunch, once they have sat down: seen close in 8.seat and from across the room in 8.apart.
+ * The tall kid in green is not at it, and so the heart over Mia is small again, with the teller sitting right
+ * next to her. He does not notice that either.
+ */
+const HisTable: React.FC<{ t: number; yaw: number }> = ({ t, yaw }) => (
   <>
-    {me ? <Hero position={HIS_SEAT} rotationY={SOUTH} animation="sit" arms="talk" face="laugh" headYaw={-0.75} headRoll={Math.sin(t * 7) * 0.05} gaze={0} /> : null}
-    <Mia position={MIAS_SEAT} rotationY={SOUTH} animation="sit" face="grin" headYaw={0.15} />
-    <Classmate who={8} position={KIDS_SEAT} rotationY={SOUTH} animation="sit" arms="hold" face="smile" headPitch={0.25} />
-    <Leo position={LEOS_SEAT} rotationY={NORTH} animation="sit" arms="talk" face="grin" />
+    <Hero position={HIS_SEAT} rotationY={SOUTH} animation="sit" arms="talk" face="laugh" headYaw={-0.75} headRoll={Math.sin(t * 7) * 0.05} gaze={0} />
+    <Mia position={MIAS_SEAT} rotationY={SOUTH} animation="sit" face="smile" headYaw={0.15} />
+    <Classmate who={4} position={KIDS_SEAT} rotationY={SOUTH} animation="sit" arms="hold" face="smile" headPitch={0.25} />
     {[HIS_SEAT, MIAS_SEAT, KIDS_SEAT].map((at, i) => (
       <Tray key={i} position={[at[0], 0.68, at[2] + 0.42]} />
     ))}
-    <Tray position={[LEOS_SEAT[0], 0.68, LEOS_SEAT[2] - 0.42]} rotationY={Math.PI} />
-    {/* Mia's heart: the tall kid is right across the table from her */}
-    <Heart over={MIAS_SEAT} tall={TALL.seated} size={HEART.big} yaw={yaw} />
+    <Heart over={MIAS_SEAT} tall={TALL.seated} size={HEART.small} yaw={yaw} />
   </>
 );
 
@@ -68,18 +68,18 @@ export const scene8 = storyScene(timing, {
   shots: [
     {
       cue: "8.line",
-      ...cam.push({ on: LUNCH.at(-1.75, 1.34, -3.15), dist: 3.5, to: 3.1, yaw: -68, pitch: 6, fov: 46 }),
+      ...cam.push({ on: LUNCH.at(-1.75, 1.35, -3.15), dist: 3.9, to: 3.5, yaw: -38, pitch: 5, fov: 46 }),
       handheld: 0.012,
       impacts: [{ at: SPOT_W, amp: 0.05, dur: 0.3 }],
       zone: "lunch",
-      note: "The lunch line, from its front: Mia with her tray, and him running the length of the room to brake into the place behind her, a nose ahead of the tall kid in green, who stops right behind him. She looks round at them, and her heart starts to grow.",
+      note: "The lunch line, from the tables: Mia with her tray and a small heart, and him running in from the right to brake into the place behind her, a nose ahead of the tall kid in green, who stops right behind him. She looks round at them, and her heart starts to grow.",
       stage: (t) => {
         // He runs, faster and faster, and brakes: past his place by a hand, and back.
-        const k = ramp(t, 0.3, SPOT_W - 0.08) ** 1.5;
+        const k = ramp(t, 0.05, SPOT_W - 0.08) ** 1.4;
         const run = stride(RUN_FROM, [ME_AT[0] - 0.16, 0, ME_AT[2]], k);
         const settle = t - (SPOT_W - 0.08);
         const me: Vec3 = settle > 0 ? [ME_AT[0] - 0.16 * Math.exp(-settle * 6) * Math.cos(settle * 13), 0, ME_AT[2]] : run.position;
-        const leo = stride(LEO_FROM, LEO_AT, ease(ramp(t, 0.75, BEHIND + 0.3)));
+        const leo = stride(LEO_FROM, LEO_AT, ease(ramp(t, 0.6, BEHIND + 0.3)));
         const arrived = ramp(t, BEHIND, BEHIND + 0.3);
         const round = ease(ramp(t, SPOT_W - 0.3, SPOT_W + 0.15));
         const size = HEART.small + (MID - HEART.small) * ease(ramp(t, SPOT_W + 0.1, BEHIND + 0.5));
@@ -88,7 +88,7 @@ export const scene8 = storyScene(timing, {
             <Cook position={LUNCH.at(0.2, 0, -5.2)} rotationY={SOUTH} animation="idle" arms="reach" />
             <Mia position={MIA_AT} rotationY={WEST + 0.8 * round} animation="idle" arms="hold" face={arrived > 0.5 ? "grin" : "smile"} headYaw={0.85 * round} gaze={0} />
             <Carried by={MIA_AT} facing={WEST + 0.8 * round} />
-            <Heart over={MIA_AT} size={size} yaw={-68} />
+            <Heart over={MIA_AT} size={size} yaw={-38} />
             {settle > 0 ? <Hero position={me} rotationY={WEST} animation="idle" arms="hold" face="grin" gaze={0} /> : <Hero {...run} animation="run" arms="hold" face="wow" gaze={0} />}
             <Carried by={me} facing={settle > 0 ? WEST : run.rotationY} />
             {arrived >= 1 ? <Leo position={LEO_AT} rotationY={WEST} animation="idle" arms="hold" face="smile" gaze={0} /> : <Leo {...leo} animation="walk" arms="hold" face="smile" gaze={0} />}
@@ -99,14 +99,14 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.ceiling",
-      ...cam.push({ on: LUNCH.at(-1.95, 1.72, -3.15), dist: 3.5, to: 3.85, yaw: -62, pitch: 0, fov: 58 }),
+      ...cam.push({ on: LUNCH.at(-1.85, 1.72, -3.15), dist: 4.8, to: 5.1, yaw: -38, pitch: -9, fov: 56 }),
       handheld: 0.012,
-      impacts: [{ at: CEILING, amp: 0.07, dur: 0.4 }],
+      impacts: [{ at: CEILING, amp: 0.08, dur: 0.45 }],
       zone: "lunch",
-      note: "The three of them in the line, and her heart going up and up over their heads until it bumps the ceiling on 'ceiling' and the dust comes down. He stares up at it. She is looking past him, at the one behind him.",
+      note: "From low down, the ceiling in the top of the frame: the three of them in the line and her heart going up and up over their heads until it bumps the ceiling on 'ceiling' and the dust comes down. He stares up at it. She is looking past him, at the one behind him.",
       stage: (t) => {
         const k = ease(ramp(t, GREW - 0.25, CEILING)) ** 1.4;
-        const size = (MID + (FULL - MID) * k) * (1 - 0.03 * Math.abs(jolt(t, CEILING, 1)));
+        const size = (MID + (FULL - MID) * k) * (1 - 0.04 * Math.abs(jolt(t, CEILING, 1)));
         // The tall kid shuffles up as the line moves: that is all it takes.
         const leo: Vec3 = [LEO_AT[0] - 0.24 * k, 0, LEO_AT[2]];
         return (
@@ -114,60 +114,65 @@ export const scene8 = storyScene(timing, {
             <Cook position={LUNCH.at(0.2, 0, -5.2)} rotationY={SOUTH} animation="idle" arms="reach" />
             <Mia position={MIA_AT} rotationY={WEST + 0.8} animation="idle" arms="hold" face="grin" headYaw={0.85} headPitch={-0.12} gaze={0} />
             <Carried by={MIA_AT} facing={WEST + 0.8} />
-            <Heart over={MIA_AT} size={size} yaw={-62} />
-            <pointLight position={[MIA_AT[0], 2.3, MIA_AT[2] + 0.9]} color="#ff9cc0" intensity={2 + 10 * k} distance={7} decay={2} />
+            <Heart over={MIA_AT} size={size} yaw={-38} />
+            <pointLight position={[MIA_AT[0] - 0.5, 1.5, MIA_AT[2] + 0.9]} color="#ff9cc0" intensity={1 + 4 * k} distance={6} decay={2} />
             <Hero position={ME_AT} rotationY={WEST} animation="idle" arms="hold" face={k > 0.6 ? "grin" : "wow"} headPitch={-0.2 - 0.4 * k} gaze={0} />
             <Carried by={ME_AT} facing={WEST} />
             <Leo position={leo} rotationY={WEST} animation="idle" arms="hold" face="grin" lookAt={faceOf(MIA_AT)} gaze={0} />
             <Carried by={leo} facing={WEST} />
-            <Bits position={[MIA_AT[0], 3.44, MIA_AT[2]]} t={t - CEILING} color="#f1ecdc" count={12} seed={5} power={0.45} />
+            {[-0.55, 0, 0.5].map((dx, i) => (
+              <Bits key={i} position={[MIA_AT[0] + dx, 3.44, MIA_AT[2] + 0.1]} t={t - CEILING - i * 0.03} color="#f1ecdc" count={9} seed={5 + i} power={0.5} />
+            ))}
           </>
         );
       },
     },
     {
       cue: "8.mine",
-      ...cam.push({ on: LUNCH.at(-1.2, 1.22, -3.15), dist: 2.1, to: 1.8, yaw: -64, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [ME_AT[0] + 0.12, 1.18, ME_AT[2]], dist: 2.0, to: 1.8, yaw: -80, pitch: 26, fov: 40 }),
       handheld: 0.012,
       zone: "lunch",
-      note: "His face, pink in the light of it, looking up: it had to be for me. On 'me' both fists go up. And over his shoulder, where he never looks, the face of the tall kid in green, smiling the way she is smiling. The dance ends on this same picture.",
+      note: "Seen from where the heart is: his face turned up to it, pink in its light, sure. On 'me' he bounces on his toes. And right behind him, over his head, the face of the tall kid in green, looking the same way and smiling the same smile. The dance ends on this picture.",
       stage: (t) => {
-        const yes = ramp(t, FOR_ME - 0.05, FOR_ME + 0.05);
-        const hop = yes > 0 ? 0.1 * Math.abs(Math.sin((t - FOR_ME) * 9)) * Math.exp(-(t - FOR_ME) * 2) : 0;
+        const yes = t - FOR_ME;
+        const hop = yes > 0 ? 0.09 * Math.abs(Math.sin(yes * 10)) * Math.exp(-yes * 2.5) : 0;
+        const me: Vec3 = [ME_AT[0], hop, ME_AT[2]];
+        const leo: Vec3 = [LEO_AT[0] - 0.24, 0, LEO_AT[2]];
         return (
           <>
-            <Hero position={[ME_AT[0], hop, ME_AT[2]]} rotationY={WEST} animation="idle" arms={yes > 0.5 ? "cheer" : "hold"} face="grin" headPitch={-0.38 + 0.3 * yes} headYaw={0.35 * yes} gaze={0} />
-            <Leo position={[LEO_AT[0] - 0.24, 0, LEO_AT[2]]} rotationY={WEST} animation="idle" arms="hold" face="grin" headYaw={0.12} gaze={0} />
+            <Hero position={me} rotationY={WEST} animation="idle" arms="hold" face={yes > 0 ? "laugh" : "grin"} headPitch={-0.5} headRoll={yes > 0 ? Math.sin(yes * 10) * 0.08 * Math.exp(-yes * 2) : 0} gaze={0} />
+            <Carried by={me} facing={WEST} />
+            <Leo position={leo} rotationY={WEST} animation="idle" arms="hold" face="grin" headPitch={-0.2} gaze={0} />
+            <Carried by={leo} facing={WEST} />
             <Mia position={MIA_AT} rotationY={WEST + 0.8} animation="idle" arms="hold" face="grin" headYaw={0.85} />
-            <Heart over={MIA_AT} size={FULL} yaw={-64} />
-            <pointLight position={[MIA_AT[0] + 0.4, 2.1, MIA_AT[2] + 0.8]} color="#ff9cc0" intensity={12} distance={7} decay={2} />
+            {/* The heart is not drawn: the lens is inside it. Its light is on their faces. */}
+            <pointLight position={[MIA_AT[0] + 0.15, 2.3, MIA_AT[2] + 0.3]} color="#ff9cc0" intensity={9} distance={6} decay={2} />
           </>
         );
       },
     },
     {
       cue: "8.seat",
-      ...cam.push({ on: LUNCH.at(-2.3, 1.3, -2.2), dist: 3.6, to: 3.3, yaw: 8, pitch: 4, fov: 46 }),
+      ...cam.push({ on: LUNCH.at(-2.7, 1.45, -2.2), dist: 4.0, to: 3.75, yaw: 6, pitch: 15, fov: 46 }),
       handheld: 0.012,
       zone: "lunch",
-      note: "His table, full: he is turned to Mia and laughing. Jo comes up behind him with her tray, her heart swelling as she comes, and stops. There is no place on the bench. He does not look round. On 'seat' she goes, and it shrinks behind her.",
+      note: "His table, full: he is turned to Mia and laughing, a kid on his other side. Jo comes along behind the bench with her tray and the biggest heart in the room, and stops. There is no place. He does not look round. On 'seat' she turns and goes.",
       stage: (t) => {
-        const come = ease(ramp(t, -0.1, JO_W));
-        const go = ease(ramp(t, SEAT + 0.05, SEAT + 0.75));
-        const walk = go > 0 ? stride(JO_STOPS, JO_GOES, go) : stride(JO_FROM, JO_STOPS, come);
+        const come = ease(ramp(t, -0.15, JO_W - 0.12));
+        const go = ease(ramp(t, SEAT + 0.02, SEAT + 0.9));
+        const walk = go > 0 ? stride(JO_STOPS, JO_OUT, go) : stride(JO_IN, JO_STOPS, come);
         const still = come >= 1 && go <= 0;
-        // Her heart, by how far she is from him: the rule, behind his back.
-        const size = joHeart(apart(walk.position, HIS_SEAT));
         return (
           <>
-            <HisTable t={t} yaw={8} />
+            <HisTable t={t} yaw={6} />
             {still ? (
-              <Jo position={JO_STOPS} rotationY={SOUTH + 0.2} animation="idle" arms="hold" face="uneasy" headPitch={0.3} headYaw={Math.sin((t - JO_W) * 6) * 0.3} gaze={0} />
+              <Jo position={JO_STOPS} rotationY={SOUTH + 0.1} animation="idle" arms="hold" face="uneasy" headPitch={0.32} headYaw={Math.sin((t - JO_W) * 7) * 0.35} gaze={0} />
             ) : (
               <Jo {...walk} animation="walk" arms="hold" face={go > 0 ? "frown" : "smile"} gaze={0} />
             )}
-            <Carried by={walk.position} facing={still ? SOUTH + 0.2 : walk.rotationY} />
-            <Heart over={walk.position} size={size} yaw={8} />
+            <Carried by={walk.position} facing={still ? SOUTH + 0.1 : walk.rotationY} />
+            {/* Her heart, by how far she is from him: the rule, behind his back. */}
+            <Heart over={walk.position} size={joHeart(apart(walk.position, HIS_SEAT))} yaw={6} />
           </>
         );
       },

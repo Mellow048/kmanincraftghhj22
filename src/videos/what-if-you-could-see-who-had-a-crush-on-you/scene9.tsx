@@ -52,17 +52,17 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.ask",
-      ...cam.push({ on: [JO_STOPS[0] - 0.05, 1.42, JO_STOPS[2]], dist: 2.75, to: 2.4, yaw: -35, pitch: 0, fov: 42 }),
+      ...cam.push({ on: [JO_STOPS[0] + 0.06, 1.4, JO_STOPS[2]], dist: 2.85, to: 2.6, yaw: -28, pitch: -17, fov: 54 }),
       handheld: 0.012,
       zone: "hall",
-      note: "Her face while he tells her about Mia: the smile goes on 'Mia', and her eyes go down. Then she looks up and says it, and the three words are hers: ASK HER. The heart over her does not shrink: he is still standing next to her.",
+      note: "From low down, her face and the whole of the heart over it while he tells her about Mia: the smile goes on 'Mia', and her eyes go down. Then she looks up and says it, and the three words are hers: ASK HER. The heart does not shrink by a hair: he is still standing next to her.",
       stage: (t) => {
         const told = ramp(t, MIA_W + 0.1, MIA_W + 0.3);
         const says = ramp(t, SAID + 0.1, SAID + 0.25);
         const speaking = t > ASK - 0.32 && t < ASK + 0.6 && Math.sin(t * 26) > 0;
         return (
           <>
-            <Hero position={HE_LEANS} rotationY={SOUTH + 0.9} animation="idle" arms={told > 0.5 ? "cheer" : "talk"} face="grin" lookAt={faceOf(JO_STOPS)} gaze={0} />
+            <Hero position={HE_LEANS} rotationY={SOUTH + 0.9} animation="idle" arms="talk" face="grin" lookAt={faceOf(JO_STOPS)} gaze={0} />
             <Jo
               position={JO_STOPS}
               rotationY={WEST + 0.55}
@@ -73,18 +73,22 @@ export const scene9 = storyScene(timing, {
               headYaw={-0.2 * told * (1 - says)}
               gaze={0}
             />
-            <Heart over={JO_STOPS} size={joHeart(1)} yaw={-35} />
-            <Bubble text="ASK HER" position={[JO_STOPS[0] + 0.3, 1.86, JO_STOPS[2] + 0.34]} rotationY={-35 * DEG} scale={0.36 * pop(t, ASK - 0.32)} tail={-1} />
+            <Heart over={JO_STOPS} size={joHeart(apart(JO_STOPS, HE_LEANS))} yaw={-28} />
+            <Bubble text="ASK HER" position={[JO_STOPS[0] + 0.46, 1.74, JO_STOPS[2] + 0.3]} rotationY={-28 * DEG} scale={0.3 * pop(t, ASK - 0.32)} tail={-1} />
           </>
         );
       },
     },
     {
       cue: "9.home",
-      ...cam.push({ on: GYM.at(0, 1.45, 25.0), dist: 7.6, to: 7.0, yaw: 4, pitch: 3, fov: 46 }),
+      from: GYM.at(-5.4, 1.7, 26.8),
+      to: GYM.at(-5.0, 1.65, 26.6),
+      target: GYM.at(-0.2, 1.4, 24.9),
+      fov: 48,
+      ease: "inOutSine",
       handheld: 0.012,
       zone: "gym",
-      note: "The school gate after the bell. They come out together; he turns right, the way they always walk, with his head in the clouds. She stops under the arch and watches him go, and her heart shrinks with every step he takes. Then she turns left.",
+      note: "From down the street: the school gate after the bell. They come out together; he turns right, the way they always walk, with his head in the clouds, and goes. She stops on the kerb and watches him, and then she comes the other way, towards us, and the heart over her shrinks with every step he takes.",
       stage: (t) => {
         // He never slows down. She stops where the path meets the street, waits for him to look round, and goes.
         const he = route(GATE_HE, 1.75 * (t + 0.55));
@@ -100,7 +104,7 @@ export const scene9 = storyScene(timing, {
             ) : (
               <Jo {...jo} animation="walk" face="frown" headPitch={away > 0 ? 0.22 : 0} gaze={0} />
             )}
-            <Heart over={jo.position} size={joHeart(apart(jo.position, he.position))} yaw={4} />
+            <Heart over={jo.position} size={joHeart(apart(jo.position, he.position))} yaw={-70} />
             <Classmate who={3} {...stride(GYM.at(-0.2, 0, 19), GYM.at(-0.2, 0, 22.6), ramp(t, -0.3, 2.3))} animation="walk" face="smile" />
             <Classmate who={7} {...stride(GYM.at(0.5, 0, 17.8), GYM.at(0.5, 0, 21.6), ramp(t, -0.3, 2.3))} animation="walk" face="grin" />
           </>
