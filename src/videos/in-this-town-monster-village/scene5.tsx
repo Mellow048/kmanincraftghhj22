@@ -172,7 +172,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.post",
-      ...cam.push({ on: [-11.0, 2.3, 5.9], onTo: [-11.8, 5.6, 6.4], dist: 6.4, to: 6.8, yaw: 158, pitch: -4, fov: 44 }),
+      ...cam.push({ on: [-11.0, 2.3, 5.9], onTo: [-11.8, 6.2, 6.4], dist: 6.4, to: 8.4, yaw: 158, pitch: -4, fov: 44 }),
       ease: "inOutCubic",
       zone: ZONE.night,
       look: NIGHT,

@@ -60,7 +60,7 @@ export const scene6 = storyScene(timing, {
           <>
             <Fill on={faceOf(SPY)} yaw={-22} />
             <Hero position={SPY} rotationY={-0.5} animation="idle" arms={down > 0 ? "hold" : undefined} face={down > 0 ? "wow" : "fear"} headYaw={down > 0 ? 0 : -0.6 + 1.6 * pass} headPitch={0.45 * down} />
-            <Raider who={4} position={[6.6 + 7.5 * pass, 0, -1.6]} rotationY={E} animation="run" arms="reachUp" animDistance={7.5 * pass} face="angry" />
+            <Raider who={4} position={[6.6 + 7.5 * pass, 0, -4.1]} rotationY={E} animation="run" arms="reachUp" animDistance={7.5 * pass} face="angry" />
           </>
         );
       },

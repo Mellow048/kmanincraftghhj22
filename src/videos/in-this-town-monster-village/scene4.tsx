@@ -188,10 +188,10 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.every",
-      ...cam.push({ on: [10.3, 0.5, -2.7], dist: 2.5, to: 1.9, yaw: 180, pitch: 42, fov: 46 }),
+      ...cam.push({ on: [10.3, 0.6, -2.8], dist: 6.4, to: 4.2, yaw: 4, pitch: 30, fov: 44 }),
       zone: ZONE.night,
       look: NIGHT,
-      note: "The same backs, the same curve. On 'basket' he is gone and the basket is there where he stood, a baby in it: this is the first night, and they were already standing guard.",
+      note: "From over their heads, looking in at where he stands. On 'basket' he is gone and the basket is there where he stood, a baby in it: this is the first night, and they were already standing guard.",
       stage: (t) => {
         const b = wordAt("9.every", "basket") - 0.25;
         return (

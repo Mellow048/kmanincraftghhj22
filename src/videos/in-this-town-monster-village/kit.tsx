@@ -122,8 +122,13 @@ export const Mo: React.FC<A & { scarf?: number; wiped?: number; hat?: boolean; s
         {hat ? <StrawHat position={[0, 0.225, 0]} width={0.92} /> : null}
         <Block position={[0, -0.12 - (1 - scarf) * 0.17, 0]} size={[0.5 + (1 - scarf) * 0.04, 0.2 - (1 - scarf) * 0.08, 0.5 + (1 - scarf) * 0.04]} color={MONSTER.scarfRed} />
         <Block position={[0.14, -0.34, 0.26]} size={[0.11, 0.24, 0.05]} color="#9c2c22" />
-        {sleeve === undefined ? null : <Block position={[0.3 - 0.36 * sleeve, 0.0, 0.31]} size={[0.14, 0.22, 0.14]} color={MONSTER.zombieShirt} />}
-        {wiped > 0 ? <Block position={[0.225 - 0.11 * wiped, 0.0, 0.228]} size={[0.22 * wiped, 0.17, 0.012]} color={SKIN} castShadow={false} /> : null}
+        {sleeve === undefined ? null : <Block position={[-0.3 + 0.36 * sleeve, 0.0, 0.31]} size={[0.14, 0.22, 0.14]} color={MONSTER.zombieShirt} />}
+        {wiped > 0 ? (
+          <>
+            <Block position={[-0.225 + 0.1 * wiped, -0.01, 0.228]} size={[0.2 * wiped, 0.2, 0.012]} color={SKIN} castShadow={false} />
+            <Block position={[-0.228, -0.01, 0.225 - 0.07 * wiped]} size={[0.012, 0.2, 0.14 * wiped]} color={SKIN} castShadow={false} />
+          </>
+        ) : null}
       </>
     }
     {...p}

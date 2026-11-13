@@ -94,13 +94,13 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "15.zombie",
-      ...cam.push({ on: faceOf(STAND), dist: 2.3, to: 1.7, yaw: -30, pitch: -6, fov: 36 }),
+      ...cam.push({ on: faceOf(STAND), dist: 2.3, to: 1.7, yaw: -30, pitch: 6, fov: 36 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "The boy, looking up at it. A red drop lands on his yellow shoulder. He knows what zombies bleed, and it is not that.",
       stage: (t) => (
         <>
-          <Hero position={STAND} rotationY={W + 0.5} animation="idle" face="wow" lookAt={CATCH} />
+          <Hero position={STAND} rotationY={W + 0.5} animation="idle" face="wow" headPitch={-0.45} headYaw={-0.3} />
           <Fill on={faceOf(STAND)} yaw={-30} />
           <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" face="angry" gaze={0} />
           <Drops position={[CATCH[0] + 0.02, CATCH[1] - 0.15, CATCH[2] + 0.12]} t={t + 1} />
@@ -110,7 +110,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "16.scarf",
-      ...cam.push({ on: MOFACE, dist: 2.3, to: 1.9, yaw: 34, pitch: -6, fov: 36 }),
+      ...cam.push({ on: MOFACE, dist: 2.4, to: 2.0, yaw: 56, pitch: 5, fov: 36 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "Mo turns his head to the boy. On 'pulled' the scarf comes down off his face for the first time in the film.",
@@ -120,7 +120,7 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Caught t={t} />
-            <Fill on={MOFACE} yaw={34} power={6} />
+            <Fill on={MOFACE} yaw={56} power={6} />
             <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" scarf={1 - k} face="neutral" headYaw={-0.9 * (1 - ease(ramp(t, 0, 0.35)))} headPitch={0.1} gaze={0} />
           </>
         );
@@ -128,7 +128,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "16.paint",
-      ...cam.push({ on: MOFACE, dist: 1.8, to: 1.35, yaw: 36, pitch: -4, fov: 34 }),
+      ...cam.push({ on: MOFACE, dist: 2.0, to: 1.6, yaw: 58, pitch: 5, fov: 32 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "His sleeve goes across his cheek, once, hard. Behind it the green is gone, and flakes of it are falling.",
@@ -138,7 +138,7 @@ export const scene7 = storyScene(timing, {
         const k = ease(ramp(t, wipe, wipe + 0.55));
         return (
           <>
-            <Fill on={MOFACE} yaw={36} power={6} />
+            <Fill on={MOFACE} yaw={58} power={6} />
             <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" scarf={0} sleeve={k > 0 && k < 1 ? k : undefined} wiped={k} face="neutral" headPitch={0.1} headRoll={-0.12 * Math.sin(k * Math.PI)} gaze={0} />
             <Bits position={[MOFACE[0] + 0.25, MOFACE[1] - 0.05, MOFACE[2] + 0.1]} t={t - came + 0.2} color="#5f9a4e" count={12} power={1.4} />
             <Bits position={[MOFACE[0] + 0.25, MOFACE[1] - 0.05, MOFACE[2] + 0.1]} t={t - wipe - 0.2} color="#5f9a4e" count={8} power={1.2} />
@@ -163,7 +163,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "16.say",
-      ...cam.push({ on: MOFACE, dist: 2.7, to: 2.0, yaw: 30, pitch: -8, fov: 38 }),
+      ...cam.push({ on: MOFACE, dist: 2.8, to: 2.2, yaw: 54, pitch: 5, fov: 38 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "Mo, hat pushed back, scarf down, one cheek clean, still holding the sword up without looking at it. He says it to the boy as if it were nothing.",
@@ -174,7 +174,7 @@ export const scene7 = storyScene(timing, {
           <>
             <Caught t={t} />
             <Mo position={MO_CATCH} rotationY={E} animation="idle" arms="reachUp" scarf={0} wiped={1} face={t > i ? "smile" : "neutral"} headPitch={0.12 + jolt(t, i, 0.1)} />
-            <Bubble text="I am human too." position={[MOFACE[0] + 0.1, MOFACE[1] + 0.85, MOFACE[2] + 0.3]} rotationY={0.52} scale={0.42 * pop(t, i)} tail={-1} />
+            <Bubble text="I am human too." position={[MOFACE[0] + 0.1, MOFACE[1] + 0.85, MOFACE[2] + 0.3]} rotationY={0.94} scale={0.42 * pop(t, i)} tail={-1} />
             <Fill on={MOFACE} yaw={30} power={6} />
           </>
         );
