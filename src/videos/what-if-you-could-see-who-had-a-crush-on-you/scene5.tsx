@@ -52,7 +52,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.forme",
-      ...cam.push({ on: SPOT.at(0.05, 1.27, 1.9), dist: 3.3, to: 2.95, yaw: 200, pitch: -2, fov: 44 }),
+      ...cam.push({ on: SPOT.at(-0.03, 1.27, 1.9), dist: 3.3, to: 3.05, yaw: 200, pitch: -2, fov: 44 }),
       handheld: 0.012,
       impacts: [{ at: KNOW, amp: 0.03, dur: 0.3 }],
       zone: "class",

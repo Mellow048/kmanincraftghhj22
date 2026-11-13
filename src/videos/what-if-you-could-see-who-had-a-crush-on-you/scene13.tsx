@@ -25,8 +25,8 @@ const JO_AT = GYM.lamp;
 /** She is looking at the door she did not go in at. */
 const JO_WAITS = toward(JO_AT, AT_DOOR);
 /** His run down the path, and where it ends: beside her in the gateway, an arm's length off, side on to the street. */
-const HE_STOPS: Vec3 = GYM.at(-0.4, 0, 23.0);
-const RUN: Vec3[] = [GYM.at(-0.2, 0, 13.2), GYM.at(-0.34, 0, 21.4), HE_STOPS];
+const HE_STOPS: Vec3 = GYM.at(-0.2, 0, 23.0);
+const RUN: Vec3[] = [GYM.at(-0.2, 0, 13.2), GYM.at(-0.3, 0, 21.4), HE_STOPS];
 const RUN_LENGTH = apart(RUN[0], RUN[1]) + apart(RUN[1], RUN[2]);
 /** Face to face in the gateway, each turned a third of the way to the street: side on, a head is the side of a box. */
 const HE_FACES = EAST - 0.5;
@@ -93,7 +93,7 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.biggest",
-      ...cam.push({ on: SPOT.at(0.05, 1.27, 1.9), onTo: SPOT.at(0.04, 1.32, 2.2), dist: 3.3, to: 2.85, yaw: 200, pitch: -2, fov: 44 }),
+      ...cam.push({ on: SPOT.at(-0.03, 1.27, 1.9), onTo: SPOT.at(-0.06, 1.32, 2.2), dist: 3.3, to: 2.85, yaw: 200, pitch: -2, fov: 44 }),
       handheld: 0.012,
       zone: "class",
       note: "The picture of 5.forme, in daylight, as it was all week: his face turned to the window where Mia sits, and right behind him Jo, and the biggest heart in the school. Her hand goes out to tap his shoulder and comes back without doing it. This time the lens leaves him and goes to her.",
@@ -133,15 +133,15 @@ export const scene13 = storyScene(timing, {
     {
       cue: "13.step",
       look: "overworld-night",
-      from: GYM.at(0.65, 1.55, 25.15),
-      to: GYM.at(0.62, 1.55, 24.9),
-      target: GYM.at(-0.2, 1.25, 12),
-      fov: 46,
+      from: GYM.at(1.45, 2.0, 26.6),
+      to: GYM.at(1.43, 2.0, 26.45),
+      target: GYM.at(-0.55, 0.5, 10),
+      fov: 38,
       ease: "inOutSine",
       handheld: 0.012,
       impacts: [{ at: GREW, amp: 0.04, dur: 0.3 }],
       zone: "gym",
-      note: "From behind her, at the gate: her two bunches and the dot of a heart over them, and at the far end of the path the lit door with him in it, no bigger than a thumb. On 'step' he jumps one step out onto the path. On 'grew' the heart over her head, fourteen metres away from him, swells.",
+      note: "From the height of a street lamp, behind her: on the left her two bunches and the dot of a heart over them, and past her shoulder, at the far end of the path, the lit door with him in it, no bigger than a thumb. On 'step' he jumps one step out onto the path. On 'grew' the heart over her head, fourteen metres away from him, swells.",
       stage: (t) => {
         const k = ramp(t, STEP - 0.12, STEP + 0.2);
         const he: Vec3 = [AT_DOOR[0] + (ONE_STEP[0] - AT_DOOR[0]) * k, 0.28 * Math.sin(k * Math.PI), AT_DOOR[2] + (ONE_STEP[2] - AT_DOOR[2]) * k];
@@ -151,7 +151,9 @@ export const scene13 = storyScene(timing, {
           <>
             <HeroInTie t={t} swing={k > 0 && k < 1 ? 1 : 0} position={he} rotationY={toward(AT_DOOR, JO_AT)} animation={k > 0 && k < 1 ? "jump" : "idle"} face="wow" gaze={0} />
             <Jo position={JO_AT} rotationY={JO_WAITS} animation="idle" face="uneasy" headPitch={0.2 * (1 - ease(ramp(t, STEP, STEP + 0.3)))} gaze={0} />
-            <Heart over={JO_AT} size={tiny + (grown - tiny) * boing(t, GREW - 0.1, 0.6)} yaw={0} steady />
+            <Heart over={JO_AT} size={tiny + (grown - tiny) * boing(t, GREW - 0.1, 0.6)} yaw={12} steady />
+            {/* A street lamp behind the lens: without it her back is a black shape with a dot over it. */}
+            <pointLight position={GYM.at(1.5, 2.7, 25.3)} color="#ffe2b0" intensity={16} distance={8} decay={2} />
           </>
         );
       },
@@ -159,15 +161,15 @@ export const scene13 = storyScene(timing, {
     {
       cue: "13.near",
       look: "overworld-night",
-      from: GYM.at(-0.6, 1.0, 27.2),
-      to: GYM.at(-0.58, 1.0, 26.75),
-      target: GYM.at(0.15, 1.7, 23.05),
+      from: GYM.at(0.3, 2.0, 26.75),
+      to: GYM.at(0.3, 2.0, 26.6),
+      target: GYM.at(0.33, 1.62, 23.05),
       fov: 50,
       ease: "inOutSine",
       handheld: 0.012,
       impacts: [{ at: NEAR, amp: 0.05, dur: 0.4 }],
       zone: "gym",
-      note: "From the street, low, through the gate: she stands on the right with the small heart over her, and far up the path behind her he comes out of the lit door at a run, a dot, then a boy, and with every metre the heart swells, until he brakes beside her on 'near' and it is the biggest heart in the school again. She has turned round with him. He is looking over her head; she looks up to see at what, and there is nothing there.",
+      note: "The same lamp's height, through the gate, with the brick beside the door behind her and nothing else: she stands on the right with the small heart over her, and up the path behind her he comes out of the lit door at a run, a dot, then a boy, and with every metre the heart swells, until he brakes beside her on 'near' and it is the biggest heart in the school again. She has turned round with him. He is looking over her head; she looks up to see at what, and there is nothing there.",
       stage: (t) => {
         // He runs flat out and brakes in the last metres: he is beside her on 'near'.
         const k = ramp(t, -0.15, NEAR - 0.12);
@@ -188,7 +190,7 @@ export const scene13 = storyScene(timing, {
               rotationY={he.rotationY + (HE_FACES - he.rotationY) * settle}
               animation={arrived ? "idle" : "run"}
               face={t > ME_W ? "grin" : "wow"}
-              headPitch={-0.42 * settle}
+              headPitch={-0.24 * settle}
               gaze={0}
             />
             {up ? (
@@ -196,9 +198,9 @@ export const scene13 = storyScene(timing, {
             ) : (
               <Jo position={JO_AT} rotationY={JO_WAITS + (JO_FACES - JO_WAITS) * round} animation="idle" face={d < 6 ? "wow" : "uneasy"} lookAt={faceOf(he.position)} gaze={0} />
             )}
-            <Heart over={JO_AT} size={joHeart(d)} yaw={-18} steady />
-            {/* The lamp, on the two faces: the lens is in the street, and the lantern is behind them. */}
-            <pointLight position={GYM.at(0.15, 2.3, 25.2)} color="#ffe2b0" intensity={36} distance={9} decay={2} />
+            <Heart over={JO_AT} size={joHeart(d)} yaw={-6} steady />
+            {/* A street lamp behind the lens, on the two faces: the lantern of the gate is behind them. */}
+            <pointLight position={GYM.at(0.25, 2.8, 25.4)} color="#ffe2b0" intensity={22} distance={9} decay={2} />
           </>
         );
       },

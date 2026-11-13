@@ -1,6 +1,6 @@
 import { cam, storyScene, stride } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Bubble, Classmate, DEG, GYM, Heart, Hero, Jo, SOUTH, WEST, apart, ease, faceOf, hall, joHeart, pop, ramp, route, timing, wordAt } from "./kit";
+import { Classmate, Figure, GYM, Heart, Hero, Jo, SOUTH, Says, WEST, apart, ease, faceOf, hall, joHeart, pop, ramp, route, timing, wordAt } from "./kit";
 
 const WHY = wordAt("9.smile", "why");
 const SMILING = wordAt("9.smile", "smiling");
@@ -74,7 +74,11 @@ export const scene9 = storyScene(timing, {
               gaze={0}
             />
             <Heart over={JO_STOPS} size={joHeart(apart(JO_STOPS, HE_LEANS))} yaw={-28} />
-            <Bubble text="ASK HER" position={[JO_STOPS[0] + 0.31, 1.64, JO_STOPS[2] + 0.3]} rotationY={-28 * DEG} scale={0.33 * pop(t, ASK - 0.32)} tail={-1} />
+            {/* Two short lines, in cubes, tipped down to the lens: the three words have to be read off a phone. */}
+            <Says position={[JO_STOPS[0] + 0.36, 1.6, JO_STOPS[2] + 0.33]} yaw={-28} lean={17} scale={0.5 * pop(t, ASK - 0.32)} wide={0.92} high={0.84}>
+              <Figure text="ASK" position={[0, 0.19, 0]} height={0.3} depth={0.4} color="#16161c" shadow={false} castShadow={false} />
+              <Figure text="HER" position={[0, -0.19, 0]} height={0.3} depth={0.4} color="#16161c" shadow={false} castShadow={false} />
+            </Says>
           </>
         );
       },

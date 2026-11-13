@@ -77,7 +77,7 @@ export const scene3 = storyScene(timing, {
           <>
             <Classmate who={7} position={SHE} rotationY={SOUTH + 0.35 * p} animation="idle" face={p > 0.6 ? "grin" : "smile"} lookAt={p > 0.3 ? [walk.position[0], 1.2, walk.position[2]] : undefined} />
             <Heart over={SHE} size={HEART.small + (HEART.big - HEART.small) * p} yaw={0} />
-            {p < 1 ? <Classmate who={11} {...walk} animation="walk" face="smile" /> : <Classmate who={11} position={HE_TO} rotationY={WEST} animation="idle" arms="wave" face="grin" />}
+            {p < 1 ? <Classmate who={11} {...walk} animation="walk" face="smile" /> : <Classmate who={11} position={HE_TO} rotationY={WEST + 0.55} animation="idle" arms="wave" face="grin" />}
           </>
         );
       },
@@ -113,7 +113,8 @@ export const scene3 = storyScene(timing, {
           <Classmate who={4} position={TRIO[1]} rotationY={SOUTH} animation="idle" face="smile" headYaw={Math.sin(t * 2.2) * 0.3} />
           <Classmate who={9} position={TRIO[2]} rotationY={SOUTH - 0.5} animation="idle" arms="wave" face="grin" />
           <Heart over={TRIO[1]} size={HEART.mid} yaw={0} />
-          <Hero position={WATCHER} rotationY={NORTH} animation={t > WHO ? "shrug" : "idle"} face="uneasy" headYaw={t > WHO ? 0 : Math.sin(t * 5.2) * 0.75} />
+          {/* He stands a good way back from them, so that he is the bottom of the picture and not the middle of it. */}
+          <Hero position={[WATCHER[0], 0, WATCHER[2] + 1.1]} rotationY={NORTH} animation={t > WHO ? "shrug" : "idle"} face="uneasy" headYaw={t > WHO ? 0 : Math.sin(t * 5.2) * 0.75} />
         </>
       ),
     },

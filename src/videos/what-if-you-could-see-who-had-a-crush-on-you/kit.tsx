@@ -109,6 +109,26 @@ export const FACE = { me: SPOT.face(1, 1), jo: SPOT.face(1, 2), mia: SPOT.face(0
 export const Heart: React.FC<{ over: Vec3; size?: number; t?: number; yaw?: number; tall?: number; fade?: number; steady?: boolean }> = ({ over, size = HEART.mid, t = 9, yaw = 0, tall = TALL.kid, fade = 0, steady = false }) => (
   <Overhead over={over} kind="heart" size={size} t={t} tall={tall} rotationY={yaw * DEG} fade={fade} steady={steady} />
 );
+/**
+ * WHAT SOMEBODY SAYS, the two times the film has to show it: a white bubble with the words, or the signs, in cubes.
+ * `position` is its middle; `yaw` and `lean` (degrees) turn its face to the lens (`lean` tips it down to a lens that
+ * is below it). `tail` is the side the speaker is on: -1 left, 1 right. Its children sit on the paper, in the
+ * bubble's own metres: lettering painted on a surface goes to a blot at this size, cubes do not.
+ */
+export const Says: React.FC<{ position: Vec3; yaw: number; lean?: number; scale?: number; wide: number; high: number; tail?: number; children: React.ReactNode }> = ({ position, yaw, lean = 0, scale = 1, wide, high, tail = -1, children }) => {
+  if (scale <= 0.01) return null;
+  return (
+    <group position={position} rotation={[0, yaw * DEG, 0]}>
+      <group rotation={[lean * DEG, 0, 0]} scale={scale}>
+        <Block size={[wide + 0.09, high + 0.09, 0.03]} color="#15151a" castShadow={false} />
+        <Block position={[0, 0, 0.012]} size={[wide, high, 0.03]} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.45} castShadow={false} />
+        <Block position={[tail * wide * 0.24, -high / 2 - 0.08, 0]} size={[0.15, 0.15, 0.03]} color="#15151a" castShadow={false} />
+        <Block position={[tail * wide * 0.24, -high / 2 - 0.05, 0.012]} size={[0.09, 0.13, 0.03]} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.45} castShadow={false} />
+        <group position={[0, 0, 0.05]}>{children}</group>
+      </group>
+    </group>
+  );
+};
 /** How big a heart is. Jo's, with him at the next desk, is `jo`: nothing else in the school comes near it until the dance. */
 export const HEART = { tiny: 0.13, small: 0.2, mid: 0.34, big: 0.62, jo: 0.95 };
 /**
@@ -123,7 +143,7 @@ export const joHeart = (metres: number): number => {
     [4, 0.42],
     [6, 0.3],
     [10, 0.24],
-    // The dance: from the gym door to the lamp at the gate is 13.6 m, and one step out of the door is 12.4.
+    // The dance: from the gym door to the lamp at the gate is 13.8 m, and one step out of the door is 12.6.
     [12.4, 0.22],
     [13.6, HEART.tiny],
   ];

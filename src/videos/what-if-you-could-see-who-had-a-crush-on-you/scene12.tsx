@@ -39,10 +39,10 @@ export const scene12 = storyScene(timing, {
     {
       cue: "12.shook",
       look: "overworld-night",
-      ...cam.push({ on: GYM.at(0, 1.38, 0), dist: 2.45, to: 2.25, yaw: 50, pitch: 0, fov: 36 }),
+      ...cam.push({ on: GYM.at(0, 1.3, 0), dist: 2.45, to: 2.25, yaw: -50, pitch: 0, fov: 36 }),
       impacts: [{ at: SHOOK, amp: 0.06, dur: 0.4 }],
       zone: "gym",
-      note: "Her face and the heart over it, from his other side and closer: small, still, and on 'shook' it rattles like a thing that has been knocked. Under it her eyes have left the card and gone past him, to the door.",
+      note: "Her face and the heart over it, closer, from the side the door is on: small, still, and on 'shook' it rattles like a thing that has been knocked. Under it her head comes up from the card and round, and her eyes go past him and past the lens, to somebody who has just come in.",
       stage: (t) => {
         const x = t - SHOOK;
         const rattle = x > 0 ? Math.exp(-x * 6) * Math.sin(x * 52) : 0;
@@ -55,7 +55,7 @@ export const scene12 = storyScene(timing, {
             ) : (
               <Mia position={MIA_AT} rotationY={SOUTH} animation="idle" face="smile" headPitch={0.25} gaze={0} />
             )}
-            <Heart over={[MIA_AT[0] + 0.05 * rattle, MIA_AT[1] + 0.025 * Math.abs(rattle), MIA_AT[2]]} size={HEART.small * (1 + 0.3 * Math.abs(rattle))} yaw={50} />
+            <Heart over={[MIA_AT[0] + 0.05 * rattle, MIA_AT[1] + 0.025 * Math.abs(rattle), MIA_AT[2]]} size={HEART.small * (1 + 0.3 * Math.abs(rattle))} yaw={-50} />
           </>
         );
       },

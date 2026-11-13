@@ -1,6 +1,5 @@
 import type React from "react";
 import { cam, storyScene, stride } from "../../engine";
-import type { Vec3 } from "../../engine";
 import { Dad, Dog, DogBowl, HEART, HOME, Heart, Hero, Kitchen, Mom, NORTH, PLACE, Reflection, SOUTH, TALL, Tie, WEST, ease, ramp, timing, wordAt } from "./kit";
 
 const PINK = wordAt("2.mom", "pink");
@@ -15,16 +14,12 @@ const DAD_TO = HOME.at(1.55, 0, -1.8);
 /** The dog waits by the counter, and then does not. The bowl is nearer the lens than he is. */
 const DOG_WAITS = HOME.at(-2.2, 0, -1.55);
 const DOG_EATS = HOME.at(-2.2, 0, -0.3);
-/** At the mirror: the dog sits at his left foot, where the glass can see it and the lens cannot. */
-const DOG_SITS: Vec3 = HOME.at(-2.74, 0, 1.2);
-
-/** The teller at the mirror, and the dog that followed him. Drawn twice: once in the room and once in the glass. */
-const AtTheMirror: React.FC<{ t: number; yaw: number }> = ({ t, yaw }) => (
-  <>
-    <Hero position={HOME.mirror} rotationY={WEST} animation="idle" face={t > NOT ? "uneasy" : "smile"} headPitch={-0.3 * ease(ramp(t, NOT - 0.5, NOT))} headYaw={t > NOT ? Math.sin((t - NOT) * 9) * 0.25 : 0} gaze={0} />
-    <Dog position={DOG_SITS} rotationY={WEST - 0.3} pose="sit" wag={1.6} headPitch={-0.3} headTilt={0.2} />
-    <Heart over={DOG_SITS} tall={TALL.dogSitting} size={HEART.small * 1.5} yaw={yaw} />
-  </>
+/**
+ * The teller at the mirror. Drawn twice: once in the room and once in the glass. Nothing else is: a heart of
+ * anybody's floating in that glass would be a heart beside his head, and the line is that there is none.
+ */
+const AtTheMirror: React.FC<{ t: number }> = ({ t }) => (
+  <Hero position={HOME.mirror} rotationY={WEST} animation="idle" face={t > NOT ? "uneasy" : "smile"} headPitch={-0.3 * ease(ramp(t, NOT - 0.5, NOT))} headYaw={t > NOT ? Math.sin((t - NOT) * 9) * 0.25 : 0} gaze={0} />
 );
 
 /**
@@ -88,15 +83,19 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.mirror",
-      ...cam.push({ on: HOME.at(-3.5, 1.22, 1.78), dist: 2.9, to: 2.5, yaw: 90, pitch: 18, fov: 40 }),
+      from: HOME.at(-1.35, 1.55, 2.3),
+      to: HOME.at(-1.47, 1.55, 2.28),
+      target: HOME.at(-4.4, 1.3, 1.75),
+      fov: 36,
+      ease: "inOutSine",
       zone: "kitchen",
-      note: "Over his head, into the mirror: his face, his dog with its heart, and nothing at all over his own head. He looks up at where it should be, and from side to side. He cannot see his own: the last picture of the film answers this one.",
+      note: "Past his shoulder, into the mirror: his face, as big as the glass will give it, and over it nothing at all. He looks up at where it should be, and from side to side. He cannot see his own: the last picture of the film answers this one.",
       stage: (t) => (
         <>
-          <AtTheMirror t={t} yaw={90} />
+          <AtTheMirror t={t} />
           <Reflection glass={HOME.glass}>
             <Kitchen at={PLACE.kitchen} image />
-            <AtTheMirror t={t} yaw={-90} />
+            <AtTheMirror t={t} />
           </Reflection>
         </>
       ),
