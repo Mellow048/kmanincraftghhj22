@@ -1,0 +1,144 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-everyone-could-sell-their-feelings",
+  "mix": "public/audio/in-this-town-everyone-could-sell-their-feelings/mix.mp3",
+  "seconds": 116.2,
+  "built_from": {
+    "timing.json": "1d0ed01b7dbf917ecaee7c7969de5008e29ccafb",
+    "sound.json": "5bef1df47da627abd38ed5da10dc6d8d37979fb9",
+    "narration.mp3": "69c401441e38af13d0432f9978276445ea920690"
+  },
+  "mix_sha1": "61f789910f9adae4ae5fc3d5d81baed03e9fce09",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "5.ask",
+      "mood": "curious",
+      "at": 38.83
+    },
+    {
+      "from": "7.helmet",
+      "mood": "wonder",
+      "at": 51.6
+    },
+    {
+      "from": "8.stand",
+      "mood": "playful",
+      "at": 61.43
+    },
+    {
+      "from": "9.friend",
+      "mood": "sneak",
+      "at": 69.13
+    },
+    {
+      "from": "10.rush",
+      "mood": "tense",
+      "at": 75.47
+    },
+    {
+      "from": "11.stand",
+      "mood": "drone",
+      "at": 84.07
+    },
+    {
+      "from": "11.cold",
+      "mood": "none",
+      "at": 91.63
+    },
+    {
+      "from": "12.clear",
+      "mood": "dark",
+      "at": 94.2
+    },
+    {
+      "from": "13.known",
+      "mood": "sad",
+      "at": 104.9
+    },
+    {
+      "from": "14.seen",
+      "mood": "dark",
+      "at": 108.57
+    }
+  ],
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 18.4,
+    "secondsWithoutMusic": 3.9,
+    "bedsUnderVoiceDb": 26.5,
+    "sfx": 124,
+    "sfxPerMinute": 64.0,
+    "sfxKinds": 31,
+    "longestGapSeconds": 2.5,
+    "longestGapAt": 91.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.5,
+    "voiceOverRestWorstDb": 3.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.7,
+        "t": 106.3,
+        "cue": "13.known",
+        "sounding": [
+          "bell",
+          "chime"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 68.6,
+        "cue": "8.money",
+        "sounding": [
+          "drop",
+          "register",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 67.9,
+        "cue": "8.money",
+        "sounding": [
+          "coins",
+          "register"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 0.2,
+        "cue": "1.town",
+        "sounding": [
+          "bell",
+          "chime"
+        ]
+      },
+      {
+        "db": 7.8,
+        "t": 12.5,
+        "cue": "3.shop",
+        "sounding": [
+          "tick"
+        ]
+      },
+      {
+        "db": 8.1,
+        "t": 113.0,
+        "cue": "14.waved",
+        "sounding": [
+          "ding",
+          "heartbeat",
+          "pop"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -3.0,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}

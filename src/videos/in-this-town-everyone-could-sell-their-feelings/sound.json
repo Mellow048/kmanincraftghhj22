@@ -1,0 +1,858 @@
+{
+  "film": "in-this-town-everyone-could-sell-their-feelings",
+  "README": "Sound sheet for sell-feelings. 11 music sections, 9 beds, ~140 effects ~80/min. Plant: plink, coins, bottle.",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "Hook, mysteries and tour: bright busy town selling feelings."
+      },
+      {
+        "from": "5.ask",
+        "mood": "curious",
+        "why": "He asks witch; she looks at hands \u2014 held breath, soft steps."
+      },
+      {
+        "from": "7.helmet",
+        "mood": "wonder",
+        "why": "Helmet humming, fear drops yellow \u2014 magic, weightless before price."
+      },
+      {
+        "from": "8.stand",
+        "mood": "playful",
+        "why": "Lemonade stand success but empty \u2014 bouncy but hollow."
+      },
+      {
+        "from": "9.friend",
+        "mood": "sneak",
+        "why": "Night warning by stand \u2014 plucked bass, on tiptoe."
+      },
+      {
+        "from": "10.rush",
+        "mood": "tense",
+        "why": "Rush, cart rolling, both hands pouring \u2014 pulse grows to edge."
+      },
+      {
+        "from": "11.stand",
+        "mood": "drone",
+        "why": "Fear standing at stand \u2014 one low note, air, nothing else."
+      },
+      {
+        "from": "11.cold",
+        "mood": "none",
+        "why": "First time felt cold \u2014 silence 3s, riser into understanding."
+      },
+      {
+        "from": "12.clear",
+        "mood": "dark",
+        "why": "What fear was doing \u2014 low note, heavy step. He left it there."
+      },
+      {
+        "from": "13.known",
+        "mood": "sad",
+        "why": "Town always knew \u2014 slow broken chords, too late."
+      },
+      {
+        "from": "14.seen",
+        "mood": "dark",
+        "why": "Friend pulls cart, both shaking to end \u2014 heartbeat over low note."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "2.price",
+      "bed": "village"
+    },
+    {
+      "from": "3.shop",
+      "to": "3.anger",
+      "bed": "room",
+      "why": "Shop interior helmet"
+    },
+    {
+      "from": "3.calm",
+      "to": "6.decide",
+      "bed": "village"
+    },
+    {
+      "from": "7.helmet",
+      "to": "7.home",
+      "bed": "room"
+    },
+    {
+      "from": "7.laugh",
+      "to": "8.money",
+      "bed": "village"
+    },
+    {
+      "from": "9.friend",
+      "to": "9.sleeves",
+      "bed": "night"
+    },
+    {
+      "from": "10.rush",
+      "to": "12.watching",
+      "bed": "village"
+    },
+    {
+      "from": "12.never",
+      "to": "12.held",
+      "bed": "room"
+    },
+    {
+      "from": "12.greedy2",
+      "to": "14.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "Town bell opens film"
+    },
+    {
+      "cue": "1.town",
+      "sfx": "chime",
+      "trim": -4,
+      "why": "Title fact lands",
+      "word": "town"
+    },
+    {
+      "cue": "1.me",
+      "sfx": "whoosh",
+      "why": "Cut to one too scared"
+    },
+    {
+      "cue": "1.me",
+      "sfx": "blip",
+      "pitch": 0.78,
+      "why": "Fear named first time",
+      "word": "scared"
+    },
+    {
+      "cue": "2.from",
+      "sfx": "whoosh",
+      "why": "Scene2 mysteries"
+    },
+    {
+      "cue": "2.from",
+      "sfx": "swish",
+      "why": "Empty shelves",
+      "word": "went"
+    },
+    {
+      "cue": "2.witch",
+      "sfx": "swish",
+      "why": "Push to witch on porch"
+    },
+    {
+      "cue": "2.witch",
+      "sfx": "tick",
+      "trim": -2,
+      "word": "shop"
+    },
+    {
+      "cue": "2.price",
+      "sfx": "whoosh_low",
+      "why": "Richest man heavier"
+    },
+    {
+      "cue": "2.price",
+      "sfx": "plink",
+      "pitch": 0.55,
+      "trim": -2,
+      "why": "Never smiled small drop",
+      "word": "smiled"
+    },
+    {
+      "cue": "3.shop",
+      "sfx": "whoosh",
+      "why": "Tour starts shop"
+    },
+    {
+      "cue": "3.shop",
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "Helmet hum planted",
+      "word": "humming"
+    },
+    {
+      "cue": "3.shop",
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.14,
+      "pitchStep": 1.07,
+      "why": "Empty glass shelves",
+      "word": "glass",
+      "trim": 4
+    },
+    {
+      "cue": "3.anger",
+      "sfx": "plink",
+      "pitch": 0.9,
+      "why": "Red anger bottle",
+      "word": "anger"
+    },
+    {
+      "cue": "3.anger",
+      "sfx": "plink",
+      "pitch": 1,
+      "trim": 2,
+      "why": "First plink planted returns at 7.plink yellow",
+      "word": "plink"
+    },
+    {
+      "cue": "3.anger",
+      "sfx": "blip",
+      "trim": 1,
+      "word": "never"
+    },
+    {
+      "cue": "3.calm",
+      "sfx": "splash",
+      "trim": -4,
+      "why": "Spilled soup",
+      "word": "soup"
+    },
+    {
+      "cue": "3.calm",
+      "sfx": "chime",
+      "trim": -2,
+      "why": "Wrong calm smile",
+      "word": "smiled"
+    },
+    {
+      "cue": "3.sad",
+      "sfx": "plink",
+      "pitch": 1.15,
+      "why": "Blue sadness",
+      "word": "sadness"
+    },
+    {
+      "cue": "3.sad",
+      "sfx": "sparkle",
+      "why": "Blue fall",
+      "word": "blue"
+    },
+    {
+      "cue": "3.sad",
+      "sfx": "blip",
+      "pitch": 1.1,
+      "trim": 2,
+      "word": "laughed"
+    },
+    {
+      "cue": "3.shy",
+      "sfx": "rustle",
+      "why": "Shy boy sleeves",
+      "word": "shyness"
+    },
+    {
+      "cue": "3.shy",
+      "sfx": "swish",
+      "repeat": 2,
+      "every": 0.3,
+      "trim": -1,
+      "why": "Waved whole square first real wave",
+      "word": "waved"
+    },
+    {
+      "cue": "3.greedy",
+      "sfx": "coins",
+      "trim": 2,
+      "why": "Sold everything",
+      "word": "everything"
+    },
+    {
+      "cue": "3.greedy",
+      "sfx": "coin",
+      "trim": -1,
+      "word": "coins"
+    },
+    {
+      "cue": "3.mimic",
+      "sfx": "tick",
+      "repeat": 2,
+      "every": 0.45,
+      "why": "Beat-late copy",
+      "word": "copied"
+    },
+    {
+      "cue": "3.mimic",
+      "sfx": "blip",
+      "pitch": 0.7,
+      "trim": -1,
+      "why": "A second late",
+      "word": "second"
+    },
+    {
+      "cue": "3.golem",
+      "sfx": "thud",
+      "trim": -4,
+      "why": "Golem places bottle heavy",
+      "word": "bottle"
+    },
+    {
+      "cue": "3.golem",
+      "sfx": "chime",
+      "trim": -5,
+      "why": "His lonely most precious stood taller",
+      "word": "lonely"
+    },
+    {
+      "cue": "3.golem",
+      "sfx": "boing",
+      "trim": -6,
+      "why": "Stood taller",
+      "word": "taller"
+    },
+    {
+      "cue": "4.good",
+      "sfx": "chime",
+      "why": "Good life honestly",
+      "word": "good"
+    },
+    {
+      "cue": "4.dream",
+      "sfx": "swish",
+      "why": "Dream of stand"
+    },
+    {
+      "cue": "4.dream",
+      "sfx": "pop",
+      "why": "Dream pops",
+      "word": "lemonade"
+    },
+    {
+      "cue": "4.dream",
+      "sfx": "tick",
+      "trim": -2,
+      "why": "Froze when looked",
+      "word": "looked"
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "whoosh",
+      "why": "Witch porch scene"
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "blip",
+      "pitch": 0.8,
+      "why": "Fear for sale question",
+      "word": "fear"
+    },
+    {
+      "cue": "5.look",
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.36,
+      "at": 0.15,
+      "why": "Looked at hands long time clock"
+    },
+    {
+      "cue": "5.look",
+      "sfx": "rustle",
+      "trim": -2,
+      "word": "hands"
+    },
+    {
+      "cue": "5.hmm",
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "Fear keeps alive dark note",
+      "word": "fear"
+    },
+    {
+      "cue": "5.hmm",
+      "sfx": "heartbeat",
+      "trim": -4,
+      "why": "Keeps you alive heartbeat planted",
+      "word": "alive"
+    },
+    {
+      "cue": "5.rule",
+      "sfx": "stamp",
+      "trim": -5,
+      "why": "Don't sell one that keeps alive rule stamped",
+      "word": "sell"
+    },
+    {
+      "cue": "6.plant",
+      "sfx": "blip",
+      "why": "What did fear have to do with lemonade he dismisses",
+      "word": "fear"
+    },
+    {
+      "cue": "6.plant",
+      "sfx": "pop",
+      "trim": -2,
+      "word": "lemonade"
+    },
+    {
+      "cue": "6.decide",
+      "sfx": "hit",
+      "trim": -5,
+      "why": "Decided to sell anyway hard cut",
+      "word": "decided"
+    },
+    {
+      "cue": "6.decide",
+      "sfx": "riser",
+      "dur": 0.9,
+      "trim": -6,
+      "why": "Riser into helmet morning"
+    },
+    {
+      "cue": "7.helmet",
+      "sfx": "whoosh",
+      "why": "Helmet morning"
+    },
+    {
+      "cue": "7.helmet",
+      "sfx": "power_up",
+      "trim": -3,
+      "why": "Helmet hum up",
+      "word": "humming"
+    },
+    {
+      "cue": "7.helmet",
+      "sfx": "buzz",
+      "trim": -4,
+      "word": "helmet"
+    },
+    {
+      "cue": "7.plink",
+      "sfx": "plink",
+      "pitch": 1.22,
+      "trim": 3,
+      "why": "Yellow fear plink second time high",
+      "word": "plink"
+    },
+    {
+      "cue": "7.plink",
+      "sfx": "sparkle",
+      "why": "Yellow colour magic",
+      "word": "yellow"
+    },
+    {
+      "cue": "7.plink",
+      "sfx": "blip",
+      "pitch": 0.7,
+      "trim": -2,
+      "why": "Didn't flinch wrong not flinching",
+      "word": "flinch"
+    },
+    {
+      "cue": "7.home",
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.45,
+      "why": "Carried bottle light steps",
+      "word": "carried"
+    },
+    {
+      "cue": "7.home",
+      "sfx": "slide_up",
+      "trim": 0,
+      "why": "Walked home light lift",
+      "word": "light"
+    },
+    {
+      "cue": "7.laugh",
+      "sfx": "blip",
+      "repeat": 2,
+      "every": 0.32,
+      "pitchStep": 1.08,
+      "why": "Square hummed he hummed with them off-beat",
+      "word": "hummed"
+    },
+    {
+      "cue": "8.stand",
+      "sfx": "whoosh",
+      "why": "Stand build"
+    },
+    {
+      "cue": "8.stand",
+      "sfx": "place",
+      "trim": -2,
+      "why": "Built stand",
+      "word": "built"
+    },
+    {
+      "cue": "8.stand",
+      "sfx": "swish",
+      "trim": -4,
+      "why": "Never looked for traffic car swish behind",
+      "word": "traffic"
+    },
+    {
+      "cue": "8.line",
+      "sfx": "blip",
+      "pitch": 1.12,
+      "trim": 2,
+      "why": "Shouted louder",
+      "word": "shouted"
+    },
+    {
+      "cue": "8.line",
+      "sfx": "coins",
+      "trim": -2,
+      "why": "Never counted change right",
+      "word": "change"
+    },
+    {
+      "cue": "8.money",
+      "sfx": "register",
+      "why": "Sold out by noon cha-ching",
+      "word": "sold"
+    },
+    {
+      "cue": "8.money",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "Felt nothing floor out",
+      "word": "nothing"
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "whoosh",
+      "why": "Friend night"
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "blip",
+      "trim": 2,
+      "why": "Best friend soft",
+      "word": "friend"
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "crackle",
+      "why": "Torch night",
+      "word": "night"
+    },
+    {
+      "cue": "9.worry",
+      "sfx": "tick",
+      "why": "You don't look before cross",
+      "word": "look"
+    },
+    {
+      "cue": "9.worry",
+      "sfx": "swish",
+      "trim": -2,
+      "why": "Cross car hint",
+      "word": "cross"
+    },
+    {
+      "cue": "9.sleeves",
+      "sfx": "blip",
+      "pitch": 0.85,
+      "why": "I don't have to dismiss",
+      "word": "have"
+    },
+    {
+      "cue": "10.rush",
+      "sfx": "whoosh",
+      "why": "Rush close"
+    },
+    {
+      "cue": "10.rush",
+      "sfx": "chime",
+      "trim": -4,
+      "why": "Rush came",
+      "word": "rush"
+    },
+    {
+      "cue": "10.rush",
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.28,
+      "why": "Just before close clock",
+      "word": "close"
+    },
+    {
+      "cue": "10.line",
+      "sfx": "cheer",
+      "trim": -6,
+      "why": "Line for lemonade",
+      "word": "line"
+    },
+    {
+      "cue": "10.line",
+      "sfx": "scrape",
+      "dur": 0.6,
+      "trim": -2,
+      "why": "Cart rolling behind scrape entering",
+      "word": "cart"
+    },
+    {
+      "cue": "10.line",
+      "sfx": "drop",
+      "trim": -5,
+      "why": "Felt nothing again",
+      "word": "nothing"
+    },
+    {
+      "cue": "10.hands",
+      "sfx": "splash",
+      "trim": -3,
+      "why": "Pouring both hands",
+      "word": "pouring"
+    },
+    {
+      "cue": "10.hands",
+      "sfx": "rustle",
+      "trim": -2,
+      "word": "hands"
+    },
+    {
+      "cue": "10.lean",
+      "sfx": "whoosh_low",
+      "trim": -3,
+      "why": "Leaned over counter",
+      "word": "leaned"
+    },
+    {
+      "cue": "10.lean",
+      "sfx": "scrape",
+      "dur": 0.45,
+      "trim": -4,
+      "why": "Didn't hear wheels near silent scrape",
+      "word": "wheels"
+    },
+    {
+      "cue": "11.stand",
+      "sfx": "riser",
+      "dur": 1.2,
+      "trim": -2,
+      "why": "Saw fear riser into reveal"
+    },
+    {
+      "cue": "11.stand",
+      "sfx": "pop",
+      "pitch": 1.18,
+      "why": "Fear standing at stand pop",
+      "word": "fear"
+    },
+    {
+      "cue": "11.stand",
+      "sfx": "hit",
+      "trim": -6,
+      "why": "At my stand hit",
+      "word": "stand"
+    },
+    {
+      "cue": "11.yellow",
+      "sfx": "blip",
+      "pitch": 0.9,
+      "why": "Watching road I never watched eyes on road",
+      "word": "watching"
+    },
+    {
+      "cue": "11.yellow",
+      "sfx": "tick",
+      "word": "never"
+    },
+    {
+      "cue": "11.caught",
+      "sfx": "rustle",
+      "trim": -4,
+      "why": "Didn't wave cloth still",
+      "word": "wave"
+    },
+    {
+      "cue": "11.caught",
+      "sfx": "scrape",
+      "dur": 0.35,
+      "trim": -5,
+      "why": "Stared at cart",
+      "word": "cart"
+    },
+    {
+      "cue": "11.caught",
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.16,
+      "why": "Shook tiny tremor",
+      "word": "shook"
+    },
+    {
+      "cue": "11.cold",
+      "sfx": "drop",
+      "trim": -2,
+      "why": "Felt cold floor out",
+      "word": "cold"
+    },
+    {
+      "cue": "11.cold",
+      "sfx": "heartbeat",
+      "trim": -3,
+      "p": 0.8,
+      "why": "Heart starts again"
+    },
+    {
+      "cue": "12.clear",
+      "sfx": "whoosh_low",
+      "dur": 0.8,
+      "why": "Cart cleared corner curtain"
+    },
+    {
+      "cue": "12.clear",
+      "sfx": "blip",
+      "trim": 2,
+      "why": "What fear had been doing answer coming",
+      "word": "doing"
+    },
+    {
+      "cue": "12.watching",
+      "sfx": "blip",
+      "pitch": 0.85,
+      "why": "Watching while poured lookout",
+      "word": "watching"
+    },
+    {
+      "cue": "12.watching",
+      "sfx": "splash",
+      "trim": -5,
+      "why": "While poured pour echo",
+      "word": "poured"
+    },
+    {
+      "cue": "12.never",
+      "sfx": "pop",
+      "pitch": 0.8,
+      "why": "I had left it there not taken",
+      "word": "left"
+    },
+    {
+      "cue": "12.held",
+      "sfx": "buzz",
+      "trim": -6,
+      "why": "Witch holding it still hum hold",
+      "word": "holding"
+    },
+    {
+      "cue": "12.held",
+      "sfx": "tick",
+      "trim": -4,
+      "word": "still"
+    },
+    {
+      "cue": "12.greedy2",
+      "sfx": "swish",
+      "why": "And rich man still staring"
+    },
+    {
+      "cue": "12.greedy2",
+      "sfx": "tick",
+      "trim": -6,
+      "why": "Still staring flat",
+      "word": "staring"
+    },
+    {
+      "cue": "12.greedy2",
+      "sfx": "blip",
+      "pitch": 0.55,
+      "trim": -4,
+      "why": "No one left to copy no echo",
+      "word": "copy"
+    },
+    {
+      "cue": "13.known",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "Town had always known second bell like reference"
+    },
+    {
+      "cue": "13.known",
+      "sfx": "chime",
+      "trim": -5,
+      "why": "Which feeling to keep lesson",
+      "word": "keep"
+    },
+    {
+      "cue": "13.hoped",
+      "sfx": "blip",
+      "pitch": 0.78,
+      "why": "Hoped I would learn before needed",
+      "word": "hoped"
+    },
+    {
+      "cue": "13.hoped",
+      "sfx": "drop",
+      "trim": -4,
+      "why": "Before needed too late",
+      "word": "needed"
+    },
+    {
+      "cue": "14.seen",
+      "sfx": "whoosh_low",
+      "why": "Friend pulls cart heavy"
+    },
+    {
+      "cue": "14.seen",
+      "sfx": "scrape",
+      "dur": 0.7,
+      "trim": -2,
+      "why": "Pulled cart",
+      "word": "pulled"
+    },
+    {
+      "cue": "14.seen",
+      "sfx": "hit",
+      "trim": -3,
+      "why": "Stopped inch from stand halt",
+      "word": "inch"
+    },
+    {
+      "cue": "14.seen",
+      "sfx": "thud",
+      "trim": -1,
+      "why": "Inch from stand thud locked",
+      "word": "stand"
+    },
+    {
+      "cue": "14.waved",
+      "sfx": "heartbeat",
+      "trim": -2,
+      "why": "She shaking heart",
+      "word": "shaking"
+    },
+    {
+      "cue": "14.waved",
+      "sfx": "heartbeat",
+      "repeat": 3,
+      "every": 0.52,
+      "trim": -1,
+      "why": "Finally shaking with her shared heartbeat",
+      "word": "finally"
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "pop",
+      "why": "Red sign pop"
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "ding",
+      "trim": -2,
+      "why": "Subscribe line clean bell",
+      "word": "subscribe"
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "heartbeat",
+      "trim": -2,
+      "why": "Keeps you alive last heartbeat planted at 5.hmm",
+      "word": "alive"
+    }
+  ]
+}
