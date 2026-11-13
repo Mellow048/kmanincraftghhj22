@@ -105,19 +105,19 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "18.you",
-      ...cam.push({ on: [-5.75, 1.5, 2.5], dist: 5.3, to: 4.6, yaw: 12, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [-5.75, 1.5, 2.5], dist: 5.3, to: 4.6, yaw: 32, pitch: 3, fov: 42 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "The two men face to face, side on. The big one points at Mo: he is not talking to a zombie, he is talking to somebody he used to know. Mo does not move.",
       impacts: [{ at: 0.2, amp: 0.05, dur: 0.3 }],
       stage: (t) => (
         <>
-          <Fill on={manFace([BIG[0] - 0.5, 0, BIG[2]])} yaw={12} power={8} />
-          <Fill on={manFace(MO_CATCH)} yaw={12} power={7} />
+          <Fill on={manFace([BIG[0] - 0.5, 0, BIG[2]])} yaw={32} power={8} />
+          <Fill on={manFace(MO_CATCH)} yaw={32} power={7} />
           <Raider who={0} position={[BIG[0] - 0.5, 0, BIG[2]]} rotationY={E} animation="idle" arms={t > 0.1 ? "point" : undefined} sword={false} face="angry" headPitch={jolt(t, 0.15, 0.3)} />
           <Mo position={MO_CATCH} rotationY={W} animation="idle" scarf={0} wiped={1} face="neutral" saccade={false} gaze={0} />
           <Hero position={[STAND[0] + 0.2, 0, STAND[2] + 0.1]} rotationY={W + 0.4} animation="idle" face="wow" lookAt={manFace(MO_CATCH)} />
-          <Bubble text="YOU." position={[BIG[0] - 0.35, 2.62, BIG[2] + 0.2]} rotationY={0.2} scale={0.5 * pop(t, 0.08)} tail={-1} />
+          <Bubble text="YOU." position={[BIG[0] - 0.35, 2.62, BIG[2] + 0.2]} rotationY={0.55} scale={0.5 * pop(t, 0.08)} tail={-1} dark />
         </>
       ),
     },

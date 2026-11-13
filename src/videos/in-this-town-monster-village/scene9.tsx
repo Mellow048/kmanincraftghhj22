@@ -94,7 +94,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "19.bus",
-      ...cam.push({ on: [-8.0, 1.35, 2.2], dist: 7.8, to: 7.2, yaw: 0, pitch: 9, fov: 44 }),
+      ...cam.push({ on: [-9.5, 1.35, 2.2], dist: 7.8, to: 7.2, yaw: 0, pitch: 9, fov: 44 }),
       zone: ZONE.night,
       look: NIGHT,
       shake: 0.03,
@@ -107,16 +107,16 @@ export const scene9 = storyScene(timing, {
       ],
       stage: (t) => {
         const D = dur("19.bus");
-        const bx = -3.6 - 10.5 * (t / D);
-        const pins = [-6.8, -7.6, -8.4, -9.2];
+        const bx = -5.1 - 10.5 * (t / D);
+        const pins = [-8.3, -9.1, -9.9, -10.7];
         return (
           <>
-            <pointLight position={[-8, 3.4, 5.6]} color="#cdd6ff" intensity={36} distance={12} decay={2} />
-            <group position={[bx, 0.95 + Math.abs(Math.sin(t * 11)) * 0.12, 2.2]} rotation={[0, 0, (-3.6 - bx) / 0.95]}>
+            <pointLight position={[-9.5, 3.4, 5.6]} color="#cdd6ff" intensity={36} distance={12} decay={2} />
+            <group position={[bx, 0.95 + Math.abs(Math.sin(t * 11)) * 0.12, 2.2]} rotation={[0, 0, (-5.1 - bx) / 0.95]}>
               <Bus position={[0, -0.95, 0]} rotationY={W} mood="angry" />
             </group>
             {pins.map((px, i) => {
-              const at = (D * (-(px + 0.95) - 3.6)) / 10.5;
+              const at = (D * (-(px + 0.95) - 5.1)) / 10.5;
               const x = t - at;
               if (x <= 0) return <Raider key={i} who={i + 1} position={[px, 0, 2.2 + (i % 2 ? 0.25 : -0.25)]} rotationY={E} animation="idle" arms={i % 2 ? undefined : "point"} face={t > at - 0.35 ? "fear" : "angry"} headYaw={t > at - 0.35 ? 0 : 1.2} />;
               const air = Math.min(x, 1.1);
@@ -139,7 +139,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "19.hiss",
-      ...cam.push({ on: [-5.5, 1.3, 3.5], dist: 5.5, to: 4.9, yaw: 10, pitch: 5, fov: 42 }),
+      ...cam.push({ on: [-5.5, 1.3, 3.5], dist: 5.5, to: 4.9, yaw: 38, pitch: 5, fov: 42 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "Hiss, and two players with swords up. He says one word in a bubble, and takes one happy hop at them. Both swords are in the air and both players are gone before he lands.",
@@ -149,9 +149,9 @@ export const scene9 = storyScene(timing, {
         const fuse = t > hug ? 0.35 + 0.25 * Math.sin((t - hug) * 26) : 0;
         return (
           <>
-            <Fill on={[-5.5, 1.5, 3.5]} yaw={10} power={10} d={2.8} />
-            <Hiss position={[-4.75 - 0.5 * ease(ramp(t, hug, hug + 0.3)), hop(t, hug, 0.35, 0.3), 3.5]} rotationY={W + 0.35} fuse={fuse} mood="happy" scale={1 + 0.06 * fuse} />
-            <Bubble text="HUG?" position={[-4.9, 2.3, 3.7]} rotationY={0.17} scale={0.5 * pop(t, hug - 0.08)} tail={1} />
+            <Fill on={[-5.5, 1.5, 3.5]} yaw={38} power={10} d={2.8} />
+            <Hiss position={[-4.75 - 0.5 * ease(ramp(t, hug, hug + 0.3)), hop(t, hug, 0.35, 0.3), 3.5]} rotationY={W + 0.95} fuse={fuse} mood="happy" scale={1 + 0.06 * fuse} />
+            <Bubble text="HUG?" position={[-4.9, 2.3, 3.7]} rotationY={0.66} scale={0.5 * pop(t, hug - 0.08)} tail={1} dark />
             {[0, 1].map((i) => {
               const z = 3.0 + i * 1.0;
               const x = -6.25 + i * 0.15;
@@ -190,23 +190,23 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "20.gather",
-      ...cam.truck({ on: [-1, 1.4, 2.2], dist: 6.6, yaw: 0, pitch: 7, fov: 44, by: [16, 0, 0] }),
+      ...cam.truck({ on: [-3.5, 1.4, 2.2], dist: 6.6, yaw: 0, pitch: 7, fov: 44, by: [16, 0, 0] }),
       ease: "linear",
       zone: ZONE.night,
       look: NIGHT,
       note: "One fast move along the street, east. The first of the village is already out; then the camera passes three lots coming the other way, each as it is named: the zombies, the skeletons, and the kids from school, two small creepers among them. An enderman at the back of each lot.",
       stage: (t, { p }) => {
         const D = dur("20.gather");
-        const at = (word: string) => -1 + (16 * (wordAt("20.gather", word) + 0.3)) / D;
+        const at = (word: string) => -3.5 + (16 * (wordAt("20.gather", word) + 0.3)) / D;
         const zx = at("zombie");
         const sx = at("skeleton");
         const kx = at("kid");
         const step = 0.9 * p;
         return (
           <>
-            <pointLight position={[-1 + 16 * p, 3.2, 6]} color="#cdd6ff" intensity={46} distance={13} decay={2} />
+            <pointLight position={[-3.5 + 16 * p, 3.2, 6]} color="#cdd6ff" intensity={46} distance={13} decay={2} />
             {/* "The whole village came out": the first of them, already in the street. */}
-            <Crowd who={[["skeleton", -0.9, 1.7], ["creeper", -0.1, 3.2], ["zombie", 0.6, 1.9], ["slime", 1.3, 3.5, 1], ["enderman", 0.2, 0.4], ["spider", 1.5, 0.9, 0.8]]} dx={0.4 - step} face={W} walk={step} n0={3} />
+            <Crowd who={[["skeleton", -0.9, 1.7], ["creeper", -0.1, 3.2], ["zombie", 0.6, 1.9], ["slime", 1.3, 3.5, 1], ["enderman", 0.2, 0.4], ["spider", 1.5, 0.9, 0.8]]} dx={-2.1 - step} face={W} walk={step} n0={3} />
             <Crowd who={[["zombie", -0.95, 1.4], ["zombie", -0.25, 3.1], ["zombie", 0.45, 1.8], ["zombie", 1.0, 3.4], ["enderman", 0.1, 0.3]]} dx={zx - step} face={W} walk={step} n0={0} />
             <Crowd who={[["skeleton", -0.8, 1.6], ["skeleton", 0.0, 3.2], ["skeleton", 0.8, 2.1], ["skeleton", -0.2, 0.5], ["spider", 0.9, 0.2, 0.8]]} dx={sx - step} face={W} walk={step} n0={1} />
             <Crowd
@@ -301,7 +301,7 @@ export const scene9 = storyScene(timing, {
           <>
             <Fill on={F} yaw={-40} power={9} d={2} />
             <Mum position={MUM_AT} rotationY={W + 0.25} mood="happy" arms={0.25} tilt={0.12 + jolt(t, wordAt("20.knew", "knew"), 0.4)} lean={0.08} lookAt={[-5.6, 1.6, 4.3]} />
-            <group position={[F[0] - 0.05, F[1] + 0.62, F[2] + 0.3]} scale={1.5 * pop(t, bread - 0.05)} rotation={[0.3, -0.5, 0.2 + jolt(t, bread, 0.6)]}>
+            <group position={[F[0] - 0.42, F[1] + 0.4, F[2] + 0.3]} scale={1.3 * pop(t, bread - 0.05)} rotation={[0.3, -0.5, 0.2 + jolt(t, bread, 0.6)]}>
               <Bread />
             </group>
             <Crowd who={[["skeleton", -2.1, 1.5], ["zombie", -1.5, 0.5], ["creeper", -2.6, 0.4, 0.9], ["enderman", -0.9, 1.2]]} look={[-5.6, 1.4 + 0.5 * Math.sin(t * 7), 4.3]} mood="happy" n0={1} />

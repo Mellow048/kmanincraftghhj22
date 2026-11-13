@@ -97,7 +97,7 @@ export const handOf = (p: Vec3, rotY: number, a: number, scale = 1): Vec3 => {
 
 type A = Partial<MinecraftAvatarProps>;
 const SKIN = "#dba47c";
-const IRON = "#d3dae2";
+const IRON = "#a9b3c0";
 
 /** The teller: a boy in YELLOW. Faces for a kid: smile grin laugh frown uneasy brave fear wow ouch calm. */
 export const Hero: React.FC<A> = (p) => (
@@ -120,7 +120,7 @@ export const Mo: React.FC<A & { scarf?: number; wiped?: number; hat?: boolean; s
     outfit="tee"
     skin={MONSTER.zombieSkin}
     hair="#4c7f3e"
-    colors={{ torso: chest ? IRON : MONSTER.zombieShirt, arms: chest ? "#b9c1cb" : MONSTER.zombieShirt, legs: MONSTER.zombieLegs }}
+    colors={{ torso: chest ? IRON : MONSTER.zombieShirt, arms: chest ? "#8f99a8" : MONSTER.zombieShirt, legs: MONSTER.zombieLegs }}
     blink
     phase={2.3}
     head={

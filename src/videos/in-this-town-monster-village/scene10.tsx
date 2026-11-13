@@ -93,7 +93,7 @@ export const scene10 = storyScene(timing, {
             <Fill on={MO_FACE} yaw={30} power={8} d={2.2} />
             <pointLight position={[-7.6, 2.2, 3.4]} color="#ff9040" intensity={16 * flick} distance={8} decay={2} />
             <Mo position={MID} rotationY={0.95} animation="idle" arms="point" scarf={0} wiped={1} face="brave" headYaw={-0.9 + 1.2 * ease(ramp(t, run + 0.5, go))} saccade={false} gaze={0} />
-            <Bubble text="RUN!" position={[-4.25, 2.62, 2.7]} rotationY={0.5} scale={0.5 * pop(t, run - 0.05) * (1 - ease(ramp(t, run + 1.1, run + 1.3)))} tail={-1} />
+            <Bubble text="RUN!" position={[-4.25, 2.62, 2.7]} rotationY={0.5} dark scale={0.5 * pop(t, run - 0.05) * (1 - ease(ramp(t, run + 1.1, run + 1.3)))} tail={-1} />
             <Hero position={[-3.45 + d * 0.9, 0, 3.2]} rotationY={k > 0.1 ? E : W + 0.6} animation={k > 0.1 ? "run" : "idle"} animDistance={d} face="fear" lookAt={k > 0.1 ? undefined : MO_FACE} />
             <Mum position={[-5.7 + d, 0, 1.5]} rotationY={face} walk={d} mood="scared" lookAt={k > 0 ? undefined : MO_FACE} />
             <Dad position={[-5.0 + d, 0, 0.7]} rotationY={face} walk={d} mood="scared" rattle={k > 0 ? 0.6 : 0} lookAt={k > 0 ? undefined : MO_FACE} />
@@ -189,7 +189,7 @@ export const scene10 = storyScene(timing, {
     },
     {
       cue: "22.armor",
-      ...cam.push({ on: [-4.45, 1.42, 2.4], dist: 4.0, to: 3.2, yaw: -66, pitch: -6, fov: 40 }),
+      ...cam.push({ on: [-4.5, 1.45, 2.4], dist: 4.2, to: 3.4, yaw: -38, pitch: -5, fov: 40 }),
       zone: ZONE.night,
       look: NIGHT,
       note: "From in front of him and low. On 'helmet' the straw hat goes off backwards and an iron helmet is on his head. On 'chestplate' his chest is iron. On 'sword' his arm comes up with one in it, pointed at the hill. Firelight on all of it.",
@@ -206,7 +206,7 @@ export const scene10 = storyScene(timing, {
         const flick = 0.8 + 0.2 * Math.sin(t * 17);
         return (
           <>
-            <Fill on={MO_FACE} yaw={-66} power={8} d={2.2} />
+            <Fill on={MO_FACE} yaw={-38} power={8} d={2.2} />
             <pointLight position={[-7.4, 1.9, 1.4]} color="#ff9040" intensity={18 * flick} distance={8} decay={2} />
             <Mo position={MID} rotationY={W} animation="idle" arms={t > s ? "point" : undefined} hat={t < h} helmet={t >= h ? pop(t, h, 0.2) : 0} chest={t >= c} scarf={0} wiped={1} face={t > s ? "brave" : "neutral"} headPitch={jolt(t, h, 0.3) + jolt(t, c, 0.15)} saccade={false} gaze={0}>
               {t > s ? <Sword /> : null}
