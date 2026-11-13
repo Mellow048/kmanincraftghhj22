@@ -16,7 +16,7 @@ scenes=[
 ('2.curtains','kitchen',"({from:[-.65,2.08,1.25],to:[-.40,2.0,1.1],target:[1.85,1.5,-2.07],targetTo:[1.88,1.5,-2.07],fov:50,ease:'inOutSine' as const})","Keep sleeves, cord, rail and cloth in frame. She reaches, catches the cord, pulls decisively on closed, then releases as the top-hung panels settle and the window light dims.")]),
 ('A seat, a loaf, one black ear','SchoolDay',[
 ('3.school','kitchen',"push([-.2,1.15,-.3],4.8,4.4,10,6,48)","Breakfast first: the teenager leaves the table for the door, showing where the school-day transition begins."),
-('3.class','class',"({from:[3.6,3.15,-3.7],to:[3.3,2.95,-3.4],target:[-.2,1.0,1.15],fov:57,ease:'inOutSine' as const})","From the board-side aisle, look across the faces and rows: villagers and player children share the same furnished classroom; nobody blocks both leads."),
+('3.class','class',"({from:[4.15,3.10,2.9],to:[3.9,2.9,2.65],target:[-.3,1.15,-.7],targetTo:[-.35,1.15,-1.5],fov:57,ease:'linear' as const})","Look diagonally toward the board with the mixed class below it. Keep the teacher and the raised chalk in frame through the backward wind-up, fast release and travel to the desk. No throw behind the camera."),
 ('3.seat','class',"({from:[-3.9,2.4,.25],to:[-3.6,2.24,.3],target:[-1.2,1.3,1.25],fov:52,ease:'inOutSine' as const})","Stack the two adjoining desks in depth. His green-robed friend turns toward the seat he has saved."),
 ('3.lunch','lunch',"push([.02,1.04,-.02],4.1,3.85,-90,22,49)","His sleeve pushes a share of the bread across the wood; the red-shirted boy leans forward to receive it. The other share stays on the friend's side."),
 ('3.rabbit','street',"push([1.25,.8,1.2],3.7,3.3,40,13,46)","The two friends bend to the neighbor's rabbit. See the carrot leave the boy's hand and reach the ground."),
@@ -29,7 +29,7 @@ scenes=[
 ('Touch it, then get out of its way','TouchDemo',[
 ('5.touch','kitchen',"push([.25,1.12,.65],4.0,3.65,15,8,46)","He reaches, takes the hovering book and shifts it while his hand remains in contact. The untouched mother and room remain frozen."),
 ('5.release','kitchen',"push([.25,.98,-.02],2.4,2.15,125,20,44)","The fingers withdraw and the book waits in the air above the table. A deliberate silent hold completes all five seconds; then it drops the final few centimeters."),
-('5.chalk','class',"push([1.2,1.45,.7],2.45,2.15,165,5,42)","The teacher's throwing arm winds back; the chalk travels the classroom at speed and stops at the boy's nose."),
+('5.chalk','class',"({from:[3.65,2.75,2.7],to:[2.95,2.4,2.2],target:[.3,1.12,-.7],targetTo:[.9,1.34,.1],fov:56,ease:'linear' as const})","Keep both ends of the throw in the same diagonal view: chalk in the raised hand, release and fast flight before the five-second stop. Move closer only after the launch is visible."),
 ('5.proud','class',"push([1.2,1.46,.9],1.8,1.6,170,3,36)","Proud eyes right over the frozen chalk. He never steps away: the mistake is visible before the punchline."),
 ('5.bonk','class',"push([1.2,1.46,.78],2.2,1.95,165,4,40)","Hold the same spatial relationship through the exact fifth second. Chalk taps his nose, powder scatters, his head recoils.")]),
 ('Who was she hiding me from?','MotherStory',[
@@ -101,26 +101,26 @@ scenes=[
 ('16.side','street',"push(add(MAN_FREEZE,[.6,1,0.6]),5.4,5,25,10,50)","Keep the frozen man and old projectile lane in frame while the hero takes the entire sidestep out of it.")]),
 ('The empty space, and the rabbit','ChaseAction',[
 ('17.resume','street',"push(add(HERO_FREEZE,[1.25,.95,.45]),5.8,5.3,25,14,50)","Exactly 150 frozen frames finish. Ice, breath and background dust resume together; the boy is already clear of the old lane."),
-('17.ice','street',"push(add(HERO_FREEZE,[-.3,.6,0]),3.6,3.1,15,20,47)","Ice smashes into the space the red shirt occupied, leaving visible shards. The runner brakes and looks back, giving his next step a readable wind-up."),
+('17.ice','street',"cam.push({on:add(HERO_FREEZE,[-.2,.35,0]),onTo:add(ROCK_END,[-.4,.65,0]),dist:5.1,to:4.8,yaw:28,pitch:18,fov:53})","Move from the scattering ice to the man's checking step in one view. The shot does not sit on empty ground after the shards have settled."),
 ('17.hit','street',"push(add(ROCK_END,[0,.20,0]),2.1,1.85,25,20,46)","Foot, rock, contact: the next planted toe catches the placed rock. No face injury and no unexplained fall."),
-('17.fall','street',"push(add(MAN_FREEZE,[1.3,.72,.1]),4.25,3.75,121,23,52)","One continuous stumble, full turning recovery attempt, then the supported back landing. The rabbit never leaves his arm."),
-('17.rabbit','street',"push(add(MAN_FREEZE,[1.25,.82,.65]),3.65,3.4,50,19,48)","The hero walks the last step, bends and lifts the rabbit from the supporting palm into both hands. Follow the entire transfer; then he takes a real step back so the injured man has space to rise."),
+('17.fall','street',"follow(id,t=>add(v(manMotion(t).position,counterHero(t).position,.2),[0,.80,0]),5.35,130,22,52)","The caught foot pitches his weight forward through two failed recovery steps. He twists half around to shield the rabbit, drops under gravity, lands shoulder/back first and skids; no upright full-circle pirouette."),
+('17.rabbit','street',"follow(id,t=>add(v(counterHero(t).position,rabbitAt(t),.55),[0,.6,0]),3.7,35,23,49)","The hero walks the last step, bends and lifts the rabbit from the supporting palm into both hands. Follow the entire transfer; then he takes a real step back so the injured man has space to rise."),
 ('17.breathe','street',"follow(id,t=>add(rescuedRabbit(t),[0,.35,0]),1.8,100,8,40)","Its black ear and twitching nose fill the frame. Alive, supported, no ice over the face.")]),
 ('The prince of our village','ChaseAction',[
 ('18.look','street',"follow(id,t=>add(manMotion(t).position,[0,.80,0]),4.3,32,24,52)","The man rubs his head, then raises his body from his back onto one knee. Keep the whole recovery in view before the recognition close-up."),
 ('18.home','street',"push([-5,1.47,-1.82],2.7,2.35,65,4,41)","Mother is still in their own warm doorway, watching down the same road. Her reaction pays off the curtains and lock."),
-('18.power','street',"follow(id,t=>add(manMotion(t).position,[0,1.1,0]),2.45,18,4,39)","Now kneeling toward the boy, the beard is clear as he recognizes a time-stop ability. No new magic is added."),
-('18.found','street',"follow(id,t=>add(counterHero(t).position,[0,1.46,0]),2.05,100,4,39)","The child's eyes register that he has been sought, with the rescued rabbit still in his hands."),
-('18.prince','street',"follow(id,t=>add(counterHero(t).position,[0,1.37,.08]),2.25,100,4,40)","The prince line lands on the boy's stunned face. Hold the small reaction, then hard black; no subscribe sign, sequel promise or added spoken line.")]),
+('18.power','street',"follow(id,t=>add(manMotion(t).position,[0,1.1,0]),2.45,55,4,39)","Now kneeling toward the boy, the beard is clear as he recognizes a time-stop ability. No new magic is added."),
+('18.found','street',"follow(id,t=>add(counterHero(t).position,[0,1.46,0]),2.05,-145,4,39)","The child's eyes register that he has been sought, with the rescued rabbit still in his hands."),
+('18.prince','street',"follow(id,t=>add(counterHero(t).position,[0,1.37,.08]),2.25,-145,4,40)","The prince line lands on the boy's stunned face. Hold the small reaction, then hard black; no subscribe sign, sequel promise or added spoken line.")]),
 ]
-imports='''import { cam, storyScene } from "../../engine";
-import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT } from "./kit";
+imports='''import { cam, around, storyScene } from "../../engine";
+import { timing, cue, at, STOP, add, v, phase, smooth, route, lockerMotion, rescueMotion, rescueArrow, counterHero, manMotion, MAN_FREEZE, HERO_FREEZE, ROCK_END, ROCK_START, FIRST_WALL, FIRST_FIRE, FIRST_IMPACT, LAND } from "./kit";
 import { follow, push } from "./camera";
 import { Intro, SchoolDay, Lunch, ChalkLesson, LockerAction } from "./school-actions";
 import { MotherStory, GlassDiscovery, TouchDemo, FeedRabbit, MotherChecks } from "./home-actions";
 import { RescueAction } from "./rescue-action";
 import { ChaseAction, carriedRabbit, rescuedRabbit } from "./chase-action";
-import { homeHero, iceAt } from "./chase-motion";
+import { homeHero, iceAt, rabbitAt } from "./chase-motion";
 '''
 def args_of(call):
     inner=call[call.index('(')+1:-1]; out=[];level=0;start=0
@@ -156,9 +156,12 @@ for n,(title,default,shots) in enumerate(scenes,1):
         if ident in ('12.thanks','12.rabbit'):prop+=' thanks'
         import json
         look='overworld-night' if n>=10 else 'overworld-day'
+        energy=''
+        if ident in ('14.run','14.follow','14.secret','15.blocks'):energy='handheld:.009, '
+        if ident=='17.fall':energy="impacts:[{at:LAND-cue(id).start,amp:.055,dur:.20}], "
         item=f'''  (()=>{{const id={json.dumps(ident)};return {{cue:{json.dumps(ident)},zone:{json.dumps(zone)},look:{json.dumps(look)} as const,
     ...{explicit_camera(camera)},
-    note:{json.dumps(note)},
+    {energy}note:{json.dumps(note)},
     stage:(local:number)=><{stage} t={{Math.round((cue(id).start+local)*30)/30}}{prop}/>,
   }};}})(),'''
         items.append(item)

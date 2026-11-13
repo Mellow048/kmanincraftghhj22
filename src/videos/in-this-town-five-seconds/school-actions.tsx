@@ -4,14 +4,12 @@ import type { Pose, Vec3 } from "../../engine";
 import { Hero, Friend, Villager, Classmate, Teacher, WorldClock, StopHalo, Bread, Book, Chalk, CLASS_HERO, CLASS_FRIEND, TABLE_HERO, TABLE_FRIEND, ROBE, TEEN, STOP, at, cue, worldTime, phase, smooth, mix, turn, v, add, route, lockerMotion, LOCKER, aimHand, handWorld, stoop, poseMix, punch, recoil, HingedBook, BlockBurst } from "./kit";
 
 import { neutral, blend, planted, locomotion, accent, bounce } from './performance';
-import { lockerState, bullyState, chalkState, teacherThrow, CHALK_FIRE, CHALK_HIT, TEACHER_ROOT } from './school-motion';
+import { lockerState, bullyState, chalkState, classChalkState, teacherThrow, CHALK_FIRE, CHALK_HIT, CLASS_CHALK_FIRE, CLASS_CHALK_LAND, TEACHER_ROOT } from './school-motion';
+import { CLASSROOM_EXTRAS } from './school-layout';
 import { lunchMotion, LUNCH_HERO, LUNCH_FRIEND, LUNCH_BOOK, BOOK_TOUCH, BOOK_END } from "./domestic-motion";
 
 export const SchoolCrowd:React.FC<{t:number;teacher?:boolean}>=({t,teacher=true})=><WorldClock t={t}>
- {[-2.4,0,2.4].flatMap((x,col)=>[-.4,1.25,2.9].map((z,row)=>{
-   if(row===1&&col<2)return null;
-   return (col+row)%2?<Villager key={`${col}${row}`} position={[x,-.09,z]} scale={.86} robe={[ROBE.blue,ROBE.brown,ROBE.farmer][row]} sit rotationY={Math.PI} phase={col+row}/>:<Classmate key={`${col}${row}`} who={col+row*3} scale={.88} position={[x,-.02,z]} rotationY={Math.PI} animation="sit"/>;
- }))}
+ {CLASSROOM_EXTRAS.map(({col,row,who,villager,position})=>villager?<Villager key={`${col}${row}`} position={position} scale={.86} robe={[ROBE.blue,ROBE.brown,ROBE.farmer][row]} sit rotationY={Math.PI} phase={col+row}/>:<Classmate key={`${col}${row}`} who={who} scale={.88} position={position} rotationY={Math.PI} animation="sit"/>)}
  {teacher?<Teacher position={[-.6,0,-2.9]} animation="talk" face="calm"/>:null}
 </WorldClock>;
 export const Intro:React.FC<{t:number}>=({t})=>{
@@ -20,14 +18,13 @@ export const Intro:React.FC<{t:number}>=({t})=>{
  pose.head=[.04,-.24,.03];
  const hover=t<STOP.teaser.b?0:t-STOP.teaser.b;
  return <>
-  <SchoolCrowd t={t}/><WorldClock t={t}><Friend position={CLASS_FRIEND} sit rotationY={Math.PI}/><Book position={[.28,1.27-4.9*hover*hover,1.65]} rotationY={.4}/><Chalk position={[1.25,1.65,.4-hover*5]} angle={.5}/><Classmate who={3} position={[2.4,0,2.9]} animation="laugh" rotationY={Math.PI}/></WorldClock>
+  <SchoolCrowd t={t}/><WorldClock t={t}><Friend position={CLASS_FRIEND} sit rotationY={Math.PI}/><Book position={[.28,1.27-4.9*hover*hover,1.65]} rotationY={.4}/><Chalk position={[1.25,1.65,.4-hover*5]} angle={.5}/></WorldClock>
   <Hero position={h.position} rotationY={t<2.7?0:turn(0,-.7,smooth(phase(t,2.7,3.0)))} poseOverride={pose} time={t} breath={0} weightShift={0} face="brave"/>
   <StopHalo t={t} position={[1.1,0,.8]} radius={1.5}/>
  </>;
 };
 export const SchoolDay:React.FC<{t:number;id:string}>=({t,id})=>{
- const answer=id==='9.help',fire=at('3.class','chalk')-.13;
- const tp=teacherThrow(t,fire),from=handWorld(TEACHER_ROOT,0,1,teacherThrow(fire));
+ const answer=id==='9.help',chalk=classChalkState(t),tp=chalk.teacher;
  const call=accent(t,at('9.help','called')-.12,at('9.help','called')+.12,at('9.help','answer')-.25,at('9.help','answer'));
  const hand=smooth(phase(t,at('9.help','answer')-.4,at('9.help','answer')+.03));
  const sit={...getPose('sit',0),bodyY:-.125,bodyPitch:0,bodyRoll:0,bodyYaw:0,head:[.03,id==='3.seat'?.55:-.15,.03] as Vec3};
@@ -36,8 +33,8 @@ export const SchoolDay:React.FC<{t:number;id:string}>=({t,id})=>{
  <SchoolCrowd t={t} teacher={false}/>
  <WorldClock t={t}>
   <Friend position={CLASS_FRIEND} sit rotationY={Math.PI} turn={id==='3.seat'?-.7:answer?-.6:0} hmm={id==='3.seat'?.22:0} lean={id==='3.seat'?.09*accent(t,cue(id).start,cue(id).start+.25,cue(id).end-.3,cue(id).end):0}/>
-  <Teacher position={TEACHER_ROOT} poseOverride={id==='3.class'?tp:{...neutral(),armR:[-1.3*call-.1,0,.15]}} breath={0} weightShift={0} face="calm"/>
-  {id==='3.class'&&t<fire+.27?<Chalk position={t<fire?handWorld(TEACHER_ROOT,0,1,tp):v(from,[1.8,1.2,-.2],phase(t,fire,fire+.27))} angle={t<fire?.4:(t-fire)*13}/>:null}
+  <Teacher position={TEACHER_ROOT} rotationY={id==='3.class'?chalk.yaw:0} poseOverride={id==='3.class'?tp:{...neutral(),armR:[-1.3*call-.1,0,.15]}} breath={0} weightShift={0} face="calm"/>
+  {!answer?<Chalk position={chalk.position} angle={t<CLASS_CHALK_FIRE?.4:(Math.min(t,CLASS_CHALK_LAND)-CLASS_CHALK_FIRE)*13}/>:null}
  </WorldClock>
  <Hero position={CLASS_HERO} rotationY={Math.PI} animation="sit" poseOverride={sit} time={t} breath={0} weightShift={0} face={answer?'smile':'calm'}/>
  </>;
@@ -68,7 +65,7 @@ export const Lunch:React.FC<{t:number;id:string}>=({t,id})=>{
 export const ChalkLesson:React.FC<{t:number}>=({t})=>{
  const q=chalkState(t),p:Vec3=[1.2,0,.9];
  return <>
- <SchoolCrowd t={t} teacher={false}/><WorldClock t={t}><Friend position={CLASS_FRIEND} sit rotationY={Math.PI}/><Teacher position={TEACHER_ROOT} poseOverride={q.teacher} time={worldTime(t)} breath={0} weightShift={0}/></WorldClock>
+ <SchoolCrowd t={t} teacher={false}/><WorldClock t={t}><Friend position={CLASS_FRIEND} sit rotationY={Math.PI}/><Teacher position={TEACHER_ROOT} rotationY={q.yaw} poseOverride={q.teacher} time={worldTime(t)} breath={0} weightShift={0}/></WorldClock>
  <Hero position={p} rotationY={Math.PI} time={t} poseOverride={q.pose} breath={0} weightShift={0} face={q.hit?'ouch':t<STOP.chalk.a?'wow':'grin'} gaze={0} saccade={false}/>
  {!q.hit?<Chalk position={q.position} angle={t<STOP.chalk.a?(t-CHALK_FIRE)*11:(STOP.chalk.a-CHALK_FIRE)*11}/>:null}
  <BlockBurst position={[1.2,1.46,.70]} age={t-CHALK_HIT} color="#ede7d4" power={.6} size={.025} life={.48} count={9}/>

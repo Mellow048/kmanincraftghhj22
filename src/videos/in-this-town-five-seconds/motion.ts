@@ -81,31 +81,44 @@ export const RABBIT_START:Vec3=[1.78,0,1.66];
 export const RUN_START=at('14.run','ran')-.2;
 export const HERO_RUN=at('14.follow','chased')-.6;
 export const MAN_RUN_ORIGIN:Vec3=[2.1,0,1.2];
-export const MAN_FREEZE:Vec3=[MAN_RUN_ORIGIN[0]+3*(STOP.counter.a-RUN_START),0,1.2];
+export const RUN_SPEED=4.1,RUN_ACCEL=.24;
+export const runTravel=(elapsed:number)=>elapsed<=0?0:elapsed<RUN_ACCEL?RUN_SPEED*elapsed*elapsed/(2*RUN_ACCEL):RUN_SPEED*(elapsed-RUN_ACCEL/2);
+export const MAN_FREEZE:Vec3=[MAN_RUN_ORIGIN[0]+runTravel(STOP.counter.a-RUN_START),0,1.2];
 export const HERO_FREEZE:Vec3=[MAN_FREEZE[0]-2.05,0,1.2];
 export const ROCK_START:Vec3=[HERO_FREEZE[0]-.1,0,.78];
-export const ROCK_END:Vec3=[MAN_FREEZE[0]+.64,0,.95];
+export const ROCK_END:Vec3=[MAN_FREEZE[0]+1.18,0,.95];
 export const HERO_SIDE:Vec3=[MAN_FREEZE[0]+1.05,0,2.48];
 export const HIT=at('17.hit','caught');
-export const LAND=at('17.fall','back')-.04;
+export const SPIN_START=at('17.fall','spun')-.08,SPIN_END=at('17.fall','around')+.24;
+export const LAND=at('17.fall','landed')+.05,FALL_START=LAND-.52;
+export const FALL_ROOT:Vec3=[MAN_FREEZE[0]+3.85,0,1.22];
+export const SCOOP_ROOT:Vec3=[MAN_FREEZE[0]+4.12,0,1.74];
+export const SAFE_RABBIT_ROOT:Vec3=[MAN_FREEZE[0]+4.02,0,2.72];
 export function counterHero(t:number){
  const s=STOP.counter.a;
  const start:Vec3=[-3.75,0,-.15];
  if(t<s){
-   const k=phase(t,HERO_RUN,s); return {position:v(start,HERO_FREEZE,k),distance:distance(start,HERO_FREEZE)*k,yaw:Math.PI/2};
+   // Reach the open middle of the established gate BEFORE crossing its fence at x=2.7.
+   const through:Vec3=[-1,0,1.2],first=distance(start,through),total=first+distance(through,HERO_FREEZE);
+   const travelled=total*Math.min(1,runTravel(t-HERO_RUN)/runTravel(s-HERO_RUN));
+   const position=travelled<first?v(start,through,travelled/first):v(through,HERO_FREEZE,(travelled-first)/(total-first));
+   const yaw=travelled<first?Math.atan2(through[0]-start[0],through[2]-start[2]):Math.PI/2;
+   return {position,distance:travelled,yaw};
  }
  const pickup=at('16.stop','grabbed'), place=at('16.throw','path')+.04;
- const routed=route(t,[[s,HERO_FREEZE],[pickup+.10,HERO_FREEZE],[cue('16.front').start-.02,[HERO_FREEZE[0],0,.52]],[at('16.throw','Set')-.2,[MAN_FREEZE[0]+.4,0,.52]],[place+.25,[MAN_FREEZE[0]+.4,0,.52]],[at('16.side','aside')+.42,HERO_SIDE],[at('17.rabbit','lifted')-.5,HERO_SIDE],[at('17.rabbit','lifted')+.1,[MAN_FREEZE[0]+1.12,0,1.9]],[at('17.rabbit','lifted')+1.10,[MAN_FREEZE[0]+1.12,0,1.9]],[at('17.rabbit','lifted')+1.90,[MAN_FREEZE[0]+.85,0,2.7]],[cue('18.prince').end,[MAN_FREEZE[0]+.85,0,2.7]]]);
+ const routed=route(t,[[s,HERO_FREEZE],[pickup+.10,HERO_FREEZE],[cue('16.front').start-.02,[HERO_FREEZE[0],0,.52]],[at('16.throw','Set')-.2,[MAN_FREEZE[0]+.95,0,.52]],[place+.25,[MAN_FREEZE[0]+.95,0,.52]],[at('16.side','aside')+.42,HERO_SIDE],[HIT+.15,HERO_SIDE],[LAND+.24,[SCOOP_ROOT[0]-.3,0,2.48]],[at('17.rabbit','lifted')+.1,SCOOP_ROOT],[at('17.rabbit','lifted')+1.10,SCOOP_ROOT],[at('17.rabbit','lifted')+1.90,SAFE_RABBIT_ROOT],[cue('18.prince').end,SAFE_RABBIT_ROOT]]);
  return {...routed,distance:distance(start,HERO_FREEZE)+routed.distance};
 }
 export function manMotion(t:number){
- const s=STOP.counter, resumed=Math.max(0,t-s.b);
- if(t<s.a){const k=Math.max(0,t-RUN_START),step=smooth(phase(t,at('13.kneel','knelt')-.25,at('13.kneel','rabbit')));return {position:[mix(MAN_START[0],MAN_RUN_ORIGIN[0],step)+3*k,0,1.2] as Vec3,yaw:mix(0,Math.PI/2,smooth(phase(t,RUN_START-.25,RUN_START+.2))),travel:3*k,trip:0,fall:0};}
- if(t<s.b)return {position:MAN_FREEZE,yaw:Math.PI/2,travel:3*(s.a-RUN_START),trip:0,fall:0};
- const brake=.38*(1-(1-phase(resumed,0,.30))**3);
- const trip=phase(t,HIT-.12,HIT+.24),spin=smooth(phase(t,at('17.fall','spun')-.15,at('17.fall','around')+.43)),fall=phase(t,at('17.fall','landed')-.22,LAND)**1.7;
- const x=MAN_FREEZE[0]+brake+.42*smooth(trip)+.85*spin;
- return {position:[x,0,1.2+.13*Math.sin(spin*Math.PI)] as Vec3,yaw:Math.PI/2+Math.PI*2*spin-2.06*smooth(phase(t,cue("18.look").start,cue("18.look").end)),travel:3*(s.a-RUN_START)+brake+.42*trip,trip,fall};
+ const s=STOP.counter;
+ if(t<s.a){const travel=runTravel(t-RUN_START),step=smooth(phase(t,at('13.kneel','knelt')-.25,at('13.kneel','rabbit')));return {position:[mix(MAN_START[0],MAN_RUN_ORIGIN[0],step)+travel,0,1.2] as Vec3,yaw:mix(0,Math.PI/2,smooth(phase(t,RUN_START-.25,RUN_START+.2))),travel,trip:0,fall:0};}
+ if(t<s.b)return {position:MAN_FREEZE,yaw:Math.PI/2,travel:runTravel(s.a-RUN_START),trip:0,fall:0};
+ const brake=.50*(1-(1-phase(t,s.b,s.b+.35))**3),trip=phase(t,HIT-.08,HIT+.24);
+ const path=route(t,[[s.b+.35,[.5,0,0]],[HIT-.48,[.5,0,.08]],[HIT,[.86,0,0]],[HIT+.27,[1.18,0,0]],[HIT+.70,[1.82,0,.12]],[SPIN_START,[2.40,0,-.04]],[SPIN_END,[3.15,0,-.05]],[LAND,[3.63,0,.02]],[LAND+.24,[3.85,0,.02]]]);
+ const offset=t<s.b+.35?[brake,0,0] as Vec3:path.position;
+ const spin=smooth(phase(t,SPIN_START,SPIN_END)),fall=phase(t,FALL_START,LAND)**2;
+ const yaw=turn(Math.PI/2+Math.PI*spin,Math.atan2(SAFE_RABBIT_ROOT[0]-FALL_ROOT[0],SAFE_RABBIT_ROOT[2]-FALL_ROOT[2]),smooth(phase(t,at('18.look','then'),cue('18.look').end-.18)));
+ return {position:add(MAN_FREEZE,offset),yaw,travel:runTravel(s.a-RUN_START)+(t<s.b+.35?brake:.5+path.distance),trip,fall};
 }
 
 export const FIRST_FIRE=at('15.blocks','shot');

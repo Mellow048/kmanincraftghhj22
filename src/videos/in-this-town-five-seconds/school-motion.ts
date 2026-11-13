@@ -93,18 +93,37 @@ export function bullyState(t:number){
  }
  return {position,yaw,pose,handle};
 }
-export const CHALK_FIRE=STOP.chalk.a-.32,CHALK_HIT=STOP.chalk.b+.09,CHALK_GOAL:Vec3=[1.2,1.46,.50],TEACHER_ROOT:Vec3=[-.6,0,-2.9];
+export const CHALK_FIRE=STOP.chalk.a-.24,CHALK_GOAL:Vec3=[1.2,1.46,.50],TEACHER_ROOT:Vec3=[-.6,0,-2.9];
+export const CLASS_CHALK_FIRE=at('3.class','threw')+.08,CLASS_CHALK_LAND=CLASS_CHALK_FIRE+.36;
+export const CLASS_CHALK_GOAL:Vec3=[.24,.69,.75];
+export const teacherYaw=(goal:Vec3)=>Math.atan2(goal[0]-TEACHER_ROOT[0],goal[2]-TEACHER_ROOT[2]);
 export function teacherThrow(t:number,fire=CHALK_FIRE){
- const wind=accent(t,fire-.5,fire-.23,fire-.16,fire+.05),release=smooth(phase(t,fire-.18,fire));
- let pose=planted({...neutral(),bodyPitch:-.10*wind+.14*release,bodyYaw:-.15*wind+.12*release,armR:[mix(-2.6,-1.25,release)*Math.max(wind,release),0,.18],armL:[-.35,0,-.12]},.12,-.12);
- pose=blend(pose,neutral(),smooth(phase(t,fire+.18,fire+.53)));
- return pose;
+ const wind=smooth(phase(t,fire-.56,fire-.17)),snap=phase(t,fire-.17,fire);
+ const ready=planted({...neutral(),bodyY:-.045,bodyPitch:-.08,bodyYaw:-.24,armR:[-3.55,0,.42],armL:[-.30,0,-.20]},.18,-.16);
+ const release=planted({...neutral(),bodyY:-.04,bodyPitch:.19,bodyYaw:.19,armR:[-1.22,0,.18],armL:[-.60,0,-.24]},.18,-.16);
+ let pose=blend(neutral(),ready,wind);
+ if(t>=fire-.17)pose=blend(ready,release,snap*snap);
+ const follow=planted({...neutral(),bodyY:-.05,bodyPitch:.24,bodyYaw:.24,armR:[-.45,0,.05],armL:[-.45,0,-.22]},.18,-.16);
+ if(t>=fire)pose=blend(release,follow,smooth(phase(t,fire,fire+.18)));
+ return blend(pose,neutral(),smooth(phase(t,fire+.24,fire+.58)));
+}
+const chalkFrom=(fire:number,goal:Vec3)=>handWorld(TEACHER_ROOT,teacherYaw(goal),1,teacherThrow(fire,fire));
+/** Ballistic travel starts at the actual releasing palm. The held world pauses the same trajectory. */
+function chalkFlight(t:number,fire:number,arrival:number,goal:Vec3):Vec3{
+ const from=chalkFrom(fire,goal),d=arrival-fire,u=(t-fire)/d;
+ return [from[0]+(goal[0]-from[0])*u,from[1]+(goal[1]-from[1])*u+4.905*d*d*u*(1-u),from[2]+(goal[2]-from[2])*u];
+}
+export const CHALK_HIT=STOP.chalk.b+.20/(CHALK_GOAL[2]-chalkFrom(CHALK_FIRE,CHALK_GOAL)[2])*.24;
+export function classChalkState(t:number){
+ const teacher=teacherThrow(t,CLASS_CHALK_FIRE),yaw=teacherYaw(CLASS_CHALK_GOAL);
+ const position=t<CLASS_CHALK_FIRE?handWorld(TEACHER_ROOT,yaw,1,teacher):t<CLASS_CHALK_LAND?chalkFlight(t,CLASS_CHALK_FIRE,CLASS_CHALK_LAND,CLASS_CHALK_GOAL):CLASS_CHALK_GOAL;
+ return {teacher,yaw,position};
 }
 export function chalkState(t:number){
- const s=STOP.chalk,pt=paused(t,'chalk'),teacher=teacherThrow(pt),from=handWorld(TEACHER_ROOT,0,1,teacherThrow(CHALK_FIRE));
- const position=t<CHALK_FIRE?handWorld(TEACHER_ROOT,0,1,teacher):t<s.a?v(from,CHALK_GOAL,phase(t,CHALK_FIRE,s.a)):t<s.b?CHALK_GOAL:v(CHALK_GOAL,[1.2,1.46,.70],phase(t,s.b,CHALK_HIT));
- const pride=accent(t,s.a+.35,s.a+.72,s.b-.3,s.b),flinch=accent(t,CHALK_HIT,CHALK_HIT+.08,CHALK_HIT+.16,CHALK_HIT+.35);
- const rub=accent(t,CHALK_HIT+.20,CHALK_HIT+.42,CHALK_HIT+.75,cue('5.bonk').end);
+ const s=STOP.chalk,pt=paused(t,'chalk'),teacher=teacherThrow(pt),yaw=teacherYaw(CHALK_GOAL);
+ const position=t<CHALK_FIRE?handWorld(TEACHER_ROOT,yaw,1,teacher):chalkFlight(pt,CHALK_FIRE,s.a,CHALK_GOAL);
+ const pride=accent(t,s.a+.35,s.a+.72,s.b-.3,s.b),flinch=accent(t,CHALK_HIT,CHALK_HIT+.05,CHALK_HIT+.11,CHALK_HIT+.27);
+ const rub=accent(t,CHALK_HIT+.15,CHALK_HIT+.32,CHALK_HIT+.6,cue('5.bonk').end);
  const pose=planted({...neutral(),bodyPitch:-.07*pride-.09*flinch,bodyRoll:-.025*pride,head:[-.07*pride-.21*flinch,.10*pride,.08*flinch],armR:[-.22-.20*pride-2.1*rub,0,.22-.60*rub],armL:[-.2-.1*pride,0,-.22]},.05,-.05);
- return {position,teacher,pose,hit:t>=CHALK_HIT};
+ return {position,teacher,yaw,pose,hit:t>=CHALK_HIT};
 }

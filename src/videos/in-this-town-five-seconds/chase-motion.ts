@@ -1,8 +1,8 @@
 import { Euler, Vector3 } from 'three';
 import type { Pose, Vec3 } from '../../engine';
 import { at, cue, STOP, worldTime } from './timeline';
-import { add, aimHand, distance, handWorld, mix, phase, smooth, turn, v, route, manMotion, counterHero, MAN_START, RABBIT_START, RUN_START, HERO_RUN, MAN_FREEZE, HERO_FREEZE, HERO_SIDE, ROCK_START, ROCK_END, HIT, LAND, FIRST_FIRE, FIRST_WALL, FIRST_IMPACT, SECOND_FIRE, THIRD_FIRE, SECOND_HOLD, THIRD_HOLD } from './motion';
-import { neutral, full, blend, accent, bounce, planted, locomotion, reach, palmMid, stepLegs } from './performance';
+import { add, aimHand, distance, handWorld, mix, phase, smooth, turn, v, route, manMotion, counterHero, MAN_START, RABBIT_START, RUN_START, HERO_RUN, MAN_FREEZE, HERO_FREEZE, HERO_SIDE, ROCK_START, ROCK_END, HIT, LAND, SPIN_START, SPIN_END, FALL_START, FIRST_FIRE, FIRST_WALL, FIRST_IMPACT, SECOND_FIRE, THIRD_FIRE, SECOND_HOLD, THIRD_HOLD } from './motion';
+import { neutral, full, blend, accent, bounce, planted, locomotion, reach, palmMid, stepLegs, footReach, footWorld } from './performance';
 
 export const RABBIT_SCALE=.82;
 export const LIFT_START=at('13.dinner','picked')+.02;
@@ -12,7 +12,7 @@ export const TAKE_RABBIT=RECOVER+.12;
 export const PICK_ROCK=at('16.stop','grabbed');
 export const PLACE_ROCK=at('16.throw','path')+.04;
 export const SIDE_END=at('16.side','aside')+.42;
-const FRONT:Vec3=[MAN_FREEZE[0]+.4,0,.52];
+const FRONT:Vec3=[MAN_FREEZE[0]+.95,0,.52];
 const RABBIT_SUPPORT:Vec3=[0,.18,0];
 const CARRY_ARM:Vec3=[-.86,0,.2];
 const standingCarry=()=>({...neutral(),armL:CARRY_ARM});
@@ -72,19 +72,28 @@ export function strangerPose(t:number):Pose{
    p=blend(p,walk,step);
   }
   if(t>=HIT-.12){
-   // Keep the actual caught-toe pose, then make the failed recovery much more readable.
-   p={...standingCarry(),bodyPitch:.33*Math.sin(q.trip*Math.PI),bodyRoll:.20*Math.sin(q.trip*Math.PI),legR:[-.7,0,.12],legL:[.4,0,-.12],kneeR:[.7,0,0],kneeL:[.25,0,0],armR:[-1.4,0,.35]};
-   const recovery=smooth(phase(t,HIT+.20,HIT+.42));
-   const struggle=planted({...standingCarry(),bodyY:-.10,bodyPitch:.26+.13*Math.sin((t-HIT)*8),bodyRoll:.16*Math.sin((t-HIT)*7),armR:[-1.35+.45*Math.sin((t-HIT)*12),0,.75],armL:[-.94,0,.2],head:[-.22,0,.08]},.15,-.15);
-   p=blend(p,struggle,recovery);
-   const spinStart=at('17.fall','spun')-.15,spinEnd=at('17.fall','around')+.43,spin=smooth(phase(t,spinStart,spinEnd));
-   if(t>=spinStart){
-    const spinPose=planted({...standingCarry(),bodyY:-.10+bounce(t,spinStart+.05,.06,.5),bodyPitch:.10,bodyRoll:Math.sin(spin*Math.PI*2)*.23,
-     armR:[-1.3+Math.sin(spin*Math.PI*2)*1.0,0,.55+.42*Math.sin(spin*Math.PI)],armL:[-.94,0,.2],head:[-.1,-.25*Math.sin(spin*Math.PI),.08]},.14,-.14);
-    p=blend(p,spinPose,smooth(phase(t,spinStart,spinStart+.14)));
+   const catchPose=planted({...standingCarry(),bodyY:-.12,bodyPitch:.12,head:[-.1,0,0],armR:[-.8,0,.35]},.30,-.22);
+   p=blend(p,catchPose,smooth(phase(t,HIT-.12,HIT-.03)));
+   if(t<=HIT+.18){
+    const topple=smooth(phase(t,HIT-.03,HIT+.18));p.bodyPitch+=.36*topple;p.bodyY-=.06*topple;p.armR=[-1.2*topple-.8,0,.45];
+    p=footReach(q.position,q.yaw,1,p,add(ROCK_END,[0,.07,0]));
+   }else{
+    // Weight keeps travelling east. Each recovery foot lands and pushes again, instead of an upright pirouette.
+    const stride=stepLegs({...standingCarry(),bodyY:-.17,bodyPitch:.44,bodyRoll:.12*Math.sin((t-HIT)*9),armR:[-1.6+.65*Math.sin((t-HIT)*10),0,.65],head:[-.18,-.15,0]},q.travel,'run',1);
+    p=blend(footReach(manMotion(HIT+.18).position,Math.PI/2,1,{...catchPose,bodyPitch:.48,bodyY:-.18,armR:[-2,0,.45]},add(ROCK_END,[0,.07,0])),stride,smooth(phase(t,HIT+.18,HIT+.30)));
    }
-   if(q.fall>0)p=blend(p,fallen(),q.fall);
-   if(t>=LAND){p=fallen();p.bodyY+=bounce(t,LAND,.055,.25);}
+   if(t>=SPIN_START){
+    const spin=phase(t,SPIN_START,SPIN_END),twist=planted({...standingCarry(),bodyY:-.18,bodyPitch:.30*(1-spin),bodyRoll:.16*(1-spin),armR:[-.9,0,1.0],armL:[-1.03,0,.13],head:[-.1,-.25,0]},.24,-.23);
+    p=blend(p,twist,smooth(phase(t,SPIN_START,SPIN_START+.14)));
+   }
+   if(t>=FALL_START){
+    const falling={...fallen(),legR:[-.28,0,.12] as Vec3,legL:[-.18,0,-.15] as Vec3,kneeR:[.7,0,0] as Vec3,kneeL:[.5,0,0] as Vec3,armR:[-.25,0,.70] as Vec3,head:[.10,0,0] as Vec3};
+    p=blend(p,falling,q.fall);
+   }
+   if(t>=LAND){
+    const settle=smooth(phase(t,LAND,LAND+.24));p=blend({...fallen(),legR:[-.28,0,.12],legL:[-.18,0,-.15],kneeR:[.7,0,0],kneeL:[.5,0,0],armR:[-.25,0,.70],head:[.10,0,0]},fallen(),settle);
+    p.bodyY+=bounce(t,LAND,.035,.18);
+   }
   }
   if(t>=cue('18.look').start){
    const then=at('18.look','then'),end=cue('18.look').end-.18;
@@ -99,6 +108,13 @@ export function strangerPose(t:number):Pose{
     const found=accent(t,at('18.found','found')-.1,at('18.found','found')+.12,cue('18.prince').start,cue('18.prince').start+.2);
     p.bodyPitch+=.10*recognition+.07*found;p.head=[-.06+.08*found,0,-.06*recognition];p.armR=[-.5-.20*found,0,.12];
    }
+  }
+ }
+ // Angle blending is not ground contact: re-solve a shoe if its toe OR heel crosses the path.
+ if(t>=HIT-.12&&t<cue('18.look').start){
+  for(let pass=0;pass<3;pass++)for(const side of [1,-1] as const){
+   const toe=footWorld(q.position,q.yaw,1,p,side),heel=footWorld(q.position,q.yaw,1,p,side,-.065),low=Math.min(toe[1],heel[1]);
+   if(low<.025)p=footReach(q.position,q.yaw,1,p,[toe[0],toe[1]+.025-low,toe[2]],side);
   }
  }
  return p;
@@ -151,6 +167,7 @@ export function heroState(t:number){
    p=planted({...neutral(),bodyY:-.025,bodyPitch:-.035,armR:[-.45,0,.24],armL:[-.38,0,-.18]},.12,-.12);yaw=-Math.PI/2;
    const startle=accent(t,HIT-.05,HIT+.2,LAND-.2,LAND+.1);
    p.armR=[-.45-.35*startle,0,.24];p.armL=[-.38-.30*startle,0,-.18];p.head=[-.06*startle,.22*startle,-.10*startle];
+   if(t>=HIT+.15&&t<RECOVER-.30){p=blend(p,{...locomotion(h.distance,'walk'),armR:p.armR,armL:p.armL,head:[.08,-.3,0]},accent(t,HIT+.15,HIT+.29,RECOVER-.48,RECOVER-.30));yaw=h.yaw;}
   }
   if(t>=RECOVER-.5){
    const rabbit=carriedRabbit(TAKE_RABBIT),face=Math.atan2(rabbit[0]-h.position[0],rabbit[2]-h.position[2]);

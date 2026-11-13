@@ -6,6 +6,7 @@ import { Classroom, SchoolHall } from "../../../Topics/WhatIf/school";
 import { WorldClock, HOME, HOME_BED, STOP, cue, at, phase, smooth, mix, lockerMotion, rescueMotion, MAN_FREEZE, ROCK_START, Table, v, worldTime, FIRST_WALL, FIRST_IMPACT } from "./kit";
 
 import { windowState } from './home-motion';
+import { SCHOOL_EXTENSIONS as EXT } from './school-layout';
 import { curtainState } from "./domestic-motion";
 
 /** A shared continuous street, not a new set at every cut.
@@ -158,11 +159,11 @@ export const World:React.FC=()=>{
  const focus=active?v(active.shot.target,active.shot.targetTo??active.shot.target,phase(active.t,0,active.shot.dur)):[0,1,0] as Vec3;
  return <WorldClock t={t}>
   {night?<pointLight position={[focus[0]+1.1,focus[1]+1.2,focus[2]+3.1]} intensity={26} distance={8} color="#e3e0d1"/>:null}
-  {zone==='class'?<><Vox kind="planks" position={[0,-.08,7]} size={[9,.16,12]}/><Vox kind="wool" tint="#e1e0ce" position={[0,3.5,7]} size={[9,.16,12]} castShadow={false}/><Classroom at={[0,0,0]} board="8 X 7" boardSub={t>=cue("9.help").start?"56":"HOW MANY"} books/>
+  {zone==='class'?<><Vox kind="planks" tint="#b9925c" {...EXT.classFloor}/><Vox kind="wool" tint="#f4efe0" {...EXT.classCeiling} castShadow={false}/><Classroom at={[0,0,0]} board="8 X 7" boardSub={t>=cue("9.help").start?"56":"HOW MANY"} books/>
    {[-1.6,1.6].map(z=><Curtains key={z} position={[-4.56,2.02,z]} rotationY={Math.PI/2} width={2.08} height={1.95} gap={1.53} topHung flutter={.12} color="#688f91"/>)}
    <Backpack position={[-.42,.06,1.7]} scale={.62} rotationY={-.2}/><WaterBottle position={[-2.7,.67,.75]} scale={.7}/>
    <pointLight position={[0,2.8,2]} intensity={4} color="#cbdde5" distance={8}/></>:null}
-  {zone==='hall'?<><Vox kind="stone" tint="#c2baa4" position={[0,-.06,7]} size={[17,.12,12]}/><Vox kind="wool" tint="#f4efe0" position={[0,3.5,7]} size={[17,.2,12]} castShadow={false}/><SchoolHall at={[0,0,0]} length={16} sign="MATH"/><HingedLocker position={[0,0,-.72]} open={lockerMotion(t).door}/>
+  {zone==='hall'?<><Vox kind="stone" tint="#c2baa4" {...EXT.hallFloor}/><Vox kind="wool" tint="#f4efe0" {...EXT.hallCeiling} castShadow={false}/><SchoolHall at={[0,0,0]} length={16} sign="MATH"/><HingedLocker position={[0,0,-.72]} open={lockerMotion(t).door}/>
    <Vox kind="planks" position={[-5.8,.39,.2]} size={[1.35,.1,.5]}/>{[-6.3,-5.3].map(x=><Block key={x} position={[x,.18,.2]} size={[.07,.36,.4]} color="#566471"/>)}
    <Backpack position={[-5.8,.44,.2]} scale={.58}/><Block position={[5.2,.05,-.05]} size={[.26,.015,.19]} rotation={[0,.2,0]} color="#d9d3bf"/>
   </>:null}

@@ -66,7 +66,7 @@ event(A['glassHit']+.07,'debris','The visible glass fragments settle.',gain=-12,
 event(A['bookTouch'],'paper','Fingers contact the book.',gain=-12)
 event(A['bookRelease'],'rustle','He withdraws his hand; the released book waits.',gain=-12,dur=.2)
 event(A['bookLand'],'place','The book drops the final centimeters onto the table.',gain=-12)
-event(S['chalk']-.32,'zip','The teacher sends chalk through the classroom.',gain=-12,dur=.17)
+event(A['chalkFire'],'zip','The teacher sends chalk through the classroom.',gain=-12,dur=.17)
 event(A['chalkHit'],'bonk','Chalk taps his nose; the future sidestep is earned.',gain=-10)
 fx('6.hands','place','Bowl reaches the washing counter.',word='bowl',at=.12,gain=-12)
 fx('6.rule','tick','The warning lands, a subjective accent.',word='see',gain=-13)
@@ -131,8 +131,8 @@ for step in A['counterSteps']:
     event(step['t'],'step_stone','Ground contact during '+step['who']+'.',gain=-14)
 event(a+5.23,'break','Second ice block hits the old position.',gain=-11)
 event(a+5.32,'debris','Third ice block breaks and shards settle.',gain=-13)
-hit=word('17.hit','caught');land=word('17.fall','back')-.04
-for t,sfx,why in [(hit-.1,'bonk','The planted toe catches the visible rock, no face hit.'),(hit+.35,'rustle','The stumble starts.'),(A['spinStart'],'swish','He spins in the failed recovery attempt.'),(land,'thud','The supported back landing.'),(land+.12,'debris','A little ground dust from the landing.'),(A['rabbitTake'],'rustle','Both hands lift the supported living rabbit.'),(word('17.rabbit','lifted')+1.05,'chime','The transfer is complete and the nose still twitches.')]:event(t,sfx,why,gain=-11 if sfx=='thud' else -13)
+hit=word('17.hit','caught');land=A['land']
+for t,sfx,why in [(hit,'bonk','The planted toe catches the visible rock, no face hit.'),(hit+.35,'rustle','The stumble starts.'),(A['spinStart'],'swish','He spins in the failed recovery attempt.'),(land,'thud','The supported back landing.'),(land+.12,'debris','A little ground dust from the landing.'),(A['rabbitTake'],'rustle','Both hands lift the supported living rabbit.'),(word('17.rabbit','lifted')+1.05,'chime','The transfer is complete and the nose still twitches.')]:event(t,sfx,why,gain=-11 if sfx=='thud' else -13)
 event(word('17.rabbit','lifted')+1.53,'step_stone','He takes a real backwards step with the supported rabbit, giving the man room to rise.',gain=-14)
 fx('17.breathe','blip','A small relief accent on the living nose.',word='twitching',gain=-14)
 fx('18.look','rustle','He rubs his head and gets onto one knee.',word='rubbed',gain=-12,dur=.35)
@@ -147,5 +147,8 @@ for entry in FX:
     if entry['sfx']=='step_stone' and 'at' in entry:
         t=round(C[entry['cue']]['start']+entry['at'],2)
         if t in foot_trims:entry['trim']=foot_trims[t]
+# Masked footsteps add clutter without being audible; omit only these measured times.
+masked_steps=[127.2, 127.57, 127.87, 128.67, 130.17, 131.3, 132.13, 132.5, 132.6, 133.23, 133.27, 134.0, 134.03, 134.1, 134.77, 135.13, 135.2, 135.23, 135.9, 136.33, 136.37, 136.67, 137.4, 138.2, 138.6]
+FX=[entry for entry in FX if not (entry['sfx']=='step_stone' and 'at' in entry and round(C[entry['cue']]['start']+entry['at'],2) in masked_steps)]
 sheet={'film':'in-this-town-five-seconds','README':'Exact approved voice-00 narration, supplied InThisTownMusic.aac, measured action contacts. Regenerate with write-sound.py only after timing/animation changes. No procedural music fallback.','music':{'track':'Topics/InThisTown/InThisTownMusic.aac','trackFrom':0,'gain':-17,'duck':2,'sections':[{'from':c,'mood':m,'gain':g,'why':why} for c,m,g,why in sections]},'beds':beds,'bedMutes':[{**anchor(a),'dur':5,'why':f'{name}: the outside world is silent for the same 150 frames as its motion.'} for name,a in S.items()],'sfx':FX}
 (P/'sound.json').write_text(json.dumps(sheet,indent=2)+'\n');print(f'{len(sections)} recorded-track level sections; {len(beds)} beds; {len(FX)} action effects; 7 five-second ambience mutes.')

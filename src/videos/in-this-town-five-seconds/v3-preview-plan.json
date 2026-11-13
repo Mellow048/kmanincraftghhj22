@@ -1,0 +1,40 @@
+{
+  "revision": "v3-focused-corrections",
+  "ranges": [
+    {
+      "name": "classroom-throw",
+      "first": 500,
+      "last": 599
+    },
+    {
+      "name": "chalk-stop",
+      "first": 1248,
+      "last": 1436
+    },
+    {
+      "name": "chase",
+      "first": 3826,
+      "last": 3867
+    },
+    {
+      "name": "trip-recovery",
+      "first": 4320,
+      "last": 4577
+    }
+  ],
+  "sourceFps": 30,
+  "playbackSpeed": 1,
+  "fullFilmFrames": 4848,
+  "narrationRetimed": false,
+  "file": "renders/previews/five-seconds-corrections-v3.mp4",
+  "sha256": "28172d0bdf3f05c6015c2786124561e6f9c40ac606faf33b03b65f8e3a1b08e6",
+  "bytes": 11324412,
+  "width": 720,
+  "height": 1280,
+  "frames": 589,
+  "durationSeconds": 19.633333333333333,
+  "assembly": "original-speed excerpts, joined with audio cut from the current authored mix; cuts between unrelated excerpts are intentional",
+  "visualReview": "99 sampled source frames across 10 sheets viewed; five additional recognition stills viewed",
+  "limits": "Not a full film, not realtime playback or subjective listening; owner feedback pending. Full master has not been rendered or approved.",
+  "renderProvenance": "classroom and chalk proof clips, corrected gate chase clip and corrected trip-recovery clip; recognition camera was additionally corrected after the proof bundle but is outside these excerpt ranges."
+}

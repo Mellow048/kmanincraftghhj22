@@ -87,3 +87,32 @@ test('continuous A to B routes have ordinary speeds and finite poses at every fr
  for(const [name,fn,a,b] of routes)for(const t of frames(a+1/30,b))assert.ok(m.distance(fn(t),fn(t-1/30))*30<7.5,`Root teleport ${name} at ${t}`);
  for(const t of frames(cue('13.sound').start,cue('18.prince').end)){for(const pose of [c.heroState(t).pose,c.strangerPose(t)])for(const val of Object.values(pose))for(const n of (Array.isArray(val)?val:[val]))assert.ok(Number.isFinite(n));}
 });
+
+test('school extensions do not overlap shared surfaces and every classroom seat has one actor',()=>{
+ const {SCHOOL_EXTENSIONS:e,CLASSROOM_EXTRAS:extras}=loadFilm('school-layout');
+ const nearEdge=(box)=>box.position[2]-box.size[2]/2;
+ assert.equal(nearEdge(e.classFloor),4);assert.equal(nearEdge(e.classCeiling),4);
+ assert.equal(nearEdge(e.hallFloor),2);assert.ok(Math.abs(nearEdge(e.hallCeiling)-2.2)<1e-10);
+ const occupied=extras.map(x=>`${x.col}-${x.row}`);occupied.push('0-1','1-1');assert.equal(occupied.length,9);assert.equal(new Set(occupied).size,9);
+});
+test('teacher visibly holds the chalk, releases it from the palm, and its flight is continuous and frozen',()=>{
+ for(const [fn,fire,start] of [[l.classChalkState,l.CLASS_CHALK_FIRE,cue('3.class').start],[l.chalkState,l.CHALK_FIRE,cue('5.chalk').start]]){
+  for(const t of frames(Math.max(start,fire-.5),fire-1/30)){const q=fn(t);near(q.position,m.handWorld(l.TEACHER_ROOT,q.yaw,1,q.teacher),1e-8);}
+  boundary(t=>fn(t).position,fire,1e-5);
+  assert.ok(m.distance(fn(fire-.55).position,fn(fire-.17).position)>.5,'No visible throwing wind-up');
+ }
+ const frozen=frames(STOP.chalk.a,STOP.chalk.b-1/30);
+ assert.equal(new Set(frozen.map(t=>JSON.stringify(l.chalkState(t).position))).size,1);
+ boundary(t=>l.chalkState(t).position,STOP.chalk.b,.0001);
+});
+test('trip catches the same rock, carries momentum into a half-turn and grounded back landing',()=>{
+ for(const t of frames(m.HIT-.03,m.HIT+.16)){const q=m.manMotion(t);near(p.footWorld(q.position,q.yaw,1,c.strangerPose(t)),m.add(m.ROCK_END,[0,.07,0]),.012);}
+ const early=m.manMotion(m.HIT+.3).position,late=m.manMotion(m.SPIN_END).position;assert.ok(late[0]-early[0]>1.2);
+ assert.ok(Math.abs(m.manMotion(m.SPIN_END).yaw-m.manMotion(m.SPIN_START).yaw-Math.PI)<.001);
+ for(const t of frames(m.HIT,m.LAND+.2)){const q=m.manMotion(t),pose=c.strangerPose(t);for(const side of [1,-1])for(const tip of [.065,-.065])assert.ok(p.footWorld(q.position,q.yaw,1,pose,side,tip)[1]>=.02,`Foot below road at ${t}`);}
+ assert.ok(c.strangerPose(m.LAND).bodyPitch<-1.4,'Back landing not reached');
+});
+
+test('pursuer goes through the gate opening rather than through the fence or posts',()=>{
+ for(const t of frames(m.HERO_RUN,STOP.counter.a)){const p=m.counterHero(t).position;if(Math.abs(p[0]-2.7)<.5)assert.ok(p[2]>.65&&p[2]<1.8,`Fence overlap at ${t}: ${p}`);}
+});

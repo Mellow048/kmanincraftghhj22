@@ -4,7 +4,7 @@ import ts from 'typescript';
 import * as THREE from 'three';
 const cache=new Map();
 const film=path.resolve('src/videos/in-this-town-five-seconds');
-const allowed=new Set(['motion','timeline','performance','domestic-motion','home-motion','school-motion','rescue-motion','chase-motion'].map(n=>path.join(film,n+'.ts')));
+const allowed=new Set(['motion','timeline','performance','domestic-motion','home-motion','school-motion','rescue-motion','chase-motion','school-layout'].map(n=>path.join(film,n+'.ts')));
 for(const n of ['anim','math'])allowed.add(path.resolve('src/engine',n+'.ts'));
 /** Compile only deterministic choreography. This never imports React or starts a renderer. */
 export function loadPure(file){

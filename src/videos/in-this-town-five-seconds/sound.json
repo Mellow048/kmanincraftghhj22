@@ -687,7 +687,7 @@
     },
     {
       "cue": "3.class",
-      "at": 2.5793,
+      "at": 2.6263,
       "sfx": "zip",
       "why": "The chalk leaves the actual throwing hand after the wind-up.",
       "gain": -12,
@@ -776,7 +776,7 @@
     },
     {
       "cue": "5.chalk",
-      "at": 0.113333,
+      "at": 0.193333,
       "sfx": "zip",
       "why": "The teacher sends chalk through the classroom.",
       "gain": -12,
@@ -784,7 +784,7 @@
     },
     {
       "cue": "5.bonk",
-      "at": 1.656633,
+      "at": 1.581799,
       "sfx": "bonk",
       "why": "Chalk taps his nose; the future sidestep is earned.",
       "gain": -10
@@ -1287,16 +1287,7 @@
     },
     {
       "cue": "14.run",
-      "at": 1.566633,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2,
-      "trim": 5.5
-    },
-    {
-      "cue": "14.run",
-      "at": 1.8333,
+      "at": 1.799967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1304,7 +1295,7 @@
     },
     {
       "cue": "14.follow",
-      "at": 0.133367,
+      "at": 0.233367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1321,7 +1312,7 @@
     },
     {
       "cue": "14.follow",
-      "at": 0.633367,
+      "at": 0.600033,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1329,7 +1320,15 @@
     },
     {
       "cue": "14.follow",
-      "at": 0.900033,
+      "at": 0.800033,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 1.000033,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1345,8 +1344,8 @@
       "trim": 2.0
     },
     {
-      "cue": "14.secret",
-      "at": 0.033367,
+      "cue": "14.follow",
+      "at": 1.3667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1354,7 +1353,15 @@
     },
     {
       "cue": "14.secret",
-      "at": 0.2667,
+      "at": 0.1667,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.333367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1370,7 +1377,7 @@
     },
     {
       "cue": "14.secret",
-      "at": 0.800033,
+      "at": 0.733367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1378,7 +1385,15 @@
     },
     {
       "cue": "14.secret",
-      "at": 1.0667,
+      "at": 0.900033,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 1.100033,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1395,7 +1410,7 @@
     },
     {
       "cue": "14.secret",
-      "at": 1.5667,
+      "at": 1.4667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1403,7 +1418,7 @@
     },
     {
       "cue": "14.stay",
-      "at": 0.233367,
+      "at": 0.0667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1411,7 +1426,7 @@
     },
     {
       "cue": "14.stay",
-      "at": 0.500033,
+      "at": 0.2667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1419,7 +1434,23 @@
     },
     {
       "cue": "14.stay",
-      "at": 0.733367,
+      "at": 0.433367,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.633367,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.833367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1434,8 +1465,8 @@
       "pan": 0.2
     },
     {
-      "cue": "15.hand",
-      "at": 0.0333,
+      "cue": "14.stay",
+      "at": 1.200033,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1443,12 +1474,20 @@
     },
     {
       "cue": "15.hand",
-      "at": 0.299967,
+      "at": 0.166633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.3333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
       "pan": 0.2,
-      "trim": 4.0
+      "trim": 4.5
     },
     {
       "cue": "15.hand",
@@ -1460,16 +1499,7 @@
     },
     {
       "cue": "15.hand",
-      "at": 0.799967,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2,
-      "trim": 4.5
-    },
-    {
-      "cue": "15.hand",
-      "at": 1.066633,
+      "at": 0.899967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1477,7 +1507,15 @@
     },
     {
       "cue": "15.hand",
-      "at": 1.3333,
+      "at": 1.099967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 1.299967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1485,25 +1523,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 0.033333,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2,
-      "trim": 3.5
-    },
-    {
-      "cue": "15.blocks",
-      "at": 0.3,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2,
-      "trim": 1.5
-    },
-    {
-      "cue": "15.blocks",
-      "at": 0.566667,
+      "at": 0.133333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1511,7 +1531,23 @@
     },
     {
       "cue": "15.blocks",
-      "at": 0.833333,
+      "at": 0.333333,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.5,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.9,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1527,7 +1563,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 1.333333,
+      "at": 1.266667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1535,24 +1571,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 1.6,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.blocks",
-      "at": 1.866667,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2,
-      "trim": 7.0
-    },
-    {
-      "cue": "15.wall",
-      "at": 0.1333,
+      "at": 1.633333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1560,7 +1579,7 @@
     },
     {
       "cue": "15.wall",
-      "at": 0.399967,
+      "at": 0.066633,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1568,7 +1587,31 @@
     },
     {
       "cue": "15.wall",
-      "at": 0.666633,
+      "at": 0.2333,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.4333,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.799967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.999967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1577,71 +1620,6 @@
     },
     {
       "cue": "15.wall",
-      "at": 0.9333,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.wall",
-      "at": 1.166633,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.wall",
-      "at": 1.4333,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.wall",
-      "at": 1.699967,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.close",
-      "at": 0.166633,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.close",
-      "at": 0.399967,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2,
-      "trim": 2.0
-    },
-    {
-      "cue": "15.close",
-      "at": 0.666633,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.close",
-      "at": 0.9333,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the white-clothed runner.",
-      "gain": -16,
-      "pan": 0.2
-    },
-    {
-      "cue": "15.close",
       "at": 1.199967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
@@ -1649,8 +1627,24 @@
       "pan": 0.2
     },
     {
-      "cue": "15.close",
-      "at": 1.4333,
+      "cue": "15.wall",
+      "at": 1.366633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.566633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.766633,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1658,7 +1652,71 @@
     },
     {
       "cue": "15.close",
-      "at": 1.699967,
+      "at": 0.1333,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.5333,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.699967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.899967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.099967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.266633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.466633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.666633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the white-clothed runner.",
+      "gain": -16,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.1333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the white-clothed runner.",
       "gain": -16,
@@ -1666,7 +1724,7 @@
     },
     {
       "cue": "14.run",
-      "at": 1.7333,
+      "at": 1.799967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1683,7 +1741,7 @@
     },
     {
       "cue": "14.follow",
-      "at": 0.200033,
+      "at": 0.1667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1691,7 +1749,7 @@
     },
     {
       "cue": "14.follow",
-      "at": 0.433367,
+      "at": 0.4667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1707,7 +1765,7 @@
     },
     {
       "cue": "14.follow",
-      "at": 0.8667,
+      "at": 0.800033,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1715,12 +1773,11 @@
     },
     {
       "cue": "14.follow",
-      "at": 1.0667,
+      "at": 0.9667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
-      "pan": -0.2,
-      "trim": 2.5
+      "pan": -0.2
     },
     {
       "cue": "14.follow",
@@ -1733,7 +1790,7 @@
     },
     {
       "cue": "14.secret",
-      "at": 0.100033,
+      "at": 0.0667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1741,7 +1798,7 @@
     },
     {
       "cue": "14.secret",
-      "at": 0.333367,
+      "at": 0.233367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1749,7 +1806,7 @@
     },
     {
       "cue": "14.secret",
-      "at": 0.5667,
+      "at": 0.400033,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1757,7 +1814,7 @@
     },
     {
       "cue": "14.secret",
-      "at": 0.7667,
+      "at": 0.533367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1765,7 +1822,23 @@
     },
     {
       "cue": "14.secret",
-      "at": 1.000033,
+      "at": 0.700033,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.8667,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 1.033367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1782,7 +1855,15 @@
     },
     {
       "cue": "14.secret",
-      "at": 1.433367,
+      "at": 1.3667,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 1.533367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1790,7 +1871,7 @@
     },
     {
       "cue": "14.stay",
-      "at": 0.033367,
+      "at": 0.100033,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1806,16 +1887,7 @@
     },
     {
       "cue": "14.stay",
-      "at": 0.4667,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the red-shirted pursuer.",
-      "gain": -16,
-      "pan": -0.2,
-      "trim": 2.0
-    },
-    {
-      "cue": "14.stay",
-      "at": 0.700033,
+      "at": 0.433367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1823,7 +1895,7 @@
     },
     {
       "cue": "14.stay",
-      "at": 0.933367,
+      "at": 0.5667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1831,7 +1903,31 @@
     },
     {
       "cue": "14.stay",
-      "at": 1.133367,
+      "at": 0.733367,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.900033,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 1.0667,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 1.233367,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1839,7 +1935,7 @@
     },
     {
       "cue": "15.hand",
-      "at": 0.1333,
+      "at": 0.166633,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1856,7 +1952,7 @@
     },
     {
       "cue": "15.hand",
-      "at": 0.566633,
+      "at": 0.499967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1864,7 +1960,15 @@
     },
     {
       "cue": "15.hand",
-      "at": 0.766633,
+      "at": 0.666633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.799967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1873,7 +1977,7 @@
     },
     {
       "cue": "15.hand",
-      "at": 0.999967,
+      "at": 0.966633,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1881,7 +1985,7 @@
     },
     {
       "cue": "15.hand",
-      "at": 1.199967,
+      "at": 1.1333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1889,7 +1993,7 @@
     },
     {
       "cue": "15.hand",
-      "at": 1.4333,
+      "at": 1.299967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1897,7 +2001,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 0.133333,
+      "at": 0.1,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1905,7 +2009,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 0.333333,
+      "at": 0.266667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1913,7 +2017,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 0.566667,
+      "at": 0.433333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1921,16 +2025,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 0.766667,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the red-shirted pursuer.",
-      "gain": -16,
-      "pan": -0.2,
-      "trim": 4.5
-    },
-    {
-      "cue": "15.blocks",
-      "at": 1.0,
+      "at": 0.6,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1938,7 +2033,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 1.2,
+      "at": 0.9,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1946,7 +2041,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 1.433333,
+      "at": 1.066667,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1954,7 +2049,7 @@
     },
     {
       "cue": "15.blocks",
-      "at": 1.633333,
+      "at": 1.233333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1962,16 +2057,23 @@
     },
     {
       "cue": "15.blocks",
-      "at": 1.866667,
+      "at": 1.4,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
-      "pan": -0.2,
-      "trim": 7.0
+      "pan": -0.2
     },
     {
-      "cue": "15.wall",
-      "at": 0.1333,
+      "cue": "15.blocks",
+      "at": 1.566667,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.733333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1979,7 +2081,23 @@
     },
     {
       "cue": "15.wall",
-      "at": 0.3333,
+      "at": 0.099967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.266633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.399967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -1995,7 +2113,7 @@
     },
     {
       "cue": "15.wall",
-      "at": 0.766633,
+      "at": 0.7333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2003,16 +2121,7 @@
     },
     {
       "cue": "15.wall",
-      "at": 0.999967,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the red-shirted pursuer.",
-      "gain": -16,
-      "pan": -0.2,
-      "trim": 3.5
-    },
-    {
-      "cue": "15.wall",
-      "at": 1.199967,
+      "at": 0.899967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2020,7 +2129,7 @@
     },
     {
       "cue": "15.wall",
-      "at": 1.4333,
+      "at": 1.2333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2028,7 +2137,15 @@
     },
     {
       "cue": "15.wall",
-      "at": 1.6333,
+      "at": 1.566633,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.7333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2045,7 +2162,7 @@
     },
     {
       "cue": "15.close",
-      "at": 0.299967,
+      "at": 0.2333,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2053,7 +2170,16 @@
     },
     {
       "cue": "15.close",
-      "at": 0.499967,
+      "at": 0.399967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2,
+      "trim": 2.0
+    },
+    {
+      "cue": "15.close",
+      "at": 0.566633,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2069,7 +2195,7 @@
     },
     {
       "cue": "15.close",
-      "at": 0.9333,
+      "at": 0.899967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2077,16 +2203,7 @@
     },
     {
       "cue": "15.close",
-      "at": 1.166633,
-      "sfx": "step_stone",
-      "why": "A distance-driven half-stride of the red-shirted pursuer.",
-      "gain": -16,
-      "pan": -0.2,
-      "trim": 3.0
-    },
-    {
-      "cue": "15.close",
-      "at": 1.366633,
+      "at": 1.066633,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2094,7 +2211,23 @@
     },
     {
       "cue": "15.close",
-      "at": 1.599967,
+      "at": 1.2333,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.399967,
+      "sfx": "step_stone",
+      "why": "A distance-driven half-stride of the red-shirted pursuer.",
+      "gain": -16,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.699967,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2102,7 +2235,7 @@
     },
     {
       "cue": "15.chalk",
-      "at": 0.1333,
+      "at": 0.166633,
       "sfx": "step_stone",
       "why": "A distance-driven half-stride of the red-shirted pursuer.",
       "gain": -16,
@@ -2191,15 +2324,22 @@
       "gain": -13
     },
     {
-      "cue": "16.front",
-      "at": 0.066633,
+      "cue": "16.stop",
+      "at": 1.266667,
       "sfx": "step_stone",
       "why": "Ground contact during the run in front.",
       "gain": -14
     },
     {
       "cue": "16.front",
-      "at": 0.3333,
+      "at": 0.166633,
+      "sfx": "step_stone",
+      "why": "Ground contact during the run in front.",
+      "gain": -14
+    },
+    {
+      "cue": "16.front",
+      "at": 0.366633,
       "sfx": "step_stone",
       "why": "Ground contact during the run in front.",
       "gain": -14
@@ -2212,29 +2352,29 @@
       "gain": -14
     },
     {
+      "cue": "16.front",
+      "at": 0.766633,
+      "sfx": "step_stone",
+      "why": "Ground contact during the run in front.",
+      "gain": -14
+    },
+    {
       "cue": "16.throw",
-      "at": 0.8667,
+      "at": 0.933367,
       "sfx": "step_stone",
       "why": "Ground contact during the sidestep.",
       "gain": -14
     },
     {
       "cue": "16.side",
-      "at": 0.2,
+      "at": 0.266667,
       "sfx": "step_stone",
       "why": "Ground contact during the sidestep.",
       "gain": -14
     },
     {
       "cue": "16.side",
-      "at": 0.5,
-      "sfx": "step_stone",
-      "why": "Ground contact during the sidestep.",
-      "gain": -14
-    },
-    {
-      "cue": "16.side",
-      "at": 0.766667,
+      "at": 0.566667,
       "sfx": "step_stone",
       "why": "Ground contact during the sidestep.",
       "gain": -14
@@ -2255,7 +2395,7 @@
     },
     {
       "cue": "17.hit",
-      "at": 0.3077,
+      "at": 0.4077,
       "sfx": "bonk",
       "why": "The planted toe catches the visible rock, no face hit.",
       "gain": -13
@@ -2269,21 +2409,21 @@
     },
     {
       "cue": "17.fall",
-      "at": 0.6433,
+      "at": 0.7133,
       "sfx": "swish",
       "why": "He spins in the failed recovery attempt.",
       "gain": -13
     },
     {
       "cue": "17.fall",
-      "at": 2.0863,
+      "at": 1.7583,
       "sfx": "thud",
       "why": "The supported back landing.",
       "gain": -11
     },
     {
       "cue": "17.fall",
-      "at": 2.2063,
+      "at": 1.8783,
       "sfx": "debris",
       "why": "A little ground dust from the landing.",
       "gain": -13
