@@ -67,8 +67,8 @@ export const HelmetChair: React.FC<{ position: Vec3; hum?: number }> = ({ positi
       {/* Armrests */}
       <Vox kind="darkPlanks" position={[-0.45, 0.6, 0.05]} size={[0.14, 0.35, 0.9]} />
       <Vox kind="darkPlanks" position={[0.45, 0.6, 0.05]} size={[0.14, 0.35, 0.9]} />
-      {/* Helmet hovering slightly over seat */}
-      <group position={[0, 1.05 + h, 0]}>
+      {/* Helmet hovering over head — raised so it sits above villager head, not on chest */}
+      <group position={[0, 1.48 + h, 0]}>
         <Vox kind="stone" position={[0, 0.15, 0]} size={[0.7, 0.5, 0.72]} tint="#a8b8c8" />
         <Vox kind="cobble" position={[0, -0.12, 0]} size={[0.82, 0.18, 0.84]} tint="#8fa0b8" />
         {/* Visor slit */}
