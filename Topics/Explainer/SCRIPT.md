@@ -33,7 +33,8 @@ reference film (19 lines, 182 words, 49.2 seconds): a size to aim at, not a rule
 | 6 | The answer | 1 | The one sentence from the top of the page, nearly word for word | Back to the thing you know, changed | 0:40, 1, 14 |
 | 7 | You | 1–2 | What it means for the viewer. Then the subscribe line, which belongs to the explanation | The person again, with the thing; then the red sign | 0:44, 2, 20 |
 
-The cause took a third of the reference, and its surprise (a loaf for two hundred billion) came at 34 seconds of 49.
+The cause took a third of the reference, and its surprise (Germany, and a loaf for two hundred billion) began at 34
+seconds of 49.
 
 ## The rules of a line
 
