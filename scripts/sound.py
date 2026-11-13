@@ -729,6 +729,57 @@ def _slide_down(rng, dur=0.5, **_):
     return norm((tone(f) + 0.25 * tone(f * 2)) * bell(n, 0.5))
 
 
+# ---- eyes, and things made of sticks
+@sfx("blink", "a very big eye blinking: the lids come down, meet with a soft tap, and open again. The tap is 0.08 s after its time", -8)
+def _blink(rng, dur=0.12, **_):
+    """`dur` is how long the lids stay shut. Give it the blink's own `hold`, so the eye opens when the sound does."""
+    shut = n_of(0.08)
+    opening = n_of(0.1)
+    y = np.zeros(shut + n_of(dur) + opening + n_of(0.06))
+    k = np.linspace(0.0, 1.0, shut)
+    y[:shut] += 0.55 * sweep(shut, 2600.0 * (420.0 / 2600.0) ** k, rng, 0.6) * bell(shut, 0.9)  # down: the pitch falls
+    n = n_of(0.09)
+    t = t_of(n)
+    tap = np.sin(2 * np.pi * 560 * t) * np.exp(-t / 0.016) + 0.6 * np.sin(2 * np.pi * 1340 * t) * np.exp(-t / 0.008)
+    tap += 0.5 * noise(n, 900, 4200, rng) * np.exp(-t / 0.006)
+    y[shut : shut + n] += norm(tap)
+    weight = _thud(120.0, 70.0, 0.045, 0.3, rng, 0.14)  # it is the size of a moon: a little weight under the tap
+    y[shut : shut + len(weight)] += 0.3 * weight
+    a = shut + n_of(dur)
+    k = np.linspace(0.0, 1.0, opening)
+    y[a : a + opening] += 0.4 * sweep(opening, 520.0 * (2400.0 / 520.0) ** k, rng, 0.6) * bell(opening, 0.9)  # up again, quieter
+    return edges(norm(y), 0.001, 0.02)
+
+
+@sfx("creak", "dry wood giving under a load: a scarecrow shifting, a neck that is a stick, an old door", -10)
+def _creak(rng, dur=0.5, **_):
+    n = n_of(dur)
+    t = t_of(n)
+    # Stick and slip: clicks that come faster as the wood gives, each one ringing in it for a moment.
+    rate = 16.0 + 26.0 * (t / dur) ** 1.5 + 3.0 * np.sin(2 * np.pi * 2.3 * t)
+    clicks = (np.diff(np.floor(np.cumsum(rate) / SR), prepend=0.0) > 0).astype(float) * rng.uniform(0.6, 1.0, n)
+    m = n_of(0.03)
+    r = t_of(m)
+    f = rng.uniform(820.0, 980.0)
+    ring = np.sin(2 * np.pi * f * r) * np.exp(-r / 0.006) + 0.5 * np.sin(2 * np.pi * f * 2.3 * r) * np.exp(-r / 0.004)
+    ring += 0.35 * np.sin(2 * np.pi * f * 0.52 * r) * np.exp(-r / 0.009)
+    y = convolve(clicks, ring)[:n]
+    y += 0.12 * float(np.max(np.abs(y))) * noise(n, 1200, 5200, rng)  # the dry rasp between the clicks
+    return edges(norm(y * bell(n, 0.45)), 0.002, 0.03)
+
+
+@sfx("step_stick", "one step of a thing with sticks for legs: a dry knock, and a little straw after it. A scarecrow walking", -10)
+def _step_stick(rng, **_):
+    n = n_of(0.2)
+    t = t_of(n)
+    y = np.zeros(n)
+    knock = woodblock(1.0, rng.uniform(360.0, 440.0))  # pitched where a phone can play it; a footstep on planks is not
+    y[: len(knock)] += knock
+    y += 0.35 * np.sin(2 * np.pi * rng.uniform(170.0, 200.0) * t) * np.exp(-t / 0.03)  # the ground under it
+    y += 0.3 * noise(n, 1800, 7000, rng, -2) * np.exp(-(((t - 0.05) / 0.035) ** 2))  # the straw, settling just after
+    return edges(norm(y), 0.0008, 0.02)
+
+
 # ---- feet, hands, blocks
 def _grain(rng, lo, hi, tau, n_sec=0.09):
     n = n_of(n_sec)
@@ -878,6 +929,151 @@ def _cheer(rng, dur=1.3, **_):
     return norm(_walla(rng, dur, 30, 600.0, 3400.0) * shape[:, None])
 
 
+# ---- money, and numbers: the Explainer topic
+def _coin_ping(rng, pitch=1.0, ring=0.22):
+    """One small disc of metal struck: two partials that do not agree, and a tick of contact."""
+    f = 2350.0 * pitch * rng.uniform(0.97, 1.03)
+    y = partials(f, ring * 3.2, [(1.0, 1.0, ring), (2.32, 0.6, ring * 0.7), (3.87, 0.3, ring * 0.4), (0.53, 0.25, ring * 0.5)], attack=0.0008)
+    n = n_of(0.012)
+    y[:n] += 0.5 * noise(n, 2500, 9000, rng) * decay(n, 0.003)
+    return norm(y)
+
+
+@sfx("coin", "one coin: put down, counted, flipped", -10)
+def _coin(rng, pitch=1.0, **_):
+    return _coin_ping(rng, pitch)
+
+
+@sfx("coins", "a handful of coins spilling: a payment, a pile, 'a lot of money'", -10)
+def _coins(rng, dur=0.55, **_):
+    out = np.zeros((n_of(dur + 0.8), 2))
+    count = max(4, int(round(dur * 14)))
+    for i in range(count):
+        at = dur * (i / count) ** 1.3 + rng.uniform(0.0, 0.03)  # fast at first, then the last few settle
+        place(out, _coin_ping(rng, rng.uniform(0.82, 1.3), rng.uniform(0.12, 0.22)), at, rng.uniform(0.5, 1.0), rng.uniform(-0.6, 0.6))
+    return norm(out)
+
+
+@sfx("register", "cha-ching: a sale, a price paid, money made", -8)
+def _register(rng, **_):
+    out = np.zeros(n_of(1.5))
+    clunk = _thud(150.0, 90.0, 0.045, 0.6, rng, 0.2)  # the drawer
+    out[: len(clunk)] += 0.7 * clunk
+    for at, note, level in ((0.07, "E6", 0.9), (0.2, "B6", 1.0)):  # the bell, twice
+        y = glock(hz(note), 1.0, level)
+        out[n_of(at) : n_of(at) + len(y)] += y[: len(out) - n_of(at)]
+    return norm(out)
+
+
+@sfx("paper", "a banknote off a pile, a page turned, a tag flipped over", -12)
+def _paper(rng, dur=0.22, **_):
+    n = n_of(dur)
+    k = np.linspace(0, 1, n)
+    flutter = 0.55 + 0.45 * np.sin(2 * np.pi * rng.uniform(38, 55) * k * dur) ** 2
+    return norm(sweep(n, 2200.0 * (6500.0 / 2200.0) ** k, rng, 0.7) * flutter * bell(n, 0.7))
+
+
+@sfx("count", "a number running up: ticks that climb. A price rising, a total growing", -11)
+def _count(rng, dur=0.8, **_):
+    out = np.zeros(n_of(dur + 0.1))
+    steps = max(5, int(round(dur * 16)))
+    for i in range(steps):
+        k = i / (steps - 1)
+        y = _tick(rng, pitch=0.7 * 2 ** (1.1 * k))
+        at = n_of(dur * k ** 0.85)
+        out[at : at + len(y)] += y[: len(out) - at] * (0.6 + 0.4 * k)
+    return norm(out)
+
+
+@sfx("stamp", "a firm thump with a click on top: a price fixed, a rule made, an answer given", -8)
+def _stamp(rng, **_):
+    y = _thud(180.0, 120.0, 0.055, 0.7, rng, 0.3)
+    knock = woodblock(1.0, 620.0)  # the part of a stamp a phone can play
+    y[: len(knock)] += 0.6 * knock
+    n = n_of(0.03)
+    y[:n] += 0.5 * noise(n, 1200, 5000, rng) * decay(n, 0.006)
+    return norm(y)
+
+
+@sfx("buzz", "a flat buzzer: wrong, no, not enough", -10)
+def _buzz(rng, dur=0.36, **_):
+    n = n_of(dur)
+    t = t_of(n)
+    y = np.zeros(n)
+    for f in (233.0, 240.0):  # two notes that grate; odd harmonics, and high enough for a phone to play
+        for k in (1, 3, 5, 7, 9, 11):
+            y += np.sin(2 * np.pi * f * k * t) / k
+    return edges(norm(y), 0.004, 0.03)
+
+
+# ---- powers: the What If topic
+@sfx("power_up", "a power switching on: bright notes running up, and air rising with them", -9)
+def _power_up(rng, dur=0.7, **_):
+    out = np.zeros((n_of(dur + 1.0), 2))
+    scale = ("C5", "E5", "G5", "B5", "D6", "G6", "B6", "D7")
+    for i, note in enumerate(scale):
+        place(out, glock(hz(note), 0.6, 0.55 + 0.06 * i), dur * (i / len(scale)) ** 0.8, 1.0, -0.5 + i / (len(scale) - 1))
+    n = n_of(dur)
+    k = np.linspace(0, 1, n)
+    place(out, sweep(n, 500.0 * (5200.0 / 500.0) ** k, rng, 0.6) * k ** 1.5 * 0.5, 0.0)
+    return norm(out)
+
+
+@sfx("power_down", "a power going out: the same notes falling, and the air going with them", -10)
+def _power_down(rng, dur=0.7, **_):
+    out = np.zeros((n_of(dur + 1.0), 2))
+    scale = ("D7", "B6", "G6", "D6", "B5", "G5", "Eb5", "C5")
+    for i, note in enumerate(scale):
+        place(out, glock(hz(note), 0.5, 0.9 - 0.07 * i), dur * (i / len(scale)) ** 1.2, 1.0, 0.5 - i / (len(scale) - 1))
+    n = n_of(dur)
+    k = np.linspace(0, 1, n)
+    place(out, sweep(n, 4200.0 * (320.0 / 4200.0) ** k, rng, 0.6) * (1 - k) ** 1.2 * 0.5, 0.0)
+    return norm(out)
+
+
+@sfx("glitch", "the world skipping: a moment seen before it happens, a second played twice", -10)
+def _glitch(rng, dur=0.4, **_):
+    n = n_of(dur)
+    out = np.zeros(n)
+    slices = max(4, int(round(dur * 20)))
+    grain = n // slices
+    for i in range(slices):
+        if rng.random() < 0.2:
+            continue  # a hole: the skip itself
+        f = 520.0 * 2 ** (int(rng.integers(0, 6)) * 3 / 12)
+        m = int(grain * rng.uniform(0.45, 0.95))
+        t = t_of(m)
+        y = np.sign(np.sin(2 * np.pi * f * t)) * 0.5 + np.sin(2 * np.pi * f * 2 * t) * 0.5
+        out[i * grain : i * grain + m] += edges(y, 0.001, 0.002)
+    return norm(filt(out, 300, 6000, 2))
+
+
+@sfx("splash", "into water: a dive, a jump in a puddle, a bucket emptied", -9)
+def _splash(rng, dur=0.7, **_):
+    n = n_of(dur)
+    t = t_of(n)
+    out = np.zeros((n_of(dur + 0.5), 2))
+    body = noise(n, 250, 5200, rng, -3) * np.minimum(1.0, t / 0.012) * np.exp(-t / (dur * 0.28))
+    place(out, body, 0.0)
+    place(out, 0.6 * _thud(110.0, 80.0, 0.07, 0.4, rng, 0.25), 0.0)
+    for _ in range(7):  # the drops that come down after
+        place(out, _plink(rng, rng.uniform(0.7, 1.5)), rng.uniform(0.12, dur), rng.uniform(0.2, 0.5), rng.uniform(-0.8, 0.8))
+    return norm(out)
+
+
+@sfx("school_bell", "the school bell: a lesson starts, a lesson ends, time is up", -9)
+def _school_bell(rng, dur=0.9, **_):
+    n = n_of(dur + 0.5)
+    out = np.zeros(n)
+    strike = partials(1480.0, 0.5, [(1.0, 1.0, 0.09), (2.76, 0.6, 0.06), (5.4, 0.35, 0.04), (0.5, 0.2, 0.08)], attack=0.0008)
+    at = 0.0
+    while at < dur:  # a hammer on a gong, twenty-four times a second
+        a = n_of(at)
+        out[a : a + len(strike)] += strike[: n - a] * rng.uniform(0.85, 1.0)
+        at += 1 / 24.0
+    return edges(norm(out), 0.002, 0.2)
+
+
 # ============================================================================= beds
 # A bed is the air of a place: it runs under a stretch of shots, quietly.
 BEDS: dict[str, dict] = {}
@@ -963,6 +1159,64 @@ def _bed_wind(rng, seconds):
         centre = 420.0 * 2 ** (0.8 * np.sin(2 * np.pi * rng.uniform(0.12, 0.22) * t + rng.random() * 6))
         place(out, sweep(n, centre, rng, 0.9) * _slow(rng, n, 0.3, 0.7), 0.0, 0.7, pan)
     return out
+
+
+@bed("sky", "the open sky between islands: a wide, soft air, and a bird a long way off", -28)
+def _bed_sky(rng, seconds):
+    n = n_of(seconds)
+    t = t_of(n)
+    out = np.zeros((n, 2))
+    for pan in (-0.6, 0.6):
+        centre = 700.0 * 2 ** (0.5 * np.sin(2 * np.pi * rng.uniform(0.07, 0.13) * t + rng.random() * 6))
+        place(out, sweep(n, centre, rng, 1.0) * _slow(rng, n, 0.18, 0.5), 0.0, 0.5, pan)
+    at = rng.uniform(1.0, 3.0)
+    while at < seconds - 0.6:
+        base, pan = rng.uniform(2300, 3400), rng.uniform(-0.8, 0.8)
+        for i in range(int(rng.integers(2, 4))):
+            m = n_of(rng.uniform(0.07, 0.11))
+            k = np.linspace(0, 1, m)
+            place(out, tone(base * (1 + 0.2 * np.sin(np.pi * k))) * bell(m, 1.2), at + i * rng.uniform(0.12, 0.17), rng.uniform(0.12, 0.3), pan)
+        at += rng.uniform(3.5, 7.0)
+    return out
+
+
+@bed("classroom", "a room full of kids keeping quiet: paper, a pencil, a chair that creaks", -29)
+def _bed_classroom(rng, seconds):
+    n = n_of(seconds)
+    out = np.zeros((n, 2))
+    place(out, noise(n, 160, 1600, rng, -5) * _slow(rng, n, 0.15, 0.3) * 0.4, 0.0)
+    at = rng.uniform(0.2, 0.9)
+    while at < seconds - 0.4:
+        kind = rng.random()
+        pan = rng.uniform(-0.8, 0.8)
+        if kind < 0.5:  # a page, a sleeve
+            m = n_of(rng.uniform(0.12, 0.3))
+            place(out, noise(m, 1800, 7000, rng, -2) * bell(m, 0.8), at, rng.uniform(0.25, 0.55), pan)
+        elif kind < 0.85:  # a pencil: three or four small taps
+            for i in range(int(rng.integers(2, 5))):
+                m = n_of(0.02)
+                place(out, noise(m, 2200, 6000, rng) * decay(m, 0.004), at + i * rng.uniform(0.07, 0.12), rng.uniform(0.3, 0.6), pan)
+        else:  # a chair
+            m = n_of(rng.uniform(0.15, 0.3))
+            k = np.linspace(0, 1, m)
+            place(out, tone(rng.uniform(260, 420) * (1 + 0.25 * k)) * bell(m, 0.6) * (0.6 + 0.4 * np.sin(2 * np.pi * 31 * k * 0.2) ** 2), at, rng.uniform(0.2, 0.4), pan)
+        at += rng.uniform(0.7, 2.2)
+    return out
+
+
+@bed("pool", "an indoor pool: water lapping, and every drip with an echo", -25)
+def _bed_pool(rng, seconds):
+    n = n_of(seconds)
+    t = t_of(n)
+    out = np.zeros((n, 2))
+    for pan in (-0.5, 0.5):
+        lap = 0.5 + 0.5 * np.sin(2 * np.pi * rng.uniform(0.35, 0.6) * t + rng.random() * 6) ** 2
+        place(out, noise(n, 300, 3800, rng, -5) * lap * _slow(rng, n, 0.2, 0.4), 0.0, 0.6, pan)
+    at = rng.uniform(0.3, 1.0)
+    while at < seconds - 0.3:
+        place(out, _plink(rng, rng.uniform(0.6, 1.2)), at, 0.45, rng.uniform(-0.8, 0.8))
+        at += rng.uniform(0.9, 2.4)
+    return reverb(out, 2.2, 0.45, 250, 6000, 13)
 
 
 @bed("fire", "a big fire near by: roar, crackle and hiss", -22)
@@ -1197,6 +1451,71 @@ def _mood_hope(seconds, rng):
     return s.buf
 
 
+@mood("explain", "facts, one after another: a steady light step, soft chords, and a two-note question that keeps being asked. The body of an explainer", 104, -1.0)
+def _mood_explain(seconds, rng):
+    s = Seq(seconds, 104, rng)
+    bars = [
+        ("F2", "C3", ("A3", "C4", "F4"), ("A5", "C6")),
+        ("C3", "G3", ("G3", "C4", "E4"), ("G5", "C6")),
+        ("G2", "D3", ("G3", "B3", "D4"), ("B5", "D6")),
+        ("A2", "E3", ("A3", "C4", "E4"), ("C6", "E6")),
+    ]
+    for b in range(s.bars):
+        root, five, chord, (ask, again) = bars[b % 4]
+        # The step: a plucked bass on one and three, with the fifth between.
+        s.play(pizz, root, b, 0, 1, 0.6)
+        s.play(pizz, five, b, 1.5, 0.5, 0.42)
+        s.play(pizz, root, b, 2, 1, 0.52)
+        s.play(pizz, five, b, 3.5, 0.5, 0.4)
+        # Soft chords, off the beat, so there is room under them for a voice.
+        for beat in (0.5, 2.5):
+            for i, note in enumerate(chord):
+                s.play(keys, note, b, beat, 1.0, 0.34, (-0.3, 0.0, 0.3)[i])
+        # The question: two notes going up, at the end of every second bar.
+        if b % 2 == 1:
+            s.play(glock, ask, b, 3, 0.5, 0.3, 0.25)
+            s.play(glock, again, b, 3.5, 0.5, 0.34, 0.25)
+        s.play(pad, root, b, 0, 4, 0.08)
+        s.hit(kick(0.3), b, 0)
+        s.hit(kick(0.22), b, 2)
+        for i in range(8):
+            s.hit(shaker(rng, 0.14 if i % 2 == 0 else 0.24), b, i * 0.5, 1.0, -0.35)
+        s.hit(rim(rng, 0.22), b, 1, 1.0, 0.3)
+        s.hit(rim(rng, 0.26), b, 3, 1.0, 0.3)
+    return s.buf
+
+
+@mood("wonder", "a power is new and it is wonderful: bright notes running up, bubbling, weightless. The fun before the price", 120, -1.0)
+def _mood_wonder(seconds, rng):
+    s = Seq(seconds, 120, rng)
+    bars = [
+        ("D3", ("D4", "F#4", "A4", "D5", "F#5", "A5")),
+        ("A2", ("C#4", "E4", "A4", "C#5", "E5", "A5")),
+        ("B2", ("D4", "F#4", "B4", "D5", "F#5", "B5")),
+        ("G2", ("D4", "G4", "B4", "D5", "G5", "B5")),
+    ]
+    order = (0, 1, 2, 3, 4, 5, 4, 3)
+    for b in range(s.bars):
+        p = s.progress(b)
+        root, notes = bars[b % 4]
+        # Notes running up and half way back, twice a bar: the bubbling.
+        for i in range(8):
+            s.play(kalimba, notes[order[i]], b, i * 0.5, 0.5, 0.5 + 0.1 * p, -0.3 if i % 2 else 0.3)
+        # A bell on top of each climb, a little later each bar.
+        s.play(glock, notes[5], b, 2.5, 1, 0.3, 0.2)
+        if b % 2 == 1:
+            s.play(glock, notes[4], b, 3.5, 0.5, 0.26, -0.2)
+        s.play(bass, root, b, 0, 1.5, 0.4)
+        s.play(bass, root, b, 2, 1.5, 0.34)
+        s.play(pad, root, b, 0, 4, 0.1)
+        s.play(pad, notes[2], b, 0, 4, 0.07)
+        for beat in range(4):
+            s.hit(kick(0.2 + 0.06 * p), b, beat)
+        for i in range(8):
+            s.hit(shaker(rng, 0.14 if i % 2 == 0 else 0.26), b, i * 0.5, 1.0, -0.35)
+    return s.buf
+
+
 @mood("dark", "the truth, and it is bad: a low note that does not move, and a slow heavy step. The reveal", 60, -1.0)
 def _mood_dark(seconds, rng):
     s = Seq(seconds, 60, rng, tail=2.4)
@@ -1251,6 +1570,52 @@ def ffmpeg_exe() -> str:
         return imageio_ffmpeg.get_ffmpeg_exe()
     except Exception:
         sys.exit("ffmpeg not found. Install ffmpeg, or:  pip install imageio-ffmpeg")
+
+
+def decode_stereo(path: str):
+    """Any audio file -> stereo float samples at SR, shape (n, 2)."""
+    raw = subprocess.run([ffmpeg_exe(), "-v", "error", "-i", path, "-ac", "2", "-ar", str(SR), "-f", "f32le", "-"], capture_output=True)
+    if raw.returncode != 0:
+        sys.exit(f"ffmpeg could not read {path}: {raw.stderr.decode(errors='replace')[:300]}")
+    return np.frombuffer(raw.stdout, dtype="<f4").astype(float).reshape(-1, 2)
+
+
+def track_music(track: str, sheet, sections, clock, total: int, v_level: float, music_gain: float):
+    """
+    The music from a recorded file: `music.track` in the sound sheet. `music.trackFrom` is the second of
+    the file the film starts on. It loops if the film is longer. It is levelled like the written music
+    (`music.gain` dB against the voice), fades out with the film, and follows the sections: silence under
+    a "none" section, and each section's own `gain`, with half-second ramps between them.
+    """
+    path = os.path.join(ROOT, track)
+    if not os.path.exists(path):
+        sys.exit(f"music.track: no file at {track}")
+    y = decode_stereo(path)
+    start = n_of(float(sheet["music"].get("trackFrom", 0.0)))
+    y = y[start:]
+    if len(y) < SR:
+        sys.exit(f"music.track: {track} is too short after trackFrom")
+    while len(y) < total:
+        y = np.concatenate([y, y])
+    y = y[:total].copy()
+    frames = rms_frames(heard(y), 0.05)
+    level = math.sqrt(float(np.mean(frames[frames > frames.max() * 0.05] ** 2))) if frames.max() > 0 else 1.0
+    y *= v_level * db(music_gain) / max(level, 1e-9)
+    # one gain per 20 ms, from the sections, then smoothed so a change is a ramp and not a click
+    hop = 0.02
+    steps = int(total / SR / hop) + 2
+    curve = np.ones(steps)
+    for i, part in enumerate(sections):
+        end = sections[i + 1]["t"] if i + 1 < len(sections) else clock.duration
+        a, b = int(part["t"] / hop), int(end / hop) + 1
+        curve[a:b] = 0.0 if part["mood"] == "none" else db(float(part.get("gain", 0.0)))
+    width = int(0.5 / hop)
+    curve = np.convolve(np.pad(curve, width, mode="edge"), np.ones(width) / width, mode="same")[width:-width]
+    y *= np.interp(np.arange(total) / SR, (np.arange(steps) + 0.5) * hop, curve)[:, None]
+    y[: n_of(0.05)] *= np.linspace(0.0, 1.0, n_of(0.05))[:, None]
+    out = n_of(0.8)
+    y[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
+    return y
 
 
 def decode(path: str):
@@ -1483,8 +1848,14 @@ def render(film: str, clock: Clock, sheet: dict, vox: dict):
         y[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
         y[: n_of(0.012)] *= np.linspace(0.0, 1.0, n_of(0.012))[:, None]
         place(music, y, part["t"])
-    music = reverb(music, 1.1, 0.16, 300, 6000, 3)[:total]
-    music = filt(music, 60, 13000, 2)
+    track = sheet["music"].get("track")
+    if track:
+        # A recorded track (music.track, a path from the repository root) plays instead of the written moods.
+        # The sections still shape it: a "none" section is silence, and a section's `gain` lifts or lowers it.
+        music = track_music(track, sheet, sections, clock, total, v_level, music_gain)
+    else:
+        music = reverb(music, 1.1, 0.16, 300, 6000, 3)[:total]
+        music = filt(music, 60, 13000, 2)
     music = tilt_eq(music, 2200.0, -3.0, 0.9)  # a pocket where the voice lives
     # The music steps back a little while the voice is speaking, and comes up in a real pause.
     duck = float(sheet["music"].get("duck", 2.0))
@@ -1867,7 +2238,7 @@ def draft(film: str, force: bool) -> int:
     beds, run = [], None
     for cue_id in clock.order:
         zone, look = table.get(cue_id, (None, None))
-        name = by_look.get(look) or by_zone.get((zone or "").split("+")[0])
+        name = by_look.get(look) or by_zone.get((zone or "").split("+")[0]) or rules.get("bedDefault")
         if run and run["bed"] == name:
             run["to"] = cue_id
             continue
@@ -1888,7 +2259,7 @@ def draft(film: str, force: bool) -> int:
         "README": f"The sound sheet. {guide} Times are cues and words, never seconds. Then: python3 scripts/sound.py build {film}",
         "music": {
             "gain": -16,
-            "sections": [{"from": clock.order[0], "mood": "town", "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."}],
+            "sections": [{"from": clock.order[0], "mood": rules.get("moodDefault", "town") if rules.get("moodDefault", "town") in MOODS else "town", "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."}],
         },
         "beds": beds,
         "sfx": effects,

@@ -338,6 +338,14 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   }
 
   // ---- 4. the scenes: one shot per script line ----------------------------
+  // A topic may fly its camera (topic.json `camera`): its scenes are built with another builder, a shot names
+  // the stop it lands on, and film.tsx calls a guard that throws if the camera ever teleports.
+  const builder = topic.camera?.builder ?? "storyScene";
+  const flies = builder !== "storyScene";
+  const hardCuts = [];
+  if (topic.camera?.guard && !new RegExp(`\\b${topic.camera.guard}\\s*\\(`).test(film)) {
+    fail(`${tag}: film.tsx does not call ${topic.camera.guard}(film.scenes). In this topic the camera never teleports, and that call is what checks it.`);
+  }
   const used = [];
   for (const name of sceneNames) {
     const from = film.match(new RegExp(`import\\s*\\{[^}]*\\b${name}\\b[^}]*\\}\\s*from\\s*["']\\./([^"']+)["']`))?.[1];
@@ -349,7 +357,9 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     const scene = fs.readFileSync(scenePath, "utf8");
     const label = `${slug}/${path.basename(scenePath, ".tsx")}`;
     if (TWO_D.test(scene)) fail(`${label}: 2D overlay found. Build the object in 3D.`);
-    if (!/\bstoryScene\s*\(/.test(scene)) fail(`${label}: a story film's scenes are built with storyScene().`);
+    if (flies) {
+      if (!new RegExp(`\\b${builder}\\s*\\(`).test(scene)) fail(`${label}: a film of this topic builds its scenes with ${builder}(): the camera flies from stop to stop (${topic.folder}/SHOTS.md).`);
+    } else if (!/\bstoryScene\s*\(/.test(scene)) fail(`${label}: a story film's scenes are built with storyScene().`);
     if (!/^\s*id:\s*["']scene\d+["']/m.test(scene)) fail(`${label}: scene id must be sceneN`);
 
     const marks = [...scene.matchAll(/\bcue:\s*["']([^"']+)["']/g)];
@@ -363,6 +373,12 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
       const noteText = note ? (note[1] ?? note[2] ?? note[3]) : "";
       if (noteText.trim().length < 24) fail(`${shot}: note must say why this picture, for these words (24+ chars)`);
 
+      if (flies) {
+        // A flown shot has no camera numbers and no stage: it names the stop it lands on, and what it shows lives in the world.
+        if (!/(^|[\s{,])to\s*:/.test(body)) fail(`${shot}: no stop. Give \`to: STOPS.<name>\`: where the camera comes to rest for this line.`);
+        if (/(^|[\s{,])cut\s*:\s*true\b/.test(body)) hardCuts.push(mark[1]);
+        return;
+      }
       const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top)\s*\(/.test(body);
       const literal = /(^|\n)\s*from:\s*\[/.test(body) && /(^|\n)\s*target:\s*\[/.test(body);
       if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give from[] and target[].`);
@@ -374,6 +390,10 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
         if (Number(fov[1]) > 62) info(`${shot}: fov ${fov[1]}° is very wide. People turn small; 30–46° fills a phone.`);
       }
     });
+  }
+
+  if (topic.camera?.maxHardCuts !== undefined && hardCuts.length > topic.camera.maxHardCuts) {
+    fail(`${tag}: ${hardCuts.length} shots are hard cuts (${hardCuts.join(", ")}). This topic allows ${topic.camera.maxHardCuts}: the camera flies.`);
   }
 
   const want = cues.map((cue) => cue.id);
@@ -409,7 +429,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   if (underWords || underSeconds) {
     const least = [lim.hardMinSeconds ? `${lim.hardMinSeconds}s` : null, lim.hardMinWords ? `${lim.hardMinWords} words` : null].filter(Boolean).join(" or ");
     const size = `${seconds.toFixed(1)}s and ${totalWords} words`;
-    const model = Object.keys(topic.models ?? {}).find((key) => key !== "note");
+    const model = topic.reference?.film ?? Object.keys(topic.models ?? {}).find((key) => key !== "note");
     const how = `Write the script to the beat sheet in ${topic.folder}/SCRIPT.md${model ? `, and build like src/videos/${model}` : ""}.`;
     if (missing.length === 0 || !timing.estimated) {
       fail(`${tag}: this film is ${size}. A film of this topic is never under ${least}: this is a different kind of video with the topic's name on it. ${how}`);
@@ -429,7 +449,8 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
         fail(`${tag}: world.tsx is missing ${required}. Atmosphere is mandatory.`);
       }
     }
-    if (!/<Zone\b/.test(world)) info(`${tag}: world.tsx has no <Zone>. A long film should not draw every set in every shot.`);
+    // A flown film is one place: the camera sees what it has left and what it is coming to, so nothing is hidden by zone.
+    if (!topic.camera?.continuous && !/<Zone\b/.test(world)) info(`${tag}: world.tsx has no <Zone>. A long film should not draw every set in every shot.`);
     if (TWO_D.test(world)) fail(`${tag}: world.tsx contains a 2D overlay`);
   }
 

@@ -13,3 +13,6 @@ export * from "./things";
 export * from "./places";
 export * from "./creatures";
 export * from "./everyday";
+
+export * from "./monsters";
+export * from "./fields";

@@ -86,6 +86,11 @@ export type MinecraftAvatarProps = {
 
   /** Anything parented to the right hand. */
   children?: React.ReactNode;
+  /**
+   * Anything worn on the head: a hat, a mask, a pumpkin. It is parented to the head, with its origin
+   * at the middle of the head cube, so it nods, turns and lies down with it. +Z is the face.
+   */
+  head?: React.ReactNode;
 };
 
 const PX = 1.8 / 32; // one Minecraft pixel in metres
@@ -188,6 +193,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   faceGlow = 0,
   rim = 0,
   children,
+  head,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -354,6 +360,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           ]}>
             <boxGeometry args={[8 * PX, 8 * PX, 8 * PX]} />
           </mesh>
+          {head ? <group position={[0, 4 * PX, 0]}>{head}</group> : null}
         </group>
 
         {/* right arm (+X) */}

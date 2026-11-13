@@ -1,0 +1,16 @@
+Moon behind a roof, Stars, Hut lit
+LanternLine, Well with no roof
+Wheat, Scarecrow, ForestEdge
+IronGolem hat, Villager hat="wide"
+Villager hat="wide", seen from below
+WellLid, Villager sit
+Scarecrow, close. It has feet
+ForestEdge, Pine, Scarecrow
+Hut lit: the window. Two wide hats
+Bucket, turned over and worn
+Clip push. WellLid slide
+Hut open, under a LanternLine
+StrawHat, in the hands
+Clip leanOver. Lantern on the ground
+Moonlight, coming into town
+Moon (the film's eye on it), Scarecrow

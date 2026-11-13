@@ -714,6 +714,28 @@ export function floorTex(base = "#4a5a63", repeat: [number, number] = [1, 1]): T
   );
 }
 
+/**
+ * A strip of standing wheat, one metre wide: stalks with pale ears, and nothing between them.
+ * It is a CUTOUT: put it on a plane with `alphaTest`, the way Minecraft draws its crops.
+ */
+export function wheatTex(stalk = "#9a8f3e", ear = "#e3cf78", seed = 1): THREE.CanvasTexture {
+  const N = 16;
+  return texture(`wheat|${stalk}|${ear}|${seed}`, N, N, (ctx) => {
+    const rand = mulberry32(seed * 977 + 13);
+    ctx.clearRect(0, 0, N, N);
+    for (let x = 0; x < N; x++) {
+      if (rand() < 0.14) continue; // a gap: you can see through the row
+      const h = 10 + Math.floor(rand() * 6);
+      const tone = (rand() * 2 - 1) * 0.12;
+      for (let y = 0; y < h; y++) {
+        const isEar = h - y <= 3;
+        ctx.fillStyle = isEar ? shade(ear, tone + (rand() * 2 - 1) * 0.06) : shade(stalk, tone - 0.2 * (1 - y / h));
+        ctx.fillRect(x, N - 1 - y, 1, 1);
+      }
+    }
+  });
+}
+
 // ---------------------------------------------------------------------------
 // Minecraft blocks: 16×16 tiles, one tile per metre. Used by <Vox> in blocks.tsx.
 // ---------------------------------------------------------------------------

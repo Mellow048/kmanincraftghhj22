@@ -16,6 +16,7 @@
     "stills": "node scripts/stills.mjs",
     "bundle": "remotion bundle src/index.ts",
     "shots": "node scripts/shots.mjs",
+    "shot-log": "node scripts/shot-log.mjs",
     "sound": "python3 scripts/sound.py"
   },
   "dependencies": {

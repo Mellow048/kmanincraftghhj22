@@ -23,21 +23,41 @@ That gives you a film folder made from this topic's starter ([`template/`](templ
 `kit.tsx` wired to the pack, a town to change, and one scene with two shots that already render. It does not give
 you a story.
 
-## The models
+## The reference film, and the other films the owner approved
 
-Two finished films. Open them before you write anything.
+**`in-this-town-same-face`, "In This Town, Everyone Had the Same Face Except Me".** The owner on the picture:
+"everything is perfect top to bottom", "i like the assets". On the finished film with its sound: "yes its good put it
+as the topic's reference". Open it before you write anything, and build like it.
 
-| Film | The owner said | Use it as the model for |
+Its page is [`reference/same-face/`](reference/same-face/README.md): the film itself, its source, its shape measured
+beat by beat, its sound in numbers, and a log of all 57 shots with the reason for each.
+
+**Every film the owner approved is kept in [`reference/`](reference/README.md), with its source code and its mp4**
+("so that other agents know how to make a good short"). Each folder there holds the film, one picture of all its
+shots, a log of every shot, a snapshot of its source, and a page on what it is good for and what was hard.
+
+| Film | The owner said | Use it for |
 |---|---|---|
-| `src/videos/in-this-town-same-face/` (short cut: 14 beats, 57 shots, 441 words, 1:45) | "everything is perfect top to bottom", "i like the assets" | **Everything.** `narration.md` for the shape of a script. `kit.tsx` for how a film uses the pack. `world.tsx` for a town in zones. Any `sceneN.tsx` for what a shot is. `sound.json` for the sound. Watch `renders/in-this-town-same-face.mp4` |
-| `src/videos/in-this-town-monster-egg/` (full film: 18 beats, 93 shots, 746 words, 2:57) | Merged to `main` | The long cut: how 18 beats are spread over three minutes. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
+| [`reference/same-face/`](reference/same-face/README.md): `in-this-town-same-face` (short cut: 14 beats, 57 shots, 441 words, 1:45). **The reference** | "yes its good put it as the topic's reference" | **Everything.** `narration.md` for the shape of a script. `kit.tsx` for how a film uses the pack. `world.tsx` for a town in zones. Any `sceneN.tsx` for what a shot is. `sound.json` for the sound |
+| [`reference/nobody-looked-at-the-moon/`](reference/nobody-looked-at-the-moon/README.md): `in-this-town-nobody-looked-at-the-moon` (short cut: 14 beats, 63 shots, 471 words, 1:52) | "every single one u made is good" | A film at NIGHT: a town in warm lantern light, cold moonlight that lies on one place at a time and moves like a character (`skyAt()` in its `kit.tsx`), and every part under "Fields and night" in [`PACK.md`](PACK.md). A remake of a rejected 20-second film. The densest sound sheet, and what was cut from it |
+| [`reference/monster-egg/`](reference/monster-egg/README.md): `in-this-town-monster-egg` (full film: 18 beats, 93 shots, 746 words, 2:57) | "every single one u made is good" | The long cut: how 18 beats are spread over three minutes, and three places in one world. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
+| [`reference/superpower-at-18/`](reference/superpower-at-18/README.md): `in-this-town-superpower-at-18` (full film: 18 beats, 90 shots, 710 words, 2:48) | "wow i love it, i love how u made the short" | The long cut WITH sound, and a story the owner outlined himself. Its page says what he rejected on the way |
+| `src/videos/in-this-town-pumpkin-heads/` (short cut: 58 shots, 490 words, 1:56). Not in `reference/` | He approved the script and asked for another ending; its `narration.md` says which | A second short cut with sound, and an ending that is not the subscribe sign held to camera |
 
 Copy how they are **built**. Never copy what they **tell**: no premise, sentence, joke or twist from a finished film
 goes into a new one.
 
+The films that render live in `src/videos/<film>/`, and their delivered mp4s in `renders/`. What is in `reference/`
+is a copy of both, kept beside the page that explains it.
+
+The treehouse video in `reference/treehouse/` is where the format came from. It is a Roblox video by someone else,
+studied for its shape. The reference film is ours.
+
 ## Read in this order
 
-1. This page.
+1. This page, then [`reference/README.md`](reference/README.md): which films the owner approved, and what each is
+   for. Then the reference film's page, [`reference/same-face/`](reference/same-face/README.md), its contact sheet and
+   its shot log.
 2. [`SCRIPT.md`](SCRIPT.md) — how the story is written. This is where version 1 failed.
 3. [`SHOTS.md`](SHOTS.md) — how it is cut and shot, and how each Roblox trick becomes a Minecraft one.
 4. [`PACK.md`](PACK.md) — the people, places and things that already exist. One picture, one table for each file.
@@ -45,6 +65,12 @@ goes into a new one.
 6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
 7. [`reference/monster-egg-v1/`](reference/monster-egg-v1/README.md) and
    [`reference/moon-20-seconds/`](reference/moon-20-seconds/README.md) — one page each on the attempts the owner rejected.
+   Each has an approved film beside it that tells the same idea.
+8. The page of the approved film nearest to yours: night ([`reference/nobody-looked-at-the-moon/`](reference/nobody-looked-at-the-moon/README.md)),
+   the long cut ([`reference/monster-egg/`](reference/monster-egg/README.md)), or the long cut with sound and the
+   ending the owner threw out first ([`reference/superpower-at-18/`](reference/superpower-at-18/README.md)).
+9. [`reference/superpower-at-18-part-2/`](reference/superpower-at-18-part-2/README.md) — the film the owner rated highest
+   ("a banger… peak"), its source, and why its first render was rejected: motion and pace. Read it before any action scene.
 
 ## What changes from the base rules
 
@@ -153,20 +179,27 @@ still an estimate, and whether the mix is older than the script.
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic and its short cut, the limits of the sound, and the list of model films |
+| `topic.json` | The numbers `npm run check` enforces for this topic and its short cut, the limits of the sound, the reference film and the other finished films |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the story, the picture, the sound |
-| `PACK.md`, `pack.jpg` | The catalogue of the pack |
+| `PACK.md`, `pack.jpg`, `pack-night.jpg` | The catalogue of the pack, and one still for each part |
 | `index.ts` | The pack, from one import: `import { Villager, Hut, pop } from "../../../Topics/InThisTown"` |
 | `staging.ts` | When a word is said, how a thing pops in, where "in front of him" is, how to climb a hill |
 | `villagers.tsx` | The villager, the iron golem, the poppy |
 | `players.tsx` | Twelve players, no two alike, and the pumpkin head |
-| `things.tsx` | Speech bubble, bed, hole, flying bits, smoke of three kinds, a burning roof, firelight |
-| `everyday.tsx` | Additive bread, basket, backpack, bottle, rope, stool, jar and screw props; see the review status in `PACK.md` |
-| `places.tsx` | House (new, burned out, on fire), bell, well, stall, lamp post, stepped hill, bedroom, tunnel |
+| `things.tsx` | Speech bubble, bed, hole, flying bits, smoke of three kinds, a burning roof, firelight; a wide straw hat, a bucket, a lantern |
+| `places.tsx` | House (new, burned out, on fire, lit, door open), bell, well and its lid, stall, lamp post, lantern post, lantern line, fence, stepped hill, bedroom, tunnel |
+| `everyday.tsx` | Additive bread, basket, backpack, bottle, rope, stool, jar and screw props; see `PACK.md` |
 | `creatures.tsx` | Egg, worm, dragon, phoenix, stone golem, the mother, chicken, rank sign, fire, puffs, sound rings, and the red "Subscribe" sign every film ends on |
+| `fields.tsx` | What lies round the town and over it at night: wheat, scarecrows that stand and walk, pines and the edge of a forest, a moon, moonlight that falls on one place, stars |
 | `template/` | The starter film that `npm run new -- … --topic in-this-town` copies |
-| `reference/treehouse/` | The model video, its transcript, a shot log and contact sheets |
+| `reference/README.md` | **Start here for examples**: every film the owner approved, what each is for, and how to add one |
+| `reference/same-face/` | **The reference film**: the mp4, its source, its shape and its sound measured, and a log of every shot |
+| `reference/nobody-looked-at-the-moon/`, `reference/monster-egg/`, `reference/superpower-at-18/` | **Three more films the owner approved**, each with its mp4, its source, a log of every shot, and what was hard |
+| `reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
+| `reference/superpower-at-18-part-2/` | **The owner's favourite so far**, with its mp4 and source: how to stage fast action and show the process |
+| `monsters.tsx` | The people of a monster village: zombie, skeleton, creeper, spider, enderman, slime. All of them can act |
+| `InThisTownMusic.aac` | Background music the owner added on 2026-11-13: 3:36, stereo. Superpower part 2 plays it: put `"track"` in a film's `sound.json` `music` (see `SOUND.md`) |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
 of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second

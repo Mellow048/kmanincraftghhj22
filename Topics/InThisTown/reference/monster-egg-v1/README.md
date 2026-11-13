@@ -20,3 +20,7 @@ Measured against the treehouse reference:
 The lesson is not "make it longer". It is that this kind of story is *explained*: the viewer has to know how the
 town works before they can care that one kid's egg is wrong, and has to be asked a question before the answer can
 land. Twenty seconds cannot hold that, and one unbroken camera cannot show a new thing for every noun.
+
+The film that replaced it is kept beside this folder with its source and its mp4:
+[`../monster-egg/`](../monster-egg/README.md). 93 shots, 746 words, 2:57, and the owner approved it. Read the two
+side by side.

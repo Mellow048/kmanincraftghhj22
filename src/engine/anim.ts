@@ -62,7 +62,9 @@ export type AnimName =
   | "cheer"
   | "laugh"
   | "shrug"
-  | "ache";
+  | "ache"
+  | "leanOver"
+  | "push";
 
 /** Walking clips whose phase is driven by ground distance, not the clock. */
 export type GaitName = "walk" | "run" | "creep" | "stagger";
@@ -558,6 +560,36 @@ export function getPose(name: AnimName, t: number): Pose {
       return p;
     }
 
+    case "leanOver": {
+      // Bent at the hips over a rim or a sill, both hands flat on it, looking down into whatever is there.
+      // The legs stay upright under the hips. With the feet 0.55 m × scale short of the edge, the hands land on it.
+      const lean = 0.45;
+      p.bodyPitch = lean;
+      p.legR = [-lean, 0, 0.04];
+      p.legL = [-lean, 0, -0.04];
+      p.armR = [-1.55, 0, 0.1];
+      p.armL = [-1.55, 0, -0.1];
+      p.head = [0.3 + Math.sin(time * 0.9) * 0.02, 0, 0];
+      p.bodyY = Math.sin(time * 1.3) * 0.004;
+      return p;
+    }
+
+    case "push": {
+      // Both hands on something heavy at chest height, the back leg braced, the whole body behind it.
+      const heave = Math.sin(time * 9) * 0.012;
+      const lean = 0.36;
+      p.bodyPitch = lean + heave;
+      p.bodyY = -0.05;
+      p.legR = [-0.34 - lean, 0, 0.04];
+      p.kneeR = [0.55, 0, 0];
+      p.legL = [0.44 - lean, 0, -0.04];
+      p.kneeL = [0.08, 0, 0];
+      p.armR = [-1.42 - lean + heave, 0, 0.08];
+      p.armL = [-1.42 - lean - heave, 0, -0.08];
+      p.head = [0.12, 0, 0];
+      return p;
+    }
+
     default:
       return p;
   }
@@ -596,4 +628,6 @@ export const ANIM_NAMES: AnimName[] = [
   "laugh",
   "shrug",
   "ache",
+  "leanOver",
+  "push",
 ];
