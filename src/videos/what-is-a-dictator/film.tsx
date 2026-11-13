@@ -26,7 +26,7 @@ export const film = defineFilm({
   topic: "explainer",
   look: "overworld-day",
   // The voice alone, until the sound is built (scripts/sound.py build): then this is mix.mp3.
-  audio: { src: "audio/what-is-a-dictator/narration.mp3" },
+  audio: { src: "audio/what-is-a-dictator/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7],
