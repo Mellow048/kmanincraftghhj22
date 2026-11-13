@@ -56,4 +56,4 @@ What that means for the next film:
 - **Sound that lands on the last word of a line covers the next line.** The `boom` on "life" had to come down 6 dB.
 - Nobody has listened to the mix with ears: it passed the numbers only.
 
-Part two is not made yet. It starts where this stops.
+Part two is made and approved: see [`../superpower-at-18-part-2/`](../superpower-at-18-part-2/README.md).

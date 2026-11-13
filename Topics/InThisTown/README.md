@@ -47,6 +47,8 @@ goes into a new one.
    [`reference/moon-20-seconds/`](reference/moon-20-seconds/README.md) — one page each on the attempts the owner rejected.
 8. [`reference/superpower-at-18/`](reference/superpower-at-18/README.md) — a film the owner approved ("i love it"), its source,
    and the ending he threw out first. What to aim at.
+9. [`reference/superpower-at-18-part-2/`](reference/superpower-at-18-part-2/README.md) — the film the owner rated highest
+   ("a banger… peak"), its source, and why its first render was rejected: motion and pace.
 
 ## What changes from the base rules
 
@@ -160,6 +162,7 @@ still an estimate, and whether the mix is older than the script.
 | `reference/treehouse/` | The model video, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
 | `reference/superpower-at-18/` | **A film the owner approved**, with its source and what he rejected on the way: the target |
+| `reference/superpower-at-18-part-2/` | **The owner's favourite so far**, with its source: how to stage fast action and show the process |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
 of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second
