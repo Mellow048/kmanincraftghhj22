@@ -16,3 +16,5 @@ export * from "./everyday";
 
 export * from "./monsters";
 export * from "./fields";
+
+export * from "./small-props";

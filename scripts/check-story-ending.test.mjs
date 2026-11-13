@@ -47,5 +47,13 @@ test("the named ending exception leaves all length, pace, caption and sound rule
   assert.equal(topic.film.lastLineContains, "subscribe");
   assert.equal(topic.film.captions, true);
   assert.equal(topic.sound.required, true);
-  assert.deepEqual(Object.keys(topic.endingOverrides), ["in-this-town-freeze-bell"]);
+  assert.deepEqual(Object.keys(topic.endingOverrides), ["in-this-town-freeze-bell", "in-this-town-five-seconds"]);
+});
+
+test("the separately approved prince ending is exact, scoped, and not a sequel waiver", () => {
+  assert.equal(check("in-this-town-five-seconds", '\"The prince of our village.\"').error, undefined);
+  for (const ending of ["And I saw...", "Subscribe for part two.", "The king of our village.", ""]) {
+    assert.match(check("in-this-town-five-seconds", ending).error, /must be exactly/);
+  }
+  assert.match(check("a-new-story", '\"The prince of our village.\"').error, /subscribe/);
 });

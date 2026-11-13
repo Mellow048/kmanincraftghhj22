@@ -1,0 +1,11 @@
+{
+  "spoken_sha256": "e3f31d5c18859fb8f573edc246b9d1a79c4ecf157a77b869f23768f823e8bb15",
+  "words": 674,
+  "cues": 91,
+  "readable_equals_cues": true,
+  "proposal_equals_production": true,
+  "timing_equals_approved": true,
+  "voice": "voice-00",
+  "raw_recording_hashes_verified": 9,
+  "music_sha256": "5adf61371ab3f4fe5c1eff93bfa15ef940a7be3f9888da5807cececf2fafaca3"
+}

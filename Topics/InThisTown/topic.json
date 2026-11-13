@@ -146,6 +146,10 @@
     "in-this-town-freeze-bell": {
       "exactLine": "And I saw...",
       "reason": "Owner requested the downward-looking golem recall, an upward look and an unfinished saw line followed by a cut, instead of the forced subscribe ending; no part-two promise. 2026-11-12."
+    },
+    "in-this-town-five-seconds": {
+      "exactLine": "\"The prince of our village.\"",
+      "reason": "Owner explicitly approved Draft 2, including the exact prince recognition followed by a brief reaction and black, with no CTA or sequel promise; subsequently approved the trip revision and MP4. This permission is scoped to Five Seconds only."
     }
   }
 }

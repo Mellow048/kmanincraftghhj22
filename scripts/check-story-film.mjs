@@ -50,6 +50,21 @@ const sha1 = (data) => crypto.createHash("sha1").update(data).digest("hex");
 const textHash = (file) => sha1(Buffer.from(fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n").trim(), "utf8"));
 const fileHash = (file) => sha1(fs.readFileSync(file));
 
+/** Optional recorded-music input hashing. Legacy v1 deliveries remain untouched, not retroactively certified. */
+export function checkMusicTrack({ root, sheet, lock }) {
+  const track = sheet.music?.track;
+  if (!track) return [];
+  const required = /\bv2$/.test(lock.tool ?? "") || Object.hasOwn(lock, "music_track");
+  if (!required) return [];
+  const file = path.resolve(root, track);
+  if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return [`music.track is missing: ${track}`];
+  const sha256 = crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+  if (lock.music_track?.path !== track || lock.music_track?.sha256 !== sha256) {
+    return ["music.track bytes changed or were not hashed when the mix was built"];
+  }
+  return [];
+}
+
 /**
  * THE SOUND. A story film is not finished until it has music, beds and effects under the voice:
  * a sound sheet (sound.json), and the mix scripts/sound.py built from it. This checks that the mix
@@ -100,6 +115,15 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
   if (from["timing.json"] !== textHash(path.join(dir, "timing.json"))) changed.push("timing.json");
   if (from["sound.json"] !== textHash(sheetPath)) changed.push("sound.json");
   if (!fs.existsSync(voicePath) || from["narration.mp3"] !== fileHash(voicePath)) changed.push("narration.mp3");
+  try {
+    const sheet = JSON.parse(fs.readFileSync(sheetPath, "utf8"));
+    changed.push(...checkMusicTrack({ root, sheet, lock }));
+    if (sheet.music?.track && !Object.hasOwn(lock, "music_track") && /\bv1$/.test(lock.tool ?? "")) {
+      info(`${tag}: legacy delivered v1 mix; its track bytes predate input hashing. Preserved, not rebuilt.`);
+    }
+  } catch {
+    changed.push("sound.json is not valid JSON");
+  }
   if (changed.length > 0) {
     fail(`${tag}: the mix is out of date: ${changed.join(", ")} changed after it was built. Run: ${build}`);
     return;

@@ -1,0 +1,104 @@
+{
+  "status": "Approved, recorded, animated and mixed; encoded delivery pending",
+  "script": "narration.md",
+  "spoken_text_sha256": "e3f31d5c18859fb8f573edc246b9d1a79c4ecf157a77b869f23768f823e8bb15",
+  "words": 674,
+  "proposed_shots": 91,
+  "beats": 18,
+  "planned_clips": [
+    {
+      "clip": "01-secret",
+      "characters": 337,
+      "words": 62,
+      "cues": 9
+    },
+    {
+      "clip": "02-school",
+      "characters": 451,
+      "words": 85,
+      "cues": 10
+    },
+    {
+      "clip": "03-rules",
+      "characters": 390,
+      "words": 78,
+      "cues": 10
+    },
+    {
+      "clip": "04-locker",
+      "characters": 548,
+      "words": 106,
+      "cues": 14
+    },
+    {
+      "clip": "05-night",
+      "characters": 428,
+      "words": 75,
+      "cues": 10
+    },
+    {
+      "clip": "06-window",
+      "characters": 456,
+      "words": 87,
+      "cues": 11
+    },
+    {
+      "clip": "07-chase",
+      "characters": 460,
+      "words": 92,
+      "cues": 12
+    },
+    {
+      "clip": "08-five-seconds",
+      "characters": 292,
+      "words": 57,
+      "cues": 10
+    },
+    {
+      "clip": "09-prince",
+      "characters": 182,
+      "words": 32,
+      "cues": 5
+    }
+  ],
+  "estimate": {
+    "tool": "scripts/narration.py build, isolated scratch root, estimate=True",
+    "seconds": 158.9,
+    "wpm": 255.3,
+    "fps": 30,
+    "estimated": true,
+    "audio": null,
+    "shortest_shot": 0.7333,
+    "median_shot": 1.8,
+    "longest_shot": 2.7667
+  },
+  "limits_checked": [
+    "640\u2013770 words",
+    "150\u2013178 estimated seconds",
+    "80\u201395 proposed shots",
+    "18 beats",
+    "all cue ids unique",
+    "one cue \u226418 words",
+    "median 1.4\u20132.3 seconds; no shot >6 seconds",
+    "\u226410 clips; each \u22641500 characters",
+    "no invented cooldown or sequel promise in spoken text",
+    "requested recognition is the final line"
+  ],
+  "not_yet_validated": [
+    "Encoded full-HD MP4 delivery",
+    "Subjective real-time listening/playback (not available to this agent)"
+  ],
+  "ending_exception": "Separate exact prince-ending override is installed and tested for this film only.",
+  "previous_draft_spoken_text_sha256": "8f16bd2dbece55821ff0e6ed4e39432201e1e1d7a7e3a61fe084571060663d43",
+  "spoken_text_normalization": "Cue texts joined by one ASCII space, UTF-8, no trailing newline",
+  "spoken_revision": "Approved trip counter: place rock, foot catches it, stumble/spin/land. All other words unchanged.",
+  "owner_approved": true,
+  "approval_quote": "yes go ahead and make it seems good enough, just make sure its entertaining and has good motion and not teleporting to point A to point B without showing the motion to go to Point B",
+  "production_duration_seconds": 161.6,
+  "production_shots": 91,
+  "production_words_per_minute": 251.8,
+  "timing": "src/videos/in-this-town-five-seconds/timing.json",
+  "production_frames": 4848,
+  "trip_approval_quote": "okay this seems more kid friendly go ahead and do the mp4",
+  "script_equality": "91 production cues, proposal cues, readable narration, and timing cue texts match exactly"
+}

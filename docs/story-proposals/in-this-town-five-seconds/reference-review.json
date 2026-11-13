@@ -1,0 +1,607 @@
+{
+  "main_commit": "deabadc5cf505e021f1dff6f314361632edc18a6",
+  "previous_complete_review_commit": "74296927c66583a7903dc26671e1283d5df32957",
+  "working_branch": "arena/90c86f33-kmanincraftghhj22",
+  "working_head": "aa2fb0f95ecc2bd613568186f5a3aa2a134d54d3",
+  "main_merged": false,
+  "review_methods": {
+    "complete current delta reviewed against previously read text": 6,
+    "full current text reviewed": 34,
+    "byte-identical Git blob to completed prior review": 13,
+    "hash-identical to fully read reference/source/narration.md": 1
+  },
+  "markdown_files": [
+    {
+      "path": "AGENTS.md",
+      "git_blob": "6a7cf0c3f32030f907c3414347b57d8c89723348",
+      "sha256": "36d32773d3f284bd27cf286325ac24098384167eb31309313df3bb697b8c1755",
+      "review": "complete current delta reviewed against previously read text"
+    },
+    {
+      "path": "CLAUDE.md",
+      "git_blob": "ddc9f113094b71006ed77e2bf7f40e2e9b6d47e3",
+      "sha256": "291a33833265429cda677a8aeb7a624094ef74b57da4bb5a8b796e2751eb519f",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "GEMINI.md",
+      "git_blob": "ddc9f113094b71006ed77e2bf7f40e2e9b6d47e3",
+      "sha256": "291a33833265429cda677a8aeb7a624094ef74b57da4bb5a8b796e2751eb519f",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "README.md",
+      "git_blob": "0667c7f8fcb7122c5d32fb5e2ccd17f145545a8e",
+      "sha256": "5a45bdfe4c771ca9c09f4c230cfde36c9070a34ae5e12bccbd9eca3d463bacf6",
+      "review": "complete current delta reviewed against previously read text"
+    },
+    {
+      "path": "Topics/Explainer/PACK.md",
+      "git_blob": "c7aac1d67f126cd3d1368f600ee07dc43ae3bb21",
+      "sha256": "37518db059cef4874989401544dbb9ccdc6524eace093bb3f3cff5665caa0564",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/Explainer/README.md",
+      "git_blob": "c77c29eca5852225eb633fc1d0544b0ba8d3002b",
+      "sha256": "c281700aab84807f94f622c5b73cc57d6699f6170f5ebc7aba9999105e797752",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/Explainer/SCRIPT.md",
+      "git_blob": "307f17c50f826d9e40fae78d83153ff8a0aa3bdf",
+      "sha256": "96b4375095b048e0650fa36eee76bed47c418001f87b9e0fb7d6fe406f00380b",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/Explainer/SHOTS.md",
+      "git_blob": "95bdcacb926ac740abf225f556908c3fdebe232b",
+      "sha256": "9e313c3a243db54ebb6288562e0298911b68c76c31bf141ebba3166dafe2541e",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/Explainer/SOUND.md",
+      "git_blob": "04bc8993801f25ec2f950032a3f3384a7a42d070",
+      "sha256": "ae58998f985cadc166219ced7dca78dd8a50abefb9c0bb9e6455d12678542d1b",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/Explainer/reference/README.md",
+      "git_blob": "63912c06656c452e3f8b95c2e5622b7c44f1a201",
+      "sha256": "13955ef349ba1b5b5490553a0804f1eeca777971b5539864bfda73c6cbda88db",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/Explainer/sheet/narration.md",
+      "git_blob": "cea8a4fdd79f3b34ec0d54ab5b905ce18f26647b",
+      "sha256": "2ff5bdff370201fc67cc778c072614a2d3a5552ec9ce9d9814c978a3841293ea",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/Explainer/template/narration.md",
+      "git_blob": "d83f4b7cb1fd9db534f373dd8d5c463d77f6cf3f",
+      "sha256": "d8055ffe748c9bbbb44be4a733fcf1b07e6785a23ff58c3f404ba2e4406eec1d",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/PACK.md",
+      "git_blob": "5e3b12f14700f8fb5cb6b113049b00a6fd17e3ac",
+      "sha256": "47a9d16935d51cd4d43c0a5fd9228646d5d354ca5b1963b95cef004eacbb5954",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/README.md",
+      "git_blob": "fbd17ba2577ea8701b761e0eeb7d4115ec1b03bf",
+      "sha256": "115fc2beae99d76dc884cdad6d18f59ee2b89adf6bee970ba5372870209951af",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/SCRIPT.md",
+      "git_blob": "4aa8a6397eab1422958c2ed53bea414895be49d1",
+      "sha256": "0c57464efebeabcca8417a7b7a5c1ee9ce42ec7a4522b769a6a117f68b377acd",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/SHOTS.md",
+      "git_blob": "758817c506f69c1e546725dcb950762846536a6a",
+      "sha256": "c29762f587ee8cca07eb2b1ca25350aba4bfecc72d7fe098beebb7520fe065fb",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/SOUND.md",
+      "git_blob": "5e7045060cfb3674ac08032b0896a3a4c3f48139",
+      "sha256": "cc8590e2280cc39f85532e419b6ec391afcffa333a8643b03fec2aeff518a0c6",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/reference/monster-egg-v1/README.md",
+      "git_blob": "91117eced2aee8e8a27656811150f81c954b892b",
+      "sha256": "f781eef29b0a7806337b2c883724518f2bd5da7fa82c9e86fc2755cd9a573eae",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "Topics/InThisTown/reference/moon-20-seconds/README.md",
+      "git_blob": "2692131003fe1ce24660e49ca725a6cfcb5b56e6",
+      "sha256": "598c9bf26bb09976e3d8f6d96e950ad35b434f5d565b55af79293579ec5f89e4",
+      "review": "complete current delta reviewed against previously read text"
+    },
+    {
+      "path": "Topics/InThisTown/reference/same-face/README.md",
+      "git_blob": "5e5dc3c706b5d0bbd782e9d0e2f412a1687e69bb",
+      "sha256": "a5d7025cb99d92e43d8d5cb9b6b65af54e6709c8f7e92b4393dbe44b3e7a27b1",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/reference/same-face/shot-log.md",
+      "git_blob": "2c66399e75094b4d855ade5190107ce723e1e0ff",
+      "sha256": "b83e30672318a2b2c1568a9d04261c9e650f552cc3ba6692abba19a13f73dfed",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/reference/superpower-at-18/README.md",
+      "git_blob": "eb1a4488d80119ef3c2a66f8cfc9c91042530f07",
+      "sha256": "43f424ea025042f42dc5d46e12695d5e8efcc3def998b0ea5e89be3e0cb51ed2",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/reference/superpower-at-18/source/narration.md",
+      "git_blob": "e16735d073c72cfc72ae6ac2ed93f7877091f4c1",
+      "sha256": "57d4a0ca764edc3dd7accad443aad42f713a8cce304e1649c6502d1a2c2f7a8b",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/InThisTown/reference/treehouse/README.md",
+      "git_blob": "b4474d364b37baad2bb248c1df09440c5d17f5ce",
+      "sha256": "51c1f207b481486c456b2645041f016355b4d4ae65b52913c18573dc88a03e1a",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "Topics/InThisTown/reference/treehouse/roblox-builder-prompt.md",
+      "git_blob": "70b327919634ec080b3c98e4c62947d0f451c44e",
+      "sha256": "9456e2a43ad0b66a12d368d758735bc0708f807aedeac52ce7224de637618370",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "Topics/InThisTown/reference/treehouse/shot-log.md",
+      "git_blob": "7b293f2523710ef90cfba25d97651e1d66f2a269",
+      "sha256": "4b2779512a66cb79325c8af20811d0834da13b308c8e4194306f495038e5a6f8",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "Topics/InThisTown/reference/treehouse/transcript.md",
+      "git_blob": "d5fe0c6239dde7b57e5294196a1b672a65a811fb",
+      "sha256": "a78c42d92fe21be7d926cd08f5693024cb47cd66af43481d7789527d1e388954",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "Topics/InThisTown/template/narration.md",
+      "git_blob": "09250f68e7e6405ac26f5f15193186537dba8968",
+      "sha256": "891d48b76d41a6ec07cb78734dd2edb295fb2c05f6fe4e17b164f55668ecff90",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/README.md",
+      "git_blob": "ae54c3c2fbc3f412c2021773c091932f79552cbb",
+      "sha256": "32ff13734d03ec2a1b6668d71503421829bd46046db5308574afaa361d67c367",
+      "review": "complete current delta reviewed against previously read text"
+    },
+    {
+      "path": "Topics/Shared/README.md",
+      "git_blob": "3d3b79a502a2c164a41efcb4622beb8be8aefb36",
+      "sha256": "a5935c2bafc2a43a19aa678d3e8a6213a2e897337c6723744b7f28e8a285f97d",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/PACK.md",
+      "git_blob": "4538c929347aa2598bbf3f6e14a0969056bc1fa8",
+      "sha256": "6bb7967ac9750e5894c04cb3b8b0ecd306d052be09084db538e4497be77ee80a",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/README.md",
+      "git_blob": "fdcefc8da54cbc412efb66948dd5bd78c282b1d2",
+      "sha256": "583c2a77584c2caf310cbfca44593a837d177feaa1b3e86ae97fcbd68fb6b828",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/SCRIPT.md",
+      "git_blob": "c9310833cc16f71aa2745309196b9b1a96d0fa78",
+      "sha256": "8ce94c2cd43814cfe5d2c0e9ba52de6702d6466d678b47a7b7a8710c7860edfa",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/SHOTS.md",
+      "git_blob": "ca16889b7385f364752fd20d4fb3d667ebef32f9",
+      "sha256": "0a7899151171d63ae78c5695df9a3cabbae6f20a8e5c2832f762040d2e5cecd8",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/SOUND.md",
+      "git_blob": "e9096746fb307c72e8a5a855c9a11b2c1d2ddb33",
+      "sha256": "9ed3d3f8f0870042dfd0b6c833f6c48a402fbd44796d4981cd1f61b87b3f7888",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/reference/README.md",
+      "git_blob": "8137933b76ba23795095c44fd55d2b245baab9db",
+      "sha256": "8a7bb0663255d3bce528ae84a1b6dca725940c7606987923637f1a05263443eb",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/sheet/narration.md",
+      "git_blob": "d7992635e5e1a4790aeece79f5af04087ddb94c7",
+      "sha256": "e9fde3231e3ce3881f8f7094a9f5b97aa2378e0c368427823618cd7318102118",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "Topics/WhatIf/template/narration.md",
+      "git_blob": "9860e45b5b6427c6eefae35a19a817c4afcd0568",
+      "sha256": "511d6f0ac7a45c4124d62919ecb03bf0798848ace5a8781ec280d03edebfa995",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "docs/CAMERA-BIBLE.md",
+      "git_blob": "352ebacb858fb14abb8738197d2378c1cc387294",
+      "sha256": "cd430e06ec2802e1e6d6b554282fc5df9f10513453b37b5301d90b4917c485db",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "docs/NARRATION-RULES.md",
+      "git_blob": "beb26194d4dc0826a1270943805621b4c8cae0c1",
+      "sha256": "8def49af23c234d3c3a19ba3fb6c648a1d0a528a733b6bcfc1c6cfb897ca47ed",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "docs/NARRATION.md",
+      "git_blob": "dbba80082df45b0135142c2c5cf691e82c24beb0",
+      "sha256": "f8ad201dc40aaeecc3ecf869595e85e527acc1c0d5f072106632837079218ddc",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "docs/SCENE-CONTRACT.md",
+      "git_blob": "fede37a07b3ecf58169428491c2e7428f1b81e31",
+      "sha256": "e1c7f0fa2cb9e6da69108bab9e817c320cef1c0ac975b0e615002f389a6c2e53",
+      "review": "complete current delta reviewed against previously read text"
+    },
+    {
+      "path": "docs/STORY-FILMS.md",
+      "git_blob": "6b52dcb208d1c2da20cd79a85f962b1899e6f7dd",
+      "sha256": "327cc98dac700281409820ee0911f43090572fda9c0379cb20d3d9420ac37c5f",
+      "review": "complete current delta reviewed against previously read text"
+    },
+    {
+      "path": "docs/STYLE.md",
+      "git_blob": "896af09b6ca615e652ef9627bd60132758f37b9b",
+      "sha256": "f8f6458c35a8a0a0c3b78c080762f8b03513f8250c187a4e616e3aac5dfe1202",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "src/videos/in-this-town-monster-egg/narration.md",
+      "git_blob": "014af54bb2bcd5a698d7694f77c522830182dbe9",
+      "sha256": "f060e94e25be36e5b02b35a7f8c5341e1e444615dc5e16ffe098e7fc965ebd08",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "src/videos/in-this-town-nobody-looked-at-the-moon/narration.md",
+      "git_blob": "9ce0dd8dfd6715a68558bbbb2b4b7a3241aea6ae",
+      "sha256": "6e788ee2b77ddb169f75977e714bdc242d964e3e0480dbee2801bfeaa7d566c2",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "src/videos/in-this-town-pumpkin-heads/narration.md",
+      "git_blob": "336e35dd87c46295122263abf86967108f163a02",
+      "sha256": "2624649c6d8a8ab02bb0c42c54484348d67b624580db99e95d7a693726762e16",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "src/videos/in-this-town-same-face/narration.md",
+      "git_blob": "e6e8509d9757d534e27766433419c91b674241d0",
+      "sha256": "7b25a7a7474ca667c5a3460290c7ee7eb771a6af6ad6a546a1b1e62d54fee7f1",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "src/videos/in-this-town-superpower-at-18/narration.md",
+      "git_blob": "e16735d073c72cfc72ae6ac2ed93f7877091f4c1",
+      "sha256": "57d4a0ca764edc3dd7accad443aad42f713a8cce304e1649c6502d1a2c2f7a8b",
+      "review": "hash-identical to fully read reference/source/narration.md"
+    },
+    {
+      "path": "src/videos/what-if-you-could-see-who-had-a-crush-on-you/narration.md",
+      "git_blob": "bbf390460a1a04213cebe5f2f4e7be43293bc4e7",
+      "sha256": "af53a832ea8f0c2aea0379bcde94c6e33a5f0edebf373b442829dafc65f28dff",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "src/videos/why-does-bread-cost-more-every-year/narration.md",
+      "git_blob": "a6df576a123a823a8eb88ba7aeca43132cee3c87",
+      "sha256": "fa78b76c0cb1260f0026d8e97e895394f7e9cce7559950a8ef2ee4cbc649adae",
+      "review": "full current text reviewed"
+    },
+    {
+      "path": "templates/cast/README.md",
+      "git_blob": "01b1a43fe609d8cab36be6ecafc7b2ec062991af",
+      "sha256": "aa1de8513eafb7aff0b0c8d76692436ea9a06b4f42855834ceddb2e10b12cdaf",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "templates/video/README.md",
+      "git_blob": "1f4caa7d9f5ac0ff75fac37201826fe744991a20",
+      "sha256": "b37ccd3bb159286e83b887e6d5859cc8f6902cedf75b26889f99ecda745d6cff",
+      "review": "byte-identical Git blob to completed prior review"
+    },
+    {
+      "path": "templates/video/narration.md",
+      "git_blob": "61b1a267f62ba04fcb287dff6da04d374b862322",
+      "sha256": "f05c68dd4e1bb7c50be794b80bdb9250a906445dd142819fd0749457431e5745",
+      "review": "byte-identical Git blob to completed prior review"
+    }
+  ],
+  "superpower_reference": {
+    "all_18_scene_sources_read": true,
+    "additional_sources_read": [
+      "README.md",
+      "narration.md",
+      "film.tsx",
+      "kit.tsx",
+      "world.tsx",
+      "timing.json",
+      "sound.json",
+      "sound.lock.json"
+    ],
+    "visual_review": "84 every-two-second samples, 18 focused extracted frames, and 90 additional shot midpoints across six sheets from the actual Part 1 MP4; not full-motion playback.",
+    "audio_listened": false,
+    "archived_mp4_probe": {
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "seconds": 168.149,
+      "bytes": 43798197
+    },
+    "caveat": "Reference README claims 1080x1920; archived MP4 is 720x1280. New film target remains 1080x1920.",
+    "follow_up_all_90_scene_notes_reread": true,
+    "all_25_reference_source_blobs_match_live_main": true
+  },
+  "topic_music": {
+    "source": "Topics/InThisTown/InThisTownMusic.aac",
+    "commit_message": "backround music for InThisTown Videos \u2014 Use this everytime",
+    "bytes": 3619780,
+    "sha256": "5adf61371ab3f4fe5c1eff93bfa15ef940a7be3f9888da5807cececf2fafaca3",
+    "probe_estimated_seconds": 215.715084,
+    "sample_rate": 44100,
+    "channels": 2,
+    "audio_listened": false,
+    "implementation": "Not integrated into this working branch. deabadc main is procedural-only, but approved Part 2 at cda5695 implements opt-in music.track/trackFrom in scripts/sound.py. Reuse/adapt after approval; add track-byte hashing/staleness tests. No finished mix changed.",
+    "user_explicitly_required": true,
+    "same_bytes_in_part_2": true
+  },
+  "part_2_reference": {
+    "source_commit": "cda5695dc2b9b7f758bcf9c0abfa2c2b347a877f",
+    "render_source_commit": "6b928a4f1ab7fe3f4fcd37630c37cee2fe00721b",
+    "source_branch_read_only": "arena/e0330cc3-kmanincraftghhj22",
+    "working_branch_switched": false,
+    "merged": false,
+    "path": "Topics/InThisTown/reference/superpower-at-18-part-2",
+    "release": "https://github.com/Mellow048/kmanincraftghhj22/releases/tag/render-27",
+    "successful_run": "https://github.com/Mellow048/kmanincraftghhj22/actions/runs/43338299309",
+    "all_18_scene_sources_read": true,
+    "other_source_review": [
+      "reference README",
+      "narration.md",
+      "film.tsx",
+      "kit.tsx",
+      "world.tsx",
+      "timing.json parsed: cues/words/clips/metrics",
+      "sound.json: music, beds, all 175 effect entries",
+      "sound.lock.json"
+    ],
+    "source_files": [
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/film.tsx",
+        "git_blob": "18325c5cb4955a08cfc5f00f11bf5b2699d63fd7",
+        "sha256": "6271a8496daedbbf537f9c8bcb67dbc620d229f4933a642d8862406c07e639ee",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/kit.tsx",
+        "git_blob": "63d127bc07a8f85aff201961a9d2b397ff857a43",
+        "sha256": "a5df9aded4a57b2e847e7ff929aa9b6898e3a3ff894ddb651ee7bed4cd2ed502",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/narration.md",
+        "git_blob": "11209ce57811985436e97307ea5b42c32c5f1b6c",
+        "sha256": "89c741874e587a375b49ef9e56fd53dad5d3e13328d18e6798ea7ae9d9d093fb",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene1.tsx",
+        "git_blob": "439bd4b07357472a4bb4dea10e1be4417f88930a",
+        "sha256": "d44d7b62c6df68e19c4edc8d159311eca8e7e111cdb4e73d753fd956bd9fc1f6",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene10.tsx",
+        "git_blob": "1cd59ad6ab5a6bd0735595925ddd0dd5a81b4336",
+        "sha256": "7644730f4ed27aed8a280b24e5c0368393f08fd5cf2f3d081805de28e98da9e4",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene11.tsx",
+        "git_blob": "a3d23d5713be8388f06170cf574a52bf16728b28",
+        "sha256": "29ac12d5effcb9b4223fea8f358d476924034285c320557508f283b56751d5d3",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene12.tsx",
+        "git_blob": "6787a9f80c659cf70bd9bc34955195ea291738ae",
+        "sha256": "7bf4cf92a4691039e09c274c64359c87ebcedc25ae00fac3ca8d6e4a39d2b39a",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene13.tsx",
+        "git_blob": "5067a33a48f079b22a9459bcb728f6e07eb9022b",
+        "sha256": "f5ff7dd8c44d5fd3a55ecd7adfc744c869c620c6a074f1fd64e0363d5e93196b",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene14.tsx",
+        "git_blob": "c4ca74e32edb0508c8bbe821a1569833fd0ed5e8",
+        "sha256": "406649d3f035571023869a6261b8a25ee858143a8e2abebc8d0bc494a5f2687d",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene15.tsx",
+        "git_blob": "0f868e11ec0e303fbb760409e3306f5c7e4759bb",
+        "sha256": "a1edc0c0c7e03c049047a71c5ae2dd4fd93ed0918c4edfe1b901ae2d2a707a93",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene16.tsx",
+        "git_blob": "bc4502193d4312f5010ee79eefe82cd0f30fa141",
+        "sha256": "5b7d2a4d50d9d0969e68fb813f404dfbc4c54d325a05642152be48716e17b556",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene17.tsx",
+        "git_blob": "12cb8cde96bea921811feb8118450a20b99198a5",
+        "sha256": "ebfa3dd732a0e99786fe0ab212357eaeb95a46ecae139729be967c38ed312e20",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene18.tsx",
+        "git_blob": "408fad9f6d7ab27fc961cb91643eb493d4135a08",
+        "sha256": "6acf9cd0361faf44d46f0970832abf884c78392065ed68b563159d8f44a6efa0",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene2.tsx",
+        "git_blob": "0b003f2af9ca41b7aee81efb66d24c41b2a98a00",
+        "sha256": "a10a1faa89ce067ec07c1e8abca4d66685159165517b8a67ae2827b30a8ba792",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene3.tsx",
+        "git_blob": "2b8c40f4c762bc69eb61c642201fef72733a4b4f",
+        "sha256": "1d818a8d806c3e01cf5da98f4902bb11a24d52bf5df3f86643f2f498d81076d2",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene4.tsx",
+        "git_blob": "027e7244fe37d64ad76da8dd82208e61f4e9fe82",
+        "sha256": "5e6aafd0d3e1db1880e30e72ec4df91abed0a8d7867ecc57ddce2aff9e14325c",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene5.tsx",
+        "git_blob": "ea822cc44d4d9d9c135903ead88c7999226c95f9",
+        "sha256": "df9ccd665fe73ac47d494b890d8ff20c9e94e09fffec2588182a48a07482772a",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene6.tsx",
+        "git_blob": "d6b15cddd064b39dd519363ace131bac44e10818",
+        "sha256": "e40efc519ab8db3f8b2f1e16e193e7497f75f97923f511d6ab2d71930cf59257",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene7.tsx",
+        "git_blob": "7660938a2295505ec3f38d354fde003b0a1a924f",
+        "sha256": "6334f5446a0076afa92454b1a97f319edea4e179788c035b9a60726937bfe349",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene8.tsx",
+        "git_blob": "9f983803b967e5ecce6a4189d1bf582680f547f5",
+        "sha256": "0954ec60d3f579b3f4413f9f4e98ed0ce600b569d6ddaad600a64f8ebf057b98",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/scene9.tsx",
+        "git_blob": "473eab22096664b947c3846093589ee0a2eb0622",
+        "sha256": "5957ba5aeba6bf0be973ebf89ff01ab2366fabc8e0c8455337381db1daa8a7e3",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/sound.json",
+        "git_blob": "1e31c22d3ac121ea9bfff621594736be77d82315",
+        "sha256": "03b9cc8121c608b3b7c0ee989e421cb06684168b94ea4267bd6b0df69c3039af",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/sound.lock.json",
+        "git_blob": "e1f9c01f3b5ff5d69d001520e18329ae79745c60",
+        "sha256": "819e5339fa29a4b0d6be4e3c005d2502f2ee906c44cfbbd6788d72a5543ae938",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/timing.json",
+        "git_blob": "51f0a2f54cfa4c799cc232b613095f093da0e319",
+        "sha256": "18c09725d54a25269e968d55e423bdfe06206a71300769b40d5431484f081523",
+        "matches_render_source": true
+      },
+      {
+        "path": "Topics/InThisTown/reference/superpower-at-18-part-2/source/world.tsx",
+        "git_blob": "d94866a413b4638a8e374c2cea1045f492481b9b",
+        "sha256": "9b5a4dc2ac446729719b37990f9c8866a9e0fc694868a5422bde3a01ac8657eb",
+        "matches_render_source": true
+      }
+    ],
+    "visual_review": {
+      "overview_samples": 84,
+      "supplied_action_samples": 60,
+      "supplied_action_interval_seconds": [
+        28,
+        40
+      ],
+      "extracted_focus_samples": 18,
+      "focus_sequences": [
+        "tree launch and airborne recovery",
+        "spear passing through wing",
+        "fall, contact, bounce, skid",
+        "hedge impact"
+      ],
+      "scratch_evidence": "out/five-seconds/part-2-study/motion-focus/",
+      "full_motion_playback": false
+    },
+    "audio_listened": false,
+    "archived_mp4_probe": {
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "frames": 5066,
+      "seconds": 168.878,
+      "bytes": 42416246,
+      "audio_sample_rate": 48000,
+      "audio_channels": 2
+    },
+    "archive_sha256": "8a229c60f382904b0f90da84c776a3586aa5c5c9654a8b46f4e7aabecc4d6848",
+    "full_hd_release_download": "Attempted gh release download failed on release-asset-host redirect. Used the approved archive extracted through Git, not the 1080 master.",
+    "reference_readme_resolution_caveat": "README says 1080x1920; committed archive probes as 720x1280. New-film delivery target remains 1080x1920.",
+    "timing": {
+      "words": 713,
+      "shots": 83,
+      "beats": 18,
+      "clips": 8,
+      "seconds": 168.8667,
+      "wpm": 254.1,
+      "tempo": 1.3283,
+      "median_shot_seconds": 1.9,
+      "max_shot_seconds": 4.6666,
+      "per_clip_alignment_caveat": "02-tip uses estimated word timing; seven other clips aligned; overall duration audio-backed."
+    },
+    "sound": {
+      "uses_supplied_aac": true,
+      "music_sections": 21,
+      "beds": 9,
+      "sfx_entries": 175,
+      "expanded_sfx": 199,
+      "sfx_kinds": 35,
+      "reported_lufs": -14.8,
+      "reported_true_peak_db": -2.2,
+      "reported_failures": [],
+      "track_hash_missing_from_reference_sound_lock": true
+    },
+    "application": "Continuous action, word anchoring, spatial routes, acceleration/follow-through, deliberate freeze contrast, multiple review samples per action. No plot/sentence borrowing.",
+    "draft_change": "Draft 2: nonspoken staging requirements and one spoken-word chronology fix, afternoon -> morning. No approval, recording or production."
+  }
+}

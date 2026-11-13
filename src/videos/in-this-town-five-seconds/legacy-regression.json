@@ -1,0 +1,100 @@
+[
+  {
+    "film": "in-this-town-freeze-bell",
+    "frame": "frame-00000",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-freeze-bell",
+    "frame": "frame-01240",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-monster-egg",
+    "frame": "frame-00000",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-monster-egg",
+    "frame": "frame-01240",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-nobody-looked-at-the-moon",
+    "frame": "frame-00000",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-nobody-looked-at-the-moon",
+    "frame": "frame-01240",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-pumpkin-heads",
+    "frame": "frame-00000",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-pumpkin-heads",
+    "frame": "frame-01240",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-same-face",
+    "frame": "frame-00000",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-same-face",
+    "frame": "frame-01240",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-superpower-at-18",
+    "frame": "frame-00000",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-superpower-at-18",
+    "frame": "frame-01240",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-superpower-at-18-part-2",
+    "frame": "frame-00000",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  },
+  {
+    "film": "in-this-town-superpower-at-18-part-2",
+    "frame": "frame-01240",
+    "maxPixelDelta": 0,
+    "meanPixelDelta": 0.0,
+    "identical": true
+  }
+]

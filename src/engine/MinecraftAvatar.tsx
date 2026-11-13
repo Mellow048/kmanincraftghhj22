@@ -45,6 +45,10 @@ export type MinecraftAvatarProps = {
   blendTime?: number;
   /** Override the animation clock (seconds). Deterministic and scene-independent. */
   time?: number;
+  /** Optional authored joint values, applied after animation/blending. Omitted preserves the original rig exactly. */
+  poseOverride?: Partial<Pose>;
+  /** Optional prop attached to the left hand; children still attach to the right. */
+  leftHand?: React.ReactNode;
 
   face?: FaceName;
   skin?: string;
@@ -174,6 +178,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   blend = 1,
   blendTime,
   time,
+  poseOverride,
+  leftHand,
   face = "neutral",
   skin = "#e8b78d",
   hair = "#4a2e1c",
@@ -293,6 +299,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     const upper = getPose(arms, clock);
     pose = { ...pose, armR: upper.armR, armL: upper.armL };
   }
+  if (poseOverride) pose = { ...pose, ...poseOverride };
 
   // Head aim
   let yaw = headYaw;
@@ -382,6 +389,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           <mesh castShadow receiveShadow position={[0, -6 * PX, 0]} material={materials.armMat}>
             <boxGeometry args={[4 * PX, 12 * PX, 4 * PX]} />
           </mesh>
+          {leftHand ? <group position={[0, -11 * PX, 0]}>{leftHand}</group> : null}
         </group>
 
         {/* right leg (+X) — thigh + knee + shin, so sitting is not a plank.

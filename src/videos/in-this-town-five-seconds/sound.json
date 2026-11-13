@@ -1,0 +1,2008 @@
+{
+  "film": "in-this-town-five-seconds",
+  "README": "Exact approved voice-00 narration, supplied InThisTownMusic.aac, measured action contacts. Regenerate with write-sound.py only after timing/animation changes. No procedural music fallback.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "trackFrom": 0,
+    "gain": -17,
+    "duck": 2,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "wonder",
+        "gain": -1,
+        "why": "A hidden power in an ordinary school."
+      },
+      {
+        "from": "2.mother",
+        "mood": "curious",
+        "gain": -3,
+        "why": "The unanswered origin question."
+      },
+      {
+        "from": "3.school",
+        "mood": "town",
+        "gain": 0,
+        "why": "School, friendship and the rabbit."
+      },
+      {
+        "from": "4.first",
+        "mood": "wonder",
+        "gain": -3,
+        "why": "The first frozen glass."
+      },
+      {
+        "from": "5.chalk",
+        "mood": "playful",
+        "gain": -2,
+        "why": "The chalk mistake plants the sidestep."
+      },
+      {
+        "from": "6.told",
+        "mood": "curious",
+        "gain": -3,
+        "why": "Mother already knows."
+      },
+      {
+        "from": "7.locker",
+        "mood": "tense",
+        "gain": 0,
+        "why": "The closing locker."
+      },
+      {
+        "from": "8.bang",
+        "mood": "hope",
+        "gain": -2,
+        "why": "His friend is safe."
+      },
+      {
+        "from": "9.lunch",
+        "mood": "town",
+        "gain": -1,
+        "why": "Friendship is reciprocal."
+      },
+      {
+        "from": "10.night",
+        "mood": "tense",
+        "gain": -1,
+        "why": "A neighbor outside after dark."
+      },
+      {
+        "from": "11.stop",
+        "mood": "drone",
+        "gain": -4,
+        "why": "The suspended arrow."
+      },
+      {
+        "from": "11.hit",
+        "mood": "tense",
+        "gain": -1,
+        "why": "Safety behind the door."
+      },
+      {
+        "from": "12.thanks",
+        "mood": "hope",
+        "gain": -2,
+        "why": "The carrot identifies the owner."
+      },
+      {
+        "from": "13.sound",
+        "mood": "drone",
+        "gain": -2,
+        "why": "Something outside the window."
+      },
+      {
+        "from": "13.dinner",
+        "mood": "tense",
+        "gain": -1,
+        "why": "The rabbit is being taken."
+      },
+      {
+        "from": "14.out",
+        "mood": "tense",
+        "gain": 0,
+        "why": "The chase starts."
+      },
+      {
+        "from": "15.hand",
+        "mood": "dark",
+        "gain": 1,
+        "why": "Ice down the lane."
+      },
+      {
+        "from": "16.stop",
+        "mood": "none",
+        "gain": 0,
+        "why": "A short subjective hush for the deliberate counter."
+      },
+      {
+        "from": "17.resume",
+        "mood": "tense",
+        "gain": 0,
+        "why": "The ice misses and the foot catches."
+      },
+      {
+        "from": "17.rabbit",
+        "mood": "hope",
+        "gain": -3,
+        "why": "The rabbit is visibly alive and supported."
+      },
+      {
+        "from": "18.look",
+        "mood": "curious",
+        "gain": -3,
+        "why": "The man recovers and recognizes him."
+      },
+      {
+        "from": "18.power",
+        "mood": "dark",
+        "gain": -2,
+        "why": "Recognition, not a triumphant new power."
+      },
+      {
+        "from": "18.prince",
+        "mood": "dark",
+        "gain": -5,
+        "why": "Prince, reaction, black. No CTA sting."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "1.friend",
+      "bed": "classroom",
+      "trim": -1
+    },
+    {
+      "from": "2.mother",
+      "to": "3.school",
+      "bed": "room",
+      "trim": -1
+    },
+    {
+      "from": "3.class",
+      "to": "3.seat",
+      "bed": "classroom",
+      "trim": -1
+    },
+    {
+      "from": "3.lunch",
+      "to": "3.lunch",
+      "bed": "crowd",
+      "trim": -1
+    },
+    {
+      "from": "3.rabbit",
+      "to": "3.ear",
+      "bed": "village",
+      "trim": -1
+    },
+    {
+      "from": "4.first",
+      "to": "5.release",
+      "bed": "room",
+      "trim": -1
+    },
+    {
+      "from": "5.chalk",
+      "to": "5.bonk",
+      "bed": "classroom",
+      "trim": -1
+    },
+    {
+      "from": "6.told",
+      "to": "6.lock",
+      "bed": "room",
+      "trim": -1
+    },
+    {
+      "from": "7.locker",
+      "to": "8.secret",
+      "bed": "classroom",
+      "trim": -1
+    },
+    {
+      "from": "9.lunch",
+      "to": "9.math",
+      "bed": "crowd",
+      "trim": -1
+    },
+    {
+      "from": "9.help",
+      "to": "9.help",
+      "bed": "classroom",
+      "trim": -1
+    },
+    {
+      "from": "10.night",
+      "to": "18.prince",
+      "bed": "night",
+      "trim": -1
+    },
+    {
+      "from": "12.mother",
+      "to": "13.sound",
+      "bed": "room",
+      "trim": -1
+    }
+  ],
+  "bedMutes": [
+    {
+      "cue": "1.town",
+      "at": 0.0,
+      "dur": 5,
+      "why": "teaser: the outside world is silent for the same 150 frames as its motion."
+    },
+    {
+      "cue": "4.stop",
+      "at": 0.866667,
+      "dur": 5,
+      "why": "glass: the outside world is silent for the same 150 frames as its motion."
+    },
+    {
+      "cue": "5.touch",
+      "at": 0.100033,
+      "dur": 5,
+      "why": "touch: the outside world is silent for the same 150 frames as its motion."
+    },
+    {
+      "cue": "5.chalk",
+      "at": 0.433333,
+      "dur": 5,
+      "why": "chalk: the outside world is silent for the same 150 frames as its motion."
+    },
+    {
+      "cue": "7.stop",
+      "at": 0.099967,
+      "dur": 5,
+      "why": "locker: the outside world is silent for the same 150 frames as its motion."
+    },
+    {
+      "cue": "11.stop",
+      "at": 0.6667,
+      "dur": 5,
+      "why": "elder: the outside world is silent for the same 150 frames as its motion."
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.266633,
+      "dur": 5,
+      "why": "counter: the outside world is silent for the same 150 frames as its motion."
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "2.mother",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "3.school",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "4.first",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "6.told",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "7.locker",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "9.lunch",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "10.night",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "12.thanks",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "13.sound",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "14.ear",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "15.hand",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "18.look",
+      "sfx": "whoosh",
+      "why": "Change of place, time or dramatic focus; not a diegetic moving object.",
+      "gain": -14,
+      "dur": 0.18
+    },
+    {
+      "cue": "1.town",
+      "at": 0.0,
+      "sfx": "power_down",
+      "why": "The shared five-second world clock stops: teaser",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "1.friend",
+      "at": 0.8,
+      "sfx": "power_up",
+      "why": "The SAME stop ends after exactly 150 frames: teaser",
+      "gain": -13,
+      "dur": 0.2
+    },
+    {
+      "cue": "4.stop",
+      "at": 0.866667,
+      "sfx": "power_down",
+      "why": "The shared five-second world clock stops: glass",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "4.five",
+      "at": 1.933367,
+      "sfx": "power_up",
+      "why": "The SAME stop ends after exactly 150 frames: glass",
+      "gain": -13,
+      "dur": 0.2
+    },
+    {
+      "cue": "5.touch",
+      "at": 0.100033,
+      "sfx": "power_down",
+      "why": "The shared five-second world clock stops: touch",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "5.release",
+      "at": 2.933333,
+      "sfx": "power_up",
+      "why": "The SAME stop ends after exactly 150 frames: touch",
+      "gain": -13,
+      "dur": 0.2
+    },
+    {
+      "cue": "5.chalk",
+      "at": 0.433333,
+      "sfx": "power_down",
+      "why": "The shared five-second world clock stops: chalk",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "5.bonk",
+      "at": 1.566633,
+      "sfx": "power_up",
+      "why": "The SAME stop ends after exactly 150 frames: chalk",
+      "gain": -13,
+      "dur": 0.2
+    },
+    {
+      "cue": "7.stop",
+      "at": 0.099967,
+      "sfx": "power_down",
+      "why": "The shared five-second world clock stops: locker",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "8.bang",
+      "at": 0.533367,
+      "sfx": "power_up",
+      "why": "The SAME stop ends after exactly 150 frames: locker",
+      "gain": -13,
+      "dur": 0.2
+    },
+    {
+      "cue": "11.stop",
+      "at": 0.6667,
+      "sfx": "power_down",
+      "why": "The shared five-second world clock stops: elder",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "11.hit",
+      "at": 0.3,
+      "sfx": "power_up",
+      "why": "The SAME stop ends after exactly 150 frames: elder",
+      "gain": -13,
+      "dur": 0.2
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.266633,
+      "sfx": "power_down",
+      "why": "The shared five-second world clock stops: counter",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "17.resume",
+      "at": 0.033333,
+      "sfx": "power_up",
+      "why": "The SAME stop ends after exactly 150 frames: counter",
+      "gain": -13,
+      "dur": 0.2
+    },
+    {
+      "cue": "4.everything",
+      "at": 0.233367,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "4.everything",
+      "at": 1.233367,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "4.everything",
+      "at": 2.233367,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "4.five",
+      "at": 0.933367,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "16.stop",
+      "at": 0.333333,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "16.stop",
+      "at": 1.333333,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "16.throw",
+      "at": 3.3e-05,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "16.side",
+      "at": 0.033333,
+      "sfx": "tick",
+      "why": "The boy counts the held seconds internally; background ambience remains muted.",
+      "gain": -14
+    },
+    {
+      "cue": "1.me",
+      "at": 0.0533,
+      "sfx": "step_wood",
+      "why": "The only moving student takes a visible step.",
+      "gain": -13
+    },
+    {
+      "cue": "1.secret",
+      "at": 0.1833,
+      "sfx": "step_wood",
+      "why": "The only moving student takes a visible step.",
+      "gain": -13
+    },
+    {
+      "cue": "1.secret",
+      "at": 0.9533,
+      "sfx": "step_wood",
+      "why": "The only moving student takes a visible step.",
+      "gain": -13
+    },
+    {
+      "cue": "1.friend",
+      "sfx": "rustle",
+      "why": "His glance to the friend, not movement from the frozen friend.",
+      "at": 0.3,
+      "gain": -14
+    },
+    {
+      "cue": "2.adopted",
+      "sfx": "rustle",
+      "why": "Mother supports the small child in the memory.",
+      "word": "adopted",
+      "gain": -12
+    },
+    {
+      "cue": "2.where",
+      "sfx": "blip",
+      "why": "A question on his face.",
+      "word": "where",
+      "gain": -13
+    },
+    {
+      "cue": "2.answer",
+      "sfx": "swish",
+      "why": "Her evasive turn away.",
+      "word": "changed",
+      "gain": -13,
+      "dur": 0.14
+    },
+    {
+      "cue": "2.curtains",
+      "sfx": "rustle",
+      "why": "The curtains physically meet.",
+      "word": "closed",
+      "dur": 0.65,
+      "gain": -11
+    },
+    {
+      "cue": "2.curtains",
+      "sfx": "step_wood",
+      "why": "Her walk to the window.",
+      "at": 0.25,
+      "gain": -14
+    },
+    {
+      "cue": "2.curtains",
+      "sfx": "step_wood",
+      "why": "Her walk to the window.",
+      "at": 0.65,
+      "gain": -14
+    },
+    {
+      "cue": "3.school",
+      "sfx": "step_wood",
+      "why": "The teenager leaves the breakfast table.",
+      "at": 0.45,
+      "gain": -13
+    },
+    {
+      "cue": "3.school",
+      "sfx": "step_wood",
+      "why": "The teenager leaves the breakfast table.",
+      "at": 1.05,
+      "gain": -13
+    },
+    {
+      "cue": "3.school",
+      "sfx": "step_wood",
+      "why": "The teenager leaves the breakfast table.",
+      "at": 1.65,
+      "gain": -13
+    },
+    {
+      "cue": "3.class",
+      "sfx": "school_bell",
+      "why": "The classroom transition.",
+      "gain": -13
+    },
+    {
+      "cue": "3.class",
+      "sfx": "zip",
+      "why": "The teacher releases the first chalk demonstration.",
+      "word": "threw",
+      "at": 0.05,
+      "gain": -12,
+      "dur": 0.18
+    },
+    {
+      "cue": "3.seat",
+      "sfx": "rustle",
+      "why": "The friend turns toward his saved seat.",
+      "word": "seat",
+      "gain": -12
+    },
+    {
+      "cue": "3.lunch",
+      "sfx": "scrape",
+      "why": "The half loaf crosses the tabletop.",
+      "at": 0.25,
+      "dur": 0.65,
+      "gain": -12
+    },
+    {
+      "cue": "3.rabbit",
+      "sfx": "place",
+      "why": "Carrot reaches the ground beside the rabbit.",
+      "word": "rabbit",
+      "gain": -12
+    },
+    {
+      "cue": "3.ear",
+      "sfx": "rustle",
+      "why": "Tiny rabbit mouth and shoelace movement.",
+      "at": 0.45,
+      "gain": -13,
+      "dur": 0.25
+    },
+    {
+      "cue": "3.ear",
+      "sfx": "blip",
+      "why": "A fond look at the black ear.",
+      "word": "black",
+      "gain": -13
+    },
+    {
+      "cue": "4.stop",
+      "at": 0.436667,
+      "sfx": "plink",
+      "why": "The glass leaves his supporting hand.",
+      "gain": -13
+    },
+    {
+      "cue": "4.five",
+      "at": 2.063367,
+      "sfx": "break",
+      "why": "Glass contacts the floor after time resumes.",
+      "gain": -10
+    },
+    {
+      "cue": "4.five",
+      "at": 2.133367,
+      "sfx": "debris",
+      "why": "The visible glass fragments settle.",
+      "gain": -12,
+      "dur": 0.45
+    },
+    {
+      "cue": "5.touch",
+      "at": 0.450033,
+      "sfx": "paper",
+      "why": "Fingers contact the book.",
+      "gain": -12
+    },
+    {
+      "cue": "5.release",
+      "at": 0.633333,
+      "sfx": "rustle",
+      "why": "He withdraws his hand; the released book waits.",
+      "gain": -12,
+      "dur": 0.2
+    },
+    {
+      "cue": "5.release",
+      "at": 3.083333,
+      "sfx": "place",
+      "why": "The book drops the final centimeters onto the table.",
+      "gain": -12
+    },
+    {
+      "cue": "5.chalk",
+      "at": 0.113333,
+      "sfx": "zip",
+      "why": "The teacher sends chalk through the classroom.",
+      "gain": -12,
+      "dur": 0.17
+    },
+    {
+      "cue": "5.bonk",
+      "at": 1.646633,
+      "sfx": "bonk",
+      "why": "Chalk taps his nose; the future sidestep is earned.",
+      "gain": -10
+    },
+    {
+      "cue": "6.hands",
+      "sfx": "place",
+      "why": "Bowl reaches the washing counter.",
+      "word": "bowl",
+      "at": 0.12,
+      "gain": -12
+    },
+    {
+      "cue": "6.rule",
+      "sfx": "tick",
+      "why": "The warning lands, a subjective accent.",
+      "word": "see",
+      "gain": -13
+    },
+    {
+      "cue": "6.question",
+      "sfx": "blip",
+      "why": "His worried glance.",
+      "word": "hiding",
+      "gain": -13
+    },
+    {
+      "cue": "6.lock",
+      "sfx": "clank",
+      "why": "The visible latch slides into place.",
+      "word": "lock",
+      "at": 0.12,
+      "gain": -12,
+      "f": 410
+    },
+    {
+      "cue": "7.locker",
+      "sfx": "thud",
+      "why": "The bully pushes the friend backward into the open locker.",
+      "word": "shoved",
+      "gain": -11
+    },
+    {
+      "cue": "7.book",
+      "sfx": "place",
+      "why": "The blue book contacts the floor.",
+      "word": "floor",
+      "gain": -11
+    },
+    {
+      "cue": "7.door",
+      "sfx": "creak",
+      "why": "The hinge starts its visible swing.",
+      "word": "swung",
+      "gain": -12,
+      "dur": 0.35
+    },
+    {
+      "cue": "7.stop",
+      "at": 0.319967,
+      "sfx": "rustle",
+      "why": "Hand reaches the sleeve.",
+      "gain": -12
+    },
+    {
+      "cue": "7.stop",
+      "at": 1.219967,
+      "sfx": "rustle",
+      "why": "Sleeve contact, then the whole body is pulled.",
+      "gain": -12
+    },
+    {
+      "cue": "8.clear",
+      "at": 0.199967,
+      "sfx": "step_stone",
+      "why": "The hero braces and steps back.",
+      "gain": -12
+    },
+    {
+      "cue": "8.clear",
+      "at": 0.619967,
+      "sfx": "step_stone",
+      "why": "He completes the pull into the aisle.",
+      "gain": -12
+    },
+    {
+      "cue": "8.book",
+      "at": 0.319967,
+      "sfx": "paper",
+      "why": "Hand contacts the fallen book.",
+      "gain": -12
+    },
+    {
+      "cue": "8.beside",
+      "at": 0.199967,
+      "sfx": "place",
+      "why": "The book reaches the folded arms.",
+      "gain": -12
+    },
+    {
+      "cue": "8.beside",
+      "at": 0.649967,
+      "sfx": "step_stone",
+      "why": "First step back beside his friend.",
+      "gain": -12
+    },
+    {
+      "cue": "8.beside",
+      "at": 1.099967,
+      "sfx": "step_stone",
+      "why": "Second step into the safe position.",
+      "gain": -12
+    },
+    {
+      "cue": "8.bang",
+      "at": 0.713367,
+      "sfx": "clank",
+      "why": "The empty locker slams after time returns.",
+      "gain": -12
+    },
+    {
+      "cue": "8.friend",
+      "sfx": "blip",
+      "why": "The friend looks from the book to the red sleeve.",
+      "word": "thought",
+      "gain": -13
+    },
+    {
+      "cue": "8.secret",
+      "sfx": "swish",
+      "why": "A small evasive look from the hero.",
+      "at": 0.18,
+      "gain": -13,
+      "dur": 0.14
+    },
+    {
+      "cue": "9.lunch",
+      "sfx": "scrape",
+      "why": "The whole loaf crosses the same table.",
+      "at": 0.25,
+      "dur": 0.65,
+      "gain": -12
+    },
+    {
+      "cue": "9.why",
+      "sfx": "chime",
+      "why": "His sincere wish to protect the boy too.",
+      "word": "protect",
+      "gain": -13
+    },
+    {
+      "cue": "9.math",
+      "sfx": "paper",
+      "why": "Open book and the lesson he actually understands.",
+      "word": "math",
+      "gain": -12
+    },
+    {
+      "cue": "9.help",
+      "sfx": "ding",
+      "why": "He raises his hand with the right answer.",
+      "word": "answer",
+      "gain": -12,
+      "note": "E5"
+    },
+    {
+      "cue": "10.night",
+      "sfx": "creak",
+      "why": "The real doorway opens onto the night.",
+      "at": 0.15,
+      "gain": -13
+    },
+    {
+      "cue": "10.night",
+      "sfx": "step_stone",
+      "why": "The hero moves toward his neighbor.",
+      "at": 0.45,
+      "gain": -13
+    },
+    {
+      "cue": "10.night",
+      "sfx": "step_stone",
+      "why": "The hero moves toward his neighbor.",
+      "at": 1.2,
+      "gain": -13
+    },
+    {
+      "cue": "10.night",
+      "sfx": "step_stone",
+      "why": "The hero moves toward his neighbor.",
+      "at": 1.95,
+      "gain": -13
+    },
+    {
+      "cue": "10.neighbor",
+      "sfx": "rustle",
+      "why": "The fallen villager struggles on the threshold.",
+      "at": 0.4,
+      "gain": -12
+    },
+    {
+      "cue": "10.mobs",
+      "sfx": "step_grass",
+      "why": "Zombies advancing through the gate, not a golem.",
+      "at": 0.1,
+      "gain": -13
+    },
+    {
+      "cue": "10.mobs",
+      "sfx": "step_grass",
+      "why": "Zombies advancing through the gate, not a golem.",
+      "at": 0.65,
+      "gain": -13
+    },
+    {
+      "cue": "10.mobs",
+      "sfx": "step_grass",
+      "why": "Zombies advancing through the gate, not a golem.",
+      "at": 1.25,
+      "gain": -13
+    },
+    {
+      "cue": "10.bow",
+      "sfx": "creak",
+      "why": "The skeleton visibly draws its bow.",
+      "at": 0.45,
+      "gain": -11,
+      "dur": 0.45
+    },
+    {
+      "cue": "10.arrow",
+      "at": 1.2,
+      "sfx": "zip",
+      "why": "The arrow launches on its authored travel frame.",
+      "gain": -13.5,
+      "dur": 0.2
+    },
+    {
+      "cue": "11.stop",
+      "at": 1.2167,
+      "sfx": "rustle",
+      "why": "Collar contact.",
+      "gain": -12
+    },
+    {
+      "cue": "11.stop",
+      "at": 1.7167,
+      "sfx": "scrape",
+      "why": "Continuous drag over the real doorstep.",
+      "gain": -12,
+      "dur": 2.0
+    },
+    {
+      "cue": "11.drag",
+      "at": 0.0,
+      "sfx": "step_stone",
+      "why": "Hero backs through the opening.",
+      "gain": -12
+    },
+    {
+      "cue": "11.drag",
+      "at": 0.8,
+      "sfx": "step_wood",
+      "why": "His feet reach the indoor floor.",
+      "gain": -12
+    },
+    {
+      "cue": "11.door",
+      "at": 0.2833,
+      "sfx": "whoosh_low",
+      "why": "The boot pushes the door toward the jamb.",
+      "gain": -12,
+      "dur": 0.25
+    },
+    {
+      "cue": "11.door",
+      "at": 1.1833,
+      "sfx": "thud",
+      "why": "Door meets the jamb before time returns.",
+      "gain": -12
+    },
+    {
+      "cue": "11.hit",
+      "at": 0.43,
+      "sfx": "hit",
+      "why": "Arrow tip contacts the closed wood.",
+      "gain": -10
+    },
+    {
+      "cue": "11.hit",
+      "at": 1.95,
+      "sfx": "scrape",
+      "why": "First zombie scratches outside, after resumption.",
+      "gain": -12,
+      "dur": 0.3
+    },
+    {
+      "cue": "11.safe",
+      "at": 0.6833,
+      "sfx": "scrape",
+      "why": "The other claw scrapes the exterior.",
+      "gain": -12,
+      "dur": 0.3
+    },
+    {
+      "cue": "11.safe",
+      "at": 1.4833,
+      "sfx": "scrape",
+      "why": "Another unsuccessful scrape on the same door.",
+      "gain": -12,
+      "dur": 0.3
+    },
+    {
+      "cue": "12.thanks",
+      "sfx": "rustle",
+      "why": "The old man raises himself to sit.",
+      "at": 0.25,
+      "gain": -13
+    },
+    {
+      "cue": "12.thanks",
+      "sfx": "place",
+      "why": "The carrot passes between their hands.",
+      "word": "carrot",
+      "at": 0.12,
+      "gain": -12
+    },
+    {
+      "cue": "12.rabbit",
+      "sfx": "chime",
+      "why": "The carrot connects the rescued neighbor to the rabbit.",
+      "word": "rabbit",
+      "gain": -14
+    },
+    {
+      "cue": "12.mother",
+      "sfx": "rustle",
+      "why": "Mother checks the sleeve for scratches.",
+      "word": "checked",
+      "gain": -12
+    },
+    {
+      "cue": "12.lie",
+      "sfx": "swish",
+      "why": "He looks away on the ordinary explanation.",
+      "word": "golem",
+      "gain": -13,
+      "dur": 0.13
+    },
+    {
+      "cue": "12.window",
+      "sfx": "creak",
+      "why": "The window and curtain close.",
+      "word": "shut",
+      "gain": -12,
+      "dur": 0.45
+    },
+    {
+      "cue": "13.sound",
+      "sfx": "step_stone",
+      "why": "The approved crunch outside that wakes him.",
+      "word": "crunch",
+      "gain": -10
+    },
+    {
+      "cue": "13.sound",
+      "sfx": "rustle",
+      "why": "He rises from the bed.",
+      "at": 0.75,
+      "gain": -12
+    },
+    {
+      "cue": "13.white",
+      "sfx": "gust",
+      "why": "Air at the actual window, very low under the voice.",
+      "at": 0.5,
+      "dur": 0.5,
+      "gain": -16
+    },
+    {
+      "cue": "13.beard",
+      "sfx": "swish",
+      "why": "Push into the bearded player face.",
+      "word": "beard",
+      "gain": -13,
+      "dur": 0.16
+    },
+    {
+      "cue": "13.kneel",
+      "sfx": "step_stone",
+      "why": "His repositioning step beside the rabbit.",
+      "at": 0.35,
+      "gain": -13
+    },
+    {
+      "cue": "13.kneel",
+      "sfx": "rustle",
+      "why": "Knees bend and the white sleeve reaches down.",
+      "word": "knelt",
+      "gain": -12
+    },
+    {
+      "cue": "13.frost",
+      "sfx": "crackle",
+      "why": "Small ice growth at the feet; not flame.",
+      "word": "Ice",
+      "gain": -12,
+      "dur": 0.5
+    },
+    {
+      "cue": "13.frost",
+      "sfx": "sparkle",
+      "why": "The frost reaches the legs.",
+      "word": "legs",
+      "gain": -12,
+      "dur": 0.3
+    },
+    {
+      "cue": "13.dinner",
+      "sfx": "rustle",
+      "why": "Supporting arm lifts the rabbit continuously.",
+      "word": "picked",
+      "gain": -11,
+      "dur": 0.5
+    },
+    {
+      "cue": "14.ear",
+      "sfx": "blip",
+      "why": "The living little nose and familiar black ear.",
+      "word": "nose",
+      "gain": -13
+    },
+    {
+      "cue": "14.out",
+      "sfx": "creak",
+      "why": "The hero opens and crosses his actual doorway.",
+      "at": 0.15,
+      "gain": -12
+    },
+    {
+      "cue": "14.out",
+      "sfx": "step_stone",
+      "why": "A visible running step out to the path.",
+      "at": 0.45,
+      "gain": -13
+    },
+    {
+      "cue": "14.out",
+      "sfx": "step_stone",
+      "why": "A visible running step out to the path.",
+      "at": 0.95,
+      "gain": -13
+    },
+    {
+      "cue": "14.out",
+      "sfx": "step_stone",
+      "why": "A visible running step out to the path.",
+      "at": 1.45,
+      "gain": -13
+    },
+    {
+      "cue": "14.saw",
+      "sfx": "swish",
+      "why": "The man turns at the shout.",
+      "word": "looked",
+      "gain": -12,
+      "dur": 0.16
+    },
+    {
+      "cue": "14.run",
+      "at": 1.6513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 0.0347,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2,
+      "trim": 3
+    },
+    {
+      "cue": "14.follow",
+      "at": 0.3847,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 0.7347,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 1.0847,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2,
+      "trim": 2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.0347,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.3847,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.7347,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 1.0847,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 1.4347,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.1847,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.5347,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.8847,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.0013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.3513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2,
+      "trim": 3
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.7013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 1.0513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 1.4013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.218,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.568,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.918,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.268,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.618,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.0013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2,
+      "trim": 2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.3513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.7013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.0513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2,
+      "trim": 3.5
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.4013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.7513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.3013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.6513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.0013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.3513,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.0013,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven white-clothed runner.",
+      "gain": -15,
+      "pan": 0.2
+    },
+    {
+      "cue": "14.run",
+      "at": 1.808213,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 0.153526,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 0.465439,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 0.777352,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.follow",
+      "at": 1.089265,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2,
+      "trim": 2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.001179,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.313092,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.625005,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 0.936918,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "at": 1.248831,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2,
+      "trim": 6
+    },
+    {
+      "cue": "14.secret",
+      "at": 1.560744,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.272657,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.58457,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 0.896483,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.stay",
+      "at": 1.208396,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.286909,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2,
+      "trim": 2
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.598823,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 0.910736,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.hand",
+      "at": 1.222649,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.001262,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2,
+      "trim": 4
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.313175,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.625088,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.937001,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.248914,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.560827,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.87274,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2,
+      "trim": 6
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.217954,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.529867,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 0.84178,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.153693,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.465606,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.wall",
+      "at": 1.777519,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.289432,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.601345,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 0.913258,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.225171,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "15.close",
+      "at": 1.537084,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2,
+      "trim": 2
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.148998,
+      "sfx": "step_stone",
+      "why": "Half-stride ground contact from the distance-driven red-shirted pursuer.",
+      "gain": -15,
+      "pan": -0.2
+    },
+    {
+      "cue": "14.secret",
+      "sfx": "blip",
+      "why": "His worry is exposure, not a cooldown.",
+      "word": "see",
+      "gain": -14
+    },
+    {
+      "cue": "14.stay",
+      "sfx": "rustle",
+      "why": "The supported rabbit remains in the white arm.",
+      "word": "rabbit",
+      "gain": -13
+    },
+    {
+      "cue": "15.hand",
+      "sfx": "whoosh",
+      "why": "The free-arm wind-up.",
+      "word": "threw",
+      "gain": -12,
+      "dur": 0.22
+    },
+    {
+      "cue": "15.blocks",
+      "at": 0.72,
+      "sfx": "zip",
+      "why": "The first ice block leaves the throwing hand.",
+      "gain": -10,
+      "dur": 0.16
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.08,
+      "sfx": "break",
+      "why": "The first block contacts and opens the stone wall.",
+      "gain": -10
+    },
+    {
+      "cue": "15.blocks",
+      "at": 1.14,
+      "sfx": "debris",
+      "why": "Visible stone and ice fragments fall from the hole.",
+      "gain": -12,
+      "dur": 0.65
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.136633,
+      "sfx": "zip",
+      "why": "Second ice projectile travels toward his face.",
+      "gain": -11,
+      "dur": 0.09
+    },
+    {
+      "cue": "15.chalk",
+      "at": 0.199633,
+      "sfx": "zip",
+      "why": "Third ice projectile follows, then both stop.",
+      "gain": -12,
+      "dur": 0.06
+    },
+    {
+      "cue": "15.chalk",
+      "sfx": "blip",
+      "why": "The chalk lesson is remembered before the counter.",
+      "word": "remembered",
+      "gain": -13
+    },
+    {
+      "cue": "16.stop",
+      "at": 0.113333,
+      "sfx": "scrape",
+      "why": "Hand contacts the grounded rock.",
+      "gain": -13
+    },
+    {
+      "cue": "16.stop",
+      "at": 0.823333,
+      "sfx": "step_stone",
+      "why": "First running footfall past the frozen man.",
+      "gain": -13
+    },
+    {
+      "cue": "16.front",
+      "at": 0.136633,
+      "sfx": "step_stone",
+      "why": "Second footfall to get in front.",
+      "gain": -13
+    },
+    {
+      "cue": "16.throw",
+      "at": 0.560033,
+      "sfx": "place",
+      "why": "The rock is set down in the path, not thrown.",
+      "gain": -13
+    },
+    {
+      "cue": "16.side",
+      "at": 0.183333,
+      "sfx": "step_stone",
+      "why": "The deliberate sidestep starts.",
+      "gain": -13
+    },
+    {
+      "cue": "16.side",
+      "at": 0.583333,
+      "sfx": "step_stone",
+      "why": "The hero clears the old ice lane.",
+      "gain": -13
+    },
+    {
+      "cue": "17.resume",
+      "at": 0.263333,
+      "sfx": "break",
+      "why": "Second ice block hits the old position.",
+      "gain": -11
+    },
+    {
+      "cue": "17.resume",
+      "at": 0.353333,
+      "sfx": "debris",
+      "why": "Third ice block breaks and shards settle.",
+      "gain": -13
+    },
+    {
+      "cue": "17.hit",
+      "at": 0.3077,
+      "sfx": "bonk",
+      "why": "The planted toe catches the visible rock, no face hit.",
+      "gain": -13
+    },
+    {
+      "cue": "17.hit",
+      "at": 0.7577,
+      "sfx": "rustle",
+      "why": "The stumble starts.",
+      "gain": -13
+    },
+    {
+      "cue": "17.fall",
+      "at": 0.3743,
+      "sfx": "swish",
+      "why": "He tries to turn and recover.",
+      "gain": -13
+    },
+    {
+      "cue": "17.fall",
+      "at": 2.0863,
+      "sfx": "thud",
+      "why": "The supported back landing.",
+      "gain": -11
+    },
+    {
+      "cue": "17.fall",
+      "at": 2.2063,
+      "sfx": "debris",
+      "why": "A little ground dust from the landing.",
+      "gain": -13
+    },
+    {
+      "cue": "17.rabbit",
+      "at": 0.273,
+      "sfx": "rustle",
+      "why": "Both hands lift the supported living rabbit.",
+      "gain": -13
+    },
+    {
+      "cue": "17.rabbit",
+      "at": 1.203,
+      "sfx": "chime",
+      "why": "The transfer is complete and the nose still twitches.",
+      "gain": -13
+    },
+    {
+      "cue": "17.breathe",
+      "sfx": "blip",
+      "why": "A small relief accent on the living nose.",
+      "word": "twitching",
+      "gain": -14
+    },
+    {
+      "cue": "18.look",
+      "sfx": "rustle",
+      "why": "He rubs his head and gets onto one knee.",
+      "word": "rubbed",
+      "gain": -12,
+      "dur": 0.35
+    },
+    {
+      "cue": "18.look",
+      "sfx": "step_stone",
+      "why": "His knee meets the path during the continuous rise.",
+      "word": "knee",
+      "gain": -13
+    },
+    {
+      "cue": "18.home",
+      "sfx": "swish",
+      "why": "Mother watching from the established doorway.",
+      "word": "mother",
+      "gain": -13,
+      "dur": 0.16
+    },
+    {
+      "cue": "18.power",
+      "sfx": "sting",
+      "why": "Recognition of the power, not another attack.",
+      "word": "ability",
+      "gain": -14
+    },
+    {
+      "cue": "18.found",
+      "sfx": "riser",
+      "why": "A short rise into the prince recognition.",
+      "at": 1.066599999999994,
+      "dur": 0.7,
+      "gain": -13
+    },
+    {
+      "cue": "18.prince",
+      "sfx": "boom",
+      "why": "The one final reveal: prince. No subscribe cue or sequel promise.",
+      "word": "prince",
+      "gain": -7
+    }
+  ]
+}

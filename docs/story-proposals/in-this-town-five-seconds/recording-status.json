@@ -1,0 +1,94 @@
+{
+  "voice_id": "voice-00",
+  "completed": [
+    {
+      "clip": "01-secret",
+      "path": "public/audio/in-this-town-five-seconds/raw/01-secret.mp3",
+      "voice_id": "voice-00",
+      "bytes": 163231,
+      "raw_seconds": 20.37551,
+      "sha256": "a0da04632c0da78b4500eeb1bcd43cbc2be57113a4d052aa57ad500232cfb80b"
+    },
+    {
+      "clip": "02-school",
+      "path": "public/audio/in-this-town-five-seconds/raw/02-school.mp3",
+      "voice_id": "voice-00",
+      "bytes": 251002,
+      "raw_seconds": 31.346939,
+      "sha256": "01d66216e1da34ed573df94c42389d46068fca0150aae54c31acc73217b105bb"
+    },
+    {
+      "clip": "03-rules",
+      "path": "public/audio/in-this-town-five-seconds/raw/03-rules.mp3",
+      "voice_id": "voice-00",
+      "bytes": 192697,
+      "raw_seconds": 24.058776,
+      "sha256": "aa890fab6346c085859383ed2bdb5f20752646f327ab1f7a3b0bb6c7e044de5a"
+    },
+    {
+      "clip": "04-locker",
+      "path": "public/audio/in-this-town-five-seconds/raw/04-locker.mp3",
+      "voice_id": "voice-00",
+      "bytes": 272527,
+      "raw_seconds": 34.037551,
+      "sha256": "c8fc993cee5f67a7fdae28f623877be08a5bcf8823349d89d682525415a6ddc7"
+    },
+    {
+      "clip": "05-night",
+      "path": "public/audio/in-this-town-five-seconds/raw/05-night.mp3",
+      "voice_id": "voice-00",
+      "bytes": 235120,
+      "raw_seconds": 29.361633,
+      "sha256": "a44924f9337e456026f89d1f26e1ea4c8f64145f13e045d1bb5eab36b4437ede"
+    },
+    {
+      "clip": "06-window",
+      "path": "public/audio/in-this-town-five-seconds/raw/06-window.mp3",
+      "voice_id": "voice-00",
+      "bytes": 239717,
+      "raw_seconds": 29.936327,
+      "sha256": "54f35bd5f6803ec5e404f019105172b8e8e6c3cb8180d5b08b80ab48ba4f3ee7"
+    },
+    {
+      "clip": "07-chase",
+      "path": "public/audio/in-this-town-five-seconds/raw/07-chase.mp3",
+      "voice_id": "voice-00",
+      "bytes": 219237,
+      "raw_seconds": 27.376327,
+      "sha256": "e8a8c4fa53e7e8c5a477743f8dd1784fe4a53ccf2a8b07b3f66ce830e3b7f144"
+    },
+    {
+      "clip": "08-five-seconds",
+      "path": "public/audio/in-this-town-five-seconds/raw/08-five-seconds.mp3",
+      "voice_id": "voice-00",
+      "bytes": 147139,
+      "raw_seconds": 18.364082,
+      "sha256": "58fc225f6e5a00169f1da92b196309f6ca89fda3c97ddc70127b3b8fb20f296c"
+    },
+    {
+      "clip": "09-prince",
+      "path": "public/audio/in-this-town-five-seconds/raw/09-prince.mp3",
+      "voice_id": "voice-00",
+      "bytes": 93013,
+      "raw_seconds": 11.598367,
+      "sha256": "14db6f480f0db9cd7a89543fdafec6ca091ddcb25989ddc80aa2e450ec41b1f4"
+    }
+  ],
+  "missing": [],
+  "timing_built": true,
+  "estimated_timing_not_production": false,
+  "historical_original_spoken_sha256": "8f16bd2dbece55821ff0e6ed4e39432201e1e1d7a7e3a61fe084571060663d43",
+  "approved_spoken_sha256": "e3f31d5c18859fb8f573edc246b9d1a79c4ecf157a77b869f23768f823e8bb15",
+  "history": [
+    {
+      "clip": "08-five-seconds",
+      "original_passage": "Two moderation rejections before a replacement was approved. No other clips were regenerated."
+    },
+    {
+      "clip": "08-five-seconds",
+      "resolution": "Owner approved the trip revision; voice-00 synthesis succeeded."
+    }
+  ],
+  "production_timing": "src/videos/in-this-town-five-seconds/timing.json",
+  "all_clips_aligned": true
+}

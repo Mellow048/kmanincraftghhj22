@@ -250,3 +250,18 @@ Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build 
    add it to the list.
 
    If your film needs a part to look different, give the part a new prop whose default is the old look.
+
+## Small action props — `small-props.tsx`
+
+Additive parts introduced for Five Seconds, not yet an owner-approved reference. No approved geometry is replaced.
+
+| Name | Useful controls |
+|---|---|
+| `Rabbit` | `blackEar`, `hop`, `frost`, `twitch`; origin at feet, nose +Z; eyes and nose stay readable while carried |
+| `Book` | `open`, `color` |
+| `Rock`, `GlassCup`, `Bowl` | Position, rotation, scale; cup also has `water` |
+| `IceCube` | Size, position, rotation, scale; opaque-enough body and bright cracked front |
+| `Arrow` | Points -Z, with head, wooden shaft and feathers |
+| `HingedLocker` | Truly hollow body and an `open` angle; regular `Locker` remains unchanged |
+
+The shared `MinecraftAvatar` rig also has optional `poseOverride` and `leftHand`. They are default-off and leave existing performances unchanged; use them for authored contact and two-handed props, not pose jumps.

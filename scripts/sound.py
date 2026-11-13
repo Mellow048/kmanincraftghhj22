@@ -62,7 +62,7 @@ except ImportError:  # pragma: no cover
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SR = 44100
-VERSION = 1
+VERSION = 2  # v2 locks hash the bytes of an optional supplied music track.
 
 
 # ============================================================================= small maths
@@ -1828,7 +1828,7 @@ def render(film: str, clock: Clock, sheet: dict, vox: dict):
     music = np.zeros((total + SR * 3, 2))
     sections = sheet["sections"]
     music_gain = float(sheet["music"].get("gain", -16.0))
-    for i, part in enumerate(sections):
+    for i, part in enumerate(sections if not sheet["music"].get("track") else []):
         end = sections[i + 1]["t"] if i + 1 < len(sections) else clock.duration
         spec = MOODS[part["mood"]]
         if part["mood"] == "none" or end - part["t"] < 0.05:
@@ -1874,6 +1874,20 @@ def render(film: str, clock: Clock, sheet: dict, vox: dict):
         y = edges(y * (v_level * db(gain) / level), min(0.25, seconds / 3), min(0.3, seconds / 3))
         place(beds, y, part["t"] - 0.05)
     beds = beds * db(float(sheet["raw"].get("bedsGain", 0.0)))
+    # Optional time-stop ambience gates. These do not mute the narrator, the supplied score or the moving hero.
+    for pause in sheet["raw"].get("bedMutes", []):
+        start = clock.when(pause)
+        duration = float(pause.get("dur", 0))
+        if not math.isfinite(duration) or duration <= 0:
+            raise SheetError("bedMutes[].dur must be positive seconds")
+        a, b = max(0, round(start * SR)), min(total, round((start + duration) * SR))
+        if a >= b:
+            raise SheetError("bedMutes[] must intersect the film")
+        fade = round(0.008 * SR)
+        before, after = max(0, a-fade), min(total, b+fade)
+        beds[before:a] *= np.linspace(1.0, 0.0, a-before)[:, None]
+        beds[a:b] = 0
+        beds[b:after] *= np.linspace(0.0, 1.0, after-b)[:, None]
 
     # ---- effects: each one measured, set against the voice, and put on its word
     effects = np.zeros((total + SR * 3, 2))
@@ -2105,6 +2119,17 @@ def report(film: str, m: dict, placed, lufs, peak, lift: float, gain) -> list[st
     return fails
 
 
+def track_fingerprint(raw: dict) -> dict | None:
+    """The supplied file is an input, not just a path in sound.json. Never fall back to synthesis."""
+    track = raw.get("music", {}).get("track")
+    if not track:
+        return None
+    path = os.path.join(ROOT, track)
+    if not os.path.isfile(path):
+        raise ValueError(f"music.track: no file at {track}")
+    return {"path": track, "sha256": hashlib.sha256(open(path, "rb").read()).hexdigest()}
+
+
 def stale(p: dict) -> list[str]:
     """What has changed since the mix was built, according to sound.lock.json."""
     if not os.path.exists(p["lock"]):
@@ -2115,6 +2140,16 @@ def stale(p: dict) -> list[str]:
     for name, path, fn in (("timing.json", p["timing"], text_hash), ("sound.json", p["sheet"], text_hash), ("narration.mp3", p["voice"], file_hash)):
         if lock.get("built_from", {}).get(name) != fn(path):
             changed.append(f"{name} changed after the mix was built")
+    with open(p["sheet"], encoding="utf8") as fh:
+        raw = json.load(fh)
+    # A legacy delivered v1 mix is not rebuilt or silently re-certified. New v2 mixes must carry this proof.
+    needs_track_hash = lock.get("tool", "").endswith("v2") or "music_track" in lock
+    if raw.get("music", {}).get("track") and needs_track_hash:
+        try:
+            if lock.get("music_track") != track_fingerprint(raw):
+                changed.append("music.track bytes changed or were not hashed when the mix was built")
+        except ValueError as error:
+            changed.append(str(error))
     if not os.path.exists(p["mix"]):
         changed.append("mix.mp3 is missing")
     elif lock.get("mix_sha1") != file_hash(p["mix"]):
@@ -2160,6 +2195,7 @@ def build(film: str, stems: bool, check_only: bool = False) -> int:
             "seconds": round(clock.duration, 4),
             "built_from": {"timing.json": text_hash(p["timing"]), "sound.json": text_hash(p["sheet"]), "narration.mp3": file_hash(p["voice"])},
             "mix_sha1": file_hash(p["mix"]),
+            "music_track": track_fingerprint(sheet["raw"]),
             "music_sections": [{"from": s["from"], "mood": s["mood"], "at": round(s["t"], 2)} for s in sheet["sections"]],
             "beds": len(sheet["beds"]),
             "measured": {**m, "lufs": lufs, "truePeakDb": peak, "limiterMaxDb": round(abs(to_db(float(gain.min()))), 1)},

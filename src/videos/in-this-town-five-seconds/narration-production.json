@@ -1,0 +1,132 @@
+{
+  "voice": "voice-00",
+  "spoken_sha256": "e3f31d5c18859fb8f573edc246b9d1a79c4ecf157a77b869f23768f823e8bb15",
+  "alignment": "all nine clips aligned against measured audio; no estimated word timings",
+  "recordings": [
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/01-secret.mp3",
+      "bytes": 163231,
+      "sha256": "a0da04632c0da78b4500eeb1bcd43cbc2be57113a4d052aa57ad500232cfb80b"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/02-school.mp3",
+      "bytes": 251002,
+      "sha256": "01d66216e1da34ed573df94c42389d46068fca0150aae54c31acc73217b105bb"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/03-rules.mp3",
+      "bytes": 192697,
+      "sha256": "aa890fab6346c085859383ed2bdb5f20752646f327ab1f7a3b0bb6c7e044de5a"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/04-locker.mp3",
+      "bytes": 272527,
+      "sha256": "c8fc993cee5f67a7fdae28f623877be08a5bcf8823349d89d682525415a6ddc7"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/05-night.mp3",
+      "bytes": 235120,
+      "sha256": "a44924f9337e456026f89d1f26e1ea4c8f64145f13e045d1bb5eab36b4437ede"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/06-window.mp3",
+      "bytes": 239717,
+      "sha256": "54f35bd5f6803ec5e404f019105172b8e8e6c3cb8180d5b08b80ab48ba4f3ee7"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/07-chase.mp3",
+      "bytes": 219237,
+      "sha256": "e8a8c4fa53e7e8c5a477743f8dd1784fe4a53ccf2a8b07b3f66ce830e3b7f144"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/08-five-seconds.mp3",
+      "bytes": 147139,
+      "sha256": "58fc225f6e5a00169f1da92b196309f6ca89fda3c97ddc70127b3b8fb20f296c"
+    },
+    {
+      "path": "public/audio/in-this-town-five-seconds/raw/09-prince.mp3",
+      "bytes": 93013,
+      "sha256": "14db6f480f0db9cd7a89543fdafec6ca091ddcb25989ddc80aa2e450ec41b1f4"
+    }
+  ],
+  "timing_sha256": "b95e214a3a8f2de355a37b1c14e75af171debbc5edb6c8291c45d8c45d636890",
+  "narration_sha256": "f7486ae4c97f8d8ba6756d775fe5298c87b22adc7633089b346ade4127f66186",
+  "duration": 161.6,
+  "tempo": 1.4115,
+  "words": 674,
+  "clips": [
+    {
+      "name": "01-secret",
+      "at": 0.0,
+      "seconds": 14.271,
+      "timing": "aligned"
+    },
+    {
+      "name": "02-school",
+      "at": 14.331,
+      "seconds": 21.975,
+      "timing": "aligned"
+    },
+    {
+      "name": "03-rules",
+      "at": 36.365,
+      "seconds": 18.378,
+      "timing": "aligned"
+    },
+    {
+      "name": "04-locker",
+      "at": 54.804,
+      "seconds": 23.895,
+      "timing": "aligned"
+    },
+    {
+      "name": "05-night",
+      "at": 78.758,
+      "seconds": 20.583,
+      "timing": "aligned"
+    },
+    {
+      "name": "06-window",
+      "at": 99.401,
+      "seconds": 21.017,
+      "timing": "aligned"
+    },
+    {
+      "name": "07-chase",
+      "at": 120.477,
+      "seconds": 19.219,
+      "timing": "aligned"
+    },
+    {
+      "name": "08-five-seconds",
+      "at": 139.756,
+      "seconds": 12.829,
+      "timing": "aligned"
+    },
+    {
+      "name": "09-prince",
+      "at": 152.645,
+      "seconds": 7.961,
+      "timing": "aligned"
+    }
+  ],
+  "edits": [
+    {
+      "type": "silence",
+      "sourceAt": 40.4215,
+      "frames": 32,
+      "reason": "Complete five-second touch/release demonstration."
+    },
+    {
+      "type": "silence",
+      "sourceAt": 45.4335,
+      "frames": 12,
+      "reason": "Allow visible chalk wind-up and travel before its exact five-second stop."
+    },
+    {
+      "type": "tail",
+      "frames": 18,
+      "reason": "Prince recognition, brief reaction and hard black. No CTA."
+    }
+  ]
+}

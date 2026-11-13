@@ -1,0 +1,246 @@
+{
+  "supplied_music_sha256": "5adf61371ab3f4fe5c1eff93bfa15ef940a7be3f9888da5807cececf2fafaca3",
+  "music_stem_vs_supplied_track": {
+    "method": "Same-time mono waveform correlations after decode to 12 kHz; one-second windows, no lag correction. EQ and authored gain/ducking remain.",
+    "worst_window": 0.990643,
+    "median_window": 0.995867,
+    "windows": [
+      {
+        "at": 1.5,
+        "correlation": 0.99486
+      },
+      {
+        "at": 4.5,
+        "correlation": 0.996479
+      },
+      {
+        "at": 7.5,
+        "correlation": 0.996712
+      },
+      {
+        "at": 10.5,
+        "correlation": 0.997189
+      },
+      {
+        "at": 13.5,
+        "correlation": 0.990643
+      },
+      {
+        "at": 16.5,
+        "correlation": 0.994872
+      },
+      {
+        "at": 19.5,
+        "correlation": 0.996392
+      },
+      {
+        "at": 22.5,
+        "correlation": 0.997166
+      },
+      {
+        "at": 25.5,
+        "correlation": 0.994465
+      },
+      {
+        "at": 28.5,
+        "correlation": 0.99624
+      },
+      {
+        "at": 31.5,
+        "correlation": 0.995507
+      },
+      {
+        "at": 34.5,
+        "correlation": 0.997299
+      },
+      {
+        "at": 37.5,
+        "correlation": 0.994624
+      },
+      {
+        "at": 40.5,
+        "correlation": 0.995852
+      },
+      {
+        "at": 43.5,
+        "correlation": 0.995714
+      },
+      {
+        "at": 46.5,
+        "correlation": 0.99638
+      },
+      {
+        "at": 49.5,
+        "correlation": 0.994702
+      },
+      {
+        "at": 52.5,
+        "correlation": 0.994708
+      },
+      {
+        "at": 55.5,
+        "correlation": 0.995587
+      },
+      {
+        "at": 58.5,
+        "correlation": 0.997553
+      },
+      {
+        "at": 61.5,
+        "correlation": 0.995867
+      },
+      {
+        "at": 64.5,
+        "correlation": 0.995155
+      },
+      {
+        "at": 67.5,
+        "correlation": 0.995892
+      },
+      {
+        "at": 70.5,
+        "correlation": 0.9969
+      },
+      {
+        "at": 73.5,
+        "correlation": 0.99566
+      },
+      {
+        "at": 76.5,
+        "correlation": 0.993592
+      },
+      {
+        "at": 79.5,
+        "correlation": 0.994445
+      },
+      {
+        "at": 82.5,
+        "correlation": 0.997445
+      },
+      {
+        "at": 85.5,
+        "correlation": 0.996717
+      },
+      {
+        "at": 88.5,
+        "correlation": 0.992507
+      },
+      {
+        "at": 91.5,
+        "correlation": 0.992951
+      },
+      {
+        "at": 94.5,
+        "correlation": 0.996746
+      },
+      {
+        "at": 97.5,
+        "correlation": 0.992685
+      },
+      {
+        "at": 100.5,
+        "correlation": 0.995286
+      },
+      {
+        "at": 103.5,
+        "correlation": 0.995033
+      },
+      {
+        "at": 106.5,
+        "correlation": 0.996809
+      },
+      {
+        "at": 109.5,
+        "correlation": 0.99662
+      },
+      {
+        "at": 112.5,
+        "correlation": 0.995926
+      },
+      {
+        "at": 115.5,
+        "correlation": 0.994327
+      },
+      {
+        "at": 118.5,
+        "correlation": 0.99702
+      },
+      {
+        "at": 121.5,
+        "correlation": 0.994163
+      },
+      {
+        "at": 124.5,
+        "correlation": 0.99535
+      },
+      {
+        "at": 127.5,
+        "correlation": 0.995871
+      },
+      {
+        "at": 130.5,
+        "correlation": 0.996515
+      },
+      {
+        "at": 133.5,
+        "correlation": 0.997082
+      },
+      {
+        "at": 136.5,
+        "correlation": 0.994965
+      },
+      {
+        "at": 145.5,
+        "correlation": 0.996355
+      },
+      {
+        "at": 148.5,
+        "correlation": 0.995967
+      },
+      {
+        "at": 151.5,
+        "correlation": 0.995418
+      },
+      {
+        "at": 154.5,
+        "correlation": 0.996102
+      },
+      {
+        "at": 157.5,
+        "correlation": 0.996641
+      }
+    ]
+  },
+  "voice_stem_vs_approved_narration_correlation": 0.9999999994827409,
+  "ambience_stops": [
+    {
+      "stop": "teaser",
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "glass",
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "touch",
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "chalk",
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "locker",
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "elder",
+      "maxAbsAmbience": 0.0
+    },
+    {
+      "stop": "counter",
+      "maxAbsAmbience": 0.0
+    }
+  ],
+  "review_limit": "Signal/hash analysis, not a listening review."
+}
