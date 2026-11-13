@@ -110,6 +110,31 @@ export const Heart: React.FC<{ over: Vec3; size?: number; t?: number; yaw?: numb
 );
 /** How big a heart is. Jo's, with him at the next desk, is `jo`: nothing else in the school comes near it until the dance. */
 export const HEART = { tiny: 0.13, small: 0.2, mid: 0.34, big: 0.62, jo: 0.95 };
+/**
+ * THE RULE, as a number: how big Jo's heart is when he is `metres` away from her. It is the biggest heart in the
+ * school at the next desk and a dot at the far end of a path, and every shot she is in takes its size from here,
+ * so that the last line of the film ("It had only ever been near me") is true of every picture before it.
+ */
+export const joHeart = (metres: number): number => {
+  const pts: Array<[number, number]> = [
+    [1.7, HEART.jo],
+    [2.6, 0.6],
+    [4, 0.4],
+    [6, 0.27],
+    [10, 0.2],
+    [20, HEART.tiny],
+  ];
+  if (metres <= pts[0][0]) return pts[0][1];
+  for (let i = 1; i < pts.length; i++) {
+    if (metres <= pts[i][0]) {
+      const k = (metres - pts[i - 1][0]) / (pts[i][0] - pts[i - 1][0]);
+      return pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * k;
+    }
+  }
+  return pts[pts.length - 1][1];
+};
+/** How far apart two people are, on the ground. */
+export const apart = (a: Vec3, b: Vec3): number => Math.hypot(a[0] - b[0], a[2] - b[2]);
 /** How tall the one under a heart is, in metres. */
 export const TALL = { kid: 1.44, seated: 1.34, leo: 1.64, leoSeated: 1.53, adult: 1.8, dog: 0.82, dogSitting: 0.86 };
 
