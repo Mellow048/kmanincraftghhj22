@@ -205,9 +205,11 @@ jobs:
           else
             seconds=$(npx remotion ffprobe -v error -show_entries format=duration -of csv=p=0 "$master" | tr -dc '0-9.')
             video_k=$(awk -v mb="$MAX_MB" -v s="$seconds" 'BEGIN { printf "%d", mb * 8192 * 0.94 / s - 128 }')
-            echo "The render is over $MAX_MB MB: re-encoding a copy at ${video_k}k, at most 720 wide."
+            # A budget of 3000k or more holds a blocky 1080x1920 picture: only shrink to 720 wide under that.
+            if [ "$video_k" -ge 3000 ]; then wide=1080; else wide=720; fi
+            echo "The render is over $MAX_MB MB: re-encoding a copy at ${video_k}k, at most $wide wide."
             npx remotion ffmpeg -hide_banner -loglevel error -y -i "$master" \
-              -vf "scale='min(720,iw)':-2" -c:v libx264 -preset medium \
+              -vf "scale='min($wide,iw)':-2" -c:v libx264 -preset slow \
               -b:v "${video_k}k" -maxrate "$((video_k * 3 / 2))k" -bufsize "$((video_k * 3))k" \
               -c:a aac -b:a 128k -movflags +faststart "$copy"
             note="$SIZE master, re-encoded to fit $MAX_MB MB"

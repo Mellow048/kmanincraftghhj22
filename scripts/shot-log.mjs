@@ -105,7 +105,11 @@ for (const name of sceneNames) {
     };
     const zone = value("zone");
     const look = value("look");
+    // A line cut into several shots: `cut: 1.3` (or a named number) is where in the line this shot starts.
+    const cutRaw = head.match(/(?:^|\n)\s*cut:\s*([\w.]+)/)?.[1];
+    const cutNamed = cutRaw && Number.isNaN(Number(cutRaw)) ? source.match(new RegExp(`const\\s+${cutRaw}\\s*=\\s*([\\d.]+)`))?.[1] : cutRaw;
     return {
+      cut: cutNamed === undefined || cutRaw === "true" ? 0 : Number(cutNamed) || 0,
       cue: mark[1],
       start: cue.start,
       end: cue.end,
@@ -116,6 +120,20 @@ for (const name of sceneNames) {
       note: text(pick(new RegExp(`\\bnote:\\s*${STRING}`))),
     };
   });
+  shots.forEach((shot, i) => {
+    const before = shots[i - 1];
+    if (shot.cut > 0 && before && before.cue.split(" +")[0] === shot.cue) {
+      shot.start += shot.cut;
+      before.end = shot.start;
+      shot.text = "";
+      shot.cue = `${shot.cue} +${shot.cut}s`;
+    }
+  });
+  // `cue` of a cut shot now carries its offset: compare on the id alone.
+  for (let i = shots.length - 1; i > 0; i--) {
+    const id = (c) => c.split(" +")[0];
+    if (shots[i].text === "" && id(shots[i - 1].cue) === id(shots[i].cue) && shots[i - 1].end > shots[i].start) shots[i - 1].end = shots[i].start;
+  }
   if (shots.length > 0) beats.push({ title: beatTitle, shots });
 }
 

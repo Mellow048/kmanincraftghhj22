@@ -84,6 +84,12 @@ export type MinecraftAvatarProps = {
   /** Cheap rim silhouette for dark characters. 0 = none. */
   rim?: number;
 
+  /**
+   * A whole pose, set by the scene. Overrides `animation`, `blendTo` and `arms`: this is how a fight is
+   * choreographed frame by frame (wind-up, cut, follow-through) instead of played from a looping clip.
+   */
+  pose?: Pose;
+
   /** Anything parented to the right hand. */
   children?: React.ReactNode;
   /**
@@ -192,6 +198,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   shadowOpacity = 0.5,
   faceGlow = 0,
   rim = 0,
+  pose: posed,
   children,
   head,
 }) => {
@@ -293,6 +300,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     const upper = getPose(arms, clock);
     pose = { ...pose, armR: upper.armR, armL: upper.armL };
   }
+
+  if (posed) pose = posed;
 
   // Head aim
   let yaw = headYaw;
