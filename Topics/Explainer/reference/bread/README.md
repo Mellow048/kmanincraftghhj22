@@ -102,8 +102,9 @@ film with them in it.
 - **Use its parts.** The pack is in [`../../PACK.md`](../../PACK.md).
 - **Every claim has a source.** `source/narration.md` lists each one, the page it came from and the day it was
   read. Do the same.
-- **Never retell it.** No sentence, picture or joke of this film goes into another: not the loaf and its coins,
-  not the tiny village, not the balloon, not the German loaf, not "it still costs nothing". A new film borrows the
+- **Never retell it.** No sentence, picture or joke of this film goes into another: not the loaf and its two
+  coins, not the village with ten loaves and ten coins, not the balloon, not the German loaf, not "it still costs
+  nothing". (Villagers, huts and islands are the pack's: any explainer may be set in a village.) A new film borrows the
   shape and nothing else.
 - **It does not change.** If you touch the engine or the pack, prove with `scripts/compare-stills.py` that every
   still of this film is the same as before.
