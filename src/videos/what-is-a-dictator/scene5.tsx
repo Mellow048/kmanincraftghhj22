@@ -1,12 +1,12 @@
 import type React from "react";
 import type { Vec3 } from "../../engine";
 import { Glow } from "../../engine";
-import { BOWLS, Brazier, CAESAR, Cloak, FIRST, Folk, Icon, LooseCloak, Moon, ROBES, SENATORS, STAND, STOPS, Stripe, Wreath, clock, ease, flightScene, hop, moonHook, pop, ramp, thrown, timing, useNow } from "./kit";
+import { BOWLS, Brazier, CAESAR, Cloak, FIRST, Folk, Icon, LooseCloak, Moon, ROBES, STAND, STOPS, Stripe, Wreath, clock, ease, flightScene, hop, moonHook, pop, ramp, thrown, timing, useNow } from "./kit";
 
 /**
  * BEAT 5 — THE SURPRISE. The word is two thousand years old, and it used to be a job with an end.
  *
- * This exhibit is Rome: the men on the temple floor, the purple cloak that IS the job, and the six moons that are
+ * This exhibit is Rome: two men on the temple floor, the purple cloak that IS the job, and the six moons that are
  * its six months. The cloak is one thing, and it is always somewhere: on its stand, on a man, or in the air between.
  */
 
@@ -40,8 +40,9 @@ const monthLit = (i: number, now: number): number => {
   const second = ease(ramp(now, T.made + i * 0.06, T.made + i * 0.06 + 0.08));
   return Math.max(first, second);
 };
-const EXTRA = 9;
-const extraAt = (j: number): number => T.life - 0.3 + j * 0.12;
+/** As many more as the beam will hold: the row reaches the end of it, and the edge of the frame. */
+const EXTRA = 3;
+const extraAt = (j: number): number => T.life - 0.28 + j * 0.16;
 
 export const Exhibit5: React.FC = () => {
   const now = useNow();
@@ -71,7 +72,7 @@ export const Exhibit5: React.FC = () => {
     <>
       {/* The first man: the cloak for six months, and then he takes it off. */}
       <Folk
-        position={[FIRST[0], FIRST[1] + hop(gotIt, 0.12, 0.26), FIRST[2]]}
+        position={[FIRST[0], FIRST[1] + hop(gotIt, 0.12, 0.26) + hop(now - T.danger + 0.03, 0.14, 0.26), FIRST[2]]}
         rotationY={0.08}
         robe={ROBES.toga}
         nod={onFirst ? -0.14 : gaveIt > 0 && gaveIt < 0.9 ? 0.3 : 0.05}
@@ -81,7 +82,7 @@ export const Exhibit5: React.FC = () => {
       />
       {/* Caesar: the cloak, a wreath, and no end. */}
       <Folk
-        position={[CAESAR[0], CAESAR[1] + hop(caesarGot, 0.12, 0.26), CAESAR[2]]}
+        position={[CAESAR[0], CAESAR[1] + hop(caesarGot, 0.12, 0.26) + hop(now - T.danger - 0.02, 0.14, 0.26), CAESAR[2]]}
         rotationY={-0.1}
         scale={1.0}
         robe={ROBES.toga}
@@ -104,19 +105,9 @@ export const Exhibit5: React.FC = () => {
         </group>
       ) : null}
 
-      {/* The three who give it. They jump at the danger, and they watch whoever has the cloak. */}
-      {SENATORS.map((p, i) => (
-        <group key={i}>
-          <Folk
-            position={[p[0], p[1] + hop(now - T.danger + 0.03 - i * 0.04, 0.14, 0.26), p[2]]}
-            rotationY={p[0] < FIRST[0] ? 0.45 : -0.45}
-            robe={ROBES.toga}
-            lookAt={wearer ? [wearer[0], wearer[1] + 1.5, wearer[2]] : undefined}
-            phase={i * 1.4 + 0.2}
-            body={<Stripe />}
-          />
-          <Icon kind="bang" position={[p[0], p[1] + 2.22, p[2]]} height={0.32} outline glow={0.3} scale={alarm} />
-        </group>
+      {/* Both of them jump at the danger. */}
+      {[FIRST, CAESAR].map((p, i) => (
+        <Icon key={i} kind="bang" position={[p[0], p[1] + 2.24, p[2]]} height={0.34} outline glow={0.3} scale={alarm} />
       ))}
 
       {/* The cloak, when nobody has it on. */}
@@ -156,7 +147,7 @@ export const scene5 = flightScene(timing, {
     {
       cue: "5.rome",
       to: STOPS.rome,
-      note: "In to the men on the temple floor. On 'danger' the two bowls burst into fire and all of them jump; on 'gave one man' the cloak leaves its stand and lands on the shoulders of one of them.",
+      note: "In to the two men on the temple floor. On 'danger' the two bowls burst into fire and both of them jump; on 'gave one man' the cloak leaves its stand and lands on the shoulders of one of them, and the other looks at him.",
     },
     {
       cue: "5.six",
@@ -166,7 +157,7 @@ export const scene5 = flightScene(timing, {
     {
       cue: "5.caesar",
       to: STOPS.caesar,
-      note: "Across to the other man. The cloak comes to him and a gold wreath after it; the six moons light again, and then a seventh, an eighth, a ninth, in a row that runs off the edge of the frame. This is the one name in the film.",
+      note: "Round to the other man, from his right, so that the moons run away from the lens. The cloak comes to him and a gold wreath after it; the six moons light again, and then a seventh, an eighth, a ninth, to the end of the beam and the edge of the frame. This is the one name in the film.",
     },
   ],
 });

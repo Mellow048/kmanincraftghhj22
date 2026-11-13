@@ -1,7 +1,8 @@
 import type React from "react";
 import type { Vec3 } from "../../engine";
 import {
-  Banner, Bits, Cage, FASCIA, FLY, Folk, GATE_X, GREY, Helmet, No, NoBits, Puffs, ROBES, STOPS, Spear, Tabs, Villager, VoteBox, VotePile, VoteStone, Voxels, Wig, clock, counted, dropped, ease,
+  Banner, Bits, Cage, DESK_TOP, FASCIA, FLY, Folk, GATE_X, GREY, Gavel, Helmet, No, NoBits, Puffs, ROBES, SHARED, STOPS, Spear, Tabs, Villager, VoteBox, VotePile, VoteStone, Voxels, Wig, clock, counted,
+  dropped, ease,
   flightScene, hop, mixAngle, ramp, textRows, thrown, timing, useNow, votes, walk,
 } from "./kit";
 import type { Throw } from "./kit";
@@ -37,7 +38,9 @@ export const CROWD_UNDER: Vec3[] = [GREY.p(-5.6, 0, 1.0), GREY.p(-4.9, 0, 0.5), 
 export const CROWD_APART: Vec3[] = [GREY.p(-6.8, 0, 0.95), GREY.p(-6.55, 0, 0.05), GREY.p(-2.75, 0, 1.4), GREY.p(-2.95, 0, 0.45), GREY.p(-7.05, 0, 1.8)];
 const PARTS = T.army + 0.05;
 /** The four who vote here: two of the crowd, on the left of the square, and two more on its right. */
-const VOTERS: Vec3[] = [CROWD_APART[2], GREY.p(3.25, 0, 0.55), CROWD_APART[3], GREY.p(3.95, 0, 1.25)];
+const VOTERS: Vec3[] = [CROWD_APART[2], GREY.p(3.6, 0, 0.2), CROWD_APART[3], GREY.p(4.3, 0, 0.9)];
+/** Where the stone that bounces off the locked box comes to rest: in front of it, in the picture. */
+const BOUNCED: Vec3 = GREY.p(0.6, 0.13, 1.1);
 /** The fair vote: six stones, four of them for him. */
 const FAIR: Throw[] = votes(T.won + 0.3, 0.13, "ABAABA", 4);
 /** The next vote: three stones go in, and each one comes out as three on his pile. */
@@ -106,7 +109,7 @@ export const Exhibit4: React.FC = () => {
   // ---- the box
   const lock = now < LOCKED - 0.25 ? undefined : dropped(now - (LOCKED - 0.25), 2.2, 0.25);
   const bounceIn = thrown(now, BOUNCER, FLY, [VOTERS[1][0] - 0.3, VOTERS[1][1] + 1.2, VOTERS[1][2] - 0.15], [GREY.slot[0], GREY.slot[1] + 0.08, GREY.slot[2]], 0.75);
-  const bounceOff = thrown(now, BOUNCER + FLY, 0.42, [GREY.slot[0], GREY.slot[1] + 0.08, GREY.slot[2]], GREY.p(1.15, 0.13, 1.25), 0.55);
+  const bounceOff = thrown(now, BOUNCER + FLY, 0.42, [GREY.slot[0], GREY.slot[1] + 0.08, GREY.slot[2]], BOUNCED, 0.55);
   const lying = now >= BOUNCER + FLY + 0.42;
 
   return (
@@ -162,8 +165,15 @@ export const Exhibit4: React.FC = () => {
           phase={2.2}
           head={<Wig />}
           body={<Tabs />}
+          hands={now < SHARED.judgeTaken ? <Gavel /> : undefined}
         />
       )}
+      {/* His hammer: it drops out of his arms when the spear comes down, and lies on the desk until the man picks it up. */}
+      {now >= SHARED.judgeTaken && now < SHARED.hammerTaken ? (
+        <group position={GREY.p(0.3, DESK_TOP + 0.1 + dropped(now - SHARED.judgeTaken, 0.55, 0.16), -1.84)} rotation={[Math.PI / 2, 0, -Math.PI / 2]}>
+          <Gavel swing={0} />
+        </group>
+      ) : null}
       {now > FETCH_1 && !fetch1Back.done ? (
         <Folk position={fetch1.p} rotationY={fetch1.going ? fetch1.rot : 1.45} robe={ROBES.soldier} walk={fetch1Out.walked + fetch1Back.walked} phase={0.4} head={<Helmet />} hands={<Spear jab={1.25 * pointed} />} />
       ) : null}
@@ -185,7 +195,7 @@ export const Exhibit4: React.FC = () => {
       <VotePile position={GREY.pileA} landed={HIS_PILE} t={now} />
       <VotePile position={GREY.pileB} landed={counted(FAIR, "B")} t={now} gone={CAGE_DOWN} />
       <Bits position={[GREY.pileB[0], GREY.pileB[1] + 0.4, GREY.pileB[2]]} t={now - CAGE_DOWN} color="#8b8b8b" count={7} seed={9} power={0.9} toward={[-0.4, 0, 0.9]} />
-      {bounceIn ? <VoteStone position={bounceIn} spin={(now - BOUNCER) * 11} /> : bounceOff ? <VoteStone position={bounceOff} spin={(now - BOUNCER) * 14} /> : lying ? <VoteStone position={GREY.p(1.15, 0.13, 1.25)} spin={0.6} /> : null}
+      {bounceIn ? <VoteStone position={bounceIn} spin={(now - BOUNCER) * 11} /> : bounceOff ? <VoteStone position={bounceOff} spin={(now - BOUNCER) * 14} /> : lying ? <VoteStone position={BOUNCED} spin={0.6} /> : null}
 
       {/* His face, let down over the judge's chair when the vote is his. */}
       <Banner position={GREY.p(0, 4.02, -3.03)} width={1.06} length={2.12} shown={ease(ramp(now, T.next - 0.05, T.next + 0.45))} face />

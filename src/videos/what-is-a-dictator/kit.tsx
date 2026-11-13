@@ -18,7 +18,7 @@ export {
   // the stage: islands in one sky, and what stands on them
   Bridge, Island, Plinth, Signpost, Sun,
   // things money buys: the loaf the leader may not take
-  Bread, BreadShelf, Crate,
+  Bread,
   // shared with the other topics: cubes that spell, people, a village, the last picture
   Bits, Bubble, Figure, Hut, Icon, LampPost, Puffs, ROBE, SubscribeSign, Villager, Voxels, textRows,
   // staging: how a thing pops in, where "in front of him" is
@@ -45,6 +45,18 @@ export const timing = timingJson as unknown as Timing;
  */
 export const clock = filmClock(timing);
 export const useNow = (): number => clock.useSince("1.ask");
+
+/** Moments that more than one exhibit acts on. */
+export const SHARED = {
+  /** Your village: the planks drop out of the new bridge. */
+  planks: clock.at("2.loud", "job") + 0.12,
+  /** The camera is over the other village: at home, the square is tidied for the last scene. */
+  tidied: clock.at("3.hates") + 1.6,
+  /** The other village: the judge is taken from his desk, and his hammer is left lying on it. */
+  judgeTaken: clock.at("4.won", "first") + 0.9,
+  /** ...until the man picks it up. */
+  hammerTaken: clock.at("4.won", "first") + 2.8,
+};
 
 // ----------------------------------------------------------------------------- places
 
@@ -90,11 +102,11 @@ export const square = (origin: Vec3) => {
     /** The slot of the box: where a vote goes in. */
     slot: p(0, 1.0, 0),
     /** The ground under each pile. */
-    pileA: p(-0.98, 0, 0.05),
-    pileB: p(0.98, 0, 0.05),
-    /** Where the two stand who are being voted on. */
-    spotA: p(-1.8, 0, -0.05),
-    spotB: p(1.8, 0, -0.05),
+    pileA: p(-0.92, 0, 0.15),
+    pileB: p(0.92, 0, 0.15),
+    /** Where the two stand who are being voted on. A tall frame is narrow: they are as close to the box as the piles allow. */
+    spotA: p(-1.6, 0, -0.2),
+    spotB: p(1.6, 0, -0.2),
     /** Behind the desk, on the platform: whoever stands here is over everyone in the square. */
     judge: p(0, 1.0, -2.75),
     /** Where a NO said from the bench hangs: over the desk. */
@@ -105,22 +117,26 @@ export const square = (origin: Vec3) => {
     door: p(-1.25, 1.0, -3.4),
   };
 };
-export const HOME = square(on(PLACE.home, -1.3, 0, 0.9));
+export const HOME = square(on(PLACE.home, -2.5, 0, 0.9));
 export const GREY = square(on(PLACE.grey, 2.6, 0, 0.9));
 
-/** YOUR VILLAGE, west of the square: the baker's shelf, and the new bridge off the edge of the island. */
-export const SHELF = HOME.p(-2.75, 0, -1.2);
-/** The loaf the leader takes: where it lies on the shelf (the middle of its underside). */
-export const SHELF_LOAF = HOME.p(-2.75 + 0.35, 0.59, -1.2);
-export const BAKER = HOME.p(-3.6, 0, -0.75);
+/**
+ * YOUR VILLAGE, west of the square, in the order the leader walks it: the baker with his loaf, a neighbour, you,
+ * and the new bridge off the edge of the island. The west edge is close on purpose: the leader has one second to
+ * get from the judge's NO to his bridge.
+ */
+export const BAKER = HOME.p(-2.95, 0, -0.35);
+export const NEIGHBOUR = HOME.p(-4.3, 0, -1.25);
 /** The bridge runs west from the edge of the island, at this depth; the hole in it is between `HOLE[0]` and `HOLE[1]`. */
 export const BRIDGE_Z = -0.5;
-export const EDGE_X = -6.2;
-export const HOLE: [number, number] = [-7.0, -8.25];
-/** Where you stand at the bridge, the three villagers behind you, and where the leader comes to a stop. */
-export const BRIDGE_YOU = HOME.p(-5.55, 0, -0.35);
-export const BRIDGE_FOLK: Vec3[] = [HOME.p(-4.85, 0, -1.0), HOME.p(-4.7, 0, 0.35), HOME.p(-4.05, 0, -0.3)];
-export const BRIDGE_LEADER = HOME.p(-3.45, 0, 0.8);
+export const EDGE_X = -5.0;
+export const HOLE: [number, number] = [-5.25, -6.08];
+/** Where you stand at the bridge: on its first plank. And where the leader comes to a stop, in the middle of everybody. */
+export const BRIDGE_YOU = HOME.p(-4.75, 0, -0.3);
+export const BRIDGE_LEADER = HOME.p(-3.85, 0, -0.5);
+/** The two who vote from the east side of the square, out of every frame; and where they have gone by the end, out of the way of the flight home. */
+export const EAST_VOTERS: Vec3[] = [HOME.p(3.2, 0, 1.2), HOME.p(3.8, 0, 1.9)];
+export const EAST_LATER: Vec3[] = [HOME.p(5.1, 0, -0.7), HOME.p(5.9, 0, 0.1)];
 
 /**
  * THE OTHER VILLAGE, west of its square: one long stone hall along the back, with a gate through it, a balcony over
@@ -135,8 +151,8 @@ export const FASCIA = GREY.p(GATE_X, 4.375, -2.13);
 export const STATUE = GREY.p(-10.6, 0, -1.2);
 export const STATUE_BASE = 2.2;
 export const STATUE_SCALE = 2.45;
-/** Where you stand at the start: on the second step of the statue's base, at its front right corner. */
-export const STATUE_YOU: Vec3 = [STATUE[0] + 1.02, STATUE[1] + 1.0, STATUE[2] + 1.16];
+/** Where you stand at the start: on the block the stone man stands on, in front of his feet. */
+export const STATUE_YOU: Vec3 = [STATUE[0] + 0.5, STATUE[1] + STATUE_BASE, STATUE[2] + 0.62];
 
 /**
  * ROME: a temple front. `ROME` is the ground at the middle of the foot of the columns; the floor the men stand on
@@ -145,13 +161,12 @@ export const STATUE_YOU: Vec3 = [STATUE[0] + 1.02, STATUE[1] + 1.0, STATUE[2] + 
 export const ROME = on(PLACE.rome, 0, 0, 0.6);
 export const FLOOR = 1.8;
 export const rome = (x: number, y: number, z: number): Vec3 => [ROME[0] + x, ROME[1] + y, ROME[2] + z];
-/** The stand the cloak hangs on when nobody has the job; the two men who wear it; the three who give it. */
+/** The stand the cloak hangs on when nobody has the job, and the two men who wear it. */
 export const STAND = rome(0, FLOOR, -1.45);
 export const FIRST = rome(-0.8, FLOOR, -0.6);
 export const CAESAR = rome(0.85, FLOOR, -0.6);
-export const SENATORS: Vec3[] = [rome(-2.4, FLOOR, -0.9), rome(2.4, FLOOR, -0.95), rome(-2.55, 1.2, 1.07)];
-/** The two bowls that are lit when Rome is in danger: on the second step down, either side of the men. */
-export const BOWLS: Vec3[] = [rome(-1.5, 1.2, 1.07), rome(1.5, 1.2, 1.07)];
+/** The two bowls that are lit when Rome is in danger: on the first step down, either side of the men. */
+export const BOWLS: Vec3[] = [rome(-1.4, 1.5, 0.62), rome(1.4, 1.5, 0.62)];
 /** The hooks of the six moons, under the beam; a seventh and more go on to the right at the same step. */
 export const MOON_STEP = 0.6;
 export const moonHook = (i: number): Vec3 => rome(-1.5 + i * MOON_STEP, 4.79, -1.42);
@@ -168,30 +183,30 @@ export const moonHook = (i: number): Vec3 => rome(-1.5 + i * MOON_STEP, 4.79, -1
  */
 const youAt = (p: Vec3, up: number): Vec3 => [p[0], p[1] + up, p[2]];
 export const STOPS = {
-  /** Where the film opens: the whole statue, and you on its base. */
-  open: stop([STATUE[0] + 0.35, STATUE[1] + 4.2, STATUE[2]], 10.8, 12, -2, 46),
-  /** You: head to knee, the question over your head, and the stone man going up out of the frame behind you. */
-  you: stop(youAt(STATUE_YOU, 1.5), 4.5, 17, -12, 42),
+  /** Where the film opens: the whole stone man, and you at his feet. */
+  open: stop([STATUE[0] + 0.1, STATUE[1] + 4.0, STATUE[2]], 11.6, 22, -2, 46),
+  /** You, from a little below: the question over your head, and the stone man going up out of the frame behind you. */
+  you: stop(youAt(STATUE_YOU, 0.95), 4.4, 9, -10, 42),
 
   /** The square at home, whole: the box, the two piles, the two who are voted on, the bench behind. */
-  vote: stop(HOME.p(0, 1.05, -0.3), 10.2, 6, 9, 42),
-  /** The leader with a loaf that is not his, and the judge over him. */
-  judge: stop(HOME.p(-1.0, 1.25, -0.8), 9.4, -8, 8, 42),
-  /** The new bridge from the side: its hole against the sky, and everybody at the end of it. */
-  loud: stop(HOME.p(-6.7, 1.2, -0.4), 10.6, 3, 6, 42),
-  /** The box again, from the other side and nearer. */
-  again: stop(HOME.p(-0.3, 1.1, -0.3), 9.2, -8, 8, 42),
+  vote: stop(HOME.p(0.25, 1.15, -0.3), 11.0, 6, 9, 44),
+  /** From the west side, so that the judge at his high desk is OVER the leader in the frame, and the baker is beside him. */
+  judge: stop(HOME.p(-1.6, 1.5, -0.9), 9.2, -20, 7, 42),
+  /** The new bridge from the side: its hole against the sky, and the leader with everybody round him. */
+  loud: stop(HOME.p(-4.2, 1.05, -0.4), 9.9, 4, 5, 44),
+  /** The square again, from the other side. */
+  again: stop(HOME.p(0.3, 1.2, -0.3), 10.6, -7, 8, 44),
 
   /** The other village: one man on a balcony, and the people under it. */
   hates: stop(GREY.p(GATE_X, 3.45, -2.8), 10.6, 4, 2, 40),
   /** The gate under the balcony. */
   army: stop(GREY.p(GATE_X, 1.5, -2.2), 7.4, -5, 7, 42),
   /** His square: the same box, the same piles, framed the same way as yours. */
-  won: stop(GREY.p(0, 1.05, -0.3), 9.9, 8, 9, 42),
+  won: stop(GREY.p(0.25, 1.15, -0.3), 11.0, 7, 9, 44),
   /** The bench, close: the judge, and who comes for him. */
   bench: stop(GREY.p(-0.25, 2.3, -2.3), 6.8, -10, 3, 40),
   /** The one who said no. */
-  jail: stop(GREY.p(1.72, 1.55, -0.3), 7.6, 13, 6, 40),
+  jail: stop(GREY.p(1.5, 1.55, -0.3), 7.6, 13, 6, 40),
   /** The box and the one pile left, all the way up. */
   fixed: stop(GREY.p(-0.3, 1.3, -0.2), 9.6, -6, 5, 42),
   /** Back and up: the gate, the balcony, the man on it, and the word under him. */
@@ -199,12 +214,12 @@ export const STOPS = {
 
   /** Two thousand years down: the temple, whole. */
   word: stop(rome(0, 3.75, -0.4), 13.2, 5, 4, 42),
-  /** The men on the temple floor, and the fires either side of them. */
-  rome: stop(rome(0, 3.2, -0.6), 10.4, -9, 3, 42),
-  /** One man in the cloak, and the six moons over him. */
-  six: stop(rome(0, 3.35, -0.7), 9.0, 7, 2, 40),
-  /** The other man, and a row of moons that does not end. */
-  caesar: stop(rome(0.9, 3.35, -0.7), 8.6, -9, 2, 40),
+  /** The two men on the temple floor, the cloak between them, and the fires either side. */
+  rome: stop(rome(-0.12, 3.1, -0.4), 10.2, -3, 3, 42),
+  /** One man in the cloak, and all six moons over him. */
+  six: stop(rome(0, 3.35, -0.7), 9.6, 6, 2, 40),
+  /** The other man, from his right, so that the row of moons runs away from the lens and off the frame. */
+  caesar: stop(rome(1.5, 3.3, -0.8), 8.4, -24, 2, 40),
 
   /** All the way back up: the man on the balcony, in the cloak, and the word under him. */
   now: stop(GREY.p(GATE_X, 4.9, -2.6), 7.6, -12, 2, 40),
@@ -212,9 +227,9 @@ export const STOPS = {
   answer: stop(GREY.p(GATE_X, 4.75, -2.5), 7.2, 11, 3, 40),
 
   /** Home: you at the vote box. */
-  home: stop(HOME.p(-0.45, 0.9, 0.25), 6.8, 10, 6, 40),
-  /** You, the sign over your head, and the NO over that. */
-  sub: stop(HOME.p(-0.8, 1.95, 1.0), 6.0, -9, 3, 40),
+  home: stop(HOME.p(-0.3, 1.3, -0.1), 6.4, 12, 8, 40),
+  /** Round to your other side: the sign over your head and the NO beside it, stacked in a tall frame. */
+  sub: stop(HOME.p(-0.21, 1.72, -0.3), 6.1, -8, 3, 40),
 };
 void near;
 

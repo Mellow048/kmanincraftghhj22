@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Vec3 } from "../../engine";
-import { BALCONY, BALCONY_FLOOR, Cloak, FlyingHat, Folk, GATE_X, GREY, Gavel, LeaderHat, Medals, No, NoBits, ROBES, STOPS, clock, ease, flightScene, headTop, mixAngle, ramp, strike, thrown, timing, useNow, walk } from "./kit";
+import { BALCONY, BALCONY_FLOOR, Cloak, FlyingHat, Folk, GATE_X, GREY, Gavel, LeaderHat, Medals, No, NoBits, ROBES, SHARED, STOPS, clock, ease, flightScene, headTop, mixAngle, ramp, strike, thrown, timing, useNow, walk } from "./kit";
 import { CROWD_UNDER } from "./scene4";
 
 /**
@@ -28,12 +28,12 @@ const T = {
 
 /** The hat comes down on him as it did on the leader at home: on the word 'vote'. */
 export const HIS_HAT = T.vote + 0.26;
-/** He is off the balcony and at the box once the camera is down at the gate. */
-const AT_BOX = T.army + 0.78;
+/** He is off the balcony and at the box once the camera has come to rest on the gate, and the balcony is over the top of the frame. */
+const AT_BOX = T.army + 1.0;
 /** Up the steps when he has the hat; into the chair when the judge is out of it; the hammer; out by the door. */
 const CLIMB = T.first + 0.33;
 const TO_CHAIR = CLIMB + 1.57;
-export const HAMMER = TO_CHAIR + 0.9;
+export const HAMMER = SHARED.hammerTaken;
 const LEAVES = T.wrong - 0.28;
 /** He comes out on the balcony again as the camera turns back to it. */
 export const OUT = T.name + 0.03;

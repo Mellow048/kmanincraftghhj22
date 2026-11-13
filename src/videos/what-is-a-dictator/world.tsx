@@ -1,7 +1,7 @@
 import type React from "react";
 import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox } from "../../engine";
 import {
-  BALCONY_FLOOR, BRIDGE_Z, Banner, Bench, BreadShelf, Bridge, CloakStand, Column, EDGE_X, FASCIA, FLOOR, Figure, GATE_X, GREY, HOLE, HOME, Hut, Island, LampPost, PLACE, ROME, SHELF, SIZE, STAND, STATUE,
+  BALCONY_FLOOR, BRIDGE_Z, Banner, Bench, Bridge, CloakStand, Column, EDGE_X, FASCIA, FLOOR, Figure, GATE_X, GREY, HOLE, HOME, Hut, Island, LampPost, PLACE, ROME, SIZE, STAND, STATUE,
   STATUE_BASE, STATUE_SCALE, StoneMan, Sun, VoteBox, on, rome,
 } from "./kit";
 import { Exhibit1 } from "./scene1";
@@ -50,19 +50,21 @@ const Home: React.FC = () => (
     <Hut at={HOME.p(0.5, 0, -3.4)} w={8.4} d={1.5} h={4.4} wall="planks" roof="#8a3b2a" door={3.05} windows={[-3.15]} />
     <Bench position={HOME.box} floor="planks" />
     <VoteBox position={HOME.box} />
-    {/* the baker's shelf */}
-    <BreadShelf position={SHELF} width={1.4} count={5} />
-    {/* the new bridge, off the west edge, with a hole where three planks were never nailed down (Exhibit2 has those) */}
+    {/* the new bridge, off the west edge, with a hole where two planks were never nailed down (Exhibit2 has those) */}
     <Bridge from={HOME.p(EDGE_X + 0.3, 0, BRIDGE_Z)} to={HOME.p(HOLE[0], 0, BRIDGE_Z)} />
-    <Bridge from={HOME.p(HOLE[1], 0, BRIDGE_Z)} to={HOME.p(-10.7, 0, BRIDGE_Z)} />
-    <Island position={HOME.p(-12.1, 0, BRIDGE_Z)} size={[3, 3]} seed={7} layers={2} />
-    <Tree position={HOME.p(-12.3, 0, BRIDGE_Z - 0.3)} height={2.8} spread={0.7} />
+    <Bridge from={HOME.p(HOLE[1], 0, BRIDGE_Z)} to={HOME.p(-9.4, 0, BRIDGE_Z)} />
+    {/* the rope rails run on over the hole: it is a hole IN a bridge, not the end of one */}
+    {[-1, 1].map((side) => (
+      <Block key={side} position={HOME.p((HOLE[0] + HOLE[1]) / 2, 0.78, BRIDGE_Z + side * 0.66)} size={[HOLE[0] - HOLE[1], 0.05, 0.05]} color="#6a4a2a" castShadow={false} />
+    ))}
+    <Island position={HOME.p(-10.8, 0, BRIDGE_Z)} size={[3, 3]} seed={7} layers={2} />
+    <Tree position={HOME.p(-11.0, 0, BRIDGE_Z - 0.3)} height={2.8} spread={0.7} />
     {/* the rest of the village */}
     <Hut at={HOME.p(6.0, 0, -1.9)} w={3} d={2.4} h={2.8} roof="#3f6fa8" door={-0.5} windows={[0.75]} turn={-0.2} />
     <Hut at={HOME.p(7.3, 0, 1.6)} w={2.2} d={1.8} h={2.3} wall="cobble" roof="#4a6a3a" turn={-1.25} />
-    <Tree position={HOME.p(8.0, 0, -3.5)} height={3.8} />
-    <Tree position={HOME.p(-4.5, 0, -3.9)} height={3.3} spread={0.8} leaf="#4a8c33" />
-    <LampPost position={HOME.p(4.3, 0, 2.9)} seed={2} />
+    <Tree position={HOME.p(8.4, 0, -3.5)} height={3.8} />
+    <Tree position={HOME.p(9.1, 0, 1.4)} height={3.0} spread={0.75} leaf="#4a8c33" />
+    <LampPost position={HOME.p(4.5, 0, -2.9)} seed={2} />
     <Flowers at={HOME.p(1.9, 0, 3.0)} />
     <Flowers at={HOME.p(-1.9, 0, 3.3)} colors={["#f4f1ea", "#f2d23a"]} />
     <Flowers at={HOME.p(5.2, 0, 0.4)} colors={["#ff9a3a", "#f4f1ea", "#f2d23a"]} />
@@ -215,7 +217,7 @@ export const World: React.FC = () => (
     {/* Atmosphere is not optional: a ray, a pool of light, a glow and dust on every island the lens rests on. */}
     <GodRay position={HOME.p(2.6, 6, -1)} rotation={[0, 0, -0.45]} width={4.5} height={12} color="#fff0c8" opacity={0.07} />
     <LightPool position={HOME.p(0, 0.03, 1.4)} width={7} depth={4.6} color="#fff2c8" opacity={0.16} />
-    <LightPool position={HOME.p(-5, 0.03, 0.2)} width={4} depth={4} color="#fff2c8" opacity={0.14} />
+    <LightPool position={HOME.p(-3.6, 0.03, 0)} width={3.4} depth={3.6} color="#fff2c8" opacity={0.14} />
     <Glow position={[HOME.slot[0], HOME.slot[1] + 0.2, HOME.slot[2] + 0.3]} size={1.9} color="#ffe08a" opacity={0.2} />
     <Dust position={on(PLACE.home, 0, 2.4, 0)} area={[14, 5, 9]} count={54} size={0.04} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
     <LightPool position={GREY.p(0, 0.03, 1.4)} width={7} depth={4.6} color="#dfe6f2" opacity={0.12} />

@@ -1,5 +1,5 @@
 import type React from "react";
-import { HOME, KID, No, STOPS, SubscribeSign, clock, ease, flightScene, pop, ramp, timing, useNow } from "./kit";
+import { HOME, No, STOPS, SubscribeSign, clock, ease, flightScene, pop, ramp, timing, useNow } from "./kit";
 import { lastSpot } from "./scene1";
 
 /**
@@ -18,25 +18,27 @@ const T = {
   can: clock.at("7.sub", "can"),
 };
 
-/** The NO grows out of the slot, tail first. */
+/** The NO grows out of the slot, tail first. It is nearly as big as you are. */
 const SPOKEN = T.say - 0.05;
-const BIG = 1.32;
+const BIG = 1.12;
 
 export const Exhibit7: React.FC = () => {
   const now = useNow();
   const grown = pop(now, SPOKEN, 0.34);
   // It answers when it is named again ('or say no'), and once more on the last word.
-  const again = (at: number) => (now > at && now < at + 0.4 ? Math.sin(((now - at) / 0.4) * Math.PI) * 0.14 : 0);
+  const again = (at: number) => (now > at && now < at + 0.4 ? Math.sin(((now - at) / 0.4) * Math.PI) * 0.12 : 0);
   const size = BIG * grown * (1 + again(T.no - 0.03) + again(T.can - 0.03));
   const you = lastSpot(now);
   const sub = now - T.subscribe;
-  const sign: [number, number, number] = [you[0], you[1] + 1.56 * KID + 0.62, you[2] - 0.1];
+  // The sign is over your head, its stick in the hand nearer the box: so it is over the NO as well, and the two
+  // things you may say are stacked in one tall picture.
+  const sign: [number, number, number] = [you[0] + 0.24, you[1] + 2.28, you[2] - 0.02];
   return (
     <>
-      <No position={[HOME.slot[0], HOME.slot[1] + 0.56 * size, HOME.slot[2]]} scale={size} rotationY={0.1} tilt={grown < 1 ? (1 - grown) * 0.2 : 0} tail={-1} />
+      <No position={[HOME.slot[0] + 0.06, HOME.slot[1] + 0.52 * size, HOME.slot[2]]} scale={size} rotationY={0.1} tilt={grown < 1 ? (1 - grown) * 0.2 : 0} tail={-1} />
       <SubscribeSign
         position={sign}
-        scale={0.72 * pop(sub, -0.02, 0.26) * (1 + again(T.here - 0.03) * 0.6)}
+        scale={0.72 * pop(sub, -0.02, 0.26) * (1 + again(T.here - 0.03) * 0.5)}
         tilt={sub > 0 ? Math.sin(sub * 9) * 0.07 * Math.exp(-sub * 2.4) : 0}
       />
     </>
@@ -54,12 +56,12 @@ export const scene7 = flightScene(timing, {
     {
       cue: "7.you",
       to: STOPS.home,
-      note: "Home, across the sky, to you at the vote box with one stone in your hand. It goes in on 'how you', and on 'say no' a red NO as big as you are grows out of the slot. Behind it the judge is still at the bench, and the hat is on the head your village picked.",
+      note: "Home, across the sky, to you at the vote box with one stone in your hand. It goes in on 'how you', and on 'say no' a red NO nearly as big as you are grows out of the slot. Nobody else is in the picture: this one is yours.",
     },
     {
       cue: "7.sub",
       to: STOPS.sub,
-      note: "In on you. On 'subscribe' you step back with the red sign over your head; on 'or say no' the NO beside you answers. You look at it, up at the sign, and then at whoever is watching: here, either one is yours to say.",
+      note: "Round to your other side. On 'subscribe' you turn to us and the red sign goes up over your head; on 'or say no' the NO beside you answers. You look at it, up at the sign, and then at whoever is watching: here, either one is yours to say.",
     },
   ],
 });

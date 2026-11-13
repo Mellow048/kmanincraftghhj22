@@ -1,9 +1,9 @@
 import type React from "react";
-import { BRIDGE_YOU, HOME, Icon, KID, No, STATUE, STATUE_BASE, STATUE_SCALE, STATUE_YOU, STOPS, VoteStone, You, clock, ease, flightScene, pop, ramp, thrown, timing, useNow } from "./kit";
+import { BRIDGE_LEADER, BRIDGE_YOU, HOME, Icon, KID, No, SHARED, STATUE, STATUE_BASE, STATUE_SCALE, STATUE_YOU, STOPS, VoteStone, You, clock, ease, flightScene, mixAngle, pop, ramp, thrown, timing, useNow } from "./kit";
 import type { Vec3 } from "../../engine";
 
 /**
- * BEAT 1 — THE QUESTION. One kid, small, at the foot of a stone man four times his size.
+ * BEAT 1 — THE QUESTION. One kid, small, at the feet of a stone man four times his size.
  *
  * A scene file holds two things:
  *   ExhibitN   what the beat SHOWS. world.tsx mounts it for the whole film, because a camera that flies away from
@@ -19,11 +19,7 @@ import type { Vec3 } from "../../engine";
 const AT = {
   /** The camera has left the statue: you are at home from here on. */
   home: clock.at("2.vote") + 1.5,
-  /** The plank falls out of the new bridge, and you say what you think of it. */
-  plank: clock.at("2.loud", "job") + 0.1,
   anyone: clock.at("2.loud", "anyone"),
-  /** The camera is over the other village: you walk to the vote box. */
-  box: clock.at("3.hates") + 1.6,
   /** Your own vote. */
   throwIt: clock.at("7.you", "how") - 0.14,
   rise: clock.at("7.you", "say") - 0.05,
@@ -33,63 +29,68 @@ const AT = {
   still: clock.at("7.sub", "still"),
 };
 
-/** Where you stand to vote, and where you step back to with the sign: clear of the big NO on the box. */
-export const VOTER: Vec3 = HOME.p(-1.05, 0, 0.45);
-export const SIGNER: Vec3 = HOME.p(-1.42, 0, 0.8);
-/** Where you are for the last two lines: one hop back from the box, on 'subscribe'. */
+/** Where you stand to vote: behind the corner of the box, so that you face the slot and the lens sees your face. */
+export const VOTER: Vec3 = HOME.p(-0.95, 0, -0.42);
+/** Which way that is: towards the slot. */
+const TO_SLOT = Math.atan2(HOME.slot[0] - VOTER[0], HOME.slot[2] - VOTER[2]);
+/** Where you are for the last two lines: the same place, and one hop of joy on 'subscribe'. */
 export const lastSpot = (now: number): Vec3 => {
-  const k = ease(ramp(now - AT.subscribe, -0.2, 0.12));
-  return [VOTER[0] + (SIGNER[0] - VOTER[0]) * k, VOTER[1] + Math.sin(k * Math.PI) * 0.2, VOTER[2] + (SIGNER[2] - VOTER[2]) * k];
+  const k = ramp(now - AT.subscribe, -0.12, 0.2);
+  return [VOTER[0], VOTER[1] + Math.sin(k * Math.PI) * 0.16, VOTER[2]];
 };
-/** The hand your vote leaves from. */
-const HAND: Vec3 = [VOTER[0] + 0.52, VOTER[1] + 1.05, VOTER[2] + 0.2];
+/** The hand your vote leaves from: half an arm towards the slot. */
+const HAND: Vec3 = [VOTER[0] + Math.sin(TO_SLOT) * 0.45, VOTER[1] + 1.0, VOTER[2] + Math.cos(TO_SLOT) * 0.45];
 
 export const Exhibit1: React.FC = () => {
   const now = useNow();
 
   // ---- at the statue: the question
   if (now < AT.home) {
-    const face: Vec3 = [STATUE[0], STATUE[1] + STATUE_BASE + 29 * (1.8 / 32) * STATUE_SCALE, STATUE[2] + 0.4];
-    const turned = ease(ramp(now, 0.38, 0.7));
+    // The film opens on your back: you are looking up at him. Then you turn round to whoever is watching, and shrug.
+    const turned = ease(ramp(now, 0.26, 0.6));
+    const shrugged = ease(ramp(now, 0.48, 0.78));
+    void [STATUE, STATUE_BASE, STATUE_SCALE];
     return (
       <>
         <You
           position={STATUE_YOU}
-          rotationY={0.3}
+          rotationY={mixAngle(Math.PI - 0.3, 0.26, turned)}
           animation="idle"
           blendTo="shrug"
-          blend={1 - turned}
-          face={now > 0.45 ? "uneasy" : "wow"}
+          blend={1 - shrugged}
+          face={now > 0.5 ? "uneasy" : "wow"}
           saccade={false}
           gaze={0}
-          lookAt={now < 0.42 ? face : undefined}
+          headPitch={-0.62 * (1 - turned)}
         />
         {/* The question mark is there on the first frame: that frame is the film's poster. */}
-        <Icon kind="question" position={[STATUE_YOU[0], STATUE_YOU[1] + 1.92 + Math.sin(now * 5) * 0.03, STATUE_YOU[2]]} rotationY={0.25} height={0.46} color="#ffd24a" outline glow={0.25} scale={1 + 0.25 * Math.max(0, 1 - now / 0.25)} />
+        <Icon kind="question" position={[STATUE_YOU[0], STATUE_YOU[1] + 1.92 + Math.sin(now * 5) * 0.03, STATUE_YOU[2]]} rotationY={0.2} height={0.46} color="#ffd24a" outline glow={0.25} scale={1 + 0.25 * Math.max(0, 1 - now / 0.25)} />
       </>
     );
   }
 
   // ---- at the new bridge: anyone can say so out loud
-  if (now < AT.box) {
-    const startled = now - AT.plank;
+  if (now < SHARED.tidied) {
+    const startled = now - SHARED.planks;
     const said = now - AT.anyone;
-    const pointing = ease(ramp(said, -0.12, 0.12));
-    const hop = startled > 0 && startled < 0.3 ? Math.sin((startled / 0.3) * Math.PI) * 0.12 : 0;
+    // You are looking at the bridge when the planks go. Then you turn on the leader, who has just walked up, and say it.
+    const round = ease(ramp(said, -0.22, 0.02));
+    const pointing = ease(ramp(said, -0.1, 0.14));
+    const hop = startled > 0 && startled < 0.3 ? Math.sin((startled / 0.3) * Math.PI) * 0.13 : 0;
     return (
       <>
         <You
           position={[BRIDGE_YOU[0], BRIDGE_YOU[1] + hop, BRIDGE_YOU[2]]}
-          rotationY={-Math.PI / 2 + 0.42}
+          rotationY={mixAngle(-Math.PI / 2 + 0.4, Math.PI / 2 - 0.42, round)}
           animation="idle"
           blendTo="point"
           blend={1 - pointing}
           face={said > 0 ? "frown" : startled > 0 ? "wow" : "calm"}
           saccade={false}
           gaze={0}
-          headYaw={said > 0.5 ? 0.5 * ease(ramp(said, 0.5, 0.9)) : 0}
+          lookAt={said > 0.1 ? [BRIDGE_LEADER[0], BRIDGE_LEADER[1] + 1.5, BRIDGE_LEADER[2]] : undefined}
         />
-        <No position={[BRIDGE_YOU[0], BRIDGE_YOU[1] + 1.56 * KID + 0.62, BRIDGE_YOU[2]]} scale={0.74 * pop(said, 0, 0.2)} />
+        <No position={[BRIDGE_YOU[0] - 0.05, BRIDGE_YOU[1] + 1.56 * KID + 0.66, BRIDGE_YOU[2]]} scale={0.74 * pop(said, 0, 0.2)} tail={1} />
       </>
     );
   }
@@ -99,7 +100,8 @@ export const Exhibit1: React.FC = () => {
   const up = now - AT.rise;
   const sub = now - AT.subscribe;
   const spot = lastSpot(now);
-  const facing = 1.75 - 1.5 * ease(ramp(sub, -0.2, 0.15));
+  // You face the slot to vote; on 'subscribe' you turn to whoever is watching.
+  const facing = mixAngle(TO_SLOT, -0.1, ease(ramp(sub, -0.2, 0.15)));
   const stone = thrown(now, AT.throwIt, 0.3, HAND, HOME.slot, 0.32);
   // Before it is thrown the stone is in your hand; then it is in the air; then it is in the box.
   const holding = thrownAt < 0;
@@ -118,9 +120,9 @@ export const Exhibit1: React.FC = () => {
         face={sub > 0 ? "grin" : up > 0.1 ? "wow" : thrownAt > 0 ? "brave" : "calm"}
         saccade={false}
         gaze={0}
-        headYaw={sub > 0 ? -0.75 * toNo : 0}
-        headPitch={sub > 0 ? -0.45 * toSign : 0}
-        lookAt={sub < -0.2 && up > 0 ? [HOME.slot[0], HOME.slot[1] + 0.9, HOME.slot[2]] : undefined}
+        headYaw={sub > 0 ? 0.7 * toNo : 0}
+        headPitch={sub > 0 ? -0.4 * toSign : 0}
+        lookAt={sub < -0.2 && up > 0 ? [HOME.slot[0], HOME.slot[1] + 0.7, HOME.slot[2]] : undefined}
       >
         {holding ? <VoteStone position={[0, -0.1, 0.03]} /> : null}
       </You>
@@ -139,7 +141,7 @@ export const scene1 = flightScene(timing, {
       cue: "1.ask",
       to: STOPS.you,
       travel: 0.7,
-      note: "The question, asked where it is hardest to answer: the first frame is a stone man four times the size of the kid standing on his plinth. Then in to the kid, who looks up at him, turns to us and shrugs, with the question over his head.",
+      note: "The question, asked where it is hardest to answer: the first frame is a stone man four times the size of the kid who stands at his feet, looking up at him. Then in to the kid, who turns round to us and shrugs, with the question over his head.",
     },
   ],
 });
