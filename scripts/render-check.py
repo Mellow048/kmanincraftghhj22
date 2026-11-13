@@ -10,10 +10,11 @@ for each shot, on one sheet: `renders/<film>-shots.jpg`, the picture every film'
   python3 scripts/render-check.py <film> --only 8.,13.near        only these shots (a cue id, or the start of one)
   python3 scripts/render-check.py <film> --at 0.15,0.5,0.9        three frames of each shot: early, middle, late
 
-It reads the mp4 that the render workflow delivered and the film's timing.json. Nothing is rendered. It exits 1 if
-the file is not the film: a wrong length, missing frames, no sound, or a loudness outside what a phone expects.
+It reads the mp4 that the render workflow delivered, the film's timing.json and its mix.mp3. Nothing is rendered. It
+exits 1 if the file is not the film: a wrong length, missing frames, no sound, a sound that is not the mix or is out
+of step with the picture, or a loudness outside what a phone expects.
 
-Needs: pip install pillow imageio-ffmpeg   (imageio-ffmpeg brings its own ffmpeg; a system ffmpeg is used if there is one)
+Needs: pip install numpy pillow imageio-ffmpeg   (imageio-ffmpeg brings its own ffmpeg; a system ffmpeg is used if there is one)
 """
 import argparse
 import io
@@ -102,6 +103,37 @@ def main() -> int:
                 fails.append(f"{lufs.group(1)} LUFS: build the sound again (scripts/sound.py build)")
             if float(peak.group(1)) > 0.0:
                 fails.append(f"the sound peaks at {peak.group(1)} dB: it clips")
+
+    # Is the sound of the file the mix, and does it start when the picture does? Lay one over the other and slide.
+    mix = ROOT / "public" / "audio" / a.film / "mix.mp3"
+    if audio and mix.exists():
+        try:
+            import numpy as np
+        except ImportError:
+            np = None
+            print("  in step   not measured: pip install numpy")
+        if np is not None:
+            rate = 16000
+
+            def mono(path):
+                raw = subprocess.run([ff, "-hide_banner", "-loglevel", "error", "-i", str(path), "-ac", "1", "-ar", str(rate), "-f", "s16le", "-"], capture_output=True).stdout
+                return np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768
+
+            got, made = mono(mp4), mono(mix)
+            slide, start = rate // 2, min(10 * rate, max(0, len(got) // 4))
+            window = min(20 * rate, len(got) - start - slide, len(made) - start - slide)
+            if window > rate and start >= slide:
+                piece = got[start : start + window]
+                under = made[start - slide : start + window + slide]
+                match = np.correlate(under, piece, mode="valid")
+                at = int(np.argmax(match))
+                ms = (slide - at) / rate * 1000.0
+                alike = float(match[at] / (np.linalg.norm(piece) * np.linalg.norm(under[at : at + window]) + 1e-9))
+                print(f"  in step   the sound of the file is {ms:+.1f} ms from mix.mp3 (they are {alike:.2f} alike; 1 is the same sound)")
+                if alike < 0.9:
+                    fails.append("the sound in the file is not public/audio/<film>/mix.mp3: the mix was built again after the render, or the film plays another file")
+                elif abs(ms) > 40:
+                    fails.append(f"the sound is {ms:+.0f} ms out of step with the picture: more than a frame")
 
     if a.sheet is not None or a.frames:
         try:

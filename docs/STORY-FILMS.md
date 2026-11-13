@@ -271,7 +271,7 @@ is done, `git pull --rebase`, and check what came back:
 python3 scripts/render-check.py <film> --sheet        # the numbers, and renders/<film>-shots.jpg
 ```
 
-It compares the file with the film (length, frames, size, sound, loudness) and makes a sheet of one frame of the
-mp4 for each shot. **Look at the sheet**: it is the film as delivered, not as planned. A first render at
+It compares the file with the film (length, frames, size, loudness, and whether its sound is the mix, in step with
+the picture) and makes a sheet of one frame of the mp4 for each shot. **Look at the sheet**: it is the film as delivered, not as planned. A first render at
 `-f scale=0.5` is quicker and shows the same faults. `--at 0.03` and `--at 0.97` give the first and
 the last frame of every shot, which the stills of the build (taken in the middle of a shot) never showed.

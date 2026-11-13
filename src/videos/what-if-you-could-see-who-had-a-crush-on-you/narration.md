@@ -9,7 +9,8 @@ built. Changing a word now means recording that clip again and rebuilding the ti
 **Delivered 2026-11-13** as render 44: 1080×1920, 3409 frames, 1:53.6. The master is the release asset
 (`render-44`, 62 MB); `renders/what-if-you-could-see-who-had-a-crush-on-you.mp4` is a 720×1280 copy that fits in
 the repository, and `renders/what-if-you-could-see-who-had-a-crush-on-you-shots.jpg` is one frame of it per shot.
-Measured on the delivered file: −15.0 LUFS, true peak −0.3 dB. **Nobody has listened to the sound: an agent
+Measured on the delivered file (`python3 scripts/render-check.py what-if-you-could-see-who-had-a-crush-on-you`): the
+sound sits 0.0 ms from `mix.mp3`, −15.0 LUFS, true peak −0.3 dB. **Nobody has listened to the sound: an agent
 cannot.**
 
 Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. **This film is meant to become the
