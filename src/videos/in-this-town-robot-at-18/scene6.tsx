@@ -180,12 +180,12 @@ export const scene6 = storyScene(timing, {
       note: "Him, visor up, frozen, eyes wide, the light on his face getting brighter and brighter and the blast crawling towards him.",
       stage: (t) => {
         const k = ramp(t, 0.1, 3.1);
-        const tip = lerp3(GUN, AIM, 0.25 + 0.5 * k);
+        const tip = lerp3(GUN, AIM, 0.25 + 0.4 * k);
         return (
           <>
             <Hero position={ME} rotationY={toHim * 0.6} animation="scared" suit={1} visor={1} face="fear" />
             <Beam from={lerp3(GUN, AIM, 0.2)} to={tip} width={0.3} color="#ff8a2a" core="#fff2c0" />
-            <pointLight position={tip} color="#ffb060" intensity={10 + 60 * k} distance={6} decay={2} />
+            <pointLight position={tip} color="#ffb060" intensity={3 + 12 * k} distance={6} decay={2} />
           </>
         );
       },

@@ -159,7 +159,7 @@ export const scene5 = storyScene(timing, {
             <Jets position={at} power={0.8} t={t} />
             <Fill on={[at[0], 5.7, at[2]]} yaw={-14} power={5} />
             <group scale={pop(t, wordAt("11.lost", "lost") - 0.1)}>
-              <Bubble text="LOST?" position={[at[0] - 0.2, 6.75, at[2]]} scale={0.42} dark />
+              <Bubble text="LOST?" position={[at[0], 6.5, at[2]]} scale={0.36} dark />
             </group>
           </>
         );

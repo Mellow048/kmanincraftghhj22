@@ -28,7 +28,7 @@ export const scene4 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={E} animation="idle" face="frown" headPitch={0.3} />
           <HeadAt position={HEAD} rotation={[0, -E, 0]} />
-          <Fill on={[ME[0], 1.5, ME[2]]} yaw={0} power={2.25} />
+          <Fill on={[ME[0], 1.5, ME[2]]} yaw={0} power={1.12} />
         </>
       ),
     },
@@ -42,7 +42,7 @@ export const scene4 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={E} animation="shrug" face="uneasy" headPitch={0.2} />
           <HeadAt position={HEAD} rotation={[0, -E, 0]} />
-          <Fill on={[ME[0], 1.5, ME[2]]} yaw={55} power={2.25} />
+          <Fill on={[ME[0], 1.5, ME[2]]} yaw={55} power={1.12} />
           <group scale={pop(t, 0.15)}>
             <Bubble text="?" position={[ME[0] - 0.1, 2.45, ME[2]]} rotationY={0.9} scale={0.6} dark />
           </group>
@@ -67,7 +67,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Hero position={ME} rotationY={E} animation={up > 0.4 ? "reachUp" : "hold"} face={up > 0.4 ? "worried" : "frown"} headPitch={lerp(0.3, -0.45, up)} />
             <HeadAt position={at} rotation={[flip * (1 - up) - 0.9 * up, -E + ear * (1 - up), 0]} />
-            <Fill on={[ME[0], 1.5, ME[2]]} yaw={0} power={2.25} />
+            <Fill on={[ME[0], 1.5, ME[2]]} yaw={0} power={1.12} />
           </>
         );
       },
@@ -85,9 +85,9 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <HeadAt position={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} rotation={[0, Math.PI, 0]} button={ease(ramp(t, dust - 0.2, b))} />
-            <Bits position={[HEAD[0] - 0.3 - 0.25 + 0.5 * wipe, HEAD[1] + 0.05, HEAD[2] + 0.3]} t={(t - dust + 0.5) % 0.4} color="#b8b0a0" count={5} power={0.7} />
+            <Bits position={[HEAD[0] - 0.3 - 0.25 + 0.5 * wipe, HEAD[1] + 0.05, HEAD[2] + 0.3]} t={(t - dust + 0.5) % 0.4} color="#b8b0a0" count={5} power={0.35} />
             <Glow position={[HEAD[0] - 0.3, HEAD[1] - 0.02, HEAD[2] + 0.32]} size={0.5} color={CYAN} opacity={0.5 * ease(ramp(t, b - 0.2, b + 0.2))} />
-            <Fill on={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} yaw={0} power={1.8} d={1.6} />
+            <Fill on={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} yaw={0} power={0.3} d={1.6} />
           </>
         );
       },
@@ -103,8 +103,8 @@ export const scene4 = storyScene(timing, {
         <>
           <HeadAt position={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} rotation={[0, Math.PI, 0]} button={1 + 2 * jolt(t, 0.3, 0.4)} />
           <Glow position={[HEAD[0] - 0.3, HEAD[1] - 0.02, HEAD[2] + 0.32]} size={0.4 + 0.5 * ramp(t, 0.3, 0.7)} color={CYAN} opacity={0.35} />
-          <Bits position={[HEAD[0] - 0.3, HEAD[1], HEAD[2] + 0.35]} t={t - 0.3} color={CYAN} count={10} power={1.4} />
-          <Fill on={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} yaw={0} power={1.8} d={1.6} />
+          <Bits position={[HEAD[0] - 0.3, HEAD[1], HEAD[2] + 0.35]} t={t - 0.3} color={CYAN} count={10} power={0.70} />
+          <Fill on={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} yaw={0} power={0.3} d={1.6} />
         </>
       ),
     },
@@ -122,7 +122,7 @@ export const scene4 = storyScene(timing, {
             <HeadAt position={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} rotation={[0, 0, 0]} eyes={ease(ramp(t, 0, 0.3))} open={open} />
             <Glow position={[HEAD[0] - 0.3, HEAD[1], HEAD[2] + 0.2]} size={1.2} color={CYAN} opacity={0.15} />
             <pointLight position={[HEAD[0] - 0.3, HEAD[1], HEAD[2] + 0.8]} color={CYAN} intensity={3} distance={4} decay={2} />
-            <Fill on={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} yaw={0} power={1.35} d={1.6} />
+            <Fill on={[HEAD[0] - 0.3, HEAD[1], HEAD[2]]} yaw={0} power={0.3} d={1.6} />
           </>
         );
       },
@@ -140,7 +140,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Hero position={MID} animation={worn ? "idle" : "reachUp"} face="worried" suit={worn ? 0.1 : 0} visor={1 - ease(ramp(t, 0.6, 0.85))} />
             {worn ? null : <HeadAt position={[MID[0], lerp(2.35, 1.6, on), MID[2]]} open={1} eyes={1} />}
-            <Fill on={[MID[0], 1.5, MID[2]]} yaw={0} power={2.25} />
+            <Fill on={[MID[0], 1.5, MID[2]]} yaw={0} power={1.12} />
           </>
         );
       },
@@ -168,10 +168,10 @@ export const scene4 = storyScene(timing, {
               </mesh>
             ) : null}
             {[neck, arms, legs, toes].map((w, i) => (
-              <Bits key={i} position={[MID[0], [1.3, 1.0, 0.6, 0.1][i], MID[2] + 0.2]} t={t - w} color={CYAN} count={12} power={1.8} />
+              <Bits key={i} position={[MID[0], [1.3, 1.0, 0.6, 0.1][i], MID[2] + 0.2]} t={t - w} color={CYAN} count={12} power={0.90} />
             ))}
             <pointLight position={[MID[0], line, MID[2] + 0.9]} color={CYAN} intensity={5} distance={4} decay={2} />
-            <Fill on={[MID[0], 1.2, MID[2]]} yaw={0} power={2.7} />
+            <Fill on={[MID[0], 1.2, MID[2]]} yaw={0} power={1.35} />
           </>
         );
       },
@@ -188,8 +188,8 @@ export const scene4 = storyScene(timing, {
           <>
             <Hero position={MID} animation={t > s ? "guard" : "hold"} suit={1} eyes={1 + jolt(t, s, 0.5)} headPitch={t > s ? 0 : 0.4} />
             <Glow position={[MID[0], 1.56, MID[2] + 0.3]} size={0.9} color={CYAN} opacity={0.3} />
-            <Fill on={[MID[0], 1.2, MID[2]]} yaw={0} power={3.6} />
-            <Fill on={[MID[0], 1.2, MID[2]]} yaw={140} power={2.25} color={CYAN} />
+            <Fill on={[MID[0], 1.2, MID[2]]} yaw={0} power={1.80} />
+            <Fill on={[MID[0], 1.2, MID[2]]} yaw={140} power={1.12} color={CYAN} />
           </>
         );
       },
@@ -205,7 +205,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Hero position={MID} rotationY={0.2} animation="idle" suit={1} visor={ease(ramp(t, 0.2, 0.6))} face={t > suit - 0.3 ? "grin" : "wow"} />
-            <Fill on={[MID[0], 1.5, MID[2]]} yaw={12} power={2.7} />
+            <Fill on={[MID[0], 1.5, MID[2]]} yaw={12} power={1.35} />
           </>
         );
       },

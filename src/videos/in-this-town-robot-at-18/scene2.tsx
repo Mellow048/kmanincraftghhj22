@@ -245,7 +245,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.school",
-      ...cam.push({ on: [ME[0], 1.15, ME[2]], dist: 3.6, to: 3.0, yaw: 192, pitch: 14, fov: 44 }),
+      ...cam.push({ on: [ME[0], 1.15, ME[2]], dist: 4.2, to: 3.6, yaw: 180, pitch: 14, fov: 44 }),
       zone: ZONE.classN,
       look: DAY,
       note: "The classroom, from the front. He sits at his desk with the head set in front of him like a lunch box, and smiles at everybody. Everybody else has a robot. On 'mistake' the smile slips.",
