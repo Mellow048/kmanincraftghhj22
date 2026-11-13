@@ -783,7 +783,16 @@
   "official_reference": false,
   "release": {
     "tag": "render-41",
+    "status": "published and digest verified",
     "asset_name": "in-this-town-five-seconds-v2.mp4",
-    "status": "verified-file publication pending"
-  }
+    "asset_id": 742921471,
+    "bytes": 87257811,
+    "digest": "sha256:44919df07668ea21b63c0d90e21c1f7b1b21d640ebff33826659bf0682b1a64b",
+    "download_url": "https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-41/in-this-town-five-seconds-v2.mp4",
+    "publication_run": 43394638409,
+    "publication_commit": "d8060c378a08a9328620aa0286f82242ebfad873",
+    "publication_url": "https://github.com/Mellow048/kmanincraftghhj22/actions/runs/43394638409",
+    "original_pre_normalization_asset_retained": true
+  },
+  "delivery": "Final MP4 presented in the workspace viewer; verified release download is available. Full owner artistic acceptance is pending."
 }

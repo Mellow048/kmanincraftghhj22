@@ -1,12 +1,12 @@
 # Five Seconds — production and delivery
 
-## Current status — full V2 rendered and verified for owner review
+## Current status — full V2 delivered for owner review
 
 The owner rejected V1's feel, then approved the **15.7-second motion/background proof**: “okay i like this kind of motion and detail in the backround! go ahead”. That authorizes the full revision; it is not acceptance of an unseen full V2. The approved story, all nine original voice-00 recordings, exact supplied AAC and 161.6-second full-film scope remain unchanged.
 
 Full performance integration is now in the source: ordinary interactions, locker clearance, elder/door rescue, bedroom/window, chase, rock placement/sidestep, stumble/spin/back landing and supported rabbit transfer. See **`V2-REVIEW.md`** for current scope, tests and delivery status, and `MOTION-REVISION.md` for the approved proof history. `renders/in-this-town-five-seconds.mp4` remains V1; the full revision is **`renders/in-this-town-five-seconds-v2.mp4`**. Freeze Bell and the proof are retained unchanged.
 
-The V2 master is **1080×1920 / 30 fps / 161.6 seconds**, 87,257,811 bytes, SHA256 `44919df07668ea21b63c0d90e21c1f7b1b21d640ebff33826659bf0682b1a64b`. Run `43391756533` succeeded from `17811ef`. All-frame encoded timing/decode, seven exact stops, soundtrack identity/alignment and 31 final encoded-image review sheets are complete. See `v2-delivery-qa.json`; verified-file release publication is pending. This is not a subjective listening or artistic-acceptance claim.
+The V2 master is **1080×1920 / 30 fps / 161.6 seconds**, 87,257,811 bytes, SHA256 `44919df07668ea21b63c0d90e21c1f7b1b21d640ebff33826659bf0682b1a64b`. Run `43391756533` succeeded from `17811ef`. All-frame encoded timing/decode, seven exact stops, soundtrack identity/alignment and 31 final encoded-image review sheets are complete. See `v2-delivery-qa.json`. Verified-file publication run `43394638409` succeeded; release asset `742921471` matches the exact digest/size. [Download the full-HD V2 MP4](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-41/in-this-town-five-seconds-v2.mp4). This is not a subjective listening or artistic-acceptance claim.
 
 **Everything below is V1 delivery history**, not artistic acceptance or certification of the revised source. V2 reports use the `v2-` prefix so old measurements are not silently represented as current.
 

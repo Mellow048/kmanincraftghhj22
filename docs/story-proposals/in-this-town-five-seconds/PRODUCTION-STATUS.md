@@ -1,10 +1,10 @@
 # Five Seconds — production status
 
-## Current: full V2 rendered and verified for owner review
+## Current: full V2 delivered for owner review
 
 The owner rejected V1's feel, then approved the 15.7-second proof's motion/background detail and said to continue. Full performances are integrated in the source; action-sequence, shared-default and final master review are separate from that short-proof approval. The approved story, original voice-00 recordings, supplied AAC and 161.6-second full-film scope stay intact. See `src/videos/in-this-town-five-seconds/V2-REVIEW.md` for the current review/delivery state. V1 and the approved proof remain separately preserved.
 
-The separate V2 master is `renders/in-this-town-five-seconds-v2.mp4`: **1080×1920 / constant 30 fps / 161.6 seconds**, 87,257,811 bytes. Run `43391756533` succeeded from `17811ef`; SHA256 `44919df07668ea21b63c0d90e21c1f7b1b21d640ebff33826659bf0682b1a64b`. All 4,848 encoded frame timestamps, seven exact stops and the soundtrack identity/alignment pass. All 31 final encoded review sheets were viewed (400 unique sampled frames); this is not real-time playback or subjective listening. Verified-file release publication is pending. Full V2 artistic acceptance remains the owner’s.
+The separate V2 master is `renders/in-this-town-five-seconds-v2.mp4`: **1080×1920 / constant 30 fps / 161.6 seconds**, 87,257,811 bytes. Run `43391756533` succeeded from `17811ef`; SHA256 `44919df07668ea21b63c0d90e21c1f7b1b21d640ebff33826659bf0682b1a64b`. All 4,848 encoded frame timestamps, seven exact stops and the soundtrack identity/alignment pass. All 31 final encoded review sheets were viewed (400 unique sampled frames); this is not real-time playback or subjective listening. Verified-file publication run `43394638409` succeeded; release asset `742921471` matches the master digest/size. [Download the full-HD V2 MP4](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-41/in-this-town-five-seconds-v2.mp4). Full V2 artistic acceptance remains the owner’s.
 
 The sections below are **V1 delivery history**, not approval or certification of the revised working picture.
 
