@@ -218,23 +218,23 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.liked",
-      ...cam.push({ on: mr(-0.85, 1.5, 0.2), dist: 5.4, to: 5.0, yaw: 180, pitch: 5, fov: 46 }),
+      ...cam.push({ on: mr(-0.7, 1.5, 0.2), dist: 5.4, to: 5.0, yaw: 180, pitch: 5, fov: 46 }),
       zone: ZONES.roomFromBed,
       look: WARM,
       note: "The teacher and the boy, with the village round them. The boy holds the book up to him, and on 'like' the whole room jumps.",
       stage: (t) => {
         const like = wordAt("6.liked", "like");
         const up = (i: number): number => hop(t, like + i * 0.04, 0.3, 0.3);
-        const tall: Vec3 = mr(-0.3, 0, 0.5);
+        const tall: Vec3 = mr(0.05, 0, 0.7);
         return (
           <>
             <pointLight position={mr(-0.8, 1.9, -1.4)} color="#ffe2b0" intensity={22} distance={7} decay={2} />
-            <Hero position={[READ[0] + 0.25, up(0), READ[2] + 0.1]} rotationY={NORTH + 0.9} animation="idle" arms="lift" face="grin" headYaw={0.6} />
+            <Hero position={[READ[0] + 0.6, up(0), READ[2] + 0.1]} rotationY={NORTH + 0.9} animation="idle" arms="lift" face="grin" headYaw={0.6} />
             <Folk kind="enderman" n={0} position={tall} rotationY={NORTH - 0.35} nod={0.3} mood="happy" />
             <Mum position={mr(-2.0, up(1), 0.9)} rotationY={NORTH} mood="happy" wave={t > like ? 1 : 0} />
             <Dad position={mr(-1.15, up(2), 1.5)} rotationY={NORTH} mood="happy" wave={t > like ? 1 : 0} rattle={0.5} />
             <Hiss position={mr(0.35, up(3), 1.4)} rotationY={NORTH} mood="happy" />
-            <Bubble text="MAYBE HE DID LIKE US." position={[tall[0] - 0.5, 3.15, tall[2] - 0.4]} rotationY={Math.PI} scale={0.36 * pop(t, 0.05)} tail={0} dark />
+            <Bubble text="MAYBE HE DID LIKE US." position={[tall[0] - 0.75, 3.15, tall[2] - 0.4]} rotationY={Math.PI} scale={0.36 * pop(t, 0.05)} tail={0} dark />
           </>
         );
       },

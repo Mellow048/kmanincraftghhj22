@@ -224,7 +224,7 @@ const MoRoomNorth: React.FC = () => (
     <Vox kind="planks" tint="#b89868" position={[0, 1.7, -2.6]} size={[6.2, 3.4, 0.2]} castShadow={false} />
     {/* The spare straw hat, on its peg. */}
     <Block position={[0.9, 1.9, -2.44]} size={[0.08, 0.08, 0.2]} color="#5c3f24" />
-    <StrawHat position={[0.9, 1.78, -2.36]} width={0.92} rotation={[Math.PI / 2, 0, 0]} />
+    <StrawHat position={[0.9, 1.74, -2.3]} width={0.92} rotation={[0.95, 0, 0.18]} />
   </group>
 );
 const MoRoomSouth: React.FC = () => (

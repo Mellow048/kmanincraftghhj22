@@ -120,7 +120,7 @@ export const scene5 = storyScene(timing, {
           <>
             <Hero position={[x, 0, 2.6]} rotationY={WEST} animation="run" animDistance={5 * p} face="brave" gaze={0} />
             <Arm position={[x + 0.22, 1.02, 2.6]} rotation={[0, 0, 0.5 * Math.sin(t * 16)]} />
-            <Bubble text="WHERE IS MO?" position={[x - 0.1, faceOf([x, 0, 2.6])[1] + 0.5, 2.75]} rotationY={-0.9} scale={0.27 * pop(t, where - 0.05)} tail={0} />
+            <Bubble text="WHERE IS MO?" position={[x - 0.1, faceOf([x, 0, 2.6])[1] + 0.5, 2.75]} rotationY={-0.9} scale={0.27 * pop(t, where - 0.05)} tail={0} dark />
             <Streaks position={[x, 1.2, 2.0]} yaw={EAST} t={t} n={8} spread={1.6} speed={14} />
           </>
         );
@@ -175,16 +175,16 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.houses",
-      ...cam.truck({ on: [22.9, 1.3, -4.6], dist: 9.4, yaw: 0, pitch: 7, fov: 46, by: [-11.2, 0, 0] }),
+      ...cam.truck({ on: [28, 1.3, -4.6], dist: 9.4, yaw: 0, pitch: 7, fov: 46, by: [-16.4, 0, 0] }),
       ease: "inOutSine",
       zone: ZONES.dawn,
       look: DUSK,
       note: "Along the fronts of the houses, and the camera stays on him. He goes in at Mo's door, comes out of Mo's window head first, lands, runs, and goes in through the window of his own house next door. Splinters each time.",
       stage: (t, { p }) => {
         const total = 3.5;
-        const camX = (q: number): number => 22.9 - 11.2 * ((1 - Math.cos(Math.PI * q)) / 2);
+        const camX = (q: number): number => 28 - 16.4 * ((1 - Math.cos(Math.PI * q)) / 2);
         /** When the camera's middle passes `x`. He is always in the middle of it. */
-        const when = (x: number): number => (Math.acos(1 - (2 * (22.9 - x)) / 11.2) / Math.PI) * total;
+        const when = (x: number): number => (Math.acos(1 - (2 * (28 - x)) / 16.4) / Math.PI) * total;
         const x = camX(p);
         const tIn = when(22.25);
         const tOut = when(19.5);
@@ -213,7 +213,7 @@ export const scene5 = storyScene(timing, {
         }
         return (
           <>
-            {at ? <Hero position={at} rotationY={yaw} animation={anim} animDistance={22.9 - x} face="brave" /> : null}
+            {at ? <Hero position={at} rotationY={yaw} animation={anim} animDistance={28 - x} face="brave" /> : null}
             <Bits position={[22.2, 1.0, -4.9]} t={t - tIn} color="#d8c49a" count={8} power={1.6} />
             <Bits position={[19.4, 1.4, -4.8]} t={t - tOut} color="#cfe6f2" count={14} power={2.6} toward={[0, 0.3, 1]} />
             <DustRing position={[camX((tOut + 0.36) / total), 0.05, -3.7]} t={t - tOut - 0.36} size={1.1} color="#b9a98a" />

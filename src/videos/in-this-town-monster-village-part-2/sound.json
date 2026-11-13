@@ -908,29 +908,28 @@
     {
       "cue": "7.houses",
       "sfx": "creak",
-      "word": "door",
-      "why": "In one door."
+      "why": "In one door.",
+      "offset": 1.42
     },
     {
       "cue": "7.houses",
       "sfx": "break",
-      "word": "window",
-      "why": "Out the window."
+      "why": "Out the window.",
+      "offset": 1.79
     },
     {
       "cue": "7.houses",
       "sfx": "thud",
-      "word": "window",
-      "offset": 0.4,
+      "offset": 2.15,
       "trim": -3,
       "why": "He lands."
     },
     {
       "cue": "7.houses",
       "sfx": "break",
-      "word": "next",
       "pitch": 1.1,
-      "why": "Into the next."
+      "why": "Into the next.",
+      "offset": 3.3
     },
     {
       "cue": "7.street",
