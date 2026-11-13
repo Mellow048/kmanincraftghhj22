@@ -17,11 +17,11 @@ const Packed: React.FC<{ t: number; away?: number; teacher?: boolean }> = ({ t, 
   return (
     <>
       <Mum position={mr(-2.3, 0, 0.1)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" arms={0.2} />
-      <Dad position={mr(-0.9, 0, 0.35)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" />
-      <Hiss position={mr(-0.1, 0, 0.9)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" />
+      <Dad position={mr(-0.75, 0, 0.3)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" />
+      <Hiss position={mr(-0.05, 0, 0.8)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" />
       {teacher ? <Folk kind="enderman" n={0} position={TEACH} rotationY={NORTH} lookAt={look} lean={lean * 1.3} /> : null}
       <Postman position={mr(2.2, 0, 1.3)} rotationY={NORTH} lookAt={look} lean={lean * 1.3} />
-      <Folk kind="zombie" n={0} position={mr(-1.7, 0, 1.4)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" arms={0.2} />
+      <Folk kind="zombie" n={0} position={mr(-1.55, 0, 1.3)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" arms={0.2} />
       <Folk kind="skeleton" n={1} position={mr(-0.8, 0, 1.9)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" />
       <Folk kind="creeper" n={3} position={mr(0.5, 0, 2.2)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" />
       <Folk kind="zombie" n={4} position={mr(1.5, 0, 2.2)} rotationY={NORTH} lookAt={look} lean={lean} mood="happy" arms={0.2} />
@@ -111,8 +111,8 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.bed",
-      ...cam.push({ on: mr(-0.2, 1.1, -2.1), onTo: [DIARY[0], DIARY[1] + 0.05, DIARY[2]], dist: 5.4, to: 2.1, yaw: 6, pitch: 12, fov: 42 }),
-      ease: "inOutSine",
+      ...cam.push({ on: mr(0.15, 1.15, -2.2), onTo: [DIARY[0], DIARY[1] + 0.05, DIARY[2]], dist: 5.6, to: 2.1, yaw: 4, pitch: 10, fov: 46 }),
+      ease: "inCubic",
       zone: ZONES.room,
       look: WARM,
       note: "A small room and three things in it, each lit up as it is named: a bed with a straw-yellow blanket, a second straw hat on a peg, and on the pillow, where the camera ends up, a little red book.",
@@ -173,14 +173,14 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <pointLight position={[READ[0], 1.6, READ[2] - 1.3]} color="#ffe2b0" intensity={10} distance={5} decay={2} />
-            <Hero position={READ} rotationY={NORTH + 0.9 * k} animation="idle" arms="hold" face={k > 0.5 ? "wow" : "grin"} headPitch={0.25 * (1 - k)} headYaw={1.3 * k} gaze={0} />
+            <Hero position={READ} rotationY={NORTH + 0.35 * k} animation="idle" arms="hold" face={k > 0.5 ? "wow" : "grin"} headPitch={0.25 * (1 - k)} headYaw={0.85 * k} gaze={0} />
           </>
         );
       },
     },
     {
       cue: "6.behind",
-      ...cam.push({ on: mr(-0.3, 1.5, 0.6), dist: 4.3, to: 3.7, yaw: 180, pitch: 6, fov: 46 }),
+      ...cam.push({ on: mr(-1.15, 1.35, 0.2), dist: 6.0, to: 5.3, yaw: 180, pitch: 7, fov: 46 }),
       zone: ZONES.roomFromBed,
       look: WARM,
       note: "From the bed again, wider: the boy in front, small, and the whole village crammed into the room behind him, bent forward to read. On 'shoulder' every one of them straightens and looks at the ceiling.",
@@ -190,7 +190,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <pointLight position={mr(0, 1.9, -1.2)} color="#ffe2b0" intensity={22} distance={7} decay={2} />
-            <Hero position={READ} rotationY={NORTH + 0.9} animation="idle" arms="hold" face="wow" headYaw={1.3} gaze={0} />
+            <Hero position={READ} rotationY={NORTH + 0.35} animation="idle" arms="hold" face="wow" headYaw={0.85} gaze={0} />
             <Packed t={t} away={away} />
           </>
         );
@@ -209,7 +209,7 @@ export const scene4 = storyScene(timing, {
           <>
             <pointLight position={[TEACH[0], 2.2, TEACH[2] - 1.6]} color="#ffe2b0" intensity={14} distance={6} decay={2} />
             <Folk kind="enderman" n={0} position={TEACH} rotationY={NORTH} nod={0.6 * down} jaw={t > said ? 0.4 : 0} />
-            <Bubble text="I WAS WRONG." position={[TEACH[0] - 0.5, monsterFace("enderman", TEACH)[1] + 0.72, TEACH[2] - 0.4]} rotationY={Math.PI - 0.17} scale={0.4 * pop(t, said - 0.05)} tail={1} dark />
+            <Bubble text="I WAS WRONG." position={[TEACH[0], monsterFace("enderman", TEACH)[1] + 0.5, TEACH[2] - 0.4]} rotationY={Math.PI - 0.17} scale={0.3 * pop(t, said - 0.05)} tail={0} dark />
             <Postman position={mr(2.2, 0, 1.3)} rotationY={NORTH} lookAt={monsterFace("enderman", TEACH)} />
             <Hiss position={mr(-0.1, 0, 1.2)} rotationY={NORTH} mood="happy" lookAt={monsterFace("enderman", TEACH)} />
           </>
@@ -218,24 +218,23 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.liked",
-      ...cam.push({ on: mr(-0.5, 1.3, 0), dist: 4.2, to: 3.9, yaw: 172, pitch: 4, fov: 44 }),
+      ...cam.push({ on: mr(-0.85, 1.5, 0.2), dist: 5.4, to: 5.0, yaw: 180, pitch: 5, fov: 46 }),
       zone: ZONES.roomFromBed,
       look: WARM,
       note: "The teacher and the boy, with the village round them. The boy holds the book up to him, and on 'like' the whole room jumps.",
       stage: (t) => {
         const like = wordAt("6.liked", "like");
         const up = (i: number): number => hop(t, like + i * 0.04, 0.3, 0.3);
+        const tall: Vec3 = mr(-0.3, 0, 0.5);
         return (
           <>
-            <pointLight position={mr(0, 1.9, -1.2)} color="#ffe2b0" intensity={22} distance={7} decay={2} />
-            <Hero position={[READ[0] + 0.5, up(0), READ[2] + 0.2]} rotationY={1.9} animation="idle" arms="lift" face="grin" lookAt={monsterFace("enderman", TEACH)} />
-            <Folk kind="enderman" n={0} position={TEACH} rotationY={NORTH - 0.5} nod={0.35} mood="happy" />
-            <Mum position={mr(-2.3, up(1), 0.3)} rotationY={NORTH} mood="happy" wave={t > like ? 1 : 0} />
-            <Dad position={mr(-0.4, up(2), 1.2)} rotationY={NORTH} mood="happy" wave={t > like ? 1 : 0} rattle={0.5} />
-            <Hiss position={mr(0.3, up(3), 1.9)} rotationY={NORTH} mood="happy" />
-            <Postman position={mr(2.2, 0, 1.3)} rotationY={NORTH} />
-            <Folk kind="zombie" n={0} position={mr(-1.6, up(4), 1.7)} rotationY={NORTH} mood="happy" wave={t > like ? 1 : 0} />
-            <Bubble text="MAYBE HE DID LIKE US." position={[TEACH[0] - 0.3, 3.55, TEACH[2] - 0.4]} rotationY={Math.PI - 0.14} scale={0.4 * pop(t, 0.05)} tail={1} dark />
+            <pointLight position={mr(-0.8, 1.9, -1.4)} color="#ffe2b0" intensity={22} distance={7} decay={2} />
+            <Hero position={[READ[0] + 0.25, up(0), READ[2] + 0.1]} rotationY={NORTH + 0.9} animation="idle" arms="lift" face="grin" headYaw={0.6} />
+            <Folk kind="enderman" n={0} position={tall} rotationY={NORTH - 0.35} nod={0.3} mood="happy" />
+            <Mum position={mr(-2.0, up(1), 0.9)} rotationY={NORTH} mood="happy" wave={t > like ? 1 : 0} />
+            <Dad position={mr(-1.15, up(2), 1.5)} rotationY={NORTH} mood="happy" wave={t > like ? 1 : 0} rattle={0.5} />
+            <Hiss position={mr(0.35, up(3), 1.4)} rotationY={NORTH} mood="happy" />
+            <Bubble text="MAYBE HE DID LIKE US." position={[tall[0] - 0.5, 3.15, tall[2] - 0.4]} rotationY={Math.PI} scale={0.36 * pop(t, 0.05)} tail={0} dark />
           </>
         );
       },

@@ -76,7 +76,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.farm",
-      ...cam.push({ on: [FX, 1.3, FZ - 0.5], dist: 12.5, to: 10.6, yaw: 0, pitch: 13, fov: 44 }),
+      ...cam.push({ on: [FX, 1.1, FZ + 2.2], dist: 9.6, to: 8.2, yaw: 0, pitch: 17, fov: 46 }),
       zone: ZONES.farmNight,
       look: NIGHT,
       note: "They stop, in a row with their backs to us, and beyond them is all there is: a square of mud, a fence that has fallen over, half a shed. On 'all we found' their heads go down.",
@@ -92,6 +92,7 @@ export const scene1 = storyScene(timing, {
             <Hiss position={[FX - 2.4, 0, z + 0.4]} rotationY={NORTH} walk={1.2 * walk} nod={droop} />
             <Postman position={[FX + 2.5, 0, z + 0.5]} rotationY={NORTH} walk={1.2 * walk} nod={droop} />
             <Folk kind="zombie" n={2} position={[FX + 0.5, 0, z + 1.0]} rotationY={NORTH} walk={1.2 * walk} scale={0.76} nod={droop} />
+            <pointLight position={[FX, 3.4, z + 2.6]} color="#cdd6ff" intensity={60} distance={12} decay={2} />
             <MudDoor />
           </>
         );
@@ -194,7 +195,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.wave",
-      ...cam.push({ on: h(3, 0.95, 2.7), dist: 4.5, to: 3.7, yaw: 0, pitch: 58, fov: 42 }),
+      ...cam.push({ on: h(3, 0.95, 2.9), dist: 4.3, to: 3.6, yaw: 90, pitch: 56, fov: 42 }),
       zone: ZONES.hide,
       look: WARM,
       note: "Looking down from where they are: dad, at the foot of a ladder on a clean wooden floor, in a pool of lamplight, with mud all round him, waving up at us and rattling.",
@@ -203,7 +204,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <pointLight position={h(3, 2.6, 3.4)} color="#ffe2b0" intensity={26} distance={7} decay={2} />
-            <Dad position={h(3, 0, 2.9)} rotationY={0} wave={1} rattle={0.5 + 0.5 * Math.sin(t * 8)} mood="happy" nod={-0.95} tilt={jolt(t, both, 0.5)} />
+            <Dad position={h(3, 0, 2.9)} rotationY={EAST} wave={1} rattle={0.5 + 0.5 * Math.sin(t * 8)} mood="happy" nod={-0.95} tilt={jolt(t, both, 0.5)} />
             {[[-0.7, 0.5], [0.8, 0.3], [0.2, 1.1], [-0.4, -0.3], [0.9, 1.0], [-0.9, 1.2]].map(([x, z], i) => (
               <Block key={i} position={h(3 + x, 0.03, 2.9 + z)} size={[0.28 - (i % 3) * 0.06, 0.05, 0.22]} color="#5b4331" castShadow={false} />
             ))}
@@ -214,19 +215,19 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.door",
-      ...cam.push({ on: [FX, 0.4, FZ + 0.1], dist: 3.9, to: 3.2, yaw: -22, pitch: 26, fov: 42 }),
+      ...cam.push({ on: [FX - 0.3, 0.55, FZ + 0.1], dist: 5.4, to: 4.6, yaw: 62, pitch: 20, fov: 42 }),
       zone: ZONES.farmNight,
       look: NIGHT,
       note: "Close on the patch of mud. On 'door' it lifts on a hinge: mud on top, clean planks underneath, lamplight coming up through the gap. The boy knocks on it. Wood.",
       stage: (t) => {
         const door = wordAt("2.door", "door");
         const knock = wordAt("2.door", "painted");
-        const k = 1.15 * ease(ramp(t, door - 0.15, door + 0.35));
+        const k = 0.7 * ease(ramp(t, door - 0.15, door + 0.35));
         return (
           <>
             <pointLight position={[FX - 1, 1.6, FZ + 2]} color="#cdd6ff" intensity={18} distance={7} decay={2} />
-            <MudDoor k={k} glow={14 * k} />
-            <Hero position={[FX + 1.25, 0, FZ + 0.9]} rotationY={-2.2} animation="leanOver" arms={t > knock - 0.1 ? "reach" : undefined} face="wow" headPitch={jolt(t, knock, 0.4) + jolt(t, knock + 0.25, 0.4)} />
+            <MudDoor k={k} glow={5 * k} />
+            <Hero position={[FX - 1.35, 0, FZ + 0.35]} rotationY={EAST} animation="leanOver" arms={t > knock - 0.1 ? "reach" : undefined} face="wow" headPitch={jolt(t, knock, 0.4) + jolt(t, knock + 0.25, 0.4)} />
             <Bits position={[FX, 0.2, FZ + 0.6]} t={t - door} color="#5b4331" count={8} power={1.4} />
           </>
         );

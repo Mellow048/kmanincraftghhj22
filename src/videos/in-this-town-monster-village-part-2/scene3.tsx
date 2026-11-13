@@ -83,7 +83,7 @@ export const scene3 = storyScene(timing, {
             <MudDoor k={0.1 * (1 - gone)} glow={10 * (1 - gone)} />
             <DustRing position={[FX, 0.07, FZ]} t={t - 0.5} size={1.5} color="#5b4331" />
             {[0, 1, 2].map((i) => (
-              <Raider key={i} who={i} torch sword={false} position={[FX - 11.5 + 3.2 * p - i * 1.3, 0, FZ - 2.6 + i * 1.1]} rotationY={EAST} animation="walk" animDistance={3.2 * p} face="angry" />
+              <Raider key={i} who={i} torch sword={false} position={[FX - 3.4 + 1.6 * p + i * 1.5, 0, FZ - 7.4 + 1.6 * p - (i % 2) * 0.8]} rotationY={0.6} animation="walk" animDistance={3.2 * p} face="angry" />
             ))}
           </>
         );
@@ -112,7 +112,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.looked",
-      ...cam.push({ on: [FX - 0.3, 1.2, FZ - 0.6], dist: 8.6, to: 7.6, yaw: 6, pitch: 9, fov: 44 }),
+      ...cam.push({ on: [FX, 1.2, FZ + 0.2], dist: 8.4, to: 7.4, yaw: 4, pitch: 10, fov: 46 }),
       zone: ZONES.farmNight,
       look: NIGHT,
       note: "Three players with torches in the farm, one look each, on each 'looked': one bends into the trough, one looks behind the half shed, one looks under a fence rail. Nothing.",
@@ -124,17 +124,17 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <MudDoor />
-            <pointLight position={[FX, 2.6, FZ + 3]} color="#cdd6ff" intensity={34} distance={11} decay={2} />
-            <Raider who={1} torch sword={false} position={[FX - 1.5, 0, FZ - 0.6]} rotationY={NORTH + 0.2} animation={bend(a) > 0.25 ? "leanOver" : "idle"} headPitch={0.4 * bend(a)} face="angry" />
-            <Raider who={2} torch sword={false} position={[FX + 2.6 + 0.5 * bend(b), 0, FZ - 0.9]} rotationY={NORTH - 0.4} animation="idle" headYaw={-0.9 * bend(b)} face="angry" />
-            <Raider who={0} torch sword={false} position={[FX - 3.4, 0, FZ + 1.3]} rotationY={WEST + 0.5} animation={bend(c) > 0.25 ? "leanOver" : "idle"} headPitch={0.4 * bend(c)} face="angry" />
+            <pointLight position={[FX, 2.6, FZ + 4]} color="#cdd6ff" intensity={60} distance={12} decay={2} />
+            <Raider who={1} torch sword={false} position={[FX - 1.25, 0, FZ - 0.8]} rotationY={NORTH + 0.9} animation={bend(a) > 0.25 ? "leanOver" : "idle"} headPitch={0.4 * bend(a)} face="angry" />
+            <Raider who={2} torch sword={false} position={[FX + 1.3 + 0.3 * bend(b), 0, FZ - 0.3]} rotationY={0.5} animation="idle" headYaw={-0.9 * bend(b)} face="angry" />
+            <Raider who={0} torch sword={false} position={[FX - 0.2, 0, FZ + 1.7]} rotationY={-0.4} animation={bend(c) > 0.25 ? "leanOver" : "idle"} headPitch={0.4 * bend(c)} face="angry" />
           </>
         );
       },
     },
     {
       cue: "5.stood",
-      ...cam.push({ on: [FX, 0.55, FZ], dist: 3.5, to: 2.9, yaw: 24, pitch: 12, fov: 42 }),
+      ...cam.push({ on: [FX, 1.0, FZ], dist: 5.8, to: 5.0, yaw: 24, pitch: 15, fov: 44 }),
       zone: ZONES.farmNight,
       look: NIGHT,
       note: "Low on the patch of mud. Two boots walk onto it and stop. He jumps on it, once, on 'door'. Mud splashes. The door stays where it is.",
@@ -170,7 +170,7 @@ export const scene3 = storyScene(timing, {
             <MudDoor />
             <Fill on={manFace(at)} yaw={14} power={10} d={2.2} />
             <Raider who={0} torch sword={false} position={at} rotationY={0.25 + (WEST - 0.25) * ease(ramp(t, left - 0.3, left - 0.05))} animation={go > 0 ? "walk" : "shrug"} animDistance={2.8 * go} face="angry" />
-            {go < 0.25 ? <Bubble text="NOTHING HERE BUT MUD." position={[FX + 0.15, 2.72, FZ + 0.4]} rotationY={0.24} scale={0.44 * pop(t, said - 0.05)} tail={-1} dark /> : null}
+            {go < 0.25 ? <Bubble text="NOTHING HERE BUT MUD." position={[FX + 0.1, 2.5, FZ + 0.4]} rotationY={0.24} scale={0.29 * pop(t, said - 0.05)} tail={0} dark /> : null}
             <Raider who={1} torch sword={false} position={[FX - 2.2 - 2.4 * go, 0, FZ - 1.6]} rotationY={go > 0 ? WEST : 0.9} animation={go > 0 ? "walk" : "idle"} animDistance={2.4 * go} face="angry" />
             <Raider who={2} torch sword={false} position={[FX + 2.4 - 2.4 * go, 0, FZ - 1.4]} rotationY={go > 0 ? WEST : -0.9} animation={go > 0 ? "walk" : "idle"} animDistance={2.4 * go} face="angry" />
           </>

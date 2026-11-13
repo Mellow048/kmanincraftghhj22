@@ -86,12 +86,12 @@ export const scene5 = storyScene(timing, {
       look: DUSK,
       note: "The bone hand has the shirt. The boy pulls, the shirt stretches, and on 'away' he is running, with a whole arm hanging off the back of him. Dad, in the hole, looks at his shoulder.",
       impacts: [{ at: 1.35, amp: 0.05, dur: 0.3 }],
-      stage: (t) => {
+      stage: (t, { p }) => {
         const away = wordAt("7.arm", "away");
         const arm = wordAt("7.arm", "arm");
         const pull = ramp(t, 0.1, away);
         const run = Math.max(0, t - away);
-        const x = FX - 1.8 - 0.35 * pull - (run > 0 ? 2.6 * run + 1.2 * run * run : 0);
+        const x = FX - 1.5 - 0.35 * pull - 3.9 * p * p * p;
         return (
           <>
             <MudDoor k={1.3} glow={8} />
@@ -120,7 +120,7 @@ export const scene5 = storyScene(timing, {
           <>
             <Hero position={[x, 0, 2.6]} rotationY={WEST} animation="run" animDistance={5 * p} face="brave" gaze={0} />
             <Arm position={[x + 0.22, 1.02, 2.6]} rotation={[0, 0, 0.5 * Math.sin(t * 16)]} />
-            <Bubble text="WHERE IS MO?" position={[x - 0.2, 2.06, 2.75]} rotationY={-0.9} scale={0.36 * pop(t, where - 0.05)} tail={0} />
+            <Bubble text="WHERE IS MO?" position={[x - 0.1, faceOf([x, 0, 2.6])[1] + 0.5, 2.75]} rotationY={-0.9} scale={0.27 * pop(t, where - 0.05)} tail={0} />
             <Streaks position={[x, 1.2, 2.0]} yaw={EAST} t={t} n={8} spread={1.6} speed={14} />
           </>
         );
@@ -150,7 +150,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.tree",
-      ...cam.push({ on: [TREE[0] - 0.3, 1.2, TREE[2] - 0.4], dist: 6.4, to: 5.4, yaw: 8, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [TREE[0] - 0.9, 1.05, TREE[2] - 0.4], dist: 7.8, to: 6.8, yaw: 10, pitch: 8, fov: 46 }),
       zone: ZONES.dawn,
       look: DUSK,
       note: "Three players with swords, coming along the road. The boy skids, and on 'hid' he is flat against this side of a tree trunk with his eyes shut, while they walk past on the other side of it.",
@@ -175,45 +175,49 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.houses",
-      ...cam.truck({ on: [21.2, 1.3, -4.6], dist: 9.4, yaw: 0, pitch: 7, fov: 44, by: [-9, 0, 0] }),
+      ...cam.truck({ on: [22.9, 1.3, -4.6], dist: 9.4, yaw: 0, pitch: 7, fov: 46, by: [-11.2, 0, 0] }),
       ease: "inOutSine",
       zone: ZONES.dawn,
       look: DUSK,
-      note: "Along the fronts of the houses. He goes in at Mo's door, comes out of Mo's window head first, lands, runs, and goes in through the window of his own house next door. Splinters each time.",
-      stage: (t) => {
-        const door = wordAt("7.houses", "door");
-        const out = wordAt("7.houses", "window");
-        const next = wordAt("7.houses", "next");
-        const z = -4.3;
-        let at: Vec3 | null;
+      note: "Along the fronts of the houses, and the camera stays on him. He goes in at Mo's door, comes out of Mo's window head first, lands, runs, and goes in through the window of his own house next door. Splinters each time.",
+      stage: (t, { p }) => {
+        const total = 3.5;
+        const camX = (q: number): number => 22.9 - 11.2 * ((1 - Math.cos(Math.PI * q)) / 2);
+        /** When the camera's middle passes `x`. He is always in the middle of it. */
+        const when = (x: number): number => (Math.acos(1 - (2 * (22.9 - x)) / 11.2) / Math.PI) * total;
+        const x = camX(p);
+        const tIn = when(22.25);
+        const tOut = when(19.5);
+        const tNext = when(12.1);
+        let at: Vec3 | null = null;
         let anim: "run" | "jump" = "run";
-        let d = 0;
-        if (t < door) {
-          const k = ramp(t, 0, door);
-          at = [25.4 - 3.2 * k, 0, -3.2 - 1.6 * k * k];
-          d = 3.4 * k;
-        } else if (t < out) {
+        let yaw = WEST;
+        if (t < tIn) {
+          const k = ramp(t, 0, tIn);
+          at = [x, 0, -3.3 - 1.5 * k * k];
+          yaw = WEST - 0.7 * k;
+        } else if (t < tOut) {
           at = null;
-        } else if (t < out + 0.4) {
-          const k = (t - out) / 0.4;
-          at = [19.4, 1.0 + 0.5 * Math.sin(k * Math.PI) - 1.0 * k, -5.0 + 1.2 * k];
+        } else if (t < tOut + 0.36) {
+          const k = (t - tOut) / 0.36;
+          at = [x, 1.0 + 0.45 * Math.sin(k * Math.PI) - 1.0 * k, -5.0 + 1.3 * k];
           anim = "jump";
-        } else if (t < next) {
-          const k = ramp(t, out + 0.4, next);
-          at = [19.4 - 7.4 * k, k > 0.85 ? 1.0 * ((k - 0.85) / 0.15) : 0, -3.8 - (k > 0.85 ? 1.1 * ((k - 0.85) / 0.15) : 0)];
-          d = 7.6 * k;
-          anim = k > 0.85 ? "jump" : "run";
-        } else {
-          at = null;
+          yaw = -0.5;
+        } else if (t < tNext) {
+          at = [x, 0, -3.7];
+        } else if (t < tNext + 0.3) {
+          const k = (t - tNext) / 0.3;
+          at = [x, 0.5 * Math.sin(k * Math.PI) + 0.9 * k, -3.7 - 1.3 * k];
+          anim = "jump";
+          yaw = WEST - 0.8;
         }
         return (
           <>
-            {at ? <Hero position={at} rotationY={t < door ? WEST - 0.5 : t < out + 0.4 ? 0 : WEST} animation={anim} animDistance={d} face="brave" /> : null}
-            <Bits position={[22.2, 1.0, -4.9]} t={t - door} color="#d8c49a" count={8} power={1.6} />
-            <Bits position={[19.4, 1.4, -4.8]} t={t - out} color="#cfe6f2" count={14} power={2.6} toward={[0, 0.3, 1]} />
-            <DustRing position={[19.4, 0.05, z + 0.5]} t={t - out - 0.4} size={1.1} color="#b9a98a" />
-            <Bits position={[11.5, 1.4, -4.8]} t={t - next} color="#cfe6f2" count={14} power={2.4} seed={3} toward={[0, 0.3, 1]} />
-            <Puffs position={[11.5, 1.2, -4.7]} color="#d8c49a" count={t > next ? 5 : 0} rise={0.6} spread={0.5} size={0.1} speed={1.5} opacity={0.6} />
+            {at ? <Hero position={at} rotationY={yaw} animation={anim} animDistance={22.9 - x} face="brave" /> : null}
+            <Bits position={[22.2, 1.0, -4.9]} t={t - tIn} color="#d8c49a" count={8} power={1.6} />
+            <Bits position={[19.4, 1.4, -4.8]} t={t - tOut} color="#cfe6f2" count={14} power={2.6} toward={[0, 0.3, 1]} />
+            <DustRing position={[camX((tOut + 0.36) / total), 0.05, -3.7]} t={t - tOut - 0.36} size={1.1} color="#b9a98a" />
+            <Bits position={[11.6, 1.4, -4.8]} t={t - tNext - 0.25} color="#cfe6f2" count={14} power={2.4} seed={3} toward={[0, 0.3, 1]} />
           </>
         );
       },
@@ -243,7 +247,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.ground",
-      ...cam.push({ on: [SPOT[0] + 0.5, 0.5, SPOT[2]], dist: 4.4, to: 3.3, yaw: -20, pitch: 5, fov: 42 }),
+      ...cam.push({ on: [SPOT[0] + 0.45, 0.6, SPOT[2]], dist: 5.0, to: 4.0, yaw: -16, pitch: 6, fov: 44 }),
       zone: ZONES.dawn,
       look: DUSK,
       note: "Very low, from the ground: something grey lying in the street, close to us, and beyond it the boy walking up to it and stopping, his head going down.",
@@ -253,14 +257,14 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <Left />
-            <Hero position={[SPOT[0] + 4.6 - 2.9 * k, 0, SPOT[2] - 0.3]} rotationY={WEST + 0.35} animation={k < 1 ? "walk" : "idle"} animDistance={2.9 * k} face={t > ground - 0.2 ? "fear" : "uneasy"} headPitch={0.5 * ease(ramp(t, ground - 0.3, ground + 0.1))} />
+            <Hero position={[SPOT[0] + 4.0 - 2.9 * k, 0, SPOT[2] - 0.6]} rotationY={WEST + 0.35} animation={k < 1 ? "walk" : "idle"} animDistance={2.9 * k} face={t > ground - 0.2 ? "fear" : "uneasy"} headPitch={0.5 * ease(ramp(t, ground - 0.3, ground + 0.1))} />
           </>
         );
       },
     },
     {
       cue: "7.sword",
-      ...cam.push({ on: [SPOT[0], 0.15, SPOT[2] + 0.05], dist: 3.0, to: 2.5, yaw: 0, pitch: 52, fov: 40 }),
+      ...cam.push({ on: [SPOT[0] + 0.1, 0.15, SPOT[2] + 0.05], dist: 3.9, to: 3.3, yaw: 0, pitch: 52, fov: 42 }),
       zone: ZONES.dawn,
       look: DUSK,
       note: "Looking down at them: the sword, flat in the dirt, which catches the light on 'sword'; and the iron helmet on its side, which rocks once on 'helmet'. The scorch mark round them.",
@@ -283,7 +287,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.gone",
-      ...cam.push({ on: faceOf([SPOT[0] + 1.7, 0, SPOT[2] - 0.3]), dist: 2.4, to: 8.5, yaw: 6, pitch: 9, fov: 44 }),
+      ...cam.push({ on: faceOf([SPOT[0] + 1.7, 0, SPOT[2] - 0.3]), dist: 2.4, to: 7.0, yaw: 42, pitch: 10, fov: 44 }),
       ease: "outCubic",
       zone: ZONES.dawn,
       look: DUSK,
@@ -297,7 +301,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.sub",
-      ...cam.push({ on: [SPOT[0] + 0.2, 0.75, SPOT[2]], dist: 4.6, to: 4.0, yaw: 4, pitch: 9, fov: 42 }),
+      ...cam.push({ on: [SPOT[0], 0.85, SPOT[2]], dist: 4.9, to: 4.4, yaw: 4, pitch: 9, fov: 44 }),
       zone: ZONES.dawn,
       look: DUSK,
       note: "He kneels by them and picks the helmet up in both hands. A sign comes up out of the street beside him: like, and subscribe. Part three.",
@@ -308,13 +312,13 @@ export const scene5 = storyScene(timing, {
           <>
             <AimSword position={BLADE} yaw={1.1} pitch={0} scale={1.15} />
             <Block position={[SPOT[0], 0.045, SPOT[2]]} size={[2.4, 0.03, 1.5]} color="#3d3a36" castShadow={false} />
-            <Hero position={[SPOT[0] + 0.5, 0, SPOT[2] - 0.2]} rotationY={0.15} animation="crouch" arms="hold" face="frown" headPitch={0.45} />
-            <IronHelmet position={[HELM[0] + 0.05, 0.62 * k, HELM[2] + 0.38 * k]} rotation={[0.2 * (1 - k), 0.5 * (1 - k), 1.35 * (1 - k)]} />
-            <group position={[SPOT[0] - 1.1, 0, SPOT[2] - 0.2]} scale={pop(t, sub - 0.15)}>
+            <Hero position={[SPOT[0] + 0.45, 0, SPOT[2] - 0.3]} rotationY={0.1} animation="crouch" arms="hold" face="frown" headPitch={0.45} />
+            <IronHelmet position={[HELM[0], 0.36 * k, HELM[2] + 0.3 * k]} rotation={[0.2 * (1 - k), 0.5 * (1 - k), 1.35 * (1 - k)]} />
+            <group position={[SPOT[0] - 0.42, 0, SPOT[2] - 0.5]} scale={pop(t, sub - 0.15)}>
               <SubscribeSign position={[0, 1.15, 0]} rotationY={0} scale={0.5} />
               <Block position={[0, 0.55, -0.03]} size={[0.05, 1.1, 0.05]} color="#5c3f24" />
             </group>
-            <Bits position={[SPOT[0] - 1.1, 0.1, SPOT[2] - 0.2]} t={t - sub + 0.15} color="#b9a98a" count={10} power={1.8} />
+            <Bits position={[SPOT[0] - 0.42, 0.1, SPOT[2] - 0.5]} t={t - sub + 0.15} color="#b9a98a" count={10} power={1.8} />
           </>
         );
       },

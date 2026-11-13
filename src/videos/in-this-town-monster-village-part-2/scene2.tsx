@@ -68,7 +68,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.floor",
-      ...cam.push({ on: h(-6.2, 0.9, -1.7), dist: 5.2, to: 4.4, yaw: 0, pitch: 10, fov: 42 }),
+      ...cam.push({ on: h(-6.45, 0.9, -1.7), dist: 6.0, to: 5.2, yaw: 0, pitch: 11, fov: 44 }),
       zone: ZONES.hide,
       look: WARM,
       note: "The boy jumps on the floor to hear it: wood. Then he sees the well beside him, and the water in it is blue and lit.",
@@ -77,10 +77,10 @@ export const scene2 = storyScene(timing, {
         const well = wordAt("3.floor", "well");
         return (
           <>
-            <Hero position={h(-5.2, hop(t, wood - 0.2, 0.35, 0.3), -1.0)} rotationY={-0.2} animation="idle" face={t > well ? "wow" : "grin"} headYaw={-1.1 * ease(ramp(t, well - 0.15, well + 0.1))} headPitch={0.2} />
-            <Bits position={h(-5.2, 0.1, -1.0)} t={t - wood - 0.1} color="#c9a877" count={6} power={1.2} />
+            <Hero position={h(-5.75, hop(t, wood - 0.2, 0.35, 0.3), -1.2)} rotationY={-0.2} animation="idle" face={t > well ? "wow" : "grin"} headYaw={-1.1 * ease(ramp(t, well - 0.15, well + 0.1))} headPitch={0.2} />
+            <Bits position={h(-5.75, 0.1, -1.2)} t={t - wood - 0.1} color="#c9a877" count={6} power={1.2} />
             <Bits position={[WELL[0], 0.8, WELL[2]]} t={t - well} color="#8fd0ff" count={12} power={2} />
-            <Mum position={h(-4.0, 0, -2.2)} rotationY={-0.5} mood="happy" lookAt={[WELL[0], 0.7, WELL[2]]} arms={0.5} />
+            <Mum position={h(-5.4, 0, -2.9)} rotationY={-0.5} mood="happy" lookAt={[WELL[0], 0.7, WELL[2]]} arms={0.5} />
           </>
         );
       },
@@ -117,7 +117,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.cheer",
-      ...cam.push({ on: h(-5, 1.3, -1.6), dist: 8, to: 7.2, yaw: 0, pitch: 8, fov: 44 }),
+      ...cam.push({ on: h(-5.6, 1.2, -1.4), dist: 10, to: 9.2, yaw: 0, pitch: 15, fov: 46 }),
       zone: ZONES.hide,
       look: WARM,
       note: "They all go up in the air together. Then the bus takes a run, leaves the floor, and comes down in the well. Water everywhere.",
@@ -125,19 +125,19 @@ export const scene2 = storyScene(timing, {
       stage: (t) => {
         const jump = wordAt("3.cheer", "jumped");
         const k = ramp(t, jump, jump + 0.42);
-        const bx = -4.9 + (WELL[0] - h(0, 0, 0)[0] + 4.9) * k;
+        const bx = -4.2 + (WELL[0] - h(0, 0, 0)[0] + 4.2) * k;
         const bz = -0.4 + (-2.4 + 0.4) * k;
         const by = k < 1 ? 1.9 * 4 * k * (1 - k) + 0.45 * k : 0.45;
         const land = jump + 0.42;
         const cheer = (i: number): number => (t < jump ? Math.abs(Math.sin((t + i * 0.13) * 9)) * 0.25 : 0);
         return (
           <>
-            <Mum position={h(-3.3, cheer(0), -0.7)} mood="happy" wave={1} lookAt={t > jump ? [WELL[0], 1, WELL[2]] : undefined} />
-            <Dad position={h(-2.3, cheer(1), -0.2)} mood="happy" wave={1} rattle={0.5} lookAt={t > jump ? [WELL[0], 1, WELL[2]] : undefined} />
-            <Hiss position={h(-3.9, cheer(2), 0.5)} mood="happy" lookAt={t > jump ? [WELL[0], 1, WELL[2]] : undefined} />
-            <Hero position={h(-2.9, cheer(3), 0.9)} animation="wave" face="laugh" />
-            <Folk kind="zombie" n={0} position={h(-1.9, cheer(4), -1.5)} mood="happy" wave={1} />
-            <Folk kind="skeleton" n={1} position={h(-4.4, cheer(5), -1.7)} mood="happy" wave={1} />
+            <Mum position={h(-5.2, cheer(0), 0.6)} mood="happy" wave={1} lookAt={t > jump ? [WELL[0], 1, WELL[2]] : undefined} />
+            <Dad position={h(-3.9, cheer(1), 0.2)} mood="happy" wave={1} rattle={0.5} lookAt={t > jump ? [WELL[0], 1, WELL[2]] : undefined} />
+            <Hiss position={h(-6.3, cheer(2), 0.9)} mood="happy" lookAt={t > jump ? [WELL[0], 1, WELL[2]] : undefined} />
+            <Hero position={h(-4.6, cheer(3), 1.3)} animation="wave" face="laugh" />
+            <Folk kind="zombie" n={0} position={h(-3.6, cheer(4), -1.5)} mood="happy" wave={1} />
+            <Folk kind="skeleton" n={1} position={h(-7.3, cheer(5), 0.3)} mood="happy" wave={1} />
             <Bus position={h(bx, by, bz)} rotationY={-0.6} squash={t > land ? Math.sin((t - land) * 16) * Math.exp(-(t - land) * 4) * 0.3 : -0.1 * Math.sin(k * Math.PI)} mood="happy" size={1.5} />
             <Bits position={[WELL[0], 0.9, WELL[2]]} t={t - land} color="#8fd0ff" count={22} power={4.4} />
             <Bits position={[WELL[0], 0.9, WELL[2]]} t={t - land - 0.05} color="#d8f0ff" count={12} power={3} seed={4} />
@@ -158,7 +158,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Hiss position={AT.hiss} turn={1.0 * look} mood={t > where ? "sad" : "calm"} tilt={jolt(t, where, 0.3)} />
-            <Bubble text="WHERE IS MO?" position={[AT.hiss[0] + 0.1, 2.42, AT.hiss[2] + 0.4]} rotationY={0.14} scale={0.4 * pop(t, where - 0.06)} tail={-1} dark />
+            <Bubble text="WHERE IS MO?" position={[AT.hiss[0], monsterFace("creeper", AT.hiss)[1] + 0.62, AT.hiss[2] + 0.3]} rotationY={0.14} scale={0.34 * pop(t, where - 0.06)} tail={0} dark />
             <Mum position={[AT.mum[0] + 0.3, party(0), AT.mum[2] - 1.2]} mood={t > where ? "sad" : "happy"} wave={t > where ? 0 : 1} />
             <Dad position={[AT.dad[0] + 2.4, party(1), AT.dad[2] - 0.9]} mood={t > where ? "sad" : "happy"} wave={t > where ? 0 : 1} />
           </>
@@ -216,7 +216,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Folk kind="enderman" n={0} position={T} rotationY={-0.3} jaw={t > trap - 0.1 && t < trap + 0.5 ? 0.7 : 0.15} nod={0.2} />
-            <Bubble text="A TRAP." position={[T[0] - 0.25, TFACE[1] + 0.78, T[2] + 0.35]} rotationY={-0.17} scale={0.42 * pop(t, trap - 0.08)} tail={1} dark />
+            <Bubble text="A TRAP." position={[T[0], TFACE[1] + 0.52, T[2] + 0.3]} rotationY={-0.17} scale={0.38 * pop(t, trap - 0.08)} tail={0} dark />
           </>
         );
       },
@@ -289,7 +289,7 @@ export const scene2 = storyScene(timing, {
             <Hiss position={h(xs[2], 0, 0)} mood={mood(2)} tilt={jolt(t, at[2], 0.3)} />
             <Folk kind="zombie" n={0} position={h(xs[3], 0, 0)} mood={mood(3)} tilt={jolt(t, at[3], 0.3)} arms={0.3} />
             {xs.map((x, i) => (
-              <Bubble key={i} text="TRAP?" position={h(x, 2.5 + (i % 2) * 0.22, 0.3)} scale={0.36 * pop(t, at[i] - 0.05)} tail={-1} dark />
+              <Bubble key={i} text="TRAP?" position={h(x, 2.42 + (i % 2) * 0.36, 0.4)} scale={0.58 * pop(t, at[i] - 0.05)} tail={0} dark />
             ))}
           </>
         );
