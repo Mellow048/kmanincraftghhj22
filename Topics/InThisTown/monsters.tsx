@@ -217,7 +217,19 @@ export const Zombie: React.FC<
 // ----------------------------------------------------------------------------- skeleton
 
 /** A skeleton, 1.8 m: grey bone, thin limbs, ribs. `bow` puts a bow in its right hand; `rattle` 0–1 makes it shake. */
-export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number; wave?: number }> = ({
+export const Skeleton: React.FC<
+  MonsterProps & {
+    bow?: boolean;
+    rattle?: number;
+    wave?: number;
+    /** The waving arm (−X) has come off. Draw it yourself, wherever it has got to. */
+    noArm?: boolean;
+    /** 0–1: the other arm (+X) held out in front, as if holding something up to look at. */
+    raise?: number;
+    /** Metres the skull has dropped off the neck. */
+    headDrop?: number;
+  }
+> = ({
   position = [0, 0, 0],
   rotationY = 0,
   scale = 1,
@@ -234,6 +246,9 @@ export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number;
   bow = false,
   rattle = 0,
   wave = 0,
+  noArm = false,
+  raise = 0,
+  headDrop = 0,
 }) => {
   const t = useFilmTime();
   const u = U;
@@ -260,7 +275,8 @@ export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number;
         <Block position={[0, 11.2 * u, 0]} size={[8 * u, 1.6 * u, 4 * u]} color={shade(bone, 0.04)} />
         <Scarf color={scarf} y={11.6 * u} />
         {[-1, 1].map((s) => {
-          const base = s === 1 && bow ? -1.35 : -s * swing * 0.8;
+          if (s === -1 && noArm) return null;
+          const base = s === 1 && bow ? -1.35 : s === 1 && raise > 0 ? -1.4 * raise : -s * swing * 0.8;
           const lift = s === -1 ? -wave * 2.8 : 0;
           return (
             <group key={s} position={[s * 5 * u, 11 * u, 0]} rotation={[base + lift + shake * 0.08, 0, s === -1 ? wave * (0.25 + Math.sin(t * 9 + phase) * 0.3) : 0]}>
@@ -277,7 +293,7 @@ export const Skeleton: React.FC<MonsterProps & { bow?: boolean; rattle?: number;
             </group>
           );
         })}
-        <group position={[0, 12 * u, 0]} rotation={[pitch + shake * 0.04, yaw, tilt]}>
+        <group position={[0, 12 * u - headDrop, headDrop * 0.45]} rotation={[pitch + shake * 0.04, yaw, tilt]}>
           <Block position={[0, 4 * u, 0]} size={[8 * u, 8 * u, 8 * u]} color={bone} />
           <Brows mood={mood} y={5.9 * u} z={4.05 * u} color="#8a8a86" />
           {[-1, 1].map((s) => (

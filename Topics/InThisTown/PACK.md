@@ -191,7 +191,7 @@ Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a w
 | Name | What it is | Its own props |
 |---|---|---|
 | `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs` |
-| `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1 |
+| `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1, `noArm` (the waving arm has come off: draw it yourself), `raise` 0–1 (the other arm held out in front), `headDrop` (metres the skull has fallen off the neck) |
 | `Creeper` | 1.6 m, no arms, four short legs, that face | `fuse` 0–1 (swells and flashes white), `color`. `mood="happy"` turns the mouth over |
 | `Spider` | 2 m across, under 1 m tall, glowing red eyes | `rear` 0–1 (front legs up), `color`, `eyes`. Wide: turn it three-quarters on in a tall frame |
 | `Enderman` | 2.9 m, black, purple eyes | `jaw` 0–1 (the scream), `shake` 0–1, `carry` 0–1 with `children` (the block it holds) |
@@ -233,3 +233,33 @@ Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build 
    add it to the list.
 
    If your film needs a part to look different, give the part a new prop whose default is the old look.
+
+## Pillagers — `pillagers.tsx`
+
+The people of the mansion. The owner's brief: "duplicate the villagers and turn them grey and make them mad". So a
+pillager is the villager's body on the villager's pixel grid, grey, scowling, and with its arms out of its sleeves,
+because a pillager holds a crossbow, shakes on a deal and cheers. Same height as a villager.
+
+![The pillagers](pillagers.jpg)
+
+| Name | What it is | Props |
+|---|---|---|
+| `Pillager` | A pillager: grey skin, the villager's nose, the brow pulled down, a dark coat, teal legs | `n` (which one: picks the coat and the beat), `coat`, `walk` (metres), `lookAt` or `nod` / `turn` / `tilt`, `armR` / `armL` (radians: 0 hangs, −1.5 points ahead, −3 is up; leave out and they swing), `cheer` 0–1, `talk` 0–1, `lean`, `crossbow` (aim it with `armR` about −1.3), `chief` (darker coat, gold band and cuffs, a head taller), `sit`, `mad` 0–1 (1 is the full scowl), `children` (what is in the +X hand) |
+| `PILLAGER` | Their colours: `skin`, four `coats`, `chief`, `legs`, `gold` | |
+| `pillagerFace(p, scale?)`, `pillagerHand(p, rotY, angle, scale?, side?)` | Where the face and a hand are, for the camera and for a handshake | |
+
+## The mansion — `mansion.tsx`
+
+Where the pillagers live, built from the owner's two pictures (`outlines/monster-village-part-3-mansion/`). The
+outside and the hall are two separate sets: give each its own Zone, far apart. Both are open to the south.
+
+![The mansion, outside and in](mansion.jpg)
+
+| Name | What it is | Props |
+|---|---|---|
+| `Mansion` | The house from outside: dark planks, cobble pillars, three floors stepping back, wide flat dark roofs, warm windows. 38 m wide, 15 m tall | `at` (the ground in front of the front door), `lit` (false: nobody home). The doorway is drawn dark; a shot that opens the door draws its own two leaves in it |
+| `DarkOakForest` | The forest in front of it: ground, 22 dark oaks, and a lane with a path running south from the door | `at` (the same point as the mansion's) |
+| `DarkOak`, `DARK_OAKS` | One dark oak (lower and wider than a village tree), and where the forest's trees stand | `position`, `height`, `n` |
+| `MansionHall` | The hall: pale plank floor, dark plank walls, a band of cobble under the roof, four big windows, bookshelves, a chandelier, and a long table with a map on it and five plank seats. Brings its own light | `at` (the floor under the middle of the table), `table` (false leaves the table and seats out) |
+| `MANSION_HALL` | The hall's measurements for staging: walls, table top height, the doorway (west wall), the five seats | |
+| `PlankSeat` | A plank block with a back | `position`, `turn` |
