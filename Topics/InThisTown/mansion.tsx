@@ -29,12 +29,15 @@ const Floor: React.FC<{ x: number; z: number; w: number; d: number; y: number; h
     <group position={[x, y, z]}>
       <Vox kind="darkPlanks" position={[0, h / 2, -d / 2]} size={[w, h, d]} />
       <Vox kind="cobble" position={[0, 0.35, -d / 2]} size={[w + 0.3, 0.7, d + 0.3]} />
-      {Array.from({ length: n + 1 }, (_, i) => (
-        <Vox key={i} kind="cobble" tint={PILLAR} position={[-w / 2 + (i * w) / n, h / 2, 0.12]} size={[0.8, h, 0.8]} />
-      ))}
+      {Array.from({ length: n + 1 }, (_, i) => {
+        const px = -w / 2 + (i * w) / n;
+        /* No pillar in the doorway: one each side of it instead. */
+        if (door && Math.abs(px) < 1.4) return [-1, 1].map((e) => <Vox key={`${i}${e}`} kind="cobble" tint={PILLAR} position={[e * 1.7, h / 2, 0.12]} size={[0.8, h, 0.8]} />);
+        return <Vox key={i} kind="cobble" tint={PILLAR} position={[px, h / 2, 0.12]} size={[0.8, h, 0.8]} />;
+      })}
       {Array.from({ length: n }, (_, i) => {
         const wx = -w / 2 + ((i + 0.5) * w) / n;
-        if (door && Math.abs(wx) < 1.4) return null;
+        if (door && Math.abs(wx) < 2.6) return null;
         const dim = !lit || i % 4 === 2;
         return (
           <group key={i} position={[wx, h * 0.58, 0.03]}>
@@ -68,8 +71,8 @@ export const Mansion: React.FC<{ at: Vec3; lit?: boolean }> = ({ at, lit = true 
     <Block position={[0, 3.15, 0.2]} size={[3.0, 0.3, 0.3]} color="#3a2616" />
     <Vox kind="cobble" position={[0, 0.15, 1.0]} size={[4, 0.3, 1.6]} />
     <Vox kind="cobble" position={[0, 0.07, 2.1]} size={[4.6, 0.14, 1]} />
-    <Lantern position={[-1.9, 2.7, 0.75]} chain={0.2} light={lit ? 10 : 0} reach={9} seed={21} />
-    <Lantern position={[1.9, 2.7, 0.75]} chain={0.2} light={lit ? 10 : 0} reach={9} seed={22} />
+    <Lantern position={[-2.6, 2.7, 0.75]} chain={0.2} light={lit ? 10 : 0} reach={9} seed={21} />
+    <Lantern position={[2.6, 2.7, 0.75]} chain={0.2} light={lit ? 10 : 0} reach={9} seed={22} />
     {lit ? <Glow position={[0, 3, 1.5]} size={7} color="#ffb060" opacity={0.16} /> : null}
   </group>
 );
@@ -92,7 +95,7 @@ export const DarkOakForest: React.FC<{ at: Vec3 }> = ({ at }) => (
   </group>
 );
 
-const WALL = "#6a4627";
+const WALL = "#4f331d";
 
 const Window: React.FC<{ position: Vec3; turn?: number }> = ({ position, turn = 0 }) => (
   <group position={position} rotation={[0, turn, 0]}>

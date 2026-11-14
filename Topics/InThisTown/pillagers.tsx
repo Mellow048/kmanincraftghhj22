@@ -13,7 +13,7 @@ import type { Vec3 } from "../../src/engine";
 
 const U = 1.8 / 32; // one Minecraft pixel, in metres
 export const PILLAGER = {
-  skin: "#959b9b",
+  skin: "#8c98a2",
   /** Coats, darkest first. Give two pillagers standing together different ones. */
   coats: ["#3a2f2a", "#4a3a30", "#3d3a40", "#52423a"],
   chief: "#26222c",
@@ -155,7 +155,7 @@ export const Pillager: React.FC<PillagerProps> = ({
           <Block position={[0, 5 * u, 0]} size={[8 * u, 10 * u, 8 * u]} color={skin} />
           {/* The villager's one long eyebrow, pulled down in the middle: two halves, each tipped inwards. */}
           {[-1, 1].map((s) => (
-            <group key={s} position={[s * 1.7 * u, (5.9 - 0.2 * mad) * u, 4.05 * u]} rotation={[0, 0, -s * (0.12 + 0.34 * mad)]}>
+            <group key={s} position={[s * 1.7 * u, (5.9 - 0.2 * mad) * u, 4.05 * u]} rotation={[0, 0, s * (0.1 + 0.36 * mad)]}>
               <Block size={[3.6 * u, 1.3 * u, 0.14 * u]} color="#2a2a2e" castShadow={false} />
             </group>
           ))}
