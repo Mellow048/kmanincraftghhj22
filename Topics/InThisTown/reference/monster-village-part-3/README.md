@@ -2,7 +2,7 @@
 
 **Reworked 2026-11-14 after his review** (see the log in [`OWNER.md`](../../OWNER.md)): the arm hides behind a tree, not in the well; one light through the evening; the skull and the arm are seen going back on; the castle has country round it (`Country` in `world.tsx`); the reach is from the front; a longer mansion ending (`scene6.tsx`). The text below describes the first delivery where it differs.
 
-**Not yet seen by the owner** (delivered 2026-11-15). It is **his own outline, beat for beat**
+**The owner on the reworked film, 2026-11-14: "love it".** (First delivered 2026-11-15.) It is **his own outline, beat for beat**
 ([`../../outlines/monster-village-part-3.md`](../../outlines/monster-village-part-3.md)), plus the mansion scene he
 added after reading the script. It is also the **first film made to [`OWNER.md`](../../OWNER.md)**: the premise in the
 first second, and no two shots in a row alike. Read [`../monster-village-part-2/`](../monster-village-part-2/README.md) first.

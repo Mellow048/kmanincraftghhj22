@@ -2,7 +2,7 @@
 
 **Reworked 2026-11-14 after his review** (see the log in [`OWNER.md`](../../OWNER.md)): ends at the rivers in second place with the same shoes on the winner; a real push-up (`pushUp` in `kit.tsx`); the stump is sat on, not walked through; the witch's hat is on her head and she rocks instead of waving a hand; every zone is dressed (`Dress`, `Horizon`, `Camp` in `world.tsx`). The text below describes the first delivery where it differs.
 
-**Not yet seen by the owner** (delivered 2026-11-15). It is **his own outline**
+**The owner on the reworked film, 2026-11-14: "love it".** (First delivered 2026-11-15.) It is **his own outline**
 ([`../../outlines/README.md`](../../outlines/README.md), "The race"), beat for beat and in his order. The script was
 written while he was away, so he has not read it: what the agent added to his outline is listed at the top of
 `source/narration.md` (the baby as one runner who keeps winning, the empty shelf, the pond and the bush as what the
