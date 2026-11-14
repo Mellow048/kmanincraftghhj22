@@ -39,6 +39,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.forest",
       ...cam.truck({ on: at(FOREST, -9, 1.0, 0.9), dist: 6.5, yaw: -14, pitch: 5, fov: 50, by: [8, 0, 0] }),
+      ease: "linear",
       zone: "forest",
       look: NIGHT,
       note: "The forest, wide, the moon over it, and the lens running alongside him through the trunks: environment first, him small in it.",

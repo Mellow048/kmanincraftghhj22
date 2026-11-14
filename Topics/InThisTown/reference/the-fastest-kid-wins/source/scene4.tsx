@@ -166,7 +166,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Lineup t={t} go={w[3]} set />
-            <Place text={["3", "2", "1", "GO!"][i]} position={[START_X + 0.2, 2.45, LANE]} rotationY={E} scale={2.6 * pop(t, w[i])} />
+            <Place text={["3", "2", "1", "GO!"][i]} position={[START_X + 0.2, 2.45, LANE]} rotationY={E} scale={1.7 * pop(t, w[i])} />
             <DustRing position={[START_X - 0.75, 0.05, LANE]} t={t - w[3]} size={3} color="#b79d63" />
             <Streaks position={[START_X, 0.8, LANE]} yaw={E} t={t - w[3]} n={12} spread={2} speed={14} />
           </>
@@ -178,6 +178,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.fifteen",
       ...cam.truck({ on: at(RIVER, -13, 0.9, LANE), dist: 8.5, yaw: -24, pitch: 16, fov: 50, by: [V * 1.77, 0, 0] }),
+      ease: "linear",
       zone: "river",
       look: DAY,
       note: "The rivers: the lens flies beside the pack as it pours over the first bridge. He is near the back, and the card says so.",
@@ -186,6 +187,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.eleven",
       ...cam.truck({ on: at(DESERT, -6, 0.8, LANE), dist: 9, yaw: 58, pitch: 26, fov: 48, by: [V * 1.3, 0, 0] }),
+      ease: "linear",
       zone: "desert",
       look: DAY,
       note: "The desert, from in front and above, sand flying: the string of runners with him in the middle of it.",
@@ -200,6 +202,7 @@ export const scene4 = storyScene(timing, {
       cue: "8.eleven",
       cut: wordAt("8.eleven", "Then") - 0.15,
       ...cam.truck({ on: at(DESERT, 9, 0.9, LANE), dist: 5.2, yaw: -30, pitch: 8, fov: 48, by: [V * 0.9, 0, 0] }),
+      ease: "linear",
       zone: "desert",
       look: DAY,
       note: "Lower and from the other side, the cactus going by: two more are behind him now.",
@@ -208,6 +211,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.six",
       ...cam.truck({ on: at(OAK, -10, 0.9, LANE), dist: 5.6, yaw: 16, pitch: 4, fov: 50, by: [V * 1.5, 0, 0] }),
+      ease: "linear",
       zone: "oak",
       look: DAY,
       note: "The dark oak forest: trunks whipping across the front of the lens, bars of light, and him sixth.",
@@ -217,6 +221,7 @@ export const scene4 = storyScene(timing, {
       cue: "8.six",
       cut: wordAt("8.six", "past") - 0.4,
       ...cam.truck({ on: at(OAK, 3.2, 0.75, LANE + 0.3), dist: 3.2, yaw: 68, pitch: 6, fov: 44, by: [4 * 1.4, 0, 0] }),
+      ease: "linear",
       zone: "oak",
       look: DAY,
       note: "The baby, running for once, from in front: and the yellow shirt comes up behind it and goes by on the outside.",
@@ -236,6 +241,7 @@ export const scene4 = storyScene(timing, {
       cue: "8.six",
       cut: wordAt("8.six", "waved") - 0.35,
       ...cam.truck({ on: at(OAK, 12, 1.15, LANE), dist: 2.3, yaw: 74, pitch: 2, fov: 40, by: [V * 0.9, 0, 0] }),
+      ease: "linear",
       zone: "oak",
       look: DAY,
       note: "Him, close, running at us: he does not look back, he just puts one hand up and waves it. The baby is a small green dot behind.",
@@ -252,6 +258,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.two",
       ...cam.truck({ on: at(FINISH, -40, 0.95, LANE), dist: 4.6, yaw: 40, pitch: 8, fov: 46, by: [V * 0.9, 0, 0] }),
+      ease: "linear",
       zone: "finish",
       look: DAY,
       note: "Open ground, nobody round him any more: the card says second, and he cannot believe it.",
@@ -270,6 +277,7 @@ export const scene4 = storyScene(timing, {
       cue: "8.two",
       cut: wordAt("8.two", "last") - 0.5,
       ...cam.truck({ on: at(FINISH, -16, 1.3, LANE), dist: 3.2, yaw: -90, pitch: 8, fov: 50, by: [V * 1.1, 0, 0] }),
+      ease: "linear",
       zone: "finish",
       look: DAY,
       note: "From behind his shoulders, running with him: the houses of the last village, the gate, and the gold under it.",
@@ -300,6 +308,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.one",
       ...cam.truck({ on: at(FINISH, -7, 1.0, LANE), dist: 4.2, yaw: -64, pitch: 16, fov: 48, by: [V * 1.73, 0, 0] }),
+      ease: "linear",
       zone: "finish",
       look: DAY,
       note: "Over his shoulder and down the track: one back in front of him. Black shirt, white hair. He is closing on it.",
@@ -317,6 +326,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.look",
       ...cam.truck({ on: faceOf(at(FINISH, 1.4, 0, LANE - 0.4)), dist: 1.5, yaw: 80, pitch: -4, fov: 36, by: [V * 1.33, 0, 0] }),
+      ease: "linear",
       zone: "finish",
       look: DAY,
       note: "His face, from in front and a little below: the eyes go down.",
@@ -328,6 +338,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.same",
       ...cam.truck({ on: at(FINISH, -4.6, 0.36, LANE + 0.4), dist: 2.6, yaw: 30, pitch: 7, fov: 44, by: [V * 2.17, 0, 0] }),
+      ease: "linear",
       zone: "finish",
       look: DAY,
       note: "The ground, at running speed: a pair of feet in red shoes with a green light on the side. They are not his.",
@@ -346,6 +357,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "9.sub",
       ...cam.truck({ on: at(FINISH, 1.6, 1.15, LANE + 0.4), dist: 3.4, yaw: 60, pitch: 0, fov: 42, by: [3 * 1.8, 0, 0] }),
+      ease: "linear",
       zone: "finish",
       look: DAY,
       note: "The runner in front turns his head and looks back at him, and smiles. The red sign comes up over the two of them.",

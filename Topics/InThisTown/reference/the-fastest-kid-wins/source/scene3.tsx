@@ -56,15 +56,14 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "5.run",
-      ...cam.push({ on: at(FOREST, 3, 0.25, 1.4), dist: 2.3, to: 1.8, yaw: 40, pitch: 8, fov: 46 }),
+      ...cam.push({ on: at(FOREST, 3, 0.25, 1.4), dist: 2.6, to: 2.2, yaw: 40, pitch: 8, fov: 46 }),
       zone: "forest",
       look: NIGHT,
       note: "Feet only, on the ground: the red shoes light up and push off.",
       stage: (t) => (
         <>
-          <Hero position={at(FOREST, 3 + Math.max(0, t - 0.45) * 9, 0, 1.4)} rotationY={E} animation={t > 0.45 ? "run" : "crouch"} animDistance={t > 0.45 ? t * 4 : undefined} face="brave" shoes={SHOE} shoeGlow={0.4} />
+          <Hero position={at(FOREST, 3 + Math.max(0, t - 0.55) * 9, 0, 1.4)} rotationY={E} animation={t > 0.55 ? "run" : "crouch"} animDistance={t > 0.55 ? t * 4 : undefined} face="brave" shoes={SHOE} shoeGlow={0.4} />
           {lamp(at(FOREST, 4, 1.2, 3), 6)}
-          <DustRing position={at(FOREST, 3, 0.05, 1.4)} t={t - 0.45} size={1.2} color="#6f8f5a" />
           <Streaks position={at(FOREST, 3, 0.3, 1.4)} yaw={E} t={t - 0.45} n={8} spread={0.4} speed={14} />
         </>
       ),
@@ -312,6 +311,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.right",
       ...cam.truck({ on: at(FOREST, -8, 1.0, 1.2), dist: 4.6, yaw: 22, pitch: 5, fov: 46, by: [10.7, 0, 0] }),
+      ease: "linear",
       zone: "forest",
       look: NIGHT,
       note: "The lens runs beside him, a little ahead: a real run, quick and easy, trunks going past. A leaf falls at its own speed.",
