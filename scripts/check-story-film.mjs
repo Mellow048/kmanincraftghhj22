@@ -293,7 +293,12 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
 
   const seconds = timing.duration;
   const underSeconds = Boolean(lim.hardMinSeconds) && seconds < lim.hardMinSeconds;
-  if (lim.hardMaxSeconds && seconds > lim.hardMaxSeconds) {
+  // THE THREE-MINUTE WALL. The owner, 2026-11-14: "add a strict rule, no over 3 minutes". A vertical video over 3:00
+  // is not a YouTube Short: YouTube files it as a long video. No topic, cut or request raises this number.
+  const SHORT_MAX_SECONDS = 178;
+  if (seconds > SHORT_MAX_SECONDS) {
+    fail(`${tag}: ${seconds.toFixed(1)}s is over ${SHORT_MAX_SECONDS}s. STRICT RULE: no film runs over three minutes, or YouTube will not treat it as a Short. Cut lines from the script (scripts/trim-narration.py if the voice is recorded), or split the story into parts.`);
+  } else if (lim.hardMaxSeconds && seconds > lim.hardMaxSeconds) {
     fail(`${tag}: ${seconds.toFixed(1)}s is over the hard limit of ${lim.hardMaxSeconds}s.`);
   } else if (!underSeconds && lim.seconds && (seconds < lim.seconds[0] || seconds > lim.seconds[1])) {
     info(`${tag}: ${seconds.toFixed(1)}s is outside ${rules}'s ${lim.seconds[0]}–${lim.seconds[1]}s.`);

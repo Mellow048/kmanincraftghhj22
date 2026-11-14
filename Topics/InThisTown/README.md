@@ -81,7 +81,7 @@ These apply to a film that declares `topic: "in-this-town"`, and to nothing else
 
 | Base rule (`AGENTS.md`) | In This Town |
 |---|---|
-| 18–20 s, ceiling 21 s | 150–178 s. Never over 180 s, the limit for a Short |
+| 18–20 s, ceiling 21 s | 150–176 s. **Never over 178 s: a strict rule.** Over 3:00 YouTube does not treat it as a Short |
 | 4–7 scenes, 3–5 shots per 20 s | About 18 beats and 80–95 shots. A cut about every 2 s (median 1.4–2.3 s). No shot over 6 s |
 | No camera teleports; a scene starts where the last one ended | Hard cuts are the language. Cut on the noun |
 | Narration in the present tense, 3–10 words a line, 4–7 lines | Past tense, first person, full sentences. 640–770 words at 235–268 words a minute. No pauses |
@@ -110,7 +110,7 @@ Nothing else changes.
 
 | | Full film | Short cut |
 |---|---|---|
-| Length | 150–178 s, never over 180 s | 60–118 s, **never over 120 s** |
+| Length | 150–176 s, **never over 178 s** (strict rule) | 60–118 s, **never over 120 s** |
 | Words | 640–770 | 250–520 |
 | The floor, for both | Never under 60 s or 250 words. Under that it is not a short film of this topic; it is a different kind of video, and `npm run check` fails it | the same |
 | Beats | 18 | About 14 |

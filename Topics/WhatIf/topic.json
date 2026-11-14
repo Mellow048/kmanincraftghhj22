@@ -27,7 +27,7 @@
   "cuts": {
     "long": {
       "seconds": [150, 178],
-      "hardMaxSeconds": 180,
+      "hardMaxSeconds": 178,
       "words": [640, 770]
     }
   },
