@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Pelican's Seaside Ride</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { display: grid; place-items: center; min-height: 100vh; padding: 20px; background: #e9e2d0; }
+  svg { display: block; width: min(100%, 1100px); height: auto; border-radius: 8px; box-shadow: 0 18px 55px #52696538; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 800" role="img" aria-labelledby="title desc">
+<title id="title">A pelican's seaside ride</title>
+<desc id="desc">A white pelican with a long golden bill pedals a teal bicycle along a sunny seaside road, carrying a fish in its basket.</desc>
+<defs>
+  <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#a7d9d6"/><stop offset="1" stop-color="#eef0cf"/></linearGradient>
+  <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#76bcb5"/><stop offset="1" stop-color="#b8d7bf"/></linearGradient>
+  <linearGradient id="pouch" x2=".4" y2="1"><stop stop-color="#f8c558"/><stop offset="1" stop-color="#e18a38"/></linearGradient>
+  <linearGradient id="feather" x2="1" y2="1"><stop stop-color="#fffdf0"/><stop offset="1" stop-color="#c4d4cd"/></linearGradient>
+  <pattern id="basket" width="18" height="15" patternUnits="userSpaceOnUse"><path d="M0 1H18 M0 8H18 M4 1V8 M13 8V15" fill="none" stroke="#8d5e39" stroke-width="2" opacity=".45"/></pattern>
+</defs>
+<!-- A quiet coastal backdrop -->
+<rect width="1100" height="800" fill="url(#sky)"/>
+<circle cx="868" cy="130" r="64" fill="#fff0bc" opacity=".85"/>
+<g fill="#fff8e7" opacity=".72"><path d="M95 142c9-20 39-25 54-7 12-14 36-9 40 7 19-2 27 8 27 16H70c2-10 11-16 25-16z"/><path d="M634 90c8-16 29-19 41-5 11-11 31-6 34 6 15-1 23 7 23 14H615c1-8 7-14 19-15z"/></g>
+<path d="M0 330Q126 289 248 326T493 320T741 321T1100 310V497H0Z" fill="url(#sea)"/>
+<g fill="none" stroke="#e4f1dc" stroke-width="4" stroke-linecap="round" opacity=".65"><path d="M68 374h79m21 0h25M320 349h65m16 0h23M780 374h102m15 0h26M967 340h57M496 391h75"/></g>
+<path d="M0 471Q220 444 392 466T745 459T1100 445V800H0Z" fill="#e4d3ab"/>
+<path d="M0 625Q250 607 499 621T1100 612V800H0Z" fill="#b4a58d"/>
+<path d="M0 635Q270 619 512 631T1100 622" fill="none" stroke="#f3e6c6" stroke-width="8"/>
+<g fill="#d5c09b"><ellipse cx="105" cy="541" rx="34" ry="5"/><ellipse cx="937" cy="535" rx="54" ry="6"/><ellipse cx="588" cy="555" rx="40" ry="4"/></g>
+<g stroke="#799c80" stroke-width="4" fill="none" stroke-linecap="round"><path d="M93 578q-3-34-18-47m18 47q10-31 23-38m-13 38q6-17 20-20M990 574q-2-35-19-45m20 45q9-27 24-36m-17 36q12-15 25-14"/></g>
+<!-- Ground shadow -->
+<ellipse cx="542" cy="687" rx="358" ry="23" fill="#6f7771" opacity=".19"/>
+<!-- Wheels: rims, spokes, hubs -->
+<g fill="none" stroke-linecap="round">
+ <g stroke="#394e4e" stroke-width="17"><circle cx="310" cy="567" r="113"/><circle cx="762" cy="567" r="113"/></g>
+ <g stroke="#e8dcc0" stroke-width="5"><circle cx="310" cy="567" r="101"/><circle cx="762" cy="567" r="101"/></g>
+ <g stroke="#ded6bd" stroke-width="3" opacity=".9">
+  <path d="M310 466v202m-101-101h202m-172-71 142 142m0-142L239 638m32-164 78 186m54-132-186 78m0-78 186 78m-54-132-78 186"/>
+  <path d="M762 466v202m-101-101h202m-172-71 142 142m0-142L691 638m32-164 78 186m54-132-186 78m0-78 186 78m-54-132-78 186"/>
+ </g>
+</g>
+<!-- Far leg goes behind frame -->
+<path d="M438 424Q456 460 486 480L510 541" fill="none" stroke="#c77c39" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M510 541q-14 11-34 12" fill="none" stroke="#c77c39" stroke-width="11" stroke-linecap="round"/>
+<!-- Bicycle frame -->
+<g fill="none" stroke="#285b5c" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"><path d="M310 567L421 423L520 567L310 567L470 452L520 567L664 431L762 567"/><path d="M421 423l-9-28m252 36-14-40 35-13"/></g>
+<g fill="none" stroke="#71b7ad" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M310 567L421 423L520 567L310 567L470 452L520 567L664 431L762 567"/><path d="M421 423l-9-28m252 36-14-40 35-13"/></g>
+<!-- fenders and chain -->
+<g fill="none" stroke-linecap="round"><path d="M196 510a127 127 0 0 1 219-25M657 494a127 127 0 0 1 220 45" stroke="#397e78" stroke-width="9"/><path d="M310 567l205-29a28 28 0 0 1 8 55L310 567" stroke="#677879" stroke-width="4"/></g>
+<circle cx="520" cy="567" r="27" fill="#e8dcc0" stroke="#526f6c" stroke-width="5"/>
+<circle cx="520" cy="567" r="8" fill="#516e69"/>
+<path d="M520 567l34 34h26" fill="none" stroke="#425d5c" stroke-width="7" stroke-linecap="round"/>
+<path d="M568 602h34" fill="none" stroke="#4a4940" stroke-width="10" stroke-linecap="round"/>
+<circle cx="310" cy="567" r="9" fill="#4e6965"/><circle cx="762" cy="567" r="9" fill="#4e6965"/>
+<!-- Saddle and handlebars -->
+<path d="M388 389q17-9 49-3 9 2 6 9-2 5-13 5h-40q-12-2-2-11z" fill="#705043" stroke="#514139" stroke-width="3"/>
+<path d="M651 391l-13-25q-4-9 6-14l25-5" fill="none" stroke="#435e5a" stroke-width="8" stroke-linecap="round"/>
+<path d="M659 347h25" stroke="#634b3e" stroke-width="11" stroke-linecap="round"/>
+<!-- Basket on the front -->
+<path d="M711 352h115l-14 76q-3 11-15 11h-58q-12 0-15-11z" fill="#c8945f" stroke="#76543e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M711 352h115l-14 76q-3 11-15 11h-58q-12 0-15-11z" fill="url(#basket)"/>
+<path d="M706 351h125" stroke="#76543e" stroke-width="9" stroke-linecap="round"/>
+<!-- Fish peeking out -->
+<path d="M743 340q21-31 54-7l15-12-2 19 9 10h-74z" fill="#9cb9b2" stroke="#5c7771" stroke-width="3"/>
+<circle cx="780" cy="336" r="3" fill="#344c49"/>
+<path d="M759 330q5 10 0 18" fill="none" stroke="#668b83" stroke-width="2"/>
+<!-- Pelican: tail, body and neck -->
+<path d="M341 367q-42-5-66-31 6 30 34 51-27-4-46-16 13 35 72 47z" fill="#e7ebdc" stroke="#6e8984" stroke-width="4" stroke-linejoin="round"/>
+<path d="M339 330q45-37 112-16 27 7 49-12 18-16 16-49l-4-75q-1-52 42-63 43-10 62 24 11 20 5 42-5 19-26 32l-4 67q-3 77-41 113-46 44-129 43-80-2-105-48-16-29 23-58z" fill="url(#feather)" stroke="#68827d" stroke-width="5" stroke-linejoin="round"/>
+<!-- Far wing extended to handlebars -->
+<path d="M445 337q64-10 105 12 42 19 87 6l23-8q7-1 8 5 0 5-9 10-39 29-79 35-50 8-94-9z" fill="#d4e0d5" stroke="#728a82" stroke-width="4" stroke-linejoin="round"/>
+<path d="M635 357q11 3 20-2" fill="none" stroke="#728a82" stroke-width="3" stroke-linecap="round"/>
+<!-- Wing on body -->
+<path d="M345 354q49-34 120-8 29 11 49 31-16 39-64 48-71 12-111-23-18-16 6-48z" fill="#f7f7e9" stroke="#8ca39a" stroke-width="4"/>
+<path d="M360 386q29 24 62 25m-49-40q29 22 61 24m-42-36q27 17 57 20" fill="none" stroke="#c2d2c8" stroke-width="4" stroke-linecap="round"/>
+<!-- Near leg visibly connects body to pedal -->
+<path d="M445 417q-1 39 34 66l74 107" fill="none" stroke="#d68b40" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M551 589q9 13 25 12l20-1m-29 1 14 7m-16-7 7 11" fill="none" stroke="#d68b40" stroke-width="9" stroke-linecap="round"/>
+<!-- Head, long bill and unmistakable throat pouch -->
+<path d="M593 166q38 2 97 14l104 21q8 2 8 7-1 5-9 6l-109-2q-15 79-63 82-37 2-55-67z" fill="url(#pouch)" stroke="#af6f38" stroke-width="4" stroke-linejoin="round"/>
+<path d="M592 165q44 2 112 15l96 20q8 2 7 7-1 4-11 5l-113-2-87-12z" fill="#f3bd56" stroke="#af6f38" stroke-width="4" stroke-linejoin="round"/>
+<path d="M611 203q57 8 107 6" fill="none" stroke="#b9793c" stroke-width="3" stroke-linecap="round"/>
+<path d="M581 159q8-8 17-2" fill="none" stroke="#68827d" stroke-width="3" stroke-linecap="round"/>
+<circle cx="592" cy="170" r="8" fill="#344947"/><circle cx="594" cy="167" r="2.5" fill="#fffdf3"/>
+<circle cx="627" cy="177" r="2.5" fill="#9f693a"/>
+<!-- Wind marks and tiny birds -->
+<g fill="none" stroke="#789e96" stroke-width="3" stroke-linecap="round" opacity=".75"><path d="M140 274q9-9 18 0 9-9 18 0M246 230q7-7 14 0 7-7 14 0M851 253q8-8 16 0 8-8 16 0"/><path d="M178 401h43m-63 15h50"/></g>
+</svg>
+</body>
+</html>
