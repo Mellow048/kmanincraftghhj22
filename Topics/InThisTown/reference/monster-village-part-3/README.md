@@ -1,5 +1,7 @@
 # Reference: "In This Town, I Live in a Monster Village, Part 3"
 
+**Reworked 2026-11-14 after his review** (see the log in [`OWNER.md`](../../OWNER.md)): the arm hides behind a tree, not in the well; one light through the evening; the skull and the arm are seen going back on; the castle has country round it (`Country` in `world.tsx`); the reach is from the front; a longer mansion ending (`scene6.tsx`). The text below describes the first delivery where it differs.
+
 **Not yet seen by the owner** (delivered 2026-11-15). It is **his own outline, beat for beat**
 ([`../../outlines/monster-village-part-3.md`](../../outlines/monster-village-part-3.md)), plus the mansion scene he
 added after reading the script. It is also the **first film made to [`OWNER.md`](../../OWNER.md)**: the premise in the
@@ -7,7 +9,7 @@ first second, and no two shots in a row alike. Read [`../monster-village-part-2/
 
 | File | What it is |
 |---|---|
-| `in-this-town-monster-village-part-3.mp4` | **The film as delivered**: 1080×1920, 2:21, 70 shots on 57 lines, full sound. A copy of `renders/in-this-town-monster-village-part-3.mp4` |
+| `in-this-town-monster-village-part-3.mp4` | **The film as delivered**: 1080×1920, 2:36, reworked 2026-11-14, full sound. A copy of `renders/in-this-town-monster-village-part-3.mp4` |
 | `source/` | A **snapshot** of the source: `narration.md`, `timing.json`, `kit.tsx`, `world.tsx`, `scene1.tsx` … `scene6.tsx`, `film.tsx`, `sound.json` |
 
 The film that renders lives in `src/videos/in-this-town-monster-village-part-3/`. Its kit re-exports part two's, and

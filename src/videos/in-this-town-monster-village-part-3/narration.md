@@ -1,5 +1,7 @@
 # Narration — In This Town, I Live in a Monster Village, Part 3
 
+**Rework 2026-11-14 (his review).** Added by the agent, not in his outline: the pillager banner, the creeper that nearly goes off in the cheer, the last word "He was."; the teacher now says he is "still thinking about the golem" and "Am I actually believing an arm?". The mansion ending (weapons, cheer, two confused pillagers) is his.
+
 **Status: the owner's own outline (2026-11-14), with the mansion scene he added after reading draft 2** ("since its 2 minutes, i think we can squeeze in the pillager part ... show the monsters in his village making a deal with the pillager in a mansion"). His two pictures of the mansion are in `Topics/InThisTown/outlines/monster-village-part-3-mansion/`. Draft 1 (the camp, the
 cage, "Son") was the agent's story and he replaced it. His outline is kept word for word in
 `Topics/InThisTown/outlines/monster-village-part-3.md`.

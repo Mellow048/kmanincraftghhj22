@@ -1,5 +1,7 @@
 # Narration — In This Town, the Fastest Kid Wins (part 1)
 
+**Rework 2026-11-14 (his review).** Part 1 ends at the rivers in second place, with the same shoes on the winner: all his. Added by the agent: the race has four stages with a rest camp after each; stage one runs the village road, the wheat fields and a birch wood; the trophy waits at the end of stage four.
+
 **Status: the owner's own outline (2026-11-14), reworked to his review of the first cut: part 1 now ENDS AT THE RIVERS, the end of
 the first of four stages. The runner in black is first there, the teller is second, he celebrates, sits down to wait, and sees the shoes.** His outline is kept word for word in `Topics/InThisTown/outlines/README.md`; every beat
 of it is here, in his order, and his lines are kept ("Do you want to win?", "3, 2, 1, GO!", the places 15th, 11th,

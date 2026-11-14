@@ -32,16 +32,22 @@ const Garrison: React.FC<{ t: number; look?: Vec3; guard?: boolean }> = ({ t, lo
     {guard ? <Raider who={0} position={GUARD} rotationY={EAST} animation="idle" /> : null}
   </>
 );
-const MoInCage: React.FC<{ up?: number; look?: Vec3 }> = ({ up = 0, look }) => (
-  <Mo position={[MO_CAGE[0] + 0.15, 0.08, MO_CAGE[2] - 0.2]} rotationY={-0.5} animation="sit" scarf={0} face={up > 0.5 ? "surprised" : "sad"} headPitch={0.6 * (1 - up)} lookAt={up > 0.5 ? look : undefined} />
+/** Mo, out cold on the floor of the last cage. He does not move in this film. */
+const MoInCage: React.FC = () => (
+  <Mo position={[MO_CAGE[0] - 0.1, 0.1, MO_CAGE[2] + 0.35]} rotationY={EAST} animation="lie" scarf={0} face="sad" blink={false} />
 );
 /** An arm out through the front bars of a cage, drawn on its own so it reads from across the yard. `droop` 0–1 lets it hang. */
-const ArmOut: React.FC<{ at: Vec3; color: string; hand: string; droop?: number }> = ({ at, color, hand, droop = 0 }) => (
-  <group position={at} rotation={[1.2 * droop, 0, 0]}>
-    <Block position={[0, 0, 0.3]} size={[0.15, 0.15, 0.6]} color={color} />
-    <Block position={[0, 0, 0.66]} size={[0.15, 0.15, 0.14]} color={hand} />
+const ArmOut: React.FC<{ at: Vec3; color: string; hand: string; droop?: number; yaw?: number }> = ({ at, color, hand, droop = 0, yaw = 0 }) => (
+  <group position={at} rotation={[0, yaw, 0]}>
+    <group rotation={[1.2 * droop, 0, 0]}>
+      <Block position={[0, 0, 0.3]} size={[0.15, 0.15, 0.6]} color={color} />
+      <Block position={[0, 0, 0.66]} size={[0.15, 0.15, 0.14]} color={hand} />
+    </group>
   </group>
 );
+/** Where he stands to reach for Mo: against the east bars of his cage, near the front, facing east. */
+const REACH: Vec3 = [MY_CAGE[0] + 0.62, 0.08, MY_CAGE[2] + 0.55];
+const REACH_ARM: Vec3 = [MY_CAGE[0] + 0.85, 1.05, MY_CAGE[2] + 0.55];
 const ME: Vec3 = [MY_CAGE[0], 0.08, MY_CAGE[2] + 0.55];
 const MEFACE = faceOf(ME);
 
@@ -165,60 +171,59 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.mo",
-      ...cam.push({ on: [MO_CAGE[0] + 0.15, 1.0, MO_CAGE[2]], dist: 3.6, to: 2.5, yaw: -10, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [MO_CAGE[0], 0.6, MO_CAGE[2] + 0.3], dist: 4.0, to: 2.9, yaw: 0, pitch: 14, fov: 44 }),
       zone: Z3.castle,
       look: DAY,
-      note: "And the last one: a man sitting on the floor of it with his head down, in a straw hat, with a red scarf. The hat comes up.",
+      note: "And the last one, from the front, square on: a man flat on the floor of it in a straw hat and a red scarf. He is not moving at all.",
       stage: (t) => {
         const mo = wordAt("9.mo", "mo");
         return (
           <>
             <Garrison t={t} guard={false} />
-            <MoInCage up={ease(ramp(t, mo - 0.1, mo + 0.2))} look={MEFACE} />
-            <Glint position={manFace([MO_CAGE[0] + 0.15, -0.5, MO_CAGE[2]])} t={t - mo} size={1.6} />
+            <MoInCage />
+            <Glint position={[MO_CAGE[0], 0.9, MO_CAGE[2] + 0.4]} t={t - mo} size={1.6} />
           </>
         );
       },
     },
     {
       cue: "9.mo",
-      cut: wordAt("9.mo", "found") - 0.3,
+      cut: wordAt("9.mo", "he") - 0.15,
       ...cam.push({ on: faceOf([ME[0], ME[1], ME[2] + 0.25]), dist: 1.7, to: 1.3, yaw: 28, pitch: -12, fov: 38 }),
       zone: Z3.castle,
       look: DAY,
-      note: "The boy's face jammed between two bars, sideways on, with the biggest grin in three films.",
-      stage: (t) => <Hero position={[ME[0], ME[1] + hop(t, 0.05, 0.15, 0.25), ME[2] + 0.25]} rotationY={0.5} animation="idle" arms="hold" face="grin" />,
+      note: "The boy's face jammed between two bars: the grin he had for half a second is gone.",
+      stage: (t) => <Hero position={[ME[0], ME[1], ME[2] + 0.25]} rotationY={0.5} animation="idle" arms="hold" face={t < 0.25 ? "grin" : "fear"} />,
     },
     {
       cue: "9.reach",
-      ...cam.pan({ from: c(-6.6, 1.3, 2.6), on: c(-4.4, 1.1, 1.5), onTo: c(4, 1.1, 1.4), fov: 50 }),
+      ...cam.truck({ on: [MY_CAGE[0] + 1.25, 1.1, MY_CAGE[2] + 0.5], dist: 4.4, yaw: 0, pitch: 5, fov: 50, by: [MO_CAGE[0] - MY_CAGE[0] - 1.5, 0, 0] }),
       zone: Z3.castle,
       look: DAY,
-      note: "Straight down on the row of five roofs: out of the first one comes a short yellow arm, as far as it will go. Out of the last one, a green one. There are three whole cages between the two hands.",
+      note: "FROM THE FRONT, the row of cages square on to us. He is against the side bars of his, his arm out through them as far as it goes, pointing along the row. The lens slides the way the arm points: empty cage, empty cage, empty cage, and Mo flat on the floor of the last one.",
       stage: (t) => {
         const far = wordAt("9.reach", "far");
         return (
           <>
-            <Hero position={[MY_CAGE[0] + 0.3, 0.08, MY_CAGE[2] + 0.98]} rotationY={0.15} animation="idle" arms="reach" face="brave" />
-            <Mo position={[MO_CAGE[0] - 0.3, 0.08, MO_CAGE[2] + 0.95]} rotationY={-0.15} animation="idle" arms="reach" scarf={0} />
-            <ArmOut at={[MY_CAGE[0] + 0.5, 1.05, MY_CAGE[2] + 1.05]} color="#f2b705" hand="#dba47c" />
-            <ArmOut at={[MO_CAGE[0] - 0.5, 1.15, MO_CAGE[2] + 1.05]} color="#3f8f8f" hand="#5a9a3a" />
-            <Black position={c(0, 1.1, 1.75)} size={[7.6 * ease(ramp(t, far - 0.3, far)), 0.05, 0.05]} color="#c23a2e" />
-            <Bubble text="TOO FAR" position={c(-1.5, 2.3, 1.7)} rotationY={-1.3} scale={0.5 * pop(t, far)} tail={0} />
+            <Hero position={REACH} rotationY={EAST} animation="idle" arms="reach" face="brave" />
+            <ArmOut at={REACH_ARM} color="#f2b705" hand="#dba47c" yaw={EAST} />
+            <MoInCage />
+            <Black position={c(0.6, 1.05, 0.55)} size={[7.2 * ease(ramp(t, 0.3, far)), 0.05, 0.05]} color="#c23a2e" />
+            <Bubble text="TOO FAR" position={c(3.3, 2.0, 1.3)} scale={0.42 * pop(t, far)} tail={0} />
           </>
         );
       },
     },
     {
       cue: "9.dumb",
-      ...cam.push({ on: [MY_CAGE[0] + 0.4, 1.0, MY_CAGE[2] + 1.3], dist: 2.2, to: 2.1, yaw: 55, pitch: 6, fov: 40 }),
+      ...cam.push({ on: [REACH_ARM[0] + 0.1, 1.0, REACH_ARM[2]], dist: 3.3, to: 3.1, yaw: 0, pitch: 4, fov: 42 }),
       zone: Z3.castle,
       look: DAY,
-      note: "His hand out through the bars, grabbing at air. It stops. It hangs.",
+      note: "From the front still: his hand out through the side bars, grabbing at air. It stops. It hangs.",
       stage: (t) => (
         <>
-          <Hero position={[MY_CAGE[0] + 0.3, 0.08, MY_CAGE[2] + 0.85]} rotationY={0.15} animation="idle" face="frown" headPitch={0.3 * ease(ramp(t, 0.2, 0.5))} />
-          <ArmOut at={[MY_CAGE[0] + 0.5, 1.05, MY_CAGE[2] + 1.05]} color="#f2b705" hand="#dba47c" droop={ease(ramp(t, 0.15, 0.45))} />
+          <Hero position={REACH} rotationY={EAST} animation="idle" face="frown" headPitch={0.3 * ease(ramp(t, 0.2, 0.5))} />
+          <ArmOut at={REACH_ARM} color="#f2b705" hand="#dba47c" yaw={EAST} droop={ease(ramp(t, 0.15, 0.45))} />
         </>
       ),
     },
@@ -278,3 +283,5 @@ export const scene5 = storyScene(timing, {
   ],
 });
 void NORTH;
+void manFace;
+void hop;
