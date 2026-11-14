@@ -68,6 +68,13 @@ down. So:
 - A recorded film that is too long loses whole lines with `python3 scripts/trim-narration.py <film> <cue.id> …`
   (no new recording), then their shots and their rows in `sound.json`. Look at both sides of every join on stills.
 
+### Read the owner's notes first
+
+`Topics/InThisTown/OWNER.md` is what the owner likes, what reviews of his films said, and the two rules that came out
+of them: **the premise is on screen in the first second**, and **no two shots in a row look alike** (every scene has
+an environment shot, a travelling shot and an odd angle). Read it before a script or a shot. When he says what he
+liked or did not like, write it there, with the date.
+
 ### Five things that hold for every topic film
 
 1. **The owner approves the script before anything is built.** Ideas, then the script, then stop and wait.
