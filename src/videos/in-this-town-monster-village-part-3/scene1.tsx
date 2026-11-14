@@ -155,10 +155,10 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.hide",
-      ...cam.push({ on: [-2.9, 0, 3.9], dist: 6.6, to: 5.8, yaw: 70, pitch: 52, fov: 44 }),
+      ...cam.push({ on: [-2.6, 0.5, 3.7], dist: 7.4, to: 6.6, yaw: 62, pitch: 22, fov: 46 }),
       zone: Z3.street,
       look: DUSK,
-      note: "From high up: the boy, the arm halfway to him, the tree. The arm stops dead, spins round and goes back behind the trunk twice as fast. A long shadow comes into the east edge of the frame.",
+      note: "From a little above, the evening sky still in the top of the frame (never straight down: lit ground with no sky reads as daytime): the boy, the arm halfway to him, the tree. The arm stops dead, spins round and goes back behind the trunk twice as fast. A long shadow comes into the east edge of the frame.",
       stage: (t) => {
         const stopped = wordAt("2.hide", "stopped");
         const back = wordAt("2.hide", "back");
@@ -274,10 +274,10 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.many",
-      ...cam.top({ on: [KNEEL[0] + 3.2, 0, KNEEL[2]], height: 9.5, to: 11.5, spin: [6, -6], fov: 46 }),
+      ...cam.push({ on: [KNEEL[0] + 4.2, 0.9, KNEEL[2]], dist: 8.5, to: 10.5, yaw: -62, pitch: 20, fov: 48 }),
       zone: Z3.street,
       look: DUSK,
-      note: "Straight down, rising: ten players in a block walking east with a yellow shape held over their heads, and a thin white arm shaken off behind them, left lying on the cobbles.",
+      note: "From behind them and above, backing off, the same evening sky over the roofs: ten players in a block walking east with a yellow shape held over their heads, and a thin white arm shaken off behind them, left lying on the cobbles.",
       stage: (t) => {
         const go = wordAt("2.many", "let");
         const walk = 1.6 * t;

@@ -181,7 +181,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <Hero position={[-8.7 + Math.sin(t * 40) * 0.006 * up, 0, 6.2]} rotationY={E} pose={pushUp(up)} face={t > one ? "ouch" : "brave"} />
-            <DustRing position={[-8.2, 0.05, 6.2]} t={t - one - 0.1} size={0.9} color="#9fbf7a" />
+            <DustRing position={[-8.9, 0.05, 6.2]} t={t - one - 0.1} size={0.4} color="#9fbf7a" />
             <Sweat position={[-7.8, 0.4, 6.2]} t={t} much={0.8} />
           </>
         );

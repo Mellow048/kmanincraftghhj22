@@ -459,7 +459,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.same",
-      ...cam.push({ on: [BENCH[0] + (MEX + RVX) / 2, 0.22, BENCH[2] + 0.4], dist: 2.3, to: 1.7, yaw: 4, pitch: 6, fov: 40 }),
+      ...cam.push({ on: [BENCH[0] + (MEX + RVX) / 2, 0.38, BENCH[2] + 0.4], dist: 4.4, to: 3.8, yaw: 3, pitch: 5, fov: 44 }),
       zone: "river",
       look: DAY,
       note: "Four feet hanging off a log, from the front, close: two red shoes with a green light on the side, and two more red shoes with a green light on the side. Hold it, with nothing said, for a full second.",

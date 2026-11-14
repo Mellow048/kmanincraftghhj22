@@ -216,7 +216,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.dumb",
-      ...cam.push({ on: [REACH_ARM[0] + 0.3, 1.0, REACH_ARM[2]], dist: 2.4, to: 2.3, yaw: 0, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [REACH_ARM[0] + 0.1, 1.0, REACH_ARM[2]], dist: 3.3, to: 3.1, yaw: 0, pitch: 4, fov: 42 }),
       zone: Z3.castle,
       look: DAY,
       note: "From the front still: his hand out through the side bars, grabbing at air. It stops. It hangs.",
