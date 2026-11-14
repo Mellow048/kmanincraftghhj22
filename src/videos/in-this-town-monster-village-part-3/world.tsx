@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, GodRay, LightPool, Vox, Zone } from "../../engine";
+import { Block, Clouds, Dust, Glow, GodRay, LightPool, Vox, Zone } from "../../engine";
 import { DarkOakForest, Hut, Mansion, MansionHall, Moon, Stars } from "../../../Topics/InThisTown";
 import { World as PartTwo } from "../in-this-town-monster-village-part-2/world";
 import { CAGE_X, CASTLE, Cage, MANSION, MHALL } from "./kit";
@@ -89,6 +89,7 @@ const Castle: React.FC = () => (
     <Clouds y={46} center={[0, 0, 0]} />
     <GodRay position={[-3, 6.5, 1]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.06} />
     <LightPool position={[0, 0.08, 1]} width={14} depth={5} color="#fff2c8" opacity={0.14} />
+    <Glow position={[-3, 3, 1]} size={3} color="#ffe08a" opacity={0.14} />
     <Dust position={[0, 2.2, 0]} area={[30, 4, 14]} count={60} size={0.045} color="#fff7d8" opacity={0.5} seed={9} speed={0.2} />
   </group>
 );
