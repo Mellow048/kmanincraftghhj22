@@ -46,10 +46,10 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.rule",
       ...cam.pan({
-        from: [-0.4, 1.42, 5.6],
+        from: [-1.0, 1.55, 7.2],
         on: [WELL[0] + 0.9, 0.95, WELL[2] + 0.4],
         onTo: [-3.0, 1.72, 4.6],
-        fov: 38,
+        fov: 40,
         fovTo: 36,
       }),
       zone: "village",

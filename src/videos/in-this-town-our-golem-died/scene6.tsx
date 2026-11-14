@@ -31,7 +31,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "8.behind",
-      ...cam.push({ on: [22.3, 1.0, 1.35], dist: 4.7, to: 4.1, yaw: -54, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [22.3, 1.0, 1.35], dist: 5.8, to: 5.1, yaw: -52, pitch: 8, fov: 46 }),
       zone: "gate",
       look: "lantern-night",
       note: "'There was a creeper behind the golem': we see it over the golem's shoulder, its face lit low and green, and the golem's back filling the left of the frame. It is close. That is the whole shot.",
