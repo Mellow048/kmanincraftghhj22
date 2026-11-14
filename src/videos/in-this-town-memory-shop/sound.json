@@ -1,0 +1,761 @@
+{
+  "film": "in-this-town-memory-shop",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The shop is part of everyday village life."
+      },
+      {
+        "from": "1.shook",
+        "mood": "curious",
+        "why": "The nighttime tremor suggests the shop has a secret."
+      },
+      {
+        "from": "2.ladder",
+        "mood": "playful",
+        "why": "The forgotten fall becomes a small visual joke."
+      },
+      {
+        "from": "3.scarf",
+        "mood": "hope",
+        "why": "The siblings and their boats establish what matters."
+      },
+      {
+        "from": "4.crops",
+        "mood": "sad",
+        "why": "The crops fail and the family faces the price."
+      },
+      {
+        "from": "5.cubes",
+        "mood": "sad",
+        "why": "His memories leave, and he no longer knows her."
+      },
+      {
+        "from": "6.looking",
+        "mood": "sneak",
+        "why": "He follows her paper boat to the shop."
+      },
+      {
+        "from": "7.pipe",
+        "mood": "playful",
+        "why": "The pipe fails, then the cart gets him inside."
+      },
+      {
+        "from": "8.stairs",
+        "mood": "tense",
+        "why": "He descends into the hidden factory."
+      },
+      {
+        "from": "9.truth",
+        "mood": "none",
+        "why": "A short held breath as the purpose of the press is understood."
+      },
+      {
+        "from": "9.crush",
+        "mood": "dark",
+        "why": "The press turns a memory into an emerald."
+      },
+      {
+        "from": "10.choice",
+        "mood": "tense",
+        "why": "The sister and the jar are in danger at the same time."
+      },
+      {
+        "from": "11.one",
+        "mood": "sad",
+        "why": "He saved her, but the lost memories are gone."
+      },
+      {
+        "from": "12.feet",
+        "mood": "tense",
+        "why": "The golem slips and the jars break."
+      },
+      {
+        "from": "13.food",
+        "mood": "hope",
+        "why": "The town brings the family food."
+      },
+      {
+        "from": "14.ask",
+        "mood": "sad",
+        "why": "A gentle ending leaves room for a new memory."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "1.town",
+      "bed": "village"
+    },
+    {
+      "from": "1.what",
+      "to": "1.what",
+      "bed": "room"
+    },
+    {
+      "from": "1.shook",
+      "to": "1.shook",
+      "bed": "night"
+    },
+    {
+      "from": "1.back",
+      "to": "2.jars",
+      "bed": "room"
+    },
+    {
+      "from": "2.ladder",
+      "to": "3.mine",
+      "bed": "village"
+    },
+    {
+      "from": "3.bed",
+      "to": "3.bed",
+      "bed": "room"
+    },
+    {
+      "from": "4.crops",
+      "to": "4.crops",
+      "bed": "village"
+    },
+    {
+      "from": "4.mom",
+      "to": "5.boat",
+      "bed": "room"
+    },
+    {
+      "from": "6.gone",
+      "to": "6.picture",
+      "bed": "room"
+    },
+    {
+      "from": "6.looking",
+      "to": "6.looking",
+      "bed": "village"
+    },
+    {
+      "from": "6.lie",
+      "to": "6.lie",
+      "bed": "room"
+    },
+    {
+      "from": "6.door",
+      "to": "7.golem",
+      "bed": "village"
+    },
+    {
+      "from": "8.stairs",
+      "to": "12.free",
+      "bed": "cave"
+    },
+    {
+      "from": "13.town",
+      "to": "14.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "p": 0.25,
+      "sfx": "sparkle",
+      "trim": -1,
+      "why": "sparkle follows the visible action in 1.town."
+    },
+    {
+      "cue": "1.what",
+      "p": 0.25,
+      "sfx": "tick",
+      "trim": -1,
+      "why": "tick follows the visible action in 1.what."
+    },
+    {
+      "cue": "1.shook",
+      "p": 0.25,
+      "sfx": "creak",
+      "trim": -1,
+      "why": "creak follows the visible action in 1.shook."
+    },
+    {
+      "cue": "1.back",
+      "p": 0.25,
+      "sfx": "clank",
+      "trim": -1,
+      "why": "clank follows the visible action in 1.back."
+    },
+    {
+      "cue": "2.bread",
+      "p": 0.25,
+      "sfx": "place",
+      "trim": -1,
+      "why": "place follows the visible action in 2.bread."
+    },
+    {
+      "cue": "2.boots",
+      "p": 0.25,
+      "sfx": "place",
+      "trim": -1,
+      "why": "place follows the visible action in 2.boots."
+    },
+    {
+      "cue": "2.cubes",
+      "p": 0.25,
+      "sfx": "sparkle",
+      "trim": -1,
+      "why": "sparkle follows the visible action in 2.cubes."
+    },
+    {
+      "cue": "2.jars",
+      "p": 0.25,
+      "sfx": "clank",
+      "trim": -1,
+      "why": "clank follows the visible action in 2.jars."
+    },
+    {
+      "cue": "2.ladder",
+      "p": 0.25,
+      "sfx": "coin",
+      "trim": -1,
+      "why": "coin follows the visible action in 2.ladder."
+    },
+    {
+      "cue": "2.fell",
+      "p": 0.25,
+      "sfx": "bonk",
+      "trim": -1,
+      "why": "bonk follows the visible action in 2.fell."
+    },
+    {
+      "cue": "3.scarf",
+      "p": 0.25,
+      "sfx": "rustle",
+      "trim": -1,
+      "why": "rustle follows the visible action in 3.scarf."
+    },
+    {
+      "cue": "3.boats",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 3.boats."
+    },
+    {
+      "cue": "3.mine",
+      "p": 0.25,
+      "sfx": "splash",
+      "trim": -1,
+      "why": "splash follows the visible action in 3.mine."
+    },
+    {
+      "cue": "3.bed",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 3.bed."
+    },
+    {
+      "cue": "4.crops",
+      "p": 0.25,
+      "sfx": "drop",
+      "trim": -1,
+      "why": "drop follows the visible action in 4.crops."
+    },
+    {
+      "cue": "4.mom",
+      "p": 0.25,
+      "sfx": "sparkle",
+      "trim": -1,
+      "why": "sparkle follows the visible action in 4.mom."
+    },
+    {
+      "cue": "4.offer",
+      "p": 0.25,
+      "sfx": "coin",
+      "trim": -1,
+      "why": "coin follows the visible action in 4.offer."
+    },
+    {
+      "cue": "4.no",
+      "p": 0.25,
+      "sfx": "tick",
+      "trim": -1,
+      "why": "tick follows the visible action in 4.no."
+    },
+    {
+      "cue": "4.okay",
+      "p": 0.25,
+      "sfx": "rustle",
+      "trim": -1,
+      "why": "rustle follows the visible action in 4.okay."
+    },
+    {
+      "cue": "4.yes",
+      "p": 0.25,
+      "sfx": "blip",
+      "trim": -1,
+      "why": "blip follows the visible action in 4.yes."
+    },
+    {
+      "cue": "5.cubes",
+      "p": 0.25,
+      "sfx": "sparkle",
+      "trim": -1,
+      "why": "sparkle follows the visible action in 5.cubes."
+    },
+    {
+      "cue": "5.smile",
+      "p": 0.25,
+      "sfx": "blip",
+      "trim": -1,
+      "why": "blip follows the visible action in 5.smile."
+    },
+    {
+      "cue": "5.boat",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 5.boat."
+    },
+    {
+      "cue": "6.gone",
+      "p": 0.25,
+      "sfx": "sting",
+      "trim": -1,
+      "why": "sting follows the visible action in 6.gone."
+    },
+    {
+      "cue": "6.note",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 6.note."
+    },
+    {
+      "cue": "6.picture",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 6.picture."
+    },
+    {
+      "cue": "6.looking",
+      "p": 0.25,
+      "sfx": "step_grass",
+      "trim": -1,
+      "why": "step_grass follows the visible action in 6.looking."
+    },
+    {
+      "cue": "6.lie",
+      "p": 0.25,
+      "sfx": "tick",
+      "trim": -1,
+      "why": "tick follows the visible action in 6.lie."
+    },
+    {
+      "cue": "6.door",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 6.door."
+    },
+    {
+      "cue": "7.pipe",
+      "p": 0.25,
+      "sfx": "crack",
+      "trim": -1,
+      "why": "crack follows the visible action in 7.pipe."
+    },
+    {
+      "cue": "7.cart",
+      "p": 0.25,
+      "sfx": "thud",
+      "trim": -1,
+      "why": "thud follows the visible action in 7.cart."
+    },
+    {
+      "cue": "7.sack",
+      "p": 0.25,
+      "sfx": "rustle",
+      "trim": -1,
+      "why": "rustle follows the visible action in 7.sack."
+    },
+    {
+      "cue": "7.golem",
+      "p": 0.25,
+      "sfx": "stomp",
+      "trim": -1,
+      "why": "stomp follows the visible action in 7.golem."
+    },
+    {
+      "cue": "8.stairs",
+      "p": 0.25,
+      "sfx": "step_stone",
+      "trim": -1,
+      "why": "step_stone follows the visible action in 8.stairs."
+    },
+    {
+      "cue": "8.belts",
+      "p": 0.25,
+      "sfx": "clank",
+      "trim": -1,
+      "why": "clank follows the visible action in 8.belts."
+    },
+    {
+      "cue": "8.press",
+      "p": 0.25,
+      "sfx": "hit",
+      "trim": -1,
+      "why": "hit follows the visible action in 8.press."
+    },
+    {
+      "cue": "8.emerald",
+      "p": 0.25,
+      "sfx": "coin",
+      "trim": -1,
+      "why": "coin follows the visible action in 8.emerald."
+    },
+    {
+      "cue": "9.truth",
+      "p": 0.25,
+      "sfx": "drop",
+      "trim": -1,
+      "why": "drop follows the visible action in 9.truth."
+    },
+    {
+      "cue": "9.crush",
+      "p": 0.25,
+      "sfx": "break",
+      "trim": -1,
+      "why": "break follows the visible action in 9.crush."
+    },
+    {
+      "cue": "10.sister",
+      "p": 0.25,
+      "sfx": "rustle",
+      "trim": -1,
+      "why": "rustle follows the visible action in 10.sister."
+    },
+    {
+      "cue": "10.scarf",
+      "p": 0.25,
+      "sfx": "scrape",
+      "trim": -1,
+      "why": "scrape follows the visible action in 10.scarf."
+    },
+    {
+      "cue": "10.jar",
+      "p": 0.25,
+      "sfx": "clank",
+      "trim": -1,
+      "why": "clank follows the visible action in 10.jar."
+    },
+    {
+      "cue": "10.choice",
+      "p": 0.25,
+      "sfx": "heartbeat",
+      "trim": -1,
+      "why": "heartbeat follows the visible action in 10.choice."
+    },
+    {
+      "cue": "11.jump",
+      "p": 0.25,
+      "sfx": "zip",
+      "trim": -1,
+      "why": "zip follows the visible action in 11.jump."
+    },
+    {
+      "cue": "11.tumble",
+      "p": 0.25,
+      "sfx": "thud",
+      "trim": -1,
+      "why": "thud follows the visible action in 11.tumble."
+    },
+    {
+      "cue": "11.press",
+      "p": 0.25,
+      "sfx": "break",
+      "trim": -1,
+      "why": "break follows the visible action in 11.press."
+    },
+    {
+      "cue": "11.one",
+      "p": 0.25,
+      "sfx": "coin",
+      "trim": -1,
+      "why": "coin follows the visible action in 11.one."
+    },
+    {
+      "cue": "12.stairs",
+      "p": 0.25,
+      "sfx": "stomp",
+      "trim": -1,
+      "why": "stomp follows the visible action in 12.stairs."
+    },
+    {
+      "cue": "12.lever",
+      "p": 0.25,
+      "sfx": "clank",
+      "trim": -1,
+      "why": "clank follows the visible action in 12.lever."
+    },
+    {
+      "cue": "12.feet",
+      "p": 0.25,
+      "sfx": "thud",
+      "trim": -1,
+      "why": "thud follows the visible action in 12.feet."
+    },
+    {
+      "cue": "12.free",
+      "p": 0.25,
+      "sfx": "sparkle",
+      "trim": -1,
+      "why": "sparkle follows the visible action in 12.free."
+    },
+    {
+      "cue": "13.town",
+      "p": 0.25,
+      "sfx": "sparkle",
+      "trim": -1,
+      "why": "sparkle follows the visible action in 13.town."
+    },
+    {
+      "cue": "13.food",
+      "p": 0.25,
+      "sfx": "place",
+      "trim": -1,
+      "why": "place follows the visible action in 13.food."
+    },
+    {
+      "cue": "13.river",
+      "p": 0.25,
+      "sfx": "step_grass",
+      "trim": -1,
+      "why": "step_grass follows the visible action in 13.river."
+    },
+    {
+      "cue": "14.ask",
+      "p": 0.25,
+      "sfx": "rustle",
+      "trim": -1,
+      "why": "rustle follows the visible action in 14.ask."
+    },
+    {
+      "cue": "14.shook",
+      "p": 0.25,
+      "sfx": "blip",
+      "trim": -1,
+      "why": "blip follows the visible action in 14.shook."
+    },
+    {
+      "cue": "14.teach",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 14.teach."
+    },
+    {
+      "cue": "14.fold",
+      "p": 0.25,
+      "sfx": "paper",
+      "trim": -1,
+      "why": "paper follows the visible action in 14.fold."
+    },
+    {
+      "cue": "14.result",
+      "p": 0.25,
+      "sfx": "splash",
+      "trim": -1,
+      "why": "splash follows the visible action in 14.result."
+    },
+    {
+      "cue": "14.laugh",
+      "p": 0.25,
+      "sfx": "chime",
+      "trim": -1,
+      "why": "chime follows the visible action in 14.laugh."
+    },
+    {
+      "cue": "14.sub",
+      "p": 0.25,
+      "sfx": "ding",
+      "trim": -1,
+      "why": "ding follows the visible action in 14.sub."
+    },
+    {
+      "cue": "3.scarf",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "4.crops",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "5.cubes",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "6.gone",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "7.pipe",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "8.stairs",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "9.truth",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "10.sister",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "12.stairs",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "13.town",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "14.ask",
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The cut moves to a new story beat."
+    },
+    {
+      "cue": "2.cubes",
+      "p": 0.65,
+      "sfx": "zip",
+      "trim": -2,
+      "why": "The small blue cubes travel into the jar."
+    },
+    {
+      "cue": "2.fell",
+      "p": 0.68,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "The man lands after falling again."
+    },
+    {
+      "cue": "3.boats",
+      "p": 0.65,
+      "sfx": "splash",
+      "trim": -2,
+      "why": "The two boats meet the water."
+    },
+    {
+      "cue": "4.mom",
+      "p": 0.65,
+      "sfx": "sparkle",
+      "trim": -2,
+      "why": "Another memory leaves Mom."
+    },
+    {
+      "cue": "5.cubes",
+      "p": 0.64,
+      "sfx": "zip",
+      "trim": -2,
+      "why": "His memories stream toward the labeled jar."
+    },
+    {
+      "cue": "7.pipe",
+      "p": 0.65,
+      "sfx": "debris",
+      "trim": -2,
+      "why": "The broken pipe throws small pieces out."
+    },
+    {
+      "cue": "7.golem",
+      "p": 0.65,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "The iron golem pushes the cart."
+    },
+    {
+      "cue": "8.emerald",
+      "p": 0.65,
+      "sfx": "coin",
+      "trim": -2,
+      "why": "The newly made emerald drops."
+    },
+    {
+      "cue": "9.crush",
+      "p": 0.65,
+      "sfx": "boom",
+      "trim": -2,
+      "why": "The press reveals the business behind the jars."
+    },
+    {
+      "cue": "10.scarf",
+      "p": 0.65,
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The yellow scarf pulls taut against the gear."
+    },
+    {
+      "cue": "11.jump",
+      "p": 0.68,
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "He pulls the scarf free."
+    },
+    {
+      "cue": "11.press",
+      "p": 0.7,
+      "sfx": "hit",
+      "trim": -2,
+      "why": "The piston strikes the jar."
+    },
+    {
+      "cue": "12.feet",
+      "p": 0.7,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "The iron golem lands on the jars."
+    },
+    {
+      "cue": "12.free",
+      "p": 0.7,
+      "sfx": "break",
+      "trim": -2,
+      "why": "The other glass jars shatter."
+    },
+    {
+      "cue": "14.fold",
+      "p": 0.7,
+      "sfx": "splash",
+      "trim": -2,
+      "why": "The new paper boats touch the river."
+    }
+  ]
+}

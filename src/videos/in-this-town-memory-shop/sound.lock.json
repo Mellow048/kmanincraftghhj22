@@ -1,0 +1,164 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-memory-shop",
+  "mix": "public/audio/in-this-town-memory-shop/mix.mp3",
+  "seconds": 112.2,
+  "built_from": {
+    "timing.json": "719bf3e950784cb1a629a617d5dc9710d02bb228",
+    "sound.json": "4d391d39e7250300140e2ed2d09ad2662c42bdb1",
+    "narration.mp3": "bc014361cf231cceb2e64a41fadce80d9e48225c"
+  },
+  "mix_sha1": "308f510a256f0e68e0095d7fac5e165b01c84747",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "1.shook",
+      "mood": "curious",
+      "at": 3.7
+    },
+    {
+      "from": "2.ladder",
+      "mood": "playful",
+      "at": 13.63
+    },
+    {
+      "from": "3.scarf",
+      "mood": "hope",
+      "at": 17.63
+    },
+    {
+      "from": "4.crops",
+      "mood": "sad",
+      "at": 24.07
+    },
+    {
+      "from": "5.cubes",
+      "mood": "sad",
+      "at": 35.3
+    },
+    {
+      "from": "6.looking",
+      "mood": "sneak",
+      "at": 50.27
+    },
+    {
+      "from": "7.pipe",
+      "mood": "playful",
+      "at": 56.13
+    },
+    {
+      "from": "8.stairs",
+      "mood": "tense",
+      "at": 63.27
+    },
+    {
+      "from": "9.truth",
+      "mood": "none",
+      "at": 69.7
+    },
+    {
+      "from": "9.crush",
+      "mood": "dark",
+      "at": 71.1
+    },
+    {
+      "from": "10.choice",
+      "mood": "tense",
+      "at": 76.87
+    },
+    {
+      "from": "11.one",
+      "mood": "sad",
+      "at": 84.33
+    },
+    {
+      "from": "12.feet",
+      "mood": "tense",
+      "at": 89.97
+    },
+    {
+      "from": "13.food",
+      "mood": "hope",
+      "at": 96.03
+    },
+    {
+      "from": "14.ask",
+      "mood": "sad",
+      "at": 99.27
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 14,
+  "measured": {
+    "musicUnderVoiceDb": 17.7,
+    "secondsWithoutMusic": 1.6,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 87,
+    "sfxPerMinute": 46.5,
+    "sfxKinds": 28,
+    "longestGapSeconds": 2.8,
+    "longestGapAt": 48.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.5,
+    "voiceOverRestWorstDb": 6.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 6.6,
+        "t": 77.5,
+        "cue": "10.choice",
+        "sounding": [
+          "heartbeat"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 38.4,
+        "cue": "5.smile",
+        "sounding": [
+          "blip"
+        ]
+      },
+      {
+        "db": 7.2,
+        "t": 109.0,
+        "cue": "14.laugh",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 43.2,
+        "cue": "6.gone",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 8.2,
+        "t": 101.3,
+        "cue": "14.shook",
+        "sounding": []
+      },
+      {
+        "db": 9.1,
+        "t": 20.2,
+        "cue": "3.boats",
+        "sounding": [
+          "splash"
+        ]
+      }
+    ],
+    "lufs": -15.0,
+    "truePeakDb": -2.1,
+    "limiterMaxDb": 2.5
+  },
+  "failures": []
+}
