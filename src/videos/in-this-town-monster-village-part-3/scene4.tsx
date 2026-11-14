@@ -112,7 +112,7 @@ export const scene4 = storyScene(timing, {
         const bob = Math.abs(Math.sin(t * 5.2)) * 0.06;
         return (
           <>
-            <Black position={[S[0], 1.5, S[2] - 0.6]} size={[8, 8, 0.05]} color="#120c06" />
+            <Black position={[S[0], 1.5, S[2] - 0.6]} size={[8, 8, 0.05]} color="#2a1c10" />
             <group position={[S[0] + sway, 1.5 + bob, S[2] - 0.5]}>
               {Array.from({ length: 170 }, (_, i) => {
                 const x = (Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 1) * 2.4 - 1.2;
@@ -120,8 +120,11 @@ export const scene4 = storyScene(timing, {
                 const on = 0.5 + 0.5 * Math.sin(t * 3 + i);
                 return <Black key={i} position={[x, y, 0]} size={[0.018, 0.018, 0.01]} color={on > 0.4 ? "#c9a56a" : "#5a4424"} />;
               })}
-              {[-0.9, -0.3, 0.3, 0.9].map((x) => (
-                <Black key={x} position={[x, 0, -0.02]} size={[0.012, 3.6, 0.01]} color="#2a1c0e" />
+              {Array.from({ length: 25 }, (_, i) => (
+                <Black key={`v${i}`} position={[-1.2 + i * 0.1, 0, -0.02]} size={[0.03, 3.6, 0.01]} color="#3b2915" />
+              ))}
+              {Array.from({ length: 36 }, (_, i) => (
+                <Black key={`h${i}`} position={[0, -1.75 + i * 0.1, -0.015]} size={[2.6, 0.03, 0.01]} color="#33230f" />
               ))}
             </group>
           </>

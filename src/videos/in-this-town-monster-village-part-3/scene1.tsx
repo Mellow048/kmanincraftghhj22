@@ -100,7 +100,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.tree",
-      ...cam.orbit({ on: [ARM_PEEK[0], 0.35, ARM_PEEK[2]], dist: 1.9, yaw: -5, yawTo: 55, pitch: 8, pitchTo: 12, fov: 40 }),
+      ...cam.orbit({ on: [ARM_PEEK[0], 0.6, ARM_PEEK[2]], dist: 2.4, yaw: 150, yawTo: 112, pitch: 10, pitchTo: 6, fov: 40 }),
       zone: Z3.street,
       look: DUSK,
       note: "Round the foot of the tree, at the height of a mouse: a skeleton's arm, standing on its elbow, drumming its fingers.",
@@ -111,6 +111,7 @@ export const scene1 = storyScene(timing, {
             <Left />
             <Hero position={KNEEL} rotationY={AWAY} animation="crouch" face="frown" headPitch={0.4} />
             <Arm position={ARM_PEEK} rotationY={TO_BOY} rear={1} talk={t} finger={ease(ramp(t, followed, followed + 0.2))} />
+            <pointLight position={[ARM_PEEK[0] + 1, 1.2, ARM_PEEK[2] - 0.6]} color="#cfd8ff" intensity={6} distance={5} decay={2} />
           </>
         );
       },
@@ -154,7 +155,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.hide",
-      ...cam.push({ on: [-3.2, 0, 3.6], dist: 9.5, to: 8.6, yaw: 70, pitch: 58, fov: 44 }),
+      ...cam.push({ on: [-2.9, 0, 3.9], dist: 6.6, to: 5.8, yaw: 70, pitch: 52, fov: 44 }),
       zone: Z3.street,
       look: DUSK,
       note: "From high up: the boy, the arm halfway to him, the tree. The arm stops dead, spins round and goes back behind the trunk twice as fast. A long shadow comes into the east edge of the frame.",
@@ -171,6 +172,7 @@ export const scene1 = storyScene(timing, {
             </Hero>
             <Arm position={[at[0], hop(t, stopped, 0.25, 0.2), at[2]]} rotationY={TO_BOY + Math.PI * ease(ramp(t, stopped + 0.1, back))} crawl={t < stopped ? t * 2 : k * 5} rear={t > stopped && t < back ? 0.6 : 0} scale={1.3} />
             <DustRing position={[HALF[0], 0.05, HALF[2]]} t={t - back} size={0.7} color="#b9a98a" />
+            <pointLight position={[HALF[0], 2.5, HALF[2]]} color="#cfd8ff" intensity={14} distance={8} decay={2} />
             <Raider who={0} position={[KNEEL[0] + 7.2 - 1.4 * t, 0, KNEEL[2] - 0.4]} rotationY={WEST} animation="walk" animDistance={1.4 * t} face="angry" />
           </>
         );

@@ -56,7 +56,7 @@ const Band: React.FC<{ t: number; look?: Vec3; aim?: number; cheer?: number; chi
 const Doors: React.FC<{ k: number }> = ({ k }) => (
   <>
     {[-1, 1].map((s) => (
-      <group key={s} position={m(s * 1.2, 0, 0.1)} rotation={[0, s * k, 0]}>
+      <group key={s} position={m(s * 1.2, 0, 0.1)} rotation={[0, -s * k, 0]}>
         <Block position={[-s * 0.6, 1.45, 0]} size={[1.2, 2.9, 0.12]} color="#4a2f1b" />
         <Block position={[-s * 0.6, 1.45, 0.065]} size={[0.9, 2.5, 0.02]} color="#3a2414" castShadow={false} />
         <Block position={[-s * 1.02, 1.3, 0.1]} size={[0.1, 0.3, 0.08]} color="#c9a44a" castShadow={false} />
