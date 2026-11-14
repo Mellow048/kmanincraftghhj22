@@ -111,7 +111,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.guards",
-      ...cam.truck({ on: c(-8.4, 1.0, -2.6), dist: 2.6, yaw: 50, pitch: -8, fov: 52, by: [3.2, 0.2, 0.4] }),
+      ...cam.truck({ on: c(-8.4, 1.0, -2.6), dist: 2.6, yaw: -40, pitch: -8, fov: 52, by: [1.8, 0.2, 0.3] }),
       zone: Z3.castle,
       look: DAY,
       note: "At belt height, sliding past a house door: a villager guard with his arms folded in his sleeves and a sword hung on him, nose in the air. Behind him, an iron golem doing its round.",
@@ -176,7 +176,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "9.mo",
       cut: wordAt("9.mo", "found") - 0.3,
-      ...cam.push({ on: MEFACE, dist: 1.5, to: 1.2, yaw: 62, pitch: -4, fov: 36 }),
+      ...cam.push({ on: faceOf([ME[0] + 0.5, ME[1], ME[2] - 0.3]), dist: 1.6, to: 1.3, yaw: 80, pitch: -2, fov: 38 }),
       zone: Z3.castle,
       look: DAY,
       note: "The boy's face jammed between two bars, sideways on, with the biggest grin in three films.",
@@ -184,7 +184,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.reach",
-      ...cam.top({ on: c(0, 0, 0.4), height: 13.5, to: 15, fov: 46 }),
+      ...cam.pan({ from: c(-6.9, 1.25, 2.3), on: c(-3, 1.1, 1.5), onTo: c(5, 1.1, 1.3), fov: 46 }),
       zone: Z3.castle,
       look: DAY,
       note: "Straight down on the row of five roofs: out of the first one comes a short yellow arm, as far as it will go. Out of the last one, a green one. There are three whole cages between the two hands.",
@@ -192,25 +192,25 @@ export const scene5 = storyScene(timing, {
         const far = wordAt("9.reach", "far");
         return (
           <>
-            <Hero position={[MY_CAGE[0] + 0.75, 0.08, MY_CAGE[2] + 0.7]} rotationY={EAST} animation="idle" arms="reach" face="brave" />
-            <Mo position={[MO_CAGE[0] - 0.7, 0.08, MO_CAGE[2] + 0.7]} rotationY={WEST} animation="idle" arms="reach" scarf={0} />
-            <Black position={c(0, 0.1, 1.75)} size={[7.2 * ease(ramp(t, far - 0.3, far)), 0.02, 0.07]} color="#c23a2e" />
-            <Bubble text="TOO FAR" position={c(0, 3.2, 3.0)} scale={0.7 * pop(t, far)} tail={0} />
+            <Hero position={[MY_CAGE[0] + 0.2, 0.08, MY_CAGE[2] + 0.8]} rotationY={0.7} animation="idle" arms="reach" face="brave" />
+            <Mo position={[MO_CAGE[0] - 0.2, 0.08, MO_CAGE[2] + 0.8]} rotationY={-0.7} animation="idle" arms="reach" scarf={0} />
+            <Black position={c(0, 1.1, 1.6)} size={[7.6 * ease(ramp(t, far - 0.3, far)), 0.05, 0.05]} color="#c23a2e" />
+            <Bubble text="TOO FAR" position={c(-1.5, 2.3, 1.7)} rotationY={-1.3} scale={0.5 * pop(t, far)} tail={0} />
           </>
         );
       },
     },
     {
       cue: "9.dumb",
-      ...cam.push({ on: [MY_CAGE[0] + 1.6, 1.0, MY_CAGE[2] + 0.7], dist: 1.6, to: 1.5, yaw: 0, pitch: 0, fov: 34 }),
+      ...cam.push({ on: [MY_CAGE[0] + 0.6, 1.0, MY_CAGE[2] + 1.3], dist: 1.9, to: 1.8, yaw: 35, pitch: 4, fov: 38 }),
       zone: Z3.castle,
       look: DAY,
       note: "His hand out through the bars, grabbing at air. It stops. It hangs.",
-      stage: (t) => <Hero position={[MY_CAGE[0] + 0.75, 0.08 - 0.06 * ease(ramp(t, 0.2, 0.5)), MY_CAGE[2] + 0.7]} rotationY={EAST} animation="idle" arms={t < 0.3 ? "reach" : "idle"} face="frown" />,
+      stage: (t) => <Hero position={[MY_CAGE[0] + 0.2, 0.08 - 0.06 * ease(ramp(t, 0.2, 0.5)), MY_CAGE[2] + 0.8]} rotationY={0.7} animation="idle" arms={t < 0.3 ? "reach" : "idle"} face="frown" />,
     },
     {
       cue: "9.saw",
-      ...cam.push({ on: [GUARD[0] - 0.6, 1.5, GUARD[2] - 0.6], dist: 3.4, to: 3.0, yaw: -128, pitch: 2, fov: 46 }),
+      ...cam.pan({ from: [MY_CAGE[0] - 0.2, 1.3, MY_CAGE[2] - 0.3], on: [GUARD[0] - 0.4, 1.4, GUARD[2]], onTo: [GUARD[0], 1.5, GUARD[2]], fov: 50, fovTo: 42 }),
       zone: Z3.castle,
       look: DAY,
       note: "From inside the cage, over the boy's shoulder, through the bars: a big player on guard outside, side on. His head comes round.",
@@ -220,7 +220,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <Garrison t={t} guard={false} />
-            <Hero position={[ME[0], ME[1], ME[2]]} rotationY={toward(ME, GUARD)} animation="idle" arms={k > 0.5 ? "idle" : "reach"} face="fear" />
+            <Hero position={[MY_CAGE[0] - 0.4, 0.08, MY_CAGE[2] + 0.65]} rotationY={toward(ME, GUARD)} animation="idle" arms={k > 0.5 ? "idle" : "reach"} face="fear" />
             <Raider who={0} position={GUARD} rotationY={EAST} animation="idle" headYaw={2.0 * k} face="angry" />
           </>
         );
@@ -246,7 +246,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.over",
-      ...cam.push({ on: [MY_CAGE[0], 0.6, MY_CAGE[2] + 0.3], dist: 4.2, to: 8.5, yaw: 6, pitch: 52, fov: 44 }),
+      ...cam.push({ on: [MY_CAGE[0], 0.6, MY_CAGE[2] + 0.3], dist: 4.2, to: 8.5, yaw: 6, pitch: 36, fov: 44 }),
       zone: Z3.castle,
       look: DAY,
       note: "From above, going up and away: he slides down the bars and sits on the floor of the cage with his head on his knees. He gets smaller. The castle wall comes into the top of the frame, and it is very big.",

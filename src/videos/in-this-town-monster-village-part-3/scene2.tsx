@@ -32,15 +32,15 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "3.crawl",
-      ...cam.truck({ on: [FX - 22, 0.25, FZ - 1.5], dist: 2.4, yaw: -108, pitch: 6, fov: 58, by: [13, 0, 1] }),
+      ...cam.truck({ on: [FX - 22, 0.25, FZ - 1.5], dist: 1.7, yaw: -112, pitch: 8, fov: 58, by: [13, 0, 0] }),
       zone: Z3.farm,
       look: DAY,
       note: "Chasing it from behind, an inch off the road, wide lens: the arm flat out on four fingers down the east road, dust coming off it, the farm fence growing ahead.",
       stage: (t) => {
-        const x = FX - 21 + 13 * ease(ramp(t, 0, 2.57)) + 0.6;
+        const x = FX - 22 + 13 * ease(ramp(t, 0, 2.57));
         return (
           <>
-            <Arm position={[x, 0, FZ - 1.4]} rotationY={EAST} crawl={t * 3} scale={1.3} />
+            <Arm position={[x, 0, FZ - 1.5]} rotationY={EAST} crawl={t * 3} scale={1.3} />
             <Streaks position={[x, 0.3, FZ - 1.4]} yaw={WEST} t={t} n={10} spread={1} speed={16} />
             <Puffs position={[x - 0.8, 0.05, FZ - 1.4]} color="#b9a98a" count={6} rise={0.35} spread={0.3} size={0.09} speed={2} opacity={0.6} />
           </>
@@ -64,7 +64,7 @@ export const scene2 = storyScene(timing, {
             <Arm position={at} rotationY={EAST} crawl={k * 6} rear={ease(ramp(t, fast - 0.15, fast + 0.1))} finger={0} scale={1.7} />
             <DustRing position={[FX - 0.9, 0.06, FZ - 0.3]} t={t - 0.7} size={1.5} color="#5b4331" />
             <Bits position={[FX - 0.9, 0.2, FZ - 0.3]} t={t - 0.7} color="#5b4331" count={10} power={2} />
-            <Bubble text="4 MIN" position={[FX - 0.6, 1.6, FZ]} rotationY={0.4} scale={0.5 * pop(t, four - 0.05)} tail={0} />
+            <Bubble text="4 MIN" position={[FX - 0.6, 1.6, FZ]} rotationY={0.4} scale={1.2 * pop(t, four - 0.05)} tail={0} />
             <Glint position={[FX - 0.9, 1.0, FZ - 0.3]} t={t - fast} size={1.4} />
           </>
         );
@@ -126,7 +126,7 @@ export const scene2 = storyScene(timing, {
             <Village t={t} look={DFACE} mood="happy" />
             {k < 1 ? (
               <>
-                <Dad position={[D[0], y, D[2]]} rotationY={D_ROT} noArm raise={k} mood="happy" lookAt={[from[0], 0.3, from[2]]} />
+                <Dad position={[D[0], y, D[2]]} rotationY={D_ROT} noArm raise={k} mood="happy" lookAt={t < 0.6 ? [from[0], 0.3, from[2]] : undefined} />
                 <Arm position={mix(from, heldAt([hand[0], hand[1] - 0.1, hand[2]], D_ROT + Math.PI), k)} rotationY={D_ROT + Math.PI} rear={Math.max(k, ease(ramp(t, 0.2, 0.5)))} talk={t} />
               </>
             ) : (
@@ -140,7 +140,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.look",
-      ...cam.push({ on: [D[0] + 0.12, DFACE[1] - 0.1, D[2] + 0.2], dist: 2.0, to: 1.7, yaw: 52, pitch: -4, fov: 36 }),
+      ...cam.push({ on: [D[0] + 0.12, DFACE[1] - 0.1, D[2] + 0.2], dist: 2.2, to: 1.8, yaw: -38, pitch: -4, fov: 38 }),
       zone: Z3.hide,
       look: WARM,
       note: "Skull and hand, nose to knuckle, from the side. The fingers go like a mouth. The skull listens, and then it simply drops off the neck.",

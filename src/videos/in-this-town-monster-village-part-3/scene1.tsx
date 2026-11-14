@@ -28,7 +28,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [-3.5, 0.45, 4.4], dist: 3.3, to: 2.5, yaw: -46, pitch: 3, fov: 52 }),
+      ...cam.push({ on: [-2.8, 0.5, 3.8], dist: 3.6, to: 3.0, yaw: -25, pitch: 3, fov: 52 }),
       zone: Z3.street,
       look: DUSK,
       note: "FRAME ONE IS THE PREMISE: a skeleton's arm, on its own, stands up on its elbow in the grass right in front of the lens and its fingers work. Past it, small, a boy in yellow kneels in an empty monster street over a sword and a helmet. From the ground.",
@@ -36,7 +36,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Left />
           <Hero position={KNEEL} rotationY={AWAY} animation="crouch" face="fear" headPitch={0.35} />
-          <Arm position={[ARM_PEEK[0] - 0.1, 0, ARM_PEEK[2] + 0.25]} rotationY={TO_BOY} rear={ease(ramp(t, 0, 0.35))} talk={t} turn={0.3 * Math.sin(t * 3)} scale={1.15} />
+          <Arm position={[-3.3, 0, 5.2]} rotationY={TO_BOY} rear={ease(ramp(t, 0, 0.35))} talk={t} turn={0.3 * Math.sin(t * 3)} />
         </>
       ),
     },
@@ -78,7 +78,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.pick",
-      ...cam.push({ on: faceOf([KNEEL[0], -0.42, KNEEL[2]]), dist: 2.3, to: 1.8, yaw: 38, pitch: 4, fov: 38 }),
+      ...cam.push({ on: faceOf([KNEEL[0], -0.42, KNEEL[2]]), dist: 2.5, to: 2.0, yaw: 142, pitch: 4, fov: 40 }),
       zone: Z3.street,
       look: DUSK,
       note: "His face, close, the helmet coming up in his hands. Over his shoulder, small and soft, the tree: and at its foot something thin and white stands up.",
@@ -100,7 +100,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.tree",
-      ...cam.orbit({ on: [ARM_PEEK[0], 0.35, ARM_PEEK[2]], dist: 1.9, yaw: -110, yawTo: -40, pitch: 8, pitchTo: 12, fov: 40 }),
+      ...cam.orbit({ on: [ARM_PEEK[0], 0.35, ARM_PEEK[2]], dist: 1.9, yaw: -5, yawTo: 55, pitch: 8, pitchTo: 12, fov: 40 }),
       zone: Z3.street,
       look: DUSK,
       note: "Round the foot of the tree, at the height of a mouse: a skeleton's arm, standing on its elbow, drumming its fingers.",
@@ -117,7 +117,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.watch",
-      ...cam.push({ on: [ARM_PEEK[0] + 0.1, 0.5, ARM_PEEK[2]], dist: 1.5, to: 1.15, yaw: 128, pitch: 2, fov: 34 }),
+      ...cam.push({ on: [ARM_PEEK[0] + 0.1, 0.8, ARM_PEEK[2]], dist: 2.0, to: 1.6, yaw: 128, pitch: 2, fov: 34 }),
       zone: Z3.street,
       look: DUSK,
       note: "From the boy's side, tight: the hand leans out past the trunk and tips, like a head on one side. It has no eyes. It is watching.",
@@ -154,7 +154,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.hide",
-      ...cam.push({ on: [-3.2, 0, 3.6], dist: 9.5, to: 8.6, yaw: -8, pitch: 58, fov: 44 }),
+      ...cam.push({ on: [-3.2, 0, 3.6], dist: 9.5, to: 8.6, yaw: 70, pitch: 58, fov: 44 }),
       zone: Z3.street,
       look: DUSK,
       note: "From high up: the boy, the arm halfway to him, the tree. The arm stops dead, spins round and goes back behind the trunk twice as fast. A long shadow comes into the east edge of the frame.",
@@ -178,7 +178,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.player",
-      ...cam.push({ on: [KNEEL[0] + 2.0, 1.1, KNEEL[2] - 0.3], dist: 3.6, to: 3.0, yaw: -78, pitch: -4, fov: 50 }),
+      ...cam.push({ on: [KNEEL[0] + 2.8, 1.0, KNEEL[2] - 1.2], dist: 4.4, to: 3.7, yaw: -84, pitch: 2, fov: 50 }),
       zone: Z3.street,
       look: DUSK,
       note: "From behind the boy's head, low: he looks up and round, and a player twice his size is walking straight at him down the middle of the street with a sword.",
@@ -222,7 +222,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.grab",
-      ...cam.push({ on: faceOf(KNEEL), dist: 2.0, to: 1.6, yaw: 100, pitch: -8, fov: 42 }),
+      ...cam.push({ on: faceOf(KNEEL), dist: 2.9, to: 2.4, yaw: 100, pitch: -8, fov: 42 }),
       zone: Z3.street,
       look: DUSK,
       note: "His face, from below. Two big hands come in from the sides; a brown sack comes down over the lens side of his head and that is the last of the daylight. The helmet hits the cobbles.",

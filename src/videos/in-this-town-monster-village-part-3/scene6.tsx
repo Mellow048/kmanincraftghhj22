@@ -14,7 +14,7 @@ const MUM: Vec3 = mh(-0.9, 0, 2.5);
 const DAD: Vec3 = mh(0.9, 0, 2.6);
 const MFACE = monsterFace("zombie", MUM);
 /** Where the two of them shake: the chief has come round the east end of the table. */
-const C2: Vec3 = mh(2.9, 0, 2.7);
+const C2: Vec3 = mh(2.45, 0, 2.7);
 const D2: Vec3 = mh(1.3, 0, 2.7);
 const MAP: Vec3 = mh(0, TY + 0.03, 0.5);
 
@@ -84,7 +84,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "10.pillagers",
-      ...cam.push({ on: mh(0, 1.5, -1.6), dist: 5.4, to: 4.4, yaw: 0, pitch: -6, fov: 50 }),
+      ...cam.push({ on: mh(0, 1.7, -2.0), dist: 4.4, to: 3.5, yaw: 0, pitch: -6, fov: 50 }),
       zone: Z3.hall,
       look: WARM,
       note: "Inside, from the end of the map table, low: the chief in the middle of it, grey, gold round his brow, a head taller than the two beside him. He brings a fist down on the map.",
@@ -131,7 +131,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "10.knock",
       cut: wordAt("10.knock", "it") - 0.2,
-      ...cam.push({ on: m(-0.15, 1.6, 0.6), dist: 2.4, to: 1.9, yaw: 58, pitch: 0, fov: 40 }),
+      ...cam.push({ on: m(0.1, 1.5, 0.3), dist: 3.2, to: 2.6, yaw: 16, pitch: -3, fov: 42 }),
       zone: Z3.mansion,
       look: NIGHT,
       note: "The door, side on, close: it opens the width of a nose, and a grey nose comes out of it, with a crossbow under it. Mum gives it a little wave.",
@@ -141,8 +141,9 @@ export const scene6 = storyScene(timing, {
           <>
             <Doors k={0.55 * k} />
             <Pillager n={4} position={m(0.25, 0.3, -0.75 + 0.3 * k)} rotationY={0} crossbow armR={-1.2 * k} lookAt={monsterFace("zombie", m(-0.2, 0.3, 1.15))} />
-            <Mum position={m(-0.2, 0.3, 1.15)} rotationY={NORTH} wave={0.75 * ease(ramp(t, 0.4, 0.65))} arms={0} />
-            <Dad position={m(1.2, 0.15, 2.0)} rotationY={NORTH} />
+            <Mum position={m(-0.75, 0.3, 1.15)} rotationY={NORTH - 0.3} wave={0.75 * ease(ramp(t, 0.4, 0.65))} arms={0} />
+            <Dad position={m(1.0, 0.3, 1.3)} rotationY={NORTH + 0.3} />
+            <pointLight position={m(0, 2, -0.8)} color="#ffcf90" intensity={30 * k} distance={6} decay={2} />
             <pointLight position={m(0, 2, 1.6)} color="#ffcf90" intensity={12 * k} distance={6} decay={2} />
           </>
         );
@@ -200,7 +201,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "10.chief",
       cut: wordAt("10.chief", "and") - 0.15,
-      ...cam.push({ on: CFACE, dist: 2.0, to: 1.6, yaw: -20, pitch: -10, fov: 38 }),
+      ...cam.push({ on: [CFACE[0], CFACE[1] - 0.15, CFACE[2]], dist: 2.9, to: 2.4, yaw: -20, pitch: -10, fov: 38 }),
       zone: Z3.hall,
       look: WARM,
       note: "The chief, close, leaning on his knuckles on the map: one eyebrow, and the question.",
@@ -235,7 +236,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "10.shake",
-      ...cam.push({ on: [(C2[0] + D2[0]) / 2, 1.2, C2[2]], dist: 3.3, to: 2.8, yaw: 4, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [(C2[0] + D2[0]) / 2 + 0.1, 1.25, C2[2]], dist: 3.3, to: 3.0, yaw: 22, pitch: 3, fov: 50 }),
       zone: Z3.hall,
       look: WARM,
       note: "The two of them side on, the chief a head taller: a grey hand and a white one, up, down, up. The grey one pulls back with a whole arm still in it.",
@@ -247,9 +248,9 @@ export const scene6 = storyScene(timing, {
         const reach = ease(ramp(t, 0.1, 0.4));
         return (
           <>
-            <Guests t={t} family={false} look={[D2[0] + 0.8, 1.2, D2[2]]} />
+            <MapSheet position={MAP} />
             <Band t={t} chief={false} look={[D2[0] + 0.8, 1.2, D2[2]]} />
-            <Mum position={mh(0.1, 0, 3.3)} rotationY={NORTH + 0.6} lookAt={[D2[0] + 0.8, 1.2, D2[2]]} arms={0.2} />
+            <Mum position={mh(0.1, 0, 2.2)} rotationY={NORTH - 0.9} lookAt={[D2[0] + 0.8, 1.2, D2[2]]} arms={0.2} />
             <Dad position={[D2[0] - 0.25 * k, 0, D2[2]]} rotationY={EAST} noArm mood={k > 0.5 ? "scared" : "happy"} lean={-0.2 * k} />
             <Pillager chief position={[C2[0] + 0.35 * k, 0, C2[2]]} rotationY={WEST} armL={-1.45 * reach + shake} lean={-0.15 * k} lookAt={k > 0.5 ? [C2[0] - 0.4, 1.2, C2[2]] : undefined} />
             <Arm position={heldAt([s[0] + 0.02 + 0.5 * k, s[1] + shake * 0.5 - 0.05, s[2] + 0.02], EAST)} rotationY={EAST} talk={k > 0.5 ? t : 0} scale={reach < 0.3 ? 0.01 : 1} />
@@ -272,7 +273,7 @@ export const scene6 = storyScene(timing, {
         const hand = pillagerHand([C2[0] + 0.35, 0, C2[2]], WEST, a, 1.1, -1);
         return (
           <>
-            <Guests t={t} family={false} look={hand} mood={up > 0.5 ? "happy" : undefined} hopAt={deal + 0.2} />
+            <MapSheet position={MAP} />
             <Band t={t} chief={false} look={hand} cheer={ease(ramp(t, deal + 0.2, deal + 0.45))} />
             <Dad position={[D2[0] - 0.25, hop(t, deal + 0.25, 0.25, 0.3), D2[2]]} rotationY={EAST} noArm mood="happy" lookAt={hand} />
             <Pillager chief position={[C2[0] + 0.35, 0, C2[2]]} rotationY={WEST} armL={a} lookAt={up > 0.3 ? mh(0, 1.5, 6) : hand} mad={1 - 0.7 * up} talk={t > deal - 0.1 && t < deal + 0.4 ? 1 : 0} />
@@ -294,8 +295,8 @@ export const scene6 = storyScene(timing, {
           <>
             <Band t={t} cheer={1} look={mh(0, 2, 8)} />
             <MapSheet position={MAP} />
-            <Arm position={mh(-0.9, TY + 0.03 + hop(t, 0.1, 0.15, 0.25), 0.9)} rotationY={0} rear={1} talk={t} scale={1.4} />
-            <SubscribeSign position={mh(0.25, TY + 0.75, 0.9)} scale={0.62 * pop(t, sub - 0.25)} tilt={0.05 * Math.sin(t * 6)} />
+            <Arm position={mh(-0.42, TY + 0.03 + hop(t, 0.1, 0.15, 0.25), 1.3)} rotationY={0} rear={1} talk={t} scale={1.2} />
+            <SubscribeSign position={mh(0.12, TY + 0.85, 0.7)} scale={0.36 * pop(t, sub - 0.25)} tilt={0.05 * Math.sin(t * 6)} />
             <Bits position={mh(0.25, TY + 0.75, 0.9)} t={t - sub + 0.25} color="#ffd24a" count={14} power={2.4} />
           </>
         );

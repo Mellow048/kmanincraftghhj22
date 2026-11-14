@@ -55,7 +55,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.scared",
-      ...cam.push({ on: h(0, 1.4, -1), dist: 11.5, to: 10.5, yaw: -32, pitch: 22, fov: 48 }),
+      ...cam.push({ on: h(0, 1.4, -1), dist: 9.5, to: 8.6, yaw: -30, pitch: 14, fov: 56 }),
       zone: Z3.hide,
       look: WARM,
       note: "The whole room from up in a corner: the well, the shelves, the lamps, and every monster in the village leaving the floor at the same moment.",
@@ -130,7 +130,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.down",
-      ...cam.top({ on: [D[0], 0, D[2] - 0.9], height: 8.5, to: 7, spin: [0, 22], fov: 46 }),
+      ...cam.top({ on: [D[0], 0, D[2] - 0.9], height: 4.9, to: 4.4, spin: [0, 22], fov: 74 }),
       zone: Z3.hide,
       look: WARM,
       note: "Straight down from the beams, turning slowly: the tops of forty heads, all tipped at the red carpet. Nobody moves. A clock would be loud.",
@@ -146,7 +146,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.again",
-      ...cam.orbit({ on: [D[0] + 0.15, DFACE[1] - 0.15, D[2] + 0.2], dist: 2.3, yaw: 80, yawTo: 50, pitch: 2, fov: 38 }),
+      ...cam.orbit({ on: [D[0] + 0.15, DFACE[1] - 0.15, D[2] + 0.2], dist: 2.4, yaw: -85, yawTo: -50, pitch: 2, fov: 40 }),
       zone: Z3.hide,
       look: WARM,
       note: "In profile, the lens drifting round: one skull comes up while all the others stay down. He lifts the arm level with his eye sockets and asks it something, quietly.",
@@ -175,14 +175,14 @@ export const scene3 = storyScene(timing, {
           <>
             <Village t={t} look={k > 0.5 ? h(13, 2, 0) : DFACE} nod={0.75 * (1 - k)} />
             <DadAndArm t={t} finger={k} turn={-1.3 * k} lookAt={k > 0.5 ? h(13, 2, 0) : undefined} />
-            <Bubble text="EAST" position={[D[0] + 4.4, 2.5, D[2] - 0.6]} rotationY={-0.5} scale={0.5 * pop(t, east)} tail={0} />
+            <Bubble text="EAST" position={[D[0] + 4.4, 2.5, D[2] - 0.6]} rotationY={-0.5} scale={0.9 * pop(t, east)} tail={0} />
           </>
         );
       },
     },
     {
       cue: "6.plug",
-      ...cam.push({ on: dadSocket(D, D_ROT), dist: 1.7, to: 1.2, yaw: -42, pitch: 6, fov: 36 }),
+      ...cam.push({ on: dadSocket(D, D_ROT), dist: 2.3, to: 1.8, yaw: -42, pitch: 6, fov: 38 }),
       zone: Z3.hide,
       look: WARM,
       note: "The empty shoulder, close: a round socket. The good hand brings the arm round and pushes it home. Click, a spark, and the fingers on the end of it wriggle.",
@@ -221,7 +221,7 @@ export const scene3 = storyScene(timing, {
             <Village t={t} look={DFACE} teacher={false} />
             <Dad position={D} rotationY={D_ROT} mood="happy" wave={0.6 + 0.3 * Math.sin(t * 12)} />
             <Folk kind="enderman" n={0} position={T} rotationY={-0.8} lookAt={[D[0], 1.3, D[2]]} tilt={0.35 * ease(ramp(t, stopped, stopped + 0.3))} />
-            <Bubble text={t > stopped ? "?" : "GOLEM"} position={[T[0] - 0.2, TFACE[1] + 0.8, T[2] + 0.3]} rotationY={-0.3} scale={0.34 * (t > stopped ? pop(t, stopped) : pop(t, 0.1))} tail={0} dark={t < stopped} />
+            <Bubble text={t > stopped ? "?" : "GOLEM"} position={[T[0] - 0.2, TFACE[1] + 0.8, T[2] + 0.3]} rotationY={-0.3} scale={0.6 * (t > stopped ? pop(t, stopped) : pop(t, 0.1))} tail={0} dark={t < stopped} />
           </>
         );
       },

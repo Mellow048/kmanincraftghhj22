@@ -36,7 +36,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "7.mum",
-      ...cam.push({ on: [M[0] + 0.25, MFACE[1] + 0.2, M[2]], dist: 2.4, to: 2.0, yaw: -24, pitch: -16, fov: 42 }),
+      ...cam.push({ on: [M[0] + 0.3, MFACE[1] + 0.45, M[2]], dist: 3.4, to: 2.9, yaw: 10, pitch: -14, fov: 44 }),
       zone: Z3.hide,
       look: WARM,
       note: "Mum from below, pink bow and all: one green hand goes straight up, like a kid in class who knows the answer.",
@@ -69,7 +69,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.plan",
       cut: moved - 0.15,
-      ...cam.top({ on: [D[0] - 0.2, 0, D[2] - 0.6], height: 9, to: 6.6, spin: [-12, 10], fov: 46 }),
+      ...cam.top({ on: [D[0] - 0.2, 0, D[2] - 0.6], height: 4.9, to: 4.3, spin: [-12, 10], fov: 74 }),
       zone: Z3.hide,
       look: WARM,
       note: "Straight down: forty monsters close like a fist round mum and dad. The voice stops here. From now on it is only feet on planks.",
@@ -114,9 +114,9 @@ export const scene4 = storyScene(timing, {
           <>
             <Black position={[S[0], 1.5, S[2] - 0.6]} size={[8, 8, 0.05]} color="#120c06" />
             <group position={[S[0] + sway, 1.5 + bob, S[2] - 0.5]}>
-              {Array.from({ length: 70 }, (_, i) => {
-                const x = ((i * 0.618) % 1) * 2.4 - 1.2;
-                const y = ((i * 0.381 + 0.2) % 1) * 3.4 - 1.7;
+              {Array.from({ length: 170 }, (_, i) => {
+                const x = (Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 1) * 2.4 - 1.2;
+                const y = (Math.abs(Math.sin(i * 78.233) * 12345.678) % 1) * 3.4 - 1.7;
                 const on = 0.5 + 0.5 * Math.sin(t * 3 + i);
                 return <Black key={i} position={[x, y, 0]} size={[0.018, 0.018, 0.01]} color={on > 0.4 ? "#c9a56a" : "#5a4424"} />;
               })}
