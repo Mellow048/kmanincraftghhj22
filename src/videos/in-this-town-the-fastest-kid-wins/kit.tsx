@@ -139,7 +139,7 @@ export const ShoePair: React.FC<{ position?: Vec3; rotation?: Vec3; scale?: numb
     {(one ? [1] : [-1, 1]).map((s) => (
       <group key={s} position={[one ? 0 : s * 0.11, 0, 0]}>
         <Block position={[0, 0.02, 0]} size={[0.17, 0.04, 0.36]} color="#f4f4f4" />
-        <Block position={[0, 0.1, -0.02]} size={[0.16, 0.13, 0.3]} color={SHOE} emissive={SHOE} emissiveIntensity={glow} />
+        <Block position={[0, 0.1, -0.02]} size={[0.16, 0.13, 0.3]} color={SHOE} emissive={SHOE} emissiveIntensity={glow * 0.35} />
         <Block position={[0, 0.075, 0.15]} size={[0.16, 0.08, 0.07]} color="#f4f4f4" />
         <Block position={[0, 0.172, -0.04]} size={[0.08, 0.02, 0.16]} color="#ffffff" castShadow={false} />
         <Block position={[-s * 0.082, 0.1, -0.02]} size={[0.01, 0.04, 0.22]} color={GOLD} castShadow={false} />

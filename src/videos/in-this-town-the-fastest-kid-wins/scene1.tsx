@@ -86,15 +86,15 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.want",
-      ...cam.push({ on: [STAND[0], 1.1, STAND[2]], dist: 3.4, to: 2.7, yaw: 150, pitch: -14, fov: 50 }),
+      ...cam.push({ on: [STAND[0] + 0.15, 1.15, STAND[2] + 0.5], dist: 3.6, to: 2.9, yaw: 24, pitch: -10, fov: 46 }),
       zone: "village",
       look: DAY,
-      note: "Ten years old: from the ground, behind the stand, looking up past the cup at a very small boy on his toes with his hand up. An odd angle (Rule B).",
+      note: "Ten years old: from low behind a very small boy, on his toes with his hand up at a cup he cannot reach.",
       stage: (t) => {
-        const kid: Vec3 = [STAND[0] + 0.5, 0, STAND[2] + 1.05];
+        const kid: Vec3 = [STAND[0] + 0.35, 0, STAND[2] + 1.0];
         return (
           <>
-            <Hero position={[kid[0], hop(t, 0.5, 0.18, 0.4) + hop(t, 1.2, 0.2, 0.4), kid[2]]} rotationY={Math.PI + 0.42} scale={0.52} animation="reachUp" face="wow" gaze={0} />
+            <Hero position={[kid[0], hop(t, 0.5, 0.18, 0.4) + hop(t, 1.2, 0.2, 0.4), kid[2]]} rotationY={Math.PI + 0.3} scale={0.52} animation="reachUp" face="wow" gaze={0} />
             <Glint position={[CUPTOP[0], CUPTOP[1] + 0.3, CUPTOP[2] - 0.2]} t={t - 0.7} size={1.3} />
           </>
         );
@@ -120,7 +120,7 @@ export const scene1 = storyScene(timing, {
     // ------------------------------------------------------------------ 2. training
     {
       cue: "2.train",
-      ...cam.top({ on: [-12, 0, LANE], height: 7.5, to: 6, spin: [20, -10], fov: 52 }),
+      ...cam.top({ on: [-12, 0, LANE], height: 5.5, to: 4.4, spin: [20, -10], fov: 52 }),
       zone: "village",
       look: DAY,
       note: "Straight down on the street: one yellow dot running along it, and his shadow. The first shot of the montage is the map of it.",
@@ -136,7 +136,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.hill",
-      ...cam.push({ on: [HILL[0] - 0.5, 2.2, HILL[2]], dist: 13, to: 11, yaw: 6, pitch: 4, fov: 46 }),
+      ...cam.push({ on: [HILL[0] + 1.2, 2.0, HILL[2]], dist: 17, to: 15, yaw: 6, pitch: 4, fov: 46 }),
       zone: "village",
       look: DAY,
       note: "The hill, whole, with him small on it: up the three steps in three jumps.",
@@ -155,7 +155,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.hill",
       cut: wordAt("2.hill", "round") - 0.25,
-      ...cam.orbit({ on: [POND[0], 0.6, POND[2]], dist: 7.5, yaw: -30, yawTo: 25, pitch: 34, fov: 48 }),
+      ...cam.orbit({ on: [POND[0], 0.6, POND[2]], dist: 12.5, yaw: -30, yawTo: 25, pitch: 42, fov: 48 }),
       zone: "village",
       look: DAY,
       note: "The pond, from above and turning with him: once round the water.",
@@ -240,7 +240,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.week",
-      ...cam.push({ on: [-7.2, 1.45, 0.2], dist: 3.6, to: 2.5, yaw: 12, pitch: 0, fov: 42 }),
+      ...cam.push({ on: [-7.5, 1.35, 0.1], dist: 5.6, to: 4.8, yaw: 8, pitch: 0, fov: 42 }),
       zone: "village",
       look: DAY,
       note: "The clock of the story, as a thing in the town: the board by the street. He stands under it and reads it.",
@@ -248,8 +248,8 @@ export const scene1 = storyScene(timing, {
         const fast = wordAt("2.week", "fast");
         return (
           <>
-            <Board position={[-7.6, 0, -0.2]} text="RACE: 7 DAYS" scale={0.72 * (0.9 + 0.1 * pop(t, 0.05))} />
-            <Hero position={[-6.75, 0, 0.75]} rotationY={Math.PI - 0.5} animation={t > fast ? "panic" : "idle"} face={t > fast ? "fear" : "uneasy"} headPitch={-0.25} />
+            <Board position={[-7.6, 0, -0.2]} text="7 DAYS" scale={1.25 * (0.9 + 0.1 * pop(t, 0.05))} />
+            <Hero position={[-7.3, 0, 1.0]} rotationY={Math.PI - 0.2} animation={t > fast ? "panic" : "idle"} face={t > fast ? "fear" : "uneasy"} headPitch={-0.25} />
           </>
         );
       },

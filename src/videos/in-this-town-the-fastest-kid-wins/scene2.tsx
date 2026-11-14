@@ -12,7 +12,7 @@ const ME: Vec3 = at(FOREST, -0.55, 0, -0.2);
 const HER: Vec3 = at(FOREST, -1.7, 0, -0.2);
 const HID: Vec3 = [WTREE[0] + 0.05, 0, WTREE[2] - 0.75];
 const PEEK: Vec3 = [WTREE[0] + 0.8, 0, WTREE[2] - 0.35];
-const SEAT: Vec3 = [STUMP[0], 0.1, STUMP[2] + 0.12];
+const SEAT: Vec3 = [STUMP[0], 0, STUMP[2] + 0.42];
 const lamp = (p: Vec3, k = 6) => <pointLight position={p} color="#cfd8ff" intensity={k} distance={7} decay={2} />;
 
 /**
@@ -38,12 +38,12 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.forest",
-      ...cam.truck({ on: at(FOREST, -9, 1.0, 0.9), dist: 7.5, yaw: -14, pitch: 5, fov: 50, by: [8, 0, 0] }),
+      ...cam.truck({ on: at(FOREST, -9, 1.0, 0.9), dist: 6.5, yaw: -14, pitch: 5, fov: 50, by: [8, 0, 0] }),
       zone: "forest",
       look: NIGHT,
       note: "The forest, wide, the moon over it, and the lens running alongside him through the trunks: environment first, him small in it.",
-      stage: (t) => {
-        const x = -12 + t * 3.1;
+      stage: (t, { p }) => {
+        const x = -9.4 + p * 8;
         return (
           <>
             <Hero position={at(FOREST, x, 0, 0.9)} rotationY={E} animation="run" animDistance={x * 2 + 40} face="brave" />
@@ -120,7 +120,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.yes",
       cut: wordAt("3.yes", "that") - 0.15,
-      ...cam.push({ on: room(-1.1, 1.75, -2.2), dist: 2.4, to: 1.5, yaw: -18, pitch: -6, fov: 44 }),
+      ...cam.push({ on: room(-1.1, 1.7, -2.2), dist: 3.0, to: 2.2, yaw: -26, pitch: 12, fov: 44 }),
       zone: "room",
       look: NIGHT,
       note: "What he is thinking of, for one second: the shelf, in the dark, with nothing on it.",
@@ -129,7 +129,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.yes",
       cut: wordAt("3.yes", "Yes") - 0.2,
-      ...cam.orbit({ on: [(ME[0] + HER[0]) / 2, 1.15, ME[2]], dist: 3.3, yaw: 12, yawTo: -4, pitch: 3, fov: 42 }),
+      ...cam.orbit({ on: [(ME[0] + HER[0]) / 2, 1.15, ME[2]], dist: 4.4, yaw: 12, yawTo: -4, pitch: 3, fov: 42 }),
       zone: "forest",
       look: NIGHT,
       note: "The two of them in profile, the tall hat and the small boy: he looks up at her and nods.",
@@ -145,7 +145,7 @@ export const scene2 = storyScene(timing, {
     // ------------------------------------------------------------------ 4. the shoes
     {
       cue: "4.shoes",
-      ...cam.push({ on: [HER[0] + 0.62, 1.0, HER[2]], dist: 1.9, to: 1.25, yaw: 30, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [HER[0] + 0.62, 1.0, HER[2]], dist: 2.5, to: 1.9, yaw: 30, pitch: 8, fov: 40 }),
       zone: "forest",
       look: NIGHT,
       note: "The shoes come out on her hand and light the frame red: the thing the film is about, as big as it gets.",
@@ -157,7 +157,7 @@ export const scene2 = storyScene(timing, {
               <ShoePair scale={1.35 * pop(t, 0.2)} rotation={[0, E, 0]} glow={0.9} />
             </Witch>
             <Glint position={[HER[0] + 0.75, 1.05, HER[2] + 0.2]} t={t - 0.5} size={1.2} />
-            <pointLight position={[HER[0] + 0.8, 1.3, HER[2] + 0.5]} color="#ff5a4a" intensity={5 * g} distance={4} decay={2} />
+            <pointLight position={[HER[0] + 0.9, 1.5, HER[2] + 1.2]} color="#ffd0c0" intensity={2.5 * g} distance={4} decay={2} />
           </>
         );
       },
@@ -179,7 +179,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.free",
-      ...cam.orbit({ on: [(ME[0] + HER[0]) / 2, 1.05, ME[2]], dist: 3.4, yaw: -10, yawTo: 10, pitch: 4, fov: 42 }),
+      ...cam.orbit({ on: [(ME[0] + HER[0]) / 2, 1.05, ME[2]], dist: 4.3, yaw: -10, yawTo: 10, pitch: 4, fov: 42 }),
       zone: "forest",
       look: NIGHT,
       note: "Both of them, side on. She pushes the shoes into his chest and he has to take them. She looks over her shoulder while she does it.",
@@ -219,7 +219,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.stump",
-      ...cam.push({ on: [STUMP[0], 0.45, STUMP[2] + 0.4], dist: 2.6, to: 1.7, yaw: 28, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [STUMP[0], 0.5, STUMP[2] + 0.6], dist: 3.2, to: 2.3, yaw: 28, pitch: 8, fov: 44 }),
       zone: "forest",
       look: NIGHT,
       note: "Low, at the stump, pushing in on his feet: he sits, and on 'put' the red shoes are on them.",
@@ -265,7 +265,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.love",
-      ...cam.orbit({ on: [STUMP[0] + 0.1, 0.5, STUMP[2] + 1.3], dist: 2.2, distTo: 2.6, yaw: -30, yawTo: 24, pitch: -4, pitchTo: 8, fov: 46 }),
+      ...cam.orbit({ on: [STUMP[0] + 0.1, 0.65, STUMP[2] + 1.3], dist: 2.8, distTo: 3.3, yaw: -30, yawTo: 24, pitch: -4, pitchTo: 8, fov: 46 }),
       zone: "forest",
       look: NIGHT,
       note: "Round his feet and up: he is standing, turning one foot and then the other, and he jumps for joy on 'loved'.",

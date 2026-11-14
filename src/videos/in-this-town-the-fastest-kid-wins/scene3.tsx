@@ -8,9 +8,9 @@ const E = Math.PI / 2;
 const lamp = (p: Vec3, k = 7) => <pointLight position={p} color="#cfd8ff" intensity={k} distance={7} decay={2} />;
 /** Where he stands still while the world hangs. */
 const HANG: Vec3 = at(FOREST, 6, 0, 1.4);
-const SEAT: Vec3 = [STUMP[0], 0.1, STUMP[2] + 0.12];
+const SEAT: Vec3 = [STUMP[0], 0, STUMP[2] + 0.42];
 /** The shoe he holds up to look at, and the bush he goes through. */
-const HELD: Vec3 = [STUMP[0] + 0.05, 0.92, STUMP[2] + 0.75];
+const HELD: Vec3 = [STUMP[0] + 0.03, 0.74, STUMP[2] + 0.92];
 const BUSH: Vec3 = at(FOREST, 9, 0, 1.2);
 
 /** A bird, wings open. `flap` -1…1. */
@@ -43,7 +43,7 @@ const Hung: React.FC<{ t: number; around: Vec3; n?: number }> = ({ t, around, n 
 );
 /** A strip of light left behind by somebody too fast to see: from `a` to `b` along x. */
 const Trail: React.FC<{ a: number; b: number; y?: number; z: number; k?: number; color?: string }> = ({ a, b, y = 0.6, z, k = 1, color = "#fff0a0" }) => (
-  <Block position={[(a + b) / 2, y, z]} size={[Math.max(0.01, Math.abs(b - a)), 0.5 * k, 0.12]} color={color} emissive={color} emissiveIntensity={2.4} castShadow={false} />
+  <Block position={[(a + b) / 2, y, z]} size={[Math.max(0.01, Math.abs(b - a)), 0.2 * k, 0.08]} color={color} emissive={color} emissiveIntensity={2.4} castShadow={false} />
 );
 
 /**
@@ -56,14 +56,14 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "5.run",
-      ...cam.push({ on: at(FOREST, 3, 0.25, 1.4), dist: 1.5, to: 1.1, yaw: 40, pitch: 6, fov: 46 }),
+      ...cam.push({ on: at(FOREST, 3, 0.25, 1.4), dist: 2.3, to: 1.8, yaw: 40, pitch: 8, fov: 46 }),
       zone: "forest",
       look: NIGHT,
       note: "Feet only, on the ground: the red shoes light up and push off.",
       stage: (t) => (
         <>
-          <Hero position={at(FOREST, 3 + Math.max(0, t - 0.45) * 9, 0, 1.4)} rotationY={E} animation={t > 0.45 ? "run" : "crouch"} animDistance={t > 0.45 ? t * 4 : undefined} face="brave" shoes={SHOE} shoeGlow={0.6 + t * 2} />
-          <pointLight position={at(FOREST, 3, 0.3, 2)} color="#ff5a4a" intensity={4 + t * 10} distance={4} decay={2} />
+          <Hero position={at(FOREST, 3 + Math.max(0, t - 0.45) * 9, 0, 1.4)} rotationY={E} animation={t > 0.45 ? "run" : "crouch"} animDistance={t > 0.45 ? t * 4 : undefined} face="brave" shoes={SHOE} shoeGlow={0.3 + t * 0.6} />
+          <pointLight position={at(FOREST, 3, 0.3, 2)} color="#ff5a4a" intensity={1 + t * 2.5} distance={4} decay={2} />
           <DustRing position={at(FOREST, 3, 0.05, 1.4)} t={t - 0.45} size={1.2} color="#ff8a7a" />
           <Streaks position={at(FOREST, 3, 0.3, 1.4)} yaw={E} t={t - 0.45} n={8} spread={0.4} speed={14} />
         </>
@@ -194,15 +194,15 @@ export const scene3 = storyScene(timing, {
     // ------------------------------------------------------------------ 6. the buttons
     {
       cue: "6.off",
-      ...cam.orbit({ on: [STUMP[0], 0.75, STUMP[2] + 0.4], dist: 2.9, yaw: -26, yawTo: -8, pitch: 10, fov: 44 }),
+      ...cam.orbit({ on: [STUMP[0], 0.75, STUMP[2] + 0.4], dist: 3.3, yaw: -26, yawTo: -8, pitch: 10, fov: 44 }),
       zone: "forest",
       look: NIGHT,
       note: "Back on the stump, in his socks, one shoe on the ground and one held up in both hands: he turns it over.",
       stage: (t) => (
         <>
-          <Hero position={SEAT} rotationY={0.1} animation="hold" face="frown" headPitch={0.35} />
+          <Hero position={SEAT} rotationY={0.1} animation="sit" arms="hold" face="frown" headPitch={0.35} />
           <group position={[SEAT[0], -0.02, SEAT[2]]} />
-          <ShoePair one position={HELD} rotation={[0.2, -E + ease(ramp(t, 0.4, 1.6)) * Math.PI, 0]} scale={1.4} glow={0.8} />
+          <ShoePair one position={HELD} rotation={[0.2, -E + ease(ramp(t, 0.4, 1.6)) * Math.PI, 0]} scale={1.1} glow={0.8} />
           <ShoePair one position={[STUMP[0] - 0.7, 0, STUMP[2] + 0.7]} rotation={[0, 2.4, 0]} scale={1.2} glow={0.5} on={-1} />
           {lamp([STUMP[0] + 0.6, 1.5, STUMP[2] + 2.2], 9)}
         </>
@@ -315,8 +315,8 @@ export const scene3 = storyScene(timing, {
       zone: "forest",
       look: NIGHT,
       note: "The lens runs beside him, a little ahead: a real run, quick and easy, trunks going past. A leaf falls at its own speed.",
-      stage: (t) => {
-        const x = -8.6 + t * 3.0 * 1.0;
+      stage: (t, { p }) => {
+        const x = -8.3 + p * 10.7;
         return (
           <>
             <Hero position={at(FOREST, x, 0, 1.2)} rotationY={E} animation="run" animDistance={t * 6} face="grin" shoes={SHOE} shoeGlow={0.5} />
