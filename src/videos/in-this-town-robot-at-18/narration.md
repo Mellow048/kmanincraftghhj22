@@ -7,6 +7,9 @@ forest, the old man, the katana, the cannon, the shield, and who the old man is.
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word.
 
+**Length: 2:54.** It was first delivered at 3:25. A vertical video over 3:00 is not a YouTube Short, so on 2026-11-13 the
+owner had it trimmed: 13 lines were taken out of the recordings with `scripts/trim-narration.py`, none of them in the fight.
+
 - One teller, first person, past tense. Fast and plain: about 255 words a minute, no gaps.
 - Each `[cue]` line is **one shot**. Each `# clip` is one recording, saved to
   `public/audio/in-this-town-robot-at-18/raw/<clip>.mp3`; then

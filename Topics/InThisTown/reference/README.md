@@ -23,13 +23,21 @@ And again that night, after the robot film's fight:
 | [`monster-egg/`](monster-egg/README.md) | *In This Town: The Monster Egg* | Full film. 2:57, 18 beats, 93 shots, 746 words. Day, night and a lava lake | "every single one u made is good" | The **long cut**: all 18 beats of `SCRIPT.md`, and three places in one world. **It has a voice and no other sound.** Do not copy that |
 | [`superpower-at-18/`](superpower-at-18/README.md) | *In This Town, Everyone Got a Superpower at 18* (part one) | Full film. 2:48, 18 beats, 90 shots, 710 words. Full sound | "wow i love it, i love how u made the short" | The long cut **with** sound. A story the owner outlined himself, and the ending he threw out first |
 | [`superpower-at-18-part-2/`](superpower-at-18-part-2/README.md) | *In This Town, Everyone Got a Superpower at 18, Part 2* | Full film. 2:49, 18 beats, 83 shots, 713 words. Full sound, the owner's music track | "a banger and a massive upgrade! i totally felt like i was watching peak!" | **Fast action.** Why its first render was rejected (no motion, "it just teleports to B") and the eight things that fixed it. A sequel that picks up on the second part one stopped |
-| [`monster-village/`](monster-village/README.md) | *In This Town, I Live in a Monster Village* (part one) | Extended cut. 3:41, 95 shots. Day and night. Full sound | "i liked the superhero and this one" | **Monsters as a family**, the extended cut, night scenes. Its mp4 is in the folder |
+| [`monster-village/`](monster-village/README.md) | *In This Town, I Live in a Monster Village* (part one) | Full film. 2:55, 74 shots, 713 words (trimmed from 3:41 to be a Short). Day and night. Full sound | "i liked the superhero and this one" | **Monsters as a family**, night scenes, a battle with a crowd. Its mp4 is in the folder |
 | [`monster-village-part-2/`](monster-village-part-2/README.md) | *In This Town, I Live in a Monster Village, Part 2* | Middle cut. 2:08, 54 shots. Full sound | "pretty good", then "perfect" | **A sequel on a reused world**, built from the owner's own outline. Framing for a narrow phone frame; replacing one shot without a full render. Its mp4 is in the folder |
-| [`robot-at-18/`](robot-at-18/README.md) | *In This Town, Everyone Gets a Robot at 18* | Extended cut. 3:25, 99 shots, 833 words. Sunset forest and sky. Full sound | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A fight.** Sword against a kid in a suit, on the ground and in the air: posed bodies, hit-freezes, cuts inside a line, flying poses. Two rejected fights and what was wrong with each. A sheet of the whole fight at five frames a second |
+| [`robot-at-18/`](robot-at-18/README.md) | *In This Town, Everyone Gets a Robot at 18* | Full film. 2:54, 86 shots, 697 words (trimmed from 3:25 to be a Short). Sunset forest and sky. Full sound | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A fight.** Sword against a kid in a suit, on the ground and in the air: posed bodies, hit-freezes, cuts inside a line, flying poses. Two rejected fights and what was wrong with each. A sheet of the whole fight at five frames a second |
 | [`pumpkin-heads/`](pumpkin-heads/README.md) | *In This Town, Everyone Wore a Pumpkin on Their Head* | Short cut. 1:56, 14 beats, 58 shots, 490 words. Day and night. Full sound | He approved the script and asked for another ending | A second **short cut** with sound; a teller whose face is a carved pumpkin; an ending that is a picture and not a punchline |
 
 All of them use the same pack
 ([`../PACK.md`](../PACK.md)), the same engine and the same checks.
+
+## Three minutes is the wall
+
+A vertical video over 3:00 is not a YouTube Short: YouTube files it as a long video. Two films here were delivered
+at 3:41 and 3:25 and had to be cut down afterwards. `topic.json` now stops a film at 2:58 and has no longer cut.
+If a finished film has to lose lines, `python3 scripts/trim-narration.py <film> <cue.id> …` cuts them out of the
+recorded clips and the script; then delete their shots and their rows in `sound.json`, and build again. Look at
+both sides of every join on stills: if the line that went was the one in which somebody arrived, they now teleport.
 
 ## What is in a film's folder
 

@@ -5,7 +5,7 @@ humans, they must have something in common and do the big reveal in the ending. 
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word.
 
-**Length: the extended cut** (`cut: "extended"` in `film.tsx`; `Topics/InThisTown/topic.json` → `cuts.extended`). The owner asked for a longer ending after the first render: an ambush, the village accepting Mo, a second army, and Mo staying behind alone in iron armour. He also asked for a school and for more than one monster of each kind.
+**Length: 2:55, the long cut.** It was first delivered at 3:41 as an "extended cut". A vertical video over 3:00 is not a YouTube Short, so on 2026-11-13 the owner had it trimmed: 21 lines were taken out of the recordings with `scripts/trim-narration.py` (the postman, the school, the stew, the dark, fishing and laughing, Dad's arm, the bus in the fight, and a few single lines). The longer ending he asked for is all still here: the ambush, the village accepting Mo, the second army, and Mo staying behind in iron armour.
 
 **The owner's outline.** The teller lives in a village of monsters: zombies, skeletons, a creeper, an enderman, a
 spider, a slime (the pack's `monsters.tsx`). He is the only human. One villager, a zombie in a straw hat with a scarf

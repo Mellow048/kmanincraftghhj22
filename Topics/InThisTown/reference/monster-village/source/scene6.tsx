@@ -66,27 +66,6 @@ export const scene6 = storyScene(timing, {
       },
     },
     {
-      cue: "12.only",
-      ...cam.push({ on: [SPY[0] - 0.3, 0.8, SPY[2]], onTo: [SPY[0] - 2.4, 0.8, SPY[2]], dist: 4.2, to: 4.4, yaw: 0, pitch: 6, fov: 42 }),
-      ease: "inCubic",
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "He turns west, drops into a start, and on 'touch' he is gone out of the left of the frame, dust where his feet were.",
-      stage: (t) => {
-        const go = wordAt("12.only", "touch") - 0.25;
-        const k = ramp(t, go, go + 0.75);
-        const x = SPY[0] - 7 * k * k;
-        const set = ease(ramp(t, 0.2, 0.7));
-        return (
-          <>
-            <Hero position={[x, 0, SPY[2]]} rotationY={-0.5 + (W + 0.5) * set} animation={t < go ? "crouch" : "run"} blendTo="idle" blend={t < go ? set : 1} animDistance={7 * k * k} face="brave" />
-            <DustRing position={[SPY[0], 0.05, SPY[2]]} t={t - go} size={1.4} />
-            {t > go ? <Streaks position={[x + 0.8, 0.8, SPY[2]]} yaw={E} t={t - go} n={8} spread={0.9} speed={14} /> : null}
-          </>
-        );
-      },
-    },
-    {
       cue: "13.ran",
       ...cam.truck({ on: [RUN_FROM - 0.3, 1.45, 2.0], dist: 6.6, yaw: -12, pitch: 6, fov: 46, by: [-RUN_LEN, 0, 0] }),
       ease: "linear",

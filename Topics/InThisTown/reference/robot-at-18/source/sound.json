@@ -76,14 +76,9 @@
         "why": "A hole shaped like him."
       },
       {
-        "from": "13.more",
+        "from": "13.cannon",
         "mood": "dark",
         "why": "He is not finished."
-      },
-      {
-        "from": "13.fast",
-        "mood": "drone",
-        "why": "The second he cannot move."
       },
       {
         "from": "14.bush",
@@ -115,12 +110,12 @@
   "beds": [
     {
       "from": "1.town",
-      "to": "1.cleaner",
+      "to": "1.crate",
       "bed": "village"
     },
     {
       "from": "2.mum",
-      "to": "2.hear",
+      "to": "2.dad",
       "bed": "room"
     },
     {
@@ -129,13 +124,8 @@
       "bed": "village"
     },
     {
-      "from": "3.smart",
-      "to": "3.smart",
-      "bed": "classroom"
-    },
-    {
       "from": "3.hand",
-      "to": "4.shook",
+      "to": "4.just",
       "bed": "village"
     },
     {
@@ -170,7 +160,7 @@
     },
     {
       "from": "12.hole",
-      "to": "13.fast",
+      "to": "13.reboot",
       "bed": "night"
     },
     {
@@ -214,32 +204,6 @@
       "why": "The lid."
     },
     {
-      "cue": "1.kinds",
-      "sfx": "stomp",
-      "word": "huge",
-      "why": "The big one.",
-      "trim": 3
-    },
-    {
-      "cue": "1.kinds",
-      "sfx": "blip",
-      "word": "tiny",
-      "why": "The small one."
-    },
-    {
-      "cue": "1.kinds",
-      "sfx": "power_up",
-      "word": "hero",
-      "trim": -3,
-      "why": "The hero one."
-    },
-    {
-      "cue": "1.cleaner",
-      "sfx": "bonk",
-      "word": "loses",
-      "why": "Beaten by dust."
-    },
-    {
       "cue": "2.mum",
       "sfx": "whoosh",
       "why": "Home."
@@ -258,26 +222,6 @@
       "why": "The massager."
     },
     {
-      "cue": "2.whole",
-      "sfx": "buzz",
-      "word": "whole",
-      "trim": -3,
-      "why": "Still buzzing."
-    },
-    {
-      "cue": "2.whole",
-      "sfx": "cheer",
-      "word": "best",
-      "trim": -2,
-      "why": "Dad is happy."
-    },
-    {
-      "cue": "2.hear",
-      "sfx": "tick",
-      "offset": 0.3,
-      "why": "Mum says nothing."
-    },
-    {
       "cue": "3.friends",
       "sfx": "whoosh",
       "why": "The friends."
@@ -289,18 +233,6 @@
       "repeat": 3,
       "every": 0.6,
       "why": "Three crates."
-    },
-    {
-      "cue": "3.smart",
-      "sfx": "sparkle",
-      "word": "homework",
-      "why": "Homework done."
-    },
-    {
-      "cue": "3.smart",
-      "sfx": "buzz",
-      "word": "corrected",
-      "why": "WRONG."
     },
     {
       "cue": "3.hand",
@@ -369,21 +301,6 @@
       "why": "No, no, no."
     },
     {
-      "cue": "4.shook",
-      "sfx": "rustle",
-      "word": "shook",
-      "trim": 4,
-      "repeat": 3,
-      "every": 0.2,
-      "why": "Shaking the crate."
-    },
-    {
-      "cue": "4.shook",
-      "sfx": "plink",
-      "word": "nothing",
-      "why": "One piece of fluff."
-    },
-    {
       "cue": "4.tuesday",
       "sfx": "slide_down",
       "word": "not",
@@ -413,12 +330,6 @@
       "sfx": "pop",
       "word": "walk",
       "why": "Another."
-    },
-    {
-      "cue": "5.off",
-      "sfx": "pop",
-      "word": "off",
-      "why": "Very helpful."
     },
     {
       "cue": "5.laugh",
@@ -478,18 +389,6 @@
       "sfx": "sparkle",
       "word": "everything",
       "why": "The glasses."
-    },
-    {
-      "cue": "6.knew",
-      "sfx": "count",
-      "word": "exactly",
-      "why": "Working it out."
-    },
-    {
-      "cue": "6.knew",
-      "sfx": "pop",
-      "word": "trouble",
-      "why": "100%."
     },
     {
       "cue": "6.lift",
@@ -558,20 +457,6 @@
       "why": "?"
     },
     {
-      "cue": "8.nose",
-      "sfx": "rustle",
-      "word": "over",
-      "trim": 3,
-      "why": "Turning it."
-    },
-    {
-      "cue": "8.nose",
-      "sfx": "slide_up",
-      "word": "nose",
-      "trim": 2,
-      "why": "Up its nose."
-    },
-    {
       "cue": "8.button",
       "sfx": "rustle",
       "word": "dust",
@@ -628,13 +513,6 @@
       "why": "Done."
     },
     {
-      "cue": "9.armor",
-      "sfx": "boom",
-      "word": "silver",
-      "trim": -6,
-      "why": "The suit."
-    },
-    {
       "cue": "9.suit",
       "sfx": "chime",
       "word": "suit",
@@ -669,12 +547,6 @@
       "sfx": "thud",
       "word": "half",
       "why": "The top comes off."
-    },
-    {
-      "cue": "10.sorry",
-      "sfx": "blip",
-      "word": "sorry",
-      "why": "Sorry."
     },
     {
       "cue": "10.feet",
@@ -1049,24 +921,17 @@
       "why": "A hole shaped like him."
     },
     {
-      "cue": "13.more",
+      "cue": "13.cannon",
       "sfx": "fire_whoosh",
-      "offset": 0.2,
-      "trim": -2,
-      "why": "He comes down slowly."
+      "offset": 0.15,
+      "trim": -1,
+      "why": "He drops out of the sky on his jets."
     },
     {
-      "cue": "13.more",
-      "sfx": "step_grass",
-      "offset": 1.2,
-      "trim": 3,
-      "why": "Without a sound, nearly."
-    },
-    {
-      "cue": "13.more",
-      "sfx": "scrape",
-      "word": "robot",
-      "why": "The blade goes away."
+      "cue": "13.cannon",
+      "sfx": "thud",
+      "offset": 0.45,
+      "why": "He lands."
     },
     {
       "cue": "13.cannon",
@@ -1110,18 +975,6 @@
       "why": "The little bar."
     },
     {
-      "cue": "13.fast",
-      "sfx": "heartbeat",
-      "word": "move",
-      "why": "He cannot move."
-    },
-    {
-      "cue": "13.fast",
-      "sfx": "heartbeat",
-      "word": "blink",
-      "why": "Not even blink."
-    },
-    {
       "cue": "14.bush",
       "sfx": "rustle",
       "offset": 0.1,
@@ -1141,7 +994,7 @@
       "cue": "14.bush",
       "sfx": "thud",
       "offset": 1.15,
-      "trim": -2,
+      "trim": 1,
       "why": "She lands."
     },
     {

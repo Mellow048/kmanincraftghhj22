@@ -6,7 +6,7 @@ player who watches him, Mo, turns out to have been guarding them all along.
 
 | File | What it is |
 |---|---|
-| `in-this-town-monster-village.mp4` | **The film as delivered**: 720×1280, 3:41, 95 shots, full sound. A copy of `renders/in-this-town-monster-village.mp4` |
+| `in-this-town-monster-village.mp4` | **The film as delivered**: 1080×1920, 2:55, 74 shots, full sound. A copy of `renders/in-this-town-monster-village.mp4` |
 | `contact-sheet-every-5-seconds.jpg` | One frame every five seconds, on one sheet. An agent cannot watch a video: read this first |
 | `shot-log.md` | Every shot on one page: start, length, words, place, camera, and why this picture |
 | `source/` | A **snapshot** of the source: `narration.md`, `timing.json`, `kit.tsx`, `world.tsx`, `scene1.tsx` … `scene10.tsx`, `film.tsx`, `sound.json` |
@@ -14,14 +14,23 @@ player who watches him, Mo, turns out to have been guarding them all along.
 The film that renders lives in `src/videos/in-this-town-monster-village/`. `source/` is a copy to read; it is not
 compiled and nothing imports it.
 
+## Cut down to a Short on 2026-11-13
+
+It was delivered at 3:41 as an "extended cut" the topic used to allow. **A vertical video over 3:00 is not a
+YouTube Short**: YouTube filed it as a long video, and the owner asked for it to be trimmed. 21 lines came out
+(the postman, the school, the stew, walking into doors, fishing and laughing, Dad's arm, the bus in the fight and in
+the ambush, and a few single lines), with no new recording: `scripts/trim-narration.py` cuts lines out of the
+recorded clips. It is now 2:55, 74 shots, 713 words. The extended cut no longer exists in `topic.json`.
+The 3:41 version is in git history (`renders/in-this-town-monster-village.mp4` before this date).
+
 ## What it is good for
 
 - **Monsters as people.** Every monster comes from the pack (`Topics/InThisTown/monsters.tsx`) and is given a name
   and one habit in `source/kit.tsx`: `Mum` (zombie, pink bow), `Dad` (skeleton whose arm comes off), `Hiss` (the
   creeper who wants a hug), `Postman` (enderman), `Bus` (a slime the children ride). `Folk` and `Crowd` fill a
   street with the rest.
-- **The extended cut.** The owner asked for a longer ending than the long cut holds; `cuts.extended` in
-  `topic.json` was added for this film (`cut: "extended"` in `source/film.tsx`). Use it only when he asks.
+- **A film that fills the long cut.** 2:55, just under the three minutes a Short may run. It was first made longer
+  than that; see the next section.
 - **Night.** Every face at night has a `Fill` light on the camera's side; speech bubbles at night take `dark`.
   Light iron blows out at night: use `#a9b3c0`.
 - **A plant that pays off twice.** Mo's bread ("Zombies do not eat bread") and dad's loose arm both come back in
