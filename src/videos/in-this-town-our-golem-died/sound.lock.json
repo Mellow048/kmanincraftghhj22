@@ -1,0 +1,143 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-our-golem-died",
+  "mix": "public/audio/in-this-town-our-golem-died/mix.mp3",
+  "seconds": 98.5667,
+  "built_from": {
+    "timing.json": "e01335f8462cb50b6640d6f14b399ce2e0e6d6a8",
+    "sound.json": "bb832995d57448eb4e14b12de33286032769cd67",
+    "narration.mp3": "c0f1a57997f7d8ce34ab82397d8168453906d792"
+  },
+  "mix_sha1": "4128fa758c7c273c0301ab69f21efe5f8138c7fb",
+  "music_sections": [
+    {
+      "from": "1.died",
+      "mood": "dark",
+      "at": 0.0
+    },
+    {
+      "from": "2.sleep",
+      "mood": "curious",
+      "at": 4.57
+    },
+    {
+      "from": "3.wall",
+      "mood": "town",
+      "at": 13.7
+    },
+    {
+      "from": "4.protect",
+      "mood": "curious",
+      "at": 33.97
+    },
+    {
+      "from": "6.bell",
+      "mood": "tense",
+      "at": 42.67
+    },
+    {
+      "from": "9.boom",
+      "mood": "none",
+      "at": 56.57
+    },
+    {
+      "from": "10.finish",
+      "mood": "sad",
+      "at": 59.77
+    },
+    {
+      "from": "12.home",
+      "mood": "drone",
+      "at": 69.73
+    },
+    {
+      "from": "13.light",
+      "mood": "hope",
+      "at": 72.3
+    },
+    {
+      "from": "14.hooks",
+      "mood": "dark",
+      "at": 76.1
+    },
+    {
+      "from": "14.sub",
+      "mood": "sad",
+      "at": 96.9
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 11,
+  "measured": {
+    "musicUnderVoiceDb": 19.4,
+    "secondsWithoutMusic": 3.7,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 116,
+    "sfxPerMinute": 70.6,
+    "sfxKinds": 31,
+    "longestGapSeconds": 2.6,
+    "longestGapAt": 49.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.8,
+    "voiceOverRestWorstDb": 6.3,
+    "voiceOverRestWorst": [
+      {
+        "db": 6.3,
+        "t": 75.6,
+        "cue": "13.there",
+        "sounding": [
+          "clank",
+          "sting"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 93.8,
+        "cue": "14.held",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 96.7,
+        "cue": "14.mine",
+        "sounding": [
+          "ding",
+          "pop"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 43.9,
+        "cue": "6.bell",
+        "sounding": [
+          "bell",
+          "sting"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 13.2,
+        "cue": "2.keep",
+        "sounding": [
+          "blip",
+          "stomp"
+        ]
+      },
+      {
+        "db": 7.7,
+        "t": 33.4,
+        "cue": "3.good",
+        "sounding": []
+      }
+    ],
+    "lufs": -14.9,
+    "truePeakDb": -2.1,
+    "limiterMaxDb": 2.9
+  },
+  "failures": []
+}

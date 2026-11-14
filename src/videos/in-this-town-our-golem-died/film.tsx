@@ -27,10 +27,7 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "short",
   look: "overworld-day",
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-our-golem-died/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/in-this-town-our-golem-died/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
+  audio: { src: "audio/in-this-town-our-golem-died/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9],

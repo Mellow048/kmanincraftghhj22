@@ -1,0 +1,898 @@
+{
+  "film": "in-this-town-our-golem-died",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-our-golem-died",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.died",
+        "mood": "dark",
+        "gain": -6,
+        "why": "It opens on the thing the film is about: our protector is dead. The track comes in low and stays there."
+      },
+      {
+        "from": "2.sleep",
+        "mood": "curious",
+        "gain": -2,
+        "why": "Nobody knows. The town will not say."
+      },
+      {
+        "from": "3.wall",
+        "mood": "town",
+        "gain": 0,
+        "why": "The tour: the good life, at the film's own level."
+      },
+      {
+        "from": "4.protect",
+        "mood": "curious",
+        "why": "He wants to be needed. The question again."
+      },
+      {
+        "from": "6.bell",
+        "mood": "tense",
+        "gain": -1,
+        "why": "The bell. From here the music does not let go until the blast."
+      },
+      {
+        "from": "9.boom",
+        "mood": "none",
+        "why": "The explosion happens with no music at all, and the silence lasts three and a half seconds. It is the only silence in the film."
+      },
+      {
+        "from": "10.finish",
+        "mood": "sad",
+        "gain": -3,
+        "why": "The track comes back underneath the ash, lower."
+      },
+      {
+        "from": "12.home",
+        "mood": "drone",
+        "gain": -2,
+        "why": "A boy lying on a bed, not sleeping."
+      },
+      {
+        "from": "13.light",
+        "mood": "hope",
+        "gain": -1,
+        "why": "Morning. He believes it is a good thing."
+      },
+      {
+        "from": "14.hooks",
+        "mood": "dark",
+        "gain": -4,
+        "why": "The truth: the town was afraid, and the flowers were ours."
+      },
+      {
+        "from": "14.sub",
+        "mood": "sad",
+        "gain": -4,
+        "why": "The button. It does not turn cheerful for the subscribe line."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.died",
+      "to": "1.died",
+      "bed": "night"
+    },
+    {
+      "from": "1.back",
+      "to": "1.how",
+      "bed": "village"
+    },
+    {
+      "from": "2.sleep",
+      "to": "2.break",
+      "bed": "night"
+    },
+    {
+      "from": "2.well",
+      "to": "3.good",
+      "bed": "village"
+    },
+    {
+      "from": "4.protect",
+      "to": "5.walk",
+      "bed": "village"
+    },
+    {
+      "from": "6.bell",
+      "to": "6.wall",
+      "bed": "night"
+    },
+    {
+      "from": "7.sword",
+      "to": "7.proud",
+      "bed": "night"
+    },
+    {
+      "from": "8.behind",
+      "to": "9.dust",
+      "bed": "night"
+    },
+    {
+      "from": "10.finish",
+      "to": "11.letgo",
+      "bed": "night"
+    },
+    {
+      "from": "12.home",
+      "to": "13.light",
+      "bed": "room"
+    },
+    {
+      "from": "13.square",
+      "to": "14.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.died",
+      "sfx": "whoosh",
+      "why": "Cut into the scorched ground inside the gate."
+    },
+    {
+      "cue": "1.died",
+      "sfx": "crackle",
+      "at": 0.3,
+      "trim": -5,
+      "why": "The embers of the creeper's blast, still going."
+    },
+    {
+      "cue": "1.died",
+      "sfx": "debris",
+      "at": 0.9,
+      "trim": -6,
+      "why": "Ash settling as he crouches in it."
+    },
+    {
+      "cue": "1.back",
+      "sfx": "whoosh_low",
+      "trim": -3,
+      "why": "A heavy thing standing still: the golem, back."
+    },
+    {
+      "cue": "1.back",
+      "sfx": "chime",
+      "at": 0.45,
+      "trim": -7,
+      "why": "It is whole. Nothing explains why."
+    },
+    {
+      "cue": "1.how",
+      "sfx": "swish",
+      "trim": -3,
+      "why": "Cut to the face that will not answer."
+    },
+    {
+      "cue": "1.how",
+      "sfx": "tick",
+      "at": 0.8,
+      "trim": -6,
+      "why": "She looks away instead of speaking."
+    },
+    {
+      "cue": "2.sleep",
+      "sfx": "clank",
+      "at": 0.5,
+      "trim": -8,
+      "why": "The golem shifts its weight in the gate at 3 a.m."
+    },
+    {
+      "cue": "2.sleep",
+      "sfx": "crackle",
+      "at": 0.15,
+      "trim": -9,
+      "why": "The one lantern burning."
+    },
+    {
+      "cue": "2.break",
+      "sfx": "clank",
+      "trim": -4,
+      "why": "Iron, on the word 'break' \u2014 and nothing breaks."
+    },
+    {
+      "cue": "2.break",
+      "sfx": "swish",
+      "at": 0.6,
+      "trim": -8,
+      "why": "The lens easing up its side."
+    },
+    {
+      "cue": "2.well",
+      "sfx": "plink",
+      "trim": -6,
+      "why": "A drop falls into the well."
+    },
+    {
+      "cue": "2.well",
+      "sfx": "plink",
+      "at": 0.7,
+      "trim": -9,
+      "pitch": 1.12,
+      "why": "And another."
+    },
+    {
+      "cue": "2.rule",
+      "sfx": "swish",
+      "trim": -5,
+      "why": "The look travels from the flowers to her face."
+    },
+    {
+      "cue": "2.rule",
+      "sfx": "rustle",
+      "at": 0.55,
+      "trim": -8,
+      "why": "Her robe."
+    },
+    {
+      "cue": "2.keep",
+      "sfx": "plink",
+      "trim": -8,
+      "why": "One flower on the rim, and the rule about it."
+    },
+    {
+      "cue": "2.keep",
+      "sfx": "blip",
+      "at": 0.5,
+      "trim": -6.0,
+      "why": "Her hand comes into frame and stops."
+    },
+    {
+      "cue": "3.wall",
+      "sfx": "stomp",
+      "trim": -5,
+      "why": "Its foot on the stone, on the first stride."
+    },
+    {
+      "cue": "3.wall",
+      "sfx": "stomp",
+      "at": 1.05,
+      "trim": -6,
+      "why": "The second stride. It is not in a hurry."
+    },
+    {
+      "cue": "3.wall",
+      "sfx": "clank",
+      "at": 0.5,
+      "trim": -9,
+      "why": "Armour plates as its arm swings."
+    },
+    {
+      "cue": "3.gate",
+      "sfx": "gust",
+      "trim": -6,
+      "why": "Open ground at dawn beyond the gate."
+    },
+    {
+      "cue": "3.take",
+      "sfx": "plink",
+      "trim": -4,
+      "why": "The flower comes off the rim on the word."
+    },
+    {
+      "cue": "3.take",
+      "sfx": "clank",
+      "at": 0.05,
+      "trim": -9,
+      "why": "Iron fingers closing."
+    },
+    {
+      "cue": "3.child",
+      "sfx": "chime",
+      "trim": -6,
+      "why": "It gives it away. This is the town's best hour."
+    },
+    {
+      "cue": "3.child",
+      "sfx": "sparkle",
+      "at": 0.3,
+      "trim": -8,
+      "why": "A child's hands on a flower."
+    },
+    {
+      "cue": "3.none",
+      "sfx": "step_grass",
+      "trim": -7,
+      "why": "Villagers walking past."
+    },
+    {
+      "cue": "3.none",
+      "sfx": "step_grass",
+      "at": 0.52,
+      "trim": -9,
+      "why": "And another."
+    },
+    {
+      "cue": "3.none",
+      "sfx": "rustle",
+      "at": 0.75,
+      "trim": -10,
+      "why": "Robes."
+    },
+    {
+      "cue": "3.lid",
+      "sfx": "scrape",
+      "trim": -6,
+      "why": "The stone lid, dragged off the well and left."
+    },
+    {
+      "cue": "3.anvil",
+      "sfx": "clank",
+      "trim": -4,
+      "why": "Iron on iron. The anvil's own sound, planted here so it can come back at the end."
+    },
+    {
+      "cue": "3.bucket",
+      "sfx": "clank",
+      "trim": -7,
+      "pitch": 0.86,
+      "why": "A bucket, kicked over: thin iron, lower than the anvil."
+    },
+    {
+      "cue": "3.bucket",
+      "sfx": "place",
+      "at": 0.65,
+      "trim": -9,
+      "why": "Settling on the grass."
+    },
+    {
+      "cue": "3.remember",
+      "sfx": "blip",
+      "trim": -7,
+      "why": "His father says the thing he will remember."
+    },
+    {
+      "cue": "3.remember",
+      "sfx": "rustle",
+      "at": 0.35,
+      "trim": -10,
+      "why": "The boy shifting, not listening."
+    },
+    {
+      "cue": "3.good",
+      "sfx": "gust",
+      "trim": -4,
+      "why": "The whole town in one frame, in the open air."
+    },
+    {
+      "cue": "3.good",
+      "sfx": "cheer",
+      "at": 0.4,
+      "trim": -8.3,
+      "why": "People at the far end of the square, some way off."
+    },
+    {
+      "cue": "4.protect",
+      "sfx": "step_grass",
+      "trim": -8,
+      "why": "His feet."
+    },
+    {
+      "cue": "4.protect",
+      "sfx": "step_grass",
+      "at": 0.55,
+      "trim": -9,
+      "why": "And again, in the golem's shadow."
+    },
+    {
+      "cue": "4.protect",
+      "sfx": "stomp",
+      "at": 0.2,
+      "trim": -5.1,
+      "why": "The golem's, much heavier, half a beat behind."
+    },
+    {
+      "cue": "4.need",
+      "sfx": "blip",
+      "trim": -2.1,
+      "why": "The thought, on the face."
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "rustle",
+      "trim": -8,
+      "why": "Her robe on the porch."
+    },
+    {
+      "cue": "5.ask",
+      "sfx": "tick",
+      "at": 0.6,
+      "trim": -8,
+      "why": "The pause before she answers."
+    },
+    {
+      "cue": "5.say",
+      "sfx": "sting",
+      "trim": -6.7,
+      "why": "A rule with no reason in it: the chord hangs for a second."
+    },
+    {
+      "cue": "5.again",
+      "sfx": "swish",
+      "trim": -6,
+      "why": "Over her shoulder: the same question asked twice."
+    },
+    {
+      "cue": "5.walk",
+      "sfx": "rustle",
+      "at": 0.9,
+      "trim": -10,
+      "why": "The robe going out of frame."
+    },
+    {
+      "cue": "6.bell",
+      "sfx": "bell",
+      "trim": -3,
+      "why": "The real thing, at the top of the film's worst night."
+    },
+    {
+      "cue": "6.bell",
+      "sfx": "whoosh",
+      "trim": -6,
+      "why": "Cut to the wall."
+    },
+    {
+      "cue": "6.wall",
+      "sfx": "sting",
+      "trim": -9,
+      "why": "Three shapes on top of the wall."
+    },
+    {
+      "cue": "6.wall",
+      "sfx": "creak",
+      "at": 0.5,
+      "trim": -11,
+      "why": "Something dry shifting up there."
+    },
+    {
+      "cue": "7.sword",
+      "sfx": "scrape",
+      "trim": -6,
+      "why": "Steel off the door frame."
+    },
+    {
+      "cue": "7.sword",
+      "sfx": "clank",
+      "at": 0.35,
+      "trim": -6,
+      "why": "His hand on the grip. The blade is too long for him."
+    },
+    {
+      "cue": "7.zombie",
+      "sfx": "hit",
+      "word": "zombie",
+      "trim": -4,
+      "why": "The swing lands on the word."
+    },
+    {
+      "cue": "7.zombie",
+      "sfx": "debris",
+      "at": 0.12,
+      "trim": -3,
+      "why": "It goes over backwards."
+    },
+    {
+      "cue": "7.skeleton",
+      "sfx": "crack",
+      "word": "skeleton",
+      "trim": -4,
+      "why": "Bones, on the word."
+    },
+    {
+      "cue": "7.skeleton",
+      "sfx": "hit",
+      "word": "skeleton",
+      "at": 0.02,
+      "trim": -7,
+      "why": "And the hit under it."
+    },
+    {
+      "cue": "7.skeleton",
+      "sfx": "debris",
+      "at": 0.16,
+      "trim": -5.0,
+      "why": "The skull coming off."
+    },
+    {
+      "cue": "7.proud",
+      "sfx": "blip",
+      "trim": -6,
+      "why": "He is delighted with himself."
+    },
+    {
+      "cue": "8.behind",
+      "sfx": "sting",
+      "trim": -6,
+      "why": "The camera finds the creeper behind the golem."
+    },
+    {
+      "cue": "8.behind",
+      "sfx": "crackle",
+      "at": 0.4,
+      "trim": -7,
+      "why": "The fuse."
+    },
+    {
+      "cue": "8.shout",
+      "sfx": "whoosh",
+      "trim": -3.1,
+      "why": "In to his face: too late."
+    },
+    {
+      "cue": "8.shout",
+      "sfx": "heartbeat",
+      "at": 0.3,
+      "trim": -1.6,
+      "why": "One beat. Then the next shot."
+    },
+    {
+      "cue": "8.late",
+      "sfx": "heartbeat",
+      "trim": -2.7,
+      "why": "The distance, measured in heartbeats."
+    },
+    {
+      "cue": "8.late",
+      "sfx": "riser",
+      "trim": -9,
+      "why": "It ends on the explosion. It has nowhere else to go."
+    },
+    {
+      "cue": "9.boom",
+      "sfx": "boom",
+      "word": "exploded",
+      "why": "The one boom in the film, and there is no music under it."
+    },
+    {
+      "cue": "9.boom",
+      "sfx": "fire_whoosh",
+      "at": 0.03,
+      "trim": -3,
+      "why": "The blast front."
+    },
+    {
+      "cue": "9.boom",
+      "sfx": "debris",
+      "at": 0.2,
+      "trim": -5,
+      "why": "Iron and dirt in the air."
+    },
+    {
+      "cue": "9.boom",
+      "sfx": "hit",
+      "at": 0.1,
+      "trim": -6,
+      "why": "The shockwave reaching him."
+    },
+    {
+      "cue": "9.dust",
+      "sfx": "drop",
+      "trim": -6,
+      "why": "The floor going out from under the story."
+    },
+    {
+      "cue": "9.dust",
+      "sfx": "debris",
+      "at": 0.5,
+      "trim": -8,
+      "why": "The last of it coming down."
+    },
+    {
+      "cue": "10.finish",
+      "sfx": "cheer",
+      "trim": -8,
+      "why": "The town finishing it, some way off, and him not in it."
+    },
+    {
+      "cue": "10.finish",
+      "sfx": "step_grass",
+      "at": 0.4,
+      "trim": -5.6,
+      "why": "The villagers' feet."
+    },
+    {
+      "cue": "10.walk",
+      "sfx": "step_grass",
+      "trim": -7,
+      "why": "His feet, going to it."
+    },
+    {
+      "cue": "10.walk",
+      "sfx": "step_grass",
+      "at": 0.5,
+      "trim": -8,
+      "why": "And again."
+    },
+    {
+      "cue": "10.walk",
+      "sfx": "step_grass",
+      "at": 1.0,
+      "trim": -9,
+      "why": "And again."
+    },
+    {
+      "cue": "10.rose",
+      "sfx": "plink",
+      "trim": -7,
+      "why": "One flower in the ash."
+    },
+    {
+      "cue": "10.rose",
+      "sfx": "heartbeat",
+      "at": 0.6,
+      "trim": -6.3,
+      "why": "The bottom of the film."
+    },
+    {
+      "cue": "11.pick",
+      "sfx": "rustle",
+      "trim": -7,
+      "why": "His sleeve, reaching down."
+    },
+    {
+      "cue": "11.pick",
+      "sfx": "plink",
+      "at": 0.3,
+      "trim": -8,
+      "why": "It comes away from the ground."
+    },
+    {
+      "cue": "11.put",
+      "sfx": "place",
+      "word": "well",
+      "trim": -6,
+      "why": "It is set down on the stone, on the word."
+    },
+    {
+      "cue": "11.put",
+      "sfx": "plink",
+      "at": 0.2,
+      "trim": -9,
+      "why": "Among the others."
+    },
+    {
+      "cue": "11.letgo",
+      "sfx": "step_grass",
+      "trim": -8,
+      "why": "He steps back."
+    },
+    {
+      "cue": "11.letgo",
+      "sfx": "step_grass",
+      "at": 0.42,
+      "trim": -9,
+      "why": "And again."
+    },
+    {
+      "cue": "11.letgo",
+      "sfx": "rustle",
+      "at": 0.7,
+      "trim": -5.8,
+      "why": "The flowers as he leaves them."
+    },
+    {
+      "cue": "12.home",
+      "sfx": "creak",
+      "trim": -7,
+      "why": "The door of his house."
+    },
+    {
+      "cue": "12.home",
+      "sfx": "thud",
+      "at": 0.6,
+      "trim": -9,
+      "why": "His feet on the boards."
+    },
+    {
+      "cue": "12.bed",
+      "sfx": "rustle",
+      "at": 0.4,
+      "trim": -8,
+      "why": "The blanket, and not much else, because he does not sleep."
+    },
+    {
+      "cue": "12.bed",
+      "sfx": "heartbeat",
+      "at": 0.9,
+      "trim": -10,
+      "why": "Still awake."
+    },
+    {
+      "cue": "13.light",
+      "sfx": "chime",
+      "trim": -8,
+      "why": "Morning, empty. The only kind thing in the last thirty seconds."
+    },
+    {
+      "cue": "13.light",
+      "sfx": "swish",
+      "at": 0.5,
+      "trim": -10,
+      "why": "Dust turning in the window light."
+    },
+    {
+      "cue": "13.square",
+      "sfx": "rustle",
+      "at": 0.8,
+      "trim": -10,
+      "why": "The crowd turning."
+    },
+    {
+      "cue": "13.there",
+      "sfx": "sting",
+      "trim": -6,
+      "why": "It is standing there. The town keeps its distance."
+    },
+    {
+      "cue": "13.there",
+      "sfx": "clank",
+      "at": 0.3,
+      "trim": -8,
+      "why": "Iron, in the morning, where iron should not be standing."
+    },
+    {
+      "cue": "14.hooks",
+      "sfx": "clank",
+      "trim": -7,
+      "why": "A hook with nothing on it, ringing when he touches it."
+    },
+    {
+      "cue": "14.hooks",
+      "sfx": "tick",
+      "at": 0.5,
+      "trim": -9,
+      "why": "The empty wall."
+    },
+    {
+      "cue": "14.pot",
+      "sfx": "tick",
+      "trim": -8,
+      "why": "The ring in the dust."
+    },
+    {
+      "cue": "14.pot",
+      "sfx": "blip",
+      "at": 0.4,
+      "trim": -9,
+      "why": "He understands one piece of it."
+    },
+    {
+      "cue": "14.iron",
+      "sfx": "clank",
+      "trim": -6,
+      "why": "The heap: an anvil and two pots, in the square."
+    },
+    {
+      "cue": "14.iron",
+      "sfx": "thud",
+      "at": 0.4,
+      "trim": -8,
+      "why": "Its weight settling."
+    },
+    {
+      "cue": "14.built",
+      "sfx": "stomp",
+      "trim": -5,
+      "why": "It stands over its own raw material."
+    },
+    {
+      "cue": "14.built",
+      "sfx": "whoosh_low",
+      "at": 0.2,
+      "trim": -7,
+      "why": "The size of it, seen from below."
+    },
+    {
+      "cue": "14.afraid",
+      "sfx": "heartbeat",
+      "trim": -5.1,
+      "why": "One face, not looking at the boy."
+    },
+    {
+      "cue": "14.afraid",
+      "sfx": "rustle",
+      "at": 0.4,
+      "trim": -10,
+      "why": "A farmer's robe, very still."
+    },
+    {
+      "cue": "14.giveback",
+      "sfx": "plink",
+      "trim": -7,
+      "why": "Down in the dark of the well."
+    },
+    {
+      "cue": "14.giveback",
+      "sfx": "drop",
+      "at": 0.55,
+      "trim": -11,
+      "why": "Nothing comes back up."
+    },
+    {
+      "cue": "14.flowers",
+      "sfx": "plink",
+      "trim": -8,
+      "why": "One flower after another along the rim."
+    },
+    {
+      "cue": "14.flowers",
+      "sfx": "plink",
+      "at": 0.5,
+      "trim": -10,
+      "pitch": 1.1,
+      "why": "And another."
+    },
+    {
+      "cue": "14.flowers",
+      "sfx": "chime",
+      "at": 1.1,
+      "trim": -12,
+      "why": "The count of them is the answer."
+    },
+    {
+      "cue": "14.ours",
+      "sfx": "chime",
+      "trim": -8,
+      "why": "The golem gives a flower away again, far off, exactly as before."
+    },
+    {
+      "cue": "14.ours",
+      "sfx": "sparkle",
+      "at": 0.3,
+      "trim": -10,
+      "why": "A child's hands."
+    },
+    {
+      "cue": "14.ours",
+      "sfx": "step_grass",
+      "at": 0.6,
+      "trim": -11,
+      "why": "People in the square."
+    },
+    {
+      "cue": "14.held",
+      "sfx": "clank",
+      "trim": -7,
+      "why": "The iron hand, open, at his chest height."
+    },
+    {
+      "cue": "14.held",
+      "sfx": "ding",
+      "at": 0.35,
+      "trim": -6,
+      "why": "The rose is the only thing being offered."
+    },
+    {
+      "cue": "14.mine",
+      "sfx": "heartbeat",
+      "trim": -6,
+      "why": "It is his. He knows what keeping it means."
+    },
+    {
+      "cue": "14.mine",
+      "sfx": "plink",
+      "at": 0.4,
+      "trim": -8,
+      "why": "One petal's worth of sound."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "ding",
+      "word": "Subscribe",
+      "trim": -4,
+      "why": "The sign, on the word, the way every film of this topic ends."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "pop",
+      "at": 0.02,
+      "trim": -8,
+      "why": "It comes up to the lens."
+    }
+  ],
+  "sfxGain": 3
+}
