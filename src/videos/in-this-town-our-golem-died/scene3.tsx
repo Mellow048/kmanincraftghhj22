@@ -130,7 +130,7 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Fence from={[5.4, 0, 5.6]} to={[9.2, 0, 5.6]} height={1.1} gap={1.1} />
-          <Bucket position={[6.9, 0.02, 6.3]} scale={0.9} handle swing={0.5} />
+          <Bucket position={[6.9, 0.52, 6.3]} scale={0.9} handle swing={0.5} />
         </>
       ),
     },
