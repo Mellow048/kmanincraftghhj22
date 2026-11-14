@@ -25,8 +25,8 @@ And again that night, after the robot film's fight:
 | [`superpower-at-18-part-2/`](superpower-at-18-part-2/README.md) | *In This Town, Everyone Got a Superpower at 18, Part 2* | Full film. 2:49, 18 beats, 83 shots, 713 words. Full sound, the owner's music track | "a banger and a massive upgrade! i totally felt like i was watching peak!" | **Fast action.** Why its first render was rejected (no motion, "it just teleports to B") and the eight things that fixed it. A sequel that picks up on the second part one stopped |
 | [`monster-village/`](monster-village/README.md) | *In This Town, I Live in a Monster Village* (part one) | Full film. 2:55, 74 shots, 713 words (trimmed from 3:41 to be a Short). Day and night. Full sound | "i liked the superhero and this one" | **Monsters as a family**, night scenes, a battle with a crowd. Its mp4 is in the folder |
 | [`monster-village-part-2/`](monster-village-part-2/README.md) | *In This Town, I Live in a Monster Village, Part 2* | Middle cut. 2:08, 54 shots. Full sound | "pretty good", then "perfect" | **A sequel on a reused world**, built from the owner's own outline. Framing for a narrow phone frame; replacing one shot without a full render. Its mp4 is in the folder |
-| [`monster-village-part-3/`](monster-village-part-3/README.md) | *In This Town, I Live in a Monster Village, Part 3* | Middle cut. 2:21, 70 shots on 57 lines. Full sound | Not yet seen | **The first film made to `OWNER.md`**: the premise in frame one, an environment shot, a travelling shot and an odd angle in every scene. A prop as a character (dad's arm); a silence on purpose; pillagers and the mansion. Its mp4 is in the folder |
-| [`the-fastest-kid-wins/`](the-fastest-kid-wins/README.md) | *In This Town, the Fastest Kid Wins* (part 1) | Middle cut. 2:03, 67 shots on 50 lines. Full sound | Not yet seen | **The owner's race story.** A race staged in four zones with one component; running shots that keep the runner in frame (`by * p`); shoes on the avatar; slow motion as three still shots |
+| [`monster-village-part-3/`](monster-village-part-3/README.md) | *In This Town, I Live in a Monster Village, Part 3* | Full film. 2:36, 66 lines. Full sound. Reworked to his review 2026-11-14 | "love it" (2026-11-14, after the rework) | **The first film made to `OWNER.md`**: the premise in frame one, an environment shot, a travelling shot and an odd angle in every scene. A prop as a character (dad's arm); a silence on purpose; pillagers and the mansion. Its mp4 is in the folder |
+| [`the-fastest-kid-wins/`](the-fastest-kid-wins/README.md) | *In This Town, the Fastest Kid Wins* (part 1) | Middle cut. 2:20, 55 lines. Full sound. Reworked to his review 2026-11-14: ends at the rivers in second place | "love it" (2026-11-14, after the rework) | **The owner's race story.** A race staged in four zones with one component; running shots that keep the runner in frame (`by * p`); shoes on the avatar; slow motion as three still shots |
 | [`robot-at-18/`](robot-at-18/README.md) | *In This Town, Everyone Gets a Robot at 18* | Full film. 2:54, 86 shots, 697 words (trimmed from 3:25 to be a Short). Sunset forest and sky. Full sound | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A fight.** Sword against a kid in a suit, on the ground and in the air: posed bodies, hit-freezes, cuts inside a line, flying poses. Two rejected fights and what was wrong with each. A sheet of the whole fight at five frames a second |
 | [`pumpkin-heads/`](pumpkin-heads/README.md) | *In This Town, Everyone Wore a Pumpkin on Their Head* | Short cut. 1:56, 14 beats, 58 shots, 490 words. Day and night. Full sound | He approved the script and asked for another ending | A second **short cut** with sound; a teller whose face is a carved pumpkin; an ending that is a picture and not a punchline |
 
@@ -40,6 +40,25 @@ at 3:41 and 3:25 and had to be cut down afterwards. `topic.json` now stops a fil
 If a finished film has to lose lines, `python3 scripts/trim-narration.py <film> <cue.id> …` cuts them out of the
 recorded clips and the script; then delete their shots and their rows in `sound.json`, and build again. Look at
 both sides of every join on stills: if the line that went was the one in which somebody arrived, they now teleport.
+
+## Joining films into one long video (asked for 2026-11-14, not made yet)
+
+The owner, 2026-11-14: "put all of your stuff in the reference folder, source code and mp4. so that in the future i
+might try to ask u to put them in 9:16 as a seperated video movie type thing". Every film's folder here has its mp4
+and a snapshot of its source, checked the same day against `renders/` and `src/videos/`, byte for byte. When he asks:
+
+- Every mp4 is already 1080x1920 (9:16), 30 frames a second, so parts can be joined without rendering again:
+  `ffmpeg -f concat -safe 0 -i list.txt -c copy movie.mp4` (re-encode only if the join stutters).
+- Series, in order. **Monster Village:** `monster-village/`, `monster-village-part-2/`, `monster-village-part-3/`.
+  **Superpower at 18:** `superpower-at-18/`, `superpower-at-18-part-2/`. **The race:** `the-fastest-kid-wins/`
+  (part 1; he plans three or more). **Robot at 18:** `robot-at-18/` (part 2 script is parked in `../outlines/`).
+- Each part opens "In this town" and ends on a subscribe line. For a joined film, cut the subscribe shot of every
+  part but the last (the last cue in each `timing.json` gives the second it starts), and ask him whether the
+  openings stay.
+- A joined film is over three minutes, so it is a long video on YouTube, not a Short. Ask him if he wants it kept
+  9:16 (his words) before making anything wider.
+- Monster Village 1 and 2 and Robot at 18 still carry the `offset` sound fault (see `../OWNER.md`); fix and render
+  those again before they go into a long cut.
 
 ## What is in a film's folder
 
