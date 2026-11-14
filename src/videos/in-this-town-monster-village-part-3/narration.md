@@ -1,6 +1,6 @@
 # Narration — In This Town, I Live in a Monster Village, Part 3
 
-**Status: DRAFT 2, the owner's own outline (2026-11-14), waiting for his yes on the lines.** Draft 1 (the camp, the
+**Status: the owner's own outline (2026-11-14), with the mansion scene he added after reading draft 2** ("since its 2 minutes, i think we can squeeze in the pillager part ... show the monsters in his village making a deal with the pillager in a mansion"). His two pictures of the mansion are in `Topics/InThisTown/outlines/monster-village-part-3-mansion/`. Draft 1 (the camp, the
 cage, "Son") was the agent's story and he replaced it. His outline is kept word for word in
 `Topics/InThisTown/outlines/monster-village-part-3.md`.
 
@@ -19,7 +19,7 @@ two.
 - **`# clip 08-cell wait 5.0`** is five seconds with no voice, and it belongs to shot `7.plan`: the monsters lean in and
   talk with their hands, the camera pushes into a dark block, and the cut to the cell comes out of the black. His
   words: "narration stop here and make them move like they are discussing".
-- Part four, his note for later: the monsters get help from the pillagers, who hate humans.
+- The mansion (clip 10) is the other thing the boy was not there for; "on the other side of the forest" is his own phrase for the cut.
 
 What is planted, and where it pays off:
 
@@ -31,7 +31,8 @@ What is planted, and where it pays off:
 | The enderman teacher who doubted (part two) | He is the only one asking the sensible question (6.how) |
 | Hiss the creeper (parts one and two) | Hiss knows about the iron golem (5.hiss, 5.golem) |
 | Mo's sword and helmet on the ground (part two, 7.sword) | "We found Mo" (9.mo) |
-| "Mum had a plan" (7.plan) | Part four |
+| "I have a plan" (7.plan) | She knocks on the pillagers' door (10.knock) |
+| The arm that comes off (parts one and two; 6.plug) | "The arm came off again" (10.shake) |
 
 ```narration
 # clip 01-hook
@@ -52,7 +53,6 @@ What is planted, and where it pays off:
 [2.many]     There were too many. It let go.
 [2.later]    What happened next, I only heard about later.
 
-# clip 03-home
 [3.crawl]    The arm crawled all the way back to the pig farm.
 [3.four]     It took four minutes. It is a fast arm.
 [3.mud]      It went down through the mud, and across the floor, to my dad.
@@ -100,6 +100,16 @@ What is planted, and where it pays off:
 [9.laugh]    He looked at me. And he laughed.
 [9.over]     I looked down at my feet. I thought it was over.
 
-# clip 10-sub wait 1.0
-[10.sub]     Like and subscribe for part four.
+# clip 10-mansion wait 0.8
+[10.other]   But on the other side of the forest, there was a mansion.
+[10.pillagers] In it lived the pillagers. And nobody hates players more than a pillager.
+[10.knock]   That night, somebody knocked on their door. It was my mum.
+[10.map]     She put a map on their table. "They have my son," she said.
+[10.chief]   The chief looked at forty monsters in his hall. "And what do we get?"
+[10.castle]  "The castle," said my mum.
+[10.shake]   He shook my dad's hand. The arm came off again.
+[10.deal]    "Deal," said the chief.
+
+# clip 11-sub wait 1.0
+[11.sub]     Like and subscribe for part four.
 ```
