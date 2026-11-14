@@ -9,22 +9,22 @@ const ME: Vec3 = [-1.6, 0, 1.7];
  * BEAT 1 — the hook. Placeholder staging: three shots, enough for the film to
  * check and render while the script waits for the owner's yes.
  *
- * The order is the point (draft 2, the owner's note): the crime, then the
- * impossibility, then the question. Frame one is the ash and the empty gate
- * with the boy in it — Rule A, the strange thing and the person it is strange
- * for, in one frame. Not a wide of the town, and not a golem handing out
- * flowers.
+ * The order is the point (draft 3, the owner's own hook): it died, the next
+ * morning it came back, nobody would tell him how. Frame one is the ash and
+ * the empty gate with the boy in it — Rule A, the strange thing and the person
+ * it is strange for, in one frame. Not a wide of the town, and not a golem
+ * handing out flowers.
  */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "I killed our protector",
+  title: "Our golem died",
   shots: [
     {
-      cue: "1.killed",
+      cue: "1.died",
       ...cam.push({ on: [ME[0], 0.95, ME[2] - 0.2], dist: 3.0, to: 2.3, yaw: 8, pitch: 7, fov: 38 }),
       zone: "village",
       look: "overworld-day",
-      note: "The confession and the crime in one frame: the boy in the ash at the empty gate, where the golem used to stand. The town walks past behind him.",
+      note: "The death, and the boy in it: the ash at the empty gate where the golem stood, and him crouched in the middle of it. The town walks past behind him, already finished with the monsters.",
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={SOUTH - 0.5} animation="crouch" face="uneasy" gaze={0} />
@@ -48,7 +48,7 @@ export const scene1 = storyScene(timing, {
       ),
     },
     {
-      cue: "1.what",
+      cue: "1.how",
       ...cam.push({ on: [1.9, 1.55, 0.4], dist: 2.0, to: 1.55, yaw: 22, pitch: 2, fov: 36 }),
       zone: "village",
       look: "overworld-day",

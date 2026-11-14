@@ -1,23 +1,23 @@
-# Narration — In This Town, I Killed Our Protector
+# Narration — In This Town, Our Golem Died
 
-**Status: DRAFT (draft 2). Not approved, not recorded.** Nothing is built until the owner approves this script.
+**Status: DRAFT (draft 3). Not approved, not recorded.** Nothing is built until the owner approves this script.
 
-Topic: `Topics/InThisTown`. His outline, in his order, with his lines kept ("I got the zombie", "I got the skeleton",
-"there was a creeper behind the golem", "they both exploded", "I see a rose", the rose put near the well, the sleep,
-the golem alive the next day).
+Topic: `Topics/InThisTown`. His outline, his order, his lines ("I got the zombie", "I got the skeleton", "there was a
+creeper behind the golem", "they both exploded", "I see a rose", the rose put near the well, the sleep, the golem
+alive the next day).
 
-**Draft 2 changed the opening, on his note:** *"the hook sounds boring… try putting the main thing first then
-explain."* The main thing is not that the golem gave flowers. It is that he killed it, and the town had it back by
-morning. So sentence one is the confession, sentence two is the impossible fact, sentence three is the question, and
-the film spends the rest of its time answering it. Nothing else in the film moved.
+**Draft 3 changed the hook, on his note.** Draft 2 made the boy say he killed it. He did not: the creeper exploded it,
+and he never got the warning out in time. The hook is now his own wording — *"in this town we have a protector, the
+golem, but one night it died and came back in the next morning"* — cut into three shots, one fact each, so the death
+and the return are both in the first four seconds and the question arrives with them.
 
-**The premise, in four sentences.** In this town, I killed our protector. The whole town rebuilt it in one night, and
-nobody would tell me what they used. I did it because I was proud of two kills and never looked behind it. What they
-used was every pot and anvil in the town, and the well — because the well gives back what you put in it, and the
-flowers on that well were never the golem's.
+**The premise, in four sentences.** In this town, our protector was an iron golem. One night the monsters came, and a
+creeper took it apart. I was right there with my father's sword and I never shouted. The next morning it was standing at
+the gate, and the whole town had rebuilt it out of every piece of iron it owned.
 
-**One sentence:** A boy's pride gets his town's protector blown up, and the town rebuilds it overnight out of the only
-iron it owns, from a well that has been handing the town its own dead back one flower at a time.
+**One sentence:** A boy watches the town's golem blown apart by a creeper he could not warn in time, and the town
+brings it back overnight out of its own pots and anvils, from a well that has been handing the town its own dead back
+one flower at a time.
 
 ## The answer: how, and why
 
@@ -36,15 +36,13 @@ iron it owns, from a well that has been handing the town its own dead back one f
 
 ## What the agent added to his outline
 
-1. **The hook is the crime, then the impossibility, then the question** (1.killed, 1.back, 1.what). His outline opens
-   on a protector that works; that is a fact, not a reason to watch. The plan of the film is now: he tells you it came
-   back before he tells you how it died.
+1. **The hook is his own wording, in three shots**: it died — the next morning it came back — nobody would tell me how.
 2. **The well is the engine.** He had the rose put "near the well", so the well became the place things come back
    from. The flowers on its rim are the dead.
 3. **The golem takes its flower off the well** every morning (shown in the tour, never explained).
 4. **The oldest rule**, and the oldest woman who will not explain it — one line, no reason, then she walks away.
 5. **The father's saying**: iron remembers the shape you give it. Planted in the tour, paid off by the rebuild.
-6. **The reason he never shouts**: pride, not cowardice. He is looking at what he did, not at what is behind it.
+6. **Why he never shouts**: he is too far away and sees it too late. Guilt, not blame — the creeper did it.
 7. **The village's iron is in the tour**: an anvil, a pot, a bucket with a hole in it. So the morning reveal is a
    count of things the audience has already seen, not a new idea.
 8. **The button**: the golem holds out the same rose, and he is about to break the one rule in town.
@@ -55,39 +53,38 @@ His plot, his order, his lines. No premise, sentence or joke is taken from any f
 
 | Planted | Pays off |
 |---|---|
-| "I killed our protector" (1.killed) | The creeper he never warned it about (8); the ash (10) |
-| "The whole town rebuilt it in one night" (1.back) | The empty hooks, the missing pot, all the iron in the square (14) |
-| "Nobody would tell me what they used" (1.what) | The iron, and the well (14.iron, 14.giveback) |
+| "Our golem died. The next morning it came back" (1.died, 1.back) | The rebuild, the iron, the well (14) |
+| "Nobody would tell me how" (1.how) | The iron and the well (14.iron, 14.giveback) |
 | It takes one flower off the well every morning (3.take) | The flowers were the town's dead (14.flowers, 14.ours) |
 | "Iron remembers the shape you give it" (3.remember) | The anvil, the pot, the bucket come back as a golem (14.built) |
 | The anvil, the pot, the bucket with a hole (3.anvil, 3.bucket) | Empty hooks, no pot, all the iron in the square (14.hooks, 14.pot, 14.iron) |
 | The well's lid is never on (3.lid) | The well is the door things come back through (14.giveback) |
 | "Never keep a golem's flower" (2.keep, 5.say) | The rose held out to him, and the last line (14.mine, 14.sub) |
-| He wants the golem to need him (4.need) | He gets his wish, and it costs the golem its life (7–9) |
-| His pride over the two kills (7.proud) | He never looks behind it; the creeper (8) |
+| He wants the golem to need him (4.need) | He gets his wish and cannot save it (7–9) |
+| His pride over the two kills (7.proud) | He looks away from the golem's back (7.turn, 8) |
 
 - One teller, first person, past tense. Fast and plain: about 255 words a minute, no gaps.
 - Each `[cue]` line is **one shot**: the words heard while that picture is on screen. Cut on the noun. 5–12 words.
-- Each `# clip` is one recording, saved to `public/audio/in-this-town-i-killed-our-protector/raw/<clip>.mp3`, then
-  `python3 scripts/narration.py build in-this-town-i-killed-our-protector`.
+- Each `# clip` is one recording, saved to `public/audio/in-this-town-our-golem-died/raw/<clip>.mp3`, then
+  `python3 scripts/narration.py build in-this-town-our-golem-died`.
 - The teller wears one loud colour nobody else in the film wears.
 - This is the short cut (`cut: "short"`): 14 beats, 250–520 words, one to two minutes.
 
 ```narration
 # clip 01-hook
-[1.killed]  In this town, I killed our protector.
-[1.back]    The whole town rebuilt it in one night.
-[1.what]    Nobody would tell me what they used.
+[1.died]    In this town, our golem died.
+[1.back]    The next morning, it came back.
+[1.how]     Nobody would tell me how.
 
 # clip 02-mysteries
 [2.sleep]   Nobody had ever seen it sleep.
-[2.break]   Nobody had ever seen it break. Until me.
+[2.break]   Nobody had ever seen it break.
 [2.well]    And nobody would say why the well was full of flowers.
 [2.rule]    The oldest rule in town was about those flowers.
 [2.keep]    Never keep one.
 
 # clip 03-tour
-[3.wall]     It walked the wall all night.
+[3.wall]     It had guarded that wall since before I was born.
 [3.gate]     At dawn, it stood at the gate.
 [3.take]     Then it took one flower off the well,
 [3.child]    and gave it to a child.
@@ -121,11 +118,11 @@ His plot, his order, his lines. No premise, sentence or joke is taken from any f
 # clip 08-creeper
 [8.behind]  There was a creeper behind the golem.
 [8.shout]   I should have shouted.
-[8.stood]   I just stood there.
+[8.late]    But I was too far away, and it was too late.
 
 # clip 09-boom
 [9.boom]    It exploded.
-[9.dust]    When the dust settled, the golem was gone.
+[9.dust]    When the dust settled, our protector was gone.
 
 # clip 10-ash
 [10.finish] We finished the monsters.
