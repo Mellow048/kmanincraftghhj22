@@ -12,7 +12,8 @@ const ME: Vec3 = at(FOREST, -0.55, 0, -0.2);
 const HER: Vec3 = at(FOREST, -1.7, 0, -0.2);
 const HID: Vec3 = [WTREE[0] + 0.05, 0, WTREE[2] - 0.75];
 const PEEK: Vec3 = [WTREE[0] + 0.8, 0, WTREE[2] - 0.35];
-const SEAT: Vec3 = [STUMP[0], 0, STUMP[2] + 0.42];
+/** Sitting on the stump (top 0.5): thighs on the wood, knees past its front edge, shins hanging in front of it. */
+const SEAT: Vec3 = [STUMP[0], 0.1, STUMP[2] + 0.3];
 const lamp = (p: Vec3, k = 6) => <pointLight position={p} color="#cfd8ff" intensity={k} distance={7} decay={2} />;
 
 /**
@@ -77,7 +78,7 @@ export const scene2 = storyScene(timing, {
       ...cam.pan({ from: [LAY[0] + 2.4, 0.35, LAY[2] + 1.3], on: [LAY[0] + 1.2, 0.3, LAY[2]], onTo: [WTREE[0] + 0.5, 1.5, WTREE[2]], fov: 50 }),
       zone: "forest",
       look: NIGHT,
-      note: "From the ground beside his head: the lens leaves him and finds a pointed hat coming out from behind a trunk, and one hand waving.",
+      note: "From the ground beside his head: the lens leaves him and finds a pointed hat coming out from behind a trunk, and the whole of her rocking from side to side: a wave, from somebody with no hands.",
       stage: (t) => {
         const her = wordAt("3.witch", "her") - 0.3;
         const k = ease(ramp(t, her, her + 0.5));
@@ -146,18 +147,18 @@ export const scene2 = storyScene(timing, {
     // ------------------------------------------------------------------ 4. the shoes
     {
       cue: "4.shoes",
-      ...cam.push({ on: [HER[0] + 0.62, 1.0, HER[2]], dist: 2.5, to: 1.9, yaw: 30, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [HER[0] + 0.35, 1.05, HER[2]], dist: 2.6, to: 2.0, yaw: 30, pitch: 8, fov: 40 }),
       zone: "forest",
       look: NIGHT,
-      note: "The shoes come out on her hand and light the frame red: the thing the film is about, as big as it gets.",
+      note: "The shoes come up on her folded sleeves (she has no hands to hold them in) and light the frame red: the thing the film is about, as big as it gets.",
       stage: (t) => {
         const g = ease(ramp(t, 0.1, 0.55));
         return (
           <>
             <Witch position={HER} rotationY={E} give={g}>
-              <ShoePair scale={1.35 * pop(t, 0.2)} rotation={[0, E, 0]} glow={0.9} />
+              <ShoePair scale={1.25 * pop(t, 0.2)} rotation={[0, E, 0]} glow={0.9} />
             </Witch>
-            <Glint position={[HER[0] + 0.75, 1.05, HER[2] + 0.2]} t={t - 0.5} size={1.2} />
+            <Glint position={[HER[0] + 0.45, 1.15, HER[2] + 0.2]} t={t - 0.5} size={1.2} />
             <pointLight position={[HER[0] + 0.9, 1.5, HER[2] + 1.2]} color="#ffd0c0" intensity={2.5 * g} distance={4} decay={2} />
           </>
         );
@@ -190,7 +191,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Witch position={[HER[0] + 0.12 * ease(ramp(t, 0.2, 0.6)), 0, HER[2]]} rotationY={E} give={1} turn={took ? -1.1 : 0} lean={0.2}>
-              {took ? null : <ShoePair scale={1.3} rotation={[0, E, 0]} glow={0.9} />}
+              {took ? null : <ShoePair scale={1.25} rotation={[0, E, 0]} glow={0.9} />}
             </Witch>
             <Hero position={ME} rotationY={-E} animation={took ? "hold" : "idle"} face={took ? "wow" : "uneasy"} headPitch={took ? 0.3 : 0} />
             {took ? <ShoePair position={[ME[0] - 0.36, 0.72, ME[2]]} rotation={[0, -E, 0]} scale={1.3} glow={0.9} /> : null}

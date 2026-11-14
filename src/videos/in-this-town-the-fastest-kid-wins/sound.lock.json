@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-the-fastest-kid-wins",
   "mix": "public/audio/in-this-town-the-fastest-kid-wins/mix.mp3",
-  "seconds": 123.3,
+  "seconds": 139.7667,
   "built_from": {
-    "timing.json": "dd8e2024aef3f3d7307536e24dad2e01265fd566",
-    "sound.json": "d1bcb6aefafccbf574da444c2eb6577681c7bd08",
-    "narration.mp3": "352e81f802fec457483f2fd5c4434c319e876567"
+    "timing.json": "8e0b6312a8e6fe6792aea5371ca42c2cafd8ace1",
+    "sound.json": "51ff6e0e7b9cc0995cd06dbee3e2f89071ae7e90",
+    "narration.mp3": "15af6a7258368baa5be884b9e8486b867806839b"
   },
-  "mix_sha1": "bc4ed2cde3605631d28f466ef9653c57e664aed5",
+  "mix_sha1": "cc48d7c69a9fe189df80c2bb68aa12850dd5a13a",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,7 +18,7 @@
     {
       "from": "1.slow",
       "mood": "playful",
-      "at": 3.27
+      "at": 3.3
     },
     {
       "from": "1.want",
@@ -28,191 +28,210 @@
     {
       "from": "1.now",
       "mood": "sad",
-      "at": 9.67
+      "at": 9.7
     },
     {
       "from": "2.train",
       "mood": "playful",
-      "at": 11.97
+      "at": 12.03
     },
     {
       "from": "2.week",
       "mood": "tense",
-      "at": 22.5
+      "at": 22.6
     },
     {
       "from": "3.night",
       "mood": "sneak",
-      "at": 26.1
+      "at": 26.2
     },
     {
       "from": "3.witch",
       "mood": "curious",
-      "at": 33.93
+      "at": 34.1
     },
     {
       "from": "3.yes",
       "mood": "sad",
-      "at": 39.23
+      "at": 39.4
     },
     {
       "from": "4.shoes",
       "mood": "wonder",
-      "at": 43.83
+      "at": 44.03
     },
     {
       "from": "4.hmm",
       "mood": "curious",
-      "at": 49.9
+      "at": 50.1
     },
     {
       "from": "4.stump",
       "mood": "wonder",
-      "at": 51.6
+      "at": 51.83
     },
     {
       "from": "5.run",
       "mood": "none",
-      "at": 57.93
+      "at": 58.2
     },
     {
       "from": "5.real",
       "mood": "wonder",
-      "at": 64.57
+      "at": 64.87
     },
     {
       "from": "5.cheat",
       "mood": "sad",
-      "at": 69.67
+      "at": 70.0
     },
     {
       "from": "6.off",
       "mood": "curious",
-      "at": 72.37
+      "at": 72.7
     },
     {
       "from": "6.two",
       "mood": "playful",
-      "at": 79.23
+      "at": 79.6
     },
     {
       "from": "6.right",
       "mood": "hope",
-      "at": 85.77
+      "at": 86.17
     },
     {
       "from": "7.week",
       "mood": "town",
-      "at": 89.33
+      "at": 89.73
     },
     {
       "from": "7.count",
       "mood": "tense",
-      "at": 103.0
+      "at": 107.5
     },
     {
       "from": "8.fifteen",
       "mood": "tense",
-      "at": 104.9
+      "at": 109.47
     },
     {
       "from": "8.two",
       "mood": "hope",
-      "at": 112.73
+      "at": 117.23
     },
     {
       "from": "8.one",
+      "mood": "tense",
+      "at": 120.23
+    },
+    {
+      "from": "8.cele",
+      "mood": "town",
+      "at": 125.07
+    },
+    {
+      "from": "8.sit",
+      "mood": "hope",
+      "at": 130.77
+    },
+    {
+      "from": "8.look",
+      "mood": "curious",
+      "at": 133.6
+    },
+    {
+      "from": "8.same",
       "mood": "dark",
-      "at": 116.27
+      "at": 135.7
     },
     {
       "from": "9.sub",
       "mood": "town",
-      "at": 121.5
+      "at": 137.93
     }
   ],
   "music_file": {
     "path": "Topics/InThisTown/InThisTownMusic.aac",
     "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
   },
-  "beds": 10,
+  "beds": 11,
   "measured": {
     "musicUnderVoiceDb": 17.6,
-    "secondsWithoutMusic": 6.8,
-    "bedsUnderVoiceDb": 26.5,
-    "sfx": 355,
-    "sfxPerMinute": 172.7,
-    "sfxKinds": 38,
-    "longestGapSeconds": 1.9,
-    "longestGapAt": 47.3,
-    "sfxBuried": 0,
+    "secondsWithoutMusic": 6.7,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 381,
+    "sfxPerMinute": 163.6,
+    "sfxKinds": 37,
+    "longestGapSeconds": 2.4,
+    "longestGapAt": 92.0,
+    "sfxBuried": 1,
     "voiceOverRestMedianDb": 12.6,
-    "voiceOverRestWorstDb": 3.5,
+    "voiceOverRestWorstDb": 5.0,
     "voiceOverRestWorst": [
       {
-        "db": 3.5,
-        "t": 37.0,
-        "cue": "3.witch",
+        "db": 5.0,
+        "t": 44.9,
+        "cue": "4.shoes",
         "sounding": [
-          "blip",
-          "rustle",
-          "whoosh_low"
-        ]
-      },
-      {
-        "db": 3.6,
-        "t": 5.8,
-        "cue": "1.baby",
-        "sounding": [
-          "blip",
-          "boing",
-          "step_stone"
-        ]
-      },
-      {
-        "db": 3.9,
-        "t": 91.9,
-        "cue": "7.long",
-        "sounding": [
-          "cheer",
+          "ding",
+          "power_up",
           "sparkle"
         ]
       },
       {
-        "db": 3.9,
-        "t": 66.2,
-        "cue": "5.real",
+        "db": 5.5,
+        "t": 122.4,
+        "cue": "8.one",
         "sounding": [
-          "power_up",
-          "rustle",
-          "whoosh",
-          "zip"
+          "step_stone"
         ]
       },
       {
-        "db": 4.4,
-        "t": 106.3,
-        "cue": "8.fifteen",
+        "db": 5.6,
+        "t": 109.2,
+        "cue": "7.count",
         "sounding": [
-          "gust",
-          "splash",
-          "step_grass",
-          "step_wood"
+          "cheer",
+          "pop",
+          "school_bell",
+          "step_stone",
+          "whoosh"
         ]
       },
       {
-        "db": 4.6,
-        "t": 120.0,
+        "db": 6.0,
+        "t": 136.6,
         "cue": "8.same",
         "sounding": [
           "boom",
-          "step_stone",
           "sting"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 57.8,
+        "cue": "4.love",
+        "sounding": [
+          "boing",
+          "chime",
+          "riser",
+          "thud"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 119.8,
+        "cue": "8.two",
+        "sounding": [
+          "sparkle",
+          "splash",
+          "whoosh_low"
         ]
       }
     ],
-    "lufs": -14.7,
-    "truePeakDb": -2.2,
+    "lufs": -14.8,
+    "truePeakDb": -2.1,
     "limiterMaxDb": 0.9
   },
   "failures": []

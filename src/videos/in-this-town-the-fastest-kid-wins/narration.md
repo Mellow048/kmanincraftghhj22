@@ -1,9 +1,11 @@
 # Narration — In This Town, the Fastest Kid Wins (part 1)
 
-**Status: the owner's own outline (2026-11-14), written up while he was away ("keep going ill be back soon"). He has
-not read this script yet.** His outline is kept word for word in `Topics/InThisTown/outlines/README.md`; every beat
+**Status: the owner's own outline (2026-11-14), reworked to his review of the first cut: part 1 now ENDS AT THE RIVERS, the end of
+the first of four stages. The runner in black is first there, the teller is second, he celebrates, sits down to wait, and sees the shoes.** His outline is kept word for word in `Topics/InThisTown/outlines/README.md`; every beat
 of it is here, in his order, and his lines are kept ("Do you want to win?", "3, 2, 1, GO!", the places 15th, 11th,
-9th, 6th, 2nd). Part 1 of a series: it stops where he stopped it, on the shoes of the runner in first place.
+9th, 6th, 2nd). Part 1 of at least three: stage one only. His words for the new end: "2nd place but it was okay", "sat down happy waiting
+for others", "has the same SHOES!?!?", one second, then the subscribe line. Added by the agent: the race has four stages with a
+rest camp after each (his "every biome you can rest and wait for others"); the wheat fields and the birch wood on the way to the rivers.
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/OWNER.md` and `SCRIPT.md` before changing a word.
 
@@ -21,7 +23,7 @@ What is planted, and where it pays off:
 | Planted | Pays off |
 |---|---|
 | "A baby villager could beat me" (1.baby) | He passes the baby in the forest and waves (8.six) |
-| The empty shelf (1.now) | "Yes," I said (3.yes); the trophy at the finish (8.two) |
+| The empty shelf (1.now) | "Yes," I said (3.yes); the trophy waits at the end of stage four, in a later part |
 | "I am just trying to get rid of them" (4.free) | The runner in first place has the same shoes (8.same) |
 | Three buttons (6.off) | The third is just right (6.right); part two: what the others do |
 
@@ -76,19 +78,24 @@ What is planted, and where it pays off:
 
 # clip 07-race
 [7.week]     One week later, I was on the start line.
-[7.long]     It was a long race. Out of the village, and over the rivers.
-[7.far]      Across the desert, through the dark oak forest, and into the next village.
+[7.long]     It was a long race, in four parts. Out of the village, and over to the rivers.
+[7.far]      Then across the desert, through the dark oak forest, and into the next village.
+[7.rest]     After every part, you could rest, and wait for the others.
 [7.twenty]   There were twenty other runners. Players, villagers, and that baby.
 [7.sign]     My mum and dad were there. My dad had made a sign.
 [7.count]    Three. Two. One. Go!
 
 # clip 08-places
-[8.fifteen]  At the rivers, I was in fifteenth place.
-[8.eleven]   In the desert, I was eleventh. Then ninth.
-[8.six]      In the dark oak forest, I was sixth. I went past the baby. I waved.
-[8.two]      Then I was second! I could see the last village. I could see the trophy.
-[8.one]      There was only one runner in front of me.
-[8.look]     I looked down at his feet.
+[8.fifteen]  On the village road, I was in fifteenth place.
+[8.eleven]   In the wheat fields, I was eleventh. Then ninth.
+[8.six]      In the birch wood, I was sixth. I went past the baby. I waved.
+[8.two]      Then I was second! I could see the rivers. I could see the finish flag.
+[8.one]      There was only one runner in front of me. And I could not catch him.
+[8.line]     He went over the line first. I was second.
+[8.cele]     Second! I had never been second at anything. I jumped. I danced.
+[8.okay]     It was not first. But it was okay.
+[8.sit]      So I sat down by the river, happy, and I waited for the others.
+[8.look]     The winner sat down too. I looked at his feet.
 [8.same]     He was wearing the same shoes.
 
 # clip 09-sub wait 1.0

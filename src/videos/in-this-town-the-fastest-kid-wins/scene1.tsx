@@ -2,8 +2,7 @@ import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
   Baby, Board, Chicken, DAY, DustRing, Glint, HILL, Hero, LANE, POND, Player, Puffs, ROBE, STAND, Streaks, Sweat, Villager, babyFace, ease, faceOf, hop,
-  jolt, pop, ramp, room, timing, wordAt,
-} from "./kit";
+  jolt, pop, ramp, room, timing, wordAt, pushUp } from "./kit";
 
 const E = Math.PI / 2;
 const CUPTOP: Vec3 = [STAND[0], 1.55, STAND[2]];
@@ -175,14 +174,14 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [-8, 0.3, 6.2], dist: 2.3, to: 1.9, yaw: 64, pitch: 3, fov: 44 }),
       zone: "village",
       look: DAY,
-      note: "The lens on the grass, nose to nose with him. He goes up once, shaking, and drops flat on 'one'.",
+      note: "The lens on the grass, nose to nose with him. A real push-up: toes and hands on the ground, the body a plank. He goes up once, shaking, and drops flat on 'one'.",
       stage: (t) => {
         const one = wordAt("2.push", "one");
         const up = ease(ramp(t, 0.15, 0.6)) * (1 - ease(ramp(t, one, one + 0.12)));
         return (
           <>
-            <Hero position={[-8.7 + Math.sin(t * 40) * 0.008 * up, up * 0.26, 6.2]} rotationY={E} animation="collapse" time={1.2} face={t > one ? "ouch" : "brave"} />
-            <DustRing position={[-8, 0.05, 6.2]} t={t - one - 0.1} size={0.9} color="#9fbf7a" />
+            <Hero position={[-8.7 + Math.sin(t * 40) * 0.006 * up, 0, 6.2]} rotationY={E} pose={pushUp(up)} face={t > one ? "ouch" : "brave"} />
+            <DustRing position={[-8.2, 0.05, 6.2]} t={t - one - 0.1} size={0.9} color="#9fbf7a" />
             <Sweat position={[-7.8, 0.4, 6.2]} t={t} much={0.8} />
           </>
         );

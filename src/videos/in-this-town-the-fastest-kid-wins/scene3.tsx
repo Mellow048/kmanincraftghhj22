@@ -8,9 +8,10 @@ const E = Math.PI / 2;
 const lamp = (p: Vec3, k = 7) => <pointLight position={p} color="#cfd8ff" intensity={k} distance={7} decay={2} />;
 /** Where he stands still while the world hangs. */
 const HANG: Vec3 = at(FOREST, 6, 0, 1.4);
-const SEAT: Vec3 = [STUMP[0], 0, STUMP[2] + 0.42];
+/** Sitting on the stump (top 0.5): thighs on the wood, knees past its front edge, shins hanging in front of it. */
+const SEAT: Vec3 = [STUMP[0], 0.1, STUMP[2] + 0.3];
 /** The shoe he holds up to look at, and the bush he goes through. */
-const HELD: Vec3 = [STUMP[0] + 0.03, 0.74, STUMP[2] + 0.92];
+const HELD: Vec3 = [STUMP[0] + 0.03, 0.84, STUMP[2] + 0.8];
 const BUSH: Vec3 = at(FOREST, 9, 0, 1.2);
 
 /** A bird, wings open. `flap` -1…1. */

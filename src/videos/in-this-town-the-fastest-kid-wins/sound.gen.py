@@ -7,11 +7,11 @@ M=[("1.town","town","The cup, and the whole town running for it."),("1.slow","pl
 ("2.train","playful","Training, badly."),("2.week","tense","One week."),("3.night","sneak","Awake, then the forest."),("3.witch","curious","A hat behind a tree."),("3.yes","sad","Mum, dad, the shelf."),
 ("4.shoes","wonder","The shoes."),("4.hmm","curious","That should have worried me."),("4.stump","wonder","He puts them on."),("5.run","none","The world stops."),("5.real","wonder","The speed of light."),
 ("5.cheat","sad","It is cheating."),("6.off","curious","Three buttons."),("6.two","playful","Through a bush."),("6.right","hope","Just right."),("7.week","town","The start line."),
-("7.count","tense","Three, two, one."),("8.fifteen","tense","The race."),("8.two","hope","Second, and the cup."),("8.one","dark","One runner in front."),("9.sub","town","Part two.")]
+("7.count","tense","Three, two, one."),("8.fifteen","tense","The race."),("8.two","hope","Second, and the line."),("8.one","tense","One runner in front."),("8.cele","town","Second! He dances."),("8.sit","hope","Happy, on a log."),("8.look","curious","The winner sits down."),("8.same","dark","The same shoes."),("9.sub","town","Part two.")]
 s['music']['sections']=[{"from":a,"mood":b,"why":c} for a,b,c in M]
 s['beds']=[{"from":"1.town","to":"1.want","bed":"village"},{"from":"1.now","to":"1.now","bed":"room"},{"from":"2.train","to":"2.week","bed":"village"},{"from":"3.night","to":"3.night","bed":"room"},
 {"from":"3.forest","to":"6.right","bed":"night"},{"from":"7.week","to":"7.count","bed":"crowd"},{"from":"8.fifteen","to":"8.fifteen","bed":"village"},{"from":"8.eleven","to":"8.eleven","bed":"wind"},
-{"from":"8.six","to":"8.six","bed":"village"},{"from":"8.two","to":"9.sub","bed":"crowd"}]
+{"from":"8.six","to":"8.six","bed":"village"},{"from":"8.two","to":"8.okay","bed":"crowd"},{"from":"8.sit","to":"9.sub","bed":"village"}]
 X=[]
 def e(cue,sfx,why,word=None,offset=None,trim=None,repeat=None,every=None,nth=None):
     d={"cue":cue,"sfx":sfx}
@@ -63,21 +63,31 @@ e("6.three","swish","The shoe again."); e("6.three","tick","Click.",word="presse
 steps("6.right","A real run.","step_grass",0.2,0.05,2.0,trim=3); e("6.right","whoosh","Trunks going past.",offset=0.4); e("6.right","chime","Perfect.",word="perfect"); e("6.right","swish","He looks at us.",word="Nobody",offset=-0.15); e("6.right","ding","A secret.",word="suspect",trim=-3)
 e("7.week","whoosh","One week later."); e("7.week","rustle","Feet on the line.",offset=0.4); e("7.week","sparkle","The red shoes.",word="line")
 e("7.long","whoosh_low","Up over the start."); e("7.long","cheer","The crowd.",offset=0.5,trim=-3); e("7.long","whoosh","The rivers.",word="over",offset=-0.25); e("7.long","splash","Water.",word="rivers",trim=-4)
-e("7.far","gust","The desert."); e("7.far","whoosh","The dark oak forest.",word="through",offset=-0.2); e("7.far","creak","Old trees.",word="forest"); e("7.far","whoosh","The last village.",word="into",offset=-0.2); e("7.far","chime","The cup.",word="village",nth=None)
+e("7.far","gust","The desert."); e("7.far","whoosh","The dark oak forest.",word="through",offset=-0.2); e("7.far","creak","Old trees.",word="forest"); e("7.far","whoosh","The last village.",word="into",offset=-0.2); e("7.far","chime","The cup.",word="village")
+e("7.rest","swish","The rest camp."); e("7.rest","splash","The river beside it.",offset=0.5,trim=-4); e("7.rest","blip","Rest.",word="rest"); e("7.rest","tick","Wait.",word="wait")
+e("8.fifteen","whoosh","The road out of the village."); steps("8.fifteen","On the road.","step_stone",0.14,trim=1); e("8.fifteen","pop","15th.",offset=0.1)
+e("8.eleven","gust","The wheat."); steps("8.eleven","On the track.","step_grass",0.16,trim=-0.5); e("8.eleven","pop","11th.",word="eleventh",offset=-0.2); e("8.eleven","swish","The other side.",word="Then",offset=-0.15); e("8.eleven","zip","Two more behind him.",word="Then",trim=-4); e("8.eleven","pop","9th.",word="ninth")
+e("8.six","whoosh","The birch wood."); steps("8.six","On the wood floor.","step_grass",0.13,0.05,1.4); e("8.six","pop","6th.",word="sixth"); e("8.six","swish","The baby.",word="past",offset=-0.4); e("8.six","zip","Past it.",word="past"); e("8.six","boing","The baby sees.",word="baby"); e("8.six","swish","He waves.",word="waved",offset=-0.35); e("8.six","blip","Bye.",word="waved"); e("8.six","rustle","His hand.",word="waved",offset=0.2)
+e("8.two","pop","2nd.",offset=0.08); e("8.two","slide_up","Second!",word="second"); steps("8.two","Open ground.","step_stone",0.14,0.3,1.2); e("8.two","whoosh","The rivers.",word="rivers",offset=-0.5); e("8.two","splash","Water ahead.",word="rivers",trim=-3); e("8.two","swish","The flag.",word="flag",offset=-0.6); e("8.two","sparkle","The line.",word="flag")
+e("8.one","whoosh_low","One back in front."); steps("8.one","Two runners.","step_stone",0.13,trim=-3); e("8.one","heartbeat","Only one.",word="one")
+e("8.line","zip","Black shirt, over the line.",word="first",offset=-0.1); e("8.line","ding","First.",word="first"); e("8.line","zip","Yellow shirt.",word="second",offset=-0.1); e("8.line","chime","Second.",word="second"); e("8.line","cheer","The camp.",word="second",offset=0.15,trim=-3)
+e("8.cele","pop","2nd!",offset=0.05); e("8.cele","cheer","Second!",offset=0.1); e("8.cele","boing","He jumps.",word="jumped"); e("8.cele","thud","He lands.",word="jumped",offset=0.55,trim=-3); e("8.cele","swish","Round and round.",word="danced",repeat=3,every=0.28); e("8.cele","sparkle","Confetti.",word="danced",trim=-3)
+e("8.okay","slide_down","Not first.",word="first",trim=-4); e("8.okay","chime","But okay.",word="okay")
+steps("8.sit","He walks to the log.","step_grass",0.3,0.05,0.9); e("8.sit","thud","He sits.",word="sat",trim=-2); e("8.sit","splash","The river behind him.",word="river",trim=-4); e("8.sit","tick","Waiting.",word="waited")
+steps("8.look","The winner walks over.","step_grass",0.3,0.05,0.7); e("8.look","thud","He sits too.",word="sat",trim=-2); e("8.look","swish","His head turns.",word="looked"); e("8.look","heartbeat","His feet.",word="feet")
+e("8.same","riser","Four red shoes.",offset=0.0); e("8.same","boom","The same shoes.",word="same",trim=-3); e("8.same","sting","The same.",word="shoes")
+e("9.sub","swish","He looks at him."); e("9.sub","pop","The sign.",offset=0.25); e("9.sub","ding","Subscribe.",word="subscribe")
 e("7.twenty","swish","Along the row."); e("7.twenty","blip","Players.",word="Players"); e("7.twenty","blip","Villagers.",word="villagers"); e("7.twenty","swish","That baby.",word="that",offset=-0.2); e("7.twenty","boing","Bouncing.",word="baby"); e("7.twenty","sting","It looks at him.",word="baby",offset=0.2,trim=-6)
 e("7.sign","cheer","Mum and dad.",trim=-2); e("7.sign","pop","The sign.",word="sign"); e("7.sign","bonk","Please not last.",word="sign",offset=0.3)
 e("7.count","tick","Three.",word="Three"); e("7.count","tick","Two.",word="Two"); e("7.count","tick","One.",word="One"); e("7.count","school_bell","Go!",word="Go",trim=-3); e("7.count","whoosh","They come at the lens.",word="Go",offset=0.15); e("7.count","cheer","The crowd.",word="Go",offset=0.1)
 steps("7.count","Ready.","step_stone",0.5,0.1,1.2,trim=-2)
-e("8.fifteen","whoosh","The rivers."); steps("8.fifteen","Over the bridge.","step_wood",0.14,trim=3); e("8.fifteen","splash","Water under them.",offset=0.6,trim=-4); e("8.fifteen","pop","15th.",offset=0.1)
-e("8.eleven","gust","The desert."); steps("8.eleven","On sand.","step_grass",0.16,trim=-0.5); e("8.eleven","pop","11th.",word="eleventh",offset=-0.2); e("8.eleven","swish","The other side.",word="Then",offset=-0.15); e("8.eleven","zip","Two more behind him.",word="Then",trim=-4); e("8.eleven","pop","9th.",word="ninth")
-e("8.six","whoosh","The dark oak forest."); steps("8.six","On the forest floor.","step_grass",0.13,0.05,1.4); e("8.six","pop","6th.",word="sixth"); e("8.six","swish","The baby.",word="past",offset=-0.4); e("8.six","zip","Past it.",word="past"); e("8.six","boing","The baby sees.",word="baby"); e("8.six","swish","He waves.",word="waved",offset=-0.35); e("8.six","blip","Bye.",word="waved"); e("8.six","rustle","His hand.",word="waved",offset=0.2)
-e("8.two","pop","2nd.",offset=0.08); e("8.two","slide_up","Second!",word="second"); steps("8.two","Open ground.","step_stone",0.14,0.3,1.2); e("8.two","whoosh","The last village.",word="last",offset=-0.5); e("8.two","cheer","They can hear it.",word="village",trim=-3); e("8.two","swish","The cup.",word="trophy",offset=-0.55); e("8.two","sparkle","Gold.",word="trophy"); e("8.two","chime","Close enough to touch.",word="trophy",offset=0.2)
-e("8.one","whoosh_low","One back in front."); steps("8.one","Two runners.","step_stone",0.13); e("8.one","heartbeat","Only one.",word="one")
-e("8.look","swish","His face."); e("8.look","heartbeat","He looks down.",word="down"); e("8.look","tick","At his feet.",word="feet")
-e("8.same","riser","The feet in front.",word="same"); steps("8.same","Red shoes on the road.","step_stone",0.14,0.05,1.2); e("8.same","boom","The same shoes.",word="same",trim=-3); e("8.same","sting","Not his.",word="shoes")
-e("9.sub","swish","He looks back."); e("9.sub","pop","The sign.",offset=0.25); e("9.sub","ding","Subscribe.",word="subscribe")
 for d in X:
     if d.get("nth") is None and "nth" in d: del d["nth"]
+# Levels found by building: raise what the music buries, lower what covers a word.
+FIX={("1.slow","slide_down"):2,("6.two","zip"):4,("8.cele","thud"):4}
+for d in X:
+    k=(d["cue"],d["sfx"])
+    if k in FIX: d["trim"]=d.get("trim",0)+FIX[k]
 s['sfx']=X
 json.dump(s,open(F+'sound.json','w'),indent=1)
 print(len(X))
