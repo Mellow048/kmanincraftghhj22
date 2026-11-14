@@ -1,8 +1,8 @@
 import type React from "react";
 import { Block, PixelText, Tree } from "../../engine";
 import type { Timing, Vec3 } from "../../engine";
-import { wordClock } from "../../../Topics/InThisTown";
-import { Bus, Crowd, Dad, Folk, Hiss, Mum, Postman, h } from "../in-this-town-monster-village-part-2/kit";
+import { MONSTER, Skeleton, wordClock } from "../../../Topics/InThisTown";
+import { Bus, Crowd, Folk, Hiss, Mum, Postman, h } from "../in-this-town-monster-village-part-2/kit";
 import type { Kind } from "../in-this-town-monster-village-part-2/kit";
 import timingJson from "./timing.json";
 
@@ -179,7 +179,8 @@ export const dadSocket = (p: Vec3, rotY: number): Vec3 => {
   const u = 1.8 / 32;
   return [p[0] - 5 * u * Math.cos(rotY), p[1] + 23 * u, p[2] + 5 * u * Math.sin(rotY)];
 };
-export { Dad };
+/** Dad: the pack's skeleton in his blue scarf, so a shot can take his arm off (`noArm`), hold a hand up (`raise`) and drop his skull (`headDrop`). */
+export const Dad: React.FC<React.ComponentProps<typeof Skeleton>> = (p) => <Skeleton scarf={MONSTER.scarfBlue} phase={1.9} {...p} />;
 
 // ----------------------------------------------------------------------------- the castle village
 
@@ -223,4 +224,20 @@ export const MapSheet: React.FC<{ position: Vec3; open?: number; rotationY?: num
       </>
     ) : null}
   </group>
+);
+
+// ----------------------------------------------------------------------------- helpers
+
+/** A point `k` of the way from `a` to `b`. */
+export const mix = (a: Vec3, b: Vec3, k: number): Vec3 => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
+/** The `rotationY` that faces from `a` towards `b`. */
+export const toward = (a: Vec3, b: Vec3): number => Math.atan2(b[0] - a[0], b[2] - a[2]);
+/** Where to put an `Arm` so its ELBOW is at `at` (a hand that holds it, a shoulder it plugs into), pointing along `yaw`. */
+export const heldAt = (at: Vec3, yaw: number): Vec3 => [at[0] + Math.sin(yaw) * 0.62, at[1] - 0.05, at[2] + Math.cos(yaw) * 0.62];
+/** Black, whatever the light: for an eyelid, the inside of a sack, a cut through the dark. */
+export const Black: React.FC<{ position: Vec3; size: Vec3; color?: string }> = ({ position, size, color = "#000000" }) => (
+  <mesh position={position}>
+    <boxGeometry args={size} />
+    <meshBasicMaterial color={color} />
+  </mesh>
 );
