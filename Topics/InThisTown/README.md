@@ -195,6 +195,8 @@ still an estimate, and whether the mix is older than the script.
 | `reference/pumpkin-heads/`, `reference/monster-village/`, `reference/monster-village-part-2/` | **Three more approved films**, each with its mp4, its source and a shot log |
 | `reference/superpower-at-18-part-2/` | **The owner's favourite so far**, with its mp4 and source: how to stage fast action and show the process |
 | `monsters.tsx` | The people of a monster village: zombie, skeleton, creeper, spider, enderman, slime. All of them can act |
+| `pillagers.tsx` | Pillagers: grey, scowling villagers with crossbows, and their chief |
+| `mansion.tsx` | The woodland mansion from outside, its dark oak forest, and its hall with the map table |
 | `InThisTownMusic.aac` | **The background music of every In This Town short.** The owner added it on 2026-11-13: "the music is used thats the new backround music for the in this town shorts". 3:36, stereo. A film's `sound.json` names it (`"track"` in `music`) and `scripts/sound.py` mixes it under the voice ([`SOUND.md`](SOUND.md), section 3). Superpower part 2 was the first to play it. The four films finished before that day keep the music they were approved with |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
