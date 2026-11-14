@@ -1,0 +1,216 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-monster-village-part-3",
+  "mix": "public/audio/in-this-town-monster-village-part-3/mix.mp3",
+  "seconds": 140.8667,
+  "built_from": {
+    "timing.json": "f63dfca6cf2065dbdc41e8710d2f1db598cd8330",
+    "sound.json": "2e5cc666adc4af7edb897de30d52e86d51be7ea4",
+    "narration.mp3": "cfd0dc4addfa6e707da96984f7946457fcbc8c2e"
+  },
+  "mix_sha1": "8a6812db7435157b31d7d235c6914a0f69b2c7fa",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "sneak",
+      "at": 0.0
+    },
+    {
+      "from": "1.friend",
+      "mood": "tense",
+      "at": 2.6
+    },
+    {
+      "from": "1.found",
+      "mood": "sad",
+      "at": 5.5
+    },
+    {
+      "from": "2.tree",
+      "mood": "sneak",
+      "at": 10.27
+    },
+    {
+      "from": "2.player",
+      "mood": "tense",
+      "at": 20.17
+    },
+    {
+      "from": "2.later",
+      "mood": "sad",
+      "at": 30.17
+    },
+    {
+      "from": "3.crawl",
+      "mood": "playful",
+      "at": 32.4
+    },
+    {
+      "from": "4.dad",
+      "mood": "town",
+      "at": 41.07
+    },
+    {
+      "from": "4.look",
+      "mood": "playful",
+      "at": 44.3
+    },
+    {
+      "from": "5.villagers",
+      "mood": "tense",
+      "at": 55.8
+    },
+    {
+      "from": "5.hiss",
+      "mood": "dark",
+      "at": 59.13
+    },
+    {
+      "from": "5.down",
+      "mood": "drone",
+      "at": 64.17
+    },
+    {
+      "from": "6.again",
+      "mood": "curious",
+      "at": 66.83
+    },
+    {
+      "from": "6.plug",
+      "mood": "playful",
+      "at": 72.2
+    },
+    {
+      "from": "7.mum",
+      "mood": "hope",
+      "at": 80.27
+    },
+    {
+      "from": "8.dark",
+      "mood": "none",
+      "at": 87.53
+    },
+    {
+      "from": "8.blink",
+      "mood": "dark",
+      "at": 89.17
+    },
+    {
+      "from": "9.cages",
+      "mood": "curious",
+      "at": 102.33
+    },
+    {
+      "from": "9.mo",
+      "mood": "hope",
+      "at": 105.27
+    },
+    {
+      "from": "9.dumb",
+      "mood": "playful",
+      "at": 110.57
+    },
+    {
+      "from": "9.saw",
+      "mood": "dark",
+      "at": 111.3
+    },
+    {
+      "from": "9.over",
+      "mood": "sad",
+      "at": 114.87
+    },
+    {
+      "from": "10.other",
+      "mood": "sneak",
+      "at": 117.73
+    },
+    {
+      "from": "10.map",
+      "mood": "tense",
+      "at": 126.4
+    },
+    {
+      "from": "10.shake",
+      "mood": "playful",
+      "at": 134.53
+    },
+    {
+      "from": "10.deal",
+      "mood": "town",
+      "at": 136.93
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 10,
+  "measured": {
+    "musicUnderVoiceDb": 17.5,
+    "secondsWithoutMusic": 1.7,
+    "bedsUnderVoiceDb": 26.9,
+    "sfx": 200,
+    "sfxPerMinute": 85.2,
+    "sfxKinds": 36,
+    "longestGapSeconds": 2.9,
+    "longestGapAt": 2.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.1,
+    "voiceOverRestWorstDb": 4.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.4,
+        "t": 4.1,
+        "cue": "1.friend",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 135.4,
+        "cue": "10.shake",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 57.1,
+        "cue": "5.villagers",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 34.1,
+        "cue": "3.crawl",
+        "sounding": [
+          "tick"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 59.8,
+        "cue": "5.hiss",
+        "sounding": [
+          "crackle"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 101.5,
+        "cue": "8.towers",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.3
+  },
+  "failures": []
+}

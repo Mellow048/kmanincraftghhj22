@@ -193,13 +193,13 @@
     {
       "cue": "1.town",
       "sfx": "pop",
-      "offset": 0.1,
+      "at": 0.1,
       "why": "The arm stands up in front of the lens."
     },
     {
       "cue": "1.town",
       "sfx": "tick",
-      "offset": 0.5,
+      "at": 0.5,
       "repeat": 5,
       "every": 0.16,
       "trim": 1,
@@ -232,7 +232,7 @@
     {
       "cue": "1.pick",
       "sfx": "rustle",
-      "offset": 0.2,
+      "at": 0.2,
       "why": "He picks the helmet up."
     },
     {
@@ -244,7 +244,7 @@
     {
       "cue": "2.tree",
       "sfx": "tick",
-      "offset": 0.2,
+      "at": 0.2,
       "repeat": 5,
       "every": 0.16,
       "trim": 1,
@@ -259,7 +259,7 @@
     {
       "cue": "2.watch",
       "sfx": "creak",
-      "offset": 0.3,
+      "at": 0.3,
       "why": "The hand tips like a head."
     },
     {
@@ -272,7 +272,7 @@
     {
       "cue": "2.crawl",
       "sfx": "tick",
-      "offset": 0.2,
+      "at": 0.2,
       "repeat": 9,
       "every": 0.2,
       "trim": 1,
@@ -294,7 +294,7 @@
     {
       "cue": "2.player",
       "sfx": "step_grass",
-      "offset": 0.3,
+      "at": 0.3,
       "repeat": 7,
       "every": 0.3,
       "why": "A player, walking at us."
@@ -341,13 +341,13 @@
     {
       "cue": "2.help",
       "sfx": "zip",
-      "offset": 0.15,
+      "at": 0.15,
       "why": "The arm runs out."
     },
     {
       "cue": "2.help",
       "sfx": "tick",
-      "offset": 0.3,
+      "at": 0.3,
       "repeat": 7,
       "every": 0.13,
       "trim": 1,
@@ -362,7 +362,7 @@
     {
       "cue": "2.many",
       "sfx": "step_grass",
-      "offset": 0.1,
+      "at": 0.1,
       "repeat": 6,
       "every": 0.22,
       "why": "Ten pairs of boots."
@@ -377,7 +377,7 @@
     {
       "cue": "2.later",
       "sfx": "gust",
-      "offset": 0.3,
+      "at": 0.3,
       "why": "The street empties."
     },
     {
@@ -395,7 +395,7 @@
     {
       "cue": "3.crawl",
       "sfx": "tick",
-      "offset": 0.2,
+      "at": 0.2,
       "repeat": 14,
       "every": 0.15,
       "trim": 1,
@@ -404,7 +404,7 @@
     {
       "cue": "3.four",
       "sfx": "scrape",
-      "offset": 0.3,
+      "at": 0.3,
       "why": "It skids in over the mud."
     },
     {
@@ -422,7 +422,7 @@
     {
       "cue": "3.mud",
       "sfx": "tick",
-      "offset": 0.2,
+      "at": 0.2,
       "repeat": 3,
       "every": 0.18,
       "why": "It knocks on the mud."
@@ -471,7 +471,7 @@
     {
       "cue": "4.look",
       "sfx": "blip",
-      "offset": 0.3,
+      "at": 0.3,
       "repeat": 3,
       "every": 0.2,
       "trim": -3,
@@ -513,7 +513,7 @@
     {
       "cue": "4.nobody",
       "sfx": "swish",
-      "offset": 0.4,
+      "at": 0.4,
       "repeat": 2,
       "every": 0.6,
       "why": "Along the row of them."
@@ -548,26 +548,26 @@
       "sfx": "sting",
       "word": "villagers",
       "trim": -5,
-      "offset": 0.1,
+      "at": 0.1,
       "why": "The villagers."
     },
     {
       "cue": "5.scared",
       "sfx": "boing",
-      "offset": 0.25,
+      "at": 0.25,
       "trim": -3,
       "why": "They all leave the floor."
     },
     {
       "cue": "5.scared",
       "sfx": "thud",
-      "offset": 0.55,
+      "at": 0.55,
       "why": "Forty monsters land at once."
     },
     {
       "cue": "5.hiss",
       "sfx": "crackle",
-      "offset": 0.3,
+      "at": 0.3,
       "trim": 2,
       "why": "Hiss, going white round the edges."
     },
@@ -606,7 +606,7 @@
     {
       "cue": "5.down",
       "sfx": "slide_down",
-      "offset": 0.3,
+      "at": 0.3,
       "why": "Every head goes down."
     },
     {
@@ -640,13 +640,13 @@
       "cue": "6.east",
       "sfx": "pop",
       "word": "east",
-      "offset": 0.08,
+      "at": 0.08,
       "why": "East."
     },
     {
       "cue": "6.plug",
       "sfx": "scrape",
-      "offset": 0.3,
+      "at": 0.3,
       "why": "He brings it round to the socket."
     },
     {
@@ -659,7 +659,7 @@
       "cue": "6.plug",
       "sfx": "sparkle",
       "word": "click",
-      "offset": 0.15,
+      "at": 0.15,
       "trim": -3,
       "why": "It works."
     },
@@ -672,7 +672,7 @@
     {
       "cue": "6.how",
       "sfx": "creak",
-      "offset": 0.2,
+      "at": 0.2,
       "why": "The teacher bends right over."
     },
     {
@@ -684,14 +684,14 @@
     {
       "cue": "6.shrug",
       "sfx": "bonk",
-      "offset": 0.3,
+      "at": 0.3,
       "trim": -3,
       "why": "Nobody knows."
     },
     {
       "cue": "7.mum",
       "sfx": "slide_up",
-      "offset": 0.1,
+      "at": 0.1,
       "why": "Mum's hand goes up."
     },
     {
@@ -704,7 +704,7 @@
       "cue": "7.plan",
       "sfx": "step_wood",
       "word": "closer",
-      "offset": 0.45,
+      "at": 0.45,
       "repeat": 5,
       "every": 0.14,
       "why": "They all move in."
@@ -713,7 +713,7 @@
       "cue": "7.plan",
       "sfx": "rustle",
       "word": "closer",
-      "offset": 1.3,
+      "at": 1.3,
       "repeat": 4,
       "every": 0.45,
       "trim": 2,
@@ -723,7 +723,7 @@
       "cue": "7.plan",
       "sfx": "blip",
       "word": "closer",
-      "offset": 1.6,
+      "at": 1.6,
       "repeat": 3,
       "every": 0.5,
       "trim": -2,
@@ -733,21 +733,21 @@
       "cue": "7.plan",
       "sfx": "riser",
       "word": "closer",
-      "offset": 3.5,
+      "at": 3.5,
       "trim": -2,
       "why": "Into the black."
     },
     {
       "cue": "8.dark",
       "sfx": "drop",
-      "offset": 0.05,
+      "at": 0.05,
       "trim": -3,
       "why": "Dark."
     },
     {
       "cue": "8.dark",
       "sfx": "heartbeat",
-      "offset": 0.6,
+      "at": 0.6,
       "repeat": 2,
       "every": 0.6,
       "why": "Inside the sack."
@@ -797,7 +797,7 @@
     {
       "cue": "8.guards",
       "sfx": "stomp",
-      "offset": 0.5,
+      "at": 0.5,
       "repeat": 3,
       "every": 0.6,
       "trim": -3,
@@ -818,7 +818,7 @@
     {
       "cue": "9.cages",
       "sfx": "swish",
-      "offset": 0.2,
+      "at": 0.2,
       "why": "Along the row."
     },
     {
@@ -896,14 +896,14 @@
       "cue": "9.laugh",
       "sfx": "boing",
       "word": "laughed",
-      "offset": 0.2,
+      "at": 0.2,
       "trim": -5,
       "why": "Shoulders going."
     },
     {
       "cue": "9.over",
       "sfx": "thud",
-      "offset": 0.6,
+      "at": 0.6,
       "trim": -3,
       "why": "He sits down in the cage."
     },
@@ -928,7 +928,7 @@
     {
       "cue": "10.pillagers",
       "sfx": "hit",
-      "offset": 0.6,
+      "at": 0.6,
       "trim": -3,
       "why": "The chief bangs the table."
     },
@@ -975,7 +975,7 @@
     {
       "cue": "10.chief",
       "sfx": "swish",
-      "offset": 0.4,
+      "at": 0.4,
       "repeat": 2,
       "every": 0.7,
       "why": "He looks from wall to wall."
@@ -996,7 +996,7 @@
     {
       "cue": "10.shake",
       "sfx": "rustle",
-      "offset": 0.3,
+      "at": 0.3,
       "repeat": 3,
       "every": 0.25,
       "why": "They shake.",
@@ -1018,14 +1018,14 @@
       "cue": "10.deal",
       "sfx": "cheer",
       "word": "deal",
-      "offset": 0.2,
+      "at": 0.2,
       "why": "Everybody goes up."
     },
     {
       "cue": "11.sub",
       "sfx": "pop",
       "word": "subscribe",
-      "offset": -0.2,
+      "at": -0.2,
       "why": "The sign."
     },
     {
