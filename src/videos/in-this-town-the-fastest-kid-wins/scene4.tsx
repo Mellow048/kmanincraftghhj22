@@ -67,7 +67,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "7.week",
-      ...cam.truck({ on: [START_X - 0.75, 0.3, 0.7], dist: 2.5, yaw: 80, pitch: 9, fov: 46, by: [0, 0, 1.3] }),
+      ...cam.truck({ on: [START_X - 0.75, 0.45, 0.9], dist: 3.6, yaw: 84, pitch: 22, fov: 46, by: [0, 0, 1.1] }),
       zone: "village",
       look: DAY,
       note: "The start line from the ground: a row of feet, boots and robes, and the lens slides along them to one pair of red shoes.",
@@ -166,7 +166,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Lineup t={t} go={w[3]} set />
-            <Place text={["3", "2", "1", "GO!"][i]} position={[START_X + 0.2, 2.3, LANE]} rotationY={E} scale={1.1 * pop(t, w[i])} />
+            <Place text={["3", "2", "1", "GO!"][i]} position={[START_X + 0.2, 2.45, LANE]} rotationY={E} scale={2.6 * pop(t, w[i])} />
             <DustRing position={[START_X - 0.75, 0.05, LANE]} t={t - w[3]} size={3} color="#b79d63" />
             <Streaks position={[START_X, 0.8, LANE]} yaw={E} t={t - w[3]} n={12} spread={2} speed={14} />
           </>
@@ -327,7 +327,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.same",
-      ...cam.truck({ on: at(FINISH, -4.6, 0.32, LANE + 0.4), dist: 2.1, yaw: 30, pitch: 7, fov: 44, by: [V * 2.17, 0, 0] }),
+      ...cam.truck({ on: at(FINISH, -4.6, 0.36, LANE + 0.4), dist: 2.6, yaw: 30, pitch: 7, fov: 44, by: [V * 2.17, 0, 0] }),
       zone: "finish",
       look: DAY,
       note: "The ground, at running speed: a pair of feet in red shoes with a green light on the side. They are not his.",
