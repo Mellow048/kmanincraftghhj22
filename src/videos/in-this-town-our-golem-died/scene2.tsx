@@ -29,7 +29,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.break",
-      ...cam.push({ on: [18.8, 1.15, 2.0], dist: 2.2, to: 1.85, yaw: 74, pitch: -26, fov: 34 }),
+      ...cam.push({ on: [18.8, 1.5, 2.0], dist: 4.8, to: 3.9, yaw: -76, pitch: -14, fov: 42 }),
       zone: "gate",
       look: "lantern-night",
       note: "'Nobody had ever seen it break': from the ground at its feet, looking up its body. Iron, rivets, no crack, no rust, nothing missing. The angle is the point — a thing up there cannot be hurt.",
@@ -37,7 +37,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.well",
-      ...cam.top({ on: [WELL[0], 0.9, WELL[2]], height: 3.4, to: 2.7, spin: [-6, 4], fov: 40 }),
+      ...cam.top({ on: [WELL[0], 0.9, WELL[2]], height: 8.2, to: 6.8, spin: [-6, 4], fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "'Why the well was full of flowers': straight down. The stone ring, the lid hanging off it, and fourteen flowers standing round the rim in a ring, as if somebody had put one there for every year.",
@@ -64,7 +64,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.keep",
-      ...cam.push({ on: [WELL[0] + 0.62, 0.98, WELL[2] + 0.95], dist: 1.15, to: 0.92, yaw: 12, pitch: 16, fov: 30 }),
+      ...cam.push({ on: [WELL[0] + 0.55, 1.0, WELL[2] + 0.95], dist: 2.6, to: 2.1, yaw: 12, pitch: 20, fov: 36 }),
       zone: "village",
       look: "overworld-day",
       note: "'Never keep one': as close as the film ever gets to a flower, and it is not a pretty flower — it is a thing somebody left. On the word, the woman's hand comes into the top of the frame and does not touch it.",

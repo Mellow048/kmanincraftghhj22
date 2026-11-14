@@ -32,7 +32,7 @@ export const scene9 = storyScene(timing, {
   shots: [
     {
       cue: "14.hooks",
-      ...cam.push({ on: [PLACE.forge[0] + 0.2, 1.55, PLACE.forge[2] + 0.1], dist: 2.9, to: 2.3, yaw: 12, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [PLACE.forge[0] + 0.2, 1.5, PLACE.forge[2] + 0.1], dist: 4.2, to: 3.5, yaw: 8, pitch: 0, fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "'The hooks on the wall were empty': five iron hooks with nothing hanging on them. The tools were there in the tour; the audience has seen them there.",
@@ -45,7 +45,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.pot",
-      ...cam.push({ on: [10.0, 1.28, -4.9], dist: 1.7, to: 1.35, yaw: 6, pitch: 6, fov: 34 }),
+      ...cam.push({ on: [10.0, 1.15, -4.9], dist: 3.0, to: 2.4, yaw: 6, pitch: 8, fov: 36 }),
       zone: "village",
       look: "overworld-day",
       note: "'My mother's pot was gone from the kitchen': a shelf by the door with dust on it and one clean ring where the pot stood. That is the whole shot, and it is the most personal one in the film.",
@@ -97,7 +97,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.afraid",
-      ...cam.push({ on: [-4.0, 1.5, 0.2], dist: 1.9, to: 1.5, yaw: 34, pitch: 1, fov: 34 }),
+      ...cam.push({ on: [-4.0, 1.75, 0.2], dist: 3.4, to: 2.8, yaw: 30, pitch: 0, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'Not because they loved it. Because they were afraid': one face at the edge of the square, looking at the golem and not at the boy. Nobody in this frame is smiling.",
@@ -109,7 +109,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.giveback",
-      ...cam.push({ on: [WELL[0] + 0.3, 0.7, WELL[2] + 0.2], dist: 3.2, to: 2.8, yaw: 8, pitch: 26, fov: 40 }),
+      ...cam.push({ on: [WELL[0] + 0.3, 0.7, WELL[2] + 0.2], dist: 5.6, to: 4.8, yaw: 8, pitch: 30, fov: 44 }),
       zone: "village",
       look: "overworld-day",
       note: "'And because the well gives back what you put in it': from high above the rim, looking down into the black of it, the flowers at the edge of the frame and the lid pushed off to one side. The hole is the last thing the eye finds.",
@@ -122,7 +122,7 @@ export const scene9 = storyScene(timing, {
     {
       cue: "14.flowers",
       ...cam.pan({
-        from: [WELL[0] + 1.5, 1.35, WELL[2] + 1.9],
+        from: [WELL[0] + 2.6, 1.9, WELL[2] + 3.2],
         on: [WELL[0] + 0.9, 0.95, WELL[2] + 0.3],
         onTo: [WELL[0] - 0.9, 0.95, WELL[2] + 0.2],
         fov: 36,
@@ -148,7 +148,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.held",
-      ...cam.push({ on: [WELL[0] + 0.7, 1.15, WELL[2] + 1.5], dist: 2.2, to: 1.75, yaw: -6, pitch: -2, fov: 34 }),
+      ...cam.push({ on: [WELL[0] + 0.7, 1.15, WELL[2] + 1.5], dist: 3.0, to: 2.4, yaw: -6, pitch: -2, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'Then it held one out to me': the iron hand, open, with the rose lying across it, at a kid's chest height. Nothing else in the frame but the hand and the flower.",
@@ -161,7 +161,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.mine",
-      ...cam.push({ on: [WELL[0] + 0.55, 1.18, WELL[2] + 1.5], dist: 1.2, to: 0.95, yaw: 14, pitch: 6, fov: 30 }),
+      ...cam.push({ on: [WELL[0] + 0.55, 1.18, WELL[2] + 1.5], dist: 2.2, to: 1.8, yaw: 14, pitch: 6, fov: 34 }),
       zone: "village",
       look: "overworld-day",
       note: "'It was mine. The rose I had left on the well': as close as the lens goes to anything in the film, on the flower in the iron hand, and his fingers arriving at the edge of the frame on the word.",

@@ -20,7 +20,7 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "10.finish",
-      ...cam.push({ on: [22.0, 1.5, 2.0], dist: 8.0, to: 7.0, yaw: 64, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [22.0, 1.5, 2.4], dist: 9.0, to: 7.6, yaw: -72, pitch: 6, fov: 46 }),
       zone: "gate",
       look: "lantern-night",
       note: "'We finished the monsters': the town's people at the end of it, torches up, the last of them going over the wall. He is not in it — he is somewhere at the edge of the light, already looking the wrong way.",
@@ -35,7 +35,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.walk",
-      ...cam.truck({ on: [20.4, 1.15, 2.0], dist: 3.4, yaw: 88, pitch: 4, by: [1.1, 0, 0], fov: 40 }),
+      ...cam.truck({ on: [20.4, 1.3, 2.0], dist: 4.2, yaw: -90, pitch: 4, by: [1.1, 0, 0], fov: 40 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I walked to where it fell': from behind him, going with him, the scorch mark growing in the top of the frame. The lens does not get there first.",
@@ -48,7 +48,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.rose",
-      ...cam.top({ on: [FELL[0] + 0.1, 0.12, FELL[2]], height: 1.9, to: 1.5, spin: [10, 2], fov: 36 }),
+      ...cam.top({ on: [FELL[0] + 0.1, 0.12, FELL[2]], height: 4.6, to: 3.8, spin: [10, 2], fov: 38 }),
       zone: "gate",
       look: "lantern-night",
       note: "'In the ash was a rose': straight down on the scorch, and one red poppy lying in the middle of it, on its side, with the smoke drifting over it. The only colour in the frame.",
@@ -61,7 +61,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.pick",
-      ...cam.push({ on: [FELL[0] + 0.1, 0.3, FELL[2]], dist: 1.5, to: 1.15, yaw: 20, pitch: -14, fov: 32 }),
+      ...cam.push({ on: [FELL[0] + 0.1, 0.42, FELL[2]], dist: 3.2, to: 2.6, yaw: 20, pitch: -10, fov: 36 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I picked it up. It was still warm': from the ground, the flower lifted on the word, a kid's hand under it. The camera stays on the ground so the hand comes down to it.",
@@ -77,7 +77,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.put",
-      ...cam.push({ on: ROSE_ON_RIM, dist: 1.35, to: 1.1, yaw: -16, pitch: 20, fov: 32 }),
+      ...cam.push({ on: ROSE_ON_RIM, dist: 2.8, to: 2.3, yaw: -16, pitch: 16, fov: 36 }),
       zone: "village",
       look: "lantern-night",
       note: "'I put it on the well, with all the others': the rose set down on the rim among fourteen others, his hand still on it at the end. One movement, one frame, no cut away from it.",
@@ -94,7 +94,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.letgo",
-      ...cam.push({ on: [WELL[0] + 0.6, 0.85, WELL[2] + 0.5], dist: 3.6, to: 3.0, yaw: 10, pitch: 10, fov: 40 }),
+      ...cam.push({ on: [WELL[0] + 0.6, 1.05, WELL[2] + 0.5], dist: 4.6, to: 3.8, yaw: 10, pitch: 12, fov: 42 }),
       zone: "village",
       look: "lantern-night",
       note: "'The rule said never keep it. So I let it go': he steps back, and the frame is the well full of flowers with one boy's back at the edge of it. The flowers are lit; nothing else is.",

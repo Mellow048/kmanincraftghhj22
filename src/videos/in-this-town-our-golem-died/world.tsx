@@ -84,6 +84,9 @@ const Village: React.FC = () => (
     <LampPost position={[-5.6, 0, -3.6]} seed={2} />
     <LampPost position={[5.2, 0, 6.6]} seed={3} />
     <LampPost position={[15.6, 0, -3.4]} seed={4} />
+    {/* The square at night: one light over the bell, one over the well, so the rim is never black. */}
+    <pointLight position={[0, 3.4, -2.2]} color="#ffc484" intensity={8} distance={14} decay={2} />
+    <pointLight position={[PLACE.well[0], 2.6, PLACE.well[2] + 0.6]} color="#ffd0a0" intensity={7} distance={12} decay={2} />
     <LanternLine from={[-6, 4.4, -3.2]} to={[6, 4.4, -3.2]} count={7} sag={0.7} lit={[0, 3]} light={3} seed={5} />
     <Clouds y={48} center={[0, 0, 0]} />
 
@@ -115,6 +118,9 @@ const Gate: React.FC = () => (
 
     <LampPost position={[21.4, 0, -0.4]} seed={7} />
     <LampPost position={[21.4, 0, 4.6]} seed={8} />
+    {/* The two gate lanterns are the only light on the fight: without them a face is a dark shape. */}
+    <pointLight position={[21.4, 2.95, -0.4]} color="#ffb060" intensity={11} distance={15} decay={2} />
+    <pointLight position={[21.4, 2.95, 4.6]} color="#ffb060" intensity={11} distance={15} decay={2} />
 
     <Wheat position={[34, 0, 2]} size={[18, 16]} height={0.95} glow={0.12} sway={0.45} seed={7} />
     <Scarecrow position={[30.5, 0, -4.2]} eyes={0.55} lean={0.05} headTurn={0.4} shirt="#6a6f4a" />

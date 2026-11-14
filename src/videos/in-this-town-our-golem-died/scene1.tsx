@@ -16,13 +16,13 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.died",
-      ...cam.push({ on: [FELL[0] - 0.3, 1.05, FELL[2]], dist: 3.4, to: 2.6, yaw: -8, pitch: -4, fov: 38 }),
+      ...cam.push({ on: [FELL[0] - 0.6, 1.15, FELL[2]], dist: 5.2, to: 4.2, yaw: -86, pitch: 4, fov: 42 }),
       zone: "gate",
       look: "lantern-night",
       note: "The words are 'our golem died' and the picture is where it died: the scorched ground inside the gate, smoke still going up, the boy crouched in the middle of it. Not the fight — the morning after the fight.",
       stage: (t) => (
         <>
-          <Hero position={[20.6, 0, 2.0]} rotationY={SOUTH - 0.6} animation="crouch" face="fear" gaze={0} />
+          <Hero position={[20.5, 0, 1.6]} rotationY={SOUTH - 1.5} animation="crouch" face="fear" gaze={0} />
           <Smoke position={[FELL[0], 0, FELL[2]]} count={14} rise={3.2} spread={1.6} size={0.26} opacity={0.55} lean={0.3} />
           <Creeper position={[23.4, 0, 0.4]} rotationY={SOUTH + 2.2} fuse={0.0001} />
         </>
@@ -43,14 +43,14 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.how",
-      ...cam.push({ on: [-11, 1.62, -4.1], dist: 2.0, to: 1.55, yaw: 26, pitch: -2, fov: 36 }),
+      ...cam.push({ on: [-11, 2.05, -4.05], dist: 3.9, to: 3.2, yaw: 38, pitch: 2, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'Nobody would tell me how': the oldest woman, on her porch, looks at him and then away. One face, one refusal, nothing else moving.",
       stage: (t) => (
         <>
           <Villager position={[-11, 0.5, -4.1]} rotationY={SOUTH + 0.5} robe={ROBE.white} hat="straw" turn={0.4} hmm={0.35} phase={0.4} />
-          <Hero position={[-11, 0, -2.4]} rotationY={SOUTH} animation="idle" face="uneasy" gaze={0} />
+          <Hero position={[-8.7, 0, -2.5]} rotationY={SOUTH + 0.4} animation="idle" face="uneasy" gaze={0} />
         </>
       ),
     },

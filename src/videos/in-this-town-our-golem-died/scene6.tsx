@@ -31,7 +31,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "8.behind",
-      ...cam.push({ on: [20.9, 1.4, 1.6], dist: 3.6, to: 2.9, yaw: 96, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [21.2, 1.7, 2.0], dist: 4.2, to: 3.5, yaw: -80, pitch: 2, fov: 40 }),
       zone: "gate",
       look: "lantern-night",
       note: "'There was a creeper behind the golem': we see it over the golem's shoulder, its face lit low and green, and the golem's back filling the left of the frame. It is close. That is the whole shot.",
@@ -44,7 +44,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "8.shout",
-      ...cam.push({ on: [19.0, 1.3, 2.0], dist: 1.5, to: 1.2, yaw: 404, pitch: 1, fov: 32 }),
+      ...cam.push({ on: [19.0, 1.34, 2.0], dist: 2.0, to: 1.6, yaw: 404, pitch: 1, fov: 34 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I should have shouted': his face, open-mouthed, lit from the front by the gate lantern — the moment he understands. No cut on the word; the camera just keeps coming.",
@@ -56,7 +56,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "8.late",
-      ...cam.push({ on: [19.6, 1.5, 2.0], dist: 9.6, to: 8.4, yaw: 78, pitch: 2, fov: 50 }),
+      ...cam.push({ on: [19.6, 1.5, 2.0], dist: 11.0, to: 9.2, yaw: -80, pitch: 4, fov: 50 }),
       zone: "gate",
       look: "lantern-night",
       note: "'But I was too far away, and it was too late': the wide that makes the excuse true. He is at the left edge; the golem and the creeper are two small shapes at the far end of the light, and the ground between them is empty.",
@@ -95,7 +95,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.dust",
-      ...cam.push({ on: [FELL[0], 0.9, FELL[2]], dist: 3.4, to: 4.2, yaw: 88, pitch: 8, fov: 42 }),
+      ...cam.push({ on: [FELL[0], 1.0, FELL[2]], dist: 2.8, to: 4.6, yaw: -88, pitch: 8, fov: 42 }),
       zone: "gate",
       look: "lantern-night",
       note: "'When the dust settled, our protector was gone': a pull OUT, away from the scorch on the ground, so the empty place gets bigger. One iron hand's worth of debris and nothing else. Smoke still going up.",

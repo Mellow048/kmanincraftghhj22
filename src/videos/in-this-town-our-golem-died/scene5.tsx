@@ -38,7 +38,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "6.bell",
-      ...cam.push({ on: [BELL[0], 1.5, BELL[2] + 0.2], dist: 3.6, to: 3.0, yaw: 6, pitch: -6, fov: 38 }),
+      ...cam.push({ on: [BELL[0], 1.6, BELL[2] + 0.2], dist: 5.4, to: 4.5, yaw: 10, pitch: -4, fov: 42 }),
       zone: "village",
       look: "lantern-night",
       note: "'Then one night, the bell rang': the bell, low, with a villager's whole weight on the rope. The line is a sound, so the picture is the thing making it.",
@@ -51,7 +51,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "6.wall",
-      ...cam.push({ on: [22, 3.1, 2.0], dist: 7.4, to: 6.4, yaw: 84, pitch: -22, fov: 46 }),
+      ...cam.push({ on: [22, 3.1, 2.0], dist: 8.2, to: 6.8, yaw: -80, pitch: -18, fov: 46 }),
       zone: "gate",
       look: "lantern-night",
       note: "'Something was on the wall': from the bottom of the wall, looking up. Three shapes standing on top of it, black against the moon, and the golem's head at the left edge, turning.",
@@ -66,7 +66,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.sword",
-      ...cam.push({ on: [SWORD_AT[0], 0.85, SWORD_AT[2]], dist: 1.7, to: 1.3, yaw: 34, pitch: 14, fov: 34 }),
+      ...cam.push({ on: [SWORD_AT[0], 0.9, SWORD_AT[2]], dist: 3.0, to: 2.4, yaw: 34, pitch: 10, fov: 36 }),
       zone: "village",
       look: "lantern-night",
       note: "'I grabbed my father's diamond sword': a blade leaning against the door frame, and a kid's hand closing round a grip that is too long for it. It is the only blue in the film.",
@@ -79,7 +79,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.zombie",
-      ...cam.push({ on: [19.8, 1.35, 2.0], dist: 3.4, to: 2.8, yaw: 62, pitch: 6, fov: 38 }),
+      ...cam.push({ on: [19.8, 1.4, 2.0], dist: 3.6, to: 3.0, yaw: 100, pitch: 4, fov: 40 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I got the zombie': he swings on the word and the zombie goes over backwards, arms still out. Green on orange, and the wall behind them. One jolt on contact, nothing else shaking.",
@@ -111,7 +111,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.skeleton",
-      ...cam.push({ on: [20.6, 1.25, 3.0], dist: 3.0, to: 2.5, yaw: -58, pitch: -8, fov: 36 }),
+      ...cam.push({ on: [20.6, 1.35, 3.0], dist: 4.2, to: 3.4, yaw: -58, pitch: -10, fov: 40 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I got the skeleton': the other side of the lens, and the other joke — the skull comes off on the hit and rolls. From below, so the two of them are tall shapes against the moonlit wall.",
@@ -135,7 +135,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.proud",
-      ...cam.push({ on: [19.0, 1.24, 2.0], dist: 1.6, to: 1.26, yaw: 412, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [19.0, 1.3, 2.0], dist: 2.2, to: 1.8, yaw: 412, pitch: 2, fov: 36 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I was so proud of myself that I forgot to look behind it': his face, lit by the gate lantern, absolutely delighted. Hold it. The next line is the reason this face is the last happy one.",

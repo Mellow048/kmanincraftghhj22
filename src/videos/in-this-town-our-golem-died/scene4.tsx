@@ -17,7 +17,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.protect",
-      ...cam.push({ on: [-1.2, 1.3, 2.4], dist: 4.4, to: 3.7, yaw: 16, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [-1.4, 1.15, 2.6], dist: 5.8, to: 4.8, yaw: 22, pitch: 4, fov: 42 }),
       zone: "village",
       look: "overworld-day",
       note: "'But the golem protected all of us': the boy walking in the golem's shadow, the golem's arm across the top of the frame. He is the small thing under the big thing, and he is looking up at it, not at where he is going.",
@@ -30,7 +30,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.need",
-      ...cam.push({ on: [-1.9, 1.18, 3.4], dist: 1.5, to: 1.2, yaw: 6, pitch: -14, fov: 34 }),
+      ...cam.push({ on: [-1.9, 1.32, 3.4], dist: 2.6, to: 2.1, yaw: 8, pitch: -8, fov: 36 }),
       zone: "village",
       look: "overworld-day",
       note: "'I wanted it to need me': from slightly below his chin, so the golem's shoulder is out of frame and he is looking at something taller than the lens. One thought on one face.",
@@ -42,7 +42,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.ask",
-      ...cam.push({ on: [PORCH[0], 1.45, PORCH[2] + 0.3], dist: 3.9, to: 3.2, yaw: 4, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [PORCH[0], 1.7, PORCH[2] + 0.2], dist: 4.8, to: 4.0, yaw: 6, pitch: -2, fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "'So I asked the oldest woman in town why': she is half a block above him on the porch, so the two of them stack up the frame and he has to look up to ask. One of them is very still.",
@@ -55,7 +55,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.say",
-      ...cam.push({ on: [PORCH[0] - 0.05, 1.72, PORCH[2]], dist: 1.75, to: 1.42, yaw: 18, pitch: -3, fov: 34 }),
+      ...cam.push({ on: [PORCH[0] - 0.05, 2.05, PORCH[2]], dist: 3.0, to: 2.5, yaw: 20, pitch: -2, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "The rule, said to his face: her face fills the frame, one eye and a hat brim, and she does not blink in the whole shot.",
@@ -67,7 +67,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.again",
-      ...cam.push({ on: [FOOT[0] + 0.2, 1.2, FOOT[2] + 0.1], dist: 2.4, to: 1.9, yaw: -34, pitch: -10, fov: 36 }),
+      ...cam.push({ on: [FOOT[0] + 0.2, 1.3, FOOT[2] + 0.1], dist: 3.4, to: 2.8, yaw: -34, pitch: -6, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'I asked her again': over her shoulder, from behind, looking up at the porch — we see the back of her robe and his face asking. A different side of the same conversation, which is what a cut has to be.",
@@ -81,7 +81,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.walk",
-      ...cam.truck({ on: [PORCH[0] - 1.4, 1.2, PORCH[2] + 0.6], dist: 3.2, yaw: -62, pitch: 3, by: [1.5, 0, -1.4], fov: 40 }),
+      ...cam.truck({ on: [PORCH[0] - 1.4, 1.3, PORCH[2] + 0.6], dist: 4.4, yaw: -62, pitch: 3, by: [1.5, 0, -1.4], fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "'She walked away': the lens goes with her back, and his small shape is left standing at the foot of the porch, getting smaller without the camera having to leave him behind.",

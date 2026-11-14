@@ -15,7 +15,7 @@ export const scene8 = storyScene(timing, {
   shots: [
     {
       cue: "12.home",
-      ...cam.push({ on: room(0.2, 1.15, -0.6), dist: 4.4, to: 3.7, yaw: 6, pitch: 6, fov: 42 }),
+      ...cam.push({ on: room(0.4, 1.2, -1.2), dist: 5.6, to: 4.6, yaw: 10, pitch: 6, fov: 44 }),
       zone: "room",
       look: "lantern-night",
       note: "'I went home': the room, the bed, the one window, and him standing in the doorway with his hands empty. A small room lit by one torch, and the bed is the biggest thing in it.",
@@ -28,7 +28,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "12.bed",
-      ...cam.top({ on: room(0.9, 0.6, -0.8), height: 3.6, to: 3.0, spin: [-4, 6], fov: 44 }),
+      ...cam.top({ on: room(0.9, 0.6, -1.0), height: 4.8, to: 3.9, spin: [-4, 6], fov: 46 }),
       zone: "room",
       look: "lantern-night",
       note: "'I lay on my bed and did not sleep': straight down on him lying on top of the blanket with his eyes open, the way a kid lies when he is not going to sleep. The camera sinks slowly, which is the only movement.",
@@ -41,7 +41,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.light",
-      ...cam.push({ on: room(-0.6, 1.7, -3.85), dist: 2.8, to: 2.2, yaw: -12, pitch: -4, fov: 40 }),
+      ...cam.push({ on: room(-0.6, 1.75, -3.85), dist: 4.2, to: 3.4, yaw: -16, pitch: -2, fov: 44 }),
       zone: "room",
       look: "overworld-day",
       note: "'In the morning, the sun came in': the window, and the dust in the light, and nobody in the frame at all. One empty shot before the answer, so the answer has somewhere to land.",
@@ -53,7 +53,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.square",
-      ...cam.truck({ on: [1.0, 1.2, 3.4], dist: 3.2, yaw: 92, pitch: 5, by: [-1.0, 0, 0], fov: 42 }),
+      ...cam.truck({ on: [1.0, 1.45, 3.4], dist: 4.2, yaw: 100, pitch: 12, by: [-1.0, 0, 0], fov: 44 }),
       zone: "village",
       look: "overworld-day",
       note: "'I went to the square': travelling with him from behind, the square opening up past his shoulder, people standing about in it, all of them turned the same way.",
