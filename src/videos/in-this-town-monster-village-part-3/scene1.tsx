@@ -36,7 +36,7 @@ export const scene1 = storyScene(timing, {
       ),
     },
     {
-      cue: "1.me",
+      cue: "1.friend",
       ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
       zone: "village",
       look: "overworld-day",

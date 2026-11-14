@@ -3,9 +3,11 @@
 The owner's own words, kept so they are not lost between sessions. Build them in this order, **one at a time**
 (the owner, 2026-11-14: "You cant split your focus, focus on 1 thing first, finish it, then head to the other"):
 
-1. **Robot at 18, part 2**: script in `src/videos/in-this-town-robot-at-18-part-2/narration.md` (the agent's story).
-2. **Monster Village, part 3**: no outline from him. Part 2 ended on Mo's sword and helmet lying in the street.
-3. **The race** (his outline, below).
+1. **Monster Village, part 3**: script in `src/videos/in-this-town-monster-village-part-3/narration.md` (the agent's story).
+2. **The race** (his outline, below).
+
+Parked by the owner (2026-11-14, "lets leave robot part 2 for now"): **Robot at 18, part 2**. The draft script is
+`robot-at-18-part-2-script-draft.md` in this folder; no film folder exists for it.
 
 Every film is 2:58 or shorter (strict rule, `AGENTS.md`).
 
