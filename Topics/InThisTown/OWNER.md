@@ -94,3 +94,12 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
 - **Push after every step.** Work that is only in the sandbox is lost when a branch closes. (Six scenes of part 3 were
   lost this way on 2026-11-15 and had to be written again.) Merge a pull request only when everything meant for it is
   pushed.
+
+## 5. Log
+
+- **2026-11-15.** He left with "ill review it later, keep going ill be back soon". The race film (part 1) was written
+  and built on his outline without his yes on the script, because he could not be asked. When he is away, follow his
+  outline line by line, keep his own phrases, list every addition at the top of `narration.md`, and tell him first
+  thing what was added. Do not wait.
+- **2026-11-15.** Monster Village part 3 has not been reviewed by him. Its sound was rebuilt after delivery (the sheet
+  used `offset`, which the builder ignores; the key is `at`): same picture, new audio track.

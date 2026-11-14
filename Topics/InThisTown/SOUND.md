@@ -91,6 +91,11 @@ sound moves with the voice. `npm run check` fails a film whose mix is older than
 | `"cue": "2.hill", "p": 0.5` | Halfway through the shot (`p` runs 0 → 1) |
 | any of the above, plus `"at": 0.6` | 0.6 seconds later. Negative is earlier |
 
+**The key is `at`. There is no `offset`.** A key the builder does not know is ignored without a word, so an effect
+written with `"offset": 0.5` plays at the start of its shot. Four delivered films carry that mistake (Monster Village
+1, 2 and 3, Robot at 18): after a build, open `out/sound/<film>/effects.txt` and check that the times are not all
+the same as the starts of the shots.
+
 **Music.** `track` is the owner's file (a path from the top of the repository): it plays instead of music the
 tool makes. `sections` is a list of `{ from, mood, why }`: each runs from its cue to the next section's cue, and
 the first must start on the film's first cue. With a track, a section's mood makes no sound of its own: it says

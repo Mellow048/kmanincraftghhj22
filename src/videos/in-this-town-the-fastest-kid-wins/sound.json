@@ -1,0 +1,1581 @@
+{
+ "film": "in-this-town-the-fastest-kid-wins",
+ "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-the-fastest-kid-wins",
+ "music": {
+  "track": "Topics/InThisTown/InThisTownMusic.aac",
+  "gain": -16,
+  "sections": [
+   {
+    "from": "1.town",
+    "mood": "town",
+    "why": "The cup, and the whole town running for it."
+   },
+   {
+    "from": "1.slow",
+    "mood": "playful",
+    "why": "The slowest kid, and the baby."
+   },
+   {
+    "from": "1.want",
+    "mood": "hope",
+    "why": "Ten years old, on his toes."
+   },
+   {
+    "from": "1.now",
+    "mood": "sad",
+    "why": "The empty shelf."
+   },
+   {
+    "from": "2.train",
+    "mood": "playful",
+    "why": "Training, badly."
+   },
+   {
+    "from": "2.week",
+    "mood": "tense",
+    "why": "One week."
+   },
+   {
+    "from": "3.night",
+    "mood": "sneak",
+    "why": "Awake, then the forest."
+   },
+   {
+    "from": "3.witch",
+    "mood": "curious",
+    "why": "A hat behind a tree."
+   },
+   {
+    "from": "3.yes",
+    "mood": "sad",
+    "why": "Mum, dad, the shelf."
+   },
+   {
+    "from": "4.shoes",
+    "mood": "wonder",
+    "why": "The shoes."
+   },
+   {
+    "from": "4.hmm",
+    "mood": "curious",
+    "why": "That should have worried me."
+   },
+   {
+    "from": "4.stump",
+    "mood": "wonder",
+    "why": "He puts them on."
+   },
+   {
+    "from": "5.run",
+    "mood": "none",
+    "why": "The world stops."
+   },
+   {
+    "from": "5.real",
+    "mood": "wonder",
+    "why": "The speed of light."
+   },
+   {
+    "from": "5.cheat",
+    "mood": "sad",
+    "why": "It is cheating."
+   },
+   {
+    "from": "6.off",
+    "mood": "curious",
+    "why": "Three buttons."
+   },
+   {
+    "from": "6.two",
+    "mood": "playful",
+    "why": "Through a bush."
+   },
+   {
+    "from": "6.right",
+    "mood": "hope",
+    "why": "Just right."
+   },
+   {
+    "from": "7.week",
+    "mood": "town",
+    "why": "The start line."
+   },
+   {
+    "from": "7.count",
+    "mood": "tense",
+    "why": "Three, two, one."
+   },
+   {
+    "from": "8.fifteen",
+    "mood": "tense",
+    "why": "The race."
+   },
+   {
+    "from": "8.two",
+    "mood": "hope",
+    "why": "Second, and the cup."
+   },
+   {
+    "from": "8.one",
+    "mood": "dark",
+    "why": "One runner in front."
+   },
+   {
+    "from": "9.sub",
+    "mood": "town",
+    "why": "Part two."
+   }
+  ]
+ },
+ "beds": [
+  {
+   "from": "1.town",
+   "to": "1.want",
+   "bed": "village"
+  },
+  {
+   "from": "1.now",
+   "to": "1.now",
+   "bed": "room"
+  },
+  {
+   "from": "2.train",
+   "to": "2.week",
+   "bed": "village"
+  },
+  {
+   "from": "3.night",
+   "to": "3.night",
+   "bed": "room"
+  },
+  {
+   "from": "3.forest",
+   "to": "6.right",
+   "bed": "night"
+  },
+  {
+   "from": "7.week",
+   "to": "7.count",
+   "bed": "crowd"
+  },
+  {
+   "from": "8.fifteen",
+   "to": "8.fifteen",
+   "bed": "village"
+  },
+  {
+   "from": "8.eleven",
+   "to": "8.eleven",
+   "bed": "wind"
+  },
+  {
+   "from": "8.six",
+   "to": "8.six",
+   "bed": "village"
+  },
+  {
+   "from": "8.two",
+   "to": "9.sub",
+   "bed": "crowd"
+  }
+ ],
+ "sfx": [
+  {
+   "cue": "1.town",
+   "sfx": "sparkle",
+   "at": 0.02,
+   "trim": -3,
+   "why": "The cup shines."
+  },
+  {
+   "cue": "1.town",
+   "sfx": "swish",
+   "at": 0.75,
+   "trim": -2,
+   "why": "The town tears past."
+  },
+  {
+   "cue": "1.town",
+   "sfx": "whoosh",
+   "at": 1.5,
+   "trim": -3,
+   "why": "More of them."
+  },
+  {
+   "cue": "1.town",
+   "sfx": "step_stone",
+   "at": 1.0,
+   "repeat": 5,
+   "every": 0.16,
+   "trim": -1,
+   "why": "Their feet."
+  },
+  {
+   "cue": "1.town",
+   "sfx": "cheer",
+   "word": "Every",
+   "trim": -3,
+   "why": "Every single year."
+  },
+  {
+   "cue": "1.town",
+   "sfx": "step_stone",
+   "at": 2.0,
+   "repeat": 3,
+   "every": 0.4,
+   "why": "His own feet, last."
+  },
+  {
+   "cue": "1.slow",
+   "sfx": "swish",
+   "why": "His face."
+  },
+  {
+   "cue": "1.slow",
+   "sfx": "step_stone",
+   "at": 0.05,
+   "repeat": 3,
+   "every": 0.42,
+   "why": "Slow feet."
+  },
+  {
+   "cue": "1.slow",
+   "sfx": "slide_down",
+   "word": "slowest",
+   "why": "The slowest."
+  },
+  {
+   "cue": "1.baby",
+   "sfx": "step_stone",
+   "at": 0.05,
+   "repeat": 8,
+   "every": 0.3,
+   "why": "He runs flat out."
+  },
+  {
+   "cue": "1.baby",
+   "sfx": "boing",
+   "word": "beat",
+   "why": "The baby goes by."
+  },
+  {
+   "cue": "1.baby",
+   "sfx": "blip",
+   "word": "One",
+   "why": "One did."
+  },
+  {
+   "cue": "1.baby",
+   "sfx": "zip",
+   "word": "Twice",
+   "why": "Twice."
+  },
+  {
+   "cue": "1.baby",
+   "sfx": "bonk",
+   "word": "Twice",
+   "at": 0.25,
+   "why": "Lapped."
+  },
+  {
+   "cue": "1.want",
+   "sfx": "whoosh",
+   "why": "Ten years old."
+  },
+  {
+   "cue": "1.want",
+   "sfx": "chime",
+   "word": "trophy",
+   "why": "The cup over his head."
+  },
+  {
+   "cue": "1.want",
+   "sfx": "boing",
+   "at": 0.5,
+   "trim": -2,
+   "why": "On his toes."
+  },
+  {
+   "cue": "1.want",
+   "sfx": "boing",
+   "at": 1.2,
+   "trim": -2,
+   "why": "Again."
+  },
+  {
+   "cue": "1.now",
+   "sfx": "whoosh_low",
+   "why": "His room."
+  },
+  {
+   "cue": "1.now",
+   "sfx": "rustle",
+   "word": "shelf",
+   "why": "He wipes the shelf."
+  },
+  {
+   "cue": "1.now",
+   "sfx": "slide_down",
+   "word": "empty",
+   "why": "Empty."
+  },
+  {
+   "cue": "2.train",
+   "sfx": "whoosh",
+   "why": "Training."
+  },
+  {
+   "cue": "2.train",
+   "sfx": "step_stone",
+   "at": 0.05,
+   "repeat": 8,
+   "every": 0.2,
+   "trim": 2,
+   "why": "Running, from above."
+  },
+  {
+   "cue": "2.hill",
+   "sfx": "step_grass",
+   "at": 0.05,
+   "repeat": 4,
+   "every": 0.2,
+   "why": "Up the hill."
+  },
+  {
+   "cue": "2.hill",
+   "sfx": "slide_up",
+   "at": 0.2,
+   "why": "Up."
+  },
+  {
+   "cue": "2.hill",
+   "sfx": "swish",
+   "word": "round",
+   "at": -0.25,
+   "why": "The pond."
+  },
+  {
+   "cue": "2.hill",
+   "sfx": "step_grass",
+   "at": 1.0,
+   "repeat": 4,
+   "every": 0.18,
+   "why": "Round the pond."
+  },
+  {
+   "cue": "2.push",
+   "sfx": "creak",
+   "at": 0.2,
+   "why": "One push up, shaking."
+  },
+  {
+   "cue": "2.push",
+   "sfx": "thud",
+   "word": "one",
+   "trim": 3,
+   "why": "Flat."
+  },
+  {
+   "cue": "2.push",
+   "sfx": "bonk",
+   "word": "one",
+   "at": 0.15,
+   "why": "One."
+  },
+  {
+   "cue": "2.sweat",
+   "sfx": "step_grass",
+   "at": 0.05,
+   "repeat": 10,
+   "every": 0.2,
+   "why": "Through the chickens."
+  },
+  {
+   "cue": "2.sweat",
+   "sfx": "plink",
+   "at": 0.2,
+   "repeat": 5,
+   "every": 0.3,
+   "why": "Sweat."
+  },
+  {
+   "cue": "2.sweat",
+   "sfx": "boing",
+   "word": "chickens",
+   "at": -0.3,
+   "why": "Chickens jump."
+  },
+  {
+   "cue": "2.sweat",
+   "sfx": "rustle",
+   "word": "chickens",
+   "why": "Wings."
+  },
+  {
+   "cue": "2.sweat",
+   "sfx": "zip",
+   "word": "moved",
+   "why": "They clear out."
+  },
+  {
+   "cue": "2.fail",
+   "sfx": "step_stone",
+   "at": 0.05,
+   "repeat": 3,
+   "every": 0.3,
+   "why": "Down the street."
+  },
+  {
+   "cue": "2.fail",
+   "sfx": "boing",
+   "word": "lost",
+   "why": "The baby hops over the line."
+  },
+  {
+   "cue": "2.fail",
+   "sfx": "thud",
+   "word": "lost",
+   "at": 1.0,
+   "why": "He falls over it."
+  },
+  {
+   "cue": "2.fail",
+   "sfx": "buzz",
+   "word": "lost",
+   "at": 0.15,
+   "trim": -3,
+   "why": "Lost."
+  },
+  {
+   "cue": "2.fail",
+   "sfx": "swish",
+   "word": "To",
+   "at": -0.1,
+   "why": "The baby, close."
+  },
+  {
+   "cue": "2.fail",
+   "sfx": "blip",
+   "word": "same",
+   "why": "It tilts its head."
+  },
+  {
+   "cue": "2.week",
+   "sfx": "pop",
+   "why": "The board."
+  },
+  {
+   "cue": "2.week",
+   "sfx": "tick",
+   "word": "week",
+   "repeat": 4,
+   "every": 0.25,
+   "why": "One week."
+  },
+  {
+   "cue": "2.week",
+   "sfx": "heartbeat",
+   "word": "fast",
+   "why": "Get fast."
+  },
+  {
+   "cue": "2.week",
+   "sfx": "swish",
+   "word": "quickly",
+   "at": -0.35,
+   "why": "He turns to us."
+  },
+  {
+   "cue": "2.week",
+   "sfx": "sting",
+   "word": "quickly",
+   "trim": -5,
+   "why": "No plan."
+  },
+  {
+   "cue": "3.night",
+   "sfx": "whoosh_low",
+   "why": "Night."
+  },
+  {
+   "cue": "3.night",
+   "sfx": "tick",
+   "at": 0.3,
+   "repeat": 5,
+   "every": 0.3,
+   "why": "Awake."
+  },
+  {
+   "cue": "3.night",
+   "sfx": "rustle",
+   "word": "sleep",
+   "why": "He turns over."
+  },
+  {
+   "cue": "3.forest",
+   "sfx": "whoosh",
+   "why": "The forest."
+  },
+  {
+   "cue": "3.forest",
+   "sfx": "step_grass",
+   "at": 0.05,
+   "repeat": 14,
+   "every": 0.21,
+   "why": "Running in the dark."
+  },
+  {
+   "cue": "3.forest",
+   "sfx": "gust",
+   "word": "dark",
+   "why": "Night air."
+  },
+  {
+   "cue": "3.tired",
+   "sfx": "step_grass",
+   "at": 0.05,
+   "repeat": 3,
+   "every": 0.3,
+   "trim": 2,
+   "why": "Staggering."
+  },
+  {
+   "cue": "3.tired",
+   "sfx": "slide_down",
+   "word": "gave",
+   "why": "His legs give up."
+  },
+  {
+   "cue": "3.tired",
+   "sfx": "thud",
+   "word": "gave",
+   "at": 0.8,
+   "why": "Down."
+  },
+  {
+   "cue": "3.tired",
+   "sfx": "rustle",
+   "word": "leaves",
+   "why": "Leaves."
+  },
+  {
+   "cue": "3.witch",
+   "sfx": "swish",
+   "why": "The lens swings."
+  },
+  {
+   "cue": "3.witch",
+   "sfx": "creak",
+   "word": "her",
+   "at": -0.3,
+   "why": "Behind the tree."
+  },
+  {
+   "cue": "3.witch",
+   "sfx": "sparkle",
+   "word": "witch",
+   "why": "A witch."
+  },
+  {
+   "cue": "3.witch",
+   "sfx": "rustle",
+   "word": "waving",
+   "why": "Waving."
+  },
+  {
+   "cue": "3.witch",
+   "sfx": "blip",
+   "word": "waving",
+   "at": 0.25,
+   "why": "Hello."
+  },
+  {
+   "cue": "3.win",
+   "sfx": "whoosh_low",
+   "why": "She leans in."
+  },
+  {
+   "cue": "3.win",
+   "sfx": "sting",
+   "word": "win",
+   "trim": -5,
+   "why": "The question."
+  },
+  {
+   "cue": "3.yes",
+   "sfx": "heartbeat",
+   "at": 0.3,
+   "why": "Thinking."
+  },
+  {
+   "cue": "3.yes",
+   "sfx": "heartbeat",
+   "at": 1.3,
+   "why": "Thinking."
+  },
+  {
+   "cue": "3.yes",
+   "sfx": "whoosh",
+   "word": "that",
+   "at": -0.15,
+   "why": "The shelf."
+  },
+  {
+   "cue": "3.yes",
+   "sfx": "swish",
+   "word": "Yes",
+   "at": -0.2,
+   "why": "Back."
+  },
+  {
+   "cue": "3.yes",
+   "sfx": "ding",
+   "word": "Yes",
+   "trim": -2,
+   "why": "Yes."
+  },
+  {
+   "cue": "4.shoes",
+   "sfx": "rustle",
+   "why": "Out of her robe."
+  },
+  {
+   "cue": "4.shoes",
+   "sfx": "power_up",
+   "at": 0.3,
+   "why": "The shoes."
+  },
+  {
+   "cue": "4.shoes",
+   "sfx": "sparkle",
+   "word": "shoes",
+   "why": "They shine."
+  },
+  {
+   "cue": "4.money",
+   "sfx": "swish",
+   "why": "Him."
+  },
+  {
+   "cue": "4.money",
+   "sfx": "rustle",
+   "at": 0.3,
+   "why": "Empty pockets."
+  },
+  {
+   "cue": "4.money",
+   "sfx": "slide_down",
+   "word": "money",
+   "why": "No money."
+  },
+  {
+   "cue": "4.free",
+   "sfx": "whoosh_low",
+   "at": 0.3,
+   "why": "She pushes them at him."
+  },
+  {
+   "cue": "4.free",
+   "sfx": "place",
+   "word": "rid",
+   "why": "Into his hands."
+  },
+  {
+   "cue": "4.free",
+   "sfx": "chime",
+   "word": "rid",
+   "at": 0.2,
+   "why": "His."
+  },
+  {
+   "cue": "4.free",
+   "sfx": "swish",
+   "word": "them",
+   "why": "She looks behind her."
+  },
+  {
+   "cue": "4.hmm",
+   "sfx": "swish",
+   "why": "Past his shoulder."
+  },
+  {
+   "cue": "4.hmm",
+   "sfx": "step_grass",
+   "at": 0.3,
+   "repeat": 4,
+   "every": 0.35,
+   "why": "She backs away."
+  },
+  {
+   "cue": "4.hmm",
+   "sfx": "blip",
+   "word": "worried",
+   "why": "Left, right."
+  },
+  {
+   "cue": "4.hmm",
+   "sfx": "bonk",
+   "word": "not",
+   "why": "It did not."
+  },
+  {
+   "cue": "4.stump",
+   "sfx": "creak",
+   "at": 0.15,
+   "why": "He sits on the stump."
+  },
+  {
+   "cue": "4.stump",
+   "sfx": "rustle",
+   "word": "put",
+   "at": -0.3,
+   "why": "Pulling them on."
+  },
+  {
+   "cue": "4.stump",
+   "sfx": "power_up",
+   "word": "put",
+   "why": "On."
+  },
+  {
+   "cue": "4.stump",
+   "sfx": "sparkle",
+   "word": "on",
+   "why": "Red light."
+  },
+  {
+   "cue": "4.gone",
+   "sfx": "swish",
+   "trim": 4,
+   "why": "The lens swings."
+  },
+  {
+   "cue": "4.gone",
+   "sfx": "zip",
+   "word": "gone",
+   "at": -0.5,
+   "why": "Gone."
+  },
+  {
+   "cue": "4.gone",
+   "sfx": "pop",
+   "word": "gone",
+   "why": "Smoke."
+  },
+  {
+   "cue": "4.gone",
+   "sfx": "place",
+   "word": "gone",
+   "at": 0.35,
+   "why": "Her hat lands."
+  },
+  {
+   "cue": "4.love",
+   "sfx": "swish",
+   "why": "Round his feet."
+  },
+  {
+   "cue": "4.love",
+   "sfx": "boing",
+   "word": "loved",
+   "why": "He jumps."
+  },
+  {
+   "cue": "4.love",
+   "sfx": "thud",
+   "word": "loved",
+   "at": 0.45,
+   "trim": -2,
+   "why": "Lands."
+  },
+  {
+   "cue": "4.love",
+   "sfx": "chime",
+   "word": "shoes",
+   "why": "New shoes."
+  },
+  {
+   "cue": "4.love",
+   "sfx": "boing",
+   "word": "loved",
+   "at": 0.5,
+   "trim": -2,
+   "why": "Again."
+  },
+  {
+   "cue": "5.run",
+   "sfx": "riser",
+   "at": 0.45,
+   "why": "He pushes off."
+  },
+  {
+   "cue": "5.run",
+   "sfx": "zip",
+   "at": 0.5,
+   "why": "Gone."
+  },
+  {
+   "cue": "5.slow",
+   "sfx": "power_down",
+   "at": 0.05,
+   "why": "The world slows."
+  },
+  {
+   "cue": "5.slow",
+   "sfx": "drop",
+   "word": "slowed",
+   "why": "Everything stops."
+  },
+  {
+   "cue": "5.leaf",
+   "sfx": "tick",
+   "at": 0.2,
+   "why": "One leaf, hanging."
+  },
+  {
+   "cue": "5.leaf",
+   "sfx": "plink",
+   "word": "nose",
+   "why": "In front of his nose."
+  },
+  {
+   "cue": "5.leaf",
+   "sfx": "heartbeat",
+   "word": "air",
+   "why": "His own heart, slow."
+  },
+  {
+   "cue": "5.bird",
+   "sfx": "whoosh_low",
+   "why": "Looking up."
+  },
+  {
+   "cue": "5.bird",
+   "sfx": "blip",
+   "word": "bird",
+   "why": "A bird, stuck."
+  },
+  {
+   "cue": "5.bird",
+   "sfx": "creak",
+   "word": "wings",
+   "why": "Wings open."
+  },
+  {
+   "cue": "5.real",
+   "sfx": "glitch",
+   "word": "not",
+   "why": "The world was not slow."
+  },
+  {
+   "cue": "5.real",
+   "sfx": "power_up",
+   "word": "fast",
+   "at": -0.2,
+   "why": "He was fast."
+  },
+  {
+   "cue": "5.real",
+   "sfx": "zip",
+   "word": "fast",
+   "at": 0.2,
+   "repeat": 5,
+   "every": 0.4,
+   "why": "Across."
+  },
+  {
+   "cue": "5.real",
+   "sfx": "whoosh",
+   "word": "running",
+   "why": "And back."
+  },
+  {
+   "cue": "5.real",
+   "sfx": "whoosh",
+   "word": "speed",
+   "why": "And across."
+  },
+  {
+   "cue": "5.real",
+   "sfx": "boom",
+   "word": "light",
+   "trim": -2,
+   "why": "The speed of light."
+  },
+  {
+   "cue": "5.real",
+   "sfx": "rustle",
+   "word": "was",
+   "nth": 2,
+   "why": "Leaves blown off."
+  },
+  {
+   "cue": "5.pond",
+   "sfx": "whoosh",
+   "why": "Over the pond."
+  },
+  {
+   "cue": "5.pond",
+   "sfx": "splash",
+   "at": 0.3,
+   "trim": -2,
+   "why": "On top of the water."
+  },
+  {
+   "cue": "5.pond",
+   "sfx": "splash",
+   "word": "top",
+   "trim": -3,
+   "why": "Spray."
+  },
+  {
+   "cue": "5.pond",
+   "sfx": "zip",
+   "word": "pond",
+   "why": "Across."
+  },
+  {
+   "cue": "5.cheat",
+   "sfx": "scrape",
+   "word": "stopped",
+   "at": -0.3,
+   "why": "He skids."
+  },
+  {
+   "cue": "5.cheat",
+   "sfx": "thud",
+   "word": "stopped",
+   "trim": -2,
+   "why": "Stopped."
+  },
+  {
+   "cue": "5.cheat",
+   "sfx": "slide_down",
+   "word": "cheating",
+   "why": "Cheating."
+  },
+  {
+   "cue": "5.cheat",
+   "sfx": "sting",
+   "word": "everybody",
+   "trim": -5,
+   "why": "Everybody would know."
+  },
+  {
+   "cue": "6.off",
+   "sfx": "rustle",
+   "at": 0.2,
+   "why": "He pulls them off."
+  },
+  {
+   "cue": "6.off",
+   "sfx": "place",
+   "word": "off",
+   "why": "One on the ground."
+  },
+  {
+   "cue": "6.off",
+   "sfx": "swish",
+   "word": "side",
+   "at": -0.3,
+   "why": "The side of the shoe."
+  },
+  {
+   "cue": "6.off",
+   "sfx": "blip",
+   "word": "three",
+   "why": "One."
+  },
+  {
+   "cue": "6.off",
+   "sfx": "blip",
+   "word": "three",
+   "at": 0.15,
+   "why": "Two."
+  },
+  {
+   "cue": "6.off",
+   "sfx": "blip",
+   "word": "buttons",
+   "why": "Three buttons."
+  },
+  {
+   "cue": "6.one",
+   "sfx": "swish",
+   "why": "Closer."
+  },
+  {
+   "cue": "6.one",
+   "sfx": "ding",
+   "word": "on",
+   "trim": -3,
+   "why": "The first one is on."
+  },
+  {
+   "cue": "6.one",
+   "sfx": "pop",
+   "word": "light",
+   "at": -0.25,
+   "why": "Its label."
+  },
+  {
+   "cue": "6.one",
+   "sfx": "sparkle",
+   "word": "speed",
+   "why": "Light speed."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "tick",
+   "word": "pressed",
+   "why": "Click."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "blip",
+   "word": "pressed",
+   "at": 0.1,
+   "why": "The second one lights."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "whoosh",
+   "word": "ran",
+   "at": -0.3,
+   "why": "He runs."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "zip",
+   "word": "ran",
+   "why": "Like a thrown stone."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "scrape",
+   "word": "fast",
+   "why": "He cannot stop."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "crack",
+   "word": "bush",
+   "at": -0.35,
+   "why": "Through the bush."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "debris",
+   "word": "bush",
+   "why": "Leaves everywhere."
+  },
+  {
+   "cue": "6.two",
+   "sfx": "boing",
+   "word": "bush",
+   "at": 0.1,
+   "trim": -2,
+   "why": "A chicken jumps."
+  },
+  {
+   "cue": "6.three",
+   "sfx": "swish",
+   "why": "The shoe again."
+  },
+  {
+   "cue": "6.three",
+   "sfx": "tick",
+   "word": "pressed",
+   "why": "Click."
+  },
+  {
+   "cue": "6.three",
+   "sfx": "blip",
+   "word": "pressed",
+   "at": 0.1,
+   "why": "The third one lights."
+  },
+  {
+   "cue": "6.three",
+   "sfx": "step_grass",
+   "at": 1.5,
+   "repeat": 3,
+   "every": 0.22,
+   "why": "He sets off."
+  },
+  {
+   "cue": "6.right",
+   "sfx": "step_grass",
+   "at": 0.05,
+   "repeat": 9,
+   "every": 0.2,
+   "trim": 3,
+   "why": "A real run."
+  },
+  {
+   "cue": "6.right",
+   "sfx": "whoosh",
+   "at": 0.4,
+   "why": "Trunks going past."
+  },
+  {
+   "cue": "6.right",
+   "sfx": "chime",
+   "word": "perfect",
+   "why": "Perfect."
+  },
+  {
+   "cue": "6.right",
+   "sfx": "swish",
+   "word": "Nobody",
+   "at": -0.15,
+   "why": "He looks at us."
+  },
+  {
+   "cue": "6.right",
+   "sfx": "ding",
+   "word": "suspect",
+   "trim": -3,
+   "why": "A secret."
+  },
+  {
+   "cue": "7.week",
+   "sfx": "whoosh",
+   "why": "One week later."
+  },
+  {
+   "cue": "7.week",
+   "sfx": "rustle",
+   "at": 0.4,
+   "why": "Feet on the line."
+  },
+  {
+   "cue": "7.week",
+   "sfx": "sparkle",
+   "word": "line",
+   "why": "The red shoes."
+  },
+  {
+   "cue": "7.long",
+   "sfx": "whoosh_low",
+   "why": "Up over the start."
+  },
+  {
+   "cue": "7.long",
+   "sfx": "cheer",
+   "at": 0.5,
+   "trim": -3,
+   "why": "The crowd."
+  },
+  {
+   "cue": "7.long",
+   "sfx": "whoosh",
+   "word": "over",
+   "at": -0.25,
+   "why": "The rivers."
+  },
+  {
+   "cue": "7.long",
+   "sfx": "splash",
+   "word": "rivers",
+   "trim": -4,
+   "why": "Water."
+  },
+  {
+   "cue": "7.far",
+   "sfx": "gust",
+   "why": "The desert."
+  },
+  {
+   "cue": "7.far",
+   "sfx": "whoosh",
+   "word": "through",
+   "at": -0.2,
+   "why": "The dark oak forest."
+  },
+  {
+   "cue": "7.far",
+   "sfx": "creak",
+   "word": "forest",
+   "why": "Old trees."
+  },
+  {
+   "cue": "7.far",
+   "sfx": "whoosh",
+   "word": "into",
+   "at": -0.2,
+   "why": "The last village."
+  },
+  {
+   "cue": "7.far",
+   "sfx": "chime",
+   "word": "village",
+   "why": "The cup."
+  },
+  {
+   "cue": "7.twenty",
+   "sfx": "swish",
+   "why": "Along the row."
+  },
+  {
+   "cue": "7.twenty",
+   "sfx": "blip",
+   "word": "Players",
+   "why": "Players."
+  },
+  {
+   "cue": "7.twenty",
+   "sfx": "blip",
+   "word": "villagers",
+   "why": "Villagers."
+  },
+  {
+   "cue": "7.twenty",
+   "sfx": "swish",
+   "word": "that",
+   "at": -0.2,
+   "why": "That baby."
+  },
+  {
+   "cue": "7.twenty",
+   "sfx": "boing",
+   "word": "baby",
+   "why": "Bouncing."
+  },
+  {
+   "cue": "7.twenty",
+   "sfx": "sting",
+   "word": "baby",
+   "at": 0.2,
+   "trim": -6,
+   "why": "It looks at him."
+  },
+  {
+   "cue": "7.sign",
+   "sfx": "cheer",
+   "trim": -2,
+   "why": "Mum and dad."
+  },
+  {
+   "cue": "7.sign",
+   "sfx": "pop",
+   "word": "sign",
+   "why": "The sign."
+  },
+  {
+   "cue": "7.sign",
+   "sfx": "bonk",
+   "word": "sign",
+   "at": 0.3,
+   "why": "Please not last."
+  },
+  {
+   "cue": "7.count",
+   "sfx": "tick",
+   "word": "Three",
+   "why": "Three."
+  },
+  {
+   "cue": "7.count",
+   "sfx": "tick",
+   "word": "Two",
+   "why": "Two."
+  },
+  {
+   "cue": "7.count",
+   "sfx": "tick",
+   "word": "One",
+   "why": "One."
+  },
+  {
+   "cue": "7.count",
+   "sfx": "school_bell",
+   "word": "Go",
+   "trim": -3,
+   "why": "Go!"
+  },
+  {
+   "cue": "7.count",
+   "sfx": "whoosh",
+   "word": "Go",
+   "at": 0.15,
+   "why": "They come at the lens."
+  },
+  {
+   "cue": "7.count",
+   "sfx": "cheer",
+   "word": "Go",
+   "at": 0.1,
+   "why": "The crowd."
+  },
+  {
+   "cue": "7.count",
+   "sfx": "step_stone",
+   "at": 0.1,
+   "repeat": 2,
+   "every": 0.5,
+   "trim": -2,
+   "why": "Ready."
+  },
+  {
+   "cue": "8.fifteen",
+   "sfx": "whoosh",
+   "why": "The rivers."
+  },
+  {
+   "cue": "8.fifteen",
+   "sfx": "step_wood",
+   "at": 0.05,
+   "repeat": 12,
+   "every": 0.14,
+   "trim": 3,
+   "why": "Over the bridge."
+  },
+  {
+   "cue": "8.fifteen",
+   "sfx": "splash",
+   "at": 0.6,
+   "trim": -4,
+   "why": "Water under them."
+  },
+  {
+   "cue": "8.fifteen",
+   "sfx": "pop",
+   "at": 0.1,
+   "why": "15th."
+  },
+  {
+   "cue": "8.eleven",
+   "sfx": "gust",
+   "why": "The desert."
+  },
+  {
+   "cue": "8.eleven",
+   "sfx": "step_grass",
+   "at": 0.05,
+   "repeat": 15,
+   "every": 0.16,
+   "trim": -0.5,
+   "why": "On sand."
+  },
+  {
+   "cue": "8.eleven",
+   "sfx": "pop",
+   "word": "eleventh",
+   "at": -0.2,
+   "why": "11th."
+  },
+  {
+   "cue": "8.eleven",
+   "sfx": "swish",
+   "word": "Then",
+   "at": -0.15,
+   "why": "The other side."
+  },
+  {
+   "cue": "8.eleven",
+   "sfx": "zip",
+   "word": "Then",
+   "trim": -4,
+   "why": "Two more behind him."
+  },
+  {
+   "cue": "8.eleven",
+   "sfx": "pop",
+   "word": "ninth",
+   "why": "9th."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "whoosh",
+   "why": "The dark oak forest."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "step_grass",
+   "at": 0.05,
+   "repeat": 10,
+   "every": 0.13,
+   "why": "On the forest floor."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "pop",
+   "word": "sixth",
+   "why": "6th."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "swish",
+   "word": "past",
+   "at": -0.4,
+   "why": "The baby."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "zip",
+   "word": "past",
+   "why": "Past it."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "boing",
+   "word": "baby",
+   "why": "The baby sees."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "swish",
+   "word": "waved",
+   "at": -0.35,
+   "why": "He waves."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "blip",
+   "word": "waved",
+   "why": "Bye."
+  },
+  {
+   "cue": "8.six",
+   "sfx": "rustle",
+   "word": "waved",
+   "at": 0.2,
+   "why": "His hand."
+  },
+  {
+   "cue": "8.two",
+   "sfx": "pop",
+   "at": 0.08,
+   "why": "2nd."
+  },
+  {
+   "cue": "8.two",
+   "sfx": "slide_up",
+   "word": "second",
+   "why": "Second!"
+  },
+  {
+   "cue": "8.two",
+   "sfx": "step_stone",
+   "at": 0.3,
+   "repeat": 6,
+   "every": 0.14,
+   "why": "Open ground."
+  },
+  {
+   "cue": "8.two",
+   "sfx": "whoosh",
+   "word": "last",
+   "at": -0.5,
+   "why": "The last village."
+  },
+  {
+   "cue": "8.two",
+   "sfx": "cheer",
+   "word": "village",
+   "trim": -3,
+   "why": "They can hear it."
+  },
+  {
+   "cue": "8.two",
+   "sfx": "swish",
+   "word": "trophy",
+   "at": -0.55,
+   "why": "The cup."
+  },
+  {
+   "cue": "8.two",
+   "sfx": "sparkle",
+   "word": "trophy",
+   "why": "Gold."
+  },
+  {
+   "cue": "8.two",
+   "sfx": "chime",
+   "word": "trophy",
+   "at": 0.2,
+   "why": "Close enough to touch."
+  },
+  {
+   "cue": "8.one",
+   "sfx": "whoosh_low",
+   "why": "One back in front."
+  },
+  {
+   "cue": "8.one",
+   "sfx": "step_stone",
+   "at": 0.05,
+   "repeat": 12,
+   "every": 0.13,
+   "why": "Two runners."
+  },
+  {
+   "cue": "8.one",
+   "sfx": "heartbeat",
+   "word": "one",
+   "why": "Only one."
+  },
+  {
+   "cue": "8.look",
+   "sfx": "swish",
+   "why": "His face."
+  },
+  {
+   "cue": "8.look",
+   "sfx": "heartbeat",
+   "word": "down",
+   "why": "He looks down."
+  },
+  {
+   "cue": "8.look",
+   "sfx": "tick",
+   "word": "feet",
+   "why": "At his feet."
+  },
+  {
+   "cue": "8.same",
+   "sfx": "riser",
+   "word": "same",
+   "why": "The feet in front."
+  },
+  {
+   "cue": "8.same",
+   "sfx": "step_stone",
+   "at": 0.05,
+   "repeat": 8,
+   "every": 0.14,
+   "why": "Red shoes on the road."
+  },
+  {
+   "cue": "8.same",
+   "sfx": "boom",
+   "word": "same",
+   "trim": -3,
+   "why": "The same shoes."
+  },
+  {
+   "cue": "8.same",
+   "sfx": "sting",
+   "word": "shoes",
+   "why": "Not his."
+  },
+  {
+   "cue": "9.sub",
+   "sfx": "swish",
+   "why": "He looks back."
+  },
+  {
+   "cue": "9.sub",
+   "sfx": "pop",
+   "at": 0.25,
+   "why": "The sign."
+  },
+  {
+   "cue": "9.sub",
+   "sfx": "ding",
+   "word": "subscribe",
+   "why": "Subscribe."
+  }
+ ]
+}
