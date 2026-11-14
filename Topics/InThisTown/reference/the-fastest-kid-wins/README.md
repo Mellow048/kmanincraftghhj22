@@ -1,5 +1,7 @@
 # Reference: "In This Town, the Fastest Kid Wins" (part 1)
 
+**Reworked 2026-11-14 after his review** (see the log in [`OWNER.md`](../../OWNER.md)): ends at the rivers in second place with the same shoes on the winner; a real push-up (`pushUp` in `kit.tsx`); the stump is sat on, not walked through; the witch's hat is on her head and she rocks instead of waving a hand; every zone is dressed (`Dress`, `Horizon`, `Camp` in `world.tsx`). The text below describes the first delivery where it differs.
+
 **Not yet seen by the owner** (delivered 2026-11-15). It is **his own outline**
 ([`../../outlines/README.md`](../../outlines/README.md), "The race"), beat for beat and in his order. The script was
 written while he was away, so he has not read it: what the agent added to his outline is listed at the top of
@@ -8,7 +10,7 @@ first two buttons do, dad's sign).
 
 | File | What it is |
 |---|---|
-| `in-this-town-the-fastest-kid-wins.mp4` | **The film as delivered**: 1080×1920, 2:03, 67 shots on 50 lines, full sound. A copy of `renders/in-this-town-the-fastest-kid-wins.mp4` |
+| `in-this-town-the-fastest-kid-wins.mp4` | **The film as delivered**: 1080×1920, 2:20, reworked 2026-11-14, full sound. A copy of `renders/in-this-town-the-fastest-kid-wins.mp4` |
 | `source/` | A **snapshot** of the source: `narration.md`, `timing.json`, `kit.tsx`, `world.tsx`, `scene1.tsx` … `scene4.tsx`, `film.tsx`, `sound.json`, and `sound.gen.py`, the script that wrote the sound sheet |
 
 The film that renders lives in `src/videos/in-this-town-the-fastest-kid-wins/`.

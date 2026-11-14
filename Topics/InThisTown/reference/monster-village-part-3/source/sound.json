@@ -134,6 +134,16 @@
         "from": "10.deal",
         "mood": "town",
         "why": "Deal."
+      },
+      {
+        "from": "10.cabinet",
+        "mood": "tense",
+        "why": "The mansion arms."
+      },
+      {
+        "from": "10.cheer",
+        "mood": "playful",
+        "why": "Monsters cheer; two pillagers do not get it."
       }
     ]
   },
@@ -315,7 +325,7 @@
       "cue": "2.more",
       "sfx": "stomp",
       "word": "ten",
-      "trim": -4,
+      "trim": 0,
       "why": "Ten."
     },
     {
@@ -398,7 +408,7 @@
       "at": 0.2,
       "repeat": 14,
       "every": 0.15,
-      "trim": 1,
+      "trim": 4,
       "why": "Flat out on four fingers."
     },
     {
@@ -437,7 +447,7 @@
       "cue": "3.mud",
       "sfx": "thud",
       "word": "across",
-      "trim": -4,
+      "trim": -1,
       "why": "It lands on the planks."
     },
     {
@@ -495,6 +505,14 @@
       "sfx": "place",
       "word": "back",
       "why": "He puts it back."
+    },
+    {
+      "cue": "4.look",
+      "sfx": "thud",
+      "word": "put",
+      "at": -0.5,
+      "trim": 1,
+      "why": "The arm lands on the planks."
     },
     {
       "cue": "4.shout",
@@ -575,13 +593,14 @@
       "cue": "5.golem",
       "sfx": "stomp",
       "word": "iron",
-      "why": "The iron golem."
+      "why": "The iron golem.",
+      "trim": 3
     },
     {
       "cue": "5.golem",
       "sfx": "stomp",
       "word": "golem",
-      "trim": -2,
+      "trim": 1,
       "why": "It walks."
     },
     {
@@ -664,29 +683,37 @@
       "why": "It works."
     },
     {
+      "cue": "6.plug",
+      "sfx": "whoosh",
+      "at": 0.15,
+      "trim": 1,
+      "why": "The arm jumps over his chest."
+    },
+    {
       "cue": "6.teacher",
-      "sfx": "pop",
-      "word": "stopped",
-      "why": "The golem in his head turns into a question mark."
-    },
-    {
-      "cue": "6.how",
-      "sfx": "creak",
-      "at": 0.2,
-      "why": "The teacher bends right over."
+      "sfx": "blip",
+      "at": 0.1,
+      "trim": 1,
+      "why": "The thought over his head."
     },
     {
       "cue": "6.how",
       "sfx": "pop",
-      "word": "how",
-      "why": "How?"
+      "word": "wait",
+      "why": "The thought bursts."
+    },
+    {
+      "cue": "6.how",
+      "sfx": "blip",
+      "word": "arm",
+      "why": "An arm?"
     },
     {
       "cue": "6.shrug",
       "sfx": "bonk",
-      "at": 0.3,
+      "at": 0.1,
       "trim": -3,
-      "why": "Nobody knows."
+      "why": "He was."
     },
     {
       "cue": "7.mum",
@@ -707,7 +734,8 @@
       "at": 0.45,
       "repeat": 5,
       "every": 0.14,
-      "why": "They all move in."
+      "why": "They all move in.",
+      "trim": 3
     },
     {
       "cue": "7.plan",
@@ -851,9 +879,10 @@
     },
     {
       "cue": "9.mo",
-      "sfx": "chime",
+      "sfx": "hit",
       "word": "mo",
-      "why": "Mo!"
+      "trim": -5,
+      "why": "Mo, not moving."
     },
     {
       "cue": "9.reach",
@@ -897,7 +926,7 @@
       "sfx": "boing",
       "word": "laughed",
       "at": 0.2,
-      "trim": -5,
+      "trim": -1,
       "why": "Shoulders going."
     },
     {
@@ -1020,6 +1049,127 @@
       "word": "deal",
       "at": 0.2,
       "why": "Everybody goes up."
+    },
+    {
+      "cue": "10.cabinet",
+      "sfx": "scrape",
+      "word": "cabinet",
+      "at": -0.7,
+      "why": "The doors run apart."
+    },
+    {
+      "cue": "10.cabinet",
+      "sfx": "sparkle",
+      "word": "cabinet",
+      "trim": 0,
+      "why": "Steel."
+    },
+    {
+      "cue": "10.swords",
+      "sfx": "swish",
+      "at": 0.1,
+      "repeat": 3,
+      "every": 0.28,
+      "why": "Three swords go up."
+    },
+    {
+      "cue": "10.swords",
+      "sfx": "clank",
+      "word": "swords",
+      "trim": 0,
+      "why": "Steel."
+    },
+    {
+      "cue": "10.bows",
+      "sfx": "clank",
+      "word": "click",
+      "nth": 0,
+      "why": "Loaded."
+    },
+    {
+      "cue": "10.bows",
+      "sfx": "clank",
+      "word": "click",
+      "nth": 1,
+      "why": "Loaded."
+    },
+    {
+      "cue": "10.bows",
+      "sfx": "clank",
+      "word": "click",
+      "nth": 2,
+      "why": "Loaded."
+    },
+    {
+      "cue": "10.axes",
+      "sfx": "swish",
+      "at": 0.1,
+      "why": "The axe."
+    },
+    {
+      "cue": "10.axes",
+      "sfx": "thud",
+      "word": "shields",
+      "trim": 0,
+      "why": "The shield."
+    },
+    {
+      "cue": "10.axes",
+      "sfx": "whoosh",
+      "word": "banner",
+      "at": -0.4,
+      "why": "The banner goes up."
+    },
+    {
+      "cue": "10.ready",
+      "sfx": "hit",
+      "word": "ready",
+      "trim": -4,
+      "why": "Ready."
+    },
+    {
+      "cue": "10.cheer",
+      "sfx": "cheer",
+      "word": "cheered",
+      "at": -0.1,
+      "why": "Forty monsters."
+    },
+    {
+      "cue": "10.cheer",
+      "sfx": "boing",
+      "word": "jumped",
+      "repeat": 3,
+      "every": 0.3,
+      "trim": 1,
+      "why": "Up and down."
+    },
+    {
+      "cue": "10.cheer",
+      "sfx": "gust",
+      "word": "creeper",
+      "trim": 1,
+      "why": "A creeper hisses."
+    },
+    {
+      "cue": "10.two",
+      "sfx": "swish",
+      "word": "looked",
+      "trim": -3,
+      "why": "Two heads turn."
+    },
+    {
+      "cue": "10.why",
+      "sfx": "blip",
+      "at": 0.05,
+      "why": "Why?"
+    },
+    {
+      "cue": "10.dunno",
+      "sfx": "boing",
+      "word": "know",
+      "at": 0.2,
+      "trim": -5,
+      "why": "A shrug."
     },
     {
       "cue": "11.sub",

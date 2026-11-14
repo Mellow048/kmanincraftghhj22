@@ -1,7 +1,7 @@
 import { MinecraftAvatar, cam, storyScene } from "../../engine";
 import type { MinecraftAvatarProps, Vec3 } from "../../engine";
 import {
-  Baby, Board, CUP, DAY, DESERT, DustRing, FINISH, Field, Glint, Hero, LANE, LINE_X, OAK, Place, Player, Puffs, RIVER, ROBE, SHOE, START_X, Streaks, SubscribeSign,
+  BENCH, BENCH_TOP, BIRCH, Baby, Bits, Board, CUP, DAY, DESERT, DustRing, FIELDS, FINISH, Field, GATE_X, Glint, Hero, LANE, LINE_X, OAK, Place, Player, Puffs, RIVER, ROBE, SHOE, START_X, Streaks, SubscribeSign,
   Sweat, Villager, at, babyFace, ease, faceOf, hop, jolt, pop, ramp, timing, wordAt,
 } from "./kit";
 
@@ -46,6 +46,13 @@ const Parents: React.FC<{ t: number }> = ({ t }) => (
   </>
 );
 
+/** Where he celebrates, just past the line; and the two seats on the log (x from BENCH), with the height and depth that put thighs ON it. */
+const CELE_X = GATE_X + 2.6;
+const MEX = -0.6;
+const RVX = 0.6;
+const SIT_Y = BENCH_TOP - 0.4;
+const SIT_Z = 0.1;
+
 /** One stretch of the race: him at `x`, the field round him, and his place on a card over his head. */
 const Stretch: React.FC<{ o: Vec3; x: number; t: number; ahead: number; card?: string; cardAt?: number; baby?: boolean; gap?: number; face?: string; yaw?: number }> = ({
   o, x, t, ahead, card, cardAt = 0.1, baby = true, gap = 1.1, face = "brave", yaw = 0,
@@ -59,7 +66,8 @@ const Stretch: React.FC<{ o: Vec3; x: number; t: number; ahead: number; card?: s
 );
 
 /**
- * ACT 7, 8 and 9. The start line, the four stretches, and the feet of the runner in first place.
+ * ACT 7, 8 and 9. The start line, stage one of four (the road, the wheat, the birch wood, the rivers), second place,
+ * a log to sit on, and the feet of the runner who came first.
  */
 export const scene4 = storyScene(timing, {
   id: "scene4",
@@ -95,7 +103,7 @@ export const scene4 = storyScene(timing, {
       ...cam.top({ on: at(RIVER, 1, 0, LANE), height: 17, to: 13, spin: [-70, -95], fov: 54 }),
       zone: "river",
       look: DAY,
-      note: "The course, from the air: the track, and two rivers across it with a bridge over each.",
+      note: "The end of the first part, from the air: the line, the rest camp on the bank, and two rivers across the track with a bridge over each.",
       stage: () => null,
     },
     {
@@ -123,6 +131,19 @@ export const scene4 = storyScene(timing, {
       look: DAY,
       note: "The last village, down the track: the black and white gate, and behind it the cup on its stone.",
       stage: (t) => <Glint position={[CUP[0] - 0.3, 1.7, CUP[2]]} t={t - 0.4} size={1.6} />,
+    },
+    {
+      cue: "7.rest",
+      ...cam.orbit({ on: at(RIVER, GATE_X + 5, 1.1, -1.5), dist: 10.5, distTo: 8.5, yaw: 34, yawTo: 8, pitch: 15, pitchTo: 10, fov: 50 }),
+      zone: "river",
+      look: DAY,
+      note: "The rest camp at the rivers, empty, waiting: the line, tents, a log to sit on, cups of water on a table, and one villager with nothing to do yet.",
+      stage: (t) => (
+        <>
+          <Villager position={at(RIVER, GATE_X + 1.6, 0, -4.1)} rotationY={0.2} robe={ROBE.white} nod={Math.sin(t * 2) * 0.1} hat="straw" />
+          <Glint position={at(RIVER, GATE_X + 1.6, 1.0, -3.2)} t={t - 0.5} size={0.9} />
+        </>
+      ),
     },
     {
       cue: "7.twenty",
@@ -174,55 +195,55 @@ export const scene4 = storyScene(timing, {
       },
     },
 
-    // ------------------------------------------------------------------ 8. the race
+    // ------------------------------------------------------------------ 8. stage one
     {
       cue: "8.fifteen",
-      ...cam.truck({ on: at(RIVER, -13, 0.9, LANE), dist: 8.5, yaw: -24, pitch: 16, fov: 50, by: [V * 1.77, 0, 0] }),
+      ...cam.truck({ on: [24, 0.9, LANE], dist: 8.5, yaw: -24, pitch: 16, fov: 50, by: [V * 2.0, 0, 0] }),
       ease: "linear",
-      zone: "river",
+      zone: "village",
       look: DAY,
-      note: "The rivers: the lens flies beside the pack as it pours over the first bridge. He is near the back, and the card says so.",
-      stage: (t, { p }) => <Stretch o={RIVER} x={-13 + V * 1.77 * p} t={t} ahead={14} card="15th" gap={0.95} />,
+      note: "The road out of the village, flags over it, fences and vegetable plots going by: the lens flies beside the pack. He is near the back, and the card says so.",
+      stage: (t, { p }) => <Stretch o={[0, 0, 0]} x={24 + V * 2.0 * p} t={t} ahead={14} card="15th" gap={0.95} />,
     },
     {
       cue: "8.eleven",
-      ...cam.truck({ on: at(DESERT, -6, 0.8, LANE), dist: 9, yaw: 58, pitch: 26, fov: 48, by: [V * 1.3, 0, 0] }),
+      ...cam.truck({ on: at(FIELDS, -6, 0.8, LANE), dist: 9, yaw: 58, pitch: 26, fov: 48, by: [V * 1.3, 0, 0] }),
       ease: "linear",
-      zone: "desert",
+      zone: "fields",
       look: DAY,
-      note: "The desert, from in front and above, sand flying: the string of runners with him in the middle of it.",
+      note: "The wheat fields, from in front and above: gold on both sides, a windmill behind, the string of runners with him in the middle of it.",
       stage: (t, { p }) => (
         <>
-          <Stretch o={DESERT} x={-6 + V * 1.3 * p} t={t} ahead={10} card="11th" yaw={1.0} gap={1.25} />
-          <Sweat position={at(DESERT, -6 + V * 1.3 * p + 2.5, 1.3, LANE + 0.9)} t={t} />
+          <Stretch o={FIELDS} x={-6 + V * 1.3 * p} t={t} ahead={10} card="11th" yaw={1.0} gap={1.25} />
+          <Sweat position={at(FIELDS, -6 + V * 1.3 * p + 2.5, 1.3, LANE + 0.9)} t={t} />
         </>
       ),
     },
     {
       cue: "8.eleven",
       cut: wordAt("8.eleven", "Then") - 0.15,
-      ...cam.truck({ on: at(DESERT, 9, 0.9, LANE), dist: 5.2, yaw: -30, pitch: 8, fov: 48, by: [V * 0.9, 0, 0] }),
+      ...cam.truck({ on: at(FIELDS, 9, 0.9, LANE), dist: 5.2, yaw: -30, pitch: 8, fov: 48, by: [V * 0.9, 0, 0] }),
       ease: "linear",
-      zone: "desert",
+      zone: "fields",
       look: DAY,
-      note: "Lower and from the other side, the cactus going by: two more are behind him now.",
-      stage: (t, { p }) => <Stretch o={DESERT} x={9 + V * 0.9 * p} t={t} ahead={8} card="9th" cardAt={0.2} yaw={-0.5} gap={1.4} face="grin" />,
+      note: "Lower and from the other side, the fence and a scarecrow going by: two more are behind him now.",
+      stage: (t, { p }) => <Stretch o={FIELDS} x={9 + V * 0.9 * p} t={t} ahead={8} card="9th" cardAt={0.2} yaw={-0.5} gap={1.4} face="grin" />,
     },
     {
       cue: "8.six",
-      ...cam.truck({ on: at(OAK, -10, 0.9, LANE), dist: 5.6, yaw: 16, pitch: 4, fov: 50, by: [V * 1.5, 0, 0] }),
+      ...cam.truck({ on: at(BIRCH, -10, 0.9, LANE), dist: 5.6, yaw: 16, pitch: 4, fov: 50, by: [V * 1.5, 0, 0] }),
       ease: "linear",
-      zone: "oak",
+      zone: "birch",
       look: DAY,
-      note: "The dark oak forest: trunks whipping across the front of the lens, bars of light, and him sixth.",
-      stage: (t, { p }) => <Stretch o={OAK} x={-10 + V * 1.5 * p} t={t} ahead={5} card="6th" baby={false} yaw={0.3} gap={1.6} face="grin" />,
+      note: "The birch wood: white trunks whipping across the front of the lens, bars of light, and him sixth.",
+      stage: (t, { p }) => <Stretch o={BIRCH} x={-10 + V * 1.5 * p} t={t} ahead={5} card="6th" baby={false} yaw={0.3} gap={1.6} face="grin" />,
     },
     {
       cue: "8.six",
       cut: wordAt("8.six", "past") - 0.4,
-      ...cam.truck({ on: at(OAK, 3.2, 0.75, LANE + 0.3), dist: 3.2, yaw: 68, pitch: 6, fov: 44, by: [4 * 1.4, 0, 0] }),
+      ...cam.truck({ on: at(BIRCH, 3.2, 0.75, LANE + 0.3), dist: 3.2, yaw: 68, pitch: 6, fov: 44, by: [4 * 1.4, 0, 0] }),
       ease: "linear",
-      zone: "oak",
+      zone: "birch",
       look: DAY,
       note: "The baby, running for once, from in front: and the yellow shirt comes up behind it and goes by on the outside.",
       stage: (t, { p }) => {
@@ -230,9 +251,9 @@ export const scene4 = storyScene(timing, {
         const me = b - 2.6 + 4.4 * p;
         return (
           <>
-            <Baby position={at(OAK, b, 0, LANE + 0.6)} rotationY={E} walk={b * 2} turn={me > b - 0.6 ? -0.9 : 0} lean={0.3} />
-            <Hero position={at(OAK, me, 0, LANE - 0.45)} rotationY={E} animation="run" animDistance={me * 1.4 + 40} face="grin" headYaw={me > b - 0.8 ? 0.7 : 0} shoes={SHOE} shoeGlow={0.6} />
-            <Streaks position={at(OAK, me - 0.6, 0.6, LANE - 0.45)} yaw={E} t={t} n={6} spread={0.5} speed={10} />
+            <Baby position={at(BIRCH, b, 0, LANE + 0.6)} rotationY={E} walk={b * 2} turn={me > b - 0.6 ? -0.9 : 0} lean={0.3} />
+            <Hero position={at(BIRCH, me, 0, LANE - 0.45)} rotationY={E} animation="run" animDistance={me * 1.4 + 40} face="grin" headYaw={me > b - 0.8 ? 0.7 : 0} shoes={SHOE} shoeGlow={0.6} />
+            <Streaks position={at(BIRCH, me - 0.6, 0.6, LANE - 0.45)} yaw={E} t={t} n={6} spread={0.5} speed={10} />
           </>
         );
       },
@@ -240,138 +261,239 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.six",
       cut: wordAt("8.six", "waved") - 0.35,
-      ...cam.truck({ on: at(OAK, 12, 1.15, LANE), dist: 2.3, yaw: 74, pitch: 2, fov: 40, by: [V * 0.9, 0, 0] }),
+      ...cam.truck({ on: at(BIRCH, 12, 1.15, LANE), dist: 2.3, yaw: 74, pitch: 2, fov: 40, by: [V * 0.9, 0, 0] }),
       ease: "linear",
-      zone: "oak",
+      zone: "birch",
       look: DAY,
       note: "Him, close, running at us: he does not look back, he just puts one hand up and waves it. The baby is a small green dot behind.",
       stage: (t, { p }) => {
         const x = 12 + V * 0.9 * p;
         return (
           <>
-            <Hero position={at(OAK, x, 0, LANE)} rotationY={E} animation="run" arms="wave" animDistance={x + 40} face="laugh" gaze={0} shoes={SHOE} />
-            <Baby position={at(OAK, x - 3.2 - t * 2.4, 0, LANE + 0.5)} rotationY={E} walk={x * 2} />
+            <Hero position={at(BIRCH, x, 0, LANE)} rotationY={E} animation="run" arms="wave" animDistance={x + 40} face="laugh" gaze={0} shoes={SHOE} />
+            <Baby position={at(BIRCH, x - 3.2 - t * 2.4, 0, LANE + 0.5)} rotationY={E} walk={x * 2} />
           </>
         );
       },
     },
     {
       cue: "8.two",
-      ...cam.truck({ on: at(FINISH, -40, 0.95, LANE), dist: 4.6, yaw: 40, pitch: 8, fov: 46, by: [V * 0.9, 0, 0] }),
+      ...cam.truck({ on: at(RIVER, -56, 0.95, LANE), dist: 4.6, yaw: 40, pitch: 8, fov: 46, by: [V * 0.9, 0, 0] }),
       ease: "linear",
-      zone: "finish",
+      zone: "river",
       look: DAY,
       note: "Open ground, nobody round him any more: the card says second, and he cannot believe it.",
       stage: (t, { p }) => {
-        const x = -40 + V * 0.9 * p;
+        const x = -56 + V * 0.9 * p;
         return (
           <>
-            <Field x={FINISH[0] + x - 3} z={FINISH[2] + LANE} ahead={0} d={x} gap={1.5} />
-            <Hero position={at(FINISH, x, hop(t, 0.25, 0.3, 0.35), LANE)} rotationY={E} animation="run" animDistance={x + 80} face="wow" shoes={SHOE} shoeGlow={0.6} />
-            <Place text="2nd" position={at(FINISH, x + 0.2, 2.2, LANE)} rotationY={0.6} scale={0.7 * pop(t, 0.08)} />
+            <Field x={RIVER[0] + x - 3} z={RIVER[2] + LANE} ahead={0} d={x} gap={1.5} />
+            <Hero position={at(RIVER, x, hop(t, 0.25, 0.3, 0.35), LANE)} rotationY={E} animation="run" animDistance={x + 80} face="wow" shoes={SHOE} shoeGlow={0.6} />
+            <Place text="2nd" position={at(RIVER, x + 0.2, 2.2, LANE)} rotationY={0.6} scale={0.7 * pop(t, 0.08)} />
           </>
         );
       },
     },
     {
       cue: "8.two",
-      cut: wordAt("8.two", "last") - 0.5,
-      ...cam.truck({ on: at(FINISH, -16, 1.3, LANE), dist: 3.2, yaw: -90, pitch: 8, fov: 50, by: [V * 1.1, 0, 0] }),
+      cut: wordAt("8.two", "rivers") - 0.5,
+      ...cam.truck({ on: at(RIVER, -46, 1.3, LANE), dist: 3.2, yaw: -90, pitch: 8, fov: 50, by: [V * 1.0, 0, 0] }),
       ease: "linear",
-      zone: "finish",
+      zone: "river",
       look: DAY,
-      note: "From behind his shoulders, running with him: the houses of the last village, the gate, and the gold under it.",
+      note: "From behind his shoulders, running with him: down the track, the tents of the rest camp, the black and white line, and behind it the blue of the first river and its bridge.",
       stage: (t, { p }) => {
-        const x = -16 + V * 1.1 * p;
+        const x = -46 + V * 1.0 * p;
         return (
           <>
-            <Hero position={at(FINISH, x, 0, LANE - 0.5)} rotationY={E} animation="run" animDistance={x + 80} face="brave" shoes={SHOE} shoeGlow={0.6} />
-            <Rival position={at(FINISH, x + 7, 0, LANE + 0.5)} rotationY={E} animation="run" animDistance={x + 60} />
+            <Hero position={at(RIVER, x, 0, LANE - 0.5)} rotationY={E} animation="run" animDistance={x + 80} face="brave" shoes={SHOE} shoeGlow={0.6} />
+            <Rival position={at(RIVER, x + 7, 0, LANE + 0.5)} rotationY={E} animation="run" animDistance={x + 60} />
           </>
         );
       },
     },
     {
       cue: "8.two",
-      cut: wordAt("8.two", "trophy") - 0.55,
-      ...cam.push({ on: [CUP[0], 1.55, CUP[2]], dist: 3.4, to: 2.5, yaw: -62, pitch: -4, fov: 40 }),
-      zone: "finish",
+      cut: wordAt("8.two", "flag") - 0.6,
+      ...cam.push({ on: at(RIVER, GATE_X, 3.3, LANE), dist: 9, to: 6.5, yaw: -84, pitch: -10, fov: 44 }),
+      zone: "river",
       look: DAY,
-      note: "The cup, the same size as in the first second of the film: this time it is close enough to touch.",
+      note: "The line, from down the track, looking up at it: the black and white flag across the top, the little flags behind, the board that says STAGE 1.",
       stage: (t) => (
         <>
-          <Glint position={[CUP[0] - 0.25, 1.75, CUP[2] + 0.1]} t={t - 0.1} size={1.5} />
-          <Glint position={[CUP[0] - 0.2, 1.5, CUP[2] - 0.15]} t={t - 0.5} size={1.1} />
+          <Glint position={at(RIVER, GATE_X - 0.2, 3.7, LANE - 1)} t={t - 0.1} size={1.6} />
+          <Glint position={at(RIVER, GATE_X - 0.2, 3.6, LANE + 1.2)} t={t - 0.45} size={1.2} />
         </>
       ),
     },
     {
       cue: "8.one",
-      ...cam.truck({ on: at(FINISH, -7, 1.0, LANE), dist: 4.2, yaw: -64, pitch: 16, fov: 48, by: [V * 1.73, 0, 0] }),
+      ...cam.truck({ on: at(RIVER, -39, 1.0, LANE), dist: 4.2, yaw: -64, pitch: 16, fov: 48, by: [V * 2.6, 0, 0] }),
       ease: "linear",
-      zone: "finish",
+      zone: "river",
       look: DAY,
-      note: "Over his shoulder and down the track: one back in front of him. Black shirt, white hair. He is closing on it.",
+      note: "Over his shoulder and down the track: one back in front of him. Black shirt, white hair. He pushes. The back does not get any nearer: it gets further.",
       stage: (t, { p }) => {
-        const x = -7 + V * 1.73 * p;
+        const x = -39 + V * 2.6 * p;
+        const cannot = wordAt("8.one", "could");
+        const gap = 3.6 + 1.5 * ease(ramp(t, cannot - 0.2, cannot + 1.0));
         return (
           <>
-            <Hero position={at(FINISH, x, 0, LANE - 0.4)} rotationY={E} animation="run" animDistance={x + 80} face="brave" shoes={SHOE} shoeGlow={0.6} />
-            <Rival position={at(FINISH, x + 4.2 - t * 1.2, 0, LANE + 0.4)} rotationY={E} animation="run" animDistance={x + 60} />
-            <Puffs position={at(FINISH, x + 3.6, 0.05, LANE + 0.4)} color="#b79d63" count={3} rise={0.25} spread={0.2} size={0.06} speed={2} opacity={0.5} />
+            <Hero position={at(RIVER, x, 0, LANE - 0.4)} rotationY={E} animation="run" animDistance={x + 80} face={t > cannot ? "ouch" : "brave"} shoes={SHOE} shoeGlow={0.6} />
+            <Rival position={at(RIVER, x + gap, 0, LANE + 0.4)} rotationY={E} animation="run" animDistance={x + 60} />
+            <Puffs position={at(RIVER, x + gap - 0.6, 0.05, LANE + 0.4)} color="#b79d63" count={3} rise={0.25} spread={0.2} size={0.06} speed={2} opacity={0.5} />
+            <Sweat position={at(RIVER, x, 1.3, LANE - 0.4)} t={t} much={0.6} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "8.line",
+      ...cam.push({ on: at(RIVER, GATE_X + 0.8, 1.25, LANE), dist: 6.4, to: 5.6, yaw: 22, pitch: 7, fov: 52 }),
+      zone: "river",
+      look: DAY,
+      note: "The line, side on, the lens standing still for once: black shirt through it, 1st over his head. A second and a half later, yellow shirt, and 2nd.",
+      stage: (t) => {
+        const first = wordAt("8.line", "first");
+        const second = wordAt("8.line", "second");
+        // Flat out up to the line, then slowing to a stop a few metres past it.
+        const run = (at0: number, v: number, stop: number): number => (t < at0 ? (t - at0) * v : stop * (1 - Math.exp(-(t - at0) * v / stop)));
+        const r = GATE_X + run(first, 6.5, 2.0);
+        const m = GATE_X + run(second, 6.2, 1.2);
+        return (
+          <>
+            <Rival position={at(RIVER, r, 0, LANE + 0.5)} rotationY={E} animation={t < first + 0.5 ? "run" : "walk"} animDistance={r + 60} face="calm" />
+            <Hero position={at(RIVER, m, 0, LANE - 0.4)} rotationY={E} animation={t < second + 0.45 ? "run" : "walk"} animDistance={m + 80} face={t > second ? "wow" : "brave"} shoes={SHOE} shoeGlow={0.6} />
+            <Place text="1st" position={at(RIVER, r + 0.1, 2.35, LANE + 0.5)} rotationY={0.3} scale={0.6 * pop(t, first)} />
+            <Place text="2nd" position={at(RIVER, m + 0.1, 2.15, LANE - 0.4)} rotationY={0.3} scale={0.6 * pop(t, second)} />
+            <Bits position={at(RIVER, GATE_X, 2.6, LANE)} t={t - first} color="#f4f4f4" count={12} power={2.2} />
+            <Bits position={at(RIVER, GATE_X, 2.6, LANE)} t={t - second} color="#f2c230" count={16} power={2.6} seed={3} />
+            <DustRing position={at(RIVER, GATE_X + 0.3, 0.05, LANE - 0.4)} t={t - second} size={1.2} color="#b79d63" />
+          </>
+        );
+      },
+    },
+    {
+      cue: "8.cele",
+      ...cam.push({ on: at(RIVER, CELE_X, 1.05, LANE - 0.4), dist: 3.9, to: 3.2, yaw: 6, pitch: 3, fov: 48 }),
+      zone: "river",
+      look: DAY,
+      note: "HE CELEBRATES. Square on, the line and the flags behind him: both fists up, 2nd as big as the frame over his head, a jump on 'jumped', and on 'danced' he goes round and round on the spot.",
+      stage: (t) => {
+        const jumped = wordAt("8.cele", "jumped");
+        const danced = wordAt("8.cele", "danced");
+        const y = hop(t, 0.1, 0.3, 0.3) + hop(t, jumped - 0.05, 0.45, 0.6) + (t > danced ? 0.12 * Math.abs(Math.sin((t - danced) * 9)) : 0);
+        const spin = t > danced ? (t - danced) * 7 : 0;
+        return (
+          <>
+            <Hero position={at(RIVER, CELE_X, y, LANE - 0.4)} rotationY={spin} animation="cheer" face="laugh" shoes={SHOE} shoeGlow={0.7} />
+            <Place text="2nd!" position={at(RIVER, CELE_X, 2.35, LANE - 0.4)} scale={0.8 * pop(t, 0.05)} />
+            {[0, 1, 2].map((i) => (
+              <Bits key={i} position={at(RIVER, CELE_X - 0.8 + i * 0.8, 2.0, LANE - 0.6)} t={t - [0.1, jumped, danced][i]} color={["#f2c230", "#e0433a", "#6fa8f0"][i]} count={14} power={2.4} seed={i + 5} />
+            ))}
+            <DustRing position={at(RIVER, CELE_X, 0.05, LANE - 0.4)} t={t - jumped - 0.5} size={1} color="#b79d63" />
+            <Rival position={at(RIVER, GATE_X + 3.3, 0, -2.2)} rotationY={2.4} animation="idle" face="calm" />
+          </>
+        );
+      },
+    },
+    {
+      cue: "8.okay",
+      ...cam.push({ on: faceOf(at(RIVER, CELE_X, 0, LANE - 0.4)), dist: 2.0, to: 1.6, yaw: -14, pitch: -3, fov: 40 }),
+      zone: "river",
+      look: DAY,
+      note: "His face, close, getting his breath: a small shrug on 'not first'. Then the grin comes back, bigger, and he nods. It was okay.",
+      stage: (t) => {
+        const okay = wordAt("8.okay", "okay");
+        return (
+          <Hero position={at(RIVER, CELE_X, 0, LANE - 0.4)} rotationY={-0.15} animation={t < okay - 0.25 ? "shrug" : "idle"} face={t < okay - 0.25 ? "calm" : "grin"} headPitch={0.25 * Math.sin(ramp(t, okay - 0.1, okay + 0.5) * Math.PI * 2)} gaze={0} shoes={SHOE} />
+        );
+      },
+    },
+    {
+      cue: "8.sit",
+      ...cam.push({ on: [BENCH[0] - 0.2, 0.85, BENCH[2]], dist: 5.6, to: 4.6, yaw: 14, pitch: 9, fov: 48 }),
+      zone: "river",
+      look: DAY,
+      note: "The log in the rest camp, from the front, the river running past behind it. He walks over, sits on it properly (on top, feet hanging), swings his legs, and looks back up the track for the others. Nobody yet.",
+      stage: (t) => {
+        const sat = wordAt("8.sit", "sat");
+        const k = ease(ramp(t, 0, sat));
+        const waited = wordAt("8.sit", "waited");
+        const x = BENCH[0] + MEX - 2.6 * (1 - k);
+        return (
+          <>
+            {t < sat ? (
+              <Hero position={[x, 0, BENCH[2] + 0.75]} rotationY={E} animation="walk" animDistance={2.6 * k} face="grin" shoes={SHOE} shoeGlow={0.5} />
+            ) : (
+              <Hero position={[BENCH[0] + MEX, SIT_Y, BENCH[2] + SIT_Z]} rotationY={0} animation="sit" face="smile" headYaw={-0.9 * ease(ramp(t, waited - 0.3, waited + 0.1))} shoes={SHOE} shoeGlow={0.5} />
+            )}
+            <DustRing position={[BENCH[0] + MEX, BENCH_TOP + 0.02, BENCH[2]]} t={t - sat} size={0.5} color="#c9a36a" />
+            <Rival position={at(RIVER, GATE_X + 2.6, 0, -2.6)} rotationY={0.4} animation="idle" face="calm" />
           </>
         );
       },
     },
     {
       cue: "8.look",
-      ...cam.truck({ on: faceOf(at(FINISH, 1.4, 0, LANE - 0.4)), dist: 1.5, yaw: 80, pitch: -4, fov: 36, by: [V * 1.33, 0, 0] }),
-      ease: "linear",
-      zone: "finish",
+      ...cam.push({ on: [BENCH[0] + (MEX + RVX) / 2, 0.95, BENCH[2]], dist: 3.6, to: 3.1, yaw: -10, pitch: 5, fov: 46 }),
+      zone: "river",
       look: DAY,
-      note: "His face, from in front and a little below: the eyes go down.",
-      stage: (t, { p }) => {
-        const x = 1.4 + V * 1.33 * p;
-        return <Hero position={at(FINISH, x, 0, LANE - 0.4)} rotationY={E} animation="run" animDistance={x + 80} face={t > 0.7 ? "wow" : "brave"} headPitch={0.5 * ease(ramp(t, 0.3, 0.7))} headYaw={-0.3} gaze={0} shoes={SHOE} />;
+      note: "Closer, still from the front. The winner comes in from the side and sits down on the same log, an arm's length away, without a word. The boy's head turns to him, and then goes down: to his feet.",
+      stage: (t) => {
+        const sat = wordAt("8.look", "sat");
+        const feet = wordAt("8.look", "feet");
+        const k = ease(ramp(t, 0, sat));
+        const down = ease(ramp(t, feet - 0.45, feet));
+        return (
+          <>
+            <Hero position={[BENCH[0] + MEX, SIT_Y, BENCH[2] + SIT_Z]} rotationY={0} animation="sit" face={down > 0.5 ? "calm" : "smile"} headYaw={0.75 * ease(ramp(t, sat - 0.2, sat + 0.2))} headPitch={0.5 * down} gaze={0} shoes={SHOE} shoeGlow={0.5} />
+            {t < sat ? (
+              <Rival position={[BENCH[0] + RVX + 2.2 * (1 - k), 0, BENCH[2] + 0.75]} rotationY={-E} animation="walk" animDistance={2.2 * k} face="calm" />
+            ) : (
+              <Rival position={[BENCH[0] + RVX, SIT_Y - 0.04, BENCH[2] + SIT_Z]} rotationY={0} animation="sit" face="calm" />
+            )}
+          </>
+        );
       },
     },
     {
       cue: "8.same",
-      ...cam.truck({ on: at(FINISH, -4.6, 0.36, LANE + 0.4), dist: 2.6, yaw: 30, pitch: 7, fov: 44, by: [V * 2.17, 0, 0] }),
-      ease: "linear",
-      zone: "finish",
+      ...cam.push({ on: [BENCH[0] + (MEX + RVX) / 2, 0.38, BENCH[2] + 0.4], dist: 4.4, to: 3.8, yaw: 3, pitch: 5, fov: 44 }),
+      zone: "river",
       look: DAY,
-      note: "The ground, at running speed: a pair of feet in red shoes with a green light on the side. They are not his.",
-      stage: (t, { p }) => {
-        const x = -4.6 + V * 2.17 * p;
-        const k = ease(ramp(t, wordAt("8.same", "same") - 0.2, wordAt("8.same", "same") + 0.2));
+      note: "Four feet hanging off a log, from the front, close: two red shoes with a green light on the side, and two more red shoes with a green light on the side. Hold it, with nothing said, for a full second.",
+      stage: (t) => {
+        const same = wordAt("8.same", "same");
+        const k = ease(ramp(t, same - 0.2, same + 0.2));
         return (
           <>
-            <Rival position={at(FINISH, x, 0, LANE + 0.4)} rotationY={E} animation="run" animDistance={x + 60} shoeGlow={0.5 + k * 0.5} />
-            <Hero position={at(FINISH, x - 2.1, 0, LANE - 0.5)} rotationY={E} animation="run" animDistance={x + 80} face="wow" shoes={SHOE} shoeGlow={0.5 + k * 0.5} />
-                        <Glint position={at(FINISH, x + 0.1, 0.15, LANE + 0.6)} t={t - wordAt("8.same", "same")} size={0.8} />
+            <Hero position={[BENCH[0] + MEX, SIT_Y, BENCH[2] + SIT_Z]} rotationY={0} animation="sit" face="wow" headPitch={0.5} shoes={SHOE} shoeGlow={0.5 + 0.5 * k} />
+            <Rival position={[BENCH[0] + RVX, SIT_Y - 0.04, BENCH[2] + SIT_Z]} rotationY={0} animation="sit" face="calm" shoeGlow={0.5 + 0.5 * k} />
+            <Glint position={[BENCH[0] + RVX + 0.1, 0.2, BENCH[2] + 0.5]} t={t - same} size={0.8} />
+            <Glint position={[BENCH[0] + MEX - 0.1, 0.2, BENCH[2] + 0.5]} t={t - same - 0.25} size={0.8} />
           </>
         );
       },
     },
     {
       cue: "9.sub",
-      ...cam.truck({ on: at(FINISH, 1.6, 1.15, LANE + 0.4), dist: 3.4, yaw: 60, pitch: 0, fov: 42, by: [3 * 1.8, 0, 0] }),
-      ease: "linear",
-      zone: "finish",
+      ...cam.push({ on: [BENCH[0] + (MEX + RVX) / 2, 1.0, BENCH[2]], dist: 3.3, to: 3.0, yaw: -6, pitch: 3, fov: 44 }),
+      zone: "river",
       look: DAY,
-      note: "The runner in front turns his head and looks back at him, and smiles. The red sign comes up over the two of them.",
-      stage: (t, { p }) => {
-        const x = 1.6 + 3 * 1.8 * p;
-        return (
-          <>
-            <Rival position={at(FINISH, x, 0, LANE + 0.4)} rotationY={E} animation="run" animDistance={x + 60} face="grin" headYaw={0.9 * ease(ramp(t, 0.1, 0.5))} animSpeed={0.5} />
-            <Hero position={at(FINISH, x - 1.5, 0, LANE - 0.3)} rotationY={E} animation="run" animDistance={x + 80} face="fear" shoes={SHOE} shoeGlow={1} />
-            <SubscribeSign position={at(FINISH, x + 0.2, 1.85, LANE + 0.7)} rotationY={1.0} scale={0.6 * pop(t, 0.25)} tilt={jolt(t, 0.3, 0.1)} />
-          </>
-        );
-      },
+      note: "The two of them on the log. The winner turns his head, looks at the boy, and smiles. The boy looks straight at us. The red sign comes up over them.",
+      stage: (t) => (
+        <>
+          <Hero position={[BENCH[0] + MEX, SIT_Y, BENCH[2] + SIT_Z]} rotationY={0} animation="sit" face="fear" gaze={0} shoes={SHOE} shoeGlow={1} />
+          <Rival position={[BENCH[0] + RVX, SIT_Y - 0.04, BENCH[2] + SIT_Z]} rotationY={0} animation="sit" face="grin" headYaw={-0.9 * ease(ramp(t, 0.1, 0.5))} shoeGlow={1} />
+          <SubscribeSign position={[BENCH[0] + (MEX + RVX) / 2, 2.0, BENCH[2] + 0.2]} scale={0.6 * pop(t, 0.25)} tilt={jolt(t, 0.3, 0.1)} />
+        </>
+      ),
     },
   ],
 });
+void DESERT;
+void OAK;
+void FINISH;
+void Board;
 void LINE_X;

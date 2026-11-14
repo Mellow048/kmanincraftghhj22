@@ -32,7 +32,8 @@ export const HELM: Vec3 = [SPOT[0] + 0.45, 0, SPOT[2] - 0.1];
 /** Where the boy kneels with the helmet. */
 export const KNEEL: Vec3 = [SPOT[0] + 0.45, 0, SPOT[2] - 0.3];
 /** The tree the arm hides behind: south-west of him, behind his back. The shots draw it (`ArmTree`). */
-export const ARMTREE: Vec3 = [-5.0, 0, 5.0];
+/** Clear of the well (x −7.2…−4.8, z 5.8…8.2): the arm is 1.2 m long and must not lie in its wall. */
+export const ARMTREE: Vec3 = [-3.2, 0, 4.5];
 /** Where the arm sits, at the foot of that tree on the side away from him. */
 export const ARM_HIDE: Vec3 = [ARMTREE[0] - 0.55, 0, ARMTREE[2] + 0.35];
 /** Where the arm peeks out from. */

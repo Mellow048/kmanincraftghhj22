@@ -299,7 +299,7 @@ export const scene1 = storyScene(timing, {
       cue: "2.later",
       ...cam.push({ on: [KNEEL[0] + 0.5, 0.3, KNEEL[2] + 1.5], dist: 3.0, to: 4.4, yaw: -100, pitch: 5, fov: 50 }),
       zone: Z3.street,
-      look: DAY,
+      look: DUSK,
       note: "On the ground behind the arm, pulling back: it stands up on its elbow in an empty street and watches the last of them go, very small, at the far end. Then it turns round.",
       stage: (t) => {
         const later = wordAt("2.later", "later");

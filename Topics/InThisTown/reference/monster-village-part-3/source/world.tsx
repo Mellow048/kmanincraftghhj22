@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, Glow, GodRay, LightPool, Vox, Zone } from "../../engine";
+import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone } from "../../engine";
 import { DarkOakForest, Hut, Mansion, MansionHall, Moon, Stars } from "../../../Topics/InThisTown";
 import { World as PartTwo } from "../in-this-town-monster-village-part-2/world";
 import { CAGE_X, CASTLE, Cage, MANSION, MHALL } from "./kit";
@@ -61,9 +61,73 @@ const Tower: React.FC<{ at: [number, number]; height?: number; size?: number; ga
   </group>
 );
 
+/** A number 0…1 from a seed: the same every frame. */
+const rnd = (i: number): number => {
+  const x = Math.sin(i * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+};
+/**
+ * The country the castle stands in, so that no shot from above can see the end of the world: grass to the horizon,
+ * a forest all the way round outside the walls, a road out of the gate, a river, fields, and hills behind.
+ * Nothing stands inside the yard or straight south of the cages, where the cameras are.
+ */
+const Country: React.FC = () => {
+  const trees: Array<[number, number, number]> = [];
+  for (let i = 0; i < 150; i++) {
+    const a = rnd(i) * Math.PI * 2;
+    const r = 27 + rnd(i + 500) * 60;
+    const x = Math.cos(a) * r * 1.1;
+    const z = -2 + Math.sin(a) * r;
+    // Keep the road north of the gate and the ground south of the cages clear.
+    if (Math.abs(x) < 3.5 && z < -14) continue;
+    if (Math.abs(x) < 16 && z > 6) continue;
+    trees.push([x, z, 4 + rnd(i + 900) * 3.5]);
+  }
+  return (
+    <>
+      <Block position={[0, -0.32, 0]} size={[700, 0.5, 700]} color="#5e9a3c" castShadow={false} />
+      {/* Patches, so the grass is not one flat colour. */}
+      {Array.from({ length: 26 }, (_, i) => (
+        <Block key={`p${i}`} position={[(rnd(i + 40) - 0.5) * 190, -0.06, (rnd(i + 80) - 0.5) * 170]} size={[8 + rnd(i + 3) * 14, 0.02, 6 + rnd(i + 7) * 12]} color={i % 2 ? "#689f43" : "#548c36"} castShadow={false} />
+      ))}
+      {/* The road north out of the gate, and a river across it. */}
+      <Vox kind="path" position={[0, -0.04, -60]} size={[3.2, 0.06, 88]} />
+      <Block position={[0, -0.05, -52]} size={[400, 0.04, 7]} color="#3f7fd8" castShadow={false} />
+      <Vox kind="planks" position={[0, 0.05, -52]} size={[4, 0.2, 8]} />
+      {/* Fields outside the east and west walls. */}
+      {[-1, 1].map((s) => (
+        <group key={s} position={[s * 24.5, 0, -3]}>
+          <Block position={[0, -0.03, 0]} size={[7, 0.06, 13]} color="#6b4a2a" castShadow={false} />
+          {[-2.4, -0.8, 0.8, 2.4].map((x) => (
+            <Block key={x} position={[x, 0.25, 0]} size={[0.7, 0.5, 12]} color="#d9b84a" castShadow={false} />
+          ))}
+        </group>
+      ))}
+      {trees.map(([x, z, height], i) => (
+        <Tree key={i} position={[x, 0, z]} height={height} leaf={i % 3 === 0 ? "#3f7f2d" : i % 3 === 1 ? "#4a8c33" : "#356e27"} />
+      ))}
+      {/* Hills, in steps, a long way off on every side. */}
+      {Array.from({ length: 18 }, (_, i) => {
+        const a = (i / 18) * Math.PI * 2;
+        const r = 105 + rnd(i + 60) * 30;
+        const w = 34 + rnd(i + 20) * 26;
+        const hgt = 7 + rnd(i + 30) * 12;
+        return (
+          <group key={`h${i}`} position={[Math.cos(a) * r, 0, Math.sin(a) * r]}>
+            <Block position={[0, hgt / 4, 0]} size={[w, hgt / 2, w]} color="#4f8a35" castShadow={false} />
+            <Block position={[0, hgt * 0.7, 0]} size={[w * 0.62, hgt * 0.5, w * 0.62]} color="#5a9440" castShadow={false} />
+            <Block position={[0, hgt * 1.05, 0]} size={[w * 0.3, hgt * 0.3, w * 0.3]} color={hgt > 14 ? "#e8eef2" : "#66a048"} castShadow={false} />
+          </group>
+        );
+      })}
+    </>
+  );
+};
+
 const Castle: React.FC = () => (
   <group position={CASTLE}>
     <Vox kind="grass" position={[0, -0.25, -2]} size={[60, 0.5, 52]} />
+    <Country />
     <Vox kind="path" position={[0, 0.02, -5.2]} size={[3.2, 0.06, 13.5]} />
     <Vox kind="path" position={[0, 0.021, 1.2]} size={[16, 0.06, 5.4]} />
     <Wall at={[0, -14]} length={36} along="x" />

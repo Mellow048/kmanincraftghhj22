@@ -55,6 +55,10 @@ export type VillagerProps = {
   /** Sitting, the way a doll sits: legs straight out in front. Put `position` 0.56 m × scale under the seat. */
   sit?: boolean;
   phase?: number;
+  /** Anything worn on the head. It is drawn in the head, so it nods and turns with it: the top of the head is 10 × U up. */
+  headwear?: React.ReactNode;
+  /** Anything carried on the folded sleeves, since no hand ever comes out: drawn level, just in front of them. */
+  carry?: React.ReactNode;
 };
 
 /**
@@ -78,6 +82,8 @@ export const Villager: React.FC<VillagerProps> = ({
   kid = false,
   sit = false,
   phase = 0,
+  headwear,
+  carry,
 }) => {
   const t = useFilmTime();
   const u = U;
@@ -120,6 +126,7 @@ export const Villager: React.FC<VillagerProps> = ({
             <Block key={s} position={[s * 6 * u, -2 * u, 0]} size={[4 * u, 8 * u, 4 * u]} color={sleeve} />
           ))}
           <Block position={[0, -4 * u, 0]} size={[8 * u, 4 * u, 4 * u]} color={sleeve} />
+          {carry ? <group position={[0, -1.6 * u, 3.2 * u]} rotation={[0.75 + strain * 0.3, 0, 0]}>{carry}</group> : null}
           {/* The cuffs: a dark seam where each sleeve ends. No hand ever comes out of it. */}
           {[-1, 1].map((s) => (
             <Block key={`cuff${s}`} position={[s * 4 * u, -4 * u, 0]} size={[0.8 * u, 4.3 * u, 4.3 * u]} color={shade(robe, -0.42)} castShadow={false} />
@@ -152,6 +159,7 @@ export const Villager: React.FC<VillagerProps> = ({
             </>
           ) : null}
           {hat === "wide" ? <StrawHat position={[0, 10 * u, 0]} width={1.1} crown={0.52} /> : null}
+          {headwear}
         </group>
       </group>
     </group>

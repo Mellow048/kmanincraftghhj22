@@ -103,3 +103,16 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   thing what was added. Do not wait.
 - **2026-11-15.** Monster Village part 3 has not been reviewed by him. Its sound was rebuilt after delivery (the sheet
   used `offset`, which the builder ignores; the key is `at`): same picture, new audio track.
+- **2026-11-14, his review of Monster Village part 3.** Fixed: the arm stood inside the well (it hides behind a tree
+  now); the light changed inside one evening; nobody could tell how the skull went back on or how the arm plugged in;
+  the MOVED shot could not be read; the castle from above stood on nothing; the reach is staged from the front with the
+  friend out cold; the mansion ending is longer (weapons, the monsters cheer, two pillagers who do not get it). 2:36.
+  Lesson: a prop that hides must be checked from every camera in the scene, and a place seen from above needs country
+  round it.
+- **2026-11-14, his review of the race film.** "Don't rush it": part 1 now ends at the rivers, in second place, and he
+  is happy with it; the winner has the same shoes; one silent second; subscribe. He plans three parts or more, with a
+  rest at every biome. Faults he found, all of one kind, **a body that does not touch what it is using**: a push-up in
+  the air, sitting through a stump, a hat that stayed behind when the witch moved, hands on a villager who has none.
+  Check contact in the stills before delivery. He likes the motion; he wants more in the background (every zone now has
+  ground dressing, a far ring of hills and its own landmarks).
+- Nobody has listened to either new mix. Monster Village 1, 2 and Robot at 18 still have the `offset` sound fault.

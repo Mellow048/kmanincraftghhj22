@@ -1,5 +1,7 @@
 # Narration — In This Town, I Live in a Monster Village, Part 3
 
+**Rework 2026-11-14 (his review).** Added by the agent, not in his outline: the pillager banner, the creeper that nearly goes off in the cheer, the last word "He was."; the teacher now says he is "still thinking about the golem" and "Am I actually believing an arm?". The mansion ending (weapons, cheer, two confused pillagers) is his.
+
 **Status: the owner's own outline (2026-11-14), with the mansion scene he added after reading draft 2** ("since its 2 minutes, i think we can squeeze in the pillager part ... show the monsters in his village making a deal with the pillager in a mansion"). His two pictures of the mansion are in `Topics/InThisTown/outlines/monster-village-part-3-mansion/`. Draft 1 (the camp, the
 cage, "Son") was the agent's story and he replaced it. His outline is kept word for word in
 `Topics/InThisTown/outlines/monster-village-part-3.md`.
@@ -16,7 +18,7 @@ two.
 - The teller wears YELLOW. Mo is the man in the straw hat and the red scarf.
 - **The hideout scenes are things the boy was not there for.** The owner asked for them, so the teller says so out
   loud: "I only heard about it later" (2.later). That keeps the rule that he never shows what he could not know.
-- **`# clip 08-cell wait 3.0`** is five seconds with no voice, and it belongs to shot `7.plan`: the monsters lean in and
+- **`# clip 08-cell wait 2.2`** is five seconds with no voice, and it belongs to shot `7.plan`: the monsters lean in and
   talk with their hands, the camera pushes into a dark block, and the cut to the cell comes out of the black. His
   words: "narration stop here and make them move like they are discussing".
 - The mansion (clip 10) is the other thing the boy was not there for; "on the other side of the forest" is his own phrase for the cut.
@@ -75,15 +77,15 @@ What is planted, and where it pays off:
 [6.again]    My dad was the first one to talk. He talked to his arm.
 [6.east]     "It says he is in the east," he said.
 [6.plug]     Then he plugged the arm back in. Click.
-[6.teacher]  The enderman teacher had stopped thinking about the golem.
-[6.how]      "How," he said, "is that arm talking to you?"
-[6.shrug]    Nobody had an answer.
+[6.teacher]  The enderman teacher was still thinking about the golem.
+[6.how]      "Wait," he said, to nobody. "Am I actually believing an arm?"
+[6.shrug]    He was.
 
 # clip 07-plan
 [7.mum]      Then my mum put her hand up.
 [7.plan]     "I have a plan," she said. And they all moved in closer.
 
-# clip 08-cell wait 3.0
+# clip 08-cell wait 2.2
 [8.dark]     It was dark for a long time.
 [8.blink]    Then I opened my eyes. It was day.
 [8.bars]     I was behind bars. A cage, in the middle of a village.
@@ -93,7 +95,7 @@ What is planted, and where it pays off:
 
 # clip 09-mo
 [9.cages]    There were more cages next to mine. Empty. Empty. Empty.
-[9.mo]       And one that was not. Mo! I had found Mo!
+[9.mo]       And one that was not. Mo! He was not moving.
 [9.reach]    I put my arm through the bars to reach him. He was much too far.
 [9.dumb]     It was a dumb idea.
 [9.saw]      A guard had seen that I was awake.
@@ -109,6 +111,17 @@ What is planted, and where it pays off:
 [10.castle]  "The castle," said my mum.
 [10.shake]   He shook my dad's hand. The arm came off again.
 [10.deal]    "Deal," said the chief.
+
+# clip 10b-ready
+[10.cabinet] Then he opened a cabinet as big as a wall.
+[10.swords]  The pillagers took out their swords.
+[10.bows]    They took out their crossbows, and loaded them. Click. Click. Click.
+[10.axes]    They took out axes, and shields, and one very big banner.
+[10.ready]   In one minute, the whole mansion was ready.
+[10.cheer]   And forty monsters cheered! They jumped up and down. A creeper nearly went off.
+[10.two]     At the back, two pillagers looked at each other.
+[10.why]     "Why are they cheering?" said one. "We only said yes."
+[10.dunno]   The other one did not know either.
 
 # clip 11-sub wait 1.0
 [11.sub]     Like and subscribe for part four.

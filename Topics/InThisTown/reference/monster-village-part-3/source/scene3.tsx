@@ -21,7 +21,7 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "5.moved",
-      ...cam.push({ on: [dadHand(D, D_ROT)[0], dadHand(D, D_ROT)[1] + 0.55, dadHand(D, D_ROT)[2]], dist: 1.25, to: 1.0, yaw: -30, pitch: 0, fov: 30 }),
+      ...cam.push({ on: [dadHand(D, D_ROT)[0], dadHand(D, D_ROT)[1] + 0.5, dadHand(D, D_ROT)[2]], dist: 2.5, to: 2.1, yaw: -30, pitch: 2, fov: 30 }),
       zone: Z3.hide,
       look: WARM,
       note: "The hand fills the frame, the lamps soft behind it. One finger goes up. One finger goes down. That is the whole sentence.",
@@ -185,22 +185,34 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: dadSocket(D, D_ROT), dist: 2.3, to: 1.8, yaw: -42, pitch: 6, fov: 38 }),
       zone: Z3.hide,
       look: WARM,
-      note: "The empty shoulder, close: a round socket. The good hand brings the arm round and pushes it home. Click, a spark, and the fingers on the end of it wriggle.",
+      note: "The empty shoulder, close: a round socket. The arm jumps out of his good hand, over his chest, lands on the shoulder standing up, swings down like the hand of a clock and slides home. Click, a spark, and its fingers wriggle.",
       stage: (t) => {
         const click = wordAt("6.plug", "click");
-        const k = ease(ramp(t, 0.2, click));
         const hand = dadHand(D, D_ROT, 1);
         const s = dadSocket(D, D_ROT);
+        // The elbow end of the arm: out of the hand, in an arc, to a point just outside the socket, then in.
+        const jump = ease(ramp(t, 0.15, click * 0.55));
+        const swing = ease(ramp(t, click * 0.5, click * 0.85));
+        const slide = ease(ramp(t, click * 0.82, click));
+        const out: Vec3 = [s[0] - 0.3 * Math.cos(D_ROT), s[1], s[2] + 0.3 * Math.sin(D_ROT)];
+        const a = mix([hand[0], hand[1] - 0.1, hand[2]], out, jump);
+        const e = mix([a[0], a[1] + 0.5 * Math.sin(jump * Math.PI), a[2]], s, slide);
+        // Pitch: −1.45 is standing up on the elbow, +π/2 is hanging from it.
+        const pitch = -1.45 + (1.45 + Math.PI / 2) * swing;
         return (
           <>
             <Village t={t} look={s} />
             {t < click ? (
               <>
-                <Dad position={D} rotationY={D_ROT} noArm raise={1 - 0.3 * k} mood="calm" turn={-0.7 * k} />
-                <Arm position={mix(heldAt([hand[0], hand[1] - 0.1, hand[2]], D_ROT + Math.PI), [s[0] - 0.75 * (1 - k) - 0.02, s[1] - 0.6, s[2] + 0.1], k)} rotationY={D_ROT} rear={1} />
+                <Dad position={D} rotationY={D_ROT} noArm raise={1 - 0.7 * jump} mood="calm" turn={-0.7 * jump} />
+                <group position={e} rotation={[0, D_ROT, 0]}>
+                  <group rotation={[pitch, 0, 0]}>
+                    <Arm position={[0, -0.05, 0.62]} talk={swing < 1 ? t : 0} />
+                  </group>
+                </group>
               </>
             ) : (
-              <Dad position={[D[0] + jolt(t, click, 0.04), 0, D[2]]} rotationY={D_ROT} mood="happy" wave={0.5 + 0.3 * Math.sin((t - click) * 14)} />
+              <Dad position={[D[0] + jolt(t, click, 0.04), 0, D[2]]} rotationY={D_ROT} mood="happy" wave={0.35 * ease(ramp(t, click + 0.1, click + 0.35)) * (1 + 0.4 * Math.sin((t - click) * 14))} />
             )}
             <Glint position={s} t={t - click} size={1.3} />
             <Bits position={s} t={t - click} color="#fff4c8" count={10} power={1.6} />
@@ -213,35 +225,35 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: [TFACE[0], TFACE[1] - 0.3, TFACE[2]], dist: 3.4, to: 2.8, yaw: -22, pitch: -28, fov: 46 }),
       zone: Z3.hide,
       look: WARM,
-      note: "The enderman teacher from down by his knees: three metres of black, and over his head a little picture of a golem that gets crossed out and turns into a question mark.",
-      stage: (t) => {
-        const stopped = wordAt("6.teacher", "stopped");
-        return (
-          <>
-            <Village t={t} look={DFACE} teacher={false} />
-            <Dad position={D} rotationY={D_ROT} mood="happy" wave={0.6 + 0.3 * Math.sin(t * 12)} />
-            <Folk kind="enderman" n={0} position={T} rotationY={-0.8} lookAt={[D[0], 1.3, D[2]]} tilt={0.35 * ease(ramp(t, stopped, stopped + 0.3))} />
-            <Bubble text={t > stopped ? "?" : "GOLEM"} position={[T[0] - 0.2, TFACE[1] + 0.8, T[2] + 0.3]} rotationY={-0.3} scale={0.6 * (t > stopped ? pop(t, stopped) : pop(t, 0.1))} tail={0} dark={t < stopped} />
-          </>
-        );
-      },
+      note: "The enderman teacher from down by his knees: three metres of black, not looking at anybody, and over his head a little picture he has not let go of: GOLEM.",
+      stage: (t) => (
+        <>
+          <Village t={t} look={DFACE} teacher={false} />
+          <Dad position={D} rotationY={D_ROT} mood="happy" wave={0.5 + 0.3 * Math.sin(t * 12)} />
+          <Folk kind="enderman" n={0} position={T} rotationY={-0.8} nod={-0.25} turn={0.5} tilt={0.12 * Math.sin(t * 1.6)} />
+          <Bubble text="GOLEM" position={[T[0] - 0.2, TFACE[1] + 0.8, T[2] + 0.3]} rotationY={-0.3} scale={0.6 * pop(t, 0.1)} tail={0} dark />
+        </>
+      ),
     },
     {
       cue: "6.how",
-      ...cam.push({ on: [D[0] + 0.3, 1.2, D[2]], dist: 3.6, to: 3.0, yaw: 62, pitch: 30, fov: 44 }),
+      ...cam.push({ on: [TFACE[0], TFACE[1] + 0.1, TFACE[2]], dist: 2.6, to: 1.7, yaw: -30, pitch: -6, fov: 40 }),
       zone: Z3.hide,
       look: WARM,
-      note: "Over the teacher's shoulder and down: he folds himself nearly in half to get his face level with dad's new arm, and dad, small under him, wiggles its fingers at him.",
+      note: "His face, pushing in. The thought over his head goes pop. His head comes down and round to look at the arm on dad, and then straight at us: he is saying this to himself.",
       stage: (t) => {
-        const how = wordAt("6.how", "how");
-        const k = ease(ramp(t, 0.1, 0.6));
-        const at = mix(T, [D[0] + 1.5, 0, D[2] + 0.1], k);
+        const wait = wordAt("6.how", "wait");
+        const am = wordAt("6.how", "am");
+        const arm = wordAt("6.how", "arm");
+        const k = ease(ramp(t, wait - 0.1, wait + 0.15));
+        const us = ease(ramp(t, am - 0.15, am + 0.15));
         return (
           <>
             <Village t={t} look={DFACE} teacher={false} />
-            <Dad position={D} rotationY={0.9} mood="happy" wave={0.45} lookAt={[at[0], 2.2, at[2]]} />
-            <Folk kind="enderman" n={0} position={at} rotationY={WEST} walk={1.6 * k} lean={0.75 * k} nod={0.3} jaw={t > how ? 0.5 + 0.5 * Math.sin(t * 14) : 0} />
-            <Bubble text="HOW?" position={[D[0] + 0.6, 2.5, D[2] + 0.5]} rotationY={0.9} scale={0.3 * pop(t, how)} tail={1} dark />
+            <Dad position={D} rotationY={D_ROT} mood="happy" wave={0.45} />
+            <Folk kind="enderman" n={0} position={T} rotationY={-0.8} nod={-0.25 + 0.45 * k - 0.2 * us} turn={0.5 - 1.3 * k + 1.1 * us} tilt={0.3 * us} jaw={t > wait && t < wait + 0.4 ? 0.6 : t > am ? 0.5 + 0.5 * Math.sin(t * 14) : 0} />
+            <Bubble text={t > arm - 0.1 ? "AN ARM?" : "GOLEM"} position={[T[0] - 0.2, TFACE[1] + 0.8, T[2] + 0.3]} rotationY={-0.3} scale={0.6 * (t > arm - 0.1 ? pop(t, arm - 0.1) : 1 - k)} tail={0} dark />
+            <Bits position={[T[0] - 0.2, TFACE[1] + 0.8, T[2] + 0.3]} t={t - wait} color="#2a1a3a" count={8} power={1.2} />
           </>
         );
       },
@@ -251,14 +263,17 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: h(-0.2, 1.2, -0.6), dist: 7.6, to: 7.2, yaw: 0, pitch: 6, fov: 46 }),
       zone: Z3.hide,
       look: WARM,
-      note: "Everybody, square on, for one second: they all look at each other and all go up and down once. Nobody knows.",
+      note: "Everybody, square on, for half a second: the teacher is pointing east with the rest of them.",
       stage: (t) => (
         <>
-          <Village t={t} look={h(6 * Math.sin(t * 9), 1.5, 4)} hopAt={0.3} />
-          <Dad position={[D[0], hop(t, 0.3, 0.2, 0.3), D[2]]} rotationY={D_ROT} wave={0.4} turn={0.6 * Math.sin(t * 9)} />
+          <Village t={t} look={h(13, 2, 0)} hopAt={0.1} />
+          <Dad position={[D[0], hop(t, 0.1, 0.2, 0.3), D[2]]} rotationY={D_ROT} wave={0.4} lookAt={h(13, 2, 0)} />
         </>
       ),
     },
   ],
 });
-void EAST;
+void WEST;
+void mix;
+void heldAt;
+void EAST;void EAST;

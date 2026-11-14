@@ -88,6 +88,13 @@ export const RIVER: Vec3 = [0, 0, 400];
 export const DESERT: Vec3 = [0, 0, 600];
 export const OAK: Vec3 = [0, 0, 800];
 export const FINISH: Vec3 = [0, 0, 1000];
+/** Stage one, between the village and the rivers: the wheat fields, then the birch wood. */
+export const FIELDS: Vec3 = [0, 0, 1200];
+export const BIRCH: Vec3 = [0, 0, 1400];
+/** In the river zone (x from RIVER): the line stage one ends on, and the log he sits on in the rest camp, by the first river. */
+export const GATE_X = -20;
+export const BENCH: Vec3 = [RIVER[0] - 12, 0, RIVER[2] - 1.4];
+export const BENCH_TOP = 0.45;
 export const at = (o: Vec3, x: number, y: number, z: number): Vec3 => [o[0] + x, o[1] + y, o[2] + z];
 /** In the village: the start line, the hill, the pond, the trophy's stand. */
 export const START_X = -4;
@@ -102,6 +109,29 @@ export const FPOND: Vec3 = at(FOREST, 18, 0, 2.5);
 /** In the last village: the finish line and the trophy. */
 export const LINE_X = 12;
 export const CUP: Vec3 = at(FINISH, 16.5, 0, 2);
+
+/**
+ * A push-up, as a pose for the avatar's `pose`: `k` 0 is flat on the grass, 1 is arms straight. The body is one
+ * straight plank from the toes to the head and the hands are on the ground under the shoulders: nothing floats.
+ * Stand the avatar where its HIPS are; the toes are behind that and the hands in front.
+ */
+export const pushUp = (k: number) => {
+  const ang = 0.17 + (0.52 - 0.17) * k; // the plank's angle off the ground
+  return {
+    bodyY: 0.75 * Math.sin(ang) - 0.75 + 0.07,
+    bodyPitch: Math.PI / 2 - ang,
+    bodyRoll: 0,
+    bodyYaw: 0,
+    torso: [0, 0, 0] as Vec3,
+    head: [-0.75, 0, 0] as Vec3,
+    armR: [-(Math.PI / 2 - ang), 0, 1.15 * (1 - k)] as Vec3,
+    armL: [-(Math.PI / 2 - ang), 0, -1.15 * (1 - k)] as Vec3,
+    legR: [0, 0, 0.03] as Vec3,
+    legL: [0, 0, -0.03] as Vec3,
+    kneeR: [0, 0, 0] as Vec3,
+    kneeL: [0, 0, 0] as Vec3,
+  };
+};
 
 // ----------------------------------------------------------------------------- things
 
@@ -194,32 +224,35 @@ export const babyFace = (p: Vec3): Vec3 => villagerFace(p, CHILD);
 
 const WROBE = "#4b2a6b";
 /**
- * The witch: a villager in purple with a black pointed hat. A villager's hands stay in its sleeves, so she has one
- * arm of her own: `wave` 0–1 waves it, `give` 0–1 holds it out in front with whatever is in `children` on the hand.
+ * The witch: a villager in purple with a black pointed hat. The hat is ON her head (the pack's `headwear`), so it
+ * nods, turns and leans with her. She is a villager: no hand ever comes out of her sleeves. So `wave` 0–1 is a wave
+ * done with the whole body, rocking from side to side and turning a little, and `give` 0–1 leans her forward with
+ * whatever is in `children` lying on her folded sleeves.
  */
 export const Witch: React.FC<React.ComponentProps<typeof Villager> & { wave?: number; give?: number; t?: number; children?: React.ReactNode }> = ({
-  wave = 0, give = 0, t = 0, children, position = [0, 0, 0], rotationY = 0, ...p
+  wave = 0, give = 0, t = 0, children, position = [0, 0, 0], rotationY = 0, lean = 0, tilt = 0, ...p
 }) => {
-  const top = 34 * (1.8 / 32) * ADULT;
-  const a = give > 0 ? -1.45 * give : -2.6 * wave + Math.sin(t * 9) * 0.35 * wave;
+  const top = 10 * (1.8 / 32);
+  const rock = Math.sin(t * 7) * wave;
   return (
-    <>
-      <Villager position={position} rotationY={rotationY} robe={WROBE} {...p} />
-      <group position={position} rotation={[0, rotationY, 0]}>
-        <Block position={[0, top, 0]} size={[0.95, 0.06, 0.95]} color="#16121c" />
-        <Block position={[0, top + 0.16, 0]} size={[0.5, 0.28, 0.5]} color="#1c1626" />
-        <Block position={[0, top + 0.21, 0.255]} size={[0.5, 0.08, 0.01]} color="#7a4fb0" castShadow={false} />
-        <Block position={[0.03, top + 0.42, -0.03]} size={[0.32, 0.26, 0.32]} color="#1c1626" />
-        <Block position={[0.08, top + 0.64, -0.08]} size={[0.16, 0.22, 0.16]} color="#1c1626" />
-        {wave > 0 || give > 0 ? (
-          <group position={[0.36, 1.18, 0.05]} rotation={[a, 0, give > 0 ? 0 : -0.3 * wave]}>
-            <Block position={[0, -0.24, 0]} size={[0.17, 0.5, 0.17]} color={WROBE} />
-            <Block position={[0, -0.54, 0]} size={[0.14, 0.12, 0.14]} color="#bd8b72" />
-            <group position={[0, -0.62, 0]} rotation={[1.45, 0, 0]}>{children}</group>
-          </group>
-        ) : null}
-      </group>
-    </>
+    <group position={position} rotation={[0, rotationY + 0.28 * rock, 0.16 * rock]}>
+      <Villager
+        robe={WROBE}
+        lean={lean + 0.22 * give + 0.06 * wave}
+        tilt={tilt + 0.25 * rock}
+        carry={give > 0 ? children : undefined}
+        headwear={
+          <>
+            <Block position={[0, top + 0.03, 0]} size={[0.95, 0.06, 0.95]} color="#16121c" />
+            <Block position={[0, top + 0.19, 0]} size={[0.5, 0.28, 0.5]} color="#1c1626" />
+            <Block position={[0, top + 0.24, 0.255]} size={[0.5, 0.08, 0.01]} color="#7a4fb0" castShadow={false} />
+            <Block position={[0.03, top + 0.45, -0.03]} size={[0.32, 0.26, 0.32]} color="#1c1626" />
+            <Block position={[0.08, top + 0.67, -0.08]} size={[0.16, 0.22, 0.16]} color="#1c1626" />
+          </>
+        }
+        {...p}
+      />
+    </group>
   );
 };
 export const witchFace = (p: Vec3): Vec3 => villagerFace(p, ADULT);
