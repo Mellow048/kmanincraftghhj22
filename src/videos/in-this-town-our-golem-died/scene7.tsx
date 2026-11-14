@@ -61,7 +61,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.pick",
-      ...cam.push({ on: [FELL[0] + 0.1, 0.42, FELL[2]], dist: 3.2, to: 2.6, yaw: 20, pitch: -10, fov: 36 }),
+      ...cam.push({ on: [FELL[0] + 0.1, 0.42, FELL[2]], dist: 3.2, to: 2.6, yaw: -20, pitch: -10, fov: 36 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I picked it up. It was still warm': from the ground, the flower lifted on the word, a kid's hand under it. The camera stays on the ground so the hand comes down to it.",
@@ -77,7 +77,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.put",
-      ...cam.push({ on: ROSE_ON_RIM, dist: 2.8, to: 2.3, yaw: -16, pitch: 16, fov: 36 }),
+      ...cam.push({ on: [ROSE_ON_RIM[0], ROSE_ON_RIM[1] + 0.15, ROSE_ON_RIM[2]], dist: 3.4, to: 2.8, yaw: -34, pitch: 12, fov: 38 }),
       zone: "village",
       look: "lantern-night",
       note: "'I put it on the well, with all the others': the rose set down on the rim among fourteen others, his hand still on it at the end. One movement, one frame, no cut away from it.",

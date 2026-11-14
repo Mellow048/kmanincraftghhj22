@@ -31,7 +31,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "8.behind",
-      ...cam.push({ on: [21.2, 1.7, 2.0], dist: 4.2, to: 3.5, yaw: -80, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [21.4, 1.55, 1.9], dist: 4.6, to: 3.9, yaw: -118, pitch: 6, fov: 42 }),
       zone: "gate",
       look: "lantern-night",
       note: "'There was a creeper behind the golem': we see it over the golem's shoulder, its face lit low and green, and the golem's back filling the left of the frame. It is close. That is the whole shot.",
@@ -95,7 +95,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.dust",
-      ...cam.push({ on: [FELL[0], 1.0, FELL[2]], dist: 2.8, to: 4.6, yaw: -88, pitch: 8, fov: 42 }),
+      ...cam.push({ on: [FELL[0], 0.5, FELL[2]], dist: 3.4, to: 5.6, yaw: -120, pitch: 12, fov: 44 }),
       zone: "gate",
       look: "lantern-night",
       note: "'When the dust settled, our protector was gone': a pull OUT, away from the scorch on the ground, so the empty place gets bigger. One iron hand's worth of debris and nothing else. Smoke still going up.",

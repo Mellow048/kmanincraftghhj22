@@ -110,20 +110,20 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.anvil",
-      ...cam.push({ on: [PLACE.anvil[0], 0.62, PLACE.anvil[2]], dist: 3.2, to: 2.6, yaw: -18, pitch: 12, fov: 36 }),
+      ...cam.push({ on: [PLACE.anvil[0], 0.62, PLACE.anvil[2]], dist: 3.6, to: 3.0, yaw: -46, pitch: 16, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'The blacksmith had an anvil': a low insert, the anvil filling the bottom of the frame with the smith's legs behind it. The object is already the answer to a question he has not asked yet.",
       stage: (t) => (
         <>
           <Anvil position={PLACE.anvil} rotationY={0.3} />
-          <Villager position={[PLACE.anvil[0] + 0.2, 0, PLACE.anvil[2] - 1.3]} rotationY={SOUTH} robe={ROBE.brown} phase={1.4} hmm={0.2} />
+          <Villager position={[PLACE.anvil[0] - 0.9, 0, PLACE.anvil[2] - 1.7]} rotationY={SOUTH + 0.3} robe={ROBE.brown} phase={1.4} hmm={0.2} />
         </>
       ),
     },
     {
       cue: "3.bucket",
-      ...cam.push({ on: [6.9, 0.5, 6.3], dist: 3.0, to: 2.4, yaw: -8, pitch: -8, fov: 36 }),
+      ...cam.push({ on: [6.9, 0.34, 6.3], dist: 2.0, to: 1.7, yaw: -24, pitch: -6, fov: 32 }),
       zone: "village",
       look: "overworld-day",
       note: "'My father had a bucket with a hole in it': from grass level, the bucket on its side, the hole toward the lens. Small thing, seen small, and it is on the list of what the town owns.",

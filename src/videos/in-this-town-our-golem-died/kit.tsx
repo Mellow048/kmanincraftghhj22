@@ -65,7 +65,7 @@ export const PLACE = {
   /** The gate: the middle of the opening in the wall. */
   gate: [20, 0, 2] as Vec3,
   /** Where the golem dies, just outside the gate. */
-  fell: [21.6, 0, 2.2] as Vec3,
+  fell: [20.4, 0, 1.8] as Vec3,
   /** The teller's standing place at the gate, inside it. */
   me: [19.4, 0, 2.0] as Vec3,
   /** The teller's room. Its own zone, far from everything. */

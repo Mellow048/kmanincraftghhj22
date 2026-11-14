@@ -17,7 +17,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.sleep",
-      ...cam.push({ on: [19.2, 2.1, 2.0], dist: 7.2, to: 6.3, yaw: 96, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [19.2, 2.1, 2.0], dist: 7.2, to: 6.3, yaw: -96, pitch: 3, fov: 44 }),
       zone: "gate",
       look: "lantern-night",
       note: "'Nobody had ever seen it sleep': the golem standing in the gate at three in the morning, the town behind it dark, one lantern burning. It does not move for the whole shot except its head.",

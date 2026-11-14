@@ -58,7 +58,7 @@ const Village: React.FC = () => (
 
     <Bell position={PLACE.bell} />
     <Well position={PLACE.well} roof={false} />
-    <WellLid position={PLACE.well} slide={0} />
+    <WellLid position={PLACE.well} slide={1.5} turn={0.35} />
     {/* The rim of the well is full of flowers, and has been for as long as anyone remembers. */}
     <Rim count={15} gap={[0, 1]} />
     <Stall position={PLACE.stall} />
@@ -85,8 +85,8 @@ const Village: React.FC = () => (
     <LampPost position={[5.2, 0, 6.6]} seed={3} />
     <LampPost position={[15.6, 0, -3.4]} seed={4} />
     {/* The square at night: one light over the bell, one over the well, so the rim is never black. */}
-    <pointLight position={[0, 3.4, -2.2]} color="#ffc484" intensity={8} distance={14} decay={2} />
-    <pointLight position={[PLACE.well[0], 2.6, PLACE.well[2] + 0.6]} color="#ffd0a0" intensity={7} distance={12} decay={2} />
+    <pointLight position={[0, 3.4, -2.2]} color="#ffc484" intensity={34} distance={16} decay={2} />
+    <pointLight position={[PLACE.well[0], 2.6, PLACE.well[2] + 0.6]} color="#ffd0a0" intensity={30} distance={14} decay={2} />
     <LanternLine from={[-6, 4.4, -3.2]} to={[6, 4.4, -3.2]} count={7} sag={0.7} lit={[0, 3]} light={3} seed={5} />
     <Clouds y={48} center={[0, 0, 0]} />
 
@@ -119,8 +119,8 @@ const Gate: React.FC = () => (
     <LampPost position={[21.4, 0, -0.4]} seed={7} />
     <LampPost position={[21.4, 0, 4.6]} seed={8} />
     {/* The two gate lanterns are the only light on the fight: without them a face is a dark shape. */}
-    <pointLight position={[21.4, 2.95, -0.4]} color="#ffb060" intensity={11} distance={15} decay={2} />
-    <pointLight position={[21.4, 2.95, 4.6]} color="#ffb060" intensity={11} distance={15} decay={2} />
+    <pointLight position={[21.4, 2.95, -0.4]} color="#ffb060" intensity={45} distance={20} decay={2} />
+    <pointLight position={[21.4, 2.95, 4.6]} color="#ffb060" intensity={45} distance={20} decay={2} />
 
     <Wheat position={[34, 0, 2]} size={[18, 16]} height={0.95} glow={0.12} sway={0.45} seed={7} />
     <Scarecrow position={[30.5, 0, -4.2]} eyes={0.55} lean={0.05} headTurn={0.4} shirt="#6a6f4a" />

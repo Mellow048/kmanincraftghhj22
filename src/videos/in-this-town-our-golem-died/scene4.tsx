@@ -17,7 +17,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.protect",
-      ...cam.push({ on: [-1.4, 1.15, 2.6], dist: 5.8, to: 4.8, yaw: 22, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [0.0, 1.45, 2.2], dist: 6.4, to: 5.4, yaw: 16, pitch: 6, fov: 44 }),
       zone: "village",
       look: "overworld-day",
       note: "'But the golem protected all of us': the boy walking in the golem's shadow, the golem's arm across the top of the frame. He is the small thing under the big thing, and he is looking up at it, not at where he is going.",
@@ -42,7 +42,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.ask",
-      ...cam.push({ on: [PORCH[0], 1.7, PORCH[2] + 0.2], dist: 4.8, to: 4.0, yaw: 6, pitch: -2, fov: 40 }),
+      ...cam.push({ on: [PORCH[0], 1.9, PORCH[2] + 0.2], dist: 6.0, to: 5.0, yaw: 6, pitch: -2, fov: 42 }),
       zone: "village",
       look: "overworld-day",
       note: "'So I asked the oldest woman in town why': she is half a block above him on the porch, so the two of them stack up the frame and he has to look up to ask. One of them is very still.",
@@ -55,7 +55,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.say",
-      ...cam.push({ on: [PORCH[0] - 0.05, 2.05, PORCH[2]], dist: 3.0, to: 2.5, yaw: 20, pitch: -2, fov: 38 }),
+      ...cam.push({ on: [PORCH[0] - 0.05, 2.1, PORCH[2]], dist: 3.0, to: 2.5, yaw: 20, pitch: 9, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "The rule, said to his face: her face fills the frame, one eye and a hat brim, and she does not blink in the whole shot.",

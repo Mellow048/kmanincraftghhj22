@@ -66,7 +66,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.sword",
-      ...cam.push({ on: [SWORD_AT[0], 0.9, SWORD_AT[2]], dist: 3.0, to: 2.4, yaw: 34, pitch: 10, fov: 36 }),
+      ...cam.push({ on: [SWORD_AT[0] - 0.2, 1.15, SWORD_AT[2]], dist: 3.8, to: 3.1, yaw: 44, pitch: 2, fov: 40 }),
       zone: "village",
       look: "lantern-night",
       note: "'I grabbed my father's diamond sword': a blade leaning against the door frame, and a kid's hand closing round a grip that is too long for it. It is the only blue in the film.",

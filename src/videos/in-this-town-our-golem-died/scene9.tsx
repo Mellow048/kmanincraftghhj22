@@ -103,7 +103,7 @@ export const scene9 = storyScene(timing, {
       note: "'Not because they loved it. Because they were afraid': one face at the edge of the square, looking at the golem and not at the boy. Nobody in this frame is smiling.",
       stage: () => (
         <>
-          <Villager position={[-4.0, 0, 0.2]} rotationY={SOUTH + 2.0} robe={ROBE.farmer} hat="straw" phase={0.9} hmm={0.5} />
+          <Villager position={[-4.0, 0, 0.2]} rotationY={SOUTH + 0.53} robe={ROBE.farmer} hat="straw" phase={0.9} hmm={0.5} />
         </>
       ),
     },
@@ -148,7 +148,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.held",
-      ...cam.push({ on: [WELL[0] + 0.7, 1.15, WELL[2] + 1.5], dist: 3.0, to: 2.4, yaw: -6, pitch: -2, fov: 38 }),
+      ...cam.push({ on: [WELL[0] + 0.7, 1.15, WELL[2] + 1.5], dist: 3.6, to: 2.9, yaw: -6, pitch: -2, fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "'Then it held one out to me': the iron hand, open, with the rose lying across it, at a kid's chest height. Nothing else in the frame but the hand and the flower.",
@@ -161,7 +161,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.mine",
-      ...cam.push({ on: [WELL[0] + 0.55, 1.18, WELL[2] + 1.5], dist: 2.2, to: 1.8, yaw: 14, pitch: 6, fov: 34 }),
+      ...cam.push({ on: [WELL[0] + 0.55, 1.18, WELL[2] + 1.5], dist: 2.8, to: 2.3, yaw: 14, pitch: 6, fov: 36 }),
       zone: "village",
       look: "overworld-day",
       note: "'It was mine. The rose I had left on the well': as close as the lens goes to anything in the film, on the flower in the iron hand, and his fingers arriving at the edge of the frame on the word.",
