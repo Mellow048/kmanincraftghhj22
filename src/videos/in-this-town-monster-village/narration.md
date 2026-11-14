@@ -5,7 +5,7 @@ humans, they must have something in common and do the big reveal in the ending. 
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word.
 
-**Length: the extended cut** (`cut: "extended"` in `film.tsx`; `Topics/InThisTown/topic.json` → `cuts.extended`). The owner asked for a longer ending after the first render: an ambush, the village accepting Mo, a second army, and Mo staying behind alone in iron armour. He also asked for a school and for more than one monster of each kind.
+**Length: 2:55, the long cut.** It was first delivered at 3:41 as an "extended cut". A vertical video over 3:00 is not a YouTube Short, so on 2026-11-13 the owner had it trimmed: 21 lines were taken out of the recordings with `scripts/trim-narration.py` (the postman, the school, the stew, the dark, fishing and laughing, Dad's arm, the bus in the fight, and a few single lines). The longer ending he asked for is all still here: the ambush, the village accepting Mo, the second army, and Mo staying behind in iron armour.
 
 **The owner's outline.** The teller lives in a village of monsters: zombies, skeletons, a creeper, an enderman, a
 spider, a slime (the pack's `monsters.tsx`). He is the only human. One villager, a zombie in a straw hat with a scarf
@@ -37,21 +37,13 @@ What is planted, and where it pays off:
 [1.dad]      My dad was a skeleton.
 [1.me]       And I was a boy they found in a basket.
 [2.hiss]     Our neighbour Hiss was a creeper. He loved hugs. Nobody wanted one.
-[2.post]     The postman was an enderman. You could not look at him,
-[2.sign]     so we all signed for our parcels with our eyes shut.
 [2.bus]      The school bus was a slime. You got in. You got out wet.
-[2.school]   School was me, some zombies, and two creepers.
-[2.board]    The teacher was an enderman. So nobody ever looked at the board.
 
 # clip 02-different
 [3.sun]      Every monster stayed out of the sun. The sun burned them.
 [3.me]       It did not burn me. So I played outside alone.
-[3.stew]     They ate grey stew. I could not even smell it.
-[3.dark]     They could see in the dark. I walked into doors.
-[3.one]      I was the only one of me there was.
 [4.mo]       Then there was Mo.
 [4.hat]      Mo was a zombie with a straw hat, and a scarf up to his nose.
-[4.alone]    He lived by himself at the end of the street, and he never said a word.
 [4.stare]    He just looked at me. A bit too long.
 [4.think]    I thought he did not like humans.
 
@@ -63,20 +55,15 @@ What is planted, and where it pays off:
 [5.eat]      No zombie eats bread. I did not ask. I was too hungry.
 [6.every]    After that, we sat on that wall every day.
 [6.lamp]     He could not see in the dark either. He carried a lantern, like me.
-[6.cold]     He got cold at night, like me.
 [6.sneeze]   He even sneezed. Monsters do not sneeze.
-[6.fish]     He showed me how to fish, and how to whistle,
-[6.laugh]    and I showed him how to laugh, which he had forgotten.
 [6.like]     He was the only monster who was like me. I never asked myself why.
 
 # clip 04-lock
 [7.sunset]   There was one rule. At sunset, the whole village walked me home.
 [7.lock]     Then they locked my door. From the outside.
 [7.weak]     I thought it was because I was the weak one.
-[7.mo]       Even Mo stood there and watched them do it.
 [8.night]    One night, I had had enough.
 [8.window]   I went out of the window.
-[8.see]      I wanted to see what they did without me.
 [8.nothing]  They were not doing anything.
 
 # clip 05-ring
@@ -85,19 +72,14 @@ What is planted, and where it pays off:
 [9.every]    They did it every night. They had done it since the basket.
 [9.hill]     Then I saw why. There were torches on the hill.
 [10.players] Players. With swords.
-[10.clear]   They had come to clear the village.
 [10.shout]   "Monsters!" one shouted. "Get them all!"
 [11.charge]  They came down the hill fast.
-[11.dad]     My dad lost an arm, picked it up, and bonked a man with it.
-[11.bus]     The bus sat on three of them.
-[11.post]    The postman put one at the top of a tree.
 [11.hiss]    And Hiss shook, and went white, trying so hard not to go off.
 [11.losing]  Nobody was hurt. And we were losing.
 
 # clip 06-run
 [12.mum]     Then they knocked my mum over in the dirt.
 [12.think]   And I thought: they are players. I look like a player.
-[12.only]    I was the only thing in that village they would not touch.
 [13.ran]     So I ran. Under a sword, over the bus, through my dad's legs,
 [13.front]   and I stood in front of my mum with my arms out.
 [13.stop]    "Stop! I live here! This is my family!"
@@ -126,15 +108,12 @@ What is planted, and where it pays off:
 
 # clip 09-ambush
 [19.look]    Every player was staring at Mo. Not one of them looked behind.
-[19.tap]     My dad tapped one on the shoulder. With the arm he was not wearing.
-[19.bus]     The bus rolled through the rest like a bowling ball.
 [19.hiss]    And Hiss only had to say one word. "Hug."
 [19.run]     They dropped their swords and ran for the hill.
 
 # clip 10-accept
 [20.gather]  Then the whole village came out. Every zombie. Every skeleton. Every kid from my school.
 [20.mo]      Mo stood in the middle, with his hat in his hands. He did not look up.
-[20.fear]    He had lied to them for years. He thought they would hate him too.
 [20.mum]     My mum walked up to him. And put the hat back on his head.
 [20.knew]    "We always knew," she said. "Zombies do not eat bread."
 

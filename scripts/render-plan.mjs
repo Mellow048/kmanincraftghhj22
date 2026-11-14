@@ -55,6 +55,12 @@ try {
 await browser.close({ silent: true });
 
 const frames = composition.durationInFrames;
+// THE THREE-MINUTE WALL (the owner, 2026-11-14: "add a strict rule, no over 3 minutes"). A vertical video over 3:00
+// is not a YouTube Short. Such a film is not rendered at all: cut it or split it first.
+if (composition.height > composition.width && frames / composition.fps > 180) {
+  console.error(`${id} is ${(frames / composition.fps).toFixed(1)}s. STRICT RULE: no vertical film runs over three minutes (YouTube would not treat it as a Short). It will not be rendered. Cut lines (scripts/trim-narration.py) or split the story into parts.`);
+  process.exit(1);
+}
 const count = Math.min(maxChunks, Math.ceil(frames / perChunk));
 const include = [];
 for (let i = 0; i < count; i++) {

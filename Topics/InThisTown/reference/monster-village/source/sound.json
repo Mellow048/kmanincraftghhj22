@@ -86,7 +86,7 @@
         "why": "Nobody is watching the monsters."
       },
       {
-        "from": "19.tap",
+        "from": "19.hiss",
         "mood": "playful",
         "why": "The ambush is a joke on the players."
       },
@@ -129,19 +129,9 @@
       "bed": "village"
     },
     {
-      "from": "2.school",
-      "to": "2.board",
-      "bed": "classroom"
-    },
-    {
       "from": "3.sun",
-      "to": "3.stew",
+      "to": "3.me",
       "bed": "village"
-    },
-    {
-      "from": "3.dark",
-      "to": "3.one",
-      "bed": "night"
     },
     {
       "from": "4.mo",
@@ -150,12 +140,12 @@
     },
     {
       "from": "6.lamp",
-      "to": "6.cold",
+      "to": "6.lamp",
       "bed": "night"
     },
     {
       "from": "6.sneeze",
-      "to": "7.mo",
+      "to": "7.weak",
       "bed": "village"
     },
     {
@@ -249,28 +239,6 @@
       "why": "He droops."
     },
     {
-      "cue": "2.post",
-      "sfx": "stomp",
-      "word": "postman",
-      "trim": -4,
-      "why": "Three metres of postman."
-    },
-    {
-      "cue": "2.post",
-      "sfx": "sting",
-      "word": "look",
-      "trim": -3,
-      "why": "He looks at you."
-    },
-    {
-      "cue": "2.sign",
-      "sfx": "paper",
-      "word": "signed",
-      "repeat": 3,
-      "every": 0.2,
-      "why": "Blind scribbling."
-    },
-    {
       "cue": "2.bus",
       "sfx": "swish",
       "why": "cut"
@@ -294,47 +262,6 @@
       "repeat": 3,
       "every": 0.12,
       "why": "Dripping."
-    },
-    {
-      "cue": "2.school",
-      "sfx": "school_bell",
-      "why": "School."
-    },
-    {
-      "cue": "2.school",
-      "sfx": "pop",
-      "word": "zombies",
-      "repeat": 3,
-      "every": 0.07,
-      "why": "Three zombie kids wave."
-    },
-    {
-      "cue": "2.school",
-      "sfx": "crackle",
-      "word": "creepers",
-      "why": "Two creepers hiss hello."
-    },
-    {
-      "cue": "2.board",
-      "sfx": "whoosh",
-      "word": "enderman",
-      "offset": -0.15,
-      "why": "The teacher turns round."
-    },
-    {
-      "cue": "2.board",
-      "sfx": "swish",
-      "word": "enderman",
-      "offset": 0.1,
-      "why": "Every head snaps away."
-    },
-    {
-      "cue": "2.board",
-      "sfx": "sting",
-      "word": "looked",
-      "offset": 0.3,
-      "trim": -3,
-      "why": "He peeked, and got caught."
     },
     {
       "cue": "3.sun",
@@ -371,41 +298,7 @@
       "cue": "3.me",
       "sfx": "slide_down",
       "word": "alone",
-      "trim": -2,
-      "why": "Alone."
-    },
-    {
-      "cue": "3.stew",
-      "sfx": "plink",
-      "word": "stew",
-      "why": "Stew."
-    },
-    {
-      "cue": "3.stew",
-      "sfx": "buzz",
-      "word": "smell",
-      "trim": -0.5,
-      "why": "No."
-    },
-    {
-      "cue": "3.dark",
-      "sfx": "step_stone",
-      "word": "see",
-      "repeat": 3,
-      "every": 0.25,
-      "why": "Walking in the dark."
-    },
-    {
-      "cue": "3.dark",
-      "sfx": "bonk",
-      "word": "doors",
-      "why": "Into the wall."
-    },
-    {
-      "cue": "3.one",
-      "sfx": "blip",
-      "word": "only",
-      "pitch": 0.7,
+      "trim": 1,
       "why": "Alone."
     },
     {
@@ -431,17 +324,6 @@
       "sfx": "rustle",
       "word": "scarf",
       "why": "He tugs the scarf up."
-    },
-    {
-      "cue": "4.alone",
-      "sfx": "gust",
-      "why": "Pull back."
-    },
-    {
-      "cue": "4.alone",
-      "sfx": "pop",
-      "word": "never",
-      "why": "The three dots."
     },
     {
       "cue": "4.stare",
@@ -583,12 +465,6 @@
       "why": "Lanterns up."
     },
     {
-      "cue": "6.cold",
-      "sfx": "gust",
-      "word": "cold",
-      "why": "Cold."
-    },
-    {
       "cue": "6.sneeze",
       "sfx": "riser",
       "word": "sneezed",
@@ -609,31 +485,6 @@
       "word": "monsters",
       "pitch": 0.8,
       "why": "Hm."
-    },
-    {
-      "cue": "6.fish",
-      "sfx": "splash",
-      "word": "fish",
-      "why": "The fish comes out."
-    },
-    {
-      "cue": "6.fish",
-      "sfx": "slide_up",
-      "word": "whistle",
-      "why": "A whistle."
-    },
-    {
-      "cue": "6.laugh",
-      "sfx": "bonk",
-      "word": "showed",
-      "trim": -4,
-      "why": "Tries to laugh."
-    },
-    {
-      "cue": "6.laugh",
-      "sfx": "chime",
-      "word": "forgotten",
-      "why": "It catches."
     },
     {
       "cue": "6.like",
@@ -696,13 +547,6 @@
       "why": "He slumps."
     },
     {
-      "cue": "7.mo",
-      "sfx": "heartbeat",
-      "word": "mo",
-      "why": "Mo watching.",
-      "trim": 3.5
-    },
-    {
       "cue": "8.night",
       "sfx": "swish",
       "why": "Night."
@@ -724,15 +568,6 @@
       "sfx": "thud",
       "word": "window",
       "why": "Lands."
-    },
-    {
-      "cue": "8.see",
-      "sfx": "step_grass",
-      "word": "wanted",
-      "repeat": 4,
-      "every": 0.3,
-      "trim": -2,
-      "why": "Creeping."
     },
     {
       "cue": "8.nothing",
@@ -795,20 +630,14 @@
       "cue": "10.players",
       "sfx": "sting",
       "word": "players",
-      "why": "Players."
+      "why": "Players.",
+      "trim": -5
     },
     {
       "cue": "10.players",
       "sfx": "clank",
       "word": "swords",
       "why": "Blades up."
-    },
-    {
-      "cue": "10.clear",
-      "sfx": "scrape",
-      "word": "clear",
-      "trim": -2,
-      "why": "The sword levels."
     },
     {
       "cue": "10.shout",
@@ -835,78 +664,6 @@
       "repeat": 6,
       "every": 0.12,
       "why": "Running."
-    },
-    {
-      "cue": "11.dad",
-      "sfx": "swish",
-      "word": "lost",
-      "why": "The swing."
-    },
-    {
-      "cue": "11.dad",
-      "sfx": "crack",
-      "word": "lost",
-      "offset": 0.1,
-      "why": "Arm off."
-    },
-    {
-      "cue": "11.dad",
-      "sfx": "slide_up",
-      "word": "picked",
-      "why": "Picks it up."
-    },
-    {
-      "cue": "11.dad",
-      "sfx": "bonk",
-      "word": "bonked",
-      "offset": 0.1,
-      "why": "Bonk."
-    },
-    {
-      "cue": "11.dad",
-      "sfx": "thud",
-      "word": "with",
-      "why": "He folds."
-    },
-    {
-      "cue": "11.bus",
-      "sfx": "slide_down",
-      "word": "bus",
-      "why": "Coming down."
-    },
-    {
-      "cue": "11.bus",
-      "sfx": "splash",
-      "word": "sat",
-      "offset": 0.1,
-      "why": "Squelch."
-    },
-    {
-      "cue": "11.bus",
-      "sfx": "stomp",
-      "word": "sat",
-      "offset": 0.12,
-      "trim": -2,
-      "why": "On three of them."
-    },
-    {
-      "cue": "11.post",
-      "sfx": "whoosh_low",
-      "word": "one",
-      "why": "The throw."
-    },
-    {
-      "cue": "11.post",
-      "sfx": "slide_up",
-      "word": "top",
-      "trim": 1.5,
-      "why": "Up he goes."
-    },
-    {
-      "cue": "11.post",
-      "sfx": "rustle",
-      "word": "tree",
-      "why": "Into the leaves."
     },
     {
       "cue": "11.hiss",
@@ -981,20 +738,6 @@
       "why": "His hands."
     },
     {
-      "cue": "12.only",
-      "sfx": "scrape",
-      "word": "only",
-      "trim": -3,
-      "why": "Sets his feet."
-    },
-    {
-      "cue": "12.only",
-      "sfx": "zip",
-      "word": "touch",
-      "offset": -0.25,
-      "why": "Gone."
-    },
-    {
       "cue": "13.ran",
       "sfx": "whoosh",
       "why": "The run."
@@ -1012,7 +755,8 @@
       "sfx": "swish",
       "word": "sword",
       "offset": 0.05,
-      "why": "Blade overhead."
+      "why": "Blade overhead.",
+      "trim": 3
     },
     {
       "cue": "13.ran",
@@ -1173,7 +917,8 @@
       "cue": "15.zombie",
       "sfx": "plink",
       "word": "zombies",
-      "why": "On his shoulder."
+      "why": "On his shoulder.",
+      "trim": 3
     },
     {
       "cue": "15.zombie",
@@ -1267,7 +1012,8 @@
     {
       "cue": "17.basket",
       "sfx": "swish",
-      "why": "Years ago."
+      "why": "Years ago.",
+      "trim": 3
     },
     {
       "cue": "17.basket",
@@ -1355,57 +1101,6 @@
       "why": "Hiss comes up in the gap."
     },
     {
-      "cue": "19.tap",
-      "sfx": "bonk",
-      "word": "tapped",
-      "repeat": 2,
-      "every": 0.26,
-      "pitch": 1.2,
-      "why": "Tap, tap, with a bone."
-    },
-    {
-      "cue": "19.tap",
-      "sfx": "step_stick",
-      "word": "wearing",
-      "why": "Dad waves his own arm.",
-      "repeat": 3,
-      "every": 0.09
-    },
-    {
-      "cue": "19.tap",
-      "sfx": "boing",
-      "word": "wearing",
-      "offset": -0.15,
-      "why": "The player jumps."
-    },
-    {
-      "cue": "19.tap",
-      "sfx": "clank",
-      "word": "wearing",
-      "offset": 0.35,
-      "why": "His sword lands."
-    },
-    {
-      "cue": "19.bus",
-      "sfx": "whoosh",
-      "why": "The bus rolls in."
-    },
-    {
-      "cue": "19.bus",
-      "sfx": "hit",
-      "offset": 0.44,
-      "repeat": 4,
-      "every": 0.155,
-      "why": "Four players, one after another."
-    },
-    {
-      "cue": "19.bus",
-      "sfx": "splash",
-      "word": "bowling",
-      "trim": -3,
-      "why": "Slime."
-    },
-    {
       "cue": "19.hiss",
       "sfx": "crackle",
       "word": "hug",
@@ -1438,7 +1133,7 @@
       "cue": "19.run",
       "sfx": "slide_down",
       "offset": 0.2,
-      "trim": -3,
+      "trim": 0,
       "why": "The players lose."
     },
     {
@@ -1480,18 +1175,6 @@
       "sfx": "rustle",
       "word": "hat",
       "why": "The hat in his hands."
-    },
-    {
-      "cue": "20.fear",
-      "sfx": "heartbeat",
-      "word": "lied",
-      "why": "Waiting for it."
-    },
-    {
-      "cue": "20.fear",
-      "sfx": "heartbeat",
-      "word": "hate",
-      "why": "Waiting for it."
     },
     {
       "cue": "20.mum",

@@ -77,20 +77,6 @@ export const scene4 = storyScene(timing, {
       ),
     },
     {
-      cue: "7.mo",
-      ...cam.push({ on: manFace([10.4, 0, -1.0]), dist: 4.2, to: 2.6, yaw: 163, pitch: 4, fov: 40 }),
-      zone: ZONE.day,
-      look: DUSK,
-      note: "What he sees from the window: mum and dad walk away to either side, and Mo is left standing in the street, looking straight up at him, not moving.",
-      stage: (t, { p }) => (
-        <>
-          <Mo position={[10.4, 0, -1.0]} rotationY={NORTH} animation="idle" face="neutral" lookAt={[11.5, 2.2, -4.9]} saccade={false} gaze={0} />
-          <Mum position={[10.0 - 2.6 * p, 0, -2.6]} rotationY={-Math.PI / 2} walk={2.6 * p} />
-          <Dad position={[11.2 + 2.6 * p, 0, -2.2]} rotationY={Math.PI / 2} walk={2.6 * p} />
-        </>
-      ),
-    },
-    {
       cue: "8.night",
       ...cam.push({ on: [11.5, 2.15, -4.8], dist: 2.6, to: 2.0, yaw: 10, pitch: -6, fov: 38 }),
       zone: ZONE.night,
@@ -125,22 +111,6 @@ export const scene4 = storyScene(timing, {
             <OpenWindow />
             <Hero position={[11.5, y, z]} animation={k < 1 ? "jump" : "crouch"} face={k < 1 ? "brave" : "uneasy"} />
             <DustRing position={[11.5, 0.05, UNDER_WINDOW[2]]} t={t - 0.7} size={1.1} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "8.see",
-      ...cam.push({ on: faceOf([11.2, 0, -3.6]), onTo: faceOf(SPY), dist: 3.0, to: 2.6, yaw: -20, pitch: 3, fov: 40 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "He creeps along under his own wall, low, looking for whatever they get up to without him.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <OpenWindow />
-            <Hero position={[UNDER_WINDOW[0] + (SPY[0] - UNDER_WINDOW[0]) * k, 0, UNDER_WINDOW[2] + (SPY[2] - UNDER_WINDOW[2]) * k]} rotationY={-0.9} animation="creep" animDistance={1.6 * k} face="uneasy" headYaw={Math.sin(t * 5) * 0.6} />
           </>
         );
       },

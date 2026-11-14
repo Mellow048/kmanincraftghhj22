@@ -16,9 +16,9 @@
   "film": {
     "seconds": [
       150,
-      178
+      176
     ],
-    "hardMaxSeconds": 180,
+    "hardMaxSeconds": 178,
     "hardMinSeconds": 60,
     "hardMinWords": 250,
     "shotSeconds": [
@@ -40,7 +40,8 @@
     "maxWordsPerShot": 18,
     "opensWith": "In this town",
     "lastLineContains": "subscribe",
-    "captions": true
+    "captions": true,
+    "shortsRule": "A vertical video over 3:00 is not a YouTube Short: YouTube files it as a long video. Two films were delivered at 3:41 and 3:25 and had to be cut down after the owner saw that (2026-11-13). No film of this topic runs over 2:58, and there is no longer cut."
   },
   "cuts": {
     "short": {
@@ -69,18 +70,6 @@
         2.5
       ],
       "note": "For in-this-town-monster-village-part-2: the owner's own outline, approved as a script, runs two minutes, between the short cut and the long one."
-    },
-    "extended": {
-      "seconds": [
-        178,
-        225
-      ],
-      "hardMaxSeconds": 230,
-      "words": [
-        770,
-        960
-      ],
-      "note": "Asked for by the owner for in-this-town-monster-village: a three-minute film with a longer ending. Use it only when he asks for more than the long cut holds."
     }
   },
   "measuredFromReference": {
@@ -110,10 +99,10 @@
     "in-this-town-nobody-looked-at-the-moon": "A film at night, and a remake of a rejected 20-second film (short cut, 63 shots). The owner: 'every single one u made is good'. Page, source and mp4: Topics/InThisTown/reference/nobody-looked-at-the-moon.",
     "in-this-town-monster-egg": "The long cut (18 beats, 93 shots). Voice only: it was made before the sound rule. The owner: 'every single one u made is good'. Page, source and mp4: Topics/InThisTown/reference/monster-egg.",
     "in-this-town-superpower-at-18": "The long cut with sound (90 shots), from the owner's own outline. The owner: 'wow i love it, i love how u made the short'. Page, source and mp4: Topics/InThisTown/reference/superpower-at-18.",
-    "in-this-town-monster-village": "The extended cut (95 shots), monsters as a family, night. The owner: 'i liked the superhero and this one'. Page, source and mp4: Topics/InThisTown/reference/monster-village.",
+    "in-this-town-monster-village": "The long cut (74 shots, 2:55; trimmed from 3:41 to be a Short), monsters as a family, night. The owner: 'i liked the superhero and this one'. Page, source and mp4: Topics/InThisTown/reference/monster-village.",
     "in-this-town-monster-village-part-2": "The middle cut (54 shots): a sequel on part one's world, from the owner's own outline. The owner: 'perfect'. Page, source and mp4: Topics/InThisTown/reference/monster-village-part-2.",
     "in-this-town-superpower-at-18-part-2": "Fast action and flying (83 shots). The owner: 'a banger and a massive upgrade'. Page, source and mp4: Topics/InThisTown/reference/superpower-at-18-part-2.",
-    "in-this-town-robot-at-18": "THE FIGHT REFERENCE. Extended cut (99 shots): a sword fight on the ground and in the air, built from posed bodies, hit-freezes and cuts inside a line (scene6.tsx, fight.tsx). The owner: 'now thats MUCH better! 8.8/10 fight scene'. Beats 1 to 5 are not a model for motion. Page, source and mp4: Topics/InThisTown/reference/robot-at-18.",
+    "in-this-town-robot-at-18": "THE FIGHT REFERENCE. Long cut (86 shots, 2:54; trimmed from 3:25 to be a Short): a sword fight on the ground and in the air, built from posed bodies, hit-freezes and cuts inside a line (scene6.tsx, fight.tsx). The owner: 'now thats MUCH better! 8.8/10 fight scene'. Beats 1 to 5 are not a model for motion. Page, source and mp4: Topics/InThisTown/reference/robot-at-18.",
     "in-this-town-pumpkin-heads": "A second short cut with sound (58 shots), and an ending that is a picture. The owner approved the script and asked for that ending. Page, source and mp4: Topics/InThisTown/reference/pumpkin-heads."
   },
   "sound": {

@@ -43,7 +43,7 @@ shots, a log of every shot, a snapshot of its source, and a page on what it is g
 | [`reference/monster-egg/`](reference/monster-egg/README.md): `in-this-town-monster-egg` (full film: 18 beats, 93 shots, 746 words, 2:57) | "every single one u made is good" | The long cut: how 18 beats are spread over three minutes, and three places in one world. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
 | [`reference/superpower-at-18/`](reference/superpower-at-18/README.md): `in-this-town-superpower-at-18` (full film: 18 beats, 90 shots, 710 words, 2:48) | "wow i love it, i love how u made the short" | The long cut WITH sound, and a story the owner outlined himself. Its page says what he rejected on the way |
 | [`reference/pumpkin-heads/`](reference/pumpkin-heads/README.md): `in-this-town-pumpkin-heads` (short cut: 14 beats, 58 shots, 490 words, 1:56) | He approved the script and asked for another ending; its `narration.md` says which | A second short cut with sound, and an ending that is not the subscribe sign held to camera |
-| [`reference/robot-at-18/`](reference/robot-at-18/README.md): `in-this-town-robot-at-18` (extended cut: 99 shots, 833 words, 3:25) | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A FIGHT.** `scene6.tsx` and `fight.tsx`: bodies posed joint by joint, hit-freezes, cuts inside a line, flying poses, and the two fights he rejected first |
+| [`reference/robot-at-18/`](reference/robot-at-18/README.md): `in-this-town-robot-at-18` (full film: 86 shots, 697 words, 2:54) | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A FIGHT.** `scene6.tsx` and `fight.tsx`: bodies posed joint by joint, hit-freezes, cuts inside a line, flying poses, and the two fights he rejected first |
 
 Copy how they are **built**. Never copy what they **tell**: no premise, sentence, joke or twist from a finished film
 goes into a new one.
@@ -81,7 +81,7 @@ These apply to a film that declares `topic: "in-this-town"`, and to nothing else
 
 | Base rule (`AGENTS.md`) | In This Town |
 |---|---|
-| 18–20 s, ceiling 21 s | 150–178 s. Never over 180 s, the limit for a Short |
+| 18–20 s, ceiling 21 s | 150–176 s. **Never over 178 s: a strict rule.** Over 3:00 YouTube does not treat it as a Short |
 | 4–7 scenes, 3–5 shots per 20 s | About 18 beats and 80–95 shots. A cut about every 2 s (median 1.4–2.3 s). No shot over 6 s |
 | No camera teleports; a scene starts where the last one ended | Hard cuts are the language. Cut on the noun |
 | Narration in the present tense, 3–10 words a line, 4–7 lines | Past tense, first person, full sentences. 640–770 words at 235–268 words a minute. No pauses |
@@ -110,7 +110,7 @@ Nothing else changes.
 
 | | Full film | Short cut |
 |---|---|---|
-| Length | 150–178 s, never over 180 s | 60–118 s, **never over 120 s** |
+| Length | 150–176 s, **never over 178 s** (strict rule) | 60–118 s, **never over 120 s** |
 | Words | 640–770 | 250–520 |
 | The floor, for both | Never under 60 s or 250 words. Under that it is not a short film of this topic; it is a different kind of video, and `npm run check` fails it | the same |
 | Beats | 18 | About 14 |

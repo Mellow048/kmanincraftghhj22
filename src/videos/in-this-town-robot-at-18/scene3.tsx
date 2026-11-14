@@ -86,26 +86,6 @@ export const scene3 = storyScene(timing, {
       },
     },
     {
-      cue: "6.knew",
-      ...cam.push({ on: [PIP[0] + 0.55, 1.45, PIP[2]], dist: 5.6, to: 5.0, yaw: 0, pitch: 2, fov: 44 }),
-      zone: ZONE.town,
-      look: DAY,
-      note: "The two of them side on. Over Pip, what the glasses worked out, in a bubble: TROUBLE 100%. Brick's shadow is over him.",
-      stage: (t) => {
-        const ex = wordAt("6.knew", "exactly");
-        return (
-          <>
-            <Pip position={PIP} rotationY={E} animation="scared" face="fear" lens={1.5} />
-            <Brick position={BRICK} rotationY={W} animation="idle" face="smug" headPitch={0.3} />
-            <BrickArms position={BRICK} rotationY={W} />
-            <group scale={pop(t, ex - 0.1)}>
-              <Bubble text="TROUBLE 100%" position={[PIP[0] + 0.5, 2.6, PIP[2]]} scale={0.32} />
-            </group>
-          </>
-        );
-      },
-    },
-    {
       cue: "6.lift",
       ...cam.push({ on: [PIP[0] + 0.55, 1.6, PIP[2]], dist: 5.8, to: 5.2, yaw: 0, pitch: 0, fov: 44 }),
       zone: ZONE.town,

@@ -61,83 +61,6 @@ export const scene9 = storyScene(timing, {
       },
     },
     {
-      cue: "19.tap",
-      ...cam.push({ on: [-3.42, 1.5, -0.8], dist: 3.5, to: 2.9, yaw: 14, pitch: 2, fov: 40 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "A loose bone arm comes over the player's shoulder and taps it, twice. He turns his head. Dad is holding his own arm, and waves it. On 'wearing' the player jumps out of his boots and the sword goes.",
-      impacts: [{ at: 2.3, amp: 0.05, dur: 0.3 }],
-      stage: (t) => {
-        const tap = wordAt("19.tap", "tapped");
-        const beat = (s: number) => Math.max(0, 1 - Math.abs(t - s) / 0.09);
-        const poke = Math.max(beat(tap), beat(tap + 0.26));
-        const see = wordAt("19.tap", "wearing") - 0.15;
-        const look = ease(ramp(t, tap + 0.4, tap + 0.7));
-        const jump = ramp(t, see, see + 0.45);
-        const gone = ease(ramp(t, see, see + 0.5));
-        const wave = t > see ? Math.sin((t - see) * 14) * 0.5 : 0;
-        return (
-          <>
-            <Fill on={[-3.4, 1.6, -0.7]} yaw={14} power={9} d={2.2} />
-            <Raider who={3} position={[-3.75 - 0.5 * gone, 0.6 * 4 * jump * (1 - jump), -0.5]} rotationY={-0.1} animation={jump > 0 && jump < 1 ? "fall" : "idle"} sword={t < see} face={t > see ? "fear" : look > 0.5 ? "uneasy" : "angry"} headYaw={1.35 * look} />
-            {t >= see ? <AimSword position={[-3.95, Math.max(0.06, 1.2 - 3.2 * (t - see) ** 2), -0.2]} yaw={0.4 + (t - see) * 5} pitch={0} /> : null}
-            <Dad position={[-3.02, 0, -1.3]} rotationY={-0.35} mood={t > see ? "happy" : "calm"} rattle={t > see ? 0.7 : 0} lookAt={[-3.75, 1.6, -0.5]} />
-            {/* The arm he is not wearing: held out like a stick, the hand end on the shoulder. */}
-            <group position={[-3.3, 1.52 + (t > see ? 0.35 : 0), -1.02]} rotation={[1.25 - 0.3 * poke + (t > see ? -1.0 : 0), -0.5, wave]}>
-              <Block position={[0, 0.3, 0]} size={[0.09, 0.6, 0.09]} color="#dcdcd2" />
-              <Block position={[0, 0.63, 0]} size={[0.13, 0.1, 0.11]} color="#e8e8de" />
-            </group>
-            <Bits position={[-3.75, 1.3, -0.5]} t={t - see} color="#ffffff" count={8} power={2} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "19.bus",
-      ...cam.push({ on: [-9.5, 1.35, 2.2], dist: 7.8, to: 7.2, yaw: 0, pitch: 9, fov: 44 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      shake: 0.03,
-      note: "Four players in a row like pins. The bus rolls in from the right, turning over and over, goes through all four and out the other side. They go up in the air one after another.",
-      impacts: [
-        { at: 0.44, amp: 0.06, dur: 0.2 },
-        { at: 0.6, amp: 0.06, dur: 0.2 },
-        { at: 0.75, amp: 0.06, dur: 0.2 },
-        { at: 0.9, amp: 0.06, dur: 0.2 },
-      ],
-      stage: (t) => {
-        const D = dur("19.bus");
-        const bx = -5.1 - 10.5 * (t / D);
-        const pins = [-8.3, -9.1, -9.9, -10.7];
-        return (
-          <>
-            <pointLight position={[-9.5, 3.4, 5.6]} color="#cdd6ff" intensity={36} distance={12} decay={2} />
-            <group position={[bx, 0.95 + Math.abs(Math.sin(t * 11)) * 0.12, 2.2]} rotation={[0, 0, (-5.1 - bx) / 0.95]}>
-              <Bus position={[0, -0.95, 0]} rotationY={W} mood="angry" />
-            </group>
-            {pins.map((px, i) => {
-              const at = (D * (-(px + 0.95) - 5.1)) / 10.5;
-              const x = t - at;
-              if (x <= 0) return <Raider key={i} who={i + 1} position={[px, 0, 2.2 + (i % 2 ? 0.25 : -0.25)]} rotationY={E} animation="idle" arms={i % 2 ? undefined : "point"} face={t > at - 0.35 ? "fear" : "angry"} headYaw={t > at - 0.35 ? 0 : 1.2} />;
-              const air = Math.min(x, 1.1);
-              const side = i % 2 ? 1 : -1;
-              const y = Math.max(0, 4 * (2.3 + i * 0.3) * (air / 1.1) * (1 - air / 1.1));
-              return (
-                <group key={i}>
-                  <group position={[px - 0.9 * air, 0.9 + y, 2.2 + side * (0.25 + 1.5 * air)]} rotation={[x < 1.1 ? x * 8 * side : 1.5 * side, 0, x < 1.1 ? x * 5 : 0.4]}>
-                    <Raider who={i + 1} position={[0, -0.9, 0]} rotationY={E} animation="fall" sword={false} face="fear" />
-                  </group>
-                  <AimSword position={[px + 0.6 * air, 1.3 + 3.5 * air - 5.2 * air * air, 2.2 - side * 0.8 * air]} yaw={x * 9} pitch={x * 7} />
-                  <Bits position={[px, 1.1, 2.2]} t={x} color="#8fe07a" count={10} power={3} />
-                  <DustRing position={[px, 0.05, 2.2]} t={x} size={1.4} />
-                </group>
-              );
-            })}
-          </>
-        );
-      },
-    },
-    {
       cue: "19.hiss",
       ...cam.push({ on: [-5.5, 1.3, 3.5], dist: 5.5, to: 4.9, yaw: 38, pitch: 5, fov: 42 }),
       zone: ZONE.night,
@@ -238,24 +161,6 @@ export const scene9 = storyScene(timing, {
           <Hero position={[-3.4, 0, 3.0]} rotationY={W + 0.5} animation="idle" face="uneasy" lookAt={MO_FACE} />
         </>
       ),
-    },
-    {
-      cue: "20.fear",
-      ...cam.push({ on: [-4.4, 1.5, 2.55], dist: 2.9, to: 2.1, yaw: -18, pitch: -7, fov: 38 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "Close, from below, so we are looking up into the face he is hiding. His eyes go from one side to the other and back to the hat. He is waiting for it.",
-      stage: (t) => {
-        const hate = wordAt("20.fear", "hate");
-        return (
-          <>
-            <Fill on={MO_FACE} yaw={-18} power={8} d={1.9} />
-            <Mo position={MID} animation="idle" arms="hold" hat={false} scarf={0} wiped={1} face={t > hate ? "fear" : "sad"} headPitch={0.4} headYaw={0.22 * Math.sin(t * 2.6)} saccade={false} gaze={t < 0.8 ? -1 : t < 1.6 ? 1 : 0} />
-            <StrawHat position={[MID[0], 1.0, MID[2] + 0.44]} width={0.92} tilt={0.55} />
-            <Crowd who={AROUND} look={MO_FACE} />
-          </>
-        );
-      },
     },
     {
       cue: "20.mum",

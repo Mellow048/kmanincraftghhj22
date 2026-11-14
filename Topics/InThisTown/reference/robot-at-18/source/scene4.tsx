@@ -50,29 +50,6 @@ export const scene4 = storyScene(timing, {
       ),
     },
     {
-      cue: "8.nose",
-      ...cam.push({ on: [ME[0] + 0.45, 1.3, ME[2]], dist: 2.9, to: 2.4, yaw: 0, pitch: 4, fov: 42 }),
-      zone: ZONE.room,
-      look: NIGHT,
-      note: "He has it in both hands and turns it: upside down, then one ear to his eye, then, on 'nose', he holds it over his face and looks up into it.",
-      stage: (t) => {
-        const over = wordAt("8.nose", "over");
-        const ears = wordAt("8.nose", "ears");
-        const nose = wordAt("8.nose", "nose");
-        const flip = Math.PI * ease(ramp(t, over - 0.25, over + 0.15));
-        const ear = E * ease(ramp(t, ears - 0.3, ears));
-        const up = ease(ramp(t, nose - 0.4, nose - 0.05));
-        const at = front(ME, E, 0.5, lerp(0.85, 1.75, up));
-        return (
-          <>
-            <Hero position={ME} rotationY={E} animation={up > 0.4 ? "reachUp" : "hold"} face={up > 0.4 ? "worried" : "frown"} headPitch={lerp(0.3, -0.45, up)} />
-            <HeadAt position={at} rotation={[flip * (1 - up) - 0.9 * up, -E + ear * (1 - up), 0]} />
-            <Fill on={[ME[0], 1.5, ME[2]]} yaw={0} power={1.12} />
-          </>
-        );
-      },
-    },
-    {
       cue: "8.button",
       ...cam.push({ on: [HEAD[0] - 0.3, HEAD[1], HEAD[2]], dist: 1.9, to: 1.1, yaw: 0, pitch: 8, fov: 40 }),
       zone: ZONE.room,
@@ -172,24 +149,6 @@ export const scene4 = storyScene(timing, {
             ))}
             <pointLight position={[MID[0], line, MID[2] + 0.9]} color={CYAN} intensity={5} distance={4} decay={2} />
             <Fill on={[MID[0], 1.2, MID[2]]} yaw={0} power={1.35} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "9.armor",
-      ...cam.push({ on: [MID[0], 1.0, MID[2]], dist: 3.6, to: 4.6, yaw: 0, pitch: -6, fov: 44 }),
-      zone: ZONE.room,
-      look: NIGHT,
-      note: "From low down, pulling back: the whole of him in silver armor, blue eyes lit in a helmet with no face. He looks at his own two hands.",
-      stage: (t) => {
-        const s = wordAt("9.armor", "silver");
-        return (
-          <>
-            <Hero position={MID} animation={t > s ? "guard" : "hold"} suit={1} eyes={1 + jolt(t, s, 0.5)} headPitch={t > s ? 0 : 0.4} />
-            <Glow position={[MID[0], 1.56, MID[2] + 0.3]} size={0.9} color={CYAN} opacity={0.3} />
-            <Fill on={[MID[0], 1.2, MID[2]]} yaw={0} power={1.80} />
-            <Fill on={[MID[0], 1.2, MID[2]]} yaw={140} power={1.12} color={CYAN} />
           </>
         );
       },

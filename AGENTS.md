@@ -14,7 +14,7 @@ code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown
 | asks for a 20-second short, or for none of the above | The **base film** | This file, from "The base film" down | `npm run new -- "The Title"` |
 | could be either | | | Ask the owner one question. Do not guess |
 
-**"In This Town" is the name of a format, not a title.** It runs one to three minutes. One kid tells it in the past
+**"In This Town" is the name of a format, not a title.** It runs one to three minutes, **never over three** (strict rule, below). One kid tells it in the past
 tense. It cuts about every two seconds to a recorded voice, captions every word, has music and sound effects, and ends
 on a twist that was planted in the first minute. A 20-second film with that name is not a short version of it. The
 short version is the topic's own `cut: "short"`: one to two minutes.
@@ -54,6 +54,19 @@ What a topic gives a film, that the base does not:
 Do not get past a refusal by renaming the film, rewording its first line, deleting the `topic` line, or writing an
 excuse into `topic.json`. The excuses there (`sound.voiceOnly`, a new `cut`) are the owner's to give. If you think a
 check is wrong, say so and ask.
+
+### STRICT RULE: no film runs over three minutes
+
+The owner, 2026-11-14: **"add a strict rule, no over 3 minutes"**. A vertical video over 3:00 is not a YouTube Short:
+YouTube files it as a long video, and that happened to two delivered films (3:41 and 3:25), which then had to be cut
+down. So:
+
+- **Every film is 2:58 (178 s) or shorter.** No topic, no named cut and no request for "a longer ending" raises that.
+  If a story does not fit, **split it into parts**; do not make it longer.
+- `npm run check` fails a script over 178 s, and `render.yml` refuses to render a vertical film over 180 s.
+- Check the length when the script is written (`narration.py build <film> --estimate`), not after the render.
+- A recorded film that is too long loses whole lines with `python3 scripts/trim-narration.py <film> <cue.id> …`
+  (no new recording), then their shots and their rows in `sound.json`. Look at both sides of every join on stills.
 
 ### Five things that hold for every topic film
 

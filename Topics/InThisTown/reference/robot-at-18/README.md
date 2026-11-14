@@ -9,8 +9,8 @@ first two fights were rejected. The third he scored himself:
 
 | File | What it is |
 |---|---|
-| `in-this-town-robot-at-18.mp4` | **The film as delivered**: 1080×1920, 3:25, full sound. A copy of `renders/in-this-town-robot-at-18.mp4` |
-| `fight-2m03-to-2m42-five-frames-a-second.jpg` | **The whole fight, five frames a second**, read left to right, top to bottom. An agent cannot watch a video: this is the nearest thing. Read it first |
+| `in-this-town-robot-at-18.mp4` | **The film as delivered**: 1080×1920, 2:54, full sound. A copy of `renders/in-this-town-robot-at-18.mp4` |
+| `fight-1m37-to-2m15-five-frames-a-second.jpg` | **The whole fight, five frames a second**, read left to right, top to bottom. An agent cannot watch a video: this is the nearest thing. Read it first |
 | `contact-sheet-every-2-seconds.jpg` | The whole film, one frame every two seconds |
 | `shot-log.md` | Every shot on one page. A row whose cue ends `+1.3s` is a cut inside a line (see below) |
 | `source/` | A **snapshot** of the source. The fight is `source/scene6.tsx`; its body language and effects are `source/fight.tsx`; the girl from the bush is the `14.bush` shots of `source/scene7.tsx` |
@@ -94,27 +94,31 @@ judged in motion, so it has to be designed for motion: the list below is what th
 
 ## Its shape
 
-99 shots, 833 words, 3:25.1 (205.1 s), 244 words a minute.
+86 shots, 697 words, 2:54.0 (174.0 s), 241 words a minute.
 
 | # | Beat | Starts | Seconds | Words | Shots |
 |---|---|---|---|---|---|
-| 1 | A robot at eighteen | 0:00.0 | 21.5 | 97 | 8 |
-| 2 | Just a head | 0:21.5 | 37.4 | 155 | 14 |
-| 3 | Put him down | 0:58.9 | 21.8 | 91 | 10 |
-| 4 | It was a suit | 1:20.7 | 23.0 | 95 | 10 |
-| 5 | The forest | 1:43.7 | 19.8 | 77 | 9 |
-| 6 | The fight | 2:03.5 | 38.9 | 147 | 30 |
-| 7 | Nora | 2:42.3 | 42.8 | 171 | 18 |
+| 1 | A robot at eighteen | 0:00.0 | 11.7 | 50 | 4 |
+| 2 | Just a head | 0:11.7 | 30.0 | 118 | 11 |
+| 3 | Put him down | 0:41.7 | 19.4 | 82 | 9 |
+| 4 | It was a suit | 1:01.1 | 16.8 | 72 | 8 |
+| 5 | The forest | 1:17.9 | 18.7 | 75 | 8 |
+| 6 | The fight | 1:36.6 | 38.9 | 147 | 30 |
+| 7 | Nora | 2:15.5 | 38.6 | 153 | 16 |
 
-- Shots: the median holds 1.97 s, the shortest 0.58 s, the longest 4.47 s. 9 are under a second and 18 are over three. About 8.4 words to a picture.
-- Camera: 84 `cam.push`, 5 `cam.truck`, 5 set by hand, 3 `cam.orbit`, 2 `cam.top`.
-- Places: village 24, living 5, class+classN 1, class+classS 4, room 10, forest 45, sky 10 shots.
+- Shots: the median holds 1.88 s, the shortest 0.58 s, the longest 4.43 s. 9 are under a second and 15 are over three. About 8.1 words to a picture.
+- Camera: 71 `cam.push`, 5 `cam.truck`, 5 set by hand, 3 `cam.orbit`, 2 `cam.top`.
+- Places: village 20, living 3, class+classS 3, room 8, forest 42, sky 10 shots.
 
-The script has 81 lines; 18 more shots are cuts inside a line, all in beats 6 and 7. It is an **extended cut**
-(`cut: "extended"` in `film.tsx`).
+The script has 68 lines; 18 more shots are cuts inside a line, all in beats 6 and 7.
+
+**Cut down to a Short on 2026-11-13.** It was delivered at 3:25, and a vertical video over 3:00 is not a YouTube
+Short. 13 lines came out of beats 1 to 5 and the cannon scene with `scripts/trim-narration.py`, with no new
+recording. **The fight was not touched.** One thing had to be restaged: the cut line was the one in which the old
+man landed, so he now drops out of the sky in the first half second of `13.cannon`.
 
 ## Its sound, measured (`source/sound.lock.json`)
 
-Music 17.5 dB under the voice, beds 27.2 dB under. 208 effects, 61 a minute, 40 kinds; none buried. The voice is
-14.8 dB over everything else (median), 4.3 dB at the worst half second. In the fight every effect is placed by
+Music 17.5 dB under the voice, beds 27.1 dB under. 185 effects, 64 a minute, 39 kinds; none buried. The voice is
+14.6 dB over everything else (median), 4.2 dB at the worst half second. In the fight every effect is placed by
 `offset` from the start of its line, at the time of the blow in `scene6.tsx`, not on a word.

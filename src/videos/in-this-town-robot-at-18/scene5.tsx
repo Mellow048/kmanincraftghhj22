@@ -63,20 +63,6 @@ export const scene5 = storyScene(timing, {
       },
     },
     {
-      cue: "10.sorry",
-      ...cam.push({ on: [ME[0], 1.5, ME[2]], dist: 2.5, to: 2.3, yaw: -10, pitch: 0, fov: 40 }),
-      zone: ZONE.forest,
-      look: DUSK,
-      note: "Visor up, wincing at the stump. Sorry, tree.",
-      stage: () => (
-        <>
-          <Hero position={ME} rotationY={-0.4} animation="shrug" suit={1} visor={1} face="uneasy" />
-          <Bush position={BUSH} /><CutTree position={TREE} cut={1} dir={-1} />
-          <Fill on={[ME[0], 1.5, ME[2]]} yaw={-10} power={5} />
-        </>
-      ),
-    },
-    {
       cue: "10.feet",
       ...cam.push({ on: [ME[0], 1.0, ME[2]], onTo: [ME[0], 3.6, ME[2]], dist: 5.6, to: 6.6, yaw: 0, pitch: -6, fov: 44 }),
       zone: ZONE.forest,

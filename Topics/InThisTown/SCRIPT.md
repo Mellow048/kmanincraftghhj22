@@ -173,6 +173,6 @@ Write to these budgets. The total should land between 640 and 770 words.
 - [ ] The reason changes what sentence one meant.
 - [ ] The last line starts "Subscribe" and is under seven words.
 - [ ] Every line of the script is one shot, and every line names something to show.
-- [ ] `python3 scripts/narration.py build <film> --estimate` says 150–178 seconds.
+- [ ] `python3 scripts/narration.py build <film> --estimate` says 150–176 seconds. **Over 178 fails the check: no film runs over three minutes** (strict rule, `AGENTS.md`).
 - [ ] Read only the sentences of six words or fewer. Is the plot there?
 - [ ] No sentence is copied from the reference. We borrow the shape, not the words.

@@ -66,7 +66,7 @@ this topic's own opening.
 
 | Base rule (`AGENTS.md`) | What If |
 |---|---|
-| 18–20 s, ceiling 21 s | 60–118 s. Never over 120 s. Never under 60 s or 250 words. (`cut: "long"`: 150–178 s, never over 180 s) |
+| 18–20 s, ceiling 21 s | 60–118 s. Never over 120 s. Never under 60 s or 250 words. (`cut: "long"`: 150–176 s, never over 178 s: the strict three-minute rule) |
 | 4–7 scenes, 3–5 shots per 20 s | About 14 beats and 35–65 shots. A cut about every 2 s (median 1.4–2.3 s). No shot over 6 s |
 | No camera teleports | Hard cuts are the language. Cut on the noun |
 | Narration in the present tense, 3–10 words a line | Past tense, first person, full sentences. 250–520 words at 235–268 words a minute. No pauses |

@@ -23,7 +23,6 @@ export const film = defineFilm({
   id: "in-this-town-robot-at-18",
   title: "In This Town, Everyone Gets a Robot at 18",
   topic: "in-this-town",
-  cut: "extended",
   look: "overworld-day",
   audio: { src: "audio/in-this-town-robot-at-18/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
