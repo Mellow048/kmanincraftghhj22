@@ -59,6 +59,7 @@ studied for its shape. The reference film is ours.
 1. This page, then [`reference/README.md`](reference/README.md): which films the owner approved, and what each is
    for. Then the reference film's page, [`reference/same-face/`](reference/same-face/README.md), its contact sheet and
    its shot log.
+0. [`OWNER.md`](OWNER.md) — what the owner likes, what reviews said, and the rules that came out of them. It wins over the playbooks.
 2. [`SCRIPT.md`](SCRIPT.md) — how the story is written. This is where version 1 failed.
 3. [`SHOTS.md`](SHOTS.md) — how it is cut and shot, and how each Roblox trick becomes a Minecraft one.
 4. [`PACK.md`](PACK.md) — the people, places and things that already exist. One picture, one table for each file.

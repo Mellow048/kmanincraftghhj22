@@ -1,5 +1,7 @@
 # Writing an "In This Town" script
 
+> **First read [`OWNER.md`](OWNER.md).** Premise on screen in the first second; no two shots in a row alike; every scene has an environment shot, a travelling shot and an odd angle; the owner's outline is the story.
+
 This is a study of one script, and then the rules we take from it.
 
 The script is the narration of "In This Town, Everyone Lived In A Treehouse"
