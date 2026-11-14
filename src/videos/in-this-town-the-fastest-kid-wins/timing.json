@@ -1,0 +1,112 @@
+{
+ "film": "in-this-town-the-fastest-kid-wins",
+ "fps": 30,
+ "duration": 4.0667,
+ "estimated": true,
+ "tempo": 1.0,
+ "wordsPerMinute": 269.1,
+ "audio": null,
+ "clips": [],
+ "cues": [
+  {
+   "id": "1.town",
+   "start": 0.0,
+   "end": 1.6667,
+   "text": "In this town, everyone did one strange thing"
+  },
+  {
+   "id": "1.me",
+   "start": 1.6667,
+   "end": 2.2667,
+   "text": "except me."
+  },
+  {
+   "id": "14.sub",
+   "start": 2.2667,
+   "end": 4.0667,
+   "text": "Subscribe before I find out why."
+  }
+ ],
+ "words": [
+  {
+   "w": "In",
+   "s": 0.0,
+   "e": 0.167
+  },
+  {
+   "w": "this",
+   "s": 0.167,
+   "e": 0.333
+  },
+  {
+   "w": "town,",
+   "s": 0.333,
+   "e": 0.5
+  },
+  {
+   "w": "everyone",
+   "s": 0.586,
+   "e": 1.0
+  },
+  {
+   "w": "did",
+   "s": 1.0,
+   "e": 1.166
+  },
+  {
+   "w": "one",
+   "s": 1.166,
+   "e": 1.333
+  },
+  {
+   "w": "strange",
+   "s": 1.333,
+   "e": 1.5
+  },
+  {
+   "w": "thing",
+   "s": 1.5,
+   "e": 1.666
+  },
+  {
+   "w": "except",
+   "s": 1.666,
+   "e": 1.956
+  },
+  {
+   "w": "me.",
+   "s": 1.956,
+   "e": 2.123
+  },
+  {
+   "w": "Subscribe",
+   "s": 2.321,
+   "e": 2.611
+  },
+  {
+   "w": "before",
+   "s": 2.611,
+   "e": 2.901
+  },
+  {
+   "w": "I",
+   "s": 2.901,
+   "e": 3.067
+  },
+  {
+   "w": "find",
+   "s": 3.067,
+   "e": 3.234
+  },
+  {
+   "w": "out",
+   "s": 3.234,
+   "e": 3.401
+  },
+  {
+   "w": "why.",
+   "s": 3.401,
+   "e": 3.567
+  }
+ ]
+}
