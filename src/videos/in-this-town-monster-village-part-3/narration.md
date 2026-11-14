@@ -1,7 +1,8 @@
 # Narration — In This Town, I Live in a Monster Village, Part 3
 
-**Status: DRAFT 1, waiting for the owner's yes.** He gave no outline for this part ("try making the part 3 first"), so
-the story is the agent's. Nothing is built until he approves it.
+**Status: DRAFT 2, the owner's own outline (2026-11-14), waiting for his yes on the lines.** Draft 1 (the camp, the
+cage, "Son") was the agent's story and he replaced it. His outline is kept word for word in
+`Topics/InThisTown/outlines/monster-village-part-3.md`.
 
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/SCRIPT.md` before changing a word.
 
@@ -12,99 +13,93 @@ two.
 - Each `[cue]` line is **one shot**. Each `# clip` is one recording, saved to
   `public/audio/in-this-town-monster-village-part-3/raw/<clip>.mp3`; then
   `python3 scripts/narration.py build in-this-town-monster-village-part-3`.
-- The teller wears YELLOW. Mo is the man in the straw hat and the red scarf. The big player is the one from part one
-  who lifted his sword and "knew that face".
-- No flashback: everything is something the boy sees or hears himself.
+- The teller wears YELLOW. Mo is the man in the straw hat and the red scarf.
+- **The hideout scenes are things the boy was not there for.** The owner asked for them, so the teller says so out
+  loud: "I only heard about it later" (2.later). That keeps the rule that he never shows what he could not know.
+- **`# clip 08-cell wait 5.0`** is five seconds with no voice, and it belongs to shot `7.plan`: the monsters lean in and
+  talk with their hands, the camera pushes into a dark block, and the cut to the cell comes out of the black. His
+  words: "narration stop here and make them move like they are discussing".
+- Part four, his note for later: the monsters get help from the pillagers, who hate humans.
 
 What is planted, and where it pays off:
 
 | Planted | Pays off |
 |---|---|
-| Dad's arm came away with the boy (part two, 7.arm) | It points at the tracks (2.point); "A trophy" (4.arm); it reaches the key (6.arm, 6.thanks) |
-| "They are players. I look like a player" (part one, 12.think) | He walks in through the front gate (3.think, 3.walk) |
-| Mo's helmet on the ground (part two, 7.sword) | He wears it in (3.helmet); "the wrong way round" (5.wrong); "Helmet off" (8.off) |
-| "They had come for him" (part one, 18.hunt) | "I did not come for you. I came for him" (7.him) |
-| "Who do you think carried the basket here?" (part one, 17.basket) | "Where is the baby you took?" (7.baby); "Ask him why I took you" (9.ask) |
-| The big player "knew that face" (part one, 18.player) | He has the boy's face (8.face, 8.son) |
-| The ring around the house, facing out (part one, 9.ring, 9.out) | The ring around the camp, facing in (10.ring, 10.in) |
-| The straw hat (parts one and two) | The trail of straw (2.straw, 2.trail); Mo with no hat (5.mo) |
+| Dad's arm came away with the boy (part two, 7.arm) | The arm behind the tree (2.tree); it crawls home (3.crawl); "He took it back" (4.dad) |
+| "With both arms, for once" (part two, 2.wave) | He plugs it back in (6.plug) |
+| The arm "talks" (4.look, 5.moved) | The teacher cannot work out how (6.teacher, 6.how) |
+| The enderman teacher who doubted (part two) | He is the only one asking the sensible question (6.how) |
+| Hiss the creeper (parts one and two) | Hiss knows about the iron golem (5.hiss, 5.golem) |
+| Mo's sword and helmet on the ground (part two, 7.sword) | "We found Mo" (9.mo) |
+| "Mum had a plan" (7.plan) | Part four |
 
 ```narration
 # clip 01-hook
 [1.town]     In this town, I was the only one who was not a monster.
 [1.friend]   My only human friend stayed behind, to face a whole army.
 [1.found]    And all I found of him was a sword, and a helmet.
-[1.pick]     I picked the helmet up. It was still warm.
+[1.pick]     I picked the helmet up. I did not see what was behind me.
 
-# clip 02-trail
-[2.arm]      I was still holding my dad's arm.
-[2.point]    And the arm was pointing at the ground.
-[2.boots]    Boot prints. Hundreds of them.
-[2.drag]     And in the middle, two long lines. Somebody had been dragged.
-[2.straw]    Then I saw a bit of straw. And another. And another.
-[2.trail]    Mo was leaving me a trail. Or his hat was falling apart.
-[2.hill]     It went all the way up the hill.
+# clip 02-arm
+[2.tree]     Behind a tree was my dad's arm. I had dropped it. It had followed me.
+[2.watch]    It was watching me. Do not ask me how.
+[2.crawl]    It started to crawl over to me, on its fingers.
+[2.hide]     Then it stopped, and went back behind the tree.
+[2.player]   Somebody had seen me. A player, coming down the street.
+[2.more]     Then two. Then ten.
+[2.grab]     They grabbed me, and put a sack over my head.
+[2.help]     The arm ran out to help. It got one player by the ankle.
+[2.many]     There were too many. It let go.
+[2.later]    What happened next, I only heard about later.
 
-# clip 03-camp
-[3.camp]     On the other side was a camp. Tents. Fires. Players everywhere.
-[3.sneak]    I could not sneak past that many.
-[3.think]    Then I thought: they are players. I look like a player.
-[3.helmet]   So I put on Mo's helmet. I picked up Mo's sword.
-[3.walk]     And I walked in through the front gate.
+# clip 03-home
+[3.crawl]    The arm crawled all the way back to the pig farm.
+[3.four]     It took four minutes. It is a fast arm.
+[3.mud]      It went down through the mud, and across the floor, to my dad.
 
-# clip 04-guard
-[4.guard]    "You are late," said the guard.
-[4.sorry]    "Sorry," I said.
-[4.whose]    He looked down. "Whose arm is that?"
-[4.arm]      "A trophy," I said.
-[4.nice]     "Nice," he said. And he let me in.
-[4.map]      Inside, they had a map of my village on a table.
-[4.plan]     "At sunrise," one said, "we dig up everything east of the pond."
+# clip 04-dad
+[4.dad]      "My arm!" said my dad. He was so happy. He took it back.
+[4.look]     Then he looked at it. And his face fell off. Then he put his face back.
+[4.shout]    "My son got taken away by the players?"
+[4.nobody]   Nobody looked worried. I am still a bit hurt about that.
 
-# clip 05-cage
-[5.tent]     The biggest tent was at the back. I went in.
-[5.mo]       There was a cage. And in it was Mo. No hat. No scarf.
-[5.not]      "You should not be here," he said.
-[5.same]     "You would have done the same," I said.
-[5.wrong]    "I would have done it better. You have my helmet on the wrong way round."
+# clip 05-villagers
+[5.moved]    Then the arm moved again. A finger went up. A finger went down.
+[5.villagers] "He went to the villagers?" said my dad.
+[5.scared]   Now everybody was scared.
+[5.hiss]     "There is a thing in that village," said Hiss.
+[5.golem]    "An iron golem. It can wipe out a lot of monsters. With one arm."
+[5.down]     They all looked down at the floor. They thought about it for a long time.
 
-# clip 06-key
-[6.key]      The key was on a hook, high up on the pole.
-[6.reach]    I jumped. I could not reach it.
-[6.arm]      So I held up my dad's arm. And the arm took the key.
-[6.thanks]   "Thanks, Dad," I said.
-[6.steps]    Then I heard steps behind me.
+# clip 06-east
+[6.again]    My dad was the first one to talk. He talked to his arm.
+[6.east]     "It says he is in the east," he said.
+[6.plug]     Then he plugged the arm back in. Click.
+[6.teacher]  The enderman teacher had stopped thinking about the golem.
+[6.how]      "How," he said, "is that arm talking to you?"
+[6.shrug]    Nobody had an answer.
 
-# clip 07-big
-[7.big]      It was the big player. The one who had lifted his sword at me.
-[7.froze]    I did not move. He did not even look at me.
-[7.mo]       He looked at Mo.
-[7.years]    "Ten years," he said. "Ten years I have looked for you."
-[7.him]      "And I did not come for you. I came for him."
-[7.baby]     "Where is the baby you took?"
-[7.silent]   Mo said nothing.
+# clip 07-plan
+[7.mum]      Then my mum put her hand up.
+[7.plan]     "I have a plan," she said. And they all moved in closer.
 
-# clip 08-face
-[8.turn]     Then the big player turned round, and looked at me.
-[8.off]      "You. Helmet off."
-[8.took]     I took it off. It went very quiet.
-[8.his]      Then he took off his own helmet.
-[8.face]     He had my face. Older. But mine.
-[8.son]      "Son," he said.
+# clip 08-cell wait 5.0
+[8.dark]     It was dark for a long time.
+[8.blink]    Then I opened my eyes. It was day.
+[8.bars]     I was behind bars. A cage, in the middle of a village.
+[8.village]  It was not a normal village. There was a castle wall all the way around it.
+[8.guards]   There were villager guards with swords at every door.
+[8.towers]   And players up on the towers, looking down.
 
-# clip 09-ask
-[9.mo]       "Do not listen to him," said Mo.
-[9.ask]      "Ask him why I took you."
-[9.wait]     I looked at the big player. I waited.
-[9.nothing]  He did not answer.
+# clip 09-mo
+[9.cages]    There were more cages next to mine. Empty. Empty. Empty.
+[9.mo]       And one that was not. Mo! I had found Mo!
+[9.reach]    I put my arm through the bars to reach him. He was much too far.
+[9.dumb]     It was a dumb idea.
+[9.saw]      A guard had seen that I was awake.
+[9.laugh]    He looked at me. And he laughed.
+[9.over]     I looked down at my feet. I thought it was over.
 
-# clip 10-ring
-[10.shake]   Then the ground shook.
-[10.out]     I looked out of the tent.
-[10.ring]    My whole village was standing in a ring around the camp.
-[10.in]      And this time, they were facing in.
-[10.mum]     My mum was at the front. "Give me back my son," she said.
-[10.two]     The big player drew his sword. "He is my son," he said.
-[10.me]      And they both looked at me.
+# clip 10-sub wait 1.0
 [10.sub]     Like and subscribe for part four.
 ```
