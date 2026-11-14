@@ -55,7 +55,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.say",
-      ...cam.push({ on: [PORCH[0] - 0.05, 2.1, PORCH[2]], dist: 3.0, to: 2.5, yaw: 20, pitch: 9, fov: 38 }),
+      ...cam.push({ on: [PORCH[0] + 0.55, 2.15, PORCH[2]], dist: 3.4, to: 2.8, yaw: 16, pitch: 6, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "The rule, said to his face: her face fills the frame, one eye and a hat brim, and she does not blink in the whole shot.",

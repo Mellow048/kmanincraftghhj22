@@ -97,7 +97,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.afraid",
-      ...cam.push({ on: [-4.0, 1.75, 0.2], dist: 3.4, to: 2.8, yaw: 30, pitch: 0, fov: 38 }),
+      ...cam.push({ on: [-4.0, 1.75, 0.2], dist: 4.2, to: 3.4, yaw: 30, pitch: 0, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'Not because they loved it. Because they were afraid': one face at the edge of the square, looking at the golem and not at the boy. Nobody in this frame is smiling.",
@@ -134,7 +134,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.ours",
-      ...cam.push({ on: [WELL[0] + 1.4, 1.0, WELL[2] + 1.2], dist: 5.2, to: 4.4, yaw: -30, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [WELL[0] - 0.3, 1.4, WELL[2] - 0.6], dist: 6.0, to: 5.0, yaw: 60, pitch: 10, fov: 48 }),
       zone: "village",
       look: "overworld-day",
       note: "'The golem had been handing us our own flowers': the golem giving a flower to a child again, exactly as in the tour, seen from much further away and past the boy's shoulder. Same action, new meaning.",
@@ -148,7 +148,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.held",
-      ...cam.push({ on: [WELL[0] + 0.7, 1.15, WELL[2] + 1.5], dist: 3.6, to: 2.9, yaw: -6, pitch: -2, fov: 40 }),
+      ...cam.push({ on: [WELL[0] + 0.3, 1.2, WELL[2] + 1.3], dist: 2.6, to: 2.2, yaw: 20, pitch: 2, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'Then it held one out to me': the iron hand, open, with the rose lying across it, at a kid's chest height. Nothing else in the frame but the hand and the flower.",

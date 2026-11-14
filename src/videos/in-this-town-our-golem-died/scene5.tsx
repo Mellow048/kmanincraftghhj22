@@ -66,12 +66,13 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.sword",
-      ...cam.push({ on: [SWORD_AT[0] - 0.2, 1.15, SWORD_AT[2]], dist: 3.8, to: 3.1, yaw: 44, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [SWORD_AT[0] - 0.2, 1.15, SWORD_AT[2]], dist: 4.0, to: 3.3, yaw: 70, pitch: 2, fov: 42 }),
       zone: "village",
       look: "lantern-night",
       note: "'I grabbed my father's diamond sword': a blade leaning against the door frame, and a kid's hand closing round a grip that is too long for it. It is the only blue in the film.",
       stage: (t) => (
         <>
+          <pointLight position={[SWORD_AT[0] + 0.3, 2.1, SWORD_AT[2] + 0.8]} color="#ffb060" intensity={26} distance={9} decay={2} />
           <Sword position={[SWORD_AT[0], 0.5, SWORD_AT[2]]} rotation={[0, 0.4, 0.16]} glow={0.55} />
           <Hero position={[SWORD_AT[0] - 0.5, 0, SWORD_AT[2] + 0.5]} rotationY={SOUTH + 1.1} animation="reach" face="brave" gaze={0} />
         </>

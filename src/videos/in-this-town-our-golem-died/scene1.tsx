@@ -16,7 +16,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.died",
-      ...cam.push({ on: [FELL[0] - 0.6, 1.15, FELL[2]], dist: 5.2, to: 4.2, yaw: -86, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [FELL[0] - 0.4, 1.0, FELL[2] + 0.1], dist: 3.8, to: 3.2, yaw: -104, pitch: 6, fov: 44 }),
       zone: "gate",
       look: "lantern-night",
       note: "The words are 'our golem died' and the picture is where it died: the scorched ground inside the gate, smoke still going up, the boy crouched in the middle of it. Not the fight — the morning after the fight.",

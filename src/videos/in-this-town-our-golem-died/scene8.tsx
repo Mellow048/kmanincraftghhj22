@@ -15,7 +15,7 @@ export const scene8 = storyScene(timing, {
   shots: [
     {
       cue: "12.home",
-      ...cam.push({ on: room(0.4, 1.2, -1.2), dist: 5.6, to: 4.6, yaw: 10, pitch: 6, fov: 44 }),
+      ...cam.push({ on: room(0.5, 1.0, 0.2), dist: 5.0, to: 4.2, yaw: 10, pitch: 4, fov: 46 }),
       zone: "room",
       look: "lantern-night",
       note: "'I went home': the room, the bed, the one window, and him standing in the doorway with his hands empty. A small room lit by one torch, and the bed is the biggest thing in it.",
@@ -28,7 +28,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "12.bed",
-      ...cam.push({ on: room(0.75, 0.75, -1.5), dist: 3.8, to: 3.1, yaw: 196, pitch: 52, fov: 46 }),
+      ...cam.push({ on: room(0.9, 0.6, -1.5), dist: 3.6, to: 2.9, yaw: 14, pitch: 42, fov: 48 }),
       zone: "room",
       look: "lantern-night",
       note: "'I lay on my bed and did not sleep': straight down on him lying on top of the blanket with his eyes open, the way a kid lies when he is not going to sleep. The camera sinks slowly, which is the only movement.",
@@ -41,7 +41,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.light",
-      ...cam.push({ on: room(-0.6, 1.6, -3.9), dist: 6.0, to: 4.8, yaw: -14, pitch: -1, fov: 46 }),
+      ...cam.push({ on: room(1.3, 1.85, -2.3), dist: 5.0, to: 4.0, yaw: -10, pitch: 2, fov: 46 }),
       zone: "room",
       look: "overworld-day",
       note: "'In the morning, the sun came in': the window, and the dust in the light, and nobody in the frame at all. One empty shot before the answer, so the answer has somewhere to land.",

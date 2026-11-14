@@ -48,7 +48,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.rose",
-      ...cam.top({ on: [FELL[0] + 0.1, 0.12, FELL[2]], height: 4.6, to: 3.8, spin: [10, 2], fov: 38 }),
+      ...cam.top({ on: [FELL[0] + 0.1, 0.12, FELL[2]], height: 2.4, to: 1.9, spin: [10, 2], fov: 40 }),
       zone: "gate",
       look: "lantern-night",
       note: "'In the ash was a rose': straight down on the scorch, and one red poppy lying in the middle of it, on its side, with the smoke drifting over it. The only colour in the frame.",
@@ -61,7 +61,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.pick",
-      ...cam.push({ on: [FELL[0] + 0.1, 0.42, FELL[2]], dist: 3.2, to: 2.6, yaw: -20, pitch: -10, fov: 36 }),
+      ...cam.push({ on: [FELL[0] + 0.1, 0.6, FELL[2] + 0.1], dist: 2.8, to: 2.3, yaw: 64, pitch: 14, fov: 38 }),
       zone: "gate",
       look: "lantern-night",
       note: "'I picked it up. It was still warm': from the ground, the flower lifted on the word, a kid's hand under it. The camera stays on the ground so the hand comes down to it.",
@@ -77,7 +77,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.put",
-      ...cam.push({ on: [ROSE_ON_RIM[0], ROSE_ON_RIM[1] + 0.15, ROSE_ON_RIM[2]], dist: 3.4, to: 2.8, yaw: -34, pitch: 12, fov: 38 }),
+      ...cam.top({ on: [ROSE_ON_RIM[0], ROSE_ON_RIM[1], ROSE_ON_RIM[2]], height: 2.6, to: 2.1, spin: [6, -2], fov: 38 }),
       zone: "village",
       look: "lantern-night",
       note: "'I put it on the well, with all the others': the rose set down on the rim among fourteen others, his hand still on it at the end. One movement, one frame, no cut away from it.",

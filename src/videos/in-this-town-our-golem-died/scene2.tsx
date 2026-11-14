@@ -29,7 +29,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.break",
-      ...cam.push({ on: [18.8, 1.5, 2.0], dist: 4.8, to: 3.9, yaw: -76, pitch: -14, fov: 42 }),
+      ...cam.push({ on: [18.8, 1.6, 2.0], dist: 6.0, to: 5.0, yaw: -76, pitch: -14, fov: 44 }),
       zone: "gate",
       look: "lantern-night",
       note: "'Nobody had ever seen it break': from the ground at its feet, looking up its body. Iron, rivets, no crack, no rust, nothing missing. The angle is the point — a thing up there cannot be hurt.",
