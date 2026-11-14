@@ -48,7 +48,7 @@ export const scene2 = storyScene(timing, {
       ...cam.pan({
         from: [-0.4, 1.42, 5.6],
         on: [WELL[0] + 0.9, 0.95, WELL[2] + 0.4],
-        onTo: [-3.0, 1.5, 4.6],
+        onTo: [-3.0, 1.72, 4.6],
         fov: 38,
         fovTo: 36,
       }),
@@ -57,7 +57,7 @@ export const scene2 = storyScene(timing, {
       note: "'The oldest rule in town was about those flowers': the look travels from the flowers up to the oldest woman standing beside them. She is old enough to have put most of them there.",
       stage: () => (
         <>
-          <Villager position={[-3.0, 0, 4.6]} rotationY={SOUTH - 1.1} robe={ROBE.white} hat="straw" phase={0.4} hmm={0.4} />
+          <Villager position={[-3.0, 0, 4.6]} rotationY={SOUTH + 1.2} robe={ROBE.white} hat="straw" phase={0.4} hmm={0.4} />
           <Hero position={[-1.4, 0, 6.4]} rotationY={SOUTH + 0.4} animation="idle" face="calm" gaze={0} />
         </>
       ),
