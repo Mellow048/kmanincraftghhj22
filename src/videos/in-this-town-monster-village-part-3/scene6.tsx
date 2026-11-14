@@ -131,7 +131,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "10.knock",
       cut: wordAt("10.knock", "it") - 0.2,
-      ...cam.push({ on: m(0.1, 1.5, 0.3), dist: 3.2, to: 2.6, yaw: 16, pitch: -3, fov: 42 }),
+      ...cam.push({ on: m(0, 1.55, 0.5), dist: 3.3, to: 2.8, yaw: 10, pitch: -3, fov: 42 }),
       zone: Z3.mansion,
       look: NIGHT,
       note: "The door, side on, close: it opens the width of a nose, and a grey nose comes out of it, with a crossbow under it. Mum gives it a little wave.",
@@ -139,10 +139,12 @@ export const scene6 = storyScene(timing, {
         const k = ease(ramp(t, 0.05, 0.4));
         return (
           <>
-            <Doors k={0.55 * k} />
-            <Pillager n={4} position={m(0.25, 0.3, -0.75 + 0.3 * k)} rotationY={0} crossbow armR={-1.2 * k} lookAt={monsterFace("zombie", m(-0.2, 0.3, 1.15))} />
-            <Mum position={m(-0.75, 0.3, 1.15)} rotationY={NORTH - 0.3} wave={0.75 * ease(ramp(t, 0.4, 0.65))} arms={0} />
-            <Dad position={m(1.0, 0.3, 1.3)} rotationY={NORTH + 0.3} />
+            <Block position={m(-0.6, 1.75, 0.16)} size={[1.2, 2.9, 0.12]} color="#4a2f1b" />
+            <Block position={m(0.6 + 0.6 * k, 1.75, 0.16)} size={[1.2, 2.9, 0.12]} color="#4a2f1b" />
+            <Block position={m(0.32, 1.75, 0.12)} size={[0.62 * k, 2.9, 0.02]} color="#000000" emissive="#ffb060" emissiveIntensity={0.7} castShadow={false} />
+            <Pillager n={4} position={m(0.3, 0.3, 0.1 + 0.3 * k)} rotationY={-0.3} crossbow armR={-1.2 * k} lookAt={monsterFace("zombie", m(-0.2, 0.3, 1.15))} />
+            <Mum position={m(-0.4, 0.3, 1.2)} rotationY={NORTH - 0.3} wave={0.75 * ease(ramp(t, 0.4, 0.65))} arms={0} />
+            <Dad position={m(1.3, 0.14, 2.0)} rotationY={NORTH + 0.3} />
             <pointLight position={m(0, 2, -0.8)} color="#ffcf90" intensity={30 * k} distance={6} decay={2} />
             <pointLight position={m(0, 2, 1.6)} color="#ffcf90" intensity={12 * k} distance={6} decay={2} />
           </>

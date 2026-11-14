@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
   AimSword, Black, Bubble, CAGE_X, DAY, EAST, GUARD, Glint, Hero, IronGolem, MO_CAGE, MY_CAGE, Mo, NORTH, ROBE, Raider, Villager, WEST, Z3, c, ease, faceOf, hop, jolt,
@@ -34,6 +34,13 @@ const Garrison: React.FC<{ t: number; look?: Vec3; guard?: boolean }> = ({ t, lo
 );
 const MoInCage: React.FC<{ up?: number; look?: Vec3 }> = ({ up = 0, look }) => (
   <Mo position={[MO_CAGE[0] + 0.15, 0.08, MO_CAGE[2] - 0.2]} rotationY={-0.5} animation="sit" scarf={0} face={up > 0.5 ? "surprised" : "sad"} headPitch={0.6 * (1 - up)} lookAt={up > 0.5 ? look : undefined} />
+);
+/** An arm out through the front bars of a cage, drawn on its own so it reads from across the yard. `droop` 0–1 lets it hang. */
+const ArmOut: React.FC<{ at: Vec3; color: string; hand: string; droop?: number }> = ({ at, color, hand, droop = 0 }) => (
+  <group position={at} rotation={[1.2 * droop, 0, 0]}>
+    <Block position={[0, 0, 0.3]} size={[0.15, 0.15, 0.6]} color={color} />
+    <Block position={[0, 0, 0.66]} size={[0.15, 0.15, 0.14]} color={hand} />
+  </group>
 );
 const ME: Vec3 = [MY_CAGE[0], 0.08, MY_CAGE[2] + 0.55];
 const MEFACE = faceOf(ME);
@@ -194,7 +201,9 @@ export const scene5 = storyScene(timing, {
           <>
             <Hero position={[MY_CAGE[0] + 0.3, 0.08, MY_CAGE[2] + 0.98]} rotationY={0.15} animation="idle" arms="reach" face="brave" />
             <Mo position={[MO_CAGE[0] - 0.3, 0.08, MO_CAGE[2] + 0.95]} rotationY={-0.15} animation="idle" arms="reach" scarf={0} />
-            <Black position={c(0, 1.1, 1.6)} size={[7.6 * ease(ramp(t, far - 0.3, far)), 0.05, 0.05]} color="#c23a2e" />
+            <ArmOut at={[MY_CAGE[0] + 0.5, 1.05, MY_CAGE[2] + 1.05]} color="#f2b705" hand="#dba47c" />
+            <ArmOut at={[MO_CAGE[0] - 0.5, 1.15, MO_CAGE[2] + 1.05]} color="#3f8f8f" hand="#5a9a3a" />
+            <Black position={c(0, 1.1, 1.75)} size={[7.6 * ease(ramp(t, far - 0.3, far)), 0.05, 0.05]} color="#c23a2e" />
             <Bubble text="TOO FAR" position={c(-1.5, 2.3, 1.7)} rotationY={-1.3} scale={0.5 * pop(t, far)} tail={0} />
           </>
         );
@@ -206,7 +215,12 @@ export const scene5 = storyScene(timing, {
       zone: Z3.castle,
       look: DAY,
       note: "His hand out through the bars, grabbing at air. It stops. It hangs.",
-      stage: (t) => <Hero position={[MY_CAGE[0] + 0.3, 0.08 - 0.06 * ease(ramp(t, 0.2, 0.5)), MY_CAGE[2] + 0.98]} rotationY={0.15} animation="idle" arms={t < 0.3 ? "reach" : "idle"} face="frown" />,
+      stage: (t) => (
+        <>
+          <Hero position={[MY_CAGE[0] + 0.3, 0.08, MY_CAGE[2] + 0.85]} rotationY={0.15} animation="idle" face="frown" headPitch={0.3 * ease(ramp(t, 0.2, 0.5))} />
+          <ArmOut at={[MY_CAGE[0] + 0.5, 1.05, MY_CAGE[2] + 1.05]} color="#f2b705" hand="#dba47c" droop={ease(ramp(t, 0.15, 0.45))} />
+        </>
+      ),
     },
     {
       cue: "9.saw",
