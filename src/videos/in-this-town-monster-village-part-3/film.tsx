@@ -18,13 +18,12 @@ import { scene6 } from "./scene6";
  * An "In This Town" film (Topics/InThisTown): the recorded narration is the clock, and every line of
  * narration.md is one shot. Read Topics/InThisTown/README.md before changing anything here.
  *
- * `cut: "middle"`: his story runs about 2:20, between the short and the long cut.
+ * The full cut: after the owner's review it runs about 2:36.
  */
 export const film = defineFilm({
   id: "in-this-town-monster-village-part-3",
   title: "In This Town, I Live in a Monster Village, Part 3",
   topic: "in-this-town",
-  cut: "middle",
   look: "overworld-day",
 
 
