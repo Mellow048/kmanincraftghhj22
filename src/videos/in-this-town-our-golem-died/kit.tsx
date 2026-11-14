@@ -243,3 +243,30 @@ export const IronHeap: React.FC<{ position: Vec3; t?: number }> = ({ position })
     </mesh>
   </group>
 );
+
+/** His father's sword: a diamond blade, kept by the door. `position` is the middle of the grip. */
+export const Sword: React.FC<{ position: Vec3; rotation?: Vec3; scale?: number; glow?: number }> = ({
+  position,
+  rotation = [0, 0, 0],
+  scale = 1,
+  glow = 0,
+}) => (
+  <group position={position} rotation={rotation} scale={scale}>
+    <mesh position={[0, 0.42, 0]} castShadow>
+      <boxGeometry args={[0.11, 0.86, 0.035]} />
+      <meshStandardMaterial color="#7fe3d8" roughness={0.35} metalness={0.35} emissive="#2b8f88" emissiveIntensity={glow} />
+    </mesh>
+    <mesh position={[0, 0.88, 0]} castShadow>
+      <boxGeometry args={[0.07, 0.1, 0.035]} />
+      <meshStandardMaterial color="#8ff0e4" roughness={0.3} metalness={0.4} />
+    </mesh>
+    <mesh position={[0, -0.02, 0]} castShadow>
+      <boxGeometry args={[0.3, 0.06, 0.07]} />
+      <meshStandardMaterial color="#4a4a52" roughness={0.7} metalness={0.4} />
+    </mesh>
+    <mesh position={[0, -0.16, 0]} castShadow>
+      <boxGeometry args={[0.06, 0.22, 0.06]} />
+      <meshStandardMaterial color="#3a2415" roughness={0.95} />
+    </mesh>
+  </group>
+);
