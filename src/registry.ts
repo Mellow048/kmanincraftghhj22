@@ -11,6 +11,7 @@ import { film as whyDoesBreadCostMoreEveryYear } from "./videos/why-does-bread-c
 import { film as monsterVillage } from "./videos/in-this-town-monster-village/film";
 import { film as inThisTownILiveInAMonsterVillagePart2 } from "./videos/in-this-town-monster-village-part-2/film";
 import { film as inThisTownEveryoneGetsARobotAt18 } from "./videos/in-this-town-robot-at-18/film";
+import { film as inThisTownEveryoneGetsARobotAt18Part2 } from "./videos/in-this-town-robot-at-18-part-2/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -30,4 +31,5 @@ export const FILMS = [
   monsterVillage,
   inThisTownILiveInAMonsterVillagePart2,
   inThisTownEveryoneGetsARobotAt18,
+  inThisTownEveryoneGetsARobotAt18Part2,
 ];
