@@ -77,7 +77,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.put",
-      ...cam.push({ on: [ROSE_ON_RIM[0], ROSE_ON_RIM[1] + 0.14, ROSE_ON_RIM[2]], dist: 3.0, to: 2.5, yaw: 10, pitch: 2, fov: 40 }),
+      ...cam.top({ on: [ROSE_ON_RIM[0] - 0.4, ROSE_ON_RIM[1], ROSE_ON_RIM[2] + 0.05], height: 3.6, to: 3.0, spin: [-4, 2], fov: 46 }),
       zone: "village",
       look: "lantern-night",
       note: "'I put it on the well, with all the others': the rose set down on the rim among fourteen others, his hand still on it at the end. One movement, one frame, no cut away from it.",
@@ -86,7 +86,7 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Rose position={[ROSE_ON_RIM[0], ROSE_ON_RIM[1] + 0.22 * (1 - down), ROSE_ON_RIM[2]]} scale={1.45} turn={0.6} />
-            <Hero position={[ROSE_ON_RIM[0] - 1.1, 0, ROSE_ON_RIM[2] + 0.35]} rotationY={SOUTH + 1.87} animation="reach" face="frown" gaze={0} />
+            <Hero position={[ROSE_ON_RIM[0] + 0.28, 0, ROSE_ON_RIM[2] + 1.06]} rotationY={SOUTH - 2.88} animation="reach" face="frown" gaze={0} />
             <Bucket position={[WELL[0] - 1.1, 0.45, WELL[2] + 1.4]} scale={0.8} handle swing={0.2} />
           </>
         );
