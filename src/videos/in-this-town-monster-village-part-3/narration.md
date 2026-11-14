@@ -16,7 +16,7 @@ two.
 - The teller wears YELLOW. Mo is the man in the straw hat and the red scarf.
 - **The hideout scenes are things the boy was not there for.** The owner asked for them, so the teller says so out
   loud: "I only heard about it later" (2.later). That keeps the rule that he never shows what he could not know.
-- **`# clip 08-cell wait 5.0`** is five seconds with no voice, and it belongs to shot `7.plan`: the monsters lean in and
+- **`# clip 08-cell wait 3.0`** is five seconds with no voice, and it belongs to shot `7.plan`: the monsters lean in and
   talk with their hands, the camera pushes into a dark block, and the cut to the cell comes out of the black. His
   words: "narration stop here and make them move like they are discussing".
 - The mansion (clip 10) is the other thing the boy was not there for; "on the other side of the forest" is his own phrase for the cut.
@@ -83,7 +83,7 @@ What is planted, and where it pays off:
 [7.mum]      Then my mum put her hand up.
 [7.plan]     "I have a plan," she said. And they all moved in closer.
 
-# clip 08-cell wait 5.0
+# clip 08-cell wait 3.0
 [8.dark]     It was dark for a long time.
 [8.blink]    Then I opened my eyes. It was day.
 [8.bars]     I was behind bars. A cage, in the middle of a village.
