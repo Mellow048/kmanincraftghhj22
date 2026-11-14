@@ -6,12 +6,14 @@ import { scene1 } from "./scene1";
 /**
  * In This Town, I Live in a Monster Village, Part 3
  *
- * TODO: the film in three sentences. Who tells it, the rule nobody explains, what the rule was hiding.
+ * The boy is taken by the players, and only dad's arm sees it. The arm crawls home and tells the village; the boy
+ * wakes in a cage in a village with a castle wall round it, and Mo is in the last cage. Meanwhile mum knocks on the
+ * pillagers' door. The owner's own outline (Topics/InThisTown/outlines/monster-village-part-3.md).
  *
  * An "In This Town" film (Topics/InThisTown): the recorded narration is the clock, and every line of
  * narration.md is one shot. Read Topics/InThisTown/README.md before changing anything here.
  *
- * `cut: "short"` is the one-to-two-minute cut (14 beats). Delete the line for the three-minute cut (18 beats).
+ * `cut: "middle"`: his story runs about 2:20, between the short and the long cut.
  */
 export const film = defineFilm({
   id: "in-this-town-monster-village-part-3",
