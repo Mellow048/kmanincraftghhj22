@@ -7,7 +7,7 @@ the boy going back alone to find a sword and a helmet in the street. Read
 
 | File | What it is |
 |---|---|
-| `in-this-town-monster-village-part-2.mp4` | **The film as delivered**: 720×1280, 2:08, 54 shots, full sound. A copy of `renders/in-this-town-monster-village-part-2.mp4` |
+| `in-this-town-monster-village-part-2.mp4` | **The film as delivered**: 1080×1920, 2:08, 54 shots, full sound (rendered again at full size on 2026-11-14; the film itself did not change). A copy of `renders/in-this-town-monster-village-part-2.mp4` |
 | `contact-sheet-every-3-seconds.jpg` | One frame every three seconds, on one sheet |
 | `shot-log.md` | Every shot on one page |
 | `source/` | A **snapshot** of the source: `narration.md`, `timing.json`, `kit.tsx`, `world.tsx`, `scene1.tsx` … `scene5.tsx`, `film.tsx`, `sound.json` |
