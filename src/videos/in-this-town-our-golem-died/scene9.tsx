@@ -148,7 +148,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.held",
-      ...cam.push({ on: [WELL[0] + 0.3, 1.2, WELL[2] + 1.3], dist: 2.6, to: 2.2, yaw: 20, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [WELL[0] + 0.55, 1.2, WELL[2] + 1.5], dist: 2.2, to: 1.8, yaw: -20, pitch: 0, fov: 34 }),
       zone: "village",
       look: "overworld-day",
       note: "'Then it held one out to me': the iron hand, open, with the rose lying across it, at a kid's chest height. Nothing else in the frame but the hand and the flower.",

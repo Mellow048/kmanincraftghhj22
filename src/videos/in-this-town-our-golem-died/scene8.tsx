@@ -28,7 +28,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "12.bed",
-      ...cam.push({ on: room(0.9, 0.6, -1.5), dist: 3.6, to: 2.9, yaw: 14, pitch: 42, fov: 48 }),
+      ...cam.push({ on: room(1.1, 0.7, -1.2), dist: 4.4, to: 3.6, yaw: 24, pitch: 34, fov: 46 }),
       zone: "room",
       look: "lantern-night",
       note: "'I lay on my bed and did not sleep': straight down on him lying on top of the blanket with his eyes open, the way a kid lies when he is not going to sleep. The camera sinks slowly, which is the only movement.",

@@ -123,7 +123,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.bucket",
-      ...cam.push({ on: [6.9, 0.45, 6.3], dist: 2.6, to: 2.2, yaw: 8, pitch: 22, fov: 36 }),
+      ...cam.push({ on: [6.9, 0.35, 6.3], dist: 3.4, to: 2.8, yaw: 8, pitch: 4, fov: 40 }),
       zone: "village",
       look: "overworld-day",
       note: "'My father had a bucket with a hole in it': from grass level, the bucket on its side, the hole toward the lens. Small thing, seen small, and it is on the list of what the town owns.",

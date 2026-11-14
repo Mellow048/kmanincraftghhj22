@@ -77,7 +77,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.put",
-      ...cam.top({ on: [ROSE_ON_RIM[0], ROSE_ON_RIM[1], ROSE_ON_RIM[2]], height: 2.6, to: 2.1, spin: [6, -2], fov: 38 }),
+      ...cam.push({ on: [ROSE_ON_RIM[0], ROSE_ON_RIM[1] + 0.1, ROSE_ON_RIM[2]], dist: 2.2, to: 1.8, yaw: -60, pitch: 8, fov: 34 }),
       zone: "village",
       look: "lantern-night",
       note: "'I put it on the well, with all the others': the rose set down on the rim among fourteen others, his hand still on it at the end. One movement, one frame, no cut away from it.",
