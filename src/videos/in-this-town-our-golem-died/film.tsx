@@ -2,6 +2,8 @@ import { defineFilm } from "../../engine";
 import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
+import { scene2 } from "./scene2";
+import { scene3 } from "./scene3";
 
 /**
  * In This Town, Our Golem Died
@@ -25,5 +27,5 @@ export const film = defineFilm({
   // A finished film plays the mix. `npm run check` fails one that does not.
   captions: { words: timing.words, y: 0.72 },
   World,
-  scenes: [scene1],
+  scenes: [scene1, scene2, scene3],
 });

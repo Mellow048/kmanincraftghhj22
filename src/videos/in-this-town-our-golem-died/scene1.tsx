@@ -1,19 +1,14 @@
 import { cam, storyScene } from "../../engine";
-import type { Vec3 } from "../../engine";
-import { Hero, IronGolem, ROBE, SOUTH, Smoke, Villager, timing } from "./kit";
+import { Creeper, Hero, IronGolem, PLACE, SOUTH, Smoke, Villager, ROBE, timing } from "./kit";
 
-const POST: Vec3 = [0, 0, -1.2];
-const ME: Vec3 = [-1.6, 0, 1.7];
+const FELL = PLACE.fell;
 
 /**
- * BEAT 1 — the hook. Placeholder staging: three shots, enough for the film to
- * check and render while the script waits for the owner's yes.
+ * BEAT 1 — the hook, in his words: it died, the next morning it came back, nobody would tell him how.
  *
- * The order is the point (draft 3, the owner's own hook): it died, the next
- * morning it came back, nobody would tell him how. Frame one is the ash and
- * the empty gate with the boy in it — Rule A, the strange thing and the person
- * it is strange for, in one frame. Not a wide of the town, and not a golem
- * handing out flowers.
+ * Shot one is the ash where the golem stood, with the boy still in it (Rule A). Shot two cuts to the
+ * impossible thing, from below, at the well — the one place in town that has anything to do with
+ * coming back. Shot three is the town refusing to answer.
  */
 export const scene1 = storyScene(timing, {
   id: "scene1",
@@ -21,42 +16,41 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.died",
-      ...cam.push({ on: [ME[0], 0.95, ME[2] - 0.2], dist: 3.0, to: 2.3, yaw: 8, pitch: 7, fov: 38 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "The death, and the boy in it: the ash at the empty gate where the golem stood, and him crouched in the middle of it. The town walks past behind him, already finished with the monsters.",
+      ...cam.push({ on: [FELL[0] - 0.3, 1.05, FELL[2]], dist: 3.4, to: 2.6, yaw: -8, pitch: -4, fov: 38 }),
+      zone: "gate",
+      look: "lantern-night",
+      note: "The words are 'our golem died' and the picture is where it died: the scorched ground inside the gate, smoke still going up, the boy crouched in the middle of it. Not the fight — the morning after the fight.",
       stage: (t) => (
         <>
-          <Hero position={ME} rotationY={SOUTH - 0.5} animation="crouch" face="uneasy" gaze={0} />
-          <Smoke position={[POST[0], 0, POST[2] + 0.3]} count={10} rise={2.4} spread={1.3} size={0.22} opacity={0.5} lean={0.2} />
-          <Villager position={[1.9, 0, 0.4]} rotationY={SOUTH + 0.8} walk={t * 1.1} robe={ROBE.brown} phase={0.3} />
-          <Villager position={[-3.2, 0, 0.1]} rotationY={SOUTH - 0.6} robe={ROBE.white} phase={1.9} />
+          <Hero position={[20.6, 0, 2.0]} rotationY={SOUTH - 0.6} animation="crouch" face="fear" gaze={0} />
+          <Smoke position={[FELL[0], 0, FELL[2]]} count={14} rise={3.2} spread={1.6} size={0.26} opacity={0.55} lean={0.3} />
+          <Creeper position={[23.4, 0, 0.4]} rotationY={SOUTH + 2.2} fuse={0.0001} />
         </>
       ),
     },
     {
       cue: "1.back",
-      ...cam.push({ on: [POST[0], 1.9, POST[2]], dist: 5.6, to: 4.8, yaw: -12, pitch: -7, fov: 42 }),
+      ...cam.push({ on: [PLACE.well[0] + 0.4, 2.0, PLACE.well[2] - 0.6], dist: 5.4, to: 4.5, yaw: -24, pitch: -9, fov: 42 }),
       zone: "village",
       look: "overworld-day",
-      note: "Cut to the impossible thing, from below: the golem standing at the gate in the morning, whole. The line says the town rebuilt it; the picture says it is the same golem.",
-      stage: () => (
+      note: "The impossible thing, from below, in morning light: the golem standing at the well, whole, a flower in its hand. The line says it came back; the picture says nothing about it is different.",
+      stage: (t) => (
         <>
-          <IronGolem position={POST} rotationY={SOUTH} headYaw={0.12} />
-          <Hero position={ME} rotationY={SOUTH} animation="idle" face="wow" gaze={0} />
+          <IronGolem position={[-2.6, 0, 3.4]} rotationY={SOUTH - 0.35} flower headPitch={0.12} headYaw={-0.15} />
+          <Hero position={[-0.2, 0, 5.6]} rotationY={SOUTH + 0.5} animation="idle" face="wow" gaze={0} />
         </>
       ),
     },
     {
       cue: "1.how",
-      ...cam.push({ on: [1.9, 1.55, 0.4], dist: 2.0, to: 1.55, yaw: 22, pitch: 2, fov: 36 }),
+      ...cam.push({ on: [-11, 1.62, -4.1], dist: 2.0, to: 1.55, yaw: 26, pitch: -2, fov: 36 }),
       zone: "village",
       look: "overworld-day",
-      note: "The question, on a face that will not answer it: a villager looks at him and looks away. His shoulder is at the edge of the frame.",
-      stage: () => (
+      note: "'Nobody would tell me how': the oldest woman, on her porch, looks at him and then away. One face, one refusal, nothing else moving.",
+      stage: (t) => (
         <>
-          <Villager position={[1.9, 0, 0.4]} rotationY={SOUTH + 0.55} robe={ROBE.brown} turn={0.35} phase={0.3} hmm={0.3} />
-          <Hero position={[1.9, 0, 1.9]} rotationY={SOUTH} animation="idle" face="frown" gaze={0} />
+          <Villager position={[-11, 0.5, -4.1]} rotationY={SOUTH + 0.5} robe={ROBE.white} hat="straw" turn={0.4} hmm={0.35} phase={0.4} />
+          <Hero position={[-11, 0, -2.4]} rotationY={SOUTH} animation="idle" face="uneasy" gaze={0} />
         </>
       ),
     },

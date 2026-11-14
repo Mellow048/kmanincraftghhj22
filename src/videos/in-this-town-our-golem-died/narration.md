@@ -76,14 +76,12 @@ His plot, his order, his lines. No premise, sentence or joke is taken from any f
 [1.back]    The next morning, it came back.
 [1.how]     Nobody would tell me how.
 
-# clip 02-mysteries
+# clip 02-mysteries-tour
 [2.sleep]   Nobody had ever seen it sleep.
 [2.break]   Nobody had ever seen it break.
 [2.well]    And nobody would say why the well was full of flowers.
 [2.rule]    The oldest rule in town was about those flowers.
 [2.keep]    Never keep one.
-
-# clip 03-tour
 [3.wall]     It had guarded that wall since before I was born.
 [3.gate]     At dawn, it stood at the gate.
 [3.take]     Then it took one flower off the well,
@@ -95,56 +93,40 @@ His plot, his order, his lines. No premise, sentence or joke is taken from any f
 [3.remember] He said iron remembers the shape you give it.
 [3.good]     It was a good life. Nobody had been hurt in years.
 
-# clip 04-itch
+# clip 03-itch-elder
 [4.protect] But the golem protected all of us.
 [4.need]    I wanted it to need me.
-
-# clip 05-elder
 [5.ask]     So I asked the oldest woman in town why.
 [5.say]     "Never keep a golem's flower," she said.
 [5.again]   I asked her again.
 [5.walk]    She walked away.
 
-# clip 06-night
+# clip 04-night
 [6.bell]    Then one night, the bell rang.
 [6.wall]    Something was on the wall.
-
-# clip 07-sword
 [7.sword]    I grabbed my father's diamond sword.
 [7.zombie]   I got the zombie.
 [7.skeleton] I got the skeleton.
 [7.proud]    I was so proud of myself that I forgot to look behind it.
-
-# clip 08-creeper
 [8.behind]  There was a creeper behind the golem.
 [8.shout]   I should have shouted.
 [8.late]    But I was too far away, and it was too late.
 
-# clip 09-boom
+# clip 05-boom-to-end
 [9.boom]    It exploded.
 [9.dust]    When the dust settled, our protector was gone.
-
-# clip 10-ash
 [10.finish] We finished the monsters.
 [10.walk]   I walked to where it fell.
 [10.rose]   In the ash was a rose.
-
-# clip 11-well
 [11.pick]  I picked it up. It was still warm.
 [11.put]   I put it on the well, with all the others.
 [11.letgo] The rule said never keep it. So I let it go.
-
-# clip 12-bed
 [12.home]  I went home.
 [12.bed]   I lay on my bed and did not sleep.
-
-# clip 13-morning
 [13.light]  In the morning, the sun came in.
 [13.square] I went to the square.
 [13.there]  It was standing there.
-
-# clip 14-truth
-[14.hooks]    The hooks in the smithy were empty.
+[14.hooks]    The hooks on the wall were empty.
 [14.pot]      My mother's pot was gone from the kitchen.
 [14.iron]     Every piece of iron in this town was in the square.
 [14.built]    In the night, the whole village had built it again.
