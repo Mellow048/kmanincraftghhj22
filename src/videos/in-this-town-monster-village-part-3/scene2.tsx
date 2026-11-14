@@ -160,15 +160,26 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: [D[0], 0.75, D[2]], dist: 2.6, to: 2.3, yaw: -14, pitch: -18, fov: 46 }),
       zone: Z3.hide,
       look: WARM,
-      note: "From the floor looking up: a skeleton with its skull sitting on its ribs, and one hand that reaches up, finds it and screws it back on.",
-      stage: (t) => {
-        const back = wordAt("4.look", "back") - wordAt("4.look", "fell") - 0.25;
-        const k = ease(ramp(t, back - 0.5, back - 0.1));
+      note: "From the floor looking up. His hand is full, so he lets the arm go: it drops to the planks and stands there. The empty hand finds the skull on his ribs, lifts it, screws it on. The arm hops back up into the hand.",
+      stage: (t, { dur: len }) => {
+        // Four beats over the shot: let go, reach, lift, take the arm back.
+        const drop = ease(ramp(t, 0.0, len * 0.18));
+        const reach = ease(ramp(t, len * 0.16, len * 0.34));
+        const lift = ease(ramp(t, len * 0.36, len * 0.62));
+        const back = ease(ramp(t, len * 0.7, len * 0.92));
+        const raise = 1 - 0.38 * reach + 1.2 * lift - 0.82 * back;
+        const hand = dadHand(D, D_ROT, 1);
+        const held = heldAt([hand[0], hand[1] - 0.1, hand[2]], D_ROT + Math.PI);
+        const floor: Vec3 = [D[0] + 0.85, 0, D[2] + 0.75];
+        const k = drop - back;
+        const at = mix(held, floor, k);
         return (
           <>
             <Village t={t} look={DFACE} mood="scared" />
-            <DadAndArm t={t} headDrop={0.62 * (1 - k)} raise={1 - 0.5 * Math.sin(k * Math.PI)} mood="scared" />
-            <Glint position={DFACE} t={t - back + 0.1} size={1.0} />
+            <Dad position={D} rotationY={D_ROT} noArm raise={raise} headDrop={0.62 * (1 - lift)} mood={lift > 0.9 ? "calm" : "scared"} />
+            <Arm position={[at[0], at[1] + 0.45 * Math.sin(Math.min(1, back * 1.0) * Math.PI) * (back > 0 ? 1 : 0), at[2]]} rotationY={D_ROT + Math.PI} rear={1} talk={k > 0.9 ? t : 0} turn={0.5 * k} />
+            <DustRing position={floor} t={t - len * 0.18} size={0.45} color="#b8894e" />
+            <Glint position={DFACE} t={t - len * 0.62} size={1.0} />
           </>
         );
       },
