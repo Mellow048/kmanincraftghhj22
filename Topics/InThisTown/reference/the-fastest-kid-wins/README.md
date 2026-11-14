@@ -40,5 +40,6 @@ The film that renders lives in `src/videos/in-this-town-the-fastest-kid-wins/`.
 
 ## What nobody has checked
 
-Nobody has listened to the mix. The last round of fixes (the push-off close-up, the row of feet at the start line,
-the size of the 3-2-1 card, the feet in the last shot) was not rendered as stills before the film was.
+Nobody has listened to the mix. The whole film was read as stills once (67 frames) and the changed shots a second
+time; after the last fixes only ten frames of the finished film were looked at. `cam.truck` eases in and out by
+default: a running shot needs `ease: "linear"` after it, or the runner drifts out of frame at both ends.
