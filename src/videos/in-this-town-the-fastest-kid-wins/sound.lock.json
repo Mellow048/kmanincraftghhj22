@@ -5,10 +5,10 @@
   "seconds": 139.7667,
   "built_from": {
     "timing.json": "8e0b6312a8e6fe6792aea5371ca42c2cafd8ace1",
-    "sound.json": "51ff6e0e7b9cc0995cd06dbee3e2f89071ae7e90",
+    "sound.json": "1a851c1088faef2701be691856a95ab7750fb7a4",
     "narration.mp3": "15af6a7258368baa5be884b9e8486b867806839b"
   },
-  "mix_sha1": "cc48d7c69a9fe189df80c2bb68aa12850dd5a13a",
+  "mix_sha1": "0aab9bd98c67ee104f3cf3a747192241ac5fee27",
   "music_sections": [
     {
       "from": "1.town",
@@ -165,10 +165,18 @@
     "sfxKinds": 37,
     "longestGapSeconds": 2.4,
     "longestGapAt": 92.0,
-    "sfxBuried": 1,
+    "sfxBuried": 0,
     "voiceOverRestMedianDb": 12.6,
-    "voiceOverRestWorstDb": 5.0,
+    "voiceOverRestWorstDb": 4.2,
     "voiceOverRestWorst": [
+      {
+        "db": 4.2,
+        "t": 122.4,
+        "cue": "8.one",
+        "sounding": [
+          "step_stone"
+        ]
+      },
       {
         "db": 5.0,
         "t": 44.9,
@@ -177,14 +185,6 @@
           "ding",
           "power_up",
           "sparkle"
-        ]
-      },
-      {
-        "db": 5.5,
-        "t": 122.4,
-        "cue": "8.one",
-        "sounding": [
-          "step_stone"
         ]
       },
       {

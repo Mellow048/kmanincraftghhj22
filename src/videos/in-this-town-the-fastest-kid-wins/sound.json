@@ -1440,7 +1440,7 @@
    "at": 0.05,
    "repeat": 21,
    "every": 0.13,
-   "trim": -3,
+   "trim": -1,
    "why": "Two runners."
   },
   {
