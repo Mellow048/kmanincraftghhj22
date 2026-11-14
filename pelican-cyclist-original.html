@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pelican on a Bicycle — Original SVG</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #dff3ff;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  main {
+    width: min(96vw, 980px);
+    padding: 18px;
+  }
+  .card {
+    background: #ffffff;
+    border: 4px solid #123047;
+    border-radius: 28px;
+    box-shadow: 0 18px 0 #123047;
+    overflow: hidden;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  .caption {
+    padding: 14px 18px 18px;
+    color: #123047;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: .02em;
+  }
+  .wheel-spin { transform-origin: center; animation: spin 1.15s linear infinite; }
+  .pedal-spin { transform-origin: 470px 520px; animation: spin 1.15s linear infinite; }
+  .bob { animation: bob 1.15s ease-in-out infinite; }
+  .beak-bob { animation: beak 1.15s ease-in-out infinite; }
+  .cloud-a { animation: drift 9s linear infinite; }
+  .cloud-b { animation: drift 13s linear infinite; }
+  .road-dash { animation: road 0.55s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  @keyframes beak { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(1.2deg); } }
+  @keyframes drift { from { transform: translateX(30px); } to { transform: translateX(-40px); } }
+  @keyframes road { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -46; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <svg viewBox="0 0 900 640" role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="title">A pelican riding a bicycle</title>
+      <desc id="desc">An original hand-drawn SVG of a cheerful pelican pedaling a teal bicycle along a seaside road.</desc>
+
+      <!-- sky -->
+      <rect width="900" height="640" fill="#bfe9ff"/>
+      <circle cx="760" cy="92" r="52" fill="#fff3a6"/>
+      <circle cx="760" cy="92" r="72" fill="#fff3a6" opacity=".35"/>
+
+      <!-- clouds -->
+      <g fill="#ffffff" opacity=".95">
+        <g class="cloud-a">
+          <ellipse cx="150" cy="105" rx="82" ry="28"/>
+          <ellipse cx="205" cy="88" rx="58" ry="30"/>
+          <ellipse cx="105" cy="92" rx="48" ry="24"/>
+        </g>
+        <g class="cloud-b" opacity=".85">
+          <ellipse cx="545" cy="72" rx="70" ry="24"/>
+          <ellipse cx="590" cy="58" rx="48" ry="24"/>
+        </g>
+      </g>
+
+      <!-- distant sea + sand -->
+      <path d="M0 405 C120 385 230 420 360 402 C500 384 620 420 900 398 L900 640 L0 640 Z" fill="#7ed0c5"/>
+      <path d="M0 455 C150 438 300 470 470 452 C640 435 760 468 900 450 L900 640 L0 640 Z" fill="#ffe9a8"/>
+
+      <!-- road -->
+      <path d="M0 520 L900 520 L900 640 L0 640 Z" fill="#5b6b7a"/>
+      <path d="M0 520 L900 520 L900 535 L0 535 Z" fill="#42505e"/>
+      <line class="road-dash" x1="0" y1="580" x2="900" y2="580" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-dasharray="28 18" opacity=".9"/>
+
+      <!-- bicycle shadow -->
+      <ellipse cx="470" cy="612" rx="285" ry="22" fill="#123047" opacity=".18"/>
+
+      <!-- rear wheel -->
+      <g>
+        <circle cx="300" cy="520" r="86" fill="none" stroke="#123047" stroke-width="13"/>
+        <circle cx="300" cy="520" r="66" fill="none" stroke="#d9f4ff" stroke-width="6"/>
+        <g class="wheel-spin" style="transform-origin:300px 520px">
+          <line x1="300" y1="442" x2="300" y2="598" stroke="#123047" stroke-width="6" stroke-linecap="round"/>
+          <line x1="222" y1="520" x2="378" y2="520" stroke="#123047" stroke-width="6" stroke-linecap="round"/>
+          <line x1="245" y1="465" x2="355" y2="575" stroke="#123047" stroke-width="5" stroke-linecap="round"/>
+          <line x1="355" y1="465" x2="245" y2="575" stroke="#123047" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <circle cx="300" cy="520" r="15" fill="#123047"/>
+        <circle cx="300" cy="520" r="7" fill="#ffd166"/>
+      </g>
+
+      <!-- front wheel -->
+      <g>
+        <circle cx="640" cy="520" r="86" fill="none" stroke="#123047" stroke-width="13"/>
+        <circle cx="640" cy="520" r="66" fill="none" stroke="#d9f4ff" stroke-width="6"/>
+        <g class="wheel-spin" style="transform-origin:640px 520px">
+          <line x1="640" y1="442" x2="640" y2="598" stroke="#123047" stroke-width="6" stroke-linecap="round"/>
+          <line x1="562" y1="520" x2="718" y2="520" stroke="#123047" stroke-width="6" stroke-linecap="round"/>
+          <line x1="585" y1="465" x2="695" y2="575" stroke="#123047" stroke-width="5" stroke-linecap="round"/>
+          <line x1="695" y1="465" x2="585" y2="575" stroke="#123047" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <circle cx="640" cy="520" r="15" fill="#123047"/>
+        <circle cx="640" cy="520" r="7" fill="#ffd166"/>
+      </g>
+
+      <!-- bicycle frame -->
+      <g stroke="#0f766e" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M300 520 L470 520 L585 405 L640 520"/>
+        <path d="M470 520 L420 405 L585 405"/>
+        <path d="M585 405 L640 520"/>
+      </g>
+      <g stroke="#14b8a6" stroke-width="6" stroke-linecap="round" fill="none" opacity=".9">
+        <path d="M315 512 L470 512 L580 408"/>
+      </g>
+
+      <!-- chain + gears -->
+      <path d="M300 520 L470 520" stroke="#123047" stroke-width="7" stroke-dasharray="10 8" stroke-linecap="round"/>
+      <circle cx="470" cy="520" r="34" fill="none" stroke="#123047" stroke-width="9"/>
+      <circle cx="470" cy="520" r="18" fill="none" stroke="#ffd166" stroke-width="6"/>
+
+      <!-- pedals -->
+      <g class="pedal-spin">
+        <line x1="470" y1="520" x2="470" y2="455" stroke="#123047" stroke-width="9" stroke-linecap="round"/>
+        <line x1="470" y1="520" x2="470" y2="585" stroke="#123047" stroke-width="9" stroke-linecap="round"/>
+        <rect x="438" y="438" width="64" height="18" rx="9" fill="#123047"/>
+        <rect x="438" y="584" width="64" height="18" rx="9" fill="#123047"/>
+      </g>
+
+      <!-- seat post + saddle -->
+      <line x1="420" y1="405" x2="405" y2="355" stroke="#123047" stroke-width="12" stroke-linecap="round"/>
+      <path d="M355 352 C385 330 440 332 462 350 C440 366 390 368 355 352 Z" fill="#8b5a2b" stroke="#123047" stroke-width="6"/>
+
+      <!-- handlebar stem + bars -->
+      <line x1="585" y1="405" x2="610" y2="330" stroke="#123047" stroke-width="12" stroke-linecap="round"/>
+      <path d="M610 330 C640 310 675 318 688 342 C700 365 680 382 652 374" fill="none" stroke="#123047" stroke-width="11" stroke-linecap="round"/>
+      <circle cx="652" cy="374" r="13" fill="#ffd166" stroke="#123047" stroke-width="5"/>
+      <path d="M610 330 C590 318 565 322 552 338" fill="none" stroke="#123047" stroke-width="10" stroke-linecap="round"/>
+
+      <!-- basket with fish -->
+      <g>
+        <path d="M620 390 L700 390 L688 448 L632 448 Z" fill="#c98a3d" stroke="#123047" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M632 408 L690 408 M638 428 L684 428" stroke="#8b5a2b" stroke-width="5" stroke-linecap="round"/>
+        <path d="M648 390 C650 365 672 352 690 366 C676 374 668 382 648 390 Z" fill="#7dd3fc" stroke="#123047" stroke-width="5"/>
+        <circle cx="676" cy="370" r="4" fill="#123047"/>
+      </g>
+
+      <!-- pelican -->
+      <g class="bob">
+        <!-- tail -->
+        <path d="M300 300 C255 285 225 300 205 335 C240 340 275 335 305 320 Z" fill="#e8f6ff" stroke="#123047" stroke-width="7" stroke-linejoin="round"/>
+        <!-- body -->
+        <path d="M285 330 C270 255 330 190 420 185 C505 180 555 235 545 300 C535 365 470 405 395 395 C330 386 298 380 285 330 Z" fill="#ffffff" stroke="#123047" stroke-width="8" stroke-linejoin="round"/>
+        <!-- belly shade -->
+        <path d="M330 360 C380 390 470 385 520 330 C500 380 430 405 380 390 C350 381 335 372 330 360 Z" fill="#d9eefb" opacity=".9"/>
+        <!-- wing -->
+        <path d="M350 250 C420 225 500 250 520 305 C470 350 390 350 350 310 C330 290 330 265 350 250 Z" fill="#e8f6ff" stroke="#123047" stroke-width="7" stroke-linejoin="round"/>
+        <path d="M380 285 C420 270 465 278 490 300" fill="none" stroke="#123047" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+        <path d="M375 312 C420 300 460 305 485 322" fill="none" stroke="#123047" stroke-width="6" stroke-linecap="round" opacity=".45"/>
+
+        <!-- neck + head -->
+        <path d="M500 235 C545 205 575 175 590 130 C600 100 625 88 650 100 C675 112 680 140 665 165 C640 205 590 250 540 275 Z" fill="#ffffff" stroke="#123047" stroke-width="8" stroke-linejoin="round"/>
+        <circle cx="655" cy="128" r="46" fill="#ffffff" stroke="#123047" stroke-width="8"/>
+        <!-- crest feathers -->
+        <path d="M625 92 C610 70 590 62 568 70 C590 82 605 95 615 112 Z" fill="#ffffff" stroke="#123047" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M640 84 C632 60 618 48 600 48 C616 64 626 80 630 98 Z" fill="#ffffff" stroke="#123047" stroke-width="6" stroke-linejoin="round"/>
+        <!-- eye + cheek -->
+        <circle cx="668" cy="122" r="9" fill="#123047"/>
+        <circle cx="671" cy="119" r="3" fill="#ffffff"/>
+        <circle cx="690" cy="145" r="12" fill="#ffd6e7" opacity=".8"/>
+        <!-- helmet -->
+        <path d="M612 112 C625 78 665 66 690 88 C700 97 702 110 698 120 C670 104 640 104 612 112 Z" fill="#ef4444" stroke="#123047" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M628 96 C650 86 672 88 688 100" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+
+        <!-- beak + pouch -->
+        <g class="beak-bob" style="transform-origin:690px 150px">
+          <path d="M690 138 C745 128 800 142 838 178 C800 190 745 188 700 172 Z" fill="#ffb703" stroke="#123047" stroke-width="7" stroke-linejoin="round"/>
+          <path d="M700 172 C740 205 790 210 828 190 C800 225 735 230 705 198 Z" fill="#ff8fa3" stroke="#123047" stroke-width="7" stroke-linejoin="round"/>
+          <path d="M720 190 C750 205 785 205 810 192" fill="none" stroke="#123047" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+        </g>
+
+        <!-- arm/wing tip to handlebar -->
+        <path d="M520 300 C575 320 620 345 650 368" fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round"/>
+        <path d="M520 300 C575 320 620 345 650 368" fill="none" stroke="#123047" stroke-width="7" stroke-linecap="round" opacity=".35"/>
+        <circle cx="652" cy="374" r="17" fill="#ffffff" stroke="#123047" stroke-width="6"/>
+
+        <!-- legs + webbed feet on pedals -->
+        <path d="M430 385 C445 425 455 450 470 455" fill="none" stroke="#ffb703" stroke-width="16" stroke-linecap="round"/>
+        <path d="M470 455 L438 447 L470 455 L505 447" fill="none" stroke="#ffb703" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M455 380 C475 420 480 545 470 585" fill="none" stroke="#ffb703" stroke-width="16" stroke-linecap="round"/>
+        <path d="M470 585 L438 577 L470 585 L505 577" fill="none" stroke="#ffb703" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- speed lines -->
+      <g stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity=".85">
+        <line x1="120" y1="300" x2="205" y2="300"/>
+        <line x1="90" y1="345" x2="190" y2="345"/>
+        <line x1="130" y1="390" x2="215" y2="390"/>
+      </g>
+
+      <!-- little flowers by road -->
+      <g>
+        <circle cx="105" cy="505" r="10" fill="#ff6b9d"/><circle cx="105" cy="505" r="4" fill="#fff3a6"/>
+        <circle cx="805" cy="500" r="10" fill="#a78bfa"/><circle cx="805" cy="500" r="4" fill="#fff3a6"/>
+        <circle cx="760" cy="520" r="8" fill="#ff6b9d"/><circle cx="760" cy="520" r="3" fill="#fff3a6"/>
+      </g>
+    </svg>
+    <div class="caption">Original SVG pelican cyclist — no copied artwork, just HTML + inline SVG.</div>
+  </div>
+</main>
+</body>
+</html>
