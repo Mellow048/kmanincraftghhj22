@@ -3,6 +3,12 @@ import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
 import { scene2 } from "./scene2";
+import { scene3 } from "./scene3";
+import { scene4 } from "./scene4";
+import { scene5 } from "./scene5";
+import { scene6 } from "./scene6";
+import { scene7 } from "./scene7";
+import { scene8 } from "./scene8";
 
 /**
  * In This Town, Everyone Swims Except Me
@@ -28,5 +34,5 @@ export const film = defineFilm({
   // A finished film plays the mix. `npm run check` fails one that does not.
   captions: { words: timing.words, y: 0.72 },
   World,
-  scenes: [scene1, scene2],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8],
 });
