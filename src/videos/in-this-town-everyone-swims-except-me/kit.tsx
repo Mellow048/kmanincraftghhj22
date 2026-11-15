@@ -25,6 +25,18 @@ export {
 
 export const timing = timingJson as unknown as Timing;
 
+/**
+ * Move a body from A to B across its shot, eased. `p` is 0 at the cut in and 1 at the cut out:
+ *
+ *   stage: (t, { p }) => <Hero position={travel(p, [2, 0, 6], [2, 0, 3])} animation="walk" />
+ *
+ * A cut has to be earned: if a character is somewhere new, they got there on screen.
+ */
+export const travel = (p: number, from: Vec3, to: Vec3): Vec3 => {
+  const k = p * p * (3 - 2 * p);
+  return [from[0] + (to[0] - from[0]) * k, from[1] + (to[1] - from[1]) * k, from[2] + (to[2] - from[2]) * k];
+};
+
 /** Seconds into its shot at which a word is said: `wordAt("6.bonk", "head")`. */
 export const wordAt = wordClock(timing);
 
@@ -64,13 +76,21 @@ export const laneZ = (i: number, lanes = 6, width = 12): number => -width / 2 + 
 
 // ----------------------------------------------------------------------------- the teller and his people
 
-type A = Partial<MinecraftAvatarProps>;
+type A = Partial<MinecraftAvatarProps> & { ring?: boolean };
+
+/**
+ * A ring on the right hand. It is parented to the hand in MinecraftAvatar, so it stays on the finger
+ * through every gesture instead of floating where a hand used to be.
+ */
+const Worn: React.FC<{ lit?: 0 | 1 | 2 | 3; tint?: string }> = ({ lit = 3, tint }) => (
+  <Ring position={[0, -0.01, 0]} scale={1.15} glow={0.9} lit={lit} tint={tint} />
+);
 
 /**
  * The teller. RED shirt, as the owner asked ("change my shirt into red cuz other agents make it yellow or blue").
  * Dark shorts, one loud colour nobody else in the film wears.
  */
-export const Hero: React.FC<A> = (p) => (
+export const Hero: React.FC<A> = ({ ring = false, children, ...p }) => (
   <MinecraftAvatar
     scale={KID}
     outfit="tee"
@@ -79,11 +99,14 @@ export const Hero: React.FC<A> = (p) => (
     colors={{ torso: "#c0392b", arms: "#c0392b", legs: "#26355e" }}
     blink
     {...p}
-  />
+  >
+    {ring ? <Worn /> : null}
+    {children}
+  </MinecraftAvatar>
 );
 
 /** The friend who pulls him out — twice. Green, taller, always first to move. */
-export const Friend: React.FC<A> = (p) => (
+export const Friend: React.FC<A> = ({ ring = false, children, ...p }) => (
   <MinecraftAvatar
     scale={KID * 1.04}
     outfit="tee"
@@ -92,11 +115,14 @@ export const Friend: React.FC<A> = (p) => (
     colors={{ torso: "#2f7d4f", arms: "#2f7d4f", legs: "#40342c" }}
     blink
     {...p}
-  />
+  >
+    {ring ? <Worn /> : null}
+    {children}
+  </MinecraftAvatar>
 );
 
 /** The kid who wins: black and white, the other ring. */
-export const Rival: React.FC<A> = (p) => (
+export const Rival: React.FC<A> = ({ ring = false, children, ...p }) => (
   <MinecraftAvatar
     scale={KID * 1.05}
     outfit="tee"
@@ -105,7 +131,10 @@ export const Rival: React.FC<A> = (p) => (
     colors={{ torso: "#20262f", arms: "#e6e6e6", legs: "#20262f" }}
     blink
     {...p}
-  />
+  >
+    {ring ? <Worn lit={2} tint="#d8d8e0" /> : null}
+    {children}
+  </MinecraftAvatar>
 );
 
 /** The stranger in the woods. Never seen from the front. */
@@ -295,17 +324,18 @@ export const Trophy: React.FC<{ position: Vec3; scale?: number; glow?: number; r
 );
 
 /** The ring: a gold band with three little buttons on one side. */
-export const Ring: React.FC<{ position: Vec3; rotation?: Vec3; scale?: number; glow?: number; lit?: 0 | 1 | 2 | 3 }> = ({
-  position,
-  rotation = [0, 0, 0],
-  scale = 1,
-  glow = 0.4,
-  lit = 1,
-}) => (
+export const Ring: React.FC<{
+  position: Vec3;
+  rotation?: Vec3;
+  scale?: number;
+  glow?: number;
+  lit?: 0 | 1 | 2 | 3;
+  tint?: string;
+}> = ({ position, rotation = [0, 0, 0], scale = 1, glow = 0.4, lit = 1, tint = "#e6c068" }) => (
   <group position={position} rotation={rotation} scale={scale}>
     <mesh rotation={[Math.PI / 2, 0, 0]}>
       <torusGeometry args={[0.027, 0.0065, 10, 22]} />
-      <meshStandardMaterial color="#e6c068" metalness={0.95} roughness={0.22} emissive="#4a3408" emissiveIntensity={glow} />
+      <meshStandardMaterial color={tint} metalness={0.95} roughness={0.22} emissive="#4a3408" emissiveIntensity={glow} />
     </mesh>
     {/* the three buttons, on the outside of the band */}
     {[0, 1, 2].map((i) => (

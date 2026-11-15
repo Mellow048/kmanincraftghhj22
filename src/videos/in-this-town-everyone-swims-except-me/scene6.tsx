@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Hero, PLACE, Ring, Splash, Swimmer, timing } from "./kit";
+import { Hero, PLACE, Ring, Splash, Swimmer, timing, travel } from "./kit";
 
 /**
  * 06 THE BUTTONS — the ring works, and the boy is too frightened to use it properly.
@@ -37,7 +37,7 @@ export const scene6 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[121.1, 0.34, 39.7]} rotationY={0} animation="sit" face="neutral" />
-          <Ring position={[121.1, 0.9, 40.1]} rotation={[0.4, 0.3, 0]} scale={1.8} glow={0.5} lit={0} />
+          <Ring position={[121.1, 0.86, 40.05]} rotation={[0.4, 0.3, 0]} scale={1.2} glow={0.5} lit={0} />
         </>
       ),
     },
@@ -49,8 +49,7 @@ export const scene6 = storyScene(timing, {
       note: "Waist up: he holds the hand out and turns it, the way you check a lucky coin. He still thinks it is a lucky coin.",
       stage: () => (
         <>
-          <Hero position={[120.9, 0, 40.4]} rotationY={-0.3} animation="lift" face="happy" />
-          <Ring position={[120.68, 0.86, 40.52]} rotation={[0.3, 0.5, 0]} scale={1.6} glow={0.5} lit={0} />
+          <Hero position={[120.9, 0, 40.4]} rotationY={-0.3} animation="lift" face="happy" ring />
         </>
       ),
     },
@@ -72,9 +71,15 @@ export const scene6 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "Side on at the edge, mid-air: he dives in the way a boy dives who has watched one video about it. Splash before the water.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 1.2, 0.55, 5.5]} rotationY={-Math.PI / 2} animation="jump" face="scared" />
+          <Hero
+            position={[P + 1.2 + p * 0.9, 0.6 - p * 1.1, 5.5]}
+            rotationY={-Math.PI / 2}
+            animation={p < 0.55 ? "jump" : "fall"}
+            face="scared"
+            ring
+          />
           <Splash at={[P + 1.6, 0.02, 5.2]} size={0.26} count={12} seed={61} />
         </>
       ),
@@ -85,9 +90,9 @@ export const scene6 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "Underwater at the far wall: his head arrives at the tile before the rest of him. The wall is not where it was supposed to be.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 11.8, -0.9, 2]} rotationY={-Math.PI / 2} animation="stagger" face="surprised" />
+          <Hero position={travel(p, [P + 9.4, -0.9, 2], [P + 11.8, -0.9, 2])} rotationY={-Math.PI / 2} animation="stagger" face="surprised" ring />
           <Splash at={[P + 12.2, -0.1, 2]} size={0.14} count={6} seed={67} />
         </>
       ),
@@ -172,8 +177,7 @@ export const scene6 = storyScene(timing, {
       note: "Over his shoulder to the hand: the ring is doing something. It has a light in it that was not there in the woods.",
       stage: () => (
         <>
-          <Hero position={[P + 3, 0, 7.4]} rotationY={0.2} animation="hold" face="surprised" />
-          <Ring position={[P + 2.86, 0.86, 7.52]} rotation={[0.3, 0.6, 0]} scale={1.7} glow={1.0} lit={2} />
+          <Hero position={[P + 3, 0, 7.4]} rotationY={0.2} animation="hold" face="surprised" ring />
         </>
       ),
     },
@@ -257,8 +261,7 @@ export const scene6 = storyScene(timing, {
       note: "On the deck, wet, ring on his hand, shrugging straight into the lens: he does not know, and the film does not tell him.",
       stage: () => (
         <>
-          <Hero position={[P + 8, 0, 6.4]} rotationY={0} animation="shrug" face="neutral" />
-          <Ring position={[P + 7.86, 0.86, 6.52]} rotation={[0.3, 0.6, 0]} scale={1.5} glow={0.9} lit={3} />
+          <Hero position={[P + 8, 0, 6.4]} rotationY={0} animation="shrug" face="neutral" ring />
         </>
       ),
     },

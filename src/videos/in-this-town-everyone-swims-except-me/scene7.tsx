@@ -1,5 +1,5 @@
 import { Vox, cam, storyScene } from "../../engine";
-import { Hero, PLACE, Player, Ring, Rival, SignBoard, Splash, Trophy, Villager, timing } from "./kit";
+import { Hero, PLACE, Player, Ring, Rival, SignBoard, Splash, Trophy, Villager, timing, travel } from "./kit";
 
 /**
  * 07 THE CONTEST — the smallest of three pools, and everyone in it looks like a professional.
@@ -91,8 +91,7 @@ export const scene7 = storyScene(timing, {
       note: "He taps the ring against his other hand: it did not matter that they all looked like professionals, because he had this.",
       stage: () => (
         <>
-          <Hero position={[A - 14.1, 0, -2]} rotationY={0.4} animation="hold" face="neutral" />
-          <Ring position={[A - 13.96, 0.86, -1.88]} rotation={[0.3, 0.6, 0]} scale={1.6} glow={0.9} lit={3} />
+          <Hero position={[A - 14.1, 0, -2]} rotationY={0.4} animation="hold" face="neutral" ring />
         </>
       ),
     },

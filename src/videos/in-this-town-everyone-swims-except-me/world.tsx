@@ -48,9 +48,33 @@ const Lawn: React.FC<{ w: number; d: number; holes?: Rect[] }> = ({ w, d, holes 
   );
 };
 
+
+/** Distant trees in a ring: they stop the ground from ending in a straight line on the horizon. */
+const Treeline: React.FC<{ r0: number; r1: number; n: number; seed?: number }> = ({ r0, r1, n, seed = 1 }) => (
+  <>
+    {Array.from({ length: n }, (_, i) => {
+      const a = (i / n) * Math.PI * 2 + ((i * 7 + seed) % 5) * 0.09;
+      const r = r0 + (((i * 37 + seed * 13) % 100) / 100) * (r1 - r0);
+      return (
+        <Tree
+          key={i}
+          position={[Math.cos(a) * r, 0, Math.sin(a) * r]}
+          height={4.5 + ((i * 7 + seed) % 4)}
+          leaf={i % 2 ? "#3f7f2d" : "#356430"}
+        />
+      );
+    })}
+  </>
+);
+
+/** A ground plane under everything, big enough that its edge is lost in the fog. */
+const FarGround: React.FC<{ y?: number }> = ({ y = -0.62 }) => <Vox kind="grass" position={[0, y, 0]} size={[700, 1, 700]} />;
+
 const Village: React.FC = () => (
   <>
     <Vox kind="grass" position={[0, -0.5, 0]} size={[120, 1, 90]} />
+    <FarGround />
+    <Treeline r0={58} r1={86} n={30} seed={2} />
     <Vox kind="path" position={[3, 0.02, 2]} size={[60, 0.06, 4.6]} />
     <Vox kind="path" position={[0, 0.021, 1.5]} size={[13, 0.06, 12]} />
 
@@ -105,6 +129,8 @@ const Village: React.FC = () => (
 const PoolZone: React.FC = () => (
   <group position={PLACE.pool}>
     <Lawn w={64} d={48} holes={[{ x: 0, z: 0, w: 31.8, d: 18.8 }]} />
+    <FarGround />
+    <Treeline r0={46} r1={72} n={26} seed={4} />
     <Pool length={25} width={12} lanes={6} />
     {/* The fence, with a gate on the west side. */}
     <Vox kind="log" position={[-22, 0.5, -18]} size={[0.2, 1, 0.2]} />
@@ -154,6 +180,8 @@ const Home: React.FC<{ night: boolean }> = ({ night }) => (
 const Woods: React.FC = () => (
   <group position={PLACE.woods}>
     <Vox kind="grass" position={[0, -0.5, 0]} size={[50, 1, 50]} />
+    <FarGround />
+    <Treeline r0={30} r1={56} n={28} seed={7} />
     <Vox kind="path" position={[0, 0.02, 2]} size={[4.2, 0.06, 30]} />
     {(
       [
@@ -179,6 +207,8 @@ const Woods: React.FC = () => (
 
 const Arena: React.FC = () => (
   <group position={PLACE.arena}>
+    <FarGround />
+    <Treeline r0={78} r1={110} n={34} seed={9} />
     <Lawn
       w={180}
       d={120}

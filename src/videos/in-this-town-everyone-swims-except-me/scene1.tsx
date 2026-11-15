@@ -1,6 +1,6 @@
 import { Vox, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Hero, PLACE, ROBE, Trophy, Villager, timing } from "./kit";
+import { CHILD, Hero, PLACE, ROBE, Trophy, Villager, timing, travel } from "./kit";
 import { Player } from "../../../Topics/InThisTown";
 
 /**
@@ -83,7 +83,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Villager position={[-2.6 + t * 1.5, 0, -1.0]} robe={ROBE.farmer} walk={t * 1.5} phase={1.4} />
           <Villager position={[3.2 + t * 1.2, 0, -1.4]} robe={ROBE.smith} walk={t * 1.2} phase={0.4} />
-          <Hero position={[0.6, 0, -1.6]} rotationY={0.15} animation="idle" face="sad" lookAt={[-0.34, 1.1, -3.4]} />
+          <Hero position={[2.9 - t * 1.5, 0, -1.6]} rotationY={0.38} animation="walk" animDistance={t * 1.5} face="sad" lookAt={[-0.34, 1.1, -3.4]} />
         </>
       ),
     },
@@ -106,10 +106,17 @@ export const scene1 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "From above and behind: ten toes on the tile, the water one centimetre past them. The line in the sand is a line of tile.",
-      stage: () => (
+      stage: (t, { p }) => (
         <>
-          <Hero position={[P + 1.2, 0, 6.12]} rotationY={Math.PI} animation="idle" face="scared" headPitch={-0.26} />
-          <Villager position={[P - 3.2, 0, 6.6]} robe={ROBE.white} walk={1.3} phase={0.5} />
+          <Hero
+            position={travel(p, [P + 1.1, 0, 8.1], [P + 1.2, 0, 6.12])}
+            rotationY={Math.PI}
+            animation={p < 0.85 ? "walk" : "idle"}
+            animDistance={p * 2}
+            face="scared"
+            headPitch={-0.26}
+          />
+          <Villager position={[P - 3.2 + t * 0.9, 0, 6.6]} robe={ROBE.white} walk={t * 0.9} phase={0.5} />
         </>
       ),
     },

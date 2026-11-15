@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Hero, Phone, PLACE, Splash, Swimmer, timing } from "./kit";
+import { Hero, Phone, PLACE, Splash, Swimmer, timing, travel } from "./kit";
 
 /**
  * 03 PHONE — "learn fast", and the one thing the video cannot teach him.
@@ -64,9 +64,16 @@ export const scene3 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "Next morning, alone: he stands at the wall with his fists closed, doing the thing the video said before he does it.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 2, -1.0, 5.5]} rotationY={Math.PI} animation="idle" face="worried" headPitch={0.1} />
+          <Hero
+            position={travel(p, [P + 2.6, 0, 7.6], [P + 2, -1.0, 5.5])}
+            rotationY={Math.PI}
+            animation={p < 0.55 ? "walk" : "fall"}
+            animDistance={p * 1.6}
+            face="worried"
+            headPitch={0.1}
+          />
         </>
       ),
     },
@@ -76,9 +83,9 @@ export const scene3 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "Side on, under the surface: down he goes, and the water does not care. One clean vertical drop in a horizontal film.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 3.2, -1.45, 4.2]} animation="fall" face="scared" />
+          <Hero position={[P + 3.2, -0.5 - p * 1.25, 4.2]} animation="fall" face="scared" />
           <Splash at={[P + 3.2, -0.05, 4.2]} size={0.14} count={7} seed={17} />
         </>
       ),
@@ -150,9 +157,9 @@ export const scene3 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "Straight down as he sinks: a coin dropped in a glass, the lane rope above him like a bar. The pool keeps what it is given.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 10.2, -1.5, 2.4]} animation="fall" face="blank" />
+          <Hero position={[P + 10.2, -0.6 - p * 1.1, 2.4]} animation="fall" face="blank" />
         </>
       ),
     },

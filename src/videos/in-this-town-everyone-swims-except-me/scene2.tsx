@@ -1,6 +1,6 @@
 import { Vox, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Friend, Hero, PLACE, ROBE, SignBoard, Splash, Villager, timing } from "./kit";
+import { CHILD, Friend, Hero, PLACE, ROBE, SignBoard, Splash, Villager, timing, travel } from "./kit";
 import { Player } from "../../../Topics/InThisTown";
 
 /**
@@ -111,9 +111,15 @@ export const scene2 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "The deep end as a place: the far half of the pool, a depth sign on the wall, and him tiny at its edge.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 13.9, 0, 1.4]} rotationY={Math.PI / 2} animation="idle" face="scared" />
+          <Hero
+            position={travel(p, [P + 11.4, 0, 2.6], [P + 13.9, 0, 1.4])}
+            rotationY={1.1}
+            animation={p < 0.9 ? "walk" : "idle"}
+            animDistance={p * 1.8}
+            face="scared"
+          />
           <SignBoard
             at={[P + 14.4, 0, -2.6]}
             width={3.2}
@@ -155,10 +161,16 @@ export const scene2 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "A close two-shot in the water: one hand comes in from the side and closes on his arm. No face, just the grab.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
           <Hero position={[P + 3.5, -0.62, 2.3]} rotationY={0.9} animation="panic" face="scared" />
-          <Friend position={[P + 4.9, -0.5, 3.1]} rotationY={-2.2} animation="reach" face="worried" scale={1.0} />
+          <Friend
+            position={travel(p, [P + 7.6, -0.5, 4.4], [P + 4.55, -0.5, 2.8])}
+            rotationY={-2.2}
+            animation={p < 0.9 ? "reach" : "hold"}
+            face="worried"
+            scale={1.0}
+          />
           <Splash at={[P + 4.2, 0.0, 2.7]} size={0.13} count={7} seed={21} />
         </>
       ),
@@ -169,11 +181,21 @@ export const scene2 = storyScene(timing, {
       zone: "pool",
       look: "overworld-day",
       note: "Out on the tiles, from deck height: the friend hauls him up by the arm and both of them end up sitting, wet, on white tile.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 1.9, 0, 7.2]} rotationY={-1.2} animation="sit" face="sad" />
-          <Friend position={[P + 0.7, 0, 7.4]} rotationY={1.0} animation="standUp" face="worried" />
-          <Splash at={[P + 1.2, 0.05, 6.4]} size={0.11} count={6} seed={31} />
+          <Hero
+            position={travel(p, [P + 2.2, -0.7, 6.15], [P + 1.9, 0, 7.25])}
+            rotationY={-1.2}
+            animation={p < 0.9 ? "stagger" : "sit"}
+            face="sad"
+          />
+          <Friend
+            position={travel(p, [P + 1.5, -0.55, 5.9], [P + 0.7, 0, 7.4])}
+            rotationY={1.0}
+            animation={p < 0.9 ? "hold" : "standUp"}
+            face="worried"
+          />
+          <Splash at={[P + 1.4, 0.05, 6.2]} size={0.11} count={6} seed={31} />
         </>
       ),
     },

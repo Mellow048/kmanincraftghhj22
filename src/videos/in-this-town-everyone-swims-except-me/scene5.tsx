@@ -1,5 +1,5 @@
 import { Glow, cam, storyScene } from "../../engine";
-import { Hero, PLACE, Ring, Stranger, timing } from "./kit";
+import { Hero, PLACE, Ring, Stranger, timing, travel } from "./kit";
 
 /**
  * 05 THE RING — the woods, the stranger, the question with no answer.
@@ -57,11 +57,19 @@ export const scene5 = storyScene(timing, {
       zone: "woods",
       look: "overworld-night",
       note: "Over his shoulder: a tall shape between the trees holding something out. We never get the stranger's face — only the hand and the ring.",
-      stage: () => (
+      stage: (_t, { p }) => (
         <>
-          <Stranger position={[X, 0, 81.4]} rotationY={Math.PI} animation="hold" />
-          <Hero position={[X + 0.3, 0, 78.4]} rotationY={Math.PI} animation="idle" face="surprised" headPitch={-0.1} />
-          <Ring position={[X, 1.12, 80.6]} scale={1.2} glow={0.8} />
+          <Stranger position={[X, 0, 81.4]} rotationY={Math.PI} animation="hold">
+            <Ring position={[0, 0, 0]} scale={1.15} glow={1.0} lit={2} />
+          </Stranger>
+          <Hero
+            position={travel(p, [X + 0.3, 0, 76.9], [X + 0.3, 0, 78.4])}
+            rotationY={Math.PI}
+            animation={p < 0.85 ? "walk" : "idle"}
+            animDistance={p * 1.5}
+            face="surprised"
+            headPitch={-0.1}
+          />
         </>
       ),
     },

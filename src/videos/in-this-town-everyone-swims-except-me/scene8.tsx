@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Hero, PLACE, Ring, Rival, Splash, Swimmer, timing } from "./kit";
+import { Hero, PLACE, Ring, Rival, Splash, Swimmer, timing, travel } from "./kit";
 import { Player } from "../../../Topics/InThisTown";
 
 /**
@@ -13,10 +13,10 @@ import { Player } from "../../../Topics/InThisTown";
 const A = PLACE.arena[0];
 
 /** a kid face down, swimming, at a lane's z */
-const Crawling: React.FC<{ at: Vec3; turn?: number }> = ({ at, turn = 0 }) => (
+const Crawling: React.FC<{ at: Vec3; turn?: number; ring?: boolean }> = ({ at, turn = 0, ring = false }) => (
   <Swimmer at={at} turn={turn}>
     <group rotation={[0, 0, Math.PI]}>
-      <Hero position={[0, 0, 0]} animation="reach" face="scared" />
+      <Hero position={[0, 0, 0]} animation="reach" face="scared" ring={ring} />
     </group>
   </Swimmer>
 );
@@ -44,7 +44,7 @@ export const scene8 = storyScene(timing, {
           {[-4, -2, 0, 2, 4].map((z, i) => (
             <Splash key={z} at={[A - 11.6, 0.05, z]} size={0.24} count={10} seed={90 + i} />
           ))}
-          <Hero position={[A - 11.2, -0.2, 0]} rotationY={-1.6} animation="fall" face="scared" />
+          <Hero position={[A - 11.2, 0.55 - 0.85, 0]} rotationY={-1.6} animation="fall" face="scared" ring />
         </>
       ),
     },
@@ -114,8 +114,7 @@ export const scene8 = storyScene(timing, {
       note: "Right at the water line, on his hands: the ring is doing the work and his arms are only holding on to it.",
       stage: () => (
         <>
-          <Crawling at={[A + 4, -0.02, 1]} turn={Math.PI / 2} />
-          <Ring position={[A + 4.3, 0.14, 1.1]} rotation={[0.4, 0.8, 0]} scale={2} glow={1.3} lit={3} />
+          <Crawling at={[A + 4, -0.02, 1]} turn={Math.PI / 2} ring />
         </>
       ),
     },
@@ -140,8 +139,7 @@ export const scene8 = storyScene(timing, {
       note: "SLOW: a gold band with three buttons on the hand of the boy in front. The same ring, on somebody else, in the same race.",
       stage: () => (
         <>
-          <Other at={[A + 7.8, -0.02, 2]} who={1} turn={Math.PI / 2} />
-          <Ring position={[A + 7.5, 0.12, 2.5]} rotation={[0.6, 1.1, 0]} scale={2.3} glow={1.5} lit={2} />
+          <Rival position={[A + 7.8, -0.55, 2]} rotationY={Math.PI / 2} animation="reach" face="smug" ring />
         </>
       ),
     },
@@ -206,8 +204,7 @@ export const scene8 = storyScene(timing, {
       note: "His thumb over the red button, and the ring glowing under it. He could. He does not. The film's choice happens in one centimetre.",
       stage: () => (
         <>
-          <Ring position={[A + 9.8, 0.9, 1.2]} rotation={[0.3, 1.0, 0]} scale={2.3} glow={1.5} lit={3} />
-          <Hero position={[A + 9.8, -0.2, 1.2]} rotationY={Math.PI / 2} animation="press" face="worried" />
+          <Hero position={[A + 9.8, -0.75, 1.2]} rotationY={Math.PI / 2} animation="press" face="worried" ring />
         </>
       ),
     },
@@ -257,8 +254,7 @@ export const scene8 = storyScene(timing, {
       note: "From the tiles, looking up: the winner stands over him with a hand out — and the ring is on that hand, at his eye level.",
       stage: () => (
         <>
-          <Rival position={[A + 10.7, 0, -6.7]} rotationY={Math.PI + 0.4} animation="reach" face="smug" />
-          <Ring position={[A + 10.52, 0.86, -6.86]} rotation={[0.3, 0.9, 0]} scale={2.1} glow={1.4} lit={2} />
+          <Rival position={[A + 10.7, 0, -6.7]} rotationY={Math.PI + 0.4} animation="reach" face="smug" ring />
           <Hero position={[A + 10.2, 0.02, -7.8]} rotationY={1.2} animation="lie" face="surprised" headYaw={-0.5} />
         </>
       ),
