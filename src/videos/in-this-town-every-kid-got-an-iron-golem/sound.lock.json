@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-every-kid-got-an-iron-golem",
   "mix": "public/audio/in-this-town-every-kid-got-an-iron-golem/mix.mp3",
-  "seconds": 140.9667,
+  "seconds": 132.6667,
   "built_from": {
-    "timing.json": "6f3848b0a1bbcae3366e8304aef6967543fac6ce",
-    "sound.json": "ec0d2087a8316d88abf946239efdde80b5febf56",
-    "narration.mp3": "054178f6f196ba5772828de6b7214aab145c41ab"
+    "timing.json": "48f10875cae6b8fe7deabe21ad3e890f916fa5da",
+    "sound.json": "edfe7c95e2f4f28ae82b62e78a59dfd368233a24",
+    "narration.mp3": "4fd0d673d648434be38136b50bffff81aa88f0f8"
   },
-  "mix_sha1": "765f0e8a3cdc2793a9a265cd7e55a372c6907954",
+  "mix_sha1": "2f0370a6de24a45fa72ca19490ce7f117104943b",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,42 +18,42 @@
     {
       "from": "6.want",
       "mood": "sneak",
-      "at": 61.6
+      "at": 58.07
     },
     {
       "from": "8.night",
       "mood": "tense",
-      "at": 74.53
+      "at": 70.23
     },
     {
       "from": "9.end",
       "mood": "none",
-      "at": 94.77
+      "at": 89.37
     },
     {
       "from": "10.ball",
       "mood": "hope",
-      "at": 96.87
+      "at": 91.23
     },
     {
       "from": "12.quiet",
       "mood": "none",
-      "at": 125.5
+      "at": 118.2
     },
     {
       "from": "12.left",
       "mood": "sad",
-      "at": 127.1
+      "at": 119.7
     },
     {
       "from": "13.gate",
       "mood": "dark",
-      "at": 131.57
+      "at": 123.8
     },
     {
       "from": "14.sub",
       "mood": "town",
-      "at": 138.73
+      "at": 130.5
     }
   ],
   "music_file": {
@@ -62,40 +62,31 @@
   },
   "beds": 11,
   "measured": {
-    "musicUnderVoiceDb": 18.1,
-    "secondsWithoutMusic": 3.7,
+    "musicUnderVoiceDb": 18.0,
+    "secondsWithoutMusic": 3.6,
     "bedsUnderVoiceDb": 25.7,
     "sfx": 284,
-    "sfxPerMinute": 120.9,
+    "sfxPerMinute": 128.4,
     "sfxKinds": 41,
-    "longestGapSeconds": 2.7,
-    "longestGapAt": 16.4,
+    "longestGapSeconds": 2.4,
+    "longestGapAt": 15.5,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.2,
-    "voiceOverRestWorstDb": 3.4,
+    "voiceOverRestMedianDb": 13.3,
+    "voiceOverRestWorstDb": 4.2,
     "voiceOverRestWorst": [
       {
-        "db": 3.4,
-        "t": 39.8,
-        "cue": "3.noon",
+        "db": 4.2,
+        "t": 102.2,
+        "cue": "11.fire",
         "sounding": [
-          "bell",
-          "plink",
-          "slide_down",
-          "swish"
+          "fire_whoosh",
+          "power_down",
+          "sting"
         ]
       },
       {
-        "db": 3.6,
-        "t": 139.7,
-        "cue": "14.sub",
-        "sounding": [
-          "ding"
-        ]
-      },
-      {
-        "db": 4.7,
-        "t": 23.0,
+        "db": 4.6,
+        "t": 21.6,
         "cue": "2.ran",
         "sounding": [
           "buzz",
@@ -105,35 +96,49 @@
       },
       {
         "db": 4.9,
-        "t": 108.7,
-        "cue": "11.fire",
+        "t": 101.3,
+        "cue": "11.throw",
         "sounding": [
-          "fire_whoosh",
           "power_down",
-          "sting"
+          "swish",
+          "thud",
+          "whoosh_low"
         ]
       },
       {
-        "db": 5.5,
-        "t": 124.3,
-        "cue": "11.last",
+        "db": 5.2,
+        "t": 72.0,
+        "cue": "8.night",
         "sounding": [
-          "hit",
-          "power_down"
+          "boom",
+          "power_up",
+          "stomp",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 37.7,
+        "cue": "3.noon",
+        "sounding": [
+          "bell",
+          "plink",
+          "slide_down",
+          "swish"
         ]
       },
       {
         "db": 5.6,
-        "t": 105.8,
-        "cue": "11.throw",
+        "t": 63.1,
+        "cue": "6.heard",
         "sounding": [
-          "power_down"
+          "sting"
         ]
       }
     ],
     "lufs": -15.2,
     "truePeakDb": -1.2,
-    "limiterMaxDb": 3.6
+    "limiterMaxDb": 4.0
   },
   "failures": []
 }

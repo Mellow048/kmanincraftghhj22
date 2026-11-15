@@ -163,3 +163,12 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   220 words a minute (x1.40, was x1.53); and there is half a second to a second of silence before each new step of the
   story (`# clip <name> wait <seconds>`; the seven recorded clips were cut into twelve at their own pauses so the waits
   could go in without recording again, only the new opening was recorded). Not yet judged by him.
+- **2026-11-15, the snow golem film, his verdict on the slow build:** "speed it up abit, u turned it down too much",
+  and "the ending why did the tts get weaker in volume". So his pace sits BETWEEN the two: 249 words a minute with no
+  air was too fast, 220 with up to a second of air was too slow. Sixth build: 234 words a minute (x1.47), waits of
+  0.25 to 0.7 seconds, 132.7 seconds. **Start a film of his at about 235 with a third to half a second between
+  steps.** The quiet ending was a real fault and an old one: the "Like and subscribe" clip was recorded 16 dB under
+  the others, and nothing in the build levels one clip against another (the build only sets the peak of the whole
+  voice track). It had been in every render; the sheet had even turned the `ding` on it down by 9 dB to keep it under
+  that whisper. Fixed by gain on the clip (and 1 dB on two others). **Measure the speech level of every recorded clip
+  before building; they must sit within about 1 dB of each other.** Not yet judged by him.

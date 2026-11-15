@@ -493,7 +493,7 @@
       "sfx": "stomp",
       "repeat": 2,
       "every": 0.4,
-      "trim": -3,
+      "trim": -1,
       "why": "Carrying it home."
     },
     {
@@ -532,7 +532,7 @@
       "word": "snowballs",
       "at": 0.2,
       "sfx": "thud",
-      "trim": -4,
+      "trim": -1,
       "why": "It lands."
     },
     {
@@ -612,7 +612,7 @@
       "cue": "3.noon",
       "word": "noon",
       "sfx": "bell",
-      "trim": -4,
+      "trim": -2,
       "ring": 0.9,
       "why": "The noon bell."
     },
@@ -1116,7 +1116,7 @@
       "sfx": "thud",
       "repeat": 2,
       "every": 0.15,
-      "trim": 1,
+      "trim": 4.5,
       "why": "Golems stopping on the steps."
     },
     {
@@ -1133,7 +1133,7 @@
       "sfx": "thud",
       "repeat": 2,
       "every": 0.15,
-      "trim": -2,
+      "trim": 1.5,
       "why": "More stop."
     },
     {
@@ -1534,7 +1534,7 @@
       "at": 0.2,
       "sfx": "crackle",
       "dur": 0.8,
-      "trim": -3,
+      "trim": -0.5,
       "why": "The umbrella above."
     },
     {
@@ -1734,7 +1734,7 @@
       "at": 0.3,
       "sfx": "ding",
       "note": "E6",
-      "trim": -9,
+      "trim": -3,
       "why": "Subscribe."
     },
     {
