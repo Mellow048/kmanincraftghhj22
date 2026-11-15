@@ -1,8 +1,10 @@
 # The reference folder: what a good film of this topic is
 
-Open this before you write a film of this topic. Nine folders here are films of ours that the owner approved, each
-with its **source code** and its **mp4**. **For a fight or a chase, open [`robot-at-18/`](robot-at-18/README.md)
-first.** Two are attempts he rejected. One is the video the format came from.
+Open this before you write a film of this topic. The folders in the first table are films of ours that the owner
+approved, each with its **source code** and its **mp4**. **For a fight or a chase, open
+[`robot-at-18/`](robot-at-18/README.md) first. For how fast to tell a story and how to state the reason for the
+town's rule, open [`iron-golem/`](iron-golem/README.md).** Two are attempts he rejected. One is the video the format
+came from.
 
 The owner, 2026-11-13, when he asked for the films to be kept here:
 
@@ -13,6 +15,10 @@ And again that night, after the robot film's fight:
 
 > "make the other shorts that u made go into the reference including this robot short. source code + mp4 so other
 > agents can see how to make a good fight scenes!"
+
+And 2026-11-15, of the snow golem film:
+
+> "this is a good short. souce code + mp4 put it in there for other agents to see how to make a good short."
 
 ## Films the owner approved: build like these
 
@@ -28,6 +34,7 @@ And again that night, after the robot film's fight:
 | [`monster-village-part-3/`](monster-village-part-3/README.md) | *In This Town, I Live in a Monster Village, Part 3* | Full film. 2:36, 66 lines. Full sound. Reworked to his review 2026-11-14 | "love it" (2026-11-14, after the rework) | **The first film made to `OWNER.md`**: the premise in frame one, an environment shot, a travelling shot and an odd angle in every scene. A prop as a character (dad's arm); a silence on purpose; pillagers and the mansion. Its mp4 is in the folder |
 | [`the-fastest-kid-wins/`](the-fastest-kid-wins/README.md) | *In This Town, the Fastest Kid Wins* (part 1) | Middle cut. 2:20, 55 lines. Full sound. Reworked to his review 2026-11-14: ends at the rivers in second place | "love it" (2026-11-14, after the rework) | **The owner's race story.** A race staged in four zones with one component; running shots that keep the runner in frame (`by * p`); shoes on the avatar; slow motion as three still shots |
 | [`helmet-kid/`](helmet-kid/README.md) | *In This Town, the New Kid Never Took Off His Helmet* (part 1) | Short cut. 1:42, 46 lines, 413 words. Day and night. Full sound | He approved the script ("yes go"); **film not reviewed yet** | **Horror.** A watcher's shot from behind a tree; silence on purpose; `Tentacle`; what the voice service will not say and the picture has to |
+| [`iron-golem/`](iron-golem/README.md) | *In This Town, Every Kid Got an Iron Golem* (part 1) | Middle cut. 2:13, 14 beats, 61 shots, 516 words. Day and night. Full sound | "pretty nice", "this is a good short" (2026-11-15, the sixth render) | **Pace, and telling the reason.** The pace he approved after rejecting one faster and one slower (234 words a minute, with short silences between story steps); a premise told in five full sentences after he rejected three fragments; a prop planted as a joke that becomes the ending; recorded clips cut at their pauses; why one quiet clip got through |
 | [`robot-at-18/`](robot-at-18/README.md) | *In This Town, Everyone Gets a Robot at 18* | Full film. 2:54, 86 shots, 697 words (trimmed from 3:25 to be a Short). Sunset forest and sky. Full sound | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A fight.** Sword against a kid in a suit, on the ground and in the air: posed bodies, hit-freezes, cuts inside a line, flying poses. Two rejected fights and what was wrong with each. A sheet of the whole fight at five frames a second |
 | [`pumpkin-heads/`](pumpkin-heads/README.md) | *In This Town, Everyone Wore a Pumpkin on Their Head* | Short cut. 1:56, 14 beats, 58 shots, 490 words. Day and night. Full sound | He approved the script and asked for another ending | A second **short cut** with sound; a teller whose face is a carved pumpkin; an ending that is a picture and not a punchline |
 

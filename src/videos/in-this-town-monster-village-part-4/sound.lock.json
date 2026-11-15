@@ -1,0 +1,163 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-monster-village-part-4",
+  "mix": "public/audio/in-this-town-monster-village-part-4/mix.mp3",
+  "seconds": 171.6333,
+  "built_from": {
+    "timing.json": "6e953e899ec9c8f5e3fb62bb9dfaaca330b832f7",
+    "sound.json": "694d73e83312c9842b359ecd9ec896bdbc673e01",
+    "narration.mp3": "e425ec1838066527a607455b51c2d4603f6da7a3"
+  },
+  "mix_sha1": "38903961bd9c8ffd8281490e04189dffd8ab8084",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "2.guard",
+      "mood": "sneak",
+      "at": 10.23
+    },
+    {
+      "from": "3.bam",
+      "mood": "playful",
+      "at": 26.2
+    },
+    {
+      "from": "4.tower",
+      "mood": "sneak",
+      "at": 37.2
+    },
+    {
+      "from": "4.pill",
+      "mood": "tense",
+      "at": 45.9
+    },
+    {
+      "from": "5.boom",
+      "mood": "dark",
+      "at": 60.0
+    },
+    {
+      "from": "6.pop",
+      "mood": "curious",
+      "at": 82.83
+    },
+    {
+      "from": "6.earlier",
+      "mood": "none",
+      "at": 92.43
+    },
+    {
+      "from": "7.hole",
+      "mood": "hope",
+      "at": 98.37
+    },
+    {
+      "from": "8.mo",
+      "mood": "sad",
+      "at": 129.93
+    },
+    {
+      "from": "8.out",
+      "mood": "tense",
+      "at": 136.43
+    },
+    {
+      "from": "9.slam",
+      "mood": "tense",
+      "at": 147.77
+    },
+    {
+      "from": "10.hall",
+      "mood": "dark",
+      "at": 161.1
+    },
+    {
+      "from": "11.sub",
+      "mood": "tense",
+      "at": 169.8
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 7,
+  "measured": {
+    "musicUnderVoiceDb": 17.9,
+    "secondsWithoutMusic": 6.6,
+    "bedsUnderVoiceDb": 25.4,
+    "sfx": 452,
+    "sfxPerMinute": 158.0,
+    "sfxKinds": 41,
+    "longestGapSeconds": 2.3,
+    "longestGapAt": 83.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.6,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 158.4,
+        "cue": "9.never",
+        "sounding": [
+          "tick",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 4.1,
+        "t": 71.5,
+        "cue": "5.steps",
+        "sounding": [
+          "clank",
+          "stomp",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.2,
+        "t": 19.9,
+        "cue": "3.bush",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 100.1,
+        "cue": "7.hole",
+        "sounding": [
+          "cheer",
+          "step_stone"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 92.9,
+        "cue": "6.earlier",
+        "sounding": [
+          "bonk",
+          "slide_down",
+          "thud"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 127.2,
+        "cue": "8.in",
+        "sounding": [
+          "chime",
+          "step_stone"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 1.5
+  },
+  "failures": []
+}

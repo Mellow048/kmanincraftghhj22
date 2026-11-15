@@ -120,7 +120,43 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   knows a thing they were not shown finding out. Three spoken lines are milder than the ones he approved, because the
   voice service refused the clip; the picture shows what the words do not. He has not reviewed the film. Script
   drafts for race part 2 and Monster Village part 4 are in `outlines/`, both the agent's stories, waiting for his yes.
+- **2026-11-15, his review of the helmet film.** "short is good as usual but the part where he finnaly unmasked that
+  scene wasnt making me feel like 'oh no!' or 'thats unsettling' it feels.. empty, add more movement and polish to it
+  and improve the retention." The reveal had been three lines in 4.3 seconds with almost nothing moving. Now it is
+  ten seconds and seven shots: the helmet lands and rocks in silence; the puller's face changes; the two let go one
+  after the other; his head comes up on "hole"; something slides about inside; a thin arm crosses the gap and touches
+  the puller's face; then the burst, with the camera shaking. No new voice: clip 06 was cut into five files so that
+  pauses could go between the lines (`# clip … wait`). **Lesson: the big moment of a horror film needs time with no
+  words in it. Give the reveal its own clips, so the pauses can be set.**
+- **2026-11-15.** He sent the outline for Monster Village part 4 (`outlines/monster-village-part-4.md`, with script
+  draft 1) and asked for the helmet part 2 script to be saved for later (`outlines/helmet-kid-part-2-script-draft.md`).
+  "for the 2 shorts lets make them too": race part 2 and Monster Village part 4 are to be built.
 - Nobody has listened to either new mix. Monster Village 1, 2 and Robot at 18 still have the `offset` sound fault.
+- **2026-11-15, Monster Village part 4 delivered** (`renders/in-this-town-monster-village-part-4.mp4`, 2:49.5, 68
+  lines; reference in `reference/monster-village-part-4/`). Built from script draft 2, which he approved ("yes")
+  after asking for: at least 2:30; a skinny hallway that is not seen before the ending; Mo down the whole time; the
+  order golem flicks the bus, ravager slams the golem, Hiss follows, "stay back", the run at the two guards. Not yet
+  reviewed by him. Nobody has listened to the mix. The "funny music" under "4 minutes earlier" is a march made of
+  sound effects, with his track stopped for those four seconds: the tool cannot play a second tune.
+  **Lesson: a 9:16 frame at fov 40 is 0.41 × the distance wide. Two people side by side need an over-the-shoulder
+  angle or a long lens distance.**
+- **2026-11-15, his review of Monster Village part 4: REJECTED. He stopped watching at 1:05.** "the retention is bad,
+  the hook needs work overall it was downgraded", "quality is degrading". What he named, and what was done:
+  skelly dad's jaw "isnt actually opened" (the skeleton has a real jaw now, `jaw` 0–1); he wanted the walk up to the
+  bush through the guard's eyes, so the jumpscare is at the viewer (3.slow and 3.bam are that now); "the tower has no
+  floors" (`WatchTower`); "the subtitle lagged behind" on the tower (the words were on time: the PICTURE was late, the
+  man moved after the line said he had, and the cuts fell after the words; now every move starts before its word and
+  every cut is on it); the watchman "didnt use his arms" (`spyglassPose`); the pillagers "seemed cheap, 1 or 2 … are
+  the only detailed one" (`Horde`: all of them are real); the camera when the man falls off the tower (two cuts: on
+  the edge with him, then the boy with the tower over his head); a frame of flat grey smoke blocks, "i have no idea
+  what im looking at wihtout context" (the wall is shot from inside with a guard leaning on it and the fuse glowing
+  in the cracks; then pillagers climb in with TNT over their heads; smoke blocks are small); "the fight was boring …
+  it lacked everything, motion and detail" (5.clash is five cuts, 5.again two; `Battle` is eight fights that move).
+  The hook is now two seconds of the golem and the ravager from later in the night, then "And I was in a cage".
+  **Lessons. (1) "Is the subject in the frame" is not a review: ask of every still, would he know what this is with
+  no sound and no line. (2) Never put boxes behind actors. (3) A thing that is used is held. (4) A building has an
+  inside. (5) The picture leads the words. (6) The first two seconds are the best two seconds of the film.**
+  Nobody has listened to the new mix. The words of the script were not changed.
 - **2026-11-15, the snow golem film (part 1).** He had no outline ("give me idea, i dunno what to say ngl"). The first
   five ideas were turned down: "these dont sound good, try looking at the ref ideas". All five were one odd thing
   happening to one kid. The six he then chose from were shaped like the references: **a rule for the whole town, and
@@ -172,3 +208,7 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   voice track). It had been in every render; the sheet had even turned the `ding` on it down by 9 dB to keep it under
   that whisper. Fixed by gain on the clip (and 1 dB on two others). **Measure the speech level of every recorded clip
   before building; they must sit within about 1 dB of each other.** Not yet judged by him.
+- **2026-11-15, the snow golem film APPROVED (sixth render):** "pretty nice", "this is a good short", and "put them
+  into main as a reference … souce code + mp4 put it in there for other agents to see how to make a good short". It is
+  in `reference/iron-golem/`. So the pace above is confirmed: **about 235 words a minute, with a quarter to three
+  quarters of a second of silence before each new step of the story**, and the film moved up a cut to make room.
