@@ -108,13 +108,13 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.feel",
-      ...cam.push({ on: [A + 4, 0.0, 1], dist: 1.4, to: 1.1, yaw: 118, pitch: 18, fov: 38 }),
+      ...cam.push({ on: [A + 4, 0.35, 1], dist: 2.4, to: 1.9, yaw: 118, pitch: 22, fov: 40 }),
       zone: "arena",
       look: "overworld-day",
       note: "Right at the water line, on his hands: the ring is doing the work and his arms are only holding on to it.",
       stage: () => (
         <>
-          <Crawling at={[A + 4, 0.07, 1]} turn={Math.PI / 2} ring />
+          <Hero position={[A + 4, 0.02, 1]} rotationY={Math.PI / 2} animation="reach" face="angry" ring />
         </>
       ),
     },
