@@ -133,7 +133,7 @@ What is planted, and where it pays off:
 [7.three]     There are three pools.
 [7.smallest]  This is pool one. The smallest.
 [7.most]      Most wins takes the trophy.
-[7.what]      This is the small pool?
+[7.what]      This pool is way bigger than mine?
 [7.go]        Three. Two. One. Go.
 
 # clip 08-race
@@ -151,7 +151,7 @@ What is planted, and where it pays off:
 [8.catch]     But I couldn't catch him.
 [8.dare]      I didn't dare change the setting.
 [8.lose]      He touched the wall first.
-[8.secondplace] I was second.
+[8.secondplace] The trophy was one place away.
 [8.tiles]     I lay on the white tiles, exhausted.
 [8.hand]      I looked at his hand.
 [8.problem]   This is going to be a problem.
