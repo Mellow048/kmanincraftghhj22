@@ -56,7 +56,7 @@ export const HIDE: Vec3 = R(-24.5, 0, -5.4);
 /** Where stage two starts: a line across the track, just before the first bridge. */
 export const LINE2 = -0.5;
 /** The end of stage two, in the desert: the line, and the water table. */
-export const END2 = 38;
+export const END2 = 56;
 export const TABLE2: Vec3 = DS(END2 + 4.5, 0, -1.6);
 
 // ----------------------------------------------------------------------------- things

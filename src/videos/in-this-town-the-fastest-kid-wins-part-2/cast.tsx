@@ -35,7 +35,7 @@ export const Pack: React.FC<{ x: number; z: number; d: number; ahead?: number; n
         return <Villager key={i} position={p} rotationY={E} walk={dd * (mode === "run" ? 1.4 : 0.9)} robe={ROBES[i % 6]} lean={mode === "tired" ? 0.42 : mode === "run" ? 0.25 : 0.05} nod={mode === "tired" ? 0.4 : 0} phase={i} />;
       return (
         <group key={i}>
-          <Player who={i + 1} position={p} rotationY={E} animation={mode === "run" ? "run" : mode === "tired" ? "stagger" : "walk"} animDistance={dd} face={mode === "tired" ? "ouch" : "brave"} headPitch={mode === "tired" ? 0.3 : 0} phase={i * 0.7} />
+          <Player who={i + 1} position={p} rotationY={E} animation={mode === "run" ? "run" : mode === "tired" ? "run" : "walk"} animDistance={dd} face={mode === "tired" ? "ouch" : "brave"} headPitch={mode === "tired" ? 0.3 : 0} phase={i * 0.7} />
           {mode === "tired" && i % 4 === 0 ? <Sweat position={[px, 1.6, pz]} t={t + i * 0.1} much={0.6} /> : null}
         </group>
       );
