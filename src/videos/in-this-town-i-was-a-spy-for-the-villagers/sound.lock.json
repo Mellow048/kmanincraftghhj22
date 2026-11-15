@@ -1,0 +1,141 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-was-a-spy-for-the-villagers",
+  "mix": "public/audio/in-this-town-i-was-a-spy-for-the-villagers/mix.mp3",
+  "seconds": 66.4,
+  "built_from": {
+    "timing.json": "9c0c1e9ca84cd31c99b6bb2a6c2d7951f8c6f4c7",
+    "sound.json": "2ae3f85df959454e7845eba4921957a91ccc7655",
+    "narration.mp3": "4ed849460e63169d6a8c61a3d8b886f8eced3954"
+  },
+  "mix_sha1": "0618e2674d90b6a6f2b2b54984f2b53ccc74f618",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.start",
+      "mood": "sneak",
+      "at": 4.03
+    },
+    {
+      "from": "5.whistle",
+      "mood": "tense",
+      "at": 15.67
+    },
+    {
+      "from": "7.point",
+      "mood": "none",
+      "at": 27.17
+    },
+    {
+      "from": "7.dawn",
+      "mood": "dark",
+      "at": 28.63
+    },
+    {
+      "from": "11.warn",
+      "mood": "town",
+      "at": 46.0
+    },
+    {
+      "from": "12.charge",
+      "mood": "tense",
+      "at": 52.07
+    },
+    {
+      "from": "12.bell",
+      "mood": "hope",
+      "at": 57.4
+    },
+    {
+      "from": "13.march",
+      "mood": "playful",
+      "at": 60.33
+    },
+    {
+      "from": "14.sub",
+      "mood": "dark",
+      "at": 64.47
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 19.2,
+    "secondsWithoutMusic": 1.8,
+    "bedsUnderVoiceDb": 25.6,
+    "sfx": 90,
+    "sfxPerMinute": 81.3,
+    "sfxKinds": 21,
+    "longestGapSeconds": 2.3,
+    "longestGapAt": 21.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.7,
+    "voiceOverRestWorstDb": 7.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 7.5,
+        "t": 19.7,
+        "cue": "5.crash",
+        "sounding": [
+          "crack",
+          "debris",
+          "hit",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 0.2,
+        "cue": "1.town",
+        "sounding": [
+          "bell"
+        ]
+      },
+      {
+        "db": 8.1,
+        "t": 9.8,
+        "cue": "3.line",
+        "sounding": [
+          "step_wood",
+          "swish"
+        ]
+      },
+      {
+        "db": 8.4,
+        "t": 48.7,
+        "cue": "11.carts",
+        "sounding": [
+          "place",
+          "scrape"
+        ]
+      },
+      {
+        "db": 9.0,
+        "t": 58.8,
+        "cue": "12.bell",
+        "sounding": [
+          "bell"
+        ]
+      },
+      {
+        "db": 9.0,
+        "t": 52.3,
+        "cue": "12.charge",
+        "sounding": [
+          "step_grass"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}

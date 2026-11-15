@@ -134,13 +134,13 @@ export const MANSION_HALL = {
  * The mansion's hall. `at` is the floor under the middle of the table. 20.6 m wide, 8 m high, open to the south.
  * It brings its own light (the chandelier and three fills). `table` false leaves the table and seats out.
  */
-export const MansionHall: React.FC<{ at: Vec3; table?: boolean }> = ({ at, table = true }) => (
+export const MansionHall: React.FC<{ at: Vec3; table?: boolean; ceiling?: boolean }> = ({ at, table = true, ceiling = true }) => (
   <group position={at}>
     <Vox kind="planks" tint="#d6bd8a" position={[0, -0.1, 1.5]} size={[21, 0.2, 17]} />
     <Vox kind="darkPlanks" tint={WALL} position={[0, 4, -7.1]} size={[21, 8, 0.2]} castShadow={false} />
     <Vox kind="darkPlanks" tint={WALL} position={[-10.4, 4, 1.5]} size={[0.2, 8, 17]} castShadow={false} />
     <Vox kind="darkPlanks" tint={WALL} position={[10.4, 4, 1.5]} size={[0.2, 8, 17]} castShadow={false} />
-    <Vox kind="darkPlanks" position={[0, 8.1, 1.5]} size={[21, 0.2, 17]} castShadow={false} />
+    {ceiling ? <Vox kind="darkPlanks" position={[0, 8.1, 1.5]} size={[21, 0.2, 17]} castShadow={false} /> : null}
     <Vox kind="cobble" position={[0, 6.4, -6.95]} size={[21, 0.8, 0.14]} castShadow={false} />
     <Vox kind="cobble" position={[-10.25, 6.4, 1.5]} size={[0.14, 0.8, 17]} castShadow={false} />
     <Vox kind="cobble" position={[10.25, 6.4, 1.5]} size={[0.14, 0.8, 17]} castShadow={false} />

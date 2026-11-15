@@ -1,0 +1,536 @@
+{
+  "film": "in-this-town-i-was-a-spy-for-the-villagers",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-i-was-a-spy-for-the-villagers",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The village bell and square open the story in daylight."
+      },
+      {
+        "from": "2.start",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "The spy slips into the mansion and keeps under cover."
+      },
+      {
+        "from": "5.whistle",
+        "mood": "tense",
+        "why": "The drill reveals the pillagers' plan taking shape."
+      },
+      {
+        "from": "7.point",
+        "mood": "none",
+        "why": "Hold a breath after the leader points at the bell and before the dawn threat."
+      },
+      {
+        "from": "7.dawn",
+        "mood": "dark",
+        "gain": -3,
+        "why": "The raid plan is revealed; the owner's track returns lower."
+      },
+      {
+        "from": "11.warn",
+        "mood": "town",
+        "why": "Back home, the warning becomes a village plan."
+      },
+      {
+        "from": "12.charge",
+        "mood": "tense",
+        "why": "The pillagers make their sunrise charge."
+      },
+      {
+        "from": "12.bell",
+        "mood": "hope",
+        "why": "The bell survives and the village answers with a cheer."
+      },
+      {
+        "from": "13.march",
+        "mood": "playful",
+        "why": "The spy carries the stiff-march joke toward its payoff."
+      },
+      {
+        "from": "14.sub",
+        "mood": "dark",
+        "gain": -3,
+        "why": "Keep the final subscribe button grounded, never cheerful."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "2.start",
+      "bed": "village"
+    },
+    {
+      "from": "2.start",
+      "to": "3.hood",
+      "bed": "room"
+    },
+    {
+      "from": "3.hood",
+      "to": "10.home",
+      "bed": "village"
+    },
+    {
+      "from": "10.home",
+      "to": "11.warn",
+      "bed": "wind"
+    },
+    {
+      "from": "11.warn",
+      "to": "14.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "The village bell is the first thing shown and named."
+    },
+    {
+      "cue": "1.hook",
+      "word": "spy",
+      "sfx": "swish",
+      "why": "The cut tightens from the village square to the masked spy."
+    },
+    {
+      "cue": "1.hook",
+      "word": "pillagers",
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.42,
+      "why": "Two pillagers keep marching past the hidden spy."
+    },
+    {
+      "cue": "2.start",
+      "sfx": "whoosh",
+      "why": "The cut enters the mansion at night."
+    },
+    {
+      "cue": "2.start",
+      "word": "sneaked",
+      "sfx": "step_wood",
+      "trim": -2,
+      "why": "A careful step across the mansion floor."
+    },
+    {
+      "cue": "2.clothes",
+      "word": "clothes",
+      "sfx": "rustle",
+      "why": "The disguise comes off the rack."
+    },
+    {
+      "cue": "2.pillager",
+      "word": "pillager",
+      "sfx": "pop",
+      "why": "The mask locks into place and the disguise is complete."
+    },
+    {
+      "cue": "3.hood",
+      "sfx": "whoosh",
+      "why": "The cut returns outside to the marching line."
+    },
+    {
+      "cue": "3.hood",
+      "word": "hood",
+      "sfx": "rustle",
+      "why": "The spy lowers the cloth hood."
+    },
+    {
+      "cue": "3.line",
+      "at": 0.15,
+      "sfx": "step_wood",
+      "repeat": 3,
+      "every": 0.45,
+      "why": "Three measured steps as the spy copies the marching line."
+    },
+    {
+      "cue": "3.line",
+      "p": 0.46,
+      "sfx": "swish",
+      "why": "The cut drops from the marching line to the boots in step."
+    },
+    {
+      "cue": "4.post",
+      "sfx": "whoosh",
+      "why": "The cut moves to the post at the edge of the drill line."
+    },
+    {
+      "cue": "4.post",
+      "word": "post",
+      "sfx": "thud",
+      "why": "The spy walks straight into the wooden post."
+    },
+    {
+      "cue": "4.turn",
+      "word": "spun",
+      "sfx": "swish",
+      "why": "The spy spins around to cover the mistake."
+    },
+    {
+      "cue": "4.turn",
+      "word": "saluted",
+      "sfx": "rustle",
+      "why": "A stiff sleeve snaps into the pillager salute."
+    },
+    {
+      "cue": "4.answer",
+      "word": "saluted",
+      "sfx": "swish",
+      "why": "The pillagers all return the salute."
+    },
+    {
+      "cue": "5.whistle",
+      "sfx": "whoosh",
+      "why": "The cut opens on the chief's drill yard."
+    },
+    {
+      "cue": "5.whistle",
+      "word": "charged",
+      "sfx": "step_wood",
+      "repeat": 3,
+      "every": 0.27,
+      "why": "The crew drives forward on the whistle."
+    },
+    {
+      "cue": "5.ram",
+      "word": "ram",
+      "sfx": "whoosh_low",
+      "why": "The heavy battering ram rolls toward the wooden tower."
+    },
+    {
+      "cue": "5.crash",
+      "word": "crashed",
+      "sfx": "hit",
+      "why": "The iron nose strikes the practice tower."
+    },
+    {
+      "cue": "5.crash",
+      "word": "down",
+      "sfx": "crack",
+      "why": "The wooden tower splits and folds."
+    },
+    {
+      "cue": "5.crash",
+      "p": 0.72,
+      "sfx": "debris",
+      "why": "The broken practice tower settles after the hit."
+    },
+    {
+      "cue": "6.rebuild",
+      "sfx": "whoosh",
+      "why": "The drill resets for another run."
+    },
+    {
+      "cue": "6.rebuild",
+      "word": "rebuilt",
+      "sfx": "place",
+      "repeat": 2,
+      "every": 0.4,
+      "why": "The pillagers set the practice tower upright again."
+    },
+    {
+      "cue": "6.rebuild",
+      "p": 0.53,
+      "sfx": "swish",
+      "why": "The camera jumps overhead to the repeated run."
+    },
+    {
+      "cue": "6.rebuild",
+      "word": "charged",
+      "sfx": "whoosh_low",
+      "why": "The ram charges the rebuilt target."
+    },
+    {
+      "cue": "6.tower",
+      "word": "ours",
+      "sfx": "sting",
+      "trim": -4,
+      "why": "The practice bell is ours; the threat turns personal."
+    },
+    {
+      "cue": "7.sign",
+      "sfx": "whoosh",
+      "why": "The cut reveals the pillagers' painted sign."
+    },
+    {
+      "cue": "7.sign",
+      "word": "painted",
+      "sfx": "scrape",
+      "why": "The rough mark on the wooden sign."
+    },
+    {
+      "cue": "7.sun",
+      "word": "sun",
+      "sfx": "pop",
+      "why": "The rising-sun symbol is revealed."
+    },
+    {
+      "cue": "7.sun",
+      "word": "pointed",
+      "sfx": "swish",
+      "why": "The leader's hand points from the sign toward the target."
+    },
+    {
+      "cue": "7.point",
+      "word": "bell",
+      "sfx": "swish",
+      "why": "The camera pans from the leader's hand to the tiny bell."
+    },
+    {
+      "cue": "7.dawn",
+      "sfx": "riser",
+      "dur": 1.35,
+      "trim": -3,
+      "why": "A short rise crosses the held breath and ends on the dawn reveal."
+    },
+    {
+      "cue": "7.dawn",
+      "sfx": "boom",
+      "trim": -3,
+      "why": "The one reveal: at dawn, the pillagers will smash the village bell."
+    },
+    {
+      "cue": "7.warn",
+      "sfx": "swish",
+      "why": "The threat cuts to the spy deciding to warn the village."
+    },
+    {
+      "cue": "8.join",
+      "sfx": "whoosh",
+      "why": "The cut moves into the ram crew."
+    },
+    {
+      "cue": "8.push",
+      "sfx": "swish",
+      "why": "The view cuts down beside the ram's wheels."
+    },
+    {
+      "cue": "8.push",
+      "word": "bounced",
+      "sfx": "thud",
+      "repeat": 3,
+      "every": 0.32,
+      "why": "The ram's wheels bounce over the rocks."
+    },
+    {
+      "cue": "8.turn",
+      "word": "tipped",
+      "sfx": "creak",
+      "why": "The overloaded frame strains as the ram nearly tips."
+    },
+    {
+      "cue": "9.heave",
+      "sfx": "whoosh",
+      "why": "The cut finds the crew heaving around the marker."
+    },
+    {
+      "cue": "9.heave",
+      "word": "heaved",
+      "sfx": "thud",
+      "why": "The crew leans into the weight together."
+    },
+    {
+      "cue": "9.heave",
+      "word": "lurched",
+      "sfx": "scrape",
+      "why": "The long ram beam drags around the turn."
+    },
+    {
+      "cue": "9.weakness",
+      "p": 0.52,
+      "sfx": "swish",
+      "why": "The cut lands on the spy's realization."
+    },
+    {
+      "cue": "9.weakness",
+      "word": "weakness",
+      "sfx": "blip",
+      "why": "The spy spots the ram's weak turning circle."
+    },
+    {
+      "cue": "10.slip",
+      "sfx": "whoosh",
+      "why": "The cut returns to the marching drill."
+    },
+    {
+      "cue": "10.slip",
+      "word": "marched",
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.45,
+      "why": "The drill line marches past the spy."
+    },
+    {
+      "cue": "10.log",
+      "word": "swinging",
+      "sfx": "whoosh_low",
+      "why": "A heavy practice log swings across the spy's path."
+    },
+    {
+      "cue": "10.log",
+      "p": 0.78,
+      "sfx": "hit",
+      "trim": -3,
+      "why": "A crossbow bolt punches into the target board."
+    },
+    {
+      "cue": "10.home",
+      "sfx": "whoosh",
+      "why": "The cut leaves the camp for the wooded road home."
+    },
+    {
+      "cue": "10.home",
+      "word": "ran",
+      "sfx": "step_grass",
+      "repeat": 4,
+      "every": 0.28,
+      "why": "The spy sprints down the trail."
+    },
+    {
+      "cue": "11.warn",
+      "sfx": "whoosh",
+      "why": "The cut returns to the village square."
+    },
+    {
+      "cue": "11.warn",
+      "word": "showed",
+      "sfx": "swish",
+      "why": "The spy gestures from the villagers to the bell tower."
+    },
+    {
+      "cue": "11.carts",
+      "word": "dragged",
+      "sfx": "scrape",
+      "why": "Villagers pull the market cart across the road."
+    },
+    {
+      "cue": "11.carts",
+      "word": "barrels",
+      "sfx": "place",
+      "why": "A barrel is rolled into the next gap."
+    },
+    {
+      "cue": "11.carts",
+      "word": "hay",
+      "sfx": "rustle",
+      "why": "Hay bales are carried into the barricade."
+    },
+    {
+      "cue": "11.path",
+      "sfx": "swish",
+      "why": "The camera lifts above the zigzag defenses."
+    },
+    {
+      "cue": "12.charge",
+      "sfx": "whoosh",
+      "why": "The cut jumps to sunrise and the incoming raid."
+    },
+    {
+      "cue": "12.charge",
+      "at": 0.25,
+      "sfx": "step_grass",
+      "repeat": 4,
+      "every": 0.3,
+      "why": "The pillagers run down the village road."
+    },
+    {
+      "cue": "12.ram",
+      "word": "rattled",
+      "sfx": "whoosh_low",
+      "why": "The ram rattles through the first turn."
+    },
+    {
+      "cue": "12.ram",
+      "word": "turns",
+      "sfx": "thud",
+      "why": "A square wheel slams over the rough road."
+    },
+    {
+      "cue": "12.swing",
+      "word": "buried",
+      "sfx": "thud",
+      "trim": 3,
+      "why": "The ram's iron nose lands in the soft hay."
+    },
+    {
+      "cue": "12.swing",
+      "word": "hay",
+      "sfx": "rustle",
+      "why": "The bales give way around the trapped ram."
+    },
+    {
+      "cue": "12.bell",
+      "sfx": "swish",
+      "why": "The pan leaves the ram and finds the safe bell."
+    },
+    {
+      "cue": "12.bell",
+      "word": "ring",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "The village bell rings again, this time in safety."
+    },
+    {
+      "cue": "12.bell",
+      "word": "cheer",
+      "sfx": "cheer",
+      "why": "The villagers answer the bell with a cheer."
+    },
+    {
+      "cue": "13.march",
+      "sfx": "swish",
+      "why": "The cut finds the spy marching away from the safe tower."
+    },
+    {
+      "cue": "13.march",
+      "word": "marched",
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.45,
+      "why": "Three proud steps in the copied pillager march."
+    },
+    {
+      "cue": "13.stumble",
+      "word": "straight",
+      "sfx": "thud",
+      "why": "The spy walks straight into the hay."
+    },
+    {
+      "cue": "13.stumble",
+      "word": "hay",
+      "sfx": "rustle",
+      "why": "The spy disappears into the soft bales."
+    },
+    {
+      "cue": "13.stumble",
+      "p": 0.88,
+      "sfx": "swish",
+      "why": "The cut turns overhead to reveal the spy planted in the hay."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "whoosh",
+      "why": "The final cut brings the sign and spy into view."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "pop",
+      "why": "The red Subscribe sign rises beside the spy."
+    },
+    {
+      "cue": "14.sub",
+      "word": "subscribe",
+      "sfx": "ding",
+      "trim": -2,
+      "why": "One clear bell note for the subscribe line."
+    }
+  ]
+}
