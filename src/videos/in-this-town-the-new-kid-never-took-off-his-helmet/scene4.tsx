@@ -43,7 +43,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.lamp",
-      ...cam.push({ on: POV.on, dist: 9.3, to: 9.0, yaw: POV.yaw, pitch: POV.pitch, fov: 36 }),
+      ...cam.push({ on: at(POV.on, 0.4, 0.5, -0.4), dist: 8.8, to: 8.4, yaw: 70, pitch: POV.pitch, fov: 35 }),
       zone: "woods",
       look: NIGHT,
       note: "What the teller sees: his own tree down the edge of the frame, and past it one warm lamp in the dark with the grey kid under it. On 'not alone' three bigger shapes walk into the light.",
@@ -60,7 +60,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.circle",
-      ...cam.orbit({ on: at(K, 0, 1.0, 0.5), dist: 6.0, distTo: 5.2, yaw: 40, yawTo: 8, pitch: 30, fov: 44 }),
+      ...cam.orbit({ on: at(K, 0, 1.0, 0.5), dist: 6.0, distTo: 5.2, yaw: 56, yawTo: 38, pitch: 28, fov: 44 }),
       zone: "woods",
       look: NIGHT,
       note: "From above, going round them, because from the side their backs hide him: three big kids and a small one in the middle. They are grinning. He looks at the ground.",
@@ -74,7 +74,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.push",
-      ...cam.push({ on: at(K, 0, 1.0, 0.7), dist: 5.0, to: 4.4, yaw: 28, pitch: 20, fov: 44 }),
+      ...cam.push({ on: at(K, 0, 1.0, 0.7), dist: 5.0, to: 4.4, yaw: 47, pitch: 18, fov: 44 }),
       zone: "woods",
       look: NIGHT,
       note: "The one in front shoves him in the chest. He goes back a step, and his arms stay down.",
@@ -137,7 +137,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.pull",
-      ...cam.push({ on: at(K, 0, 1.2, 0.1), dist: 5.0, to: 4.2, yaw: 30, pitch: 16, fov: 42 }),
+      ...cam.push({ on: at(K, 0, 1.2, 0.1), dist: 5.0, to: 4.2, yaw: 46, pitch: 15, fov: 42 }),
       zone: "woods",
       look: NIGHT,
       note: "All four of them, low and wide: one on each arm, and the third with both hands on the helmet. On 'pulled' it starts to come.",
@@ -188,7 +188,7 @@ export const scene4 = storyScene(timing, {
       stage: () => (
         <>
           <Three hide={[0, 1]} at={[B[0], B[1], at(K, 0.04, 0, 0.6)]} mood={[{}, {}, { animation: "scared", face: "fear" }]} />
-          <Fill position={at(K, 0, 1.3, -0.1)} power={7} color={PURPLE} reach={4} />
+          <Fill position={at(K, 0, 1.3, -0.1)} power={2.4} color={PURPLE} reach={4} />
         </>
       ),
     },
@@ -299,7 +299,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.swallow",
-      ...cam.push({ on: at(POV.on, 0, 0.6, 0), dist: 9.3, to: 9.0, yaw: POV.yaw, pitch: POV.pitch, fov: 40 }),
+      ...cam.push({ on: at(POV.on, 0.4, 0.7, -0.4), dist: 8.8, to: 8.5, yaw: 70, pitch: POV.pitch, fov: 37 }),
       zone: "woods",
       look: NIGHT,
       note: "The whole of it from behind the tree, small and far away, which is worse: three kids in the air go in towards one small grey kid, one after another, and are not there any more. Then the arms go back in.",

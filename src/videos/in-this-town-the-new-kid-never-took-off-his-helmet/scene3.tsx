@@ -60,11 +60,11 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.know",
-      ...cam.push({ on: at(EDGE, 2, 1.5, 0), dist: 4.6, to: 3.6, yaw: 104, pitch: 4, fov: 40 }),
+      ...cam.push({ on: at(EDGE, 2, 1.25, 0), dist: 4.6, to: 4.0, yaw: 104, pitch: 4, fov: 40 }),
       zone: "yard",
       look: DAY,
       note: "Over the teller's shoulder: he stands in the road and looks at where the road goes into the dark.",
-      stage: () => <Hero position={at(EDGE, 5.0, 0, -0.4)} rotationY={WEST} animation="idle" face="brave" />,
+      stage: () => <Hero position={at(EDGE, 5.0, 0, -0.56)} rotationY={WEST} animation="idle" face="brave" />,
     },
     {
       cue: "3.follow",

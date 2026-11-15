@@ -202,7 +202,7 @@ export const scene5 = storyScene(timing, {
           <>
             <Hero position={at(HIDE, 0.02, 0, 0)} rotationY={EAST} animation="idle" face="fear" gaze={-1} blink={false} breath={0} weightShift={0} />
             <Seeker g={1} t={t} tip={tip} from={at(HTREE, -6.2, 1.2, -2.2)} thick={0.5} />
-            <SubscribeSign position={at(HIDE, 0.2, 1.42, 0.2)} rotationY={EAST} scale={0.26 * ease(ramp(t, 0.1, 0.4))} />
+            <SubscribeSign position={at(HIDE, 0.34, 1.52, 0.12)} rotationY={EAST} scale={0.21 * ease(ramp(t, 0.1, 0.4))} />
             <Fill position={at(HIDE, 1.2, 1.3, 0.6)} power={4.5} />
             <Fill position={at(HTREE, 0.2, 1.4, 1.2)} power={7} color={PURPLE} reach={4} />
             {t > dur - 0.12 ? <Black position={at(HIDE, 1.2, 1.25, 0.4)} size={[0.1, 4, 4]} /> : null}
