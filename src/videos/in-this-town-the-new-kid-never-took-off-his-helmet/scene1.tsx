@@ -33,7 +33,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.not",
-      ...cam.push({ on: KF, dist: 1.5, to: 1.3, yaw: 100, pitch: 2, fov: 36 }),
+      ...cam.push({ on: KF, dist: 2.3, to: 2.0, yaw: 122, pitch: 6, fov: 38 }),
       zone: "class",
       look: DAY,
       note: "Not in class: the helmet in profile against the window, writing.",
@@ -80,7 +80,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.teacher",
-      ...cam.push({ on: at(KS, 0.6, 1.15, 0), dist: 3.2, to: 2.7, yaw: 180, pitch: 14, fov: 42 }),
+      ...cam.push({ on: at(KS, 0.55, 1.2, 0), dist: 4.4, to: 3.8, yaw: 180, pitch: 17, fov: 42 }),
       zone: "class",
       look: DAY,
       note: "The teacher has come down the aisle and bends over him. The helmet turns left, right, left: no. The teller watches from the next desk.",
@@ -89,7 +89,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <NewKid position={KS} rotationY={NORTH} animation="sit" headYaw={t > shook ? Math.sin((t - shook) * 11) * 0.5 : 0} />
-            <Villager position={at(KS, 1.2, 0, 0)} rotationY={WEST} scale={ADULT} robe={ROBE.white} lookAt={KF} hmm={t < shook ? 1 : 0} lean={0.25} />
+            <Villager position={at(KS, 1.2, 0, 0)} rotationY={WEST} scale={ADULT} robe={ROBE.white} lookAt={KF} hmm={t < shook ? 1 : 0} />
             <Hero position={HS} rotationY={NORTH} animation="sit" face="wow" lookAt={KF} />
             <Classmates look={KF} />
           </>
@@ -98,25 +98,25 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.face",
-      ...cam.push({ on: at(YARD, -7, 1.0, 1.5), dist: 5.2, to: 5.8, yaw: 84, pitch: 5, fov: 40 }),
+      ...cam.push({ on: at(YARD, -6.5, 1.0, 1.5), dist: 7.6, to: 8.2, yaw: 86, pitch: 6, fov: 40 }),
       zone: "yard",
       look: DAY,
       note: "After school he walks off down the road alone, towards the woods, and two classmates watch him go with a question over their heads.",
       stage: (t) => (
         <>
           <NewKid position={at(YARD, -5.5 - 1.3 * t, 0, 1.5)} rotationY={WEST} animation="walk" animDistance={1.3 * t} />
-          <Player who={4} scale={0.8} position={at(YARD, -2.3, 0, 0.7)} rotationY={WEST} animation="idle" />
-          <Player who={8} scale={0.8} position={at(YARD, -2.0, 0, 2.4)} rotationY={WEST} animation="shrug" />
-          <Bubble text="?" position={at(YARD, -2.2, 1.95, 1.5)} rotationY={EAST} scale={pop(t, wordAt("1.face", "where") - 0.1) * 0.9} />
+          <Player who={4} scale={0.8} position={at(YARD, -1.5, 0, 0.75)} rotationY={WEST} animation="idle" />
+          <Player who={8} scale={0.8} position={at(YARD, -1.3, 0, 2.3)} rotationY={WEST} animation="shrug" />
+          <Bubble text="?" position={at(YARD, -1.4, 1.9, 1.5)} rotationY={EAST} scale={pop(t, wordAt("1.face", "where") - 0.1) * 0.9} />
         </>
       ),
     },
     {
       cue: "1.back",
-      ...cam.push({ on: at(KS, 1.2, 1.05, 0), dist: 3.5, to: 2.9, yaw: 0, pitch: 14, fov: 44 }),
+      ...cam.push({ on: at(KS, 1.2, 1.0, 0), dist: 3.9, to: 3.3, yaw: 58, pitch: 12, fov: 46 }),
       zone: "class",
       look: DAY,
-      note: "From behind the back row: two backs side by side, a green one and a grey one with an iron box on it, and the whole class in front of them.",
+      note: "From behind the back row and to one side, so the two stack in a tall frame: two backs, a green one and a grey one with an iron box on it, and the whole class in front of them.",
       stage: (t) => (
         <>
           <NewKid position={KS} rotationY={NORTH} animation="sit" breath={0.3} />

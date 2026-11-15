@@ -13,7 +13,7 @@ const B: Vec3[] = [at(K, -1.25, 0, 0.1), at(K, 1.25, 0, 0.1), at(K, 0.1, 0, 1.4)
 const FACING = [EAST, WEST, NORTH];
 const HEAD = kidHead(K);
 /** What the teller sees from behind his tree: the clearing, with the trunk down the right edge of the frame. */
-export const POV = { on: at(WOODS, 0, 1.3, 1.1) as Vec3, yaw: 70, pitch: 3 };
+export const POV = { on: at(WOODS, 0, 1.3, 1.8) as Vec3, yaw: 74, pitch: 3 };
 const PURPLE = "#b25ad0";
 
 type Mood = { animation?: "idle" | "scared" | "panic" | "push" | "point" | "hold" | "lift" | "cower" | "laugh"; face?: "grin" | "angry" | "fear" | "wow" | "laugh" | "smug" };
@@ -43,7 +43,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.lamp",
-      ...cam.push({ on: POV.on, dist: 9.4, to: 8.7, yaw: POV.yaw, pitch: POV.pitch, fov: 36 }),
+      ...cam.push({ on: POV.on, dist: 9.3, to: 9.0, yaw: POV.yaw, pitch: POV.pitch, fov: 36 }),
       zone: "woods",
       look: NIGHT,
       note: "What the teller sees: his own tree down the edge of the frame, and past it one warm lamp in the dark with the grey kid under it. On 'not alone' three bigger shapes walk into the light.",
@@ -60,10 +60,10 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.circle",
-      ...cam.orbit({ on: at(K, 0, 1.15, 0.4), dist: 4.7, distTo: 4.2, yaw: 44, yawTo: 16, pitch: -3, fov: 44 }),
+      ...cam.orbit({ on: at(K, 0, 1.0, 0.5), dist: 6.0, distTo: 5.2, yaw: 40, yawTo: 8, pitch: 30, fov: 44 }),
       zone: "woods",
       look: NIGHT,
-      note: "Low, going round them: three big kids and a small one in the middle. They are grinning. He looks at the ground.",
+      note: "From above, going round them, because from the side their backs hide him: three big kids and a small one in the middle. They are grinning. He looks at the ground.",
       stage: () => (
         <>
           <NewKid position={K} animation="idle" headPitch={0.35} breath={0.3} />
@@ -74,7 +74,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.push",
-      ...cam.push({ on: at(K, 0, 1.1, 0.7), dist: 3.6, to: 3.2, yaw: 56, pitch: 2, fov: 42 }),
+      ...cam.push({ on: at(K, 0, 1.0, 0.7), dist: 5.0, to: 4.4, yaw: 28, pitch: 20, fov: 44 }),
       zone: "woods",
       look: NIGHT,
       note: "The one in front shoves him in the chest. He goes back a step, and his arms stay down.",
@@ -137,7 +137,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.pull",
-      ...cam.push({ on: at(K, 0, 1.2, 0.1), dist: 4.5, to: 3.9, yaw: 38, pitch: -2, fov: 42 }),
+      ...cam.push({ on: at(K, 0, 1.2, 0.1), dist: 5.0, to: 4.2, yaw: 30, pitch: 16, fov: 42 }),
       zone: "woods",
       look: NIGHT,
       note: "All four of them, low and wide: one on each arm, and the third with both hands on the helmet. On 'pulled' it starts to come.",
@@ -188,7 +188,7 @@ export const scene4 = storyScene(timing, {
       stage: () => (
         <>
           <Three hide={[0, 1]} at={[B[0], B[1], at(K, 0.04, 0, 0.6)]} mood={[{}, {}, { animation: "scared", face: "fear" }]} />
-          <Fill position={at(K, 0, 1.3, -0.1)} power={26} color={PURPLE} reach={4} />
+          <Fill position={at(K, 0, 1.3, -0.1)} power={7} color={PURPLE} reach={4} />
         </>
       ),
     },
@@ -216,7 +216,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.tent",
-      ...cam.push({ on: at(K, 0, 1.6, 0.4), dist: 4.6, to: 5.4, yaw: 32, pitch: -9, fov: 46 }),
+      ...cam.push({ on: at(K, 0, 1.7, 0.2), dist: 5.2, to: 6.2, yaw: 14, pitch: -8, fov: 46 }),
       zone: "woods",
       look: NIGHT,
       note: "Low and pulling back, because the frame has to get bigger: one, then five, then a crown of them, taller than the lamp. The three back away and do not turn round.",
@@ -234,7 +234,7 @@ export const scene4 = storyScene(timing, {
               const start = i === 0 ? one : i < 5 ? five + i * 0.05 : many + (i - 5) * 0.06;
               return <Tentacle key={i} from={h} to={fan(i, 13, 2.2 + (i % 3) * 0.5)} k={ease(ramp(t, start, start + 0.55))} t={t} thick={0.16 + (i % 3) * 0.04} seed={i + 1} />;
             })}
-            <Three at={[at(B[0], -0.9 * away, 0, 0.5 * away), at(B[1], 0.9 * away, 0, 0.5 * away), at(B[2], 0.2 * away, 0, 1.1 * away)]} all={{ animation: "scared", face: "fear" }} />
+            <Three at={[at(B[0], -0.9 * away, 0, 0.5 * away), at(B[1], 1.3 * away, 0, 0.2 * away), at(B[2], -1.3 * away, 0, 0.5 * away)]} all={{ animation: "scared", face: "fear" }} />
             <Fill position={at(p, 0, 1.6, 0.6)} power={30} color={PURPLE} reach={7} />
           </>
         );
@@ -293,13 +293,13 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={PEEK} rotationY={WEST} animation="peek" face="fear" gaze={0} blink={false} breath={0.2} />
-          <Fill position={at(PEEK, -1.4, 1.3, 0.3)} power={7 + 5 * Math.sin(t * 9)} color={PURPLE} reach={5} />
+          <Fill position={at(PEEK, -1.4, 1.3, 0.3)} power={2.2 + 1.2 * Math.sin(t * 9)} color={PURPLE} reach={5} />
         </>
       ),
     },
     {
       cue: "4.swallow",
-      ...cam.push({ on: at(POV.on, 0, 0.5, 0), dist: 9.2, to: 8.4, yaw: POV.yaw, pitch: POV.pitch, fov: 38 }),
+      ...cam.push({ on: at(POV.on, 0, 0.6, 0), dist: 9.3, to: 9.0, yaw: POV.yaw, pitch: POV.pitch, fov: 40 }),
       zone: "woods",
       look: NIGHT,
       note: "The whole of it from behind the tree, small and far away, which is worse: three kids in the air go in towards one small grey kid, one after another, and are not there any more. Then the arms go back in.",

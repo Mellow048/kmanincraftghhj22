@@ -5,7 +5,7 @@ import {
 } from "./kit";
 
 /** Behind the tree in the yard, and where he peeks round the fat tree in the woods (the south side of its trunk). */
-const SPY: Vec3 = at(YARD, -12.35, 0, 6.75);
+const SPY: Vec3 = at(YARD, -12.3, 0, 5.95);
 export const PEEK: Vec3 = at(HTREE, 0.6, 0, 0.66);
 
 /**
@@ -64,19 +64,19 @@ export const scene3 = storyScene(timing, {
       zone: "yard",
       look: DAY,
       note: "Over the teller's shoulder: he stands in the road and looks at where the road goes into the dark.",
-      stage: () => <Hero position={at(EDGE, 5.2, 0, 0.35)} rotationY={WEST} animation="idle" face="brave" />,
+      stage: () => <Hero position={at(EDGE, 5.0, 0, -0.4)} rotationY={WEST} animation="idle" face="brave" />,
     },
     {
       cue: "3.follow",
-      ...cam.truck({ on: at(YARD, -15, 1.0, 1.5), dist: 6.4, yaw: 12, pitch: 6, fov: 42, by: [-2.4, 0, 0] }),
+      ...cam.truck({ on: at(YARD, -15, 1.0, 1.7), dist: 6.6, yaw: 60, pitch: 7, fov: 42, by: [-2.0, 0, 0] }),
       zone: "yard",
       look: NIGHT,
-      note: "Night, from the side, moving with them: the helmet walking into the trees, and a long way behind it a kid in green, bent low.",
+      note: "Night, from behind and to one side, moving with them: the helmet walking into the trees, and a long way behind it a kid in green, bent low.",
       stage: (t) => (
         <>
           <NewKid position={at(YARD, -16.2 - 1.4 * t, 0, 1.5)} rotationY={WEST} animation="walk" animDistance={1.4 * t} />
-          <Hero position={at(YARD, -11.6 - 1.3 * t, 0, 2.0)} rotationY={WEST} animation="creep" animDistance={1.3 * t} face="brave" />
-          <Fill position={at(YARD, -13 - 1.3 * t, 1.6, 5)} power={7} />
+          <Hero position={at(YARD, -13.2 - 1.3 * t, 0, 2.1)} rotationY={WEST} animation="creep" animDistance={1.3 * t} face="brave" />
+          <Fill position={at(YARD, -11 - 1.3 * t, 1.6, 4)} power={8} />
         </>
       ),
     },

@@ -60,7 +60,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.ran",
-      ...cam.orbit({ on: at(YARD, 0, 1.35, -3.3), dist: 3.8, distTo: 3.4, yaw: -24, yawTo: 8, pitch: 4, fov: 40 }),
+      ...cam.orbit({ on: at(YARD, 0, 1.35, -3.3), dist: 5.4, distTo: 4.8, yaw: -24, yawTo: 8, pitch: 4, fov: 42 }),
       zone: "yard",
       look: DAY,
       note: "Two grown-ups on the school step, shrugging it off between themselves. One poster on the wall behind them.",
@@ -103,7 +103,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.posters",
-      ...cam.truck({ on: at(WALL, -4.6, 1.6, 0.14), dist: 2.7, yaw: 22, pitch: 0, fov: 42, by: [5.6, 0, 0] }),
+      ...cam.truck({ on: at(WALL, -5.2, 1.7, 0.14), dist: 5.2, yaw: 30, pitch: 2, fov: 44, by: [7.5, 0, 0] }),
       zone: "yard",
       look: DAY,
       note: "Along the school wall: MISSING, MISSING, MISSING. The yard behind the lens is empty; a ball nobody came back for.",
@@ -127,11 +127,11 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: KF, dist: 3.2, to: 2.5, yaw: 180, pitch: 10, fov: 38 }),
       zone: "class",
       look: DAY,
-      note: "The helmet, dead ahead, and the lens going in. The kid in front of him glances back and looks away fast.",
+      note: "The helmet, dead ahead, and the lens going in. Nobody sits in front of him any more.",
       stage: (t) => (
         <>
           <NewKid position={KS} rotationY={NORTH} animation="sit" breath={0.15} weightShift={0} />
-          <Classmates gone={4} look={t < 1.0 ? KF : undefined} />
+          <Classmates gone={4} hide={["0,0", "0,1"]} look={t < 1.0 ? KF : undefined} />
         </>
       ),
     },
@@ -155,7 +155,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.three",
       cut: wordAt("2.three", "knocked") - 0.32,
-      ...cam.push({ on: kidHead(at(YARD, -3, 0, 0.6)), dist: 2.0, to: 1.75, yaw: 14, pitch: 0, fov: 38 }),
+      ...cam.push({ on: kidHead(at(YARD, -2.8, -0.15, 0.6)), dist: 2.9, to: 2.5, yaw: 8, pitch: 2, fov: 40 }),
       zone: "yard",
       look: DAY,
       note: "Two: the one in orange knocks on the helmet like a door. Tok, tok.",
@@ -165,7 +165,6 @@ export const scene2 = storyScene(timing, {
           <>
             <NewKid position={at(YARD, -3, 0, 0.6)} animation="idle" headRoll={-0.05 * knock} />
             <Player who={10} scale={0.8} position={at(YARD, -2.38 - 0.04 * knock, 0, 0.72)} rotationY={WEST} animation="point" face="grin" />
-            <Bubble text="TOK TOK" position={at(YARD, -2.6, 1.85, 0.7)} scale={pop(t, 0.15) * 0.7} />
           </>
         );
       },
@@ -173,7 +172,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.three",
       cut: wordAt("2.three", "tried") - 0.32,
-      ...cam.push({ on: at(YARD, -3, 1.22, 0.95), dist: 2.5, to: 2.2, yaw: 84, pitch: 0, fov: 40 }),
+      ...cam.push({ on: at(YARD, -3, 1.1, 0.9), dist: 3.6, to: 3.2, yaw: 84, pitch: 3, fov: 42 }),
       zone: "yard",
       look: DAY,
       note: "Three, from the side: the red-haired one has both hands on the helmet and pulls. The new kid holds it down with everything he has.",
@@ -186,10 +185,10 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.mom",
-      ...cam.push({ on: at(HOME, -1.3, 1.2, 1.6), dist: 3.5, to: 3.0, yaw: 76, pitch: 3, fov: 40 }),
+      ...cam.push({ on: at(HOME, -1.3, 1.3, 1.4), dist: 4.2, to: 3.6, yaw: 24, pitch: 7, fov: 42 }),
       zone: "yard",
       look: DAY,
-      note: "At his own door, from the side: he tells his mother, pointing back at the school. She shakes her head at him.",
+      note: "At his own door, over his shoulder, his mother on the step above him: he tells his mother, pointing back at the school. She shakes her head at him.",
       stage: (t) => {
         const no = wordAt("2.mom", "do") - 0.1;
         return (
@@ -227,5 +226,7 @@ export const scene2 = storyScene(timing, {
   ],
 });
 void EAST;
+void Bubble;
+void pop;
 void faceOf;
 void ease;

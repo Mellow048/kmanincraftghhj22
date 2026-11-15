@@ -23,8 +23,8 @@ const LooseHelmet: React.FC<{ position: Vec3; rotation?: Vec3 }> = ({ position, 
   </group>
 );
 /** The one arm that comes looking: out of the hole, up, and over towards the tree. `g` 0–1 is how far it has come. */
-const Seeker: React.FC<{ g: number; t: number; tip: Vec3; from?: Vec3 }> = ({ g, t, tip, from = at(kidHead(PICK), 0, 0, 0.1) }) => (
-  <Tentacle from={from} to={tip} k={g} t={t * 0.5} thick={0.26} seed={2} bend={0.55} n={44} />
+const Seeker: React.FC<{ g: number; t: number; tip: Vec3; from?: Vec3; thick?: number }> = ({ g, t, tip, from = at(kidHead(PICK), 0, 0, 0.1), thick = 0.26 }) => (
+  <Tentacle from={from} to={tip} k={g} t={t * 0.5} thick={thick} seed={2} bend={0.55} n={44} />
 );
 
 /**
@@ -36,7 +36,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "5.quiet",
-      ...cam.top({ on: at(KIDSPOT, 0.3, 0, 0.5), height: 7.2, to: 6.4, spin: [10, 0], fov: 46 }),
+      ...cam.top({ on: at(KIDSPOT, 0.3, 0, 0.5), height: 5.8, to: 5.0, spin: [10, 0], fov: 46 }),
       zone: "woods",
       look: NIGHT,
       note: "Straight down on the clearing: one kid, one lamp, a helmet on the ground. Nobody else. Three seconds ago there were four.",
@@ -49,10 +49,10 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.pick",
-      ...cam.push({ on: at(FELL, -0.1, 0.25, -0.1), dist: 2.3, to: 1.9, yaw: 152, pitch: 8, fov: 40 }),
+      ...cam.push({ on: at(FELL, -0.15, 0.7, -0.3), dist: 3.4, to: 2.9, yaw: 100, pitch: 6, fov: 40 }),
       zone: "woods",
       look: NIGHT,
-      note: "From behind him, low: he walks to the helmet, bends, and lifts it in both hands. We see his back and never the hole. The helmet rattles in his hands.",
+      note: "From the side: he walks to the helmet, bends, and lifts it in both hands. The hole is in profile, a black edge and no more. The helmet rattles in his hands.",
       stage: (t) => {
         const walk = ease(ramp(t, 0, 0.7));
         const picked = wordAt("5.pick", "picked");
@@ -118,7 +118,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.stop",
-      ...cam.push({ on: at(kidHead(PICK), 0, -0.2, 0), dist: 5.2, to: 5.0, yaw: POV.yaw, pitch: 2, fov: 24 }),
+      ...cam.push({ on: at(kidHead(PICK), 0, -0.2, 0), dist: 5.2, to: 5.0, yaw: 70, pitch: 2, fov: 24 }),
       zone: "woods",
       look: NIGHT,
       note: "Long lens from the tree: the kid, the helmet halfway up to his head, and he has stopped. Nothing in the frame moves at all.",
@@ -134,7 +134,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.turn",
-      ...cam.push({ on: at(POV.on, 0.4, 0.5, 0.3), dist: 8.6, to: 7.6, yaw: POV.yaw, pitch: POV.pitch, fov: 34 }),
+      ...cam.push({ on: at(POV.on, 0.4, 0.5, -0.4), dist: 8.6, to: 7.6, yaw: 70, pitch: POV.pitch, fov: 34 }),
       zone: "woods",
       look: NIGHT,
       note: "From the tree again. He does not turn round. One arm comes up out of him instead, on its own, and swings slowly until the end of it is pointing straight down the lens.",
@@ -182,7 +182,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <Hero position={at(HIDE, 0.02, 0, 0)} rotationY={EAST} animation="idle" face="fear" gaze={t > touch - 0.4 ? -1 : 0} blink={false} breath={0} weightShift={0} />
-            <Seeker g={g} t={t} tip={tip} from={at(HTREE, -6.2, 1.2, -2.2)} />
+            <Seeker g={g} t={t} tip={tip} from={at(HTREE, -6.2, 1.2, -2.2)} thick={0.5} />
             <Fill position={at(HIDE, 1.2, 1.3, 0.6)} power={4.5} />
             <Fill position={at(HTREE, 0.2, 1.4, 1.2)} power={7} color={PURPLE} reach={4} />
           </>
@@ -191,7 +191,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.sub",
-      ...cam.push({ on: at(HIDE, 0, 1.25, 0.2), dist: 1.9, to: 1.75, yaw: 102, pitch: 1, fov: 40 }),
+      ...cam.push({ on: at(HIDE, 0, 1.3, 0.2), dist: 1.9, to: 1.75, yaw: 102, pitch: 1, fov: 40 }),
       zone: "woods",
       look: NIGHT,
       note: "The same frame. The end of the arm lifts off the bark and turns, slowly, to his face. The sign comes up over his head; in the last frames the picture goes black.",
@@ -201,8 +201,8 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <Hero position={at(HIDE, 0.02, 0, 0)} rotationY={EAST} animation="idle" face="fear" gaze={-1} blink={false} breath={0} weightShift={0} />
-            <Seeker g={1} t={t} tip={tip} from={at(HTREE, -6.2, 1.2, -2.2)} />
-            <SubscribeSign position={at(HIDE, 0.25, 1.62, 0.15)} rotationY={EAST} scale={0.55 * ease(ramp(t, 0.1, 0.4))} />
+            <Seeker g={1} t={t} tip={tip} from={at(HTREE, -6.2, 1.2, -2.2)} thick={0.5} />
+            <SubscribeSign position={at(HIDE, 0.2, 1.42, 0.2)} rotationY={EAST} scale={0.26 * ease(ramp(t, 0.1, 0.4))} />
             <Fill position={at(HIDE, 1.2, 1.3, 0.6)} power={4.5} />
             <Fill position={at(HTREE, 0.2, 1.4, 1.2)} power={7} color={PURPLE} reach={4} />
             {t > dur - 0.12 ? <Black position={at(HIDE, 1.2, 1.25, 0.4)} size={[0.1, 4, 4]} /> : null}
