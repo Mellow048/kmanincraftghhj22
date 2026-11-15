@@ -73,7 +73,7 @@ export const scene12 = storyScene(timing, {
       note: "'I had named him that as a joke': the boy's face, from down where the pumpkin is, looking up at him as he looks down at it.",
       stage: (t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face={t < 0.9 ? "frown" : "sad"} headPitch={0.5} saccade={false} gaze={0} />
+          <Hero position={ME} rotationY={NORTH} animation="idle" face="frown" headPitch={0.4 + 0.18 * ease(ramp(t, 0.7, 1.1))} saccade={false} gaze={0} />
           <FaceLight position={[ME[0] - 0.7, 0.9, ME[2] - 1.3]} power={5} reach={4} />
           <Folk spots={[[ME[0] - 1.9, ME[2] + 2.6, NORTH, ROBE.white], [ME[0] + 1.7, ME[2] + 3.2, NORTH, ROBE.brown]]} at={[STAND[0], 0.6, STAND[2]]} />
         </>

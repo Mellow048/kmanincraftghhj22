@@ -835,12 +835,13 @@ export const Cinder: React.FC<{ position: Vec3; rotationY?: number; seed?: numbe
 export const HeldUmbrella: React.FC<{ p: Vec3; rotY: number; up?: number; open?: number; burn?: number; flame?: boolean; lean?: number; side?: number; /** Which way it points when carried, if not where he faces. */ aim?: number }> = ({ p, rotY, up = 0, open = 0, burn = 0, flame = true, lean = 0.3, side = 1, aim }) => {
   const u = clamp01(up);
   const a = aim ?? rotY;
-  const carry = new THREE.Vector3(Math.sin(a) * 0.95, 0.32, Math.cos(a) * 0.95);
+  // Carried shut it stands by his leg like a stick: level, it crossed the picture as a blue bar.
+  const carry = new THREE.Vector3(-Math.sin(a) * 0.16, 0.98, -Math.cos(a) * 0.16);
   const high = new THREE.Vector3(-Math.sin(lean), Math.cos(lean), 0);
   const d = carry.lerp(high, u).normalize();
   const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), d);
   const h = handAt(p, rotY, u, KID, side);
-  const back = 0.45 * (1 - u);
+  const back = 0.6 * (1 - u);
   return (
     <group position={[h[0] - d.x * back, h[1] - d.y * back, h[2] - d.z * back]} quaternion={q}>
       <Umbrella position={[0, 0, 0]} open={open} burn={burn} flame={flame} />

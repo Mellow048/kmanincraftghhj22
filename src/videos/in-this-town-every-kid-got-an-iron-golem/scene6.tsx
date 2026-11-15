@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { BedBox, Dad, EAST, Hero, Pumpkin, Stick, WEST, WallWindow, ease, faceOf, ramp, room, timing, wordAt } from "./kit";
+import { BedBox, Dad, EAST, FaceLight, Hero, Pumpkin, Stick, WEST, WallWindow, ease, faceOf, ramp, room, timing, wordAt } from "./kit";
 
 /** He stands in the middle of his room and says it to his dad. The window is in the wall at his back. */
 const ME: Vec3 = room(-0.55, 0, -0.35);
@@ -44,6 +44,7 @@ export const scene6 = storyScene(timing, {
         <>
           <Set />
           <Dad position={DAD} rotationY={WEST} animation="shrug" blendTo="idle" blend={0.5} animSpeed={0.5} headPitch={0.28} headRoll={0.08 * Math.sin(t * 2)} />
+          <FaceLight position={[DAD[0] - 1.3, 1.25, DAD[2] + 0.5]} power={4} reach={3} />
         </>
       ),
     },

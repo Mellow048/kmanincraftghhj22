@@ -13,7 +13,7 @@ export const scene14 = storyScene(timing, {
   shots: [
     {
       cue: "14.sub",
-      ...cam.push({ on: [STAND[0], 0.42, STAND[2] + 0.3], dist: 3.9, to: 3.3, yaw: 180, pitch: 13, fov: 38 }),
+      ...cam.push({ on: [STAND[0], 0.2, STAND[2] + 0.3], dist: 4.1, to: 3.6, yaw: 180, pitch: 11, fov: 38 }),
       zone: "village",
       look: "overworld-night",
       note: "'Like and subscribe for part two': the red sign stuck in the ground by the pumpkin, the boy crouched beside it in the falling snow. The snow on the pumpkin is getting deeper. On 'two' the pumpkin rocks, by itself.",

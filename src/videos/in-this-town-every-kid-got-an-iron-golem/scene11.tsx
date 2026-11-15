@@ -143,7 +143,7 @@ export const scene11 = storyScene(timing, {
             <Fire from={FROM} to={[STAND[0] - 0.2, 0.5 + 1.0 * snow, STAND[2]]} power={blast} width={0.36} count={26} seed={2} />
             {steam([STAND[0], 0.4 + 1.2 * snow, STAND[2]], blast)}
             <Hero position={ME} rotationY={ME_ROT} animation="idle" face="fear" headYaw={0.5} headPitch={0.1 + 0.45 * (1 - snow)} gaze={0} />
-            <HeldUmbrella p={ME} rotY={ME_ROT} aim={0.9} />
+            <HeldUmbrella p={ME} rotY={ME_ROT} />
             <FireLight position={[STAND[0] - 1.2, 1.4, STAND[2] + 1.4]} power={6 + 14 * blast} reach={6} />
           </>
         );
@@ -195,7 +195,7 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.knee",
-      ...cam.push({ on: [STAND[0] + 0.1, 0.48, STAND[2] + 0.1], dist: 2.9, to: 2.4, yaw: -34, pitch: 7, fov: 38 }),
+      ...cam.push({ on: [STAND[0] - 0.08, 0.3, STAND[2] + 0.1], dist: 2.5, to: 2.25, yaw: -34, pitch: 12, fov: 38 }),
       zone: "village",
       look: "overworld-night",
       note: "'He was at my knee now. Still throwing': down at the boy's shins. A pumpkin on a lump of snow no bigger than itself, two sticks that are too long for it now, and one of them winds back and throws.",
