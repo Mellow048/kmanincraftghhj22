@@ -1,53 +1,144 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import {
+  ADULT, Bread, Bubble, Classmates, DAY, EAST, Hero, NORTH, NewKid, POOL, Player, ROBE, SPOT, TABLE, Villager, WEST, YARD, at, ease, kidHead, pop, ramp, timing, wordAt,
+} from "./kit";
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+/** The back row: the teller's seat and face, the new kid's seat and face. */
+export const HS: Vec3 = SPOT.seat(1, 2);
+export const KS: Vec3 = SPOT.seat(0, 2);
+export const HF: Vec3 = SPOT.face(1, 2);
+export const KF: Vec3 = SPOT.face(0, 2);
 
 /**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
+ * ACT 1. The new kid and his helmet: in class, at lunch, in the pool. Nobody knows his face.
  */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Hook",
+  title: "The helmet",
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
+      ...cam.push({ on: KF, dist: 2.4, to: 1.5, yaw: 150, pitch: 3, fov: 38 }),
+      zone: "class",
+      look: DAY,
+      note: "The premise in the first second: a kid at a school desk with an iron helmet over his whole head, and the lens going in on the slit. The teller beside him, looking.",
       stage: () => (
         <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
+          <NewKid position={KS} rotationY={NORTH} animation="sit" breath={0.4} />
+          <Hero position={HS} rotationY={NORTH} animation="sit" face="uneasy" lookAt={KF} />
+          <Classmates />
         </>
       ),
     },
     {
-      cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      cue: "1.not",
+      ...cam.push({ on: KF, dist: 1.5, to: 1.3, yaw: 100, pitch: 2, fov: 36 }),
+      zone: "class",
+      look: DAY,
+      note: "Not in class: the helmet in profile against the window, writing.",
+      stage: () => (
+        <>
+          <NewKid position={KS} rotationY={NORTH} animation="sit" arms="hold" breath={0.4} />
+          <Classmates />
+        </>
+      ),
+    },
+    {
+      cue: "1.not",
+      cut: wordAt("1.not", "lunch") - 0.42,
+      ...cam.push({ on: at(TABLE, 0, 1.05, -0.75), dist: 2.7, to: 2.3, yaw: 12, pitch: 8, fov: 40 }),
+      zone: "yard",
+      look: DAY,
+      note: "Not at lunch: he lifts a roll to the slit and it stops there. The two beside him stare.",
+      stage: (t) => {
+        const k = ease(ramp(t, 0.05, 0.45));
+        return (
+          <>
+            <NewKid position={at(TABLE, 0, 0, -0.75)} animation="sit" arms="hold" />
+            <Bread position={at(TABLE, 0.12, 0.86 + 0.3 * k, -0.42)} rotation={[0.2, 0, 0]} />
+            <Player who={4} scale={0.8} position={at(TABLE, -0.95, 0, -0.75)} animation="sit" lookAt={kidHead(at(TABLE, 0, -0.1, -0.75))} face="wow" />
+            <Player who={9} scale={0.8} position={at(TABLE, 0.95, 0, -0.75)} animation="sit" lookAt={kidHead(at(TABLE, 0, -0.1, -0.75))} face="uneasy" />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.not",
+      cut: wordAt("1.not", "even") - 0.3,
+      ...cam.push({ on: at(POOL, 0, 1.0, 0), dist: 4.8, to: 4.1, yaw: -18, pitch: 16, fov: 42 }),
+      zone: "yard",
+      look: DAY,
+      note: "Not even in the pool: in to the waist, arms at his sides, the helmet on. Two kids splash and he does not move.",
+      stage: (t) => (
+        <>
+          <NewKid position={at(POOL, 0, 0.04, 0)} animation="idle" breath={0.3} weightShift={0} />
+          <Player who={8} scale={0.8} position={at(POOL, -1.7, 0.04, 0.7)} rotationY={1.2} animation="cheer" face="laugh" phase={0.3} />
+          <Player who={10} scale={0.8} position={at(POOL, 1.6, 0.04 + Math.abs(Math.sin(t * 7)) * 0.12, -0.8)} rotationY={-1.0} animation="cheer" face="grin" />
+        </>
+      ),
+    },
+    {
+      cue: "1.teacher",
+      ...cam.push({ on: at(KS, 0.6, 1.15, 0), dist: 3.2, to: 2.7, yaw: 180, pitch: 14, fov: 42 }),
+      zone: "class",
+      look: DAY,
+      note: "The teacher has come down the aisle and bends over him. The helmet turns left, right, left: no. The teller watches from the next desk.",
+      stage: (t) => {
+        const shook = wordAt("1.teacher", "shook") - 0.25;
+        return (
+          <>
+            <NewKid position={KS} rotationY={NORTH} animation="sit" headYaw={t > shook ? Math.sin((t - shook) * 11) * 0.5 : 0} />
+            <Villager position={at(KS, 1.2, 0, 0)} rotationY={WEST} scale={ADULT} robe={ROBE.white} lookAt={KF} hmm={t < shook ? 1 : 0} lean={0.25} />
+            <Hero position={HS} rotationY={NORTH} animation="sit" face="wow" lookAt={KF} />
+            <Classmates look={KF} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.face",
+      ...cam.push({ on: at(YARD, -7, 1.0, 1.5), dist: 5.2, to: 5.8, yaw: 84, pitch: 5, fov: 40 }),
+      zone: "yard",
+      look: DAY,
+      note: "After school he walks off down the road alone, towards the woods, and two classmates watch him go with a question over their heads.",
+      stage: (t) => (
+        <>
+          <NewKid position={at(YARD, -5.5 - 1.3 * t, 0, 1.5)} rotationY={WEST} animation="walk" animDistance={1.3 * t} />
+          <Player who={4} scale={0.8} position={at(YARD, -2.3, 0, 0.7)} rotationY={WEST} animation="idle" />
+          <Player who={8} scale={0.8} position={at(YARD, -2.0, 0, 2.4)} rotationY={WEST} animation="shrug" />
+          <Bubble text="?" position={at(YARD, -2.2, 1.95, 1.5)} rotationY={EAST} scale={pop(t, wordAt("1.face", "where") - 0.1) * 0.9} />
+        </>
+      ),
+    },
+    {
+      cue: "1.back",
+      ...cam.push({ on: at(KS, 1.2, 1.05, 0), dist: 3.5, to: 2.9, yaw: 0, pitch: 14, fov: 44 }),
+      zone: "class",
+      look: DAY,
+      note: "From behind the back row: two backs side by side, a green one and a grey one with an iron box on it, and the whole class in front of them.",
+      stage: (t) => (
+        <>
+          <NewKid position={KS} rotationY={NORTH} animation="sit" breath={0.3} />
+          <Hero position={HS} rotationY={NORTH} animation="sit" face="smile" lookAt={t > wordAt("1.back", "never") - 0.2 ? at(KF, 0, 0, -0.4) : undefined} />
+          <Villager position={SPOT.teacher} scale={ADULT} robe={ROBE.white} hmm={1} />
+          <Classmates />
+        </>
+      ),
+    },
+    {
+      cue: "1.shy",
+      ...cam.push({ on: HF, dist: 1.8, to: 1.45, yaw: 196, pitch: 2, fov: 36 }),
+      zone: "class",
+      look: DAY,
+      note: "The teller, close, with a small shrug: he means well. The last easy face of the film.",
+      stage: () => (
+        <>
+          <Hero position={HS} rotationY={NORTH} animation="sit" arms="shrug" face="smile" />
+          <NewKid position={KS} rotationY={NORTH} animation="sit" breath={0.3} />
+          <Classmates hide={["1,1"]} />
+        </>
+      ),
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;
