@@ -12,7 +12,7 @@ M = [("1.town", "curious", "A kid in a helmet."), ("1.teacher", "playful", "He j
      ("2.first", "sad", "An empty desk."), ("2.more", "tense", "Two more."), ("2.noticed", "sneak", "He notices."), ("2.mom", "sad", "Nobody listens."),
      ("3.watch", "sneak", "Watching him."), ("3.wet", "curious", "The helmet is wet."), ("3.follow", "tense", "Following him at night."),
      ("4.lamp", "dark", "Under the lamp."), ("4.held", "drone", "He is scared, but not of them."), ("4.off", "none", "The helmet comes off: a held breath."),
-     ("4.hole", "drone", "The hole."), ("4.tent", "dark", "What comes out."), ("5.quiet", "none", "Then it was quiet."), ("5.step", "drone", "One step back."),
+     ("4.noface", "drone", "No face: a low note under the silence."), ("4.tent", "dark", "What comes out."), ("5.quiet", "none", "Then it was quiet."), ("5.step", "drone", "One step back."),
      ("5.turn", "tense", "It turns round."), ("5.closer", "drone", "It touches the bark."), ("9.sub", "dark", "Part two.")]
 s['music']['sections'] = [{"from": a, "mood": b, "why": c} for a, b, c in M]
 s['beds'] = [{"from": a, "to": b, "bed": c} for a, b, c in [
@@ -41,14 +41,14 @@ e("1.face", "whoosh", "Outside, after school."); steps("1.face", "He walks off a
 e("1.back", "swish", "Behind the back row."); e("1.back", "scrape", "Chalk on the board.", at=0.5, trim=-3); e("1.back", "tick", "The clock. He says nothing.", word="never", repeat=3, every=0.3)
 e("1.shy", "rustle", "A shrug.", at=0.2); e("1.shy", "blip", "Just shy.", word="shy")
 e("2.first", "whoosh_low", "An empty desk."); e("2.first", "slide_down", "Missing.", word="missing", trim=-2)
-e("2.desk", "swish", "Down to the floor."); e("2.desk", "rustle", "His bag, still there.", word="bag"); e("2.desk", "sting", "A kid who runs away takes his bag.", word="under", trim=-6)
+e("2.desk", "swish", "Down to the floor."); e("2.desk", "rustle", "His bag, still there.", word="bag"); e("2.desk", "sting", "A kid who runs away takes his bag.", word="under", trim=-4)
 e("2.ran", "whoosh", "The school step."); e("2.ran", "blip", "The grown-ups shrug it off.", word="said"); e("2.ran", "blip", "And again.", word="ran", trim=-2)
 e("2.more", "thud", "Another empty desk.", word="another", trim=-2); e("2.more", "tick", "The clock in a quiet room.", at=0.3, repeat=3, every=0.35)
 e("2.more", "swish", "The next column.", word="friday", at=-0.3); e("2.more", "thud", "Two more.", word="two"); e("2.more", "thud", "Two.", word="more", trim=-2)
 e("2.posters", "paper", "A poster.", at=0.2); e("2.posters", "paper", "Another.", at=0.8); e("2.posters", "paper", "Another.", at=1.4); e("2.posters", "paper", "Another.", at=2.0); e("2.posters", "gust", "An empty yard.", word="nobody", trim=-2)
 e("2.noticed", "swish", "His eyes go sideways."); e("2.noticed", "ding", "He notices.", word="noticed", trim=-4)
 e("2.mean", "whoosh_low", "The lens goes in on the helmet."); e("2.mean", "heartbeat", "Every one of them.", word="every"); e("2.mean", "heartbeat", "Had been mean to him.", word="mean")
-e("2.three", "swish", "A memory."); e("2.three", "whoosh", "He throws the roll.", word="threw"); e("2.three", "cheer", "They laugh.", word="lunch", trim=-8)
+e("2.three", "swish", "A memory."); e("2.three", "whoosh", "He throws the roll.", word="threw"); e("2.three", "cheer", "They laugh.", word="lunch", trim=-2)
 e("2.three", "swish", "Another.", word="knocked", at=-0.32); e("2.three", "bonk", "Tok.", word="knocked"); e("2.three", "bonk", "Tok.", word="knocked", at=0.25); e("2.three", "clank", "Iron.", word="helmet", trim=-3)
 e("2.three", "swish", "Another.", word="tried", at=-0.32); e("2.three", "creak", "He pulls.", word="pull"); e("2.three", "scrape", "The helmet moves, a finger's width.", word="off", trim=-2)
 e("2.mom", "whoosh", "Home."); e("2.mom", "blip", "He tells her.", word="told"); e("2.mom", "buzz", "Do not blame the new kid.", word="blame", trim=-6)
@@ -62,15 +62,16 @@ steps("3.far", "The helmet walks at us.", "step_grass", 0.42, trim=2); e("3.far"
 steps("3.hid", "He runs to the tree, bent low.", "step_grass", 0.2, 0.05, 1.2, trim=2); e("3.hid", "rustle", "Against the bark.", word="hid"); e("3.hid", "heartbeat", "One eye round the trunk.", word="tree")
 e("4.lamp", "crackle", "The old lamp.", at=0.2); e("4.lamp", "creak", "It hangs crooked.", at=0.9, trim=-3); steps("4.lamp", "Three more walk into the light.", "step_grass", 0.3, dur["4.lamp"] - 1.3, trim=2); e("4.lamp", "sting", "Not alone.", word="alone", trim=-4)
 e("4.circle", "whoosh_low", "Round them, low."); e("4.circle", "cheer", "They are laughing.", word="circle", trim=-9); e("4.circle", "stomp", "The last three bullies in town.", word="bullies", trim=-4)
-e("4.push", "hit", "A shove in the chest.", word="pushed"); e("4.push", "step_grass", "He goes back a step.", word="pushed", at=0.2, repeat=2, every=0.18); e("4.push", "slide_down", "He did not push back.", word="back", trim=-3)
+e("4.push", "hit", "A shove in the chest.", word="pushed"); e("4.push", "step_grass", "He goes back a step.", word="pushed", at=0.2, repeat=2, every=0.18, trim=3); e("4.push", "slide_down", "He did not push back.", word="back", trim=-3)
 e("4.take", "swish", "The big one's face."); e("4.take", "stamp", "Take it off.", word="off", trim=-3); e("4.take", "blip", "Show us your face.", word="face", trim=-2)
 e("4.held", "clank", "Both hands on the iron.", word="held"); e("4.held", "tick", "The helmet rattles: he is shaking.", word="shaking", at=-0.6, repeat=8, every=0.09, trim=4)
 e("4.scared", "whoosh_low", "The slit."); e("4.scared", "heartbeat", "Scared.", word="scared"); e("4.scared", "heartbeat", "Not of them.", word="them"); e("4.scared", "riser", "Something behind the slit lights up.", word="them", at=-0.9, trim=-6)
-e("4.pull", "rustle", "One on each arm.", word="held", trim=-3); e("4.pull", "rustle", "The other arm.", word="arms", at=0.25, trim=-2); e("4.pull", "creak", "The third one pulls.", word="third"); e("4.pull", "scrape", "Iron starts to move.", word="pulled", trim=2)
-e("4.off", "clank", "The helmet comes off.", at=0.05, trim=3); e("4.off", "whoosh", "It goes up past the lamp.", at=0.2)
-e("4.noface", "sting", "There was no face.", at=0.05)
-e("4.hole", "whoosh_low", "A hole."); e("4.hole", "heartbeat", "A hole.", word="hole"); e("4.hole", "rustle", "Something wet moves in it.", word="moved", at=-0.4, trim=3); e("4.hole", "creak", "It comes up.", word="moved")
-e("4.tent", "slide_up", "One.", word="one", at=-0.1); e("4.tent", "whoosh", "Five.", word="five", at=-0.15); e("4.tent", "whoosh_low", "More.", word="five", at=0.1); e("4.tent", "riser", "Too many to count.", word="many", at=-0.5); e("4.tent", "boom", "A crown of them.", word="count", trim=-2)
+e("4.pull", "rustle", "The other arm.", word="arms", at=0.25, trim=0); e("4.pull", "creak", "The third one pulls.", word="third"); e("4.pull", "scrape", "Iron starts to move.", word="pulled", trim=2)
+e("4.off", "clank", "The helmet comes off.", at=0.05, trim=3); e("4.off", "whoosh", "It goes up past the lamp.", at=0.2); e("4.off", "clank", "It lands in the dirt.", at=1.35, trim=4); e("4.off", "thud", "It bounces once.", at=1.77); e("4.off", "scrape", "It rocks until it is still.", at=1.95, trim=-2)
+e("4.noface", "sting", "There was no face.", at=0.05); e("4.noface", "rustle", "One lets go of his arm.", at=1.1, trim=2); e("4.noface", "rustle", "The other lets go.", at=1.5, trim=2); e("4.noface", "heartbeat", "They step away.", at=1.2, repeat=2, every=0.55)
+e("4.hole", "whoosh_low", "His head comes up."); e("4.hole", "heartbeat", "A hole.", word="hole", repeat=3, every=0.55)
+e("4.moved", "rustle", "Something wet moves in it.", word="moved", at=-0.4, trim=3); e("4.moved", "creak", "It comes up over the rim.", word="moved"); e("4.moved", "heartbeat", "It crosses the gap.", at=1.75, repeat=3, every=0.5, trim=2); e("4.moved", "slide_up", "It touches his face.", at=2.7, trim=-2); e("4.moved", "whoosh", "And it is gone back in.", at=3.1)
+e("4.tent", "slide_up", "One.", word="one", at=-0.1); e("4.tent", "whoosh", "Five.", word="five", at=-0.15); e("4.tent", "riser", "Too many to count.", word="many", at=-0.5); e("4.tent", "boom", "A crown of them.", word="count", trim=-2)
 e("4.thick", "stomp", "Thick as trees.", word="thick"); e("4.thick", "whoosh", "Round the first.", word="wrapped", at=-0.2); e("4.thick", "whoosh", "The second.", word="wrapped", at=0.0); e("4.thick", "whoosh", "The third.", word="wrapped", at=0.15); e("4.thick", "creak", "Lifted off their feet.", word="three", trim=2)
 e("4.scream", "heartbeat", "The teller, not blinking.", at=0.1); e("4.scream", "heartbeat", "No sound.", word="sound"); e("4.scream", "gust", "No time.", word="time")
 e("4.swallow", "slide_down", "The first goes in.", word="in", at=-0.25); e("4.swallow", "thud", "Gone.", word="in", at=0.25, trim=-2); e("4.swallow", "slide_down", "The second.", word="all", at=-0.1); e("4.swallow", "thud", "Gone.", word="all", at=0.4, trim=-2)
