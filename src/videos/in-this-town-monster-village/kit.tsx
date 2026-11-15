@@ -174,13 +174,13 @@ const SCARVES = ["#7a4fb0", "#e07a2e", "#e8e4d8", "#e0b83a", "#3f6fc2", "#8a5a2a
  * One more villager. A monster village has many of each kind: `n` tells two of a kind apart (scarf, bow, the beat
  * they sway on). The named ones (Mum, Dad, Hiss, the postman, the bus) keep their own colours.
  */
-export const Folk: React.FC<M & { kind: Kind; n?: number; arms?: number; wave?: number; fuse?: number; rattle?: number; size?: number; jaw?: number; shake?: number }> = ({
-  kind, n = 0, arms, wave, fuse, rattle, size, jaw, shake, ...p
+export const Folk: React.FC<M & { kind: Kind; n?: number; arms?: number; wave?: number; fuse?: number; rattle?: number; size?: number; jaw?: number; shake?: number; bow?: boolean; draw?: number }> = ({
+  kind, n = 0, arms, wave, fuse, rattle, size, jaw, shake, bow, draw, ...p
 }) => {
   const scarf = SCARVES[n % SCARVES.length];
   const phase = n * 1.7 + 0.3;
   if (kind === "zombie") return <Zombie scarf={scarf} hat={n % 3 === 1 ? "bow" : "none"} phase={phase} arms={arms} wave={wave} {...p} />;
-  if (kind === "skeleton") return <Skeleton scarf={scarf} phase={phase} rattle={rattle} wave={wave} {...p} />;
+  if (kind === "skeleton") return <Skeleton scarf={scarf} phase={phase} rattle={rattle} wave={wave} bow={bow} draw={draw} {...p} />;
   if (kind === "creeper") return <Creeper phase={phase} fuse={fuse} {...p} />;
   if (kind === "enderman") return <Enderman scarf={n % 2 ? scarf : undefined} phase={phase} jaw={jaw} shake={shake} {...p} />;
   if (kind === "slime") return <Slime size={size ?? 0.8} phase={phase} {...p} />;

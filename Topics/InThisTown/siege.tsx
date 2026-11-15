@@ -311,17 +311,11 @@ export const SpyMask: React.FC<{ eye: Vec3; down?: number; hole?: number }> = ({
       <ringGeometry args={[hole, 3, 48]} />
       <meshBasicMaterial color="#000000" side={2} />
     </mesh>
-    {/* the brass rim of the glass, and a cross hair: it says SPYGLASS without a word */}
+    {/* the brass rim of the glass. NO cross hair: it is a spyglass, not a rifle. */}
     <mesh position={[0, 0, -0.501]}>
       <ringGeometry args={[hole, hole * 1.06, 48]} />
       <meshBasicMaterial color="#c8922e" side={2} />
     </mesh>
-    {[0, 1].map((i) => (
-      <mesh key={i} position={[0, 0, -0.5]} rotation={[0, 0, (i * Math.PI) / 2]}>
-        <planeGeometry args={[hole * 0.3, 0.0012]} />
-        <meshBasicMaterial color="#101010" side={2} />
-      </mesh>
-    ))}
   </group>
 );
 /** Where a `SpyMask` camera looks: straight north from `eye`, tipped `down` radians. Give it to `on` and `onTo`. */

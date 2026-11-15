@@ -1,6 +1,6 @@
 import type React from "react";
-import { Block } from "../../engine";
-import type { Vec3 } from "../../engine";
+import { Block, getPose } from "../../engine";
+import type { Pose, Vec3 } from "../../engine";
 import {
   CageDoor, EAST, Flat, Folk, HOLE, Hero, IronGolem, LOOK, LitWindow, Mo, MOCAGE, NORTH, Postman, Raider, Smoke, VGuard, WEST, WINDOWS, WallPlug, f, wordAt,
 } from "./kit";
@@ -29,12 +29,29 @@ export const OUTBUS: Vec3 = f(-3.2, 0, 5.2);
 /** Where the golem stands over the bus. */
 export const GSTAND: Vec3 = f(1.8, 0, 3.7);
 
-/** Mo, flat on his back. He does not move in this film. Feet at `position`; his head points along `rotationY` + 180°. */
-export const MoFlat: React.FC<{ position: Vec3; rotationY?: number }> = ({ position, rotationY = 0 }) => (
-  <Flat position={position} rotationY={rotationY}>
-    <Mo animation="idle" scarf={0} face="sad" blink={false} breath={0} weightShift={0} />
-  </Flat>
-);
+/**
+ * Mo, flat on his back. He does not move in this film, and he is OUT: eyes shut, no smile ("sleepy" is the only face
+ * with shut eyes and a flat mouth; "sad" turns into a grin when the head is upside down to the camera).
+ * Feet at `position`; his head points along `rotationY` + 180°. `k` under 1 lifts his shoulders off the ground (somebody
+ * has him by the wrists) and `armsUp` puts both arms straight over his head, where their hands are.
+ */
+export const MoFlat: React.FC<{ position: Vec3; rotationY?: number; k?: number; armsUp?: boolean }> = ({ position, rotationY = 0, k = 1, armsUp = false }) => {
+  const pose: Pose = { ...getPose("idle", 0), head: [0.5, 0, 0.12], armR: armsUp ? [-3.05, 0, 0] : [0, 0, 0.5], armL: armsUp ? [-3.05, 0, 0] : [0, 0, -0.35], legR: [0, 0, 0.1], legL: [0, 0, -0.12] };
+  return (
+    <Flat position={position} rotationY={rotationY} k={k}>
+      <Mo pose={pose} scarf={0} face="sleepy" blink={false} breath={0} weightShift={0} saccade={false} />
+    </Flat>
+  );
+};
+/** Somebody who has been knocked out: eyes shut, limbs any old how. `n` picks how he lies. */
+export const outPose = (n: number): Pose => ({
+  ...getPose("idle", 0),
+  head: [0.3, n % 2 ? 0.5 : -0.4, 0],
+  armR: [n % 2 ? -2.6 : 0, 0, 0.9 - (n % 3) * 0.3],
+  armL: [n % 3 === 0 ? -0.6 : 0, 0, -0.7 - (n % 2) * 0.5],
+  legR: [0, 0, 0.25],
+  legL: [n % 2 ? -0.3 : 0, 0, -0.2],
+});
 export const MoInCage: React.FC = () => <MoFlat position={[MOCAGE[0] + 0.85, 0.08, MOCAGE[2] + 0.2]} rotationY={EAST} />;
 
 /** The windows of the castle. `lit` 0–1: they come on one after another. */
@@ -48,7 +65,8 @@ export const Lights: React.FC<{ lit: number }> = ({ lit }) => (
 
 /** Fights going on in the yard: [monster, x, z, which player, how they fight]. */
 type How = "chase" | "duel" | "shoot" | "pounce";
-const FIGHTS: Array<[Kind, number, number, number, How]> = [
+export type Fight = [Kind, number, number, number, How];
+const FIGHTS: Fight[] = [
   ["zombie", -3.6, -4.2, 1, "duel"], ["skeleton", 0.6, -6.4, 2, "shoot"], ["spider", 3.8, -3.6, 3, "pounce"], ["zombie", -1.2, -8.6, 4, "chase"],
   ["creeper", 4.6, -8.2, 5, "chase"], ["zombie", -7.4, -1.6, 2, "duel"], ["skeleton", 2.6, -2.2, 4, "shoot"], ["enderman", -5.4, -7.4, 3, "pounce"],
 ];
@@ -62,22 +80,36 @@ const Spark: React.FC<{ at: Vec3; k: number }> = ({ at, k }) =>
     </>
   ) : null;
 /**
+ * The other side of a fight: a player (`who` 0–9) or a villager guard (`who` 10 and up: villagers fight too).
+ * A villager has no arms to swing, so he leans, ducks and runs instead.
+ */
+const Foe: React.FC<{ who: number; position: Vec3; rotationY: number; mode: "guard" | "stagger" | "cower" | "panic" | "run" | "scared"; dist?: number; sword?: boolean; phase?: number; look?: Vec3 }> = ({
+  who, position, rotationY, mode, dist = 0, sword = true, phase = 0, look,
+}) =>
+  who >= 10 ? (
+    <VGuard position={position} rotationY={rotationY} n={who} sword={sword} walk={mode === "run" || mode === "panic" ? dist : mode === "stagger" ? dist * 0.5 : undefined} lean={mode === "cower" ? 0.7 : mode === "stagger" ? -0.25 : mode === "run" ? 0.3 : 0.08} nod={mode === "cower" ? 0.5 : 0} lookAt={look} />
+  ) : (
+    <Raider who={who} sword={sword} position={position} rotationY={rotationY} animation={mode} animDistance={mode === "run" ? dist : undefined} face={mode === "guard" ? "worried" : "scared"} phase={phase} lookAt={look} />
+  );
+/**
  * THE BATTLE IN THE YARD: eight fights, every one of them moving, no two the same.
  *   duel    a zombie walks into a sword: the player hacks at it, sparks, and is pushed back step by step, then it starts again
  *   shoot   a skeleton draws and looses, an arrow flies, the player ducks under it and comes up again
  *   pounce  a spider (or the enderman) jumps the gap and lands where the player was; he dives out of the way
  *   chase   round and round: a player running flat out with a monster two steps behind him
- * With `look` everybody stops where they are and turns to look at that point.
+ * With `look` everybody stops where they are and turns to look at that point (they still shift and breathe).
+ * `fights` puts your own list down instead: [monster, x, z, who, how] in the fort's numbers; `who` 10+ is a villager.
+ * NOBODY IN A BATTLE STANDS STILL. If a shot needs people near the lens, give it `fights` there, not idle extras.
  */
-export const Battle: React.FC<{ t: number; look?: Vec3; n?: number }> = ({ t, look, n = FIGHTS.length }) => (
+export const Battle: React.FC<{ t: number; look?: Vec3; n?: number; fights?: Fight[] }> = ({ t, look, n, fights = FIGHTS }) => (
   <>
-    {FIGHTS.slice(0, n).map(([kind, x, z, who, how], i) => {
+    {fights.slice(0, n ?? fights.length).map(([kind, x, z, who, how], i) => {
       const ph = i * 1.37;
       if (look) {
         return (
           <group key={i}>
-            <Folk kind={kind} n={i + 2} position={f(x, 0, z)} rotationY={WEST} lookAt={look} mood="calm" />
-            <Raider who={who} sword={i % 2 === 0} position={f(x - 1.5, 0, z + 0.1)} rotationY={EAST} animation="idle" face="worried" lookAt={look} phase={i} />
+            <Folk kind={kind} n={i + 2} position={f(x, 0, z)} rotationY={WEST} lookAt={look} mood="scared" walk={Math.sin(t * 3 + ph) * 0.05} />
+            <Foe who={who} sword={i % 2 === 0} position={f(x - 1.5, 0, z + 0.1)} rotationY={EAST} mode="scared" look={look} phase={i} />
           </group>
         );
       }
@@ -88,7 +120,7 @@ export const Battle: React.FC<{ t: number; look?: Vec3; n?: number }> = ({ t, lo
         const heading = (q: number): number => Math.atan2(-Math.sin(q) * rr, Math.cos(q) * rr * 0.75);
         return (
           <group key={i}>
-            <Raider who={who} sword={false} position={at(a)} rotationY={heading(a)} animation="run" animDistance={t * 3.3 + ph} face="scared" phase={i} />
+            <Foe who={who} sword={false} position={at(a)} rotationY={heading(a)} mode="run" dist={t * 3.3 + ph} phase={i} />
             <Folk kind={kind} n={i + 2} position={at(a - 0.9)} rotationY={heading(a - 0.9)} walk={t * 1.4 + ph} mood="angry" lean={0.25} arms={kind === "zombie" ? 1 : undefined} fuse={kind === "creeper" ? 0.5 + 0.5 * Math.sin(t * 5) : undefined} />
           </group>
         );
@@ -99,8 +131,8 @@ export const Battle: React.FC<{ t: number; look?: Vec3; n?: number }> = ({ t, lo
         const swing = Math.max(0, Math.sin(c * 7.5));
         return (
           <group key={i}>
-            <Folk kind={kind} n={i + 2} position={f(x - push, 0, z)} rotationY={WEST} walk={c * 0.6 + ph} mood="angry" arms={1} lean={0.12} />
-            <Raider who={who} position={f(x - 1.25 - push, 0, z + 0.1)} rotationY={EAST} animation={c > 1.9 ? "stagger" : "guard"} face={c > 1.9 ? "scared" : "worried"} phase={i} headPitch={-0.1} />
+            <Folk kind={kind} n={i + 2} position={f(x - push, 0, z)} rotationY={WEST} walk={c * 0.6 + ph} mood="angry" arms={1} lean={0.12 + 0.1 * swing} />
+            <Foe who={who} position={f(x - 1.25 - push, 0, z + 0.1)} rotationY={EAST} mode={c > 1.9 ? "stagger" : "guard"} dist={c} phase={i} />
             <Spark at={f(x - 0.65 - push, 1.25, z + 0.1)} k={swing > 0.8 && c < 1.9 ? (swing - 0.8) * 5 : 0} />
           </group>
         );
@@ -111,14 +143,10 @@ export const Battle: React.FC<{ t: number; look?: Vec3; n?: number }> = ({ t, lo
         const duck = bump(c, 0.4, 0.6);
         return (
           <group key={i}>
-            <Folk kind={kind} n={i + 2} position={f(x + 1.4, 0, z)} rotationY={WEST} mood="angry" rattle={c < 0.35 ? 0.6 : 0} lean={c < 0.35 ? -0.1 : 0.08} />
-            <group position={f(x + 1.05, 1.05, z + 0.28)} rotation={[0, 0, Math.PI / 2]}>
-              <Block position={[0, 0, 0]} size={[0.05, 0.9, 0.05]} color="#6b4a2a" />
-              <Block position={[0, 0, -0.1]} size={[0.02, 0.86, 0.02]} color="#e8e8e8" castShadow={false} />
-            </group>
+            <Folk kind={kind} n={i + 2} position={f(x + 1.4, 0, z)} rotationY={WEST} mood="angry" bow draw={c < 0.35 ? c / 0.35 : 0} lean={c < 0.35 ? -0.1 : 0.08} />
             {c > 0.35 && c < 0.9 ? <Block position={f(x + 1.0 - fly * 4.2, 1.45 - fly * 0.2, z + 0.1)} size={[0.6, 0.04, 0.04]} color="#e8e4d8" emissive="#e8e4d8" emissiveIntensity={0.4} castShadow={false} /> : null}
-            <group position={f(x - 1.5, -0.5 * duck, z + 0.1)} rotation={[0, 0, 0]}>
-              <Raider who={who} sword={i % 2 === 0} rotationY={EAST} animation={duck > 0.2 ? "cower" : "guard"} face={duck > 0.2 ? "scared" : "worried"} phase={i} />
+            <group position={[0, who >= 10 ? 0 : -0.5 * duck, 0]}>
+              <Foe who={who} sword={i % 2 === 0} position={f(x - 1.5, 0, z + 0.1)} rotationY={EAST} mode={duck > 0.2 ? "cower" : "guard"} phase={i} />
             </group>
           </group>
         );
@@ -130,7 +158,7 @@ export const Battle: React.FC<{ t: number; look?: Vec3; n?: number }> = ({ t, lo
       return (
         <group key={i}>
           <Folk kind={kind} n={i + 2} position={f(x + 1.6 - 2.9 * j, kind === "enderman" ? 0 : hop, z)} rotationY={WEST} mood="angry" walk={c * 2} lean={0.3 * Math.sin(Math.PI * j)} shake={kind === "enderman" ? 1 : undefined} />
-          <Raider who={who} sword={false} position={f(x - 1.4 - 0.4 * dive, 0, z + 0.1 + 1.5 * dive)} rotationY={EAST + 1.2 * dive} animation={c < 1.0 ? "panic" : "scared"} face="scared" phase={i} />
+          <Foe who={who} sword={false} position={f(x - 1.4 - 0.4 * dive, 0, z + 0.1 + 1.5 * dive)} rotationY={EAST + 1.2 * dive} mode={c < 1.0 ? "panic" : "scared"} dist={c * 3} phase={i} />
         </group>
       );
     })}
