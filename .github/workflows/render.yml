@@ -113,10 +113,17 @@ jobs:
           FROM: ${{ matrix.from }}
           TO: ${{ matrix.to }}
         run: |
-          npx remotion render src/index.ts "$COMPOSITION" "out/chunk-$INDEX.mov" \
+          # The log of a failed chunk is put in an annotation as well: an agent can read annotations through the
+          # API when it cannot download the log itself.
+          set -o pipefail
+          if ! npx remotion render src/index.ts "$COMPOSITION" "out/chunk-$INDEX.mov" \
             --frames="$FROM-$TO" --scale="$SCALE" \
             --codec=h264 --crf=20 --audio-codec=pcm-16 --enforce-audio-track \
-            --concurrency=4 --gl=swangle
+            --concurrency=4 --gl=swangle --timeout=240000 2>&1 | tee render.log; then
+            MSG=$(grep -v "Rendered\|Encoded\|Stitching" render.log | tail -c 2500 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+            echo "::error title=Chunk $INDEX (frames $FROM-$TO) failed::$MSG"
+            exit 1
+          fi
 
       - name: Hand the chunk to the join job
         uses: actions/upload-artifact@v4

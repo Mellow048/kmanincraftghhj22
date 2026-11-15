@@ -72,10 +72,19 @@ What is planted, and where it pays off:
 [4.scared]   He was not angry. He was scared. But not of them.
 [4.pull]     Two of them held his arms. The third one pulled.
 
-# clip 06-off wait 0.7
+# clip 06a-off wait 0.7
 [4.off]      The helmet came off.
+
+# clip 06b-noface wait 1.7
 [4.noface]   There was no face.
-[4.hole]     There was a hole. And something inside it moved.
+
+# clip 06c-hole wait 1.4
+[4.hole]     There was a hole.
+
+# clip 06d-moved wait 1.1
+[4.moved]    And something inside it moved.
+
+# clip 06e-tent wait 2.0
 [4.tent]     One tentacle came out. Then five. Then too many to count.
 [4.thick]    They were as thick as trees. They wrapped around all three of them.
 [4.scream]   Nobody made a sound. There was no time.

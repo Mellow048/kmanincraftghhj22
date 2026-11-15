@@ -87,14 +87,23 @@ export const Helmet: React.FC<{ position?: Vec3; rotation?: Vec3; glow?: number;
 );
 
 /** What is where a face should be: a black hole with a rim of something alive. Goes in the avatar's `head` prop. */
-const HoleFace: React.FC<{ glow?: number }> = ({ glow = 0.6 }) => (
+const HoleFace: React.FC<{ glow?: number; stir?: number }> = ({ glow = 0.6, stir }) => (
   <group>
     <Block position={[0, 0, 0.228]} size={[0.47, 0.47, 0.02]} color={FLESH} emissive={FLESH} emissiveIntensity={glow} castShadow={false} />
     <mesh position={[0, 0, 0.241]}>
       <boxGeometry args={[0.37, 0.37, 0.01]} />
       <meshBasicMaterial color="#000000" />
     </mesh>
-    {[[-0.185, 0.1], [0.185, -0.08], [0.06, 0.185], [-0.1, -0.185]].map(([x, y], i) => (
+    {/* `stir` (seconds): something dark slides about inside the hole, and the bits of the rim twitch */}
+    {stir === undefined
+      ? null
+      : [0, 1, 2].map((i) => (
+          <mesh key={i} position={[0.11 * Math.sin(stir * 1.7 + i * 2.1), 0.1 * Math.cos(stir * 1.3 + i * 1.4), 0.247]}>
+            <boxGeometry args={[0.1 + 0.03 * i, 0.08, 0.004]} />
+            <meshBasicMaterial color={i === 1 ? "#4a1c66" : "#2f1142"} />
+          </mesh>
+        ))}
+    {[[-0.185, 0.1], [0.185, -0.08], [0.06, 0.185], [-0.1, -0.185]].map(([x0, y0], i) => [x0 + (stir === undefined ? 0 : 0.014 * Math.sin(stir * 9 + i * 3)), y0 + (stir === undefined ? 0 : 0.014 * Math.cos(stir * 7 + i * 2))]).map(([x, y], i) => (
       <Block key={i} position={[x, y, 0.245]} size={[0.05, 0.05, 0.02]} color={FLESH_LIT} emissive={FLESH_LIT} emissiveIntensity={glow} castShadow={false} />
     ))}
   </group>
@@ -104,7 +113,7 @@ const HoleFace: React.FC<{ glow?: number }> = ({ glow = 0.6 }) => (
  * The new kid: grey clothes and the helmet. `lift` raises the helmet off his head (metres, in his own size);
  * `bare` takes it away altogether, and then there is the hole. He never has a face.
  */
-export const NewKid: React.FC<A & { lift?: number; bare?: boolean; glow?: number; wet?: boolean; holeGlow?: number }> = ({ lift = 0, bare = false, glow = 0, wet = false, holeGlow = 0.6, ...p }) => (
+export const NewKid: React.FC<A & { lift?: number; bare?: boolean; glow?: number; wet?: boolean; holeGlow?: number; stir?: number }> = ({ lift = 0, bare = false, glow = 0, wet = false, holeGlow = 0.6, stir, ...p }) => (
   <MinecraftAvatar
     scale={KID}
     outfit="tee"
@@ -115,7 +124,7 @@ export const NewKid: React.FC<A & { lift?: number; bare?: boolean; glow?: number
     colors={{ torso: "#6f7782", arms: "#6f7782", legs: "#3a3f4a" }}
     head={
       <>
-        {bare || lift > 0.02 ? <HoleFace glow={holeGlow} /> : null}
+        {bare || lift > 0.02 ? <HoleFace glow={holeGlow} stir={stir} /> : null}
         {bare ? null : <Helmet position={[0, lift, 0]} glow={glow} wet={wet} />}
       </>
     }
