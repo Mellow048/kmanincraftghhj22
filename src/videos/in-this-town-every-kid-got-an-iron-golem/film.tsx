@@ -6,7 +6,9 @@ import { scene1 } from "./scene1";
 /**
  * In This Town, Every Kid Got an Iron Golem
  *
- * TODO: the film in three sentences. Who tells it, the rule nobody explains, what the rule was hiding.
+ * A boy is ashamed of his snow golem in a town where every other kid has an iron one. Then fire flies out of
+ * the old gate on the hill, the iron golems go down one by one, and the snow golem puts the fire out and
+ * melts doing it. Part one of a series: it ends with the gate open again and snow starting to fall.
  *
  * An "In This Town" film (Topics/InThisTown): the recorded narration is the clock, and every line of
  * narration.md is one shot. Read Topics/InThisTown/README.md before changing anything here.
@@ -19,10 +21,9 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "short",
   look: "overworld-day",
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-every-kid-got-an-iron-golem/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/in-this-town-every-kid-got-an-iron-golem/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
+  // The voice alone for now. When the sound is built (scripts/sound.py build) this becomes audio/…/mix.mp3:
+  // a finished film plays the mix, and `npm run check` fails one that does not.
+  audio: { src: "audio/in-this-town-every-kid-got-an-iron-golem/narration.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1],

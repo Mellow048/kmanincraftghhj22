@@ -1,6 +1,9 @@
 # Narration — In This Town, Every Kid Got an Iron Golem (part 1)
 
-**Status: DRAFT 1. Not approved, not recorded.** Nothing is built until the owner approves the script.
+**Status: APPROVED by the owner 2026-11-15 ("okay go get the mp4, but first let me hear the tts"), draft 1, and
+RECORDED.** Seven clips with `voice-03`, the voice he picked himself after turning down three pairs ("please just do
+a natural american voice, male, no accent, not old, not too much serious"). Built to 116.3 seconds at 249 words a
+minute; the voice is sped up 1.5 times, as in every film of the topic. The agent cannot hear it.
 
 The idea is the owner's pick (2026-11-15, "i like 4, lets do 4") from a list the agent offered: *"In this town, every
 kid got an iron golem at ten. Mine was made of snow. Theirs lift carts. His throws snowballs and melts at noon, so he
