@@ -1,0 +1,238 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-everyone-swims-except-me",
+  "mix": "public/audio/in-this-town-everyone-swims-except-me/mix.mp3",
+  "seconds": 140.6,
+  "built_from": {
+    "timing.json": "4b183817e771c1fa127916cc807fc6abf085a841",
+    "sound.json": "97e8841d056adc9b27f9f6f89a277a2edae6766a",
+    "narration.mp3": "748c905837b25d6624e93358a19ec11245739894"
+  },
+  "mix_sha1": "3e600a6e4963028d43ec7351e7a977acc053e28f",
+  "music_sections": [
+    {
+      "from": "1.race",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "1.shower",
+      "mood": "playful",
+      "at": 5.23
+    },
+    {
+      "from": "1.worm",
+      "mood": "sad",
+      "at": 9.0
+    },
+    {
+      "from": "1.want",
+      "mood": "hope",
+      "at": 10.93
+    },
+    {
+      "from": "2.smell",
+      "mood": "playful",
+      "at": 11.93
+    },
+    {
+      "from": "2.deep",
+      "mood": "tense",
+      "at": 21.2
+    },
+    {
+      "from": "3.phone",
+      "mood": "sneak",
+      "at": 30.6
+    },
+    {
+      "from": "3.try",
+      "mood": "playful",
+      "at": 34.27
+    },
+    {
+      "from": "3.up",
+      "mood": "hope",
+      "at": 40.03
+    },
+    {
+      "from": "3.stop",
+      "mood": "dark",
+      "at": 42.43
+    },
+    {
+      "from": "4.bottom",
+      "mood": "none",
+      "at": 45.67
+    },
+    {
+      "from": "4.shoes",
+      "mood": "playful",
+      "at": 48.43
+    },
+    {
+      "from": "5.home",
+      "mood": "sneak",
+      "at": 55.07
+    },
+    {
+      "from": "5.call",
+      "mood": "curious",
+      "at": 56.5
+    },
+    {
+      "from": "5.cold",
+      "mood": "drone",
+      "at": 64.57
+    },
+    {
+      "from": "6.morning",
+      "mood": "hope",
+      "at": 67.7
+    },
+    {
+      "from": "6.bonk",
+      "mood": "wonder",
+      "at": 73.5
+    },
+    {
+      "from": "6.hurt",
+      "mood": "curious",
+      "at": 81.83
+    },
+    {
+      "from": "6.medium",
+      "mood": "tense",
+      "at": 85.77
+    },
+    {
+      "from": "6.fast",
+      "mood": "wonder",
+      "at": 91.27
+    },
+    {
+      "from": "7.days",
+      "mood": "town",
+      "at": 95.37
+    },
+    {
+      "from": "7.pro",
+      "mood": "tense",
+      "at": 101.13
+    },
+    {
+      "from": "7.big",
+      "mood": "curious",
+      "at": 105.6
+    },
+    {
+      "from": "8.water",
+      "mood": "tense",
+      "at": 117.47
+    },
+    {
+      "from": "8.glint",
+      "mood": "none",
+      "at": 124.23
+    },
+    {
+      "from": "8.panic",
+      "mood": "tense",
+      "at": 126.1
+    },
+    {
+      "from": "8.lose",
+      "mood": "sad",
+      "at": 131.57
+    },
+    {
+      "from": "8.hand",
+      "mood": "dark",
+      "at": 136.4
+    },
+    {
+      "from": "8.sub",
+      "mood": "town",
+      "at": 138.8
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 16,
+  "measured": {
+    "musicUnderVoiceDb": 17.5,
+    "secondsWithoutMusic": 4.5,
+    "bedsUnderVoiceDb": 25.5,
+    "sfx": 203,
+    "sfxPerMinute": 86.6,
+    "sfxKinds": 34,
+    "longestGapSeconds": 2.0,
+    "longestGapAt": 113.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.4,
+    "voiceOverRestWorstDb": 4.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.1,
+        "t": 33.8,
+        "cue": "3.title",
+        "sounding": [
+          "ding",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 4.1,
+        "t": 20.6,
+        "cue": "2.laugh",
+        "sounding": [
+          "cheer",
+          "swish"
+        ]
+      },
+      {
+        "db": 4.3,
+        "t": 128.4,
+        "cue": "8.second",
+        "sounding": [
+          "ding",
+          "heartbeat",
+          "splash"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 39.6,
+        "cue": "3.again2",
+        "sounding": [
+          "splash"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 126.7,
+        "cue": "8.panic",
+        "sounding": [
+          "boom",
+          "splash",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 127.4,
+        "cue": "8.third",
+        "sounding": [
+          "ding",
+          "splash"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.9
+  },
+  "failures": []
+}
