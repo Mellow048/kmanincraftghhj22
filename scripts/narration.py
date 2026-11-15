@@ -179,6 +179,8 @@ SAY = {
     "dodgeballs": "D AA JH B AO L Z",
     "massager": "M AH S AA ZH ER",
     "rebooting": "R IY B UW T IH NG",
+    "piglin": "P IH G L IH N",
+    "piglins": "P IH G L IH N Z",
 }
 
 def align(pcm16k, words):

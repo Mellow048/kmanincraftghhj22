@@ -100,7 +100,7 @@
       "trim": -4
     },
     {
-      "from": "9.march",
+      "from": "8.march",
       "to": "10.look",
       "bed": "crowd",
       "trim": -4
@@ -164,31 +164,81 @@
     },
     {
       "cue": "2.why",
-      "word": "many",
+      "word": "needed",
       "sfx": "stomp",
       "repeat": 2,
       "every": 0.4,
-      "trim": -6,
+      "trim": -0.5,
       "why": "Golems standing guard shift their feet."
     },
     {
-      "cue": "2.gate",
-      "sfx": "whoosh_low",
-      "why": "Cut to the black gate on the hill."
+      "cue": "2.why",
+      "word": "gate",
+      "sfx": "power_up",
+      "trim": -4,
+      "why": "The gate on the hill lights, as it does once a year."
     },
     {
-      "cue": "2.gate",
-      "word": "black",
-      "sfx": "sting",
+      "cue": "2.why",
+      "word": "lit",
+      "at": 0.05,
+      "sfx": "clank",
+      "repeat": 2,
+      "every": 0.14,
       "trim": -5,
-      "why": "The old black gate: something is wrong with it."
+      "why": "Every golem in the street turns to face it."
+    },
+    {
+      "cue": "2.pigs",
+      "sfx": "whoosh_low",
+      "why": "Cut to the gate: they come through."
+    },
+    {
+      "cue": "2.pigs",
+      "word": "piglins",
+      "at": 0.1,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.13,
+      "trim": -1,
+      "why": "Piglins walking out onto the hill."
+    },
+    {
+      "cue": "2.pigs",
+      "word": "came",
+      "sfx": "clank",
+      "trim": -5,
+      "why": "Gold swords."
     },
     {
       "cue": "2.gate",
-      "word": "hill",
-      "sfx": "gust",
-      "trim": -2,
-      "why": "Wind on the hill."
+      "sfx": "swish",
+      "why": "Cut: the golems have them."
+    },
+    {
+      "cue": "2.gate",
+      "word": "threw",
+      "at": -0.05,
+      "sfx": "whoosh_low",
+      "why": "An iron golem throws a piglin."
+    },
+    {
+      "cue": "2.gate",
+      "word": "back",
+      "sfx": "zip",
+      "dur": 0.3,
+      "trim": -3,
+      "why": "A piglin in the air."
+    },
+    {
+      "cue": "2.gate",
+      "word": "in",
+      "at": 0.08,
+      "sfx": "pop",
+      "repeat": 2,
+      "every": 0.16,
+      "trim": 0,
+      "why": "Through the purple and gone, one after the other."
     },
     {
       "cue": "2.build",
@@ -217,7 +267,7 @@
       "word": "pumpkin",
       "at": 0.3,
       "sfx": "chime",
-      "trim": -3,
+      "trim": 2,
       "why": "A golem stands up: the gift."
     },
     {
@@ -229,7 +279,7 @@
       "cue": "2.ran",
       "word": "ran",
       "sfx": "buzz",
-      "trim": -3,
+      "trim": 0.5,
       "why": "'The iron ran out': the empty crate."
     },
     {
@@ -311,7 +361,7 @@
       "sfx": "stomp",
       "repeat": 3,
       "every": 0.4,
-      "trim": -5,
+      "trim": -1.5,
       "why": "A golem hauling a cart."
     },
     {
@@ -707,7 +757,7 @@
       "cue": "5.last",
       "word": "us",
       "sfx": "slide_down",
-      "trim": -3,
+      "trim": 0,
       "why": "Beaten by a chicken."
     },
     {
@@ -807,7 +857,7 @@
     {
       "cue": "8.night",
       "sfx": "whoosh_low",
-      "why": "Scene: the gate."
+      "why": "Scene: the gate, the night it is due."
     },
     {
       "cue": "8.night",
@@ -824,16 +874,24 @@
     },
     {
       "cue": "8.night",
-      "word": "purple",
+      "word": "up",
       "sfx": "boom",
       "trim": -4,
       "why": "The gate is open."
     },
     {
       "cue": "8.out",
-      "word": "came",
+      "word": "not",
       "sfx": "fire_whoosh",
-      "why": "Something on fire comes through."
+      "why": "Something on fire comes through instead."
+    },
+    {
+      "cue": "8.out",
+      "word": "piglins",
+      "at": 0.3,
+      "sfx": "sting",
+      "trim": -6,
+      "why": "It is not what comes every year."
     },
     {
       "cue": "8.out",
@@ -858,12 +916,12 @@
       "why": "Ten more come through."
     },
     {
-      "cue": "9.march",
+      "cue": "8.march",
       "sfx": "whoosh",
       "why": "Scene: the golems go up."
     },
     {
-      "cue": "9.march",
+      "cue": "8.march",
       "at": 0.1,
       "sfx": "stomp",
       "repeat": 5,
@@ -872,7 +930,7 @@
       "why": "Twenty golems marching."
     },
     {
-      "cue": "9.march",
+      "cue": "8.march",
       "at": 0.27,
       "sfx": "clank",
       "repeat": 4,
@@ -881,7 +939,7 @@
       "why": "Iron in step."
     },
     {
-      "cue": "9.march",
+      "cue": "8.march",
       "word": "cheered",
       "at": -0.2,
       "sfx": "cheer",
@@ -1141,14 +1199,14 @@
       "word": "threw",
       "at": 0.45,
       "sfx": "thud",
-      "trim": -2,
+      "trim": 1,
       "why": "Hit."
     },
     {
       "cue": "11.throw",
       "word": "went",
       "sfx": "power_down",
-      "trim": -3,
+      "trim": 1.5,
       "why": "One goes out."
     },
     {
@@ -1176,7 +1234,7 @@
       "sfx": "thud",
       "repeat": 2,
       "every": 0.16,
-      "trim": -2,
+      "trim": 1,
       "why": "Two hits."
     },
     {
@@ -1185,7 +1243,8 @@
       "at": 0.2,
       "sfx": "power_down",
       "pitch": 0.9,
-      "why": "Two more go out."
+      "why": "Two more go out.",
+      "trim": 4.5
     },
     {
       "cue": "11.fire",
@@ -1550,7 +1609,7 @@
       "word": "starting",
       "at": -0.3,
       "sfx": "chime",
-      "trim": -6,
+      "trim": -2.5,
       "why": "Snow: the one thing that could bring him back."
     },
     {
@@ -1571,7 +1630,7 @@
       "at": 0.3,
       "sfx": "ding",
       "note": "E6",
-      "trim": -6,
+      "trim": -9,
       "why": "Subscribe."
     },
     {

@@ -16,10 +16,6 @@ const Sky: React.FC<{ n?: number; lit?: number }> = ({ n = SKY.length, lit = 1 }
   </>
 );
 
-// ---- 9.march: twenty of them, four abreast.
-const COLS = [-1.9, -0.65, 0.65, 1.9];
-const CHEERED = wordAt("9.march", "cheered");
-
 // ---- 9.count: the same twenty, on the steps. The order they stop in.
 const STEPS = [32.25, 33.75, 35.25, 36.75, 38.25];
 const ORDER = [7, 15, 2, 11, 18, 5, 9, 0, 13, 4, 19, 8, 16, 1, 10, 6, 17, 12, 3, 14];
@@ -41,36 +37,11 @@ export const scene9 = storyScene(timing, {
   title: "Twenty, twelve, five",
   shots: [
     {
-      cue: "9.march",
-      ...cam.push({ on: [27.5, 3.3, 2], dist: 15.5, to: 13.8, yaw: -95, pitch: -3, fov: 46 }),
-      zone: "village",
-      look: "overworld-night",
-      note: "'Twenty iron golems marched up the hill. We cheered': from behind the kids at the foot of it. Four abreast, the whole town's golems go up the steps at the purple gate and the fire in the sky over it, and every arm in front of us goes up.",
-      stage: (t) => {
-        const d = 1.7 * t;
-        return (
-          <>
-            <Sky lit={2} />
-            <FaceLight position={[19, 10, 2]} power={170} reach={34} color="#b4c6ff" />
-            <FaceLight position={[15.2, 2.6, 2.2]} power={10} reach={6} color="#c8d4ff" />
-            {Array.from({ length: 20 }, (_, i) => {
-              const x = 22.4 + Math.floor(i / 4) * 1.9 + d;
-              return <IronGolem key={i} position={onRoad(x, COLS[i % 4])} rotationY={EAST} walk={d + i * 0.7} />;
-            })}
-            {[[16.6, 0.9], [17.3, 3.3], [15.9, 2.2], [17.9, 1.7]].map(([x, z], i) => (
-              <Kid key={i} n={i + 1} position={[x, 0, z]} rotationY={EAST} animation="idle" blendTo="cheer" blend={1 - ease(ramp(t, CHEERED - 0.3 + i * 0.06, CHEERED))} phase={i} />
-            ))}
-            <Hero position={[16.9, 0, 2.6]} rotationY={EAST} animation="idle" blendTo="cheer" blend={1 - ease(ramp(t, CHEERED - 0.25, CHEERED))} />
-          </>
-        );
-      },
-    },
-    {
       cue: "9.reach",
       ...cam.pan({ from: [35.2, 6.4, 6.6], on: [38.25, 8.2, 2.2], onTo: [38.3, 11.5, 2.2], fov: 44 }),
       zone: "village",
       look: "overworld-night",
-      note: "'Iron golems could not fly, and these things could': a golem on the top step, both arms as high as they go, swinging at nothing. Tilt up the length of its arms and on, to the burning thing that hangs a block out of reach and looks down at it.",
+      note: "'Iron golems could not fly. These things could': a golem on the top step, both arms as high as they go, swinging at nothing. Tilt up the length of its arms and on, to the burning thing that hangs a block out of reach and looks down at it.",
       stage: (t) => (
         <>
           <IronGolem position={[38.25, 6, 2.2]} rotationY={-0.75} armR={-2.75 - 0.3 * Math.sin(t * 9)} armL={-2.75 + 0.3 * Math.sin(t * 9)} headPitch={-0.5} />

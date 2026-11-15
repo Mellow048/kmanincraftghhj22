@@ -1,7 +1,7 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  Crate, Dad, EAST, GATE_EYE, Hero, IronBlock, IronGolem, Kid, NORTH, PLACE, Puffs, Pumpkin, ROBE, SOUTH, SnowBlock, SnowCover, SnowGolem, Snowfall,
+  Crate, Dad, EAST, GATE_EYE, Glow, Hero, IronBlock, IronGolem, Kid, NORTH, PLACE, Piglin, Puffs, Pumpkin, ROBE, SOUTH, SnowBlock, SnowCover, SnowGolem, Snowfall,
   Villager, WEST, beside, ease, jolt, pop, ramp, timing, wordAt,
 } from "./kit";
 
@@ -13,6 +13,11 @@ const TOWN: Array<[number, number, number, number]> = [
 
 /** Where a golem is put together, in front of the bell. */
 const SPOT: Vec3 = [0.2, 0, 1.2];
+/** When the gate on the hill lights, in the shot that says what golems are for. */
+const GATE_LIT = wordAt("2.why", "gate") - 0.1;
+/** The three that come out: [how far across the gate, how far behind the first]. */
+const PIGS: Array<[number, number]> = [[0, 0], [-0.75, 0.8], [0.7, 1.35]];
+const THREW = wordAt("2.gate", "threw");
 const FOUR = wordAt("2.build", "four");
 const A_PUMPKIN = wordAt("2.build", "pumpkin");
 const RAN = wordAt("2.ran", "ran");
@@ -31,7 +36,7 @@ const Winter = () => (
   </>
 );
 
-/** THE RULE. Why nobody asks, how a golem is made, and the year the iron ran out. */
+/** THE RULE. What the golems are for, how a golem is made, and the year the iron ran out. */
 export const scene2 = storyScene(timing, {
   id: "scene2",
   title: "The rule",
@@ -41,32 +46,77 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: [9, 1.5, 2.2], dist: 34, to: 29, yaw: -90, pitch: 17, fov: 44 }),
       zone: "village",
       look: "overworld-day",
-      note: "'Why a small town needed so many golems': the whole street from its west end, looking down its length. Eight houses, and fifteen iron golems, on the road and at every door. At the far end, the hill, and the black thing on top of it.",
+      note: "'We needed golems. Once a year, the gate on the hill lit up': the whole street from its west end, looking down its length. Eight houses, and fifteen iron golems, on the road and at every door. On 'gate' the black frame on the hill at the far end fills with purple, and every golem in the street stops and turns to face it.",
+      stage: (t) => {
+        const seen = ease(ramp(t, GATE_LIT + 0.1, GATE_LIT + 0.45));
+        // They stop where they are when it lights.
+        const went = Math.min(t, GATE_LIT + 0.2);
+        return (
+          <>
+            {TOWN.map(([x, z, rot, v], i) => (
+              <group key={i}>
+                <IronGolem
+                  position={[x + Math.sin(rot) * v * went, 0, z]}
+                  rotationY={rot + (EAST - rot) * seen}
+                  walk={v ? v * went + i : 0}
+                  headYaw={v ? 0 : Math.sin(t * 0.8 + i) * 0.5 * (1 - seen)}
+                  headPitch={-0.25 * seen}
+                />
+                {i % 2 === 0 ? (
+                  <Kid n={i} position={[x + Math.sin(rot) * (v * went + 1.3) + (v ? 0 : 0.9), 0, z + (v ? 0.9 : 1.1)]} rotationY={(v ? rot : SOUTH) + (EAST - (v ? rot : SOUTH)) * seen} animation={v && t < GATE_LIT + 0.2 ? "walk" : "idle"} animDistance={v * went + i} />
+                ) : null}
+              </group>
+            ))}
+            {t > GATE_LIT ? <Glow position={[GATE_EYE[0] - 1.5, GATE_EYE[1], GATE_EYE[2]]} size={20} color="#8a35ff" opacity={0.3 * ramp(t, GATE_LIT, GATE_LIT + 0.2)} /> : null}
+          </>
+        );
+      },
+    },
+    {
+      cue: "2.pigs",
+      ...cam.push({ on: [40.9, 7.35, 2], dist: 6.4, to: 5.7, yaw: -74, pitch: 3, fov: 42 }),
+      zone: "village",
+      look: "overworld-day",
+      note: "'Piglins came out': the lit gate from in front of it, on the top of the hill. Three piglins walk out of the purple with their gold swords up, the middle one first, the other two still half in it.",
       stage: (t) => (
         <>
-          {TOWN.map(([x, z, rot, v], i) => (
-            <group key={i}>
-              <IronGolem position={[x + Math.sin(rot) * v * t, 0, z]} rotationY={rot} walk={v ? v * t + i : 0} headYaw={v ? 0 : Math.sin(t * 0.8 + i) * 0.5} />
-              {i % 2 === 0 ? (
-                <Kid n={i} position={[x + Math.sin(rot) * (v * t + 1.3) + (v ? 0 : 0.9), 0, z + (v ? 0.9 : 1.1)]} rotationY={v ? rot : SOUTH} animation={v ? "walk" : "idle"} animDistance={v * t + i} />
-              ) : null}
-            </group>
+          {PIGS.map(([z, back], i) => (
+            <Piglin key={i} position={[GATE_EYE[0] - 1.9 + back - 1.5 * t, 6, 2 + z]} rotationY={WEST} walk={1.5 * t + i * 0.4} sword raise={0.6 + 0.2 * Math.sin(t * 9 + i * 2)} headPitch={0.1} seed={i} />
           ))}
+          <Puffs position={[GATE_EYE[0] - 0.5, 6.4, 2]} color="#b06aff" count={8} rise={3.2} spread={1.1} size={0.16} speed={0.9} opacity={0.7} seed={6} />
         </>
       ),
     },
     {
       cue: "2.gate",
-      ...cam.pan({ from: [24.2, 1.5, 3.6], on: [27.3, 1.15, 2], onTo: [GATE_EYE[0], GATE_EYE[1] - 0.4, 2], fov: 46 }),
+      ...cam.push({ on: [40.0, 8.0, 2.0], dist: 11.6, to: 10.8, yaw: -35, pitch: 4, fov: 44 }),
       zone: "village",
       look: "overworld-day",
-      note: "'Nobody went near the old black gate': a man walks down the road away from the hill and does not look back. Tilt up over him: six steps of road, and on top a frame of black stone with nothing in it.",
-      stage: (t) => (
-        <>
-          <Villager position={[27.6 - 1.2 * t, 0, 2.1]} rotationY={WEST} walk={1.2 * t} robe={ROBE.farmer} hat="straw" nod={0.18} />
-          <Villager position={[26.2 - 1.2 * t, 0, 1.3]} rotationY={WEST} walk={1.2 * t + 1} robe={ROBE.friend} scale={0.72} kid turn={-0.9 * ramp(t, 0.3, 0.8)} />
-        </>
-      ),
+      note: "'The golems threw them back in': two iron golems on the hill top, each with a piglin over its head. On 'threw' the first one goes, arms and legs out, into the purple and is gone, and the second right after it. The third runs back in by himself.",
+      stage: (t) => {
+        const A: Vec3 = [39.3, 6, 2.6];
+        const B: Vec3 = [39.0, 6, 0.6];
+        /** One piglin, from over a golem's head into the middle of the gate. */
+        const thrown = (from: Vec3, at: number) => {
+          const k = ramp(t, at, at + 0.3);
+          const p: Vec3 = [from[0] + 0.4 + (GATE_EYE[0] - from[0] - 0.4) * k, 8.5 + (7.3 - 8.5) * k + 0.9 * Math.sin(Math.PI * k), from[2] + (2 - from[2]) * k];
+          return { k, p };
+        };
+        const a = thrown(A, THREW - 0.06);
+        const b = thrown(B, THREW + 0.2);
+        const arm = (k: number) => -2.9 + 1.7 * ease(ramp(k, 0, 0.45));
+        const run = 40.5 + 4.4 * t;
+        return (
+          <>
+            <IronGolem position={A} rotationY={EAST} armR={arm(a.k)} armL={arm(a.k)} headPitch={-0.15} />
+            <IronGolem position={B} rotationY={EAST} armR={arm(b.k)} armL={arm(b.k)} headPitch={-0.15} />
+            {a.k < 0.96 ? <Piglin position={a.p} rotationY={EAST} rotation={[-1.45 + 9 * a.k, 0, 0]} scared={1} seed={1} /> : null}
+            {b.k < 0.96 ? <Piglin position={b.p} rotationY={EAST} rotation={[-1.45 + 9 * b.k, 0, 0]} scared={1} seed={2} /> : null}
+            {run < GATE_EYE[0] - 0.3 ? <Piglin position={[run, 6, 2.0]} rotationY={EAST} walk={4.4 * t} scared={1} seed={3} /> : null}
+            <Puffs position={[GATE_EYE[0] - 0.5, 6.4, 2]} color="#b06aff" count={10} rise={3.4} spread={1.2} size={0.18} speed={1.1} opacity={0.75} seed={6} />
+          </>
+        );
+      },
     },
     {
       cue: "2.build",

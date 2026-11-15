@@ -142,3 +142,11 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   (it now stands by his leg like a stick); the "sad" face seen from below is two black bars (use "frown"); a low shot
   must cut a person at the waist, not through the face. Still weak, left as they are: `8.night` and the first second
   of `13.gate` are very dark, in `13.snow` the caption crosses the pumpkin, in `7.puddle` the boy is a dark shoulder.
+- **2026-11-15, the snow golem film, his change to the story.** After seeing it: "i like this one but change the story,
+  make it like yeah everyone have a golem, the portal lit every year, usually its always piglins coming out, golems
+  took them out. so this year when we turned 10 the portal lit, it wasnt the piglins anymore. add that in to remove
+  plot holes". What this says about his taste: a rule needs a REASON the viewer is told at the start ("nobody knew
+  why" is a plot hole to him, not a mystery), and the turn is the usual thing going wrong ("it was not piglins this
+  time"), not a thing nobody expected. Done as three new lines in beat 2 and a new order in beat 8 (the golems march
+  up first, as every year, and then it is not piglins). A piglin was built for it (`Piglin` in the film's `kit.tsx`;
+  not in the pack yet). `piglin`/`piglins` were added to the aligner's words in `scripts/narration.py`.

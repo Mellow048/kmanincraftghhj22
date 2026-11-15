@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-every-kid-got-an-iron-golem",
   "mix": "public/audio/in-this-town-every-kid-got-an-iron-golem/mix.mp3",
-  "seconds": 116.3333,
+  "seconds": 117.2333,
   "built_from": {
-    "timing.json": "8663b59af2eb83800741bedb2e7a777f0d362223",
-    "sound.json": "7a79fdf43c7b9be251e011bf8b086e9c320d0a03",
-    "narration.mp3": "41b8c5a43e3d4867c0b66b172eca560330051630"
+    "timing.json": "94f59678593c733ef70b7d03eec2768f7a033f3c",
+    "sound.json": "927eee50e509a2165f819540e9354371b020f93f",
+    "narration.mp3": "121500c17b564822e339af3c9a4a4fc667d9b70f"
   },
-  "mix_sha1": "2c3c4dc5329155fdda1fb55156171d6f23912eb6",
+  "mix_sha1": "4bdc10c9948b86c9cd2efb7dc7489c58a32d3a36",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,42 +18,42 @@
     {
       "from": "6.want",
       "mood": "sneak",
-      "at": 45.8
+      "at": 46.17
     },
     {
       "from": "8.night",
       "mood": "tense",
-      "at": 57.6
+      "at": 57.73
     },
     {
       "from": "9.end",
       "mood": "none",
-      "at": 74.3
+      "at": 75.77
     },
     {
       "from": "10.ball",
       "mood": "hope",
-      "at": 76.07
+      "at": 77.67
     },
     {
       "from": "12.quiet",
       "mood": "none",
-      "at": 102.33
+      "at": 103.43
     },
     {
       "from": "12.left",
       "mood": "sad",
-      "at": 103.8
+      "at": 104.9
     },
     {
       "from": "13.gate",
       "mood": "dark",
-      "at": 107.53
+      "at": 108.57
     },
     {
       "from": "14.sub",
       "mood": "town",
-      "at": 114.23
+      "at": 115.17
     }
   ],
   "music_file": {
@@ -63,38 +63,48 @@
   "beds": 11,
   "measured": {
     "musicUnderVoiceDb": 18.3,
-    "secondsWithoutMusic": 2.9,
-    "bedsUnderVoiceDb": 25.8,
-    "sfx": 253,
-    "sfxPerMinute": 130.5,
+    "secondsWithoutMusic": 3.2,
+    "bedsUnderVoiceDb": 25.7,
+    "sfx": 264,
+    "sfxPerMinute": 135.1,
     "sfxKinds": 39,
-    "longestGapSeconds": 1.9,
-    "longestGapAt": 46.1,
+    "longestGapSeconds": 1.8,
+    "longestGapAt": 46.5,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.6,
-    "voiceOverRestWorstDb": 4.6,
+    "voiceOverRestMedianDb": 12.9,
+    "voiceOverRestWorstDb": 3.0,
     "voiceOverRestWorst": [
       {
-        "db": 4.6,
-        "t": 115.2,
+        "db": 3.0,
+        "t": 116.2,
         "cue": "14.sub",
         "sounding": [
           "ding"
         ]
       },
       {
-        "db": 5.4,
-        "t": 87.1,
-        "cue": "11.fire",
+        "db": 4.4,
+        "t": 85.9,
+        "cue": "11.throw",
         "sounding": [
-          "fire_whoosh",
+          "chime",
+          "ding",
           "power_down",
-          "sting"
+          "thud"
         ]
       },
       {
-        "db": 5.6,
-        "t": 26.4,
+        "db": 4.4,
+        "t": 102.5,
+        "cue": "11.last",
+        "sounding": [
+          "hit",
+          "power_down"
+        ]
+      },
+      {
+        "db": 4.6,
+        "t": 27.1,
         "cue": "3.noon",
         "sounding": [
           "bell",
@@ -104,35 +114,30 @@
         ]
       },
       {
-        "db": 5.6,
-        "t": 114.5,
-        "cue": "14.sub",
-        "sounding": []
-      },
-      {
-        "db": 6.6,
-        "t": 70.8,
-        "cue": "9.count",
+        "db": 4.9,
+        "t": 88.1,
+        "cue": "11.fire",
         "sounding": [
+          "fire_whoosh",
           "power_down",
           "sting",
-          "thud"
+          "whoosh_low"
         ]
       },
       {
-        "db": 6.9,
-        "t": 59.8,
-        "cue": "8.out",
+        "db": 5.0,
+        "t": 59.3,
+        "cue": "8.night",
         "sounding": [
           "boom",
-          "fire_whoosh",
-          "power_up"
+          "power_up",
+          "whoosh"
         ]
       }
     ],
-    "lufs": -15.3,
-    "truePeakDb": -1.3,
-    "limiterMaxDb": 4.0
+    "lufs": -15.2,
+    "truePeakDb": -2.0,
+    "limiterMaxDb": 3.9
   },
   "failures": []
 }

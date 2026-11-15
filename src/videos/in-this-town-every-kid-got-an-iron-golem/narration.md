@@ -1,21 +1,30 @@
 # Narration — In This Town, Every Kid Got an Iron Golem (part 1)
 
-**Status: APPROVED by the owner 2026-11-15 ("okay go get the mp4, but first let me hear the tts"), draft 1, and
-RECORDED.** Seven clips with `voice-03`, the voice he picked himself after turning down three pairs ("please just do
-a natural american voice, male, no accent, not old, not too much serious"). Built to 116.3 seconds at 249 words a
-minute; the voice is sped up 1.5 times, as in every film of the topic. The agent cannot hear it.
+**Status: draft 2, the owner's own change to the story (2026-11-15, see below), RECORDED and built.** Draft 1 was
+approved by him the same day ("okay go get the mp4, but first let me hear the tts"). Seven clips with `voice-03`, the
+voice he picked himself after turning down three pairs ("please just do a natural american voice, male, no accent, not
+old, not too much serious"). Built to 117.2 seconds at 249 words a minute; the voice is sped up 1.53 times, as in every
+film of the topic. The agent cannot hear it. He has not read the new lines: they are his outline in the agent's words.
 
 The idea is the owner's pick (2026-11-15, "i like 4, lets do 4") from a list the agent offered: *"In this town, every
 kid got an iron golem at ten. Mine was made of snow. Theirs lift carts. His throws snowballs and melts at noon, so he
 carries an umbrella for it. Then fire comes to town, and iron cannot stop fire, but snow can."* Everything past those
 four sentences is the agent's and is his to change.
 
+**Changed by the owner 2026-11-15, after he saw the film** ("i like this one but change the story, make it like yeah
+everyone have a golem, the portal lit every year, usually its always piglins coming out, golems took them out. so this
+year when we turned 10 the portal lit, it wasnt the piglins anymore. add that in to remove plot holes"). Draft 2: the
+gate is no secret any more. It lights once a year, piglins come out, and the golems throw them back in (2.why, 2.pigs,
+2.gate, new). The year he turns ten it lights on time, the golems march up as always (the march now comes BEFORE the
+thing comes out, as `8.march`), and it is not piglins (8.out). Clips 01 and 04 were recorded again with `voice-03`;
+the other five are the first recordings. 59 shots now.
+
 Topic: `Topics/InThisTown`. Read `Topics/InThisTown/OWNER.md` and `SCRIPT.md` before changing a word.
 
 **The premise, in four sentences.** In this town, every kid got an iron golem at ten, and mine was made of snow.
-Nobody would say why a small town needed so many golems, or what the black gate on the hill was. One night the gate
-lit up and things made of fire flew out of it, and iron could not reach them. Snow could: the golems were never
-presents, they were a guard, and the only one that worked was the one everybody laughed at.
+The town needed golems: once a year the gate on the hill lit up, piglins came out, and the golems threw them back
+in. The year he turned ten the gate lit on time, but what came out was made of fire and could fly, and iron could not
+reach it. Snow could: the only golem that worked was the one everybody laughed at.
 
 **One sentence:** A boy is ashamed of his snow golem in a town of iron ones, until fire comes out of the old gate, the
 iron golems go down one by one, and the snow golem puts the fire out and melts doing it.
@@ -42,7 +51,7 @@ What is planted, and where it pays off:
 
 | Planted | Pays off |
 |---|---|
-| Nobody knew why a small town needed so many golems (2.why); nobody went near the gate (2.gate) | The gate lights up (8.night). The golems march (9.march) |
+| The gate lights once a year, piglins come out, the golems throw them back in (2.why, 2.pigs, 2.gate) | The gate lights on time (8.night), the golems march and the town cheers (8.march). It is not piglins (8.out) |
 | Every night the iron golems face the gate; Puddle faces him (7.face, 7.puddle) | Puddle is the one who fights for him (10.puddle) |
 | Mine threw snowballs, at birds, the baker, me (3.mine, 3.at) | One snowball (10.ball). He did not miss (11.last) |
 | He melts at noon; the umbrella (3.noon, 3.umbrella) | Fire melts snow (11.fire). The umbrella over him (11.umbrella) |
@@ -54,8 +63,9 @@ What is planted, and where it pays off:
 # clip 01-hook
 [1.town]     In this town, every kid got an iron golem at ten.
 [1.me]       Mine was made of snow.
-[2.why]      Nobody knew why a small town needed so many golems.
-[2.gate]     And nobody went near the old black gate on the hill.
+[2.why]      We needed golems. Once a year, the gate on the hill lit up.
+[2.pigs]     Piglins came out.
+[2.gate]     The golems threw them back in.
 [2.build]    On your tenth birthday, you got four iron blocks and a pumpkin.
 [2.ran]      The year I turned ten, the iron ran out.
 [2.dad]      So my dad looked outside. It was snowing.
@@ -88,11 +98,11 @@ What is planted, and where it pays off:
 [7.puddle]   Only Puddle faced the other way. He was watching me.
 
 # clip 04-gate wait 0.4
-[8.night]    Then one night, the gate lit up purple.
-[8.out]      Something came out. It was on fire, and it could fly.
+[8.night]    That year, the gate lit up right on time.
+[8.march]    Twenty iron golems marched up the hill. We cheered.
+[8.out]      But this time, it was not piglins. It was on fire, and it could fly.
 [8.more]     Then ten more.
-[9.march]    Twenty iron golems marched up the hill. We cheered.
-[9.reach]    But iron golems could not fly, and these things could.
+[9.reach]    Iron golems could not fly. These things could.
 [9.red]      The fire came down on them. The iron went red.
 [9.count]    Twenty golems. Then twelve. Then five.
 [9.sat]      The last one sat down in the road.

@@ -849,6 +849,84 @@ export const HeldUmbrella: React.FC<{ p: Vec3; rotY: number; up?: number; open?:
   );
 };
 
+// ----------------------------------------------------------------------------- the piglin
+
+const PIG = { skin: "#e9a07a", snout: "#f4bb98", dark: "#6e3f2c", cloth: "#5c3a21", cloth2: "#44291a", gold: "#f6cf3a" };
+
+/**
+ * A PIGLIN: what comes out of the gate every year. Pink, in brown leather, with tusks, flap ears and a gold sword.
+ * It stands on `position` and faces +Z at rotationY 0. `raise` lifts the sword arm (0 hangs, 1 straight up);
+ * `scared` throws both arms up and opens the mouth; `rotation` tumbles the whole of it about its middle, for one
+ * that has been thrown.
+ */
+export const Piglin: React.FC<{
+  position: Vec3; rotationY?: number; rotation?: Vec3; scale?: number; walk?: number; raise?: number; sword?: boolean; scared?: number; headPitch?: number; headYaw?: number; seed?: number;
+}> = ({ position, rotationY = 0, rotation = [0, 0, 0], scale = 1, walk = 0, raise = 0, sword = false, scared = 0, headPitch = 0, headYaw = 0, seed = 0 }) => {
+  const t = useFilmTime();
+  const u = 1 / 16;
+  const gait = walk * 4.6;
+  const swing = Math.sin(gait) * 0.7;
+  const bob = Math.abs(Math.sin(gait)) * 0.04;
+  const flail = scared * Math.sin(t * 22 + seed * 2) * 0.35;
+  const armR = -2.9 * Math.max(raise, scared) + flail + (1 - Math.max(raise, scared)) * -swing * 0.8;
+  const armL = -2.9 * scared - flail + (1 - scared) * swing * 0.8;
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      <group position={[0, 1, 0]} rotation={rotation}>
+        <group position={[0, -1, 0]}>
+          {[-1, 1].map((s) => (
+            <group key={s} position={[s * 2 * u, 12 * u, 0]} rotation={[s * swing + scared * s * 0.5 * Math.sin(t * 19 + seed), 0, 0]}>
+              <Block position={[0, -5 * u, 0]} size={[3.9 * u, 10 * u, 4 * u]} color={PIG.cloth2} />
+              <Block position={[0, -11 * u, 0]} size={[3.9 * u, 2 * u, 4 * u]} color={PIG.skin} />
+            </group>
+          ))}
+          <group position={[0, 12 * u + bob, 0]}>
+            <Block position={[0, 6 * u, 0]} size={[8 * u, 12 * u, 4 * u]} color={PIG.cloth} />
+            <Block position={[0, 1.2 * u, 0]} size={[8.2 * u, 1.6 * u, 4.2 * u]} color={PIG.cloth2} castShadow={false} />
+            <Block position={[0, 1.2 * u, 2.1 * u]} size={[2 * u, 2 * u, 0.3 * u]} color={PIG.gold} castShadow={false} />
+            <Block position={[0, 9 * u, 2.05 * u]} size={[4 * u, 3 * u, 0.1 * u]} color={PIG.skin} castShadow={false} />
+            {[-1, 1].map((s) => (
+              <group key={s} position={[s * 6 * u, 10.5 * u, 0]} rotation={[s === 1 ? armR : armL, 0, s * 0.08]}>
+                <Block position={[0, -1.5 * u, 0]} size={[4 * u, 4 * u, 4.05 * u]} color={PIG.cloth} />
+                <Block position={[0, -7.5 * u, 0]} size={[3.9 * u, 8 * u, 3.9 * u]} color={PIG.skin} />
+                {s === 1 && sword ? (
+                  <group position={[0, -11 * u, 1 * u]} rotation={[-1.45, 0, 0]}>
+                    <Block position={[0, -1 * u, 0]} size={[1.2 * u, 4 * u, 1.2 * u]} color="#5a3a1c" />
+                    <Block position={[0, 1.4 * u, 0]} size={[5 * u, 1.2 * u, 1.4 * u]} color="#c99a1e" />
+                    <Block position={[0, 8.5 * u, 0]} size={[2.4 * u, 13 * u, 0.9 * u]} color={PIG.gold} emissive={PIG.gold} emissiveIntensity={0.25} metalness={0.3} roughness={0.4} />
+                    <Block position={[0, 15.6 * u, 0]} size={[1.3 * u, 1.4 * u, 0.9 * u]} color="#fff2a0" />
+                  </group>
+                ) : null}
+              </group>
+            ))}
+            <group position={[0, 12 * u, 0]} rotation={[headPitch - 0.25 * scared, headYaw, 0]}>
+              <Block position={[0, 4 * u, 0]} size={[10 * u, 8 * u, 8 * u]} color={PIG.skin} />
+              <Block position={[0, 7.4 * u, 0]} size={[10.1 * u, 1.3 * u, 8.1 * u]} color={mix(PIG.skin, "#000000", 0.14)} castShadow={false} />
+              {/* The snout, its two holes, and a tusk either side of it. */}
+              <Block position={[0, 2.4 * u, 4.4 * u]} size={[4.2 * u, 3.6 * u, 1.2 * u]} color={PIG.snout} />
+              {[-1, 1].map((s) => (
+                <group key={s}>
+                  <Block position={[s * 1.05 * u, 2.9 * u, 5.02 * u]} size={[1 * u, 1.3 * u, 0.1 * u]} color={PIG.dark} castShadow={false} />
+                  <Block position={[s * 2.7 * u, 1.5 * u, 4.4 * u]} size={[1 * u, 2.2 * u, 1 * u]} color="#fff6e0" />
+                  <Block position={[s * 3.1 * u, 5.4 * u, 4.02 * u]} size={[2.2 * u, 1.5 * u, 0.1 * u]} color="#ffffff" castShadow={false} />
+                  <Block position={[s * (2.6 + 0.5 * scared) * u, 5.4 * u, 4.06 * u]} size={[1.1 * u, 1.5 * u, 0.1 * u]} color="#1a1210" castShadow={false} />
+                  <Block position={[s * 3.1 * u, 6.7 * u - scared * 0.5 * u, 4.07 * u]} rotation={[0, 0, s * (0.35 - 0.7 * scared)]} size={[2.8 * u, 0.8 * u, 0.1 * u]} color={PIG.dark} castShadow={false} />
+                  {/* Flap ears, one with a gold ring in it. */}
+                  <group position={[s * 5 * u, 6 * u, 0]} rotation={[0, 0, s * (0.5 + 0.25 * Math.sin(gait + s) + 0.5 * scared)]}>
+                    <Block position={[s * 0.6 * u, -2.4 * u, 0]} size={[1.1 * u, 5 * u, 4 * u]} color={mix(PIG.skin, "#000000", 0.1)} />
+                    {s === 1 ? <Block position={[s * 0.7 * u, -4.6 * u, 1 * u]} size={[1.4 * u, 1.2 * u, 1.2 * u]} color={PIG.gold} /> : null}
+                  </group>
+                </group>
+              ))}
+              {scared > 0.3 ? <Block position={[0, 0.7 * u, 4.02 * u]} size={[3 * u, 1.3 * u, 0.1 * u]} color="#2a1210" castShadow={false} /> : null}
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  );
+};
+
 /** A small steady lamp for a face at night, with nothing to see where it hangs. */
 export const FaceLight: React.FC<{ position: Vec3; power?: number; reach?: number; color?: string }> = ({ position, power = 4, reach = 5, color = "#ffc9a0" }) => (
   <pointLight position={position} color={color} intensity={power} distance={reach} decay={2} />

@@ -18,6 +18,9 @@ import { Blaze, GATE, Gate, HILL, PLACE, ROAD_Z, Smoke, clock } from "./kit";
  * The parts come from the topic's pack (Topics/InThisTown/places.tsx). 1 unit = 1 block = 1 metre. Ground is y = 0.
  */
 
+/** Every year: it lights in daylight for the three lines that tell what it is for. */
+const T_YEARLY = clock.at("2.why", "gate") - 0.1;
+const T_YEARLY_END = clock.end("2.gate");
 const T_LIT = clock.at("8.night", "lit");
 const T_ROOFS = clock.at("9.roofs", "roofs");
 const T_QUIET = clock.at("12.quiet");
@@ -163,7 +166,8 @@ export const World: React.FC = () => {
   // The roofs: full fire from the line that says so, down to embers once the last flier is out.
   const fire = t < T_ROOFS ? 0 : t < T_QUIET ? clamp01((t - T_ROOFS) / 0.35 + 0.35) : 0.25;
   // The gate: dark, lit, dark again when the last one is out, and then lit harder than before.
-  const lit = t < T_LIT ? 0 : t < T_QUIET - 0.25 ? clamp01((t - T_LIT) / 0.2) : t < T_AGAIN ? clamp01((T_QUIET - t) / 0.25) : 1.5 * clamp01((t - T_AGAIN) / 0.15 + 0.2);
+  const yearly = t >= T_YEARLY && t < T_YEARLY_END ? clamp01((t - T_YEARLY) / 0.2) : 0;
+  const lit = yearly > 0 ? yearly : t < T_LIT ? 0 : t < T_QUIET - 0.25 ? clamp01((t - T_LIT) / 0.2) : t < T_AGAIN ? clamp01((T_QUIET - t) / 0.25) : 1.5 * clamp01((t - T_AGAIN) / 0.15 + 0.2);
   const eyes = t < T_BIGGER ? 0 : clamp01((t - T_BIGGER) / 0.9);
   return (
     <>
