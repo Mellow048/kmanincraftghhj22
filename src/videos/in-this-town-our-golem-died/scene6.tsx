@@ -17,6 +17,7 @@ import {
 
 const FELL = PLACE.fell;
 const BOOM = wordAt("9.boom", "exploded");
+const SHOUT = wordAt("8.shout", "shouted");
 
 /**
  * BEATS 8 and 9 — the creeper, and the explosion.
@@ -31,23 +32,26 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "8.behind",
-      ...cam.push({ on: [22.3, 0.95, 1.2], dist: 4.4, to: 4.0, yaw: -42, pitch: 8, fov: 46 }),
+...cam.orbit({ on: [22.2, 1.0, 1.4], dist: 5.4, yaw: -52, yawTo: -22, pitch: 9, distTo: 3.2, fov: 46 }),
+      shake: 0.024,
       zone: "gate",
       look: "lantern-night",
       note: "'There was a creeper behind the golem': we see it over the golem's shoulder, its face lit low and green, and the golem's back filling the left of the frame. It is close. That is the whole shot.",
       stage: (t) => (
         <>
-          <IronGolem position={[20.4, 0, 2.2]} rotationY={SOUTH + 1.6} />
-          <Creeper position={[22.4, 0, 1.2]} rotationY={SOUTH - 1.1} fuse={0.2} />
+          <IronGolem position={[20.4, 0, 2.2]} rotationY={SOUTH + 1.6} armR={-0.3 - 0.2 * Math.min(1, t)} headYaw={0.15 * Math.min(1, t)} />
+          <Creeper position={[22.4 - 0.45 * t, 0, 1.2 + 0.1 * t]} rotationY={SOUTH - 1.1} fuse={0.15 + 0.5 * Math.min(1, t)} />
           {/* Its face is the only green light in the town, and the golem is standing in front of it. */}
-          <pointLight position={[22.3, 0.75, 1.25]} color="#9dff62" intensity={9} distance={5} decay={2} />
-          <Glow position={[22.35, 0.55, 1.15]} size={0.85} color="#a8ff70" opacity={0.3} />
+          <pointLight position={[22.3 - 0.45 * t, 0.75, 1.25 + 0.1 * t]} color="#9dff62" intensity={9} distance={5} decay={2} />
+          <Glow position={[22.35 - 0.45 * t, 0.55, 1.15]} size={0.85 + 0.2 * Math.min(1, t)} color="#a8ff70" opacity={0.3} />
         </>
       ),
     },
     {
       cue: "8.shout",
-      ...cam.push({ on: [19.0, 1.34, 2.0], dist: 2.0, to: 1.6, yaw: 404, pitch: 1, fov: 34 }),
+...cam.push({ on: [19.0, 1.34, 2.0], dist: 2.5, to: 1.3, yaw: 404, pitch: 2, fov: 32 }),
+      shake: 0.03,
+      impacts: [{ at: SHOUT, amp: 0.05, dur: 0.25 }],
       zone: "gate",
       look: "lantern-night",
       note: "'I should have shouted': his face, open-mouthed, lit from the front by the gate lantern — the moment he understands. No cut on the word; the camera just keeps coming.",
@@ -59,21 +63,24 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "8.late",
-      ...cam.push({ on: [19.6, 1.5, 2.0], dist: 11.0, to: 9.2, yaw: -80, pitch: 4, fov: 50 }),
+...cam.push({ on: [19.6, 1.5, 2.0], dist: 14.0, to: 8.8, yaw: -76, pitch: 8, fov: 54 }),
+      shake: 0.018,
       zone: "gate",
       look: "lantern-night",
       note: "'But I was too far away, and it was too late': the wide that makes the excuse true. He is at the left edge; the golem and the creeper are two small shapes at the far end of the light, and the ground between them is empty.",
       stage: (t) => (
         <>
           <Hero position={[19.0, 0, 2.0]} rotationY={EAST} animation="panic" face="scared" gaze={0} />
-          <IronGolem position={[22.6, 0, 2.2]} rotationY={SOUTH + 1.4} />
-          <Creeper position={[23.7, 0, 1.1]} rotationY={SOUTH - 2.0} fuse={0.35} />
+          <IronGolem position={[22.6, 0, 2.2]} rotationY={SOUTH + 1.4} headYaw={-0.6} headPitch={0.2} />
+          <Creeper position={[23.9 - 0.75 * t, 0, 1.1]} rotationY={SOUTH - 2.0} fuse={0.3 + 0.55 * Math.min(1, t)} />
         </>
       ),
     },
     {
       cue: "9.boom",
-      ...cam.push({ on: [22.4, 1.5, 2.0], dist: 4.2, to: 3.9, yaw: 86, pitch: 3, fov: 44 }),
+...cam.push({ on: [22.6, 1.5, 2.0], dist: 5.4, to: 3.1, yaw: 82, pitch: 6, fov: 46 }),
+      shake: 0.03,
+      impacts: [{ at: BOOM, amp: 0.17, dur: 0.55 }],
       zone: "gate",
       look: "lantern-night",
       note: "'It exploded': the flash on the word — a white core where the creeper was, iron shards going out, smoke. The camera takes one jolt and no more, and the golem is still standing inside the light.",
@@ -98,7 +105,8 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.dust",
-      ...cam.push({ on: [FELL[0], 0.4, FELL[2]], dist: 3.6, to: 5.8, yaw: -70, pitch: 16, fov: 46 }),
+...cam.push({ on: [FELL[0], 0.45, FELL[2]], dist: 2.7, to: 7.8, yaw: -64, pitch: 19, fov: 50 }),
+      shake: 0.02,
       zone: "gate",
       look: "lantern-night",
       note: "'When the dust settled, our protector was gone': a pull OUT, away from the scorch on the ground, so the empty place gets bigger. One iron hand's worth of debris and nothing else. Smoke still going up.",

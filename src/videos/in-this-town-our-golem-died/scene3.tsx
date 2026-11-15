@@ -2,6 +2,7 @@ import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
   Anvil,
+  Bits,
   Bucket,
   EAST,
   Fence,
@@ -9,11 +10,11 @@ import {
   IronGolem,
   PLACE,
   ROBE,
+  Rim,
   SOUTH,
   Villager,
   ease,
   golemHand,
-  pop,
   ramp,
   timing,
   wordAt,
@@ -22,13 +23,16 @@ import {
 const WELL = PLACE.well;
 const TAKE = wordAt("3.take", "flower");
 const GIVE = wordAt("3.child", "child");
+const HAMMER = wordAt("3.anvil", "anvil");
 const GIVE_AT: Vec3 = [WELL[0] + 1.5, 0, WELL[2] + 1.9];
 
 /**
- * BEAT 3 — the tour. How the town worked while the golem was alive.
+ * BEATS 3 and 4 — how the town worked, remembered after the golem is gone.
  *
- * The walking shot, the wide, the insert on the anvil and the shot from the ground by the bucket are
- * the environment / travelling / odd-angle set that OWNER.md asks every scene to have.
+ * This block used to open the film and it is the reason the film had no opening: five facts and no
+ * story, before the audience knew anybody. It is now the middle, where the question "what did they
+ * build it out of?" is already in the audience's mouth, and every shot in it is a thing in motion:
+ * a walk, a hammer, a hand closing on a flower, a bucket rolling away.
  */
 export const scene3 = storyScene(timing, {
   id: "scene3",
@@ -36,38 +40,41 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "3.wall",
-      ...cam.truck({ on: [17.2, 1.95, 2.0], dist: 6.2, yaw: -108, pitch: -3, by: [2.6, 0, 0], fov: 42 }),
+      ...cam.truck({ on: [17.0, 1.9, 2.0], dist: 6.4, yaw: -104, pitch: -2, by: [3.4, 0, 0], fov: 42 }),
+      shake: 0.012,
       zone: "gate",
-      look: "lantern-night",
-      note: "'It had guarded that wall since before I was born': a travelling shot, the lens going the way it walks, the wall going past behind it. Its arm swings; nothing else in the frame moves.",
+      look: "overworld-day",
+      note: "'It had guarded that wall since before I was born': a travelling shot going the way it walks, the wall sliding past behind it, its arm swinging, one villager crossing the other way.",
       stage: (t, { p }) => (
         <>
-          <IronGolem position={[16.4 + 2.6 * p, 0, 2.0]} rotationY={EAST} walk={p * 2.6} />
+          <IronGolem position={[16.2 + 3.4 * p, 0, 2.0]} rotationY={EAST} />
+          <Villager position={[20.4 - t * 1.2, 0, 4.4]} rotationY={SOUTH + 2.6} robe={ROBE.farmer} hat="straw" phase={1.2} />
         </>
       ),
     },
     {
-      cue: "3.gate",
-      ...cam.push({ on: [20.4, 2.1, 2.0], dist: 10.0, to: 8.6, yaw: -114, pitch: 6, fov: 48 }),
-      zone: "gate",
-      look: "overworld-day",
-      note: "'At dawn, it stood at the gate': the whole gate in one frame, the wall, the open gate, the wheat behind, and the golem in the middle of the opening, small, because he wants us to see how much wall it had to hold.",
-      stage: () => <IronGolem position={[20.0, 0, 2.0]} rotationY={EAST - 0.15} headYaw={0.2} />,
-    },
-    {
       cue: "3.take",
-      ...cam.push({ on: [WELL[0] + 0.2, 1.05, WELL[2] - 0.9], dist: 3.6, to: 2.9, yaw: 6, pitch: 18, fov: 38 }),
+      ...cam.push({ on: [WELL[0] + 0.2, 1.0, WELL[2] - 0.8], dist: 4.2, to: 2.5, yaw: 4, pitch: 20, fov: 40 }),
+      shake: 0.008,
+      impacts: [{ at: TAKE, amp: 0.025, dur: 0.2 }],
       zone: "village",
       look: "overworld-day",
-      note: "'Then it took one flower off the well': the iron hand comes down onto the rim on the word, and closes. The flowers are the only colour in the frame.",
+      note: "'Every morning it took one flower off the well': the iron hand comes down into a rim full of flowers, closes on one, and lifts it out. The camera is on the rim with them.",
       stage: (t) => {
-        const down = ease(ramp(t, TAKE - 0.5, TAKE));
+        const down = ease(ramp(t, TAKE - 0.55, TAKE));
+        const up = ease(ramp(t, TAKE + 0.05, TAKE + 0.6));
         return (
           <>
-            <IronGolem position={[WELL[0], 0, WELL[2] - 2.5]} rotationY={SOUTH} armR={-0.55 - down * 0.62} headPitch={0.3} />
-            <mesh position={[WELL[0] + 0.2, 1.02 + (1 - pop(t, TAKE)) * 0.0, WELL[2] - 0.62]} scale={pop(t, TAKE) * 0.6 + 1e-3}>
-              <boxGeometry args={[0.1, 0.3, 0.06]} />
-              <meshStandardMaterial color="#b24a3a" roughness={1} />
+            <Rim gap={[4, 5]} />
+            <IronGolem
+              position={[WELL[0] + 0.1, 0, WELL[2] - 2.2]}
+              rotationY={SOUTH}
+              armR={-0.5 - down * 0.55 + up * 0.5}
+              headPitch={0.32 - up * 0.1}
+            />
+            <mesh position={[WELL[0] + 1.12, 0.86 + up * 0.35, WELL[2] - 0.35]} rotation={[0, 0.4, 0.3]}>
+              <boxGeometry args={[0.16, 0.12, 0.16]} />
+              <meshStandardMaterial color="#b4402f" roughness={1} />
             </mesh>
           </>
         );
@@ -75,90 +82,129 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.child",
-      ...cam.push({ on: [GIVE_AT[0], 1.1, GIVE_AT[2]], dist: 3.1, to: 2.5, yaw: -26, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [GIVE_AT[0], 1.05, GIVE_AT[2]], dist: 3.6, to: 2.2, yaw: -30, pitch: 3, fov: 38 }),
+      shake: 0.01,
       zone: "village",
       look: "overworld-day",
-      note: "'And gave it to a child': a kid holding a flower up with both hands, the golem's arm still down at their height, filling the left of the frame.",
-      stage: (t) => (
-        <>
-          <Villager position={GIVE_AT} rotationY={SOUTH + 0.35} robe={ROBE.friend} scale={0.7} kid phase={2.9} lookAt={golemHand([GIVE_AT[0] - 1.2, 0, GIVE_AT[2] - 0.9], SOUTH, -1.1)} />
-          <IronGolem position={[GIVE_AT[0] - 1.5, 0, GIVE_AT[2] - 1.4]} rotationY={SOUTH + 0.7} armR={-1.15 + 0.25 * ease(ramp(t, GIVE, GIVE + 0.8))} headPitch={0.42} />
-        </>
-      ),
-    },
-    {
-      cue: "3.none",
-      ...cam.push({ on: [2.2, 1.35, 2.6], dist: 4.6, to: 4.0, yaw: 14, pitch: 5, fov: 40 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "'Nobody asked how. Nobody asked why': two villagers walk past the golem with a flower in its hand and neither of them looks at it. The golem is the still thing in a moving frame.",
-      stage: (t) => (
-        <>
-          <Villager position={[-1.8 + t * 1.3, 0, 2.4]} rotationY={EAST} walk={t * 1.3} robe={ROBE.brown} phase={0.3} />
-          <Villager position={[-2.6 + t * 1.3, 0, 3.6]} rotationY={EAST} walk={t * 1.3} robe={ROBE.blue} phase={3.4} />
-          <IronGolem position={[1.6, 0, 0.4]} rotationY={SOUTH + 0.4} flower headPitch={0.2} />
-        </>
-      ),
-    },
-    {
-      cue: "3.lid",
-      ...cam.top({ on: [WELL[0] + 0.5, 0.95, WELL[2] + 0.3], height: 5.4, to: 4.4, spin: [8, -3], fov: 38 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "'The well had a stone lid. It was never on': straight down on the lid, hanging off the rim, the black square of the well open beside it. No lid, no explanation.",
-      stage: () => <></>,
+      note: "'And gave it to a child': the child runs in from the edge and takes it with both hands, and the golem's arm goes back up. The handover happens inside the shot.",
+      stage: (t) => {
+        const run = ease(ramp(t, 0, GIVE));
+        return (
+          <>
+            <Villager
+              position={[GIVE_AT[0] + 1.2 - run * 1.2, 0, GIVE_AT[2] + 0.6 - run * 0.6]}
+              rotationY={SOUTH + 0.35}
+              robe={ROBE.friend}
+              scale={0.7}
+              kid
+              phase={2.9}
+             
+              lookAt={golemHand([GIVE_AT[0] - 1.2, 0, GIVE_AT[2] - 0.9], SOUTH, -1.1)}
+            />
+            <IronGolem
+              position={[GIVE_AT[0] - 1.5, 0, GIVE_AT[2] - 1.4]}
+              rotationY={SOUTH + 0.7}
+              armR={-1.2 + 0.3 * ease(ramp(t, GIVE, GIVE + 0.8))}
+              headPitch={0.44}
+            />
+          </>
+        );
+      },
     },
     {
       cue: "3.anvil",
-      ...cam.push({ on: [PLACE.anvil[0], 0.62, PLACE.anvil[2]], dist: 3.6, to: 3.0, yaw: -46, pitch: 16, fov: 38 }),
+      ...cam.push({ on: [PLACE.anvil[0], 0.6, PLACE.anvil[2]], dist: 4.0, to: 2.3, yaw: -52, pitch: 14, fov: 38 }),
+      shake: 0.014,
+      impacts: [{ at: HAMMER, amp: 0.05, dur: 0.3 }],
       zone: "village",
       look: "overworld-day",
-      note: "'The blacksmith had an anvil': a low insert, the anvil filling the bottom of the frame with the smith's legs behind it. The object is already the answer to a question he has not asked yet.",
-      stage: (t) => (
-        <>
-          <Anvil position={PLACE.anvil} rotationY={0.3} />
-          <Villager position={[PLACE.anvil[0] - 0.9, 0, PLACE.anvil[2] - 1.7]} rotationY={SOUTH + 0.3} robe={ROBE.brown} phase={1.4} hmm={0.2} />
-        </>
-      ),
+      note: "'The blacksmith had an anvil. My mother had a pot': the hammer comes down on the word and the sparks go up, and the anvil fills the bottom of the frame.",
+      stage: (t) => {
+        const up = 1 - ease(ramp(t, HAMMER - 0.35, HAMMER));
+        return (
+          <>
+            <Anvil position={PLACE.anvil} rotationY={0.3} />
+            <mesh position={[PLACE.anvil[0] + 0.1, 1.05 + up * 0.5, PLACE.anvil[2] - 0.3]} rotation={[0.9 - up * 1.6, 0, 0]} castShadow>
+              <boxGeometry args={[0.1, 0.1, 0.5]} />
+              <meshStandardMaterial color="#6b5340" roughness={0.9} />
+            </mesh>
+            <Villager position={[PLACE.anvil[0] - 0.8, 0, PLACE.anvil[2] - 1.5]} rotationY={SOUTH + 0.2} robe={ROBE.smith} phase={1.4} lean={0.3 + up * 0.25} />
+            <Bits position={[PLACE.anvil[0] + 0.05, 0.72, PLACE.anvil[2]]} t={t - HAMMER} color="#ffcf6a" count={12} power={1.3} />
+          </>
+        );
+      },
     },
     {
       cue: "3.bucket",
-      ...cam.push({ on: [6.9, 0.35, 6.3], dist: 3.4, to: 2.8, yaw: 8, pitch: 4, fov: 40 }),
+      ...cam.orbit({ on: [6.9, 0.32, 6.3], dist: 3.2, yaw: 12, yawTo: 54, pitch: 6, distTo: 2.4, fov: 40 }),
+      shake: 0.01,
       zone: "village",
       look: "overworld-day",
-      note: "'My father had a bucket with a hole in it': from grass level, the bucket on its side, the hole toward the lens. Small thing, seen small, and it is on the list of what the town owns.",
-      stage: () => (
+      note: "'My father had a bucket with a hole in it': from grass level. It is kicked on the first syllable and rolls away from the lens, and the lens follows it round.",
+      stage: (t, { p }) => (
         <>
           <Fence from={[5.4, 0, 5.6]} to={[9.2, 0, 5.6]} height={1.1} gap={1.1} />
-          <Bucket position={[6.9, 0.52, 6.3]} scale={0.9} handle swing={0.5} />
+          <Bucket position={[6.9 + p * 1.5, 0.3, 6.3 + p * 0.5]} scale={0.9} handle swing={0.6} />
         </>
       ),
     },
     {
       cue: "3.remember",
-      ...cam.push({ on: [-9.4, 1.72, -4.2], dist: 3.4, to: 2.8, yaw: 24, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [-9.4, 1.7, -4.2], dist: 3.8, to: 2.1, yaw: 20, pitch: 3, fov: 38 }),
+      shake: 0.01,
       zone: "village",
       look: "overworld-day",
-      note: "'He said iron remembers the shape you give it': his father's face, saying a thing he does not know is important. The boy's shoulder is at the edge, the wrong way round — he is not listening.",
-      stage: () => (
+      note: "'He said iron remembers the shape you give it': his father, saying the answer without knowing it, and the boy already turning away to something else.",
+      stage: (t) => (
         <>
-          <Villager position={[-9.4, 0, -4.6]} rotationY={SOUTH + 0.5} robe={ROBE.brown} nod={0.12} phase={1.4} />
-          <Hero position={[-8.2, 0, -3.0]} rotationY={SOUTH - 0.9} animation="idle" face="calm" gaze={0} />
+          <Villager position={[-9.4, 0, -4.6]} rotationY={SOUTH + 0.5} robe={ROBE.brown} nod={0.1 + 0.1 * Math.sin(t * 3)} phase={1.4} lean={0.05} />
+          <Hero position={[-8.2, 0, -3.0]} rotationY={SOUTH - 0.9 - ease(ramp(t, 1.4, 2.2)) * 0.9} animation="idle" face="calm" gaze={0} />
         </>
       ),
     },
     {
       cue: "3.good",
-      ...cam.push({ on: [0.5, 2.2, 1.6], dist: 15.5, to: 13.5, yaw: 6, pitch: 28, fov: 52 }),
+      ...cam.push({ on: [0.4, 2.0, 1.4], dist: 16.0, to: 11.0, yaw: 6, pitch: 30, fov: 52 }),
+      shake: 0.008,
+      handheld: 0.008,
       zone: "village",
       look: "overworld-day",
-      note: "'It was a good life. Nobody had been hurt in years': the only wide of the town in daylight — the square, the bell, the well, the lanterns, people going about. This is the picture the last act has to take away.",
+      note: "'It was a good life. The town had not lost anyone since it came': the one wide of the whole town in daylight, and the lens is still coming down into it while everybody walks.",
       stage: (t) => (
         <>
-          <Villager position={[-3.4, 0, 1.2]} rotationY={EAST} walk={t * 0.9} robe={ROBE.blue} phase={3.4} />
-          <Villager position={[4.6, 0, 0.6]} rotationY={SOUTH - 1.6} robe={ROBE.farmer} hat="straw" phase={0.9} />
-          <Hero position={[2.2, 0, 4.2]} rotationY={SOUTH + 0.3} animation="idle" face="smile" gaze={0} />
-          <IronGolem position={[-1.4, 0, -0.6]} rotationY={SOUTH + 2.4} />
+          <Villager position={[-3.4 + t * 1.4, 0, 1.2]} rotationY={EAST} robe={ROBE.blue} phase={3.4} />
+          <Villager position={[4.6 - t * 1.1, 0, 0.6]} rotationY={SOUTH - 1.6} robe={ROBE.farmer} hat="straw" phase={0.9} />
+          <Villager position={[1.2, 0, -1.6]} rotationY={EAST} robe={ROBE.white} phase={2.2} />
+          <Hero position={[2.2 + t * 0.5, 0, 4.2]} rotationY={SOUTH + 0.3} animation="walk" face="smile" gaze={0} />
+          <IronGolem position={[-1.4, 0, -0.6]} rotationY={SOUTH + 2.4} armR={-1.0 - 0.2 * Math.sin(t * 1.6)} flower />
+        </>
+      ),
+    },
+    {
+      cue: "4.protect",
+      ...cam.truck({ on: [19.0, 1.4, 2.2], dist: 5.2, yaw: -122, pitch: 4, by: [2.0, 0, -0.4], fov: 44 }),
+      shake: 0.012,
+      zone: "gate",
+      look: "overworld-day",
+      note: "'But the golem protected all of us': it walks the gate line and the lens goes with it, and the wall goes past behind, and the town is somewhere off-frame that it is between.",
+      stage: (t, { p }) => (
+        <>
+          <IronGolem position={[19.6 + 2.0 * p, 0, 2.2 - 0.4 * p]} rotationY={EAST + 0.1} headYaw={-0.25} />
+          <Hero position={[18.0 + 1.2 * p, 0, 3.6]} rotationY={EAST + 0.5} animation="walk" face="smile" gaze={0} />
+        </>
+      ),
+    },
+    {
+      cue: "4.need",
+      ...cam.push({ on: [20.0, 1.1, 2.4], dist: 5.4, to: 3.0, yaw: 22, pitch: 6, fov: 40 }),
+      shake: 0.012,
+      zone: "gate",
+      look: "overworld-day",
+      note: "'I wanted it to need me': his back, small, and the golem going away up the street without turning round. He is the one looking.",
+      stage: (t, { p }) => (
+        <>
+          <Hero position={[19.4, 0, 2.4]} rotationY={EAST - 0.1} animation="idle" face="frown" gaze={0} headPitch={-0.06} />
+          <IronGolem position={[21.4 + p * 1.0, 0, 1.6]} rotationY={EAST} headYaw={0.1} />
         </>
       ),
     },
