@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Vec3 } from "../../engine";
-import { Baby, LINE2, Me, Pal, Player, R, ROBE, Rival, Streaks, Sweat, Villager } from "./kit";
+import { Baby, LINE2, Me, Pal, Player, Puffs, R, ROBE, Rival, Streaks, Sweat, Villager } from "./kit";
 
 export const E = Math.PI / 2;
 export const up = (p: Vec3, y: number): Vec3 => [p[0], p[1] + y, p[2]];
@@ -35,7 +35,8 @@ export const Pack: React.FC<{ x: number; z: number; d: number; ahead?: number; n
         return <Villager key={i} position={p} rotationY={E} walk={dd * (mode === "run" ? 1.4 : 0.9)} robe={ROBES[i % 6]} lean={mode === "tired" ? 0.42 : mode === "run" ? 0.25 : 0.05} nod={mode === "tired" ? 0.4 : 0} phase={i} />;
       return (
         <group key={i}>
-          <Player who={i + 1} position={p} rotationY={E} animation={mode === "run" ? "run" : mode === "tired" ? "run" : "walk"} animDistance={dd} face={mode === "tired" ? "ouch" : "brave"} headPitch={mode === "tired" ? 0.3 : 0} phase={i * 0.7} />
+          <Player who={i + 1} position={p} rotationY={E} animation={mode === "run" ? "run" : mode === "tired" ? "run" : "walk"} animDistance={500 + dd * (mode === "tired" ? 1.25 : 1)} face={mode === "tired" ? "ouch" : "brave"} headPitch={mode === "tired" ? 0.3 : 0} phase={i * 0.7} />
+          {mode !== "walk" && i % 2 === 0 ? <Puffs position={[px - 0.5, 0.08, pz]} color="#e2cf9a" count={3} rise={0.35} spread={0.35} size={0.13} speed={2} opacity={0.5} /> : null}
           {mode === "tired" && i % 4 === 0 ? <Sweat position={[px, 1.6, pz]} t={t + i * 0.1} much={0.6} /> : null}
         </group>
       );
