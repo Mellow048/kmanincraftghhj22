@@ -14,6 +14,7 @@ import { film as inThisTownEveryoneGetsARobotAt18 } from "./videos/in-this-town-
 import { film as inThisTownILiveInAMonsterVillagePart3 } from "./videos/in-this-town-monster-village-part-3/film";
 import { film as inThisTownTheFastestKidWins } from "./videos/in-this-town-the-fastest-kid-wins/film";
 import { film as inThisTownTheNewKidNeverTookOffHisHelmet } from "./videos/in-this-town-the-new-kid-never-took-off-his-helmet/film";
+import { film as inThisTownEveryKidGotAnIronGolem } from "./videos/in-this-town-every-kid-got-an-iron-golem/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -36,4 +37,5 @@ export const FILMS = [
   inThisTownILiveInAMonsterVillagePart3,
   inThisTownTheFastestKidWins,
   inThisTownTheNewKidNeverTookOffHisHelmet,
+  inThisTownEveryKidGotAnIronGolem,
 ];
