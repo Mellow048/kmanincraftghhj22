@@ -6,7 +6,7 @@ Read [`../monster-village-part-3/`](../monster-village-part-3/README.md) first.
 
 | File | What it is |
 |---|---|
-| `in-this-town-monster-village-part-4.mp4` | **The film as delivered**: 1080×1920, 2:49.5, 68 lines, full sound. A copy of `renders/in-this-town-monster-village-part-4.mp4` |
+| `in-this-town-monster-village-part-4.mp4` | **The film as delivered**: 1080×1920, 2:49.5, 68 lines, 81 shots, full sound. A copy of `renders/in-this-town-monster-village-part-4.mp4` |
 | `source/` | A **snapshot** of the source: `narration.md`, `timing.json`, `kit.tsx`, `shared.tsx`, `world.tsx`, `scene1.tsx` … `scene4.tsx`, `film.tsx`, `sound.gen.py`, `sound.json` |
 
 The film that renders lives in `src/videos/in-this-town-monster-village-part-4/`. Its kit re-exports part three's.

@@ -1,6 +1,6 @@
 import type React from "react";
 import { Block, Dust, Glow, GodRay, LightPool, Torch, Tree, Vox, Zone } from "../../engine";
-import { Hut, LanternPost, Moon, Stars } from "../../../Topics/InThisTown";
+import { Hut, LanternPost, Moon, Stars, WatchTower } from "../../../Topics/InThisTown";
 import { CAGES, CageBody, FORT, HALL4, HALL_LEN, HALL_W, HORDE, OUT, ROOM4 } from "./kit";
 
 /**
@@ -85,7 +85,9 @@ const Fort: React.FC = () => (
     <Vox kind="path" position={[0, 0.02, -5.2]} size={[3.2, 0.06, 13.5]} />
     <Vox kind="path" position={[0, 0.021, 1.6]} size={[30, 0.06, 5.4]} />
     <Vox kind="path" position={[24, 0.02, -1.5]} size={[14, 0.06, 4]} />
-    <Wall at={[0, -14]} length={36} along="x" />
+    {/* The north wall, in two pieces: the lookout tower stands in the gap, so its rooms are not full of wall. */}
+    <Wall at={[-14.55, -14]} length={6.9} along="x" />
+    <Wall at={[5.55, -14]} length={24.9} along="x" />
     <Wall at={[-17.5, -1]} length={26} along="z" />
     {/* The east wall, in two pieces: the gap between them (z -4 … 1) is the hole. */}
     <Wall at={[17.5, -9]} length={10} along="z" />
@@ -93,7 +95,7 @@ const Fort: React.FC = () => (
     <Tower at={[-17.5, -14]} />
     <Tower at={[17.5, -14]} />
     <Tower at={[0, -14.4]} height={11.5} size={5.4} gate />
-    <Tower at={[-9, -14.2]} height={10} size={4.2} />
+    <WatchTower position={[-9, 0, -14.2]} height={10} size={4.2} />
     <Tower at={[-17.5, 12]} height={9} />
     <Tower at={[17.5, 12]} height={9} />
     <Hut at={[-9.5, 0, -6]} w={6} h={3.6} tint="#caa268" roof="#8a3b2a" windows={[-1.7]} door={1.2} />

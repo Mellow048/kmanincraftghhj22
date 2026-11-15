@@ -126,22 +126,32 @@
   "sfx": [
     {
       "cue": "1.town",
+      "sfx": "hit",
+      "at": 0.42,
+      "trim": 3,
+      "why": "The hook: the golem's fist on the ravager's skull."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "boom",
+      "at": 0.45,
+      "why": "The ground."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "stomp",
+      "at": 1.3,
+      "repeat": 3,
+      "every": 0.28,
+      "trim": -1,
+      "why": "The ravager comes again."
+    },
+    {
+      "cue": "1.town",
       "sfx": "clank",
-      "at": 0.05,
-      "why": "Iron bars, in the first second."
-    },
-    {
-      "cue": "1.town",
-      "sfx": "whoosh_low",
-      "at": 0.5,
-      "why": "The lens goes in to him."
-    },
-    {
-      "cue": "1.town",
-      "sfx": "sting",
       "word": "cage",
-      "trim": -4,
-      "why": "And I was in a cage."
+      "at": -0.25,
+      "why": "And I was in a cage: his hands on the bars."
     },
     {
       "cue": "1.night",
@@ -466,13 +476,13 @@
     {
       "cue": "4.trees",
       "sfx": "swish",
-      "at": 0.8,
+      "at": 0.7,
       "why": "Trees."
     },
     {
       "cue": "4.trees",
       "sfx": "swish",
-      "at": 1.55,
+      "at": 1.4,
       "why": "Trees."
     },
     {
