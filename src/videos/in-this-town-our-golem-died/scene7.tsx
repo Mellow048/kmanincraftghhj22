@@ -67,11 +67,11 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.rose",
-      ...cam.top({ on: [FELL[0] + 0.1, 0.12, FELL[2]], height: 2.7, to: 1.7, spin: [14, -6], fov: 40 }),
+      ...cam.push({ on: [FELL[0] + 0.15, 0.2, FELL[2] + 0.05], dist: 2.6, to: 1.35, yaw: 48, pitch: 8, fov: 40 }),
       handheld: 0.01,
       zone: "gate",
       look: "lantern-night",
-      note: "'In the ash was a rose': the lens drops onto the scorch and twists as it comes down, and the one red thing in the film is lying in the middle of it.",
+      note: "'In the ash was a rose': from the ground, level with it, so the poppy is a poppy and not a red square. The one warm thing left in the film, lying in the middle of the scorch.",
       stage: (t) => (
         <>
           <Rose position={[FELL[0] + 0.1, 0.06, FELL[2]]} scale={1.5} turn={1.2 + t * 0.06} />
@@ -81,7 +81,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.pick",
-      ...cam.push({ on: [FELL[0] + 0.1, 0.5, FELL[2] + 0.1], dist: 3.6, to: 2.0, yaw: 62, pitch: 16, fov: 40 }),
+      ...cam.push({ on: [FELL[0] + 0.15, 0.55, FELL[2] + 0.1], dist: 3.0, to: 1.7, yaw: 34, pitch: 9, fov: 40 }),
       shake: 0.008,
       handheld: 0.008,
       impacts: [{ at: PICK + 0.42, amp: 0.02, dur: 0.2 }],
@@ -141,6 +141,7 @@ export const scene7 = storyScene(timing, {
             phase={0.4}
           />
           <Hero position={[-9.9, 0, -2.9]} rotationY={SOUTH + 0.3} animation="reach" face="uneasy" gaze={0} />
+          <pointLight position={[PLACE.porch[0] + 0.9, 2.5, PLACE.porch[2] + 1.3]} color="#ffc078" intensity={30} distance={9} decay={2} />
         </>
       ),
     },
@@ -154,6 +155,7 @@ export const scene7 = storyScene(timing, {
       stage: (t) => (
         <>
           <Elder position={PLACE.porch} rotationY={SOUTH + 0.9} hat="straw" turn={0.35 + 0.1 * Math.sin(t * 2)} hmm={0.4} phase={0.4} />
+          <pointLight position={[PLACE.porch[0] + 0.9, 2.5, PLACE.porch[2] + 1.3]} color="#ffc078" intensity={30} distance={9} decay={2} />
         </>
       ),
     },
