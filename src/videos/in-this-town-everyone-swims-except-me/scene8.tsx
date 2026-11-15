@@ -120,7 +120,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.saw",
-      ...cam.push({ on: [A + 5.4, 0.1, 1], dist: 2.0, to: 1.5, yaw: 66, pitch: 10, fov: 38 }),
+      ...cam.push({ on: [A + 5.4, 0.1, 1], dist: 3.2, to: 2.6, yaw: 66, pitch: 10, fov: 38 }),
       zone: "arena",
       look: "overworld-day",
       note: "Mid-stroke, he turns his head to breathe and sees something at the edge of the lane: the first hint of the ending.",
@@ -172,7 +172,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.second",
-      ...cam.push({ on: [A + 10.2, 0.12, 1.2], dist: 2.0, to: 1.6, yaw: 104, pitch: 8, fov: 36 }),
+      ...cam.push({ on: [A + 10.2, 0.12, 1.2], dist: 3.2, to: 2.6, yaw: 104, pitch: 8, fov: 36 }),
       zone: "arena",
       look: "overworld-day",
       note: "Two heads at the water line, inches apart: second place is not a number yet, it is a shoulder he can see.",
@@ -210,7 +210,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.lose",
-      ...cam.push({ on: [A + 12.1, 0.2, 2], dist: 2.6, to: 2.0, yaw: 176, pitch: 3, fov: 38 }),
+      ...cam.push({ on: [A + 12.1, 0.2, 2], dist: 3.4, to: 2.6, yaw: 176, pitch: 3, fov: 38 }),
       zone: "arena",
       look: "overworld-day",
       note: "The white hand slaps the wall first. The race is decided by a sound and a splash, not by a look.",
@@ -273,7 +273,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.sub",
-      ...cam.push({ on: [A + 10.2, 0.35, -7.7], dist: 2.2, to: 1.7, yaw: 4, pitch: 14, fov: 38 }),
+      ...cam.push({ on: [A + 10.2, 0.35, -7.7], dist: 3.2, to: 2.6, yaw: 4, pitch: 14, fov: 38 }),
       zone: "arena",
       look: "overworld-day",
       note: "He lifts his head off the tiles and looks straight into the lens: part two is a promise, and he is the one making it.",

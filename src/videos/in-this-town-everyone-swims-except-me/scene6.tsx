@@ -86,7 +86,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.bonk",
-      ...cam.push({ on: [P + 12.1, -0.45, 2], dist: 2.2, to: 1.7, yaw: 178, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [P + 12.1, -0.45, 2], dist: 3.4, to: 2.6, yaw: 178, pitch: 6, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "Underwater at the far wall: his head arrives at the tile before the rest of him. The wall is not where it was supposed to be.",
@@ -121,7 +121,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.bonk2",
-      ...cam.push({ on: [P - 12.1, 0.25, 2], dist: 2.6, to: 2.0, yaw: 4, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [P - 12.1, 0.25, 2], dist: 3.4, to: 2.6, yaw: 4, pitch: 4, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "The other wall, the other bonk, from the deck this time: he arrives head first again and the water jumps.",
@@ -147,7 +147,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.dream",
-      ...cam.orbit({ on: [P + 3, 0.55, 7.4], dist: 2.2, yaw: 158, pitch: 13, yawTo: 176, fov: 38 }),
+      ...cam.orbit({ on: [P + 3, 0.55, 7.4], dist: 3.2, yaw: 158, pitch: 13, yawTo: 176, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "Sitting on the tiles with his knees up, an odd low angle from behind: he pinches his own arm to check whether any of this is happening.",
@@ -159,7 +159,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.hurt",
-      ...cam.push({ on: [P + 3, 1.0, 7.4], dist: 2.6, to: 2.0, yaw: -32, pitch: 6, fov: 38 }),
+      ...cam.push({ on: [P + 3, 1.0, 7.4], dist: 3.4, to: 2.6, yaw: -32, pitch: 6, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "He holds his head where it hit. This is the only proof the trick is real, and it is a bruise.",
@@ -171,7 +171,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.looked",
-      ...cam.push({ on: [P + 3.15, 0.75, 7.55], dist: 2.6, to: 2.0, yaw: 150, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [P + 3.15, 0.75, 7.55], dist: 3.2, to: 2.5, yaw: 150, pitch: 12, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "Over his shoulder to the hand: the ring is doing something. It has a light in it that was not there in the woods.",
@@ -241,7 +241,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.how",
-      ...cam.push({ on: [P + 8, 0.2, 4.5], dist: 2.6, to: 2.0, yaw: 138, pitch: 12, fov: 38 }),
+      ...cam.push({ on: [P + 8, 0.2, 4.5], dist: 3.4, to: 2.6, yaw: 138, pitch: 12, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "He stops, standing in the water, and looks at his own hand: the question of the film, asked at arm's length.",
@@ -253,7 +253,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.shrug",
-      ...cam.push({ on: [P + 8, 1.0, 6.4], dist: 2.6, to: 2.0, yaw: 4, pitch: 6, fov: 38 }),
+      ...cam.push({ on: [P + 8, 1.0, 6.4], dist: 3.4, to: 2.6, yaw: 4, pitch: 6, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "On the deck, wet, ring on his hand, shrugging straight into the lens: he does not know, and the film does not tell him.",

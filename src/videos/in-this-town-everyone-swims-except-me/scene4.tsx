@@ -34,7 +34,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.bubble",
-      ...cam.push({ on: [P + 3.3, -0.75, 3.8], dist: 2.4, to: 1.8, yaw: 24, pitch: -34, fov: 46 }),
+      ...cam.push({ on: [P + 3.3, -0.75, 3.8], dist: 3.2, to: 2.4, yaw: 24, pitch: -30, fov: 46 }),
       zone: "pool",
       look: "overworld-day",
       note: "From under him, looking up past his head: the surface is a bright ceiling with no way through it. His own bubbles go where he cannot.",

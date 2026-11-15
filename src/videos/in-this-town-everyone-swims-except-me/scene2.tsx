@@ -80,7 +80,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.sink",
-      ...cam.push({ on: [P + 0.9, 0.2, 5.2], dist: 4.6, to: 3.6, yaw: 100, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [P + 0.9, 0.2, 5.2], dist: 6.0, to: 5.0, yaw: 100, pitch: 8, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "Side on, water line through the frame: head above, legs already two stones going down. Show the split, not the feeling.",

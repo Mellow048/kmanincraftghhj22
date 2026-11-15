@@ -47,7 +47,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.title",
-      ...cam.top({ on: [120.9, 0.68, 39.95], height: 1.05, to: 0.8, spin: [-8, 4], fov: 40 }),
+      ...cam.top({ on: [120.9, 0.66, 39.95], height: 0.55, to: 0.4, spin: [-8, 4], fov: 34 }),
       zone: "home",
       look: "overworld-night",
       note: "Straight down on the screen: two words, held by two thumbs. The whole plan of the film is a video title.",
@@ -78,7 +78,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.sank",
-      ...cam.push({ on: [P + 3.2, -0.9, 4.2], dist: 2.8, to: 2.1, yaw: 104, pitch: 2, fov: 42 }),
+      ...cam.push({ on: [P + 3.2, -0.9, 4.2], dist: 3.8, to: 2.9, yaw: 104, pitch: 8, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "Side on, under the surface: down he goes, and the water does not care. One clean vertical drop in a horizontal film.",
@@ -91,7 +91,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.again",
-      ...cam.orbit({ on: [P + 5, 0.25, 4.2], dist: 2.2, yaw: -118, pitch: 10, yawTo: -146, fov: 38 }),
+      ...cam.orbit({ on: [P + 5, 0.25, 4.2], dist: 3.4, yaw: -118, pitch: 10, yawTo: -146, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "On the water line, orbiting his head as he comes up and starts again: the trying is a loop, and the camera goes round once.",
