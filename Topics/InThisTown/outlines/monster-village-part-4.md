@@ -59,7 +59,7 @@ seen until the last shots**; Mo is down the whole time.
 - The last shot: down the skinny hallway, the teller running at the two guards with Mo on the floor, Hiss behind him,
   and the like-and-subscribe sign in the same shot.
 
-## Script draft 2 (697 words, about 2:35)
+## Script draft 2 (697 words, about 2:50; the wall is 2:58, so a line or two may have to go once the voice is recorded)
 
 In this town, I was the only one who was not a monster. And I was in a cage.
 It was night. Half of the castle was asleep. The other half was on the night shift.
