@@ -25,7 +25,7 @@ const MIN_DIST = 3.9;
 
 const frame = (shot: Shot): Shot => {
   if (MACRO.test(shot.cue ?? "")) return shot;
-  if (shot.target[1] < -0.4) return shot; // deliberately under the water
+  if (shot.target[1] < -1.4) return shot; // genuinely under the water, at the bottom
 
   const ty = Math.min(EYE, Math.max(shot.target[1], EYE));
   const dy = ty - shot.target[1];
