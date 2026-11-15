@@ -17,7 +17,7 @@ import { Bleachers, DisplayCase, PLACE, Pool, Trophy } from "./kit";
 /** A lawn with rectangular holes in it, so a pool can be sunk into the ground without grass filling it. */
 type Rect = { x: number; z: number; w: number; d: number };
 
-const Lawn: React.FC<{ w: number; d: number; holes?: Rect[] }> = ({ w, d, holes = [] }) => {
+const Lawn: React.FC<{ w: number; d: number; holes?: Rect[]; y?: number }> = ({ w, d, holes = [], y = -0.55 }) => {
   const cut = holes.map((h) => ({ x0: h.x - h.w / 2, x1: h.x + h.w / 2, z0: h.z - h.d / 2, z1: h.z + h.d / 2 }));
   const zs = Array.from(new Set([-d / 2, d / 2, ...cut.flatMap((h) => [Math.max(-d / 2, h.z0), Math.min(d / 2, h.z1)])])).sort(
     (a, b) => a - b,
@@ -42,7 +42,7 @@ const Lawn: React.FC<{ w: number; d: number; holes?: Rect[] }> = ({ w, d, holes 
   return (
     <>
       {slabs.map((sl, i) => (
-        <Vox key={i} kind="grass" position={[sl.x, -0.55, sl.z]} size={[sl.w, 1, sl.d]} />
+        <Vox key={i} kind="grass" position={[sl.x, y, sl.z]} size={[sl.w, 1, sl.d]} />
       ))}
     </>
   );
@@ -67,8 +67,12 @@ const Treeline: React.FC<{ r0: number; r1: number; n: number; seed?: number }> =
   </>
 );
 
-/** A ground plane under everything, big enough that its edge is lost in the fog. */
-const FarGround: React.FC<{ y?: number }> = ({ y = -0.62 }) => <Vox kind="grass" position={[0, y, 0]} size={[700, 1, 700]} />;
+/**
+ * A ground plane under everything, big enough that its edge is lost in the fog.
+ * It takes the same holes as the lawn it sits under: a grass sheet below a pool reads as
+ * a swimming pool full of grass through the water, which is exactly what it did.
+ */
+const FarGround: React.FC<{ holes?: Rect[] }> = ({ holes }) => <Lawn w={700} d={700} y={-0.62} holes={holes} />;
 
 const Village: React.FC = () => (
   <>
@@ -129,7 +133,7 @@ const Village: React.FC = () => (
 const PoolZone: React.FC = () => (
   <group position={PLACE.pool}>
     <Lawn w={64} d={48} holes={[{ x: 0, z: 0, w: 31.8, d: 18.8 }]} />
-    <FarGround />
+    <FarGround holes={[{ x: 0, z: 0, w: 31.8, d: 18.8 }]} />
     <Treeline r0={46} r1={72} n={26} seed={4} />
     <Pool length={25} width={12} lanes={6} />
     {/* The fence, with a gate on the west side. */}
@@ -207,7 +211,13 @@ const Woods: React.FC = () => (
 
 const Arena: React.FC = () => (
   <group position={PLACE.arena}>
-    <FarGround />
+    <FarGround
+      holes={[
+        { x: 0, z: 0, w: 31.8, d: 18.8 },
+        { x: 52, z: -8, w: 46.8, d: 24.8 },
+        { x: 116, z: 10, w: 66.8, d: 32.8 },
+      ]}
+    />
     <Treeline r0={78} r1={110} n={34} seed={9} />
     <Lawn
       w={180}

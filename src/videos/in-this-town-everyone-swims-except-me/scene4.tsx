@@ -69,13 +69,13 @@ export const scene4 = storyScene(timing, {
         <>
           <Hero
             position={travel(p, [P + 2.4, -0.55, 5.9], [P + 2.0, 0, 6.95])}
-            rotationY={0.3}
+            rotationY={-0.37}
             animation={p < 0.85 ? "stagger" : "cower"}
             face="sad"
           />
           <Friend
             position={travel(p, [P + 1.9, -0.6, 5.7], [P + 1.2, 0, 6.6])}
-            rotationY={-1.4}
+            rotationY={-0.66}
             animation={p < 0.85 ? "hold" : "reach"}
             face="worried"
             shoes="#2b2b2b"

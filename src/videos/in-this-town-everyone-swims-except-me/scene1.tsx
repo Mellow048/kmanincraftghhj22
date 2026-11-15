@@ -51,11 +51,11 @@ export const scene1 = storyScene(timing, {
       note: "The whole street from above, and the whole town walking one way with towels. One red shirt is not walking. Premise in frame one.",
       stage: (t) => (
         <>
-          <Villager position={[-4 + t * 1.1, 0, -1.2]} robe={ROBE.brown} walk={t * 1.1} phase={0.2} />
-          <Villager position={[-1.4 + t * 0.9, 0, 0.4]} robe={ROBE.white} walk={t * 0.9} phase={1.1} />
-          <Villager position={[2.6 + t * 1.2, 0, -0.8]} robe={ROBE.farmer} walk={t * 1.2} phase={2.2} />
-          <Villager position={[0.8 + t * 1.4, 0, 1.8]} robe={ROBE.blue} kid scale={CHILD} walk={t * 1.4} phase={0.7} />
-          <Villager position={[4.6 + t * 0.6, 0, 2.4]} robe={ROBE.smith} walk={t * 0.6} phase={3.1} />
+          <Villager position={[-4 + t * 1.1, 0, -1.2]} rotationY={Math.PI / 2} robe={ROBE.brown} walk={t * 1.1} phase={0.2} />
+          <Villager position={[-1.4 + t * 0.9, 0, 0.4]} rotationY={Math.PI / 2} robe={ROBE.white} walk={t * 0.9} phase={1.1} />
+          <Villager position={[2.6 + t * 1.2, 0, -0.8]} rotationY={Math.PI / 2} robe={ROBE.farmer} walk={t * 1.2} phase={2.2} />
+          <Villager position={[0.8 + t * 1.4, 0, 1.8]} rotationY={Math.PI / 2} robe={ROBE.blue} kid scale={CHILD} walk={t * 1.4} phase={0.7} />
+          <Villager position={[4.6 + t * 0.6, 0, 2.4]} rotationY={Math.PI / 2} robe={ROBE.smith} walk={t * 0.6} phase={3.1} />
           <Hero position={[0.9, 0, 2.6]} rotationY={-2.4} animation="idle" face="neutral" />
           <Player who={9} position={[6.4, 0, 1.2]} rotationY={-1.8} scale={CHILD} animation="walk" animDistance={t * 0.4} />
         </>
@@ -81,8 +81,8 @@ export const scene1 = storyScene(timing, {
       note: "Travelling along the front of the hall: the window with the cup in it goes past like a fixture, there all year, above everyone's heads.",
       stage: (t) => (
         <>
-          <Villager position={[-2.6 + t * 1.5, 0, -1.0]} robe={ROBE.farmer} walk={t * 1.5} phase={1.4} />
-          <Villager position={[3.2 + t * 1.2, 0, -1.4]} robe={ROBE.smith} walk={t * 1.2} phase={0.4} />
+          <Villager position={[-2.6 + t * 1.5, 0, -1.0]} rotationY={Math.PI / 2} robe={ROBE.farmer} walk={t * 1.5} phase={1.4} />
+          <Villager position={[3.2 + t * 1.2, 0, -1.4]} rotationY={Math.PI / 2} robe={ROBE.smith} walk={t * 1.2} phase={0.4} />
           <Hero position={[2.9 - t * 1.5, 0, -1.6]} rotationY={0.38} animation="walk" animDistance={t * 1.5} face="sad" lookAt={[-0.34, 1.1, -3.4]} />
         </>
       ),
@@ -116,7 +116,7 @@ export const scene1 = storyScene(timing, {
             face="scared"
             headPitch={-0.26}
           />
-          <Villager position={[P - 3.2 + t * 0.9, 0, 6.6]} robe={ROBE.white} walk={t * 0.9} phase={0.5} />
+          <Villager position={[P - 3.2 + t * 0.9, 0, 6.6]} rotationY={Math.PI / 2} robe={ROBE.white} walk={t * 0.9} phase={0.5} />
         </>
       ),
     },

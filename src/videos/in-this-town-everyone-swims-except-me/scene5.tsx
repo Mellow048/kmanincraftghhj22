@@ -64,7 +64,7 @@ export const scene5 = storyScene(timing, {
           </Stranger>
           <Hero
             position={travel(p, [X + 0.3, 0, 76.9], [X + 0.3, 0, 78.4])}
-            rotationY={Math.PI}
+            rotationY={0}
             animation={p < 0.85 ? "walk" : "idle"}
             animDistance={p * 1.5}
             face="surprised"

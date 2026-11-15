@@ -115,7 +115,7 @@ export const scene2 = storyScene(timing, {
         <>
           <Hero
             position={travel(p, [P + 11.4, 0, 2.6], [P + 13.9, 0, 1.4])}
-            rotationY={1.1}
+            rotationY={2.0}
             animation={p < 0.9 ? "walk" : "idle"}
             animDistance={p * 1.8}
             face="scared"
@@ -185,13 +185,13 @@ export const scene2 = storyScene(timing, {
         <>
           <Hero
             position={travel(p, [P + 2.2, -0.7, 6.15], [P + 1.9, 0, 7.25])}
-            rotationY={-1.2}
+            rotationY={-0.27}
             animation={p < 0.9 ? "stagger" : "sit"}
             face="sad"
           />
           <Friend
             position={travel(p, [P + 1.5, -0.55, 5.9], [P + 0.7, 0, 7.4])}
-            rotationY={1.0}
+            rotationY={-0.49}
             animation={p < 0.9 ? "hold" : "standUp"}
             face="worried"
           />
