@@ -108,7 +108,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.feel",
-      ...cam.push({ on: [A + 4, 0.35, 1], dist: 2.4, to: 1.9, yaw: 118, pitch: 22, fov: 40 }),
+      ...cam.push({ on: [A + 4, 0.8, 1], dist: 4.2, to: 3.5, yaw: 118, pitch: 16, fov: 42 }),
       zone: "arena",
       look: "overworld-day",
       note: "Right at the water line, on his hands: the ring is doing the work and his arms are only holding on to it.",
