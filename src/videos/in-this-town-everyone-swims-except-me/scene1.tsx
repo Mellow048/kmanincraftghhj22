@@ -63,7 +63,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.trophy",
-      ...cam.push({ on: [-0.34, 0.9, -3.45], dist: 1.9, to: 1.5, yaw: 0, pitch: 3, fov: 36 }),
+      ...cam.push({ on: [-0.3, 0.95, -3.45], dist: 2.7, to: 2.1, yaw: 6, pitch: 6, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "The prize at its own height, in the glass. There is a boy's shoulder at the edge of the frame, for scale: it is as big as his head.",
@@ -76,7 +76,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.window",
-      ...cam.truck({ on: [0, 2.5, -3.3], dist: 12, yaw: 8, pitch: 7, fov: 40, by: [4.5, 0, 0] }),
+      ...cam.truck({ on: [-1.2, 2.2, -3.3], dist: 10.5, yaw: 34, pitch: 12, fov: 42, by: [4.5, 0, 0] }),
       zone: "village",
       look: "overworld-day",
       note: "Travelling along the front of the hall: the window with the cup in it goes past like a fixture, there all year, above everyone's heads.",
@@ -90,14 +90,14 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.shower",
-      ...cam.orbit({ on: [P - 19, 1.0, 8.0], dist: 3.2, yaw: 34, pitch: 8, yawTo: 16, fov: 38 }),
+      ...cam.orbit({ on: [P - 17.5, 1.05, 13.7], dist: 3.0, yaw: 26, pitch: 8, yawTo: 10, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "He can do this part. Water, from above, on his own terms — and the only place in the film water is safe. An odd angle, half behind the wall.",
       stage: () => (
         <>
-          <Shower at={[P - 19, 0, 8]} />
-          <Hero position={[P - 19, 0, 8.05]} rotationY={0} animation="idle" face="happy" headPitch={-0.2} />
+          <Shower at={[P - 17.5, 0, 14.0]} />
+          <Hero position={[P - 17.5, 0, 13.6]} rotationY={0} animation="idle" face="happy" headPitch={-0.2} />
         </>
       ),
     },

@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { Glow, cam, storyScene } from "../../engine";
 import { Hero, PLACE, Ring, Stranger, timing } from "./kit";
 
 /**
@@ -112,7 +112,9 @@ export const scene5 = storyScene(timing, {
       note: "A ring in a boy's palm, at the size of a ring: cold metal and three little buttons, humming with a light that has no source.",
       stage: () => (
         <>
-          <Ring position={[X, 1.02, 78.62]} rotation={[0.3, 0.8, 0]} scale={2.2} glow={1.1} />
+          <Ring position={[X, 1.02, 78.62]} rotation={[0.3, 0.8, 0]} scale={2.2} glow={1.6} />
+          <pointLight position={[X, 1.35, 78.9]} color="#ffd9a0" intensity={2.4} distance={3} decay={2} />
+          <Glow position={[X, 1.1, 78.7]} size={0.7} color="#ffd9a0" opacity={0.5} />
           <Hero position={[X, 0, 78.6]} rotationY={0.4} animation="hold" face="neutral" />
         </>
       ),

@@ -80,7 +80,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.sink",
-      ...cam.push({ on: [P + 0.9, 0.2, 5.2], dist: 3.0, to: 2.3, yaw: 84, pitch: 6, fov: 40 }),
+      ...cam.push({ on: [P + 0.9, 0.25, 5.2], dist: 3.6, to: 2.8, yaw: 96, pitch: 4, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "Side on, water line through the frame: head above, legs already two stones going down. Show the split, not the feeling.",
@@ -191,14 +191,15 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.days",
-      ...cam.push({ on: [P - 8.5, 1.35, 14.9], dist: 6.5, to: 5.4, yaw: 4, pitch: 5, fov: 40 }),
+      ...cam.push({ on: [P - 8.5, 1.3, 11.5], dist: 6.0, to: 5.0, yaw: 96, pitch: 5, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "The poster on the gate, and three chalk marks: the race is Saturday. A clock we can see, not a feeling.",
       stage: () => (
         <>
           <SignBoard
-            at={[P - 8.5, 0.9, 14.9]}
+            at={[P - 8.5, 0.9, 11.5]}
+            rotationY={Math.PI / 2}
             width={3.6}
             height={2.2}
             tint="#f0e6cc"
@@ -208,7 +209,7 @@ export const scene2 = storyScene(timing, {
               { text: "3 DAYS", height: 0.46, color: "#3c5a66" },
             ]}
           />
-          <Hero position={[P - 10.7, 0, 15.0]} rotationY={1.3} animation="idle" face="sad" />
+          <Hero position={[P - 8.5, 0, 13.4]} rotationY={-1.9} animation="idle" face="sad" />
         </>
       ),
     },

@@ -94,7 +94,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.tired",
-      ...cam.push({ on: [P + 2.3, 0.3, 7.4], dist: 2.8, to: 2.2, yaw: 32, pitch: 18, fov: 38 }),
+      ...cam.push({ on: [P + 2.3, 0.3, 7.4], dist: 3.8, to: 3.0, yaw: 34, pitch: 26, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "Tile level, cheek on the tile, one eye open: the smallest shot in the film, and the emptiest. He is not getting up yet.",

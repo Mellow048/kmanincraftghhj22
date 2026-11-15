@@ -368,8 +368,8 @@ export const Swimmer: React.FC<{
   sink?: number;
 }> = ({ at, turn = 0, children, sink = 0 }) => (
   <group position={[at[0], at[1] - sink, at[2]]} rotation={[0, turn, 0]}>
-    <group position={[0, 0.58, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-      {children}
+    <group rotation={[-Math.PI / 2, 0, 0]}>
+      <group position={[0, -0.6, 0]}>{children}</group>
     </group>
   </group>
 );
