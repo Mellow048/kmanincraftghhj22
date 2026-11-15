@@ -16,7 +16,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.died",
-...cam.push({ on: [FELL[0] - 0.2, 1.0, FELL[2] + 0.1], dist: 2.6, to: 5.2, yaw: -98, pitch: 10, fov: 48 }),
+      ...cam.push({ on: [FELL[0] - 0.3, 0.45, FELL[2]], dist: 2.2, to: 4.6, yaw: -92, pitch: 22, fov: 46 }),
       shake: 0.02,
       handheld: 0.01,
       impacts: [{ at: 0.3, amp: 0.05, dur: 0.4 }],
@@ -34,15 +34,25 @@ export const scene1 = storyScene(timing, {
             headPitch={0.36 - 0.32 * ramp(t, 0.15, 1.7)}
           />
           <Smoke position={[FELL[0], 0, FELL[2]]} count={14} rise={3.2} spread={1.6} size={0.26} opacity={0.55} lean={0.3} />
-          {/* the iron that came off it is still coming down out of the dark */}
-          <Bits position={[FELL[0] + 0.3, 1.5, FELL[2] - 0.2]} t={t + 0.35} color="#7d838c" count={16} power={1.1} />
-          <Bits position={[FELL[0] - 0.5, 1.9, FELL[2] + 0.4]} t={t + 0.7} color="#4a4f56" count={10} power={0.8} />
+          {/* the ground it died on, and the iron still coming down out of the dark */}
+          <mesh position={[FELL[0] + 0.2, 0.02, FELL[2] - 0.1]} rotation={[-Math.PI / 2, 0, 0.3]} receiveShadow>
+            <circleGeometry args={[1.35, 20]} />
+            <meshStandardMaterial color="#241f1b" roughness={1} />
+          </mesh>
+          {[-0.9, 0.7, 1.1, -0.4, 0.2].map((x, i) => (
+            <mesh key={i} position={[FELL[0] + x, 0.1, FELL[2] + (i % 2 ? 0.6 : -0.7)]} rotation={[0.2, i, 0.1]} castShadow>
+              <boxGeometry args={[0.24, 0.11, 0.15]} />
+              <meshStandardMaterial color={i % 2 ? "#5a6068" : "#3d4249"} roughness={0.9} metalness={0.3} />
+            </mesh>
+          ))}
+          <Bits position={[FELL[0] + 0.3, 1.2, FELL[2] - 0.2]} t={t + 0.35} color="#7d838c" count={16} power={1.1} />
+          <Bits position={[FELL[0] - 0.5, 1.6, FELL[2] + 0.4]} t={t + 0.7} color="#4a4f56" count={10} power={0.8} />
         </>
       ),
     },
     {
       cue: "1.back",
-...cam.push({ on: [PLACE.well[0] + 0.3, 1.5, PLACE.well[2] - 0.4], dist: 7.4, to: 3.4, yaw: -18, pitch: -13, fov: 48 }),
+      ...cam.push({ on: [-3.4, 1.45, 3.0], dist: 8.6, to: 2.9, yaw: 26, pitch: 5, fov: 46 }),
       shake: 0.012,
       handheld: 0.008,
       zone: "village",
@@ -51,7 +61,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <IronGolem
-            position={[-2.6, 0, 3.4]}
+            position={[-3.4, 0, 3.0]}
             rotationY={SOUTH - 0.35}
             flower
             headPitch={0.12 - 0.22 * ramp(t, 0.25, 1.5)}
@@ -64,7 +74,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.how",
-...cam.push({ on: [-11, 2.0, -4.05], dist: 5.6, to: 2.5, yaw: 36, pitch: 5, fov: 42 }),
+      ...cam.push({ on: [-11, 2.0, -4.05], dist: 5.6, to: 2.5, yaw: 36, pitch: 5, fov: 42 }),
       shake: 0.014,
       zone: "village",
       look: "overworld-day",

@@ -32,7 +32,7 @@ export const scene9 = storyScene(timing, {
   shots: [
     {
       cue: "14.hooks",
-...cam.push({ on: [PLACE.forge[0] + 0.2, 1.5, PLACE.forge[2] + 0.1], dist: 5.4, to: 2.9, yaw: 6, pitch: 1, fov: 42 }),
+      ...cam.push({ on: [PLACE.forge[0] + 0.2, 1.5, PLACE.forge[2] + 0.1], dist: 5.4, to: 2.9, yaw: 6, pitch: 1, fov: 42 }),
       shake: 0.012,
       zone: "village",
       look: "overworld-day",
@@ -46,7 +46,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.pot",
-...cam.push({ on: [10.0, 1.1, -4.9], dist: 3.6, to: 2.0, yaw: 4, pitch: 9, fov: 36 }),
+      ...cam.push({ on: [10.0, 1.1, -4.9], dist: 3.6, to: 2.0, yaw: 4, pitch: 9, fov: 36 }),
       handheld: 0.01,
       zone: "village",
       look: "overworld-day",
@@ -70,7 +70,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.iron",
-...cam.push({ on: [HEAP[0], 0.9, HEAP[2]], dist: 7.4, to: 4.2, yaw: 18, pitch: 16, fov: 46 }),
+      ...cam.push({ on: [HEAP[0], 0.9, HEAP[2]], dist: 7.4, to: 4.2, yaw: 18, pitch: 16, fov: 46 }),
       shake: 0.012,
       zone: "village",
       look: "overworld-day",
@@ -86,7 +86,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.built",
-...cam.push({ on: [-1.2, 1.7, 1.4], dist: 8.6, to: 4.4, yaw: -18, pitch: -12, fov: 46 }),
+      ...cam.push({ on: [-1.2, 1.55, 1.4], dist: 8.6, to: 4.4, yaw: -18, pitch: 4, fov: 46 }),
       shake: 0.014,
       zone: "village",
       look: "overworld-day",
@@ -104,7 +104,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.afraid",
-...cam.push({ on: [-4.0, 1.72, 0.2], dist: 4.8, to: 2.4, yaw: 28, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [-4.0, 1.72, 0.2], dist: 4.8, to: 2.4, yaw: 28, pitch: 2, fov: 38 }),
       handheld: 0.012,
       zone: "village",
       look: "overworld-day",
@@ -117,7 +117,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.giveback",
-...cam.top({ on: [WELL[0] + 0.3, 0.7, WELL[2] + 0.2], height: 5.2, to: 3.0, spin: [-6, 4], fov: 44 }),
+      ...cam.top({ on: [WELL[0] + 0.3, 0.7, WELL[2] + 0.2], height: 5.2, to: 3.0, spin: [-6, 4], fov: 44 }),
       shake: 0.01,
       zone: "village",
       look: "overworld-day",
@@ -130,7 +130,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.flowers",
-...cam.pan({ from: [WELL[0] + 2.8, 1.9, WELL[2] + 3.4], on: [WELL[0] + 1.0, 0.95, WELL[2] + 0.3], onTo: [WELL[0] - 1.0, 0.95, WELL[2] + 0.2], fov: 36, fovTo: 30 }),
+      ...cam.pan({ from: [WELL[0] + 2.8, 1.9, WELL[2] + 3.4], on: [WELL[0] + 1.0, 0.95, WELL[2] + 0.3], onTo: [WELL[0] - 1.0, 0.95, WELL[2] + 0.2], fov: 36, fovTo: 30 }),
       handheld: 0.01,
       zone: "village",
       look: "overworld-day",
@@ -139,7 +139,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.ours",
-...cam.push({ on: [WELL[0] - 0.3, 1.4, WELL[2] - 0.6], dist: 7.6, to: 4.2, yaw: 62, pitch: 12, fov: 48 }),
+      ...cam.push({ on: [WELL[0] - 0.3, 1.4, WELL[2] - 0.6], dist: 7.6, to: 4.2, yaw: 62, pitch: 12, fov: 48 }),
       shake: 0.012,
       zone: "village",
       look: "overworld-day",
@@ -154,7 +154,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.held",
-...cam.push({ on: [WELL[0] + 0.55, 1.2, WELL[2] + 1.5], dist: 4.4, to: 2.1, yaw: -22, pitch: 1, fov: 36 }),
+      ...cam.push({ on: [WELL[0] + 0.6, 1.15, WELL[2] + 1.5], dist: 4.2, to: 1.9, yaw: -58, pitch: 12, fov: 36 }),
       shake: 0.008,
       handheld: 0.008,
       zone: "village",
@@ -162,20 +162,31 @@ export const scene9 = storyScene(timing, {
       note: "'Then it held one out to me': the iron hand, open, with the rose lying across it, at a kid's chest height. Nothing else in the frame but the hand and the flower.",
       stage: (t) => (
         <>
-          <IronGolem
-            position={[WELL[0] - 0.6, 0, WELL[2] + 0.3]}
-            rotationY={SOUTH + 1.35}
-            armR={-1.2 + 0.12 * Math.min(1, t * 1.5)}
-            headPitch={0.34}
-            headYaw={-0.2}
-          />
-          <Rose position={[WELL[0] + 0.55, 1.18 + 0.02 * Math.sin(t * 3), WELL[2] + 1.5]} scale={1.5} turn={0.9 + t * 0.04} />
+          {/* The hand is built here rather than posed on the golem: the golem's arm comes off the
+              shoulder at an angle that fills the frame with iron, and the rose has to be the thing. */}
+          <group position={[WELL[0] + 0.75, 0, WELL[2] + 1.5]} rotation={[0, -0.4, 0]}>
+            <mesh position={[-0.72, 1.02, 0]} castShadow>
+              <boxGeometry args={[1.0, 0.26, 0.26]} />
+              <meshStandardMaterial color="#8d8f92" roughness={0.9} metalness={0.15} />
+            </mesh>
+            <mesh position={[-0.06, 0.99, -0.02]} castShadow>
+              <boxGeometry args={[0.4, 0.17, 0.44]} />
+              <meshStandardMaterial color="#9a9c9f" roughness={0.9} metalness={0.15} />
+            </mesh>
+            {[-1, 1].map((s) => (
+              <mesh key={s} position={[0.13, 1.07, s * 0.17]} castShadow>
+                <boxGeometry args={[0.22, 0.13, 0.11]} />
+                <meshStandardMaterial color="#9a9c9f" roughness={0.9} metalness={0.15} />
+              </mesh>
+            ))}
+          </group>
+          <Rose position={[WELL[0] + 0.62, 1.13 + 0.02 * Math.sin(t * 3), WELL[2] + 1.5]} scale={1.5} turn={0.5 + t * 0.04} />
         </>
       ),
     },
     {
       cue: "14.mine",
-...cam.push({ on: [WELL[0] + 0.55, 1.18, WELL[2] + 1.5], dist: 3.0, to: 1.7, yaw: 12, pitch: 7, fov: 34 }),
+      ...cam.push({ on: [WELL[0] + 0.55, 1.18, WELL[2] + 1.5], dist: 3.0, to: 1.7, yaw: 12, pitch: 7, fov: 34 }),
       handheld: 0.012,
       impacts: [{ at: MINE, amp: 0.03, dur: 0.25 }],
       zone: "village",
@@ -190,7 +201,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.sub",
-...cam.push({ on: [0, 1.42, 2.2], dist: 4.2, to: 2.3, yaw: 0, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [0, 1.42, 2.2], dist: 4.2, to: 2.3, yaw: 0, pitch: 3, fov: 42 }),
       shake: 0.012,
       zone: "village",
       look: "overworld-day",

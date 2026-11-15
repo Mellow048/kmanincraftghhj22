@@ -32,7 +32,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "8.behind",
-...cam.orbit({ on: [22.2, 1.0, 1.4], dist: 5.4, yaw: -52, yawTo: -22, pitch: 9, distTo: 3.2, fov: 46 }),
+      ...cam.orbit({ on: [22.2, 1.0, 1.4], dist: 5.4, yaw: -52, yawTo: -22, pitch: 9, distTo: 3.2, fov: 46 }),
       shake: 0.024,
       zone: "gate",
       look: "lantern-night",
@@ -49,7 +49,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "8.shout",
-...cam.push({ on: [19.0, 1.34, 2.0], dist: 2.5, to: 1.3, yaw: 404, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [19.0, 1.34, 2.0], dist: 2.5, to: 1.3, yaw: 404, pitch: 2, fov: 32 }),
       shake: 0.03,
       impacts: [{ at: SHOUT, amp: 0.05, dur: 0.25 }],
       zone: "gate",
@@ -63,7 +63,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "8.late",
-...cam.push({ on: [19.6, 1.5, 2.0], dist: 14.0, to: 8.8, yaw: -76, pitch: 8, fov: 54 }),
+      ...cam.push({ on: [19.6, 1.5, 2.0], dist: 14.0, to: 8.8, yaw: -76, pitch: 8, fov: 54 }),
       shake: 0.018,
       zone: "gate",
       look: "lantern-night",
@@ -78,7 +78,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.boom",
-...cam.push({ on: [22.6, 1.5, 2.0], dist: 5.4, to: 3.1, yaw: 82, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [22.6, 1.5, 2.0], dist: 5.4, to: 3.1, yaw: 82, pitch: 6, fov: 46 }),
       shake: 0.03,
       impacts: [{ at: BOOM, amp: 0.17, dur: 0.55 }],
       zone: "gate",
@@ -89,7 +89,9 @@ export const scene6 = storyScene(timing, {
         const s = pop_scale(t, BOOM);
         return (
           <>
-            <IronGolem position={[22.4, 0, 2.2]} rotationY={SOUTH + 1.5} />
+            <group visible={t < BOOM + 0.14}>
+              <IronGolem position={[22.4, 0, 2.2]} rotationY={SOUTH + 1.5} />
+            </group>
             <Creeper position={[23.5, 0, 1.1]} rotationY={SOUTH - 2.0} fuse={0.4 + 0.6 * k} />
             {/* the core of it */}
             <mesh position={[23.2, 1.0, 1.4]} scale={s} visible={t > BOOM - 0.06}>
@@ -105,7 +107,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.dust",
-...cam.push({ on: [FELL[0], 0.45, FELL[2]], dist: 2.7, to: 7.8, yaw: -64, pitch: 19, fov: 50 }),
+      ...cam.push({ on: [FELL[0], 0.45, FELL[2]], dist: 2.7, to: 7.8, yaw: -64, pitch: 19, fov: 50 }),
       shake: 0.02,
       zone: "gate",
       look: "lantern-night",

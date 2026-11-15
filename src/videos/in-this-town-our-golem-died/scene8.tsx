@@ -76,7 +76,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "12.home",
-...cam.push({ on: room(0.5, 1.0, 0.4), dist: 5.8, to: 3.3, yaw: 6, pitch: 6, fov: 48 }),
+      ...cam.push({ on: room(0.5, 1.0, 0.4), dist: 5.8, to: 3.3, yaw: 6, pitch: 6, fov: 48 }),
       shake: 0.014,
       zone: "room",
       look: "lantern-night",
@@ -97,7 +97,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "12.bed",
-...cam.push({ on: room(1.1, 0.7, -1.2), dist: 4.8, to: 2.6, yaw: 20, pitch: 42, fov: 46 }),
+      ...cam.push({ on: room(1.1, 0.7, -1.2), dist: 4.8, to: 2.6, yaw: 20, pitch: 42, fov: 46 }),
       handheld: 0.014,
       zone: "room",
       look: "lantern-night",
@@ -111,7 +111,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.light",
-...cam.push({ on: room(1.3, 1.8, -2.3), dist: 5.6, to: 2.8, yaw: -9, pitch: 5, fov: 48 }),
+      ...cam.push({ on: room(1.3, 1.8, -2.3), dist: 5.6, to: 2.8, yaw: -9, pitch: 5, fov: 48 }),
       handheld: 0.012,
       zone: "room",
       look: "overworld-day",
@@ -126,7 +126,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.square",
-...cam.truck({ on: [1.0, 1.45, 3.4], dist: 4.6, yaw: 100, pitch: 12, by: [-2.0, 0, 0], fov: 44 }),
+      ...cam.truck({ on: [1.0, 1.45, 3.4], dist: 4.6, yaw: 100, pitch: 12, by: [-2.0, 0, 0], fov: 44 }),
       shake: 0.016,
       zone: "village",
       look: "overworld-day",
@@ -141,7 +141,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.there",
-...cam.push({ on: [-1.2, 1.9, 2.2], dist: 8.4, to: 4.2, yaw: 13, pitch: -9, fov: 46 }),
+      ...cam.push({ on: [-1.2, 1.6, 2.2], dist: 8.4, to: 4.2, yaw: 13, pitch: 3, fov: 46 }),
       shake: 0.012,
       zone: "village",
       look: "overworld-day",
@@ -152,7 +152,7 @@ export const scene8 = storyScene(timing, {
           <Hero position={[1.9, 0, 3.2]} rotationY={SOUTH + 0.5} animation="idle" face="wow" gaze={0} />
           <Villager position={[-4.2, 0, 1.0]} rotationY={SOUTH + 0.3} robe={ROBE.white} hat="straw" phase={0.4} />
           {/* the iron that built it, still where they left it */}
-          <IronHeap position={[-1.2, 0, 3.6]} />
+          <IronHeap position={[-4.4, 0, 2.4]} />
         </>
       ),
     },

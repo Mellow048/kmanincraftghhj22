@@ -41,7 +41,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "6.bell",
-...cam.orbit({ on: [BELL[0], 1.7, BELL[2] + 0.2], dist: 6.2, yaw: 18, yawTo: -28, pitch: -3, distTo: 3.8, fov: 46 }),
+      ...cam.orbit({ on: [BELL[0], 1.7, BELL[2] + 0.2], dist: 6.2, yaw: 18, yawTo: -28, pitch: -3, distTo: 3.8, fov: 46 }),
       shake: 0.02,
       impacts: [{ at: RANG, amp: 0.06, dur: 0.35 }],
       zone: "village",
@@ -56,7 +56,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "6.wall",
-...cam.push({ on: [22, 3.0, 2.0], dist: 10.4, to: 5.8, yaw: -76, pitch: -24, fov: 50 }),
+      ...cam.push({ on: [22, 3.0, 2.0], dist: 9.6, to: 5.6, yaw: -72, pitch: -13, fov: 50 }),
       shake: 0.022,
       zone: "gate",
       look: "lantern-night",
@@ -78,7 +78,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.sword",
-...cam.push({ on: [SWORD_AT[0] - 0.2, 1.05, SWORD_AT[2]], dist: 5.0, to: 2.3, yaw: 64, pitch: 5, fov: 44 }),
+      ...cam.push({ on: [SWORD_AT[0] - 0.2, 1.05, SWORD_AT[2]], dist: 5.0, to: 2.3, yaw: 64, pitch: 5, fov: 44 }),
       shake: 0.016,
       impacts: [{ at: GRAB, amp: 0.05, dur: 0.3 }],
       zone: "village",
@@ -94,7 +94,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.zombie",
-...cam.orbit({ on: [19.9, 1.35, 2.0], dist: 4.4, yaw: 106, yawTo: 76, pitch: 6, distTo: 2.8, fov: 42 }),
+      ...cam.orbit({ on: [19.9, 1.35, 2.0], dist: 4.4, yaw: 106, yawTo: 76, pitch: 6, distTo: 2.8, fov: 42 }),
       shake: 0.02,
       impacts: [{ at: HIT_Z, amp: 0.1, dur: 0.3 }],
       zone: "gate",
@@ -128,7 +128,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.skeleton",
-...cam.orbit({ on: [20.4, 1.3, 3.0], dist: 4.8, yaw: -52, yawTo: -86, pitch: -12, distTo: 2.9, fov: 42 }),
+      ...cam.orbit({ on: [20.4, 1.3, 3.0], dist: 4.8, yaw: -52, yawTo: -86, pitch: -5, distTo: 2.9, fov: 42 }),
       shake: 0.02,
       impacts: [{ at: HIT_S, amp: 0.09, dur: 0.3 }],
       zone: "gate",
@@ -154,7 +154,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "7.proud",
-...cam.push({ on: [19.0, 1.3, 2.0], dist: 2.9, to: 1.35, yaw: 410, pitch: 3, fov: 34 }),
+      ...cam.push({ on: [19.0, 1.3, 2.0], dist: 2.9, to: 1.35, yaw: 410, pitch: 3, fov: 34 }),
       shake: 0.012,
       handheld: 0.012,
       zone: "gate",
