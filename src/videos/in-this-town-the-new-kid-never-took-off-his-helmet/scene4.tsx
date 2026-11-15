@@ -238,7 +238,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.noface",
       cut: 0.95,
-      ...cam.push({ on: at(P, 0, 1.15, 0.6), dist: 3.7, to: 3.3, yaw: 150, pitch: 27, fov: 42 }),
+      ...cam.push({ on: at(P, 0, 1.15, 0.6), dist: 4.1, to: 3.7, yaw: 150, pitch: 40, fov: 40 }),
       zone: "woods",
       look: NIGHT,
       note: "No words. From behind his bare head, so we still have not seen it: the two who held his arms let go, one and then the other, and step away from him. He lifts his head and looks at each of them.",

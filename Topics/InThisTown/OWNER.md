@@ -120,4 +120,15 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   knows a thing they were not shown finding out. Three spoken lines are milder than the ones he approved, because the
   voice service refused the clip; the picture shows what the words do not. He has not reviewed the film. Script
   drafts for race part 2 and Monster Village part 4 are in `outlines/`, both the agent's stories, waiting for his yes.
+- **2026-11-15, his review of the helmet film.** "short is good as usual but the part where he finnaly unmasked that
+  scene wasnt making me feel like 'oh no!' or 'thats unsettling' it feels.. empty, add more movement and polish to it
+  and improve the retention." The reveal had been three lines in 4.3 seconds with almost nothing moving. Now it is
+  ten seconds and seven shots: the helmet lands and rocks in silence; the puller's face changes; the two let go one
+  after the other; his head comes up on "hole"; something slides about inside; a thin arm crosses the gap and touches
+  the puller's face; then the burst, with the camera shaking. No new voice: clip 06 was cut into five files so that
+  pauses could go between the lines (`# clip … wait`). **Lesson: the big moment of a horror film needs time with no
+  words in it. Give the reveal its own clips, so the pauses can be set.**
+- **2026-11-15.** He sent the outline for Monster Village part 4 (`outlines/monster-village-part-4.md`, with script
+  draft 1) and asked for the helmet part 2 script to be saved for later (`outlines/helmet-kid-part-2-script-draft.md`).
+  "for the 2 shorts lets make them too": race part 2 and Monster Village part 4 are to be built.
 - Nobody has listened to either new mix. Monster Village 1, 2 and Robot at 18 still have the `offset` sound fault.
