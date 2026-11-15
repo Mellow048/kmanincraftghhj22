@@ -103,13 +103,13 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.toes",
-      ...cam.push({ on: [P + 1.3, 0.1, 6.15], dist: 1.7, to: 1.3, yaw: 82, pitch: 9, fov: 40 }),
+      ...cam.push({ on: [P + 1.2, 0.28, 6.15], dist: 2.4, to: 1.9, yaw: 200, pitch: 11, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "From above and behind: ten toes on the tile, the water one centimetre past them. The line in the sand is a line of tile.",
       stage: () => (
         <>
-          <Hero position={[P + 1.2, 0, 6.3]} rotationY={Math.PI} animation="idle" face="scared" headPitch={-0.26} />
+          <Hero position={[P + 1.2, 0, 6.12]} rotationY={Math.PI} animation="idle" face="scared" headPitch={-0.26} />
           <Villager position={[P - 3.2, 0, 6.6]} robe={ROBE.white} walk={1.3} phase={0.5} />
         </>
       ),

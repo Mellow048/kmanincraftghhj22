@@ -81,7 +81,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.tiles",
-      ...cam.top({ on: [P + 2.3, 0.1, 7.3], height: 5.4, to: 3.6, spin: [-7, 2], fov: 42 }),
+      ...cam.top({ on: [P + 2.75, 0.1, 7.3], height: 6.6, to: 4.6, spin: [-7, 2], fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "The shot the owner asked for: straight down, his whole body flat on the white tiles, arms out, water still running off him. Nothing else in frame.",

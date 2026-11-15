@@ -67,14 +67,15 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.ask",
-      ...cam.push({ on: [X, 1.2, 78.6], dist: 2.1, to: 1.6, yaw: 2, pitch: 5, fov: 36 }),
+      ...cam.push({ on: [X, 1.15, 79.6], dist: 3.6, to: 3.0, yaw: -96, pitch: 6, fov: 38 }),
       zone: "woods",
       look: "overworld-night",
       note: "He asks the question. The ring is huge and out of focus in the foreground, because the answer is going to be nothing.",
       stage: () => (
         <>
-          <Hero position={[X, 0, 78.6]} rotationY={0.1} animation="talk" face="worried" />
-          <Ring position={[X - 0.34, 1.16, 79.7]} rotation={[0.2, 0.4, 0]} scale={3.2} glow={0.9} />
+          <Hero position={[X, 0, 78.8]} rotationY={0.1} animation="talk" face="worried" />
+          <Stranger position={[X, 0, 81.2]} rotationY={Math.PI} animation="hold" />
+          <Ring position={[X, 1.12, 80.5]} rotation={[0.2, 0.5, 0]} scale={3.2} glow={1.0} />
         </>
       ),
     },

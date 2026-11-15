@@ -47,7 +47,7 @@ export const scene2 = storyScene(timing, {
       note: "Pull out across the empty morning pool to him arriving at the far corner: a small daily ritual, and the water enormous.",
       stage: () => (
         <>
-          <Hero position={[P + 13.6, 0, -7.6]} rotationY={-Math.PI / 2} animation="walk" animDistance={0.9} face="neutral" />
+          <Hero position={[P - 13.7, 0, 0]} rotationY={Math.PI / 2} animation="walk" animDistance={0.9} face="neutral" />
           <Villager position={[P - 9, 0, -8]} robe={ROBE.brown} walk={0.8} phase={0.9} />
         </>
       ),
