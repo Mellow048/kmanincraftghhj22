@@ -36,8 +36,8 @@ export const scene5 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[0.4, 0, 2.6]} rotationY={Math.PI + 0.3} animation="idle" face="surprised" headYaw={0.5} />
-          <pointLight position={[0.4, 2.1, 3.4]} color="#9fb8d8" intensity={7} distance={12} decay={2} />
-          <pointLight position={[0.4, 1.2, 1.4]} color="#ffd9a0" intensity={4} distance={9} decay={2} />
+          <pointLight position={[0.9, 2.3, 3.6]} color="#b9cbe4" intensity={26} distance={18} decay={2} />
+          <pointLight position={[0.4, 1.6, 1.6]} color="#ffd9a0" intensity={12} distance={11} decay={2} />
         </>
       ),
     },
@@ -64,7 +64,7 @@ export const scene5 = storyScene(timing, {
           <Stranger position={[X, 0, 81.4]} rotationY={Math.PI} animation="hold">
             <Ring position={[0, 0, 0]} scale={1.15} glow={1.0} lit={2} />
           </Stranger>
-          <pointLight position={[X + 0.5, 1.5, 80.6]} color="#ffe3b0" intensity={10} distance={14} decay={2} />
+          <pointLight position={[X + 0.5, 1.7, 80.4]} color="#ffe3b0" intensity={3.5} distance={12} decay={2} />
           <pointLight position={[X, 2.4, 78.2]} color="#8fa9cc" intensity={5} distance={12} decay={2} />
           <Hero
             position={travel(p, [X + 0.3, 0, 76.9], [X + 0.3, 0, 78.4])}

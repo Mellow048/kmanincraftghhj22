@@ -54,7 +54,6 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Phone position={[120.9, 0.66, 39.95]} rotation={[-0.35, 0.06, 0]} word="LEARN FAST" />
-          <Hero position={[122.7, 0.34, 39.9]} rotationY={0} animation="lie" face="sleepy" />
         </>
       ),
     },

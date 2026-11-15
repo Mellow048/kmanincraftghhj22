@@ -151,7 +151,7 @@ export const scene8 = storyScene(timing, {
       note: "From in front, low: he swims harder than he has ever swum, and the water does not care about effort.",
       stage: () => (
         <>
-          <Crawling at={[A + 6, 0.5, 1]} turn={Math.PI / 2} />
+          <Hero position={[A + 6, 0.42, 1]} rotationY={Math.PI / 2} animation="reach" face="scared" />
           <Splash at={[A + 6.3, 0.05, 1]} size={0.2} count={10} seed={103} />
         </>
       ),
@@ -241,7 +241,7 @@ export const scene8 = storyScene(timing, {
       note: "The owner's ending shot: straight down, on the white tiles, arms out, a wet red shirt and a number that says sixty-six. He does not move.",
       stage: () => (
         <>
-          <Hero position={[A + 10, -0.22, -7.8]} rotationY={1.2} animation="lie" face="sad" />
+          <Hero position={[A + 10, -0.5, -7.8]} rotationY={1.2} animation="lie" face="sad" />
           <Splash at={[A + 10, 0.02, -7.3]} size={0.08} count={4} seed={109} />
         </>
       ),
@@ -255,7 +255,7 @@ export const scene8 = storyScene(timing, {
       stage: () => (
         <>
           <Rival position={[A + 10.7, 0, -6.7]} rotationY={Math.PI + 0.4} animation="reach" face="smug" ring />
-          <Hero position={[A + 10.2, 0.02, -7.8]} rotationY={1.2} animation="lie" face="surprised" headYaw={-0.5} />
+          <Hero position={[A + 10.2, -0.45, -7.8]} rotationY={1.2} animation="lie" face="surprised" headYaw={-0.5} />
         </>
       ),
     },
@@ -267,7 +267,7 @@ export const scene8 = storyScene(timing, {
       note: "Cheek on the tile, one eye open, the ring still in his own hand: 'this is going to be a problem' — said with no breath left.",
       stage: () => (
         <>
-          <Hero position={[A + 10.2, 0.02, -7.7]} rotationY={1.2} animation="lie" face="worried" headPitch={0.2} />
+          <Hero position={[A + 10.2, -0.45, -7.7]} rotationY={1.2} animation="lie" face="worried" headPitch={0.2} />
         </>
       ),
     },
