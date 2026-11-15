@@ -283,14 +283,14 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.steps",
-      ...cam.push({ on: f(-2.5, 2.3, -3), dist: 7.4, to: 7.0, yaw: 200, pitch: -6, fov: 50 }),
+      ...cam.push({ on: f(-1.6, 2.6, -3.6), onTo: f(2.6, 2.6, -3.6), dist: 8.4, to: 8.0, yaw: 196, pitch: -6, fov: 50 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.35, amp: 0.07, dur: 0.3 }, { at: 0.95, amp: 0.07, dur: 0.3 }, { at: 1.55, amp: 0.07, dur: 0.3 }, { at: 2.1, amp: 0.07, dur: 0.25 }],
       note: "From the yard, low: the golem walks across the picture into the smoke, and behind its legs the boy is at the back bars of his cage, holding on. At every step the whole picture jumps and the boy with it.",
       stage: (t) => {
         const j = Math.max(bump(t, 0.35, 0.25), bump(t, 0.95, 0.25), bump(t, 1.55, 0.25), bump(t, 2.1, 0.25)) * 0.06;
-        const gx = 0.5 + t * 2.2;
+        const gx = -1.6 + t * 2.2;
         return (
           <>
             <Yard t={t} smoke hero="none" />
