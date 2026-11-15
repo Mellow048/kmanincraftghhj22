@@ -152,7 +152,7 @@ export const Rival: React.FC<A> = ({ ring = false, children, ...p }) => (
     blink
     {...p}
   >
-    {ring ? <Worn lit={2} tint="#d8d8e0" /> : null}
+    {ring ? <Worn lit={2} /> : null}
     {children}
   </MinecraftAvatar>
 );

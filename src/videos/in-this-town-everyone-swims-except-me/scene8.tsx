@@ -133,7 +133,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.glint",
-      ...cam.push({ on: [A + 7.95, 0.8, 2.0], dist: 3.0, to: 2.4, yaw: 28, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [A + 7.8, 0.75, 2.0], dist: 2.7, to: 2.1, yaw: 268, pitch: 12, fov: 40 }),
       zone: "arena",
       look: "overworld-day",
       note: "SLOW: a gold band with three buttons on the hand of the boy in front. The same ring, on somebody else, in the same race.",
@@ -198,7 +198,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.dare",
-      ...cam.push({ on: [A + 9.9, 0.85, 1.2], dist: 2.8, to: 2.3, yaw: 44, pitch: 12, fov: 42 }),
+      ...cam.push({ on: [A + 9.8, 0.85, 1.2], dist: 3.4, to: 2.8, yaw: 40, pitch: 12, fov: 42 }),
       zone: "arena",
       look: "overworld-day",
       note: "His thumb over the red button, and the ring glowing under it. He could. He does not. The film's choice happens in one centimetre.",

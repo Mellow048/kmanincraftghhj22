@@ -183,7 +183,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.buttons",
-      ...cam.top({ on: [P + 3.42, 0.42, 7.76], height: 0.75, to: 0.55, spin: [-10, 2], fov: 38 }),
+      ...cam.push({ on: [P + 3, 0.8, 7.4], dist: 2.3, to: 1.75, yaw: 22, pitch: 16, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "Straight down, filling the frame: three little buttons on a gold band around his arm. Red, yellow, green — a toy's idea of power.",
@@ -195,7 +195,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.medium",
-      ...cam.push({ on: [P + 3.5, 0.62, 7.8], dist: 1.5, to: 1.15, yaw: 16, pitch: 18, fov: 36 }),
+      ...cam.push({ on: [P + 3, 0.8, 7.4], dist: 2.2, to: 1.7, yaw: 26, pitch: 16, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "A finger over the middle button, and the ring glowing under it. 'Max speed. Medium. Low.' — three words, one choice.",
@@ -219,7 +219,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.low",
-      ...cam.push({ on: [P + 3.52, 0.6, 7.8], dist: 1.45, to: 1.1, yaw: 22, pitch: 20, fov: 36 }),
+      ...cam.push({ on: [P + 3, 0.8, 7.4], dist: 2.2, to: 1.7, yaw: 30, pitch: 16, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "The same finger moves one button down, to green. Not because low is clever — because medium was frightening.",
