@@ -304,13 +304,13 @@ export const Ring: React.FC<{ position: Vec3; rotation?: Vec3; scale?: number; g
 }) => (
   <group position={position} rotation={rotation} scale={scale}>
     <mesh rotation={[Math.PI / 2, 0, 0]}>
-      <torusGeometry args={[0.058, 0.013, 10, 22]} />
+      <torusGeometry args={[0.027, 0.0065, 10, 22]} />
       <meshStandardMaterial color="#e6c068" metalness={0.95} roughness={0.22} emissive="#4a3408" emissiveIntensity={glow} />
     </mesh>
     {/* the three buttons, on the outside of the band */}
     {[0, 1, 2].map((i) => (
-      <mesh key={i} position={[0, 0.012, 0.062 + i * 0.026]}>
-        <boxGeometry args={[0.022, 0.012, 0.018]} />
+      <mesh key={i} position={[0, 0.006, 0.029 + i * 0.012]}>
+        <boxGeometry args={[0.009, 0.005, 0.008]} />
         <meshStandardMaterial
           color={i === 0 ? "#e2574a" : i === 1 ? "#e8d27a" : "#7fd4a0"}
           emissive={i === lit - 1 ? "#fff0c0" : "#000000"}

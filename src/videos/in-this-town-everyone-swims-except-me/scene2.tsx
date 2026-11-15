@@ -191,7 +191,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.days",
-      ...cam.push({ on: [P - 8.5, 1.5, 14.6], dist: 9, to: 7.5, yaw: 6, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [P - 8.5, 1.35, 14.9], dist: 6.5, to: 5.4, yaw: 4, pitch: 5, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "The poster on the gate, and three chalk marks: the race is Saturday. A clock we can see, not a feeling.",
@@ -208,7 +208,7 @@ export const scene2 = storyScene(timing, {
               { text: "3 DAYS", height: 0.46, color: "#3c5a66" },
             ]}
           />
-          <Hero position={[P - 7.4, 0, 15.2]} rotationY={-0.4} animation="idle" face="sad" />
+          <Hero position={[P - 10.7, 0, 15.0]} rotationY={1.3} animation="idle" face="sad" />
         </>
       ),
     },

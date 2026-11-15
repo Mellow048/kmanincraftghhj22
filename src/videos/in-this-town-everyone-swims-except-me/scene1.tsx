@@ -90,7 +90,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.shower",
-      ...cam.orbit({ on: [P - 19, 1.0, 8], dist: 2.5, yaw: 148, pitch: 9, yawTo: 168, fov: 38 }),
+      ...cam.orbit({ on: [P - 19, 1.0, 8.0], dist: 3.2, yaw: 34, pitch: 8, yawTo: 16, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "He can do this part. Water, from above, on his own terms — and the only place in the film water is safe. An odd angle, half behind the wall.",
@@ -103,7 +103,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.toes",
-      ...cam.push({ on: [P + 1.2, 0.28, 6.15], dist: 2.4, to: 1.9, yaw: 200, pitch: 11, fov: 40 }),
+      ...cam.push({ on: [P + 1.2, 0.06, 5.98], dist: 2.2, to: 1.7, yaw: 172, pitch: -2, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "From above and behind: ten toes on the tile, the water one centimetre past them. The line in the sand is a line of tile.",

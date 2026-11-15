@@ -115,7 +115,7 @@ export const scene8 = storyScene(timing, {
       stage: () => (
         <>
           <Crawling at={[A + 4, -0.02, 1]} turn={Math.PI / 2} />
-          <Ring position={[A + 4.3, 0.14, 1.1]} rotation={[0.4, 0.8, 0]} scale={4.0} glow={1.3} lit={3} />
+          <Ring position={[A + 4.3, 0.14, 1.1]} rotation={[0.4, 0.8, 0]} scale={2} glow={1.3} lit={3} />
         </>
       ),
     },
@@ -141,7 +141,7 @@ export const scene8 = storyScene(timing, {
       stage: () => (
         <>
           <Other at={[A + 7.8, -0.02, 2]} who={1} turn={Math.PI / 2} />
-          <Ring position={[A + 7.5, 0.12, 2.5]} rotation={[0.6, 1.1, 0]} scale={4.6} glow={1.5} lit={2} />
+          <Ring position={[A + 7.5, 0.12, 2.5]} rotation={[0.6, 1.1, 0]} scale={2.3} glow={1.5} lit={2} />
         </>
       ),
     },
@@ -206,7 +206,7 @@ export const scene8 = storyScene(timing, {
       note: "His thumb over the red button, and the ring glowing under it. He could. He does not. The film's choice happens in one centimetre.",
       stage: () => (
         <>
-          <Ring position={[A + 9.8, 0.9, 1.2]} rotation={[0.3, 1.0, 0]} scale={4.6} glow={1.5} lit={3} />
+          <Ring position={[A + 9.8, 0.9, 1.2]} rotation={[0.3, 1.0, 0]} scale={2.3} glow={1.5} lit={3} />
           <Hero position={[A + 9.8, -0.2, 1.2]} rotationY={Math.PI / 2} animation="press" face="worried" />
         </>
       ),
@@ -258,7 +258,7 @@ export const scene8 = storyScene(timing, {
       stage: () => (
         <>
           <Rival position={[A + 10.7, 0, -6.7]} rotationY={Math.PI + 0.4} animation="reach" face="smug" />
-          <Ring position={[A + 10.52, 0.86, -6.86]} rotation={[0.3, 0.9, 0]} scale={4.2} glow={1.4} lit={2} />
+          <Ring position={[A + 10.52, 0.86, -6.86]} rotation={[0.3, 0.9, 0]} scale={2.1} glow={1.4} lit={2} />
           <Hero position={[A + 10.2, 0.02, -7.8]} rotationY={1.2} animation="lie" face="surprised" headYaw={-0.5} />
         </>
       ),

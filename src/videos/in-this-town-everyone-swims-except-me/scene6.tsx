@@ -37,7 +37,7 @@ export const scene6 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[121.1, 0.34, 39.7]} rotationY={0} animation="sit" face="neutral" />
-          <Ring position={[121.1, 0.9, 40.1]} rotation={[0.4, 0.3, 0]} scale={3.6} glow={0.5} lit={0} />
+          <Ring position={[121.1, 0.9, 40.1]} rotation={[0.4, 0.3, 0]} scale={1.8} glow={0.5} lit={0} />
         </>
       ),
     },
@@ -50,7 +50,7 @@ export const scene6 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[120.9, 0, 40.4]} rotationY={-0.3} animation="lift" face="happy" />
-          <Ring position={[120.68, 0.86, 40.52]} rotation={[0.3, 0.5, 0]} scale={3.2} glow={0.5} lit={0} />
+          <Ring position={[120.68, 0.86, 40.52]} rotation={[0.3, 0.5, 0]} scale={1.6} glow={0.5} lit={0} />
         </>
       ),
     },
@@ -173,7 +173,7 @@ export const scene6 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[P + 3, 0, 7.4]} rotationY={0.2} animation="hold" face="surprised" />
-          <Ring position={[P + 2.86, 0.86, 7.52]} rotation={[0.3, 0.6, 0]} scale={3.4} glow={1.0} lit={2} />
+          <Ring position={[P + 2.86, 0.86, 7.52]} rotation={[0.3, 0.6, 0]} scale={1.7} glow={1.0} lit={2} />
         </>
       ),
     },
@@ -185,7 +185,7 @@ export const scene6 = storyScene(timing, {
       note: "Straight down, filling the frame: three little buttons on a gold band. Red, yellow, green — a toy's idea of power.",
       stage: () => (
         <>
-          <Ring position={[P + 3, 0.9, 7.42]} rotation={[0.1, 0, 0]} scale={5.0} glow={1.2} lit={2} />
+          <Ring position={[P + 3, 0.9, 7.42]} rotation={[0.1, 0, 0]} scale={2.5} glow={1.2} lit={2} />
         </>
       ),
     },
@@ -197,7 +197,7 @@ export const scene6 = storyScene(timing, {
       note: "A finger over the middle button, and the ring glowing under it. 'Max speed. Medium. Low.' — three words, one choice.",
       stage: () => (
         <>
-          <Ring position={[P + 3, 0.9, 7.4]} rotation={[0.2, 1.2, 0]} scale={4.2} glow={1.4} lit={2} />
+          <Ring position={[P + 3, 0.9, 7.4]} rotation={[0.2, 1.2, 0]} scale={2.1} glow={1.4} lit={2} />
           <Hero position={[P + 3, 0, 7.4]} rotationY={0.4} animation="press" face="worried" />
         </>
       ),
@@ -222,7 +222,7 @@ export const scene6 = storyScene(timing, {
       note: "The same finger moves one button down, to green. Not because low is clever — because medium was frightening.",
       stage: () => (
         <>
-          <Ring position={[P + 3, 0.9, 7.4]} rotation={[0.2, 1.2, 0]} scale={4.2} glow={1.4} lit={3} />
+          <Ring position={[P + 3, 0.9, 7.4]} rotation={[0.2, 1.2, 0]} scale={2.1} glow={1.4} lit={3} />
           <Hero position={[P + 3, 0, 7.4]} rotationY={0.4} animation="press" face="sad" />
         </>
       ),
@@ -258,7 +258,7 @@ export const scene6 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[P + 8, 0, 6.4]} rotationY={0} animation="shrug" face="neutral" />
-          <Ring position={[P + 7.86, 0.86, 6.52]} rotation={[0.3, 0.6, 0]} scale={3.0} glow={0.9} lit={3} />
+          <Ring position={[P + 7.86, 0.86, 6.52]} rotation={[0.3, 0.6, 0]} scale={1.5} glow={0.9} lit={3} />
         </>
       ),
     },

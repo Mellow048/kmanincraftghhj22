@@ -92,7 +92,7 @@ export const scene7 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[A - 14.1, 0, -2]} rotationY={0.4} animation="hold" face="neutral" />
-          <Ring position={[A - 13.96, 0.86, -1.88]} rotation={[0.3, 0.6, 0]} scale={3.2} glow={0.9} lit={3} />
+          <Ring position={[A - 13.96, 0.86, -1.88]} rotation={[0.3, 0.6, 0]} scale={1.6} glow={0.9} lit={3} />
         </>
       ),
     },

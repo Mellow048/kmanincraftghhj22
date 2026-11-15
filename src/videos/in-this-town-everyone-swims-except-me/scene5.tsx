@@ -41,13 +41,13 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.woods",
-      ...cam.push({ on: [X, 1.15, 74], dist: 3.8, to: 3.0, yaw: 182, pitch: 7, fov: 40 }),
+      ...cam.push({ on: [X, 1.15, 75.5], dist: 3.8, to: 3.0, yaw: 2, pitch: 8, fov: 40 }),
       zone: "woods",
       look: "overworld-night",
       note: "Into the trees on a path with one lamp: he walks toward the lens, which means the audience walks backwards into the woods with him.",
       stage: (t) => (
         <>
-          <Hero position={[X, 0, 70.4 + t * 1.1]} rotationY={0} animation="walk" animDistance={t * 1.1} face="worried" />
+          <Hero position={[X, 0, 72.0 + t * 1.1]} rotationY={0} animation="walk" animDistance={t * 1.1} face="worried" />
         </>
       ),
     },
@@ -61,7 +61,7 @@ export const scene5 = storyScene(timing, {
         <>
           <Stranger position={[X, 0, 81.4]} rotationY={Math.PI} animation="hold" />
           <Hero position={[X + 0.3, 0, 78.4]} rotationY={Math.PI} animation="idle" face="surprised" headPitch={-0.1} />
-          <Ring position={[X, 1.12, 80.6]} scale={2.4} glow={0.8} />
+          <Ring position={[X, 1.12, 80.6]} scale={1.2} glow={0.8} />
         </>
       ),
     },
@@ -75,7 +75,7 @@ export const scene5 = storyScene(timing, {
         <>
           <Hero position={[X, 0, 78.8]} rotationY={0.1} animation="talk" face="worried" />
           <Stranger position={[X, 0, 81.2]} rotationY={Math.PI} animation="hold" />
-          <Ring position={[X, 1.12, 80.5]} rotation={[0.2, 0.5, 0]} scale={3.2} glow={1.0} />
+          <Ring position={[X, 1.12, 80.5]} rotation={[0.2, 0.5, 0]} scale={1.6} glow={1.0} />
         </>
       ),
     },
@@ -112,7 +112,7 @@ export const scene5 = storyScene(timing, {
       note: "A ring in a boy's palm, at the size of a ring: cold metal and three little buttons, humming with a light that has no source.",
       stage: () => (
         <>
-          <Ring position={[X, 1.02, 78.62]} rotation={[0.3, 0.8, 0]} scale={4.4} glow={1.1} />
+          <Ring position={[X, 1.02, 78.62]} rotation={[0.3, 0.8, 0]} scale={2.2} glow={1.1} />
           <Hero position={[X, 0, 78.6]} rotationY={0.4} animation="hold" face="neutral" />
         </>
       ),
@@ -126,7 +126,7 @@ export const scene5 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[121.1, 0.34, 39.7]} rotationY={0} animation="sleep" face="sleepy" />
-          <Ring position={[118.3, 0.7, 39.6]} rotation={[0.2, 0.3, 0]} scale={3.0} glow={1.0} />
+          <Ring position={[118.3, 0.7, 39.6]} rotation={[0.2, 0.3, 0]} scale={1.5} glow={1.0} />
         </>
       ),
     },
