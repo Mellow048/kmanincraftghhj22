@@ -157,3 +157,58 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   no sound and no line. (2) Never put boxes behind actors. (3) A thing that is used is held. (4) A building has an
   inside. (5) The picture leads the words. (6) The first two seconds are the best two seconds of the film.**
   Nobody has listened to the new mix. The words of the script were not changed.
+- **2026-11-15, the snow golem film (part 1).** He had no outline ("give me idea, i dunno what to say ngl"). The first
+  five ideas were turned down: "these dont sound good, try looking at the ref ideas". All five were one odd thing
+  happening to one kid. The six he then chose from were shaped like the references: **a rule for the whole town, and
+  the teller is the one it went wrong for**. He took "every kid got an iron golem at ten. Mine was made of snow."
+  Offer ideas in that shape first.
+- **2026-11-15, the voice.** He wants to hear the voice before a film is built ("first let me hear the tts"), and he
+  wants the audition at once, not clips made first. Three voices were turned down: "sounds like a cheap tts generator
+  and has pauses". What he asked for: "a natural american voice, male, no accent, not old, not too much serious". He
+  picked the fourth (`voice-03` of that session; the clips are in
+  `public/audio/in-this-town-every-kid-got-an-iron-golem/raw/`). He has not said what he thinks of the full track, the
+  mix or the film: nobody has listened to the mix.
+- **2026-11-15, the snow golem film, checked from the render.** Three frames of every shot were pulled out of the mp4
+  and looked at; fifteen shots were changed and the film rendered again. What the stills by shot had missed: a night
+  street shot from 20 m is only fog (light it and go closer); a window in a night room was daylight blue; a top shot
+  of a golem losing an arm could not be read (shot again from the side, with the town laughing behind); people cut in
+  half by the edge of the frame in six shots; a face light close to sand burns the ground white. Look at the mp4, not
+  only at the stills, before saying a film is done.
+  A second pass the same day, rendered a third time: a shut umbrella carried level crossed the picture as a blue bar
+  (it now stands by his leg like a stick); the "sad" face seen from below is two black bars (use "frown"); a low shot
+  must cut a person at the waist, not through the face. Still weak, left as they are: `8.night` and the first second
+  of `13.gate` are very dark, in `13.snow` the caption crosses the pumpkin, in `7.puddle` the boy is a dark shoulder.
+- **2026-11-15, the snow golem film, his change to the story.** After seeing it: "i like this one but change the story,
+  make it like yeah everyone have a golem, the portal lit every year, usually its always piglins coming out, golems
+  took them out. so this year when we turned 10 the portal lit, it wasnt the piglins anymore. add that in to remove
+  plot holes". What this says about his taste: a rule needs a REASON the viewer is told at the start ("nobody knew
+  why" is a plot hole to him, not a mystery), and the turn is the usual thing going wrong ("it was not piglins this
+  time"), not a thing nobody expected. Done as three new lines in beat 2 and a new order in beat 8 (the golems march
+  up first, as every year, and then it is not piglins). A piglin was built for it (`Piglin` in the film's `kit.tsx`;
+  not in the pack yet). `piglin`/`piglins` were added to the aligner's words in `scripts/narration.py`.
+- **2026-11-15, the snow golem film, his verdict on that build: "it got worse ngl".** Two faults, both the agent's.
+  (1) **Too fast**: "the video is too fast no time to digest even half a second". To fit the new lines inside the short
+  cut the voice had been sped up to 249 words a minute with no air between the beats. (2) **The reason was told in
+  fragments**: "Piglins came out. The golems threw them back in." got "like what are you talking about threw them
+  out"; his own line was "every year we needed golems to defeat the piglins from coming back", "thats a much better
+  line". What to do from now on: **the premise is told in full sentences that carry their own "why"** (who comes, what
+  they do, what stops them, and so what the rule is), never as three clipped beats; and **length is never bought with
+  speed**. If a film does not fit its cut, move it up a cut. Fifth build: the opening is five lines with their own
+  shots (the gate, it lights and piglins come out to attack, a golem picks one up, they are thrown back in, "that is
+  why every kid got a golem at ten" over the whole town); the film is the MIDDLE cut, 141 seconds; the voice runs at
+  220 words a minute (x1.40, was x1.53); and there is half a second to a second of silence before each new step of the
+  story (`# clip <name> wait <seconds>`; the seven recorded clips were cut into twelve at their own pauses so the waits
+  could go in without recording again, only the new opening was recorded). Not yet judged by him.
+- **2026-11-15, the snow golem film, his verdict on the slow build:** "speed it up abit, u turned it down too much",
+  and "the ending why did the tts get weaker in volume". So his pace sits BETWEEN the two: 249 words a minute with no
+  air was too fast, 220 with up to a second of air was too slow. Sixth build: 234 words a minute (x1.47), waits of
+  0.25 to 0.7 seconds, 132.7 seconds. **Start a film of his at about 235 with a third to half a second between
+  steps.** The quiet ending was a real fault and an old one: the "Like and subscribe" clip was recorded 16 dB under
+  the others, and nothing in the build levels one clip against another (the build only sets the peak of the whole
+  voice track). It had been in every render; the sheet had even turned the `ding` on it down by 9 dB to keep it under
+  that whisper. Fixed by gain on the clip (and 1 dB on two others). **Measure the speech level of every recorded clip
+  before building; they must sit within about 1 dB of each other.** Not yet judged by him.
+- **2026-11-15, the snow golem film APPROVED (sixth render):** "pretty nice", "this is a good short", and "put them
+  into main as a reference … souce code + mp4 put it in there for other agents to see how to make a good short". It is
+  in `reference/iron-golem/`. So the pace above is confirmed: **about 235 words a minute, with a quarter to three
+  quarters of a second of silence before each new step of the story**, and the film moved up a cut to make room.

@@ -179,6 +179,8 @@ SAY = {
     "dodgeballs": "D AA JH B AO L Z",
     "massager": "M AH S AA ZH ER",
     "rebooting": "R IY B UW T IH NG",
+    "piglin": "P IH G L IH N",
+    "piglins": "P IH G L IH N Z",
     "evokers": "IH V OW K ER Z",
     "evoker": "IH V OW K ER",
     "vindicators": "V IH N D IH K EY T ER Z",

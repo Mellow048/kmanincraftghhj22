@@ -1,0 +1,1758 @@
+{
+  "film": "in-this-town-every-kid-got-an-iron-golem",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The topic's track from the first frame: hook, tour, the contest."
+      },
+      {
+        "from": "6.want",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night, a thing said that cannot be taken back: the track steps back."
+      },
+      {
+        "from": "8.night",
+        "mood": "tense",
+        "gain": -1,
+        "why": "The gate opens and the golems go up and fail."
+      },
+      {
+        "from": "9.end",
+        "mood": "none",
+        "why": "'I thought our town was finished': one held breath before the snowball."
+      },
+      {
+        "from": "10.ball",
+        "mood": "hope",
+        "why": "The snowball: the track comes back at full level for the fight."
+      },
+      {
+        "from": "12.quiet",
+        "mood": "none",
+        "why": "'Then it was quiet.' Nothing."
+      },
+      {
+        "from": "12.left",
+        "mood": "sad",
+        "gain": -4,
+        "why": "A pumpkin and a puddle: back, low."
+      },
+      {
+        "from": "13.gate",
+        "mood": "dark",
+        "gain": -2,
+        "why": "The gate again, and something bigger."
+      },
+      {
+        "from": "14.sub",
+        "mood": "town",
+        "why": "The ask, and the pumpkin moves."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "3.at",
+      "bed": "village"
+    },
+    {
+      "from": "3.trail",
+      "to": "3.trail",
+      "bed": "room"
+    },
+    {
+      "from": "3.noon",
+      "to": "5.last",
+      "bed": "village"
+    },
+    {
+      "from": "5.day",
+      "to": "5.last",
+      "bed": "crowd",
+      "trim": -3
+    },
+    {
+      "from": "6.want",
+      "to": "6.heard",
+      "bed": "room"
+    },
+    {
+      "from": "7.face",
+      "to": "8.more",
+      "bed": "night"
+    },
+    {
+      "from": "8.night",
+      "to": "9.reach",
+      "bed": "wind",
+      "trim": -4
+    },
+    {
+      "from": "9.red",
+      "to": "11.last",
+      "bed": "fire",
+      "trim": -4
+    },
+    {
+      "from": "8.march",
+      "to": "10.look",
+      "bed": "crowd",
+      "trim": -4
+    },
+    {
+      "from": "12.quiet",
+      "to": "14.sub",
+      "bed": "night"
+    },
+    {
+      "from": "13.snow",
+      "to": "14.sub",
+      "bed": "wind",
+      "trim": -6
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "whoosh",
+      "why": "The film opens over the street of golems."
+    },
+    {
+      "cue": "1.town",
+      "at": 0.5,
+      "sfx": "stomp",
+      "repeat": 3,
+      "every": 0.55,
+      "trim": -2,
+      "why": "Iron golems walking the street."
+    },
+    {
+      "cue": "1.town",
+      "word": "golem",
+      "sfx": "clank",
+      "trim": -3,
+      "why": "Iron on iron as they pass."
+    },
+    {
+      "cue": "1.me",
+      "sfx": "whoosh",
+      "why": "The cut in to the one that is different."
+    },
+    {
+      "cue": "1.me",
+      "word": "snow",
+      "sfx": "pop",
+      "why": "'Made of snow': the hook lands."
+    },
+    {
+      "cue": "1.me",
+      "word": "snow",
+      "at": 0.3,
+      "sfx": "plink",
+      "why": "A drip off him."
+    },
+    {
+      "cue": "2.why",
+      "sfx": "whoosh_low",
+      "why": "Cut: the foot of the hill."
+    },
+    {
+      "cue": "2.why",
+      "word": "hill",
+      "sfx": "stomp",
+      "trim": 1,
+      "why": "The golem on guard shifts its feet."
+    },
+    {
+      "cue": "2.why",
+      "word": "old",
+      "sfx": "gust",
+      "trim": -1,
+      "why": "Wind round the old gate."
+    },
+    {
+      "cue": "2.lit",
+      "sfx": "swish",
+      "why": "Cut to the gate itself."
+    },
+    {
+      "cue": "2.lit",
+      "word": "lit",
+      "sfx": "riser",
+      "dur": 0.7,
+      "trim": -3,
+      "why": "It fills with light."
+    },
+    {
+      "cue": "2.lit",
+      "word": "lit",
+      "sfx": "power_up",
+      "trim": -3,
+      "why": "The gate lights, as it does once a year."
+    },
+    {
+      "cue": "2.lit",
+      "word": "piglins",
+      "at": -0.1,
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.24,
+      "trim": 0,
+      "why": "Piglins walking out onto the hill."
+    },
+    {
+      "cue": "2.lit",
+      "word": "came",
+      "sfx": "clank",
+      "trim": -4,
+      "why": "Gold swords."
+    },
+    {
+      "cue": "2.lit",
+      "word": "attack",
+      "at": 0.1,
+      "sfx": "sting",
+      "trim": -7,
+      "why": "They are not here to visit."
+    },
+    {
+      "cue": "2.fight",
+      "sfx": "swish",
+      "why": "Cut: the fight."
+    },
+    {
+      "cue": "2.fight",
+      "word": "every",
+      "sfx": "clank",
+      "repeat": 3,
+      "every": 0.3,
+      "trim": -2,
+      "why": "A gold sword on an iron shin. Nothing happens."
+    },
+    {
+      "cue": "2.fight",
+      "word": "needed",
+      "at": 0.1,
+      "sfx": "clank",
+      "repeat": 2,
+      "every": 0.3,
+      "trim": -3,
+      "why": "Still hacking."
+    },
+    {
+      "cue": "2.fight",
+      "word": "defeat",
+      "at": -0.08,
+      "sfx": "whoosh_low",
+      "why": "Both iron arms come up."
+    },
+    {
+      "cue": "2.fight",
+      "word": "defeat",
+      "at": 0.04,
+      "sfx": "hit",
+      "trim": -5,
+      "why": "Iron hands close on it."
+    },
+    {
+      "cue": "2.fight",
+      "word": "the",
+      "at": 0.02,
+      "sfx": "slide_up",
+      "trim": 0,
+      "why": "The piglin goes up over the golem's head."
+    },
+    {
+      "cue": "2.gate",
+      "sfx": "swish",
+      "why": "Cut: the golems have them."
+    },
+    {
+      "cue": "2.gate",
+      "word": "throw",
+      "at": -0.05,
+      "sfx": "whoosh_low",
+      "why": "An iron golem throws a piglin."
+    },
+    {
+      "cue": "2.gate",
+      "word": "every",
+      "at": 0.05,
+      "sfx": "pop",
+      "trim": -1,
+      "why": "Through the purple and gone."
+    },
+    {
+      "cue": "2.gate",
+      "word": "one",
+      "at": -0.05,
+      "sfx": "whoosh_low",
+      "trim": -1,
+      "why": "The second golem throws the second."
+    },
+    {
+      "cue": "2.gate",
+      "word": "them",
+      "sfx": "pop",
+      "trim": -1,
+      "why": "Gone."
+    },
+    {
+      "cue": "2.gate",
+      "word": "back",
+      "at": -0.15,
+      "sfx": "step_grass",
+      "repeat": 4,
+      "every": 0.11,
+      "trim": 1,
+      "why": "The third runs back in by himself."
+    },
+    {
+      "cue": "2.gate",
+      "word": "in",
+      "at": 0.2,
+      "sfx": "pop",
+      "trim": -1,
+      "why": "And he is gone too."
+    },
+    {
+      "cue": "2.need",
+      "sfx": "whoosh",
+      "why": "Cut: the town, and all its golems."
+    },
+    {
+      "cue": "2.need",
+      "word": "why",
+      "sfx": "stomp",
+      "repeat": 3,
+      "every": 0.45,
+      "trim": -1,
+      "why": "Golems walking the street with their kids."
+    },
+    {
+      "cue": "2.need",
+      "word": "golem",
+      "at": 0.1,
+      "sfx": "clank",
+      "trim": -1,
+      "why": "Iron."
+    },
+    {
+      "cue": "2.build",
+      "word": "four",
+      "sfx": "place",
+      "repeat": 4,
+      "every": 0.22,
+      "pitchStep": 1.05,
+      "why": "Four iron blocks stacked, one by one."
+    },
+    {
+      "cue": "2.build",
+      "word": "blocks",
+      "sfx": "clank",
+      "trim": -3,
+      "why": "Iron settles."
+    },
+    {
+      "cue": "2.build",
+      "word": "pumpkin",
+      "sfx": "pop",
+      "why": "The pumpkin goes on top."
+    },
+    {
+      "cue": "2.build",
+      "word": "pumpkin",
+      "at": 0.3,
+      "sfx": "chime",
+      "trim": 2,
+      "why": "A golem stands up: the gift."
+    },
+    {
+      "cue": "2.ran",
+      "sfx": "swish",
+      "why": "Cut to his own tenth birthday."
+    },
+    {
+      "cue": "2.ran",
+      "word": "ran",
+      "sfx": "buzz",
+      "trim": 0.5,
+      "why": "'The iron ran out': the empty crate."
+    },
+    {
+      "cue": "2.ran",
+      "word": "out",
+      "sfx": "slide_down",
+      "trim": 1,
+      "why": "Hope going down."
+    },
+    {
+      "cue": "2.dad",
+      "sfx": "swish",
+      "why": "Cut to Dad at the door."
+    },
+    {
+      "cue": "2.dad",
+      "word": "looked",
+      "sfx": "creak",
+      "trim": -2,
+      "why": "He opens the door and looks out."
+    },
+    {
+      "cue": "2.dad",
+      "word": "snowing",
+      "sfx": "gust",
+      "trim": 2,
+      "why": "Snow blowing outside."
+    },
+    {
+      "cue": "2.dad",
+      "word": "snowing",
+      "at": 0.35,
+      "sfx": "blip",
+      "why": "Dad's idea."
+    },
+    {
+      "cue": "2.snow",
+      "sfx": "swish",
+      "why": "Cut to the building of him."
+    },
+    {
+      "cue": "2.snow",
+      "word": "two",
+      "sfx": "place",
+      "repeat": 2,
+      "every": 0.3,
+      "pitch": 0.8,
+      "why": "Two blocks of snow."
+    },
+    {
+      "cue": "2.snow",
+      "word": "pumpkin",
+      "sfx": "pop",
+      "why": "One pumpkin."
+    },
+    {
+      "cue": "2.snow",
+      "word": "happy",
+      "sfx": "boing",
+      "trim": -2,
+      "why": "He comes alive with a wobble."
+    },
+    {
+      "cue": "2.snow",
+      "word": "birthday",
+      "at": 0.25,
+      "sfx": "slide_down",
+      "trim": -3,
+      "why": "'Happy birthday': not what he wanted."
+    },
+    {
+      "cue": "3.carts",
+      "sfx": "whoosh",
+      "why": "Scene: what iron golems do all day."
+    },
+    {
+      "cue": "3.carts",
+      "at": 0.2,
+      "sfx": "stomp",
+      "repeat": 3,
+      "every": 0.4,
+      "trim": 1.5,
+      "why": "A golem hauling a cart."
+    },
+    {
+      "cue": "3.carts",
+      "word": "carts",
+      "sfx": "scrape",
+      "dur": 0.6,
+      "trim": -2,
+      "why": "Cart wheels on the road."
+    },
+    {
+      "cue": "3.cows",
+      "sfx": "swish",
+      "why": "Cut: a cow, carried."
+    },
+    {
+      "cue": "3.cows",
+      "word": "carried",
+      "sfx": "boing",
+      "trim": -2,
+      "why": "A cow lifted over a golem's head."
+    },
+    {
+      "cue": "3.cows",
+      "word": "cows",
+      "sfx": "stomp",
+      "repeat": 2,
+      "every": 0.4,
+      "trim": -1,
+      "why": "Carrying it home."
+    },
+    {
+      "cue": "3.roof",
+      "sfx": "swish",
+      "why": "Cut: the roof."
+    },
+    {
+      "cue": "3.roof",
+      "word": "held",
+      "sfx": "creak",
+      "why": "A roof held up by two iron arms."
+    },
+    {
+      "cue": "3.roof",
+      "word": "lunch",
+      "sfx": "crack",
+      "trim": -6,
+      "pitch": 1.3,
+      "why": "The builder bites his bread."
+    },
+    {
+      "cue": "3.mine",
+      "sfx": "whoosh",
+      "why": "Cut to his."
+    },
+    {
+      "cue": "3.mine",
+      "word": "threw",
+      "sfx": "zip",
+      "dur": 0.25,
+      "why": "A snowball leaves the stick."
+    },
+    {
+      "cue": "3.mine",
+      "word": "snowballs",
+      "at": 0.2,
+      "sfx": "thud",
+      "trim": -1,
+      "why": "It lands."
+    },
+    {
+      "cue": "3.at",
+      "word": "birds",
+      "at": -0.1,
+      "sfx": "zip",
+      "dur": 0.2,
+      "why": "At birds."
+    },
+    {
+      "cue": "3.at",
+      "word": "birds",
+      "at": 0.1,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "The birds go up."
+    },
+    {
+      "cue": "3.at",
+      "word": "baker",
+      "at": -0.15,
+      "sfx": "zip",
+      "dur": 0.2,
+      "why": "At the baker."
+    },
+    {
+      "cue": "3.at",
+      "word": "baker",
+      "at": 0.1,
+      "sfx": "bonk",
+      "why": "The baker gets it."
+    },
+    {
+      "cue": "3.at",
+      "word": "me",
+      "at": -0.15,
+      "sfx": "zip",
+      "dur": 0.2,
+      "why": "At me."
+    },
+    {
+      "cue": "3.at",
+      "word": "me",
+      "at": 0.05,
+      "sfx": "thud",
+      "trim": 4,
+      "why": "In the face."
+    },
+    {
+      "cue": "3.trail",
+      "sfx": "swish",
+      "why": "Cut indoors."
+    },
+    {
+      "cue": "3.trail",
+      "at": 0.15,
+      "sfx": "scrape",
+      "dur": 0.7,
+      "trim": -3,
+      "why": "He slides across the kitchen floor."
+    },
+    {
+      "cue": "3.trail",
+      "word": "kitchen",
+      "sfx": "plink",
+      "repeat": 2,
+      "every": 0.25,
+      "why": "Snow left melting on the planks."
+    },
+    {
+      "cue": "3.noon",
+      "sfx": "whoosh",
+      "why": "Cut to noon in the square."
+    },
+    {
+      "cue": "3.noon",
+      "word": "noon",
+      "sfx": "bell",
+      "trim": -2,
+      "ring": 0.9,
+      "why": "The noon bell."
+    },
+    {
+      "cue": "3.noon",
+      "word": "melted",
+      "at": -0.2,
+      "sfx": "plink",
+      "repeat": 4,
+      "every": 0.16,
+      "pitchStep": 0.94,
+      "why": "He drips."
+    },
+    {
+      "cue": "3.noon",
+      "word": "melted",
+      "sfx": "slide_down",
+      "trim": -2,
+      "why": "He sags."
+    },
+    {
+      "cue": "3.umbrella",
+      "sfx": "swish",
+      "why": "Cut: the umbrella."
+    },
+    {
+      "cue": "3.umbrella",
+      "word": "umbrella",
+      "at": -0.1,
+      "sfx": "pop",
+      "why": "The umbrella opens."
+    },
+    {
+      "cue": "3.umbrella",
+      "at": 0.3,
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.32,
+      "trim": 1,
+      "why": "Walking behind him."
+    },
+    {
+      "cue": "3.name",
+      "word": "puddle",
+      "sfx": "splash",
+      "trim": -4,
+      "why": "The puddle under him."
+    },
+    {
+      "cue": "3.name",
+      "word": "why",
+      "sfx": "blip",
+      "why": "'You can guess why.'"
+    },
+    {
+      "cue": "4.house",
+      "sfx": "whoosh_low",
+      "why": "A golem carrying a house."
+    },
+    {
+      "cue": "4.house",
+      "at": 0.2,
+      "sfx": "stomp",
+      "repeat": 3,
+      "every": 0.4,
+      "trim": -2,
+      "why": "A house on its hands, walking."
+    },
+    {
+      "cue": "4.house",
+      "word": "house",
+      "sfx": "creak",
+      "why": "The house creaks."
+    },
+    {
+      "cue": "4.bucket",
+      "sfx": "swish",
+      "why": "Cut to Puddle at the well."
+    },
+    {
+      "cue": "4.bucket",
+      "word": "lift",
+      "sfx": "crack",
+      "trim": -4,
+      "why": "The stick bends."
+    },
+    {
+      "cue": "4.bucket",
+      "word": "bucket",
+      "at": 0.1,
+      "sfx": "splash",
+      "trim": -2,
+      "why": "The bucket goes over."
+    },
+    {
+      "cue": "5.day",
+      "sfx": "whoosh",
+      "why": "Scene: the contest."
+    },
+    {
+      "cue": "5.day",
+      "word": "strength",
+      "sfx": "cheer",
+      "dur": 1.0,
+      "trim": -3,
+      "why": "The crowd at the contest."
+    },
+    {
+      "cue": "5.day",
+      "word": "year",
+      "sfx": "bell",
+      "trim": -3,
+      "ring": 0.6,
+      "why": "The contest bell."
+    },
+    {
+      "cue": "5.rock",
+      "sfx": "swish",
+      "why": "Cut to the boulder."
+    },
+    {
+      "cue": "5.rock",
+      "word": "boulder",
+      "at": -0.2,
+      "sfx": "whoosh_low",
+      "why": "The boulder goes up."
+    },
+    {
+      "cue": "5.rock",
+      "word": "boulder",
+      "at": 0.1,
+      "sfx": "stomp",
+      "trim": -2,
+      "why": "Feet set under the weight."
+    },
+    {
+      "cue": "5.rock",
+      "word": "first",
+      "nth": 1,
+      "at": -0.2,
+      "sfx": "whoosh_low",
+      "why": "A golem lifts a golem."
+    },
+    {
+      "cue": "5.rock",
+      "word": "first",
+      "nth": 1,
+      "at": 0.05,
+      "sfx": "clank",
+      "why": "Iron lifting iron."
+    },
+    {
+      "cue": "5.rock",
+      "word": "golem",
+      "nth": 1,
+      "at": 0.2,
+      "sfx": "cheer",
+      "dur": 0.7,
+      "trim": -1.5,
+      "why": "The crowd."
+    },
+    {
+      "cue": "5.turn",
+      "sfx": "swish",
+      "why": "Cut to Puddle."
+    },
+    {
+      "cue": "5.turn",
+      "at": 0.3,
+      "sfx": "tick",
+      "repeat": 2,
+      "every": 0.3,
+      "why": "Everybody waits."
+    },
+    {
+      "cue": "5.arm",
+      "sfx": "swish",
+      "why": "Cut: he tries."
+    },
+    {
+      "cue": "5.arm",
+      "word": "rock",
+      "at": -0.1,
+      "sfx": "creak",
+      "why": "The stick takes the weight."
+    },
+    {
+      "cue": "5.arm",
+      "word": "arm",
+      "sfx": "crack",
+      "why": "His arm comes off."
+    },
+    {
+      "cue": "5.arm",
+      "word": "off",
+      "sfx": "thud",
+      "trim": -2,
+      "why": "Rock and arm on the ground."
+    },
+    {
+      "cue": "5.other",
+      "sfx": "swish",
+      "why": "Cut: the other arm."
+    },
+    {
+      "cue": "5.other",
+      "word": "other",
+      "at": -0.05,
+      "sfx": "creak",
+      "why": "The other stick."
+    },
+    {
+      "cue": "5.other",
+      "word": "that",
+      "sfx": "crack",
+      "why": "That one comes off too."
+    },
+    {
+      "cue": "5.other",
+      "word": "too",
+      "sfx": "bonk",
+      "trim": -1,
+      "why": "And lands."
+    },
+    {
+      "cue": "5.last",
+      "sfx": "swish",
+      "why": "Cut to the results."
+    },
+    {
+      "cue": "5.last",
+      "word": "last",
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "Last place."
+    },
+    {
+      "cue": "5.last",
+      "word": "chicken",
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "The chicken, placed above them."
+    },
+    {
+      "cue": "5.last",
+      "word": "us",
+      "sfx": "slide_down",
+      "trim": 0,
+      "why": "Beaten by a chicken."
+    },
+    {
+      "cue": "6.want",
+      "sfx": "whoosh",
+      "why": "Scene: night, the bedroom."
+    },
+    {
+      "cue": "6.want",
+      "at": 0.3,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "He sits up in bed."
+    },
+    {
+      "cue": "6.dad",
+      "sfx": "swish",
+      "why": "Cut to Dad."
+    },
+    {
+      "cue": "6.dad",
+      "word": "snow",
+      "sfx": "creak",
+      "trim": -3,
+      "why": "Dad shifts on the floorboards."
+    },
+    {
+      "cue": "6.heard",
+      "word": "standing",
+      "sfx": "swish",
+      "dur": 0.5,
+      "why": "The lens swings to the window."
+    },
+    {
+      "cue": "6.heard",
+      "word": "behind",
+      "sfx": "sting",
+      "trim": -4,
+      "why": "He was there all along."
+    },
+    {
+      "cue": "6.heard",
+      "word": "word",
+      "at": 0.15,
+      "sfx": "plink",
+      "why": "One drop off the pumpkin."
+    },
+    {
+      "cue": "7.face",
+      "sfx": "whoosh",
+      "why": "Scene: the street at night."
+    },
+    {
+      "cue": "7.face",
+      "word": "turned",
+      "sfx": "clank",
+      "repeat": 4,
+      "every": 0.14,
+      "trim": -3,
+      "pitchStep": 0.97,
+      "why": "Every iron golem turns."
+    },
+    {
+      "cue": "7.face",
+      "word": "face",
+      "sfx": "stomp",
+      "repeat": 2,
+      "every": 0.3,
+      "trim": -4,
+      "why": "They set their feet toward the gate."
+    },
+    {
+      "cue": "7.face",
+      "word": "gate",
+      "sfx": "gust",
+      "trim": -3,
+      "why": "Night wind from the hill."
+    },
+    {
+      "cue": "7.puddle",
+      "sfx": "swish",
+      "why": "Cut to the one facing the other way."
+    },
+    {
+      "cue": "7.puddle",
+      "word": "watching",
+      "sfx": "blip",
+      "why": "He is watching the boy's window."
+    },
+    {
+      "cue": "7.puddle",
+      "word": "me",
+      "at": 0.2,
+      "sfx": "plink",
+      "why": "A drip."
+    },
+    {
+      "cue": "8.night",
+      "sfx": "whoosh_low",
+      "why": "Scene: the gate, the night it is due."
+    },
+    {
+      "cue": "8.night",
+      "word": "lit",
+      "sfx": "riser",
+      "dur": 1.0,
+      "why": "The gate filling with light."
+    },
+    {
+      "cue": "8.night",
+      "word": "lit",
+      "sfx": "power_up",
+      "why": "It lights up purple."
+    },
+    {
+      "cue": "8.night",
+      "word": "up",
+      "sfx": "boom",
+      "trim": -4,
+      "why": "The gate is open."
+    },
+    {
+      "cue": "8.out",
+      "word": "not",
+      "sfx": "fire_whoosh",
+      "why": "Something on fire comes through instead."
+    },
+    {
+      "cue": "8.out",
+      "word": "piglins",
+      "at": 0.3,
+      "sfx": "sting",
+      "trim": -6,
+      "why": "It is not what comes every year."
+    },
+    {
+      "cue": "8.out",
+      "word": "fire",
+      "sfx": "crackle",
+      "dur": 0.6,
+      "why": "It burns."
+    },
+    {
+      "cue": "8.out",
+      "word": "fly",
+      "sfx": "zip",
+      "dur": 0.4,
+      "why": "It flies up."
+    },
+    {
+      "cue": "8.more",
+      "sfx": "fire_whoosh",
+      "repeat": 3,
+      "every": 0.2,
+      "trim": -2,
+      "why": "Ten more come through."
+    },
+    {
+      "cue": "8.march",
+      "sfx": "whoosh",
+      "why": "Scene: the golems go up."
+    },
+    {
+      "cue": "8.march",
+      "at": 0.1,
+      "sfx": "stomp",
+      "repeat": 5,
+      "every": 0.34,
+      "trim": -1,
+      "why": "Twenty golems marching."
+    },
+    {
+      "cue": "8.march",
+      "at": 0.27,
+      "sfx": "clank",
+      "repeat": 4,
+      "every": 0.34,
+      "trim": -4,
+      "why": "Iron in step."
+    },
+    {
+      "cue": "8.march",
+      "word": "cheered",
+      "at": -0.2,
+      "sfx": "cheer",
+      "dur": 0.8,
+      "why": "'We cheered.'"
+    },
+    {
+      "cue": "9.reach",
+      "sfx": "swish",
+      "why": "Cut: a golem reaching up."
+    },
+    {
+      "cue": "9.reach",
+      "word": "fly",
+      "at": -0.1,
+      "sfx": "whoosh_low",
+      "why": "An iron arm swings at the air."
+    },
+    {
+      "cue": "9.reach",
+      "word": "these",
+      "sfx": "zip",
+      "dur": 0.3,
+      "why": "The thing lifts out of reach."
+    },
+    {
+      "cue": "9.reach",
+      "word": "could",
+      "nth": 1,
+      "sfx": "slide_down",
+      "trim": -0.5,
+      "why": "It cannot reach."
+    },
+    {
+      "cue": "9.red",
+      "word": "fire",
+      "at": -0.1,
+      "sfx": "fire_whoosh",
+      "why": "The fire comes down."
+    },
+    {
+      "cue": "9.red",
+      "word": "iron",
+      "sfx": "crackle",
+      "dur": 0.7,
+      "why": "Iron heating."
+    },
+    {
+      "cue": "9.red",
+      "word": "red",
+      "sfx": "sting",
+      "trim": -3,
+      "why": "The iron goes red."
+    },
+    {
+      "cue": "9.count",
+      "sfx": "swish",
+      "why": "Cut: the count."
+    },
+    {
+      "cue": "9.count",
+      "word": "twenty",
+      "sfx": "clank",
+      "trim": -2,
+      "why": "Twenty."
+    },
+    {
+      "cue": "9.count",
+      "word": "twelve",
+      "at": -0.15,
+      "sfx": "thud",
+      "repeat": 2,
+      "every": 0.15,
+      "trim": 4.5,
+      "why": "Golems stopping on the steps."
+    },
+    {
+      "cue": "9.count",
+      "word": "twelve",
+      "sfx": "power_down",
+      "trim": -3,
+      "why": "Then twelve."
+    },
+    {
+      "cue": "9.count",
+      "word": "five",
+      "at": -0.15,
+      "sfx": "thud",
+      "repeat": 2,
+      "every": 0.15,
+      "trim": 1.5,
+      "why": "More stop."
+    },
+    {
+      "cue": "9.count",
+      "word": "five",
+      "sfx": "power_down",
+      "pitch": 0.85,
+      "trim": -3,
+      "why": "Then five."
+    },
+    {
+      "cue": "9.sat",
+      "sfx": "swish",
+      "why": "Cut to the last one."
+    },
+    {
+      "cue": "9.sat",
+      "word": "sat",
+      "at": -0.1,
+      "sfx": "clank",
+      "why": "Its knees go."
+    },
+    {
+      "cue": "9.sat",
+      "word": "down",
+      "sfx": "stomp",
+      "why": "It sits down in the road."
+    },
+    {
+      "cue": "9.roofs",
+      "word": "roofs",
+      "sfx": "fire_whoosh",
+      "why": "A roof catches."
+    },
+    {
+      "cue": "9.roofs",
+      "word": "fire",
+      "sfx": "fire_whoosh",
+      "trim": -2,
+      "why": "And another."
+    },
+    {
+      "cue": "9.roofs",
+      "word": "caught",
+      "sfx": "crack",
+      "trim": -3,
+      "why": "Timber splitting."
+    },
+    {
+      "cue": "9.end",
+      "word": "finished",
+      "at": -0.2,
+      "sfx": "drop",
+      "why": "'Our town was finished': the floor goes."
+    },
+    {
+      "cue": "9.end",
+      "at": 0.2,
+      "sfx": "heartbeat",
+      "repeat": 2,
+      "every": 0.6,
+      "why": "His heart."
+    },
+    {
+      "cue": "10.ball",
+      "at": 0.05,
+      "sfx": "zip",
+      "dur": 1.5,
+      "trim": -2,
+      "why": "One snowball crossing the square."
+    },
+    {
+      "cue": "10.ball",
+      "word": "snowball",
+      "sfx": "sparkle",
+      "dur": 0.8,
+      "trim": -3,
+      "why": "White in the firelight."
+    },
+    {
+      "cue": "10.hit",
+      "word": "hit",
+      "at": 0.06,
+      "sfx": "thud",
+      "why": "It hits one in the face.",
+      "trim": 4.0
+    },
+    {
+      "cue": "10.hit",
+      "word": "went",
+      "sfx": "power_down",
+      "why": "It goes out."
+    },
+    {
+      "cue": "10.hit",
+      "word": "candle",
+      "sfx": "plink",
+      "pitch": 0.8,
+      "why": "Like a candle: a hiss and a drip."
+    },
+    {
+      "cue": "10.hit",
+      "word": "candle",
+      "at": 0.4,
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "The grey thing lands."
+    },
+    {
+      "cue": "10.look",
+      "word": "turned",
+      "sfx": "swish",
+      "dur": 0.4,
+      "why": "Everyone turns."
+    },
+    {
+      "cue": "10.look",
+      "word": "around",
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "Robes turning."
+    },
+    {
+      "cue": "10.puddle",
+      "sfx": "whoosh",
+      "why": "Cut to who threw it."
+    },
+    {
+      "cue": "10.puddle",
+      "word": "puddle",
+      "sfx": "ding",
+      "note": "E6",
+      "why": "It was Puddle."
+    },
+    {
+      "cue": "10.puddle",
+      "word": "he",
+      "sfx": "pop",
+      "repeat": 2,
+      "every": 0.35,
+      "pitchStep": 1.1,
+      "trim": -3,
+      "why": "A snowball tossed in his stick."
+    },
+    {
+      "cue": "10.puddle",
+      "word": "more",
+      "sfx": "chime",
+      "trim": -2,
+      "why": "And he had more."
+    },
+    {
+      "cue": "11.throw",
+      "sfx": "whoosh",
+      "why": "Cut behind him: the fight."
+    },
+    {
+      "cue": "11.throw",
+      "word": "threw",
+      "at": 0.05,
+      "sfx": "zip",
+      "dur": 0.3,
+      "why": "He throws."
+    },
+    {
+      "cue": "11.throw",
+      "word": "threw",
+      "at": 0.45,
+      "sfx": "thud",
+      "trim": 1,
+      "why": "Hit."
+    },
+    {
+      "cue": "11.throw",
+      "word": "went",
+      "sfx": "power_down",
+      "trim": 1.5,
+      "why": "One goes out."
+    },
+    {
+      "cue": "11.throw",
+      "word": "threw",
+      "nth": 1,
+      "at": 0.05,
+      "sfx": "zip",
+      "dur": 0.3,
+      "why": "He throws again."
+    },
+    {
+      "cue": "11.throw",
+      "word": "threw",
+      "nth": 1,
+      "at": 0.2,
+      "sfx": "zip",
+      "dur": 0.3,
+      "why": "And the other stick."
+    },
+    {
+      "cue": "11.throw",
+      "word": "two",
+      "at": -0.05,
+      "sfx": "thud",
+      "repeat": 2,
+      "every": 0.16,
+      "trim": 1,
+      "why": "Two hits."
+    },
+    {
+      "cue": "11.throw",
+      "word": "more",
+      "at": 0.2,
+      "sfx": "power_down",
+      "pitch": 0.9,
+      "why": "Two more go out.",
+      "trim": 4.5
+    },
+    {
+      "cue": "11.fire",
+      "sfx": "swish",
+      "why": "Cut to high over the square."
+    },
+    {
+      "cue": "11.fire",
+      "word": "turned",
+      "sfx": "whoosh_low",
+      "dur": 0.6,
+      "why": "Seven heads swing round to him."
+    },
+    {
+      "cue": "11.fire",
+      "word": "once",
+      "sfx": "sting",
+      "trim": -7,
+      "why": "All of them, at once."
+    },
+    {
+      "cue": "11.fire",
+      "word": "fire",
+      "at": -0.1,
+      "sfx": "fire_whoosh",
+      "trim": -2,
+      "why": "Seven lines of fire."
+    },
+    {
+      "cue": "11.fire",
+      "word": "melts",
+      "sfx": "crackle",
+      "dur": 0.8,
+      "why": "Snow hissing."
+    },
+    {
+      "cue": "11.small",
+      "sfx": "swish",
+      "why": "Cut: side by side."
+    },
+    {
+      "cue": "11.small",
+      "at": 0.3,
+      "sfx": "fire_whoosh",
+      "why": "A blast."
+    },
+    {
+      "cue": "11.small",
+      "word": "smaller",
+      "sfx": "slide_down",
+      "trim": -3,
+      "why": "Smaller."
+    },
+    {
+      "cue": "11.small",
+      "word": "chin",
+      "at": -0.45,
+      "sfx": "fire_whoosh",
+      "why": "Another."
+    },
+    {
+      "cue": "11.small",
+      "word": "chin",
+      "at": 0.2,
+      "sfx": "zip",
+      "dur": 0.25,
+      "trim": -2,
+      "why": "He still throws."
+    },
+    {
+      "cue": "11.small",
+      "word": "belt",
+      "at": -0.45,
+      "sfx": "fire_whoosh",
+      "why": "Another."
+    },
+    {
+      "cue": "11.small",
+      "word": "belt",
+      "sfx": "drop",
+      "trim": -4,
+      "why": "Down to his belt."
+    },
+    {
+      "cue": "11.umbrella",
+      "sfx": "swish",
+      "why": "Cut to the boy."
+    },
+    {
+      "cue": "11.umbrella",
+      "at": 0.3,
+      "sfx": "heartbeat",
+      "repeat": 2,
+      "every": 0.6,
+      "why": "He looks at the thing in his hand."
+    },
+    {
+      "cue": "11.umbrella",
+      "word": "opened",
+      "sfx": "riser",
+      "dur": 0.9,
+      "trim": -3,
+      "why": "The idea."
+    },
+    {
+      "cue": "11.umbrella",
+      "word": "opened",
+      "at": 0.05,
+      "sfx": "pop",
+      "trim": 2,
+      "why": "The umbrella opens."
+    },
+    {
+      "cue": "11.umbrella",
+      "word": "umbrella",
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "Cloth snapping tight."
+    },
+    {
+      "cue": "11.held",
+      "sfx": "whoosh",
+      "dur": 0.7,
+      "why": "Round the two of them."
+    },
+    {
+      "cue": "11.held",
+      "word": "held",
+      "at": 0.1,
+      "sfx": "fire_whoosh",
+      "why": "The fire lands on the cloth."
+    },
+    {
+      "cue": "11.held",
+      "word": "caught",
+      "sfx": "fire_whoosh",
+      "why": "The umbrella catches."
+    },
+    {
+      "cue": "11.held",
+      "word": "fire",
+      "sfx": "crackle",
+      "dur": 1.2,
+      "why": "It burns over his head."
+    },
+    {
+      "cue": "11.held",
+      "word": "kept",
+      "sfx": "zip",
+      "dur": 0.25,
+      "trim": 3,
+      "why": "Under it, he throws."
+    },
+    {
+      "cue": "11.held",
+      "word": "holding",
+      "sfx": "crackle",
+      "dur": 0.6,
+      "why": "Still burning."
+    },
+    {
+      "cue": "11.knee",
+      "sfx": "swish",
+      "why": "Cut down to his knee."
+    },
+    {
+      "cue": "11.knee",
+      "word": "knee",
+      "sfx": "slide_down",
+      "trim": -3,
+      "why": "As small as that."
+    },
+    {
+      "cue": "11.knee",
+      "word": "throwing",
+      "at": 0.1,
+      "sfx": "zip",
+      "dur": 0.25,
+      "why": "Still throwing."
+    },
+    {
+      "cue": "11.knee",
+      "at": 0.2,
+      "sfx": "crackle",
+      "dur": 0.8,
+      "trim": -0.5,
+      "why": "The umbrella above."
+    },
+    {
+      "cue": "11.last",
+      "sfx": "swish",
+      "why": "Cut: the whole of it."
+    },
+    {
+      "cue": "11.last",
+      "at": 0.25,
+      "sfx": "fire_whoosh",
+      "why": "The last one comes down on them."
+    },
+    {
+      "cue": "11.last",
+      "word": "left",
+      "sfx": "tick",
+      "why": "One left."
+    },
+    {
+      "cue": "11.last",
+      "word": "snowball",
+      "at": -0.3,
+      "sfx": "heartbeat",
+      "why": "One snowball."
+    },
+    {
+      "cue": "11.last",
+      "word": "he",
+      "sfx": "zip",
+      "dur": 0.35,
+      "trim": 2,
+      "why": "He lets go."
+    },
+    {
+      "cue": "11.last",
+      "word": "miss",
+      "sfx": "hit",
+      "trim": -3,
+      "why": "He did not miss."
+    },
+    {
+      "cue": "11.last",
+      "word": "miss",
+      "at": 0.1,
+      "sfx": "power_down",
+      "why": "The last fire goes out."
+    },
+    {
+      "cue": "12.quiet",
+      "at": 0.3,
+      "sfx": "plink",
+      "repeat": 3,
+      "every": 0.4,
+      "pitchStep": 0.92,
+      "why": "Quiet: water dripping."
+    },
+    {
+      "cue": "12.quiet",
+      "at": 0.1,
+      "sfx": "debris",
+      "dur": 1.0,
+      "trim": -3,
+      "why": "Ash settling."
+    },
+    {
+      "cue": "12.left",
+      "sfx": "swish",
+      "trim": -3,
+      "why": "Cut: straight down."
+    },
+    {
+      "cue": "12.left",
+      "word": "pumpkin",
+      "sfx": "plink",
+      "why": "The pumpkin in the water."
+    },
+    {
+      "cue": "12.left",
+      "word": "puddle",
+      "sfx": "splash",
+      "trim": -6,
+      "why": "A puddle."
+    },
+    {
+      "cue": "12.name",
+      "at": 0.2,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "trim": -3,
+      "why": "He does not move."
+    },
+    {
+      "cue": "12.name",
+      "word": "joke",
+      "at": 0.2,
+      "sfx": "plink",
+      "pitch": 0.8,
+      "why": "One more drop."
+    },
+    {
+      "cue": "13.gate",
+      "sfx": "whoosh_low",
+      "why": "Cut to the hill."
+    },
+    {
+      "cue": "13.gate",
+      "word": "lit",
+      "sfx": "riser",
+      "dur": 1.0,
+      "why": "The gate fills again."
+    },
+    {
+      "cue": "13.gate",
+      "word": "lit",
+      "sfx": "power_up",
+      "pitch": 0.8,
+      "why": "Lit, brighter than before."
+    },
+    {
+      "cue": "13.gate",
+      "word": "bigger",
+      "sfx": "boom",
+      "why": "Something bigger: two eyes behind the purple."
+    },
+    {
+      "cue": "13.gate",
+      "word": "coming",
+      "sfx": "stomp",
+      "repeat": 2,
+      "every": 0.4,
+      "why": "A footstep on the other side."
+    },
+    {
+      "cue": "13.nose",
+      "sfx": "swish",
+      "why": "Cut to his face."
+    },
+    {
+      "cue": "13.nose",
+      "word": "cold",
+      "sfx": "sparkle",
+      "dur": 0.7,
+      "why": "A flake coming down."
+    },
+    {
+      "cue": "13.nose",
+      "word": "landed",
+      "sfx": "plink",
+      "pitch": 1.3,
+      "why": "It lands on his nose."
+    },
+    {
+      "cue": "13.nose",
+      "word": "nose",
+      "sfx": "blip",
+      "why": "His eyes come down to it."
+    },
+    {
+      "cue": "13.snow",
+      "sfx": "whoosh",
+      "dur": 0.8,
+      "why": "Pull back: the sky."
+    },
+    {
+      "cue": "13.snow",
+      "word": "snow",
+      "at": -0.5,
+      "sfx": "sparkle",
+      "dur": 0.6,
+      "trim": -3,
+      "why": "Snow filling the air."
+    },
+    {
+      "cue": "13.snow",
+      "word": "starting",
+      "at": -0.3,
+      "sfx": "chime",
+      "trim": -2.5,
+      "why": "Snow: the one thing that could bring him back."
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "whoosh",
+      "why": "Cut to the sign."
+    },
+    {
+      "cue": "14.sub",
+      "at": 0.02,
+      "sfx": "pop",
+      "trim": -3,
+      "why": "The sign."
+    },
+    {
+      "cue": "14.sub",
+      "word": "subscribe",
+      "at": 0.3,
+      "sfx": "ding",
+      "note": "E6",
+      "trim": -3,
+      "why": "Subscribe."
+    },
+    {
+      "cue": "14.sub",
+      "word": "two",
+      "at": 0.25,
+      "sfx": "boing",
+      "trim": -5,
+      "why": "The pumpkin rocks by itself."
+    },
+    {
+      "cue": "14.sub",
+      "word": "two",
+      "at": 0.45,
+      "sfx": "sparkle",
+      "dur": 0.5,
+      "trim": -4,
+      "why": "Snow on the pumpkin."
+    }
+  ]
+}
