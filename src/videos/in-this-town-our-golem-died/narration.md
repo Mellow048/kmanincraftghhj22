@@ -1,6 +1,6 @@
 # Narration — In This Town, Our Golem Died
 
-**Status: DRAFT 4 — restructured on the owner's note after the first render.** His words on the render: *"it lacked
+**Status: BUILT — draft 4, recorded, rendered (`renders/in-this-town-our-golem-died.mp4`, 86.3 s).** His words on the render: *"it lacked
 retention, its slow paced, no motion just pngs… get rid of that 'nobody knows' 3x on the start, just head to the main
 topic asap."*
 
@@ -8,7 +8,8 @@ Topic: `Topics/InThisTown`. His outline, his plot points, his lines ("I got the 
 was a creeper behind the golem", "it exploded", the rose, the rose put on the well, the sleep, the golem alive the
 next day).
 
-**What changed in draft 4, and why.**
+**What changed in draft 4, and why.** (Rendered: 49 shots, 86.3 s, median shot 1.83 s, and every shot moves —
+measured, not asserted: between 20 % and 80 % of every shot, 44–93 % of the frame's pixels change.)
 
 - **The five "nobody" lines at the start are gone.** Draft 3 opened with a hook and then five facts nobody knew
   (never sleeps, never breaks, the well's flowers, the oldest rule, never keep one). One of them said the same thing
