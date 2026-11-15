@@ -66,7 +66,7 @@ e("4.push", "hit", "A shove in the chest.", word="pushed"); e("4.push", "step_gr
 e("4.take", "swish", "The big one's face."); e("4.take", "stamp", "Take it off.", word="off", trim=-3); e("4.take", "blip", "Show us your face.", word="face", trim=-2)
 e("4.held", "clank", "Both hands on the iron.", word="held"); e("4.held", "tick", "The helmet rattles: he is shaking.", word="shaking", at=-0.6, repeat=8, every=0.09, trim=4)
 e("4.scared", "whoosh_low", "The slit."); e("4.scared", "heartbeat", "Scared.", word="scared"); e("4.scared", "heartbeat", "Not of them.", word="them"); e("4.scared", "riser", "Something behind the slit lights up.", word="them", at=-0.9, trim=-6)
-e("4.pull", "rustle", "One on each arm.", word="held", trim=-3); e("4.pull", "rustle", "The other arm.", word="arms", trim=-5); e("4.pull", "creak", "The third one pulls.", word="third"); e("4.pull", "scrape", "Iron starts to move.", word="pulled", trim=2)
+e("4.pull", "rustle", "One on each arm.", word="held", trim=-3); e("4.pull", "rustle", "The other arm.", word="arms", at=0.25, trim=-2); e("4.pull", "creak", "The third one pulls.", word="third"); e("4.pull", "scrape", "Iron starts to move.", word="pulled", trim=2)
 e("4.off", "clank", "The helmet comes off.", at=0.05, trim=3); e("4.off", "whoosh", "It goes up past the lamp.", at=0.2)
 e("4.noface", "sting", "There was no face.", at=0.05)
 e("4.hole", "whoosh_low", "A hole."); e("4.hole", "heartbeat", "A hole.", word="hole"); e("4.hole", "rustle", "Something wet moves in it.", word="moved", at=-0.4, trim=3); e("4.hole", "creak", "It comes up.", word="moved")

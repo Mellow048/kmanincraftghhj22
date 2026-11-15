@@ -5,10 +5,10 @@
   "seconds": 101.8,
   "built_from": {
     "timing.json": "347c3fd74ce22883caf218ce4b6e311cfb9ba27b",
-    "sound.json": "7cb44bed0a88a0b832a13f9a4827d4fd26b33d42",
+    "sound.json": "2eed615023cc03b8ccb996ac63295b8eb8aa4271",
     "narration.mp3": "a97e34f6c10f5e9bd88c592c5d2afb4108cd109b"
   },
-  "mix_sha1": "d9736cc63984431cfa183ad8eb941ebe9e4edb22",
+  "mix_sha1": "b074813d878e6fdbac45cf32af49eaa3d8f99121",
   "music_sections": [
     {
       "from": "1.town",
@@ -125,7 +125,7 @@
     "sfxKinds": 35,
     "longestGapSeconds": 1.6,
     "longestGapAt": 57.9,
-    "sfxBuried": 1,
+    "sfxBuried": 0,
     "voiceOverRestMedianDb": 13.0,
     "voiceOverRestWorstDb": 3.1,
     "voiceOverRestWorst": [
@@ -147,20 +147,20 @@
         ]
       },
       {
-        "db": 5.1,
-        "t": 67.0,
-        "cue": "4.pull",
-        "sounding": [
-          "rustle"
-        ]
-      },
-      {
         "db": 5.2,
         "t": 70.3,
         "cue": "4.noface",
         "sounding": [
           "sting",
           "whoosh_low"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 67.0,
+        "cue": "4.pull",
+        "sounding": [
+          "rustle"
         ]
       },
       {

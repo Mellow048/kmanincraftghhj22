@@ -827,7 +827,8 @@
       "cue": "4.pull",
       "sfx": "rustle",
       "word": "arms",
-      "trim": -5,
+      "at": 0.25,
+      "trim": -2,
       "why": "The other arm."
     },
     {
