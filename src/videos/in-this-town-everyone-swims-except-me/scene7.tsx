@@ -85,7 +85,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.matter",
-      ...cam.push({ on: [A - 10, 0.95, -2], dist: 2.2, to: 1.7, yaw: 22, pitch: 10, fov: 38 }),
+      ...cam.push({ on: [A - 13.62, 0.28, -1.73], dist: 2.1, to: 1.5, yaw: 14, pitch: 20, fov: 36 }),
       zone: "arena",
       look: "overworld-day",
       note: "He taps the ring against his other hand: it did not matter that they all looked like professionals, because he had this.",

@@ -133,7 +133,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.glint",
-      ...cam.push({ on: [A + 7.2, 0.12, 2.6], dist: 1.9, to: 1.35, yaw: 26, pitch: 9, fov: 34 }),
+      ...cam.push({ on: [A + 8.42, 0.2, 1.66], dist: 1.5, to: 1.1, yaw: 6, pitch: 12, fov: 36 }),
       zone: "arena",
       look: "overworld-day",
       note: "SLOW: a gold band with three buttons on the hand of the boy in front. The same ring, on somebody else, in the same race.",
@@ -198,7 +198,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.dare",
-      ...cam.push({ on: [A + 9.8, 0.9, 1.2], dist: 0.95, to: 0.7, yaw: 68, pitch: 14, fov: 36 }),
+      ...cam.push({ on: [A + 10.41, 0.16, 0.86], dist: 1.55, to: 1.15, yaw: 4, pitch: 16, fov: 34 }),
       zone: "arena",
       look: "overworld-day",
       note: "His thumb over the red button, and the ring glowing under it. He could. He does not. The film's choice happens in one centimetre.",
@@ -248,7 +248,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.hand",
-      ...cam.push({ on: [A + 10.2, 0.3, -7.6], dist: 1.7, to: 1.3, yaw: 24, pitch: -8, fov: 36 }),
+      ...cam.push({ on: [A + 10.25, 0.62, -7.35], dist: 2.5, to: 1.9, yaw: 186, pitch: 14, fov: 40 }),
       zone: "arena",
       look: "overworld-day",
       note: "From the tiles, looking up: the winner stands over him with a hand out — and the ring is on that hand, at his eye level.",
