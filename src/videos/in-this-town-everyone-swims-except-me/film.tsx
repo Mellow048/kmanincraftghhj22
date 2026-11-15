@@ -28,6 +28,7 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "middle",
   look: "overworld-day",
+  audio: { src: "audio/in-this-town-everyone-swims-except-me/narration.mp3" },
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-everyone-swims-except-me/narration.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/in-this-town-everyone-swims-except-me/mix.mp3" },
