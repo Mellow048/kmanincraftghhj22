@@ -188,7 +188,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.fell",
-      ...cam.pan({ from: f(-7.4, 0.8, 5.6), on: f(-7.0, 4.2, -3), onTo: f(-7.05, 4.0, -3), fov: 58 }),
+      ...cam.pan({ from: f(-2.8, 0.8, 4.6), on: f(-4.85, 2.6, -1.5), onTo: f(-4.85, 2.45, -1.5), fov: 58 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "THE JOKE. Low, in front of the cage: the boy rubs his eyes and yawns at us. Far behind and above him, small, a man goes backwards off the lookout tower, arms going round, and drops out of sight behind a roof. A puff of dust. The boy has not turned his head.",
@@ -200,7 +200,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Yard t={t} plug hero="none" />
-            <Hero position={f(-5.7, 0.08, 0.75)} rotationY={-0.25} animation="idle" face={t < 1.2 ? "sleepy" : "calm"} headPitch={0.1} />
+            <Hero position={f(-4.95, 0.08, 0.6)} rotationY={0.45} animation="idle" face={t < 1.2 ? "sleepy" : "calm"} headPitch={0.1} />
             {k < 1 ? (
               <group position={[LOOK[0], y, z]}>
                 <group rotation={[-k * 5.5, 0, 0]}>
@@ -210,7 +210,7 @@ export const scene2 = storyScene(timing, {
             ) : null}
             {k < 1 ? <Vex position={[LOOK[0] + 0.3, y + 1.9, z - 0.3]} t={t} scale={1.1} /> : null}
             {k >= 1 && t < go + 2.3 ? <Puffs position={[LOOK[0], 0.3, z]} count={12} rise={3.2} spread={1.5} size={0.7} color="#b9b9c0" /> : null}
-            <Fill on={f(-5.7, 1.1, 0.75)} yaw={-20} power={7} />
+            <Fill on={f(-4.95, 1.1, 0.6)} yaw={25} power={7} />
           </>
         );
       },
@@ -283,19 +283,19 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.steps",
-      ...cam.push({ on: f(-1, 2.5, -4), dist: 5.2, to: 5.0, yaw: -42, pitch: -9, fov: 54 }),
+      ...cam.push({ on: f(-2.5, 2.3, -3), dist: 7.4, to: 7.0, yaw: 200, pitch: -6, fov: 50 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.35, amp: 0.07, dur: 0.3 }, { at: 0.95, amp: 0.07, dur: 0.3 }, { at: 1.55, amp: 0.07, dur: 0.3 }, { at: 2.1, amp: 0.07, dur: 0.25 }],
-      note: "From behind the boy, inside his bars: he holds on with both hands. Past the bars the golem walks across the yard into the smoke, and at every step the whole picture jumps and the boy with it.",
+      note: "From the yard, low: the golem walks across the picture into the smoke, and behind its legs the boy is at the back bars of his cage, holding on. At every step the whole picture jumps and the boy with it.",
       stage: (t) => {
         const j = Math.max(bump(t, 0.35, 0.25), bump(t, 0.95, 0.25), bump(t, 1.55, 0.25), bump(t, 2.1, 0.25)) * 0.06;
         const gx = 0.5 + t * 2.2;
         return (
           <>
             <Yard t={t} smoke hero="none" />
-            <group position={[ME[0], ME[1] + j, ME[2] - 0.9]}>
-              <group rotation={[0, Math.PI - 0.5, 0]}>
+            <group position={[ME[0], ME[1] + j, ME[2] - 1.0]}>
+              <group rotation={[0, Math.PI, 0]}>
                 <Yellow />
               </group>
             </group>

@@ -162,7 +162,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.who",
-      ...cam.push({ on: o(1.9, 1.25, 3.5), dist: 7.0, to: 6.4, yaw: -52, pitch: 6 }),
+      ...cam.push({ on: o(1.5, 1.35, 3.5), dist: 8.0, to: 7.4, yaw: -52, pitch: 6 }),
       zone: Z.out,
       look: NIGHT4,
       note: "Side on, the two of them: the guard on the left, turned to the bush on the right, a speech bubble WHO IS THERE? over him. Then three dots over the bush.",
@@ -172,7 +172,7 @@ export const scene1 = storyScene(timing, {
           <>
             <Bush position={BUSH} shake={t > said + 0.5 ? t : 0} />
             <Raider who={2} position={GS} rotationY={EAST} animation="guard" face="worried" />
-            {t < said + 0.2 ? <Bubble text="WHO IS THERE?" position={up(GS, 2.45)} rotationY={-0.9} scale={0.4 * ease(ramp(t, 0, 0.15))} /> : null}
+            {t < said + 0.2 ? <Bubble text="WHO IS THERE?" position={[GS[0] + 0.5, 2.5, GS[2]]} rotationY={-0.9} scale={0.55 * ease(ramp(t, 0, 0.15))} /> : null}
             {t > said + 0.35 ? <Bubble text="..." position={up(BUSH, 2.3)} rotationY={-0.9} scale={0.6} tail={1} /> : null}
             <Fill on={manFace(GS)} yaw={-52} power={6} d={2.4} />
           </>

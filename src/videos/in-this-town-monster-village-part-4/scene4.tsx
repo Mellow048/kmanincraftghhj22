@@ -50,7 +50,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "8.bus",
-      ...cam.push({ on: f(11, 8, 3.4), onTo: f(-1.4, 1.4, 3.4), dist: 15, to: 9, yaw: 8, pitch: 4 }),
+      ...cam.push({ on: f(15, 11.5, 3.4), onTo: f(-1.4, 1.4, 3.4), dist: 15, to: 9, yaw: 8, pitch: 4 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 2.25, amp: 0.1, dur: 0.4 }],
@@ -92,7 +92,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.in",
-      ...cam.push({ on: f(-2.9, 1.3, 2.6), dist: 9.4, to: 8.4, yaw: -22, pitch: 12 }),
+      ...cam.push({ on: f(-2.1, 1.3, 2.6), dist: 9.4, to: 8.4, yaw: -22, pitch: 12 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "The enderman points a long arm at the slime. The boy runs out of the cage, takes off, and goes into the side of the bus head first. It wobbles round him. He floats in the middle of it, green, with his hair standing up.",
@@ -246,20 +246,21 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.forest",
-      ...cam.push({ on: f(-8, 12, -6), onTo: f(-30, 5, -12.5), dist: 26, to: 24, yaw: 62, pitch: 0 }),
+      ...cam.push({ on: f(-8, 12, -6), onTo: f(-30, 5, -12.5), dist: 26, to: 24, yaw: 62, pitch: 0, fov: 60 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "Very wide: a small green ball goes up over the west wall of the castle against the stars, turning over and over, and comes down a long way off in the trees. A tree shakes. A little puff of leaves.",
       stage: (t) => {
         const k = ramp(t, 0, dur("9.forest") - 0.5);
-        const p: Vec3 = [BUSSPOT[0] - 5 - 27 * k, 6 + 11 * Math.sin(Math.PI * (0.25 + 0.75 * k)) - 6 * k * k * k, BUSSPOT[2] - 2 - 9 * k];
+        const kk = k * k * (3 - 2 * k);
+        const p: Vec3 = f(-8 - 22 * kk, 12 + 4 * Math.sin(Math.PI * kk) - 7 * kk, -6 - 6.5 * kk);
         return (
           <>
             <Yard t={t} smoke hero="none" door={1} mo={false} teacher />
             <Family t={t} />
             <Hero position={OUTBUS} rotationY={WEST} animation="idle" face="fear" />
             <IronGolem position={GSTAND} rotationY={WEST} scale={G} headPitch={-0.3} />
-            {k < 1 ? <Bus position={p} rotationY={t * 9} tilt={t * 5} /> : <Puffs position={[p[0], 4, p[2]]} color="#3a7a31" count={12} rise={3} spread={2} size={0.7} />}
+            {k < 1 ? <Bus position={p} rotationY={t * 9} tilt={t * 5} scale={1.4} /> : <Puffs position={[p[0], 4, p[2]]} color="#3a7a31" count={12} rise={3} spread={2} size={0.7} />}
           </>
         );
       },
@@ -340,7 +341,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.stay",
-      ...cam.push({ on: up(T2, 2.5), dist: 4.2, to: 3.7, yaw: -22, pitch: -15 }),
+      ...cam.push({ on: up(T2, 2.35), dist: 5.2, to: 4.7, yaw: -22, pitch: -12 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "The enderman by the empty cage, from below: one long arm out, jaw dropped right open, shouting after them. STAY BACK! Then: BOTH OF YOU!",
@@ -350,7 +351,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Yard t={t} smoke hero="none" door={1} mo={false} />
             <Postman position={T2} rotationY={-0.8} jaw={0.6 + 0.4 * Math.abs(Math.sin(t * 9))} carry={1} lean={0.2} />
-            <Bubble text={t < both - 0.15 ? "STAY BACK!" : "BOTH OF YOU!"} position={[T2[0] - 0.2, 3.75, T2[2] + 0.5]} rotationY={-0.38} scale={0.4} />
+            <Bubble text={t < both - 0.15 ? "STAY BACK!" : "BOTH OF YOU!"} position={[T2[0] - 0.2, 3.4, T2[2] + 0.5]} rotationY={-0.38} scale={0.4} />
             <Fill on={up(T2, 2.6)} yaw={-22} power={9} d={2.4} />
           </>
         );

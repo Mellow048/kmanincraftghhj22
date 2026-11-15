@@ -317,7 +317,7 @@ export const scene3 = storyScene(timing, {
             <Mum position={[x, 0, f(0, 0, 5.6)[2]]} rotationY={WEST} walk={t * 1.5} turn={Math.sin(t * 2.2) * 0.8} mood="sad" />
             {[0, 1, 2, 3].map((i) => {
               const px = f(6.9 - i * 1.5, 0, 0)[0];
-              const side = i % 2 ? 1 : -1;
+              const side = -1;
               const away = ease(ramp(x - px, 2.6, 1.2));
               return <Raider key={i} who={i + 2} position={[px, 0, f(0, 0, 5.6)[2] + side * (0.5 + 1.2 * away)]} rotationY={side > 0 ? NORTH : 0} animation="idle" face="worried" headPitch={0.5 * away} />;
             })}
