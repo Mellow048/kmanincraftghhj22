@@ -317,7 +317,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <Bush position={BUSH} shake={t < 0.7 ? t : 0} />
-            <Dad position={at} rotationY={WEST} wave={t > 0.6 ? t * 6 : 0} raise={t < 0.6 ? 1 : 0.2} mood={t < 0.55 ? "angry" : "happy"} jaw={t < 0.55 ? 0.55 * upk : 0.12} rattle={t < 0.5 ? 1 : 0} />
+            <Dad position={at} rotationY={WEST} wave={t > 0.6 ? 1 : 0} raise={t < 0.6 ? 1 : 0.2} mood={t < 0.55 ? "angry" : "happy"} jaw={t < 0.55 ? 0.55 * upk : 0.12} rattle={t < 0.5 ? 1 : 0} />
             {t < 0.9
               ? [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                   <Block key={i} position={[BUSH[0] - 0.9 + Math.cos(i * 0.8) * t * 1.6, 1.4 + t * (2.5 + (i % 3)) - 5 * t * t, BUSH[2] + Math.sin(i * 0.8) * t * 1.5]} rotation={[t * 9, i, t * 5]} size={[0.13, 0.03, 0.13]} color={i % 2 ? "#3a7a31" : "#2f6a2a"} castShadow={false} />
@@ -346,7 +346,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <Bush position={BUSH} />
-            <Dad position={[BUSH[0] - 1.25, 0.22, BUSH[2]]} rotationY={WEST} wave={t * 6} raise={0.2} mood="happy" jaw={jaw} />
+            <Dad position={[BUSH[0] - 1.25, 0.22, BUSH[2]]} rotationY={WEST} wave={1} raise={0.2} mood="happy" jaw={jaw} />
             <pointLight position={[BUSH[0] - 1.7, 1.9, BUSH[2] + 0.9]} color="#e6ecff" intensity={9} distance={5} decay={2} />
           </>
         );

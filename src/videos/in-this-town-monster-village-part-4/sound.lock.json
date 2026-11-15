@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-monster-village-part-4",
   "mix": "public/audio/in-this-town-monster-village-part-4/mix.mp3",
-  "seconds": 169.5333,
+  "seconds": 171.6333,
   "built_from": {
-    "timing.json": "29c758b397d565e89a4726733b6e88c50d939d7a",
-    "sound.json": "e2868cb5b17e5fe1e0d3bef2a8bc4d4d83b05648",
-    "narration.mp3": "72be4639a14144cbb8f1bb09efe2eb2ccade7ce8"
+    "timing.json": "6e953e899ec9c8f5e3fb62bb9dfaaca330b832f7",
+    "sound.json": "694d73e83312c9842b359ecd9ec896bdbc673e01",
+    "narration.mp3": "e425ec1838066527a607455b51c2d4603f6da7a3"
   },
-  "mix_sha1": "61df715e2cef45584deec3fb9101db277b7f27ec",
+  "mix_sha1": "38903961bd9c8ffd8281490e04189dffd8ab8084",
   "music_sections": [
     {
       "from": "1.town",
@@ -53,32 +53,32 @@
     {
       "from": "7.hole",
       "mood": "hope",
-      "at": 96.27
+      "at": 98.37
     },
     {
       "from": "8.mo",
       "mood": "sad",
-      "at": 127.83
+      "at": 129.93
     },
     {
       "from": "8.out",
       "mood": "tense",
-      "at": 134.33
+      "at": 136.43
     },
     {
       "from": "9.slam",
       "mood": "tense",
-      "at": 145.67
+      "at": 147.77
     },
     {
       "from": "10.hall",
       "mood": "dark",
-      "at": 159.0
+      "at": 161.1
     },
     {
       "from": "11.sub",
       "mood": "tense",
-      "at": 167.7
+      "at": 169.8
     }
   ],
   "music_file": {
@@ -88,20 +88,20 @@
   "beds": 7,
   "measured": {
     "musicUnderVoiceDb": 17.9,
-    "secondsWithoutMusic": 4.6,
+    "secondsWithoutMusic": 6.6,
     "bedsUnderVoiceDb": 25.4,
-    "sfx": 432,
-    "sfxPerMinute": 152.9,
+    "sfx": 452,
+    "sfxPerMinute": 158.0,
     "sfxKinds": 41,
     "longestGapSeconds": 2.3,
     "longestGapAt": 83.5,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 12.9,
-    "voiceOverRestWorstDb": 3.9,
+    "voiceOverRestMedianDb": 12.6,
+    "voiceOverRestWorstDb": 4.0,
     "voiceOverRestWorst": [
       {
-        "db": 3.9,
-        "t": 156.5,
+        "db": 4.0,
+        "t": 158.4,
         "cue": "9.never",
         "sounding": [
           "tick",
@@ -120,14 +120,6 @@
       },
       {
         "db": 4.2,
-        "t": 154.8,
-        "cue": "9.never",
-        "sounding": [
-          "tick"
-        ]
-      },
-      {
-        "db": 4.2,
         "t": 19.9,
         "cue": "3.bush",
         "sounding": [
@@ -135,28 +127,37 @@
         ]
       },
       {
-        "db": 5.1,
-        "t": 80.9,
-        "cue": "5.again",
+        "db": 4.7,
+        "t": 100.1,
+        "cue": "7.hole",
         "sounding": [
-          "boom",
-          "debris",
-          "scrape"
+          "cheer",
+          "step_stone"
         ]
       },
       {
-        "db": 5.1,
-        "t": 110.4,
-        "cue": "7.skel",
+        "db": 4.9,
+        "t": 92.9,
+        "cue": "6.earlier",
         "sounding": [
-          "clank",
-          "zip"
+          "bonk",
+          "slide_down",
+          "thud"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 127.2,
+        "cue": "8.in",
+        "sounding": [
+          "chime",
+          "step_stone"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.1,
-    "limiterMaxDb": 1.6
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 1.5
   },
   "failures": []
 }

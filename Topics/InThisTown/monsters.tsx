@@ -140,7 +140,14 @@ const Scarf: React.FC<{ color?: string; y: number; w?: number; d?: number }> = (
  * them hang and swing like a person's; `wave` lifts the right one. `baby` is a small one with a big head.
  */
 export const Zombie: React.FC<
-  MonsterProps & { skin?: string; shirt?: string; legs?: string; arms?: number; wave?: number; baby?: boolean }
+  MonsterProps & {
+    skin?: string; shirt?: string; legs?: string; arms?: number;
+    /** 0–1: one arm up, waving. It is a STRENGTH, not a clock: anything over 1 is treated as 1. */
+    wave?: number;
+    baby?: boolean;
+    /** Pose the two arms yourself, radians, [−X arm, +X arm]: 0 hangs, −1.5 is straight out in front, −3 is straight up. Overrides `arms` and `wave`. */
+    armPitch?: [number, number];
+  }
 > = ({
   position = [0, 0, 0],
   rotationY = 0,
@@ -159,9 +166,11 @@ export const Zombie: React.FC<
   shirt = MONSTER.zombieShirt,
   legs = MONSTER.zombieLegs,
   arms = 1,
-  wave = 0,
+  wave: waveIn = 0,
   baby = false,
+  armPitch,
 }) => {
+  const wave = Math.max(0, Math.min(1, waveIn));
   const t = useFilmTime();
   const u = U;
   const k = scale ?? (baby ? 0.55 : 1);
@@ -188,7 +197,7 @@ export const Zombie: React.FC<
           const out = -1.5 * arms + (1 - arms) * -s * swing * 0.8 + groan * arms;
           const lift = s === 1 ? -wave * (2.9 - 1.5 * arms) + wave * Math.sin(t * 9 + phase) * 0.0 : 0;
           return (
-            <group key={s} position={[s * 6 * u, 10 * u, 0]} rotation={[out + lift, 0, s === 1 ? -wave * 0.25 + wave * Math.sin(t * 9 + phase) * 0.3 : 0]}>
+            <group key={s} position={[s * 6 * u, 10 * u, 0]} rotation={[armPitch ? armPitch[s === -1 ? 0 : 1] : out + lift, 0, s === 1 ? -wave * 0.25 + wave * Math.sin(t * 9 + phase) * 0.3 : 0]}>
               <Block position={[0, -2 * u, 0]} size={[4 * u, 4.2 * u, 4.05 * u]} color={shirt} />
               <Block position={[0, -8 * u, 0]} size={[3.9 * u, 8 * u, 3.9 * u]} color={skin} />
             </group>
@@ -221,7 +230,10 @@ export const Skeleton: React.FC<
   MonsterProps & {
     bow?: boolean;
     rattle?: number;
+    /** 0–1: one arm up, waving. It is a STRENGTH, not a clock: anything over 1 is treated as 1 (a clock here spins the arm like a propeller). */
     wave?: number;
+    /** With `bow`: 0–1, the other hand comes up to the string and pulls it back, with an arrow on it. Let it go by dropping this to 0 in one frame. */
+    draw?: number;
     /** The waving arm (−X) has come off. Draw it yourself, wherever it has got to. */
     noArm?: boolean;
     /** 0–1: the other arm (+X) held out in front, as if holding something up to look at. */
@@ -247,13 +259,15 @@ export const Skeleton: React.FC<
   phase = 0,
   bow = false,
   rattle = 0,
-  wave = 0,
+  wave: waveIn = 0,
+  draw = 0,
   noArm = false,
   raise = 0,
   headDrop = 0,
   jaw = 0,
 }) => {
   const t = useFilmTime();
+  const wave = Math.max(0, Math.min(1, waveIn));
   const u = U;
   const bone = MONSTER.bone;
   const dark = "#2b2b2b";
@@ -279,10 +293,11 @@ export const Skeleton: React.FC<
         <Scarf color={scarf} y={11.6 * u} />
         {[-1, 1].map((s) => {
           if (s === -1 && noArm) return null;
-          const base = s === 1 && bow ? -1.35 : s === 1 && raise > 0 ? -1.4 * raise : -s * swing * 0.8;
-          const lift = s === -1 ? -wave * 2.8 : 0;
+          const pull = bow && draw > 0 && s === -1;
+          const base = s === 1 && bow ? -1.35 : pull ? -1.35 : s === 1 && raise > 0 ? -1.4 * raise : -s * swing * 0.8;
+          const lift = s === -1 && !pull ? -wave * 2.8 : 0;
           return (
-            <group key={s} position={[s * 5 * u, 11 * u, 0]} rotation={[base + lift + shake * 0.08, 0, s === -1 ? wave * (0.25 + Math.sin(t * 9 + phase) * 0.3) : 0]}>
+            <group key={s} position={[s * 5 * u + (pull ? 3 * u : 0), 11 * u, pull ? -draw * 7 * u : 0]} rotation={[base + lift + shake * 0.08, 0, s === -1 ? wave * (0.25 + Math.sin(t * 9 + phase) * 0.3) : 0]}>
               <Block position={[0, -6 * u, 0]} size={[2 * u, 12 * u, 2 * u]} color={bone} />
               {s === 1 && bow ? (
                 <group position={[0, -11.5 * u, 0]} rotation={[1.35, 0, 0]}>
@@ -290,7 +305,19 @@ export const Skeleton: React.FC<
                   {[-1, 1].map((e) => (
                     <Block key={e} position={[0, e * 7.4 * u, -0.6 * u]} rotation={[e * 0.6, 0, 0]} size={[0.9 * u, 3 * u, 0.9 * u]} color="#6b4a2a" />
                   ))}
-                  <Block position={[0, 0, -1.6 * u]} size={[0.25 * u, 16 * u, 0.25 * u]} color="#e8e8e8" castShadow={false} />
+                  {draw > 0 ? (
+                    <>
+                      {[-1, 1].map((e) => (
+                        <group key={e} position={[0, e * 8 * u, -1.6 * u]} rotation={[e * Math.atan2(draw * 7, 8), 0, 0]}>
+                          <Block position={[0, -e * 4.6 * u, 0]} size={[0.25 * u, 9.4 * u, 0.25 * u]} color="#e8e8e8" castShadow={false} />
+                        </group>
+                      ))}
+                      <Block position={[0, 0, (3 - draw * 7) * u]} size={[0.5 * u, 0.5 * u, 15 * u]} color="#e8e4d8" castShadow={false} />
+                      <Block position={[0, 0, (10.6 - draw * 7) * u]} size={[1.1 * u, 1.1 * u, 1.4 * u]} color="#9aa3ad" castShadow={false} />
+                    </>
+                  ) : (
+                    <Block position={[0, 0, -1.6 * u]} size={[0.25 * u, 16 * u, 0.25 * u]} color="#e8e8e8" castShadow={false} />
+                  )}
                 </group>
               ) : null}
             </group>

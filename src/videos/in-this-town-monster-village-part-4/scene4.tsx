@@ -1,4 +1,4 @@
-import { Block, cam, storyScene } from "../../engine";
+import { Block, cam, getPose, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
   BUSSPOT, Boom, Bubble, Bus, CLASH, Dad, EAST, Fill, Folk, HALL_LEN, Hero, Hiss, IronGolem, KEEPDOOR, Key, LOCK, ME, Mum, NIGHT4, NORTH, Postman, Puffs, Raider, Ravager,
@@ -9,28 +9,60 @@ import { Battle, G, GSTAND, MoFlat, OUTBUS, T2, Yard, bump, clamp, up, w } from 
 /** Mo on the ground, feet at MO0 and head to the west, and how far they drag him. */
 const MO0: Vec3 = f(-4.4, 0.02, 7.0);
 const DRAG = 2.4;
-/** Mo and the two who have him: `d` metres dragged west. */
-const Taken: React.FC<{ d: number; walk?: boolean }> = ({ d, walk = false }) => (
+/**
+ * MO AND THE TWO WHO HAVE HIM: `d` metres dragged west. HANDS THAT DRAG SOMEBODY TOUCH HIM: his arms are straight up
+ * over his head, his shoulders are off the ground, and each guard walks with his inside arm back and down so that his
+ * hand is ON Mo's wrist. The numbers below put the two hands in the same place; if you move one, move the other.
+ */
+const MOK = 0.83;
+const Taken: React.FC<{ d: number; walk?: boolean; t?: number }> = ({ d, walk = false, t = 0 }) => (
   <>
-    <MoFlat position={[MO0[0] - d, MO0[1], MO0[2]]} rotationY={EAST} />
-    {[-0.55, 0.55].map((z, i) => (
-      <Raider key={z} who={i ? 3 : 1} sword={false} position={[MO0[0] - d - 2.35, 0, MO0[2] + z]} rotationY={WEST} animation={walk ? "walk" : "idle"} arms="reach" headYaw={i ? -0.4 : 0.4} headPitch={0.3} face="angry" />
-    ))}
+    <MoFlat position={[MO0[0] - d, MO0[1], MO0[2]]} rotationY={EAST} k={MOK} armsUp />
+    {[-1, 1].map((sd, i) => {
+      // facing west, a guard's +X arm is on his south side: the north guard (sd −1) uses +X, the south one −X
+      const back: Vec3 = [0.62, 0, 0];
+      const base = walk ? getPose("walk", t * 1.2 + i * 0.4) : getPose("idle", t);
+      return (
+        <Raider
+          key={sd} who={i ? 3 : 1} sword={false} position={[MO0[0] - d - 2.22, 0, MO0[2] + sd * 0.66]} rotationY={WEST}
+          pose={{ ...base, bodyPitch: 0.12, ...(sd < 0 ? { armR: back } : { armL: back }) }} headYaw={sd * -0.5} headPitch={0.25} face="angry"
+        />
+      );
+    })}
   </>
 );
 /** The family, where they have got to by the time the bus lands: south of the cages, out of the golem's way. */
 const MUM: Vec3 = f(3.6, 0, 6.3);
 const DAD: Vec3 = f(4.9, 0, 7.1);
 const HISS: Vec3 = f(2.5, 0, 7.3);
-const Family: React.FC<{ t: number; look?: Vec3; hiss?: boolean }> = ({ t, look, hiss = true }) => (
-  <>
-    <Mum position={MUM} rotationY={WEST} lookAt={look} mood={look ? "happy" : "sad"} turn={look ? 0 : Math.sin(t * 2) * 0.7} />
-    <Dad position={DAD} rotationY={WEST} lookAt={look} mood="happy" wave={look ? t * 5 : 0} />
-    {hiss ? <Hiss position={HISS} rotationY={WEST} lookAt={look} mood="happy" /> : null}
-    <Folk kind="zombie" n={4} position={f(6.4, 0, 8.4)} rotationY={WEST} lookAt={look} />
-    <Folk kind="spider" n={1} position={f(7.2, 0, 5.9)} rotationY={WEST} lookAt={look} />
-  </>
-);
+type FMood = "calm" | "happy" | "sad" | "angry" | "scared";
+/**
+ * The family and two neighbours. `look` turns every head to a point; `mood` is the face they do it with (WORRIED is
+ * "sad": he is running deeper into the castle, nobody is pleased). `flee` is seconds since they started to run for it:
+ * they turn their backs on `from` and go, each at his own speed, arms up.
+ */
+const Family: React.FC<{ t: number; look?: Vec3; hiss?: boolean; mood?: FMood; flee?: number; from?: Vec3; reach?: number }> = ({ t, look, hiss = true, mood, flee = 0, from = f(11, 0, 4.5), reach = 0 }) => {
+  const m: FMood = mood ?? "sad";
+  const go = (p: Vec3, sp: number): { position: Vec3; rotationY: number; walk: number } => {
+    if (flee <= 0) return { position: p, rotationY: WEST, walk: Math.sin(t * 2.4 + p[0]) * 0.06 };
+    const dx = p[0] - from[0];
+    const dz = p[2] - from[2] + 3;
+    const l = Math.hypot(dx, dz);
+    const dd = sp * flee * Math.min(1, flee * 3);
+    return { position: [p[0] + (dx / l) * dd, 0, p[2] + (dz / l) * dd], rotationY: Math.atan2(dx, dz), walk: dd * 0.8 };
+  };
+  const lk = flee > 0 ? undefined : look;
+  const md: FMood = flee > 0 ? "scared" : m;
+  return (
+    <>
+      <Mum {...go(MUM, 3.6)} lookAt={lk} mood={md} turn={look || flee > 0 ? 0 : Math.sin(t * 2) * 0.7} arms={flee > 0 ? 1 : reach} lean={flee > 0 ? 0.25 : 0.08 * reach} />
+      <Dad {...go(DAD, 4.4)} lookAt={lk} mood={md} jaw={flee > 0 ? 0.8 : m === "scared" ? 0.5 : 0.15 * reach} rattle={flee > 0 ? 0.6 : 0} lean={flee > 0 ? 0.25 : 0} />
+      {hiss ? <Hiss {...go(HISS, 3.0)} lookAt={lk} mood={md} lean={flee > 0 ? 0.2 : 0} /> : null}
+      <Folk kind="zombie" n={4} {...go(f(6.4, 0, 8.4), 3.9)} lookAt={lk} mood={md} arms={flee > 0 ? 1 : 0} lean={flee > 0 ? 0.25 : 0} />
+      <Folk kind="spider" n={1} {...go(f(7.2, 0, 5.9), 5.2)} lookAt={lk} mood={md} />
+    </>
+  );
+};
 const busAt = (k: number): Vec3 => [BUSSPOT[0] + 21 * (1 - k), 13 * Math.sin(Math.PI * Math.min(1, 0.25 + 0.75 * k)) * (k < 1 ? 1 : 0) * (1 - k) * 1.6 + 0, BUSSPOT[2]];
 /** The far end of the hallway. */
 const END: Vec3 = hw(0, 0, -HALL_LEN + 4.2);
@@ -138,11 +170,11 @@ export const scene4 = storyScene(timing, {
       ...cam.top({ on: [MO0[0] - 1.1, 0, MO0[2]], height: 5.2, to: 4.0 }),
       zone: Z.fort,
       look: NIGHT4,
-      note: "Straight down: Mo on his back in the dirt. Straw hat, red scarf, eyes shut, arms out. He is not moving at all. Two pairs of boots stand at his head.",
+      note: "Straight down: Mo on his back in the dirt. Straw hat, red scarf, eyes shut, arms out. He is not moving at all. Two guards stand at his head with a wrist of his each.",
       stage: (t) => (
         <>
           <Yard t={t} smoke hero="none" door={1} mo={false} />
-          <Taken d={0} />
+          <Taken d={0} t={t} />
           <pointLight position={[MO0[0] - 1, 3, MO0[2]]} color="#e6ecff" intensity={22} distance={8} decay={2} />
         </>
       ),
@@ -152,14 +184,14 @@ export const scene4 = storyScene(timing, {
       ...cam.push({ on: [MO0[0] - 1.3, 0.9, MO0[2]], onTo: [MO0[0] - 1.3 - DRAG, 0.9, MO0[2]], dist: 7.0, to: 6.6, yaw: 12, pitch: 8 }),
       zone: Z.fort,
       look: NIGHT4,
-      note: "Side on, moving with them: two guards walk off to the left with an arm of his each, and Mo slides after them on his back, hat first, heels leaving two lines in the dirt. Behind them the fight goes on. No door, no building: only away.",
+      note: "Side on, moving with them: two guards walk off to the left, each with one arm back and a hand shut on one of his wrists, and Mo slides after them on his back, hat first, heels leaving two lines in the dirt. Behind them the fight goes on. No door, no building: only away.",
       stage: (t) => {
         const d = (DRAG * t) / dur("8.drag");
         return (
           <>
             <Yard t={t} smoke hero="none" door={1} mo={false} />
             <Battle t={t} />
-            <Taken d={d} walk />
+            <Taken d={d} walk t={t} />
             {[-0.2, 0.2].map((z) => (
               <Block key={z} position={[MO0[0] - d / 2, 0.06, MO0[2] + z]} size={[d + 0.01, 0.02, 0.1]} color="#4a3a28" castShadow={false} />
             ))}
@@ -193,12 +225,12 @@ export const scene4 = storyScene(timing, {
       ...cam.push({ on: f(4.2, 1.45, 6.6), dist: 7.6, to: 6.6, yaw: -76, pitch: 3 }),
       zone: Z.fort,
       look: NIGHT4,
-      note: "What he sees: mum, dad, Hiss, a zombie, a spider, and every fighter behind them, all with their heads turned to look straight at us. Mum's face lights up. Dad waves.",
+      note: "What he sees: mum, dad, Hiss, a zombie, a spider, and every fighter behind them, all with their heads turned to look straight at us. Nobody is pleased: mum's brows go up in the middle and her arms come out to us, dad's jaw drops. He is going the wrong way.",
       stage: (t) => (
         <>
           <Yard t={t} smoke hero="none" door={1} mo={false} />
           <Battle t={t} look={up(OUTBUS, 1.2)} />
-          <Family t={t} look={up(OUTBUS, 1.2)} />
+          <Family t={t} look={up(OUTBUS, 1.2)} mood="sad" reach={ease(ramp(t, 0.5, 1.4))} />
           <Fill on={up(MUM, 1.6)} yaw={-76} power={9} d={3} />
         </>
       ),
@@ -209,11 +241,11 @@ export const scene4 = storyScene(timing, {
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.5, amp: 0.06, dur: 0.3 }, { at: 1.1, amp: 0.06, dur: 0.3 }],
-      note: "The same family, the same smiles, from lower down, and behind them, over all their heads, the iron golem walks into the picture with its red eyes on something to our left.",
+      note: "The same family, the same worried faces, from lower down, and behind them, over all their heads, the iron golem walks into the picture with its red eyes on something to our left.",
       stage: (t) => (
         <>
           <Yard t={t} smoke hero="none" door={1} mo={false} />
-          <Family t={t} look={up(OUTBUS, 1.2)} />
+          <Family t={t} look={up(OUTBUS, 1.2)} mood="sad" reach={1} />
           <Ravager position={f(14.5, 0, -3.5)} rotationY={0.4} roll={1.45} rider={false} scale={1.35} />
           <IronGolem position={f(13 - t * 2.6, 0, 3.7)} rotationY={WEST} scale={G} walk={t * 2.6} headPitch={0.25} />
           <pointLight position={f(8, 5, 8)} color="#e6ecff" intensity={90} distance={18} decay={2} />
@@ -235,7 +267,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Yard t={t} smoke hero="none" door={1} mo={false} teacher />
-            <Family t={t} look={up(GSTAND, 4)} />
+            <Family t={t} look={up(GSTAND, 4)} mood="scared" />
             <Hero position={OUTBUS} rotationY={EAST} animation="scared" face="fear" lookAt={up(GSTAND, 4)} />
             <IronGolem position={[GSTAND[0] + 8.5 * (1 - k), 0, GSTAND[2]]} rotationY={WEST} scale={G} walk={t < fl ? t * 6 : fl * 6} armR={-0.4 - 1.6 * sw} bow={0.2 * sw} />
             <Bus position={[BUSSPOT[0] - a * 16, a * 15 - 6 * a * a, BUSSPOT[2] - a * 5]} rotationY={WEST + a * 8} squash={0.4 * bump(t, fl, 0.3)} />
@@ -257,8 +289,8 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Yard t={t} smoke hero="none" door={1} mo={false} teacher />
-            <Family t={t} />
-            <Hero position={OUTBUS} rotationY={WEST} animation="idle" face="fear" />
+            <Family t={t} look={p} mood="scared" />
+            <Hero position={OUTBUS} rotationY={WEST} animation="scared" face="fear" lookAt={p} />
             <IronGolem position={GSTAND} rotationY={WEST} scale={G} headPitch={-0.3} />
             {k < 1 ? <Bus position={p} rotationY={t * 9} tilt={t * 5} scale={1.4} /> : <Puffs position={[p[0], 4, p[2]]} color="#3a7a31" count={12} rise={3} spread={2} size={0.7} />}
           </>
@@ -291,7 +323,7 @@ export const scene4 = storyScene(timing, {
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.3, amp: 0.18, dur: 0.5 }, { at: 1.0, amp: 0.16, dur: 0.7 }],
-      note: "SLAM. Wide, side on: the ravager comes in from the left at full gallop, past the boy so close his hair moves, and takes the golem in the ribs. The two of them go across the picture together and through the front of a stone hut. The hut goes up in dust and stones.",
+      note: "SLAM. Wide, side on: the ravager comes in from the left at full gallop, past the boy so close his hair moves, and takes the golem in the ribs. The two of them go across the picture together and through the front of a stone hut. The hut goes up in dust and stones. Mum, dad, Hiss and the neighbours watch the golem go past their noses, heads turning with it, and then every one of them turns round and runs.",
       stage: (t) => {
         const hit = 0.3;
         const crash = 1.0;
@@ -300,8 +332,9 @@ export const scene4 = storyScene(timing, {
         const gone = t > crash + 0.25;
         return (
           <>
-            <Yard t={t} smoke hero="none" door={1} mo={false} teacher />
-            <Family t={t} look={f(11, 2, 4.5)} />
+            <Yard t={t} smoke hero="none" door={1} mo={false} />
+            <Postman position={[T2[0] - Math.max(0, t - crash) * 3.2, 0, T2[2] + Math.max(0, t - crash) * 1.5]} rotationY={t > crash ? WEST : NORTH} walk={Math.max(0, t - crash) * 3} shake={0.5} lookAt={t > crash ? undefined : [GSTAND[0] + 9.2 * k, 3, GSTAND[2]]} jaw={0.7} mood="scared" />
+            <Family t={t} look={[GSTAND[0] + 9.2 * k, 3, GSTAND[2]]} mood="scared" flee={t - crash - 0.15} />
             <Hero position={OUTBUS} rotationY={EAST} animation={t < hit ? "cower" : "stagger"} face="fear" />
             {!gone ? <Ravager position={[rx, 0, GSTAND[2]]} rotationY={EAST} walk={t * 9} jaw={1} head={-0.3} scale={1.35} /> : null}
             {!gone ? (
@@ -402,19 +435,16 @@ export const scene4 = storyScene(timing, {
       ...cam.push({ on: hw(0, 1.5, -12), dist: 14.2, to: 12.4, yaw: 0, pitch: 3, fov: 52 }),
       zone: Z.hall,
       look: NIGHT4,
-      note: "THE HALLWAY, for the first time. From just behind the boy: stone walls close on both sides, torches, a strip of red carpet running away into the dark, a door at the far end. He stops. He puts both arms out and his fingers are on both walls.",
+      note: "THE HALLWAY, for the first time. From just behind the boy: stone walls close on both sides, torches, a strip of red carpet running away into the dark, a door at the far end. He stops. He puts his own two arms out sideways (HIS arms: nothing is drawn on top of him) and his fingers are on both walls.",
       stage: (t) => {
         const arms = ease(ramp(t, w("10.hall", "touch", 3.0) - 0.7, w("10.hall", "touch", 3.0)));
         const p = hw(0, 0, -1.6 - 1.2 * ease(ramp(t, 0, 1.2)));
         return (
           <>
-            <Hero position={p} rotationY={NORTH} animation={t < 1.2 ? "walk" : "idle"} face="uneasy" />
-            {[-1, 1].map((s) => (
-              <group key={s} position={[p[0] + s * 0.26, p[1] + 0.98, p[2]]} rotation={[0, 0, s * (-1.35 + 1.35 * arms)]}>
-                <Block position={[s * 0.3, 0, 0]} size={[0.56 * arms + 0.01, 0.14, 0.14]} color="#f2b705" />
-                <Block position={[s * 0.56 * arms, 0, 0]} size={[0.12 * arms + 0.01, 0.13, 0.13]} color="#e3b48c" />
-              </group>
-            ))}
+            <Hero
+              position={p} rotationY={NORTH} face="uneasy" headYaw={0.7 * Math.sin(Math.PI * arms) * (t < w("10.hall", "touch", 3.0) ? 1 : 0)}
+              pose={{ ...getPose(t < 1.2 ? "walk" : "idle", t), armR: [0, 0, 1.5 * arms], armL: [0, 0, -1.5 * arms] }}
+            />
             <EndOfHall d={t * 0.25} />
           </>
         );

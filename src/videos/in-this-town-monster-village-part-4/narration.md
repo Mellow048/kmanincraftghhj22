@@ -84,7 +84,7 @@ What is planted, and where it pays off:
 # clip 06-earlier wait 0.5
 [6.earlier]  Four minutes earlier.
 
-# clip 07-friends wait 3.0
+# clip 07-friends wait 5.1
 [7.hole]     Then they came through the hole in the wall. My friends. All of them!
 [7.all]      My mum. My dad. Hiss. The zombies. The skeletons. The spiders.
 [7.armour]   On the other side, the villagers and the players put on their armour. All of it.

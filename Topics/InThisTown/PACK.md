@@ -275,7 +275,7 @@ Everything Monster Village part four built to attack a castle at night. It was r
 | `Horde` | An army of pillagers in rows, marching: crossbows, torches, banners, vindicators with axes, evokers with arms up, witches, and (`beasts`) ravagers. `position` (front row, middle), `t`, `rows`, `cols`, `width`, `gap`, `adv`, `fan`, `seed` | **Every one is a real `Pillager`.** No grey boxes behind two actors. About 150 is fine for a three second shot |
 | `WatchTower` | A lookout tower with a floor every 3.3 m: ladders, a lamp and furniture on each, walls below, open sides above, a deck and a flag on top | **A building has an inside.** Cut the castle wall where it stands, or the rooms are full of wall |
 | `spyglassPose`, `spyglassAt`, `Spyglass` | Both arms up, and the glass at the eye between the hands | **Somebody who uses a thing uses his arms** |
-| `SpyMask`, `spyLook` | What the glass sees: black round a circle, a brass rim, a cross hair, for a still camera with fov 30 tipped `down` | Level (0.1) for trees, down (0.2) for a field of people |
+| `SpyMask`, `spyLook` | What the glass sees: black round a circle, a brass rim (no cross hair), for a still camera with fov 30 tipped `down` | Level (0.1) for trees, down (0.2) for a field of people |
 | `Boom`, `TNT` | An explosion (flash, fire, stones thrown along `dir`, smoke) and the block that makes it | **Smoke must not hide the shot**: `smoke` is 0.2 or less |
 | `Ravager`, `Vex`, `Witch`, `Axe`, `HandTorch`, `HandBanner` | The beasts and what pillagers carry (the last three are `Pillager` children) | A ravager's `jaw` and `head` move: use them |
 | `Bush`, `Key`, `LitWindow`, `Web` | Small things | |

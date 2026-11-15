@@ -98,7 +98,7 @@ export const scene2 = storyScene(timing, {
       shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
-      note: "THROUGH THE SPYGLASS: a round picture in black with a brass rim and a cross hair. Trees.",
+      note: "THROUGH THE SPYGLASS: a round picture in black with a brass rim. Trees.",
       stage: () => <SpyMask eye={E1} down={LEVEL} />,
     },
     {
