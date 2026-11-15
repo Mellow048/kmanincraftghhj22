@@ -43,7 +43,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.lamp",
-      ...cam.push({ on: at(POV.on, 0.4, 0.5, -0.4), dist: 8.8, to: 8.4, yaw: 70, pitch: POV.pitch, fov: 35 }),
+      ...cam.push({ on: at(POV.on, 0.4, 0.5, -0.4), dist: 8.8, to: 8.4, yaw: 68, pitch: POV.pitch, fov: 35 }),
       zone: "woods",
       look: NIGHT,
       note: "What the teller sees: his own tree down the edge of the frame, and past it one warm lamp in the dark with the grey kid under it. On 'not alone' three bigger shapes walk into the light.",
@@ -299,7 +299,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.swallow",
-      ...cam.push({ on: at(POV.on, 0.4, 0.7, -0.4), dist: 8.8, to: 8.5, yaw: 70, pitch: POV.pitch, fov: 37 }),
+      ...cam.push({ on: at(POV.on, 0.4, 0.7, -0.4), dist: 8.8, to: 8.5, yaw: 68, pitch: POV.pitch, fov: 37 }),
       zone: "woods",
       look: NIGHT,
       note: "The whole of it from behind the tree, small and far away, which is worse: three kids in the air go in towards one small grey kid, one after another, and are not there any more. Then the arms go back in.",

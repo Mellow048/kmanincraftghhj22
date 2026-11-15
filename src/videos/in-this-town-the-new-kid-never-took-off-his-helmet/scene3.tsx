@@ -64,7 +64,7 @@ export const scene3 = storyScene(timing, {
       zone: "yard",
       look: DAY,
       note: "Over the teller's shoulder: he stands in the road and looks at where the road goes into the dark.",
-      stage: () => <Hero position={at(EDGE, 5.0, 0, -0.56)} rotationY={WEST} animation="idle" face="brave" />,
+      stage: () => <Hero position={at(EDGE, 4.2, 0, -0.2)} rotationY={WEST} animation="idle" face="brave" />,
     },
     {
       cue: "3.follow",
