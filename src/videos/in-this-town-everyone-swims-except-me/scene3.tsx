@@ -47,7 +47,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.title",
-      ...cam.top({ on: [120.9, 0.66, 39.95], height: 0.55, to: 0.4, spin: [-8, 4], fov: 34 }),
+      ...cam.top({ on: [120.9, 0.66, 39.95], height: 0.95, to: 0.78, spin: [-8, 4], fov: 30 }),
       zone: "home",
       look: "overworld-night",
       note: "Straight down on the screen: two words, held by two thumbs. The whole plan of the film is a video title.",
