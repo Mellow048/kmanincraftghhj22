@@ -115,4 +115,9 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   the air, sitting through a stump, a hat that stayed behind when the witch moved, hands on a villager who has none.
   Check contact in the stills before delivery. He likes the motion; he wants more in the background (every zone now has
   ground dressing, a far ring of hills and its own landmarks).
+- **2026-11-15, the helmet film (part 1).** His outline, script draft 2 approved ("yes go"). His note on draft 1: no
+  "Do not follow me" note, and the helmet kid must not know he is watched until the stick snaps. Nobody in a story
+  knows a thing they were not shown finding out. Three spoken lines are milder than the ones he approved, because the
+  voice service refused the clip; the picture shows what the words do not. He has not reviewed the film. Script
+  drafts for race part 2 and Monster Village part 4 are in `outlines/`, both the agent's stories, waiting for his yes.
 - Nobody has listened to either new mix. Monster Village 1, 2 and Robot at 18 still have the `offset` sound fault.
