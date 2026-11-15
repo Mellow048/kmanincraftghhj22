@@ -22,9 +22,9 @@ const Hand: React.FC<{ x: number; t: number }> = ({ x, t }) => {
   const sh = Math.sin(t * 38) * 0.008;
   return (
     <group position={[x, 1.6 + Math.abs(Math.sin(t * 4.2)) * 0.015, GS[2] - 0.02]}>
-      <Block position={[0.42, -0.3, 0.17]} size={[0.5, 0.13, 0.13]} color="#3f7f3a" castShadow={false} />
-      <Block position={[0.7, -0.27 + sh, 0.17]} size={[0.13, 0.15, 0.15]} color="#8d5a3b" castShadow={false} />
-      <AimSword position={[0.7, -0.24 + sh, 0.17]} yaw={EAST - 0.1} pitch={0.3 + sh * 3} scale={0.8} />
+      <Block position={[0.42, -0.3, 0.09]} size={[0.5, 0.13, 0.13]} color="#3f7f3a" castShadow={false} />
+      <Block position={[0.7, -0.27 + sh, 0.09]} size={[0.13, 0.15, 0.15]} color="#8d5a3b" castShadow={false} />
+      <AimSword position={[0.7, -0.24 + sh, 0.09]} yaw={EAST - 0.06} pitch={0.3 + sh * 3} scale={0.8} />
     </group>
   );
 };
@@ -36,10 +36,10 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      from: f(6.7, 5.2, 7.0),
-      to: f(6.4, 4.7, 6.0),
-      target: f(6.3, 2.7, -2.5),
-      fov: 58,
+      from: f(8.3, 5.4, 7.2),
+      to: f(7.9, 4.9, 6.4),
+      target: f(6.9, 2.6, -2.5),
+      fov: 64,
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.42, amp: 0.2, dur: 0.5 }],
