@@ -1,19 +1,23 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import { Hero, IronGolem, Kid, SnowGolem, timing } from "./kit";
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+/** Everybody walks south across the square, at the lens. */
+const SPEED = 1.15;
+const go = (p: Vec3, d: number): Vec3 => [p[0], p[1], p[2] + d];
+const ME: Vec3 = [-0.38, 0, 2.6];
+const HIM: Vec3 = [0.62, 0, 2.25];
+/** Three kids, and behind each of them what a kid of this town gets. */
+const PAIRS: Array<{ kid: Vec3; golem: Vec3; n: number }> = [
+  { kid: [-1.1, 0, 1.2], golem: [-1.3, 0, 0.0], n: 0 },
+  { kid: [1.45, 0, 0.9], golem: [1.6, 0, -0.5], n: 1 },
+  { kid: [0.1, 0, -0.5], golem: [0.2, 0, -1.9], n: 2 },
+];
+const END = SPEED * 2.27;
 
 /**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
+ * HOOK. The rule of the town and the one it went wrong for, in one picture: three kids with three iron golems
+ * towering behind them, and in front of them all the teller, with a thing made of snow.
  */
 export const scene1 = storyScene(timing, {
   id: "scene1",
@@ -21,33 +25,40 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
+      ...cam.push({ on: [0, 1.5, 2.3], onTo: [0, 1.5, 2.3 + END - 0.2], dist: 5.7, to: 5.2, yaw: 0, pitch: 3, fov: 44 }),
       zone: "village",
       look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
-      stage: () => (
-        <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
-        </>
-      ),
+      note: "'Every kid got an iron golem at ten': three kids walk at us, each with an iron golem twice his size behind him. In front of them walks the teller, in red, and beside him slides a snowman with a pumpkin for a head.",
+      stage: (t) => {
+        const d = t * SPEED;
+        return (
+          <>
+            <Hero position={go(ME, d)} animation="walk" animDistance={d} face="uneasy" headYaw={0.25} gaze={0} />
+            <SnowGolem position={go(HIM, d)} armR={{ raise: 0.75 + 0.35 * Math.sin(t * 9), swing: 0.5 }} armL={{ raise: 0.2 + 0.1 * Math.sin(t * 5), swing: 0.2 }} headRoll={Math.sin(t * 5) * 0.08} />
+            {PAIRS.map(({ kid, golem, n }) => (
+              <group key={n}>
+                <Kid n={n} position={go(kid, d)} animation="walk" animDistance={d + n * 0.4} face="grin" />
+                <IronGolem position={go(golem, d)} walk={d + n} />
+              </group>
+            ))}
+          </>
+        );
+      },
     },
     {
       cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
+      ...cam.push({ on: [0.1, 1.28, 2.4 + END], dist: 3.6, to: 3.1, yaw: -6, pitch: 2, fov: 38 }),
       zone: "village",
       look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      note: "'Mine was made of snow': the two of them, close. He looks sideways at it. It looks back at him and waves a stick.",
+      stage: (t) => (
+        <>
+          <Hero position={go(ME, END)} animation="idle" face="frown" headYaw={0.55} gaze={0} />
+          <SnowGolem position={go([0.56, 0, 2.25], END)} headYaw={-0.5} headRoll={0.12} armR={{ raise: 0.9 + 0.3 * Math.sin(t * 12), swing: 0.9 }} armL={{ raise: 0.25, swing: 0.2 }} />
+          <IronGolem position={go([-1.3, 0, 0.0], END)} headPitch={0.25} />
+          <IronGolem position={go([1.6, 0, -0.5], END)} headPitch={0.25} />
+        </>
+      ),
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;
