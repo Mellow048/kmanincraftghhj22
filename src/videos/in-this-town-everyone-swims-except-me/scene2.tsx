@@ -23,13 +23,13 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.smell",
-      ...cam.truck({ on: [P - 4, 1.25, 12], dist: 5.6, yaw: 20, pitch: 8, fov: 40, by: [2.6, 0, 0] }),
+      ...cam.truck({ on: [P - 3.4, 1.15, 14.2], dist: 6.2, yaw: 24, pitch: 10, fov: 42, by: [1.8, 0, 0] }),
       zone: "pool",
       look: "overworld-day",
       note: "Travelling: walk him in through the gate with a bucket of chlorine in frame and other kids running past. Two smells in one picture.",
       stage: (t) => (
         <>
-          <Hero position={[P - 4.4 + t * 1.7, 0, 12]} rotationY={Math.PI / 2} animation="walk" animDistance={t * 1.7} face="worried" />
+          <Hero position={[P - 4.4 + t * 1.2, 0, 11.4]} rotationY={Math.PI / 2} animation="walk" animDistance={t * 1.2} face="worried" />
           <Villager position={[P - 1.2, 0, 13.4]} robe={ROBE.white} walk={1.6} phase={0.4} />
           <Villager position={[P + 2.6, 0, 11.6]} robe={ROBE.friend} walk={1.4} phase={1.7} kid scale={CHILD} />
           <group position={[P - 7.6, 0, 12.6]}>
@@ -92,7 +92,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.laugh",
-      ...cam.push({ on: [P - 0.2, 0.75, 7.3], dist: 3.4, to: 2.7, yaw: 175, pitch: -14, fov: 42 }),
+      ...cam.push({ on: [P - 0.2, 0.9, 7.3], dist: 5.2, to: 4.2, yaw: 16, pitch: 6, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "From the water, looking up at the deck: three little kids laughing down at him. The camera is the one being laughed at.",

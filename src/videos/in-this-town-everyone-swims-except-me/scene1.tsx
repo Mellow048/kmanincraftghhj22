@@ -102,7 +102,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.toes",
-      ...cam.push({ on: [P + 1.2, 0.06, 5.98], dist: 4.6, to: 3.8, yaw: 172, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [P + 1.2, 0.85, 5.98], dist: 6.4, to: 5.4, yaw: 172, pitch: 12, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "From above and behind: ten toes on the tile, the water one centimetre past them. The line in the sand is a line of tile.",

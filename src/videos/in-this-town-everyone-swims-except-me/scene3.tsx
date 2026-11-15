@@ -47,7 +47,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.title",
-      ...cam.top({ on: [120.9, 0.66, 39.95], height: 0.95, to: 0.78, spin: [-8, 4], fov: 30 }),
+      ...cam.top({ on: [120.9, 0.66, 39.95], height: 1.55, to: 1.3, spin: [-8, 4], fov: 32 }),
       zone: "home",
       look: "overworld-night",
       note: "Straight down on the screen: two words, held by two thumbs. The whole plan of the film is a video title.",
@@ -78,13 +78,13 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.sank",
-      ...cam.push({ on: [P + 3.2, -0.9, 4.2], dist: 3.8, to: 2.9, yaw: 104, pitch: 8, fov: 42 }),
+      ...cam.push({ on: [P + 3.2, 0.15, 4.2], dist: 5.2, to: 4.2, yaw: 104, pitch: 2, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "Side on, under the surface: down he goes, and the water does not care. One clean vertical drop in a horizontal film.",
       stage: (_t, { p }) => (
         <>
-          <Hero position={[P + 3.2, -0.5 - p * 1.25, 4.2]} animation="fall" face="scared" />
+          <Hero position={[P + 3.2, -0.55 - p * 1.15, 4.2]} animation="panic" face="scared" />
           <Splash at={[P + 3.2, -0.05, 4.2]} size={0.14} count={7} seed={17} />
         </>
       ),
