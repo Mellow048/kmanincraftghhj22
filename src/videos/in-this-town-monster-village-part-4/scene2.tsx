@@ -7,8 +7,8 @@ import {
 import { Block } from "../../engine";
 import { G, Yard, bump, clamp, up, w } from "./shared";
 
-/** What the spyglass sees: a still camera at `eye`, looking north. */
-const spy = (eye: Vec3) => cam.pan({ from: eye, on: [eye[0], eye[1], eye[2] - 40], onTo: [eye[0], eye[1], eye[2] - 40], fov: 30 });
+/** What the spyglass sees: a camera at `eye` looking north, as still as a hand holds a spyglass. */
+const north = (eye: Vec3): Vec3 => [eye[0], eye[1], eye[2] - 40];
 const E1: Vec3 = hd(-15, 3.2, 10);
 const E2: Vec3 = hd(1, 3.2, 10);
 const E3: Vec3 = hd(14, 3.2, 10);
@@ -60,7 +60,8 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.trees",
-      ...spy(E1),
+      ...cam.pan({ from: E1, on: north(E1), onTo: north(E1), fov: 30 }),
+      shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "THROUGH THE SPYGLASS: a round picture in black. Trees.",
@@ -69,7 +70,8 @@ export const scene2 = storyScene(timing, {
     {
       cue: "4.trees",
       cut: 0.8,
-      ...spy(E2),
+      ...cam.pan({ from: E2, on: north(E2), onTo: north(E2), fov: 30 }),
+      shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "The spyglass jumps along the forest. More trees.",
@@ -78,7 +80,8 @@ export const scene2 = storyScene(timing, {
     {
       cue: "4.trees",
       cut: 1.55,
-      ...spy(E3),
+      ...cam.pan({ from: E3, on: north(E3), onTo: north(E3), fov: 30 }),
+      shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "It jumps again. More trees. It stops. Between the trunks, torches: grey shapes are walking out of the forest.",
@@ -91,7 +94,8 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.pill",
-      ...spy(E4),
+      ...cam.pan({ from: E4, on: north(E4), onTo: north(E4), fov: 30 }),
+      shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "The spyglass, lower and nearer: a whole field of pillagers coming straight at it, rows and rows, torches and banners over their heads.",
@@ -131,7 +135,8 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.vex",
-      ...spy(E2),
+      ...cam.pan({ from: E2, on: north(E2), onTo: north(E2), fov: 30 }),
+      shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "The spyglass again, on the army. A pale blue dot lifts out of it, gets bigger, bigger, and fills the round picture: a small winged thing with red eyes and a sword.",

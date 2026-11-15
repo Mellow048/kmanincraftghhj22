@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Dust, Glow, LightPool, Torch, Tree, Vox, Zone } from "../../engine";
+import { Block, Dust, Glow, GodRay, LightPool, Torch, Tree, Vox, Zone } from "../../engine";
 import { Hut, LanternPost, Moon, Stars } from "../../../Topics/InThisTown";
 import { CAGES, CageBody, FORT, HALL4, HALL_LEN, HALL_W, HORDE, OUT, ROOM4 } from "./kit";
 
@@ -132,6 +132,7 @@ const Fort: React.FC = () => (
     ))}
     <pointLight position={[-9, 15, -11]} color="#a9b8ff" intensity={90} distance={22} decay={2} />
     <LightPool position={[0, 0.08, 1.6]} width={18} depth={6} color="#9fb0ff" opacity={0.1} />
+    <GodRay position={[-6, 7, 1]} rotation={[0, 0, 0.5]} width={6} height={14} color="#b9c8ff" opacity={0.05} />
     <Glow position={[-7.6, 2.5, 3.1]} size={2.4} color="#ffc878" opacity={0.22} />
     <Glow position={[7.2, 2.5, 2.7]} size={2.4} color="#ffc878" opacity={0.22} />
     <Dust position={[0, 2.2, 0]} area={[30, 4, 14]} count={40} size={0.04} color="#cfd8ff" opacity={0.4} seed={9} speed={0.15} />

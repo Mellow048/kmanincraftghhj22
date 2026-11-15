@@ -25,11 +25,7 @@ export const film = defineFilm({
   title: "In This Town, I Live in a Monster Village, Part 4",
   topic: "in-this-town",
   look: "overworld-night",
-  audio: { src: "audio/in-this-town-monster-village-part-4/narration.mp3" },
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-monster-village-part-4/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/in-this-town-monster-village-part-4/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
+  audio: { src: "audio/in-this-town-monster-village-part-4/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4],
