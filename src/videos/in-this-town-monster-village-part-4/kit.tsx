@@ -15,7 +15,7 @@ export { Bubble, IronGolem, Pillager, Puffs, ROBE, Smoke, SubscribeSign, Village
 export { PixelText } from "../../engine";
 /** The siege pieces (ravager, vex, witch, the army, TNT, the tower, the spyglass …) live in the topic's pack now. */
 export {
-  Axe, Boom, Bush, HandBanner, HandTorch, HeldSpyglass, Horde, Key, LitWindow, Ravager, SpyMask, Spyglass, TNT, Vex, WatchTower, Web, Witch, spyLook, spyglassPose,
+  Axe, Boom, Bush, HandBanner, HandTorch, Horde, Key, LitWindow, Ravager, SpyMask, Spyglass, TNT, Vex, WatchTower, Web, Witch, spyLook, spyglassAt, spyglassPose,
 } from "../../../Topics/InThisTown";
 
 export const timing = timingJson as unknown as Timing;

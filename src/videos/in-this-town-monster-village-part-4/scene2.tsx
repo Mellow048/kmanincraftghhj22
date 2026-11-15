@@ -1,14 +1,16 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  Axe, Boom, Bubble, CLASH, EAST, Fill, Flat, GATE, HOLE, HandBanner, HeldSpyglass, Hero, Horde, IronGolem, LOOK, ME, NIGHT4, NORTH, Pillager, Puffs, Raider, Ravager, SpyMask, Spyglass,
-  TNT, VGuard, Vex, WEST, Witch, Z, dur, ease, f, hd, ramp, spyLook, spyglassPose, timing,
+  Axe, Boom, Bubble, CLASH, EAST, Fill, Flat, GATE, HOLE, HandBanner, Hero, Horde, IronGolem, LOOK, ME, NIGHT4, NORTH, Pillager, Puffs, Raider, Ravager, SpyMask, Spyglass,
+  TNT, VGuard, Vex, WEST, Witch, Z, dur, ease, f, hd, ramp, spyLook, spyglassAt, spyglassPose, timing,
 } from "./kit";
 import { Block } from "../../engine";
 import { G, Yard, bump, clamp, up, w } from "./shared";
 
 /** What the spyglass sees: a camera at `eye`, looking north and a little down, as still as a hand holds a spyglass. */
 const DOWN = 0.2;
+/** For the three looks at the trees the glass is nearly level: trunks and leaves, not grass. */
+const LEVEL = 0.1;
 const E1: Vec3 = hd(-15, 4.5, 10);
 const E2: Vec3 = hd(1, 4.5, 10);
 const E3: Vec3 = hd(14, 4.5, 10);
@@ -41,9 +43,9 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "4.tower",
-      from: f(-3.4, 2.2, -5.4),
-      to: f(-5.6, 11.2, -8.6),
-      target: f(-9, 2.2, -14.2),
+      from: f(-4.3, 1.8, -10.4),
+      to: f(-5.3, 11.3, -9.4),
+      target: f(-9, 2.0, -14.2),
       targetTo: up(WATCH, 0.7),
       fov: 46,
       zone: Z.fort,
@@ -60,8 +62,8 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.glass",
-      from: [WATCH_N[0] - 1.5, WATCH_N[1] + 1.85, WATCH_N[2] - 3.7],
-      to: [WATCH_N[0] - 1.0, WATCH_N[1] + 1.7, WATCH_N[2] - 2.7],
+      from: [WATCH_N[0] - 2.4, WATCH_N[1] + 1.75, WATCH_N[2] - 3.0],
+      to: [WATCH_N[0] - 2.0, WATCH_N[1] + 1.65, WATCH_N[2] - 2.2],
       target: [WATCH_N[0], WATCH_N[1] + 1.3, WATCH_N[2]],
       targetTo: [WATCH_N[0], WATCH_N[1] + 1.4, WATCH_N[2]],
       fov: 42,
@@ -80,9 +82,10 @@ export const scene2 = storyScene(timing, {
             {upk < 0.5 ? (
               <Raider who={5} sword={false} position={[WATCH[0], WATCH[1], WATCH[2] - 1.2 * upk]} rotationY={NORTH} animation="sit" face="surprised" />
             ) : (
-              <Raider who={5} sword={false} position={[WATCH[0], WATCH[1], WATCH[2] - 1.2 * upk]} rotationY={NORTH + 0.35 - 0.7 * scan} pose={spyglassPose(t, glass)} face={glass > 0.6 ? "neutral" : "surprised"} headPitch={0}>
-                <HeldSpyglass k={glass} />
-              </Raider>
+              <>
+                <Raider who={5} sword={false} position={[WATCH[0], WATCH[1], WATCH[2] - 1.2 * upk]} rotationY={NORTH + 0.3 - 0.6 * scan} pose={spyglassPose(t, glass)} face={glass > 0.6 ? "neutral" : "surprised"} />
+                <Spyglass position={spyglassAt([WATCH[0], WATCH[1], WATCH[2] - 1.2 * upk], NORTH + 0.3 - 0.6 * scan, glass)} yaw={NORTH + 0.3 - 0.6 * scan} pitch={-0.9 * (1 - glass)} scale={1.35} />
+              </>
             )}
             <pointLight position={[WATCH_N[0] - 1, WATCH_N[1] + 1.8, WATCH_N[2] - 2]} color="#e6ecff" intensity={10} distance={6} decay={2} />
           </>
@@ -91,35 +94,35 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.trees",
-      ...cam.pan({ from: E1, on: spyLook(E1, DOWN), onTo: spyLook(E1, DOWN), fov: 30 }),
+      ...cam.pan({ from: E1, on: spyLook(E1, LEVEL), onTo: spyLook(E1, LEVEL), fov: 30 }),
       shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "THROUGH THE SPYGLASS: a round picture in black with a brass rim and a cross hair. Trees.",
-      stage: () => <SpyMask eye={E1} down={DOWN} />,
+      stage: () => <SpyMask eye={E1} down={LEVEL} />,
     },
     {
       cue: "4.trees",
       cut: 0.7,
-      ...cam.pan({ from: E2, on: spyLook(E2, DOWN), onTo: spyLook(E2, DOWN), fov: 30 }),
+      ...cam.pan({ from: E2, on: spyLook(E2, LEVEL), onTo: spyLook(E2, LEVEL), fov: 30 }),
       shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "The spyglass jumps along the forest, on the word. More trees.",
-      stage: () => <SpyMask eye={E2} down={DOWN} />,
+      stage: () => <SpyMask eye={E2} down={LEVEL} />,
     },
     {
       cue: "4.trees",
       cut: 1.4,
-      ...cam.pan({ from: E3, on: spyLook(E3, DOWN), onTo: spyLook(E3, DOWN), fov: 30 }),
+      ...cam.pan({ from: E3, on: spyLook(E3, LEVEL), onTo: spyLook(E3, LEVEL), fov: 30 }),
       shake: 0.004,
       zone: Z.horde,
       look: NIGHT4,
       note: "It jumps again, on the word. More trees. Then between the trunks, torches: pillagers are walking out of the forest, every one of them with a face.",
       stage: (t) => (
         <>
-          <SpyMask eye={E3} down={DOWN} />
-          <Horde position={hd(14, 0, -19)} t={t} rows={7} cols={7} width={9} adv={ease(ramp(t, 0.55, 1.8)) * 9} seed={1} />
+          <SpyMask eye={E3} down={LEVEL} />
+          <Horde position={hd(14, 0, -24)} t={t} rows={7} cols={7} width={9} adv={ease(ramp(t, 0.55, 1.8)) * 9} seed={1} />
         </>
       ),
     },
@@ -143,7 +146,7 @@ export const scene2 = storyScene(timing, {
       zone: Z.horde,
       look: NIGHT4,
       note: "VINDICATORS. Down among them, in front of the front row: three in grey coats with iron axes over their heads, chopping the air as they march at us, the whole army behind them.",
-      stage: (t) => <Army t={t} />,
+      stage: (t) => <Army t={t} since={0} />,
     },
     {
       cue: "4.gers",
@@ -152,25 +155,25 @@ export const scene2 = storyScene(timing, {
       zone: Z.horde,
       look: NIGHT4,
       note: "EVOKERS. One in a dark coat with gold on it, both arms up, purple sparks pouring off his hands, and two small blue vexes going round his head.",
-      stage: (t) => <Army t={t + 0.98} />,
+      stage: (t) => <Army t={t + 0.98} since={0.98} />,
     },
     {
       cue: "4.gers",
       cut: 1.8,
-      ...cam.push({ on: hd(1.9, 1.6, 2.2), dist: 3.5, to: 2.9, yaw: -10, pitch: 0, fov: 44 }),
+      ...cam.push({ on: hd(1.95, 1.7, 2.4), dist: 4.9, to: 4.3, yaw: -8, pitch: 0, fov: 44 }),
       zone: Z.horde,
       look: NIGHT4,
       note: "WITCHES. Two in purple with tall black hats, each holding out a bottle that glows.",
-      stage: (t) => <Army t={t + 1.8} />,
+      stage: (t) => <Army t={t + 1.8} since={1.8} />,
     },
     {
       cue: "4.gers",
       cut: 2.88,
-      ...cam.push({ on: hd(5.6, 0.75, 2.4), onTo: hd(6.6, 2.5, 1.2), dist: 3.2, to: 4.6, yaw: 12, pitch: -8, fov: 48 }),
+      ...cam.push({ on: hd(5.5, 0.6, 2.9), onTo: hd(6.3, 1.9, 1.6), dist: 2.7, to: 5.6, yaw: -6, pitch: 0, fov: 48 }),
       zone: Z.horde,
       look: NIGHT4,
       note: "AND THE ONES WITH NO NAME. A very small one, carrying a banner three times his size, marching with his chin up. The camera lifts off him: behind him a ravager as big as a cart opens its jaw.",
-      stage: (t) => <Army t={t + 2.88} />,
+      stage: (t) => <Army t={t + 2.88} since={2.88} />,
     },
     {
       cue: "4.vex",
@@ -181,7 +184,7 @@ export const scene2 = storyScene(timing, {
       note: "The spyglass again, on the army. A pale blue dot lifts out of it, gets bigger, bigger, and fills the round picture: a small winged thing with red eyes and a sword.",
       stage: (t) => {
         const k = ease(ramp(t, 0.1, w("4.vex", "spyglass", 1.62) + 0.1));
-        const d = 22 - 21.1 * k;
+        const d = 22 - 19.9 * k;
         return (
           <>
             <SpyMask eye={E2} down={DOWN} />
@@ -211,9 +214,10 @@ export const scene2 = storyScene(timing, {
           <>
             <Yard t={t} plug hero="sleep" patrol />
             {t < 0.2 ? (
-              <Raider who={5} sword={false} position={[WATCH[0], WATCH[1], z]} rotationY={NORTH} pose={spyglassPose(t, 1)} face="surprised">
-                <HeldSpyglass k={1} />
-              </Raider>
+              <>
+                <Raider who={5} sword={false} position={[WATCH[0], WATCH[1], z]} rotationY={NORTH} pose={spyglassPose(t, 1)} face="surprised" />
+                <Spyglass position={spyglassAt([WATCH[0], WATCH[1], z], NORTH)} yaw={NORTH} scale={1.35} />
+              </>
             ) : (
               <Raider who={5} sword={false} position={[WATCH[0], WATCH[1], z]} rotationY={NORTH} animation="panic" face="scared" />
             )}
@@ -270,7 +274,7 @@ export const scene2 = storyScene(timing, {
       look: NIGHT4,
       note: "THE JOKE. The boy in his cage fills the bottom half of the picture, rubbing his eyes and yawning at us. Over his head, on the lit tower behind him, the man goes backwards off the top, turning over and over with the blue thing after him, all the way down behind a roof. A puff of dust. The boy has not turned his head.",
       stage: (t) => {
-        const k = clamp((t - 0.05) / 1.25);
+        const k = clamp((t - 0.05) / 1.5);
         const y = LOOK[1] - (LOOK[1] - 0.2) * k * k;
         const z = LOOK[2] + 2.3 + 2.2 * k;
         return (
@@ -278,7 +282,7 @@ export const scene2 = storyScene(timing, {
             <Yard t={t} plug hero="none" />
             <Hero position={f(-4.95, 0.08, 0.6)} rotationY={0.3} animation="idle" face={t < 1.0 ? "sleepy" : "calm"} headPitch={0.1} />
             {k < 1 ? (
-              <group position={[LOOK[0], y + 0.9, z]}>
+              <group position={[LOOK[0], y + 0.9, z]} scale={1.35}>
                 <group rotation={[-0.75 - k * 7, 0, 0]}>
                   <Raider who={5} sword={false} position={[0, -0.9, 0]} animation="panic" animSpeed={1.6} face="scared" rotationY={NORTH} />
                 </group>
@@ -286,7 +290,7 @@ export const scene2 = storyScene(timing, {
             ) : null}
             {k < 1 ? <Vex position={[LOOK[0] + 0.5, y + 2.3, z - 0.3]} t={t} scale={1.3} /> : null}
             {k < 1 ? <pointLight position={[LOOK[0] + 1, y + 1, z + 2.5]} color="#e6ecff" intensity={30} distance={9} decay={2} /> : null}
-            {k >= 1 && t < 2.1 ? <Puffs position={[LOOK[0], 0.3, z]} count={14} rise={5} spread={2} size={0.9} color="#b9b9c0" /> : null}
+            {k >= 1 ? <Puffs position={[LOOK[0], 0.3, z]} count={14} rise={5} spread={2} size={0.9} color="#b9b9c0" /> : null}
             <Fill on={f(-4.95, 1.1, 0.6)} yaw={25} power={7} />
           </>
         );
@@ -334,9 +338,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "5.boom",
       cut: 1.85,
-      from: f(12.2, 1.2, -0.9),
-      to: f(11.2, 1.3, -1.2),
-      target: [HOLE[0] - 1.0, 1.7, HOLE[2]],
+      from: f(10.6, 1.3, -1.1),
+      to: f(9.6, 1.5, -1.3),
+      target: [HOLE[0] - 1.0, 1.95, HOLE[2]],
       fov: 50,
       zone: Z.fort,
       look: NIGHT4,
@@ -346,7 +350,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Yard t={t} smoke hero="none" />
-            {[-1.5, 1.5].map((z, i) => (
+            {[-1.05, 1.05].map((z, i) => (
               <group key={z}>
                 <Pillager position={[HOLE[0] - 0.6 - adv, 0.2, HOLE[2] + z]} rotationY={WEST} walk={adv * 2 + i} mad={1} n={i + 1} armR={-2.95} armL={-2.95} phase={i} />
                 <TNT position={[HOLE[0] - 0.75 - adv, 2.02 + Math.abs(Math.sin((adv * 2 + i) * 5.2)) * 0.03, HOLE[2] + z]} scale={0.72} fuse={t + i + 1} />
@@ -515,14 +519,14 @@ export const scene2 = storyScene(timing, {
     {
       cue: "5.clash",
       cut: 0.95,
-      from: f(7.7, 2.3, 2.5),
-      to: f(7.3, 2.5, 2.1),
-      target: f(6.0, 3.2, -2.5),
+      from: f(6.7, 5.2, 7.0),
+      to: f(6.4, 4.7, 6.0),
+      target: f(6.3, 2.7, -2.5),
       fov: 58,
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.42, amp: 0.2, dur: 0.5 }],
-      note: "THE GOLEM'S FIST. Side on, close: they meet. The iron fist goes up over its head and comes down on the ravager's skull like a hammer. The beast's chin hits the dirt, its back legs come off the ground, and stones jump.",
+      note: "THE GOLEM'S FIST. Side on, from over the cages, both of them whole in the picture: they meet. The iron fist goes up over its head and comes down on the ravager's skull like a hammer. The beast's chin hits the dirt, its back legs come off the ground, and stones jump.",
       stage: (t) => {
         const hit = w("5.clash", "fist", 1.34) - 0.95 + 0.05;
         const wind = ease(ramp(t, 0, hit - 0.12));
@@ -555,14 +559,14 @@ export const scene2 = storyScene(timing, {
     {
       cue: "5.clash",
       cut: 1.82,
-      from: f(4.9, 2.0, -6.6),
-      to: f(5.4, 2.2, -6.2),
-      target: f(6.2, 3.3, -2.5),
-      fov: 58,
+      from: f(2.6, 4.6, 6.2),
+      to: f(3.2, 4.3, 5.4),
+      target: f(6.3, 3.0, -2.5),
+      fov: 50,
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.45, amp: 0.12, dur: 0.4 }],
-      note: "THE RAVAGER'S JAW. From the other side: the beast's head comes up under the arm, the jaw opens as wide as a door and shuts on the golem's iron arm. It shakes it like a dog with a stick, and the golem is pulled off one foot.",
+      note: "THE RAVAGER'S JAW. Nearer, from the other end of the cages: the beast's head comes up under the arm, the jaw opens as wide as a door and shuts on the golem's iron arm. It shakes it like a dog with a stick, and the golem is pulled off one foot.",
       stage: (t) => {
         const bite = w("5.clash", "jaw", 2.25) - 1.82 + 0.05;
         const open = ease(ramp(t, 0, bite - 0.1));
@@ -614,14 +618,14 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.again",
-      from: f(11.2, 1.0, 1.3),
-      to: f(14.2, 1.0, 1.3),
-      target: f(8.6, 2.1, -2.5),
-      targetTo: f(13.6, 2.1, -2.5),
-      fov: 60,
+      from: f(5, 6, 7.5),
+      to: f(5.6, 5.6, 7.2),
+      target: f(8.2, 1.8, -2.5),
+      targetTo: f(11.6, 1.8, -2.5),
+      fov: 52,
       zone: Z.fort,
       look: NIGHT4,
-      note: "Low, beside the ravager, going with it: the golem shoves and the beast slides backwards across the yard on locked legs, ten steps, its feet ploughing up the dirt in waves. It stops. It shakes its head and paws the ground.",
+      note: "From over the cages, going with it: the golem shoves and the beast slides backwards across the yard on locked legs, ten steps, its feet ploughing up the dirt in waves. It stops. It shakes its head and paws the ground.",
       stage: (t) => {
         const back = ease(ramp(t, 0, 1.0));
         const x = RFIGHT[0] + 6.2 * back;
@@ -644,14 +648,14 @@ export const scene2 = storyScene(timing, {
     {
       cue: "5.again",
       cut: 1.42,
-      from: f(-0.6, 1.2, -1.75),
-      to: f(0.4, 1.4, -1.75),
-      target: f(8, 3.0, -2.5),
+      from: f(1.3, 5.7, -0.1),
+      to: f(2.0, 5.5, -0.2),
+      target: f(10, 1.8, -2.5),
       fov: 58,
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.2, amp: 0.05, dur: 0.2 }, { at: 0.45, amp: 0.07, dur: 0.2 }, { at: 0.7, amp: 0.1, dur: 0.2 }],
-      note: "THEN IT CAME AGAIN. From behind the golem's legs: it sets its feet and opens its arms, and past it the ravager comes down the yard at a gallop, jaw open, bigger every step, straight at the two of us.",
+      note: "THEN IT CAME AGAIN. Over the golem's shoulder: it sets its feet and opens its arms, and past it the ravager comes down the yard at a gallop, jaw open, bigger every step, straight at the two of us.",
       stage: (t) => {
         const k = ramp(t, 0, dur("5.again") - 1.42);
         const x = RFIGHT[0] + 6.2 - 5.4 * k * k;
@@ -672,15 +676,16 @@ export const scene2 = storyScene(timing, {
 
 /**
  * THE ARMY, UP CLOSE. The whole army marching south (+z) at the camera, and in front of the front row the four kinds
- * the line names, each in its own place so a cut can go from one to the next: vindicators (x -5.4), an evoker
+ * the line names, each in its own place so a cut can go from one to the next (`since` is when this cut began: every
+ * cut starts with the front row at the same z, so one camera distance works for all four): vindicators (x -5.4), an evoker
  * (x -1.8), witches (x 1.9), and a very small one with a banner beside a ravager (x 5.6). `t` is seconds into the line.
  */
-const Army: React.FC<{ t: number }> = ({ t }) => {
-  const z = 2.0 + t * 0.35;
+const Army: React.FC<{ t: number; since: number }> = ({ t, since }) => {
+  const z = 2.0 + (t - since) * 0.35;
   const walk = t * 1.5;
   return (
     <>
-      <Horde position={hd(0, 0, 0.2 + t * 0.35)} t={t} rows={6} cols={11} width={17} gap={1.45} seed={7} />
+      <Horde position={hd(0, 0, 0.2 + (t - since) * 0.35)} t={t} rows={6} cols={11} width={17} gap={1.45} seed={7} />
       {[-6.3, -5.4, -4.5].map((x, i) => (
         <Pillager key={x} position={hd(x, 0, z + (i === 1 ? 0.5 : 0))} walk={walk + i} n={i + 1} mad={1} armR={-2.5 + Math.max(0, Math.sin(t * 9 + i * 2.1)) * 1.3} lean={0.08} phase={i}>
           <Axe />
@@ -699,7 +704,7 @@ const Army: React.FC<{ t: number }> = ({ t }) => {
       <Pillager position={hd(5.5, 0, z + 0.9)} scale={0.5} walk={t * 3.2} armR={-1.5} n={3} nod={-0.3}>
         <HandBanner t={t} />
       </Pillager>
-      <Ravager position={hd(6.9, 0, z - 1.7)} walk={walk} scale={1.25} jaw={ease(ramp(t, 3.5, 4.3))} head={-0.15} />
+      <Ravager position={hd(6.9, 0, z - 1.7)} walk={walk} scale={1.25} jaw={ease(ramp(t, 3.4, 4.1))} head={-0.15} />
       <pointLight position={hd(0, 2.4, 6)} color="#e6ecff" intensity={45} distance={18} decay={2} />
       <pointLight position={hd(-5, 2.4, 5.5)} color="#e6ecff" intensity={30} distance={12} decay={2} />
       <pointLight position={hd(5.5, 2.4, 5.5)} color="#e6ecff" intensity={30} distance={12} decay={2} />

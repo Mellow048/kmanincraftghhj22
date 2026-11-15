@@ -15,7 +15,7 @@ import { ROBE, Villager } from "./villagers";
  *
  * THE OWNER'S RULES these were rebuilt to (his review of part four, 2026-11-15):
  *   - a crowd is detailed all the way back. `Horde` is real `Pillager`s, every one, not grey boxes behind two actors;
- *   - somebody who uses a thing uses his ARMS: `spyglassPose` + a `Spyglass` as the child of the avatar;
+ *   - somebody who uses a thing uses his ARMS: `spyglassPose` + a `Spyglass` at `spyglassAt`;
  *   - a building has an inside: `WatchTower` has floors, ladders and a lamp on each;
  *   - smoke must not hide the shot: `Boom`'s smoke blocks are small.
  */
@@ -292,8 +292,8 @@ export const Bush: React.FC<{ position: Vec3; shake?: number }> = ({ position, s
   </group>
 );
 /** A spyglass in the world: `position` is the eye end, it points along `yaw` (radians, 0 = +z). */
-export const Spyglass: React.FC<{ position: Vec3; yaw?: number; pitch?: number }> = ({ position, yaw = 0, pitch = 0 }) => (
-  <group position={position} rotation={[0, yaw, 0]}>
+export const Spyglass: React.FC<{ position: Vec3; yaw?: number; pitch?: number; scale?: number }> = ({ position, yaw = 0, pitch = 0, scale = 1 }) => (
+  <group position={position} rotation={[0, yaw, 0]} scale={scale}>
     <group rotation={[-pitch, 0, 0]}>
       <Block position={[0, 0, 0.18]} size={[0.1, 0.1, 0.36]} color="#8a5a2a" />
       <Block position={[0, 0, 0.47]} size={[0.13, 0.13, 0.26]} color="#c8922e" metalness={0.4} roughness={0.4} />
@@ -327,28 +327,28 @@ export const SpyMask: React.FC<{ eye: Vec3; down?: number; hole?: number }> = ({
 /** Where a `SpyMask` camera looks: straight north from `eye`, tipped `down` radians. Give it to `on` and `onTo`. */
 export const spyLook = (eye: Vec3, down = 0): Vec3 => [eye[0], eye[1] - 40 * Math.sin(down), eye[2] - 40 * Math.cos(down)];
 /**
- * HOLDING A SPYGLASS TO THE EYE, with both arms. Give it to an avatar as `pose`, and put a `Spyglass` in his hand:
+ * HOLDING A SPYGLASS TO THE EYE, with both arms. Give the pose to an avatar, and draw the glass at his eye:
  *
- *   <Player who={5} pose={spyglassPose(t, k)}>{k > 0.05 ? <HeldSpyglass k={k} /> : null}</Player>
+ *   <Player who={5} position={p} rotationY={ry} pose={spyglassPose(t, k)} />
+ *   {k > 0.3 ? <Spyglass position={spyglassAt(p, ry, k)} yaw={ry} scale={1.3} /> : null}
  *
- * `k` 0 is arms down, 1 is the glass at his eye. The right hand holds the glass, the left steadies the far end.
+ * `k` 0 is arms down, 1 is the glass at his eye: both hands come up in front of his face, one each side of the tube.
  */
-export const SPY_ARM = -1.95;
 export const spyglassPose = (t: number, k = 1, base: Parameters<typeof getPose>[0] = "idle"): Pose => {
   const p = getPose(base, t);
   const e = Math.max(0, Math.min(1, k));
   return {
     ...p,
-    armR: [p.armR[0] + (SPY_ARM - p.armR[0]) * e, 0, p.armR[2] + (-0.42 - p.armR[2]) * e],
-    armL: [p.armL[0] + (SPY_ARM + 0.25 - p.armL[0]) * e, 0, p.armL[2] + (0.5 - p.armL[2]) * e],
+    armR: [p.armR[0] + (-1.72 - p.armR[0]) * e, 0, p.armR[2] + (-0.2 - p.armR[2]) * e],
+    armL: [p.armL[0] + (-1.6 - p.armL[0]) * e, 0, p.armL[2] + (0.2 - p.armL[2]) * e],
   };
 };
-/** The spyglass as the child of an avatar whose arms are in `spyglassPose`: it lies level in the hand, eye end at the eye. */
-export const HeldSpyglass: React.FC<{ k?: number }> = ({ k = 1 }) => (
-  <group rotation={[-SPY_ARM * Math.max(0, Math.min(1, k)), 0, 0.42 * Math.max(0, Math.min(1, k))]}>
-    <Spyglass position={[0, 0.06, -0.3]} />
-  </group>
-);
+/** Where the eye end of the spyglass is, for somebody standing at `p` facing `ry`. `k` < 1 is on its way up from his belt. */
+export const spyglassAt = (p: Vec3, ry: number, k = 1): Vec3 => {
+  const e = Math.max(0, Math.min(1, k));
+  const lz = 0.3;
+  return [p[0] + lz * Math.sin(ry), p[1] + 1.0 + 0.6 * e, p[2] + lz * Math.cos(ry)];
+};
 
 /** A window with a light on in it: a warm square a hair in front of a wall. `on` 0–1. `yaw` is the way the wall faces. */
 export const LitWindow: React.FC<{ position: Vec3; yaw?: number; on?: number; size?: [number, number] }> = ({ position, yaw = 0, on = 1, size = [0.8, 0.9] }) => (

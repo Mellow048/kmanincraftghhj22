@@ -21,10 +21,10 @@ const RF: Vec3 = [CLASH[0] + 3.3, 0, CLASH[2]];
 const Hand: React.FC<{ x: number; t: number }> = ({ x, t }) => {
   const sh = Math.sin(t * 38) * 0.008;
   return (
-    <group position={[x, 1.6 + Math.abs(Math.sin(t * 4.2)) * 0.02, GS[2] - 0.02]}>
-      <Block position={[0.3, -0.52, 0.3]} size={[0.42, 0.17, 0.17]} color="#3f7f3a" castShadow={false} />
-      <Block position={[0.55, -0.5 + sh, 0.3]} size={[0.16, 0.19, 0.19]} color="#8d5a3b" castShadow={false} />
-      <AimSword position={[0.56, -0.47 + sh, 0.3]} yaw={EAST - 0.12} pitch={0.42 + sh * 3} scale={0.95} />
+    <group position={[x, 1.6 + Math.abs(Math.sin(t * 4.2)) * 0.015, GS[2] - 0.02]}>
+      <Block position={[0.42, -0.3, 0.17]} size={[0.5, 0.13, 0.13]} color="#3f7f3a" castShadow={false} />
+      <Block position={[0.7, -0.27 + sh, 0.17]} size={[0.13, 0.15, 0.15]} color="#8d5a3b" castShadow={false} />
+      <AimSword position={[0.7, -0.24 + sh, 0.17]} yaw={EAST - 0.1} pitch={0.3 + sh * 3} scale={0.8} />
     </group>
   );
 };
@@ -36,9 +36,9 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      from: f(7.7, 2.3, 2.5),
-      to: f(7.2, 2.5, 2.0),
-      target: f(6.0, 3.2, -2.5),
+      from: f(6.7, 5.2, 7.0),
+      to: f(6.4, 4.7, 6.0),
+      target: f(6.3, 2.7, -2.5),
       fov: 58,
       zone: Z.fort,
       look: NIGHT4,
@@ -76,14 +76,14 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.town",
       cut: 1.25,
-      from: f(-0.6, 1.2, -1.75),
-      to: f(0.6, 1.4, -1.75),
-      target: f(8, 3.0, -2.5),
+      from: f(1.3, 5.7, -0.1),
+      to: f(2.2, 5.5, -0.2),
+      target: f(10, 1.8, -2.5),
       fov: 58,
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.2, amp: 0.06, dur: 0.2 }, { at: 0.5, amp: 0.08, dur: 0.2 }, { at: 0.8, amp: 0.1, dur: 0.2 }, { at: 1.1, amp: 0.12, dur: 0.2 }],
-      note: "From behind the golem's legs: the ravager comes back down the yard at a gallop with its jaw open and a pillager on its back, straight at us, bigger every step, pillagers cheering in a hole in the wall behind it.",
+      note: "Over the golem's shoulder: the ravager comes back down the yard at a gallop with its jaw open and a pillager on its back, straight at us, bigger every step, pillagers cheering in a hole in the wall behind it.",
       stage: (t) => {
         const k = ramp(t, 0, 1.25);
         const x = RF[0] + 7 - 6.4 * k * k;
@@ -281,17 +281,17 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.slow",
-      from: [GS[0] + 0.7, 1.6, GS[2] - 0.05],
-      to: [GB[0] - 0.05, 1.55, GB[2]],
-      target: up(BUSH, 0.95),
-      fov: 56,
+      from: [GS[0] - 0.6, 1.6, GS[2] - 0.05],
+      to: [GS[0] + 0.9, 1.56, GS[2] - 0.08],
+      target: up(BUSH, 1.2),
+      fov: 60,
       zone: Z.out,
       look: NIGHT4,
       shake: 0.006,
       note: "THROUGH THE GUARD'S EYES. We are him: his sword sticks out in front of us, shaking, his fist on it at the bottom of the picture, and the dark bush comes nearer one small step at a time. It twitches. We keep going.",
       stage: (t) => {
         const k = ramp(t, 0, dur("3.slow"));
-        const ex = GS[0] + 0.7 + (GB[0] - 0.05 - GS[0] - 0.7) * (0.5 - 0.5 * Math.cos(Math.PI * k));
+        const ex = GS[0] - 0.6 + 1.5 * (0.5 - 0.5 * Math.cos(Math.PI * k));
         return (
           <>
             <Bush position={BUSH} shake={t > 0.9 && t < 1.15 ? t : 0} />
@@ -303,17 +303,17 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.bam",
-      from: [GB[0] - 0.05, 1.55, GB[2]],
-      to: [GB[0] - 0.55, 1.6, GB[2] + 0.05],
-      target: [BUSH[0] - 0.75, 1.75, BUSH[2]],
-      fov: 56,
+      from: [GS[0] + 0.9, 1.56, GS[2] - 0.08],
+      to: [GS[0] + 0.5, 1.6, GS[2] - 0.05],
+      target: [BUSH[0] - 0.75, 1.72, BUSH[2]],
+      fov: 60,
       zone: Z.out,
       look: NIGHT4,
       impacts: [{ at: 0.06, amp: 0.22, dur: 0.5 }],
       note: "THE JUMPSCARE, still through his eyes. BAM: a skull comes up out of the bush and straight into our face, black eye holes, teeth, a blue scarf, leaves everywhere, bony arms thrown wide. The sword goes spinning out of the bottom of the picture. Then it waves. It is Dad.",
       stage: (t) => {
         const upk = ease(ramp(t, 0.03, 0.15));
-        const at: Vec3 = [BUSH[0] - 0.78 * upk, -1.5 + 1.72 * upk, BUSH[2]];
+        const at: Vec3 = [BUSH[0] - 1.25 * upk, -1.5 + 1.72 * upk, BUSH[2]];
         return (
           <>
             <Bush position={BUSH} shake={t < 0.7 ? t : 0} />
@@ -323,7 +323,7 @@ export const scene1 = storyScene(timing, {
                   <Block key={i} position={[BUSH[0] - 0.9 + Math.cos(i * 0.8) * t * 1.6, 1.4 + t * (2.5 + (i % 3)) - 5 * t * t, BUSH[2] + Math.sin(i * 0.8) * t * 1.5]} rotation={[t * 9, i, t * 5]} size={[0.13, 0.03, 0.13]} color={i % 2 ? "#3a7a31" : "#2f6a2a"} castShadow={false} />
                 ))
               : null}
-            {t < 0.5 ? <AimSword position={[GB[0] + 0.35, 1.15 - t * 2.4, GB[2] + 0.28]} yaw={EAST + t * 6} pitch={0.3 + t * 5} scale={0.9} /> : null}
+            {t < 0.5 ? <AimSword position={[GS[0] + 1.6, 1.3 - t * 2.4, GS[2] + 0.15]} yaw={EAST + t * 6} pitch={0.3 + t * 5} scale={0.9} /> : null}
             <pointLight position={[BUSH[0] - 1.6, 1.9, BUSH[2] + 0.5]} color="#e6ecff" intensity={9} distance={5} decay={2} />
           </>
         );
@@ -332,9 +332,9 @@ export const scene1 = storyScene(timing, {
     {
       cue: "3.bam",
       cut: 1.5,
-      from: [BUSH[0] - 1.75, 1.7, BUSH[2] + 0.95],
-      to: [BUSH[0] - 1.55, 1.65, BUSH[2] + 0.8],
-      target: [BUSH[0] - 0.74, 1.72, BUSH[2]],
+      from: [BUSH[0] - 2.9, 1.75, BUSH[2] + 1.25],
+      to: [BUSH[0] - 2.6, 1.7, BUSH[2] + 1.05],
+      target: [BUSH[0] - 1.22, 1.6, BUSH[2]],
       fov: 46,
       zone: Z.out,
       look: NIGHT4,
@@ -346,7 +346,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <Bush position={BUSH} />
-            <Dad position={[BUSH[0] - 0.78, 0.22, BUSH[2]]} rotationY={WEST} wave={t * 6} raise={0.2} mood="happy" jaw={jaw} />
+            <Dad position={[BUSH[0] - 1.25, 0.22, BUSH[2]]} rotationY={WEST} wave={t * 6} raise={0.2} mood="happy" jaw={jaw} />
             <pointLight position={[BUSH[0] - 1.7, 1.9, BUSH[2] + 0.9]} color="#e6ecff" intensity={9} distance={5} decay={2} />
           </>
         );
