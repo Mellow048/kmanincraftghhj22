@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-the-new-kid-never-took-off-his-helmet",
   "mix": "public/audio/in-this-town-the-new-kid-never-took-off-his-helmet/mix.mp3",
-  "seconds": 101.8,
+  "seconds": 108.3,
   "built_from": {
-    "timing.json": "347c3fd74ce22883caf218ce4b6e311cfb9ba27b",
-    "sound.json": "2eed615023cc03b8ccb996ac63295b8eb8aa4271",
-    "narration.mp3": "a97e34f6c10f5e9bd88c592c5d2afb4108cd109b"
+    "timing.json": "af020036a316148de710f2e50885d9fe1b031c9b",
+    "sound.json": "9a7bd7ab15ec8caa98e83226ff569f04a00bd16f",
+    "narration.mp3": "d4042cdd4b45a294f981b0673acfb6ae856789cb"
   },
-  "mix_sha1": "b074813d878e6fdbac45cf32af49eaa3d8f99121",
+  "mix_sha1": "54c8d1d2e6f47f4025198689f5af5bed8dec88cb",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,97 +18,97 @@
     {
       "from": "1.teacher",
       "mood": "playful",
-      "at": 4.33
+      "at": 4.37
     },
     {
       "from": "1.back",
       "mood": "curious",
-      "at": 8.73
+      "at": 8.83
     },
     {
       "from": "2.first",
       "mood": "sad",
-      "at": 12.83
+      "at": 12.93
     },
     {
       "from": "2.more",
       "mood": "tense",
-      "at": 18.3
+      "at": 18.43
     },
     {
       "from": "2.noticed",
       "mood": "sneak",
-      "at": 24.3
+      "at": 24.47
     },
     {
       "from": "2.mom",
       "mood": "sad",
-      "at": 30.2
+      "at": 30.43
     },
     {
       "from": "3.watch",
       "mood": "sneak",
-      "at": 34.97
+      "at": 35.27
     },
     {
       "from": "3.wet",
       "mood": "curious",
-      "at": 39.0
+      "at": 39.33
     },
     {
       "from": "3.follow",
       "mood": "tense",
-      "at": 43.57
+      "at": 43.93
     },
     {
       "from": "4.lamp",
       "mood": "dark",
-      "at": 49.73
+      "at": 50.1
     },
     {
       "from": "4.held",
       "mood": "drone",
-      "at": 60.07
+      "at": 60.53
     },
     {
       "from": "4.off",
       "mood": "none",
-      "at": 69.03
+      "at": 69.57
     },
     {
-      "from": "4.hole",
+      "from": "4.noface",
       "mood": "drone",
-      "at": 70.8
+      "at": 72.23
     },
     {
       "from": "4.tent",
       "mood": "dark",
-      "at": 73.33
+      "at": 79.6
     },
     {
       "from": "5.quiet",
       "mood": "none",
-      "at": 84.47
+      "at": 90.87
     },
     {
       "from": "5.step",
       "mood": "drone",
-      "at": 87.73
+      "at": 94.13
     },
     {
       "from": "5.turn",
       "mood": "tense",
-      "at": 90.9
+      "at": 97.33
     },
     {
       "from": "5.closer",
       "mood": "drone",
-      "at": 96.2
+      "at": 102.7
     },
     {
       "from": "9.sub",
       "mood": "dark",
-      "at": 100.03
+      "at": 106.53
     }
   ],
   "music_file": {
@@ -118,28 +118,28 @@
   "beds": 11,
   "measured": {
     "musicUnderVoiceDb": 17.6,
-    "secondsWithoutMusic": 4.8,
+    "secondsWithoutMusic": 5.7,
     "bedsUnderVoiceDb": 27.0,
-    "sfx": 210,
-    "sfxPerMinute": 123.8,
+    "sfx": 222,
+    "sfxPerMinute": 123.0,
     "sfxKinds": 35,
-    "longestGapSeconds": 1.6,
-    "longestGapAt": 57.9,
+    "longestGapSeconds": 1.9,
+    "longestGapAt": 65.7,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.0,
-    "voiceOverRestWorstDb": 3.1,
+    "voiceOverRestMedianDb": 13.1,
+    "voiceOverRestWorstDb": 4.4,
     "voiceOverRestWorst": [
       {
-        "db": 3.1,
-        "t": 61.2,
+        "db": 4.4,
+        "t": 61.7,
         "cue": "4.held",
         "sounding": [
           "tick"
         ]
       },
       {
-        "db": 4.3,
-        "t": 55.9,
+        "db": 5.9,
+        "t": 56.2,
         "cue": "4.push",
         "sounding": [
           "hit",
@@ -147,46 +147,47 @@
         ]
       },
       {
-        "db": 5.2,
-        "t": 70.3,
-        "cue": "4.noface",
+        "db": 6.1,
+        "t": 52.3,
+        "cue": "4.lamp",
         "sounding": [
+          "step_grass",
           "sting",
           "whoosh_low"
         ]
       },
       {
-        "db": 5.2,
-        "t": 67.0,
-        "cue": "4.pull",
-        "sounding": [
-          "rustle"
-        ]
-      },
-      {
-        "db": 5.4,
-        "t": 82.1,
-        "cue": "4.swallow",
-        "sounding": [
-          "slide_down",
-          "thud",
-          "whoosh_low"
-        ]
-      },
-      {
-        "db": 5.7,
-        "t": 74.6,
+        "db": 6.3,
+        "t": 80.9,
         "cue": "4.tent",
         "sounding": [
           "riser",
-          "whoosh",
-          "whoosh_low"
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 103.2,
+        "cue": "5.closer",
+        "sounding": [
+          "rustle",
+          "scrape"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 69.4,
+        "cue": "4.pull",
+        "sounding": [
+          "clank",
+          "scrape",
+          "whoosh"
         ]
       }
     ],
-    "lufs": -14.7,
-    "truePeakDb": -2.1,
-    "limiterMaxDb": 0.6
+    "lufs": -14.8,
+    "truePeakDb": -1.9,
+    "limiterMaxDb": 0.7
   },
   "failures": []
 }

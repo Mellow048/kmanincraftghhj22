@@ -15,8 +15,20 @@ const HEAD = kidHead(K);
 /** What the teller sees from behind his tree: the clearing, with the trunk down the right edge of the frame. */
 export const POV = { on: at(WOODS, 0, 1.3, 1.8) as Vec3, yaw: 74, pitch: 3 };
 const PURPLE = "#b25ad0";
+/** Where the kid stands once they have hold of him, and the middle of his head there. */
+const P: Vec3 = at(K, 0, 0, -0.32);
+const HEADP = kidHead(P);
+/** The two on his arms; where they end up when they let go; where the puller stops after his step back. */
+const HOLD: Vec3[] = [at(P, -0.62, 0, 0.05), at(P, 0.62, 0, 0.05)];
+const FREE: Vec3[] = [at(P, -1.2, 0, 0.5), at(P, 1.2, 0, 0.5)];
+const PUL: Vec3 = at(P, 0.04, 0, 1.1);
+/** Where the helmet lands (scene 5 picks it up from the same place). */
+const FELL: Vec3 = at(KIDSPOT, 1.0, 0.25, 1.3);
+const MOVED = wordAt("4.moved", "moved");
+const FIVE = wordAt("4.tent", "five");
+const MANY = wordAt("4.tent", "many");
 
-type Mood = { animation?: "idle" | "scared" | "panic" | "push" | "point" | "hold" | "lift" | "cower" | "laugh"; face?: "grin" | "angry" | "fear" | "wow" | "laugh" | "smug" };
+type Mood = { animation?: "idle" | "scared" | "panic" | "push" | "point" | "hold" | "lift" | "cower" | "laugh" | "stagger"; face?: "grin" | "angry" | "fear" | "wow" | "laugh" | "smug" };
 /** The three, each at his own place (or the one given), each with his own mood. `hide` leaves one out. */
 const Three: React.FC<{ at?: Vec3[]; mood?: Mood[]; all?: Mood; hide?: number[]; scale?: number[] }> = ({ at: where = B, mood = [], all = {}, hide = [], scale = [] }) => (
   <>
@@ -161,55 +173,146 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.off",
       ...cam.push({ on: at(K, 0, 2.0, 0.2), dist: 3.2, to: 2.9, yaw: 4, pitch: -14, fov: 44 }),
+      impacts: [{ at: 0.03, amp: 0.06, dur: 0.4 }],
       zone: "woods",
       look: NIGHT,
-      note: "From behind the one who pulled, low: the helmet comes off in his hands and goes up past the lamp, turning. We cannot see the kid's head yet, only the light that comes from where it is.",
+      note: "From behind the one who pulled, low: the helmet comes off in his hands, he goes back a step, and it leaves his fingers and goes up past the lamp, turning. We cannot see the kid's head yet, only the light that comes from where it is.",
       stage: (t) => {
-        const k = ramp(t, 0.05, 1.0);
-        const p = at(K, 0, 0, -0.32);
+        const k = ramp(t, 0.02, 1.0);
         return (
           <>
-            <NewKid position={p} animation="idle" bare holeGlow={1.5} />
+            <NewKid position={P} animation="idle" bare holeGlow={1.5} breath={0} weightShift={0} />
             <group scale={KID}>
-              <Helmet position={[(p[0] + 0.5 * k) / KID, (1.62 + 2.3 * k - 1.4 * k * k) / KID, (p[2] + 0.5 + 0.9 * k) / KID]} rotation={[k * 5, k * 2, 0.4 * k]} />
+              <Helmet position={[(P[0] + 0.6 * k) / KID, (1.62 + 2.3 * k - 1.4 * k * k) / KID, (P[2] + 0.5 + 0.7 * k) / KID]} rotation={[k * 5, k * 2, 0.4 * k]} />
             </group>
-            <Three at={[at(p, -0.62, 0, 0.05), at(p, 0.62, 0, 0.05), at(p, 0.04, 0, 0.66 + 0.25 * k)]} mood={[{ animation: "hold", face: "wow" }, { animation: "hold", face: "wow" }, { animation: "lift", face: "wow" }]} />
-            <Fill position={at(p, 0, 1.3, 0.3)} power={10 + 30 * k} color={PURPLE} reach={5} />
+            <Three at={[HOLD[0], HOLD[1], at(P, 0.04, 0, 0.66 + 0.24 * ease(k))]} mood={[{ animation: "hold", face: "grin" }, { animation: "hold", face: "laugh" }, { animation: k < 0.5 ? "lift" : "stagger", face: "wow" }]} />
+            <Fill position={at(P, 0, 1.3, 0.3)} power={10 + 30 * k} color={PURPLE} reach={5} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "4.off",
+      cut: 1.05,
+      ...cam.push({ on: at(FELL, -0.25, 0.1, -0.25), dist: 2.0, to: 1.65, yaw: 35, pitch: 1, fov: 30 }),
+      impacts: [{ at: 0.3, amp: 0.05, dur: 0.35 }, { at: 0.72, amp: 0.02, dur: 0.25 }],
+      zone: "woods",
+      look: NIGHT,
+      note: "No words. From the ground: the helmet lands in the dirt, bounces once and rocks until it is still. Behind it, out of reach of the lens, four pairs of legs that have stopped moving, and a purple light that was not on the ground before.",
+      stage: (t) => {
+        const fall = ramp(t, 0, 0.3);
+        const hop = t > 0.3 && t < 0.72 ? Math.sin(((t - 0.3) / 0.42) * Math.PI) * 0.22 : 0;
+        const rock = t > 0.72 ? Math.sin((t - 0.72) * 16) * 0.3 * Math.max(0, 1 - (t - 0.72) / 0.8) : 0;
+        const y = 1.6 + (FELL[1] - 1.6) * fall * fall + hop;
+        const light = ease(ramp(t, 0.2, 1.5));
+        return (
+          <>
+            <NewKid position={P} animation="idle" bare holeGlow={1.5} breath={0} weightShift={0} />
+            <group scale={KID}>
+              <Helmet position={[FELL[0] / KID, y / KID, FELL[2] / KID]} rotation={[0.2 + (1 - fall) * 2 + rock * 0.4, 0.7 + (1 - fall) * 1.5, 1.2 + rock]} />
+            </group>
+            <Three at={[HOLD[0], HOLD[1], mix(at(P, 0.04, 0, 0.9), PUL, ease(ramp(t, 0.1, 0.8)))]} mood={[{ animation: "hold", face: "wow" }, { animation: "hold", face: "wow" }, { animation: t < 0.8 ? "stagger" : "scared", face: "fear" }]} />
+            <Fill position={at(P, 0, 0.9, 0.5)} power={3 + 9 * light + 2 * Math.sin(t * 11) * light} color={PURPLE} reach={5} />
+            <Fill position={at(FELL, 0.8, 0.8, 0.9)} power={3} color="#ffd9a0" reach={3} />
           </>
         );
       },
     },
     {
       cue: "4.noface",
-      ...cam.push({ on: faceOf(at(K, 0.04, 0, 0.6), BIG), dist: 1.6, to: 1.35, yaw: 188, pitch: -3, fov: 38 }),
+      ...cam.push({ on: faceOf(PUL, BIG), dist: 1.75, to: 1.3, yaw: 188, pitch: -3, fov: 38 }),
+      handheld: 0.012,
       zone: "woods",
       look: NIGHT,
-      note: "The puller's face, from where the kid's head is: lit purple from in front, and the grin gone out of it.",
-      stage: () => (
+      note: "The puller's face, from where the kid's head is. He is still half laughing when the line starts. Then he sees it, and the laugh goes out of him.",
+      stage: (t) => {
+        const saw = t > 0.28;
+        return (
+          <>
+            <Three hide={[0, 1]} at={[B[0], B[1], at(PUL, saw ? Math.sin(t * 40) * 0.008 : 0, 0, 0)]} mood={[{}, {}, { animation: saw ? "scared" : "idle", face: saw ? "fear" : "wow" }]} />
+            <Fill position={at(P, 0, 1.3, 0.2)} power={1.6 + 1.6 * ease(ramp(t, 0.1, 0.9)) + 0.5 * Math.sin(t * 13)} color={PURPLE} reach={4} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "4.noface",
+      cut: 0.95,
+      ...cam.push({ on: at(P, 0, 1.2, 0.6), dist: 2.7, to: 2.35, yaw: 157, pitch: 11, fov: 42 }),
+      zone: "woods",
+      look: NIGHT,
+      note: "No words. From behind his bare head, so we still have not seen it: the two who held his arms let go, one and then the other, and step away from him. He lifts his head and looks at each of them.",
+      stage: (t) => {
+        const a = ease(ramp(t, 0.12, 0.55));
+        const b = ease(ramp(t, 0.5, 0.95));
+        return (
+          <>
+            <NewKid position={P} animation="idle" bare holeGlow={1.2} headPitch={0.45 - 0.45 * ease(ramp(t, 0.1, 0.9))} headYaw={0.5 * Math.sin(ramp(t, 0.5, 1.3) * Math.PI * 2)} breath={0} weightShift={0} />
+            <Three
+              at={[mix(HOLD[0], FREE[0], a), mix(HOLD[1], FREE[1], b), PUL]}
+              mood={[{ animation: a > 0.05 ? "scared" : "hold", face: "fear" }, { animation: b > 0.05 ? "scared" : "hold", face: b > 0.05 ? "fear" : "wow" }, { animation: "scared", face: "fear" }]}
+            />
+            <Fill position={at(P, 0, 1.3, 0.45)} power={4 + 1.5 * Math.sin(t * 12)} color={PURPLE} reach={4} />
+            <Fill position={at(P, -1.5, 1.6, -1.4)} power={3} color="#ffd9a0" reach={4} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "4.hole",
+      ...cam.push({ on: at(HEADP, 0, -0.04, 0), dist: 2.3, to: 1.2, yaw: 6, pitch: -2, fov: 36 }),
+      zone: "woods",
+      look: NIGHT,
+      note: "The reveal, as the puller sees it. His head is down when the shot starts; it comes up on the word 'hole', and where the face should be there is a square of black with a wet rim. Nothing in it yet.",
+      stage: (t) => (
         <>
-          <Three hide={[0, 1]} at={[B[0], B[1], at(K, 0.04, 0, 0.6)]} mood={[{}, {}, { animation: "scared", face: "fear" }]} />
-          <Fill position={at(K, 0, 1.3, -0.1)} power={2.4} color={PURPLE} reach={4} />
+          <NewKid position={P} animation="idle" bare holeGlow={0.25 + 0.5 * ease(ramp(t, 0.5, 1.6))} headPitch={0.6 - 0.6 * ease(ramp(t, 0.08, 0.7))} breath={0} weightShift={0} />
+          <Fill position={at(P, 0.6, 1.5, 1.5)} power={4} color="#ffd9a0" />
+          <Fill position={at(HEADP, 0, 0, 0.5)} power={1 + 2.5 * ease(ramp(t, 0.5, 1.6))} color={PURPLE} reach={3} />
         </>
       ),
     },
     {
-      cue: "4.hole",
-      ...cam.push({ on: at(HEAD, 0, 0, -0.32), dist: 1.7, to: 0.85, yaw: 5, pitch: 0, fov: 36 }),
+      cue: "4.moved",
+      ...cam.push({ on: at(HEADP, 0, 0, 0.1), dist: 1.15, to: 0.82, yaw: -9, pitch: 0, fov: 34 }),
+      handheld: 0.008,
       zone: "woods",
       look: NIGHT,
-      note: "The reveal, held and pushed in on: hair, ears, and where the face should be a square black hole with a wet rim. On 'moved' something comes up out of the black and tastes the air.",
+      note: "Closer than anybody would want to be. Something dark slides about in the black; the bits of the rim twitch. On 'moved' one thin end comes up over the edge and feels its way along the rim.",
       stage: (t) => {
-        const moved = wordAt("4.hole", "moved") - 0.5;
-        const k = ease(ramp(t, moved, moved + 0.7));
-        const p = at(K, 0, 0, -0.32);
-        const h = kidHead(p);
+        const out = ease(ramp(t, MOVED - 0.35, MOVED + 0.45));
         return (
           <>
-            <NewKid position={p} animation="idle" bare holeGlow={0.6 + 0.5 * Math.sin(t * 5)} breath={0.2} weightShift={0} />
-            <Tentacle from={at(h, 0, 0, 0.14)} to={at(h, 0.08 * Math.sin(t * 3), 0.05, 0.5)} k={k} t={t} thick={0.09} seed={3} bend={0.4} n={12} />
-            <Three hide={[2]} at={[at(p, -0.9, 0, 0.3), at(p, 0.9, 0, 0.3), B[2]]} all={{ animation: "scared", face: "fear" }} />
-            <Fill position={at(p, 0.5, 1.5, 1.4)} power={5} color="#ffd9a0" />
-            <Fill position={at(h, 0, 0, 0.5)} power={4} color={PURPLE} reach={3} />
+            <NewKid position={P} animation="idle" bare stir={t * 1.4} holeGlow={0.7 + 0.35 * Math.sin(t * 6)} headRoll={0.12 * ease(ramp(t, 0.2, 1.4))} breath={0} weightShift={0} />
+            <Tentacle from={at(HEADP, 0.05, -0.06, 0.13)} to={at(HEADP, 0.2 * Math.sin(t * 2.6), -0.1 + 0.12 * Math.cos(t * 3.1), 0.36)} k={out} t={t} thick={0.075} seed={3} bend={0.5} n={10} />
+            <Fill position={at(P, 0.6, 1.5, 1.4)} power={4} color="#ffd9a0" />
+            <Fill position={at(HEADP, 0, 0, 0.5)} power={3.5 + Math.sin(t * 6)} color={PURPLE} reach={3} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "4.moved",
+      cut: 1.7,
+      ...cam.push({ on: at(P, 0, 1.28, 0.55), dist: 3.5, to: 3.25, yaw: 90, pitch: 2, fov: 46 }),
+      zone: "woods",
+      look: NIGHT,
+      note: "No words. From the side: the small kid on the left, the big one on the right, shaking and not able to move. The thin arm crosses the gap between them slowly and touches his face. Then it is gone back in, fast.",
+      stage: (t, { dur }) => {
+        const reach = ease(ramp(t, 0, 1.15));
+        const back = ramp(t, dur - 0.16, dur - 0.02);
+        const face = at(faceOf(PUL, BIG), 0, -0.04, -0.27);
+        return (
+          <>
+            <NewKid position={P} animation="idle" bare stir={t * 1.4} holeGlow={1.2} headRoll={0.12} headPitch={-0.12 * reach} breath={0} weightShift={0} />
+            <Tentacle from={at(HEADP, 0, -0.04, 0.13)} to={face} k={Math.max(0.05, (0.1 + 0.9 * reach) * (1 - back))} t={t * 0.6} thick={0.085} seed={3} bend={0.35} n={26} />
+            <Three
+              hide={[1]}
+              at={[at(FREE[0], -0.25 * reach, 0, 0.2 * reach), FREE[1], at(PUL, Math.sin(t * 44) * 0.01, 0, 0)]}
+              mood={[{ animation: "cower", face: "fear" }, {}, { animation: "scared", face: "fear" }]}
+            />
+            <Fill position={at(P, 2.2, 1.5, 0.55)} power={5} color="#ffd9a0" reach={5} />
+            <Fill position={at(HEADP, 0, 0, 0.5)} power={4 + Math.sin(t * 7)} color={PURPLE} reach={3.5} />
           </>
         );
       },
@@ -217,6 +320,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.tent",
       ...cam.push({ on: at(K, 0, 1.7, 0.2), dist: 5.2, to: 6.2, yaw: 14, pitch: -8, fov: 46 }),
+      impacts: [{ at: 0.05, amp: 0.05, dur: 0.3 }, { at: FIVE - 0.12, amp: 0.07, dur: 0.4 }, { at: MANY - 0.15, amp: 0.11, dur: 0.7 }],
       zone: "woods",
       look: NIGHT,
       note: "Low and pulling back, because the frame has to get bigger: one, then five, then a crown of them, taller than the lamp. The three back away and do not turn round.",

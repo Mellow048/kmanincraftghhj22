@@ -71,9 +71,9 @@
         "why": "The helmet comes off: a held breath."
       },
       {
-        "from": "4.hole",
+        "from": "4.noface",
         "mood": "drone",
-        "why": "The hole."
+        "why": "No face: a low note under the silence."
       },
       {
         "from": "4.tent",
@@ -332,7 +332,7 @@
       "cue": "2.desk",
       "sfx": "sting",
       "word": "under",
-      "trim": -6,
+      "trim": -4,
       "why": "A kid who runs away takes his bag."
     },
     {
@@ -463,7 +463,7 @@
       "cue": "2.three",
       "sfx": "cheer",
       "word": "lunch",
-      "trim": -8,
+      "trim": -2,
       "why": "They laugh."
     },
     {
@@ -702,7 +702,7 @@
     {
       "cue": "4.lamp",
       "sfx": "step_grass",
-      "at": 1.3666999999999987,
+      "at": 1.3999999999999957,
       "repeat": 4,
       "every": 0.3,
       "trim": 2,
@@ -747,6 +747,7 @@
       "at": 0.2,
       "repeat": 2,
       "every": 0.18,
+      "trim": 3,
       "why": "He goes back a step."
     },
     {
@@ -819,16 +820,9 @@
     {
       "cue": "4.pull",
       "sfx": "rustle",
-      "word": "held",
-      "trim": -3,
-      "why": "One on each arm."
-    },
-    {
-      "cue": "4.pull",
-      "sfx": "rustle",
       "word": "arms",
       "at": 0.25,
-      "trim": -2,
+      "trim": 0,
       "why": "The other arm."
     },
     {
@@ -858,24 +852,68 @@
       "why": "It goes up past the lamp."
     },
     {
+      "cue": "4.off",
+      "sfx": "clank",
+      "at": 1.35,
+      "trim": 4,
+      "why": "It lands in the dirt."
+    },
+    {
+      "cue": "4.off",
+      "sfx": "thud",
+      "at": 1.77,
+      "why": "It bounces once."
+    },
+    {
+      "cue": "4.off",
+      "sfx": "scrape",
+      "at": 1.95,
+      "trim": -2,
+      "why": "It rocks until it is still."
+    },
+    {
       "cue": "4.noface",
       "sfx": "sting",
       "at": 0.05,
       "why": "There was no face."
     },
     {
+      "cue": "4.noface",
+      "sfx": "rustle",
+      "at": 1.1,
+      "trim": 2,
+      "why": "One lets go of his arm."
+    },
+    {
+      "cue": "4.noface",
+      "sfx": "rustle",
+      "at": 1.5,
+      "trim": 2,
+      "why": "The other lets go."
+    },
+    {
+      "cue": "4.noface",
+      "sfx": "heartbeat",
+      "at": 1.2,
+      "repeat": 2,
+      "every": 0.55,
+      "why": "They step away."
+    },
+    {
       "cue": "4.hole",
       "sfx": "whoosh_low",
-      "why": "A hole."
+      "why": "His head comes up."
     },
     {
       "cue": "4.hole",
       "sfx": "heartbeat",
       "word": "hole",
+      "repeat": 3,
+      "every": 0.55,
       "why": "A hole."
     },
     {
-      "cue": "4.hole",
+      "cue": "4.moved",
       "sfx": "rustle",
       "word": "moved",
       "at": -0.4,
@@ -883,10 +921,32 @@
       "why": "Something wet moves in it."
     },
     {
-      "cue": "4.hole",
+      "cue": "4.moved",
       "sfx": "creak",
       "word": "moved",
-      "why": "It comes up."
+      "why": "It comes up over the rim."
+    },
+    {
+      "cue": "4.moved",
+      "sfx": "heartbeat",
+      "at": 1.75,
+      "repeat": 3,
+      "every": 0.5,
+      "trim": 2,
+      "why": "It crosses the gap."
+    },
+    {
+      "cue": "4.moved",
+      "sfx": "slide_up",
+      "at": 2.7,
+      "trim": -2,
+      "why": "It touches his face."
+    },
+    {
+      "cue": "4.moved",
+      "sfx": "whoosh",
+      "at": 3.1,
+      "why": "And it is gone back in."
     },
     {
       "cue": "4.tent",
@@ -901,13 +961,6 @@
       "word": "five",
       "at": -0.15,
       "why": "Five."
-    },
-    {
-      "cue": "4.tent",
-      "sfx": "whoosh_low",
-      "word": "five",
-      "at": 0.1,
-      "why": "More."
     },
     {
       "cue": "4.tent",
