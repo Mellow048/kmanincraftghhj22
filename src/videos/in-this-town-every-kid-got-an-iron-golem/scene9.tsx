@@ -1,7 +1,7 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  EAST, Fire, FireLight, FireMob, Folk, Hero, IronGolem, Kid, ROBE, SatGolem, Slumped, Villager, WEST, ease, faceOf, onRoad, ramp, roadY, timing, wordAt,
+  FaceLight, EAST, Fire, FireLight, FireMob, Folk, Hero, IronGolem, Kid, ROBE, SatGolem, Slumped, Villager, WEST, ease, faceOf, onRoad, ramp, roadY, timing, wordAt,
 } from "./kit";
 
 /** The fliers over the hill: where each hangs. */
@@ -51,6 +51,8 @@ export const scene9 = storyScene(timing, {
         return (
           <>
             <Sky lit={2} />
+            <FaceLight position={[19, 10, 2]} power={170} reach={34} color="#b4c6ff" />
+            <FaceLight position={[15.2, 2.6, 2.2]} power={10} reach={6} color="#c8d4ff" />
             {Array.from({ length: 20 }, (_, i) => {
               const x = 22.4 + Math.floor(i / 4) * 1.9 + d;
               return <IronGolem key={i} position={onRoad(x, COLS[i % 4])} rotationY={EAST} walk={d + i * 0.7} />;

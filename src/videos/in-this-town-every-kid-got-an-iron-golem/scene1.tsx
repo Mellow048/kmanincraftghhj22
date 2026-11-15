@@ -47,7 +47,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.me",
-      ...cam.push({ on: [0.1, 1.28, 2.4 + END], dist: 3.6, to: 3.1, yaw: -6, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [0.26, 1.28, 2.4 + END], dist: 4.3, to: 3.8, yaw: -6, pitch: 2, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'Mine was made of snow': the two of them, close. He looks sideways at it. It looks back at him and waves a stick.",

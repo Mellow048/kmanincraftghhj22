@@ -21,11 +21,11 @@ export const scene14 = storyScene(timing, {
         const rock = jolt(t, TWO, 0.5);
         return (
           <>
-            <SnowGolem position={STAND} rotationY={NORTH - 0.2} snow={0.02 + 0.05 * ease(ramp(t, 0.3, 2.0))} wet={0.9} armR={null} armL={null} fill={5} headRoll={rock} headYaw={0.3 * ease(ramp(t, TWO, TWO + 0.3))} />
+            <SnowGolem position={STAND} rotationY={NORTH - 0.2} snow={0.02 + 0.05 * ease(ramp(t, 0.3, 2.0))} wet={0.9} armR={null} armL={null} fill={0.6} headRoll={rock} headYaw={0.3 * ease(ramp(t, TWO, TWO + 0.3))} />
             <SnowCap position={[STAND[0], 0.52 + 0.06 * ease(ramp(t, 0.3, 2.0)), STAND[2]]} amount={0.5 + 0.5 * p} />
             <Stick position={[STAND[0] - 0.4, 0.04, STAND[2] - 0.55]} rotation={[0, 0.5, 0]} />
             <SubscribeSign position={[STAND[0] - 0.3, 1.18, STAND[2] + 0.62]} rotationY={NORTH + 0.08} scale={0.38} tilt={0.05 + Math.sin(t * 17) * 0.012} />
-            <FaceLight position={[STAND[0] + 0.3, 1.3, STAND[2] - 1.2]} power={5} reach={4} />
+            <FaceLight position={[STAND[0] + 0.2, 1.9, STAND[2] - 1.4]} power={5} reach={4.5} />
             <Hero position={ME} rotationY={NORTH - 0.25} animation="crouch" face={t < TWO + 0.1 ? "frown" : "wow"} headYaw={t < TWO + 0.1 ? 0 : 0.3} headPitch={0.3} gaze={0} />
             <Snowfall center={[STAND[0], 2.6, STAND[2]]} area={[8, 6, 8]} count={220} seed={6} />
           </>

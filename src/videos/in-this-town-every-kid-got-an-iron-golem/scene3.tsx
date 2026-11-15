@@ -80,7 +80,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.mine",
-      ...cam.push({ on: [2.35, 1.3, 3.2], dist: 4.4, to: 3.8, yaw: 12, pitch: -3, fov: 38 }),
+      ...cam.push({ on: [2.52, 1.3, 3.2], dist: 5.0, to: 4.5, yaw: 12, pitch: -3, fov: 38 }),
       zone: "village",
       look: "overworld-day",
       note: "'Mine threw snowballs': Puddle, close, winds a stick back and lets one go past the lens. The teller, behind him, watches where it is going.",
@@ -95,7 +95,7 @@ export const scene3 = storyScene(timing, {
               {a.holding ? <Snowball position={[0, 0.08, 0]} /> : null}
             </SnowGolem>
             {!a.holding && k < 1 ? <Snowball position={arc(stickTip(p, 0.25, a), [3.4, 1.5, 7.2], k, 0.25)} spin={t * 9} /> : null}
-            <Hero position={[3.15, 0, 2.3]} rotationY={-0.1} animation="idle" face={t < at ? "uneasy" : "fear"} headYaw={0.4 * ramp(t, at, at + 0.3)} gaze={0} />
+            <Hero position={[3.02, 0, 2.3]} rotationY={-0.1} animation="idle" face={t < at ? "uneasy" : "fear"} headYaw={0.4 * ramp(t, at, at + 0.3)} gaze={0} />
           </>
         );
       },
@@ -159,7 +159,7 @@ export const scene3 = storyScene(timing, {
           <>
             <SnowTrail from={from} to={at} count={Math.max(2, Math.round(k * 12))} width={0.6} />
             <SnowGolem position={at} rotationY={toward(from, to)} headYaw={2.5 * ease(ramp(t, 0.5, 0.85))} headRoll={0.1 * Math.sin(t * 6)} armR={{ raise: 0.5, swing: 0.2 }} armL={{ raise: 0.35, swing: 0.2 }} />
-            <Dad position={room(0.95, 0, -1.5)} rotationY={-0.2} animation="shrug" blendTo="idle" blend={0.5} headPitch={0.55} headYaw={0.2} />
+            <Dad position={room(0.62, 0, -1.7)} rotationY={-0.2} animation="shrug" blendTo="idle" blend={0.5} headPitch={0.55} headYaw={0.2} />
           </>
         );
       },
@@ -174,7 +174,7 @@ export const scene3 = storyScene(timing, {
         const drip = ease(ramp(t, NOON - 0.2, NOON + 1.1));
         return (
           <>
-            <SnowGolem position={[1.75, 0, 2.2]} drip={drip} headRoll={0.1 * drip} armR={{ raise: 0.3, swing: 0.2 }} armL={{ raise: 0.3, swing: 0.2 }} />
+            <SnowGolem position={[1.75, 0, 2.2]} drip={drip} headRoll={0.1 * drip} armR={{ raise: 0.3, swing: 0.2 }} armL={{ raise: 0.3, swing: 1.15 }} />
             <Hero position={[0.8, 0, 2.0]} rotationY={0.25} animation="idle" face={t < NOON + 0.5 ? "uneasy" : "wow"} headPitch={-0.55 * (1 - ramp(t, NOON + 0.4, NOON + 0.65))} headYaw={0.7 * ramp(t, NOON + 0.4, NOON + 0.65)} gaze={0} />
           </>
         );

@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { EAST, Hero, IronGolem, NORTH, SOUTH, SnowGolem, WEST, ease, ramp, snowFace, timing, wordAt } from "./kit";
+import { EAST, FaceLight, Glow, Hero, IronGolem, NORTH, SOUTH, SnowGolem, WEST, ease, ramp, snowFace, timing, wordAt } from "./kit";
 
 /** Where the iron golems stand at night: [x, z, the way each was facing]. */
 const NIGHT: Array<[number, number, number]> = [
@@ -24,12 +24,17 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "7.face",
-      ...cam.push({ on: [15, 2.6, 2.2], dist: 22, to: 18.5, yaw: -90, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [15, 2.6, 2.2], dist: 17, to: 14, yaw: -90, pitch: 7, fov: 46 }),
       zone: "village",
       look: "overworld-night",
       note: "'Every iron golem turned to face the black gate': the street by moonlight, from behind them. One after another, all down it, they turn their backs on us and stand looking up the hill.",
       stage: (t) => (
         <>
+          {/* Moonlight on their backs, and a haze behind the gate so its frame can be seen from the street. */}
+          <FaceLight position={[3, 10, 2.2]} power={170} reach={34} color="#b4c6ff" />
+          <FaceLight position={[13, 10, 2.2]} power={170} reach={34} color="#b4c6ff" />
+          <FaceLight position={[23, 10, 2.2]} power={170} reach={34} color="#b4c6ff" />
+          <Glow position={[47, 9.6, 2]} size={20} color="#8ea2f0" opacity={0.6} />
           {NIGHT.map(([x, z, rot], i) => {
             const k = ease(ramp(t, TURNED - 0.5 + i * 0.07, TURNED + 0.1 + i * 0.07));
             return <IronGolem key={i} position={[x, 0, z]} rotationY={toEast(rot, k)} headPitch={-0.12 * k} walk={k * 0.6} />;
@@ -54,6 +59,7 @@ export const scene7 = storyScene(timing, {
             <IronGolem position={[15.5, 0, 4.4]} rotationY={EAST} headPitch={-0.12} />
             <IronGolem position={[17.6, 0, 1.8]} rotationY={EAST} headPitch={-0.12} />
             <Hero position={[8.73, 0, -2.43]} rotationY={rot + Math.PI} animation="idle" face="frown" />
+            <FaceLight position={[8.1, 1.9, -3.7]} power={9} reach={3} />
           </>
         );
       },

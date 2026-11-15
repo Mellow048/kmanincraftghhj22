@@ -800,7 +800,7 @@ export const HalfHouse: React.FC<{ position: Vec3 }> = ({ position }) => (
 export const WallWindow: React.FC<{ position: Vec3 }> = ({ position }) => (
   <group position={position} rotation={[0, Math.PI / 2, 0]}>
     <Block size={[1.5, 1.5, 0.08]} color="#5c3f24" />
-    <Block position={[0, 0, 0.03]} size={[1.2, 1.2, 0.06]} color="#a9c6ff" emissive="#7fa8ff" emissiveIntensity={1.3} castShadow={false} />
+    <Block position={[0, 0, 0.03]} size={[1.2, 1.2, 0.06]} color="#22346e" emissive="#2a4496" emissiveIntensity={0.7} castShadow={false} />
     <Block position={[0, 0, 0.07]} size={[1.2, 0.07, 0.03]} color="#5c3f24" castShadow={false} />
     <Block position={[0, 0, 0.07]} size={[0.07, 1.2, 0.03]} color="#5c3f24" castShadow={false} />
     <Block position={[0, -0.72, 0.12]} size={[1.6, 0.08, 0.26]} color="#6b4a2c" />

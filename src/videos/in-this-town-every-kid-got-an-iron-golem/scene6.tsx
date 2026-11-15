@@ -43,7 +43,7 @@ export const scene6 = storyScene(timing, {
       stage: (t) => (
         <>
           <Set />
-          <Dad position={DAD} rotationY={WEST} animation="shrug" animSpeed={0.5} headPitch={0.28} headRoll={0.08 * Math.sin(t * 2)} />
+          <Dad position={DAD} rotationY={WEST} animation="shrug" blendTo="idle" blend={0.5} animSpeed={0.5} headPitch={0.28} headRoll={0.08 * Math.sin(t * 2)} />
         </>
       ),
     },
@@ -58,14 +58,14 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Set />
-            <Hero position={ME} rotationY={EAST} animation="idle" face={t < HEARD ? "frown" : "wow"} headYaw={2.4 * ease(ramp(t, HEARD - 0.4, HEARD - 0.05))} gaze={0} />
+            <Hero position={ME} rotationY={EAST + 1.5 * ease(ramp(t, HEARD - 0.4, HEARD - 0.02))} animation="idle" face={t < HEARD ? "frown" : "wow"} headYaw={0.9 * ease(ramp(t, HEARD - 0.45, HEARD - 0.1))} gaze={0} />
             <group position={[WINDOW[0] + 0.2, WINDOW[1] - 0.12 * ease(ramp(t, HEARD, HEARD + 0.3)), WINDOW[2] + 0.75 * go]} rotation={[0, EAST + 0.3 * (1 - go), 0]}>
               <group rotation={[0.42 * ease(ramp(t, HEARD - 0.1, HEARD + 0.3)), 0, 0]}>
                 <Pumpkin position={[0, 0, 0]} scale={0.84} />
               </group>
             </group>
             <Stick position={[WINDOW[0] + 0.26, WINDOW[1] - 0.5 - 0.2 * go, WINDOW[2] - 0.45 + 0.75 * go]} rotation={[0, EAST + 0.2, 0.5 - 0.6 * go]} />
-            <pointLight position={[WINDOW[0] + 1.0, WINDOW[1] + 0.1, WINDOW[2]]} color="#ffd2a0" intensity={3} distance={2.6} decay={2} />
+            <pointLight position={[WINDOW[0] + 1.0, WINDOW[1] + 0.1, WINDOW[2]]} color="#ffd2a0" intensity={4.5} distance={2.8} decay={2} />
           </>
         );
       },

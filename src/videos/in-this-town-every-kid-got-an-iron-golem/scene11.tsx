@@ -216,7 +216,7 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.last",
-      ...cam.push({ on: [STAND[0] - 0.55, 2.1, STAND[2]], dist: 6.6, to: 5.7, yaw: -16, pitch: -10, fov: 46 }),
+      ...cam.push({ on: [STAND[0] - 0.36, 2.1, STAND[2]], dist: 6.9, to: 6.2, yaw: -16, pitch: -10, fov: 46 }),
       zone: "village",
       look: "overworld-night",
       note: "'One left. One snowball. He did not miss': the whole of it in one tall frame. The last burning thing comes down on them from the top. At the bottom, under what is left of the umbrella, a stick lifts the last ball, winds back, and lets go. It goes up the frame and puts the fire out.",

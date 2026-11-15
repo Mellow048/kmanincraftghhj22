@@ -80,7 +80,7 @@ export const scene2 = storyScene(timing, {
         const spots: Vec3[] = [[0, 0.4, 0], [-0.8, 1.2, 0], [0, 1.2, 0], [0.8, 1.2, 0]];
         return (
           <>
-            <Kid n={0} position={[-0.5, 0, 3.3]} rotationY={2.7} animation="cheer" face={t < made ? "wow" : "laugh"} />
+            <Kid n={0} position={[-0.2, 0, 3.3]} rotationY={2.9} animation="cheer" face={t < made ? "wow" : "laugh"} />
             <Villager position={[1.3, 0, 3.1]} rotationY={WEST + 0.6} robe={ROBE.elder} lookAt={[0.2, 1.4, 1.2]} />
             {t < made ? (
               <>
@@ -134,7 +134,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.snow",
-      ...cam.push({ on: [9.4, 1.05, -0.6], dist: 5.8, to: 4.9, yaw: 4, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [9.42, 1.05, -0.6], dist: 5.9, to: 5.3, yaw: 4, pitch: 4, fov: 42 }),
       zone: "village",
       look: "overworld-day",
       note: "'Two blocks of snow. One pumpkin. Happy birthday': one block, a second on it, the pumpkin from his dad's hands, and on 'birthday' two sticks spring out of it and it looks at the boy.",
@@ -143,8 +143,8 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Winter />
-            <Dad position={[10.2, 0, -1.25]} rotationY={-0.75} animation="shrug" blendTo="reachUp" blend={ease(ramp(t, HAPPY - 0.2, HAPPY + 0.1))} headPitch={0.15} />
-            <Hero position={[8.6, 0, -0.1]} rotationY={0.95} animation="idle" face={t < HAPPY ? "wow" : "uneasy"} headPitch={-0.15} gaze={0} />
+            <Dad position={[10.1, 0, -1.25]} rotationY={-0.75} animation="shrug" blendTo="reachUp" blend={ease(ramp(t, HAPPY - 0.2, HAPPY + 0.1))} headPitch={0.15} />
+            <Hero position={[8.78, 0, -0.1]} rotationY={0.95} animation="idle" face={t < HAPPY ? "wow" : "uneasy"} headPitch={-0.15} gaze={0} />
             {alive ? (
               <SnowGolem
                 position={YARD}

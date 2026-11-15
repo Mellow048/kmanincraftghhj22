@@ -48,7 +48,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "5.day",
-      ...cam.push({ on: [-0.6, 1.9, 2.5], dist: 17.5, to: 14, yaw: 90, pitch: 13, fov: 44 }),
+      ...cam.push({ on: [-0.6, 1.9, 2.5], dist: 17.5, to: 15.2, yaw: 82, pitch: 13, fov: 44 }),
       zone: "village",
       look: "overworld-day",
       note: "'Once a year, the golems had a strength contest': down the street under lines of flags. The town on one side, a row of iron golems flexing on the other, the boulder between them, and at the near end of the row, small and white, his.",
@@ -62,8 +62,8 @@ export const scene5 = storyScene(timing, {
               <Kid n={i} position={[x + 0.2, 0, 1.2]} animation="cheer" animSpeed={0.8} phase={i} />
             </group>
           ))}
-          <SnowGolem position={[5.3, 0, 0.5]} rotationY={0.3} armR={{ raise: 0.9 + 0.3 * Math.sin(t * 7), swing: 0.2 }} armL={{ raise: 0.9 + 0.3 * Math.sin(t * 7 + 2), swing: 0.2 }} />
-          <Hero position={[5.9, 0, 1.5]} rotationY={0.9} animation="idle" face="uneasy" gaze={0} />
+          <SnowGolem position={[4.6, 0, 2.5]} rotationY={0.3} armR={{ raise: 0.9 + 0.3 * Math.sin(t * 7), swing: 0.2 }} armL={{ raise: 0.9 + 0.3 * Math.sin(t * 7 + 2), swing: 0.2 }} />
+          <Hero position={[5.2, 0, 3.5]} rotationY={0.9} animation="idle" face="uneasy" gaze={0} />
           <Folk spots={TOWN} at={[R[0], 1.5, R[2]]} />
         </>
       ),
@@ -147,10 +147,10 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.other",
-      ...cam.top({ on: [R[0] + 0.8, 0.3, R[2]], height: 5.6, to: 4.5, spin: [-7, 5], fov: 40 }),
+      ...cam.push({ on: [R[0] + 1.05, 1.1, R[2]], dist: 4.0, to: 3.6, yaw: 171, pitch: 5, fov: 50 }),
       zone: "village",
       look: "overworld-day",
-      note: "'With his other arm. That one came off too': from straight above. The first stick lies by the rock. He puts the other one to it, pulls, and that is two. He has no arms. He turns his pumpkin up at us.",
+      note: "'With his other arm. That one came off too': from the other side, with the town behind him. He puts the stick he has left against the rock, leans back, and that is two. He stands there with no arms, and slowly turns his pumpkin to us.",
       stage: (t) => {
         const reach = ease(ramp(t, 0.1, 0.5));
         const heave = ramp(t, 0.5, 0.9) * (1 - ramp(t, OFF2, OFF2 + 0.05));
@@ -158,20 +158,22 @@ export const scene5 = storyScene(timing, {
         const back = ease(ramp(t, OFF2, OFF2 + 0.25));
         return (
           <>
+            <Flags />
             <Boulder position={R} />
             <Stick {...loose(9, 0, 1)} />
             <SnowGolem
               position={[HIM[0] + 0.42 - 0.42 * reach + 0.42 * back, 0, HIM[2]]}
               rotationY={WEST}
               lean={-0.16 * heave + jolt(t, OFF2, 0.2)}
-              headPitch={-0.95 * ease(ramp(t, OFF2 + 0.3, OFF2 + 0.6))}
+              headYaw={-1.25 * ease(ramp(t, OFF2 + 0.4, OFF2 + 0.75))}
               armR={null}
               armL={gone ? null : { raise: lerp(0.4, -0.3, reach) + 0.05 * Math.sin(t * 38) * heave, swing: lerp(0.2, 1.57, reach) }}
             />
             {gone ? <Stick {...loose(t, OFF2, -1)} /> : null}
-            <Hero position={[HIM[0] + 1.9, 0, HIM[2] + 0.5]} rotationY={WEST} animation="idle" blendTo="ache" blend={1 - ramp(t, OFF2, OFF2 + 0.3)} face="ouch" />
-            <Kid n={2} position={[R[0] - 0.9, 0, R[2] - 1.5]} rotationY={0.6} animation="laugh" face="laugh" />
-            <Kid n={3} position={[R[0] + 0.4, 0, R[2] + 1.7]} rotationY={NORTH} animation="laugh" face="laugh" phase={0.5} />
+            <Hero position={[HIM[0] + 0.75, 0, HIM[2] + 1.5]} rotationY={NORTH + 0.3} animation="idle" blendTo="ache" blend={1 - ramp(t, OFF2, OFF2 + 0.3)} face="ouch" />
+            <Kid n={2} position={[R[0] - 0.35, 0, R[2] + 1.9]} rotationY={NORTH} animation="laugh" face="laugh" />
+            <Kid n={3} position={[R[0] + 0.35, 0, R[2] + 2.4]} rotationY={NORTH} animation="laugh" face="laugh" phase={0.5} />
+            <Folk spots={TOWN} at={[HIM[0], 1.2, HIM[2]]} />
           </>
         );
       },
