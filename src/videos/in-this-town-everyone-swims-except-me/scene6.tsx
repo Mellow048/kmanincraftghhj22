@@ -49,7 +49,7 @@ export const scene6 = storyScene(timing, {
       note: "Waist up: he holds the hand out and turns it, the way you check a lucky coin. He still thinks it is a lucky coin.",
       stage: () => (
         <>
-          <Hero position={[120.9, 0, 40.4]} rotationY={-0.3} animation="lift" face="happy" ring />
+          <Hero position={[120.9, 0, 40.4]} rotationY={-0.3} animation="hold" face="happy" ring />
         </>
       ),
     },
@@ -183,26 +183,25 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.buttons",
-      ...cam.top({ on: [P + 3, 0.9, 7.4], height: 0.95, to: 0.7, spin: [-10, 2], fov: 40 }),
+      ...cam.top({ on: [P + 3.42, 0.42, 7.76], height: 0.75, to: 0.55, spin: [-10, 2], fov: 38 }),
       zone: "pool",
       look: "overworld-day",
-      note: "Straight down, filling the frame: three little buttons on a gold band. Red, yellow, green — a toy's idea of power.",
+      note: "Straight down, filling the frame: three little buttons on a gold band around his arm. Red, yellow, green — a toy's idea of power.",
       stage: () => (
         <>
-          <Ring position={[P + 3, 0.9, 7.42]} rotation={[0.1, 0, 0]} scale={2.5} glow={1.2} lit={2} />
+          <Hero position={[P + 3, 0, 7.4]} rotationY={0.4} animation="hold" face="surprised" ring />
         </>
       ),
     },
     {
       cue: "6.medium",
-      ...cam.push({ on: [P + 3, 0.92, 7.4], dist: 1.05, to: 0.75, yaw: 58, pitch: 14, fov: 36 }),
+      ...cam.push({ on: [P + 3.5, 0.62, 7.8], dist: 1.5, to: 1.15, yaw: 16, pitch: 18, fov: 36 }),
       zone: "pool",
       look: "overworld-day",
       note: "A finger over the middle button, and the ring glowing under it. 'Max speed. Medium. Low.' — three words, one choice.",
       stage: () => (
         <>
-          <Ring position={[P + 3, 0.9, 7.4]} rotation={[0.2, 1.2, 0]} scale={2.1} glow={1.4} lit={2} />
-          <Hero position={[P + 3, 0, 7.4]} rotationY={0.4} animation="press" face="worried" />
+          <Hero position={[P + 3, 0, 7.4]} rotationY={0.4} animation="press" face="worried" ring />
         </>
       ),
     },
@@ -220,14 +219,13 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.low",
-      ...cam.push({ on: [P + 3, 0.92, 7.4], dist: 1.0, to: 0.7, yaw: 62, pitch: 12, fov: 36 }),
+      ...cam.push({ on: [P + 3.52, 0.6, 7.8], dist: 1.45, to: 1.1, yaw: 22, pitch: 20, fov: 36 }),
       zone: "pool",
       look: "overworld-day",
       note: "The same finger moves one button down, to green. Not because low is clever — because medium was frightening.",
       stage: () => (
         <>
-          <Ring position={[P + 3, 0.9, 7.4]} rotation={[0.2, 1.2, 0]} scale={2.1} glow={1.4} lit={3} />
-          <Hero position={[P + 3, 0, 7.4]} rotationY={0.4} animation="press" face="sad" />
+          <Hero position={[P + 3, 0, 7.4]} rotationY={0.4} animation="press" face="sad" ring />
         </>
       ),
     },
