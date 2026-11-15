@@ -13,6 +13,41 @@ import { Bleachers, DisplayCase, PLACE, Pool, Trophy } from "./kit";
  *   arena    The contest: three pools in a row, and the smallest is the one he has trained in.
  */
 
+
+/** A lawn with rectangular holes in it, so a pool can be sunk into the ground without grass filling it. */
+type Rect = { x: number; z: number; w: number; d: number };
+
+const Lawn: React.FC<{ w: number; d: number; holes?: Rect[] }> = ({ w, d, holes = [] }) => {
+  const cut = holes.map((h) => ({ x0: h.x - h.w / 2, x1: h.x + h.w / 2, z0: h.z - h.d / 2, z1: h.z + h.d / 2 }));
+  const zs = Array.from(new Set([-d / 2, d / 2, ...cut.flatMap((h) => [Math.max(-d / 2, h.z0), Math.min(d / 2, h.z1)])])).sort(
+    (a, b) => a - b,
+  );
+  const slabs: Rect[] = [];
+  for (let i = 0; i < zs.length - 1; i++) {
+    const z0 = zs[i];
+    const z1 = zs[i + 1];
+    if (z1 - z0 < 0.01) continue;
+    const zc = (z0 + z1) / 2;
+    const spans = cut
+      .filter((h) => h.z0 < zc && h.z1 > zc)
+      .map((h) => [h.x0, h.x1] as [number, number])
+      .sort((a, b) => a[0] - b[0]);
+    let x0 = -w / 2;
+    for (const [a, b] of spans) {
+      if (a > x0) slabs.push({ x: (x0 + a) / 2, z: zc, w: a - x0, d: z1 - z0 });
+      x0 = Math.max(x0, b);
+    }
+    if (x0 < w / 2) slabs.push({ x: (x0 + w / 2) / 2, z: zc, w: w / 2 - x0, d: z1 - z0 });
+  }
+  return (
+    <>
+      {slabs.map((sl, i) => (
+        <Vox key={i} kind="grass" position={[sl.x, -0.55, sl.z]} size={[sl.w, 1, sl.d]} />
+      ))}
+    </>
+  );
+};
+
 const Village: React.FC = () => (
   <>
     <Vox kind="grass" position={[0, -0.5, 0]} size={[120, 1, 90]} />
@@ -69,7 +104,7 @@ const Village: React.FC = () => (
 
 const PoolZone: React.FC = () => (
   <group position={PLACE.pool}>
-    <Vox kind="grass" position={[0, -0.55, 0]} size={[64, 1, 48]} />
+    <Lawn w={64} d={48} holes={[{ x: 0, z: 0, w: 31.8, d: 18.8 }]} />
     <Pool length={25} width={12} lanes={6} />
     {/* The fence, with a gate on the west side. */}
     <Vox kind="log" position={[-22, 0.5, -18]} size={[0.2, 1, 0.2]} />
@@ -144,7 +179,15 @@ const Woods: React.FC = () => (
 
 const Arena: React.FC = () => (
   <group position={PLACE.arena}>
-    <Vox kind="grass" position={[0, -0.55, 0]} size={[180, 1, 120]} />
+    <Lawn
+      w={180}
+      d={120}
+      holes={[
+        { x: 0, z: 0, w: 31.8, d: 18.8 },
+        { x: 52, z: -8, w: 46.8, d: 24.8 },
+        { x: 116, z: 10, w: 66.8, d: 32.8 },
+      ]}
+    />
 
     {/* Pool three: the small pool. Exactly the size of the one he trained in. */}
     <Pool length={25} width={12} lanes={6} />

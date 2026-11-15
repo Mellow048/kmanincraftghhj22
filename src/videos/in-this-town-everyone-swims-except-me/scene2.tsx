@@ -47,7 +47,7 @@ export const scene2 = storyScene(timing, {
       note: "Pull out across the empty morning pool to him arriving at the far corner: a small daily ritual, and the water enormous.",
       stage: () => (
         <>
-          <Hero position={[P + 9.2, 0, -5.2]} rotationY={-Math.PI / 2} animation="walk" animDistance={0.9} face="neutral" />
+          <Hero position={[P + 13.6, 0, -7.6]} rotationY={-Math.PI / 2} animation="walk" animDistance={0.9} face="neutral" />
           <Villager position={[P - 9, 0, -8]} robe={ROBE.brown} walk={0.8} phase={0.9} />
         </>
       ),
@@ -113,7 +113,7 @@ export const scene2 = storyScene(timing, {
       note: "The deep end as a place: the far half of the pool, a depth sign on the wall, and him tiny at its edge.",
       stage: () => (
         <>
-          <Hero position={[P + 10.4, 0, 1.4]} rotationY={Math.PI / 2} animation="idle" face="scared" />
+          <Hero position={[P + 13.9, 0, 1.4]} rotationY={Math.PI / 2} animation="idle" face="scared" />
           <SignBoard
             at={[P + 14.4, 0, -2.6]}
             width={3.2}

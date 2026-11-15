@@ -40,7 +40,7 @@ export const scene7 = storyScene(timing, {
         <>
           <Vox kind="planks" tint="#b8935e" position={[A - 20, 0.45, 12]} size={[3.0, 0.9, 1.1]} />
           <Vox kind="wool" tint="#f4f0e2" position={[A - 20.1, 0.91, 12.3]} size={[0.5, 0.02, 0.7]} />
-          <Hero position={[A - 20, 0.5, 12.9]} rotationY={Math.PI} animation="press" face="worried" />
+          <Hero position={[A - 20, 0, 13.1]} rotationY={Math.PI} animation="press" face="worried" />
         </>
       ),
     },
@@ -76,10 +76,10 @@ export const scene7 = storyScene(timing, {
       note: "A low line-up of the others at the blocks: black and white, tall, goggles, no nerves. The rival is the still one in the middle.",
       stage: () => (
         <>
-          <Player who={1} position={[A - 10.4, 0, -4.4]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
-          <Rival position={[A - 10, 0, -2]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
-          <Player who={5} position={[A - 9.6, 0, 0.4]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
-          <Player who={11} position={[A - 10.2, 0, 2.6]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
+          <Player who={1} position={[A - 14.3, 0, -4.4]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
+          <Rival position={[A - 14.1, 0, -2]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
+          <Player who={5} position={[A - 14.3, 0, 0.4]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
+          <Player who={11} position={[A - 14.1, 0, 2.6]} rotationY={Math.PI} animation="idle" shoes="#1c1c1c" />
         </>
       ),
     },
@@ -91,8 +91,8 @@ export const scene7 = storyScene(timing, {
       note: "He taps the ring against his other hand: it did not matter that they all looked like professionals, because he had this.",
       stage: () => (
         <>
-          <Hero position={[A - 10, 0, -2]} rotationY={0.4} animation="hold" face="neutral" />
-          <Ring position={[A - 9.86, 0.86, -1.88]} rotation={[0.3, 0.6, 0]} scale={3.2} glow={0.9} lit={3} />
+          <Hero position={[A - 14.1, 0, -2]} rotationY={0.4} animation="hold" face="neutral" />
+          <Ring position={[A - 13.96, 0.86, -1.88]} rotation={[0.3, 0.6, 0]} scale={3.2} glow={0.9} lit={3} />
         </>
       ),
     },
@@ -180,7 +180,7 @@ export const scene7 = storyScene(timing, {
       note: "From the far end of the smallest pool: it is still the size of a municipal building, and he is a red dot at the near wall.",
       stage: () => (
         <>
-          <Hero position={[A - 11.2, 0, 5.4]} rotationY={1.2} animation="idle" face="surprised" headYaw={-0.4} />
+          <Hero position={[A - 11.2, 0, 6.9]} rotationY={1.2} animation="idle" face="surprised" headYaw={-0.4} />
         </>
       ),
     },
