@@ -49,7 +49,7 @@ export const Lights: React.FC<{ lit: number }> = ({ lit }) => (
 /** Fights going on in the yard: [monster, x, z, which player, what the player is doing]. */
 const FIGHTS: Array<[Kind, number, number, number, "cower" | "panic" | "stagger" | "scared"]> = [
   ["zombie", -3.6, -4.2, 1, "cower"], ["skeleton", 0.6, -6.4, 2, "stagger"], ["spider", 3.8, -3.6, 3, "panic"], ["zombie", -1.2, -8.6, 4, "scared"],
-  ["creeper", 4.6, -8.2, 5, "panic"], ["zombie", 6.6, 6.4, 2, "cower"], ["skeleton", 3.4, 7.6, 4, "stagger"], ["enderman", -5.4, -7.4, 3, "cower"],
+  ["creeper", 4.6, -8.2, 5, "panic"], ["zombie", -7.4, -1.6, 2, "cower"], ["skeleton", 2.6, -2.2, 4, "stagger"], ["enderman", -5.4, -7.4, 3, "cower"],
 ];
 export const Battle: React.FC<{ t: number; look?: Vec3; n?: number }> = ({ t, look, n = FIGHTS.length }) => (
   <>

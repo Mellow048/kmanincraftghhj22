@@ -55,7 +55,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.asleep",
-      ...cam.push({ on: f(-4.9, 0.35, 0.3), dist: 3.0, to: 2.3, yaw: -24, pitch: 34 }),
+      ...cam.push({ on: f(-5.05, 0.35, 0.3), dist: 3.5, to: 2.9, yaw: -24, pitch: 34 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "Down through the bars: the boy flat out asleep on the cage floor, mouth open. A small Z drifts up from him.",
@@ -87,7 +87,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.sheep",
-      ...cam.top({ on: r(-1.2, 0.7, -1.45), height: 2.6, to: 2.2 }),
+      ...cam.top({ on: r(-1.2, 0.7, -1.3), height: 3.0, to: 2.7 }),
       zone: Z.room,
       look: NIGHT4,
       note: "Straight down on his face on the pillow, eyes open. Little white sheep hop over his chest one after another. On 'did not work' the last sheep stops and looks at him.",
@@ -127,7 +127,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.stars",
-      ...cam.push({ on: up(GS, 1.75), dist: 2.6, to: 2.3, yaw: 12, pitch: -24 }),
+      ...cam.push({ on: up(GS, 1.75), dist: 2.7, to: 2.3, yaw: 78, pitch: -30 }),
       zone: Z.out,
       look: NIGHT4,
       note: "From down by his knees, looking up: his face against the stars and the moon. He shuts his eyes, lifts his chin and breathes in until his chest is out.",
@@ -137,9 +137,9 @@ export const scene1 = storyScene(timing, {
           <>
             <Bush position={BUSH} />
             <group position={GS} scale={[1 + 0.08 * b, 1 + 0.03 * b, 1 + 0.12 * b]}>
-              <Raider who={2} sword={false} animation="idle" face="happy" headPitch={-0.35 - 0.25 * b} blink={b < 0.3} />
+              <Raider who={2} sword={false} animation="idle" face="happy" headPitch={-0.35 - 0.25 * b} headYaw={0.7} blink={b < 0.3} />
             </group>
-            <Fill on={manFace(GS)} yaw={12} power={5} />
+            <Fill on={manFace(GS)} yaw={78} power={6} />
           </>
         );
       },
@@ -162,7 +162,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.who",
-      ...cam.push({ on: o(1.6, 1.25, 3.5), dist: 5.6, to: 5.2, yaw: 2, pitch: 5 }),
+      ...cam.push({ on: o(1.9, 1.25, 3.5), dist: 7.0, to: 6.4, yaw: -52, pitch: 6 }),
       zone: Z.out,
       look: NIGHT4,
       note: "Side on, the two of them: the guard on the left, turned to the bush on the right, a speech bubble WHO IS THERE? over him. Then three dots over the bush.",
@@ -172,16 +172,16 @@ export const scene1 = storyScene(timing, {
           <>
             <Bush position={BUSH} shake={t > said + 0.5 ? t : 0} />
             <Raider who={2} position={GS} rotationY={EAST} animation="guard" face="worried" />
-            {t < said + 0.2 ? <Bubble text="WHO IS THERE?" position={up(GS, 2.5)} scale={0.55 * ease(ramp(t, 0, 0.15))} /> : null}
-            {t > said + 0.35 ? <Bubble text="..." position={up(BUSH, 2.3)} scale={0.6} tail={1} /> : null}
-            <Fill on={manFace(GS)} yaw={2} power={6} d={2.4} />
+            {t < said + 0.2 ? <Bubble text="WHO IS THERE?" position={up(GS, 2.45)} rotationY={-0.9} scale={0.4 * ease(ramp(t, 0, 0.15))} /> : null}
+            {t > said + 0.35 ? <Bubble text="..." position={up(BUSH, 2.3)} rotationY={-0.9} scale={0.6} tail={1} /> : null}
+            <Fill on={manFace(GS)} yaw={-52} power={6} d={2.4} />
           </>
         );
       },
     },
     {
       cue: "3.sword",
-      ...cam.push({ on: up(BUSH, 1.0), dist: 6.2, to: 5.4, yaw: -72, pitch: 14 }),
+      ...cam.push({ on: up(BUSH, 1.3), dist: 6.4, to: 5.6, yaw: -76, pitch: 8 }),
       zone: Z.out,
       look: NIGHT4,
       note: "From behind the guard, over his shoulder: the sword comes out and up, shining, and he starts towards the dark bush on tiptoe.",
@@ -265,7 +265,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.sorry",
-      ...cam.push({ on: o(2.5, 1.2, 3.5), dist: 4.6, to: 4.0, yaw: -12, pitch: 10 }),
+      ...cam.push({ on: o(2.3, 1.0, 3.8), dist: 6.4, to: 5.6, yaw: -64, pitch: 15 }),
       zone: Z.out,
       look: NIGHT4,
       note: "The guard is flat on his back in the grass, fainted. Dad stands in the bush over him, pushes his own jaw shut with one hand, and a small bubble says SORRY.",
@@ -282,8 +282,8 @@ export const scene1 = storyScene(timing, {
               <Raider who={2} sword={false} animation="idle" face="dizzy" blink={false} />
             </Flat>
             <AimSword position={[GB[0] - 0.4, 0.06, GB[2] + 1.1]} yaw={2} pitch={0} />
-            {t > sorry - 0.1 ? <Bubble text="SORRY" position={up(DADUP, 2.55)} rotationY={-0.2} scale={0.5 * ease(ramp(t, sorry - 0.1, sorry + 0.05))} tail={1} /> : null}
-            <Fill on={up(DADUP, 1.6)} yaw={-12} power={6} d={2.4} />
+            {t > sorry - 0.1 ? <Bubble text="SORRY" position={up(DADUP, 2.55)} rotationY={-1.1} scale={0.5 * ease(ramp(t, sorry - 0.1, sorry + 0.05))} tail={1} /> : null}
+            <Fill on={up(DADUP, 1.6)} yaw={-64} power={6} d={2.4} />
           </>
         );
       },

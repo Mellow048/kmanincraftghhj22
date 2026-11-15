@@ -50,7 +50,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "8.bus",
-      ...cam.push({ on: f(4, 4.2, 3.4), onTo: f(-0.6, 1.6, 3.4), dist: 16, to: 9, yaw: 8, pitch: 4 }),
+      ...cam.push({ on: f(11, 8, 3.4), onTo: f(-1.4, 1.4, 3.4), dist: 15, to: 9, yaw: 8, pitch: 4 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 2.25, amp: 0.1, dur: 0.4 }],
@@ -83,7 +83,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Yard t={t} smoke hero="stand" door={open} heroFace={open > 0.3 ? "wow" : "uneasy"} />
-            <Postman position={[T2[0] + 0.9, 0, T2[2] + 0.5]} rotationY={NORTH + 0.5} nod={0.6} carry={1} />
+            <Postman position={f(-6.7, 0, 1.9)} rotationY={NORTH - 0.7} nod={0.6} carry={1} />
             {open < 0.2 ? <Key position={[LOCK[0] + 0.1, LOCK[1], LOCK[2] + 0.12]} rotation={[0, Math.PI, 1.57 * clamp((t - c + 0.15) / 0.15)]} scale={1.3} /> : null}
             <Fill on={up(ME, 0.9)} yaw={24} power={7} />
           </>
@@ -92,7 +92,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.in",
-      ...cam.push({ on: f(-3.2, 1.3, 2.6), dist: 7.2, to: 6.2, yaw: -26, pitch: 12 }),
+      ...cam.push({ on: f(-2.9, 1.3, 2.6), dist: 9.4, to: 8.4, yaw: -22, pitch: 12 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "The enderman points a long arm at the slime. The boy runs out of the cage, takes off, and goes into the side of the bus head first. It wobbles round him. He floats in the middle of it, green, with his hair standing up.",
@@ -149,10 +149,10 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.drag",
-      ...cam.push({ on: [MO0[0] - 1.8, 0.9, MO0[2]], onTo: [MO0[0] - 1.8 - DRAG * 0.6, 0.9, MO0[2]], dist: 5.0, to: 4.4, yaw: -42, pitch: 9 }),
+      ...cam.push({ on: [MO0[0] - 1.3, 0.9, MO0[2]], onTo: [MO0[0] - 1.3 - DRAG, 0.9, MO0[2]], dist: 7.0, to: 6.6, yaw: 12, pitch: 8 }),
       zone: Z.fort,
       look: NIGHT4,
-      note: "Low, in front of them: two guards walk backwards at us with an arm of his each, and Mo slides after them on his back, hat first, heels leaving two lines in the dirt. Behind them the fight goes on. No door, no building: only away.",
+      note: "Side on, moving with them: two guards walk off to the left with an arm of his each, and Mo slides after them on his back, hat first, heels leaving two lines in the dirt. Behind them the fight goes on. No door, no building: only away.",
       stage: (t) => {
         const d = (DRAG * t) / dur("8.drag");
         return (
@@ -163,17 +163,17 @@ export const scene4 = storyScene(timing, {
             {[-0.2, 0.2].map((z) => (
               <Block key={z} position={[MO0[0] - d / 2, 0.06, MO0[2] + z]} size={[d + 0.01, 0.02, 0.1]} color="#4a3a28" castShadow={false} />
             ))}
-            <Fill on={[MO0[0] - 2 - d, 0.5, MO0[2]]} yaw={-42} power={8} d={2.5} />
+            <Fill on={[MO0[0] - 2 - d, 0.5, MO0[2]]} yaw={12} power={8} d={2.5} />
           </>
         );
       },
     },
     {
       cue: "8.out",
-      ...cam.push({ on: [BUSSPOT[0] - 0.6, 1.2, BUSSPOT[2] + 0.8], dist: 4.4, to: 4.0, yaw: -150, pitch: -6 }),
+      ...cam.push({ on: [BUSSPOT[0] - 0.7, 1.3, BUSSPOT[2] + 0.9], dist: 6.0, to: 5.4, yaw: -42, pitch: -4 }),
       zone: Z.fort,
       look: NIGHT4,
-      note: "From behind the bus: the boy bursts out of the side of it in a spray of green, arms and legs wide, in the air.",
+      note: "From in front and below: the boy bursts out of the side of it in a spray of green, arms and legs wide, in the air.",
       stage: (t) => {
         const k = ease(ramp(t, 0.05, 0.75));
         const p = mix([BUSSPOT[0], 0.35, BUSSPOT[2]], OUTBUS, k);
@@ -246,7 +246,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.forest",
-      ...cam.push({ on: f(-13, 8.5, -3), dist: 30, to: 27, yaw: 34, pitch: 2 }),
+      ...cam.push({ on: f(-8, 12, -6), onTo: f(-30, 5, -12.5), dist: 26, to: 24, yaw: 62, pitch: 0 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "Very wide: a small green ball goes up over the west wall of the castle against the stars, turning over and over, and comes down a long way off in the trees. A tree shakes. A little puff of leaves.",
@@ -266,7 +266,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.fist",
-      ...cam.push({ on: up(GSTAND, 4.3), dist: 8.4, to: 7.6, yaw: -73, pitch: -27, fov: 58 }),
+      ...cam.push({ on: up(GSTAND, 4.3), dist: 8.8, to: 8.0, yaw: -58, pitch: -27, fov: 58 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.5, amp: 0.05, dur: 0.3 }],
@@ -340,7 +340,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.stay",
-      ...cam.push({ on: up(T2, 2.5), dist: 3.9, to: 3.4, yaw: -74, pitch: -15 }),
+      ...cam.push({ on: up(T2, 2.5), dist: 4.2, to: 3.7, yaw: -22, pitch: -15 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "The enderman by the empty cage, from below: one long arm out, jaw dropped right open, shouting after them. STAY BACK! Then: BOTH OF YOU!",
@@ -349,16 +349,16 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Yard t={t} smoke hero="none" door={1} mo={false} />
-            <Postman position={T2} rotationY={WEST + 0.2} jaw={0.6 + 0.4 * Math.abs(Math.sin(t * 9))} carry={1} lean={0.2} />
-            <Bubble text={t < both - 0.15 ? "STAY BACK!" : "BOTH OF YOU!"} position={[T2[0] - 0.9, 3.75, T2[2] + 0.5]} rotationY={-1.25} scale={0.44} />
-            <Fill on={up(T2, 2.6)} yaw={-74} power={9} d={2.4} />
+            <Postman position={T2} rotationY={-0.8} jaw={0.6 + 0.4 * Math.abs(Math.sin(t * 9))} carry={1} lean={0.2} />
+            <Bubble text={t < both - 0.15 ? "STAY BACK!" : "BOTH OF YOU!"} position={[T2[0] - 0.2, 3.75, T2[2] + 0.5]} rotationY={-0.38} scale={0.4} />
+            <Fill on={up(T2, 2.6)} yaw={-22} power={9} d={2.4} />
           </>
         );
       },
     },
     {
       cue: "9.never",
-      ...cam.push({ on: f(-4.8, 0.75, 5.6), onTo: f(-8.2, 0.75, 5.9), dist: 2.9, to: 2.6, yaw: 12, pitch: 2 }),
+      ...cam.push({ on: f(-4.8, 0.85, 5.6), onTo: f(-8.2, 0.85, 5.9), dist: 4.4, to: 4.0, yaw: 12, pitch: 3 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "Hiss, side on and close, going flat out: head down, brow down, little legs a blur, dust coming up behind him. He does not so much as look round.",
@@ -369,7 +369,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Yard t={t} smoke hero="none" door={1} mo={false} teacher />
             <Battle t={t} />
-            <Hiss position={[p[0], Math.abs(Math.sin(t * 14)) * 0.06, p[2]]} rotationY={WEST} walk={t * 8} mood="angry" lean={0.25} />
+            <Hiss position={[p[0], Math.abs(Math.sin(t * 14)) * 0.06, p[2]]} rotationY={WEST} walk={t * 8} mood="angry" lean={0.1} />
             <Puffs position={[p[0] + 0.7, 0.1, p[2]]} count={5} rise={0.5} spread={0.3} size={0.16} color="#b9b9c0" />
             <Fill on={up(p, 1)} yaw={12} power={8} d={2.2} />
           </>

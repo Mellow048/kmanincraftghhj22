@@ -81,7 +81,7 @@ export const scene3 = storyScene(timing, {
           <>
             <Yard t={t} smoke hero="stand" heroLook={LOCK} />
             <Postman position={T2} rotationY={NORTH} nod={0.7} shake={1} carry={1} />
-            <Key position={[LOCK[0] + 0.1 + sh, LOCK[1] + Math.cos(t * 23) * 0.03, LOCK[2] + 0.22 + 0.04 * Math.sin(t * 9)]} rotation={[0, Math.PI, sh * 4]} scale={1.3} />
+            <Key position={[LOCK[0] + 0.1 + sh, LOCK[1] + Math.cos(t * 23) * 0.03, LOCK[2] + 0.22 + 0.04 * Math.sin(t * 9)]} rotation={[0, Math.PI, sh * 4]} scale={0.9} />
             <Block position={[LOCK[0] + 0.1, LOCK[1] + 0.02, LOCK[2] + 0.62]} size={[0.07, 0.07, 0.6]} color="#0c0c10" />
             <pointLight position={[LOCK[0] + 0.8, LOCK[1] + 0.4, LOCK[2] + 1]} color="#fff0d0" intensity={4} distance={4} decay={2} />
           </>
@@ -120,7 +120,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.earlier",
-      ...cam.push({ on: o(1.7, 1.9, 2.6), dist: 9.4, to: 9.0, yaw: 22, pitch: 11 }),
+      ...cam.push({ on: o(1.7, 1.6, 2.8), dist: 11, to: 10.4, yaw: 22, pitch: 11 }),
       zone: Z.out,
       look: NIGHT4,
       note: "THE JOKE. No voice, a silly march. White words at the top: 4 MINUTES EARLIER. Outside the wall, three guards lie in a neat row behind the bush with their feet sticking out, and dad the skeleton stands over them dusting his hands. The enderman walks away from them to the castle door, in step with the music, with a gold key held up in front of him.",
@@ -138,7 +138,7 @@ export const scene3 = storyScene(timing, {
             <Dad position={[DAD_BUSH[0] - 1.5, 0, DAD_BUSH[2] + 0.3]} rotationY={0.5} wave={t * 5} lookAt={up(tp, 2.5)} mood="happy" />
             <Postman position={tp} rotationY={NORTH - 0.5 * (1 - k)} walk={t * 2} carry={1} />
             <Key position={[tp[0] + 0.3, tp[1] + 2.0, tp[2] - 0.55]} rotation={[-1.2, 0, 0]} scale={2.2} />
-            <TopCard text="4 MINUTES EARLIER" position={o(1.7, 5.15, 2.6)} yaw={(22 * Math.PI) / 180} height={0.42} width={3.9} />
+            <TopCard text="4 MINUTES EARLIER" position={o(1.7, 4.55, 2.8)} yaw={(22 * Math.PI) / 180} height={0.4} width={3.3} />
             <pointLight position={o(2, 3, 6)} color="#e6ecff" intensity={40} distance={12} decay={2} />
           </>
         );
@@ -160,15 +160,17 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.all",
-      ...cam.push({ on: [HOLE[0] - 5.2, 1.35, HOLE[2] - 2.6], onTo: [HOLE[0] - 5.2, 1.0, HOLE[2] + 7.4], dist: 3.6, to: 3.6, yaw: -90, pitch: 2 }),
+      ...cam.push({ on: f(-5.9, 1.35, 6.5), onTo: f(4.4, 1.0, 6.5), dist: 3.6, to: 3.6, yaw: 0, pitch: 2 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "Close, sliding down the front row as he names them: mum's face, dad's skull, Hiss, two zombies, two skeletons with bows, two spiders. Every one of them is frowning.",
       stage: (t) => (
         <>
           <Yard t={t} smoke hero="none" />
-          <Friends t={t} x={HOLE[0] - 5.2 - t * 0.15} z0={HOLE[2] + 0.8} />
-          <pointLight position={[HOLE[0] - 8, 2, HOLE[2] - 2 + t * 2.4]} color="#e6ecff" intensity={30} distance={10} decay={2} />
+          <group position={f(-2.5, 0, 6.5)} rotation={[0, Math.PI / 2, 0]}>
+            <Friends t={t} x={0} z0={0} />
+          </group>
+          <pointLight position={f(-5 + t * 2.4, 2, 9.5)} color="#e6ecff" intensity={30} distance={10} decay={2} />
         </>
       ),
     },
@@ -225,7 +227,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.zombie",
-      ...cam.push({ on: f(-1.4, 1.35, -5.5), dist: 3.9, to: 3.4, yaw: 6, pitch: 3 }),
+      ...cam.push({ on: f(-0.4, 1.35, 6), dist: 4.0, to: 3.6, yaw: 6, pitch: 3 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "A player and a zombie, face to face. The zombie takes the sword out of his hand like taking a spoon off a baby, bends the blade over double, and gives it back. The player looks at it.",
@@ -233,8 +235,8 @@ export const scene3 = storyScene(timing, {
         const took = w("7.zombie", "sword", 0.8);
         const bent = ease(ramp(t, w("7.zombie", "bent", 1.4) - 0.25, w("7.zombie", "bent", 1.4) + 0.05));
         const give = ease(ramp(t, dur("7.zombie") - 0.35, dur("7.zombie")));
-        const zp = f(-0.6, 0, -5.5);
-        const rp = f(-2.2, 0, -5.5);
+        const zp = f(0.25, 0, 6);
+        const rp = f(-1.05, 0, 6);
         return (
           <>
             <Yard t={t} smoke hero="none" />
@@ -250,14 +252,14 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.skel",
-      ...cam.push({ on: f(4.2, 1.9, -6.2), dist: 4.4, to: 4.0, yaw: -20, pitch: -4 }),
+      ...cam.push({ on: f(3.9, 1.75, 7), dist: 5.4, to: 4.8, yaw: -58, pitch: 3 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "A player wearing two helmets, and a skeleton with a bow a few steps off. Twang: the top helmet spins off. Twang: the one under it. The player feels the top of his bare head.",
       stage: (t) => {
         const a = w("7.skel", "off", 1.2);
         const b = w("7.skel", "under", 2.2);
-        const rp = f(5.2, 0, -6.2);
+        const rp = f(4.4, 0, 7);
         const fly = (at: number, y: number) => {
           const k = t - at;
           return k < 0 ? <IronHelmet position={[rp[0], y, rp[2]]} rotation={[0, WEST, 0]} /> : k < 1.2 ? <IronHelmet position={[rp[0] + k * 4, y + k * 3 - 4 * k * k, rp[2] - k]} rotation={[k * 9, WEST, k * 7]} /> : null;
@@ -265,14 +267,14 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <Yard t={t} smoke hero="none" />
-            <Folk kind="skeleton" n={5} position={f(2.6, 0, -6.2)} rotationY={EAST} mood="calm" />
+            <Folk kind="skeleton" n={5} position={f(2.2, 0, 7)} rotationY={EAST} mood="calm" />
             {[a, b].map((at, i) =>
-              t > at - 0.12 && t < at + 0.02 ? <Block key={i} position={[f(2.6, 0, 0)[0] + 0.5 + ((t - at + 0.12) / 0.12) * 2, i ? 1.76 : 2.06, rp[2]]} size={[0.5, 0.03, 0.03]} color="#e8e6dc" castShadow={false} /> : null,
+              t > at - 0.12 && t < at + 0.02 ? <Block key={i} position={[f(2.2, 0, 0)[0] + 0.5 + ((t - at + 0.12) / 0.12) * 2, i ? 1.76 : 2.06, rp[2]]} size={[0.5, 0.03, 0.03]} color="#e8e6dc" castShadow={false} /> : null,
             )}
             <Raider who={2} sword={false} position={rp} rotationY={WEST} animation={t > b + 0.1 ? "reachUp" : "scared"} face={t > b ? "surprised" : "worried"} />
             {fly(b, 1.74)}
             {fly(a, 2.04)}
-            <Fill on={manFace(rp)} yaw={-20} power={7} d={2.6} />
+            <Fill on={manFace(rp)} yaw={-58} power={7} d={2.6} />
           </>
         );
       },
@@ -301,32 +303,32 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.mum",
-      ...cam.push({ on: f(9.5, 1.5, 3.6), onTo: f(4.2, 1.5, 3.6), dist: 4.4, to: 4.0, yaw: -78, pitch: 4 }),
+      ...cam.push({ on: f(8.8, 1.5, 5.6), onTo: f(3.5, 1.5, 5.6), dist: 4.6, to: 4.2, yaw: -68, pitch: 4 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "Mum, walking towards us through the middle of the fight with her arms down, turning her head left and right, looking into every corner. The camera backs away in front of her. Players with swords step out of her way and look at their feet.",
       stage: (t) => {
-        const x = f(9.5, 0, 0)[0] - (5.3 * t) / dur("7.mum");
+        const x = f(8.8, 0, 0)[0] - (5.3 * t) / dur("7.mum");
         return (
           <>
             <Yard t={t} smoke hero="none" />
             <Duel t={t} />
             <Battle t={t} />
-            <Mum position={[x, 0, f(0, 0, 3.6)[2]]} rotationY={WEST} walk={t * 1.5} turn={Math.sin(t * 2.2) * 0.8} mood="sad" />
+            <Mum position={[x, 0, f(0, 0, 5.6)[2]]} rotationY={WEST} walk={t * 1.5} turn={Math.sin(t * 2.2) * 0.8} mood="sad" />
             {[0, 1, 2, 3].map((i) => {
-              const px = f(7.6 - i * 1.5, 0, 0)[0];
+              const px = f(6.9 - i * 1.5, 0, 0)[0];
               const side = i % 2 ? 1 : -1;
               const away = ease(ramp(x - px, 2.6, 1.2));
-              return <Raider key={i} who={i + 2} position={[px, 0, f(0, 0, 3.6)[2] + side * (0.5 + 1.2 * away)]} rotationY={side > 0 ? NORTH : 0} animation="idle" face="worried" headPitch={0.5 * away} />;
+              return <Raider key={i} who={i + 2} position={[px, 0, f(0, 0, 5.6)[2] + side * (0.5 + 1.2 * away)]} rotationY={side > 0 ? NORTH : 0} animation="idle" face="worried" headPitch={0.5 * away} />;
             })}
-            <Fill on={[x, 1.6, f(0, 0, 3.6)[2]]} yaw={-78} power={8} d={2.6} />
+            <Fill on={[x, 1.6, f(0, 0, 5.6)[2]]} yaw={-68} power={8} d={2.6} />
           </>
         );
       },
     },
     {
       cue: "7.hiss",
-      ...cam.push({ on: f(0.5, 1.0, 6.4), dist: 8.6, to: 7.6, yaw: 6, pitch: 24 }),
+      ...cam.push({ on: f(1.2, 1.0, 6.4), dist: 11, to: 10, yaw: 6, pitch: 24 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "From above and to one side: a small green creeper walks, not fast, at four big players with swords. They look at him, look at each other, drop the swords and run off the left of the picture with their arms in the air.",

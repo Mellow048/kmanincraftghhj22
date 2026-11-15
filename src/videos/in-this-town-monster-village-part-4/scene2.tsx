@@ -188,7 +188,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.fell",
-      ...cam.push({ on: f(-5.6, 2.9, -1.2), dist: 4.6, to: 4.3, yaw: 15, pitch: -20, fov: 62 }),
+      ...cam.pan({ from: f(-7.4, 0.8, 5.6), on: f(-7.0, 4.2, -3), onTo: f(-7.05, 4.0, -3), fov: 58 }),
       zone: Z.fort,
       look: NIGHT4,
       note: "THE JOKE. Low, in front of the cage: the boy rubs his eyes and yawns at us. Far behind and above him, small, a man goes backwards off the lookout tower, arms going round, and drops out of sight behind a roof. A puff of dust. The boy has not turned his head.",
@@ -199,7 +199,8 @@ export const scene2 = storyScene(timing, {
         const z = LOOK[2] + 1.9 + 1.8 * k;
         return (
           <>
-            <Yard t={t} plug hero="sit" heroFace={t < 1.2 ? "sleepy" : "calm"} />
+            <Yard t={t} plug hero="none" />
+            <Hero position={f(-5.7, 0.08, 0.75)} rotationY={-0.25} animation="idle" face={t < 1.2 ? "sleepy" : "calm"} headPitch={0.1} />
             {k < 1 ? (
               <group position={[LOOK[0], y, z]}>
                 <group rotation={[-k * 5.5, 0, 0]}>
@@ -209,7 +210,7 @@ export const scene2 = storyScene(timing, {
             ) : null}
             {k < 1 ? <Vex position={[LOOK[0] + 0.3, y + 1.9, z - 0.3]} t={t} scale={1.1} /> : null}
             {k >= 1 && t < go + 2.3 ? <Puffs position={[LOOK[0], 0.3, z]} count={12} rise={3.2} spread={1.5} size={0.7} color="#b9b9c0" /> : null}
-            <Fill on={up(ME, 0.8)} yaw={15} power={7} />
+            <Fill on={f(-5.7, 1.1, 0.75)} yaw={-20} power={7} />
           </>
         );
       },
@@ -256,7 +257,7 @@ export const scene2 = storyScene(timing, {
             ))}
             {t > out - 0.5
               ? [-0.42, 0.42].map((x) => (
-                  <Block key={x} position={f(x, 4.2, -11.62)} size={[0.3, 0.16, 0.04]} color="#000000" emissive="#ff3020" emissiveIntensity={3 * ease(ramp(t, out - 0.5, out))} castShadow={false} />
+                  <Block key={x} position={f(x, 3.0, -11.6)} size={[0.3, 0.16, 0.04]} color="#000000" emissive="#ff3020" emissiveIntensity={3 * ease(ramp(t, out - 0.5, out))} castShadow={false} />
                 ))
               : null}
           </>
@@ -265,7 +266,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.golem",
-      ...cam.push({ on: up(GOUT, 3.6), dist: 11, to: 8.5, yaw: 14, pitch: -16 }),
+      ...cam.push({ on: up(GOUT, 3.3), dist: 6.4, to: 5.4, yaw: 14, pitch: -22, fov: 56 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.3, amp: 0.05, dur: 0.3 }, { at: 1.2, amp: 0.05, dur: 0.3 }],
@@ -282,7 +283,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.steps",
-      ...cam.push({ on: f(-1.5, 2.6, -2.6), dist: 5.6, to: 5.3, yaw: -38, pitch: -2 }),
+      ...cam.push({ on: f(-1, 2.5, -4), dist: 5.2, to: 5.0, yaw: -42, pitch: -9, fov: 54 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.35, amp: 0.07, dur: 0.3 }, { at: 0.95, amp: 0.07, dur: 0.3 }, { at: 1.55, amp: 0.07, dur: 0.3 }, { at: 2.1, amp: 0.07, dur: 0.25 }],
@@ -326,7 +327,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.ravager",
-      ...cam.push({ on: [HOLE[0] - 3, 2.0, HOLE[2]], dist: 6.2, to: 4.6, yaw: -70, pitch: -10 }),
+      ...cam.push({ on: [HOLE[0] - 3, 2.2, HOLE[2]], dist: 9.5, to: 7.2, yaw: -70, pitch: -8 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 0.4, amp: 0.05, dur: 0.3 }, { at: 1.3, amp: 0.05, dur: 0.3 }],
@@ -341,7 +342,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.clash",
-      ...cam.push({ on: up(CLASH, 2.6), dist: 17, to: 12.5, yaw: 3, pitch: 5 }),
+      ...cam.push({ on: up(CLASH, 2.8), dist: 22, to: 16, yaw: 3, pitch: 5 }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 1.3, amp: 0.14, dur: 0.5 }, { at: 2.2, amp: 0.1, dur: 0.4 }, { at: 2.9, amp: 0.12, dur: 0.5 }],
@@ -363,7 +364,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.again",
-      ...cam.top({ on: [CLASH[0] + 3, 0, CLASH[2]], height: 19, to: 15 }),
+      ...cam.top({ on: [CLASH[0] + 4.2, 0, CLASH[2]], height: 24, to: 21, fov: 44, spin: [90, 90] }),
       zone: Z.fort,
       look: NIGHT4,
       impacts: [{ at: 2.1, amp: 0.1, dur: 0.4 }],
