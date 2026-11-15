@@ -55,7 +55,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.stranger",
-      ...cam.push({ on: [X + 0.3, 1.2, 81], dist: 3.4, to: 2.7, yaw: 184, pitch: 5, fov: 40 }),
+      ...cam.push({ on: [X + 0.42, 1.05, 81.0], dist: 3.6, to: 2.9, yaw: 138, pitch: 10, fov: 40 }),
       zone: "woods",
       look: "overworld-storm",
       note: "Over his shoulder: a tall shape between the trees holding something out. We never get the stranger's face — only the hand and the ring.",
@@ -64,7 +64,7 @@ export const scene5 = storyScene(timing, {
           <Stranger position={[X, 0, 81.4]} rotationY={Math.PI} animation="hold">
             <Ring position={[0, 0, 0]} scale={1.15} glow={1.0} lit={2} />
           </Stranger>
-          <pointLight position={[X + 0.5, 1.7, 80.4]} color="#ffe3b0" intensity={3.5} distance={12} decay={2} />
+          <pointLight position={[X + 0.5, 1.9, 80.2]} color="#ffe3b0" intensity={2.0} distance={10} decay={2} />
           <pointLight position={[X, 2.4, 78.2]} color="#8fa9cc" intensity={5} distance={12} decay={2} />
           <Hero
             position={travel(p, [X + 0.3, 0, 76.9], [X + 0.3, 0, 78.4])}
