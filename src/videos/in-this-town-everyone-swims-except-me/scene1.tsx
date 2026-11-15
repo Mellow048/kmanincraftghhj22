@@ -1,147 +1,162 @@
-import { Vox, cam, storyScene } from "../../engine";
-import type { Vec3 } from "../../engine";
-import { CHILD, Hero, PLACE, ROBE, Trophy, Villager, timing, travel } from "./kit";
-import { Player } from "../../../Topics/InThisTown";
+import { cam, storyScene } from "../../engine";
+import {
+  CHILD, Cast, Dive, Drops, EAST, Floatie, Hang, Hero, Kid, NORTH, P, PoolLife, Puffs, ROBE, SH, Splash, Swim, Villager, WEST, WL,
+  laneZ, POOL, posed, timing, tw,
+} from "./kit";
 
 /**
  * 01 HOOK — the premise, the trophy, and the one thing he cannot do.
  *
- * The town is walking to the water. He is not. The trophy is in the window. He can shower.
- * The water past his toes makes him a worm. And he wants it anyway.
+ * Frame one is the whole film: four kids go off the blocks at the lens and one red shirt stays on the deck.
+ * Then the prize (at his head's height, because it is as big as his head), the one kind of water he is fine
+ * with, and what happens when it is any other kind.
  *
- * Framing, measured on this lens (portrait 9:16, fov 40 sees 23° across, 40° up):
- *   the whole street   dist 16  pitch 16
- *   a pool's length    dist 12  pitch 6
- *   waist up           dist 2.6 pitch 6
- *   hands / a cup      dist 1.8 pitch 3
- *   pitch is POSITIVE when the camera is ABOVE the thing it looks at.
+ * This lens (portrait 9:16, fov 40) sees 0.41 × the distance across and 0.73 × the distance up.
+ * Pitch is POSITIVE when the camera is ABOVE what it looks at. Yaw 0 is a camera on the south (+Z) side.
  */
-
-const P = PLACE.pool[0];
-
-/** A tiled shower against the back of the changing hut. */
-const Shower: React.FC<{ at: Vec3 }> = ({ at }) => (
-  <group position={at}>
-    <Vox kind="stoneBrick" tint="#dfe6e4" position={[0, 1.2, -0.7]} size={[2.4, 2.4, 0.2]} />
-    <Vox kind="stoneBrick" tint="#cfd8d6" position={[-1.2, 1.2, 0]} size={[0.2, 2.4, 1.6]} />
-    <Vox kind="stoneBrick" tint="#e8eeec" position={[0, 0.03, 0]} size={[2.4, 0.06, 1.6]} />
-    <Vox kind="stone" tint="#9aa4a8" position={[0, 1.75, -0.55]} size={[0.09, 0.9, 0.09]} />
-    <Vox kind="stone" tint="#9aa4a8" position={[0, 2.2, -0.4]} size={[0.09, 0.09, 0.45]} />
-    <Vox kind="stone" tint="#9aa4a8" position={[0, 2.14, -0.2]} size={[0.34, 0.14, 0.3]} />
-    <mesh position={[0, 0.95, -0.2]}>
-      <boxGeometry args={[0.62, 1.9, 0.62]} />
-      <meshStandardMaterial color="#bfe9f0" transparent opacity={0.28} roughness={0.1} />
-    </mesh>
-    <mesh position={[0, 0.02, 0.1]} rotation={[-Math.PI / 2, 0, 0]}>
-      <circleGeometry args={[0.9, 24]} />
-      <meshStandardMaterial color="#9fd8e4" transparent opacity={0.4} roughness={0.1} />
-    </mesh>
-  </group>
-);
-
 export const scene1 = storyScene(timing, {
   id: "scene1",
   title: "Hook",
   shots: [
     {
       cue: "1.race",
-      ...cam.push({ on: [1, 1.0, 0.2], dist: 16, to: 13, yaw: 58, pitch: 16, fov: 40 }),
-      zone: "village",
+      ...cam.push({ on: P(-9.5, 0.8, 0), dist: 8.6, to: 4.2, yaw: 90, pitch: 9, fov: 46 }),
+      zone: "pool",
       look: "overworld-day",
-      note: "The whole street from above, and the whole town walking one way with towels. One red shirt is not walking. Premise in frame one.",
+      note: "From over the water: four kids go off the blocks straight at the lens and swim under it. The red shirt between the blocks does not move. The push ends on him.",
       stage: (t) => (
         <>
-          <Villager position={[-4 + t * 1.1, 0, -1.2]} rotationY={Math.PI / 2} robe={ROBE.brown} walk={t * 1.1} phase={0.2} />
-          <Villager position={[-1.4 + t * 0.9, 0, 0.4]} rotationY={Math.PI / 2} robe={ROBE.white} walk={t * 0.9} phase={1.1} />
-          <Villager position={[2.6 + t * 1.2, 0, -0.8]} rotationY={Math.PI / 2} robe={ROBE.farmer} walk={t * 1.2} phase={2.2} />
-          <Villager position={[0.8 + t * 1.4, 0, 1.8]} rotationY={Math.PI / 2} robe={ROBE.blue} kid scale={CHILD} walk={t * 1.4} phase={0.7} />
-          <Villager position={[4.6 + t * 0.6, 0, 2.4]} rotationY={Math.PI / 2} robe={ROBE.smith} walk={t * 0.6} phase={3.1} />
-          <Hero position={[0.9, 0, 2.6]} rotationY={-2.4} animation="idle" face="neutral" />
-          <Player who={9} position={[6.4, 0, 1.2]} rotationY={-1.8} scale={CHILD} animation="walk" animDistance={t * 0.4} />
+          <PoolLife lanes={[]} />
+          {[1, 2, 3, 4].map((ln) => (
+            <Dive key={ln} who={ln + 2} from={P(-8.6, 0.5, laneZ(ln, POOL))} heading={EAST} t={t} at={0.3 + ((ln * 3) % 4) * 0.06} speed={2.4} rate={1.5} seed={ln} />
+          ))}
+          <Hero position={P(-9.7, 0, 0)} rotationY={EAST} animation="idle" face={t < 1.1 ? "uneasy" : "frown"} headYaw={Math.sin(t * 2.2) * 0.5 * (1 - tw(t, 0.9, 1.3))} headPitch={tw(t, 1.0, 1.5) * 0.35} />
+          <Villager position={P(-11.0, 0, -1.3)} rotationY={EAST} robe={ROBE.farmer} hmm={tw(t, 0.3, 0.7)} phase={0.5} />
+          <Villager position={P(-11.6, 0, 1.2)} rotationY={EAST} robe={ROBE.blue} hmm={tw(t, 0.4, 0.8)} phase={1.5} />
+          <Kid n={8} scale={0.56} position={P(-10.4, 0, 1.6)} rotationY={EAST} animation="cheer" face="laugh" phase={0.4} />
+          <Kid n={1} scale={0.6} position={P(-10.5, 0, -2.0)} rotationY={EAST} animation="cheer" face="laugh" phase={1.4} />
         </>
       ),
     },
     {
       cue: "1.trophy",
-      ...cam.push({ on: [-0.3, 0.95, -3.45], dist: 2.7, to: 2.1, yaw: 6, pitch: 6, fov: 38 }),
+      ...cam.orbit({ on: [0.42, 1.0, -3.3], dist: 3.4, distTo: 2.8, yaw: -22, yawTo: -8, pitch: 5, fov: 38 }),
       zone: "village",
       look: "overworld-day",
-      note: "The prize at its own height, in the glass. There is a boy's shoulder at the edge of the frame, for scale: it is as big as his head.",
-      stage: () => (
+      note: "The cup in the hall window and his head beside the glass, the same size. He leans in until his nose is nearly on it, and grins.",
+      stage: (t) => (
         <>
-          <Hero position={[1.25, 0, -2.35]} rotationY={Math.PI + 0.25} animation="peek" face="surprised" headPitch={0.08} />
+          <Hero position={[1.0, 0, -2.95]} rotationY={-1.95} pose={posed("idle", t, { bodyPitch: 0.2 + tw(t, 0.2, 0.9) * 0.28, bodyY: -0.1 })} face={t < 0.8 ? "surprised" : "grin"} headPitch={-0.2} />
+          <Villager position={[3.6 - t * 0.9, 0, -1.9]} rotationY={WEST} robe={ROBE.blue} walk={t * 0.9} phase={0.6} />
         </>
       ),
     },
     {
       cue: "1.window",
-      ...cam.truck({ on: [-1.2, 2.2, -3.3], dist: 10.5, yaw: 34, pitch: 12, fov: 42, by: [4.5, 0, 0] }),
+      ...cam.push({ on: [0, 1.7, -3.2], dist: 5.0, to: 9.5, yaw: -18, pitch: 6, fov: 46 }),
       zone: "village",
       look: "overworld-day",
-      note: "Travelling along the front of the hall: the window with the cup in it goes past like a fixture, there all year, above everyone's heads.",
+      note: "Pull back off the window: the hall, the square, the town going by with towels and rubber rings, and him still at the glass with his back to all of it.",
       stage: (t) => (
         <>
-          <Villager position={[-2.6 + t * 1.5, 0, -1.0]} rotationY={Math.PI / 2} robe={ROBE.farmer} walk={t * 1.5} phase={1.4} />
-          <Villager position={[3.2 + t * 1.2, 0, -1.4]} rotationY={Math.PI / 2} robe={ROBE.smith} walk={t * 1.2} phase={0.4} />
-          <Hero position={[2.9 - t * 1.5, 0, -1.6]} rotationY={0.38} animation="walk" animDistance={t * 1.5} face="sad" lookAt={[-0.34, 1.1, -3.4]} />
+          <Hero position={[0.2, 0, -2.5]} rotationY={NORTH} animation="idle" headPitch={0.15} face="smile" />
+          {[0, 1, 2, 3].map((i) => (
+            <Kid key={i} n={i + 3} position={[-7 + i * 1.7 + t * 3.1, 0, -0.6 + (i % 2) * 1.1]} rotationY={EAST} animation="run" animDistance={t * 3.1 + i} face="laugh">
+              {i % 2 === 0 ? <Floatie position={[0, -0.05, 0.1]} color={i ? "#e86aa8" : "#f0c030"} scale={0.7} /> : null}
+            </Kid>
+          ))}
+          <Villager position={[-4 + t * 1.2, 0, 1.6]} rotationY={EAST} robe={ROBE.white} walk={t * 1.2} phase={0.2} />
+          <Villager position={[1.5 + t * 1.0, 0, 1.9]} rotationY={EAST} robe={ROBE.brown} walk={t * 1.0} phase={1.4} />
+          <Villager position={[3.5 + t * 1.1, 0, 0.4]} rotationY={EAST} robe={ROBE.farmer} kid scale={CHILD} walk={t * 1.1} phase={2.1} />
         </>
       ),
     },
     {
       cue: "1.shower",
-      ...cam.orbit({ on: [P - 17.5, 1.05, 13.7], dist: 3.0, yaw: 26, pitch: 8, yawTo: 10, fov: 38 }),
+      ...cam.push({ on: SH(0, 1.0, -0.5), dist: 4.1, to: 3.1, yaw: 16, pitch: 5, fov: 40 }),
+      zone: "home",
+      look: "warm-room",
+      note: "The one kind of water he is fine with: under the shower, eyes shut, washing his hair with both hands, steam coming up. On 'swim' his arms stop.",
+      stage: (t) => {
+        const stop = tw(t, 0.85, 1.1);
+        return (
+          <>
+            <Hero
+              position={SH(0, 0, -0.55)}
+              rotationY={0.15}
+              pose={posed("idle", t, {
+                armR: [-2.5 + Math.sin(t * 9) * 0.25 * (1 - stop) + stop * 2.3, 0, 0.35],
+                armL: [-2.5 - Math.sin(t * 9) * 0.25 * (1 - stop) + stop * 2.3, 0, -0.35],
+                bodyY: Math.abs(Math.sin(t * 4.5)) * 0.03 * (1 - stop),
+              })}
+              face={stop > 0.5 ? "frown" : "laugh"}
+              headPitch={-0.2 + stop * 0.35}
+            />
+            <Drops top={SH(0, 2.55, -0.72)} t={t} height={2.5} spread={0.3} n={46} />
+            <Puffs position={SH(0, 0.2, -0.3)} color="#ffffff" count={5} rise={1.0 + t * 0.3} spread={1.0} size={0.22} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.toes",
+      ...cam.push({ on: P(-5, 0.3, 3.75), dist: 2.7, to: 2.0, yaw: 152, pitch: 10, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
-      note: "He can do this part. Water, from above, on his own terms — and the only place in the film water is safe. An odd angle, half behind the wall.",
-      stage: () => (
+      note: "From the water: he sits on the edge and lets himself down a finger at a time. The water comes up over his toes.",
+      stage: (t) => (
         <>
-          <Shower at={[P - 17.5, 0, 14.0]} />
-          <Hero position={[P - 17.5, 0, 13.6]} rotationY={0} animation="idle" face="happy" headPitch={-0.2} />
+          <PoolLife />
+          <Hero position={P(-5, -0.27 - tw(t, 0.1, 1.0) * 0.13, 4.02)} rotationY={NORTH} animation="sit" face={t < 0.7 ? "uneasy" : "fear"} headPitch={0.5} />
+          <Splash at={P(-5, WL, 3.72)} k={(t - 0.75) / 0.5} size={0.35} n={6} />
         </>
       ),
     },
     {
       cue: "1.toes",
-      ...cam.push({ on: [P + 1.2, 0.85, 5.98], dist: 6.4, to: 5.4, yaw: 172, pitch: 12, fov: 42 }),
+      cut: 1.2,
+      ...cam.push({ on: P(-5, 0.75, 5.0), dist: 5.2, to: 4.4, yaw: 205, pitch: 9, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
-      note: "From above and behind: ten toes on the tile, the water one centimetre past them. The line in the sand is a line of tile.",
-      stage: (t, { p }) => (
+      note: "And he is gone: backwards up the deck with both arms in the air, while a kid half his size treads water and watches him go.",
+      stage: (t) => (
         <>
-          <Hero
-            position={travel(p, [P + 1.1, 0, 8.1], [P + 1.2, 0, 6.12])}
-            rotationY={Math.PI}
-            animation={p < 0.85 ? "walk" : "idle"}
-            animDistance={p * 2}
-            face="scared"
-            headPitch={-0.26}
-          />
-          <Villager position={[P - 3.2 + t * 0.9, 0, 6.6]} rotationY={Math.PI / 2} robe={ROBE.white} walk={t * 0.9} phase={0.5} />
+          <PoolLife />
+          <Hero position={P(-5, 0, 4.5 + tw(t, 0, 0.8) * 1.5)} rotationY={NORTH} animation="panic" face="fear" />
+          <Swim who={4} at={P(-4.1, WL, 2.6)} heading={0.3} mode="tread" t={t} seed={3} face="neutral" />
+          <Splash at={P(-5, WL, 3.7)} k={t / 0.6} size={0.8} />
         </>
       ),
     },
     {
       cue: "1.worm",
-      ...cam.push({ on: [P + 1.2, 0.32, 5.7], dist: 5.0, to: 4.2, yaw: 104, pitch: 16, fov: 42 }),
+      ...cam.orbit({ on: P(-5, -0.1, 2.3), dist: 5.2, distTo: 4.4, yaw: 25, yawTo: -20, pitch: 46, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
-      note: "On the water line at the wall: fingers hooked on the tile, the rest of him going like a worm under salt.",
-      stage: () => (
+      note: "From above: him in the shallow end, every limb going a different way, in a ring of white water. A small kid on a float drifts through it and out again.",
+      stage: (t) => (
         <>
-          <Hero position={[P + 1.2, -0.95, 5.7]} rotationY={0} animation="panic" face="scared" />
-          <Villager position={[P + 4.6, 0, 6.4]} robe={ROBE.friend} kid scale={CHILD} lookAt={[P + 1.2, 0.2, 5.4]} />
+          <PoolLife lanes={[1]} />
+          <Swim at={P(-5 + Math.sin(t * 5) * 0.2, WL, 2.3 + Math.cos(t * 4) * 0.15)} heading={t * 2.6} mode="flail" t={t} rate={1.4} face="fear" foam={1.3} />
+          {[0, 1, 2].map((i) => (
+            <Splash key={i} at={P(-5 + Math.cos(i * 2.1) * 0.6, WL, 2.3 + Math.sin(i * 2.1) * 0.6)} k={((t * 1.6 + i * 0.33) % 1)} size={0.7} seed={i + 2} />
+          ))}
+          <Cast who={2} scale={0.56} position={P(-7.2 + t * 1.1, -0.72, 3.2 - t * 0.35)} rotationY={EAST} animation="sit" face="smile" shadow={false} />
+          <Floatie position={P(-7.2 + t * 1.1, WL + 0.05, 3.2 - t * 0.35)} color="#f0c030" scale={1.1} />
         </>
       ),
     },
     {
       cue: "1.want",
-      ...cam.push({ on: [0, 1.15, -3.35], dist: 2.6, to: 1.9, yaw: -10, pitch: 5, fov: 38 }),
-      zone: "village",
+      ...cam.push({ on: P(-5, 0.12, 3.6), dist: 2.5, to: 1.7, yaw: 12, pitch: 24, fov: 36 }),
+      zone: "pool",
       look: "overworld-day",
-      note: "Over his shoulder at the glass and the cup behind it. He does not touch it. The last shot of the hook is a want, not a plan.",
-      stage: () => (
+      note: "Close, from the deck: he hangs off the wall by both hands, water running off his hair, and his face has changed. He looks up past the lens.",
+      stage: (t) => (
         <>
-          <Hero position={[0.5, 0, -2.45]} rotationY={Math.PI - 0.1} animation="peek" face="neutral" headPitch={0.12} />
+          <PoolLife />
+          <Hang wall={P(-5, 0, 4.0)} heading={0} k={0.55} t={t} kick={0.1} face="brave" headPitch={-0.1 - tw(t, 0.1, 0.6) * 0.3} />
+          <Drops top={P(-5, 0.25, 3.72)} t={t} height={0.4} spread={0.14} n={8} speed={1.6} />
         </>
       ),
     },
