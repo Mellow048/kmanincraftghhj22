@@ -1,0 +1,203 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-the-fastest-kid-wins-part-2",
+  "mix": "public/audio/in-this-town-the-fastest-kid-wins-part-2/mix.mp3",
+  "seconds": 142.6667,
+  "built_from": {
+    "timing.json": "563c4f287d1218880e4dcc6d7beadb3340cddb87",
+    "sound.json": "690f2d8d1785d11eeb3577f0c310e164aa6bbe08",
+    "narration.mp3": "4cf93e5180d39cd9becf3a501c0699837a88bc66"
+  },
+  "mix_sha1": "5698091ead36c760446703a7f659cb4574f5742d",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.turn",
+      "mood": "curious",
+      "at": 11.63
+    },
+    {
+      "from": "3.idea",
+      "mood": "playful",
+      "at": 29.77
+    },
+    {
+      "from": "4.hey",
+      "mood": "curious",
+      "at": 43.53
+    },
+    {
+      "from": "4.froze",
+      "mood": "none",
+      "at": 45.93
+    },
+    {
+      "from": "4.poop",
+      "mood": "playful",
+      "at": 48.03
+    },
+    {
+      "from": "5.later",
+      "mood": "town",
+      "at": 61.5
+    },
+    {
+      "from": "5.bend",
+      "mood": "tense",
+      "at": 65.77
+    },
+    {
+      "from": "5.go",
+      "mood": "tense",
+      "at": 70.03
+    },
+    {
+      "from": "6.forgot",
+      "mood": "curious",
+      "at": 75.07
+    },
+    {
+      "from": "6.desert",
+      "mood": "drone",
+      "at": 82.33
+    },
+    {
+      "from": "7.van",
+      "mood": "playful",
+      "at": 91.07
+    },
+    {
+      "from": "7.angry",
+      "mood": "tense",
+      "at": 94.37
+    },
+    {
+      "from": "7.jog",
+      "mood": "hope",
+      "at": 102.23
+    },
+    {
+      "from": "8.catch",
+      "mood": "tense",
+      "at": 108.63
+    },
+    {
+      "from": "8.boom",
+      "mood": "dark",
+      "at": 118.1
+    },
+    {
+      "from": "8.behind",
+      "mood": "curious",
+      "at": 121.23
+    },
+    {
+      "from": "9.van",
+      "mood": "playful",
+      "at": 125.23
+    },
+    {
+      "from": "9.later",
+      "mood": "hope",
+      "at": 130.3
+    },
+    {
+      "from": "9.drink",
+      "mood": "curious",
+      "at": 135.43
+    },
+    {
+      "from": "9.walk",
+      "mood": "dark",
+      "at": 137.53
+    },
+    {
+      "from": "10.sub",
+      "mood": "tense",
+      "at": 140.8
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 10,
+  "measured": {
+    "musicUnderVoiceDb": 18.4,
+    "secondsWithoutMusic": 2.5,
+    "bedsUnderVoiceDb": 25.3,
+    "sfx": 434,
+    "sfxPerMinute": 182.5,
+    "sfxKinds": 37,
+    "longestGapSeconds": 2.4,
+    "longestGapAt": 40.2,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.4,
+    "voiceOverRestWorstDb": 3.2,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.2,
+        "t": 106.8,
+        "cue": "7.run",
+        "sounding": [
+          "dig",
+          "ding",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 3.7,
+        "t": 18.0,
+        "cue": "2.three",
+        "sounding": [
+          "pop",
+          "step_grass"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 139.4,
+        "cue": "9.walk",
+        "sounding": [
+          "step_stone"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 35.5,
+        "cue": "3.brush",
+        "sounding": [
+          "plink",
+          "rustle"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 103.9,
+        "cue": "7.jog",
+        "sounding": [
+          "scrape"
+        ]
+      },
+      {
+        "db": 5.5,
+        "t": 72.2,
+        "cue": "5.go",
+        "sounding": [
+          "bell",
+          "cheer",
+          "step_grass",
+          "zip"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 1.2
+  },
+  "failures": []
+}
