@@ -140,3 +140,20 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   sound effects, with his track stopped for those four seconds: the tool cannot play a second tune.
   **Lesson: a 9:16 frame at fov 40 is 0.41 × the distance wide. Two people side by side need an over-the-shoulder
   angle or a long lens distance.**
+- **2026-11-15, his review of Monster Village part 4: REJECTED. He stopped watching at 1:05.** "the retention is bad,
+  the hook needs work overall it was downgraded", "quality is degrading". What he named, and what was done:
+  skelly dad's jaw "isnt actually opened" (the skeleton has a real jaw now, `jaw` 0–1); he wanted the walk up to the
+  bush through the guard's eyes, so the jumpscare is at the viewer (3.slow and 3.bam are that now); "the tower has no
+  floors" (`WatchTower`); "the subtitle lagged behind" on the tower (the words were on time: the PICTURE was late, the
+  man moved after the line said he had, and the cuts fell after the words; now every move starts before its word and
+  every cut is on it); the watchman "didnt use his arms" (`spyglassPose`); the pillagers "seemed cheap, 1 or 2 … are
+  the only detailed one" (`Horde`: all of them are real); the camera when the man falls off the tower (two cuts: on
+  the edge with him, then the boy with the tower over his head); a frame of flat grey smoke blocks, "i have no idea
+  what im looking at wihtout context" (the wall is shot from inside with a guard leaning on it and the fuse glowing
+  in the cracks; then pillagers climb in with TNT over their heads; smoke blocks are small); "the fight was boring …
+  it lacked everything, motion and detail" (5.clash is five cuts, 5.again two; `Battle` is eight fights that move).
+  The hook is now two seconds of the golem and the ravager from later in the night, then "And I was in a cage".
+  **Lessons. (1) "Is the subject in the frame" is not a review: ask of every still, would he know what this is with
+  no sound and no line. (2) Never put boxes behind actors. (3) A thing that is used is held. (4) A building has an
+  inside. (5) The picture leads the words. (6) The first two seconds are the best two seconds of the film.**
+  Nobody has listened to the new mix. The words of the script were not changed.

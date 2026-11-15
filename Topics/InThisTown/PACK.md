@@ -263,3 +263,30 @@ outside and the hall are two separate sets: give each its own Zone, far apart. B
 | `MansionHall` | The hall: pale plank floor, dark plank walls, a band of cobble under the roof, four big windows, bookshelves, a chandelier, and a long table with a map on it and five plank seats. Brings its own light | `at` (the floor under the middle of the table), `table` (false leaves the table and seats out) |
 | `MANSION_HALL` | The hall's measurements for staging: walls, table top height, the doorway (west wall), the five seats | |
 | `PlankSeat` | A plank block with a back | `position`, `turn` |
+
+## The siege — `siege.tsx`
+
+Everything Monster Village part four built to attack a castle at night. It was rebuilt after the owner's review
+(2026-11-15: "quality is degrading"), so every piece here is the version that answers a fault he named. Import from
+`Topics/InThisTown`; how each is used, shot by shot, is in `reference/monster-village-part-4/source/`.
+
+| Piece | What it is | The rule it was built to |
+|---|---|---|
+| `Horde` | An army of pillagers in rows, marching: crossbows, torches, banners, vindicators with axes, evokers with arms up, witches, and (`beasts`) ravagers. `position` (front row, middle), `t`, `rows`, `cols`, `width`, `gap`, `adv`, `fan`, `seed` | **Every one is a real `Pillager`.** No grey boxes behind two actors. About 150 is fine for a three second shot |
+| `WatchTower` | A lookout tower with a floor every 3.3 m: ladders, a lamp and furniture on each, walls below, open sides above, a deck and a flag on top | **A building has an inside.** Cut the castle wall where it stands, or the rooms are full of wall |
+| `spyglassPose`, `spyglassAt`, `Spyglass` | Both arms up, and the glass at the eye between the hands | **Somebody who uses a thing uses his arms** |
+| `SpyMask`, `spyLook` | What the glass sees: black round a circle, a brass rim, a cross hair, for a still camera with fov 30 tipped `down` | Level (0.1) for trees, down (0.2) for a field of people |
+| `Boom`, `TNT` | An explosion (flash, fire, stones thrown along `dir`, smoke) and the block that makes it | **Smoke must not hide the shot**: `smoke` is 0.2 or less |
+| `Ravager`, `Vex`, `Witch`, `Axe`, `HandTorch`, `HandBanner` | The beasts and what pillagers carry (the last three are `Pillager` children) | A ravager's `jaw` and `head` move: use them |
+| `Bush`, `Key`, `LitWindow`, `Web` | Small things | |
+| `Skeleton` `jaw` (in `monsters.tsx`) | 0–1: the lower jaw is its own piece and swings down off the skull | "His jaw wide open" has to be a jaw, open |
+
+Two ways of shooting that came out of the same review (they are shots, not components: copy them from
+`reference/monster-village-part-4/source/scene1.tsx`):
+
+- **Through somebody's eyes** (`3.slow`, `3.bam`): the camera is at his eye height on his path, his own hand and
+  sword are drawn at the bottom of the picture, and the thing that jumps out comes to within a metre of the lens.
+- **A fight is one cut per blow** (`5.clash`, five cuts in 3.4 seconds): each of them runs at the lens, then the
+  fist, then the jaw, then everybody thrown in the air. A golem is 6 m tall: the camera has to be 10 m off and above
+  the cage roofs, or the picture is a white wall.
+
