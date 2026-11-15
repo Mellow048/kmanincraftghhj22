@@ -151,7 +151,7 @@ export const scene8 = storyScene(timing, {
       note: "From in front, low: he swims harder than he has ever swum, and the water does not care about effort.",
       stage: () => (
         <>
-          <Crawling at={[A + 6, -0.02, 1]} turn={Math.PI / 2} />
+          <Crawling at={[A + 6, 0.5, 1]} turn={Math.PI / 2} />
           <Splash at={[A + 6.3, 0.05, 1]} size={0.2} count={10} seed={103} />
         </>
       ),
@@ -241,7 +241,7 @@ export const scene8 = storyScene(timing, {
       note: "The owner's ending shot: straight down, on the white tiles, arms out, a wet red shirt and a number that says sixty-six. He does not move.",
       stage: () => (
         <>
-          <Hero position={[A + 10, 0, -7.8]} rotationY={1.2} animation="lie" face="sad" />
+          <Hero position={[A + 10, -0.22, -7.8]} rotationY={1.2} animation="lie" face="sad" />
           <Splash at={[A + 10, 0.02, -7.3]} size={0.08} count={4} seed={109} />
         </>
       ),

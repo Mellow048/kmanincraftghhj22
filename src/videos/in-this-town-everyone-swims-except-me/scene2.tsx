@@ -80,13 +80,13 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.sink",
-      ...cam.push({ on: [P + 0.9, 0.1, 5.2], dist: 4.4, to: 3.4, yaw: 100, pitch: 6, fov: 42 }),
+      ...cam.push({ on: [P + 0.9, 0.2, 5.2], dist: 4.6, to: 3.6, yaw: 100, pitch: 3, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "Side on, water line through the frame: head above, legs already two stones going down. Show the split, not the feeling.",
       stage: () => (
         <>
-          <Hero position={[P + 0.9, -1.35, 5.5]} rotationY={0.4} animation="fall" face="scared" />
+          <Hero position={[P + 0.9, -0.95, 5.5]} rotationY={0.4} animation="fall" face="scared" />
         </>
       ),
     },
@@ -201,7 +201,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.breath",
-      ...cam.orbit({ on: [P + 2.1, 0.6, 7.2], dist: 2.4, yaw: -40, pitch: 10, yawTo: -18, fov: 36 }),
+      ...cam.orbit({ on: [P + 2.1, 0.55, 7.2], dist: 3.3, yaw: -40, pitch: 18, yawTo: -16, distTo: 2.8, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "Low and tilted, at his head height: on hands and knees, coughing water onto his own hands. No line of dialogue is as wet as this shot.",

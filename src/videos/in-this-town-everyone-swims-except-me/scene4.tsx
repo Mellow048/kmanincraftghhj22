@@ -86,7 +86,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.taste",
-      ...cam.orbit({ on: [P + 2.3, 0.5, 7.0], dist: 1.8, yaw: -24, pitch: 22, yawTo: -4, fov: 36 }),
+      ...cam.orbit({ on: [P + 2.3, 0.6, 7.0], dist: 2.7, yaw: -24, pitch: 18, yawTo: -2, distTo: 2.2, fov: 38 }),
       zone: "pool",
       look: "overworld-day",
       note: "Close and above: he spits pool water onto the tiles and watches it, because his mouth tastes of the whole town's summer.",

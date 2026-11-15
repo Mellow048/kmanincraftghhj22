@@ -36,6 +36,8 @@ export const scene5 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[0.4, 0, 2.6]} rotationY={Math.PI + 0.3} animation="idle" face="surprised" headYaw={0.5} />
+          <pointLight position={[0.4, 2.1, 3.4]} color="#9fb8d8" intensity={7} distance={12} decay={2} />
+          <pointLight position={[0.4, 1.2, 1.4]} color="#ffd9a0" intensity={4} distance={9} decay={2} />
         </>
       ),
     },
@@ -62,6 +64,8 @@ export const scene5 = storyScene(timing, {
           <Stranger position={[X, 0, 81.4]} rotationY={Math.PI} animation="hold">
             <Ring position={[0, 0, 0]} scale={1.15} glow={1.0} lit={2} />
           </Stranger>
+          <pointLight position={[X + 0.5, 1.5, 80.6]} color="#ffe3b0" intensity={10} distance={14} decay={2} />
+          <pointLight position={[X, 2.4, 78.2]} color="#8fa9cc" intensity={5} distance={12} decay={2} />
           <Hero
             position={travel(p, [X + 0.3, 0, 76.9], [X + 0.3, 0, 78.4])}
             rotationY={0}
@@ -108,21 +112,20 @@ export const scene5 = storyScene(timing, {
       note: "Pull back: the tall shape is simply not there any more. Only the boy, the lamp, and the ring already in his hand.",
       stage: () => (
         <>
-          <Hero position={[X, 0, 78.6]} rotationY={0.6} animation="idle" face="surprised" headYaw={-0.6} />
+          <Hero position={[X, 0, 78.6]} rotationY={0.6} animation="hold" face="surprised" headPitch={0.25} ring />
         </>
       ),
     },
     {
       cue: "5.cold",
-      ...cam.push({ on: [X + 0.32, 1.55, 78.3], dist: 0.85, to: 0.6, yaw: 22, pitch: 6, fov: 38 }),
+      ...cam.push({ on: [X + 0.52, 0.28, 78.77], dist: 1.35, to: 1.05, yaw: 30, pitch: 14, fov: 36 }),
       zone: "woods",
       look: "overworld-night",
       note: "A ring in a boy's palm, at the size of a ring: cold metal and three little buttons, humming with a light that has no source.",
       stage: () => (
         <>
-          <Ring position={[X + 0.32, 1.55, 78.3]} rotation={[0.35, 0.7, 0]} scale={2.2} glow={1.6} />
-          <pointLight position={[X + 0.32, 1.6, 78.6]} color="#ffd9a0" intensity={2.6} distance={3} decay={2} />
-          <Glow position={[X + 0.32, 1.55, 78.4]} size={0.7} color="#ffd9a0" opacity={0.55} />
+          <pointLight position={[X + 0.6, 0.5, 79.0]} color="#ffd9a0" intensity={3.2} distance={3.5} decay={2} />
+          <Glow position={[X + 0.52, 0.26, 78.85]} size={0.4} color="#ffd9a0" opacity={0.5} />
           <Hero position={[X, 0, 78.6]} rotationY={0.4} animation="hold" face="neutral" />
         </>
       ),

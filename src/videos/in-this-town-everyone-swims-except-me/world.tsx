@@ -17,7 +17,15 @@ import { Bleachers, DisplayCase, PLACE, Pool, Trophy } from "./kit";
 /** A lawn with rectangular holes in it, so a pool can be sunk into the ground without grass filling it. */
 type Rect = { x: number; z: number; w: number; d: number };
 
-const Lawn: React.FC<{ w: number; d: number; holes?: Rect[]; y?: number }> = ({ w, d, holes = [], y = -0.55 }) => {
+const Lawn: React.FC<{ w: number; d: number; holes?: Rect[]; y?: number; h?: number; kind?: "grass" | "stoneBrick"; tint?: string }> = ({
+  w,
+  d,
+  holes = [],
+  y = -0.55,
+  h = 1,
+  kind = "grass",
+  tint,
+}) => {
   const cut = holes.map((h) => ({ x0: h.x - h.w / 2, x1: h.x + h.w / 2, z0: h.z - h.d / 2, z1: h.z + h.d / 2 }));
   const zs = Array.from(new Set([-d / 2, d / 2, ...cut.flatMap((h) => [Math.max(-d / 2, h.z0), Math.min(d / 2, h.z1)])])).sort(
     (a, b) => a - b,
@@ -42,7 +50,7 @@ const Lawn: React.FC<{ w: number; d: number; holes?: Rect[]; y?: number }> = ({ 
   return (
     <>
       {slabs.map((sl, i) => (
-        <Vox key={i} kind="grass" position={[sl.x, y, sl.z]} size={[sl.w, 1, sl.d]} />
+        <Vox key={i} kind={kind} tint={tint} position={[sl.x, y, sl.z]} size={[sl.w, h, sl.d]} />
       ))}
     </>
   );
@@ -134,7 +142,9 @@ const PoolZone: React.FC = () => (
   <group position={PLACE.pool}>
     <Lawn w={64} d={48} holes={[{ x: 0, z: 0, w: 31.8, d: 18.8 }]} />
     <FarGround holes={[{ x: 0, z: 0, w: 31.8, d: 18.8 }]} />
-    <Treeline r0={46} r1={72} n={26} seed={4} />
+    {/* a town pool sits in a tiled yard, not in a meadow: grass at the water's edge reads as a pond */}
+    <Lawn kind="stoneBrick" tint="#e7e1d4" y={-0.18} h={0.32} w={150} d={150} holes={[{ x: 0, z: 0, w: 31.8, d: 18.8 }]} />
+    <Treeline r0={86} r1={118} n={26} seed={4} />
     <Pool length={25} width={12} lanes={6} />
     {/* The fence, with a gate on the west side. */}
     <Vox kind="log" position={[-22, 0.5, -18]} size={[0.2, 1, 0.2]} />
@@ -218,7 +228,21 @@ const Arena: React.FC = () => (
         { x: 116, z: 10, w: 66.8, d: 32.8 },
       ]}
     />
-    <Treeline r0={78} r1={110} n={34} seed={9} />
+    <Treeline r0={128} r1={168} n={34} seed={9} />
+    {/* the meet is on a tiled apron: three pools, one plaza */}
+    <Lawn
+      kind="stoneBrick"
+      tint="#e7e1d4"
+      y={-0.18}
+      h={0.32}
+      w={230}
+      d={170}
+      holes={[
+        { x: 0, z: 0, w: 31.8, d: 18.8 },
+        { x: 52, z: -8, w: 46.8, d: 24.8 },
+        { x: 116, z: 10, w: 66.8, d: 32.8 },
+      ]}
+    />
     <Lawn
       w={180}
       d={120}

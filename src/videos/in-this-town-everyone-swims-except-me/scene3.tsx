@@ -40,7 +40,7 @@ export const scene3 = storyScene(timing, {
       note: "The room at night, lit only by the phone: him on the bed, the screen the brightest thing in the town. The idea arrives as a small blue rectangle.",
       stage: () => (
         <>
-          <Hero position={[121.1, 0.34, 39.7]} rotationY={0} animation="lie" face="sleepy" />
+          <Hero position={[122.7, 0.34, 39.9]} rotationY={0} animation="lie" face="sleepy" />
           <Phone position={[121.1, 0.66, 39.95]} rotation={[-0.5, 0, 0]} scale={1} />
         </>
       ),
@@ -54,7 +54,7 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Phone position={[120.9, 0.66, 39.95]} rotation={[-0.35, 0.06, 0]} word="LEARN FAST" />
-          <Hero position={[121.1, 0.34, 39.7]} rotationY={0} animation="lie" face="sleepy" />
+          <Hero position={[122.7, 0.34, 39.9]} rotationY={0} animation="lie" face="sleepy" />
         </>
       ),
     },
