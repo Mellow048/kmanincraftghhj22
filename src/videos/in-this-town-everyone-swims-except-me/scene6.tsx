@@ -56,13 +56,13 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.alone",
-      ...cam.push({ on: [P, 1.0, 2], dist: 12, to: 14, yaw: 142, pitch: 15, fov: 42 }),
+      ...cam.push({ on: [P - 4, 1.1, 4], dist: 13, to: 15, yaw: 24, pitch: 18, fov: 44 }),
       zone: "pool",
       look: "overworld-day",
       note: "The pool with nobody in it: no friend on the deck, no kids at the fence. One red shirt at the gate, all the water to himself.",
       stage: () => (
         <>
-          <Hero position={[P - 10.5, 0, 12.4]} rotationY={-1.1} animation="walk" animDistance={0.6} face="worried" />
+          <Hero position={[P - 12.2, 0, 8.6]} rotationY={-1.5} animation="walk" animDistance={0.6} face="worried" />
         </>
       ),
     },
