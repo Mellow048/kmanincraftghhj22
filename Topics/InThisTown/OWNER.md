@@ -138,3 +138,7 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   of a golem losing an arm could not be read (shot again from the side, with the town laughing behind); people cut in
   half by the edge of the frame in six shots; a face light close to sand burns the ground white. Look at the mp4, not
   only at the stills, before saying a film is done.
+  A second pass the same day, rendered a third time: a shut umbrella carried level crossed the picture as a blue bar
+  (it now stands by his leg like a stick); the "sad" face seen from below is two black bars (use "frown"); a low shot
+  must cut a person at the waist, not through the face. Still weak, left as they are: `8.night` and the first second
+  of `13.gate` are very dark, in `13.snow` the caption crosses the pumpkin, in `7.puddle` the boy is a dark shoulder.
