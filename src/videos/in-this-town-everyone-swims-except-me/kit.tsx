@@ -82,8 +82,28 @@ type A = Partial<MinecraftAvatarProps> & { ring?: boolean };
  * A ring on the right hand. It is parented to the hand in MinecraftAvatar, so it stays on the finger
  * through every gesture instead of floating where a hand used to be.
  */
-const Worn: React.FC<{ lit?: 0 | 1 | 2 | 3; tint?: string }> = ({ lit = 3, tint }) => (
-  <Ring position={[0, -0.01, 0]} scale={1.15} glow={0.9} lit={lit} tint={tint} />
+const Worn: React.FC<{ lit?: 0 | 1 | 2 | 3; tint?: string }> = ({ lit = 3, tint = "#e6c068" }) => (
+  // A band wide enough to close around the arm it is worn on: a finger-sized hoop on a blocky
+  // Minecraft arm has to sit in the air beside it, which is what the owner rightly called out.
+  <group position={[0, 0.09, 0]} rotation={[Math.PI / 2, 0, 0]}>
+    <mesh>
+      <torusGeometry args={[0.117, 0.021, 10, 26]} />
+      <meshStandardMaterial color={tint} metalness={0.95} roughness={0.2} emissive="#4a3408" emissiveIntensity={1.1} />
+    </mesh>
+    {[0, 1, 2].map((i) => {
+      const a = -0.85 + i * 0.62;
+      return (
+        <mesh key={i} position={[Math.cos(a) * 0.117, Math.sin(a) * 0.117, 0]}>
+          <boxGeometry args={[0.017, 0.017, 0.017]} />
+          <meshStandardMaterial
+            color={i === 0 ? "#e2574a" : i === 1 ? "#e8d27a" : "#7fd4a0"}
+            emissive={i === lit - 1 ? "#fff0c0" : "#000000"}
+            emissiveIntensity={i === lit - 1 ? 1.8 : 0}
+          />
+        </mesh>
+      );
+    })}
+  </group>
 );
 
 /**
