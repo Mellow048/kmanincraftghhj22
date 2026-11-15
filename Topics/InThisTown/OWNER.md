@@ -121,3 +121,14 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   voice service refused the clip; the picture shows what the words do not. He has not reviewed the film. Script
   drafts for race part 2 and Monster Village part 4 are in `outlines/`, both the agent's stories, waiting for his yes.
 - Nobody has listened to either new mix. Monster Village 1, 2 and Robot at 18 still have the `offset` sound fault.
+- **2026-11-15, the snow golem film (part 1).** He had no outline ("give me idea, i dunno what to say ngl"). The first
+  five ideas were turned down: "these dont sound good, try looking at the ref ideas". All five were one odd thing
+  happening to one kid. The six he then chose from were shaped like the references: **a rule for the whole town, and
+  the teller is the one it went wrong for**. He took "every kid got an iron golem at ten. Mine was made of snow."
+  Offer ideas in that shape first.
+- **2026-11-15, the voice.** He wants to hear the voice before a film is built ("first let me hear the tts"), and he
+  wants the audition at once, not clips made first. Three voices were turned down: "sounds like a cheap tts generator
+  and has pauses". What he asked for: "a natural american voice, male, no accent, not old, not too much serious". He
+  picked the fourth (`voice-03` of that session; the clips are in
+  `public/audio/in-this-town-every-kid-got-an-iron-golem/raw/`). He has not said what he thinks of the full track, the
+  mix or the film: nobody has listened to the mix.
