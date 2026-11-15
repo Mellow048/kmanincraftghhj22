@@ -56,13 +56,15 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "6.wall",
-      ...cam.push({ on: [22, 3.0, 2.0], dist: 9.6, to: 5.6, yaw: -72, pitch: -13, fov: 50 }),
+      ...cam.push({ on: [22, 3.15, 2.0], dist: 8.5, to: 4.4, yaw: -66, pitch: -8, fov: 50 }),
       shake: 0.022,
       zone: "gate",
       look: "lantern-night",
       note: "'Something was on the wall': from the bottom of the wall, looking up. Three shapes standing on top of it, black against the moon, and the golem's head at the left edge, turning.",
       stage: (t) => (
         <>
+          {/* a torch on the wall, so they are shapes in the dark and not dark shapes */}
+          <pointLight position={[22.1, 4.1, 2.0]} color="#ffb060" intensity={34} distance={13} decay={2} />
           <Zombie position={[21.4 + 0.55 * t, 3.0, 0.2]} rotationY={SOUTH - 0.4} phase={0.4} mood="angry" />
           <Skeleton position={[21.8 + 0.4 * t, 3.0, 2.6]} rotationY={SOUTH + 0.2} phase={1.7} />
           <Zombie position={[21.2 + 0.3 * t, 3.0, 4.9]} rotationY={SOUTH + 0.5} phase={2.6} baby />

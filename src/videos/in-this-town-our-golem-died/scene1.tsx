@@ -52,7 +52,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.back",
-      ...cam.push({ on: [-3.4, 1.45, 3.0], dist: 8.6, to: 2.9, yaw: 26, pitch: 5, fov: 46 }),
+      ...cam.push({ on: [-3.4, 1.45, 3.0], dist: 8.6, to: 4.6, yaw: 18, pitch: 5, fov: 46 }),
       shake: 0.012,
       handheld: 0.008,
       zone: "village",
