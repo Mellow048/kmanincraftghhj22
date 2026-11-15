@@ -10,9 +10,9 @@ import { Driver, X0 } from "./scene3";
 /** The three in front: first place in the middle, a friend a step behind on each side. */
 const Three: React.FC<{ x: number; t: number; back?: number; face?: "ouch" | "wow" | "uneasy" | "calm"; rival?: boolean; run?: boolean }> = ({ x, t, back = 0, face = "ouch", rival = true, run = false }) => (
   <>
-    {rival ? <Rival position={DS(x, 0, ME_Z)} rotationY={E} animation={run ? "run" : "stagger"} animDistance={x} face={face} headYaw={2.0 * back} /> : null}
-    <Pal n={0} position={DS(x - 1.1, 0, ME_Z - 1.1)} rotationY={E} animation={run ? "run" : "stagger"} animDistance={x + 1} face={face} headYaw={-2.0 * back} />
-    <Pal n={1} position={DS(x - 1.4, 0, ME_Z + 1.1)} rotationY={E} animation={run ? "run" : "stagger"} animDistance={x + 2} face={face} headYaw={2.0 * back} />
+    {rival ? <Rival position={DS(x, 0, ME_Z)} rotationY={E} animation={run ? "run" : "run"} animDistance={x} face={face} headYaw={2.0 * back} /> : null}
+    <Pal n={0} position={DS(x - 1.1, 0, ME_Z - 1.1)} rotationY={E} animation={run ? "run" : "run"} animDistance={x + 1} face={face} headYaw={-2.0 * back} />
+    <Pal n={1} position={DS(x - 1.4, 0, ME_Z + 1.1)} rotationY={E} animation={run ? "run" : "run"} animDistance={x + 2} face={face} headYaw={2.0 * back} />
     <Sweat position={DS(x - 1.1, 1.6, ME_Z - 1.1)} t={t} much={0.6} />
   </>
 );
@@ -49,13 +49,13 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.feet",
-      ...cam.truck({ on: DS(X0.catch + 5, 0.3, ME_Z + 0.3), dist: 3.3, yaw: 24, pitch: 7, fov: 44, by: [VJ * 3.27, 0, 0] }),
+      ...cam.truck({ on: DS(X0.feet, 0.3, ME_Z + 0.3), dist: 3.3, yaw: 24, pitch: 7, fov: 44, by: [VJ * 3.27, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,
       note: "His two shoes in the sand, running: BLUE. The lens comes back and up: the two grey friends, running next to him now, look down at the blue, look at each other, and shrug.",
       stage: (t) => {
-        const x = X0.catch + 5 + VJ * t;
+        const x = X0.feet + VJ * t;
         const not = w("8.feet", "friends", 2.2);
         return (
           <>
@@ -70,13 +70,13 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.maybe",
-      ...cam.truck({ on: DS(X0.catch + 18, 1.45, ME_Z - 0.2), dist: 2.9, yaw: 58, pitch: 1, fov: 42, by: [VJ * 3.03, 0, 0] }),
+      ...cam.truck({ on: DS(X0.maybe, 1.45, ME_Z - 0.2), dist: 2.9, yaw: 58, pitch: 1, fov: 42, by: [VJ * 3.03, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,
       note: "The runner in black, close, running, his head turned right round to the boy behind his shoulder. His eyes go down to the shoes and up again, and narrow. HE PAINTED THEM.",
       stage: (t) => {
-        const x = X0.catch + 18 + VJ * t;
+        const x = X0.maybe + VJ * t;
         const say = w("8.maybe", "maybe", 0.9);
         return (
           <>
@@ -89,18 +89,18 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.boom",
-      ...cam.truck({ on: DS(X0.catch + 30, 1.1, ME_Z), dist: 7.5, yaw: 14, pitch: 8, fov: 52, by: [VJ * 3.13, 0, 0] }),
+      ...cam.truck({ on: DS(X0.boom, 1.1, ME_Z), dist: 7.5, yaw: 14, pitch: 8, fov: 52, by: [VJ * 3.13, 0, 0] }),
       ease: "linear",
       shake: 0.012,
       zone: "desert",
       look: DAY,
       note: "Side on. The runner in black drops to one knee in the middle of running, hits the side of his shoe with his fist, and on BOOM he is a white line across the desert and a wall of sand. The two friends and the boy are blown back a step, arms over their faces.",
       stage: (t) => {
-        const x = X0.catch + 30 + VJ * t;
+        const x = X0.boom + VJ * t;
         const boom = w("8.boom", "boom", 1.9);
         const pr = w("8.boom", "pressed", 1.1);
         const d = Math.max(0, t - boom);
-        const stopx = X0.catch + 30 + VJ * Math.min(t, pr - 0.3) + 1.5;
+        const stopx = X0.boom + VJ * Math.min(t, pr - 0.3) + 1.5;
         const rx = d > 0 ? stopx + d * 60 : t > pr - 0.3 ? stopx : x + 1.5;
         const hit = bump(t, boom, 0.7);
         return (
@@ -119,13 +119,13 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.behind",
-      ...cam.truck({ on: DS(X0.catch + 44, 1.2, ME_Z), dist: 6.4, yaw: 30, pitch: 8, fov: 50, by: [VJ * 4.0, 0, 0] }),
+      ...cam.truck({ on: DS(X0.behind, 1.2, ME_Z), dist: 6.4, yaw: 30, pitch: 8, fov: 50, by: [VJ * 4.0, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,
       note: "The two friends, running side by side, red shoes, looking up the empty track where he went. The boy's hand goes half way to his own shoe, and comes back. He drops in a step behind the two of them, and stays there, a blue-shoed runner minding his own business.",
       stage: (t) => {
-        const x = X0.catch + 44 + VJ * t;
+        const x = X0.behind + VJ * t;
         const stay = w("8.behind", "stayed", 2.4);
         const k = bump(t, 0.9, 1.1);
         const mx = x + 0.6 - 2.3 * ease(ramp(t, stay - 0.4, stay + 0.4));
@@ -142,7 +142,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.van",
-      ...cam.truck({ on: DS(4, 1.25, ME_Z - 1.4), dist: 6.2, yaw: 6, pitch: 6, fov: 48, by: [VJ * 3.13, 0, 0] }),
+      ...cam.truck({ on: DS(X0.van2, 1.25, ME_Z - 1.4), dist: 6.2, yaw: 6, pitch: 6, fov: 48, by: [VJ * 3.13, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,

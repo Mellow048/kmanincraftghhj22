@@ -12,7 +12,7 @@ Topic: `Topics/InThisTown`. Read `Topics/InThisTown/OWNER.md` and `SCRIPT.md` be
 - The teller wears YELLOW. First place wears BLACK with white hair. His two friends wear GREY with white hair.
 - The shoes are RED until 3.brush. From then on the teller's are BLUE in every shot; the other three stay red.
 - How the agent read three things (in the outline file): the kid who outran him is the baby villager; the buttons are
-  first = light speed, second = too fast, third = just right; "the cameras" are drones over the runners.
+  first = light speed, second = too fast (the one first place and his friends race on), third = just right; "the cameras" are drones over the runners.
 - What the agent added: "I was not getting in a van"; the van driver's mouth falling open.
 
 | Planted | Pays off |

@@ -14,7 +14,7 @@ const MYLINE: Vec3 = R(FRONT_X, 0, ME_Z);
 /** Metres a second: the pack, and him once the shoes are on. */
 export const V = 5.2;
 /** Where the pack is when each stretch of the desert starts (zone x of the teller). */
-export const X0 = { river: LINE2 + 4.5, desert: -20, tired: -6, van: 2, press: 12, jog: 14, catch: 30 };
+export const X0 = { river: LINE2 + 4.5, desert: -62, tired: -50, van: -28, press: -8, jog: -6, run: 4, catch: 12, feet: 17, maybe: -40, boom: -25, behind: -10, van2: 4 };
 /** The van's driver: a villager in white, turned to whoever he is talking to. */
 export const Driver: React.FC<{ turn?: number; gape?: number }> = ({ turn = 0, gape = 0 }) => (
   <>
@@ -69,7 +69,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: R(FRONT_X + 0.1, 0.55, TRIO_Z[0]), dist: 4.6, to: 3.4, yaw: 62, pitch: 9, fov: 46 }),
       zone: "river",
       look: DAY,
-      note: "The front row, from just past the line. The runner in black bends down to his shoe, then the grey one on each side of him: three hands on three shoes, and three green lights come on. The boy, next to them, turns his head and watches.",
+      note: "The front row, from just past the line. The runner in black bends down to his shoe, then the grey one on each side of him: three hands on three shoes, and three orange lights come on: the middle button, TOO FAST. The boy, next to them, turns his head and watches.",
       stage: (t) => {
         const b = w("5.bend", "bend", 1.4);
         const pr = w("5.bend", "pressed", 2.3);
@@ -80,7 +80,7 @@ export const scene3 = storyScene(timing, {
             {TRIO_Z.map((z, i) => (
               <Glint key={i} position={R(FRONT_X + 0.25, 0.15, z + 0.1)} t={t - pr - i * 0.12} size={0.8} />
             ))}
-            <Board post={false} position={R(FRONT_X + 0.5, 0.7, TRIO_Z[1])} rotationY={1.1} text="LIGHT SPEED" scale={0.3 * pop(t, pr + 0.1)} color="#15151a" ink="#4dff6a" />
+            <Board post={false} position={R(FRONT_X + 0.5, 0.7, TRIO_Z[1])} rotationY={1.1} text="TOO FAST" scale={0.3 * pop(t, pr + 0.1)} color="#15151a" ink="#ffb030" />
           </>
         );
       },
@@ -216,7 +216,7 @@ export const scene3 = storyScene(timing, {
         const cup = w("6.tired", "water", 2.2);
         return (
           <>
-            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="stagger" animDistance={x} face="ouch" headPitch={0.3} />
+            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="run" animDistance={x} face="ouch" headPitch={0.3} />
             <Sweat position={DS(x, 1.6, ME_Z)} t={t} much={1} />
             <Pack x={DS(x, 0, 0)[0]} z={DS(0, 0, 0)[2]} d={x} ahead={8} n={15} mode="tired" t={t} />
             <group scale={1}>
@@ -238,10 +238,10 @@ export const scene3 = storyScene(timing, {
         const fx = x + 17 + 0.3 * t;
         return (
           <>
-            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="stagger" animDistance={x} face="ouch" />
+            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="run" animDistance={x} face="ouch" />
             <Pack x={DS(x, 0, 0)[0]} z={DS(0, 0, 0)[2]} d={x} ahead={4} n={9} mode="tired" t={t} hole={1.6} />
-            <Rival position={DS(fx, 0, ME_Z)} rotationY={E} animation="stagger" animDistance={fx} face="ouch" />
-            <Pal n={0} position={DS(fx - 1.2, 0, ME_Z - 1.1)} rotationY={E} animation="stagger" animDistance={fx + 1} face="ouch" />
+            <Rival position={DS(fx, 0, ME_Z)} rotationY={E} animation="run" animDistance={fx} face="ouch" />
+            <Pal n={0} position={DS(fx - 1.2, 0, ME_Z - 1.1)} rotationY={E} animation="run" animDistance={fx + 1} face="ouch" />
             <Pal n={1} position={DS(fx - 1.6, 0, ME_Z + 1.1)} rotationY={E} animation="ache" face="ouch" />
             <Drone position={DS(fx - 1, 3.2, ME_Z)} yaw={E} tilt={0.9} t={t} scale={2} />
             <Puffs position={DS(fx - 1, 0.1, ME_Z)} color="#e2cf9a" count={6} rise={0.5} spread={1.5} size={0.18} opacity={0.5} />
@@ -262,7 +262,7 @@ export const scene3 = storyScene(timing, {
         const vx = x - 9 * (1 - ease(ramp(t, 0, say - 0.2))) + 0.3;
         return (
           <>
-            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="stagger" animDistance={x} face="ouch" headYaw={0.7 * ease(ramp(t, say - 0.3, say))} />
+            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="run" animDistance={x} face="ouch" headYaw={0.7 * ease(ramp(t, say - 0.3, say))} />
             <Sweat position={DS(x, 1.6, ME_Z)} t={t} much={0.7} />
             <Pack x={DS(x, 0, 0)[0]} z={DS(0, 0, 0)[2] + 1.6} d={x} ahead={3} n={7} mode="tired" t={t} hole={2.2} />
             <Van position={DS(vx, 0, ME_Z - 2.4)} d={vx} driver={<Driver turn={ease(ramp(t, say - 0.4, say))} gape={0.25 * Math.abs(Math.sin(t * 9)) * (t > say ? 1 : 0)} />} />
@@ -283,7 +283,7 @@ export const scene3 = storyScene(timing, {
         const yrs = w("7.angry", "years", 1.6);
         return (
           <>
-            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="stagger" animDistance={x} face={t > 0.5 ? "angry" : "ouch"} headPitch={-0.1} />
+            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="run" animDistance={x} face={t > 0.5 ? "angry" : "ouch"} headPitch={-0.1} />
             <Van position={DS(x + 0.3, 0, ME_Z - 2.4)} d={x} driver={<Driver turn={1} />} />
             <Bubble text="SLOWEST" position={DS(x - 0.2, 2.25, ME_Z)} rotationY={0.9} scale={0.4 * pop(t, yrs)} />
           </>
@@ -357,13 +357,13 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.truck({ on: DS(X0.catch - 8 + 1.0, 1.8, ME_Z - 2.0), dist: 3.4, yaw: 20, pitch: 3, fov: 44, by: [2.2 * 2.23, 0, 0] }),
+      ...cam.truck({ on: DS(X0.run + 1.0, 1.8, ME_Z - 2.0), dist: 3.4, yaw: 20, pitch: 3, fov: 44, by: [2.2 * 2.23, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,
       note: "The van, close, the driver at his wheel. The boy goes past his window, running, properly running, sand flying. The driver's head goes round after him and his mouth drops open.",
       stage: (t) => {
-        const vx = X0.catch - 8 + 2.2 * t;
+        const vx = X0.run + 2.2 * t;
         const pass = 0.9;
         const x = vx - 4.5 + (t / pass) * 5.5;
         const seen = ease(ramp(t, pass - 0.2, pass + 0.2));
