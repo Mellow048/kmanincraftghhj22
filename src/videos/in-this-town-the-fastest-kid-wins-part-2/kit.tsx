@@ -51,10 +51,10 @@ export const Pal: React.FC<A & { n: number }> = ({ n, ...p }) => (
 export const R = (x: number, y: number, z: number): Vec3 => at(RIVER, x, y, z);
 export const DS = (x: number, y: number, z: number): Vec3 => at(DESERT, x, y, z);
 /** The tree he hides behind, in the rest camp, and where he stands behind it (north of it, out of sight of the log). */
-export const TREE: Vec3 = R(-16.2, 0, -4.4);
-export const HIDE: Vec3 = R(-16.2, 0, -5.3);
+export const TREE: Vec3 = R(-24.5, 0, -4.5);
+export const HIDE: Vec3 = R(-24.5, 0, -5.4);
 /** Where stage two starts: a line across the track, just before the first bridge. */
-export const LINE2 = -11.4;
+export const LINE2 = -0.5;
 /** The end of stage two, in the desert: the line, and the water table. */
 export const END2 = 38;
 export const TABLE2: Vec3 = DS(END2 + 4.5, 0, -1.6);

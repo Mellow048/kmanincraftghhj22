@@ -38,7 +38,7 @@ export const scene1 = storyScene(timing, {
         const bx = STAND[0] - 9 + Math.max(0, t - slow + 0.5) * 11;
         return (
           <>
-            <Me blue={false} shoes={undefined} position={[STAND[0] - 1.3, 0, STAND[2] + 1.1]} rotationY={t > slow ? 0.1 : 2.2} animation={t > slow ? "shrug" : "idle"} face={t > slow ? "frown" : "smile"} headPitch={t > slow ? 0 : -0.35} />
+            <Me blue={false} shoes={undefined} position={[STAND[0] - 0.95, 0, STAND[2] + 0.9]} rotationY={t > slow ? 0.1 : 2.2} animation={t > slow ? "shrug" : "idle"} face={t > slow ? "frown" : "smile"} headPitch={t > slow ? 0 : -0.35} />
             <Baby position={[bx, hop(t, slow, 0.15, 0.3), STAND[2] + 2.3]} rotationY={E} walk={bx * 2} />
             <Puffs position={[bx - 0.5, 0.05, STAND[2] + 2.3]} color="#b79d63" count={4} rise={0.3} spread={0.3} size={0.1} speed={2} opacity={0.6} />
             <Glint position={[STAND[0], 1.7, STAND[2] + 0.3]} t={t - 0.5} size={1.2} />
@@ -208,7 +208,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.too",
-      ...cam.push({ on: [TRIO[1][0], 0.2, TRIO[1][2] + 0.3], dist: 2.9, to: 2.3, yaw: 5, pitch: 7, fov: 40 }),
+      ...cam.push({ on: [TRIO[1][0], -0.2, TRIO[1][2] + 0.3], dist: 3.0, to: 2.5, yaw: 5, pitch: 12, fov: 40 }),
       zone: "river",
       look: DAY,
       note: "Six feet in a row on the grass, close: six red shoes with a green light on the side of every right one. A glint runs along them, one, two, three.",

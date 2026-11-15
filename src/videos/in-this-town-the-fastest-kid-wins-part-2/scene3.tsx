@@ -14,7 +14,7 @@ const MYLINE: Vec3 = R(FRONT_X, 0, ME_Z);
 /** Metres a second: the pack, and him once the shoes are on. */
 export const V = 5.2;
 /** Where the pack is when each stretch of the desert starts (zone x of the teller). */
-export const X0 = { river: LINE2 + 6, desert: -20, tired: -6, van: 2, press: 12, jog: 14, catch: 30 };
+export const X0 = { river: LINE2 + 4.5, desert: -20, tired: -6, van: 2, press: 12, jog: 14, catch: 30 };
 /** The van's driver: a villager in white, turned to whoever he is talking to. */
 export const Driver: React.FC<{ turn?: number; gape?: number }> = ({ turn = 0, gape = 0 }) => (
   <>
@@ -94,7 +94,6 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Grid t={t} meFace="fear" />
-          <Sweat position={up(MYLINE, 1.5)} t={t} much={0.5} />
         </>
       ),
     },
@@ -132,7 +131,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.forgot",
-      ...cam.truck({ on: R(X0.river, 0.2, ME_Z), dist: 1.7, yaw: 14, pitch: 8, fov: 40, by: [V * 2.53, 0, 0] }),
+      ...cam.truck({ on: R(X0.river, 0.3, ME_Z), dist: 2.7, yaw: 14, pitch: 8, fov: 40, by: [V * 2.53, 0, 0] }),
       ease: "linear",
       zone: "river",
       look: DAY,
@@ -143,7 +142,7 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <Me position={R(x, 0, ME_Z)} rotationY={E} animation="run" animDistance={x} face="uneasy" />
-            <Board post={false} position={R(x + 0.1, 0.62, ME_Z + 0.3)} text="JUST RIGHT" scale={0.2 * pop(t, third - 0.2)} color="#15151a" ink="#6fb8ff" />
+            <Board post={false} position={R(x + 0.1, 0.62, ME_Z + 0.3)} text="JUST RIGHT" scale={0.13 * pop(t, third - 0.2)} color="#15151a" ink="#6fb8ff" />
             <Puffs position={R(x - 0.5, 0.05, ME_Z)} color="#8a9a5a" count={3} rise={0.2} spread={0.3} size={0.08} speed={2} opacity={0.5} />
           </>
         );
@@ -170,13 +169,13 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.ninth",
-      ...cam.truck({ on: R(X0.river + 34, 1.2, LANE), dist: 9.5, yaw: 10, pitch: 10, fov: 52, by: [V * 1.93, 0, 0] }),
+      ...cam.truck({ on: R(X0.river + 26, 1.2, LANE), dist: 9.5, yaw: 10, pitch: 10, fov: 52, by: [V * 1.93, 0, 0] }),
       ease: "linear",
       zone: "river",
       look: DAY,
       note: "The bunch, side on: he is one runner among the rest, eight in front of him, the same speed as all of them. 9th comes up over his head.",
       stage: (t) => {
-        const x = X0.river + 34 + V * t;
+        const x = X0.river + 26 + V * t;
         return (
           <>
             <Me position={R(x, 0, ME_Z)} rotationY={E} animation="run" animDistance={x} face="calm" />
@@ -358,7 +357,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.truck({ on: DS(X0.catch - 8, 1.45, ME_Z - 1.6), dist: 4.2, yaw: 20, pitch: 3, fov: 44, by: [2.2 * 2.23, 0, 0] }),
+      ...cam.truck({ on: DS(X0.catch - 8 + 1.0, 1.55, ME_Z - 2.0), dist: 3.4, yaw: 20, pitch: 3, fov: 44, by: [2.2 * 2.23, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,

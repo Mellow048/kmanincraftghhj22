@@ -49,7 +49,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.feet",
-      ...cam.truck({ on: DS(X0.catch + 5, 0.3, ME_Z + 0.3), dist: 2.2, yaw: 24, pitch: 7, fov: 44, by: [VJ * 3.27, 0, 0] }),
+      ...cam.truck({ on: DS(X0.catch + 5, 0.3, ME_Z + 0.3), dist: 3.3, yaw: 24, pitch: 7, fov: 44, by: [VJ * 3.27, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,
@@ -80,9 +80,9 @@ export const scene4 = storyScene(timing, {
         const say = w("8.maybe", "maybe", 0.9);
         return (
           <>
-            <Rival position={DS(x, 0, ME_Z - 0.5)} rotationY={E} animation="run" animDistance={x} face={t > say ? "angry" : "uneasy"} headYaw={1.7} headPitch={0.3 * bump(t, 0.1, 0.8)} />
+            <Rival position={DS(x, 0, ME_Z - 0.5)} rotationY={E} animation="run" animDistance={x} face={t > say ? "angry" : "uneasy"} headYaw={-1.2} headPitch={0.3 * bump(t, 0.1, 0.8)} />
             <Me position={DS(x - 1.5, 0, ME_Z + 0.7)} rotationY={E} animation="run" animDistance={x} face="smile" headYaw={-0.5} />
-            <Bubble text="HE PAINTED THEM." position={DS(x + 0.2, 2.4, ME_Z - 0.5)} rotationY={1.0} scale={0.4 * pop(t, say)} />
+            <Bubble text="HE PAINTED THEM." position={DS(x + 0.2, 2.4, ME_Z - 0.5)} rotationY={1.0} scale={0.27 * pop(t, say)} />
           </>
         );
       },
@@ -198,7 +198,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.places",
-      ...cam.push({ on: [LOG[0] - 0.6, 1.1, LOG[2]], dist: 6.0, to: 5.0, yaw: 8, pitch: 6, fov: 50 }),
+      ...cam.push({ on: [LOG[0] - 0.7, 1.1, LOG[2]], dist: 7.2, to: 6.4, yaw: 8, pitch: 6, fov: 50 }),
       zone: "desert",
       look: DAY,
       note: "The rest camp. The two grey friends are flat out on the log, one sitting with his head between his knees, one lying along it: 2nd and 3rd over them. Next to the log, on his feet, not even breathing hard, the runner in black: 1st.",
@@ -209,11 +209,11 @@ export const scene4 = storyScene(timing, {
             <Pal n={0} position={[LOG[0] - 0.7, 0.05, LOG[2] + 0.1]} rotationY={0} animation="sit" face="ouch" headPitch={0.6} />
             <Pal n={1} position={[LOG[0] + 0.6, 0.05, LOG[2] + 0.1]} rotationY={0} animation="sit" face="ouch" headPitch={-0.5} />
             <Sweat position={[LOG[0] - 0.7, 1.4, LOG[2]]} t={t} much={0.6} />
-            <Rival position={[LOG[0] - 2.6, 0, LOG[2] + 0.5]} rotationY={0.3} animation="idle" face="smug" />
+            <Rival position={[LOG[0] - 2.0, 0, LOG[2] + 0.6]} rotationY={0.3} animation="idle" face="smug" />
             <Place text="2nd" position={[LOG[0] - 0.7, 1.9, LOG[2]]} scale={0.5 * pop(t, ws[0])} />
             <Place text="3rd" position={[LOG[0] + 0.6, 1.9, LOG[2]]} scale={0.5 * pop(t, ws[1])} />
-            <Place text="1st" position={[LOG[0] - 2.6, 2.35, LOG[2] + 0.5]} scale={0.6 * pop(t, ws[2])} />
-            <Glint position={[LOG[0] - 2.6, 2.35, LOG[2] + 0.6]} t={t - ws[2]} size={1} />
+            <Place text="1st" position={[LOG[0] - 2.0, 2.35, LOG[2] + 0.6]} scale={0.6 * pop(t, ws[2])} />
+            <Glint position={[LOG[0] - 2.0, 2.35, LOG[2] + 0.7]} t={t - ws[2]} size={1} />
             <Player who={2} position={DS(END2 + 2, 0, ME_Z + 1.5)} rotationY={E} animation="ache" face="ouch" />
           </>
         );

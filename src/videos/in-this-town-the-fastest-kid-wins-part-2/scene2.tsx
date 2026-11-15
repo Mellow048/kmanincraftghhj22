@@ -97,7 +97,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Block position={[BOX[0], 0.25, BOX[2]]} size={[0.7, 0.5, 0.6]} color="#8a6a3a" />
             <Me position={[BOX[0], 0.1, BOX[2] + 0.2]} rotationY={0} shoes={tint(SHOE, BLUE, k * 1.15)} shoeGlow={0.2} face="brave" headPitch={0.55}
-              pose={{ ...getPose("sit", t), bodyPitch: 0.45, armR: [-0.9, 0, -0.25 + 0.2 * s], armL: [-0.6, 0, 0.2] }} />
+              pose={{ ...getPose("sit", t), bodyPitch: 0.45, armR: [-0.35, 0, -0.25 + 0.2 * s], armL: [-0.2, 0, 0.2] }} />
             <Brush position={[FEET[0] + 0.14 * s, 0.33, FEET[2] + 0.1]} rotation={[1.2, 0.3 * s, 0]} scale={1.3} />
             <PaintTin position={[FEET[0] + 0.55, 0, FEET[2] - 0.05]} />
             <Bits position={[FEET[0], 0.25, FEET[2] + 0.1]} t={(t % 0.45)} color={BLUE} count={5} power={1.3} seed={3} />
@@ -111,7 +111,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.why",
-      ...cam.push({ on: R(GATE_X + 3.6, 1.05, 0.6), dist: 6.2, to: 5.2, yaw: 9, pitch: 8, fov: 48 }),
+      ...cam.push({ on: R(GATE_X + 3.3, 1.05, 0.6), dist: 8.6, to: 7.6, yaw: 9, pitch: 8, fov: 48 }),
       zone: "river",
       look: DAY,
       note: "What he is thinking: a race official bent double with his nose to three pairs of red shoes, a camera drone over them with its red light going, the three with their hands up. And off to the side, the boy, hands behind his back, whistling, in blue shoes that nobody looks at.",
@@ -119,14 +119,14 @@ export const scene2 = storyScene(timing, {
         const found = w("3.why", "found", 0.7);
         return (
           <>
-            <Villager position={R(GATE_X + 1.5, 0, 0.9)} rotationY={E} robe={ROBE.white} lean={0.5 + 0.1 * Math.sin(t * 5)} nod={0.4} hmm={1} />
+            <Villager position={R(GATE_X + 1.8, 0, 0.9)} rotationY={E} robe={ROBE.white} lean={0.5 + 0.1 * Math.sin(t * 5)} nod={0.4} hmm={1} />
             <Rival position={TRIO[1]} rotationY={0} animation="scared" face="fear" />
             <Pal n={0} position={TRIO[0]} rotationY={0.25} animation="panic" face="fear" />
             <Pal n={1} position={TRIO[2]} rotationY={-0.25} animation="scared" face="fear" />
             <Drone position={R(GATE_X + 3.0, 3.0, 1.6)} yaw={Math.PI} tilt={0.9} t={t} scale={1.3} />
             <Place text="OUT!" position={R(GATE_X + 3.0, 2.35, 0.3)} scale={0.55 * pop(t, found)} />
-            <Me position={R(GATE_X + 5.6, 0, 1.5)} rotationY={-0.2} animation="idle" face="smile" headYaw={-0.7} headPitch={-0.25} />
-            <Glint position={R(GATE_X + 5.6, 0.15, 1.85)} t={t - w("3.why", "mine", 1.9)} size={0.8} />
+            <Me position={R(GATE_X + 4.9, 0, 1.6)} rotationY={-0.2} animation="idle" face="smile" headYaw={-0.7} headPitch={-0.25} />
+            <Glint position={R(GATE_X + 4.9, 0.15, 1.95)} t={t - w("3.why", "mine", 1.9)} size={0.8} />
           </>
         );
       },
@@ -183,7 +183,6 @@ export const scene2 = storyScene(timing, {
         <>
           <Me position={MEAT} rotationY={MRY + 0.35} animation="idle" breath={0} weightShift={0} face="fear" blink={false} gaze={0} saccade={false} />
           <Block position={[MEAT[0] + 0.02, faceOf(MEAT)[1] + 0.12 - 0.12 * t, MEAT[2] - 0.24]} size={[0.035, 0.06, 0.035]} color="#7fd0ff" castShadow={false} />
-          <Sweat position={up(MEAT, 1.45)} t={t} much={0.3} />
         </>
       ),
     },
