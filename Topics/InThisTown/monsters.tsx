@@ -228,6 +228,8 @@ export const Skeleton: React.FC<
     raise?: number;
     /** Metres the skull has dropped off the neck. */
     headDrop?: number;
+    /** 0–1: the jaw hangs open. The lower jaw is a real piece that swings down off the skull; at 1 it is on his chest. */
+    jaw?: number;
   }
 > = ({
   position = [0, 0, 0],
@@ -249,6 +251,7 @@ export const Skeleton: React.FC<
   noArm = false,
   raise = 0,
   headDrop = 0,
+  jaw = 0,
 }) => {
   const t = useFilmTime();
   const u = U;
@@ -294,13 +297,32 @@ export const Skeleton: React.FC<
           );
         })}
         <group position={[0, 12 * u - headDrop, headDrop * 0.45]} rotation={[pitch + shake * 0.04, yaw, tilt]}>
-          <Block position={[0, 4 * u, 0]} size={[8 * u, 8 * u, 8 * u]} color={bone} />
+          {jaw > 0 ? (
+            <>
+              {/* the skull, cut off above the mouth, with a row of top teeth */}
+              <Block position={[0, 5.2 * u, 0]} size={[8 * u, 5.6 * u, 8 * u]} color={bone} />
+              {[-3, -1, 1, 3].map((x) => (
+                <Block key={x} position={[x * 0.8 * u, 2.05 * u, 3.7 * u]} size={[1.1 * u, 0.9 * u, 0.5 * u]} color="#f6f4ea" castShadow={false} />
+              ))}
+              {/* the black of the open mouth, as deep as the head */}
+              <Block position={[0, 2.4 * u - jaw * 2.6 * u, 0.3 * u]} size={[6.6 * u, 0.2 * u + jaw * 5.4 * u, 7.2 * u]} color="#070708" castShadow={false} />
+              {/* the lower jaw: hinged at the back of the skull, it swings down and hangs */}
+              <group position={[0, 2.4 * u - jaw * 2.2 * u, -3.4 * u]} rotation={[jaw * 0.85, 0, Math.sin(t * 31 + phase) * 0.02 * jaw]}>
+                <Block position={[0, -1.1 * u, 3.5 * u]} size={[8 * u, 2.2 * u, 7.8 * u]} color={shade(bone, -0.05)} />
+                {[-3, -1, 1, 3].map((x) => (
+                  <Block key={x} position={[x * 0.8 * u, 0.35 * u, 7.0 * u]} size={[1.1 * u, 0.9 * u, 0.5 * u]} color="#f6f4ea" castShadow={false} />
+                ))}
+              </group>
+            </>
+          ) : (
+            <Block position={[0, 4 * u, 0]} size={[8 * u, 8 * u, 8 * u]} color={bone} />
+          )}
           <Brows mood={mood} y={5.9 * u} z={4.05 * u} color="#8a8a86" />
           {[-1, 1].map((s) => (
             <Block key={s} position={[s * 2 * u, 4.3 * u, 4.05 * u]} size={[2 * u, 1.6 * u, 0.1 * u]} color={dark} castShadow={false} />
           ))}
           <Block position={[0, 2.9 * u, 4.05 * u]} size={[1 * u, 1 * u, 0.1 * u]} color="#5a5a58" castShadow={false} />
-          {mood === "scared" ? (
+          {jaw > 0 ? null : mood === "scared" ? (
             <Block position={[0, 1.2 * u, 4.05 * u]} size={[2.4 * u, 2 * u, 0.1 * u]} color={dark} castShadow={false} />
           ) : (
             <>

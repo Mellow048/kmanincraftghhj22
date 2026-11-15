@@ -31,7 +31,7 @@ def steps(cue, why, kind="step_grass", every=0.4, start=0.05, end=None, trim=Non
     n = int(((end if end else dur[cue]) - start) / every)
     if n > 0: e(cue, kind, why, at=start, repeat=n, every=every, trim=trim)
 
-e("1.town", "clank", "Iron bars, in the first second.", at=0.05); e("1.town", "whoosh_low", "The lens goes in to him.", at=0.5); e("1.town", "sting", "And I was in a cage.", word="cage", trim=-4)
+e("1.town", "hit", "The hook: the golem's fist on the ravager's skull.", at=0.42, trim=3); e("1.town", "boom", "The ground.", at=0.45); steps("1.town", "The ravager comes again.", "stomp", 0.28, 1.3, 2.4, trim=-1); e("1.town", "clank", "And I was in a cage: his hands on the bars.", word="cage", at=-0.25)
 e("1.night", "whoosh", "Up over the castle."); e("1.night", "gust", "Night air.", at=0.6)
 e("1.shift", "swish", "Down to the yard."); steps("1.shift", "The night shift plods past.", "step_stone", 0.45)
 e("1.asleep", "swish", "Down through the bars."); e("1.asleep", "slide_down", "A snore.", at=0.5, trim=-3); e("1.asleep", "slide_down", "Another.", at=1.9, trim=-3)
@@ -49,7 +49,7 @@ e("3.sorry", "thud", "He faints.", at=0.1); e("3.sorry", "crack", "The jaw goes 
 e("3.lights", "whoosh", "The castle."); e("3.lights", "tick", "A window. And another.", at=0.5, repeat=8, every=0.2, trim=2); e("3.lights", "bell", "Everybody is up.", word="window", trim=-4)
 e("4.tower", "whoosh", "Up the tower."); e("4.tower", "slide_down", "Asleep on the job.", word="asleep", trim=-3)
 e("4.glass", "blip", "He wakes.", at=0.15); e("4.glass", "zip", "The spyglass opens.", word="spyglass"); e("4.glass", "tick", "It clicks out.", word="spyglass", at=0.25)
-e("4.trees", "swish", "Trees.", at=0.02); e("4.trees", "swish", "Trees.", at=0.8); e("4.trees", "swish", "Trees.", at=1.55); e("4.trees", "sting", "The trees moved.", word="moved", trim=-3)
+e("4.trees", "swish", "Trees.", at=0.02); e("4.trees", "swish", "Trees.", at=0.7); e("4.trees", "swish", "Trees.", at=1.4); e("4.trees", "sting", "The trees moved.", word="moved", trim=-3)
 e("4.pill", "drop", "Pillagers.", at=0.05); steps("4.pill", "Marching.", "step_stone", 0.22, 0.3, trim=1)
 e("4.gers", "whoosh_low", "Down among them."); e("4.gers", "clank", "An axe.", word="vindicators", trim=-2); e("4.gers", "sparkle", "Magic.", word="evokers", trim=-2); e("4.gers", "pop", "A witch.", word="witches"); e("4.gers", "boing", "Whatever that is.", word="name", trim=-2); steps("4.gers", "They keep coming.", "step_stone", 0.3, 0.3, trim=-2)
 e("4.vex", "riser", "It gets bigger.", word="vex", trim=-2); e("4.vex", "zip", "Small and blue.", word="blue"); e("4.vex", "sting", "A vex.", word="vex", trim=-3)

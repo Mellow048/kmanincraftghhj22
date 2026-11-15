@@ -16,3 +16,4 @@ export * from "./monsters";
 export * from "./fields";
 export * from "./pillagers";
 export * from "./mansion";
+export * from "./siege";
