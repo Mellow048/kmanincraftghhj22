@@ -9,11 +9,15 @@
 
 The idea line ("the new kid never takes off his helmet") was the agent's; the horror story is his.
 
-## Script draft 1 (agent, NOT approved yet; no voice recorded)
+## Script draft 2 (agent, NOT approved yet; no voice recorded)
 
 About 440 words, about 1:45. Added by the agent, not in his outline: the missing kids are all ones who were mean to
-him; his helmet comes back wet; the note "Do not follow me"; he is scared of what is under the helmet, not of the
+him; his helmet comes back wet; he is scared of what is under the helmet, not of the
 bullies; the stick that snaps.
+
+**Owner, 2026-11-14, on draft 1:** "i dont like the part where he gave us a note \"DO not follow me\" like what, we
+are planning to stalk him and he suddenly know". The note and the look are cut: the kid must not know he is watched
+until the stick snaps. Rule for this story: nobody knows a thing they were not shown finding out.
 
 In this town, the new kid never took off his helmet.
 Not in class. Not at lunch. Not even in the pool.
@@ -34,12 +38,10 @@ I told the teacher. He said, "Sit down."
 So I watched him myself.
 Every day after school, he walked into the woods. Alone.
 Every morning, he came back. And his helmet was a little wet.
-One day he turned and looked right at me.
-I could not see his eyes. But I knew he saw me.
-He wrote something on a paper. He slid it onto my desk.
-It said, "Do not follow me."
-I followed him.
-That night, I hid behind a tree at the edge of the woods.
+I had to know what was in those woods.
+So one night, I followed him.
+I stayed far back. He never turned around.
+At the edge of the woods, I hid behind a tree.
 He was standing under the old lamp. He was not alone.
 Three big kids had him in a circle. The last three bullies in town.
 They pushed him. He did not push back.
