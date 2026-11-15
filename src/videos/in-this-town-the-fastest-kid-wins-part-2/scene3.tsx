@@ -23,8 +23,8 @@ export const X0 = { river: LINE2 + 4.5, desert: -44, tired: -30, van: -8, angry:
 /** The van's driver: a villager in white, turned to whoever he is talking to. */
 export const Driver: React.FC<{ turn?: number; gape?: number }> = ({ turn = 0, gape = 0 }) => (
   <>
-    <Villager position={[1.15, 0.46, 0.05]} rotationY={E - turn * 1.3} robe={ROBE.white} />
-    <group position={[1.15, 0.46, 0.05]} rotation={[0, E - turn * 1.3, 0]}>
+    <Villager position={[1.15, -0.1, 0.05]} rotationY={E - turn * 1.3} robe={ROBE.white} />
+    <group position={[1.15, -0.1, 0.05]} rotation={[0, E - turn * 1.3, 0]}>
       <Block position={[0, 1.47 - 0.07 * gape, 0.27]} size={[0.2, 0.05 + 0.2 * gape, 0.03]} color="#2a0f0f" castShadow={false} />
     </group>
   </>
@@ -306,7 +306,7 @@ export const scene3 = storyScene(timing, {
         const x = X0.no + TIRED * t;
         return (
           <>
-            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="walk" animDistance={GAIT + (x)} face="angry" headYaw={0.6 * Math.sin(t * 13) * (1 - ease(ramp(t, 0.6, 0.9)))} />
+            <Me position={DS(x, 0, ME_Z)} rotationY={E} animation="run" animDistance={GAIT + (x)} face="angry" headYaw={0.6 * Math.sin(t * 13) * (1 - ease(ramp(t, 0.6, 0.9)))} />
             <Van position={DS(x + 0.3, 0, ME_Z - 2.4)} d={x} driver={<Driver turn={1} />} />
             <Bubble text="NO." position={DS(x, 2.3, ME_Z)} scale={0.5 * pop(t, 0.1)} />
           </>
@@ -362,14 +362,14 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.truck({ on: DS(X0.run + 1.0, 1.8, ME_Z - 2.0), dist: 3.4, yaw: 20, pitch: 3, fov: 44, by: [TIRED * 2.23, 0, 0] }),
+      ...cam.truck({ on: DS(X0.run + 1.1, 1.45, ME_Z - 2.0), dist: 3.4, yaw: 20, pitch: 3, fov: 44, by: [TIRED * 2.23, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,
       note: "The van, close, the driver at his wheel. The boy goes past his window, running, properly running, sand flying. The driver's head goes round after him and his mouth drops open.",
       stage: (t) => {
         const vx = X0.run + TIRED * t;
-        const pass = 0.9;
+        const pass = 0.55;
         const x = vx - 4.5 + (t / pass) * 5.5;
         const seen = ease(ramp(t, pass - 0.2, pass + 0.2));
         return (

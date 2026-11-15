@@ -163,7 +163,6 @@ const DesertExtras: React.FC = () => (
       return x > END2 - 4 ? null : (
         <group key={`fl${i}`}>
           <Flag position={[x, 0, -0.55]} color={FLAGS[i % 4]} />
-          <Flag position={[x + 4, 0, 4.55]} color={FLAGS[(i + 2) % 4]} h={0.9} />
         </group>
       );
     })}
@@ -188,7 +187,7 @@ const DesertExtras: React.FC = () => (
     ))}
     <Villager position={[END2 - 1.6, 0, -1.4]} rotationY={0.5} robe={ROBE.farmer} />
     <Villager position={[END2 - 0.6, 0, -1.9]} rotationY={0.2} robe={ROBE.white} />
-    <Villager position={[END2 + 1.2, 0, 5.4]} rotationY={Math.PI - 0.4} robe={ROBE.brown} />
+    <Villager position={[END2 + 2.2, 0, -2.2]} rotationY={0.1} robe={ROBE.brown} />
     <Villager position={[END2 + 14, 0, -2.6]} rotationY={-0.6} robe={ROBE.smith} />
     <Mesa position={[END2 + 6, 0, -15]} w={14} h={8} />
     <Palm position={[END2 + 16, 0, -3.4]} h={4.4} lean={0.1} />
