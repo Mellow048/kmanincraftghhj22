@@ -122,10 +122,10 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.worm",
-      ...cam.top({ on: [P + 1.2, -0.7, 5.5], height: 4.4, to: 2.7, spin: [-14, 6], fov: 40 }),
+      ...cam.push({ on: [P + 1.2, 0.32, 5.7], dist: 5.0, to: 4.2, yaw: 104, pitch: 16, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
-      note: "Straight down on the wall: fingers hooked on the tile, the rest of him going like a worm under salt. The first of the film's two top-down pool shots.",
+      note: "On the water line at the wall: fingers hooked on the tile, the rest of him going like a worm under salt.",
       stage: () => (
         <>
           <Hero position={[P + 1.2, -0.95, 5.7]} rotationY={0} animation="panic" face="scared" />

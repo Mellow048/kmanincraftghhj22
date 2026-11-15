@@ -385,7 +385,7 @@ export const Phone: React.FC<{ position: Vec3; rotation?: Vec3; word?: string; s
       <boxGeometry args={[0.16, 0.012, 0.3]} />
       <meshStandardMaterial color="#1a1c22" roughness={0.5} metalness={0.4} />
     </mesh>
-    <mesh position={[0, 0.008, 0]}>
+    <mesh position={[0, 0.008, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[0.145, 0.275]} />
       <meshStandardMaterial color="#cfe9ff" emissive="#9fd0ff" emissiveIntensity={0.75} />
     </mesh>
