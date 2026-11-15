@@ -69,7 +69,6 @@ export const scene1 = storyScene(timing, {
       note: "The prize at its own height, in the glass. There is a boy's shoulder at the edge of the frame, for scale: it is as big as his head.",
       stage: () => (
         <>
-          <Trophy position={[-0.34, 0.56, -3.5]} scale={1.25} glow={0.55} />
           <Hero position={[1.25, 0, -2.35]} rotationY={Math.PI + 0.25} animation="peek" face="surprised" headPitch={0.08} />
         </>
       ),
@@ -136,7 +135,6 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[0.5, 0, -2.45]} rotationY={Math.PI - 0.1} animation="peek" face="neutral" headPitch={0.12} />
-          <Trophy position={[-0.34, 0.56, -3.5]} scale={1.25} glow={0.55} />
         </>
       ),
     },

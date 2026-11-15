@@ -67,7 +67,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.kick",
-      ...cam.push({ on: [P + 0.4, -1.05, 4.6], dist: 2.6, to: 2.0, yaw: 196, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [P + 0.4, -1.1, 4.6], dist: 3.4, to: 2.6, yaw: 200, pitch: 8, fov: 44 }),
       zone: "pool",
       look: "overworld-day",
       note: "Under the surface, behind him: legs going nowhere against blue tile. The water is a room with a ceiling.",
@@ -80,7 +80,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.sink",
-      ...cam.push({ on: [P + 0.9, 0.25, 5.2], dist: 3.6, to: 2.8, yaw: 96, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [P + 0.9, 0.1, 5.2], dist: 4.4, to: 3.4, yaw: 100, pitch: 6, fov: 42 }),
       zone: "pool",
       look: "overworld-day",
       note: "Side on, water line through the frame: head above, legs already two stones going down. Show the split, not the feeling.",

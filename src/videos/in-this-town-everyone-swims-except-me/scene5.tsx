@@ -106,15 +106,15 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.cold",
-      ...cam.push({ on: [X, 1.05, 78.5], dist: 0.7, to: 0.5, yaw: 28, pitch: 26, fov: 40 }),
+      ...cam.push({ on: [X + 0.32, 1.55, 78.3], dist: 0.85, to: 0.6, yaw: 22, pitch: 6, fov: 38 }),
       zone: "woods",
       look: "overworld-night",
       note: "A ring in a boy's palm, at the size of a ring: cold metal and three little buttons, humming with a light that has no source.",
       stage: () => (
         <>
-          <Ring position={[X, 1.02, 78.62]} rotation={[0.3, 0.8, 0]} scale={2.2} glow={1.6} />
-          <pointLight position={[X, 1.35, 78.9]} color="#ffd9a0" intensity={2.4} distance={3} decay={2} />
-          <Glow position={[X, 1.1, 78.7]} size={0.7} color="#ffd9a0" opacity={0.5} />
+          <Ring position={[X + 0.32, 1.55, 78.3]} rotation={[0.35, 0.7, 0]} scale={2.2} glow={1.6} />
+          <pointLight position={[X + 0.32, 1.6, 78.6]} color="#ffd9a0" intensity={2.6} distance={3} decay={2} />
+          <Glow position={[X + 0.32, 1.55, 78.4]} size={0.7} color="#ffd9a0" opacity={0.55} />
           <Hero position={[X, 0, 78.6]} rotationY={0.4} animation="hold" face="neutral" />
         </>
       ),
