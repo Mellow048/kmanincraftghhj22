@@ -46,7 +46,9 @@ export const scene7 = storyScene(timing, {
         <>
           <Villager position={[20.6 + t * 2.2, 0, 3.6]} rotationY={SOUTH - 0.4} robe={ROBE.brown} phase={0.3} />
           <Villager position={[19.4 + t * 2.4, 0, 0.4]} rotationY={SOUTH + 0.5} robe={ROBE.blue} phase={3.4} />
-          <Villager position={[22.4 + t * 1.6, 0, 4.6]} rotationY={SOUTH - 0.9} robe={ROBE.white} phase={1.9} />
+          <Villager position={[22.4 + t * 1.6, 0, 4.6]} rotationY={SOUTH - 0.9} robe={ROBE.white} walk={t * 1.6} phase={1.9} />
+          <Villager position={[20.2 + t * 2.6, 0, 5.2]} rotationY={SOUTH - 0.2} robe={ROBE.farmer} hat="straw" walk={t * 2.6} phase={0.7} />
+          <pointLight position={[22.6, 2.8, 3.0]} color="#ffb060" intensity={34} distance={13} decay={2} />
           <Smoke position={[FELL[0], 0, FELL[2]]} count={9} rise={3.2} spread={2.2} size={0.3} opacity={0.4} lean={0.2} />
         </>
       ),
