@@ -132,3 +132,11 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   draft 1) and asked for the helmet part 2 script to be saved for later (`outlines/helmet-kid-part-2-script-draft.md`).
   "for the 2 shorts lets make them too": race part 2 and Monster Village part 4 are to be built.
 - Nobody has listened to either new mix. Monster Village 1, 2 and Robot at 18 still have the `offset` sound fault.
+- **2026-11-15, Monster Village part 4 delivered** (`renders/in-this-town-monster-village-part-4.mp4`, 2:49.5, 68
+  lines; reference in `reference/monster-village-part-4/`). Built from script draft 2, which he approved ("yes")
+  after asking for: at least 2:30; a skinny hallway that is not seen before the ending; Mo down the whole time; the
+  order golem flicks the bus, ravager slams the golem, Hiss follows, "stay back", the run at the two guards. Not yet
+  reviewed by him. Nobody has listened to the mix. The "funny music" under "4 minutes earlier" is a march made of
+  sound effects, with his track stopped for those four seconds: the tool cannot play a second tune.
+  **Lesson: a 9:16 frame at fov 40 is 0.41 × the distance wide. Two people side by side need an over-the-shoulder
+  angle or a long lens distance.**
