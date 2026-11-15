@@ -157,7 +157,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.hand",
-      ...cam.orbit({ on: [P + 3.85, 0.15, 2.5], dist: 2.7, yaw: 132, pitch: 18, yawTo: 152, distTo: 2.2, fov: 38 }),
+      ...cam.orbit({ on: [P + 4.0, 0.35, 2.5], dist: 3.6, yaw: 138, pitch: 30, yawTo: 156, distTo: 3.0, pitchTo: 26, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "A close two-shot in the water: one hand comes in from the side and closes on his arm. No face, just the grab.",

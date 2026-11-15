@@ -171,7 +171,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.looked",
-      ...cam.push({ on: [P + 3.42, 0.3, 7.76], dist: 2.1, to: 1.5, yaw: 12, pitch: 20, fov: 36 }),
+      ...cam.push({ on: [P + 3.15, 0.75, 7.55], dist: 2.6, to: 2.0, yaw: 150, pitch: 12, fov: 40 }),
       zone: "pool",
       look: "overworld-day",
       note: "Over his shoulder to the hand: the ring is doing something. It has a light in it that was not there in the woods.",
