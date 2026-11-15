@@ -163,8 +163,9 @@ const Arena: React.FC = () => (
     <Vox kind="log" position={[-15, 1.4, 14]} size={[0.26, 2.8, 0.26]} />
     <Vox kind="log" position={[-1, 1.4, 14]} size={[0.26, 2.8, 0.26]} />
     <Vox kind="planks" tint="#e8dcc0" position={[-8, 2.85, 14]} size={[15, 2.4, 0.2]} />
-    <PixelText text="POOLS 1 - 2 - 3" position={[-8, 3.35, 14.13]} height={0.5} maxWidth={13} color="#3c5a66" />
-    <PixelText text="THIS IS POOL 3" position={[-8, 2.45, 14.13]} height={0.44} maxWidth={13} color="#a83c2a" />
+    <PixelText text="THREE POOLS" position={[-8, 3.35, 14.13]} height={0.46} maxWidth={13} color="#3c5a66" />
+    <PixelText text="THIS IS POOL ONE" position={[-8, 2.75, 14.13]} height={0.4} maxWidth={13} color="#a83c2a" />
+    <PixelText text="THE SMALLEST" position={[-8, 2.2, 14.13]} height={0.34} maxWidth={13} color="#3c5a66" />
 
     {/* The trophy table at the finish wall. */}
     <Vox kind="planks" tint="#a8834e" position={[27.5, 0.52, -6]} size={[3.4, 1.04, 1.3]} />

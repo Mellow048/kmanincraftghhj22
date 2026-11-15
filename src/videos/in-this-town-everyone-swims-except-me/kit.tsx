@@ -1,7 +1,7 @@
 import type React from "react";
 import { Glow, MinecraftAvatar, PixelText, Vox } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { KID, ROBE, Villager, wordClock } from "../../../Topics/InThisTown";
+import { KID, Puffs, ROBE, Villager, wordClock } from "../../../Topics/InThisTown";
 import timingJson from "./timing.json";
 
 /**
@@ -277,8 +277,8 @@ export const Trophy: React.FC<{ position: Vec3; scale?: number; glow?: number; r
         color="#f0cf74"
         metalness={0.95}
         roughness={0.16}
-        emissive="#3a2a06"
-        emissiveIntensity={glow}
+        emissive="#8a6418"
+        emissiveIntensity={0.55 + glow}
       />
     </mesh>
     <mesh position={[0, 0.485, 0]}>
@@ -358,3 +358,57 @@ export const DisplayCase: React.FC<{ position: Vec3; rotationY?: number }> = ({ 
     <Glow position={[0, 0.95, 0.1]} size={0.9} color="#ffcf8a" opacity={0.35} />
   </group>
 );
+
+/** A body floating at the surface: `at` is the water line at the middle of the swimmer. */
+export const Swimmer: React.FC<{
+  at: Vec3;
+  turn?: number;
+  children?: React.ReactNode;
+  /** how deep the body sits under the surface */
+  sink?: number;
+}> = ({ at, turn = 0, children, sink = 0 }) => (
+  <group position={[at[0], at[1] - sink, at[2]]} rotation={[0, turn, 0]}>
+    <group position={[0, 0.58, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      {children}
+    </group>
+  </group>
+);
+
+/** A burst of white water. */
+export const Splash: React.FC<{ at: Vec3; size?: number; count?: number; seed?: number }> = ({
+  at,
+  size = 0.18,
+  count = 9,
+  seed = 5,
+}) => (
+  <Puffs position={at} color="#eef8fb" count={count} rise={0.9} spread={0.4} size={size} speed={0.9} opacity={0.85} seed={seed} />
+);
+
+/** A board on two posts, with words on it. Used for the pool notices and the race poster. */
+export const SignBoard: React.FC<{
+  at: Vec3;
+  width?: number;
+  height?: number;
+  lines: Array<{ text: string; height?: number; color?: string }>;
+  rotationY?: number;
+  tint?: string;
+}> = ({ at, width = 4, height = 1.6, lines, rotationY = 0, tint = "#e8dcc0" }) => {
+  const gap = height / (lines.length + 1);
+  return (
+    <group position={at} rotation={[0, rotationY, 0]}>
+      <Vox kind="log" position={[-width / 2 + 0.3, height / 2, -0.12]} size={[0.18, height, 0.18]} />
+      <Vox kind="log" position={[width / 2 - 0.3, height / 2, -0.12]} size={[0.18, height, 0.18]} />
+      <Vox kind="planks" tint={tint} position={[0, height / 2, 0]} size={[width, height, 0.14]} />
+      {lines.map((l, i) => (
+        <PixelText
+          key={i}
+          text={l.text}
+          position={[0, height - gap * (i + 1) + gap * 0.5, 0.09]}
+          height={l.height ?? 0.42}
+          maxWidth={width - 0.5}
+          color={l.color ?? "#3c5a66"}
+        />
+      ))}
+    </group>
+  );
+};
