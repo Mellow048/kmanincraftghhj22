@@ -27,12 +27,14 @@ import { scene14 } from "./scene14";
  * narration.md is one shot. Read Topics/InThisTown/README.md before changing anything here.
  *
  * `cut: "short"` is the one-to-two-minute cut (14 beats). Delete the line for the three-minute cut (18 beats).
+ * This film plays the MIDDLE cut (two minutes to two and a half): the owner found the short cut of it too fast
+ * to follow (2026-11-15), so the voice runs slower and there is air between the beats.
  */
 export const film = defineFilm({
   id: "in-this-town-every-kid-got-an-iron-golem",
   title: "In This Town, Every Kid Got an Iron Golem",
   topic: "in-this-town",
-  cut: "short",
+  cut: "middle",
   look: "overworld-day",
   // The voice alone for now. When the sound is built (scripts/sound.py build) this becomes audio/…/mix.mp3:
   // a finished film plays the mix, and `npm run check` fails one that does not.

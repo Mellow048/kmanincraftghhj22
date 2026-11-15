@@ -69,7 +69,9 @@ export const scene8 = storyScene(timing, {
       stage: (t) => {
         const through = ease(ramp(t, OUT - 0.2, OUT + 0.35));
         const up = ease(ramp(t, FLY - 0.25, FLY + 0.45));
-        const at: Vec3 = [GATE_EYE[0] - 2.4 * through - 1.0 * up, 8.4 + (FIRST[1] - 8.4) * up, FIRST[2]];
+        // It drifts up from the second it is through, so the lens that climbs with it never leaves it at the bottom edge.
+        const drift = ease(ramp(t, OUT + 0.25, FLY - 0.2));
+        const at: Vec3 = [GATE_EYE[0] - 2.4 * through - 1.0 * up, 8.4 + (FIRST[1] - 8.4) * (0.42 * drift + 0.58 * up), FIRST[2]];
         const near = ramp(t, 0.1, OUT);
         return (
           <>

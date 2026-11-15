@@ -150,3 +150,16 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   time"), not a thing nobody expected. Done as three new lines in beat 2 and a new order in beat 8 (the golems march
   up first, as every year, and then it is not piglins). A piglin was built for it (`Piglin` in the film's `kit.tsx`;
   not in the pack yet). `piglin`/`piglins` were added to the aligner's words in `scripts/narration.py`.
+- **2026-11-15, the snow golem film, his verdict on that build: "it got worse ngl".** Two faults, both the agent's.
+  (1) **Too fast**: "the video is too fast no time to digest even half a second". To fit the new lines inside the short
+  cut the voice had been sped up to 249 words a minute with no air between the beats. (2) **The reason was told in
+  fragments**: "Piglins came out. The golems threw them back in." got "like what are you talking about threw them
+  out"; his own line was "every year we needed golems to defeat the piglins from coming back", "thats a much better
+  line". What to do from now on: **the premise is told in full sentences that carry their own "why"** (who comes, what
+  they do, what stops them, and so what the rule is), never as three clipped beats; and **length is never bought with
+  speed**. If a film does not fit its cut, move it up a cut. Fifth build: the opening is five lines with their own
+  shots (the gate, it lights and piglins come out to attack, a golem picks one up, they are thrown back in, "that is
+  why every kid got a golem at ten" over the whole town); the film is the MIDDLE cut, 141 seconds; the voice runs at
+  220 words a minute (x1.40, was x1.53); and there is half a second to a second of silence before each new step of the
+  story (`# clip <name> wait <seconds>`; the seven recorded clips were cut into twelve at their own pauses so the waits
+  could go in without recording again, only the new opening was recorded). Not yet judged by him.

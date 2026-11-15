@@ -159,56 +159,114 @@
     },
     {
       "cue": "2.why",
-      "sfx": "swish",
-      "why": "Cut: the town, and all its golems."
-    },
-    {
-      "cue": "2.why",
-      "word": "needed",
-      "sfx": "stomp",
-      "repeat": 2,
-      "every": 0.4,
-      "trim": -0.5,
-      "why": "Golems standing guard shift their feet."
-    },
-    {
-      "cue": "2.why",
-      "word": "gate",
-      "sfx": "power_up",
-      "trim": -4,
-      "why": "The gate on the hill lights, as it does once a year."
-    },
-    {
-      "cue": "2.why",
-      "word": "lit",
-      "at": 0.05,
-      "sfx": "clank",
-      "repeat": 2,
-      "every": 0.14,
-      "trim": -5,
-      "why": "Every golem in the street turns to face it."
-    },
-    {
-      "cue": "2.pigs",
       "sfx": "whoosh_low",
-      "why": "Cut to the gate: they come through."
+      "why": "Cut: the foot of the hill."
     },
     {
-      "cue": "2.pigs",
-      "word": "piglins",
-      "at": 0.1,
-      "sfx": "step_stone",
-      "repeat": 3,
-      "every": 0.13,
+      "cue": "2.why",
+      "word": "hill",
+      "sfx": "stomp",
+      "trim": 1,
+      "why": "The golem on guard shifts its feet."
+    },
+    {
+      "cue": "2.why",
+      "word": "old",
+      "sfx": "gust",
       "trim": -1,
+      "why": "Wind round the old gate."
+    },
+    {
+      "cue": "2.lit",
+      "sfx": "swish",
+      "why": "Cut to the gate itself."
+    },
+    {
+      "cue": "2.lit",
+      "word": "lit",
+      "sfx": "riser",
+      "dur": 0.7,
+      "trim": -3,
+      "why": "It fills with light."
+    },
+    {
+      "cue": "2.lit",
+      "word": "lit",
+      "sfx": "power_up",
+      "trim": -3,
+      "why": "The gate lights, as it does once a year."
+    },
+    {
+      "cue": "2.lit",
+      "word": "piglins",
+      "at": -0.1,
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.24,
+      "trim": 0,
       "why": "Piglins walking out onto the hill."
     },
     {
-      "cue": "2.pigs",
+      "cue": "2.lit",
       "word": "came",
       "sfx": "clank",
-      "trim": -5,
+      "trim": -4,
       "why": "Gold swords."
+    },
+    {
+      "cue": "2.lit",
+      "word": "attack",
+      "at": 0.1,
+      "sfx": "sting",
+      "trim": -7,
+      "why": "They are not here to visit."
+    },
+    {
+      "cue": "2.fight",
+      "sfx": "swish",
+      "why": "Cut: the fight."
+    },
+    {
+      "cue": "2.fight",
+      "word": "every",
+      "sfx": "clank",
+      "repeat": 3,
+      "every": 0.3,
+      "trim": -2,
+      "why": "A gold sword on an iron shin. Nothing happens."
+    },
+    {
+      "cue": "2.fight",
+      "word": "needed",
+      "at": 0.1,
+      "sfx": "clank",
+      "repeat": 2,
+      "every": 0.3,
+      "trim": -3,
+      "why": "Still hacking."
+    },
+    {
+      "cue": "2.fight",
+      "word": "defeat",
+      "at": -0.08,
+      "sfx": "whoosh_low",
+      "why": "Both iron arms come up."
+    },
+    {
+      "cue": "2.fight",
+      "word": "defeat",
+      "at": 0.04,
+      "sfx": "hit",
+      "trim": -5,
+      "why": "Iron hands close on it."
+    },
+    {
+      "cue": "2.fight",
+      "word": "the",
+      "at": 0.02,
+      "sfx": "slide_up",
+      "trim": 0,
+      "why": "The piglin goes up over the golem's head."
     },
     {
       "cue": "2.gate",
@@ -217,28 +275,73 @@
     },
     {
       "cue": "2.gate",
-      "word": "threw",
+      "word": "throw",
       "at": -0.05,
       "sfx": "whoosh_low",
       "why": "An iron golem throws a piglin."
     },
     {
       "cue": "2.gate",
+      "word": "every",
+      "at": 0.05,
+      "sfx": "pop",
+      "trim": -1,
+      "why": "Through the purple and gone."
+    },
+    {
+      "cue": "2.gate",
+      "word": "one",
+      "at": -0.05,
+      "sfx": "whoosh_low",
+      "trim": -1,
+      "why": "The second golem throws the second."
+    },
+    {
+      "cue": "2.gate",
+      "word": "them",
+      "sfx": "pop",
+      "trim": -1,
+      "why": "Gone."
+    },
+    {
+      "cue": "2.gate",
       "word": "back",
-      "sfx": "zip",
-      "dur": 0.3,
-      "trim": -3,
-      "why": "A piglin in the air."
+      "at": -0.15,
+      "sfx": "step_grass",
+      "repeat": 4,
+      "every": 0.11,
+      "trim": 1,
+      "why": "The third runs back in by himself."
     },
     {
       "cue": "2.gate",
       "word": "in",
-      "at": 0.08,
+      "at": 0.2,
       "sfx": "pop",
-      "repeat": 2,
-      "every": 0.16,
-      "trim": 0,
-      "why": "Through the purple and gone, one after the other."
+      "trim": -1,
+      "why": "And he is gone too."
+    },
+    {
+      "cue": "2.need",
+      "sfx": "whoosh",
+      "why": "Cut: the town, and all its golems."
+    },
+    {
+      "cue": "2.need",
+      "word": "why",
+      "sfx": "stomp",
+      "repeat": 3,
+      "every": 0.45,
+      "trim": -1,
+      "why": "Golems walking the street with their kids."
+    },
+    {
+      "cue": "2.need",
+      "word": "golem",
+      "at": 0.1,
+      "sfx": "clank",
+      "trim": -1,
+      "why": "Iron."
     },
     {
       "cue": "2.build",
@@ -286,7 +389,7 @@
       "cue": "2.ran",
       "word": "out",
       "sfx": "slide_down",
-      "trim": -2,
+      "trim": 1,
       "why": "Hope going down."
     },
     {
@@ -361,7 +464,7 @@
       "sfx": "stomp",
       "repeat": 3,
       "every": 0.4,
-      "trim": -1.5,
+      "trim": 1.5,
       "why": "A golem hauling a cart."
     },
     {
@@ -476,7 +579,7 @@
       "word": "me",
       "at": 0.05,
       "sfx": "thud",
-      "trim": -2,
+      "trim": 4,
       "why": "In the face."
     },
     {
@@ -668,7 +771,7 @@
       "at": 0.2,
       "sfx": "cheer",
       "dur": 0.7,
-      "trim": -4,
+      "trim": -1.5,
       "why": "The crowd."
     },
     {
@@ -970,7 +1073,7 @@
       "word": "could",
       "nth": 1,
       "sfx": "slide_down",
-      "trim": -3,
+      "trim": -0.5,
       "why": "It cannot reach."
     },
     {
@@ -1115,7 +1218,8 @@
       "word": "hit",
       "at": 0.06,
       "sfx": "thud",
-      "why": "It hits one in the face."
+      "why": "It hits one in the face.",
+      "trim": 4.0
     },
     {
       "cue": "10.hit",
@@ -1135,7 +1239,7 @@
       "word": "candle",
       "at": 0.4,
       "sfx": "thud",
-      "trim": -3,
+      "trim": -1.5,
       "why": "The grey thing lands."
     },
     {

@@ -19,7 +19,7 @@ import { Blaze, GATE, Gate, HILL, PLACE, ROAD_Z, Smoke, clock } from "./kit";
  */
 
 /** Every year: it lights in daylight for the three lines that tell what it is for. */
-const T_YEARLY = clock.at("2.why", "gate") - 0.1;
+const T_YEARLY = clock.at("2.lit", "lit") - 0.05;
 const T_YEARLY_END = clock.end("2.gate");
 const T_LIT = clock.at("8.night", "lit");
 const T_ROOFS = clock.at("9.roofs", "roofs");

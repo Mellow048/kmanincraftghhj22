@@ -1,6 +1,14 @@
 # Narration — In This Town, Every Kid Got an Iron Golem (part 1)
 
-**Status: draft 2, the owner's own change to the story (2026-11-15, see below), RECORDED and built.** Draft 1 was
+**Status: draft 3 (2026-11-15), RECORDED and built: 141.0 seconds, 516 words, 220 words a minute, the MIDDLE cut.**
+The owner on the build of draft 2: "it got worse ngl", "the video is too fast no time to digest even half a second",
+and the three clipped lines about the piglins did not explain themselves ("every year we needed golems to defeat the
+piglins from coming back", "thats a much better line"). So: the opening is five full lines (`2.why` to `2.need`, clip
+`02-why`, new recording, `voice-03`); the voice is slower (x1.40, was x1.53); and every clip after the first waits half
+a second to a second before it starts. The other twelve clips are the draft 2 recordings cut at their own pauses, not
+recorded again. What follows is the history of draft 2.
+
+**Draft 2, the owner's own change to the story (2026-11-15, see below), recorded and built.** Draft 1 was
 approved by him the same day ("okay go get the mp4, but first let me hear the tts"). Seven clips with `voice-03`, the
 voice he picked himself after turning down three pairs ("please just do a natural american voice, male, no accent, not
 old, not too much serious"). Built to 117.2 seconds at 249 words a minute; the voice is sped up 1.53 times, as in every
@@ -63,15 +71,21 @@ What is planted, and where it pays off:
 # clip 01-hook
 [1.town]     In this town, every kid got an iron golem at ten.
 [1.me]       Mine was made of snow.
-[2.why]      We needed golems. Once a year, the gate on the hill lit up.
-[2.pigs]     Piglins came out.
-[2.gate]     The golems threw them back in.
+
+# clip 02-why wait 0.5
+[2.why]      On the hill over our town stood an old black gate.
+[2.lit]      Once a year, it lit up, and piglins came out to attack our town.
+[2.fight]    So every year, we needed our golems to defeat the piglins,
+[2.gate]     and throw every one of them back in.
+[2.need]     That is why every kid got a golem at ten.
+
+# clip 03-birthday wait 0.5
 [2.build]    On your tenth birthday, you got four iron blocks and a pumpkin.
 [2.ran]      The year I turned ten, the iron ran out.
 [2.dad]      So my dad looked outside. It was snowing.
 [2.snow]     Two blocks of snow. One pumpkin. Happy birthday.
 
-# clip 02-tour
+# clip 04-tour wait 0.5
 [3.carts]    Iron golems pulled the carts.
 [3.cows]     They carried the cows home.
 [3.roof]     One held up a roof while the builder ate lunch.
@@ -84,22 +98,26 @@ What is planted, and where it pays off:
 [4.house]    The other golems could lift a house.
 [4.bucket]   Puddle could not lift a bucket.
 
-# clip 03-contest
+# clip 05-contest wait 0.5
 [5.day]      Once a year, the golems had a strength contest.
 [5.rock]     The first golem lifted a boulder. The second lifted the first golem.
 [5.turn]     Then it was Puddle's turn.
 [5.arm]      He picked up the rock. His arm came off.
 [5.other]    He picked it up with his other arm. That one came off too.
 [5.last]     We came last. A chicken beat us.
+
+# clip 06-night wait 0.6
 [6.want]     That night, I told my dad I wanted a real golem.
 [6.dad]      He said, "Snow is all we had."
 [6.heard]    Puddle was standing right behind me. He heard every word.
 [7.face]     Every night, every iron golem turned to face the black gate.
 [7.puddle]   Only Puddle faced the other way. He was watching me.
 
-# clip 04-gate wait 0.4
+# clip 07-gate wait 0.7
 [8.night]    That year, the gate lit up right on time.
 [8.march]    Twenty iron golems marched up the hill. We cheered.
+
+# clip 08-fire wait 0.6
 [8.out]      But this time, it was not piglins. It was on fire, and it could fly.
 [8.more]     Then ten more.
 [9.reach]    Iron golems could not fly. These things could.
@@ -109,7 +127,7 @@ What is planted, and where it pays off:
 [9.roofs]    Then the roofs caught fire.
 [9.end]      I thought our town was finished.
 
-# clip 05-snowball wait 0.7
+# clip 09-snowball wait 0.8
 [10.ball]    Then one snowball flew across the square.
 [10.hit]     It hit one in the face. It went out, like a candle.
 [10.look]    Everyone turned around.
@@ -117,19 +135,23 @@ What is planted, and where it pays off:
 [11.throw]   He threw. One went out. He threw. Two more.
 [11.fire]    They all turned on him at once. Fire melts snow.
 [11.small]   Every hit made him smaller. Up to my chin. Then my belt.
+
+# clip 10-umbrella wait 0.4
 [11.umbrella] So I did the only thing I knew. I opened the umbrella.
 [11.held]    I held it over him. It caught fire. I kept holding it.
 [11.knee]    He was at my knee now. Still throwing.
 [11.last]    One left. One snowball. He did not miss.
 
-# clip 06-puddle wait 0.7
+# clip 11-puddle wait 0.9
 [12.quiet]   Then it was quiet.
 [12.left]    I looked down. There was a pumpkin, and a puddle.
 [12.name]    I had named him that as a joke.
+
+# clip 12-again wait 0.7
 [13.gate]    On the hill, the gate lit up again. Something bigger was coming.
 [13.nose]    Then something cold landed on my nose.
 [13.snow]    It was starting to snow.
 
-# clip 07-sub wait 0.6
+# clip 13-sub wait 0.6
 [14.sub]     Like and subscribe for part two.
 ```

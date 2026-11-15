@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-every-kid-got-an-iron-golem",
   "mix": "public/audio/in-this-town-every-kid-got-an-iron-golem/mix.mp3",
-  "seconds": 117.2333,
+  "seconds": 140.9667,
   "built_from": {
-    "timing.json": "94f59678593c733ef70b7d03eec2768f7a033f3c",
-    "sound.json": "927eee50e509a2165f819540e9354371b020f93f",
-    "narration.mp3": "121500c17b564822e339af3c9a4a4fc667d9b70f"
+    "timing.json": "6f3848b0a1bbcae3366e8304aef6967543fac6ce",
+    "sound.json": "ec0d2087a8316d88abf946239efdde80b5febf56",
+    "narration.mp3": "054178f6f196ba5772828de6b7214aab145c41ab"
   },
-  "mix_sha1": "4bdc10c9948b86c9cd2efb7dc7489c58a32d3a36",
+  "mix_sha1": "765f0e8a3cdc2793a9a265cd7e55a372c6907954",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,42 +18,42 @@
     {
       "from": "6.want",
       "mood": "sneak",
-      "at": 46.17
+      "at": 61.6
     },
     {
       "from": "8.night",
       "mood": "tense",
-      "at": 57.73
+      "at": 74.53
     },
     {
       "from": "9.end",
       "mood": "none",
-      "at": 75.77
+      "at": 94.77
     },
     {
       "from": "10.ball",
       "mood": "hope",
-      "at": 77.67
+      "at": 96.87
     },
     {
       "from": "12.quiet",
       "mood": "none",
-      "at": 103.43
+      "at": 125.5
     },
     {
       "from": "12.left",
       "mood": "sad",
-      "at": 104.9
+      "at": 127.1
     },
     {
       "from": "13.gate",
       "mood": "dark",
-      "at": 108.57
+      "at": 131.57
     },
     {
       "from": "14.sub",
       "mood": "town",
-      "at": 115.17
+      "at": 138.73
     }
   ],
   "music_file": {
@@ -62,49 +62,21 @@
   },
   "beds": 11,
   "measured": {
-    "musicUnderVoiceDb": 18.3,
-    "secondsWithoutMusic": 3.2,
+    "musicUnderVoiceDb": 18.1,
+    "secondsWithoutMusic": 3.7,
     "bedsUnderVoiceDb": 25.7,
-    "sfx": 264,
-    "sfxPerMinute": 135.1,
-    "sfxKinds": 39,
-    "longestGapSeconds": 1.8,
-    "longestGapAt": 46.5,
+    "sfx": 284,
+    "sfxPerMinute": 120.9,
+    "sfxKinds": 41,
+    "longestGapSeconds": 2.7,
+    "longestGapAt": 16.4,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 12.9,
-    "voiceOverRestWorstDb": 3.0,
+    "voiceOverRestMedianDb": 13.2,
+    "voiceOverRestWorstDb": 3.4,
     "voiceOverRestWorst": [
       {
-        "db": 3.0,
-        "t": 116.2,
-        "cue": "14.sub",
-        "sounding": [
-          "ding"
-        ]
-      },
-      {
-        "db": 4.4,
-        "t": 85.9,
-        "cue": "11.throw",
-        "sounding": [
-          "chime",
-          "ding",
-          "power_down",
-          "thud"
-        ]
-      },
-      {
-        "db": 4.4,
-        "t": 102.5,
-        "cue": "11.last",
-        "sounding": [
-          "hit",
-          "power_down"
-        ]
-      },
-      {
-        "db": 4.6,
-        "t": 27.1,
+        "db": 3.4,
+        "t": 39.8,
         "cue": "3.noon",
         "sounding": [
           "bell",
@@ -114,30 +86,54 @@
         ]
       },
       {
+        "db": 3.6,
+        "t": 139.7,
+        "cue": "14.sub",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 23.0,
+        "cue": "2.ran",
+        "sounding": [
+          "buzz",
+          "slide_down",
+          "swish"
+        ]
+      },
+      {
         "db": 4.9,
-        "t": 88.1,
+        "t": 108.7,
         "cue": "11.fire",
         "sounding": [
           "fire_whoosh",
           "power_down",
-          "sting",
-          "whoosh_low"
+          "sting"
         ]
       },
       {
-        "db": 5.0,
-        "t": 59.3,
-        "cue": "8.night",
+        "db": 5.5,
+        "t": 124.3,
+        "cue": "11.last",
         "sounding": [
-          "boom",
-          "power_up",
-          "whoosh"
+          "hit",
+          "power_down"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 105.8,
+        "cue": "11.throw",
+        "sounding": [
+          "power_down"
         ]
       }
     ],
     "lufs": -15.2,
-    "truePeakDb": -2.0,
-    "limiterMaxDb": 3.9
+    "truePeakDb": -1.2,
+    "limiterMaxDb": 3.6
   },
   "failures": []
 }
