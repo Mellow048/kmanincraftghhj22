@@ -5,10 +5,10 @@
   "seconds": 144.0,
   "built_from": {
     "timing.json": "aa97400a91b1be06a682eea5e294cd3a535029df",
-    "sound.json": "33ffa566e06da96b1390ccfd8b4c3a6a0b4caba3",
+    "sound.json": "792d9bee7c6d598f810ccbbc604f89a1015e2cd7",
     "narration.mp3": "8ab2b2e3208564044571adbeb0e8f28afeebf63d"
   },
-  "mix_sha1": "bcde2f5e173dd28560f11d691df8da248c610fce",
+  "mix_sha1": "1efe0e953b87e5791694c8f76c428f4da1fbd931",
   "music_sections": [
     {
       "from": "1.race",
@@ -170,7 +170,7 @@
     "sfxKinds": 34,
     "longestGapSeconds": 2.2,
     "longestGapAt": 140.0,
-    "sfxBuried": 1,
+    "sfxBuried": 0,
     "voiceOverRestMedianDb": 12.5,
     "voiceOverRestWorstDb": 3.4,
     "voiceOverRestWorst": [
