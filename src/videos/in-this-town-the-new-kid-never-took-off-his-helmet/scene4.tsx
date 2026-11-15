@@ -194,7 +194,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.off",
       cut: 1.05,
-      ...cam.push({ on: at(FELL, -0.25, 0.1, -0.25), dist: 2.0, to: 1.65, yaw: 35, pitch: 1, fov: 30 }),
+      ...cam.push({ on: at(FELL, -0.3, 0.3, -0.3), dist: 3.7, to: 3.2, yaw: 35, pitch: 4, fov: 34 }),
       impacts: [{ at: 0.3, amp: 0.05, dur: 0.35 }, { at: 0.72, amp: 0.02, dur: 0.25 }],
       zone: "woods",
       look: NIGHT,
@@ -212,7 +212,7 @@ export const scene4 = storyScene(timing, {
               <Helmet position={[FELL[0] / KID, y / KID, FELL[2] / KID]} rotation={[0.2 + (1 - fall) * 2 + rock * 0.4, 0.7 + (1 - fall) * 1.5, 1.2 + rock]} />
             </group>
             <Three at={[HOLD[0], HOLD[1], mix(at(P, 0.04, 0, 0.9), PUL, ease(ramp(t, 0.1, 0.8)))]} mood={[{ animation: "hold", face: "wow" }, { animation: "hold", face: "wow" }, { animation: t < 0.8 ? "stagger" : "scared", face: "fear" }]} />
-            <Fill position={at(P, 0, 0.9, 0.5)} power={3 + 9 * light + 2 * Math.sin(t * 11) * light} color={PURPLE} reach={5} />
+            <Fill position={at(P, 0, 0.9, 0.5)} power={1.2 + 3.6 * light + 0.9 * Math.sin(t * 11) * light} color={PURPLE} reach={4} />
             <Fill position={at(FELL, 0.8, 0.8, 0.9)} power={3} color="#ffd9a0" reach={3} />
           </>
         );
@@ -238,7 +238,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.noface",
       cut: 0.95,
-      ...cam.push({ on: at(P, 0, 1.2, 0.6), dist: 2.7, to: 2.35, yaw: 157, pitch: 11, fov: 42 }),
+      ...cam.push({ on: at(P, 0, 1.15, 0.6), dist: 3.7, to: 3.3, yaw: 150, pitch: 27, fov: 42 }),
       zone: "woods",
       look: NIGHT,
       note: "No words. From behind his bare head, so we still have not seen it: the two who held his arms let go, one and then the other, and step away from him. He lifts his head and looks at each of them.",
@@ -294,7 +294,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.moved",
       cut: 1.7,
-      ...cam.push({ on: at(P, 0, 1.28, 0.55), dist: 3.5, to: 3.25, yaw: 90, pitch: 2, fov: 46 }),
+      ...cam.push({ on: at(P, 0, 1.25, 0.55), dist: 3.9, to: 3.6, yaw: 90, pitch: 3, fov: 46 }),
       zone: "woods",
       look: NIGHT,
       note: "No words. From the side: the small kid on the left, the big one on the right, shaking and not able to move. The thin arm crosses the gap between them slowly and touches his face. Then it is gone back in, fast.",
@@ -309,7 +309,7 @@ export const scene4 = storyScene(timing, {
             <Three
               hide={[1]}
               at={[at(FREE[0], -0.25 * reach, 0, 0.2 * reach), FREE[1], at(PUL, Math.sin(t * 44) * 0.01, 0, 0)]}
-              mood={[{ animation: "cower", face: "fear" }, {}, { animation: "scared", face: "fear" }]}
+              mood={[{ animation: "cower", face: "fear" }, {}, { animation: "idle", face: "fear" }]}
             />
             <Fill position={at(P, 2.2, 1.5, 0.55)} power={5} color="#ffd9a0" reach={5} />
             <Fill position={at(HEADP, 0, 0, 0.5)} power={4 + Math.sin(t * 7)} color={PURPLE} reach={3.5} />
