@@ -133,13 +133,13 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.glint",
-      ...cam.push({ on: [A + 7.8, 0.85, 2.0], dist: 5.0, to: 4.0, yaw: 262, pitch: 20, fov: 44 }),
+      ...cam.push({ on: [A + 7.8, 0.62, 1.9], dist: 3.2, to: 2.5, yaw: 256, pitch: 4, fov: 40 }),
       zone: "arena",
       look: "overworld-day",
       note: "SLOW: a gold band with three buttons on the hand of the boy in front. The same ring, on somebody else, in the same race.",
       stage: () => (
         <>
-          <Rival position={[A + 7.8, -0.55, 2]} rotationY={Math.PI / 2} animation="reach" face="smug" ring />
+          <Rival position={[A + 7.8, -0.2, 2]} rotationY={Math.PI / 2} animation="reach" face="smug" ring />
         </>
       ),
     },
