@@ -133,7 +133,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.glint",
-      ...cam.push({ on: [A + 7.8, 0.75, 2.0], dist: 2.7, to: 2.1, yaw: 268, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [A + 7.8, 0.85, 2.0], dist: 5.0, to: 4.0, yaw: 262, pitch: 20, fov: 44 }),
       zone: "arena",
       look: "overworld-day",
       note: "SLOW: a gold band with three buttons on the hand of the boy in front. The same ring, on somebody else, in the same race.",
