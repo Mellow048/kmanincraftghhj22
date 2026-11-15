@@ -114,7 +114,7 @@ export const scene8 = storyScene(timing, {
       note: "Right at the water line, on his hands: the ring is doing the work and his arms are only holding on to it.",
       stage: () => (
         <>
-          <Crawling at={[A + 4, -0.02, 1]} turn={Math.PI / 2} ring />
+          <Crawling at={[A + 4, 0.07, 1]} turn={Math.PI / 2} ring />
         </>
       ),
     },
@@ -198,13 +198,13 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.dare",
-      ...cam.push({ on: [A + 9.8, 0.85, 1.2], dist: 3.4, to: 2.8, yaw: 40, pitch: 12, fov: 42 }),
+      ...cam.push({ on: [A + 9.8, 0.95, 1.2], dist: 3.8, to: 3.2, yaw: 44, pitch: 10, fov: 42 }),
       zone: "arena",
       look: "overworld-day",
       note: "His thumb over the red button, and the ring glowing under it. He could. He does not. The film's choice happens in one centimetre.",
       stage: () => (
         <>
-          <Hero position={[A + 9.8, -0.75, 1.2]} rotationY={Math.PI / 2} animation="press" face="worried" ring />
+          <Hero position={[A + 9.8, -0.45, 1.2]} rotationY={Math.PI / 2} animation="press" face="worried" ring />
         </>
       ),
     },
