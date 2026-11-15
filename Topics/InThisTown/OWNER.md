@@ -132,3 +132,9 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   picked the fourth (`voice-03` of that session; the clips are in
   `public/audio/in-this-town-every-kid-got-an-iron-golem/raw/`). He has not said what he thinks of the full track, the
   mix or the film: nobody has listened to the mix.
+- **2026-11-15, the snow golem film, checked from the render.** Three frames of every shot were pulled out of the mp4
+  and looked at; fifteen shots were changed and the film rendered again. What the stills by shot had missed: a night
+  street shot from 20 m is only fog (light it and go closer); a window in a night room was daylight blue; a top shot
+  of a golem losing an arm could not be read (shot again from the side, with the town laughing behind); people cut in
+  half by the edge of the frame in six shots; a face light close to sand burns the ground white. Look at the mp4, not
+  only at the stills, before saying a film is done.
