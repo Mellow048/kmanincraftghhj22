@@ -208,7 +208,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.too",
-      ...cam.push({ on: [TRIO[1][0], -0.2, TRIO[1][2] + 0.3], dist: 3.0, to: 2.5, yaw: 5, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [TRIO[1][0], 0.12, TRIO[1][2] + 0.3], dist: 3.0, to: 2.5, yaw: 5, pitch: 10, fov: 40 }),
       zone: "river",
       look: DAY,
       note: "Six feet in a row on the grass, close: six red shoes with a green light on the side of every right one. A glint runs along them, one, two, three.",

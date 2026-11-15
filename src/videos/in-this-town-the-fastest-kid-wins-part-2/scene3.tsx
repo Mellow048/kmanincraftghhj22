@@ -357,7 +357,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.truck({ on: DS(X0.catch - 8 + 1.0, 1.55, ME_Z - 2.0), dist: 3.4, yaw: 20, pitch: 3, fov: 44, by: [2.2 * 2.23, 0, 0] }),
+      ...cam.truck({ on: DS(X0.catch - 8 + 1.0, 1.8, ME_Z - 2.0), dist: 3.4, yaw: 20, pitch: 3, fov: 44, by: [2.2 * 2.23, 0, 0] }),
       ease: "linear",
       zone: "desert",
       look: DAY,

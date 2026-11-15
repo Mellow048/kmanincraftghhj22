@@ -167,7 +167,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Me position={[MEAT[0], hop(t, hey, 0.22, 0.3), MEAT[2]]} rotationY={MRY} animation={t > hey ? "scared" : "idle"} face={t > hey ? "wow" : "smile"} lookAt={t > hey ? faceOf(HIM) : undefined} />
             <Rival position={[HIM[0] + 2.4 * (1 - k), 0, HIM[2] + 0.9 * (1 - k)]} rotationY={-E - 0.3} animation={k < 1 ? "walk" : "idle"} animDistance={k * 2.6} face="calm" headRoll={0.2 * ease(ramp(t, hey, hey + 0.3))} lookAt={faceOf(MEAT)} />
-            <Bubble text="HEY." position={[HIM[0], 2.1, HIM[2]]} rotationY={NRY} scale={0.5 * pop(t, hey)} />
+            <Bubble text="HEY." position={[HIM[0] - 0.35, 2.1, HIM[2]]} rotationY={NRY} scale={0.5 * pop(t, hey)} />
           </>
         );
       },
@@ -196,7 +196,7 @@ export const scene2 = storyScene(timing, {
         <>
           <Me position={MEAT} rotationY={MRY} animation="shrug" face="smile" lookAt={faceOf(HIM)} />
           <Rival position={HIM} rotationY={-E - 0.3} animation="idle" face="calm" lookAt={faceOf(MEAT)} />
-          <Bubble text="POOPING." position={[MEAT[0] + 0.1, 1.95, MEAT[2]]} rotationY={NRY} scale={0.45 * pop(t, 0.25)} />
+          <Bubble text="POOPING." position={[MEAT[0] + 0.6, 2.0, MEAT[2]]} rotationY={NRY} scale={0.36 * pop(t, 0.25)} />
         </>
       ),
     },
@@ -225,7 +225,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Me position={MEAT} rotationY={MRY} animation="idle" face="grin" headPitch={t > nod ? 0.3 * Math.abs(Math.sin((t - nod) * 11)) : 0} />
             <Rival position={HIM} rotationY={-E - 0.3 + 1.1 * bump(t, 0.2, 1.3)} animation="point" face="uneasy" headYaw={-0.6 * bump(t, 0.2, 1.3)} />
-            <Bubble text="IN THE RIVER?" position={[HIM[0] + 0.1, 2.15, HIM[2]]} rotationY={NRY} scale={0.42 * pop(t, 0.2)} />
+            <Bubble text="IN THE RIVER?" position={[HIM[0] - 0.55, 2.15, HIM[2]]} rotationY={NRY} scale={0.32 * pop(t, 0.2)} />
           </>
         );
       },
@@ -241,7 +241,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Rival position={HIM} rotationY={NRY + 0.5} animation={t < first ? "lookAround" : "shrug"} face={t < first ? "uneasy" : "calm"} headRoll={t < first ? 0.18 * Math.sin(t * 3) : 0} />
-            <Place text="1st" position={[HIM[0], 2.25, HIM[2]]} rotationY={NRY} scale={0.5 * pop(t, first)} />
+            <Place text="1st" position={[HIM[0], 2.08, HIM[2]]} rotationY={NRY} scale={0.5 * pop(t, first)} />
             <Glint position={[HIM[0], 2.25, HIM[2] - 0.1]} t={t - first} size={1.0} />
           </>
         );

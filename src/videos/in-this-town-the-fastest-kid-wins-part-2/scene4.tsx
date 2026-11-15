@@ -82,7 +82,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Rival position={DS(x, 0, ME_Z - 0.5)} rotationY={E} animation="run" animDistance={x} face={t > say ? "angry" : "uneasy"} headYaw={-1.2} headPitch={0.3 * bump(t, 0.1, 0.8)} />
             <Me position={DS(x - 1.5, 0, ME_Z + 0.7)} rotationY={E} animation="run" animDistance={x} face="smile" headYaw={-0.5} />
-            <Bubble text="HE PAINTED THEM." position={DS(x + 0.2, 2.4, ME_Z - 0.5)} rotationY={1.0} scale={0.27 * pop(t, say)} />
+            <Bubble text="HE PAINTED THEM." position={DS(x - 0.25, 2.35, ME_Z - 0.1)} rotationY={1.0} scale={0.2 * pop(t, say)} />
           </>
         );
       },
