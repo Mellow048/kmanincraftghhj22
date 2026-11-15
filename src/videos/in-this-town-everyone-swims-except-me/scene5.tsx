@@ -10,7 +10,7 @@ import { EAST, HM, Hero, NORTH, Puffs, Ring, SOUTH, Stranger, Towel, WD, WEST, W
 const HIM = WD(-0.95, 0, 4);
 const ME = WD(1.0, 0, 4);
 /** The ring on the stranger's open hand. */
-const PALM = WD(-0.22, 1.5, 4.37);
+const PALM = WD(-0.58, 1.02, 4.0);
 const CALL = w("5.call", "called");
 const HOLD = w("5.stranger", "holding");
 const SLEEP = w("5.lamp", "went");
@@ -69,7 +69,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.stranger",
-      ...cam.push({ on: WD(0, 1.3, 4), dist: 6.3, to: 5.3, yaw: 0, pitch: 3, fov: 42 }),
+      ...cam.push({ on: WD(0, 1.2, 4), dist: 7.4, to: 6.6, yaw: 0, pitch: 3, fov: 42 }),
       zone: "woods",
       look: "overworld-night",
       note: "Side on, both of them: something very tall and very dark on the left of the path, him small on the right with his head tipped back. An arm comes out from the dark, level, slowly.",
@@ -77,9 +77,10 @@ export const scene5 = storyScene(timing, {
         const out = tw(t, 0.15, HOLD);
         return (
           <>
-            <Stranger position={HIM} rotationY={EAST} pose={posed("idle", t * 0.3, { armR: [-1.28 * out, 0, 0], head: [0.25, 0, 0] })} />
+            <Stranger position={HIM} rotationY={EAST} ring nod={0.2} />
+          <pointLight position={WD(-0.5, 2.3, 6.3)} color="#b4c8ff" intensity={9} distance={7.5} decay={1.5} />
+          <pointLight position={WD(-2.4, 2.6, 3.0)} color="#b4c8ff" intensity={5} distance={6} decay={1.5} />
             <Hero position={ME} rotationY={WEST} animation="scared" face="fear" headPitch={-0.35} />
-            <Ring position={PALM} scale={3.4} glow={1.4} lit={1} />
             {ringLight([PALM[0] + 0.2, PALM[1] + 0.2, PALM[2] + 0.3], 1.5 * out)}
             <Glow position={PALM} size={0.5 + out * 0.5} color="#ffd98a" opacity={0.5 * out} />
           </>
@@ -95,9 +96,10 @@ export const scene5 = storyScene(timing, {
       note: "The open hand, and on it a gold band with three small buttons along one side: red, yellow, green. It is the brightest thing in the wood. His face, behind it, is lit by it.",
       stage: (t) => (
         <>
-          <Stranger position={HIM} rotationY={EAST} pose={posed("idle", t * 0.3, { armR: [-1.28, 0, 0], head: [0.25, 0, 0] })} />
+          <Stranger position={HIM} rotationY={EAST} ring nod={0.2} />
+          <pointLight position={WD(-0.5, 2.3, 6.3)} color="#b4c8ff" intensity={9} distance={7.5} decay={1.5} />
+          <pointLight position={WD(-2.4, 2.6, 3.0)} color="#b4c8ff" intensity={5} distance={6} decay={1.5} />
           <Hero position={ME} rotationY={WEST} animation="idle" face="surprised" headPitch={-0.3} />
-          <Ring position={[PALM[0], PALM[1] + Math.sin(t * 3) * 0.006, PALM[2]]} rotation={[0, t * 0.5, 0]} scale={3.4} glow={1.6} lit={((Math.floor(t * 3) % 3) + 1) as 1 | 2 | 3} />
           {ringLight([PALM[0] + 0.3, PALM[1] + 0.25, PALM[2] + 0.2], 2.4)}
           <Glow position={PALM} size={0.9} color="#ffd98a" opacity={0.45} />
         </>
@@ -105,15 +107,16 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.ask",
-      ...cam.push({ on: WD(0.45, 1.2, 4.0), dist: 4.7, to: 4.1, yaw: 20, pitch: 2, fov: 40 }),
+      ...cam.push({ on: WD(0.05, 1.05, 4.0), dist: 5.9, to: 5.3, yaw: 20, pitch: 2, fov: 40 }),
       zone: "woods",
       look: "overworld-night",
       note: "Past a dark shoulder and a dark arm: his face in the ring's gold light, talking fast, pointing at it, then at himself, then at it.",
       stage: (t) => (
         <>
-          <Stranger position={HIM} rotationY={EAST} pose={posed("idle", t * 0.3, { armR: [-1.28, 0, 0], head: [0.25, 0, 0] })} />
+          <Stranger position={HIM} rotationY={EAST} ring nod={0.2} />
+          <pointLight position={WD(-0.5, 2.3, 6.3)} color="#b4c8ff" intensity={9} distance={7.5} decay={1.5} />
+          <pointLight position={WD(-2.4, 2.6, 3.0)} color="#b4c8ff" intensity={5} distance={6} decay={1.5} />
           <Hero position={ME} rotationY={WEST} animation="talk" arms="point" face="uneasy" headPitch={-0.3 + Math.sin(t * 6) * 0.08} />
-          <Ring position={PALM} scale={3.4} glow={1.6} lit={1} />
           {ringLight([PALM[0] + 0.4, PALM[1] + 0.1, PALM[2]], 2.6)}
           <pointLight position={WD(0.8, 2.6, 6.6)} color="#9db8ff" intensity={5} distance={9} decay={1.6} />
         </>
@@ -127,9 +130,10 @@ export const scene5 = storyScene(timing, {
       note: "Up at the head from below, against the pale light: no mouth that moves, nothing in the eyes. It does not even turn to look at him.",
       stage: (t) => (
         <>
-          <Stranger position={HIM} rotationY={EAST} pose={posed("idle", t * 0.2, { armR: [-1.28, 0, 0], head: [0.25, 0, 0] })} />
+          <Stranger position={HIM} rotationY={EAST} ring nod={0.2} />
+          <pointLight position={WD(-0.5, 2.3, 6.3)} color="#b4c8ff" intensity={9} distance={7.5} decay={1.5} />
+          <pointLight position={WD(-2.4, 2.6, 3.0)} color="#b4c8ff" intensity={5} distance={6} decay={1.5} />
           <Hero position={ME} rotationY={WEST} animation="idle" face="uneasy" headPitch={-0.35} />
-          <Ring position={PALM} scale={3.4} glow={1.6} lit={1} />
           {ringLight([PALM[0] + 0.4, PALM[1] + 0.1, PALM[2]], 3)}
           <pointLight position={WD(-1.4, 2.8, 1.6)} color="#9db8ff" intensity={4} distance={8} decay={1.6} />
           <Wisps position={WD(-0.95, 0.4, 4)} t={t} count={6} reach={1.6} color="#cfe0ff" size={0.1} opacity={0.35} dir={[0, 1, 0]} />
@@ -144,7 +148,7 @@ export const scene5 = storyScene(timing, {
       note: "And it is walking away up the path, already half gone between the trunks, and he is standing there with both hands out and a ring in them.",
       stage: (t) => (
         <>
-          <Stranger position={WD(-0.6, 0, 3.2 - t * 5.5)} rotationY={NORTH} animation="walk" animDistance={t * 5.5} />
+          <Stranger position={WD(-0.6, 0, 3.2 - t * 5.5)} rotationY={NORTH} walk={t * 5.5} />
           <Hero position={ME} rotationY={SOUTH + 0.2} headPitch={0.4} pose={posed("idle", t, { armR: [-1.15, 0, -0.28], armL: [-1.15, 0, 0.28] })} face="surprised" />
           <Ring position={WD(1.08, 0.93, 4.42)} scale={3} glow={1.5} lit={1} />
           {ringLight(WD(1.1, 1.2, 4.7), 2.4)}

@@ -9,7 +9,7 @@ His plot, his order, his lines. Everything added is listed below.
 **The premise, in four sentences.** In this town, we hold a swimming race every summer, and the winner gets a big
 trophy. I can't swim — I can shower, but the moment the water passes my toes I panic like a salted worm. I trained
 for four days, almost drowned twice, and learned just enough to stay on top of the water. Then a stranger in the
-woods gave me a ring with three buttons on it, and the water stopped being a problem — until the race, when I saw
+woods (a villager in a black suit) gave me a ring with three buttons on it, and the water stopped being a problem — until the race, when I saw
 another ring on the hand in front of me.
 
 **One sentence:** A kid who is scared of water gets a magic ring three days before the town's swimming race, and
@@ -153,7 +153,10 @@ What is planted, and where it pays off:
 [8.lose]      He touched the wall first.
 [8.secondplace] The trophy was one place away.
 [8.tiles]     I lay on the white tiles, exhausted.
-[8.hand]      I looked at his hand.
+[8.atleast]   Well, at least I'm second. I've never been second.
+[8.hand]      Then I looked at his hand.
 [8.problem]   This is going to be a problem.
+
+# clip 09-sub wait 1.0
 [8.sub]       Like and subscribe for part two.
 ```

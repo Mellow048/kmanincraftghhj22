@@ -1,5 +1,6 @@
 import type React from "react";
 import { Glow, MinecraftAvatar, PixelText, Vox, getPose, mulberry32, useFilmTime } from "../../engine";
+import { wordTexture } from "../../engine/pixelfont";
 import type { FaceName, MinecraftAvatarProps, Pose, Timing, Vec3 } from "../../engine";
 import { KID, Puffs, ROBE, Villager, ease, ramp, wordClock } from "../../../Topics/InThisTown";
 import timingJson from "./timing.json";
@@ -88,27 +89,24 @@ type A = Partial<MinecraftAvatarProps> & { ring?: boolean | 1 | 2 | 3 };
  * A ring on the right hand. It is parented to the hand in MinecraftAvatar, so it stays on the finger
  * through every gesture instead of floating where a hand used to be.
  */
-const Worn: React.FC<{ lit?: 0 | 1 | 2 | 3; tint?: string }> = ({ lit = 3, tint = "#e6c068" }) => (
-  // A band wide enough to close around the arm it is worn on: a finger-sized hoop on a blocky
-  // Minecraft arm has to sit in the air beside it, which is what the owner rightly called out.
-  <group position={[0, 0.09, 0]} rotation={[Math.PI / 2, 0, 0]}>
+const Worn: React.FC<{ lit?: 0 | 1 | 2 | 3 }> = ({ lit = 3 }) => (
+  // What the ring looks like ON: one yellow stripe round the forearm, with three dots on the outside of it.
+  // (The owner: "edit the design on the main character's arm to have 1 yellow stripe with 3 dots as buttons".)
+  <group position={[0, 0.09, 0]}>
     <mesh>
-      <torusGeometry args={[0.117, 0.021, 10, 26]} />
-      <meshStandardMaterial color={tint} metalness={0.95} roughness={0.2} emissive="#4a3408" emissiveIntensity={1.1} />
+      <boxGeometry args={[0.243, 0.085, 0.243]} />
+      <meshStandardMaterial color="#f4c21e" roughness={0.45} emissive="#7a5a00" emissiveIntensity={0.5} />
     </mesh>
-    {[0, 1, 2].map((i) => {
-      const a = -0.85 + i * 0.62;
-      return (
-        <mesh key={i} position={[Math.cos(a) * 0.117, Math.sin(a) * 0.117, 0]}>
-          <boxGeometry args={[0.034, 0.034, 0.03]} />
-          <meshStandardMaterial
-            color={i === 0 ? "#e2574a" : i === 1 ? "#e8d27a" : "#7fd4a0"}
-            emissive={i === lit - 1 ? "#fff0c0" : "#000000"}
-            emissiveIntensity={i === lit - 1 ? 2.6 : 0}
-          />
-        </mesh>
-      );
-    })}
+    {[0, 1, 2].map((i) => (
+      <mesh key={i} position={[0.125, 0, (i - 1) * 0.072]}>
+        <boxGeometry args={[0.02, 0.046, 0.046]} />
+        <meshStandardMaterial
+          color={i !== lit - 1 ? "#2b2620" : i === 0 ? "#ff4a3a" : i === 1 ? "#ff9a1e" : "#35e06a"}
+          emissive={i !== lit - 1 ? "#000000" : i === 0 ? "#ff4a3a" : i === 1 ? "#ff9a1e" : "#35e06a"}
+          emissiveIntensity={i === lit - 1 ? 2.2 : 0}
+        />
+      </mesh>
+    ))}
   </group>
 );
 
@@ -163,16 +161,21 @@ export const Rival: React.FC<A> = ({ ring = false, children, ...p }) => (
   </MinecraftAvatar>
 );
 
-/** The stranger in the woods. Never seen from the front. */
-export const Stranger: React.FC<A> = (p) => (
-  <MinecraftAvatar
-    scale={1.22}
-    outfit="shadow"
-    skin="#8f8f96"
-    hair="#101014"
-    colors={{ torso: "#1b1f2a", arms: "#1b1f2a", legs: "#141821" }}
-    face="blank"
-    {...p}
+/**
+ * The stranger in the woods: a villager in a black suit, the size of any villager. (He was a tall copy of the
+ * hero's own body in grey, and the owner asked why.) He carries the ring on his folded sleeves, as villagers
+ * carry everything.
+ */
+export const SUIT = "#1e1e26";
+export const Stranger: React.FC<{ position: Vec3; rotationY?: number; walk?: number; ring?: boolean; nod?: number; lookAt?: Vec3; glow?: number }> = ({ position, rotationY = 0, walk, ring = false, nod, lookAt, glow = 1.5 }) => (
+  <Villager
+    position={position}
+    rotationY={rotationY}
+    robe={SUIT}
+    walk={walk}
+    nod={nod}
+    lookAt={lookAt}
+    carry={ring ? <Ring position={[0, 0.07, 0.04]} rotation={[-0.75, 0, 0]} scale={3.4} glow={glow} /> : undefined}
   />
 );
 
@@ -787,25 +790,12 @@ export const Ring: React.FC<{
   glow?: number;
   lit?: 0 | 1 | 2 | 3;
   tint?: string;
-}> = ({ position, rotation = [0, 0, 0], scale = 1, glow = 0.4, lit = 1, tint = "#e6c068" }) => (
+}> = ({ position, rotation = [0, 0, 0], scale = 1, glow = 0.4, tint = "#e6c068" }) => (
   <group position={position} rotation={rotation} scale={scale}>
     <mesh rotation={[Math.PI / 2, 0, 0]}>
-      <torusGeometry args={[0.027, 0.0065, 10, 22]} />
+      <torusGeometry args={[0.027, 0.0085, 12, 28]} />
       <meshStandardMaterial color={tint} metalness={0.95} roughness={0.22} emissive="#4a3408" emissiveIntensity={glow} />
     </mesh>
-    {/* the three buttons, on the outside of the band */}
-    {[0, 1, 2].map((i) => (
-      <mesh key={i} position={[0, 0.006, 0.029 + i * 0.012]}>
-        <boxGeometry args={[0.009, 0.005, 0.008]} />
-        <meshStandardMaterial
-          color={i === 0 ? "#e2574a" : i === 1 ? "#e8d27a" : "#7fd4a0"}
-          emissive={i === lit - 1 ? "#fff0c0" : "#000000"}
-          emissiveIntensity={i === lit - 1 ? 1.6 : 0}
-          metalness={0.6}
-          roughness={0.35}
-        />
-      </mesh>
-    ))}
   </group>
 );
 
@@ -1269,3 +1259,26 @@ export const StartLine: React.FC<{ tl: number; go: number; only?: number[]; hero
     </>
   );
 };
+
+/**
+ * The small word that pops up over the band when a button is pressed: MAX, MEDIUM, LOW. It bounces in, and
+ * 1.2 seconds after `from` it has faded away. `yaw` and `pitch` are the shot's, in degrees, so it faces the lens.
+ */
+export const PressLabel: React.FC<{ at: Vec3; t: number; from: number; text: string; yaw?: number; pitch?: number; height?: number; color?: string }> = ({ at, t, from, text, yaw = 0, pitch = 0, height = 0.06, color = "#ffffff" }) => {
+  const k = t - from;
+  if (k < 0 || k > 1.2) return null;
+  const tex = wordTexture(text.toUpperCase());
+  const image = tex.image as { width: number; height: number };
+  const pop = 1 + 0.6 * Math.exp(-6 * k) * Math.cos(k * 21) - Math.exp(-14 * k);
+  const hop = Math.abs(Math.sin(k * 9.5)) * Math.exp(-3.5 * k) * height * 0.9;
+  const fade = k < 0.85 ? 1 : Math.max(0, 1 - (k - 0.85) / 0.35);
+  return (
+    <group position={[at[0], at[1] + hop, at[2]]} rotation={[0, (yaw * Math.PI) / 180, 0]}>
+      <mesh rotation={[(-pitch * Math.PI) / 180, 0, 0]} scale={pop} renderOrder={30}>
+        <planeGeometry args={[(image.width / image.height) * height, height]} />
+        <meshBasicMaterial map={tex} color={color} transparent opacity={fade} depthTest={false} depthWrite={false} toneMapped={false} />
+      </mesh>
+    </group>
+  );
+};
+export const BUTTON = { 1: ["MAX", "#ff8a7a"], 2: ["MEDIUM", "#ffd24a"], 3: ["LOW", "#8ff5aa"] } as const;

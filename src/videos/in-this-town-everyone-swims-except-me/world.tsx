@@ -318,6 +318,31 @@ const Arena: React.FC = () => (
     <Lawn w={260} d={150} holes={RACE_HOLES} />
     <FarGround holes={RACE_HOLES} />
     <Treeline r0={150} r1={190} n={36} seed={9} />
+    {/* The arena stands in the town's park, not in an empty field: trees behind both stands, round the start
+        and between the pools, and roofs behind the trees. */}
+    {Array.from({ length: 34 }, (_, i) => {
+      const side = i % 2 ? 1 : -1;
+      const n = Math.floor(i / 2);
+      const x = -46 + n * 6.1 + ((n * 37) % 10) * 0.25;
+      const z = side * (21.5 + ((n * 53 + (side > 0 ? 3 : 0)) % 7) * 1.5);
+      return <Tree key={`row${i}`} position={[x, 0, z]} height={4.6 + ((i * 7) % 4) * 0.7} leaf={i % 3 === 0 ? "#356430" : i % 3 === 1 ? "#3f7f2d" : "#4a8c33"} spread={1.05} />;
+    })}
+    {(
+      [
+        [-33, -13], [-36, -3], [-34, 9], [-40, 15], [-42, -9], [-29, 17], [-30, -18], [-48, 2],
+        [26, -15], [30, 13], [27, 19], [33, -21], [91, -22], [96, 26], [164, -8], [166, 16], [150, 30], [140, -24],
+      ] as Array<[number, number]>
+    ).map(([x, z], i) => (
+      <Tree key={`near${i}`} position={[x, 0, z]} height={4.4 + (i % 4) * 0.8} leaf={i % 2 ? "#3f7f2d" : "#4a8c33"} spread={1.1} />
+    ))}
+    {(
+      [
+        [-52, -14, Math.PI / 2, "#8a3b2a"], [-54, 8, Math.PI / 2, "#3d5f9a"], [-22, -36, 0, "#5a4a6a"], [-4, -38, 0, "#8a3b2a"], [14, -36, 0, "#3f6b3a"],
+        [34, -38, 0, "#3d5f9a"], [-16, 37, Math.PI, "#3f6b3a"], [4, 38, Math.PI, "#8a3b2a"], [24, 37, Math.PI, "#5a4a6a"],
+      ] as Array<[number, number, number, string]>
+    ).map(([x, z, turn, roof], i) => (
+      <Hut key={`hut${i}`} at={[x, 0, z]} w={6 + (i % 3)} h={3.6 + (i % 2) * 0.6} tint={i % 2 ? "#d8c49a" : "#caa268"} roof={roof} windows={[-1.6, 1.6]} turn={turn} />
+    ))}
 
     {/* Pool one: the smallest. Ten lanes. */}
     <Pool length={RACE.L} width={RACE.W} lanes={RACE.lanes} deck={RACE.deck} seed={5} />

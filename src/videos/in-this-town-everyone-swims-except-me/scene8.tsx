@@ -323,6 +323,23 @@ export const scene8 = storyScene(timing, {
       ),
     },
     {
+      cue: "8.atleast",
+      ...cam.top({ on: [LAY[0], 0.1, LAY[2] - 0.45], height: 2.7, to: 2.1, spin: [30, 22], fov: 42 }),
+      zone: "arena",
+      look: "overworld-day",
+      note: "'Well, at least I'm second': still flat on the tiles, but grinning at the sky now, and one tired fist goes up. He has never been second at anything.",
+      stage: (t) => {
+        const up = tw(t, 0.25, 0.7) * (1 - 0.25 * tw(t, 1.5, 2.1));
+        return (
+          <>
+            <ArenaCrowd t={t} cheer={0.5} north={false} south rows={3} />
+            <Hero position={LAY} rotationY={SOUTH} pose={{ ...flatOut(t * 1.4), armR: [-1.35 * up, 0, 0.25 * up + 0.5 * (1 - up)] }} ring={3} face={t < 0.2 ? "sleepy" : "laugh"} />
+            <Towel position={[LAY[0], 0.045, LAY[2]]} color="#cfc6b0" size={[1.9, 0.02, 2.3]} />
+          </>
+        );
+      },
+    },
+    {
       cue: "8.hand",
       ...cam.push({ on: WBAND, dist: 1.7, to: 1.05, yaw: 168, pitch: -6, fov: 38 }),
       zone: "arena",
@@ -361,17 +378,17 @@ export const scene8 = storyScene(timing, {
       ...cam.push({ on: R(16.8, 0.95, -1.1), dist: 3.7, to: 3.05, yaw: 88, pitch: 4, fov: 40 }),
       zone: "arena",
       look: "overworld-day",
-      note: "'Like and subscribe for part two': he sits on the deck with the red sign stuck up beside him, dripping, the pool behind. On 'two' the band on his wrist changes colour by itself.",
+      note: "'Like and subscribe for part two': a breath after the bad news, he sits on the deck under the red sign, looking at the stripe on his arm, then up at us.",
       stage: (t) => {
-        const flip = t > TWO;
+        const said = t > TWO;
         const armR: [number, number, number] = [-1.5, 0, -0.5];
         const band = bandAt({ position: SAT, rotationY: EAST, pose: sitDeck(armR) });
         return (
           <>
             <ArenaCrowd t={t} cheer={0.4} north={false} south rows={3} />
-            <Hero position={SAT} rotationY={EAST} pose={sitDeck(armR)} ring={flip ? 1 : 3} face={flip ? "fear" : "frown"} headPitch={flip ? 0.4 : 0.05} headYaw={flip ? 0.45 : 0} />
+            <Hero position={SAT} rotationY={EAST} pose={sitDeck(armR)} ring={3} face={said ? "uneasy" : "frown"} headPitch={said ? 0.05 : 0.4} headYaw={said ? 0 : 0.45} />
             <SubscribeSign position={R(16.25, 1.5, -1.1)} rotationY={EAST} scale={0.5} tilt={0.04 + Math.sin(t * 15) * 0.01} />
-            <Glow position={band} size={flip ? 0.9 : 0.4} color={flip ? "#ff8a7a" : "#9ff0c0"} opacity={0.45} />
+            <Glow position={band} size={0.4} color="#9ff0c0" opacity={0.4} />
             <Towel position={[LAY[0], 0.045, LAY[2]]} color="#cfc6b0" size={[1.9, 0.02, 2.3]} />
           </>
         );

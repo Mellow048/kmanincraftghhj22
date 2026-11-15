@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-everyone-swims-except-me",
   "mix": "public/audio/in-this-town-everyone-swims-except-me/mix.mp3",
-  "seconds": 140.6,
+  "seconds": 144.0,
   "built_from": {
-    "timing.json": "4b183817e771c1fa127916cc807fc6abf085a841",
-    "sound.json": "97e8841d056adc9b27f9f6f89a277a2edae6766a",
-    "narration.mp3": "748c905837b25d6624e93358a19ec11245739894"
+    "timing.json": "aa97400a91b1be06a682eea5e294cd3a535029df",
+    "sound.json": "33ffa566e06da96b1390ccfd8b4c3a6a0b4caba3",
+    "narration.mp3": "8ab2b2e3208564044571adbeb0e8f28afeebf63d"
   },
-  "mix_sha1": "3e600a6e4963028d43ec7351e7a977acc053e28f",
+  "mix_sha1": "bcde2f5e173dd28560f11d691df8da248c610fce",
   "music_sections": [
     {
       "from": "1.race",
@@ -18,142 +18,142 @@
     {
       "from": "1.shower",
       "mood": "playful",
-      "at": 5.23
+      "at": 6.07
     },
     {
       "from": "1.worm",
       "mood": "sad",
-      "at": 9.0
+      "at": 9.67
     },
     {
       "from": "1.want",
       "mood": "hope",
-      "at": 10.93
+      "at": 11.87
     },
     {
       "from": "2.smell",
       "mood": "playful",
-      "at": 11.93
+      "at": 12.87
     },
     {
       "from": "2.deep",
       "mood": "tense",
-      "at": 21.2
+      "at": 22.67
     },
     {
       "from": "3.phone",
       "mood": "sneak",
-      "at": 30.6
+      "at": 31.83
     },
     {
       "from": "3.try",
       "mood": "playful",
-      "at": 34.27
+      "at": 35.5
     },
     {
       "from": "3.up",
       "mood": "hope",
-      "at": 40.03
+      "at": 40.37
     },
     {
       "from": "3.stop",
       "mood": "dark",
-      "at": 42.43
+      "at": 42.77
     },
     {
       "from": "4.bottom",
       "mood": "none",
-      "at": 45.67
+      "at": 45.93
     },
     {
       "from": "4.shoes",
       "mood": "playful",
-      "at": 48.43
+      "at": 48.9
     },
     {
       "from": "5.home",
       "mood": "sneak",
-      "at": 55.07
+      "at": 55.63
     },
     {
       "from": "5.call",
       "mood": "curious",
-      "at": 56.5
+      "at": 57.2
     },
     {
       "from": "5.cold",
       "mood": "drone",
-      "at": 64.57
+      "at": 64.93
     },
     {
       "from": "6.morning",
       "mood": "hope",
-      "at": 67.7
+      "at": 68.47
     },
     {
       "from": "6.bonk",
       "mood": "wonder",
-      "at": 73.5
+      "at": 75.23
     },
     {
       "from": "6.hurt",
       "mood": "curious",
-      "at": 81.83
+      "at": 82.97
     },
     {
       "from": "6.medium",
       "mood": "tense",
-      "at": 85.77
+      "at": 86.73
     },
     {
       "from": "6.fast",
       "mood": "wonder",
-      "at": 91.27
+      "at": 92.4
     },
     {
       "from": "7.days",
       "mood": "town",
-      "at": 95.37
+      "at": 96.6
     },
     {
       "from": "7.pro",
       "mood": "tense",
-      "at": 101.13
+      "at": 103.53
     },
     {
       "from": "7.big",
       "mood": "curious",
-      "at": 105.6
+      "at": 108.43
     },
     {
       "from": "8.water",
       "mood": "tense",
-      "at": 117.47
+      "at": 118.9
     },
     {
       "from": "8.glint",
       "mood": "none",
-      "at": 124.23
+      "at": 124.67
     },
     {
       "from": "8.panic",
       "mood": "tense",
-      "at": 126.1
+      "at": 126.53
     },
     {
       "from": "8.lose",
       "mood": "sad",
-      "at": 131.57
+      "at": 131.6
     },
     {
       "from": "8.hand",
       "mood": "dark",
-      "at": 136.4
+      "at": 138.57
     },
     {
       "from": "8.sub",
       "mood": "town",
-      "at": 138.8
+      "at": 142.13
     }
   ],
   "music_file": {
@@ -162,21 +162,30 @@
   },
   "beds": 16,
   "measured": {
-    "musicUnderVoiceDb": 17.5,
-    "secondsWithoutMusic": 4.5,
+    "musicUnderVoiceDb": 17.6,
+    "secondsWithoutMusic": 4.7,
     "bedsUnderVoiceDb": 25.5,
-    "sfx": 203,
-    "sfxPerMinute": 86.6,
+    "sfx": 204,
+    "sfxPerMinute": 85.0,
     "sfxKinds": 34,
-    "longestGapSeconds": 2.0,
-    "longestGapAt": 113.6,
-    "sfxBuried": 0,
-    "voiceOverRestMedianDb": 12.4,
-    "voiceOverRestWorstDb": 4.1,
+    "longestGapSeconds": 2.2,
+    "longestGapAt": 140.0,
+    "sfxBuried": 1,
+    "voiceOverRestMedianDb": 12.5,
+    "voiceOverRestWorstDb": 3.4,
     "voiceOverRestWorst": [
       {
-        "db": 4.1,
-        "t": 33.8,
+        "db": 3.4,
+        "t": 139.2,
+        "cue": "8.hand",
+        "sounding": [
+          "sparkle",
+          "sting"
+        ]
+      },
+      {
+        "db": 3.4,
+        "t": 35.0,
         "cue": "3.title",
         "sounding": [
           "ding",
@@ -184,55 +193,42 @@
         ]
       },
       {
-        "db": 4.1,
-        "t": 20.6,
-        "cue": "2.laugh",
+        "db": 3.5,
+        "t": 23.3,
+        "cue": "2.deep",
         "sounding": [
-          "cheer",
-          "swish"
-        ]
-      },
-      {
-        "db": 4.3,
-        "t": 128.4,
-        "cue": "8.second",
-        "sounding": [
-          "ding",
-          "heartbeat",
-          "splash"
+          "sting"
         ]
       },
       {
         "db": 4.7,
-        "t": 39.6,
+        "t": 61.7,
+        "cue": "5.stranger",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 39.8,
         "cue": "3.again2",
         "sounding": [
           "splash"
         ]
       },
       {
-        "db": 5.1,
-        "t": 126.7,
-        "cue": "8.panic",
-        "sounding": [
-          "boom",
-          "splash",
-          "whoosh"
-        ]
-      },
-      {
         "db": 5.3,
-        "t": 127.4,
-        "cue": "8.third",
+        "t": 120.5,
+        "cue": "8.tenth",
         "sounding": [
-          "ding",
+          "heartbeat",
           "splash"
         ]
       }
     ],
-    "lufs": -14.8,
-    "truePeakDb": -2.2,
-    "limiterMaxDb": 0.9
+    "lufs": -15.3,
+    "truePeakDb": -1.7,
+    "limiterMaxDb": 4.1
   },
   "failures": []
 }

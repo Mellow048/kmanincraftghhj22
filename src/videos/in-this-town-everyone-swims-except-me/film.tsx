@@ -24,6 +24,13 @@ import { scene8 } from "./scene8";
  * The first build ran every shot through a wrapper that pushed the lens back to 3.9 m and up to eye line,
  * which is why it was a film of small figures in the middle of a pool. That wrapper is gone: each shot
  * here is framed by hand, on the thing the line is about.
+ *
+ * SECOND PASS (same day, the owner's notes): the stranger is a villager in a black suit, the size of a villager;
+ * the loose ring is a plain gold ring, and WORN it is one yellow stripe on the arm with three dots; a small word
+ * (MAX / MEDIUM / LOW) bounces up when a dot lights and is gone 1.2 s later; the arena has trees and roofs round it;
+ * and the ending has his line "Well, at least I'm second. I've never been second.", then "This is going to be a
+ * problem.", one second of air, and the subscribe line. The film's first voice was not the owner's chosen one, and
+ * the new line could not be said in it, so the whole narration is re-recorded in `voice-03` (tempo 1.42).
  */
 export const film = defineFilm({
   id: "in-this-town-everyone-swims-except-me",

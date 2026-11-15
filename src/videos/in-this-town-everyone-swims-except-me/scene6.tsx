@@ -2,6 +2,7 @@ import { Glow, cam, storyScene } from "../../engine";
 import {
   Chicken, Dive, Drops, EAST, Foam, HM, Hang, Hero, NORTH, P, PoolLife, Ring, SOUTH, Splash, Stars, Swim, WEST, WL, Wake, posed, sine, timing, tw, w,
   bandAt, hangBody,
+  BUTTON, PressLabel,
 } from "./kit";
 
 /**
@@ -47,7 +48,7 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Hero position={HM(0, 0, 0.5)} rotationY={SOUTH} pose={posed("idle", t, { armR: [-1.35, 0, -0.1], armL: [-1.35 + 0.15 * on, 0, 0.45] })} ring={on > 0.95 ? 1 : false} face={on > 0.95 ? "surprised" : "uneasy"} headPitch={0.5} />
-            {on <= 0.95 ? <Ring position={HM(0.2, 0.95, 1.05 - on * 0.12)} rotation={[Math.PI / 2, 0, 0]} scale={4.3} glow={1.2} lit={1} /> : null}
+            {on <= 0.95 ? <Ring position={HM(0.2, 0.95, 1.05 - on * 0.12)} rotation={[Math.PI / 2, 0, 0]} scale={4.3} glow={1.2} /> : null}
             <Glow position={HM(0.2, 0.95, 1.0)} size={0.5 + tw(t, 0.65, 0.8) * 0.5} color="#ffd98a" opacity={0.25 + tw(t, 0.65, 0.8) * 0.3} />
           </>
         );
@@ -294,6 +295,8 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <AtRest t={t} lit={lit} face="uneasy" />
+            {/* each dot is named as it lights */}
+            <PressLabel key={lit} at={[BAND[0] + 0.02, BAND[1] + 0.13, BAND[2]]} t={t} from={lit === 1 ? 0.05 : lit === 2 ? MED - 0.05 : LOW - 0.05} text={BUTTON[lit][0]} color={BUTTON[lit][1]} yaw={70} pitch={30} height={0.05} />
             <Glow position={BAND} size={0.3 + Math.sin(t * 10) * 0.03} color={lit === 1 ? "#ff8a7a" : lit === 2 ? "#ffe28a" : "#9ff0c0"} opacity={0.4} />
           </>
         );
@@ -311,6 +314,7 @@ export const scene6 = storyScene(timing, {
           <>
             <PoolLife lanes={[]} kids={false} />
             <AtRest t={t} lit={press > 0.9 ? 2 : 1} press={press} face="uneasy" />
+            <PressLabel at={[BAND[0], BAND[1] + 0.3, BAND[2]]} t={t} from={0.46} text="MEDIUM" color={BUTTON[2][1]} yaw={62} pitch={30} height={0.11} />
             <Glow position={BAND} size={0.3 + press * 0.3} color="#ffe28a" opacity={0.25 + press * 0.3} />
           </>
         );
@@ -355,6 +359,7 @@ export const scene6 = storyScene(timing, {
               face={press > 0.9 ? "uneasy" : "fear"}
             />
             <Glow position={P(1.4, 0.2, 3.45)} size={0.4 + press * 0.3} color={press > 0.9 ? "#9ff0c0" : "#ffe28a"} opacity={0.35} />
+            <PressLabel at={P(1.6, 0.6, 3.2)} t={t} from={PRESS_LOW + 0.15} text="LOW" color={BUTTON[3][1]} yaw={8} pitch={16} height={0.13} />
           </>
         );
       },
