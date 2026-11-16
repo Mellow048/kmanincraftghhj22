@@ -43,14 +43,14 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "4.tower",
-      from: f(-0.5, 2.0, -6.5),
-      to: f(-2.5, 9.6, -8.5),
-      target: f(-9, 4.0, -14.2),
-      targetTo: up(WATCH, 0.5),
-      fov: 46,
+      from: f(-3.2, 1.1, -5.0),
+      to: f(-6.0, 7.4, -9.2),
+      target: f(-9, 3.0, -14.2),
+      targetTo: up(WATCH, 0.4),
+      fov: 50,
       zone: Z.fort,
       look: NIGHT4,
-      note: "The lookout tower from the yard. The camera climbs it floor by floor: a store room with a barrel, a room with a bed, an open floor with a ladder and a lamp, and on the top one player sits against the flagpole with a spyglass in his lap, fast asleep.",
+      note: "The lookout tower, stood well back so the whole thing is in the picture: four stone legs, open floors climbed by ladders, a lamp on each one, the flag on top. On the very top floor a player sits against the flagpole with a spyglass in his lap, fast asleep. The camera rises up the outside of it to him.",
       stage: (t) => (
         <>
           <Yard t={t} plug hero="sleep" sleeper patrol />
