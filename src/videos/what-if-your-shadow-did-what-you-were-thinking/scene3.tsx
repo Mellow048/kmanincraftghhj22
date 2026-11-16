@@ -101,7 +101,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[0.2, 0, 1.5]} rotationY={NORTH} animation="idle" face="calm" headPitch={-0.3} />
-          <Shadow at={[0.95, 2.3, -2.24]} scale={0.86} arm={0.05 + 0.04 * Math.sin(t * 1.6)} />
+          <Shadow at={[0.95, 2.3, -2.24]} scale={0.86} opacity={1} arm={0.05 + 0.04 * Math.sin(t * 1.6)} />
         </>
       ),
     },
@@ -160,7 +160,7 @@ export const scene3 = storyScene(timing, {
       zone: "street",
       look: "overworld-night",
       note: "Hard on the lit window on its own, from the street: the shadow standing in it, and nothing else alive in the frame. Two years of a room kept ready is all in the fact that the light is still on.",
-      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.9} arm={0.05} />,
+      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.9} opacity={1} arm={0.05} />,
     },
     {
       // The reveal, said as a fact about the room, not about the power.
@@ -169,7 +169,7 @@ export const scene3 = storyScene(timing, {
       zone: "street",
       look: "overworld-night",
       note: "The window from close, so the shadow fills the glass and the frame of the window is around it. It is the size of a kid. That is the whole reveal, and it needs no line at all.",
-      stage: (t) => <Shadow at={[0.95, 2.32, -2.24]} scale={1.0} arm={0.05 + 0.03 * Math.sin(t * 1.4)} />,
+      stage: (t) => <Shadow at={[0.95, 2.32, -2.24]} scale={1.0} opacity={1} arm={0.05 + 0.03 * Math.sin(t * 1.4)} />,
     },
     {
       // The line the film was built for.
@@ -181,7 +181,7 @@ export const scene3 = storyScene(timing, {
       stage: (_t) => (
         <>
           <Hero position={[0.95, 0, 1.3]} rotationY={NORTH} animation="idle" face="ouch" />
-          <Shadow at={[0.95, 2.32, -2.24]} scale={0.86} arm={0.05} />
+          <Shadow at={[0.95, 2.32, -2.24]} scale={0.86} opacity={1} arm={0.05} />
         </>
       ),
     },
@@ -192,7 +192,7 @@ export const scene3 = storyScene(timing, {
       zone: "street",
       look: "overworld-night",
       note: "From inside the glass looking OUT: the shadow's back filling the lower half of the frame, and the dark street beyond it. It has been the main character for a minute, and this is the shot that says so.",
-      stage: (_t) => <Shadow at={[0.95, 2.32, -2.3]} scale={1.05} arm={0.05} />,
+      stage: (_t) => <Shadow at={[0.95, 2.32, -2.3]} scale={1.05} opacity={1} arm={0.05} />,
     },
     {
       cue: "11.mine2",
@@ -200,7 +200,7 @@ export const scene3 = storyScene(timing, {
       zone: "street",
       look: "overworld-night",
       note: "SPLIT: 'it was his, borrowing mine'. Back outside, tighter on the window and the shadow in it, because the sentence is about ownership and the picture should not move while it is said.",
-      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.95} arm={0.05} />,
+      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.95} opacity={1} arm={0.05} />,
     },
     {
       // The rule, closed. The limit from 3.cant, answered by the plant.
@@ -209,7 +209,7 @@ export const scene3 = storyScene(timing, {
       zone: "street",
       look: "overworld-night",
       note: "The whole face of the house with the window in it, and the empty sill under it: a shadow cannot go where its owner has not been, and the one place this one could go was up that wall. Let it drift back slowly. Do not cut away during the explanation.",
-      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.86} arm={0.05} />,
+      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.86} opacity={1} arm={0.05} />,
     },
     {
       cue: "11.why2",
@@ -217,7 +217,7 @@ export const scene3 = storyScene(timing, {
       zone: "street",
       look: "overworld-night",
       note: "SPLIT: 'so it borrowed a brother who could'. Closer again, and the window is still on. The last thing the audience should feel before the daylight is that the light has been on the whole time.",
-      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.9} arm={0.05} />,
+      stage: (_t) => <Shadow at={[0.95, 2.32, -2.24]} scale={0.9} opacity={1} arm={0.05} />,
     },
     {
       // Acceptance, then a new stair.
@@ -274,7 +274,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <DrawnHouse at={SPOT.at(0, 1.9, -3.68)} scale={1.1} />
-          <SubscribeSign position={SPOT.at(0.2, 3.05, -3.6)} rotationY={0} scale={0.8} tilt={0.03 + Math.sin(t * 9) * 0.01} />
+          <SubscribeSign position={SPOT.at(0.2, 3.42, -3.58)} rotationY={0} scale={0.76} tilt={0.03 + Math.sin(t * 9) * 0.01} />
           <Hero position={SPOT.at(0, 0, -2.2)} rotationY={NORTH} animation="idle" face="wow" />
         </>
       ),
@@ -287,7 +287,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <DrawnHouse at={SPOT.at(0.2, 2.15, -3.68)} scale={1.25} />
-          <SubscribeSign position={SPOT.at(0.2, 3.2, -3.62)} rotationY={0} scale={0.9} tilt={0.04 + Math.sin(t * 9) * 0.012} />
+          <SubscribeSign position={SPOT.at(0.2, 3.5, -3.6)} rotationY={0} scale={0.84} tilt={0.04 + Math.sin(t * 9) * 0.012} />
         </>
       ),
     },

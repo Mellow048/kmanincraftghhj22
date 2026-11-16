@@ -60,7 +60,7 @@ export const scene2 = storyScene(timing, {
     {
       // It walks out. The door, and the shadow going through it on its own.
       cue: "7.down",
-      ...cam.push({ on: SPOT.at(3.2, 1.2, -2.6), dist: 4.4, to: 3.6, yaw: 96, pitch: 4, fov: 46 }),
+      ...cam.push({ on: SPOT.at(2.6, 1.25, -2.2), dist: 5.0, to: 4.2, yaw: 148, pitch: 5, fov: 48 }),
       zone: "class",
       note: "The classroom door at the end of the room, open, and a flat black shape halfway out of it with its back to us. He is at his desk, small in the foreground, not following. Nobody has to say anything.",
       stage: (t) => {
@@ -68,7 +68,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={EAST} animation="idle" face="uneasy" />
-            <group rotation={[0, 0, 0]} position={[SPOT.at(3.55 - 0.9 * k, 0, -2.6)[0], 0.02, -2.6]}>
+            <group rotation={[0, 0, 0]} position={[SPOT.at(2.2, 0.02, -0.4 + 2.0 * k)[0], 0.02, -0.4 + 2.0 * k]}>
               <group rotation={[-Math.PI / 2, 0, 0]}>
                 <Shadow at={[0, 0, 0]} opacity={0.5} arm={0.3} />
               </group>
@@ -88,7 +88,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={EAST} animation="idle" face="uneasy" />
-            <group rotation={[0, 0, 0]} position={[SPOT.at(3.55 - 0.9 * k, 0, -2.6)[0], 0.02, -2.6]}>
+            <group rotation={[0, 0, 0]} position={[SPOT.at(2.2, 0.02, -0.4 + 2.0 * k)[0], 0.02, -0.4 + 2.0 * k]}>
               <group rotation={[-Math.PI / 2, 0, 0]}>
                 <Shadow at={[0, 0, 0]} opacity={0.5} arm={0.3} />
               </group>
@@ -100,11 +100,11 @@ export const scene2 = storyScene(timing, {
     {
       // The hallway, with a piece of him in it.
       cue: "7.hall",
-      ...cam.push({ on: HALL.at(0, 1.25, 0.3), dist: 5.0, to: 4.2, yaw: -88, pitch: 3, fov: 50 }),
+      ...cam.push({ on: HALL.at(-1.0, 1.3, 1.3), dist: 4.6, to: 5.6, yaw: -46, pitch: 6, fov: 50 }),
       zone: "hall",
       note: "The long hallway with the lockers, empty except for one flat shadow lying on the floor at the far end, alone, facing away. This is the loneliest picture the pack can make and it costs nothing: a corridor's length does the work.",
       stage: (_t) => (
-        <group rotation={[-Math.PI / 2, 0, 0]} position={HALL.at(4.2, 0.02, 0.2)}>
+        <group rotation={[-Math.PI / 2, 0, 0]} position={HALL.at(4.6, 0.02, 0.4)}>
           <Shadow at={[0, 0, 0]} opacity={0.6} />
         </group>
       ),
