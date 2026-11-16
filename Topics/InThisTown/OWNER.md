@@ -10,6 +10,7 @@ delete one unless he takes it back.
 | When | What |
 |---|---|
 | 2026-11-14 | 11+ subscribers. The two superpower films: about 1.3k views each, 873–875 engaged viewers, 63–65% stayed to watch. |
+| 2026-11-16 | **Monster Village part 1: 5.5k views, 81% stayed to watch** — the channel's best, and the one YouTube kept pushing. It is now the model for how we build every short: [`RETENTION.md`](RETENTION.md). |
 | 2026-11-14 | His target: **70% or more stay to watch**. His words: it "will unlock more viewers"; "just a small adjustment and we are near to getting out of that 1k view jail". |
 
 The format stays. An outside review he trusts said to keep this format and keep improving it, and he agrees. Do not

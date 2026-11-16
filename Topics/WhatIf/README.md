@@ -48,13 +48,15 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 ## Read in this order
 
 1. This page.
-2. [`SCRIPT.md`](SCRIPT.md) — how a power story is written: the rule of the power, its limit, its price.
-3. [`SHOTS.md`](SHOTS.md) — how a power is SHOWN, and how to shoot a classroom in a tall frame. The rest of the
+2. [`RETENTION.md`](RETENTION.md) — how to hold a viewer to the end, taken from the one film that held **81%** of
+   them. Read it with `SCRIPT.md`: the beats are what the story is, this is what keeps somebody watching it.
+3. [`SCRIPT.md`](SCRIPT.md) — how a power story is written: the rule of the power, its limit, its price.
+4. [`SHOTS.md`](SHOTS.md) — how a power is SHOWN, and how to shoot a classroom in a tall frame. The rest of the
    camera is In This Town's: [`../InThisTown/SHOTS.md`](../InThisTown/SHOTS.md).
-4. [`PACK.md`](PACK.md) — what already exists: a school, the signs of a power, a class of kids.
-5. [`SOUND.md`](SOUND.md) — the sounds of a power, and the rest by reference to In This Town's sound.
-6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
-7. A finished film, to see what "built" means. Of this topic there is one, not yet approved:
+5. [`PACK.md`](PACK.md) — what already exists: a school, the signs of a power, a class of kids.
+6. [`SOUND.md`](SOUND.md) — the sounds of a power, and the rest by reference to In This Town's sound.
+7. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
+8. A finished film, to see what "built" means. Of this topic there is one, not yet approved:
    `src/videos/what-if-you-could-see-who-had-a-crush-on-you/` (its `kit.tsx`, `world.tsx`, fourteen scenes and
    `sound.json`). An approved one of the same pipeline: `src/videos/in-this-town-same-face/` and
    [its page](../InThisTown/reference/same-face/README.md). Copy how it is BUILT. Never copy what it tells.
@@ -125,6 +127,7 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
 |---|---|
 | `topic.json` | The numbers `npm run check` enforces for this topic and its long cut, the limits of the sound. `state: "PROVISIONAL"` until a reference is measured |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the story, the picture, the sound |
+| `RETENTION.md` | How to make a short that holds its viewers to the end: what the 81% film did that the rejected one did not |
 | `PACK.md`, `pack.jpg` | The catalogue of the pack |
 | `index.ts` | The pack, from one import: `import { Classroom, Overhead, Echo } from "../../../Topics/WhatIf"` |
 | `school.tsx` | Classroom, Desk, Chalkboard, SchoolHall, and `classroom(at)` for the places in one |

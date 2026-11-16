@@ -23,6 +23,14 @@ That gives you a film folder made from this topic's starter ([`template/`](templ
 `kit.tsx` wired to the pack, a town to change, and one scene with two shots that already render. It does not give
 you a story.
 
+## Read this before you write a word
+
+[**`RETENTION.md`**](RETENTION.md) — how to make a short like "Monster Village part one", the film that held **81%
+of viewers to the end** and is the one YouTube kept pushing. It has the measured difference between that film and
+part four (which was rejected), the beat spine with its real timings, the rules that keep a viewer, and the mistakes
+that lost one. `SCRIPT.md` is how the reference channel writes; this is what the numbers say about the one film that
+held an audience. Read both, and follow this one where they disagree.
+
 ## The reference film, and the other films the owner approved
 
 **`in-this-town-same-face`, "In This Town, Everyone Had the Same Face Except Me".** The owner on the picture:
