@@ -2,287 +2,317 @@ import type React from "react";
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  Classmate, Cup, EAST, Friend, HALL, Hero, ME, NORTH, R, SPOT, SOUTH, Teacher, WEST, ease, ramp, timing, wordAt,
+  Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Teacher, Tray, SubscribeSign, Friend,
+  HALL, R, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
 } from "./kit";
 
 /**
- * The price and the bill
- *
- * Cues 4.best -> 10.mum. The film turns from a comedy into a bill.
+ * "Outside is the only place he is real" — Cues 4.best to 9.hea. He is somebody in the yard, and then he finds the paper.
  */
-
 export const scene2 = storyScene(timing, {
   id: "scene2",
-  title: "The price and the bill",
+  title: "Outside is the only place he is real",
   shots: [
     {
       // Him on a wall in the sun, pleased with himself, the way you are at thirteen.
       cue: "4.best",
-      ...cam.push({ on: SPOT.at(0, 1.3, -1.0), dist: 3.4, to: 2.8, yaw: 12, pitch: 3, fov: 42 }),
-      zone: "class",
+      ...cam.push({ on: [-22.80, 1.05, 3.60], dist: 5.88, to: 6.48, yaw: 145, pitch: 0, fov: 44 }),
+      zone: "yard",
       note: "Him on a wall in the sun, pleased with himself, the way you are at thirteen.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="grin" />
+          <Hero position={YARD.at(4.6, 0.95, -1.4)} rotationY={SOUTH} animation="sit" face="grin" />
         </>
       ),
     },
     {
       // The same wall, and he is not doing anything at all.
       cue: "4.nobody",
-      ...cam.push({ on: SPOT.at(0, 1.3, -1.0), dist: 4.4, to: 3.7, yaw: 8, pitch: 4, fov: 46 }),
-      zone: "class",
+      ...cam.push({ on: [-21.00, 1.20, 4.40], dist: 6.27, to: 7.17, yaw: 163, pitch: -2, fov: 46 }),
+      zone: "yard",
       note: "The same wall, and he is not doing anything at all.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={YARD.at(4.6, 0.95, -1.4)} rotationY={SOUTH} animation="sit" face="calm" />
         </>
       ),
     },
     {
       // Closer: doing nothing is his whole day.
       cue: "4.nobodya",
-      ...cam.push({ on: SPOT.at(0, 1.35, -1.0), dist: 2.4, to: 2.0, yaw: 6, pitch: 1, fov: 36 }),
-      zone: "class",
+      ...cam.push({ on: [-20.40, 1.05, 2.40], dist: 4.18, to: 3.88, yaw: 163, pitch: -1, fov: 36 }),
+      zone: "yard",
       note: "Closer: doing nothing is his whole day.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={YARD.at(4.6, 0.95, -1.4)} rotationY={SOUTH + 0.3} animation="sit" face="uneasy" />
         </>
       ),
     },
     {
       // Out on the field under an enormous sky, alone, and the sky is the point.
       cue: "5.sky",
-      ...cam.top({ on: SPOT.at(0, 0.3, 0.4), height: 5.0, to: 4.0 }),
-      zone: "class",
+      ...cam.push({ on: [-19.00, 1.10, 5.00], dist: 9.14, to: 10.14, yaw: 153, pitch: 16, fov: 52 }),
+      zone: "yard",
       note: "Out on the field under an enormous sky, alone, and the sky is the point.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={YARD.at(5.0, 0, -2.6)} rotationY={SOUTH} animation="idle" face="calm" />
         </>
       ),
     },
     {
       // Him sitting on the kerb at the edge of the yard, looking at the door he has to go back through.
       cue: "5.alone",
-      ...cam.push({ on: SPOT.at(2.9, 1.25, 2.6), dist: 3.8, to: 3.2, yaw: 96, pitch: 4, fov: 46 }),
-      zone: "class",
+      ...cam.push({ on: [-22.00, 1.15, 2.20], dist: 4.96, to: 5.76, yaw: 137, pitch: -4, fov: 46 }),
+      zone: "yard",
       note: "Him sitting on the kerb at the edge of the yard, looking at the door he has to go back through.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={YARD.at(5.0, 0.95, -1.4)} rotationY={SOUTH} animation="sit" face="uneasy" />
         </>
       ),
     },
     {
       // The door, from his eye level, and the light inside it.
       cue: "5.alonea",
-      ...cam.push({ on: SPOT.at(3.3, 1.35, -2.5), dist: 3.0, to: 2.5, yaw: -20, pitch: 2, fov: 40 }),
-      zone: "class",
+      ...cam.push({ on: [25.00, 1.30, 61.00], dist: 4.77, to: 4.47, yaw: 147, pitch: -2, fov: 42 }),
+      zone: "drive",
       note: "The door, from his eye level, and the light inside it.",
-      stage: () => (
+      stage: (_t) => (
         <>
+          <Hero position={DRIVE.at(1.2, 0, 2.0)} rotationY={NORTH} animation="idle" face="calm" />
         </>
       ),
     },
     {
       // The corridor at lunch: him mid-joke, mouth open, and the two kids walking past him.
       cue: "6.week",
-      ...cam.push({ on: HALL.at(-1.0, 1.3, 1.4), dist: 5.2, to: 4.4, yaw: -44, pitch: 5, fov: 50 }),
+      ...cam.push({ on: [-2.20, 1.30, 41.20], dist: 4.03, to: 5.13, yaw: 117, pitch: -1, fov: 50 }),
       zone: "hall",
       note: "The corridor at lunch: him mid-joke, mouth open, and the two kids walking past him.",
-      stage: (t) => (
+      stage: (_t) => (
         <>
-          <Hero position={HALL.at(-1.0, 0, 1.4)} rotationY={WEST} animation="idle" face="grin" />
-          <Classmate who={3} position={HALL.at(0.2 + 1.4 * ease(ramp(t, 0, 1.2)), 0, 0.4)} rotationY={EAST} animation="walk" animDistance={1.4} face="calm" />
+          <Hero position={HALL.at(0.4, 0, 0.4)} rotationY={WEST} animation="idle" face="laugh" />
+          <Classmate who={2} position={HALL.at(1.6, 0, 0.2)} rotationY={WEST} animation="walk" animDistance={2.4} face="calm" />
+          <Classmate who={6} position={HALL.at(2.0, 0, 0.9)} rotationY={WEST} animation="walk" animDistance={2.6} face="calm" />
         </>
       ),
     },
     {
       // The same corridor: him holding a dropped book out to somebody who does not take it.
       cue: "6.better",
-      ...cam.push({ on: HALL.at(0.4, 1.3, 1.3), dist: 3.4, to: 2.8, yaw: -40, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [-1.60, 1.30, 41.10], dist: 3.72, to: 4.42, yaw: 121, pitch: -2, fov: 44 }),
       zone: "hall",
       note: "The same corridor: him holding a dropped book out to somebody who does not take it.",
-      stage: (t) => (
+      stage: (_t) => (
         <>
-          <Hero position={HALL.at(-0.4, 0, 1.3)} rotationY={WEST} animation="idle" face="calm" />
-          <Classmate who={5} position={HALL.at(1.4 + 1.2 * ease(ramp(t, 0, 1.2)), 0, 0.5)} rotationY={EAST} animation="walk" animDistance={1.2} face="calm" />
+          <Hero position={HALL.at(1.4, 0, 0.5)} rotationY={WEST} animation="idle" face="brave" />
+          <Block position={HALL.at(2.0, 0.62, 0.5)} size={[0.3, 0.06, 0.22]} color="#c8402f" castShadow={false} />
+          <Classmate who={8} position={HALL.at(3.4, 0, 0.6)} rotationY={WEST} animation="walk" animDistance={2.0} face="calm" />
         </>
       ),
     },
     {
       // His hand, still out, and the book on the floor.
       cue: "6.bettera",
-      ...cam.push({ on: HALL.at(0.4, 0.6, 1.0), dist: 1.8, to: 1.5, yaw: -30, pitch: 12, fov: 34 }),
+      ...cam.push({ on: [-0.80, 0.85, 41.20], dist: 2.91, to: 2.51, yaw: 136, pitch: -5, fov: 34 }),
       zone: "hall",
       note: "His hand, still out, and the book on the floor.",
-      stage: (_t) => <Hero position={HALL.at(-0.4, 0, 1.3)} rotationY={WEST} animation="idle" face="calm" />,
+      stage: (_t) => (
+        <>
+          <Block position={HALL.at(2.0, 0.62, 0.5)} size={[0.3, 0.06, 0.22]} color="#c8402f" castShadow={false} />
+        </>
+      ),
     },
     {
       // Jo, by the lockers, looking straight at him.
       cue: "7.jo",
-      ...cam.push({ on: HALL.at(1.2, 1.35, 1.0), dist: 3.2, to: 2.6, yaw: -56, pitch: 2, fov: 42 }),
+      ...cam.push({ on: [-1.40, 1.30, 41.10], dist: 3.28, to: 3.88, yaw: 128, pitch: -1, fov: 42 }),
       zone: "hall",
       note: "Jo, by the lockers, looking straight at him.",
-      stage: (_t) => <Friend position={HALL.at(1.2, 0, 1.0)} rotationY={WEST} animation="idle" face="smile" />,
+      stage: (_t) => (
+        <>
+          <Friend position={HALL.at(1.6, 0, 0.2)} rotationY={EAST} animation="idle" face="smile" />
+        </>
+      ),
     },
     {
       // Her, closer, and she has said his name and it has landed.
       cue: "7.joa",
-      ...cam.push({ on: HALL.at(1.2, 1.4, 1.0), dist: 2.0, to: 1.7, yaw: -56, pitch: 0, fov: 34 }),
+      ...cam.push({ on: [0.20, 1.30, 41.00], dist: 2.25, to: 1.85, yaw: 148, pitch: 0, fov: 34 }),
       zone: "hall",
       note: "Her, closer, and she has said his name and it has landed.",
-      stage: (_t) => <Friend position={HALL.at(1.2, 0, 1.0)} rotationY={WEST} animation="idle" face="grin" />,
+      stage: (_t) => (
+        <>
+          <Friend position={HALL.at(1.5, 0, 0.0)} rotationY={EAST} animation="idle" face="grin" />
+        </>
+      ),
     },
     {
       // Him in a corridor with his name still in the air, stopped dead.
       cue: "7.saw",
-      ...cam.push({ on: HALL.at(-0.6, 1.3, 1.2), dist: 3.8, to: 3.1, yaw: -38, pitch: 3, fov: 46 }),
+      ...cam.push({ on: [-2.60, 1.35, 41.20], dist: 8.05, to: 8.95, yaw: 153, pitch: -1, fov: 46 }),
       zone: "hall",
       note: "Him in a corridor with his name still in the air, stopped dead.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="wow" />
+          <Hero position={HALL.at(0.6, 0, 0.5)} rotationY={WEST} animation="idle" face="wow" />
+          <Friend position={HALL.at(2.0, 0, 0.2)} rotationY={EAST} animation="idle" face="smile" />
         </>
       ),
     },
     {
       // His face, close, at the exact moment somebody knows him.
       cue: "7.sawa",
-      ...cam.push({ on: HALL.at(-0.6, 1.4, 1.2), dist: 2.0, to: 1.7, yaw: -30, pitch: 1, fov: 34 }),
+      ...cam.push({ on: [-2.00, 1.25, 41.20], dist: 2.52, to: 2.22, yaw: 146, pitch: 1, fov: 34 }),
       zone: "hall",
       note: "His face, close, at the exact moment somebody knows him.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="wow" />
+          <Hero position={HALL.at(0.6, 0, 0.5)} rotationY={WEST} animation="idle" face="wow" />
         </>
       ),
     },
     {
       // The classroom door, half open, and through the gap something on the teacher's desk.
       cue: "8.bill",
-      ...cam.push({ on: SPOT.at(3.3, 1.3, -2.5), dist: 3.4, to: 2.8, yaw: -22, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [1.00, 1.30, 1.60], dist: 4.84, to: 5.64, yaw: 150, pitch: -2, fov: 44 }),
       zone: "class",
       note: "The classroom door, half open, and through the gap something on the teacher's desk.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="uneasy" />
+          <Hero position={SPOT.at(2.6, 0, -2.4)} rotationY={EAST} animation="idle" face="uneasy" />
+          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
+          <Block position={SPOT.at(-0.2, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
         </>
       ),
     },
     {
       // The paper on the desk, his name on it, and a number.
       cue: "8.billa",
-      ...cam.push({ on: SPOT.at(3.3, 1.3, -2.5), dist: 2.2, to: 1.8, yaw: -18, pitch: 2, fov: 36 }),
+      ...cam.push({ on: [2.20, 1.25, -1.00], dist: 1.97, to: 1.67, yaw: -174, pitch: -15, fov: 38 }),
       zone: "class",
       note: "The paper on the desk, his name on it, and a number.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="uneasy" />
+          <Block position={SPOT.at(-0.2, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
+          <Block position={SPOT.at(-0.2, 0.82, -2.85)} size={[0.5, 0.02, 0.32]} color="#c8c2b0" castShadow={false} />
+          <Block position={SPOT.at(-0.1, 0.86, -2.88)} size={[0.12, 0.12, 0.02]} color="#3a3344" castShadow={false} />
         </>
       ),
     },
     {
       // Over his shoulder: the paper, close, his name and the number.
       cue: "8.ledger",
-      ...cam.push({ on: SPOT.at(-1.2, 1.2, -2.9), dist: 1.7, to: 1.4, yaw: 24, pitch: -8, fov: 34 }),
+      ...cam.push({ on: [1.20, 1.35, -1.50], dist: 2.07, to: 1.67, yaw: -135, pitch: -17, fov: 36 }),
       zone: "class",
       note: "Over his shoulder: the paper, close, his name and the number.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="fear" />
+          <Hero position={SPOT.at(1.4, 0, -1.9)} rotationY={EAST} animation="idle" face="fear" />
+          <Block position={SPOT.at(-0.2, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
+          <Block position={SPOT.at(-0.2, 0.82, -2.85)} size={[0.5, 0.02, 0.32]} color="#c8c2b0" castShadow={false} />
+          <Block position={SPOT.at(-0.1, 0.86, -2.88)} size={[0.12, 0.12, 0.02]} color="#3a3344" castShadow={false} />
         </>
       ),
     },
     {
       // The number, filling the frame, and it is a price.
       cue: "8.ledgera",
-      ...cam.push({ on: SPOT.at(-1.2, 1.2, -2.9), dist: 1.3, to: 1.05, yaw: 20, pitch: -10, fov: 30 }),
+      ...cam.push({ on: [0.50, 1.20, -1.80], dist: 1.38, to: 0.98, yaw: -148, pitch: -19, fov: 30 }),
       zone: "class",
       note: "The number, filling the frame, and it is a price.",
-      stage: () => (
+      stage: (_t) => (
         <>
+          <Block position={SPOT.at(-0.2, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
+          <Block position={SPOT.at(-0.2, 0.82, -2.85)} size={[0.5, 0.02, 0.32]} color="#c8c2b0" castShadow={false} />
+          <Block position={SPOT.at(-0.1, 0.86, -2.88)} size={[0.12, 0.12, 0.02]} color="#3a3344" castShadow={false} />
         </>
       ),
     },
     {
       // A timetable on the wall with rooms circled on it, and it is his timetable.
       cue: "9.arranged",
-      ...cam.push({ on: [SPOT.board[0], 1.7, SPOT.board[2]], dist: 3.2, to: 2.6, yaw: 0, pitch: 0, fov: 42 }),
+      ...cam.push({ on: [-0.60, 1.35, -1.40], dist: 2.15, to: 2.65, yaw: -169, pitch: 5, fov: 44 }),
       zone: "class",
       note: "A timetable on the wall with rooms circled on it, and it is his timetable.",
-      stage: () => (
+      stage: (_t) => (
         <>
+          <Block position={SPOT.at(-1.0, 1.5, -3.84)} size={[1.6, 1.1, 0.04]} color="#f4f1e8" castShadow={false} />
+          {[0, 1, 2, 3].flatMap((i) => [0, 1, 2].map((j) => (
+            <Block key={`${i}${j}`} position={SPOT.at(-1.65 + j * 0.42, 1.75 - i * 0.26, -3.8)} size={[0.3, 0.16, 0.02]} color={(i + j) % 3 === 0 ? "#e3261c" : "#b8c4d0"} castShadow={false} />
+          )))}
         </>
       ),
     },
     {
       // The same timetable, and every circled room is one he has been in.
       cue: "9.arrangeda",
-      ...cam.push({ on: [SPOT.board[0], 1.7, SPOT.board[2]], dist: 2.0, to: 1.6, yaw: 0, pitch: 0, fov: 34 }),
+      ...cam.push({ on: [-0.60, 1.35, -1.60], dist: 1.94, to: 1.54, yaw: -168, pitch: 3, fov: 34 }),
       zone: "class",
       note: "The same timetable, and every circled room is one he has been in.",
-      stage: () => (
+      stage: (_t) => (
         <>
+          <Block position={SPOT.at(-1.0, 1.5, -3.84)} size={[1.6, 1.1, 0.04]} color="#f4f1e8" castShadow={false} />
+          {[0, 1].flatMap((i) => [0, 1, 2].map((j) => (
+            <Block key={`${i}${j}`} position={SPOT.at(-1.4 + j * 0.42, 1.72 - i * 0.26, -3.8)} size={[0.3, 0.16, 0.02]} color="#e3261c" castShadow={false} />
+          )))}
         </>
       ),
     },
     {
       // The teacher at the desk with the paper, counting something into an envelope.
       cue: "9.he",
-      ...cam.push({ on: SPOT.at(-1.4, 1.25, -2.4), dist: 2.6, to: 2.1, yaw: 28, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [0.60, 1.30, -1.00], dist: 2.76, to: 3.26, yaw: -134, pitch: -3, fov: 40 }),
       zone: "class",
       note: "The teacher at the desk with the paper, counting something into an envelope.",
       stage: (_t) => (
         <>
-          <Teacher position={SPOT.at(-1.4, 0, -2.9)} animation="idle" face="calm" />
-          <Block position={SPOT.at(-1.4, 0.78, -2.4)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
+          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
+          <Block position={SPOT.at(-0.6, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
+          <Block position={SPOT.at(-0.6, 0.86, -2.85)} size={[0.3, 0.14, 0.22]} color="#d8cfae" castShadow={false} />
         </>
       ),
     },
     {
       // His face, and he is not angry at all; he is tired, and he is being paid.
       cue: "9.hea",
-      ...cam.push({ on: SPOT.at(-1.4, 1.45, -2.4), dist: 1.9, to: 1.6, yaw: 24, pitch: 0, fov: 34 }),
+      ...cam.push({ on: [0.30, 1.25, -1.40], dist: 2.27, to: 1.87, yaw: -131, pitch: 1, fov: 34 }),
       zone: "class",
       note: "His face, and he is not angry at all; he is tired, and he is being paid.",
-      stage: (_t) => <Teacher position={SPOT.at(-1.4, 0, -2.9)} animation="idle" face="calm" />,
+      stage: (_t) => (
+        <>
+          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
+        </>
+      ),
     },
     {
       // A row of doors down a corridor, each with a little ticket on it.
       cue: "10.wall",
-      ...cam.push({ on: HALL.at(-2.0, 1.3, 1.4), dist: 5.4, to: 6.6, yaw: -46, pitch: 3, fov: 50 }),
+      ...cam.push({ on: [-3.00, 1.30, 41.20], dist: 8.48, to: 9.88, yaw: 109, pitch: -1, fov: 50 }),
       zone: "hall",
       note: "A row of doors down a corridor, each with a little ticket on it.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={HALL.at(1.2, 0, 0.6)} rotationY={WEST} animation="walk" animDistance={1.2} face="calm" />
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Block key={i} position={HALL.at(-4.0 + i * 1.6, 1.35, -1.93)} size={[1.0, 1.9, 0.03]} color={["#8a6a44", "#3f6fb8", "#3f8a4f", "#8a6a44", "#c8402f"][i]} castShadow={false} />
+          ))}
         </>
       ),
     },
     {
       // The tickets, close: a classroom, a canteen, a lunch, each with a price.
       cue: "10.walla",
-      ...cam.push({ on: HALL.at(0, 1.25, 1.2), dist: 2.4, to: 4.2, yaw: -60, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [0.40, 1.20, 41.50], dist: 3.05, to: 3.65, yaw: -139, pitch: -2, fov: 44 }),
       zone: "hall",
       note: "The tickets, close: a classroom, a canteen, a lunch, each with a price.",
-      stage: () => (
+      stage: (_t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="calm" />
-        </>
-      ),
-    },
-    {
-      // The paper in his hand, and he is walking out of the school gates with it.
-      cue: "10.mum",
-      ...cam.push({ on: SPOT.at(0.6, 1.2, 1.6), dist: 3.6, to: 3.0, yaw: 168, pitch: 4, fov: 46 }),
-      zone: "class",
-      note: "The paper in his hand, and he is walking out of the school gates with it.",
-      stage: () => (
-        <>
-          <Hero position={ME} rotationY={NORTH} animation="idle" face="brave" />
+          {[0, 1, 2].map((i) => (
+            <Block key={i} position={HALL.at(-1.2 + i * 1.2, 1.5, -1.9)} size={[0.3, 0.2, 0.02]} color="#f4f1e8" castShadow={false} />
+          ))}
         </>
       ),
     },

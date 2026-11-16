@@ -1,7 +1,7 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { KID, TELLER, classroom, wordClock } from "../../../Topics/WhatIf";
+import { KID, TELLER, classroom, lunchRoom, wordClock } from "../../../Topics/WhatIf";
 import timingJson from "./timing.json";
 
 /**
@@ -47,6 +47,14 @@ export const PLACE = {
   hall: [0, 0, 40] as Vec3,
   /** The teller's room. */
   room: [0, 0, 80] as Vec3,
+  /** The canteen: its own set, west of everything, sharing the class's z. */
+  lunch: [16, 0, 0] as Vec3,
+  /** The bike shop. */
+  shop: [0, 0, 120] as Vec3,
+  /** The school yard: open on all sides. The only place in the film with no walls. */
+  yard: [-24, 0, 0] as Vec3,
+  /** The street outside his house. */
+  drive: [24, 0, 60] as Vec3,
 };
 /** The classroom's desks, board and door: `SPOT.seat(col, row)`, `SPOT.teacher`, `SPOT.board`… */
 export const SPOT = classroom(PLACE.class);
@@ -77,3 +85,12 @@ export const Hero: React.FC<A> = (p) => (
 export const Friend: React.FC<A> = (p) => (
   <MinecraftAvatar scale={KID} outfit="tee" skin="#8a5a3c" hair="#1f1a18" colors={{ torso: "#2fb5a8", arms: "skin", legs: "#3a3344" }} blink {...p} />
 );
+
+/** The canteen's own places, at `lunchRoom(PLACE.lunch)`. */
+export const LUNCH = lunchRoom(PLACE.lunch);
+/** The bike shop's floor: `SHOP.at(x, y, z)` from the middle of it. The door is on its south side (+z). */
+export const SHOP = { at: (x: number, y: number, z: number): Vec3 => [PLACE.shop[0] + x, PLACE.shop[1] + y, PLACE.shop[2] + z] };
+/** The school yard: open on all sides. The one place in the film where he is under the sky. */
+export const YARD = { at: (x: number, y: number, z: number): Vec3 => [PLACE.yard[0] + x, PLACE.yard[1] + y, PLACE.yard[2] + z] };
+/** The street outside his house: the front door at z = -2.6, the road at z = +5. */
+export const DRIVE = { at: (x: number, y: number, z: number): Vec3 => [PLACE.drive[0] + x, PLACE.drive[1] + y, PLACE.drive[2] + z] };
