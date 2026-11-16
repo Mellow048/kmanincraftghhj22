@@ -28,8 +28,8 @@ const BigNumber: React.FC<{ n: string; over: Vec3; t?: number; tall?: number; si
   const c = color ?? tint ?? "#ffffff";
   return (
     <group position={at} rotation={[0, rotationY, 0]} scale={[s, s, s]}>
-      <Figure text={n} position={[0, 0, 0]} height={size} depth={1.2} color={c} outline glow={0.5} castShadow={false} />
-      <Icon kind="clock" position={[0, size * 0.78, 0]} height={size * 0.44} depth={1.1} color={c} outline glow={0.6} castShadow={false} />
+      <Figure text={n} position={[0, 0, 0]} height={size} depth={0.55} color={c} outline glow={0.5} castShadow={false} />
+      <Icon kind="clock" position={[0, size * 0.78, 0]} height={size * 0.44} depth={0.5} color={c} outline glow={0.6} castShadow={false} />
     </group>
   );
 };
@@ -48,7 +48,7 @@ export const scene2 = storyScene(timing, {
         <>
           <Hero position={[ME[0] - 0.3, 0, ME[2] - 1.3]} rotationY={NORTH + 0.3} animation="idle" face="brave" />
           <Classmate who={5} position={[ME[0] + 0.7, 0, ME[2] - 2.1]} rotationY={NORTH - 0.5} animation="idle" face="frown" />
-          <BigNumber n="10"over={[ME[0] + 0.7, 0, ME[2] - 2.1]} size={0.79} t={t - WARN} rotationY={0}  />
+          <BigNumber n="10"over={[ME[0] + 0.7, 0, ME[2] - 2.1]} size={0.79} t={t - WARN}   rotationY={3.4208}/>
         </>
       ),
     },
@@ -65,8 +65,8 @@ export const scene2 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={6} position={SPOT.seat(0, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={8} position={SPOT.seat(2, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <BigNumber n="2"over={SPOT.seat(0, 1)} tall={1.34} size={0.66} t={t - FRIDAY} rotationY={Math.PI}  />
-          <BigNumber n="2"over={SPOT.seat(2, 1)} tall={1.34} size={0.75} t={t - FRIDAY - 0.2} rotationY={Math.PI}  />
+          <BigNumber n="2"over={SPOT.seat(0, 1)} tall={1.34} size={0.66} t={t - FRIDAY}   rotationY={3.2114}/>
+          <BigNumber n="2"over={SPOT.seat(2, 1)} tall={1.34} size={0.75} t={t - FRIDAY - 0.2}   rotationY={3.2114}/>
         </>
       ),
     },
@@ -136,7 +136,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Hero position={[0.2 * k, 0, 0.9 - 1.6 * k]} rotationY={NORTH} animation="walk" animDistance={1.6 * k} face="calm" />
             <Classmate who={3} position={[1.5, 0, -1.2]} rotationY={SOUTH} animation="idle" face="calm" />
-            <BigNumber n="40" over={[1.5, 0, -1.2]} size={0.5} t={t - PLANT} rotationY={Math.PI} />
+            <BigNumber n="40" over={[1.5, 0, -1.2]} size={0.5} t={t - PLANT}  rotationY={-0.3491}/>
           </>
         );
       },

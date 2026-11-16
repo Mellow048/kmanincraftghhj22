@@ -29,14 +29,14 @@ const UP = wordAt("2.up", "shouting");
  *
  * The number is the rule. There is no size to interpret: `40` over a calm man and `4` over the boy who goes off.
  */
-const Clock: React.FC<{ over: Vec3; n: string; t: number; tall?: number; size?: number; tint?: string }> = ({ over, n, t, tall = 1.34, size = 0.5, tint = "#ffffff" }) => {
+const Clock: React.FC<{ over: Vec3; n: string; t: number; tall?: number; size?: number; tint?: string; rotationY?: number }> = ({ over, n, t, tall = 1.34, size = 0.5, tint = "#ffffff", rotationY = 0 }) => {
   const at: Vec3 = [over[0], over[1] + tall + 0.42 + size * 0.5, over[2]];
   const pop = ease(Math.min(1, Math.max(0, t / 0.25)));
   if (t < 0) return null;
   return (
-    <group scale={[0.6 + 0.4 * pop, 0.6 + 0.4 * pop, 0.6 + 0.4 * pop]}>
-      <Figure text={n} position={at} height={size} depth={1.2} color={tint} outline glow={0.5} castShadow={false} />
-      <Icon kind="clock" position={[at[0], at[1] + size * 0.78, at[2]]} height={size * 0.44} depth={1.1} color={tint} outline glow={0.6} castShadow={false} />
+    <group position={[at[0], at[1], at[2]]} rotation={[0, rotationY, 0]} scale={[0.6 + 0.4 * pop, 0.6 + 0.4 * pop, 0.6 + 0.4 * pop]}>
+      <Figure text={n} position={[0, 0, 0]} height={size} depth={0.55} color={tint} outline glow={0.5} castShadow={false} />
+      <Icon kind="clock" position={[0, size * 0.78, 0]} height={size * 0.44} depth={0.5} color={tint} outline glow={0.6} castShadow={false} />
     </group>
   );
 };
@@ -59,7 +59,7 @@ export const scene1 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />
           <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - SEE} size={0.62} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - SEE} size={0.62}  rotationY={0.0}/>
         </>
       ),
     },
@@ -73,7 +73,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - LIVE} size={0.66} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - LIVE} size={0.66}  rotationY={0.0698}/>
         </>
       ),
     },
@@ -89,7 +89,7 @@ export const scene1 = storyScene(timing, {
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="uneasy" headPitch={0.1} />
             <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-            <Clock over={SPOT.seat(1, 0)} n="4" t={t - TEMPER} size={shrink} />
+            <Clock over={SPOT.seat(1, 0)} n="4" t={t - TEMPER} size={shrink}  rotationY={0.4887}/>
           </>
         );
       },
@@ -117,7 +117,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face="uneasy" headPitch={-0.06} />
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - FOUR} size={0.6} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - FOUR} size={0.6}  rotationY={0.1396}/>
         </>
       ),
     },
@@ -132,7 +132,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
-            <Clock over={SPOT.seat(1, 0)} n="4" t={t - 0.1} size={s} />
+            <Clock over={SPOT.seat(1, 0)} n="4" t={t - 0.1} size={s}  rotationY={-0.2443}/>
           </>
         );
       },
@@ -164,7 +164,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.teacher} n="40" tall={1.8} t={t} size={0.5} tint="#e8f2ff" />
+          <Clock over={SPOT.teacher} n="40" tall={1.8} t={t} size={0.5} tint="#e8f2ff"  rotationY={0.6632}/>
         </>
       ),
     },
@@ -178,7 +178,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={[ME[0] + 0.5, 0, ME[2] - 0.9]} rotationY={NORTH - 0.7} animation="idle" face="calm" />
           <Classmate who={7} position={[ME[0] + 2.2, 0, ME[2] - 2.2]} rotationY={SPOT.door ? NORTH : NORTH} animation="walk" face="calm" headPitch={0.1} />
-          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} n="2" tall={1.8} t={t} size={0.52} tint="#e8f2ff" />
+          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} n="2" tall={1.8} t={t} size={0.52} tint="#e8f2ff"  rotationY={-0.9076}/>
         </>
       ),
     },
@@ -192,7 +192,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={R(0.8, 0, -0.55)} rotationY={WEST} animation="idle" face="smile" />
           <Classmate who={9} position={R(-0.15, 0, -1.35)} rotationY={SOUTH} animation="sit" face="grin" headPitch={-0.1} />
-          <Clock over={R(-0.15, 0, -1.35)} n="3" tall={1.0} t={t} size={0.52} />
+          <Clock over={R(-0.15, 0, -1.35)} n="3" tall={1.0} t={t} size={0.52}  rotationY={3.1416}/>
         </>
       ),
     },
