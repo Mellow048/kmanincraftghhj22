@@ -10,7 +10,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.night",
-      ...cam.push({ on: [0, 1.2, 12.5], dist: 9.5, to: 7.5, yaw: 180, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [0.3, 1.25, 12.2], dist: 7.5, to: 5.6, yaw: 180, pitch: 2, fov: 44 }),
       zone: "town",
       look: "overworld-night",
       note: "Night. Six players walk in at the end of the street, side by side, lit from below by the lantern the middle one carries. We see shapes first, then swords.",
@@ -41,15 +41,15 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.powder",
-      ...cam.push({ on: [0, 1.2, 5.2], dist: 6.2, to: 5.2, yaw: 12, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [0, 1.25, 4.4], dist: 7.6, to: 6.8, yaw: 0, pitch: 4, fov: 46 }),
       zone: "town",
       look: "overworld-night",
       note: "Over the shoulders of two players, one with a sack held open: up the street four creepers stand frozen in the lantern light, staring back.",
       stage: (t) => (
         <>
-          <Raider who={0} position={[-0.8, 0, 9.3]} rotationY={NORTH} animation="idle" arms="hold" />
-          <Raider who={1} position={[0.9, 0, 9.0]} rotationY={NORTH} animation="idle" arms="hold" />
-          <Creeps spots={[[-1.4, 3.6], [0.2, 2.8], [1.6, 3.4], [-0.3, 1.2]]} t={t} face={SOUTH} lookAt={[0, 1.4, 9]} mood="scared" shake={0.01} walk={t * 0.4} shift={[0, 0, -t * 0.4]} first={1} />
+          <Raider who={0} position={[-0.95, 0, 9.3]} rotationY={NORTH} animation="idle" arms="hold" />
+          <Raider who={1} position={[1.0, 0, 9.1]} rotationY={NORTH} animation="idle" arms="hold" />
+          <Creeps spots={[[-0.55, 4.6], [0.35, 4.0], [-0.1, 2.6], [0.6, 1.8]]} t={t} face={SOUTH} lookAt={[0, 1.4, 9]} mood="scared" shake={0.01} walk={t * 0.4} shift={[0, 0, -t * 0.4]} first={1} />
           <Fill at={[0, 1.6, 5.5]} power={12} reach={9} />
         </>
       ),
@@ -74,18 +74,17 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.started",
-      ...cam.truck({ on: [-2.4, 1.3, 0.2], dist: 3.2, yaw: 6, pitch: 0, fov: 40, by: [2.2, 0, 0] }),
+      ...cam.truck({ on: [-0.9, 1.3, -1.3], dist: 3.0, yaw: 0, pitch: 0, fov: 42, by: [1.8, 0, 0] }),
       zone: "town",
       look: "overworld-night",
-      note: "Close along the front row: one creeper starts to shake and swell, then the one next to it, then the next.",
+      note: "Close along one row of the pack: a creeper starts to shake and swell, then the one next to it, then the next.",
       stage: (t) => (
         <>
-          {SQUARE.slice(0, 12).map(([x, z], i) => {
-            const on = tw(t, 0.2 + ((x + 5) / 10) * 0.9, 0.6 + ((x + 5) / 10) * 0.9);
-            return <Creeper key={i} position={[x + Math.sin(t * 50 + i) * 0.012 * on, 0, z]} rotationY={SOUTH} mood="angry" fuse={on * (0.25 + 0.3 * pulse(t, i))} scarf={i % 3 === 0 ? "#7a4fb0" : i % 3 === 1 ? "#e07a2e" : undefined} scale={0.95 + (i % 3) * 0.04} phase={i} />;
+          {[-1.9, -0.95, 0, 0.95, 1.9, -1.45, -0.5, 0.45, 1.4, 2.35].map((x, i) => {
+            const on = tw(t, 0.15 + ((x + 2) / 4.4) * 0.9, 0.5 + ((x + 2) / 4.4) * 0.9);
+            return <Creeper key={i} position={[x + Math.sin(t * 50 + i) * 0.012 * on, 0, i < 5 ? -1.3 : -2.5]} rotationY={SOUTH} mood={on > 0.2 ? "angry" : "scared"} fuse={on * (0.25 + 0.35 * pulse(t, i))} scarf={i % 3 === 0 ? "#7a4fb0" : i % 3 === 1 ? "#e07a2e" : undefined} hat={i === 3 ? "straw" : "none"} scale={0.95 + (i % 3) * 0.04} phase={i} />;
           })}
-          <Mum position={MUM_AT} rotationY={SOUTH} mood="angry" fuse={tw(t, 0.5, 1) * 0.3 * pulse(t, 3)} />
-          <Fill at={[-1, 1.8, 3]} power={12} reach={8} />
+          <Fill at={[0, 1.8, 1.2]} power={12} reach={8} />
         </>
       ),
     },

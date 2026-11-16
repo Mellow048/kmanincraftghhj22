@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { Block, cam, storyScene } from "../../engine";
 import { Creeper, Creeps, Dad, Fish, GROUND_SIT, Heart, Hero, Little, Mum, NORTH, PLACE, SOUTH, SQUARE, SoundRings, SubscribeSign, TABLE_SHORT, Table, bolt, cueLen, openArms, posed, sitPose, timing, tw, w } from "./kit";
 
 /** 06 — One whole second. And now: turns, a shorter table, and the little one. */
@@ -35,28 +35,27 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.nine",
-      ...cam.push({ on: [0, 0.6, 0.5], dist: 11.5, to: 12.5, yaw: 90, pitch: 26, fov: 44 }),
+      ...cam.push({ on: [0, 0, 0.1], dist: 11.5, to: 12.5, yaw: 180, pitch: 52, fov: 46 }),
       zone: "town",
       look: "overworld-sunset",
-      note: "From the side and above: him on the left, the town on the right, and nine empty blocks of street between them. Nobody moves.",
+      note: "From high above: him at the bottom of the frame, the town at the top, and nine empty blocks of street between them, counted off in white lines. Nobody moves.",
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={SOUTH} animation="idle" tailUp={0.6} />
           <Creeps spots={BACK} t={t} face={NORTH} lookAt={[0, 1, -4]} shake={0.006} />
           <Mum position={[-0.8, 0, LINE]} rotationY={NORTH} />
           <Dad position={[0.9, 0, LINE + 0.2]} rotationY={NORTH} />
-          {Array.from({ length: 9 }, (_, i) => (
-            <mesh key={i} position={[2.2, 0.012, -3.5 + i]} rotation={[-Math.PI / 2, 0, 0]}>
-              <planeGeometry args={[0.5, 0.08]} />
-              <meshBasicMaterial color="#fff6d8" transparent opacity={0.85} />
-            </mesh>
-          ))}
+          {Array.from({ length: 9 }, (_, i) =>
+            t < w("6.nine", "Nine") - 0.15 + i * 0.07 ? null : (
+              <Block key={i} position={[0, 0.06, -3.2 + i * 0.94]} size={[2.6, 0.05, 0.14]} color="#fff6d8" emissive="#fff6d8" emissiveIntensity={0.5} castShadow={false} />
+            ),
+          )}
         </>
       ),
     },
     {
       cue: "6.step",
-      ...cam.push({ on: [-0.4, 1.1, LINE - 0.9], dist: 4.6, to: 4.0, yaw: 150, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [-0.5, 1.1, LINE - 0.3], onTo: [-0.2, 1.1, LINE - 1.6], dist: 4.6, to: 4.2, yaw: 162, pitch: 4, fov: 42 }),
       zone: "town",
       look: "overworld-sunset",
       note: "Mum, out in front of the town. On 'one step' she takes one. She stops. On 'one more' she takes another. Dad and the whole town lean after her and stay where they are.",
@@ -103,7 +102,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.second",
-      ...cam.push({ on: [0, 1.0, -3.6], dist: 2.8, to: 2.5, yaw: 40, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [0, 1.05, -3.6], dist: 3.0, to: 2.7, yaw: -68, pitch: 2, fov: 40 }),
       zone: "town",
       look: "overworld-sunset",
       note: "The hug, close: his arms round her, his eyes shut, a heart over them. One whole second. On 'ran' she jumps straight up and is gone, and his arms are round nothing.",
@@ -115,14 +114,14 @@ export const scene6 = storyScene(timing, {
           <>
             <Hero position={ME} rotationY={SOUTH} pose={posed("hug", t, { head: [0.1, 0, 0.12] })} face={gone ? "wow" : "calm"} tailUp={gone ? 0.3 : 1} />
             <Mum position={b.position} rotationY={b.rotationY} walk={b.walk} lean={gone ? b.lean : 0.34} mood={gone ? "scared" : "happy"} />
-            <Heart position={[0.05, 2.0, -3.5]} rotationY={0.6} scale={gone ? 0 : tw(t, 0.1, 0.35)} />
+            <Heart position={[0, 2.0, -3.55]} rotationY={-1.2} scale={gone ? 0 : tw(t, 0.1, 0.35)} />
           </>
         );
       },
     },
     {
       cue: "6.came",
-      ...cam.push({ on: [0, 1.0, -3.4], dist: 4.6, to: 3.6, yaw: 24, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [0, 1.05, -3.45], dist: 4.4, to: 3.3, yaw: -76, pitch: 4, fov: 42 }),
       zone: "town",
       look: "overworld-sunset",
       note: "She walks back in from the edge of the frame, still shaking, and leans on him again. Dad comes up behind her and leans on both of them. He shuts his eyes.",
@@ -133,18 +132,18 @@ export const scene6 = storyScene(timing, {
           <>
             <Hero position={ME} rotationY={SOUTH} pose={k < 1 ? openArms(t, 0.7) : posed("hug", t, { head: [0.1, 0, 0.12] })} face={k < 1 ? "wow" : "calm"} tailUp={1} />
             <Mum position={[HUG[0] + Math.sin(t * 48) * 0.01, 0, HUG[2] + (1 - k) * 3.2]} rotationY={NORTH} walk={k * 3.2} mood={k < 1 ? "scared" : "happy"} lean={tw(t, 0.7, 1.0) * 0.34} />
-            <Dad position={[0.95, 0, HUG[2] + 0.35 + (1 - d) * 4]} rotationY={NORTH - 0.75} walk={d * 4} mood="happy" lean={tw(t, 1.1, 1.4) * 0.3} />
-            <Heart position={[0.2, 2.15, -3.4]} rotationY={0.4} scale={tw(t, 1.0, 1.3)} />
+            <Dad position={[0.62, 0, HUG[2] - 0.25 + (1 - d) * 4]} rotationY={NORTH + 0.9} walk={d * 4} mood="happy" lean={tw(t, 1.1, 1.4) * 0.3} />
+            <Heart position={[0, 2.2, -3.5]} rotationY={-1.3} scale={tw(t, 1.0, 1.3)} />
           </>
         );
       },
     },
     {
       cue: "7.turns",
-      ...cam.push({ on: [0.6, 1.0, -2.2], dist: 6.2, to: 5.4, yaw: 58, pitch: 8, fov: 44 }),
+      ...cam.push({ on: [0, 1.0, -3.0], dist: 5.2, to: 4.6, yaw: 158, pitch: 14, fov: 46 }),
       zone: "town",
       look: "overworld-day",
-      note: "Daylight. A queue: seven creepers in a line down the street, shaking. The one at the front leans on him, counts to one, jumps and runs; the next one shuffles up and leans.",
+      note: "Daylight, from over his shoulder: a queue of seven creepers down the middle of the street, all shaking. The one at the front leans on him, counts to one, jumps and runs; the next one shuffles up and leans.",
       stage: (t) => {
         const swap = w("7.turns", "They") - 0.2;
         const k = tw(t, swap, swap + 0.5);
@@ -157,14 +156,14 @@ export const scene6 = storyScene(timing, {
               const z = HUG[2] + 1.15 * (i + 1) - k * 1.15;
               return <Creeper key={i} position={[Math.sin(i * 2.1) * 0.12 + Math.sin(t * 44 + i) * 0.008, 0, z]} rotationY={NORTH} walk={k * 1.15} mood={i === 0 ? "happy" : "scared"} lean={i === 0 ? tw(t, swap + 0.5, swap + 0.8) * 0.34 : 0} scarf={["#7a4fb0", "#e07a2e", "#e0b83a", undefined, "#c23a2e", "#3f6fc2"][i]} scale={i === 3 ? 0.62 : 0.94 + (i % 3) * 0.04} phase={i + 2} />;
             })}
-            <Heart position={[0.15, 2.05, -3.5]} rotationY={0.9} scale={t < swap - 0.15 || t > swap + 0.8 ? 1 : 0} />
+            <Heart position={[0, 2.1, -3.55]} rotationY={Math.PI} scale={t < swap - 0.15 || t > swap + 0.8 ? 1 : 0} />
           </>
         );
       },
     },
     {
       cue: "7.table",
-      ...cam.push({ on: [T[0], 0.9, T[2]], dist: 7.6, to: 6.6, yaw: 82, pitch: 12, fov: 44 }),
+      ...cam.push({ on: [T[0], 0.95, T[2] - 0.6], dist: 8.8, to: 8.0, yaw: 0, pitch: 13, fov: 38 }),
       zone: "town",
       look: "overworld-day",
       note: "The dinner table again, and this time the whole of it fits in one frame: mum and dad at one end, him at the other with his fish, six planks between them. Mum is only shaking a little.",
@@ -180,7 +179,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "7.little",
-      ...cam.push({ on: [-0.75, 0.62, -3.15], dist: 3.6, to: 2.5, yaw: 10, pitch: 6, fov: 38 }),
+      ...cam.push({ on: [-0.85, 0.66, -3.15], dist: 3.8, to: 3.1, yaw: 8, pitch: 6, fov: 40 }),
       zone: "town",
       look: "overworld-sunset",
       note: "Evening, the same spot in the square: he sits, and the little creeper in the yellow scarf sits right up against him. On 'purr' the rings come off his chest. The little one shakes like a leaf, and stays, and leans in.",
@@ -190,8 +189,8 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Hero position={[SITS[0] + Math.sin(t * 60) * 0.007 * purr, GROUND_SIT, SITS[2]]} rotationY={SOUTH} pose={sitPose(t, { head: [0.05, -0.3, 0] })} face={purr ? "calm" : "smile"} tailUp={0.9} />
-            {purr ? <SoundRings position={[SITS[0], 0.55, SITS[2] + 0.3]} t={((t - on) * 1.4) % 1} color="#ffd9a0" reach={1.1} /> : null}
-            <Little position={[-0.42 + Math.sin(t * 46) * 0.012 * purr, 0, -3.15]} rotationY={SOUTH + 0.15} mood="happy" turn={0.5} tilt={purr * tw(t, on + 0.3, on + 0.8) * 0.3} />
+            {purr ? <SoundRings position={[SITS[0], 0.55, SITS[2] + 0.3]} t={((t - on) * 1.4) % 1} color="#ffd9a0" reach={0.45} /> : null}
+            <Little position={[-0.5 + Math.sin(t * 46) * 0.012 * purr, 0, -3.15]} rotationY={SOUTH + 0.15} mood="happy" turn={0.5} tilt={purr * tw(t, on + 0.3, on + 0.8) * 0.3} />
             <Heart position={[-0.8, 1.55, -3.1]} scale={tw(t, on + 0.6, on + 0.9) * 0.9} />
           </>
         );

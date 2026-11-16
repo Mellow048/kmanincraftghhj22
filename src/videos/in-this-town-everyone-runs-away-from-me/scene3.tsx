@@ -3,7 +3,9 @@ import { Creeper, Creeps, GROUND_SIT, Hero, Little, NORTH, Puffs, SOUTH, SoundRi
 
 /** 03 — So he tried everything. */
 const SIT: [number, number, number] = [-1.2, 0, -3.2];
-const BY: [number, number, number] = [-0.25, 0, -3.1];
+const BY: [number, number, number] = [-0.45, 0, -3.1];
+/** The costume sits low enough for his ears to stick out of the top. */
+const LOW = -0.14;
 
 export const scene3 = storyScene(timing, {
   id: "scene3",
@@ -20,7 +22,7 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <Hero position={[-2.8, 0, 11]} rotationY={SOUTH - 0.2} animation="idle" face="brave" tailUp={1} />
-            <Suit position={[-2.8, 2.6 * (1 - drop), 11]} rotationY={SOUTH - 0.2} wobble={Math.sin(t * 20) * 0.05 * drop * (1 - tw(t, 1.2, 1.6))} />
+            <Suit position={[-2.8, LOW + 2.6 * (1 - drop), 11]} rotationY={SOUTH - 0.2} wobble={Math.sin(t * 20) * 0.05 * drop * (1 - tw(t, 1.2, 1.6))} />
           </>
         );
       },
@@ -34,23 +36,23 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[-2.8, 0, 11]} rotationY={SOUTH} animation="idle" tailUp={1} headRoll={Math.sin(t * 9) * 0.06} />
-          <Suit position={[-2.8, 0, 11]} rotationY={SOUTH} />
+          <Suit position={[-2.8, LOW, 11]} rotationY={SOUTH} />
         </>
       ),
     },
     {
       cue: "3.suitran",
-      ...cam.push({ on: [0, 1.0, 3.6], dist: 8.2, to: 9, yaw: 74, pitch: 10, fov: 44 }),
+      ...cam.push({ on: [0, 1.1, 4.2], dist: 5.6, to: 6.6, yaw: 0, pitch: 9, fov: 46 }),
       zone: "town",
       look: "overworld-day",
-      note: "From the side: the box waddles up the street towards five creepers. They look at it for half a second, then all five jump and run.",
+      note: "From behind it: the box waddles up the street towards five creepers, ears and tail sticking out. They look at it for half a second, then all five jump and run.",
       stage: (t) => {
         const z = 7.2 - t * 1.5;
         return (
           <>
             <Hero position={[0, 0, z]} rotationY={NORTH} animation="walk" animDistance={t * 1.5} tailUp={1} />
-            <Suit position={[0, 0, z]} rotationY={NORTH} wobble={Math.sin(t * 9) * 0.08} />
-            <Creeps spots={[[-0.9, 2.6], [0.8, 1.8], [-0.2, 0.6], [1.3, -0.2], [-1.3, -0.6]]} t={t} face={SOUTH} lookAt={[0, 1, z]} cat={[0, 0, 6]} at={0.45} speed={8} first={3} />
+            <Suit position={[0, LOW, z]} rotationY={NORTH} wobble={Math.sin(t * 9) * 0.08} />
+            <Creeps spots={[[-0.8, 3.4], [0.75, 2.8], [-0.1, 1.6], [1.0, 0.8], [-1.0, 0.4]]} t={t} face={SOUTH} lookAt={[0, 1, z]} cat={[0, 0, 6]} at={0.55} speed={8} first={3} />
           </>
         );
       },
@@ -107,7 +109,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.little",
-      ...cam.orbit({ on: [-0.7, 0.6, -3.15], dist: 3.0, yaw: 26, yawTo: 6, pitch: 8, fov: 38 }),
+      ...cam.orbit({ on: [-0.82, 0.62, -3.15], dist: 3.6, yaw: 22, yawTo: 4, pitch: 8, fov: 40 }),
       zone: "town",
       look: "overworld-day",
       note: "A very small creeper in a yellow scarf walks in, stops next to him and stands there. He opens one eye and slides it sideways. He does not dare move anything else.",
@@ -123,7 +125,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.purr",
-      ...cam.push({ on: [-0.75, 0.62, -3.15], dist: 2.9, to: 2.3, yaw: -6, pitch: 6, fov: 38 }),
+      ...cam.push({ on: [-0.82, 0.66, -3.15], dist: 3.6, to: 3.2, yaw: -4, pitch: 6, fov: 40 }),
       zone: "town",
       look: "overworld-day",
       note: "He is so happy that he purrs: he shakes all over and rings come off his chest. The little creeper goes stiff and its eyes go wide. On 'help it' his face falls: he knows what he has done.",
@@ -134,7 +136,7 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <Hero position={[SIT[0] + Math.sin(t * 60) * 0.008 * purr, GROUND_SIT, SIT[2]]} rotationY={SOUTH} pose={sitPose(0, { head: [0, -0.35, 0] })} face={sorry ? "ouch" : "smile"} />
-            {purr ? <SoundRings position={[SIT[0], 0.55, SIT[2] + 0.3]} t={((t - on) * 1.6) % 1} color="#ffd9a0" reach={1.1} /> : null}
+            {purr ? <SoundRings position={[SIT[0], 0.55, SIT[2] + 0.3]} t={((t - on) * 1.6) % 1} color="#ffd9a0" reach={0.45} /> : null}
             <Little position={[BY[0], purr ? Math.abs(Math.sin((t - on) * 30)) * 0.03 : 0, BY[2]]} rotationY={SOUTH + 0.2} mood={purr ? "scared" : "happy"} lookAt={[SIT[0], 0.75, SIT[2]]} lean={purr ? -0.15 : 0} />
           </>
         );
@@ -142,12 +144,12 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.gone",
-      ...cam.push({ on: [0.6, 0.7, -2], dist: 6.5, to: 8.5, yaw: -150, pitch: 14, fov: 46 }),
+      ...cam.push({ on: [-0.7, 0.8, -1.5], dist: 4.6, to: 5.6, yaw: 180, pitch: 12, fov: 46 }),
       zone: "town",
       look: "overworld-day",
       note: "From behind him: the little creeper is already at the far end of the street, small, going flat out, with a line of dust behind it. He watches it go with one paw half lifted.",
       stage: (t) => {
-        const b = bolt(BY, [BY[0] - 0.15, 0, BY[2] - 1], t, -0.55, 0, 9, SOUTH);
+        const b = bolt(BY, [BY[0] - 0.15, 0, BY[2] - 1], t, -0.55, 0, 5, SOUTH);
         return (
           <>
             <Hero position={[SIT[0], GROUND_SIT, SIT[2]]} rotationY={SOUTH + 0.45} pose={sitPose(t, { armR: [-1.0, 0, 0.2] })} face="frown" />

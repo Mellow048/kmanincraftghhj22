@@ -12,25 +12,26 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.why",
-      ...cam.push({ on: [1.2, 1.15, 4], dist: 3.2, to: 2.6, yaw: -24, pitch: -3, fov: 40 }),
+      ...cam.push({ on: [1.3, 1.1, 3.6], dist: 3.6, to: 3.1, yaw: -8, pitch: -3, fov: 42 }),
       zone: "town",
       look: "overworld-day",
-      note: "Close on one creeper from below. An orange ear and a tail go by at the bottom of the frame; on 'cats' the creeper jumps a foot in the air and is gone.",
+      note: "One creeper, close, minding its own business. Behind its shoulder the cat kid walks up with a paw in the air. On 'cats' the creeper's mouth falls open, it jumps a foot in the air and it is gone past the lens.",
       stage: (t) => {
         const at = w("2.why", "cats") - 0.1;
-        const cat: [number, number, number] = [-1.6 + t * 1.6, 0, 5.4];
-        const b = bolt([1.2, 0, 4], [0.2, 0, 5.4], t, at, 0, 8, SOUTH - 0.3);
+        const k = tw(t, 0, at);
+        const cat: [number, number, number] = [1.95, 0, 1.2 + k * 1.5];
+        const b = bolt([0.95, 0, 3.9], [1.9, 0, 2.6], t, at, 0, 8, SOUTH - 0.15);
         return (
           <>
-            <Creeper position={b.position} rotationY={b.rotationY} walk={b.walk} lean={b.lean} scarf="#7a4fb0" mood={t > at - 0.4 ? "scared" : "calm"} lookAt={b.gone ? undefined : [cat[0], 1.1, cat[2]]} />
-            <Hero position={cat} rotationY={EAST} animation="walk" animDistance={t * 1.6} tailUp={1} face="smile" />
+            <Creeper position={b.position} rotationY={b.rotationY} walk={b.walk} lean={b.lean} scarf="#7a4fb0" mood={t > at - 0.35 ? "scared" : "calm"} turn={t > at - 0.35 && !b.gone ? -1.0 : 0} />
+            <Hero position={cat} rotationY={SOUTH} animation={k < 1 ? "walk" : "wave"} animDistance={k * 1.5} arms={k < 1 ? "wave" : undefined} tailUp={1} face="grin" />
           </>
         );
       },
     },
     {
       cue: "2.knows",
-      ...cam.orbit({ on: [3.6, 1.1, 2.2], dist: 3.6, yaw: 22, yawTo: 4, pitch: 3, fov: 38 }),
+      ...cam.orbit({ on: [3.6, 1.1, 2.2], dist: 4.0, yaw: 22, yawTo: 4, pitch: 3, fov: 40 }),
       zone: "town",
       look: "overworld-day",
       note: "Two creepers, face to face. One tips its head at the other: why? The other tips its head back. On 'not even' both turn and look at us. They have no idea.",
@@ -38,18 +39,18 @@ export const scene2 = storyScene(timing, {
         const us = tw(t, w("2.knows", "not"), w("2.knows", "not") + 0.25);
         return (
           <>
-            <Creeper position={[2.95, 0, 2.2]} rotationY={EAST - us * 1.2} tilt={0.3 * (1 - us) * Math.sin(t * 4)} scarf="#e07a2e" hat="straw" phase={1} />
-            <Creeper position={[4.25, 0, 2.2]} rotationY={WEST + us * 1.2} tilt={-0.3 * (1 - us) * Math.sin(t * 4 + 1.5)} scarf="#3f6fc2" color="#4aa53f" phase={2.4} />
+            <Creeper position={[3.12, 0, 2.2]} rotationY={EAST - us * 1.2} tilt={0.3 * (1 - us) * Math.sin(t * 4)} scarf="#e07a2e" hat="straw" phase={1} />
+            <Creeper position={[4.08, 0, 2.2]} rotationY={WEST + us * 1.2} tilt={-0.3 * (1 - us) * Math.sin(t * 4 + 1.5)} scarf="#3f6fc2" color="#4aa53f" phase={2.4} />
           </>
         );
       },
     },
     {
       cue: "2.table",
-      ...cam.truck({ on: [T[0], 0.95, T[2] - TABLE_LONG / 2 - 0.3], dist: 4.3, yaw: 78, pitch: 6, fov: 42, by: [0, 0, TABLE_LONG + 0.9] }),
+      ...cam.push({ on: [T[0], 1.0, T[2] - TABLE_LONG / 2 - 0.5], dist: 2.6, to: 13, yaw: 0, pitch: 8, fov: 54 }),
       zone: "town",
       look: "overworld-day",
-      note: "Dinner in the yard. The camera starts on mum and dad at one end of the table and slides along it, plank after plank after plank, to the other end, where he sits alone with one fish.",
+      note: "Dinner in the yard. The camera starts close on mum and dad at the head of the table and pulls back along it, plank after plank after plank, until the back of his head comes into the frame at the other end, with one fish.",
       stage: (t) => (
         <>
           <Table position={T} length={TABLE_LONG} />
@@ -62,17 +63,17 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.school",
-      ...cam.pan({ from: [3.6, 2.7, -8.6], on: [0, 0.8, -14.2], onTo: [4.6, 1.0, S[2] + 0.2], fov: 46, fovTo: 26 }),
+      ...cam.pan({ from: [0.1, 2.7, -8.0], on: [0, 0.7, -15.2], onTo: [4.6, 1.0, S[2] + 0.2], fov: 48, fovTo: 26 }),
       zone: "town",
       look: "overworld-day",
-      note: "School, outside. Eight little creepers are packed into the two front rows by the board. Then three empty rows. Then him. On 'door' the camera swings to the wall: a small door of his own, with a paw over it.",
+      note: "School, outside. Six little creepers are packed into the two front rows by the board. Then three empty rows. Then him. On 'door' the camera swings to the wall: a small door of his own, with a paw over it.",
       stage: (t) => (
         <>
-          {[-18.3, -17.2, -16.1, -15.0, -13.9].map((z) => [-2.7, -0.9, 0.9, 2.7].map((x) => <Desk key={`${z}${x}`} position={[x, 0, z]} />))}
-          <Desk position={[0, 0, -12.3]} />
-          <Creeps spots={[-18.3, -17.2].flatMap((z) => [-2.7, -0.9, 0.9, 2.7].map((x) => [x + 0.05, z + 0.55, NORTH] as [number, number, number]))} t={t} lookAt={[0, 1, -8]} mood="scared" shake={0.01} first={4} />
-          <Creeper position={[-2.3, 0, S[2] + 1.1]} rotationY={SOUTH} hat="straw" scarf="#c23a2e" lookAt={[0, 1, -11.7]} mood="scared" />
-          <Hero position={[0, 0, -11.75]} rotationY={NORTH} animation="idle" face="frown" tailUp={0.3} />
+          {[-18.4, -17.4, -16.4, -15.4, -14.4].map((z) => [-1.25, 0, 1.25].map((x) => <Desk key={`${z}${x}`} position={[x, 0, z]} />))}
+          <Desk position={[0, 0, -12.5]} />
+          <Creeps spots={[-18.4, -17.4].flatMap((z) => [-1.25, 0, 1.25].map((x) => [x + 0.05, z + 0.55, NORTH] as [number, number, number]))} t={t} lookAt={[0, 1, -8]} mood="scared" shake={0.01} first={4} />
+          <Creeper position={[-1.7, 0, S[2] + 1.1]} rotationY={SOUTH} hat="straw" scarf="#c23a2e" lookAt={[0, 1, -11.7]} mood="scared" />
+          <Hero position={[0, 0, -11.95]} rotationY={NORTH} animation="idle" face="frown" tailUp={0.3} />
         </>
       ),
     },
@@ -99,10 +100,10 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.never",
-      ...cam.orbit({ on: [-3.0, 0.62, 13.2], dist: 3.3, yaw: -34, yawTo: 16, pitch: 9, fov: 40 }),
+      ...cam.orbit({ on: [-4.0, 0.62, 5.1], dist: 3.6, yaw: -24, yawTo: 14, pitch: 9, fov: 46 }),
       zone: "town",
       look: "overworld-day",
-      note: "He sits on the grass and shows us his paws: on 'scratch' he turns them over, on 'bite' he shows his teeth in a smile. On 'chicken' a chicken walks right up to him and pecks at his foot, and he does nothing at all. A creeper watches from behind a cactus.",
+      note: "He sits on the grass and shows us his paws: on 'scratch' he turns them over, on 'bite' he shows his teeth in a smile. On 'chicken' a chicken walks right up to him and pecks at his foot, and he does nothing at all. Behind him a creeper watches the whole thing with its mouth open.",
       stage: (t) => {
         const hen = w("2.never", "never");
         const k = tw(t, hen, hen + cueLen("2.never") - hen - 0.5);
@@ -110,7 +111,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Hero
-              position={[-3.0, GROUND_SIT, 13.2]}
+              position={[-4.0, GROUND_SIT, 5.0]}
               rotationY={SOUTH - 0.1}
               pose={sitPose(t, { armR: [-1.1 * show - 0.3, 0, 0.35 * show], armL: [-1.1 * show - 0.3, 0, -0.35 * show] })}
               face={t > w("2.never", "bite") - 0.1 && t < hen ? "grin" : "calm"}
@@ -118,8 +119,8 @@ export const scene2 = storyScene(timing, {
               headPitch={0.3 * k}
              
             />
-            <Chicken position={[-5.2 + k * 1.75, 0, 13.9 + k * 0.1]} rotationY={EAST} scale={1.1} />
-            <Creeper position={[-3.75, 0, 15.9]} rotationY={NORTH + 0.3} mood="scared" lookAt={[-3, 0.8, 13.2]} scarf="#e0b83a" lean={0.2} />
+            <Chicken position={[-5.7 + k * 1.42, 0, 5.8]} rotationY={EAST} scale={1.1} />
+            <Creeper position={[-4.55, 0, 2.4]} rotationY={SOUTH} mood="scared" lookAt={[-4, 0.8, 5.0]} scarf="#e0b83a" />
           </>
         );
       },

@@ -20,6 +20,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={10 * DEG} animation="wave" face="grin" tailUp={0.9} />
           <Creeps spots={STREET} t={t} face={SOUTH} lookAt={[0, 1.2, 10.5]} mood="scared" shake={0.012} shift={[0, 0, -tw(t, 0.3, 1.6) * 0.7]} skip={[13]} />
+          <Creeps spots={[[-1.75, 8.5], [1.8, 8.1]]} t={t} face={SOUTH} lookAt={[0, 1.2, 10.5]} mood="scared" shake={0.012} shift={[0, 0, -tw(t, 0.3, 1.6) * 0.7]} first={5} />
         </>
       ),
     },
@@ -39,14 +40,14 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.hello",
-      ...cam.push({ on: [0, 1.25, 5.5], dist: 6.4, to: 7.6, yaw: 0, pitch: 12, fov: 46 }),
+      ...cam.push({ on: [0, 1.2, 7.4], dist: 6.2, to: 7.4, yaw: 0, pitch: 10, fov: 46 }),
       zone: "town",
       look: "overworld-day",
       note: "From behind him, looking up the street: he lifts a paw, HELLO pops over his head, and on 'runs' every creeper in the street jumps and bolts away from him.",
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={NORTH} animation="wave" tailUp={1} />
-          <Bubble text="HELLO!" position={[0.9, 2.15, 10.4]} scale={tw(t, 0.2, 0.4)} tail={-1} />
+          <Bubble text="HELLO!" position={[0.25, 2.0, 10.5]} scale={tw(t, 0.2, 0.4) * 0.5} tail={-1} />
           <Creeps spots={STREET} t={t} face={SOUTH} lookAt={[0, 1.2, 10.5]} cat={ME} at={w("1.hello", "runs") - 0.25} skip={[13]} />
         </>
       ),
@@ -78,25 +79,25 @@ export const scene1 = storyScene(timing, {
           <>
             <Box position={DOOR} rotationY={0.3} />
             <Hero position={[DOOR[0], 0.05, DOOR[2]]} rotationY={EAST - 0.2} scale={0.42} animation={t > hi - 0.15 ? "wave" : "idle"} face="smile" headPitch={-0.5} tailUp={1} />
-            <Mum position={[DOOR[0] - 1.25 - back * 1.3, hop, DOOR[2] - 0.75 - back * 0.4]} rotationY={EAST + 0.5} lean={0.35 * (1 - back)} mood={back > 0.3 ? "scared" : "happy"} lookAt={[DOOR[0], 0.5, DOOR[2]]} />
-            <Dad position={[DOOR[0] - 1.25 - back * 1.3, hop, DOOR[2] + 0.75 + back * 0.4]} rotationY={EAST - 0.5} lean={0.35 * (1 - back)} mood={back > 0.3 ? "scared" : "calm"} lookAt={[DOOR[0], 0.5, DOOR[2]]} />
+            <Mum position={[DOOR[0] - 1.25 - back * 0.55, hop, DOOR[2] - 0.75 - back * 0.25]} rotationY={EAST + 0.5} lean={0.35 * (1 - back)} mood={back > 0.3 ? "scared" : "happy"} lookAt={[DOOR[0], 0.5, DOOR[2]]} />
+            <Dad position={[DOOR[0] - 1.25 - back * 0.55, hop, DOOR[2] + 0.75 + back * 0.25]} rotationY={EAST - 0.5} lean={0.35 * (1 - back)} mood={back > 0.3 ? "scared" : "calm"} lookAt={[DOOR[0], 0.5, DOOR[2]]} />
           </>
         );
       },
     },
     {
       cue: "1.love",
-      ...cam.push({ on: [R[0], 1.15, R[2] + 0.6], dist: 5.6, to: 7.0, yaw: 8, pitch: 9, fov: 50 }),
+      ...cam.push({ on: [R[0], 1.1, R[2] + 0.4], dist: 5.2, to: 6.6, yaw: 0, pitch: 7, fov: 50 }),
       zone: "room",
       look: "overworld-day",
       note: "Their front room, from behind him: he waves from this end, and mum and dad are flat against the far wall, as far away as the room lets them be, smiling and shaking. The camera pulls back on 'other side': it is a long room.",
       stage: (t) => (
         <>
-          <Hero position={[R[0] - 0.7, 0, R[2] + 4.3]} rotationY={NORTH + 0.15} animation="wave" tailUp={0.9} />
-          <Mum position={[R[0] - 0.9, 0, R[2] - 2.05]} rotationY={SOUTH} mood="happy" tilt={Math.sin(t * 6) * 0.1} />
-          <Dad position={[R[0] + 0.9, 0, R[2] - 2.05]} rotationY={SOUTH} mood="happy" nod={Math.sin(t * 5) * 0.08} />
-          <Heart position={[R[0] - 0.9, 2.2, R[2] - 1.95]} scale={tw(t, 0.4, 0.7)} />
-          <Heart position={[R[0] + 0.9, 2.35, R[2] - 1.95]} scale={tw(t, 0.7, 1.0)} />
+          <Hero position={[R[0] - 0.35, 0, R[2] + 3.3]} rotationY={NORTH} animation="wave" tailUp={0.9} />
+          <Mum position={[R[0] - 0.55, 0, R[2] - 2.05]} rotationY={SOUTH} mood="happy" tilt={Math.sin(t * 6) * 0.1} />
+          <Dad position={[R[0] + 0.75, 0, R[2] - 2.05]} rotationY={SOUTH} mood="happy" nod={Math.sin(t * 5) * 0.08} />
+          <Heart position={[R[0] - 0.55, 2.2, R[2] - 1.95]} scale={tw(t, 0.4, 0.7)} />
+          <Heart position={[R[0] + 0.75, 2.35, R[2] - 1.95]} scale={tw(t, 0.7, 1.0)} />
         </>
       ),
     },
