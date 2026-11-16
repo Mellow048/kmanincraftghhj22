@@ -43,11 +43,11 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "4.tower",
-      from: f(-3.2, 1.1, -5.0),
-      to: f(-6.0, 7.4, -9.2),
-      target: f(-9, 3.0, -14.2),
-      targetTo: up(WATCH, 0.4),
-      fov: 50,
+      from: f(-1.0, 3.2, -6.2),
+      to: f(-2.6, 6.2, -10.1),
+      target: f(-9, 5.6, -14.2),
+      targetTo: up(WATCH, 0.15),
+      fov: 52,
       zone: Z.fort,
       look: NIGHT4,
       note: "The lookout tower, stood well back so the whole thing is in the picture: four stone legs, open floors climbed by ladders, a lamp on each one, the flag on top. On the very top floor a player sits against the flagpole with a spyglass in his lap, fast asleep. The camera rises up the outside of it to him.",
