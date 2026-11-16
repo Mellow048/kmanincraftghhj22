@@ -40,6 +40,15 @@
     "maxWordsPerShot": 18,
     "opensWith": "In this town",
     "lastLineContains": "subscribe",
+    "lastLineAlsoAccepted": [
+      {
+        "contains": "like this video",
+        "films": [
+          "in-this-town-me-and-my-shadow-dont-get-along"
+        ],
+        "why": "The owner, 2026-11-12, on his own outline for this film: a one-shot with no part two or three, so it must not end with 'like and sub for part two'. His words: 'make it Like the video if you.. hmm something that motivates people who also have expreince with that'. The exception is named here, for this film only."
+      }
+    ],
     "captions": true,
     "shortsRule": "A vertical video over 3:00 is not a YouTube Short: YouTube files it as a long video. Two films were delivered at 3:41 and 3:25 and had to be cut down after the owner saw that (2026-11-13). No film of this topic runs over 2:58, and there is no longer cut."
   },

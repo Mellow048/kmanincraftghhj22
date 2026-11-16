@@ -244,8 +244,18 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   if (lim.opensWith && !clean(cues[0].text).startsWith(lim.opensWith.toLowerCase())) {
     fail(`${tag}: the first line must start "${lim.opensWith}". It starts "${cues[0].text}".`);
   }
-  if (lim.lastLineContains && !cues[cues.length - 1].text.toLowerCase().includes(lim.lastLineContains.toLowerCase())) {
-    fail(`${tag}: the last line must be the "${lim.lastLineContains}" line. It is "${cues[cues.length - 1].text}".`);
+  // A film may be named in the topic's `lastLineAlsoAccepted`: the owner asked for an ending that is not the
+  // subscribe line, and said why. The exception names the film, so it cannot be picked up by another one.
+  const lastText = cues[cues.length - 1].text.toLowerCase();
+  const lastException = (topic.film?.lastLineAlsoAccepted ?? []).find(
+    (e) => Array.isArray(e?.films) && e.films.includes(slug) && e.contains && lastText.includes(String(e.contains).toLowerCase()),
+  );
+  if (lim.lastLineContains && !lastText.includes(lim.lastLineContains.toLowerCase())) {
+    if (lastException) {
+      info(`${tag}: ends on "${lastException.contains}", not the "${lim.lastLineContains}" line. ${lastException.why ?? ""}`.trim());
+    } else {
+      fail(`${tag}: the last line must be the "${lim.lastLineContains}" line. It is "${cues[cues.length - 1].text}".`);
+    }
   }
   for (const cue of cues) {
     const n = wordsOf(cue.text).length;
