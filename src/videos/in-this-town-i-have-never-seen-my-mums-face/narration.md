@@ -1,7 +1,8 @@
 # Narration — In This Town, I Have Never Seen My Mum's Face
 
-**Status: draft 1 (2026-11-16), recorded so the owner can hear it. NOT approved yet: he has been shown the script and
-asked for a yes or for changes. Nothing is built. Voice `voice-03`, tempo 1.45.**
+**Status: APPROVED by the owner on 2026-11-16 ("i like that one, another banger idea! go ahead lad make that mp4"),
+then built and rendered. Voice `voice-03`, tempo 1.47: 105.6 s, 52 shots, 413 words, 236 words a minute. The script
+was shown to him before anything was built (his rule, `OWNER.md` §4), and not one line changed after his yes.**
 
 Topic: `Topics/InThisTown`. Short cut. **A whole story in one film**, like the cats and dogs and the creeper town:
 no cliffhanger, no "part two".
