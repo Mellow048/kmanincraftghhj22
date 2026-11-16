@@ -213,7 +213,7 @@ export const scene4 = storyScene(timing, {
             {seats.map(([col, row], i) => (
               <BigNumber key={`c${col}${row}`} n="4" over={SPOT.seat(col, row)} size={0.34 + (i % 3) * 0.04} t={t} rotationY={3.1067} />
             ))}
-            <SubscribeSign position={SPOT.at(0.2, 2.55, -3.45)} rotationY={0} scale={0.95} tilt={0.03 + Math.sin(t * 9) * 0.01} />
+            <SubscribeSign position={SPOT.at(0.2, 3.05, -3.42)} rotationY={0} scale={0.8} tilt={0.03 + Math.sin(t * 9) * 0.01} />
           </>
         );
       },
