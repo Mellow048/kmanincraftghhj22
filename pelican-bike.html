@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelican Riding a Bicycle</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; height: 100%; overflow: hidden;
+    background: linear-gradient(180deg, #7ec8e3 0%, #c6ecff 65%, #f5e6c8 65%, #e5cf9e 100%);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  svg { width: 100%; height: 100%; display: block; }
+  .hint {
+    position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.72); color: #fff;
+    padding: 8px 16px; border-radius: 999px; font-size: 13px;
+    user-select: none; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 900 500" preserveAspectRatio="xMidYMid slice" aria-label="A pelican riding a bicycle">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6cc0e5"/>
+      <stop offset="100%" stop-color="#d8f3ff"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4b5563"/>
+      <stop offset="100%" stop-color="#374151"/>
+    </linearGradient>
+    <g id="wheel">
+      <circle r="48" fill="none" stroke="#1f2937" stroke-width="9"/>
+      <circle r="43" fill="none" stroke="#d1d5db" stroke-width="2"/>
+      <circle r="7" fill="#374151"/>
+      <g stroke="#e5e7eb" stroke-width="2">
+        <line x1="-42" y1="0" x2="42" y2="0"/>
+        <line x1="0" y1="-42" x2="0" y2="42"/>
+        <line x1="-30" y1="-30" x2="30" y2="30"/>
+        <line x1="-30" y1="30" x2="30" y2="-30"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="900" height="330" fill="url(#sky)"/>
+  <!-- Sun -->
+  <circle cx="770" cy="82" r="42" fill="#fde047" opacity="0.9"/>
+
+  <!-- Parallax clouds -->
+  <g id="clouds" fill="#ffffff" opacity="0.9">
+    <g transform="translate(140, 80)">
+      <circle cx="0" cy="10" r="22"/><circle cx="24" cy="4" r="28"/><circle cx="52" cy="12" r="20"/>
+    </g>
+    <g transform="translate(480, 58)">
+      <circle cx="0" cy="10" r="18"/><circle cx="22" cy="2" r="24"/><circle cx="46" cy="10" r="17"/>
+    </g>
+    <g transform="translate(760, 125)">
+      <circle cx="0" cy="10" r="20"/><circle cx="24" cy="4" r="25"/><circle cx="48" cy="12" r="18"/>
+    </g>
+  </g>
+
+  <!-- Distant hills -->
+  <path d="M0,330 Q140,260 280,330 T580,330 T900,330 L900,330 L0,330 Z" fill="#86efac"/>
+  <path d="M0,330 Q210,275 420,330 T840,330 L900,330 L0,330 Z" fill="#4ade80" opacity="0.75"/>
+
+  <!-- Road -->
+  <rect y="330" width="900" height="170" fill="url(#road)"/>
+  <rect y="330" width="900" height="6" fill="#9ca3af"/>
+  <g id="dashes" fill="#facc15"></g>
+
+  <!-- Pelican + Bicycle -->
+  <g id="rig" transform="translate(450, 315)">
+    <!-- Back & Front Wheels -->
+    <g id="wheelBack" transform="translate(-85, 22)"><use href="#wheel"/></g>
+    <g id="wheelFront" transform="translate(85, 22)"><use href="#wheel"/></g>
+
+    <!-- Bicycle Frame -->
+    <g stroke="#ef4444" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <line x1="-85" y1="22" x2="-12" y2="22"/>
+      <line x1="-85" y1="22" x2="-32" y2="-38"/>
+      <line x1="-32" y1="-38" x2="54" y2="-38"/>
+      <line x1="-12" y1="22" x2="54" y2="-38"/>
+      <line x1="54" y1="-38" x2="85" y2="22"/>
+      <line x1="-32" y1="-38" x2="-38" y2="-54"/>
+    </g>
+    <!-- Handlebars & Seat -->
+    <path d="M46,-54 L66,-54 L72,-44" fill="none" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/>
+    <rect x="-52" y="-60" width="28" height="9" rx="4" fill="#1f2937"/>
+
+    <!-- Pelican Body (bobs slightly with pedaling) -->
+    <g id="pelican">
+      <!-- Tail feathers -->
+      <path d="M-58,-62 L-92,-76 L-82,-54 L-96,-48 L-64,-44 Z" fill="#e5e7eb" stroke="#9ca3af" stroke-width="2"/>
+      <!-- Torso -->
+      <ellipse cx="-26" cy="-76" rx="40" ry="26" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <!-- Wing -->
+      <path id="wing" d="M-46,-82 Q-12,-96 6,-72 Q-16,-56 -48,-66 Z" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2"/>
+      <!-- Neck & Head -->
+      <path d="M2,-86 Q18,-126 14,-148" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round"/>
+      <circle cx="16" cy="-152" r="17" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+      <!-- Eye -->
+      <circle cx="22" cy="-155" r="3.5" fill="#111827"/>
+      <circle cx="23" cy="-156" r="1.2" fill="#ffffff"/>
+      <!-- Beak + Pouch -->
+      <path d="M30,-156 L96,-144 L30,-142 Z" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+      <path d="M30,-142 Q62,-112 94,-144 Z" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+      <!-- Arm reaching to handlebars -->
+      <path d="M-6,-74 Q24,-62 56,-52" fill="none" stroke="#e5e7eb" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <!-- Pedaling Leg & Crank -->
+    <g id="crankGroup" transform="translate(-12, 22)">
+      <circle r="13" fill="#9ca3af" stroke="#374151" stroke-width="3"/>
+      <line id="crankArm" x1="0" y1="0" x2="18" y2="0" stroke="#374151" stroke-width="5" stroke-linecap="round"/>
+      <rect id="pedal" x="12" y="-4" width="14" height="7" rx="2" fill="#111827"/>
+    </g>
+    <path id="leg" d="M-24,-58 L-8,-16 L6,22" fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+
+<div class="hint" id="speedBtn">Click to toggle turbo speed</div>
+
+<script>
+"use strict";
+
+const dashesGroup = document.getElementById("dashes");
+const dashCount = 12;
+const dashes = [];
+for (let i = 0; i < dashCount; i++) {
+  const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  r.setAttribute("y", "405");
+  r.setAttribute("width", "48");
+  r.setAttribute("height", "8");
+  r.setAttribute("rx", "4");
+  dashesGroup.appendChild(r);
+  dashes.push({ el: r, x: i * 90 });
+}
+
+const wheelBack = document.getElementById("wheelBack");
+const wheelFront = document.getElementById("wheelFront");
+const crankArm = document.getElementById("crankArm");
+const pedal = document.getElementById("pedal");
+const leg = document.getElementById("leg");
+const pelican = document.getElementById("pelican");
+const clouds = document.getElementById("clouds");
+const speedBtn = document.getElementById("speedBtn");
+
+let turbo = false;
+speedBtn.addEventListener("click", () => {
+  turbo = !turbo;
+  speedBtn.textContent = turbo ? "Turbo mode! Click for cruise" : "Click to toggle turbo speed";
+});
+
+let angle = 0;
+let cloudOffset = 0;
+let last = performance.now();
+
+function tick(now) {
+  const dt = Math.min(0.05, (now - last) / 1000);
+  last = now;
+
+  const speed = turbo ? 360 : 180;
+  angle += dt * (turbo ? 9 : 4.5);
+
+  // Spin wheels
+  const deg = (angle * 180) / Math.PI;
+  wheelBack.setAttribute("transform", `translate(-85, 22) rotate(${deg})`);
+  wheelFront.setAttribute("transform", `translate(85, 22) rotate(${deg})`);
+
+  // Crank & pedaling leg
+  const px = Math.cos(angle) * 18;
+  const py = Math.sin(angle) * 18;
+  crankArm.setAttribute("x2", px.toFixed(1));
+  crankArm.setAttribute("y2", py.toFixed(1));
+  pedal.setAttribute("x", (px - 7).toFixed(1));
+  pedal.setAttribute("y", (py - 3.5).toFixed(1));
+
+  const footX = -12 + px;
+  const footY = 22 + py;
+  const kneeX = (-24 + footX) * 0.5 + 12;
+  const kneeY = (-58 + footY) * 0.5 - 8;
+  leg.setAttribute("d", `M-24,-58 L${kneeX.toFixed(1)},${kneeY.toFixed(1)} L${footX.toFixed(1)},${footY.toFixed(1)}`);
+
+  // Subtle body bob
+  const bob = Math.sin(angle * 2) * 2.5;
+  pelican.setAttribute("transform", `translate(0, ${bob.toFixed(2)})`);
+
+  // Scroll road dashes
+  for (const d of dashes) {
+    d.x -= speed * dt;
+    if (d.x < -60) d.x += dashCount * 90;
+    d.el.setAttribute("x", d.x.toFixed(1));
+  }
+
+  // Drift clouds
+  cloudOffset -= (speed * 0.12) * dt;
+  if (cloudOffset < -900) cloudOffset += 900;
+  clouds.setAttribute("transform", `translate(${cloudOffset.toFixed(1)}, 0)`);
+
+  requestAnimationFrame(tick);
+}
+
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
