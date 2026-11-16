@@ -44,7 +44,7 @@ that has not been recorded or built.
 | Date | Idea | State |
 |---|---|---|
 | 2026-11-16 | [`ideas/2026-11-16-one-clock.md`](ideas/2026-11-16-one-clock.md) — *What If You Could See How Long You Had* | **Delivered.** 356 words, 84.6 s, 38 shots, `renders/what-if-you-could-see-how-long-you-had.mp4` |
-| 2026-11-16 | [`ideas/2026-11-16-five-films.md`](ideas/2026-11-16-five-films.md) — four more, pitched against part one | **In production**, one at a time: Shadow, Everyone Forgets You, Every Door, Hear The Last Thing |
+| 2026-11-16 | [`ideas/2026-11-16-five-films.md`](ideas/2026-11-16-five-films.md) — four more, pitched against part one | **In production**, one at a time: Shadow **delivered** (`renders/what-if-your-shadow-did-what-you-were-thinking.mp4`), then Everyone Forgets You, Every Door, Hear The Last Thing |
 
 ## Which kind of film is it?
 
