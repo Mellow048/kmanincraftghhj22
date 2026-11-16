@@ -239,4 +239,7 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   town"), and the template's `kit.tsx` passes them on. **What this tells us about his taste: the recipe holds (a famous
   mob as family, the odd one out, players as the danger, Minecraft facts as jokes), "cute" is praise, and a film that
   ends in one part is welcome when it is funny.** Views and stayed-to-watch for it are not known yet: ask.
+- **2026-11-16, the next one.** For "make another idea" he was sent a script and its recorded voice, not a film:
+  idea 4, "I Have Never Seen My Mum's Face" (a kid raised by endermen), in
+  `drafts/in-this-town-i-have-never-seen-my-mums-face/`. Script first is his rule; wait for his yes or his changes.
 
