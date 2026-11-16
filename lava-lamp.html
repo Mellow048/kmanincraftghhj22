@@ -399,7 +399,7 @@ float capSDF(vec3 p) {
   return smin(skirt, dome, 0.014);
 }
 float liquidSDF(vec3 p) {
-  return max(bottleOuter(p) + THICK, Y_FLOOR - p.y, p.y - Y_SURF);
+  return max(max(bottleOuter(p) + THICK, Y_FLOOR - p.y), p.y - Y_SURF);
 }
 
 vec3 toLocalDir(vec3 d) {
@@ -443,9 +443,9 @@ float fieldOnly(vec3 p) {
 vec3 fieldNormal(vec3 p) {
   float e = 0.0011;
   return normalize(vec3(
-    fieldOnly(p + vec3(e, 0, 0)) - fieldOnly(p - vec3(e, 0, 0)),
-    fieldOnly(p + vec3(0, e, 0)) - fieldOnly(p - vec3(0, e, 0)),
-    fieldOnly(p + vec3(0, 0, e)) - fieldOnly(p - vec3(0, 0, e))
+    fieldOnly(p + vec3(e, 0.0, 0.0)) - fieldOnly(p - vec3(e, 0.0, 0.0)),
+    fieldOnly(p + vec3(0.0, e, 0.0)) - fieldOnly(p - vec3(0.0, e, 0.0)),
+    fieldOnly(p + vec3(0.0, 0.0, e)) - fieldOnly(p - vec3(0.0, 0.0, e))
   ));
 }
 
@@ -535,6 +535,7 @@ vec3 helixPoint(float t) {
   return vec3(cos(a) * 0.0115, y, sin(a) * 0.0115);
 }
 float rayCoil(vec3 ro, vec3 rd, out vec3 hitP) {
+  hitP = ro;
   float best = 1e9;
   float wire = 0.0018;
   for (int i = 0; i < 22; i++) {
@@ -558,6 +559,10 @@ float rayCoil(vec3 ro, vec3 rd, out vec3 hitP) {
 int marchWax(vec3 ro, vec3 rd, out vec3 p, out vec3 n, out float temp, out float tOut) {
   float t = 0.001;
   float prevStep = 0.002;
+  p = ro;
+  n = vec3(0.0, 1.0, 0.0);
+  temp = 40.0;
+  tOut = 0.0;
   for (int i = 0; i < 64; i++) {
     p = ro + rd * t;
     if (liquidSDF(p) > 0.0025 || t > 0.45) {
@@ -616,9 +621,9 @@ vec3 shadeInterior(vec3 ro, vec3 rd) {
 
 vec3 shadeGlass(vec3 p, vec3 rd) {
   vec3 N = normalize(vec3(
-    bottleOuter(p + vec3(0.0007, 0, 0)) - bottleOuter(p - vec3(0.0007, 0, 0)),
-    bottleOuter(p + vec3(0, 0.0007, 0)) - bottleOuter(p - vec3(0, 0.0007, 0)),
-    bottleOuter(p + vec3(0, 0, 0.0007)) - bottleOuter(p - vec3(0, 0, 0.0007))
+    bottleOuter(p + vec3(0.0007, 0.0, 0.0)) - bottleOuter(p - vec3(0.0007, 0.0, 0.0)),
+    bottleOuter(p + vec3(0.0, 0.0007, 0.0)) - bottleOuter(p - vec3(0.0, 0.0007, 0.0)),
+    bottleOuter(p + vec3(0.0, 0.0, 0.0007)) - bottleOuter(p - vec3(0.0, 0.0, 0.0007))
   ));
   if (dot(N, rd) > 0.0) N = -N;
   vec3 view = -rd;
@@ -636,9 +641,9 @@ vec3 shadeGlass(vec3 p, vec3 rd) {
       pCav += rdIn * max(d, 0.0008);
     }
     vec3 Ni = normalize(vec3(
-      bottleOuter(pCav + vec3(0.0007, 0, 0)) - bottleOuter(pCav - vec3(0.0007, 0, 0)),
-      bottleOuter(pCav + vec3(0, 0.0007, 0)) - bottleOuter(pCav - vec3(0, 0.0007, 0)),
-      bottleOuter(pCav + vec3(0, 0, 0.0007)) - bottleOuter(pCav - vec3(0, 0, 0.0007))
+      bottleOuter(pCav + vec3(0.0007, 0.0, 0.0)) - bottleOuter(pCav - vec3(0.0007, 0.0, 0.0)),
+      bottleOuter(pCav + vec3(0.0, 0.0007, 0.0)) - bottleOuter(pCav - vec3(0.0, 0.0007, 0.0)),
+      bottleOuter(pCav + vec3(0.0, 0.0, 0.0007)) - bottleOuter(pCav - vec3(0.0, 0.0, 0.0007))
     ));
     if (dot(Ni, rdIn) > 0.0) Ni = -Ni;
     float eta = pCav.y > Y_SURF ? (1.52 / 1.00) : (1.52 / 1.41);
@@ -728,15 +733,15 @@ void main() {
       vec3 n;
       if (id == 2) {
         n = normalize(vec3(
-          capSDF(lp + vec3(0.0007, 0, 0)) - capSDF(lp - vec3(0.0007, 0, 0)),
-          capSDF(lp + vec3(0, 0.0007, 0)) - capSDF(lp - vec3(0, 0.0007, 0)),
-          capSDF(lp + vec3(0, 0, 0.0007)) - capSDF(lp - vec3(0, 0, 0.0007))
+          capSDF(lp + vec3(0.0007, 0.0, 0.0)) - capSDF(lp - vec3(0.0007, 0.0, 0.0)),
+          capSDF(lp + vec3(0.0, 0.0007, 0.0)) - capSDF(lp - vec3(0.0, 0.0007, 0.0)),
+          capSDF(lp + vec3(0.0, 0.0, 0.0007)) - capSDF(lp - vec3(0.0, 0.0, 0.0007))
         ));
       } else {
         n = normalize(vec3(
-          baseSDF(lp + vec3(0.0007, 0, 0)) - baseSDF(lp - vec3(0.0007, 0, 0)),
-          baseSDF(lp + vec3(0, 0.0007, 0)) - baseSDF(lp - vec3(0, 0.0007, 0)),
-          baseSDF(lp + vec3(0, 0, 0.0007)) - baseSDF(lp - vec3(0, 0, 0.0007))
+          baseSDF(lp + vec3(0.0007, 0.0, 0.0)) - baseSDF(lp - vec3(0.0007, 0.0, 0.0)),
+          baseSDF(lp + vec3(0.0, 0.0007, 0.0)) - baseSDF(lp - vec3(0.0, 0.0007, 0.0)),
+          baseSDF(lp + vec3(0.0, 0.0, 0.0007)) - baseSDF(lp - vec3(0.0, 0.0, 0.0007))
         ));
       }
       if (dot(n, lrd) > 0.0) n = -n;
