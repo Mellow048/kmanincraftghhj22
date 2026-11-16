@@ -54,14 +54,14 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.mum",
-      ...cam.truck({ on: [-7.4, 1.05, 7.1], dist: 3.3, yaw: 84, pitch: 2, fov: 40, by: [0, 0, 1.9] }),
+      ...cam.truck({ on: [-7.4, 1.05, 7.45], dist: 3.5, yaw: 84, pitch: 2, fov: 40, by: [0, 0, 1.1] }),
       zone: "town",
       look: "overworld-day",
       note: "In front of their door: mum, a creeper with a pink bow and a pink scarf, tips her head at us. The camera slides to dad, in a straw hat, who nods.",
       stage: (t) => (
         <>
-          <Mum position={[-7.4, 0, 7.1]} rotationY={EAST} mood="happy" tilt={Math.sin(t * 5) * 0.14} />
-          <Dad position={[-7.4, 0, 9.0]} rotationY={EAST} mood="happy" nod={Math.max(0, Math.sin((t - w("1.mum", "dad")) * 9)) * 0.25} />
+          <Mum position={[-7.4, 0, 7.45]} rotationY={EAST} mood="happy" tilt={Math.sin(t * 5) * 0.14} />
+          <Dad position={[-7.4, 0, 8.55]} rotationY={EAST} mood="happy" nod={Math.max(0, Math.sin((t - w("1.mum", "dad")) * 9)) * 0.25} />
         </>
       ),
     },
