@@ -212,3 +212,7 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   into main as a reference … souce code + mp4 put it in there for other agents to see how to make a good short". It is
   in `reference/iron-golem/`. So the pace above is confirmed: **about 235 words a minute, with a quarter to three
   quarters of a second of silence before each new step of the story**, and the film moved up a cut to make room.
+- **2026-11-16.** Monster Village part 1 is the Short that got about 5.5k views. He does not know why it was pushed.
+  He wants stay-to-watch above 75% (on 2026-11-14 the target he named was 70%). The format does not change. He then
+  gave the pirate outline, word for word, in `outlines/pirate.md`. Script draft 1 is written there and is **not
+  approved**. Do not record and do not build until he says yes. One film at a time: this is the one.
