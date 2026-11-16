@@ -1,10 +1,11 @@
 import { cam, storyScene } from "../../engine";
-import { Classmate, Hero, ME, NORTH, Overhead, R, SPOT, Teacher, ease, ramp, timing, wordAt } from "./kit";
+import type { Vec3 } from "../../engine";
+import { Classmate, Figure, Hero, Icon, ME, NORTH, R, SOUTH, SPOT, Teacher, WEST, ease, ramp, timing, wordAt } from "./kit";
 
 /**
  * HOOK, and the rule.
  *
- * The power has ONE look for the whole film: a clock over a head (`Overhead kind="clock"`). It is set here, in the
+ * The power has ONE look for the whole film: a NUMBER over a head, with a small clock badge. It is set here, in the
  * first shot, and it never changes size, colour or part - except that it counts down, which is the only thing about
  * it that ever changes.
  *
@@ -18,10 +19,27 @@ const TEMPER = wordAt("1.temper", "temper");
 const FOUR = wordAt("2.before", "four");
 const UP = wordAt("2.up", "shouting");
 
-/** A clock over one head. `n` is not used: the icon is the same clock; its SIZE is how close to zero it is. */
-const Clock: React.FC<{ over: Parameters<typeof Overhead>[0]["over"]; t: number; size: number; tall?: number; tint?: string }> = ({ over, t, size, tall = 1.34, tint }) => (
-  <Overhead over={over} kind="clock" tall={tall} size={size} t={t} color={tint} steady rotationY={0} />
-);
+/**
+ * THE POWER'S ONE LOOK.
+ *
+ * A NUMBER over a head, in big white cubes with a dark outline, and a small clock turned on its side next to it so
+ * the viewer can see WHAT the number is. This is `Figure` and not `Overhead` for one measured reason: `Overhead`'s
+ * clock icon is a pale outline on a pale classroom wall, and on the first stills run it could not be seen at all.
+ * A number six cubes high with an outline reads at the size a phone is held.
+ *
+ * The number is the rule. There is no size to interpret: `40` over a calm man and `4` over the boy who goes off.
+ */
+const Clock: React.FC<{ over: Vec3; n: string; t: number; tall?: number; size?: number; tint?: string }> = ({ over, n, t, tall = 1.34, size = 0.5, tint = "#ffffff" }) => {
+  const at: Vec3 = [over[0], over[1] + tall + 0.42 + size * 0.5, over[2]];
+  const pop = ease(Math.min(1, Math.max(0, t / 0.25)));
+  if (t < 0) return null;
+  return (
+    <group scale={[0.6 + 0.4 * pop, 0.6 + 0.4 * pop, 0.6 + 0.4 * pop]}>
+      <Figure text={n} position={at} height={size} depth={1.2} color={tint} outline glow={0.5} castShadow={false} />
+      <Icon kind="clock" position={[at[0], at[1] + size * 0.78, at[2]]} height={size * 0.44} depth={1.1} color={tint} outline glow={0.6} castShadow={false} />
+    </group>
+  );
+};
 
 export const scene1 = storyScene(timing, {
   id: "scene1",
@@ -41,7 +59,7 @@ export const scene1 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />
           <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.seat(1, 0)} t={t - SEE} size={0.72} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - SEE} size={0.62} />
         </>
       ),
     },
@@ -55,7 +73,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Clock over={SPOT.seat(1, 0)} t={t - LIVE} size={0.8} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - LIVE} size={0.66} />
         </>
       ),
     },
@@ -66,12 +84,12 @@ export const scene1 = storyScene(timing, {
       zone: "class",
       note: "The clock from the side, and it begins to run: the boy under it starts to fidget, and the thing over his head gets smaller as the line says what it counts. Two people, one small bright clock, no explanation - the viewer works out the rule of the film from this one shot.",
       stage: (t) => {
-        const shrink = 0.8 - 0.16 * ease(ramp(t, 0, 1.3));
+        const shrink = 0.62 - 0.12 * ease(ramp(t, 0, 1.3));
         return (
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="uneasy" headPitch={0.1} />
             <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-            <Clock over={SPOT.seat(1, 0)} t={t - TEMPER} size={shrink} />
+            <Clock over={SPOT.seat(1, 0)} n="4" t={t - TEMPER} size={shrink} />
           </>
         );
       },
@@ -99,7 +117,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face="uneasy" headPitch={-0.06} />
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
-          <Clock over={SPOT.seat(1, 0)} t={t - FOUR} size={0.9} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - FOUR} size={0.6} />
         </>
       ),
     },
@@ -110,11 +128,11 @@ export const scene1 = storyScene(timing, {
       zone: "class",
       note: "Hard on the clock, from under it, so it fills the top of the frame and the boy's head is a dark shape under it. It is going down while he says he did not know four what. The audience does not know either, and the clock is not going to tell them.",
       stage: (t) => {
-        const s = 0.9 - 0.2 * ease(ramp(t, 0, 1.5));
+        const s = 0.6 - 0.08 * ease(ramp(t, 0, 1.5));
         return (
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
-            <Clock over={SPOT.seat(1, 0)} t={t - 0.1} size={s} />
+            <Clock over={SPOT.seat(1, 0)} n="4" t={t - 0.1} size={s} />
           </>
         );
       },
@@ -146,7 +164,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.teacher} tall={1.8} t={t} size={1.00} tint="#e8f2ff" />
+          <Clock over={SPOT.teacher} n="40" tall={1.8} t={t} size={0.5} tint="#e8f2ff" />
         </>
       ),
     },
@@ -160,33 +178,33 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={[ME[0] + 0.5, 0, ME[2] - 0.9]} rotationY={NORTH - 0.7} animation="idle" face="calm" />
           <Classmate who={7} position={[ME[0] + 2.2, 0, ME[2] - 2.2]} rotationY={SPOT.door ? NORTH : NORTH} animation="walk" face="calm" headPitch={0.1} />
-          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} tall={1.8} t={t} size={0.85} tint="#e8f2ff" />
+          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} n="2" tall={1.8} t={t} size={0.52} tint="#e8f2ff" />
         </>
       ),
     },
     {
       // My brother had three. I gave him the remote before he asked. At home, at night: the power works on the sofa.
       cue: "3.brother",
-      ...cam.push({ on: R(0, 1.0, -1.0), dist: 3.0, to: 2.5, yaw: 8, pitch: 8, fov: 46 }),
+      ...cam.push({ on: R(0, 1.05, -1.05), dist: 2.4, to: 2.0, yaw: 180, pitch: 7, fov: 44 }),
       zone: "room",
       note: "The teller's own room with the wardrobe and the books behind them: his little brother sitting on the floor with a big clock at three over his head, and the teller already holding out the remote before the boy can ask. The clock is BIG because the number is small - the size is how close the person is to going off, and this one is nearly out.",
       stage: (t) => (
         <>
-          <Hero position={R(0.55, 0, -0.35)} rotationY={NORTH + 0.6} animation="idle" face="smile" />
-          <Classmate who={9} position={R(-0.55, 0, -0.95)} rotationY={NORTH} animation="sit" face="grin" headPitch={-0.1} />
-          <Overhead over={R(-0.55, 0, -0.95)} kind="clock" tall={1.0} size={0.9} t={t} steady rotationY={0} />
+          <Hero position={R(0.8, 0, -0.55)} rotationY={WEST} animation="idle" face="smile" />
+          <Classmate who={9} position={R(-0.15, 0, -1.35)} rotationY={SOUTH} animation="sit" face="grin" headPitch={-0.1} />
+          <Clock over={R(-0.15, 0, -1.35)} n="3" tall={1.0} t={t} size={0.52} />
         </>
       ),
     },
     {
       // This was going to be easy. The teller, pleased with himself, in the room he has just handled.
       cue: "3.easy",
-      ...cam.push({ on: R(0.55, 1.15, -0.35), dist: 2.0, to: 1.6, yaw: 24, pitch: 2, fov: 38 }),
+      ...cam.push({ on: R(0.8, 1.15, -0.55), dist: 1.9, to: 1.5, yaw: 40, pitch: 3, fov: 36 }),
       zone: "room",
       note: "Close on the teller's face, well inside the room this time, and he is delighted with himself - which is the wrong expression a third of the way into a film about a power. The viewer should feel the floor under him before he does.",
       stage: () => (
         <>
-          <Hero position={R(0.55, 0, -0.35)} rotationY={NORTH + 0.6} animation="idle" face="grin" />
+          <Hero position={R(0.8, 0, -0.55)} rotationY={WEST} animation="idle" face="grin" />
           <pointLight position={R(0.55, 1.6, 0.4)} color="#fff2d8" intensity={4} distance={3} decay={2} />
         </>
       ),
@@ -194,10 +212,10 @@ export const scene1 = storyScene(timing, {
     {
       // A clock told you when. Nothing told you why. The limit, said out loud once: no picture of a clock at all.
       cue: "3.limit",
-      ...cam.push({ on: R(0, 1.2, -0.6), dist: 2.2, to: 3.8, yaw: 172, pitch: 3, fov: 48 }),
+      ...cam.push({ on: R(0, 1.15, -0.8), dist: 1.8, to: 3.4, yaw: 180, pitch: 2, fov: 50 }),
       zone: "room",
       note: "The whole room from the far wall, the teller small in it, and NO clock anywhere in the frame: the line that names the limit is the one line with the power taken out of the picture. Pulling back instead of pushing in makes it the stillest shot in the film, which is what a rule sounds like.",
-      stage: () => <Hero position={R(0.55, 0, -0.35)} rotationY={NORTH} animation="idle" face="calm" />,
+      stage: () => <Hero position={R(0.9, 0, -0.4)} rotationY={WEST} animation="idle" face="calm" />,
     },
   ],
 });

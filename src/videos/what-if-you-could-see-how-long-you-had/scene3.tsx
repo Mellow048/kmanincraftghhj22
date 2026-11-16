@@ -1,5 +1,6 @@
+import type { Vec3 } from "../../engine";
 import { cam, storyScene } from "../../engine";
-import { Classmate, EAST, HALL, Hero, ME, NORTH, Overhead, SPOT, ease, ramp, timing, wordAt } from "./kit";
+import { Classmate, Figure, Icon, EAST, HALL, Hero, ME, NORTH, SPOT, ease, ramp, timing, wordAt } from "./kit";
 
 /**
  * THE WEEK, AND THE EDGE.
@@ -17,6 +18,21 @@ const QUIET = wordAt("8.quiet", "quiet");
 const EXCEPT = wordAt("8.easy2", "except");
 const MINE = wordAt("10.mine", "looked");
 const TEN = wordAt("10.ten", "ten");
+
+
+/** The power, drawn the way a phone can read it: the NUMBER, white, outlined, with a small clock badge on top. */
+const BigNumber: React.FC<{ n: string; over: Vec3; t?: number; tall?: number; size?: number; color?: string; tint?: string; fade?: number; rotationY?: number }> = ({ n, over, t = 1, tall = 1.34, size = 0.5, color, tint, fade = 0, rotationY = 0 }) => {
+  const s = (1 - Math.min(1, Math.max(0, fade))) * (0.6 + 0.4 * Math.min(1, Math.max(0, t / 0.25)));
+  if (s <= 0.01) return null;
+  const at: Vec3 = [over[0], over[1] + tall + 0.42 + size * 0.5, over[2]];
+  const c = color ?? tint ?? "#ffffff";
+  return (
+    <group position={at} rotation={[0, rotationY, 0]} scale={[s, s, s]}>
+      <Figure text={n} position={[0, 0, 0]} height={size} depth={1.2} color={c} outline glow={0.5} castShadow={false} />
+      <Icon kind="clock" position={[0, size * 0.78, 0]} height={size * 0.44} depth={1.1} color={c} outline glow={0.6} castShadow={false} />
+    </group>
+  );
+};
 
 export const scene3 = storyScene(timing, {
   id: "scene3",
@@ -36,7 +52,7 @@ export const scene3 = storyScene(timing, {
             <Hero position={[-2.0 + 3.0 * k, 0, 0.3]} rotationY={EAST} animation="walk" animDistance={3.0 * k} face="calm" />
             <Classmate who={4} position={[-0.6, 0, -0.8]} rotationY={NORTH - 0.4} animation="idle" face="frown" />
             <Classmate who={7} position={[0.2, 0, -0.9]} rotationY={NORTH + 0.6} animation="idle" face="frown" />
-            <Overhead over={[-0.6, 0, -0.8]} kind="clock" size={0.75} t={t - WEEK} steady rotationY={Math.PI} />
+            <BigNumber n="12"over={[-0.6, 0, -0.8]} size={0.75} t={t - WEEK} rotationY={Math.PI}  />
           </>
         );
       },
@@ -52,7 +68,7 @@ export const scene3 = storyScene(timing, {
           <Hero position={ME} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={9} position={SPOT.seat(0, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Overhead over={SPOT.seat(0, 1)} kind="clock" size={0.92} t={t - HANDS} steady rotationY={Math.PI} />
+          <BigNumber n="40"over={SPOT.seat(0, 1)} size={0.92} t={t - HANDS} rotationY={Math.PI}  />
         </>
       ),
     },
@@ -66,7 +82,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           {[0, 2].flatMap((col) => [0, 1].map((row) => <Classmate key={`${col}${row}`} who={col * 2 + row + 4} position={SPOT.seat(col, row)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />))}
-          <Overhead over={SPOT.seat(0, 1)} kind="clock" size={1.00} t={t - WRONG2} steady rotationY={0} />
+          <BigNumber n="40"over={SPOT.seat(0, 1)} size={1.00} t={t - WRONG2} rotationY={0}  />
         </>
       ),
     },
@@ -82,9 +98,9 @@ export const scene3 = storyScene(timing, {
           <Hero position={ME} rotationY={NORTH} animation="sit" face="calm" />
           {[0, 2].flatMap((col) => [0, 1, 2].map((row) => <Classmate key={`${col}${row}`} who={col * 3 + row + 2} position={SPOT.seat(col, row)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />))}
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Overhead over={SPOT.seat(0, 0)} kind="clock" size={1.00} t={t - QUIET} steady rotationY={Math.PI} />
-          <Overhead over={SPOT.seat(2, 1)} kind="clock" size={1.00} t={t - QUIET - 0.15} steady rotationY={Math.PI} />
-          <Overhead over={SPOT.seat(1, 1)} kind="clock" size={1.00} t={t - QUIET - 0.3} steady rotationY={Math.PI} />
+          <BigNumber n="40"over={SPOT.seat(0, 0)} size={1.00} t={t - QUIET} rotationY={Math.PI}  />
+          <BigNumber n="40"over={SPOT.seat(2, 1)} size={1.00} t={t - QUIET - 0.15} rotationY={Math.PI}  />
+          <BigNumber n="40"over={SPOT.seat(1, 1)} size={1.00} t={t - QUIET - 0.3} rotationY={Math.PI}  />
         </>
       ),
     },
@@ -97,7 +113,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face={t > EXCEPT ? "fear" : "calm"} headPitch={-0.25} />
-          <Overhead over={ME} kind="clock" size={1.00} t={t - EXCEPT} steady rotationY={0} />
+          <BigNumber n="10"over={ME} size={1.00} t={t - EXCEPT} rotationY={0}  />
         </>
       ),
     },
@@ -110,7 +126,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face="fear" headPitch={-0.2} />
-          <Overhead over={ME} kind="clock" size={0.92} t={t - MINE} steady rotationY={0} />
+          <BigNumber n="10"over={ME} size={0.92} t={t - MINE} rotationY={0}  />
         </>
       ),
     },
@@ -120,7 +136,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: [ME[0], 2.05, ME[2]], dist: 1.5, to: 1.25, yaw: 0, pitch: 0, fov: 34 }),
       zone: "class",
       note: "Nothing but the clock, filling the frame, at ten: no face under it, no room around it. It is the smallest object the film has ever put on screen and it is the loudest thing in it. A hard cut in from a two-shot to this is the beat that turns the film over.",
-      stage: (t) => <Overhead over={ME} kind="clock" size={1.00} t={t - TEN} steady rotationY={0} />,
+      stage: (t) => <BigNumber n="10"over={ME} size={1.00} t={t - TEN} rotationY={0}  />,
     },
   ],
 });

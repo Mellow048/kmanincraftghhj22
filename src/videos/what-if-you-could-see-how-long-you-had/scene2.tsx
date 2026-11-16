@@ -1,5 +1,6 @@
+import type { Vec3 } from "../../engine";
 import { cam, storyScene } from "../../engine";
-import { Classmate, EAST, HALL, Hero, ME, NORTH, Overhead, SOUTH, SPOT, ease, ramp, timing, wordAt } from "./kit";
+import { Classmate, Figure, Icon, EAST, HALL, Hero, ME, NORTH, SOUTH, SPOT, ease, ramp, timing, wordAt } from "./kit";
 
 /**
  * THE WRONG GUESSES, and Jo.
@@ -7,7 +8,7 @@ import { Classmate, EAST, HALL, Hero, ME, NORTH, Overhead, SOUTH, SPOT, ease, ra
  * From here the power stops being funny in the way it was. He starts using it on people instead of beside them,
  * he gets the reason wrong, and the one person who does not have a clock is the one he never asks about.
  *
- * The clock is the SAME clock in every shot of this film (`Overhead kind="clock"`), and it is never given a size by
+ * The power is the SAME look in every shot (`BigNumber`: a number and a clock badge), never given a size by
  * hand except as a function of how close to zero that person is: see `tick()` below, which every scene imports.
  */
 
@@ -17,6 +18,21 @@ const JO = wordAt("5.jo", "Jo");
 const NOTHING = wordAt("5.why", "Nothing");
 const WHAT = wordAt("5.shrug", "looking");
 const PLANT = wordAt("6.plant", "why");
+
+
+/** The power, drawn the way a phone can read it: the NUMBER, white, outlined, with a small clock badge on top. */
+const BigNumber: React.FC<{ n: string; over: Vec3; t?: number; tall?: number; size?: number; color?: string; tint?: string; fade?: number; rotationY?: number }> = ({ n, over, t = 1, tall = 1.34, size = 0.5, color, tint, fade = 0, rotationY = 0 }) => {
+  const s = (1 - Math.min(1, Math.max(0, fade))) * (0.6 + 0.4 * Math.min(1, Math.max(0, t / 0.25)));
+  if (s <= 0.01) return null;
+  const at: Vec3 = [over[0], over[1] + tall + 0.42 + size * 0.5, over[2]];
+  const c = color ?? tint ?? "#ffffff";
+  return (
+    <group position={at} rotation={[0, rotationY, 0]} scale={[s, s, s]}>
+      <Figure text={n} position={[0, 0, 0]} height={size} depth={1.2} color={c} outline glow={0.5} castShadow={false} />
+      <Icon kind="clock" position={[0, size * 0.78, 0]} height={size * 0.44} depth={1.1} color={c} outline glow={0.6} castShadow={false} />
+    </group>
+  );
+};
 
 export const scene2 = storyScene(timing, {
   id: "scene2",
@@ -32,7 +48,7 @@ export const scene2 = storyScene(timing, {
         <>
           <Hero position={[ME[0] - 0.3, 0, ME[2] - 1.3]} rotationY={NORTH + 0.3} animation="idle" face="brave" />
           <Classmate who={5} position={[ME[0] + 0.7, 0, ME[2] - 2.1]} rotationY={NORTH - 0.5} animation="idle" face="frown" />
-          <Overhead over={[ME[0] + 0.7, 0, ME[2] - 2.1]} kind="clock" size={0.79} t={t - WARN} steady rotationY={0} />
+          <BigNumber n="10"over={[ME[0] + 0.7, 0, ME[2] - 2.1]} size={0.79} t={t - WARN} rotationY={0}  />
         </>
       ),
     },
@@ -49,8 +65,8 @@ export const scene2 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={6} position={SPOT.seat(0, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={8} position={SPOT.seat(2, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Overhead over={SPOT.seat(0, 1)} kind="clock" tall={1.34} size={0.66} t={t - FRIDAY} steady rotationY={Math.PI} />
-          <Overhead over={SPOT.seat(2, 1)} kind="clock" tall={1.34} size={0.75} t={t - FRIDAY - 0.2} steady rotationY={Math.PI} />
+          <BigNumber n="2"over={SPOT.seat(0, 1)} tall={1.34} size={0.66} t={t - FRIDAY} rotationY={Math.PI}  />
+          <BigNumber n="2"over={SPOT.seat(2, 1)} tall={1.34} size={0.75} t={t - FRIDAY - 0.2} rotationY={Math.PI}  />
         </>
       ),
     },
@@ -120,7 +136,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Hero position={[0.2 * k, 0, 0.9 - 1.6 * k]} rotationY={NORTH} animation="walk" animDistance={1.6 * k} face="calm" />
             <Classmate who={3} position={[1.5, 0, -1.2]} rotationY={SOUTH} animation="idle" face="calm" />
-            <Overhead over={[1.5, 0, -1.2]} kind="clock" size={0.88} t={t - PLANT} steady rotationY={Math.PI} />
+            <BigNumber n="40" over={[1.5, 0, -1.2]} size={0.5} t={t - PLANT} rotationY={Math.PI} />
           </>
         );
       },
