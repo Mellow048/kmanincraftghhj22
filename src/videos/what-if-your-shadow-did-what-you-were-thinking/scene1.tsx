@@ -43,7 +43,7 @@ const Shadow: React.FC<{ at: Vec3; rotationY?: number; scale?: number; arm?: num
 );
 
 /** The classroom's north wall, just in front of the board: where the shadow plays for the whole first half. */
-const WALL: Vec3 = SPOT.at(0, 0, -3.72);
+const WALL: Vec3 = SPOT.at(0, 0, -3.885);
 
 /** The house the shadow draws: three windows, one door. Used twice here and once at the end of the film. */
 const DrawnHouse: React.FC<{ at: Vec3; scale?: number; draw?: number }> = ({ at, scale = 1, draw = 1 }) => (
@@ -126,7 +126,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={SPOT.at(0.3, 0, -1.4)} rotationY={EAST} animation="idle" face="uneasy" />
           <Classmate who={2} position={SPOT.at(1.9, 0, -0.5)} rotationY={SOUTH + 0.4} animation="idle" face="calm" />
-          <Shadow at={SPOT.at(0.1, 0, -3.7)} rotationY={0} arm={0.85} />
+          <Shadow at={SPOT.at(0.1, 0, -3.885)} rotationY={0} arm={0.85} />
         </>
       ),
     },
@@ -146,7 +146,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={SPOT.at(0.3, 0, -1.4)} rotationY={EAST} animation="idle" face="ouch" />
-          <Shadow at={SPOT.at(0.3, 0, -3.7)} rotationY={0} arm={0.9 + 0.1 * Math.sin(t * 7)} />
+          <Shadow at={SPOT.at(0.3, 0, -3.885)} rotationY={0} arm={0.9 + 0.1 * Math.sin(t * 7)} />
         </>
       ),
     },
@@ -182,7 +182,7 @@ export const scene1 = storyScene(timing, {
           <Hero position={SPOT.at(0, 0, -2.2)} rotationY={NORTH} animation="idle" face="uneasy" />
           <Classmate who={1} position={SPOT.at(-1.5, 0, -0.6)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
           <Classmate who={3} position={SPOT.at(1.5, 0, -0.6)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
-          <Shadow at={SPOT.at(0, 0, -3.72)} sitting />
+          <Shadow at={SPOT.at(0, 0, -3.885)} sitting />
         </>
       ),
     },
@@ -237,7 +237,7 @@ export const scene1 = storyScene(timing, {
           <Classmate who={7} position={SPOT.at(1.3, 0, -1.6)} rotationY={WEST} animation="idle" face="frown" />
           <Classmate who={8} position={SPOT.at(2.2, 0, -1.6)} rotationY={WEST + 0.3} animation="idle" face="frown" />
           <Hero position={SPOT.at(-0.6, 0, -0.6)} rotationY={NORTH + 0.5} animation="idle" face="ouch" />
-          <Shadow at={SPOT.at(1.2, 0, -3.7)} arm={0.7 + 0.3 * Math.sin(t * 12)} />
+          <Shadow at={SPOT.at(1.2, 0, -3.885)} arm={0.7 + 0.3 * Math.sin(t * 12)} />
         </>
       ),
     },

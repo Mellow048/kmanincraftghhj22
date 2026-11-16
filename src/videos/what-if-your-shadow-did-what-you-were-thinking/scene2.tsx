@@ -134,7 +134,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={SPOT.at(0, 0, -1.7)} rotationY={NORTH} animation="idle" face="brave" />
-          <group position={SPOT.at(0, 0, -3.72)} scale={[1.05, 1.05, 1.05]}>
+          <group position={SPOT.at(0, 0, -3.885)} scale={[1.05, 1.05, 1.05]}>
             <Shadow at={[0, 0, 0]} arm={0.25 + 0.06 * Math.sin(t * 14)} leg={0.05 * Math.sin(t * 9)} opacity={0.7} />
           </group>
         </>
@@ -149,7 +149,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={SPOT.at(0, 0, -1.7)} rotationY={NORTH} animation="idle" face="brave" />
-          <group position={SPOT.at(0, 0, -3.72)} scale={[1.05, 1.05, 1.05]}>
+          <group position={SPOT.at(0, 0, -3.885)} scale={[1.05, 1.05, 1.05]}>
             <Shadow at={[0, 0, 0]} arm={0.25 + 0.06 * Math.sin(t * 14)} leg={0.05 * Math.sin(t * 9)} opacity={0.7} />
           </group>
         </>
