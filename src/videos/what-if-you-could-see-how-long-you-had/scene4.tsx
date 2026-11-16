@@ -198,7 +198,7 @@ export const scene4 = storyScene(timing, {
     {
       // Subscribe, and I will tell you what they were counting down to. The last picture: the sign, and a clock.
       cue: "14.sub",
-      ...cam.push({ on: SPOT.at(0.25, 1.9, -0.9), dist: 3.4, to: 4.4, yaw: 5, pitch: 3, fov: 52 }),
+      ...cam.push({ on: SPOT.at(0.25, 1.5, -1.0), dist: 5.4, to: 6.2, yaw: 4, pitch: 9, fov: 50 }),
       zone: "class",
       note: "Back up and away off the whole room: forty clocks counting and the red sign coming up over the board. The film ends on the teller's back, in a room full of clocks, with the question asked - which is a reason to subscribe, not a request for one.",
       stage: (t) => {
@@ -213,6 +213,7 @@ export const scene4 = storyScene(timing, {
             {seats.map(([col, row], i) => (
               <BigNumber key={`c${col}${row}`} n="4" over={SPOT.seat(col, row)} size={0.34 + (i % 3) * 0.04} t={t} rotationY={3.1067} />
             ))}
+            <pointLight position={SPOT.at(0.4, 2.6, 3.4)} color="#fff4e2" intensity={26} distance={11} decay={2} />
             <SubscribeSign position={SPOT.at(0.2, 3.05, -3.42)} rotationY={0} scale={0.8} tilt={0.03 + Math.sin(t * 9) * 0.01} />
           </>
         );

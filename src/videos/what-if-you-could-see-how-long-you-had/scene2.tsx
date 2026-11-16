@@ -103,7 +103,7 @@ export const scene2 = storyScene(timing, {
     {
       // Not a big number. Nothing. I asked her about it. Push in on the empty air over her head.
       cue: "5.why",
-      ...cam.push({ on: [SPOT.seat(2, 0)[0] + 0.15, 2.05, SPOT.seat(2, 0)[2] - 0.35], dist: 1.9, to: 1.55, yaw: 196, pitch: 6, fov: 40 }),
+      ...cam.push({ on: [SPOT.seat(2, 0)[0] + 0.15, 2.55, SPOT.seat(2, 0)[2] - 0.35], dist: 1.8, to: 1.4, yaw: 196, pitch: 10, fov: 42 }),
       zone: "class",
       note: "Hard up on the space above Jo's head where every other clock in this film has been. There is nothing there, and the camera stays on it long enough to be uncomfortable, which is what makes the audience ask the question the teller asks.",
       stage: (t) => (
@@ -144,7 +144,7 @@ export const scene2 = storyScene(timing, {
     {
       // I said that out loud, once, and forgot about it. He rounds a corner and it is gone: the plant is planted.
       cue: "6.wave",
-      ...cam.push({ on: HALL.at(0, 1.2, -0.4), dist: 5.6, to: 4.8, yaw: -84, pitch: 4, fov: 50 }),
+      ...cam.push({ on: HALL.at(-0.4, 1.35, 0.1), dist: 5.2, to: 4.4, yaw: -80, pitch: 7, fov: 48 }),
       zone: "hall",
       note: "Along the lockers, the teller still walking, and the boy with the clock is behind him and going out of frame. The line says he forgot the most important thing he ever said, and the picture does the same thing: the clock leaves the frame while he is still talking.",
       stage: (t) => {

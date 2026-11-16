@@ -42,7 +42,7 @@ export const scene3 = storyScene(timing, {
       // So I spent a week being the only calm person in school. The camera tracks with him through the hallway and
       // everything around him is going wrong, and he is the only one walking.
       cue: "7.week",
-      ...cam.truck({ on: HALL.at(-2.0, 1.15, 0.3), dist: 3.4, yaw: -90, pitch: 4, fov: 50, by: [3.4, 0, 0] }),
+      ...cam.truck({ on: HALL.at(-2.0, 1.15, 0.35), dist: 3.0, yaw: -90, pitch: 5, fov: 46, by: [3.4, 0, 0] }),
       zone: "hall",
       note: "Tracking along the lockers beside him while a fight goes on behind his shoulder: two kids at it, a teacher coming, and the teller walking through the middle of it completely unbothered because he knew it was coming. The calm man in a corridor full of noise is the picture of the whole middle of this film.",
       stage: (t) => {
@@ -50,9 +50,9 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <Hero position={HALL.at(-2.0 + 3.0 * k, 0, 0.3)} rotationY={EAST} animation="walk" animDistance={3.0 * k} face="calm" />
-            <Classmate who={4} position={HALL.at(-0.6, 0, -0.8)} rotationY={NORTH - 0.4} animation="idle" face="frown" />
-            <Classmate who={7} position={HALL.at(0.2, 0, -0.9)} rotationY={NORTH + 0.6} animation="idle" face="frown" />
-            <BigNumber n="12" over={HALL.at(-0.6, 0, -0.8)} size={0.62} t={t - WEEK} rotationY={-1.5708} />
+            <Classmate who={4} position={HALL.at(-1.1, 0, -1.15)} rotationY={NORTH - 0.4} animation="idle" face="frown" />
+            <Classmate who={7} position={HALL.at(0.7, 0, -1.3)} rotationY={NORTH + 0.6} animation="idle" face="frown" />
+            <BigNumber n="12" over={HALL.at(-1.1, 0, -1.15)} size={0.62} t={t - WEEK} rotationY={-1.5708} />
           </>
         );
       },
