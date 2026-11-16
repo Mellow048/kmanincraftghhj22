@@ -15,6 +15,7 @@ import { film as inThisTownILiveInAMonsterVillagePart3 } from "./videos/in-this-
 import { film as inThisTownTheFastestKidWins } from "./videos/in-this-town-the-fastest-kid-wins/film";
 import { film as inThisTownTheNewKidNeverTookOffHisHelmet } from "./videos/in-this-town-the-new-kid-never-took-off-his-helmet/film";
 import { film as inThisTownEveryKidGotAnIronGolem } from "./videos/in-this-town-every-kid-got-an-iron-golem/film";
+import { film as inThisTownIWasASpyForTheVillagers } from "./videos/in-this-town-i-was-a-spy-for-the-villagers/film";
 import { film as inThisTownMonsterVillagePart4 } from "./videos/in-this-town-monster-village-part-4/film";
 import { film as inThisTownTheFastestKidWinsPart2 } from "./videos/in-this-town-the-fastest-kid-wins-part-2/film";
 import { film as inThisTownEveryoneSwimsExceptMe } from "./videos/in-this-town-everyone-swims-except-me/film";
@@ -41,6 +42,7 @@ export const FILMS = [
   inThisTownTheFastestKidWins,
   inThisTownTheNewKidNeverTookOffHisHelmet,
   inThisTownEveryKidGotAnIronGolem,
+  inThisTownIWasASpyForTheVillagers,
   inThisTownMonsterVillagePart4,
   inThisTownTheFastestKidWinsPart2,
   inThisTownEveryoneSwimsExceptMe,
