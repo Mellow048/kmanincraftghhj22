@@ -1,7 +1,7 @@
 import type React from "react";
 import { Block, MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { Bits, Classmate, DEG, HERO, KID, NORTH, Overhead, TellerHair, Teacher, Tie, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
+import { Bits, Classmate, DEG, HERO, KID, NORTH, Overhead, TELLER, Teacher, Tie, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
 import timingJson from "./timing.json";
 
 /**
@@ -22,7 +22,7 @@ export {
   // the small things
   Card, Cookie, CookieStack, Cup, Dog, DogBowl, Eraser, Sandwich, Tie, Tray,
   // the teller's look: his clothes, and his cut. His colour is HIS: nobody else in a film wears it
-  HERO, TellerHair,
+  HERO, TELLER,
   // shared with the other topics: a kid's bedroom, cubes that spell, a speech bubble, the last picture
   BedBox, Bits, Bubble, Figure, Icon, Puffs, Room, SoundRings, SubscribeSign,
   // staging: when a word is said, how a thing pops in, where "in front of him" is
@@ -179,7 +179,7 @@ type A = Partial<MinecraftAvatarProps>;
  * Faces for a kid: smile grin laugh frown uneasy brave fear wow ouch calm. Change the face on the cut.
  */
 export const Hero: React.FC<A> = (p) => (
-  <MinecraftAvatar scale={KID} outfit="tee" skin={HERO.skin} hair={HERO.hair} colors={{ torso: HERO.torso, arms: HERO.arms, legs: HERO.legs }} blink head={<TellerHair />} {...p} />
+  <MinecraftAvatar scale={KID} outfit="tee" blink {...TELLER} {...p} />
 );
 
 /** Two bunches of hair, tied with yellow: Jo can be told from behind, and from the far end of a path at night. */

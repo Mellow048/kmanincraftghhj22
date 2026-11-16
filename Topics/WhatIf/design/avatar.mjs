@@ -16,9 +16,16 @@ const OUT = process.argv[2] ?? "/tmp/teller";
 fs.mkdirSync(OUT, { recursive: true });
 
 const PX = 1.8 / 32;
-const HERO = { skin: "#dba47c", hair: "#241a1e", torso: "#ff7a1a", arms: "#ff7a1a", legs: "#2b2f6a" };
-const SIDE_R = ["hhhhhhhh","hhhhhhhh","..hhhhhh","..hhhhhh","..hhhhhh","..hhhhhh","...hhhhh","....hh.."];
-const FACE   = ["hhhhhhhh","hhhhhhhh","........",".wp..pw.","........","..m..m..","...mm...","........"];
+const HERO = { skin: "#dba47c", hair: "#3b2a20", torso: "#ff7a1a", arms: "#ff7a1a", legs: "#2b2f6a" };
+const TELLER_SRC = fs.readFileSync(new URL("./../teller.tsx", import.meta.url), "utf8");
+const rowsOf = (name) => {
+  const body = TELLER_SRC.split(`export const ${name} = [`)[1].split("];")[0];
+  return [...body.matchAll(/"([^"]{8})"/g)].map((m) => m[1]);
+};
+const HERO_FACE = rowsOf("HERO_FACE");
+const HERO_SIDE = rowsOf("HERO_SIDE");
+const SIDE_R = HERO_SIDE;
+const FACE   = HERO_FACE;
 
 const rgb = (h) => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
 function shade(hex, a) {
@@ -30,11 +37,14 @@ const PAL = { ".": HERO.skin, ",": shade(HERO.skin, -0.18), h: HERO.hair, H: sha
 
 // an 8x8 map, sampled per texel. v runs bottom-up.
 function tex(rows, mirror = false) {
+  // rows[0] is the TOP row of the face. A UV map runs v=0 at the bottom of the head, so build the grid
+  // bottom-up: row 7 of the array lands at v near 0.
   const px = [];
-  for (let y = 7; y >= 0; y--) {
-    const row = [];
-    for (let x = 0; x < 8; x++) row.push(rgb(PAL[rows[y][mirror ? 7 - x : x]] ?? PAL["."]));
-    px.push(row);
+  for (let v = 0; v < 8; v++) {
+    const row = rows[7 - v];
+    const out = [];
+    for (let x = 0; x < 8; x++) out.push(rgb(PAL[row[mirror ? 7 - x : x]] ?? PAL["."]));
+    px.push(out);
   }
   return { sample(u, v) { return px[Math.min(7, Math.max(0, Math.floor(v * 8)))][Math.min(7, Math.max(0, Math.floor(u * 8)))]; } };
 }
@@ -72,9 +82,7 @@ box(8*PX, 8*PX, 8*PX, 0, 28*PX, 0, [mats.right, mats.left, mats.hair, mats.skin,
 
 // ---- TellerHair, the two blocks from Topics/WhatIf/teller.tsx, in head-local space at the cube's centre
 const p = PX, top = 4 * p;
-function hairBlock(sx, sy, sz, cx, cy, cz) { box(sx, sy, sz, cx, 28 * PX + cy, cz, mats.hair); }
-hairBlock(6 * p, p, 8 * p, 3 * p, top + 0.5 * p, 0);
-hairBlock(4 * p, p, 7 * p, 2 * p, top + 1.5 * p, -0.5 * p);
+// No blocks on the crown: the cut is painted into the 8x8 rows, exactly as Topics/WhatIf/teller.tsx paints it.
 
 const LIGHT = new THREE.Vector3(-0.45, 0.80, 0.40).normalize();
 const FILL = new THREE.Vector3(0.62, 0.30, 0.72).normalize();

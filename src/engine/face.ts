@@ -317,6 +317,26 @@ const PALETTE = (skin: string, hair: string) => ({
   N: "#1b2333",
 });
 
+/**
+ * A head painted from your own 8×8 rows — a fringe, a sideburn, a shaved line — in the same palette as the
+ * built-in faces. `options.blink` closes the eyes the way `blinkFaceTexture` does.
+ *
+ * This is how a teller gets hair that is HIS: hair on a Minecraft head is paint on the top, the back and the
+ * upper sides of the cube, not blocks standing off it.
+ */
+export function rowsTexture(rows: string[], key: string, options: FaceOptions & { blink?: boolean } = {}): THREE.CanvasTexture {
+  const source = options.blink
+    ? rows.map((row) => row.split("").map((ch) => (ch === "w" ? "." : ch === "p" ? "," : ch)).join(""))
+    : rows;
+  return buildFaceTexture(source, `rows|${key}${options.blink ? "|blink" : ""}`, options);
+}
+
+/** One side of the head, painted from your own 8×8 rows (mirrored for the other side). */
+export function sideRowsTexture(rows: string[], skin: string, hair: string, side: HeadSide = "right"): THREE.CanvasTexture {
+  const mirrored = side === "right" ? rows : rows.map((row) => row.split("").reverse().join(""));
+  return buildFaceTexture(mirrored, `siderows|${side}|${skin}|${hair}|${rows.join("")}`, { skin, hair, grain: 0.04 });
+}
+
 export type FaceOptions = {
   skin?: string;
   hair?: string;

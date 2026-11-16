@@ -4,7 +4,7 @@ import { useCurrentFrame, useVideoConfig } from "remotion";
 import type { AnimName, GaitName, Pose } from "./anim";
 import { blendPose, gaitPose, getPose } from "./anim";
 import type { FaceName } from "./face";
-import { blinkFaceTexture, faceTexture, headSideTexture } from "./face";
+import { blinkFaceTexture, faceTexture, headSideTexture, rowsTexture, sideRowsTexture } from "./face";
 import { clamp, TAU, wobble } from "./math";
 import type { Vec3 } from "./math";
 import { glowTex, pixelTex, stripeTex } from "./textures";
@@ -101,6 +101,15 @@ export type MinecraftAvatarProps = {
    * at the middle of the head cube, so it nods, turns and lies down with it. +Z is the face.
    */
   head?: React.ReactNode;
+  /**
+   * Paint the head yourself instead of taking a built-in face: 8 rows of 8, in the face palette
+   * (`.` skin, `,` skin shadow, `h` hair, `H` dark hair, `b` darkest hair, `w` eye white, `p` pupil,
+   * `m` mouth, `r` open mouth, `B` brow shadow). Use it for hair that is drawn ON the cube — a fringe,
+   * a side part, a shaved line — rather than for something worn on the head, which is `head`.
+   */
+  faceRows?: string[];
+  /** The same, painted onto the sides of the head. Mirror it yourself for the other side (`sideRowsRight`). */
+  sideRows?: string[];
 };
 
 const PX = 1.8 / 32; // one Minecraft pixel in metres
@@ -207,6 +216,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   pose: posed,
   children,
   head,
+  faceRows,
+  sideRows,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -233,15 +244,15 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const materials = useMemo(() => {
     const skinMat = new THREE.MeshStandardMaterial({ color: skin, roughness: 0.95, metalness: 0 });
     const hairMat = new THREE.MeshStandardMaterial({ color: hair, roughness: 1, metalness: 0 });
-    const rightSideMat = new THREE.MeshStandardMaterial({ map: headSideTexture(skin, hair, "right"), roughness: 1, metalness: 0 });
-    const leftSideMat = new THREE.MeshStandardMaterial({ map: headSideTexture(skin, hair, "left"), roughness: 1, metalness: 0 });
+    const rightSideMat = new THREE.MeshStandardMaterial({ map: sideRows ? sideRowsTexture(sideRows, skin, hair, "right") : headSideTexture(skin, hair, "right"), roughness: 1, metalness: 0 });
+    const leftSideMat = new THREE.MeshStandardMaterial({ map: sideRows ? sideRowsTexture(sideRows, skin, hair, "left") : headSideTexture(skin, hair, "left"), roughness: 1, metalness: 0 });
     const faceMat = new THREE.MeshStandardMaterial({
-      map: faceTexture(face, { skin, hair }),
+      map: faceRows ? rowsTexture(faceRows, `${skin}|${hair}`, { skin, hair }) : faceTexture(face, { skin, hair }),
       roughness: 1,
       metalness: 0,
       emissive: faceGlow > 0 ? new THREE.Color("#ffffff") : new THREE.Color("#000000"),
       emissiveIntensity: faceGlow,
-      emissiveMap: faceGlow > 0 ? faceTexture(face, { skin, hair }) : null,
+      emissiveMap: faceGlow > 0 ? (faceRows ? rowsTexture(faceRows, `${skin}|${hair}`, { skin, hair }) : faceTexture(face, { skin, hair })) : null,
     });
     const torsoMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.torsoTex ?? null, roughness: 1 });
     const armMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.armTex ?? null, roughness: 1 });
@@ -275,19 +286,21 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       }
     }
     return { skinMat, hairMat, rightSideMat, leftSideMat, faceMat, torsoMat, armMat, legMat };
-  }, [skin, hair, face, faceGlow, outfit, rim, kit, colors?.torso, colors?.arms, colors?.legs]);
+  }, [skin, hair, face, faceRows, sideRows, faceGlow, outfit, rim, kit, colors?.torso, colors?.arms, colors?.legs]);
 
   // Blink swaps the face map. Mutating the map keeps the material (and its shader)
   // alive; three only recompiles when the map goes null ↔ non-null.
   const blinkClosed = blink && blinkAmount(clock, phase) > 0.35;
   useEffect(() => {
-    const tex = blinkClosed
-      ? blinkFaceTexture(face, { skin, hair })
-      : faceTexture(face, { skin, hair, gaze });
+    const tex = faceRows
+      ? rowsTexture(faceRows, `${skin}|${hair}`, { skin, hair, gaze, blink: blinkClosed })
+      : blinkClosed
+        ? blinkFaceTexture(face, { skin, hair })
+        : faceTexture(face, { skin, hair, gaze });
     materials.faceMat.map = tex;
     materials.faceMat.emissiveMap = faceGlow > 0 ? tex : null;
     materials.faceMat.needsUpdate = true;
-  }, [materials, blinkClosed, face, skin, hair, faceGlow, gaze]);
+  }, [materials, blinkClosed, face, faceRows, skin, hair, faceGlow, gaze]);
 
   // Pose
   let pose: Pose;

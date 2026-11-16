@@ -115,26 +115,30 @@ Who tells a "What if" film, in one place, so every film of the topic is the same
 
 | Part | Props | Use it for |
 |---|---|---|
-| `HERO` | | His skin, his hair, and the colours of his tee and jeans. Spread it into an avatar, so no film invents him again |
-| `TellerHair` | `hair` (the same colour the avatar is drawn with), `part` ("left" or "right") | His haircut: two blocks on the crown, tall at one ear and stepping down at the other |
+| `HERO` | | His skin, his hair colour, and the colours of his tee and jeans |
+| `HERO_FACE`, `HERO_SIDE` | | His painted head: the 8×8 rows for the face and the sides |
+| `TELLER` | | All of the above as avatar props: `skin`, `hair`, `colors`, `faceRows`, `sideRows` |
 
-`Hero` in a kit is one line:
+`Hero` in a kit is one line — spread `TELLER`, and the head paints itself:
 
 ```tsx
-<MinecraftAvatar scale={KID} outfit="tee" skin={HERO.skin} hair={HERO.hair}
-  colors={{ torso: HERO.torso, arms: HERO.arms, legs: HERO.legs }} blink head={<TellerHair />} />
+<MinecraftAvatar scale={KID} outfit="tee" blink {...TELLER} />
 ```
 
-**The cut is a rule of the topic, not a decoration.** A default Minecraft head is hair on the top and the back,
-which from behind is a brown rectangle — and that is In This Town's teller too. Two blocks standing proud of the
-cube make his outline a diagonal, so a shot from behind still says which kid it is. Hair only: skin, tee and jeans
-are the boy the first film already has, and they stay.
+**Hair is painted, not built.** The head is a cube whose top and back are already the hair colour, so a cut is
+what the 8×8 skin draws on the front and the sides. Blocks standing off the cube read as a helmet. `MinecraftAvatar`
+takes `faceRows` and `sideRows` for exactly this, and `npm run check` needs nothing else.
+
+**The cut is a rule of the topic.** A heavy crown falling into a jagged fringe, cut low on one side so an eye is
+in shadow, high on the other so his ear shows — asymmetric, so it is never mistaken for In This Town's flat cube
+cut, from the front or from behind. Hair only: skin, tee and jeans are the boy the first film already has.
 
 ![The teller's new cut](design/teller.png)
 
-`design/teller.png` is those views, drawn from the engine's own geometry. `design/avatar.mjs` and
-`design/poster.py` rebuild it (`node Topics/WhatIf/design/avatar.mjs /tmp/teller && python3
-Topics/WhatIf/design/poster.py /tmp/teller`); they need `node_modules` but no browser.
+`design/teller.png` is those views, drawn from the engine's own geometry. `design/avatar.mjs` reads the rows out
+of `teller.tsx` (so the picture cannot drift from the code) and `design/poster.py` composes the sheet:
+
+    node Topics/WhatIf/design/avatar.mjs /tmp/teller && python3 Topics/WhatIf/design/poster.py /tmp/teller
 
 Faces for a kid: `smile grin laugh frown uneasy brave fear wow ouch calm`. Change the face on the cut.
 

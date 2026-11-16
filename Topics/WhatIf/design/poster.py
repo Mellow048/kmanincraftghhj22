@@ -50,9 +50,9 @@ hero = hero.resize((int(hero.width * hh / hero.height), hh), Image.LANCZOS)
 img.alpha_composite(hero.convert("RGBA"), (W - hero.width - M + 40, 340))
 
 # ---------------- the three views, on one baseline, in cards
-views = [(trim(f"{OUT}/front.png"), "FRONT", "the fringe over the brow"),
-         (trim(f"{OUT}/back.png"),  "BACK",  "the sweep, from behind"),
-         (trim(f"{OUT}/side.png"),  "SIDE",  "the step at the crown")]
+views = [(trim(f"{OUT}/front.png"), "FRONT", "the fringe, low on one side"),
+         (trim(f"{OUT}/back.png"),  "BACK",  "hair over the whole back"),
+         (trim(f"{OUT}/side.png"),  "SIDE",  "the sideburn and the fringe")]
 tw, th, gap, top = 448, 600, 30, 1236
 for i, (im, label, note) in enumerate(views):
     x = M + i * (tw + gap)
@@ -69,19 +69,18 @@ for i, (im, label, note) in enumerate(views):
 d = ImageDraw.Draw(img)
 y = top + th + 62
 d.rectangle([M, y - 30, W - M, y - 28], fill=RULE)
-d.text((M, y), "Two blocks, not a cube cut.", font=font(38), fill=INK)
+d.text((M, y), "Hair painted on the head, not built on top of it.", font=font(38), fill=INK)
 body = [
-    "The top of the head is two blocks of hair. The first runs six of its eight pixels, the second four, one",
-    "Minecraft pixel higher and set in from the first: tall at one ear and lower at the other, so his",
-    "outline against a wall is a diagonal and not a box. From behind, where a flat cut is only a",
-    "rectangle, he is still a sweep you can name. The colour is warm near-black and not the old",
-    "brown, so he is not In This Town's boy. Skin, tee and jeans are untouched.",
+    "A Minecraft head is a cube, and its top and back are already the hair colour. So a cut is what the 8x8 skin",
+    "draws: a heavy crown that falls into a jagged fringe, cut low on one side so an eye is in shadow and high on",
+    "the other so his ear shows. Every mark is one whole Minecraft pixel, which is why it holds up on a phone.",
+    "Hair only, in a warmer brown than In This Town's teller. His skin, tee and jeans are untouched.",
 ]
 for j, line in enumerate(body):
     d.text((M, y + 64 + j * 36), line, font=font(22, False), fill=MUTE)
 # a credit line: what these frames came from, so the picture can be trusted and repeated
 d.text((M, y + 64 + len(body) * 36 + 18),
-       "Rendered from the engine's own geometry: MinecraftAvatar's numbers and TellerHair from Topics/WhatIf/teller.tsx.",
+       "Rendered from the engine's own geometry: the 8x8 rows in Topics/WhatIf/teller.tsx, painted the way MinecraftAvatar paints them.",
        font=font(19, False), fill=hx("#8892a3"))
 
 img.convert("RGB").save(f"{OUT}/poster.png")
