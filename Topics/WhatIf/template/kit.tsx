@@ -65,10 +65,10 @@ type A = Partial<MinecraftAvatarProps>;
 export const Hero: React.FC<A> = (p) => (
   <MinecraftAvatar
     scale={KID}
-    outfit="tee"
-    skin="#dba47c"
-    hair="#3a2415"
-    colors={{ torso: "#e8a21c", arms: "#e8a21c", legs: "#3b3fa0" }}
+    outfit="hoodie"
+    skin="#e0ac84"
+    hair="#1c1917"
+    colors={{ torso: "#ff3b5c", arms: "#ff3b5c", legs: "#1e2436" }}
     blink
     {...p}
   />
