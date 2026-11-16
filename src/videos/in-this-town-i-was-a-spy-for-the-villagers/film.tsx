@@ -16,7 +16,7 @@ import { scene7 } from "./scene7";
  * into the outpost, takes a coat off the washing line, rolls in the ash of the fire to go grey, and stands in
  * their line. He finds the plan (tomorrow, before sunrise, the bell first), is caught climbing out, and is not
  * punished but handed the banner: he must lead the raid on his own town. So he turns left all night, and at
- * sunrise the pillagers wreck their own outpost. Then it rains, and the ash runs off his face.
+ * sunrise the pillagers wreck their own outpost. Then it rains, the ash runs off his face, and he runs.
  *
  * The owner's outline is the first lines and the sneaking in; everything after it is listed at the top of
  * narration.md. An "In This Town" film (Topics/InThisTown): the recorded narration is the clock.

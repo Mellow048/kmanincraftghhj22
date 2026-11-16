@@ -26,7 +26,8 @@ him; stakes that go up in steps; a hopeless moment; a cliffhanger; "Like and sub
 7. **He is caught and promoted instead** (`9.banner` to `9.lead`): he carries the banner, and everyone follows the
    banner. So he has to lead the raid on his own town.
 8. **The turn** (`11.left` to `12.own`): he turns left all night, and at sunrise they raid their own outpost.
-9. **The cliffhanger** (`13.rain` to `13.quiet`): it rains, and the ash runs off his face in front of the captain.
+9. **The cliffhanger** (`13.rain` to `14.sub`; the ending is the owner's, 2026-11-16: "Oh no", then he runs
+   from them under the subscribe line): it rains, and the ash runs off his face in front of the captain.
 
 **Changed from draft 2, and why.** The teller is the boy in the red shirt, as in every film of the series (draft 2
 made him a villager for a joke about folded arms; two lines about arms were cut out of the recordings). Three lines of
@@ -38,7 +39,7 @@ that leads the raid on his own town, and walks them in a circle until they wreck
 | Planted | Pays off |
 |---|---|
 | The ash on his face (`5.ash`) | The rain washes it off in front of the captain (`13.ash`) |
-| A grunt makes a friend (`6.new`) | "The best grunt in the outpost" gets him the banner (`9.grunt`); "Nobody grunted" (`13.quiet`) |
+| A grunt makes a friend (`6.new`) | "The best grunt in the outpost" gets him the banner (`9.grunt`) |
 | Pillagers are not smart; one walks into a wall (`6.smart`, `6.wall`) | Forty of them follow a banner in a circle (`11.follow`) |
 | He knocks the banner off the captain (`7.hat`) | The same banner is put in his hands (`9.banner`) |
 | "Once, they took our bell" (`2.took`) | The red X on the bell (`8.map`) |
@@ -115,8 +116,10 @@ that leads the raid on his own town, and walks them in a circle until they wreck
 [13.look]    The captain looked at the tower. Then at the banner. Then at me.
 [13.rain]    And that was when it started to rain.
 [13.ash]     I felt the ash run down my face.
-[13.quiet]   Nobody grunted.
 
-# clip 10-sub wait 0.5
+# clip 09b-ohno wait 0.4
+[13.ohno]    Oh no.
+
+# clip 10-sub wait 0.45
 [14.sub]     Like and subscribe for part two.
 ```

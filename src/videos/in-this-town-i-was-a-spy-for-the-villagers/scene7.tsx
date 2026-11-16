@@ -1,7 +1,7 @@
 import { cam, storyScene } from "../../engine";
-import { Bearer, Bits, Blaze, Column, FireLight, Fog, Gate, Hero, NORTH, O, Pillager, Rain, Ravager, SOUTH, Smoke, SubscribeSign, EAST, WEST, timing, tw, w } from "./kit";
+import { Bearer, Bits, Blaze, Column, FireLight, Fog, Gate, Hero, NORTH, O, Pillager, Rain, Ravager, SOUTH, Smoke, SubscribeSign, EAST, WEST, cueLen, posed, timing, tw, w } from "./kit";
 
-/** 07 — Sunrise. They wreck their own outpost; the rain takes his face off. */
+/** 07 — Sunrise. They wreck their own outpost; the rain takes his face off; he runs. */
 const UP: Array<[number, number]> = [[0, 80], [0, 16]];
 const BURN = w("12.smash", "They", 0, 1) - 0.08;
 const ATE = w("12.smash", "the", 0, 2) - 0.08;
@@ -9,6 +9,12 @@ const STOP = w("12.cheer", "Then") - 0.05;
 const BANNER = w("13.look", "banner") - 0.15;
 const ATME = w("13.look", "me") - 0.3;
 const TWO = w("14.sub", "two");
+const OHNO = w("13.ohno", "no");
+/** The run: metres a second, and where on the track (just outside the gate) it starts. */
+const RUN = 5.2;
+const RUN_FROM = 17.5;
+/** Who is behind him: [x, metres behind]. */
+const CHASE: Array<[number, number]> = [[-0.9, 3.9], [1.0, 4.7], [-0.3, 5.8], [1.4, 6.5], [-1.3, 7.0], [0.3, 8.1], [-0.8, 9.3], [1.1, 9.9], [0, 11.2]];
 const ME = O(0, 0, 9.4);
 const CAP = O(1.5, 0, 7.6);
 /** Where each of them ends up standing once the cheering stops. */
@@ -230,39 +236,47 @@ export const scene7 = storyScene(timing, {
       ),
     },
     {
-      cue: "13.quiet",
-      ...cam.push({ on: O(0.2, 1.1, 8.8), dist: 10, to: 9, yaw: 180, pitch: 38, fov: 44 }),
+      cue: "13.ohno",
+      ...cam.push({ on: [ME[0], 1.25, ME[2]], dist: 3.6, to: 3.1, yaw: 155, pitch: 12, fov: 42 }),
       zone: "outpost",
       look: "overworld-storm",
-      note: "From up the tower, looking down: a ring of them in the rain, all turned to the middle, and in the middle a pink boy in a pillager's coat.",
+      note: "Past the captain's wet shoulder, down at him: a pink boy in a pillager's coat, the banner still in his hands, and every one of them behind him looking.",
       stage: (t) => (
         <>
           <Wreck fire={0.5} />
           <Mob t={t} lookAt={[ME[0], 1.3, ME[2]]} close={0.62} />
-          <Pillager chief position={CAP} rotationY={SOUTH - 0.6} lookAt={[ME[0], 1.3, ME[2]]} mad={1} lean={0.25} />
-          <Bearer at={ME} h={NORTH} t={t} ash={0} face="fear" side={0.5} />
-          <Rain center={O(0, 0, 6)} t={t + 5} area={[16, 14]} count={340} height={9} />
-          <pointLight position={O(0, 3, 5)} color="#dfe8ff" intensity={16} distance={9} decay={1.5} />
+          <Pillager chief position={CAP} rotationY={SOUTH - 0.6} lookAt={[ME[0], 1.3, ME[2]]} mad={1} lean={0.25 + 0.1 * tw(t, 0.3, 0.7)} />
+          <Bearer at={ME} h={NORTH} t={t} ash={0} face={t < OHNO ? "worried" : "fear"} side={0.5} headPitch={-0.35} headYaw={Math.sin(t * 9) * 0.08} />
+          <Rain center={[ME[0], 0, ME[2] - 1]} t={t + 5} area={[10, 10]} count={300} height={8} />
+          <pointLight position={O(0.6, 2.2, 7.6)} color="#eef2ff" intensity={18} distance={7} decay={1.5} />
         </>
       ),
     },
     {
       cue: "14.sub",
-      ...cam.push({ on: [ME[0] + 0.2, 1.45, ME[2]], dist: 3.2, to: 2.6, yaw: 172, pitch: -3, fov: 42 }),
+      ...cam.truck({ on: O(0.1, 1.55, RUN_FROM), dist: 4.7, yaw: 5, pitch: 2, fov: 44, by: [0, 0, RUN * cueLen("14.sub")] }),
+      // The lens backs away at his own steady speed, so the ground runs under him the whole time; he gains on it a little.
+      ease: "linear",
       zone: "outpost",
       look: "overworld-storm",
-      note: "He turns the banner round. The other side says SUBSCRIBE. He holds it up between himself and the captain and tries a smile.",
+      note: "Backing away down the track in front of him: he runs at the lens with a SUBSCRIBE sign over his head, and out of the broken gate behind him come the captain, all of them, and the beast.",
       stage: (t) => {
-        const up = tw(t, 0.1, 0.5);
+        const z = RUN_FROM + (RUN + 0.5) * t;
+        const bob = Math.abs(Math.sin(t * 11)) * 0.07;
+        const back = t > TWO - 0.15 ? 1 : 0;
         return (
           <>
-            <Hero coat ash={0} position={ME} rotationY={NORTH} animation="idle" face={t < TWO ? "grin" : "fear"} headYaw={t < TWO ? 0 : -0.7} />
-            <SubscribeSign position={[ME[0] + 0.32, 1.05 + up * 0.75, ME[2] - 0.35]} rotationY={NORTH} scale={0.45} tilt={Math.sin(t * 15) * 0.02} />
-            <Pillager chief position={[ME[0] + 1.0, 0, ME[2] + 1.5]} rotationY={NORTH} mad={1} lean={0.25 * tw(t, TWO - 0.2, TWO + 0.2)} lookAt={[ME[0], 1.3, ME[2]]} />
-            <Pillager position={[ME[0] - 1.3, 0, ME[2] + 1.7]} rotationY={NORTH} n={2} lookAt={[ME[0], 1.3, ME[2]]} />
-            <Rain center={[ME[0], 0, ME[2] - 1]} t={t + 7} area={[9, 9]} count={240} height={7} />
-            <pointLight position={O(0.4, 2, 7.2)} color="#eef2ff" intensity={10} distance={6} decay={1.5} />
-            <FireLight position={O(-2.5, 2, 12)} power={0.8} reach={9} />
+            <Wreck fire={0.7} />
+            <Hero coat ash={0} position={O(0, bob, z)} rotationY={SOUTH} pose={posed("run", t * 2, { armR: [-2.85, 0, -0.14], armL: [-2.85, 0, 0.14] })} face="fear" headYaw={back * 0.9} />
+            <SubscribeSign position={O(0, 2.34 + bob, z + 0.04)} rotationY={SOUTH} scale={0.5} tilt={Math.sin(t * 11) * 0.07} />
+            <Pillager chief position={O(0.55, 0, z - 2.7 + t * 0.25)} rotationY={SOUTH} walk={z * 1.3} armR={-1.5} armL={-1.5} lean={0.32} mad={1} />
+            {CHASE.map(([x, back2], i) => (
+              <Pillager key={i} position={O(x, 0, z - back2 + t * 0.2)} rotationY={SOUTH} walk={z * 1.3 + i} n={i} armR={i % 2 ? -2.6 : -1.4} armL={i % 2 ? -2.6 : undefined} crossbow={i % 2 === 0} lean={0.3} phase={i} />
+            ))}
+            <Ravager position={O(0.2, 0, z - 13.2)} rotationY={SOUTH} walk={z} jaw={0.5 + 0.5 * Math.sin(t * 13)} />
+            <Rain center={O(0, 0, z - 2)} t={t + 7} area={[10, 14]} count={320} height={8} />
+            <pointLight position={O(0.8, 2.2, z + 2.4)} color="#eef2ff" intensity={16} distance={7} decay={1.5} />
+            <pointLight position={O(-1.5, 3, z - 4)} color="#dfe8ff" intensity={30} distance={12} decay={1.5} />
           </>
         );
       },

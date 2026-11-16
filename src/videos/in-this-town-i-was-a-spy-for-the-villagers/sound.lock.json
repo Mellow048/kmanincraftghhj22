@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-i-was-a-spy-for-the-villagers",
   "mix": "public/audio/in-this-town-i-was-a-spy-for-the-villagers/mix.mp3",
-  "seconds": 116.9,
+  "seconds": 117.0,
   "built_from": {
-    "timing.json": "166c2368e8c1be74ce63fee1455f41c724107efd",
-    "sound.json": "f87970f0bf2d53a940fc35e9916044376aea8079",
-    "narration.mp3": "976e44ed7c386d2731bf96c7f55f6a966dd0f4e2"
+    "timing.json": "95c99b7060ef50420264404c198eca00c31e1e65",
+    "sound.json": "f99ebb3ae1c79c31db1e4702b048f15ccd734830",
+    "narration.mp3": "793bfbf687e6abc960007588f1911cf829b44580"
   },
-  "mix_sha1": "2e63572992f31fb0bb353e5c8db68fea92ef8189",
+  "mix_sha1": "01ce030d7ae9a6c838e874820c65d440090af69a",
   "music_sections": [
     {
       "from": "1.town",
@@ -69,28 +69,33 @@
       "from": "13.look",
       "mood": "dark",
       "at": 107.63
+    },
+    {
+      "from": "14.sub",
+      "mood": "playful",
+      "at": 115.17
     }
   ],
   "music_file": {
     "path": "Topics/InThisTown/InThisTownMusic.aac",
     "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
   },
-  "beds": 13,
+  "beds": 14,
   "measured": {
     "musicUnderVoiceDb": 18.7,
     "secondsWithoutMusic": 2.6,
-    "bedsUnderVoiceDb": 25.3,
-    "sfx": 208,
-    "sfxPerMinute": 106.8,
-    "sfxKinds": 42,
+    "bedsUnderVoiceDb": 25.2,
+    "sfx": 221,
+    "sfxPerMinute": 113.3,
+    "sfxKinds": 43,
     "longestGapSeconds": 2.0,
     "longestGapAt": 54.2,
     "sfxBuried": 0,
     "voiceOverRestMedianDb": 14.5,
-    "voiceOverRestWorstDb": 5.4,
+    "voiceOverRestWorstDb": 5.5,
     "voiceOverRestWorst": [
       {
-        "db": 5.4,
+        "db": 5.5,
         "t": 85.9,
         "cue": "10.lights",
         "sounding": [
@@ -104,6 +109,15 @@
         "cue": "9.lead",
         "sounding": [
           "sting"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 114.2,
+        "cue": "13.ohno",
+        "sounding": [
+          "drop",
+          "heartbeat"
         ]
       },
       {
@@ -128,15 +142,6 @@
         "cue": "8.map",
         "sounding": [
           "sting"
-        ]
-      },
-      {
-        "db": 6.9,
-        "t": 12.0,
-        "cue": "2.when",
-        "sounding": [
-          "bell",
-          "heartbeat"
         ]
       }
     ],

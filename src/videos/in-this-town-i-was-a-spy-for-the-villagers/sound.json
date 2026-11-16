@@ -70,6 +70,11 @@
     "mood": "dark",
     "gain": -3,
     "why": "The captain looks at the tower, the banner, the boy. Then the rain."
+   },
+   {
+    "from": "14.sub",
+    "mood": "playful",
+    "why": "He runs, with forty pillagers and a ravager behind him: the track back at full level."
    }
   ]
  },
@@ -138,6 +143,11 @@
    "from": "13.rain",
    "to": "14.sub",
    "bed": "wind"
+  },
+  {
+   "from": "14.sub",
+   "to": "14.sub",
+   "bed": "crowd"
   }
  ],
  "sfx": [
@@ -1000,29 +1010,54 @@
    "why": "The grey runs."
   },
   {
-   "cue": "13.quiet",
-   "at": 0.3,
+   "cue": "13.ohno",
+   "at": 0.05,
    "sfx": "heartbeat",
-   "why": "Nobody grunted."
+   "why": "A pink face, and all of them looking at it."
+  },
+  {
+   "cue": "13.ohno",
+   "word": "no",
+   "at": 0.25,
+   "sfx": "drop",
+   "trim": -2,
+   "why": "'Oh no.'"
+  },
+  {
+   "cue": "14.sub",
+   "sfx": "zip",
+   "why": "He bolts, out through the broken gate."
   },
   {
    "cue": "14.sub",
    "at": 0.1,
-   "sfx": "pop",
-   "why": "The other side of the banner."
+   "sfx": "step_grass",
+   "repeat": 9,
+   "every": 0.19,
+   "why": "His boots on the track, fast."
+  },
+  {
+   "cue": "14.sub",
+   "at": 0.15,
+   "sfx": "cheer",
+   "dur": 1.5,
+   "trim": -3,
+   "why": "All of them, after him."
+  },
+  {
+   "cue": "14.sub",
+   "at": 0.5,
+   "sfx": "stomp",
+   "repeat": 3,
+   "every": 0.45,
+   "trim": -3,
+   "why": "The ravager, after him too."
   },
   {
    "cue": "14.sub",
    "word": "subscribe",
    "sfx": "ding",
-   "why": "Subscribe."
-  },
-  {
-   "cue": "14.sub",
-   "word": "two",
-   "trim": -4,
-   "sfx": "sting",
-   "why": "The captain leans in."
+   "why": "The sign over his head."
   }
  ]
 }
