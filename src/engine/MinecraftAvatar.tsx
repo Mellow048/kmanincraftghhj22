@@ -49,6 +49,7 @@ export type MinecraftAvatarProps = {
   face?: FaceName;
   skin?: string;
   hair?: string;
+  hairStyle?: "default" | "spiky";
   outfit?: OutfitName;
   /**
    * Custom clothes. Overrides the outfit's colours part by part, so a town can
@@ -187,6 +188,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   face = "neutral",
   skin = "#e8b78d",
   hair = "#4a2e1c",
+  hairStyle = "default",
   outfit = "gown",
   colors,
   shoes,
@@ -375,6 +377,28 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           ]}>
             <boxGeometry args={[8 * PX, 8 * PX, 8 * PX]} />
           </mesh>
+          {hairStyle === "spiky" ? (
+            <group position={[0, 4 * PX, 0]}>
+              <mesh castShadow receiveShadow position={[0, 4.5 * PX, 0.2 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[8.4 * PX, 1.4 * PX, 8.4 * PX]} />
+              </mesh>
+              <mesh castShadow receiveShadow position={[-1.8 * PX, 5.6 * PX, 1.8 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[2.2 * PX, 1.6 * PX, 2.4 * PX]} />
+              </mesh>
+              <mesh castShadow receiveShadow position={[1.4 * PX, 5.8 * PX, 1.2 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[2.4 * PX, 2.0 * PX, 2.4 * PX]} />
+              </mesh>
+              <mesh castShadow receiveShadow position={[0.2 * PX, 5.5 * PX, -1.6 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[3.2 * PX, 1.4 * PX, 2.6 * PX]} />
+              </mesh>
+              <mesh castShadow receiveShadow position={[2.2 * PX, 3.8 * PX, 4.15 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[2.2 * PX, 1.4 * PX, 0.6 * PX]} />
+              </mesh>
+              <mesh castShadow receiveShadow position={[-1.6 * PX, 3.6 * PX, 4.15 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[2.0 * PX, 1.2 * PX, 0.6 * PX]} />
+              </mesh>
+            </group>
+          ) : null}
           {head ? <group position={[0, 4 * PX, 0]}>{head}</group> : null}
         </group>
 
