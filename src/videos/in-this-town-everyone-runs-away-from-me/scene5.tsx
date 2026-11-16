@@ -101,7 +101,7 @@ export const scene5 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={BEHIND} rotationY={SOUTH} animation="wave" face="grin" tailUp={1} />
-          <Bubble text="HELLO!" position={[0.12, 2.05, BEHIND[2]]} scale={tw(t, 0.08, 0.25) * 0.5} tail={-1} />
+          <Bubble text="HELLO!" position={[0.05, 2.08, BEHIND[2]]} scale={tw(t, 0.08, 0.25) * 0.7} tail={-1} />
           <Fill at={[0.6, 1.5, -7.2]} power={9} reach={6} />
         </>
       ),

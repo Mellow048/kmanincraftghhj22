@@ -47,7 +47,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={NORTH} animation="wave" tailUp={1} />
-          <Bubble text="HELLO!" position={[0.25, 2.0, 10.5]} scale={tw(t, 0.2, 0.4) * 0.5} tail={-1} />
+          <Bubble text="HELLO!" position={[0.2, 2.05, 10.5]} scale={tw(t, 0.2, 0.4) * 0.72} tail={-1} />
           <Creeps spots={STREET} t={t} face={SOUTH} lookAt={[0, 1.2, 10.5]} cat={ME} at={w("1.hello", "runs") - 0.25} skip={[13]} />
         </>
       ),

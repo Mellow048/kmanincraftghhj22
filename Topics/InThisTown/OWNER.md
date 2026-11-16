@@ -226,3 +226,9 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   `reference/monster-village/README.md`. Six ideas made to its recipe were put to him; they are in
   `outlines/ideas-2026-11-15.md` with what he said about each. **Pitch from that recipe first: a famous mob as family,
   the teller the odd one out, and the players as the danger.**
+- **2026-11-16, "lets do 5".** From the six he took the only cat in a town of creepers: the funny one, whole in one
+  film. Built as `in-this-town-everyone-runs-away-from-me` on the Monster Village recipe: creepers and a waving cat in
+  frame one, "I am the only cat" as line one, creeper mum and dad by 0:05, players as the danger at 0:47, and three
+  true Minecraft facts as the jokes (creepers run from cats; a hiss means it is about to blow up; they drop
+  gunpowder). He picked from a three-line pitch and the film was built without showing him the script first, against
+  his own rule in §4: say so when handing it over, and take line changes before anything else.
