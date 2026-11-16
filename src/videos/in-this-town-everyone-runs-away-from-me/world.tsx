@@ -1,6 +1,6 @@
 import type React from "react";
 import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Torch, Vox, Zone, useActiveShot } from "../../engine";
-import { Hut, Moon, Room, Stars, Well } from "../../../Topics/InThisTown";
+import { CreeperHouse, Hut, Moon, Room, Stars, Well } from "../../../Topics/InThisTown";
 import { CreeperFace, PLACE } from "./kit";
 
 /**
@@ -21,16 +21,9 @@ const ring = (n: number, r0: number, r1: number, seed: number) =>
     return [Math.cos(a) * r, Math.sin(a) * r, 4.6 + ((i * 7 + seed) % 5) * 0.8] as [number, number, number];
   });
 
-const ROOFS = ["#3f9a3a", "#58b84a", "#2f7f3a", "#6ac05a", "#4aa53f", "#37883a"];
-/** A creeper's house: a green roof, and the face over the door. `west` houses face east, at the street. */
-const House: React.FC<{ west: boolean; x: number; z: number; w?: number; h?: number; n: number; lit: boolean }> = ({ west, x, z, w = 6, h = 3.8, n, lit }) => (
-  <group position={[x, 0, z]} rotation={[0, west ? Math.PI / 2 : -Math.PI / 2, 0]}>
-    <Hut at={[0, 0, 0]} w={w} h={h} wall={n % 3 === 1 ? "cobble" : "planks"} tint={n % 2 ? "#cfd6b4" : "#b9c79a"} roof={ROOFS[n % 6]} windows={[-1.8, 1.8]} lit={lit} />
-    <group position={[0, h - 0.62, 0.34]}>
-      <Vox kind="wool" tint="#58b84a" size={[1.15, 1.15, 0.08]} />
-      <CreeperFace position={[0, 0, 0.05]} size={0.95} />
-    </group>
-  </group>
+/** A creeper's house at the street: `west` houses face east. */
+const House: React.FC<{ west: boolean; x: number; z: number; w?: number; h?: number; n: number; lit: boolean }> = ({ west, x, z, w, h, n, lit }) => (
+  <CreeperHouse position={[x, 0, z]} rotationY={west ? Math.PI / 2 : -Math.PI / 2} w={w} h={h} n={n} lit={lit} />
 );
 
 /** [x, z, width, height]: the same on both sides of the street. The first on the west side is home. */

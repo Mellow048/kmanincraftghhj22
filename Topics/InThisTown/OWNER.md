@@ -232,3 +232,11 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   true Minecraft facts as the jokes (creepers run from cats; a hiss means it is about to blow up; they drop
   gunpowder). He picked from a three-line pitch and the film was built without showing him the script first, against
   his own rule in §4: say so when handing it over, and take line changes before anything else.
+- **2026-11-16, "really cute short, i like it".** On "Everyone Runs Away From Me", first render, nothing to change:
+  "now put it on the main branch as reference + the creeper skins u made so that other agents can use it too as a
+  template or pack. then make another idea cuz i like it alot". It is in `reference/everyone-runs-away-from-me/`; the
+  creeper family, crowd, houses and gunpowder players are in the pack (`creepertown.tsx`; `PACK.md`, "The creeper
+  town"), and the template's `kit.tsx` passes them on. **What this tells us about his taste: the recipe holds (a famous
+  mob as family, the odd one out, players as the danger, Minecraft facts as jokes), "cute" is praise, and a film that
+  ends in one part is welcome when it is funny.** Views and stayed-to-watch for it are not known yet: ask.
+
