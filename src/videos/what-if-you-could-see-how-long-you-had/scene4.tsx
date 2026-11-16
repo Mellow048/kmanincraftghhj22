@@ -56,7 +56,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Hero position={[3.2 - 3.0 * k, 0, 0.3]} rotationY={WEST} animation="run" animDistance={3.0 * k} face="fear" />
-            <BigNumber n="10"over={[3.2 - 3.0 * k, 0, 0.3]} size={0.88} t={t - RUN}   rotationY={-1.6755}/>
+            <BigNumber n="10"over={[3.2 - 3.0 * k, 0, 0.3]} size={0.62} t={t - RUN}   rotationY={-1.6755}/>
           </>
         );
       },
@@ -73,7 +73,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Hero position={[SPOT.seat(2, 0)[0] + 1.6 - 0.5 * k, 0, SPOT.seat(2, 0)[2] + 1.4]} rotationY={NORTH} animation="idle" face="fear" />
             <Classmate who={2} position={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} rotationY={NORTH + 0.4} animation="idle" face="calm" />
-            <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.75} t={t - JO3}   rotationY={3.5954}/>
+            <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={t - JO3}   rotationY={3.5954}/>
           </>
         );
       },
@@ -85,7 +85,7 @@ export const scene4 = storyScene(timing, {
       zone: "class",
       note: "Nothing but Jo's clock at one. It is the mirror of 10.ten - same framing, same size, same emptiness around it - and the audience has already been taught how to read that shot, which is why it lands in half a second.",
       stage: (t) => (
-        <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={1.00} t={t - ONE}   rotationY={3.0718}/>
+        <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={t - ONE}   rotationY={3.0718}/>
       ),
     },
     {
@@ -104,7 +104,7 @@ export const scene4 = storyScene(timing, {
       ...cam.push({ on: [SPOT.seat(2, 0)[0] + 0.15, 1.95, SPOT.seat(2, 0)[2] - 0.35], dist: 1.6, to: 1.3, yaw: 152, pitch: -4, fov: 36 }),
       zone: "class",
       note: "Back to Jo's clock at one, from a new side and lower: the number that has not moved for a week, over the head of the person he has walked past every day. The line explains the whole film and the picture is the same picture, which is how a reveal is supposed to work.",
-      stage: () => <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={1.00} t={0.2}   rotationY={2.6529}/>,
+      stage: () => <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={0.2}   rotationY={2.6529}/>,
     },
     {
       // She was at one because of me. For a week of not saying anything. The two of them in one frame at last.
@@ -116,7 +116,7 @@ export const scene4 = storyScene(timing, {
         <>
           <Hero position={[SPOT.seat(2, 0)[0] + 1.6, 0, SPOT.seat(2, 0)[2] + 1.2]} rotationY={NORTH + 0.9} animation="idle" face="ouch" />
           <Classmate who={2} position={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} rotationY={NORTH + 0.4} animation="idle" face="calm" />
-          <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.75} t={t - WHY}   rotationY={3.6303}/>
+          <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={t - WHY}   rotationY={3.6303}/>
         </>
       ),
     },
@@ -130,7 +130,7 @@ export const scene4 = storyScene(timing, {
         <>
           <Hero position={[SPOT.seat(2, 0)[0] + 1.6, 0, SPOT.seat(2, 0)[2] + 1.2]} rotationY={NORTH + 0.9} animation="idle" face="calm" />
           <Classmate who={2} position={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} rotationY={NORTH + 0.4} animation="idle" face="calm" />
-          <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.75} t={0.2}   rotationY={3.4907}/>
+          <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={0.2}   rotationY={3.4907}/>
         </>
       ),
     },
@@ -146,7 +146,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Hero position={[SPOT.seat(2, 0)[0] + 1.6 - 1.0 * k, 0, SPOT.seat(2, 0)[2] + 1.2 - 0.9 * k]} rotationY={NORTH + 0.5} animation="walk" animDistance={1.35 * k} face="calm" />
             <Classmate who={2} position={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} rotationY={NORTH + 0.4} animation="idle" face="calm" />
-            <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.75} t={t - TALK}   rotationY={3.2463}/>
+            <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={t - TALK}   rotationY={3.2463}/>
           </>
         );
       },
@@ -163,7 +163,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Hero position={[SPOT.seat(2, 0)[0] + 0.75, 0, SPOT.seat(2, 0)[2] + 0.45]} rotationY={NORTH + 0.4} animation="idle" face="smile" />
             <Classmate who={2} position={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} rotationY={NORTH - 0.2} animation="idle" face="grin" />
-            <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.75} t={0.2} fade={fade}   rotationY={3.3161}/>
+            <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={0.2} fade={fade}   rotationY={3.3161}/>
           </>
         );
       },
@@ -187,7 +187,7 @@ export const scene4 = storyScene(timing, {
             {seats.map(([col, row], i) => (
               <BigNumber n="4"key={`c${col}${row}`}
                 over={SPOT.seat(col, row)}
-                size={0.34 + (i % 3) * 0.06}
+                size={0.34 + (i % 3) * 0.04}
                 t={t - SCHOOL - Math.min(turn, 0.9) * 0.05 * i}
                 rotationY={3.2114}/>
             ))}
@@ -211,7 +211,7 @@ export const scene4 = storyScene(timing, {
               <Classmate key={`${col}${row}`} who={col * 3 + row + 2} position={SPOT.seat(col, row)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
             ))}
             {seats.map(([col, row], i) => (
-              <BigNumber n="4"key={`c${col}${row}`} over={SPOT.seat(col, row)} size={0.34 + (i % 3) * 0.06} t={t}   rotationY={3.1067}/>
+              <BigNumber n="4"key={`c${col}${row}`} over={SPOT.seat(col, row)} size={0.34 + (i % 3) * 0.04} t={t}   rotationY={3.1067}/>
             ))}
             <SubscribeSign position={SPOT.at(0, 3.0, -3.3)} rotationY={0} scale={1.1} />
           </>

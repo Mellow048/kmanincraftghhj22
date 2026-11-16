@@ -48,7 +48,7 @@ export const scene2 = storyScene(timing, {
         <>
           <Hero position={[ME[0] - 0.3, 0, ME[2] - 1.3]} rotationY={NORTH + 0.3} animation="idle" face="brave" />
           <Classmate who={5} position={[ME[0] + 0.7, 0, ME[2] - 2.1]} rotationY={NORTH - 0.5} animation="idle" face="frown" />
-          <BigNumber n="10"over={[ME[0] + 0.7, 0, ME[2] - 2.1]} size={0.79} t={t - WARN}   rotationY={3.4208}/>
+          <BigNumber n="10"over={[ME[0] + 0.7, 0, ME[2] - 2.1]} size={0.62} t={t - WARN}   rotationY={3.4208}/>
         </>
       ),
     },
@@ -65,8 +65,8 @@ export const scene2 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={6} position={SPOT.seat(0, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={8} position={SPOT.seat(2, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <BigNumber n="2"over={SPOT.seat(0, 1)} tall={1.34} size={0.66} t={t - FRIDAY}   rotationY={3.2114}/>
-          <BigNumber n="2"over={SPOT.seat(2, 1)} tall={1.34} size={0.75} t={t - FRIDAY - 0.2}   rotationY={3.2114}/>
+          <BigNumber n="2"over={SPOT.seat(0, 1)} tall={1.34} size={0.62} t={t - FRIDAY}   rotationY={3.2114}/>
+          <BigNumber n="2"over={SPOT.seat(2, 1)} tall={1.34} size={0.62} t={t - FRIDAY - 0.2}   rotationY={3.2114}/>
         </>
       ),
     },
@@ -103,13 +103,13 @@ export const scene2 = storyScene(timing, {
     {
       // Not a big number. Nothing. I asked her about it. Push in on the empty air over her head.
       cue: "5.why",
-      ...cam.push({ on: [SPOT.seat(2, 0)[0] + 0.15, 1.75, SPOT.seat(2, 0)[2] - 0.35], dist: 1.7, to: 1.4, yaw: 196, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [SPOT.seat(2, 0)[0] + 0.15, 2.05, SPOT.seat(2, 0)[2] - 0.35], dist: 1.9, to: 1.55, yaw: 196, pitch: 6, fov: 40 }),
       zone: "class",
       note: "Hard up on the space above Jo's head where every other clock in this film has been. There is nothing there, and the camera stays on it long enough to be uncomfortable, which is what makes the audience ask the question the teller asks.",
       stage: (t) => (
         <>
           <Classmate who={2} position={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} rotationY={NORTH + 0.5} animation="sit" face="calm" />
-          <pointLight position={[SPOT.seat(2, 0)[0] + 0.15, 2.15, SPOT.seat(2, 0)[2] + 0.3]} color="#ffffff" intensity={2.6 * ease(ramp(t, NOTHING - 0.05, NOTHING + 0.4))} distance={1.5} decay={2} />
+          <pointLight position={[SPOT.seat(2, 0)[0] + 0.6, 2.15, SPOT.seat(2, 0)[2] + 0.75]} color="#ffffff" intensity={5 * ease(ramp(t, NOTHING - 0.05, NOTHING + 0.4))} distance={2.2} decay={2} />
         </>
       ),
     },
@@ -127,7 +127,7 @@ export const scene2 = storyScene(timing, {
       // A clock tells you when. Nothing tells you why. The limit, named for the second and last time, and he walks
       // away from it: the plant that pays the entire ending.
       cue: "6.plant",
-      ...cam.push({ on: [0, 1.3, 0.8], dist: 4.4, to: 3.6, yaw: -20, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [0.85, 1.35, 0.3], dist: 3.9, to: 3.3, yaw: -16, pitch: 6, fov: 44 }),
       zone: "hall",
       note: "The hallway, and he is walking away from the camera with his hands in his pockets: the line that names the limit is said over his back, on the move, so it sounds like something he shrugged off. It is the answer to the film, thrown away in a corridor.",
       stage: (t) => {
@@ -135,8 +135,8 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Hero position={[0.2 * k, 0, 0.9 - 1.6 * k]} rotationY={NORTH} animation="walk" animDistance={1.6 * k} face="calm" />
-            <Classmate who={3} position={[1.5, 0, -1.2]} rotationY={SOUTH} animation="idle" face="calm" />
-            <BigNumber n="40" over={[1.5, 0, -1.2]} size={0.5} t={t - PLANT}  rotationY={-0.3491}/>
+            <Classmate who={3} position={[1.55, 0, 0.15]} rotationY={SOUTH} animation="idle" face="calm" />
+            <BigNumber n="40" over={[1.5, 0, -1.2]} size={0.50} t={t - PLANT}  rotationY={-0.3491}/>
           </>
         );
       },
