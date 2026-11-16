@@ -18,14 +18,14 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.copy",
-      ...cam.push({ on: [-2.90, 1.00, 1.20], dist: 4.65, to: 4.15, yaw: 50.5, pitch: 18.8, fov: 48 }),
+      ...cam.push({ on: [-2.90, 1.00, 1.20], dist: 4.97, to: 4.47, yaw: 50.5, pitch: 27.6, fov: 48 }),
       zone: "class",
       look: "town-day",
       note: "The whole classroom in one frame: the class sitting still with their shadows under their desks, and one shadow standing up at the board. The boy is on the floor beside his own desk.",
       stage: () => (
         <>
           <Teacher position={[-0.5, 0, -3.9]} animation="talk" />
-          <Shadow position={[-2.2, 0, 1.0]} rotationY={2.9} pose="idle" lift={1} scale={0.8} />
+          <Shadow position={[-2.2, 0, 1.0]} rotationY={2.9} pose="idle" lift={0} scale={0.8} />
           {[
             [-0.7, 0],
             [0.9, 0],
@@ -44,27 +44,27 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.own",
-      ...cam.push({ on: [-3.20, 0.95, 1.10], dist: 2.80, to: 2.40, yaw: -30.3, pitch: 7.2, fov: 42 }),
+      ...cam.push({ on: [-3.20, 0.95, 1.10], dist: 3.01, to: 2.61, yaw: -30.3, pitch: 22.5, fov: 42 }),
       zone: "class",
       look: "town-day",
       note: "'Mine had a mind of its own': the boy on the floor beside his desk, and his shadow standing up beside him, facing the board. Side on, from as low as the floor.",
       stage: () => (
         <>
           <Me position={HIDE} rotationY={Math.PI} animation="cower" face="scared" />
-          <Shadow position={SH_AT_DESK} rotationY={Math.PI * 0.86} pose="idle" lift={1} scale={0.84} />
+          <Shadow position={SH_AT_DESK} rotationY={Math.PI * 0.86} pose="idle" lift={0} scale={0.84} />
           <Kid n={4} position={[0, 0.46, 1.18]} rotationY={Math.PI} animation="idle" />
         </>
       ),
     },
     {
       cue: "1.brave",
-      ...cam.push({ on: [0.85, 1.00, -2.95], dist: 1.78, to: 1.43, yaw: 135.0, pitch: -18.0, fov: 42 }),
+      ...cam.push({ on: [0.85, 1.00, -2.95], dist: 1.72, to: 1.37, yaw: 135.0, pitch: 8.4, fov: 42 }),
       zone: "class",
       look: "town-day",
       note: "'Not scared of anything': from the floor, up at the black silhouette standing at the board with its arm out, pointing at the answer. It owns the room.",
       stage: () => (
         <>
-          <Shadow position={AT_BOARD} rotationY={0.12} pose="point" lift={1} scale={0.86} />
+          <Shadow position={AT_BOARD} rotationY={0.12} pose="point" lift={0} scale={0.86} />
           <Teacher position={[-1.0, 0, -3.9]} animation="idle" face="surprised" />
         </>
       ),

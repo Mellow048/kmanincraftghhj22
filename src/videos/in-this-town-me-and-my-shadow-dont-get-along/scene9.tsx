@@ -18,7 +18,7 @@ export const scene9 = storyScene(timing, {
   shots: [
     {
       cue: "14.real",
-      ...cam.push({ on: [121.70, 1.10, 1.70], dist: 2.57, to: 2.27, yaw: 20.6, pitch: 4.5, fov: 42 }),
+      ...cam.push({ on: [121.70, 1.10, 1.70], dist: 2.75, to: 2.45, yaw: 20.6, pitch: 21.3, fov: 42 }),
       zone: "gym",
       look: "prom-night",
       note: "'My shadow never had a mind of its own': him standing on the floor, and his shadow back under his shoes where every other shadow in town is.",
@@ -44,7 +44,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.part",
-      ...cam.push({ on: [123.30, 1.05, 1.00], dist: 3.66, to: 3.16, yaw: -19.4, pitch: 9.4, fov: 48 }),
+      ...cam.push({ on: [123.30, 1.05, 1.00], dist: 3.87, to: 3.37, yaw: -19.4, pitch: 21.2, fov: 48 }),
       zone: "gym",
       look: "prom-night",
       note: "'The part of me that was not scared': the two of them in the middle of the floor, and the bunting, and the ball, and one shadow under two pairs of shoes.",
@@ -59,7 +59,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.now",
-      ...cam.push({ on: [123.60, 1.30, -4.40], dist: 2.92, to: 2.62, yaw: 5.9, pitch: 3.9, fov: 44 }),
+      ...cam.push({ on: [123.60, 1.30, -4.40], dist: 3.08, to: 2.78, yaw: 5.9, pitch: 18.9, fov: 44 }),
       zone: "gym",
       look: "prom-night",
       note: "'She is asleep on my shoulder': later, the floor emptied, the two of them sitting on the front of the stage with her head tipped onto his shoulder.",
@@ -73,7 +73,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "14.together",
-      ...cam.push({ on: [124.00, 1.30, -3.20], dist: 5.60, to: 5.10, yaw: 9.5, pitch: 12.4, fov: 50 }),
+      ...cam.push({ on: [124.00, 1.30, -3.20], dist: 5.83, to: 5.33, yaw: 9.5, pitch: 20.1, fov: 50 }),
       zone: "gym",
       look: "prom-night",
       note: "'Both of us are where we belong': the gym behind them, half the lights off, bunting still up, the two of them small at the front of the stage.",
@@ -87,7 +87,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "15.like",
-      ...cam.push({ on: [123.60, 1.50, -3.60], dist: 2.90, to: 2.50, yaw: 2.0, pitch: 2.0, fov: 42 }),
+      ...cam.push({ on: [123.60, 1.50, -3.60], dist: 3.04, to: 2.64, yaw: 2.0, pitch: 17.2, fov: 42 }),
       zone: "gym",
       look: "prom-night",
       note: "'Like this video if you had to borrow your courage': the two of them behind it, the card in front, held up like a photo somebody took of the night.",

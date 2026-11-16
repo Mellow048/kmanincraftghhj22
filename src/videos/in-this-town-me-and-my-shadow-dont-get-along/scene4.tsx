@@ -16,7 +16,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "6.prac",
-      ...cam.push({ on: [75.45, 1.20, -0.26], dist: 2.36, to: 2.06, yaw: -36.4, pitch: 1.2, fov: 40 }),
+      ...cam.push({ on: [75.45, 1.20, -0.26], dist: 2.51, to: 2.21, yaw: -36.4, pitch: 19.8, fov: 40 }),
       zone: "cafe",
       look: "town-day",
       note: "'So I practised on a bread roll': on him at the end of the table, holding a roll up like it is her face, saying it under his breath.",
@@ -43,7 +43,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.walk",
-      ...cam.push({ on: [80.90, 1.00, 1.20], dist: 4.60, to: 4.10, yaw: 13.4, pitch: 20.3, fov: 48 }),
+      ...cam.push({ on: [80.90, 1.00, 1.20], dist: 4.94, to: 4.44, yaw: 13.4, pitch: 29.1, fov: 48 }),
       zone: "cafe",
       look: "town-day",
       note: "'Stood up and walked to her table without me': the whole lunch room. The silhouette gets up off the floor and walks across it, in the open, in front of everybody. He is under the table.",
@@ -53,7 +53,7 @@ export const scene4 = storyScene(timing, {
             position={[P("cafe", -3.4, 0, 1.0)[0] + 6.6 * p, 0, 1.0]}
             rotationY={Math.PI / 2}
             pose="walk"
-            lift={1}
+            lift={0}
             scale={0.82}
             t={t}
             swing={1}
@@ -86,7 +86,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "7.jan",
-      ...cam.push({ on: [80.40, 1.10, 4.20], dist: 1.91, to: 1.51, yaw: 161.6, pitch: 6.0, fov: 46 }),
+      ...cam.push({ on: [80.40, 1.10, 4.20], dist: 2.14, to: 1.74, yaw: 161.6, pitch: 27.8, fov: 46 }),
       zone: "cafe",
       look: "town-day",
       note: "'The old janitor had seen it before': the doorway at the back of the lunch room, and the janitor standing in it with his mop, looking at the boy on the floor.",
@@ -102,7 +102,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "7.why",
-      ...cam.push({ on: [80.20, 1.00, 3.70], dist: 2.56, to: 2.26, yaw: 51.3, pitch: -2.2, fov: 42 }),
+      ...cam.push({ on: [80.20, 1.00, 3.70], dist: 2.66, to: 2.36, yaw: 51.3, pitch: 15.3, fov: 42 }),
       zone: "cafe",
       look: "town-day",
       note: "'Why does mine never stay where I put it?': from the floor beside them, up at the two of them. The kid is half the janitor's height, and the mop is taller than both.",
@@ -128,7 +128,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "7.mop",
-      ...cam.truck({ on: [78.80, 1.05, 4.40], dist: 2.58, yaw: 166.5, pitch: 3.3, by: [-4.6, 0, 0], fov: 44 }),
+      ...cam.truck({ on: [78.80, 1.05, 4.40], dist: 2.74, yaw: 166.5, pitch: 20.3, by: [-4.6, 0, 0], fov: 44 }),
       zone: "cafe",
       look: "town-day",
       note: "'Then he walked off': behind him as he goes, mop dragging, back through the door he came in by. The boy is left standing in the middle of it.",

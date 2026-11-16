@@ -30,7 +30,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.wall",
-      ...cam.push({ on: [159.00, 1.35, -2.40], dist: 2.24, to: 1.84, yaw: 10.3, pitch: 2.6, fov: 46 }),
+      ...cam.push({ on: [159.00, 1.35, -2.40], dist: 2.41, to: 2.01, yaw: 10.3, pitch: 21.9, fov: 46 }),
       zone: "room",
       look: "overworld-night",
       note: "'On the wall, doing push-ups': the wall beside the bed, and his shadow going up and down on it, flat, like it is keeping fit while he lies there.",
@@ -40,7 +40,7 @@ export const scene5 = storyScene(timing, {
             position={P("room", -0.55, 1.15, WALL_Z)}
             rotationY={0}
             pose="out"
-            lift={1}
+            lift={0}
             roll={1.42}
             scale={0.86}
             t={t}
@@ -53,7 +53,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.q",
-      ...cam.push({ on: [159.10, 1.10, -1.20], dist: 3.53, to: 3.03, yaw: 13.2, pitch: 8.1, fov: 48 }),
+      ...cam.push({ on: [159.10, 1.10, -1.20], dist: 3.73, to: 3.23, yaw: 13.2, pitch: 20.4, fov: 48 }),
       zone: "room",
       look: "overworld-night",
       note: "'Whose shadow is it': the whole room. Him sitting up with the blanket round him, and the shadow on the wall now enormous, standing over the bed.",
@@ -61,13 +61,13 @@ export const scene5 = storyScene(timing, {
         <>
           <BedBox position={P("room", -1.0, 0, -1.2)} />
           <Me position={P("room", -1.0, 0.52, -1.0)} rotationY={Math.PI} animation="sit" face="worried" />
-          <Shadow position={P("room", -0.4, 1.2, WALL_Z)} rotationY={0} pose="idle" lift={1} scale={1.5} />
+          <Shadow position={P("room", -0.4, 1.2, WALL_Z)} rotationY={0} pose="idle" lift={0} scale={1.5} />
         </>
       ),
     },
     {
       cue: "8.dec",
-      ...cam.push({ on: [159.00, 1.35, -1.00], dist: 1.54, to: 1.34, yaw: 13.1, pitch: 0.0, fov: 32 }),
+      ...cam.push({ on: [159.00, 1.35, -1.00], dist: 1.74, to: 1.54, yaw: 13.1, pitch: 27.4, fov: 32 }),
       zone: "room",
       look: "overworld-night",
       note: "'So I decided': his face in the moonlight, and the first time all film he does not look scared of anything.",

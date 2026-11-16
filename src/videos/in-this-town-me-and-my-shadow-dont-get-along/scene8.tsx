@@ -41,7 +41,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "12.ask",
-      ...cam.push({ on: [123.00, 1.15, 1.10], dist: 2.80, to: 2.40, yaw: 21.0, pitch: 5.1, fov: 44 }),
+      ...cam.push({ on: [123.00, 1.15, 1.10], dist: 2.98, to: 2.58, yaw: 21.0, pitch: 20.7, fov: 44 }),
       zone: "gym",
       look: "prom-night",
       note: "'Do you want to dance with me?': the two of them and nobody else, the way it feels when it is finally happening.",
@@ -67,7 +67,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "12.still",
-      ...cam.push({ on: [121.10, 0.35, 2.10], dist: 2.30, to: 2.00, yaw: 20.2, pitch: 28.5, fov: 42 }),
+      ...cam.push({ on: [121.10, 0.35, 2.10], dist: 2.78, to: 2.48, yaw: 20.2, pitch: 43.2, fov: 42 }),
       zone: "gym",
       look: "prom-night",
       note: "'My shadow went still': on the floor behind him, the black shape stops mid-step, all at once, like a machine switched off.",
@@ -112,7 +112,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.follow",
-      ...cam.push({ on: [122.60, 1.05, 0.90], dist: 3.73, to: 3.23, yaw: 23.6, pitch: 20.4, fov: 48 }),
+      ...cam.push({ on: [122.60, 1.05, 0.90], dist: 4.08, to: 3.58, yaw: 23.6, pitch: 31.0, fov: 48 }),
       zone: "gym",
       look: "prom-night",
       note: "'She took my hand, and my shadow followed on the floor': from above and behind, the two of them together, and one flat shadow under both pairs of shoes.",
@@ -126,7 +126,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.dance",
-      ...cam.push({ on: [123.50, 1.00, 1.00], dist: 3.30, to: 2.90, yaw: 52.4, pitch: 7.0, fov: 44 }),
+      ...cam.push({ on: [123.50, 1.00, 1.00], dist: 3.49, to: 3.09, yaw: 52.4, pitch: 20.1, fov: 44 }),
       zone: "gym",
       look: "prom-night",
       note: "'We danced like a badly drawn puppet': side on, both of them stepping the same wrong way, and the shadow under them doing the same wrong step.",
@@ -142,7 +142,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "13.friend",
-      ...cam.push({ on: [117.20, 1.20, 5.40], dist: 1.79, to: 1.59, yaw: -153.4, pitch: 3.2, fov: 33 }),
+      ...cam.push({ on: [117.20, 1.20, 5.40], dist: 2.00, to: 1.80, yaw: -153.4, pitch: 26.7, fov: 33 }),
       zone: "gym",
       look: "prom-night",
       note: "'My friend cried in the corner. She blames the smoke machine': on the friend, pretending hard, one hand on her eye.",

@@ -30,21 +30,21 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.push",
-      ...cam.push({ on: [121.20, 0.95, 2.00], dist: 3.01, to: 2.61, yaw: -3.8, pitch: 2.9, fov: 44 }),
+      ...cam.push({ on: [121.20, 0.95, 2.00], dist: 3.15, to: 2.75, yaw: -3.8, pitch: 17.5, fov: 44 }),
       zone: "gym",
       look: "prom-night",
       note: "'My shadow was behind me, pushing': side on, the black shape at his back with both arms out, walking him across the floor like furniture.",
       stage: () => (
         <>
           <Me position={ME} rotationY={1.3} animation="stagger" animDistance={1.4} arms="cower" face="scared" />
-          <Shadow position={PUSHED} rotationY={1.3} pose="out" lift={1} scale={0.84} />
+          <Shadow position={PUSHED} rotationY={1.3} pose="out" lift={0} scale={0.84} />
           <Kid n={3} position={HERE(1.4, -2.6)} rotationY={2.4} animation="idle" face="surprised" />
         </>
       ),
     },
     {
       cue: "10.her",
-      ...cam.push({ on: [124.40, 1.25, 0.50], dist: 2.82, to: 2.32, yaw: 19.1, pitch: 12.3, fov: 38 }),
+      ...cam.push({ on: [124.40, 1.25, 0.50], dist: 3.09, to: 2.59, yaw: 19.1, pitch: 27.0, fov: 38 }),
       zone: "gym",
       look: "prom-night",
       note: "'She was under the lights, waiting': the ball turning overhead, the coloured light on her, and her looking at him come across the floor.",
@@ -69,14 +69,14 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.hand",
-      ...cam.push({ on: [123.10, 1.10, 1.20], dist: 2.44, to: 2.14, yaw: 35.0, pitch: 2.3, fov: 42 }),
+      ...cam.push({ on: [123.10, 1.10, 1.20], dist: 2.60, to: 2.30, yaw: 35.0, pitch: 20.2, fov: 42 }),
       zone: "gym",
       look: "prom-night",
       note: "'My shadow put out its hand instead of me': from her side of the gap. The black arm comes out past the boy's shoulder, straight at her.",
       stage: () => (
         <>
           <Me position={ME} rotationY={1.3} animation="idle" arms="cower" face="scared" />
-          <Shadow position={HERE(-1.85, 1.35)} rotationY={1.1} pose="reach" lift={1} scale={0.86} />
+          <Shadow position={HERE(-1.85, 1.35)} rotationY={1.1} pose="reach" lift={0} scale={0.86} />
           <Her position={HER} rotationY={-0.4} animation="idle" face="surprised" />
         </>
       ),
@@ -95,7 +95,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.q",
-      ...cam.push({ on: [123.40, 1.15, 1.10], dist: 2.88, to: 2.58, yaw: 24.8, pitch: 6.0, fov: 44 }),
+      ...cam.push({ on: [123.40, 1.15, 1.10], dist: 3.07, to: 2.77, yaw: 24.8, pitch: 21.0, fov: 44 }),
       zone: "gym",
       look: "prom-night",
       note: "'Is your shadow going to ask me?': both of them in one frame, and the bubble between them, and the shadow still standing there with its hand out.",
@@ -103,7 +103,7 @@ export const scene7 = storyScene(timing, {
         <>
           <Me position={ME} rotationY={1.3} animation="idle" arms="cower" face="scared" />
           <Her position={HER} rotationY={-0.4} animation="talk" face="neutral" />
-          <Shadow position={HERE(-1.85, 1.35)} rotationY={1.1} pose="reach" lift={1} scale={0.86} />
+          <Shadow position={HERE(-1.85, 1.35)} rotationY={1.1} pose="reach" lift={0} scale={0.86} />
           <Bubble
             text="ARE YOU GOING TO ASK ME?"
             position={[P("gym", -0.4, 2.35, 1.0)[0], 2.35, 1.0]}
@@ -115,7 +115,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.stop",
-      ...cam.push({ on: [123.00, 1.10, 1.20], dist: 5.62, to: 5.12, yaw: 4.1, pitch: 14.4, fov: 56 }),
+      ...cam.push({ on: [124.00, 1.10, 1.00], dist: 5.86, to: 5.36, yaw: 6.3, pitch: 22.0, fov: 50 }),
       zone: "gym",
       look: "prom-night",
       note: "'The music stopped. Even my shadow stopped': the whole gym, every kid frozen mid-dance, all of them looking at the two of them. The ball has stopped turning.",
@@ -123,7 +123,7 @@ export const scene7 = storyScene(timing, {
         <>
           <Me position={ME} rotationY={1.3} animation="idle" arms="cower" face="scared" />
           <Her position={HER} rotationY={-0.4} animation="idle" face="neutral" />
-          <Shadow position={HERE(-1.85, 1.35)} rotationY={1.1} pose="reach" lift={1} scale={0.86} />
+          <Shadow position={HERE(-1.85, 1.35)} rotationY={1.1} pose="reach" lift={0} scale={0.86} />
           {[
             [-1.5, -1.2],
             [0.4, -2.0],

@@ -17,7 +17,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "9.night",
-      ...cam.push({ on: [124.00, 1.10, 0.90], dist: 5.95, to: 5.35, yaw: -29.2, pitch: 15.6, fov: 50 }),
+      ...cam.push({ on: [124.00, 1.10, 0.90], dist: 6.21, to: 5.61, yaw: -29.2, pitch: 22.7, fov: 50 }),
       zone: "gym",
       look: "prom-night",
       note: "'Prom night. Loud music. Shoes too tight': the whole gym. Bunting, the ball, kids dancing badly, and him at the edge with one shoe half off.",
@@ -47,20 +47,20 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.mirror",
-      ...cam.push({ on: [131.55, 1.15, -3.20], dist: 2.34, to: 2.04, yaw: -59.0, pitch: 4.9, fov: 40 }),
+      ...cam.push({ on: [131.55, 1.15, -3.20], dist: 2.54, to: 2.24, yaw: -59.0, pitch: 23.2, fov: 40 }),
       zone: "gym",
       look: "prom-night",
       note: "'In the mirror I practised': over his shoulder at the mirror. He says it to his own reflection; behind him on the floor his shadow says it to the mirror too, perfectly.",
       stage: () => (
         <>
           <Me position={MIRROR_ME} rotationY={Math.PI / 2} animation="talk" face="scared" />
-          <Shadow position={[MIRROR_ME[0] + 0.9, 0, MIRROR_ME[2] + 0.2]} rotationY={0} pose="walk" lift={1} scale={0.8} />
+          <Shadow position={[MIRROR_ME[0] + 0.9, 0, MIRROR_ME[2] + 0.2]} rotationY={0} pose="walk" lift={0} scale={0.8} />
         </>
       ),
     },
     {
       cue: "9.steps",
-      ...cam.truck({ on: [120.10, 0.80, 2.20], dist: 2.03, yaw: -143.1, pitch: 9.9, by: [2.2, 0, -0.5], fov: 44 }),
+      ...cam.truck({ on: [120.10, 0.80, 2.20], dist: 2.31, yaw: -143.1, pitch: 29.9, by: [2.2, 0, -0.5], fov: 44 }),
       zone: "gym",
       look: "prom-night",
       note: "'I got three steps across the floor': behind his shoes at ankle height, three steps out from the plant, and then the shoes stop on the fourth.",
@@ -86,7 +86,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.found",
-      ...cam.push({ on: [119.60, 1.00, 3.20], dist: 1.64, to: 1.34, yaw: 100.6, pitch: 7.0, fov: 42 }),
+      ...cam.push({ on: [119.60, 1.00, 3.20], dist: 1.91, to: 1.61, yaw: 100.6, pitch: 31.6, fov: 42 }),
       zone: "gym",
       look: "prom-night",
       note: "'My friend found me': the two of them crouched in the leaves, her face saying it is worse than she thought.",

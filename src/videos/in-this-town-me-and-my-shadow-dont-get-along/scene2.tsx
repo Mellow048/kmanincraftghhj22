@@ -39,7 +39,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.mine",
-      ...cam.truck({ on: [36.80, 1.25, 0.20], dist: 2.30, yaw: 0.0, pitch: -1.2, by: [6.4, 0, 0], fov: 46 }),
+      ...cam.truck({ on: [36.80, 1.25, 0.20], dist: 2.42, yaw: 0.0, pitch: 18.1, by: [6.4, 0, 0], fov: 46 }),
       zone: "hall",
       look: "town-day",
       note: "'Up walls, into rooms without me': the camera tracks along the corridor at the height of the lockers. He walks with his head down; his shadow walks the wall above him, in step, out of reach.",
@@ -60,7 +60,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.why",
-      ...cam.push({ on: [39.40, 1.15, 0.60], dist: 2.33, to: 2.03, yaw: 2.5, pitch: 8.6, fov: 44 }),
+      ...cam.push({ on: [39.40, 1.15, 0.60], dist: 2.57, to: 2.27, yaw: 2.5, pitch: 26.5, fov: 44 }),
       zone: "hall",
       look: "town-day",
       note: "'Nobody knew why': over the principal's shoulder. He has a clipboard, a pen, and no idea. Behind him the shadow stands on the lockers like a poster of a boy.",
@@ -74,7 +74,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.only",
-      ...cam.push({ on: [0.60, 1.00, 1.70], dist: 2.71, to: 2.31, yaw: 10.9, pitch: 12.8, fov: 44 }),
+      ...cam.push({ on: [0.60, 1.00, 1.70], dist: 2.99, to: 2.59, yaw: 10.9, pitch: 27.9, fov: 44 }),
       zone: "class",
       look: "town-day",
       note: "'The only one like this': from the floor in front of the class, five kids standing in a row, a shadow under every pair of shoes but his. His is standing next to him.",
@@ -92,19 +92,19 @@ export const scene2 = storyScene(timing, {
             </group>
           ))}
           <Me position={[-0.45, 0, 1.55]} rotationY={Math.PI} animation="idle" face="sad" gaze={-1} />
-          <Shadow position={[0.4, 0, 1.35]} rotationY={Math.PI * 0.85} pose="idle" lift={1} scale={0.8} />
+          <Shadow position={[0.4, 0, 1.35]} rotationY={Math.PI * 0.85} pose="idle" lift={0} scale={0.8} />
         </>
       ),
     },
     {
       cue: "3.class",
-      ...cam.push({ on: [0.60, 1.40, -3.50], dist: 2.93, to: 2.53, yaw: 5.9, pitch: 5.9, fov: 42 }),
+      ...cam.push({ on: [0.60, 1.40, -3.50], dist: 3.12, to: 2.72, yaw: 5.9, pitch: 20.7, fov: 42 }),
       zone: "class",
       look: "town-day",
       note: "'My shadow stood up and answered the questions': on the board, from the class. The silhouette is at the board with chalk, the teacher is at the side, letting it.",
       stage: () => (
         <>
-          <Shadow position={[0.85, 0, -3.35]} rotationY={0} pose="point" lift={1} scale={0.86} />
+          <Shadow position={[0.85, 0, -3.35]} rotationY={0} pose="point" lift={0} scale={0.86} />
           <Teacher position={[2.7, 0, -3.5]} rotationY={-0.5} animation="idle" face="worried" />
           <Block position={[1.02, 1.86, -4.30]} size={[0.05, 0.05, 0.05]} color="#f4f2ea" />
         </>
@@ -128,7 +128,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.hall",
-      ...cam.truck({ on: [36.50, 1.05, 0.40], dist: 2.44, yaw: -97.1, pitch: 8.2, by: [6.2, 0, 0], fov: 46 }),
+      ...cam.truck({ on: [36.50, 1.05, 0.40], dist: 2.68, yaw: -97.1, pitch: 25.4, by: [6.2, 0, 0], fov: 46 }),
       zone: "hall",
       look: "town-day",
       note: "'Walked the wall and waved at the principal': behind him down the corridor. He walks with his bag; his shadow walks the lockers and waves at the principal, who waves back.",
@@ -139,7 +139,7 @@ export const scene2 = storyScene(timing, {
             position={P("hall", -6.0 + 6.0 * p, 1.6, WALL_Z)}
             rotationY={0}
             pose="point"
-            lift={1}
+            lift={0}
             scale={0.8}
             t={t}
             swing={0.5}
@@ -150,21 +150,21 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.lunch",
-      ...cam.push({ on: [79.50, 1.10, -3.60], dist: 1.93, to: 1.68, yaw: 27.9, pitch: 4.5, fov: 38 }),
+      ...cam.push({ on: [79.50, 1.10, -3.60], dist: 2.15, to: 1.90, yaw: 27.9, pitch: 26.3, fov: 38 }),
       zone: "cafe",
       look: "town-day",
       note: "'Took the last pudding': close on the counter at the end of the line. One pudding left. A black arm comes in from the left and takes it.",
       stage: () => (
         <>
           <Tray position={[COUNTER[0] - 0.5, 1.12, COUNTER[2] + 0.4]} pudding={1} rotationY={0.12} />
-          <Shadow position={[COUNTER[0] - 1.5, 0, COUNTER[2] + 2.2]} rotationY={0.1} pose="reach" lift={1} scale={0.84} />
+          <Shadow position={[COUNTER[0] - 1.5, 0, COUNTER[2] + 2.2]} rotationY={0.1} pose="reach" lift={0} scale={0.84} />
           <Kid n={5} position={[COUNTER[0] + 1.1, 0, COUNTER[2] + 2.4]} rotationY={0.4} animation="idle" face="sad" />
         </>
       ),
     },
     {
       cue: "3.cook",
-      ...cam.push({ on: [80.90, 1.30, -4.55], dist: 2.47, to: 2.17, yaw: -14.0, pitch: 0.0, fov: 42 }),
+      ...cam.push({ on: [80.90, 1.30, -4.55], dist: 2.60, to: 2.30, yaw: -14.0, pitch: 17.9, fov: 42 }),
       zone: "cafe",
       look: "town-day",
       note: "'The cook shouted. My shadow blew her a kiss': over the counter, the cook leaning out at him. Below her, out of her eyeline, the silhouette does the kiss.",
@@ -178,7 +178,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.good",
-      ...cam.push({ on: [79.90, 0.90, 3.60], dist: 4.25, to: 3.75, yaw: 52.8, pitch: 31.1, fov: 50 }),
+      ...cam.push({ on: [79.90, 0.90, 3.60], dist: 4.72, to: 4.22, yaw: 52.8, pitch: 39.5, fov: 50 }),
       zone: "cafe",
       look: "town-day",
       note: "'The best part of me was not me': the lunch room from up in a corner. He is alone at a table with a tray, and the flat black shape beside him on the bench is sitting like a friend.",
