@@ -1,0 +1,615 @@
+{
+  "film": "in-this-town-you-could-not-be-a-pirate-until-you-were-eighteen",
+  "README": "The sound sheet. The owner's track under the whole film. Times are cues, not seconds.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The rule and the map. The town as he knew it."
+      },
+      {
+        "from": "2.door",
+        "mood": "playful",
+        "why": "The door sinks. The town laughs. He waits."
+      },
+      {
+        "from": "3.crew",
+        "mood": "hope",
+        "why": "He has a crew and a key."
+      },
+      {
+        "from": "5.sail",
+        "mood": "curious",
+        "why": "They leave the buoy behind."
+      },
+      {
+        "from": "5.night",
+        "mood": "sneak",
+        "gain": -2,
+        "why": "Night on the water. The track steps back."
+      },
+      {
+        "from": "7.play",
+        "mood": "playful",
+        "why": "The ball. He will not look up."
+      },
+      {
+        "from": "9.past",
+        "mood": "tense",
+        "gain": -3,
+        "why": "He has stopped laughing."
+      },
+      {
+        "from": "10.kraken",
+        "mood": "dark",
+        "why": "The eye, level with the lantern."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "4.dad",
+      "bed": "village"
+    },
+    {
+      "from": "5.sail",
+      "to": "5.day",
+      "bed": "wind"
+    },
+    {
+      "from": "5.night",
+      "to": "5.night",
+      "bed": "night"
+    },
+    {
+      "from": "5.up",
+      "to": "5.up",
+      "bed": "wind"
+    },
+    {
+      "from": "5.down",
+      "to": "11.end",
+      "bed": "night"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "whoosh",
+      "why": "The picture for 1.town starts moving."
+    },
+    {
+      "cue": "1.town",
+      "at": 0.45,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "A second thing happens in 1.town."
+    },
+    {
+      "cue": "1.why",
+      "sfx": "swish",
+      "why": "The picture for 1.why starts moving."
+    },
+    {
+      "cue": "1.why",
+      "at": 0.45,
+      "sfx": "pop",
+      "trim": -2,
+      "why": "A second thing happens in 1.why."
+    },
+    {
+      "cue": "1.map",
+      "sfx": "step_wood",
+      "why": "The picture for 1.map starts moving."
+    },
+    {
+      "cue": "1.map",
+      "at": 0.45,
+      "sfx": "plink",
+      "trim": -2,
+      "why": "A second thing happens in 1.map."
+    },
+    {
+      "cue": "1.x",
+      "sfx": "pop",
+      "why": "The picture for 1.x starts moving."
+    },
+    {
+      "cue": "1.x",
+      "at": 0.45,
+      "sfx": "gust",
+      "trim": -2,
+      "why": "A second thing happens in 1.x."
+    },
+    {
+      "cue": "2.door",
+      "sfx": "whoosh",
+      "why": "The picture for 2.door starts moving."
+    },
+    {
+      "cue": "2.door",
+      "at": 0.45,
+      "sfx": "paper",
+      "trim": -2,
+      "why": "A second thing happens in 2.door."
+    },
+    {
+      "cue": "2.laugh",
+      "sfx": "creak",
+      "why": "The picture for 2.laugh starts moving."
+    },
+    {
+      "cue": "2.laugh",
+      "at": 0.45,
+      "sfx": "slide_up",
+      "trim": -2,
+      "why": "A second thing happens in 2.laugh."
+    },
+    {
+      "cue": "2.lock",
+      "sfx": "plink",
+      "why": "The picture for 2.lock starts moving."
+    },
+    {
+      "cue": "2.lock",
+      "at": 0.45,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "A second thing happens in 2.lock."
+    },
+    {
+      "cue": "2.key",
+      "sfx": "thud",
+      "why": "The picture for 2.key starts moving."
+    },
+    {
+      "cue": "2.key",
+      "at": 0.45,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "A second thing happens in 2.key."
+    },
+    {
+      "cue": "3.crew",
+      "sfx": "whoosh",
+      "why": "The picture for 3.crew starts moving."
+    },
+    {
+      "cue": "3.crew",
+      "at": 0.45,
+      "sfx": "blip",
+      "trim": -2,
+      "why": "A second thing happens in 3.crew."
+    },
+    {
+      "cue": "3.hat",
+      "sfx": "gust",
+      "why": "The picture for 3.hat starts moving."
+    },
+    {
+      "cue": "3.hat",
+      "at": 0.45,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "A second thing happens in 3.hat."
+    },
+    {
+      "cue": "3.bow",
+      "sfx": "tick",
+      "why": "The picture for 3.bow starts moving."
+    },
+    {
+      "cue": "3.bow",
+      "at": 0.45,
+      "sfx": "tick",
+      "trim": -2,
+      "why": "A second thing happens in 3.bow."
+    },
+    {
+      "cue": "3.player",
+      "sfx": "clank",
+      "why": "The picture for 3.player starts moving."
+    },
+    {
+      "cue": "3.player",
+      "at": 0.45,
+      "sfx": "place",
+      "trim": -2,
+      "why": "A second thing happens in 3.player."
+    },
+    {
+      "cue": "4.food",
+      "sfx": "whoosh",
+      "why": "The picture for 4.food starts moving."
+    },
+    {
+      "cue": "4.food",
+      "at": 0.45,
+      "sfx": "slide_down",
+      "trim": -2,
+      "why": "A second thing happens in 4.food."
+    },
+    {
+      "cue": "4.water",
+      "sfx": "place",
+      "why": "The picture for 4.water starts moving."
+    },
+    {
+      "cue": "4.water",
+      "at": 0.45,
+      "sfx": "crack",
+      "trim": -2,
+      "why": "A second thing happens in 4.water."
+    },
+    {
+      "cue": "4.ball",
+      "sfx": "heartbeat",
+      "why": "The picture for 4.ball starts moving."
+    },
+    {
+      "cue": "4.ball",
+      "at": 0.45,
+      "sfx": "step_wood",
+      "trim": -2,
+      "why": "A second thing happens in 4.ball."
+    },
+    {
+      "cue": "4.mum",
+      "sfx": "slide_up",
+      "why": "The picture for 4.mum starts moving."
+    },
+    {
+      "cue": "4.mum",
+      "at": 0.45,
+      "sfx": "creak",
+      "trim": -2,
+      "why": "A second thing happens in 4.mum."
+    },
+    {
+      "cue": "4.dad",
+      "sfx": "slide_down",
+      "why": "The picture for 4.dad starts moving."
+    },
+    {
+      "cue": "4.dad",
+      "at": 0.45,
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "A second thing happens in 4.dad."
+    },
+    {
+      "cue": "5.sail",
+      "sfx": "whoosh",
+      "why": "The picture for 5.sail starts moving."
+    },
+    {
+      "cue": "5.sail",
+      "at": 0.45,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "A second thing happens in 5.sail."
+    },
+    {
+      "cue": "5.buoy",
+      "sfx": "boing",
+      "why": "The picture for 5.buoy starts moving."
+    },
+    {
+      "cue": "5.buoy",
+      "at": 0.45,
+      "sfx": "heartbeat",
+      "trim": -2,
+      "why": "A second thing happens in 5.buoy."
+    },
+    {
+      "cue": "5.day",
+      "sfx": "crack",
+      "why": "The picture for 5.day starts moving."
+    },
+    {
+      "cue": "5.day",
+      "at": 0.45,
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "A second thing happens in 5.day."
+    },
+    {
+      "cue": "5.night",
+      "sfx": "whoosh",
+      "why": "The picture for 5.night starts moving."
+    },
+    {
+      "cue": "5.night",
+      "at": 0.45,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "A second thing happens in 5.night."
+    },
+    {
+      "cue": "5.up",
+      "sfx": "swish",
+      "why": "The picture for 5.up starts moving."
+    },
+    {
+      "cue": "5.up",
+      "at": 0.45,
+      "sfx": "pop",
+      "trim": -2,
+      "why": "A second thing happens in 5.up."
+    },
+    {
+      "cue": "5.down",
+      "sfx": "step_wood",
+      "why": "The picture for 5.down starts moving."
+    },
+    {
+      "cue": "5.down",
+      "at": 0.45,
+      "sfx": "plink",
+      "trim": -2,
+      "why": "A second thing happens in 5.down."
+    },
+    {
+      "cue": "6.bored",
+      "sfx": "whoosh",
+      "why": "The picture for 6.bored starts moving."
+    },
+    {
+      "cue": "6.bored",
+      "at": 0.45,
+      "sfx": "gust",
+      "trim": -2,
+      "why": "A second thing happens in 6.bored."
+    },
+    {
+      "cue": "6.down",
+      "sfx": "blip",
+      "why": "The picture for 6.down starts moving."
+    },
+    {
+      "cue": "6.down",
+      "at": 0.45,
+      "sfx": "paper",
+      "trim": -2,
+      "why": "A second thing happens in 6.down."
+    },
+    {
+      "cue": "6.chest",
+      "sfx": "creak",
+      "why": "The picture for 6.chest starts moving."
+    },
+    {
+      "cue": "6.chest",
+      "at": 0.45,
+      "sfx": "slide_up",
+      "trim": -2,
+      "why": "A second thing happens in 6.chest."
+    },
+    {
+      "cue": "7.play",
+      "sfx": "whoosh",
+      "why": "The picture for 7.play starts moving."
+    },
+    {
+      "cue": "7.play",
+      "at": 0.45,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "A second thing happens in 7.play."
+    },
+    {
+      "cue": "7.us",
+      "sfx": "thud",
+      "why": "The picture for 7.us starts moving."
+    },
+    {
+      "cue": "7.us",
+      "at": 0.45,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "A second thing happens in 7.us."
+    },
+    {
+      "cue": "7.slip",
+      "sfx": "rustle",
+      "why": "The picture for 7.slip starts moving."
+    },
+    {
+      "cue": "7.slip",
+      "at": 0.45,
+      "sfx": "blip",
+      "trim": -2,
+      "why": "A second thing happens in 7.slip."
+    },
+    {
+      "cue": "8.jump",
+      "sfx": "whoosh",
+      "why": "The picture for 8.jump starts moving."
+    },
+    {
+      "cue": "8.jump",
+      "at": 0.45,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "A second thing happens in 8.jump."
+    },
+    {
+      "cue": "8.watch",
+      "sfx": "tick",
+      "why": "The picture for 8.watch starts moving."
+    },
+    {
+      "cue": "8.watch",
+      "at": 0.45,
+      "sfx": "tick",
+      "trim": -2,
+      "why": "A second thing happens in 8.watch."
+    },
+    {
+      "cue": "8.got",
+      "sfx": "clank",
+      "why": "The picture for 8.got starts moving."
+    },
+    {
+      "cue": "8.got",
+      "at": 0.45,
+      "sfx": "place",
+      "trim": -2,
+      "why": "A second thing happens in 8.got."
+    },
+    {
+      "cue": "9.past",
+      "sfx": "whoosh",
+      "why": "The picture for 9.past starts moving."
+    },
+    {
+      "cue": "9.past",
+      "at": 0.45,
+      "sfx": "slide_down",
+      "trim": -2,
+      "why": "A second thing happens in 9.past."
+    },
+    {
+      "cue": "9.slow",
+      "sfx": "place",
+      "why": "The picture for 9.slow starts moving."
+    },
+    {
+      "cue": "9.slow",
+      "at": 0.45,
+      "sfx": "crack",
+      "trim": -2,
+      "why": "A second thing happens in 9.slow."
+    },
+    {
+      "cue": "10.dark",
+      "sfx": "whoosh",
+      "why": "The picture for 10.dark starts moving."
+    },
+    {
+      "cue": "10.dark",
+      "at": 0.45,
+      "sfx": "step_wood",
+      "trim": -2,
+      "why": "A second thing happens in 10.dark."
+    },
+    {
+      "cue": "10.big",
+      "sfx": "slide_up",
+      "why": "The picture for 10.big starts moving."
+    },
+    {
+      "cue": "10.big",
+      "at": 0.45,
+      "sfx": "creak",
+      "trim": -2,
+      "why": "A second thing happens in 10.big."
+    },
+    {
+      "cue": "10.arm",
+      "sfx": "slide_down",
+      "why": "The picture for 10.arm starts moving."
+    },
+    {
+      "cue": "10.arm",
+      "at": 0.45,
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "A second thing happens in 10.arm."
+    },
+    {
+      "cue": "10.more",
+      "sfx": "bonk",
+      "why": "The picture for 10.more starts moving."
+    },
+    {
+      "cue": "10.more",
+      "at": 0.45,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "A second thing happens in 10.more."
+    },
+    {
+      "cue": "10.kraken",
+      "sfx": "boing",
+      "why": "The picture for 10.kraken starts moving."
+    },
+    {
+      "cue": "10.kraken",
+      "at": 0.45,
+      "sfx": "heartbeat",
+      "trim": -2,
+      "why": "A second thing happens in 10.kraken."
+    },
+    {
+      "cue": "10.night",
+      "sfx": "crack",
+      "why": "The picture for 10.night starts moving."
+    },
+    {
+      "cue": "10.night",
+      "at": 0.45,
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "A second thing happens in 10.night."
+    },
+    {
+      "cue": "11.end",
+      "sfx": "whoosh",
+      "why": "The picture for 11.end starts moving."
+    },
+    {
+      "cue": "11.end",
+      "at": 0.45,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "A second thing happens in 11.end."
+    },
+    {
+      "cue": "2.door",
+      "at": 0.5,
+      "sfx": "thud",
+      "why": "The door hits the pond."
+    },
+    {
+      "cue": "4.ball",
+      "word": "red",
+      "sfx": "pop",
+      "why": "The red ball."
+    },
+    {
+      "cue": "7.slip",
+      "word": "water",
+      "sfx": "plink",
+      "why": "The ball hits the water."
+    },
+    {
+      "cue": "8.jump",
+      "word": "jumped",
+      "sfx": "slide_up",
+      "why": "He leaves the deck."
+    },
+    {
+      "cue": "10.arm",
+      "word": "arm",
+      "sfx": "whoosh_low",
+      "why": "The first arm."
+    },
+    {
+      "cue": "10.kraken",
+      "word": "kraken",
+      "sfx": "boom",
+      "trim": -4,
+      "why": "The reveal. Once."
+    },
+    {
+      "cue": "11.end",
+      "sfx": "ding",
+      "why": "To be continued."
+    }
+  ]
+}

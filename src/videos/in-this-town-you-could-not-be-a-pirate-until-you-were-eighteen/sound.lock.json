@@ -1,0 +1,125 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-you-could-not-be-a-pirate-until-you-were-eighteen",
+  "mix": "public/audio/in-this-town-you-could-not-be-a-pirate-until-you-were-eighteen/mix.mp3",
+  "seconds": 104.7,
+  "built_from": {
+    "timing.json": "e72933688d758ff09da10fd731267ab3889e0b23",
+    "sound.json": "0192908d6e23255321760a2fc991e4842a3cd9eb",
+    "narration.mp3": "f6b7ee8448864a57a96b0aa08101f8738374fb1c"
+  },
+  "mix_sha1": "8fbc7a0c7be5dcc48c41258b57408c9554fb2755",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.door",
+      "mood": "playful",
+      "at": 11.5
+    },
+    {
+      "from": "3.crew",
+      "mood": "hope",
+      "at": 24.03
+    },
+    {
+      "from": "5.sail",
+      "mood": "curious",
+      "at": 44.27
+    },
+    {
+      "from": "5.night",
+      "mood": "sneak",
+      "at": 51.87
+    },
+    {
+      "from": "7.play",
+      "mood": "playful",
+      "at": 70.03
+    },
+    {
+      "from": "9.past",
+      "mood": "tense",
+      "at": 85.67
+    },
+    {
+      "from": "10.kraken",
+      "mood": "dark",
+      "at": 97.5
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 18.2,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 26.2,
+    "sfx": 89,
+    "sfxPerMinute": 51.0,
+    "sfxKinds": 23,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 82.2,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.3,
+    "voiceOverRestWorstDb": 5.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.6,
+        "t": 91.7,
+        "cue": "10.big",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 103.4,
+        "cue": "10.night",
+        "sounding": [
+          "ding",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 8.6,
+        "t": 43.0,
+        "cue": "4.dad",
+        "sounding": []
+      },
+      {
+        "db": 8.7,
+        "t": 46.3,
+        "cue": "5.sail",
+        "sounding": [
+          "boing"
+        ]
+      },
+      {
+        "db": 8.9,
+        "t": 36.7,
+        "cue": "4.ball",
+        "sounding": [
+          "heartbeat"
+        ]
+      },
+      {
+        "db": 9.8,
+        "t": 90.7,
+        "cue": "10.dark",
+        "sounding": [
+          "slide_up"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.6
+  },
+  "failures": []
+}
