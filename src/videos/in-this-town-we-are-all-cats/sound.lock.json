@@ -1,0 +1,138 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-we-are-all-cats",
+  "mix": "public/audio/in-this-town-we-are-all-cats/mix.mp3",
+  "seconds": 83.1333,
+  "built_from": {
+    "timing.json": "7eeb06cfdacd5f8d5f3d347bb77c508e6254864a",
+    "sound.json": "09f9f87fb26df46a837ebcb52c8ce6f2c60f6d26",
+    "narration.mp3": "73f037a0230738f8973db7cc041baaffa8446ccc"
+  },
+  "mix_sha1": "e9fd32ffcc0af26830bddcc7030380f5dd3fb241",
+  "music_sections": [
+    {
+      "from": "1.cats",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.noon",
+      "mood": "playful",
+      "at": 16.83
+    },
+    {
+      "from": "4.tired",
+      "mood": "curious",
+      "at": 36.6
+    },
+    {
+      "from": "5.night",
+      "mood": "sneak",
+      "at": 42.4
+    },
+    {
+      "from": "6.morning",
+      "mood": "curious",
+      "at": 50.8
+    },
+    {
+      "from": "6.quiet",
+      "mood": "none",
+      "at": 57.47
+    },
+    {
+      "from": "6.step",
+      "mood": "hope",
+      "at": 58.93
+    },
+    {
+      "from": "7.still",
+      "mood": "playful",
+      "at": 64.4
+    },
+    {
+      "from": "7.noline",
+      "mood": "town",
+      "at": 74.6
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 7,
+  "measured": {
+    "musicUnderVoiceDb": 18.5,
+    "secondsWithoutMusic": 1.6,
+    "bedsUnderVoiceDb": 25.2,
+    "sfx": 177,
+    "sfxPerMinute": 127.7,
+    "sfxKinds": 28,
+    "longestGapSeconds": 1.9,
+    "longestGapAt": 56.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.7,
+    "voiceOverRestWorstDb": 5.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.0,
+        "t": 75.6,
+        "cue": "7.noline",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 31.7,
+        "cue": "4.on",
+        "sounding": [
+          "bonk",
+          "gust",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 3.4,
+        "cue": "1.golem",
+        "sounding": [
+          "clank",
+          "swish"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 0.2,
+        "cue": "1.cats",
+        "sounding": [
+          "step_grass"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 77.0,
+        "cue": "7.safe",
+        "sounding": [
+          "bonk",
+          "cheer",
+          "chime",
+          "swish"
+        ]
+      },
+      {
+        "db": 8.1,
+        "t": 80.9,
+        "cue": "8.sub",
+        "sounding": [
+          "cheer",
+          "ding"
+        ]
+      }
+    ],
+    "lufs": -15.4,
+    "truePeakDb": -1.5,
+    "limiterMaxDb": 3.2
+  },
+  "failures": []
+}
