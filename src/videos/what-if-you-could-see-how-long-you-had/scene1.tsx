@@ -1,55 +1,193 @@
 import { cam, storyScene } from "../../engine";
-import { Classmate, Friend, Hero, ME, NORTH, Overhead, SPOT, Teacher, chestOf, faceOf, timing, wordAt } from "./kit";
-
-const SEE = wordAt("1.what", "see");
+import { Classmate, Hero, ME, NORTH, Overhead, SPOT, Teacher, classroom, ease, ramp, timing, wordAt } from "./kit";
 
 /**
- * HOOK. The question is the title, said over ONE picture of the power at work. Then the teller.
+ * HOOK, and the rule.
  *
- * One scene file per BEAT of the script (Topics/WhatIf/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
+ * The power has ONE look for the whole film: a clock over a head (`Overhead kind="clock"`). It is set here, in the
+ * first shot, and it never changes size, colour or part - except that it counts down, which is the only thing about
+ * it that ever changes.
  *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
+ * Sizes are the story: 40 is small and calm, 4 is the one in front of him, 2 and 3 are the jokes, and the number is
+ * carried by the icon's own count (`Figure` is not used - a clock is a clock, not a number on a card).
  */
+
+const SEE = wordAt("1.what", "see");
+const LIVE = wordAt("1.live", "live");
+const TEMPER = wordAt("1.temper", "temper");
+const FOUR = wordAt("2.before", "four");
+const UP = wordAt("2.up", "shouting");
+
+/** A clock over one head. `n` is not used: the icon is the same clock; its SIZE is how close to zero it is. */
+const Clock: React.FC<{ over: Parameters<typeof Overhead>[0]["over"]; t: number; size: number; tall?: number; tint?: string }> = ({ over, t, size, tall = 1.34, tint }) => (
+  <Overhead over={over} kind="clock" tall={tall} size={size} t={t} color={tint} steady rotationY={0} />
+);
+
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Hook",
+  title: "Hook and the rule",
   shots: [
     {
+      // THE HOOK. The power as one picture: the teller's back at the bottom of the frame, the class stacked ahead of
+      // him, and over the head in front of him a clock at four - while the boy's own line is still being asked.
       cue: "1.what",
       ...cam.push({ on: SPOT.at(0, 1.35, -0.4), dist: 6.4, to: 5.6, yaw: 0, pitch: 13, fov: 46 }),
       zone: "class",
-      note: "TODO. The power as ONE picture, stacked for a tall frame: the teller's back at the bottom, the class in front of him, the board at the top; and over ONE head the thing only he can see. It pops on the word.",
+      note: "THE HOOK, and the power in one picture: the teller's back low in the frame, the class stacked away in front of him, the board at the top, and over the boy in the front row a clock at four. Nothing else in the school has one, so the clock is the only bright thing above the heads.",
       stage: (t) => (
         <>
-          <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
-          <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          {/* The one the sign is over sits straight ahead of him: in a tall frame, things stack by depth, never in a row. */}
-          <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           {[0, 2].flatMap((col) => [0, 1, 2].map((row) => <Classmate key={`${col}${row}`} who={col * 3 + row + 4} position={SPOT.seat(col, row)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />))}
-          <Friend position={SPOT.seat(2, 2)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
+          <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
+          <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />
+          <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          {/* What only the teller can see. The lens is behind the class, on the +z side: the sign faces it with rotationY 0. A seated kid is 1.34 tall. */}
-          <Overhead over={SPOT.seat(1, 0)} tall={1.34} kind="heart" size={0.4} t={t - SEE} />
+          <Clock over={SPOT.seat(1, 0)} t={t - SEE} size={0.42} />
         </>
       ),
     },
     {
+      // Not how long you had to live. The clock is a clock, not a timer on a life: one small tick past it.
+      cue: "1.live",
+      ...cam.push({ on: SPOT.at(0, 1.62, 0.4), dist: 3.4, to: 3.0, yaw: 4, pitch: -6, fov: 42 }),
+      zone: "class",
+      note: "Up to the clock itself on the word: it hangs over the front row, small, plain, ordinary, the way a clock is ordinary when it is counting something that is not a life. The heads underneath are calm and the clock is calm. This is the picture that says the film is not about dying.",
+      stage: (t) => (
+        <>
+          <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
+          <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
+          <Clock over={SPOT.seat(1, 0)} t={t - LIVE} size={0.46} />
+        </>
+      ),
+    },
+    {
+      // How long before you lost your temper: the clock starts to run. Same clock, and now it is winding down.
+      cue: "1.temper",
+      ...cam.push({ on: SPOT.at(1, 1.4, 0.2), dist: 2.9, to: 2.4, yaw: 28, pitch: 6, fov: 44 }),
+      zone: "class",
+      note: "The clock from the side, and it begins to run: the boy under it starts to fidget, and the thing over his head gets smaller as the line says what it counts. Two people, one small bright clock, no explanation - the viewer works out the rule of the film from this one shot.",
+      stage: (t) => {
+        const shrink = 0.46 - 0.1 * ease(ramp(t, 0, 1.3));
+        return (
+          <>
+            <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="uneasy" headPitch={0.1} />
+            <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
+            <Clock over={SPOT.seat(1, 0)} t={t - TEMPER} size={shrink} />
+          </>
+        );
+      },
+    },
+    {
+      // One morning, I could. Round on the teller: the one who can see it. A new face on the cut.
       cue: "1.me",
       ...cam.push({ on: SPOT.face(1, 2), dist: 2.0, to: 1.6, yaw: 172, pitch: 2, fov: 36 }),
       zone: "class",
-      note: "TODO. Cut round to the teller, from the front: the one who can see it. A new face on the cut. Behind him the back wall of the room: the lens is inside it now.",
-      stage: () => <Hero position={ME} rotationY={NORTH} animation="sit" face="grin" gaze={0} />,
+      note: "Cut round to the teller's face from the board side: the one who can see it, and the only person in the room looking at something nobody else is. His eyes are up, not on the board. Behind him is the back wall of the room, because the lens is inside it now.",
+      stage: () => <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" gaze={0} />,
+    },
+    {
+      // The boy in front of me had four. The clock is nearly out, and the boy has not noticed.
+      cue: "2.before",
+      ...cam.push({ on: SPOT.at(0, 1.4, 0.6), dist: 3.0, to: 2.5, yaw: 8, pitch: 8, fov: 42 }),
+      zone: "class",
+      note: "The clock at four, and the boy under it with his pen still moving. The joke is the gap between the two: a number that small over somebody that calm. The teller's shoulder is at the bottom of the frame, close, so the viewer knows whose eyes this is.",
+      stage: (t) => (
+        <>
+          <Hero position={ME} rotationY={NORTH} animation="sit" face="uneasy" headPitch={-0.06} />
+          <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
+          <Clock over={SPOT.seat(1, 0)} t={t - FOUR} size={0.3} />
+        </>
+      ),
+    },
+    {
+      // Four seconds. I did not know four what. On the clock, and it is running out.
+      cue: "2.four",
+      ...cam.push({ on: SPOT.at(1, 1.7, 0.3), dist: 2.2, to: 1.85, yaw: -14, pitch: -10, fov: 38 }),
+      zone: "class",
+      note: "Hard on the clock, from under it, so it fills the top of the frame and the boy's head is a dark shape under it. It is going down while he says he did not know four what. The audience does not know either, and the clock is not going to tell them.",
+      stage: (t) => {
+        const s = 0.3 - 0.07 * ease(ramp(t, 0, 1.5));
+        return (
+          <>
+            <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
+            <Clock over={SPOT.seat(1, 0)} t={t - 0.1} size={s} />
+          </>
+        );
+      },
+    },
+    {
+      // Then his shoulders went up, and he was shouting at the teacher. The payoff of the last line, on the word.
+      cue: "2.up",
+      ...cam.push({ on: SPOT.at(1.2, 1.45, -0.8), dist: 4.2, to: 3.6, yaw: 208, pitch: 4, fov: 46 }),
+      zone: "class",
+      note: "From the board side: the boy is up out of his chair at the teacher with both hands out, and the whole front row has turned to look. His clock is gone - not run out of sight, gone. That is the first time the film shows what zero looks like, and the teller is at the bottom of the frame watching it happen.",
+      stage: (t) => {
+        const up = ease(ramp(t, 0, UP));
+        return (
+          <>
+            <Classmate who={3} position={[SPOT.seat(1, 0)[0], 0.12 * up, SPOT.seat(1, 0)[2]]} rotationY={NORTH + 0.4 * up} animation={up > 0.4 ? "idle" : "sit"} face={up > 0.3 ? "frown" : "calm"} headPitch={0.2 - 0.2 * up} />
+            <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
+            <Teacher position={SPOT.teacher} animation="idle" face="ouch" />
+            <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="wow" headPitch={-0.1} />
+          </>
+        );
+      },
+    },
+    {
+      // My teacher had forty. He was fine. A calm, wide picture: the joke is the size of the number over a man at ease.
+      cue: "3.teacher",
+      ...cam.push({ on: SPOT.at(-0.3, 1.45, -2.6), dist: 4.6, to: 4.2, yaw: 38, pitch: 5, fov: 44 }),
+      zone: "class",
+      note: "The teacher at the board with a clock at forty over his head, writing, perfectly happy. Wide and calm on purpose: after the boy went off, the film shows a man with ten times the number who is not going to. The rule is not 'short clock, about to go off' - it is 'short clock, going off soon'.",
+      stage: (t) => (
+        <>
+          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
+          <Clock over={SPOT.teacher} tall={1.8} t={t} size={0.6} tint="#e8f2ff" />
+        </>
+      ),
+    },
+    {
+      // The dinner lady had two, so I let people go first. A tiny clock, a small kindness, played as routine.
+      cue: "3.lady",
+      ...cam.push({ on: SPOT.at(2.4, 1.3, 2.6), dist: 3.6, to: 3.0, yaw: -52, pitch: 2, fov: 46 }),
+      zone: "class",
+      note: "The back of the room and the door: a dinner lady with a clock at two, and the teller stepping out of the way to let her past. He does not look at her face, he looks at the number - which is the whole character in one picture, and the reason the last act costs him something.",
+      stage: (t) => (
+        <>
+          <Hero position={[ME[0] + 0.5, 0, ME[2] - 0.9]} rotationY={NORTH - 0.7} animation="idle" face="calm" />
+          <Classmate who={7} position={[ME[0] + 2.2, 0, ME[2] - 2.2]} rotationY={SPOT.door ? NORTH : NORTH} animation="walk" face="calm" headPitch={0.1} />
+          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} tall={1.8} t={t} size={0.34} tint="#e8f2ff" />
+        </>
+      ),
+    },
+    {
+      // My brother had three. I gave him the remote before he asked. At home, at night: the power works on the sofa.
+      cue: "3.brother",
+      ...cam.push({ on: [0, 1.1, -1.6], dist: 3.8, to: 3.2, yaw: 12, pitch: 6, fov: 46 }),
+      zone: "room",
+      note: "The teller's own room: his little brother on the floor with a clock at three over his head, and the teller handing him the remote before he can ask for it. This is the joke the whole power is built on - it is not a weapon, it is a way of never being surprised - and it is the last time the film is funny.",
+      stage: (t) => (
+        <>
+          <Hero position={[0.4, 0, -0.4]} rotationY={NORTH + 0.5} animation="idle" face="smile" />
+          <Classmate who={9} position={[-0.5, 0, -0.7]} rotationY={NORTH} animation="sit" face="grin" />
+          <Clock over={[-0.5, 0, -0.7]} t={t} size={0.32} tint="#ffe6b0" />
+        </>
+      ),
+    },
+    {
+      // This was going to be easy. The teller, pleased with himself, in the room he has just handled.
+      cue: "3.easy",
+      ...cam.push({ on: [0.4, 1.3, -0.4], dist: 2.6, to: 2.2, yaw: 22, pitch: 4, fov: 40 }),
+      zone: "room",
+      note: "Close on the teller's face and he is delighted with himself, which is the wrong expression to have a third of the way into a film about a power. The viewer should feel the floor under him before he does.",
+      stage: () => <Hero position={[0.4, 0, -0.4]} rotationY={NORTH + 0.5} animation="idle" face="grin" />,
+    },
+    {
+      // A clock told you when. Nothing told you why. The limit, said out loud once: no picture of a clock at all.
+      cue: "3.limit",
+      ...cam.push({ on: [0, 1.5, -2.3], dist: 2.4, to: 4.4, yaw: 180, pitch: 3, fov: 50 }),
+      zone: "room",
+      note: "The whole room from the far wall, the teller small in it, and NO clock anywhere: the one line that names the limit is the one line with the power taken out of the picture. Pulling back instead of pushing in makes it the stillest frame in the film, which is what a rule sounds like.",
+      stage: () => <Hero position={[0.4, 0, -0.4]} rotationY={NORTH} animation="idle" face="calm" />,
     },
   ],
 });
-
-// Distances that work for a kid (measured on the finished "In This Town" films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-// A SEATED kid's face is 0.1 m lower: SPOT.face(col, row) is where it is.
-void chestOf;
-void faceOf;

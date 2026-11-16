@@ -1,0 +1,130 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-you-could-see-how-long-you-had",
+  "mix": "public/audio/what-if-you-could-see-how-long-you-had/mix.mp3",
+  "seconds": 84.5667,
+  "built_from": {
+    "timing.json": "7c039a195beb2c147a0e1474e87a845f85199cc7",
+    "sound.json": "bae0928c034172f4b7a12094fb5ecfb504021370",
+    "narration.mp3": "4275e51a8d2b77c302947612666081d2e4431132"
+  },
+  "mix_sha1": "90d69437df262705270caab15a257cf48abbbdb8",
+  "music_sections": [
+    {
+      "from": "1.what",
+      "mood": "wonder",
+      "at": 0.0
+    },
+    {
+      "from": "3.limit",
+      "mood": "curious",
+      "at": 20.63
+    },
+    {
+      "from": "4.warn",
+      "mood": "playful",
+      "at": 22.83
+    },
+    {
+      "from": "7.week",
+      "mood": "sneak",
+      "at": 44.67
+    },
+    {
+      "from": "8.quiet",
+      "mood": "tense",
+      "at": 51.9
+    },
+    {
+      "from": "11.run",
+      "mood": "hope",
+      "at": 60.83
+    },
+    {
+      "from": "13.not",
+      "mood": "none",
+      "at": 65.77
+    },
+    {
+      "from": "13.on",
+      "mood": "dark",
+      "at": 68.17
+    },
+    {
+      "from": "14.talk",
+      "mood": "sad",
+      "at": 74.43
+    }
+  ],
+  "beds": 7,
+  "measured": {
+    "musicUnderVoiceDb": 18.6,
+    "secondsWithoutMusic": 4.4,
+    "bedsUnderVoiceDb": 29.2,
+    "sfx": 58,
+    "sfxPerMinute": 41.2,
+    "sfxKinds": 27,
+    "longestGapSeconds": 4.8,
+    "longestGapAt": 47.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.1,
+    "voiceOverRestWorstDb": 3.2,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.2,
+        "t": 81.6,
+        "cue": "14.school",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 7.2,
+        "t": 54.7,
+        "cue": "8.quiet",
+        "sounding": [
+          "riser"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 40.3,
+        "cue": "6.plant",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 12.0,
+        "cue": "2.up",
+        "sounding": [
+          "chime",
+          "paper"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 20.2,
+        "cue": "3.easy",
+        "sounding": [
+          "blip",
+          "sting"
+        ]
+      },
+      {
+        "db": 8.5,
+        "t": 71.8,
+        "cue": "13.why",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 1.1
+  },
+  "failures": []
+}

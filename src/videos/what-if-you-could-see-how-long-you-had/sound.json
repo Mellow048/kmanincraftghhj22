@@ -1,0 +1,388 @@
+{
+  "film": "what-if-you-could-see-how-long-you-had",
+  "README": "The sound sheet. Read Topics/WhatIf/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build what-if-you-could-see-how-long-you-had",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.what",
+        "mood": "wonder",
+        "why": "The power arrives and it is wonderful: five clocks, four jokes, all of it new."
+      },
+      {
+        "from": "3.limit",
+        "mood": "curious",
+        "why": "The limit, said out loud. The first bar of curious at the limit is the story saying 'but'."
+      },
+      {
+        "from": "4.warn",
+        "mood": "playful",
+        "why": "He starts using it on people and gets it wrong in a way that is funny - for now."
+      },
+      {
+        "from": "7.week",
+        "mood": "sneak",
+        "why": "The week he spends reading everybody and talking to nobody: quiet, watchful, wrong."
+      },
+      {
+        "from": "8.quiet",
+        "mood": "tense",
+        "why": "The calm day that is not calm. A pulse that will not stop, and it grows."
+      },
+      {
+        "from": "11.run",
+        "mood": "hope",
+        "why": "Ten seconds, and he runs. The music believes he can fix it, which is exactly as wrong as he is."
+      },
+      {
+        "from": "13.not",
+        "mood": "none",
+        "why": "Nothing, for the second the answer arrives. A riser through the silence."
+      },
+      {
+        "from": "13.on",
+        "mood": "dark",
+        "why": "It was counting on me. The truth, and it is bad."
+      },
+      {
+        "from": "14.talk",
+        "mood": "sad",
+        "why": "He talks to her. Understanding it late is a different note from finding it out; never turn cheerful here."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.what",
+      "to": "3.lady",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.brother",
+      "to": "3.limit",
+      "bed": "room"
+    },
+    {
+      "from": "4.warn",
+      "to": "7.hands",
+      "bed": "classroom"
+    },
+    {
+      "from": "7.wrong2",
+      "to": "7.wrong2",
+      "bed": "classroom"
+    },
+    {
+      "from": "8.quiet",
+      "to": "10.ten",
+      "bed": "classroom"
+    },
+    {
+      "from": "11.run",
+      "to": "11.run",
+      "bed": "classroom"
+    },
+    {
+      "from": "12.jo3",
+      "to": "14.sub",
+      "bed": "classroom"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.what",
+      "sfx": "pop",
+      "why": "the first clock pops over the boy in the front row"
+    },
+    {
+      "cue": "1.temper",
+      "sfx": "tick",
+      "why": "the clock is running: one dry tick as the rule lands"
+    },
+    {
+      "cue": "1.me",
+      "sfx": "blip",
+      "why": "round on the one who can see it"
+    },
+    {
+      "cue": "2.four",
+      "sfx": "tick",
+      "why": "four seconds, and the clock in the frame"
+    },
+    {
+      "cue": "2.up",
+      "sfx": "hit",
+      "why": "the boy is up out of his chair and shouting"
+    },
+    {
+      "cue": "2.up",
+      "sfx": "swish",
+      "why": "the front row turns"
+    },
+    {
+      "cue": "3.teacher",
+      "sfx": "chime",
+      "why": "forty, and he is fine: the joke of the big number"
+    },
+    {
+      "cue": "3.lady",
+      "sfx": "swish",
+      "why": "the dinner lady goes past"
+    },
+    {
+      "cue": "3.brother",
+      "sfx": "pop",
+      "why": "the brother's clock, and the remote handed over"
+    },
+    {
+      "cue": "3.easy",
+      "sfx": "slide_up",
+      "why": "this was going to be easy"
+    },
+    {
+      "cue": "3.limit",
+      "sfx": "sting",
+      "why": "the limit: the one line with no clock in the picture"
+    },
+    {
+      "cue": "4.warn",
+      "sfx": "thud",
+      "why": "told a boy he had ten seconds, and got told where to go"
+    },
+    {
+      "cue": "4.friday",
+      "sfx": "tick",
+      "why": "two clocks he did not expect"
+    },
+    {
+      "cue": "4.wrong",
+      "sfx": "creak",
+      "why": "he stops guessing out loud"
+    },
+    {
+      "cue": "5.jo",
+      "sfx": "blink",
+      "why": "Jo, and the absence over her head: a very big eye, blinking"
+    },
+    {
+      "cue": "5.why",
+      "sfx": "heartbeat",
+      "why": "not a big number. Nothing."
+    },
+    {
+      "cue": "5.shrug",
+      "sfx": "rustle",
+      "why": "she turns round and catches him"
+    },
+    {
+      "cue": "6.plant",
+      "sfx": "sting",
+      "why": "the plant: the most important line in the film, said to his back"
+    },
+    {
+      "cue": "6.wave",
+      "sfx": "whoosh",
+      "why": "he walks away from it and it leaves the frame"
+    },
+    {
+      "cue": "7.week",
+      "sfx": "whoosh",
+      "why": "tracking along the lockers"
+    },
+    {
+      "cue": "7.hands",
+      "sfx": "paper",
+      "why": "his page of right answers, and the empty chair"
+    },
+    {
+      "cue": "8.quiet",
+      "sfx": "whoosh",
+      "why": "the whole class, every clock far off"
+    },
+    {
+      "cue": "8.easy2",
+      "sfx": "riser",
+      "why": "every clock except one, and it is over his head"
+    },
+    {
+      "cue": "10.ten",
+      "sfx": "heartbeat",
+      "why": "nothing but the clock, at ten"
+    },
+    {
+      "cue": "11.run",
+      "sfx": "zip",
+      "why": "he runs"
+    },
+    {
+      "cue": "11.run",
+      "sfx": "step_stone",
+      "why": "and again, one foot on the stone floor"
+    },
+    {
+      "cue": "12.jo3",
+      "sfx": "pop",
+      "why": "Jo has a clock"
+    },
+    {
+      "cue": "12.one",
+      "sfx": "tick",
+      "why": "it said one"
+    },
+    {
+      "cue": "13.on",
+      "sfx": "boom",
+      "why": "it was counting on me: the reveal, once"
+    },
+    {
+      "cue": "13.why",
+      "sfx": "drop",
+      "why": "she was at one because of me"
+    },
+    {
+      "cue": "13.me",
+      "sfx": "chime",
+      "why": "the power never showed me when: the turn, and the saddest good note in the film"
+    },
+    {
+      "cue": "14.talk",
+      "sfx": "step_wood",
+      "why": "he crosses the last two metres"
+    },
+    {
+      "cue": "14.school",
+      "sfx": "whoosh",
+      "why": "every clock turns round"
+    },
+    {
+      "cue": "10.mine",
+      "sfx": "tick",
+      "why": "his own clock, and the tick is the only thing under the line"
+    },
+    {
+      "cue": "14.out",
+      "sfx": "plink",
+      "why": "her clock goes out: one small high note, and nothing else under the words"
+    },
+    {
+      "cue": "1.what",
+      "sfx": "whoosh",
+      "why": "the camera pushes in on the hook: one picture of the whole class"
+    },
+    {
+      "cue": "1.live",
+      "sfx": "swish",
+      "why": "up to the clock itself"
+    },
+    {
+      "cue": "2.before",
+      "sfx": "tick",
+      "why": "the clock at four, and the boy has not noticed"
+    },
+    {
+      "cue": "3.teacher",
+      "sfx": "paper",
+      "why": "chalk and paper: the teacher at the board"
+    },
+    {
+      "cue": "3.brother",
+      "sfx": "place",
+      "why": "the remote set down in his brother's hands"
+    },
+    {
+      "cue": "4.friday",
+      "sfx": "pop",
+      "why": "the second clock he did not predict"
+    },
+    {
+      "cue": "5.jo",
+      "sfx": "swish",
+      "why": "round to Jo by the door"
+    },
+    {
+      "cue": "6.wave",
+      "sfx": "step_wood",
+      "why": "his feet on the hall floor"
+    },
+    {
+      "cue": "7.week",
+      "sfx": "swish",
+      "why": "the two kids at it behind his shoulder"
+    },
+    {
+      "cue": "7.week",
+      "sfx": "bonk",
+      "why": "one of them takes a knock, lightly"
+    },
+    {
+      "cue": "8.easy2",
+      "sfx": "tick",
+      "why": "his own clock, coming into frame"
+    },
+    {
+      "cue": "10.ten",
+      "sfx": "tick",
+      "why": "the last number the film shows on that clock"
+    },
+    {
+      "cue": "11.run",
+      "sfx": "whoosh",
+      "why": "the hallway, and he is coming at us"
+    },
+    {
+      "cue": "12.jo3",
+      "sfx": "swish",
+      "why": "the camera finds Jo"
+    },
+    {
+      "cue": "12.one",
+      "sfx": "blip",
+      "why": "one"
+    },
+    {
+      "cue": "13.why",
+      "sfx": "heartbeat",
+      "why": "the two of them in one frame at last"
+    },
+    {
+      "cue": "13.me",
+      "sfx": "sparkle",
+      "why": "what the power was really showing him"
+    },
+    {
+      "cue": "14.talk",
+      "sfx": "rustle",
+      "why": "he crosses the floor and she turns"
+    },
+    {
+      "cue": "14.school",
+      "word": "turned",
+      "sfx": "whoosh",
+      "why": "every clock turns round on the word"
+    },
+    {
+      "cue": "14.school",
+      "word": "counting",
+      "sfx": "tick",
+      "why": "and every one of them is counting: one dry tick, on the word"
+    },
+    {
+      "cue": "14.sub",
+      "word": "Subscribe",
+      "sfx": "ding",
+      "why": "the ask, on the word the sign appears"
+    },
+    {
+      "cue": "3.easy",
+      "word": "easy",
+      "sfx": "blip",
+      "why": "'This was going to be easy': the smallest possible yes, before the price"
+    },
+    {
+      "cue": "11.run",
+      "word": "ran",
+      "sfx": "gust",
+      "why": "he runs, and the air of the hallway goes with him"
+    }
+  ]
+}

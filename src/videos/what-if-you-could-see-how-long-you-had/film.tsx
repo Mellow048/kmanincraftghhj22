@@ -2,11 +2,16 @@ import { defineFilm } from "../../engine";
 import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
+import { scene2 } from "./scene2";
+import { scene3 } from "./scene3";
+import { scene4 } from "./scene4";
 
 /**
  * What If You Could See How Long You Had
  *
- * TODO: the film in three sentences. The power, what the teller used it for, and what it was really doing.
+ * A boy can see a clock over anybody's head, counting down to the moment that person loses their temper. He uses
+ * it to get through a week without being surprised, and never once has a conversation. Then he looks up at his own
+ * clock, and finds out the power never measured time: it measured who had nobody to talk to.
  *
  * A "WHAT IF" film (Topics/WhatIf): a kid gets one impossible power and tells what happened. The recorded
  * narration is the clock, and every line of narration.md is one shot. Read Topics/WhatIf/README.md before
@@ -20,10 +25,10 @@ export const film = defineFilm({
   topic: "what-if",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/what-if-you-could-see-how-long-you-had/narration.mp3" },
+  audio: { src: "audio/what-if-you-could-see-how-long-you-had/mix.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/what-if-you-could-see-how-long-you-had/mix.mp3" },
   // A finished film plays the mix. `npm run check` fails one that does not.
   captions: { words: timing.words, y: 0.72 },
   World,
-  scenes: [scene1],
+  scenes: [scene1, scene2, scene3, scene4],
 });
