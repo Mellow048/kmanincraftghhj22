@@ -169,6 +169,28 @@ export const scene1 = storyScene(timing, {
       },
     },
     {
+      // REMASTER: the boy is not absent for this. The line is his alibi; the picture shows him hearing it.
+      cue: "2.guard",
+      cut: 1.1,
+      ...cam.push({ on: f(-5.05, 0.55, 0.3), dist: 3.2, to: 2.7, yaw: -18, pitch: 22 }),
+      zone: Z.fort,
+      look: NIGHT4,
+      note: "The boy on the cage floor, curled up, one arm over his face. As the line ends his hand comes down and one eye opens: something woke him and he does not know what yet. Through the bars, out of focus, a lamp is on in a window across the yard.",
+      stage: (t) => {
+        const stir = ease(ramp(t, 0.35, 0.9));
+        return (
+          <>
+            <Yard t={t} plug lit={0} hero="none" sleeper patrol />
+            <Flat position={f(-4.55, 0.08, 0.3)} rotationY={EAST}>
+              <Hero animation="idle" face={stir > 0.5 ? "uneasy" : "sleepy"} blink={stir < 0.4} breath={0.5} headYaw={0.18 * stir} />
+            </Flat>
+            <Fill on={f(-5, 0.5, 0.3)} yaw={-18} power={7} />
+            <pointLight position={f(-1.6, 2.2, -2.6)} color="#ffd9a0" intensity={5} distance={7} decay={2} />
+          </>
+        );
+      },
+    },
+    {
       cue: "2.sheep",
       ...cam.top({ on: r(-1.2, 0.7, -1.3), height: 3.0, to: 2.7 }),
       zone: Z.room,
@@ -278,7 +300,27 @@ export const scene1 = storyScene(timing, {
           </>
         );
       },
+    },    {
+      // REMASTER: he does not only hear about this later. He is awake now, and he is watching it happen.
+      cue: "3.sword",
+      cut: 0.95,
+      ...cam.push({ on: f(-5.0, 1.15, 1.5), dist: 2.6, to: 2.2, yaw: -10, pitch: 6 }),
+      zone: Z.fort,
+      look: NIGHT4,
+      note: "Inside the cage, from just behind him: the boy is up on his knees with both hands round two bars, face pressed into the gap, looking out at the gate. One guard is walking away across the yard with his sword out. The boy's knuckles are white.",
+      stage: (t) => {
+        const lean = ease(ramp(t, 0, 0.5));
+        return (
+          <>
+            <Yard t={t} plug lit={0} hero="none" sleeper patrol />
+            <Hero position={f(-5.0, 0.08, 0.55 - 0.1 * lean)} rotationY={0} animation="crouch" face="fear" headPitch={-0.05} arms="reach" />
+            <Fill on={f(-5, 1.2, 0.6)} yaw={-10} power={7} />
+            <pointLight position={f(-2.4, 1.8, -1.4)} color="#ffd9a0" intensity={7} distance={8} decay={2} />
+          </>
+        );
+      },
     },
+
     {
       cue: "3.slow",
       from: [GS[0] - 0.6, 1.6, GS[2] - 0.05],
@@ -369,6 +411,30 @@ export const scene1 = storyScene(timing, {
             <AimSword position={[GB[0] - 0.4, 0.06, GB[2] + 0.5]} yaw={2} pitch={0} />
             <Bubble text={"A".repeat(3 + Math.floor(k * 9))} position={up(GB, 2.5 + k * 0.4)} rotationY={0.45} scale={0.45 + k * 0.5} />
             <Fill on={manFace(GB)} yaw={28} power={7} d={2.2} />
+          </>
+        );
+      },
+    },
+    {
+      // REMASTER: the scream arrives at the cage. This is the half-second that makes the next line true.
+      cue: "3.scream",
+      cut: 1.15,
+      ...cam.push({ on: f(-4.6, 0.9, 1.2), dist: 2.2, to: 1.85, yaw: -34, pitch: 10 }),
+      zone: Z.fort,
+      look: NIGHT4,
+      impacts: [{ at: 0.05, amp: 0.09, dur: 0.3 }],
+      note: "Close on the boy's face through the bars: the scream lands on him, he flinches back off the bars and his mouth opens. Far off, out in the dark, a green something is running flat out for the gate.",
+      stage: (t) => {
+        const hit = 0.08;
+        const k = clamp((t - hit) / 0.35);
+        return (
+          <>
+            <Yard t={t} plug lit={0} hero="none" sleeper patrol />
+            <group position={f(-5.0, 0.08, 0.5 + 0.16 * k)}>
+              <Hero rotationY={0} animation="idle" face={t > hit ? "fear" : "uneasy"} headPitch={0.12 * k} arms={t > hit ? "reach" : undefined} />
+            </group>
+            <Fill on={f(-4.6, 1.0, 1.1)} yaw={-34} power={8} />
+            <pointLight position={f(-1.2, 1.6, -3.0)} color="#c8ff9a" intensity={9} distance={8} decay={2} />
           </>
         );
       },
