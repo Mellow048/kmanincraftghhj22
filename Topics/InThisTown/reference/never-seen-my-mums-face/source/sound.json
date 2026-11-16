@@ -1,0 +1,1001 @@
+{
+  "film": "in-this-town-i-have-never-seen-my-mums-face",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-i-have-never-seen-my-mums-face. The kit has no scream and no teleport: a scream here is a high `buzz` (pitch 1.4 to 1.9), and a teleport is `glitch`. The viewer learns both in the first six seconds. A pumpkin is a `bonk`. The half second after 'and I looked up' has no music and no effect: her face is the sound.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.face",
+        "mood": "town",
+        "why": "The topic's track from frame one: a town of endermen, and one kid."
+      },
+      {
+        "from": "2.knees",
+        "mood": "playful",
+        "why": "How you live with it: every line is a joke."
+      },
+      {
+        "from": "2.want",
+        "mood": "curious",
+        "gain": -3,
+        "why": "'All I ever wanted was to look at my mum.' The track steps back."
+      },
+      {
+        "from": "3.tried",
+        "mood": "playful",
+        "why": "Three plans, three failures."
+      },
+      {
+        "from": "3.drew",
+        "mood": "hope",
+        "gain": -3,
+        "why": "He draws her, and she keeps it."
+      },
+      {
+        "from": "4.night",
+        "mood": "sneak",
+        "gain": -2,
+        "why": "Players, at night."
+      },
+      {
+        "from": "4.stood",
+        "mood": "tense",
+        "why": "The town does not know. It climbs to the end of the clip."
+      },
+      {
+        "from": "5.small",
+        "mood": "drone",
+        "gain": -2,
+        "why": "He is small. One low note while he works it out."
+      },
+      {
+        "from": "5.ran",
+        "mood": "playful",
+        "why": "Six pumpkins and a stampede: full level, it is the funniest thing in the film."
+      },
+      {
+        "from": "6.left",
+        "mood": "curious",
+        "gain": -3,
+        "why": "Six pumpkins on an empty street."
+      },
+      {
+        "from": "6.knees",
+        "mood": "hope",
+        "gain": -4,
+        "why": "He walks home."
+      },
+      {
+        "from": "6.up",
+        "mood": "none",
+        "why": "He looks up. Silence is the picture."
+      },
+      {
+        "from": "7.already",
+        "mood": "hope",
+        "why": "She was already looking."
+      },
+      {
+        "from": "8.dinner",
+        "mood": "town",
+        "why": "Now: the town as it is."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.face",
+      "to": "3.carry",
+      "bed": "village"
+    },
+    {
+      "from": "4.night",
+      "to": "7.always",
+      "bed": "night"
+    },
+    {
+      "from": "8.dinner",
+      "to": "9.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.face",
+      "at": 0.05,
+      "sfx": "pop",
+      "why": "Frame one: a kid holding an enderman's hand."
+    },
+    {
+      "cue": "1.face",
+      "word": "face",
+      "pitch": 0.8,
+      "sfx": "blip",
+      "why": "'Face': he is looking at the ground."
+    },
+    {
+      "cue": "1.ender",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut: the street from above."
+    },
+    {
+      "cue": "1.ender",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Endermen going about."
+    },
+    {
+      "cue": "1.ender",
+      "word": "Everyone",
+      "trim": 1,
+      "sfx": "glitch",
+      "why": "'Everyone': one teleports. The sound of every teleport in the film."
+    },
+    {
+      "cue": "1.scream",
+      "word": "look",
+      "trim": -2,
+      "sfx": "slide_up",
+      "why": "'Look': his head comes up."
+    },
+    {
+      "cue": "1.scream",
+      "word": "screams",
+      "pitch": 1.7,
+      "trim": 1,
+      "sfx": "buzz",
+      "why": "'Screams': the kit has no scream; a high buzzer is one. Heard six times."
+    },
+    {
+      "cue": "1.help",
+      "word": "help",
+      "trim": -1,
+      "sfx": "slide_down",
+      "why": "She droops. She is sorry."
+    },
+    {
+      "cue": "1.dad",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.36,
+      "pitch": 0.8,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Dad's long steps."
+    },
+    {
+      "cue": "1.dad",
+      "word": "Blocks",
+      "sfx": "place",
+      "why": "'Blocks.'"
+    },
+    {
+      "cue": "1.dad",
+      "word": "Flowers",
+      "trim": -2,
+      "sfx": "sparkle",
+      "why": "'Flowers.'"
+    },
+    {
+      "cue": "1.me",
+      "at": 0.05,
+      "sfx": "glitch",
+      "why": "Dad pops in."
+    },
+    {
+      "cue": "1.me",
+      "word": "baby",
+      "trim": -1,
+      "sfx": "boing",
+      "why": "'A baby.'"
+    },
+    {
+      "cue": "1.me",
+      "word": "me",
+      "trim": -2,
+      "sfx": "chime",
+      "why": "'That was me': a heart over mum."
+    },
+    {
+      "cue": "2.knees",
+      "at": 0.1,
+      "repeat": 3,
+      "every": 0.25,
+      "pitch": 1.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "He walks through the legs."
+    },
+    {
+      "cue": "2.knees",
+      "word": "knees",
+      "sfx": "pop",
+      "why": "'Knees': the pink ones."
+    },
+    {
+      "cue": "2.dinner",
+      "word": "dinner",
+      "sfx": "place",
+      "why": "Plates."
+    },
+    {
+      "cue": "2.dinner",
+      "word": "plates",
+      "trim": 2,
+      "sfx": "plink",
+      "why": "'Plates': mum's head turns to him."
+    },
+    {
+      "cue": "2.photo",
+      "at": 0.05,
+      "pitch": 1.5,
+      "trim": -2,
+      "sfx": "stamp",
+      "why": "The shutter."
+    },
+    {
+      "cue": "2.photo",
+      "word": "shoes",
+      "trim": -1,
+      "sfx": "slide_down",
+      "why": "'Shoes.'"
+    },
+    {
+      "cue": "2.seek",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.2,
+      "pitch": 1.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "He runs to tag."
+    },
+    {
+      "cue": "2.seek",
+      "word": "teleport",
+      "trim": 1,
+      "sfx": "glitch",
+      "why": "'Teleport': gone."
+    },
+    {
+      "cue": "2.seek",
+      "word": "teleport",
+      "at": 0.35,
+      "pitch": 1.3,
+      "sfx": "pop",
+      "why": "And another one behind him."
+    },
+    {
+      "cue": "2.won",
+      "at": 0.5,
+      "trim": -1,
+      "sfx": "glitch",
+      "why": "The little one pops to the other side."
+    },
+    {
+      "cue": "2.won",
+      "word": "won",
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "'Never won.'"
+    },
+    {
+      "cue": "2.rain",
+      "word": "rains",
+      "repeat": 6,
+      "every": 0.12,
+      "trim": 2,
+      "sfx": "plink",
+      "why": "Rain starts."
+    },
+    {
+      "cue": "2.rain",
+      "word": "whole",
+      "repeat": 6,
+      "every": 0.09,
+      "pitch": 1.3,
+      "trim": -2,
+      "sfx": "pop",
+      "why": "They pop out one after another."
+    },
+    {
+      "cue": "2.rain",
+      "word": "disappears",
+      "sfx": "glitch",
+      "why": "'Disappears.'"
+    },
+    {
+      "cue": "2.alone",
+      "at": 0.62,
+      "trim": -1,
+      "sfx": "splash",
+      "why": "He lands in the puddle."
+    },
+    {
+      "cue": "2.alone",
+      "at": 1.24,
+      "trim": -2,
+      "sfx": "splash",
+      "why": "And again."
+    },
+    {
+      "cue": "2.kitchen",
+      "at": 0.4,
+      "repeat": 4,
+      "every": 0.4,
+      "pitch": 0.8,
+      "trim": 1,
+      "sfx": "step_wood",
+      "why": "Dad walks off with the stove."
+    },
+    {
+      "cue": "2.kitchen",
+      "word": "away",
+      "sfx": "scrape",
+      "why": "'Away.'"
+    },
+    {
+      "cue": "2.kitchen",
+      "word": "kitchen",
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "'We had a kitchen.'"
+    },
+    {
+      "cue": "2.want",
+      "word": "Just",
+      "trim": -3,
+      "sfx": "heartbeat",
+      "why": "'Just once': his head starts to come up."
+    },
+    {
+      "cue": "3.tried",
+      "at": 0.05,
+      "repeat": 3,
+      "every": 0.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "He marches."
+    },
+    {
+      "cue": "3.tried",
+      "word": "everything",
+      "at": 0.1,
+      "trim": 3,
+      "sfx": "thud",
+      "why": "'Everything.'"
+    },
+    {
+      "cue": "3.puddle",
+      "word": "puddle",
+      "trim": 2,
+      "sfx": "plink",
+      "why": "The puddle."
+    },
+    {
+      "cue": "3.puddle",
+      "word": "Endermen",
+      "trim": 1,
+      "sfx": "glitch",
+      "why": "'Endermen': she is gone up the street."
+    },
+    {
+      "cue": "3.puddle",
+      "word": "puddles",
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "Plan one fails."
+    },
+    {
+      "cue": "3.fingers",
+      "word": "fingers",
+      "pitch": 1.4,
+      "sfx": "blip",
+      "why": "Through his fingers."
+    },
+    {
+      "cue": "3.fingers",
+      "word": "She",
+      "pitch": 1.7,
+      "trim": -1,
+      "sfx": "buzz",
+      "why": "'She screamed.'"
+    },
+    {
+      "cue": "3.next",
+      "at": 0.05,
+      "pitch": 1.5,
+      "sfx": "buzz",
+      "why": "The whole street."
+    },
+    {
+      "cue": "3.next",
+      "at": 0.3,
+      "pitch": 1.9,
+      "trim": -2,
+      "sfx": "buzz",
+      "why": "And the high ones."
+    },
+    {
+      "cue": "3.behind",
+      "at": 0.1,
+      "repeat": 2,
+      "every": 0.25,
+      "trim": 2,
+      "sfx": "step_grass",
+      "why": "He creeps round behind her."
+    },
+    {
+      "cue": "3.behind",
+      "word": "Now",
+      "trim": 1,
+      "sfx": "creak",
+      "why": "'Now': her head starts to turn."
+    },
+    {
+      "cue": "3.behind",
+      "word": "well",
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "Plan three fails."
+    },
+    {
+      "cue": "3.drew",
+      "word": "drew",
+      "trim": 2,
+      "sfx": "paper",
+      "why": "Paper."
+    },
+    {
+      "cue": "3.drew",
+      "word": "Two",
+      "pitch": 1.2,
+      "trim": 4,
+      "sfx": "tick",
+      "why": "'Two': one dot."
+    },
+    {
+      "cue": "3.drew",
+      "word": "purple",
+      "pitch": 1.5,
+      "trim": 4,
+      "sfx": "tick",
+      "why": "'Purple': the other."
+    },
+    {
+      "cue": "3.guess",
+      "at": 0.05,
+      "sfx": "pop",
+      "why": "He holds it up."
+    },
+    {
+      "cue": "3.guess",
+      "word": "rest",
+      "trim": -3,
+      "sfx": "chime",
+      "why": "'The rest': a smile, a bow, a sun."
+    },
+    {
+      "cue": "3.carry",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.35,
+      "pitch": 0.8,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Mum walks with it."
+    },
+    {
+      "cue": "3.carry",
+      "word": "ever",
+      "trim": -3,
+      "sfx": "sparkle",
+      "why": "'Ever since.'"
+    },
+    {
+      "cue": "4.night",
+      "at": 0.2,
+      "repeat": 4,
+      "every": 0.34,
+      "pitch": 0.8,
+      "trim": 1,
+      "sfx": "step_stone",
+      "why": "Six pairs of boots."
+    },
+    {
+      "cue": "4.night",
+      "word": "players",
+      "trim": -3,
+      "sfx": "sting",
+      "why": "'Players.'"
+    },
+    {
+      "cue": "4.six",
+      "word": "swords",
+      "trim": -1,
+      "sfx": "clank",
+      "why": "'Swords.'"
+    },
+    {
+      "cue": "4.six",
+      "word": "pumpkins",
+      "pitch": 0.8,
+      "sfx": "bonk",
+      "why": "'Pumpkins': hollow."
+    },
+    {
+      "cue": "4.pearls",
+      "word": "pearls",
+      "sfx": "pop",
+      "why": "The board with the pearl."
+    },
+    {
+      "cue": "4.pearls",
+      "word": "pearls",
+      "nth": 1,
+      "trim": -1,
+      "sfx": "sparkle",
+      "why": "A pearl over every head."
+    },
+    {
+      "cue": "4.stare",
+      "word": "stared",
+      "trim": -2,
+      "sfx": "heartbeat",
+      "why": "They stare straight up at dad."
+    },
+    {
+      "cue": "4.stare",
+      "word": "did",
+      "pitch": 1.2,
+      "sfx": "pop",
+      "why": "'Did not scream': a question mark."
+    },
+    {
+      "cue": "4.trick",
+      "word": "trick",
+      "pitch": 1.2,
+      "trim": -4,
+      "sfx": "ding",
+      "why": "'The trick': he has seen it."
+    },
+    {
+      "cue": "4.pumpkin",
+      "word": "pumpkin",
+      "pitch": 0.8,
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "A pumpkin, close."
+    },
+    {
+      "cue": "4.pumpkin",
+      "word": "looking",
+      "trim": -2,
+      "sfx": "blink",
+      "why": "'Looking': carved eyes."
+    },
+    {
+      "cue": "4.stood",
+      "word": "blocks",
+      "trim": 1,
+      "sfx": "place",
+      "why": "'Blocks.'"
+    },
+    {
+      "cue": "4.hunted",
+      "word": "hunted",
+      "trim": -3,
+      "sfx": "riser",
+      "why": "The sword goes up behind mum."
+    },
+    {
+      "cue": "4.hunted",
+      "word": "hunted",
+      "at": 0.2,
+      "trim": -2,
+      "sfx": "clank",
+      "why": "'Hunted.'"
+    },
+    {
+      "cue": "5.small",
+      "word": "small",
+      "trim": -2,
+      "sfx": "slide_down",
+      "why": "'Small': his fists drop."
+    },
+    {
+      "cue": "5.small",
+      "word": "six",
+      "repeat": 3,
+      "every": 0.3,
+      "pitch": 0.8,
+      "trim": 1,
+      "sfx": "step_stone",
+      "why": "Six players."
+    },
+    {
+      "cue": "5.holes",
+      "at": 0.05,
+      "trim": -3,
+      "sfx": "drop",
+      "why": "Inside the pumpkin: dark."
+    },
+    {
+      "cue": "5.holes",
+      "word": "holes",
+      "pitch": 1.5,
+      "trim": 1,
+      "sfx": "blip",
+      "why": "'Holes.'"
+    },
+    {
+      "cue": "5.kid",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.28,
+      "pitch": 1.4,
+      "trim": 2,
+      "sfx": "step_grass",
+      "why": "Tiptoe."
+    },
+    {
+      "cue": "5.ran",
+      "word": "ran",
+      "repeat": 5,
+      "every": 0.09,
+      "pitch": 1.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "He runs."
+    },
+    {
+      "cue": "5.ran",
+      "word": "knocked",
+      "trim": 2,
+      "sfx": "bonk",
+      "why": "'Knocked': the first pumpkin."
+    },
+    {
+      "cue": "5.ran",
+      "word": "knocked",
+      "at": 0.12,
+      "trim": -2,
+      "sfx": "slide_up",
+      "why": "It flies."
+    },
+    {
+      "cue": "5.count",
+      "word": "One",
+      "trim": 2,
+      "sfx": "bonk",
+      "why": "'One.'"
+    },
+    {
+      "cue": "5.count",
+      "word": "Two",
+      "pitch": 1.15,
+      "trim": 2,
+      "sfx": "bonk",
+      "why": "'Two.'"
+    },
+    {
+      "cue": "5.count",
+      "word": "All",
+      "pitch": 1.3,
+      "trim": 2,
+      "sfx": "bonk",
+      "why": "'All'"
+    },
+    {
+      "cue": "5.count",
+      "word": "All",
+      "at": 0.22,
+      "pitch": 1.45,
+      "trim": 2,
+      "sfx": "bonk",
+      "why": "the fifth"
+    },
+    {
+      "cue": "5.count",
+      "word": "six",
+      "pitch": 1.6,
+      "trim": 2,
+      "sfx": "bonk",
+      "why": "'six.'"
+    },
+    {
+      "cue": "5.count",
+      "word": "six",
+      "at": 0.3,
+      "sfx": "thud",
+      "why": "The last one lands."
+    },
+    {
+      "cue": "5.staring",
+      "word": "staring",
+      "sfx": "heartbeat",
+      "why": "Every head in the square turns."
+    },
+    {
+      "cue": "5.staring",
+      "at": 1.25,
+      "trim": 1,
+      "sfx": "heartbeat",
+      "why": "They start to shake."
+    },
+    {
+      "cue": "5.heads",
+      "word": "nothing",
+      "trim": -2,
+      "sfx": "drop",
+      "why": "'Nothing on their heads.'"
+    },
+    {
+      "cue": "5.scream",
+      "at": 0.05,
+      "pitch": 1.7,
+      "trim": 2,
+      "sfx": "buzz",
+      "why": "The whole town screams."
+    },
+    {
+      "cue": "5.scream",
+      "at": 0.08,
+      "trim": -4,
+      "sfx": "boom",
+      "why": "All at once: the one big hit in the film."
+    },
+    {
+      "cue": "5.scream",
+      "at": 0.4,
+      "pitch": 1.4,
+      "sfx": "buzz",
+      "why": "And the low ones under it."
+    },
+    {
+      "cue": "5.scream",
+      "at": 0.3,
+      "sfx": "debris",
+      "why": "Every block hits the ground.",
+      "trim": 3
+    },
+    {
+      "cue": "5.fast",
+      "at": 0.05,
+      "repeat": 14,
+      "every": 0.08,
+      "pitch": 1.25,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Twelve feet, flat out."
+    },
+    {
+      "cue": "5.fast",
+      "at": 0.3,
+      "trim": -2,
+      "sfx": "clank",
+      "why": "A sword goes down."
+    },
+    {
+      "cue": "5.fast",
+      "at": 0.42,
+      "trim": -2,
+      "sfx": "glitch",
+      "why": "Endermen pop in behind them."
+    },
+    {
+      "cue": "5.fast",
+      "at": 0.84,
+      "trim": -2,
+      "sfx": "glitch",
+      "why": "And nearer."
+    },
+    {
+      "cue": "5.fast",
+      "word": "fast",
+      "trim": 1,
+      "sfx": "whoosh",
+      "why": "'So fast.'"
+    },
+    {
+      "cue": "6.left",
+      "at": 0.2,
+      "repeat": 4,
+      "every": 0.22,
+      "pitch": 0.7,
+      "trim": 4,
+      "sfx": "tick",
+      "why": "One pumpkin still rocking."
+    },
+    {
+      "cue": "6.left",
+      "word": "pumpkins",
+      "sfx": "plink",
+      "why": "'Pumpkins.'"
+    },
+    {
+      "cue": "6.picked",
+      "word": "picked",
+      "trim": -2,
+      "sfx": "slide_up",
+      "why": "He lifts one."
+    },
+    {
+      "cue": "6.picked",
+      "word": "big",
+      "trim": 1,
+      "sfx": "thud",
+      "why": "'Too big': his knees give."
+    },
+    {
+      "cue": "6.picked",
+      "word": "pie",
+      "trim": -3,
+      "sfx": "chime",
+      "why": "'Pie.'"
+    },
+    {
+      "cue": "6.on",
+      "at": 0.08,
+      "pitch": 0.7,
+      "trim": 2,
+      "sfx": "bonk",
+      "why": "It is on his head."
+    },
+    {
+      "cue": "6.on",
+      "word": "anyway",
+      "trim": -2,
+      "sfx": "boing",
+      "why": "It wobbles."
+    },
+    {
+      "cue": "6.knees",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.3,
+      "pitch": 1.3,
+      "trim": 2,
+      "sfx": "step_grass",
+      "why": "A pumpkin on legs, feeling its way home."
+    },
+    {
+      "cue": "6.knees",
+      "word": "found",
+      "pitch": 0.9,
+      "sfx": "bonk",
+      "why": "'Found': he walks into her knees."
+    },
+    {
+      "cue": "6.up",
+      "word": "looked",
+      "trim": -4,
+      "sfx": "slide_up",
+      "why": "'Looked up': soft. Then nothing at all for the half second her face is new."
+    },
+    {
+      "cue": "7.eyes",
+      "word": "purple",
+      "trim": -2,
+      "sfx": "chime",
+      "why": "'Purple eyes.'"
+    },
+    {
+      "cue": "7.already",
+      "word": "already",
+      "trim": -1,
+      "sfx": "heartbeat",
+      "why": "'Already looking.'"
+    },
+    {
+      "cue": "7.already",
+      "word": "me",
+      "pitch": 1.3,
+      "trim": -2,
+      "sfx": "pop",
+      "why": "A heart."
+    },
+    {
+      "cue": "7.always",
+      "at": 0.3,
+      "trim": -2,
+      "sfx": "glitch",
+      "why": "Dad pops in to look too."
+    },
+    {
+      "cue": "7.always",
+      "word": "always",
+      "trim": -3,
+      "sfx": "sparkle",
+      "why": "'Always.'"
+    },
+    {
+      "cue": "8.dinner",
+      "word": "dinner",
+      "sfx": "place",
+      "why": "Dinner again."
+    },
+    {
+      "cue": "8.dinner",
+      "word": "find",
+      "repeat": 4,
+      "every": 0.16,
+      "pitch": 1.4,
+      "trim": 2,
+      "sfx": "step_wood",
+      "why": "His hand pats the table everywhere but the plate."
+    },
+    {
+      "cue": "8.dinner",
+      "word": "care",
+      "pitch": 1.3,
+      "trim": -1,
+      "sfx": "pop",
+      "why": "'I do not care': a heart."
+    },
+    {
+      "cue": "8.photo",
+      "at": 0.05,
+      "pitch": 1.5,
+      "trim": -2,
+      "sfx": "stamp",
+      "why": "The shutter."
+    },
+    {
+      "cue": "8.photo",
+      "word": "up",
+      "pitch": 1.2,
+      "trim": -4,
+      "sfx": "ding",
+      "why": "'Looking up.'"
+    },
+    {
+      "cue": "8.kitchen",
+      "at": 0.38,
+      "trim": 1,
+      "sfx": "thud",
+      "why": "The stove goes down in its place."
+    },
+    {
+      "cue": "8.kitchen",
+      "word": "back",
+      "trim": -2,
+      "sfx": "slide_up",
+      "why": "He throws his arms up."
+    },
+    {
+      "cue": "9.sub",
+      "word": "subscribe",
+      "trim": -2,
+      "sfx": "ding",
+      "why": "Subscribe."
+    },
+    {
+      "cue": "9.sub",
+      "word": "stare",
+      "pitch": 0.8,
+      "sfx": "bonk",
+      "why": "'Do not stare': the pumpkin comes down."
+    },
+    {
+      "cue": "9.sub",
+      "word": "behind",
+      "trim": 1,
+      "sfx": "glitch",
+      "why": "'Behind you': dad pops in at the lens."
+    },
+    {
+      "cue": "9.sub",
+      "word": "you",
+      "at": 0.15,
+      "pitch": 0.8,
+      "sfx": "pop",
+      "why": "His head tips."
+    }
+  ]
+}

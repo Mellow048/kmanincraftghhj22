@@ -207,6 +207,10 @@ Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build 
 **The creeper town** (creepers as people: a family, a crowd that bolts and hisses, their houses, and the players who
 come for gunpowder) has its own section too: ["The creeper town"](#the-creeper-town--creepertowntsx).
 
+**The enderman town** (endermen as people: a mum and a dad, a town that carries blocks, teleports and screams, their
+houses, and the players who come for pearls in carved pumpkins) has its own section too:
+["The enderman town"](#the-enderman-town--endertowntsx).
+
 ## What is not in the pack
 
 - **The story.** Never reuse a premise, a line or a twist from a finished film.
@@ -377,3 +381,66 @@ every player reads as "about to blow up").
 | `NightFill` | A warm point light for faces at night: the engine's night key light is on the north side | `at`, `power`, `reach`, `color` |
 | `groundSitPose(t, patch?)`, `GROUND_SIT` | Sitting on the ground with the legs straight out. Give it as `pose` and put the feet at y = `GROUND_SIT` | |
 | `openArmsPose(t, k?)` | Both arms held wide open, `k` 0–1: he wants a hug | |
+
+## The enderman town — `endertown.tsx`
+
+Endermen as people. Built for "In This Town, I Have Never Seen My Mum's Face"; the owner, 2026-11-16: "i like it …
+put the enderman skins and other stuff as a template and put the source code + mp4 into the reference for other
+agents to see". **So when he asks for a film with endermen who are somebody, they are here: do not build them again,
+and do not restyle them.** How each is staged, shot by shot, is in
+[`reference/never-seen-my-mums-face/`](reference/never-seen-my-mums-face/README.md).
+
+**These are parts, not a story.** In the same message he said the film "was kinda similar to the creeper one … it
+might get me in trouble of reused content". A third film of "one odd kid in a town of one famous mob, the players
+come at night" is not wanted, with these or with the creepers ([`OWNER.md`](OWNER.md) §5, 2026-11-16). Use an
+enderman, a house, a pumpkin, the rain, the kitchen: in a film whose hero, place, danger and ending are its own.
+
+![The enderman town](endertown.jpg)
+
+Every still above is a shot from `in-this-town-i-have-never-seen-my-mums-face`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-i-have-never-seen-my-mums-face --scale 0.5 --at 0.6 --out out/endertown \
+  --only 1.face,1.ender,1.dad,2.dinner,2.photo,2.rain,3.guess,4.six,4.pearls,5.holes,5.scream,6.on
+python3 scripts/pack-sheet.py out/endertown Topics/InThisTown/endertown.jpg --labels Topics/InThisTown/endertown.labels.txt
+```
+
+The enderman itself is `Enderman` in `monsters.tsx` (above): 2.9 m tall, eyes at about 2.75 m. It acts with `jaw`
+(0–1: the mouth drops open, the scream), `shake` (0–1), `carry` (0–1, arms out, with the block it holds as
+`children`), `lean` (0.6 bends it down to a kid), `lookAt` and `mood`. **It is nearly three metres tall and a tall
+frame is narrow**: stage it in depth, tilt the lens up, or cut it off at the chest on purpose (a kid's eyes are at
+1.22 m, which is an enderman's knees, and the film is built on that).
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `EnderMum`, `EnderDad` | The parents: a pink bow, and a pink band on each knee (how a kid who cannot look up knows her); a straw hat and a blue scarf, a little taller. Each is an `Enderman` and takes every one of its props. Mum has no scarf: bent over a kid, a scarf hangs like a tongue | `position`, `rotationY`, `lookAt`, `lean`, `jaw`, `shake`, `mood`, `walk`, `carry` + `children` |
+| `EnderCrowd` | A town of them, each a little different in height, each holding a thing. One component, directed by numbers | `spots` (`[x, z, facing?][]`), `t`; **`jaw` + `shake`: they all scream**; `hold` (they carry), `drop` (seconds since they all let go: the blocks fall); **`outAt={(i) => seconds}`: each teleports away at its own second and leaves an `EnderZap`**; `lookAt`, `mood`, `face`; `walk` + `shift`; `tilt`; `skip`; `first` (so two crowds are not twins); `scale` |
+| `EnderThing` | What an enderman holds, half a block big: `kind` 0 grass, 1 cobble, 2 sand, 3 planks, 4 melon, 5 a flower pot, 6 TNT, 7 hay, 8 grass with a poppy | `kind`, `position` |
+| `EnderZap` | The purple pop left where one teleported | `position`, `t` (seconds since it went), `seed` |
+| `EnderHouse`, `ENDER_WALL`, `ENDER_ROOF` | A `Hut` with dark purple plank walls and a purple roof. Takes every `Hut` prop but the three colours | as `Hut` |
+| `BlockPile` | What an enderman brings home: a heap of blocks that do not match, beside a house | `at` (`[x, z]`), `n` (which heap), `wide`, `high` |
+| `PumpkinPlayer` | A player who has come for pearls: six looks, a sword, and a carved pumpkin over the head. A `MinecraftAvatar`: every clip, pose and face works | `who` 0–5, **`on` (the pumpkin: `on={t < knock}` takes it off)**, `sword` |
+| `KnockedPumpkin` | A pumpkin knocked off a head: it tumbles, lands and lies still | `from` (where the head was), `t` (seconds since), `v` (the push: x, up, z), `seed` |
+| `PumpkinHat` | A carved pumpkin for a kid, for the `head` prop of a `MinecraftAvatar`. 1.15 is too big for him, which is the joke | `scale`, `up` 0–1 (pushed back off the face like a hat), `askew` |
+| `PumpkinView` | **What you see from inside a pumpkin**: black, and two small holes. Stands half a metre in front of a lens that does not move and looks north with no tilt | `camera`, `fov`, `sway`, `hole` |
+| `PhotoBorder` | The white border of a photo, for a shot that is a photograph. Same rules as `PumpkinView` | `camera`, `fov` |
+| `EnderPearl`, `PearlSign` | A pearl, drawn flat, facing +Z; and a pearl on a board, for over a player's head (what he wants) | `position`, `scale`, `rotationY` |
+| `KidDrawing` | A kid's drawing of his mum on paper (0.62 × 0.78, facing +Z): two purple dots, then what he had to guess | `position`, `rotation`, `scale`, `dots` 0–2, `rest` |
+| `Rain`, `Puddle` | Rain over a place, and a puddle on the ground. Endermen will not stand in either | `center`, `t`, `area`, `count`, `k` 0–1 (how hard); `position`, `size` |
+| `DinnerPlate` | A plate with something on it, for a table top | `position`, `food` (a colour) |
+| `KitchenStove`, `KitchenCounter`, `KitchenShelf`, `FryingPan` | A kitchen along a wall: a furnace (`lit`), a counter with a pot or a loaf (`on`), a shelf of jars, and a pan with an egg for a hand | `position` |
+| `KitchenGone` | Where the kitchen was: pale shapes on the wall and the floor | `position` (the middle slot) |
+| `ENDER_PINK`, `ENDER_PURPLE` | Mum's pink and the eyes' purple | |
+
+**What to know before using them:**
+
+- **The scream is `jaw` and `shake` together, and the sound is yours to make**: the kit has no scream and no
+  teleport. The film used a high `buzz` (`pitch` 1.4 to 1.9) for a scream and `glitch` for a teleport, and taught
+  the viewer both in the first six seconds ([`SOUND.md`](SOUND.md) has the kit).
+- **`PumpkinView` and `PhotoBorder` are drawn in the world, not on the screen**: they only line up with a camera
+  that stands still, looks north and is not tilted. Give them the same `camera` and `fov` as the shot.
+- **A crowd that teleports**: `outAt={(i) => 0.5 + i * 0.09}` empties a street one after another in about a second.
+- Names in the film's own `kit.tsx` are shorter (`Mum`, `Enders`, `Hunter`, `Knocked`, `Plate`): it re-exports the
+  pack under them, so its scenes read like the script. A new film may do the same.
+- The parts were moved here from the film after he approved it, and a still of every shot was taken before and
+  after: 104 of 104 the same, pixel for pixel. Anything added here later must keep it so (rule 4 above).

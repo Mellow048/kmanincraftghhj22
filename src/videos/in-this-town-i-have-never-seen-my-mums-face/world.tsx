@@ -1,7 +1,6 @@
 import type React from "react";
 import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Torch, Vox, Zone, useActiveShot } from "../../engine";
-import type { BlockKind } from "../../engine";
-import { Hut, Moon, Stars } from "../../../Topics/InThisTown";
+import { BlockPile as Pile, EnderHouse, Moon, Stars } from "../../../Topics/InThisTown";
 import { PLACE, PURPLE } from "./kit";
 
 /**
@@ -22,23 +21,6 @@ const ring = (n: number, r0: number, r1: number, seed: number) =>
     return [Math.cos(a) * r, Math.sin(a) * r, 4.6 + ((i * 7 + seed) % 5) * 0.8] as [number, number, number];
   });
 
-const WALL = "#5d4f78";
-const ROOF = "#7b46c4";
-const KINDS: BlockKind[] = ["grass", "sand", "cobble", "planks", "hay", "log", "dirt", "stone"];
-
-/** What an enderman brings home: a heap of blocks that do not match. `n` picks which. */
-const Pile: React.FC<{ at: [number, number]; n: number; wide?: number; high?: number }> = ({ at, n, wide = 2, high = 2 }) => (
-  <group position={[at[0], 0, at[1]]}>
-    {Array.from({ length: wide * high }, (_, i) => {
-      const col = i % wide;
-      const row = Math.floor(i / wide);
-      if (row > 0 && (i * 5 + n) % 3 === 0) return null;
-      const kind = KINDS[(i * 3 + n * 5) % KINDS.length];
-      return <Vox key={i} kind={kind} side={kind === "grass" ? "dirt" : undefined} position={[col - (wide - 1) / 2, 0.5 + row, ((i + n) % 2) * 0.12]} size={[1, 1, 1]} />;
-    })}
-  </group>
-);
-
 /** [x of the front wall, z, width, height]: the west side. The east side is the same, three metres north. */
 const HOUSES: Array<[number, number, number, number]> = [
   [8.6, 4, 6.5, 4.4],
@@ -56,14 +38,14 @@ const Town: React.FC<{ night: boolean; warm: boolean }> = ({ night, warm }) => (
     <Vox kind="path" position={[0, 0.022, -12.2]} size={[7.6, 0.06, 7.6]} />
     {HOUSES.map(([x, z, w, h], i) => (
       <group key={i}>
-        <Hut at={[-x, 0, z]} turn={Math.PI / 2} w={w} h={h} wall="planks" tint={WALL} roof={ROOF} windows={[-1.8, 1.8]} lit={night} />
-        <Hut at={[x, 0, z - 3]} turn={-Math.PI / 2} w={w} h={h} wall="planks" tint={WALL} roof={ROOF} windows={[-1.8, 1.8]} lit={night} />
+        <EnderHouse at={[-x, 0, z]} turn={Math.PI / 2} w={w} h={h} windows={[-1.8, 1.8]} lit={night} />
+        <EnderHouse at={[x, 0, z - 3]} turn={-Math.PI / 2} w={w} h={h} windows={[-1.8, 1.8]} lit={night} />
         <Pile at={[-x + 1.3, z + w / 2 + 1.2]} n={i} />
         <Pile at={[x - 1.3, z - 3 - w / 2 - 1.2]} n={i + 4} wide={1} high={3} />
       </group>
     ))}
     {/* home */}
-    <Hut at={PLACE.home} w={11} h={5.2} d={7} wall="planks" tint={WALL} roof={ROOF} windows={[-3.4]} lit={night} open={night} />
+    <EnderHouse at={PLACE.home} w={11} h={5.2} d={7} windows={[-3.4]} lit={night} open={night} />
     {/* two blocks dad has already taken out of the wall */}
     <Block position={[-4.6, 2.5, PLACE.home[2] + 0.02]} size={[1, 1, 0.06]} color="#1a1422" castShadow={false} />
     <Block position={[1.9, 4.1, PLACE.home[2] + 0.02]} size={[1, 1, 0.06]} color="#1a1422" castShadow={false} />
