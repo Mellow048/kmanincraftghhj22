@@ -243,3 +243,11 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   idea 4, "I Have Never Seen My Mum's Face" (a kid raised by endermen), in
   `drafts/in-this-town-i-have-never-seen-my-mums-face/`. Script first is his rule; wait for his yes or his changes.
 
+- **2026-11-16, "another banger idea".** On the script of "I Have Never Seen My Mum's Face": "nice now dont u forget
+  the monster village part 1 lad, our goal is to escape 1k view jail. and i like that one, another banger idea! go
+  ahead lad make that mp4". The script was approved with no line changed, and the film was built from it:
+  `src/videos/in-this-town-i-have-never-seen-my-mums-face/` (52 shots, 105.6 s, tempo 1.47, 236 words a minute).
+  **Two things to keep: (1) the measure is views, and the bar is 1k; Monster Village part 1 (about 5k) is the film
+  every new one is held against, so open `reference/monster-village/README.md` before writing anything. (2) Script
+  first worked: he read it, heard it, said yes in one message, and nothing had to be rebuilt.** His verdict on the
+  finished film, and the numbers for this one and the creeper one, are not known yet: ask.
