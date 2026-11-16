@@ -81,7 +81,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "13.mine",
-      ...cam.push(fit({ on: A("kitchen", -2.2, 1.25, 0.1), dist: 2.0, to: 1.8, yaw: -66, pitch: 4, fov: 38 })),
+      ...cam.push(fit({ on: A("kitchen", -2.0, 0.95, 0.1), dist: 3.3, to: 3.0, yaw: -60, pitch: 8, fov: 48 })),
       zone: "kitchen",
       note: "The mirror again, the same frame as the limit in act one. Nothing off his own mouth, ever.",
       stage: () => <Hero position={A("kitchen", -2.3, 0, 0.1)} rotationY={-Math.PI / 2} animation="idle" face="ouch" />,

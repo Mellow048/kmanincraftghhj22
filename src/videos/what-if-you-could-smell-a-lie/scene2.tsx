@@ -18,9 +18,9 @@ export const scene2 = storyScene(timing, {
       note: "The boy who cannot be lied to, sitting in a room of smoke, enjoying it. Three heads with smoke and one without.",
       stage: () => (
         <>
-          <Hero position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="grin" />
-          <Classmate who={2} position={SPOT.seat(0, 1)} rotationY={NORTH} animation="sit" face="uneasy" />
-          <Classmate who={6} position={SPOT.seat(2, 1)} rotationY={NORTH} animation="sit" face="uneasy" />
+          <Hero position={SPOT.seat(1, 1)} rotationY={0} animation="sit" face="grin" />
+          <Classmate who={2} position={SPOT.seat(0, 1)} rotationY={0} animation="sit" face="uneasy" />
+          <Classmate who={6} position={SPOT.seat(2, 1)} rotationY={0} animation="sit" face="uneasy" />
           <Teacher position={SPOT.teacher} animation="talk" face="calm" />
           <Toast at={SPOT.seat(0, 1)} n={9} seed={2} />
           <Toast at={SPOT.seat(2, 1)} n={9} seed={5} />

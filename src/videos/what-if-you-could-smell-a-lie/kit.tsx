@@ -80,13 +80,13 @@ export const Toast: React.FC<{ at: Vec3; n?: number; seed?: number }> = ({ at, n
     <group position={[at[0], at[1] + 1.24, at[2]]}>
       {Array.from({ length: n }, (_, i) => {
         const k = (t * 0.42 + i / n + (seed % 7) * 0.03) % 1;
-        const s = 0.16 * (0.5 + k * 1.1);
+        const s = 0.2 * (0.5 + k * 1.1);
         const jx = ((i * 37 + seed * 11) % 13) / 13 - 0.5;
         const jz = ((i * 53 + seed * 7) % 11) / 11 - 0.5;
         return (
           <mesh key={i} position={[jx * 0.36 * (0.4 + k), k * 1.0, jz * 0.3 * (0.4 + k)]} rotation={[0, i + k, 0]}>
             <boxGeometry args={[s, s, s]} />
-            <meshBasicMaterial color="#4a3a2a" transparent opacity={0.85 * (1 - k) * Math.min(1, k * 6)} depthWrite={false} />
+            <meshBasicMaterial color="#2f261c" transparent opacity={0.85 * (1 - k) * Math.min(1, k * 6)} depthWrite={false} />
           </mesh>
         );
       })}

@@ -18,12 +18,12 @@ export const scene1 = storyScene(timing, {
       note: "The whole class in one tall frame, him at a desk in the front of it, and the first grey wisp of a lie on the right of the board. The power is a smell: the picture has to show a face reading one.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.seat(1, 2)} rotationY={NORTH} animation="sit" face="uneasy" />
+          <Hero position={SPOT.seat(1, 2)} rotationY={0} animation="sit" face="uneasy" />
           <Teacher position={SPOT.teacher} animation="talk" face="calm" />
           {[[0, 0], [0, 1], [2, 0], [2, 1]].map(([c, r], i) => (
-            <Classmate key={i} who={i + 2} position={SPOT.seat(c, r)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
+            <Classmate key={i} who={i + 2} position={SPOT.seat(c, r)} rotationY={0} animation="sit" face="calm" headPitch={0.2} />
           ))}
-          <Friend position={SPOT.seat(2, 2)} rotationY={NORTH} animation="sit" face="calm" />
+          <Friend position={SPOT.seat(2, 2)} rotationY={0} animation="sit" face="calm" />
           <Toast at={SPOT.teacher} n={12} seed={4} />
         </>
       ),
@@ -36,7 +36,7 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <Teacher position={SPOT.teacher} animation="talk" face="smile" />
-          <Classmate who={3} position={SPOT.seat(0, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
+          <Classmate who={3} position={SPOT.seat(0, 0)} rotationY={0} animation="sit" face="calm" headPitch={0.25} />
         </>
       ),
     },
@@ -47,8 +47,8 @@ export const scene1 = storyScene(timing, {
       note: "Him at his desk, chin up, reading her, and not liking what he reads.",
       stage: () => (
         <>
-          <Hero position={SPOT.seat(1, 2)} rotationY={NORTH} animation="sit" face="uneasy" />
-          <Classmate who={5} position={SPOT.seat(0, 2)} rotationY={NORTH} animation="sit" face="calm" />
+          <Hero position={SPOT.seat(1, 2)} rotationY={0} animation="sit" face="uneasy" />
+          <Classmate who={5} position={SPOT.seat(0, 2)} rotationY={0} animation="sit" face="calm" />
         </>
       ),
     },
@@ -59,7 +59,7 @@ export const scene1 = storyScene(timing, {
       note: "The first toast. Smoke off her mouth, filling the frame above him, and his face changing on it.",
       stage: () => (
         <>
-          <Hero position={SPOT.seat(1, 2)} rotationY={NORTH} animation="sit" face="wow" />
+          <Hero position={SPOT.seat(1, 2)} rotationY={0} animation="sit" face="wow" />
           <Toast at={[SPOT.teacher[0], 0, SPOT.teacher[2] + 0.4]} n={16} seed={2} />
         </>
       ),
@@ -79,7 +79,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.dad",
-      ...cam.push(fit({ on: A("kitchen", -0.2, 1.15, 0.6), dist: 3.0, to: 2.6, yaw: 10, pitch: 10, fov: 46 })),
+      ...cam.push(fit({ on: A("kitchen", 0.5, 0.95, -0.6), dist: 3.4, to: 3.1, yaw: 16, pitch: 12, fov: 48 })),
       zone: "kitchen",
       note: "The kitchen, an empty chair at the table, and smoke standing over it. Nobody says the line: the smoke is the line.",
       stage: () => (
@@ -98,17 +98,17 @@ export const scene1 = storyScene(timing, {
         <>
           <Teacher position={SPOT.teacher} animation="talk" face="calm" />
           {[[0, 0], [1, 0], [2, 1]].map(([c, r], i) => (
-            <Classmate key={i} who={i + 1} position={SPOT.seat(c, r)} rotationY={NORTH} animation="sit" face="calm" />
+            <Classmate key={i} who={i + 1} position={SPOT.seat(c, r)} rotationY={0} animation="sit" face="calm" />
           ))}
           <Toast at={SPOT.seat(0, 0)} n={8} seed={1} />
           <Toast at={SPOT.seat(1, 0)} n={8} seed={5} />
-          <Hero position={SPOT.seat(1, 2)} rotationY={NORTH} animation="sit" face="uneasy" />
+          <Hero position={SPOT.seat(1, 2)} rotationY={0} animation="sit" face="uneasy" />
         </>
       ),
     },
     {
       cue: "3.limit",
-      ...cam.push(fit({ on: A("kitchen", -2.2, 1.2, 0.1), dist: 2.2, to: 1.9, yaw: -66, pitch: 5, fov: 40 })),
+      ...cam.push(fit({ on: A("kitchen", -2.0, 0.95, 0.1), dist: 3.3, to: 3.0, yaw: -60, pitch: 8, fov: 48 })),
       zone: "kitchen",
       note: "Him, in the tall mirror, saying something out loud. Nothing comes off his mouth. The limit, shown as an absence.",
       stage: () => (
