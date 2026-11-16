@@ -1,0 +1,1063 @@
+{
+ "film": "in-this-town-i-was-a-spy-for-the-villagers",
+ "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-i-was-a-spy-for-the-villagers",
+ "music": {
+  "track": "Topics/InThisTown/InThisTownMusic.aac",
+  "gain": -16,
+  "sections": [
+   {
+    "from": "1.town",
+    "mood": "town",
+    "why": "The topic's track from the first frame: the spy, and the town that needed one."
+   },
+   {
+    "from": "4.outpost",
+    "mood": "sneak",
+    "gain": -4,
+    "why": "Night, on tiptoe, in through their gate: the track steps back."
+   },
+   {
+    "from": "6.line",
+    "mood": "playful",
+    "why": "Morning in the line, a grunt, a wall, a banner knocked flying: full level, it is funny."
+   },
+   {
+    "from": "8.night",
+    "mood": "sneak",
+    "gain": -4,
+    "why": "The tower at night and the map: back down."
+   },
+   {
+    "from": "8.dawn",
+    "mood": "tense",
+    "gain": -2,
+    "why": "The plan is his own town, tomorrow."
+   },
+   {
+    "from": "9.done",
+    "mood": "none",
+    "why": "'I thought I was finished': one held breath under the window."
+   },
+   {
+    "from": "9.banner",
+    "mood": "playful",
+    "why": "He is not punished, he is promoted."
+   },
+   {
+    "from": "10.march",
+    "mood": "tense",
+    "gain": -3,
+    "why": "The raid on the move, toward his own house."
+   },
+   {
+    "from": "11.left",
+    "mood": "playful",
+    "why": "Left. Left. Left. Left."
+   },
+   {
+    "from": "12.sun",
+    "mood": "tense",
+    "gain": -1,
+    "why": "Sunrise, fog, a tower: they charge."
+   },
+   {
+    "from": "12.own",
+    "mood": "none",
+    "why": "'It was their own outpost.' Nothing but the fire."
+   },
+   {
+    "from": "13.look",
+    "mood": "dark",
+    "gain": -3,
+    "why": "The captain looks at the tower, the banner, the boy. Then the rain."
+   },
+   {
+    "from": "14.sub",
+    "mood": "playful",
+    "why": "He runs, with forty pillagers and a ravager behind him: the track back at full level."
+   }
+  ]
+ },
+ "beds": [
+  {
+   "from": "1.town",
+   "to": "1.goal",
+   "bed": "village"
+  },
+  {
+   "from": "2.raid",
+   "to": "2.took",
+   "bed": "village"
+  },
+  {
+   "from": "2.raid",
+   "to": "2.raid",
+   "bed": "crowd"
+  },
+  {
+   "from": "2.when",
+   "to": "2.when",
+   "bed": "night"
+  },
+  {
+   "from": "2.need",
+   "to": "3.me",
+   "bed": "village"
+  },
+  {
+   "from": "4.outpost",
+   "to": "5.ash",
+   "bed": "night"
+  },
+  {
+   "from": "6.line",
+   "to": "7.pond",
+   "bed": "village"
+  },
+  {
+   "from": "8.night",
+   "to": "11.night",
+   "bed": "night"
+  },
+  {
+   "from": "8.table",
+   "to": "8.warn",
+   "bed": "room"
+  },
+  {
+   "from": "12.sun",
+   "to": "12.charge",
+   "bed": "wind"
+  },
+  {
+   "from": "12.smash",
+   "to": "13.look",
+   "bed": "fire"
+  },
+  {
+   "from": "12.charge",
+   "to": "12.cheer",
+   "bed": "crowd"
+  },
+  {
+   "from": "13.rain",
+   "to": "14.sub",
+   "bed": "wind"
+  },
+  {
+   "from": "14.sub",
+   "to": "14.sub",
+   "bed": "crowd"
+  }
+ ],
+ "sfx": [
+  {
+   "cue": "1.town",
+   "at": 0.05,
+   "sfx": "pop",
+   "why": "The film opens on the short one in the line."
+  },
+  {
+   "cue": "1.town",
+   "p": 0.45,
+   "sfx": "blip",
+   "why": "His eyes going left and right."
+  },
+  {
+   "cue": "1.town",
+   "p": 0.8,
+   "sfx": "creak",
+   "why": "The pillager beside him bends over to look."
+  },
+  {
+   "cue": "1.goal",
+   "sfx": "whoosh",
+   "why": "Up over the trees: the whole outpost."
+  },
+  {
+   "cue": "1.goal",
+   "at": 0.6,
+   "repeat": 4,
+   "every": 0.42,
+   "sfx": "step_grass",
+   "why": "The captain walking the line."
+  },
+  {
+   "cue": "2.raid",
+   "sfx": "whoosh",
+   "why": "Back to the town, and the raid coming down the road."
+  },
+  {
+   "cue": "2.raid",
+   "at": 0.3,
+   "repeat": 8,
+   "every": 0.22,
+   "trim": -1,
+   "sfx": "step_stone",
+   "why": "Villagers running at the lens."
+  },
+  {
+   "cue": "2.raid",
+   "at": 1.2,
+   "repeat": 4,
+   "every": 0.5,
+   "trim": -1,
+   "sfx": "stomp",
+   "why": "The pack behind them."
+  },
+  {
+   "cue": "2.took",
+   "sfx": "swish",
+   "why": "Cut: the loaf."
+  },
+  {
+   "cue": "2.took",
+   "word": "bread",
+   "sfx": "rustle",
+   "why": "A loaf under an arm."
+  },
+  {
+   "cue": "2.took",
+   "word": "they",
+   "nth": 1,
+   "at": -0.1,
+   "sfx": "swish",
+   "why": "Cut: the chest."
+  },
+  {
+   "cue": "2.took",
+   "word": "emeralds",
+   "sfx": "coins",
+   "why": "A chest of emeralds going out of the door."
+  },
+  {
+   "cue": "2.took",
+   "word": "once",
+   "at": -0.1,
+   "sfx": "swish",
+   "why": "Cut: the bell."
+  },
+  {
+   "cue": "2.took",
+   "word": "bell",
+   "ring": 1.2,
+   "sfx": "bell",
+   "why": "The bell, carried off over a head."
+  },
+  {
+   "cue": "2.when",
+   "sfx": "whoosh",
+   "why": "Night in the square."
+  },
+  {
+   "cue": "2.when",
+   "p": 0.5,
+   "sfx": "heartbeat",
+   "why": "Three of them back to back, waiting."
+  },
+  {
+   "cue": "2.need",
+   "sfx": "swish",
+   "why": "The elder in front of the bell."
+  },
+  {
+   "cue": "2.need",
+   "p": 0.7,
+   "pitch": 1.3,
+   "sfx": "blip",
+   "why": "A butterfly, and one boy watching it."
+  },
+  {
+   "cue": "3.asked",
+   "sfx": "whoosh",
+   "why": "From over the elder's head."
+  },
+  {
+   "cue": "3.asked",
+   "word": "everyone",
+   "at": 0.2,
+   "repeat": 3,
+   "every": 0.07,
+   "sfx": "step_stone",
+   "why": "Everyone takes one step back."
+  },
+  {
+   "cue": "3.me",
+   "sfx": "swish",
+   "why": "His face."
+  },
+  {
+   "cue": "3.me",
+   "p": 0.4,
+   "pitch": 1.3,
+   "sfx": "plink",
+   "why": "The butterfly lands on his nose."
+  },
+  {
+   "cue": "3.me",
+   "p": 0.75,
+   "sfx": "bonk",
+   "why": "He sees where everybody went."
+  },
+  {
+   "cue": "4.outpost",
+   "sfx": "whoosh_low",
+   "why": "The outpost at night."
+  },
+  {
+   "cue": "4.outpost",
+   "p": 0.55,
+   "dur": 0.5,
+   "sfx": "rustle",
+   "why": "The bush with a boy in it."
+  },
+  {
+   "cue": "4.guard",
+   "sfx": "swish",
+   "why": "The guard."
+  },
+  {
+   "cue": "4.guard",
+   "at": 0.4,
+   "repeat": 4,
+   "every": 0.3,
+   "trim": -1,
+   "sfx": "step_grass",
+   "why": "Tiptoe behind his back."
+  },
+  {
+   "cue": "4.start",
+   "at": 0.15,
+   "repeat": 5,
+   "every": 0.28,
+   "sfx": "step_stone",
+   "why": "Along the tents on his toes."
+  },
+  {
+   "cue": "4.clothes",
+   "sfx": "swish",
+   "why": "The washing line."
+  },
+  {
+   "cue": "4.clothes",
+   "word": "grabbed",
+   "dur": 0.4,
+   "sfx": "rustle",
+   "why": "The coat comes down off the line."
+  },
+  {
+   "cue": "4.clothes",
+   "word": "grabbed",
+   "at": 0.5,
+   "sfx": "pop",
+   "why": "And he is wearing it."
+  },
+  {
+   "cue": "5.grey",
+   "sfx": "whoosh",
+   "why": "By the fire: two faces."
+  },
+  {
+   "cue": "5.grey",
+   "p": 0.4,
+   "dur": 0.6,
+   "sfx": "crackle",
+   "why": "The campfire."
+  },
+  {
+   "cue": "5.grey",
+   "p": 0.8,
+   "trim": -3,
+   "sfx": "buzz",
+   "why": "Grey, and pink: it does not match."
+  },
+  {
+   "cue": "5.ash",
+   "sfx": "swish",
+   "why": "Straight down on the ash heap."
+  },
+  {
+   "cue": "5.ash",
+   "word": "rolled",
+   "dur": 0.7,
+   "sfx": "rustle",
+   "why": "Rolling in it like a dog."
+  },
+  {
+   "cue": "5.ash",
+   "word": "ash",
+   "dur": 0.5,
+   "sfx": "debris",
+   "why": "Ash going up."
+  },
+  {
+   "cue": "5.ash",
+   "word": "campfire",
+   "at": 0.2,
+   "sfx": "ding",
+   "why": "A grey face, very pleased."
+  },
+  {
+   "cue": "6.line",
+   "sfx": "whoosh",
+   "why": "Morning, the line."
+  },
+  {
+   "cue": "6.line",
+   "at": 0.5,
+   "repeat": 4,
+   "every": 0.4,
+   "sfx": "step_stone",
+   "why": "The captain walks along it."
+  },
+  {
+   "cue": "6.stare",
+   "at": 0.1,
+   "sfx": "creak",
+   "why": "One of them bends right over him."
+  },
+  {
+   "cue": "6.stare",
+   "p": 0.55,
+   "sfx": "heartbeat",
+   "why": "He looks straight ahead."
+  },
+  {
+   "cue": "6.new",
+   "sfx": "swish",
+   "why": "The two of them from the front."
+  },
+  {
+   "cue": "6.new",
+   "word": "grunted",
+   "trim": -3,
+   "sfx": "stomp",
+   "why": "HRM."
+  },
+  {
+   "cue": "6.new",
+   "word": "back",
+   "pitch": 0.8,
+   "sfx": "blip",
+   "why": "hrm?"
+  },
+  {
+   "cue": "6.new",
+   "word": "friends",
+   "sfx": "ding",
+   "why": "Friends."
+  },
+  {
+   "cue": "6.smart",
+   "sfx": "swish",
+   "why": "The rock."
+  },
+  {
+   "cue": "6.smart",
+   "at": 0.15,
+   "dur": 0.4,
+   "sfx": "slide_up",
+   "why": "A rock the size of a stove, over his head."
+  },
+  {
+   "cue": "6.smart",
+   "word": "not",
+   "at": 0.3,
+   "sfx": "thud",
+   "why": "He lets go of it to scratch."
+  },
+  {
+   "cue": "6.smart",
+   "word": "not",
+   "at": 0.5,
+   "dur": 0.4,
+   "sfx": "debris",
+   "why": "Bits of rock."
+  },
+  {
+   "cue": "6.wall",
+   "sfx": "swish",
+   "why": "The wall."
+  },
+  {
+   "cue": "6.wall",
+   "at": 0.35,
+   "repeat": 4,
+   "every": 0.71,
+   "sfx": "bonk",
+   "why": "Into the wall."
+  },
+  {
+   "cue": "7.bow",
+   "sfx": "whoosh",
+   "why": "Marching practice."
+  },
+  {
+   "cue": "7.bow",
+   "at": 0.25,
+   "repeat": 5,
+   "every": 0.45,
+   "sfx": "step_stone",
+   "why": "In step, all but one."
+  },
+  {
+   "cue": "7.hat",
+   "word": "tripped",
+   "sfx": "boing",
+   "why": "He trips over his own boots."
+  },
+  {
+   "cue": "7.hat",
+   "word": "knocked",
+   "trim": -3,
+   "sfx": "hit",
+   "why": "Head first into the captain's back."
+  },
+  {
+   "cue": "7.hat",
+   "word": "banner",
+   "dur": 0.5,
+   "sfx": "slide_down",
+   "why": "The banner turns over in the air."
+  },
+  {
+   "cue": "7.point",
+   "word": "turned",
+   "sfx": "swish",
+   "why": "The captain turns round."
+  },
+  {
+   "cue": "7.point",
+   "word": "pointed",
+   "sfx": "pop",
+   "why": "He points at the one beside him."
+  },
+  {
+   "cue": "7.pond",
+   "sfx": "whoosh",
+   "why": "The pen."
+  },
+  {
+   "cue": "7.pond",
+   "at": 0.5,
+   "repeat": 3,
+   "every": 0.5,
+   "dur": 0.3,
+   "sfx": "scrape",
+   "why": "Scrubbing a ravager."
+  },
+  {
+   "cue": "7.pond",
+   "p": 0.75,
+   "trim": -3,
+   "sfx": "splash",
+   "why": "Suds."
+  },
+  {
+   "cue": "8.night",
+   "sfx": "whoosh_low",
+   "why": "Night again."
+  },
+  {
+   "cue": "8.night",
+   "at": 0.3,
+   "repeat": 5,
+   "every": 0.3,
+   "sfx": "step_stone",
+   "why": "Across the yard between sleepers."
+  },
+  {
+   "cue": "8.table",
+   "sfx": "swish",
+   "why": "In through the tower's window."
+  },
+  {
+   "cue": "8.table",
+   "at": 0.3,
+   "repeat": 2,
+   "every": 0.25,
+   "sfx": "step_wood",
+   "why": "Up into the room."
+  },
+  {
+   "cue": "8.map",
+   "at": 0.1,
+   "sfx": "paper",
+   "why": "The map."
+  },
+  {
+   "cue": "8.map",
+   "word": "red",
+   "trim": -3,
+   "sfx": "sting",
+   "why": "His town, with a red X on it."
+  },
+  {
+   "cue": "8.dawn",
+   "sfx": "swish",
+   "why": "Low over the map."
+  },
+  {
+   "cue": "8.dawn",
+   "word": "tomorrow",
+   "repeat": 3,
+   "every": 0.3,
+   "sfx": "tick",
+   "why": "Tomorrow, before sunrise."
+  },
+  {
+   "cue": "8.dawn",
+   "word": "bell",
+   "ring": 0.8,
+   "trim": -3,
+   "sfx": "bell",
+   "why": "The bell on the paper, crossed out."
+  },
+  {
+   "cue": "8.warn",
+   "at": 0.3,
+   "sfx": "heartbeat",
+   "why": "His face in the lantern light."
+  },
+  {
+   "cue": "8.ravager",
+   "sfx": "whoosh_low",
+   "why": "Down into the pen."
+  },
+  {
+   "cue": "8.ravager",
+   "p": 0.5,
+   "trim": -3,
+   "sfx": "stomp",
+   "why": "The beast, asleep, breathing."
+  },
+  {
+   "cue": "8.window",
+   "sfx": "swish",
+   "why": "Up at the window from the ground."
+  },
+  {
+   "cue": "8.window",
+   "word": "climbed",
+   "sfx": "creak",
+   "why": "A leg over the sill."
+  },
+  {
+   "cue": "8.window",
+   "word": "window",
+   "dur": 0.4,
+   "sfx": "rustle",
+   "why": "Hanging by his hands."
+  },
+  {
+   "cue": "9.captain",
+   "at": 0.1,
+   "sfx": "drop",
+   "why": "The captain, right underneath."
+  },
+  {
+   "cue": "9.done",
+   "at": 0.08,
+   "sfx": "thud",
+   "why": "He lands on his seat at the captain's boots."
+  },
+  {
+   "cue": "9.done",
+   "at": 0.4,
+   "sfx": "heartbeat",
+   "why": "Finished."
+  },
+  {
+   "cue": "9.banner",
+   "sfx": "swish",
+   "why": "From the side."
+  },
+  {
+   "cue": "9.banner",
+   "p": 0.5,
+   "sfx": "place",
+   "why": "The pole goes into his hands."
+  },
+  {
+   "cue": "9.rule",
+   "sfx": "whoosh",
+   "why": "He walks a few steps with it."
+  },
+  {
+   "cue": "9.rule",
+   "at": 0.4,
+   "repeat": 5,
+   "every": 0.3,
+   "sfx": "step_stone",
+   "why": "Five of them get up and follow."
+  },
+  {
+   "cue": "9.rule",
+   "word": "it",
+   "at": -0.1,
+   "sfx": "swish",
+   "why": "Up the pole."
+  },
+  {
+   "cue": "9.rule",
+   "word": "only",
+   "dur": 0.6,
+   "sfx": "sparkle",
+   "why": "The cloth against the stars: he is working it out."
+  },
+  {
+   "cue": "9.grunt",
+   "at": 0.25,
+   "trim": -3,
+   "sfx": "stomp",
+   "why": "HRM."
+  },
+  {
+   "cue": "9.grunt",
+   "word": "best",
+   "pitch": 0.8,
+   "sfx": "blip",
+   "why": "hrm."
+  },
+  {
+   "cue": "9.lead",
+   "sfx": "whoosh",
+   "why": "Back out through the gate."
+  },
+  {
+   "cue": "9.lead",
+   "at": 0.3,
+   "sfx": "clank",
+   "why": "The gate, open."
+  },
+  {
+   "cue": "9.lead",
+   "word": "on",
+   "trim": -3,
+   "sfx": "sting",
+   "why": "On his own town."
+  },
+  {
+   "cue": "10.march",
+   "sfx": "whoosh_low",
+   "why": "The march."
+  },
+  {
+   "cue": "10.march",
+   "at": 0.2,
+   "repeat": 10,
+   "every": 0.3,
+   "sfx": "step_grass",
+   "why": "Boots, a great many."
+  },
+  {
+   "cue": "10.march",
+   "word": "ravager",
+   "repeat": 2,
+   "every": 0.5,
+   "trim": -3,
+   "sfx": "stomp",
+   "why": "One ravager."
+  },
+  {
+   "cue": "10.lights",
+   "sfx": "swish",
+   "why": "The lights of the town."
+  },
+  {
+   "cue": "10.lights",
+   "word": "lights",
+   "trim": -6,
+   "sfx": "chime",
+   "why": "One window brighter than the rest."
+  },
+  {
+   "cue": "10.lights",
+   "word": "mum",
+   "dur": 0.6,
+   "sfx": "sparkle",
+   "why": "His mum left one on.",
+   "trim": -4
+  },
+  {
+   "cue": "10.idea",
+   "word": "idea",
+   "sfx": "pop",
+   "why": "An idea."
+  },
+  {
+   "cue": "10.idea",
+   "word": "not",
+   "dur": 0.4,
+   "sfx": "slide_down",
+   "why": "Not a good one."
+  },
+  {
+   "cue": "11.left",
+   "word": "left",
+   "sfx": "swish",
+   "why": "The banner turns left."
+  },
+  {
+   "cue": "11.follow",
+   "sfx": "whoosh",
+   "why": "From higher."
+  },
+  {
+   "cue": "11.follow",
+   "at": 0.3,
+   "repeat": 7,
+   "every": 0.28,
+   "sfx": "step_grass",
+   "why": "Pair after pair round the same corner."
+  },
+  {
+   "cue": "11.again",
+   "word": "left",
+   "sfx": "swish",
+   "why": "Left again."
+  },
+  {
+   "cue": "11.again",
+   "word": "and",
+   "at": -0.08,
+   "pitch": 1.1,
+   "sfx": "swish",
+   "why": "And again."
+  },
+  {
+   "cue": "11.again",
+   "word": "again",
+   "nth": 1,
+   "sfx": "pop",
+   "why": "The third corner."
+  },
+  {
+   "cue": "11.again",
+   "word": "and",
+   "nth": 1,
+   "at": -0.08,
+   "pitch": 1.2,
+   "sfx": "swish",
+   "why": "And again."
+  },
+  {
+   "cue": "11.again",
+   "word": "again",
+   "nth": 2,
+   "sfx": "boing",
+   "why": "The head of the line meets its own tail."
+  },
+  {
+   "cue": "11.night",
+   "sfx": "whoosh_low",
+   "why": "Much later."
+  },
+  {
+   "cue": "11.night",
+   "at": 0.3,
+   "repeat": 3,
+   "every": 0.4,
+   "sfx": "step_grass",
+   "why": "Tired boots."
+  },
+  {
+   "cue": "12.charge",
+   "sfx": "riser",
+   "why": "Sunrise: something in the fog.",
+   "at": -0.05
+  },
+  {
+   "cue": "12.sun",
+   "at": 0.3,
+   "dur": 1.2,
+   "sfx": "gust",
+   "why": "Fog across the track."
+  },
+  {
+   "cue": "12.sun",
+   "word": "tower",
+   "trim": -3,
+   "sfx": "sting",
+   "why": "A tower."
+  },
+  {
+   "cue": "12.charge",
+   "word": "yelled",
+   "trim": -4,
+   "sfx": "hit",
+   "why": "The captain's arm goes up."
+  },
+  {
+   "cue": "12.charge",
+   "word": "charged",
+   "dur": 0.8,
+   "sfx": "cheer",
+   "why": "They charge."
+  },
+  {
+   "cue": "12.charge",
+   "at": 0.7,
+   "repeat": 5,
+   "every": 0.16,
+   "sfx": "step_grass",
+   "why": "Running past him."
+  },
+  {
+   "cue": "12.smash",
+   "at": 0.28,
+   "sfx": "crack",
+   "why": "The gate goes flat."
+  },
+  {
+   "cue": "12.smash",
+   "at": 0.6,
+   "dur": 0.5,
+   "sfx": "debris",
+   "why": "Logs and bits."
+  },
+  {
+   "cue": "12.smash",
+   "word": "burned",
+   "sfx": "fire_whoosh",
+   "why": "The tower goes up."
+  },
+  {
+   "cue": "12.smash",
+   "word": "ravager",
+   "at": 0.1,
+   "sfx": "break",
+   "why": "The kitchen."
+  },
+  {
+   "cue": "12.smash",
+   "word": "kitchen",
+   "trim": -3,
+   "sfx": "stomp",
+   "why": "The beast with its head in the stall."
+  },
+  {
+   "cue": "12.cheer",
+   "at": 0.1,
+   "dur": 0.8,
+   "sfx": "cheer",
+   "why": "Arms up."
+  },
+  {
+   "cue": "12.cheer",
+   "word": "then",
+   "dur": 0.5,
+   "sfx": "slide_down",
+   "why": "The arms come down."
+  },
+  {
+   "cue": "12.own",
+   "at": 0.05,
+   "sfx": "drop",
+   "why": "Their own outpost."
+  },
+  {
+   "cue": "12.own",
+   "p": 0.6,
+   "dur": 0.6,
+   "sfx": "crackle",
+   "why": "Only the fire."
+  },
+  {
+   "cue": "13.look",
+   "word": "tower",
+   "at": -0.1,
+   "sfx": "swish",
+   "why": "His head turns to the tower."
+  },
+  {
+   "cue": "13.look",
+   "word": "banner",
+   "at": -0.1,
+   "sfx": "swish",
+   "why": "To the banner."
+  },
+  {
+   "cue": "13.look",
+   "word": "me",
+   "trim": -4,
+   "sfx": "boom",
+   "why": "Then at me."
+  },
+  {
+   "cue": "13.rain",
+   "at": 0.2,
+   "repeat": 5,
+   "every": 0.2,
+   "pitchStep": 1.05,
+   "sfx": "plink",
+   "why": "The first drops."
+  },
+  {
+   "cue": "13.rain",
+   "word": "rain",
+   "dur": 0.9,
+   "sfx": "gust",
+   "why": "Then all of it."
+  },
+  {
+   "cue": "13.ash",
+   "at": 0.2,
+   "repeat": 4,
+   "every": 0.3,
+   "pitchStep": 0.94,
+   "sfx": "plink",
+   "why": "The grey runs."
+  },
+  {
+   "cue": "13.ohno",
+   "at": 0.05,
+   "sfx": "heartbeat",
+   "why": "A pink face, and all of them looking at it."
+  },
+  {
+   "cue": "13.ohno",
+   "word": "no",
+   "at": 0.25,
+   "sfx": "drop",
+   "trim": -2,
+   "why": "'Oh no.'"
+  },
+  {
+   "cue": "14.sub",
+   "sfx": "zip",
+   "why": "He bolts, out through the broken gate."
+  },
+  {
+   "cue": "14.sub",
+   "at": 0.1,
+   "sfx": "step_grass",
+   "repeat": 9,
+   "every": 0.19,
+   "why": "His boots on the track, fast."
+  },
+  {
+   "cue": "14.sub",
+   "at": 0.15,
+   "sfx": "cheer",
+   "dur": 1.5,
+   "trim": -3,
+   "why": "All of them, after him."
+  },
+  {
+   "cue": "14.sub",
+   "at": 0.5,
+   "sfx": "stomp",
+   "repeat": 3,
+   "every": 0.45,
+   "trim": -3,
+   "why": "The ravager, after him too."
+  },
+  {
+   "cue": "14.sub",
+   "word": "subscribe",
+   "sfx": "ding",
+   "why": "The sign over his head."
+  }
+ ]
+}

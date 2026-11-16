@@ -192,6 +192,9 @@ SAY = {
     "pillager": "P IH L IH JH ER",
     "spyglass": "S P AY G L AE S",
     "golem": "G OW L AH M",
+    "hummed": "HH AH M D",
+    "uncrossed": "AH N K R AO S T",
+    "sixtysix": "S IH K S T IY S IH K S",
 }
 
 def align(pcm16k, words):
