@@ -63,7 +63,15 @@ type A = Partial<MinecraftAvatarProps>;
  * Faces for a kid: smile grin laugh frown uneasy brave fear wow ouch calm. Change the face on the cut.
  */
 export const Hero: React.FC<A> = (p) => (
-  <MinecraftAvatar scale={KID} outfit="tee" skin="#dba47c" hair="#3a2415" colors={{ torso: "#ff7a1a", arms: "#ff7a1a", legs: "#2b2f6a" }} blink {...p} />
+  <MinecraftAvatar
+    scale={KID}
+    outfit="tee"
+    skin="#dba47c"
+    hair="#3a2415"
+    colors={{ torso: "#e8a21c", arms: "#e8a21c", legs: "#3b3fa0" }}
+    blink
+    {...p}
+  />
 );
 
 /** The best friend: the one who is told first, and the one who says stop. A second colour, quieter than the teller's. */
