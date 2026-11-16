@@ -10,6 +10,7 @@ delete one unless he takes it back.
 | When | What |
 |---|---|
 | 2026-11-14 | 11+ subscribers. The two superpower films: about 1.3k views each, 873–875 engaged viewers, 63–65% stayed to watch. |
+| 2026-11-15 | **Monster Village part 1 reached about 5k views**, his best by far, and YouTube kept pushing it. He does not know why: "i have no idea what i did there". He wants more like it. The study of why, and the recipe that came out of it, are in [`reference/monster-village/README.md`](reference/monster-village/README.md), "Why this one travelled". |
 | 2026-11-14 | His target: **70% or more stay to watch**. His words: it "will unlock more viewers"; "just a small adjustment and we are near to getting out of that 1k view jail". |
 
 The format stays. An outside review he trusts said to keep this format and keep improving it, and he agrees. Do not
@@ -219,3 +220,9 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   "subscribe" in it.** It is in `reference/we-are-all-cats/`. The cat and dog players, villagers and golems are in the
   pack (`catsdogs.tsx`; `PACK.md`, "Cats and dogs"), and the template's `kit.tsx` passes them on. What he found funny
   was a fight in which nobody touches anybody, told in pictures: the page in `reference/` lists where the jokes are.
+- **2026-11-15, "lets make more".** He asked for ideas built on his outlines, on the reference ideas, and on Monster
+  Village part 1, which got about 5k views: "study that short and make a similar one … so we can make a bunch of it
+  to escape 1k view jail! and increase our stayed to watch to atleast above 70%". The study is in
+  `reference/monster-village/README.md`. Six ideas made to its recipe were put to him; they are in
+  `outlines/ideas-2026-11-15.md` with what he said about each. **Pitch from that recipe first: a famous mob as family,
+  the teller the odd one out, and the players as the danger.**
