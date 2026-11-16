@@ -273,8 +273,7 @@ export const scene3 = storyScene(timing, {
       note: "The board, the drawing of the house still on it, and the sign coming up over it. The cliffhanger is a sound off-camera, so the last picture has to be the thing that is listening for it.",
       stage: (t) => (
         <>
-          <DrawnHouse at={SPOT.at(0, 1.9, -3.68)} scale={1.1} />
-          <SubscribeSign position={SPOT.at(0.2, 3.42, -3.58)} rotationY={0} scale={0.76} tilt={0.03 + Math.sin(t * 9) * 0.01} />
+          <SubscribeSign position={SPOT.at(0.2, 2.15, -3.5)} rotationY={0} scale={1.0} tilt={0.03 + Math.sin(t * 9) * 0.01} />
           <Hero position={SPOT.at(0, 0, -2.2)} rotationY={NORTH} animation="idle" face="wow" />
         </>
       ),
@@ -286,8 +285,7 @@ export const scene3 = storyScene(timing, {
       note: "SPLIT: the ask, tight on the drawing and the sign together, so the last frame is the house that was on the wall all along and the reason to stay.",
       stage: (t) => (
         <>
-          <DrawnHouse at={SPOT.at(0.2, 2.15, -3.68)} scale={1.25} />
-          <SubscribeSign position={SPOT.at(0.2, 3.5, -3.6)} rotationY={0} scale={0.84} tilt={0.04 + Math.sin(t * 9) * 0.012} />
+          <SubscribeSign position={SPOT.at(0.2, 2.3, -3.5)} rotationY={0} scale={1.15} tilt={0.04 + Math.sin(t * 9) * 0.012} />
         </>
       ),
     },
