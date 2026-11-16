@@ -169,27 +169,6 @@ export const scene1 = storyScene(timing, {
       },
     },
     {
-      // REMASTER: the boy is not absent for this. The line is his alibi; the picture shows him hearing it.
-      cue: "2.guard",
-      cut: 0.95,
-      ...cam.push({ on: f(-4.85, 0.42, 0.3), dist: 2.9, to: 2.45, yaw: -14, pitch: 27, fov: 44 }),
-      zone: Z.fort,
-      look: NIGHT4,
-      note: "THE TELLER, cut back to: the boy the line cannot sleep, flat on the floor of his cage on his back, one arm across his eyes. A guard walks the night shift past the bars. The one who cannot sleep is out in the yard, and the one who can is in a cage.",
-      stage: (t) => {
-        const twitch = bump(t, 0.55, 0.28);
-        return (
-          <>
-            <Yard t={t} plug lit={0} hero="none" sleeper patrol />
-            <Flat position={f(-4.25, 0.08, 0.3)} rotationY={EAST}>
-              <Hero animation="idle" face="sleepy" blink={false} breath={0.45} headYaw={0.12 * twitch} />
-            </Flat>
-            <Fill on={f(-5.2, 0.55, 0.3)} yaw={-14} power={3.2} d={2.4} />
-          </>
-        );
-      },
-    },
-    {
       cue: "2.sheep",
       ...cam.top({ on: r(-1.2, 0.7, -1.3), height: 3.0, to: 2.7 }),
       zone: Z.room,
