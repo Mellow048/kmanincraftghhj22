@@ -40,7 +40,6 @@ same rate.
 # clip 04-fun
 [4.power]    So I stopped being lied to. That is a strange kind of power.
 [4.class]    I knew who broke the window before the teacher did.
-[4.lunch]    At lunch I sat alone, but I was right.
 
 # clip 05-wish
 [5.one]      There was one person I wanted to check.
