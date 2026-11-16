@@ -51,7 +51,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.zombie",
-      ...cam.push({ on: [0.25, 1.15, 1.9], dist: 3.9, to: 3.4, yaw: 200, pitch: 5, fov: 46 }),
+      ...cam.push({ on: [0.25, 1.15, 1.9], dist: 3.5, to: 3.2, yaw: 197, pitch: 5, fov: 46 }),
       zone: "farm",
       look: "overworld-day",
       note: "From inside the room, over the hard hat: the glass, and the zombie on the other side of it, green, looking straight in.",
@@ -92,7 +92,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.tag",
-      ...cam.push({ on: [0, 1.7, KEV[2]], dist: 1.9, to: 1.7, yaw: 156, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [0, 1.45, KEV[2]], dist: 2.0, to: 1.8, yaw: 156, pitch: 2, fov: 44 }),
       zone: "farm",
       look: "overworld-day",
       note: "He rolls his eyes up at his own tag, and back down at us.",

@@ -147,7 +147,7 @@ export const scene2 = storyScene(timing, {
         <>
           <Farm />
           <Me position={ME} rotationY={SOUTH - 0.25} nod={Math.sin(tw(t, 0.5, 1.1) * Math.PI) * 0.3} />
-          <Kevin />
+          <Kevin tag={false} />
         </>
       ),
     },
@@ -178,7 +178,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <Farm />
-          <Me position={ME} rotationY={SOUTH + 0.2} carry={<Poppy position={[0, 0.02, 0.04]} scale={1.2} />} nod={Math.sin(tw(t, 0.6, 1.2) * Math.PI) * 0.3} />
+          <Me position={ME} rotationY={SOUTH + 0.2} carry={<Poppy position={[-0.14, 0.07, 0.1]} rotation={[0, 0, 1.3]} scale={1.15} />} nod={Math.sin(tw(t, 0.6, 1.2) * Math.PI) * 0.3} />
           {Array.from({ length: 7 }, (_, i) => (
             <Poppy key={i} position={[-0.6 + (i % 4) * 0.16, 0.08, 0.45 + (i % 3) * 0.14]} rotation={[0, i * 1.1, 1.35]} scale={1.1} />
           ))}
