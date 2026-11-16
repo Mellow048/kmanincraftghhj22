@@ -17,7 +17,7 @@ export const film = defineFilm({
   id: "in-this-town-i-was-told-to-sit",
   title: "In This Town, I Was Told to Sit",
   topic: "in-this-town",
-  cut: "short",
+  cut: "middle",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-i-was-told-to-sit/narration.mp3" },

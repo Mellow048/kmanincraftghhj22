@@ -169,6 +169,7 @@ def find_raw(slug: str, clip: str):
 # Words the aligner's dictionary lacks, in its own phones. Without them a whole clip is timed by guesswork and the
 # captions drift off the voice. Add a word here when `build` says it does not know it.
 SAY = {
+    "pickaxe": "P IH K AE K S",
     "creeper": "K R IY P ER",
     "purred": "P ER D",
     "purr": "P ER",

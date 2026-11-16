@@ -58,48 +58,66 @@ first time to save his owner's bed, and finds out what the bed, and "sit", were 
 [1.days]      That was four hundred days ago.
 [1.moved]     I had not moved.
 [1.owner]     My owner said one word, and walked into the forest.
-[2.creeper]   At night, a creeper stood next to me. We did not talk. He was a good listener.
-[2.parrot]    And there was a parrot. He could hiss like a creeper. Nobody liked the parrot.
+[2.creeper]   At night, a creeper stood next to me.
+[2.talk]      We did not talk. He was a good listener.
+[2.parrot]    And there was a parrot.
+[2.hiss]      He could hiss like a creeper. Nobody liked the parrot.
+
+# clip 01b-town wait 0.3
 [3.first]     There was no town when I sat down.
 [3.built]     Then villagers came, and built one around me.
-[3.farmer]    The farmer thought I was a statue. He left a loaf on my head every morning.
+[3.farmer]    The farmer thought I was a statue.
+[3.loaf]      He left a loaf on my head every morning.
 [3.sign]      They put up a sign. I cannot read. I think it says my name.
 
 # clip 02-sat wait 0.3
 [4.job]       When a dog is told to sit, he sits. That is the whole job.
-[4.skel]      Skeletons walked past. I am a dog. I am made to chase skeletons.
+[4.skel]      Skeletons walked past.
+[4.dog]       I am a dog. I am made to chase skeletons.
 [4.ran]       I sat. They ran anyway.
-[4.rain]      It rained. I sat. It snowed. I sat.
+[4.rain]      It rained. I sat.
+[4.snow]      It snowed. I sat.
+
+# clip 02b-things wait 0.3
 [5.forgot]    My owner left some things behind. He was always forgetting things.
 [5.bed]       He left his bed, right next to me. Nobody ever slept in it.
 [5.bones]     He left a chest full of bones. I think it was his lunch.
 [5.torch]     He put torches all around me. He knew I did not like the dark.
 [5.roof]      He built a roof, just over me. He was not good at building.
-[5.took]      He took a sword, a pickaxe, and twelve green eyes. I do not know what the eyes were for.
+[5.took]      He took a sword, a pickaxe, and twelve green eyes.
+[5.eyes]      I do not know what the eyes were for.
 [5.forgotme]  And then he forgot me too. That is what I thought.
 
 # clip 03-players wait 0.4
 [6.day]       On day four hundred, two players walked into town.
 [6.chest]     One opened the chest. "Bones," he said. "Junk."
-[6.bed]       The other one looked at the bed. "Free bed," he said. And he took out an axe.
-[6.growl]     I growled. They laughed. "It is sitting. A sitting dog does not bite."
+[6.bed]       The other one looked at the bed. "Free bed," he said.
+[6.took]      And he took out an axe.
+[6.growl]     I growled. They laughed.
+[6.bite]      "It is sitting. A sitting dog does not bite."
 [6.hiss]      Then the parrot did the creeper.
 [6.jump]      They jumped a block in the air. Then they saw the parrot.
 [6.axe]       And the axe went up, over the bed.
 [7.his]       I did not know what a bed was for. I only knew it was his.
 [7.good]      I had been a good boy for four hundred days.
+
+# clip 03b-stood wait 0.5
 [7.stood]     I stood up.
 [7.legs]      It took three tries.
 [7.front]     I stood in front of the bed, and I showed him my teeth.
-[7.move]      "Move, dog," he said. And the axe came up over me.
+[7.move]      "Move, dog," he said.
+[7.over]      And the axe came up over me.
 [7.hiss2]     Then there was a hiss.
 [7.nice]      "Nice try, parrot," he said.
 [7.not]       It was not the parrot.
 [7.gone]      They were gone before the axe hit the ground.
-[7.listener]  The creeper did not go off. He just walked back to the shade.
+[7.listener]  The creeper did not go off.
+[7.shade]     He just walked back to the shade.
 
 # clip 04-bed wait 0.5
 [8.bad]       Then I saw what I had done. I was standing.
+
+# clip 04b-light wait 0.4
 [8.light]     That is when the bed lit up.
 [8.him]       And there he was. My owner.
 [8.nothing]   No sword. No armour. No green eyes.
@@ -108,17 +126,29 @@ first time to save his owner's bed, and finds out what the bed, and "sit", were 
 [8.said]      "I said sit."
 [8.sat]       I sat so fast it hurt.
 [8.down]      Then he sat down too. Right next to me.
-[9.list]      The bed. The bones. The torches. The roof.
+
+# clip 04c-list wait 0.4
+[9.bed]       The bed.
+[9.bones]     The bones.
+[9.torch]     The torches.
+[9.roof]      The roof.
 [9.not]       He had not forgotten anything.
-[9.follow]    A dog who is not sitting follows his owner anywhere. Even somewhere he might not come back from.
+[9.follow]    A dog who is not sitting follows his owner anywhere.
+[9.even]      Even somewhere he might not come back from.
 [9.safe]      He did not leave me behind. He left me safe.
 [9.farmer]    Then the farmer came out, with loaf four hundred and one.
-[9.sign]      And he read me the sign. "Do not move him. He is waiting."
+[9.sign]      And he read me the sign.
+[9.read]      "Do not move him. He is waiting."
 
 # clip 05-come wait 0.5
-[10.still]    "It is still down there," my owner said. "And it has all my things."
+[10.still]    "It is still down there," my owner said.
+[10.things]   "And it has all my things."
 [10.look]     He looked at the forest. Then he looked at me.
 [10.word]     And he said the word I had waited four hundred days for.
+
+# clip 05b-word wait 0.5
 [10.come]     "Come."
+
+# clip 05c-sub wait 0.9
 [10.sub]      Like and subscribe for part two.
 ```
