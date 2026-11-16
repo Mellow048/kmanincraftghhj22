@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
+import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
 import { ForestEdge, Hut, Moon, Stars } from "../../../Topics/InThisTown";
 import { Houses, PLACE, WellAt } from "./kit";
 
@@ -62,6 +62,7 @@ const Ground: React.FC<{ night: boolean; warm: boolean }> = ({ night, warm }) =>
     )}
     {night ? null : <GodRay position={[-4, 7, 1]} rotation={[0, 0, 0.5]} width={6} height={14} color={warm ? "#ffd9a0" : "#fff0c8"} opacity={warm ? 0.1 : 0.05} />}
     <LightPool position={[0, 0.05, 1]} width={10} depth={10} color={night ? "#ffcf8a" : "#fff2c0"} opacity={night ? 0.2 : 0.12} />
+    <Glow position={[0, 1.6, -5.5]} size={3} color={night ? "#ffcf8a" : "#fff0c0"} opacity={night ? 0.16 : 0.08} />
     <Dust position={[0, 2.2, 1]} area={[20, 4, 22]} count={60} size={0.045} color={night ? "#ffe6c0" : "#fff7d8"} opacity={0.5} seed={3} speed={0.2} />
     <Sky night={night} />
   </group>

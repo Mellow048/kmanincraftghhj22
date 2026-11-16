@@ -14,7 +14,10 @@ import { scene9 } from "./scene9";
 /**
  * In This Town, a Stranger Moved Into My House
  *
- * TODO: the film in three sentences. Who tells it, the rule nobody explains, what the rule was hiding.
+ * A villager who sells books lists everything a rude player has done to his town in thirty days: slept in his bed and
+ * pocketed it, took the bell, dug straight down, broke his desk forty one times, put torches on his floor, built a wall.
+ * He gets every reason wrong. Then a raid comes, and the bell, the wall and the hole are what save them: the stranger
+ * built the town, brought each of them by boat and cured the teller with a golden apple. He moved into the stranger's house.
  *
  * An "In This Town" film (Topics/InThisTown): the recorded narration is the clock, and every line of
  * narration.md is one shot. Read Topics/InThisTown/README.md before changing anything here.
@@ -27,10 +30,7 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "middle",
   look: "overworld-day",
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-a-stranger-moved-into-my-house/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/in-this-town-a-stranger-moved-into-my-house/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
+  audio: { src: "audio/in-this-town-a-stranger-moved-into-my-house/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9],

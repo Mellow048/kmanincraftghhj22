@@ -206,7 +206,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.apple",
-      ...cam.push({ on: [0.55, 1.3, -2.3], dist: 7.0, to: 6.2, yaw: -16, pitch: 7, fov: 46 }),
+      ...cam.push({ on: [0.7, 1.3, -2.2], dist: 7.4, to: 6.6, yaw: -10, pitch: 7, fov: 46 }),
       zone: "wild",
       look: "overworld-night",
       note: "The burnt hut, at night. The green one stands in front of it. The stranger throws a bottle: it turns over in the air and breaks on him in a grey cloud.",
@@ -226,18 +226,18 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.gold",
-      ...cam.push({ on: [0.2, 1.42, -3.0], dist: 4.4, to: 3.8, yaw: 0, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [0.12, 1.42, -3.0], dist: 5.0, to: 4.5, yaw: 0, pitch: 3, fov: 42 }),
       zone: "wild",
       look: "overworld-night",
       note: "Close, from the side: a hand holding out an apple made of gold, shining, and the green face looking at it.",
       stage: (t) => (
         <>
           <Fill at={[0, 3, 0.5]} power={34} reach={12} color="#c9d0ff" />
-          <Green position={[-0.42, 0, -3.0]} rotationY={EAST} nod={0.15} lean={0.12 * tw(t, 0.4, 1)} />
-          <Stranger position={[0.95, 0, -3.0]} rotationY={WEST} face="smile" gaze={0} pose={posed("idle", t, { armR: [-1.5, 0, 0] })}>
+          <Green position={[-0.42, 0, -3.0]} rotationY={EAST - 0.55} nod={0.15} lean={0.12 * tw(t, 0.4, 1)} />
+          <Stranger position={[0.72, 0, -3.0]} rotationY={WEST + 0.45} face="smile" gaze={0} pose={posed("idle", t, { armR: [-1.5, 0, 0] })}>
             <GoldenApple position={[0, 0, 0.18]} scale={1.1} />
           </Stranger>
-          <Glow position={[0.28, 1.38, -2.9]} size={1.3} color="#ffd95a" opacity={0.45} />
+          <Glow position={[0.2, 1.38, -2.8]} size={1.3} color="#ffd95a" opacity={0.45} />
         </>
       ),
     },

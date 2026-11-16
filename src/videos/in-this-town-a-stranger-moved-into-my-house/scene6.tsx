@@ -114,8 +114,8 @@ export const scene6 = storyScene(timing, {
             <OldMan position={[-0.2, 0, -4.2]} rotationY={SOUTH} hmm={t > say && t < say + 0.6 ? 1 : 0} nod={t > say ? -0.25 : 0} />
             <Bubble text="DING" position={[0.5, 2.4, -4.1]} scale={0.78 * pop(t, say, 0.14)} tail={-1} />
             <Villager position={[1.3, 0, -1.9]} rotationY={0.4} robe={ROBE.brown} nod={0.6} phase={3} />
-            <Chicken position={[-0.8 + t * 0.4, 0, -1.7]} rotationY={1.57} />
-            <Villager position={[-1.5 + t * 0.4, 0, -1.7]} rotationY={EAST} walk={t * 0.5} robe={ROBE.friend} kid scale={0.7} phase={4} />
+            <Chicken position={[-0.9 + t * 0.4, 0, -2.9]} rotationY={1.57} />
+            <Villager position={[-1.6 + t * 0.4, 0, -2.9]} rotationY={EAST} walk={t * 0.5} robe={ROBE.friend} kid scale={0.7} phase={4} />
           </>
         );
       },
@@ -139,7 +139,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.hrmm",
-      ...cam.push({ on: [0, 1.9, 18.4], dist: 8.8, to: 8.0, yaw: 90, pitch: 4, fov: 46 }),
+      ...cam.push({ on: [0, 1.9, 18.3], dist: 8.6, to: 7.8, yaw: 124, pitch: 4, fov: 46 }),
       zone: "town",
       look: "overworld-day",
       note: "From the side: a very small villager and a very large head, nose to nose. He says it: HMM.",
@@ -150,7 +150,7 @@ export const scene6 = storyScene(timing, {
             <Town {...NOW} />
             <Ravager position={[0, 0, BEAST[2] + 1.6]} rotationY={NORTH} scale={1.5} jaw={0.2} head={-0.1} rider={false} />
             <Me position={[0, 0, 17.3]} rotationY={SOUTH} hmm={t > say ? 1 : 0} nod={-0.25} />
-            <Bubble text="HMM" position={[0, 2.5, 16.9]} rotationY={EAST} scale={0.8 * pop(t, say, 0.14)} tail={1} />
+            <Bubble text="HMM" position={[0, 2.5, 16.9]} rotationY={2.16} scale={0.8 * pop(t, say, 0.14)} tail={1} />
           </>
         );
       },

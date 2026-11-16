@@ -144,7 +144,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.hole",
-      ...cam.push({ on: [HOLE[0], 0.4, HOLE[2] + 0.3], dist: 6.6, to: 5.6, yaw: 180, pitch: 46, fov: 46 }),
+      ...cam.push({ on: [HOLE[0] - 0.45, 0.4, HOLE[2] + 0.3], dist: 6.6, to: 5.6, yaw: 180, pitch: 46, fov: 46 }),
       zone: "town",
       look: "overworld-day",
       note: "From over the stranger's shoulder, looking down. The leader arrives at the hole at a run and is gone into it, feet first; the banner stands on the edge for a moment and follows him. The stranger leans over and looks down.",

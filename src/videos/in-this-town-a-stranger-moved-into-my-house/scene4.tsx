@@ -137,7 +137,7 @@ export const scene4 = storyScene(timing, {
               </>
             }
           />
-          <Stranger position={[0.35 - Math.min(t * 0.5, 0.9), Math.abs(Math.sin(t * 8)) * 0.3, -1.1 - t * 0.6]} rotationY={Math.PI + 0.5} face="grin" pose={posed("idle", t, { armR: [-2.6, 0, -0.2] })}>
+          <Stranger position={[0.05 - Math.min(t * 0.4, 0.6), Math.abs(Math.sin(t * 8)) * 0.3, -1.1 - t * 0.6]} rotationY={Math.PI + 0.5} face="grin" pose={posed("idle", t, { armR: [-2.6, 0, -0.2] })}>
             <Book glow rotation={[1.2, 0, 0]} />
           </Stranger>
         </>
