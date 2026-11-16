@@ -17,8 +17,8 @@ import { BedBox, Room } from "../../../Topics/InThisTown";
  * rooms are lit by the scene's look, not by a sun outside the wall.
  */
 
-const WALL = "#cfc8b4";
-const WALL2 = "#b8c2c8";
+const WALL = "#ddd5bf";
+const WALL2 = "#c9d3d8";
 const noShadow = { castShadow: false } as const;
 
 // ----------------------------------------------------------------------------- classroom pieces
@@ -52,9 +52,9 @@ const Classroom: React.FC = () => {
   return (
     <group position={[X, 0, 0]}>
       <Vox kind="planks" position={[0, -0.05, 0]} size={[11.2, 0.1, 9.2]} tile={1} />
-      <Vox kind="wool" tint="#e6e0d0" position={[0, 3.72, 0]} size={[11.2, 0.2, 9.2]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint="#e6e0d0" position={[0, 3.72, 0]} size={[11.2, 0.2, 9.2]} tile={1} {...noShadow} />
       {/* north wall + the board */}
-      <Vox kind="wool" tint={WALL} position={[0, 1.86, -4.62]} size={[11.2, 3.9, 0.3]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[0, 1.86, -4.62]} size={[11.2, 3.9, 0.3]} tile={1} {...noShadow} />
       <Vox kind="darkPlanks" tint="#26442f" position={[0, 1.92, -4.42]} size={[4.6, 1.5, 0.08]} tile={1} />
       <Block position={[0, 2.7, -4.45]} size={[4.8, 0.14, 0.14]} color="#8a6236" />
       <Block position={[0, 1.13, -4.45]} size={[4.8, 0.1, 0.2]} color="#8a6236" />
@@ -73,14 +73,14 @@ const Classroom: React.FC = () => {
       <PixelText text="READ" position={[4.2, 2.34, -4.37]} height={0.16} color="#f2f6ee" />
       <PixelText text="BOOKS" position={[4.2, 2.02, -4.37]} height={0.14} color="#f2f6ee" />
       {/* south wall, behind the camera's corner, and west wall */}
-      <Vox kind="wool" tint={WALL} position={[0, 1.86, 4.62]} size={[11.2, 3.9, 0.3]} tile={2} {...noShadow} />
-      <Vox kind="wool" tint={WALL} position={[-5.62, 1.86, 0]} size={[0.3, 3.9, 9.2]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[0, 1.86, 4.62]} size={[11.2, 3.9, 0.3]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[-5.62, 1.86, 0]} size={[0.3, 3.9, 9.2]} tile={1} {...noShadow} />
       {/* east wall: three tall windows and the daylight outside them */}
-      <Vox kind="wool" tint={WALL} position={[5.62, 0.42, 0]} size={[0.3, 0.9, 9.2]} tile={2} {...noShadow} />
-      <Vox kind="wool" tint={WALL} position={[5.62, 3.42, 0]} size={[0.3, 0.7, 9.2]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[5.62, 0.42, 0]} size={[0.3, 0.9, 9.2]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[5.62, 3.42, 0]} size={[0.3, 0.7, 9.2]} tile={1} {...noShadow} />
       {[-3.1, 0, 3.1].map((z) => (
         <group key={z}>
-          <Vox kind="wool" tint={WALL} position={[5.62, 1.86, z + 1.72]} size={[0.3, 2.4, 0.34]} tile={2} {...noShadow} />
+          <Vox kind="wool" tint={WALL} position={[5.62, 1.86, z + 1.72]} size={[0.3, 2.4, 0.34]} tile={1} {...noShadow} />
           <Block position={[5.72, 1.9, z]} size={[0.06, 2.3, 2.9]} color="#cfe6ff" emissive="#cfe6ff" emissiveIntensity={1.1} {...noShadow} />
           <Block position={[5.64, 1.9, z]} size={[0.06, 2.4, 0.08]} color="#f4f2ea" {...noShadow} />
           <Block position={[5.64, 1.9, z]} size={[0.06, 0.08, 2.9]} color="#f4f2ea" {...noShadow} />
@@ -146,9 +146,9 @@ const Hallway: React.FC = () => {
           <Block key={`${i}-${z}`} position={[-13 + i * 2, 0.005, z]} size={[1.0, 0.02, 1.0]} color={i % 2 ? "#8a8578" : "#cfc9b8"} {...noShadow} />
         )),
       )}
-      <Vox kind="wool" tint={WALL2} position={[0, 3.32, 0]} size={[30, 0.2, 6.4]} tile={3} {...noShadow} />
-      <Vox kind="wool" tint={WALL2} position={[0, 1.66, -3.22]} size={[30, 3.3, 0.3]} tile={2} {...noShadow} />
-      <Vox kind="wool" tint="#9aa8b0" position={[0, 1.66, 3.22]} size={[30, 3.3, 0.3]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint={WALL2} position={[0, 3.32, 0]} size={[30, 0.2, 6.4]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint={WALL2} position={[0, 1.66, -3.22]} size={[30, 3.3, 0.3]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint="#9aa8b0" position={[0, 1.66, 3.22]} size={[30, 3.3, 0.3]} tile={1} {...noShadow} />
       {/* lockers along the north wall */}
       {Array.from({ length: 19 }).map((_, i) => (
         <Locker key={i} at={[-11.6 + i * 0.63, 1.32, -2.94]} color={i % 3 === 0 ? "#8a5f3a" : i % 3 === 1 ? "#3f6f8a" : "#4a7f5a"} />
@@ -213,15 +213,15 @@ const Cafeteria: React.FC = () => {
   const X = ZONE_X.cafe;
   return (
     <group position={[X, 0, 0]}>
-      <Vox kind="wool" tint="#d8cfb8" position={[0, -0.05, 0.5]} size={[16.4, 0.1, 11.4]} tile={2} />
+      <Vox kind="wool" tint="#d8cfb8" position={[0, -0.05, 0.5]} size={[16.4, 0.1, 11.4]} tile={1} />
       {Array.from({ length: 6 }).map((_, i) =>
         [-2.2, 0.9, 4].map((z) => (
           <Block key={`${i}-${z}`} position={[-6.6 + i * 2.6, 0.005, z]} size={[1.2, 0.02, 1.2]} color="#c4b89c" {...noShadow} />
         )),
       )}
-      <Vox kind="wool" tint="#e2dccc" position={[0, 3.92, 0.5]} size={[16.4, 0.2, 11.4]} tile={3} {...noShadow} />
+      <Vox kind="wool" tint="#e2dccc" position={[0, 3.92, 0.5]} size={[16.4, 0.2, 11.4]} tile={1} {...noShadow} />
       {/* north wall and the serving counter in front of it */}
-      <Vox kind="wool" tint={WALL} position={[0, 1.96, -5.12]} size={[16.4, 4, 0.3]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[0, 1.96, -5.12]} size={[16.4, 4, 0.3]} tile={1} {...noShadow} />
       <Vox kind="stoneBrick" tint="#c8c2b0" position={[0, 0.52, -4.2]} size={[13, 1.04, 1.0]} tile={1} />
       <Block position={[0, 1.08, -4.2]} size={[13.2, 0.08, 1.14]} color="#e8e2d4" />
       <Block position={[0, 1.72, -4.68]} size={[13, 0.5, 0.06]} color="#cfe6ff" opacity={0.42} transparent {...noShadow} />
@@ -237,17 +237,17 @@ const Cafeteria: React.FC = () => {
       <Tray position={[-2.2, 1.12, -4.1]} pudding={5} rotationY={0.2} />
       <Tray position={[1.4, 1.12, -4.2]} pudding={2} rotationY={-0.15} />
       {/* south wall with the big windows onto the field */}
-      <Vox kind="wool" tint={WALL} position={[0, 0.5, 6.12]} size={[16.4, 1, 0.3]} tile={2} {...noShadow} />
-      <Vox kind="wool" tint={WALL} position={[0, 3.5, 6.12]} size={[16.4, 1, 0.3]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[0, 0.5, 6.12]} size={[16.4, 1, 0.3]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[0, 3.5, 6.12]} size={[16.4, 1, 0.3]} tile={1} {...noShadow} />
       {[-5.4, -1.8, 1.8, 5.4].map((x) => (
         <Block key={x} position={[x, 2, 6.16]} size={[3.0, 2.0, 0.06]} color="#cfe6ff" emissive="#cfe6ff" emissiveIntensity={1.0} {...noShadow} />
       ))}
       {[-7.2, -3.6, 0, 3.6, 7.2].map((x) => (
-        <Vox key={x} kind="wool" tint={WALL} position={[x, 2, 6.14]} size={[0.36, 3, 0.3]} tile={2} {...noShadow} />
+        <Vox key={x} kind="wool" tint={WALL} position={[x, 2, 6.14]} size={[0.36, 3, 0.3]} tile={1} {...noShadow} />
       ))}
       {/* the side walls */}
-      <Vox kind="wool" tint={WALL} position={[-8.22, 1.96, 0.5]} size={[0.3, 4, 11.4]} tile={2} {...noShadow} />
-      <Vox kind="wool" tint={WALL} position={[8.22, 1.96, 0.5]} size={[0.3, 4, 11.4]} tile={2} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[-8.22, 1.96, 0.5]} size={[0.3, 4, 11.4]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint={WALL} position={[8.22, 1.96, 0.5]} size={[0.3, 4, 11.4]} tile={1} {...noShadow} />
       {/* tables: hers is the one by the window, east and north of the middle */}
       <LongTable at={[-4.6, 0, 0.6]} />
       <LongTable at={[4.6, 0, 0.6]} />
@@ -314,12 +314,12 @@ const Gym: React.FC = () => {
           {...noShadow}
         />
       ))}
-      <Vox kind="wool" tint="#2a2a3a" position={[0, 6.1, 0]} size={[18.4, 0.3, 14.4]} tile={4} {...noShadow} />
+      <Vox kind="wool" tint="#2a2a3a" position={[0, 6.1, 0]} size={[18.4, 0.3, 14.4]} tile={2} {...noShadow} />
       {/* the walls: dark panelled, with the school colours on them */}
-      <Vox kind="wool" tint="#31404a" position={[0, 3.05, -7.12]} size={[18.4, 6.1, 0.3]} tile={3} {...noShadow} />
-      <Vox kind="wool" tint="#31404a" position={[0, 3.05, 7.12]} size={[18.4, 6.1, 0.3]} tile={3} {...noShadow} />
-      <Vox kind="wool" tint="#31404a" position={[-9.12, 3.05, 0]} size={[0.3, 6.1, 14.4]} tile={3} {...noShadow} />
-      <Vox kind="wool" tint="#31404a" position={[9.12, 3.05, 0]} size={[0.3, 6.1, 14.4]} tile={3} {...noShadow} />
+      <Vox kind="wool" tint="#31404a" position={[0, 3.05, -7.12]} size={[18.4, 6.1, 0.3]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint="#31404a" position={[0, 3.05, 7.12]} size={[18.4, 6.1, 0.3]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint="#31404a" position={[-9.12, 3.05, 0]} size={[0.3, 6.1, 14.4]} tile={1} {...noShadow} />
+      <Vox kind="wool" tint="#31404a" position={[9.12, 3.05, 0]} size={[0.3, 6.1, 14.4]} tile={1} {...noShadow} />
       <Block position={[0, 4.6, -6.94]} size={[6.4, 1.0, 0.06]} color="#e63a3a" {...noShadow} />
       <PixelText text="PROM" position={[0, 4.6, -6.88]} height={0.46} />
       {/* the stage at the north end, with the DJ table on it */}

@@ -17,21 +17,21 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "9.night",
-      ...cam.push({ on: [P("gym", 0, 1.15, 0.9)[0], 1.15, 0.9], dist: 8.4, to: 7.5, yaw: -21, pitch: 13, fov: 53 }),
+      ...cam.push({ on: [124.00, 1.10, 0.90], dist: 5.95, to: 5.35, yaw: -29.2, pitch: 15.6, fov: 50 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'Prom night. Loud music. Shoes too tight': the whole gym. Bunting, the ball, kids dancing badly, and him at the edge with one shoe half off.",
       stage: (t, { p }) => (
         <>
           <Me position={ME_EDGE} rotationY={0.9} animation="sit" face="worried" />
           <Her position={HER_STAND} rotationY={-0.5} animation="idle" face="neutral" />
           {[
-            [-2.2, -3.4, 0],
-            [1.8, -2.8, 1],
-            [3.4, 1.2, 2],
-            [-1.4, 1.6, 3],
-            [0.9, 3.6, 4],
-            [-4.6, -1.2, 5],
+            [-1.1, -1.2, 0],
+            [1.0, -2.0, 1],
+            [1.3, 0.6, 2],
+            [-1.2, 1.9, 3],
+            [0.2, 2.8, 4],
+            [-2.0, -0.2, 5],
           ].map(([x, z, n], i) => (
             <Kid
               key={i}
@@ -47,9 +47,9 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.mirror",
-      ...cam.push({ on: [MIRROR_ME[0] - 0.05, 1.15, MIRROR_ME[2]], dist: 2.4, to: 1.95, yaw: -83, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [131.55, 1.15, -3.20], dist: 2.34, to: 2.04, yaw: -59.0, pitch: 4.9, fov: 40 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'In the mirror I practised': over his shoulder at the mirror. He says it to his own reflection; behind him on the floor his shadow says it to the mirror too, perfectly.",
       stage: () => (
         <>
@@ -60,9 +60,9 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.steps",
-      ...cam.truck({ on: [P("gym", -4.4, 0.95, 2.2)[0], 0.95, 2.2], dist: 2.3, yaw: 97, pitch: -8, by: [2.5, 0, -0.7], fov: 45 }),
+      ...cam.truck({ on: [120.10, 0.80, 2.20], dist: 2.03, yaw: -143.1, pitch: 9.9, by: [2.2, 0, -0.5], fov: 44 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'I got three steps across the floor': behind his shoes at ankle height, three steps out from the plant, and then the shoes stop on the fourth.",
       stage: (t) => (
         <>
@@ -73,9 +73,9 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.plant",
-      ...cam.pan({ from: [P("gym", -4.6, 0.62, 3.4)[0], 0.62, 3.4], on: [P("gym", -4.6, 0.95, 3.0)[0], 0.95, 3.0], onTo: [P("gym", -2.2, 1.05, 1.6)[0], 1.05, 1.6], fov: 48 }),
+      ...cam.push({ on: [119.10, 0.80, 3.20], dist: 1.92, to: 1.62, yaw: 51.3, pitch: 3.0, fov: 44 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'Then I was behind a plant, hiding': from the floor, past the leaves, him crouched behind the pot in the dark edge of the room, and the lit floor he is not on.",
       stage: () => (
         <>
@@ -86,9 +86,9 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "9.found",
-      ...cam.push({ on: [P("gym", -4.7, 1.05, 3.1)[0], 1.05, 3.1], dist: 2.3, to: 1.95, yaw: 66, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [119.60, 1.00, 3.20], dist: 1.64, to: 1.34, yaw: 100.6, pitch: 7.0, fov: 42 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'My friend found me': the two of them crouched in the leaves, her face saying it is worse than she thought.",
       stage: () => (
         <>

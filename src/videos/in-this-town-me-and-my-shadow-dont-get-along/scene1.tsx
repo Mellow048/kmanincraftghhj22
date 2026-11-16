@@ -18,33 +18,33 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.copy",
-      ...cam.push({ on: [0, 1.15, -0.7], dist: 5.6, to: 4.9, yaw: -13, pitch: 13, fov: 47 }),
+      ...cam.push({ on: [-2.90, 1.00, 1.20], dist: 4.65, to: 4.15, yaw: 50.5, pitch: 18.8, fov: 48 }),
       zone: "class",
       look: "town-day",
       note: "The whole classroom in one frame: the class sitting still with their shadows under their desks, and one shadow standing up at the board. The boy is on the floor beside his own desk.",
       stage: () => (
         <>
-          <Teacher position={[0.1, 0, -3.85]} animation="talk" />
-          <Shadow position={AT_BOARD} rotationY={0} pose="point" lift={1} scale={0.82} />
+          <Teacher position={[-0.5, 0, -3.9]} animation="talk" />
+          <Shadow position={[-2.2, 0, 1.0]} rotationY={2.9} pose="idle" lift={1} scale={0.8} />
           {[
-            [-3, 0],
-            [0, 0],
-            [3, 0],
-            [0, 1],
+            [-0.7, 0],
+            [0.9, 0],
+            [2.6, 0],
+            [0.4, 1],
           ].map(([x, r], i) => (
             <group key={i}>
               <Kid n={i + 2} position={[x, 0.46, 1.18 + r * 2.1]} rotationY={Math.PI} animation="idle" />
-              <Shadow position={[x, 0, 1.18 + r * 2.1]} rotationY={Math.PI} scale={0.82} pose="idle" />
+              <Shadow position={[x, 0, 1.18 + r * 2.1]} rotationY={Math.PI} scale={0.78} pose="idle" />
             </group>
           ))}
-          <Her position={[3, 0.46, 1.18]} rotationY={Math.PI} animation="idle" face="neutral" />
-          <Me position={HIDE} rotationY={Math.PI} animation="cower" face="scared" gaze={-1} />
+          <Her position={[2.7, 0.46, 1.18]} rotationY={Math.PI} animation="idle" face="neutral" />
+          <Me position={HIDE} rotationY={2.6} animation="cower" face="scared" gaze={-1} />
         </>
       ),
     },
     {
       cue: "1.own",
-      ...cam.push({ on: [MY_DESK[0] + 0.2, 0.82, MY_DESK[2] + 1.0], dist: 3.4, to: 2.7, yaw: 64, pitch: -6, fov: 42 }),
+      ...cam.push({ on: [-3.20, 0.95, 1.10], dist: 2.80, to: 2.40, yaw: -30.3, pitch: 7.2, fov: 42 }),
       zone: "class",
       look: "town-day",
       note: "'Mine had a mind of its own': the boy on the floor beside his desk, and his shadow standing up beside him, facing the board. Side on, from as low as the floor.",
@@ -58,7 +58,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.brave",
-      ...cam.push({ on: [0.6, 1.15, -3.4], dist: 3.2, to: 2.6, yaw: -22, pitch: -19, fov: 44 }),
+      ...cam.push({ on: [0.85, 1.00, -2.95], dist: 1.78, to: 1.43, yaw: 135.0, pitch: -18.0, fov: 42 }),
       zone: "class",
       look: "town-day",
       note: "'Not scared of anything': from the floor, up at the black silhouette standing at the board with its arm out, pointing at the answer. It owns the room.",
@@ -71,7 +71,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.me",
-      ...cam.push({ on: faceOf(HIDE), dist: 1.8, to: 1.5, yaw: 18, pitch: -4, fov: 34 }),
+      ...cam.push({ on: [-3.40, 0.95, 1.50], dist: 1.89, to: 1.64, yaw: 32.0, pitch: 4.5, fov: 34 }),
       zone: "class",
       look: "town-day",
       note: "'Scared of everything': down at his face under the desk lid, knees up, one eye on the room.",

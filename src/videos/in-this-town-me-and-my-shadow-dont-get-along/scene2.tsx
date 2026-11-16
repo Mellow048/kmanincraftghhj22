@@ -17,7 +17,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.rule",
-      ...cam.top({ on: P("hall", -1.5, 0.1, 0.9), height: 2.4, to: 1.9, spin: [0, 11], fov: 42 }),
+      ...cam.top({ on: [38.50, 0.10, 0.90], height: 2.6, to: 2.0, spin: [0, 11], fov: 42 }),
       zone: "hall",
       look: "town-day",
       note: "'A shadow belongs under your shoes': straight down on three pairs of shoes in the corridor, each with its own flat shadow under it. The fourth pair has nothing.",
@@ -39,7 +39,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.mine",
-      ...cam.truck({ on: P("hall", -3.4, 1.25, 0.2), dist: 2.7, yaw: 5, pitch: 13, by: [6.4, 0, 0], fov: 46 }),
+      ...cam.truck({ on: [36.80, 1.25, 0.20], dist: 2.30, yaw: 0.0, pitch: -1.2, by: [6.4, 0, 0], fov: 46 }),
       zone: "hall",
       look: "town-day",
       note: "'Up walls, into rooms without me': the camera tracks along the corridor at the height of the lockers. He walks with his head down; his shadow walks the wall above him, in step, out of reach.",
@@ -60,7 +60,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.why",
-      ...cam.push({ on: P("hall", -1.0, 1.1, 0.4), dist: 3.0, to: 2.5, yaw: 172, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [39.40, 1.15, 0.60], dist: 2.33, to: 2.03, yaw: 2.5, pitch: 8.6, fov: 44 }),
       zone: "hall",
       look: "town-day",
       note: "'Nobody knew why': over the principal's shoulder. He has a clipboard, a pen, and no idea. Behind him the shadow stands on the lockers like a poster of a boy.",
@@ -74,31 +74,31 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.only",
-      ...cam.push({ on: [0, 1.0, 1.5], dist: 4.6, to: 3.9, yaw: 27, pitch: -7, fov: 48 }),
+      ...cam.push({ on: [0.60, 1.00, 1.70], dist: 2.71, to: 2.31, yaw: 10.9, pitch: 12.8, fov: 44 }),
       zone: "class",
       look: "town-day",
       note: "'The only one like this': from the floor in front of the class, five kids standing in a row, a shadow under every pair of shoes but his. His is standing next to him.",
       stage: () => (
         <>
           {[
-            [-3.4, 2],
-            [-2.2, 3],
-            [1.6, 4],
-            [2.8, 5],
-          ].map(([x, n], i) => (
+            [-1.7, 2, 2.6],
+            [1.5, 3, 2.4],
+            [-1.2, 4, 0.2],
+            [1.6, 5, 0.1],
+          ].map(([x, n, z], i) => (
             <group key={i}>
-              <Kid n={n} position={[x, 0, 1.7]} rotationY={Math.PI} animation="idle" />
-              <Shadow position={[x, 0, 1.7]} rotationY={Math.PI} scale={0.8} />
+              <Kid n={n} position={[x, 0, z]} rotationY={Math.PI} animation="idle" />
+              <Shadow position={[x, 0, z]} rotationY={Math.PI} scale={0.78} />
             </group>
           ))}
-          <Me position={[-0.3, 0, 1.6]} rotationY={Math.PI} animation="idle" face="sad" gaze={-1} />
-          <Shadow position={[0.55, 0, 1.45]} rotationY={Math.PI * 0.8} pose="idle" lift={1} scale={0.82} />
+          <Me position={[-0.45, 0, 1.55]} rotationY={Math.PI} animation="idle" face="sad" gaze={-1} />
+          <Shadow position={[0.4, 0, 1.35]} rotationY={Math.PI * 0.85} pose="idle" lift={1} scale={0.8} />
         </>
       ),
     },
     {
       cue: "3.class",
-      ...cam.push({ on: [0.55, 1.62, -4.0], dist: 3.2, to: 2.5, yaw: -14, pitch: 1, fov: 42 }),
+      ...cam.push({ on: [0.60, 1.40, -3.50], dist: 2.93, to: 2.53, yaw: 5.9, pitch: 5.9, fov: 42 }),
       zone: "class",
       look: "town-day",
       note: "'My shadow stood up and answered the questions': on the board, from the class. The silhouette is at the board with chalk, the teacher is at the side, letting it.",
@@ -112,7 +112,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.mark",
-      ...cam.top({ on: [-3, 0.78, 0.45], height: 1.55, to: 1.15, spin: [9, -5], fov: 38 }),
+      ...cam.top({ on: [-3.00, 0.78, 0.45], height: 1.6, to: 1.15, spin: [9, -5], fov: 38 }),
       zone: "class",
       look: "town-day",
       note: "'A better mark than me': straight down on his test paper. A, and a red tick that is too big. His own hands are not on the desk: the black arm across it is the shadow's.",
@@ -128,7 +128,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.hall",
-      ...cam.truck({ on: P("hall", -3.6, 1.05, 0.4), dist: 2.9, yaw: 171, pitch: 9, by: [6.2, 0, 0], fov: 46 }),
+      ...cam.truck({ on: [36.50, 1.05, 0.40], dist: 2.44, yaw: -97.1, pitch: 8.2, by: [6.2, 0, 0], fov: 46 }),
       zone: "hall",
       look: "town-day",
       note: "'Walked the wall and waved at the principal': behind him down the corridor. He walks with his bag; his shadow walks the lockers and waves at the principal, who waves back.",
@@ -150,7 +150,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.lunch",
-      ...cam.push({ on: [COUNTER[0] - 0.5, 1.15, COUNTER[2] + 1.35], dist: 2.1, to: 1.7, yaw: 13, pitch: -5, fov: 38 }),
+      ...cam.push({ on: [79.50, 1.10, -3.60], dist: 1.93, to: 1.68, yaw: 27.9, pitch: 4.5, fov: 38 }),
       zone: "cafe",
       look: "town-day",
       note: "'Took the last pudding': close on the counter at the end of the line. One pudding left. A black arm comes in from the left and takes it.",
@@ -164,7 +164,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.cook",
-      ...cam.push({ on: [COUNTER[0] + 0.9, 1.25, COUNTER[2] + 0.6], dist: 2.4, to: 1.9, yaw: -16, pitch: 7, fov: 42 }),
+      ...cam.push({ on: [80.90, 1.30, -4.55], dist: 2.47, to: 2.17, yaw: -14.0, pitch: 0.0, fov: 42 }),
       zone: "cafe",
       look: "town-day",
       note: "'The cook shouted. My shadow blew her a kiss': over the counter, the cook leaning out at him. Below her, out of her eyeline, the silhouette does the kiss.",
@@ -178,7 +178,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.good",
-      ...cam.push({ on: [0.4, 1.0, 2.4], dist: 7.4, to: 6.4, yaw: -36, pitch: 25, fov: 50 }),
+      ...cam.push({ on: [79.90, 0.90, 3.60], dist: 4.25, to: 3.75, yaw: 52.8, pitch: 31.1, fov: 50 }),
       zone: "cafe",
       look: "town-day",
       note: "'The best part of me was not me': the lunch room from up in a corner. He is alone at a table with a tray, and the flat black shape beside him on the bench is sitting like a friend.",

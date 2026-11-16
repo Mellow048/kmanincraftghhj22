@@ -17,9 +17,9 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "10.legs",
-      ...cam.push({ on: [ME[0] + 0.2, 0.24, ME[2] - 0.1], dist: 1.7, to: 1.35, yaw: 34, pitch: -7, fov: 36 }),
+      ...cam.push({ on: [121.40, 0.30, 1.90], dist: 1.45, to: 1.20, yaw: -146.3, pitch: 5.9, fov: 36 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'Then my legs started walking without me': on his shoes, moving, while the rest of him leans back like a kid being carried.",
       stage: () => (
         <>
@@ -30,9 +30,9 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.push",
-      ...cam.push({ on: [ME[0] + 0.1, 1.0, ME[2]], dist: 3.2, to: 2.7, yaw: 98, pitch: 5, fov: 44 }),
+      ...cam.push({ on: [121.20, 0.95, 2.00], dist: 3.01, to: 2.61, yaw: -3.8, pitch: 2.9, fov: 44 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'My shadow was behind me, pushing': side on, the black shape at his back with both arms out, walking him across the floor like furniture.",
       stage: () => (
         <>
@@ -44,9 +44,9 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.her",
-      ...cam.push({ on: faceOf(HER), dist: 3.4, to: 2.2, yaw: 9, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [124.40, 1.25, 0.50], dist: 2.82, to: 2.32, yaw: 19.1, pitch: 12.3, fov: 38 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'She was under the lights, waiting': the ball turning overhead, the coloured light on her, and her looking at him come across the floor.",
       stage: () => (
         <>
@@ -57,9 +57,9 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "10.mouth",
-      ...cam.push({ on: faceOf(ME), dist: 1.25, to: 1.05, yaw: 6, pitch: 2, fov: 28 }),
+      ...cam.push({ on: [121.60, 1.20, 1.70], dist: 1.37, to: 1.17, yaw: 8.4, pitch: 6.3, fov: 30 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'Nothing came out': right in on his mouth, open, and the whole film holding its breath.",
       stage: () => (
         <>
@@ -69,9 +69,9 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.hand",
-      ...cam.push({ on: [ME[0] + 0.9, 1.1, ME[2] - 0.2], dist: 2.3, to: 1.9, yaw: -22, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [123.10, 1.10, 1.20], dist: 2.44, to: 2.14, yaw: 35.0, pitch: 2.3, fov: 42 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'My shadow put out its hand instead of me': from her side of the gap. The black arm comes out past the boy's shoulder, straight at her.",
       stage: () => (
         <>
@@ -83,9 +83,9 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.past",
-      ...cam.push({ on: faceOf(HER), dist: 1.55, to: 1.3, yaw: -13, pitch: 2, fov: 30 }),
+      ...cam.push({ on: [124.40, 1.40, 0.50], dist: 1.48, to: 1.28, yaw: 11.7, pitch: 1.9, fov: 30 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'She looked right past it. At me': her eyes, and what they are looking at is not the hand.",
       stage: () => (
         <>
@@ -95,9 +95,9 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.q",
-      ...cam.push({ on: [ME[0] + 0.5, 1.2, ME[2] - 0.3], dist: 3.0, to: 2.5, yaw: 44, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [123.40, 1.15, 1.10], dist: 2.88, to: 2.58, yaw: 24.8, pitch: 6.0, fov: 44 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'Is your shadow going to ask me?': both of them in one frame, and the bubble between them, and the shadow still standing there with its hand out.",
       stage: (t, { p }) => (
         <>
@@ -115,9 +115,9 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "11.stop",
-      ...cam.push({ on: [P("gym", 0, 1.25, 0.9)[0], 1.25, 0.9], dist: 7.0, to: 6.2, yaw: -6, pitch: 11, fov: 52 }),
+      ...cam.push({ on: [123.00, 1.10, 1.20], dist: 5.62, to: 5.12, yaw: 4.1, pitch: 14.4, fov: 56 }),
       zone: "gym",
-      look: "hallway-night",
+      look: "prom-night",
       note: "'The music stopped. Even my shadow stopped': the whole gym, every kid frozen mid-dance, all of them looking at the two of them. The ball has stopped turning.",
       stage: () => (
         <>
@@ -125,12 +125,12 @@ export const scene7 = storyScene(timing, {
           <Her position={HER} rotationY={-0.4} animation="idle" face="neutral" />
           <Shadow position={HERE(-1.85, 1.35)} rotationY={1.1} pose="reach" lift={1} scale={0.86} />
           {[
-            [-3.6, -1.4],
-            [2.4, -2.4],
-            [3.8, 1.0],
-            [-1.2, 3.4],
-            [1.2, 4.0],
-            [-4.4, 0.6],
+            [-1.5, -1.2],
+            [0.4, -2.0],
+            [0.3, 1.8],
+            [-2.3, 2.6],
+            [1.4, 0.9],
+            [-2.6, -2.4],
           ].map(([x, z], i) => (
             <Kid key={i} n={i + 1} position={HERE(x, z)} rotationY={Math.atan2(-x, -z)} animation="idle" face="surprised" />
           ))}

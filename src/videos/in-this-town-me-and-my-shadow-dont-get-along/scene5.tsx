@@ -17,7 +17,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "8.night",
-      ...cam.top({ on: P("room", -1.0, 0.45, -1.2), height: 3.1, to: 2.5, spin: [6, -4], fov: 44 }),
+      ...cam.top({ on: [159.00, 0.45, -1.20], height: 3.0, to: 2.4, spin: [6, -4], fov: 44 }),
       zone: "room",
       look: "overworld-night",
       note: "'That night I could not sleep': straight down on the bed. He is on his back with his eyes open, and the blanket is still made on one side.",
@@ -30,7 +30,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.wall",
-      ...cam.push({ on: P("room", -1.0, 1.4, -2.2), dist: 2.5, to: 2.1, yaw: 4, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [159.00, 1.35, -2.40], dist: 2.24, to: 1.84, yaw: 10.3, pitch: 2.6, fov: 46 }),
       zone: "room",
       look: "overworld-night",
       note: "'On the wall, doing push-ups': the wall beside the bed, and his shadow going up and down on it, flat, like it is keeping fit while he lies there.",
@@ -53,7 +53,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.q",
-      ...cam.push({ on: P("room", -0.7, 1.15, -1.1), dist: 4.2, to: 3.6, yaw: 17, pitch: 9, fov: 50 }),
+      ...cam.push({ on: [159.10, 1.10, -1.20], dist: 3.53, to: 3.03, yaw: 13.2, pitch: 8.1, fov: 48 }),
       zone: "room",
       look: "overworld-night",
       note: "'Whose shadow is it': the whole room. Him sitting up with the blanket round him, and the shadow on the wall now enormous, standing over the bed.",
@@ -67,7 +67,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.dec",
-      ...cam.push({ on: faceOf(P("room", -1.0, 0.55, -1.0)), dist: 1.6, to: 1.3, yaw: -15, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [159.00, 1.35, -1.00], dist: 1.54, to: 1.34, yaw: 13.1, pitch: 0.0, fov: 32 }),
       zone: "room",
       look: "overworld-night",
       note: "'So I decided': his face in the moonlight, and the first time all film he does not look scared of anything.",

@@ -172,6 +172,18 @@ export const LOOKS: Record<LookPreset, Preset> = {
     follow: true,
     shadowSpan: 13,
   },
+  /** A school gym at prom: dark room, but lit enough to read faces, and the colour comes from the decorations. */
+  "prom-night": {
+    bg: "#0a0c1a",
+    fog: "#141630",
+    fogDensity: 0.03,
+    ambient: { color: "#8b90d0", intensity: 0.95 },
+    hemi: { sky: "#9a9ada", ground: "#2a2434", intensity: 0.95 },
+    key: { color: "#ffd8f0", intensity: 1.9, position: [2, 7, 5], shadow: true },
+    fills: [{ color: "#b48aff", intensity: 6, position: [-3, 3.4, 2], distance: 9 }],
+    follow: true,
+    shadowSpan: 13,
+  },
   "warm-room": {
     bg: "#120b06",
     fog: "#2a1a0e",
