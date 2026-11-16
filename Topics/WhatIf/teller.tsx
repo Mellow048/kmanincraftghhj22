@@ -23,18 +23,19 @@ export const HERO = {
  * THE FACE, eight rows of eight. Palette: `.` skin · `,` skin shadow · `h` hair · `H` dark hair · `b` darkest
  * hair · `w` eye white · `p` pupil · `m` mouth.
  *
- * A heavy crown that falls into a jagged fringe, the fringe cut LOW on his right so one eye is in shadow,
- * and the other side short enough to see his ear. Asymmetric, so it cannot be mistaken for a bob.
+ * ROWS 0–2 ONLY ARE THE CUT. Rows 3–7 are the engine's own `smile` face — `.wp..pw.` eyes, `..m..m..` and
+ * `...mm...` mouth — untouched. The hair may come down to the brow; it must not touch an eye or the mouth,
+ * or he stops being the same kid the first film already has. Change the shape in rows 0–2, nothing below.
  */
 export const HERO_FACE = [
   "hhhhhhhh",
   "hhhhhhhh",
-  "hhhhhhhh",
   "hhhhhbHH",
-  "hhhhbH.p",
-  "..p..w..",
+  ".wp..pw.",
   "........",
+  "..m..m..",
   "...mm...",
+  "........",
 ];
 
 /**
