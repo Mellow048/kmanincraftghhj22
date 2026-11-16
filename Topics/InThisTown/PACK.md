@@ -58,7 +58,7 @@ wired this way. The reference for both is `src/videos/in-this-town-same-face/`.
 
 | Name | What it is | Props that matter |
 |---|---|---|
-| `Villager` | The villager. One face, one eyebrow, one long nose, arms folded into one block. **There is exactly one face: do not add another** | `robe`, `scale` (`ADULT` 0.94, `CHILD` 0.7), `kid`, `walk` (metres), `lookAt` (a world point), `nod` `turn` `tilt`, `hmm` 0–1, `strain` 0–1 (trying to get the arms out), `lean` (a bow), `hat` (`"straw"` a farmer's small hat, `"wide"` a `StrawHat` as wide as a door), `sit` (legs straight out, the way a doll sits: put `position` 0.56 m × scale under the seat), `phase` |
+| `Villager` | The villager. One face, one eyebrow, one long nose, arms folded into one block. **There is exactly one face: do not add another** | `robe`, `scale` (`ADULT` 0.94, `CHILD` 0.7), `kid`, `walk` (metres), `lookAt` (a world point), `nod` `turn` `tilt`, `skin` (a colour: `"#5f9a4e"` makes a zombie villager), `hmm` 0–1, `strain` 0–1 (trying to get the arms out), `lean` (a bow), `hat` (`"straw"` a farmer's small hat, `"wide"` a `StrawHat` as wide as a door), `sit` (legs straight out, the way a doll sits: put `position` 0.56 m × scale under the seat), `phase` |
 | `ROBE` | Eight robe colours: `brown elder friend white smith farmer red blue`. The robe is the only way to tell two villagers apart, so give each named one their own | |
 | `villagerFace(p, scale?)`, `villagerChest(p, scale?)` | Where a villager's face and chest are, for the camera | |
 | `IronGolem` | The iron golem, 2.7 m tall | `walk`, `armR` / `armL` (radians: 0 hangs, −1.5 points ahead; leave out and they swing), `headPitch`, `headYaw`, `bow`, `flower`, `hat` (a `StrawHat` 1.7 m wide) |

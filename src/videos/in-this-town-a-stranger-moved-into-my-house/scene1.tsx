@@ -1,53 +1,116 @@
 import { cam, storyScene } from "../../engine";
-import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import { Bubble, EAST, Life, Lying, Me, MiniBed, MyRoom, NORTH, PLACE, Puffs, SOUTH, Stranger, Town, Villager, ROBE, pop, posed, timing, tw } from "./kit";
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+/** 01 — A stranger moved into his house, and put his bed in his pocket. */
+const BED = PLACE.bed;
+export const NOW = { bell: false, hole: true, wheat: 0, torches: true, wall: true };
 
-/**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
- */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Hook",
+  title: "He did not knock",
   shots: [
     {
-      cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
-      zone: "village",
+      cue: "1.moved",
+      ...cam.push({ on: [0.55, 1.0, -0.5], dist: 6.4, to: 4.9, yaw: 0, pitch: 11, fov: 50 }),
+      zone: "room",
       look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
-      stage: () => (
+      note: "The hook: a villager stands beside his own bed and looks at us. There is a player asleep in it with his boots on. Zs rise off him, he rolls over, the villager looks at him, and back at us.",
+      stage: (t) => (
         <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
+          <MyRoom bed door="flat" />
+          <Stranger position={[BED[0], 0.56 + Math.sin(t * 3) * 0.015, BED[2] + 0.15]} rotationY={SOUTH + Math.sin(tw(t, 1.0, 1.3) * Math.PI) * 0.25} animation="sleep" face="sleepy" time={t} />
+          <Me position={[0.05, 0, -0.35]} rotationY={SOUTH} turn={t < 0.35 ? 0.9 : t > 1.1 && t < 1.55 ? 0.9 : 0} nod={t < 0.35 || (t > 1.1 && t < 1.55) ? 0.25 : 0} />
+          {[0.15, 0.75, 1.35].map((at, i) => (
+            <Bubble key={i} text="Z" position={[BED[0] - 0.15 + i * 0.22, 1.25 + i * 0.32 + (t - at) * 0.25, BED[2] - 0.5]} scale={(0.42 + i * 0.1) * pop(t, at, 0.16)} tail={-1} tilt={0.15} />
+          ))}
         </>
       ),
     },
     {
-      cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
-      zone: "village",
+      cue: "1.knock",
+      ...cam.push({ on: [-0.6, 0.35, -1.5], dist: 4.2, to: 3.7, yaw: 10, pitch: 30, fov: 44 }),
+      zone: "room",
       look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      note: "The door. It is lying flat on the floor with a boot print on it, and daylight comes through the hole where it was.",
+      stage: (t) => (
+        <>
+          <MyRoom bed door="flat" />
+          <Me position={[0.45, 0, -0.9]} rotationY={-1.1} lookAt={[-0.6, 0, -1.2]} hmm={t > 0.3 ? 0.5 : 0} />
+        </>
+      ),
+    },
+    {
+      cue: "1.slept",
+      ...cam.push({ on: [0.78, 0.85, -1.0], dist: 4.3, to: 3.9, yaw: 0, pitch: 26, fov: 44 }),
+      zone: "room",
+      look: "overworld-day",
+      note: "From above the bed: the stranger flat out in it with his mouth open and his boots on the blanket, and the villager standing over him, looking down.",
+      stage: (t) => (
+        <>
+          <MyRoom bed door="flat" />
+          <Stranger position={[BED[0], 0.56 + Math.sin(t * 3) * 0.015, BED[2] + 0.15]} rotationY={SOUTH} animation="sleep" face="sleepy" time={t} />
+          <Me position={[0.2, 0, -1.1]} rotationY={EAST} nod={0.45} />
+          <Bubble text="Z" position={[BED[0] + 0.1, 1.5 + t * 0.2, BED[2] - 0.5]} scale={0.5} tail={-1} tilt={0.15} />
+        </>
+      ),
+    },
+    {
+      cue: "1.pocket",
+      ...cam.push({ on: [0.55, 1.0, -0.8], dist: 5.4, to: 4.8, yaw: 0, pitch: 13, fov: 46 }),
+      zone: "room",
+      look: "overworld-day",
+      note: "He gets up, hits the bed once, and it turns into a small spinning bed that flies into him. Where it stood there is a pale mark on the floor. The villager watches it go.",
+      stage: (t) => {
+        const hit = 0.3;
+        const fly = tw(t, hit + 0.1, hit + 0.55);
+        const gone = t > hit;
+        const item: [number, number, number] = [BED[0] + (0.25 - BED[0]) * fly, 0.7 + Math.sin(fly * Math.PI) * 0.5 + 0.3 * fly, BED[2] + (-0.7 - BED[2]) * fly];
+        return (
+          <>
+            <MyRoom bed={!gone} door="flat" />
+            <Stranger position={[0.2, 0, -0.75]} rotationY={EAST - 0.3} face="smile" pose={posed("idle", t, { armR: [-1.5 + Math.sin(tw(t, 0.1, hit + 0.1) * Math.PI) * 0.9, 0, 0] })} />
+            {gone && fly < 1 ? <MiniBed position={item} spin={t * 9} scale={1.6 - fly} /> : null}
+            {gone && t < hit + 0.5 ? <Puffs position={[BED[0], 0.4, BED[2]]} count={7} spread={1} size={0.3} rise={0.8} speed={2} color="#e9d9c0" /> : null}
+            <Me position={[-0.75, 0, 0.5]} rotationY={NORTH - 0.7} lookAt={gone ? [item[0], item[1], item[2]] : [BED[0], 0.6, BED[2]]} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.days",
+      ...cam.push({ on: [BED[0], 0.2, BED[2] + 0.1], dist: 4.4, to: 4.0, yaw: 0, pitch: 58, fov: 44 }),
+      zone: "room",
+      look: "overworld-night",
+      note: "Thirty nights later, from above: the villager asleep on the bare floor, exactly on the pale mark where his bed was.",
+      stage: (t) => (
+        <>
+          <MyRoom door="flat" night torches={3} />
+          <Lying position={[BED[0], 0.16, BED[2] + 0.95]}>
+            <Me position={[0, 0, 0]} nod={-0.1 + Math.sin(t * 2) * 0.03} />
+          </Lying>
+        </>
+      ),
+    },
+    {
+      cue: "1.want",
+      ...cam.push({ on: [0, 1.2, 3.4], dist: 8.2, to: 7.4, yaw: 0, pitch: 9, fov: 48 }),
+      zone: "town",
+      look: "overworld-day",
+      note: "Outside. The stranger runs across the square, jumping with every step the way players do. Three villagers stand in a row and their heads follow him.",
+      stage: (t) => {
+        const x = -3.4 + t * 5.4;
+        const y = Math.abs(Math.sin(t * 7.5)) * 0.55;
+        return (
+          <>
+            <Town {...NOW} />
+            <Life t={t} n={2} look={[x, 1.4, 4.2]} />
+            {([[-1.4, 0.4, ROBE.brown], [0, -0.3, ROBE.farmer], [1.4, 0.4, ROBE.blue]] as Array<[number, number, string]>).map(([vx, vz, robe], i) => (
+              <Villager key={i} position={[vx, 0, vz]} rotationY={SOUTH} robe={robe} lookAt={[x, 1.4 + y, 4.2]} phase={i + 5} />
+            ))}
+            <Stranger position={[x, y, 4.2]} rotationY={EAST} animation="run" face="grin" />
+          </>
+        );
+      },
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;
