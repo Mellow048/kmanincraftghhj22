@@ -207,18 +207,6 @@
    "why": "It stands up and answers."
   },
   {
-   "cue": "3.mark",
-   "sfx": "ding",
-   "word": "mark",
-   "why": "A better mark than him."
-  },
-  {
-   "cue": "3.mark",
-   "sfx": "paper",
-   "word": "me",
-   "why": "On his paper, and it is not his mark."
-  },
-  {
    "cue": "3.hall",
    "sfx": "whoosh",
    "at": 0.02,
@@ -423,15 +411,9 @@
    "cue": "7.mop",
    "sfx": "step_wood",
    "at": 0.1,
-   "repeat": 7,
-   "every": 0.24,
+   "repeat": 4,
+   "every": 0.3,
    "why": "He walks off."
-  },
-  {
-   "cue": "7.mop",
-   "sfx": "whoosh_low",
-   "word": "walked",
-   "why": "The mop dragged behind him."
   },
   {
    "cue": "8.night",
