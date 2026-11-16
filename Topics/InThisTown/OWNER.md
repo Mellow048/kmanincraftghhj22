@@ -275,3 +275,18 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   4. Ideas 1 and 6 of `outlines/ideas-2026-11-15.md` have the same shape and are parked; idea 2 would need another
      danger than players. The new set is `outlines/ideas-2026-11-16.md`.
   Views and stayed-to-watch for the creeper film and this one are still not known.
+- **2026-11-16, "pick all", 82%, and automatic mode.** Of the five ideas in `outlines/ideas-2026-11-16.md`: "how
+  about we pick all … make sure they are similar to the monster village part 1 cuz that one got a whopping 82% stayed
+  to watch its crazy but dont just copy and paste it, study it, learn it, apply it to the 5 ideas u gave me." Then:
+  "study it please, the script, the hook, the sfx, the idea. everything … i wont be reviewing the scripts i will put
+  you on automatic mode lad, 5 videos. make sure you dont split your knowledge, do it like this, idea #1 make it
+  first, inspect it, review it, polish it, and one last polish then done then head to idea #2, dont just make
+  everything at once, the output will be bad", and "once youre done put the mp4 to your branch". So:
+  1. **82% stayed to watch on Monster Village part 1** is the first number from his analytics. The second study is
+     in `reference/monster-village/README.md` ("Studied again"): carry the engine, leave the outline.
+  2. **For these five films only, script first is off**: he will not review scripts. Each film is still written,
+     recorded, built, looked at shot by shot, fixed, looked at again, and only then rendered.
+  3. **One film at a time, finished, before the next is begun.** Nothing of film two is written while film one is
+     open.
+  4. Every finished mp4 is committed to the working branch (`renders/<film>.mp4`).
+
