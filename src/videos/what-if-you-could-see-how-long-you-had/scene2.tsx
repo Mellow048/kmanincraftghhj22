@@ -103,7 +103,7 @@ export const scene2 = storyScene(timing, {
     {
       // Not a big number. Nothing. I asked her about it. Push in on the empty air over her head.
       cue: "5.why",
-      ...cam.push({ on: [SPOT.seat(2, 0)[0] + 0.15, 2.55, SPOT.seat(2, 0)[2] - 0.35], dist: 1.8, to: 1.4, yaw: 196, pitch: 10, fov: 42 }),
+      ...cam.push({ on: [SPOT.seat(2, 0)[0] + 0.15, 1.95, SPOT.seat(2, 0)[2] - 0.35], dist: 2.3, to: 1.9, yaw: 196, pitch: 2, fov: 46 }),
       zone: "class",
       note: "Hard up on the space above Jo's head where every other clock in this film has been. There is nothing there, and the camera stays on it long enough to be uncomfortable, which is what makes the audience ask the question the teller asks.",
       stage: (t) => (
