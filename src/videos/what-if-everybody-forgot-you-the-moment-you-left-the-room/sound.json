@@ -1,0 +1,595 @@
+{
+  "film": "what-if-everybody-forgot-you-the-moment-you-left-the-room",
+  "README": "The power is a door. Every effect either marks a door closing, a room being paid for, or a coin going into the tin.",
+  "music": {
+    "gain": -17,
+    "sections": [
+      {
+        "from": "1.if",
+        "mood": "curious",
+        "why": "The question, and six years of it."
+      },
+      {
+        "from": "1.day",
+        "mood": "playful",
+        "why": "The first day of school, played as a joke."
+      },
+      {
+        "from": "2.rule",
+        "mood": "wonder",
+        "why": "The rule, and it is fun."
+      },
+      {
+        "from": "2.tell",
+        "mood": "playful",
+        "why": "The teacher, the chair, the bike."
+      },
+      {
+        "from": "3.five",
+        "mood": "curious",
+        "why": "Five places at dinner: the first thing that is wrong."
+      },
+      {
+        "from": "4.best",
+        "mood": "hope",
+        "why": "He thinks it is the best thing that ever happened."
+      },
+      {
+        "from": "5.alone",
+        "mood": "sad",
+        "why": "Outside is where you are on your own."
+      },
+      {
+        "from": "6.week",
+        "mood": "dark",
+        "why": "Nobody remembers the week he was funny."
+      },
+      {
+        "from": "7.jo",
+        "mood": "hope",
+        "why": "Jo remembers him."
+      },
+      {
+        "from": "8.bill",
+        "mood": "none",
+        "why": "The piece of paper. One held breath, and the only silence in the film."
+      },
+      {
+        "from": "8.ledgera",
+        "mood": "drone",
+        "why": "A number next to his name."
+      },
+      {
+        "from": "9.arranged",
+        "mood": "sneak",
+        "why": "Somebody is arranging the rooms."
+      },
+      {
+        "from": "10.wall",
+        "mood": "tense",
+        "why": "Every room has a price on it."
+      },
+      {
+        "from": "11.paid",
+        "mood": "sad",
+        "why": "His mum at the table with the tin."
+      },
+      {
+        "from": "12.world",
+        "mood": "hope",
+        "why": "What she was actually doing."
+      },
+      {
+        "from": "12.sub",
+        "mood": "dark",
+        "why": "Somebody said his name."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.if",
+      "to": "2.chaira",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.five",
+      "to": "3.fivea",
+      "bed": "room"
+    },
+    {
+      "from": "3.shop",
+      "to": "3.shopa",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.rooms",
+      "to": "5.alonea",
+      "bed": "village"
+    },
+    {
+      "from": "6.week",
+      "to": "8.billa",
+      "bed": "classroom"
+    },
+    {
+      "from": "9.arranged",
+      "to": "9.hea",
+      "bed": "classroom"
+    },
+    {
+      "from": "10.wall",
+      "to": "10.walla",
+      "bed": "classroom"
+    },
+    {
+      "from": "11.paid",
+      "to": "12.suba",
+      "bed": "room"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.if",
+      "sfx": "creak",
+      "why": "the rule, and it is a door closing"
+    },
+    {
+      "cue": "1.if",
+      "sfx": "swish",
+      "why": "the room",
+      "word": "room"
+    },
+    {
+      "cue": "1.me",
+      "sfx": "tick",
+      "why": "six years",
+      "word": "six"
+    },
+    {
+      "cue": "1.day",
+      "sfx": "school_bell",
+      "why": "the first day of school",
+      "word": "school"
+    },
+    {
+      "cue": "1.daya",
+      "sfx": "rustle",
+      "why": "nobody knew him at lunch",
+      "word": "lunch"
+    },
+    {
+      "cue": "1.why",
+      "sfx": "blip",
+      "why": "the clue he missed",
+      "word": "asked"
+    },
+    {
+      "cue": "1.whya",
+      "sfx": "tick",
+      "why": "the first clue",
+      "word": "clue"
+    },
+    {
+      "cue": "2.rule",
+      "sfx": "slide_down",
+      "why": "everything in it forgets",
+      "word": "forgets"
+    },
+    {
+      "cue": "2.food",
+      "sfx": "place",
+      "why": "a whole lunch, put down",
+      "word": "whole"
+    },
+    {
+      "cue": "2.food",
+      "sfx": "whoosh",
+      "why": "he walks out",
+      "word": "out"
+    },
+    {
+      "cue": "2.fooda",
+      "sfx": "blip",
+      "why": "the next kid's order",
+      "word": "wanted"
+    },
+    {
+      "cue": "2.tell",
+      "sfx": "bonk",
+      "why": "told off",
+      "word": "off"
+    },
+    {
+      "cue": "2.tell",
+      "sfx": "whoosh",
+      "why": "he comes back",
+      "word": "back"
+    },
+    {
+      "cue": "2.tella",
+      "sfx": "bonk",
+      "why": "told off again",
+      "word": "again"
+    },
+    {
+      "cue": "2.tella",
+      "sfx": "sting",
+      "why": "for the first time",
+      "at": -0.02
+    },
+    {
+      "cue": "2.chair",
+      "sfx": "tick",
+      "why": "one minute",
+      "word": "minute"
+    },
+    {
+      "cue": "2.chaira",
+      "sfx": "slide_down",
+      "why": "an empty chair",
+      "word": "empty"
+    },
+    {
+      "cue": "3.five",
+      "sfx": "place",
+      "why": "the fifth plate",
+      "word": "five"
+    },
+    {
+      "cue": "3.fivea",
+      "sfx": "plink",
+      "why": "there are four of us",
+      "word": "four"
+    },
+    {
+      "cue": "3.shop",
+      "sfx": "creak",
+      "why": "the bike",
+      "word": "bike"
+    },
+    {
+      "cue": "3.shopa",
+      "sfx": "place",
+      "why": "the man holds the door",
+      "word": "door"
+    },
+    {
+      "cue": "3.rooms",
+      "sfx": "swish",
+      "why": "rooms",
+      "word": "rooms"
+    },
+    {
+      "cue": "3.roomsa",
+      "sfx": "gust",
+      "why": "under the sky",
+      "word": "outside"
+    },
+    {
+      "cue": "3.roomsa",
+      "sfx": "chime",
+      "why": "people remember him out there",
+      "word": "remember"
+    },
+    {
+      "cue": "4.best",
+      "sfx": "sparkle",
+      "why": "he thinks it is the best thing",
+      "at": -0.02
+    },
+    {
+      "cue": "4.nobody",
+      "sfx": "pop",
+      "why": "he could do anything",
+      "word": "anything"
+    },
+    {
+      "cue": "4.nobodya",
+      "sfx": "power_down",
+      "why": "so he did nothing",
+      "word": "nothing"
+    },
+    {
+      "cue": "5.sky",
+      "sfx": "blip",
+      "why": "the only place he was real",
+      "word": "real"
+    },
+    {
+      "cue": "5.alone",
+      "sfx": "rustle",
+      "why": "alone outside",
+      "word": "own"
+    },
+    {
+      "cue": "5.alonea",
+      "sfx": "sting",
+      "why": "the price he did not know yet",
+      "at": -0.02
+    },
+    {
+      "cue": "6.week",
+      "sfx": "bonk",
+      "why": "the week he was funny",
+      "word": "funny"
+    },
+    {
+      "cue": "6.better",
+      "sfx": "plink",
+      "why": "the week he was kind",
+      "word": "kind"
+    },
+    {
+      "cue": "6.bettera",
+      "sfx": "slide_down",
+      "why": "he stopped being either",
+      "word": "either"
+    },
+    {
+      "cue": "7.jo",
+      "sfx": "ding",
+      "why": "her name, and it lands",
+      "word": "Jo"
+    },
+    {
+      "cue": "7.joa",
+      "sfx": "blip",
+      "why": "only Jo",
+      "word": "only"
+    },
+    {
+      "cue": "7.saw",
+      "sfx": "step_wood",
+      "why": "a corridor",
+      "word": "corridor"
+    },
+    {
+      "cue": "7.sawa",
+      "sfx": "heartbeat",
+      "why": "said like a normal thing",
+      "word": "normal"
+    },
+    {
+      "cue": "8.bill",
+      "sfx": "whoosh",
+      "why": "back into a room too fast",
+      "word": "fast"
+    },
+    {
+      "cue": "8.billa",
+      "sfx": "heartbeat",
+      "why": "he saw it before it went",
+      "word": "before"
+    },
+    {
+      "cue": "8.ledger",
+      "sfx": "paper",
+      "why": "a piece of paper",
+      "word": "paper"
+    },
+    {
+      "cue": "8.ledgera",
+      "sfx": "sting",
+      "why": "a number next to his name",
+      "at": -0.02,
+      "trim": -11
+    },
+    {
+      "cue": "9.arranged",
+      "sfx": "coin",
+      "why": "somebody was paying",
+      "word": "paying"
+    },
+    {
+      "cue": "9.arrangeda",
+      "sfx": "tick",
+      "why": "arranging the rooms",
+      "word": "rooms"
+    },
+    {
+      "cue": "9.he",
+      "sfx": "blip",
+      "why": "the teacher",
+      "word": "teacher"
+    },
+    {
+      "cue": "9.hea",
+      "sfx": "coin",
+      "why": "paid to remember him",
+      "word": "paid"
+    },
+    {
+      "cue": "10.wall",
+      "sfx": "register",
+      "why": "every room costs",
+      "word": "costs"
+    },
+    {
+      "cue": "10.walla",
+      "sfx": "plink",
+      "why": "a whole lunch is not cheap",
+      "word": "lunch"
+    },
+    {
+      "cue": "10.mum",
+      "sfx": "creak",
+      "why": "the paper goes home",
+      "word": "home"
+    },
+    {
+      "cue": "10.mum",
+      "sfx": "thud",
+      "why": "his house",
+      "word": "house"
+    },
+    {
+      "cue": "11.paid",
+      "sfx": "place",
+      "why": "the kitchen table",
+      "word": "table"
+    },
+    {
+      "cue": "11.paida",
+      "sfx": "coins",
+      "why": "counting coins",
+      "word": "coins"
+    },
+    {
+      "cue": "11.paida",
+      "sfx": "plink",
+      "why": "into a tin",
+      "word": "tin"
+    },
+    {
+      "cue": "11.mine",
+      "sfx": "tick",
+      "why": "since he was six",
+      "word": "six"
+    },
+    {
+      "cue": "11.why",
+      "sfx": "blip",
+      "why": "not what he wanted",
+      "word": "wanted"
+    },
+    {
+      "cue": "11.whya",
+      "sfx": "sting",
+      "why": "so the world would not have to remember him",
+      "at": -0.02
+    },
+    {
+      "cue": "12.world",
+      "sfx": "heartbeat",
+      "why": "what it costs to be remembered",
+      "word": "costs"
+    },
+    {
+      "cue": "12.worlda",
+      "sfx": "chime",
+      "why": "she wanted him to cost less",
+      "word": "less"
+    },
+    {
+      "cue": "12.out",
+      "sfx": "gust",
+      "why": "out under the sky",
+      "word": "sky"
+    },
+    {
+      "cue": "12.outa",
+      "sfx": "sting",
+      "why": "somebody said his name",
+      "at": -0.02
+    },
+    {
+      "cue": "12.sub",
+      "sfx": "heartbeat",
+      "why": "somebody he has never met",
+      "word": "met"
+    },
+    {
+      "cue": "12.suba",
+      "sfx": "ding",
+      "why": "the ask",
+      "word": "Subscribe"
+    },
+    {
+      "cue": "1.if",
+      "word": "left",
+      "sfx": "swish",
+      "why": "the leaving"
+    },
+    {
+      "cue": "1.me",
+      "word": "have",
+      "sfx": "blip",
+      "why": "since I was six, they have"
+    },
+    {
+      "cue": "1.daya",
+      "word": "nobody",
+      "sfx": "tick",
+      "why": "nobody"
+    },
+    {
+      "cue": "2.rule",
+      "word": "leave",
+      "sfx": "creak",
+      "why": "leave, and the door"
+    },
+    {
+      "cue": "2.food",
+      "word": "walked",
+      "sfx": "step_wood",
+      "why": "walked out"
+    },
+    {
+      "cue": "3.fivea",
+      "word": "us",
+      "sfx": "blip",
+      "why": "four of us"
+    },
+    {
+      "cue": "3.shopa",
+      "word": "held",
+      "sfx": "blip",
+      "why": "he held the door"
+    },
+    {
+      "cue": "4.best",
+      "sfx": "chime",
+      "why": "the best thing that ever happened",
+      "at": -0.02
+    },
+    {
+      "cue": "5.sky",
+      "word": "outside",
+      "sfx": "gust",
+      "why": "outside"
+    },
+    {
+      "cue": "6.week",
+      "word": "Nobody",
+      "sfx": "slide_down",
+      "why": "nobody"
+    },
+    {
+      "cue": "7.jo",
+      "word": "remembered",
+      "sfx": "heartbeat",
+      "why": "remembered"
+    },
+    {
+      "cue": "8.ledger",
+      "word": "name",
+      "sfx": "tick",
+      "why": "his name"
+    },
+    {
+      "cue": "9.hea",
+      "word": "angry",
+      "sfx": "blip",
+      "why": "he was not angry"
+    },
+    {
+      "cue": "10.walla",
+      "word": "classroom",
+      "sfx": "place",
+      "why": "a classroom"
+    },
+    {
+      "cue": "11.paid",
+      "word": "mum",
+      "sfx": "heartbeat",
+      "why": "his mum"
+    },
+    {
+      "cue": "12.out",
+      "word": "door",
+      "sfx": "creak",
+      "why": "the front door"
+    }
+  ]
+}

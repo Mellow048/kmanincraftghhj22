@@ -1,0 +1,162 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-everybody-forgot-you-the-moment-you-left-the-room",
+  "mix": "public/audio/what-if-everybody-forgot-you-the-moment-you-left-the-room/mix.mp3",
+  "seconds": 95.8333,
+  "built_from": {
+    "timing.json": "d19e1d08eff29dc77a347345658284e84d56b7cf",
+    "sound.json": "1a7f23658bd0cc64149ea98894aa7d4c2908b26b",
+    "narration.mp3": "605906d82a558b14b34218494896b20e677a1e50"
+  },
+  "mix_sha1": "14cf7c730c732945d65339c6270fdb3df4c33305",
+  "music_sections": [
+    {
+      "from": "1.if",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "1.day",
+      "mood": "playful",
+      "at": 4.0
+    },
+    {
+      "from": "2.rule",
+      "mood": "wonder",
+      "at": 11.23
+    },
+    {
+      "from": "2.tell",
+      "mood": "playful",
+      "at": 17.33
+    },
+    {
+      "from": "3.five",
+      "mood": "curious",
+      "at": 25.6
+    },
+    {
+      "from": "4.best",
+      "mood": "hope",
+      "at": 36.3
+    },
+    {
+      "from": "5.alone",
+      "mood": "sad",
+      "at": 42.23
+    },
+    {
+      "from": "6.week",
+      "mood": "dark",
+      "at": 46.73
+    },
+    {
+      "from": "7.jo",
+      "mood": "hope",
+      "at": 52.07
+    },
+    {
+      "from": "8.bill",
+      "mood": "none",
+      "at": 58.43
+    },
+    {
+      "from": "8.ledgera",
+      "mood": "drone",
+      "at": 63.37
+    },
+    {
+      "from": "9.arranged",
+      "mood": "sneak",
+      "at": 64.3
+    },
+    {
+      "from": "10.wall",
+      "mood": "tense",
+      "at": 71.0
+    },
+    {
+      "from": "11.paid",
+      "mood": "sad",
+      "at": 76.37
+    },
+    {
+      "from": "12.world",
+      "mood": "hope",
+      "at": 85.17
+    },
+    {
+      "from": "12.sub",
+      "mood": "dark",
+      "at": 92.57
+    }
+  ],
+  "beds": 8,
+  "measured": {
+    "musicUnderVoiceDb": 19.5,
+    "secondsWithoutMusic": 6.8,
+    "bedsUnderVoiceDb": 28.8,
+    "sfx": 77,
+    "sfxPerMinute": 48.2,
+    "sfxKinds": 25,
+    "longestGapSeconds": 2.7,
+    "longestGapAt": 83.2,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.1,
+    "voiceOverRestWorstDb": 5.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.0,
+        "t": 19.0,
+        "cue": "2.tell",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 44.6,
+        "cue": "5.alonea",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 91.4,
+        "cue": "12.outa",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 29.3,
+        "cue": "3.shop",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 71.8,
+        "cue": "10.wall",
+        "sounding": [
+          "register"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 84.7,
+        "cue": "11.whya",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}
