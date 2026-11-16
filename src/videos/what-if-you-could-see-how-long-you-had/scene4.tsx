@@ -55,8 +55,8 @@ export const scene4 = storyScene(timing, {
         const k = ramp(t, 0, 1.3);
         return (
           <>
-            <Hero position={[3.2 - 3.0 * k, 0, 0.3]} rotationY={WEST} animation="run" animDistance={3.0 * k} face="fear" />
-            <BigNumber n="10"over={[3.2 - 3.0 * k, 0, 0.3]} size={0.62} t={t - RUN}   rotationY={-1.6755}/>
+            <Hero position={HALL.at(3.2 - 3.0 * k, 0, 0.3)} rotationY={WEST} animation="run" animDistance={3.0 * k} face="fear" />
+            <BigNumber n="10" over={HALL.at(3.2 - 3.0 * k, 0, 0.3)} size={0.62} t={t - RUN} rotationY={-1.6755} />
           </>
         );
       },
@@ -198,7 +198,7 @@ export const scene4 = storyScene(timing, {
     {
       // Subscribe, and I will tell you what they were counting down to. The last picture: the sign, and a clock.
       cue: "14.sub",
-      ...cam.push({ on: SPOT.at(0.4, 1.8, 2.6), dist: 4.0, to: 4.6, yaw: 178, pitch: -2, fov: 50 }),
+      ...cam.push({ on: SPOT.at(0.25, 1.9, -0.9), dist: 3.4, to: 4.4, yaw: 5, pitch: 3, fov: 52 }),
       zone: "class",
       note: "Back up and away off the whole room: forty clocks counting and the red sign coming up over the board. The film ends on the teller's back, in a room full of clocks, with the question asked - which is a reason to subscribe, not a request for one.",
       stage: (t) => {
@@ -211,9 +211,9 @@ export const scene4 = storyScene(timing, {
               <Classmate key={`${col}${row}`} who={col * 3 + row + 2} position={SPOT.seat(col, row)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
             ))}
             {seats.map(([col, row], i) => (
-              <BigNumber n="4"key={`c${col}${row}`} over={SPOT.seat(col, row)} size={0.34 + (i % 3) * 0.04} t={t}   rotationY={3.1067}/>
+              <BigNumber key={`c${col}${row}`} n="4" over={SPOT.seat(col, row)} size={0.34 + (i % 3) * 0.04} t={t} rotationY={3.1067} />
             ))}
-            <SubscribeSign position={SPOT.at(0, 3.0, -3.3)} rotationY={0} scale={1.1} />
+            <SubscribeSign position={SPOT.at(0.2, 2.55, -3.45)} rotationY={0} scale={0.95} tilt={0.03 + Math.sin(t * 9) * 0.01} />
           </>
         );
       },

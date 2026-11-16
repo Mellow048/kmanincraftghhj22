@@ -49,10 +49,10 @@ export const scene3 = storyScene(timing, {
         const k = ramp(t, 0, 2.4);
         return (
           <>
-            <Hero position={[-2.0 + 3.0 * k, 0, 0.3]} rotationY={EAST} animation="walk" animDistance={3.0 * k} face="calm" />
-            <Classmate who={4} position={[-0.6, 0, -0.8]} rotationY={NORTH - 0.4} animation="idle" face="frown" />
-            <Classmate who={7} position={[0.2, 0, -0.9]} rotationY={NORTH + 0.6} animation="idle" face="frown" />
-            <BigNumber n="12"over={[-0.6, 0, -0.8]} size={0.62} t={t - WEEK}   rotationY={-1.5708}/>
+            <Hero position={HALL.at(-2.0 + 3.0 * k, 0, 0.3)} rotationY={EAST} animation="walk" animDistance={3.0 * k} face="calm" />
+            <Classmate who={4} position={HALL.at(-0.6, 0, -0.8)} rotationY={NORTH - 0.4} animation="idle" face="frown" />
+            <Classmate who={7} position={HALL.at(0.2, 0, -0.9)} rotationY={NORTH + 0.6} animation="idle" face="frown" />
+            <BigNumber n="12" over={HALL.at(-0.6, 0, -0.8)} size={0.62} t={t - WEEK} rotationY={-1.5708} />
           </>
         );
       },

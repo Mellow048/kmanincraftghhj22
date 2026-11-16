@@ -127,15 +127,15 @@ export const scene2 = storyScene(timing, {
       // A clock tells you when. Nothing tells you why. The limit, named for the second and last time, and he walks
       // away from it: the plant that pays the entire ending.
       cue: "6.plant",
-      ...cam.push({ on: [0.85, 1.35, 0.3], dist: 3.9, to: 3.3, yaw: -16, pitch: 6, fov: 44 }),
+      ...cam.push({ on: HALL.at(0.9, 1.35, 0.9), dist: 3.9, to: 3.3, yaw: -16, pitch: 6, fov: 44 }),
       zone: "hall",
       note: "The hallway, and he is walking away from the camera with his hands in his pockets: the line that names the limit is said over his back, on the move, so it sounds like something he shrugged off. It is the answer to the film, thrown away in a corridor.",
       stage: (t) => {
         const k = ramp(t, 0, 1.8);
         return (
           <>
-            <Hero position={[0.2 * k, 0, 0.9 - 1.6 * k]} rotationY={NORTH} animation="walk" animDistance={1.6 * k} face="calm" />
-            <Classmate who={3} position={[1.55, 0, 0.15]} rotationY={SOUTH} animation="idle" face="calm" />
+            <Hero position={[HALL.at(0.2 * k, 0, 0.9 - 1.6 * k)[0], 0, HALL.at(0.2 * k, 0, 0.9 - 1.6 * k)[2]]} rotationY={NORTH} animation="walk" animDistance={1.6 * k} face="calm" />
+            <Classmate who={3} position={HALL.at(1.65, 0, 0.5)} rotationY={SOUTH} animation="idle" face="calm" />
             <BigNumber n="40" over={[1.5, 0, -1.2]} size={0.50} t={t - PLANT}  rotationY={-0.3491}/>
           </>
         );
@@ -151,7 +151,7 @@ export const scene2 = storyScene(timing, {
         const k = ramp(t, 0, 1.4);
         return (
           <>
-            <Hero position={[-2.4 + 2.4 * k, 0, 0.3]} rotationY={EAST} animation="walk" animDistance={2.4 * k} face="calm" />
+            <Hero position={HALL.at(-2.4 + 2.4 * k, 0, 0.3)} rotationY={EAST} animation="walk" animDistance={2.4 * k} face="calm" />
           </>
         );
       },
