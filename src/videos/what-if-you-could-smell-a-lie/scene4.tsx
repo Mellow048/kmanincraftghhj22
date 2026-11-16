@@ -1,5 +1,5 @@
-import { cam, storyScene } from "../../engine";
-import { A, Friend, Hero, timing } from "./kit";
+import { storyScene } from "../../engine";
+import { A, Friend, Hero, timing, push } from "./kit";
 
 /**
  * THE FRIEND. Four shots, eight seconds.
@@ -13,7 +13,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "9.friend",
-      ...cam.push({ on: A("hall", 0, 1.25, 0.1), dist: 2.7, to: 2.4, yaw: 8, pitch: 7, fov: 42 }),
+      ...push({ on: A("hall", 0, 1.25, 0.1), dist: 2.7, to: 2.4, yaw: 8, pitch: 7, fov: 42 }),
       zone: "hall",
       note: "By the lockers, the friend says the true thing: it tells you it is a lie, never why.",
       stage: () => (
@@ -25,14 +25,14 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.why",
-      ...cam.push({ on: A("hall", 0.6, 1.35, 0.1), dist: 1.8, to: 1.55, yaw: 8, pitch: 3, fov: 36 }),
+      ...push({ on: A("hall", 0.6, 1.35, 0.1), dist: 1.8, to: 1.55, yaw: 8, pitch: 3, fov: 36 }),
       zone: "hall",
       note: "The friend's face, straight down the lens of the moment. No smoke anywhere near him.",
       stage: () => <Friend position={A("hall", 0.6, 0, 0.1)} rotationY={0} animation="talk" face="calm" />,
     },
     {
       cue: "9.sat",
-      ...cam.push({ on: A("hall", -0.5, 1.2, 0.4), dist: 2.9, to: 2.6, yaw: -12, pitch: 8, fov: 44 }),
+      ...push({ on: A("hall", -0.5, 1.2, 0.4), dist: 2.9, to: 2.6, yaw: -12, pitch: 8, fov: 44 }),
       zone: "hall",
       note: "The friend goes. He walks out of the frame and the picture keeps him leaving.",
       stage: () => (
@@ -44,7 +44,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.gone",
-      ...cam.push({ on: A("hall", -0.6, 1.3, 0.4), dist: 2.4, to: 2.1, yaw: 16, pitch: 6, fov: 40 }),
+      ...push({ on: A("hall", -0.6, 1.3, 0.4), dist: 2.4, to: 2.1, yaw: 16, pitch: 6, fov: 40 }),
       zone: "hall",
       note: "Him alone in the corridor with nothing to smell. The power is useless on silence.",
       stage: () => <Hero position={A("hall", -0.6, 0, 0.4)} rotationY={0.2} animation="idle" face="calm" />,

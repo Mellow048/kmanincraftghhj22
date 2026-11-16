@@ -1,5 +1,5 @@
-import { cam, storyScene } from "../../engine";
-import { A, Card, Classmate, CookieStack, Hero, Mum, NORTH, SPOT, Toast, timing } from "./kit";
+import { storyScene } from "../../engine";
+import { A, Card, Classmate, CookieStack, Hero, Mum, NORTH, SPOT, Toast, timing, push } from "./kit";
 
 /**
  * THE EDGE AND THE ACT. Six shots.
@@ -13,7 +13,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "10.bday",
-      ...cam.push({ on: SPOT.at(0, 1.0, 0.4), dist: 4.2, to: 3.8, yaw: 0, pitch: 12, fov: 50 }),
+      ...push({ on: SPOT.at(0, 1.0, 0.4), dist: 4.2, to: 3.8, yaw: 0, pitch: 12, fov: 50 }),
       zone: "class",
       note: "The whole class standing round one desk with a cake on it, him in the middle of them.",
       stage: () => (
@@ -28,7 +28,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "10.cake",
-      ...cam.push({ on: SPOT.at(0, 1.0, 0.1), dist: 1.7, to: 1.5, yaw: 4, pitch: 16, fov: 38 }),
+      ...push({ on: SPOT.at(0, 1.0, 0.1), dist: 1.7, to: 1.5, yaw: 4, pitch: 16, fov: 38 }),
       zone: "class",
       note: "The cake alone, thirteen candles' worth of it, and the first wisp coming off it.",
       stage: () => (
@@ -40,7 +40,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "10.smile",
-      ...cam.push({ on: SPOT.at(0, 1.35, 0.6), dist: 3.0, to: 2.7, yaw: -6, pitch: 6, fov: 44 }),
+      ...push({ on: SPOT.at(0, 1.35, 0.6), dist: 3.0, to: 2.7, yaw: -6, pitch: 6, fov: 44 }),
       zone: "class",
       note: "Four faces in a row, all smiling, all of them smoking. The gags of act one turned into a horror.",
       stage: () => (
@@ -56,7 +56,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.stand",
-      ...cam.push({ on: SPOT.at(0, 1.5, 0.9), dist: 2.9, to: 2.6, yaw: 10, pitch: 2, fov: 44 }),
+      ...push({ on: SPOT.at(0, 1.5, 0.9), dist: 2.9, to: 2.6, yaw: 10, pitch: 2, fov: 44 }),
       zone: "class",
       note: "He gets up on a chair, so the lens is under him looking slightly up. Small kid, tall frame.",
       stage: () => (
@@ -68,14 +68,14 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.say",
-      ...cam.push({ on: SPOT.at(0, 1.9, 0.9), dist: 1.9, to: 1.7, yaw: -4, pitch: -6, fov: 36 }),
+      ...push({ on: SPOT.at(0, 1.9, 0.9), dist: 1.9, to: 1.7, yaw: -4, pitch: -6, fov: 36 }),
       zone: "class",
       note: "His face, up there, saying it to the whole room.",
       stage: () => <Hero position={SPOT.at(0, 0.46, 0.9)} rotationY={0} animation="talk" face="frown" />,
     },
     {
       cue: "11.still",
-      ...cam.push({ on: SPOT.at(0.4, 0.95, 0.2), dist: 3.4, to: 3.0, yaw: 12, pitch: 18, fov: 46 }),
+      ...push({ on: SPOT.at(0.4, 0.95, 0.2), dist: 3.4, to: 3.0, yaw: 12, pitch: 18, fov: 46 }),
       zone: "class",
       note: "The room, from above his shoulder: everybody stopped, and one card face down on the desk.",
       stage: () => (
