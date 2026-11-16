@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lava lamp</title>
+<!--
+  A lava lamp. One file. No libraries, no images, no network.
+
+  The wax is nine spheres in a signed-distance bottle. The picture is a
+  raymarch of their metaball field, so two that meet fuse, and a lobe
+  pinches off the pool instead of crossing it. Glass is Fresnel plus
+  Snell: air 1.00, soda-lime 1.52, master fluid 1.41.
+
+  What moves a sphere is the relationship, not a canned path.
+
+    density    ρ(T) = 1020 · (1 − 0.00080·(T − 25)) kg/m³
+               ρ_liquid = 1000 kg/m³
+               equal at 49.5°C. Hotter than that, the wax rises.
+
+    buoyancy   a = g · (ρ − ρ_liquid) / ρ          g points down
+
+    drag       Stokes, a = −v · 9μ / (2 ρ r²),  μ = 0.30 Pa·s
+               a 16 mm blob at 60°C rises at 1.61 cm/s, so v ∝ r²:
+               the big ones climb faster, which is what a real lamp does.
+
+  Heat is the one scaled number. For a sphere, τ = ρ cp r / (3 h)
+  with cp = 2140 J/kg·K and h = 40 W/m²·K is about four minutes for a
+  14 mm blob, and a real lamp takes an hour to get going. That time
+  constant is divided by 8 so a cycle can be watched. Density and drag
+  are not sped up. The coil heats the exposed top of the pool, not the
+  wax buried under it, which is why a lobe pinches off instead of the
+  whole puddle rising. It is also the wire a real lamp uses to break
+  that surface.
+
+  Drag tips it, up to atan(foot / centre-of-mass), where a real one
+  would topple. Space, or the red switch, turns it off. The light goes,
+  then the wax cools and sinks.
+-->
+<style>
+  html, body { height: 100%; margin: 0; background: #070605; overflow: hidden; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+  canvas:active { cursor: grabbing; }
+  #err {
+    display: none; position: fixed; inset: 24px auto auto 24px; max-width: 42em;
+    color: #f0d0c0; font: 13px/1.45 ui-monospace, monospace; white-space: pre-wrap;
+  }
+</style>
+</head>
+<body>
+<canvas id="c" role="img" aria-label="A lava lamp. Drag to tip it. Click the red switch on the base, or press space, to turn it off."></canvas>
+<pre id="err"></pre>
+<script>
+"use strict";
+
+/* ------------------------------------------------------------------ *
+ * Numbers. The comment at the top is checked against these at startup.
+ * ------------------------------------------------------------------ */
+const G = 9.81;
+const MU = 0.30;            // Pa·s, glycerin-like master fluid (water is 0.001)
+const RHO_L = 1000;         // kg/m³
+const RHO_WAX_25 = 1020;    // kg/m³ at 25°C
+const ALPHA = 0.00080;      // 1/°C, volumetric expansion of the wax
+const T_RELEASE = 58;       // °C, surface tension lets go
+const H_CONV = 40;          // W/m²·K
+const CP = 2140;            // J/kg·K, paraffin
+const HEAT_SCALE = 8;       // viewing scale only. Drag and density are real.
+const THICK = 0.0042;       // glass wall, metres
+const Y_FLOOR = 0.112;
+const Y_SURF = 0.292;
+const FOOT_R = 0.062;
+const COM_H = 0.16;         // centre of mass above the table
+const TILT_MAX = Math.atan(FOOT_R / COM_H);
+const N = 9;
+
+const EYE = [0.20, 0.230, 1.02];
+const TARGET = [0.0, 0.188, 0.0];
+const FOV = 20.5 * Math.PI / 180;
+
+function rhoWax(T) { return RHO_WAX_25 * (1 - ALPHA * (T - 25)); }
+function dragCoeff(r) { return (9 * MU) / (2 * RHO_L * r * r); }
+function tauOf(r) { return (RHO_L * CP * r) / (3 * H_CONV) / HEAT_SCALE; }
+
+(function checkTheComment() {
+  const cross = 25 + (1 - RHO_L / RHO_WAX_25) / ALPHA;
+  const rw = rhoWax(60);
+  const rise = ((RHO_L - rw) / rw * G) / dragCoeff(0.016);
+  if (Math.abs(cross - 49.51) > 0.02) throw new Error("crossover drifted: " + cross);
+  if (Math.abs(rise - 0.01606) > 0.0004) throw new Error("rise speed drifted: " + rise);
+  if (Math.abs(tauOf(0.014) * HEAT_SCALE - 249.7) > 1) throw new Error("thermal time drifted");
+})();
+
+/* ------------------------------------------------------------------ *
+ * Bottle. Same surfaces the shader marches. Negative inside.
+ * Origin: centre of the base, on the table. Y up. Metres.
+ * ------------------------------------------------------------------ */
+const clamp = (x, a, b) => x < a ? a : x > b ? b : x;
+const mix = (a, b, t) => a + (b - a) * t;
+
+function vadd(a, b) { return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]; }
+function vsub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+function vmul(a, s) { return [a[0] * s, a[1] * s, a[2] * s]; }
+function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+function cross(a, b) {
+  return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+}
+function len(a) { return Math.hypot(a[0], a[1], a[2]); }
+function norm(a) {
+  const L = len(a) || 1e-8;
+  return [a[0] / L, a[1] / L, a[2] / L];
+}
+
+function smin(a, b, k) {
+  const h = Math.max(k - Math.abs(a - b), 0) / k;
+  return Math.min(a, b) - h * h * k * 0.25;
+}
+function sdSphere(p, c, r) { return len(vsub(p, c)) - r; }
+function sdCappedCone(p, a, b, ra, rb) {
+  const rba = rb - ra;
+  const ba = vsub(b, a);
+  const pa = vsub(p, a);
+  const baba = dot(ba, ba);
+  const papa = dot(pa, pa);
+  const paba = dot(pa, ba) / baba;
+  const x = Math.sqrt(Math.max(papa - paba * paba * baba, 0));
+  const cax = Math.max(0, x - (paba < 0.5 ? ra : rb));
+  const cay = Math.abs(paba - 0.5) - 0.5;
+  const k = rba * rba + baba;
+  const f = clamp((rba * (x - ra) + paba * baba) / k, 0, 1);
+  const cbx = x - ra - f * rba;
+  const cby = paba - f;
+  const s = (cbx < 0 && cay < 0) ? -1 : 1;
+  return s * Math.sqrt(Math.min(cax * cax + cay * cay * baba, cbx * cbx + cby * cby * baba));
+}
+function bottleOuter(p) {
+  const belly = sdSphere(p, [0, 0.188, 0], 0.051);
+  const lower = sdCappedCone(p, [0, 0.098, 0], [0, 0.188, 0], 0.022, 0.047);
+  const upper = sdCappedCone(p, [0, 0.178, 0], [0, 0.312, 0], 0.049, 0.027);
+  return smin(smin(belly, lower, 0.034), upper, 0.026);
+}
+function liquidSDF(p) {
+  return Math.max(bottleOuter(p) + THICK, Y_FLOOR - p[1], p[1] - Y_SURF);
+}
+function liquidNormal(p) {
+  const e = 0.0008;
+  const f = liquidSDF;
+  return norm([
+    f([p[0] + e, p[1], p[2]]) - f([p[0] - e, p[1], p[2]]),
+    f([p[0], p[1] + e, p[2]]) - f([p[0], p[1] - e, p[2]]),
+    f([p[0], p[1], p[2] + e]) - f([p[0], p[1], p[2] - e]),
+  ]);
+}
+
+/* ------------------------------------------------------------------ *
+ * Wax. Nine spheres. Cool ones are held in the pool until 58°C.
+ * ------------------------------------------------------------------ */
+function blob(x, y, z, r, T, vy) {
+  return {
+    x, y, z, r, T, vx: 0, vy, vz: 0,
+    stretch: Math.abs(vy) > 0.004 ? 1.3 : 0.66,
+    wobble: 0.05,
+    phase: (x * 40 + z * 25 + y) * 10,
+    held: T < T_RELEASE,
+  };
+}
+const blobs = [
+  blob( 0.000, 0.130,  0.000, 0.017, 42,  0.000),
+  blob( 0.015, 0.126,  0.004, 0.013, 40,  0.000),
+  blob(-0.014, 0.127, -0.003, 0.013, 41,  0.000),
+  blob( 0.003, 0.146, -0.001, 0.012, 56,  0.000), // the lobe, about to let go
+  blob( 0.002, 0.172,  0.005, 0.011, 62,  0.009), // just let go
+  blob(-0.011, 0.214,  0.009, 0.014, 56,  0.013), // climbing
+  blob( 0.007, 0.258, -0.003, 0.015, 43, -0.002), // stalled under the cap
+  blob( 0.020, 0.236,  0.011, 0.009, 37, -0.013), // falling, cooler
+  blob(-0.020, 0.188, -0.006, 0.008, 59,  0.008),
+];
+
+let tilt = 0;
+let tiltTarget = 0;
+let dragging = false;
+let power = 1;
+let powerTarget = 1;
+let simTime = 0;
+
+function tFluid(x, y, z) {
+  // The bulb heats a column, not the whole floor. Side wax stays under
+  // the release temperature and keeps the pool; the lobe forms on the coil.
+  const u = clamp((y - Y_FLOOR) / (Y_SURF - Y_FLOOR), 0, 1);
+  const radial = Math.hypot(x, z);
+  const center = Math.exp(-(radial * radial) / 0.00035);
+  const floorT = 22 + power * (10 + 2 * center); // puddle equilibrates near 33°C, heavy enough to sit and to slide
+  const topT = 22 + power * 8;                    // ~30°C under the cap
+  return topT + (floorT - topT) * Math.exp(-u * 3.0);
+}
+
+function contain(b) {
+  const reach = b.r * (0.58 + 0.42 * Math.max(b.stretch, 1));
+  for (let k = 0; k < 3; k++) {
+    const p = [b.x, b.y, b.z];
+    const d = liquidSDF(p) + reach;
+    if (d <= 0) break;
+    const n = liquidNormal(p);
+    b.x -= n[0] * d;
+    b.y -= n[1] * d;
+    b.z -= n[2] * d;
+    const vn = b.vx * n[0] + b.vy * n[1] + b.vz * n[2];
+    if (vn > 0) {
+      b.vx -= n[0] * vn;
+      b.vy -= n[1] * vn;
+      b.vz -= n[2] * vn;
+      b.wobble = Math.min(0.2, b.wobble + vn * 2.5);
+    }
+  }
+}
+
+function step(dt) {
+  const s = Math.sin(tilt), c = Math.cos(tilt);
+  // world gravity (0, -G), expressed in the lamp's frame
+  const g = [-G * s, -G * c, 0];
+
+  const ax = new Float64Array(N);
+  const ay = new Float64Array(N);
+  const az = new Float64Array(N);
+
+  for (let i = 0; i < N; i++) {
+    const b = blobs[i];
+    const rw = rhoWax(b.T);
+    // net of weight and buoyancy. Sinks when ρ > ρ_liquid.
+    ax[i] += g[0] * (rw - RHO_L) / rw;
+    ay[i] += g[1] * (rw - RHO_L) / rw;
+    az[i] += g[2] * (rw - RHO_L) / rw;
+
+    // surface tension: cool wax is held in the mound over the coil
+    const hold = b.T < T_RELEASE ? (T_RELEASE - b.T) / 16 : 0;
+    // Seated only while the lamp is upright. Tipped, gravity and the glass do it.
+    if (hold > 0 && b.y < Y_FLOOR + 0.055 && Math.abs(tilt) < 0.08) {
+      const restY = Y_FLOOR + b.r * 0.55;
+      ay[i] += (restY - b.y) * 36 * hold;
+    }
+
+    // a weak convection cell. Time constant ~25 s, so it cannot cancel buoyancy.
+    const R = 0.040;
+    const radial = Math.hypot(b.x, b.z);
+    const nx = radial / R;
+    const u = clamp((b.y - Y_FLOOR) / (Y_SURF - Y_FLOOR), 0, 1);
+    const A = 0.003 * power;
+    const vyF = A * (1 - nx * nx) * Math.sin(Math.PI * u);
+    const vr = -A * 0.45 * nx * Math.cos(Math.PI * u);
+    const inv = radial > 1e-6 ? 1 / radial : 0;
+    const kDrag = 0.04;
+    ax[i] += (b.x * inv * vr - b.vx) * kDrag;
+    ay[i] += (vyF - b.vy) * kDrag;
+    az[i] += (b.z * inv * vr - b.vz) * kDrag;
+
+    // Heat conducts up through the mound, so the exposed lobe — not the
+    // buried wax — is what reaches release and pinches off.
+    const cd = Math.hypot(b.x, (b.y - 0.132) * 0.7, b.z);
+    const onCoil = Math.exp(-(cd * cd) / 0.00025);
+    const spread = b.y > Y_SURF - 0.055 && Math.hypot(b.vx, b.vy, b.vz) < 0.008 ? 0.4 : 1;
+    const dT = (tFluid(b.x, b.y, b.z) - b.T) / (tauOf(b.r) * spread) + onCoil * power * 0.35;
+    b.T = clamp(b.T + dT * dt, 18, 78);
+
+    if (b.held && b.T >= T_RELEASE) {
+      b.held = false;
+      b.vy += 0.01;
+      b.wobble = Math.min(0.18, b.wobble + 0.12);
+    } else if (!b.held && b.T < T_RELEASE - 4 && b.y < Y_FLOOR + 0.045) {
+      b.held = true;
+    }
+  }
+
+  // The top of the pool is the lobe. Give it the coil's heat.
+  let lobe = -1, lobeY = -1;
+  for (let i = 0; i < N; i++) {
+    const b = blobs[i];
+    if (b.y < Y_FLOOR + 0.07 && b.y > lobeY && Math.hypot(b.x, b.z) < 0.03) {
+      lobeY = b.y;
+      lobe = i;
+    }
+  }
+  if (lobe >= 0 && power > 0.5) {
+    const b = blobs[lobe];
+    b.T = Math.min(78, b.T + 2.0 * dt);
+  }
+
+  // soft body: only when they actually overlap, so a neck can thin and break
+  for (let i = 0; i < N; i++) {
+    for (let j = i + 1; j < N; j++) {
+      const a = blobs[i], b = blobs[j];
+      const dx = b.x - a.x, dy = b.y - a.y, dz = b.z - a.z;
+      const d = Math.hypot(dx, dy, dz) || 1e-6;
+      const touch = (a.r + b.r) * 0.82;
+      if (d < touch) {
+        let push = (touch - d) * 22;
+        // a released blob may rise through the mound; don't pack it back down
+        if ((a.T >= T_RELEASE && a.y >= b.y) || (b.T >= T_RELEASE && b.y >= a.y)) push *= 0.2;
+        const nx = dx / d, ny = dy / d, nz = dz / d;
+        ax[i] -= nx * push; ay[i] -= ny * push; az[i] -= nz * push;
+        ax[j] += nx * push; ay[j] += ny * push; az[j] += nz * push;
+      }
+    }
+  }
+
+  for (let i = 0; i < N; i++) {
+    const b = blobs[i];
+    const damp = Math.exp(-dragCoeff(b.r) * dt);
+    b.vx = (b.vx + ax[i] * dt) * damp;
+    b.vy = (b.vy + ay[i] * dt) * damp;
+    b.vz = (b.vz + az[i] * dt) * damp;
+    const hold = b.T < T_RELEASE && b.y < Y_FLOOR + 0.05 ? (T_RELEASE - b.T) / 16 : 0;
+    if (hold > 0) {
+      const extra = Math.exp(-hold * 6 * dt);
+      b.vx *= extra; b.vy *= extra; b.vz *= extra;
+    }
+    const sp = Math.hypot(b.vx, b.vy, b.vz);
+    if (sp > 0.08) {
+      const k = 0.08 / sp;
+      b.vx *= k; b.vy *= k; b.vz *= k;
+    }
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+    b.z += b.vz * dt;
+    contain(b);
+
+    const speed = Math.hypot(b.vx, b.vy, b.vz);
+    let targetS = clamp(1 + speed * 20, 0.68, 1.62);
+    if (b.y < Y_FLOOR + b.r * 1.4 && speed < 0.008 && b.T < T_RELEASE + 3) targetS = 0.62;
+    b.stretch += (targetS - b.stretch) * (1 - Math.exp(-4 * dt));
+    b.wobble *= Math.exp(-0.7 * dt);
+    b.phase += dt * (5.2 / b.r);
+  }
+
+  const follow = dragging ? 16 : 2.4;
+  tilt += (tiltTarget - tilt) * (1 - Math.exp(-follow * dt));
+  power += (powerTarget - power) * (1 - Math.exp(-2.8 * dt));
+  simTime += dt;
+}
+
+/* ------------------------------------------------------------------ *
+ * Picture. One fullscreen triangle, one ray per pixel.
+ * ------------------------------------------------------------------ */
+const VERT = `#version 300 es
+layout(location=0) in vec2 aPos;
+void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
+`;
+
+const FRAG = `#version 300 es
+precision highp float;
+layout(location=0) out vec4 fragColor;
+
+uniform vec3 uEye, uFwd, uRight, uUp;
+uniform vec2 uTan;          // tan(fov/2) * aspect, tan(fov/2)
+uniform vec2 uRes;
+uniform float uTilt, uPower, uTime;
+uniform vec4 uPos[9];       // xyz, radius
+uniform vec4 uExt[9];       // temp, stretch, axis.x, axis.y
+uniform float uAz[9];
+
+const float THICK = 0.0042;
+const float Y_FLOOR = 0.112;
+const float Y_SURF = 0.292;
+const float FOOT_R = 0.062;
+const vec3 BULB = vec3(0.0, 0.072, 0.0);
+
+float smin(float a, float b, float k) {
+  float h = max(k - abs(a - b), 0.0) / k;
+  return min(a, b) - h * h * k * 0.25;
+}
+float sdSphere(vec3 p, vec3 c, float r) { return length(p - c) - r; }
+float sdCappedCone(vec3 p, vec3 a, vec3 b, float ra, float rb) {
+  float rba = rb - ra;
+  float baba = dot(b - a, b - a);
+  float papa = dot(p - a, p - a);
+  float paba = dot(p - a, b - a) / baba;
+  float x = sqrt(max(papa - paba * paba * baba, 0.0));
+  float cax = max(0.0, x - ((paba < 0.5) ? ra : rb));
+  float cay = abs(paba - 0.5) - 0.5;
+  float k = rba * rba + baba;
+  float f = clamp((rba * (x - ra) + paba * baba) / k, 0.0, 1.0);
+  float cbx = x - ra - f * rba;
+  float cby = paba - f;
+  float s = (cbx < 0.0 && cay < 0.0) ? -1.0 : 1.0;
+  return s * sqrt(min(cax * cax + cay * cay * baba, cbx * cbx + cby * cby * baba));
+}
+float bottleOuter(vec3 p) {
+  float belly = sdSphere(p, vec3(0.0, 0.188, 0.0), 0.051);
+  float lower = sdCappedCone(p, vec3(0.0, 0.098, 0.0), vec3(0.0, 0.188, 0.0), 0.022, 0.047);
+  float upper = sdCappedCone(p, vec3(0.0, 0.178, 0.0), vec3(0.0, 0.312, 0.0), 0.049, 0.027);
+  return smin(smin(belly, lower, 0.034), upper, 0.026);
+}
+float baseSDF(vec3 p) {
+  float foot = sdCappedCone(p, vec3(0.0, 0.000, 0.0), vec3(0.0, 0.014, 0.0), 0.064, 0.058);
+  float cone = sdCappedCone(p, vec3(0.0, 0.008, 0.0), vec3(0.0, 0.116, 0.0), 0.056, 0.034);
+  return smin(foot, cone, 0.010);
+}
+float capSDF(vec3 p) {
+  float skirt = sdCappedCone(p, vec3(0.0, 0.286, 0.0), vec3(0.0, 0.348, 0.0), 0.038, 0.013);
+  float dome = sdSphere(p, vec3(0.0, 0.334, 0.0), 0.0165);
+  return smin(skirt, dome, 0.014);
+}
+float liquidSDF(vec3 p) {
+  return max(bottleOuter(p) + THICK, Y_FLOOR - p.y, p.y - Y_SURF);
+}
+
+vec3 toLocalDir(vec3 d) {
+  float c = cos(uTilt), s = sin(uTilt);
+  return vec3(c * d.x + s * d.y, -s * d.x + c * d.y, d.z);
+}
+vec3 toLocal(vec3 p) {
+  float lift = FOOT_R * abs(sin(uTilt));
+  vec3 q = vec3(p.x, p.y - lift, p.z);
+  return toLocalDir(q);
+}
+vec3 toWorld(vec3 p) {
+  float c = cos(uTilt), s = sin(uTilt);
+  float lift = FOOT_R * abs(sin(uTilt));
+  return vec3(c * p.x - s * p.y, s * p.x + c * p.y + lift, p.z);
+}
+
+float fieldAt(vec3 p, out float temp) {
+  float f = 0.0;
+  float heat = 0.0;
+  for (int i = 0; i < 9; i++) {
+    vec3 axis = vec3(uExt[i].z, uExt[i].w, uAz[i]);
+    float al = length(axis);
+    axis = al > 1e-5 ? axis / al : vec3(0.0, 1.0, 0.0);
+    vec3 d = p - uPos[i].xyz;
+    float along = dot(d, axis);
+    vec3 perp = d - axis * along;
+    float s = max(uExt[i].y, 0.45);
+    float dist2 = (along / s) * (along / s) + dot(perp, perp) * s;
+    float contrib = (uPos[i].w * uPos[i].w) / (dist2 + 2.5e-5);
+    f += contrib;
+    heat += uExt[i].x * contrib;
+  }
+  temp = heat / max(f, 1e-6);
+  return f;
+}
+float fieldOnly(vec3 p) {
+  float t;
+  return fieldAt(p, t);
+}
+vec3 fieldNormal(vec3 p) {
+  float e = 0.0011;
+  return normalize(vec3(
+    fieldOnly(p + vec3(e, 0, 0)) - fieldOnly(p - vec3(e, 0, 0)),
+    fieldOnly(p + vec3(0, e, 0)) - fieldOnly(p - vec3(0, e, 0)),
+    fieldOnly(p + vec3(0, 0, e)) - fieldOnly(p - vec3(0, 0, e))
+  ));
+}
+
+vec3 envColor(vec3 rd) {
+  float t = clamp(rd.y * 0.35 + 0.45, 0.0, 1.0);
+  vec3 col = mix(vec3(0.018, 0.014, 0.012), vec3(0.006, 0.006, 0.008), t);
+  vec3 win = normalize(vec3(-0.62, 0.42, -0.28));
+  float dw = max(dot(rd, win), 0.0);
+  col += vec3(0.055, 0.075, 0.11) * pow(dw, 40.0);
+  return col;
+}
+float fresnel(float cosTheta, float F0) {
+  return F0 + (1.0 - F0) * pow(1.0 - clamp(cosTheta, 0.0, 1.0), 5.0);
+}
+vec3 reflectDir(vec3 I, vec3 N) { return I - 2.0 * dot(I, N) * N; }
+vec3 refractDir(vec3 I, vec3 N, float eta) {
+  float cosi = clamp(-dot(I, N), -1.0, 1.0);
+  float k = 1.0 - eta * eta * (1.0 - cosi * cosi);
+  if (k < 0.0) return vec3(0.0);
+  return normalize(eta * I + (eta * cosi - sqrt(k)) * N);
+}
+
+vec3 shadeMetal(vec3 p, vec3 n, vec3 view, int kind) {
+  vec3 L = normalize(vec3(-0.35, 0.72, 0.40));
+  float ndotl = max(dot(n, L), 0.0);
+  float ndotv = max(dot(n, view), 0.0);
+  float F = fresnel(ndotv, 0.06);
+  vec3 rd = reflectDir(-view, n);
+  vec3 refl = envColor(rd);
+  float warm = clamp(1.0 - abs(rd.x) * 6.0, 0.0, 1.0) * clamp(-rd.y, 0.0, 1.0);
+  refl += vec3(1.0, 0.45, 0.10) * warm * 0.55 * uPower;
+  float albedo = 0.60 + 0.06 * clamp(n.z, 0.0, 1.0);
+  vec3 col = mix(vec3(albedo) * (0.05 + 0.30 * ndotl), refl, 0.35 + 0.65 * F);
+  float streak = exp(-((n.x - 0.42) * (n.x - 0.42)) / 0.02) * clamp(n.z, 0.0, 1.0);
+  col += vec3(0.18, 0.20, 0.24) * streak;
+  if (kind == 1) {
+    bool front = p.z > 0.012 && abs(p.x) < 0.018;
+    float vents = 0.0;
+    for (int i = 0; i < 3; i++) {
+      float yv = 0.042 + float(i) * 0.016;
+      if (front && abs(p.y - yv) < 0.0045) vents = max(vents, 1.0 - abs(p.y - yv) / 0.0045);
+    }
+    col += vec3(1.0, 0.42, 0.08) * vents * 1.7 * uPower;
+    if (abs(p.y - 0.108) < 0.003) col *= 0.55;
+    if (p.z > 0.03 && abs(p.x) < 0.008 && abs(p.y - 0.028) < 0.010) {
+      col = mix(col, vec3(0.25, 0.05, 0.04), 0.65);
+      if (abs(p.x) < 0.0035 && abs(p.y - 0.030) < 0.004)
+        col += vec3(0.9, 0.07, 0.03) * uPower;
+    }
+  }
+  if (kind == 4) {
+    col = vec3(0.55, 0.52, 0.48) * 0.4 + vec3(1.0, 0.55, 0.16) * 0.55 * uPower;
+    col += vec3(0.7) * pow(ndotv, 8.0) * 0.3;
+  }
+  return col;
+}
+
+vec3 waxColor(float T, float light) {
+  float u = clamp((T - 36.0) / 30.0, 0.0, 1.0);
+  vec3 cool = vec3(0.62, 0.045, 0.02);
+  vec3 midc = vec3(0.95, 0.30, 0.035);
+  vec3 hot = vec3(1.0, 0.72, 0.22);
+  vec3 col = mix(cool, midc, min(u * 1.8, 1.0));
+  col = mix(col, hot, clamp((u - 0.55) / 0.45, 0.0, 1.0));
+  light = light / (1.0 + light * 0.55);
+  return col * light * 1.7;
+}
+vec3 shadeWax(vec3 p, vec3 n, float T, vec3 view) {
+  vec3 toBulb = BULB - p;
+  float dist = length(toBulb);
+  vec3 L = toBulb / max(dist, 1e-5);
+  float wrap = clamp(dot(n, L) * 0.35 + 0.55, 0.0, 1.0);
+  float trans = pow(max(dot(n, -L), 0.0), 1.4);
+  float atten = 1.0 / (1.0 + dist * dist * 40.0);
+  float light = 0.055 + uPower * (0.62 * wrap * atten + 1.20 * trans * atten);
+  float Tvis = T + 10.0 * uPower * (1.0 - smoothstep(0.0, 0.07, dist));
+  vec3 H = normalize(L + view);
+  float spec = pow(max(dot(n, H), 0.0), 24.0) * atten * 0.20 * uPower;
+  vec3 col = waxColor(Tvis, light);
+  col += vec3(spec, spec * 0.75, spec * 0.35);
+  return col;
+}
+
+vec3 helixPoint(float t) {
+  float y = mix(0.124, 0.162, t);
+  float a = t * 6.5 * 6.2831853;
+  return vec3(cos(a) * 0.0115, y, sin(a) * 0.0115);
+}
+float rayCoil(vec3 ro, vec3 rd, out vec3 hitP) {
+  float best = 1e9;
+  float wire = 0.0018;
+  for (int i = 0; i < 22; i++) {
+    float t = (float(i) + 0.5) / 22.0;
+    vec3 c = helixPoint(t);
+    vec3 oc = ro - c;
+    float b = dot(oc, rd);
+    float h = b * b - (dot(oc, oc) - wire * wire);
+    if (h >= 0.0) {
+      float th = -b - sqrt(h);
+      if (th > 0.001 && th < best) {
+        best = th;
+        hitP = ro + rd * th;
+      }
+    }
+  }
+  return best;
+}
+
+// 1 = wax, 2 = ran out / exited. tOut is distance along the ray.
+int marchWax(vec3 ro, vec3 rd, out vec3 p, out vec3 n, out float temp, out float tOut) {
+  float t = 0.001;
+  float prevStep = 0.002;
+  for (int i = 0; i < 64; i++) {
+    p = ro + rd * t;
+    if (liquidSDF(p) > 0.0025 || t > 0.45) {
+      tOut = t;
+      return 2;
+    }
+    float f = fieldAt(p, temp);
+    if (f > 1.0) {
+      float t1 = t;
+      float t0 = max(t - prevStep, 0.0);
+      for (int k = 0; k < 5; k++) {
+        float tm = 0.5 * (t0 + t1);
+        if (fieldOnly(ro + rd * tm) > 1.0) t1 = tm; else t0 = tm;
+      }
+      p = ro + rd * t1;
+      n = fieldNormal(p);
+      float dummy;
+      fieldAt(p, temp);
+      tOut = t1;
+      return 1;
+    }
+    prevStep = max(0.0042 * (1.0 - clamp(f, 0.0, 0.92)), 0.0010);
+    t += prevStep;
+  }
+  tOut = t;
+  return 2;
+}
+
+vec3 shadeInterior(vec3 ro, vec3 rd) {
+  vec3 coilP;
+  float tCoil = rayCoil(ro, rd, coilP);
+  vec3 p, n;
+  float temp, tWax;
+  int hit = marchWax(ro, rd, p, n, temp, tWax);
+  bool coilInFront = tCoil < tWax - 0.0005 && tCoil < 0.4;
+  if (coilInFront && fieldOnly(coilP) < 1.45) {
+    vec3 N = normalize(coilP - helixPoint(clamp((coilP.y - 0.124) / 0.038, 0.0, 1.0)));
+    if (dot(N, rd) > 0.0) N = -N;
+    return shadeMetal(coilP, N, -rd, 4);
+  }
+  if (hit == 1) {
+    if (dot(n, rd) > 0.0) n = -n;
+    return shadeWax(p, n, temp, -rd);
+  }
+  vec3 q = (hit == 2) ? p : ro + rd * 0.12;
+  float distB = length(q - BULB);
+  vec3 glow = vec3(1.0, 0.40, 0.06) * exp(-distB * 9.0) * 0.18 * uPower;
+  float fMid;
+  float Tm;
+  fMid = fieldAt(ro + rd * 0.035, Tm);
+  if (fMid > 0.22) glow += waxColor(Tm, 1.0) * min(fMid, 1.0) * 0.16 * uPower;
+  vec3 back = envColor(rd);
+  back *= vec3(exp(-0.35 * 0.18), exp(-0.55 * 0.18), exp(-1.1 * 0.18));
+  return back + glow;
+}
+
+vec3 shadeGlass(vec3 p, vec3 rd) {
+  vec3 N = normalize(vec3(
+    bottleOuter(p + vec3(0.0007, 0, 0)) - bottleOuter(p - vec3(0.0007, 0, 0)),
+    bottleOuter(p + vec3(0, 0.0007, 0)) - bottleOuter(p - vec3(0, 0.0007, 0)),
+    bottleOuter(p + vec3(0, 0, 0.0007)) - bottleOuter(p - vec3(0, 0, 0.0007))
+  ));
+  if (dot(N, rd) > 0.0) N = -N;
+  vec3 view = -rd;
+  float F = fresnel(clamp(dot(N, view), 0.0, 1.0), 0.04);
+  vec3 refl = envColor(reflectDir(rd, N));
+  vec3 rdIn = refractDir(rd, N, 1.0 / 1.52);
+  vec3 col;
+  if (dot(rdIn, rdIn) < 0.5) {
+    col = refl;
+  } else {
+    vec3 pCav = p + rdIn * 0.001;
+    for (int i = 0; i < 14; i++) {
+      float d = bottleOuter(pCav) + THICK;
+      if (d < 0.0006) break;
+      pCav += rdIn * max(d, 0.0008);
+    }
+    vec3 Ni = normalize(vec3(
+      bottleOuter(pCav + vec3(0.0007, 0, 0)) - bottleOuter(pCav - vec3(0.0007, 0, 0)),
+      bottleOuter(pCav + vec3(0, 0.0007, 0)) - bottleOuter(pCav - vec3(0, 0.0007, 0)),
+      bottleOuter(pCav + vec3(0, 0, 0.0007)) - bottleOuter(pCav - vec3(0, 0, 0.0007))
+    ));
+    if (dot(Ni, rdIn) > 0.0) Ni = -Ni;
+    float eta = pCav.y > Y_SURF ? (1.52 / 1.00) : (1.52 / 1.41);
+    vec3 rdLiq = refractDir(rdIn, Ni, eta);
+    vec3 inside;
+    if (dot(rdLiq, rdLiq) < 0.5) {
+      inside = refl;
+    } else if (pCav.y > Y_SURF) {
+      inside = envColor(rdLiq) * 0.72;
+    } else {
+      inside = shadeInterior(pCav + rdLiq * 0.0015, rdLiq);
+    }
+    inside *= vec3(0.97, 1.0, 0.96);
+    col = mix(inside, refl, F);
+  }
+  float streak = exp(-((N.x - 0.62) * (N.x - 0.62)) / 0.0035);
+  streak += 0.40 * exp(-((N.x + 0.48) * (N.x + 0.48)) / 0.007);
+  streak *= clamp(N.z * 1.3, 0.0, 1.0);
+  col += vec3(0.28, 0.30, 0.34) * streak;
+  return col;
+}
+
+bool marchLamp(vec3 ro, vec3 rd, out float t, out int id, out vec3 p) {
+  t = 0.015;
+  id = 1;
+  p = ro;
+  for (int i = 0; i < 56; i++) {
+    p = ro + rd * t;
+    float db = baseSDF(p);
+    float dc = capSDF(p);
+    float dg = bottleOuter(p);
+    float d = db; id = 1;
+    if (dc < d) { d = dc; id = 2; }
+    if (dg < d) { d = dg; id = 3; }
+    if (d < 0.00075) return true;
+    t += max(d, 0.0011);
+    if (t > 4.0) break;
+  }
+  return false;
+}
+
+vec3 tableColor(vec3 p, vec3 view) {
+  float shift = -sin(uTilt) * 0.03;
+  float r = length(vec2(p.x - shift, p.z));
+  vec3 wood = vec3(0.045, 0.026, 0.016);
+  wood *= 0.86 + 0.14 * (0.5 + 0.5 * sin(p.x * 14.0 + p.z * 3.0));
+  float pool = exp(-(p.x * p.x * 1.32 + p.z * p.z * 0.72) * 22.0);
+  wood += vec3(0.55, 0.20, 0.04) * pool * 0.9 * uPower;
+  wood *= 0.35 + 0.65 * smoothstep(0.058, 0.095, r);
+  float spec = pow(max(view.y, 0.0), 40.0) * 0.035 * pool * uPower;
+  return wood + vec3(spec, spec * 0.7, spec * 0.3);
+}
+
+vec3 tonemap(vec3 c) {
+  c *= 1.55;
+  c = (c * (2.51 * c + 0.03)) / (c * (2.43 * c + 0.59) + 0.14);
+  c = clamp(c, 0.0, 1.0);
+  return pow(c, vec3(1.0 / 2.2));
+}
+
+void main() {
+  // gl_FragCoord origin is the bottom left, so +ndc.y is up, same as the camera's up.
+  vec2 ndc = (gl_FragCoord.xy / uRes) * 2.0 - 1.0;
+  vec3 rd = normalize(uFwd + uRight * ndc.x * uTan.x + uUp * ndc.y * uTan.y);
+  vec3 ro = uEye;
+
+  float tTable = 1e9;
+  bool hitTable = false;
+  if (rd.y < -1e-4) {
+    tTable = -ro.y / rd.y;
+    vec3 tp = ro + rd * tTable;
+    hitTable = tTable > 0.0 && abs(tp.x) < 1.6 && abs(tp.z) < 1.6;
+  }
+
+  vec3 lro = toLocal(ro);
+  vec3 lrd = toLocalDir(rd);
+  float tLamp;
+  int id;
+  vec3 lp;
+  bool hitLamp = marchLamp(lro, lrd, tLamp, id, lp);
+
+  vec3 col;
+  if (hitLamp && (!hitTable || tLamp < tTable)) {
+    if (id == 3) {
+      col = shadeGlass(lp, lrd);
+    } else {
+      vec3 n;
+      if (id == 2) {
+        n = normalize(vec3(
+          capSDF(lp + vec3(0.0007, 0, 0)) - capSDF(lp - vec3(0.0007, 0, 0)),
+          capSDF(lp + vec3(0, 0.0007, 0)) - capSDF(lp - vec3(0, 0.0007, 0)),
+          capSDF(lp + vec3(0, 0, 0.0007)) - capSDF(lp - vec3(0, 0, 0.0007))
+        ));
+      } else {
+        n = normalize(vec3(
+          baseSDF(lp + vec3(0.0007, 0, 0)) - baseSDF(lp - vec3(0.0007, 0, 0)),
+          baseSDF(lp + vec3(0, 0.0007, 0)) - baseSDF(lp - vec3(0, 0.0007, 0)),
+          baseSDF(lp + vec3(0, 0, 0.0007)) - baseSDF(lp - vec3(0, 0, 0.0007))
+        ));
+      }
+      if (dot(n, lrd) > 0.0) n = -n;
+      col = shadeMetal(lp, n, -lrd, id);
+    }
+  } else if (hitTable) {
+    col = tableColor(ro + rd * tTable, -rd);
+  } else {
+    col = envColor(rd);
+    vec3 bulbW = toWorld(vec3(0.0, 0.13, 0.0));
+    vec3 oc = bulbW - ro;
+    float t = clamp(dot(oc, rd), 0.0, 4.0);
+    float d = length(oc - rd * t);
+    col += vec3(1.0, 0.42, 0.10) * exp(-d * d * 70.0) * 0.20 * uPower;
+  }
+
+  float vig = 1.0 - 0.22 * dot(ndc * vec2(0.75, 1.0), ndc * vec2(0.75, 1.0));
+  col *= clamp(vig, 0.72, 1.0);
+  col = tonemap(col);
+  float grain = fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233)) + uTime) * 43758.5453);
+  col += (grain - 0.5) * 0.015;
+  fragColor = vec4(col, 1.0);
+}
+`;
+
+const canvas = document.getElementById("c");
+const errBox = document.getElementById("err");
+function fail(msg) {
+  errBox.style.display = "block";
+  errBox.textContent = msg;
+}
+
+const gl = canvas.getContext("webgl2", { antialias: false, alpha: false, powerPreference: "high-performance" });
+if (!gl) fail("This lamp needs WebGL2.");
+
+function compile(type, src) {
+  const sh = gl.createShader(type);
+  gl.shaderSource(sh, src);
+  gl.compileShader(sh);
+  if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+    fail((type === gl.VERTEX_SHADER ? "vertex:\n" : "fragment:\n") + gl.getShaderInfoLog(sh));
+    return null;
+  }
+  return sh;
+}
+
+let program = null;
+const loc = {};
+if (gl) {
+  const vs = compile(gl.VERTEX_SHADER, VERT);
+  const fs = compile(gl.FRAGMENT_SHADER, FRAG);
+  if (vs && fs) {
+    program = gl.createProgram();
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      fail("link:\n" + gl.getProgramInfoLog(program));
+      program = null;
+    } else {
+      gl.useProgram(program);
+      for (const name of ["uEye", "uFwd", "uRight", "uUp", "uTan", "uRes", "uTilt", "uPower", "uTime", "uPos", "uExt", "uAz"]) {
+        loc[name] = gl.getUniformLocation(program, name);
+      }
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+      gl.disable(gl.DEPTH_TEST);
+    }
+  }
+}
+
+const posData = new Float32Array(N * 4);
+const extData = new Float32Array(N * 4);
+const azData = new Float32Array(N);
+
+function camera() {
+  const forward = norm(vsub(TARGET, EYE));
+  const right = norm(cross(forward, [0, 1, 0]));
+  const up = cross(right, forward);
+  return { forward, right, up };
+}
+const cam = camera();
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+  let W = Math.max(1, Math.round(canvas.clientWidth * dpr));
+  let H = Math.max(1, Math.round(canvas.clientHeight * dpr));
+  const long = Math.max(W, H);
+  if (long > 1440) {
+    const s = 1440 / long;
+    W = Math.max(1, Math.round(W * s));
+    H = Math.max(1, Math.round(H * s));
+  }
+  if (canvas.width !== W || canvas.height !== H) {
+    canvas.width = W;
+    canvas.height = H;
+  }
+  if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+}
+
+function project(p) {
+  const d = vsub(p, EYE);
+  const z = dot(d, cam.forward);
+  if (z < 0.05) return null;
+  const tanY = Math.tan(FOV * 0.5);
+  const tanX = tanY * (canvas.clientWidth / Math.max(1, canvas.clientHeight));
+  const ndcX = dot(d, cam.right) / (z * tanX);
+  const ndcY = dot(d, cam.up) / (z * tanY);
+  return [(ndcX * 0.5 + 0.5) * canvas.clientWidth, (0.5 - ndcY * 0.5) * canvas.clientHeight];
+}
+function switchPoint() {
+  // local switch on the front of the base, then the same tilt+lift as the shader
+  const c = Math.cos(tilt), s = Math.sin(tilt);
+  const lift = FOOT_R * Math.abs(Math.sin(tilt));
+  const x = 0, y = 0.030, z = 0.052;
+  return [c * x - s * y, s * x + c * y + lift, z];
+}
+function hitSwitch(ev) {
+  const rect = canvas.getBoundingClientRect();
+  const sx = ev.clientX - rect.left;
+  const sy = ev.clientY - rect.top;
+  const p = project(switchPoint());
+  if (!p) return false;
+  return Math.hypot(sx - p[0], sy - p[1]) < 36;
+}
+
+canvas.addEventListener("pointerdown", (ev) => {
+  if (hitSwitch(ev)) {
+    powerTarget = powerTarget > 0.5 ? 0 : 1;
+    return;
+  }
+  dragging = true;
+  canvas.setPointerCapture(ev.pointerId);
+  canvas._lx = ev.clientX;
+});
+canvas.addEventListener("pointermove", (ev) => {
+  if (!dragging) return;
+  const dx = ev.clientX - canvas._lx;
+  canvas._lx = ev.clientX;
+  tiltTarget = clamp(tiltTarget - dx * 0.0045, -TILT_MAX, TILT_MAX);
+});
+function endDrag() {
+  dragging = false;
+  tiltTarget = 0;
+}
+canvas.addEventListener("pointerup", endDrag);
+canvas.addEventListener("pointercancel", endDrag);
+window.addEventListener("keydown", (ev) => {
+  if (ev.key === " " || ev.code === "Space") {
+    ev.preventDefault();
+    powerTarget = powerTarget > 0.5 ? 0 : 1;
+  } else if (ev.key === "ArrowLeft") {
+    tiltTarget = clamp(tilt - 0.08, -TILT_MAX, TILT_MAX);
+  } else if (ev.key === "ArrowRight") {
+    tiltTarget = clamp(tilt + 0.08, -TILT_MAX, TILT_MAX);
+  } else if (ev.key === "Home" || ev.key === "Escape") {
+    tiltTarget = 0;
+  }
+});
+
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let last = performance.now();
+let acc = 0;
+
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000) * (reduce ? 0.25 : 1);
+  last = now;
+  acc += dt;
+  const h = 1 / 90;
+  let n = 0;
+  while (acc >= h && n < 5) {
+    step(h);
+    acc -= h;
+    n++;
+  }
+  draw(now);
+  requestAnimationFrame(frame);
+}
+
+function draw(now) {
+  if (!gl || !program) return;
+  resize();
+  const aspect = canvas.width / Math.max(1, canvas.height);
+  const tanY = Math.tan(FOV * 0.5);
+  gl.useProgram(program);
+  gl.uniform3f(loc.uEye, EYE[0], EYE[1], EYE[2]);
+  gl.uniform3f(loc.uFwd, cam.forward[0], cam.forward[1], cam.forward[2]);
+  gl.uniform3f(loc.uRight, cam.right[0], cam.right[1], cam.right[2]);
+  gl.uniform3f(loc.uUp, cam.up[0], cam.up[1], cam.up[2]);
+  gl.uniform2f(loc.uTan, tanY * aspect, tanY);
+  gl.uniform2f(loc.uRes, canvas.width, canvas.height);
+  gl.uniform1f(loc.uTilt, tilt);
+  gl.uniform1f(loc.uPower, power);
+  gl.uniform1f(loc.uTime, now * 0.001);
+
+  for (let i = 0; i < N; i++) {
+    const b = blobs[i];
+    const speed = Math.hypot(b.vx, b.vy, b.vz);
+    let ax = 0, ay = 1, az = 0;
+    if (speed > 0.003) {
+      ax = b.vx / speed; ay = b.vy / speed; az = b.vz / speed;
+    }
+    const s = clamp(b.stretch * (1 + b.wobble * Math.sin(b.phase)), 0.5, 1.75);
+    posData[i * 4] = b.x;
+    posData[i * 4 + 1] = b.y;
+    posData[i * 4 + 2] = b.z;
+    posData[i * 4 + 3] = b.r;
+    extData[i * 4] = b.T;
+    extData[i * 4 + 1] = s;
+    extData[i * 4 + 2] = ax;
+    extData[i * 4 + 3] = ay;
+    azData[i] = az;
+  }
+  gl.uniform4fv(loc.uPos, posData);
+  gl.uniform4fv(loc.uExt, extData);
+  gl.uniform1fv(loc.uAz, azData);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+}
+
+if (program) requestAnimationFrame(frame);
+</script>
+</body>
+</html>
