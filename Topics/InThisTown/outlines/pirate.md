@@ -1,6 +1,8 @@
 # You could not be a pirate until you were eighteen (part 1)
 
-**Status: script draft 1. NOT approved. No voice recorded. Nothing is built.**
+**Status: script draft 1 APPROVED by the owner, 2026-11-16 ("yes, go"). Voice `voice-05` selected the same day (the emotional pair, not the flat ones). Full read is in `public/audio/pirate-audition/full-read.mp3` at the film pace. He has not said the full read is kept. Nothing is built.**
+
+Rejected before that pick: `voice-00` (too serious, not energetic, no accent wanted), then a slow read, then a sample he called good but with no emotion. Do not record with those.
 
 The owner, 2026-11-16, after asking what made Monster Village part 1 hold people. His outline is the story. What was added is listed under it, so a yes can cut any line of it.
 
