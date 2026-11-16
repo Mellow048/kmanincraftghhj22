@@ -239,4 +239,39 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   town"), and the template's `kit.tsx` passes them on. **What this tells us about his taste: the recipe holds (a famous
   mob as family, the odd one out, players as the danger, Minecraft facts as jokes), "cute" is praise, and a film that
   ends in one part is welcome when it is funny.** Views and stayed-to-watch for it are not known yet: ask.
+- **2026-11-16, the next one.** For "make another idea" he was sent a script and its recorded voice, not a film:
+  idea 4, "I Have Never Seen My Mum's Face" (a kid raised by endermen), in
+  `drafts/in-this-town-i-have-never-seen-my-mums-face/`. Script first is his rule; wait for his yes or his changes.
 
+- **2026-11-16, "another banger idea".** On the script of "I Have Never Seen My Mum's Face": "nice now dont u forget
+  the monster village part 1 lad, our goal is to escape 1k view jail. and i like that one, another banger idea! go
+  ahead lad make that mp4". The script was approved with no line changed, and the film was built from it:
+  `src/videos/in-this-town-i-have-never-seen-my-mums-face/` (52 shots, 105.6 s, tempo 1.47, 236 words a minute).
+  **Two things to keep: (1) the measure is views, and the bar is 1k; Monster Village part 1 (about 5k) is the film
+  every new one is held against, so open `reference/monster-village/README.md` before writing anything. (2) Script
+  first worked: he read it, heard it, said yes in one message, and nothing had to be rebuilt.** His verdict on the
+  finished film, and the numbers for this one and the creeper one, are not known yet: ask.
+- **2026-11-16, "kinda similar to the creeper one".** On the finished "I Have Never Seen My Mum's Face": "i like it
+  but it was kinda similar to the creeper one as a cat it might get me in trouble of reused content, anyways give me
+  more ideas lad and before u give me ideas, put the enderman skins and other stuff as a template and put the source
+  code + mp4 into the reference for other agents to see." Done: `reference/never-seen-my-mums-face/`; the enderman
+  family, crowd, houses, pumpkin players, kitchen and rain are in the pack (`endertown.tsx`; `PACK.md`, "The
+  enderman town"), and the template's `kit.tsx` passes them on. **He is right, and it is the agent's fault, not the
+  idea's**: the second film was written by filling in the first one's outline (one odd kid in a town of one famous
+  mob; a mob mum in a bow and a mob dad in a hat who found him as a baby; he wants to be close to her once; "So I
+  tried everything"; six players at night for the mob's drop; "I am small. I cannot fight six players. But …"; a
+  quiet moment with mum; a subscribe joke). The two are set side by side in
+  `reference/never-seen-my-mums-face/README.md`. **Rules from now on:**
+  1. **No film has the shape of either of the two before it.** Before pitching, write six words for the idea and for
+     each of his last two films: who tells it, where, what goes wrong, what the player is, how it ends, how it feels.
+     More than two the same as either film, and it is not a new idea. Put the six words in the pitch.
+  2. **The Monster Village recipe is the first fifteen seconds and the pull of the story** (something every player
+     knows, doing the wrong thing, in frame one; "I" in line one; somebody to care about; true Minecraft facts; a
+     rule that looks unkind and is love; clues said back). It is not "a kid, a mob mum and dad, six players at
+     night". Keep the first, change the second every time.
+  3. **He watches his own channel as a viewer would**, and he worries about the channel's standing with YouTube. A
+     film that looks or sounds like the last one is a fault even when each is good. This also holds for the look: two
+     films in a row should not share their town, their family's costumes or their night scene.
+  4. Ideas 1 and 6 of `outlines/ideas-2026-11-15.md` have the same shape and are parked; idea 2 would need another
+     danger than players. The new set is `outlines/ideas-2026-11-16.md`.
+  Views and stayed-to-watch for the creeper film and this one are still not known.

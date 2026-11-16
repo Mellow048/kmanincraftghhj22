@@ -25,6 +25,9 @@ export {
   // the creeper town: creepers as people, and the players who farm them (PACK.md, "The creeper town"). Delete if the film has none
   CardboardBox, Creeper, CreeperCrowd, CreeperDad, CreeperFace, CreeperHouse, CreeperKid, CreeperMum, CreeperSuit, EmptySack, GROUND_SIT,
   GunpowderPlayer, LongTable, LostShoe, NightFill, PixelHeart, PlayerSword, SchoolDesk, creeperBolt, groundSitPose, openArmsPose,
+  // the enderman town: endermen as people, the players who come for pearls in pumpkins, a kitchen, rain (PACK.md, "The enderman town"). Delete if the film has none
+  BlockPile, DinnerPlate, ENDER_PINK, ENDER_PURPLE, EnderCrowd, EnderDad, EnderHouse, EnderMum, EnderPearl, EnderThing, EnderZap, Enderman, FryingPan,
+  KidDrawing, KitchenCounter, KitchenGone, KitchenShelf, KitchenStove, KnockedPumpkin, PearlSign, PhotoBorder, Puddle, PumpkinHat, PumpkinPlayer, PumpkinView, Rain,
   // things
   BedBox, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Wisps,
 } from "../../../Topics/InThisTown";
