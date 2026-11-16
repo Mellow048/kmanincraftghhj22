@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Classmate, Hero, ME, NORTH, Overhead, SPOT, Teacher, classroom, ease, ramp, timing, wordAt } from "./kit";
+import { Classmate, Hero, ME, NORTH, Overhead, R, SPOT, Teacher, ease, ramp, timing, wordAt } from "./kit";
 
 /**
  * HOOK, and the rule.
@@ -41,7 +41,7 @@ export const scene1 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />
           <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.seat(1, 0)} t={t - SEE} size={0.42} />
+          <Clock over={SPOT.seat(1, 0)} t={t - SEE} size={0.72} />
         </>
       ),
     },
@@ -55,7 +55,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Clock over={SPOT.seat(1, 0)} t={t - LIVE} size={0.46} />
+          <Clock over={SPOT.seat(1, 0)} t={t - LIVE} size={0.8} />
         </>
       ),
     },
@@ -66,7 +66,7 @@ export const scene1 = storyScene(timing, {
       zone: "class",
       note: "The clock from the side, and it begins to run: the boy under it starts to fidget, and the thing over his head gets smaller as the line says what it counts. Two people, one small bright clock, no explanation - the viewer works out the rule of the film from this one shot.",
       stage: (t) => {
-        const shrink = 0.46 - 0.1 * ease(ramp(t, 0, 1.3));
+        const shrink = 0.8 - 0.16 * ease(ramp(t, 0, 1.3));
         return (
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="uneasy" headPitch={0.1} />
@@ -82,7 +82,12 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: SPOT.face(1, 2), dist: 2.0, to: 1.6, yaw: 172, pitch: 2, fov: 36 }),
       zone: "class",
       note: "Cut round to the teller's face from the board side: the one who can see it, and the only person in the room looking at something nobody else is. His eyes are up, not on the board. Behind him is the back wall of the room, because the lens is inside it now.",
-      stage: () => <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" gaze={0} />,
+      stage: () => (
+        <>
+          <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" gaze={0} />
+          <pointLight position={[ME[0], 1.7, ME[2] + 0.9]} color="#fff2d8" intensity={4} distance={3} decay={2} />
+        </>
+      ),
     },
     {
       // The boy in front of me had four. The clock is nearly out, and the boy has not noticed.
@@ -94,7 +99,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face="uneasy" headPitch={-0.06} />
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
-          <Clock over={SPOT.seat(1, 0)} t={t - FOUR} size={0.3} />
+          <Clock over={SPOT.seat(1, 0)} t={t - FOUR} size={0.9} />
         </>
       ),
     },
@@ -105,7 +110,7 @@ export const scene1 = storyScene(timing, {
       zone: "class",
       note: "Hard on the clock, from under it, so it fills the top of the frame and the boy's head is a dark shape under it. It is going down while he says he did not know four what. The audience does not know either, and the clock is not going to tell them.",
       stage: (t) => {
-        const s = 0.3 - 0.07 * ease(ramp(t, 0, 1.5));
+        const s = 0.9 - 0.2 * ease(ramp(t, 0, 1.5));
         return (
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
@@ -141,7 +146,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.teacher} tall={1.8} t={t} size={0.6} tint="#e8f2ff" />
+          <Clock over={SPOT.teacher} tall={1.8} t={t} size={1.00} tint="#e8f2ff" />
         </>
       ),
     },
@@ -155,39 +160,44 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={[ME[0] + 0.5, 0, ME[2] - 0.9]} rotationY={NORTH - 0.7} animation="idle" face="calm" />
           <Classmate who={7} position={[ME[0] + 2.2, 0, ME[2] - 2.2]} rotationY={SPOT.door ? NORTH : NORTH} animation="walk" face="calm" headPitch={0.1} />
-          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} tall={1.8} t={t} size={0.34} tint="#e8f2ff" />
+          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} tall={1.8} t={t} size={0.85} tint="#e8f2ff" />
         </>
       ),
     },
     {
       // My brother had three. I gave him the remote before he asked. At home, at night: the power works on the sofa.
       cue: "3.brother",
-      ...cam.push({ on: [0, 1.1, -1.6], dist: 3.8, to: 3.2, yaw: 12, pitch: 6, fov: 46 }),
+      ...cam.push({ on: R(0, 1.0, -1.0), dist: 3.0, to: 2.5, yaw: 8, pitch: 8, fov: 46 }),
       zone: "room",
-      note: "The teller's own room: his little brother on the floor with a clock at three over his head, and the teller handing him the remote before he can ask for it. This is the joke the whole power is built on - it is not a weapon, it is a way of never being surprised - and it is the last time the film is funny.",
+      note: "The teller's own room with the wardrobe and the books behind them: his little brother sitting on the floor with a big clock at three over his head, and the teller already holding out the remote before the boy can ask. The clock is BIG because the number is small - the size is how close the person is to going off, and this one is nearly out.",
       stage: (t) => (
         <>
-          <Hero position={[0.4, 0, -0.4]} rotationY={NORTH + 0.5} animation="idle" face="smile" />
-          <Classmate who={9} position={[-0.5, 0, -0.7]} rotationY={NORTH} animation="sit" face="grin" />
-          <Clock over={[-0.5, 0, -0.7]} t={t} size={0.32} tint="#ffe6b0" />
+          <Hero position={R(0.55, 0, -0.35)} rotationY={NORTH + 0.6} animation="idle" face="smile" />
+          <Classmate who={9} position={R(-0.55, 0, -0.95)} rotationY={NORTH} animation="sit" face="grin" headPitch={-0.1} />
+          <Overhead over={R(-0.55, 0, -0.95)} kind="clock" tall={1.0} size={0.9} t={t} steady rotationY={0} />
         </>
       ),
     },
     {
       // This was going to be easy. The teller, pleased with himself, in the room he has just handled.
       cue: "3.easy",
-      ...cam.push({ on: [0.4, 1.3, -0.4], dist: 2.6, to: 2.2, yaw: 22, pitch: 4, fov: 40 }),
+      ...cam.push({ on: R(0.55, 1.15, -0.35), dist: 2.0, to: 1.6, yaw: 24, pitch: 2, fov: 38 }),
       zone: "room",
-      note: "Close on the teller's face and he is delighted with himself, which is the wrong expression to have a third of the way into a film about a power. The viewer should feel the floor under him before he does.",
-      stage: () => <Hero position={[0.4, 0, -0.4]} rotationY={NORTH + 0.5} animation="idle" face="grin" />,
+      note: "Close on the teller's face, well inside the room this time, and he is delighted with himself - which is the wrong expression a third of the way into a film about a power. The viewer should feel the floor under him before he does.",
+      stage: () => (
+        <>
+          <Hero position={R(0.55, 0, -0.35)} rotationY={NORTH + 0.6} animation="idle" face="grin" />
+          <pointLight position={R(0.55, 1.6, 0.4)} color="#fff2d8" intensity={4} distance={3} decay={2} />
+        </>
+      ),
     },
     {
       // A clock told you when. Nothing told you why. The limit, said out loud once: no picture of a clock at all.
       cue: "3.limit",
-      ...cam.push({ on: [0, 1.5, -2.3], dist: 2.4, to: 4.4, yaw: 180, pitch: 3, fov: 50 }),
+      ...cam.push({ on: R(0, 1.2, -0.6), dist: 2.2, to: 3.8, yaw: 172, pitch: 3, fov: 48 }),
       zone: "room",
-      note: "The whole room from the far wall, the teller small in it, and NO clock anywhere: the one line that names the limit is the one line with the power taken out of the picture. Pulling back instead of pushing in makes it the stillest frame in the film, which is what a rule sounds like.",
-      stage: () => <Hero position={[0.4, 0, -0.4]} rotationY={NORTH} animation="idle" face="calm" />,
+      note: "The whole room from the far wall, the teller small in it, and NO clock anywhere in the frame: the line that names the limit is the one line with the power taken out of the picture. Pulling back instead of pushing in makes it the stillest shot in the film, which is what a rule sounds like.",
+      stage: () => <Hero position={R(0.55, 0, -0.35)} rotationY={NORTH} animation="idle" face="calm" />,
     },
   ],
 });

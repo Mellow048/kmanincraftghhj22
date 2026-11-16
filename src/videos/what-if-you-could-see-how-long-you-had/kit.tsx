@@ -50,6 +50,8 @@ export const PLACE = {
 };
 /** The classroom's desks, board and door: `SPOT.seat(col, row)`, `SPOT.teacher`, `SPOT.board`… */
 export const SPOT = classroom(PLACE.class);
+/** The teller's room's own places: `R.at(x, y, z)` from the middle of its floor. Stand at R(0.4, 0, -0.4). */
+export const R = (x: number, y: number, z: number): Vec3 => [PLACE.room[0] + x, PLACE.room[1] + y, PLACE.room[2] + z];
 /** The hallway's own places: `HALL.at(x, y, z)` from the middle of its floor. It runs west to east. */
 export const HALL = {
   at: (x: number, y: number, z: number): Vec3 => [PLACE.hall[0] + x, PLACE.hall[1] + y, PLACE.hall[2] + z],

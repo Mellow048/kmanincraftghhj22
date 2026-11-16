@@ -36,7 +36,7 @@ export const scene3 = storyScene(timing, {
             <Hero position={[-2.0 + 3.0 * k, 0, 0.3]} rotationY={EAST} animation="walk" animDistance={3.0 * k} face="calm" />
             <Classmate who={4} position={[-0.6, 0, -0.8]} rotationY={NORTH - 0.4} animation="idle" face="frown" />
             <Classmate who={7} position={[0.2, 0, -0.9]} rotationY={NORTH + 0.6} animation="idle" face="frown" />
-            <Overhead over={[-0.6, 0, -0.8]} kind="clock" size={0.34} t={t - WEEK} steady rotationY={Math.PI} />
+            <Overhead over={[-0.6, 0, -0.8]} kind="clock" size={0.75} t={t - WEEK} steady rotationY={Math.PI} />
           </>
         );
       },
@@ -52,7 +52,7 @@ export const scene3 = storyScene(timing, {
           <Hero position={ME} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={9} position={SPOT.seat(0, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Overhead over={SPOT.seat(0, 1)} kind="clock" size={0.42} t={t - HANDS} steady rotationY={Math.PI} />
+          <Overhead over={SPOT.seat(0, 1)} kind="clock" size={0.92} t={t - HANDS} steady rotationY={Math.PI} />
         </>
       ),
     },
@@ -66,7 +66,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           {[0, 2].flatMap((col) => [0, 1].map((row) => <Classmate key={`${col}${row}`} who={col * 2 + row + 4} position={SPOT.seat(col, row)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />))}
-          <Overhead over={SPOT.seat(0, 1)} kind="clock" size={0.5} t={t - WRONG2} steady rotationY={0} />
+          <Overhead over={SPOT.seat(0, 1)} kind="clock" size={1.00} t={t - WRONG2} steady rotationY={0} />
         </>
       ),
     },
@@ -82,9 +82,9 @@ export const scene3 = storyScene(timing, {
           <Hero position={ME} rotationY={NORTH} animation="sit" face="calm" />
           {[0, 2].flatMap((col) => [0, 1, 2].map((row) => <Classmate key={`${col}${row}`} who={col * 3 + row + 2} position={SPOT.seat(col, row)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />))}
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Overhead over={SPOT.seat(0, 0)} kind="clock" size={0.62} t={t - QUIET} steady rotationY={Math.PI} />
-          <Overhead over={SPOT.seat(2, 1)} kind="clock" size={0.58} t={t - QUIET - 0.15} steady rotationY={Math.PI} />
-          <Overhead over={SPOT.seat(1, 1)} kind="clock" size={0.6} t={t - QUIET - 0.3} steady rotationY={Math.PI} />
+          <Overhead over={SPOT.seat(0, 0)} kind="clock" size={1.00} t={t - QUIET} steady rotationY={Math.PI} />
+          <Overhead over={SPOT.seat(2, 1)} kind="clock" size={1.00} t={t - QUIET - 0.15} steady rotationY={Math.PI} />
+          <Overhead over={SPOT.seat(1, 1)} kind="clock" size={1.00} t={t - QUIET - 0.3} steady rotationY={Math.PI} />
         </>
       ),
     },
@@ -97,7 +97,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face={t > EXCEPT ? "fear" : "calm"} headPitch={-0.25} />
-          <Overhead over={ME} kind="clock" size={0.5} t={t - EXCEPT} steady rotationY={0} />
+          <Overhead over={ME} kind="clock" size={1.00} t={t - EXCEPT} steady rotationY={0} />
         </>
       ),
     },
@@ -110,7 +110,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={ME} rotationY={NORTH} animation="sit" face="fear" headPitch={-0.2} />
-          <Overhead over={ME} kind="clock" size={0.42} t={t - MINE} steady rotationY={0} />
+          <Overhead over={ME} kind="clock" size={0.92} t={t - MINE} steady rotationY={0} />
         </>
       ),
     },
@@ -120,7 +120,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: [ME[0], 2.05, ME[2]], dist: 1.5, to: 1.25, yaw: 0, pitch: 0, fov: 34 }),
       zone: "class",
       note: "Nothing but the clock, filling the frame, at ten: no face under it, no room around it. It is the smallest object the film has ever put on screen and it is the loudest thing in it. A hard cut in from a two-shot to this is the beat that turns the film over.",
-      stage: (t) => <Overhead over={ME} kind="clock" size={0.62} t={t - TEN} steady rotationY={0} />,
+      stage: (t) => <Overhead over={ME} kind="clock" size={1.00} t={t - TEN} steady rotationY={0} />,
     },
   ],
 });

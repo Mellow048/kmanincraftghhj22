@@ -32,7 +32,7 @@ export const scene2 = storyScene(timing, {
         <>
           <Hero position={[ME[0] - 0.3, 0, ME[2] - 1.3]} rotationY={NORTH + 0.3} animation="idle" face="brave" />
           <Classmate who={5} position={[ME[0] + 0.7, 0, ME[2] - 2.1]} rotationY={NORTH - 0.5} animation="idle" face="frown" />
-          <Overhead over={[ME[0] + 0.7, 0, ME[2] - 2.1]} kind="clock" size={0.36} t={t - WARN} steady rotationY={0} />
+          <Overhead over={[ME[0] + 0.7, 0, ME[2] - 2.1]} kind="clock" size={0.79} t={t - WARN} steady rotationY={0} />
         </>
       ),
     },
@@ -49,8 +49,8 @@ export const scene2 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={6} position={SPOT.seat(0, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={8} position={SPOT.seat(2, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Overhead over={SPOT.seat(0, 1)} kind="clock" tall={1.34} size={0.3} t={t - FRIDAY} steady rotationY={Math.PI} />
-          <Overhead over={SPOT.seat(2, 1)} kind="clock" tall={1.34} size={0.34} t={t - FRIDAY - 0.2} steady rotationY={Math.PI} />
+          <Overhead over={SPOT.seat(0, 1)} kind="clock" tall={1.34} size={0.66} t={t - FRIDAY} steady rotationY={Math.PI} />
+          <Overhead over={SPOT.seat(2, 1)} kind="clock" tall={1.34} size={0.75} t={t - FRIDAY - 0.2} steady rotationY={Math.PI} />
         </>
       ),
     },
@@ -120,7 +120,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Hero position={[0.2 * k, 0, 0.9 - 1.6 * k]} rotationY={NORTH} animation="walk" animDistance={1.6 * k} face="calm" />
             <Classmate who={3} position={[1.5, 0, -1.2]} rotationY={SOUTH} animation="idle" face="calm" />
-            <Overhead over={[1.5, 0, -1.2]} kind="clock" size={0.4} t={t - PLANT} steady rotationY={Math.PI} />
+            <Overhead over={[1.5, 0, -1.2]} kind="clock" size={0.88} t={t - PLANT} steady rotationY={Math.PI} />
           </>
         );
       },
