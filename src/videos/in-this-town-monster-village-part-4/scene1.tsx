@@ -172,19 +172,19 @@ export const scene1 = storyScene(timing, {
       // REMASTER: the boy is not absent for this. The line is his alibi; the picture shows him hearing it.
       cue: "2.guard",
       cut: 0.95,
-      ...cam.push({ on: f(-5.0, 0.45, 0.3), dist: 3.0, to: 2.6, yaw: 26, pitch: 30, fov: 42 }),
+      ...cam.push({ on: f(-4.85, 0.42, 0.3), dist: 2.9, to: 2.45, yaw: -14, pitch: 27, fov: 44 }),
       zone: Z.fort,
       look: NIGHT4,
-      note: "THE TELLER, cut back to: flat out on the floor of his cage, on his back, mouth open, one arm thrown over his head. A guard plods past the bars on the night shift. The boy does not move. The guard who cannot sleep is somewhere else; this one could sleep through a war.",
+      note: "THE TELLER, cut back to: the boy the line cannot sleep, flat on the floor of his cage on his back, one arm across his eyes. A guard walks the night shift past the bars. The one who cannot sleep is out in the yard, and the one who can is in a cage.",
       stage: (t) => {
-        const twitch = bump(t, 0.6, 0.3);
+        const twitch = bump(t, 0.55, 0.28);
         return (
           <>
             <Yard t={t} plug lit={0} hero="none" sleeper patrol />
             <Flat position={f(-4.25, 0.08, 0.3)} rotationY={EAST}>
-              <Hero animation="idle" face="sleepy" blink={false} breath={0.45} headYaw={0.1 * twitch} />
+              <Hero animation="idle" face="sleepy" blink={false} breath={0.45} headYaw={0.12 * twitch} />
             </Flat>
-            <Fill on={f(-5.1, 0.5, 0.3)} yaw={26} power={6} />
+            <Fill on={f(-5.2, 0.55, 0.3)} yaw={-14} power={3.2} d={2.4} />
           </>
         );
       },
@@ -299,25 +299,7 @@ export const scene1 = storyScene(timing, {
           </>
         );
       },
-    },    {
-      // REMASTER: he does not only hear about this later. He is awake now, and he is watching it happen.
-      cue: "3.sword",
-      cut: 1.25,
-      ...cam.push({ on: f(-5.2, 0.45, 0.3), dist: 3.4, to: 2.9, yaw: -44, pitch: 16, fov: 46 }),
-      zone: Z.fort,
-      look: NIGHT4,
-      note: "THE TELLER, from the far side of the cage: his head nearest the lens, asleep on his back with his hair on the stone, feet away behind him. Out past the cage a guard is walking off across the yard with his sword out. Not one thing in this night is going to wake this kid.",
-      stage: (t) => (
-        <>
-          <Yard t={t} plug lit={0} hero="none" sleeper patrol />
-          <Flat position={f(-4.25, 0.08, 0.3)} rotationY={EAST}>
-            <Hero animation="idle" face="sleepy" blink={false} breath={0.5} />
-          </Flat>
-          <Fill on={f(-5.3, 0.45, 0.3)} yaw={-44} power={7} />
-        </>
-      ),
     },
-
     {
       cue: "3.slow",
       from: [GS[0] - 0.6, 1.6, GS[2] - 0.05],
@@ -408,36 +390,6 @@ export const scene1 = storyScene(timing, {
             <AimSword position={[GB[0] - 0.4, 0.06, GB[2] + 0.5]} yaw={2} pitch={0} />
             <Bubble text={"A".repeat(3 + Math.floor(k * 9))} position={up(GB, 2.5 + k * 0.4)} rotationY={0.45} scale={0.45 + k * 0.5} />
             <Fill on={manFace(GB)} yaw={28} power={7} d={2.2} />
-          </>
-        );
-      },
-    },
-    {
-      // REMASTER: the scream arrives at the cage. This is the half-second that makes the next line true.
-      cue: "3.scream",
-      cut: 1.45,
-      ...cam.push({ on: f(-5.45, 0.24, 0.3), dist: 1.7, to: 1.45, yaw: -12, pitch: 20, fov: 38 }),
-      zone: Z.fort,
-      look: NIGHT4,
-      impacts: [{ at: 0.04, amp: 0.06, dur: 0.22 }],
-      note: "THE TELLER, close: the scream reaches him where he lies. His face screws up, his head turns away from it, he pulls one arm over his ear. His eyes stay shut. Whatever is happening out there, he is not watching it.",
-      stage: (t) => {
-        const hit = 0.06;
-        const k = clamp((t - hit) / 0.3);
-        return (
-          <>
-            <Yard t={t} plug lit={0} hero="none" sleeper />
-            <Flat position={f(-4.25, 0.08, 0.3)} rotationY={EAST}>
-              <Hero
-                animation="idle"
-                face={k > 0.3 ? "uneasy" : "sleepy"}
-                blink={false}
-                breath={0.5}
-                headYaw={-0.28 * k}
-                headPitch={0.12 * k}
-              />
-            </Flat>
-            <Fill on={f(-5.4, 0.3, 0.3)} yaw={-12} power={8} d={1.2} />
           </>
         );
       },
