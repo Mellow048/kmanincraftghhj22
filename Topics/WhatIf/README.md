@@ -35,6 +35,16 @@ That gives you a film folder made from this topic's starter ([`template/`](templ
 `kit.tsx` wired to the pack, a school in three zones, and one scene with two shots that already render. It does
 not give you a story.
 
+## Ideas waiting for a yes
+
+[`ideas/`](ideas/) holds pitches in the shape of the one film that reached 81% (see [`RETENTION.md`](RETENTION.md)).
+Each is a premise, the rule and its limit, the price, the spine against part 1's percentages, and a first-pass script
+that has not been recorded or built.
+
+| Date | Idea | State |
+|---|---|---|
+| 2026-11-16 | [`ideas/2026-11-16-one-clock.md`](ideas/2026-11-16-one-clock.md) — *What If You Could See How Long You Had* | **Waiting for the owner.** 466 words, 1:49.6 at the topic's speed. Needs no part that is not already in the pack |
+
 ## Which kind of film is it?
 
 | The request | It is |
