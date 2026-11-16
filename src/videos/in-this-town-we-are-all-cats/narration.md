@@ -1,7 +1,7 @@
 # Narration — In This Town, We Are All Cats
 
-**Status: draft 1 (2026-11-16), built from the owner's outline without a script review, as with the spy film.
-Voice `voice-03`, tempo 1.45.**
+**Status: APPROVED as delivered (2026-11-15): "this is actually really funny, i love this". Draft 1, built from the
+owner's outline without a script review; the first render is the film. Voice `voice-03`, tempo 1.45.**
 
 Topic: `Topics/InThisTown`. Short cut. **A whole story in one film: the owner said "this short has no parts just
 whole short"**, so there is no cliffhanger and no "part two" (that overrides the series rule in `OWNER.md` for this

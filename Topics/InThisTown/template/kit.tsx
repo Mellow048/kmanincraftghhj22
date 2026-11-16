@@ -20,6 +20,8 @@ export {
   ADULT, CHILD, IronGolem, Poppy, ROBE, Villager, golemHand, villagerChest, villagerFace,
   // people who are not from the town: twelve different players
   Player, Pumpkin,
+  // cats and dogs: each of the three bodies as a cat and as a dog (PACK.md, "Cats and dogs"). Delete if the film has none
+  CatDogGolem, CatDogPlayer, CatDogVillager, CatGolem, CatPlayer, CatVillager, DogGolem, DogPlayer, DogVillager, catArchPose,
   // things
   BedBox, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Wisps,
 } from "../../../Topics/InThisTown";

@@ -212,3 +212,10 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   into main as a reference … souce code + mp4 put it in there for other agents to see how to make a good short". It is
   in `reference/iron-golem/`. So the pace above is confirmed: **about 235 words a minute, with a quarter to three
   quarters of a second of silence before each new step of the story**, and the film moved up a cut to make room.
+- **2026-11-15, the cats and dogs film APPROVED (first render):** "this is actually really funny, i love this please
+  put it in the reference in the main branch, and for the cat and dog skins please put it on the templates for other
+  agents to use if i want something new". It was his own outline, and he had said "this short has no parts just whole
+  short": **when he says a film has no parts, it ends, with no cliffhanger and no "part two"; the last line still has
+  "subscribe" in it.** It is in `reference/we-are-all-cats/`. The cat and dog players, villagers and golems are in the
+  pack (`catsdogs.tsx`; `PACK.md`, "Cats and dogs"), and the template's `kit.tsx` passes them on. What he found funny
+  was a fight in which nobody touches anybody, told in pictures: the page in `reference/` lists where the jokes are.

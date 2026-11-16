@@ -201,6 +201,9 @@ Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a w
 
 Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build it in `monsters.tsx` the same way.
 
+**Cats and dogs** (a cat or a dog player, villager and golem) have their own section at the bottom of this page:
+["Cats and dogs"](#cats-and-dogs--catsdogstsx).
+
 ## What is not in the pack
 
 - **The story.** Never reuse a premise, a line or a twist from a finished film.
@@ -219,7 +222,7 @@ Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build 
    must not differ by a pixel. The same goes for a change to `src/engine/`.
 
    ```bash
-   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon"
+   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon in-this-town-we-are-all-cats"
    for f in $FILMS; do node scripts/shots.mjs $f --scale 0.4 --at 0.55 --out out/before/$f; done
    #   …the change…
    for f in $FILMS; do
@@ -289,4 +292,45 @@ Two ways of shooting that came out of the same review (they are shots, not compo
 - **A fight is one cut per blow** (`5.clash`, five cuts in 3.4 seconds): each of them runs at the lens, then the
   fist, then the jaw, then everybody thrown in the air. A golem is 6 m tall: the camera has to be 10 m off and above
   the cage roofs, or the picture is a white wall.
+
+## Cats and dogs — `catsdogs.tsx`
+
+The three bodies of the series, each as a cat and as a dog. Built for "In This Town, We Are All Cats"; the owner,
+2026-11-15: "this is actually really funny, i love this … for the cat and dog skins please put it on the templates
+for other agents to use if i want something new". **So when he asks for a film with cats or dogs in it, they are
+here: do not build them again, and do not restyle them.** How each is staged, shot by shot, is in
+[`reference/we-are-all-cats/`](reference/we-are-all-cats/README.md).
+
+![The cats and dogs](catsdogs.jpg)
+
+Every still above is a shot from `in-this-town-we-are-all-cats`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-we-are-all-cats --scale 0.5 --at 0.6 --out out/catsdogs \
+  --only 1.me,2.dogs,1.folk,2.all,1.golem,3.golems,3.fur,3.bark,4.grass,7.trade,7.sit,8.sub
+python3 scripts/pack-sheet.py out/catsdogs Topics/InThisTown/catsdogs.jpg --labels Topics/InThisTown/catsdogs.labels.txt
+```
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `CatPlayer`, `DogPlayer` | A cat or a dog with hands, in a shirt: a `MinecraftAvatar` with a cat's or a dog's head and a tail. Takes every avatar prop, so every clip, pose and face works | `who` 0–5 (the coat and the shirt; 0 is the red cat and the blue dog), `scale` (`KID` for a kid), `animation`, `pose`, `face`, `lookAt`; a cat's `puff` 0–1 (fur up) and `tailUp` 0–1; a dog's `bark` 0–1 and `wag` 0–1; `noTail` (lying down) |
+| `CatVillager`, `DogVillager` | A cat or a dog in a villager's robe, with the folded sleeves and the one eyebrow. No hands | `who` 0–5, `robe`, `fur`, `walk` (metres), `lookAt` or `nod` / `turn` / `tilt`, `lean` (a bow, or an arched back), `puff`, `tailUp`, `bark`, `wag`, `sit`, `old` (a shawl and glasses: a grandma), `carry` (what lies on the sleeves), `phase` |
+| `CatGolem`, `DogGolem` | The iron golem with ears, whiskers and a long tail, or with hanging ears, a snout, a red collar and a tag. 2.7 m | `walk`, `armR` / `armL` (0 hangs, −1.5 points ahead), `headPitch`, `headYaw`, `bow`, `puff`, `tailUp`, `bark`, `wag`, `sit` 0–1 (down on the ground, legs out), `grass` 0–1 (grass and flowers over its feet: it has stood there for years) |
+| `CatDogPlayer`, `CatDogVillager`, `CatDogGolem` | The same six, picked by `kind="cat"` or `kind="dog"`: for a crowd drawn in a loop. A prop of the other animal is ignored, so one crowd can be given all of them | `kind`, and everything above |
+| `catArchPose(t, k, yaw?, sag?)` | The pose every cat knows: back up, head level, legs stiff, a shiver. Give it to a cat player as `pose`, with `puff` and `tailUp` on the same number `k` 0–1. `sag` 0–1 is a cat too tired to hold it | |
+| `CatDogHead`, `CatDogTail` | The ears, nose and whiskers (or the ears, snout and jaw) and the tail, on their own: **how to make a cat or a dog of a body that is not here yet** (a zombie, a pillager, a kid in a helmet). Draw the head part inside the head's group and the tail where the back ends | `kind`, `fur`; head: `half` `top` `mouth` (the head's measurements), `puff`, `open`, `beat`; tail: `up`, `puff`, `wag`, `t`, `size` |
+| `CAT_DOG_FUR`, `CAT_DOG_SHIRT`, `CAT_DOG_ROBE`, `catDogFur(kind, who)` | The colours: six coats, six shirts and six robes for each. Cats wear warm colours and dogs cool ones, so two crowds read as two sides from far off | |
+| `Fish`, `Bone` | What each side likes, 30 cm long. `position` is the middle | `rotation`, `scale` |
+
+How they behave, as the film used them:
+
+- **A cat that is cross** has `puff` 1, `tailUp` 1, `pose={catArchPose(t, 1)}`, stands sideways to what it is cross
+  with and turns only its head (`scene2.tsx`, `3.fur`). **A dog that is cross** has `bark` 1: the jaw, the ears and
+  the rings run on the film clock, each dog on its own beat. **A dog that is pleased** has `wag` 1.
+- The teller of a cat or dog film is still the film's own: a `CatPlayer` or `DogPlayer` at `scale={KID}` in the one
+  colour nobody else wears (`Hero` and `Pup` in `reference/we-are-all-cats/source/kit.tsx`).
+- **The sound kit has no bark and no hiss.** The film used `bonk` at `pitch` 0.75 repeated every 0.17 s for a bark
+  and `gust` at `pitch` 1.6, `dur` 0.4, for a hiss ([`SOUND.md`](SOUND.md) has the kit).
+- Another animal (a rabbit, a fox) is a new branch in `CatDogHead` and `CatDogTail` and two rows of colours. Add it
+  so that the cats and dogs do not change by a pixel (rule 4 above).
 
