@@ -204,6 +204,9 @@ Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build 
 **Cats and dogs** (a cat or a dog player, villager and golem) have their own section at the bottom of this page:
 ["Cats and dogs"](#cats-and-dogs--catsdogstsx).
 
+**The creeper town** (creepers as people: a family, a crowd that bolts and hisses, their houses, and the players who
+come for gunpowder) has its own section too: ["The creeper town"](#the-creeper-town--creepertowntsx).
+
 ## What is not in the pack
 
 - **The story.** Never reuse a premise, a line or a twist from a finished film.
@@ -222,7 +225,7 @@ Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build 
    must not differ by a pixel. The same goes for a change to `src/engine/`.
 
    ```bash
-   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon in-this-town-we-are-all-cats"
+   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon in-this-town-we-are-all-cats in-this-town-everyone-runs-away-from-me"
    for f in $FILMS; do node scripts/shots.mjs $f --scale 0.4 --at 0.55 --out out/before/$f; done
    #   …the change…
    for f in $FILMS; do
@@ -334,3 +337,43 @@ How they behave, as the film used them:
 - Another animal (a rabbit, a fox) is a new branch in `CatDogHead` and `CatDogTail` and two rows of colours. Add it
   so that the cats and dogs do not change by a pixel (rule 4 above).
 
+## The creeper town — `creepertown.tsx`
+
+Creepers as people. Built for "In This Town, Everyone Runs Away From Me"; the owner, 2026-11-16: "really cute short,
+i like it. now put it on the main branch as reference + the creeper skins u made so that other agents can use it too
+as a template or pack". **So when he asks for a film with creepers who are somebody (a family, a town, a class), they
+are here: do not build them again, and do not restyle them.** How each is staged, shot by shot, is in
+[`reference/everyone-runs-away-from-me/`](reference/everyone-runs-away-from-me/README.md).
+
+![The creeper town](creepertown.jpg)
+
+Every still above is a shot from `in-this-town-everyone-runs-away-from-me`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-everyone-runs-away-from-me --scale 0.5 --at 0.6 --out out/creepertown \
+  --only 1.all,1.hello,1.mum,1.box,2.table,2.school,3.suit,3.little,4.six,4.hiss,4.chain,6.arms
+python3 scripts/pack-sheet.py out/creepertown Topics/InThisTown/creepertown.jpg --labels Topics/InThisTown/creepertown.labels.txt
+```
+
+The creeper itself is `Creeper` in `monsters.tsx` (above). **A creeper has no arms**, so it acts with four things:
+its face (`mood`: `calm`, `happy`, `scared`, `angry`, `sad`), shaking (move its `position` a centimetre, fast),
+leaning (`lean`: 0.3 is a run, 0.34 against somebody is a hug) and `fuse` (0–1: it swells and flashes white, which
+every player reads as "about to blow up").
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `CreeperMum`, `CreeperDad`, `CreeperKid` | The family: a pink bow and scarf; a straw hat, a blue scarf, a little bigger and darker; a small pale one in a yellow scarf (0.58). Each is a `Creeper` and takes every one of its props | `position`, `rotationY`, `mood`, `lookAt` or `nod` / `turn` / `tilt`, `walk` (metres), `lean`, `fuse` |
+| `CreeperCrowd` | A town of them: every green, some in scarves, some in hats, a few small. One component, directed by numbers | `spots` (`[x, z, facing?][]`), `t`; **`cat` + `at`: they bolt from that point at that second, the near ones first**; `speed` (6 is a stampede a shot can hold; 8 leaves the frame in half a second); `fuse` (hissing); `mood`, `lookAt`, `face`; `walk` + `shift` (the whole lot walks); `shake`; `skip` (leave some out); `first` (so two crowds are not twins) |
+| `creeperBolt(home, cat, t, at, i?, speed?, face?)` | The same for one creeper you draw yourself: gives `position`, `rotationY`, `walk`, `lean` and `gone`. It jumps, turns and runs straight away from `cat` | |
+| `CreeperHouse` | A `Hut` with a green roof and the face over its door. Faces +Z | `position`, `rotationY`, `w`, `h`, `n` (the roof, wall and tint: give each house its own), `lit` (night) |
+| `CreeperFace` | The face alone, flat, facing +Z: on a house, a costume, a flag, a school | `position`, `size`, `color` |
+| `CreeperSuit` | The costume: a green box with the face painted on, worn over a kid. At `position` y = −0.14 a cat's ears come out of the top | `position` (his feet), `rotationY`, `wobble` |
+| `GunpowderPlayer` | A player who has come to farm creepers: six looks. Even `who` holds a sword, odd an empty sack. A `MinecraftAvatar`: every clip, pose and face works | `who` 0–5, `hand={false}` (he has dropped it), `arms="hold"` to show it |
+| `PlayerSword`, `EmptySack`, `LostShoe` | What they leave behind. Each faces +Z from where it is held | `position`, `rotation`, `scale` |
+| `LongTable` | A dinner table of planks, `length` metres along Z, a plate at each end. **Shoot it from one end, never from the side** | `position` (the ground under its middle), `length` |
+| `SchoolDesk` | A desk for a lesson held outdoors, facing −Z | `position` |
+| `CardboardBox` | An open box a kitten fits in (a kid at scale 0.42) | `position`, `rotationY` |
+| `PixelHeart` | A small pixel heart, facing +Z: over a hug | `position`, `rotationY`, `scale` |
+| `NightFill` | A warm point light for faces at night: the engine's night key light is on the north side | `at`, `power`, `reach`, `color` |
+| `groundSitPose(t, patch?)`, `GROUND_SIT` | Sitting on the ground with the legs straight out. Give it as `pose` and put the feet at y = `GROUND_SIT` | |
+| `openArmsPose(t, k?)` | Both arms held wide open, `k` 0–1: he wants a hug | |
