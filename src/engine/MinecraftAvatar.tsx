@@ -379,39 +379,20 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           </mesh>
           {hairStyle === "spiky" ? (
             <group position={[0, 4 * PX, 0]}>
-              {/* base hair cap */}
-              <mesh castShadow receiveShadow position={[0, 4.4 * PX, 0]} material={materials.hairMat}>
-                <boxGeometry args={[8.6 * PX, 1.4 * PX, 8.6 * PX]} />
+              {/* slightly fuller top */}
+              <mesh castShadow receiveShadow position={[0, 4.3 * PX, 0]} material={materials.hairMat}>
+                <boxGeometry args={[8.4 * PX, 0.7 * PX, 8.4 * PX]} />
               </mesh>
-              {/* tall front-left spike */}
-              <mesh castShadow receiveShadow position={[-2.4 * PX, 6.0 * PX, 2.2 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[2.4 * PX, 2.8 * PX, 2.4 * PX]} />
+              {/* subtle side hair on left & right */}
+              <mesh castShadow receiveShadow position={[4.18 * PX, 1.4 * PX, -0.4 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[0.45 * PX, 5.2 * PX, 6.2 * PX]} />
               </mesh>
-              {/* tall center-right spike */}
-              <mesh castShadow receiveShadow position={[1.4 * PX, 6.4 * PX, 1.8 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[2.6 * PX, 3.4 * PX, 2.6 * PX]} />
+              <mesh castShadow receiveShadow position={[-4.18 * PX, 1.4 * PX, -0.4 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[0.45 * PX, 5.2 * PX, 6.2 * PX]} />
               </mesh>
-              {/* mid-left spike */}
-              <mesh castShadow receiveShadow position={[-0.6 * PX, 5.8 * PX, -0.8 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[2.8 * PX, 2.4 * PX, 2.8 * PX]} />
-              </mesh>
-              {/* back-right spike */}
-              <mesh castShadow receiveShadow position={[2.4 * PX, 5.6 * PX, -2.0 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[2.4 * PX, 2.2 * PX, 2.4 * PX]} />
-              </mesh>
-              {/* messy front bangs */}
-              <mesh castShadow receiveShadow position={[2.2 * PX, 3.4 * PX, 4.25 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[2.4 * PX, 1.8 * PX, 0.7 * PX]} />
-              </mesh>
-              <mesh castShadow receiveShadow position={[-1.4 * PX, 3.2 * PX, 4.25 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[2.2 * PX, 1.5 * PX, 0.7 * PX]} />
-              </mesh>
-              {/* side tufts */}
-              <mesh castShadow receiveShadow position={[4.35 * PX, 2.8 * PX, 0.5 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[0.7 * PX, 2.6 * PX, 3.0 * PX]} />
-              </mesh>
-              <mesh castShadow receiveShadow position={[-4.35 * PX, 2.8 * PX, 0.5 * PX]} material={materials.hairMat}>
-                <boxGeometry args={[0.7 * PX, 2.6 * PX, 3.0 * PX]} />
+              {/* subtle front side-swept bangs */}
+              <mesh castShadow receiveShadow position={[2.4 * PX, 2.9 * PX, 4.12 * PX]} material={materials.hairMat}>
+                <boxGeometry args={[2.6 * PX, 1.4 * PX, 0.35 * PX]} />
               </mesh>
             </group>
           ) : null}
