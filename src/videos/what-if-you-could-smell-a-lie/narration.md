@@ -33,7 +33,6 @@ same rate.
 
 # clip 03-rule
 [3.hair]     My friend said my haircut was good. Toast.
-[3.cook]     The cook said the pie was fresh. Toast.
 [3.dad]      My dad said he would come on Sunday. The kitchen filled with it.
 [3.rule]     Any lie, from anyone, any size. Always toast.
 [3.limit]    One thing it could not do. It never worked on me.
@@ -41,15 +40,11 @@ same rate.
 # clip 04-fun
 [4.power]    So I stopped being lied to. That is a strange kind of power.
 [4.class]    I knew who broke the window before the teacher did.
-[4.cards]    I knew which card in the shop was for me.
-[4.spell]    I knew who could not spell "answer" and still got ten out of ten.
-[4.best]     I got very good at being right. Everybody loves that in a person.
 [4.lunch]    At lunch I sat alone, but I was right.
 
 # clip 05-wish
 [5.one]      There was one person I wanted to check.
 [5.mum]      My mum. I wanted to know if she was okay.
-[5.ask]      So I asked her. Every morning. The same question.
 
 # clip 06-plant
 [6.never]    And she never smelled of toast.
@@ -62,7 +57,6 @@ same rate.
 [7.coming]   "He's coming on Sunday," she said.
 [7.caught]   Toast. For the first time in my life, from her.
 [7.proud]    I was so pleased with myself. I had caught her.
-[7.why]      I asked why she would lie to me.
 
 # clip 08-harder
 [8.shout]    I did not ask nicely. I did not stop asking.
@@ -81,7 +75,6 @@ same rate.
 [10.cake]    The cake smelled like a fire.
 [10.card]    Every card smelled like a fire.
 [10.smile]   Every smile. Every happy birthday. All of it, burning.
-[10.count]  Twenty-eight people in one room, all lying to me at once.
 [10.sure]   I was sure I knew what it was about.
 
 # clip 11-act
