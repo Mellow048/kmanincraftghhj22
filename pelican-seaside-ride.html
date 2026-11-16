@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pelican's Seaside Ride</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #d3e6e1; padding: 18px; }
+  svg { display: block; width: min(100%, 1100px); height: auto; border-radius: 8px; box-shadow: 0 18px 55px #254a4a38; }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">The Pelican's Seaside Ride</title>
+  <desc id="description">A white pelican with a long golden beak pedals a red bicycle along a sunny coastal road, carrying a fish in its basket.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#a9dcd8"/><stop offset="1" stop-color="#f9e9c6"/></linearGradient>
+    <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#74b9b5"/><stop offset="1" stop-color="#b5d7ca"/></linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdf0"/><stop offset="1" stop-color="#c4d4cf"/></linearGradient>
+    <linearGradient id="beak" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f8c66b"/><stop offset="1" stop-color="#df8b4b"/></linearGradient>
+    <pattern id="spokes" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="#e8e2c9"/></pattern>
+    <g id="wheel">
+      <circle r="112" fill="#34494a" stroke="#243f40" stroke-width="5"/>
+      <circle r="99" fill="#f6e6c7" stroke="#efbd78" stroke-width="4"/>
+      <circle r="90" fill="#d9e7d7" stroke="#596d66" stroke-width="4"/>
+      <g stroke="#899b8d" stroke-width="2" opacity=".9">
+        <path d="M-90 0H90 M0-90V90 M-64-64L64 64 M64-64L-64 64 M-83-34L83 34 M-83 34L83-34 M-34-83L34 83 M34-83L-34 83"/>
+      </g>
+      <circle r="11" fill="#d7a157" stroke="#415750" stroke-width="4"/><circle r="3" fill="#f8e9c8"/>
+    </g>
+  </defs>
+  <!-- A quiet, layered coastal setting. -->
+  <rect width="1000" height="700" fill="url(#sky)"/>
+  <circle cx="794" cy="112" r="55" fill="#fff2c8" opacity=".85"/>
+  <g fill="none" stroke="#fff7e4" stroke-width="5" stroke-linecap="round" opacity=".8">
+    <path d="M95 110h74m-50-13h63 M560 80h58m-43-12h71 M850 200h72m-52-12h55"/>
+  </g>
+  <path d="M0 286 Q120 255 236 282 T460 276 T690 280 T1000 268 V442 H0Z" fill="#aecfc0"/>
+  <path d="M0 310 Q135 292 250 307 T480 305 T735 298 T1000 308 V455 H0Z" fill="url(#sea)"/>
+  <g fill="none" stroke="#e6f0d9" stroke-width="3" stroke-linecap="round" opacity=".75">
+    <path d="M70 340h90m15 0h24 M330 329h110 M618 345h76m17 0h23 M805 324h108 M120 378h64 M490 374h92 M800 385h90"/>
+  </g>
+  <path d="M0 439 Q250 423 500 437 T1000 431 V700 H0Z" fill="#e8cf9d"/>
+  <path d="M0 596 Q270 580 527 593 T1000 584 V700 H0Z" fill="#c89068"/>
+  <path d="M0 608 Q300 592 560 604 T1000 596" fill="none" stroke="#f7dfb2" stroke-width="5"/>
+  <g fill="#aa9c75" opacity=".7"><ellipse cx="84" cy="521" rx="20" ry="4"/><ellipse cx="906" cy="499" rx="25" ry="4"/><ellipse cx="90" cy="658" rx="40" ry="3"/><ellipse cx="835" cy="660" rx="52" ry="3"/></g>
+  <ellipse cx="491" cy="643" rx="354" ry="17" fill="#806d58" opacity=".19"/>
+  <!-- Wheels, mudguards and frame. -->
+  <use href="#wheel" x="255" y="515"/><use href="#wheel" x="720" y="515"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M152 470 A112 112 0 0 1 347 449 M617 470 A112 112 0 0 1 812 449" stroke="#c85b4d" stroke-width="9"/>
+    <path d="M255 515 L415 382 L489 515 Z M415 382 L630 382 L489 515 M630 382 L720 515" stroke="#783b36" stroke-width="17"/>
+    <path d="M255 515 L415 382 L489 515 Z M415 382 L630 382 L489 515 M630 382 L720 515" stroke="#e5755c" stroke-width="10"/>
+    <path d="M630 382 L615 346 Q611 334 625 334 H656 Q672 334 672 318" stroke="#3b5551" stroke-width="9"/>
+    <path d="M655 318h29" stroke="#835343" stroke-width="11"/>
+    <path d="M415 382 L405 360" stroke="#405952" stroke-width="9"/>
+  </g>
+  <path d="M369 355 Q385 345 420 350 Q436 352 439 358 Q435 364 419 364 H378 Q363 364 369 355Z" fill="#765247"/>
+  <circle cx="489" cy="515" r="29" fill="#f0d8ae" stroke="#586e62" stroke-width="5"/>
+  <circle cx="489" cy="515" r="17" fill="none" stroke="#98a99b" stroke-width="3"/>
+  <path d="M489 515l-28 36 M489 515l29-36" stroke="#435b54" stroke-width="6" stroke-linecap="round"/>
+  <path d="M445 553h34 M505 477h31" stroke="#4b5146" stroke-width="8" stroke-linecap="round"/>
+  <!-- Basket and its passenger, a little silver fish. -->
+  <path d="M661 348h113l-12 66q-2 10-14 10h-63q-10 0-12-10z" fill="#d9a45d" stroke="#946a42" stroke-width="5" stroke-linejoin="round"/>
+  <g fill="none" stroke="#f0ca85" stroke-width="3" opacity=".8"><path d="M676 367h89 M679 383h83 M682 399h77 M691 351l6 70 M711 351l3 70 M732 351l-2 70 M753 351l-6 70"/></g>
+  <path d="M683 341 Q704 318 735 337 Q744 345 735 351 Q707 359 683 341Z" fill="#9cbcb4" stroke="#537872" stroke-width="3"/>
+  <path d="M683 341l-15-12 1 23z" fill="#9cbcb4" stroke="#537872" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="727" cy="339" r="2.5" fill="#344f4e"/>
+  <!-- Far leg behind the body. -->
+  <path d="M365 329 Q365 378 391 408 L456 475" fill="none" stroke="#bd754b" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M455 475 Q473 470 492 478 L509 477 Q518 478 516 483 Q500 490 478 487 L453 488Z" fill="#d89459" stroke="#a96543" stroke-width="3"/>
+  <!-- Tail, round body, neck and head: drawn as a single distinct rider. -->
+  <path d="M303 273 Q264 269 229 247 Q246 278 274 291 Q245 286 225 282 Q255 314 305 312Z" fill="#8fa9a5" stroke="#657f7b" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M291 258 C330 232 386 224 430 244 C450 222 456 196 449 167 C442 132 464 108 496 111 C527 113 544 133 542 157 C540 181 519 191 503 192 C495 213 501 237 520 253 C541 272 532 307 506 325 C475 349 428 361 374 353 C321 347 281 321 280 289 C278 276 282 267 291 258Z" fill="url(#body)" stroke="#6c8581" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Pouch and the famously long beak. -->
+  <path d="M508 168 Q548 170 584 178 L724 178 Q689 196 623 214 Q581 227 551 210 Q531 198 508 178Z" fill="#eaa55d" stroke="#a96a44" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M522 145 Q551 151 594 158 L742 174 Q746 175 742 179 L593 183 Q548 180 520 174Z" fill="url(#beak)" stroke="#a96a44" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M539 166 Q612 171 706 177" fill="none" stroke="#a96a44" stroke-width="2" opacity=".7"/>
+  <circle cx="503" cy="145" r="13" fill="#f4d293"/><circle cx="505" cy="145" r="8" fill="#374e4b"/><circle cx="507" cy="142" r="2.8" fill="white"/>
+  <path d="M487 126 Q499 118 513 127" fill="none" stroke="#718b84" stroke-width="3" stroke-linecap="round"/>
+  <!-- Feathered wing rests forward like a rider leaning over the handlebars. -->
+  <path d="M309 267 Q358 239 421 260 Q449 268 470 291 Q450 314 425 320 Q410 326 395 319 Q376 328 362 317 Q346 321 332 310 Q311 303 299 286 Q294 276 309 267Z" fill="#e7eee4" stroke="#9bb1a9" stroke-width="3"/>
+  <g fill="none" stroke="#b0c4ba" stroke-width="3" stroke-linecap="round"><path d="M313 284 Q349 301 377 296 M333 299 Q366 311 395 303 M359 310 Q390 318 416 307 M389 265 Q414 275 433 292"/></g>
+  <path d="M442 288 Q477 307 512 319 Q557 332 610 322" fill="none" stroke="#8da49d" stroke-width="13" stroke-linecap="round"/>
+  <path d="M442 285 Q477 303 512 315 Q557 328 610 319" fill="none" stroke="#f1f3e7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M604 318 Q617 311 628 317 M605 322 Q619 320 628 324" fill="none" stroke="#8da49d" stroke-width="3" stroke-linecap="round"/>
+  <!-- Near leg reaches the lower pedal. -->
+  <path d="M410 334 Q432 378 418 414 L454 548" fill="none" stroke="#ae7049" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M410 334 Q432 378 418 414 L454 548" fill="none" stroke="#e4a061" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M452 541 Q463 537 475 543 L493 547 Q499 549 495 553 Q483 558 468 555 L445 555 Q438 552 443 547Z" fill="#e4a061" stroke="#a96543" stroke-width="3"/>
+  <!-- Small roadside details. -->
+  <g fill="none" stroke="#77947a" stroke-width="3" stroke-linecap="round"><path d="M70 573q-3-21-14-29 M70 573q3-24 15-32 M70 573v-24 M929 565q-4-19-13-26 M929 565q5-23 16-30 M929 565v-22"/></g>
+  <g fill="#fff3d6"><circle cx="55" cy="543" r="4"/><circle cx="85" cy="541" r="4"/><circle cx="946" cy="534" r="4"/></g>
+  <text x="500" y="675" text-anchor="middle" fill="#806d58" font-family="Georgia, serif" font-style="italic" font-size="17" letter-spacing="2">a little ride by the sea</text>
+</svg>
+</body>
+</html>
