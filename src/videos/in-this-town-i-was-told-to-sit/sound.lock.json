@@ -1,0 +1,234 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-was-told-to-sit",
+  "mix": "public/audio/in-this-town-i-was-told-to-sit/mix.mp3",
+  "seconds": 146.7333,
+  "built_from": {
+    "timing.json": "8b95400fc8d2a61a6697313fd43f8ed32740ff81",
+    "sound.json": "16f2383bd16940735d8d3622b8f7bf1877b62946",
+    "narration.mp3": "069900e67a4b1e620a753ee1b6ca473eb99adbee"
+  },
+  "mix_sha1": "4e4f37e749f9a6d677f3af901a8504c2eef0f237",
+  "music_sections": [
+    {
+      "from": "1.sit",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.creeper",
+      "mood": "sneak",
+      "at": 7.5
+    },
+    {
+      "from": "2.parrot",
+      "mood": "playful",
+      "at": 11.6
+    },
+    {
+      "from": "3.first",
+      "mood": "curious",
+      "at": 15.37
+    },
+    {
+      "from": "3.built",
+      "mood": "town",
+      "at": 16.9
+    },
+    {
+      "from": "4.skel",
+      "mood": "sneak",
+      "at": 28.3
+    },
+    {
+      "from": "4.rain",
+      "mood": "sad",
+      "at": 33.67
+    },
+    {
+      "from": "5.forgot",
+      "mood": "curious",
+      "at": 36.73
+    },
+    {
+      "from": "5.torch",
+      "mood": "sneak",
+      "at": 45.73
+    },
+    {
+      "from": "5.roof",
+      "mood": "playful",
+      "at": 48.77
+    },
+    {
+      "from": "5.forgotme",
+      "mood": "sad",
+      "at": 56.47
+    },
+    {
+      "from": "6.day",
+      "mood": "tense",
+      "at": 59.1
+    },
+    {
+      "from": "7.his",
+      "mood": "sad",
+      "at": 78.13
+    },
+    {
+      "from": "7.stood",
+      "mood": "tense",
+      "at": 83.47
+    },
+    {
+      "from": "7.hiss2",
+      "mood": "none",
+      "at": 90.77
+    },
+    {
+      "from": "7.not",
+      "mood": "dark",
+      "at": 93.7
+    },
+    {
+      "from": "7.gone",
+      "mood": "playful",
+      "at": 94.9
+    },
+    {
+      "from": "8.bad",
+      "mood": "drone",
+      "at": 100.33
+    },
+    {
+      "from": "8.light",
+      "mood": "none",
+      "at": 103.1
+    },
+    {
+      "from": "8.him",
+      "mood": "hope",
+      "at": 104.43
+    },
+    {
+      "from": "8.way",
+      "mood": "sad",
+      "at": 108.77
+    },
+    {
+      "from": "8.sat",
+      "mood": "playful",
+      "at": 115.17
+    },
+    {
+      "from": "9.bed",
+      "mood": "sad",
+      "at": 119.57
+    },
+    {
+      "from": "9.farmer",
+      "mood": "town",
+      "at": 130.27
+    },
+    {
+      "from": "10.still",
+      "mood": "dark",
+      "at": 135.83
+    },
+    {
+      "from": "10.look",
+      "mood": "hope",
+      "at": 139.0
+    },
+    {
+      "from": "10.come",
+      "mood": "town",
+      "at": 143.53
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 15,
+  "measured": {
+    "musicUnderVoiceDb": 18.6,
+    "secondsWithoutMusic": 4.3,
+    "bedsUnderVoiceDb": 26.0,
+    "sfx": 398,
+    "sfxPerMinute": 162.7,
+    "sfxKinds": 45,
+    "longestGapSeconds": 1.7,
+    "longestGapAt": 56.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.7,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 18.5,
+        "cue": "3.built",
+        "sounding": [
+          "bell",
+          "cheer",
+          "pop"
+        ]
+      },
+      {
+        "db": 4.1,
+        "t": 54.2,
+        "cue": "5.took",
+        "sounding": [
+          "sparkle",
+          "swish"
+        ]
+      },
+      {
+        "db": 4.3,
+        "t": 87.1,
+        "cue": "7.front",
+        "sounding": [
+          "creak",
+          "ding",
+          "scrape",
+          "swish"
+        ]
+      },
+      {
+        "db": 4.3,
+        "t": 68.6,
+        "cue": "6.growl",
+        "sounding": [
+          "creak",
+          "scrape",
+          "swish"
+        ]
+      },
+      {
+        "db": 4.3,
+        "t": 122.2,
+        "cue": "9.roof",
+        "sounding": [
+          "ding",
+          "plink"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 104.2,
+        "cue": "8.light",
+        "sounding": [
+          "boom",
+          "power_up",
+          "riser",
+          "sparkle",
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -15.2,
+    "truePeakDb": -1.3,
+    "limiterMaxDb": 4.2
+  },
+  "failures": []
+}

@@ -16,13 +16,13 @@ not.
 | A first shot that keeps changing for two seconds round a teller who looks at us | `1.sit`: a dog sits and looks at us, and a town pops up around him, a house and a villager at a time. That is also the premise: the town was built round him |
 | Past tense, "I", sentences of five words | Throughout |
 | Line four leaves a thing unexplained | `1.owner`: he "said one word, and walked into the forest". Where to? |
-| Two neighbours with one habit, and the habit comes back as plot | The creeper who stands next to him at night (`2.creeper` → `7.not`); the parrot who hisses like a creeper (`2.parrot` → `6.hiss`, `7.nice`) |
-| The viewer is ahead of the teller | The sign he cannot read and we can (`3.sign`); the bed, the bones, the torches, the roof (`5.*`); "twelve green eyes. I do not know what the eyes were for" (`5.took`): every player knows |
+| Two neighbours with one habit, and the habit comes back as plot | The creeper who stands next to him at night (`2.creeper` → `7.hiss2`, `7.not`); the parrot who hisses like a creeper (`2.hiss` → `6.hiss`, `7.nice`) |
+| The viewer is ahead of the teller | The sign he cannot read and we can (`3.sign`); the bed, the bones, the torches, the roof (`5.*`); "twelve green eyes. I do not know what the eyes were for" (`5.took`, `5.eyes`): every player knows |
 | "I thought", said out loud and wrong | "I think it says my name" · "I think it was his lunch" · "He was always forgetting things" · "Then he forgot me too. That is what I thought" |
 | Other people speak | 9 spoken lines: the players, the owner, the sign |
 | The thing the viewer usually is arrives at about 40% | `6.day`: two players, who do what players do: open the chest, take the bed |
 | What he tries at the crisis fails | He growls: "A sitting dog does not bite." The parrot hisses: they see the parrot |
-| The clues said back as a list | `9.list`: "The bed. The bones. The torches. The roof." |
+| The clues said back as a list | `9.bed` to `9.roof`: "The bed. The bones. The torches. The roof." |
 | A second, bigger truth | He was not forgotten: a dog who is not sitting follows his owner anywhere, so he was sat down to be kept out of it. And the town knew: the sign |
 | An ending that opens | "It is still down there. And it has all my things." "Come." |
 
@@ -43,11 +43,11 @@ first time to save his owner's bed, and finds out what the bed, and "sit", were 
 |---|---|
 | "I was told to sit … I had not moved" (`1.sit`, `1.moved`) | "I stood up" (`7.stood`); "I said sit" (`8.said`); "Come" (`10.come`) |
 | The creeper who stands next to him and never talks (`2.creeper`) | "It was not the parrot" (`7.not`) |
-| The parrot who hisses like a creeper (`2.parrot`) | "Then the parrot did the creeper" (`6.hiss`); "Nice try, parrot" (`7.nice`) |
+| The parrot who hisses like a creeper (`2.parrot`, `2.hiss`) | "Then the parrot did the creeper" (`6.hiss`); "Nice try, parrot" (`7.nice`) |
 | The farmer's loaf every morning (`3.farmer`) | "Loaf four hundred and one" (`9.farmer`) |
-| The sign he cannot read (`3.sign`); we can, from the first second it is on screen | "Do not move him. He is waiting." (`9.sign`) |
-| The bed, the bones, the torches, the roof (`5.bed` to `5.roof`) | The list, and "He had not forgotten anything" (`9.list`, `9.not`) |
-| "Twelve green eyes" (`5.took`) | "No green eyes" (`8.nothing`); "It is still down there" (`10.still`) |
+| The sign he cannot read (`3.sign`); we can, from the first second it is on screen | "Do not move him. He is waiting." (`9.sign`, `9.read`) |
+| The bed, the bones, the torches, the roof (`5.bed` to `5.roof`) | The list, and "He had not forgotten anything" (`9.bed` to `9.roof`, `9.not`) |
+| "Twelve green eyes" (`5.took`, `5.eyes`) | "No green eyes" (`8.nothing`); "It is still down there" (`10.still`) |
 | "A sitting dog does not bite" (`6.growl`) | He is not sitting (`7.front`) |
 
 **One teller, first person, past tense: a dog.** Plain short words. No lesson.
