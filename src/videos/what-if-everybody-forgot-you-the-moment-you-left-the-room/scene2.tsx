@@ -16,7 +16,7 @@ export const scene2 = storyScene(timing, {
     {
       // Him on a wall in the sun, pleased with himself, the way you are at thirteen.
       cue: "4.best",
-      ...cam.push({ on: [-22.80, 1.05, 3.60], dist: 5.88, to: 6.48, yaw: 145, pitch: 0, fov: 44 }),
+      ...cam.push({ on: [-19.40, 1.35, -1.40], dist: 6.52, to: 5.97, yaw: -43, pitch: -3, fov: 46 }),
       zone: "yard",
       note: "Him on a wall in the sun, pleased with himself, the way you are at thirteen.",
       stage: (_t) => (
@@ -28,7 +28,7 @@ export const scene2 = storyScene(timing, {
     {
       // The same wall, and he is not doing anything at all.
       cue: "4.nobody",
-      ...cam.push({ on: [-21.00, 1.20, 4.40], dist: 6.27, to: 7.17, yaw: 163, pitch: -2, fov: 46 }),
+      ...cam.push({ on: [-19.40, 1.30, -1.40], dist: 7.52, to: 6.97, yaw: -25, pitch: -1, fov: 46 }),
       zone: "yard",
       note: "The same wall, and he is not doing anything at all.",
       stage: (_t) => (
@@ -40,7 +40,7 @@ export const scene2 = storyScene(timing, {
     {
       // Closer: doing nothing is his whole day.
       cue: "4.nobodya",
-      ...cam.push({ on: [-20.40, 1.05, 2.40], dist: 4.18, to: 3.88, yaw: 163, pitch: -1, fov: 36 }),
+      ...cam.push({ on: [-19.40, 1.30, -1.40], dist: 3.72, to: 3.17, yaw: -24, pitch: -2, fov: 38 }),
       zone: "yard",
       note: "Closer: doing nothing is his whole day.",
       stage: (_t) => (
@@ -52,7 +52,7 @@ export const scene2 = storyScene(timing, {
     {
       // Out on the field under an enormous sky, alone, and the sky is the point.
       cue: "5.sky",
-      ...cam.push({ on: [-19.00, 1.10, 5.00], dist: 9.14, to: 10.14, yaw: 153, pitch: 16, fov: 52 }),
+      ...cam.push({ on: [-19.00, 2.10, -2.60], dist: 9.47, to: 8.92, yaw: -17, pitch: -6, fov: 56 }),
       zone: "yard",
       note: "Out on the field under an enormous sky, alone, and the sky is the point.",
       stage: (_t) => (
@@ -64,7 +64,7 @@ export const scene2 = storyScene(timing, {
     {
       // Him sitting on the kerb at the edge of the yard, looking at the door he has to go back through.
       cue: "5.alone",
-      ...cam.push({ on: [-22.00, 1.15, 2.20], dist: 4.96, to: 5.76, yaw: 137, pitch: -4, fov: 46 }),
+      ...cam.push({ on: [-19.00, 1.10, -1.40], dist: 7.00, to: 6.45, yaw: -31, pitch: 1, fov: 48 }),
       zone: "yard",
       note: "Him sitting on the kerb at the edge of the yard, looking at the door he has to go back through.",
       stage: (_t) => (
@@ -76,7 +76,7 @@ export const scene2 = storyScene(timing, {
     {
       // The door, from his eye level, and the light inside it.
       cue: "5.alonea",
-      ...cam.push({ on: [25.00, 1.30, 61.00], dist: 4.77, to: 4.47, yaw: 147, pitch: -2, fov: 42 }),
+      ...cam.push({ on: [23.80, 1.10, 57.50], dist: 2.81, to: 2.26, yaw: 35, pitch: 4, fov: 44 }),
       zone: "drive",
       note: "The door, from his eye level, and the light inside it.",
       stage: (_t) => (
@@ -88,7 +88,7 @@ export const scene2 = storyScene(timing, {
     {
       // The corridor at lunch: him mid-joke, mouth open, and the two kids walking past him.
       cue: "6.week",
-      ...cam.push({ on: [-2.20, 1.30, 41.20], dist: 4.03, to: 5.13, yaw: 117, pitch: -1, fov: 50 }),
+      ...cam.push({ on: [0.60, 1.25, 40.20], dist: 4.69, to: 4.14, yaw: -79, pitch: 1, fov: 52 }),
       zone: "hall",
       note: "The corridor at lunch: him mid-joke, mouth open, and the two kids walking past him.",
       stage: (_t) => (
@@ -102,7 +102,7 @@ export const scene2 = storyScene(timing, {
     {
       // The same corridor: him holding a dropped book out to somebody who does not take it.
       cue: "6.better",
-      ...cam.push({ on: [-1.60, 1.30, 41.10], dist: 3.72, to: 4.42, yaw: 121, pitch: -2, fov: 44 }),
+      ...cam.push({ on: [1.60, 1.05, 40.40], dist: 4.07, to: 3.52, yaw: -80, pitch: 4, fov: 46 }),
       zone: "hall",
       note: "The same corridor: him holding a dropped book out to somebody who does not take it.",
       stage: (_t) => (
@@ -116,7 +116,7 @@ export const scene2 = storyScene(timing, {
     {
       // His hand, still out, and the book on the floor.
       cue: "6.bettera",
-      ...cam.push({ on: [-0.80, 0.85, 41.20], dist: 2.91, to: 2.51, yaw: 136, pitch: -5, fov: 34 }),
+      ...cam.push({ on: [1.90, 0.62, 40.50], dist: 3.60, to: 3.05, yaw: -77, pitch: 4, fov: 34 }),
       zone: "hall",
       note: "His hand, still out, and the book on the floor.",
       stage: (_t) => (
@@ -128,7 +128,7 @@ export const scene2 = storyScene(timing, {
     {
       // Jo, by the lockers, looking straight at him.
       cue: "7.jo",
-      ...cam.push({ on: [-1.40, 1.30, 41.10], dist: 3.28, to: 3.88, yaw: 128, pitch: -1, fov: 42 }),
+      ...cam.push({ on: [1.60, 1.20, 40.20], dist: 3.30, to: 2.75, yaw: -76, pitch: 2, fov: 44 }),
       zone: "hall",
       note: "Jo, by the lockers, looking straight at him.",
       stage: (_t) => (
@@ -140,7 +140,7 @@ export const scene2 = storyScene(timing, {
     {
       // Her, closer, and she has said his name and it has landed.
       cue: "7.joa",
-      ...cam.push({ on: [0.20, 1.30, 41.00], dist: 2.25, to: 1.85, yaw: 148, pitch: 0, fov: 34 }),
+      ...cam.push({ on: [1.60, 1.30, 40.10], dist: 1.61, to: 1.06, yaw: -60, pitch: -1, fov: 36 }),
       zone: "hall",
       note: "Her, closer, and she has said his name and it has landed.",
       stage: (_t) => (
@@ -152,7 +152,7 @@ export const scene2 = storyScene(timing, {
     {
       // Him in a corridor with his name still in the air, stopped dead.
       cue: "7.saw",
-      ...cam.push({ on: [-2.60, 1.35, 41.20], dist: 8.05, to: 8.95, yaw: 153, pitch: -1, fov: 46 }),
+      ...cam.push({ on: [1.00, 1.15, 40.40], dist: 5.65, to: 5.10, yaw: -83, pitch: 2, fov: 48 }),
       zone: "hall",
       note: "Him in a corridor with his name still in the air, stopped dead.",
       stage: (_t) => (
@@ -165,7 +165,7 @@ export const scene2 = storyScene(timing, {
     {
       // His face, close, at the exact moment somebody knows him.
       cue: "7.sawa",
-      ...cam.push({ on: [-2.00, 1.25, 41.20], dist: 2.52, to: 2.22, yaw: 146, pitch: 1, fov: 34 }),
+      ...cam.push({ on: [0.60, 1.32, 40.50], dist: 2.15, to: 1.60, yaw: -68, pitch: -1, fov: 36 }),
       zone: "hall",
       note: "His face, close, at the exact moment somebody knows him.",
       stage: (_t) => (
@@ -177,7 +177,7 @@ export const scene2 = storyScene(timing, {
     {
       // The classroom door, half open, and through the gap something on the teacher's desk.
       cue: "8.bill",
-      ...cam.push({ on: [1.00, 1.30, 1.60], dist: 4.84, to: 5.64, yaw: 150, pitch: -2, fov: 44 }),
+      ...cam.push({ on: [3.20, 1.10, -2.60], dist: 4.45, to: 3.90, yaw: -36, pitch: 3, fov: 46 }),
       zone: "class",
       note: "The classroom door, half open, and through the gap something on the teacher's desk.",
       stage: (_t) => (
@@ -191,7 +191,7 @@ export const scene2 = storyScene(timing, {
     {
       // The paper on the desk, his name on it, and a number.
       cue: "8.billa",
-      ...cam.push({ on: [2.20, 1.25, -1.00], dist: 1.97, to: 1.67, yaw: -174, pitch: -15, fov: 38 }),
+      ...cam.push({ on: [-0.20, 0.80, -2.90], dist: 2.67, to: 2.12, yaw: 37, pitch: 9, fov: 40 }),
       zone: "class",
       note: "The paper on the desk, his name on it, and a number.",
       stage: (_t) => (
@@ -205,7 +205,7 @@ export const scene2 = storyScene(timing, {
     {
       // Over his shoulder: the paper, close, his name and the number.
       cue: "8.ledger",
-      ...cam.push({ on: [1.20, 1.35, -1.50], dist: 2.07, to: 1.67, yaw: -135, pitch: -17, fov: 36 }),
+      ...cam.push({ on: [-0.20, 0.78, -2.90], dist: 2.34, to: 1.79, yaw: 49, pitch: 14, fov: 38 }),
       zone: "class",
       note: "Over his shoulder: the paper, close, his name and the number.",
       stage: (_t) => (
@@ -220,7 +220,7 @@ export const scene2 = storyScene(timing, {
     {
       // The number, filling the frame, and it is a price.
       cue: "8.ledgera",
-      ...cam.push({ on: [0.50, 1.20, -1.80], dist: 1.38, to: 0.98, yaw: -148, pitch: -19, fov: 30 }),
+      ...cam.push({ on: [-0.20, 0.78, -2.90], dist: 1.40, to: 0.85, yaw: 42, pitch: 17, fov: 32 }),
       zone: "class",
       note: "The number, filling the frame, and it is a price.",
       stage: (_t) => (
@@ -234,7 +234,7 @@ export const scene2 = storyScene(timing, {
     {
       // A timetable on the wall with rooms circled on it, and it is his timetable.
       cue: "9.arranged",
-      ...cam.push({ on: [-0.60, 1.35, -1.40], dist: 2.15, to: 2.65, yaw: -169, pitch: 5, fov: 44 }),
+      ...cam.push({ on: [-1.00, 1.50, -3.50], dist: 2.44, to: 1.89, yaw: 19, pitch: 1, fov: 46 }),
       zone: "class",
       note: "A timetable on the wall with rooms circled on it, and it is his timetable.",
       stage: (_t) => (
@@ -249,7 +249,7 @@ export const scene2 = storyScene(timing, {
     {
       // The same timetable, and every circled room is one he has been in.
       cue: "9.arrangeda",
-      ...cam.push({ on: [-0.60, 1.35, -1.60], dist: 1.94, to: 1.54, yaw: -168, pitch: 3, fov: 34 }),
+      ...cam.push({ on: [-1.00, 1.45, -3.50], dist: 1.97, to: 1.42, yaw: 24, pitch: 0, fov: 36 }),
       zone: "class",
       note: "The same timetable, and every circled room is one he has been in.",
       stage: (_t) => (
@@ -264,7 +264,7 @@ export const scene2 = storyScene(timing, {
     {
       // The teacher at the desk with the paper, counting something into an envelope.
       cue: "9.he",
-      ...cam.push({ on: [0.60, 1.30, -1.00], dist: 2.76, to: 3.26, yaw: -134, pitch: -3, fov: 40 }),
+      ...cam.push({ on: [-0.70, 1.15, -2.90], dist: 2.55, to: 2.00, yaw: 26, pitch: 3, fov: 42 }),
       zone: "class",
       note: "The teacher at the desk with the paper, counting something into an envelope.",
       stage: (_t) => (
@@ -278,7 +278,7 @@ export const scene2 = storyScene(timing, {
     {
       // His face, and he is not angry at all; he is tired, and he is being paid.
       cue: "9.hea",
-      ...cam.push({ on: [0.30, 1.25, -1.40], dist: 2.27, to: 1.87, yaw: -131, pitch: 1, fov: 34 }),
+      ...cam.push({ on: [-0.60, 1.30, -2.90], dist: 2.02, to: 1.47, yaw: 20, pitch: -1, fov: 34 }),
       zone: "class",
       note: "His face, and he is not angry at all; he is tired, and he is being paid.",
       stage: (_t) => (
@@ -290,7 +290,7 @@ export const scene2 = storyScene(timing, {
     {
       // A row of doors down a corridor, each with a little ticket on it.
       cue: "10.wall",
-      ...cam.push({ on: [-3.00, 1.30, 41.20], dist: 8.48, to: 9.88, yaw: 109, pitch: -1, fov: 50 }),
+      ...cam.push({ on: [2.40, 1.20, 38.20], dist: 5.27, to: 4.72, yaw: -57, pitch: 1, fov: 52 }),
       zone: "hall",
       note: "A row of doors down a corridor, each with a little ticket on it.",
       stage: (_t) => (
@@ -305,7 +305,7 @@ export const scene2 = storyScene(timing, {
     {
       // The tickets, close: a classroom, a canteen, a lunch, each with a price.
       cue: "10.walla",
-      ...cam.push({ on: [0.40, 1.20, 41.50], dist: 3.05, to: 3.65, yaw: -139, pitch: -2, fov: 44 }),
+      ...cam.push({ on: [-1.20, 1.45, 38.10], dist: 3.77, to: 3.22, yaw: 29, pitch: -4, fov: 44 }),
       zone: "hall",
       note: "The tickets, close: a classroom, a canteen, a lunch, each with a price.",
       stage: (_t) => (
