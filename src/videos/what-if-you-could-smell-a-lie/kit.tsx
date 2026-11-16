@@ -99,9 +99,15 @@ export const Toast: React.FC<{ at: Vec3; n?: number; seed?: number }> = ({ at, n
  *
  * The lens this film learned on: at 2.5 m and fov 42 a portrait frame holds about 1.5 m of height, which cuts
  * heads off at the forehead. Everything here is pulled to 3.2–4.8 m, aimed no higher than a chest, and opened
- * to at least 46°: a standing kid fits with air above him, and the room reads behind him.
+ * to at least 46°, so a standing kid fits with air above him and the room reads behind him.
  */
-export const push = (o: Omit<Parameters<typeof cam.push>[0], "dist" | "to" | "fov"> & { dist: number; to?: number; fov?: number }) => {
+export const fit = (o: Omit<Parameters<typeof cam.push>[0], "to"> & { to?: number }) => {
   const dist = Math.min(Math.max(o.dist * 1.55, 3.2), 4.8);
-  return cam.push({ ...o, on: [o.on[0], Math.min(o.on[1], 1.05), o.on[2]] as Vec3, dist, to: o.to === undefined ? dist * 0.9 : Math.max(o.to, 3.0), fov: Math.max(o.fov ?? 45, 46) });
+  return {
+    ...o,
+    on: [o.on[0], Math.min(o.on[1], 1.05), o.on[2]] as Vec3,
+    dist,
+    to: Math.max(o.to ?? dist * 0.9, 3.0),
+    fov: Math.max(o.fov ?? 45, 46),
+  };
 };

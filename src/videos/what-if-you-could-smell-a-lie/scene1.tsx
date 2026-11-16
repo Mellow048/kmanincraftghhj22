@@ -1,5 +1,5 @@
-import { storyScene } from "../../engine";
-import { A, Classmate, Friend, Hero, NORTH, SPOT, Teacher, Toast, timing, push } from "./kit";
+import { cam, storyScene } from "../../engine";
+import { A, Classmate, Friend, Hero, NORTH, SPOT, Teacher, Toast, timing, fit } from "./kit";
 
 /**
  * HOOK + THE RULE. Eight shots, eighteen seconds.
@@ -13,7 +13,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.what",
-      ...push({ on: SPOT.at(0, 1.15, 0.6), dist: 5.4, to: 4.9, yaw: 4, pitch: 12, fov: 48 }),
+      ...cam.push(fit({ on: SPOT.at(0, 1.15, 0.6), dist: 5.4, to: 4.9, yaw: 4, pitch: 12, fov: 48 })),
       zone: "class",
       note: "The whole class in one tall frame, him at a desk in the front of it, and the first grey wisp of a lie on the right of the board. The power is a smell: the picture has to show a face reading one.",
       stage: (t) => (
@@ -30,7 +30,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.maths",
-      ...push({ on: [SPOT.teacher[0], 1.45, SPOT.teacher[2]], dist: 2.5, to: 2.2, yaw: 8, pitch: 6, fov: 42 }),
+      ...cam.push(fit({ on: [SPOT.teacher[0], 1.45, SPOT.teacher[2]], dist: 2.5, to: 2.2, yaw: 8, pitch: 6, fov: 42 })),
       zone: "class",
       note: "Her, half turned, mid-sentence. He is out of frame: this is the lie arriving, not the boy yet.",
       stage: () => (
@@ -42,7 +42,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.teach",
-      ...push({ on: [SPOT.seat(1, 2)[0], 1.05, SPOT.seat(1, 2)[2]], dist: 2.1, to: 1.8, yaw: 16, pitch: 10, fov: 40 }),
+      ...cam.push(fit({ on: [SPOT.seat(1, 2)[0], 1.05, SPOT.seat(1, 2)[2]], dist: 2.1, to: 1.8, yaw: 16, pitch: 10, fov: 40 })),
       zone: "class",
       note: "Him at his desk, chin up, reading her, and not liking what he reads.",
       stage: () => (
@@ -54,7 +54,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.smell",
-      ...push({ on: [SPOT.seat(1, 2)[0] + 0.1, 1.3, SPOT.seat(1, 2)[2]], dist: 1.9, to: 1.55, yaw: -14, pitch: 4, fov: 38 }),
+      ...cam.push(fit({ on: [SPOT.seat(1, 2)[0] + 0.1, 1.3, SPOT.seat(1, 2)[2]], dist: 1.9, to: 1.55, yaw: -14, pitch: 4, fov: 38 })),
       zone: "class",
       note: "The first toast. Smoke off her mouth, filling the frame above him, and his face changing on it.",
       stage: () => (
@@ -66,7 +66,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.hair",
-      ...push({ on: A("hall", 0.1, 1.25, 0.2), dist: 2.8, to: 2.5, yaw: 6, pitch: 8, fov: 44 }),
+      ...cam.push(fit({ on: A("hall", 0.1, 1.25, 0.2), dist: 2.8, to: 2.5, yaw: 6, pitch: 8, fov: 44 })),
       zone: "hall",
       note: "The friend, sincere, by the lockers. A wisp he can see and the friend cannot.",
       stage: () => (
@@ -79,7 +79,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.dad",
-      ...push({ on: A("kitchen", -0.2, 1.15, 0.6), dist: 3.0, to: 2.6, yaw: 10, pitch: 10, fov: 46 }),
+      ...cam.push(fit({ on: A("kitchen", -0.2, 1.15, 0.6), dist: 3.0, to: 2.6, yaw: 10, pitch: 10, fov: 46 })),
       zone: "kitchen",
       note: "The kitchen, an empty chair at the table, and smoke standing over it. Nobody says the line: the smoke is the line.",
       stage: () => (
@@ -91,7 +91,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.rule",
-      ...push({ on: A("class", 0, 1.1, 0.2), dist: 4.6, to: 4.2, yaw: 0, pitch: 10, fov: 50 }),
+      ...cam.push(fit({ on: A("class", 0, 1.1, 0.2), dist: 4.6, to: 4.2, yaw: 0, pitch: 10, fov: 50 })),
       zone: "class",
       note: "The rule stated flat, over the whole room: nine desks and smoke over four of them at once.",
       stage: () => (
@@ -108,7 +108,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.limit",
-      ...push({ on: A("kitchen", -2.2, 1.2, 0.1), dist: 2.2, to: 1.9, yaw: -66, pitch: 5, fov: 40 }),
+      ...cam.push(fit({ on: A("kitchen", -2.2, 1.2, 0.1), dist: 2.2, to: 1.9, yaw: -66, pitch: 5, fov: 40 })),
       zone: "kitchen",
       note: "Him, in the tall mirror, saying something out loud. Nothing comes off his mouth. The limit, shown as an absence.",
       stage: () => (

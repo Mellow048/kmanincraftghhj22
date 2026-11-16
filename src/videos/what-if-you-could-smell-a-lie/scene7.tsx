@@ -1,5 +1,5 @@
-import { storyScene } from "../../engine";
-import { A, Hero, Mum, SPOT, timing, push } from "./kit";
+import { cam, storyScene } from "../../engine";
+import { A, Hero, Mum, SPOT, timing, fit } from "./kit";
 
 /**
  * THE BUTTON. Three shots.
@@ -13,7 +13,7 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "14.smell",
-      ...push({ on: SPOT.at(0, 1.0, 0.9), dist: 2.6, to: 2.3, yaw: -14, pitch: 14, fov: 42 }),
+      ...cam.push(fit({ on: SPOT.at(0, 1.0, 0.9), dist: 2.6, to: 2.3, yaw: -14, pitch: 14, fov: 42 })),
       zone: "class",
       note: "He sits down on the chair with the cake and eats it. The room has stopped smoking.",
       stage: () => (
@@ -25,14 +25,14 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "14.truth",
-      ...push({ on: SPOT.at(0, 1.0, 0.9), dist: 1.9, to: 1.7, yaw: 6, pitch: 2, fov: 36 }),
+      ...cam.push(fit({ on: SPOT.at(0, 1.0, 0.9), dist: 1.9, to: 1.7, yaw: 6, pitch: 2, fov: 36 })),
       zone: "class",
       note: "Close on his face for the true sentence. No toast, and he is not surprised any more.",
       stage: () => <Hero position={SPOT.at(0, 0, 0.9)} rotationY={0} animation="talk" face="sad" />,
     },
     {
       cue: "14.sub",
-      ...push({ on: A("kitchen", 0.1, 1.25, -0.8), dist: 3.0, to: 2.7, yaw: 4, pitch: 7, fov: 46 }),
+      ...cam.push(fit({ on: A("kitchen", 0.1, 1.25, -0.8), dist: 3.0, to: 2.7, yaw: 4, pitch: 7, fov: 46 })),
       zone: "kitchen",
       note: "The last picture: the two of them in the kitchen, the empty chair between them, and no smoke.",
       stage: () => (
