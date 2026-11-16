@@ -3,7 +3,7 @@ import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
   Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Teacher, Tray, SubscribeSign, Friend,
-  HALL, R, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
+  HALL, R, HOME, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
 } from "./kit";
 
 /**
@@ -21,9 +21,9 @@ export const scene1 = storyScene(timing, {
       note: "The question over the one picture that is the whole film: a classroom, and the teller standing in the doorway with his back to us. Everybody at the desks is looking at the empty chair he has just got up from.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(2.9, 0, -2.2)} rotationY={EAST} animation="idle" face="calm" />
-          {[0, 1, 2].flatMap((row) => (
-            <Classmate key={row} who={row + 2} position={SPOT.seat(0, row)} rotationY={SOUTH} animation="sit" />
+          <Hero position={SPOT.door} rotationY={EAST} animation="idle" face="calm" />
+          {[0, 1].flatMap((row) => (
+            <Classmate key={row} who={row + 2} position={SPOT.seat(1, row)} rotationY={SOUTH} animation="sit" face="calm" />
           ))}
         </>
       ),
@@ -36,7 +36,7 @@ export const scene1 = storyScene(timing, {
       note: "Hard on him in the doorway, and he is not sad, he is used to it. Six years of it.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(3.15, 0, -2.2)} rotationY={EAST} animation="idle" face="calm" />
+          <Hero position={SPOT.door} rotationY={EAST} animation="idle" face="calm" />
         </>
       ),
     },
@@ -48,8 +48,8 @@ export const scene1 = storyScene(timing, {
       note: "A small kid version of him at the same doorway, first day, bag too big.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(3.15, 0, -2.2)} scale={0.72} rotationY={EAST} animation="idle" face="uneasy" />
-          <Block position={SPOT.at(3.15, -0.9, -2.0)} size={[0.5, 0.5, 0.24]} color="#3f6fb8" />
+          <Hero position={SPOT.door} rotationY={EAST} animation="idle" face="uneasy" />
+          <Block position={SPOT.at(3.6, 0.62, -2.75)} size={[0.44, 0.5, 0.22]} color="#3f6fb8" />
         </>
       ),
     },
@@ -103,7 +103,7 @@ export const scene1 = storyScene(timing, {
       note: "The rule, said over a door closing: THE look of the power for the whole film is a door.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(2.2, 0, -2.0)} rotationY={EAST} animation="walk" animDistance={1.5} face="calm" />
+          <Hero position={SPOT.door} rotationY={EAST} animation="walk" animDistance={0.9} face="calm" />
         </>
       ),
     },
@@ -193,32 +193,29 @@ export const scene1 = storyScene(timing, {
     {
       // The kitchen table from above: five place settings, four chairs pulled out.
       cue: "3.five",
-      ...cam.push({ on: [0.10, 0.70, 79.60], dist: 3.25, to: 2.70, yaw: -36, pitch: 29, fov: 48 }),
-      zone: "room",
+      ...cam.push({ on: [0.30, 0.70, 160.50], dist: 3.74, to: 3.19, yaw: -39, pitch: 21, fov: 50 }),
+      zone: "kitchen",
       note: "The kitchen table from above: five place settings, four chairs pulled out.",
       stage: (_t) => (
         <>
-          <Block position={R(0, 0.72, -0.2)} size={[2.4, 0.08, 1.3]} color="#b08a5a" />
-          {[[-0.8, -0.6], [-0.2, -0.6], [0.4, -0.6], [1.0, -0.6], [0.1, 0.5]].map(([x, z], i) => (
-            <Block key={i} position={R(x, 0.78, z)} size={[0.34, 0.02, 0.26]} color="#f4f1e8" castShadow={false} />
+          <Player who={9} position={HOME.chair} rotationY={NORTH} animation="sit" />
+          {[[-0.3, 0.55], [0.3, 0.55], [-0.3, 0.95], [0.3, 0.95], [0.3, 1.15]].map(([x, z], i) => (
+            <Block key={i} position={[0.3 + x, 0.775, z]} size={[0.3, 0.016, 0.3]} color="#f7f4ea" castShadow={false} />
           ))}
-          {[-0.8, -0.2, 0.4, 1.0].map((x) => (
-            <Block key={`c${x}`} position={R(x, 0.42, 0.5)} size={[0.36, 0.04, 0.34]} color="#8a6a44" castShadow={false} />
-          ))}
+          <Block position={[0.3, 0.42, 1.35]} size={[0.4, 0.04, 0.36]} color="#8a6a44" castShadow={false} />
         </>
       ),
     },
     {
       // His mum's hands, putting the fifth plate down at an empty space.
       cue: "3.fivea",
-      ...cam.push({ on: [0.10, 0.80, 79.60], dist: 2.31, to: 1.76, yaw: -38, pitch: 9, fov: 36 }),
-      zone: "room",
+      ...cam.push({ on: [0.30, 0.80, 160.60], dist: 2.41, to: 1.86, yaw: -33, pitch: 8, fov: 40 }),
+      zone: "kitchen",
       note: "His mum's hands, putting the fifth plate down at an empty space.",
       stage: (_t) => (
         <>
-          <Block position={R(0, 0.72, -0.2)} size={[2.4, 0.08, 1.3]} color="#b08a5a" />
-          <Block position={R(0.1, 0.78, 0.5)} size={[0.34, 0.02, 0.26]} color="#f4f1e8" castShadow={false} />
-          <Player who={9} position={R(-0.9, 0, 0.5)} rotationY={NORTH} animation="idle" />
+          <Block position={[0.3, 0.775, 1.15]} size={[0.3, 0.016, 0.3]} color="#f7f4ea" castShadow={false} />
+          <Block position={[0.42, 0.86, 1.12]} size={[0.14, 0.04, 0.14]} color="#c8c2b0" castShadow={false} />
         </>
       ),
     },

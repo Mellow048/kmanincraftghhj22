@@ -90,6 +90,12 @@ export const World: React.FC = () => {
         <Dust position={[PLACE.room[0], 1.4, PLACE.room[2] - 0.2]} area={[4.6, 2.4, 4.2]} count={40} size={0.03} color="#cfe0ff" opacity={0.55} seed={5} speed={0.15} />
       </Zone>
 
+      {/* THE KITCHEN AT HOME. The real table, so the tin and the coins are on a table and not on a plank. */}
+      <Zone name="kitchen">
+        <Kitchen at={PLACE.kitchen} />
+        <Dust position={[PLACE.kitchen[0], 1.5, PLACE.kitchen[2] - 0.4]} area={[5.6, 2.4, 4.6]} count={40} size={0.03} color="#fff3d0" opacity={0.5} seed={17} speed={0.14} />
+      </Zone>
+
       {/* THE CANTEEN. Open on the south side, where the lens lives. */}
       <Zone name="lunch">
         <group position={PLACE.lunch}>

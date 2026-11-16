@@ -3,7 +3,7 @@ import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
   Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Teacher, Tray, SubscribeSign, Friend,
-  HALL, R, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
+  HALL, R, HOME, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
 } from "./kit";
 
 /**
@@ -182,9 +182,8 @@ export const scene2 = storyScene(timing, {
       note: "The classroom door, half open, and through the gap something on the teacher's desk.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(2.6, 0, -2.4)} rotationY={EAST} animation="idle" face="uneasy" />
-          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Block position={SPOT.at(-0.2, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
+          <Hero position={SPOT.door} rotationY={EAST} animation="idle" face="uneasy" />
+          <Block position={SPOT.at(2.2, 0.90, -2.85)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
         </>
       ),
     },
@@ -295,9 +294,13 @@ export const scene2 = storyScene(timing, {
       note: "A row of doors down a corridor, each with a little ticket on it.",
       stage: (_t) => (
         <>
-          <Hero position={HALL.at(1.2, 0, 0.6)} rotationY={WEST} animation="walk" animDistance={1.2} face="calm" />
+          <Hero position={HALL.at(0.8, 0, 0.9)} rotationY={WEST} animation="idle" face="calm" />
           {[0, 1, 2, 3, 4].map((i) => (
-            <Block key={i} position={HALL.at(-4.0 + i * 1.6, 1.35, -1.93)} size={[1.0, 1.9, 0.03]} color={["#8a6a44", "#3f6fb8", "#3f8a4f", "#8a6a44", "#c8402f"][i]} castShadow={false} />
+            <group key={i} position={HALL.at(-3.6 + i * 1.7, 0, -1.9)}>
+              <Block size={[1.05, 2.1, 0.08]} color="#6b4d33" />
+              <Block position={[0, 0.05, 0.06]} size={[0.9, 1.9, 0.04]} color={["#8a6a44", "#3f6fb8", "#3f8a4f", "#8a6a44", "#c8402f"][i]} />
+              <Block position={[0, 0.55, 0.1]} size={[0.3, 0.2, 0.02]} color="#f4f1e8" castShadow={false} />
+            </group>
           ))}
         </>
       ),
@@ -311,7 +314,7 @@ export const scene2 = storyScene(timing, {
       stage: (_t) => (
         <>
           {[0, 1, 2].map((i) => (
-            <Block key={i} position={HALL.at(-1.2 + i * 1.2, 1.5, -1.9)} size={[0.3, 0.2, 0.02]} color="#f4f1e8" castShadow={false} />
+            <Block key={i} position={HALL.at(-1.2 + i * 1.2, 1.5, -1.88)} size={[0.3, 0.2, 0.02]} color="#f4f1e8" castShadow={false} />
           ))}
         </>
       ),

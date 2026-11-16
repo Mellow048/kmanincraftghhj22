@@ -1,7 +1,7 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { KID, TELLER, classroom, lunchRoom, wordClock } from "../../../Topics/WhatIf";
+import { KID, TELLER, classroom, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
 import timingJson from "./timing.json";
 
 /**
@@ -55,6 +55,8 @@ export const PLACE = {
   yard: [-24, 0, 0] as Vec3,
   /** The street outside his house. */
   drive: [24, 0, 60] as Vec3,
+  /** The kitchen at home, where the tin is kept. */
+  kitchen: [0, 0, 160] as Vec3,
 };
 /** The classroom's desks, board and door: `SPOT.seat(col, row)`, `SPOT.teacher`, `SPOT.board`… */
 export const SPOT = classroom(PLACE.class);
@@ -94,3 +96,6 @@ export const SHOP = { at: (x: number, y: number, z: number): Vec3 => [PLACE.shop
 export const YARD = { at: (x: number, y: number, z: number): Vec3 => [PLACE.yard[0] + x, PLACE.yard[1] + y, PLACE.yard[2] + z] };
 /** The street outside his house: the front door at z = -2.6, the road at z = +5. */
 export const DRIVE = { at: (x: number, y: number, z: number): Vec3 => [PLACE.drive[0] + x, PLACE.drive[1] + y, PLACE.drive[2] + z] };
+
+/** The kitchen at home: `HOME.chair` (where he sits), `HOME.table` (the middle of it), `HOME.stove`. */
+export const HOME = kitchen(PLACE.kitchen);
