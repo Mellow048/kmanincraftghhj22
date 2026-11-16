@@ -1,7 +1,7 @@
 # Narration — In This Town, Me and My Shadow Don't Get Along
 
 **Status: DRAFT 1, for the owner to read. Not approved, not recorded.** Nothing is built until the owner approves
-the script. 62 shots, 489 words, 115.4 seconds estimated at 256 words a minute, median shot 1.80 s.
+the script. 63 shots, 499 words, 117.7 seconds estimated at 256 words a minute, median shot 1.80 s.
 
 It keeps his outline in his order: classroom, hallway, cafeteria, prom; the shadow fearless and the boy scared; the
 best friend fed up; the night something is different; the ask; the yes; the shadow joining him again. What the
@@ -46,7 +46,7 @@ What is planted, and where it pays off:
 
 | Planted | Pays off |
 |---|---|
-| "Mine had a mind of its own" (1.own) | It never had a mind of its own: it had his (14.real, 14.mine) |
+| "My shadow had a mind of its own" (1.own) | It never had a mind of its own: it had his (14.real, 14.mine) |
 | It is not scared of anything; he is scared of everything (1.brave, 1.me) | It is the part of him with the fear taken out (14.part) |
 | The janitor: "you keep letting it do the brave parts" (7.ans) | He stops letting it, and it goes back under his shoes (12.floor) |
 | "Whose shadow is it, if it does all the living?" (8.q) | He answers it on the dance floor by living it himself (12.ask) |
@@ -55,9 +55,10 @@ What is planted, and where it pays off:
 
 ```narration
 # clip 01-hook
-[1.copy]     In this town, everybody's shadow copies them.
-[1.own]      Mine had a mind of its own.
-[1.brave]    It was not scared of anything.
+[1.title]    In this town, me and my shadow do not get along.
+[1.own]      My shadow had a mind of its own.
+[1.copy]     Everybody else's shadow copied them.
+[1.brave]    Mine was not scared of anything.
 [1.me]       I was scared of everything.
 
 # clip 02-mysteries
