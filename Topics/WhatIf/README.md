@@ -132,6 +132,8 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
 | `things.tsx` | Dog, DogBowl, Tray, Cup, Sandwich, Cookie, CookieStack, Eraser, Card, Tie |
 | `powers.tsx` | Overhead, Aura, Echo, Streaks, Swirl, Countdown, Beam |
 | `cast.tsx` | Twelve classmates, and a teacher |
+| `teller.tsx` | Who tells a film of this topic: `HERO` (his clothes and colour) and `TellerHair` (his cut). Every film's `Hero` is built from it, so he is the same kid in all of them |
+| `design/teller.png` | The teller's cut from the front, the back, the side and three-quarters, and the source that rebuilds the picture |
 | `template/` | The starter film that `npm run new -- … --topic what-if` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
 | `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. The film is built and waiting for him. What to do when he approves it |

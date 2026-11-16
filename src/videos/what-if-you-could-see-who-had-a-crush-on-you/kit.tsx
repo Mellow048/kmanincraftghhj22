@@ -1,7 +1,7 @@
 import type React from "react";
 import { Block, MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { Bits, Classmate, DEG, KID, NORTH, Overhead, Teacher, Tie, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
+import { Bits, Classmate, DEG, HERO, KID, NORTH, Overhead, TellerHair, Teacher, Tie, classroom, gym, kitchen, lunchRoom, wordClock } from "../../../Topics/WhatIf";
 import timingJson from "./timing.json";
 
 /**
@@ -21,6 +21,8 @@ export {
   Classroom, Desk, Gym, Kitchen, LunchRoom, Reflection, SchoolHall,
   // the small things
   Card, Cookie, CookieStack, Cup, Dog, DogBowl, Eraser, Sandwich, Tie, Tray,
+  // the teller's look: his clothes, and his cut. His colour is HIS: nobody else in a film wears it
+  HERO, TellerHair,
   // shared with the other topics: a kid's bedroom, cubes that spell, a speech bubble, the last picture
   BedBox, Bits, Bubble, Figure, Icon, Puffs, Room, SoundRings, SubscribeSign,
   // staging: when a word is said, how a thing pops in, where "in front of him" is
@@ -170,10 +172,14 @@ type A = Partial<MinecraftAvatarProps>;
 /**
  * The teller: a kid, first person, in most of the shots. ORANGE, and nobody else in the film wears it,
  * so a phone can find him in a full lunch room.
+ *
+ * His cut is the topic's, `HERO` + `TellerHair` in the pack: swept to one side, in warm near-black, so a
+ * shot from BEHIND says it is him (his Dad has the same face and skin, and a film that ends the way this one
+ * does needs the back of a head to be enough). Not the flat brown cube cut of In This Town's teller.
  * Faces for a kid: smile grin laugh frown uneasy brave fear wow ouch calm. Change the face on the cut.
  */
 export const Hero: React.FC<A> = (p) => (
-  <MinecraftAvatar scale={KID} outfit="tee" skin="#dba47c" hair="#3a2415" colors={{ torso: "#ff7a1a", arms: "#ff7a1a", legs: "#2b2f6a" }} blink {...p} />
+  <MinecraftAvatar scale={KID} outfit="tee" skin={HERO.skin} hair={HERO.hair} colors={{ torso: HERO.torso, arms: HERO.arms, legs: HERO.legs }} blink head={<TellerHair />} {...p} />
 );
 
 /** Two bunches of hair, tied with yellow: Jo can be told from behind, and from the far end of a path at night. */

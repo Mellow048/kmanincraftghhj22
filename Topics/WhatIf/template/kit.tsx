@@ -1,7 +1,7 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { KID, classroom, wordClock } from "../../../Topics/WhatIf";
+import { HERO, KID, TellerHair, classroom, wordClock } from "../../../Topics/WhatIf";
 import timingJson from "./timing.json";
 
 /**
@@ -15,8 +15,8 @@ import timingJson from "./timing.json";
 export {
   // how a power is shown
   Aura, Beam, Countdown, Echo, Overhead, Streaks, Swirl,
-  // the people round the teller
-  Classmate, KIDS, Teacher,
+  // the people round the teller, and his own look
+  Classmate, HERO, KIDS, Teacher, TellerHair,
   // the school
   Chalkboard, Classroom, Desk, SchoolHall, classroom,
   // where a story goes when it leaves the classroom, and a function for the places in each (PACK.md)
@@ -58,12 +58,13 @@ export const ME = SPOT.seat(1, 2);
 type A = Partial<MinecraftAvatarProps>;
 
 /**
- * The teller: a kid, first person, in most of the shots. Give him ONE loud colour nobody else in the film wears,
- * so a phone can find him in a full classroom.
+ * The teller: a kid, first person, in most of the shots. His clothes and his cut come from the pack (`HERO` and
+ * `TellerHair`, PACK.md), so every film of the topic is the same boy and no two invent him again.
+ * Keep ONE loud colour nobody else in the film wears, so a phone can find him in a full classroom.
  * Faces for a kid: smile grin laugh frown uneasy brave fear wow ouch calm. Change the face on the cut.
  */
 export const Hero: React.FC<A> = (p) => (
-  <MinecraftAvatar scale={KID} outfit="tee" skin="#dba47c" hair="#3a2415" colors={{ torso: "#ff7a1a", arms: "#ff7a1a", legs: "#2b2f6a" }} blink {...p} />
+  <MinecraftAvatar scale={KID} outfit="tee" skin={HERO.skin} hair={HERO.hair} colors={{ torso: HERO.torso, arms: HERO.arms, legs: HERO.legs }} blink head={<TellerHair />} {...p} />
 );
 
 /** The best friend: the one who is told first, and the one who says stop. A second colour, quieter than the teller's. */
