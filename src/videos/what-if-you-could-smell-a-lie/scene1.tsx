@@ -108,12 +108,12 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.limit",
-      ...cam.push(fit({ on: A("kitchen", -2.0, 0.95, 0.1), dist: 3.3, to: 3.0, yaw: -60, pitch: 8, fov: 48 })),
+      ...cam.push(fit({ on: A("kitchen", -0.9, 1.0, 0.3), dist: 3.2, to: 3.0, yaw: 4, pitch: 9, fov: 48 })),
       zone: "kitchen",
       note: "Him, in the tall mirror, saying something out loud. Nothing comes off his mouth. The limit, shown as an absence.",
       stage: () => (
         <>
-          <Hero position={A("kitchen", -2.3, 0, 0.1)} rotationY={-Math.PI / 2} animation="idle" face="calm" />
+          <Hero position={A("kitchen", -0.9, 0, 0.3)} rotationY={0} animation="talk" face="calm" />
         </>
       ),
     },

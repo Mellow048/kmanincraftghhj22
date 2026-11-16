@@ -74,17 +74,17 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "13.not",
-      ...cam.push(fit({ on: SPOT.at(2.3, 1.3, -2.2), dist: 2.2, to: 1.95, yaw: 6, pitch: 4, fov: 40 })),
+      ...cam.push(fit({ on: SPOT.at(2.1, 1.1, -2.1), dist: 3.2, to: 3.0, yaw: -24, pitch: 9, fov: 48 })),
       zone: "class",
       note: "His mum, still in the door, still holding it. Nobody was lying to hurt him.",
       stage: () => <Mum position={SPOT.at(2.4, 0, -2.4)} rotationY={Math.PI * 0.95} animation="talk" face="sad" />,
     },
     {
       cue: "13.mine",
-      ...cam.push(fit({ on: A("kitchen", -2.0, 0.95, 0.1), dist: 3.3, to: 3.0, yaw: -60, pitch: 8, fov: 48 })),
+      ...cam.push(fit({ on: A("kitchen", -0.9, 1.0, 0.3), dist: 3.2, to: 3.0, yaw: 4, pitch: 9, fov: 48 })),
       zone: "kitchen",
       note: "The mirror again, the same frame as the limit in act one. Nothing off his own mouth, ever.",
-      stage: () => <Hero position={A("kitchen", -2.3, 0, 0.1)} rotationY={-Math.PI / 2} animation="idle" face="ouch" />,
+      stage: () => <Hero position={A("kitchen", -0.9, 0, 0.3)} rotationY={0} animation="idle" face="ouch" />,
     },
     {
       cue: "13.mum",
