@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Lava Lamp — a tiny WebGL toy</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #05050a; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #f2f2f7; }
+  #gl { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+  #gl.dragging { cursor: grabbing; }
+  header { position: fixed; top: 22px; left: 26px; pointer-events: none; user-select: none; }
+  header h1 { margin: 0; font-size: 15px; font-weight: 800; letter-spacing: .42em; }
+  header p { margin: 7px 0 0; font-size: 12px; letter-spacing: .04em; opacity: .62; }
+  #panel {
+    position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;
+    max-width: min(94vw, 640px); padding: 10px 18px;
+    background: rgba(10, 10, 18, .55); border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 999px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  }
+  .group { display: flex; align-items: center; gap: 9px; }
+  .swatch {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .25); padding: 0; cursor: pointer;
+    transition: transform .15s, border-color .15s;
+  }
+  .swatch:hover { transform: scale(1.12); }
+  .swatch.active { border-color: #fff; transform: scale(1.12); }
+  .sliderGroup label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  input[type=range] { width: 110px; accent-color: #e93fd8; cursor: pointer; }
+  .iconBtn {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .16); background: rgba(255, 255, 255, .07);
+    color: #fff; font-size: 14px; cursor: pointer; display: grid; place-items: center;
+    transition: background .15s, transform .15s;
+  }
+  .iconBtn:hover { background: rgba(255, 255, 255, .16); }
+  .iconBtn.active { background: rgba(255, 255, 255, .28); }
+  #fallback { position: fixed; inset: 0; display: grid; place-items: center; background: #05050a; z-index: 10; }
+  #fallback[hidden] { display: none; }
+  #fallback .card {
+    max-width: 420px; padding: 26px 28px; margin: 0 16px;
+    border: 1px solid rgba(255, 255, 255, .14); border-radius: 16px;
+    background: rgba(255, 255, 255, .05); text-align: center;
+  }
+  #fallback h2 { margin: 0 0 10px; font-size: 18px; }
+  #fallback p { margin: 0; font-size: 14px; line-height: 1.55; opacity: .8; }
+  @media (max-width: 560px) {
+    header { left: 18px; top: 16px; }
+    header p { display: none; }
+    input[type=range] { width: 84px; }
+  }
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+
+<header>
+  <h1>LAVA&nbsp;LAMP</h1>
+  <p>Drag to orbit &middot; Scroll to zoom &middot; Click the lamp to shake it</p>
+</header>
+
+<div id="panel">
+  <div class="group" id="swatches" role="radiogroup" aria-label="Lava colour"></div>
+  <div class="group sliderGroup">
+    <label for="heat">Heat</label>
+    <input type="range" id="heat" min="0" max="100" value="55" aria-label="Heat">
+  </div>
+  <div class="group">
+    <button class="iconBtn" id="btnPause" aria-label="Pause" title="Pause (Space)">&#10074;&#10074;</button>
+    <button class="iconBtn active" id="btnRotate" aria-label="Auto-rotate" title="Auto-rotate (R)">&#10227;</button>
+    <button class="iconBtn" id="btnShake" aria-label="Shake" title="Shake (S)">&#10022;</button>
+  </div>
+</div>
+
+<div id="fallback" hidden>
+  <div class="card">
+    <h2>This lava lamp needs WebGL2</h2>
+    <p>Your browser could not create a WebGL2 context, so the lamp cannot start. Try a recent version of Chrome, Edge, Firefox or Safari with hardware acceleration enabled.</p>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   LAVA LAMP — a tiny raymarched lava lamp in a single file.
+   No dependencies, no network requests. Open this file in any
+   modern browser and it just runs.
+
+   How it works:
+   - The whole scene (glass flask, metal base, table, lava
+     blobs) is a set of signed-distance functions raymarched
+     in a fragment shader. The lava is a smooth-min union of
+     spheres, so blobs stretch, merge and split like real wax.
+   - A small physics sim (below) moves the blobs: they heat up
+     at the bottom, rise, cool at the top and sink again.
+   - The glass is rendered with fresnel blending over whatever
+     the ray hits behind it.
+   ============================================================ */
+
+/* ---------- Blob simulation (pure JS, no DOM) ---------- */
+// === SIM START ===
+const MAX_BLOBS = 12;
+
+function smin(a, b, k) {
+  const h = Math.min(1, Math.max(0, 0.5 + 0.5 * (b - a) / k));
+  return b * (1 - h) + a * h - k * h * (1 - h);
+}
+function sdSphere(x, y, z, cx, cy, cz, r) {
+  const dx = x - cx, dy = y - cy, dz = z - cz;
+  return Math.sqrt(dx * dx + dy * dy + dz * dz) - r;
+}
+function sdCapsule(x, y, z, ax, ay, az, bx, by, bz, r) {
+  const abx = bx - ax, aby = by - ay, abz = bz - az;
+  const t = Math.min(1, Math.max(0,
+    ((x - ax) * abx + (y - ay) * aby + (z - az) * abz) / (abx * abx + aby * aby + abz * abz)));
+  const dx = x - (ax + abx * t), dy = y - (ay + aby * t), dz = z - (az + abz * t);
+  return Math.sqrt(dx * dx + dy * dy + dz * dz) - r;
+}
+// Must match the flask SDF in the fragment shader below.
+function flaskSDF(x, y, z) {
+  let d = sdSphere(x, y, z, 0, 1.02, 0, 0.80);
+  d = smin(d, sdSphere(x, y, z, 0, 1.88, 0, 0.60), 0.38);
+  d = smin(d, sdSphere(x, y, z, 0, 2.52, 0, 0.38), 0.30);
+  d = smin(d, sdCapsule(x, y, z, 0, 2.52, 0, 0, 3.02, 0, 0.29), 0.25);
+  d = smin(d, sdSphere(x, y, z, 0, 3.06, 0, 0.27), 0.25);
+  d = Math.max(d, 0.54 - y);
+  return d;
+}
+function flaskRadiusAt(y) {
+  if (flaskSDF(0, y, 0) > 0) return 0;
+  let lo = 0, hi = 1.3;
+  for (let i = 0; i < 24; i++) {
+    const mid = (lo + hi) / 2;
+    if (flaskSDF(mid, y, 0) < 0) lo = mid; else hi = mid;
+  }
+  return lo;
+}
+
+function makeBlob(x, y, z, r) {
+  return {
+    x, y, z, r, vx: 0, vy: 0, vz: 0,
+    temp: 1, state: "rest",
+    phase: Math.random() * Math.PI * 2,
+    restT: Math.random() * 2,
+    buoy: 0.8 + Math.random() * 0.4, // personal buoyancy: blobs rise at different speeds
+    mergeCd: 0, // cooldown after a merge so one blob cannot vacuum up the whole column
+  };
+}
+const blobs = [];
+function initBlobs() {
+  blobs.length = 0;
+  for (let i = 0; i < MAX_BLOBS; i++) {
+    const b = makeBlob(
+      (Math.random() - 0.5) * 0.4,
+      0.85 + Math.random() * 1.85,
+      (Math.random() - 0.5) * 0.4,
+      0.15 + Math.random() * 0.13);
+    b.state = Math.random() < 0.5 ? "rise" : "sink";
+    b.temp = 0.4 + Math.random() * 0.6;
+    blobs.push(b);
+  }
+  for (let i = 0; i < 3; i++) {
+    const b = blobs[i];
+    b.x = (Math.random() - 0.5) * 0.5;
+    b.z = (Math.random() - 0.5) * 0.5;
+    b.y = 0.78;
+    b.r = 0.24 + Math.random() * 0.08;
+    b.state = "rest";
+    b.temp = 1;
+  }
+}
+function splitBlob(b) {
+  const s = blobs.find((o) => o !== b && o.state === "rest");
+  if (!s) return;
+  b.r *= 0.72;
+  s.x = b.x + (Math.random() - 0.5) * 0.1;
+  s.z = b.z + (Math.random() - 0.5) * 0.1;
+  s.y = Math.min(b.y + 0.18, 2.9);
+  s.r = b.r;
+  s.vy = b.vy;
+  s.temp = b.temp;
+  s.state = "rise";
+}
+function stepBlobs(dt, heat) {
+  const buoy = 0.18 + heat * 1.05;
+  for (const b of blobs) {
+    b.phase += dt * 2.2;
+    if (b.mergeCd > 0) b.mergeCd -= dt;
+    if (b.state === "rest") {
+      b.temp = 1;
+      b.vy = 0;
+      b.restT -= dt * (0.8 + heat * 1.6);
+      if (b.restT <= 0) {
+        b.state = "rise";
+        b.vy = 0.22;
+        b.vx += (Math.random() - 0.5) * 0.3;
+        b.vz += (Math.random() - 0.5) * 0.3;
+      }
+    } else if (b.state === "rise") {
+      b.vy += buoy * b.buoy * dt;
+      b.vy *= Math.max(0, 1 - 1.1 * dt);
+      // bigger blobs rise slower
+      const cap = Math.min(1.1, Math.max(0.35, (0.55 + heat * 0.5) * (0.24 / b.r)));
+      b.vy = Math.min(b.vy, cap);
+      if (b.y > 2.35) {
+        // cool zone near the top: wax cools, gets heavy, sinks back
+        b.temp -= dt * 0.75;
+        if (b.temp < 0.30) b.state = "sink";
+      } else {
+        b.temp += (1 - b.temp) * dt * 0.6;
+      }
+      if (b.r > 0.32 && Math.random() < dt * 0.25) splitBlob(b);
+    } else { // sink
+      b.vy -= 0.85 * dt;
+      b.vy = Math.max(b.vy, -0.5);
+      if (b.y < 1.1) b.temp += (1 - b.temp) * dt * 0.8;
+      if (b.y < 0.88) {
+        b.state = "rest"; b.temp = 1; b.vy = 0;
+        b.restT = 0.4 + Math.random() * 1.6;
+      }
+    }
+    // gentle sideways wobble
+    b.vx += Math.sin(b.phase * 1.7) * 0.18 * dt;
+    b.vz += Math.cos(b.phase * 1.3) * 0.18 * dt;
+    b.vx *= Math.max(0, 1 - 1.5 * dt);
+    b.vz *= Math.max(0, 1 - 1.5 * dt);
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+    b.z += b.vz * dt;
+    // keep the blob inside the flask
+    const maxR = Math.max(0.05, flaskRadiusAt(b.y) - b.r * 0.8);
+    const rad = Math.hypot(b.x, b.z);
+    if (rad > maxR && rad > 1e-6) {
+      const s = maxR / rad;
+      b.x *= s;
+      b.z *= s;
+    }
+    if (b.y < 0.72 + b.r * 0.4) b.y = 0.72 + b.r * 0.4;
+    if (b.y > 2.90) b.y = 2.90;
+  }
+  // merges: a rising/sinking blob that gets close to another is absorbed
+  for (let i = 0; i < blobs.length; i++) {
+    for (let j = i + 1; j < blobs.length; j++) {
+      const a = blobs[i], c = blobs[j];
+      if (a.state === "rest" || c.state === "rest") continue;
+      if (a.mergeCd > 0 || c.mergeCd > 0) continue;
+      const dx = a.x - c.x, dy = a.y - c.y, dz = a.z - c.z;
+      const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      if (dist < (a.r + c.r) * 0.50) {
+        const big = a.r >= c.r ? a : c;
+        const small = a.r >= c.r ? c : a;
+        big.r = Math.min(0.42, Math.cbrt(big.r ** 3 + small.r ** 3) * 1.04);
+        big.temp = (big.temp + small.temp) / 2;
+        big.mergeCd = 1.5;
+        small.x = (Math.random() - 0.5) * 0.5;
+        small.z = (Math.random() - 0.5) * 0.5;
+        small.y = 0.78;
+        small.r = 0.16 + Math.random() * 0.1;
+        small.vx = small.vy = small.vz = 0;
+        small.state = "rest";
+        small.temp = 1;
+        small.restT = 0.3 + Math.random() * 1.2;
+      }
+    }
+  }
+}
+function shakeBlobs() {
+  for (const b of blobs) {
+    if (b.state !== "rest") {
+      b.vx += (Math.random() - 0.5) * 1.2;
+      b.vz += (Math.random() - 0.5) * 1.2;
+      b.vy += Math.random() * 0.6;
+    }
+  }
+}
+// === SIM END ===
+
+/* ---------- Palettes & state ---------- */
+const PALETTES = [
+  { name: "Magenta", hot: [1.00, 0.62, 0.92], mid: [0.91, 0.25, 0.85], cool: [0.42, 0.08, 0.55] },
+  { name: "Ocean",   hot: [0.62, 0.90, 1.00], mid: [0.16, 0.60, 0.98], cool: [0.03, 0.16, 0.55] },
+  { name: "Toxic",   hot: [0.90, 1.00, 0.60], mid: [0.45, 1.00, 0.10], cool: [0.08, 0.35, 0.10] },
+  { name: "Sunset",  hot: [1.00, 0.88, 0.50], mid: [1.00, 0.55, 0.05], cool: [0.60, 0.15, 0.03] },
+  { name: "Lagoon",  hot: [0.65, 1.00, 0.92], mid: [0.00, 0.90, 1.00], cool: [0.00, 0.30, 0.38] },
+];
+let palette = PALETTES[0];
+let heat = 0.55;
+let paused = false;
+let autoRotate = true;
+let glowPulse = 0;
+
+/* ---------- Shaders ---------- */
+const VERT = `#version 300 es
+layout(location = 0) in vec2 aPos;
+out vec2 vUv;
+void main() {
+  vUv = aPos * 0.5 + 0.5;
+  gl_Position = vec4(aPos, 0.0, 1.0);
+}
+`;
+
+const FRAG = `#version 300 es
+precision highp float;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+uniform vec2 uRes;
+uniform float uTime;
+uniform vec3 uCamPos;
+uniform vec3 uCamTarget;
+uniform vec3 uHot;
+uniform vec3 uMid;
+uniform vec3 uCool;
+uniform float uGlow;
+uniform vec4 uBlobs[16];
+uniform vec4 uBlobData[16];
+uniform int uBlobCount;
+
+const int MAXB = 16;
+const int MAT_NONE = 0;
+const int MAT_TABLE = 1;
+const int MAT_BASE = 2;
+const int MAT_GLASS = 3;
+const int MAT_LAVA = 4;
+const int MAT_CAP = 5;
+
+float smin(float a, float b, float k) {
+    float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+    return mix(b, a, h) - k * h * (1.0 - h);
+}
+
+float sdSphere(vec3 p, vec3 c, float r) {
+    return length(p - c) - r;
+}
+
+float sdCapsule(vec3 p, vec3 a, vec3 b, float r) {
+    vec3 pa = p - a;
+    vec3 ba = b - a;
+    float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+    return length(pa - ba * h) - r;
+}
+
+float sdCylY(vec3 p, float r, float y0, float y1) {
+    vec2 d = vec2(length(p.xz) - r, abs(p.y - (y0 + y1) * 0.5) - (y1 - y0) * 0.5);
+    return min(max(d.x, d.y), 0.0) + length(max(d, vec2(0.0)));
+}
+
+float flaskSDF(vec3 p) {
+    float d = sdSphere(p, vec3(0.0, 1.02, 0.0), 0.80);
+    d = smin(d, sdSphere(p, vec3(0.0, 1.88, 0.0), 0.60), 0.38);
+    d = smin(d, sdSphere(p, vec3(0.0, 2.52, 0.0), 0.38), 0.30);
+    d = smin(d, sdCapsule(p, vec3(0.0, 2.52, 0.0), vec3(0.0, 3.02, 0.0), 0.29), 0.25);
+    d = smin(d, sdSphere(p, vec3(0.0, 3.06, 0.0), 0.27), 0.25);
+    d = max(d, 0.54 - p.y);
+    return d;
+}
+
+float baseSDF(vec3 p) {
+    float d = sdCylY(p, 0.72, 0.0, 0.30);
+    d = min(d, sdCylY(p, 0.62, 0.30, 0.48));
+    d = min(d, sdCylY(p, 0.50, 0.48, 0.58));
+    float ring = length(vec2(length(p.xz) - 0.72, p.y - 0.30)) - 0.035;
+    d = min(d, ring);
+    return d;
+}
+
+float capSDF(vec3 p) {
+    float d = sdCylY(p, 0.17, 3.24, 3.40);
+    d = min(d, sdSphere(p, vec3(0.0, 3.44, 0.0), 0.11));
+    return d;
+}
+
+float lavaSDF(vec3 p, float glassD) {
+    float d = 1000.0;
+    for (int i = 0; i < MAXB; i++) {
+        if (i < uBlobCount) {
+            float di = length(p - uBlobs[i].xyz) - uBlobs[i].w;
+            d = (i == 0) ? di : smin(d, di, 0.28);
+        }
+    }
+    d += 0.022 * sin(p.x * 7.0 + uTime * 0.9) * sin(p.y * 6.0 - uTime * 0.7) * sin(p.z * 7.0 + uTime * 0.8);
+    d = max(d, glassD + 0.015);
+    return d;
+}
+
+vec2 mapScene(vec3 p, bool withGlass) {
+    vec2 res = vec2(1000.0, float(MAT_NONE));
+    float dt = p.y;
+    if (dt < res.x) res = vec2(dt, float(MAT_TABLE));
+    float db = baseSDF(p);
+    if (db < res.x) res = vec2(db, float(MAT_BASE));
+    float dc = capSDF(p);
+    if (dc < res.x) res = vec2(dc, float(MAT_CAP));
+    float dg = flaskSDF(p);
+    if (withGlass && dg < res.x) res = vec2(dg, float(MAT_GLASS));
+    float dl = lavaSDF(p, dg);
+    if (dl < res.x) res = vec2(dl, float(MAT_LAVA));
+    return res;
+}
+
+float sdfFor(vec3 p, int mat) {
+    if (mat == MAT_TABLE) return p.y;
+    if (mat == MAT_BASE) return baseSDF(p);
+    if (mat == MAT_CAP) return capSDF(p);
+    if (mat == MAT_GLASS) return flaskSDF(p);
+    if (mat == MAT_LAVA) return lavaSDF(p, flaskSDF(p));
+    return 1000.0;
+}
+
+vec2 march(vec3 ro, vec3 rd, bool withGlass, float t0) {
+    float t = t0;
+    for (int i = 0; i < 72; i++) {
+        vec3 p = ro + rd * t;
+        vec2 h = mapScene(p, withGlass);
+        if (h.x < 0.0012 * t + 0.0006) return vec2(t, h.y);
+        t += h.x * 0.85;
+        if (t > 30.0) break;
+    }
+    return vec2(-1.0, float(MAT_NONE));
+}
+
+vec3 calcNormal(vec3 p, int mat) {
+    vec2 e = vec2(1.0, -1.0) * 0.0012;
+    return normalize(e.xyy * sdfFor(p + e.xyy, mat)
+                   + e.yyx * sdfFor(p + e.yyx, mat)
+                   + e.yxy * sdfFor(p + e.yxy, mat)
+                   + e.xxx * sdfFor(p + e.xxx, mat));
+}
+
+vec3 bgColor(vec3 rd) {
+    float h = clamp(rd.y * 0.5 + 0.5, 0.0, 1.0);
+    vec3 col = mix(vec3(0.012, 0.010, 0.028), vec3(0.055, 0.050, 0.095), pow(h, 1.6));
+    vec3 backDir = normalize(vec3(0.0, 0.30, -1.0));
+    float g = pow(max(dot(rd, backDir), 0.0), 5.0);
+    col += uMid * g * 0.16 * uGlow;
+    return col;
+}
+
+vec3 shadeTable(vec3 p, vec3 n, vec3 rd) {
+    vec3 key = normalize(vec3(0.6, 0.9, 0.4));
+    float dif = max(dot(n, key), 0.0);
+    vec3 col = vec3(0.035, 0.030, 0.040) * (0.35 + 0.65 * dif);
+    float d = length(p.xz);
+    col += uMid * exp(-d * 1.7) * 0.30 * uGlow;
+    col *= 0.5 + 0.5 * smoothstep(0.55, 1.7, d);
+    return col;
+}
+
+vec3 shadeMetal(vec3 p, vec3 n, vec3 rd, vec3 baseCol) {
+    vec3 V = -rd;
+    vec3 key = normalize(vec3(0.7, 0.8, 0.5));
+    vec3 H = normalize(key + V);
+    float spec = pow(max(dot(n, H), 0.0), 64.0);
+    float dif = max(dot(n, key), 0.0);
+    vec3 col = baseCol * (0.22 + 0.78 * dif);
+    col += vec3(1.0, 0.96, 0.88) * spec * 0.85;
+    vec3 L2 = normalize(vec3(0.0, 0.95, 0.0) - p);
+    col += uMid * max(dot(n, L2), 0.0) * 0.22 * uGlow;
+    float ringBand = (1.0 - smoothstep(0.02, 0.05, abs(p.y - 0.30)))
+                   * (1.0 - smoothstep(0.02, 0.06, abs(length(p.xz) - 0.72)));
+    col += uMid * ringBand * 1.6 * uGlow;
+    return col;
+}
+
+vec3 lavaPalette(float t) {
+    vec3 c = mix(uCool, uMid, smoothstep(0.0, 0.6, t));
+    c = mix(c, uHot, smoothstep(0.55, 1.0, t));
+    return c;
+}
+
+vec3 shadeLava(vec3 p, vec3 n, vec3 rd) {
+    float best = 1000.0;
+    float temp = 0.5;
+    for (int i = 0; i < MAXB; i++) {
+        if (i < uBlobCount) {
+            float di = length(p - uBlobs[i].xyz) - uBlobs[i].w;
+            if (di < best) {
+                best = di;
+                temp = uBlobData[i].x;
+            }
+        }
+    }
+    vec3 base = lavaPalette(temp);
+    float fres = pow(1.0 - max(dot(n, -rd), 0.0), 2.0);
+    vec3 col = base * (0.5 + 0.85 * temp) * uGlow;
+    col += uHot * fres * 0.30 * uGlow;
+    vec3 key = normalize(vec3(0.5, 0.8, 0.6));
+    col += base * max(dot(n, key), 0.0) * 0.22;
+    return col;
+}
+
+vec3 shadeGlass(vec3 p, vec3 n, vec3 rd, vec3 behind) {
+    vec3 V = -rd;
+    float ndv = max(dot(n, V), 0.0);
+    float fres = 0.035 + 0.965 * pow(1.0 - ndv, 5.0);
+    vec3 key = normalize(vec3(0.7, 0.8, 0.5));
+    vec3 H = normalize(key + V);
+    float spec = pow(max(dot(n, H), 0.0), 140.0);
+    vec3 tint = vec3(0.72, 0.84, 0.90);
+    vec3 col = mix(behind * 0.94, tint, clamp(fres * 1.35, 0.0, 1.0));
+    col += vec3(1.0) * spec * 0.7;
+    return col;
+}
+
+void main() {
+    vec2 uv = (2.0 * vUv - 1.0) * vec2(uRes.x / uRes.y, 1.0);
+    vec3 fw = normalize(uCamTarget - uCamPos);
+    vec3 rt = normalize(cross(fw, vec3(0.0, 1.0, 0.0)));
+    vec3 up = cross(rt, fw);
+    vec3 rd = normalize(uv.x * rt + uv.y * up + 2.0 * fw);
+    vec3 ro = uCamPos;
+
+    vec3 col = bgColor(rd);
+    vec2 hit = march(ro, rd, true, 0.0);
+    if (hit.x > 0.0) {
+        vec3 p = ro + rd * hit.x;
+        int mat = int(hit.y + 0.5);
+        if (mat == MAT_GLASS) {
+            vec3 n = calcNormal(p, MAT_GLASS);
+            vec2 hit2 = march(ro, rd, false, hit.x + 0.03);
+            vec3 behind = bgColor(rd);
+            if (hit2.x > 0.0) {
+                vec3 p2 = ro + rd * hit2.x;
+                int m2 = int(hit2.y + 0.5);
+                vec3 n2 = calcNormal(p2, m2);
+                if (m2 == MAT_LAVA) behind = shadeLava(p2, n2, rd);
+                else if (m2 == MAT_TABLE) behind = shadeTable(p2, n2, rd);
+                else if (m2 == MAT_BASE) behind = shadeMetal(p2, n2, rd, vec3(0.22, 0.22, 0.25));
+                else if (m2 == MAT_CAP) behind = shadeMetal(p2, n2, rd, vec3(0.30, 0.30, 0.32));
+            }
+            col = shadeGlass(p, n, rd, behind);
+        } else {
+            vec3 n = calcNormal(p, mat);
+            if (mat == MAT_LAVA) col = shadeLava(p, n, rd);
+            else if (mat == MAT_TABLE) col = shadeTable(p, n, rd);
+            else if (mat == MAT_BASE) col = shadeMetal(p, n, rd, vec3(0.22, 0.22, 0.25));
+            else if (mat == MAT_CAP) col = shadeMetal(p, n, rd, vec3(0.30, 0.30, 0.32));
+        }
+    }
+
+    col = col / (1.0 + col);
+    col = pow(col, vec3(0.4545));
+    vec2 q = vUv - 0.5;
+    col *= 1.0 - dot(q, q) * 0.55;
+    fragColor = vec4(col, 1.0);
+}
+`;
+
+/* ---------- WebGL setup & loop ---------- */
+const canvas = document.getElementById("gl");
+const gl = canvas.getContext("webgl2", {
+  antialias: true,
+  alpha: false,
+  powerPreference: "high-performance",
+});
+
+if (!gl) {
+  document.getElementById("fallback").hidden = false;
+} else {
+  main();
+}
+
+function main() {
+  function compile(type, src) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      console.error(gl.getShaderInfoLog(sh));
+      throw new Error("shader compile failed");
+    }
+    return sh;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.error(gl.getProgramInfoLog(prog));
+    document.getElementById("fallback").hidden = false;
+    return;
+  }
+  gl.useProgram(prog);
+
+  const vao = gl.createVertexArray();
+  gl.bindVertexArray(vao);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+  const U = {};
+  for (const name of ["uRes", "uTime", "uCamPos", "uCamTarget", "uHot", "uMid", "uCool", "uGlow", "uBlobCount"]) {
+    U[name] = gl.getUniformLocation(prog, name);
+  }
+  U.uBlobs = gl.getUniformLocation(prog, "uBlobs[0]");
+  U.uBlobData = gl.getUniformLocation(prog, "uBlobData[0]");
+
+  const blobArr = new Float32Array(MAX_BLOBS * 4);
+  const dataArr = new Float32Array(MAX_BLOBS * 4);
+
+  // camera state (spherical around the lamp)
+  const target = [0, 1.55, 0];
+  let theta = 0.55, phi = 1.28, dist = 5.8;
+  let tTheta = theta, tPhi = phi, tDist = dist;
+
+  // resize + adaptive resolution (keeps ~60fps on weak GPUs)
+  let scale = 1;
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5) * scale;
+    canvas.width = Math.max(2, Math.round(canvas.clientWidth * dpr));
+    canvas.height = Math.max(2, Math.round(canvas.clientHeight * dpr));
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  // pointer orbit / zoom / click-to-shake
+  let dragging = false, moved = 0, downAt = 0, lastX = 0, lastY = 0;
+  canvas.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    moved = 0;
+    downAt = performance.now();
+    lastX = e.clientX;
+    lastY = e.clientY;
+    canvas.classList.add("dragging");
+    try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* noop */ }
+  });
+  canvas.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    moved += Math.abs(dx) + Math.abs(dy);
+    tTheta -= dx * 0.005;
+    tPhi = Math.min(1.52, Math.max(0.7, tPhi - dy * 0.005));
+  });
+  canvas.addEventListener("pointerup", () => {
+    dragging = false;
+    canvas.classList.remove("dragging");
+    if (moved < 6 && performance.now() - downAt < 350) {
+      shakeBlobs();
+      glowPulse = 1;
+    }
+  });
+  canvas.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    tDist = Math.min(8.5, Math.max(3.6, tDist * (1 + e.deltaY * 0.001)));
+  }, { passive: false });
+
+  // UI: palette swatches
+  const swatches = document.getElementById("swatches");
+  PALETTES.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.className = "swatch" + (i === 0 ? " active" : "");
+    b.setAttribute("role", "radio");
+    b.setAttribute("aria-label", p.name + " lava");
+    b.title = p.name;
+    const css = (c) => `rgb(${Math.round(c[0] * 255)},${Math.round(c[1] * 255)},${Math.round(c[2] * 255)})`;
+    b.style.background = `linear-gradient(135deg, ${css(p.hot)}, ${css(p.mid)} 55%, ${css(p.cool)})`;
+    b.addEventListener("click", () => {
+      palette = p;
+      swatches.querySelectorAll(".swatch").forEach((s) => s.classList.remove("active"));
+      b.classList.add("active");
+    });
+    swatches.appendChild(b);
+  });
+
+  const heatInput = document.getElementById("heat");
+  heatInput.addEventListener("input", () => { heat = heatInput.value / 100; });
+
+  const btnPause = document.getElementById("btnPause");
+  const btnRotate = document.getElementById("btnRotate");
+  const btnShake = document.getElementById("btnShake");
+  function togglePause() {
+    paused = !paused;
+    btnPause.innerHTML = paused ? "&#9654;" : "&#10074;&#10074;";
+    btnPause.classList.toggle("active", paused);
+  }
+  function toggleRotate() {
+    autoRotate = !autoRotate;
+    btnRotate.classList.toggle("active", autoRotate);
+  }
+  btnPause.addEventListener("click", togglePause);
+  btnRotate.addEventListener("click", toggleRotate);
+  btnShake.addEventListener("click", () => { shakeBlobs(); glowPulse = 1; });
+  window.addEventListener("keydown", (e) => {
+    if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+    if (e.code === "Space") { e.preventDefault(); togglePause(); }
+    else if (e.key === "r" || e.key === "R") toggleRotate();
+    else if (e.key === "s" || e.key === "S") { shakeBlobs(); glowPulse = 1; }
+  });
+
+  canvas.addEventListener("webglcontextlost", (e) => {
+    e.preventDefault();
+    document.getElementById("fallback").hidden = false;
+  });
+
+  initBlobs();
+
+  let last = performance.now();
+  let ema = 16, frames = 0;
+  const t0 = last;
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    let dt = (now - last) / 1000;
+    last = now;
+    if (dt > 0.25) dt = 0.25;
+
+    // adaptive resolution
+    ema = ema * 0.95 + (dt * 1000) * 0.05;
+    if (++frames % 30 === 0) {
+      if (ema > 26 && scale > 0.45) { scale *= 0.85; resize(); }
+      else if (ema < 12 && scale < 1) { scale = Math.min(1, scale * 1.08); resize(); }
+    }
+
+    if (!paused) stepBlobs(dt, heat);
+    glowPulse *= Math.exp(-dt * 2.2);
+
+    if (autoRotate && !dragging) tTheta += dt * 0.07;
+    const k = 1 - Math.exp(-dt * 6);
+    theta += (tTheta - theta) * k;
+    phi += (tPhi - phi) * k;
+    dist += (tDist - dist) * k;
+
+    const sp = Math.sin(phi), cp = Math.cos(phi);
+    const camPos = [
+      target[0] + dist * sp * Math.sin(theta),
+      target[1] + dist * cp,
+      target[2] + dist * sp * Math.cos(theta),
+    ];
+
+    for (let i = 0; i < MAX_BLOBS; i++) {
+      const b = blobs[i];
+      blobArr[i * 4] = b.x;
+      blobArr[i * 4 + 1] = b.y;
+      blobArr[i * 4 + 2] = b.z;
+      blobArr[i * 4 + 3] = b.r;
+      dataArr[i * 4] = b.temp;
+      dataArr[i * 4 + 1] = b.phase;
+      dataArr[i * 4 + 2] = 0;
+      dataArr[i * 4 + 3] = 0;
+    }
+
+    gl.uniform2f(U.uRes, canvas.width, canvas.height);
+    gl.uniform1f(U.uTime, (now - t0) / 1000);
+    gl.uniform3f(U.uCamPos, camPos[0], camPos[1], camPos[2]);
+    gl.uniform3f(U.uCamTarget, target[0], target[1], target[2]);
+    gl.uniform3fv(U.uHot, palette.hot);
+    gl.uniform3fv(U.uMid, palette.mid);
+    gl.uniform3fv(U.uCool, palette.cool);
+    gl.uniform1f(U.uGlow, 0.75 + heat * 0.75 + glowPulse * 0.8);
+    gl.uniform1i(U.uBlobCount, MAX_BLOBS);
+    gl.uniform4fv(U.uBlobs, blobArr);
+    gl.uniform4fv(U.uBlobData, dataArr);
+
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  requestAnimationFrame(frame);
+}
+</script>
+</body>
+</html>
