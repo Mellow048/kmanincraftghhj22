@@ -1,6 +1,6 @@
 # You could not be a pirate until you were eighteen (part 1)
 
-**Status: script draft 1 APPROVED by the owner, 2026-11-16 ("yes, go"). Voice `voice-05` selected the same day (the emotional pair, not the flat ones). Full read is in `public/audio/pirate-audition/full-read.mp3` at the film pace. He has not said the full read is kept. Nothing is built.**
+**Status: script draft 1 APPROVED by the owner, 2026-11-16 ("yes, go"). Voice `voice-05`. After the first full read he asked for the voice 1.1 times faster, and the last line changed from the subscribe line to "To be continued." That read is `public/audio/pirate-audition/full-read.mp3`. He has not said to build the pictures yet.**
 
 Rejected before that pick: `voice-00` (too serious, not energetic, no accent wanted), then a slow read, then a sample he called good but with no emotion. Do not record with those.
 
@@ -25,7 +25,7 @@ Not added: a secret about the player, a death, a second monster, a lesson, a rec
 
 ## Length
 
-Short cut, on purpose. 437 spoken words, 41 shots. At the pace he approved (about 235 words a minute, with a quarter to three quarters of a second between steps) the voice is about 1:52, and the pauses bring the film to about 1:56. Under the two-minute wall, with a few seconds to spare if a line runs long. Not the 2:55 of Monster Village part 1. That film's long sit is what a stay-graph dies in. This one has no sit. Day and night are shots, not a montage.
+Short cut, on purpose. 437 spoken words, 41 shots. He heard the first read and asked for the voice 1.1 times faster (2026-11-16). That file is 1:45. The pauses between steps stay. Not the 2:55 of Monster Village part 1. That film's long sit is what a stay-graph dies in. This one has no sit. Day and night are shots, not a montage.
 
 The slow turn is not bought by speeding the voice, and it is not a silent minute. "Slowly" is its own shot, with a pause on either side, and then the arms come up one at a time. If he wants that turn held longer than the words, say so. We add the hold only up to two minutes, or we move the film up a cut. We do not speed it.
 
@@ -36,7 +36,7 @@ Title, and sentence one: **In this town, you could not be a pirate until you wer
 - **Frame one of the spoken film** is the map, big, in his hands, and past it the chained boat he is already reaching for. A hand stops him. Not a wide shot of a town. Not the sea, empty.
 - **The two seconds before that**, if kept, are night, the boat small, a shadow already in the water behind it, moving. No face. No words.
 - **The turn is slow, and it is night**, as asked. The lantern is the only light. The kraken is not a speck on the horizon and not a still drawing: one arm comes up, then the head, and the eye is level with the lantern, so a phone can read it with no sound.
-- **The subscribe line sits on the kraken**, not on a black card. The monster is still the picture.
+- **"To be continued" sits on the kraken**, not on a black card. He asked for that line instead of subscribe (2026-11-16). The monster is still the picture.
 - Captions sit at the chest, not in the bottom band a Shorts frame covers.
 
 ## Script
@@ -103,7 +103,7 @@ Title, and sentence one: **In this town, you could not be a pirate until you wer
 [10.night] And it was night. The lantern was the only light it had.
 
 # clip 11-end wait 0.4
-[11.sub] Like and subscribe for part two.
+[11.end] To be continued.
 ```
 
 ## His beats, in his order
@@ -122,7 +122,7 @@ Title, and sentence one: **In this town, you could not be a pirate until you wer
 | Ball goes in the water. Villager jumps and gets it. | 7.slip, 8.jump, 8.got |
 | They are turned around. A big shadow behind them. | 8.watch, 9.past, 10.dark, 10.big |
 | They turn slowly. A big octopus kraken. Night. | 9.slow, 10.arm, 10.more, 10.kraken, 10.night |
-| Like and subscribe for part two. | 11.sub |
+| To be continued. | 11.end |
 
 ## What to copy from Monster Village part 1, and what not to
 
