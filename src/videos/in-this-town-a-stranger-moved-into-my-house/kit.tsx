@@ -149,8 +149,8 @@ export const Stranger: React.FC<A & { omen?: number }> = ({ omen = 0, ...p }) =>
           <>
             {Array.from({ length: 9 }, (_, i) => {
               const a = t * 2.2 + i * 0.7;
-              const r = 0.42 + (i % 3) * 0.08;
-              return <Block key={i} position={[Math.sin(a) * r, 0.05 + ((t * 0.5 + i * 0.13) % 0.7), Math.cos(a) * r]} size={[0.1 * omen, 0.1 * omen, 0.1 * omen]} color={i % 2 ? "#4b5560" : "#2c3238"} castShadow={false} />;
+              const r = 0.46 + (i % 3) * 0.1;
+              return <Block key={i} position={[Math.sin(a) * r, 0.05 + ((t * 0.5 + i * 0.13) % 0.7), Math.cos(a) * r]} size={[0.13 * omen, 0.13 * omen, 0.13 * omen]} color={i % 2 ? "#aab3bd" : "#59626d"} castShadow={false} />;
             })}
           </>
         ) : undefined
@@ -416,7 +416,7 @@ export const Town: React.FC<{ bell?: boolean; swing?: number; hole?: boolean; wh
 }) => (
   <>
     <BellStand bell={bell} swing={swing} />
-    {hole ? <Hole position={PLACE.hole} size={1} /> : null}
+    {hole ? <Hole position={[PLACE.hole[0], 0.045, PLACE.hole[2]]} size={1.1} /> : null}
     <Wheat position={PLACE.field} size={[4.6, 4.6]} height={0.12 + 0.78 * wheat} sway={wheat} seed={4} />
     {torches ? <Torches light={light} /> : null}
     {wall ? <Wall arrows={arrows} /> : null}
@@ -503,7 +503,7 @@ export const MyRoom: React.FC<{ bed?: boolean; door?: "up" | "flat"; desk?: numb
       <Chest open={chest} bread={bread} />
       <Lectern scale={desk} />
       {Array.from({ length: Math.round(torches) }, (_, i) => (
-        <Torch key={i} position={[-1.9 + (i % 5) * 0.95, 0, 0.3 + ((i * 7) % 4) * 0.5]} seed={i + 1} light={i === 2 ? 5 : 0} />
+        <Torch key={i} position={[-1.9 + (i % 4) * 1.25 + ((i >> 2) % 2) * 0.5, 0, -0.5 + (i >> 2) * 0.8]} seed={i + 1} light={i === 2 ? 4 : 0} />
       ))}
     </group>
   );

@@ -28,20 +28,20 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.knock",
-      ...cam.push({ on: [-0.6, 0.35, -1.5], dist: 4.2, to: 3.7, yaw: 10, pitch: 30, fov: 44 }),
+      ...cam.push({ on: [-0.2, 0.8, -1.4], dist: 5.0, to: 4.5, yaw: 6, pitch: 22, fov: 44 }),
       zone: "room",
       look: "overworld-day",
       note: "The door. It is lying flat on the floor with a boot print on it, and daylight comes through the hole where it was.",
       stage: (t) => (
         <>
           <MyRoom bed door="flat" />
-          <Me position={[0.45, 0, -0.9]} rotationY={-1.1} lookAt={[-0.6, 0, -1.2]} hmm={t > 0.3 ? 0.5 : 0} />
+          <Me position={[0.35, 0, -1.0]} rotationY={-1.1} lookAt={[-0.6, 0, -1.2]} hmm={t > 0.3 ? 0.5 : 0} />
         </>
       ),
     },
     {
       cue: "1.slept",
-      ...cam.push({ on: [0.78, 0.85, -1.0], dist: 4.3, to: 3.9, yaw: 0, pitch: 26, fov: 44 }),
+      ...cam.push({ on: [0.7, 0.9, -1.0], dist: 5.0, to: 4.6, yaw: 0, pitch: 26, fov: 44 }),
       zone: "room",
       look: "overworld-day",
       note: "From above the bed: the stranger flat out in it with his mouth open and his boots on the blanket, and the villager standing over him, looking down.",
@@ -50,7 +50,7 @@ export const scene1 = storyScene(timing, {
           <MyRoom bed door="flat" />
           <Stranger position={[BED[0], 0.56 + Math.sin(t * 3) * 0.015, BED[2] + 0.15]} rotationY={SOUTH} animation="sleep" face="sleepy" time={t} />
           <Me position={[0.2, 0, -1.1]} rotationY={EAST} nod={0.45} />
-          <Bubble text="Z" position={[BED[0] + 0.1, 1.5 + t * 0.2, BED[2] - 0.5]} scale={0.5} tail={-1} tilt={0.15} />
+          <Bubble text="Z" position={[BED[0] + 0.1, 1.5 + t * 0.2, BED[2] - 0.5]} scale={0.7} tail={-1} tilt={0.15} />
         </>
       ),
     },
@@ -93,12 +93,12 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.want",
-      ...cam.push({ on: [0, 1.2, 3.4], dist: 8.2, to: 7.4, yaw: 0, pitch: 9, fov: 48 }),
+      ...cam.push({ on: [0, 1.2, 2.6], dist: 8.6, to: 7.8, yaw: 0, pitch: 9, fov: 48 }),
       zone: "town",
       look: "overworld-day",
       note: "Outside. The stranger runs across the square, jumping with every step the way players do. Three villagers stand in a row and their heads follow him.",
       stage: (t) => {
-        const x = -3.4 + t * 5.4;
+        const x = -1.9 + t * 3.1;
         const y = Math.abs(Math.sin(t * 7.5)) * 0.55;
         return (
           <>

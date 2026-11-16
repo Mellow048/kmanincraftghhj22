@@ -12,7 +12,7 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "3.bread",
-      ...cam.push({ on: [-1.0, 1.0, -1.5], dist: 5.0, to: 4.5, yaw: 4, pitch: 12, fov: 44 }),
+      ...cam.push({ on: [-1.3, 1.0, -1.6], dist: 5.6, to: 5.1, yaw: 0, pitch: 12, fov: 44 }),
       zone: "room",
       look: "overworld-day",
       note: "The chest in his room, open, with his loaves in it. The stranger lifts one out. The villager is standing right beside him.",
@@ -21,10 +21,10 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <MyRoom door="flat" chest={1} bread={take > 0.5 ? 3 : 4} />
-            <Stranger position={[-0.55, 0, -1.6]} rotationY={WEST + 0.2} face="smile" pose={posed("idle", t, { armR: [-1.1 - 0.5 * take, 0, 0] })} headYaw={0.5 * take}>
+            <Stranger position={[-0.6, 0, -1.75]} rotationY={WEST} face="smile" pose={posed("idle", t, { armR: [-1.1 - 0.5 * take, 0, 0] })} headYaw={-0.3 * take}>
               {take > 0.5 ? <Loaf position={[0, 0, 0.2]} scale={0.7} /> : null}
             </Stranger>
-            <Me position={[-1.5, 0, -0.75]} rotationY={NORTH - 0.9} lookAt={[-0.55, 1.6, -1.6]} />
+            <Me position={[-2.02, 0, -1.2]} rotationY={EAST - 0.3} lookAt={[-0.6, 1.6, -1.75]} />
           </>
         );
       },
@@ -38,9 +38,8 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <MyRoom door="flat" chest={1} bread={3} />
-          <Stranger position={[-0.48, 0, -1.1]} rotationY={WEST} face="smug" gaze={0} pose={posed("idle", t, { armR: [-2.0 + Math.sin(t * 13) * 0.08, 0, 0.35] })}>
-            <Loaf position={[0, 0, 0.16]} scale={0.6} />
-          </Stranger>
+          <Stranger position={[-0.48, 0, -1.1]} rotationY={WEST} face="smug" gaze={0} pose={posed("idle", t, { armL: [-1.9 + Math.sin(t * 13) * 0.08, 0, 0] })} />
+          <Loaf position={[-0.86, 1.47 + Math.sin(t * 13) * 0.02, -1.12]} rotation={[0, 0, 0.2]} scale={0.6} />
           <Me position={[-1.52, 0, -1.1]} rotationY={EAST} />
           {t > 0.3 ? <Bits position={[-0.85, 1.5, -1.05]} t={(t - 0.3) % 0.5} color="#d9a55a" count={4} power={0.5} /> : null}
         </>
@@ -53,13 +52,13 @@ export const scene3 = storyScene(timing, {
       look: "overworld-day",
       note: "The wheat field, tall and gold. The stranger jumps up and down in the middle of it and with every landing more of it is flat. The farmer stands at the edge in his straw hat and watches.",
       stage: (t) => {
-        const y = Math.abs(Math.sin(t * 8)) * 0.8;
+        const y = Math.abs(Math.sin(t * 8)) * 0.55;
         const x = PLACE.field[0] - 1.2 + t * 1.5;
         return (
           <>
             <Town {...THEN} wheat={1 - tw(t, 0.15, 1.2)} />
             <Stranger position={[x, y, PLACE.field[2] + 0.4]} rotationY={EAST * 0.6} animation="cheer" face="grin" />
-            <Villager position={[PLACE.field[0] + 2.9, 0, PLACE.field[2] + 1.6]} rotationY={WEST + 0.4} robe={ROBE.farmer} hat="straw" lookAt={[x, 1.2 + y, PLACE.field[2] + 0.4]} />
+            <Villager position={[PLACE.field[0] + 1.75, 0, PLACE.field[2] + 2.1]} rotationY={WEST - 0.6} robe={ROBE.farmer} hat="straw" lookAt={[x, 1.2 + y, PLACE.field[2] + 0.4]} />
             <Bits position={[x, 0.3, PLACE.field[2] + 0.4]} t={(t * 8) % Math.PI / 8} color="#d9b84a" count={6} power={1.4} />
           </>
         );
@@ -67,7 +66,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.bell",
-      ...cam.push({ on: [0.3, 1.55, -5.0], dist: 6.2, to: 5.7, yaw: 12, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [-0.1, 1.55, -5.0], dist: 6.2, to: 5.7, yaw: 4, pitch: 6, fov: 46 }),
       zone: "town",
       look: "overworld-day",
       note: "He hits the bell once. It shrinks and flies into his pocket, and the stand is empty. The old man is standing next to it.",
@@ -79,7 +78,7 @@ export const scene3 = storyScene(timing, {
             <Town {...THEN} bell={t < hit} />
             <Stranger position={[0.35, 0, -4.2]} rotationY={NORTH + 0.2} face="smile" pose={posed("idle", t, { armR: [-2.2 + Math.sin(tw(t, 0.05, hit + 0.15) * Math.PI) * 1.0, 0, 0] })} />
             {t >= hit && fly < 1 ? <BellOnly position={[0.35 * fly, 2.0 - 0.9 * fly + Math.sin(fly * Math.PI) * 0.4, -5.5 + 1.2 * fly]} scale={1.5 - 1.2 * fly} swing={t * 9} /> : null}
-            <OldMan position={[-1.35, 0, -4.3]} rotationY={0.6} lookAt={t < hit + 0.3 ? [0, 1.7, -5.5] : [0.35, 1.6, -4.2]} />
+            <OldMan position={[-0.85, 0, -4.0]} rotationY={0.7} lookAt={t < hit + 0.3 ? [0, 1.7, -5.5] : [0.35, 1.6, -4.2]} />
           </>
         );
       },
@@ -96,7 +95,7 @@ export const scene3 = storyScene(timing, {
           <>
             <Town {...THEN} bell={false} />
             <OldMan position={[-0.15, 0, -4.4]} rotationY={SOUTH} hmm={t > say ? 1 : 0} nod={t > say ? -0.2 : 0} />
-            <Bubble text="DING" position={[0.38, 2.25, -4.3]} scale={0.42 * pop(t, say, 0.14)} tail={-1} />
+            <Bubble text="DING" position={[0.45, 2.3, -4.3]} scale={0.55 * pop(t, say, 0.14)} tail={-1} />
             <Villager position={[3.5 - t * 1.3, 0, -7.4]} rotationY={WEST} walk={t * 1.3} robe={ROBE.brown} phase={3} />
             <Villager position={[-3.6 + t * 1.2, 0, -8.2]} rotationY={EAST} walk={t * 1.2} robe={ROBE.blue} phase={4} />
           </>
@@ -204,7 +203,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Town {...THEN} bell={false} hole />
           <Me position={[-0.55, 0, 4.4]} rotationY={SOUTH} nod={Math.sin(tw(t, 0.5, 1.1) * Math.PI) * 0.3} />
-          <Stranger position={[0.9, 0, 1.6]} rotationY={SOUTH - 0.4} face="wow" pose={posed("idle", t, { armR: [-2.2 + Math.sin(t * 3) * 0.15, 0, -0.3] })} headPitch={-0.3}>
+          <Stranger position={[0.45, 0, 1.9]} rotationY={SOUTH - 0.4} face="wow" pose={posed("idle", t, { armR: [-2.2 + Math.sin(t * 3) * 0.15, 0, -0.3] })} headPitch={-0.3}>
             <GlowPick />
           </Stranger>
         </>

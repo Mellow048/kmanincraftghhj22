@@ -16,8 +16,8 @@ export const scene2 = storyScene(timing, {
       look: "overworld-day",
       note: "Three villagers stand in a row. The stranger runs straight through the middle of them without slowing down, and the one in the middle is spun right round. Nobody says anything.",
       stage: (t) => {
-        const z = -5 + t * 7.5;
-        const spin = tw(t, 1.0, 1.6) * Math.PI * 2;
+        const z = -4.5 + t * 4.4;
+        const spin = tw(t, 1.55, 1.9) * Math.PI * 2;
         return (
           <>
             <Town {...THEN} />
