@@ -24,69 +24,53 @@ same rate.
 ```narration
 # clip 01-hook
 [1.what]     What if every lie you heard smelled of burnt toast.
-[1.how]      Not a feeling. A smell. You could walk into a room and know.
-
-# clip 02-came
 [2.maths]    It started in maths, on a Tuesday.
 [2.teach]    My teacher said she liked my handwriting.
 [2.smell]    The whole room smelled like a toaster on fire.
-
-# clip 03-rule
 [3.hair]     My friend said my haircut was good. Toast.
 [3.dad]      My dad said he would come on Sunday. The kitchen filled with it.
 [3.rule]     Any lie, from anyone, any size. Always toast.
 [3.limit]    One thing it could not do. It never worked on me.
 
-# clip 04-fun
-[4.power]    So I stopped being lied to. That is a strange kind of power.
+# clip 01-hook
 [4.class]    I knew who broke the window before the teacher did.
-
-# clip 05-wish
-[5.one]      There was one person I wanted to check.
 [5.mum]      My mum. I wanted to know if she was okay.
-
-# clip 06-plant
 [6.never]    And she never smelled of toast.
 [6.fine]     "Are you okay?" "I'm fine." Nothing. Not a crumb of it.
 [6.honest]   I told my friend my mum was the only honest person in this town.
 [6.silent]   He said nothing. Which also smelled of nothing.
 
-# clip 07-try
+# clip 02-ruletour
 [7.sunday]   Then I asked her about my dad.
 [7.coming]   "He's coming on Sunday," she said.
 [7.caught]   Toast. For the first time in my life, from her.
 [7.proud]    I was so pleased with myself. I had caught her.
 
-# clip 08-harder
+# clip 03-firsttry
 [8.shout]    I did not ask nicely. I did not stop asking.
 [8.wrong]    I told her she was a liar, in the kitchen, with the door open.
 [8.win]      I won. I could smell it. I was right, and she was wrong.
 [8.quiet]    She stopped answering me after that.
 [8.lost]     I thought she had run out of lies. She had run out of words.
 
-# clip 09-friend
+# clip 04-harder
 [9.friend]   My friend said, "It tells you it is a lie. It does not tell you why."
-[9.me]       I said I did not need to know why.
 [9.gone]     He went and sat somewhere else. I could not smell anything on him.
 
-# clip 10-edge
+# clip 05-friend
 [10.bday]    My birthday. The whole class. A cake on the front desk.
 [10.cake]    The cake smelled like a fire.
-[10.card]    Every card smelled like a fire.
 [10.smile]   Every smile. Every happy birthday. All of it, burning.
-[10.sure]   I was sure I knew what it was about.
 
-# clip 11-act
+# clip 06-edge
 [11.stand]   So I stood up on my chair.
 [11.say]     "You are all lying to me," I said. "Every single one of you."
 [11.still]   The room went quiet. Somebody put a card down.
-
-# clip 12-wait
 [12.mum]     My mum was in the doorway. She had a card in her hand.
 [12.read]    It said, "Sorry your dad could not come."
 [12.room]    And the room was so full of toast smell I could taste it.
 
-# clip 13-reveal
+# clip 07-act
 [13.all]     They all knew. They had all known for weeks.
 [13.back]    Every lie in this school that day was about the same Sunday.
 [13.not]     Nobody was lying to hurt me. They were lying so I would not know yet.
@@ -94,8 +78,7 @@ same rate.
 [13.mum]     My mum was not honest. She said "I'm fine" because it was all she could say.
 [13.det]     It was never a lie detector. It was a kindness detector. I had it backwards.
 
-# clip 14-end
+# clip 08-reveal
 [14.smell]   So I sat down and ate cake that tasted of nothing at all.
 [14.truth]   Then I said the first true thing in months. "I miss him."
-[14.sub]     Subscribe if you ever smelled the toast and got it wrong.
-```
+[14.sub]     Subscribe if you ever smelled the toast and got it wrong.```
