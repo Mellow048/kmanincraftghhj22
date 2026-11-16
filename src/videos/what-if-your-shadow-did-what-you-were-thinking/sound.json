@@ -1,0 +1,587 @@
+{
+  "film": "what-if-your-shadow-did-what-you-were-thinking",
+  "README": "One look for the power: the shadow. Every effect on this sheet either draws attention to what the shadow is doing, or marks the moment the room stops being funny.",
+  "music": {
+    "gain": -17,
+    "sections": [
+      {
+        "from": "1.if",
+        "mood": "wonder",
+        "why": "The question, and a shadow waving on its own: wonderful before it is anything else."
+      },
+      {
+        "from": "2.wave",
+        "mood": "playful",
+        "why": "The five jokes. This is a comedy for forty seconds and the music has to say so."
+      },
+      {
+        "from": "3.same",
+        "mood": "curious",
+        "why": "The rule, stated: something is being worked out."
+      },
+      {
+        "from": "4.punch",
+        "mood": "playful",
+        "why": "Back to the jokes, bigger: it wins a fight he is not in."
+      },
+      {
+        "from": "5.art",
+        "mood": "curious",
+        "why": "The house on the board. The first thing that is not funny."
+      },
+      {
+        "from": "6.dance",
+        "mood": "playful",
+        "why": "Last joke. Let the audience relax for it before the turn."
+      },
+      {
+        "from": "6.almost",
+        "mood": "dark",
+        "why": "It leaves. The gear change."
+      },
+      {
+        "from": "7.quiet",
+        "mood": "drone",
+        "why": "He stops thinking. One low note and air: the funniest film of the week goes quiet, but not silent."
+      },
+      {
+        "from": "9.jo",
+        "mood": "sad",
+        "why": "Jo talks to it. Warm, and worse for being warm."
+      },
+      {
+        "from": "10.window",
+        "mood": "sneak",
+        "why": "Following it through a town at night."
+      },
+      {
+        "from": "11.brother",
+        "mood": "drone",
+        "why": "The name on the door. One low note and air: the audience hears themselves get it."
+      },
+      {
+        "from": "11.look",
+        "mood": "sad",
+        "why": "He got a shadow back. The reveal, played as a kindness."
+      },
+      {
+        "from": "12.wrong",
+        "mood": "hope",
+        "why": "Back in the daylight, and he knows what to do with it."
+      },
+      {
+        "from": "12.sub",
+        "mood": "dark",
+        "why": "Something moved. Cliffhanger."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.if",
+      "to": "5.five2",
+      "bed": "classroom"
+    },
+    {
+      "from": "6.dance",
+      "to": "6.read",
+      "bed": "classroom"
+    },
+    {
+      "from": "6.almost",
+      "to": "7.down",
+      "bed": "classroom"
+    },
+    {
+      "from": "7.hall",
+      "to": "8.still",
+      "bed": "room"
+    },
+    {
+      "from": "9.jo",
+      "to": "9.she",
+      "bed": "classroom"
+    },
+    {
+      "from": "10.window",
+      "to": "10.open",
+      "bed": "night"
+    },
+    {
+      "from": "11.brother",
+      "to": "11.why",
+      "bed": "room"
+    },
+    {
+      "from": "12.wrong",
+      "to": "12.sub",
+      "bed": "classroom"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.if",
+      "word": "shadow",
+      "sfx": "swish",
+      "why": "the shadow lifts off him"
+    },
+    {
+      "cue": "1.if",
+      "sfx": "blip",
+      "why": "the word the film is about"
+    },
+    {
+      "cue": "1.me",
+      "sfx": "pop",
+      "why": "one morning, mine did: the one pop that starts it"
+    },
+    {
+      "cue": "1.day",
+      "word": "copying",
+      "sfx": "slide_down",
+      "why": "it stops copying him, and the copying sound falls away"
+    },
+    {
+      "cue": "2.wave",
+      "word": "waved",
+      "sfx": "swish",
+      "why": "an arm that is not his arm moves"
+    },
+    {
+      "cue": "2.wave",
+      "sfx": "blip",
+      "why": "the little denial at the end of the line"
+    },
+    {
+      "cue": "2.wave2",
+      "sfx": "chime",
+      "why": "she waves back and it is a disaster, played as a nice thing"
+    },
+    {
+      "cue": "2.wave2",
+      "sfx": "bonk",
+      "why": "the joke lands"
+    },
+    {
+      "cue": "2.cant2",
+      "sfx": "creak",
+      "why": "an arm fighting its owner"
+    },
+    {
+      "cue": "3.same",
+      "sfx": "tick",
+      "why": "the rule's two words"
+    },
+    {
+      "cue": "3.same",
+      "word": "doing",
+      "sfx": "swish",
+      "why": "already done"
+    },
+    {
+      "cue": "3.sit",
+      "word": "sat",
+      "sfx": "step_wood",
+      "why": "somebody sitting down who is not there"
+    },
+    {
+      "cue": "3.sit",
+      "sfx": "blip",
+      "why": "the contrast"
+    },
+    {
+      "cue": "3.five",
+      "sfx": "sparkle",
+      "why": "a whole wall of shadows doing their own thing"
+    },
+    {
+      "cue": "3.cant",
+      "sfx": "slide_down",
+      "why": "the limit, and it is a sad little noise"
+    },
+    {
+      "cue": "4.punch",
+      "word": "fight",
+      "sfx": "hit",
+      "why": "the punch nobody threw"
+    },
+    {
+      "cue": "4.punch",
+      "sfx": "swish",
+      "why": "and he is nowhere near it"
+    },
+    {
+      "cue": "4.said",
+      "sfx": "blip",
+      "why": "the line the film turns on, said as a boast"
+    },
+    {
+      "cue": "4.alone",
+      "word": "only",
+      "sfx": "rustle",
+      "why": "the loneliness under the joke"
+    },
+    {
+      "cue": "5.art",
+      "word": "house",
+      "sfx": "place",
+      "why": "something being built on the wall"
+    },
+    {
+      "cue": "5.and",
+      "word": "never",
+      "sfx": "drop",
+      "why": "he has never been in it, and the floor goes a little"
+    },
+    {
+      "cue": "5.five2",
+      "sfx": "tick",
+      "why": "three windows, one tick each: repeat below"
+    },
+    {
+      "cue": "5.five2",
+      "sfx": "tick",
+      "repeat": 2,
+      "every": 0.28,
+      "why": "the other two windows"
+    },
+    {
+      "cue": "5.five3",
+      "sfx": "creak",
+      "why": "the door of a house he has never been in"
+    },
+    {
+      "cue": "6.dance",
+      "sfx": "boing",
+      "why": "it is having the best day of its life"
+    },
+    {
+      "cue": "6.read",
+      "word": "read",
+      "sfx": "blip",
+      "why": "the misread he will be corrected for"
+    },
+    {
+      "cue": "6.read",
+      "word": "wrong",
+      "sfx": "buzz",
+      "why": "and it is wrong"
+    },
+    {
+      "cue": "6.almost",
+      "sfx": "slide_down",
+      "why": "the sound of losing hold of something"
+    },
+    {
+      "cue": "7.down",
+      "sfx": "creak",
+      "why": "the door it walks out of"
+    },
+    {
+      "cue": "7.down",
+      "sfx": "whoosh_low",
+      "why": "he can feel the direction, and it is away"
+    },
+    {
+      "cue": "7.hall",
+      "sfx": "heartbeat",
+      "why": "the idea of a piece of you in another room"
+    },
+    {
+      "cue": "7.quiet",
+      "sfx": "power_down",
+      "why": "he switches himself off"
+    },
+    {
+      "cue": "7.quiet",
+      "sfx": "plink",
+      "why": "and the silence after it"
+    },
+    {
+      "cue": "8.think",
+      "sfx": "tick",
+      "why": "the thought that will not stay out"
+    },
+    {
+      "cue": "8.still",
+      "sfx": "step_wood",
+      "why": "one small sound in an empty room"
+    },
+    {
+      "cue": "8.still",
+      "sfx": "rustle",
+      "why": "the room's own air"
+    },
+    {
+      "cue": "9.jo",
+      "sfx": "place",
+      "why": "her sitting down next to it, every day"
+    },
+    {
+      "cue": "9.jo",
+      "sfx": "blip",
+      "why": "the only voice it has heard in a week"
+    },
+    {
+      "cue": "9.me",
+      "sfx": "swish",
+      "why": "he dismisses it"
+    },
+    {
+      "cue": "9.me",
+      "sfx": "tick",
+      "why": "she does, and that is the first payoff"
+    },
+    {
+      "cue": "9.ask",
+      "word": "knew",
+      "sfx": "blip",
+      "why": "the question"
+    },
+    {
+      "cue": "9.she",
+      "word": "turns",
+      "sfx": "chime",
+      "why": "the line that reframes it: it turns up"
+    },
+    {
+      "cue": "10.window",
+      "word": "night",
+      "sfx": "whoosh",
+      "why": "out of the house, into the dark"
+    },
+    {
+      "cue": "10.up",
+      "word": "wall",
+      "sfx": "scrape",
+      "why": "something going up brick"
+    },
+    {
+      "cue": "10.up",
+      "sfx": "sparkle",
+      "why": "and it stands in it, lit"
+    },
+    {
+      "cue": "10.open",
+      "word": "climbed",
+      "sfx": "step_stone",
+      "why": "him climbing after it"
+    },
+    {
+      "cue": "10.open",
+      "sfx": "creak",
+      "why": "the window gave"
+    },
+    {
+      "cue": "11.brother",
+      "sfx": "heartbeat",
+      "why": "a kid in that bed"
+    },
+    {
+      "cue": "11.brother",
+      "sfx": "tick",
+      "why": "the name on the door"
+    },
+    {
+      "cue": "11.dead",
+      "word": "two",
+      "sfx": "drop",
+      "why": "two years"
+    },
+    {
+      "cue": "11.dead",
+      "sfx": "rustle",
+      "why": "the room has been kept"
+    },
+    {
+      "cue": "11.said",
+      "sfx": "heartbeat",
+      "why": "so he would not be on his own"
+    },
+    {
+      "cue": "11.why",
+      "sfx": "blip",
+      "why": "the rule, closing"
+    },
+    {
+      "cue": "11.why2",
+      "word": "brother",
+      "sfx": "heartbeat",
+      "why": "a brother who could"
+    },
+    {
+      "cue": "12.wrong2",
+      "sfx": "whoosh",
+      "why": "back to daylight, and it was all his window"
+    },
+    {
+      "cue": "12.tell",
+      "word": "loudly",
+      "sfx": "riser",
+      "why": "he thinks it as loudly as he can, and the sound climbs"
+    },
+    {
+      "cue": "12.sub2",
+      "sfx": "ding",
+      "why": "the ask"
+    },
+    {
+      "cue": "11.mine",
+      "at": -0.02,
+      "sfx": "sting",
+      "why": "it was never my shadow: the sting lands on the cut into the line, not on his voice"
+    },
+    {
+      "cue": "11.brother",
+      "at": -0.02,
+      "sfx": "drop",
+      "why": "the name on the door, on the cut"
+    },
+    {
+      "cue": "10.window",
+      "at": -0.02,
+      "sfx": "sting",
+      "why": "the house he has never been in, on the cut"
+    },
+    {
+      "cue": "12.sub",
+      "sfx": "thud",
+      "why": "something moved: a soft heavy landing, quiet enough to hear the line"
+    },
+    {
+      "cue": "11.look",
+      "word": "shadow",
+      "sfx": "plink",
+      "why": "he got a shadow back, every night"
+    },
+    {
+      "cue": "4.won",
+      "sfx": "blip",
+      "why": "a fight won by a shadow"
+    },
+    {
+      "cue": "1.girl",
+      "word": "trying",
+      "sfx": "tick",
+      "why": "the thing he is trying not to do"
+    },
+    {
+      "cue": "2.wave",
+      "sfx": "blip",
+      "why": "her"
+    },
+    {
+      "cue": "3.five",
+      "word": "shadow",
+      "sfx": "swish",
+      "why": "every shadow on that wall"
+    },
+    {
+      "cue": "4.punch",
+      "word": "boy",
+      "sfx": "blip",
+      "why": "the boy he is not fighting"
+    },
+    {
+      "cue": "4.said2",
+      "sfx": "tick",
+      "why": "the alternative to lying"
+    },
+    {
+      "cue": "5.art",
+      "sfx": "paper",
+      "why": "a maths test"
+    },
+    {
+      "cue": "5.and",
+      "word": "house",
+      "sfx": "blip",
+      "why": "a house"
+    },
+    {
+      "cue": "5.five3",
+      "sfx": "place",
+      "why": "one door, set down"
+    },
+    {
+      "cue": "6.almost",
+      "word": "could",
+      "sfx": "tick",
+      "why": "where I could not"
+    },
+    {
+      "cue": "7.down",
+      "word": "morning",
+      "sfx": "rustle",
+      "why": "one ordinary morning"
+    },
+    {
+      "cue": "7.hall",
+      "sfx": "plink",
+      "why": "it is not nice"
+    },
+    {
+      "cue": "8.still",
+      "word": "shadow",
+      "sfx": "swish",
+      "why": "my shadow"
+    },
+    {
+      "cue": "9.jo",
+      "word": "floor",
+      "sfx": "place",
+      "why": "on the floor"
+    },
+    {
+      "cue": "9.she",
+      "word": "town",
+      "sfx": "blip",
+      "why": "this town"
+    },
+    {
+      "cue": "10.open",
+      "word": "after",
+      "sfx": "step_wood",
+      "why": "climbing after it"
+    },
+    {
+      "cue": "11.dead",
+      "word": "bed",
+      "sfx": "rustle",
+      "why": "the bed nobody has been in"
+    },
+    {
+      "cue": "11.said",
+      "word": "window",
+      "sfx": "plink",
+      "why": "his window"
+    },
+    {
+      "cue": "11.why",
+      "word": "owner",
+      "sfx": "blip",
+      "why": "where its owner has not been"
+    },
+    {
+      "cue": "12.wrong",
+      "sfx": "tick",
+      "why": "not my head"
+    },
+    {
+      "cue": "12.tell",
+      "word": "floor",
+      "sfx": "step_wood",
+      "why": "sitting down on the floor of his room"
+    },
+    {
+      "cue": "12.sub2",
+      "sfx": "plink",
+      "why": "the ask, quiet under the word"
+    },
+    {
+      "cue": "1.me",
+      "sfx": "swish",
+      "why": "one morning"
+    }
+  ]
+}

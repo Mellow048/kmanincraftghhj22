@@ -1,0 +1,156 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-your-shadow-did-what-you-were-thinking",
+  "mix": "public/audio/what-if-your-shadow-did-what-you-were-thinking/mix.mp3",
+  "seconds": 108.7,
+  "built_from": {
+    "timing.json": "f0d4f58a01f068cd2db64a6328a68c7ed032589f",
+    "sound.json": "52bf8795e815ccd5b6c1b2ac733ce21d9074f149",
+    "narration.mp3": "46675e0f8ee04b1e8113079171532ad02bb1e113"
+  },
+  "mix_sha1": "019ea63d87d7a896697a6e1c7d189834dd08a973",
+  "music_sections": [
+    {
+      "from": "1.if",
+      "mood": "wonder",
+      "at": 0.0
+    },
+    {
+      "from": "2.wave",
+      "mood": "playful",
+      "at": 9.33
+    },
+    {
+      "from": "3.same",
+      "mood": "curious",
+      "at": 16.17
+    },
+    {
+      "from": "4.punch",
+      "mood": "playful",
+      "at": 25.33
+    },
+    {
+      "from": "5.art",
+      "mood": "curious",
+      "at": 35.4
+    },
+    {
+      "from": "6.dance",
+      "mood": "playful",
+      "at": 41.97
+    },
+    {
+      "from": "6.almost",
+      "mood": "dark",
+      "at": 46.3
+    },
+    {
+      "from": "7.quiet",
+      "mood": "drone",
+      "at": 53.8
+    },
+    {
+      "from": "9.jo",
+      "mood": "sad",
+      "at": 63.53
+    },
+    {
+      "from": "10.window",
+      "mood": "sneak",
+      "at": 73.7
+    },
+    {
+      "from": "11.brother",
+      "mood": "drone",
+      "at": 81.2
+    },
+    {
+      "from": "11.look",
+      "mood": "sad",
+      "at": 86.67
+    },
+    {
+      "from": "12.wrong",
+      "mood": "hope",
+      "at": 98.9
+    },
+    {
+      "from": "12.sub",
+      "mood": "dark",
+      "at": 105.03
+    }
+  ],
+  "beds": 8,
+  "measured": {
+    "musicUnderVoiceDb": 19.6,
+    "secondsWithoutMusic": 2.5,
+    "bedsUnderVoiceDb": 29.5,
+    "sfx": 86,
+    "sfxPerMinute": 47.5,
+    "sfxKinds": 28,
+    "longestGapSeconds": 3.9,
+    "longestGapAt": 66.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.3,
+    "voiceOverRestWorstDb": 3.8,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.8,
+        "t": 73.9,
+        "cue": "10.window",
+        "sounding": [
+          "chime",
+          "sting",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 12.0,
+        "cue": "2.wave",
+        "sounding": [
+          "bonk",
+          "chime"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 105.8,
+        "cue": "12.sub",
+        "sounding": [
+          "ding",
+          "plink"
+        ]
+      },
+      {
+        "db": 7.8,
+        "t": 92.4,
+        "cue": "11.mine",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 66.0,
+        "cue": "9.jo",
+        "sounding": [
+          "swish"
+        ]
+      },
+      {
+        "db": 8.6,
+        "t": 22.8,
+        "cue": "3.five",
+        "sounding": [
+          "slide_down"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.8,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}
