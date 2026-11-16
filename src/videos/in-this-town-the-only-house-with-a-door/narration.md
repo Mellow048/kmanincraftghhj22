@@ -1,7 +1,7 @@
 # Narration — In This Town, The Only House With a Door
 
-**Status: DRAFT 1 for the owner. Not approved, not recorded.** 44 shots, 468 words, ~113 seconds at 250 words a
-minute, median shot 2.4 s. Built to the `WHY-IT-WORKED.md` skeleton, not the shadow film's.
+**Status: DRAFT 1 for the owner. Not approved, not recorded.** 46 shots, 603 words, ~145 seconds at 250 words a
+minute. Built to the `WHY-IT-WORKED.md` skeleton, not the shadow film's.
 
 One-shot. The premise: every house in this town has no doors — people walk through walls — and his is the only house
 with one, locked from the inside. What he thinks is a punishment turns out to be the whole town standing between him
