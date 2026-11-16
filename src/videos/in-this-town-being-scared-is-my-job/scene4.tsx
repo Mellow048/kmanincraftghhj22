@@ -61,14 +61,14 @@ export const scene4 = storyScene(timing, {
       note: "From above, where the villagers are. His face, slowly, tips back: and he is looking straight up at us. He is not pleased.",
       stage: (t, { dur }) => (
         <>
-          <Under open={1} iron={0} />
+          <Under open={1} iron={0} pipe={false} />
           <Boss position={[0.15, 0, 0.55]} rotationY={NORTH} face={t > dur * 0.55 ? "angry" : "frown"} headPitch={0.45 - 1.25 * tw(t, 0.2, dur * 0.7)} gaze={0} />
         </>
       ),
     },
     {
       cue: "4.atme",
-      ...cam.push({ on: [0.75, 1.5, 2.7], dist: 2.5, to: 2.2, yaw: 164, pitch: 3, fov: 50 }),
+      ...cam.push({ on: [0.4, 1.45, 1.85], dist: 2.1, to: 1.9, yaw: 170, pitch: 2, fov: 58 }),
       zone: "farm",
       look: "overworld-day",
       note: "From inside the room, through the glass: the boss, up here for the first time, with his face almost on the pane. He looks at us. His eyes slide over to the zombie in the boat.",
@@ -77,8 +77,8 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Farm />
-            <Boss position={[0.95, 0, 1.75]} rotationY={NORTH} face="frown" headYaw={t > kev ? 0.9 : 0} gaze={0} />
-            <Kevin tagTurn={164 * (Math.PI / 180)} turn={t > kev ? -0.7 : 0} wave={t > kev + 0.3 ? 1 : 0} />
+            <Boss position={[0.62, 0, 1.45]} rotationY={NORTH} face="frown" headYaw={t > kev ? 0.9 : 0} gaze={0} />
+            <Kevin tagTurn={170 * (Math.PI / 180)} turn={t > kev ? -0.7 : 0} wave={t > kev + 0.3 ? 1 : 0} />
           </>
         );
       },
@@ -104,41 +104,41 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.rope",
-      ...cam.push({ on: [-1.0, 1.3, 3.0], dist: 6.4, to: 5.8, yaw: -14, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [-3.0, 1.3, 3.0], onTo: [-1.3, 1.3, 3.0], dist: 6.6, to: 6.6, yaw: -12, pitch: 6, fov: 46 }),
       zone: "farm",
       look: "overworld-day",
       note: "He comes back along the ledge from the other end, and behind him, on a rope, with its arms out, walks a zombie nobody has seen before.",
       stage: (t, { dur }) => {
-        const x = -4.4 + 3.0 * tw(t, 0, dur);
+        const x = -3.4 + 2.4 * tw(t, 0, dur);
         return (
           <>
             <Farm />
             <Me position={ME} rotationY={SOUTH} lookAt={[x, 1.5, 3.0]} />
             <Kevin tagTurn={-0.25} turn={0.9} />
             <Boss position={[x, 0, 3.0]} rotationY={EAST} animation="walk" face="frown" />
-            <NewOne position={[x - 1.5, 0, 3.0]} rotationY={EAST} walk={t * 1.6} />
-            <Rope a={[x - 0.3, 1.0, 3.0]} b={[x - 1.4, 1.45, 3.0]} />
+            <NewOne position={[x - 1.3, 0, 3.0]} rotationY={EAST} walk={t * 1.6} />
+            <Rope a={[x - 0.3, 1.0, 3.0]} b={[x - 1.2, 1.45, 3.0]} />
           </>
         );
       },
     },
     {
       cue: "4.new",
-      ...cam.push({ on: [-0.75, 1.4, 2.6], dist: 2.7, to: 2.4, yaw: 196, pitch: 3, fov: 50 }),
+      ...cam.push({ on: [-0.75, 1.3, 2.5], dist: 3.8, to: 3.5, yaw: 172, pitch: 2, fov: 58 }),
       zone: "farm",
       look: "overworld-day",
       note: "Through the glass: the new one, standing next to Kevin's boat. No tag over his head. Kevin waves at him. He does not wave. He does not do anything.",
       stage: (t) => (
         <>
           <Farm />
-          <NewOne position={NEW} rotationY={NORTH + 0.2} />
-          <Kevin tagTurn={196 * (Math.PI / 180)} turn={-0.9} wave={t > 0.4 ? 1 : 0} mood="happy" />
+          <NewOne position={[-1.15, 0, 2.9]} rotationY={NORTH + 0.2} />
+          <Kevin tagTurn={172 * (Math.PI / 180)} turn={-0.9} wave={t > 0.4 ? 1 : 0} mood="happy" />
         </>
       ),
     },
     {
       cue: "4.bucket",
-      ...cam.push({ on: [0.4, 1.3, 2.6], dist: 3.0, to: 2.6, yaw: 160, pitch: 3, fov: 50 }),
+      ...cam.push({ on: [0.35, 1.3, 2.5], dist: 3.2, to: 2.9, yaw: 175, pitch: 2, fov: 56 }),
       zone: "farm",
       look: "overworld-day",
       note: "Through the glass, the other way: the boss beside the boat, and in his hand, held out over Kevin, a bucket. Kevin looks at it.",
@@ -146,7 +146,7 @@ export const scene4 = storyScene(timing, {
         <>
           <Farm />
           <BossBucket t={t} />
-          <Kevin tagTurn={160 * (Math.PI / 180)} lookAt={[HELD[0], HELD[1] + 0.2, HELD[2]]} />
+          <Kevin tagTurn={175 * (Math.PI / 180)} lookAt={[HELD[0], HELD[1] + 0.2, HELD[2]]} />
         </>
       ),
     },

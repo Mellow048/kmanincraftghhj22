@@ -79,7 +79,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.kevin",
-      ...cam.push({ on: [0, 1.62, KEV[2]], dist: 2.3, to: 1.7, yaw: 156, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [0, 1.3, KEV[2]], dist: 2.4, to: 2.0, yaw: 156, pitch: 2, fov: 44 }),
       zone: "farm",
       look: "overworld-day",
       note: "Closer: his face, and the tag over it. KEVIN.",
@@ -135,7 +135,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Farm />
           <Me position={ME} rotationY={SOUTH - 0.3} carry={<Loaf position={[0, 0.07, 0.1]} scale={1.05} />} nod={Math.sin(tw(t, 0.25, 0.8) * Math.PI) * 0.3} />
-          <Kevin />
+          <Kevin tag={false} />
         </>
       ),
     },

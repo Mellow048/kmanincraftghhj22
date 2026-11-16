@@ -25,7 +25,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Farm />
           <Me position={ME} rotationY={SOUTH + 0.25} nod={t < 0.45 ? 0.4 : 0} />
-          <Kevin />
+          <Kevin tag={false} />
         </>
       ),
     },
@@ -126,7 +126,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.nothing",
-      ...cam.push({ on: [0, 1.5, 0.4], dist: 4.2, to: 3.3, yaw: 22, pitch: 5, fov: 46 }),
+      ...cam.push({ on: [0, 1.5, 0.4], dist: 4.2, to: 3.8, yaw: 22, pitch: 5, fov: 46 }),
       zone: "farm",
       look: "overworld-day",
       note: "Over Kevin's shoulder again. The villager looks at him, takes the big breath, throws his head back: and nothing. A very small bubble with three dots in it.",
@@ -183,7 +183,7 @@ export const scene3 = storyScene(timing, {
             <Shake t={t} k={k}>
               <Gary position={PLACE.gary} rotationY={SOUTH} nod={k ? -0.4 : 0.1} hmm={k} />
             </Shake>
-            <Bubble text={k ? "AAAH!" : "eh"} position={[-1.9, 2.95, 1.15]} scale={k ? 0.7 + Math.sin(t * 30) * 0.03 : 0.4} tail={-1} tilt={k ? Math.sin(t * 36) * 0.04 : 0} />
+            <Bubble text={k ? "AAAH!" : "eh"} position={[-2.35, 2.5, 1.15]} scale={k ? 0.58 + Math.sin(t * 30) * 0.03 : 0.4} tail={-1} tilt={k ? Math.sin(t * 36) * 0.04 : 0} />
             <Me position={ME} rotationY={SOUTH} />
           </>
         );

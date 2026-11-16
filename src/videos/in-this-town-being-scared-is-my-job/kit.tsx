@@ -342,15 +342,19 @@ export const Farm: React.FC<{ open?: boolean; crack?: number; game?: string; lit
  * Under the floor: a stone ledge with a chest on it, and a pipe overhead that things fall out of. It is drawn at the
  * origin of the `under` zone. `drop` is a clock for the iron falling (seconds; under 0 for none).
  */
-export const Under: React.FC<{ open?: number; iron?: number; flower?: boolean; drop?: number; drops?: number }> = ({ open = 0, iron = 0, flower = false, drop = -1, drops = 3 }) => (
+export const Under: React.FC<{ open?: number; iron?: number; flower?: boolean; drop?: number; drops?: number; pipe?: boolean }> = ({ open = 0, iron = 0, flower = false, drop = -1, drops = 3, pipe = true }) => (
   <group>
     <Vox kind="stone" position={[0, -0.5, 0.4]} size={[5, 1, 4.2]} />
     <Vox kind="stone" position={[0, 4.3, 0]} size={[7, 1, 6]} />
     <Vox kind="stoneBrick" position={[0, 1.9, -1.9]} size={[5, 3.8, 0.4]} />
-    {/* the pipe: a hopper */}
-    <Block position={[0, 3.45, -0.6]} size={[0.9, 0.7, 0.9]} color="#3c3c44" />
-    <Block position={[0, 2.95, -0.6]} size={[0.5, 0.4, 0.5]} color="#33333a" />
-    <Block position={[0, 2.65, -0.6]} size={[0.26, 0.3, 0.26]} color="#2a2a30" />
+    {/* the pipe: a hopper. `pipe={false}` takes it out for a shot from above, where it would hang in the lens */}
+    {pipe ? (
+      <>
+        <Block position={[0, 3.45, -0.6]} size={[0.9, 0.7, 0.9]} color="#3c3c44" />
+        <Block position={[0, 2.95, -0.6]} size={[0.5, 0.4, 0.5]} color="#33333a" />
+        <Block position={[0, 2.65, -0.6]} size={[0.26, 0.3, 0.26]} color="#2a2a30" />
+      </>
+    ) : null}
     <Chest position={[0, 0, -0.6]} open={open} iron={iron} flower={flower} scale={1.15} />
     {drop >= 0
       ? Array.from({ length: drops }, (_, i) => {
