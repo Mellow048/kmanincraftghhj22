@@ -1,0 +1,229 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-had-never-seen-the-sun",
+  "mix": "public/audio/in-this-town-i-had-never-seen-the-sun/mix.mp3",
+  "seconds": 134.3,
+  "built_from": {
+    "timing.json": "675161498144c11162cad21a2aec6062ad4cb06d",
+    "sound.json": "6d1ec2c5c92bd17508b3a6d9bdf4ac4a6024ac6b",
+    "narration.mp3": "d144fdb45f47368005e89f114c08ecfd38b3e5a5"
+  },
+  "mix_sha1": "87ec425d663191e1035c7ea6cc82692e1acdc163",
+  "music_sections": [
+    {
+      "from": "1.sun",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "2.trees",
+      "mood": "sneak",
+      "at": 6.23
+    },
+    {
+      "from": "2.grandpa",
+      "mood": "playful",
+      "at": 19.57
+    },
+    {
+      "from": "3.morning",
+      "mood": "tense",
+      "at": 27.0
+    },
+    {
+      "from": "3.mum",
+      "mood": "playful",
+      "at": 34.73
+    },
+    {
+      "from": "3.that",
+      "mood": "sad",
+      "at": 38.6
+    },
+    {
+      "from": "4.found",
+      "mood": "curious",
+      "at": 40.57
+    },
+    {
+      "from": "4.on",
+      "mood": "tense",
+      "at": 49.43
+    },
+    {
+      "from": "5.nothing",
+      "mood": "none",
+      "at": 52.83
+    },
+    {
+      "from": "5.colour",
+      "mood": "wonder",
+      "at": 53.7
+    },
+    {
+      "from": "5.hat",
+      "mood": "tense",
+      "at": 66.47
+    },
+    {
+      "from": "6.kid",
+      "mood": "playful",
+      "at": 69.07
+    },
+    {
+      "from": "6.town",
+      "mood": "town",
+      "at": 73.6
+    },
+    {
+      "from": "6.best",
+      "mood": "hope",
+      "at": 81.0
+    },
+    {
+      "from": "6.crack",
+      "mood": "none",
+      "at": 82.67
+    },
+    {
+      "from": "7.far",
+      "mood": "tense",
+      "at": 84.1
+    },
+    {
+      "from": "7.neck",
+      "mood": "sad",
+      "at": 88.57
+    },
+    {
+      "from": "7.grey",
+      "mood": "none",
+      "at": 95.67
+    },
+    {
+      "from": "7.walk",
+      "mood": "hope",
+      "at": 98.8
+    },
+    {
+      "from": "7.good",
+      "mood": "wonder",
+      "at": 102.4
+    },
+    {
+      "from": "8.edge",
+      "mood": "explain",
+      "at": 107.13
+    },
+    {
+      "from": "8.never",
+      "mood": "none",
+      "at": 113.63
+    },
+    {
+      "from": "8.his",
+      "mood": "dark",
+      "at": 114.67
+    },
+    {
+      "from": "9.meet",
+      "mood": "hope",
+      "at": 122.9
+    },
+    {
+      "from": "9.dad",
+      "mood": "tense",
+      "at": 130.6
+    },
+    {
+      "from": "9.sub",
+      "mood": "town",
+      "at": 132.23
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 29,
+  "measured": {
+    "musicUnderVoiceDb": 19.2,
+    "secondsWithoutMusic": 6.2,
+    "bedsUnderVoiceDb": 26.8,
+    "sfx": 378,
+    "sfxPerMinute": 168.9,
+    "sfxKinds": 41,
+    "longestGapSeconds": 1.7,
+    "longestGapAt": 60.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.0,
+    "voiceOverRestWorstDb": 4.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.6,
+        "t": 26.4,
+        "cue": "2.puddles",
+        "sounding": [
+          "boing",
+          "splash",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.8,
+        "t": 104.4,
+        "cue": "7.good",
+        "sounding": [
+          "blip",
+          "chime",
+          "crackle",
+          "glitch"
+        ]
+      },
+      {
+        "db": 4.9,
+        "t": 33.4,
+        "cue": "3.saw",
+        "sounding": [
+          "fire_whoosh",
+          "riser",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 88.1,
+        "cue": "7.pond",
+        "sounding": [
+          "gust",
+          "power_down",
+          "splash"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 82.1,
+        "cue": "6.best",
+        "sounding": [
+          "ding",
+          "sparkle",
+          "tick"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 2.4,
+        "cue": "1.nobody",
+        "sounding": [
+          "rustle",
+          "step_stone",
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -15.2,
+    "truePeakDb": -1.5,
+    "limiterMaxDb": 3.6
+  },
+  "failures": []
+}

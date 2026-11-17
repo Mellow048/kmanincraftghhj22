@@ -39,7 +39,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.said",
-      ...cam.push({ on: [0.02, 1.0, 0.3], dist: 3.6, to: 3.0, yaw: -4, pitch: 3, fov: 42 }),
+      ...cam.push({ on: [0.02, 1.1, 0.3], dist: 4.3, to: 3.7, yaw: -4, pitch: 3, fov: 42 }),
       zone: "rim",
       look: "overworld-day",
       note: "At the first trees, face to face. COME BACK TONIGHT. Then his arm goes straight up at the sky: STARS!",
@@ -49,9 +49,9 @@ export const scene5 = storyScene(timing, {
           <>
             <Me position={ME} rotationY={EAST - 0.25} armPitch={[0, -tw(t, st - 0.35, st) * 2.75]} mood="happy" />
             <Pal position={PAL} rotationY={WEST + 0.25} nod={-tw(t, st, st + 0.3) * 0.4} carry={<Bone position={[0, 0.05, 0.14]} rotation={[0, 0, 0.2]} scale={1.1} />} />
-            <Bubble text="COME BACK" position={[ME[0] + 0.1, 2.05, ME[2]]} scale={0.4 * pop(t, w("8.said", "Come") - 0.1, 0.14) * (t < st - 0.3 ? 1 : 0)} tail={-1} />
-            <Bubble text="TONIGHT." position={[ME[0] + 0.1, 1.75, ME[2]]} scale={0.4 * pop(t, w("8.said", "tonight") - 0.1, 0.14) * (t < st - 0.3 ? 1 : 0)} tail={-1} />
-            <Bubble text="STARS!" position={[ME[0] + 0.2, 1.95, ME[2]]} scale={0.55 * pop(t, st - 0.15, 0.14)} tail={-1} />
+            <Bubble text="COME BACK" position={[-0.12, 2.05, ME[2]]} scale={0.4 * pop(t, w("8.said", "Come") - 0.1, 0.14) * (t < st - 0.3 ? 1 : 0)} tail={-1} dark />
+            <Bubble text="TONIGHT." position={[-0.12, 1.78, ME[2]]} scale={0.4 * pop(t, w("8.said", "tonight") - 0.1, 0.14) * (t < st - 0.3 ? 1 : 0)} tail={-1} dark />
+            <Bubble text="STARS!" position={[-0.1, 1.95, ME[2]]} scale={0.55 * pop(t, st - 0.15, 0.14)} tail={-1} dark />
           </>
         );
       },
@@ -65,7 +65,7 @@ export const scene5 = storyScene(timing, {
       stage: (t) => (
         <>
           <Pal position={PAL} rotationY={SOUTH - 0.3} tilt={tw(t, 0.1, 0.4) * 0.28} carry={<Bone position={[0, 0.05, 0.14]} rotation={[0, 0, 0.2]} scale={1.1} />} />
-          <Bubble text="STARS?" position={[PAL[0] + 0.15, 1.72, PAL[2]]} scale={0.45 * pop(t, 0.3, 0.14)} tail={-1} />
+          <Bubble text="STARS?" position={[PAL[0] - 0.02, 1.7, PAL[2]]} scale={0.4 * pop(t, 0.3, 0.14)} tail={-1} dark />
         </>
       ),
     },
@@ -119,7 +119,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.dark",
-      ...cam.push({ on: [-2.9, 1.25, -3.3], dist: 4.4, to: 3.7, yaw: 10, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [-2.9, 1.2, -3.2], dist: 6.2, to: 5.4, yaw: 8, pitch: 4, fov: 42 }),
       zone: "daytown",
       look: "overworld-night",
       note: "The picture we saw in the zombie town, the other way round: a notice board with a white moon on it, a red cross slamming over the moon, a grown-up beside it, and a kid looking up.",
@@ -127,15 +127,15 @@ export const scene5 = storyScene(timing, {
         <>
           <DayTown night />
           <Board position={[-3, 0, -3.6]} kind="moon" cross={pop(t, w("8.dark", "bad") - 0.1, 0.12)} />
-          <PalDad position={[-1.65, 0, -3.2]} rotationY={SOUTH - 0.5} nod={0.2 + Math.sin(t * 7) * 0.1} />
-          <Pal position={[-4.05, 0, -2.6]} rotationY={EAST + 0.5} lookAt={[-3, 1.4, -3.6]} />
+          <PalDad position={[-1.95, 0, -2.9]} rotationY={SOUTH - 0.5} nod={0.2 + Math.sin(t * 7) * 0.1} />
+          <Pal position={[-3.5, 0, -2.2]} rotationY={EAST + 0.7} lookAt={[-3, 1.4, -3.6]} />
           <Fill at={[-3, 2.0, -1.0]} power={12} color="#ffe6c0" />
         </>
       ),
     },
     {
       cue: "8.same",
-      ...cam.push({ on: [0, 1.3, -1.0], dist: 6.6, to: 5.6, yaw: 0, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [0, 1.3, -1.0], dist: 7.4, to: 6.4, yaw: 0, pitch: 3, fov: 44 }),
       zone: "room",
       look: "overworld-night",
       note: "One board in the dark with a zombie on one side of it and a villager on the other, both wagging at us. It shows the crossed-out sun. On \"other way round\" the board spins, and its other face is the crossed-out moon.",
@@ -147,8 +147,8 @@ export const scene5 = storyScene(timing, {
             <Vox kind="darkPlanks" position={[0, -0.05, -1]} size={[7, 0.1, 5]} />
             <Board position={[0, 0, -1]} kind="sun" rotationY={a} />
             <Board position={[0, 0, -1]} kind="moon" rotationY={a + Math.PI} />
-            <Old position={[-1.25, 0, -0.9]} rotationY={SOUTH + 0.2} wave={1} mood="angry" />
-            <PalDad position={[1.25, 0, -0.9]} rotationY={SOUTH - 0.2} nod={0.15 + Math.sin(t * 7) * 0.1} />
+            <Old position={[-1.12, 0, -0.75]} rotationY={SOUTH + 0.2} wave={1} mood="angry" />
+            <PalDad position={[1.12, 0, -0.75]} rotationY={SOUTH - 0.2} nod={0.15 + Math.sin(t * 7) * 0.1} />
             <Fill at={[-1.2, 2.4, 1.8]} power={14} color="#bfe0ff" />
             <Fill at={[1.2, 2.4, 1.8]} power={14} color="#ffe0b0" />
           </>
@@ -170,7 +170,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.sun",
-      ...cam.push({ on: [0.3, 2.0, -9], dist: 9.4, to: 8.6, yaw: -4, pitch: -3, fov: 44 }),
+      ...cam.push({ on: [-0.58, 1.37, -7.12], dist: 10, to: 9.4, yaw: 8, pitch: -5, fov: 44 }),
       zone: "rim",
       look: "overworld-sunset",
       note: "From behind them: two small backs on a log, and the sun going down over the hill in front of them.",
@@ -182,14 +182,14 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.moon",
-      ...cam.push({ on: [0.6, 2.6, -9], dist: 8.6, to: 7.8, yaw: 6, pitch: -8, fov: 44 }),
+      ...cam.push({ on: [0.47, 2.24, -7.02], dist: 10, to: 9.4, yaw: -4.5, pitch: -10, fov: 44 }),
       zone: "rim",
       look: "overworld-night",
       note: "The same two backs on the same log, and now it is blue: the moon is up over the hill with the stars round it, and the zombie kid's arm points straight at it.",
       stage: (t) => (
         <>
           <Sitters t={t} bone={false} meProps={{ armPitch: [0, -2.5], nod: -0.4 }} palProps={{ nod: -0.5 }} />
-          <Fill at={[0, 2.5, 1]} power={16} color="#bcd0ff" reach={10} />
+          <Fill at={[0, 1.6, 0.6]} power={14} color="#bcd0ff" reach={7} />
         </>
       ),
     },
@@ -197,27 +197,26 @@ export const scene5 = storyScene(timing, {
       cue: "9.grandpa",
       ...cam.push({ on: [0, 1.2, -2.3], dist: 5.2, to: 4.3, yaw: 190, pitch: 2, fov: 44 }),
       zone: "rim",
-      look: "overworld-storm",
+      look: "overworld-rain",
       note: "Rain, by day, from the front: the two kids on the log, and standing between them with both arms up and his beard wet, grandpa.",
       stage: (t) => (
         <>
           <Sitters t={t} meProps={{ mood: "happy", lookAt: [0.05, 1.7, -1.6] }} palProps={{ lookAt: [0.05, 1.7, -1.6] }} />
           <Grandpa position={[0.05, 0, -1.55]} rotationY={NORTH} armPitch={[-2.7, -2.7]} nod={-0.35} mood="happy" lean={0} />
-          <Rain center={[0, 0, -2.5]} t={t} area={[9, 8]} count={180} />
-          <Fill at={[0, 1.8, -5]} power={22} color="#e8e0ff" reach={9} />
+          <Rain center={[0, 0, -0.6]} t={t} area={[9, 6]} count={170} />
         </>
       ),
     },
     {
       cue: "9.dad",
-      ...cam.push({ on: [0.25, 1.35, -1.0], dist: 5.0, to: 4.3, yaw: 12, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [0.15, 1.3, -1.6], dist: 8.2, to: 7.4, yaw: 6, pitch: 3, fov: 44 }),
       zone: "rim",
       look: "overworld-sunset",
       note: "From in among the trees: the back of a tall villager in a dark robe fills one side of the frame. Past him, small, are the two kids on the log in the pink light. They have not seen him.",
       stage: (t) => (
         <>
           <Sitters t={t} bone={false} />
-          <PalDad position={[0.95 - tw(t, 0, 1.2) * 0.25, 0, 1.75]} rotationY={NORTH} walk={tw(t, 0, 1.2) * 0.25} lean={0.1} />
+          <PalDad position={[1.02, 0, 4.15 - tw(t, 0, 1.2) * 0.3]} rotationY={NORTH} walk={tw(t, 0, 1.2) * 0.3} lean={0.1} />
         </>
       ),
     },
@@ -234,7 +233,7 @@ export const scene5 = storyScene(timing, {
           <PalDad position={[1.35, 0, 0.9]} rotationY={NORTH} lookAt={meFace(SEAT_ME)} nod={0.2} />
           <Fill at={[1.2, 1.9, -1.2]} power={8} color="#ffb890" reach={5} />
           <Fill at={[0, 1.8, -5]} power={22} color="#ffb890" reach={9} />
-          <SubscribeSign position={[-0.1, 2.5, -2.3]} rotationY={Math.PI} scale={0.72 * pop(t, 0.5, 0.18)} />
+          <SubscribeSign position={[0.25, 2.45, -2.3]} rotationY={Math.PI} scale={0.62 * pop(t, 0.5, 0.18)} />
         </>
       ),
     },

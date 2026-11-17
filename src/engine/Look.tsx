@@ -161,6 +161,23 @@ export const LOOKS: Record<LookPreset, Preset> = {
       clouds: 0.90, cloudScale: 0.70, cloudCover: 0.30, cloudHeight: 6, cloudShade: "#3a3450",
     },
   },
+  /** Rain by day: the blue gone out of the sky, grey cloud from edge to edge, soft cool light and hardly a shadow. */
+  "overworld-rain": {
+    bg: "#8f9aa8",
+    fog: "#9ea9b6",
+    fogDensity: 0.015,
+    ambient: { color: "#e2e8f2", intensity: 0.85 },
+    hemi: { sky: "#d2dbe8", ground: "#60725a", intensity: 0.95 },
+    key: { color: "#e8eef6", intensity: 1.25, position: [-6, 12, 5], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 13,
+    sky: {
+      top: "#5d6979", horizon: "#aeb8c4", bottom: "#707a86",
+      sun: "#eef2f8", sunDir: [-0.25, 0.42, -1], sunSize: 30, sunPower: 0.12, haze: 0.9,
+      clouds: 0.9, cloudScale: 0.8, cloudCover: 0.86, cloudHeight: 7, cloudShade: "#687280",
+    },
+  },
   /** The last of the sun: an orange sky, a low hard warm key, long shadows. Bright enough for a fight. */
   "overworld-sunset": {
     bg: "#f2a66e",

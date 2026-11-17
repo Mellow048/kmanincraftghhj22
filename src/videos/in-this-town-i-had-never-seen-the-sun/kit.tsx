@@ -148,8 +148,9 @@ export const WearBar: React.FC<{ position: Vec3; k: number; yaw?: number; scale?
   const on = q > 0.15 || Math.floor(t * 7) % 2 === 0;
   return (
     <group position={position} rotation={[flat ? -Math.PI / 2 : 0, yaw, 0]} scale={scale}>
-      <Block size={[0.6, 0.13, 0.04]} color="#101014" castShadow={false} />
-      {q > 0.005 && on ? <Block position={[-0.27 * (1 - q), 0, 0.012]} size={[0.54 * q, 0.075, 0.05]} color={color} emissive={color} emissiveIntensity={1.4} castShadow={false} /> : null}
+      <Block position={[0, 0, -0.012]} size={[0.47, 0.125, 0.03]} color="#c9ccd2" castShadow={false} />
+      <Block size={[0.43, 0.085, 0.04]} color="#101014" castShadow={false} />
+      {q > 0.005 && on ? <Block position={[-0.2 * (1 - q), 0, 0.012]} size={[0.4 * q, 0.055, 0.05]} color={color} emissive={color} emissiveIntensity={0.45} castShadow={false} /> : null}
     </group>
   );
 };

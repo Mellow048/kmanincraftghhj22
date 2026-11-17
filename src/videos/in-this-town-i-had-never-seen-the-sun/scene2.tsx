@@ -65,7 +65,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.saw",
-      ...cam.push({ on: [0, 2.2, -8], dist: 9.5, to: 8.4, yaw: 3, pitch: -3, fov: 46 }),
+      ...cam.push({ on: [0, 1.7, -8], dist: 9.5, to: 8.4, yaw: 3, pitch: -3, fov: 46 }),
       zone: "rim",
       look: "overworld-sunset",
       note: "Past the last tree, from behind him: the path, the hill, and the edge of the sun on top of it. He stops dead with his arms still up. His shadow runs back towards us.",
@@ -102,7 +102,8 @@ export const scene2 = storyScene(timing, {
           </Lying>
           <Mum position={[0.05, -0.47 + hop(t, 0.1, 0.12, 0.3), -0.02]} rotationY={SOUTH} arms={0} mood="angry" nod={0.3} />
           {t < 0.7 ? <Blaze position={[0.4, 0.15, 0]} size={0.4} height={0.8 * (1 - t / 0.7)} count={8} /> : null}
-          <Puffs position={[0.1, 0.25, 0.1]} count={8} rise={1.5} spread={0.5} size={0.26} speed={0.9} color="#cfcfcf" opacity={0.7} />
+          <Puffs position={[-0.75, 0.2, 0.1]} count={4} rise={1.1} spread={0.16} size={0.18} speed={0.9} color="#cfcfcf" opacity={0.55} />
+          <Puffs position={[0.85, 0.2, -0.1]} count={4} rise={1.1} spread={0.16} size={0.18} speed={0.9} color="#cfcfcf" opacity={0.55} seed={3} />
           <Fill at={[-0.2, 1.8, 2.0]} power={8} color="#cfd8ff" reach={5} />
         </>
       ),
@@ -119,14 +120,14 @@ export const scene2 = storyScene(timing, {
           <Me position={[1.1, 0, -2.5]} rotationY={SOUTH + 0.2} soot mood="sad" nod={0.15} />
           <Puffs position={[1.1, 1.25, -2.5]} count={4} rise={0.7} spread={0.08} size={0.1} speed={1.0} color="#d8d8d8" opacity={0.6} />
           <Old position={[2.15, 0, -3.0]} rotationY={WEST + 0.7} lean={0.45} nod={0.3} lookAt={meFace([1.1, 0, -2.5])} />
-          <Bubble text="TOAST?" position={[2.0, 2.2, -2.9]} scale={0.5 * pop(t, 0.35, 0.14)} tail={-1} />
+          <Bubble text="TOAST?" position={[2.0, 2.2, -2.9]} scale={0.5 * pop(t, 0.35, 0.14)} tail={-1} dark />
           <Fill at={[1.0, 1.8, -0.6]} power={11} color="#dfeeff" />
         </>
       ),
     },
     {
       cue: "3.that",
-      ...cam.push({ on: [-0.3, 0.75, -1.3], dist: 4.4, to: 3.7, yaw: 12, pitch: 22, fov: 42 }),
+      ...cam.push({ on: [-0.8, 0.6, -1.3], dist: 4.4, to: 3.9, yaw: 6, pitch: 30, fov: 54 }),
       zone: "room",
       look: "overworld-night",
       note: "His room. Two planks are nailed across the door, and he lies in bed. On \"I thought\" the line of gold comes on under the nailed door, and his head turns to it.",
@@ -138,7 +139,7 @@ export const scene2 = storyScene(timing, {
             <Lying position={[PLACE.bed[0], 0.64, PLACE.bed[2] + 0.55]}>
               <Me rotationY={0} turn={tw(t, th - 0.2, th + 0.1) * -1.0} soot />
             </Lying>
-            <Fill at={[-1.0, 2.2, 0.6]} power={7} color="#cfd8ff" reach={5} />
+            <Fill at={[-1.2, 2.2, 0.2]} power={11} color="#cfd8ff" reach={5} />
           </>
         );
       },
@@ -191,10 +192,10 @@ export const scene2 = storyScene(timing, {
             <Me position={p} rotationY={EAST - 0.5} armPitch={[-1.5, -1.5]} lookAt={[0.8, 1.6, -3.0]} />
             <HelmetProp position={[p[0] + 0.36, 0.66, p[2] + 0.2]} rotation={[0, 0.9, 0]} />
             <Old position={[0.7, 0, -3.1]} rotationY={WEST + 0.6} wave={tw(t, 0.3, 0.6)} lookAt={[p[0] + 0.3, 0.8, p[2]]} />
-            <Old n={1} position={[1.75, 0, -2.8]} rotationY={WEST + 0.4} lookAt={[p[0] + 0.3, 0.8, p[2]]} />
+            <Old n={1} position={[1.5, 0, -2.6]} rotationY={WEST + 0.4} lookAt={[p[0] + 0.3, 0.8, p[2]]} />
             <Grandpa position={[2.3, 0, -4.2]} rotationY={SOUTH - 0.4} mood="happy" />
-            <Bubble text="A HAT KEEPS" position={[0.9, 2.75, -3.1]} scale={0.42 * pop(t, w("4.old", "hat") - 0.1, 0.14)} tail={-1} />
-            <Bubble text="THE LIGHT OFF." position={[0.9, 2.45, -3.1]} scale={0.42 * pop(t, w("4.old", "keeps"), 0.14)} tail={-1} />
+            <Bubble text="A HAT KEEPS" position={[0.9, 2.75, -3.1]} scale={0.42 * pop(t, w("4.old", "hat") - 0.1, 0.14)} tail={-1} dark />
+            <Bubble text="THE LIGHT OFF." position={[0.9, 2.45, -3.1]} scale={0.42 * pop(t, w("4.old", "keeps"), 0.14)} tail={-1} dark />
             <Fill at={[0.4, 2.0, -0.4]} power={13} color="#dfeeff" />
           </>
         );
@@ -202,7 +203,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.long",
-      ...cam.push({ on: [0.05, 1.15, -2.6], dist: 3.6, to: 3.1, yaw: 8, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [-0.05, 1.15, -2.6], dist: 4.4, to: 3.9, yaw: 8, pitch: 3, fov: 40 }),
       zone: "under",
       look: "overworld-night",
       note: "The kid, with the hat: HOW LONG? The old one looks at the other old one. Neither of them knows.",
@@ -215,8 +216,8 @@ export const scene2 = storyScene(timing, {
             <HelmetProp position={[p[0] + 0.36, 0.66, p[2] + 0.2]} rotation={[0, 0.9, 0]} />
             <Old position={[0.7, 0, -3.1]} rotationY={WEST + 0.6} turn={-tw(t, 0.6, 0.9) * 1.1} tilt={0.1} />
             <Old n={1} position={[1.75, 0, -2.8]} rotationY={WEST + 0.4} turn={tw(t, 0.75, 1.05) * 0.5} tilt={-0.1} />
-            <Bubble text="HOW LONG?" position={[p[0], 1.72, p[2]]} scale={0.4 * pop(t, 0.1, 0.14)} tail={1} />
-            <Bubble text="?" position={[1.25, 2.4, -3.0]} scale={0.6 * pop(t, 0.95, 0.14)} tail={-1} />
+            <Bubble text="HOW LONG?" position={[p[0] + 0.45, 1.78, p[2]]} scale={0.4 * pop(t, 0.1, 0.14)} tail={1} dark />
+            <Bubble text="?" position={[1.25, 2.4, -3.0]} scale={0.6 * pop(t, 0.95, 0.14)} tail={-1} dark />
             <Fill at={[0.2, 2.0, -0.4]} power={13} color="#dfeeff" />
           </>
         );

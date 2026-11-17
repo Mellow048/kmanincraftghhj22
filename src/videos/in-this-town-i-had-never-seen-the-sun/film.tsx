@@ -28,7 +28,7 @@ export const film = defineFilm({
   cut: "middle",
   look: "overworld-night",
   post: { shaders: true },
-  audio: { src: "audio/in-this-town-i-had-never-seen-the-sun/narration.mp3" },
+  audio: { src: "audio/in-this-town-i-had-never-seen-the-sun/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5],

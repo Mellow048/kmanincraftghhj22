@@ -27,20 +27,20 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.colour",
-      ...cam.push({ on: [0, 3.2, -6], dist: 15, to: 12, yaw: -10, pitch: -7, fov: 52 }),
+      ...cam.push({ on: [0, 3.2, -6], dist: 15, to: 12, yaw: 12, pitch: -7, fov: 52 }),
       zone: "meadow",
       look: "overworld-day",
       note: "The cut the film is built on: after a minute of blue, the whole meadow in full colour. Flowers, a row of sunflowers, a town far off, a blue sky with the sun in it. He is small in the middle of it, with his back to us.",
       stage: (t) => (
         <>
-          <Me position={[0, 0, 1.4]} rotationY={NORTH} helmet turn={Math.sin(t * 2.4) * 0.7} armPitch={[-0.4, -0.4]} />
-          <Bees center={[1.4, 0.7, 2.4]} t={t} n={3} />
+          <Me position={[1.4, 0, 1.6]} rotationY={NORTH} helmet turn={Math.sin(t * 2.4) * 0.7} armPitch={[-0.4, -0.4]} />
+          <Bees center={[2.3, 0.7, 2.6]} t={t} n={3} />
         </>
       ),
     },
     {
       cue: "5.grass",
-      ...cam.push({ on: [0, 0.6, 1.4], dist: 3.0, to: 2.5, yaw: 16, pitch: 16, fov: 40 }),
+      ...cam.push({ on: [0, 0.7, 1.5], dist: 2.8, to: 2.4, yaw: 16, pitch: 7, fov: 40 }),
       zone: "meadow",
       look: "overworld-day",
       note: "He looks down at the grass round his feet, then bends and pats it with both hands. Bits of green fly up.",
@@ -48,7 +48,7 @@ export const scene3 = storyScene(timing, {
         const pat = w("5.grass", "green");
         return (
           <>
-            <Me position={SPOT} rotationY={SOUTH + 0.1} helmet nod={0.75} lean={tw(t, 0.15, pat) * 0.5} armPitch={[-0.9, -0.9]} mood={t > pat + 0.5 ? "happy" : "calm"} />
+            <Me position={SPOT} rotationY={SOUTH + 0.1} helmet nod={0.4} lean={tw(t, 0.15, pat) * 0.22} armPitch={[-0.9, -0.9]} mood={t > pat + 0.5 ? "happy" : "calm"} />
             <Bits position={[SPOT[0], 0.1, SPOT[2] + 0.45]} t={t - pat} color="#5fb03c" count={9} power={1.0} />
             <Bits position={[SPOT[0], 0.1, SPOT[2] + 0.45]} t={t - pat - 0.6} color="#5fb03c" count={9} power={1.0} seed={4} />
           </>
@@ -79,13 +79,13 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.up",
-      ...cam.push({ on: [0, 2.0, -1.0], dist: 3.6, to: 3.0, yaw: -6, pitch: -22, fov: 46 }),
+      ...cam.push({ on: [0.15, 1.9, -1.2], dist: 3.4, to: 3.2, yaw: 14, pitch: -20, fov: 46 }),
       zone: "meadow",
       look: "overworld-day",
       note: "From behind and below him: his head tips back, and there over the rim of the hat is the sun itself.",
       stage: (t) => (
         <>
-          <Me position={[0.15, 0, 0.9]} rotationY={NORTH} helmet nod={-tw(t, 0.1, 0.6) * 0.75} armPitch={[-0.3, -0.3]} />
+          <Me position={[0.5, 0, 0.25]} rotationY={NORTH} helmet nod={-tw(t, 0.1, 0.6) * 0.75} armPitch={[-0.3, -0.3]} />
         </>
       ),
     },
@@ -161,23 +161,22 @@ export const scene3 = storyScene(timing, {
         <>
           <Sunflower position={F} rotationY={NORTH} height={1.8} up={0.55} />
           <Me position={[0.35, 0, -0.1]} rotationY={NORTH + 0.2} helmet wear={0.66} barYaw={14 * DEG} barT={t} nod={-0.5} />
-          <Pal {...go([2.5, 0, 4.4], PALP, tw(t, 0, 0.9))} carry={<Loaf position={[0, 0.0, 0.14]} scale={0.7} />} />
-          <Bubble text="!" position={[PALP[0] + 0.3, 1.75, PALP[2]]} scale={0.55 * pop(t, 1.0, 0.14)} tail={-1} />
+          <Pal {...go([3.0, 0, 4.7], [1.8, 0, 3.5], tw(t, 0, 0.9))} carry={<Loaf position={[0, 0.0, 0.14]} scale={0.7} />} />
+          <Bubble text="!" position={[1.5, 1.72, 3.5]} scale={0.55 * pop(t, 1.0, 0.14)} tail={-1} dark />
         </>
       ),
     },
     {
       cue: "6.scream",
-      ...cam.push({ on: palFace(PALP), dist: 2.2, to: 1.9, yaw: 188, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [PALP[0], palFace(PALP)[1] + 0.12, PALP[2]], dist: 3.0, to: 2.7, yaw: 188, pitch: 2, fov: 38 }),
       zone: "meadow",
       look: "overworld-day",
       note: "The villager kid's face: he jumps, the loaf goes up in the air, and AAAH! fills the top of the frame.",
       stage: (t) => (
         <>
           <Pal position={[PALP[0], hop(t, 0.05, 0.3, 0.45), PALP[2]]} rotationY={NORTH} tilt={Math.sin(t * 30) * 0.08} nod={-0.2} />
-          <Loaf position={[PALP[0] + 0.1, 0.9 + hop(t, 0.05, 0.9, 0.7), PALP[2] - 0.2]} rotation={[t * 6, 0, t * 4]} scale={0.7} />
-          <Bubble text="AAAH!" position={[PALP[0], 1.75, PALP[2]]} rotationY={Math.PI} scale={0.5 * pop(t, 0.05, 0.12)} tail={1} tilt={0.1} />
-          <Fill at={[PALP[0], 1.6, PALP[2] - 2]} power={8} color="#fff0c8" />
+          <Loaf position={[PALP[0] - 0.5, 0.7 + hop(t, 0.05, 0.7, 0.7), PALP[2] - 0.2]} rotation={[t * 6, 0, t * 4]} scale={0.7} />
+          <Bubble text="AAAH!" position={[PALP[0], 1.84, PALP[2]]} rotationY={Math.PI} scale={0.5 * pop(t, 0.05, 0.12)} tail={1} tilt={0.1} dark />
         </>
       ),
     },
@@ -206,32 +205,35 @@ export const scene3 = storyScene(timing, {
         <>
           <Pal position={PALP} rotationY={NORTH} tilt={tw(t, 0.05, 0.3) * 0.3} />
           <Loaf position={[PALP[0] + 0.5, 0, PALP[2] - 0.3]} rotation={[0, 0.6, 0]} scale={0.7} />
-          <Bubble text="?" position={[PALP[0] - 0.3, 1.72, PALP[2]]} rotationY={Math.PI} scale={0.55 * pop(t, 0.12, 0.14)} tail={-1} />
-          <Fill at={[PALP[0], 1.6, PALP[2] - 2]} power={8} color="#fff0c8" />
+          <Bubble text="?" position={[PALP[0] - 0.3, 1.72, PALP[2]]} rotationY={Math.PI} scale={0.55 * pop(t, 0.12, 0.14)} tail={-1} dark />
         </>
       ),
     },
     {
       cue: "6.town",
-      ...cam.push({ on: [0, 1.5, -0.6], dist: 9.4, to: 7.8, yaw: 2, pitch: 7, fov: 46 }),
+      ...cam.push({ on: [0, 1.5, -0.6], dist: 9.6, to: 9.0, yaw: 2, pitch: 5, fov: 46 }),
       zone: "daytown",
       look: "overworld-day",
       note: "The day town, seen over two hay bales with two heads sticking up behind them: a red hood and an iron hat. Every door on the street stands open and villagers walk in and out. The bar over the hat is at half.",
       stage: (t) => (
         <>
           <DayTown />
+          {/* an open door in full sun: a warm panel over the lit doorway, which blooms to white at this distance */}
+          {([[-7.2, -4.93], [0, -5.53], [7.2, -4.93]] as Array<[number, number]>).map(([x, z]) => (
+            <Block key={x} position={[x, 1.0, z]} size={[1.0, 2.0, 0.05]} color="#7a5a34" castShadow={false} />
+          ))}
           {([[-5.5, -2.4, ROBE.brown, 1], [3.5, -1.4, ROBE.farmer, -1], [-1.5, -3.4, ROBE.white, 1], [6.5, -3.0, ROBE.red, -1]] as Array<[number, number, string, number]>).map(([x, z, robe, dir], i) => (
             <Villager key={i} position={[x + dir * t * 0.7, 0, z]} rotationY={dir > 0 ? EAST : WEST} walk={t * 0.7 + i} robe={robe} phase={i * 1.3} carry={i === 1 ? <Loaf position={[0, 0, 0.16]} scale={0.8} /> : undefined} />
           ))}
-          <Villager position={[0, 0, -5.4 + tw(t, 0.6, 2.2) * 2.2]} rotationY={SOUTH} walk={tw(t, 0.6, 2.2) * 2.2} robe={ROBE.brown} scale={0.96} phase={4} />
-          <Me position={[-0.75, 0, 5.05]} rotationY={NORTH} helmet wear={0.5} barYaw={0} barT={t} turn={Math.sin(t * 1.6) * 0.5} />
-          <Pal position={[0.6, 0, 5.1]} rotationY={NORTH} turn={tw(t, 1.2, 1.6) * 1.0} />
+          <Villager position={[0, 0, -5.1 + tw(t, 0.6, 2.2) * 2.2]} rotationY={SOUTH} walk={tw(t, 0.6, 2.2) * 2.2} robe={ROBE.brown} scale={0.96} phase={4} />
+          <Me position={[-0.55, 0, 5.05]} rotationY={NORTH} helmet wear={0.5} barYaw={0} barT={t} turn={Math.sin(t * 1.6) * 0.5} />
+          <Pal position={[0.5, 0, 5.1]} rotationY={NORTH} turn={tw(t, 1.2, 1.6) * 1.0} />
         </>
       ),
     },
     {
       cue: "6.bread",
-      ...cam.push({ on: [0.45, 0.9, 1.3], dist: 3.2, to: 2.7, yaw: 4, pitch: 5, fov: 40 }),
+      ...cam.push({ on: [0.45, 0.9, 1.3], dist: 3.9, to: 3.4, yaw: 4, pitch: 5, fov: 40 }),
       zone: "meadow",
       look: "overworld-day",
       note: "The two of them face to face in the flowers. A loaf crosses from his arms to the zombie kid's hands. Then a bone crosses the other way.",
@@ -240,8 +242,8 @@ export const scene3 = storyScene(timing, {
         const b = w("6.bread", "gave", 1);
         const k1 = tw(t, a - 0.1, a + 0.3);
         const k2 = tw(t, b - 0.05, b + 0.35);
-        const me: [number, number, number] = [-0.12, 0, 1.3];
-        const pal: [number, number, number] = [1.02, 0, 1.3];
+        const me: [number, number, number] = [0.02, 0, 1.3];
+        const pal: [number, number, number] = [0.9, 0, 1.3];
         const hand: [number, number, number] = [me[0] + 0.42, 0.74, me[2]];
         const arms: [number, number, number] = [pal[0] - 0.24, 0.66, pal[2]];
         const mix = (p: [number, number, number], q: [number, number, number], k: number): [number, number, number] => [p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k + Math.sin(k * Math.PI) * 0.12, p[2] + (q[2] - p[2]) * k];
@@ -257,16 +259,16 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.bone",
-      ...cam.push({ on: [0.25, 0.95, 1.25], dist: 2.9, to: 2.4, yaw: -8, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [0.2, 0.95, 1.25], dist: 3.6, to: 3.1, yaw: -8, pitch: 4, fov: 40 }),
       zone: "meadow",
       look: "overworld-day",
       note: "The villager kid looks down at the bone lying on his sleeves for a long moment. Then he looks up again and keeps it. Beside him the zombie kid has half the loaf in his mouth.",
       stage: (t) => {
         const kept = w("6.bone", "kept");
-        const me: [number, number, number] = [-0.4, 0, 1.15];
+        const me: [number, number, number] = [-0.22, 0, 1.15];
         return (
           <>
-            <Pal position={[0.72, 0, 1.3]} rotationY={SOUTH - 0.3} nod={0.5 - tw(t, kept - 0.15, kept + 0.15) * 0.55} carry={<Bone position={[0, 0.05, 0.14]} rotation={[0, 0, 0.2]} scale={1.1} />} />
+            <Pal position={[0.62, 0, 1.3]} rotationY={SOUTH - 0.3} nod={0.5 - tw(t, kept - 0.15, kept + 0.15) * 0.55} carry={<Bone position={[0, 0.05, 0.14]} rotation={[0, 0, 0.2]} scale={1.1} />} />
             <Me position={me} rotationY={SOUTH + 0.35} helmet wear={0.32} barYaw={-8 * DEG} barT={t} armPitch={[-2.05, -2.05]} mood="happy" nod={Math.sin(t * 9) * 0.06} />
             <Loaf position={[me[0] + 0.14, 0.96, me[2] + 0.36]} rotation={[0, 0.35, 0]} scale={0.55 * (1 - tw(t, 0.3, 2.2) * 0.45)} />
           </>

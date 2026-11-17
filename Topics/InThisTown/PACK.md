@@ -158,6 +158,20 @@ What the moon film found out, so you do not find it out again:
 - **Light the place the story is about, and nothing else.** One `Moonlight` cone that moves is a character. A moon
   that lights everything evenly is weather.
 
+### With the shaders on
+
+Every film from *I Had Never Seen the Sun* on has `post: { shaders: true }` in `film.tsx` (the owner's instruction of
+2026-11-17; the chain is `src/engine/shaders.tsx`, explained in `Topics/Shared/SHADERS.md`). The template has the line.
+It gives the painted sky with its sun, bloom, tone mapping and the grade. Stills made on a laptop show it, so judge
+the look from stills as before. What it changes for staging, learnt on that film:
+
+- **Bright things bloom.** An emissive block at intensity 2 with a `Glow` beside it, near the lens, is a white blob
+  that covers the shot. Keep emissive under 1, and a lamp's light modest (power 2 to 3 at arm's length).
+- **A sunset look under a roof of leaves reads as plain day.** For a pink moment in a dark place keep
+  `overworld-night` and add a pink side light and pool of your own.
+- **Captions and bubbles stay crisp** as long as the bloom threshold stays above 1.0 (the default does).
+- A still takes about four times as long. Shoot in groups of thirty.
+
 ## Creatures — `creatures.tsx`
 
 Built for the monster-egg film. Any film may use them.
@@ -190,7 +204,7 @@ Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a w
 
 | Name | What it is | Its own props |
 |---|---|---|
-| `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs` |
+| `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs`, `armPitch` (`[left, right]`: 0 hangs, −1.5 straight ahead, −3 up), `headwear` (anything drawn on the head and moving with it: a helmet, a blindfold) |
 | `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1, `noArm` (the waving arm has come off: draw it yourself), `raise` 0–1 (the other arm held out in front), `headDrop` (metres the skull has fallen off the neck) |
 | `Creeper` | 1.6 m, no arms, four short legs, that face | `fuse` 0–1 (swells and flashes white), `color`. `mood="happy"` turns the mouth over |
 | `Spider` | 2 m across, under 1 m tall, glowing red eyes | `rear` 0–1 (front legs up), `color`, `eyes`. Wide: turn it three-quarters on in a tall frame |

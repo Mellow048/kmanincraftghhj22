@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Dust, Glow, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
+import { Block, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
 import { DarkOak, Hut, Moon, Stars } from "../../../Topics/InThisTown";
 import { PLACE, SoulLamp, Sunflower } from "./kit";
 
@@ -90,7 +90,7 @@ const Under: React.FC<{ dawn?: boolean }> = ({ dawn = false }) => (
 );
 
 /** The edge of the trees. The wood is in the south; the lens that looks north has its back to it. */
-const Rim: React.FC<{ night: boolean }> = ({ night }) => (
+const Rim: React.FC<{ night: boolean; rays: number }> = ({ night, rays }) => (
   <group>
     <Vox kind="grass" position={[0, -0.5, 0]} size={[400, 1, 400]} />
     <Vox kind="path" position={[0, 0.02, -8]} size={[2, 0.06, 52]} />
@@ -118,6 +118,13 @@ const Rim: React.FC<{ night: boolean }> = ({ night }) => (
       <Sunflower key={x} position={[x, 0, -9 - (i % 2) * 1.4]} rotationY={Math.PI} height={1.6 + (i % 2) * 0.2} />
     ))}
     <Dust position={[0, 2, -2]} area={[18, 4, 14]} count={40} size={0.045} color={night ? "#cfe0ff" : "#fff3c8"} opacity={0.5} seed={7} speed={0.2} />
+    {/* the low sun coming in among the first trunks */}
+    {rays > 0 ? (
+      <>
+        <GodRay position={[-5.5, 5.5, 3.6]} rotation={[0, 0, 0.55]} width={4.5} height={13} color="#ffd9a0" opacity={rays} />
+        <GodRay position={[5.2, 5.5, 4.4]} rotation={[0, 0, 0.5]} width={3.5} height={13} color="#ffd9a0" opacity={rays * 0.8} />
+      </>
+    ) : null}
     {night ? <Night /> : null}
   </group>
 );
@@ -204,7 +211,7 @@ export const World: React.FC = () => {
         <Dark />
       </Zone>
       <Zone name="rim">
-        <Rim night={night} />
+        <Rim night={night} rays={look === "overworld-sunset" ? 0.09 : look === "overworld-day" ? 0.04 : 0} />
       </Zone>
       <Zone name="meadow">
         <Meadow />

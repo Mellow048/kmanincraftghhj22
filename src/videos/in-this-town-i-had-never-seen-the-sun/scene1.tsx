@@ -37,7 +37,7 @@ export const scene1 = storyScene(timing, {
               </>
             ) : null}
             {t > 1.3 ? <Puffs position={[AT[0] + 0.3, 0.75, AT[2] + 0.25]} count={4} rise={0.5} spread={0.06} size={0.08} speed={1.3} color="#e8e8e8" opacity={0.6} /> : null}
-            <Bubble text="OW!" position={[AT[0] - 0.35, 1.55, AT[2] + 0.2]} scale={0.42 * pop(t, 1.25, 0.14)} tail={1} tilt={-0.1} />
+            <Bubble text="OW!" position={[AT[0] + 0.12, 1.62, AT[2] + 0.2]} scale={0.38 * pop(t, 1.25, 0.14)} tail={1} tilt={-0.1} dark />
           </>
         );
       },
@@ -61,7 +61,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.bed",
-      ...cam.push({ on: [-0.45, 0.4, -1.2], dist: 4.4, to: 3.9, yaw: 8, pitch: 36, fov: 42 }),
+      ...cam.push({ on: [-0.8, 0.4, -1.3], dist: 4.4, to: 4.0, yaw: 4, pitch: 36, fov: 54 }),
       zone: "room",
       look: "overworld-night",
       note: "From above: the kid in bed with the blanket up, wide awake. A line of gold comes on under the shut door, and his eyes go to it.",
@@ -71,7 +71,7 @@ export const scene1 = storyScene(timing, {
           <Lying position={[PLACE.bed[0], 0.64, PLACE.bed[2] + 0.55]}>
             <Me rotationY={0} turn={tw(t, 0.5, 0.9) * -0.9} />
           </Lying>
-          <Fill at={[-1.2, 2.2, 0.4]} power={7} color="#cfd8ff" reach={5} />
+          <Fill at={[-1.2, 2.2, 0.2]} power={11} color="#cfd8ff" reach={5} />
         </>
       ),
     },
@@ -160,7 +160,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.line",
-      ...cam.push({ on: [0.3, 0.6, -1.6], dist: 3.5, to: 2.8, yaw: 26, pitch: 10, fov: 40 }),
+      ...cam.push({ on: [0.12, 0.6, -1.5], dist: 3.9, to: 3.3, yaw: 26, pitch: 10, fov: 40 }),
       zone: "room",
       look: "overworld-night",
       note: "Low, by the floor: the shut door, and the line of gold coming in under it, getting brighter and spilling onto the boards. The kid stands by his bed and stares at it.",
@@ -218,9 +218,9 @@ export const scene1 = storyScene(timing, {
             <Grandpa position={G} rotationY={SOUTH} armPitch={[-2.7 * up, -2.7 * up]} nod={-0.5 * up} mood="happy" lean={0.14 - up * 0.2} />
             <Mum position={[7.4, 0, -5.5]} rotationY={SOUTH - 0.6} lookAt={bigFace(G)} />
             <Old position={[8.5, 0, -5.4]} rotationY={SOUTH - 0.7} lookAt={bigFace(G)} />
-            <Bubble text="AH." position={[G[0] - 0.9, 2.45, G[2]]} scale={0.6 * pop(t, w("2.rain", "Ah") - 0.05, 0.14) * (t < w("2.rain", "good") - 0.1 ? 1 : 0)} tail={1} />
-            <Bubble text="THE GOOD" position={[G[0], 2.85, G[2]]} scale={0.52 * pop(t, w("2.rain", "good") - 0.1, 0.14)} tail={1} />
-            <Bubble text="WEATHER." position={[G[0], 2.5, G[2]]} scale={0.52 * pop(t, w("2.rain", "good") + 0.05, 0.14)} tail={1} />
+            <Bubble text="AH." position={[G[0] - 0.45, 2.5, G[2]]} scale={0.55 * pop(t, w("2.rain", "Ah") - 0.05, 0.14) * (t < w("2.rain", "good") - 0.1 ? 1 : 0)} tail={1} dark />
+            <Bubble text="THE GOOD" position={[G[0], 2.85, G[2]]} scale={0.52 * pop(t, w("2.rain", "good") - 0.1, 0.14)} tail={1} dark />
+            <Bubble text="WEATHER." position={[G[0], 2.5, G[2]]} scale={0.52 * pop(t, w("2.rain", "good") + 0.05, 0.14)} tail={1} dark />
             <Fill at={[G[0] - 1, 2.2, G[2] + 2.4]} power={12} color="#cfe8ff" />
           </>
         );
@@ -235,10 +235,10 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Homes />
-          <Rain center={[6.4, 0, -3.2]} t={t + 3} area={[8, 2.6]} count={70} />
+          <Rain center={[6.4, 0, -3.7]} t={t + 3} area={[8, 1.5]} count={60} />
           <Mum position={[6.45, 0, -5.4]} rotationY={SOUTH + 0.5} turn={0.4} tilt={0.12} />
           <Old position={[7.6, 0, -5.4]} rotationY={SOUTH - 0.5} turn={-0.4} tilt={-0.12} />
-          <Bubble text="?" position={[7.0, 2.35, -5.3]} scale={0.7 * pop(t, 0.12, 0.14)} tail={-1} />
+          <Bubble text="?" position={[7.0, 2.35, -5.3]} scale={0.7 * pop(t, 0.12, 0.14)} tail={-1} dark />
           <Fill at={[6.6, 2.0, -3.2]} power={10} color="#cfe8ff" />
         </>
       ),

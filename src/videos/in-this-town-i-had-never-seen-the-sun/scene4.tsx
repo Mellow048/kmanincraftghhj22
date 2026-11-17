@@ -7,14 +7,16 @@ import {
 /** 04 — The hat breaks. The pond at noon. Then the rain. */
 const IN = PLACE.inPond;
 const OUT: [number, number, number] = [-7, 0, 5.9];
-const PALB: [number, number, number] = [-4.25, 0, 3.4];
+const PALB: [number, number, number] = [-4.3, 0, 3.4];
+/** Where he has waded to by the time the kid sits down: as near the bank as the water goes. */
+const NEAR: [number, number, number] = [-5.65, -0.74, 3.3];
 const G = PLACE.grandpa;
 
 /** The two halves of the hat, where they fell on the bank. */
 const Halves = () => (
   <>
-    <HelmetProp position={[-5.1, 0.02, 4.9]} rotation={[0.2, 0.6, 1.3]} half={-1} />
-    <HelmetProp position={[-4.5, 0.02, 4.4]} rotation={[-0.2, -0.4, -1.2]} half={1} />
+    <HelmetProp position={[-6.25, 0.02, 5.2]} rotation={[0.2, 0.6, 1.3]} half={-1} />
+    <HelmetProp position={[-6.9, 0.02, 5.25]} rotation={[-0.2, -0.4, -1.2]} half={1} />
   </>
 );
 /** Rings going out on the water round his neck. */
@@ -143,24 +145,25 @@ export const scene4 = storyScene(timing, {
           <Me position={IN} rotationY={SOUTH} nod={-0.9} mood="sad" />
           <Ripples t={t} />
           <Halves />
-          <Pal position={[-4.25, 0, 4.2]} rotationY={WEST} lookAt={meFace(IN)} />
+          <Pal position={[-5.7, 0, 5.5]} rotationY={Math.PI * 0.8} lookAt={meFace(IN)} />
         </>
       ),
     },
     {
       cue: "7.kid",
-      ...cam.push({ on: [-5.7, 0.5, 3.35], dist: 4.4, to: 3.7, yaw: -8, pitch: 10, fov: 42 }),
+      ...cam.push({ on: [-5.0, 0.45, 3.4], dist: 4.3, to: 3.6, yaw: 58, pitch: 9, fov: 42 }),
       zone: "meadow",
       look: "overworld-day",
-      note: "The villager kid comes to the edge and sits down on the bank with his legs out towards the water. The two of them look at each other, one in the pond and one out of it. Neither has an idea.",
+      note: "Along the bank: the villager kid comes to the edge and sits down with his legs out towards the water, and just past him is a green head sticking out of the pond. The two of them look at each other. Neither has an idea.",
       stage: (t) => {
         const sat = t > 0.75;
         return (
           <>
-            <Me position={IN} rotationY={EAST} mood="sad" lookAt={[PALB[0], 0.8, PALB[2]]} />
-            <Ripples t={t} />
-            <Halves />
-            {sat ? <Pal position={[PALB[0], -0.39, PALB[2]]} rotationY={WEST} sit nod={0.15} tilt={Math.sin(t * 1.2) * 0.08} /> : <Pal {...go([-3.2, 0, 4.4], PALB, tw(t, 0, 0.75))} />}
+            <Me position={NEAR} rotationY={EAST} mood="sad" lookAt={[PALB[0], 0.8, PALB[2]]} />
+            <group position={[NEAR[0] - IN[0], 0, NEAR[2] - IN[2]]}>
+              <Ripples t={t} />
+            </group>
+            {sat ? <Pal position={[PALB[0], -0.39, PALB[2]]} rotationY={WEST} sit nod={0.15} tilt={Math.sin(t * 1.2) * 0.08} /> : <Pal {...go([-3.0, 0, 4.0], PALB, tw(t, 0, 0.75))} />}
           </>
         );
       },
@@ -169,7 +172,7 @@ export const scene4 = storyScene(timing, {
       cue: "7.grey",
       ...cam.push({ on: [IN[0], 2.6, IN[2] - 3], dist: 5.4, to: 4.8, yaw: 4, pitch: -17, fov: 46 }),
       zone: "meadow",
-      look: "overworld-storm",
+      look: "overworld-rain",
       note: "From low behind his head, looking up: the blue has gone out of the sky. Cloud has come over the sun, and the whole field is in shadow.",
       stage: (t) => (
         <>
@@ -182,7 +185,7 @@ export const scene4 = storyScene(timing, {
       cue: "7.drop",
       ...cam.push({ on: [IN[0], 0.36, IN[2]], dist: 2.1, to: 1.8, yaw: -6, pitch: 7, fov: 38 }),
       zone: "meadow",
-      look: "overworld-storm",
+      look: "overworld-rain",
       note: "His face, close. One drop falls and lands on his nose, and his eyes cross to look at it. Then the whole sky comes down.",
       stage: (t) => {
         const hit = 0.42;
@@ -202,7 +205,7 @@ export const scene4 = storyScene(timing, {
       cue: "7.walk",
       ...cam.push({ on: [-6.8, 0.75, 4.7], dist: 5.4, to: 4.2, yaw: -8, pitch: 6, fov: 44 }),
       zone: "meadow",
-      look: "overworld-storm",
+      look: "overworld-rain",
       note: "In the pouring rain he walks up out of the pond towards us: shoulders, then chest, then knees, then all of him on the bank, with nothing on his head and his arms a little out. The villager kid jumps up.",
       stage: (t) => {
         const k = tw(t, 0.15, 2.1);
@@ -211,7 +214,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Me {...g} position={[g.position[0], IN[1] * (1 - Math.min(1, k * 1.7)), g.position[2]]} armPitch={[-0.6, -0.6]} nod={-0.2} mood={k > 0.6 ? "happy" : "calm"} />
             <Halves />
-            <Pal position={[PALB[0], hop(t, 1.3, 0.25, 0.35), PALB[2] + 0.6]} rotationY={WEST + 0.6} lookAt={meFace(OUT)} />
+            <Pal position={[-5.95, hop(t, 1.3, 0.25, 0.35), 5.5]} rotationY={WEST} lookAt={meFace(OUT)} />
             <Rain center={[-6.6, 0, 4.4]} t={t} area={[10, 9]} count={190} />
           </>
         );
@@ -221,7 +224,7 @@ export const scene4 = storyScene(timing, {
       cue: "7.nofire",
       ...cam.push({ on: meFace(OUT), dist: 2.1, to: 1.8, yaw: 10, pitch: -3, fov: 38 }),
       zone: "meadow",
-      look: "overworld-storm",
+      look: "overworld-rain",
       note: "His bare head, close, with the rain bouncing off it and running down his face. Not one flame. He grins.",
       stage: (t) => (
         <>
@@ -229,7 +232,7 @@ export const scene4 = storyScene(timing, {
           {[0, 0.3, 0.6].map((d, i) => (
             <Bits key={d} position={[OUT[0] + (i - 1) * 0.1, 1.3, OUT[2] + 0.1]} t={t - d} color="#cfe4ff" count={5} power={0.7} seed={i + 2} />
           ))}
-          <Rain center={[OUT[0], 0, OUT[2]]} t={t + 2} area={[7, 7]} count={170} />
+          <Rain center={[OUT[0], 0, OUT[2] - 2.6]} t={t + 2} area={[7, 5]} count={170} />
         </>
       ),
     },
@@ -256,7 +259,7 @@ export const scene4 = storyScene(timing, {
       cue: "7.been",
       ...cam.push({ on: [0.1, 1.25, -0.7], dist: 4.6, to: 3.6, yaw: 12, pitch: 1, fov: 42 }),
       zone: "meadow",
-      look: "overworld-storm",
+      look: "overworld-rain",
       note: "The same field, long ago, in the rain: a young zombie in grandpa's purple shirt stands by the sunflowers with his face up. In his hand is an iron hat with a dent in it.",
       stage: (t) => {
         const p: [number, number, number] = [-0.2, 0, -0.6];
