@@ -64,9 +64,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p "review/${COMPOSITION}"
           cp out/stills/*.png "review/${COMPOSITION}/"
-          git add "review/${COMPOSITION}/"
-          git status --short
-          git diff --cached --stat
+          git add -f "review/${COMPOSITION}/"
           git commit -m "Diagnostic review frames for ${COMPOSITION}" || { echo "::error::commit failed"; git status; exit 1; }
           # Somebody may have pushed while the stills rendered: take their commits first, or the push is refused
           # and ten minutes of frames are lost.
