@@ -62,16 +62,18 @@ export const scene6 = storyScene(timing, {
       // The wall takes it: a hard cut to the plaster beside the window, no actor in frame, and the sentence going
       // into it and staying. The last time the power works in the film, and it works away from him.
       cue: "8.wall",
-      // The plaster the sentence goes into, close and oblique, with the window keeping the light story in frame.
-      // A mirror version was drafted and dropped: the reflection needs the lens between the actor and the glass,
-      // which leaves 0.6 m to his face. The wall reads, so the wall stays.
-      ...cam.push({ on: K(-0.90, 1.32, -2.35), dist: 3.40, to: 2.85, yaw: 26, pitch: 2, fov: 48 }),
+      // THE WINDOW OVER THE SINK. Three earlier versions pointed at the plaster beside it and read as a blank
+      // tile: at eye level that wall genuinely is one -- no shelf, no clock, nothing but the tile. The window is
+      // the only object in the room with light behind it, and the sink under it is the thing his father talked to
+      // for nineteen years, so the sentence lands here: the whole window across the top of frame, the tap below
+      // it, and the rings going out across the glass.
+      ...cam.push({ on: K(-2.30, 1.48, -2.98), dist: 3.20, to: 2.85, yaw: 14, pitch: 6, fov: 48 }),
       zone: "kitchen",
       look: "overworld-day",
-      note: "The kitchen wall between the window and the fridge taking the sentence with nobody in frame: the one wall in the film that hears something for the first time.",
+      note: "The window over the sink with the morning in it and the tap just below: the place his dad said it to every day, taking the sentence for the first time.",
       stage: (t) => (
         <>
-          <Rings at={K(-0.90, 1.24, -3.06)} t={t} from={TAKE} />
+          <Rings at={K(-2.30, 2.05, -2.96)} t={t} from={TAKE} />
         </>
       ),
     },
