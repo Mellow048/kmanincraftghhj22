@@ -2,7 +2,7 @@ import type React from "react";
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Teacher, Tray, SubscribeSign, Friend,
+  Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Adult, Tray, SubscribeSign, Friend,
   HALL, R, HOME, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
 } from "./kit";
 
@@ -76,7 +76,7 @@ export const scene1 = storyScene(timing, {
       note: "Wide on the staffroom, teachers drinking tea, nobody asking about a missing kid.",
       stage: (_t) => (
         <>
-          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
+          <Adult position={SPOT.teacher} animation="idle" face="calm" />
           <Classmate who={4} position={SPOT.at(-2.4, 0, -1.2)} rotationY={NORTH} animation="idle" face="calm" />
           <Cup position={SPOT.desk(-0.6, 0)} />
         </>
@@ -143,7 +143,7 @@ export const scene1 = storyScene(timing, {
       stage: (_t) => (
         <>
           <Hero position={SPOT.at(2.2, 0, -2.0)} rotationY={EAST} animation="idle" face="uneasy" />
-          <Teacher position={SPOT.teacher} animation="idle" face="frown" />
+          <Adult position={SPOT.teacher} animation="idle" face="frown" />
         </>
       ),
     },
@@ -155,7 +155,7 @@ export const scene1 = storyScene(timing, {
       note: "The same teacher, starting the same shout again, angrier, from scratch.",
       stage: (_t) => (
         <>
-          <Teacher position={SPOT.teacher} animation="idle" face="fear" />
+          <Adult position={SPOT.teacher} animation="idle" face="fear" />
         </>
       ),
     },

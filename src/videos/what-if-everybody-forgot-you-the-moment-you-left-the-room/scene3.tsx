@@ -2,7 +2,7 @@ import type React from "react";
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Teacher, Tray, SubscribeSign, Friend,
+  Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Adult, Tray, SubscribeSign, Friend,
   HALL, R, HOME, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
 } from "./kit";
 
@@ -166,14 +166,18 @@ export const scene3 = storyScene(timing, {
     {
       // The street, empty except for one person at the gate, and the sign.
       cue: "12.suba",
-      ...cam.push({ on: [24.20, 1.30, 64.60], dist: 5.20, to: 4.65, yaw: 178, pitch: 0, fov: 50 }),
+      // The last frame. Three things have to be true at once: he faces the lens (he was turned away at 0.33 rad
+      // when the lens is on his other side), the person at the gate is visible and small, and the sign is in frame.
+      // The sign was hung at x -2.0, i.e. two metres to his left and outside a 50-degree frame at this range.
+      // Solved: hero faces 3.01 rad; sign at x -1.05 so it sits beside him rather than off-screen.
+      ...cam.push({ on: [24.20, 1.30, 64.60], dist: 5.20, to: 4.65, yaw: 178, pitch: 0, fov: 54 }),
       zone: "drive",
       note: "The street, empty except for one person at the gate, and the sign.",
       stage: (_t) => (
         <>
-          <Hero position={DRIVE.at(0.1, 0, 1.6)} rotationY={0.33} animation="idle" face="wow" />
-          <Player who={11} position={DRIVE.at(1.9, 0, 4.4)} rotationY={SOUTH} animation="idle" />
-          <SubscribeSign position={DRIVE.at(-2.0, 1.45, 2.3)} rotationY={NORTH + 0.3} scale={0.95} tilt={0.03} />
+          <Hero position={DRIVE.at(0.1, 0, 1.6)} rotationY={3.01} animation="idle" face="wow" />
+          <Player who={11} position={DRIVE.at(1.6, 0, 4.2)} rotationY={SOUTH} animation="idle" />
+          <SubscribeSign position={DRIVE.at(-1.05, 1.85, 2.9)} rotationY={NORTH + 0.2} scale={0.9} tilt={0.03} />
         </>
       ),
     },

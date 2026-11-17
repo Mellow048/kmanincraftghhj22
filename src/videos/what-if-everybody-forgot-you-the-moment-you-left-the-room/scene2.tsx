@@ -2,7 +2,7 @@ import type React from "react";
 import { Block, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import {
-  Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Teacher, Tray, SubscribeSign, Friend,
+  Classmate, Cup, Hero, Player, SPOT, SOUTH, EAST, NORTH, WEST, Adult, Tray, SubscribeSign, Friend,
   HALL, R, HOME, LUNCH, SHOP, YARD, DRIVE, ease, ramp, timing, wordAt,
 } from "./kit";
 
@@ -268,7 +268,7 @@ export const scene2 = storyScene(timing, {
       note: "The teacher at the desk with the paper, counting something into an envelope.",
       stage: (_t) => (
         <>
-          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
+          <Adult position={SPOT.teacher} animation="idle" face="calm" />
           <Block position={SPOT.at(-0.6, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
           <Block position={SPOT.at(-0.6, 0.86, -2.85)} size={[0.3, 0.14, 0.22]} color="#d8cfae" castShadow={false} />
         </>
@@ -282,7 +282,7 @@ export const scene2 = storyScene(timing, {
       note: "His face, and he is not angry at all; he is tired, and he is being paid.",
       stage: (_t) => (
         <>
-          <Teacher position={SPOT.teacher} animation="idle" face="calm" />
+          <Adult position={SPOT.teacher} animation="idle" face="calm" />
         </>
       ),
     },

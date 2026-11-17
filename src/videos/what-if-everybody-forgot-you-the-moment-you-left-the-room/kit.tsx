@@ -83,6 +83,15 @@ export const Hero: React.FC<A> = (p) => (
   <MinecraftAvatar scale={KID} outfit="tee" blink {...TELLER} {...p} />
 );
 
+/**
+ * A grown-up in the school: the teacher, the shopkeeper, the woman behind the counter. NOT `Teacher` from the pack —
+ * that one wears an off-white tee (#e9e4d8) and at anything under three metres it reads as a white slab with a head
+ * above it, which is what four shots of film three looked like. This one wears a colour you can see.
+ */
+export const Adult: React.FC<A & { color?: string }> = ({ color = "#3f5f8a", ...p }) => (
+  <MinecraftAvatar scale={1} outfit="tee" skin="#e0ac7e" hair="#4a3524" colors={{ torso: color, arms: color, legs: "#33374a" }} blink {...p} />
+);
+
 /** The best friend: the one who is told first, and the one who says stop. A second colour, quieter than the teller's. */
 export const Friend: React.FC<A> = (p) => (
   <MinecraftAvatar scale={KID} outfit="tee" skin="#8a5a3c" hair="#1f1a18" colors={{ torso: "#2fb5a8", arms: "skin", legs: "#3a3344" }} blink {...p} />

@@ -119,16 +119,24 @@ export const World: React.FC = () => {
           {/* a menu board over the counter, and a clock nobody looks at */}
           <Block position={[-1.4, 2.5, -5.98]} size={[5.2, 1.1, 0.06]} color="#1e2b3a" castShadow={false} />
           <Block position={[3.4, 2.6, -5.98]} size={[0.7, 0.7, 0.06]} color="#e8e2d2" castShadow={false} />
-          {/* four long tables */}
+          {/* four long tables, with the benches and trays that make them read as a canteen and not four planks */}
           {[[-3.6, -0.6], [1.2, -0.6], [-3.6, 2.2], [1.2, 2.2]].map(([x, z]) => (
             <group key={`${x}${z}`} position={[x, 0, z]}>
               <Block position={[0, 0.66, 0]} size={[3.4, 0.08, 0.9]} color="#c9a06a" />
               {[-1.4, 1.4].flatMap((dx) => [-0.3, 0.3].map((dz) => (
                 <Block key={`${dx}${dz}`} position={[dx, 0.32, dz]} size={[0.08, 0.64, 0.08]} color="#59606b" />
               )))}
+              {/* benches either side, at the height a sitting kid fits */}
               {[-1, 1].map((dz) => (
-                <Block key={`b${dz}`} position={[0, 0.44, dz * 0.75]} size={[3.2, 0.06, 0.3]} color="#8a6a44" />
+                <Block key={`bench${dz}`} position={[0, 0.42, dz * 0.82]} size={[3.3, 0.08, 0.34]} color="#8a6a44" />
               ))}
+              {[-1, 1].flatMap((dz) => [-1.3, 1.3].map((dx) => (
+                <Block key={`bl${dz}${dx}`} position={[dx, 0.2, dz * 0.82]} size={[0.08, 0.4, 0.3]} color="#59606b" />
+              )))}
+              {/* a tray and a plate on each table */}
+              <Block position={[-0.7, 0.72, 0]} size={[0.5, 0.04, 0.34]} color="#8fa0ae" castShadow={false} />
+              <Block position={[0.6, 0.72, 0.05]} size={[0.5, 0.04, 0.34]} color="#a0aeba" castShadow={false} />
+              <Block position={[0.6, 0.755, 0.05]} size={[0.34, 0.03, 0.24]} color="#f2c230" castShadow={false} />
             </group>
           ))}
           <Glow position={[0, 3.3, -1.5]} size={2.8} color="#fff0c8" opacity={0.18} />
