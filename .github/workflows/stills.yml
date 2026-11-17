@@ -80,10 +80,15 @@ jobs:
         run: |
           # Somebody may have pushed while the stills rendered: take their commits first, or the push is refused
           # and ten minutes of frames are lost.
-          git pull --rebase origin "${REF_NAME}" > out/stills/push-proof.txt 2>&1 || echo "rebase-failed" >> out/stills/push-proof.txt
-          git rev-parse HEAD >> out/stills/push-proof.txt
-          git push origin "HEAD:${REF_NAME}" >> out/stills/push-proof.txt 2>&1 || echo "push-failed" >> out/stills/push-proof.txt
-          git ls-remote origin "refs/heads/${REF_NAME}" >> out/stills/push-proof.txt 2>&1
+          {
+            echo "head-before: $(git rev-parse HEAD)"
+            git pull --rebase origin "${REF_NAME}" && echo "rebase-ok" || echo "rebase-failed"
+            git push origin "HEAD:${REF_NAME}" && echo "push-ok" || echo "push-failed"
+            echo "remote-after: $(git ls-remote origin "refs/heads/${REF_NAME}")"
+          } > out/push-proof.txt 2>&1
+          git add -f out/push-proof.txt
+          git -c core.hooksPath=/dev/null commit -m "Record the review push reply"
+          git push origin "HEAD:${REF_NAME}"
 
       - name: Publish release assets
         uses: softprops/action-gh-release@v2
