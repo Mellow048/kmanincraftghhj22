@@ -1,0 +1,7 @@
+
+▶ what-if-everybody-forgot-you-the-moment-you-left-the-room frame 430 → out/stills/what-if-everybody-forgot-you-the-moment-you-left-the-room-0430.png
+
+▶ what-if-everybody-forgot-you-the-moment-you-left-the-room frame 2760 → out/stills/what-if-everybody-forgot-you-the-moment-you-left-the-room-2760.png
+
+Done. 2 still(s) in out/stills
+exit=0
