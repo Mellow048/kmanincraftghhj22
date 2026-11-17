@@ -37,6 +37,12 @@ export type StoryShot = Omit<Shot, "at" | "dur" | "cue"> & {
   /** Id of the narration line this shot is cut to. */
   cue: string;
   /**
+   * A cut INSIDE a line. Leave it out and the shot starts with the line. Give seconds (into the line) and this
+   * shot takes over from the one before it, which must be on the same cue: an action line can be three or four
+   * angles instead of one. `t` in `stage` then counts from this cut, so subtract `cut` from a `wordAt` time.
+   */
+  cut?: number;
+  /**
    * Who and what is in front of the lens for this shot. `t` is seconds since
    * the cut. It is a plain function: do not call hooks in it (return a
    * component that does, if you need one).
@@ -68,8 +74,14 @@ export function storyScene(timing: Timing, def: StorySceneDef): SceneDef {
   const start = cueOf(timing, def.shots[0].cue, def.id).start;
 
   let cursor = start;
-  const shots: Shot[] = def.shots.map((shot) => {
+  let previous = "";
+  const begins: number[] = def.shots.map((shot) => {
     const cue = cueOf(timing, shot.cue, def.id);
+    if (shot.cut !== undefined && shot.cut > 0) {
+      if (shot.cue !== previous) throw new Error(`[${def.id}] shot "${shot.cue}" has \`cut\` but the shot before it is on another cue.`);
+      if (cue.start + shot.cut >= cue.end) throw new Error(`[${def.id}] shot "${shot.cue}" cuts at ${shot.cut}s, after its line has ended.`);
+      return cue.start + shot.cut;
+    }
     if (Math.abs(cue.start - cursor) > 1e-3) {
       throw new Error(
         `[${def.id}] cue "${shot.cue}" starts at ${cue.start}s but the previous shot ends at ${cursor.toFixed(3)}s. ` +
@@ -77,8 +89,16 @@ export function storyScene(timing: Timing, def: StorySceneDef): SceneDef {
       );
     }
     cursor = cue.end;
-    const { stage: _stage, ...camera } = shot;
-    return { ...camera, at: cue.start - start, dur: cue.end - cue.start };
+    previous = shot.cue;
+    return cue.start;
+  });
+  const shots: Shot[] = def.shots.map((shot, i) => {
+    const cue = cueOf(timing, shot.cue, def.id);
+    const next = def.shots[i + 1];
+    const end = next && next.cut !== undefined && next.cut > 0 ? begins[i + 1] : cue.end;
+    if (end - begins[i] < 0.1) throw new Error(`[${def.id}] shot ${i} on "${shot.cue}" is shorter than a tenth of a second.`);
+    const { stage: _stage, cut: _cut, ...camera } = shot;
+    return { ...camera, at: begins[i] - start, dur: end - begins[i] };
   });
 
   const Component: React.FC = () => {
@@ -92,7 +112,7 @@ export function storyScene(timing: Timing, def: StorySceneDef): SceneDef {
       <>
         {def.Component ? <def.Component /> : null}
         {/* The key remounts the stage on every cut, so one shot's state never leaks into the next. */}
-        <Fragment key={def.shots[index].cue}>{stage ? stage(local, { dur, p: clamp01(local / dur) }) : null}</Fragment>
+        <Fragment key={`${def.shots[index].cue}#${index}`}>{stage ? stage(local, { dur, p: clamp01(local / dur) }) : null}</Fragment>
       </>
     );
   };

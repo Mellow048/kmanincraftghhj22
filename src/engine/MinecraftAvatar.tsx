@@ -57,6 +57,10 @@ export type MinecraftAvatarProps = {
    */
   colors?: { torso?: string; arms?: string; legs?: string };
 
+  /** Shoes: a colour for a pair of trainers drawn over the feet. `shoeGlow` 0–1 makes them light up. */
+  shoes?: string;
+  shoeGlow?: number;
+
   /** Additive head aim, radians. */
   headYaw?: number;
   headPitch?: number;
@@ -83,6 +87,12 @@ export type MinecraftAvatarProps = {
   faceGlow?: number;
   /** Cheap rim silhouette for dark characters. 0 = none. */
   rim?: number;
+
+  /**
+   * A whole pose, set by the scene. Overrides `animation`, `blendTo` and `arms`: this is how a fight is
+   * choreographed frame by frame (wind-up, cut, follow-through) instead of played from a looping clip.
+   */
+  pose?: Pose;
 
   /** Anything parented to the right hand. */
   children?: React.ReactNode;
@@ -179,6 +189,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   hair = "#4a2e1c",
   outfit = "gown",
   colors,
+  shoes,
+  shoeGlow = 0,
   headYaw = 0,
   headPitch = 0,
   headRoll = 0,
@@ -192,6 +204,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   shadowOpacity = 0.5,
   faceGlow = 0,
   rim = 0,
+  pose: posed,
   children,
   head,
 }) => {
@@ -293,6 +306,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     const upper = getPose(arms, clock);
     pose = { ...pose, armR: upper.armR, armL: upper.armL };
   }
+
+  if (posed) pose = posed;
 
   // Head aim
   let yaw = headYaw;
@@ -396,6 +411,18 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
             <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
               <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
             </mesh>
+            {shoes ? (
+              <>
+                <mesh castShadow position={[0, -5.1 * PX, 0.5 * PX]}>
+                  <boxGeometry args={[4.1 * PX, 2 * PX, 5.4 * PX]} />
+                  <meshStandardMaterial color={shoes} emissive={shoes} emissiveIntensity={shoeGlow} roughness={0.6} />
+                </mesh>
+                <mesh position={[0, -5.9 * PX, 0.5 * PX]}>
+                  <boxGeometry args={[4.2 * PX, 0.6 * PX, 5.5 * PX]} />
+                  <meshStandardMaterial color="#f4f4f4" roughness={0.8} />
+                </mesh>
+              </>
+            ) : null}
           </group>
         </group>
 
@@ -408,6 +435,18 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
             <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
               <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
             </mesh>
+            {shoes ? (
+              <>
+                <mesh castShadow position={[0, -5.1 * PX, 0.5 * PX]}>
+                  <boxGeometry args={[4.1 * PX, 2 * PX, 5.4 * PX]} />
+                  <meshStandardMaterial color={shoes} emissive={shoes} emissiveIntensity={shoeGlow} roughness={0.6} />
+                </mesh>
+                <mesh position={[0, -5.9 * PX, 0.5 * PX]}>
+                  <boxGeometry args={[4.2 * PX, 0.6 * PX, 5.5 * PX]} />
+                  <meshStandardMaterial color="#f4f4f4" roughness={0.8} />
+                </mesh>
+              </>
+            ) : null}
           </group>
         </group>
       </group>
