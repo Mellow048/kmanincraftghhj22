@@ -15,15 +15,15 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.roof",
-      ...cam.top({ on: [0.5, 3.4, -6.4], height: 7.2, to: 5.2, fov: 40 }),
+      ...cam.top({ on: [0.6, 4.2, -6.2], height: 16, to: 12, fov: 36 }),
       zone: "village",
       look: DAY,
       note: "Straight down: one black leg on the baker's roof, his nose in the bread.",
       stage: () => (
         <>
-          <SkyThing position={[0.15, 4.2, -6.8]} scale={1.05} legs={6} reach={0.85} turn={0.2} />
-          <Baker position={[1.35, 0, -4.4]} lean={1.15} nod={0.8} />
-          <Vox kind="hay" position={[1.4, 0.55, -3.85]} size={[0.4, 0.18, 0.28]} />
+          <SkyThing position={[-0.4, 8.4, -7.6]} scale={0.55} legs={6} reach={1} turn={0.3} />
+          <Baker position={[1.5, 0, -4.6]} lean={1.15} nod={0.8} />
+          <Vox kind="hay" position={[1.55, 0.55, -4.05]} size={[0.4, 0.18, 0.28]} />
         </>
       ),
     },
@@ -45,14 +45,13 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.wont",
-      ...cam.push({ on: [1.05, 1.05, 1.95], dist: 1.7, to: 1.2, yaw: -8, pitch: 10, fov: 34 }),
+      ...cam.push({ on: [1.05, 1.4, 1.95], dist: 1.9, to: 1.4, yaw: 24, pitch: 14, fov: 32 }),
       zone: "village",
       look: DAY,
-      note: "On hands, both of his go over his eyes. On sang, he is still singing.",
+      note: "Three-quarter: both hands are already over his eyes, and he sings.",
       stage: (t) => {
-        const hands = ease(ramp(t, wordAt("3.wont", "hands"), wordAt("3.wont", "eyes") + 0.15));
         const sing = ease(ramp(t, wordAt("3.wont", "sang"), wordAt("3.wont", "sang") + 0.2));
-        return <Friend position={[1.05, 0, 1.95]} cover={Math.max(hands, 0.15)} hmm={sing} />;
+        return <Friend position={[1.05, 0, 1.95]} cover={1} hmm={sing} />;
       },
     },
   ],

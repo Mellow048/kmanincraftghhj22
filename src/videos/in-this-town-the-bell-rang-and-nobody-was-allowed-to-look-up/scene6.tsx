@@ -7,7 +7,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "6.reach",
-      ...cam.push({ on: [0.3, 2.6, -1.2], dist: 6.2, to: 4.4, yaw: -16, pitch: 12, fov: 44 }),
+      ...cam.push({ on: [0.2, 2.5, -1.6], dist: 7.4, to: 5.6, yaw: -6, pitch: 8, fov: 42 }),
       zone: "village",
       look: DAY,
       note: "A leg reaches for the rope, and one orange kid is still on his feet.",
@@ -15,9 +15,9 @@ export const scene6 = storyScene(timing, {
         const reach = ease(ramp(t, wordAt("6.reach", "rope"), wordAt("6.reach", "rope") + 0.45));
         return (
           <>
-            <SkyThing position={[0.7, 3.5, -2.1]} scale={1.4} reach={0.25 + reach * 0.7} turn={-0.15} />
+            <SkyThing position={[0.35, 3.9, -3.1]} scale={1.15} reach={0.35 + reach * 0.6} turn={-0.05} />
             <BellRope />
-            <Hero position={[0.2, 0, 1.5]} animation="reachUp" face="brave" />
+            <Hero position={[0.25, 0, 0.7]} animation="reachUp" face="brave" />
             <Crowd n={5} at={[0.2, 0, 0.7]} />
           </>
         );
@@ -42,15 +42,15 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.pull",
-      ...cam.push({ on: [0.15, 1.45, -1.7], dist: 2.3, to: 1.55, yaw: 72, pitch: 6, fov: 32 }),
+      ...cam.push({ on: [0.05, 1.7, -2.05], dist: 3.6, to: 2.6, yaw: 28, pitch: 10, fov: 34 }),
       zone: "village",
       look: DAY,
-      note: "Side on: his hands meet the rope, and the rope goes down.",
+      note: "His raised hand, the rope, and the bell, all in one frame.",
       stage: (t) => {
         const pull = ease(ramp(t, wordAt("6.pull", "pulled"), wordAt("6.pull", "pulled") + 0.35));
         return (
           <>
-            <Hero position={[0.22, 0, -1.55]} rotationY={3.14} animation="reachUp" face="brave" />
+            <Hero position={[0.35, 0, -1.15]} rotationY={3.05} animation="reachUp" face="brave" />
             <BellRope pull={pull} />
           </>
         );
@@ -58,7 +58,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.twice",
-      ...cam.top({ on: [0.2, 0.4, 0.4], height: 12, to: 7.5, fov: 50 }),
+      ...cam.top({ on: [0.15, 0.2, -0.6], height: 16, to: 12, fov: 42 }),
       zone: "village",
       look: DAY,
       note: "From above: on looked, every chin comes off the dirt at once.",
@@ -70,7 +70,7 @@ export const scene6 = storyScene(timing, {
             <Hero position={[0.2, 0, 1.1]} animation="reachUp" />
             <Baker position={[1.8, 0, 0.8]} lean={bow} nod={bow * 0.5} />
             <Crowd n={8} up={up} at={[0.2, 0, 0.5]} />
-            <SkyThing position={[1.2, 4.2, -2.4]} scale={0.85} turn={0.3} />
+            <SkyThing position={[2.4, 6.5, -4.2]} scale={0.45} turn={0.2} />
           </>
         );
       },

@@ -36,13 +36,13 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.gone",
-      ...cam.push({ on: [0, 4.6, -1.4], dist: 6.5, to: 8.2, yaw: 6, pitch: 8, fov: 46 }),
+      ...cam.push({ on: [0, 10.5, 0.2], dist: 7.5, to: 9.5, yaw: 4, pitch: -16, fov: 44 }),
       zone: "village",
       look: DAY,
-      note: "The hole closes. The pull-back leaves sky where the mouth was.",
+      note: "Open sky. The mouth closes. No roof behind it.",
       stage: (t) => {
         const shut = 1 - ease(ramp(t, wordAt("8.gone", "closed"), wordAt("8.gone", "closed") + 0.55));
-        return <SkyHole position={[0, 4.8, -1.6]} open={Math.max(0.08, shut)} />;
+        return <SkyHole position={[0, 11.6, 0.1]} open={Math.max(0.08, shut)} />;
       },
     },
     {

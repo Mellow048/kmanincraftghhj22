@@ -34,11 +34,11 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.eye",
-      ...cam.push({ on: [0.35, 3.5, -1.6], dist: 4.6, to: 3.2, yaw: 12, pitch: 6, fov: 36 }),
+      ...cam.push({ on: [0.4, 3.3, -2.2], dist: 7.6, to: 6.2, yaw: 6, pitch: 4, fov: 40 }),
       zone: "village",
       look: DAY,
-      note: "The one eye and the bell in the same frame, so we see what it wants.",
-      stage: () => <SkyThing position={[0.7, 3.35, -2.2]} scale={1.25} turn={0.15} />,
+      note: "The whole eye, and the bell under it. Neither is cropped.",
+      stage: () => <SkyThing position={[0.55, 3.5, -2.8]} scale={1.05} turn={0.05} />,
     },
     {
       cue: "5.want",

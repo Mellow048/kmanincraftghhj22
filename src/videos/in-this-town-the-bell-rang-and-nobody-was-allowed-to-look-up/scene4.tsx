@@ -7,16 +7,16 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.mum",
-      ...cam.push({ on: [9.85, 1.25, -2.95], dist: 3.2, to: 2.3, yaw: 78, pitch: 14, fov: 34 }),
+      ...cam.push({ on: [9.8, 1.3, -2.75], dist: 3.5, to: 2.6, yaw: 52, pitch: 16, fov: 34 }),
       zone: "village",
       look: DAY,
-      note: "Side on, so her hands land on his head and his chin goes down.",
+      note: "Side-front: her hands come down onto his head, and his chin drops.",
       stage: (t) => {
-        const push = ease(ramp(t, wordAt("4.mum", "hand"), wordAt("4.mum", "down") + 0.2));
+        const push = ease(ramp(t, 0.15, wordAt("4.mum", "down") + 0.15));
         return (
           <>
-            <Mum position={[9.5, 0, -3.2]} rotationY={0.75} press={push} />
-            <Hero position={[10.02, 0, -2.72]} animation={push > 0.35 ? "crouch" : "talk"} face="frown" />
+            <Mum position={[9.5, 0, -3.05]} rotationY={0.85} press={Math.max(push, 0.45)} />
+            <Hero position={[10.0, 0, -2.62]} animation="crouch" face="frown" />
           </>
         );
       },
@@ -44,17 +44,17 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.night",
-      ...cam.push({ on: [-4.4, 2.6, 6.1], dist: 6.6, to: 4.8, yaw: 26, pitch: 10, fov: 42 }),
+      ...cam.push({ on: [-3.6, 2.8, 7.2], dist: 8.4, to: 6.6, yaw: 12, pitch: 8, fov: 42 }),
       zone: "village",
       look: NIGHT,
-      note: "Night. The thing sits on the well, and he is the only one awake to hear it.",
+      note: "Night. The thing sits on the well roof, the eye is in frame, and he is awake.",
       stage: (t) => {
         const hear = ease(ramp(t, wordAt("4.night", "heard"), wordAt("4.night", "heard") + 0.3));
         return (
           <>
-            <Fill on={[-4.6, 3.2, 6.4]} yaw={40} power={8} />
-            <SkyThing position={[-5, 4.55, 5.5]} scale={0.72} legs={8} turn={0.5} reach={0.15} />
-            <Hero position={[-2.2, 0, 7.4]} animation={hear > 0.4 ? "peek" : "idle"} face="fear" />
+            <Fill on={[-4.8, 3.4, 6.6]} yaw={30} power={9} />
+            <SkyThing position={[-5, 3.55, 5.5]} scale={0.58} legs={8} turn={0.35} reach={0.1} />
+            <Hero position={[-2.3, 0, 7.8]} animation={hear > 0.3 ? "peek" : "idle"} face="fear" />
           </>
         );
       },

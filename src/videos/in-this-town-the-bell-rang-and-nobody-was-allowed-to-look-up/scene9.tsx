@@ -39,7 +39,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.up",
-      ...cam.truck({ on: [-2.6, 1.35, 2.2], dist: 4.8, yaw: 70, pitch: 4, fov: 42, by: [6.2, 0, 0] }),
+      ...cam.truck({ on: [-2.2, 1.55, 3.4], dist: 4.6, yaw: 18, pitch: 6, fov: 40, by: [4.8, 0, 0] }),
       zone: "village",
       look: DAY,
       note: "Travelling the square: the baker, the kids, the iron golem, every chin up.",
@@ -55,16 +55,16 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.end",
-      ...cam.push({ on: [0.2, 2.2, -0.6], dist: 5.4, to: 4.2, yaw: 6, pitch: 6, fov: 42 }),
+      ...cam.push({ on: [0.2, 1.9, 0.4], dist: 6.8, to: 5.4, yaw: 4, pitch: 6, fov: 42 }),
       zone: "village",
       look: DAY,
       note: "The bell, the town looking up, and the sign. The picture stays the story.",
       stage: (t) => (
         <>
-          <Hero position={[0.35, 0, 1.6]} animation="reachUp" face="brave" />
-          <Mum position={[-1.2, 0, 1.3]} nod={-0.4} />
-          <Crowd n={5} up={1} at={[0.2, 0, 0.3]} />
-          <SubscribeSign position={[1.55, 0.85, 1.35]} scale={0.34 * pop(t, 0.35)} />
+          <Hero position={[0.3, 0, 1.35]} animation="reachUp" face="brave" />
+          <Mum position={[-1.35, 0, 0.85]} nod={-0.4} />
+          <Crowd n={5} up={1} at={[0.15, 0, 0.2]} />
+          <SubscribeSign position={[1.7, 1.15, 0.55]} scale={0.32 * pop(t, 0.35)} />
         </>
       ),
     },
