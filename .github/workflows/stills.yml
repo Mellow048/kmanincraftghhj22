@@ -62,9 +62,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p "review/${COMPOSITION}"
-          cp out/stills/*.png "review/${COMPOSITION}/"
+          ls -la out/stills
+          cp -v out/stills/*.png "review/${COMPOSITION}/"
           git add -f "review/${COMPOSITION}/"
           git status --short
+          find review -name "*.png" -newer .git/HEAD | head
 
       - name: Commit review frames
         if: ${{ inputs.commit_review && github.ref_name != 'main' }}
