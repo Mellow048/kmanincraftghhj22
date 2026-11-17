@@ -102,12 +102,12 @@ export const Toast: React.FC<{ at: Vec3; n?: number; seed?: number }> = ({ at, n
  * to at least 46°, so a standing kid fits with air above him and the room reads behind him.
  */
 export const fit = (o: Omit<Parameters<typeof cam.push>[0], "to"> & { to?: number }) => {
-  const dist = Math.min(Math.max(o.dist * 1.55, 3.2), 4.8);
+  const dist = Math.min(Math.max(o.dist * 1.2, 2.6), 5.4);
   return {
     ...o,
-    on: [o.on[0], Math.min(o.on[1], 1.05), o.on[2]] as Vec3,
+    on: [o.on[0], Math.min(o.on[1], 1.14), o.on[2]] as Vec3,
     dist,
-    to: Math.max(o.to ?? dist * 0.9, 3.0),
+    to: Math.max(o.to ?? dist * 0.9, 2.4),
     fov: Math.max(o.fov ?? 45, 46),
   };
 };

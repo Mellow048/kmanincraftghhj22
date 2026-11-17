@@ -13,7 +13,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.what",
-      ...cam.push(fit({ on: SPOT.at(0, 1.15, 0.6), dist: 5.4, to: 4.9, yaw: -30, pitch: 12, fov: 50 })),
+      ...cam.push(fit({ on: [SPOT.teacher[0], 1.1, SPOT.teacher[2] + 0.2], dist: 2.9, to: 2.6, yaw: -12, pitch: 4, fov: 50 })),
       zone: "class",
       note: "The whole class in one tall frame, him at a desk in the front of it, and the first grey wisp of a lie on the right of the board. The power is a smell: the picture has to show a face reading one.",
       stage: (t) => (
@@ -24,7 +24,7 @@ export const scene1 = storyScene(timing, {
             <Classmate key={i} who={i + 2} position={SPOT.seat(c, r)} rotationY={0} animation="sit" face="calm" headPitch={0.2} />
           ))}
           <Friend position={SPOT.seat(2, 2)} rotationY={0} animation="sit" face="calm" />
-          <Toast at={SPOT.teacher} n={12} seed={4} />
+          <Toast at={[SPOT.teacher[0], 0, SPOT.teacher[2] + 0.2]} n={16} seed={4} />
         </>
       ),
     },
