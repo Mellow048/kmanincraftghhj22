@@ -81,8 +81,14 @@ jobs:
           COMPOSITION: ${{ inputs.composition }}
           SCALE: ${{ inputs.scale }}
         run: |
-          node scripts/render-plan.mjs "$COMPOSITION" --scale "$SCALE" 2>&1 | tee /tmp/plan.log
-          test ${PIPESTATUS[0]} -eq 0
+          set +e
+          node scripts/render-plan.mjs "$COMPOSITION" --scale "$SCALE" >/tmp/plan.log 2>&1
+          code=$?
+          tail -6 /tmp/plan.log
+          if [ $code -ne 0 ]; then
+            echo "::error title=render-plan failed::$(tail -4 /tmp/plan.log | tr '\n' '~')"
+          fi
+          exit $code
 
   render:
     name: Frames ${{ matrix.from }}-${{ matrix.to }}
