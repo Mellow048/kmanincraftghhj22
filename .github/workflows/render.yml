@@ -80,7 +80,9 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
           SCALE: ${{ inputs.scale }}
-        run: node scripts/render-plan.mjs "$COMPOSITION" --scale "$SCALE"
+        run: |
+          node scripts/render-plan.mjs "$COMPOSITION" --scale "$SCALE" 2>&1 | tee /tmp/plan.log
+          test ${PIPESTATUS[0]} -eq 0
 
   render:
     name: Frames ${{ matrix.from }}-${{ matrix.to }}
