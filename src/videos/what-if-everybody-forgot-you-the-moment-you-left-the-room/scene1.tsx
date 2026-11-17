@@ -85,13 +85,24 @@ export const scene1 = storyScene(timing, {
     {
       // Close on a register on a desk with his name on it, already rubbed out.
       cue: "1.whya",
-      ...cam.push({ on: [-0.20, 0.82, -2.90], dist: 2.04, to: 1.49, yaw: 33, pitch: 8, fov: 36 }),
+      // This was a plain white slab filling the frame: no lines, no name, nothing to rub out. A register reads as a
+      // register because of the ruled lines and the one gap in them, so it is drawn line by line.
+      ...cam.push({ on: [-0.20, 0.86, -2.90], dist: 2.3, to: 1.75, yaw: 33, pitch: 14, fov: 40 }),
       zone: "class",
       note: "Close on a register on a desk with his name on it, already rubbed out.",
       stage: (_t) => (
         <>
-          <Block position={SPOT.at(-0.2, 0.78, -2.9)} size={[0.9, 0.06, 0.6]} color="#e8e2d2" castShadow={false} />
-          <Block position={SPOT.at(-0.2, 0.82, -2.85)} size={[0.44, 0.02, 0.3]} color="#c8c2b0" castShadow={false} />
+          {/* the cover and the page */}
+          <Block position={SPOT.at(-0.2, 0.78, -2.9)} size={[0.9, 0.06, 0.64]} color="#8a6a44" castShadow={false} />
+          <Block position={SPOT.at(-0.2, 0.815, -2.9)} size={[0.78, 0.015, 0.54]} color="#f4f1e8" castShadow={false} />
+          {/* ruled lines, with one gap in the middle of the page */}
+          {[-0.20, -0.11, 0.02, 0.11, 0.20].map((dz, i) => (
+            <Block key={i} position={SPOT.at(-0.2, 0.825, -2.9 + dz)} size={[0.66, 0.004, 0.018]} color="#8ea0b4" castShadow={false} />
+          ))}
+          {/* the name that is not there any more: a soft grey smudge where a name would be */}
+          <Block position={SPOT.at(-0.28, 0.827, -2.9)} size={[0.2, 0.004, 0.05]} color="#c9bfae" castShadow={false} />
+          {/* a pencil beside it */}
+          <Block position={SPOT.at(0.12, 0.825, -2.72)} size={[0.26, 0.012, 0.02]} color="#e8b02a" castShadow={false} />
         </>
       ),
     },
@@ -124,7 +135,10 @@ export const scene1 = storyScene(timing, {
     {
       // Her face, delighted, asking the next kid what he wants. Not a trace of him.
       cue: "2.fooda",
-      ...cam.push({ on: [13.80, 1.30, -5.20], dist: 3.93, to: 3.38, yaw: 15, pitch: 1, fov: 38 }),
+      // The counter runs between this lens and her, and it was near-white, so the shot was a forehead over a slab.
+      // The counter is darker now, and the lens sits higher and closer so she is a face and shoulders with the
+      // trays of food between us - which is also the joke: she is looking past him at the next kid.
+      ...cam.push({ on: [13.80, 1.34, -5.20], dist: 2.4, to: 2.1, yaw: 12, pitch: -4, fov: 40 }),
       zone: "lunch",
       note: "Her face, delighted, asking the next kid what he wants. Not a trace of him.",
       stage: (_t) => (

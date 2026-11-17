@@ -110,9 +110,9 @@ export const World: React.FC = () => {
           <Vox kind="wool" tint="#3a5880" position={[6.1, 1.75, -0.5]} size={[0.2, 3.5, 11]} castShadow={false} />
           <Vox kind="wool" tint="#f1ecdc" position={[0, 3.6, -0.5]} size={[12.6, 0.2, 11.2]} castShadow={false} />
           {/* the counter: steel, and what is for lunch */}
-          <Block position={[-1.4, 0.5, -4.3]} size={[8.4, 1.0, 0.9]} color="#d3d9df" />
-          <Block position={[-1.4, 1.01, -4.3]} size={[8.5, 0.03, 0.96]} color="#aab3bb" castShadow={false} />
-          <Block position={[-1.4, 0.82, -3.72]} size={[8.4, 0.04, 0.26]} color="#9aa5ae" />
+          <Block position={[-1.4, 0.5, -4.3]} size={[8.4, 1.0, 0.9]} color="#7e8b96" />
+          <Block position={[-1.4, 1.01, -4.3]} size={[8.5, 0.03, 0.96]} color="#b9c2c9" castShadow={false} />
+          <Block position={[-1.4, 0.82, -3.72]} size={[8.4, 0.04, 0.26]} color="#68747e" />
           {[-5.0, -3.6, -2.2, -0.8, 0.6, 2.0].map((x, i) => (
             <Block key={x} position={[x + 0.3, 1.07, -4.3]} size={[0.86, 0.1, 0.46]} color={["#f2c230", "#6fbf4a", "#e2b56c", "#f4f1e8", "#e8823a", "#8a5a2c"][i]} castShadow={false} />
           ))}
