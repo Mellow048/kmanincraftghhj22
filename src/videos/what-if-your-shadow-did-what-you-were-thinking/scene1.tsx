@@ -66,12 +66,14 @@ export const scene1 = storyScene(timing, {
     {
       // THE HOOK. The question over the one picture that explains it.
       cue: "1.if",
-      ...cam.push({ on: SPOT.at(0, 1.25, -2.0), dist: 4.6, to: 3.8, yaw: 0, pitch: 4, fov: 46 }),
+      // THE HOOK. Off to the side and low, so the board behind him is a clean face: he fills a third of the frame and
+      // the shadow waving on the board fills the rest. A lens straight behind him puts his head exactly over it.
+      ...cam.push({ on: SPOT.at(-0.15, 1.30, -2.0), dist: 2.9, to: 2.5, yaw: 27, pitch: 1, fov: 44 }),
       zone: "class",
       note: "The question, over the picture that answers it: the teller standing in front of the board, and on the board behind him a flat black shadow with its arm up, waving. It is his size, it is in the right place, and it is doing the one thing he is not.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH + 0.35} animation="idle" face="calm" />
           <Shadow at={WALL} arm={ease(ramp(t, 0.35, 0.8))} />
         </>
       ),
