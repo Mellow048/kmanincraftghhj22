@@ -6,27 +6,22 @@ import type { Who } from "./kit";
 /** 03 — A town of salesmen. He shows each of them something. Each of them shows him something back. */
 
 /** The same picture three times: him in front of a shop with a thing held out, the owner behind it holding out his own. */
-const pitch = (cue: string, who: Who, said: string, mine: React.ReactNode, his: React.ReactNode, flip: number, note: string) => {
+const pitchCam = (who: Who, flip: number) => {
   const f = front(who, 1.0);
   const [sx, , sz] = stallOf(who);
-  const mid: [number, number, number] = [sx + (f.position[0] - sx) * 0.3, 1.25, sz + (f.position[2] - sz) * 0.3];
-  return {
-    cue,
-    ...cam.push({ on: mid, dist: 5.6, to: 5.0, yaw: sideYaw(who, flip), pitch: 4, fov: 46 }),
-    zone: "town",
-    look: "overworld-day" as const,
-    note,
-    stage: (t: number) => {
-      const up = tw(t, w(cue, said) - 0.15, w(cue, said) + 0.1);
-      return (
-        <>
-          <Square t={t} folk={0} away={[who]} />
-          <Vendor who={who} goods lookAt={[f.position[0], 1.6, f.position[2]]} carry={<group position={[0, 0.05 + 0.3 * up + hop(t, w(cue, said) - 0.1, 0.12, 0.25), 0.02]}>{his}</group>} strain={up} />
-          <Him cue={cue} t={t} position={f.position} rotationY={f.rotationY} face={sideYaw(who, flip) * DEG} carry={<group position={[0, 0.3, 0.02]}>{mine}</group>} strain={1 - 0.6 * up} nod={0.3 * up} clockScale={0.5} />
-        </>
-      );
-    },
-  };
+  const on: [number, number, number] = [sx + (f.position[0] - sx) * 0.12, 1.3, sz + (f.position[2] - sz) * 0.12];
+  return { on, dist: 6.2, to: 5.6, yaw: sideYaw(who, flip), pitch: 4, fov: 46 };
+};
+const pitchStage = (t: number, cue: string, who: Who, said: string, mine: React.ReactNode, his: React.ReactNode, flip: number) => {
+  const f = front(who, 1.0);
+  const up = tw(t, w(cue, said) - 0.15, w(cue, said) + 0.1);
+  return (
+    <>
+      <Square t={t} folk={0} away={[who]} />
+      <Vendor who={who} goods lookAt={[f.position[0], 1.6, f.position[2]]} carry={<group position={[0, 0.05 + 0.3 * up + hop(t, w(cue, said) - 0.1, 0.12, 0.25), 0.02]}>{his}</group>} strain={up} />
+      <Him cue={cue} t={t} position={f.position} rotationY={f.rotationY} face={sideYaw(who, flip) * DEG} carry={<group position={[0, 0.3, 0.02]}>{mine}</group>} strain={1 - 0.6 * up} nod={0.3 * up} clockScale={0.5} />
+    </>
+  );
 };
 
 export const scene3 = storyScene(timing, {
@@ -48,8 +43,22 @@ export const scene3 = storyScene(timing, {
         </>
       ),
     },
-    pitch("3.baker", "baker", "bread", <FishBucket />, <Loaf />, 1, "At the baker's shop, from the side. He holds his fish bucket up. The baker looks at it, and lifts a loaf up level with it."),
-    pitch("3.fisher", "fisher", "his", <FishBucket />, <Fish scale={1.5} />, -1, "The same picture at the fisherman's. He holds up the bucket. The fisherman lifts a fish as long as his arm."),
+    {
+      cue: "3.baker",
+      ...cam.push(pitchCam("baker", 1)),
+      zone: "town",
+      look: "overworld-day",
+      note: "At the baker's shop, from the side. He holds his fish bucket up. The baker looks at it, and lifts a loaf up level with it.",
+      stage: (t) => pitchStage(t, "3.baker", "baker", "bread", <FishBucket />, <Loaf />, 1),
+    },
+    {
+      cue: "3.fisher",
+      ...cam.push(pitchCam("fisher", -1)),
+      zone: "town",
+      look: "overworld-day",
+      note: "The same picture, mirrored, at the fisherman's. He holds up the bucket. The fisherman lifts a fish as long as his arm.",
+      stage: (t) => pitchStage(t, "3.fisher", "fisher", "his", <FishBucket />, <Fish scale={1.5} />, -1),
+    },
     {
       cue: "3.same",
       ...cam.push({ on: [stallOf("fisher")[0] - 0.1, 1.3, stallOf("fisher")[2] + 0.2], dist: 3.3, to: 2.9, yaw: sideYaw("fisher", -1), pitch: 10, fov: 46 }),
@@ -67,7 +76,14 @@ export const scene3 = storyScene(timing, {
         );
       },
     },
-    pitch("3.farmer", "farmer", "carrot", <SlimeBall />, <Carrot scale={1.3} />, 1, "At the farmer's, the slime ball this time. The farmer in his straw hat looks at it for a long second, then holds up a carrot."),
+    {
+      cue: "3.farmer",
+      ...cam.push(pitchCam("farmer", 1)),
+      zone: "town",
+      look: "overworld-day",
+      note: "At the farmer's, the slime ball this time. The farmer in his straw hat looks at it for a long second, then holds up a carrot.",
+      stage: (t) => pitchStage(t, "3.farmer", "farmer", "carrot", <SlimeBall />, <Carrot scale={1.3} />, 1),
+    },
     {
       cue: "3.salesmen",
       ...cam.push({ on: [0, 0.9, 1.8], dist: 12, to: 10.5, yaw: 0, pitch: 34, fov: 46 }),
@@ -96,7 +112,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Square t={t} folk={0} />
           <Him cue="3.clock" t={t} rotationY={SOUTH} face={6 * DEG} nod={-0.5} clock={false} />
-          <Clock position={[0, 2.78, 3]} sec={left("3.clock", t)} scale={0.72} rotationY={6 * DEG} />
+          <Clock position={[0, 2.55, 3]} sec={left("3.clock", t)} scale={0.72} rotationY={6 * DEG} />
         </>
       ),
     },

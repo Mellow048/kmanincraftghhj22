@@ -62,7 +62,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.ugly",
-      ...cam.push({ on: [-4.25, 1.8, -9.6], dist: 3.0, to: 2.5, yaw: 24, pitch: 2, fov: 46 }),
+      ...cam.push({ on: [-4.5, 1.65, -9.6], dist: 3.6, to: 3.1, yaw: 28, pitch: 2, fov: 46 }),
       zone: "town",
       look: "overworld-day",
       note: "Close on the window. Five brown twigs in a pot, in the sun. Her face next to it, head on one side. On 'she loves it' a red heart comes up over it.",
@@ -70,8 +70,8 @@ export const scene8 = storyScene(timing, {
         <>
           <Square t={t} folk={0} vendors={false} />
           <Sill />
-          <Mum position={[-5.0, 0, -9.25]} rotationY={EAST - 0.35} tilt={0.3 * tw(t, 0.3, 0.7)} lookAt={[WIN[0], 1.9, WIN[2]]} />
-          <Heart position={[WIN[0], 2.75, WIN[2] + 0.1]} rotationY={24 * DEG} scale={1.6 * pop(t, w("8.ugly", "loves") - 0.15, 0.22)} />
+          <Mum position={[-4.85, 0, -9.3]} rotationY={EAST - 0.75} tilt={0.3 * tw(t, 0.3, 0.7)} lookAt={[WIN[0], 1.9, WIN[2]]} />
+          <Heart position={[WIN[0], 2.72, WIN[2] + 0.1]} rotationY={28 * DEG} scale={0.6 * pop(t, w("8.ugly", "loves") - 0.15, 0.22)} />
         </>
       ),
     },
@@ -92,7 +92,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.know",
-      ...cam.push({ on: [0, 1.45, 2.0], dist: 3.6, to: 3.1, yaw: -14, pitch: 0, fov: 46 }),
+      ...cam.push({ on: [0, 1.7, 2.0], dist: 3.7, to: 3.2, yaw: -14, pitch: 0, fov: 46 }),
       zone: "next",
       look: "overworld-day",
       note: "He looks over his shoulder at the shops, then back at us, and brings the emerald up out of his sleeves. He knows what it is for now.",
@@ -102,7 +102,7 @@ export const scene8 = storyScene(timing, {
           <>
             <NextTown look={[ME[0], 1.6, ME[2]]} />
             <Shop position={[1.15, 0, 2.2]} bush={false} slime={false} />
-            <Him cue="8.know" t={t} position={ME} rotationY={SOUTH - 0.2} face={-14 * DEG} turn={-1.2 * (1 - tw(t, 0.9, 1.2))} carry={<Emerald position={[0, 0.05 + 0.33 * got, 0.03]} scale={1.4} />} strain={got} rise={hop(t, w("8.know", "one") - 0.05, 0.18, 0.3)} clockScale={0.55} />
+            <Him cue="8.know" t={t} position={ME} rotationY={SOUTH - 0.2} face={-14 * DEG} turn={-1.2 * (1 - tw(t, 0.9, 1.2))} carry={<Emerald position={[0, 0.02 + 0.13 * got, 0.03]} scale={1.4} />} strain={got} rise={hop(t, w("8.know", "one") - 0.05, 0.18, 0.3)} clockScale={0.55} />
           </>
         );
       },
@@ -117,9 +117,9 @@ export const scene8 = storyScene(timing, {
         <>
           <NextTown look={[ME[0], 1.6, ME[2]]} />
           <Shop position={[1.15, 0, 2.2]} bush={false} slime={false} />
-          <Him cue="8.sub" t={t} position={ME} rotationY={SOUTH} carry={<Emerald position={[0, 0.3, 0.03]} scale={1.3} />} strain={0.8} rise={hop(t, w("8.sub", "llamas") - 0.05, 0.2, 0.3)} clockScale={0.55} />
+          <Him cue="8.sub" t={t} position={ME} rotationY={SOUTH} carry={<Emerald position={[0, 0.1, 0.03]} scale={1.3} />} strain={0.8} rise={hop(t, w("8.sub", "llamas") - 0.05, 0.2, 0.3)} clockScale={0.55} />
           <SubscribeSign position={[0, 3.75 + Math.sin(t * 8) * 0.05, 2.0]} scale={0.95 * pop(t, w("8.sub", "subscribe") - 0.2, 0.2)} tilt={Math.sin(t * 5) * 0.05} />
-          <Thought position={[1.0, 2.35, 2.2]} scale={0.9 * pop(t, w("8.sub", "llamas") - 0.25, 0.22)} t={t} />
+          <Thought position={[0.82, 2.2, 2.2]} scale={0.72 * pop(t, w("8.sub", "llamas") - 0.25, 0.22)} t={t} />
         </>
       ),
     },

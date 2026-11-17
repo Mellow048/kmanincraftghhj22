@@ -35,7 +35,7 @@ export const scene5 = storyScene(timing, {
           <Square t={t} night folk={0} />
           <NightLights />
           <Post cut />
-          <Him cue="5.potion" t={t} rotationY={SOUTH + 0.15} face={10 * DEG} carry={<Bottle position={[0, 0.1 + 0.32 * tw(t, 0.25, 0.6), 0.03]} scale={1.2} />} strain={tw(t, 0.25, 0.6)} clockScale={0.5} />
+          <Him cue="5.potion" t={t} rotationY={SOUTH + 0.15} face={10 * DEG} carry={<Bottle position={[0, 0.04 + 0.14 * tw(t, 0.25, 0.6), 0.03]} scale={1.1} />} strain={tw(t, 0.25, 0.6)} clockScale={0.5} />
         </>
       ),
     },
@@ -54,7 +54,7 @@ export const scene5 = storyScene(timing, {
             <NightLights />
             <Post cut />
             <Shop />
-            <Him cue="5.invisible" t={t} ghost={t > gone} rotationY={SOUTH} face={-18 * DEG} carry={<Bottle position={[0, 0.5, 0.03]} rotation={[-0.9, 0, 0]} scale={1.2} />} nod={-0.5} strain={1} />
+            <Him cue="5.invisible" t={t} ghost={t > gone} rotationY={SOUTH} face={-18 * DEG} carry={<Bottle position={[0, 0.3, 0.03]} rotation={[-0.9, 0, 0]} scale={1.1} />} nod={-0.5} strain={1} />
             {t > gone && t < gone + 0.5 ? <Puffs position={[ME[0], 0.9, ME[2]]} count={9} spread={0.5} size={0.3} rise={1.0} speed={2.4} color="#cfd6e4" /> : null}
             {t > w("5.invisible", "So") - 0.2 ? <Villager position={[x, 0, 4.6]} rotationY={-EAST} walk={t * 3} robe={ROBE.brown} /> : null}
           </>
@@ -72,7 +72,7 @@ export const scene5 = storyScene(timing, {
           <Square t={t} night folk={0} />
           <NightLights />
           <Him cue="5.clock" t={t} ghost clock={false} />
-          <Clock position={[0, 2.6, 3]} sec={left("5.clock", t)} scale={0.8} rotationY={8 * DEG} />
+          <Clock position={[0, 2.6, 3]} sec={left("5.clock", t)} scale={0.6} rotationY={8 * DEG} />
           <Glow position={[0, 2.6, 2.8]} size={2.2} color="#ffe27a" opacity={0.16} />
         </>
       ),

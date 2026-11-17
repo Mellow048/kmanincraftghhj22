@@ -551,6 +551,10 @@ export const Clock: React.FC<{ position: Vec3; sec: number; scale?: number; rota
 };
 
 const TRADER_BLUE = "#2f55a4";
+/** A villager's nose hangs down to his sleeves: anything carried is set a hand lower, so it never covers his face. */
+const low = (c: React.ReactNode) => (c ? <group position={[0, -0.25, 0.03]}>{c}</group> : undefined);
+/** A villager who carries things under his nose and not on it. */
+export const Person: React.FC<VillagerProps> = (p) => <Villager {...p} carry={low(p.carry)} />;
 /** The wandering trader: a villager in a blue robe with a blue hood trimmed in gold. */
 export const Trader: React.FC<VillagerProps> = (p) => (
   <Villager
@@ -566,9 +570,10 @@ export const Trader: React.FC<VillagerProps> = (p) => (
       </>
     }
     {...p}
+    carry={low(p.carry)}
   />
 );
-export const Kid: React.FC<VillagerProps> = (p) => <Villager robe="#d8a82a" kid scale={0.68} phase={2.6} {...p} />;
+export const Kid: React.FC<VillagerProps> = (p) => <Villager robe="#d8a82a" kid scale={0.68} phase={2.6} {...p} carry={low(p.carry)} />;
 /** His mum: a red robe and a white headscarf. */
 export const Mum: React.FC<VillagerProps> = (p) => (
   <Villager
@@ -581,6 +586,7 @@ export const Mum: React.FC<VillagerProps> = (p) => (
       </>
     }
     {...p}
+    carry={low(p.carry)}
   />
 );
 /** The customer: a player in an orange shirt. A child is held in his right hand. */
@@ -739,7 +745,7 @@ export const Vendor: React.FC<VillagerProps & { who: Who; away?: boolean; goods?
         {goods && who === "fisher" ? (<><Fish position={[-0.2, 0, 0]} /><Fish position={[0.3, 0.0, 0.1]} rotation={[0, 0.4, 0]} scale={0.8} /></>) : null}
         {goods && who === "farmer" ? (<><Carrot position={[-0.3, 0, 0]} /><Carrot position={[0.05, 0, 0.08]} rotation={[0, 0.6, 0]} /><Carrot position={[0.35, 0, -0.02]} rotation={[0, -0.4, 0]} /></>) : null}
       </Stall>
-      {away ? null : <Villager position={back} rotationY={v.turn} robe={v.robe} hat={who === "farmer" ? "straw" : "none"} phase={who.length} {...p} />}
+      {away ? null : <Villager position={back} rotationY={v.turn} robe={v.robe} hat={who === "farmer" ? "straw" : "none"} phase={who.length} {...p} carry={low(p.carry)} />}
     </>
   );
 };
@@ -789,7 +795,7 @@ export const Him: React.FC<VillagerProps & { cue: string; t: number; face?: numb
 }) => (
   <>
     {ghost ? <Swirl position={position} t={t} /> : <Trader position={[position[0], position[1] + rise, position[2]]} {...p} />}
-    {clock ? <Clock position={[position[0], 2.78 + rise, position[2]]} sec={left(cue, t)} scale={clockScale} rotationY={face} /> : null}
+    {clock ? <Clock position={[position[0], 2.55 + rise, position[2]]} sec={left(cue, t)} scale={clockScale} rotationY={face} /> : null}
   </>
 );
 export const POST: Vec3 = [-0.1, 0, 0.75];
@@ -863,7 +869,7 @@ export const Trail: React.FC<{ pts: Vec3[]; k: number; t: number }> = ({ pts, k,
   return (
     <>
       {dots.slice(0, on).map((d, i) => (
-        <Block key={i} position={[d[0], d[1] + 0.04 * Math.sin(t * 6 + i), d[2]]} size={[0.13, 0.13, 0.13]} color="#39e07a" emissive="#1fbf5a" emissiveIntensity={1.4} castShadow={false} />
+        <Block key={i} position={[d[0], d[1] + 0.04 * Math.sin(t * 6 + i), d[2]]} size={[0.2, 0.2, 0.2]} color="#39e07a" emissive="#1fbf5a" emissiveIntensity={1.6} castShadow={false} />
       ))}
     </>
   );
