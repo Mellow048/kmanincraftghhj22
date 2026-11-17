@@ -23,10 +23,8 @@ export const film = defineFilm({
   title: "What If Every Door On Your Street Opened Somewhere Else",
   topic: "what-if",
   look: "overworld-night",
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/what-if-every-door-on-your-street-opened-somewhere-else/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/what-if-every-door-on-your-street-opened-somewhere-else/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
+  // The finished mix: the voice, the music, the beds and 79 effects (scripts/sound.py build).
+  audio: { src: "audio/what-if-every-door-on-your-street-opened-somewhere-else/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3],

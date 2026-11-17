@@ -1,0 +1,143 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-every-door-on-your-street-opened-somewhere-else",
+  "mix": "public/audio/what-if-every-door-on-your-street-opened-somewhere-else/mix.mp3",
+  "seconds": 116.6333,
+  "built_from": {
+    "timing.json": "ae0067d88c0a6358163c015c6343eb4944fa3b6b",
+    "sound.json": "3375c05667fcc99a0e3c5da52ede041c2b557efe",
+    "narration.mp3": "88c893f29f122cde4d0d12ae46b7a41d570f55e8"
+  },
+  "mix_sha1": "4d25f374ee73be5eb4ade0f420fd0392b21b5cfb",
+  "music_sections": [
+    {
+      "from": "1.if",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "1.one",
+      "mood": "wonder",
+      "at": 7.87
+    },
+    {
+      "from": "2.fridge",
+      "mood": "playful",
+      "at": 10.7
+    },
+    {
+      "from": "2.neighbour",
+      "mood": "playful",
+      "at": 17.33
+    },
+    {
+      "from": "3.map",
+      "mood": "hope",
+      "at": 34.1
+    },
+    {
+      "from": "4.mum",
+      "mood": "curious",
+      "at": 44.43
+    },
+    {
+      "from": "5.one",
+      "mood": "sneak",
+      "at": 51.27
+    },
+    {
+      "from": "6.only",
+      "mood": "tense",
+      "at": 60.97
+    },
+    {
+      "from": "8.wall",
+      "mood": "drone",
+      "at": 72.37
+    },
+    {
+      "from": "9.back",
+      "mood": "dark",
+      "at": 86.5
+    },
+    {
+      "from": "10.hand",
+      "mood": "sad",
+      "at": 96.13
+    },
+    {
+      "from": "12.mum",
+      "mood": "sad",
+      "at": 105.5
+    }
+  ],
+  "beds": 14,
+  "measured": {
+    "musicUnderVoiceDb": 18.7,
+    "secondsWithoutMusic": 3.1,
+    "bedsUnderVoiceDb": 27.6,
+    "sfx": 79,
+    "sfxPerMinute": 40.6,
+    "sfxKinds": 23,
+    "longestGapSeconds": 3.2,
+    "longestGapAt": 90.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.3,
+    "voiceOverRestWorstDb": 5.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.0,
+        "t": 113.8,
+        "cue": "12.why",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 11.3,
+        "cue": "2.fridge",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 93.8,
+        "cue": "9.all",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.4,
+        "t": 79.9,
+        "cue": "8.older",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.4,
+        "t": 73.9,
+        "cue": "8.wall",
+        "sounding": [
+          "boom",
+          "scrape"
+        ]
+      },
+      {
+        "db": 7.8,
+        "t": 78.7,
+        "cue": "8.older",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}
