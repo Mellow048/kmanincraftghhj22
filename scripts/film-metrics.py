@@ -106,6 +106,10 @@ def frames(path: Path, exe: str, sample: float):
     proc.wait()
     if not kept:
         return np.zeros((0, H, W), dtype=np.uint8), 0
+    # A cut-down ffmpeg (the copy that ships with @remotion/compositor has almost every filter and muxer switched
+    # off, including `rawvideo`) decodes nothing and fails silently. Say what is wrong instead of reporting zeroes.
+    if len(kept) < 2:
+        sys.exit(f"film-metrics: {exe} could not decode {path} to raw video. Install a full ffmpeg: pip install imageio-ffmpeg")
     return np.stack(kept).astype(np.float32), i
 
 

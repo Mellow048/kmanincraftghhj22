@@ -17,7 +17,8 @@
     "bundle": "remotion bundle src/index.ts",
     "shots": "node scripts/shots.mjs",
     "shot-log": "node scripts/shot-log.mjs",
-    "sound": "python3 scripts/sound.py"
+    "sound": "python3 scripts/sound.py",
+    "metrics": "python3 scripts/film-metrics.py"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.2",

@@ -26,7 +26,7 @@ Everything below is read against that row.
 
 | Film | What the numbers said | What was done |
 |---|---|---|
-| *What If Every Lie Added a Netherite Block?* | The **second shot of the film measured 24.6 luma out of 255** — a black screen two seconds in, in the hook. Five more shots in the escalation sat at 26–37. And one effect left the voice only **3.3 dB** above the mix at 42 s. | `CloseKey`, `StreetFill` and `NightWash` added to the film's kit; seven shots lit and three re-framed; five effects trimmed and the mix rebuilt. Re-rendered. |
+| *What If Every Lie Added a Netherite Block?* | The **second shot of the film measured 24.6 luma out of 255** — a black screen two seconds in, in the hook. Five more shots in the escalation sat at 26–37. And one effect left the voice only **3.3 dB** above the mix at 42 s. | `CloseKey`, `StreetFill` and `NightWash` added to the film's kit; seven shots lit and three re-framed; five effects trimmed and the mix rebuilt. Re-rendered: **no shot is below 40 luma now** (was six below 37), black frames 4.6 % → 1.5 %, opening detail 70.1 → 74.8, worst voice-over-mix 3.3 → 4.7 dB. |
 | *What If I Could Hear What Blocks Remember?* | Four shots in the night stretch had **half of every frame below 10 luma** (10.dark 18.4, 10.last 17.2). The opening moved at **1.94** against the reference's 3.41 and carried less detail (38.9 vs 65.3). | `NightGym` added to the film's kit; nine shots lit, the opening widened and driven in. Re-rendered. |
 
 Both films are under the brief's 175 s ceiling, both are 1080×1920@30, both put the subscribe line **after** the
@@ -68,8 +68,8 @@ and the teller only); the parade street, the school gate, rain and lightning. Li
 `CloseKey`, `StreetFill`, `NightWash`.
 
 **7. Captions.** Engine-generated, one word at a time, from `timing.json` — so they cannot drift from the recorded
-voice. Measured on the delivered file: **⟪CAPTION⟫ of the film has lettering on screen**, against
-⟪CAPTIONTRUTH⟫ of it that has speech. Uppercase pixel face, white with a black outline, placed low so it clears
+voice. Measured on the delivered file: **99.8 % of the film has lettering on screen**, against
+98.0 % of it that has speech. Uppercase pixel face, white with a black outline, placed low so it clears
 the faces.
 
 **8. Sound.** Six music sections (tense 0:00 → wonder 4.2 → curious 23.6 → sneak 28.1 → tense 55.4 → hope 64.6),
@@ -78,14 +78,14 @@ five room beds, 74 effects (48.8 a minute). Music 19 dB under the voice, beds 24
 review — five effects were trimmed (`7.blocks` scrape −5, `3.truth` power_down −5, `10.danger` heartbeat and drop
 −4, `11.spare` power_down −4), and it is now **4.7 dB**, with no effect buried under the music.
 
-**9. Rendered file.** `renders/what-if-every-lie-added-a-netherite-block.mp4` — ⟪SIZE⟫, h264 + AAC, 1080×1920,
-30 fps, 2732 frames, 91.1 s.
+**9. Rendered file.** `renders/what-if-every-lie-added-a-netherite-block.mp4` — 59 MB, h264 + AAC, 1080×1920,
+30 fps, 2732 frames, 91.1 s. Verified with ffprobe.
 
 **10. Self-review.**
 
 | The brief's question | The answer |
 |---|---|
-| Do the first three seconds create curiosity? | Yes, and they now stay visible: the opening shot measures ⟪HOOK⟫ detail (reference 65.3) with the cube landing on the word. The old second shot — a black frame at 2.3 s — is gone (24.6 → 68.7 luma). |
+| Do the first three seconds create curiosity? | Yes, and they now stay visible: the opening shot measures **74.8** detail (reference 65.3) with 3.0 motion with the cube landing on the word. The old second shot — a black frame at 2.3 s — is gone (24.6 → 68.7 luma). |
 | Is the premise immediately understandable? | The rule is stated and shown at once (3.rule, 8.3 s) and the cost is shown before any lie is told (3.danger). |
 | Does every scene contribute? | 48 shots, 14 beats, no detour: each lie adds a cube, each cube costs movement. |
 | Is the middle engaging? | The run from 39 s (the invented spare) to 66 s (the shouted admission) is the densest part: seven cuts, the storm, the weight. It was also the darkest — now lit. |
@@ -99,13 +99,15 @@ review — five effects were trimmed (`7.blocks` scrape −5, `3.truth` power_do
 | Is the CTA in the right place? | Yes: the story ends at 86.7 s (the empty pack beside the lantern); the subscribe line runs 88.4–91.1 s, after the payoff. |
 
 **11. Remaining weaknesses.**
-- The two shots of the storm that are lit by lightning still measure 17–35 luma between flashes (10.run, 10.storm).
-  That is the reference's own range for a night shot (its darkest is 31), but on a dim phone the middle of the
-  storm is the hardest thing to read in the film.
-- `13.light`, the payoff, is bright in the middle and black at the edges (median pixel 4). It reads as a lantern
-  in the dark, which is the intent — but it is the one shot I would lift again if the owner wants more.
-- Worst voice-over-mix moment is 4.7 dB at 14.4 s (a `power_down` under "cleared"). Audible, but the tightest
-  half-second in the film.
+- The storm is still the darkest stretch: `10.storm` 40.7, `10.run` 45.1, `13.light` 46.7, against a film median of
+  about 100. Inside those shots the lightning gap drops further still (one frame of `10.run` measures 17). That is
+  the reference's own range for a night shot — its darkest is 31 — but on a dim phone the storm is the hardest
+  thing to read, and it is where the story peaks.
+- `13.light`, the payoff, is bright in the middle and black at the edges: it reads as a lantern in the dark, which
+  is the intent, but it is the one shot I would lift again if the owner wants more.
+- Worst voice-over-mix moment is 4.7 dB at 14.4 s (a `power_down` under "cleared"), down from 3.3 dB at 42 s before
+  this pass. Audible, but still the tightest half-second in the film.
+- 1.5 % of frames are still under 22 luma, all of them in the storm.
 - Nobody has listened to it. The numbers say the words are clear; only the owner can say they *sound* right.
 
 ---
