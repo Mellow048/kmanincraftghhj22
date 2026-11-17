@@ -86,8 +86,8 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <OurRoom />
-            <Bro position={[-0.66 + k1 * 0.2, 0, 0.75]} rotationY={SOUTH + 0.3} lookAt={[0, 1.2, 0.75]} />
-            <Me position={[0.6 - k2 * 0.2, 0, 0.75]} rotationY={SOUTH - 0.3} tilt={-0.15} lookAt={t > a + 0.5 ? [0, 1.0, 0.75] : undefined} />
+            <Bro position={[-0.66 + k1 * 0.2, 0, 0.75]} rotationY={SOUTH + 0.3} turn={0.6} />
+            <Me position={[0.6 - k2 * 0.2, 0, 0.75]} rotationY={SOUTH - 0.3} tilt={-0.15} turn={t > a + 0.5 ? -0.6 : 0} />
             {[a + 0.06, a + 0.34].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[0.14, 1.0, 0.55]} rotationY={EAST} t={t - at} color="#fff0c0" reach={0.6} /> : null))}
             {[a + 0.86, a + 1.14].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[-0.14, 0.85, 0.55]} rotationY={WEST} t={t - at} color="#ffd9a0" reach={0.6} /> : null))}
             <Fill at={[0, 1.8, 3.4]} power={36} />
@@ -138,7 +138,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Cellar />
           <Bro position={PLACE.bro} rotationY={SOUTH} green={1} bitten tilt={tw(t, 0.4, 0.9) * 0.3} arms={{ r: -0.5, hold: sword }} />
-          <Bubble text="UUUH." position={[PLACE.bro[0] + 0.45, 1.95, -0.3]} scale={0.42 * pop(t, w("4.groan", "groaned"), 0.14)} tail={-1} dark />
+          <Bubble text="UUUH." position={[PLACE.bro[0] + 0.3, 1.8, -0.3]} scale={0.3 * pop(t, w("4.groan", "groaned"), 0.14)} tail={-1} dark />
           <HandLantern position={LAMP} light={18} />
           <Fill at={[0.4, 1.8, 1.4]} power={12} />
         </>
@@ -198,7 +198,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.bread",
-      ...cam.push({ on: [-0.05, 0.8, -0.45], dist: 3.7, to: 3.3, yaw: 48, pitch: 13, fov: 42 }),
+      ...cam.push({ on: [-0.05, 0.5, -0.5], dist: 3.5, to: 3.1, yaw: 48, pitch: 16, fov: 44 }),
       zone: "cellar",
       look: "lantern-night",
       note: "From the side. He pushes a loaf under the bars. The brother looks down at it, and turns his head away. The loaf stays on the floor.",
@@ -228,8 +228,8 @@ export const scene3 = storyScene(timing, {
           <Cellar />
           <Bro position={PLACE.bro} rotationY={SOUTH} green={1} out bitten />
           <Loaf position={LOAF} rotation={[0, 0.3, 0]} />
-          <Me position={[0.3, 0, 0.75]} rotationY={SOUTH - 0.3} carry={<Bottle pink position={[0, 0.02 + pop(t, 0.2, 0.2) * 0.05, 0.08]} rotation={[-0.75, 0, 0]} scale={0.62} />} nod={0.2} />
-          <pointLight position={[0.1, 1.3, 1.6]} color="#ffb0d8" intensity={2.2} distance={3} decay={1.6} />
+          <Me position={[0.3, 0, 0.75]} rotationY={SOUTH - 0.3} carry={<Bottle pink position={[0, -0.17 + pop(t, 0.2, 0.2) * 0.04, 0.2]} rotation={[-0.75, 0, 0]} scale={0.7} />} nod={0.05} />
+          <pointLight position={[0.1, 1.3, 1.9]} color="#ffe0ee" intensity={1.0} distance={3} decay={1.6} />
           <HandLantern position={[-0.6, 0, 0.5]} light={12} />
         </>
       ),

@@ -17,20 +17,17 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [0.05, 1.0, 1.4], dist: 4.5, to: 3.7, yaw: 0, pitch: 5, fov: 46 }),
       zone: "town",
       look: "overworld-day",
-      note: "The hook, and it keeps changing: the kid looks at the lens with his wooden sword. His big brother pops in behind him. A zombie's arm reaches in from the edge; a red flash on the brother's sleeve; his skin goes green from the arm up, his eyes go red, and his arms come out of his sleeves. The kid turns to look.",
+      note: "The hook, and it keeps changing: the kid looks at the lens with his wooden sword. His big brother stands behind him. A zombie's arm reaches in from the edge; a red flash on the brother's sleeve; his skin goes green from the arm up, his eyes go red, and his arms come out of his sleeves. The kid turns to look.",
       stage: (t) => {
-        const bite = w("1.bitten", "bitten");
+        // Rule A: the premise is on screen inside the first second. He is bitten at 0.45 s and green by 0.8 s.
+        const bite = 0.45;
         const g = tw(t, bite, bite + 0.35);
         return (
           <>
             <TownSet />
             <Life t={t} n={3} />
-            <Me position={ME} rotationY={SOUTH} lookAt={t > bite ? face(BRO, TEEN) : undefined} carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8 * pop(t, 0.1, 0.14)} />} />
-            {pop(t, 0.3, 0.16) > 0.01 ? (
-              <group position={BRO} scale={pop(t, 0.3, 0.16)}>
-                <Bro position={[0, 0, 0]} rotationY={SOUTH} green={g} out={g > 0.55} bitten={t > bite} nod={g * 0.15} />
-              </group>
-            ) : null}
+            <Me position={ME} rotationY={SOUTH} lookAt={t > bite ? face(BRO, TEEN) : undefined} carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
+            <Bro position={BRO} rotationY={SOUTH} green={g} out={g > 0.55} bitten={t > bite} nod={g * 0.15} />
             {/* the arm that did it: a zombie's, in from the edge of the frame */}
             {t > bite - 0.45 && t < bite + 0.25 ? (
               <group position={[1.55 - tw(t, bite - 0.45, bite - 0.05) * 0.55, 1.05, 1.1]} rotation={[0, 0, 0]}>
@@ -229,12 +226,13 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: face([0.17, 0, 0.1], KID), dist: 2.7, to: 2.3, yaw: 180, pitch: 0, fov: 40 }),
       zone: "cellar",
       look: "lantern-night",
-      note: "From inside the cell, through the bars: the kid's face between two of them, looking in, with the lantern in his arms. He swallows. A thought over his head: BAD KIDS?",
+      note: "From inside the cell, through the bars: the kid's face between two of them, looking in, with the lantern on the floor beside him. He swallows. A thought over his head: BAD KIDS?",
       stage: (t) => (
         <>
           <Cellar walls="ew" />
-          <Me position={[0.17, 0, 0.1]} rotationY={NORTH} carry={<HandLantern position={[0, -0.08, 0.04]} light={5} scale={0.8} />} nod={Math.sin(tw(t, 0.5, 0.9) * Math.PI) * 0.2} />
-          <Bubble text="BAD KIDS?" position={[0.17, 1.72, 0.3]} rotationY={Math.PI} scale={0.42 * pop(t, 0.35, 0.16)} tail={1} />
+          <HandLantern position={[0.75, 0, 0.35]} light={9} />
+          <Me position={[0.17, 0, 0.1]} rotationY={NORTH} nod={Math.sin(tw(t, 0.5, 0.9) * Math.PI) * 0.2} />
+          <Bubble text="BAD KIDS?" position={[0.17, 1.62, -0.7]} rotationY={Math.PI} scale={0.3 * pop(t, 0.35, 0.16)} tail={1} />
           <Fill at={[0.2, 1.6, -1.6]} power={8} />
         </>
       ),

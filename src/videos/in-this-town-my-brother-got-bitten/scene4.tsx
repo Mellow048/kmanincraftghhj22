@@ -76,16 +76,16 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.half",
-      ...cam.push({ on: [S[0] + 0.25, 1.25, S[2] + 1.35], dist: 3.9, to: 3.4, yaw: 166, pitch: 9, fov: 44 }),
+      ...cam.push({ on: [S[0] + 0.2, 1.3, S[2] + 1.35], dist: 4.0, to: 3.5, yaw: 164, pitch: 10, fov: 44 }),
       zone: "town",
       look: "overworld-day",
-      note: "From behind the counter, over the bread: one family in front of it, a mother with a loaf and a small kid. One emerald comes up over their heads.",
+      note: "From behind the counter, past the apple under its glass: one family in front, a mother with a loaf and a small kid. One emerald comes up over their heads.",
       stage: (t) => (
         <>
-          <TownSet sign />
+          <TownSet />
           <Villager position={[S[0] - 0.1, 0, S[2] + 1.35]} rotationY={NORTH} robe={ROBE.blue} phase={2} carry={<Loaf scale={0.7} />} nod={tw(t, 0.7, 1.1) * 0.25} />
-          <Villager position={[S[0] + 0.65, 0, S[2] + 1.5]} rotationY={NORTH - 0.1} robe={ROBE.friend} kid scale={KID} phase={3} />
-          <Price position={[S[0] + 0.2, 2.3, S[2] + 1.4]} n={1} scale={0.9 * pop(t, 0.2, 0.16)} rotationY={Math.PI} />
+          <Villager position={[S[0] + 0.6, 0, S[2] + 1.6]} rotationY={NORTH - 0.1} robe={ROBE.friend} kid scale={KID} phase={3} />
+          <Price position={[S[0] + 0.2, 2.25, S[2] + 1.45]} n={1} scale={0.8 * pop(t, 0.2, 0.16)} rotationY={Math.PI} />
         </>
       ),
     },
@@ -138,7 +138,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <Cellar walls="ews" door={o} day="#b8c0d0" sky={skyAt(0.45)} />
-            {o > 0.5 ? <Dad position={[PLACE.cellarDoor[0], 1.8, 2.75]} rotationY={NORTH} nod={0.3} /> : null}
+            {o > 0.5 ? <Dad position={[PLACE.cellarDoor[0], 1.8, 2.75]} rotationY={NORTH + 0.2} nod={0.12} /> : null}
             <Me position={[-1.15, 0, 0.9]} rotationY={SOUTH - 0.4} lookAt={[-1.95, 3.2, 2.9]} />
             <HandLantern position={[-0.6, 0, 0.6]} light={16} />
           </>
@@ -160,7 +160,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "7.had",
-      ...cam.push({ on: [DAD[0], 1.2, DAD[2]], dist: 3.0, to: 2.4, yaw: 14, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [DAD[0], 1.2, DAD[2]], dist: 3.0, to: 2.4, yaw: 14, pitch: -3, fov: 40 }),
       zone: "cellar",
       look: "lantern-night",
       note: "Dad at the foot of the stairs. In his arms: the golden apple from the priest's window, shining, and then beside it a round grey bottle with a cork.",
@@ -170,11 +170,10 @@ export const scene4 = storyScene(timing, {
           <Dad
             position={DAD}
             rotationY={SOUTH - 0.15}
-            nod={0.25}
             carry={
               <group rotation={[-0.75, 0, 0]}>
-                <GoldenApple position={[-0.13, 0.06, 0.1]} scale={0.6 * pop(t, 0.15, 0.16)} glow={0.5} />
-                <Bottle position={[0.14, 0.06, 0.1]} scale={0.6 * pop(t, w("7.had", "bottle") - 0.15, 0.16)} />
+                <GoldenApple position={[-0.13, -0.16, 0.2]} scale={0.55 * pop(t, 0.15, 0.16)} glow={0.3} />
+                <Bottle position={[0.14, -0.16, 0.2]} scale={0.6 * pop(t, w("7.had", "bottle") - 0.15, 0.16)} />
               </group>
             }
           />
@@ -197,8 +196,8 @@ export const scene4 = storyScene(timing, {
             <Cellar walls="nws" door={1} day="#d8d0c0" sky={skyAt(0.5)} sun={0.09} />
             <Dad position={[0.2, 0, 0.5]} rotationY={SOUTH} lean={0.35 * (1 - tw(t, sun - 0.2, sun + 0.2))} carry={t < give ? lamp : undefined} lookAt={t > sun - 0.1 ? [-1.95, 3.0, 3.0] : undefined} />
             <Me position={[0.2, 0, 1.55]} rotationY={NORTH} carry={t >= give ? lamp : undefined} lookAt={t > sun ? [-1.95, 3.0, 3.0] : [0.2, 1.6, 0.5]} />
-            <Bubble text="KEEP THE SUN" position={[0.6, 2.3, 0.95]} rotationY={Math.PI / 2} scale={0.36 * pop(t, sun - 0.5, 0.14)} tail={1} />
-            <Bubble text="OFF HIM." position={[0.6, 2.06, 0.95]} rotationY={Math.PI / 2} scale={0.36 * pop(t, sun - 0.35, 0.14)} tail={1} />
+            <Bubble text="KEEP THE SUN" position={[0.6, 2.1, 1.25]} rotationY={Math.PI / 2} scale={0.34 * pop(t, sun - 0.5, 0.14)} tail={1} />
+            <Bubble text="OFF HIM." position={[0.6, 1.88, 1.25]} rotationY={Math.PI / 2} scale={0.34 * pop(t, sun - 0.35, 0.14)} tail={1} />
             <Fill at={[2.4, 1.8, 1.2]} power={12} />
           </>
         );
@@ -218,8 +217,8 @@ export const scene4 = storyScene(timing, {
             <Cellar walls="nws" door={1} day="#d8d0c0" sky={skyAt(0.5)} sun={0.09} />
             <Bro position={PLACE.bro} rotationY={SOUTH} green={1} out bitten nod={t > hit ? -0.25 : 0} />
             {loaf}
-            <Dad position={[-0.45, 0, 0.95]} rotationY={NORTH - 0.15} lean={jolt(t, 0.1, 0.5)} />
-            {t < hit ? <Bottle position={[-0.4 + k * 0.23, 1.2 + Math.sin(k * Math.PI) * 0.35, 0.6 - k * 1.5]} rotation={[t * 22, 0, 0]} /> : null}
+            <Dad position={[0.4, 0, 0.8]} rotationY={NORTH + 0.35} lean={jolt(t, 0.1, 0.5)} />
+            {t < hit ? <Bottle position={[0.3 - k * 0.47, 1.2 + Math.sin(k * Math.PI) * 0.35, 0.45 - k * 1.35]} rotation={[t * 22, 0, 0]} /> : null}
             <Splash position={[PLACE.bro[0], 1.0, -0.9]} t={t - hit} color="#b9bfd4" />
             <Me position={[-1.2, 0, 0.55]} rotationY={NORTH + 0.2} carry={lamp} />
             <Fill at={[2.4, 2.2, 1.6]} power={14} />
@@ -287,19 +286,19 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "7.sun",
-      ...cam.push({ on: [-1.95, 1.7, 1.6], dist: 5.4, to: 5.0, yaw: 48, pitch: 8, fov: 48 }),
+      ...cam.push({ on: [-1.9, 1.35, 1.75], dist: 3.5, to: 3.2, yaw: 126, pitch: 4, fov: 52 }),
       zone: "cellar",
       look: "lantern-night",
-      note: "The stairs. Gold light from the open door lies on the top step. It drops to the next one, and the next, on the words.",
+      note: "The stairs, looking up them to the open door. Gold light from it lies on the top step. It drops to the next one, and the next, on the words. The kid stands at the bottom and watches it come.",
       stage: (t) => {
         const a = w("7.sun", "One");
         const b = w("7.sun", "Then");
         const sun = 0.09 + (t > 0.5 ? 0.08 : 0) + (t > a ? 0.085 : 0) + (t > b ? 0.085 : 0) + (t > b + 0.4 ? 0.08 : 0);
         return (
           <>
-            <Cellar walls="nw" door={1} day="#ffd27a" sky={skyAt(0.95)} sun={sun} />
-            <Me position={[-0.85, 0, 0.3]} rotationY={SOUTH - 0.6} carry={lamp} lookAt={[-1.95, 2.4, 2.6]} />
-            <Fill at={[1.0, 2.2, 2.4]} power={14} />
+            <Cellar walls="ws" door={1} day="#ffd27a" sky={skyAt(0.95)} sun={sun} />
+            <Me position={[-1.0, 0, 0.15]} rotationY={SOUTH - 0.5} carry={lamp} lookAt={[-1.95, 2.4, 2.6]} />
+            <Fill at={[0.4, 2.2, 0.2]} power={18} />
           </>
         );
       },

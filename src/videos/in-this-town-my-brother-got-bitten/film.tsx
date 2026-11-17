@@ -25,7 +25,7 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "middle",
   look: "overworld-day",
-  audio: { src: "audio/in-this-town-my-brother-got-bitten/narration.mp3" },
+  audio: { src: "audio/in-this-town-my-brother-got-bitten/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5],

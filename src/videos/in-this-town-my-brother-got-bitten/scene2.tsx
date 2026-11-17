@@ -106,7 +106,7 @@ export const scene2 = storyScene(timing, {
         <>
           <OurRoom night />
           <Bro position={[-1.0, 0, 0.6]} rotationY={SOUTH + 0.2} bitten green={0.25 + tw(t, 0, 0.8) * 0.3} nod={tw(t, 0.2, 0.8) * 0.3} tilt={Math.sin(t * 14) * 0.03} />
-          <Fill at={[-0.6, 1.6, 2.6]} power={30} />
+          <Fill at={[-0.6, 1.6, 2.6]} power={10} />
         </>
       ),
     },

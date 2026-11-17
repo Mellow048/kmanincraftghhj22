@@ -133,10 +133,10 @@ export const Bro: React.FC<VillagerProps & { green?: number; out?: boolean; bitt
   ) : undefined;
   const a = out || arms ? { l: -1.5 + sway, r: -1.5 - sway, holdL: bite, ...arms } : undefined;
   const torn = bitten && !a ? (
-    <group position={[-0.33, 0.1, -0.08]} rotation={[-0.75, 0, 0]}>
-      <Block size={[0.15, 0.13, 0.02]} color="#27351f" castShadow={false} />
+    <group position={[-0.3375, -0.139, -0.116]} rotation={[-0.75, 0, 0]}>
+      <Block position={[0, 0, 0.118]} size={[0.16, 0.14, 0.02]} color="#27351f" castShadow={false} />
       {[-1, 0, 1].map((i) => (
-        <Block key={i} position={[i * 0.04, 0, 0.012]} size={[0.02, 0.06, 0.01]} color="#7fd35a" castShadow={false} />
+        <Block key={i} position={[i * 0.045, 0, 0.13]} size={[0.022, 0.065, 0.01]} color="#7fd35a" castShadow={false} />
       ))}
     </group>
   ) : undefined;

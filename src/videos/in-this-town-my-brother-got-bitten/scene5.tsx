@@ -15,9 +15,20 @@ const GOLD = "#ffd27a";
 /** The old bite on a folded sleeve: the sleeve pushed back, bare skin, and a row of pale green marks. */
 const SleeveBite = ({ k }: { k: number }) =>
   k <= 0.02 ? null : (
-    <group position={[-0.33, 0.1, -0.08]} rotation={[-0.75, 0, 0]}>
-      <Block size={[0.26 * k, 0.262, 0.262]} color={skinAt(0)} castShadow={false} />
-      {[-1, 1].map((r) => [-1, 0, 1].map((i) => <Block key={`${r}${i}`} position={[i * 0.05 * k, r * 0.05, 0.135]} size={[0.028, 0.045, 0.012]} color="#5f8a4e" castShadow={false} />))}
+    <group position={[-0.3375, -0.2215, -0.04]} rotation={[-0.75, 0, 0]}>
+      {/* the lower half of the sleeve, pushed back: it grows up from the cuff */}
+      <Block position={[0, -0.1125 + 0.115 * k, 0]} size={[0.236, 0.23 * k, 0.236]} color={skinAt(0)} castShadow={false} />
+      <Block position={[0, -0.1125 + 0.23 * k + 0.02, 0]} size={[0.25, 0.05, 0.25]} color="#3b332d" castShadow={false} />
+      {k > 0.7
+        ? [-1, 1].map((r) =>
+            [-1, 0, 1].map((i) => (
+              <group key={`${r}${i}`}>
+                <Block position={[i * 0.05, r * 0.04, 0.12]} size={[0.026, 0.04, 0.012]} color="#5f8a4e" castShadow={false} />
+                <Block position={[-0.12, r * 0.04, i * 0.05]} size={[0.012, 0.04, 0.026]} color="#5f8a4e" castShadow={false} />
+              </group>
+            )),
+          )
+        : null}
     </group>
   );
 
@@ -32,7 +43,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: [0.2, 1.0, 0.4], dist: 3.3, to: 2.9, yaw: 158, pitch: 0, fov: 42 }),
       zone: "cellar",
       look: "warm-room",
-      note: "From inside the cell. The kid is still standing in the light with the bright door behind him, and he turns his head up to dad beside him: HOW DID YOU KNOW?",
+      note: "From inside the cell. The kid is still standing in the light with the bright door behind him, and he turns his head up to dad beside him: with a ? over his head.",
       stage: (t) => (
         <>
           <Cellar walls="ew" {...day} />
@@ -40,9 +51,8 @@ export const scene5 = storyScene(timing, {
           <RedSwirl position={PLACE.bro} t={t + 2} />
           <Me position={KIDP} rotationY={NORTH} lookAt={t > 0.25 ? face(DAD, 1) : undefined} />
           <Dad position={DAD} rotationY={NORTH - 0.4} lookAt={t > 0.6 ? face(KIDP, KID) : undefined} />
-          <Bubble text="HOW DID" position={[0.1, 1.72, 0.2]} rotationY={Math.PI} scale={0.36 * pop(t, 0.5, 0.14)} tail={1} />
-          <Bubble text="YOU KNOW?" position={[0.1, 1.5, 0.2]} rotationY={Math.PI} scale={0.36 * pop(t, 0.62, 0.14)} tail={1} />
-          <Fill at={[0.8, 1.8, -1.8]} power={20} />
+          <Bubble text="?" position={[0.1, 1.42, -0.1]} rotationY={Math.PI - 0.3} scale={0.4 * pop(t, 0.5, 0.14)} tail={1} />
+          <Fill at={[0.8, 1.8, -1.8]} power={26} />
         </>
       ),
     },
@@ -98,11 +108,11 @@ export const scene5 = storyScene(timing, {
           <Cellar sky={skyAt(0.1)} />
           <Priest position={[0.52, 0, -1.0]} rotationY={SOUTH} green={1} arms={{ l: -1.5 + Math.sin(t * 2) * 0.05, r: -1.5 - Math.sin(t * 2) * 0.05 }} />
           <RedSwirl position={[0.52, 0, -1.0]} t={t} k={0.8} />
-          <Villager position={[-0.3, -0.5, 0.55]} rotationY={NORTH + 0.3} robe={ROBE.blue} sit phase={2} />
-          <Villager position={[-1.05, -0.47, 0.3]} rotationY={NORTH + 0.5} robe={ROBE.brown} sit scale={0.94} phase={1} />
-          <Villager position={[-0.75, -0.35, 1.0]} rotationY={NORTH + 0.4} robe={ROBE.friend} kid scale={KID} sit phase={3} />
-          <HandLantern position={[0.3, 0, 0.35]} light={20} />
-          <Price position={[-0.6, 1.7, 0.6]} n={1} scale={0.8 * pop(t, w("8.priest", "half") - 0.1, 0.16)} rotationY={0.5} />
+          <Villager position={[0.6, -0.5, 0.75]} rotationY={NORTH} robe={ROBE.blue} sit phase={2} />
+          <Villager position={[-0.15, -0.47, 0.35]} rotationY={NORTH + 0.3} robe={ROBE.brown} sit scale={0.94} phase={1} />
+          <Villager position={[0.15, -0.35, 1.15]} rotationY={NORTH + 0.2} robe={ROBE.friend} kid scale={KID} sit phase={3} />
+          <HandLantern position={[0.75, 0, 0.1]} light={20} />
+          <Price position={[0.3, 1.6, 0.8]} n={1} scale={0.7 * pop(t, w("8.priest", "half") - 0.1, 0.16)} rotationY={0.5} />
           <Fill at={[1.4, 2.2, 2.2]} power={12} />
         </>
       ),
@@ -235,7 +245,7 @@ export const scene5 = storyScene(timing, {
           <Me position={[KIDP[0] - 0.1, hop(t, 0.7, 0.22, 0.3) + hop(t, 1.1, 0.22, 0.3), 0.55]} rotationY={NORTH} />
           <Dad position={[-1.15, 0, 0.75]} rotationY={NORTH + 0.5} nod={Math.max(0, Math.sin(t * 9)) * 0.2 * tw(t, 0.8, 1.0)} />
           {loaf}
-          <Bubble text="ANY BREAD?" position={[0.25, 1.95, -0.9]} rotationY={0.8} scale={0.4 * pop(t, 0.3, 0.14)} tail={-1} />
+          <Bubble text="ANY BREAD?" position={[-0.1, 1.82, -0.3]} rotationY={0.8} scale={0.32 * pop(t, 0.3, 0.14)} tail={1} />
           <Fill at={[2.4, 2.0, 1.4]} power={18} />
         </>
       ),
@@ -252,7 +262,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <OurRoom night />
-            <Bro position={[-0.68 + k * 0.22, 0, 0.75]} rotationY={SOUTH + 0.25} bitten lookAt={t < a - 0.6 ? [0, 1.2, 0.75] : undefined} />
+            <Bro position={[-0.68 + k * 0.22, 0, 0.75]} rotationY={SOUTH + 0.25} bitten turn={t < a - 0.6 ? 0.7 : 0.3} />
             {[a - 0.44, a - 0.14].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[-0.12, 1.0, 0.6]} rotationY={WEST} t={t - at} color="#fff0c0" reach={0.6} /> : null))}
             <HandLantern position={[-1.7, 0, 1.0]} light={18} />
             <Fill at={[-1.2, 2.2, 3.2]} power={22} />
@@ -271,7 +281,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <OurRoom night />
-            <Me position={[0.62 - k * 0.22, hop(t, 0.2, 0.06, 0.2), 0.75]} rotationY={SOUTH - 0.25} lookAt={t > 0.7 ? [0, 1.0, 0.75] : undefined} />
+            <Me position={[0.62 - k * 0.22, hop(t, 0.2, 0.06, 0.2), 0.75]} rotationY={SOUTH - 0.25} turn={t > 0.7 ? -0.7 : 0} />
             {[0.3, 0.55].map((at, i) => (t > at && t < at + 0.4 ? <SoundRings key={i} position={[0.12, 0.8, 0.6]} rotationY={EAST} t={t - at} color="#ffd9a0" reach={0.5} /> : null))}
             <Fill at={[1.2, 2.2, 3.2]} power={24} />
           </>
@@ -291,8 +301,8 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <OurRoom night shake={s} />
-            <Bro position={[-0.68, 0, 0.75]} rotationY={SOUTH + 0.25} bitten lookAt={seen ? [0.9, 0, 1.3] : [0, 1.2, 0.75]} />
-            <Me position={[0.62, 0, 0.6]} rotationY={SOUTH - 0.25} lookAt={seen ? [0.9, 0, 1.3] : [0, 1.0, 0.75]} />
+            <Bro position={[-0.68, 0, 0.75]} rotationY={SOUTH + 0.25} bitten turn={seen ? 0.5 : 0.7} nod={seen ? 0.5 : 0} />
+            <Me position={[0.62, 0, 0.6]} rotationY={SOUTH - 0.25} turn={seen ? 0.2 : -0.7} nod={seen ? 0.6 : 0} />
             {[a - 0.35, a - 0.05].map((at, i) =>
               t > at ? (
                 <group key={i}>
@@ -320,12 +330,13 @@ export const scene5 = storyScene(timing, {
           {t > 0.25 ? (
             <>
               {[-1, 1].map((s) => (
-                <Block key={s} position={[0.5 + s * 0.1, 1.5, -1.7]} size={[0.1, 0.07 * pop(t, 0.25, 0.12), 0.02]} color="#ff3020" emissive="#ff3020" emissiveIntensity={3} castShadow={false} />
+                <Block key={s} position={[0.5 + s * 0.12, 1.5, -1.7]} size={[0.13, 0.09 * pop(t, 0.25, 0.12), 0.02]} color="#ff3020" emissive="#ff3020" emissiveIntensity={3} castShadow={false} />
               ))}
               <pointLight position={[0.5, 1.5, -1.5]} color="#ff3020" intensity={1.2} distance={2} decay={1.6} />
             </>
           ) : null}
-          <SubscribeSign position={[-0.75, 0, 0.75]} scale={1.0 * pop(t, 0.6, 0.18)} rotationY={0.15} />
+          <SubscribeSign position={[0.12, 1.05, 0.9]} scale={0.6 * pop(t, 0.6, 0.18)} />
+          {t > 0.7 ? <Block position={[0.12, 0.2, 0.89]} size={[0.06, 0.4, 0.05]} color="#5c3f24" /> : null}
           <Fill at={[0.4, 2.2, 2.2]} power={10} />
         </>
       ),
