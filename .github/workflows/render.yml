@@ -105,6 +105,11 @@ jobs:
         run: npm ci
 
       # PCM sound in a .mov: the chunks then join without a click or a gap.
+      #
+      # Concurrency is 2, not the 4 we used before: the shader chain (post.shaders) holds several
+      # full-size framebuffers per tab, and at 4 tabs Chrome ran out of memory mid-chunk ("Could not
+      # take a screenshot because Google Chrome ran out of memory or disk space"). Two tabs is slower
+      # per chunk and fits: the nine chunks still render side by side on nine runners.
       - name: Render frames ${{ matrix.from }}-${{ matrix.to }}
         env:
           COMPOSITION: ${{ inputs.composition }}
@@ -119,7 +124,7 @@ jobs:
           if ! npx remotion render src/index.ts "$COMPOSITION" "out/chunk-$INDEX.mov" \
             --frames="$FROM-$TO" --scale="$SCALE" \
             --codec=h264 --crf=20 --audio-codec=pcm-16 --enforce-audio-track \
-            --concurrency=4 --gl=swangle --timeout=240000 2>&1 | tee render.log; then
+            --concurrency=2 --gl=swangle --timeout=240000 2>&1 | tee render.log; then
             MSG=$(grep -v "Rendered\|Encoded\|Stitching" render.log | tail -c 2500 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
             echo "::error title=Chunk $INDEX (frames $FROM-$TO) failed::$MSG"
             exit 1
