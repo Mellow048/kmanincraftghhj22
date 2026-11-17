@@ -13,6 +13,7 @@ import { A, Dad, Friend, Hero, Mum, PLACE, Unsaid, fit, timing } from "./kit";
 const DAY = "overworld-day" as const;
 const WARM = "warm-room" as const;
 
+const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
 const ramp = (t: number, a: number, b: number) => Math.max(0, Math.min(1, (t - a) / Math.max(0.01, b - a)));
 
 export const scenes = storyScene(timing, {
