@@ -226,7 +226,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.dad",
       // The back door and the wall behind it, 0.9 m apart. He walks into it, and tries again.
-      ...cam.push({ on: [-7.35, 1.30, -3.70], dist: 2.40, to: 1.95, yaw: 90, pitch: 2, fov: 46 }),
+      ...cam.push({ on: [-8.95, 1.35, -2.00], dist: 2.00, to: 1.60, yaw: 0, pitch: 2, fov: 48 }),
       zone: "street",
       look: "overworld-night",
       note: "The back door, open onto a brick wall he can touch, and his dad doing exactly what the street has done to everyone: walking into it and trying again.",
@@ -234,7 +234,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Block size={[0.4, 2.6, 7.0]} position={S(-8.30, 1.3, -3.9)} color="#7a5f4a" castShadow={false} />
           <Adult
-            position={S(-7.35, 0, -3.70)}
+            position={S(-8.95, 0, -2.00)}
             rotationY={WEST}
             animation="walk"
             animDistance={ramp(t, 0, 1.6) * 1.1}
@@ -244,8 +244,8 @@ export const scene1 = storyScene(timing, {
           {/* This alley is sealed by two walls and has no street lamp in it, so it needs its own light or the
               frame is black however the lens is placed. A service lamp over the back door, the same sodium
               colour as the street. */}
-          <pointLight position={S(-8.20, 2.40, -2.60)} color="#ffd9a0" intensity={34} distance={12} decay={2} />
-          <LightPool position={S(-8.70, 0.03, -3.60)} width={3.4} depth={3.0} color="#ffd9a0" opacity={0.18} />
+          <pointLight position={S(-8.95, 2.90, -0.30)} color="#ffd9a0" intensity={40} distance={13} decay={1.8} />
+          <LightPool position={S(-8.95, 0.03, -1.60)} width={1.6} depth={4.0} color="#ffd9a0" opacity={0.22} />
         </>
       ),
     },
