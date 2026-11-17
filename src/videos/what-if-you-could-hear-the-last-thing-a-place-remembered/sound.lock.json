@@ -1,0 +1,147 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-you-could-hear-the-last-thing-a-place-remembered",
+  "mix": "public/audio/what-if-you-could-hear-the-last-thing-a-place-remembered/mix.mp3",
+  "seconds": 96.6667,
+  "built_from": {
+    "timing.json": "dd9d8f29dd6642badd8bd81c8c835271f7043bc2",
+    "sound.json": "ee7a97a90a4aa8253c8bb3407d801ed8962eb72a",
+    "narration.mp3": "3091c59fe182afd5f33654bd5d5d926b09d87e2d"
+  },
+  "mix_sha1": "3db87af345b9815a6b750f35eaf97f69a95f84dc",
+  "music_sections": [
+    {
+      "from": "1.if",
+      "mood": "wonder",
+      "at": 0.0
+    },
+    {
+      "from": "2.bench",
+      "mood": "playful",
+      "at": 11.77
+    },
+    {
+      "from": "3.week",
+      "mood": "curious",
+      "at": 32.4
+    },
+    {
+      "from": "3.dad",
+      "mood": "sneak",
+      "at": 40.1
+    },
+    {
+      "from": "3.sick",
+      "mood": "tense",
+      "at": 45.1
+    },
+    {
+      "from": "4.one",
+      "mood": "dark",
+      "at": 51.03
+    },
+    {
+      "from": "5.thought",
+      "mood": "sad",
+      "at": 62.23
+    },
+    {
+      "from": "6.comeback",
+      "mood": "curious",
+      "at": 66.6
+    },
+    {
+      "from": "7.wait",
+      "mood": "none",
+      "at": 78.43
+    },
+    {
+      "from": "8.morning",
+      "mood": "hope",
+      "at": 80.6
+    },
+    {
+      "from": "9.that",
+      "mood": "sad",
+      "at": 91.23
+    },
+    {
+      "from": "10.sub",
+      "mood": "sad",
+      "at": 93.83
+    }
+  ],
+  "beds": 15,
+  "measured": {
+    "musicUnderVoiceDb": 18.6,
+    "secondsWithoutMusic": 4.2,
+    "bedsUnderVoiceDb": 29.7,
+    "sfx": 96,
+    "sfxPerMinute": 59.6,
+    "sfxKinds": 28,
+    "longestGapSeconds": 3.6,
+    "longestGapAt": 2.7,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.2,
+    "voiceOverRestWorstDb": 5.2,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.2,
+        "t": 89.3,
+        "cue": "9.heard",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 13.2,
+        "cue": "2.bench",
+        "sounding": [
+          "blip",
+          "glitch"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 71.0,
+        "cue": "6.list",
+        "sounding": [
+          "power_down",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 85.9,
+        "cue": "8.wall",
+        "sounding": [
+          "chime",
+          "power_up"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 38.6,
+        "cue": "3.what",
+        "sounding": [
+          "glitch"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 23.8,
+        "cue": "2.busb",
+        "sounding": [
+          "gust",
+          "tick",
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 1.6
+  },
+  "failures": []
+}

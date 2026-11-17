@@ -27,10 +27,8 @@ export const film = defineFilm({
   title: "What If You Could Hear The Last Thing A Place Remembered",
   topic: "what-if",
   look: "overworld-day",
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/what-if-you-could-hear-the-last-thing-a-place-remembered/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/what-if-you-could-hear-the-last-thing-a-place-remembered/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
+  // The mix: the voice, twelve music sections, fifteen beds and ninety-six effects, built by scripts/sound.py.
+  audio: { src: "audio/what-if-you-could-hear-the-last-thing-a-place-remembered/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6],

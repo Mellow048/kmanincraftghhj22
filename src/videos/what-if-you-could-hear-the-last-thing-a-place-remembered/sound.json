@@ -1,0 +1,706 @@
+{
+  "film": "what-if-you-could-hear-the-last-thing-a-place-remembered",
+  "README": "The sound sheet. Read Topics/WhatIf/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build what-if-you-could-hear-the-last-thing-a-place-remembered",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.if",
+        "mood": "wonder",
+        "why": "the rule, and the first sentence out of the glass: the power is new and it is a gift"
+      },
+      {
+        "from": "2.bench",
+        "mood": "playful",
+        "why": "the five walls are jokes: a bench says OW, a classroom gives a bad joke back"
+      },
+      {
+        "from": "3.week",
+        "mood": "curious",
+        "why": "he is winning, and something is a little wrong: he is collecting other people's sentences"
+      },
+      {
+        "from": "3.dad",
+        "mood": "sneak",
+        "why": "his dad talking to a sink is a thing he was not meant to hear, even now"
+      },
+      {
+        "from": "3.sick",
+        "mood": "tense",
+        "why": "he stops touching things: the power has cost him the ordinary furniture of his own house"
+      },
+      {
+        "from": "4.one",
+        "mood": "dark",
+        "why": "the silent wall is not broken, and it has his name in it"
+      },
+      {
+        "from": "5.thought",
+        "mood": "sad",
+        "why": "the misread, understood: they remember the last thing, not the best thing"
+      },
+      {
+        "from": "6.comeback",
+        "mood": "curious",
+        "why": "going back to every place he spent, and finding them all empty"
+      },
+      {
+        "from": "7.wait",
+        "mood": "none",
+        "why": "the one wall that never said anything, and the second before he finds out why"
+      },
+      {
+        "from": "8.morning",
+        "mood": "hope",
+        "why": "the kitchen, his mother, and a sentence the film has heard before -- and this time it is for him"
+      },
+      {
+        "from": "9.that",
+        "mood": "sad",
+        "why": "he understands what his dad was doing every morning, and it is nineteen years too late to answer"
+      },
+      {
+        "from": "10.sub",
+        "mood": "sad",
+        "why": "the button: stay where you are, and never turn cheerful for the subscribe line"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.if",
+      "to": "1.one",
+      "bed": "night"
+    },
+    {
+      "from": "2.bench",
+      "to": "2.benchb",
+      "bed": "night"
+    },
+    {
+      "from": "2.class",
+      "to": "2.classb",
+      "bed": "classroom"
+    },
+    {
+      "from": "2.bus",
+      "to": "2.busb",
+      "bed": "night"
+    },
+    {
+      "from": "2.gym",
+      "to": "2.gymb",
+      "bed": "room"
+    },
+    {
+      "from": "2.mirror",
+      "to": "2.mirrorb",
+      "bed": "room"
+    },
+    {
+      "from": "3.week",
+      "to": "3.tally",
+      "bed": "night"
+    },
+    {
+      "from": "3.what",
+      "to": "3.what",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.dad",
+      "to": "3.hands",
+      "bed": "room"
+    },
+    {
+      "from": "3.still",
+      "to": "3.still",
+      "bed": "room"
+    },
+    {
+      "from": "4.one",
+      "to": "4.before",
+      "bed": "room"
+    },
+    {
+      "from": "5.thought",
+      "to": "5.instead",
+      "bed": "room"
+    },
+    {
+      "from": "6.comeback",
+      "to": "6.gone",
+      "bed": "night"
+    },
+    {
+      "from": "6.list",
+      "to": "7.wait",
+      "bed": "room"
+    },
+    {
+      "from": "8.morning",
+      "to": "10.sub",
+      "bed": "room"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.if",
+      "sfx": "whoosh",
+      "why": "cut in: the street at midnight, from nothing",
+      "trim": -4
+    },
+    {
+      "cue": "1.if",
+      "sfx": "step_stone",
+      "why": "his feet on the pavement, arriving",
+      "at": 1.2
+    },
+    {
+      "cue": "1.rule",
+      "sfx": "glitch",
+      "why": "THE POWER'S SOUND, first use: a sentence coming out of a surface",
+      "word": "wall"
+    },
+    {
+      "cue": "1.once",
+      "sfx": "power_up",
+      "why": "the sentence leaving the glass: rings of light running up",
+      "word": "quiet"
+    },
+    {
+      "cue": "1.once",
+      "sfx": "tick",
+      "why": "and then nothing, which is the part that matters",
+      "at": 1.4,
+      "pitch": 0.8,
+      "trim": -3
+    },
+    {
+      "cue": "1.found",
+      "sfx": "swish",
+      "why": "the lens turning out to the whole empty street",
+      "word": "bus",
+      "trim": -2
+    },
+    {
+      "cue": "1.one",
+      "sfx": "power_down",
+      "why": "the glass going quiet for good: the same notes falling",
+      "word": "nothing"
+    },
+    {
+      "cue": "1.one",
+      "sfx": "swish",
+      "why": "a cut inside the line, from his face to the glass",
+      "at": 1.5
+    },
+    {
+      "cue": "2.bench",
+      "sfx": "step_stone",
+      "why": "walking past the bench",
+      "pan": -0.4
+    },
+    {
+      "cue": "2.bench",
+      "sfx": "glitch",
+      "why": "the bench says OW: the power, the same sound every time",
+      "word": "OW"
+    },
+    {
+      "cue": "2.bench",
+      "sfx": "blip",
+      "why": "and he stops dead",
+      "at": 1.3,
+      "pitch": 1.25
+    },
+    {
+      "cue": "2.benchb",
+      "sfx": "rustle",
+      "why": "knees down on the pavement to look under it",
+      "word": "looked"
+    },
+    {
+      "cue": "2.benchb",
+      "sfx": "bonk",
+      "why": "his head on the underside of a bench: a plan failing, lightly",
+      "at": 1.15
+    },
+    {
+      "cue": "2.class",
+      "sfx": "whoosh",
+      "why": "cut to the classroom",
+      "trim": -5
+    },
+    {
+      "cue": "2.class",
+      "sfx": "glitch",
+      "why": "the classroom wall playing the teacher's worst joke",
+      "word": "played"
+    },
+    {
+      "cue": "2.classb",
+      "sfx": "cheer",
+      "why": "somebody had laughed, once: one small laugh, not a crowd",
+      "word": "laughed",
+      "trim": -6
+    },
+    {
+      "cue": "2.bus",
+      "sfx": "swish",
+      "why": "cut: back out to the bus stop",
+      "trim": -3
+    },
+    {
+      "cue": "2.bus",
+      "sfx": "glitch",
+      "why": "the roundel saying the same sentence it says every day",
+      "word": "same"
+    },
+    {
+      "cue": "2.busb",
+      "sfx": "gust",
+      "why": "the rain over the empty pavement",
+      "word": "rain",
+      "dur": 2.4,
+      "trim": -2
+    },
+    {
+      "cue": "2.busb",
+      "sfx": "tick",
+      "why": "a year of the same sentence: one drop of a clock in it",
+      "at": 1.6,
+      "pitch": 0.9
+    },
+    {
+      "cue": "2.gym",
+      "sfx": "whoosh",
+      "why": "cut to the gym",
+      "trim": -5
+    },
+    {
+      "cue": "2.gym",
+      "sfx": "step_wood",
+      "why": "his feet on the gym floor",
+      "repeat": 2,
+      "every": 0.62,
+      "trim": 3
+    },
+    {
+      "cue": "2.gym",
+      "sfx": "step_wood",
+      "why": "and then the hand on the wall, and nothing",
+      "at": 1.5,
+      "trim": -2
+    },
+    {
+      "cue": "2.gymb",
+      "sfx": "hit",
+      "why": "his knuckles on the plaster",
+      "word": "knocked",
+      "trim": 4
+    },
+    {
+      "cue": "2.gymb",
+      "sfx": "swish",
+      "why": "his ear going to the wall afterwards",
+      "at": 1.5
+    },
+    {
+      "cue": "2.mirror",
+      "sfx": "whoosh",
+      "why": "cut to the bathroom",
+      "trim": 3
+    },
+    {
+      "cue": "2.mirror",
+      "sfx": "glitch",
+      "why": "the tiles saying you look nice, landed after the line so it sits in the silence it leaves",
+      "at": 1.62,
+      "trim": -4
+    },
+    {
+      "cue": "2.mirrorb",
+      "sfx": "swish",
+      "why": "he turns to the mirror",
+      "word": "voice",
+      "trim": -3
+    },
+    {
+      "cue": "2.mirrorb",
+      "sfx": "chime",
+      "why": "his mother's voice, six years old: the first thing the power gives him that he wanted",
+      "word": "six",
+      "trim": -4
+    },
+    {
+      "cue": "3.week",
+      "sfx": "whoosh",
+      "why": "cut: the week, and he is walking again",
+      "trim": -5
+    },
+    {
+      "cue": "3.week",
+      "sfx": "glitch",
+      "why": "one wall after another as he passes them",
+      "repeat": 3,
+      "every": 0.55,
+      "pitchStep": 1.05,
+      "trim": -3
+    },
+    {
+      "cue": "3.tally",
+      "sfx": "scrape",
+      "why": "a pencil on a card on the bedroom floor",
+      "word": "list",
+      "dur": 1.2,
+      "trim": -4
+    },
+    {
+      "cue": "3.tally",
+      "sfx": "tick",
+      "why": "a tick against the best thing he heard",
+      "repeat": 3,
+      "every": 0.42,
+      "word": "best"
+    },
+    {
+      "cue": "3.what",
+      "sfx": "step_stone",
+      "why": "walking away down the corridor",
+      "repeat": 2,
+      "every": 0.55,
+      "pan": -0.3
+    },
+    {
+      "cue": "3.what",
+      "sfx": "glitch",
+      "why": "a sentence out of a doorway behind him, meant for after he has gone",
+      "at": 1.7,
+      "trim": 2
+    },
+    {
+      "cue": "3.dad",
+      "sfx": "whoosh",
+      "why": "cut to the kitchen, and his dad is already talking",
+      "trim": -6
+    },
+    {
+      "cue": "3.dad",
+      "sfx": "glitch",
+      "why": "the power taking it in without being asked",
+      "word": "morning",
+      "trim": -4
+    },
+    {
+      "cue": "3.dadb",
+      "sfx": "glitch",
+      "why": "the same sentence going into the sink again: same words, same everywhere",
+      "word": "sink",
+      "trim": -2
+    },
+    {
+      "cue": "3.dadb",
+      "sfx": "plink",
+      "why": "a drop out of the tap under it",
+      "at": 1.9,
+      "pitch": 1.2
+    },
+    {
+      "cue": "3.sick",
+      "sfx": "buzz",
+      "why": "he stops touching things: wrong, caught, no",
+      "word": "stopped",
+      "trim": 3
+    },
+    {
+      "cue": "3.hands",
+      "sfx": "swish",
+      "why": "the hand out to the doorknob and back",
+      "word": "Doorknobs"
+    },
+    {
+      "cue": "3.hands",
+      "sfx": "glitch",
+      "why": "a doorknob he has already spent",
+      "at": 1.1,
+      "trim": -6
+    },
+    {
+      "cue": "3.still",
+      "sfx": "whoosh",
+      "why": "cut to the dark kitchen",
+      "trim": 3
+    },
+    {
+      "cue": "3.still",
+      "sfx": "creak",
+      "why": "a house settling round a boy sitting on its floor",
+      "word": "still",
+      "trim": -3
+    },
+    {
+      "cue": "4.one",
+      "sfx": "whoosh",
+      "why": "cut to the gym, and the empty end of it",
+      "trim": 3
+    },
+    {
+      "cue": "4.one",
+      "sfx": "tick",
+      "why": "the wall that has never said anything",
+      "word": "sentence",
+      "pitch": 0.7,
+      "trim": -2
+    },
+    {
+      "cue": "4.gym",
+      "sfx": "heartbeat",
+      "why": "waiting for a wall to answer",
+      "repeat": 2,
+      "every": 1.0,
+      "star": ""
+    },
+    {
+      "cue": "4.touch",
+      "sfx": "glitch",
+      "why": "the sentences goes INTO him, not out of the wall: the same sound, pointed the wrong way",
+      "word": "hand",
+      "pitch": 1.15
+    },
+    {
+      "cue": "4.touch",
+      "sfx": "boom",
+      "why": "and he hears his own name in his mother's voice",
+      "at": 0.85,
+      "trim": -3
+    },
+    {
+      "cue": "4.name",
+      "sfx": "heartbeat",
+      "why": "a boy not moving in an empty gym",
+      "repeat": 3,
+      "every": 0.9,
+      "trim": 3
+    },
+    {
+      "cue": "4.before",
+      "sfx": "drop",
+      "why": "she said it before I was born: the floor going out from under the sentence",
+      "word": "born",
+      "trim": -2
+    },
+    {
+      "cue": "4.before",
+      "sfx": "heartbeat",
+      "why": "one, close, and then the cut",
+      "at": 1.25,
+      "trim": -2
+    },
+    {
+      "cue": "5.thought",
+      "sfx": "whoosh",
+      "why": "cut, and he is talking to the lens",
+      "trim": 3
+    },
+    {
+      "cue": "5.thought",
+      "sfx": "blip",
+      "why": "the correction he says out loud",
+      "word": "important",
+      "pitch": 0.9
+    },
+    {
+      "cue": "5.instead",
+      "sfx": "drop",
+      "why": "they remember the last thing: the low note falling away under it",
+      "word": "last",
+      "trim": -1
+    },
+    {
+      "cue": "6.comeback",
+      "sfx": "whoosh",
+      "why": "cut: back to the bench outside the shop",
+      "trim": -5
+    },
+    {
+      "cue": "6.comeback",
+      "sfx": "step_stone",
+      "why": "his feet, going back to a place he has already spent",
+      "repeat": 2,
+      "every": 0.58
+    },
+    {
+      "cue": "6.gone",
+      "sfx": "power_down",
+      "why": "the bench has nothing left because he took it",
+      "word": "taken",
+      "trim": 1
+    },
+    {
+      "cue": "6.gone",
+      "sfx": "plink",
+      "why": "his palm on the slats and no sentence",
+      "at": 1.4,
+      "pitch": 0.75,
+      "trim": -2
+    },
+    {
+      "cue": "6.list",
+      "sfx": "whoosh",
+      "why": "cut to his own bedroom",
+      "trim": 3
+    },
+    {
+      "cue": "6.list",
+      "sfx": "paper",
+      "why": "the list in his hand",
+      "word": "silent",
+      "trim": -2
+    },
+    {
+      "cue": "6.mine",
+      "sfx": "scrape",
+      "why": "a line on the list in his own pencil",
+      "word": "write",
+      "dur": 0.9
+    },
+    {
+      "cue": "6.mine",
+      "sfx": "sting",
+      "why": "and it is a sentence he has never said",
+      "at": 1.5,
+      "trim": -4
+    },
+    {
+      "cue": "7.quiet",
+      "sfx": "swish",
+      "why": "cut: his hand on his own bedroom wall",
+      "trim": -4
+    },
+    {
+      "cue": "7.quiet",
+      "sfx": "tick",
+      "why": "nothing at all, in the one wall that was his",
+      "word": "own",
+      "pitch": 0.65
+    },
+    {
+      "cue": "7.wait",
+      "sfx": "heartbeat",
+      "why": "it is not empty, it is holding: the wait before the thing",
+      "repeat": 3,
+      "every": 0.8,
+      "word": "back",
+      "trim": -1
+    },
+    {
+      "cue": "7.wait",
+      "sfx": "riser",
+      "why": "and it climbs into the kitchen",
+      "dur": 1.6,
+      "align": "end"
+    },
+    {
+      "cue": "8.morning",
+      "sfx": "whoosh",
+      "why": "cut: the kitchen, the morning, his mother",
+      "trim": -4
+    },
+    {
+      "cue": "8.morning",
+      "sfx": "place",
+      "why": "a cup set down by the sink",
+      "word": "kitchen",
+      "trim": -3
+    },
+    {
+      "cue": "8.said",
+      "sfx": "rustle",
+      "why": "she turns from the tap and says it",
+      "word": "said",
+      "trim": -3
+    },
+    {
+      "cue": "8.said",
+      "sfx": "glitch",
+      "why": "the sentence, in the film's one sound for a sentence",
+      "pitch": 0.92,
+      "at": 1.25
+    },
+    {
+      "cue": "8.wall",
+      "sfx": "power_up",
+      "why": "the kitchen wall taking it: the last time the power works, and it works away from him",
+      "word": "take",
+      "trim": -3
+    },
+    {
+      "cue": "8.wall",
+      "sfx": "chime",
+      "why": "and it stays in the wall",
+      "at": 1.35,
+      "trim": -3
+    },
+    {
+      "cue": "8.why",
+      "sfx": "paper",
+      "why": "a calendar page, and nineteen years of the same handwriting",
+      "word": "nineteen",
+      "trim": -2
+    },
+    {
+      "cue": "8.why",
+      "sfx": "tick",
+      "why": "every morning of them, counted",
+      "repeat": 4,
+      "every": 0.34,
+      "pitchStep": 1.03,
+      "trim": -3
+    },
+    {
+      "cue": "9.heard",
+      "sfx": "ding",
+      "why": "the line itself: the one the film has been walking towards",
+      "word": "turn",
+      "note": "A5",
+      "trim": -1
+    },
+    {
+      "cue": "9.heard",
+      "sfx": "glitch",
+      "why": "in his mother's voice, in the kitchen",
+      "at": 1.1,
+      "trim": -3
+    },
+    {
+      "cue": "9.that",
+      "sfx": "whoosh",
+      "why": "cut wide: the two of them in one room",
+      "trim": 3
+    },
+    {
+      "cue": "9.that",
+      "sfx": "chime",
+      "why": "he had been saying it to me: the film's warmest sound, at the end of the story",
+      "word": "me",
+      "trim": -3
+    },
+    {
+      "cue": "10.sub",
+      "sfx": "ding",
+      "why": "the button",
+      "word": "Subscribe",
+      "note": "E6",
+      "trim": -2
+    },
+    {
+      "cue": "10.sub",
+      "sfx": "pop",
+      "why": "the red board",
+      "word": "wall",
+      "pitch": 1.1,
+      "trim": -3
+    }
+  ]
+}
