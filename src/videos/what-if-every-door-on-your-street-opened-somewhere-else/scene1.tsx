@@ -307,14 +307,14 @@ export const scene1 = storyScene(timing, {
       // visibility on and off; it does not move the camera. The room is built at H(0,0,5.1), so the lens and
       // the marks both need H() to land on it. Before this, the camera stood at z 2.86 -- 2 m south of the
       // room and in the middle of empty world -- and shot the dark.
-      ...cam.push({ on: H(0.25, 1.10, 2.86), dist: 2.36, to: 1.66, yaw: 152, pitch: 3, fov: 48 }),
+      ...cam.push({ on: H(0.25, 1.10, 7.96), dist: 2.55, to: 2.20, yaw: 180, pitch: 3, fov: 56 }),
       zone: "bed",
       look: "overworld-night",
       note: "His tally on the bedroom wall, growing, and him putting the next mark on: a kid keeping score of how many doors he owns.",
       stage: (t) => (
         <>
-          <TallyMarks at={H(0.25, 0, 2.86)} count={11 + (t > TALLY_AT ? 1 : 0)} />
-          <Hero position={H(0.55, 0, 1.85)} rotationY={NORTH} animation="reachUp" face="smug" />
+          <TallyMarks at={H(0.25, 0, 7.96)} count={11 + (t > TALLY_AT ? 1 : 0)} />
+          <Hero position={H(0.55, 0, 6.95)} rotationY={NORTH} animation="reachUp" face="smug" />
         </>
       ),
     },
@@ -322,13 +322,13 @@ export const scene1 = storyScene(timing, {
       cue: "3.good",
       // Best month of his life, and the room he says it in.
       // Also H(): the room is at hall z 125.1, so a lens at z -2.60 was half a street away and looking at nothing.
-      ...cam.push({ on: H(-0.95, 1.15, 1.80), dist: 2.20, to: 1.45, yaw: 120, pitch: 4, fov: 62 }),
+      ...cam.push({ on: H(-0.95, 1.15, 6.90), dist: 2.20, to: 1.45, yaw: 120, pitch: 4, fov: 62 }),
       zone: "bed",
       look: "overworld-night",
       note: "The whole room: the bed, the marks, the window, and him sitting on the bed grinning. It is a good room. That is the point of it.",
       stage: () => (
         <>
-          <Hero position={H(-0.95, 0.68, 1.80)} rotationY={EAST} animation="sit" face="grin" />
+          <Hero position={H(-0.95, 0.68, 6.90)} rotationY={EAST} animation="sit" face="grin" />
         </>
       ),
     },

@@ -23,28 +23,28 @@ export const scene3 = storyScene(timing, {
       // out from the wall and drifting into the room; the world already has a `Tally` that puts marks flat on the
       // plaster, five to a group with the fifth struck across, and this count is the difference between the two
       // rooms. Same wall, same place, forty-one marks against his twelve.
-      ...cam.push({ on: H(0.25, 1.10, 2.86), dist: 2.90, to: 2.55, yaw: 152, pitch: 2, fov: 52 }),
+      ...cam.push({ on: H(0.25, 1.10, 7.96), dist: 2.55, to: 2.20, yaw: 180, pitch: 3, fov: 56 }),
       zone: "hisroom",
       look: "overworld-night",
       note: "The tally on the far wall, longer than his by a hand he does not know: five, ten, twenty, more than he has ever cut.",
       stage: () => (
         <>
-          <Hero position={H(0.10, 0, 1.60)} rotationY={NORTH} animation="idle" face="fear" />
+          <Hero position={H(0.10, 0, 6.70)} rotationY={NORTH} animation="idle" face="fear" />
         </>
       ),
     },
     {
       // THROUGH HIS OWN DOORWAY, from the hall: it is his bedroom, and he is standing in it.
       cue: "11.room",
-      ...cam.push({ on: H(0.15, 1.30, 5.10), dist: 1.60, to: 1.30, yaw: 180, pitch: 3, fov: 46 }),
+      ...cam.push({ on: H(0.10, 1.30, 6.30), dist: 2.30, to: 1.95, yaw: 180, pitch: 3, fov: 50 }),
       zone: "hisroom",
       look: "overworld-night",
       note: "His own bedroom, seen from the wrong side of his own door: the bed, the window, the tally, and him small in the middle of it.",
       stage: (t) => (
         <>
-          <Hero position={H(0.10, 0, 1.70)} rotationY={NORTH} animation="idle" face="fear" />
-          <Block size={[1.16, 2.3, 0.05]} position={H(0.10, 1.15, 0.50)} color="#1a1614" opacity={0.2} transparent castShadow={false} />
-          <Block size={[1.5, 0.02, 1.2]} position={H(0.2, 0.02, 1.4)} color="#a9c6ff" emissive="#a9c6ff" emissiveIntensity={0.2 * pop(t, ROOM)} castShadow={false} />
+          <Hero position={H(0.10, 0, 6.80)} rotationY={NORTH} animation="idle" face="fear" />
+          <Block size={[1.16, 2.3, 0.05]} position={H(0.10, 1.15, 5.60)} color="#1a1614" opacity={0.2} transparent castShadow={false} />
+          <Block size={[1.5, 0.02, 1.2]} position={H(0.2, 0.02, 6.50)} color="#a9c6ff" emissive="#a9c6ff" emissiveIntensity={0.2 * pop(t, ROOM)} castShadow={false} />
         </>
       ),
     },
