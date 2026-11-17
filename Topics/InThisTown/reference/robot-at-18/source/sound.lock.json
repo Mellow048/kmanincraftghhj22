@@ -1,0 +1,195 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-robot-at-18",
+  "mix": "public/audio/in-this-town-robot-at-18/mix.mp3",
+  "seconds": 174.0333,
+  "built_from": {
+    "timing.json": "3d61195c0f5387ad182a8106532dbf13663e7349",
+    "sound.json": "97d785c9d0cc6e167441a522d05cdae34c887d40",
+    "narration.mp3": "7e9153fc7b8d9341e4c89ad4bf39e6a790dfbe47"
+  },
+  "mix_sha1": "21512bd15ddf249c4c60de7442d74c00c2530915",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.mum",
+      "mood": "playful",
+      "at": 6.97
+    },
+    {
+      "from": "3.friends",
+      "mood": "wonder",
+      "at": 11.7
+    },
+    {
+      "from": "4.turn",
+      "mood": "playful",
+      "at": 20.33
+    },
+    {
+      "from": "5.home",
+      "mood": "sad",
+      "at": 38.77
+    },
+    {
+      "from": "6.lunch",
+      "mood": "tense",
+      "at": 41.7
+    },
+    {
+      "from": "7.head",
+      "mood": "playful",
+      "at": 58.33
+    },
+    {
+      "from": "8.night",
+      "mood": "sneak",
+      "at": 61.1
+    },
+    {
+      "from": "8.button",
+      "mood": "curious",
+      "at": 64.47
+    },
+    {
+      "from": "9.opened",
+      "mood": "wonder",
+      "at": 68.53
+    },
+    {
+      "from": "10.forest",
+      "mood": "town",
+      "at": 77.87
+    },
+    {
+      "from": "11.saw",
+      "mood": "curious",
+      "at": 87.6
+    },
+    {
+      "from": "12.suit",
+      "mood": "tense",
+      "at": 96.6
+    },
+    {
+      "from": "12.hole",
+      "mood": "playful",
+      "at": 132.5
+    },
+    {
+      "from": "13.cannon",
+      "mood": "dark",
+      "at": 135.47
+    },
+    {
+      "from": "14.bush",
+      "mood": "tense",
+      "at": 142.5
+    },
+    {
+      "from": "14.gone",
+      "mood": "curious",
+      "at": 153.5
+    },
+    {
+      "from": "15.who",
+      "mood": "dark",
+      "at": 156.6
+    },
+    {
+      "from": "15.same",
+      "mood": "none",
+      "at": 169.07
+    },
+    {
+      "from": "15.sub",
+      "mood": "town",
+      "at": 172.23
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 14,
+  "measured": {
+    "musicUnderVoiceDb": 17.5,
+    "secondsWithoutMusic": 3.2,
+    "bedsUnderVoiceDb": 27.1,
+    "sfx": 185,
+    "sfxPerMinute": 63.8,
+    "sfxKinds": 39,
+    "longestGapSeconds": 4.3,
+    "longestGapAt": 87.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.6,
+    "voiceOverRestWorstDb": 4.2,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.2,
+        "t": 163.9,
+        "cue": "15.broke",
+        "sounding": [
+          "debris",
+          "hit"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 141.1,
+        "cue": "13.reboot",
+        "sounding": [
+          "buzz",
+          "power_down",
+          "riser"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 142.8,
+        "cue": "14.bush",
+        "sounding": [
+          "rustle",
+          "step_grass",
+          "thud",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 117.6,
+        "cue": "12.follow",
+        "sounding": [
+          "gust",
+          "power_up",
+          "whoosh",
+          "zip"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 17.8,
+        "cue": "3.nora",
+        "sounding": [
+          "power_up"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 145.7,
+        "cue": "14.slide",
+        "sounding": [
+          "scrape"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.1,
+    "limiterMaxDb": 1.4
+  },
+  "failures": []
+}

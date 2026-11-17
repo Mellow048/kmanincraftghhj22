@@ -1,10 +1,10 @@
-# The flight: how a story is shot
+# The flight: how an explainer is shot
 
-> The numbers on this page (how long a flight takes, how far apart the islands are) are the ones the reference
-> film was built with: [`reference/bread/`](reference/bread/README.md) has them measured, with what each stop of
-> that film set by hand and why.
+> **Provisional.** The camera grammar is the framework's own and is not provisional. The numbers on this page
+> (how long a flight takes, how far apart the islands are) are a first setting until a reference is measured
+> ([`reference/`](reference/README.md)).
 
-The camera of a story never cuts. It leaves one thing, crosses the space to the next, and comes to rest on it
+The camera of an explainer never cuts. It leaves one thing, crosses the space to the next, and comes to rest on it
 while the narrator is still saying its name. That is the Zack D grammar the whole framework started from
 ([`docs/CAMERA-BIBLE.md`](../../docs/CAMERA-BIBLE.md)): one continuous world, and a camera that never teleports.
 
@@ -91,7 +91,7 @@ of a grain of flour. Say why in the note. A cut to save the trouble of staging a
 In a film of hard cuts, a shot's `stage` appears on the cut and is gone on the next. That cannot work here: a
 camera that flies away from a thing still sees it, and it sees the next thing before it gets there.
 
-So **everything a story shows lives in the world for the whole film**, and is driven by the film's clock:
+So **everything an explainer shows lives in the world for the whole film**, and is driven by the film's clock:
 
 ```tsx
 export const Exhibit2: React.FC = () => {
@@ -116,7 +116,7 @@ export const Exhibit2: React.FC = () => {
 
 ## 4. One island, one idea
 
-The world of a story is a few floating islands in one sky ([`PACK.md`](PACK.md): `Island`).
+The world of an explainer is a few floating islands in one sky ([`PACK.md`](PACK.md): `Island`).
 
 - **One idea on each.** An island has an edge, so the frame has an edge.
 - **In the order the film visits them**, 14–17 blocks apart: far enough for sky between two ideas, near enough for

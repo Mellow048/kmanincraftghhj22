@@ -1,0 +1,193 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-the-new-kid-never-took-off-his-helmet",
+  "mix": "public/audio/in-this-town-the-new-kid-never-took-off-his-helmet/mix.mp3",
+  "seconds": 108.3,
+  "built_from": {
+    "timing.json": "af020036a316148de710f2e50885d9fe1b031c9b",
+    "sound.json": "9a7bd7ab15ec8caa98e83226ff569f04a00bd16f",
+    "narration.mp3": "d4042cdd4b45a294f981b0673acfb6ae856789cb"
+  },
+  "mix_sha1": "54c8d1d2e6f47f4025198689f5af5bed8dec88cb",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "1.teacher",
+      "mood": "playful",
+      "at": 4.37
+    },
+    {
+      "from": "1.back",
+      "mood": "curious",
+      "at": 8.83
+    },
+    {
+      "from": "2.first",
+      "mood": "sad",
+      "at": 12.93
+    },
+    {
+      "from": "2.more",
+      "mood": "tense",
+      "at": 18.43
+    },
+    {
+      "from": "2.noticed",
+      "mood": "sneak",
+      "at": 24.47
+    },
+    {
+      "from": "2.mom",
+      "mood": "sad",
+      "at": 30.43
+    },
+    {
+      "from": "3.watch",
+      "mood": "sneak",
+      "at": 35.27
+    },
+    {
+      "from": "3.wet",
+      "mood": "curious",
+      "at": 39.33
+    },
+    {
+      "from": "3.follow",
+      "mood": "tense",
+      "at": 43.93
+    },
+    {
+      "from": "4.lamp",
+      "mood": "dark",
+      "at": 50.1
+    },
+    {
+      "from": "4.held",
+      "mood": "drone",
+      "at": 60.53
+    },
+    {
+      "from": "4.off",
+      "mood": "none",
+      "at": 69.57
+    },
+    {
+      "from": "4.noface",
+      "mood": "drone",
+      "at": 72.23
+    },
+    {
+      "from": "4.tent",
+      "mood": "dark",
+      "at": 79.6
+    },
+    {
+      "from": "5.quiet",
+      "mood": "none",
+      "at": 90.87
+    },
+    {
+      "from": "5.step",
+      "mood": "drone",
+      "at": 94.13
+    },
+    {
+      "from": "5.turn",
+      "mood": "tense",
+      "at": 97.33
+    },
+    {
+      "from": "5.closer",
+      "mood": "drone",
+      "at": 102.7
+    },
+    {
+      "from": "9.sub",
+      "mood": "dark",
+      "at": 106.53
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 11,
+  "measured": {
+    "musicUnderVoiceDb": 17.6,
+    "secondsWithoutMusic": 5.7,
+    "bedsUnderVoiceDb": 27.0,
+    "sfx": 222,
+    "sfxPerMinute": 123.0,
+    "sfxKinds": 35,
+    "longestGapSeconds": 1.9,
+    "longestGapAt": 65.7,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.1,
+    "voiceOverRestWorstDb": 4.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.4,
+        "t": 61.7,
+        "cue": "4.held",
+        "sounding": [
+          "tick"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 56.2,
+        "cue": "4.push",
+        "sounding": [
+          "hit",
+          "step_grass"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 52.3,
+        "cue": "4.lamp",
+        "sounding": [
+          "step_grass",
+          "sting",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 6.3,
+        "t": 80.9,
+        "cue": "4.tent",
+        "sounding": [
+          "riser",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 103.2,
+        "cue": "5.closer",
+        "sounding": [
+          "rustle",
+          "scrape"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 69.4,
+        "cue": "4.pull",
+        "sounding": [
+          "clank",
+          "scrape",
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -1.9,
+    "limiterMaxDb": 0.7
+  },
+  "failures": []
+}

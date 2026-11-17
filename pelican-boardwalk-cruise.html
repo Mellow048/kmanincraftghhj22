@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelican · Boardwalk Cruise — a single SVG file</title>
+<!--
+  A pelican riding a bicycle. One HTML file, one inline SVG, zero dependencies.
+
+  Built from scratch for this repo. Nothing here was taken from, or derived from,
+  pelican-bicycle.html or pelican-riding-a-bicycle.html — those files were never
+  opened while this one was written.
+
+  How it works
+    * One clock. Everything on screen is a pure function of `t` (seconds).
+      Pause, scrub and frame-step are exact; the same `t` always draws the
+      same frame. No Math.random in the draw path — the background dressing
+      comes from a seeded mulberry32 so it is identical on every load.
+    * The legs are real. Pedals come off a rotating crank; each leg is solved
+      every frame as a two-bar hip→knee→pedal linkage (circle/circle
+      intersection), so the webbed feet stay pinned to the pedals all the way
+      round instead of sliding.
+    * The bike is locked to the road. Wheel speed = crank speed x 2 (chainring
+      r30, rear cog r15), and the road scrolls at exactly wheel-speed x radius,
+      so the contact patch does not skate.
+    * Light does two jobs: a warm low sun from the right, a cool blue sea and
+      sky behind. The pelican is warm, the bicycle is cold teal.
+
+  Controls: Space = pause, ← / → = step one frame while paused, R = restart.
+-->
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: radial-gradient(120% 90% at 50% 0%, #16283a 0%, #0a121c 60%, #060b12 100%);
+    font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: #cdd8e4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 22px 16px 26px;
+  }
+  .frame {
+    width: min(1180px, 100%);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 26px 70px -22px #000, 0 0 0 1px #24384c, 0 0 0 6px #0d1620;
+    background: #0b1a28;
+  }
+  svg { display: block; width: 100%; height: auto; }
+
+  .bar {
+    width: min(1180px, 100%);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 10px 14px;
+    background: #0d1620;
+    border: 1px solid #1e3044;
+    border-radius: 10px;
+  }
+  .bar h1 {
+    margin: 0 auto 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #7fa6c4;
+  }
+  button {
+    font: inherit;
+    color: #e7eef5;
+    background: #17293b;
+    border: 1px solid #2b465f;
+    border-radius: 7px;
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+  button:hover { background: #1e3549; border-color: #3d6285; }
+  button:active { transform: translateY(1px); }
+  label { display: flex; align-items: center; gap: 8px; color: #8ba6bd; }
+  input[type=range] { width: 130px; accent-color: #4fb3a4; }
+  .read { color: #6f8ba3; font-variant-numeric: tabular-nums; }
+  .hint { width: min(1180px, 100%); color: #5b7690; font-size: 12px; }
+  .hint b { color: #8ba6bd; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="frame">
+<!-- ============================== THE STAGE ============================== -->
+<svg id="stage" viewBox="0 0 1200 800" role="img"
+     aria-label="A pelican pedalling a teal bicycle along a coastal boardwalk at golden hour, a fish bulging in its throat pouch.">
+  <title>Pelican on a bicycle</title>
+  <desc>Side view. Warm low sun on the right, cool sea behind. Legs solved as a
+  two-bar linkage so the feet stay on the pedals; road scrolls at true wheel speed.</desc>
+
+  <defs>
+    <!-- sky: cold up top, warm at the water -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#2a6fae"/>
+      <stop offset=".42"  stop-color="#6db4d8"/>
+      <stop offset=".74"  stop-color="#bfe0ea"/>
+      <stop offset=".93"  stop-color="#ffe6b6"/>
+      <stop offset="1"    stop-color="#ffd59a"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0"   stop-color="#fff4cf" stop-opacity=".95"/>
+      <stop offset=".32" stop-color="#ffd98a" stop-opacity=".45"/>
+      <stop offset="1"   stop-color="#ffc86a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f7ba8"/>
+      <stop offset="1" stop-color="#1b5c86"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5b6069"/>
+      <stop offset="1" stop-color="#3b4049"/>
+    </linearGradient>
+    <linearGradient id="verge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#79954c"/>
+      <stop offset="1" stop-color="#415c2c"/>
+    </linearGradient>
+    <!-- the pelican: sun comes from the right, so the back falls to shade -->
+    <linearGradient id="plume" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"   stop-color="#d9d2c1"/>
+      <stop offset=".45" stop-color="#f6f2e7"/>
+      <stop offset="1"   stop-color="#fffdf6"/>
+    </linearGradient>
+    <linearGradient id="pouch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#f6b271"/>
+      <stop offset=".55" stop-color="#f09a58"/>
+      <stop offset="1"   stop-color="#dd7f45"/>
+    </linearGradient>
+    <linearGradient id="beak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7c25a"/>
+      <stop offset="1" stop-color="#e09a2c"/>
+    </linearGradient>
+    <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2ba396"/>
+      <stop offset="1" stop-color="#116059"/>
+    </linearGradient>
+    <radialGradient id="contact" cx=".5" cy=".5" r=".5">
+      <stop offset="0"   stop-color="#12181f" stop-opacity=".55"/>
+      <stop offset=".62" stop-color="#12181f" stop-opacity=".26"/>
+      <stop offset="1"   stop-color="#12181f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="haze" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#ffe7bd" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#ffe7bd" stop-opacity="0"/>
+    </radialGradient>
+    <!-- the scalloped feather rows are cut to the body's outline -->
+    <clipPath id="bodyClip">
+      <path d="M-84,-262 C-93,-302 -56,-334 -6,-334 C42,-334 70,-308 72,-272
+               C74,-238 42,-204 -4,-202 C-50,-200 -79,-228 -84,-262 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- =========== SKY (fixed: it is infinitely far away) =========== -->
+  <rect width="1200" height="440" fill="url(#sky)"/>
+  <rect y="440" width="1200" height="100" fill="url(#sea)"/>
+  <circle cx="948" cy="252" r="215" fill="url(#sunGlow)"/>
+  <circle cx="948" cy="252" r="44"  fill="#fff6d6"/>
+  <!-- sun glinting off the water, straight under the sun -->
+  <rect x="880" y="428" width="140" height="58" fill="url(#haze)" opacity=".5"/>
+
+  <!-- =========== PARALLAX LAYERS (built + scrolled by the script) =========== -->
+  <g id="px"></g>
+
+  <!-- =========== ROAD (static surface; its markings scroll) =========== -->
+  <rect x="0" y="540" width="1200" height="20" fill="#8c8578"/>
+  <rect x="0" y="556" width="1200" height="6"  fill="#6d675c"/>
+  <rect x="0" y="560" width="1200" height="142" fill="url(#road)"/>
+  <rect x="0" y="560" width="1200" height="5"  fill="#6d747f" opacity=".7"/>
+  <rect x="0" y="700" width="1200" height="100" fill="url(#verge)"/>
+  <g id="roadMarks"></g>
+  <g id="vergeFront"></g>
+
+  <!-- the shadow is painted on the road, before the machine -->
+  <ellipse id="shadow" cx="600" cy="562" rx="205" ry="17" fill="url(#contact)"/>
+  <g id="dust"></g>
+
+  <!-- ======================= THE MACHINE + THE BIRD ======================= -->
+  <!-- local origin: the road surface under the bottom bracket. up is -y -->
+  <g id="rig" transform="translate(600,560)">
+
+    <!-- ~~~ far side: leg, crank, pedal ~~~ -->
+    <g id="farSide" opacity=".55">
+      <path id="farThigh" fill="none" stroke="#2b2118" stroke-width="24" stroke-linecap="round"/>
+      <path id="farThighI" fill="none" stroke="#b9652f" stroke-width="18" stroke-linecap="round"/>
+      <path id="farShin"  fill="none" stroke="#2b2118" stroke-width="17" stroke-linecap="round"/>
+      <path id="farShinI" fill="none" stroke="#cf7334" stroke-width="12" stroke-linecap="round"/>
+      <g id="farFoot"></g>
+      <g id="farCrank"></g>
+    </g>
+
+    <!-- ~~~ wheels ~~~ -->
+    <g id="wheelRear"  transform="translate(-152,-92)"></g>
+    <g id="wheelFront" transform="translate(158,-92)"></g>
+
+    <!-- ~~~ frame ~~~ -->
+    <g id="frame" stroke-linecap="round" fill="none">
+      <!-- outline pass, then paint, so every tube has an edge -->
+      <g stroke="#0c2b28" stroke-width="15">
+        <path d="M-6,-96 L-48,-208"/><path d="M-6,-96 L106,-150"/>
+        <path d="M-48,-208 L116,-228"/><path d="M-6,-96 L-152,-92"/>
+        <path d="M-48,-208 L-152,-92"/><path d="M106,-146 L116,-228"/>
+        <path d="M108,-148 L158,-92"/>
+      </g>
+      <g stroke="url(#paint)" stroke-width="9.5">
+        <path d="M-6,-96 L-48,-208"/><path d="M-6,-96 L106,-150"/>
+        <path d="M-48,-208 L116,-228"/><path d="M-6,-96 L-152,-92"/>
+        <path d="M-48,-208 L-152,-92"/><path d="M106,-146 L116,-228"/>
+        <path d="M108,-148 L158,-92"/>
+      </g>
+      <!-- lugs where tubes meet -->
+      <g fill="#0e5f58">
+        <circle cx="-6" cy="-96" r="10"/><circle cx="-48" cy="-208" r="9"/>
+        <circle cx="110" cy="-186" r="9"/>
+      </g>
+      <!-- seatpost, saddle, stem, bar -->
+      <path d="M-48,-208 L-52,-228" stroke="#b9c2cd" stroke-width="8"/>
+      <path d="M-86,-236 C-70,-248 -38,-248 -22,-238 C-34,-228 -66,-226 -86,-236 Z"
+            fill="#6b4326" stroke="#3a2415" stroke-width="3"/>
+      <path d="M-80,-238 C-66,-244 -40,-244 -28,-239" fill="none" stroke="#8a5a33" stroke-width="3"/>
+      <path d="M116,-228 L104,-248" stroke="#b9c2cd" stroke-width="8"/>
+      <path d="M104,-248 C96,-263 80,-266 66,-255" stroke="#0c2b28" stroke-width="12"/>
+      <path d="M104,-248 C96,-263 80,-266 66,-255" stroke="#3a2a1c" stroke-width="8"/>
+      <circle cx="66" cy="-255" r="7" fill="#241a11"/>
+      <!-- brake lever + cable -->
+      <path d="M92,-260 L84,-244" stroke="#c6ced9" stroke-width="4"/>
+      <path d="M96,-256 C120,-232 128,-196 118,-160" fill="none" stroke="#20262e" stroke-width="2.5"/>
+      <!-- bell -->
+      <g id="bell">
+        <path d="M88,-268 a9,9 0 0 1 17,4 l-19,2 z" fill="#d9a441" stroke="#7c5a17" stroke-width="2"/>
+        <circle cx="96" cy="-270" r="2.6" fill="#f6d68c"/>
+      </g>
+      <!-- rear mudguard + a pennant on a spring -->
+      <path d="M-186,-108 A92,92 0 0 1 -108,-146" fill="none" stroke="#0c2b28" stroke-width="12"/>
+      <path d="M-186,-108 A92,92 0 0 1 -108,-146" fill="none" stroke="#d8452f" stroke-width="7"/>
+      <path id="flagPole" d="M-186,-116 C-206,-150 -212,-186 -208,-206" fill="none" stroke="#8d95a3" stroke-width="3"/>
+      <path id="flag" d="" fill="#d8452f" stroke="#8f2418" stroke-width="2"/>
+      <!-- rear reflector -->
+      <rect x="-196" y="-112" width="12" height="9" rx="2" fill="#e0492f" stroke="#7d2013" stroke-width="2"/>
+    </g>
+
+    <!-- ~~~ transmission ~~~ -->
+    <g id="drive">
+      <path id="chain" d="M-6,-126 L-152,-107 A15,15 0 0 0 -152,-77 L-6,-66 A30,30 0 0 0 -6,-126 Z"
+            fill="none" stroke="#39404c" stroke-width="7"/>
+      <path id="chainLinks" d="M-6,-126 L-152,-107 A15,15 0 0 0 -152,-77 L-6,-66 A30,30 0 0 0 -6,-126 Z"
+            fill="none" stroke="#aeb7c3" stroke-width="4" stroke-dasharray="6 5"/>
+      <g id="cog" transform="translate(-152,-92)"></g>
+      <g id="ring" transform="translate(-6,-96)"></g>
+    </g>
+
+    <!-- ~~~ the far wing, reaching to the far grip ~~~ -->
+    <path d="M26,-326 C58,-322 84,-300 100,-268 C104,-256 96,-246 86,-250 C70,-264 48,-288 22,-306 Z"
+          fill="#a9a294" stroke="#5c574c" stroke-width="3" opacity=".7"/>
+
+    <!-- ~~~ THE PELICAN ~~~ -->
+    <g id="pelican">
+      <!-- tail -->
+      <path d="M-74,-286 C-108,-302 -134,-300 -152,-290 C-138,-276 -112,-262 -76,-256 Z"
+            fill="#e3ddce" stroke="#8e8878" stroke-width="3"/>
+      <path d="M-96,-290 L-146,-288 M-94,-278 L-140,-280 M-92,-268 L-124,-272"
+            stroke="#b6b0a0" stroke-width="2.5" fill="none"/>
+
+      <!-- body -->
+      <path id="body" d="M-84,-262 C-93,-302 -56,-334 -6,-334 C42,-334 70,-308 72,-272
+                          C74,-238 42,-204 -4,-202 C-50,-200 -79,-228 -84,-262 Z"
+            fill="url(#plume)" stroke="#9c9583" stroke-width="3.5"/>
+      <!-- scalloped feather rows, clipped to the body -->
+      <g clip-path="url(#bodyClip)" opacity=".55" stroke="#c3bca9" stroke-width="2.4" fill="none">
+        <path d="M-90,-300 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0"/>
+        <path d="M-90,-282 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0"/>
+        <path d="M-90,-264 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0"/>
+        <path d="M-90,-246 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0"/>
+        <path d="M-90,-228 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0 q14,12 28,0"/>
+      </g>
+      <!-- folded wing lying along the flank: coverts then black primaries -->
+      <path d="M16,-322 C-6,-318 -44,-300 -72,-262 C-52,-244 -12,-240 22,-256
+               C40,-274 38,-306 16,-322 Z"
+            fill="#cfc8b7" stroke="#8e8878" stroke-width="3"/>
+      <path d="M-40,-292 C-58,-278 -70,-266 -84,-246 C-70,-240 -54,-240 -42,-244
+               C-40,-262 -38,-278 -40,-292 Z"
+            fill="#332e29" stroke="#15120f" stroke-width="2.5"/>
+      <path d="M-46,-286 L-72,-252 M-38,-288 L-62,-250 M-30,-288 L-52,-250"
+            stroke="#57504a" stroke-width="2" fill="none"/>
+
+      <!-- neck + head, on their own pivot -->
+      <g id="neckHead">
+        <path d="M20,-318 C30,-358 60,-386 98,-392 L116,-370 C80,-362 58,-340 56,-306 Z"
+              fill="url(#plume)" stroke="#9c9583" stroke-width="3.5"/>
+        <g id="head">
+          <!-- nape crest -->
+          <path d="M92,-404 l-16,-14 l20,4 l-10,-16 l16,12 l2,-16 l8,16"
+                fill="#efe9da" stroke="#9c9583" stroke-width="2.5" stroke-linejoin="round"/>
+          <ellipse cx="118" cy="-382" rx="34" ry="30" fill="url(#plume)" stroke="#9c9583" stroke-width="3.5"/>
+
+          <!-- upper mandible: opens on the fish jump -->
+          <g id="upperBeak">
+            <path d="M138,-404 C206,-402 262,-392 300,-381 C311,-378 311,-367 300,-366
+                     C250,-366 186,-371 140,-375 Z"
+                  fill="url(#beak)" stroke="#a8701a" stroke-width="3"/>
+            <path d="M300,-381 C311,-378 311,-367 300,-366" fill="none" stroke="#8d5c12" stroke-width="3.5"/>
+            <path d="M150,-392 C210,-389 258,-381 292,-374" fill="none" stroke="#ffe0a0" stroke-width="2.5" opacity=".8"/>
+            <!-- nostril -->
+            <ellipse cx="162" cy="-388" rx="6" ry="2.6" fill="#a8701a" opacity=".7"/>
+          </g>
+
+          <!-- gular pouch, swinging on its own lag -->
+          <g id="pouchGroup">
+            <path id="pouchPath" d="M140,-372 C190,-368 250,-364 300,-365
+                                    C292,-320 246,-290 200,-294 C164,-298 144,-334 140,-372 Z"
+                  fill="url(#pouch)" stroke="#b96a35" stroke-width="3"/>
+            <path d="M152,-352 C170,-330 186,-312 206,-302" fill="none" stroke="#c9793f" stroke-width="2.5" opacity=".8"/>
+            <!-- the catch, seen through the skin -->
+            <g id="fishInside" opacity=".5">
+              <path d="M196,-338 C212,-350 240,-350 252,-336 C240,-322 212,-322 196,-338 Z" fill="#5d7f97"/>
+              <path d="M252,-336 l18,-11 l-4,12 l4,11 z" fill="#5d7f97"/>
+              <circle cx="208" cy="-341" r="2.6" fill="#e9f1f6"/>
+            </g>
+            <!-- the tail that never quite fits -->
+            <g id="tailOut">
+              <path d="M204,-298 l-20,20 l26,-6 l6,24 l10,-30 z" fill="#4f7189" stroke="#2f4c60" stroke-width="2"/>
+            </g>
+          </g>
+
+          <!-- the fish, when it makes a break for it -->
+          <g id="fishAir" opacity="0">
+            <path d="M-26,-8 C-10,-24 18,-24 30,-6 C18,12 -10,12 -26,-8 Z" fill="#6f96b0" stroke="#3d5f77" stroke-width="2.5"/>
+            <path d="M30,-6 l20,-13 l-5,14 l5,13 z" fill="#6f96b0" stroke="#3d5f77" stroke-width="2.5"/>
+            <path d="M-6,-18 l6,-14 l8,14 z" fill="#5a8099" stroke="#3d5f77" stroke-width="2"/>
+            <circle cx="-14" cy="-11" r="3.4" fill="#f2f7fa"/>
+            <circle cx="-13" cy="-11" r="1.7" fill="#1c2732"/>
+          </g>
+
+          <!-- eye -->
+          <g id="eye">
+            <circle cx="128" cy="-392" r="9.5" fill="#fbf7ec" stroke="#8e8878" stroke-width="2"/>
+            <circle id="pupil" cx="131" cy="-392" r="5" fill="#241c14"/>
+            <circle cx="133" cy="-394.5" r="1.9" fill="#fff"/>
+            <path id="lid" d="M118,-392 a10,10 0 0 1 20,0 z" fill="#e7e0cf" opacity="0"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- neckerchief, streamed out behind -->
+      <g id="scarf">
+        <path d="M22,-326 C36,-338 56,-338 66,-326 C54,-314 34,-314 22,-326 Z"
+              fill="#d8452f" stroke="#8f2418" stroke-width="3"/>
+        <path id="scarfA" fill="none" stroke="#8f2418" stroke-width="17" stroke-linecap="round"/>
+        <path id="scarfAi" fill="none" stroke="#d8452f" stroke-width="12" stroke-linecap="round"/>
+        <path id="scarfB" fill="none" stroke="#8f2418" stroke-width="13" stroke-linecap="round"/>
+        <path id="scarfBi" fill="none" stroke="#c23a26" stroke-width="9" stroke-linecap="round"/>
+      </g>
+
+      <!-- near wing, used as an arm on the grip -->
+      <path d="M22,-328 C56,-324 82,-300 98,-266 C102,-254 94,-244 84,-248
+               C68,-262 46,-290 18,-308 Z"
+            fill="#ddd6c5" stroke="#8e8878" stroke-width="3"/>
+      <path d="M84,-262 C92,-254 96,-250 98,-244 C90,-240 82,-244 78,-252 Z"
+            fill="#332e29" stroke="#15120f" stroke-width="2"/>
+      <path d="M34,-318 C56,-306 74,-288 88,-264" fill="none" stroke="#b6b0a0" stroke-width="2.5"/>
+    </g>
+
+    <!-- ~~~ near side: crank, pedal, leg ~~~ -->
+    <g id="nearCrank"></g>
+    <g id="nearSide">
+      <path id="nearThigh" fill="none" stroke="#2b2118" stroke-width="26" stroke-linecap="round"/>
+      <path id="nearThighI" fill="none" stroke="#ef8a45" stroke-width="20" stroke-linecap="round"/>
+      <path id="nearShin"  fill="none" stroke="#2b2118" stroke-width="18" stroke-linecap="round"/>
+      <path id="nearShinI" fill="none" stroke="#f59a52" stroke-width="13" stroke-linecap="round"/>
+      <g id="nearFoot"></g>
+    </g>
+    <!-- speed arcs off the tyres -->
+    <g id="speedLines" stroke="#ffffff" fill="none" opacity="0"></g>
+  </g>
+</svg>
+</div>
+
+<!-- ============================== CONTROLS ============================== -->
+<div class="bar">
+  <h1>Pelican · Boardwalk Cruise</h1>
+  <button id="playBtn" type="button">Pause</button>
+  <button id="backBtn" type="button" title="step back one frame">&larr;</button>
+  <button id="fwdBtn"  type="button" title="step forward one frame">&rarr;</button>
+  <button id="resetBtn" type="button">Restart</button>
+  <label>Speed <input id="speed" type="range" min="0.2" max="2.4" step="0.05" value="1"><span class="read" id="speedOut">1.00×</span></label>
+  <span class="read" id="clock">t = 0.000 s · f 0</span>
+</div>
+<p class="hint"><b>Space</b> pause · <b>&larr;/&rarr;</b> step a frame (1/30 s) · <b>R</b> restart. One self-contained file, no network, no libraries. Every frame is a pure function of <b>t</b>, so scrubbing is exact.</p>
+
+<script>
+"use strict";
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const $  = (id) => document.getElementById(id);
+  const mk = (tag, attrs, parent) => {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  };
+
+  /* deterministic noise — the repo's engine uses the same trick */
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ------------------------------- geometry ------------------------------ */
+  const TILE = 1200;                 // one parallax tile, in viewBox units
+  const R    = 92;                   // wheel radius
+  const BB   = [-6, -96];            // bottom bracket, rig-local
+  const CRANK = 34, RING = 30, COG = 15;
+  const HIP  = [-42, -216];          // pelican hip, riding on the saddle
+  const L1 = 96, L2 = 80;            // thigh, shin
+  const CRANK_RPS = 0.62;            // a dignified pelican cadence
+  const GEAR = RING / COG;           // 2.0 — chainring over cog
+  const V = 2 * Math.PI * CRANK_RPS * GEAR * R;   // ground speed, px/s
+  const SURGE_A = 0.07, SURGE_W = 2 * Math.PI / 6.5;
+
+  /* distance travelled at time t, and the crank locked to it */
+  function dist(t) { return V * (t + (SURGE_A / SURGE_W) * (1 - Math.cos(SURGE_W * t))); }
+  function surge(t) { return 1 + SURGE_A * Math.sin(SURGE_W * t); }
+  function crankAngle(t) { return 2 * Math.PI * CRANK_RPS * (t + (SURGE_A / SURGE_W) * (1 - Math.cos(SURGE_W * t))); }
+
+  /* two-bar leg: hip -> knee -> pedal, knee pushed forward */
+  function solveLeg(hip, pedal) {
+    const dx = pedal[0] - hip[0], dy = pedal[1] - hip[1];
+    const raw = Math.hypot(dx, dy) || 1e-6;
+    const d = Math.min(Math.max(raw, Math.abs(L1 - L2) + .5), L1 + L2 - .5);
+    const ux = dx / raw, uy = dy / raw;
+    const a = (L1 * L1 - L2 * L2 + d * d) / (2 * d);
+    const h = Math.sqrt(Math.max(0, L1 * L1 - a * a));
+    const mx = hip[0] + ux * a, my = hip[1] + uy * a;
+    const kx = -uy * h, ky = ux * h;
+    const k1 = [mx + kx, my + ky], k2 = [mx - kx, my - ky];
+    return (k1[0] >= k2[0] ? k1 : k2);
+  }
+
+  /* --------------------------- build the wheels -------------------------- */
+  function buildWheel(g) {
+    mk("circle", { r: R, fill: "none", stroke: "#191d24", "stroke-width": 14 }, g);
+    mk("circle", { r: R, fill: "none", stroke: "#2c333d", "stroke-width": 7 }, g);
+    mk("circle", { r: R - 9, fill: "none", stroke: "#c6ccd6", "stroke-width": 5 }, g);
+    mk("circle", { r: R - 12, fill: "none", stroke: "#8d95a3", "stroke-width": 1.5, opacity: .7 }, g);
+    const spin = mk("g", { class: "spin" }, g);
+    for (let i = 0; i < 20; i++) {
+      const a = (i / 20) * Math.PI * 2;
+      mk("line", {
+        x1: (Math.cos(a) * 9).toFixed(2), y1: (Math.sin(a) * 9).toFixed(2),
+        x2: (Math.cos(a) * (R - 11)).toFixed(2), y2: (Math.sin(a) * (R - 11)).toFixed(2),
+        stroke: "#dfe4ea", "stroke-width": 1.8, opacity: .85
+      }, spin);
+    }
+    for (let i = 0; i < 30; i++) {          // tyre tread, so the spin reads
+      const a = (i / 30) * Math.PI * 2;
+      mk("line", {
+        x1: (Math.cos(a) * (R - 6)).toFixed(2), y1: (Math.sin(a) * (R - 6)).toFixed(2),
+        x2: (Math.cos(a) * (R + 6)).toFixed(2), y2: (Math.sin(a) * (R + 6)).toFixed(2),
+        stroke: "#0d1015", "stroke-width": 3, opacity: .55
+      }, spin);
+    }
+    mk("circle", { r: 9, fill: "#98a1ae", stroke: "#4a525e", "stroke-width": 2 }, spin);
+    mk("circle", { r: 3.4, fill: "#39404c" }, spin);
+    mk("rect", { x: -2, y: -(R - 9), width: 4, height: 11, fill: "#6d7787" }, spin); // valve
+    return spin;
+  }
+  const spinRear  = buildWheel($("wheelRear"));
+  const spinFront = buildWheel($("wheelFront"));
+
+  /* sprockets, with teeth */
+  function buildSprocket(g, r, teeth) {
+    for (let i = 0; i < teeth; i++) {
+      const a = (i / teeth) * Math.PI * 2;
+      mk("line", {
+        x1: (Math.cos(a) * (r - 2)).toFixed(2), y1: (Math.sin(a) * (r - 2)).toFixed(2),
+        x2: (Math.cos(a) * (r + 4)).toFixed(2), y2: (Math.sin(a) * (r + 4)).toFixed(2),
+        stroke: "#8d95a3", "stroke-width": 4, "stroke-linecap": "round"
+      }, g);
+    }
+    mk("circle", { r: r - 2, fill: "#4a525e", stroke: "#2c333d", "stroke-width": 2 }, g);
+  }
+  buildSprocket($("cog"), COG, 12);
+  const ringSpin = mk("g", {}, $("ring"));
+  buildSprocket(ringSpin, RING, 24);
+  for (let i = 0; i < 5; i++) {
+    const a = (i / 5) * Math.PI * 2;
+    mk("line", { x1: 0, y1: 0, x2: (Math.cos(a) * (RING - 4)).toFixed(2), y2: (Math.sin(a) * (RING - 4)).toFixed(2),
+                 stroke: "#98a1ae", "stroke-width": 6, "stroke-linecap": "round" }, ringSpin);
+  }
+  mk("circle", { r: 6, fill: "#c6ccd6", stroke: "#4a525e", "stroke-width": 2 }, ringSpin);
+
+  /* cranks + pedals */
+  function buildCrank(g, dark) {
+    const arm = mk("g", {}, g);
+    mk("path", { d: "M0,-7 L" + CRANK + ",-5 L" + CRANK + ",5 L0,7 Z", fill: dark ? "#7d8794" : "#c6ccd6",
+                 stroke: "#39404c", "stroke-width": 2.5 }, arm);
+    const pedal = mk("g", {}, arm);
+    mk("rect", { x: -17, y: -6, width: 34, height: 12, rx: 3, fill: dark ? "#2a3038" : "#39404c",
+                 stroke: "#161a20", "stroke-width": 2 }, pedal);
+    for (let i = -12; i <= 12; i += 6)
+      mk("line", { x1: i, y1: -6, x2: i, y2: 6, stroke: "#5c6572", "stroke-width": 1.5 }, pedal);
+    return { arm, pedal };
+  }
+  const farC  = buildCrank($("farCrank"), true);
+  const nearC = buildCrank($("nearCrank"), false);
+
+  /* webbed feet */
+  function buildFoot(g, dark) {
+    const outer = dark ? "#a9561f" : "#e07b34", edge = "#2b2118";
+    mk("path", { d: "M-12,-9 L34,-11 L42,3 L36,10 L-8,11 Z", fill: outer, stroke: edge, "stroke-width": 3,
+                 "stroke-linejoin": "round" }, g);
+    mk("path", { d: "M2,-9 L6,10 M18,-10 L20,10 M32,-11 L33,10", stroke: edge, "stroke-width": 2,
+                 opacity: .55, fill: "none" }, g);
+  }
+  buildFoot($("farFoot"), true);
+  buildFoot($("nearFoot"), false);
+
+  /* ---------------------- parallax: build every tile --------------------- */
+  const layers = [];
+  function layer(factor, parent) {
+    const g = mk("g", {}, parent || $("px"));
+    const a = mk("g", {}, g), b = mk("g", {}, g);
+    b.setAttribute("transform", "translate(" + TILE + ",0)");
+    layers.push({ g, factor });
+    return [a, b];
+  }
+
+  /* far clouds */
+  (function () {
+    const [a, b] = layer(0.02);
+    for (const tgt of [a, b]) {
+      const rnd = mulberry32(11);
+      for (let i = 0; i < 4; i++) {
+        const cx = 90 + i * 300 + rnd() * 90, cy = 70 + rnd() * 130, s = .55 + rnd() * .5;
+        const c = mk("g", { transform: "translate(" + cx + "," + cy + ") scale(" + s.toFixed(2) + ")", opacity: .5 }, tgt);
+        for (const [dx, dy, r] of [[0, 0, 46], [42, 8, 34], [-44, 10, 32], [16, -18, 34], [-18, -14, 28]])
+          mk("circle", { cx: dx, cy: dy, r, fill: "#ffffff" }, c);
+      }
+    }
+  })();
+
+  /* near clouds */
+  (function () {
+    const [a, b] = layer(0.06);
+    for (const tgt of [a, b]) {
+      const rnd = mulberry32(29);
+      for (let i = 0; i < 3; i++) {
+        const cx = 160 + i * 420 + rnd() * 120, cy = 120 + rnd() * 90, s = .8 + rnd() * .55;
+        const c = mk("g", { transform: "translate(" + cx + "," + cy + ") scale(" + s.toFixed(2) + ")" }, tgt);
+        for (const [dx, dy, r] of [[0, 0, 52], [50, 10, 38], [-52, 12, 36], [18, -22, 40], [-22, -16, 32]])
+          mk("circle", { cx: dx, cy: dy, r, fill: "#fdfdff" }, c);
+        mk("ellipse", { cx: 0, cy: 26, rx: 96, ry: 18, fill: "#e9f2f8" }, c);
+      }
+    }
+  })();
+
+  /* dunes + a couple of beach huts, in haze */
+  (function () {
+    const [a, b] = layer(0.11);
+    for (const tgt of [a, b]) {
+      mk("path", { d: "M0,432 C120,404 210,414 300,428 C400,442 470,406 580,414 C700,424 780,400 900,412 " +
+                      "C1010,424 1100,410 1200,430 L1200,436 L0,436 Z", fill: "#93b0b4", opacity: .75 }, tgt);
+      for (const [x, w, h, col, roof] of [[210, 46, 34, "#e4d3b0", "#c2603f"], [760, 42, 31, "#dfe6e2", "#3f7fa8"]]) {
+        mk("rect", { x, y: 428 - h, width: w, height: h, fill: col, opacity: .8 }, tgt);
+        mk("path", { d: "M" + (x - 5) + "," + (428 - h) + " L" + (x + w / 2) + "," + (428 - h - 16) + " L" + (x + w + 5) + "," + (428 - h) + " Z",
+                     fill: roof, opacity: .8 }, tgt);
+      }
+    }
+  })();
+
+  /* sea: shimmer dashes and two sails */
+  (function () {
+    const [a, b] = layer(0.05);
+    for (const tgt of [a, b]) {
+      const rnd = mulberry32(47);
+      for (let i = 0; i < 46; i++) {
+        const x = rnd() * TILE, y = 434 + rnd() * 50, w = 10 + rnd() * 34;
+        mk("line", { x1: x, y1: y, x2: x + w, y2: y, stroke: "#bfe4f2", "stroke-width": 2,
+                     opacity: (.12 + rnd() * .3).toFixed(2), "stroke-linecap": "round" }, tgt);
+      }
+      for (const [x, s] of [[330, 1], [880, .7]]) {
+        const g = mk("g", { transform: "translate(" + x + ",462) scale(" + s + ")" }, tgt);
+        mk("path", { d: "M-18,0 L18,0 L12,8 L-12,8 Z", fill: "#2b3a46" }, g);
+        mk("path", { d: "M0,-2 L0,-44 L22,-4 Z", fill: "#f6f3ea" }, g);
+        mk("path", { d: "M-2,-4 L-2,-36 L-18,-6 Z", fill: "#dfe8ee" }, g);
+      }
+    }
+  })();
+
+  /* boardwalk fence, and one signpost per tile */
+  (function () {
+    const [a, b] = layer(0.55);
+    for (const tgt of [a, b]) {
+      mk("line", { x1: 0, y1: 496, x2: TILE, y2: 496, stroke: "#8a6a45", "stroke-width": 7 }, tgt);
+      mk("line", { x1: 0, y1: 518, x2: TILE, y2: 518, stroke: "#8a6a45", "stroke-width": 6 }, tgt);
+      for (let x = 30; x < TILE; x += 96) {
+        mk("rect", { x: x - 5, y: 486, width: 10, height: 58, rx: 2, fill: "#9a7752" }, tgt);
+        mk("rect", { x: x - 5, y: 486, width: 4, height: 58, fill: "#b08c62" }, tgt);
+      }
+      const s = mk("g", { transform: "translate(640,486)" }, tgt);
+      mk("rect", { x: -5, y: 0, width: 10, height: 58, fill: "#7d6142" }, s);
+      mk("rect", { x: -64, y: -40, width: 128, height: 34, rx: 4, fill: "#e8dcc0", stroke: "#6b5637", "stroke-width": 3 }, s);
+      const txt = mk("text", { x: 0, y: -17, "text-anchor": "middle", fill: "#4a3a22",
+        "font-family": "ui-monospace, Menlo, monospace", "font-size": 19, "font-weight": 700,
+        "letter-spacing": 2 }, s);
+      txt.textContent = "BOARDWALK";
+    }
+  })();
+
+  /* road markings + grit (must travel at exactly ground speed) */
+  (function () {
+    const [a, b] = layer(1.0, $("roadMarks"));
+    for (const tgt of [a, b]) {
+      for (let x = 0; x < TILE; x += 220)
+        mk("rect", { x, y: 640, width: 110, height: 9, rx: 3, fill: "#e6e2d4", opacity: .82 }, tgt);
+      const rnd = mulberry32(83);
+      for (let i = 0; i < 70; i++) {
+        const x = rnd() * TILE, y = 566 + rnd() * 130, r = .8 + rnd() * 2.2;
+        mk("circle", { cx: x, cy: y, r: r.toFixed(2), fill: rnd() > .5 ? "#6f7681" : "#2f343c",
+                       opacity: (.3 + rnd() * .45).toFixed(2) }, tgt);
+      }
+      for (let i = 0; i < 7; i++) {
+        const x = rnd() * TILE, y = 570 + rnd() * 120;
+        mk("path", { d: "M" + x + "," + y + " l" + (14 + rnd() * 26).toFixed(0) + "," + (rnd() * 10 - 5).toFixed(0),
+                     stroke: "#2c313a", "stroke-width": 1.6, fill: "none", opacity: .5 }, tgt);
+      }
+    }
+  })();
+
+  /* foreground verge: tufts, daisies, stones — the fastest layer */
+  (function () {
+    const [a, b] = layer(1.25, $("vergeFront"));
+    for (const tgt of [a, b]) {
+      const rnd = mulberry32(131);
+      for (let i = 0; i < 90; i++) {
+        const x = rnd() * TILE, y = 704 + rnd() * 92, h = 12 + rnd() * 34;
+        const lean = (rnd() - .5) * 20;
+        mk("path", { d: "M" + x.toFixed(1) + "," + y.toFixed(1) + " q" + (lean * .4).toFixed(1) + "," +
+                     (-h * .6).toFixed(1) + " " + lean.toFixed(1) + "," + (-h).toFixed(1),
+                     stroke: rnd() > .45 ? "#5d7f37" : "#779a44", "stroke-width": (2 + rnd() * 2.4).toFixed(1),
+                     fill: "none", "stroke-linecap": "round" }, tgt);
+      }
+      for (let i = 0; i < 22; i++) {
+        const x = rnd() * TILE, y = 712 + rnd() * 80;
+        const f = mk("g", { transform: "translate(" + x.toFixed(1) + "," + y.toFixed(1) + ")" }, tgt);
+        mk("line", { x1: 0, y1: 0, x2: 0, y2: -16, stroke: "#4f7030", "stroke-width": 2 }, f);
+        const c = rnd() > .5 ? "#fdf6d8" : "#f6c04a";
+        for (let p = 0; p < 5; p++) {
+          const a = (p / 5) * Math.PI * 2;
+          mk("circle", { cx: (Math.cos(a) * 4.4).toFixed(2), cy: (-16 + Math.sin(a) * 4.4).toFixed(2),
+                         r: 3.4, fill: c }, f);
+        }
+        mk("circle", { cx: 0, cy: -16, r: 2.2, fill: "#e08a2c" }, f);
+      }
+      for (let i = 0; i < 26; i++) {
+        const x = rnd() * TILE, y = 706 + rnd() * 90;
+        mk("ellipse", { cx: x.toFixed(1), cy: y.toFixed(1), rx: (3 + rnd() * 6).toFixed(1),
+                        ry: (2 + rnd() * 3).toFixed(1), fill: "#7e7a70", opacity: .7 }, tgt);
+      }
+    }
+  })();
+
+  /* dust kicked off the back tyre */
+  const dust = [];
+  for (let i = 0; i < 14; i++) dust.push(mk("circle", { r: 3, fill: "#cfc8bb" }, $("dust")));
+
+  /* ------------------------------ the draw ------------------------------ */
+  const el = {
+    pelican: $("pelican"), neckHead: $("neckHead"), head: $("head"),
+    upperBeak: $("upperBeak"), pouchGroup: $("pouchGroup"), tailOut: $("tailOut"),
+    fishAir: $("fishAir"), lid: $("lid"), pupil: $("pupil"), bell: $("bell"),
+    chainLinks: $("chainLinks"), flag: $("flag"), shadow: $("shadow"),
+    speedLines: $("speedLines"),
+    scarfA: $("scarfA"), scarfAi: $("scarfAi"), scarfB: $("scarfB"), scarfBi: $("scarfBi")
+  };
+  for (const k of ["Thigh", "ThighI", "Shin", "ShinI"]) {
+    el["near" + k] = $("near" + k); el["far" + k] = $("far" + k);
+  }
+
+  function seg(node, a, b) { node.setAttribute("d", "M" + a[0].toFixed(2) + "," + a[1].toFixed(2) +
+                                                    " L" + b[0].toFixed(2) + "," + b[1].toFixed(2)); }
+
+  function drawLeg(side, hip, pedal, footRot) {
+    const knee = solveLeg(hip, pedal);
+    seg(el[side + "Thigh"], hip, knee);  seg(el[side + "ThighI"], hip, knee);
+    seg(el[side + "Shin"], knee, pedal); seg(el[side + "ShinI"], knee, pedal);
+    const shinA = Math.atan2(pedal[1] - knee[1], pedal[0] - knee[0]);
+    const fa = shinA - 1.35 + 0.16 * Math.sin(footRot);
+    const ankle = [pedal[0] - Math.cos(fa) * 6 - Math.sin(fa) * 7,
+                   pedal[1] - Math.sin(fa) * 6 + Math.cos(fa) * 7];
+    $(side === "near" ? "nearFoot" : "farFoot")
+      .setAttribute("transform", "translate(" + ankle[0].toFixed(2) + "," + ankle[1].toFixed(2) +
+                    ") rotate(" + (fa * 180 / Math.PI).toFixed(2) + ")");
+  }
+
+  function scarfPath(t, seed, len, drop) {
+    let d = "M34,-330";
+    for (let i = 1; i <= 10; i++) {
+      const s = i / 10;
+      const x = 34 - s * len;
+      const y = -330 + s * drop + Math.sin(s * 4.2 - t * 7 + seed) * 13 * s;
+      d += " L" + x.toFixed(1) + "," + y.toFixed(1);
+    }
+    return d;
+  }
+
+  function draw(t) {
+    const D = dist(t);
+    const k = surge(t);
+    const ca = crankAngle(t);                 // crank angle
+    const wa = ca * GEAR;                     // wheel angle, locked through the chain
+
+    /* ---- parallax ---- */
+    for (const L of layers) {
+      const off = ((D * L.factor) % TILE + TILE) % TILE;
+      L.g.setAttribute("transform", "translate(" + (-off).toFixed(2) + ",0)");
+    }
+
+    /* ---- drivetrain ---- */
+    spinRear.setAttribute("transform",  "rotate(" + (wa * 180 / Math.PI).toFixed(2) + ")");
+    spinFront.setAttribute("transform", "rotate(" + (wa * 180 / Math.PI).toFixed(2) + ")");
+    ringSpin.setAttribute("transform",  "rotate(" + (ca * 180 / Math.PI).toFixed(2) + ")");
+    el.chainLinks.setAttribute("stroke-dashoffset", (-ca * RING).toFixed(2));
+
+    const cdeg = (ca * 180 / Math.PI);
+    farC.arm.setAttribute("transform",  "translate(" + BB + ") rotate(" + (cdeg + 180).toFixed(2) + ")");
+    nearC.arm.setAttribute("transform", "translate(" + BB + ") rotate(" + cdeg.toFixed(2) + ")");
+    farC.pedal.setAttribute("transform",  "translate(" + CRANK + ",0) rotate(" + (-(cdeg + 180)).toFixed(2) + ")");
+    nearC.pedal.setAttribute("transform", "translate(" + CRANK + ",0) rotate(" + (-cdeg).toFixed(2) + ")");
+
+    /* ---- the bird rides with a two-beat bob ---- */
+    const bob = Math.sin(ca * 2) * 3.4;
+    const rock = Math.sin(ca * 2 + 0.6) * 0.9;
+    el.pelican.setAttribute("transform", "translate(0," + bob.toFixed(2) + ") rotate(" + rock.toFixed(2) + " -10 -270)");
+
+    const hip = [HIP[0], HIP[1] + bob];
+    const pN = [BB[0] + Math.cos(ca) * CRANK, BB[1] + Math.sin(ca) * CRANK];
+    const pF = [BB[0] - Math.cos(ca) * CRANK, BB[1] - Math.sin(ca) * CRANK];
+    drawLeg("far", hip, pF, ca + Math.PI);
+    drawLeg("near", hip, pN, ca);
+
+    /* ---- head: a slow look-around, plus a jolt on each downstroke ---- */
+    const look = Math.sin(t * 0.55) * 4.5 + Math.sin(ca * 2) * 0.9;
+    el.neckHead.setAttribute("transform", "rotate(" + look.toFixed(2) + " 34 -316)");
+    el.head.setAttribute("transform", "rotate(" + (-look * 0.55).toFixed(2) + " 118 -382)");
+    el.pupil.setAttribute("cx", (131 + Math.sin(t * 0.9) * 1.6).toFixed(2));
+
+    /* ---- blink ---- */
+    const bp = (t % 4.3) / 4.3;
+    el.lid.setAttribute("opacity", bp < 0.05 ? Math.sin((bp / 0.05) * Math.PI).toFixed(3) : 0);
+
+    /* ---- the pouch swings a beat behind the bob ---- */
+    const sway = Math.sin(ca * 2 - 1.05) * 4.2 + Math.sin(t * 1.7) * 1.1;
+    el.pouchGroup.setAttribute("transform", "rotate(" + sway.toFixed(2) + " 141 -370)");
+    el.tailOut.setAttribute("transform",
+      "rotate(" + (Math.sin(t * 9) * 22).toFixed(2) + " 204 -298)");
+
+    /* ---- the fish makes a break for it, every 13 s ---- */
+    const cyc = t % 13, u = (cyc - 8.0) / 1.05;
+    const leaping = u >= 0 && u <= 1;
+    const open = leaping ? Math.sin(Math.PI * u) : 0;
+    el.upperBeak.setAttribute("transform", "rotate(" + (-13 * open).toFixed(2) + " 140 -388)");
+    if (leaping) {
+      const m = 1 - u;
+      const fx = m * m * 198 + 2 * m * u * 336 + u * u * 206;
+      const fy = m * m * -300 + 2 * m * u * -486 + u * u * -296;
+      el.fishAir.setAttribute("opacity", Math.min(1, Math.sin(Math.PI * u) * 2.4).toFixed(2));
+      el.fishAir.setAttribute("transform",
+        "translate(" + fx.toFixed(1) + "," + fy.toFixed(1) + ") rotate(" + (Math.sin(u * 12) * 26 - 12).toFixed(1) + ")");
+    } else {
+      el.fishAir.setAttribute("opacity", 0);
+    }
+
+    /* ---- the neckerchief ---- */
+    const sd = scarfPath(t, 0, 150, 34), sd2 = scarfPath(t * 1.06, 2.1, 118, 52);
+    el.scarfA.setAttribute("d", sd);  el.scarfAi.setAttribute("d", sd);
+    el.scarfB.setAttribute("d", sd2); el.scarfBi.setAttribute("d", sd2);
+
+    /* ---- the pennant ---- */
+    let fd = "M-208,-206";
+    for (let i = 1; i <= 6; i++) {
+      const s = i / 6;
+      fd += " L" + (-208 - s * 56).toFixed(1) + "," + (-206 + s * 9 + Math.sin(s * 5 - t * 11) * 7 * s).toFixed(1);
+    }
+    for (let i = 6; i >= 0; i--) {
+      const s = i / 6;
+      fd += " L" + (-208 - s * 56).toFixed(1) + "," + (-186 + s * 6 + Math.sin(s * 5 - t * 11 + .5) * 6 * s).toFixed(1);
+    }
+    el.flag.setAttribute("d", fd + " Z");
+
+    /* ---- the bell, once every 7 s ---- */
+    const bc = t % 7, ring = bc < 0.5 ? Math.sin((bc / 0.5) * Math.PI) : 0;
+    el.bell.setAttribute("transform", "rotate(" + (ring * 16).toFixed(2) + " 96 -264)");
+
+    /* ---- contact shadow breathes with the bob ---- */
+    el.shadow.setAttribute("rx", (205 + Math.sin(ca * 2) * 5).toFixed(1));
+    el.shadow.setAttribute("ry", (17 - Math.sin(ca * 2) * 1.2).toFixed(1));
+    el.shadow.setAttribute("opacity", (0.95 - k * 0.06).toFixed(2));
+
+    /* ---- dust behind the back wheel ---- */
+    for (let i = 0; i < dust.length; i++) {
+      const life = ((t * 0.85 + i / dust.length) % 1);
+      const c = dust[i];
+      c.setAttribute("cx", (448 - life * 250 - (i % 3) * 9).toFixed(1));
+      c.setAttribute("cy", (556 - life * 46 - Math.sin(life * 3 + i) * 9).toFixed(1));
+      c.setAttribute("r", (1.6 + life * 6.5).toFixed(2));
+      c.setAttribute("opacity", ((1 - life) * 0.42 * k).toFixed(3));
+    }
+
+    /* ---- speed arcs, only when it is really moving ---- */
+    const sl = el.speedLines;
+    while (sl.firstChild) sl.removeChild(sl.firstChild);
+    if (k > 1.02) {
+      sl.setAttribute("opacity", Math.min(0.5, (k - 1.02) * 6).toFixed(2));
+      for (let i = 0; i < 7; i++) {
+        const y = -170 + i * 26 + ((t * 420) % 26);
+        mk("path", { d: "M" + (-230 - i * 16) + "," + y.toFixed(0) + " h" + (60 + i * 12),
+                     "stroke-width": 2.4, "stroke-linecap": "round", opacity: .5 }, sl);
+      }
+    } else sl.setAttribute("opacity", 0);
+  }
+
+  /* ------------------------------ the clock ----------------------------- */
+  const FPS = 30, STEP = 1 / FPS;
+  let t = 0, playing = true, rate = 1, last = null;
+
+  function render() {
+    draw(t);
+    $("clock").textContent = "t = " + t.toFixed(3) + " s · f " + Math.round(t * FPS);
+  }
+  function loop(now) {
+    if (playing) {
+      if (last === null) last = now;
+      t += Math.min(0.1, (now - last) / 1000) * rate;
+      last = now;
+      render();
+    }
+    requestAnimationFrame(loop);
+  }
+  function setPlaying(p) {
+    playing = p; last = null;
+    $("playBtn").textContent = p ? "Pause" : "Play";
+  }
+
+  $("playBtn").onclick  = () => setPlaying(!playing);
+  $("resetBtn").onclick = () => { t = 0; render(); };
+  $("backBtn").onclick  = () => { setPlaying(false); t = Math.max(0, t - STEP); render(); };
+  $("fwdBtn").onclick   = () => { setPlaying(false); t += STEP; render(); };
+  $("speed").oninput = (e) => {
+    rate = parseFloat(e.target.value);
+    $("speedOut").textContent = rate.toFixed(2) + "\u00d7";
+  };
+  addEventListener("keydown", (e) => {
+    if (e.code === "Space") { e.preventDefault(); setPlaying(!playing); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); setPlaying(false); t += STEP; render(); }
+    else if (e.key === "ArrowLeft")  { e.preventDefault(); setPlaying(false); t = Math.max(0, t - STEP); render(); }
+    else if (e.key === "r" || e.key === "R") { t = 0; render(); }
+  });
+
+  render();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

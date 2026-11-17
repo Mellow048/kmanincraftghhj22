@@ -3,10 +3,10 @@ import { Block, Vox } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
 
 /**
- * GOODS — the things money buys. An stories about money needs ONE thing whose price everybody knows.
+ * GOODS — the things money buys. An explainer about money needs ONE thing whose price everybody knows.
  * In a village that is a loaf of bread: keep to it for the whole film.
  *
- * Part of the Stories pack (PACK.md). `position` is always the middle of the underside.
+ * Part of the Explainer pack (PACK.md). `position` is always the middle of the underside.
  */
 
 /** A loaf of bread: a brown crust, a risen golden top, three cuts across it. `scale={2}` is a loaf big enough to be the subject of a shot. */

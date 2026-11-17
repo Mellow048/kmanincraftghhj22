@@ -1,0 +1,226 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-monster-village-part-3",
+  "mix": "public/audio/in-this-town-monster-village-part-3/mix.mp3",
+  "seconds": 156.2,
+  "built_from": {
+    "timing.json": "5f5e2920b886ea53a15041b50bd85556aede93db",
+    "sound.json": "2d141d4f8d1792fe8920bc93a870558e6b5a0c85",
+    "narration.mp3": "c2ea49cdbc99b5ceffc4ee3e06e48652aafcff66"
+  },
+  "mix_sha1": "9aead440a98cf49ce2aefb938bc1780da65ebd35",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "sneak",
+      "at": 0.0
+    },
+    {
+      "from": "1.friend",
+      "mood": "tense",
+      "at": 2.5
+    },
+    {
+      "from": "1.found",
+      "mood": "sad",
+      "at": 5.27
+    },
+    {
+      "from": "2.tree",
+      "mood": "sneak",
+      "at": 9.87
+    },
+    {
+      "from": "2.player",
+      "mood": "tense",
+      "at": 19.33
+    },
+    {
+      "from": "2.later",
+      "mood": "sad",
+      "at": 28.9
+    },
+    {
+      "from": "3.crawl",
+      "mood": "playful",
+      "at": 31.03
+    },
+    {
+      "from": "4.dad",
+      "mood": "town",
+      "at": 39.33
+    },
+    {
+      "from": "4.look",
+      "mood": "playful",
+      "at": 42.47
+    },
+    {
+      "from": "5.villagers",
+      "mood": "tense",
+      "at": 53.47
+    },
+    {
+      "from": "5.hiss",
+      "mood": "dark",
+      "at": 56.63
+    },
+    {
+      "from": "5.down",
+      "mood": "drone",
+      "at": 61.47
+    },
+    {
+      "from": "6.again",
+      "mood": "curious",
+      "at": 64.03
+    },
+    {
+      "from": "6.plug",
+      "mood": "playful",
+      "at": 68.5
+    },
+    {
+      "from": "7.mum",
+      "mood": "hope",
+      "at": 76.83
+    },
+    {
+      "from": "8.dark",
+      "mood": "none",
+      "at": 83.13
+    },
+    {
+      "from": "8.blink",
+      "mood": "dark",
+      "at": 84.7
+    },
+    {
+      "from": "9.cages",
+      "mood": "curious",
+      "at": 97.33
+    },
+    {
+      "from": "9.mo",
+      "mood": "hope",
+      "at": 100.27
+    },
+    {
+      "from": "9.dumb",
+      "mood": "playful",
+      "at": 105.03
+    },
+    {
+      "from": "9.saw",
+      "mood": "dark",
+      "at": 106.0
+    },
+    {
+      "from": "9.over",
+      "mood": "sad",
+      "at": 109.1
+    },
+    {
+      "from": "10.other",
+      "mood": "sneak",
+      "at": 111.87
+    },
+    {
+      "from": "10.map",
+      "mood": "tense",
+      "at": 120.17
+    },
+    {
+      "from": "10.shake",
+      "mood": "playful",
+      "at": 128.0
+    },
+    {
+      "from": "10.deal",
+      "mood": "town",
+      "at": 130.27
+    },
+    {
+      "from": "10.cabinet",
+      "mood": "tense",
+      "at": 131.33
+    },
+    {
+      "from": "10.cheer",
+      "mood": "playful",
+      "at": 143.47
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 10,
+  "measured": {
+    "musicUnderVoiceDb": 17.5,
+    "secondsWithoutMusic": 1.6,
+    "bedsUnderVoiceDb": 27.3,
+    "sfx": 223,
+    "sfxPerMinute": 85.7,
+    "sfxKinds": 36,
+    "longestGapSeconds": 3.7,
+    "longestGapAt": 149.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.2,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 128.6,
+        "cue": "10.shake",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 32.4,
+        "cue": "3.crawl",
+        "sounding": [
+          "tick"
+        ]
+      },
+      {
+        "db": 5.5,
+        "t": 54.7,
+        "cue": "5.villagers",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 96.5,
+        "cue": "8.towers",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 13.4,
+        "cue": "2.watch",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 154.8,
+        "cue": "11.sub",
+        "sounding": [
+          "ding"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.8
+  },
+  "failures": []
+}

@@ -3,7 +3,7 @@ import { around } from "../../src/engine";
 import type { LookPreset, SceneDef, Shot, Timing, Vec3 } from "../../src/engine";
 
 /**
- * THE FLIGHT — the camera of a story.
+ * THE FLIGHT — the camera of an explainer.
  *
  * The camera grammar is the framework's own (docs/CAMERA-BIBLE.md): one continuous world, and a camera
  * that never teleports. What this file adds is the CLOCK. In a 20-second base film the times of a move
@@ -36,7 +36,7 @@ import type { LookPreset, SceneDef, Shot, Timing, Vec3 } from "../../src/engine"
  * is never still, and the thing being talked about is in the frame for most of its own sentence.
  *
  * WHAT THE CAMERA LOOKS AT IS NOT IN THE SHOT. With hard cuts, a shot's `stage` can appear on the cut and
- * vanish on the next one. A camera that flies away from a thing still sees it. So everything a story
+ * vanish on the next one. A camera that flies away from a thing still sees it. So everything an explainer
  * shows lives in the WORLD for the whole film, and is driven by the film's clock (`filmClock`, Shared):
  * it waits in its first state until its word is said, and stays in its last state afterwards.
  */
@@ -95,7 +95,7 @@ export type FlightSceneDef = {
   /** Where the camera is when this scene begins: the last stop of the scene before it. (For scene 1: where the film opens.) */
   from: Stop;
   shots: FlightShot[];
-  /** Optional: things that exist only during this scene. Most of a story belongs in the world instead. */
+  /** Optional: things that exist only during this scene. Most of an explainer belongs in the world instead. */
   Component?: React.FC;
 };
 
@@ -176,7 +176,7 @@ export function flightScene(timing: Timing, def: FlightSceneDef): SceneDef {
 }
 
 /**
- * The promise of a story, checked: THE CAMERA NEVER TELEPORTS. Call it in film.tsx, on the film's scenes:
+ * The promise of an explainer, checked: THE CAMERA NEVER TELEPORTS. Call it in film.tsx, on the film's scenes:
  *
  *   unbroken(film.scenes, { maxCuts: 2 });
  *
@@ -203,7 +203,7 @@ export function unbroken(scenes: SceneDef[], limits: { maxCuts?: number } = {}):
         if (moved > 0.06 || aimed > 0.06 || lens > 0.75) {
           throw new Error(
             `The camera teleports going into ${label}: it jumps ${moved.toFixed(2)} m, its look point ${aimed.toFixed(2)} m and its lens ${lens.toFixed(1)}°, ` +
-              `from where ${before.label} left it. In a story the camera flies. Make this scene's \`from\` the last stop of the scene before it, ` +
+              `from where ${before.label} left it. In an explainer the camera flies. Make this scene's \`from\` the last stop of the scene before it, ` +
               `or, if a cut really is the point, give the shot \`cut: true\` and say why in its note.`,
           );
         }
@@ -217,6 +217,6 @@ export function unbroken(scenes: SceneDef[], limits: { maxCuts?: number } = {}):
     }
   }
   if (limits.maxCuts !== undefined && cuts > limits.maxCuts) {
-    throw new Error(`This film has ${cuts} hard cuts. An stories allows ${limits.maxCuts}: the camera flies from one thing to the next.`);
+    throw new Error(`This film has ${cuts} hard cuts. An explainer allows ${limits.maxCuts}: the camera flies from one thing to the next.`);
   }
 }

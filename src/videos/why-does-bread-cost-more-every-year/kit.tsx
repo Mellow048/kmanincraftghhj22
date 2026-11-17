@@ -8,7 +8,7 @@ import timingJson from "./timing.json";
 /**
  * This film's own route, places and people.
  *
- * Everything another stories could use is in the topic's pack, Topics/Stories (catalogue with pictures:
+ * Everything another explainer could use is in the topic's pack, Topics/Stories (catalogue with pictures:
  * Topics/Stories/PACK.md). It is passed on from here, so a scene imports only from "./kit". What the pack did not
  * have is in ./parts.tsx, built the way the pack asks: in the film first.
  */
@@ -34,7 +34,7 @@ export { Balloon, FigureBubble, Loaf, NoteBundle, NoteFall, NoteHeap, Oven, Pric
 export const timing = timingJson as unknown as Timing;
 
 /**
- * The film's clock. Everything a story shows lives in the world for the whole film, so it asks
+ * The film's clock. Everything an explainer shows lives in the world for the whole film, so it asks
  * "how long ago was this word said?":
  *
  *   const t = clock.useSince("2.loaf", "costs");     // negative until "costs" is said, then seconds since

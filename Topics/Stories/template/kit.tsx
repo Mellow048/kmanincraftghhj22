@@ -1,14 +1,14 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { filmClock, near, stop } from "../../../Topics/Stories";
+import { filmClock, near, stop } from "../../../Topics/Explainer";
 import timingJson from "./timing.json";
 
 /**
  * This film's own route, places and people.
  *
- * Everything another stories could use is in the topic's pack, Topics/Stories (catalogue with pictures:
- * Topics/Stories/PACK.md). It is passed on from here, so a scene imports only from "./kit". Build something
+ * Everything another explainer could use is in the topic's pack, Topics/Explainer (catalogue with pictures:
+ * Topics/Explainer/PACK.md). It is passed on from here, so a scene imports only from "./kit". Build something
  * new here ONLY if the pack does not have it; if a second film could use it, put it in the pack instead.
  */
 
@@ -27,12 +27,12 @@ export {
   Bits, Bubble, Figure, Hut, Icon, LampPost, Player, Puffs, ROBE, Stall, SubscribeSign, Villager, Voxels,
   // staging: how a thing pops in, where "in front of him" is
   ADULT, CHILD, DEG, EAST, KID, NORTH, SOUTH, WEST, ahead, beside, chestOf, ease, faceOf, jolt, pop, ramp, villagerChest, villagerFace,
-} from "../../../Topics/Stories";
+} from "../../../Topics/Explainer";
 
 export const timing = timingJson as unknown as Timing;
 
 /**
- * The film's clock. Everything a story shows lives in the world for the whole film, so it asks
+ * The film's clock. Everything an explainer shows lives in the world for the whole film, so it asks
  * "how long ago was this word said?":
  *
  *   const t = clock.useSince("1.loaf", "price");     // negative until "price" is said, then seconds since
@@ -87,7 +87,7 @@ void near;
 type A = Partial<MinecraftAvatarProps>;
 
 /**
- * SAM: the one person a story follows. Whatever is being explained happens to Sam, so the viewer has
+ * SAM: the one person an explainer follows. Whatever is being explained happens to Sam, so the viewer has
  * somebody to be. One loud colour nobody else in the film wears.
  * Faces: smile grin laugh frown uneasy brave fear wow ouch calm. Change the face ON the word.
  */

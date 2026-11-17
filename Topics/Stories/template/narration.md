@@ -2,7 +2,7 @@
 
 **Status: DRAFT. Not approved, not recorded.** Nothing is built until the owner approves the script.
 
-Topic: `Topics/Stories`. Read `Topics/Stories/SCRIPT.md` before writing a word.
+Topic: `Topics/Explainer`. Read `Topics/Explainer/SCRIPT.md` before writing a word.
 
 **The question:** TODO. One question a nine-year-old would ask.
 

@@ -42,7 +42,12 @@ shots, a log of every shot, a snapshot of its source, and a page on what it is g
 | [`reference/nobody-looked-at-the-moon/`](reference/nobody-looked-at-the-moon/README.md): `in-this-town-nobody-looked-at-the-moon` (short cut: 14 beats, 63 shots, 471 words, 1:52) | "every single one u made is good" | A film at NIGHT: a town in warm lantern light, cold moonlight that lies on one place at a time and moves like a character (`skyAt()` in its `kit.tsx`), and every part under "Fields and night" in [`PACK.md`](PACK.md). A remake of a rejected 20-second film. The densest sound sheet, and what was cut from it |
 | [`reference/monster-egg/`](reference/monster-egg/README.md): `in-this-town-monster-egg` (full film: 18 beats, 93 shots, 746 words, 2:57) | "every single one u made is good" | The long cut: how 18 beats are spread over three minutes, and three places in one world. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
 | [`reference/superpower-at-18/`](reference/superpower-at-18/README.md): `in-this-town-superpower-at-18` (full film: 18 beats, 90 shots, 710 words, 2:48) | "wow i love it, i love how u made the short" | The long cut WITH sound, and a story the owner outlined himself. Its page says what he rejected on the way |
-| `src/videos/in-this-town-pumpkin-heads/` (short cut: 58 shots, 490 words, 1:56). Not in `reference/` | He approved the script and asked for another ending; its `narration.md` says which | A second short cut with sound, and an ending that is not the subscribe sign held to camera |
+| [`reference/pumpkin-heads/`](reference/pumpkin-heads/README.md): `in-this-town-pumpkin-heads` (short cut: 14 beats, 58 shots, 490 words, 1:56) | He approved the script and asked for another ending; its `narration.md` says which | A second short cut with sound, and an ending that is not the subscribe sign held to camera |
+| [`reference/robot-at-18/`](reference/robot-at-18/README.md): `in-this-town-robot-at-18` (full film: 86 shots, 697 words, 2:54) | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A FIGHT.** `scene6.tsx` and `fight.tsx`: bodies posed joint by joint, hit-freezes, cuts inside a line, flying poses, and the two fights he rejected first |
+| [`reference/iron-golem/`](reference/iron-golem/README.md): `in-this-town-every-kid-got-an-iron-golem` (middle cut: 14 beats, 61 shots, 516 words, 2:13) | "pretty nice", "this is a good short" (2026-11-15) | **Pace** (234 words a minute with short silences between story steps: he rejected one faster and one slower) and a premise that states its reason in full sentences |
+| [`reference/we-are-all-cats/`](reference/we-are-all-cats/README.md): `in-this-town-we-are-all-cats` (short cut: 6 beats, 42 shots, 342 words, 1:23) | "this is actually really funny, i love this" (2026-11-15) | **A story that ends in one film** (no part two, at his request) and **a funny one**: where the jokes are and why each is a picture. Cats and dogs: the cat and dog players, villagers and golems built for it are in the pack ([`PACK.md`](PACK.md), "Cats and dogs") |
+| [`reference/everyone-runs-away-from-me/`](reference/everyone-runs-away-from-me/README.md): `in-this-town-everyone-runs-away-from-me` (short cut: 6 beats, 50 shots, 402 words, 1:40) | "really cute short, i like it" (2026-11-16) | **The Monster Village recipe in 100 seconds** ([`reference/monster-village/README.md`](reference/monster-village/README.md), "Why this one travelled"): a famous mob as family, the teller the odd one out, players as the danger, **Minecraft facts as the jokes and the plot**. One cat in a town of creepers; whole in one film, funny. Also: **how to stage for a tall frame** (shoot along a long thing, not across it). The creeper family, crowd, houses and players built for it are in the pack ([`PACK.md`](PACK.md), "The creeper town") |
+| [`reference/never-seen-my-mums-face/`](reference/never-seen-my-mums-face/README.md): `in-this-town-i-have-never-seen-my-mums-face` (short cut: 6 beats, 52 shots, 413 words, 1:46) | "another banger idea" (the script), then "i like it but it was kinda similar to the creeper one" (2026-11-16) | **Script first, done right** (he read and heard the script, said yes, and no line changed), **a reveal that is a picture** (her face, with half a second of silence), and **seven plants that pay off**. A kid raised by endermen. **Also the warning: it has the creeper film's shape, and he saw it.** Read "Too close to the creeper film" on its page before pitching anything. The enderman family, crowd, houses, pumpkin players, kitchen and rain built for it are in the pack ([`PACK.md`](PACK.md), "The enderman town") |
 
 Copy how they are **built**. Never copy what they **tell**: no premise, sentence, joke or twist from a finished film
 goes into a new one.
@@ -58,6 +63,7 @@ studied for its shape. The reference film is ours.
 1. This page, then [`reference/README.md`](reference/README.md): which films the owner approved, and what each is
    for. Then the reference film's page, [`reference/same-face/`](reference/same-face/README.md), its contact sheet and
    its shot log.
+0. [`OWNER.md`](OWNER.md) — what the owner likes, what reviews said, and the rules that came out of them. It wins over the playbooks.
 2. [`SCRIPT.md`](SCRIPT.md) — how the story is written. This is where version 1 failed.
 3. [`SHOTS.md`](SHOTS.md) — how it is cut and shot, and how each Roblox trick becomes a Minecraft one.
 4. [`PACK.md`](PACK.md) — the people, places and things that already exist. One picture, one table for each file.
@@ -71,6 +77,8 @@ studied for its shape. The reference film is ours.
    ending the owner threw out first ([`reference/superpower-at-18/`](reference/superpower-at-18/README.md)).
 9. [`reference/superpower-at-18-part-2/`](reference/superpower-at-18-part-2/README.md) — the film the owner rated highest
    ("a banger… peak"), its source, and why its first render was rejected: motion and pace. Read it before any action scene.
+10. [`reference/robot-at-18/`](reference/robot-at-18/README.md) — **the fight** the owner scored 8.8/10, after he rejected
+    two ("it's like I'm watching a png fight another png"). Read it, and its five-frames-a-second sheet, before any fight.
 
 ## What changes from the base rules
 
@@ -78,7 +86,7 @@ These apply to a film that declares `topic: "in-this-town"`, and to nothing else
 
 | Base rule (`AGENTS.md`) | In This Town |
 |---|---|
-| 18–20 s, ceiling 21 s | 150–178 s. Never over 180 s, the limit for a Short |
+| 18–20 s, ceiling 21 s | 150–176 s. **Never over 178 s: a strict rule.** Over 3:00 YouTube does not treat it as a Short |
 | 4–7 scenes, 3–5 shots per 20 s | About 18 beats and 80–95 shots. A cut about every 2 s (median 1.4–2.3 s). No shot over 6 s |
 | No camera teleports; a scene starts where the last one ended | Hard cuts are the language. Cut on the noun |
 | Narration in the present tense, 3–10 words a line, 4–7 lines | Past tense, first person, full sentences. 640–770 words at 235–268 words a minute. No pauses |
@@ -107,7 +115,7 @@ Nothing else changes.
 
 | | Full film | Short cut |
 |---|---|---|
-| Length | 150–178 s, never over 180 s | 60–118 s, **never over 120 s** |
+| Length | 150–176 s, **never over 178 s** (strict rule) | 60–118 s, **never over 120 s** |
 | Words | 640–770 | 250–520 |
 | The floor, for both | Never under 60 s or 250 words. Under that it is not a short film of this topic; it is a different kind of video, and `npm run check` fails it | the same |
 | Beats | 18 | About 14 |
@@ -187,8 +195,14 @@ still an estimate, and whether the mix is older than the script.
 | `reference/nobody-looked-at-the-moon/`, `reference/monster-egg/`, `reference/superpower-at-18/` | **Three more films the owner approved**, each with its mp4, its source, a log of every shot, and what was hard |
 | `reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |
 | `reference/monster-egg-v1/`, `reference/moon-20-seconds/` | The two rejected attempts, as warnings |
+| `reference/robot-at-18/` | **The fight reference**, with its mp4 and source: `scene6.tsx` is the fight, `fight.tsx` the poses, moves and hit effects |
+| `reference/pumpkin-heads/`, `reference/monster-village/`, `reference/monster-village-part-2/` | **Three more approved films**, each with its mp4, its source and a shot log |
 | `reference/superpower-at-18-part-2/` | **The owner's favourite so far**, with its mp4 and source: how to stage fast action and show the process |
+| `reference/iron-golem/`, `reference/we-are-all-cats/`, `reference/everyone-runs-away-from-me/`, `reference/never-seen-my-mums-face/` | **Four more approved films**, each with its mp4, its source and a shot log. The last page also says why it was too like the one before it |
 | `monsters.tsx` | The people of a monster village: zombie, skeleton, creeper, spider, enderman, slime. All of them can act |
+| `creepertown.tsx`, `endertown.tsx` | **Two towns of one mob each, as people**: creepers (a family, a crowd that bolts and hisses, houses, the players who farm them) and endermen (a family, a crowd that carries, teleports and screams, houses, the players in pumpkins, a kitchen, rain). `PACK.md` has a section and a picture for each. Parts to use, not a story to tell again |
+| `pillagers.tsx` | Pillagers: grey, scowling villagers with crossbows, and their chief |
+| `mansion.tsx` | The woodland mansion from outside, its dark oak forest, and its hall with the map table |
 | `InThisTownMusic.aac` | **The background music of every In This Town short.** The owner added it on 2026-11-13: "the music is used thats the new backround music for the in this town shorts". 3:36, stereo. A film's `sound.json` names it (`"track"` in `music`) and `scripts/sound.py` mixes it under the voice ([`SOUND.md`](SOUND.md), section 3). Superpower part 2 was the first to play it. The four films finished before that day keep the music they were approved with |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map

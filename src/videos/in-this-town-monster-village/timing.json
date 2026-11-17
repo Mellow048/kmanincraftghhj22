@@ -1,81 +1,81 @@
 {
  "film": "in-this-town-monster-village",
  "fps": 30,
- "duration": 221.1,
+ "duration": 175.0333,
  "estimated": false,
  "tempo": 1.3334,
- "wordsPerMinute": 254.0,
+ "wordsPerMinute": 245.1,
  "audio": "audio/in-this-town-monster-village/narration.mp3",
  "clips": [
   {
    "name": "01-hook",
    "at": 0.0,
-   "seconds": 23.18,
+   "seconds": 13.078,
    "timing": "aligned"
   },
   {
    "name": "02-different",
-   "at": 23.26,
-   "seconds": 21.617,
+   "at": 13.158,
+   "seconds": 12.714,
    "timing": "aligned"
   },
   {
    "name": "03-bread",
-   "at": 44.957,
-   "seconds": 30.555,
+   "at": 25.951,
+   "seconds": 24.364,
    "timing": "aligned"
   },
   {
    "name": "04-lock",
-   "at": 75.592,
-   "seconds": 14.391,
+   "at": 50.396,
+   "seconds": 10.965,
    "timing": "aligned"
   },
   {
    "name": "05-ring",
-   "at": 90.062,
-   "seconds": 25.888,
+   "at": 61.441,
+   "seconds": 18.503,
    "timing": "aligned"
   },
   {
    "name": "06-run",
-   "at": 116.03,
-   "seconds": 22.273,
+   "at": 80.025,
+   "seconds": 20.002,
    "timing": "aligned"
   },
   {
    "name": "07-reveal",
-   "at": 138.383,
+   "at": 100.107,
    "seconds": 15.638,
    "timing": "aligned"
   },
   {
    "name": "08-end",
-   "at": 154.1,
+   "at": 115.825,
    "seconds": 15.605,
    "timing": "aligned"
   },
   {
    "name": "09-ambush",
-   "at": 169.786,
-   "seconds": 12.304,
+   "at": 131.51,
+   "seconds": 7.315,
    "timing": "aligned"
   },
   {
    "name": "10-accept",
-   "at": 182.169,
-   "seconds": 16.705,
+   "at": 138.905,
+   "seconds": 13.916,
    "timing": "aligned"
   },
   {
    "name": "11-army",
-   "at": 198.954,
+   "at": 152.901,
    "seconds": 11.759,
    "timing": "aligned"
   },
   {
    "name": "12-alone",
-   "at": 210.792,
+   "at": 164.739,
    "seconds": 9.881,
    "timing": "aligned"
   }
@@ -108,547 +108,421 @@
   {
    "id": "2.hiss",
    "start": 6.8,
-   "end": 10.2,
+   "end": 10.2333,
    "text": "Our neighbour Hiss was a creeper. He loved hugs. Nobody wanted one."
   },
   {
-   "id": "2.post",
-   "start": 10.2,
-   "end": 12.4667,
-   "text": "The postman was an enderman. You could not look at him,"
-  },
-  {
-   "id": "2.sign",
-   "start": 12.4667,
-   "end": 14.6667,
-   "text": "so we all signed for our parcels with our eyes shut."
-  },
-  {
    "id": "2.bus",
-   "start": 14.6667,
-   "end": 17.7,
+   "start": 10.2333,
+   "end": 13.1,
    "text": "The school bus was a slime. You got in. You got out wet."
   },
   {
-   "id": "2.school",
-   "start": 17.7,
-   "end": 20.3333,
-   "text": "School was me, some zombies, and two creepers."
-  },
-  {
-   "id": "2.board",
-   "start": 20.3333,
-   "end": 23.2,
-   "text": "The teacher was an enderman. So nobody ever looked at the board."
-  },
-  {
    "id": "3.sun",
-   "start": 23.2,
-   "end": 25.8,
+   "start": 13.1,
+   "end": 15.7,
    "text": "Every monster stayed out of the sun. The sun burned them."
   },
   {
    "id": "3.me",
-   "start": 25.8,
-   "end": 28.5,
+   "start": 15.7,
+   "end": 18.3667,
    "text": "It did not burn me. So I played outside alone."
   },
   {
-   "id": "3.stew",
-   "start": 28.5,
-   "end": 30.8,
-   "text": "They ate grey stew. I could not even smell it."
-  },
-  {
-   "id": "3.dark",
-   "start": 30.8,
-   "end": 33.0667,
-   "text": "They could see in the dark. I walked into doors."
-  },
-  {
-   "id": "3.one",
-   "start": 33.0667,
-   "end": 34.5333,
-   "text": "I was the only one of me there was."
-  },
-  {
    "id": "4.mo",
-   "start": 34.5333,
-   "end": 35.7,
+   "start": 18.3667,
+   "end": 19.5333,
    "text": "Then there was Mo."
   },
   {
    "id": "4.hat",
-   "start": 35.7,
-   "end": 38.6667,
+   "start": 19.5333,
+   "end": 22.4667,
    "text": "Mo was a zombie with a straw hat, and a scarf up to his nose."
   },
   {
-   "id": "4.alone",
-   "start": 38.6667,
-   "end": 41.5,
-   "text": "He lived by himself at the end of the street, and he never said a word."
-  },
-  {
    "id": "4.stare",
-   "start": 41.5,
-   "end": 43.5333,
+   "start": 22.4667,
+   "end": 24.5333,
    "text": "He just looked at me. A bit too long."
   },
   {
    "id": "4.think",
-   "start": 43.5333,
-   "end": 44.9,
+   "start": 24.5333,
+   "end": 25.9,
    "text": "I thought he did not like humans."
   },
   {
    "id": "5.wall",
-   "start": 44.9,
-   "end": 48.2,
+   "start": 25.9,
+   "end": 29.2,
    "text": "One day I was on the wall, in the sun, hiding my stew in a bush."
   },
   {
    "id": "5.sat",
-   "start": 48.2,
-   "end": 50.0333,
+   "start": 29.2,
+   "end": 31.0333,
    "text": "Mo sat down next to me. In the sun."
   },
   {
    "id": "5.burn",
-   "start": 50.0333,
-   "end": 52.0333,
+   "start": 31.0333,
+   "end": 33.0333,
    "text": "He did not burn. \"It is the hat,\" he said."
   },
   {
    "id": "5.bread",
-   "start": 52.0333,
-   "end": 54.6333,
+   "start": 33.0333,
+   "end": 35.6333,
    "text": "Then he took out a loaf of bread, and broke it in half."
   },
   {
    "id": "5.eat",
-   "start": 54.6333,
-   "end": 57.8333,
+   "start": 35.6333,
+   "end": 38.8,
    "text": "No zombie eats bread. I did not ask. I was too hungry."
   },
   {
    "id": "6.every",
-   "start": 57.8333,
-   "end": 59.9333,
+   "start": 38.8,
+   "end": 40.9333,
    "text": "After that, we sat on that wall every day."
   },
   {
    "id": "6.lamp",
-   "start": 59.9333,
-   "end": 63.1333,
+   "start": 40.9333,
+   "end": 44.1333,
    "text": "He could not see in the dark either. He carried a lantern, like me."
   },
   {
-   "id": "6.cold",
-   "start": 63.1333,
-   "end": 65.0,
-   "text": "He got cold at night, like me."
-  },
-  {
    "id": "6.sneeze",
-   "start": 65.0,
-   "end": 67.6333,
+   "start": 44.1333,
+   "end": 46.7667,
    "text": "He even sneezed. Monsters do not sneeze."
   },
   {
-   "id": "6.fish",
-   "start": 67.6333,
-   "end": 69.7,
-   "text": "He showed me how to fish, and how to whistle,"
-  },
-  {
-   "id": "6.laugh",
-   "start": 69.7,
-   "end": 72.0,
-   "text": "and I showed him how to laugh, which he had forgotten."
-  },
-  {
    "id": "6.like",
-   "start": 72.0,
-   "end": 75.5333,
+   "start": 46.7667,
+   "end": 50.3333,
    "text": "He was the only monster who was like me. I never asked myself why."
   },
   {
    "id": "7.sunset",
-   "start": 75.5333,
-   "end": 78.7,
+   "start": 50.3333,
+   "end": 53.5,
    "text": "There was one rule. At sunset, the whole village walked me home."
   },
   {
    "id": "7.lock",
-   "start": 78.7,
-   "end": 80.8333,
+   "start": 53.5,
+   "end": 55.6333,
    "text": "Then they locked my door. From the outside."
   },
   {
    "id": "7.weak",
-   "start": 80.8333,
-   "end": 82.6,
+   "start": 55.6333,
+   "end": 57.4,
    "text": "I thought it was because I was the weak one."
   },
   {
-   "id": "7.mo",
-   "start": 82.6,
-   "end": 84.3,
-   "text": "Even Mo stood there and watched them do it."
-  },
-  {
    "id": "8.night",
-   "start": 84.3,
-   "end": 86.1667,
+   "start": 57.4,
+   "end": 59.2333,
    "text": "One night, I had had enough."
   },
   {
    "id": "8.window",
-   "start": 86.1667,
-   "end": 87.3333,
+   "start": 59.2333,
+   "end": 60.3333,
    "text": "I went out of the window."
   },
   {
-   "id": "8.see",
-   "start": 87.3333,
-   "end": 88.9667,
-   "text": "I wanted to see what they did without me."
-  },
-  {
    "id": "8.nothing",
-   "start": 88.9667,
-   "end": 90.0,
+   "start": 60.3333,
+   "end": 61.4,
    "text": "They were not doing anything."
   },
   {
    "id": "9.ring",
-   "start": 90.0,
-   "end": 92.4,
+   "start": 61.4,
+   "end": 63.7667,
    "text": "They were standing in a ring around my house. All of them."
   },
   {
    "id": "9.out",
-   "start": 92.4,
-   "end": 93.3667,
+   "start": 63.7667,
+   "end": 64.7667,
    "text": "And they were facing out."
   },
   {
    "id": "9.every",
-   "start": 93.3667,
-   "end": 95.8667,
+   "start": 64.7667,
+   "end": 67.2667,
    "text": "They did it every night. They had done it since the basket."
   },
   {
    "id": "9.hill",
-   "start": 95.8667,
-   "end": 98.1667,
+   "start": 67.2667,
+   "end": 69.5667,
    "text": "Then I saw why. There were torches on the hill."
   },
   {
    "id": "10.players",
-   "start": 98.1667,
-   "end": 99.8667,
+   "start": 69.5667,
+   "end": 71.2667,
    "text": "Players. With swords."
   },
   {
-   "id": "10.clear",
-   "start": 99.8667,
-   "end": 101.4,
-   "text": "They had come to clear the village."
-  },
-  {
    "id": "10.shout",
-   "start": 101.4,
-   "end": 103.9667,
+   "start": 71.2667,
+   "end": 73.8333,
    "text": "\"Monsters!\" one shouted. \"Get them all!\""
   },
   {
    "id": "11.charge",
-   "start": 103.9667,
-   "end": 105.3667,
+   "start": 73.8333,
+   "end": 75.2333,
    "text": "They came down the hill fast."
   },
   {
-   "id": "11.dad",
-   "start": 105.3667,
-   "end": 108.2,
-   "text": "My dad lost an arm, picked it up, and bonked a man with it."
-  },
-  {
-   "id": "11.bus",
-   "start": 108.2,
-   "end": 109.4667,
-   "text": "The bus sat on three of them."
-  },
-  {
-   "id": "11.post",
-   "start": 109.4667,
-   "end": 111.2667,
-   "text": "The postman put one at the top of a tree."
-  },
-  {
    "id": "11.hiss",
-   "start": 111.2667,
-   "end": 114.3,
+   "start": 75.2333,
+   "end": 78.3,
    "text": "And Hiss shook, and went white, trying so hard not to go off."
   },
   {
    "id": "11.losing",
-   "start": 114.3,
-   "end": 115.9667,
+   "start": 78.3,
+   "end": 79.9667,
    "text": "Nobody was hurt. And we were losing."
   },
   {
    "id": "12.mum",
-   "start": 115.9667,
-   "end": 117.8667,
+   "start": 79.9667,
+   "end": 81.8333,
    "text": "Then they knocked my mum over in the dirt."
   },
   {
    "id": "12.think",
-   "start": 117.8667,
-   "end": 120.7,
+   "start": 81.8333,
+   "end": 84.7,
    "text": "And I thought: they are players. I look like a player."
   },
   {
-   "id": "12.only",
-   "start": 120.7,
-   "end": 122.9667,
-   "text": "I was the only thing in that village they would not touch."
-  },
-  {
    "id": "13.ran",
-   "start": 122.9667,
-   "end": 126.6667,
+   "start": 84.7,
+   "end": 88.4,
    "text": "So I ran. Under a sword, over the bus, through my dad's legs,"
   },
   {
    "id": "13.front",
-   "start": 126.6667,
-   "end": 128.6333,
+   "start": 88.4,
+   "end": 90.3333,
    "text": "and I stood in front of my mum with my arms out."
   },
   {
    "id": "13.stop",
-   "start": 128.6333,
-   "end": 130.8333,
+   "start": 90.3333,
+   "end": 92.5667,
    "text": "\"Stop! I live here! This is my family!\""
   },
   {
    "id": "14.quiet",
-   "start": 130.8333,
-   "end": 133.1667,
+   "start": 92.5667,
+   "end": 94.9,
    "text": "It went quiet. A big player looked down at me."
   },
   {
    "id": "14.trick",
-   "start": 133.1667,
-   "end": 136.2333,
+   "start": 94.9,
+   "end": 97.9667,
    "text": "\"It is a trick,\" he said. \"It is one of them, dressed up.\""
   },
   {
    "id": "14.sword",
-   "start": 136.2333,
-   "end": 137.5,
+   "start": 97.9667,
+   "end": 99.2,
    "text": "And he lifted his sword."
   },
   {
    "id": "14.eyes",
-   "start": 137.5,
-   "end": 138.3333,
+   "start": 99.2,
+   "end": 100.0667,
    "text": "I shut my eyes."
   },
   {
    "id": "15.clang",
-   "start": 138.3333,
-   "end": 139.2,
+   "start": 100.0667,
+   "end": 100.9333,
    "text": "It did not land."
   },
   {
    "id": "15.mo",
-   "start": 139.2,
-   "end": 141.9667,
+   "start": 100.9333,
+   "end": 103.6667,
    "text": "Mo was there. He had caught the sword in his bare hand."
   },
   {
    "id": "15.red",
-   "start": 141.9667,
-   "end": 143.7333,
+   "start": 103.6667,
+   "end": 105.4667,
    "text": "And his hand was bleeding. Red."
   },
   {
    "id": "15.zombie",
-   "start": 143.7333,
-   "end": 145.4333,
+   "start": 105.4667,
+   "end": 107.1667,
    "text": "Zombies do not bleed red."
   },
   {
    "id": "16.scarf",
-   "start": 145.4333,
-   "end": 146.5333,
+   "start": 107.1667,
+   "end": 108.2667,
    "text": "He pulled the scarf down."
   },
   {
    "id": "16.paint",
-   "start": 146.5333,
-   "end": 149.3333,
+   "start": 108.2667,
+   "end": 111.0667,
    "text": "He wiped his cheek with his sleeve, and the green came off."
   },
   {
    "id": "16.skin",
-   "start": 149.3333,
-   "end": 151.3667,
+   "start": 111.0667,
+   "end": 113.1,
    "text": "There was skin under it. Skin like mine."
   },
   {
    "id": "16.say",
-   "start": 151.3667,
-   "end": 154.0333,
+   "start": 113.1,
+   "end": 115.7667,
    "text": "\"Do not look so surprised,\" he said. \"I am human too.\""
   },
   {
    "id": "17.list",
-   "start": 154.0333,
-   "end": 156.8,
+   "start": 115.7667,
+   "end": 118.5333,
    "text": "The bread. The lantern. The sneeze. The sun."
   },
   {
    "id": "17.why",
-   "start": 156.8,
-   "end": 159.2333,
+   "start": 118.5333,
+   "end": 120.9667,
    "text": "He had not been looking at me because he hated humans."
   },
   {
    "id": "17.basket",
-   "start": 159.2333,
-   "end": 161.4333,
+   "start": 120.9667,
+   "end": 123.1667,
    "text": "\"Who do you think carried the basket here?\" he said."
   },
   {
    "id": "18.player",
-   "start": 161.4333,
-   "end": 164.1,
+   "start": 123.1667,
+   "end": 125.8333,
    "text": "The big player took one step back. He knew that face."
   },
   {
    "id": "18.you",
-   "start": 164.1,
-   "end": 167.3667,
+   "start": 125.8333,
+   "end": 129.1,
    "text": "\"You,\" he said. \"The player who ran away to live with monsters.\""
   },
   {
    "id": "18.hunt",
-   "start": 167.3667,
-   "end": 169.7333,
+   "start": 129.1,
+   "end": 131.4667,
    "text": "They had not come for the village. They had come for him."
   },
   {
    "id": "19.look",
-   "start": 169.7333,
-   "end": 172.8333,
+   "start": 131.4667,
+   "end": 134.5333,
    "text": "Every player was staring at Mo. Not one of them looked behind."
   },
   {
-   "id": "19.tap",
-   "start": 172.8333,
-   "end": 175.8,
-   "text": "My dad tapped one on the shoulder. With the arm he was not wearing."
-  },
-  {
-   "id": "19.bus",
-   "start": 175.8,
-   "end": 177.8333,
-   "text": "The bus rolled through the rest like a bowling ball."
-  },
-  {
    "id": "19.hiss",
-   "start": 177.8333,
-   "end": 180.5,
+   "start": 134.5333,
+   "end": 137.2333,
    "text": "And Hiss only had to say one word. \"Hug.\""
   },
   {
    "id": "19.run",
-   "start": 180.5,
-   "end": 182.1,
+   "start": 137.2333,
+   "end": 138.8333,
    "text": "They dropped their swords and ran for the hill."
   },
   {
    "id": "20.gather",
-   "start": 182.1,
-   "end": 186.9,
+   "start": 138.8333,
+   "end": 143.6333,
    "text": "Then the whole village came out. Every zombie. Every skeleton. Every kid from my school."
   },
   {
    "id": "20.mo",
-   "start": 186.9,
-   "end": 190.1,
+   "start": 143.6333,
+   "end": 146.8,
    "text": "Mo stood in the middle, with his hat in his hands. He did not look up."
   },
   {
-   "id": "20.fear",
-   "start": 190.1,
-   "end": 192.8333,
-   "text": "He had lied to them for years. He thought they would hate him too."
-  },
-  {
    "id": "20.mum",
-   "start": 192.8333,
-   "end": 196.0667,
+   "start": 146.8,
+   "end": 150.0,
    "text": "My mum walked up to him. And put the hat back on his head."
   },
   {
    "id": "20.knew",
-   "start": 196.0667,
-   "end": 198.9,
+   "start": 150.0,
+   "end": 152.8333,
    "text": "\"We always knew,\" she said. \"Zombies do not eat bread.\""
   },
   {
    "id": "21.boom",
-   "start": 198.9,
-   "end": 200.6667,
+   "start": 152.8333,
+   "end": 154.6333,
    "text": "Then something blew up in the forest."
   },
   {
    "id": "21.army",
-   "start": 200.6667,
-   "end": 204.2333,
+   "start": 154.6333,
+   "end": 158.1667,
    "text": "Players. Not ten of them. Hundreds, pouring out of the trees."
   },
   {
    "id": "21.order",
-   "start": 204.2333,
-   "end": 209.1333,
+   "start": 158.1667,
+   "end": 163.1,
    "text": "\"Run,\" Mo said. \"East, past the pond. I dug a hideout for you, years ago.\""
   },
   {
    "id": "21.ran",
-   "start": 209.1333,
-   "end": 210.7333,
+   "start": 163.1,
+   "end": 164.7,
    "text": "So we ran. Everybody ran."
   },
   {
    "id": "22.back",
-   "start": 210.7333,
-   "end": 213.8667,
+   "start": 164.7,
+   "end": 167.8,
    "text": "At the last house, I looked back. Mo was not with us."
   },
   {
    "id": "22.alone",
-   "start": 213.8667,
-   "end": 215.8333,
+   "start": 167.8,
+   "end": 169.7667,
    "text": "He was standing in the street. Alone."
   },
   {
    "id": "22.armor",
-   "start": 215.8333,
-   "end": 219.2,
+   "start": 169.7667,
+   "end": 173.1667,
    "text": "He put on an iron helmet. An iron chestplate. And he drew a sword."
   },
   {
    "id": "22.sub",
-   "start": 219.2,
-   "end": 221.1,
+   "start": 173.1667,
+   "end": 175.0333,
    "text": "Like and subscribe for part two."
   }
  ],
@@ -686,16 +560,16 @@
   {
    "w": "only",
    "s": 1.148,
-   "e": 1.41
+   "e": 1.411
   },
   {
    "w": "one",
-   "s": 1.41,
-   "e": 1.665
+   "s": 1.411,
+   "e": 1.666
   },
   {
    "w": "who",
-   "s": 1.665,
+   "s": 1.666,
    "e": 1.763
   },
   {
@@ -716,26 +590,26 @@
   {
    "w": "monster.",
    "s": 2.108,
-   "e": 2.498
+   "e": 2.506
   },
   {
    "w": "My",
    "s": 2.806,
-   "e": 2.903
+   "e": 2.904
   },
   {
    "w": "mum",
-   "s": 2.903,
+   "s": 2.904,
    "e": 3.136
   },
   {
    "w": "was",
    "s": 3.136,
-   "e": 3.263
+   "e": 3.264
   },
   {
    "w": "a",
-   "s": 3.263,
+   "s": 3.264,
    "e": 3.301
   },
   {
@@ -745,4583 +619,3478 @@
   },
   {
    "w": "My",
-   "s": 3.863,
-   "e": 3.983
+   "s": 3.864,
+   "e": 3.984
   },
   {
    "w": "dad",
-   "s": 3.983,
-   "e": 4.231
+   "s": 3.984,
+   "e": 4.232
   },
   {
    "w": "was",
-   "s": 4.231,
-   "e": 4.358
+   "s": 4.232,
+   "e": 4.359
   },
   {
    "w": "a",
-   "s": 4.358,
-   "e": 4.388
+   "s": 4.359,
+   "e": 4.389
   },
   {
    "w": "skeleton.",
-   "s": 4.388,
-   "e": 4.853
+   "s": 4.389,
+   "e": 4.854
   },
   {
    "w": "And",
-   "s": 5.101,
-   "e": 5.206
+   "s": 5.102,
+   "e": 5.207
   },
   {
    "w": "I",
-   "s": 5.206,
-   "e": 5.274
+   "s": 5.207,
+   "e": 5.275
   },
   {
    "w": "was",
-   "s": 5.274,
-   "e": 5.409
+   "s": 5.275,
+   "e": 5.41
   },
   {
    "w": "a",
-   "s": 5.409,
-   "e": 5.446
+   "s": 5.41,
+   "e": 5.447
   },
   {
    "w": "boy",
-   "s": 5.446,
-   "e": 5.686
+   "s": 5.447,
+   "e": 5.687
   },
   {
    "w": "they",
-   "s": 5.686,
-   "e": 5.791
+   "s": 5.687,
+   "e": 5.792
   },
   {
    "w": "found",
-   "s": 5.791,
-   "e": 6.046
+   "s": 5.792,
+   "e": 6.047
   },
   {
    "w": "in",
-   "s": 6.046,
-   "e": 6.114
+   "s": 6.047,
+   "e": 6.115
   },
   {
    "w": "a",
-   "s": 6.114,
-   "e": 6.151
+   "s": 6.115,
+   "e": 6.145
   },
   {
    "w": "basket.",
-   "s": 6.151,
-   "e": 6.586
+   "s": 6.145,
+   "e": 6.588
   },
   {
    "w": "Our",
-   "s": 6.864,
-   "e": 6.991
+   "s": 6.865,
+   "e": 6.993
   },
   {
    "w": "neighbour",
-   "s": 6.991,
-   "e": 7.239
+   "s": 6.993,
+   "e": 7.24
   },
   {
    "w": "Hiss",
-   "s": 7.239,
-   "e": 7.517
+   "s": 7.24,
+   "e": 7.518
   },
   {
    "w": "was",
-   "s": 7.517,
-   "e": 7.652
+   "s": 7.518,
+   "e": 7.653
   },
   {
    "w": "a",
-   "s": 7.652,
-   "e": 7.682
+   "s": 7.653,
+   "e": 7.683
   },
   {
    "w": "creeper.",
-   "s": 7.682,
-   "e": 8.087
+   "s": 7.683,
+   "e": 8.088
   },
   {
    "w": "He",
-   "s": 8.319,
-   "e": 8.424
+   "s": 8.321,
+   "e": 8.426
   },
   {
    "w": "loved",
-   "s": 8.424,
-   "e": 8.619
+   "s": 8.426,
+   "e": 8.621
   },
   {
    "w": "hugs.",
-   "s": 8.619,
-   "e": 9.054
+   "s": 8.621,
+   "e": 9.056
   },
   {
    "w": "Nobody",
-   "s": 9.324,
-   "e": 9.549
+   "s": 9.326,
+   "e": 9.551
   },
   {
    "w": "wanted",
-   "s": 9.549,
-   "e": 9.82
+   "s": 9.551,
+   "e": 9.821
   },
   {
    "w": "one.",
-   "s": 9.82,
-   "e": 10.03
+   "s": 9.821,
+   "e": 10.031
   },
   {
    "w": "The",
-   "s": 10.262,
-   "e": 10.337
-  },
-  {
-   "w": "postman",
-   "s": 10.337,
-   "e": 10.765
-  },
-  {
-   "w": "was",
-   "s": 10.765,
-   "e": 10.892
-  },
-  {
-   "w": "an",
-   "s": 10.892,
-   "e": 10.96
-  },
-  {
-   "w": "enderman.",
-   "s": 10.96,
-   "e": 11.342
-  },
-  {
-   "w": "You",
-   "s": 11.597,
-   "e": 11.68
-  },
-  {
-   "w": "could",
-   "s": 11.68,
-   "e": 11.785
-  },
-  {
-   "w": "not",
-   "s": 11.785,
-   "e": 11.897
-  },
-  {
-   "w": "look",
-   "s": 11.897,
-   "e": 12.055
-  },
-  {
-   "w": "at",
-   "s": 12.055,
-   "e": 12.13
-  },
-  {
-   "w": "him,",
-   "s": 12.13,
-   "e": 12.333
-  },
-  {
-   "w": "so",
-   "s": 12.513,
-   "e": 12.625
-  },
-  {
-   "w": "we",
-   "s": 12.625,
-   "e": 12.723
-  },
-  {
-   "w": "all",
-   "s": 12.723,
-   "e": 12.888
-  },
-  {
-   "w": "signed",
-   "s": 12.888,
-   "e": 13.15
-  },
-  {
-   "w": "for",
-   "s": 13.15,
-   "e": 13.263
-  },
-  {
-   "w": "our",
-   "s": 13.263,
-   "e": 13.33
-  },
-  {
-   "w": "parcels",
-   "s": 13.33,
-   "e": 13.773
-  },
-  {
-   "w": "with",
-   "s": 13.773,
-   "e": 13.855
-  },
-  {
-   "w": "our",
-   "s": 13.855,
-   "e": 13.953
-  },
-  {
-   "w": "eyes",
-   "s": 13.953,
-   "e": 14.17
-  },
-  {
-   "w": "shut.",
-   "s": 14.17,
-   "e": 14.508
-  },
-  {
-   "w": "The",
-   "s": 14.733,
-   "e": 14.838
+   "s": 10.294,
+   "e": 10.369
   },
   {
    "w": "school",
-   "s": 14.838,
-   "e": 15.101
+   "s": 10.369,
+   "e": 10.624
   },
   {
    "w": "bus",
-   "s": 15.101,
-   "e": 15.303
+   "s": 10.624,
+   "e": 10.834
   },
   {
    "w": "was",
-   "s": 15.303,
-   "e": 15.416
+   "s": 10.834,
+   "e": 10.947
   },
   {
    "w": "a",
-   "s": 15.416,
-   "e": 15.446
+   "s": 10.947,
+   "e": 10.977
   },
   {
    "w": "slime.",
-   "s": 15.446,
-   "e": 15.881
+   "s": 10.977,
+   "e": 11.412
   },
   {
    "w": "You",
-   "s": 16.151,
-   "e": 16.241
+   "s": 11.682,
+   "e": 11.765
   },
   {
    "w": "got",
-   "s": 16.241,
-   "e": 16.406
+   "s": 11.765,
+   "e": 11.937
   },
   {
    "w": "in.",
-   "s": 16.406,
-   "e": 16.638
+   "s": 11.937,
+   "e": 12.162
   },
   {
    "w": "You",
-   "s": 16.796,
-   "e": 16.901
+   "s": 12.32,
+   "e": 12.425
   },
   {
    "w": "got",
-   "s": 16.901,
-   "e": 17.051
+   "s": 12.425,
+   "e": 12.575
   },
   {
    "w": "out",
-   "s": 17.051,
-   "e": 17.194
+   "s": 12.575,
+   "e": 12.718
   },
   {
    "w": "wet.",
-   "s": 17.194,
-   "e": 17.531
-  },
-  {
-   "w": "School",
-   "s": 17.771,
-   "e": 18.049
-  },
-  {
-   "w": "was",
-   "s": 18.049,
-   "e": 18.184
-  },
-  {
-   "w": "me,",
-   "s": 18.184,
-   "e": 18.484
-  },
-  {
-   "w": "some",
-   "s": 18.634,
-   "e": 18.776
-  },
-  {
-   "w": "zombies,",
-   "s": 18.776,
-   "e": 19.301
-  },
-  {
-   "w": "and",
-   "s": 19.414,
-   "e": 19.549
-  },
-  {
-   "w": "two",
-   "s": 19.549,
-   "e": 19.699
-  },
-  {
-   "w": "creepers.",
-   "s": 19.699,
-   "e": 20.187
-  },
-  {
-   "w": "The",
-   "s": 20.382,
-   "e": 20.494
-  },
-  {
-   "w": "teacher",
-   "s": 20.494,
-   "e": 20.839
-  },
-  {
-   "w": "was",
-   "s": 20.839,
-   "e": 20.974
-  },
-  {
-   "w": "an",
-   "s": 20.974,
-   "e": 21.034
-  },
-  {
-   "w": "enderman.",
-   "s": 21.034,
-   "e": 21.439
-  },
-  {
-   "w": "So",
-   "s": 21.702,
-   "e": 21.927
-  },
-  {
-   "w": "nobody",
-   "s": 21.927,
-   "e": 22.325
-  },
-  {
-   "w": "ever",
-   "s": 22.325,
-   "e": 22.49
-  },
-  {
-   "w": "looked",
-   "s": 22.49,
-   "e": 22.715
-  },
-  {
-   "w": "at",
-   "s": 22.715,
-   "e": 22.767
-  },
-  {
-   "w": "the",
-   "s": 22.767,
-   "e": 22.827
-  },
-  {
-   "w": "board.",
-   "s": 22.827,
-   "e": 23.157
+   "s": 12.718,
+   "e": 13.048
   },
   {
    "w": "Every",
-   "s": 23.267,
-   "e": 23.515
+   "s": 13.165,
+   "e": 13.413
   },
   {
    "w": "monster",
-   "s": 23.515,
-   "e": 23.83
+   "s": 13.413,
+   "e": 13.728
   },
   {
    "w": "stayed",
-   "s": 23.83,
-   "e": 24.025
+   "s": 13.728,
+   "e": 13.922
   },
   {
    "w": "out",
-   "s": 24.025,
-   "e": 24.13
+   "s": 13.922,
+   "e": 14.027
   },
   {
    "w": "of",
-   "s": 24.13,
-   "e": 24.19
+   "s": 14.027,
+   "e": 14.087
   },
   {
    "w": "the",
-   "s": 24.19,
-   "e": 24.25
+   "s": 14.087,
+   "e": 14.147
   },
   {
    "w": "sun.",
-   "s": 24.25,
-   "e": 24.572
+   "s": 14.147,
+   "e": 14.522
   },
   {
    "w": "The",
-   "s": 24.865,
-   "e": 24.947
+   "s": 14.762,
+   "e": 14.845
   },
   {
    "w": "sun",
-   "s": 24.947,
-   "e": 25.217
+   "s": 14.845,
+   "e": 15.115
   },
   {
    "w": "burned",
-   "s": 25.217,
-   "e": 25.457
+   "s": 15.115,
+   "e": 15.355
   },
   {
    "w": "them.",
-   "s": 25.457,
-   "e": 25.697
+   "s": 15.355,
+   "e": 15.595
   },
   {
    "w": "It",
-   "s": 25.855,
-   "e": 25.975
+   "s": 15.752,
+   "e": 15.872
   },
   {
    "w": "did",
-   "s": 25.975,
-   "e": 26.132
+   "s": 15.872,
+   "e": 16.03
   },
   {
    "w": "not",
-   "s": 26.132,
-   "e": 26.298
+   "s": 16.03,
+   "e": 16.195
   },
   {
    "w": "burn",
-   "s": 26.298,
-   "e": 26.515
+   "s": 16.195,
+   "e": 16.412
   },
   {
    "w": "me.",
-   "s": 26.515,
-   "e": 26.868
+   "s": 16.412,
+   "e": 16.764
   },
   {
    "w": "So",
-   "s": 27.063,
-   "e": 27.333
+   "s": 16.959,
+   "e": 17.229
   },
   {
    "w": "I",
-   "s": 27.333,
-   "e": 27.4
+   "s": 17.229,
+   "e": 17.297
   },
   {
    "w": "played",
-   "s": 27.4,
-   "e": 27.625
+   "s": 17.297,
+   "e": 17.522
   },
   {
    "w": "outside",
-   "s": 27.625,
-   "e": 27.963
+   "s": 17.522,
+   "e": 17.859
   },
   {
    "w": "alone.",
-   "s": 27.963,
-   "e": 28.353
-  },
-  {
-   "w": "They",
-   "s": 28.555,
-   "e": 28.728
-  },
-  {
-   "w": "ate",
-   "s": 28.728,
-   "e": 28.915
-  },
-  {
-   "w": "grey",
-   "s": 28.915,
-   "e": 29.095
-  },
-  {
-   "w": "stew.",
-   "s": 29.095,
-   "e": 29.47
-  },
-  {
-   "w": "I",
-   "s": 29.71,
-   "e": 29.785
-  },
-  {
-   "w": "could",
-   "s": 29.785,
-   "e": 29.898
-  },
-  {
-   "w": "not",
-   "s": 29.898,
-   "e": 30.048
-  },
-  {
-   "w": "even",
-   "s": 30.048,
-   "e": 30.175
-  },
-  {
-   "w": "smell",
-   "s": 30.175,
-   "e": 30.43
-  },
-  {
-   "w": "it.",
-   "s": 30.43,
-   "e": 30.64
-  },
-  {
-   "w": "They",
-   "s": 30.858,
-   "e": 30.993
-  },
-  {
-   "w": "could",
-   "s": 30.993,
-   "e": 31.105
-  },
-  {
-   "w": "see",
-   "s": 31.105,
-   "e": 31.293
-  },
-  {
-   "w": "in",
-   "s": 31.293,
-   "e": 31.375
-  },
-  {
-   "w": "the",
-   "s": 31.375,
-   "e": 31.428
-  },
-  {
-   "w": "dark.",
-   "s": 31.428,
-   "e": 31.826
-  },
-  {
-   "w": "I",
-   "s": 32.006,
-   "e": 32.096
-  },
-  {
-   "w": "walked",
-   "s": 32.096,
-   "e": 32.328
-  },
-  {
-   "w": "into",
-   "s": 32.328,
-   "e": 32.463
-  },
-  {
-   "w": "doors.",
-   "s": 32.463,
-   "e": 32.861
-  },
-  {
-   "w": "I",
-   "s": 33.131,
-   "e": 33.221
-  },
-  {
-   "w": "was",
-   "s": 33.221,
-   "e": 33.363
-  },
-  {
-   "w": "the",
-   "s": 33.363,
-   "e": 33.468
-  },
-  {
-   "w": "only",
-   "s": 33.468,
-   "e": 33.633
-  },
-  {
-   "w": "one",
-   "s": 33.633,
-   "e": 33.798
-  },
-  {
-   "w": "of",
-   "s": 33.798,
-   "e": 33.866
-  },
-  {
-   "w": "me",
-   "s": 33.866,
-   "e": 33.993
-  },
-  {
-   "w": "there",
-   "s": 33.993,
-   "e": 34.106
-  },
-  {
-   "w": "was.",
-   "s": 34.106,
-   "e": 34.443
+   "s": 17.859,
+   "e": 18.242
   },
   {
    "w": "Then",
-   "s": 34.608,
-   "e": 34.878
+   "s": 18.437,
+   "e": 18.699
   },
   {
    "w": "there",
-   "s": 34.878,
-   "e": 34.953
+   "s": 18.699,
+   "e": 18.782
   },
   {
    "w": "was",
-   "s": 34.953,
-   "e": 35.081
+   "s": 18.782,
+   "e": 18.909
   },
   {
    "w": "Mo.",
-   "s": 35.081,
-   "e": 35.411
+   "s": 18.909,
+   "e": 19.239
   },
   {
    "w": "Mo",
-   "s": 35.771,
-   "e": 36.018
+   "s": 19.599,
+   "e": 19.846
   },
   {
    "w": "was",
-   "s": 36.018,
-   "e": 36.168
+   "s": 19.846,
+   "e": 19.989
   },
   {
    "w": "a",
-   "s": 36.168,
-   "e": 36.198
+   "s": 19.989,
+   "e": 20.026
   },
   {
    "w": "zombie",
-   "s": 36.198,
-   "e": 36.476
+   "s": 20.026,
+   "e": 20.304
   },
   {
    "w": "with",
-   "s": 36.476,
-   "e": 36.596
+   "s": 20.304,
+   "e": 20.424
   },
   {
    "w": "a",
-   "s": 36.596,
-   "e": 36.626
+   "s": 20.424,
+   "e": 20.446
   },
   {
    "w": "straw",
-   "s": 36.626,
-   "e": 36.858
+   "s": 20.446,
+   "e": 20.686
   },
   {
    "w": "hat,",
-   "s": 36.858,
-   "e": 37.181
+   "s": 20.686,
+   "e": 21.001
   },
   {
    "w": "and",
-   "s": 37.414,
-   "e": 37.541
+   "s": 21.241,
+   "e": 21.361
   },
   {
    "w": "a",
-   "s": 37.541,
-   "e": 37.564
+   "s": 21.361,
+   "e": 21.384
   },
   {
    "w": "scarf",
-   "s": 37.564,
-   "e": 37.909
+   "s": 21.384,
+   "e": 21.729
   },
   {
    "w": "up",
-   "s": 37.909,
-   "e": 37.999
+   "s": 21.729,
+   "e": 21.818
   },
   {
    "w": "to",
-   "s": 37.999,
-   "e": 38.066
+   "s": 21.818,
+   "e": 21.886
   },
   {
    "w": "his",
-   "s": 38.066,
-   "e": 38.171
+   "s": 21.886,
+   "e": 21.991
   },
   {
    "w": "nose.",
-   "s": 38.171,
-   "e": 38.509
+   "s": 21.991,
+   "e": 22.336
   },
   {
    "w": "He",
-   "s": 38.734,
-   "e": 38.831
-  },
-  {
-   "w": "lived",
-   "s": 38.831,
-   "e": 39.034
-  },
-  {
-   "w": "by",
-   "s": 39.034,
-   "e": 39.146
-  },
-  {
-   "w": "himself",
-   "s": 39.146,
-   "e": 39.559
-  },
-  {
-   "w": "at",
-   "s": 39.559,
-   "e": 39.626
-  },
-  {
-   "w": "the",
-   "s": 39.626,
-   "e": 39.694
-  },
-  {
-   "w": "end",
-   "s": 39.694,
-   "e": 39.791
-  },
-  {
-   "w": "of",
-   "s": 39.791,
-   "e": 39.844
-  },
-  {
-   "w": "the",
-   "s": 39.844,
-   "e": 39.904
-  },
-  {
-   "w": "street,",
-   "s": 39.904,
-   "e": 40.271
-  },
-  {
-   "w": "and",
-   "s": 40.451,
-   "e": 40.571
-  },
-  {
-   "w": "he",
-   "s": 40.571,
-   "e": 40.631
-  },
-  {
-   "w": "never",
-   "s": 40.631,
-   "e": 40.819
-  },
-  {
-   "w": "said",
-   "s": 40.819,
-   "e": 40.969
-  },
-  {
-   "w": "a",
-   "s": 40.969,
-   "e": 40.999
-  },
-  {
-   "w": "word.",
-   "s": 40.999,
-   "e": 41.344
-  },
-  {
-   "w": "He",
-   "s": 41.554,
-   "e": 41.614
+   "s": 22.538,
+   "e": 22.613
   },
   {
    "w": "just",
-   "s": 41.614,
-   "e": 41.771
+   "s": 22.613,
+   "e": 22.771
   },
   {
    "w": "looked",
-   "s": 41.771,
-   "e": 41.966
+   "s": 22.771,
+   "e": 22.966
   },
   {
    "w": "at",
-   "s": 41.966,
-   "e": 42.026
+   "s": 22.966,
+   "e": 23.026
   },
   {
    "w": "me.",
-   "s": 42.026,
-   "e": 42.221
+   "s": 23.026,
+   "e": 23.213
   },
   {
    "w": "A",
-   "s": 42.551,
-   "e": 42.596
+   "s": 23.551,
+   "e": 23.596
   },
   {
    "w": "bit",
-   "s": 42.596,
-   "e": 42.904
+   "s": 23.596,
+   "e": 23.903
   },
   {
    "w": "too",
-   "s": 42.904,
-   "e": 43.099
+   "s": 23.903,
+   "e": 24.098
   },
   {
    "w": "long.",
-   "s": 43.099,
-   "e": 43.392
+   "s": 24.098,
+   "e": 24.383
   },
   {
    "w": "I",
-   "s": 43.594,
-   "e": 43.699
+   "s": 24.593,
+   "e": 24.698
   },
   {
    "w": "thought",
-   "s": 43.699,
-   "e": 43.924
+   "s": 24.698,
+   "e": 24.923
   },
   {
    "w": "he",
-   "s": 43.924,
-   "e": 43.999
+   "s": 24.923,
+   "e": 24.99
   },
   {
    "w": "did",
-   "s": 43.999,
-   "e": 44.104
+   "s": 24.99,
+   "e": 25.103
   },
   {
    "w": "not",
-   "s": 44.104,
-   "e": 44.232
+   "s": 25.103,
+   "e": 25.23
   },
   {
    "w": "like",
-   "s": 44.232,
-   "e": 44.479
+   "s": 25.23,
+   "e": 25.478
   },
   {
    "w": "humans.",
-   "s": 44.479,
-   "e": 44.862
+   "s": 25.478,
+   "e": 25.853
   },
   {
    "w": "One",
-   "s": 44.964,
-   "e": 45.152
+   "s": 25.959,
+   "e": 26.147
   },
   {
    "w": "day",
-   "s": 45.152,
-   "e": 45.309
+   "s": 26.147,
+   "e": 26.304
   },
   {
    "w": "I",
-   "s": 45.309,
-   "e": 45.407
+   "s": 26.304,
+   "e": 26.402
   },
   {
    "w": "was",
-   "s": 45.407,
-   "e": 45.542
+   "s": 26.402,
+   "e": 26.537
   },
   {
    "w": "on",
-   "s": 45.542,
-   "e": 45.624
+   "s": 26.537,
+   "e": 26.619
   },
   {
    "w": "the",
-   "s": 45.624,
-   "e": 45.669
+   "s": 26.619,
+   "e": 26.664
   },
   {
    "w": "wall,",
-   "s": 45.669,
-   "e": 46.179
+   "s": 26.664,
+   "e": 27.174
   },
   {
    "w": "in",
-   "s": 46.179,
-   "e": 46.269
+   "s": 27.174,
+   "e": 27.264
   },
   {
    "w": "the",
-   "s": 46.269,
-   "e": 46.322
+   "s": 27.264,
+   "e": 27.317
   },
   {
    "w": "sun,",
-   "s": 46.322,
-   "e": 46.644
+   "s": 27.317,
+   "e": 27.639
   },
   {
    "w": "hiding",
-   "s": 46.899,
-   "e": 47.184
+   "s": 27.894,
+   "e": 28.179
   },
   {
    "w": "my",
-   "s": 47.184,
-   "e": 47.267
+   "s": 28.179,
+   "e": 28.262
   },
   {
    "w": "stew",
-   "s": 47.267,
-   "e": 47.582
+   "s": 28.262,
+   "e": 28.577
   },
   {
    "w": "in",
-   "s": 47.582,
-   "e": 47.649
+   "s": 28.577,
+   "e": 28.644
   },
   {
    "w": "a",
-   "s": 47.649,
-   "e": 47.679
+   "s": 28.644,
+   "e": 28.674
   },
   {
    "w": "bush.",
-   "s": 47.679,
-   "e": 48.039
+   "s": 28.674,
+   "e": 29.035
   },
   {
    "w": "Mo",
-   "s": 48.264,
-   "e": 48.452
+   "s": 29.26,
+   "e": 29.447
   },
   {
    "w": "sat",
-   "s": 48.452,
-   "e": 48.654
+   "s": 29.447,
+   "e": 29.65
   },
   {
    "w": "down",
-   "s": 48.654,
-   "e": 48.819
+   "s": 29.65,
+   "e": 29.815
   },
   {
    "w": "next",
-   "s": 48.819,
-   "e": 48.999
+   "s": 29.815,
+   "e": 29.995
   },
   {
    "w": "to",
-   "s": 48.999,
-   "e": 49.059
+   "s": 29.995,
+   "e": 30.055
   },
   {
    "w": "me.",
-   "s": 49.059,
-   "e": 49.247
+   "s": 30.055,
+   "e": 30.242
   },
   {
    "w": "In",
-   "s": 49.434,
-   "e": 49.509
+   "s": 30.43,
+   "e": 30.505
   },
   {
    "w": "the",
-   "s": 49.509,
-   "e": 49.562
+   "s": 30.505,
+   "e": 30.557
   },
   {
    "w": "sun.",
-   "s": 49.562,
-   "e": 49.869
+   "s": 30.557,
+   "e": 30.857
   },
   {
    "w": "He",
-   "s": 50.087,
-   "e": 50.169
+   "s": 31.082,
+   "e": 31.165
   },
   {
    "w": "did",
-   "s": 50.169,
-   "e": 50.259
+   "s": 31.165,
+   "e": 31.255
   },
   {
    "w": "not",
-   "s": 50.259,
-   "e": 50.379
+   "s": 31.255,
+   "e": 31.375
   },
   {
    "w": "burn.",
-   "s": 50.379,
-   "e": 50.709
+   "s": 31.375,
+   "e": 31.705
   },
   {
    "w": "\"It",
-   "s": 50.942,
-   "e": 51.032
+   "s": 31.938,
+   "e": 32.028
   },
   {
    "w": "is",
-   "s": 51.032,
-   "e": 51.122
+   "s": 32.028,
+   "e": 32.118
   },
   {
    "w": "the",
-   "s": 51.122,
-   "e": 51.182
+   "s": 32.118,
+   "e": 32.178
   },
   {
    "w": "hat,\"",
-   "s": 51.182,
-   "e": 51.527
+   "s": 32.178,
+   "e": 32.523
   },
   {
    "w": "he",
-   "s": 51.692,
-   "e": 51.782
+   "s": 32.688,
+   "e": 32.778
   },
   {
    "w": "said.",
-   "s": 51.782,
-   "e": 52.022
+   "s": 32.778,
+   "e": 33.018
   },
   {
    "w": "Then",
-   "s": 52.022,
-   "e": 52.427
+   "s": 33.018,
+   "e": 33.415
   },
   {
    "w": "he",
-   "s": 52.427,
-   "e": 52.532
+   "s": 33.415,
+   "e": 33.528
   },
   {
    "w": "took",
-   "s": 52.532,
-   "e": 52.712
+   "s": 33.528,
+   "e": 33.708
   },
   {
    "w": "out",
-   "s": 52.712,
-   "e": 52.824
+   "s": 33.708,
+   "e": 33.82
   },
   {
    "w": "a",
-   "s": 52.824,
-   "e": 52.854
+   "s": 33.82,
+   "e": 33.858
   },
   {
    "w": "loaf",
-   "s": 52.854,
-   "e": 53.042
+   "s": 33.858,
+   "e": 34.038
   },
   {
    "w": "of",
-   "s": 53.042,
-   "e": 53.132
+   "s": 34.038,
+   "e": 34.128
   },
   {
    "w": "bread,",
-   "s": 53.132,
-   "e": 53.409
+   "s": 34.128,
+   "e": 34.398
   },
   {
    "w": "and",
-   "s": 53.627,
-   "e": 53.762
+   "s": 34.623,
+   "e": 34.758
   },
   {
    "w": "broke",
-   "s": 53.762,
-   "e": 53.934
+   "s": 34.758,
+   "e": 34.931
   },
   {
    "w": "it",
-   "s": 53.934,
-   "e": 54.032
+   "s": 34.931,
+   "e": 35.028
   },
   {
    "w": "in",
-   "s": 54.032,
-   "e": 54.092
+   "s": 35.028,
+   "e": 35.088
   },
   {
    "w": "half.",
-   "s": 54.092,
-   "e": 54.467
+   "s": 35.088,
+   "e": 35.463
   },
   {
    "w": "No",
-   "s": 54.699,
-   "e": 54.872
+   "s": 35.696,
+   "e": 35.868
   },
   {
    "w": "zombie",
-   "s": 54.872,
-   "e": 55.187
+   "s": 35.868,
+   "e": 36.183
   },
   {
    "w": "eats",
-   "s": 55.187,
-   "e": 55.382
+   "s": 36.183,
+   "e": 36.378
   },
   {
    "w": "bread.",
-   "s": 55.382,
-   "e": 55.742
+   "s": 36.378,
+   "e": 36.731
   },
   {
    "w": "I",
-   "s": 55.989,
-   "e": 56.057
+   "s": 36.986,
+   "e": 37.054
   },
   {
    "w": "did",
-   "s": 56.057,
-   "e": 56.154
+   "s": 37.054,
+   "e": 37.151
   },
   {
    "w": "not",
-   "s": 56.154,
-   "e": 56.289
+   "s": 37.151,
+   "e": 37.271
   },
   {
    "w": "ask.",
-   "s": 56.289,
-   "e": 56.612
+   "s": 37.271,
+   "e": 37.609
   },
   {
    "w": "I",
-   "s": 56.882,
-   "e": 56.949
+   "s": 37.879,
+   "e": 37.946
   },
   {
    "w": "was",
-   "s": 56.949,
-   "e": 57.084
+   "s": 37.946,
+   "e": 38.081
   },
   {
    "w": "too",
-   "s": 57.084,
-   "e": 57.219
+   "s": 38.081,
+   "e": 38.216
   },
   {
    "w": "hungry.",
-   "s": 57.219,
-   "e": 57.602
+   "s": 38.216,
+   "e": 38.599
   },
   {
    "w": "After",
-   "s": 57.879,
-   "e": 58.074
+   "s": 38.876,
+   "e": 39.071
   },
   {
    "w": "that,",
-   "s": 58.074,
-   "e": 58.344
+   "s": 39.071,
+   "e": 39.341
   },
   {
    "w": "we",
-   "s": 58.487,
-   "e": 58.584
+   "s": 39.484,
+   "e": 39.581
   },
   {
    "w": "sat",
-   "s": 58.584,
-   "e": 58.854
+   "s": 39.581,
+   "e": 39.852
   },
   {
    "w": "on",
-   "s": 58.854,
-   "e": 58.922
+   "s": 39.852,
+   "e": 39.919
   },
   {
    "w": "that",
-   "s": 58.922,
-   "e": 59.034
+   "s": 39.919,
+   "e": 40.032
   },
   {
    "w": "wall",
-   "s": 59.034,
-   "e": 59.274
+   "s": 40.032,
+   "e": 40.272
   },
   {
    "w": "every",
-   "s": 59.274,
-   "e": 59.417
+   "s": 40.272,
+   "e": 40.414
   },
   {
    "w": "day.",
-   "s": 59.417,
-   "e": 59.709
+   "s": 40.414,
+   "e": 40.707
   },
   {
    "w": "He",
-   "s": 59.979,
-   "e": 60.107
+   "s": 40.977,
+   "e": 41.097
   },
   {
    "w": "could",
-   "s": 60.107,
-   "e": 60.249
+   "s": 41.097,
+   "e": 41.247
   },
   {
    "w": "not",
-   "s": 60.249,
-   "e": 60.369
+   "s": 41.247,
+   "e": 41.367
   },
   {
    "w": "see",
-   "s": 60.369,
-   "e": 60.572
+   "s": 41.367,
+   "e": 41.577
   },
   {
    "w": "in",
-   "s": 60.572,
-   "e": 60.662
+   "s": 41.577,
+   "e": 41.659
   },
   {
    "w": "the",
-   "s": 60.662,
-   "e": 60.714
+   "s": 41.659,
+   "e": 41.712
   },
   {
    "w": "dark",
-   "s": 60.714,
-   "e": 61.007
+   "s": 41.712,
+   "e": 42.004
   },
   {
    "w": "either.",
-   "s": 61.007,
-   "e": 61.322
+   "s": 42.004,
+   "e": 42.334
   },
   {
    "w": "He",
-   "s": 61.539,
-   "e": 61.629
+   "s": 42.537,
+   "e": 42.627
   },
   {
    "w": "carried",
-   "s": 61.629,
-   "e": 61.892
+   "s": 42.627,
+   "e": 42.89
   },
   {
    "w": "a",
-   "s": 61.892,
-   "e": 61.937
+   "s": 42.89,
+   "e": 42.935
   },
   {
    "w": "lantern,",
-   "s": 61.937,
-   "e": 62.342
+   "s": 42.935,
+   "e": 43.34
   },
   {
    "w": "like",
-   "s": 62.499,
-   "e": 62.649
+   "s": 43.497,
+   "e": 43.647
   },
   {
    "w": "me.",
-   "s": 62.649,
-   "e": 62.927
+   "s": 43.647,
+   "e": 43.925
   },
   {
    "w": "He",
-   "s": 63.189,
-   "e": 63.272
-  },
-  {
-   "w": "got",
-   "s": 63.272,
-   "e": 63.429
-  },
-  {
-   "w": "cold",
-   "s": 63.429,
-   "e": 63.662
-  },
-  {
-   "w": "at",
-   "s": 63.662,
-   "e": 63.729
-  },
-  {
-   "w": "night,",
-   "s": 63.729,
-   "e": 64.082
-  },
-  {
-   "w": "like",
-   "s": 64.284,
-   "e": 64.464
-  },
-  {
-   "w": "me.",
-   "s": 64.464,
-   "e": 64.757
-  },
-  {
-   "w": "He",
-   "s": 65.064,
-   "e": 65.214
+   "s": 44.21,
+   "e": 44.36
   },
   {
    "w": "even",
-   "s": 65.214,
-   "e": 65.499
+   "s": 44.36,
+   "e": 44.645
   },
   {
    "w": "sneezed.",
-   "s": 65.499,
-   "e": 65.979
+   "s": 44.645,
+   "e": 45.125
   },
   {
    "w": "Monsters",
-   "s": 66.287,
-   "e": 66.744
+   "s": 45.433,
+   "e": 45.89
   },
   {
    "w": "do",
-   "s": 66.744,
-   "e": 66.842
+   "s": 45.89,
+   "e": 45.988
   },
   {
    "w": "not",
-   "s": 66.842,
-   "e": 66.992
+   "s": 45.988,
+   "e": 46.138
   },
   {
    "w": "sneeze.",
-   "s": 66.992,
-   "e": 67.494
+   "s": 46.138,
+   "e": 46.64
   },
   {
    "w": "He",
-   "s": 67.689,
-   "e": 67.779
-  },
-  {
-   "w": "showed",
-   "s": 67.779,
-   "e": 67.982
-  },
-  {
-   "w": "me",
-   "s": 67.982,
-   "e": 68.064
-  },
-  {
-   "w": "how",
-   "s": 68.064,
-   "e": 68.184
-  },
-  {
-   "w": "to",
-   "s": 68.184,
-   "e": 68.274
-  },
-  {
-   "w": "fish,",
-   "s": 68.274,
-   "e": 68.702
-  },
-  {
-   "w": "and",
-   "s": 68.837,
-   "e": 68.942
-  },
-  {
-   "w": "how",
-   "s": 68.942,
-   "e": 69.039
-  },
-  {
-   "w": "to",
-   "s": 69.039,
-   "e": 69.122
-  },
-  {
-   "w": "whistle,",
-   "s": 69.122,
-   "e": 69.467
-  },
-  {
-   "w": "and",
-   "s": 69.752,
-   "e": 69.842
-  },
-  {
-   "w": "I",
-   "s": 69.842,
-   "e": 69.917
-  },
-  {
-   "w": "showed",
-   "s": 69.917,
-   "e": 70.119
-  },
-  {
-   "w": "him",
-   "s": 70.119,
-   "e": 70.352
-  },
-  {
-   "w": "how",
-   "s": 70.352,
-   "e": 70.472
-  },
-  {
-   "w": "to",
-   "s": 70.472,
-   "e": 70.562
-  },
-  {
-   "w": "laugh,",
-   "s": 70.562,
-   "e": 70.959
-  },
-  {
-   "w": "which",
-   "s": 71.109,
-   "e": 71.252
-  },
-  {
-   "w": "he",
-   "s": 71.252,
-   "e": 71.319
-  },
-  {
-   "w": "had",
-   "s": 71.319,
-   "e": 71.387
-  },
-  {
-   "w": "forgotten.",
-   "s": 71.387,
-   "e": 71.822
-  },
-  {
-   "w": "He",
-   "s": 72.047,
-   "e": 72.144
+   "s": 46.828,
+   "e": 46.948
   },
   {
    "w": "was",
-   "s": 72.144,
-   "e": 72.302
+   "s": 46.948,
+   "e": 47.105
   },
   {
    "w": "the",
-   "s": 72.302,
-   "e": 72.444
+   "s": 47.105,
+   "e": 47.248
   },
   {
    "w": "only",
-   "s": 72.444,
-   "e": 72.684
+   "s": 47.248,
+   "e": 47.488
   },
   {
    "w": "monster",
-   "s": 72.684,
-   "e": 73.059
+   "s": 47.488,
+   "e": 47.863
   },
   {
    "w": "who",
-   "s": 73.059,
-   "e": 73.209
+   "s": 47.863,
+   "e": 48.013
   },
   {
    "w": "was",
-   "s": 73.209,
-   "e": 73.322
+   "s": 48.013,
+   "e": 48.126
   },
   {
    "w": "like",
-   "s": 73.322,
-   "e": 73.524
+   "s": 48.126,
+   "e": 48.321
   },
   {
    "w": "me.",
-   "s": 73.524,
-   "e": 73.839
+   "s": 48.321,
+   "e": 48.643
   },
   {
    "w": "I",
-   "s": 74.124,
-   "e": 74.237
+   "s": 48.928,
+   "e": 49.041
   },
   {
    "w": "never",
-   "s": 74.237,
-   "e": 74.514
+   "s": 49.041,
+   "e": 49.311
   },
   {
    "w": "asked",
-   "s": 74.514,
-   "e": 74.814
+   "s": 49.311,
+   "e": 49.618
   },
   {
    "w": "myself",
-   "s": 74.814,
-   "e": 75.144
+   "s": 49.618,
+   "e": 49.948
   },
   {
    "w": "why.",
-   "s": 75.144,
-   "e": 75.482
+   "s": 49.948,
+   "e": 50.286
   },
   {
    "w": "There",
-   "s": 75.592,
-   "e": 75.704
+   "s": 50.396,
+   "e": 50.509
   },
   {
    "w": "was",
-   "s": 75.704,
-   "e": 75.817
+   "s": 50.509,
+   "e": 50.621
   },
   {
    "w": "one",
-   "s": 75.817,
-   "e": 76.027
+   "s": 50.621,
+   "e": 50.831
   },
   {
    "w": "rule.",
-   "s": 76.027,
-   "e": 76.327
+   "s": 50.831,
+   "e": 51.131
   },
   {
    "w": "At",
-   "s": 76.545,
-   "e": 76.642
+   "s": 51.357,
+   "e": 51.447
   },
   {
    "w": "sunset,",
-   "s": 76.642,
-   "e": 77.1
+   "s": 51.447,
+   "e": 51.905
   },
   {
    "w": "the",
-   "s": 77.212,
-   "e": 77.287
+   "s": 52.017,
+   "e": 52.092
   },
   {
    "w": "whole",
-   "s": 77.287,
-   "e": 77.512
+   "s": 52.092,
+   "e": 52.317
   },
   {
    "w": "village",
-   "s": 77.512,
-   "e": 77.805
+   "s": 52.317,
+   "e": 52.61
   },
   {
    "w": "walked",
-   "s": 77.805,
-   "e": 78.06
+   "s": 52.61,
+   "e": 52.865
   },
   {
    "w": "me",
-   "s": 78.06,
-   "e": 78.15
+   "s": 52.865,
+   "e": 52.955
   },
   {
    "w": "home.",
-   "s": 78.15,
-   "e": 78.465
+   "s": 52.955,
+   "e": 53.27
   },
   {
    "w": "Then",
-   "s": 78.758,
-   "e": 79.05
+   "s": 53.563,
+   "e": 53.856
   },
   {
    "w": "they",
-   "s": 79.05,
-   "e": 79.156
+   "s": 53.856,
+   "e": 53.961
   },
   {
    "w": "locked",
-   "s": 79.156,
-   "e": 79.396
+   "s": 53.961,
+   "e": 54.201
   },
   {
    "w": "my",
-   "s": 79.396,
-   "e": 79.508
+   "s": 54.201,
+   "e": 54.314
   },
   {
    "w": "door.",
-   "s": 79.508,
-   "e": 79.831
+   "s": 54.314,
+   "e": 54.644
   },
   {
    "w": "From",
-   "s": 80.003,
-   "e": 80.131
+   "s": 54.809,
+   "e": 54.937
   },
   {
    "w": "the",
-   "s": 80.131,
-   "e": 80.206
+   "s": 54.937,
+   "e": 55.012
   },
   {
    "w": "outside.",
-   "s": 80.206,
-   "e": 80.656
+   "s": 55.012,
+   "e": 55.462
   },
   {
    "w": "I",
-   "s": 80.904,
-   "e": 80.971
+   "s": 55.71,
+   "e": 55.777
   },
   {
    "w": "thought",
-   "s": 80.971,
-   "e": 81.174
+   "s": 55.777,
+   "e": 55.972
   },
   {
    "w": "it",
-   "s": 81.174,
-   "e": 81.219
+   "s": 55.972,
+   "e": 56.025
   },
   {
    "w": "was",
-   "s": 81.219,
-   "e": 81.331
+   "s": 56.025,
+   "e": 56.138
   },
   {
    "w": "because",
-   "s": 81.331,
-   "e": 81.639
+   "s": 56.138,
+   "e": 56.445
   },
   {
    "w": "I",
-   "s": 81.639,
-   "e": 81.759
+   "s": 56.445,
+   "e": 56.573
   },
   {
    "w": "was",
-   "s": 81.759,
-   "e": 81.917
+   "s": 56.573,
+   "e": 56.723
   },
   {
    "w": "the",
-   "s": 81.917,
-   "e": 81.969
+   "s": 56.723,
+   "e": 56.775
   },
   {
    "w": "weak",
-   "s": 81.969,
-   "e": 82.179
+   "s": 56.775,
+   "e": 56.986
   },
   {
    "w": "one.",
-   "s": 82.179,
-   "e": 82.382
-  },
-  {
-   "w": "Even",
-   "s": 82.644,
-   "e": 82.862
-  },
-  {
-   "w": "Mo",
-   "s": 82.862,
-   "e": 83.072
-  },
-  {
-   "w": "stood",
-   "s": 83.072,
-   "e": 83.297
-  },
-  {
-   "w": "there",
-   "s": 83.297,
-   "e": 83.455
-  },
-  {
-   "w": "and",
-   "s": 83.455,
-   "e": 83.545
-  },
-  {
-   "w": "watched",
-   "s": 83.545,
-   "e": 83.717
-  },
-  {
-   "w": "them",
-   "s": 83.717,
-   "e": 83.837
-  },
-  {
-   "w": "do",
-   "s": 83.837,
-   "e": 83.987
-  },
-  {
-   "w": "it.",
-   "s": 83.987,
-   "e": 84.145
+   "s": 56.986,
+   "e": 57.188
   },
   {
    "w": "One",
-   "s": 84.37,
-   "e": 84.543
+   "s": 57.451,
+   "e": 57.609
   },
   {
    "w": "night,",
-   "s": 84.543,
-   "e": 84.888
+   "s": 57.609,
+   "e": 57.954
   },
   {
    "w": "I",
-   "s": 85.255,
-   "e": 85.345
+   "s": 58.314,
+   "e": 58.404
   },
   {
    "w": "had",
-   "s": 85.345,
-   "e": 85.48
+   "s": 58.404,
+   "e": 58.539
   },
   {
    "w": "had",
-   "s": 85.48,
-   "e": 85.638
+   "s": 58.539,
+   "e": 58.704
   },
   {
    "w": "enough.",
-   "s": 85.638,
-   "e": 86.021
+   "s": 58.704,
+   "e": 59.087
   },
   {
    "w": "I",
-   "s": 86.238,
-   "e": 86.298
+   "s": 59.305,
+   "e": 59.365
   },
   {
    "w": "went",
-   "s": 86.298,
-   "e": 86.493
+   "s": 59.365,
+   "e": 59.56
   },
   {
    "w": "out",
-   "s": 86.493,
-   "e": 86.628
+   "s": 59.56,
+   "e": 59.688
   },
   {
    "w": "of",
-   "s": 86.628,
-   "e": 86.681
+   "s": 59.688,
+   "e": 59.74
   },
   {
    "w": "the",
-   "s": 86.681,
-   "e": 86.726
+   "s": 59.74,
+   "e": 59.785
   },
   {
    "w": "window.",
-   "s": 86.726,
-   "e": 87.034
-  },
-  {
-   "w": "I",
-   "s": 87.401,
-   "e": 87.461
-  },
-  {
-   "w": "wanted",
-   "s": 87.461,
-   "e": 87.709
-  },
-  {
-   "w": "to",
-   "s": 87.709,
-   "e": 87.769
-  },
-  {
-   "w": "see",
-   "s": 87.769,
-   "e": 87.941
-  },
-  {
-   "w": "what",
-   "s": 87.941,
-   "e": 88.077
-  },
-  {
-   "w": "they",
-   "s": 88.077,
-   "e": 88.167
-  },
-  {
-   "w": "did",
-   "s": 88.167,
-   "e": 88.332
-  },
-  {
-   "w": "without",
-   "s": 88.332,
-   "e": 88.549
-  },
-  {
-   "w": "me.",
-   "s": 88.549,
-   "e": 88.782
+   "s": 59.785,
+   "e": 60.1
   },
   {
    "w": "They",
-   "s": 89.022,
-   "e": 89.142
+   "s": 60.386,
+   "e": 60.521
   },
   {
    "w": "were",
-   "s": 89.142,
-   "e": 89.224
+   "s": 60.521,
+   "e": 60.603
   },
   {
    "w": "not",
-   "s": 89.224,
-   "e": 89.36
+   "s": 60.603,
+   "e": 60.738
   },
   {
    "w": "doing",
-   "s": 89.36,
-   "e": 89.562
+   "s": 60.738,
+   "e": 60.941
   },
   {
    "w": "anything.",
-   "s": 89.562,
-   "e": 89.952
+   "s": 60.941,
+   "e": 61.331
   },
   {
    "w": "They",
-   "s": 90.062,
-   "e": 90.145
+   "s": 61.449,
+   "e": 61.524
   },
   {
    "w": "were",
-   "s": 90.145,
-   "e": 90.212
+   "s": 61.524,
+   "e": 61.591
   },
   {
    "w": "standing",
-   "s": 90.212,
-   "e": 90.542
+   "s": 61.591,
+   "e": 61.922
   },
   {
    "w": "in",
-   "s": 90.542,
-   "e": 90.61
+   "s": 61.922,
+   "e": 61.989
   },
   {
    "w": "a",
-   "s": 90.61,
-   "e": 90.633
+   "s": 61.989,
+   "e": 62.012
   },
   {
    "w": "ring",
-   "s": 90.633,
-   "e": 90.85
+   "s": 62.012,
+   "e": 62.229
   },
   {
    "w": "around",
-   "s": 90.85,
-   "e": 91.03
+   "s": 62.229,
+   "e": 62.409
   },
   {
    "w": "my",
-   "s": 91.03,
-   "e": 91.15
+   "s": 62.409,
+   "e": 62.529
   },
   {
    "w": "house.",
-   "s": 91.15,
-   "e": 91.555
+   "s": 62.529,
+   "e": 62.935
   },
   {
    "w": "All",
-   "s": 91.796,
-   "e": 91.976
+   "s": 63.175,
+   "e": 63.355
   },
   {
    "w": "of",
-   "s": 91.976,
-   "e": 92.058
+   "s": 63.355,
+   "e": 63.438
   },
   {
    "w": "them.",
-   "s": 92.058,
-   "e": 92.253
+   "s": 63.438,
+   "e": 63.633
   },
   {
    "w": "And",
-   "s": 92.456,
-   "e": 92.531
+   "s": 63.835,
+   "e": 63.91
   },
   {
    "w": "they",
-   "s": 92.531,
-   "e": 92.576
+   "s": 63.91,
+   "e": 63.955
   },
   {
    "w": "were",
-   "s": 92.576,
-   "e": 92.666
+   "s": 63.955,
+   "e": 64.045
   },
   {
    "w": "facing",
-   "s": 92.666,
-   "e": 92.966
+   "s": 64.045,
+   "e": 64.346
   },
   {
    "w": "out.",
-   "s": 92.966,
-   "e": 93.236
+   "s": 64.346,
+   "e": 64.616
   },
   {
    "w": "They",
-   "s": 93.431,
-   "e": 93.551
+   "s": 64.811,
+   "e": 64.931
   },
   {
    "w": "did",
-   "s": 93.551,
-   "e": 93.671
+   "s": 64.931,
+   "e": 65.051
   },
   {
    "w": "it",
-   "s": 93.671,
-   "e": 93.777
+   "s": 65.051,
+   "e": 65.156
   },
   {
    "w": "every",
-   "s": 93.777,
-   "e": 94.017
+   "s": 65.156,
+   "e": 65.396
   },
   {
    "w": "night.",
-   "s": 94.017,
-   "e": 94.369
+   "s": 65.396,
+   "e": 65.749
   },
   {
    "w": "They",
-   "s": 94.549,
-   "e": 94.639
+   "s": 65.929,
+   "e": 66.019
   },
   {
    "w": "had",
-   "s": 94.639,
-   "e": 94.752
+   "s": 66.019,
+   "e": 66.132
   },
   {
    "w": "done",
-   "s": 94.752,
-   "e": 94.895
+   "s": 66.132,
+   "e": 66.274
   },
   {
    "w": "it",
-   "s": 94.895,
-   "e": 94.985
+   "s": 66.274,
+   "e": 66.364
   },
   {
    "w": "since",
-   "s": 94.985,
-   "e": 95.15
+   "s": 66.364,
+   "e": 66.53
   },
   {
    "w": "the",
-   "s": 95.15,
-   "e": 95.21
+   "s": 66.53,
+   "e": 66.59
   },
   {
    "w": "basket.",
-   "s": 95.21,
-   "e": 95.615
+   "s": 66.59,
+   "e": 66.995
   },
   {
    "w": "Then",
-   "s": 95.93,
-   "e": 96.223
+   "s": 67.31,
+   "e": 67.603
   },
   {
    "w": "I",
-   "s": 96.223,
-   "e": 96.313
+   "s": 67.603,
+   "e": 67.693
   },
   {
    "w": "saw",
-   "s": 96.313,
-   "e": 96.47
+   "s": 67.693,
+   "e": 67.85
   },
   {
    "w": "why.",
-   "s": 96.47,
-   "e": 96.831
+   "s": 67.85,
+   "e": 68.211
   },
   {
    "w": "There",
-   "s": 97.041,
-   "e": 97.146
+   "s": 68.421,
+   "e": 68.526
   },
   {
    "w": "were",
-   "s": 97.146,
-   "e": 97.221
+   "s": 68.526,
+   "e": 68.601
   },
   {
    "w": "torches",
-   "s": 97.221,
-   "e": 97.603
+   "s": 68.601,
+   "e": 68.984
   },
   {
    "w": "on",
-   "s": 97.603,
-   "e": 97.671
+   "s": 68.984,
+   "e": 69.051
   },
   {
    "w": "the",
-   "s": 97.671,
-   "e": 97.731
+   "s": 69.051,
+   "e": 69.111
   },
   {
    "w": "hill.",
-   "s": 97.731,
-   "e": 98.061
+   "s": 69.111,
+   "e": 69.442
   },
   {
    "w": "Players.",
-   "s": 98.241,
-   "e": 98.706
+   "s": 69.622,
+   "e": 70.087
   },
   {
    "w": "With",
-   "s": 99.022,
-   "e": 99.217
+   "s": 70.402,
+   "e": 70.605
   },
   {
    "w": "swords.",
-   "s": 99.217,
-   "e": 99.682
-  },
-  {
-   "w": "They",
-   "s": 99.93,
-   "e": 100.02
-  },
-  {
-   "w": "had",
-   "s": 100.02,
-   "e": 100.132
-  },
-  {
-   "w": "come",
-   "s": 100.132,
-   "e": 100.372
-  },
-  {
-   "w": "to",
-   "s": 100.372,
-   "e": 100.455
-  },
-  {
-   "w": "clear",
-   "s": 100.455,
-   "e": 100.702
-  },
-  {
-   "w": "the",
-   "s": 100.702,
-   "e": 100.77
-  },
-  {
-   "w": "village.",
-   "s": 100.77,
-   "e": 101.16
+   "s": 70.605,
+   "e": 71.063
   },
   {
    "w": "\"Monsters!\"",
-   "s": 101.468,
-   "e": 102.083
+   "s": 71.34,
+   "e": 71.956
   },
   {
    "w": "one",
-   "s": 102.308,
-   "e": 102.436
+   "s": 72.181,
+   "e": 72.308
   },
   {
    "w": "shouted.",
-   "s": 102.436,
-   "e": 102.848
+   "s": 72.308,
+   "e": 72.729
   },
   {
    "w": "\"Get",
-   "s": 103.074,
-   "e": 103.224
+   "s": 72.946,
+   "e": 73.096
   },
   {
    "w": "them",
-   "s": 103.224,
-   "e": 103.329
+   "s": 73.096,
+   "e": 73.201
   },
   {
    "w": "all!\"",
-   "s": 103.329,
-   "e": 103.689
+   "s": 73.201,
+   "e": 73.562
   },
   {
    "w": "They",
-   "s": 104.019,
-   "e": 104.117
+   "s": 73.892,
+   "e": 73.99
   },
   {
    "w": "came",
-   "s": 104.117,
-   "e": 104.357
+   "s": 73.99,
+   "e": 74.23
   },
   {
    "w": "down",
-   "s": 104.357,
-   "e": 104.507
+   "s": 74.23,
+   "e": 74.38
   },
   {
    "w": "the",
-   "s": 104.507,
-   "e": 104.552
+   "s": 74.38,
+   "e": 74.425
   },
   {
    "w": "hill",
-   "s": 104.552,
-   "e": 104.762
+   "s": 74.425,
+   "e": 74.635
   },
   {
    "w": "fast.",
-   "s": 104.762,
-   "e": 105.205
-  },
-  {
-   "w": "My",
-   "s": 105.422,
-   "e": 105.557
-  },
-  {
-   "w": "dad",
-   "s": 105.557,
-   "e": 105.805
-  },
-  {
-   "w": "lost",
-   "s": 105.805,
-   "e": 105.992
-  },
-  {
-   "w": "an",
-   "s": 105.992,
-   "e": 106.06
-  },
-  {
-   "w": "arm,",
-   "s": 106.06,
-   "e": 106.338
-  },
-  {
-   "w": "picked",
-   "s": 106.473,
-   "e": 106.668
-  },
-  {
-   "w": "it",
-   "s": 106.668,
-   "e": 106.735
-  },
-  {
-   "w": "up,",
-   "s": 106.735,
-   "e": 106.96
-  },
-  {
-   "w": "and",
-   "s": 107.148,
-   "e": 107.268
-  },
-  {
-   "w": "bonked",
-   "s": 107.268,
-   "e": 107.493
-  },
-  {
-   "w": "a",
-   "s": 107.493,
-   "e": 107.523
-  },
-  {
-   "w": "man",
-   "s": 107.523,
-   "e": 107.726
-  },
-  {
-   "w": "with",
-   "s": 107.726,
-   "e": 107.816
-  },
-  {
-   "w": "it.",
-   "s": 107.816,
-   "e": 108.003
-  },
-  {
-   "w": "The",
-   "s": 108.274,
-   "e": 108.349
-  },
-  {
-   "w": "bus",
-   "s": 108.349,
-   "e": 108.566
-  },
-  {
-   "w": "sat",
-   "s": 108.566,
-   "e": 108.776
-  },
-  {
-   "w": "on",
-   "s": 108.776,
-   "e": 108.881
-  },
-  {
-   "w": "three",
-   "s": 108.881,
-   "e": 109.084
-  },
-  {
-   "w": "of",
-   "s": 109.084,
-   "e": 109.159
-  },
-  {
-   "w": "them.",
-   "s": 109.159,
-   "e": 109.317
-  },
-  {
-   "w": "The",
-   "s": 109.542,
-   "e": 109.639
-  },
-  {
-   "w": "postman",
-   "s": 109.639,
-   "e": 110.014
-  },
-  {
-   "w": "put",
-   "s": 110.014,
-   "e": 110.134
-  },
-  {
-   "w": "one",
-   "s": 110.134,
-   "e": 110.307
-  },
-  {
-   "w": "at",
-   "s": 110.307,
-   "e": 110.36
-  },
-  {
-   "w": "the",
-   "s": 110.36,
-   "e": 110.42
-  },
-  {
-   "w": "top",
-   "s": 110.42,
-   "e": 110.6
-  },
-  {
-   "w": "of",
-   "s": 110.6,
-   "e": 110.675
-  },
-  {
-   "w": "a",
-   "s": 110.675,
-   "e": 110.712
-  },
-  {
-   "w": "tree.",
-   "s": 110.712,
-   "e": 111.072
+   "s": 74.635,
+   "e": 75.078
   },
   {
    "w": "And",
-   "s": 111.313,
-   "e": 111.425
+   "s": 75.288,
+   "e": 75.415
   },
   {
    "w": "Hiss",
-   "s": 111.425,
-   "e": 111.583
+   "s": 75.415,
+   "e": 75.581
   },
   {
    "w": "shook,",
-   "s": 111.583,
-   "e": 111.95
+   "s": 75.581,
+   "e": 75.948
   },
   {
    "w": "and",
-   "s": 112.093,
-   "e": 112.175
+   "s": 76.091,
+   "e": 76.173
   },
   {
    "w": "went",
-   "s": 112.175,
-   "e": 112.341
+   "s": 76.173,
+   "e": 76.331
   },
   {
    "w": "white,",
-   "s": 112.341,
-   "e": 112.648
+   "s": 76.331,
+   "e": 76.639
   },
   {
    "w": "trying",
-   "s": 112.753,
-   "e": 113.001
+   "s": 76.744,
+   "e": 76.991
   },
   {
    "w": "so",
-   "s": 113.001,
-   "e": 113.286
+   "s": 76.991,
+   "e": 77.284
   },
   {
    "w": "hard",
-   "s": 113.286,
-   "e": 113.541
+   "s": 77.284,
+   "e": 77.539
   },
   {
    "w": "not",
-   "s": 113.541,
-   "e": 113.676
+   "s": 77.539,
+   "e": 77.674
   },
   {
    "w": "to",
-   "s": 113.676,
-   "e": 113.751
+   "s": 77.674,
+   "e": 77.749
   },
   {
    "w": "go",
-   "s": 113.751,
-   "e": 113.879
+   "s": 77.749,
+   "e": 77.87
   },
   {
    "w": "off.",
-   "s": 113.879,
-   "e": 114.149
+   "s": 77.87,
+   "e": 78.14
   },
   {
    "w": "Nobody",
-   "s": 114.359,
-   "e": 114.607
+   "s": 78.357,
+   "e": 78.598
   },
   {
    "w": "was",
-   "s": 114.607,
-   "e": 114.727
+   "s": 78.598,
+   "e": 78.718
   },
   {
    "w": "hurt.",
-   "s": 114.727,
-   "e": 115.042
+   "s": 78.718,
+   "e": 79.033
   },
   {
    "w": "And",
-   "s": 115.357,
-   "e": 115.455
+   "s": 79.378,
+   "e": 79.453
   },
   {
    "w": "we",
-   "s": 115.455,
-   "e": 115.537
+   "s": 79.453,
+   "e": 79.536
   },
   {
    "w": "were",
-   "s": 115.537,
-   "e": 115.612
+   "s": 79.536,
+   "e": 79.603
   },
   {
    "w": "losing.",
-   "s": 115.612,
-   "e": 115.927
+   "s": 79.603,
+   "e": 79.918
   },
   {
    "w": "Then",
-   "s": 116.037,
-   "e": 116.33
+   "s": 80.032,
+   "e": 80.325
   },
   {
    "w": "they",
-   "s": 116.33,
-   "e": 116.442
+   "s": 80.325,
+   "e": 80.437
   },
   {
    "w": "knocked",
-   "s": 116.442,
-   "e": 116.682
+   "s": 80.437,
+   "e": 80.677
   },
   {
    "w": "my",
-   "s": 116.682,
-   "e": 116.78
+   "s": 80.677,
+   "e": 80.775
   },
   {
    "w": "mum",
-   "s": 116.78,
-   "e": 116.99
+   "s": 80.775,
+   "e": 80.985
   },
   {
    "w": "over",
-   "s": 116.99,
-   "e": 117.162
+   "s": 80.985,
+   "e": 81.158
   },
   {
    "w": "in",
-   "s": 117.162,
-   "e": 117.237
+   "s": 81.158,
+   "e": 81.233
   },
   {
    "w": "the",
-   "s": 117.237,
-   "e": 117.282
+   "s": 81.233,
+   "e": 81.278
   },
   {
    "w": "dirt.",
-   "s": 117.282,
-   "e": 117.657
+   "s": 81.278,
+   "e": 81.653
   },
   {
    "w": "And",
-   "s": 117.92,
-   "e": 118.002
+   "s": 81.893,
+   "e": 81.998
   },
   {
    "w": "I",
-   "s": 118.002,
-   "e": 118.047
+   "s": 81.998,
+   "e": 82.043
   },
   {
    "w": "thought:",
-   "s": 118.047,
-   "e": 118.355
+   "s": 82.043,
+   "e": 82.351
   },
   {
    "w": "they",
-   "s": 118.565,
-   "e": 118.737
+   "s": 82.561,
+   "e": 82.733
   },
   {
    "w": "are",
-   "s": 118.737,
-   "e": 118.842
+   "s": 82.733,
+   "e": 82.838
   },
   {
    "w": "players.",
-   "s": 118.842,
-   "e": 119.337
+   "s": 82.838,
+   "e": 83.333
   },
   {
    "w": "I",
-   "s": 119.607,
-   "e": 119.704
+   "s": 83.603,
+   "e": 83.701
   },
   {
    "w": "look",
-   "s": 119.704,
-   "e": 119.899
+   "s": 83.701,
+   "e": 83.896
   },
   {
    "w": "like",
-   "s": 119.899,
-   "e": 120.019
+   "s": 83.896,
+   "e": 84.016
   },
   {
    "w": "a",
-   "s": 120.019,
-   "e": 120.064
+   "s": 84.016,
+   "e": 84.061
   },
   {
    "w": "player.",
-   "s": 120.064,
-   "e": 120.507
-  },
-  {
-   "w": "I",
-   "s": 120.747,
-   "e": 120.829
-  },
-  {
-   "w": "was",
-   "s": 120.829,
-   "e": 120.972
-  },
-  {
-   "w": "the",
-   "s": 120.972,
-   "e": 121.077
-  },
-  {
-   "w": "only",
-   "s": 121.077,
-   "e": 121.332
-  },
-  {
-   "w": "thing",
-   "s": 121.332,
-   "e": 121.504
-  },
-  {
-   "w": "in",
-   "s": 121.504,
-   "e": 121.587
-  },
-  {
-   "w": "that",
-   "s": 121.587,
-   "e": 121.699
-  },
-  {
-   "w": "village",
-   "s": 121.699,
-   "e": 122.007
-  },
-  {
-   "w": "they",
-   "s": 122.007,
-   "e": 122.082
-  },
-  {
-   "w": "would",
-   "s": 122.082,
-   "e": 122.202
-  },
-  {
-   "w": "not",
-   "s": 122.202,
-   "e": 122.397
-  },
-  {
-   "w": "touch.",
-   "s": 122.397,
-   "e": 122.787
+   "s": 84.061,
+   "e": 84.504
   },
   {
    "w": "So",
-   "s": 123.027,
-   "e": 123.334
+   "s": 84.751,
+   "e": 85.051
   },
   {
    "w": "I",
-   "s": 123.334,
-   "e": 123.409
+   "s": 85.051,
+   "e": 85.126
   },
   {
    "w": "ran.",
-   "s": 123.409,
-   "e": 123.777
+   "s": 85.126,
+   "e": 85.494
   },
   {
    "w": "Under",
-   "s": 124.069,
-   "e": 124.264
+   "s": 85.787,
+   "e": 85.982
   },
   {
    "w": "a",
-   "s": 124.264,
-   "e": 124.294
+   "s": 85.982,
+   "e": 86.012
   },
   {
    "w": "sword,",
-   "s": 124.294,
-   "e": 124.669
+   "s": 86.012,
+   "e": 86.379
   },
   {
    "w": "over",
-   "s": 124.946,
-   "e": 125.081
+   "s": 86.665,
+   "e": 86.8
   },
   {
    "w": "the",
-   "s": 125.081,
-   "e": 125.149
+   "s": 86.8,
+   "e": 86.867
   },
   {
    "w": "bus,",
-   "s": 125.149,
-   "e": 125.524
+   "s": 86.867,
+   "e": 87.242
   },
   {
    "w": "through",
-   "s": 125.704,
-   "e": 125.854
+   "s": 87.422,
+   "e": 87.572
   },
   {
    "w": "my",
-   "s": 125.854,
-   "e": 125.951
+   "s": 87.572,
+   "e": 87.67
   },
   {
    "w": "dad's",
-   "s": 125.951,
-   "e": 126.191
+   "s": 87.67,
+   "e": 87.91
   },
   {
    "w": "legs,",
-   "s": 126.191,
-   "e": 126.521
+   "s": 87.91,
+   "e": 88.24
   },
   {
    "w": "and",
-   "s": 126.731,
-   "e": 126.851
+   "s": 88.45,
+   "e": 88.57
   },
   {
    "w": "I",
-   "s": 126.851,
-   "e": 126.904
+   "s": 88.57,
+   "e": 88.623
   },
   {
    "w": "stood",
-   "s": 126.904,
-   "e": 127.136
+   "s": 88.623,
+   "e": 88.855
   },
   {
    "w": "in",
-   "s": 127.136,
-   "e": 127.219
+   "s": 88.855,
+   "e": 88.938
   },
   {
    "w": "front",
-   "s": 127.219,
-   "e": 127.414
+   "s": 88.938,
+   "e": 89.133
   },
   {
    "w": "of",
-   "s": 127.414,
-   "e": 127.466
+   "s": 89.133,
+   "e": 89.185
   },
   {
    "w": "my",
-   "s": 127.466,
-   "e": 127.579
+   "s": 89.185,
+   "e": 89.298
   },
   {
    "w": "mum",
-   "s": 127.579,
-   "e": 127.796
+   "s": 89.298,
+   "e": 89.516
   },
   {
    "w": "with",
-   "s": 127.796,
-   "e": 127.894
+   "s": 89.516,
+   "e": 89.613
   },
   {
    "w": "my",
-   "s": 127.894,
-   "e": 128.021
+   "s": 89.613,
+   "e": 89.733
   },
   {
    "w": "arms",
-   "s": 128.021,
-   "e": 128.246
+   "s": 89.733,
+   "e": 89.966
   },
   {
    "w": "out.",
-   "s": 128.246,
-   "e": 128.456
+   "s": 89.966,
+   "e": 90.176
   },
   {
    "w": "\"Stop!",
-   "s": 128.689,
-   "e": 129.041
+   "s": 90.408,
+   "e": 90.761
   },
   {
    "w": "I",
-   "s": 129.214,
-   "e": 129.296
+   "s": 90.934,
+   "e": 91.016
   },
   {
    "w": "live",
-   "s": 129.296,
-   "e": 129.498
+   "s": 91.016,
+   "e": 91.219
   },
   {
    "w": "here!",
-   "s": 129.498,
-   "e": 129.738
+   "s": 91.219,
+   "e": 91.459
   },
   {
    "w": "This",
-   "s": 129.903,
-   "e": 130.038
+   "s": 91.631,
+   "e": 91.759
   },
   {
    "w": "is",
-   "s": 130.038,
-   "e": 130.113
+   "s": 91.759,
+   "e": 91.834
   },
   {
    "w": "my",
-   "s": 130.113,
-   "e": 130.203
+   "s": 91.834,
+   "e": 91.924
   },
   {
    "w": "family!\"",
-   "s": 130.203,
-   "e": 130.623
+   "s": 91.924,
+   "e": 92.352
   },
   {
    "w": "It",
-   "s": 130.901,
-   "e": 130.976
+   "s": 92.614,
+   "e": 92.697
   },
   {
    "w": "went",
-   "s": 130.976,
-   "e": 131.141
+   "s": 92.697,
+   "e": 92.862
   },
   {
    "w": "quiet.",
-   "s": 131.141,
-   "e": 131.501
+   "s": 92.862,
+   "e": 93.229
   },
   {
    "w": "A",
-   "s": 131.718,
-   "e": 131.793
+   "s": 93.432,
+   "e": 93.514
   },
   {
    "w": "big",
-   "s": 131.793,
-   "e": 131.981
+   "s": 93.514,
+   "e": 93.702
   },
   {
    "w": "player",
-   "s": 131.981,
-   "e": 132.243
+   "s": 93.702,
+   "e": 93.965
   },
   {
    "w": "looked",
-   "s": 132.243,
-   "e": 132.453
+   "s": 93.965,
+   "e": 94.167
   },
   {
    "w": "down",
-   "s": 132.453,
-   "e": 132.648
+   "s": 94.167,
+   "e": 94.37
   },
   {
    "w": "at",
-   "s": 132.648,
-   "e": 132.693
+   "s": 94.37,
+   "e": 94.415
   },
   {
    "w": "me.",
-   "s": 132.693,
-   "e": 132.948
+   "s": 94.415,
+   "e": 94.67
   },
   {
    "w": "\"It",
-   "s": 133.241,
-   "e": 133.323
+   "s": 94.962,
+   "e": 95.045
   },
   {
    "w": "is",
-   "s": 133.323,
-   "e": 133.413
+   "s": 95.045,
+   "e": 95.135
   },
   {
    "w": "a",
-   "s": 133.413,
-   "e": 133.451
+   "s": 95.135,
+   "e": 95.173
   },
   {
    "w": "trick,\"",
-   "s": 133.451,
-   "e": 133.848
+   "s": 95.173,
+   "e": 95.578
   },
   {
    "w": "he",
-   "s": 134.013,
-   "e": 134.126
+   "s": 95.735,
+   "e": 95.855
   },
   {
    "w": "said.",
-   "s": 134.126,
-   "e": 134.425
+   "s": 95.855,
+   "e": 96.155
   },
   {
    "w": "\"It",
-   "s": 134.718,
-   "e": 134.8
+   "s": 96.44,
+   "e": 96.523
   },
   {
    "w": "is",
-   "s": 134.8,
-   "e": 134.89
+   "s": 96.523,
+   "e": 96.613
   },
   {
    "w": "one",
-   "s": 134.89,
-   "e": 135.018
+   "s": 96.613,
+   "e": 96.741
   },
   {
    "w": "of",
-   "s": 135.018,
-   "e": 135.1
+   "s": 96.741,
+   "e": 96.823
   },
   {
    "w": "them,",
-   "s": 135.1,
-   "e": 135.318
+   "s": 96.823,
+   "e": 97.041
   },
   {
    "w": "dressed",
-   "s": 135.49,
-   "e": 135.738
+   "s": 97.213,
+   "e": 97.461
   },
   {
    "w": "up.\"",
-   "s": 135.738,
-   "e": 135.948
+   "s": 97.461,
+   "e": 97.671
   },
   {
    "w": "And",
-   "s": 136.3,
-   "e": 136.42
+   "s": 98.024,
+   "e": 98.144
   },
   {
    "w": "he",
-   "s": 136.42,
-   "e": 136.51
+   "s": 98.144,
+   "e": 98.234
   },
   {
    "w": "lifted",
-   "s": 136.51,
-   "e": 136.75
+   "s": 98.234,
+   "e": 98.474
   },
   {
    "w": "his",
-   "s": 136.75,
-   "e": 136.855
+   "s": 98.474,
+   "e": 98.579
   },
   {
    "w": "sword.",
-   "s": 136.855,
-   "e": 137.208
+   "s": 98.579,
+   "e": 98.931
   },
   {
    "w": "I",
-   "s": 137.545,
-   "e": 137.605
+   "s": 99.269,
+   "e": 99.322
   },
   {
    "w": "shut",
-   "s": 137.605,
-   "e": 137.8
+   "s": 99.322,
+   "e": 99.524
   },
   {
    "w": "my",
-   "s": 137.8,
-   "e": 137.928
+   "s": 99.524,
+   "e": 99.652
   },
   {
    "w": "eyes.",
-   "s": 137.928,
-   "e": 138.28
+   "s": 99.652,
+   "e": 100.004
   },
   {
    "w": "It",
-   "s": 138.383,
-   "e": 138.48
+   "s": 100.107,
+   "e": 100.204
   },
   {
    "w": "did",
-   "s": 138.48,
-   "e": 138.585
+   "s": 100.204,
+   "e": 100.309
   },
   {
    "w": "not",
-   "s": 138.585,
-   "e": 138.72
+   "s": 100.309,
+   "e": 100.444
   },
   {
    "w": "land.",
-   "s": 138.72,
-   "e": 139.042
+   "s": 100.444,
+   "e": 100.766
   },
   {
    "w": "Mo",
-   "s": 139.275,
-   "e": 139.462
+   "s": 100.999,
+   "e": 101.186
   },
   {
    "w": "was",
-   "s": 139.462,
-   "e": 139.605
+   "s": 101.186,
+   "e": 101.329
   },
   {
    "w": "there.",
-   "s": 139.605,
-   "e": 139.904
+   "s": 101.329,
+   "e": 101.629
   },
   {
    "w": "He",
-   "s": 140.122,
-   "e": 140.242
+   "s": 101.846,
+   "e": 101.966
   },
   {
    "w": "had",
-   "s": 140.242,
-   "e": 140.362
+   "s": 101.966,
+   "e": 102.086
   },
   {
    "w": "caught",
-   "s": 140.362,
-   "e": 140.572
+   "s": 102.086,
+   "e": 102.296
   },
   {
    "w": "the",
-   "s": 140.572,
-   "e": 140.647
+   "s": 102.296,
+   "e": 102.371
   },
   {
    "w": "sword",
-   "s": 140.647,
-   "e": 140.976
+   "s": 102.371,
+   "e": 102.701
   },
   {
    "w": "in",
-   "s": 140.976,
-   "e": 141.059
+   "s": 102.701,
+   "e": 102.783
   },
   {
    "w": "his",
-   "s": 141.059,
-   "e": 141.201
+   "s": 102.783,
+   "e": 102.925
   },
   {
    "w": "bare",
-   "s": 141.201,
-   "e": 141.396
+   "s": 102.925,
+   "e": 103.12
   },
   {
    "w": "hand.",
-   "s": 141.396,
-   "e": 141.771
+   "s": 103.12,
+   "e": 103.495
   },
   {
    "w": "And",
-   "s": 142.011,
-   "e": 142.116
+   "s": 103.735,
+   "e": 103.84
   },
   {
    "w": "his",
-   "s": 142.116,
-   "e": 142.251
+   "s": 103.84,
+   "e": 103.975
   },
   {
    "w": "hand",
-   "s": 142.251,
-   "e": 142.498
+   "s": 103.975,
+   "e": 104.222
   },
   {
    "w": "was",
-   "s": 142.498,
-   "e": 142.588
+   "s": 104.222,
+   "e": 104.312
   },
   {
    "w": "bleeding.",
-   "s": 142.588,
-   "e": 142.993
+   "s": 104.312,
+   "e": 104.717
   },
   {
    "w": "Red.",
-   "s": 143.263,
-   "e": 143.548
+   "s": 104.987,
+   "e": 105.272
   },
   {
    "w": "Zombies",
-   "s": 143.803,
-   "e": 144.222
+   "s": 105.527,
+   "e": 105.947
   },
   {
    "w": "do",
-   "s": 144.222,
-   "e": 144.342
+   "s": 105.947,
+   "e": 106.067
   },
   {
    "w": "not",
-   "s": 144.342,
-   "e": 144.62
+   "s": 106.067,
+   "e": 106.344
   },
   {
    "w": "bleed",
-   "s": 144.62,
-   "e": 144.957
+   "s": 106.344,
+   "e": 106.681
   },
   {
    "w": "red.",
-   "s": 144.957,
-   "e": 145.287
+   "s": 106.681,
+   "e": 107.011
   },
   {
    "w": "He",
-   "s": 145.497,
-   "e": 145.594
+   "s": 107.221,
+   "e": 107.318
   },
   {
    "w": "pulled",
-   "s": 145.594,
-   "e": 145.804
+   "s": 107.318,
+   "e": 107.528
   },
   {
    "w": "the",
-   "s": 145.804,
-   "e": 145.864
+   "s": 107.528,
+   "e": 107.588
   },
   {
    "w": "scarf",
-   "s": 145.864,
-   "e": 146.134
+   "s": 107.588,
+   "e": 107.858
   },
   {
    "w": "down.",
-   "s": 146.134,
-   "e": 146.396
+   "s": 107.858,
+   "e": 108.121
   },
   {
    "w": "He",
-   "s": 146.606,
-   "e": 146.681
+   "s": 108.33,
+   "e": 108.405
   },
   {
    "w": "wiped",
-   "s": 146.681,
-   "e": 146.936
+   "s": 108.405,
+   "e": 108.66
   },
   {
    "w": "his",
-   "s": 146.936,
-   "e": 147.056
+   "s": 108.66,
+   "e": 108.78
   },
   {
    "w": "cheek",
-   "s": 147.056,
-   "e": 147.341
+   "s": 108.78,
+   "e": 109.065
   },
   {
    "w": "with",
-   "s": 147.341,
-   "e": 147.438
+   "s": 109.065,
+   "e": 109.163
   },
   {
    "w": "his",
-   "s": 147.438,
-   "e": 147.528
+   "s": 109.163,
+   "e": 109.253
   },
   {
    "w": "sleeve,",
-   "s": 147.528,
-   "e": 147.903
+   "s": 109.253,
+   "e": 109.627
   },
   {
    "w": "and",
-   "s": 148.286,
-   "e": 148.383
+   "s": 110.01,
+   "e": 110.107
   },
   {
    "w": "the",
-   "s": 148.383,
-   "e": 148.428
+   "s": 110.107,
+   "e": 110.152
   },
   {
    "w": "green",
-   "s": 148.428,
-   "e": 148.698
+   "s": 110.152,
+   "e": 110.422
   },
   {
    "w": "came",
-   "s": 148.698,
-   "e": 148.908
+   "s": 110.422,
+   "e": 110.632
   },
   {
    "w": "off.",
-   "s": 148.908,
-   "e": 149.185
+   "s": 110.632,
+   "e": 110.909
   },
   {
    "w": "There",
-   "s": 149.403,
-   "e": 149.485
+   "s": 111.127,
+   "e": 111.209
   },
   {
    "w": "was",
-   "s": 149.485,
-   "e": 149.575
+   "s": 111.209,
+   "e": 111.299
   },
   {
    "w": "skin",
-   "s": 149.575,
-   "e": 149.815
+   "s": 111.299,
+   "e": 111.539
   },
   {
    "w": "under",
-   "s": 149.815,
-   "e": 150.032
+   "s": 111.539,
+   "e": 111.756
   },
   {
    "w": "it.",
-   "s": 150.032,
-   "e": 150.197
+   "s": 111.756,
+   "e": 111.921
   },
   {
    "w": "Skin",
-   "s": 150.392,
-   "e": 150.647
+   "s": 112.116,
+   "e": 112.371
   },
   {
    "w": "like",
-   "s": 150.647,
-   "e": 150.834
+   "s": 112.371,
+   "e": 112.559
   },
   {
    "w": "mine.",
-   "s": 150.834,
-   "e": 151.209
+   "s": 112.559,
+   "e": 112.933
   },
   {
    "w": "\"Do",
-   "s": 151.434,
-   "e": 151.599
+   "s": 113.158,
+   "e": 113.323
   },
   {
    "w": "not",
-   "s": 151.599,
-   "e": 151.696
+   "s": 113.323,
+   "e": 113.421
   },
   {
    "w": "look",
-   "s": 151.696,
-   "e": 151.831
+   "s": 113.421,
+   "e": 113.556
   },
   {
    "w": "so",
-   "s": 151.831,
-   "e": 151.951
+   "s": 113.556,
+   "e": 113.675
   },
   {
    "w": "surprised,\"",
-   "s": 151.951,
-   "e": 152.439
+   "s": 113.675,
+   "e": 114.163
   },
   {
    "w": "he",
-   "s": 152.641,
-   "e": 152.723
+   "s": 114.365,
+   "e": 114.448
   },
   {
    "w": "said.",
-   "s": 152.723,
-   "e": 152.986
+   "s": 114.448,
+   "e": 114.71
   },
   {
    "w": "\"I",
-   "s": 153.218,
-   "e": 153.331
+   "s": 114.942,
+   "e": 115.055
   },
   {
    "w": "am",
-   "s": 153.331,
-   "e": 153.458
+   "s": 115.055,
+   "e": 115.182
   },
   {
    "w": "human",
-   "s": 153.458,
-   "e": 153.706
+   "s": 115.182,
+   "e": 115.43
   },
   {
    "w": "too.\"",
-   "s": 153.706,
-   "e": 153.968
+   "s": 115.43,
+   "e": 115.692
   },
   {
    "w": "The",
-   "s": 154.1,
-   "e": 154.16
+   "s": 115.825,
+   "e": 115.885
   },
   {
    "w": "bread.",
-   "s": 154.16,
-   "e": 154.468
+   "s": 115.885,
+   "e": 116.192
   },
   {
    "w": "The",
-   "s": 154.723,
-   "e": 154.798
+   "s": 116.447,
+   "e": 116.522
   },
   {
    "w": "lantern.",
-   "s": 154.798,
-   "e": 155.21
+   "s": 116.522,
+   "e": 116.934
   },
   {
    "w": "The",
-   "s": 155.413,
-   "e": 155.48
+   "s": 117.137,
+   "e": 117.204
   },
   {
    "w": "sneeze.",
-   "s": 155.48,
-   "e": 155.923
+   "s": 117.204,
+   "e": 117.647
   },
   {
    "w": "The",
-   "s": 156.133,
-   "e": 156.208
+   "s": 117.857,
+   "e": 117.932
   },
   {
    "w": "sun.",
-   "s": 156.208,
-   "e": 156.53
+   "s": 117.932,
+   "e": 118.254
   },
   {
    "w": "He",
-   "s": 156.867,
-   "e": 157.002
+   "s": 118.592,
+   "e": 118.727
   },
   {
    "w": "had",
-   "s": 157.002,
-   "e": 157.137
+   "s": 118.727,
+   "e": 118.862
   },
   {
    "w": "not",
-   "s": 157.137,
-   "e": 157.287
+   "s": 118.862,
+   "e": 119.012
   },
   {
    "w": "been",
-   "s": 157.287,
-   "e": 157.43
+   "s": 119.012,
+   "e": 119.154
   },
   {
    "w": "looking",
-   "s": 157.43,
-   "e": 157.685
+   "s": 119.154,
+   "e": 119.409
   },
   {
    "w": "at",
-   "s": 157.685,
-   "e": 157.767
+   "s": 119.409,
+   "e": 119.491
   },
   {
    "w": "me",
-   "s": 157.767,
-   "e": 157.895
+   "s": 119.491,
+   "e": 119.619
   },
   {
    "w": "because",
-   "s": 157.895,
-   "e": 158.172
+   "s": 119.619,
+   "e": 119.896
   },
   {
    "w": "he",
-   "s": 158.172,
-   "e": 158.262
+   "s": 119.896,
+   "e": 119.986
   },
   {
    "w": "hated",
-   "s": 158.262,
-   "e": 158.54
+   "s": 119.986,
+   "e": 120.264
   },
   {
    "w": "humans.",
-   "s": 158.54,
-   "e": 158.96
+   "s": 120.264,
+   "e": 120.684
   },
   {
    "w": "\"Who",
-   "s": 159.305,
-   "e": 159.432
+   "s": 121.029,
+   "e": 121.156
   },
   {
    "w": "do",
-   "s": 159.432,
-   "e": 159.5
+   "s": 121.156,
+   "e": 121.224
   },
   {
    "w": "you",
-   "s": 159.5,
-   "e": 159.597
+   "s": 121.224,
+   "e": 121.321
   },
   {
    "w": "think",
-   "s": 159.597,
-   "e": 159.83
+   "s": 121.321,
+   "e": 121.554
   },
   {
    "w": "carried",
-   "s": 159.83,
-   "e": 160.099
+   "s": 121.554,
+   "e": 121.824
   },
   {
    "w": "the",
-   "s": 160.099,
-   "e": 160.152
+   "s": 121.824,
+   "e": 121.876
   },
   {
    "w": "basket",
-   "s": 160.152,
-   "e": 160.527
+   "s": 121.876,
+   "e": 122.251
   },
   {
    "w": "here?\"",
-   "s": 160.527,
-   "e": 160.759
+   "s": 122.251,
+   "e": 122.484
   },
   {
    "w": "he",
-   "s": 160.924,
-   "e": 161.007
+   "s": 122.649,
+   "e": 122.731
   },
   {
    "w": "said.",
-   "s": 161.007,
-   "e": 161.292
+   "s": 122.731,
+   "e": 123.016
   },
   {
    "w": "The",
-   "s": 161.509,
-   "e": 161.577
+   "s": 123.233,
+   "e": 123.301
   },
   {
    "w": "big",
-   "s": 161.577,
-   "e": 161.742
+   "s": 123.301,
+   "e": 123.466
   },
   {
    "w": "player",
-   "s": 161.742,
-   "e": 162.004
+   "s": 123.466,
+   "e": 123.728
   },
   {
    "w": "took",
-   "s": 162.004,
-   "e": 162.207
+   "s": 123.728,
+   "e": 123.931
   },
   {
    "w": "one",
-   "s": 162.207,
-   "e": 162.357
+   "s": 123.931,
+   "e": 124.081
   },
   {
    "w": "step",
-   "s": 162.357,
-   "e": 162.574
+   "s": 124.081,
+   "e": 124.298
   },
   {
    "w": "back.",
-   "s": 162.574,
-   "e": 162.882
+   "s": 124.298,
+   "e": 124.606
   },
   {
    "w": "He",
-   "s": 163.077,
-   "e": 163.204
+   "s": 124.801,
+   "e": 124.928
   },
   {
    "w": "knew",
-   "s": 163.204,
-   "e": 163.436
+   "s": 124.928,
+   "e": 125.161
   },
   {
    "w": "that",
-   "s": 163.436,
-   "e": 163.594
+   "s": 125.161,
+   "e": 125.318
   },
   {
    "w": "face.",
-   "s": 163.594,
-   "e": 163.954
+   "s": 125.318,
+   "e": 125.678
   },
   {
    "w": "\"You,\"",
-   "s": 164.164,
-   "e": 164.531
+   "s": 125.888,
+   "e": 126.255
   },
   {
    "w": "he",
-   "s": 164.741,
-   "e": 164.854
+   "s": 126.465,
+   "e": 126.578
   },
   {
    "w": "said.",
-   "s": 164.854,
-   "e": 165.131
+   "s": 126.578,
+   "e": 126.855
   },
   {
    "w": "\"The",
-   "s": 165.439,
-   "e": 165.514
+   "s": 127.163,
+   "e": 127.238
   },
   {
    "w": "player",
-   "s": 165.514,
-   "e": 165.791
+   "s": 127.238,
+   "e": 127.515
   },
   {
    "w": "who",
-   "s": 165.791,
-   "e": 165.911
+   "s": 127.515,
+   "e": 127.635
   },
   {
    "w": "ran",
-   "s": 165.911,
-   "e": 166.054
+   "s": 127.635,
+   "e": 127.778
   },
   {
    "w": "away",
-   "s": 166.054,
-   "e": 166.294
+   "s": 127.778,
+   "e": 128.018
   },
   {
    "w": "to",
-   "s": 166.294,
-   "e": 166.391
+   "s": 128.018,
+   "e": 128.115
   },
   {
    "w": "live",
-   "s": 166.391,
-   "e": 166.549
+   "s": 128.115,
+   "e": 128.273
   },
   {
    "w": "with",
-   "s": 166.549,
-   "e": 166.646
+   "s": 128.273,
+   "e": 128.37
   },
   {
    "w": "monsters.\"",
-   "s": 166.646,
-   "e": 167.126
+   "s": 128.37,
+   "e": 128.85
   },
   {
    "w": "They",
-   "s": 167.441,
-   "e": 167.553
+   "s": 129.165,
+   "e": 129.278
   },
   {
    "w": "had",
-   "s": 167.553,
-   "e": 167.681
+   "s": 129.278,
+   "e": 129.405
   },
   {
    "w": "not",
-   "s": 167.681,
-   "e": 167.868
+   "s": 129.405,
+   "e": 129.592
   },
   {
    "w": "come",
-   "s": 167.868,
-   "e": 168.063
+   "s": 129.592,
+   "e": 129.787
   },
   {
    "w": "for",
-   "s": 168.063,
-   "e": 168.146
+   "s": 129.787,
+   "e": 129.87
   },
   {
    "w": "the",
-   "s": 168.146,
-   "e": 168.213
+   "s": 129.87,
+   "e": 129.937
   },
   {
    "w": "village.",
-   "s": 168.213,
-   "e": 168.618
+   "s": 129.937,
+   "e": 130.342
   },
   {
    "w": "They",
-   "s": 168.828,
-   "e": 168.986
+   "s": 130.552,
+   "e": 130.71
   },
   {
    "w": "had",
-   "s": 168.986,
-   "e": 169.121
+   "s": 130.71,
+   "e": 130.845
   },
   {
    "w": "come",
-   "s": 169.121,
-   "e": 169.293
+   "s": 130.845,
+   "e": 131.017
   },
   {
    "w": "for",
-   "s": 169.293,
-   "e": 169.398
+   "s": 131.017,
+   "e": 131.122
   },
   {
    "w": "him.",
-   "s": 169.398,
-   "e": 169.661
+   "s": 131.122,
+   "e": 131.385
   },
   {
    "w": "Every",
-   "s": 169.793,
-   "e": 170.04
+   "s": 131.517,
+   "e": 131.765
   },
   {
    "w": "player",
-   "s": 170.04,
-   "e": 170.378
+   "s": 131.765,
+   "e": 132.103
   },
   {
    "w": "was",
-   "s": 170.378,
-   "e": 170.513
+   "s": 132.103,
+   "e": 132.238
   },
   {
    "w": "staring",
-   "s": 170.513,
-   "e": 170.858
+   "s": 132.238,
+   "e": 132.584
   },
   {
    "w": "at",
-   "s": 170.858,
-   "e": 170.963
+   "s": 132.584,
+   "e": 132.689
   },
   {
    "w": "Mo.",
-   "s": 170.963,
-   "e": 171.248
+   "s": 132.689,
+   "e": 132.974
   },
   {
    "w": "Not",
-   "s": 171.472,
-   "e": 171.667
+   "s": 133.2,
+   "e": 133.395
   },
   {
    "w": "one",
-   "s": 171.667,
-   "e": 171.892
+   "s": 133.395,
+   "e": 133.62
   },
   {
    "w": "of",
-   "s": 171.892,
-   "e": 171.982
+   "s": 133.62,
+   "e": 133.71
   },
   {
    "w": "them",
-   "s": 171.982,
-   "e": 172.095
+   "s": 133.71,
+   "e": 133.823
   },
   {
    "w": "looked",
-   "s": 172.095,
-   "e": 172.245
+   "s": 133.823,
+   "e": 133.973
   },
   {
    "w": "behind.",
-   "s": 172.245,
-   "e": 172.65
-  },
-  {
-   "w": "My",
-   "s": 172.89,
-   "e": 173.017
-  },
-  {
-   "w": "dad",
-   "s": 173.017,
-   "e": 173.257
-  },
-  {
-   "w": "tapped",
-   "s": 173.257,
-   "e": 173.549
-  },
-  {
-   "w": "one",
-   "s": 173.549,
-   "e": 173.684
-  },
-  {
-   "w": "on",
-   "s": 173.684,
-   "e": 173.744
-  },
-  {
-   "w": "the",
-   "s": 173.744,
-   "e": 173.789
-  },
-  {
-   "w": "shoulder.",
-   "s": 173.789,
-   "e": 174.119
-  },
-  {
-   "w": "With",
-   "s": 174.404,
-   "e": 174.539
-  },
-  {
-   "w": "the",
-   "s": 174.539,
-   "e": 174.651
-  },
-  {
-   "w": "arm",
-   "s": 174.651,
-   "e": 174.854
-  },
-  {
-   "w": "he",
-   "s": 174.854,
-   "e": 174.959
-  },
-  {
-   "w": "was",
-   "s": 174.959,
-   "e": 175.101
-  },
-  {
-   "w": "not",
-   "s": 175.101,
-   "e": 175.266
-  },
-  {
-   "w": "wearing.",
-   "s": 175.266,
-   "e": 175.604
-  },
-  {
-   "w": "The",
-   "s": 175.851,
-   "e": 175.911
-  },
-  {
-   "w": "bus",
-   "s": 175.911,
-   "e": 176.188
-  },
-  {
-   "w": "rolled",
-   "s": 176.188,
-   "e": 176.458
-  },
-  {
-   "w": "through",
-   "s": 176.458,
-   "e": 176.676
-  },
-  {
-   "w": "the",
-   "s": 176.676,
-   "e": 176.728
-  },
-  {
-   "w": "rest",
-   "s": 176.728,
-   "e": 177.013
-  },
-  {
-   "w": "like",
-   "s": 177.013,
-   "e": 177.141
-  },
-  {
-   "w": "a",
-   "s": 177.141,
-   "e": 177.171
-  },
-  {
-   "w": "bowling",
-   "s": 177.171,
-   "e": 177.448
-  },
-  {
-   "w": "ball.",
-   "s": 177.448,
-   "e": 177.65
+   "s": 133.973,
+   "e": 134.379
   },
   {
    "w": "And",
-   "s": 177.89,
-   "e": 178.01
+   "s": 134.604,
+   "e": 134.739
   },
   {
    "w": "Hiss",
-   "s": 178.01,
-   "e": 178.355
+   "s": 134.739,
+   "e": 135.085
   },
   {
    "w": "only",
-   "s": 178.355,
-   "e": 178.595
+   "s": 135.085,
+   "e": 135.325
   },
   {
    "w": "had",
-   "s": 178.595,
-   "e": 178.73
+   "s": 135.325,
+   "e": 135.46
   },
   {
    "w": "to",
-   "s": 178.73,
-   "e": 178.79
+   "s": 135.46,
+   "e": 135.52
   },
   {
    "w": "say",
-   "s": 178.79,
-   "e": 178.97
+   "s": 135.52,
+   "e": 135.7
   },
   {
    "w": "one",
-   "s": 178.97,
-   "e": 179.21
+   "s": 135.7,
+   "e": 135.933
   },
   {
    "w": "word.",
-   "s": 179.21,
-   "e": 179.615
+   "s": 135.933,
+   "e": 136.339
   },
   {
    "w": "\"Hug.\"",
-   "s": 179.922,
-   "e": 180.275
+   "s": 136.654,
+   "e": 137.007
   },
   {
    "w": "They",
-   "s": 180.56,
-   "e": 180.68
+   "s": 137.293,
+   "e": 137.413
   },
   {
    "w": "dropped",
-   "s": 180.68,
-   "e": 180.912
+   "s": 137.413,
+   "e": 137.646
   },
   {
    "w": "their",
-   "s": 180.912,
-   "e": 181.024
+   "s": 137.646,
+   "e": 137.766
   },
   {
    "w": "swords",
-   "s": 181.024,
-   "e": 181.362
+   "s": 137.766,
+   "e": 138.089
   },
   {
    "w": "and",
-   "s": 181.362,
-   "e": 181.452
+   "s": 138.089,
+   "e": 138.171
   },
   {
    "w": "ran",
-   "s": 181.452,
-   "e": 181.624
+   "s": 138.171,
+   "e": 138.359
   },
   {
    "w": "for",
-   "s": 181.624,
-   "e": 181.707
+   "s": 138.359,
+   "e": 138.442
   },
   {
    "w": "the",
-   "s": 181.707,
-   "e": 181.774
+   "s": 138.442,
+   "e": 138.509
   },
   {
    "w": "hill.",
-   "s": 181.774,
-   "e": 182.052
+   "s": 138.509,
+   "e": 138.787
   },
   {
    "w": "Then",
-   "s": 182.177,
-   "e": 182.447
+   "s": 138.905,
+   "e": 139.182
   },
   {
    "w": "the",
-   "s": 182.447,
-   "e": 182.522
+   "s": 139.182,
+   "e": 139.257
   },
   {
    "w": "whole",
-   "s": 182.522,
-   "e": 182.739
+   "s": 139.257,
+   "e": 139.475
   },
   {
    "w": "village",
-   "s": 182.739,
-   "e": 182.987
+   "s": 139.475,
+   "e": 139.722
   },
   {
    "w": "came",
-   "s": 182.987,
-   "e": 183.189
+   "s": 139.722,
+   "e": 139.925
   },
   {
    "w": "out.",
-   "s": 183.189,
-   "e": 183.414
+   "s": 139.925,
+   "e": 140.15
   },
   {
    "w": "Every",
-   "s": 183.677,
-   "e": 183.947
+   "s": 140.413,
+   "e": 140.683
   },
   {
    "w": "zombie.",
-   "s": 183.947,
-   "e": 184.322
+   "s": 140.683,
+   "e": 141.058
   },
   {
    "w": "Every",
-   "s": 184.509,
-   "e": 184.719
+   "s": 141.245,
+   "e": 141.455
   },
   {
    "w": "skeleton.",
-   "s": 184.719,
-   "e": 185.169
+   "s": 141.455,
+   "e": 141.905
   },
   {
    "w": "Every",
-   "s": 185.319,
-   "e": 185.612
+   "s": 142.055,
+   "e": 142.348
   },
   {
    "w": "kid",
-   "s": 185.612,
-   "e": 185.837
+   "s": 142.348,
+   "e": 142.573
   },
   {
    "w": "from",
-   "s": 185.837,
-   "e": 185.987
+   "s": 142.573,
+   "e": 142.723
   },
   {
    "w": "my",
-   "s": 185.987,
-   "e": 186.092
+   "s": 142.723,
+   "e": 142.828
   },
   {
    "w": "school.",
-   "s": 186.092,
-   "e": 186.452
+   "s": 142.828,
+   "e": 143.188
   },
   {
    "w": "Mo",
-   "s": 186.962,
-   "e": 187.112
+   "s": 143.698,
+   "e": 143.848
   },
   {
    "w": "stood",
-   "s": 187.112,
-   "e": 187.367
+   "s": 143.848,
+   "e": 144.103
   },
   {
    "w": "in",
-   "s": 187.367,
-   "e": 187.457
+   "s": 144.103,
+   "e": 144.194
   },
   {
    "w": "the",
-   "s": 187.457,
-   "e": 187.502
+   "s": 144.194,
+   "e": 144.239
   },
   {
    "w": "middle,",
-   "s": 187.502,
-   "e": 187.825
+   "s": 144.239,
+   "e": 144.561
   },
   {
    "w": "with",
-   "s": 187.93,
-   "e": 188.035
+   "s": 144.666,
+   "e": 144.771
   },
   {
    "w": "his",
-   "s": 188.035,
-   "e": 188.147
+   "s": 144.771,
+   "e": 144.884
   },
   {
    "w": "hat",
-   "s": 188.147,
-   "e": 188.402
+   "s": 144.884,
+   "e": 145.139
   },
   {
    "w": "in",
-   "s": 188.402,
-   "e": 188.447
+   "s": 145.139,
+   "e": 145.184
   },
   {
    "w": "his",
-   "s": 188.447,
-   "e": 188.552
+   "s": 145.184,
+   "e": 145.289
   },
   {
    "w": "hands.",
-   "s": 188.552,
-   "e": 188.965
+   "s": 145.289,
+   "e": 145.701
   },
   {
    "w": "He",
-   "s": 189.138,
-   "e": 189.228
+   "s": 145.874,
+   "e": 145.964
   },
   {
    "w": "did",
-   "s": 189.228,
-   "e": 189.348
+   "s": 145.964,
+   "e": 146.084
   },
   {
    "w": "not",
-   "s": 189.348,
-   "e": 189.483
+   "s": 146.084,
+   "e": 146.219
   },
   {
    "w": "look",
-   "s": 189.483,
-   "e": 189.64
+   "s": 146.219,
+   "e": 146.377
   },
   {
    "w": "up.",
-   "s": 189.64,
-   "e": 189.85
-  },
-  {
-   "w": "He",
-   "s": 190.165,
-   "e": 190.263
-  },
-  {
-   "w": "had",
-   "s": 190.263,
-   "e": 190.353
-  },
-  {
-   "w": "lied",
-   "s": 190.353,
-   "e": 190.585
-  },
-  {
-   "w": "to",
-   "s": 190.585,
-   "e": 190.66
-  },
-  {
-   "w": "them",
-   "s": 190.66,
-   "e": 190.788
-  },
-  {
-   "w": "for",
-   "s": 190.788,
-   "e": 190.893
-  },
-  {
-   "w": "years.",
-   "s": 190.893,
-   "e": 191.335
-  },
-  {
-   "w": "He",
-   "s": 191.53,
-   "e": 191.665
-  },
-  {
-   "w": "thought",
-   "s": 191.665,
-   "e": 191.868
-  },
-  {
-   "w": "they",
-   "s": 191.868,
-   "e": 191.973
-  },
-  {
-   "w": "would",
-   "s": 191.973,
-   "e": 192.07
-  },
-  {
-   "w": "hate",
-   "s": 192.07,
-   "e": 192.258
-  },
-  {
-   "w": "him",
-   "s": 192.258,
-   "e": 192.341
-  },
-  {
-   "w": "too.",
-   "s": 192.341,
-   "e": 192.693
+   "s": 146.377,
+   "e": 146.587
   },
   {
    "w": "My",
-   "s": 192.903,
-   "e": 193.016
+   "s": 146.864,
+   "e": 146.962
   },
   {
    "w": "mum",
-   "s": 193.016,
-   "e": 193.248
+   "s": 146.962,
+   "e": 147.194
   },
   {
    "w": "walked",
-   "s": 193.248,
-   "e": 193.473
+   "s": 147.194,
+   "e": 147.419
   },
   {
    "w": "up",
-   "s": 193.473,
-   "e": 193.571
+   "s": 147.419,
+   "e": 147.517
   },
   {
    "w": "to",
-   "s": 193.571,
-   "e": 193.653
+   "s": 147.517,
+   "e": 147.599
   },
   {
    "w": "him.",
-   "s": 193.653,
-   "e": 193.893
+   "s": 147.599,
+   "e": 147.839
   },
   {
    "w": "And",
-   "s": 194.246,
-   "e": 194.486
+   "s": 148.192,
+   "e": 148.432
   },
   {
    "w": "put",
-   "s": 194.486,
-   "e": 194.636
+   "s": 148.432,
+   "e": 148.582
   },
   {
    "w": "the",
-   "s": 194.636,
-   "e": 194.696
+   "s": 148.582,
+   "e": 148.642
   },
   {
    "w": "hat",
-   "s": 194.696,
-   "e": 194.913
+   "s": 148.642,
+   "e": 148.837
   },
   {
    "w": "back",
-   "s": 194.913,
-   "e": 195.108
+   "s": 148.837,
+   "e": 149.055
   },
   {
    "w": "on",
-   "s": 195.108,
-   "e": 195.168
+   "s": 149.055,
+   "e": 149.115
   },
   {
    "w": "his",
-   "s": 195.168,
-   "e": 195.288
+   "s": 149.115,
+   "e": 149.235
   },
   {
    "w": "head.",
-   "s": 195.288,
-   "e": 195.536
+   "s": 149.235,
+   "e": 149.482
   },
   {
    "w": "\"We",
-   "s": 196.121,
-   "e": 196.219
+   "s": 150.067,
+   "e": 150.165
   },
   {
    "w": "always",
-   "s": 196.219,
-   "e": 196.496
+   "s": 150.165,
+   "e": 150.443
   },
   {
    "w": "knew,\"",
-   "s": 196.496,
-   "e": 196.811
+   "s": 150.443,
+   "e": 150.758
   },
   {
    "w": "she",
-   "s": 196.931,
-   "e": 197.051
+   "s": 150.878,
+   "e": 150.998
   },
   {
    "w": "said.",
-   "s": 197.051,
-   "e": 197.314
+   "s": 150.998,
+   "e": 151.26
   },
   {
    "w": "\"Zombies",
-   "s": 197.674,
-   "e": 198.101
+   "s": 151.62,
+   "e": 152.048
   },
   {
    "w": "do",
-   "s": 198.101,
-   "e": 198.206
+   "s": 152.048,
+   "e": 152.153
   },
   {
    "w": "not",
-   "s": 198.206,
-   "e": 198.394
+   "s": 152.153,
+   "e": 152.355
   },
   {
    "w": "eat",
-   "s": 198.394,
-   "e": 198.514
+   "s": 152.355,
+   "e": 152.461
   },
   {
    "w": "bread.\"",
-   "s": 198.514,
-   "e": 198.836
+   "s": 152.461,
+   "e": 152.783
   },
   {
    "w": "Then",
-   "s": 198.954,
-   "e": 199.292
+   "s": 152.901,
+   "e": 153.238
   },
   {
    "w": "something",
-   "s": 199.292,
-   "e": 199.652
+   "s": 153.238,
+   "e": 153.598
   },
   {
    "w": "blew",
-   "s": 199.652,
-   "e": 199.862
+   "s": 153.598,
+   "e": 153.809
   },
   {
    "w": "up",
-   "s": 199.862,
-   "e": 199.967
+   "s": 153.809,
+   "e": 153.914
   },
   {
    "w": "in",
-   "s": 199.967,
-   "e": 200.034
+   "s": 153.914,
+   "e": 153.981
   },
   {
    "w": "the",
-   "s": 200.034,
-   "e": 200.087
+   "s": 153.981,
+   "e": 154.034
   },
   {
    "w": "forest.",
-   "s": 200.087,
-   "e": 200.537
+   "s": 154.034,
+   "e": 154.484
   },
   {
    "w": "Players.",
-   "s": 200.74,
-   "e": 201.22
+   "s": 154.687,
+   "e": 155.167
   },
   {
    "w": "Not",
-   "s": 201.46,
-   "e": 201.663
+   "s": 155.407,
+   "e": 155.609
   },
   {
    "w": "ten",
-   "s": 201.663,
-   "e": 201.843
+   "s": 155.609,
+   "e": 155.79
   },
   {
    "w": "of",
-   "s": 201.843,
-   "e": 201.925
+   "s": 155.79,
+   "e": 155.872
   },
   {
    "w": "them.",
-   "s": 201.925,
-   "e": 202.106
+   "s": 155.872,
+   "e": 156.052
   },
   {
    "w": "Hundreds,",
-   "s": 202.346,
-   "e": 202.803
+   "s": 156.292,
+   "e": 156.75
   },
   {
    "w": "pouring",
-   "s": 202.969,
-   "e": 203.306
+   "s": 156.915,
+   "e": 157.253
   },
   {
    "w": "out",
-   "s": 203.306,
-   "e": 203.426
+   "s": 157.253,
+   "e": 157.373
   },
   {
    "w": "of",
-   "s": 203.426,
-   "e": 203.486
+   "s": 157.373,
+   "e": 157.433
   },
   {
    "w": "the",
-   "s": 203.486,
-   "e": 203.546
+   "s": 157.433,
+   "e": 157.493
   },
   {
    "w": "trees.",
-   "s": 203.546,
-   "e": 203.997
+   "s": 157.493,
+   "e": 157.943
   },
   {
    "w": "\"Run,\"",
-   "s": 204.282,
-   "e": 204.627
+   "s": 158.228,
+   "e": 158.573
   },
   {
    "w": "Mo",
-   "s": 204.935,
-   "e": 205.062
+   "s": 158.881,
+   "e": 159.009
   },
   {
    "w": "said.",
-   "s": 205.062,
-   "e": 205.347
+   "s": 159.009,
+   "e": 159.294
   },
   {
    "w": "\"East,",
-   "s": 205.58,
-   "e": 205.963
+   "s": 159.526,
+   "e": 159.909
   },
   {
    "w": "past",
-   "s": 206.113,
-   "e": 206.39
+   "s": 160.059,
+   "e": 160.337
   },
   {
    "w": "the",
-   "s": 206.39,
-   "e": 206.458
+   "s": 160.337,
+   "e": 160.404
   },
   {
    "w": "pond.",
-   "s": 206.458,
-   "e": 206.825
+   "s": 160.404,
+   "e": 160.772
   },
   {
    "w": "I",
-   "s": 207.051,
-   "e": 207.133
+   "s": 160.997,
+   "e": 161.08
   },
   {
    "w": "dug",
-   "s": 207.133,
-   "e": 207.328
+   "s": 161.08,
+   "e": 161.275
   },
   {
    "w": "a",
-   "s": 207.328,
-   "e": 207.358
+   "s": 161.275,
+   "e": 161.305
   },
   {
    "w": "hideout",
-   "s": 207.358,
-   "e": 207.718
+   "s": 161.305,
+   "e": 161.665
   },
   {
    "w": "for",
-   "s": 207.718,
-   "e": 207.884
+   "s": 161.665,
+   "e": 161.83
   },
   {
    "w": "you,",
-   "s": 207.884,
-   "e": 208.079
+   "s": 161.83,
+   "e": 162.025
   },
   {
    "w": "years",
-   "s": 208.244,
-   "e": 208.566
+   "s": 162.19,
+   "e": 162.513
   },
   {
    "w": "ago.\"",
-   "s": 208.566,
-   "e": 208.769
+   "s": 162.513,
+   "e": 162.716
   },
   {
    "w": "So",
-   "s": 209.197,
-   "e": 209.384
+   "s": 163.143,
+   "e": 163.331
   },
   {
    "w": "we",
-   "s": 209.384,
-   "e": 209.489
+   "s": 163.331,
+   "e": 163.436
   },
   {
    "w": "ran.",
-   "s": 209.489,
-   "e": 209.812
+   "s": 163.436,
+   "e": 163.759
   },
   {
    "w": "Everybody",
-   "s": 210.052,
-   "e": 210.412
+   "s": 163.999,
+   "e": 164.359
   },
   {
    "w": "ran.",
-   "s": 210.412,
-   "e": 210.66
+   "s": 164.359,
+   "e": 164.607
   },
   {
    "w": "At",
-   "s": 210.8,
-   "e": 210.943
+   "s": 164.747,
+   "e": 164.889
   },
   {
    "w": "the",
-   "s": 210.943,
-   "e": 210.995
+   "s": 164.889,
+   "e": 164.942
   },
   {
    "w": "last",
-   "s": 210.995,
-   "e": 211.258
+   "s": 164.942,
+   "e": 165.204
   },
   {
    "w": "house,",
-   "s": 211.258,
-   "e": 211.595
+   "s": 165.204,
+   "e": 165.542
   },
   {
    "w": "I",
-   "s": 211.783,
-   "e": 211.873
+   "s": 165.729,
+   "e": 165.819
   },
   {
    "w": "looked",
-   "s": 211.873,
-   "e": 212.083
+   "s": 165.819,
+   "e": 166.03
   },
   {
    "w": "back.",
-   "s": 212.083,
-   "e": 212.398
+   "s": 166.03,
+   "e": 166.345
   },
   {
    "w": "Mo",
-   "s": 212.766,
-   "e": 213.013
+   "s": 166.712,
+   "e": 166.96
   },
   {
    "w": "was",
-   "s": 213.013,
-   "e": 213.171
+   "s": 166.96,
+   "e": 167.117
   },
   {
    "w": "not",
-   "s": 213.171,
-   "e": 213.298
+   "s": 167.117,
+   "e": 167.245
   },
   {
    "w": "with",
-   "s": 213.298,
-   "e": 213.418
+   "s": 167.245,
+   "e": 167.365
   },
   {
    "w": "us.",
-   "s": 213.418,
-   "e": 213.651
+   "s": 167.365,
+   "e": 167.598
   },
   {
    "w": "He",
-   "s": 213.929,
-   "e": 214.011
+   "s": 167.875,
+   "e": 167.958
   },
   {
    "w": "was",
-   "s": 214.011,
-   "e": 214.131
+   "s": 167.958,
+   "e": 168.078
   },
   {
    "w": "standing",
-   "s": 214.131,
-   "e": 214.484
+   "s": 168.078,
+   "e": 168.43
   },
   {
    "w": "in",
-   "s": 214.484,
-   "e": 214.551
+   "s": 168.43,
+   "e": 168.498
   },
   {
    "w": "the",
-   "s": 214.551,
-   "e": 214.596
+   "s": 168.498,
+   "e": 168.543
   },
   {
    "w": "street.",
-   "s": 214.596,
-   "e": 214.986
+   "s": 168.543,
+   "e": 168.933
   },
   {
    "w": "Alone.",
-   "s": 215.242,
-   "e": 215.647
+   "s": 169.188,
+   "e": 169.593
   },
   {
    "w": "He",
-   "s": 215.887,
-   "e": 215.969
+   "s": 169.833,
+   "e": 169.916
   },
   {
    "w": "put",
-   "s": 215.969,
-   "e": 216.157
+   "s": 169.916,
+   "e": 170.104
   },
   {
    "w": "on",
-   "s": 216.157,
-   "e": 216.292
+   "s": 170.104,
+   "e": 170.239
   },
   {
    "w": "an",
-   "s": 216.292,
-   "e": 216.359
+   "s": 170.239,
+   "e": 170.306
   },
   {
    "w": "iron",
-   "s": 216.359,
-   "e": 216.592
+   "s": 170.306,
+   "e": 170.539
   },
   {
    "w": "helmet.",
-   "s": 216.592,
-   "e": 216.952
+   "s": 170.539,
+   "e": 170.899
   },
   {
    "w": "An",
-   "s": 217.125,
-   "e": 217.222
+   "s": 171.071,
+   "e": 171.169
   },
   {
    "w": "iron",
-   "s": 217.222,
-   "e": 217.47
+   "s": 171.169,
+   "e": 171.416
   },
   {
    "w": "chestplate.",
-   "s": 217.47,
-   "e": 217.927
+   "s": 171.416,
+   "e": 171.874
   },
   {
    "w": "And",
-   "s": 218.1,
-   "e": 218.205
+   "s": 172.047,
+   "e": 172.152
   },
   {
    "w": "he",
-   "s": 218.205,
-   "e": 218.28
+   "s": 172.152,
+   "e": 172.227
   },
   {
    "w": "drew",
-   "s": 218.28,
-   "e": 218.498
+   "s": 172.227,
+   "e": 172.444
   },
   {
    "w": "a",
-   "s": 218.498,
-   "e": 218.528
+   "s": 172.444,
+   "e": 172.474
   },
   {
    "w": "sword.",
-   "s": 218.528,
-   "e": 218.888
+   "s": 172.474,
+   "e": 172.834
   },
   {
    "w": "Like",
-   "s": 219.27,
-   "e": 219.488
+   "s": 173.217,
+   "e": 173.435
   },
   {
    "w": "and",
-   "s": 219.488,
-   "e": 219.631
+   "s": 173.435,
+   "e": 173.577
   },
   {
    "w": "subscribe",
-   "s": 219.631,
-   "e": 220.081
+   "s": 173.577,
+   "e": 174.027
   },
   {
    "w": "for",
-   "s": 220.081,
-   "e": 220.163
+   "s": 174.027,
+   "e": 174.11
   },
   {
    "w": "part",
-   "s": 220.163,
-   "e": 220.373
+   "s": 174.11,
+   "e": 174.32
   },
   {
    "w": "two.",
-   "s": 220.373,
-   "e": 220.591
+   "s": 174.32,
+   "e": 174.538
   }
  ]
 }

@@ -56,68 +56,6 @@ export const scene2 = storyScene(timing, {
       },
     },
     {
-      cue: "3.stew",
-      ...cam.push({ on: [-3.6, 1.0, -1.9], dist: 3.9, to: 3.3, yaw: 14, pitch: 8, fov: 40 }),
-      zone: ZONE.day,
-      look: DAY,
-      note: "Dinner under the hall. Mum and Dad have their faces in their bowls. He holds his at arm's length, green steam coming off it, head turned right away.",
-      stage: (t) => {
-        const chew = Math.abs(Math.sin(t * 7));
-        const away = ease(ramp(t, wordAt("3.stew", "could") - 0.1, wordAt("3.stew", "smell")));
-        return (
-          <>
-            <Block position={[-3.6, 0.4, -2.3]} size={[2.6, 0.12, 0.9]} color="#6b4a2a" />
-            {[-1.1, 1.1].map((x) => (
-              <Block key={x} position={[-3.6 + x, 0.2, -2.3]} size={[0.14, 0.4, 0.7]} color="#5a3d22" />
-            ))}
-            <Stew position={[-4.4, 0.46, -2.2]} />
-            <Stew position={[-2.8, 0.46, -2.2]} />
-            <Mum position={[-4.4, -0.5, -2.9]} lean={0.35 + 0.15 * chew} nod={0.4} mood="happy" />
-            <Dad position={[-2.8, -0.5, -2.9]} lean={0.35 + 0.15 * (1 - chew)} nod={0.4} mood="happy" rattle={0.3} />
-            <Hero position={[-3.6, 0, -1.2]} rotationY={0.1} animation="reach" face={away > 0.3 ? "ouch" : "uneasy"} headYaw={-1.0 * away} headPitch={-0.2 * away}>
-              <Stew position={[0, 0.02, 0.12]} scale={1.2} />
-            </Hero>
-            <Puffs position={[-3.25, 1.05, -0.6]} color="#9bc46a" count={7} rise={1.0} spread={0.2} size={0.1} speed={0.9} opacity={0.8} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "3.dark",
-      ...cam.push({ on: [9.5, 1.0, -4.0], dist: 4.8, to: 4.2, yaw: 30, pitch: 8, fov: 42 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "Night. Mum and Dad walk straight in through the door. He follows, arms out in front of him, and on 'doors' walks flat into the wall beside it and bounces off.",
-      impacts: [{ at: 1.55, amp: 0.08, dur: 0.35 }],
-      stage: (t) => {
-        const hit = wordAt("3.dark", "doors") - 0.1;
-        const go = ramp(t, 0.2, hit);
-        const back = t > hit ? Math.min(0.5, (t - hit) * 1.6) : 0;
-        const z = -2.3 - 2.25 * go + back;
-        return (
-          <>
-            <Mum position={[8.7, 0, -3.6 - 1.6 * ease(ramp(t, 0, 0.8))]} rotationY={NORTH} walk={t * 1.6} scale={t > 0.8 ? 0 : 1} />
-            <Hero position={[9.9, 0, z]} rotationY={NORTH} animation={t < hit ? "walk" : "stagger"} arms={t < hit ? "reach" : undefined} animDistance={2.25 * go + back} face={t < hit ? "uneasy" : "dizzy"} />
-            <Bits position={[9.9, 1.2, -4.75]} t={t - hit} color="#ffe27a" count={8} power={2.2} toward={[0, 0.6, 1]} />
-            <DustRing position={[9.9, 0.05, -4.6]} t={t - hit} size={0.9} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "3.one",
-      ...cam.push({ on: faceOf([9.9, 0, -4.0]), dist: 2.2, to: 1.6, yaw: 20, pitch: 2, fov: 36 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "His face, rubbing his nose, alone in the dark outside his own door.",
-      stage: (t) => (
-        <>
-          <Hero position={[9.9, 0, -4.0]} rotationY={0.4} animation="idle" arms="reachUp" face="frown" headPitch={0.15 + jolt(t, 0.2, 0.3)} />
-          <Fill on={faceOf([9.9, 0, -4.0])} yaw={20} />
-        </>
-      ),
-    },
-    {
       cue: "4.mo",
       ...cam.push({ on: manFace(MO_DOOR), dist: 7.5, to: 3.2, yaw: -38, pitch: 2, fov: 40 }),
       ease: "outExpo",
@@ -135,23 +73,6 @@ export const scene2 = storyScene(timing, {
       stage: (t) => {
         const up = ease(ramp(t, wordAt("4.hat", "scarf") - 0.2, wordAt("4.hat", "scarf") + 0.15));
         return <Mo position={MO_DOOR} rotationY={-0.5} animation="idle" arms={up > 0 && up < 1 ? "reachUp" : undefined} scarf={0.45 + 0.55 * up} face="neutral" headPitch={-0.1 * up} gaze={0} />;
-      },
-    },
-    {
-      cue: "4.alone",
-      ...cam.push({ on: [21.6, 1.3, -4.0], dist: 4.5, to: 9.5, yaw: -40, pitch: 7, fov: 42 }),
-      zone: ZONE.day,
-      look: DAY,
-      note: "Back down the street, fast: his house is the last one and there is nobody near it. The boy waves from far off. On 'word' a bubble with three dots pops over Mo and that is all.",
-      stage: (t) => {
-        const word = wordAt("4.alone", "never");
-        return (
-          <>
-            <Mo position={MO_DOOR} rotationY={-1.1} animation="idle" face="neutral" gaze={0} />
-            <Hero position={[16.8, hop(t, 0.9, 0.2, 0.3), -0.6]} rotationY={1.3} animation="wave" face="smile" />
-            <Bubble text="..." position={[21.9, 2.75, -4.2]} rotationY={-0.7} scale={0.8 * pop(t, word)} tail={1} />
-          </>
-        );
       },
     },
     {

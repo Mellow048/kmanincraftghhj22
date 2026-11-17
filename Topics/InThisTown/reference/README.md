@@ -1,12 +1,29 @@
 # The reference folder: what a good film of this topic is
 
-Open this before you write a film of this topic. Four folders here are films of ours that the owner approved, each
-with its **source code** and its **mp4**. Two are attempts he rejected. One is the video the format came from.
+Open this before you write a film of this topic. The folders in the first table are films of ours that the owner
+approved, each with its **source code** and its **mp4**. **For a fight or a chase, open
+[`robot-at-18/`](robot-at-18/README.md) first. For how fast to tell a story and how to state the reason for the
+town's rule, open [`iron-golem/`](iron-golem/README.md).** Two are attempts he rejected. One is the video the format
+came from.
 
 The owner, 2026-11-13, when he asked for the films to be kept here:
 
 > "every single one u made is good, put them into the reference + the mp4 in main branch so that other agents know
 > how to make a good short"
+
+And again that night, after the robot film's fight:
+
+> "make the other shorts that u made go into the reference including this robot short. source code + mp4 so other
+> agents can see how to make a good fight scenes!"
+
+And 2026-11-15, of the snow golem film:
+
+> "this is a good short. souce code + mp4 put it in there for other agents to see how to make a good short."
+
+And 2026-11-15, of the cats and dogs film:
+
+> "this is actually really funny, i love this please put it in the reference in the main branch, and for the cat and
+> dog skins please put it on the templates for other agents to use if i want something new"
 
 ## Films the owner approved: build like these
 
@@ -17,18 +34,54 @@ The owner, 2026-11-13, when he asked for the films to be kept here:
 | [`monster-egg/`](monster-egg/README.md) | *In This Town: The Monster Egg* | Full film. 2:57, 18 beats, 93 shots, 746 words. Day, night and a lava lake | "every single one u made is good" | The **long cut**: all 18 beats of `SCRIPT.md`, and three places in one world. **It has a voice and no other sound.** Do not copy that |
 | [`superpower-at-18/`](superpower-at-18/README.md) | *In This Town, Everyone Got a Superpower at 18* (part one) | Full film. 2:48, 18 beats, 90 shots, 710 words. Full sound | "wow i love it, i love how u made the short" | The long cut **with** sound. A story the owner outlined himself, and the ending he threw out first |
 | [`superpower-at-18-part-2/`](superpower-at-18-part-2/README.md) | *In This Town, Everyone Got a Superpower at 18, Part 2* | Full film. 2:49, 18 beats, 83 shots, 713 words. Full sound, the owner's music track | "a banger and a massive upgrade! i totally felt like i was watching peak!" | **Fast action.** Why its first render was rejected (no motion, "it just teleports to B") and the eight things that fixed it. A sequel that picks up on the second part one stopped |
-| [`monster-village/`](monster-village/README.md) | *In This Town, I Live in a Monster Village* (part one) | Extended cut. 3:41, 95 shots. Day and night. Full sound | "i liked the superhero and this one" | **Monsters as a family**, the extended cut, night scenes. Its mp4 is `renders/in-this-town-monster-village.mp4` (not copied into the folder) |
-| [`monster-village-part-2/`](monster-village-part-2/README.md) | *In This Town, I Live in a Monster Village, Part 2* | Middle cut. 2:08, 54 shots. Full sound | "pretty good", then "perfect" | **A sequel on a reused world**, built from the owner's own outline. Framing for a narrow phone frame; replacing one shot without a full render. Its mp4 is `renders/in-this-town-monster-village-part-2.mp4` |
+| [`monster-village/`](monster-village/README.md) | *In This Town, I Live in a Monster Village* (part one) | Full film. 2:55, 74 shots, 713 words (trimmed from 3:41 to be a Short). Day and night. Full sound | "i liked the superhero and this one" | **Monsters as a family**, night scenes, a battle with a crowd. Its mp4 is in the folder |
+| [`monster-village-part-2/`](monster-village-part-2/README.md) | *In This Town, I Live in a Monster Village, Part 2* | Middle cut. 2:08, 54 shots. Full sound | "pretty good", then "perfect" | **A sequel on a reused world**, built from the owner's own outline. Framing for a narrow phone frame; replacing one shot without a full render. Its mp4 is in the folder |
+| [`monster-village-part-3/`](monster-village-part-3/README.md) | *In This Town, I Live in a Monster Village, Part 3* | Full film. 2:36, 66 lines. Full sound. Reworked to his review 2026-11-14 | "love it" (2026-11-14, after the rework) | **The first film made to `OWNER.md`**: the premise in frame one, an environment shot, a travelling shot and an odd angle in every scene. A prop as a character (dad's arm); a silence on purpose; pillagers and the mansion. Its mp4 is in the folder |
+| [`the-fastest-kid-wins/`](the-fastest-kid-wins/README.md) | *In This Town, the Fastest Kid Wins* (part 1) | Middle cut. 2:20, 55 lines. Full sound. Reworked to his review 2026-11-14: ends at the rivers in second place | "love it" (2026-11-14, after the rework) | **The owner's race story.** A race staged in four zones with one component; running shots that keep the runner in frame (`by * p`); shoes on the avatar; slow motion as three still shots |
+| [`helmet-kid/`](helmet-kid/README.md) | *In This Town, the New Kid Never Took Off His Helmet* (part 1) | Short cut. 1:42, 46 lines, 413 words. Day and night. Full sound | He approved the script ("yes go"); **film not reviewed yet** | **Horror.** A watcher's shot from behind a tree; silence on purpose; `Tentacle`; what the voice service will not say and the picture has to |
+| [`iron-golem/`](iron-golem/README.md) | *In This Town, Every Kid Got an Iron Golem* (part 1) | Middle cut. 2:13, 14 beats, 61 shots, 516 words. Day and night. Full sound | "pretty nice", "this is a good short" (2026-11-15, the sixth render) | **Pace, and telling the reason.** The pace he approved after rejecting one faster and one slower (234 words a minute, with short silences between story steps); a premise told in five full sentences after he rejected three fragments; a prop planted as a joke that becomes the ending; recorded clips cut at their pauses; why one quiet clip got through |
+| [`robot-at-18/`](robot-at-18/README.md) | *In This Town, Everyone Gets a Robot at 18* | Full film. 2:54, 86 shots, 697 words (trimmed from 3:25 to be a Short). Sunset forest and sky. Full sound | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A fight.** Sword against a kid in a suit, on the ground and in the air: posed bodies, hit-freezes, cuts inside a line, flying poses. Two rejected fights and what was wrong with each. A sheet of the whole fight at five frames a second |
+| [`pumpkin-heads/`](pumpkin-heads/README.md) | *In This Town, Everyone Wore a Pumpkin on Their Head* | Short cut. 1:56, 14 beats, 58 shots, 490 words. Day and night. Full sound | He approved the script and asked for another ending | A second **short cut** with sound; a teller whose face is a carved pumpkin; an ending that is a picture and not a punchline |
+| [`we-are-all-cats/`](we-are-all-cats/README.md) | *In This Town, We Are All Cats* | Short cut. 1:23, 6 beats, 42 shots, 342 words. Day and one night. Full sound | "this is actually really funny, i love this" (2026-11-15, the first render) | **A whole story in one film** (no part two: he asked for that), and **comedy**: a fight where nobody touches anybody, jokes that are pictures. The owner's own outline. Where the pack's **cats and dogs** come from (`../catsdogs.tsx`). Two crowds from one component; one prop carried from the first beat to the last |
+| [`everyone-runs-away-from-me/`](everyone-runs-away-from-me/README.md) | *In This Town, Everyone Runs Away From Me* | Short cut. 1:40, 6 beats, 50 shots, 402 words. Day and one night. Full sound | "really cute short, i like it" (2026-11-16, the first render) | **The Monster Village recipe in 100 seconds**: one cat in a town of creepers; a famous mob as family, players as the danger, **Minecraft facts as the jokes and the plot**. **How to stage for a tall frame** (shoot along a long thing, not across it). Where the pack's **creeper town** comes from (`../creepertown.tsx`) |
+| [`never-seen-my-mums-face/`](never-seen-my-mums-face/README.md) | *In This Town, I Have Never Seen My Mum's Face* | Short cut. 1:46, 6 beats, 52 shots, 413 words. Day and one night. Full sound | "another banger idea" (the script); then "i like it but it was kinda similar to the creeper one … it might get me in trouble of reused content" (2026-11-16, the first render) | **Script first, done right**; **a reveal that is a picture, with silence**; seven plants that pay off. A kid raised by endermen. Where the pack's **enderman town** comes from (`../endertown.tsx`). **And a warning: it is the creeper film's outline with another mob, and he saw it.** Its page has the two films side by side and the test to run before the next pitch |
 
-The first three were built by one agent, the fourth by another. All four use the same pack
+All of them use the same pack
 ([`../PACK.md`](../PACK.md)), the same engine and the same checks.
+
+## Three minutes is the wall
+
+A vertical video over 3:00 is not a YouTube Short: YouTube files it as a long video. Two films here were delivered
+at 3:41 and 3:25 and had to be cut down afterwards. `topic.json` now stops a film at 2:58 and has no longer cut.
+If a finished film has to lose lines, `python3 scripts/trim-narration.py <film> <cue.id> …` cuts them out of the
+recorded clips and the script; then delete their shots and their rows in `sound.json`, and build again. Look at
+both sides of every join on stills: if the line that went was the one in which somebody arrived, they now teleport.
+
+## Joining films into one long video (asked for 2026-11-14, not made yet)
+
+The owner, 2026-11-14: "put all of your stuff in the reference folder, source code and mp4. so that in the future i
+might try to ask u to put them in 9:16 as a seperated video movie type thing". Every film's folder here has its mp4
+and a snapshot of its source, checked the same day against `renders/` and `src/videos/`, byte for byte. When he asks:
+
+- Every mp4 is already 1080x1920 (9:16), 30 frames a second, so parts can be joined without rendering again:
+  `ffmpeg -f concat -safe 0 -i list.txt -c copy movie.mp4` (re-encode only if the join stutters).
+- Series, in order. **Monster Village:** `monster-village/`, `monster-village-part-2/`, `monster-village-part-3/`.
+  **Superpower at 18:** `superpower-at-18/`, `superpower-at-18-part-2/`. **The race:** `the-fastest-kid-wins/`
+  (part 1; he plans three or more). **Robot at 18:** `robot-at-18/` (part 2 script is parked in `../outlines/`).
+- Each part opens "In this town" and ends on a subscribe line. For a joined film, cut the subscribe shot of every
+  part but the last (the last cue in each `timing.json` gives the second it starts), and ask him whether the
+  openings stay.
+- A joined film is over three minutes, so it is a long video on YouTube, not a Short. Ask him if he wants it kept
+  9:16 (his words) before making anything wider.
+- Monster Village 1 and 2 and Robot at 18 still carry the `offset` sound fault (see `../OWNER.md`); fix and render
+  those again before they go into a long cut.
 
 ## What is in a film's folder
 
 | File | What it is |
 |---|---|
 | `README.md` | What the owner said, what the film is good for, its shape and its sound in numbers, and what was hard |
-| `<film id>.mp4` | The film as delivered: 720×1280, with its sound. A copy of `renders/<film id>.mp4`. The 1080×1920 master is a release asset of the repository; each page names the release |
+| `<film id>.mp4` | The film as delivered (720×1280 for the older films, 1080×1920 for the newer), with its sound. A copy of `renders/<film id>.mp4`. The 1080×1920 master is a release asset of the repository; each page names the release |
 | `contact-sheet-*.jpg` | The film as one picture. An agent cannot watch a video: **read this first** |
 | `shot-log.md` | Every shot on one page: when it starts, how long it holds, the words, the place, the camera, and why this picture for these words |
 | `source/` | A **snapshot** of the film's source: `narration.md` (the script, with what is planted and where it pays off), `timing.json`, `kit.tsx`, `world.tsx`, one `sceneN.tsx` for each beat, `film.tsx`, and `sound.json` if the film has sound |

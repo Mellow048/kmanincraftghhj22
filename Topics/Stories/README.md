@@ -1,25 +1,25 @@
-# Stories — one question, answered in under a minute
+# Explainer — one question, answered in under a minute
 
 A narrator asks one question a nine-year-old would ask ("Why does bread cost more every year?"), and answers it
 with things you can point a camera at. Thirty to sixty seconds. Every sentence is shown, literally, as it is said.
 And the camera never cuts: it **flies** from each thing to the next, through one small world in the sky.
 
-The subjects the owner has asked for: money lessons, what inflation is, and "What is a dictator?". Any one question fits.
+The subjects the owner named for this topic: money lessons, and what inflation is.
 
-> **The reference is our own first film.** The owner asked for this topic before its reference, and then for us to
-> make the reference ourselves ("you are the one making that reference!"). The film is
-> `src/videos/why-does-bread-cost-more-every-year/` (0:49, 7 beats, 19 stops, 182 words, one flight, full sound). He
-> approved it on 2026-11-13: "okay i love both really, this can be uploaded too!", "i like how you made these!".
-> It is measured, and it is kept with its source, a log of every stop and a contact sheet in
-> [`reference/bread/`](reference/bread/README.md). The numbers in [`topic.json`](topic.json) were a first setting
-> made before the film existed; the film was built to them and sits inside every one, so they stand. The camera is
-> the framework's own (`docs/CAMERA-BIBLE.md`); the voice, the captions and the sound are the story pipeline's
-> (`docs/STORY-FILMS.md`). **Open the reference before you build.**
+> **PROVISIONAL.** The owner asked for this topic to be built before its reference: "reference which we will do
+> later once youre done". So nothing here is measured from a real video yet. The camera is the framework's own
+> (`docs/CAMERA-BIBLE.md`); the voice, the captions and the sound are the story pipeline's
+> (`docs/STORY-FILMS.md`); the numbers in [`topic.json`](topic.json) are a first setting, so that `npm run check`
+> has something to hold a film to. **The reference will be our own first film** (the owner, asked for a video:
+> "you are the one making that reference!"): `src/videos/why-does-bread-cost-more-every-year/`. He approved its
+> script on 2026-11-13 ("yesboth"). The film is built and rendered (`renders/why-does-bread-cost-more-every-year.mp4`),
+> and it is waiting for him to watch it. When he approves it, measure it and correct this folder
+> ([`reference/`](reference/README.md) says how). No film of this topic has been approved yet.
 
 ## Start here
 
 ```bash
-npm run new -- "Why Bread Costs More" --topic stories
+npm run new -- "Why Bread Costs More" --topic explainer
 ```
 
 That gives you a film folder made from this topic's starter ([`template/`](template/)): a script page to fill in, a
@@ -31,7 +31,7 @@ give you an explanation.
 | The request | It is |
 |---|---|
 | "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation | **This topic** |
-| "What if the sun went out?", answered with facts about what would happen | **This topic.** It is an explanation with "what if" in the title. Pass `--topic stories` |
+| "What if the sun went out?", answered with facts about what would happen | **This topic.** It is an explanation with "what if" in the title. Pass `--topic explainer` |
 | "What if you could …", a kid who gets a power and what happened to him | [`Topics/WhatIf`](../WhatIf/README.md). That is a story |
 | "In this town, …" | [`Topics/InThisTown`](../InThisTown/README.md) |
 
@@ -41,19 +41,17 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 
 1. This page.
 2. [`SCRIPT.md`](SCRIPT.md) — how an explanation is written: one question, one answer, one idea a line.
-3. [`SHOTS.md`](SHOTS.md) — the flight: stops, islands, and why nothing a story shows lives in a shot.
+3. [`SHOTS.md`](SHOTS.md) — the flight: stops, islands, and why nothing an explainer shows lives in a shot.
 4. [`PACK.md`](PACK.md) — what already exists: the stage, money, charts you can stand next to, goods.
 5. [`SOUND.md`](SOUND.md) — the sounds of money and of numbers, and what differs from a story film's sound.
 6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → picture → captions → sound.
 7. [`docs/CAMERA-BIBLE.md`](../../docs/CAMERA-BIBLE.md) — the camera grammar this topic flies by.
-8. The reference film, to see what "built" means: [`reference/bread/`](reference/bread/README.md). Its contact
-   sheet first, then its shot log, then `source/`. Copy how it is BUILT. Never copy its sentences or its pictures.
 
 ## What changes from the base rules
 
-These apply to a film that declares `topic: "stories"`, and to nothing else.
+These apply to a film that declares `topic: "explainer"`, and to nothing else.
 
-| Base rule (`AGENTS.md`) | Stories |
+| Base rule (`AGENTS.md`) | Explainer |
 |---|---|
 | 18–20 s, ceiling 21 s | 30–58 s. Never over 60 s. (`cut: "long"`: 60–118 s, never over 120 s) |
 | Times of a camera move are typed by hand (`at`, `dur`) | The recorded voice is the clock. Each line of `narration.md` is one **stop**, and the camera flies to it as the line begins (`flightScene`) |
@@ -71,7 +69,7 @@ says, deterministic code, atmosphere in the world, and the render policy.
 
 ## What makes an explanation work
 
-These are the rules this folder is built on. Each of them held in the reference film.
+These are the rules this folder is built on. They are a first setting, like the numbers, until a reference is measured.
 
 1. **One question.** The title is the question. The film ends when it is answered.
 2. **One thing everybody knows.** A loaf of bread and its price. Every later number is measured against it.
@@ -85,7 +83,7 @@ These are the rules this folder is built on. Each of them held in the reference 
 
 ## Work order
 
-1. `npm run new -- "…" --topic stories`.
+1. `npm run new -- "…" --topic explainer`.
 2. Write the question, and the answer in ONE sentence a nine-year-old could repeat. If you cannot, you cannot
    explain it yet: read more first.
 3. Write `src/videos/<film>/narration.md` to the beat sheet in `SCRIPT.md`. One line of script per stop. Fill in the
@@ -110,18 +108,18 @@ still an estimate, and whether the mix is older than the script.
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic, its camera rule, the limits of the sound. `state: "MEASURED"`: `reference` names the film, `measuredFromReference` its numbers |
+| `topic.json` | The numbers `npm run check` enforces for this topic, its camera rule, the limits of the sound. `state: "PROVISIONAL"` until a reference is measured |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the explanation, the flight, the sound |
 | `PACK.md`, `pack.jpg` | The catalogue of the pack |
-| `index.ts` | The pack, from one import: `import { Island, Coin, flightScene } from "../../../Topics/Stories"` |
+| `index.ts` | The pack, from one import: `import { Island, Coin, flightScene } from "../../../Topics/Explainer"` |
 | `flight.tsx` | The camera: `stop`, `near`, `flightScene`, `unbroken` |
 | `stage.tsx` | Island, Sun, Plinth, Signpost, Bridge |
 | `money.tsx` | Coin, CoinStack, CoinPile, Bill, BillStack, MoneyBag, Chest, Printer |
 | `charts.tsx` | PriceTag, Bar, BarChart, Arrow, Balance |
 | `goods.tsx` | Bread, Apple, Crate, BreadShelf |
-| `template/` | The starter film that `npm run new -- … --topic stories` copies |
+| `template/` | The starter film that `npm run new -- … --topic explainer` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
-| `reference/` | The films of this topic that the owner approved, each with its source, a log of every stop and a contact sheet. The first is the reference film |
+| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. What to do when it is |
 
 Parts used by more than one topic (numbers and icons in cubes, the film's clock, twelve people, the villagers and
 their houses, the red "Subscribe" sign) are in [`Topics/Shared`](../Shared/README.md) and are passed on by this pack.

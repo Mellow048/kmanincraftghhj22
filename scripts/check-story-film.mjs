@@ -244,8 +244,18 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   if (lim.opensWith && !clean(cues[0].text).startsWith(lim.opensWith.toLowerCase())) {
     fail(`${tag}: the first line must start "${lim.opensWith}". It starts "${cues[0].text}".`);
   }
-  if (lim.lastLineContains && !cues[cues.length - 1].text.toLowerCase().includes(lim.lastLineContains.toLowerCase())) {
-    fail(`${tag}: the last line must be the "${lim.lastLineContains}" line. It is "${cues[cues.length - 1].text}".`);
+  // A film may be named in the topic's `lastLineAlsoAccepted`: the owner asked for an ending that is not the
+  // subscribe line, and said why. The exception names the film, so it cannot be picked up by another one.
+  const lastText = cues[cues.length - 1].text.toLowerCase();
+  const lastException = (topic.film?.lastLineAlsoAccepted ?? []).find(
+    (e) => Array.isArray(e?.films) && e.films.includes(slug) && e.contains && lastText.includes(String(e.contains).toLowerCase()),
+  );
+  if (lim.lastLineContains && !lastText.includes(lim.lastLineContains.toLowerCase())) {
+    if (lastException) {
+      info(`${tag}: ends on "${lastException.contains}", not the "${lim.lastLineContains}" line. ${lastException.why ?? ""}`.trim());
+    } else {
+      fail(`${tag}: the last line must be the "${lim.lastLineContains}" line. It is "${cues[cues.length - 1].text}".`);
+    }
   }
   for (const cue of cues) {
     const n = wordsOf(cue.text).length;
@@ -293,7 +303,12 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
 
   const seconds = timing.duration;
   const underSeconds = Boolean(lim.hardMinSeconds) && seconds < lim.hardMinSeconds;
-  if (lim.hardMaxSeconds && seconds > lim.hardMaxSeconds) {
+  // THE THREE-MINUTE WALL. The owner, 2026-11-14: "add a strict rule, no over 3 minutes". A vertical video over 3:00
+  // is not a YouTube Short: YouTube files it as a long video. No topic, cut or request raises this number.
+  const SHORT_MAX_SECONDS = 178;
+  if (seconds > SHORT_MAX_SECONDS) {
+    fail(`${tag}: ${seconds.toFixed(1)}s is over ${SHORT_MAX_SECONDS}s. STRICT RULE: no film runs over three minutes, or YouTube will not treat it as a Short. Cut lines from the script (scripts/trim-narration.py if the voice is recorded), or split the story into parts.`);
+  } else if (lim.hardMaxSeconds && seconds > lim.hardMaxSeconds) {
     fail(`${tag}: ${seconds.toFixed(1)}s is over the hard limit of ${lim.hardMaxSeconds}s.`);
   } else if (!underSeconds && lim.seconds && (seconds < lim.seconds[0] || seconds > lim.seconds[1])) {
     info(`${tag}: ${seconds.toFixed(1)}s is outside ${rules}'s ${lim.seconds[0]}–${lim.seconds[1]}s.`);
@@ -363,7 +378,9 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     marks.forEach((mark, i) => {
       const body = scene.slice(mark.index, i + 1 < marks.length ? marks[i + 1].index : scene.length);
       const shot = `${label} [${mark[1]}]`;
-      used.push(mark[1]);
+      // A line may be cut into several shots: every shot after the first says where in the line it starts (`cut: seconds`).
+      const isCut = /(^|\n)\s*cut:\s*[\w.(]/.test(body) && used[used.length - 1] === mark[1];
+      if (!isCut) used.push(mark[1]);
 
       const note = body.match(/note:\s*(?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'|`([^`]*)`)/);
       const noteText = note ? (note[1] ?? note[2] ?? note[3]) : "";
@@ -400,7 +417,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   for (const id of unknown) fail(`${tag}: a shot uses cue "${id}", which is not in narration.md`);
   const seen = new Set();
   for (const id of used) {
-    if (seen.has(id)) fail(`${tag}: cue "${id}" has two shots. One line, one shot.`);
+    if (seen.has(id)) fail(`${tag}: cue "${id}" has two shots. One line, one shot, unless the later shots give cut: <seconds into the line>.`);
     seen.add(id);
   }
   if (missing.length > 0) {

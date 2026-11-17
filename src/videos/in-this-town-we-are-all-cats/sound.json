@@ -1,0 +1,938 @@
+{
+  "film": "in-this-town-we-are-all-cats",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-we-are-all-cats. The kit has no bark and no hiss: a bark here is a low `bonk`, a hiss is a short high `gust`.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.cats",
+        "mood": "town",
+        "why": "The topic's track from the first frame: a town of cats."
+      },
+      {
+        "from": "3.noon",
+        "mood": "playful",
+        "why": "A fight nobody means: full level, it is funny."
+      },
+      {
+        "from": "4.tired",
+        "mood": "curious",
+        "gain": -3,
+        "why": "Tired of it. The track steps back."
+      },
+      {
+        "from": "5.night",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night, on tiptoe, taking the line."
+      },
+      {
+        "from": "6.morning",
+        "mood": "curious",
+        "gain": -2,
+        "why": "Both sides march in as on any day."
+      },
+      {
+        "from": "6.quiet",
+        "mood": "none",
+        "why": "'Nobody arched. Nobody barked.' Silence is the picture."
+      },
+      {
+        "from": "6.step",
+        "mood": "hope",
+        "gain": -3,
+        "why": "They walk toward each other."
+      },
+      {
+        "from": "7.still",
+        "mood": "playful",
+        "why": "Weird, then less weird."
+      },
+      {
+        "from": "7.noline",
+        "mood": "town",
+        "why": "One village."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.cats",
+      "to": "4.back",
+      "bed": "village"
+    },
+    {
+      "from": "3.noon",
+      "to": "3.golems",
+      "bed": "crowd"
+    },
+    {
+      "from": "4.on",
+      "to": "4.on",
+      "bed": "crowd"
+    },
+    {
+      "from": "5.night",
+      "to": "5.last",
+      "bed": "night"
+    },
+    {
+      "from": "6.morning",
+      "to": "8.sub",
+      "bed": "village"
+    },
+    {
+      "from": "7.safe",
+      "to": "7.safe",
+      "bed": "crowd"
+    },
+    {
+      "from": "8.sub",
+      "to": "8.sub",
+      "bed": "crowd"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.cats",
+      "at": 0.05,
+      "sfx": "pop",
+      "why": "The film opens on a cat in a red shirt."
+    },
+    {
+      "cue": "1.cats",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.32,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Cats walking by behind him."
+    },
+    {
+      "cue": "1.cats",
+      "p": 0.75,
+      "pitch": 1.3,
+      "sfx": "blip",
+      "why": "His tail flicks."
+    },
+    {
+      "cue": "1.folk",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut: the villagers."
+    },
+    {
+      "cue": "1.folk",
+      "p": 0.5,
+      "sfx": "rustle",
+      "why": "Robes and folded sleeves."
+    },
+    {
+      "cue": "1.golem",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut: up at the golem."
+    },
+    {
+      "cue": "1.golem",
+      "p": 0.35,
+      "trim": -3,
+      "sfx": "clank",
+      "why": "Iron, with ears."
+    },
+    {
+      "cue": "1.me",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut: back to him."
+    },
+    {
+      "cue": "1.me",
+      "word": "me",
+      "sfx": "pop",
+      "why": "Me."
+    },
+    {
+      "cue": "2.sides",
+      "at": 0.05,
+      "sfx": "whoosh",
+      "why": "Up over the whole village."
+    },
+    {
+      "cue": "2.sides",
+      "word": "two",
+      "trim": 3,
+      "sfx": "tick",
+      "why": "One village."
+    },
+    {
+      "cue": "2.line",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Down to the grass."
+    },
+    {
+      "cue": "2.line",
+      "at": 0.35,
+      "repeat": 4,
+      "every": 0.28,
+      "pitchStep": 1.06,
+      "trim": -3,
+      "sfx": "place",
+      "why": "The blocks of the line going by."
+    },
+    {
+      "cue": "2.not",
+      "at": 0,
+      "sfx": "swish",
+      "why": "To the other side."
+    },
+    {
+      "cue": "2.not",
+      "p": 0.55,
+      "pitch": 0.75,
+      "sfx": "blip",
+      "why": "Two ears that are not a cat's."
+    },
+    {
+      "cue": "2.dogs",
+      "pitch": 0.75,
+      "repeat": 2,
+      "every": 0.17,
+      "word": "dogs",
+      "trim": 1,
+      "sfx": "bonk",
+      "why": "WOOF. The stand-in for a bark: the kit has no dog."
+    },
+    {
+      "cue": "2.dogs",
+      "at": 0.02,
+      "trim": -5,
+      "sfx": "hit",
+      "why": "The reveal."
+    },
+    {
+      "cue": "2.all",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Along their row."
+    },
+    {
+      "cue": "2.all",
+      "pitch": 0.75,
+      "repeat": 3,
+      "every": 0.55,
+      "at": 0.3,
+      "trim": -4,
+      "sfx": "bonk",
+      "why": "They bark as we pass."
+    },
+    {
+      "cue": "2.all",
+      "word": "golem",
+      "trim": -3,
+      "sfx": "stomp",
+      "why": "And a dog golem."
+    },
+    {
+      "cue": "2.knew",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The two oldest."
+    },
+    {
+      "cue": "2.knew",
+      "word": "line",
+      "at": 0.15,
+      "pitch": 0.7,
+      "sfx": "blip",
+      "why": "Nobody knew."
+    },
+    {
+      "cue": "2.knew",
+      "word": "why",
+      "at": 0.1,
+      "sfx": "tick",
+      "why": "Why?"
+    },
+    {
+      "cue": "3.noon",
+      "at": 0.05,
+      "ring": 1.0,
+      "trim": -5,
+      "sfx": "bell",
+      "why": "Noon."
+    },
+    {
+      "cue": "3.noon",
+      "at": 0.2,
+      "repeat": 8,
+      "every": 0.2,
+      "trim": -2,
+      "sfx": "step_grass",
+      "why": "Both sides walk up."
+    },
+    {
+      "cue": "3.noon",
+      "pitch": 1.6,
+      "dur": 0.4,
+      "word": "fought",
+      "at": 0.1,
+      "sfx": "gust",
+      "why": "And it starts: the cats."
+    },
+    {
+      "cue": "3.noon",
+      "pitch": 0.75,
+      "repeat": 2,
+      "every": 0.17,
+      "word": "fought",
+      "at": 0.3,
+      "trim": -2,
+      "sfx": "bonk",
+      "why": "And the dogs."
+    },
+    {
+      "cue": "3.paws",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The two kids."
+    },
+    {
+      "cue": "3.paws",
+      "p": 0.3,
+      "pitch": 1.2,
+      "sfx": "blip",
+      "why": "A paw goes up."
+    },
+    {
+      "cue": "3.paws",
+      "p": 0.75,
+      "trim": -4,
+      "sfx": "slide_down",
+      "why": "And comes down again."
+    },
+    {
+      "cue": "3.fur",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Along the cats."
+    },
+    {
+      "cue": "3.fur",
+      "pitch": 1.6,
+      "dur": 0.4,
+      "word": "spread",
+      "sfx": "gust",
+      "why": "The fur goes up."
+    },
+    {
+      "cue": "3.fur",
+      "word": "arched",
+      "pitch": 1.2,
+      "sfx": "creak",
+      "why": "The backs go up."
+    },
+    {
+      "cue": "3.fur",
+      "word": "sideways",
+      "trim": -2,
+      "sfx": "zip",
+      "why": "Sideways, tails up."
+    },
+    {
+      "cue": "3.bark",
+      "pitch": 0.75,
+      "repeat": 4,
+      "every": 0.2,
+      "at": 0.08,
+      "sfx": "bonk",
+      "why": "The dogs bark."
+    },
+    {
+      "cue": "3.golems",
+      "at": 0.1,
+      "trim": -3,
+      "sfx": "clank",
+      "why": "Two golems, nose to nose."
+    },
+    {
+      "cue": "3.golems",
+      "pitch": 1.1,
+      "dur": 0.5,
+      "word": "hissed",
+      "sfx": "gust",
+      "why": "An iron hiss."
+    },
+    {
+      "cue": "3.golems",
+      "word": "barked",
+      "trim": -3,
+      "sfx": "stomp",
+      "why": "An iron bark."
+    },
+    {
+      "cue": "3.golems",
+      "pitch": 0.5,
+      "word": "barked",
+      "at": 0.12,
+      "sfx": "bonk",
+      "why": "WOOF, an octave down."
+    },
+    {
+      "cue": "3.lunch",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Up and away."
+    },
+    {
+      "cue": "3.lunch",
+      "at": 0.35,
+      "repeat": 8,
+      "every": 0.22,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Everybody walks home."
+    },
+    {
+      "cue": "3.lunch",
+      "word": "lunch",
+      "pitch": 1.3,
+      "sfx": "blip",
+      "why": "Lunch."
+    },
+    {
+      "cue": "4.on",
+      "pitch": 1.6,
+      "dur": 0.4,
+      "at": 0.1,
+      "trim": -2,
+      "sfx": "gust",
+      "why": "Day after day."
+    },
+    {
+      "cue": "4.on",
+      "pitch": 0.75,
+      "repeat": 2,
+      "every": 0.17,
+      "at": 0.35,
+      "trim": -3,
+      "sfx": "bonk",
+      "why": "Day after day."
+    },
+    {
+      "cue": "4.on",
+      "word": "on",
+      "nth": 1,
+      "dur": 0.5,
+      "trim": -2,
+      "sfx": "gust",
+      "why": "And on: in the rain."
+    },
+    {
+      "cue": "4.on",
+      "pitch": 0.75,
+      "repeat": 2,
+      "every": 0.17,
+      "word": "on",
+      "nth": 1,
+      "at": 0.2,
+      "trim": 1,
+      "sfx": "bonk",
+      "why": "Still barking."
+    },
+    {
+      "cue": "4.on",
+      "word": "on",
+      "nth": 2,
+      "dur": 0.5,
+      "trim": -4,
+      "sfx": "sparkle",
+      "why": "And on: in the snow."
+    },
+    {
+      "cue": "4.grandma",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Grandma."
+    },
+    {
+      "cue": "4.grandma",
+      "pitch": 1.9,
+      "dur": 0.3,
+      "p": 0.3,
+      "trim": -2,
+      "sfx": "gust",
+      "why": "A thin old hiss."
+    },
+    {
+      "cue": "4.grandma",
+      "word": "Her",
+      "pitch": 1.4,
+      "sfx": "creak",
+      "why": "Her grandma, older still."
+    },
+    {
+      "cue": "4.grass",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The golems' feet."
+    },
+    {
+      "cue": "4.grass",
+      "p": 0.3,
+      "sfx": "rustle",
+      "why": "Grass growing."
+    },
+    {
+      "cue": "4.grass",
+      "word": "grass",
+      "at": 0.2,
+      "repeat": 3,
+      "every": 0.3,
+      "pitchStep": 1.12,
+      "sfx": "plink",
+      "why": "A flower, and another."
+    },
+    {
+      "cue": "4.tired",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The cats, close."
+    },
+    {
+      "cue": "4.tired",
+      "word": "tired",
+      "trim": -3,
+      "sfx": "slide_down",
+      "why": "The pose comes apart."
+    },
+    {
+      "cue": "4.back",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Evening. Him alone."
+    },
+    {
+      "cue": "4.back",
+      "word": "back",
+      "at": 0.15,
+      "sfx": "creak",
+      "why": "His back."
+    },
+    {
+      "cue": "4.back",
+      "word": "fur",
+      "at": 0.5,
+      "trim": -3,
+      "sfx": "boing",
+      "why": "The fur springs up again."
+    },
+    {
+      "cue": "4.back",
+      "word": "dog",
+      "at": 0.1,
+      "pitch": 0.75,
+      "sfx": "blip",
+      "why": "The dog kid, across the line."
+    },
+    {
+      "cue": "5.night",
+      "at": 0.05,
+      "trim": -2,
+      "sfx": "whoosh",
+      "why": "Night."
+    },
+    {
+      "cue": "5.night",
+      "p": 0.4,
+      "dur": 0.6,
+      "sfx": "crackle",
+      "why": "One lantern."
+    },
+    {
+      "cue": "5.night",
+      "word": "nobody",
+      "at": 0.3,
+      "pitch": 1.3,
+      "trim": -3,
+      "sfx": "blip",
+      "why": "A plan."
+    },
+    {
+      "cue": "5.tiptoe",
+      "at": 0.1,
+      "repeat": 6,
+      "every": 0.26,
+      "trim": -3,
+      "sfx": "step_grass",
+      "why": "On their toes."
+    },
+    {
+      "cue": "5.tiptoe",
+      "p": 0.7,
+      "trim": -6,
+      "sfx": "clank",
+      "why": "The golem, on its toes."
+    },
+    {
+      "cue": "5.took",
+      "at": 0.25,
+      "sfx": "pop",
+      "why": "One block out."
+    },
+    {
+      "cue": "5.took",
+      "at": 0.85,
+      "pitch": 1.12,
+      "sfx": "pop",
+      "why": "And the next."
+    },
+    {
+      "cue": "5.took",
+      "at": 1.45,
+      "pitch": 1.25,
+      "sfx": "pop",
+      "why": "And the next."
+    },
+    {
+      "cue": "5.took",
+      "at": 0.5,
+      "repeat": 5,
+      "every": 0.3,
+      "trim": -3,
+      "sfx": "step_grass",
+      "why": "Off west with them."
+    },
+    {
+      "cue": "5.last",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The last one."
+    },
+    {
+      "cue": "5.last",
+      "at": 0.15,
+      "repeat": 5,
+      "every": 0.36,
+      "trim": -2,
+      "sfx": "step_grass",
+      "why": "Home."
+    },
+    {
+      "cue": "5.last",
+      "word": "myself",
+      "dur": 0.5,
+      "trim": -4,
+      "sfx": "sparkle",
+      "why": "His block."
+    },
+    {
+      "cue": "6.morning",
+      "at": 0.05,
+      "trim": -2,
+      "sfx": "whoosh",
+      "why": "Morning."
+    },
+    {
+      "cue": "6.morning",
+      "at": 0.2,
+      "repeat": 8,
+      "every": 0.2,
+      "trim": -2,
+      "sfx": "step_grass",
+      "why": "Both sides march in."
+    },
+    {
+      "cue": "6.gone",
+      "word": "gone",
+      "trim": -2,
+      "sfx": "drop",
+      "why": "No line."
+    },
+    {
+      "cue": "6.where",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The dogs."
+    },
+    {
+      "cue": "6.where",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.32,
+      "pitch": 0.75,
+      "pitchStep": 1.1,
+      "trim": -2,
+      "sfx": "blip",
+      "why": "Left? Right? Down?"
+    },
+    {
+      "cue": "6.ours",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The cats."
+    },
+    {
+      "cue": "6.ours",
+      "p": 0.3,
+      "sfx": "plink",
+      "why": "One foot, on the pale grass."
+    },
+    {
+      "cue": "6.quiet",
+      "word": "arched",
+      "at": 0.25,
+      "sfx": "tick",
+      "why": "Nobody arched."
+    },
+    {
+      "cue": "6.quiet",
+      "word": "barked",
+      "at": 0.2,
+      "sfx": "tick",
+      "why": "Nobody barked."
+    },
+    {
+      "cue": "6.step",
+      "at": 0.3,
+      "repeat": 5,
+      "every": 0.4,
+      "sfx": "step_grass",
+      "why": "One slow step at a time."
+    },
+    {
+      "cue": "6.step",
+      "p": 0.85,
+      "trim": -3,
+      "sfx": "heartbeat",
+      "why": "Closer."
+    },
+    {
+      "cue": "6.sniff",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Nose to nose."
+    },
+    {
+      "cue": "6.sniff",
+      "word": "me",
+      "at": 0.12,
+      "repeat": 3,
+      "every": 0.09,
+      "pitch": 1.5,
+      "trim": -2,
+      "sfx": "blip",
+      "why": "Sniff sniff sniff."
+    },
+    {
+      "cue": "6.sniff",
+      "word": "back",
+      "at": 0.12,
+      "repeat": 3,
+      "every": 0.09,
+      "pitch": 1.8,
+      "trim": -2,
+      "sfx": "blip",
+      "why": "And back."
+    },
+    {
+      "cue": "6.weird",
+      "word": "weird",
+      "at": 0.12,
+      "trim": -2,
+      "sfx": "boing",
+      "why": "Weird."
+    },
+    {
+      "cue": "7.still",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The next day."
+    },
+    {
+      "cue": "7.still",
+      "at": 0.82,
+      "sfx": "bonk",
+      "why": "They bow at the same time."
+    },
+    {
+      "cue": "7.time",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Over time."
+    },
+    {
+      "cue": "7.time",
+      "at": 0.2,
+      "repeat": 6,
+      "every": 0.3,
+      "trim": -2,
+      "sfx": "step_grass",
+      "why": "Crossing, both ways."
+    },
+    {
+      "cue": "7.time",
+      "word": "less",
+      "pitch": 1.3,
+      "sfx": "blip",
+      "why": "A nod."
+    },
+    {
+      "cue": "7.trade",
+      "at": 0,
+      "sfx": "swish",
+      "why": "A trade."
+    },
+    {
+      "cue": "7.trade",
+      "word": "for",
+      "at": 0.05,
+      "sfx": "place",
+      "why": "A bone, for a fish."
+    },
+    {
+      "cue": "7.trade",
+      "word": "fish",
+      "at": 0.15,
+      "trim": -2,
+      "sfx": "coin",
+      "why": "Done."
+    },
+    {
+      "cue": "7.sit",
+      "at": 0.15,
+      "trim": -3,
+      "sfx": "clank",
+      "why": "They bend."
+    },
+    {
+      "cue": "7.sit",
+      "at": 0.62,
+      "trim": -2,
+      "sfx": "stomp",
+      "why": "And sit."
+    },
+    {
+      "cue": "7.sit",
+      "at": 0.8,
+      "dur": 0.4,
+      "sfx": "debris",
+      "why": "Dust."
+    },
+    {
+      "cue": "7.nap",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The sunny spot."
+    },
+    {
+      "cue": "7.nap",
+      "p": 0.35,
+      "dur": 0.7,
+      "trim": -5,
+      "sfx": "sparkle",
+      "why": "Sun."
+    },
+    {
+      "cue": "7.nap",
+      "word": "well",
+      "pitch": 0.7,
+      "trim": -5,
+      "sfx": "slide_down",
+      "why": "A small snore."
+    },
+    {
+      "cue": "7.noline",
+      "at": 0.05,
+      "trim": -2,
+      "sfx": "whoosh",
+      "why": "Up over the village again."
+    },
+    {
+      "cue": "7.noline",
+      "word": "line",
+      "at": 0.1,
+      "trim": -3,
+      "sfx": "chime",
+      "why": "No line."
+    },
+    {
+      "cue": "7.safe",
+      "at": 0.1,
+      "dur": 1.2,
+      "trim": -3,
+      "sfx": "cheer",
+      "why": "All of them."
+    },
+    {
+      "cue": "7.safe",
+      "pitch": 0.9,
+      "word": "happy",
+      "at": 0.1,
+      "trim": -2,
+      "sfx": "bonk",
+      "why": "A happy one."
+    },
+    {
+      "cue": "7.block",
+      "at": 0,
+      "sfx": "swish",
+      "why": "The last block."
+    },
+    {
+      "cue": "7.block",
+      "word": "line",
+      "at": 0.15,
+      "sfx": "plink",
+      "why": "One block."
+    },
+    {
+      "cue": "7.block",
+      "word": "pillow",
+      "at": -0.5,
+      "pitch": 1.3,
+      "trim": 0,
+      "sfx": "blip",
+      "why": "He opens his eyes."
+    },
+    {
+      "cue": "7.block",
+      "word": "pillow",
+      "at": 0.3,
+      "sfx": "rustle",
+      "why": "And shuts them."
+    },
+    {
+      "cue": "8.sub",
+      "at": 0.05,
+      "sfx": "pop",
+      "why": "The sign goes up."
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "trim": -2,
+      "sfx": "ding",
+      "why": "Subscribe."
+    },
+    {
+      "cue": "8.sub",
+      "at": 0.4,
+      "dur": 1.8,
+      "trim": -1,
+      "sfx": "cheer",
+      "why": "Both sides."
+    },
+    {
+      "cue": "8.sub",
+      "pitch": 0.9,
+      "word": "village",
+      "at": 0.25,
+      "trim": -2,
+      "sfx": "bonk",
+      "why": "And one bark."
+    }
+  ]
+}

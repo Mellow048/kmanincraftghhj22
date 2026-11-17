@@ -4,7 +4,7 @@ import { Bread, LOAF, MINT, PriceTag, Printer, SAM, STOPS, Sam, clock, ease, fli
 /**
  * THE QUESTION. One person, one thing everybody knows the price of, and the question the film answers.
  *
- * One scene file per BEAT of the script (Topics/Stories/SCRIPT.md). A scene file holds two things:
+ * One scene file per BEAT of the script (Topics/Explainer/SCRIPT.md). A scene file holds two things:
  *
  *   ExhibitN   what the beat SHOWS. It is mounted by world.tsx for the whole film, because a camera that
  *              flies away from a thing still sees it. It is driven by the film's clock: it waits in its first

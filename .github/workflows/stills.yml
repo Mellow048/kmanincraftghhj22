@@ -66,6 +66,9 @@ jobs:
           cp out/stills/*.png "review/${COMPOSITION}/"
           git add "review/${COMPOSITION}/"
           git commit -m "Diagnostic review frames for ${COMPOSITION}"
+          # Somebody may have pushed while the stills rendered: take their commits first, or the push is refused
+          # and ten minutes of frames are lost.
+          git pull --rebase origin "${REF_NAME}" || true
           git push origin "HEAD:${REF_NAME}"
 
       - name: Publish release assets

@@ -62,6 +62,9 @@ def read_script(slug: str):
         m = re.match(r"#\s*clip\s+(\S+)", line)
         if m:
             current = {"name": m.group(1), "cues": []}
+            w = re.search(r"\bwait\s+([0-9.]+)", line)
+            if w:
+                current["wait"] = float(w.group(1))
             clips.append(current)
             continue
         if line.startswith("#") or line.startswith(">"):
@@ -173,8 +176,22 @@ SAY = {
     "bonked": "B AA NG K T",
     "chestplate": "CH EH S T P L EY T",
     "hideout": "HH AY D AW T",
-    "netherite": "N EH DH ER AY T",
-    "crookedly": "K R UH K AH D L IY",
+    "dodgeballs": "D AA JH B AO L Z",
+    "massager": "M AH S AA ZH ER",
+    "rebooting": "R IY B UW T IH NG",
+    "piglin": "P IH G L IH N",
+    "piglins": "P IH G L IH N Z",
+    "evokers": "IH V OW K ER Z",
+    "evoker": "IH V OW K ER",
+    "vindicators": "V IH N D IH K EY T ER Z",
+    "tnt": "T IY EH N T IY",
+    "ravager": "R AE V IH JH ER",
+    "ravagers": "R AE V IH JH ER Z",
+    "vex": "V EH K S",
+    "pillagers": "P IH L IH JH ER Z",
+    "pillager": "P IH L IH JH ER",
+    "spyglass": "S P AY G L AE S",
+    "golem": "G OW L AH M",
 }
 
 def align(pcm16k, words):
@@ -305,6 +322,10 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
         # then speed the clip up. A tempo change moves every word time by the same factor.
         track, t = [], 0.0
         for clip, p in zip(clips, raws):
+            # `# clip 10-sub wait 1.0` holds a second of silence before the clip: breathing room.
+            if clip.get("wait"):
+                track.append(np.zeros(int(clip["wait"] * SR_OUT), dtype=np.float32))
+                t += clip["wait"]
             xn = decode(p, SR_ALIGN)
             a, b = speech_span(xn, SR_ALIGN)
             natural_dur = (b - a) / SR_ALIGN

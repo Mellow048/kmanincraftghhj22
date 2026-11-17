@@ -1,8 +1,6 @@
 # Narration — Why Does Bread Cost More Every Year
 
-**Status: APPROVED. This film does not change.** The owner watched it on 2026-11-13: "okay i love both really, this
-can be uploaded too!", "i like how you made these!". It is the reference film of its topic
-(`Topics/Stories/reference/bread/`). He had approved this script on 2026-11-13
+**Status: BUILT and RENDERED. Waiting for the owner to watch it.** The owner approved this script on 2026-11-13
 ("yesboth", to the two scripts that were put to him together). The three clips are recorded with `voice-00`
 (`public/audio/why-does-bread-cost-more-every-year/raw/`) and the film's clock is measured from them
 (`timing.json`): 49.2 seconds. The picture (19 stops, one flight) and the sound (`sound.json`) are built, and the
@@ -14,9 +12,10 @@ word now means recording that clip again and rebuilding the timing.
 `python3 scripts/narration.py build why-does-bread-cost-more-every-year --wpm 225`. An explanation is read slower
 than a story (224 words a minute here; the story films run at 254).
 
-Topic: `Topics/Stories`. **This film is the topic's reference** (the owner: "you are the one making that
-reference!"; his subjects: "money lessons, what inflation is"). It is measured on its page,
-`Topics/Stories/reference/bread/README.md`.
+Topic: `Topics/Stories`. Read `Topics/Stories/SCRIPT.md` before changing a word. **This film is meant to become
+the topic's reference** (the owner: "you are the one making that reference!"; his subjects: "money lessons, what
+inflation is"): once he approves it, it is measured and the provisional numbers of the topic are corrected from it
+(`Topics/Stories/reference/README.md`).
 
 **The question:** Why does bread cost more every year?
 
@@ -85,7 +84,7 @@ What changed from the draft, and why:
 
 ## The claims, and where each came from
 
-An stories that is wrong is worse than none. Every factual claim of the script is listed here. The Minneapolis
+An explainer that is wrong is worse than none. Every factual claim of the script is listed here. The Minneapolis
 table, the Federal Reserve Education page (its full transcript) and the Wiener Holocaust Library page were read in
 full on 2026-11-13, before the film was delivered, and each says what this table says it does: the index is 156.9
 for 1996 and 333.2 (an estimate) for 2026; the only falls since 1955 are 1955 and 2009; "By the autumn of 1923 a
@@ -114,14 +113,14 @@ as proposed: the subject is inflation through the price of bread, the German loa
    at the bottom of this page.
 2. The German loaf (5.germany, 5.billion). It is the surprise of the film and it is true, but it names a real
    country and a real year. Without it the film is nine seconds shorter and has no surprise.
-3. The voice: `voice-00`, as in the In This Town films, or another voice for storiess.
+3. The voice: `voice-00`, as in the In This Town films, or another voice for explainers.
 
 **What was built for it, and where it lives.** The pack was made before its first film, and this film found out
 what it lacked: an oven, a loaf that comes apart, a price too long for a tag, a balloon, a speech bubble that says
 a number, a wheelbarrow and its heap of notes, notes falling off an island, a bundle of notes for a tall stack.
 They are in this film's `parts.tsx`,
-built so that they can move into the pack unchanged (`Topics/Stories/PACK.md`, "Parts built for the first
-film": the move is the first step of building the next stories). In `kit.tsx`, because they are this film's own: the five islands,
+built so that they can move into the pack unchanged once the owner has approved the film
+(`Topics/Stories/PACK.md`, "Adding a part"). In `kit.tsx`, because they are this film's own: the five islands,
 the route, the shop (the same on "today" and "then") and the village's rack.
 
 ```narration

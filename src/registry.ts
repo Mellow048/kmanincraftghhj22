@@ -10,10 +10,15 @@ import { film as whatIfYouCouldSeeWhoHadACrushOnYou } from "./videos/what-if-you
 import { film as whyDoesBreadCostMoreEveryYear } from "./videos/why-does-bread-cost-more-every-year/film";
 import { film as monsterVillage } from "./videos/in-this-town-monster-village/film";
 import { film as inThisTownILiveInAMonsterVillagePart2 } from "./videos/in-this-town-monster-village-part-2/film";
-import { film as whatIsADictator } from "./videos/what-is-a-dictator/film";
-import { film as whatIfYouCouldSeePeoplesFuture } from "./videos/what-if-you-could-see-peoples-future/film";
-import { film as whatIfEveryLieAddedANetheriteBlock } from "./videos/what-if-every-lie-added-a-netherite-block/film";
-import { film as whatIfICouldHearWhatBlocksRemember } from "./videos/what-if-i-could-hear-what-blocks-remember/film";
+import { film as inThisTownEveryoneGetsARobotAt18 } from "./videos/in-this-town-robot-at-18/film";
+import { film as inThisTownILiveInAMonsterVillagePart3 } from "./videos/in-this-town-monster-village-part-3/film";
+import { film as inThisTownTheFastestKidWins } from "./videos/in-this-town-the-fastest-kid-wins/film";
+import { film as inThisTownTheNewKidNeverTookOffHisHelmet } from "./videos/in-this-town-the-new-kid-never-took-off-his-helmet/film";
+import { film as inThisTownEveryKidGotAnIronGolem } from "./videos/in-this-town-every-kid-got-an-iron-golem/film";
+import { film as inThisTownMonsterVillagePart4 } from "./videos/in-this-town-monster-village-part-4/film";
+import { film as inThisTownTheFastestKidWinsPart2 } from "./videos/in-this-town-the-fastest-kid-wins-part-2/film";
+import { film as inThisTownMeAndMyShadowDontGetAlong } from "./videos/in-this-town-me-and-my-shadow-dont-get-along/film";
+import { film as whatIfYouCouldSmellALie } from "./videos/what-if-you-could-smell-a-lie/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -32,8 +37,13 @@ export const FILMS = [
   whyDoesBreadCostMoreEveryYear,
   monsterVillage,
   inThisTownILiveInAMonsterVillagePart2,
-  whatIsADictator,
-  whatIfYouCouldSeePeoplesFuture,
-  whatIfEveryLieAddedANetheriteBlock,
-  whatIfICouldHearWhatBlocksRemember,
+  inThisTownEveryoneGetsARobotAt18,
+  inThisTownILiveInAMonsterVillagePart3,
+  inThisTownTheFastestKidWins,
+  inThisTownTheNewKidNeverTookOffHisHelmet,
+  inThisTownEveryKidGotAnIronGolem,
+  inThisTownMonsterVillagePart4,
+  inThisTownTheFastestKidWinsPart2,
+  inThisTownMeAndMyShadowDontGetAlong,
+  whatIfYouCouldSmellALie,
 ];

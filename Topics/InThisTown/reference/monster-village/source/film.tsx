@@ -31,7 +31,6 @@ export const film = defineFilm({
   id: "in-this-town-monster-village",
   title: "In This Town, I Live in a Monster Village",
   topic: "in-this-town",
-  cut: "extended",
   look: "overworld-day",
   audio: { src: "audio/in-this-town-monster-village/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },

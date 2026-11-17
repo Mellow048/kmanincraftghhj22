@@ -1,0 +1,153 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-was-a-spy-for-the-villagers",
+  "mix": "public/audio/in-this-town-i-was-a-spy-for-the-villagers/mix.mp3",
+  "seconds": 117.0,
+  "built_from": {
+    "timing.json": "95c99b7060ef50420264404c198eca00c31e1e65",
+    "sound.json": "f99ebb3ae1c79c31db1e4702b048f15ccd734830",
+    "narration.mp3": "793bfbf687e6abc960007588f1911cf829b44580"
+  },
+  "mix_sha1": "01ce030d7ae9a6c838e874820c65d440090af69a",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "4.outpost",
+      "mood": "sneak",
+      "at": 19.03
+    },
+    {
+      "from": "6.line",
+      "mood": "playful",
+      "at": 31.97
+    },
+    {
+      "from": "8.night",
+      "mood": "sneak",
+      "at": 51.7
+    },
+    {
+      "from": "8.dawn",
+      "mood": "tense",
+      "at": 58.7
+    },
+    {
+      "from": "9.done",
+      "mood": "none",
+      "at": 70.07
+    },
+    {
+      "from": "9.banner",
+      "mood": "playful",
+      "at": 70.93
+    },
+    {
+      "from": "10.march",
+      "mood": "tense",
+      "at": 80.3
+    },
+    {
+      "from": "11.left",
+      "mood": "playful",
+      "at": 88.5
+    },
+    {
+      "from": "12.sun",
+      "mood": "tense",
+      "at": 96.37
+    },
+    {
+      "from": "12.own",
+      "mood": "none",
+      "at": 105.97
+    },
+    {
+      "from": "13.look",
+      "mood": "dark",
+      "at": 107.63
+    },
+    {
+      "from": "14.sub",
+      "mood": "playful",
+      "at": 115.17
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 14,
+  "measured": {
+    "musicUnderVoiceDb": 18.7,
+    "secondsWithoutMusic": 2.6,
+    "bedsUnderVoiceDb": 25.2,
+    "sfx": 221,
+    "sfxPerMinute": 113.3,
+    "sfxKinds": 43,
+    "longestGapSeconds": 2.0,
+    "longestGapAt": 54.2,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.5,
+    "voiceOverRestWorstDb": 5.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.5,
+        "t": 85.9,
+        "cue": "10.lights",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 79.4,
+        "cue": "9.lead",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 114.2,
+        "cue": "13.ohno",
+        "sounding": [
+          "drop",
+          "heartbeat"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 89.0,
+        "cue": "11.left",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 31.2,
+        "cue": "5.ash",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 58.1,
+        "cue": "8.map",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -15.4,
+    "truePeakDb": -1.3,
+    "limiterMaxDb": 4.2
+  },
+  "failures": []
+}

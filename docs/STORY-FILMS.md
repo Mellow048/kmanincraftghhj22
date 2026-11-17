@@ -5,14 +5,14 @@ three-minute narrated film with 85 cuts. For those, the narration decides when e
 
     narration.md  →  recorded clips  →  timing.json  →  storyScene  →  captions  →  sound.json  →  mix.mp3
 
-Any topic can use this. `Topics/InThisTown` was the first; `Topics/WhatIf` uses it unchanged; `Topics/Stories`
+Any topic can use this. `Topics/InThisTown` was the first; `Topics/WhatIf` uses it unchanged; `Topics/Explainer`
 uses all of it except `storyScene`, because its camera does not cut (section 3b). Start a film of a topic from the
 topic's own starter, which is already wired to all of it:
 
 ```bash
 npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
 npm run new -- "What If You Could See Who Has a Crush on You" --topic what-if
-npm run new -- "Why Bread Costs More" --topic stories
+npm run new -- "Why Bread Costs More" --topic explainer
 ```
 
 ## 1. The script: `src/videos/<film>/narration.md`
@@ -79,6 +79,12 @@ export const scene1 = storyScene(timing, {
   written as plain `[x, y, z]` arrays: the lint reads the file as text and does not follow a helper call.
 - `stage(t, { dur, p })` returns who and what is in the shot. `t` is seconds since the cut, `p` runs 0→1. It is a
   plain function: no hooks in it. For a straight walk use `stride(a, b, p)`.
+- `cut: <seconds>` cuts **inside** a line: a second shot with the same `cue` that starts that many seconds into it.
+  The shot before it ends there, and its own `t` counts from its cut (so an action on a word is
+  `wordAt(cue, word) - cut`). Use it in action, where one line of script needs two or three angles. The fight in
+  `Topics/InThisTown/reference/robot-at-18/` is built this way.
+- `pose` on an avatar sets every joint by hand instead of playing an `animation`. A fight needs it: see
+  `fight.tsx` in the same reference.
 - `look` changes the lighting preset for that shot. `zone` picks the part of the world to draw.
 - Shots in a scene must follow the script line by line. `storyScene` throws if one is skipped.
 
@@ -97,7 +103,7 @@ catalogue in `Topics/InThisTown/PACK.md`). A film's `kit.tsx` passes the pack on
 ## 3b. A camera that does not cut: `flightScene`
 
 `storyScene` is a film of hard cuts. A topic can bring its own scene builder for the same script and the same
-timing. The Stories does (`Topics/Stories/flight.tsx`): each line is a **stop**, and the camera flies to it as
+timing. The Explainer does (`Topics/Explainer/flight.tsx`): each line is a **stop**, and the camera flies to it as
 the line begins.
 
 ```tsx
@@ -116,7 +122,7 @@ export const scene2 = flightScene(timing, {
 - The topic's `topic.json` names the builder and the guard in a `camera` block, and `npm run check` holds a film
   to it. Everything else on this page (the script, the voice, the captions, the sound, the stills) is the same.
 
-`Topics/Stories/SHOTS.md` is the guide.
+`Topics/Explainer/SHOTS.md` is the guide.
 
 ## 4. The world: zones
 

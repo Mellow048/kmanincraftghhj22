@@ -1,20 +1,18 @@
-# The Stories pack
+# The Explainer pack
 
 Everything a film of this topic is built from. One import:
 
 ```ts
-import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Stories";
+import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Explainer";
 ```
 
 A film's `kit.tsx` imports from the pack and passes the names on, so its scenes import only from `"./kit"`.
 
 ![Every part of the pack](pack.jpg)
 
-> **Approved in a film.** This pack was built ahead of its first film. The owner approved that film on 2026-11-13
-> ([`reference/bread/`](reference/bread/README.md)). It uses `Island`, `Sun`, `Plinth`, `Coin`, `CoinStack`, `Bill`, `BillStack`, `Chest`, `Printer`, `PriceTag`,
-> `Arrow` and `Bread`. The parts it does not use (`Signpost`, `Bridge`, `CoinPile`, `MoneyBag`, `Bar`, `BarChart`,
-> `Balance`, `Apple`, `Crate`, `BreadShelf`) have been rendered and looked at (the picture above) and never seen by
-> him in a film.
+> **Not yet approved in a film.** Every other pack in this framework was taken out of films the owner approved.
+> This one was built ahead of its first film, so each part here has been rendered and looked at (the picture
+> above) but none has been seen by the owner in a film. The first approved explainer decides what stays.
 
 1 unit = 1 block = 1 metre. `position` is the middle of a part's underside unless its row says otherwise.
 Everything is deterministic: a part that moves is given seconds (`t`, or `clock.useSince(…)`), never a clock of its own.
@@ -88,15 +86,12 @@ Use ONE kind of money in a film, and keep it. A village trades in emeralds: `kin
 | `Bubble`, `Bits`, `Puffs` | A speech bubble; bits that fly when something breaks; puffs of dust |
 | `SubscribeSign` | The red sign every film of the channel ends on |
 
-## Parts built for the first film
+## Parts waiting in the first film
 
 The pack was made before its first film, and that film found out what it lacked. These are in
 [`src/videos/why-does-bread-cost-more-every-year/parts.tsx`](../../src/videos/why-does-bread-cost-more-every-year/parts.tsx),
-built to the rules below (a `position`, seconds, no knowledge of that film's islands). The owner has approved the
-film (2026-11-13), so they are due to move into this folder unchanged, with a row above and a place on the sheet.
-**That move is the first step of building the next stories**, because it needs the stills of the approved film
-before and after (`scripts/compare-stills.py`): an approved film does not change. Until it is done, import them
-from the film.
+built to the rules below (a `position`, seconds, no knowledge of that film's islands). Import them from there until
+the owner has approved the film; then they move into this folder unchanged, and get a row above and a place on the sheet.
 
 | Part | What it is FOR |
 |---|---|
@@ -126,12 +121,12 @@ each picture (`labels.txt`). To add a part, stand it on an island there, or add 
 `narration.md` and of `labels.txt`. Then:
 
 ```bash
-npm run new -- "Pack Sheet" --topic stories
-cp Topics/Stories/sheet/*.tsx Topics/Stories/sheet/narration.md src/videos/pack-sheet/
+npm run new -- "Pack Sheet" --topic explainer
+cp Topics/Explainer/sheet/*.tsx Topics/Explainer/sheet/narration.md src/videos/pack-sheet/
 #   delete the `captions:` line from src/videos/pack-sheet/film.tsx, so the stills have no words on them
 python3 scripts/narration.py build pack-sheet --estimate
-npm run shots -- pack-sheet --at 0.6 --out out/pack-stories
-python3 scripts/pack-sheet.py out/pack-stories Topics/Stories/pack.jpg --labels Topics/Stories/sheet/labels.txt
+npm run shots -- pack-sheet --at 0.6 --out out/pack-explainer
+python3 scripts/pack-sheet.py out/pack-explainer Topics/Explainer/pack.jpg --labels Topics/Explainer/sheet/labels.txt
 #   then delete src/videos/pack-sheet/ and take its two lines out of src/registry.ts
 ```
 

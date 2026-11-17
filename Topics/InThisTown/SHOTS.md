@@ -1,5 +1,7 @@
 # Shooting an "In This Town" film
 
+> **First read [`OWNER.md`](OWNER.md).** Premise on screen in the first second; no two shots in a row alike; every scene has an environment shot, a travelling shot and an odd angle; the owner's outline is the story.
+
 What the reference video does with the picture, measured, and how we do the same in Minecraft blocks.
 The evidence is in [`reference/treehouse/`](reference/treehouse/README.md): look at the contact sheets before you
 read on.

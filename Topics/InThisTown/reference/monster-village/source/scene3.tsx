@@ -175,25 +175,6 @@ export const scene3 = storyScene(timing, {
       },
     },
     {
-      cue: "6.cold",
-      ...cam.push({ on: MID, dist: 5.0, to: 4.5, yaw: -6, pitch: 5, fov: 40 }),
-      zone: ZONE.night,
-      look: NIGHT,
-      note: "Night on the wall, both of them hugging themselves and shivering in time, breath coming out white. Zombies have no breath.",
-      stage: (t) => {
-        const sh = Math.sin(t * 38) * 0.012;
-        return (
-          <>
-            <Hero position={[ME_SIT[0] + sh, ME_SIT[1], ME_SIT[2]]} animation="sit" arms="hug" face="frown" />
-            <Mo position={[MO_SIT[0] - sh, MO_SIT[1], MO_SIT[2]]} animation="sit" arms="hug" face="neutral" gaze={0} />
-            <Puffs position={[ME_SIT[0], 1.1, 6.85]} color="#ffffff" count={4} rise={0.5} spread={0.12} size={0.07} speed={1.1} opacity={0.7} seed={2} />
-            <Puffs position={[MO_SIT[0], 1.3, 6.85]} color="#ffffff" count={4} rise={0.5} spread={0.12} size={0.08} speed={1.1} opacity={0.7} seed={9} />
-            <Lantern position={[3.25, 0.95, 6.9]} chain={0.1} light={8} reach={7} seed={4} />
-          </>
-        );
-      },
-    },
-    {
       cue: "6.sneeze",
       ...cam.push({ on: [3.35, 1.25, 6.5], dist: 4.6, to: 4.1, yaw: 8, pitch: 3, fov: 38 }),
       zone: ZONE.day,
@@ -215,47 +196,6 @@ export const scene3 = storyScene(timing, {
             </group>
             <Bits position={[MO_SIT[0], 1.3, 6.85]} t={t - at} color="#e8f2ff" count={12} power={3} toward={[0, 0, 1]} />
             <Hero position={[ME_SIT[0], ME_SIT[1] + hop(t, at, 0.15, 0.25), ME_SIT[2]]} rotationY={0.3} animation="sit" face={t > sus ? "uneasy" : t > at ? "wow" : "smile"} headYaw={0.8} headRoll={t > sus ? -0.25 * ease(ramp(t, sus, sus + 0.3)) : 0} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "6.fish",
-      ...cam.push({ on: [10.6, 1.0, 8.0], dist: 5.0, to: 4.4, yaw: 62, pitch: 8, fov: 42 }),
-      zone: ZONE.day,
-      look: DAY,
-      note: "At the pond. Mo's float dips, he yanks, and on 'fish' a fish flies out of the water in an arc and smacks into the boy's arms.",
-      impacts: [{ at: 1.1, amp: 0.04, dur: 0.25 }],
-      stage: (t) => {
-        const yank = wordAt("6.fish", "fish") - 0.15;
-        const k = ramp(t, yank, yank + 0.45);
-        const fish: Vec3 = [12.2 - 2.1 * k, 0.1 + 0.95 * k + 1.6 * 4 * k * (1 - k), 8.3 - 0.9 * k];
-        return (
-          <>
-            <Mo position={[10.0, 0, 8.6]} rotationY={Math.PI / 2} animation="idle" arms={t > yank ? "reachUp" : "hold"} face="neutral" gaze={0}>
-              <Rod bob={t < yank ? Math.sin(t * 9) * 0.05 - 0.1 * ramp(t, yank - 0.3, yank) : 0.9} />
-            </Mo>
-            <Hero position={[10.0, hop(t, yank + 0.45, 0.2, 0.25), 7.4]} rotationY={Math.PI / 2} animation="idle" arms={k >= 1 ? "hug" : "hold"} face={k >= 1 ? "laugh" : "wow"} headYaw={0.4} />
-            {k > 0 ? <Block position={k >= 1 ? [10.3, 0.85 + hop(t, yank + 0.45, 0.2, 0.25), 7.4] : fish} size={[0.4, 0.2, 0.12]} color="#5f8fd0" rotation={[0, 0.4, k < 1 ? t * 14 : Math.sin(t * 20) * 0.3]} /> : null}
-            <Bits position={[12.2, 0.15, 8.3]} t={t - yank} color="#bfe0ff" count={10} power={2.6} />
-          </>
-        );
-      },
-    },
-    {
-      cue: "6.laugh",
-      ...cam.push({ on: [3.3, 1.2, 6.5], dist: 4.8, to: 4.2, yaw: 10, pitch: 3, fov: 38 }),
-      zone: ZONE.day,
-      look: DAY,
-      note: "The boy laughs and waves at him to try. Mo's shoulders jerk once, twice, like an engine that will not start. On 'forgotten' it catches and he rocks with it.",
-      stage: (t) => {
-        const got = wordAt("6.laugh", "forgotten") - 0.1;
-        const on = t > got;
-        const rock = on ? Math.sin((t - got) * 15) * 0.05 : 0;
-        return (
-          <>
-            <Hero position={ME_SIT} rotationY={0.3} animation="sit" arms="laugh" face="laugh" headYaw={0.6} headPitch={Math.sin(t * 14) * 0.08} />
-            <Mo position={[MO_SIT[0], MO_SIT[1] + jolt(t, 0.5, 0.12) + jolt(t, 1.0, 0.12) + Math.abs(rock), MO_SIT[2]]} rotationY={-0.25} animation="sit" arms={on ? "laugh" : undefined} face={on ? "laugh" : "neutral"} headYaw={-0.5} headPitch={-0.3 * (on ? 1 : 0) + rock * 2} gaze={0} />
           </>
         );
       },

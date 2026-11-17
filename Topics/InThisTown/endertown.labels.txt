@@ -1,0 +1,12 @@
+EnderMum, lean, looks away
+EnderCrowd, EnderHouse, EnderThing
+EnderDad, EnderZap (gone)
+DinnerPlate: mum's knees
+PhotoBorder: the family photo
+Rain, Puddle
+KidDrawing: his guess
+PumpkinPlayer who 0 to 5
+PearlSign, EnderPearl
+PumpkinView: from inside
+EnderCrowd jaw 1, shake, drop
+PumpkinHat on the kid

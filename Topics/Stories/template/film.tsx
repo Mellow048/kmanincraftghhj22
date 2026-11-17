@@ -8,14 +8,14 @@ import { scene1 } from "./scene1";
  *
  * TODO: the film in two sentences. The question, and the answer a nine-year-old could repeat.
  *
- * A STORIES FILM (Topics/Stories): one question, answered in under a minute. The recorded narration is the
+ * An EXPLAINER (Topics/Explainer): one question, answered in under a minute. The recorded narration is the
  * clock, every line of narration.md is one place the camera comes to rest, and the camera FLIES from each
- * to the next: it never teleports. Read Topics/Stories/README.md before changing anything here.
+ * to the next: it never teleports. Read Topics/Explainer/README.md before changing anything here.
  */
 export const film = defineFilm({
   id: "__ID__",
   title: "__TITLE__",
-  topic: "stories",
+  topic: "explainer",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },

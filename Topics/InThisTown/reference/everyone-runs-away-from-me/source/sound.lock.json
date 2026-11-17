@@ -1,0 +1,171 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-everyone-runs-away-from-me",
+  "mix": "public/audio/in-this-town-everyone-runs-away-from-me/mix.mp3",
+  "seconds": 100.4333,
+  "built_from": {
+    "timing.json": "48d46356629df6ad0622e2bdd4ac594b5a27c1ce",
+    "sound.json": "a6f1eb041e2038308ba90a62c8ee6873a69ae1ca",
+    "narration.mp3": "c9079eacf74123c3961727cc5fc95f699c88baea"
+  },
+  "mix_sha1": "328b094bb8191f4b76004426c348146775050fb6",
+  "music_sections": [
+    {
+      "from": "1.cat",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.why",
+      "mood": "playful",
+      "at": 10.73
+    },
+    {
+      "from": "2.hug",
+      "mood": "curious",
+      "at": 25.7
+    },
+    {
+      "from": "3.tried",
+      "mood": "playful",
+      "at": 27.77
+    },
+    {
+      "from": "3.still",
+      "mood": "hope",
+      "at": 35.63
+    },
+    {
+      "from": "3.gone",
+      "mood": "curious",
+      "at": 41.1
+    },
+    {
+      "from": "4.night",
+      "mood": "sneak",
+      "at": 42.47
+    },
+    {
+      "from": "4.started",
+      "mood": "tense",
+      "at": 50.13
+    },
+    {
+      "from": "5.small",
+      "mood": "drone",
+      "at": 58.03
+    },
+    {
+      "from": "5.said",
+      "mood": "none",
+      "at": 65.57
+    },
+    {
+      "from": "5.ran",
+      "mood": "playful",
+      "at": 66.4
+    },
+    {
+      "from": "5.left",
+      "mood": "curious",
+      "at": 73.03
+    },
+    {
+      "from": "6.morning",
+      "mood": "hope",
+      "at": 76.13
+    },
+    {
+      "from": "6.arms",
+      "mood": "none",
+      "at": 85.23
+    },
+    {
+      "from": "6.came",
+      "mood": "hope",
+      "at": 89.73
+    },
+    {
+      "from": "7.turns",
+      "mood": "town",
+      "at": 90.93
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 18.3,
+    "secondsWithoutMusic": 5.4,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 214,
+    "sfxPerMinute": 127.8,
+    "sfxKinds": 28,
+    "longestGapSeconds": 3.5,
+    "longestGapAt": 93.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.5,
+    "voiceOverRestWorstDb": 4.9,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.9,
+        "t": 20.4,
+        "cue": "2.street",
+        "sounding": [
+          "ding",
+          "step_grass"
+        ]
+      },
+      {
+        "db": 5.5,
+        "t": 92.9,
+        "cue": "7.turns",
+        "sounding": [
+          "boing",
+          "ding",
+          "step_grass"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 80.4,
+        "cue": "6.nine",
+        "sounding": [
+          "tick"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 37.2,
+        "cue": "3.still",
+        "sounding": [
+          "step_grass",
+          "tick"
+        ]
+      },
+      {
+        "db": 6.3,
+        "t": 11.8,
+        "cue": "2.why",
+        "sounding": [
+          "boing",
+          "zip"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 79.7,
+        "cue": "6.nine",
+        "sounding": [
+          "tick"
+        ]
+      }
+    ],
+    "lufs": -15.2,
+    "truePeakDb": -1.7,
+    "limiterMaxDb": 3.2
+  },
+  "failures": []
+}

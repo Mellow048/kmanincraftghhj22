@@ -15,7 +15,7 @@ import { scene7 } from "./scene7";
  * The question: why does a loaf cost two coins today when it cost your mom one? The answer a nine-year-old could
  * repeat: there is more money every year but not much more bread, so each coin buys a little less.
  *
- * A STORIES FILM (Topics/Stories): one question, answered in under a minute. The recorded narration is the
+ * An EXPLAINER (Topics/Stories): one question, answered in under a minute. The recorded narration is the
  * clock, every line of narration.md is one place the camera comes to rest, and the camera FLIES from each
  * to the next: it never teleports. Read Topics/Stories/README.md before changing anything here.
  */
