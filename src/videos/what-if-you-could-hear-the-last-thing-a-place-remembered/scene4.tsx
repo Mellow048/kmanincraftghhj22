@@ -73,7 +73,9 @@ export const scene4 = storyScene(timing, {
       // The line lands and he does not move. Shot from the side with the empty length of the gym behind him, so the
       // room looks as big as the sentence does.
       cue: "4.name",
-      ...cam.push({ on: G(-6.55, 1.25, 0.30), dist: 3.1, to: 2.5, yaw: 178, pitch: 3, fov: 44 }),
+      // From the middle of the floor looking north-west: his face at 0.00, the bare wall at -0.91, and the whole
+      // empty length of the gym behind his shoulder. (The old lens faced the wall the room has no fourth side for.)
+      ...cam.push({ on: G(-7.20, 1.28, 0.30), dist: 3.00, to: 2.50, yaw: 26, pitch: 4, fov: 46 }),
       zone: "gym",
       look: "overworld-day",
       note: "Him standing against the wall with the whole empty gym in front of him, his hand still on the plaster and his face doing nothing: the room the voice has never been in.",

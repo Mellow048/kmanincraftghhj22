@@ -73,15 +73,18 @@ export const scene2 = storyScene(timing, {
       // The NORTH wall, which carries the board: the classroom's one wall with something on it. He stands at its
       // south end with his palm flat on the plaster and looks along it, so the lens sees him in profile against it
       // and not the back of his head. (The first version framed the window wall: a white rectangle and no contact.)
-      ...cam.push({ on: SPOT.at(-1.30, 1.32, -3.86), dist: 2.30, to: 1.85, yaw: 96, pitch: 1, fov: 46 }),
+      // Head-on at the wall, from his shoulder-line: he is in profile with his palm on the board wall, and the board
+      // and its chalk run across the top of the frame he has his ear against. (Two earlier lenses on this cue framed
+      // a window, then put the camera outside the room.)
+      ...cam.push({ on: SPOT.at(-2.10, 1.30, -3.55), dist: 2.20, to: 1.85, yaw: 0, pitch: 3, fov: 46 }),
       zone: "class",
       look: "overworld-day",
-      note: "The classroom's board wall along its length, chalk dust on the ledge, his palm flat on the plaster and his ear going towards it: the room giving the teacher's worst joke back.",
+      note: "Him in profile with his palm flat on the board wall and his ear against the chalk: the classroom giving the teacher's worst joke back to somebody who is not laughing.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(-2.10, 0, -3.62)} rotationY={EAST} animation="press" face="grin" />
+          <Hero position={SPOT.at(-2.10, 0, -3.58)} rotationY={NORTH} animation="press" face="grin" />
           <Rings at={SPOT.at(-2.10, 1.20, -3.94)} t={t} from={JOKE} />
-          <SoundRings position={SPOT.at(-2.10, 1.26, -3.92)} rotationY={SOUTH} t={t - JOKE} reach={1.05} color="#e8f4ff" />
+          <SoundRings position={SPOT.at(-2.10, 1.26, -3.94)} rotationY={SOUTH} t={t - JOKE} reach={1.0} color="#e8f4ff" />
         </>
       ),
     },
@@ -106,7 +109,7 @@ export const scene2 = storyScene(timing, {
       cue: "2.bus",
       // From the road, at the height of the sign: the roundel end-on, his hand up at it, and his face turned to the
       // lens. The first lens sat 0.37 m from the back of his head and the frame was all hair.
-      ...cam.push({ on: S(1.55, 1.62, 1.15), dist: 2.95, to: 2.45, yaw: 24, pitch: 2, fov: 46 }),
+      ...cam.push({ on: S(1.55, 1.45, 0.90), dist: 2.95, to: 2.45, yaw: -25, pitch: 3, fov: 46 }),
       zone: "street",
       look: "overworld-night",
       note: "The bus stop roundel lit red from the lamp with his hand flat on the sign, his face turned out to the road: one sentence, said again, at midnight.",
@@ -156,14 +159,14 @@ export const scene2 = storyScene(timing, {
       cue: "2.gymb",
       // Side-on and close, lens to the south of him looking north: the knuckles on the plaster on one side of the
       // frame and his ear going to it on the other.
-      ...cam.push({ on: G(-7.72, 1.26, 0.12), dist: 1.95, to: 1.55, yaw: 178, pitch: 0, fov: 44 }),
+      ...cam.push({ on: G(-7.62, 1.34, 0.10), dist: 2.75, to: 2.30, yaw: 158, pitch: 2, fov: 46 }),
       zone: "gym",
       look: "overworld-day",
       note: "Close and side-on: his knuckles white on the bare plaster, and then the side of his head going to the wall to listen to a wall that has nothing to say.",
       stage: (t) => (
         <>
-          <Hero position={G(-7.70, 0, 0.12)} rotationY={WEST + 0.05} animation="press" face="ouch" />
-          <Rings at={G(-7.92, 1.20, 0.12)} t={t} from={KNOCK} />
+          <Hero position={G(-7.70, 0, 0.10)} rotationY={WEST + 0.05} animation="press" face="ouch" />
+          <Rings at={G(-7.94, 1.20, 0.10)} t={t} from={KNOCK} />
         </>
       ),
     },
@@ -175,7 +178,7 @@ export const scene2 = storyScene(timing, {
       // lens is behind his right shoulder: hand, grout, the edge of the mirror and the toothbrushes in one frame.
       // Solved by projection: from the corner of the basin, looking east along the tiles. His face centres in the
       // frame, the hand on the grout holds the left edge, and the near edge of the mirror comes into the right.
-      ...cam.push({ on: B(0.15, 1.34, -0.90), dist: 2.40, to: 1.95, yaw: -68, pitch: 2, fov: 52 }),
+      ...cam.push({ on: B(-0.35, 1.34, -0.85), dist: 1.70, to: 1.42, yaw: 90, pitch: 2, fov: 44 }),
       zone: "bath",
       look: "overworld-day",
       note: "Along the bathroom tiles from the corner of the basin, the edge of the mirror on one side and his palm flat on the white grout on the other: a sentence coming out of the plumbing.",
@@ -192,14 +195,14 @@ export const scene2 = storyScene(timing, {
       cue: "2.mirrorb",
       // His face and the mirror's edge together: he is looking INTO the glass and the audience is looking at him,
       // which is what the line is about. The voice sits between the two, at the height of a person standing there.
-      ...cam.push({ on: B(0.10, 1.46, -0.68), dist: 1.90, to: 1.50, yaw: -58, pitch: 2, fov: 42 }),
+      ...cam.push({ on: B(-0.35, 1.42, -0.70), dist: 1.81, to: 1.48, yaw: 28, pitch: 1, fov: 42 }),
       zone: "bath",
       look: "overworld-day",
       note: "His face close and turned into the mirror, eyes wet, and the sentence six years old: the first thing the power gives him that he wanted.",
       stage: () => (
         <>
-          <Hero position={B(-0.20, 0, -0.74)} rotationY={NORTH + 0.42} animation="idle" face="calm" headPitch={-0.1} />
-          <ChestVoice at={B(-0.74, 1.40, -1.00)} t={SIX} />
+          <Hero position={B(-0.35, 0, -0.72)} rotationY={SOUTH - 0.5} animation="idle" face="calm" headPitch={-0.08} />
+          <ChestVoice at={B(0.06, 1.40, -1.02)} t={SIX} />
         </>
       ),
     },

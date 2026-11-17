@@ -64,7 +64,7 @@ export const scene6 = storyScene(timing, {
       cue: "8.wall",
       // The north wall between the window and the fridge: plaster, the painted splash-back, and no actor. The lens
       // sits on the room side of it and looks along the surface, so the rings read against the wall and not the air.
-      ...cam.push({ on: K(-0.90, 1.30, -3.02), dist: 2.25, to: 1.80, yaw: 62, pitch: 2, fov: 44 }),
+      ...cam.push({ on: K(-0.90, 1.32, -2.55), dist: 2.90, to: 2.40, yaw: 34, pitch: 2, fov: 46 }),
       zone: "kitchen",
       look: "overworld-day",
       note: "The kitchen wall between the window and the fridge taking the sentence with nobody in frame: the one wall in the film that hears something for the first time.",

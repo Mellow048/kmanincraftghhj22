@@ -78,7 +78,7 @@ export const scene3 = storyScene(timing, {
       cue: "3.tally",
       // Down on the card, not on the rug: the room's floor is a 2.4 x 2 m mat at y 0.02 and the card is laid on the
       // boards beside it, so the lens is 1.4 m up and 30 degrees off vertical and the ticks are readable at phone size.
-      ...cam.push({ on: R(-0.55, 0.10, -1.10), dist: 1.55, to: 1.30, yaw: 14, pitch: 40, fov: 46 }),
+      ...cam.push({ on: R(-0.55, 0.10, -1.10), dist: 1.90, to: 1.58, yaw: 14, pitch: 40, fov: 46 }),
       zone: "room",
       look: "overworld-night",
       note: "Down on his bedroom floorboards: a ruled card with a tick against every wall he has spent, a pencil still moving on the next line, and the dark under the bed behind it.",
