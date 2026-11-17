@@ -9,7 +9,7 @@ import { Chair, Chest, DAD, DOOR, Dad, GARDEN, ME, Me, Sword, Table, Zombie, fit
  * the sun comes through the back opening). The cut between those two lights is the story.
  */
 
-const NIGHT = "lantern-night" as const;
+const NIGHT = "overworld-night" as const;
 const DAY = "overworld-day" as const;
 const ROOM = "warm-room" as const;
 
@@ -25,7 +25,7 @@ export const scenes = storyScene(timing, {
     // ---------------------------------------------------------------- 01 hook
     {
       cue: "1.door",
-      ...cam.push({ on: [0, 1.25, -0.42], dist: 3.4, to: 3.0, yaw: 180, pitch: 2, fov: 50 }),
+      ...cam.push({ on: [0, 1.2, -0.3], dist: 2.7, to: 2.45, yaw: 178, pitch: 3, fov: 54 }),
       look: ROOM,
       note: "The fact of the film in one frame: his back in the doorway, the night outside, and the house dark behind him.",
       stage: () => <Dad position={DAD} rotationY={0} animation="idle" face="bearded" />,
@@ -97,7 +97,7 @@ export const scenes = storyScene(timing, {
     },
     {
       cue: "3.floor",
-      ...cam.push({ on: [0.2, 2.55, -2.3], dist: 3.2, to: 3.0, yaw: 168, pitch: 26, fov: 52 }),
+      ...cam.push({ on: [0.5, 2.0, -2.4], dist: 3.6, to: 3.3, yaw: 158, pitch: 15, fov: 56 }),
       look: ROOM,
       note: "Up at the new ceiling over his head: the second floor the boy built, and the ladder still leaning under it.",
       stage: () => <Dad position={DAD} rotationY={0} animation="idle" face="bearded" />,

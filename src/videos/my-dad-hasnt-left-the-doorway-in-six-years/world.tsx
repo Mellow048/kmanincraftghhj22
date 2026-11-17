@@ -35,6 +35,13 @@ const Wall: React.FC = () => (
     ))}
     <Block position={[2.15, 3.12, -3.9]} size={[0.9, 0.12, 0.9]} color="#8a5f34" />
 
+    {/* Interior light: the wall lamps are the only reason the inside of this house is not a black box.
+        The front wall blocks the sun, so these do the work on every shot that faces the door. */}
+    <pointLight position={[-1.9, 2.15, -1.4]} color="#ffb877" intensity={11} distance={9} decay={2} />
+    <pointLight position={[1.9, 2.15, -3.6]} color="#ffc890" intensity={9} distance={8} decay={2} />
+    <Glow position={[-1.85, 2.2, -1.35]} size={1.0} color="#ffbe80" opacity={0.55} />
+    <LightPool position={[-1.2, 0.04, -2.0]} width={4.6} depth={4.6} color="#ff9a45" opacity={0.2} />
+
     {/* A chest by the door, lid open. It is the inventory beat. */}
     <Vox kind="planks" position={[-1.75, 0.02, -1.05]} size={[1.0, 0.04, 0.84]} />
   </>
