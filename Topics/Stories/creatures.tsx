@@ -14,7 +14,7 @@ import {
 import type { Vec3 } from "../../src/engine";
 
 /**
- * The monsters of the "In This Town" films, built from boxes.
+ * The monsters the pack's films use, built from boxes (first built for In This Town).
  *
  * Every creature faces +Z, stands with its feet on `position`, and animates
  * itself from the film clock. Shared by every film in this topic.

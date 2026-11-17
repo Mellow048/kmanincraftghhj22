@@ -8,7 +8,7 @@ import { scene1 } from "./scene1";
  *
  * TODO: the film in three sentences. Who tells it, the rule nobody explains, what the rule was hiding.
  *
- * An "In This Town" film (Topics/Stories): the recorded narration is the clock, and every line of
+ * A Stories film (Topics/Stories): the recorded narration is the clock, and every line of
  * narration.md is one shot. Read Topics/Stories/README.md before changing anything here.
  *
  * `cut: "short"` is the one-to-two-minute cut (14 beats). Delete the line for the three-minute cut (18 beats).
@@ -16,7 +16,7 @@ import { scene1 } from "./scene1";
 export const film = defineFilm({
   id: "__ID__",
   title: "__TITLE__",
-  topic: "in-this-town",
+  topic: "stories",
   cut: "short",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:

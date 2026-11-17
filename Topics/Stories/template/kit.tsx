@@ -7,7 +7,7 @@ import timingJson from "./timing.json";
 /**
  * This film's own cast and places.
  *
- * Everything another "In This Town" film could use is in the topic's pack, Topics/Stories
+ * Everything another Stories film could use is in the topic's pack, Topics/Stories
  * (catalogue with pictures: Topics/Stories/PACK.md). It is passed on from here, so a scene
  * imports only from "./kit". Build something new here ONLY if the pack does not have it; if a
  * second film could use it, put it in the pack instead.

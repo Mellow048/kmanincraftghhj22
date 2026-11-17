@@ -72,8 +72,9 @@ spent three of its five scenes on the ending.
 Each move is what the script does, the words that do it, and the rule for ours.
 
 **1. The title is the first sentence.** "In this town, we all lived in a giant tree house high above the clouds."
-Fifteen words, four seconds, no greeting, no "let me tell you". *Rule: sentence one is "In this town," plus one fact
-that cannot be normal. It is also the title of the video.*
+Fifteen words, four seconds, no greeting, no "let me tell you". *Rule: sentence one is one fact that cannot be normal,
+in the first three words, and it is also the title of the video. It does not need to name a place: "I could hear every
+sentence you decided not to say" hooks the same way, and so does any premise whose picture proves it instantly.*
 
 **2. Three questions in eleven seconds.** How did we get here? How do we get down? Why does not even the oldest man
 remember the ground? Nothing has happened yet and the viewer already has three reasons to stay. *Rule: before
@@ -145,7 +146,7 @@ Write to these budgets. The total should land between 640 and 770 words.
 
 | # | Beat | Words | Write |
 |---|---|---|---|
-| 1 | Hook | 12–18 | "In this town," + the impossible fact |
+| 1 | Hook | 12–18 | The impossible fact, in the first three words |
 | 2 | Mysteries | 30–45 | What nobody knows. Two or three things |
 | 3 | The tour | 70–100 | How the town lives. Lists of three. Things only. End on "It was actually a pretty good …" |
 | 4 | The itch | 12–25 | "but there was one thing…" + the wish, as a question or one flat fact |
@@ -166,7 +167,7 @@ Write to these budgets. The total should land between 640 and 770 words.
 
 ## 6. Before you record
 
-- [ ] Sentence one starts "In this town," and is the title.
+- [ ] Sentence one states the impossible fact in its first three words, and is the title. (No required phrase.)
 - [ ] "Nobody knew" (or the same idea) twice before second 12.
 - [ ] The tour is only things a camera can see, and nothing has gone wrong yet.
 - [ ] The wish fits in five words.

@@ -34,7 +34,7 @@ src/videos/<film>/sceneN.tsx    imports only from "./kit"
 src/videos/<film>/world.tsx     lays the town out with the pack's places
 ```
 
-`npm run new -- "In This Town, …" --topic in-this-town` gives you a `kit.tsx` and a `world.tsx` that are already
+`npm run new -- "<Your Title>" --topic stories` gives you a `kit.tsx` and a `world.tsx` that are already
 wired this way. The reference for both is `src/videos/in-this-town-same-face/`.
 
 **Before you build anything, look for it here.** If it is not here and a second film could use it, build it here
