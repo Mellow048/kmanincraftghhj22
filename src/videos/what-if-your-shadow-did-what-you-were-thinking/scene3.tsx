@@ -222,10 +222,10 @@ export const scene3 = storyScene(timing, {
     {
       // Acceptance, then a new stair.
       cue: "12.wrong",
-      // The last joke shot: the whole class, and every one of them with a shadow doing something else. It has to be
-      // seen from the FRONT of the room looking back at the desks, or the class is behind the camera and the gag is
-      // just one boy sitting still.
-      ...cam.push({ on: SPOT.at(0, 1.25, 1.6), dist: 3.9, to: 3.5, yaw: 178, pitch: 6, fov: 50 }),
+      // The last joke: every kid's shadow doing something else. The class sits facing the board, so the ONLY lens that
+      // sees nine faces at once is at the board looking south - and it has to stand back far enough to clear the desks,
+      // or the back row's heads fill the bottom of frame (which is what the last two attempts did).
+      ...cam.push({ on: SPOT.at(0, 1.65, 0.9), dist: 5.6, to: 5.0, yaw: 179, pitch: 10, fov: 52 }),
       zone: "class",
       note: "Back in the classroom daylight, which should feel wrong after the dark street: the whole class around him, every one of them with a shadow doing something different, and he is looking at his own. The film has to come back to the joke one last time before it asks anything of the viewer.",
       stage: (t) => (
@@ -285,7 +285,7 @@ export const scene3 = storyScene(timing, {
       cue: "12.sub2",
       // The sign has to be against a clean piece of wall: at z -3.4 it stood in front of the board's own lettering
       // and the two read as one double-exposed word. Off to the right of the board, and closer.
-      ...cam.push({ on: SPOT.at(2.6, 2.05, -3.7), dist: 1.9, to: 1.62, yaw: 4, pitch: 0, fov: 38 }),
+      ...cam.push({ on: SPOT.at(2.6, 2.05, -3.78), dist: 2.6, to: 2.3, yaw: 0, pitch: 0, fov: 34 }),
       zone: "class",
       note: "SPLIT: the ask, tight on the drawing and the sign together, so the last frame is the house that was on the wall all along and the reason to stay.",
       stage: (t) => (
