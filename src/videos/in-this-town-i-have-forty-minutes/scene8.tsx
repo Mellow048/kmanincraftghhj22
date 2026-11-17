@@ -119,7 +119,7 @@ export const scene8 = storyScene(timing, {
           <Shop position={[1.15, 0, 2.2]} bush={false} slime={false} />
           <Him cue="8.sub" t={t} position={ME} rotationY={SOUTH} carry={<Emerald position={[0, 0.1, 0.03]} scale={1.3} />} strain={0.8} rise={hop(t, w("8.sub", "llamas") - 0.05, 0.2, 0.3)} clockScale={0.55} />
           <SubscribeSign position={[0, 3.75 + Math.sin(t * 8) * 0.05, 2.0]} scale={0.95 * pop(t, w("8.sub", "subscribe") - 0.2, 0.2)} tilt={Math.sin(t * 5) * 0.05} />
-          <Thought position={[0.82, 2.2, 2.2]} scale={0.72 * pop(t, w("8.sub", "llamas") - 0.25, 0.22)} t={t} />
+          <Thought position={[0.68, 2.2, 2.2]} scale={0.66 * pop(t, w("8.sub", "llamas") - 0.25, 0.22)} t={t} />
         </>
       ),
     },

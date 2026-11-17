@@ -729,7 +729,7 @@ export const Shop: React.FC<{ position?: Vec3; rotationY?: number; sapling?: boo
 );
 const VENDOR = {
   baker: { robe: ROBE.white, cloth: "#c9862a", spot: SPOT.baker, turn: 0.5 },
-  fisher: { robe: ROBE.blue, cloth: "#3f7f9a", spot: SPOT.fisher, turn: -0.5 },
+  fisher: { robe: "#2e8f88", cloth: "#3f7f9a", spot: SPOT.fisher, turn: -0.5 },
   farmer: { robe: ROBE.farmer, cloth: "#5f9a3a", spot: SPOT.farmer, turn: 1.2 },
 } as const;
 export type Who = keyof typeof VENDOR;

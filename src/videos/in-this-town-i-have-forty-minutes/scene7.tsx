@@ -87,7 +87,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.bread",
-      ...cam.push({ on: [stallOf("baker")[0] + 0.06, 1.3, stallOf("baker")[2] + 0.1], dist: 6.0, to: 5.5, yaw: sideYaw("baker"), pitch: 4, fov: 46 }),
+      ...cam.push({ on: [stallOf("baker")[0] + 0.06, 1.3, stallOf("baker")[2] + 0.11], dist: 7.4, to: 6.9, yaw: sideYaw("baker"), pitch: 4, fov: 46 }),
       zone: "dark",
       look: "overworld-night",
       note: "The baker's shop from the side, the same picture as this afternoon, lit by a torch. This time the emerald goes across the table and the loaf comes back. On 'his first sale too' the baker stares into his own sleeves.",
@@ -120,11 +120,12 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Square t={t} night folk={0} away={["baker", "fisher"]} />
-            {lights}
+            <NightLights power={0.45} />
+            <Post cut />
                         <Shop price="" bush={false} />
-            <Him cue="7.round" t={t} rotationY={NORTH} carry={<Loaf position={[0, 0.2, 0.02]} />} clockScale={0.85} />
+            <Him cue="7.round" t={t} rotationY={NORTH} carry={<Loaf position={[0, 0, 0.02]} />} clockScale={0.85} />
             <Person {...bk} robe={ROBE.white} carry={b > 0 ? <Fish position={[0, 0.2, 0.02]} /> : em(0.25, 1.6)} strain={0.8} />
-            <Person {...fs} robe={ROBE.blue} carry={em(0.25, 1.6)} strain={0.8} />
+            <Person {...fs} robe={vendorAt("fisher").robe} carry={em(0.25, 1.6)} strain={0.8} />
             <Trail pts={WAY} k={(0.22 + 0.33 * a + 0.3 * b)} t={t} />
           </>
         );
@@ -132,7 +133,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.town",
-      ...cam.push({ on: [stallOf("farmer")[0] + 0.12, 1.3, stallOf("farmer")[2] + 0.04], dist: 6.0, to: 5.5, yaw: sideYaw("farmer"), pitch: 4, fov: 46 }),
+      ...cam.push({ on: [stallOf("farmer")[0] + 0.12, 1.3, stallOf("farmer")[2] + 0.05], dist: 7.4, to: 6.9, yaw: sideYaw("farmer"), pitch: 4, fov: 46 }),
       zone: "dark",
       look: "overworld-night",
       note: "The farmer's shop. The fisherman puts the emerald on the table and takes a carrot. The farmer, in his straw hat, holds the emerald up to the torch.",
@@ -145,7 +146,7 @@ export const scene7 = storyScene(timing, {
             {lights}
             <NightLights at={[-2.4, 0, 4.9]} />
             <Vendor who="farmer" carry={swap ? em(0.2, 1.4) : <Carrot position={[0, 0.2, 0.02]} scale={1.2} />} strain={1} nod={swap ? -0.3 : 0} />
-            <Person position={[f.position[0], hop(t, 0.6, 0.15, 0.3), f.position[2]]} rotationY={f.rotationY} robe={ROBE.blue} carry={swap ? <Carrot position={[0, 0.12, 0.02]} scale={1.2} /> : em(0.14, 1.3)} strain={0.8} />
+            <Person position={[f.position[0], hop(t, 0.6, 0.15, 0.3), f.position[2]]} rotationY={f.rotationY} robe={vendorAt("fisher").robe} carry={swap ? <Carrot position={[0, 0.12, 0.02]} scale={1.2} /> : em(0.14, 1.3)} strain={0.8} />
           </>
         );
       },
@@ -168,7 +169,7 @@ export const scene7 = storyScene(timing, {
               <Person key={who} position={[v.position[0], hop((t + i * 0.3) % 0.7, 0.05, 0.3, 0.4), v.position[2]]} rotationY={v.rotationY} robe={v.robe} carry={who === "baker" ? <Fish position={[0, 0.3, 0.02]} /> : <Carrot position={[0, 0.3, 0.02]} scale={1.3} />} strain={1} />
             );
           })}
-          <Him cue="7.why" t={t} rotationY={SOUTH} face={-4 * DEG} carry={<Loaf position={[0, 0.1 + 0.05 * Math.sin(t * 8), 0.02]} />} strain={0.9} nod={0.15 + 0.12 * Math.sin(t * 8)} clockScale={0.62} />
+          <Him cue="7.why" t={t} rotationY={SOUTH} face={-4 * DEG} carry={<Loaf position={[0, -0.06 + 0.04 * Math.sin(t * 8), 0.02]} />} strain={0.5} nod={0.15 + 0.12 * Math.sin(t * 8)} clockScale={0.62} />
         </>
       ),
     },
@@ -234,7 +235,7 @@ export const scene7 = storyScene(timing, {
       stage: (t) => (
         <>
           <Square t={t} night folk={0} away={["farmer"]} />
-          <NightLights />
+          <NightLights power={0.7} />
           <Puffs position={[ME[0], 0.9, ME[2]]} count={10} spread={0.55} size={0.32} rise={1.2} speed={2.2} color="#cfd6e4" />
           <Puffs position={[SPOT.shop[0], 0.8, SPOT.shop[2]]} count={10} spread={0.7} size={0.32} rise={1.2} speed={2.0} color="#cfd6e4" seed={9} />
           <Clock position={[0, 2.55 - 2.1 * tw(t, 0.3, 0.8) ** 2, 3]} sec={0} scale={0.7} rotationY={-8 * DEG} />

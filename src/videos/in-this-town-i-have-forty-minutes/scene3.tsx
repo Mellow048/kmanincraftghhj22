@@ -9,8 +9,8 @@ import type { Who } from "./kit";
 const pitchCam = (who: Who, flip: number) => {
   const f = front(who, 1.0);
   const [sx, , sz] = stallOf(who);
-  const on: [number, number, number] = [sx + (f.position[0] - sx) * 0.12, 1.3, sz + (f.position[2] - sz) * 0.12];
-  return { on, dist: 6.2, to: 5.6, yaw: sideYaw(who, flip), pitch: 4, fov: 46 };
+  const on: [number, number, number] = [sx + (f.position[0] - sx) * 0.125, 1.3, sz + (f.position[2] - sz) * 0.125];
+  return { on, dist: 7.6, to: 7.0, yaw: sideYaw(who, flip), pitch: 4, fov: 46 };
 };
 const pitchStage = (t: number, cue: string, who: Who, said: string, mine: React.ReactNode, his: React.ReactNode, flip: number) => {
   const f = front(who, 1.0);
@@ -61,7 +61,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.same",
-      ...cam.push({ on: [stallOf("fisher")[0] - 0.1, 1.3, stallOf("fisher")[2] + 0.2], dist: 3.3, to: 2.9, yaw: sideYaw("fisher", -1), pitch: 10, fov: 46 }),
+      ...cam.push({ on: [stallOf("fisher")[0] - 0.05, 1.3, stallOf("fisher")[2] + 0.1], dist: 4.6, to: 4.2, yaw: sideYaw("fisher", -1), pitch: 10, fov: 46 }),
       zone: "town",
       look: "overworld-day",
       note: "The two fish, close, side by side over the table: his small orange one in its bucket, and the fisherman's, three times the size. He looks from one to the other.",
