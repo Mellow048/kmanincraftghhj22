@@ -168,6 +168,9 @@ export const World: React.FC = () => {
       <Zone name="hall">
         <SchoolHall at={PLACE.hall} length={14} sign="ROOM 9" />
         <LightPool position={[PLACE.hall[0], 0.03, PLACE.hall[2] + 1.0]} width={7} depth={3.4} color="#fff2c8" opacity={0.12} />
+        {/* The hall had a LightPool, which is a decal on the floor, and no lamp at all - so 3.what, which
+            needs his face AND the sentence coming out of the doorway behind him, rendered as bare wall. */}
+        <pointLight position={[PLACE.hall[0] - 0.6, 2.90, PLACE.hall[2] + 1.6]} color="#fff2c8" intensity={22} distance={11} decay={1.8} />
         <Dust position={[PLACE.hall[0], 1.7, PLACE.hall[2] + 0.6]} area={[9, 2.4, 3.2]} count={30} size={0.03} color="#fff7d8" opacity={0.4} seed={37} speed={0.12} />
       </Zone>
 
