@@ -99,6 +99,10 @@ export const World: React.FC = () => {
           <LightPool position={[2.0, 0.02, -0.2]} width={4} depth={3} color="#cfe0ff" opacity={0.16} />
           <Glow position={[5.4, 3.2, 0.2]} size={2.6} color="#ffe4b0" opacity={0.22} />
           <GodRay position={[5.4, 2.4, 0.4]} rotation={[0, 0, 0.08]} width={0.8} height={3.2} color="#ffe4b0" opacity={0.1} />
+          {/* A fill from the road, where every lens in this film lives. Without it a face turned to the camera at
+              midnight is a black box: the lamps light the pavement, and the camera is never on the pavement. */}
+          <pointLight position={[1.6, 2.6, 6.2]} color="#b9c8ff" intensity={26} distance={16} decay={2} />
+          <pointLight position={[-4.2, 2.4, 2.6]} color="#c9d6ff" intensity={14} distance={9} decay={2} />
           <Dust position={[2, 1.9, 0.4]} area={[18, 3, 6]} count={40} size={0.03} color="#ffe9c8" opacity={0.3} seed={7} speed={0.09} />
         </group>
       </Zone>

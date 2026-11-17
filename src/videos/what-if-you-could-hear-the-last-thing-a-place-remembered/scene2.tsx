@@ -76,7 +76,7 @@ export const scene2 = storyScene(timing, {
       // Head-on at the wall, from his shoulder-line: he is in profile with his palm on the board wall, and the board
       // and its chalk run across the top of the frame he has his ear against. (Two earlier lenses on this cue framed
       // a window, then put the camera outside the room.)
-      ...cam.push({ on: SPOT.at(-1.35, 1.32, -3.30), dist: 1.95, to: 1.62, yaw: -16, pitch: 4, fov: 44 }),
+      ...cam.push({ on: SPOT.at(-1.35, 1.32, -3.30), dist: 3.00, to: 2.55, yaw: -16, pitch: 4, fov: 44 }),
       zone: "class",
       look: "overworld-day",
       note: "Him in profile with his palm flat on the board wall and his ear against the chalk: the classroom giving the teacher's worst joke back to somebody who is not laughing.",
