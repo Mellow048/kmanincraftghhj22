@@ -1,6 +1,6 @@
 import type React from "react";
 import { Block, PixelText, cam, storyScene } from "../../engine";
-import { Adult, Hero, K, Mum, NORTH, SOUTH, WEST, ramp, timing, wordAt } from "./kit";
+import { Adult, Hero, HOME, K, Kitchen, Mum, NORTH, PLACE, Reflection, SOUTH, WEST, ramp, timing, wordAt } from "./kit";
 import { Rings } from "./scene1";
 import { SubscribeSign, SoundRings } from "./kit";
 
@@ -62,15 +62,24 @@ export const scene6 = storyScene(timing, {
       // The wall takes it: a hard cut to the plaster beside the window, no actor in frame, and the sentence going
       // into it and staying. The last time the power works in the film, and it works away from him.
       cue: "8.wall",
-      // The north wall between the window and the fridge: plaster, the painted splash-back, and no actor. The lens
-      // sits on the room side of it and looks along the surface, so the rings read against the wall and not the air.
-      ...cam.push({ on: K(-0.90, 1.32, -2.35), dist: 3.40, to: 2.85, yaw: 26, pitch: 2, fov: 48 }),
+      // THE REVEAL, and the film's thesis in one frame: the kitchen's tall west mirror, the two of them in the
+      // glass, and the wall the sentence just went into behind them. Three earlier versions of this shot were a
+      // bare plaster slab with a ring effect on it -- true, and worth nothing. The power has spent the whole film
+      // being other people's voices in empty rooms; the last time it happens, there are two people in the room.
+      ...cam.push({ on: K(-1.95, 1.40, 1.60), dist: 2.60, to: 2.25, yaw: 90, pitch: 3, fov: 48 }),
       zone: "kitchen",
       look: "overworld-day",
-      note: "The kitchen wall between the window and the fridge taking the sentence with nobody in frame: the one wall in the film that hears something for the first time.",
+      note: "The kitchen mirror with both of them in it, his mother at the sink and him a metre behind her, and the wall the sentence has just gone into beside them.",
       stage: (t) => (
         <>
-          <Rings at={K(-0.90, 1.24, -3.06)} t={t} from={TAKE} />
+          <Reflection glass={HOME.glass}>
+            <Kitchen at={PLACE.kitchen} image />
+            <Mum position={K(-2.30, 0, -1.70)} rotationY={SOUTH} animation="talk" face="calm" />
+            <Hero position={K(-1.35, 0, -0.40)} rotationY={NORTH + 0.2} animation="idle" face="wow" />
+          </Reflection>
+          <Mum position={K(-2.30, 0, -1.70)} rotationY={SOUTH} animation="talk" face="calm" />
+          <Hero position={K(-1.35, 0, -0.40)} rotationY={NORTH + 0.2} animation="idle" face="wow" />
+          <Rings at={K(-2.30, 1.26, -2.70)} t={t} from={TAKE} />
         </>
       ),
     },
