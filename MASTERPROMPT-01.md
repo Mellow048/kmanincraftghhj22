@@ -321,3 +321,37 @@ Your objective is not simply to produce more videos.
 Your objective is to produce original, coherent, entertaining Minecraft stories using the strengths demonstrated by Monster Village Part 1.
 
 **Understand the reference. Learn its principles. Create something better without destroying what made it work.**
+
+
+---
+
+## How to do Stage 6 in this repository (added by the agent, 2026-11-11)
+
+The brief above was written for somebody who can watch a video. An agent in this repository usually cannot: images
+come back as "no vision capabilities", and the honest answer to "does this hold a viewer?" has to be measured
+instead of seen. `scripts/film-metrics.py` is that measurement. It decodes the finished mp4 and answers the
+self-review questions as numbers:
+
+```bash
+pip install numpy imageio-ffmpeg
+python3 scripts/film-metrics.py renders/<film>.mp4 --cues        # every shot: is it visible, does it move, are the captions there
+python3 scripts/film-metrics.py --all                            # every film in renders/, side by side
+python3 scripts/film-metrics.py <film> --timeline                # second by second: where it goes black or goes still
+```
+
+Run it on the reference first. Monster Village Part 1, the film that passed 15,000 views, measures like this:
+
+| | Monster Village Part 1 (221 s) |
+|---|---|
+| shots | 89, one every 2.3 s (median), longest 6.4 s |
+| light | 101 at the start, 62 in the middle, 75 at the end: day → dark → lantern light |
+| opening | detail 65, motion 3.4 — it moves, and there is something in the frame |
+| frames that are nearly one flat surface | 0 % |
+| frames that are nearly black | 0 % |
+| captions | present through the whole film, matched to the words |
+
+A film of ours that lands far from those numbers is a film with a problem, and the per-shot table says which shot.
+That is how the two What If films were remastered on 2026-11-11: the second shot of *Every Lie Added a Netherite
+Block* measured **24.6 luma out of 255 — a black screen two seconds into the film** — and the night stretch of
+*I Could Hear What Blocks Remember* had four shots where half of every frame was below ten. Both were fixed by
+lighting and framing, then re-measured, then re-rendered.
