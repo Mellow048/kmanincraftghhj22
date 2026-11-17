@@ -46,7 +46,7 @@ export const scene2 = storyScene(timing, {
       note: "Two kids standing in the aisle between the desks: the teller leaning in, doing somebody a favour he was not asked for, and the other boy with his bag already on his shoulder telling him where to go. The clock over the second boy is at ten and it stays at ten, because nothing about this is going to set him off.",
       stage: (t) => (
         <>
-          <Hero position={[ME[0] - 0.3, 0, ME[2] - 1.3]} rotationY={NORTH + 0.3} animation="idle" face="brave" />
+          <Hero position={[ME[0] - 0.3, 0, ME[2] - 1.3]} rotationY={-2.90} animation="idle" face="brave" />
           <Classmate who={5} position={[ME[0] + 0.7, 0, ME[2] - 2.1]} rotationY={NORTH - 0.5} animation="idle" face="frown" />
           <BigNumber n="10"over={[ME[0] + 0.7, 0, ME[2] - 2.1]} size={0.62} t={t - WARN}   rotationY={3.4208}/>
         </>

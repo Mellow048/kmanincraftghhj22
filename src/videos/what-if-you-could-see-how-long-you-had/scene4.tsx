@@ -71,7 +71,7 @@ export const scene4 = storyScene(timing, {
         const k = ramp(t, 0, 1.2);
         return (
           <>
-            <Hero position={[SPOT.seat(2, 0)[0] + 1.6 - 0.5 * k, 0, SPOT.seat(2, 0)[2] + 1.4]} rotationY={NORTH} animation="idle" face="fear" />
+            <Hero position={[SPOT.seat(2, 0)[0] + 1.6 - 0.5 * k, 0, SPOT.seat(2, 0)[2] + 1.4]} rotationY={-2.46} animation="idle" face="fear" />
             <Classmate who={2} position={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} rotationY={NORTH + 0.4} animation="idle" face="calm" />
             <BigNumber n="1"over={[SPOT.seat(2, 0)[0] + 0.15, 0, SPOT.seat(2, 0)[2] - 0.35]} size={0.62} t={t - JO3}   rotationY={3.5954}/>
           </>
