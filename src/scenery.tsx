@@ -119,7 +119,8 @@ export const scenerySunset = defineFilm({
   width: 1080,
   height: 1920,
   look: "overworld-sunset",
-  post: { shaders: true },
+  // The sunset look is already orange, so the grade only has to finish it, not start it.
+  post: { shaders: { warmth: 0.45, saturation: 1.25, shafts: 0.5 } },
   World,
   scenes: [SCENE],
 });
@@ -131,7 +132,8 @@ export const sceneryNight = defineFilm({
   width: 1080,
   height: 1920,
   look: "lantern-night",
-  post: { shaders: true },
+  // A night sky has no sun to bloom, so the threshold drops to where the lanterns live.
+  post: { shaders: { bloom: 0.7, threshold: 1.02, warmth: 0.55, lift: 0.035, shafts: 0 } },
   World,
   scenes: [SCENE],
 });

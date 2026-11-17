@@ -90,12 +90,12 @@ void main() {
   // Cloud: a flat layer overhead, thick where it is thick, thinning towards the horizon the way
   // a layer does when you look along it instead of up through it.
   if (uClouds > 0.001 && h > 0.0) {
-    vec3 cp = d / max(h, 0.12) * uCloudHeight;
+    vec3 cp = d / max(h, 0.22) * uCloudHeight;
     cp.x += uTime * 0.35;
     cp.z += uTime * 0.12;
     float cl = fbm(cp * uCloudScale);
     cl = smoothstep(uCloudCover, uCloudCover + 0.30, cl);
-    cl *= smoothstep(0.02, 0.30, h);
+    cl *= smoothstep(0.06, 0.40, h);
     // Lit from the sun side, and a bright rim where the sun is straight through it.
     float lit = 0.35 + 0.65 * pow(sd, 3.0);
     float rim = pow(cl, 0.6) * pow(sd, 24.0);
@@ -152,7 +152,7 @@ export const Sky: React.FC<{ sky: SkySettings; sunDir: THREE.Vector3 }> = ({ sky
         uSunPower: { value: sky.sunPower ?? 0.9 },
         uHaze: { value: sky.haze ?? 0.55 },
         uClouds: { value: sky.clouds ?? 0 },
-        uCloudScale: { value: sky.cloudScale ?? 0.22 },
+        uCloudScale: { value: sky.cloudScale ?? 1.0 },
         uCloudCover: { value: sky.cloudCover ?? 0.48 },
         uCloudHeight: { value: sky.cloudHeight ?? 8 },
         uDither: { value: sky.dither ?? 0.004 },
