@@ -1,0 +1,69 @@
+# Review against the master prompt: In This Town, Being Scared Is My Job
+
+Reviewed 2026-11-17 against `Topics/InThisTown/MASTERPROMPT.md` (read it first). This file is the eleven things its
+section 6 asks for; where one of them already lives in another file, it points there.
+
+| # | Asked for | Where |
+|---|---|---|
+| 1 | Title | **In This Town, Being Scared Is My Job** |
+| 2 | Premise, one sentence | A villager whose job is to scream at the zombie outside his window makes friends with the zombie, and finds out what the job was for. |
+| 3 | Three hooks and the one chosen | Below |
+| 4 | Complete narration | `narration.md` (the script, clip by clip, with the reason for each beat) |
+| 5 | Timestamped storyboard | `STORYBOARD.md` (written from the film's own files by `scripts/storyboard.py`) |
+| 6 | Characters and assets | `STORYBOARD.md`, last sections; built in `kit.tsx` and `world.tsx` |
+| 7 | Caption track | The narration itself, one word at a time: `timing.json` → `words` |
+| 8 | Sound plan | `sound.json` (every effect with its reason), summary in `STORYBOARD.md` |
+| 9 | Rendered video | `renders/in-this-town-being-scared-is-my-job.mp4` (1080x1920, 30 fps, 2:23) |
+| 10 | Self-review | Below |
+| 11 | Remaining weaknesses | Below |
+
+## The concept (stage 1)
+
+| | |
+|---|---|
+| Main character | A villager in a yellow hard hat, who thinks an iron farm is a town and he is staff |
+| Audience | Minecraft players 8–16: every one of them has built this machine |
+| Conflict | No scream, no iron: the boss comes up with a new zombie and a bucket of lava for the old one |
+| Appeal | A friendship through glass (waving, tic tac toe, "urr"); the viewer knows where the iron men go |
+| Unexpected development | He screams for real, for Kevin, and the iron man that appears takes their side |
+| Payoff | "We were not the staff. We were the machine." Then the edge, at night, and a bed lighting up far below |
+
+## Three hooks (stage 2)
+
+| # | What is seen | What is said | The question it leaves |
+|---|---|---|---|
+| 1 | A villager in a glass box in the sky screams AAAH! at a zombie in a boat with a name tag, then calmly looks at us | "In this town, being scared is my job." | Why is that a job, and why is the zombie called Kevin? |
+| 2 | An iron man pops out of the air, takes one step, and water carries him off | "When we are scared enough, an iron man pops out of the air." | Where does the water go? |
+| 3 | A player holds a bucket of lava over a zombie who is waving | "And for Kevin, he had a bucket." | Will he do it? |
+
+**Chosen:** Hook 1. It has the odd job, the odd pair and the name tag in one frame, and it is the title line. Hooks 2 and 3 are the setup and the crisis.
+
+## Self-review (stage 6), on frames taken from the rendered mp4
+
+| Question | Answer |
+|---|---|
+| Do the first three seconds create curiosity? | Yes: a scream bubble at a zombie who does not react, in a glass room in the sky. |
+| Is the premise understandable at once? | Yes. |
+| Does every scene contribute? | Yes: Gary's sleep-scream and Barb's count both come back as plot (`5.eep`, `6.barb`, `7.count`). |
+| Is the middle engaging? | The boss looks up at 57 s (40%) and comes back with the rope and the bucket. |
+| Does it get more interesting? | Yes: job → friend → no iron → the boss → the real scream → the fire → the edge. |
+| Characters consistent? | Yes: hard hat, nightcap (Gary), grey bun (Barb), Kevin's red scarf and tag, the boss's red shirt. |
+| Captions accurate? | They are the narration's own words. "urr" and "eep" were taught to the aligner so they land on time. |
+| Narration intelligible? | Measured only: the voice is 13.4 dB over everything else. Nobody has listened. |
+| Does the ending deliver on the opening? | Yes: "my job" in line one, "it was never a job" at the turn. |
+| Filler? | None found. 2:23. |
+| Works alone? | Yes. |
+
+## What this review changed
+
+- **Light (master prompt 2G):** it was daylight from start to finish. Now: day for the ordinary life and the crisis, sunset from "Then it was just us", night with two torches for the edge of town, so the bed lighting up below is the brightest thing in the film.
+- **Captions over faces (2F):** five close-ups were reframed so the face sits above the caption.
+- **The last look down:** from 60 blocks the night fog made the bed a grey smudge; the lens now goes down to it.
+- Rendered at 1080x1920.
+
+## Remaining weaknesses
+
+- **The sound has been measured and never listened to.**
+- It all happens on one stone platform. The reference has streets and houses. Under the floor, the ground far below and the dusk and night at the end are the variety there is.
+- Kevin's name tag is cut by the frame edge in a few over-the-shoulder shots.
+- The owner did not review the script (automatic mode).
