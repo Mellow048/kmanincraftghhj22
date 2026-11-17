@@ -222,12 +222,13 @@ export const scene3 = storyScene(timing, {
     {
       // Acceptance, then a new stair.
       cue: "12.wrong",
-      // The last joke: every kid's shadow doing something else. THE GEOMETRY, worked out instead of guessed, because
-      // three attempts got it wrong: desks are at z = -0.9, 0.75, 2.4 and every kid faces NORTH, so the only lens
-      // that sees nine FACES is north of them looking south. `on` is the look point, so aim at the middle of the class
-      // (z +1.5) and stand north of it: yaw 0 puts the lens at z = 1.5 - dist, i.e. between the board and the front
-      // row. dist 4.2 => z -2.7, clear of the board at -3.9 and looking back over all three rows.
-      ...cam.push({ on: SPOT.at(0, 1.15, 1.5), dist: 4.2, to: 3.9, yaw: 0, pitch: 4, fov: 56 }),
+      // The last joke, and the fourth attempt at it. Two hard facts decided this frame:
+      //   1. yaw 0 puts the lens on the +Z (SOUTH) side of the look point, because the lens is
+      //      on + dist x (sin yaw, ., cos yaw). yaw 180 is the NORTH side.
+      //   2. The frame is 9:16, so a fov 56 lens at 4 m sees only 2.4 m across - a 9.4 m classroom cannot fit,
+      //      ever, from any one lens. So this is not a wide: it is a LOW DIAGONAL down the length of the room,
+      //      where depth is free and the rows recede. Lens in the front-east corner looking back across the desks.
+      ...cam.push({ on: SPOT.at(0.4, 1.20, 0.9), dist: 4.0, to: 3.7, yaw: 208, pitch: 6, fov: 58 }),
       zone: "class",
       note: "Back in the classroom daylight, which should feel wrong after the dark street: the whole class around him, every one of them with a shadow doing something different, and he is looking at his own. The film has to come back to the joke one last time before it asks anything of the viewer.",
       stage: (t) => (
@@ -289,7 +290,10 @@ export const scene3 = storyScene(timing, {
       // and the two read as one double-exposed word. Off to the right of the board, and closer.
       // The board ends at x +2.2 and the east wall is at x +4.7, so the clean strip of wall is centred on x 3.45.
       // Stand square in front of it (yaw 0) far enough back that the 1.7 m sign fits the frame with air around it.
-      ...cam.push({ on: SPOT.at(3.45, 2.05, -3.78), dist: 3.2, to: 3.0, yaw: 0, pitch: 0, fov: 36 }),
+      // The frame is 9:16, so it is NARROW: at dist 3.2 and fov 36 you see 1.17 m across, and the sign is 1.7 m.
+      // Width = 2 x dist x tan(fov/2) x (1080/1920). At dist 5.0 and fov 46 that is 1.94 m: the sign plus an edge of
+      // wall either side, which is what makes it read as a sign on a wall rather than a cropped banner.
+      ...cam.push({ on: SPOT.at(3.45, 2.05, -3.78), dist: 5.0, to: 4.6, yaw: 0, pitch: 0, fov: 46 }),
       zone: "class",
       note: "SPLIT: the ask, tight on the drawing and the sign together, so the last frame is the house that was on the wall all along and the reason to stay.",
       stage: (t) => (
