@@ -131,7 +131,7 @@ export const scene3 = storyScene(timing, {
       look: "overworld-day",
       note: "Over Kevin's shoulder again. The villager looks at him, takes the big breath, throws his head back: and nothing. A very small bubble with three dots in it.",
       stage: (t) => {
-        const open = w("3.nothing", "open") - 0.1;
+        const open = w("3.nothing", "opened") - 0.1;
         const none = w("3.nothing", "nothing") - 0.1;
         return (
           <>

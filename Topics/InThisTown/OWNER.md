@@ -323,3 +323,17 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
      present tense; the benchmark is all past tense. Ask before doing it.
   5. **Nothing here is proven.** One film with 82% is one data point, and no view or retention numbers exist yet for
      any of these five. The fix to trust is the one the numbers confirm after upload.
+
+- **2026-11-17, "perfect the 5 films just like how monster village does it".** "i need you to perfect the 5 films just
+  like how monster village does it and read the masterprompt, once done please render it and give me the direct links."
+  What that pass did, and what it teaches:
+  1. **Tell it in the past from the first word.** Film 3's first clip was in the present tense; it was written and
+     recorded again in the past ("being scared was my job"). A film may keep a present-tense frame (film 4's clock,
+     film 2's "we say hmm") as long as what happened is told in the past.
+  2. **Shot two shows the thing line two names.** Film 3's second shot had the teller's back over the zombie.
+  3. **Measure a new mix against the reference's numbers**, not only against the limits in `SOUND.md`: Monster Village
+     has the voice 14.1 dB over everything else and 87 effects a minute. Films 1 to 3 were 12.7 to 13.4 dB; they are
+     13.8 to 14.2 dB now. Film 1 still has 163 effects a minute.
+  4. One thing differs from the reference in all five and was left alone: the master has to raise these mixes about
+     2 dB and its limiter works for about a third of each film; on Monster Village it does not work at all. That is the
+     voice recording, not the sheet. **Somebody has to listen** before more is done to the sound.

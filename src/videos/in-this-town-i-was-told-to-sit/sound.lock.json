@@ -5,10 +5,10 @@
   "seconds": 146.7333,
   "built_from": {
     "timing.json": "8b95400fc8d2a61a6697313fd43f8ed32740ff81",
-    "sound.json": "16f2383bd16940735d8d3622b8f7bf1877b62946",
+    "sound.json": "97da5eee95474a39134747a5b47ad7e2e683d96c",
     "narration.mp3": "069900e67a4b1e620a753ee1b6ca473eb99adbee"
   },
-  "mix_sha1": "4e4f37e749f9a6d677f3af901a8504c2eef0f237",
+  "mix_sha1": "1d3b23ccf442bdd0cb75c8d69f286289e3ed03ea",
   "music_sections": [
     {
       "from": "1.sit",
@@ -161,41 +161,11 @@
     "longestGapSeconds": 1.7,
     "longestGapAt": 56.6,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 12.7,
-    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestMedianDb": 13.9,
+    "voiceOverRestWorstDb": 4.7,
     "voiceOverRestWorst": [
       {
-        "db": 4.0,
-        "t": 18.5,
-        "cue": "3.built",
-        "sounding": [
-          "bell",
-          "cheer",
-          "pop"
-        ]
-      },
-      {
-        "db": 4.1,
-        "t": 54.2,
-        "cue": "5.took",
-        "sounding": [
-          "sparkle",
-          "swish"
-        ]
-      },
-      {
-        "db": 4.3,
-        "t": 87.1,
-        "cue": "7.front",
-        "sounding": [
-          "creak",
-          "ding",
-          "scrape",
-          "swish"
-        ]
-      },
-      {
-        "db": 4.3,
+        "db": 4.7,
         "t": 68.6,
         "cue": "6.growl",
         "sounding": [
@@ -205,30 +175,57 @@
         ]
       },
       {
-        "db": 4.3,
-        "t": 122.2,
-        "cue": "9.roof",
+        "db": 5.3,
+        "t": 4.1,
+        "cue": "1.moved",
         "sounding": [
-          "ding",
-          "plink"
+          "blip",
+          "sparkle"
         ]
       },
       {
-        "db": 4.5,
-        "t": 104.2,
-        "cue": "8.light",
+        "db": 5.4,
+        "t": 97.9,
+        "cue": "7.listener",
         "sounding": [
-          "boom",
-          "power_up",
-          "riser",
+          "power_down",
+          "rustle"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 54.2,
+        "cue": "5.took",
+        "sounding": [
           "sparkle",
-          "sting"
+          "swish"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 18.5,
+        "cue": "3.built",
+        "sounding": [
+          "bell",
+          "cheer",
+          "pop"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 87.1,
+        "cue": "7.front",
+        "sounding": [
+          "creak",
+          "ding",
+          "scrape",
+          "swish"
         ]
       }
     ],
     "lufs": -15.2,
-    "truePeakDb": -1.3,
-    "limiterMaxDb": 4.2
+    "truePeakDb": -1.8,
+    "limiterMaxDb": 3.9
   },
   "failures": []
 }

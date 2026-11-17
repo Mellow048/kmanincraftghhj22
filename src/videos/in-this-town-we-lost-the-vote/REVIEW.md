@@ -84,3 +84,8 @@ The owner asked for every frame and every script to be checked again, and for th
 - **Hook:** not changed. It was already the closest of the five to the benchmark: the cow faces the lens and a LOST plate pops over a head every 0.12 s for the first second. The mp4 is the one rendered before.
 - **Script against the benchmark:** past tense, "I", a wrong guess ("We thought that was the end of him"), her own try fails, a second and bigger truth, an open ending. Thinner than the benchmark in two places: nobody but the letter speaks, and no clues are said back as a list.
 - **Still true:** the Mob Vote facts and the cast are from memory. Nobody has listened to the mix.
+
+## Third pass, 2026-11-17: "perfect the five like Monster Village"
+
+- **Nothing changed in this pass, and the mp4 is the one rendered before.** Its first two seconds already build the way the reference's do, its script is in the past tense, its voice is 14.8 dB over everything else (Monster Village is 14.1), and all 48 shots were looked at again in the second pass.
+- Where it is still thinner than the reference: nobody speaks but the letter. Changing that means recording it again; ask first.

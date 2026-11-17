@@ -75,3 +75,9 @@ The owner asked for every frame and every script to be checked again, and for th
 - **Hook, now:** the same build, with the lens about a third closer (6.4 m → 4.3 m), so the dog's face is the biggest thing in the first frame. No sound change.
 - **Script against the benchmark:** past tense, "I", other people speak, a wrong guess said out loud, an ending that opens. Nothing changed; no line was recorded again.
 - **Still true:** about 163 effects a minute is nearly twice the benchmark's 87. Nobody has listened to it.
+
+## Third pass, 2026-11-17: "perfect the five like Monster Village"
+
+- **Sound:** every effect is 2 dB quieter (`sfxGain`), and the 16 that this would have buried were put back. The voice is now 13.9 dB over everything else on the median (was 12.7; Monster Village is 14.1), and the worst half second is 4.7 dB (was 4.0). Still 163 effects a minute against the reference's 87: none were cut, because nobody can hear which ones matter.
+- **Picture and script:** not changed in this pass.
+- Rendered again at 1080x1920 and checked on frames of the file.

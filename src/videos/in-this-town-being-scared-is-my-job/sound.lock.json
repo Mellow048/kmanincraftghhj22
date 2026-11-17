@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-being-scared-is-my-job",
   "mix": "public/audio/in-this-town-being-scared-is-my-job/mix.mp3",
-  "seconds": 143.1,
+  "seconds": 144.5333,
   "built_from": {
-    "timing.json": "470ef49ee719a9c44227138e6f2efb7acce558bd",
-    "sound.json": "1ad69c6630ba906192e4c978a0d59501ea25203a",
-    "narration.mp3": "41937f9204d13981c4d8333bb224e7cd7d351aba"
+    "timing.json": "d6553b9569435c39241822f55e990b1456768939",
+    "sound.json": "80bc6dc5c70810f893e250bdab5e031c6ad67ab0",
+    "narration.mp3": "de4a69688907ae7cd7e69dc5fa72245cfc8c0f15"
   },
-  "mix_sha1": "1f71cfab68014bde61bf6ab2eba13d71f6249c66",
+  "mix_sha1": "9c2efeecc578b1448200caf29884238caf2101d2",
   "music_sections": [
     {
       "from": "1.job",
@@ -18,72 +18,72 @@
     {
       "from": "2.gary",
       "mood": "sneak",
-      "at": 13.73
+      "at": 12.87
     },
     {
       "from": "2.barb",
       "mood": "playful",
-      "at": 15.87
+      "at": 15.07
     },
     {
       "from": "3.problem",
       "mood": "curious",
-      "at": 35.2
+      "at": 36.1
     },
     {
       "from": "4.empty",
       "mood": "tense",
-      "at": 57.3
+      "at": 61.1
     },
     {
       "from": "5.tried",
       "mood": "playful",
-      "at": 73.37
+      "at": 76.73
     },
     {
       "from": "5.lift",
       "mood": "dark",
-      "at": 79.23
+      "at": 82.43
     },
     {
       "from": "6.scared",
       "mood": "none",
-      "at": 84.23
+      "at": 87.3
     },
     {
       "from": "6.glass",
       "mood": "hope",
-      "at": 90.27
+      "at": 93.17
     },
     {
       "from": "6.kevin",
       "mood": "tense",
-      "at": 97.93
+      "at": 100.6
     },
     {
       "from": "6.long",
       "mood": "playful",
-      "at": 107.57
+      "at": 109.97
     },
     {
       "from": "7.follow",
       "mood": "curious",
-      "at": 115.83
+      "at": 118.0
     },
     {
       "from": "7.end",
       "mood": "dark",
-      "at": 118.3
+      "at": 120.4
     },
     {
       "from": "8.gave",
       "mood": "sad",
-      "at": 127.3
+      "at": 129.13
     },
     {
       "from": "8.have",
       "mood": "town",
-      "at": 134.53
+      "at": 136.17
     }
   ],
   "music_file": {
@@ -92,43 +92,21 @@
   },
   "beds": 14,
   "measured": {
-    "musicUnderVoiceDb": 19.1,
-    "secondsWithoutMusic": 6.6,
+    "musicUnderVoiceDb": 18.9,
+    "secondsWithoutMusic": 6.2,
     "bedsUnderVoiceDb": 24.0,
     "sfx": 265,
-    "sfxPerMinute": 111.1,
+    "sfxPerMinute": 110.0,
     "sfxKinds": 40,
-    "longestGapSeconds": 2.9,
-    "longestGapAt": 74.0,
+    "longestGapSeconds": 2.8,
+    "longestGapAt": 77.3,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.4,
-    "voiceOverRestWorstDb": 3.9,
+    "voiceOverRestMedianDb": 14.2,
+    "voiceOverRestWorstDb": 3.8,
     "voiceOverRestWorst": [
       {
-        "db": 3.9,
-        "t": 119.8,
-        "cue": "7.end",
-        "sounding": [
-          "crackle",
-          "sting",
-          "swish"
-        ]
-      },
-      {
-        "db": 4.2,
-        "t": 88.3,
-        "cue": "6.real",
-        "sounding": [
-          "boing",
-          "boom",
-          "hit",
-          "riser",
-          "slide_up"
-        ]
-      },
-      {
-        "db": 4.7,
-        "t": 108.2,
+        "db": 3.8,
+        "t": 110.6,
         "cue": "6.long",
         "sounding": [
           "slide_down",
@@ -136,36 +114,58 @@
         ]
       },
       {
-        "db": 4.8,
-        "t": 33.6,
-        "cue": "2.boss",
-        "sounding": [
-          "coins"
-        ]
-      },
-      {
-        "db": 5.4,
-        "t": 14.2,
-        "cue": "2.gary",
+        "db": 6.9,
+        "t": 141.1,
+        "cue": "8.bed",
         "sounding": [
           "ding",
-          "rustle"
+          "pop",
+          "power_up",
+          "sting",
+          "swish"
         ]
       },
       {
-        "db": 6.3,
-        "t": 9.4,
-        "cue": "1.scream",
+        "db": 7.0,
+        "t": 77.5,
+        "cue": "5.tried",
         "sounding": [
-          "hit",
-          "rustle",
-          "slide_up"
+          "slide_up",
+          "sting"
+        ]
+      },
+      {
+        "db": 7.2,
+        "t": 105.8,
+        "cue": "6.turn",
+        "sounding": [
+          "creak",
+          "ding",
+          "heartbeat"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 56.2,
+        "cue": "3.noiron",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 133.2,
+        "cue": "8.edge",
+        "sounding": [
+          "chime",
+          "step_stone",
+          "swish"
         ]
       }
     ],
     "lufs": -15.3,
-    "truePeakDb": -1.4,
-    "limiterMaxDb": 4.6
+    "truePeakDb": -1.5,
+    "limiterMaxDb": 4.9
   },
   "failures": []
 }

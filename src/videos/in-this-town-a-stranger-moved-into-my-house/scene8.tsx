@@ -250,6 +250,7 @@ export const scene8 = storyScene(timing, {
       stage: (t) => (
         <>
           <Fill at={[0, 3, 0.5]} power={34} reach={12} color="#c9d0ff" />
+          <Fill at={[0.5, 2.0, -1.2]} power={16} reach={6} color="#ffd9a0" />
           <Green position={[-0.42, 0, -3.0]} rotationY={SOUTH} hmm={1} k={tw(t, 0.1, 0.95)} />
           <Puffs position={[-0.42, 1.2, -2.9]} count={7} spread={0.7} size={0.14} rise={1.1} speed={1.6} color="#d9443a" />
         </>

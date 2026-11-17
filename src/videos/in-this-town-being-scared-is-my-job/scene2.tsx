@@ -32,7 +32,7 @@ export const scene2 = storyScene(timing, {
       look: "overworld-night",
       note: "Night. Gary's room: a villager in a nightcap flat on his back on the floor, fast asleep. He screams without waking up, and goes on sleeping.",
       stage: (t) => {
-        const go = w("2.gary", "screams") - 0.1;
+        const go = w("2.gary", "screamed") - 0.1;
         const k = t > go && t < go + 0.7 ? 1 : 0;
         return (
           <>
@@ -56,7 +56,7 @@ export const scene2 = storyScene(timing, {
       look: "overworld-day",
       note: "Barb's room: purple robe, grey bun, small glasses. Over her head a number, and while we look it goes up by one: 911.",
       stage: (t) => {
-        const tick = w("2.barb", "counts") - 0.05;
+        const tick = w("2.barb", "counted") - 0.05;
         return (
           <>
             <Farm />
@@ -73,7 +73,7 @@ export const scene2 = storyScene(timing, {
       look: "overworld-day",
       note: "From the north side: the backs of three villagers shaking in their rooms, and on the stone in front of us, out of nothing, an iron man.",
       stage: (t) => {
-        const at = w("2.pop", "pops") - 0.1;
+        const at = w("2.pop", "popped") - 0.1;
         return (
           <>
             <Farm />
@@ -193,7 +193,7 @@ export const scene2 = storyScene(timing, {
       look: "overworld-day",
       note: "From above. A player in a red shirt stands at the chest and takes the iron out of it by the armful, looking down the whole time. He leaves the flower. He does not look up.",
       stage: (t) => {
-        const take = w("2.boss", "takes") - 0.1;
+        const take = w("2.boss", "took") - 0.1;
         return (
           <>
             <Under open={1} iron={t > take + 0.5 ? 0 : t > take + 0.25 ? 3 : 6} flower />

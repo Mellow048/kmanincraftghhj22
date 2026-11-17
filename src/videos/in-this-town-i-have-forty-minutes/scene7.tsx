@@ -55,16 +55,16 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.two",
-      ...cam.push({ on: [0, 1.7, 3.0], dist: 3.6, to: 3.0, yaw: 6, pitch: -2, fov: 46 }),
+      ...cam.push({ on: [-0.05, 1.72, 3.05], dist: 3.4, to: 2.9, yaw: -40, pitch: -9, fov: 46 }),
       zone: "dark",
       look: "overworld-night",
-      note: "The red clock, 2:00, and under it his face over the emerald. He looks at it for the whole line, turning it a little.",
+      note: "From low at his side, looking up: the emerald in his sleeves, green on his chin, and the red clock, 2:00, over his hood. He looks at it for the whole line, turning it a little.",
       stage: (t) => (
         <>
           <Square t={t} night folk={0} />
           {lights}
           <Shop price="" bush={false} />
-          <Him cue="7.two" t={t} rotationY={SOUTH + 0.1} face={6 * DEG} carry={<Emerald position={[0, 0.1, 0.03]} rotation={[0, t * 1.5, 0]} scale={1.4} />} strain={0.8} nod={0.4} clockScale={0.62} />
+          <Him cue="7.two" t={t} rotationY={SOUTH - 0.35} face={-40 * DEG} carry={<Emerald position={[0, 0.1, 0.03]} rotation={[0, t * 1.5, 0]} scale={1.4} />} strain={0.8} nod={0.4} clockScale={0.62} />
                     <Glow position={[0, 1.15, 3.35]} size={0.8} color="#5cff9a" opacity={0.1} />
         </>
       ),

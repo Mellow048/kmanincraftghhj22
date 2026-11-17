@@ -1,6 +1,7 @@
 {
   "film": "in-this-town-being-scared-is-my-job",
   "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-being-scared-is-my-job",
+  "sfxGain": -1.0,
   "music": {
     "track": "Topics/InThisTown/InThisTownMusic.aac",
     "gain": -16,
@@ -265,7 +266,8 @@
     {
       "cue": "1.years",
       "sfx": "swish",
-      "why": "Kevin, close."
+      "why": "Kevin, close.",
+      "trim": 2.5
     },
     {
       "cue": "1.years",
@@ -325,7 +327,7 @@
     },
     {
       "cue": "1.scream",
-      "word": "scream",
+      "word": "screamed",
       "at": -0.12,
       "sfx": "slide_up",
       "dur": 0.45,
@@ -335,18 +337,18 @@
     },
     {
       "cue": "1.scream",
-      "word": "scream",
+      "word": "screamed",
       "at": -0.12,
       "sfx": "hit",
-      "trim": -5,
+      "trim": -2.5,
       "why": "The knock under the scream."
     },
     {
       "cue": "1.scream",
-      "word": "scream",
+      "word": "screamed",
       "at": -0.05,
       "sfx": "boing",
-      "trim": -2,
+      "trim": 0.5,
       "why": "He leaves the floor."
     },
     {
@@ -398,7 +400,7 @@
     },
     {
       "cue": "2.gary",
-      "word": "screams",
+      "word": "screamed",
       "at": -0.1,
       "sfx": "slide_up",
       "dur": 0.45,
@@ -408,7 +410,7 @@
     },
     {
       "cue": "2.gary",
-      "word": "screams",
+      "word": "screamed",
       "at": -0.1,
       "sfx": "hit",
       "trim": -7,
@@ -437,7 +439,7 @@
     },
     {
       "cue": "2.barb",
-      "word": "counts",
+      "word": "counted",
       "at": -0.05,
       "sfx": "stamp",
       "trim": -2,
@@ -457,7 +459,7 @@
     },
     {
       "cue": "2.pop",
-      "word": "pops",
+      "word": "popped",
       "at": -0.1,
       "sfx": "pop",
       "pitch": 0.6,
@@ -465,7 +467,7 @@
     },
     {
       "cue": "2.pop",
-      "word": "pops",
+      "word": "popped",
       "at": 0.02,
       "sfx": "stomp",
       "trim": -2,
@@ -508,12 +510,12 @@
       "cue": "2.water",
       "at": 0.3,
       "sfx": "splash",
-      "trim": -3,
+      "trim": -0.5,
       "why": "He slides."
     },
     {
       "cue": "2.water",
-      "word": "takes",
+      "word": "took",
       "at": 0.0,
       "sfx": "clank",
       "trim": -2,
@@ -525,7 +527,8 @@
       "at": -0.1,
       "sfx": "slide_down",
       "dur": 0.6,
-      "why": "Away down the channel."
+      "why": "Away down the channel.",
+      "trim": 2.5
     },
     {
       "cue": "2.talk",
@@ -625,7 +628,7 @@
     },
     {
       "cue": "2.boss",
-      "word": "takes",
+      "word": "took",
       "at": 0.0,
       "sfx": "coins",
       "why": "He takes the iron."
@@ -783,7 +786,7 @@
     },
     {
       "cue": "3.nothing",
-      "word": "open",
+      "word": "opened",
       "at": -0.1,
       "sfx": "rustle",
       "dur": 0.35,
@@ -848,7 +851,7 @@
       "sfx": "slide_up",
       "dur": 0.45,
       "pitch": 1.3,
-      "trim": 0,
+      "trim": 2.5,
       "why": "He screams for two. A scream is this whistle going up with a knock under it, all film."
     },
     {
@@ -865,7 +868,7 @@
       "sfx": "slide_up",
       "dur": 0.45,
       "pitch": 1.3,
-      "trim": -2,
+      "trim": 0.5,
       "why": "And again. A scream is this whistle going up with a knock under it, all film."
     },
     {
@@ -895,7 +898,8 @@
     {
       "cue": "3.barb",
       "sfx": "swish",
-      "why": "Barb."
+      "why": "Barb.",
+      "trim": 2.5
     },
     {
       "cue": "3.barb",
@@ -1416,7 +1420,7 @@
       "word": "water",
       "at": 0.0,
       "sfx": "stomp",
-      "trim": -3,
+      "trim": 2.0,
       "why": "He puts the foot back."
     },
     {
@@ -1577,7 +1581,7 @@
       "dur": 1.6,
       "pitch": 0.8,
       "why": "A small red shirt, getting smaller.",
-      "trim": -3
+      "trim": 2.0
     },
     {
       "cue": "6.long",
@@ -1673,7 +1677,7 @@
       "word": "how",
       "at": 0.0,
       "sfx": "thud",
-      "trim": -1,
+      "trim": 1.5,
       "why": "He ends up sitting, pleased with himself."
     },
     {
@@ -1940,7 +1944,8 @@
       "word": "subscribe",
       "at": -0.2,
       "sfx": "swish",
-      "why": "They look up at us."
+      "why": "They look up at us.",
+      "trim": 2.5
     },
     {
       "cue": "8.sub",

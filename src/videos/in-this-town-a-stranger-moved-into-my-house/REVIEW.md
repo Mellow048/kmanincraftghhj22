@@ -75,3 +75,10 @@ The owner asked for every frame and every script to be checked again, and for th
 - **Hook, now:** the lens is closer, and something arrives about every 0.3 s: a Z, his pickaxe against the bed, a question mark over the villager, a loaf on the blanket, a block of dirt on the floor, another on top, more Zs, and a ! as the villager looks at us. Each has its own sound (258 effects, was 254).
 - **Script against the benchmark:** "I", other people speak, a wrong guess, a clue list, an open ending. Parts are in the present tense; the benchmark is all past. Not changed: it would mean recording the voice again.
 - **Still true:** nobody has listened to the mix.
+
+## Third pass, 2026-11-17: "perfect the five like Monster Village"
+
+- **Picture:** `8.lunch`, the moment he stops being green, was the darkest face in the film. It has a warm light on it now.
+- **Sound:** every effect is 1 dB quieter, and the 7 that this would have buried were put back. The voice is 13.8 dB over everything else on the median (was 13.2; Monster Village is 14.1).
+- **Script:** not changed. The town's habits are told in the present ("we say hmm") and what the stranger did in the past; that is a frame, not a slip.
+- Rendered again at 1080x1920 and checked on frames of the file.

@@ -1,7 +1,10 @@
 # Narration — In This Town, Being Scared Is My Job
 
-**Status: RECORDED AND BUILT (2026-11-17).** Written in automatic mode on 2026-11-16: the owner did not review this
-script before it was built. Three clips, the same voice as films 1 and 2, tempo 1.38: 71 shots, 573 words, 143.1 s.
+**Status: RECORDED AND BUILT (2026-11-17; clip `01-job` recorded again the same day, in the past tense).** Written in
+automatic mode on 2026-11-16: the owner did not review this script before it was built. Three clips, the same voice as
+films 1 and 2, tempo 1.42 (the new take is slower than the old ones): 71 shots, 578 words, 144.5 s. The first clip used to be told in the present tense ("being
+scared is my job"); Monster Village part 1 is told in the past from its first word, so lines `1.job` to `3.nothing`
+now are too. The last scene stays in the present: that is where the story has got to.
 It is film 3 of the five from `Topics/InThisTown/outlines/ideas-2026-11-16.md`. Reviewed against
 `Topics/InThisTown/MASTERPROMPT.md` in `REVIEW.md`.
 
@@ -12,7 +15,7 @@ Topic: `Topics/InThisTown`. Middle cut. Part 1: it ends on a cliffhanger.
 | The engine, from Monster Village 1 | Where it is in this film |
 |---|---|
 | A first shot that keeps changing round a teller who looks at us | `1.job` to `1.lunch`: a villager in a glass room in the sky screams at a zombie in a boat, the name tag reads KEVIN, the scream stops, he eats a loaf |
-| Past tense or plain present, "I", sentences of five words | Throughout |
+| Past tense, "I", sentences of five words | Throughout, until the last scene, which is now |
 | An early line leaves a thing unexplained | `2.talk`: "We do not talk about where the iron men go" |
 | Two neighbours with one habit, and the habit comes back as plot | Gary screams in his sleep (`2.gary` → `3.gary` → `5.eep`); Barb counts (`2.barb` → `3.barb` → `6.barb` → `7.count`) |
 | The viewer is ahead of the teller | Every player has built this machine and knows where the iron men go. He thinks it is somewhere nice |
@@ -50,32 +53,32 @@ has to find one real scream to save him.
 
 ```narration
 # clip 01-job
-[1.job]       In this town, being scared is my job.
-[1.zombie]    There is a zombie outside my window.
-[1.years]     He has been there for two years.
-[1.kevin]     His name is Kevin.
-[1.tag]       It says so on his tag.
-[1.scream]    Every morning, I look at Kevin, and I scream.
-[1.lunch]     Then I have lunch.
-[2.town]      Our town is three glass rooms in the sky.
-[2.gary]      This is Gary. Gary screams in his sleep.
-[2.barb]      This is Barb. Barb counts.
-[2.pop]       When we are scared enough, an iron man pops out of the air.
-[2.step]      He takes one step.
-[2.water]     Then the water takes him away.
-[2.talk]      We do not talk about where the iron men go.
-[2.nice]      Clearly, it is somewhere nice.
-[2.chest]     Under the floor, there is a chest. Iron falls into it. And flowers.
-[2.pay]       Clearly, the flowers are our pay.
-[2.boss]      Once a week, the boss comes. He takes the iron. He has never looked up.
-[3.problem]   Here is the problem.
+[1.job]       In this town, being scared was my job.
+[1.zombie]    There was a zombie outside my window.
+[1.years]     He had been there for two years.
+[1.kevin]     His name was Kevin.
+[1.tag]       It said so on his tag.
+[1.scream]    Every morning, I looked at Kevin, and I screamed.
+[1.lunch]     Then I had lunch.
+[2.town]      Our town was three glass rooms in the sky.
+[2.gary]      Next door was Gary. Gary screamed in his sleep.
+[2.barb]      On the other side was Barb. Barb counted.
+[2.pop]       When we were scared enough, an iron man popped out of the air.
+[2.step]      He took one step.
+[2.water]     Then the water took him away.
+[2.talk]      We did not talk about where the iron men went.
+[2.nice]      Clearly, it was somewhere nice.
+[2.chest]     Under the floor, there was a chest. Iron fell into it. And flowers.
+[2.pay]       Clearly, the flowers were our pay.
+[2.boss]      Once a week, the boss came. He took the iron. He never looked up.
+[3.problem]   Then there was a problem.
 [3.long]      Two years is a long time to look at one face.
 [3.wave]      One morning, Kevin waved.
 [3.back]      I waved back.
-[3.game]      Now we play tic tac toe on the glass.
-[3.lost]      Kevin has never won. He does not mind.
-[3.urr]       He says, "urr". I think it means good morning.
-[3.nothing]   So now I look at Kevin, and I open my mouth, and nothing comes out.
+[3.game]      After that, we played tic tac toe on the glass.
+[3.lost]      Kevin never won. He did not mind.
+[3.urr]       He said, "urr". I thought it meant good morning.
+[3.nothing]   So one morning, I looked at Kevin, and I opened my mouth, and nothing came out.
 [3.noiron]    No scream. No iron man. No iron.
 [3.gary]      Gary screamed for both of us. Then Gary lost his voice.
 [3.barb]      Barb stopped counting.

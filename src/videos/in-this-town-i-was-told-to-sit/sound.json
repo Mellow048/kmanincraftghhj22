@@ -1,6 +1,7 @@
 {
   "film": "in-this-town-i-was-told-to-sit",
   "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-i-was-told-to-sit",
+  "sfxGain": -2.0,
   "music": {
     "track": "Topics/InThisTown/InThisTownMusic.aac",
     "gain": -16,
@@ -357,7 +358,7 @@
       "cue": "1.moved",
       "at": 0.1,
       "sfx": "sparkle",
-      "trim": 1,
+      "trim": 3.5,
       "dur": 0.4,
       "why": "A butterfly comes down."
     },
@@ -481,7 +482,8 @@
       "at": 0.55,
       "sfx": "blip",
       "pitch": 1.6,
-      "why": "It tips its head at us."
+      "why": "It tips its head at us.",
+      "trim": 2.5
     },
     {
       "cue": "2.hiss",
@@ -608,7 +610,8 @@
       "repeat": 3,
       "every": 0.45,
       "pitchStep": 1.12,
-      "why": "Loaf, loaf, loaf, loaf: a tower."
+      "why": "Loaf, loaf, loaf, loaf: a tower.",
+      "trim": 2.5
     },
     {
       "cue": "3.loaf",
@@ -637,7 +640,8 @@
       "word": "sign",
       "at": -0.18,
       "sfx": "thud",
-      "why": "And goes in."
+      "why": "And goes in.",
+      "trim": 2.5
     },
     {
       "cue": "3.sign",
@@ -1045,7 +1049,8 @@
       "word": "sword",
       "at": -0.08,
       "sfx": "pop",
-      "why": "A sword."
+      "why": "A sword.",
+      "trim": 2.5
     },
     {
       "cue": "5.took",
@@ -1061,7 +1066,8 @@
       "at": -0.08,
       "sfx": "pop",
       "pitch": 1.1,
-      "why": "A pickaxe."
+      "why": "A pickaxe.",
+      "trim": 2.5
     },
     {
       "cue": "5.took",
@@ -1080,7 +1086,7 @@
       "repeat": 6,
       "every": 0.121,
       "pitchStep": 1.04,
-      "trim": -2,
+      "trim": 0.5,
       "why": "Twelve green eyes, one after another."
     },
     {
@@ -1093,7 +1099,8 @@
     {
       "cue": "5.eyes",
       "sfx": "swish",
-      "why": "He throws one."
+      "why": "He throws one.",
+      "trim": 2.5
     },
     {
       "cue": "5.eyes",
@@ -1212,7 +1219,8 @@
       "word": "Junk",
       "at": 0.05,
       "sfx": "zip",
-      "why": "A bone over his shoulder."
+      "why": "A bone over his shoulder.",
+      "trim": 2.5
     },
     {
       "cue": "6.chest",
@@ -1289,7 +1297,7 @@
       "at": 0.15,
       "sfx": "scrape",
       "dur": 0.6,
-      "trim": -2,
+      "trim": 0.5,
       "why": "Teeth."
     },
     {
@@ -1297,7 +1305,8 @@
       "word": "They",
       "at": -0.05,
       "sfx": "swish",
-      "why": "From where he sits, looking up at them."
+      "why": "From where he sits, looking up at them.",
+      "trim": 2.5
     },
     {
       "cue": "6.growl",
@@ -1326,7 +1335,8 @@
       "word": "bite",
       "at": -0.12,
       "sfx": "boing",
-      "why": "A poke on the nose."
+      "why": "A poke on the nose.",
+      "trim": 2.5
     },
     {
       "cue": "6.bite",
@@ -1510,7 +1520,8 @@
       "at": 0.02,
       "sfx": "slide_up",
       "dur": 0.22,
-      "why": "Second try."
+      "why": "Second try.",
+      "trim": 2.5
     },
     {
       "cue": "7.legs",
@@ -1524,7 +1535,8 @@
       "at": 0.5,
       "sfx": "slide_up",
       "dur": 0.28,
-      "why": "Third."
+      "why": "Third.",
+      "trim": 2.5
     },
     {
       "cue": "7.legs",
@@ -2200,7 +2212,8 @@
     {
       "cue": "9.farmer",
       "sfx": "whoosh",
-      "why": "Now."
+      "why": "Now.",
+      "trim": 2.5
     },
     {
       "cue": "9.farmer",
@@ -2363,7 +2376,7 @@
       "repeat": 3,
       "every": 0.96,
       "dur": 0.2,
-      "trim": -1,
+      "trim": 1.5,
       "why": "Every part of him is shaking."
     },
     {

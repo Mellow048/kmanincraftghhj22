@@ -5,10 +5,10 @@
   "seconds": 132.1333,
   "built_from": {
     "timing.json": "ba8d5a417c48a8261857c72e4c0a5af6d8c339ad",
-    "sound.json": "0c4606658c8d0aa85d1d9dd60fa911b900a27b89",
+    "sound.json": "8fba78bdc4d2279a5cf76b2d0339b14cc57ec121",
     "narration.mp3": "382e7df78588dd0569f9f9a731cfc0c2573cc242"
   },
-  "mix_sha1": "5207aef31f9e366c0398596bd8d5d7819614a8d4",
+  "mix_sha1": "2c406aa639d59ead6c4dae4ac1b7ede568452500",
   "music_sections": [
     {
       "from": "1.moved",
@@ -91,11 +91,11 @@
     "longestGapSeconds": 1.6,
     "longestGapAt": 73.8,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.2,
-    "voiceOverRestWorstDb": 3.1,
+    "voiceOverRestMedianDb": 13.8,
+    "voiceOverRestWorstDb": 4.0,
     "voiceOverRestWorst": [
       {
-        "db": 3.1,
+        "db": 4.0,
         "t": 68.2,
         "cue": "6.horn",
         "sounding": [
@@ -104,26 +104,7 @@
         ]
       },
       {
-        "db": 4.8,
-        "t": 46.6,
-        "cue": "4.mending",
-        "sounding": [
-          "coin",
-          "coins"
-        ]
-      },
-      {
-        "db": 5.0,
-        "t": 13.7,
-        "cue": "2.golem",
-        "sounding": [
-          "bell",
-          "clank",
-          "stomp"
-        ]
-      },
-      {
-        "db": 5.0,
+        "db": 5.7,
         "t": 30.2,
         "cue": "3.remember",
         "sounding": [
@@ -133,7 +114,26 @@
         ]
       },
       {
-        "db": 5.3,
+        "db": 5.8,
+        "t": 46.6,
+        "cue": "4.mending",
+        "sounding": [
+          "coin",
+          "coins"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 13.7,
+        "cue": "2.golem",
+        "sounding": [
+          "bell",
+          "clank",
+          "stomp"
+        ]
+      },
+      {
+        "db": 6.1,
         "t": 130.3,
         "cue": "9.sub",
         "sounding": [
@@ -141,7 +141,7 @@
         ]
       },
       {
-        "db": 5.5,
+        "db": 6.3,
         "t": 84.0,
         "cue": "7.him",
         "sounding": [
@@ -151,8 +151,8 @@
       }
     ],
     "lufs": -15.2,
-    "truePeakDb": -1.2,
-    "limiterMaxDb": 3.6
+    "truePeakDb": -1.3,
+    "limiterMaxDb": 3.4
   },
   "failures": []
 }

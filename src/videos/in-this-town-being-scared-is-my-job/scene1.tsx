@@ -60,7 +60,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.zombie",
-      ...cam.push({ on: [0.25, 1.15, 1.9], dist: 3.5, to: 3.2, yaw: 197, pitch: 5, fov: 46 }),
+      ...cam.push({ on: [-0.12, 1.15, 1.9], dist: 3.3, to: 3.0, yaw: 200, pitch: 5, fov: 46 }),
       zone: "farm",
       look: "overworld-day",
       note: "From inside the room, over the hard hat: the glass, and the zombie on the other side of it, green, looking straight in.",
@@ -119,7 +119,7 @@ export const scene1 = storyScene(timing, {
       look: "overworld-day",
       note: "Over the zombie's shoulder: the villager behind his glass. He looks at Kevin. He takes a breath. He screams, and jumps with it.",
       stage: (t) => {
-        const go = w("1.scream", "scream") - 0.12;
+        const go = w("1.scream", "screamed") - 0.12;
         const k = t > go ? 1 : 0;
         return (
           <>

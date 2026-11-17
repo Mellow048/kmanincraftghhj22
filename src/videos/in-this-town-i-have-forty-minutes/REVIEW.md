@@ -83,3 +83,9 @@ The owner asked for every frame and every script to be checked again, and for th
 - **Sound:** two effects that the new mix buried were cut (`2.bush` creak, `3.town` coins): 213 effects.
 - **Script against the benchmark:** "I", other people speak, a wrong guess, the emerald's trip said back as a list, an open ending. Not changed.
 - **Still true:** the trader facts are from memory. Nobody has listened to the mix.
+
+## Third pass, 2026-11-17: "perfect the five like Monster Village"
+
+- **Picture:** `7.tell` and `7.two` were the same close-up twice with one shot between them. `7.two` is now from low at his other side, looking up past the emerald in his sleeves to the red clock.
+- **Script and sound:** not changed. The voice was already 15.8 dB over everything else (Monster Village is 14.1). "I have forty minutes" is a frame in the present; what happened in the town is told in the past.
+- Rendered again at 1080x1920 and checked on frames of the file.
