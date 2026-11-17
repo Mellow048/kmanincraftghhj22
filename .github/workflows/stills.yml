@@ -71,9 +71,7 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
         run: |
-          git -c core.hooksPath=/dev/null commit -m "Diagnostic review frames for ${COMPOSITION}" > /tmp/commit.txt 2>&1
-          echo "commit-exit:$?"
-          cat /tmp/commit.txt
+          git -c core.hooksPath=/dev/null commit -m "Diagnostic review frames for ${COMPOSITION}" || echo "commit-exit:$?"
 
       - name: Push review frames
         if: ${{ inputs.commit_review && github.ref_name != 'main' }}
