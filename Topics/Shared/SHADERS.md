@@ -45,3 +45,18 @@ visible above the roofs.
 - The sun disc is rarely in frame in our current camera language; when it is, it blooms.
 - No volumetric shafts yet: `GodRay` cards do that job, and they bloom with the pass on.
 - Sky is only visible outdoors. Interiors get bloom and grade, nothing else.
+
+## The scenery bench
+
+`src/scenery.tsx` is a shader test bench, registered as three compositions (`scenery-day`, `scenery-sunset`,
+`scenery-night`) and deliberately kept out of `src/videos` so the film contract does not apply to it. One meadow,
+one cottage, three oaks, three lenses: wide, medium, close.
+
+Render stills without touching a film:
+
+```
+gh workflow run stills.yml -f composition=scenery-day -f frames=20 -f commit_review=true
+```
+
+Frames land in `review/scenery-day/`. Change the look in `src/scenery.tsx`, push, run again — that is the whole
+loop for testing the grade.
