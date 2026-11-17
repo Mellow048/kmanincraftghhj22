@@ -53,7 +53,7 @@ export const scene2 = storyScene(timing, {
       // The sight gag: he is on one knee looking under a bench with a streetlight in it, and the answer is a takeaway
       // cup. Play it flat, from a low angle, like a man checking under a car.
       cue: "2.benchb",
-      ...cam.push({ on: S(-4.20, 0.62, 0.30), dist: 2.55, to: 2.05, yaw: 26, pitch: -14, fov: 46 }),
+      ...cam.push({ on: S(-4.85, 0.78, 0.95), dist: 2.10, to: 1.80, yaw: 0, pitch: 6, fov: 46 }),
       zone: "street",
       look: "overworld-night",
       note: "Low angle under the bench: the slats, the dark, one paper cup, and him crouched with his face nearly on the pavement, looking for who said it.",
