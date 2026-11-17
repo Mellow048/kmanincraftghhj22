@@ -93,7 +93,7 @@ not looking at it, and it never shows your own.**
 [9.mineb]    I had been reading it backwards.
 [9.morea]    Four was not a countdown.
 [9.moreb]    It was a door, and I had been standing outside it.
-[9.like]     Like this if you ever saved your words up and lost the time instead.
 [9.upa]      I said, "Dad." And the four went up.
 [9.upb]      So I said it again.
+[9.like]     Subscribe if you ever saved your words up and lost the time instead.
 ```

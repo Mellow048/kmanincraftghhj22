@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "what-if-you-could-see-how-many-times-youll-talk-to-someone-again",
   "mix": "public/audio/what-if-you-could-see-how-many-times-youll-talk-to-someone-again/mix.mp3",
-  "seconds": 117.4667,
+  "seconds": 117.2333,
   "built_from": {
-    "timing.json": "e67148dadcea4ce226c65ad526d89b14f5d3c278",
+    "timing.json": "291fddf7fce5c15e763b80c013a2f3bf47848aac",
     "sound.json": "bf1fe3bfd9a3b12277bdc2695a8660c5ebaffc84",
-    "narration.mp3": "ec688131b905dcf03c7f0b3da169b76bbd30fa89"
+    "narration.mp3": "e777d389b4f1e8371301a39db31951c2b0adfb63"
   },
-  "mix_sha1": "3da9029a13116eca53c23f267ca4c8ff9b4bd6cc",
+  "mix_sha1": "4ef1e55447e1b28f36271e0be535a07a648c3d6e",
   "music_sections": [
     {
       "from": "1.what",
@@ -24,56 +24,54 @@
     "sfx": 9,
     "sfxPerMinute": 4.6,
     "sfxKinds": 2,
-    "longestGapSeconds": 28.9,
-    "longestGapAt": 87.3,
+    "longestGapSeconds": 26.5,
+    "longestGapAt": 86.4,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 18.9,
-    "voiceOverRestWorstDb": 7.6,
+    "voiceOverRestMedianDb": 19.0,
+    "voiceOverRestWorstDb": 8.8,
     "voiceOverRestWorst": [
       {
-        "db": 7.6,
-        "t": 116.2,
-        "cue": "9.upa",
+        "db": 8.8,
+        "t": 63.4,
+        "cue": "7.knock",
+        "sounding": []
+      },
+      {
+        "db": 9.8,
+        "t": 15.6,
+        "cue": "2.limit",
+        "sounding": []
+      },
+      {
+        "db": 9.9,
+        "t": 113.0,
+        "cue": "9.upb",
         "sounding": [
           "ding"
         ]
       },
       {
-        "db": 9.5,
-        "t": 23.3,
+        "db": 10.1,
+        "t": 23.0,
         "cue": "3.lunchb",
         "sounding": []
       },
       {
-        "db": 10.0,
-        "t": 71.3,
-        "cue": "7.slamb",
+        "db": 11.2,
+        "t": 108.2,
+        "cue": "9.moreb",
         "sounding": []
       },
       {
-        "db": 10.2,
-        "t": 28.6,
-        "cue": "3.hall",
-        "sounding": [
-          "whoosh"
-        ]
-      },
-      {
-        "db": 10.4,
-        "t": 15.8,
-        "cue": "2.whya",
-        "sounding": []
-      },
-      {
-        "db": 11.6,
+        "db": 12.6,
         "t": 10.8,
         "cue": "2.one",
         "sounding": []
       }
     ],
     "lufs": -14.7,
-    "truePeakDb": -0.7,
-    "limiterMaxDb": 0.2
+    "truePeakDb": -1.5,
+    "limiterMaxDb": 0.3
   },
   "failures": []
 }

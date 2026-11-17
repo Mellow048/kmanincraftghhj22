@@ -111,7 +111,7 @@ export const scenes = storyScene(timing, {
       ...cam.push({ on, dist, to: dist * 0.92, yaw, pitch, fov }),
       zone,
       ...(look ? { look: look as never } : {}),
-      note: `${kind} shot at ${dist} m: ${who.map((w) => w[0]).join("+")} in the ${zone}.`,
+      note: `${kind} shot at ${dist} m in the ${zone}: ${who.map((w) => w[0]).join(" and ")} — the number is the point of the picture and it is over a head, never on a wall.`,
       stage: () => (
         <>
           {who.map((w) => cast(w, zone))}
@@ -124,61 +124,232 @@ export const scenes = storyScene(timing, {
   }),
 });
 
-// One line of narration, one shot. Listed here so the contract checker can read the table above.
+// ---- one block per shot, in script order: the checker reads these, the table above renders them.
 // cue: "1.what"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -14, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the class with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "1.how"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 8, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the class with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "1.dad"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -10, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "2.classa"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: 0, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the class with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "2.classb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 24, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the class with k4: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "2.one"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -20, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the class with k4: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "2.rule"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 10, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the class with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "2.limit"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -60, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "2.whya"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -8, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the class with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "2.whyb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 12, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the class with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "3.check"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: 0, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "3.luncha"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 14, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "3.lunchb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -16, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with k3: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "3.frienda"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 6, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "3.friendb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -8, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the hall with f: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "3.hall"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 180, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "4.sun"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: 0, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "4.four"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -12, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "4.count"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 10, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "4.small"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 14, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "4.saya"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -18, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "4.sayb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 6, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "5.scared"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 0, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the room with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "5.avoid"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: 20, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "5.fixeda"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -14, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the room with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "5.fixedb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 12, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the room with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "5.mum"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -10, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with m: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "6.friend"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 8, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the hall with f: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "6.wait"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -12, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "6.lefta"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 16, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the hall with f: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "6.leftb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -8, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "7.knock"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 0, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "7.wronga"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -12, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the hall with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "7.wrongb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 10, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "7.shout"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -16, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the hall with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "7.slama"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: 0, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the room with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "7.slamb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -10, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the room with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "7.slamc"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 8, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the room with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "8.sunday"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: 0, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "8.there"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -8, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "8.two"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 12, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "8.real"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -14, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.turna"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 8, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.turnb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -8, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.truth"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 6, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.four"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: -12, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.lista"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 14, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.listb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -10, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.rea"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 4, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.reb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -6, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.minea"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 10, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.mineb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -12, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.morea"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: 16, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.moreb"
-// cue: "9.like"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: 8, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.upa"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 3.4, to: 3.1, yaw: 4, pitch: 10, fov: 48 }),
+//   note: "med shot at 3.4 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
 // cue: "9.upb"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 2.4, to: 2.2, yaw: -6, pitch: 6, fov: 52 }),
+//   note: "close shot at 2.4 m in the kitchen with d: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
+// cue: "9.like"
+//   ...cam.push({ on: [0, 1.05, 0], dist: 5.2, to: 4.8, yaw: -18, pitch: 12, fov: 50 }),
+//   note: "wide shot at 5.2 m in the kitchen with h: the number hangs over a head, which is the only way this power can be seen in one picture.",
+//   stage: (t) => <>…</>,
