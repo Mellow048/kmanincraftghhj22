@@ -4,7 +4,7 @@
 this script before it was built ("do the other films and always read that masterprompt"). It is film 5 of the five
 from `Topics/InThisTown/outlines/ideas-2026-11-16.md`: "the wild one".
 
-Topic: `Topics/InThisTown`. Middle cut. It ends on "Like and subscribe for part two", after the payoff.
+Topic: `Topics/InThisTown`. Short cut (1:39), with every step of the master prompt's shape. It ends on "Like and subscribe for part two", after the payoff.
 
 **The Minecraft facts in it are from memory. The wiki could not be opened from the sandbox.** They are: the glow squid
 beat the flower cow (moobloom) and the ice thrower (iceologer) in 2020; the grumpy bush (glare) and the copper golem

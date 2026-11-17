@@ -1,87 +1,84 @@
 import type React from "react";
-import { Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
-import { Bell, Hut, LampPost, Room, Stall, Well } from "../../../Topics/InThisTown";
-import { PLACE } from "./kit";
+import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
+import { Hut, Moon, Stars } from "../../../Topics/InThisTown";
+import { GATE_Z, HOME, STAGE_Z, WHO } from "./kit";
 
 /**
- * THE TOWN, in zones. A shot names the zone it plays in, and the others are not drawn.
+ * Where it happens.
  *
- *   village  One street, west–east (x). House fronts on the north side face south, at the camera.
- *            The square is at x = 0.
- *   room     The teller's room. No south wall: that is where the camera lives. Lens north, east or west.
+ *   town    One street, running north from the gate to the stage: a house and a mailbox for each of them. The gate,
+ *           the stage, the mailboxes and everybody who lives here are drawn by the scenes (kit.tsx), because they
+ *           change: flags go up, the stage is taken away, the gate opens.
+ *   stage   The night of a vote, as she remembers it: the same stage in the dark, lit from the front, and the players
+ *           as a crowd of heads. Only the floor is here.
+ *   out     Out there, where the real ones live: a player's storage room. Planks, a wall, and chests the scene draws.
  *
- * This is a STARTER: the town of "Everyone Had the Same Face", without its hill. Change it to fit the story.
- * The story's THIRD place (what the rule was hiding: the other side, the bottom of the well, behind the wall)
- * is yours to build, as a third zone. See src/videos/in-this-town-same-face/world.tsx for a whole valley.
- *
- * The parts come from the topic's pack (Topics/InThisTown/places.tsx). 1 unit = 1 block = 1 metre. Ground is y = 0.
+ * Day, sunset, storm and night are the shot's `look`.
  */
 
-const Village: React.FC = () => (
-  <>
-    <Vox kind="grass" position={[0, -0.5, 0]} size={[120, 1, 90]} />
-    <Vox kind="path" position={[3, 0.02, 2]} size={[60, 0.06, 4.6]} />
-    <Vox kind="path" position={[0, 0.021, 1.5]} size={[13, 0.06, 12]} />
+const ROOF = ["#8a3b2a", "#3f5f9a", "#5f8a3a", "#7a4a8a", "#9a7a2a", "#3f8a8a", "#8a3b2a", "#4a4a52"];
 
-    {/* North side, west to east. Fronts face south. */}
-    <Hut at={[-21, 0, -5]} w={7} windows={[-2, 2]} roof="#3f6b3a" />
-    <Hut at={[-10, 0, -5]} w={6} h={3.6} wall="cobble" roof="#5a4a6a" windows={[-2, 2]} />
-    {/* A raised porch: whoever stands on it looks down at a kid, and the two stack in a tall frame. */}
-    <Vox kind="cobble" position={[-10, 0.25, -4.15]} size={[2.8, 0.5, 1.7]} />
-    <Vox kind="stone" position={[-10, 0.12, -3.1]} size={[1.6, 0.24, 0.5]} />
-    <Hut at={[0, 0, -7]} w={9} d={7} h={4.6} roof="#8a3b2a" windows={[-2.9, 2.9]} />
-    <Hut at={PLACE.home} w={6.5} tint="#caa268" roof="#3f6b3a" door={-1.3} windows={[1.5]} />
-    <Hut at={[20, 0, -5]} w={6} h={3.6} tint="#d8c49a" roof="#3d5f9a" door={1.2} windows={[-1.6]} />
-
-    {/* South side: backs to the usual camera. */}
-    <Hut at={[-13, 0, 11]} w={7} tint="#d8c49a" roof="#8a3b2a" windows={[-1.8, 1.8]} turn={Math.PI} />
-    <Hut at={[1.5, 0, 12.5]} w={6} h={3.6} wall="cobble" roof="#3d5f9a" windows={[1.5]} door={-1.2} turn={Math.PI} />
-    <Hut at={[15, 0, 11]} w={6.5} tint="#caa268" roof="#5a4a6a" windows={[-1.6]} door={1.3} turn={Math.PI} />
-
-    <Bell position={PLACE.bell} />
-    <Well position={PLACE.well} />
-    <Stall position={PLACE.stall} />
-
-    {(
-      [
-        [-28, -12, 4.6],
-        [-15.5, -13.5, 4],
-        [6, -15.5, 4.4],
-        [15, -13, 3.8],
-        [27, -11, 4.6],
-        [-25, 14, 4],
-        [8, 17, 4.4],
-        [25, 13, 4],
-        [-33, 1, 4.8],
-        [31, 3, 4.4],
-      ] as Array<[number, number, number]>
-    ).map(([x, z, height], i) => (
-      <Tree key={i} position={[x, 0, z]} height={height} leaf={i % 2 ? "#3f7f2d" : "#4a8c33"} />
-    ))}
-    <LampPost position={[-5.6, 0, -3.6]} seed={2} />
-    <LampPost position={[5.2, 0, 6.6]} seed={3} />
-    <LampPost position={[15.6, 0, -3.4]} seed={4} />
-    <LampPost position={[-16, 0, 4.6]} seed={5} />
-    <Clouds y={48} center={[0, 0, 0]} />
-
-    {/* Atmosphere is not optional: a ray, a pool of light, a glow and dust in every zone. */}
-    <GodRay position={[-3, 6.5, -3]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.06} />
-    <LightPool position={[0, 0.07, 1.5]} width={11} depth={9} color="#fff2c8" opacity={0.14} />
-    <Glow position={[0, 2.3, -2.5]} size={1.6} color="#ffe08a" opacity={0.35} />
-    <Dust position={[0, 2.2, 1]} area={[30, 4, 14]} count={70} size={0.045} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
-  </>
+const Street: React.FC<{ night: boolean; warm: boolean }> = ({ night, warm }) => (
+  <group>
+    <Vox kind="grass" position={[0, -0.5, 0]} size={[400, 1, 400]} />
+    <Vox kind="path" position={[0, 0.02, (GATE_Z + STAGE_Z) / 2 + 14]} size={[3.2, 0.06, GATE_Z - STAGE_Z + 30]} />
+    {WHO.map((who, i) => {
+      const west = HOME[who].box[0] < 0;
+      return <Hut key={who} at={[west ? -4.4 : 4.4, 0, HOME[who].box[2] - 0.6]} w={4.2} d={4.4} h={3.3} turn={west ? Math.PI / 2 : -Math.PI / 2} roof={ROOF[i]} wall="planks" windows={[-1.2, 1.2]} lit={night} />;
+    })}
+    {Array.from({ length: 70 }, (_, i) => {
+      const x = ((i * 53) % 100) / 100;
+      const z = ((i * 31 + 17) % 100) / 100;
+      const px = (x - 0.5) * 44;
+      const pz = STAGE_Z - 6 + z * 50;
+      if (Math.abs(px) < 2.2 || (Math.abs(px) > 2.4 && Math.abs(px) < 9 && pz < 6 && pz > -17)) return null;
+      const c = ["#ffe14a", "#ffffff", "#e8566a", "#ffe14a"][i % 4];
+      return (
+        <group key={i} position={[px, 0, pz]}>
+          <Block position={[0, 0.1, 0]} size={[0.04, 0.2, 0.04]} color="#3f8a34" castShadow={false} />
+          <Block position={[0, 0.23, 0]} size={[0.14, 0.1, 0.14]} color={c} castShadow={false} />
+        </group>
+      );
+    })}
+    {Array.from({ length: 54 }, (_, i) => {
+      const a = (i / 54) * Math.PI * 2;
+      const r = 24 + ((i * 37) % 100) / 5;
+      const x = Math.sin(a) * r;
+      const z = Math.cos(a) * r - 4;
+      if (Math.abs(x) < 4 && z > 0) return null;
+      return <Tree key={i} position={[x, 0, z]} height={5 + (i % 4)} leaf={i % 2 ? "#3f7f2d" : "#356430"} />;
+    })}
+    {night ? null : <GodRay position={[-3, 7, 0]} rotation={[0, 0, 0.5]} width={6} height={14} color={warm ? "#ffd9a0" : "#fff0c8"} opacity={warm ? 0.1 : 0.05} />}
+    <LightPool position={[0, 0.05, 2]} width={8} depth={10} color={night ? "#ffcf8a" : "#fff2c0"} opacity={night ? 0.16 : 0.12} />
+    <Glow position={[0, 1.6, -6]} size={3} color={night ? "#ffcf8a" : "#fff0c0"} opacity={night ? 0.1 : 0.08} />
+    <Dust position={[0, 2.2, 0]} area={[14, 4, 26]} count={60} size={0.045} color={night ? "#ffe6c0" : "#fff7d8"} opacity={0.5} seed={3} speed={0.2} />
+    {night ? <Moon position={[-16, 58, -90]} radius={7} /> : <Clouds y={48} center={[0, 0, 0]} />}
+    {night ? <Stars center={[0, 0, 0]} /> : null}
+  </group>
 );
 
 export const World: React.FC = () => {
   const active = useActiveShot();
-  const night = (active?.shot.look ?? "overworld-day") === "overworld-night";
+  const look = active?.shot.look ?? "overworld-day";
+  const night = look === "overworld-night";
   return (
     <>
-      <Zone name="village">
-        <Village />
+      {night ? <directionalLight color="#b9c4ff" intensity={0.4} position={[-5, 9, 12]} /> : null}
+      {night ? <ambientLight color="#8088e0" intensity={0.22} /> : null}
+      <Zone name="town">
+        <Street night={night} warm={look === "overworld-sunset"} />
       </Zone>
-      <Zone name="room">
-        <Room at={PLACE.room} night={night} />
+      <Zone name="stage">
+        <Vox kind="darkPlanks" position={[0, -0.5, STAGE_Z + 10]} size={[60, 1, 60]} />
+        <Block position={[0, 9, STAGE_Z - 6]} size={[60, 20, 0.5]} color="#0c0a14" castShadow={false} />
+        <Stars center={[0, 0, STAGE_Z]} />
+      </Zone>
+      <Zone name="out">
+        <Vox kind="planks" position={[0, -0.5, 0]} size={[30, 1, 30]} />
+        <Vox kind="darkPlanks" position={[0, 2.5, -3]} size={[30, 5, 0.5]} />
+        <Vox kind="log" position={[-3.2, 2.5, -2.7]} size={[0.5, 5, 0.5]} />
+        <Vox kind="log" position={[3.2, 2.5, -2.7]} size={[0.5, 5, 0.5]} />
+        <Glow position={[0, 2, -2]} size={5} color="#ffe6b0" opacity={0.1} />
       </Zone>
     </>
   );
