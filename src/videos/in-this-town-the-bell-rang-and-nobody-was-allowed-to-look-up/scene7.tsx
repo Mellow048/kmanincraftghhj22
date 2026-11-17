@@ -23,7 +23,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.push({ on: [0.1, 1.6, 3.6], dist: 7.4, to: 6, yaw: 180, pitch: 4, fov: 46 }),
+      ...cam.push({ on: [0.2, 1.6, -1.6], dist: 6.4, to: 5.2, yaw: 4, pitch: 2, fov: 46 }),
       zone: "village",
       look: DAY,
       note: "From behind them: they run toward the bell, and the bell is in the same frame.",

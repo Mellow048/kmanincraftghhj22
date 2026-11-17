@@ -581,7 +581,7 @@ export function getPose(name: AnimName, t: number): Pose {
     case "leanOver": {
       // Bent at the hips over a rim or a sill, both hands flat on it, looking down into whatever is there.
       // The legs stay upright under the hips. With the feet 0.55 m × scale short of the edge, the hands land on it.
-      const lean = 1.15;
+      const lean = 0.7;
       p.bodyPitch = lean;
       p.legR = [-lean, 0, 0.04];
       p.legL = [-lean, 0, -0.04];
