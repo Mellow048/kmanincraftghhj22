@@ -59,7 +59,7 @@ export const scene2 = storyScene(timing, {
       note: "Low angle under the bench: the slats, the dark, one paper cup, and him crouched with his face nearly on the pavement, looking for who said it.",
       stage: () => (
         <>
-          <Hero position={S(-4.85, 0, 0.95)} rotationY={NORTH + 0.35} animation="crouch" face="wow" headPitch={0.34} />
+          <Hero position={S(-4.85, 0, 0.95)} rotationY={SOUTH + 0.30} animation="crouch" face="wow" headPitch={0.16} />
           <Block size={[0.11, 0.15, 0.11]} position={S(-3.55, 0.08, -0.42)} color="#e8e2d0" castShadow={false} />
           <Block size={[0.13, 0.03, 0.13]} position={S(-3.55, 0.16, -0.42)} color="#f2ecd8" castShadow={false} />
           <LightPool position={S(-4.20, 0.03, -0.30)} width={3.2} depth={1.8} color="#d8d2c0" opacity={0.12} />
