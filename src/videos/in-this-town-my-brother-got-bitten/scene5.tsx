@@ -335,8 +335,8 @@ export const scene5 = storyScene(timing, {
               <pointLight position={[0.5, 1.5, -1.5]} color="#ff3020" intensity={1.2} distance={2} decay={1.6} />
             </>
           ) : null}
-          <SubscribeSign position={[0.12, 1.05, 0.9]} scale={0.6 * pop(t, 0.6, 0.18)} />
-          {t > 0.7 ? <Block position={[0.12, 0.2, 0.89]} size={[0.06, 0.4, 0.05]} color="#5c3f24" /> : null}
+          <SubscribeSign position={[0.12, 1.13, 0.9]} scale={0.5 * pop(t, 0.6, 0.18)} />
+          {t > 0.7 ? <Block position={[0.12, 0.28, 0.89]} size={[0.05, 0.56, 0.04]} color="#5c3f24" /> : null}
           <Fill at={[0.4, 2.2, 2.2]} power={10} />
         </>
       ),
