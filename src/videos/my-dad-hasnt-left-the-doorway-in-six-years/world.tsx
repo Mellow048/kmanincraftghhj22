@@ -37,8 +37,10 @@ const Wall: React.FC = () => (
 
     {/* Interior light: the wall lamps are the only reason the inside of this house is not a black box.
         The front wall blocks the sun, so these do the work on every shot that faces the door. */}
-    <pointLight position={[-1.9, 2.15, -1.4]} color="#ffb877" intensity={11} distance={9} decay={2} />
-    <pointLight position={[1.9, 2.15, -3.6]} color="#ffc890" intensity={9} distance={8} decay={2} />
+    <ambientLight color="#ffd9b4" intensity={0.45} />
+    <pointLight position={[-1.9, 2.15, -1.4]} color="#ffb877" intensity={34} distance={11} decay={2} />
+    <pointLight position={[1.9, 2.15, -3.6]} color="#ffc890" intensity={26} distance={10} decay={2} />
+    <pointLight position={[0, 2.0, -0.8]} color="#ffd0a0" intensity={16} distance={6} decay={2} />
     <Glow position={[-1.85, 2.2, -1.35]} size={1.0} color="#ffbe80" opacity={0.55} />
     <LightPool position={[-1.2, 0.04, -2.0]} width={4.6} depth={4.6} color="#ff9a45" opacity={0.2} />
 
