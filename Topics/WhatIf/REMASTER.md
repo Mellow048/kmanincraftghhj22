@@ -135,3 +135,56 @@ frame is already the strange thing. **Rule going forward: the weirdest image in 
 3. **Film 3 ships to the new grammar** — median 2.6–3.2 s, wide/medium/close stated per shot in the note.
 4. **Films 4 and 5** at 105–118 s, frame-one hook, phrase captions.
 5. **Paperwork for all five**: three hooks, a timestamped board, a self-review, a weaknesses list.
+
+---
+
+# The camera rules that came out of this remaster
+
+Eight lens bugs, all found by rendering and looking. They are all one family: **`on` is the LOOK POINT, and the lens
+sits `dist` metres away at `yaw`/`pitch`.** Everything else follows from that sentence, and I had it backwards for two
+whole films.
+
+```
+lens = on + dist x (sin yaw x cos pitch,  sin pitch,  cos yaw x cos pitch)
+```
+
+**yaw 0 = SOUTH of the look point. yaw 90 = EAST. yaw 180 = NORTH. yaw -90 = WEST.**
+
+`pitch` positive = the lens is ABOVE the look point looking down.
+
+That one formula has now paid for seven separate bugs:
+
+| # | Symptom | Cause |
+|---|---|---|
+| 1 | Lens behind a wall, frame is flat plaster | `yaw 148` from a seat near the east wall lands outside the room |
+| 2 | Lens above the ceiling, frame is a roof slab | `cam.top(height 4.0)` in a room 3.6 m high |
+| 3 | Lens inside a desk, bottom third of frame is wood | `dist` shorter than the gap to the obstacle |
+| 4 | A person's shadow is invisible from every angle | The actor is between the lens and the thing behind him |
+| 5 | A number/picture renders as a black slab | The voxel figure faces away from the lens |
+| 6 | The subscribe sign is a cropped banner | The 9:16 frame is narrow; nobody computed the width |
+| 7 | The subject's face is never on screen | A north-facing actor faces a lens at `yaw ≈ 180`, not `yaw 0` |
+| 8 | A shadow's head is cut off | A prop on the wall is occluded by its own tray/rail |
+
+## The four rules
+
+1. **Solve the stand point, never type the angles.** Pick where the lens stands and what it looks at, then compute
+   `dist`, `yaw` and `pitch`. `Topics/WhatIf/README.md` has the three-line Python.
+
+2. **Check the stand point against the set before rendering.** Every set has bounds; the lens must be inside them.
+   The classroom is x ±4.4, z −3.5…3.6, ceiling 3.6. The hall is z −1.8…1.7. A lens outside is a wall.
+
+3. **Compute the width of frame before choosing a distance.**
+   `width = 2 x dist x tan(fov/2) x (1080/1920)` — the 9:16 frame is less than a third as wide as it is tall, so
+   distances that feel right are three times too close. At 3.2 m and fov 36 you see **1.17 m**, which cannot hold a
+   1.7 m sign or a person and the thing behind them.
+
+4. **Ask who is facing the camera.** An actor's `rotationY` is the direction they look. Put the lens where they are
+   looking and you get their face; put it behind them and you get a neck — for 40 of 55 shots, which is what film 2
+   shipped the first time.
+
+## What the vision is for
+
+The owner said use the vision and do not lean on him as the tester. That is what this list is: every one of these
+eight was invisible to `npm run check`, which measures duration, words, tempo, loudness — every number — and cannot
+see that a frame is a wall. **A passing check is not a finished film.** The only test that counts is pulling frames
+out of the actual mp4 and looking at them.
