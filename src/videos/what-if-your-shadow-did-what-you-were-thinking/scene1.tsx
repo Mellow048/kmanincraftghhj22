@@ -44,6 +44,8 @@ const Shadow: React.FC<{ at: Vec3; rotationY?: number; scale?: number; arm?: num
 
 /** The classroom's north wall, just in front of the board: where the shadow plays for the whole first half. */
 const WALL: Vec3 = SPOT.at(0, 0, -3.885);
+/** Where his shadow actually is: well to the right of him, on a part of the board he is not standing in front of. */
+const WALL_ASIDE: Vec3 = SPOT.at(1.75, 0, -3.885);
 
 /** The house the shadow draws: three windows, one door. Used twice here and once at the end of the film. */
 const DrawnHouse: React.FC<{ at: Vec3; scale?: number; draw?: number }> = ({ at, scale = 1, draw = 1 }) => (
@@ -71,28 +73,31 @@ export const scene1 = storyScene(timing, {
       // at the SHADOW's own height on the board (WALL is the foot of it): the waving figure fills frame one, and he is
       // the small dark thing at the bottom edge.
       // He is turned away, so we read the shadow - the wrong one of the two - first.
-      // WALL is the FOOT of the board; aiming at it put the lens on the floor at the skirting board. Aim at the
-      // shadow's own chest, 0.85 m up the wall, and stand back far enough for the whole figure to fit.
-      ...cam.push({ on: SPOT.at(0, 0.85, -3.885), dist: 2.6, to: 2.35, yaw: 10, pitch: 2, fov: 42 }),
+      // THE HOOK, fourth and last try, and the rule that came out of it: a shadow behind a person is a shadow you
+      // cannot see, from any angle, because `on` is the look point. So the hook is not "him and his shadow" - it is
+      // the shadow ALONE, a metre and a half to the right of him, waving at nothing. That is also the better image:
+      // frame one is a hand that is not doing what its owner is doing.
+      ...cam.push({ on: SPOT.at(1.75, 1.05, -3.885), dist: 2.5, to: 2.2, yaw: 6, pitch: 1, fov: 40 }),
       zone: "class",
       note: "The question, over the picture that answers it: the teller standing in front of the board, and on the board behind him a flat black shadow with its arm up, waving. It is his size, it is in the right place, and it is doing the one thing he is not.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH + 0.35} animation="idle" face="calm" />
-          <Shadow at={WALL} arm={ease(ramp(t, 0.2, 0.7))} />
+          <Shadow at={WALL_ASIDE} arm={ease(ramp(t, 0.2, 0.7))} />
         </>
       ),
     },
     {
       // The second half of the question: "instead of what you were doing".
       cue: "1.if2",
-      ...cam.push({ on: SPOT.at(0, 1.3, -2.0), dist: 3.6, to: 3.0, yaw: 0, pitch: 2, fov: 42 }),
+      // The sentence turns at "instead", so the shot does too: pull back to take in BOTH, him rigidly still on the
+      // left and the shadow a long way to the right of him with its arm going. The gap between them is the joke.
+      ...cam.push({ on: SPOT.at(0.85, 1.10, -3.2), dist: 3.4, to: 3.0, yaw: 4, pitch: 0, fov: 46 }),
       zone: "class",
-      note: "SPLIT: closer on the same two things, because the sentence turns at 'instead'. Him perfectly still, the shadow waving harder. The joke has to be readable in one second.",
+      note: "SPLIT: both of them, and the space between them. Him perfectly still, the shadow a metre and a half away with its arm going. The joke has to be readable in one second.",
       stage: (t) => (
         <>
           <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH} animation="idle" face="calm" />
-          <Shadow at={WALL} arm={0.75 + 0.2 * Math.sin(t * 7)} />
+          <Shadow at={WALL_ASIDE} arm={0.75 + 0.2 * Math.sin(t * 7)} />
         </>
       ),
     },
