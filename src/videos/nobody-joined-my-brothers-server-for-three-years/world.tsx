@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, GodRay, Glow, LightPool, Torch, Tree, Vox } from "../../engine";
+import { Block, Clouds, Dust, GodRay, Glow, LightPool, Torch, Tree, Vox, Zone } from "../../engine";
 import { PLACE, at } from "./kit";
 
 /**
@@ -15,7 +15,7 @@ import { PLACE, at } from "./kit";
 const Sets: React.FC = () => (
   <>
     {/* ---- room: where he logs on every night ---- */}
-    <group name="set-room">
+    <Zone name="room">
       <Vox kind="planks" position={at(PLACE.room, 0, -0.1, 0)} size={[9, 0.2, 8]} />
       <Vox kind="planks" position={at(PLACE.room, 0, 1.4, -3.6)} size={[9, 3.2, 0.2]} />
       <Vox kind="planks" position={at(PLACE.room, -4.3, 1.4, 0)} size={[0.2, 3.2, 8]} />
@@ -29,10 +29,10 @@ const Sets: React.FC = () => (
       <Block position={at(PLACE.room, -4.15, 1.9, -1.2)} size={[0.06, 1.1, 0.9]} color="#e8e2cf" castShadow={false} />
       <Block position={at(PLACE.room, -4.1, 2.05, -1.2)} size={[0.02, 0.36, 0.42]} color="#6a8f52" castShadow={false} />
       <Block position={at(PLACE.room, -4.1, 1.7, -1.35)} size={[0.02, 0.2, 0.2]} color="#8a7a5a" castShadow={false} />
-    </group>
+    </Zone>
 
     {/* ---- hill: the castle, half finished ---- */}
-    <group name="set-hill">
+    <Zone name="hill">
       <Vox kind="grass" position={at(PLACE.hill, 0, -1.6, 0)} size={[46, 0.4, 46]} />
       <Vox kind="dirt" position={at(PLACE.hill, 0, -2.1, 0)} size={[40, 0.8, 40]} />
       <Tree position={at(PLACE.hill, -11.5, 0, 6.4)} height={4.6} />
@@ -46,10 +46,10 @@ const Sets: React.FC = () => (
       <Torch position={at(PLACE.hill, -1.6, 0.3, 8.2)} light={6} seed={21} />
       <Torch position={at(PLACE.hill, -1.6, 0.3, 2.4)} light={6} seed={22} />
       <Torch position={at(PLACE.hill, 1.8, 0.3, -3.2)} light={5} seed={23} />
-    </group>
+    </Zone>
 
     {/* ---- spawn: where he leaves things ---- */}
-    <group name="set-spawn">
+    <Zone name="spawn">
       <Vox kind="grass" position={at(PLACE.spawn, 0, -0.1, 0)} size={[18, 0.2, 18]} />
       <Vox kind="path" position={at(PLACE.spawn, 0, 0.05, 0)} size={[6, 0.08, 6]} />
       {/* the spawn plateau, and the torch that has been lit since the day he made the world */}
@@ -61,7 +61,7 @@ const Sets: React.FC = () => (
       <Vox kind="planks" position={at(PLACE.spawn, -5.6, 1.4, -5.2)} size={[4.2, 2.8, 4.2]} tint="#8a5f36" />
       <Vox kind="planks" position={at(PLACE.spawn, -5.6, 3.1, -5.2)} size={[4.6, 0.3, 4.6]} tint="#6a4728" />
       <Block position={at(PLACE.spawn, -5.6, 1.8, -3.05)} size={[1.4, 0.06, 0.06]} color="#ffd27a" emissive="#ffb347" emissiveIntensity={0.7} castShadow={false} />
-    </group>
+    </Zone>
   </>
 );
 

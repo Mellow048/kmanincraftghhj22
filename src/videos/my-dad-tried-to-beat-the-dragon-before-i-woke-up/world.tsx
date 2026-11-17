@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, GodRay, Glow, LightPool, Torch, Tree, Vox } from "../../engine";
+import { Block, Clouds, Dust, GodRay, Glow, LightPool, Torch, Tree, Vox, Zone } from "../../engine";
 import { PLACE, Shaft, at } from "./kit";
 
 /**
@@ -11,13 +11,13 @@ import { PLACE, Shaft, at } from "./kit";
  *   stronghold  the portal room, twelve eyes short of finished.
  *   end         the obsidian platform, and the dragon.
  *
- * The sets are mounted for the whole film (the world does not cut, the camera does), wrapped in
- * <Zone> so a shot only draws the one it is in.
+ * The sets are mounted for the whole film (the world does not cut, the camera does), each in a
+ * <Zone> so a shot only draws the set it names in `zone` — five sets' worth of lights, not lit at once.
  */
 const Sets: React.FC = () => (
   <>
     {/* ---- room: the bedroom where he starts ---- */}
-    <group name="set-room">
+    <Zone name="room">
       <Vox kind="planks" position={at(PLACE.room, 0, -0.1, 0)} size={[9, 0.2, 10]} />
       <Vox kind="planks" position={at(PLACE.room, 0, 1.4, -4.9)} size={[9, 3.2, 0.2]} />
       <Vox kind="planks" position={at(PLACE.room, -4.3, 1.4, 0)} size={[0.2, 3.2, 10]} />
@@ -30,10 +30,10 @@ const Sets: React.FC = () => (
       {/* the poster a twelve-year-old put up: the dragon he has never beaten */}
       <Block position={at(PLACE.room, -4.15, 1.85, -1.4)} size={[0.06, 1.2, 1.0]} color="#241a33" castShadow={false} />
       <Block position={at(PLACE.room, -4.1, 2.05, -1.4)} size={[0.02, 0.3, 0.5]} color="#8a4fe0" emissive="#6a2ec0" emissiveIntensity={0.7} castShadow={false} />
-    </group>
+    </Zone>
 
     {/* ---- shaft: four hundred blocks straight down ---- */}
-    <group name="set-shaft">
+    <Zone name="shaft">
       {/* the ground, in four slabs: the hole in the middle is the whole point of the set */}
       <Vox kind="grass" position={at(PLACE.shaft, -4.15, -0.1, 0)} size={[5.7, 0.2, 14]} />
       <Vox kind="grass" position={at(PLACE.shaft, 4.15, -0.1, 0)} size={[5.7, 0.2, 14]} />
@@ -51,20 +51,20 @@ const Sets: React.FC = () => (
       <Vox kind="dirt" position={at(PLACE.shaft, 2.6, 0.2, 2.4)} size={[1.1, 0.4, 1.1]} />
       <Vox kind="cobble" position={at(PLACE.shaft, 1.6, 0.25, -1.8)} size={[1.2, 0.5, 1.2]} />
       <Torch position={at(PLACE.shaft, -1.1, 0.2, 1.1)} light={5} seed={9} />
-    </group>
+    </Zone>
 
     {/* ---- field: where the enderman is ---- */}
-    <group name="set-field">
+    <Zone name="field">
       <Vox kind="grass" position={at(PLACE.field, 0, -0.1, 0)} size={[16, 0.2, 16]} />
       <Tree position={at(PLACE.field, 3.4, 0, -3.2)} height={5.2} />
       <Tree position={at(PLACE.field, -3.8, 0, -2.4)} height={4.0} leaf="#37682a" />
       <Tree position={at(PLACE.field, 1.2, 0, 4.6)} height={3.6} leaf="#3f7f2d" />
       <Torch position={at(PLACE.field, -1.6, 0.2, -1.2)} light={6} seed={4} />
       <Torch position={at(PLACE.field, 2.2, 0.2, 0.8)} light={5} seed={7} />
-    </group>
+    </Zone>
 
     {/* ---- stronghold: the portal room ---- */}
-    <group name="set-stronghold">
+    <Zone name="stronghold">
       <Vox kind="stoneBrick" position={at(PLACE.stronghold, 0, -0.1, 0)} size={[11, 0.2, 11]} />
       <Vox kind="stoneBrick" position={at(PLACE.stronghold, 0, 1.8, -5.4)} size={[11, 4, 0.4]} />
       <Vox kind="stoneBrick" position={at(PLACE.stronghold, -5.4, 1.8, 0)} size={[0.4, 4, 11]} />
@@ -74,17 +74,17 @@ const Sets: React.FC = () => (
       {/* the lava under the portal, the way the game builds it */}
       <Block position={at(PLACE.stronghold, 0, -0.02, -2.6)} size={[3.2, 0.05, 1.0]} color="#ff7a14" emissive="#ff5a00" emissiveIntensity={1.2} castShadow={false} />
       <Glow position={at(PLACE.stronghold, 0, 0.2, -2.6)} size={2.6} color="#ff8a2a" opacity={0.35} />
-    </group>
+    </Zone>
 
     {/* ---- end: obsidian, endstone, and nothing else ---- */}
-    <group name="set-end">
+    <Zone name="end">
       <Vox kind="obsidian" position={at(PLACE.end, 0, -0.3, 0)} size={[16, 0.6, 16]} />
       <Vox kind="sand" position={at(PLACE.end, 0, 0.05, 0)} size={[13, 0.1, 13]} tint="#d8d6a0" />
       {[-4.2, -2.1, 0, 2.1, 4.2].map((x, i) => (
         <Vox key={i} kind="obsidian" position={at(PLACE.end, x, 2.4, -5.6)} size={[1.4, 4.8, 1.4]} />
       ))}
       <Glow position={at(PLACE.end, 0, 3.2, -6.2)} size={9} color="#6a3fc0" opacity={0.18} />
-    </group>
+    </Zone>
   </>
 );
 

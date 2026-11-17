@@ -1,0 +1,158 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "nobody-joined-my-brothers-server-for-three-years",
+  "mix": "public/audio/nobody-joined-my-brothers-server-for-three-years/mix.mp3",
+  "seconds": 64.8,
+  "built_from": {
+    "timing.json": "a7586c65e064d3be27bcf4626da808ef4b85ba58",
+    "sound.json": "89d5220060bdcb6db0f2ba25658eca8299282673",
+    "narration.mp3": "89ea1fa280ed5f85d2f6cbbee03433502132da65"
+  },
+  "mix_sha1": "1ff7182fbb2044bcd8247df4043efa2aeee6af84",
+  "music_sections": [
+    {
+      "from": "1.left",
+      "mood": "drone",
+      "at": 0.0
+    },
+    {
+      "from": "2.castle",
+      "mood": "sad",
+      "at": 5.97
+    },
+    {
+      "from": "3.pay",
+      "mood": "hope",
+      "at": 15.93
+    },
+    {
+      "from": "4.two",
+      "mood": "sneak",
+      "at": 22.07
+    },
+    {
+      "from": "5.birthday",
+      "mood": "tense",
+      "at": 32.7
+    },
+    {
+      "from": "5.sign",
+      "mood": "sad",
+      "at": 35.63
+    },
+    {
+      "from": "5.words",
+      "mood": "none",
+      "at": 38.3
+    },
+    {
+      "from": "6.friday",
+      "mood": "drone",
+      "at": 39.93
+    },
+    {
+      "from": "6.two",
+      "mood": "tense",
+      "at": 43.13
+    },
+    {
+      "from": "6.name",
+      "mood": "wonder",
+      "at": 45.37
+    },
+    {
+      "from": "6.wait",
+      "mood": "drone",
+      "at": 48.5
+    },
+    {
+      "from": "7.walked",
+      "mood": "hope",
+      "at": 50.23
+    },
+    {
+      "from": "7.block",
+      "mood": "wonder",
+      "at": 52.77
+    },
+    {
+      "from": "7.said",
+      "mood": "sad",
+      "at": 55.3
+    },
+    {
+      "from": "7.light",
+      "mood": "wonder",
+      "at": 58.4
+    }
+  ],
+  "beds": 13,
+  "measured": {
+    "musicUnderVoiceDb": 18.8,
+    "secondsWithoutMusic": 3.4,
+    "bedsUnderVoiceDb": 28.2,
+    "sfx": 49,
+    "sfxPerMinute": 45.4,
+    "sfxKinds": 23,
+    "longestGapSeconds": 2.9,
+    "longestGapAt": 61.9,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.9,
+    "voiceOverRestWorstDb": 3.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.1,
+        "t": 61.4,
+        "cue": "7.light",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 54.7,
+        "cue": "7.block",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 57.8,
+        "cue": "7.said",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 17.5,
+        "cue": "3.pay",
+        "sounding": [
+          "coins"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 26.6,
+        "cue": "4.mobs",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 1.2,
+        "cue": "1.left",
+        "sounding": [
+          "scrape",
+          "slide_down"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.6,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}
