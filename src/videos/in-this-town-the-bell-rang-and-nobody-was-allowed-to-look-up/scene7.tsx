@@ -52,14 +52,14 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <BellRope pull={0.85} />
-            <Hero position={[0.05, 0, -2.05]} rotationY={Math.PI} animation="reachUp" face="brave" />
+            <Hero position={[0.05, 0, -1.55]} rotationY={Math.PI} animation="reachUp" face="brave" />
             {Array.from({ length: n }).map((_, i) => {
               const col = i % 2;
               const row = Math.floor(i / 2) - 1;
               return (
                 <Puller
                   key={i}
-                  position={[row * 0.42 + (col === 0 ? 0.55 : -0.55), 0, -2.12 - col * 0.12]}
+                  position={[row * 0.42 + (col === 0 ? 0.55 : -0.55), 0, -1.6 - col * 0.15]}
                   rotationY={Math.PI}
                   tint={tints[i % tints.length]}
                 />
