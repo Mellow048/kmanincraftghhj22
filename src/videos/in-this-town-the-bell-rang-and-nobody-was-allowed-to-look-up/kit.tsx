@@ -67,7 +67,7 @@ export const Friend: React.FC<Folk> = (p) => (
     hair="#6a3a18"
     colors={{ torso: "#3d7ea6", arms: "#e4b08a", legs: "#2a3348" }}
     animation={poseOf(p, true)}
-    arms={(p.cover ?? 0) > 0.35 ? "cower" : undefined}
+    arms={(p.cover ?? 0) > 0.35 ? "cover" : undefined}
     animDistance={p.walk}
     face={(p.cover ?? 0) > 0.35 ? "scared" : "uneasy"}
     blink

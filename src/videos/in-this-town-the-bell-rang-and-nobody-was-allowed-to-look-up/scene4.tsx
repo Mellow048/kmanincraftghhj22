@@ -7,7 +7,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.mum",
-      ...cam.push({ on: [9.75, 1.2, -2.85], dist: 3.3, to: 2.5, yaw: 78, pitch: 18, fov: 32 }),
+      ...cam.push({ on: [9.75, 1.25, -2.85], dist: 4.4, to: 3.4, yaw: 62, pitch: 10, fov: 36 }),
       zone: "village",
       look: DAY,
       note: "Side-front: her hands come down onto his head, and his chin drops.",

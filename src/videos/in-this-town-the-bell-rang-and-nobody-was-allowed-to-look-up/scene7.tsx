@@ -23,25 +23,25 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.truck({ on: [-1.2, 1.3, 1.2], dist: 6.2, yaw: 30, pitch: 8, fov: 46, by: [3.2, 0, -1.6] }),
+      ...cam.push({ on: [0.1, 1.8, -0.6], dist: 9.5, to: 7.8, yaw: 2, pitch: 4, fov: 48 }),
       zone: "village",
       look: DAY,
-      note: "They run toward the tower, not away from it. That is the turn.",
+      note: "From behind them: they run toward the bell, and the bell is in the same frame.",
       stage: (t) => {
-        const go = ease(ramp(t, wordAt("7.run", "Toward"), wordAt("7.run", "Toward") + 0.7));
+        const go = ease(ramp(t, wordAt("7.run", "Toward"), wordAt("7.run", "Toward") + 0.8));
         return (
           <>
-            <Mum position={[-2.6 + go * 1.4, 0, 1.5 - go * 0.8]} walk={go * 3} />
-            <Dad position={[-0.8 + go * 1.2, 0, 1.7 - go * 0.7]} walk={go * 3} />
-            <Baker position={[0.8 + go * 1.1, 0, 1.2 - go * 0.6]} walk={go * 2.6} />
-            <Golem position={[2.6 + go * 0.6, 0, 2.2]} bow={0.15} walk={go * 1.4} />
+            <Mum position={[-0.75, 0, 3.1 - go * 1.8]} rotationY={Math.PI} walk={2.4} />
+            <Dad position={[0.55, 0, 3.4 - go * 1.7]} rotationY={Math.PI} walk={2.4} />
+            <Baker position={[1.45, 0, 2.7 - go * 1.5]} rotationY={Math.PI} walk={2.2} />
+            <Golem position={[-1.6, 0, 3.8 - go * 1.2]} rotationY={Math.PI} bow={0.05} walk={1.6} />
           </>
         );
       },
     },
     {
       cue: "7.rope",
-      ...cam.push({ on: [0.05, 1.5, -2.15], dist: 5.8, to: 4.6, yaw: 76, pitch: 6, fov: 42 }),
+      ...cam.push({ on: [0, 1.5, -2.05], dist: 5.2, to: 4.2, yaw: 14, pitch: 6, fov: 42 }),
       zone: "village",
       look: DAY,
       note: "From the side: raised hands meet the rope, and the count is a row you can see.",
@@ -52,14 +52,14 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <BellRope pull={0.35} />
-            <Hero position={[0.1, 0, -1.95]} rotationY={Math.PI} animation="reachUp" face="brave" />
+            <Hero position={[0.05, 0, -1.72]} rotationY={Math.PI} animation="reachUp" face="brave" />
             {Array.from({ length: n }).map((_, i) => {
               const col = i % 2;
-              const row = Math.floor(i / 2) - 2;
+              const row = Math.floor(i / 2) - 1;
               return (
                 <Puller
                   key={i}
-                  position={[row * 0.52 + (col === 0 ? 0.7 : -0.15), 0, -2.05 - col * 0.22]}
+                  position={[row * 0.42 + (col === 0 ? 0.55 : -0.55), 0, -1.85 - col * 0.18]}
                   rotationY={Math.PI}
                   tint={tints[i % tints.length]}
                 />
