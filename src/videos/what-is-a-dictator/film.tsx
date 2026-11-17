@@ -25,7 +25,7 @@ export const film = defineFilm({
   title: "What Is a Dictator",
   topic: "explainer",
   look: "overworld-day",
-  // The voice alone, until the sound is built (scripts/sound.py build): then this is mix.mp3.
+  // The recorded narration and custom sound mix, built by scripts/sound.py.
   audio: { src: "audio/what-is-a-dictator/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,
