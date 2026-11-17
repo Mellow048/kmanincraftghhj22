@@ -181,9 +181,10 @@ export const scene1 = storyScene(timing, {
     {
       // The dinner lady had two, so I let people go first. A tiny clock, a small kindness, played as routine.
       cue: "3.lady",
-      // Solved, not typed: the dinner lady stands at (2.2, ., 0.7) and `yaw -52` from x 2.4 walked the lens out
-      // through the east wall, so the shot was 2 seconds of plaster. Stand at (0.21, 2.62), inside the room.
-      ...cam.push({ on: [2.2, 1.2, 0.7], dist: 2.76, to: 2.46, yaw: -46, pitch: 3, fov: 46 }),
+      // Solved twice. `yaw -52` from x 2.4 walked the lens through the east wall (2 s of plaster); the first fix stood
+      // it at (0.21, 2.62) looking east-north-east, which put the doorframe across a third of the frame. Now it stands
+      // at (2.9, 3.1) looking north-west: the door is behind the camera and she is against the back wall.
+      ...cam.push({ on: [2.2, 1.15, 0.7], dist: 2.51, to: 2.25, yaw: 16, pitch: 5, fov: 46 }),
       zone: "class",
       note: "The back of the room and the door: a dinner lady with a clock at two, and the teller stepping out of the way to let her past. He does not look at her face, he looks at the number - which is the whole character in one picture, and the reason the last act costs him something.",
       stage: (t) => (
