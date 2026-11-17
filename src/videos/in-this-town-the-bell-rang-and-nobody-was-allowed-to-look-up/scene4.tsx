@@ -31,7 +31,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.why",
-      ...cam.push({ on: [9.5, 1.3, -3.6], dist: 3.2, to: 2.6, yaw: 8, pitch: 8, fov: 38 }),
+      ...cam.push({ on: [8.8, 1.3, -3.45], dist: 4, to: 3.2, yaw: 30, pitch: 6, fov: 40 }),
       zone: "village",
       look: DAY,
       note: "The question is asked. He does not move, and he does not answer.",
