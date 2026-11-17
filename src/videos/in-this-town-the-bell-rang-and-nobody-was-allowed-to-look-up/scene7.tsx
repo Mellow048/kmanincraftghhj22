@@ -51,15 +51,15 @@ export const scene7 = storyScene(timing, {
         const tints = ["#6a8f4a", "#8a5a3a", "#3d5f9a", "#8a3b2a", "#6a4030", "#5a4a6a", "#3f6b3a", "#8a5a2a"];
         return (
           <>
-            <BellRope pull={0.35} />
-            <Hero position={[0.05, 0, -1.72]} rotationY={Math.PI} animation="reachUp" face="brave" />
+            <BellRope pull={0.85} />
+            <Hero position={[0.05, 0, -2.05]} rotationY={Math.PI} animation="reachUp" face="brave" />
             {Array.from({ length: n }).map((_, i) => {
               const col = i % 2;
               const row = Math.floor(i / 2) - 1;
               return (
                 <Puller
                   key={i}
-                  position={[row * 0.42 + (col === 0 ? 0.55 : -0.55), 0, -1.85 - col * 0.18]}
+                  position={[row * 0.42 + (col === 0 ? 0.55 : -0.55), 0, -2.12 - col * 0.12]}
                   rotationY={Math.PI}
                   tint={tints[i % tints.length]}
                 />
