@@ -39,7 +39,7 @@ not give you a story.
 | The request | It is |
 |---|---|
 | "What if you could …", "What if I …": a kid gets a power, and tells what happened | **This topic** |
-| "What if the sun went out?", answered with facts | [`Topics/Explainer`](../Explainer/README.md): an explanation with "what if" in its title. Pass `--topic explainer` |
+| "What if the sun went out?", answered with facts | [`Topics/Stories`](../Stories/README.md): an explanation with "what if" in its title. Pass `--topic stories` (the owner renamed that topic from Explainer to Stories on 2026-11-11) |
 | "In this town, …": a place with a rule nobody explains | [`Topics/InThisTown`](../InThisTown/README.md) |
 
 If you cannot tell whether a "what if" is a story or an explanation, ask the owner one question.

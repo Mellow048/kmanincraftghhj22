@@ -1,6 +1,6 @@
 {
   "film": "what-is-a-dictator",
-  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build what-is-a-dictator",
+  "README": "The sound sheet. Read Topics/Stories/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build what-is-a-dictator",
   "music": {
     "gain": -16,
     "sections": [
@@ -12,7 +12,7 @@
       {
         "from": "2.vote",
         "mood": "explain",
-        "why": "The cause, step by step: facts, one after another, the body of the explainer."
+        "why": "The cause, step by step: facts, one after another, the body of the stories."
       },
       {
         "from": "5.word",

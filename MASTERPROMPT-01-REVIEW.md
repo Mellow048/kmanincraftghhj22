@@ -182,7 +182,7 @@ worst moment **6.0 dB** at 96.0 s, under the cheer and the ding of the last beat
 
 ⟪ALLTABLE⟫
 
-`why-does-bread-cost-more-every-year.mp4` is the Explainer reference: by the contract in `AGENTS.md` its camera
+`why-does-bread-cost-more-every-year.mp4` is the Stories reference: by the contract in `AGENTS.md` its camera
 flies and does not cut, so "one shot holds for 49 s" is the design, not a fault.
 
 ## What this review could not check

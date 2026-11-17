@@ -5,14 +5,14 @@ three-minute narrated film with 85 cuts. For those, the narration decides when e
 
     narration.md  →  recorded clips  →  timing.json  →  storyScene  →  captions  →  sound.json  →  mix.mp3
 
-Any topic can use this. `Topics/InThisTown` was the first; `Topics/WhatIf` uses it unchanged; `Topics/Explainer`
+Any topic can use this. `Topics/InThisTown` was the first; `Topics/WhatIf` uses it unchanged; `Topics/Stories`
 uses all of it except `storyScene`, because its camera does not cut (section 3b). Start a film of a topic from the
 topic's own starter, which is already wired to all of it:
 
 ```bash
 npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
 npm run new -- "What If You Could See Who Has a Crush on You" --topic what-if
-npm run new -- "Why Bread Costs More" --topic explainer
+npm run new -- "Why Bread Costs More" --topic stories
 ```
 
 ## 1. The script: `src/videos/<film>/narration.md`
@@ -97,7 +97,7 @@ catalogue in `Topics/InThisTown/PACK.md`). A film's `kit.tsx` passes the pack on
 ## 3b. A camera that does not cut: `flightScene`
 
 `storyScene` is a film of hard cuts. A topic can bring its own scene builder for the same script and the same
-timing. The Explainer does (`Topics/Explainer/flight.tsx`): each line is a **stop**, and the camera flies to it as
+timing. The Stories does (`Topics/Stories/flight.tsx`): each line is a **stop**, and the camera flies to it as
 the line begins.
 
 ```tsx
@@ -116,7 +116,7 @@ export const scene2 = flightScene(timing, {
 - The topic's `topic.json` names the builder and the guard in a `camera` block, and `npm run check` holds a film
   to it. Everything else on this page (the script, the voice, the captions, the sound, the stills) is the same.
 
-`Topics/Explainer/SHOTS.md` is the guide.
+`Topics/Stories/SHOTS.md` is the guide.
 
 ## 4. The world: zones
 

@@ -2,7 +2,7 @@
  * THE EXPLAINER PACK — everything a film of this topic is built from.
  * PACK.md is the catalogue, with a picture of each part.
  *
- *   import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Explainer";
+ *   import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Stories";
  *
  * A film's kit.tsx imports from here and passes the names on, so its scenes import only from "./kit".
  */

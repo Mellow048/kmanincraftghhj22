@@ -3,13 +3,13 @@ import { Block, Glow, PixelText, Vox, mulberry32 } from "../../src/engine";
 import type { BlockKind, Vec3 } from "../../src/engine";
 
 /**
- * THE STAGE — where an explainer happens.
+ * THE STAGE — where a story happens.
  *
- * An explainer is a row of small places in one sky. Each place holds ONE idea, and the camera flies from
+ * An stories is a row of small places in one sky. Each place holds ONE idea, and the camera flies from
  * one to the next. A floating island is the Minecraft way to say "this is one thing, on its own": it has
  * an edge, so the frame has an edge, and there is sky between it and the next idea.
  *
- * Part of the Explainer pack (PACK.md). 1 unit = 1 block = 1 metre.
+ * Part of the Stories pack (PACK.md). 1 unit = 1 block = 1 metre.
  */
 
 /**

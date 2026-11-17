@@ -1,9 +1,9 @@
-# The Explainer pack
+# The Stories pack
 
 Everything a film of this topic is built from. One import:
 
 ```ts
-import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Explainer";
+import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Stories";
 ```
 
 A film's `kit.tsx` imports from the pack and passes the names on, so its scenes import only from `"./kit"`.
@@ -94,7 +94,7 @@ The pack was made before its first film, and that film found out what it lacked.
 [`src/videos/why-does-bread-cost-more-every-year/parts.tsx`](../../src/videos/why-does-bread-cost-more-every-year/parts.tsx),
 built to the rules below (a `position`, seconds, no knowledge of that film's islands). The owner has approved the
 film (2026-11-13), so they are due to move into this folder unchanged, with a row above and a place on the sheet.
-**That move is the first step of building the next explainer**, because it needs the stills of the approved film
+**That move is the first step of building the next stories**, because it needs the stills of the approved film
 before and after (`scripts/compare-stills.py`): an approved film does not change. Until it is done, import them
 from the film.
 
@@ -126,12 +126,12 @@ each picture (`labels.txt`). To add a part, stand it on an island there, or add 
 `narration.md` and of `labels.txt`. Then:
 
 ```bash
-npm run new -- "Pack Sheet" --topic explainer
-cp Topics/Explainer/sheet/*.tsx Topics/Explainer/sheet/narration.md src/videos/pack-sheet/
+npm run new -- "Pack Sheet" --topic stories
+cp Topics/Stories/sheet/*.tsx Topics/Stories/sheet/narration.md src/videos/pack-sheet/
 #   delete the `captions:` line from src/videos/pack-sheet/film.tsx, so the stills have no words on them
 python3 scripts/narration.py build pack-sheet --estimate
-npm run shots -- pack-sheet --at 0.6 --out out/pack-explainer
-python3 scripts/pack-sheet.py out/pack-explainer Topics/Explainer/pack.jpg --labels Topics/Explainer/sheet/labels.txt
+npm run shots -- pack-sheet --at 0.6 --out out/pack-stories
+python3 scripts/pack-sheet.py out/pack-stories Topics/Stories/pack.jpg --labels Topics/Stories/sheet/labels.txt
 #   then delete src/videos/pack-sheet/ and take its two lines out of src/registry.ts
 ```
 

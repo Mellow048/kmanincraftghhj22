@@ -1,9 +1,9 @@
-# Writing an explainer
+# Writing a story
 
 > The beat sheet below is the one the topic's reference film was written to, with that film's own numbers beside
 > it: *Why Does Bread Cost More Every Year* ([`reference/bread/`](reference/bread/README.md)).
 
-An explainer is one question and one answer. It is the hardest kind of script to write short, because the writer
+An stories is one question and one answer. It is the hardest kind of script to write short, because the writer
 knows too much. The method below is how to throw things away.
 
 ## Before a line is written
@@ -52,7 +52,7 @@ seconds of 49.
 - **Compare with things, not with ideas.** "Like a pizza cut into more slices" works only if the pizza is built and
   shown. If it will not be shown, do not say it.
 - **No questions to the viewer after the first line**, no "but wait", no "here's the thing". Say the next fact.
-- **Every claim is true.** An explainer that is wrong is worse than none. If a fact is disputed, leave it out or say
+- **Every claim is true.** An stories that is wrong is worse than none. If a fact is disputed, leave it out or say
   who says so. When a film is handed over, list the claims it makes and where each came from.
 
 ## What the engine needs

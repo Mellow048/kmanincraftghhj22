@@ -1,11 +1,11 @@
 import type React from "react";
 import { Block, Glow, Vox, shade, useFilmTime } from "../../engine";
 import type { BlockKind, Vec3 } from "../../engine";
-import { ADULT, Bits, Figure, Villager, Voxels } from "../../../Topics/Explainer";
-import type { VillagerProps } from "../../../Topics/Explainer";
+import { ADULT, Bits, Figure, Villager, Voxels } from "../../../Topics/Stories";
+import type { VillagerProps } from "../../../Topics/Stories";
 
 /**
- * PARTS BUILT FOR THIS FILM. The pack (Topics/Explainer) is about money and bread; this film is about who may say
+ * PARTS BUILT FOR THIS FILM. The pack (Topics/Stories) is about money and bread; this film is about who may say
  * no to a leader, and needed things the pack does not have: something to wear on a villager's head, a vote, a
  * judge's bench, a cage, a statue, a Roman temple's furniture.
  *

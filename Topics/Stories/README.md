@@ -1,4 +1,4 @@
-# Explainer — one question, answered in under a minute
+# Stories — one question, answered in under a minute
 
 A narrator asks one question a nine-year-old would ask ("Why does bread cost more every year?"), and answers it
 with things you can point a camera at. Thirty to sixty seconds. Every sentence is shown, literally, as it is said.
@@ -19,7 +19,7 @@ The subjects the owner has asked for: money lessons, what inflation is, and "Wha
 ## Start here
 
 ```bash
-npm run new -- "Why Bread Costs More" --topic explainer
+npm run new -- "Why Bread Costs More" --topic stories
 ```
 
 That gives you a film folder made from this topic's starter ([`template/`](template/)): a script page to fill in, a
@@ -31,7 +31,7 @@ give you an explanation.
 | The request | It is |
 |---|---|
 | "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation | **This topic** |
-| "What if the sun went out?", answered with facts about what would happen | **This topic.** It is an explanation with "what if" in the title. Pass `--topic explainer` |
+| "What if the sun went out?", answered with facts about what would happen | **This topic.** It is an explanation with "what if" in the title. Pass `--topic stories` |
 | "What if you could …", a kid who gets a power and what happened to him | [`Topics/WhatIf`](../WhatIf/README.md). That is a story |
 | "In this town, …" | [`Topics/InThisTown`](../InThisTown/README.md) |
 
@@ -41,7 +41,7 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 
 1. This page.
 2. [`SCRIPT.md`](SCRIPT.md) — how an explanation is written: one question, one answer, one idea a line.
-3. [`SHOTS.md`](SHOTS.md) — the flight: stops, islands, and why nothing an explainer shows lives in a shot.
+3. [`SHOTS.md`](SHOTS.md) — the flight: stops, islands, and why nothing a story shows lives in a shot.
 4. [`PACK.md`](PACK.md) — what already exists: the stage, money, charts you can stand next to, goods.
 5. [`SOUND.md`](SOUND.md) — the sounds of money and of numbers, and what differs from a story film's sound.
 6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → picture → captions → sound.
@@ -51,9 +51,9 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 
 ## What changes from the base rules
 
-These apply to a film that declares `topic: "explainer"`, and to nothing else.
+These apply to a film that declares `topic: "stories"`, and to nothing else.
 
-| Base rule (`AGENTS.md`) | Explainer |
+| Base rule (`AGENTS.md`) | Stories |
 |---|---|
 | 18–20 s, ceiling 21 s | 30–58 s. Never over 60 s. (`cut: "long"`: 60–118 s, never over 120 s) |
 | Times of a camera move are typed by hand (`at`, `dur`) | The recorded voice is the clock. Each line of `narration.md` is one **stop**, and the camera flies to it as the line begins (`flightScene`) |
@@ -85,7 +85,7 @@ These are the rules this folder is built on. Each of them held in the reference 
 
 ## Work order
 
-1. `npm run new -- "…" --topic explainer`.
+1. `npm run new -- "…" --topic stories`.
 2. Write the question, and the answer in ONE sentence a nine-year-old could repeat. If you cannot, you cannot
    explain it yet: read more first.
 3. Write `src/videos/<film>/narration.md` to the beat sheet in `SCRIPT.md`. One line of script per stop. Fill in the
@@ -113,13 +113,13 @@ still an estimate, and whether the mix is older than the script.
 | `topic.json` | The numbers `npm run check` enforces for this topic, its camera rule, the limits of the sound. `state: "MEASURED"`: `reference` names the film, `measuredFromReference` its numbers |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the explanation, the flight, the sound |
 | `PACK.md`, `pack.jpg` | The catalogue of the pack |
-| `index.ts` | The pack, from one import: `import { Island, Coin, flightScene } from "../../../Topics/Explainer"` |
+| `index.ts` | The pack, from one import: `import { Island, Coin, flightScene } from "../../../Topics/Stories"` |
 | `flight.tsx` | The camera: `stop`, `near`, `flightScene`, `unbroken` |
 | `stage.tsx` | Island, Sun, Plinth, Signpost, Bridge |
 | `money.tsx` | Coin, CoinStack, CoinPile, Bill, BillStack, MoneyBag, Chest, Printer |
 | `charts.tsx` | PriceTag, Bar, BarChart, Arrow, Balance |
 | `goods.tsx` | Bread, Apple, Crate, BreadShelf |
-| `template/` | The starter film that `npm run new -- … --topic explainer` copies |
+| `template/` | The starter film that `npm run new -- … --topic stories` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
 | `reference/` | The films of this topic that the owner approved, each with its source, a log of every stop and a contact sheet. The first is the reference film |
 

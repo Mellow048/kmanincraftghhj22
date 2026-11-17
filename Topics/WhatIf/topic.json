@@ -24,7 +24,7 @@
     "words": [250, 520],
     "maxWordsPerShot": 18,
     "opensWith": "What if",
-    "opensWithHint": "A \"What if\" that is answered with facts and not with a story is an explainer: use --topic explainer.",
+    "opensWithHint": "A \"What if\" that is answered with facts instead of a story belongs to the Stories topic: use --topic stories.",
     "lastLineContains": "subscribe",
     "captions": true
   },

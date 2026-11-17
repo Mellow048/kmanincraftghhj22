@@ -1,12 +1,12 @@
 import type React from "react";
 import { Block, Glow, Vox, mulberry32 } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Bill, BillStack, Bread, Figure, Puffs } from "../../../Topics/Explainer";
+import { Bill, BillStack, Bread, Figure, Puffs } from "../../../Topics/Stories";
 
 /**
  * PARTS BUILT FOR THIS FILM.
  *
- * The Explainer pack was made before its first film (Topics/Explainer/PACK.md), so this film found out what the
+ * The Stories pack was made before its first film (Topics/Stories/PACK.md), so this film found out what the
  * pack was missing: an oven, a loaf that comes apart, a price that is too long for a tag, a balloon, a wheelbarrow,
  * notes falling off an island. They are built here, the way the pack asks: in the film first. Each takes a
  * `position` and seconds, and knows nothing about this film's islands, so it can move into the pack unchanged once

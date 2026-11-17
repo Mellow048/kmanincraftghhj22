@@ -6,7 +6,7 @@ import { Figure, Icon, Voxels } from "../Shared";
 /**
  * MONEY — coins, notes, a bag, a chest, and the machine that prints more.
  *
- * Part of the Explainer pack (PACK.md). A village trades in emeralds, so every coin can be one:
+ * Part of the Stories pack (PACK.md). A village trades in emeralds, so every coin can be one:
  * `kind="emerald"`. Use ONE kind of money in a film, and keep it.
  */
 

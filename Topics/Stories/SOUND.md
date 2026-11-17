@@ -1,8 +1,8 @@
-# The sound of an explainer
+# The sound of a story
 
 > **Provisional.** The limits in `topic.json` (`sound`) are a first setting until a reference is measured.
 
-An explainer is never voice only. Under the voice there is music that changes as the explanation moves, the air of
+An stories is never voice only. Under the voice there is music that changes as the explanation moves, the air of
 the place, and a sound for each thing that appears, grows, pays or breaks.
 
 **The tool, the sheet and the method are the same as for every narrated film.** Read
@@ -18,7 +18,7 @@ python3 scripts/sound.py build <film>    # sound.json + narration.mp3 → public
 
 ## What differs from a story film
 
-| | A story film (In This Town) | An explainer |
+| | A story film (In This Town) | An stories |
 |---|---|---|
 | Music sections | At least 5 | At least 3 (`minMusicSections`). A film is under a minute |
 | Silence | Up to 8 s: a held breath before the reveal | Up to 4 s. An explanation has no reveal to hold a breath for |

@@ -1,15 +1,15 @@
 import type React from "react";
 import { Block, Glow, MinecraftAvatar, Vox } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { Coin, Figure, KID, PriceTag, Stall, ease, filmClock, near, ramp, stop } from "../../../Topics/Explainer";
+import { Coin, Figure, KID, PriceTag, Stall, ease, filmClock, near, ramp, stop } from "../../../Topics/Stories";
 import { Loaf, Oven } from "./parts";
 import timingJson from "./timing.json";
 
 /**
  * This film's own route, places and people.
  *
- * Everything another explainer could use is in the topic's pack, Topics/Explainer (catalogue with pictures:
- * Topics/Explainer/PACK.md). It is passed on from here, so a scene imports only from "./kit". What the pack did not
+ * Everything another stories could use is in the topic's pack, Topics/Stories (catalogue with pictures:
+ * Topics/Stories/PACK.md). It is passed on from here, so a scene imports only from "./kit". What the pack did not
  * have is in ./parts.tsx, built the way the pack asks: in the film first.
  */
 
@@ -28,13 +28,13 @@ export {
   Bits, Bubble, Figure, Hut, Icon, LampPost, Player, Puffs, ROBE, Stall, SubscribeSign, Villager, Voxels,
   // staging: how a thing pops in, where "in front of him" is
   ADULT, CHILD, DEG, EAST, KID, NORTH, SOUTH, WEST, ahead, beside, chestOf, ease, faceOf, jolt, pop, ramp, villagerChest, villagerFace,
-} from "../../../Topics/Explainer";
+} from "../../../Topics/Stories";
 export { Balloon, FigureBubble, Loaf, NoteBundle, NoteFall, NoteHeap, Oven, PriceRoll, Wheelbarrow } from "./parts";
 
 export const timing = timingJson as unknown as Timing;
 
 /**
- * The film's clock. Everything an explainer shows lives in the world for the whole film, so it asks
+ * The film's clock. Everything a story shows lives in the world for the whole film, so it asks
  * "how long ago was this word said?":
  *
  *   const t = clock.useSince("2.loaf", "costs");     // negative until "costs" is said, then seconds since

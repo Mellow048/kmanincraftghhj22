@@ -16,14 +16,14 @@ import { scene7 } from "./scene7";
  * and he can be voted out. A dictator is a ruler nobody is allowed to tell no: not a judge, not the people, not a
  * vote. The word is Roman, and it used to be a job that was handed back after six months.
  *
- * An EXPLAINER (Topics/Explainer): one question, answered in under a minute. The recorded narration is the
+ * A STORIES FILM (Topics/Stories): one question, answered in under a minute. The recorded narration is the
  * clock, every line of narration.md is one place the camera comes to rest, and the camera FLIES from each
- * to the next: it never teleports. Read Topics/Explainer/README.md before changing anything here.
+ * to the next: it never teleports. Read Topics/Stories/README.md before changing anything here.
  */
 export const film = defineFilm({
   id: "what-is-a-dictator",
   title: "What Is a Dictator",
-  topic: "explainer",
+  topic: "stories",
   look: "overworld-day",
   // The recorded narration and custom sound mix, built by scripts/sound.py.
   audio: { src: "audio/what-is-a-dictator/mix.mp3" },

@@ -11,7 +11,7 @@ const S = [
   stop([X(6), 0.75, 0.2], 4.0, 0, 15, 42),
   stop([X(7), 2.0, 0.2], 5.6, 0, 4, 42),
 ];
-const NOTE = "Parts test: every part of the Explainer pack, one group at a time.";
+const NOTE = "Parts test: every part of the Stories pack, one group at a time.";
 
 export const scene1 = flightScene(timing, {
   id: "scene1",

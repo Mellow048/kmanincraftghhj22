@@ -16,7 +16,7 @@ import { Exhibit1 } from "./scene1";
  *   2. The exhibits: the people and things that DO something. One `ExhibitN` in each sceneN.tsx, driven by
  *      the film's clock. Mount every one of them below.
  *
- * This is a STARTER. The parts come from the topic's pack (Topics/Explainer/PACK.md).
+ * This is a STARTER. The parts come from the topic's pack (Topics/Stories/PACK.md).
  * 1 unit = 1 block = 1 metre.
  */
 

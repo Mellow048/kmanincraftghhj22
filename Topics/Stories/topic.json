@@ -1,12 +1,12 @@
 {
-  "id": "explainer",
-  "name": "Explainer",
-  "folder": "Topics/Explainer",
+  "id": "stories",
+  "name": "Stories",
+  "folder": "Topics/Stories",
   "profile": "story",
   "state": "MEASURED",
   "reference": {
     "film": "why-does-bread-cost-more-every-year",
-    "page": "Topics/Explainer/reference/bread",
+    "page": "Topics/Stories/reference/bread",
     "owner": "okay i love both really, this can be uploaded too!",
     "use": "Our own first film of the topic, picture and sound approved by the owner (2026-11-13). The owner asked us to make the reference ourselves: \"you are the one making that reference!\". Build like it. Never retell it."
   },
@@ -58,15 +58,15 @@
     "soundEffectsPerMinute": 120.7,
     "lufs": -14.8
   },
-  "pack": "Topics/Explainer/PACK.md",
-  "template": "Topics/Explainer/template",
+  "pack": "Topics/Stories/PACK.md",
+  "template": "Topics/Stories/template",
   "models": {
-    "note": "Finished films the owner approved, to build like. The first is the topic's reference film. Each is kept with its source in Topics/Explainer/reference (README.md there lists them). Copy how they are built; never copy their sentences or their pictures.",
-    "why-does-bread-cost-more-every-year": "THE REFERENCE FILM (see `reference`). 0:49, 7 beats, 19 stops, 182 words, one flight over five islands, full sound. The owner: 'okay i love both really, this can be uploaded too!', 'i like how you made these!'. Page and source: Topics/Explainer/reference/bread; mp4: renders/why-does-bread-cost-more-every-year.mp4."
+    "note": "Finished films the owner approved, to build like. The first is the topic's reference film. Each is kept with its source in Topics/Stories/reference (README.md there lists them). Copy how they are built; never copy their sentences or their pictures.",
+    "why-does-bread-cost-more-every-year": "THE REFERENCE FILM (see `reference`). 0:49, 7 beats, 19 stops, 182 words, one flight over five islands, full sound. The owner: 'okay i love both really, this can be uploaded too!', 'i like how you made these!'. Page and source: Topics/Stories/reference/bread; mp4: renders/why-does-bread-cost-more-every-year.mp4."
   },
   "sound": {
     "required": true,
-    "guide": "Topics/Explainer/SOUND.md",
+    "guide": "Topics/Stories/SOUND.md",
     "minMusicSections": 3,
     "musicUnderVoiceDb": [15, 24],
     "maxSecondsWithoutMusic": 4,

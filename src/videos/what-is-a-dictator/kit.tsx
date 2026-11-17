@@ -1,14 +1,14 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { KID, filmClock, near, stop } from "../../../Topics/Explainer";
+import { KID, filmClock, near, stop } from "../../../Topics/Stories";
 import timingJson from "./timing.json";
 
 /**
  * This film's own route, places and people.
  *
- * Everything another explainer could use is in the topic's pack, Topics/Explainer (catalogue with pictures:
- * Topics/Explainer/PACK.md). It is passed on from here, so a scene imports only from "./kit". What the pack did not
+ * Everything another stories could use is in the topic's pack, Topics/Stories (catalogue with pictures:
+ * Topics/Stories/PACK.md). It is passed on from here, so a scene imports only from "./kit". What the pack did not
  * have is in ./parts.tsx, built the way the pack asks: in the film first.
  */
 
@@ -23,7 +23,7 @@ export {
   Bits, Bubble, Figure, Hut, Icon, LampPost, Puffs, ROBE, SubscribeSign, Villager, Voxels, textRows,
   // staging: how a thing pops in, where "in front of him" is
   ADULT, CHILD, DEG, EAST, KID, NORTH, SOUTH, WEST, ahead, beside, chestOf, ease, faceOf, jolt, pop, ramp, villagerChest, villagerFace,
-} from "../../../Topics/Explainer";
+} from "../../../Topics/Stories";
 export {
   BENCH_FLOOR, Banner, Bench, Brazier, Cage, Cloak, CloakStand, Column, DESK_TOP, FlyingHat, Folk, GOLD, Gavel, Helmet, LeaderHat, LooseCloak, Medals, Moon, No, NoBits, PURPLE, RED,
   STONE, Spear, StoneMan, Stripe, Tabs, U, VoteBox, VotePile, VoteStone, Wig, Wreath, headTop, heldBy, strike,
@@ -32,7 +32,7 @@ export {
 export const timing = timingJson as unknown as Timing;
 
 /**
- * The film's clock. Everything an explainer shows lives in the world for the whole film, so it is driven by the
+ * The film's clock. Everything a story shows lives in the world for the whole film, so it is driven by the
  * moment a word is said. The first line starts at 0, so `useNow()` is the film's time, and `clock.at(cue, word)`
  * is a moment on the same clock:
  *

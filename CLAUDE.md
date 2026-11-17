@@ -11,7 +11,7 @@ Then `AGENTS.md`, the contract for this repository, which opens with the one que
 - "In This Town", a story that begins "In this town, …", a storytime, a narrated story of a minute or more
   → the topic in `Topics/InThisTown/`. Start with `npm run new -- "In This Town, …" --topic in-this-town`.
 - "Explain …", "What is …", "Why does …", a money lesson, inflation
-  → the topic in `Topics/Explainer/`. Start with `npm run new -- "…" --topic explainer`.
+  → the topic in `Topics/Stories/`. Start with `npm run new -- "…" --topic stories`.
 - "What if you could …", the story of a kid who gets a power
   → the topic in `Topics/WhatIf/`. Start with `npm run new -- "What If …" --topic what-if`.
 - A 20-second short → the base film. Start with `npm run new -- "The Title"`.

@@ -6,11 +6,11 @@ import { Figure } from "../Shared";
 /**
  * CHARTS — the number, as a thing you can stand next to.
  *
- * An explainer never shows a slide. A price is a tag on the loaf; "it doubled" is a bar that grows past
+ * An stories never shows a slide. A price is a tag on the loaf; "it doubled" is a bar that grows past
  * a man's head; "worth less" is a pair of scales tipping. Every part here is an object in the world, and
  * every one MOVES: give it the seconds since its word (`clock.useSince`) and it grows, tips or counts.
  *
- * Part of the Explainer pack (PACK.md).
+ * Part of the Stories pack (PACK.md).
  */
 
 /**
