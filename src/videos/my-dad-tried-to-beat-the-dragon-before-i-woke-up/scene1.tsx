@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Glow, PixelText, Torch, Vox, cam, storyScene } from "../../engine";
+import { Block, Glow, LightPool, PixelText, Torch, Vox, cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
 import { SubscribeSign, pop, ramp } from "../../../Topics/Shared";
 import {
@@ -405,16 +405,17 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.lava",
-      ...cam.push({ on: [SHAFT_BOTTOM[0], 0.9, SHAFT_BOTTOM[2]], dist: 2.0, to: 1.5, yaw: 200, pitch: -6, fov: 38 }),
+      ...cam.push({ on: [SHAFT_BOTTOM[0], SHAFT_BOTTOM[1] + 1.15, SHAFT_BOTTOM[2]], dist: 2.1, to: 1.7, yaw: 200, pitch: -4, fov: 38 }),
       zone: "shaft",
       look: "lava-shore",
-      note: "Four in the morning, and the torch finds lava: the whole shaft turns orange in one frame. He does not move, because there is nowhere to go.",
+      note: "Four in the morning, and the torch finds lava: the shaft turns orange in one frame, and his face turns with it. He does not move, because there is nowhere to go. The lava is behind him, not in front of him — the shot is his face, not the light.",
       stage: (t) => (
         <>
           <Shaft position={PLACE.shaft} depth={6} />
           <Dad position={SHAFT_BOTTOM} rotationY={Math.PI} animation="panic" face="surprised" />
-          <Block position={at(PLACE.shaft, 0, -5.9, -0.9)} size={[1.4, 0.6, 0.06]} color="#ff7a14" emissive="#ff5a00" emissiveIntensity={1.6} castShadow={false} />
-          <Glow position={at(PLACE.shaft, 0, -5.4, -0.5)} size={3.4 + Math.sin(t * 6) * 0.2} color="#ff8a2a" opacity={0.5} />
+          <Block position={at(PLACE.shaft, 0, -5.0, -1.15)} size={[1.5, 0.7, 0.06]} color="#ff7a14" emissive="#ff5a00" emissiveIntensity={1.0} castShadow={false} />
+          <Glow position={at(PLACE.shaft, 0, -5.1, -0.9)} size={1.9 + Math.sin(t * 6) * 0.12} color="#ff8a2a" opacity={0.3} />
+          <LightPool position={at(PLACE.shaft, 0, -5.94, 0)} width={2.2} depth={2.2} color="#ff8a2a" opacity={0.2} />
         </>
       ),
     },
@@ -423,11 +424,13 @@ export const scene1 = storyScene(timing, {
       ...cam.top({ on: at(PLACE.shaft, 0, -5.6, 0), height: 5.0, to: 7.5, fov: 50 }),
       zone: "shaft",
       look: "lava-shore",
-      note: "The shaft he has just lost, orange from top to bottom, seen straight up and away. No music from here to the rescue: the film goes quiet so the defeat lands.",
+      note: "The shaft he has just lost: straight up and away, the four hundred blocks of it getting smaller, and an orange pool at the bottom where the lava is. No music from here to the rescue — the film goes quiet so the defeat lands.",
       stage: () => (
         <>
           <Shaft position={PLACE.shaft} depth={6} />
-          <Glow position={at(PLACE.shaft, 0, -5.4, 0)} size={2.6} color="#ff8a2a" opacity={0.32} />
+          <Block position={at(PLACE.shaft, 0, -5.9, -0.6)} size={[1.4, 0.5, 0.06]} color="#ff7a14" emissive="#ff5a00" emissiveIntensity={0.9} castShadow={false} />
+          <Glow position={at(PLACE.shaft, 0, -5.6, -0.4)} size={1.5} color="#ff8a2a" opacity={0.2} />
+          <LightPool position={at(PLACE.shaft, 0, -5.94, 0)} width={2.0} depth={2.0} color="#ff8a2a" opacity={0.16} />
         </>
       ),
     },
