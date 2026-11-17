@@ -26,8 +26,8 @@ const World: React.FC = () => (
     <Vox kind="grass" position={[0, -0.5, 0]} size={[60, 1, 40]} />
 
     {/* A dirt path curving in from the camera to the cottage door. */}
-    <Vox kind="path" position={[0, 0.02, 6]} size={[3.2, 0.06, 14]} />
-    <Vox kind="path" position={[0, 0.021, 1.5]} size={[6, 0.06, 3]} />
+    <Vox kind="path" position={[0, 0.02, 2.2]} size={[2.6, 0.06, 9]} />
+    <Vox kind="path" position={[0, 0.021, -3.2]} size={[6.4, 0.06, 3]} />
 
     {/* The cottage, sitting deep in the frame so the sky has room above it. */}
     <Hut at={[0, 0, -8]} w={7} d={6} h={3.2} wall="planks" windows={[0, 1]} door={0} turn={0} />
@@ -39,9 +39,9 @@ const World: React.FC = () => (
     <Block position={[-2.4, 0.12, -3.1]} size={[0.3, 0.24, 0.3]} color="#e0c040" castShadow={false} />
 
     {/* Three oaks, built from blocks so they cannot go missing. */}
-    <Oak at={[-8.5, 0, -6]} height={7.5} />
-    <Oak at={[9, 0, -7]} height={8.5} />
-    <Oak at={[0, 0, -15]} height={10} />
+    <Oak at={[-6.6, 0, -3.5]} height={7} />
+    <Oak at={[7.2, 0, -5]} height={8} />
+    <Oak at={[-11.5, 0, -10]} height={9} />
 
     {/* Flowers in the grass, so the meadow is not a lawn. */}
     {[[-2.1, -2.2], [1.9, -1.6], [-4.2, -2.6], [3.6, -3.2], [-1.2, -1.2], [5.1, -2.0]].map(([x, z], i) => (
