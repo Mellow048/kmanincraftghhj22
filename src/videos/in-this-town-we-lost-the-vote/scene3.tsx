@@ -33,7 +33,7 @@ export const scene3 = storyScene(timing, {
             <Mailboxes />
             <Neighbours t={t} />
             <Cow position={[-0.45, 0, 2.2]} rotationY={0.6} t={t} wide={nose > 0.5} look={-0.5} />
-            <Golem position={[1.02, 0, 3.02]} rotationY={WEST + 0.1} t={t} press={Math.max(air * 0.8, nose)} />
+            <Golem position={[0.95, 0, 2.65]} rotationY={-1.0} t={t} press={Math.max(air * 0.8, nose)} />
           </>
         );
       },
