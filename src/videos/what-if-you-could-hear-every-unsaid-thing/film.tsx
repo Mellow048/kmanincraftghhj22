@@ -18,7 +18,7 @@ export const film = defineFilm({
   title: "What If You Could Hear Every Unsaid Thing?",
   topic: "what-if",
   look: "overworld-day",
-  post: { shaders: { bloom: 0.3, threshold: 1.5 }, exposure: 1.1 },
+  post: { shaders: { bloom: 0.18, threshold: 1.9 }, exposure: 1.0 },
   captions: { words: timing.words, y: 0.72 },
   audio: { src: "audio/what-if-you-could-hear-every-unsaid-thing/mix.mp3" },
   World,
