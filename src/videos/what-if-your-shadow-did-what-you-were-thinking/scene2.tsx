@@ -67,7 +67,7 @@ export const scene2 = storyScene(timing, {
         const k = ramp(t, 0.15, 1.6);
         return (
           <>
-            <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={0.74} animation="idle" face="uneasy" />
+            <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={Math.PI - 0.5} animation="idle" face="uneasy" />
             <group rotation={[0, 0, 0]} position={[SPOT.at(2.4 + 0.9 * k, 0.02, -1.2 - 1.3 * k)[0], 0.02, -1.2 - 1.3 * k]}>
               <group rotation={[-Math.PI / 2, 0, 0]}>
                 <Shadow at={[0, 0, 0]} opacity={0.5} arm={0.3} />
