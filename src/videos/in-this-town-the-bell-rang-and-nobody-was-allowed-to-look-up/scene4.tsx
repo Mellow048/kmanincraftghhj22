@@ -38,7 +38,7 @@ export const scene4 = storyScene(timing, {
       stage: () => (
         <>
           <Dad position={[8.8, 0, -3.45]} lean={0.02} />
-          <Hero position={[10.2, 0, -2.3]} animation="talk" face="uneasy" />
+          <Hero position={[9.7, 0, -2.9]} animation="idle" face="uneasy" />
         </>
       ),
     },

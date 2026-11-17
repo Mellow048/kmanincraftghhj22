@@ -40,7 +40,7 @@ export const scene1 = storyScene(timing, {
           <Friend position={[0.15, 0, 1.15]} lean={1.2} nod={0.8} />
           <Hero position={[1.15, 0, 0.85]} animation="crouch" face="uneasy" />
           <Golem position={[2.3, 0, 1.5]} bow={1.2} />
-          <Crowd n={4} at={[0.1, 0, 0.2]} />
+          <Crowd n={4} at={[0.1, 0, 2.6]} />
         </>
       ),
     },

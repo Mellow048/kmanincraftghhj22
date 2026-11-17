@@ -48,7 +48,7 @@ export const scene9 = storyScene(timing, {
           <Baker position={[-0.9, 0, 0.85]} nod={-0.5} />
           <Friend position={[0.15, 0, 1.15]} nod={-0.5} />
           <Hero position={[1.05, 0, 0.95]} animation="reachUp" face="grin" />
-          <Golem position={[1.9, 0, 1.45]} bow={-0.3} />
+          <Golem position={[1.55, 0, 1.7]} bow={-0.3} />
         </>
       ),
     },
