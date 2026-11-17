@@ -380,55 +380,55 @@ export const scenes = storyScene(timing, {
     // ---------------------------------------------------------------- 09 the answer
     {
       cue: "9.night",
-      ...cam.push({ on: A("room", 0, 1.35, 1.7), dist: 4.35, to: 4.13, yaw: 150, pitch: 10.0, fov: 54 }),
+      ...cam.push({ on: A("room", 0, 1.2, 1.0), dist: 3.6, to: 3.35, yaw: 24, pitch: 8, fov: 50 }),
       look: WARM,
-      note: "The last night of it: the same doorway, the same shoulders, the same decision about to be made.",
+      note: "The last night of it, from the corner of the room: the boy on the left, the man filling the doorway.",
       stage: () => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />
-          <Unsaid text="DO YOU STILL NEED ME" at={A("room", 0.1, 2.0, 2.0)} from={0.2} />
+          <Dad position={A("room", 0.15, 0, 2.15)} rotationY={0.1} animation="idle" face="bearded" />
+          <Hero position={A("room", -0.55, 0, 0.9)} rotationY={0.5} animation="idle" face="uneasy" />
+          <Unsaid text="DO YOU STILL NEED ME" at={A("room", 0.15, 2.02, 2.02)} from={0.2} />
         </>
       ),
     },
     {
       cue: "9.say",
-      ...cam.push({ on: A("room", 0.05, 1.55, 1.7), dist: 3.19, to: 3.04, yaw: 6, pitch: 9.0, fov: 46 }),
+      ...cam.push({ on: A("room", -0.35, 1.3, 1.15), dist: 2.9, to: 2.75, yaw: 336, pitch: 6, fov: 44 }),
       look: WARM,
-      note: "The boy saying it out loud, to his father's back, in a voice that is the only one anybody can hear.",
+      note: "The boy saying it out loud, over his shoulder at the man behind him: the only voice anybody can hear.",
       stage: () => (
         <>
-          <Hero position={A("room", 0.05, 0, 1.5)} rotationY={0} animation="talk" face="brave" />
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />
+          <Hero position={A("room", -0.55, 0, 0.9)} rotationY={2.5} animation="talk" face="brave" />
+          <Dad position={A("room", 0.15, 0, 2.15)} rotationY={0.1} animation="idle" face="bearded" />
         </>
       ),
     },
     {
       cue: "9.after",
-      ...cam.push({ on: A("room", 0, 1.4, 1.9), dist: 4.93, to: 4.64, yaw: 176, pitch: 10.0, fov: 54 }),
+      ...cam.push({ on: A("room", -0.1, 1.3, 1.4), dist: 3.3, to: 3.15, yaw: 8, pitch: 7, fov: 48 }),
       look: WARM,
-      note: "His father turning in the doorway, and the grey words gone out of the air between them.",
+      note: "His father turned all the way round, and the grey words gone out of the air between them.",
       stage: (t) => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={lerp(0.15, Math.PI, ramp(t, 0.3, 1.4))} animation="idle" face="smile" />
-          <Hero position={A("room", 0.05, 0, 1.5)} rotationY={0} animation="idle" face="smile" />
+          <Dad position={A("room", 0.15, 0, 2.15)} rotationY={lerp(0.1, Math.PI, ramp(t, 0.2, 1.2))} animation="idle" face="smile" />
+          <Hero position={A("room", -0.55, 0, 0.9)} rotationY={2.5} animation="idle" face="smile" />
         </>
       ),
     },
     {
       cue: "9.sub",
-      ...cam.push({ on: A("room", 0, 1.2, 1.2), dist: 6.09, to: 5.65, yaw: 140, pitch: 13.0, fov: 54 }),
+      ...cam.push({ on: A("room", -0.2, 1.15, 1.5), dist: 4.4, to: 4.15, yaw: 14, pitch: 9, fov: 52 }),
       look: WARM,
-      note: "Both of them in the doorway, and a room that is finally quiet: the ask lands on the silence.",
+      note: "Both of them in the lit doorway, and a room that is finally quiet: the ask lands on the silence.",
       stage: () => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="smile" />
-          <Hero position={A("room", 0.5, 0, 1.7)} rotationY={0} animation="idle" face="grin" />
+          <Dad position={A("room", 0.15, 0, 2.1)} rotationY={Math.PI} animation="idle" face="smile" />
+          <Hero position={A("room", -0.5, 0, 1.35)} rotationY={2.2} animation="idle" face="grin" />
         </>
       ),
     },
   ],
 });
 
-const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
 export type Vec3ish = Vec3;
 export const ZONES = PLACE;
