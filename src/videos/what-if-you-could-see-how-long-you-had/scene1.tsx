@@ -147,7 +147,10 @@ export const scene1 = storyScene(timing, {
     {
       // Then his shoulders went up, and he was shouting at the teacher. The payoff of the last line, on the word.
       cue: "2.up",
-      ...cam.push({ on: SPOT.at(1.2, 1.45, -0.8), dist: 4.2, to: 3.6, yaw: 208, pitch: 4, fov: 46 }),
+      // yaw 208 from x 1.2 walks the lens out through the east wall, which is why this rendered as flat plaster. Solved:
+      // stand at (-1.70, 1.35, -2.90), which is inside the room and clear of the board at z -3.9, looking at the boy
+      // coming up out of his chair (0.35, 1.15, -0.2). dist 3.40, yaw -143, pitch 3.
+      ...cam.push({ on: SPOT.at(0.35, 1.15, -0.2), dist: 3.4, to: 3.1, yaw: -143, pitch: 3, fov: 52 }),
       zone: "class",
       note: "From the board side: the boy is up out of his chair at the teacher with both hands out, and the whole front row has turned to look. His clock is gone - not run out of sight, gone. That is the first time the film shows what zero looks like, and the teller is at the bottom of the frame watching it happen.",
       stage: (t) => {
