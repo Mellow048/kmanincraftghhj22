@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, Hero, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
+import { Baker, Friend, Hero, SkyThing, DAY, ease, ramp, timing } from "./kit";
 
 export const scene2 = storyScene(timing, {
   id: "scene2",
@@ -22,31 +22,37 @@ export const scene2 = storyScene(timing, {
       stage: () => (
         <>
           <SkyThing position={[0.8, 3.8, -1.6]} scale={1.55} turn={0.4} />
-          <Hero position={[0.3, 0, 2.4]} animation="reachUp" face="fear" />
+          <Hero position={[0.35, 0, 1.15]} animation="idle" face="fear" />
         </>
       ),
     },
     {
       cue: "2.down",
-      ...cam.push({ on: [0.35, 0.7, 2.4], dist: 2.8, to: 1.8, yaw: 10, pitch: 28, fov: 36 }),
+      ...cam.push({ on: [0.3, 1.5, 1.5], dist: 5.6, to: 4.4, yaw: 12, pitch: 16, fov: 42 }),
       zone: "village",
       look: DAY,
-      note: "On dirt his chin drops and he is one more face in the square.",
+      note: "The bell is done. His face goes into the dirt with everybody else's.",
       stage: (t) => {
-        const drop = ease(ramp(t, wordAt("2.down", "dirt"), wordAt("2.down", "dirt") + 0.35));
-        return <Hero position={[0.35, 0, 2.4]} animation={drop > 0.5 ? "crouch" : "reachUp"} face="uneasy" />;
+        const drop = ease(ramp(t, 0.2, 0.7));
+        return (
+          <>
+            <Hero position={[0.35, 0, 1.45]} animation={drop > 0.35 ? "crouch" : "idle"} face="uneasy" />
+            <Baker position={[-1.2, 0, 0.7]} lean={1.25} nod={0.85} />
+            <Friend position={[1.3, 0, 0.85]} lean={1.2} nod={0.8} />
+          </>
+        );
       },
     },
     {
       cue: "2.fine",
-      ...cam.truck({ on: [-2.4, 1.15, 1.6], dist: 4.6, yaw: 72, pitch: 8, fov: 40, by: [5, 0, 0] }),
+      ...cam.push({ on: [0.2, 1.35, 1.4], dist: 5.4, to: 4.3, yaw: 22, pitch: 8, fov: 42 }),
       zone: "village",
       look: DAY,
-      note: "The street stands up and walks on. Nobody turns to ask him.",
-      stage: (t) => (
+      note: "The baker walks past. He does not turn. The kid is not asked.",
+      stage: () => (
         <>
-          <Baker position={[-1.6 + t * 0.4, 0, 1.1]} walk={t * 1.4} lean={0.05} />
-          <Hero position={[1.6, 0, 2.2]} animation="idle" face="frown" />
+          <Baker position={[-0.9, 0, 0.85]} rotationY={1.4} walk={1.6} />
+          <Hero position={[1.15, 0, 1.7]} animation="idle" face="frown" />
         </>
       ),
     },

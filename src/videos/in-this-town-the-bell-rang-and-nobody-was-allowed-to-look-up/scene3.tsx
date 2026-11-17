@@ -7,11 +7,16 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "3.again",
-      ...cam.push({ on: [1.1, 3.2, -5.2], dist: 8.2, to: 6.2, yaw: -28, pitch: 14, fov: 46 }),
+      ...cam.push({ on: [0.3, 2.2, 0.4], dist: 8.6, to: 6.8, yaw: 8, pitch: 10, fov: 46 }),
       zone: "village",
       look: DAY,
-      note: "The square and a roof, and the thing lower than yesterday. Closer is the picture.",
-      stage: () => <SkyThing position={[1.5, 4.1, -5.4]} scale={1.7} legs={9} turn={-0.4} reach={0.35} />,
+      note: "He looks up. The thing is lower and nearer than the hole. Closer is a measurement.",
+      stage: () => (
+        <>
+          <Hero position={[0.25, 0, 1.55]} animation="reachUp" face="fear" />
+          <SkyThing position={[0.5, 3.8, -2.4]} scale={1.55} legs={8} turn={0.1} reach={0.4} />
+        </>
+      ),
     },
     {
       cue: "3.roof",
@@ -29,19 +34,16 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.tell",
-      ...cam.truck({ on: [-0.2, 1.2, 2.15], dist: 2.8, yaw: 58, pitch: 10, fov: 36, by: [1.5, 0, -0.2] }),
+      ...cam.push({ on: [0.45, 1.3, 1.55], dist: 4.2, to: 3.3, yaw: 24, pitch: 8, fov: 38 }),
       zone: "village",
       look: DAY,
-      note: "He points up. His friend has already turned his nose away.",
-      stage: (t) => {
-        const away = ease(ramp(t, wordAt("3.tell", "friend"), wordAt("3.tell", "friend") + 0.3));
-        return (
-          <>
-            <Hero position={[0, 0, 1.85]} animation="point" face="fear" />
-            <Friend position={[1.05, 0, 1.95]} rotationY={away * 2.4} lean={0.35} nod={0.4} />
-          </>
-        );
-      },
+      note: "His arm is on his friend. Both of them are in the frame.",
+      stage: () => (
+        <>
+          <Hero position={[0.05, 0, 1.55]} animation="reach" face="fear" />
+          <Friend position={[0.85, 0, 1.4]} rotationY={-0.6} lean={0.2} nod={0.35} />
+        </>
+      ),
     },
     {
       cue: "3.wont",

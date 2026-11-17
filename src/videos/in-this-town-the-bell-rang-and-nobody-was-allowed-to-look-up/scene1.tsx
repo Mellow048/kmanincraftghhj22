@@ -30,22 +30,23 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.dirt",
-      ...cam.truck({ on: [-2.2, 0.7, 1.3], dist: 3.6, yaw: 78, pitch: 22, fov: 40, by: [5.2, 0, 0] }),
+      ...cam.push({ on: [0.2, 1.8, 1.2], dist: 8.2, to: 6.6, yaw: 16, pitch: 20, fov: 46 }),
       zone: "village",
       look: DAY,
-      note: "Travelling the dirt: a shopkeeper, a kid, then the iron golem, all bowed.",
+      note: "One frame: the baker, the kids and the iron golem, every face in the dirt.",
       stage: () => (
         <>
-          <Baker position={[-2.2, 0, 1.1]} lean={1.2} nod={0.7} />
-          <Friend position={[0.3, 0, 1.35]} lean={1.05} />
-          <Golem position={[2.8, 0, 2.1]} bow={1.25} />
-          <Crowd n={5} at={[0.4, 0, 0.6]} />
+          <Baker position={[-1.6, 0, 0.7]} lean={1.3} nod={0.9} />
+          <Friend position={[0.15, 0, 1.15]} lean={1.2} nod={0.8} />
+          <Hero position={[1.15, 0, 0.85]} animation="crouch" face="uneasy" />
+          <Golem position={[2.3, 0, 1.5]} bow={1.2} />
+          <Crowd n={4} at={[0.1, 0, 0.2]} />
         </>
       ),
     },
     {
       cue: "1.me",
-      ...cam.push({ on: [0.35, 1.15, 1.7], dist: 2.2, to: 1.45, yaw: -6, pitch: -18, fov: 34 }),
+      ...cam.push({ on: [0.35, 1.4, 1.45], dist: 3.4, to: 2.5, yaw: -10, pitch: -6, fov: 36 }),
       zone: "village",
       look: DAY,
       note: "From the dirt, looking up at the only chin that is not in it.",

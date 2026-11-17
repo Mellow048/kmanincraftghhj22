@@ -34,7 +34,7 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Hero position={[-0.4 + run * 2.2, 0, 1.3 - run * 1.4]} animation="run" face="fear" />
-            <Baker position={[1.8, 0, 0.3]} lean={1.15} nod={0.7} />
+            <Baker position={[1.15, 0, 0.85]} lean={1.2} nod={0.8} />
             <SkyThing position={[0.5, 3.4, -1.6]} scale={1.2} reach={0.8} turn={-0.2} />
           </>
         );

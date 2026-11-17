@@ -23,7 +23,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.dad",
-      ...cam.push({ on: [8.8, 1.35, -3.45], dist: 2.3, to: 1.65, yaw: -20, pitch: -18, fov: 32 }),
+      ...cam.push({ on: [8.8, 1.45, -3.4], dist: 3.6, to: 2.7, yaw: 14, pitch: 6, fov: 36 }),
       zone: "village",
       look: DAY,
       note: "Dad, calm, which is worse than angry. The smile is in the voice.",
@@ -31,7 +31,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.why",
-      ...cam.orbit({ on: [9.5, 1.2, -2.9], dist: 3.1, yaw: 8, yawTo: 64, pitch: 10, fov: 36 }),
+      ...cam.push({ on: [9.5, 1.35, -2.85], dist: 4.8, to: 3.8, yaw: 18, pitch: 8, fov: 40 }),
       zone: "village",
       look: DAY,
       note: "The question is asked. He does not move, and he does not answer.",

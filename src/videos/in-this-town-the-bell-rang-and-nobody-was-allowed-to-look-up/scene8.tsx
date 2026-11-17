@@ -7,7 +7,7 @@ export const scene8 = storyScene(timing, {
   shots: [
     {
       cue: "8.back",
-      ...cam.push({ on: [0.3, 4.2, -2.2], dist: 7.2, to: 5.4, yaw: 68, pitch: 10, fov: 44 }),
+      ...cam.push({ on: [0.25, 4.8, -2.5], dist: 8.2, to: 6.6, yaw: 36, pitch: 8, fov: 44 }),
       zone: "village",
       look: DAY,
       note: "Side on: one leg goes back into the hole, then another.",
@@ -23,7 +23,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.slow",
-      ...cam.push({ on: [0.3, 2.5, 1.1], dist: 5.2, to: 3.8, yaw: -6, pitch: -6, fov: 42 }),
+      ...cam.push({ on: [0.25, 2.6, 0.5], dist: 7.4, to: 6, yaw: 8, pitch: 6, fov: 44 }),
       zone: "village",
       look: DAY,
       note: "His face, and the eye behind him, looking back the whole way.",

@@ -7,7 +7,7 @@ export const scene9 = storyScene(timing, {
   shots: [
     {
       cue: "9.mum",
-      ...cam.push({ on: [9.9, 1.45, -2.8], dist: 3, to: 2.1, yaw: 16, pitch: 6, fov: 36 }),
+      ...cam.push({ on: [9.9, 1.6, -2.7], dist: 4.6, to: 3.6, yaw: 18, pitch: 8, fov: 40 }),
       zone: "village",
       look: DAY,
       note: "She looks at the sky first, and only then at him. The order is the scene.",
@@ -31,15 +31,15 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.bell",
-      ...cam.push({ on: [0.1, 2.15, -1.4], dist: 3.6, to: 2.6, yaw: 8, pitch: -24, fov: 36 }),
+      ...cam.push({ on: [0.3, 2.3, -2.2], dist: 6.6, to: 5.2, yaw: 34, pitch: 8, fov: 42 }),
       zone: "village",
       look: DAY,
-      note: "From under the bell, looking up. It rings. Nobody drops.",
-      stage: () => <Hero position={[0.35, 0, 0.4]} animation="reachUp" face="brave" />,
+      note: "The bell is the subject. He is beside it, chin up. Nobody drops.",
+      stage: () => <Hero position={[1.45, 0, -0.7]} animation="reachUp" face="brave" />,
     },
     {
       cue: "9.up",
-      ...cam.truck({ on: [-1.8, 1.5, 3.2], dist: 3.6, yaw: 6, pitch: 4, fov: 38, by: [3.4, 0, 0] }),
+      ...cam.push({ on: [0.55, 1.8, 1.25], dist: 7.6, to: 6.1, yaw: 8, pitch: 8, fov: 46 }),
       zone: "village",
       look: DAY,
       note: "Travelling the square: the baker, the kids, the iron golem, every chin up.",
