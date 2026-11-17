@@ -54,48 +54,21 @@ jobs:
       # For sandboxes that can fetch the repository but not Actions' external
       # artifact-storage host. The frames land in review/<composition>/ on the
       # branch that ran the workflow. Delete that folder before delivery.
-      - name: Stage review frames
+      - name: Temporarily commit review frames
         if: ${{ inputs.commit_review && github.ref_name != 'main' }}
         env:
+          REF_NAME: ${{ github.ref_name }}
           COMPOSITION: ${{ inputs.composition }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p "review/${COMPOSITION}"
-          ls out/stills > out/stage-proof.txt 2>&1
-          cp out/stills/*.png "review/${COMPOSITION}/" >> out/stage-proof.txt 2>&1 || echo "copy-failed" >> out/stage-proof.txt
-          git check-ignore -v "review/${COMPOSITION}" >> out/stage-proof.txt 2>&1 || true
-          git add -f "review/${COMPOSITION}/" >> out/stage-proof.txt 2>&1
-          git status --short >> out/stage-proof.txt 2>&1
-          git add -f out/stage-proof.txt
-
-      - name: Commit review frames
-        if: ${{ inputs.commit_review && github.ref_name != 'main' }}
-        env:
-          COMPOSITION: ${{ inputs.composition }}
-        run: |
-          # git commit itself does not persist on this runner, so the commit is built by hand.
-          git add -f "review/${COMPOSITION}/" out/stage-proof.txt
-          TREE=$(git write-tree)
-          PARENT=$(git rev-parse HEAD)
-          COMMIT=$(git commit-tree "$TREE" -p "$PARENT" -m "Diagnostic review frames for ${COMPOSITION}")
-          git reset --soft "$COMMIT"
-
-      - name: Push review frames
-        if: ${{ inputs.commit_review && github.ref_name != 'main' }}
-        env:
-          REF_NAME: ${{ github.ref_name }}
-        run: |
+          cp out/stills/*.png "review/${COMPOSITION}/"
+          git add -f "review/${COMPOSITION}/"
+          git -c core.hooksPath=/dev/null commit -m "Diagnostic review frames for ${COMPOSITION}"
           # Somebody may have pushed while the stills rendered: take their commits first, or the push is refused
           # and ten minutes of frames are lost.
-          {
-            echo "head-before: $(git rev-parse HEAD)"
-            git pull --rebase origin "${REF_NAME}" && echo "rebase-ok" || echo "rebase-failed"
-            git push origin "HEAD:${REF_NAME}" && echo "push-ok" || echo "push-failed"
-            echo "remote-after: $(git ls-remote origin "refs/heads/${REF_NAME}")"
-          } > out/push-proof.txt 2>&1
-          git add -f out/push-proof.txt
-          git -c core.hooksPath=/dev/null commit -m "Record the review push reply"
+          git pull --rebase origin "${REF_NAME}"
           git push origin "HEAD:${REF_NAME}"
 
       - name: Publish release assets
@@ -109,5 +82,5 @@ jobs:
             - Composition: `${{ inputs.composition }}`
             - Frames: `${{ inputs.frames }}`
             - Commit: `${{ github.sha }}`
-          files: "out/stills/*"
+          files: "out/stills/*.png"
           token: ${{ secrets.GITHUB_TOKEN }}

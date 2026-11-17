@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, BellRope, Crowd, Dad, Friend, Golem, Hero, Mum, Puller, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
+import { Baker, BellRope, Dad, Friend, Golem, Hero, Mum, Puller, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
 
 export const scene7 = storyScene(timing, {
   id: "scene7",
@@ -41,24 +41,30 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.rope",
-      ...cam.push({ on: [0.1, 1.7, -1.15], dist: 4.4, to: 3.1, yaw: 18, pitch: 16, fov: 44 }),
+      ...cam.push({ on: [0.05, 1.5, -2.15], dist: 5.8, to: 4.6, yaw: 76, pitch: 6, fov: 42 }),
       zone: "village",
       look: DAY,
-      note: "Hands on the rope first. Ten, then twenty, fills the square.",
+      note: "From the side: raised hands meet the rope, and the count is a row you can see.",
       stage: (t) => {
         const more = ease(ramp(t, wordAt("7.rope", "twenty"), wordAt("7.rope", "twenty") + 0.3));
+        const n = more > 0.45 ? 14 : 8;
+        const tints = ["#6a8f4a", "#8a5a3a", "#3d5f9a", "#8a3b2a", "#6a4030", "#5a4a6a", "#3f6b3a", "#8a5a2a"];
         return (
           <>
-            <BellRope pull={0.55} />
-            <Hero position={[-0.35, 0, -1.35]} rotationY={3.1} animation="reachUp" face="brave" />
-            <Puller position={[0.45, 0, -1.2]} rotationY={3.0} tint="#6a8f4a" />
-            <Puller position={[-0.85, 0, -0.95]} rotationY={2.7} tint="#8a5a3a" />
-            <Mum position={[0.85, 0, -0.45]} nod={-0.35} />
-            <Dad position={[1.35, 0, -0.15]} lean={0.05} nod={-0.2} />
-            <Friend position={[-1.2, 0, -0.35]} nod={-0.3} />
-            <Baker position={[1.7, 0, 0.45]} lean={0.05} nod={-0.25} />
-            <Crowd n={more > 0.45 ? 14 : 6} up={1} at={[0.1, 0, 0.35]} />
-            {more > 0.4 ? <Golem position={[2.6, 0, 1.1]} bow={-0.1} /> : null}
+            <BellRope pull={0.35} />
+            <Hero position={[0.1, 0, -1.95]} rotationY={Math.PI} animation="reachUp" face="brave" />
+            {Array.from({ length: n }).map((_, i) => {
+              const col = i % 2;
+              const row = Math.floor(i / 2) - 2;
+              return (
+                <Puller
+                  key={i}
+                  position={[row * 0.52 + (col === 0 ? 0.7 : -0.15), 0, -2.05 - col * 0.22]}
+                  rotationY={Math.PI}
+                  tint={tints[i % tints.length]}
+                />
+              );
+            })}
           </>
         );
       },

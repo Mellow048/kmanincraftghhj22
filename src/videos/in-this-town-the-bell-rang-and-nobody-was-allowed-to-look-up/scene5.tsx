@@ -7,17 +7,18 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "5.wait",
-      ...cam.push({ on: [0.3, 0.7, 1.35], dist: 2.6, to: 1.8, yaw: 10, pitch: -32, fov: 40 }),
+      ...cam.push({ on: [0.3, 1.35, 1.05], dist: 5.8, to: 4.6, yaw: 8, pitch: 6, fov: 46 }),
       zone: "village",
       look: DAY,
-      note: "From the dirt, between the bowed legs. He is the only chin still up.",
+      note: "Above the ground: his chin stays up, the others are bowed, and a leg is in the frame.",
       stage: () => (
         <>
-          <Hero position={[0.3, 0, 1.85]} animation="idle" face="brave" />
-          <Mum position={[-1.15, 0, 0.85]} lean={1.1} />
-          <Friend position={[1.15, 0, 0.9]} lean={1.05} />
-          <Baker position={[-0.2, 0, 0.35]} lean={1.2} nod={0.7} />
-          <Golem position={[2.4, 0, 1.8]} bow={1.2} />
+          <Hero position={[0.3, 0, 1.35]} animation="idle" face="brave" />
+          <Mum position={[-1.05, 0, 0.7]} lean={1.2} nod={0.75} />
+          <Friend position={[1.15, 0, 0.65]} lean={1.2} nod={0.7} />
+          <Baker position={[-0.2, 0, 0.15]} lean={1.25} nod={0.85} />
+          <Golem position={[2.1, 0, 1.45]} bow={1.1} />
+          <SkyThing position={[0.15, 4.1, -0.35]} scale={0.95} legs={8} />
         </>
       ),
     },

@@ -45,7 +45,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.wont",
-      ...cam.push({ on: [1.05, 1.4, 1.95], dist: 1.9, to: 1.4, yaw: 24, pitch: 14, fov: 32 }),
+      ...cam.push({ on: [1.05, 1.2, 1.95], dist: 3.6, to: 2.8, yaw: 34, pitch: 4, fov: 36 }),
       zone: "village",
       look: DAY,
       note: "Three-quarter: both hands are already over his eyes, and he sings.",
