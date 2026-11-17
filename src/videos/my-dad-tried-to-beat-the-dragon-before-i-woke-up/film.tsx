@@ -27,7 +27,7 @@ export const film = defineFilm({
   look: "overworld-night",
   post: {
     // Warm the highlights, let the shafts through, and keep the bloom off the captions.
-    shaders: { warmth: 0.85, saturation: 1.3, shafts: 0.35, bloom: 0.6, lift: 0.05 },
+    shaders: { warmth: 0.85, saturation: 1.3, shafts: 0.35, bloom: 0.6, lift: 0.12, veil: 0.05 },
   },
   // The mix: the recorded voice, music that follows the night, and one effect for everything that
   // happens on screen (scripts/sound.py build). Point this back at narration.mp3 to check a cut

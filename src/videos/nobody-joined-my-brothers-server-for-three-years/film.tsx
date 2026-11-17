@@ -25,7 +25,7 @@ export const film = defineFilm({
   look: "overworld-night",
   post: {
     // Cold moonlight on three years of night, and the warm grade only for the last two shots.
-    shaders: { warmth: 0.85, saturation: 1.28, shafts: 0.3, bloom: 0.6, lift: 0.05 },
+    shaders: { warmth: 0.85, saturation: 1.28, shafts: 0.3, bloom: 0.6, lift: 0.12, veil: 0.05 },
   },
   // The mix: the recorded voice, music, and one effect for everything that happens on screen
   // (scripts/sound.py build). Point this back at narration.mp3 to check a cut against the bare voice.

@@ -61,20 +61,20 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 1. hook
     {
       cue: "1.left",
-      ...cam.push({ on: at(PLACE.hill, 0, 3.4, -1), dist: 26, to: 20, yaw: 8, pitch: 8, fov: 52 }),
+      ...cam.push({ on: at(PLACE.hill, 0, 3.4, -1), dist: 26.0, to: 20.0, yaw: 8, pitch: 8, fov: 52 }),
       zone: "hill",
       look: "overworld-night",
       note: "Open on the question, not the answer: a castle on a hill at night, half finished, one torch lit — and one small figure standing still in the courtyard, doing nothing at all. The audience has three seconds to wonder why he is here alone.",
       stage: () => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.middle} />
-          <Kid position={SPOT_AT} rotationY={Math.PI} animation="idle" face="calm" />
+          <Kid position={SPOT_AT} rotationY={0} animation="idle" face="calm" />
         </>
       ),
     },
     {
       cue: "1.online",
-      ...cam.push({ on: at(PLACE.room, 0, 1.2, 1.0), dist: 2.1, to: 1.6, yaw: -6, pitch: 10, fov: 36 }),
+      ...cam.push({ on: at(PLACE.room, 0, 1.2, 1.0), dist: 2.4, to: 1.83, yaw: -6, pitch: 10, fov: 36 }),
       zone: "room",
       look: "ward-night",
       note: "The screen: ONE PLAYER ONLINE, in the dark, with nobody at the keyboard. The number is the brightest thing in the frame.",
@@ -88,27 +88,27 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.online",
       cut: 1.5,
-      ...cam.push({ on: [KID_AT[0], 1.35, KID_AT[2]], dist: 1.9, to: 1.55, yaw: 4, pitch: 6, fov: 34 }),
+      ...cam.push({ on: [KID_AT[0], 1.35, KID_AT[2]], dist: 2.4, to: 1.96, yaw: 4, pitch: 6, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "Every night. Cut to the boy, lit green by the screen, wide awake at whatever hour this is. He is not playing. He is keeping something on.",
       stage: () => (
         <>
           <ServerScreen position={SCREEN_AT} players={1} />
-          <Kid position={KID_AT} rotationY={Math.PI} animation="idle" face="calm" />
+          <Kid position={KID_AT} rotationY={0} animation="idle" face="calm" />
         </>
       ),
     },
     {
       cue: "1.me",
-      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 1.35, to: 1.15, yaw: 6, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 2.4, to: 2.04, yaw: 6, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "The reveal, said straight to camera and thrown away in nine frames: it's me. He does not look pleased about it.",
       stage: () => (
         <>
           <ServerScreen position={SCREEN_AT} players={1} />
-          <Kid position={KID_AT} rotationY={Math.PI} animation="idle" face="frown" />
+          <Kid position={KID_AT} rotationY={0} animation="idle" face="frown" />
         </>
       ),
     },
@@ -116,7 +116,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 2. what he left
     {
       cue: "2.castle",
-      ...cam.push({ on: at(PLACE.hill, 0, 4.2, 0), dist: 22, to: 16, yaw: 24, pitch: 10, fov: 50 }),
+      ...cam.push({ on: at(PLACE.hill, 0, 4.2, 0), dist: 22.0, to: 16.0, yaw: 24, pitch: 10, fov: 50 }),
       zone: "hill",
       look: "overworld-night",
       note: "What he left: the castle, seen properly for the first time. Three walls, two towers, and one wall that simply stops half way up. A building with a hole in it.",
@@ -139,7 +139,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.chest",
       cut: 1.35,
-      ...cam.push({ on: at(PLACE.hill, 2.4, 1.1, 0.4), dist: 2.2, to: 1.8, yaw: 26, pitch: 14, fov: 36 }),
+      ...cam.push({ on: at(PLACE.hill, 2.4, 1.1, 0.4), dist: 2.4, to: 1.96, yaw: 26, pitch: 14, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "And a bed with his name on it. Nobody has slept in it. Nobody has moved it. He left a life here, labelled.",
@@ -163,27 +163,27 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.stopped",
       cut: 1.7,
-      ...cam.push({ on: [HILL_STAND[0], 1.3, HILL_STAND[2]], dist: 2.0, to: 1.7, yaw: 172, pitch: 6, fov: 36 }),
+      ...cam.push({ on: [HILL_STAND[0], 1.3, HILL_STAND[2]], dist: 2.4, to: 2.04, yaw: -8, pitch: 6, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "The boy, looking at it, saying the hard part flatly. He does not blame anybody out loud. That is what makes it land.",
       stage: () => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.early} />
-          <Kid position={HILL_STAND} rotationY={-2.6} animation="idle" face="sad" />
+          <Kid position={HILL_STAND} rotationY={0} animation="idle" face="sad" />
         </>
       ),
     },
     {
       cue: "2.seed",
-      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 1.6, to: 1.35, yaw: 10, pitch: 0, fov: 32 }),
+      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 2.4, to: 2.02, yaw: 10, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "'I know the seed by heart.' A fifteen-year-old who has memorised the number of a world so he can keep visiting a person who is not there. He has never told anyone, and the shot is the telling.",
       stage: () => (
         <>
           <ServerScreen position={SCREEN_AT} players={1} />
-          <Kid position={KID_AT} rotationY={Math.PI} animation="idle" face="calm" />
+          <Kid position={KID_AT} rotationY={0} animation="idle" face="calm" />
         </>
       ),
     },
@@ -191,7 +191,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 3. the promise to himself
     {
       cue: "3.pay",
-      ...cam.push({ on: at(PLACE.room, 0.5, 0.9, 1.5), dist: 1.5, to: 1.2, yaw: -26, pitch: 32, fov: 34 }),
+      ...cam.push({ on: at(PLACE.room, 0.5, 0.9, 1.5), dist: 2.4, to: 1.92, yaw: -26, pitch: 32, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "Lunch money, counted out on the desk: nine coins, and what a server costs. The shot is small on purpose — this is the only place in the film where the story is about money.",
@@ -212,20 +212,20 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.middle} />
-          <Kid position={SPOT_AT} rotationY={Math.PI} animation="idle" face="calm" />
+          <Kid position={SPOT_AT} rotationY={0} animation="idle" face="calm" />
         </>
       ),
     },
     {
       cue: "3.block",
-      ...cam.push({ on: [WALL_AT[0] + 0.6, 1.2, WALL_AT[2] + 1.0], dist: 1.9, to: 1.5, yaw: 20, pitch: 12, fov: 34 }),
+      ...cam.push({ on: [WALL_AT[0] + 0.6, 1.2, WALL_AT[2] + 1.0], dist: 2.4, to: 1.89, yaw: 20, pitch: 12, fov: 34 }),
       zone: "hill",
       look: "overworld-night",
       note: "One block. His hand placing it on the top of the wall, at the exact height his brother stopped. It is the smallest action in the film and the one it is all about.",
       stage: (t) => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.middle + 0.01 * ramp(t, 0.2, 1.4)} />
-          <Kid position={at(PLACE.hill, 0.9, 0.5, 5.0)} rotationY={-2.9} animation="press" face="calm" />
+          <Kid position={at(PLACE.hill, 0.9, 0.5, 5.0)} rotationY={0} animation="press" face="calm" />
         </>
       ),
     },
@@ -233,7 +233,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 4. the grind
     {
       cue: "4.two",
-      ...cam.push({ on: [WALL_AT[0], 2.4, WALL_AT[2]], dist: 7.5, to: 11, yaw: 16, pitch: 8, fov: 46 }),
+      ...cam.push({ on: [WALL_AT[0], 2.4, WALL_AT[2]], dist: 7.5, to: 11.0, yaw: 16, pitch: 8, fov: 46 }),
       zone: "hill",
       look: "overworld-night",
       note: "The payoff of the grind, and the shot that turns the film: pull back and the wall is nearly full. One block a night, and three years of nights is enough to build a wall. The audience works it out for themselves.",
@@ -256,7 +256,7 @@ export const scene1 = storyScene(timing, {
       note: "A creeper, at the very edge of the torchlight, standing still. He has kept these out of a castle for three years. This is what a night's work looks like from the outside.",
       stage: () => (
         <>
-          <Creeper position={at(PLACE.hill, -7.4, 0, -6.2)} rotationY={0.6} />
+          <Creeper position={at(PLACE.hill, -7.4, 0, -6.2)} rotationY={0} />
           <Torch position={at(PLACE.hill, -5.6, 0.3, -4.8)} light={6} seed={24} />
         </>
       ),
@@ -264,14 +264,14 @@ export const scene1 = storyScene(timing, {
     {
       cue: "4.mobs",
       cut: 1.5,
-      ...cam.push({ on: at(PLACE.hill, -5.4, 1.3, -4.6), dist: 2.2, to: 1.8, yaw: -30, pitch: 8, fov: 36 }),
+      ...cam.push({ on: at(PLACE.hill, -5.4, 1.3, -4.6), dist: 2.4, to: 1.96, yaw: -30, pitch: 8, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "A torch going back on the wall, the same one, for the thousandth time. Keeping the lights on is the whole job.",
       stage: () => (
         <>
           <Torch position={at(PLACE.hill, -5.4, 0.9, -4.6)} light={7} seed={25} />
-          <Kid position={at(PLACE.hill, -4.5, 0, -3.8)} rotationY={-2.2} animation="reachUp" face="calm" />
+          <Kid position={at(PLACE.hill, -4.5, 0, -3.8)} rotationY={0} animation="reachUp" face="calm" />
         </>
       ),
     },
@@ -284,7 +284,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.late} roof={ramp(t, 0, 1.1)} />
-          <Kid position={TOP_AT} rotationY={-2.4} animation="crouch" face="calm" />
+          <Kid position={TOP_AT} rotationY={0} animation="crouch" face="calm" />
         </>
       ),
     },
@@ -304,14 +304,14 @@ export const scene1 = storyScene(timing, {
     {
       cue: "4.never",
       cut: 1.5,
-      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 1.5, to: 1.3, yaw: 8, pitch: 0, fov: 32 }),
+      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 2.4, to: 2.08, yaw: 8, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "'Not once in three years.' He says it like a fact he has already made peace with, which is worse than saying it sadly.",
       stage: () => (
         <>
           <ServerScreen position={SCREEN_AT} players={1} />
-          <Kid position={KID_AT} rotationY={Math.PI} animation="idle" face="frown" />
+          <Kid position={KID_AT} rotationY={0} animation="idle" face="frown" />
         </>
       ),
     },
@@ -319,7 +319,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 5. the low point
     {
       cue: "5.birthday",
-      ...cam.push({ on: at(PLACE.room, -2.6, 1.9, -3.4), dist: 2.0, to: 1.6, yaw: 12, pitch: 0, fov: 34 }),
+      ...cam.push({ on: at(PLACE.room, -2.6, 1.9, -3.4), dist: 2.4, to: 1.92, yaw: 12, pitch: 2, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "The deadline, on a calendar on the wall, ringed in red: Friday. And it is his brother's birthday, which is the cruellest detail in the film.",
@@ -332,21 +332,21 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "5.sign",
-      ...cam.push({ on: at(PLACE.spawn, 0, 1.1, 2.2), dist: 4.2, to: 3.2, yaw: 176, pitch: 6, fov: 42 }),
+      ...cam.push({ on: at(PLACE.spawn, 0, 1.1, 2.2), dist: 4.2, to: 3.2, yaw: -4, pitch: 6, fov: 42 }),
       zone: "spawn",
       look: "overworld-night",
       note: "The sign going in at the spawn point, just in case: the thing you leave when you have stopped believing and cannot stop hoping.",
       stage: (t) => (
         <>
           <SpawnSign position={SPAWN_SIGN_AT} rotationY={0.1} />
-          <Kid position={at(PLACE.spawn, 0, 0, 2.2)} rotationY={Math.PI} animation="crouch" face="sad" />
+          <Kid position={at(PLACE.spawn, 0, 0, 2.2)} rotationY={0} animation="crouch" face="sad" />
           <Glow position={at(PLACE.spawn, 0, 1.3, 0.4)} size={1.6} color="#ffc078" opacity={0.1 + pop(t, 0.3, 0.5) * 0.1} />
         </>
       ),
     },
     {
       cue: "5.words",
-      ...cam.push({ on: at(PLACE.spawn, 0, 1.4, 0.2), dist: 1.9, to: 1.5, yaw: 8, pitch: 2, fov: 32 }),
+      ...cam.push({ on: at(PLACE.spawn, 0, 1.4, 0.2), dist: 2.4, to: 1.89, yaw: 8, pitch: 2, fov: 32 }),
       zone: "spawn",
       look: "overworld-night",
       note: "The words on it, held: STILL HERE. The film's title, written by a boy on a sign nobody may read.",
@@ -360,11 +360,11 @@ export const scene1 = storyScene(timing, {
     {
       cue: "5.words",
       cut: 1.3,
-      ...cam.push({ on: at(PLACE.spawn, 0, 1.3, 2.4), dist: 1.4, to: 1.2, yaw: 174, pitch: 4, fov: 32 }),
+      ...cam.push({ on: at(PLACE.spawn, 0, 1.3, 2.4), dist: 2.4, to: 2.06, yaw: -6, pitch: 4, fov: 32 }),
       zone: "spawn",
       look: "overworld-night",
       note: "'I kept it.' His face in the torchlight. He is not crying. He has been doing this too long to cry about it.",
-      stage: () => <Kid position={at(PLACE.spawn, 0, 0, 2.4)} rotationY={Math.PI} animation="idle" face="sad" />,
+      stage: () => <Kid position={at(PLACE.spawn, 0, 0, 2.4)} rotationY={0} animation="idle" face="sad" />,
     },
 
     // ---------------------------------------------------------------- 6. the turn
@@ -378,13 +378,13 @@ export const scene1 = storyScene(timing, {
         <>
           <Desk position={DESK_AT} />
           <ServerScreen position={SCREEN_AT} players={1} />
-          <Kid position={KID_AT} rotationY={Math.PI} animation="idle" face="calm" />
+          <Kid position={KID_AT} rotationY={0} animation="idle" face="calm" />
         </>
       ),
     },
     {
       cue: "6.two",
-      ...cam.push({ on: at(PLACE.room, 0, 1.3, 0.9), dist: 1.4, to: 1.15, yaw: -4, pitch: 4, fov: 30 }),
+      ...cam.push({ on: at(PLACE.room, 0, 1.3, 0.9), dist: 2.4, to: 1.97, yaw: -4, pitch: 4, fov: 30 }),
       zone: "room",
       look: "ward-night",
       note: "The number changes: ONE becomes TWO. The tightest shot in the film, on the smallest change in the film. Everything that follows is in this one frame.",
@@ -397,7 +397,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.name",
-      ...cam.push({ on: at(PLACE.room, 0, 1.05, 0.8), dist: 0.95, to: 0.8, yaw: -2, pitch: 0, fov: 28 }),
+      ...cam.push({ on: at(PLACE.room, 0, 1.05, 0.8), dist: 2.4, to: 2.02, yaw: -2, pitch: 2, fov: 28 }),
       zone: "room",
       look: "ward-night",
       note: "And the name, glowing on the screen: his name, after three years. The film's one true arrival, and it is seven letters of pixel text.",
@@ -414,7 +414,7 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <ServerScreen position={SCREEN_AT} players={2} name="HIS NAME" highlight={1} />
-          <Kid position={KID_AT} rotationY={Math.PI} animation="idle" face="wow" />
+          <Kid position={KID_AT} rotationY={0} animation="idle" face="wow" />
         </>
       ),
     },
@@ -422,29 +422,29 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 7. the payoff
     {
       cue: "7.walked",
-      ...cam.push({ on: [SPOT_AT[0], 1.6, SPOT_AT[2] + 1], dist: 6.4, to: 5.0, yaw: 186, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [SPOT_AT[0], 1.6, SPOT_AT[2] + 1], dist: 6.4, to: 5.0, yaw: 6, pitch: 6, fov: 44 }),
       zone: "hill",
       look: "overworld-night",
       note: "The brother, in the castle for the first time in three years, walking it wall to wall without saying a word. The boy watches him from the doorway, and the camera watches from behind the boy: we are as far from the brother as he is.",
       stage: (t) => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.done} roof={1} />
-          <Brother position={at(PLACE.hill, -1.2, 0.5, 1.2 + t * 0.5)} rotationY={-1.4} animation="walk" face="calm" />
-          <Kid position={SPOT_AT} rotationY={Math.PI} animation="idle" face="wow" />
+          <Brother position={at(PLACE.hill, -1.2, 0.5, 1.2 + t * 0.5)} rotationY={0} animation="walk" face="calm" />
+          <Kid position={SPOT_AT} rotationY={0} animation="idle" face="wow" />
         </>
       ),
     },
     {
       cue: "7.walked",
       cut: 1.8,
-      ...cam.push({ on: at(PLACE.hill, -1.2, 1.5, 1.4), dist: 2.6, to: 2.1, yaw: -150, pitch: 4, fov: 36 }),
+      ...cam.push({ on: at(PLACE.hill, -1.2, 1.5, 1.4), dist: 2.6, to: 2.1, yaw: 30, pitch: 4, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "His face, and still no words: a man walking round a castle he abandoned, seeing what his little brother has done to it.",
       stage: () => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.done} roof={1} />
-          <Brother position={at(PLACE.hill, -1.2, 0.5, 1.4)} rotationY={-1.4} animation="idle" face="sad" />
+          <Brother position={at(PLACE.hill, -1.2, 0.5, 1.4)} rotationY={0} animation="idle" face="sad" />
         </>
       ),
     },
@@ -457,62 +457,62 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.done} roof={1} last={pop(t, 0.5, 0.4)} />
-          <Brother position={at(PLACE.hill, 0, 5.6, 2.2)} rotationY={-2.9} animation="press" face="calm" />
+          <Brother position={at(PLACE.hill, 0, 5.6, 2.2)} rotationY={0} animation="press" face="calm" />
         </>
       ),
     },
     {
       cue: "7.said",
-      ...cam.push({ on: at(PLACE.hill, 0, 1.55, 2.6), dist: 1.8, to: 1.5, yaw: 172, pitch: 2, fov: 32 }),
+      ...cam.push({ on: at(PLACE.hill, 0, 1.55, 2.6), dist: 2.4, to: 2.0, yaw: -8, pitch: 2, fov: 32 }),
       zone: "hill",
       look: "overworld-night",
       note: "The first words anyone says in this film, at seventy seconds in, and they reframe the whole thing: he was watching. Every Sunday. He never left the world; he only stopped speaking in it.",
       stage: () => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.done} roof={1} last={1} />
-          <Brother position={at(PLACE.hill, 0, 0.5, 2.6)} rotationY={Math.PI} animation="talk" face="sad" />
+          <Brother position={at(PLACE.hill, 0, 0.5, 2.6)} rotationY={0} animation="talk" face="sad" />
         </>
       ),
     },
     {
       cue: "7.said",
       cut: 1.6,
-      ...cam.push({ on: [SPOT_AT[0], 1.3, SPOT_AT[2]], dist: 1.35, to: 1.15, yaw: 178, pitch: 0, fov: 30 }),
+      ...cam.push({ on: [SPOT_AT[0], 1.3, SPOT_AT[2]], dist: 2.4, to: 2.04, yaw: -2, pitch: 2, fov: 30 }),
       zone: "hill",
       look: "overworld-night",
       note: "And the boy hearing it: three years of nights, answered in six words. The film's one close-up of him crying, and it is the shortest shot in the payoff.",
       stage: () => (
         <>
-          <Kid position={SPOT_AT} rotationY={Math.PI} animation="idle" face="crying" />
+          <Kid position={SPOT_AT} rotationY={0} animation="idle" face="crying" />
         </>
       ),
     },
     {
       cue: "7.light",
-      ...cam.push({ on: at(PLACE.hill, 0, 5.0, -1), dist: 24, to: 17, yaw: 22, pitch: 12, fov: 52 }),
+      ...cam.push({ on: at(PLACE.hill, 0, 5.0, -1), dist: 24.0, to: 17.0, yaw: 22, pitch: 12, fov: 52 }),
       zone: "hill",
       look: "overworld-sunset",
       note: "The morning: the castle finished, every torch still lit, and both of them on the wall it took three years to fill. The film has been night from the first frame to this one, and this is the first sun in it.",
       stage: (t) => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.done} roof={1} last={1} />
-          <Brother position={at(PLACE.hill, -1.1, 5.6, 1.2)} rotationY={-0.4} animation="idle" face="smile" />
-          <Kid position={at(PLACE.hill, 0.9, 5.6, 1.4)} rotationY={0.3} animation="idle" face="smile" />
+          <Brother position={at(PLACE.hill, -1.1, 5.6, 1.2)} rotationY={0} animation="idle" face="smile" />
+          <Kid position={at(PLACE.hill, 0.9, 5.6, 1.4)} rotationY={0} animation="idle" face="smile" />
           <Glow position={at(PLACE.hill, 0, 6.4, 1.2)} size={5} color="#ffd08a" opacity={0.12 + ramp(t, 0, 1.2) * 0.14} />
         </>
       ),
     },
     {
       cue: "7.sub",
-      ...cam.push({ on: at(PLACE.hill, 0, 3.2, 2), dist: 19, to: 15, yaw: 6, pitch: 10, fov: 48 }),
+      ...cam.push({ on: at(PLACE.hill, 0, 3.2, 2), dist: 19.0, to: 15.0, yaw: 6, pitch: 10, fov: 48 }),
       zone: "hill",
       look: "overworld-sunset",
       note: "The last shot holds the whole castle, every torch lit, with the two of them small on the wall — the picture the CTA is asking about — and the sign comes up beside it, after the story is finished, never during it.",
       stage: (t) => (
         <>
           <Castle position={CASTLE_AT} filled={FILLED.done} roof={1} last={1} />
-          <Brother position={at(PLACE.hill, -1.1, 5.6, 1.2)} rotationY={-0.4} animation="idle" face="smile" />
-          <Kid position={at(PLACE.hill, 0.9, 5.6, 1.4)} rotationY={0.3} animation="wave" face="smile" />
+          <Brother position={at(PLACE.hill, -1.1, 5.6, 1.2)} rotationY={0} animation="idle" face="smile" />
+          <Kid position={at(PLACE.hill, 0.9, 5.6, 1.4)} rotationY={0} animation="wave" face="smile" />
           <SubscribeSign position={SUB_AT} rotationY={0.2} scale={pop(t - 0.3, 0, 0.4) * 1.15} />
         </>
       ),

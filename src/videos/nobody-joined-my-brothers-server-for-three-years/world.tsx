@@ -19,7 +19,6 @@ const Sets: React.FC = () => (
       <Vox kind="planks" position={at(PLACE.room, 0, -0.1, 0)} size={[9, 0.2, 8]} />
       <Vox kind="planks" position={at(PLACE.room, 0, 1.4, -3.6)} size={[9, 3.2, 0.2]} />
       <Vox kind="planks" position={at(PLACE.room, -4.3, 1.4, 0)} size={[0.2, 3.2, 8]} />
-      <Vox kind="wool" position={at(PLACE.room, 0, 1.4, 3.9)} size={[9, 3.2, 0.2]} tint="#cfc6b4" />
       {/* the window: night outside, so the room stays cold and the screen stays the only light */}
       <Block position={at(PLACE.room, 4.2, 1.9, -1.2)} size={[0.08, 1.1, 1.6]} color="#0b1430" emissive="#1b2a5c" emissiveIntensity={0.5} castShadow={false} />
       {/* the bed he does not sleep in */}

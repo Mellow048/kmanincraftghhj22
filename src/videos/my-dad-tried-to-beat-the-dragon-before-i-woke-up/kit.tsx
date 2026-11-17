@@ -188,7 +188,6 @@ export const Shaft: React.FC<{ position: Vec3; depth?: number }> = ({ position, 
     <Vox kind="stone" position={[-1.0, -depth / 2, 0]} size={[0.6, depth, 2.6]} />
     <Vox kind="stone" position={[1.0, -depth / 2, 0]} size={[0.6, depth, 2.6]} />
     <Vox kind="stone" position={[0, -depth / 2, -1.0]} size={[2.6, depth, 0.6]} />
-    <Vox kind="stone" position={[0, -depth / 2, 1.0]} size={[2.6, depth, 0.6]} />
     <Vox kind="dirt" position={[0, -depth - 0.2, 0]} size={[1.4, 0.4, 1.4]} />
     {[0, 1, 2, 3].map((i) => (
       <group key={i}>
