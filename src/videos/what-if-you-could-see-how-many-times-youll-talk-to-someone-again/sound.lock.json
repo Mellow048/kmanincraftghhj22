@@ -1,0 +1,79 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-you-could-see-how-many-times-youll-talk-to-someone-again",
+  "mix": "public/audio/what-if-you-could-see-how-many-times-youll-talk-to-someone-again/mix.mp3",
+  "seconds": 117.4667,
+  "built_from": {
+    "timing.json": "e67148dadcea4ce226c65ad526d89b14f5d3c278",
+    "sound.json": "bf1fe3bfd9a3b12277bdc2695a8660c5ebaffc84",
+    "narration.mp3": "ec688131b905dcf03c7f0b3da169b76bbd30fa89"
+  },
+  "mix_sha1": "3da9029a13116eca53c23f267ca4c8ff9b4bd6cc",
+  "music_sections": [
+    {
+      "from": "1.what",
+      "mood": "wonder",
+      "at": 0.0
+    }
+  ],
+  "beds": 0,
+  "measured": {
+    "musicUnderVoiceDb": 18.9,
+    "secondsWithoutMusic": 0.1,
+    "bedsUnderVoiceDb": null,
+    "sfx": 9,
+    "sfxPerMinute": 4.6,
+    "sfxKinds": 2,
+    "longestGapSeconds": 28.9,
+    "longestGapAt": 87.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 18.9,
+    "voiceOverRestWorstDb": 7.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 7.6,
+        "t": 116.2,
+        "cue": "9.upa",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 9.5,
+        "t": 23.3,
+        "cue": "3.lunchb",
+        "sounding": []
+      },
+      {
+        "db": 10.0,
+        "t": 71.3,
+        "cue": "7.slamb",
+        "sounding": []
+      },
+      {
+        "db": 10.2,
+        "t": 28.6,
+        "cue": "3.hall",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 10.4,
+        "t": 15.8,
+        "cue": "2.whya",
+        "sounding": []
+      },
+      {
+        "db": 11.6,
+        "t": 10.8,
+        "cue": "2.one",
+        "sounding": []
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -0.7,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}
