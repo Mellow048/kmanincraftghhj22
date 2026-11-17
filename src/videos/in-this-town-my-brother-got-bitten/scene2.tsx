@@ -21,7 +21,7 @@ export const scene2 = storyScene(timing, {
         <>
           <TownSet lit />
           <Wheat position={F} size={[6, 5]} />
-          <Me position={[F[0] - 0.4, hop(t, 0.5, 0.2, 0.3) + hop(t, 1.4, 0.2, 0.3), F[2] + 3.0]} rotationY={NORTH + 0.3} arms={{ l: 0, r: -1.6 + Math.sin(t * 9) * 0.7, hold: <WoodSword position={[0, -0.12, 0.1]} rotation={[Math.PI, 0, 0]} /> }} />
+          <Me position={[F[0] - 0.4, hop(t, 0.5, 0.2, 0.3) + hop(t, 1.4, 0.2, 0.3), F[2] + 3.0]} rotationY={NORTH + 0.3} lean={Math.max(0, Math.sin(t * 7)) * 0.35} carry={<WoodSword position={[0.05, 0.1, 0.1]} rotation={[-0.75 - Math.max(0, Math.sin(t * 7)) * 1.1, 0, 0]} />} />
         </>
       ),
     },
@@ -35,7 +35,7 @@ export const scene2 = storyScene(timing, {
         <>
           <TownSet lit />
           <Wheat position={F} size={[6, 5]} />
-          <Me position={[F[0] - 0.4, 0, F[2] + 3.0]} rotationY={SOUTH + 0.3} turn={tw(t, 0.9, 1.2) * 1.2} />
+          <Me position={[F[0] - 0.4, 0, F[2] + 3.0]} rotationY={SOUTH + 0.3} turn={tw(t, 0.9, 1.2) * 1.2} carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
           <Zombie position={[F[0] + 0.3, -1.5 + tw(t, 0.15, 0.95) * 1.5, F[2] + 1.3]} rotationY={SOUTH - 0.1} armPitch={[-1.5, -1.5]} nod={0.1} />
           <Fill at={[F[0], 3, F[2] + 5]} power={22} />
         </>
@@ -53,8 +53,8 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <TownSet lit homeOpen />
-            <Bro position={DOOR} rotationY={SOUTH} lean={0.25 * (1 - k)} arms={{ l: -1.4, r: -1.4 }} />
-            <Me {...me} />
+            <Bro position={DOOR} rotationY={SOUTH} lean={0.3 * (1 - k)} />
+            <Me {...me} carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
             <Zombie position={[-0.7, 0, -1.4 - k * 1.7]} rotationY={NORTH - 0.15} walk={k * 1.7} armPitch={[-1.5, -1.5]} />
             <Fill at={[2.5, 2.5, -3.5]} power={24} />
           </>
@@ -72,7 +72,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <TownSet lit homeOpen />
-            <Bro position={DOOR} rotationY={SOUTH} arms={{ l: -1.4, r: -1.4 }} bitten={t > hit} nod={t > hit ? 0.3 : 0} />
+            <Bro position={DOOR} rotationY={SOUTH} bitten={t > hit} nod={t > hit ? 0.3 : 0} />
             <Zombie position={[-1.05, 0, -4.15]} rotationY={NORTH} armPitch={[-1.5 + tw(t, hit - 0.25, hit) * 0.35, -1.5]} />
             {t > hit ? <Bits position={[-1.55, 1.0, -5.05]} t={t - hit} color="#e3261c" count={12} power={1.6} /> : null}
             <Fill at={[2.5, 2.2, -4.5]} power={22} />
@@ -85,11 +85,11 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: [-0.75, 1.15, 0.9], dist: 4.2, to: 3.7, yaw: -10, pitch: 5, fov: 44 }),
       zone: "room",
       look: "warm-room",
-      note: "Inside. He holds his arm against his chest and says I'M FINE. The kid looks at the arm, not at his face.",
+      note: "Inside. He has taken the wooden sword off the kid and holds it against his bitten arm, and says I'M FINE. The kid looks at the arm, not at his face.",
       stage: (t) => (
         <>
-          <OurRoom night sword />
-          <Bro position={[-1.0, 0, 0.6]} rotationY={SOUTH + 0.35} bitten />
+          <OurRoom night />
+          <Bro position={[-1.0, 0, 0.6]} rotationY={SOUTH + 0.35} bitten carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
           <Me position={[-0.15, 0, 1.25]} rotationY={WEST} lookAt={[-1.25, 0.9, 0.8]} />
           <Bubble text="I'M FINE." position={[-1.0, 2.1, 0.6]} scale={0.62 * pop(t, 0.5, 0.14)} tail={-1} />
         </>
@@ -118,8 +118,8 @@ export const scene2 = storyScene(timing, {
         const g = 0.55 + tw(t, 0.2, 1.1) * 0.45;
         return (
           <>
-            <OurRoom night sword />
-            <Bro position={[-1.05, 0, 0.7]} rotationY={SOUTH + 0.2} bitten green={g} out={g > 0.8} nod={0.15} />
+            <OurRoom night />
+            <Bro position={[-1.05, 0, 0.7]} rotationY={SOUTH + 0.2} bitten green={g} nod={0.15} arms={g > 0.8 ? { hold: <WoodSword position={[0, -0.16, 0.13]} /> } : undefined} carry={g > 0.8 ? undefined : <WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
             <Me position={[0.55, 0, 1.5]} rotationY={WEST} lookAt={face([-1.05, 0, 0.7], TEEN)} />
             <HandLantern position={[0.2, 0, 0.6]} light={18} />
             <Fill at={[0, 2.6, 2.6]} power={16} />
@@ -137,10 +137,10 @@ export const scene2 = storyScene(timing, {
         const x = 0.9 - tw(t, 0.1, 1.7) * 2.6;
         return (
           <>
-            <OurRoom night sword />
-            <Dad position={[x, 0, 1.7]} rotationY={WEST} walk={(0.9 - x) * 1.2} arms={{ l: -1.5, r: -1.5 }} />
+            <OurRoom night />
+            <Dad position={[x, 0, 1.7]} rotationY={WEST} walk={(0.9 - x) * 1.2} lean={-0.12} />
             <Lying position={[x - 0.42, 1.5, 1.7 + 0.75]} turn={0}>
-              <Bro position={[0, 0, 0]} green={1} out bitten />
+              <Bro position={[0, 0, 0]} green={1} bitten arms={{ hold: <WoodSword position={[0, -0.16, 0.13]} /> }} />
             </Lying>
             <Me position={[1.5, 0, 0.5]} rotationY={WEST} lookAt={[x, 1.4, 1.7]} />
             <HandLantern position={[0.2, 0, 0.6]} light={18} />
@@ -158,9 +158,9 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <OurRoom night />
-          <Dad position={[-1.5, 0, 2.6 + t * 0.7]} rotationY={SOUTH} walk={t * 0.8} arms={{ l: -1.5, r: -1.5 }} />
+          <Dad position={[-1.5, 0, 2.6 + t * 0.7]} rotationY={SOUTH} walk={t * 0.8} lean={-0.12} />
           <Lying position={[-1.5, 1.5, 2.6 + t * 0.7 + 1.2]}>
-            <Bro position={[0, 0, 0]} green={1} out bitten />
+            <Bro position={[0, 0, 0]} green={1} bitten arms={{ hold: <WoodSword position={[0, -0.16, 0.13]} /> }} />
           </Lying>
           <Me position={[-0.9, 0, 0.9]} rotationY={SOUTH - 0.3} lookAt={[-1.5, 1.5, 3]} />
           <HandLantern position={[0.2, 0, 0.6]} light={18} />
@@ -173,11 +173,11 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: [-0.2, 0.75, 0.5], dist: 6.6, to: 5.2, yaw: 0, pitch: 22, fov: 46 }),
       zone: "room",
       look: "lantern-night",
-      note: "The whole room from high up: two beds, one wall between them, and one kid sitting on the floor with a wooden sword. The left half is empty. A slow push in.",
+      note: "The whole room from high up: two beds, one wall between them, and one kid sitting on the floor with nothing in his arms. The left half is empty. A slow push in.",
       stage: (t) => (
         <>
           <OurRoom night />
-          <Me position={[0.75, 0, 0.75]} rotationY={SOUTH - 0.5} sit nod={0.25 + tw(t, 1.2, 2.2) * 0.2} lookAt={t < 1.2 ? [-0.9, 0.6, -0.8] : undefined} carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
+          <Me position={[0.75, 0, 0.75]} rotationY={SOUTH - 0.5} sit nod={0.25 + tw(t, 1.2, 2.2) * 0.2} lookAt={t < 1.2 ? [-0.9, 0.6, -0.8] : undefined} />
           <HandLantern position={[0.2, 0, 0.6]} light={16} />
           <Fill at={[0, 2.8, 2.6]} power={14} />
         </>

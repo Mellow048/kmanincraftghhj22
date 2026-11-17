@@ -140,7 +140,7 @@ export const Bro: React.FC<VillagerProps & { green?: number; out?: boolean; bitt
       ))}
     </group>
   ) : undefined;
-  return <Villager robe={BRO_ROBE} scale={TEEN} phase={2.2} skin={skinAt(green)} eyes={eyesAt(green)} arms={a} carry={torn} {...p} />;
+  return <Villager robe={BRO_ROBE} scale={TEEN} phase={2.2} skin={skinAt(green)} eyes={eyesAt(green)} arms={a} {...p} carry={torn || p.carry ? <>{torn}{p.carry}</> : undefined} />;
 };
 
 /** Dad: the tallest, in a dark robe with a brown apron and a beard. `arms`: he has rolled up a sleeve. */
