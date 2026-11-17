@@ -86,7 +86,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.never",
       cut: 1.75,
-      ...cam.push({ on: [DAD_AT[0] + 0.1, 0.85, DAD_AT[2] + 0.55], dist: 2.4, to: 1.99, yaw: -22, pitch: 16, fov: 34 }),
+      ...cam.push({ on: [DAD_AT[0] + 0.1, 0.85, DAD_AT[2] + 0.55], dist: 1.8, to: 1.55, yaw: -22, pitch: 16, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "The second half of the line is the proof: one finger pressing the mouse, over and over, the way you would knock on a door. Nothing in the game responds.",
@@ -118,7 +118,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.promise",
       cut: 1.55,
-      ...cam.push({ on: [DAD_AT[0], 1.5, DAD_AT[2]], dist: 2.4, to: 2.03, yaw: 6, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [DAD_AT[0], 1.5, DAD_AT[2]], dist: 1.8, to: 1.55, yaw: 6, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "His face on the word 'promised'. The armour strap is on the wrong shoulder and he has not noticed. He is not funny here — he is concentrating.",
@@ -146,7 +146,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 2. catch-22
     {
       cue: "2.needs",
-      ...cam.push({ on: at(PLACE.room, 1.9, 0.95, 1.2), dist: 2.4, to: 1.89, yaw: -14, pitch: 22, fov: 36 }),
+      ...cam.push({ on: at(PLACE.room, 1.9, 0.95, 1.2), dist: 1.8, to: 1.55, yaw: -14, pitch: 22, fov: 36 }),
       zone: "room",
       look: "ward-night",
       note: "The grid, empty. Twelve slots that have to be filled before anything in this film can happen, and the dad does not know what goes in them.",
@@ -161,7 +161,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.needs",
       cut: 1.4,
-      ...cam.push({ on: [DAD_AT[0], 1.5, DAD_AT[2]], dist: 2.4, to: 2.02, yaw: 10, pitch: 6, fov: 34 }),
+      ...cam.push({ on: [DAD_AT[0], 1.5, DAD_AT[2]], dist: 1.8, to: 1.55, yaw: 10, pitch: 6, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "And him, not knowing: a man who has played for one evening, being told the game needs twelve of a thing he has never seen. He is not stupid. He has simply never done this before.",
@@ -174,7 +174,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.pearls",
-      ...cam.push({ on: at(PLACE.room, 1.9, 0.62, 1.2), dist: 2.4, to: 1.92, yaw: -8, pitch: 30, fov: 30 }),
+      ...cam.push({ on: at(PLACE.room, 1.9, 0.62, 1.2), dist: 1.8, to: 1.55, yaw: -8, pitch: 30, fov: 30 }),
       zone: "room",
       look: "ward-night",
       note: "One pearl, held on the grid like an object in a museum: the whole film is this one block, and he cannot get it.",
@@ -197,7 +197,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.look",
       cut: 1.5,
-      ...cam.push({ on: [ENDERMAN_AT[0], 2.42, ENDERMAN_AT[2] + 0.16], dist: 2.4, to: 1.98, yaw: 2, pitch: 2, fov: 30 }),
+      ...cam.push({ on: [ENDERMAN_AT[0], 2.42, ENDERMAN_AT[2] + 0.16], dist: 1.8, to: 1.55, yaw: 2, pitch: 2, fov: 30 }),
       zone: "field",
       look: "overworld-night",
       note: "The two violet eyes, filling the frame, and nothing else. This is the monster he will not look at, and the film makes the audience look at it for him.",
@@ -210,7 +210,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.wont",
-      ...cam.push({ on: [DAD_FIELD[0], 1.6, DAD_FIELD[2]], dist: 2.4, to: 1.9, yaw: -12, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [DAD_FIELD[0], 1.6, DAD_FIELD[2]], dist: 1.8, to: 1.55, yaw: -12, pitch: 8, fov: 40 }),
       zone: "field",
       look: "overworld-night",
       note: "He turns his whole head away, one hand up over his eyes, standing three metres from the only thing that can finish the job. The enderman's eyes stay lit at the edge of frame the whole shot.",
@@ -240,7 +240,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "3.slow",
       cut: 1.6,
-      ...cam.push({ on: [BOY_AT[0] - 0.3, 1.35, BOY_AT[2] - 0.1], dist: 2.4, to: 2.07, yaw: 12, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [BOY_AT[0] - 0.3, 1.35, BOY_AT[2] - 0.1], dist: 1.8, to: 1.55, yaw: 12, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "The words themselves, on his face: 'too slow'. He does not shout it. That is why it lands.",
@@ -253,7 +253,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.heard",
-      ...cam.push({ on: at(PLACE.room, -0.4, 1.5, -1.6), dist: 2.4, to: 2.0, yaw: 6, pitch: 3, fov: 34 }),
+      ...cam.push({ on: at(PLACE.room, -0.4, 1.5, -1.6), dist: 1.8, to: 1.55, yaw: 6, pitch: 3, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "The dad, in the doorway, hearing it, and deciding not to let it show. Nothing moves but his eyes.",
@@ -280,7 +280,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.midnight",
-      ...cam.push({ on: at(PLACE.room, 1.9, 0.72, 1.2), dist: 2.4, to: 1.94, yaw: -30, pitch: 18, fov: 34 }),
+      ...cam.push({ on: at(PLACE.room, 1.9, 0.72, 1.2), dist: 1.8, to: 1.55, yaw: -30, pitch: 18, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "Midnight, on the clock on the wall, and the first thing he ever crafted: a wooden sword, because a sword is what you make when you are going to fight something.",
@@ -311,7 +311,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "4.dug",
       cut: 1.6,
-      ...cam.push({ on: [SHAFT_BOTTOM[0], 0.95, SHAFT_BOTTOM[2]], dist: 2.4, to: 1.85, yaw: 10, pitch: 16, fov: 38 }),
+      ...cam.push({ on: [SHAFT_BOTTOM[0], 0.95, SHAFT_BOTTOM[2]], dist: 1.8, to: 1.55, yaw: 10, pitch: 16, fov: 38 }),
       zone: "shaft",
       look: "overworld-night",
       note: "At the bottom, in the only light there is: a man on his knees, swinging at stone with a wooden sword, because it is the only tool he has.",
@@ -362,7 +362,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "5.tired",
-      ...cam.push({ on: at(PLACE.room, -1.2, 1.5, 2.6), dist: 2.4, to: 2.04, yaw: -8, pitch: 5, fov: 36 }),
+      ...cam.push({ on: at(PLACE.room, -1.2, 1.5, 2.6), dist: 1.8, to: 1.55, yaw: -8, pitch: 5, fov: 36 }),
       zone: "room",
       look: "ward-night",
       note: "Tomorrow. He says tomorrow, and he means it, and he is so tired he can barely stand up. The boy is out of frame, which is the point: this is a shot about a man who cannot give what is being asked.",
@@ -390,7 +390,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "5.now",
       cut: 1.3,
-      ...cam.push({ on: [SHAFT_BOTTOM[0], 1.25, SHAFT_BOTTOM[2]], dist: 2.4, to: 2.05, yaw: 20, pitch: 2, fov: 34 }),
+      ...cam.push({ on: [SHAFT_BOTTOM[0], 1.25, SHAFT_BOTTOM[2]], dist: 1.8, to: 1.55, yaw: 20, pitch: 2, fov: 34 }),
       zone: "shaft",
       look: "overworld-night",
       note: "Lit from below by his own torch: the same face that said 'tomorrow', four hundred blocks down, wide awake at five in the morning.",
@@ -405,7 +405,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.lava",
-      ...cam.push({ on: [SHAFT_BOTTOM[0], SHAFT_BOTTOM[1] + 1.15, SHAFT_BOTTOM[2]], dist: 2.4, to: 1.94, yaw: 20, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [SHAFT_BOTTOM[0], SHAFT_BOTTOM[1] + 1.15, SHAFT_BOTTOM[2]], dist: 1.8, to: 1.55, yaw: 20, pitch: 2, fov: 38 }),
       zone: "shaft",
       look: "lava-shore",
       note: "Four in the morning, and the torch finds lava: the shaft turns orange in one frame, and his face turns with it. He does not move, because there is nowhere to go. The lava is behind him, not in front of him — the shot is his face, not the light.",
@@ -436,7 +436,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.quiet",
-      ...cam.push({ on: [DAD_AT[0], 1.35, DAD_AT[2]], dist: 2.4, to: 1.96, yaw: 4, pitch: 22, fov: 36 }),
+      ...cam.push({ on: [DAD_AT[0], 1.35, DAD_AT[2]], dist: 1.8, to: 1.55, yaw: 4, pitch: 22, fov: 36 }),
       zone: "room",
       look: "ward-night",
       note: "Back at the desk, head down, the monitor still going. The screen light is the only thing in the room and it is on a man who has stopped.",
@@ -450,7 +450,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "6.quiet",
       cut: 1.7,
-      ...cam.push({ on: at(PLACE.room, -0.1, 0.86, 1.5), dist: 2.4, to: 2.02, yaw: -18, pitch: 34, fov: 32 }),
+      ...cam.push({ on: at(PLACE.room, -0.1, 0.86, 1.5), dist: 1.8, to: 1.55, yaw: -18, pitch: 34, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "His hands on the keyboard, not typing. The screen is still going, the game is still running, and the man has stopped. Six hours of digging, and then nothing at all.",
@@ -464,7 +464,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.sign",
-      ...cam.push({ on: at(PLACE.shaft, 0.2, 1.28, 0.6), dist: 2.4, to: 1.92, yaw: 12, pitch: 2, fov: 34 }),
+      ...cam.push({ on: at(PLACE.shaft, 0.2, 1.28, 0.6), dist: 1.8, to: 1.55, yaw: 12, pitch: 2, fov: 34 }),
       zone: "shaft",
       look: "overworld-night",
       note: "The sign at the top of the hole, in the grey light before sunrise. Six words, and the film's whole middle is in them.",
@@ -495,7 +495,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "7.read",
       cut: 1.8,
-      ...cam.push({ on: at(PLACE.shaft, 0.2, 1.15, 1.6), dist: 2.4, to: 2.07, yaw: -2, pitch: 2, fov: 30 }),
+      ...cam.push({ on: at(PLACE.shaft, 0.2, 1.15, 1.6), dist: 1.8, to: 1.55, yaw: -2, pitch: 2, fov: 30 }),
       zone: "shaft",
       look: "overworld-sunset",
       note: "His face on 'sorry'. He does not laugh. Nothing about this shot is funny, which is what turns the film.",
@@ -507,7 +507,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "7.said",
-      ...cam.push({ on: [DAD_AT[0], 1.3, DAD_AT[2]], dist: 2.4, to: 1.98, yaw: 14, pitch: 12, fov: 38 }),
+      ...cam.push({ on: [DAD_AT[0], 1.3, DAD_AT[2]], dist: 1.8, to: 1.55, yaw: 14, pitch: 12, fov: 38 }),
       zone: "room",
       look: "ward-night",
       note: "The boy's hand on his father's shoulder, and the shoulder is the whole shot: the dad has fallen asleep at the keyboard with the game still running.",
@@ -522,7 +522,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "7.said",
       cut: 1.6,
-      ...cam.push({ on: [DAD_AT[0], 1.45, DAD_AT[2]], dist: 2.4, to: 2.11, yaw: 8, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [DAD_AT[0], 1.45, DAD_AT[2]], dist: 1.8, to: 1.55, yaw: 8, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "His eyes open on 'Dad'. He has been asleep for eleven minutes.",
@@ -551,7 +551,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 8. payoff
     {
       cue: "8.turned",
-      ...cam.push({ on: [DAD_FIELD[0], 1.55, DAD_FIELD[2]], dist: 2.4, to: 1.92, yaw: -8, pitch: 6, fov: 34 }),
+      ...cam.push({ on: [DAD_FIELD[0], 1.55, DAD_FIELD[2]], dist: 1.8, to: 1.55, yaw: -8, pitch: 6, fov: 34 }),
       zone: "field",
       look: "overworld-night",
       note: "He turns. This is the shot the whole film is for: a man in his forties, in armour on backwards, screwing up the courage to look at a cartoon monster because his son asked him to.",
@@ -565,7 +565,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "8.turned",
       cut: 1.4,
-      ...cam.push({ on: [ENDERMAN_AT[0], 2.3, ENDERMAN_AT[2] + 0.9], dist: 2.4, to: 2.04, yaw: 4, pitch: 2, fov: 34 }),
+      ...cam.push({ on: [ENDERMAN_AT[0], 2.3, ENDERMAN_AT[2] + 0.9], dist: 1.8, to: 1.55, yaw: 4, pitch: 2, fov: 34 }),
       zone: "field",
       look: "overworld-night",
       note: "What he sees when he turns: the enderman, at his height, eyes level with his. Held for a beat and a half — the bravest half second in the film.",
@@ -578,7 +578,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "8.pearl",
-      ...cam.push({ on: at(PLACE.field, 0, 0.2, -1.6), dist: 2.4, to: 1.84, yaw: 14, pitch: 26, fov: 34 }),
+      ...cam.push({ on: at(PLACE.field, 0, 0.2, -1.6), dist: 1.8, to: 1.55, yaw: 14, pitch: 26, fov: 34 }),
       zone: "field",
       look: "overworld-night",
       note: "The pearl, on the ground where the enderman was: the reward was always for looking. It lands in the first second of the line, so the rest of the shot is the two of them realising it worked.",
@@ -637,7 +637,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "8.sword",
       cut: 1.5,
-      ...cam.push({ on: [DRAGON_AT[0], 6.2, DRAGON_AT[2] - 0.6], dist: 2.4, to: 1.9, yaw: 10, pitch: 4, fov: 34 }),
+      ...cam.push({ on: [DRAGON_AT[0], 6.2, DRAGON_AT[2] - 0.6], dist: 1.8, to: 1.55, yaw: 10, pitch: 4, fov: 34 }),
       zone: "end",
       look: "overworld-sunset",
       note: "The last hit, in close: a wooden sword, and the dragon breaking into light. The boy is watching from the edge of frame, which is the only review he wanted.",

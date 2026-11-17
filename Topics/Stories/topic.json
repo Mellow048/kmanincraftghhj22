@@ -72,7 +72,20 @@
         1.3,
         2.4
       ],
-      "maxWordsPerShot": 14
+      "maxWordsPerShot": 14,
+      "camera": {
+        "builder": "storyScene",
+        "note": "The camera stands OUTSIDE the set and looks in, the way the InThisTown films do. A set is a diorama: the wall and the ground between the lens and the subject are simply not built. 1.5m is a close-up on a face; closer than that the lens is inside it. Break these numbers and the frame comes back black, or full of one flat colour, because the lens is inside a block, behind a wall or under the floor.",
+        "minDist": 1.5,
+        "pitch": [
+          2,
+          34
+        ],
+        "yaw": [
+          -90,
+          90
+        ]
+      }
     },
     "explainer": {
       "note": "The two explainer films delivered before the reference arrived. They keep the flying camera: one world, one stop per line, and film.tsx calls unbroken(). The `story` cut is the new grammar.",

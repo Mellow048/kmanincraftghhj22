@@ -74,7 +74,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.online",
-      ...cam.push({ on: at(PLACE.room, 0, 1.2, 1.0), dist: 2.4, to: 1.83, yaw: -6, pitch: 10, fov: 36 }),
+      ...cam.push({ on: at(PLACE.room, 0, 1.2, 1.0), dist: 1.8, to: 1.55, yaw: -6, pitch: 10, fov: 36 }),
       zone: "room",
       look: "ward-night",
       note: "The screen: ONE PLAYER ONLINE, in the dark, with nobody at the keyboard. The number is the brightest thing in the frame.",
@@ -88,7 +88,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.online",
       cut: 1.5,
-      ...cam.push({ on: [KID_AT[0], 1.35, KID_AT[2]], dist: 2.4, to: 1.96, yaw: 4, pitch: 6, fov: 34 }),
+      ...cam.push({ on: [KID_AT[0], 1.35, KID_AT[2]], dist: 1.8, to: 1.55, yaw: 4, pitch: 6, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "Every night. Cut to the boy, lit green by the screen, wide awake at whatever hour this is. He is not playing. He is keeping something on.",
@@ -101,7 +101,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.me",
-      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 2.4, to: 2.04, yaw: 6, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 1.8, to: 1.55, yaw: 6, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "The reveal, said straight to camera and thrown away in nine frames: it's me. He does not look pleased about it.",
@@ -124,7 +124,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.chest",
-      ...cam.push({ on: at(PLACE.hill, -2.6, 1.3, 1.6), dist: 2.4, to: 1.9, yaw: -18, pitch: 20, fov: 36 }),
+      ...cam.push({ on: at(PLACE.hill, -2.6, 1.3, 1.6), dist: 1.8, to: 1.55, yaw: -18, pitch: 20, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "Inside: a chest with his name on it, still there, three years on.",
@@ -139,7 +139,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.chest",
       cut: 1.35,
-      ...cam.push({ on: at(PLACE.hill, 2.4, 1.1, 0.4), dist: 2.4, to: 1.96, yaw: 26, pitch: 14, fov: 36 }),
+      ...cam.push({ on: at(PLACE.hill, 2.4, 1.1, 0.4), dist: 1.8, to: 1.55, yaw: 26, pitch: 14, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "And a bed with his name on it. Nobody has slept in it. Nobody has moved it. He left a life here, labelled.",
@@ -163,7 +163,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.stopped",
       cut: 1.7,
-      ...cam.push({ on: [HILL_STAND[0], 1.3, HILL_STAND[2]], dist: 2.4, to: 2.04, yaw: -8, pitch: 6, fov: 36 }),
+      ...cam.push({ on: [HILL_STAND[0], 1.3, HILL_STAND[2]], dist: 1.8, to: 1.55, yaw: -8, pitch: 6, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "The boy, looking at it, saying the hard part flatly. He does not blame anybody out loud. That is what makes it land.",
@@ -176,7 +176,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.seed",
-      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 2.4, to: 2.02, yaw: 10, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 1.8, to: 1.55, yaw: 10, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "'I know the seed by heart.' A fifteen-year-old who has memorised the number of a world so he can keep visiting a person who is not there. He has never told anyone, and the shot is the telling.",
@@ -191,7 +191,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 3. the promise to himself
     {
       cue: "3.pay",
-      ...cam.push({ on: at(PLACE.room, 0.5, 0.9, 1.5), dist: 2.4, to: 1.92, yaw: -26, pitch: 32, fov: 34 }),
+      ...cam.push({ on: at(PLACE.room, 0.5, 0.9, 1.5), dist: 1.8, to: 1.55, yaw: -26, pitch: 32, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "Lunch money, counted out on the desk: nine coins, and what a server costs. The shot is small on purpose — this is the only place in the film where the story is about money.",
@@ -218,7 +218,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.block",
-      ...cam.push({ on: [WALL_AT[0] + 0.6, 1.2, WALL_AT[2] + 1.0], dist: 2.4, to: 1.89, yaw: 20, pitch: 12, fov: 34 }),
+      ...cam.push({ on: [WALL_AT[0] + 0.6, 1.2, WALL_AT[2] + 1.0], dist: 1.8, to: 1.55, yaw: 20, pitch: 12, fov: 34 }),
       zone: "hill",
       look: "overworld-night",
       note: "One block. His hand placing it on the top of the wall, at the exact height his brother stopped. It is the smallest action in the film and the one it is all about.",
@@ -242,7 +242,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "4.two",
       cut: 1.7,
-      ...cam.push({ on: [WALL_AT[0] - 2.4, 2.0, WALL_AT[2] + 0.5], dist: 2.4, to: 2.0, yaw: 34, pitch: 4, fov: 34 }),
+      ...cam.push({ on: [WALL_AT[0] - 2.4, 2.0, WALL_AT[2] + 0.5], dist: 1.8, to: 1.55, yaw: 34, pitch: 4, fov: 34 }),
       zone: "hill",
       look: "overworld-night",
       note: "Along the wall, raking past three years of single blocks: mossy, new, and the odd one slightly out of line from a night he was tired.",
@@ -264,7 +264,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "4.mobs",
       cut: 1.5,
-      ...cam.push({ on: at(PLACE.hill, -5.4, 1.3, -4.6), dist: 2.4, to: 1.96, yaw: -30, pitch: 8, fov: 36 }),
+      ...cam.push({ on: at(PLACE.hill, -5.4, 1.3, -4.6), dist: 1.8, to: 1.55, yaw: -30, pitch: 8, fov: 36 }),
       zone: "hill",
       look: "overworld-night",
       note: "A torch going back on the wall, the same one, for the thousandth time. Keeping the lights on is the whole job.",
@@ -290,7 +290,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "4.never",
-      ...cam.push({ on: at(PLACE.room, 0, 1.2, 1.0), dist: 2.4, to: 2.0, yaw: -4, pitch: 8, fov: 36 }),
+      ...cam.push({ on: at(PLACE.room, 0, 1.2, 1.0), dist: 1.8, to: 1.55, yaw: -4, pitch: 8, fov: 36 }),
       zone: "room",
       look: "ward-night",
       note: "Back to the number. Still one. He has built a roof for a man who has not opened the door.",
@@ -304,7 +304,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "4.never",
       cut: 1.5,
-      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 2.4, to: 2.08, yaw: 8, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [KID_AT[0], 1.3, KID_AT[2]], dist: 1.8, to: 1.55, yaw: 8, pitch: 2, fov: 32 }),
       zone: "room",
       look: "ward-night",
       note: "'Not once in three years.' He says it like a fact he has already made peace with, which is worse than saying it sadly.",
@@ -319,7 +319,7 @@ export const scene1 = storyScene(timing, {
     // ---------------------------------------------------------------- 5. the low point
     {
       cue: "5.birthday",
-      ...cam.push({ on: at(PLACE.room, -2.6, 1.9, -3.4), dist: 2.4, to: 1.92, yaw: 12, pitch: 2, fov: 34 }),
+      ...cam.push({ on: at(PLACE.room, -2.6, 1.9, -3.4), dist: 1.8, to: 1.55, yaw: 12, pitch: 2, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "The deadline, on a calendar on the wall, ringed in red: Friday. And it is his brother's birthday, which is the cruellest detail in the film.",
@@ -346,7 +346,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "5.words",
-      ...cam.push({ on: at(PLACE.spawn, 0, 1.4, 0.2), dist: 2.4, to: 1.89, yaw: 8, pitch: 2, fov: 32 }),
+      ...cam.push({ on: at(PLACE.spawn, 0, 1.4, 0.2), dist: 1.8, to: 1.55, yaw: 8, pitch: 2, fov: 32 }),
       zone: "spawn",
       look: "overworld-night",
       note: "The words on it, held: STILL HERE. The film's title, written by a boy on a sign nobody may read.",
@@ -360,7 +360,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "5.words",
       cut: 1.3,
-      ...cam.push({ on: at(PLACE.spawn, 0, 1.3, 2.4), dist: 2.4, to: 2.06, yaw: -6, pitch: 4, fov: 32 }),
+      ...cam.push({ on: at(PLACE.spawn, 0, 1.3, 2.4), dist: 1.8, to: 1.55, yaw: -6, pitch: 4, fov: 32 }),
       zone: "spawn",
       look: "overworld-night",
       note: "'I kept it.' His face in the torchlight. He is not crying. He has been doing this too long to cry about it.",
@@ -384,7 +384,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.two",
-      ...cam.push({ on: at(PLACE.room, 0, 1.3, 0.9), dist: 2.4, to: 1.97, yaw: -4, pitch: 4, fov: 30 }),
+      ...cam.push({ on: at(PLACE.room, 0, 1.3, 0.9), dist: 1.8, to: 1.55, yaw: -4, pitch: 4, fov: 30 }),
       zone: "room",
       look: "ward-night",
       note: "The number changes: ONE becomes TWO. The tightest shot in the film, on the smallest change in the film. Everything that follows is in this one frame.",
@@ -397,7 +397,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.name",
-      ...cam.push({ on: at(PLACE.room, 0, 1.05, 0.8), dist: 2.4, to: 2.02, yaw: -2, pitch: 2, fov: 28 }),
+      ...cam.push({ on: at(PLACE.room, 0, 1.05, 0.8), dist: 1.8, to: 1.55, yaw: -2, pitch: 2, fov: 28 }),
       zone: "room",
       look: "ward-night",
       note: "And the name, glowing on the screen: his name, after three years. The film's one true arrival, and it is seven letters of pixel text.",
@@ -463,7 +463,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "7.said",
-      ...cam.push({ on: at(PLACE.hill, 0, 1.55, 2.6), dist: 2.4, to: 2.0, yaw: -8, pitch: 2, fov: 32 }),
+      ...cam.push({ on: at(PLACE.hill, 0, 1.55, 2.6), dist: 1.8, to: 1.55, yaw: -8, pitch: 2, fov: 32 }),
       zone: "hill",
       look: "overworld-night",
       note: "The first words anyone says in this film, at seventy seconds in, and they reframe the whole thing: he was watching. Every Sunday. He never left the world; he only stopped speaking in it.",
@@ -477,7 +477,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "7.said",
       cut: 1.6,
-      ...cam.push({ on: [SPOT_AT[0], 1.3, SPOT_AT[2]], dist: 2.4, to: 2.04, yaw: -2, pitch: 2, fov: 30 }),
+      ...cam.push({ on: [SPOT_AT[0], 1.3, SPOT_AT[2]], dist: 1.8, to: 1.55, yaw: -2, pitch: 2, fov: 30 }),
       zone: "hill",
       look: "overworld-night",
       note: "And the boy hearing it: three years of nights, answered in six words. The film's one close-up of him crying, and it is the shortest shot in the payoff.",

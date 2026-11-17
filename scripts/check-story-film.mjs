@@ -390,6 +390,38 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
       const noteText = note ? (note[1] ?? note[2] ?? note[3]) : "";
       if (noteText.trim().length < 24) fail(`${shot}: note must say why this picture, for these words (24+ chars)`);
 
+      // A camera inside a block renders a black or single-colour frame, and nobody sees it until the
+      // film comes back from the render. Cheap to check here: the set is built as a diorama with the
+      // near side missing, so the lens has to sit outside it, above the floor, and in front.
+      const cam = cut?.camera ?? topic.camera;
+      if (cam?.minDist) {
+        const d = body.match(/\bdist\s*:\s*(-?[\d.]+)/);
+        const t2 = body.match(/\bto\s*:\s*(-?[\d.]+)\s*,\s*yaw/);
+        if (d && Number(d[1]) < cam.minDist - 1e-6) {
+          fail(`${shot}: the camera is ${d[1]}m away. Under ${cam.minDist}m the lens is inside what it is shooting: pull back.`);
+        }
+        if (t2 && Number(t2[1]) < cam.minDist - 1e-6) {
+          fail(`${shot}: the camera ends ${t2[1]}m away. Under ${cam.minDist}m it ends inside the subject: pull back.`);
+        }
+      }
+      if (cam?.pitch) {
+        const pi = body.match(/\bpitch\s*:\s*(-?[\d.]+)/);
+        if (pi && (Number(pi[1]) < cam.pitch[0] - 1e-6 || Number(pi[1]) > cam.pitch[1] + 1e-6)) {
+          fail(`${shot}: pitch ${pi[1]}. Below ${cam.pitch[0]} the lens is under the floor; above ${cam.pitch[1]} the set is a diorama and has no roof.`);
+        }
+      }
+      if (cam?.yaw) {
+        const y2 = body.match(/\byaw\s*:\s*(-?[\d.]+)/);
+        if (y2) {
+          let v = Number(y2[1]);
+          while (v > 90) v -= 180;
+          while (v <= -90) v += 180;
+          if (Math.abs(v - Number(y2[1])) > 1e-6) {
+            fail(`${shot}: yaw ${y2[1]}. Sets are cut away on the +Z side: past +/-${Math.abs(cam.yaw[0])} the camera is behind the back wall. Use ${Math.round(v)}.`);
+          }
+        }
+      }
+
       if (flies) {
         // A flown shot has no camera numbers and no stage: it names the stop it lands on, and what it shows lives in the world.
         if (!/(^|[\s{,])to\s*:/.test(body)) fail(`${shot}: no stop. Give \`to: STOPS.<name>\`: where the camera comes to rest for this line.`);
