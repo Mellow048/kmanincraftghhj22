@@ -65,3 +65,13 @@ section 6 asks for; where one of them already lives in another file, it points t
 - 398 effects (163 a minute) is denser than the films that did well (70–103 a minute). If it sounds busy, that is why.
 - In the very first half second the dog is small in a wide frame; the town arrives at 0.7 s.
 - The owner did not review the script (automatic mode).
+
+## Second pass, 2026-11-17: every shot looked at again, and the first two seconds rebuilt
+
+The owner asked for every frame and every script to be checked again, and for the master prompt and the Monster Village study (`Topics/InThisTown/reference/monster-village/README.md`) to be applied. Monster Village changes its picture eleven times in its first two seconds, round a teller who looks at us.
+
+- **Looked at:** one frame of every one of the 75 shots, from the mp4. No broken or unreadable shot.
+- **Hook, before:** the town already popped up round the dog a piece at a time, but the dog was small and low in a wide frame.
+- **Hook, now:** the same build, with the lens about a third closer (6.4 m → 4.3 m), so the dog's face is the biggest thing in the first frame. No sound change.
+- **Script against the benchmark:** past tense, "I", other people speak, a wrong guess said out loud, an ending that opens. Nothing changed; no line was recorded again.
+- **Still true:** about 163 effects a minute is nearly twice the benchmark's 87. Nobody has listened to it.

@@ -67,3 +67,13 @@ section 6 asks for; where one of them already lives in another file, it points t
 - It all happens on one stone platform. The reference has streets and houses. Under the floor, the ground far below and the dusk and night at the end are the variety there is.
 - Kevin's name tag is cut by the frame edge in a few over-the-shoulder shots.
 - The owner did not review the script (automatic mode).
+
+## Second pass, 2026-11-17: every shot looked at again, and the first two seconds rebuilt
+
+The owner asked for every frame and every script to be checked again, and for the master prompt and the Monster Village study (`Topics/InThisTown/reference/monster-village/README.md`) to be applied. Monster Village changes its picture eleven times in its first two seconds, round a teller who looks at us.
+
+- **Looked at:** one frame of every one of the 71 shots, from the mp4. No broken shot.
+- **Hook, before:** one held picture from the side: the teller small and in profile, the scream bubble gone by 1.5 s.
+- **Hook, now:** the lens is in front and closer, and the teller faces it. He hops and screams; KEVIN lands over the zombie; the neighbours' screams pop left and right; an iron man pops out of the air behind the glass, then another, so the reason for the screaming is in the picture before he explains it; the scream stops dead and both he and Kevin look at us. 247 effects, was 242.
+- **Script against the benchmark:** it is told in the present tense until the boss arrives. The benchmark is past tense throughout. Not changed: it would mean recording the voice again. Say if you want that.
+- **Still true:** one stone platform and a blue sky for most of the film; the least varied of the five to look at. Nobody has listened to the mix.

@@ -308,3 +308,18 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
      of day, sunset, night, storm and morning.
   5. The facts in films 4 and 5 (the wandering trader; the Mob Vote losers) were written from memory, because the wiki
      cannot be opened from the sandbox. Each `REVIEW.md` lists them. Check them before upload.
+
+- **2026-11-17, "get us out of 1k view jail".** "wow okay now double check your work every frames and scripts then look
+  at the masterprompt + monstervillage to get us out of 1k view jail!" All 323 shots of the five films were looked at
+  again on frames of the mp4s, and the five scripts were read again against the Monster Village study. No broken shot
+  was found. The one place the five fell short of the 82% film was the same in four of them:
+  1. **The first two seconds must keep changing.** Monster Village changes its picture eleven times in two seconds.
+     Films 2, 3 and 4 opened on one finished picture and held it. Their first shots now build a piece at a time, each
+     piece with its own sound; film 1 already did, and its dog is now a third closer. Film 5 was left alone.
+  2. **The teller faces the lens in the first frame, and is big in it.** Film 3 opened on him in profile.
+  3. **What the first shot adds should be the story's own things** (his pickaxe, my bread, the name tag, the iron men,
+     the llamas), so the premise is in the picture before the line ends, with the sound off.
+  4. Not changed, because it means recording the voice again: film 3 and parts of films 2 and 4 are told in the
+     present tense; the benchmark is all past tense. Ask before doing it.
+  5. **Nothing here is proven.** One film with 82% is one data point, and no view or retention numbers exist yet for
+     any of these five. The fix to trust is the one the numbers confirm after upload.

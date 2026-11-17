@@ -15,7 +15,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [0.55, 1.05, -0.5], dist: 5.3, to: 4.0, yaw: 0, pitch: 10, fov: 50 }),
       zone: "room",
       look: "overworld-day",
-      note: "The hook: a villager stands beside his own bed and looks at us. There is a player asleep in it with his boots on. Zs rise off him, he rolls over, the villager looks at him, and back at us.",
+      note: "The hook, and it keeps changing: a villager stands beside his own bed. There is a player asleep in it with his boots on. A Z pops off him, a pickaxe lands against the bed, a question mark over the villager, a loaf on the blanket, a block of dirt on the floor, another on top, more Zs, and then the villager looks at us with a ! over his head.",
       stage: (t) => (
         <>
           <MyRoom bed door="flat" />

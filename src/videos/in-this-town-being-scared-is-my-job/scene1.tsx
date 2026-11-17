@@ -33,7 +33,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [0.05, 1.5, 0.9], dist: 5.0, to: 4.3, yaw: 24, pitch: 7, fov: 46 }),
       zone: "farm",
       look: "overworld-day",
-      note: "The hook. A glass room in the sky. A villager in a yellow hard hat is screaming at a zombie who sits one block away in a boat, with a name tag over his head. The zombie does not move. The scream stops; the villager looks at us.",
+      note: "The hook, and it keeps changing. A glass room in the sky. A villager in a yellow hard hat hops and screams at a zombie in a boat one block away. A name tag lands over the zombie: KEVIN. The neighbours scream left and right. An iron man pops out of the air behind the glass, then another. The scream stops dead; the villager looks at us, and so does Kevin.",
       stage: (t) => {
         const stop = w("1.job", "my") - 0.1;
         const k = t < stop ? 1 : 0;

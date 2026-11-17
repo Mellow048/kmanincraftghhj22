@@ -5,7 +5,7 @@ Written by `scripts/storyboard.py` from the film's own files on its last build: 
 
 | Time | Narration (and caption) | What is seen | Who | Where, light | Framing | Sound |
 |---|---|---|---|---|---|---|
-| 0:00.0–0:02.1 `1.moved` | In this town, a stranger moved into my house. | The hook: a villager stands beside his own bed and looks at us. There is a player asleep in it with his boots on. Zs rise off him, he rolls over, the villager looks at him, and back at us. | MyRoom, Stranger, Me | room, day | medium, push in | **music: town**; whoosh, pop, rustle, swish, blip (air: room) |
+| 0:00.0–0:02.1 `1.moved` | In this town, a stranger moved into my house. | The hook, and it keeps changing: a villager stands beside his own bed. There is a player asleep in it with his boots on. A Z pops off him, a pickaxe lands against the bed, a question mark over the villager, a loaf on the blanket, a block of dirt on the floor, another on top, more Zs, and then the villager looks at us with a ! over his head. | MyRoom, Stranger, Me, Pickaxe, Loaf | room, day | medium, push in | **music: town**; whoosh, rustle, swish, blip, pop, place (air: room) |
 | 0:02.1–0:02.9 `1.knock` | He did not knock. | The door. It is lying flat on the floor with a boot print on it, and daylight comes through the hole where it was. | MyRoom, Me | room, day | medium, push in, from above | hit |
 | 0:02.9–0:03.8 `1.slept` | He slept in my bed. | From above the bed: the stranger flat out in it with his mouth open and his boots on the blanket, and the villager standing over him, looking down. | MyRoom, Stranger, Me | room, day | medium, push in, from above | swish, thud |
 | 0:03.8–0:05.2 `1.pocket` | Then he put my bed in his pocket. | He gets up, hits the bed once, and it turns into a small spinning bed that flies into him. Where it stood there is a pale mark on the floor. The villager watches it go. | MyRoom, Stranger, MiniBed, Me | room, day | medium, push in | hit, zip, pop, blip |
@@ -85,8 +85,8 @@ Written by `scripts/storyboard.py` from the film's own files on its last build: 
 
 Every component the shots put on screen, and in how many of them.
 
-`Town` (44), `Stranger` (36), `Me` (33), `MyRoom` (22), `Villager` (19), `Crew` (6), `Green` (6), `OldMan` (5), `IronGolem` (5), `Emerald` (5), `HandBanner` (5), `Pillager` (4), `Lying` (3), `Life` (3), `Chicken` (3), `Book` (3), `Boat` (3), `Raid` (3), `Ravager` (3), `MiniBed` (2), `Loaf` (2), `GlowPick` (2), `Raised` (2), `BellOnly` (1), `Sword` (1), `Pickaxe` (1), `Torches` (1), `Wall` (1), `Zombie` (1), `Houses` (1), `Bottle` (1), `GoldenApple` (1), `BedBox` (1), `SubscribeSign` (1)
+`Town` (44), `Stranger` (36), `Me` (33), `MyRoom` (22), `Villager` (19), `Crew` (6), `Green` (6), `OldMan` (5), `IronGolem` (5), `Emerald` (5), `HandBanner` (5), `Pillager` (4), `Loaf` (3), `Lying` (3), `Life` (3), `Chicken` (3), `Book` (3), `Boat` (3), `Raid` (3), `Ravager` (3), `Pickaxe` (2), `MiniBed` (2), `GlowPick` (2), `Raised` (2), `BellOnly` (1), `Sword` (1), `Torches` (1), `Wall` (1), `Zombie` (1), `Houses` (1), `Bottle` (1), `GoldenApple` (1), `BedBox` (1), `SubscribeSign` (1)
 
 ## Sound plan
 
-One voice (`public/audio/in-this-town-a-stranger-moved-into-my-house/narration.mp3`), music in 13 sections (town, playful, curious, sneak, tense, hope, none, sad), 24 beds of air, 254 effects. The sheet with the reason for every one is `sound.json`; the mix is `public/audio/in-this-town-a-stranger-moved-into-my-house/mix.mp3`.
+One voice (`public/audio/in-this-town-a-stranger-moved-into-my-house/narration.mp3`), music in 13 sections (town, playful, curious, sneak, tense, hope, none, sad), 24 beds of air, 258 effects. The sheet with the reason for every one is `sound.json`; the mix is `public/audio/in-this-town-a-stranger-moved-into-my-house/mix.mp3`.

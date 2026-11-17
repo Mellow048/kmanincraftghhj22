@@ -22,7 +22,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [0, 1.3, 2.6], dist: 5.0, to: 4.3, yaw: 0, pitch: 3, fov: 46 }),
       zone: "town",
       look: "overworld-day",
-      note: "The hook, and the premise in one frame. A trader in a blue hood looks at us; over his head a clock, 40:00, is already counting down; a llama looks over each shoulder; his shop is at his elbow; and a villager walks straight past between him and us without turning his head.",
+      note: "The hook, built a piece at a time round him. A trader in a blue hood hops in and looks at us; over his head a clock, 40:00, is already counting down; a llama pops up at one shoulder, then the other; his shop lands at his elbow; and a villager walks past at the edge of the frame without turning his head.",
       stage: (t) => (
         <>
           <Square t={t} folk={5} />

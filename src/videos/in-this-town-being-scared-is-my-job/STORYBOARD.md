@@ -5,7 +5,7 @@ Written by `scripts/storyboard.py` from the film's own files on its last build: 
 
 | Time | Narration (and caption) | What is seen | Who | Where, light | Framing | Sound |
 |---|---|---|---|---|---|---|
-| 0:00.0–0:02.3 `1.job` | In this town, being scared is my job. | The hook. A glass room in the sky. A villager in a yellow hard hat is screaming at a zombie who sits one block away in a boat, with a name tag over his head. The zombie does not move. The scream stops; the villager looks at us. | Farm, Me, Kevin, Others | farm, day | medium, push in | **music: town**; whoosh, slide_up, hit, gust, tick (air: wind) |
+| 0:00.0–0:02.3 `1.job` | In this town, being scared is my job. | The hook, and it keeps changing. A glass room in the sky. A villager in a yellow hard hat hops and screams at a zombie in a boat one block away. A name tag lands over the zombie: KEVIN. The neighbours scream left and right. An iron man pops out of the air behind the glass, then another. The scream stops dead; the villager looks at us, and so does Kevin. | Farm, Me, Kevin, IronGolem, Others | farm, day | medium, push in | **music: town**; whoosh, slide_up, hit, gust, tick, stamp, pop (air: wind) |
 | 0:02.3–0:04.0 `1.zombie` | There is a zombie outside my window. | From inside the room, over the hard hat: the glass, and the zombie on the other side of it, green, looking straight in. | Farm, Me, Kevin | farm, day | close-up, push in | swish, blip |
 | 0:04.0–0:05.5 `1.years` | He has been there for two years. | The zombie, close. He has been here so long that the days are counted over the boat: DAY 730. | Farm, Kevin | farm, day | close-up, push in | swish, count, stamp |
 | 0:05.5–0:06.5 `1.kevin` | His name is Kevin. | Closer: his face, and the tag over it. KEVIN. | Farm, Kevin | farm, day | close-up, push in | swish, ding |
@@ -81,8 +81,8 @@ Written by `scripts/storyboard.py` from the film's own files on its last build: 
 
 Every component the shots put on screen, and in how many of them.
 
-`Farm` (62), `Kevin` (42), `Me` (40), `IronGolem` (13), `Others` (12), `Boss` (10), `Barb` (9), `Gary` (7), `NewOne` (7), `Under` (6), `BossBucket` (5), `Edge` (4), `Poppy` (2), `Bucket` (2), `Dropped` (2), `Boat` (2), `Loaf` (1), `Lying` (1), `SubscribeSign` (1)
+`Farm` (62), `Kevin` (42), `Me` (40), `IronGolem` (14), `Others` (12), `Boss` (10), `Barb` (9), `Gary` (7), `NewOne` (7), `Under` (6), `BossBucket` (5), `Edge` (4), `Poppy` (2), `Bucket` (2), `Dropped` (2), `Boat` (2), `Loaf` (1), `Lying` (1), `SubscribeSign` (1)
 
 ## Sound plan
 
-One voice (`public/audio/in-this-town-being-scared-is-my-job/narration.mp3`), music in 15 sections (town, sneak, playful, curious, tense, dark, none, hope, sad), 14 beds of air, 242 effects. The sheet with the reason for every one is `sound.json`; the mix is `public/audio/in-this-town-being-scared-is-my-job/mix.mp3`.
+One voice (`public/audio/in-this-town-being-scared-is-my-job/narration.mp3`), music in 15 sections (town, sneak, playful, curious, tense, dark, none, hope, sad), 14 beds of air, 247 effects. The sheet with the reason for every one is `sound.json`; the mix is `public/audio/in-this-town-being-scared-is-my-job/mix.mp3`.

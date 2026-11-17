@@ -75,3 +75,12 @@ Twenty-six frames were pulled from the mp4 (0.5 s to 98 s) and looked at, after 
 - A viewer who has never heard of the Mob Vote may not feel the ending as strongly. The film is the "wild one" of the five for that reason.
 - The stage flashback and the storeroom are short (four shots and one); most of the film is the one street, shot from both ends and from above.
 - The owner did not review the script (automatic mode).
+
+## Second pass, 2026-11-17: every shot looked at again, and the first two seconds rebuilt
+
+The owner asked for every frame and every script to be checked again, and for the master prompt and the Monster Village study (`Topics/InThisTown/reference/monster-village/README.md`) to be applied. Monster Village changes its picture eleven times in its first two seconds, round a teller who looks at us.
+
+- **Looked at:** one frame of every one of the 48 shots, from the mp4. No broken shot.
+- **Hook:** not changed. It was already the closest of the five to the benchmark: the cow faces the lens and a LOST plate pops over a head every 0.12 s for the first second. The mp4 is the one rendered before.
+- **Script against the benchmark:** past tense, "I", a wrong guess ("We thought that was the end of him"), her own try fails, a second and bigger truth, an open ending. Thinner than the benchmark in two places: nobody but the letter speaks, and no clues are said back as a list.
+- **Still true:** the Mob Vote facts and the cast are from memory. Nobody has listened to the mix.

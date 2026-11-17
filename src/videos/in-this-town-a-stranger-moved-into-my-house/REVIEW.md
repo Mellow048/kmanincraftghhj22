@@ -65,3 +65,13 @@ section 6 asks for; where one of them already lives in another file, it points t
 - Two shots (`5.keep`, `7.him`) were changed late and seen only in the final frames, not on stills.
 - The teller's own room is returned to several times; each time the angle changes, but it is the same room.
 - The owner did not review the script (automatic mode).
+
+## Second pass, 2026-11-17: every shot looked at again, and the first two seconds rebuilt
+
+The owner asked for every frame and every script to be checked again, and for the master prompt and the Monster Village study (`Topics/InThisTown/reference/monster-village/README.md`) to be applied. Monster Village changes its picture eleven times in its first two seconds, round a teller who looks at us.
+
+- **Looked at:** one frame of every one of the 75 shots, from the mp4. No broken shot. `5.dark` and `8.lunch` are dark; readable, not pretty.
+- **Hook, before:** one finished picture held for two seconds. Only the Zs moved.
+- **Hook, now:** the lens is closer, and something arrives about every 0.3 s: a Z, his pickaxe against the bed, a question mark over the villager, a loaf on the blanket, a block of dirt on the floor, another on top, more Zs, and a ! as the villager looks at us. Each has its own sound (258 effects, was 254).
+- **Script against the benchmark:** "I", other people speak, a wrong guess, a clue list, an open ending. Parts are in the present tense; the benchmark is all past. Not changed: it would mean recording the voice again.
+- **Still true:** nobody has listened to the mix.

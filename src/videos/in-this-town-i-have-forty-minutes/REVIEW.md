@@ -72,3 +72,14 @@ Sixteen frames were pulled from the mp4 (1 s to 110 s) and looked at, after two 
 - In the game he does not buy anything. Here he buys one loaf; that is the twist, and a fan may say so.
 - It is one square for most of the film (the field at the start, the dark road and the new town are the other places).
 - The owner did not review the script (automatic mode).
+
+## Second pass, 2026-11-17: every shot looked at again, and the first two seconds rebuilt
+
+The owner asked for every frame and every script to be checked again, and for the master prompt and the Monster Village study (`Topics/InThisTown/reference/monster-village/README.md`) to be applied. Monster Village changes its picture eleven times in its first two seconds, round a teller who looks at us.
+
+- **Looked at:** one frame of every one of the 54 shots, from the mp4. No broken shot. Two clock close-ups near 70–78 s are alike.
+- **Hook, before:** one held picture; only the clock changed.
+- **Hook, now:** the trader hops in under his clock, a llama pops up at one shoulder, then the other, his shop lands at his elbow, and a villager walks past at the edge of the frame. Each has its own sound. The lens is closer.
+- **Sound:** two effects that the new mix buried were cut (`2.bush` creak, `3.town` coins): 213 effects.
+- **Script against the benchmark:** "I", other people speak, a wrong guess, the emerald's trip said back as a list, an open ending. Not changed.
+- **Still true:** the trader facts are from memory. Nobody has listened to the mix.
