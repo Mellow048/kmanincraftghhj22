@@ -306,7 +306,7 @@ export const scene5 = storyScene(timing, {
             {[a - 0.35, a - 0.05].map((at, i) =>
               t > at ? (
                 <group key={i}>
-                  <PixelText text="KNOCK" position={[0.75 + i * 0.5, 0.4 + (t - at) * 0.5, 1.5 + i * 0.25]} height={0.2 * pop(t, at, 0.1)} color="#ffe27a" />
+                  <PixelText text="KNOCK" position={[0.5 - i * 0.8, 0.4 + (t - at) * 0.5, 1.5 + i * 0.25]} height={0.2 * pop(t, at, 0.1)} color="#ffe27a" />
                   <Puffs position={[0.9, 0.05, 0.95]} count={4} spread={0.5} size={0.1} rise={0.5} speed={1.6} color="#d8cdb8" />
                 </group>
               ) : null,

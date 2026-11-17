@@ -219,7 +219,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.pink",
-      ...cam.push({ on: [0.3, 0.9, 0.75], dist: 2.5, to: 2.1, yaw: -22, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [0.3, 0.85, 0.75], dist: 2.6, to: 2.2, yaw: -30, pitch: 16, fov: 38 }),
       zone: "cellar",
       look: "lantern-night",
       note: "The kid, close, with a round bottle of pink potion in his arms. It glows a little on his chin. The bars and his brother are behind him, out of the light.",
@@ -228,7 +228,7 @@ export const scene3 = storyScene(timing, {
           <Cellar />
           <Bro position={PLACE.bro} rotationY={SOUTH} green={1} out bitten />
           <Loaf position={LOAF} rotation={[0, 0.3, 0]} />
-          <Me position={[0.3, 0, 0.75]} rotationY={SOUTH - 0.3} carry={<Bottle pink position={[0, -0.17 + pop(t, 0.2, 0.2) * 0.04, 0.2]} rotation={[-0.75, 0, 0]} scale={0.7} />} nod={0.05} />
+          <Me position={[0.3, 0, 0.75]} rotationY={SOUTH - 0.3} carry={<Bottle pink position={[0.13, -0.2 + pop(t, 0.2, 0.2) * 0.04, 0.2]} rotation={[-0.3, 0, -0.35]} scale={0.8} />} nod={-0.05} turn={-0.25} />
           <pointLight position={[0.1, 1.3, 1.9]} color="#ffe0ee" intensity={1.0} distance={3} decay={1.6} />
           <HandLantern position={[-0.6, 0, 0.5]} light={12} />
         </>
