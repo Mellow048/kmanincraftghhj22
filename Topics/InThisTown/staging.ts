@@ -19,6 +19,9 @@ import type { Timing, Vec3 } from "../../src/engine";
  * It throws if the cue or the word is not there, so a script change breaks the build
  * instead of leaving an action on the wrong word.
  */
+/** A word reduced to the letters an aligner keeps: "best-in- formed" and "bestinformed" are the same word. */
+const squash = (w: string) => w.toLowerCase().replace(/[^a-z']/g, "");
+
 export function wordClock(timing: Timing) {
   return function wordAt(cueId: string, word: string, nth = 0): number {
     const cue = timing.cues.find((c) => c.id === cueId);
@@ -26,7 +29,9 @@ export function wordClock(timing: Timing) {
     let seen = 0;
     for (const w of timing.words) {
       if (w.s < cue.start - 0.05 || w.s >= cue.end) continue;
-      if (w.w.toLowerCase().replace(/[^a-z']/g, "") === word.toLowerCase()) {
+      // Compare on letters only, and let either side be hyphenated or not: the aligner stores
+      // "best-in- formed" as one token, and a caller may only have heard the half of it.
+      if (squash(w.w) === squash(word)) {
         if (seen === nth) return Math.max(0, w.s - cue.start);
         seen++;
       }

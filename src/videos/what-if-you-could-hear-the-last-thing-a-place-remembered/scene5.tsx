@@ -19,7 +19,7 @@ const INSTEAD = wordAt("5.instead", "last");
 const BENCHAGAIN = wordAt("6.comeback", "bench");
 const GONE = wordAt("6.gone", "taken");
 const LIST = wordAt("6.list", "silent");
-const MINE = wordAt("6.mine", "did not");
+const MINE = wordAt("6.mine", "not");
 const QUIET = wordAt("7.quiet", "own");
 const WAIT = wordAt("7.wait", "back");
 

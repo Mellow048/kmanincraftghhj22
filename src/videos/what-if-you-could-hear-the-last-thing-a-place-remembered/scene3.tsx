@@ -20,7 +20,7 @@ const PLACE_Z = 80;
 const R = (x: number, y: number, z: number) => [PLACE_X + x, y, PLACE_Z + z] as [number, number, number];
 const H = (x: number, y: number, z: number) => [PLACE_X + x, y, 40 + z] as [number, number, number];
 
-const WEEK = wordAt("3.week", "best-informed");
+const WEEK = wordAt("3.week", "bestinformed");
 const BEST = wordAt("3.tally", "best");
 const THINK = wordAt("3.what", "really");
 const ONETHING = wordAt("3.dad", "one");

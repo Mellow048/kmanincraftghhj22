@@ -7,3 +7,6 @@ out
 *.mov
 .DS_Store
 __pycache__
+
+# scratch output from scripts/check-cues.mjs
+.scratch/
