@@ -1,5 +1,5 @@
 
-▶ what-if-every-door-on-your-street-opened-somewhere-else frame 904 → out/stills/what-if-every-door-on-your-street-opened-somewhere-else-0904.png
+▶ what-if-every-door-on-your-street-opened-somewhere-else frame 3392 → out/stills/what-if-every-door-on-your-street-opened-somewhere-else-3392.png
 
 Done. 1 still(s) in out/stills
 exit=0
