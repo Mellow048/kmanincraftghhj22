@@ -5,6 +5,7 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import type { ShaderSettings, SkySettings } from "./types";
 
 /**
@@ -217,8 +218,14 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
       cfg.threshold,
     );
     const grade = new ShaderPass(GRADE_SHADER);
+    // A composer renders into a render target, and three only applies tone
+    // mapping when it draws to the canvas — so without an OutputPass the film
+    // comes out linear and dark. Bloom first (in linear light), then ACES plus
+    // sRGB, then the grade, which works on display values like a camera does.
+    const output = new OutputPass();
     composer.addPass(render);
     composer.addPass(bloom);
+    composer.addPass(output);
     composer.addPass(grade);
     grade.renderToScreen = true;
     return { composer, bloom, grade };
