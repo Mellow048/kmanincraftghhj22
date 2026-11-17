@@ -73,30 +73,30 @@ export const scene1 = storyScene(timing, {
       // The subject is the number, not the boy. Clock sits at face + tall(1.34) + 0.42 + size*0.5, so with the number
       // at 0.62 it is centred about 2.07 m up. Aiming at the face put it in the bottom of frame with the top of the
       // shot wasted on wall. Aim between the two, and it is a number over a head, which is the whole power.
-      ...cam.push({ on: SPOT.at(0, 1.72, 0.5), dist: 2.6, to: 2.3, yaw: 176, pitch: 0, fov: 44 }),
+      ...cam.push({ on: SPOT.at(0, 1.55, 0.5), dist: 3.5, to: 3.1, yaw: 176, pitch: 2, fov: 44 }),
       zone: "class",
       note: "Up to the clock itself on the word: it hangs over the front row, small, plain, ordinary, the way a clock is ordinary when it is counting something that is not a life. The heads underneath are calm and the clock is calm. This is the picture that says the film is not about dying.",
       stage: (t) => (
         <>
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - LIVE} size={0.62} rotationY={3.24} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - LIVE} size={0.40} rotationY={3.24} />
         </>
       ),
     },
     {
       // How long before you lost your temper: the clock starts to run. Same clock, and now it is winding down.
       cue: "1.temper",
-      ...cam.push({ on: SPOT.at(0, 1.70, 0.5), dist: 2.4, to: 2.15, yaw: 166, pitch: 1, fov: 46 }),
+      ...cam.push({ on: SPOT.at(0, 1.55, 0.5), dist: 3.3, to: 2.95, yaw: 166, pitch: 3, fov: 46 }),
       zone: "class",
       note: "The clock from the side, and it begins to run: the boy under it starts to fidget, and the thing over his head gets smaller as the line says what it counts. Two people, one small bright clock, no explanation - the viewer works out the rule of the film from this one shot.",
       stage: (t) => {
-        const shrink = 0.62 - 0.12 * ease(ramp(t, 0, 1.3));
+        const shrink = 0.42 - 0.08 * ease(ramp(t, 0, 1.3));
         return (
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="uneasy" headPitch={0.1} />
             <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-            <Clock over={SPOT.seat(1, 0)} n="4" t={t - TEMPER} size={shrink} rotationY={3.06}/>
+            <Clock over={SPOT.seat(1, 0)} n="4" t={t - TEMPER} size={shrink * 0.66} rotationY={3.06}/>
           </>
         );
       },
@@ -124,22 +124,22 @@ export const scene1 = storyScene(timing, {
         <>
           <Hero position={ME} rotationY={NORTH - 0.7} animation="sit" face="uneasy" headPitch={-0.06} />
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.25} />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - FOUR} size={0.60} rotationY={3.24}/>
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - FOUR} size={0.38} rotationY={3.24}/>
         </>
       ),
     },
     {
       // Four seconds. I did not know four what. On the clock, and it is running out.
       cue: "2.four",
-      ...cam.push({ on: SPOT.at(0, 1.72, 0.5), dist: 2.15, to: 1.95, yaw: 174, pitch: 2, fov: 44 }),
+      ...cam.push({ on: SPOT.at(0, 1.55, 0.5), dist: 3.0, to: 2.7, yaw: 174, pitch: 3, fov: 44 }),
       zone: "class",
       note: "Hard on the clock, from under it, so it fills the top of the frame and the boy's head is a dark shape under it. It is going down while he says he did not know four what. The audience does not know either, and the clock is not going to tell them.",
       stage: (t) => {
-        const s = 0.6 - 0.08 * ease(ramp(t, 0, 1.5));
+        const s = 0.38 - 0.05 * ease(ramp(t, 0, 1.5));
         return (
           <>
             <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
-            <Clock over={SPOT.seat(1, 0)} n="4" t={t - 0.1} size={s} rotationY={3.19}/>
+            <Clock over={SPOT.seat(1, 0)} n="4" t={t - 0.1} size={s * 0.62} rotationY={3.19}/>
           </>
         );
       },
