@@ -242,7 +242,7 @@ export const scenes = storyScene(timing, {
     },
     {
       cue: "6.freeze",
-      ...cam.push({ on: [0, 1.35, -1.6], dist: 3.0, to: 2.8, yaw: 176, pitch: 3, fov: 50 }),
+      ...cam.push({ on: [0, 1.35, -1.4], dist: 3.0, to: 2.8, yaw: 6, pitch: 3, fov: 50 }),
       look: ROOM,
       note: "The father, inside his own house for the first time, with the doorway now filled by his son behind him.",
       stage: () => (
@@ -254,7 +254,7 @@ export const scenes = storyScene(timing, {
     },
     {
       cue: "6.scared",
-      ...cam.push({ on: [0, 1.52, -1.5], dist: 2.4, to: 2.3, yaw: 176, pitch: 1, fov: 38 }),
+      ...cam.push({ on: [0, 1.5, -1.45], dist: 2.4, to: 2.3, yaw: 8, pitch: 1, fov: 38 }),
       look: ROOM,
       note: "His face: not relieved. Frightened of the room, because the monsters were never the thing that held him here.",
       stage: () => <Dad position={[0, 0, -1.5]} rotationY={0} animation="idle" face="fear" />,
