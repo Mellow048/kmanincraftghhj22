@@ -1,6 +1,6 @@
 import type React from "react";
 import { Block, cam, storyScene } from "../../engine";
-import { Hero, Mum, H, K, SubscribeSign, NORTH, EAST, timing, wordAt, pop, ramp } from "./kit";
+import { Hero, Mum, H, K, SubscribeSign, NORTH, SOUTH, EAST, timing, wordAt, pop, ramp } from "./kit";
 
 /**
  * SCENE 3 — "It was my room". The tally that outgrew his, his own bedroom seen from the outside, and his
@@ -81,21 +81,21 @@ export const scene3 = storyScene(timing, {
     {
       cue: "12.paid",
       // He sits down opposite her: the first time in the film he is not going anywhere.
-      ...cam.push({ on: K(0.30, 1.10, 1.20), dist: 2.84, to: 2.14, yaw: 73, pitch: 8, fov: 44 }),
+      ...cam.push({ on: K(0.30, 1.22, 0.70), dist: 2.90, to: 2.30, yaw: -92, pitch: 4, fov: 62 }),
       zone: "kitchen",
       look: "overworld-night",
       note: "The two of them at the table: him sitting down for the first time in the film, opposite the person who has been walking while he did not.",
       stage: () => (
         <>
           <Mum position={K(0.30, 0, 1.30)} rotationY={NORTH} animation="sit" face="smile" />
-          <Hero position={K(0.30, 0, 2.55)} rotationY={NORTH} animation="sit" face="sad" />
+          <Hero position={K(0.30, 0, 0.10)} rotationY={SOUTH} animation="sit" face="sad" />
         </>
       ),
     },
     {
       cue: "12.why",
       // Her face, close, and she is not angry about any of it.
-      ...cam.push({ on: K(0.30, 1.02, 1.30), dist: 1.12, to: 0.72, yaw: -56, pitch: 15, fov: 36 }),
+      ...cam.push({ on: K(0.30, 1.02, 1.30), dist: 1.25, to: 0.80, yaw: -70, pitch: 10, fov: 38 }),
       zone: "kitchen",
       look: "overworld-night",
       note: "Her, close, tired and kind: not to get anywhere, just to see where he had got to. The whole cost of the power in one face.",

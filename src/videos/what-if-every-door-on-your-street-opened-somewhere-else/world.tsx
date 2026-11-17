@@ -167,6 +167,11 @@ export const World: React.FC = () => {
       {/* THE KITCHEN AT HOME. The fridge is the first door he uses, and the last room of the film. */}
       <Zone name="kitchen">
         <Kitchen at={PLACE.kitchen} />
+        {/* THE KITCHEN HAD NO LIGHT IN IT. The last act -- him sitting down opposite his mother, her face close,
+            the two of them finally in the same room -- is played entirely at this table at night, and the zone
+            carried a Glow and a LightPool and not one point light. Two warm lamps over the table and the counter. */}
+        <pointLight position={K(0, 2.55, 0.7)} color="#ffdfae" intensity={30} distance={11} decay={1.8} />
+        <pointLight position={K(-0.4, 2.35, -2.3)} color="#ffe8c4" intensity={18} distance={8} decay={2} />
         <Glow position={K(0, 2.5, -2.2)} size={2.6} color="#fff0c8" opacity={0.2} />
         <LightPool position={K(0, 0.02, -0.6)} width={6.4} depth={5} color="#fff2c8" opacity={0.14} />
         <GodRay position={K(-2.3, 2.1, -2.6)} rotation={[0.1, 0, 0.05]} width={1.4} height={2.4} color="#fff0c8" opacity={0.12} />
