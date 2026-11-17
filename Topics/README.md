@@ -6,15 +6,16 @@ its own references and its own kit. The engine in `src/engine/` is shared by all
 | Topic | Folder | What it makes | State |
 |---|---|---|---|
 | In This Town | [`InThisTown/`](InThisTown/README.md) | A 2–3 minute first-person Minecraft story: "In this town, …", a rule nobody explains, and a twist. Also has a 1–2 minute short cut | **Measured.** Rules, pack, starter and sound in place. Reference film: `in-this-town-same-face` (short cut, with sound). Also finished: `in-this-town-monster-egg` (voice only) |
-| Explainer | [`Explainer/`](Explainer/README.md) | A 30–60 second answer to one question ("Why does bread cost more every year?"): money lessons, what inflation is. The camera never cuts: it flies from one thing to the next | **PROVISIONAL.** Rules, camera, pack, starter and sounds in place. No reference yet, so no number is measured. No film yet |
-| What If | [`WhatIf/`](WhatIf/README.md) | A 1–2 minute first-person story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town | **PROVISIONAL.** Rules, pack, starter and sounds in place. Its numbers are In This Town's until a reference is measured. No film yet |
+| Explainer | [`Explainer/`](Explainer/README.md) | A 30–60 second answer to one question ("Why does bread cost more every year?"): money lessons, what inflation is. The camera never cuts: it flies from one thing to the next | **Measured.** Rules, camera, pack, starter and sounds in place. Reference film: `why-does-bread-cost-more-every-year` (0:49, with sound), our own, approved by the owner |
+| What If | [`WhatIf/`](WhatIf/README.md) | A 1–2 minute first-person story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town | **Measured.** Rules, pack, starter and sounds in place. Reference film: `what-if-you-could-see-who-had-a-crush-on-you` (1:54, with sound), our own, approved by the owner |
 
 [`Shared/`](Shared/README.md) is not a topic. It holds the parts that more than one topic builds from.
 
-**PROVISIONAL** means the owner asked for the topic before its reference ("reference which we will do later once
-youre done"). Its `topic.json` says `"state": "PROVISIONAL"` and carries a `provisional` block: why, where each
-number was borrowed from, and what to do when the reference arrives. `npm run new` prints the warning. The first
-job when a reference arrives is to measure it and correct the folder: `Topics/<Folder>/reference/README.md`.
+**PROVISIONAL** is the state of a topic the owner asked for before its reference. Its `topic.json` says
+`"state": "PROVISIONAL"` and carries a `provisional` block: why, where each number was borrowed from, and what to do
+when the reference arrives. `npm run new` prints the warning. No topic is provisional now: Explainer and What If
+were, until the owner approved the first film of each (2026-11-13) and it became the topic's reference
+(`Topics/<Folder>/reference/README.md` tells how that went).
 
 ## Starting a film of a topic
 
@@ -60,7 +61,7 @@ wants every scene built with that builder, `film.tsx` calling that guard, and no
 
 1. Start from a real reference the owner chose. Put it in `reference/<name>/` and measure it before writing any rule:
    length, words, cuts, what is on screen. A rule with no number behind it is a guess.
-   **Only if the owner asks for the topic before its reference** (as for Explainer and What If): build it as
+   **Only if the owner asks for the topic before its reference** (as he did for Explainer and What If): build it as
    PROVISIONAL. Borrow each number from the nearest measured topic and say where it came from, set
    `"state": "PROVISIONAL"` with a `provisional` block in `topic.json`, say so at the top of the `README.md`, and
    write a `reference/README.md` that lists what to measure when the reference arrives.

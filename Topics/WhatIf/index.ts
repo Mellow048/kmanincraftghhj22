@@ -15,3 +15,4 @@ export * from "./things";
 // a kid's bedroom, a village street, a speech bubble, and the red sign every film ends on.
 // See Topics/Shared/index.ts.
 export * from "../Shared";
+export * from "./workshop";

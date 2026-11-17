@@ -1,8 +1,8 @@
 # The flight: how an explainer is shot
 
-> **Provisional.** The camera grammar is the framework's own and is not provisional. The numbers on this page
-> (how long a flight takes, how far apart the islands are) are a first setting until a reference is measured
-> ([`reference/`](reference/README.md)).
+> The numbers on this page (how long a flight takes, how far apart the islands are) are the ones the reference
+> film was built with: [`reference/bread/`](reference/bread/README.md) has them measured, with what each stop of
+> that film set by hand and why.
 
 The camera of an explainer never cuts. It leaves one thing, crosses the space to the next, and comes to rest on it
 while the narrator is still saying its name. That is the Zack D grammar the whole framework started from

@@ -11,15 +11,14 @@ it has the same camera technique". Hard cuts, one shot for each line of the scri
 sound. What is its own: the opening, the shape of the story, a school to tell it in, and the parts that SHOW a
 power.
 
-> **PROVISIONAL.** The owner asked for this topic to be built before its reference: "reference which we will do
-> later once youre done". So nothing here is measured from a real "What if" video yet. Every number in
-> [`topic.json`](topic.json) is In This Town's (its one-to-two-minute short cut), and the beat sheet in
-> [`SCRIPT.md`](SCRIPT.md) is In This Town's fourteen beats, re-cast for a power. **The reference will be our own
-> first film** (the owner, asked for a video: "you are the one making that reference!"):
-> `src/videos/what-if-you-could-see-who-had-a-crush-on-you/`. He approved its script on 2026-11-13 ("yesboth"). The
-> film is built and rendered (`renders/what-if-you-could-see-who-had-a-crush-on-you.mp4`, 1:54, 55 shots), and it is
-> waiting for him to watch it. When he approves it, measure it and correct this folder
-> ([`reference/`](reference/README.md) says how). No film of this topic has been approved yet.
+> **The reference is our own first film.** The owner asked for this topic before its reference, and then for us to
+> make the reference ourselves ("you are the one making that reference!"). The film is
+> `src/videos/what-if-you-could-see-who-had-a-crush-on-you/` (1:54, 14 beats, 55 shots, 479 words, full sound). He
+> approved it on 2026-11-13: "okay i love both really, this can be uploaded too!", "i like how you made these!".
+> It is measured, and it is kept with its source, a log of every shot and a contact sheet in
+> [`reference/crush/`](reference/crush/README.md). The numbers in [`topic.json`](topic.json) were borrowed from In
+> This Town's short cut before the film existed; the film was built to them and sits inside every one, so they
+> stand. The beat sheet in [`SCRIPT.md`](SCRIPT.md) is now the film's own. **Open the reference before you build.**
 
 **It is never a 20-second short.** A film with this opening that is built to the base rules is the mistake In This
 Town made twice. `npm run new` refuses a title that starts "What if" without `--topic`, and `npm run check` fails a
@@ -54,10 +53,9 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 4. [`PACK.md`](PACK.md) — what already exists: a school, the signs of a power, a class of kids.
 5. [`SOUND.md`](SOUND.md) — the sounds of a power, and the rest by reference to In This Town's sound.
 6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
-7. A finished film, to see what "built" means. Of this topic there is one, not yet approved:
-   `src/videos/what-if-you-could-see-who-had-a-crush-on-you/` (its `kit.tsx`, `world.tsx`, fourteen scenes and
-   `sound.json`). An approved one of the same pipeline: `src/videos/in-this-town-same-face/` and
-   [its page](../InThisTown/reference/same-face/README.md). Copy how it is BUILT. Never copy what it tells.
+7. The reference film, to see what "built" means: [`reference/crush/`](reference/crush/README.md). Its contact
+   sheet first, then its shot log, then `source/` (its `kit.tsx`, `world.tsx`, fourteen scenes and `sound.json`).
+   Copy how it is BUILT. Never copy what it tells.
 
 ## What changes from the base rules
 
@@ -82,7 +80,7 @@ picture shows what the voice says, deterministic code, atmosphere in the world, 
 
 ## What makes this kind of story work
 
-A first setting, like the numbers, until a reference is measured. The reasons are in `SCRIPT.md`.
+Each of these held in the reference film. The reasons are in `SCRIPT.md`.
 
 1. **The title is the first sentence.** "What if you could …?", over one picture of the power. Then: "One morning, I could."
 2. **The power has one rule, and one limit.** The viewer can say both after fifteen seconds. The limit is where the story turns.
@@ -92,7 +90,7 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
 5. **The wish is a question.** Not "I wanted to win". "Who liked ME?" The viewer stays to get the answer.
 6. **The answer is planted.** One thing that does not fit, said out loud and waved away, a minute before it matters.
 7. **Try, fail, try again.** One cheap funny failure, then one use that works, and costs something.
-8. **Slow down at the edge.** The moment before the one big use gets the most words.
+8. **Slow down at the edge.** The moment before the one big use gets the most words of any beat but the reveal.
 9. **Picture, then explanation.** The reveal is one short sentence about what he saw. The reason comes second.
 10. **The ending answers the title.** "What if you could?" Then you would know this. Then four words, and it is over.
 
@@ -123,7 +121,7 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic and its long cut, the limits of the sound. `state: "PROVISIONAL"` until a reference is measured |
+| `topic.json` | The numbers `npm run check` enforces for this topic and its long cut, the limits of the sound. `state: "MEASURED"`: `reference` names the film, `measuredFromReference` its numbers |
 | `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the story, the picture, the sound |
 | `PACK.md`, `pack.jpg` | The catalogue of the pack |
 | `index.ts` | The pack, from one import: `import { Classroom, Overhead, Echo } from "../../../Topics/WhatIf"` |
@@ -134,7 +132,7 @@ A first setting, like the numbers, until a reference is measured. The reasons ar
 | `cast.tsx` | Twelve classmates, and a teacher |
 | `template/` | The starter film that `npm run new -- … --topic what-if` copies |
 | `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
-| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. The film is built and waiting for him. What to do when he approves it |
+| `reference/` | The films of this topic that the owner approved, each with its source, a log of every shot and a contact sheet. The first is the reference film |
 
 Parts used by more than one topic (numbers and icons in cubes, staging, a kid's bedroom, a village street, the red
 "Subscribe" sign) are in [`Topics/Shared`](../Shared/README.md) and are passed on by this pack.

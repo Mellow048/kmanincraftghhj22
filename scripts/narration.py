@@ -173,6 +173,8 @@ SAY = {
     "bonked": "B AA NG K T",
     "chestplate": "CH EH S T P L EY T",
     "hideout": "HH AY D AW T",
+    "netherite": "N EH DH ER AY T",
+    "crookedly": "K R UH K AH D L IY",
 }
 
 def align(pcm16k, words):

@@ -10,9 +10,11 @@ A film's `kit.tsx` imports from the pack and passes the names on, so its scenes 
 
 ![Every part of the pack](pack.jpg)
 
-> **Not yet approved in a film.** Every other pack in this framework was taken out of films the owner approved.
-> This one was built ahead of its first film, so each part here has been rendered and looked at (the picture
-> above) but none has been seen by the owner in a film. The first approved explainer decides what stays.
+> **Approved in a film.** This pack was built ahead of its first film. The owner approved that film on 2026-11-13
+> ([`reference/bread/`](reference/bread/README.md)). It uses `Island`, `Sun`, `Plinth`, `Coin`, `CoinStack`, `Bill`, `BillStack`, `Chest`, `Printer`, `PriceTag`,
+> `Arrow` and `Bread`. The parts it does not use (`Signpost`, `Bridge`, `CoinPile`, `MoneyBag`, `Bar`, `BarChart`,
+> `Balance`, `Apple`, `Crate`, `BreadShelf`) have been rendered and looked at (the picture above) and never seen by
+> him in a film.
 
 1 unit = 1 block = 1 metre. `position` is the middle of a part's underside unless its row says otherwise.
 Everything is deterministic: a part that moves is given seconds (`t`, or `clock.useSince(…)`), never a clock of its own.
@@ -86,12 +88,15 @@ Use ONE kind of money in a film, and keep it. A village trades in emeralds: `kin
 | `Bubble`, `Bits`, `Puffs` | A speech bubble; bits that fly when something breaks; puffs of dust |
 | `SubscribeSign` | The red sign every film of the channel ends on |
 
-## Parts waiting in the first film
+## Parts built for the first film
 
 The pack was made before its first film, and that film found out what it lacked. These are in
 [`src/videos/why-does-bread-cost-more-every-year/parts.tsx`](../../src/videos/why-does-bread-cost-more-every-year/parts.tsx),
-built to the rules below (a `position`, seconds, no knowledge of that film's islands). Import them from there until
-the owner has approved the film; then they move into this folder unchanged, and get a row above and a place on the sheet.
+built to the rules below (a `position`, seconds, no knowledge of that film's islands). The owner has approved the
+film (2026-11-13), so they are due to move into this folder unchanged, with a row above and a place on the sheet.
+**That move is the first step of building the next explainer**, because it needs the stills of the approved film
+before and after (`scripts/compare-stills.py`): an approved film does not change. Until it is done, import them
+from the film.
 
 | Part | What it is FOR |
 |---|---|

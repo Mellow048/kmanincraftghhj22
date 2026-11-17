@@ -10,6 +10,10 @@ import { film as whatIfYouCouldSeeWhoHadACrushOnYou } from "./videos/what-if-you
 import { film as whyDoesBreadCostMoreEveryYear } from "./videos/why-does-bread-cost-more-every-year/film";
 import { film as monsterVillage } from "./videos/in-this-town-monster-village/film";
 import { film as inThisTownILiveInAMonsterVillagePart2 } from "./videos/in-this-town-monster-village-part-2/film";
+import { film as whatIsADictator } from "./videos/what-is-a-dictator/film";
+import { film as whatIfYouCouldSeePeoplesFuture } from "./videos/what-if-you-could-see-peoples-future/film";
+import { film as whatIfEveryLieAddedANetheriteBlock } from "./videos/what-if-every-lie-added-a-netherite-block/film";
+import { film as whatIfICouldHearWhatBlocksRemember } from "./videos/what-if-i-could-hear-what-blocks-remember/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -28,4 +32,8 @@ export const FILMS = [
   whyDoesBreadCostMoreEveryYear,
   monsterVillage,
   inThisTownILiveInAMonsterVillagePart2,
+  whatIsADictator,
+  whatIfYouCouldSeePeoplesFuture,
+  whatIfEveryLieAddedANetheriteBlock,
+  whatIfICouldHearWhatBlocksRemember,
 ];
