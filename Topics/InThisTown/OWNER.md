@@ -5,6 +5,8 @@ place. `SCRIPT.md` and `SHOTS.md` are how the reference channel does it; this fi
 two disagree, this file wins. Add to it every time he says what he liked or did not like. Date every entry. Never
 delete one unless he takes it back.
 
+**2026-11-16.** Monster Village part 1 passed 15,000 views. Before every script, shot, or remaster, read `MASTER-PROMPT.md` in this folder. It is his production brief: learn that film's principles, do not copy its story, review the pictures yourself, and do not call a film done until the mp4 exists and has been looked at. The pirate ending he already ordered ("To be continued.") stays.
+
 ## 1. Where the channel is
 
 | When | What |
