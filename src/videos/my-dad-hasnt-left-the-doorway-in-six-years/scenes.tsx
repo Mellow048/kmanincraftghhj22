@@ -97,7 +97,7 @@ export const scenes = storyScene(timing, {
     },
     {
       cue: "3.floor",
-      ...cam.push({ on: [0.3, 1.7, -2.6], dist: 4.2, to: 3.9, yaw: 150, pitch: 12, fov: 58 }),
+      ...cam.push({ on: [0, 1.45, -1.2], dist: 4.6, to: 4.2, yaw: 12, pitch: 9, fov: 58 }),
       look: ROOM,
       note: "Up at the new ceiling over his head: the second floor the boy built, and the ladder still leaning under it.",
       stage: () => <Dad position={DAD} rotationY={0} animation="idle" face="bearded" />,
