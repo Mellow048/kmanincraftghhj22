@@ -293,3 +293,18 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
      open.
   4. Every finished mp4 is committed to the working branch (`renders/<film>.mp4`).
 
+- **2026-11-17, the five films of `outlines/ideas-2026-11-16.md`, built under the master prompt.** "nice ill review it
+  later now do the other films and always read that masterprompt." All five are on the working branch, each with
+  `narration.md` (concept, three hooks, script), `STORYBOARD.md`, `REVIEW.md` (the eleven outputs and a self-review made
+  on frames of the mp4) and `renders/<film>.mp4` at 1080x1920: I Was Told to Sit (2:27), A Stranger Moved Into My House
+  (2:12), Being Scared Is My Job (2:23), I Have Forty Minutes (1:52), We Lost the Vote (1:39). **He has not reviewed
+  any of them yet, and nobody has listened to any of the five mixes.** What building them taught:
+  1. **A body between the lens and the person the line is about is the commonest fault**: a strolling extra, a carried
+     loaf under the nose, a long cow in front of a small neighbour. Put the second body beside or behind.
+  2. **Night**: one warm light close to the face, and a close camera. Several lights at once turn a pale character
+     white; none leaves a far one black.
+  3. **Two things of one colour read as one thing** (two blue robes; an orange chest on an orange golem).
+  4. **Light must change through the film** (master prompt 2G): every one of the five now goes through at least three
+     of day, sunset, night, storm and morning.
+  5. The facts in films 4 and 5 (the wandering trader; the Mob Vote losers) were written from memory, because the wiki
+     cannot be opened from the sandbox. Each `REVIEW.md` lists them. Check them before upload.
