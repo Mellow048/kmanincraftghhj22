@@ -81,7 +81,7 @@ export const scene3 = storyScene(timing, {
       note: "Him in the doorway watching her, and it is the stillest he has been all film.",
       stage: (_t) => (
         <>
-          <Hero position={[0.4, 0, 3.4]} rotationY={NORTH} animation="idle" face="brave" />
+          <Hero position={[0.4, 0, 3.4]} rotationY={-0.06} animation="idle" face="brave" />
           <Player who={9} position={HOME.chair} rotationY={NORTH} animation="sit" />
         </>
       ),
@@ -108,7 +108,7 @@ export const scene3 = storyScene(timing, {
       stage: (_t) => (
         <>
           <Player who={9} position={HOME.chair} rotationY={NORTH} animation="sit" />
-          <Hero position={[1.1, 0, 2.9]} rotationY={NORTH} animation="sit" face="calm" />
+          <Hero position={[1.1, 0, 2.9]} rotationY={0.01} animation="sit" face="calm" />
           <Block position={[0.62, 0.80, 0.72]} size={[0.24, 0.16, 0.2]} color="#b8b2a0" castShadow={false} />
           <Block position={[0.2, 0.775, 0.7]} size={[0.3, 0.016, 0.28]} color="#f7f4ea" castShadow={false} />
         </>
@@ -147,7 +147,7 @@ export const scene3 = storyScene(timing, {
       note: "Him on the step under the sky, and somebody off-camera has said his name.",
       stage: (_t) => (
         <>
-          <Hero position={DRIVE.at(0, 0, 1.2)} rotationY={NORTH} animation="idle" face="wow" />
+          <Hero position={DRIVE.at(0, 0, 1.2)} rotationY={0.39} animation="idle" face="wow" />
         </>
       ),
     },
@@ -171,7 +171,7 @@ export const scene3 = storyScene(timing, {
       note: "The street, empty except for one person at the gate, and the sign.",
       stage: (_t) => (
         <>
-          <Hero position={DRIVE.at(0.1, 0, 1.6)} rotationY={NORTH} animation="idle" face="wow" />
+          <Hero position={DRIVE.at(0.1, 0, 1.6)} rotationY={0.33} animation="idle" face="wow" />
           <Player who={11} position={DRIVE.at(1.9, 0, 4.4)} rotationY={SOUTH} animation="idle" />
           <SubscribeSign position={DRIVE.at(-2.0, 1.45, 2.3)} rotationY={NORTH + 0.3} scale={0.95} tilt={0.03} />
         </>

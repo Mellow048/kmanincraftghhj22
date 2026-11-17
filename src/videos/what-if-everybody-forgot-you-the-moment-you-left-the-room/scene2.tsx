@@ -81,7 +81,7 @@ export const scene2 = storyScene(timing, {
       note: "The door, from his eye level, and the light inside it.",
       stage: (_t) => (
         <>
-          <Hero position={DRIVE.at(1.2, 0, 2.0)} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={DRIVE.at(1.2, 0, 2.0)} rotationY={0.40} animation="idle" face="calm" />
         </>
       ),
     },
