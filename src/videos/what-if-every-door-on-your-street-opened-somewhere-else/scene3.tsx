@@ -19,31 +19,24 @@ export const scene3 = storyScene(timing, {
     {
       // Past the doorway of the hall and into the room the stuck door hides: the tally, and it is not his.
       cue: "11.count",
-      ...cam.push({ on: [0.25, 1.15, 2.86], dist: 1.40, to: 0.90, yaw: 143, pitch: 5, fov: 40 }),
+      // THIRTY-ONE MARKS, not five. This shot used to draw its own row of blocks five to a hand-span, half a metre
+      // out from the wall and drifting into the room; the world already has a `Tally` that puts marks flat on the
+      // plaster, five to a group with the fifth struck across, and this count is the difference between the two
+      // rooms. Same wall, same place, forty-one marks against his twelve.
+      ...cam.push({ on: H(0.25, 1.10, 2.86), dist: 2.90, to: 2.55, yaw: 152, pitch: 2, fov: 52 }),
       zone: "hisroom",
       look: "overworld-night",
       note: "The tally on the far wall, longer than his by a hand he does not know: five, ten, twenty, more than he has ever cut.",
-      stage: (t) => (
+      stage: () => (
         <>
           <Hero position={H(0.10, 0, 1.60)} rotationY={NORTH} animation="idle" face="fear" />
-          {Array.from({ length: 5 }, (_, i) => (
-            <Block
-              key={i}
-              size={[0.024, 0.2, 0.012]}
-              position={H(0.40 + i * 0.12, 1.02 + (i % 2) * 0.01, 2.85)}
-              rotation={[0, 0, i === 4 ? 0.32 : -0.04]}
-              color="#2b251e"
-              castShadow={false}
-              opacity={pop(t, TALLY_COUNT + i * 0.05)}
-            />
-          ))}
         </>
       ),
     },
     {
       // THROUGH HIS OWN DOORWAY, from the hall: it is his bedroom, and he is standing in it.
       cue: "11.room",
-      ...cam.push({ on: [0.15, 126.10, 4.60], dist: 4.83, to: 4.18, yaw: -168, pitch: -81, fov: 46 }),
+      ...cam.push({ on: [0.15, 1.30, 5.10], dist: 1.60, to: 1.30, yaw: 180, pitch: 3, fov: 46 }),
       zone: "hisroom",
       look: "overworld-night",
       note: "His own bedroom, seen from the wrong side of his own door: the bed, the window, the tally, and him small in the middle of it.",
