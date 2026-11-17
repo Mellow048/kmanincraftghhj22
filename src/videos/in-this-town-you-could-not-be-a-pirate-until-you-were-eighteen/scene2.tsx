@@ -39,7 +39,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.lock",
-      ...cam.push({ on: [0.15, 1.15, 2.6], dist: 4.2, to: 3.2, yaw: 172, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [0.2, 1.15, 2.3], dist: 4.4, to: 3.3, yaw: 128, pitch: 10, fov: 42 }),
       zone: "dock",
       look: DAY,
       note: "From behind him, his hand goes onto the chain. The boat stays on the far side.",

@@ -45,7 +45,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.map",
-      ...cam.push({ on: [0.35, 1.2, 1.7], dist: 2.6, to: 2.05, yaw: 198, pitch: 14, fov: 36 }),
+      ...cam.push({ on: [0.35, 1.25, 1.65], dist: 2.7, to: 2.1, yaw: 28, pitch: 10, fov: 38 }),
       zone: "dock",
       look: DAY,
       note: "The map is in his hands, the red X readable, and he will not put it down.",
@@ -57,7 +57,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.x",
-      ...cam.push({ on: [0.4, 1.25, 1.75], dist: 2.15, to: 1.7, yaw: 214, pitch: 12, fov: 32 }),
+      ...cam.push({ on: [0.42, 1.3, 1.7], dist: 2.3, to: 1.8, yaw: 36, pitch: 12, fov: 34 }),
       zone: "dock",
       look: DAY,
       note: "The red X fills the sheet beside his face. The buoy is still small behind him.",

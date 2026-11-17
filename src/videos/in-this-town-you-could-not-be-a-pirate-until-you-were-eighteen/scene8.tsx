@@ -44,7 +44,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.dark",
-      ...cam.push({ on: [0, 1.3, -1.6], dist: 6.4, to: 5, yaw: 72, pitch: 10, fov: 46 }),
+      ...cam.push({ on: [0, 1.15, -3.2], dist: 7.2, to: 5.6, yaw: 8, pitch: 16, fov: 48 }),
       zone: "sea",
       look: NIGHT,
       note: "From the side of the boat: the water astern has gone dark, wider than the hull.",
@@ -59,7 +59,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.big",
-      ...cam.push({ on: [0.1, 1.5, -2.4], dist: 7.2, to: 5.8, yaw: 80, pitch: 12, fov: 46 }),
+      ...cam.push({ on: [0.2, 1.2, -3.6], dist: 8, to: 6.2, yaw: 12, pitch: 18, fov: 48 }),
       zone: "sea",
       look: NIGHT,
       note: "The shadow is bigger than the boat. Both are in the frame, so bigger is a fact.",
@@ -77,7 +77,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.arm",
-      ...cam.push({ on: [0.4, 1.6, -3.2], dist: 6.8, to: 5.4, yaw: 68, pitch: 8, fov: 44 }),
+      ...cam.push({ on: [0.4, 1.7, -3.8], dist: 10, to: 8.2, yaw: 46, pitch: 8, fov: 48 }),
       zone: "sea",
       look: NIGHT,
       note: "One arm comes up out of the dark, then a second. The boat is still the small thing.",
@@ -95,7 +95,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.more",
-      ...cam.push({ on: [0.3, 2, -3.4], dist: 7.4, to: 6, yaw: 84, pitch: 14, fov: 48 }),
+      ...cam.push({ on: [0.4, 1.9, -3.9], dist: 10.6, to: 8.8, yaw: 50, pitch: 8, fov: 50 }),
       zone: "sea",
       look: NIGHT,
       note: "More arms than the frame can count. They come up between the boat and the dark.",
@@ -110,7 +110,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.kraken",
-      ...cam.push({ on: [0.2, 2.1, -2.6], dist: 9.2, to: 7.4, yaw: 76, pitch: 10, fov: 46 }),
+      ...cam.push({ on: [0.5, 1.9, -4], dist: 11.5, to: 9.4, yaw: 52, pitch: 6, fov: 50 }),
       zone: "sea",
       look: NIGHT,
       note: "The eye, level with the lantern. An octopus beside a boat that is suddenly small.",
@@ -127,7 +127,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.night",
-      ...cam.push({ on: [0.15, 2.4, -2.2], dist: 10, to: 8.2, yaw: 88, pitch: 12, fov: 48 }),
+      ...cam.push({ on: [0.4, 2.1, -3.8], dist: 12, to: 10, yaw: 58, pitch: 8, fov: 50 }),
       zone: "sea",
       look: NIGHT,
       note: "Night. The lantern is the only warm light, and the kraken is looking at it.",
@@ -145,7 +145,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "11.end",
-      ...cam.push({ on: [0.2, 2.3, -2.4], dist: 9.4, to: 8, yaw: 70, pitch: 8, fov: 46 }),
+      ...cam.push({ on: [0.45, 2, -3.9], dist: 11.8, to: 10.2, yaw: 48, pitch: 6, fov: 50 }),
       zone: "sea",
       look: NIGHT,
       note: "To be continued, on the kraken and the boat, not on a sign clipped by the mast.",

@@ -14,7 +14,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "5.sail",
-      ...cam.push({ on: [0, 1.7, -1.2], dist: 8.5, to: 6.4, yaw: 6, pitch: 8, fov: 50 }),
+      ...cam.push({ on: [0, 2.1, -0.4], dist: 10.5, to: 8.2, yaw: 4, pitch: 4, fov: 52 }),
       zone: "sea",
       look: DAY,
       note: "From ahead of the boat, looking back: the boat leaves, and the town is a small shore behind it.",
@@ -23,11 +23,12 @@ export const scene5 = storyScene(timing, {
           <Boat position={[0, 0.05, 0]} />
           <Hero position={HERO} rotationY={Math.PI} animation="idle" face="brave" />
           <RopePlayer position={PLAY} rotationY={Math.PI} animation="idle" face="smile" />
-          <group position={[0, 0, -16]} scale={0.55}>
-            <Vox kind="grass" position={[0, 0.3, 0]} size={[16, 0.5, 5]} />
-            <Vox kind="planks" position={[0, 0.6, 2]} size={[4, 0.2, 1.2]} />
-            <Vox kind="cobble" position={[-3, 1.3, 0]} size={[2.2, 2.2, 2]} />
-            <Vox kind="cobble" position={[3.2, 1.5, -0.4]} size={[2.4, 2.6, 2]} />
+          <group position={[0, 0.4, -18]}>
+            <Vox kind="grass" position={[0, 0.2, 0]} size={[18, 0.4, 6]} />
+            <Vox kind="cobble" position={[-5, 1.4, 0]} size={[2.2, 2.4, 2]} />
+            <Vox kind="planks" position={[-1.6, 1.1, 0.2]} size={[2.4, 1.8, 2]} />
+            <Vox kind="cobble" position={[2.2, 1.6, -0.2]} size={[2.6, 2.8, 2.2]} />
+            <Vox kind="planks" position={[5.4, 1.2, 0.3]} size={[2, 1.6, 1.8]} />
           </group>
         </>
       ),

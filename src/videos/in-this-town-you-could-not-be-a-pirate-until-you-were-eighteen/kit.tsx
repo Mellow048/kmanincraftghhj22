@@ -115,9 +115,9 @@ export const Chest: React.FC<{ position?: Vec3; open?: number; children?: React.
 
 /** The chain across the dock. `open` 0 is locked, 1 has dropped. */
 export const DockChain: React.FC<{ open?: number }> = ({ open = 0 }) => (
-  <group position={[0, 0.7 - open * 0.55, 3.2]}>
-    {[-0.8, -0.4, 0, 0.4, 0.8].map((x, i) => (
-      <Block key={i} position={[x, Math.sin(i) * 0.04, 0]} size={[0.28, 0.1, 0.1]} color="#8d96a2" />
+  <group position={[0, 0.85 - open * 0.55, 2.45]}>
+    {[-1, -0.5, 0, 0.5, 1].map((x, i) => (
+      <Block key={i} position={[x, Math.sin(i) * 0.05, 0]} size={[0.42, 0.14, 0.14]} color="#9aa3ae" />
     ))}
     <Block position={[-1.15, -0.35, 0]} size={[0.16, 0.8, 0.16]} color="#6b6258" />
     <Block position={[1.15, -0.35, 0]} size={[0.16, 0.8, 0.16]} color="#6b6258" />
@@ -209,7 +209,7 @@ export const Kraken: React.FC<{ position?: Vec3; rise?: number; arms?: number }>
 
 /** A dark patch on the water, before the head is up. */
 export const SeaShadow: React.FC<{ position?: Vec3; spread?: number }> = ({ position = [0, 0, 0], spread = 1 }) => (
-  <Block position={position} size={[3.2 * spread, 0.04, 4.2 * spread]} color="#0c1a22" />
+  <Block position={position} size={[4.2 * spread, 0.08, 5.4 * spread]} color="#05070c" />
 );
 
 export const Fill: React.FC<{ on: Vec3; yaw?: number; power?: number }> = ({ on, yaw = 0, power = 5 }) => {
