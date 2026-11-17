@@ -234,6 +234,12 @@ export const World: React.FC = () => {
             </group>
           ))}
           <Doorway at={[0, 0, 4.02]} open={0.85} colour="#3f6a52" lit={0.35} />
+          {/* A lamp over the door, and light on the pavement: the queue's faces are the last act's subject and the
+              shop's two ceiling lamps do not reach them from out there. */}
+          <Block size={[0.5, 0.16, 0.5]} position={[0, 3.30, 4.20]} color="#3a3f47" castShadow={false} />
+          <Block size={[0.42, 0.08, 0.42]} position={[0, 3.18, 4.20]} color="#fff2c8" emissive="#ffe9a8" emissiveIntensity={2.2} castShadow={false} />
+          <pointLight position={[0, 2.95, 4.35]} color="#ffe4b0" intensity={20} distance={9} decay={2} />
+          <LightPool position={[0, 0.02, 5.30]} width={5} depth={3.4} color="#ffe4b0" opacity={0.2} />
           {/* the pavement outside, and the queue on it: a rope on two posts, and the light that finds them */}
           <Block size={[16, 0.2, 7]} position={[0, -0.06, 7.4]} color="#5c5a58" castShadow={false} />
           <Block size={[16, 0.24, 0.3]} position={[0, 0.03, 4.4]} color="#8a8790" castShadow={false} />

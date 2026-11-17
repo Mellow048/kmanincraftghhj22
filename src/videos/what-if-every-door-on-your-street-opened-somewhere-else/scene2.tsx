@@ -119,7 +119,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "7.let",
       // Over her shoulder: him going in first, and her looking at him a bit too long.
-      ...cam.push({ on: [60.00, 1.25, 4.50], dist: 2.42, to: 1.82, yaw: 38, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [60.30, 1.32, 7.00], dist: 3.00, to: 2.45, yaw: -6, pitch: 3, fov: 46 }),
       zone: "shop",
       look: "overworld-night",
       note: "Her hand out, letting him go first, and her face while she does it: she knows exactly who he is and he does not notice.",
@@ -169,7 +169,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "8.higher",
       // Up: the writing goes above his head, and he has to stand on the floor to reach it.
-      ...cam.push({ on: H(0.72, 1.95, 2.50), dist: 1.39, to: 0.84, yaw: -66, pitch: -28, fov: 42 }),
+      ...cam.push({ on: H(0.20, 1.74, 2.55), dist: 2.10, to: 1.75, yaw: 0, pitch: 0, fov: 44 }),
       zone: "hall",
       look: "overworld-night",
       note: "Tilted up: the writing carries on above the height of a kid, so it was not written by one standing on the floor.",
