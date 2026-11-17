@@ -103,6 +103,10 @@ export const World: React.FC = () => {
               midnight is a black box: the lamps light the pavement, and the camera is never on the pavement. */}
           <pointLight position={[1.6, 2.6, 6.2]} color="#b9c8ff" intensity={26} distance={16} decay={2} />
           <pointLight position={[-4.2, 2.4, 2.6]} color="#c9d6ff" intensity={14} distance={9} decay={2} />
+          {/* The bench fill sits BEHIND the boy at the bench (z 2.6 against his z 0.95), so every lens in front of
+              him at the bench got a silhouette. This one is on the lens side of him and low, which is where the
+              under-the-bench shot looks from. */}
+          <pointLight position={[-4.80, 1.30, -0.60]} color="#cfdcff" intensity={9} distance={4.5} decay={1.6} />
           <Dust position={[2, 1.9, 0.4]} area={[18, 3, 6]} count={40} size={0.03} color="#ffe9c8" opacity={0.3} seed={7} speed={0.09} />
         </group>
       </Zone>
