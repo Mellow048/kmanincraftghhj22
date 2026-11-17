@@ -54,6 +54,12 @@ const Room: React.FC = () => (
 
 export const World: React.FC = () => (
   <>
+    {/* Rooms in this film are boxes, and a box blocks the look's sun. These keep every interior readable. */}
+    <ambientLight color="#ffe6c8" intensity={0.5} />
+    <pointLight position={[0, 2.5, 84]} color="#ffc48a" intensity={26} distance={10} decay={2} />
+    <pointLight position={[-2, 2.4, 78]} color="#ffb877" intensity={18} distance={9} decay={2} />
+    <pointLight position={[0, 2.6, 4]} color="#fff0d8" intensity={20} distance={11} decay={2} />
+    <pointLight position={[0, 2.6, 44]} color="#fff0d8" intensity={18} distance={12} decay={2} />
     <Class />
     <SchoolHall at={PLACE.hall} length={16} sign="ROOM 4" />
     <Kitchen at={PLACE.kitchen} />
