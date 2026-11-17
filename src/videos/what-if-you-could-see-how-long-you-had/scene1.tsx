@@ -53,7 +53,7 @@ export const scene1 = storyScene(timing, {
       // is what the first two attempts did, and it is why frame one read as a room instead of a power. The lens now
       // stands at the BOARD and looks SOUTH: the front-row boy's face fills the frame with a clock at four over it,
       // and the rest of the class falls away behind him. Face, number, and a crowd that has not got one.
-      ...cam.push({ on: SPOT.at(0, 1.80, -0.9), dist: 2.9, to: 2.6, yaw: 171, pitch: 7, fov: 46 }),
+      ...cam.push({ on: SPOT.at(0, 1.55, -0.5), dist: 2.35, to: 2.15, yaw: 173, pitch: 4, fov: 44 }),
       zone: "class",
       note: "THE HOOK, and the power in one picture: the teller's back low in the frame, the class stacked away in front of him, the board at the top, and over the boy in the front row a clock at four. Nothing else in the school has one, so the clock is the only bright thing above the heads.",
       stage: (t) => (
@@ -63,7 +63,7 @@ export const scene1 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />
           <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - SEE} size={0.5} rotationY={0.0} />
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - SEE} size={0.44} rotationY={Math.PI} />
         </>
       ),
     },
