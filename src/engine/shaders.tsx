@@ -90,7 +90,7 @@ void main() {
   // Cloud: a flat layer overhead, thick where it is thick, thinning towards the horizon the way
   // a layer does when you look along it instead of up through it.
   if (uClouds > 0.001 && h > 0.0) {
-    vec3 cp = d / max(h, 0.055) * uCloudHeight;
+    vec3 cp = d / max(h, 0.12) * uCloudHeight;
     cp.x += uTime * 0.35;
     cp.z += uTime * 0.12;
     float cl = fbm(cp * uCloudScale);
@@ -152,7 +152,7 @@ export const Sky: React.FC<{ sky: SkySettings; sunDir: THREE.Vector3 }> = ({ sky
         uSunPower: { value: sky.sunPower ?? 0.9 },
         uHaze: { value: sky.haze ?? 0.55 },
         uClouds: { value: sky.clouds ?? 0 },
-        uCloudScale: { value: sky.cloudScale ?? 0.055 },
+        uCloudScale: { value: sky.cloudScale ?? 0.22 },
         uCloudCover: { value: sky.cloudCover ?? 0.48 },
         uCloudHeight: { value: sky.cloudHeight ?? 8 },
         uDither: { value: sky.dither ?? 0.004 },
@@ -258,10 +258,10 @@ const GRADE_SHADER = {
   uniforms: {
     tDiffuse: { value: null },
     uTexel: { value: new THREE.Vector2(1 / 1080, 1 / 1920) },
-    uSat: { value: 1.38 },
+    uSat: { value: 1.45 },
     uContrast: { value: 1.05 },
     uShoulder: { value: 0.11 },
-    uLift: { value: 0.055 },
+    uLift: { value: 0.05 },
     uWarm: { value: 0.95 },
     uCool: { value: 0.5 },
     uVignette: { value: 0.12 },
@@ -396,7 +396,7 @@ export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   threshold: 1.25,
   radius: 0.6,
   vignette: 0.12,
-  saturation: 1.38,
+  saturation: 1.45,
   contrast: 1.05,
   warmth: 0.95,
   grain: 0.011,
@@ -404,7 +404,7 @@ export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   // The rest were tuned with scripts/shader-sim.py against the reference film.
   diffusion: 0.14,
   veil: 0.025,
-  lift: 0.055,
+  lift: 0.05,
   shoulder: 0.11,
   coolShadow: 0.5,
   shafts: 0.3,

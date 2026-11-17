@@ -93,7 +93,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#5ea2dd", horizon: "#dcecf8", bottom: "#9fb0bd",
       sun: "#fff3d6", sunSize: 260, sunPower: 0.8, haze: 0.6,
-      clouds: 0.45, cloudScale: 0.060, cloudCover: 0.50, cloudHeight: 9, cloudShade: "#e8eef5",
+      clouds: 0.45, cloudScale: 0.24, cloudCover: 0.50, cloudHeight: 9, cloudShade: "#e8eef5",
     },
   },
   "town-day": {
@@ -107,7 +107,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#4f97d4", horizon: "#e6f2ea", bottom: "#8ea08f",
       sun: "#fff0cf", sunSize: 240, sunPower: 0.8, haze: 0.62,
-      clouds: 0.50, cloudScale: 0.058, cloudCover: 0.48, cloudHeight: 9, cloudShade: "#eef3f8",
+      clouds: 0.50, cloudScale: 0.24, cloudCover: 0.48, cloudHeight: 9, cloudShade: "#eef3f8",
     },
   },
   /** Minecraft noon: saturated sky, hard warm sun, cool bounce. Built for phone screens. */
@@ -124,7 +124,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#0a3fbe", horizon: "#7cb6f2", bottom: "#6f8ca6",
       sun: "#fff4d6", sunDir: [-0.25, 0.42, -1], sunSize: 180, sunPower: 1.0, haze: 0.22,
-      clouds: 0.55, cloudScale: 0.055, cloudCover: 0.46, cloudHeight: 9, cloudShade: "#ffffff",
+      clouds: 0.55, cloudScale: 0.22, cloudCover: 0.46, cloudHeight: 9, cloudShade: "#ffffff",
     },
   },
   /** Minecraft night: deep blue, a cold moon for shape. Torches in the world do the warm work. */
@@ -141,7 +141,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#030820", horizon: "#1b2a5c", bottom: "#040814",
       sun: "#dbe6ff", sunSize: 1500, sunPower: 0.45, haze: 0.4,
-      clouds: 0.38, cloudScale: 0.050, cloudCover: 0.52, cloudHeight: 10, cloudShade: "#2a3554",
+      clouds: 0.38, cloudScale: 0.20, cloudCover: 0.52, cloudHeight: 10, cloudShade: "#2a3554",
     },
   },
   /** The sky has gone wrong: bruise-purple above, and a low warm light from the west picks out whatever stands over the town. */
@@ -158,7 +158,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#241d3a", horizon: "#6b5f8e", bottom: "#171226",
       sun: "#ffc79a", sunSize: 90, sunPower: 0.5, haze: 0.85,
-      clouds: 0.90, cloudScale: 0.040, cloudCover: 0.30, cloudHeight: 6, cloudShade: "#3a3450",
+      clouds: 0.90, cloudScale: 0.14, cloudCover: 0.30, cloudHeight: 6, cloudShade: "#3a3450",
     },
   },
   /** The last of the sun: an orange sky, a low hard warm key, long shadows. Bright enough for a fight. */
@@ -175,7 +175,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#152a70", horizon: "#ffb87e", bottom: "#5c4250",
       sun: "#ffd9a0", sunDir: [-0.2, 0.16, -1], sunSize: 90, sunPower: 2.2, haze: 0.55,
-      clouds: 0.62, cloudScale: 0.048, cloudCover: 0.42, cloudHeight: 10, cloudShade: "#9a86a8",
+      clouds: 0.62, cloudScale: 0.19, cloudCover: 0.42, cloudHeight: 10, cloudShade: "#9a86a8",
     },
   },
   /**
@@ -195,7 +195,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#020615", horizon: "#14224a", bottom: "#040810",
       sun: "#cfe0ff", sunSize: 2000, sunPower: 0.35, haze: 0.35,
-      clouds: 0.42, cloudScale: 0.052, cloudCover: 0.58, cloudHeight: 10, cloudShade: "#1a2440",
+      clouds: 0.42, cloudScale: 0.20, cloudCover: 0.58, cloudHeight: 10, cloudShade: "#1a2440",
     },
   },
   /** Beside lava: smoke for a sky, and the ground is the lamp. */
@@ -212,7 +212,7 @@ export const LOOKS: Record<LookPreset, Preset> = {
     sky: {
       top: "#2a1008", horizon: "#a3441a", bottom: "#180804",
       sun: "#ffb070", sunSize: 70, sunPower: 0.8, haze: 0.9,
-      clouds: 0.70, cloudScale: 0.050, cloudCover: 0.45, cloudHeight: 5, cloudShade: "#3a1a10",
+      clouds: 0.70, cloudScale: 0.17, cloudCover: 0.45, cloudHeight: 5, cloudShade: "#3a1a10",
     },
   },
   /** A school gym at prom: dark room, but lit enough to read faces, and the colour comes from the decorations. */
