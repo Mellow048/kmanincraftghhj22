@@ -2,7 +2,7 @@ import type React from "react";
 import { Block, cam, storyScene } from "../../engine";
 import {
   Hero, Adult, Friend, Neighbour, Mum,
-  DOOR, K, S, SH, P, chestOf, faceOf, timing, wordAt, pop, ramp, EAST, WEST, NORTH, ME,
+  DOOR, K, S, SH, P, H, chestOf, faceOf, timing, wordAt, pop, ramp, EAST, WEST, NORTH, ME,
 } from "./kit";
 
 /**
@@ -303,14 +303,18 @@ export const scene1 = storyScene(timing, {
     {
       cue: "3.tally",
       // HIS ROOM, the marks going up the wall, and him adding one.
-      ...cam.push({ on: [0.25, 1.10, 2.86], dist: 2.36, to: 1.66, yaw: -139, pitch: 7, fov: 44 }),
+      // THESE NUMBERS ARE IN THE ROOM'S OWN SPACE, AND THE ROOM IS NOT AT THE ORIGIN. `zone` only switches
+      // visibility on and off; it does not move the camera. The room is built at H(0,0,5.1), so the lens and
+      // the marks both need H() to land on it. Before this, the camera stood at z 2.86 -- 2 m south of the
+      // room and in the middle of empty world -- and shot the dark.
+      ...cam.push({ on: H(0.25, 1.10, 2.86), dist: 2.36, to: 1.66, yaw: 152, pitch: 3, fov: 48 }),
       zone: "bed",
       look: "overworld-night",
       note: "His tally on the bedroom wall, growing, and him putting the next mark on: a kid keeping score of how many doors he owns.",
       stage: (t) => (
         <>
-          <TallyMarks at={[0.25, 0, 2.86]} count={11 + (t > TALLY_AT ? 1 : 0)} />
-          <Hero position={[0.55, 0, 1.85]} rotationY={NORTH} animation="reachUp" face="smug" />
+          <TallyMarks at={H(0.25, 0, 2.86)} count={11 + (t > TALLY_AT ? 1 : 0)} />
+          <Hero position={H(0.55, 0, 1.85)} rotationY={NORTH} animation="reachUp" face="smug" />
         </>
       ),
     },

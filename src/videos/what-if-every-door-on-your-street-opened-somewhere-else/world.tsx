@@ -375,8 +375,8 @@ const Bedroom: React.FC<{ at: Vec3; closed?: boolean; count?: number }> = ({ at,
         point light at all, so every frame of the tally -- at both ends of the film, and the tally is what
         the last scene is about -- fell back on ambient and came out a black rectangle. The room is 3.4 m
         deep with the tally wall at z 3.0, so the light goes inside that, near the foot of the bed. */}
-    <pointLight position={[0, 2.30, 1.10]} color="#a9c6ff" intensity={20} distance={9} decay={2} />
-    <pointLight position={[0.2, 1.55, 2.45]} color="#8fb4ff" intensity={8} distance={5} decay={2} />
+    <pointLight position={[0, 2.30, 1.10]} color="#a9c6ff" intensity={30} distance={11} decay={1.6} />
+    <pointLight position={[0.2, 1.55, 2.45]} color="#8fb4ff" intensity={12} distance={6} decay={1.8} />
     <Dust position={[0, 1.3, 1.6]} area={[3.2, 2.4, 3]} count={26} size={0.03} color="#cfe0ff" opacity={0.42} seed={31} speed={0.1} />
     <Glow position={[0.55, 1.85, 2.6]} size={2.2} color="#a9c6ff" opacity={0.28} />
     <LightPool position={[0.3, 0.02, 1.8]} width={2.6} depth={2.6} color="#a9c6ff" opacity={0.2} />

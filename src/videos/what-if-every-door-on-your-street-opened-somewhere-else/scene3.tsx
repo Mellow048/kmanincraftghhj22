@@ -36,7 +36,7 @@ export const scene3 = storyScene(timing, {
     {
       // THROUGH HIS OWN DOORWAY, from the hall: it is his bedroom, and he is standing in it.
       cue: "11.room",
-      ...cam.push({ on: [0.15, 1.30, 5.10], dist: 1.60, to: 1.30, yaw: 180, pitch: 3, fov: 46 }),
+      ...cam.push({ on: H(0.15, 1.30, 5.10), dist: 1.60, to: 1.30, yaw: 180, pitch: 3, fov: 46 }),
       zone: "hisroom",
       look: "overworld-night",
       note: "His own bedroom, seen from the wrong side of his own door: the bed, the window, the tally, and him small in the middle of it.",
