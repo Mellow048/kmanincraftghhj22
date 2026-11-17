@@ -325,14 +325,14 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "4.torch",
-      ...cam.push({ on: at(PLACE.shaft, 0.62, -2.3, -0.5), dist: 1.4, to: 1.15, yaw: -70, pitch: 6, fov: 32 }),
+      ...cam.push({ on: at(PLACE.shaft, 0.62, -2.3, -0.5), dist: 2.7, to: 2.2, yaw: -70, pitch: 6, fov: 34 }),
       zone: "shaft",
       look: "overworld-night",
       note: "A hand placing a torch on the wall, every ten blocks, each one a decision not to be frightened. The flame is the warmest thing in the film so far.",
       stage: () => (
         <>
           <Shaft position={PLACE.shaft} depth={6} />
-          <Torch position={at(PLACE.shaft, 0.62, -2.3, -0.5)} light={6} seed={2} />
+          <Torch position={at(PLACE.shaft, 0.62, -2.3, -0.5)} light={4} seed={2} />
         </>
       ),
     },
@@ -421,15 +421,15 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "6.orange",
-      ...cam.top({ on: at(PLACE.shaft, 0, -5.6, 0), height: 5.0, to: 7.5, fov: 50 }),
+      ...cam.top({ on: at(PLACE.shaft, 0, -5.6, 0), height: 4.4, to: 6.2, fov: 50 }),
       zone: "shaft",
       look: "lava-shore",
       note: "The shaft he has just lost: straight up and away, the four hundred blocks of it getting smaller, and an orange pool at the bottom where the lava is. No music from here to the rescue — the film goes quiet so the defeat lands.",
       stage: () => (
         <>
           <Shaft position={PLACE.shaft} depth={6} />
-          <Block position={at(PLACE.shaft, 0, -5.9, -0.6)} size={[1.4, 0.5, 0.06]} color="#ff7a14" emissive="#ff5a00" emissiveIntensity={0.9} castShadow={false} />
-          <Glow position={at(PLACE.shaft, 0, -5.6, -0.4)} size={1.5} color="#ff8a2a" opacity={0.2} />
+          <Block position={at(PLACE.shaft, 0, -5.9, -0.6)} size={[1.4, 0.5, 0.06]} color="#ff7a14" emissive="#ff5a00" emissiveIntensity={0.7} castShadow={false} />
+          <Glow position={at(PLACE.shaft, 0, -5.6, -0.4)} size={1.2} color="#ff8a2a" opacity={0.16} />
           <LightPool position={at(PLACE.shaft, 0, -5.94, 0)} width={2.0} depth={2.0} color="#ff8a2a" opacity={0.16} />
         </>
       ),
