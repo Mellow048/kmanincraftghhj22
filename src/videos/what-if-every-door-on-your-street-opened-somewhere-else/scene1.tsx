@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, cam, storyScene } from "../../engine";
+import { Block, LightPool, cam, storyScene } from "../../engine";
 import {
   Hero, Adult, Friend, Neighbour, Mum,
   DOOR, K, S, SH, P, H, chestOf, faceOf, timing, wordAt, pop, ramp, EAST, WEST, NORTH, ME,
@@ -241,6 +241,11 @@ export const scene1 = storyScene(timing, {
             face="frown"
           />
           <Block size={[0.4, 5.2, 9.0]} position={S(-9.60, 2.6, -4.6)} color="#9a7f62" castShadow={false} />
+          {/* This alley is sealed by two walls and has no street lamp in it, so it needs its own light or the
+              frame is black however the lens is placed. A service lamp over the back door, the same sodium
+              colour as the street. */}
+          <pointLight position={S(-8.60, 2.60, -3.70)} color="#ffd9a0" intensity={26} distance={11} decay={2} />
+          <LightPool position={S(-8.70, 0.03, -3.60)} width={3.4} depth={3.0} color="#ffd9a0" opacity={0.18} />
         </>
       ),
     },
@@ -307,14 +312,14 @@ export const scene1 = storyScene(timing, {
       // visibility on and off; it does not move the camera. The room is built at H(0,0,5.1), so the lens and
       // the marks both need H() to land on it. Before this, the camera stood at z 2.86 -- 2 m south of the
       // room and in the middle of empty world -- and shot the dark.
-      ...cam.push({ on: H(0.25, 1.10, 7.96), dist: 2.55, to: 2.20, yaw: 180, pitch: 3, fov: 56 }),
+      ...cam.push({ on: H(0.25, 1.10, 7.96), dist: 2.30, to: 2.00, yaw: 180, pitch: 3, fov: 54 }),
       zone: "bed",
       look: "overworld-night",
       note: "His tally on the bedroom wall, growing, and him putting the next mark on: a kid keeping score of how many doors he owns.",
       stage: (t) => (
         <>
           <TallyMarks at={H(0.25, 0, 7.96)} count={11 + (t > TALLY_AT ? 1 : 0)} />
-          <Hero position={H(0.55, 0, 6.95)} rotationY={NORTH} animation="reachUp" face="smug" />
+          <Hero position={H(1.05, 0, 6.95)} rotationY={NORTH} animation="reachUp" face="smug" />
         </>
       ),
     },

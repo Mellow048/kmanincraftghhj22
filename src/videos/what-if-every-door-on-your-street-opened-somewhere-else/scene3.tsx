@@ -23,7 +23,7 @@ export const scene3 = storyScene(timing, {
       // out from the wall and drifting into the room; the world already has a `Tally` that puts marks flat on the
       // plaster, five to a group with the fifth struck across, and this count is the difference between the two
       // rooms. Same wall, same place, forty-one marks against his twelve.
-      ...cam.push({ on: H(0.25, 1.10, 7.96), dist: 2.55, to: 2.20, yaw: 180, pitch: 3, fov: 56 }),
+      ...cam.push({ on: H(0.25, 1.10, 7.96), dist: 2.30, to: 2.00, yaw: 180, pitch: 3, fov: 54 }),
       zone: "hisroom",
       look: "overworld-night",
       note: "The tally on the far wall, longer than his by a hand he does not know: five, ten, twenty, more than he has ever cut.",
@@ -36,7 +36,7 @@ export const scene3 = storyScene(timing, {
     {
       // THROUGH HIS OWN DOORWAY, from the hall: it is his bedroom, and he is standing in it.
       cue: "11.room",
-      ...cam.push({ on: H(0.10, 1.30, 6.30), dist: 2.30, to: 1.95, yaw: 180, pitch: 3, fov: 50 }),
+      ...cam.push({ on: H(0.10, 1.30, 6.30), dist: 2.60, to: 2.20, yaw: 180, pitch: 3, fov: 56 }),
       zone: "hisroom",
       look: "overworld-night",
       note: "His own bedroom, seen from the wrong side of his own door: the bed, the window, the tally, and him small in the middle of it.",
