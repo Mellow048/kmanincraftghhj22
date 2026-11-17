@@ -89,9 +89,11 @@ export const scene3 = storyScene(timing, {
     {
       // Her, and she has just noticed him, and she does not stop counting.
       cue: "11.whya",
-      ...cam.push({ on: [0.30, 1.12, 160.60], dist: 3.28, to: 2.73, yaw: 31, pitch: 2, fov: 40 }),
+      // From behind HER shoulder at the table, looking back at the doorway: she is the subject of the line and the
+      // old lens had her hero's head in the middle of the frame.
+      ...cam.push({ on: [0.30, 1.14, 160.35], dist: 2.10, to: 1.75, yaw: 186, pitch: 3, fov: 42 }),
       zone: "kitchen",
-      note: "Her, and she has just noticed him, and she does not stop counting.",
+      note: "Her at the table with the tin, seen past her shoulder towards the doorway: she has just noticed him and she does not stop counting.",
       stage: (_t) => (
         <>
           <Player who={9} position={HOME.chair} rotationY={NORTH} animation="sit" />

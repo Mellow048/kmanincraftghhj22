@@ -342,13 +342,18 @@ export const scene2 = storyScene(timing, {
     {
       // The tickets, close: a classroom, a canteen, a lunch, each with a price.
       cue: "10.walla",
-      ...cam.push({ on: [-1.20, 1.45, 38.10], dist: 3.77, to: 3.22, yaw: 29, pitch: -4, fov: 44 }),
+      // Flat-on to the ticket row, a metre and a half back. The old lens stood inside the door row (-57 yaw swept it
+      // through the door at x -3.6), so the frame was a walnut doorpost and nothing else.
+      ...cam.push({ on: [HALL.at(-0.6, 0, -1.88)[0], 1.30, HALL.at(-0.6, 0, -1.88)[2] + 1.75], dist: 1.75, to: 1.50, yaw: 14, pitch: -2, fov: 46 }),
       zone: "hall",
-      note: "The tickets, close: a classroom, a canteen, a lunch, each with a price.",
+      note: "The three tickets close and flat-on: a classroom, a canteen, a lunch, each with a price written in a kid's hand.",
       stage: (_t) => (
         <>
           {[0, 1, 2].map((i) => (
-            <Block key={i} position={HALL.at(-1.2 + i * 1.2, 1.5, -1.88)} size={[0.3, 0.2, 0.02]} color="#f4f1e8" castShadow={false} />
+            <Block key={i} position={HALL.at(-1.2 + i * 1.2, 1.50, -1.88)} size={[0.30, 0.20, 0.02]} color="#f4f1e8" castShadow={false} />
+          ))}
+          {[0, 1, 2].map((i) => (
+            <Block key={`p${i}`} position={HALL.at(-1.2 + i * 1.2, 1.44, -1.85)} size={[0.16, 0.03, 0.01]} color="#5a5f6a" castShadow={false} />
           ))}
         </>
       ),
