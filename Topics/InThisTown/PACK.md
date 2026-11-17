@@ -170,6 +170,17 @@ the look from stills as before. What it changes for staging, learnt on that film
 - **A sunset look under a roof of leaves reads as plain day.** For a pink moment in a dark place keep
   `overworld-night` and add a pink side light and pool of your own.
 - **Captions and bubbles stay crisp** as long as the bloom threshold stays above 1.0 (the default does).
+- **Use `dark` on every `Bubble`.** The white bubble blooms into a white blob in daylight. And its letters are dark
+  with a dark outline, so they close up into a block that cannot be read; the `dark` bubble has pale letters and reads
+  at any size. One or two words a bubble, scale 0.4 to 0.55; stack two bubbles for a longer line.
+- **A lit open doorway in full sun** (`Hut open`) blooms to white from across a street. Lay a plain brown block over it
+  for that shot.
+- **Rain by day is the look `overworld-rain`** (added to the engine with that film): grey cloud from edge to edge and
+  soft cool light. `overworld-storm` is bruise-purple with a warm low sun, and reads as a strange sunset, not as rain.
+  Keep `Rain` away from the lens (move its `center` off the camera, narrow its `area`): a streak a hand from the
+  camera blooms into a white bar.
+- The sun is in the sky: in `overworld-day` it is 14° west of north and 22° up, in `overworld-sunset` 11° west of
+  north and 9° up. A shot that says "there it was" has to point there (`yaw: 14, pitch: -20`).
 - A still takes about four times as long. Shoot in groups of thirty.
 
 ## Creatures — `creatures.tsx`
