@@ -40,7 +40,7 @@ export const scene3 = storyScene(timing, {
       note: "His arm is on his friend. Both of them are in the frame.",
       stage: () => (
         <>
-          <Hero position={[0.15, 0, 1.35]} animation="reach" face="fear" />
+          <Hero position={[0.15, 0, 1.35]} rotationY={0.5} animation="reach" face="fear" />
           <Friend position={[0.72, 0, 1.2]} rotationY={-0.5} lean={0.15} nod={0.3} />
         </>
       ),

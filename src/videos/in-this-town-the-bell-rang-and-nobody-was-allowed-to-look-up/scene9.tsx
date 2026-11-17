@@ -39,7 +39,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.up",
-      ...cam.push({ on: [0.6, 1.55, 1.15], dist: 4.6, to: 3.7, yaw: 6, pitch: 10, fov: 42 }),
+      ...cam.push({ on: [0.5, 1.6, 3.4], dist: 5.4, to: 4.4, yaw: 180, pitch: 4, fov: 44 }),
       zone: "village",
       look: DAY,
       note: "Travelling the square: the baker, the kids, the iron golem, every chin up.",

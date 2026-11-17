@@ -438,7 +438,7 @@ export function getPose(name: AnimName, t: number): Pose {
 
     case "reach": {
       p.bodyPitch = -0.05;
-      p.armR = [-1.55, 0, 0.18];
+      p.armR = [-1.55, 0, -0.9];
       p.armL = [-0.15, 0, -0.08];
       p.head = [-0.12, -0.1, 0];
       p.bodyY = Math.sin(time * 1.4) * 0.01;
@@ -581,7 +581,7 @@ export function getPose(name: AnimName, t: number): Pose {
     case "leanOver": {
       // Bent at the hips over a rim or a sill, both hands flat on it, looking down into whatever is there.
       // The legs stay upright under the hips. With the feet 0.55 m × scale short of the edge, the hands land on it.
-      const lean = 0.45;
+      const lean = 1.15;
       p.bodyPitch = lean;
       p.legR = [-lean, 0, 0.04];
       p.legL = [-lean, 0, -0.04];

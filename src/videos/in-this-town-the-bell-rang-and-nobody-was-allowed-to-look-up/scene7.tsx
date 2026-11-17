@@ -23,7 +23,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.push({ on: [0.3, 1.35, 0.6], dist: 5.2, to: 4.2, yaw: 46, pitch: 10, fov: 42 }),
+      ...cam.push({ on: [0.1, 1.6, 3.6], dist: 7.4, to: 6, yaw: 180, pitch: 4, fov: 46 }),
       zone: "village",
       look: DAY,
       note: "From behind them: they run toward the bell, and the bell is in the same frame.",
@@ -31,10 +31,10 @@ export const scene7 = storyScene(timing, {
         const go = ease(ramp(t, wordAt("7.run", "Toward"), wordAt("7.run", "Toward") + 0.8));
         return (
           <>
-            <Mum position={[-0.75, 0, 3.1 - go * 1.8]} rotationY={Math.PI} walk={2.4} />
-            <Dad position={[0.55, 0, 3.4 - go * 1.7]} rotationY={Math.PI} walk={2.4} />
-            <Baker position={[1.45, 0, 2.7 - go * 1.5]} rotationY={Math.PI} walk={2.2} />
-            <Golem position={[-1.6, 0, 3.8 - go * 1.2]} rotationY={Math.PI} bow={0.05} walk={1.6} />
+            <Mum position={[-0.75, 0, 1.5 - go * 1.2]} rotationY={Math.PI} walk={2.4} />
+            <Dad position={[0.55, 0, 1.8 - go * 1.1]} rotationY={Math.PI} walk={2.4} />
+            <Baker position={[1.45, 0, 1.2 - go * 1]} rotationY={Math.PI} walk={2.2} />
+            <Golem position={[-1.6, 0, 2.2 - go * 0.9]} rotationY={Math.PI} bow={0.05} walk={1.6} />
           </>
         );
       },
