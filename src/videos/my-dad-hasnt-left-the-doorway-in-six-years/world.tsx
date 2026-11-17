@@ -38,13 +38,10 @@ const Wall: React.FC = () => (
     {/* Interior light: the wall lamps are the only reason the inside of this house is not a black box.
         The front wall blocks the sun, so these do the work on every shot that faces the door. */}
     <ambientLight color="#ffd9b4" intensity={0.45} />
-    <pointLight position={[-1.9, 2.15, -1.4]} color="#ffb877" intensity={34} distance={11} decay={2} />
-    <pointLight position={[1.9, 2.15, -3.6]} color="#ffc890" intensity={26} distance={10} decay={2} />
-    <pointLight position={[0, 2.0, -0.8]} color="#ffd0a0" intensity={26} distance={7} decay={2} />
+    <pointLight position={[-2.35, 2.62, -1.6]} color="#ffb877" intensity={30} distance={11} decay={2} />
+    <pointLight position={[2.35, 2.62, -3.4]} color="#ffc890" intensity={26} distance={10} decay={2} />
+    <pointLight position={[0, 2.8, -0.7]} color="#ffd0a0" intensity={24} distance={7} decay={2} />
     <pointLight position={[0, 2.05, 4.6]} color="#ffc48a" intensity={22} distance={9} decay={2} />
-    <pointLight position={[-1.7, 1.9, -2.5]} color="#ffd2a4" intensity={22} distance={8} decay={2} />
-    <pointLight position={[1.7, 1.9, -1.1]} color="#ffd2a4" intensity={20} distance={8} decay={2} />
-    <Glow position={[-1.85, 2.2, -1.35]} size={1.0} color="#ffbe80" opacity={0.55} />
     <LightPool position={[-1.2, 0.04, -2.0]} width={4.6} depth={4.6} color="#ff9a45" opacity={0.2} />
 
     {/* A chest by the door, lid open. It is the inventory beat. */}

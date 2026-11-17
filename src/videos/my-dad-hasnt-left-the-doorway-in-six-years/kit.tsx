@@ -98,7 +98,7 @@ export const Sword: React.FC<{ position: Vec3; rotationY?: number; hit?: boolean
 export const Chair: React.FC<{ position: Vec3; rotationY?: number }> = ({ position, rotationY = 0 }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
     <Block position={[0, 0.42, 0]} size={[0.7, 0.1, 0.7]} color="#8a5f34" />
-    <Block position={[0, 0.75, 0.32]} size={[0.7, 0.62, 0.09]} color="#9a6b3c" />
+    <Block position={[0, 0.75, -0.34]} size={[0.7, 0.62, 0.09]} color="#9a6b3c" />
     {[[-0.28, -0.28], [0.28, -0.28], [-0.28, 0.28], [0.28, 0.28]].map(([x, z], i) => (
       <Block key={i} position={[x, 0.2, z]} size={[0.09, 0.4, 0.09]} color="#5e3f22" />
     ))}

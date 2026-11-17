@@ -19,7 +19,7 @@ export const film = defineFilm({
   title: "My Dad Hasn't Left The Doorway In Six Years",
   topic: "stories",
   look: "lantern-night",
-  post: { shaders: true, exposure: 1.2 },
+  post: { shaders: { bloom: 0.42, threshold: 1.35 }, exposure: 1.16 },
   captions: { words: timing.words, y: 0.72 },
   audio: { src: "audio/my-dad-hasnt-left-the-doorway-in-six-years/mix.mp3" },
   World,
