@@ -44,7 +44,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.dark",
-      ...cam.push({ on: [1.1, 1.8, 0.1], dist: 9.5, to: 8, yaw: 125, pitch: 34, fov: 46 }),
+      ...cam.push({ on: [-0.3, 1.35, 0.5], dist: 8.4, to: 7, yaw: 112, pitch: 20, fov: 44 }),
       zone: "sea",
       look: NIGHT,
       note: "From the side, looking down: the water beside the hull has gone black. The sail is edge-on and out of the way.",
@@ -52,14 +52,14 @@ export const scene8 = storyScene(timing, {
         <>
           <Fill on={[1.6, 2.2, 0.4]} yaw={70} power={6} />
           <Boat position={[0, 0.05, 0]} lantern={1} />
-          <SeaShadow position={[2.0, 0.16, 0.1]} spread={0.72} />
-          <Hero position={[0.35, D, 0.55]} rotationY={Math.PI} animation="idle" face="fear" />
+          <SeaShadow position={[-1.7, 0.16, 1.15]} spread={0.7} />
+          <Hero position={[0.45, D, 0.7]} rotationY={-2.2} animation="point" face="fear" />
         </>
       ),
     },
     {
       cue: "10.big",
-      ...cam.push({ on: [1.2, 2.2, 0.15], dist: 11, to: 9.4, yaw: 128, pitch: 40, fov: 46 }),
+      ...cam.push({ on: [-0.4, 1.5, 0.35], dist: 9.6, to: 8.2, yaw: 136, pitch: 22, fov: 46 }),
       zone: "sea",
       look: NIGHT,
       note: "Higher, so the shadow and the hull are both on the water. The dark shape sticks out past the boat.",
@@ -69,8 +69,8 @@ export const scene8 = storyScene(timing, {
           <>
             <Fill on={[1.4, 2.4, 0.6]} yaw={55} power={7} />
             <Boat position={[0, 0.05, 0]} lantern={1} />
-            <SeaShadow position={[2.15, 0.16, 0.05]} spread={grow} />
-            <Hero position={[0.3, D, 0.5]} rotationY={-2.2} animation="point" face="fear" />
+            <SeaShadow position={[-1.85, 0.16, 0.95]} spread={grow} />
+            <Hero position={[0.5, D, 0.85]} rotationY={-2.3} animation="point" face="fear" />
           </>
         );
       },

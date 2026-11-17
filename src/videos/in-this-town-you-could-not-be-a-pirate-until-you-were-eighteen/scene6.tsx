@@ -46,7 +46,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.chest",
-      ...cam.push({ on: [-0.25, 1.2, 0.1], dist: 4.0, to: 3.2, yaw: -18, pitch: 20, fov: 42 }),
+      ...cam.push({ on: [0.05, 1.15, 0.05], dist: 3.8, to: 3.1, yaw: 8, pitch: 18, fov: 42 }),
       zone: "sea",
       look: NIGHT,
       note: "From his left, clear of the mast: he comes up with the red ball, and the chest is open behind him.",
@@ -56,7 +56,7 @@ export const scene6 = storyScene(timing, {
           <>
             <Fill on={[-0.2, 1.4, 1.1]} yaw={-40} power={6} />
             <Boat position={[0, 0.05, 0]} hatch={0.8} lantern={1} />
-            <Chest position={[-0.1, D, -0.2]} open={0.85} />
+            <Chest position={[0.4, D, 0.05]} open={0.85} />
             <HatKid position={[-0.45, D - 0.1 + up * 0.15, 0.4]} rotationY={0.3} />
             <RedBall position={[-0.22, 1.15 + up * 0.2, 0.5]} scale={1.25} />
           </>
