@@ -120,8 +120,8 @@ export const LOOKS: Record<LookPreset, Preset> = {
     follow: true,
     shadowSpan: 13,
     sky: {
-      top: "#0e49c8", horizon: "#9ccdf7", bottom: "#6f8ca6",
-      sun: "#fff4d6", sunDir: [-1.1, 0.6, -1], sunSize: 200, sunPower: 0.95, haze: 0.38,
+      top: "#0a3fbe", horizon: "#7cb6f2", bottom: "#6f8ca6",
+      sun: "#fff4d6", sunDir: [-0.25, 0.42, -1], sunSize: 180, sunPower: 1.0, haze: 0.22,
     },
   },
   /** Minecraft night: deep blue, a cold moon for shape. Torches in the world do the warm work. */
@@ -168,8 +168,8 @@ export const LOOKS: Record<LookPreset, Preset> = {
     follow: true,
     shadowSpan: 13,
     sky: {
-      top: "#1b2f78", horizon: "#ffb27a", bottom: "#5c4250",
-      sun: "#ffd9a0", sunDir: [-0.6, 0.14, -1], sunSize: 95, sunPower: 1.9, haze: 0.75,
+      top: "#152a70", horizon: "#ffb87e", bottom: "#5c4250",
+      sun: "#ffd9a0", sunDir: [-0.2, 0.16, -1], sunSize: 90, sunPower: 2.2, haze: 0.55,
     },
   },
   /**

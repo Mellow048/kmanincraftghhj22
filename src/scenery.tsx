@@ -39,12 +39,12 @@ const World: React.FC = () => (
     <Block position={[-2.4, 0.12, -3.1]} size={[0.3, 0.24, 0.3]} color="#e0c040" castShadow={false} />
 
     {/* Three oaks, built from blocks so they cannot go missing. */}
-    <Oak at={[-6.5, 0, -3]} height={6.5} />
-    <Oak at={[7.5, 0, -4.5]} height={7.5} />
-    <Oak at={[-10, 0, 2]} height={5.5} />
+    <Oak at={[-7.5, 0, -11]} height={7} />
+    <Oak at={[8.5, 0, -12]} height={8} />
+    <Oak at={[-10, 0, -5]} height={5.5} />
 
     {/* Flowers in the grass, so the meadow is not a lawn. */}
-    {[[-2.1, 1.2], [1.9, 2.4], [-4.2, 4.6], [3.6, 5.2], [-1.2, 6.4], [5.1, 1.4]].map(([x, z], i) => (
+    {[[-2.1, -2.2], [1.9, -1.6], [-4.2, -2.6], [3.6, -3.2], [-1.2, -1.2], [5.1, -2.0]].map(([x, z], i) => (
       <Block
         key={i}
         position={[x, 0.12, z]}
@@ -81,7 +81,7 @@ const SCENE = storyScene(TIMING, {
   shots: [
     {
       cue: "scenery.wide",
-      ...cam.push({ on: [-1.6, 2.2, -3.4], dist: 10.5, to: 9.6, yaw: -9, pitch: 13, fov: 46 }),
+      ...cam.push({ on: [-1.2, 2.4, -4.0], dist: 9.4, to: 9.0, yaw: -8, pitch: 14, fov: 46 }),
       note: "Wide: the whole meadow, the cottage small against the sky.",
       stage: () => null,
     },
