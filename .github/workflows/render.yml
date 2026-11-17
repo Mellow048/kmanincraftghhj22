@@ -235,21 +235,29 @@ jobs:
           ls -la "$copy"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # The branch may have moved while the film rendered: commit on top of its newest tip.
-          for attempt in 1 2 3; do
-            git fetch --quiet --depth=1 origin "$REF_NAME"
-            git checkout --quiet --detach FETCH_HEAD
+          # The branch may have moved while the film rendered -- source commits land constantly -- so this has to
+          # build its commit on the newest tip every attempt, and push that. A shallow checkout of the run's own
+          # SHA is not enough: it is behind by definition, so the three retries all failed on the same stale base
+          # and the run reported success with nothing committed. Fetch deeper, rebase onto the real tip.
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin "$REF_NAME"
+            git checkout --quiet --detach "FETCH_HEAD"
             mkdir -p "$(dirname "$DESTINATION")"
             cp "$copy" "$DESTINATION"
             git add -f -- "$DESTINATION"
             if git diff --cached --quiet; then
               echo "The branch already has this exact file."; exit 0
             fi
+            cp "$copy" "/tmp/keep.mp4"
             git commit --quiet -m "Deliver ${COMPOSITION} render (${note})"
-            if git push origin "HEAD:refs/heads/${REF_NAME}"; then exit 0; fi
-            echo "Push refused (attempt $attempt); trying again on the new tip."
-            sleep 5
+            if git push origin "HEAD:refs/heads/${REF_NAME}"; then
+              echo "Committed ${DESTINATION} on ${REF_NAME}."; exit 0
+            fi
+            echo "Push refused (attempt $attempt); rebuilding on the new tip."
+            git reset --quiet --hard "FETCH_HEAD"
+            sleep $((attempt * 8))
           done
+          echo "Could not deliver ${DESTINATION} after 5 attempts" >&2
           exit 1
 
       - name: Publish release asset
