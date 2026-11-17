@@ -27,7 +27,7 @@ Everything below is read against that row.
 | Film | What the numbers said | What was done |
 |---|---|---|
 | *What If Every Lie Added a Netherite Block?* | The **second shot of the film measured 24.6 luma out of 255** — a black screen two seconds in, in the hook. Five more shots in the escalation sat at 26–37. And one effect left the voice only **3.3 dB** above the mix at 42 s. | `CloseKey`, `StreetFill` and `NightWash` added to the film's kit; seven shots lit and three re-framed; five effects trimmed and the mix rebuilt. Re-rendered: **no shot is below 40 luma now** (was six below 37), black frames 4.6 % → 1.5 %, opening detail 70.1 → 74.8, worst voice-over-mix 3.3 → 4.7 dB. |
-| *What If I Could Hear What Blocks Remember?* | Four shots in the night stretch had **half of every frame below 10 luma** (10.dark 18.4, 10.last 17.2). The opening moved at **1.94** against the reference's 3.41 and carried less detail (38.9 vs 65.3). | `NightGym` added to the film's kit; nine shots lit, the opening widened and driven in. Re-rendered. |
+| *What If I Could Hear What Blocks Remember?* | Four shots in the night stretch had **half of every frame below 10 luma** (10.dark 18.4, 10.last 17.2). The opening moved at **1.94** against the reference's 3.41 and carried less detail (38.9 vs 65.3). | `NightGym` added to the film's kit; nine shots lit, the opening widened (5.8 m → 7.4 m) and driven in to 4.9 m. Re-rendered: **no shot is below 22 luma now** (was two at 18 and 17), black frames 3.6 % → 0 %, opening motion 1.94 → 4.94 and detail 38.9 → 48.7. |
 
 Both films are under the brief's 175 s ceiling, both are 1080×1920@30, both put the subscribe line **after** the
 payoff, and both caption 99.8 % of their runtime from the recorded words.
@@ -146,14 +146,14 @@ lettering on screen; the words themselves cover 98.0 % of it. Same face and plac
 under the voice, beds 29.9 dB under, −14.8 LUFS, true peak −2.5 dB. Voice **16.2 dB** over the rest (median),
 worst moment **6.0 dB** at 96.0 s, under the cheer and the ding of the last beat.
 
-**9. Rendered file.** `renders/what-if-i-could-hear-what-blocks-remember.mp4` — ⟪SIZE2⟫, h264 + AAC, 1080×1920,
-30 fps, 2957 frames, 98.6 s.
+**9. Rendered file.** `renders/what-if-i-could-hear-what-blocks-remember.mp4` — 57.3 MB, h264 + AAC, 1080×1920,
+30 fps, 2957 frames, 98.6 s. Verified with ffprobe.
 
 **10. Self-review.**
 
 | The brief's question | The answer |
 |---|---|
-| Do the first three seconds create curiosity? | Yes, and after this pass the opening carries more: the shot was widened from 5.8 m to 7.4 m and driven in to 4.9 m across the line (detail ⟪HOOK2⟫, motion ⟪MOTION2⟫ — it was 38.9 / 1.94, both under the reference). |
+| Do the first three seconds create curiosity? | Yes, and after this pass the opening carries more: the shot was widened from 5.8 m to 7.4 m and driven in to 4.9 m across the line (detail **48.7**, was 38.9; motion **4.94**, was 1.94 — the reference is 65.3 / 3.41). |
 | Is the premise immediately understandable? | Yes: touch a block, hear a phrase, never a speaker. Stated by 18 s. |
 | Does every scene contribute? | 58 shots, each one a step toward or away from the truth about Eli. |
 | Is the middle engaging? | The gym-night stretch (49–71 s) is the emotional centre — and the part that was invisible. It is now lit (`NightGym` in nine shots: 10.dark 18 → 50 luma, 10.last 17 → 33, 10.choice 25 → 47). |
@@ -167,20 +167,38 @@ worst moment **6.0 dB** at 96.0 s, under the cheer and the ding of the last beat
 | Is the CTA in the right place? | Yes: the story resolves at 96.4 s ("the final echo sounded like laughter"), the subscribe line runs 96.4–98.6 s. |
 
 **11. Remaining weaknesses.**
-- `10.last` (33 luma) and `8.gym` (43) are still the darkest shots: rings blooming from a brick in a gym with the
-  lights out. The reference's own night shot measures 31, so this is in range — but it is the limit of what I would
-  defend.
-- The opening was re-framed and re-measured shot by shot, not watched. It is better by the numbers; whether it now
-  *reads* as the hook needs the owner's eyes.
+- `10.last` (31.4 luma) is still the darkest shot in the film — rings blooming from a brick in a gym with the
+  lights out — and the whole gym-night stretch (49–79 s) sits at 31–70 against a film opening at 107. The
+  reference's own night shot measures 31, so this is in range, and no shot is now below the 22 luma floor. But it
+  is the dimmest eleven seconds we have delivered.
+- The opening was re-framed and re-measured shot by shot, not watched. Motion is 4.94 against 1.94 before and the
+  reference's 3.41; detail 48.7 against 38.9 before and the reference's 65.3. It is better by the numbers; whether
+  it now *reads* as the hook needs the owner's eyes.
 - 105 effects a minute is dense. The sheet was trimmed once already (13 cues), but at 63.9 a minute it is the
   busiest mix in the repository and the most likely to feel cluttered to a human ear.
+- The ending darkens: luma 107 at the start, 61 at the end, because the last three beats are played at night under
+  the stage lights. Unlike the Netherite film, the payoff here is the darkest part of the film.
 - Nobody has listened to it.
 
 ---
 
 ## Every film in `renders/`, measured the same way
 
-⟪ALLTABLE⟫
+| film | length | cuts | median shot | longest shot | luma start / mid / end | opening detail | black frames | captions |
+|---|---|---|---|---|---|---|---|---|
+| in-this-town-monster-village | 221s | 89 (0.40/s) | 2.33s | 6.4s | 101 / 63 / 75 | 66.4 | 0.0% | 100.0% |
+| in-this-town-monster-village-part-2 | 128s | 43 (0.34/s) | 2.62s | 9.3s | 78 / 88 / 90 | 64.6 | 0.0% | 99.9% |
+| in-this-town-same-face | 105s | 53 (0.51/s) | 1.73s | 7.1s | 106 / 122 / 97 | 52.2 | 0.0% | 100.0% |
+| in-this-town-nobody-looked-at-the-moon | 112s | 57 (0.51/s) | 1.92s | 4.6s | 84 / 93 / 74 | 63.4 | 0.4% | 100.0% |
+| in-this-town-monster-egg | 177s | 89 (0.50/s) | 1.88s | 4.5s | 119 / 100 / 84 | 52.4 | 1.4% | 100.0% |
+| in-this-town-superpower-at-18 | 168s | 87 (0.52/s) | 1.81s | 3.3s | 117 / 80 / 67 | 58.1 | 0.0% | 100.0% |
+| in-this-town-superpower-at-18-part-2 | 169s | 69 (0.41/s) | 2.28s | 7.9s | 105 / 80 / 95 | 52.6 | 0.5% | 100.0% |
+| in-this-town-pumpkin-heads | 116s | 49 (0.42/s) | 1.97s | 11.6s | 104 / 71 / 76 | 59.9 | 3.6% | 100.0% |
+| what-if-you-could-see-who-had-a-crush-on-you | 114s | 54 (0.48/s) | 1.97s | 5.6s | 124 / 143 / 124 | 71.6 | 0.0% | 100.0% |
+| what-if-every-lie-added-a-netherite-block | 91s | 48 (0.53/s) | 1.8s | 4.6s | 95 / 84 / 91 | 74.8 | 1.5% | 99.8% |
+| what-if-i-could-hear-what-blocks-remember | 99s | 56 (0.57/s) | 1.7s | 4.9s | 107 / 93 / 61 | 48.7 | 0.0% | 99.7% |
+| why-does-bread-cost-more-every-year | 49s | 0 (0.00/s) | 49.2s | 49.2s | 127 / 117 / 116 | 54.6 | 0.0% | 100.0% |
+| what-is-a-dictator | 54s | 0 (0.00/s) | 53.73s | 53.7s | 122 / 122 / 126 | 45.0 | 0.0% | 100.0% |
 
 `why-does-bread-cost-more-every-year.mp4` is the Stories reference: by the contract in `AGENTS.md` its camera
 flies and does not cut, so "one shot holds for 49 s" is the design, not a fault.
