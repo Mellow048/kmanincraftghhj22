@@ -203,6 +203,9 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
   const cfg = resolve(settings);
+  /** A stable identity for the settings: a fresh object every render would rebuild
+   *  the whole composer, which leaks render targets and kills a long CI render. */
+  const cfgKey = cfg ? JSON.stringify(cfg) : "";
 
   const rig = useMemo(() => {
     if (!cfg) return null;
@@ -233,7 +236,17 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
     composer.addPass(grade);
     grade.renderToScreen = true;
     return { composer, bloom, grade };
-  }, [gl, scene, camera, cfg, size.width, size.height]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gl, scene, camera, cfgKey, size.width, size.height]);
+
+  useEffect(() => {
+    if (!rig) return;
+    return () => {
+      rig.composer.dispose();
+      rig.bloom.dispose();
+      rig.grade.dispose();
+    };
+  }, [rig]);
 
   useEffect(() => {
     if (!rig) return;
