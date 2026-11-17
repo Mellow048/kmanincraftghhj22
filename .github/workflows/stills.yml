@@ -71,7 +71,11 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
         run: |
-          git -c core.hooksPath=/dev/null commit -m "Diagnostic review frames for ${COMPOSITION}" || echo "commit-exit:$?"
+          # git commit itself does not persist on this runner, so the commit is built by hand.
+          TREE=$(git write-tree)
+          PARENT=$(git rev-parse HEAD)
+          COMMIT=$(git commit-tree "$TREE" -p "$PARENT" -m "Diagnostic review frames for ${COMPOSITION}")
+          git reset --soft "$COMMIT"
 
       - name: Push review frames
         if: ${{ inputs.commit_review && github.ref_name != 'main' }}
