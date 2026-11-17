@@ -20,6 +20,7 @@ import { film as inThisTownTheFastestKidWinsPart2 } from "./videos/in-this-town-
 import { film as whatIfYouCouldSeeHowLongYouHad } from "./videos/what-if-you-could-see-how-long-you-had/film";
 import { film as whatIfYourShadowDidWhatYouWereThinking } from "./videos/what-if-your-shadow-did-what-you-were-thinking/film";
 import { film as whatIfEverybodyForgotYouTheMomentYouLeftTheRoom } from "./videos/what-if-everybody-forgot-you-the-moment-you-left-the-room/film";
+import { film as whatIfEveryDoorOnYourStreetOpenedSomewhereElse } from "./videos/what-if-every-door-on-your-street-opened-somewhere-else/film";
 import { film as whatIfYouCouldHearTheLastThingAPlaceRemembered } from "./videos/what-if-you-could-hear-the-last-thing-a-place-remembered/film";
 
 /**
@@ -49,5 +50,6 @@ export const FILMS = [
   whatIfYouCouldSeeHowLongYouHad,
   whatIfYourShadowDidWhatYouWereThinking,
   whatIfEverybodyForgotYouTheMomentYouLeftTheRoom,
+  whatIfEveryDoorOnYourStreetOpenedSomewhereElse,
   whatIfYouCouldHearTheLastThingAPlaceRemembered,
 ];

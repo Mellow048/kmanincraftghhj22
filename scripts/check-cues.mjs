@@ -74,6 +74,20 @@ async function buildOne(slug) {
 }
 
 if (arg === "--all") {
+  // A film that exists on disk but is not in src/registry.ts cannot be rendered at all: Remotion reports
+  // "Could not find composition" twenty minutes later, at the plan step. Film four spent a whole render pass
+  // in that state. This is the cheapest place in the pipeline to notice.
+  const registry = fs.readFileSync(path.join("src", "registry.ts"), "utf8");
+  const unregistered = fs
+    .readdirSync(path.join("src", "videos"), { withFileTypes: true })
+    .filter((e) => e.isDirectory() && fs.existsSync(path.join("src", "videos", e.name, "film.tsx")))
+    .map((e) => e.name)
+    .filter((slug) => !registry.includes(`videos/${slug}/film`));
+  for (const slug of unregistered) {
+    process.stdout.write(`${slug.padEnd(58)} NOT IN src/registry.ts — it cannot render\n`);
+  }
+  if (unregistered.length > 0) process.exitCode = 1;
+
   const slugs = fs
     .readdirSync(path.join("src", "videos"), { withFileTypes: true })
     .filter((e) => e.isDirectory() && fs.existsSync(path.join("src", "videos", e.name, "film.tsx")))
@@ -97,7 +111,7 @@ if (arg === "--all") {
   process.stdout.write(
     `\n${failed === 0 ? "OK — every film builds its shot lists." : `${failed} film(s) cannot build their scenes.`}\n`,
   );
-  process.exit(failed === 0 ? 0 : 1);
+  if (failed > 0) process.exitCode = 1;
 }
 
 const r = await buildOne(arg);
