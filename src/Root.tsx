@@ -1,9 +1,10 @@
 import { Composition } from "remotion";
 import { FILMS } from "./registry";
+import { SCENERY } from "./scenery";
 
 export const RemotionRoot: React.FC = () => (
   <>
-    {FILMS.map((film) => (
+    {[...FILMS, ...SCENERY].map((film) => (
       <Composition
         key={film.id}
         id={film.id}
