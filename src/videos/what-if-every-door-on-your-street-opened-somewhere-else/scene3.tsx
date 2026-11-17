@@ -65,7 +65,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "12.sat",
       // Her hands, and her shoes: she has been walking all day.
-      ...cam.push({ on: K(0.30, 0.55, 1.20), dist: 1.43, to: 0.98, yaw: 0, pitch: 12, fov: 40 }),
+      ...cam.push({ on: K(0.30, 0.58, 1.80), dist: 2.60, to: 2.20, yaw: 0, pitch: -6, fov: 48 }),
       zone: "kitchen",
       look: "overworld-night",
       note: "Down at her feet under the table: her shoes, dusty to the laces, and the hem of her coat. The walking is the proof.",
