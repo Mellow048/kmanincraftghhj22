@@ -194,8 +194,8 @@ export const Shaft: React.FC<{ position: Vec3; depth?: number }> = ({ position, 
         <Torch position={[-0.62, -0.9 - i * 1.4, -0.5]} light={i === 3 ? 6 : 4} seed={i + 1} />
         <PixelText
           text={`${(i + 1) * 100}`}
-          position={[0.6, -1.1 - i * 1.4, -0.66]}
-          rotationY={-Math.PI / 2}
+          position={[-0.15, -1.1 - i * 1.4, -0.66]}
+          rotationY={0}
           height={0.34}
           color="#e8dcc0"
         />
