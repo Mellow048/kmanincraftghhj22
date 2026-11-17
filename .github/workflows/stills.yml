@@ -65,7 +65,7 @@ jobs:
           mkdir -p "review/${COMPOSITION}"
           cp out/stills/*.png "review/${COMPOSITION}/"
           git add -f "review/${COMPOSITION}/"
-          git commit -m "Diagnostic review frames for ${COMPOSITION}"
+          if ! OUT=$(git commit -m "Diagnostic review frames for ${COMPOSITION}" 2>&1); then echo "::error::$OUT"; echo "$OUT"; exit 1; fi
           # Somebody may have pushed while the stills rendered: take their commits first, or the push is refused
           # and ten minutes of frames are lost.
           git pull --rebase origin "${REF_NAME}" || { echo "::error::rebase failed"; git status; exit 1; }
