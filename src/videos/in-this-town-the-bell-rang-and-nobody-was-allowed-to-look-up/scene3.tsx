@@ -15,7 +15,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.roof",
-      ...cam.push({ on: [1.2, 2.6, -5.2], dist: 8, to: 6.4, yaw: 20, pitch: 16, fov: 44 }),
+      ...cam.push({ on: [1.2, 3.2, -5.4], dist: 11, to: 9, yaw: 16, pitch: 12, fov: 48 }),
       zone: "village",
       look: DAY,
       note: "From the street: the roof, one black leg on it, and the baker under it with his nose in the bread.",
