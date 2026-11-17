@@ -55,7 +55,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: SPOT.at(0, 1.3, -1.9), dist: 3.2, to: 2.7, yaw: 6, pitch: 3, fov: 40 }),
       zone: "class",
       note: "Him in front of an empty board. Every shot up to this one had the shadow on that board, and this one does not: the frame that has been the film's whole grammar is suddenly missing its other half. It should feel like a missing tooth.",
-      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.9)} rotationY={NORTH} animation="idle" face="uneasy" />,
+      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.9)} rotationY={0.01} animation="idle" face="uneasy" />,
     },
     {
       // It walks out. The door, and the shadow going through it on its own.
@@ -67,7 +67,7 @@ export const scene2 = storyScene(timing, {
         const k = ramp(t, 0.15, 1.6);
         return (
           <>
-            <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={EAST} animation="idle" face="uneasy" />
+            <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={0.74} animation="idle" face="uneasy" />
             <group rotation={[0, 0, 0]} position={[SPOT.at(2.4 + 0.9 * k, 0.02, -1.2 - 1.3 * k)[0], 0.02, -1.2 - 1.3 * k]}>
               <group rotation={[-Math.PI / 2, 0, 0]}>
                 <Shadow at={[0, 0, 0]} opacity={0.5} arm={0.3} />
@@ -87,7 +87,7 @@ export const scene2 = storyScene(timing, {
         const k = ramp(t, 0.15, 1.6);
         return (
           <>
-            <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={EAST} animation="idle" face="uneasy" />
+            <Hero position={SPOT.at(0.6, 0, 1.4)} rotationY={2.02} animation="idle" face="uneasy" />
             <group rotation={[0, 0, 0]} position={[SPOT.at(2.4 + 0.9 * k, 0.02, -1.2 - 1.3 * k)[0], 0.02, -1.2 - 1.3 * k]}>
               <group rotation={[-Math.PI / 2, 0, 0]}>
                 <Shadow at={[0, 0, 0]} opacity={0.5} arm={0.3} />
@@ -115,7 +115,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: SPOT.at(0, 1.12, -1.5), dist: 2.1, to: 2.5, yaw: -20, pitch: 0, fov: 38 }),
       zone: "class",
       note: "On him, and this is the shot where he decides. He is standing very still with his fists closed, and there is nothing behind him: no shadow on the board, no shadow on the floor. Deliberately the emptiest frame in the film.",
-      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.5)} rotationY={NORTH} animation="idle" face="brave" />,
+      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.5)} rotationY={-0.35} animation="idle" face="brave" />,
     },
     {
       // SPLIT: 'if I think nothing, it does nothing', on the empty board where the shadow used to be.
@@ -123,7 +123,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: SPOT.at(0, 1.12, -1.5), dist: 1.64, to: 2.0, yaw: -20, pitch: 0, fov: 38 }),
       zone: "class",
       note: "SPLIT: 'if I think nothing, it does nothing', on the empty board where the shadow used to be.",
-      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.5)} rotationY={NORTH} animation="idle" face="brave" />,
+      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.5)} rotationY={-0.44} animation="idle" face="brave" />,
     },
     {
       // The cost of the plan, and the film's best gag after the turn.
@@ -133,7 +133,7 @@ export const scene2 = storyScene(timing, {
       note: "He is trying to think nothing, so: eyes screwed shut, jaw clenched, and behind him on the board a shadow that is CONCENTRATING TOO - straining, wobbling, about to give. The joke is that not thinking is the hardest work he has ever done.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -1.7)} rotationY={NORTH} animation="idle" face="brave" />
+          <Hero position={SPOT.at(0, 0, -1.7)} rotationY={0.32} animation="idle" face="brave" />
           <group position={SPOT.at(0, 0, -3.885)} scale={[1.05, 1.05, 1.05]}>
             <Shadow at={[0, 0, 0]} arm={0.25 + 0.06 * Math.sin(t * 14)} leg={0.05 * Math.sin(t * 9)} opacity={0.7} />
           </group>
@@ -148,7 +148,7 @@ export const scene2 = storyScene(timing, {
       note: "SPLIT: 'thinking about not thinking counts', on the strain.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -1.7)} rotationY={NORTH} animation="idle" face="brave" />
+          <Hero position={SPOT.at(0, 0, -1.7)} rotationY={0.32} animation="idle" face="brave" />
           <group position={SPOT.at(0, 0, -3.885)} scale={[1.05, 1.05, 1.05]}>
             <Shadow at={[0, 0, 0]} arm={0.25 + 0.06 * Math.sin(t * 14)} leg={0.05 * Math.sin(t * 9)} opacity={0.7} />
           </group>

@@ -81,7 +81,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: SPOT.at(0.6, 1.3, 1.3), dist: 2.4, to: 2.0, yaw: -6, pitch: 1, fov: 38 }),
       zone: "class",
       note: "Him, crouched, asking. The camera is low because he is, and because the line he is asking is the last small thing before the film opens up.",
-      stage: (_t) => <Hero position={SPOT.at(0.2, 0, 1.9)} rotationY={SOUTH - 0.6} animation="sit" face="uneasy" />,
+      stage: (_t) => <Hero position={SPOT.at(0.2, 0, 1.9)} rotationY={0.08} animation="sit" face="uneasy" />,
     },
     {
       // THE FIRST PAYOFF (~36%). One sentence, from a person who has been watching.
@@ -100,7 +100,7 @@ export const scene3 = storyScene(timing, {
       note: "THE PICTURE THE FILM WAS BUILT FOR. From the pavement, across the street: one house, one lit upstairs window, and in it a flat black figure standing with its arms at its sides. He is small at the bottom of the frame with his back to us, looking up. The window is the only warm thing in the shot, and the audience should get the answer about a second before he says it.",
       stage: (t) => (
         <>
-          <Hero position={[0.2, 0, 1.5]} rotationY={NORTH} animation="idle" face="calm" headPitch={-0.3} />
+          <Hero position={[0.2, 0, 1.5]} rotationY={-0.09} animation="idle" face="calm" headPitch={-0.3} />
           <Shadow at={[0.95, 2.3, -2.24]} scale={0.86} opacity={1} arm={0.05 + 0.04 * Math.sin(t * 1.6)} />
         </>
       ),
@@ -180,7 +180,7 @@ export const scene3 = storyScene(timing, {
       note: "Pull back off the window to the whole house and the street: one lit room in a dark row, and him on the pavement in front of it. He is not crying. He is working it out, which is worse.",
       stage: (_t) => (
         <>
-          <Hero position={[0.95, 0, 1.3]} rotationY={NORTH} animation="idle" face="ouch" />
+          <Hero position={[0.95, 0, 1.3]} rotationY={-0.48} animation="idle" face="ouch" />
           <Shadow at={[0.95, 2.32, -2.24]} scale={0.86} opacity={1} arm={0.05} />
         </>
       ),
@@ -260,7 +260,7 @@ export const scene3 = storyScene(timing, {
       note: "Him sitting on the floor of a dark room with his eyes shut, doing the hardest thing in the film: thinking at somebody. Lit from one side like the bedroom window, so the two rooms rhyme.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -1.4)} rotationY={NORTH} animation="sit" face="calm" />
+          <Hero position={SPOT.at(0, 0, -1.4)} rotationY={0.01} animation="sit" face="calm" />
           <pointLight position={SPOT.at(0.8, 1.7, 0.4)} color="#ffcf92" intensity={7} distance={4} decay={2} />
         </>
       ),
@@ -274,7 +274,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <SubscribeSign position={SPOT.at(0.2, 2.15, -3.5)} rotationY={0} scale={1.0} tilt={0.03 + Math.sin(t * 9) * 0.01} />
-          <Hero position={SPOT.at(0, 0, -2.2)} rotationY={NORTH} animation="idle" face="wow" />
+          <Hero position={SPOT.at(0, 0, -2.2)} rotationY={0.00} animation="idle" face="wow" />
         </>
       ),
     },

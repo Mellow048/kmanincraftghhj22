@@ -105,7 +105,7 @@ export const scene1 = storyScene(timing, {
       note: "SPLIT: both of them, and the space between them. Him perfectly still, the shadow a metre and a half away with its arm going. The joke has to be readable in one second.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={0.28} animation="idle" face="calm" />
           <Shadow at={WALL_ASIDE} arm={0.75 + 0.2 * Math.sin(t * 7)} />
         </>
       ),
@@ -117,7 +117,7 @@ export const scene1 = storyScene(timing, {
       note: "Push in on him and keep the shadow in the corner of the frame so the two are in one picture: he is doing nothing at all and the shadow is walking. The joke of the whole film is in this frame.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH} animation="idle" face="uneasy" />
+          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={0.28} animation="idle" face="uneasy" />
           <Shadow at={WALL} arm={0.2 + 0.3 * Math.sin(t * 3)} leg={0.25} />
         </>
       ),
@@ -166,7 +166,7 @@ export const scene1 = storyScene(timing, {
       note: "Back on him, appalled, with his arm pinned to his side by his own hand, and the shadow on the wall behind him still waving like nothing is wrong.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0.3, 0, -1.4)} rotationY={EAST} animation="idle" face="ouch" />
+          <Hero position={SPOT.at(0.3, 0, -1.4)} rotationY={0.35} animation="idle" face="ouch" />
           <Shadow at={SPOT.at(0.3, 0, -3.885)} rotationY={0} arm={0.9 + 0.1 * Math.sin(t * 7)} />
         </>
       ),
@@ -176,7 +176,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: SPOT.at(0.3, 1.15, -1.4), dist: 1.9, to: 1.65, yaw: 60, pitch: 0, fov: 34 }),
       zone: "class",
       note: "His arm, jammed down, at a distance where the joke is the muscle in his jaw. One second. The last shot of the first joke has to be the smallest.",
-      stage: (_t) => <Hero position={SPOT.at(0.3, 0, -1.4)} rotationY={EAST} animation="idle" face="frown" />,
+      stage: (_t) => <Hero position={SPOT.at(0.3, 0, -1.4)} rotationY={0.35} animation="idle" face="frown" />,
     },
     {
       cue: "3.same",
@@ -200,7 +200,7 @@ export const scene1 = storyScene(timing, {
       note: "He is standing to attention in a room full of seated kids, straight-backed and mortified, while his shadow on the wall is sitting cross-legged with its chin in its hands. The room is the joke: everybody else is doing the right thing.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -2.2)} rotationY={NORTH} animation="idle" face="uneasy" />
+          <Hero position={SPOT.at(0, 0, -2.2)} rotationY={0.11} animation="idle" face="uneasy" />
           <Classmate who={1} position={SPOT.at(-1.5, 0, -0.6)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
           <Classmate who={3} position={SPOT.at(1.5, 0, -0.6)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.2} />
           <Shadow at={SPOT.at(0, 0, -3.885)} sitting />
@@ -237,7 +237,7 @@ export const scene1 = storyScene(timing, {
       note: "Wide and low with the shadow big on the wall behind him, arms up, screaming silently. He is talking about what it cannot do while the picture says what it is desperate to do.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH} animation="idle" face="calm" />
+          <Hero position={SPOT.at(0, 0, -2.0)} rotationY={-0.23} animation="idle" face="calm" />
           <group position={WALL} scale={[1.25, 1.25, 1.25]}>
             <Block size={[0.74, 0.42, 0.03]} position={[0, 0.74, 0]} color="#05050a" opacity={0.82} castShadow={false} />
             <Block size={[0.34, 0.34, 0.03]} position={[0, 1.24, 0]} color="#05050a" opacity={0.82} castShadow={false} />
@@ -257,7 +257,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Classmate who={7} position={SPOT.at(1.3, 0, -1.6)} rotationY={WEST} animation="idle" face="frown" />
           <Classmate who={8} position={SPOT.at(2.2, 0, -1.6)} rotationY={WEST + 0.3} animation="idle" face="frown" />
-          <Hero position={SPOT.at(-0.6, 0, -0.6)} rotationY={NORTH + 0.5} animation="idle" face="ouch" />
+          <Hero position={SPOT.at(-0.6, 0, -0.6)} rotationY={0.55} animation="idle" face="ouch" />
           <Shadow at={SPOT.at(1.2, 0, -3.885)} arm={0.7 + 0.3 * Math.sin(t * 12)} />
         </>
       ),
@@ -280,14 +280,14 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: SPOT.at(-0.6, 1.35, -0.6), dist: 2.2, to: 1.85, yaw: 22, pitch: 1, fov: 36 }),
       zone: "class",
       note: "On him, and he looks pleased with himself. Held close because the expression has to change during the line.",
-      stage: (_t) => <Hero position={SPOT.at(-0.6, 0, -0.6)} rotationY={NORTH + 0.5} animation="idle" face="grin" />,
+      stage: (_t) => <Hero position={SPOT.at(-0.6, 0, -0.6)} rotationY={0.11} animation="idle" face="grin" />,
     },
     {
       cue: "4.said2",
       ...cam.push({ on: SPOT.at(-0.6, 1.32, -0.6), dist: 1.8, to: 1.55, yaw: 22, pitch: 1, fov: 32 }),
       zone: "class",
       note: "SPLIT: 'I was the one who never had to lie'. Closer, and the grin should be gone: it is not a boast any more, it is the thing that is going to cost him Jo.",
-      stage: (_t) => <Hero position={SPOT.at(-0.6, 0, -0.6)} rotationY={NORTH + 0.5} animation="idle" face="calm" />,
+      stage: (_t) => <Hero position={SPOT.at(-0.6, 0, -0.6)} rotationY={0.11} animation="idle" face="calm" />,
     },
     {
       cue: "4.alone",
@@ -317,7 +317,7 @@ export const scene1 = storyScene(timing, {
         const k = ramp(t, 0.1, 1.4);
         return (
           <>
-            <Hero position={SPOT.at(-1.4, 0, -1.2)} rotationY={NORTH} animation="idle" face="calm" />
+            <Hero position={SPOT.at(-1.4, 0, -1.2)} rotationY={1.05} animation="idle" face="calm" />
             <DrawnHouse at={SPOT.at(0.2, 1.75, -3.68)} draw={k} />
           </>
         );
@@ -357,7 +357,7 @@ export const scene1 = storyScene(timing, {
       note: "The teacher leaning into him, finger up, and the teller rigid, and the shadow on the wall behind them both, dancing: one leg out, arms up, having the best day of its life. The joke is entirely in the background.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(0, 0, -1.8)} rotationY={NORTH} animation="idle" face="frown" />
+          <Hero position={SPOT.at(0, 0, -1.8)} rotationY={-0.36} animation="idle" face="frown" />
           <Classmate who={5} position={SPOT.at(-0.9, 0, -1.2)} rotationY={SOUTH - 0.5} animation="idle" face="frown" />
           <Shadow at={WALL} arm={0.5 + 0.5 * Math.sin(t * 9)} leg={0.5 * Math.sin(t * 11)} scale={1.1} />
         </>
@@ -369,7 +369,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: SPOT.at(0, 1.35, -1.8), dist: 2.3, to: 1.95, yaw: 14, pitch: 1, fov: 36 }),
       zone: "class",
       note: "Close on him, and he is almost proud of it. He thinks he has found the trick. The audience has to see him being pleased so the last line lands on a face they remember.",
-      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.8)} rotationY={NORTH} animation="idle" face="grin" />,
+      stage: (_t) => <Hero position={SPOT.at(0, 0, -1.8)} rotationY={0.42} animation="idle" face="grin" />,
     },
   ],
 });
