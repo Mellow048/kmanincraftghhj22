@@ -194,7 +194,7 @@ export const scene1 = storyScene(timing, {
     {
       // The chair, close: a bag on it, and a class behind it not breathing.
       cue: "2.chaira",
-      ...cam.push({ on: [0.00, 0.86, 1.20], dist: 2.17, to: 1.62, yaw: 34, pitch: 5, fov: 34 }),
+      ...cam.push({ on: [0.00, 0.72, 1.60], dist: 2.80, to: 2.30, yaw: 176, pitch: 10, fov: 44 }),
       zone: "class",
       note: "The chair, close: a bag on it, and a class behind it not breathing.",
       stage: (_t) => (

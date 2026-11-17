@@ -62,7 +62,7 @@ export const scene3 = storyScene(timing, {
     {
       // Her face, lit from one side, and she does not know he is in the doorway.
       cue: "11.mine",
-      ...cam.push({ on: [-0.10, 1.15, 160.60], dist: 3.22, to: 2.67, yaw: 36, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [0.30, 1.30, 161.30], dist: 1.80, to: 1.45, yaw: 20, pitch: 2, fov: 40 }),
       zone: "kitchen",
       note: "Her face, lit from one side, and she does not know he is in the doorway.",
       stage: (_t) => (

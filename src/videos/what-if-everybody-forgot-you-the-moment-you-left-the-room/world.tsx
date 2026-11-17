@@ -141,6 +141,13 @@ export const World: React.FC = () => {
           ))}
           <Glow position={[0, 3.3, -1.5]} size={2.8} color="#fff0c8" opacity={0.18} />
           <LightPool position={[0, 0.02, -0.6]} width={9} depth={6} color="#fff2c8" opacity={0.12} />
+          {/* THE CANTEEN HAD NO LIGHT IN IT. A light pool is a decal on the floor, not a lamp: this zone has
+              had one since it was built and never a point light, so every shot that looked at the counter and
+              the wall behind it got a black band across the top third of the frame. Two strip lights over the
+              serving line, one over the tables. */}
+          <pointLight position={[0, 3.0, -3.6]} color="#fff6e0" intensity={34} distance={13} decay={2} />
+          <pointLight position={[-3.0, 3.0, 0.4]} color="#fff6e0" intensity={22} distance={11} decay={2} />
+          <pointLight position={[3.2, 3.0, 0.4]} color="#fff6e0" intensity={22} distance={11} decay={2} />
           <Dust position={[0, 1.8, -1.5]} area={[11, 3, 7]} count={36} size={0.03} color="#fff7d8" opacity={0.4} seed={6} speed={0.12} />
         </group>
       </Zone>
