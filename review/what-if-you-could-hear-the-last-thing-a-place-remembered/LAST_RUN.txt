@@ -1,5 +1,0 @@
-
-▶ what-if-you-could-hear-the-last-thing-a-place-remembered frame 1180 → out/stills/what-if-you-could-hear-the-last-thing-a-place-remembered-1180.png
-
-Done. 1 still(s) in out/stills
-exit=0
