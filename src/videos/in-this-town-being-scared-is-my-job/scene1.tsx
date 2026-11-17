@@ -1,11 +1,13 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Barb, Bubble, Count, DEG, Farm, Gary, Kevin, Loaf, Me, PLACE, SOUTH, Shake, SoundRings, pop, timing, tw, w } from "./kit";
+import { Barb, Bubble, Count, DEG, Farm, Gary, IronGolem, Kevin, Tag, Loaf, Me, NORTH, PLACE, Puffs, SOUTH, Shake, SoundRings, hop, pop, timing, tw, w } from "./kit";
 
 /** 01 — The hook: a villager in a glass room in the sky, screaming at a zombie in a boat. His name is Kevin. */
 const ME = PLACE.me;
 const KEV = PLACE.kevin;
 const eyes: Vec3 = [KEV[0], 1.3, KEV[2]];
+/** Where the lens is in the first shot, for eyes to find. */
+const LENS1: Vec3 = [2.0, 2.1, 5.2];
 /** The other two, at work in their rooms. `k` is how scared they are. */
 export const Others: React.FC<{ t: number; k?: number; gary?: boolean; barb?: boolean }> = ({ t, k = 0, gary = true, barb = true }) => (
   <>
@@ -28,7 +30,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.job",
-      ...cam.push({ on: [0.1, 1.55, 1.0], dist: 5.9, to: 5.2, yaw: 44, pitch: 7, fov: 46 }),
+      ...cam.push({ on: [0.05, 1.5, 0.9], dist: 5.0, to: 4.3, yaw: 24, pitch: 7, fov: 46 }),
       zone: "farm",
       look: "overworld-day",
       note: "The hook. A glass room in the sky. A villager in a yellow hard hat is screaming at a zombie who sits one block away in a boat, with a name tag over his head. The zombie does not move. The scream stops; the villager looks at us.",
@@ -39,12 +41,19 @@ export const scene1 = storyScene(timing, {
           <>
             <Farm />
             <Shake t={t} k={k}>
-              <Me position={ME} rotationY={SOUTH} nod={k ? -0.4 : 0} hmm={k} lookAt={k ? undefined : [5, 2, 6]} />
+              <Me position={[ME[0], hop(t, 0.03, 0.25, 0.22), ME[2]]} rotationY={SOUTH + 0.3} nod={k ? -0.4 : 0} hmm={k} lookAt={k ? undefined : LENS1} />
             </Shake>
-            <Bubble text="AAAH!" position={[0.3, 3.2, 1.15]} rotationY={0.77} scale={k ? 0.8 + Math.sin(t * 30) * 0.04 : 0} tail={-1} tilt={Math.sin(t * 36) * 0.04} />
+            <Bubble text="AAAH!" position={[0.45, 3.0, 1.2]} rotationY={0.42} scale={k ? (0.72 + Math.sin(t * 30) * 0.04) * pop(t, 0.05, 0.12) : 0} tail={-1} tilt={Math.sin(t * 36) * 0.04} />
             <SoundRings position={[0, 1.7, 1.0]} t={k ? t : -1} color="#ffffff" reach={1.4} />
-            <Kevin tagTurn={0.77} tagScale={0.8} />
-            <Others t={t} />
+            <Kevin position={[KEV[0], hop(t, 0.25, 0.2, 0.2), KEV[2]]} tag={false} lookAt={t > stop + 0.25 ? LENS1 : undefined} />
+            <Tag position={[KEV[0], 1.74, KEV[2]]} rotationY={0.42} scale={0.8 * pop(t, 0.45, 0.14)} />
+            <Bubble text="AAH!" position={[-2.0, 2.75, 1.2]} rotationY={0.42} scale={k ? 0.6 * pop(t, 0.65, 0.12) : 0} tail={1} tilt={Math.sin(t * 33) * 0.05} />
+            <Bubble text="AAH!" position={[2.0, 2.75, 1.2]} rotationY={0.42} scale={k ? 0.6 * pop(t, 0.85, 0.12) : 0} tail={-1} tilt={Math.sin(t * 39) * 0.05} />
+            <IronGolem position={[-1.15, 0, -3.0]} rotationY={SOUTH + 0.3} scale={pop(t, 1.05, 0.16)} />
+            {t > 1.05 && t < 1.5 ? <Puffs position={[-1.15, 1.4, -3.0]} count={9} spread={1.2} size={0.34} rise={0.8} speed={2} color="#f4f6f8" /> : null}
+            <IronGolem position={[1.2, 0, -3.4]} rotationY={SOUTH + 0.2} scale={pop(t, 1.3, 0.16)} />
+            {t > 1.3 && t < 1.75 ? <Puffs position={[1.2, 1.4, -3.4]} count={9} spread={1.2} size={0.34} rise={0.8} speed={2} color="#f4f6f8" /> : null}
+            <Others t={t} k={k} />
           </>
         );
       },

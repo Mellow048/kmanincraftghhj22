@@ -1,5 +1,6 @@
 import { cam, storyScene } from "../../engine";
-import { Bubble, EAST, Life, Lying, Me, MiniBed, MyRoom, NORTH, PLACE, Puffs, SOUTH, Stranger, Town, Villager, ROBE, pop, posed, timing, tw } from "./kit";
+import { Vox } from "../../engine";
+import { Bubble, EAST, Life, Loaf, Pickaxe, Lying, Me, MiniBed, MyRoom, NORTH, PLACE, Puffs, SOUTH, Stranger, Town, Villager, ROBE, pop, posed, timing, tw } from "./kit";
 
 /** 01 — A stranger moved into his house, and put his bed in his pocket. */
 const BED = PLACE.bed;
@@ -11,7 +12,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.moved",
-      ...cam.push({ on: [0.55, 1.0, -0.5], dist: 6.4, to: 4.9, yaw: 0, pitch: 11, fov: 50 }),
+      ...cam.push({ on: [0.55, 1.05, -0.5], dist: 5.3, to: 4.0, yaw: 0, pitch: 10, fov: 50 }),
       zone: "room",
       look: "overworld-day",
       note: "The hook: a villager stands beside his own bed and looks at us. There is a player asleep in it with his boots on. Zs rise off him, he rolls over, the villager looks at him, and back at us.",
@@ -21,8 +22,15 @@ export const scene1 = storyScene(timing, {
           <Stranger position={[BED[0], 0.56 + Math.sin(t * 3) * 0.015, BED[2] + 0.15]} rotationY={SOUTH + Math.sin(tw(t, 1.0, 1.3) * Math.PI) * 0.25} animation="sleep" face="sleepy" time={t} />
           <Me position={[0.05, 0, -0.35]} rotationY={SOUTH} turn={t < 0.35 ? 0.9 : t > 1.1 && t < 1.55 ? 0.9 : 0} nod={t < 0.35 || (t > 1.1 && t < 1.55) ? 0.25 : 0} />
           {[0.15, 0.75, 1.35].map((at, i) => (
-            <Bubble key={i} text="Z" position={[BED[0] - 0.15 + i * 0.22, 1.25 + i * 0.32 + (t - at) * 0.25, BED[2] - 0.5]} scale={(0.42 + i * 0.1) * pop(t, at, 0.16)} tail={-1} tilt={0.15} />
+            <Bubble key={i} text="Z" position={[BED[0] - 0.15 + i * 0.22, 1.25 + i * 0.32 + (t - at) * 0.25, BED[2] - 0.5]} scale={(0.55 + i * 0.14) * pop(t, at, 0.16)} tail={-1} tilt={0.15} />
           ))}
+          {/* his things arrive one at a time: a pickaxe against my bed, my bread on my blanket, two blocks of dirt on my floor */}
+          <Pickaxe position={[0.5, 0.04, 0.12]} rotation={[-1.42, 0, 0]} scale={1.1 * pop(t, 0.28, 0.14)} />
+          <Loaf position={[BED[0] + 0.1, 0.56, BED[2] + 0.95]} rotation={[0, 0.5, 0]} scale={0.9 * pop(t, 0.62, 0.14)} />
+          {pop(t, 0.9, 0.14) > 0.01 ? <group position={[1.2, 0, 1.25]} scale={0.62 * pop(t, 0.9, 0.14)}><Vox kind="dirt" position={[0, 0.3, 0]} size={[0.6, 0.6, 0.6]} /></group> : null}
+          {pop(t, 1.25, 0.14) > 0.01 ? <group position={[1.14, 0.372, 1.22]} rotation={[0, 0.3, 0]} scale={0.62 * pop(t, 1.25, 0.14)}><Vox kind="dirt" position={[0, 0.3, 0]} size={[0.6, 0.6, 0.6]} /></group> : null}
+          <Bubble text="?" position={[-0.25, 2.25, -0.3]} scale={0.6 * pop(t, 0.42, 0.14) * (t > 1.1 ? 0 : 1)} tail={1} tilt={-0.1} />
+          <Bubble text="!" position={[-0.25, 2.25, -0.3]} scale={0.7 * pop(t, 1.6, 0.14)} tail={1} tilt={-0.1} />
         </>
       ),
     },

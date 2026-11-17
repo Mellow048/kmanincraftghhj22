@@ -5,10 +5,10 @@
   "seconds": 132.1333,
   "built_from": {
     "timing.json": "ba8d5a417c48a8261857c72e4c0a5af6d8c339ad",
-    "sound.json": "55f6c8a44223bdf675d3e914c7569dafb2f8486a",
+    "sound.json": "0c4606658c8d0aa85d1d9dd60fa911b900a27b89",
     "narration.mp3": "382e7df78588dd0569f9f9a731cfc0c2573cc242"
   },
-  "mix_sha1": "3fd5ea51d2c71955686ba326923067c571b09e23",
+  "mix_sha1": "5207aef31f9e366c0398596bd8d5d7819614a8d4",
   "music_sections": [
     {
       "from": "1.moved",
@@ -85,8 +85,8 @@
     "musicUnderVoiceDb": 18.2,
     "secondsWithoutMusic": 3.7,
     "bedsUnderVoiceDb": 26.4,
-    "sfx": 296,
-    "sfxPerMinute": 134.4,
+    "sfx": 300,
+    "sfxPerMinute": 136.2,
     "sfxKinds": 48,
     "longestGapSeconds": 1.6,
     "longestGapAt": 73.8,
@@ -105,16 +105,15 @@
       },
       {
         "db": 4.8,
-        "t": 30.2,
-        "cue": "3.remember",
+        "t": 46.6,
+        "cue": "4.mending",
         "sounding": [
-          "creak",
-          "sting",
-          "whoosh"
+          "coin",
+          "coins"
         ]
       },
       {
-        "db": 5.1,
+        "db": 5.0,
         "t": 13.7,
         "cue": "2.golem",
         "sounding": [
@@ -124,12 +123,13 @@
         ]
       },
       {
-        "db": 5.2,
-        "t": 46.6,
-        "cue": "4.mending",
+        "db": 5.0,
+        "t": 30.2,
+        "cue": "3.remember",
         "sounding": [
-          "coin",
-          "coins"
+          "creak",
+          "sting",
+          "whoosh"
         ]
       },
       {
@@ -152,7 +152,7 @@
     ],
     "lufs": -15.2,
     "truePeakDb": -1.2,
-    "limiterMaxDb": 3.9
+    "limiterMaxDb": 3.6
   },
   "failures": []
 }

@@ -135,18 +135,45 @@
     },
     {
       "cue": "1.forty",
-      "at": 0.6,
+      "at": 0.25,
+      "sfx": "pop",
+      "pitch": 0.85,
+      "pan": -0.4,
+      "trim": -3,
+      "why": "A llama pops up at his left shoulder."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.45,
+      "sfx": "pop",
+      "pitch": 1.05,
+      "pan": 0.4,
+      "trim": -3,
+      "why": "A second llama at his right."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.65,
+      "sfx": "place",
+      "pan": 0.5,
+      "trim": -2,
+      "why": "His shop lands at his elbow."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.97,
+      "sfx": "step_grass",
+      "pan": -0.5,
+      "trim": -4,
+      "why": "A villager walks straight past."
+    },
+    {
+      "cue": "1.forty",
+      "at": 1.25,
       "sfx": "tick",
       "trim": -2,
       "pitch": 1.0,
       "why": "His clock, counting."
-    },
-    {
-      "cue": "1.forty",
-      "at": 0.5,
-      "sfx": "step_grass",
-      "trim": -5,
-      "why": "A villager walks straight past."
     },
     {
       "cue": "1.sell",
@@ -274,14 +301,6 @@
       "why": "Set down again."
     },
     {
-      "cue": "2.bush",
-      "at": 0.4,
-      "sfx": "creak",
-      "trim": -4,
-      "pitch": 1.3,
-      "why": "One twig drops."
-    },
-    {
       "cue": "2.five",
       "word": "five",
       "at": 0.1,
@@ -361,13 +380,6 @@
       "sfx": "whoosh",
       "trim": -4,
       "why": "Over the square: three shops."
-    },
-    {
-      "cue": "3.town",
-      "at": 0.4,
-      "sfx": "coins",
-      "trim": -6,
-      "why": "It looked rich."
     },
     {
       "cue": "3.town",

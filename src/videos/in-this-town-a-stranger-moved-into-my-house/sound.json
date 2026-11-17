@@ -209,14 +209,6 @@
     },
     {
       "cue": "1.moved",
-      "at": 0.3,
-      "sfx": "pop",
-      "pitch": 0.7,
-      "trim": -2,
-      "why": "A Z comes off the sleeper."
-    },
-    {
-      "cue": "1.moved",
       "at": 0.8,
       "sfx": "rustle",
       "dur": 0.3,
@@ -236,6 +228,48 @@
       "sfx": "blip",
       "pitch": 0.6,
       "why": "And back at us. This low blip is a villager saying hmm, all film."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.15,
+      "sfx": "pop",
+      "pitch": 0.7,
+      "trim": -3,
+      "why": "A Z comes off the sleeper."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.28,
+      "sfx": "place",
+      "pan": -0.2,
+      "trim": -2,
+      "why": "His pickaxe, against my bed."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.62,
+      "sfx": "pop",
+      "pitch": 1.1,
+      "pan": 0.3,
+      "trim": -3,
+      "why": "My bread, on my blanket."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.9,
+      "sfx": "place",
+      "pan": 0.5,
+      "trim": -2,
+      "why": "A block of dirt on my floor."
+    },
+    {
+      "cue": "1.moved",
+      "at": 1.25,
+      "sfx": "place",
+      "pitch": 1.2,
+      "pan": 0.5,
+      "trim": -2,
+      "why": "And another on top of it."
     },
     {
       "cue": "1.knock",

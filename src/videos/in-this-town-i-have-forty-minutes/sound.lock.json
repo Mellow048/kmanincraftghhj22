@@ -5,10 +5,10 @@
   "seconds": 111.8333,
   "built_from": {
     "timing.json": "0fd736a925ccc35d5b14c52963180c068b817e7d",
-    "sound.json": "39720e6e4fd634179dee580693f956cad019af8d",
+    "sound.json": "44644cadca870ea898fe3c14308de9bdf4663e23",
     "narration.mp3": "07182ac238d805d45946748d2a8362537a3a8b3f"
   },
-  "mix_sha1": "4d638713298d7d650e2dad1a75ae440541b263cc",
+  "mix_sha1": "0302ee0a56e36b4dfa9f8f65063ef1b1b7a86b97",
   "music_sections": [
     {
       "from": "1.forty",
@@ -105,9 +105,9 @@
     "musicUnderVoiceDb": 18.5,
     "secondsWithoutMusic": 1.1,
     "bedsUnderVoiceDb": 26.4,
-    "sfx": 212,
-    "sfxPerMinute": 113.7,
-    "sfxKinds": 37,
+    "sfx": 213,
+    "sfxPerMinute": 114.3,
+    "sfxKinds": 36,
     "longestGapSeconds": 3.0,
     "longestGapAt": 28.1,
     "sfxBuried": 0,
@@ -131,15 +131,6 @@
       },
       {
         "db": 6.1,
-        "t": 74.9,
-        "cue": "7.right",
-        "sounding": [
-          "drop",
-          "sparkle"
-        ]
-      },
-      {
-        "db": 6.2,
         "t": 96.7,
         "cue": "7.zero",
         "sounding": [
@@ -149,7 +140,16 @@
         ]
       },
       {
-        "db": 6.5,
+        "db": 6.4,
+        "t": 74.9,
+        "cue": "7.right",
+        "sounding": [
+          "drop",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.4,
         "t": 13.2,
         "cue": "2.goods",
         "sounding": [

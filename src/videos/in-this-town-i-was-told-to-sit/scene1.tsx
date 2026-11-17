@@ -11,7 +11,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.sit",
-      ...cam.push({ on: [0, 1.0, 0], dist: 6.4, to: 4.8, yaw: 0, pitch: 9, fov: 50 }),
+      ...cam.push({ on: [0, 1.05, 0], dist: 4.3, to: 3.5, yaw: 0, pitch: 8, fov: 50 }),
       zone: "meadow",
       look: "overworld-day",
       note: "The hook, and it never holds still: a white dog drops into a sit in an empty meadow and looks into the lens, and a town pops up round him a piece at a time: a house, a house, a house, a bell, three villagers, lamps, a sign at his shoulder, a parrot on the sign, a farmer, and a loaf on his head. Everyone looks at us. He does not move.",

@@ -5,10 +5,10 @@
   "seconds": 143.1,
   "built_from": {
     "timing.json": "470ef49ee719a9c44227138e6f2efb7acce558bd",
-    "sound.json": "064707c1a8f0a23d1cedb4df6588d45ef56ee9d2",
+    "sound.json": "1ad69c6630ba906192e4c978a0d59501ea25203a",
     "narration.mp3": "41937f9204d13981c4d8333bb224e7cd7d351aba"
   },
-  "mix_sha1": "ddef14d11e676122d26079ddbdf30536f6f40f56",
+  "mix_sha1": "1f71cfab68014bde61bf6ab2eba13d71f6249c66",
   "music_sections": [
     {
       "from": "1.job",
@@ -95,15 +95,25 @@
     "musicUnderVoiceDb": 19.1,
     "secondsWithoutMusic": 6.6,
     "bedsUnderVoiceDb": 24.0,
-    "sfx": 260,
-    "sfxPerMinute": 109.0,
+    "sfx": 265,
+    "sfxPerMinute": 111.1,
     "sfxKinds": 40,
     "longestGapSeconds": 2.9,
     "longestGapAt": 74.0,
     "sfxBuried": 0,
     "voiceOverRestMedianDb": 13.4,
-    "voiceOverRestWorstDb": 4.2,
+    "voiceOverRestWorstDb": 3.9,
     "voiceOverRestWorst": [
+      {
+        "db": 3.9,
+        "t": 119.8,
+        "cue": "7.end",
+        "sounding": [
+          "crackle",
+          "sting",
+          "swish"
+        ]
+      },
       {
         "db": 4.2,
         "t": 88.3,
@@ -126,17 +136,7 @@
         ]
       },
       {
-        "db": 4.9,
-        "t": 119.8,
-        "cue": "7.end",
-        "sounding": [
-          "crackle",
-          "sting",
-          "swish"
-        ]
-      },
-      {
-        "db": 5.0,
+        "db": 4.8,
         "t": 33.6,
         "cue": "2.boss",
         "sounding": [
@@ -144,7 +144,7 @@
         ]
       },
       {
-        "db": 5.7,
+        "db": 5.4,
         "t": 14.2,
         "cue": "2.gary",
         "sounding": [
@@ -153,7 +153,7 @@
         ]
       },
       {
-        "db": 5.9,
+        "db": 6.3,
         "t": 9.4,
         "cue": "1.scream",
         "sounding": [
@@ -164,8 +164,8 @@
       }
     ],
     "lufs": -15.3,
-    "truePeakDb": -1.3,
-    "limiterMaxDb": 4.5
+    "truePeakDb": -1.4,
+    "limiterMaxDb": 4.6
   },
   "failures": []
 }
