@@ -232,7 +232,7 @@ export const scene1 = storyScene(timing, {
       note: "The back door, open onto a brick wall he can touch, and his dad doing exactly what the street has done to everyone: walking into it and trying again.",
       stage: (t) => (
         <>
-          <Block size={[0.4, 3.2, 7.0]} position={S(-8.30, 1.6, -3.9)} color="#7a5f4a" castShadow={false} />
+          <Block size={[0.4, 2.6, 7.0]} position={S(-8.30, 1.3, -3.9)} color="#7a5f4a" castShadow={false} />
           <Adult
             position={S(-8.85, 0, -3.70)}
             rotationY={WEST}
@@ -240,11 +240,11 @@ export const scene1 = storyScene(timing, {
             animDistance={ramp(t, 0, 1.6) * 1.1}
             face="frown"
           />
-          <Block size={[0.4, 5.2, 9.0]} position={S(-9.60, 2.6, -4.6)} color="#9a7f62" castShadow={false} />
+          <Block size={[0.4, 3.6, 9.0]} position={S(-9.60, 1.8, -4.6)} color="#9a7f62" castShadow={false} />
           {/* This alley is sealed by two walls and has no street lamp in it, so it needs its own light or the
               frame is black however the lens is placed. A service lamp over the back door, the same sodium
               colour as the street. */}
-          <pointLight position={S(-8.60, 2.60, -3.70)} color="#ffd9a0" intensity={26} distance={11} decay={2} />
+          <pointLight position={S(-8.20, 2.40, -2.60)} color="#ffd9a0" intensity={34} distance={12} decay={2} />
           <LightPool position={S(-8.70, 0.03, -3.60)} width={3.4} depth={3.0} color="#ffd9a0" opacity={0.18} />
         </>
       ),
@@ -312,14 +312,14 @@ export const scene1 = storyScene(timing, {
       // visibility on and off; it does not move the camera. The room is built at H(0,0,5.1), so the lens and
       // the marks both need H() to land on it. Before this, the camera stood at z 2.86 -- 2 m south of the
       // room and in the middle of empty world -- and shot the dark.
-      ...cam.push({ on: H(0.25, 1.10, 7.96), dist: 2.30, to: 2.00, yaw: 180, pitch: 3, fov: 54 }),
+      ...cam.push({ on: H(0.20, 1.12, 7.96), dist: 2.40, to: 2.05, yaw: 186, pitch: 3, fov: 64 }),
       zone: "bed",
       look: "overworld-night",
       note: "His tally on the bedroom wall, growing, and him putting the next mark on: a kid keeping score of how many doors he owns.",
       stage: (t) => (
         <>
           <TallyMarks at={H(0.25, 0, 7.96)} count={11 + (t > TALLY_AT ? 1 : 0)} />
-          <Hero position={H(1.05, 0, 6.95)} rotationY={NORTH} animation="reachUp" face="smug" />
+          <Hero position={H(0.60, 0, 7.30)} rotationY={NORTH} animation="reachUp" face="smug" />
         </>
       ),
     },
