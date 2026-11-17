@@ -1,7 +1,9 @@
-# The pack: what an "In This Town" film is built from
+# The pack: what a Stories film is built from
 
 The people, places, things and staging maths of the finished films, kept in this folder so the next film starts from
-them and not from nothing. The owner approved these as they look ("i like the assets"). **Use them. Do not rebuild
+them and not from nothing. The pack came into this topic with the copy of In This Town and is **not a story** — it is
+a box of parts. A Stories film may be set in a town, a cave, a mansion, a field at night, a machine, or somewhere
+nobody has built yet; use what fits, and build the one new place the story needs. The owner approved these as they look ("i like the assets"). **Use them. Do not rebuild
 them, and do not restyle them.**
 
 ![The pack: one still for each part](pack.jpg)

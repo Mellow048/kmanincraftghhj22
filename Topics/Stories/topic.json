@@ -9,11 +9,26 @@
     "when": "2026-11-12",
     "why": "The owner: \"duplicate InThisTown and rename that duplicated one Stories then work there\". This topic starts as an exact copy of the In This Town pack, numbers included, and diverges from here. In This Town stays as it was."
   },
+  "premise": {
+    "oneLiner": "One film, one story, any world. A first-person Minecraft story with an impossible fact in the first second, a rule the viewer can follow, and a last line that turns the first one over.",
+    "flexible": "There is no fixed town and no required opening. The setting is invented per film: the pack in this folder is a box of parts, not a canon. What is fixed is the shape (see README.md) and the numbers in `film`.",
+    "mustHave": [
+      "an impossible or strange fact said in the first three words, proved by a picture",
+      "a rule of this world, stated plainly, that the viewer can play along with",
+      "escalation with no repeated beat, a low point, a turn that re-reads an earlier line",
+      "a payoff you can see, then the ask, last, inside the story"
+    ],
+    "never": [
+      "a second film of a shape another film already used",
+      "a premise that needs the old town to make sense",
+      "voice only: music, air and effects are mandatory"
+    ]
+  },
   "reference": {
     "film": "in-this-town-same-face",
     "page": "Topics/Stories/Old Reference/same-face",
     "owner": "yes its good put it as the topic's reference",
-    "use": "Our own finished film, picture and sound approved by the owner. Build like it. Never retell it."
+    "use": "The old topic's approved film, inherited with the copy. Build the SHAPE like it — 14 beats, the same pace, the same sound discipline — and never retell its story or reuse its town."
   },
   "origin": {
     "page": "Topics/Stories/Old Reference/treehouse",
@@ -44,7 +59,6 @@
       770
     ],
     "maxWordsPerShot": 18,
-    "opensWith": "In this town",
     "lastLineContains": "subscribe",
     "lastLineAlsoAccepted": [
       {

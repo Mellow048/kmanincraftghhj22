@@ -1,5 +1,10 @@
 # Why "Monster Village" got 5.5k and the shadow film did not
 
+> **This is a study of two films of the old topic, and the machinery in it is the whole reason the Stories topic
+> exists.** The plot below belongs to In This Town and must not be reused; the reasons it held people — a famous mob
+> as family, the teller as the odd one out, Minecraft facts as the jokes and the plot, a payoff that is a picture —
+> carry over to any Stories premise. Read it as a list of moves, then throw the story away.
+
 The owner's question, 2026-11-12: *"that video got me like 5.5k views on shorts... i have no idea what i did there...
 i need you to study that short and make a similar one... increase our stayed to watch to atleast above 75%."*
 

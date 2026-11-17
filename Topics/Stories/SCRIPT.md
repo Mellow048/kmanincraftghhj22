@@ -1,6 +1,11 @@
-# Writing an "In This Town" script
+# Writing a Stories script
 
 > **First read [`OWNER.md`](OWNER.md).** Premise on screen in the first second; no two shots in a row alike; every scene has an environment shot, a travelling shot and an odd angle; the owner's outline is the story.
+
+**Any premise fits this topic; this shape does not change.** A Stories film can be about a town, a mob family, a
+player, a machine, a rule somebody invented — but it is told with the same 18 beats, the same pace and the same last
+line that turns the first one over. Read the beats below as a machine for holding a stranger for two minutes, not as a
+description of one town.
 
 This is a study of one script, and then the rules we take from it.
 
@@ -37,7 +42,7 @@ written for 165 comes out 450 words long and feels thin. **Write about 700 words
 
 | # | Beat | Starts | Words | Shots | Its job | The line that does the job |
 |---|---|---|---|---|---|---|
-| 1 | Hook | 0:00 | 15 | 3 | Say one impossible fact, starting "In this town," | "…we all lived in a giant tree house high above the clouds." |
+| 1 | Hook | 0:00 | 15 | 3 | Say one impossible fact in the first three words | "…we all lived in a giant tree house high above the clouds." |
 | 2 | Three mysteries | 0:04 | 36 | 3 | Stack questions before anyone can swipe | "nobody knew how we had ended up there… nobody knew how to get back down. Not even the oldest man…" |
 | 3 | The tour | 0:11 | 85 | 15 | Show how life works here, only in things a camera can see | "We collected rainwater in barrels, picked strange fruits…, and used thick vines…" |
 | 4 | The itch | 0:34 | 15 | 3 | Turn comfort into one question | "It was actually a pretty good life, but… What was down there?" |

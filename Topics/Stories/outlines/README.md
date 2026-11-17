@@ -1,4 +1,8 @@
-# Outlines the owner has given, not built yet
+# Outlines (inherited from In This Town)
+
+> These are the old topic's outlines, kept with the copy so nothing written down is lost. Every one of them is an
+> **In This Town** premise. A Stories film may come from one of these if the owner asks for it, and otherwise starts
+> from a new premise of its own.
 
 The owner's own words, kept so they are not lost between sessions. Build them in this order, **one at a time**
 (the owner, 2026-11-14: "You cant split your focus, focus on 1 thing first, finish it, then head to the other"):

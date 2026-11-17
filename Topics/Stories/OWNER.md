@@ -1,7 +1,8 @@
 # What the owner likes, and what the channel has learned
 
 **Read this before you write a script or a shot.** It is the owner's taste and the feedback his films have had, in one
-place. `SCRIPT.md` and `SHOTS.md` are how the reference channel does it; this file is how *he* wants it, and where the
+place. Everything in it came from films of the old In This Town topic, and all of it applies to a Stories film
+unchanged: the taste is about how he wants to be told a story, not about which story it is. `SCRIPT.md` and `SHOTS.md` are how the reference channel does it; this file is how *he* wants it, and where the
 two disagree, this file wins. Add to it every time he says what he liked or did not like. Date every entry. Never
 delete one unless he takes it back.
 

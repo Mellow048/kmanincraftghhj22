@@ -1,11 +1,13 @@
-# The sound of an "In This Town" film
+# The sound of a Stories film
 
 A film of this topic is never voice only. Under the voice there is **music**, the **air of the place** the shot is
-in, and a **sound effect for each thing that happens on screen**: about eighty a minute in the reference film.
+in, and a **sound effect for each thing that happens on screen**: about eighty a minute in the reference film. This
+holds whatever the story is; it is the sound that makes a block world feel like a place rather than a diagram.
 
-> **The music is the owner's own track: [`InThisTownMusic.aac`](InThisTownMusic.aac).** He added it on 2026-11-13
-> and said: "the music is used thats the new backround music for the in this town shorts". Every In This Town
-> short made from that day plays it, from the first frame to the last. Section 3 says how. `scripts/sound.py
+> **The default music is the owner's own track: [`InThisTownMusic.aac`](InThisTownMusic.aac).** He added it on
+> 2026-11-13 and said: "the music is used thats the new backround music for the in this town shorts". It came into
+> this topic with the copy and it still works under any Minecraft story, so a Stories film plays it from the first
+> frame to the last unless the sheet names another track and says why. Section 3 says how. `scripts/sound.py
 > draft` writes it into a new sheet, and `build` refuses a sheet that does not play it. The first film that played
 > it is *Superpower at 18, part 2* (`src/videos/in-this-town-superpower-at-18-part-2/sound.json`): the owner called
 > that film "a banger and a massive upgrade". Copy how its sheet uses the track.

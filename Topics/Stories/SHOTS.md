@@ -1,4 +1,4 @@
-# Shooting an "In This Town" film
+# Shooting a Stories film
 
 > **First read [`OWNER.md`](OWNER.md).** Premise on screen in the first second; no two shots in a row alike; every scene has an environment shot, a travelling shot and an odd angle; the owner's outline is the story.
 
@@ -60,7 +60,7 @@ and low. The bright town again for one second. Then the subscribe sign, straight
 6. **Fill the frame.** A person is a medium shot unless the place is the point. Lens 30–46°. Never the 76–88° of
    version 1, which made everyone small.
 7. **One colour world per act.** Set `look` on the shot when the act changes.
-8. **Wides are for two jobs only:** to show the town at the start, and to show the truth at the end.
+8. **Wides are for two jobs only:** to show the world at the start, and to show the truth at the end.
 9. **Captions are the engine's.** Do not draw text over the picture in a scene.
 
 ## 4. From Roblox to Minecraft

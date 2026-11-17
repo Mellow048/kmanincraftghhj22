@@ -1,32 +1,44 @@
 # Stories — Minecraft storytime
 
-**This topic is a duplicate of "In This Town"** (`Topics/InThisTown`), made 2026-11-12 on the owner's
-instruction: *"duplicate InThisTown and rename that duplicated one Stories then work there."* Everything below is
-that pack, unchanged, and this is where Stories films are built from now. The old reference material it came with is
-parked in [`Old Reference/`](Old%20Reference/README.md) and is not the model: a Stories film needs its own approved
-reference, and until there is one, the numbers in `topic.json` are the In This Town ones.
+**Stories is the flexible topic: one film, one story, any world.** A kid, a mob family, a player, a machine, a town
+rule somebody made up, a thing that should not be possible — the premise is invented per film and built out of the
+pack in this folder. What does **not** change is the shape, and the shape is why these films hold people:
 
-A kid tells you about the strange town he grew up in, the one rule nobody would explain, and what happened when he
-broke it. One to three minutes. First person, a fast voice with no pauses, a new picture about every two seconds, one
-word of caption at a time, music and sound effects under all of it, and a last line that turns the first line upside
-down.
+- an impossible or strange fact, said in the first second, over the teller's face;
+- a rule of this world, stated plainly, that the viewer can play along with;
+- escalation, a step at a time, never the same beat twice;
+- a low point that costs the teller something;
+- a turn that makes an earlier line mean something else;
+- a payoff you can **see**, not one that is only said;
+- and the ask, last, inside the story.
 
-**It is never a 20-second short.** A film that carries this name and is built to the base rules has been rejected
-twice ([`Old Reference/moon-20-seconds/`](Old Reference/moon-20-seconds/README.md),
+One to three minutes. First person, past tense, a fast voice, a new picture about every two seconds, one word of
+caption at a time, music and sound effects under all of it.
+
+**It is never a 20-second short.** A film built to the base rules instead of to this page has been rejected twice
+([`Old Reference/moon-20-seconds/`](Old Reference/moon-20-seconds/README.md),
 [`Old Reference/monster-egg-v1/`](Old Reference/monster-egg-v1/README.md)). `npm run check` now fails one.
 
-The format is modelled on one Roblox video the owner supplied, "In This Town, Everyone Lived In A Treehouse"
-([`Old Reference/treehouse/`](Old Reference/treehouse/README.md)). We make the same **kind** of video out of Minecraft blocks.
-We do not copy its story, its sentences or any Roblox asset.
+**Provenance.** This topic was made on 2026-11-12 by copying `Topics/InThisTown`, on the owner's instruction
+(*"duplicate InThisTown and rename that duplicated one Stories then work there"*). The pack, the numbers, the sound
+guide and the camera notes all came with it, and they are good: they were measured on films he approved. What changed
+is the **subject**. In This Town told one kind of story, in one kind of place, opening with the same three words every
+time; Stories does not. There is no town you must be from, no rule you must inherit, and no required opening. The old
+topic's reference material is parked in [`Old Reference/`](Old%20Reference/README.md) and is history, not the model.
+
+The **format** is still modelled on one Roblox video the owner supplied, "In This Town, Everyone Lived In A Treehouse"
+([`Old Reference/treehouse/`](Old Reference/treehouse/README.md)): a first-person teller, a rule, and a last line that
+turns the first one over. We make the same **kind** of video out of Minecraft blocks. We do not copy its story, its
+sentences or any Roblox asset, and we do not copy any earlier film of ours either.
 
 ## Start here
 
 ```bash
-npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
+npm run new -- "The Day My Village Learned My Name" --topic stories
 ```
 
 That gives you a film folder made from this topic's starter ([`template/`](template/)): a script page to fill in, a
-`kit.tsx` wired to the pack, a town to change, and one scene with two shots that already render. It does not give
+`kit.tsx` wired to the pack, a world to change, and one scene with two shots that already render. It does not give
 you a story.
 
 ## The reference film, and the other films the owner approved
@@ -88,16 +100,16 @@ studied for its shape. The reference film is ours.
 
 ## What changes from the base rules
 
-These apply to a film that declares `topic: "in-this-town"`, and to nothing else.
+These apply to a film that declares `topic: "stories"`, and to nothing else.
 
-| Base rule (`AGENTS.md`) | In This Town |
+| Base rule (`AGENTS.md`) | Stories |
 |---|---|
-| 18–20 s, ceiling 21 s | 150–176 s. **Never over 178 s: a strict rule.** Over 3:00 YouTube does not treat it as a Short |
+| 18–20 s, ceiling 21 s | 83–176 s (the usual film is 100–160 s). **Never over 178 s: a strict rule.** Over 3:00 YouTube does not treat it as a Short |
 | 4–7 scenes, 3–5 shots per 20 s | About 18 beats and 80–95 shots. A cut about every 2 s (median 1.4–2.3 s). No shot over 6 s |
 | No camera teleports; a scene starts where the last one ended | Hard cuts are the language. Cut on the noun |
 | Narration in the present tense, 3–10 words a line, 4–7 lines | Past tense, first person, full sentences. 640–770 words at 235–268 words a minute. No pauses |
 | No overlays; text only on 3D signs | One-word captions, drawn by the engine (`captions` in `defineFilm`). Scenes still add no overlays of their own |
-| Hook in the first 1.5 s | The first three words are "In this town," over the teller's face |
+| Hook in the first 1.5 s | The strange fact is in the first three words, over the teller's face. It does not have to name a place — any impossible premise the picture can prove in one shot |
 | The last line is a button, not a moral | The last line is the twist, then a 4–6 word "Subscribe …" line that belongs to the story |
 | One world, mounted once | One world, split into zones. Each shot names its zone |
 | "Music: low drone, one pulse"; a hit on the reveal | The owner's own track under the whole film ([`InThisTownMusic.aac`](InThisTownMusic.aac)), the air of each place, and 40 or more sound effects a minute. All of it mixed by `scripts/sound.py` from the film's `sound.json` |
@@ -112,7 +124,7 @@ The owner may ask for a shorter film ("keep it short like 1 min to 2 minute max"
 not a different topic. A film takes it by adding one line to `defineFilm`, next to `topic`:
 
 ```ts
-topic: "in-this-town",
+topic: "stories",
 cut: "short",
 ```
 
@@ -145,9 +157,13 @@ The first film in this cut is `in-this-town-same-face`: 14 beats, 57 shots, 441 
 
 The evidence for each line is in `SCRIPT.md` and `SHOTS.md`.
 
-1. **The title is the first sentence.** "In this town," plus one impossible fact, said over the teller's face.
+1. **The title is the first sentence.** One impossible fact, said over the teller's face, in the first three words.
+   In the films that came with this topic the fact was a place ("In this town…"); in a Stories film it can be
+   anything the picture can prove in one shot. What it must never be is a mood, or a question with no noun in it.
 2. **Questions before answers.** Three open questions in the first 11 seconds.
-3. **A tour before a problem.** 23 seconds of how the town lives, all of it things you can point a camera at.
+3. **A tour before a problem.** Twenty-odd seconds of how this world lives, all of it things you can point a camera
+   at. In a flexible topic the tour is also where you tell the viewer *where* they are, because this time there is no
+   shared town they already know.
 4. **The wish is a question.** "What was down there?" The viewer stays to get the answer, not to see a goal reached.
 5. **The answer is planted.** The teller asks, out loud, the question whose answer is the twist, 90 seconds early.
 6. **Try, fail, try again.** One cheap funny failure, then one attempt that works.
@@ -158,15 +174,17 @@ The evidence for each line is in `SCRIPT.md` and `SHOTS.md`.
 
 ## Work order
 
-1. `npm run new -- "In This Town, …" --topic in-this-town`.
-2. Write the premise as four sentences: *In this town, X. Nobody would explain rule Y. I broke it. Y was really Z.*
-   If Z does not change what X means, you do not have a story yet.
+1. `npm run new -- "<The Title Is The First Line>" --topic stories`.
+2. Write the premise as four sentences. The one that works most often: *Something impossible is true here (X).
+   Nobody would explain the rule (Y). I broke it. Y was really Z.* Any premise is allowed, but it must fit that
+   shape: a strange fact, a rule, a break, and a reversal. If Z does not change what X means, you do not have a
+   story yet.
 3. Write `src/videos/<film>/narration.md` to the beat sheet in `SCRIPT.md` (18 beats, or about 14 for the short
    cut). One line of script per shot.
 4. `python3 scripts/narration.py build <film> --estimate`. Fix length and rhythm now, while it is only text.
 5. **Get the script approved by the owner before anything is built.** Then record one clip per `# clip` line and
    run `build` again without `--estimate`.
-6. Lay out the town in zones in `world.tsx` with the pack's places, and build the one new place this story needs.
+6. Lay out the world in zones in `world.tsx` with the pack's places, and build the one new place this story needs.
    Then the scenes: one `sceneN.tsx` per beat, one shot per script line, cast from the pack through `kit.tsx`.
    Each shot has a `cam.*` move, a `note` and a `stage`.
 7. `npm run typecheck && npm run check`.
@@ -195,7 +213,7 @@ still an estimate, and whether the mix is older than the script.
 | `places.tsx` | House (new, burned out, on fire, lit, door open), bell, well and its lid, stall, lamp post, lantern post, lantern line, fence, stepped hill, bedroom, tunnel |
 | `creatures.tsx` | Egg, worm, dragon, phoenix, stone golem, the mother, chicken, rank sign, fire, puffs, sound rings, and the red "Subscribe" sign every film ends on |
 | `fields.tsx` | What lies round the town and over it at night: wheat, scarecrows that stand and walk, pines and the edge of a forest, a moon, moonlight that falls on one place, stars |
-| `template/` | The starter film that `npm run new -- … --topic in-this-town` copies |
+| `template/` | The starter film that `npm run new -- … --topic stories` copies |
 | `Old Reference/README.md` | **Start here for examples**: every film the owner approved, what each is for, and how to add one |
 | `Old Reference/same-face/` | **The reference film**: the mp4, its source, its shape and its sound measured, and a log of every shot |
 | `Old Reference/nobody-looked-at-the-moon/`, `Old Reference/monster-egg/`, `Old Reference/superpower-at-18/` | **Three more films the owner approved**, each with its mp4, its source, a log of every shot, and what was hard |
@@ -209,7 +227,7 @@ still an estimate, and whether the mix is older than the script.
 | `creepertown.tsx`, `endertown.tsx` | **Two towns of one mob each, as people**: creepers (a family, a crowd that bolts and hisses, houses, the players who farm them) and endermen (a family, a crowd that carries, teleports and screams, houses, the players in pumpkins, a kitchen, rain). `PACK.md` has a section and a picture for each. Parts to use, not a story to tell again |
 | `pillagers.tsx` | Pillagers: grey, scowling villagers with crossbows, and their chief |
 | `mansion.tsx` | The woodland mansion from outside, its dark oak forest, and its hall with the map table |
-| `InThisTownMusic.aac` | **The background music of every In This Town short.** The owner added it on 2026-11-13: "the music is used thats the new backround music for the in this town shorts". 3:36, stereo. A film's `sound.json` names it (`"track"` in `music`) and `scripts/sound.py` mixes it under the voice ([`SOUND.md`](SOUND.md), section 3). Superpower part 2 was the first to play it. The four films finished before that day keep the music they were approved with |
+| `InThisTownMusic.aac` | **The default background track for a Stories film.** The owner added it on 2026-11-13 for the In This Town shorts ("the music is used thats the new backround music for the in this town shorts"); it came into this topic with the copy, and it still works under any Minecraft story. 3:36, stereo. A film's `sound.json` names it (`"track"` in `music`) and `scripts/sound.py` mixes it under the voice ([`SOUND.md`](SOUND.md), section 3). A film whose world wants different music may name another file — say why in the sheet |
 
 Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
 of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second
