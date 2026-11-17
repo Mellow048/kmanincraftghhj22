@@ -19,6 +19,7 @@ export const film = defineFilm({
   title: "What If You Could See How Many Times You'll Talk to Someone Again",
   topic: "what-if",
   look: "overworld-day",
+  post: { shaders: true },
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/what-if-you-could-see-how-many-times-youll-talk-to-someone-again/mix.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/what-if-you-could-see-how-many-times-youll-talk-to-someone-again/mix.mp3" },
