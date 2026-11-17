@@ -76,13 +76,13 @@ export const scene2 = storyScene(timing, {
       // Head-on at the wall, from his shoulder-line: he is in profile with his palm on the board wall, and the board
       // and its chalk run across the top of the frame he has his ear against. (Two earlier lenses on this cue framed
       // a window, then put the camera outside the room.)
-      ...cam.push({ on: SPOT.at(-1.35, 1.30, -3.30), dist: 2.60, to: 2.25, yaw: -24, pitch: 4, fov: 44 }),
+      ...cam.push({ on: SPOT.at(-1.35, 1.32, -3.30), dist: 2.60, to: 2.25, yaw: 90, pitch: 3, fov: 44 }),
       zone: "class",
       look: "overworld-day",
       note: "Him in profile with his palm flat on the board wall and his ear against the chalk: the classroom giving the teacher's worst joke back to somebody who is not laughing.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(-1.35, 0, -3.42)} rotationY={NORTH} animation="press" face="grin" headYaw={-0.95} />
+          <Hero position={SPOT.at(-1.35, 0, -3.42)} rotationY={NORTH} animation="press" face="grin" />
           <Rings at={SPOT.at(-1.60, 1.20, -3.94)} t={t} from={JOKE} />
           <SoundRings position={SPOT.at(-1.60, 1.26, -3.94)} rotationY={SOUTH} t={t - JOKE} reach={1.0} color="#e8f4ff" />
         </>

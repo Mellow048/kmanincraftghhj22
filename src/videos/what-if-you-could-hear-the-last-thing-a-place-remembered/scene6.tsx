@@ -66,13 +66,13 @@ export const scene6 = storyScene(timing, {
       // version failed for the same reason: the pack's kitchen whitewashes that wall, so any lens close enough to
       // hold the plaster blows it out to a blank page. The window has a frame, a lit sill and a dark street behind
       // the lens, which is what a reflection needs, and the film already has the street in it.
-      ...cam.push({ on: S(-9.40, 2.00, -0.98), dist: 4.00, to: 3.30, yaw: 0, pitch: 2, fov: 58 }),
-      zone: "street",
-      look: "overworld-night",
-      note: "The shop window at midnight with the lit sill and the dark glass, taking the sentence without a person anywhere near it.",
+      ...cam.push({ on: K(0.30, 1.45, -2.98), dist: 4.60, to: 3.90, yaw: 0, pitch: 2, fov: 64 }),
+      zone: "kitchen",
+      look: "overworld-day",
+      note: "The kitchen wall at morning with the lit sill and the dark glass, taking the sentence without a person anywhere near it.",
       stage: (t) => (
         <>
-          <Rings at={S(-9.40, 2.30, -0.94)} t={t} from={TAKE} />
+          <Rings at={K(-2.30, 1.70, -2.94)} t={t} from={TAKE} />
         </>
       ),
     },

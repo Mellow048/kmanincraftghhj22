@@ -371,6 +371,10 @@ const Bedroom: React.FC<{ at: Vec3; closed?: boolean; count?: number }> = ({ at,
     {/* THE TALLY. Twelve marks, in a kid's hand, on the wall he lies next to. More of them when it is seen
         from the hall, because somebody else has been counting since. */}
     <Tally at={[0.25, 0.0, 2.86]} count={count} />
+    {/* A fill from the doorway side, because the room is only ever seen by a lens standing in that
+        doorway. Without it the tally wall -- the wall the whole last scene is about -- is unlit. */}
+    <pointLight position={[0, 2.2, 4.4]} color="#a9c6ff" intensity={22} distance={9} decay={2} />
+    <pointLight position={[0.9, 1.4, 2.4]} color="#8fb4ff" intensity={7} distance={5} decay={2} />
     <Dust position={[0, 1.3, 1.6]} area={[3.2, 2.4, 3]} count={26} size={0.03} color="#cfe0ff" opacity={0.42} seed={31} speed={0.1} />
     <Glow position={[0.55, 1.85, 2.6]} size={2.2} color="#a9c6ff" opacity={0.28} />
     <LightPool position={[0.3, 0.02, 1.8]} width={2.6} depth={2.6} color="#a9c6ff" opacity={0.2} />
