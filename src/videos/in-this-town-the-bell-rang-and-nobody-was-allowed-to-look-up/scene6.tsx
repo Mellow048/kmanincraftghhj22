@@ -25,7 +25,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.run",
-      ...cam.truck({ on: [-0.6, 1.05, 1.4], dist: 3.8, yaw: 82, pitch: 8, fov: 44, by: [3.4, 0, -1.6] }),
+      ...cam.truck({ on: [0.4, 1.2, 0.6], dist: 5.2, yaw: 40, pitch: 8, fov: 46, by: [2.2, 0, -1.2] }),
       zone: "village",
       look: DAY,
       note: "Running with him, under a leg, past the baker who will not look up.",

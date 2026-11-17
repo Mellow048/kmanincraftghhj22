@@ -23,7 +23,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.run",
-      ...cam.truck({ on: [-3.2, 1.05, 1.8], dist: 4.6, yaw: 76, pitch: 8, fov: 42, by: [5.5, 0, -1.2] }),
+      ...cam.truck({ on: [-1.2, 1.3, 1.2], dist: 6.2, yaw: 30, pitch: 8, fov: 46, by: [3.2, 0, -1.6] }),
       zone: "village",
       look: DAY,
       note: "They run toward the tower, not away from it. That is the turn.",

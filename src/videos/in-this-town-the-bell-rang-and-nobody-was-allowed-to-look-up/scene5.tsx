@@ -23,7 +23,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.count",
-      ...cam.pan({ from: [-3.4, 2.2, 1.6], on: [-2.2, 1.6, -1.4], onTo: [2.6, 1.5, -1.6], fov: 42 }),
+      ...cam.pan({ from: [-2.6, 1.5, 2.4], on: [-1.4, 1.2, -1.2], onTo: [2.2, 1.2, -1.2], fov: 46 }),
       zone: "village",
       look: DAY,
       note: "A pan along the legs, low, so each one is a thing you can count.",
