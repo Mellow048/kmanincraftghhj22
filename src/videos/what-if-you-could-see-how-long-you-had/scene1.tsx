@@ -49,7 +49,10 @@ export const scene1 = storyScene(timing, {
       // THE HOOK. The power as one picture: the teller's back at the bottom of the frame, the class stacked ahead of
       // him, and over the head in front of him a clock at four - while the boy's own line is still being asked.
       cue: "1.what",
-      ...cam.push({ on: SPOT.at(0, 1.35, -0.4), dist: 6.4, to: 5.6, yaw: 0, pitch: 13, fov: 46 }),
+      // THE HOOK, and it has to be the strange thing on frame one, not a room. Close and low over the boy in the
+      // front row: one face with a clock at four over it, and the rest of the class falling away behind. The old
+      // wide put the teller's back in the middle of frame and the clock the size of a fingernail.
+      ...cam.push({ on: SPOT.face(1, 0), dist: 1.55, to: 1.28, yaw: 6, pitch: -3, fov: 40 }),
       zone: "class",
       note: "THE HOOK, and the power in one picture: the teller's back low in the frame, the class stacked away in front of him, the board at the top, and over the boy in the front row a clock at four. Nothing else in the school has one, so the clock is the only bright thing above the heads.",
       stage: (t) => (
@@ -59,7 +62,7 @@ export const scene1 = storyScene(timing, {
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.35} />
           <Hero position={ME} rotationY={NORTH} animation="sit" face="wow" />
           <Teacher position={SPOT.teacher} animation="idle" face="calm" />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - SEE} size={0.62}  rotationY={0.0}/>
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - SEE} size={0.7} rotationY={0.0} />
         </>
       ),
     },
