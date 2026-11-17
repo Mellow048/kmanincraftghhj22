@@ -167,15 +167,18 @@ void main() {
 
 export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   enabled: true,
-  bloom: 0.55,
-  threshold: 0.80,
-  radius: 0.62,
-  vignette: 0.32,
-  saturation: 1.08,
-  contrast: 1.06,
-  warmth: 0.6,
-  grain: 0.010,
-  aberration: 0.3,
+  // Tuned against a still render: 0.8 / 0.55 melted white sleeves and skin.
+  // Bloom is now only for things that are actually light — the sun, torches,
+  // lanterns, glow cards — not for pale materials in a bright room.
+  bloom: 0.34,
+  threshold: 0.94,
+  radius: 0.55,
+  vignette: 0.28,
+  saturation: 1.10,
+  contrast: 1.05,
+  warmth: 0.5,
+  grain: 0.008,
+  aberration: 0.16,
 };
 
 const resolve = (s?: ShaderSettings | boolean): Required<ShaderSettings> | null => {
