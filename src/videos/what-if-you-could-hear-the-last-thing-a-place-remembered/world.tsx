@@ -1,6 +1,7 @@
 import type React from "react";
-import { Block, Dust, Glow, GodRay, LightPool, PixelText, Vox, Zone, useActiveShot } from "../../engine";
+import { Block, Dust, Glow, GodRay, LightPool, PixelText, Vox, Zone } from "../../engine";
 import type { Vec3 } from "../../engine";
+import { SchoolHall, Room } from "./kit";
 import { Classroom, K, Kitchen, PLACE, S } from "./kit";
 
 /**
@@ -29,8 +30,6 @@ const Surface: React.FC<{ position: Vec3; size: [number, number, number]; color:
 }) => <Block position={position} size={size} color={color} rotation={rotation} castShadow={false} />;
 
 export const World: React.FC = () => {
-  const active = useActiveShot();
-  const night = (active?.shot.look ?? "overworld-day") === "overworld-night";
   return (
     <>
       {/* THE STREET AT MIDNIGHT. The bus shelter, the shop, the bench, and one lamp. */}
@@ -157,6 +156,19 @@ export const World: React.FC = () => {
         </group>
       </Zone>
 
+      {/* THE CORRIDOR: the school hall, where a sentence follows him out of a doorway. */}
+      <Zone name="hall">
+        <SchoolHall at={PLACE.hall} length={14} sign="ROOM 9" />
+        <LightPool position={[PLACE.hall[0], 0.03, PLACE.hall[2] + 1.0]} width={7} depth={3.4} color="#fff2c8" opacity={0.12} />
+        <Dust position={[PLACE.hall[0], 1.7, PLACE.hall[2] + 0.6]} area={[9, 2.4, 3.2]} count={30} size={0.03} color="#fff7d8" opacity={0.4} seed={37} speed={0.12} />
+      </Zone>
+
+      {/* HIS BEDROOM: the floor the list is written on, and the wall he cannot hear. */}
+      <Zone name="room">
+        <Room at={PLACE.room} night />
+        <Dust position={[PLACE.room[0], 1.5, PLACE.room[2] + 0.4]} area={[4.4, 2.2, 5.6]} count={26} size={0.028} color="#a9c6ff" opacity={0.4} seed={41} speed={0.1} />
+      </Zone>
+
       {/* THE BATHROOM: hard tiles, a mirror, a basin, and his mother's voice in all of it. */}
       <Zone name="bath">
         <group position={PLACE.bath}>
@@ -194,5 +206,3 @@ export const World: React.FC = () => {
 };
 
 void Surface;
-void night;
-void S;

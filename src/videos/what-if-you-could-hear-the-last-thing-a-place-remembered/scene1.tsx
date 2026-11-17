@@ -86,7 +86,7 @@ export const scene1 = storyScene(timing, {
 });
 
 /** One sentence leaving a surface: three rings, once, on the word. */
-const Rings: React.FC<{ at: [number, number, number]; t: number; from: number }> = ({ at, t, from }) => {
+export const Rings: React.FC<{ at: [number, number, number]; t: number; from: number }> = ({ at, t, from }) => {
   const k = ramp(t, from + 0.04, from + 1.15);
   return (
     <group position={at}>
