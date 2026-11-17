@@ -39,7 +39,7 @@ const World: React.FC = () => (
     <Block position={[-2.4, 0.12, -3.1]} size={[0.3, 0.24, 0.3]} color="#e0c040" castShadow={false} />
 
     {/* Three oaks, built from blocks so they cannot go missing. */}
-    <Oak at={[-6.6, 0, -3.5]} height={7} />
+    <Oak at={[-8.6, 0, -7]} height={7.5} />
     <Oak at={[7.2, 0, -5]} height={8} />
     <Oak at={[-11.5, 0, -10]} height={9} />
 
