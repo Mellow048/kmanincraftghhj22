@@ -1,0 +1,173 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-have-forty-minutes",
+  "mix": "public/audio/in-this-town-i-have-forty-minutes/mix.mp3",
+  "seconds": 111.8333,
+  "built_from": {
+    "timing.json": "0fd736a925ccc35d5b14c52963180c068b817e7d",
+    "sound.json": "44644cadca870ea898fe3c14308de9bdf4663e23",
+    "narration.mp3": "07182ac238d805d45946748d2a8362537a3a8b3f"
+  },
+  "mix_sha1": "0302ee0a56e36b4dfa9f8f65063ef1b1b7a86b97",
+  "music_sections": [
+    {
+      "from": "1.forty",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.goods",
+      "mood": "playful",
+      "at": 9.73
+    },
+    {
+      "from": "3.town",
+      "mood": "curious",
+      "at": 19.93
+    },
+    {
+      "from": "3.baker",
+      "mood": "playful",
+      "at": 22.37
+    },
+    {
+      "from": "4.player",
+      "mood": "tense",
+      "at": 35.9
+    },
+    {
+      "from": "4.pay",
+      "mood": "sad",
+      "at": 41.13
+    },
+    {
+      "from": "5.night",
+      "mood": "sneak",
+      "at": 45.0
+    },
+    {
+      "from": "5.clock",
+      "mood": "drone",
+      "at": 50.77
+    },
+    {
+      "from": "6.kid",
+      "mood": "curious",
+      "at": 54.87
+    },
+    {
+      "from": "6.deal",
+      "mood": "hope",
+      "at": 66.73
+    },
+    {
+      "from": "7.tell",
+      "mood": "playful",
+      "at": 73.17
+    },
+    {
+      "from": "7.two",
+      "mood": "curious",
+      "at": 76.17
+    },
+    {
+      "from": "7.buy",
+      "mood": "wonder",
+      "at": 79.5
+    },
+    {
+      "from": "7.back",
+      "mood": "tense",
+      "at": 93.53
+    },
+    {
+      "from": "7.poof",
+      "mood": "none",
+      "at": 98.8
+    },
+    {
+      "from": "8.kid",
+      "mood": "hope",
+      "at": 99.6
+    },
+    {
+      "from": "8.next",
+      "mood": "town",
+      "at": 103.47
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 3,
+  "measured": {
+    "musicUnderVoiceDb": 18.5,
+    "secondsWithoutMusic": 1.1,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 213,
+    "sfxPerMinute": 114.3,
+    "sfxKinds": 36,
+    "longestGapSeconds": 3.0,
+    "longestGapAt": 28.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.8,
+    "voiceOverRestWorstDb": 5.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.7,
+        "t": 104.2,
+        "cue": "8.next",
+        "sounding": []
+      },
+      {
+        "db": 6.1,
+        "t": 34.1,
+        "cue": "3.salesmen",
+        "sounding": [
+          "buzz",
+          "swish"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 96.7,
+        "cue": "7.zero",
+        "sounding": [
+          "heartbeat",
+          "register",
+          "tick"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 74.9,
+        "cue": "7.right",
+        "sounding": [
+          "drop",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 13.2,
+        "cue": "2.goods",
+        "sounding": [
+          "place"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 12.0,
+        "cue": "2.goods",
+        "sounding": [
+          "plink"
+        ]
+      }
+    ],
+    "lufs": -15.3,
+    "truePeakDb": -1.8,
+    "limiterMaxDb": 4.0
+  },
+  "failures": []
+}

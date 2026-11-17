@@ -1,0 +1,1755 @@
+{
+  "film": "in-this-town-i-have-forty-minutes",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-i-have-forty-minutes",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.forty",
+        "mood": "town",
+        "why": "The topic's track, from the first frame."
+      },
+      {
+        "from": "2.goods",
+        "mood": "playful",
+        "why": "His shop, as he tells it."
+      },
+      {
+        "from": "3.town",
+        "mood": "curious",
+        "gain": -2,
+        "why": "A town that looked rich."
+      },
+      {
+        "from": "3.baker",
+        "mood": "playful",
+        "why": "Three pitches, three no-sales."
+      },
+      {
+        "from": "4.player",
+        "mood": "tense",
+        "gain": -4,
+        "why": "A customer with a sword."
+      },
+      {
+        "from": "4.pay",
+        "mood": "sad",
+        "gain": -3,
+        "why": "He did not pay. The llamas do not look back."
+      },
+      {
+        "from": "5.night",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night, and the potion."
+      },
+      {
+        "from": "5.clock",
+        "mood": "drone",
+        "gain": -3,
+        "why": "One clock in the dark."
+      },
+      {
+        "from": "6.kid",
+        "mood": "curious",
+        "gain": -2,
+        "why": "Somebody pulls his robe."
+      },
+      {
+        "from": "6.deal",
+        "mood": "hope",
+        "why": "Today, it is one."
+      },
+      {
+        "from": "7.tell",
+        "mood": "playful",
+        "gain": -2,
+        "why": "He turns to tell his llamas."
+      },
+      {
+        "from": "7.two",
+        "mood": "curious",
+        "gain": -2,
+        "why": "Two minutes, one emerald."
+      },
+      {
+        "from": "7.buy",
+        "mood": "wonder",
+        "why": "He buys something, and it goes round the town."
+      },
+      {
+        "from": "7.back",
+        "mood": "tense",
+        "gain": -3,
+        "why": "It comes back to him with thirteen seconds left."
+      },
+      {
+        "from": "7.poof",
+        "mood": "none",
+        "why": "No music for the second he is gone."
+      },
+      {
+        "from": "8.kid",
+        "mood": "hope",
+        "why": "Morning: the bush in the window."
+      },
+      {
+        "from": "8.next",
+        "mood": "town",
+        "why": "A new town, forty minutes."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.forty",
+      "to": "4.gone",
+      "bed": "village"
+    },
+    {
+      "from": "5.night",
+      "to": "7.poof",
+      "bed": "night"
+    },
+    {
+      "from": "8.kid",
+      "to": "8.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.forty",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The film opens on him and his clock."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.1,
+      "sfx": "stamp",
+      "trim": -3,
+      "why": "40:00 over his head, already running."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.25,
+      "sfx": "pop",
+      "pitch": 0.85,
+      "pan": -0.4,
+      "trim": -3,
+      "why": "A llama pops up at his left shoulder."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.45,
+      "sfx": "pop",
+      "pitch": 1.05,
+      "pan": 0.4,
+      "trim": -3,
+      "why": "A second llama at his right."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.65,
+      "sfx": "place",
+      "pan": 0.5,
+      "trim": -2,
+      "why": "His shop lands at his elbow."
+    },
+    {
+      "cue": "1.forty",
+      "at": 0.97,
+      "sfx": "step_grass",
+      "pan": -0.5,
+      "trim": -4,
+      "why": "A villager walks straight past."
+    },
+    {
+      "cue": "1.forty",
+      "at": 1.25,
+      "sfx": "tick",
+      "trim": -2,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "1.sell",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the side of the shop."
+    },
+    {
+      "cue": "1.sell",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Another one, along the front of the shop."
+    },
+    {
+      "cue": "1.sell",
+      "at": 0.75,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "He does not slow down."
+    },
+    {
+      "cue": "1.sell",
+      "at": 0.5,
+      "sfx": "tick",
+      "trim": 3,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "1.llamas",
+      "word": "They",
+      "at": 0.0,
+      "sfx": "blip",
+      "trim": -4,
+      "pitch": 0.7,
+      "why": "Both heads turn away from the shop."
+    },
+    {
+      "cue": "1.llamas",
+      "word": "either",
+      "at": 0.25,
+      "sfx": "bonk",
+      "trim": -5,
+      "why": "They do not want them either."
+    },
+    {
+      "cue": "1.clock",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: up at the clock."
+    },
+    {
+      "cue": "1.clock",
+      "at": 0.2,
+      "sfx": "tick",
+      "trim": 1,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "1.clock",
+      "at": 1.2,
+      "sfx": "tick",
+      "trim": -4,
+      "pitch": 1.0,
+      "why": "The clock."
+    },
+    {
+      "cue": "1.clock",
+      "word": "zero",
+      "at": 0.2,
+      "sfx": "drop",
+      "trim": -5,
+      "why": "When it hits zero he is gone."
+    },
+    {
+      "cue": "1.where",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Up over the town."
+    },
+    {
+      "cue": "1.where",
+      "at": 0.4,
+      "sfx": "tick",
+      "trim": -7,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "1.where",
+      "word": "never",
+      "at": 0.1,
+      "sfx": "blip",
+      "trim": -5,
+      "why": "He shrugs with his head."
+    },
+    {
+      "cue": "2.goods",
+      "word": "sapling",
+      "at": 0.05,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "The sapling jumps."
+    },
+    {
+      "cue": "2.goods",
+      "word": "slime",
+      "at": 0.05,
+      "sfx": "plink",
+      "trim": -4,
+      "pitch": 0.7,
+      "why": "The slime ball jumps."
+    },
+    {
+      "cue": "2.goods",
+      "word": "bucket",
+      "at": 0.3,
+      "sfx": "place",
+      "trim": -6,
+      "why": "Set down again."
+    },
+    {
+      "cue": "2.five",
+      "word": "five",
+      "at": 0.1,
+      "sfx": "stamp",
+      "trim": -4,
+      "why": "Five emeralds. For anything."
+    },
+    {
+      "cue": "2.five",
+      "word": "emeralds",
+      "at": 0.35,
+      "sfx": "coin",
+      "trim": -5,
+      "why": "An emerald on the card."
+    },
+    {
+      "cue": "2.nine",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The road."
+    },
+    {
+      "cue": "2.nine",
+      "at": 0.25,
+      "sfx": "count",
+      "trim": -4,
+      "why": "900 comes up over him."
+    },
+    {
+      "cue": "2.nine",
+      "at": 0.5,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Him and two llamas, walking."
+    },
+    {
+      "cue": "2.nine",
+      "at": 0.85,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Walking."
+    },
+    {
+      "cue": "2.sold",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: his face."
+    },
+    {
+      "cue": "2.sold",
+      "at": 0.7,
+      "sfx": "tick",
+      "trim": 0,
+      "why": "He looks at us."
+    },
+    {
+      "cue": "2.think",
+      "at": 0.3,
+      "sfx": "blip",
+      "trim": -5,
+      "pitch": 1.2,
+      "why": "He has worked it out."
+    },
+    {
+      "cue": "2.think",
+      "word": "low",
+      "at": 0.3,
+      "sfx": "rustle",
+      "trim": -5,
+      "why": "Behind him a llama shakes its head."
+    },
+    {
+      "cue": "3.town",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Over the square: three shops."
+    },
+    {
+      "cue": "3.town",
+      "at": 0.9,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "He sets off with his bucket."
+    },
+    {
+      "cue": "3.town",
+      "at": 1.3,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Across the square."
+    },
+    {
+      "cue": "3.town",
+      "word": "shop",
+      "at": 0.1,
+      "sfx": "pop",
+      "trim": -5,
+      "why": "A shop each."
+    },
+    {
+      "cue": "3.baker",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the next shop."
+    },
+    {
+      "cue": "3.baker",
+      "at": 0.3,
+      "sfx": "slide_up",
+      "trim": -6,
+      "pitch": 1.0,
+      "why": "He holds his up."
+    },
+    {
+      "cue": "3.baker",
+      "word": "bread",
+      "at": -0.1,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "The owner holds up his own."
+    },
+    {
+      "cue": "3.baker",
+      "word": "bread",
+      "at": 0.25,
+      "sfx": "place",
+      "trim": -6,
+      "why": "His own goods, level with it."
+    },
+    {
+      "cue": "3.baker",
+      "at": 2.3332999999999986,
+      "sfx": "bonk",
+      "trim": -6,
+      "pitch": 0.9,
+      "why": "No sale."
+    },
+    {
+      "cue": "3.fisher",
+      "at": 0.3,
+      "sfx": "slide_up",
+      "trim": -6,
+      "pitch": 1.1,
+      "why": "He holds his up."
+    },
+    {
+      "cue": "3.fisher",
+      "at": 0.7,
+      "sfx": "rustle",
+      "trim": -6,
+      "why": "The owner looks at it."
+    },
+    {
+      "cue": "3.fisher",
+      "word": "his",
+      "at": -0.1,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "The owner holds up his own."
+    },
+    {
+      "cue": "3.farmer",
+      "word": "carrot",
+      "at": -0.1,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "The owner holds up his own."
+    },
+    {
+      "cue": "3.farmer",
+      "word": "carrot",
+      "at": 0.25,
+      "sfx": "crack",
+      "trim": -6,
+      "why": "His own goods, level with it."
+    },
+    {
+      "cue": "3.farmer",
+      "at": 2.566600000000002,
+      "sfx": "bonk",
+      "trim": -6,
+      "pitch": 0.9,
+      "why": "No sale."
+    },
+    {
+      "cue": "3.same",
+      "at": 0.25,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "His is the small one."
+    },
+    {
+      "cue": "3.salesmen",
+      "at": 0.3,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 0.9,
+      "why": "Bread."
+    },
+    {
+      "cue": "3.salesmen",
+      "at": 0.5,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.0,
+      "why": "Fish."
+    },
+    {
+      "cue": "3.salesmen",
+      "at": 0.7,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.1,
+      "why": "Carrot."
+    },
+    {
+      "cue": "3.salesmen",
+      "at": 1.7,
+      "sfx": "swish",
+      "trim": -6,
+      "why": "And the next."
+    },
+    {
+      "cue": "3.salesmen",
+      "word": "buys",
+      "at": 0.15,
+      "sfx": "buzz",
+      "trim": -5,
+      "why": "Nobody buys."
+    },
+    {
+      "cue": "3.salesmen",
+      "at": 0.9,
+      "sfx": "tick",
+      "trim": -7,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "3.clock",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the clock."
+    },
+    {
+      "cue": "3.clock",
+      "at": 0.15,
+      "sfx": "tick",
+      "trim": 2,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "4.player",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Sunset. Somebody on the road."
+    },
+    {
+      "cue": "4.player",
+      "at": 0.25,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "The player walks up to the shop."
+    },
+    {
+      "cue": "4.player",
+      "at": 0.6,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "The player walks up to the shop."
+    },
+    {
+      "cue": "4.player",
+      "at": 0.95,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "The player walks up to the shop."
+    },
+    {
+      "cue": "4.player",
+      "at": 1.3,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "The player walks up to the shop."
+    },
+    {
+      "cue": "4.player",
+      "at": 1.6,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "The player walks up to the shop."
+    },
+    {
+      "cue": "4.player",
+      "at": 0.5,
+      "sfx": "boing",
+      "trim": -6,
+      "why": "The trader jumps on the spot."
+    },
+    {
+      "cue": "4.player",
+      "word": "sword",
+      "at": 0.0,
+      "sfx": "clank",
+      "trim": -3,
+      "why": "The sword comes up."
+    },
+    {
+      "cue": "4.looked",
+      "at": 0.3,
+      "sfx": "blip",
+      "trim": -5,
+      "why": "His eyes go to the shop."
+    },
+    {
+      "cue": "4.looked",
+      "word": "llamas",
+      "at": -0.3,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "His eyes go past it."
+    },
+    {
+      "cue": "4.looked",
+      "word": "llamas",
+      "at": 0.2,
+      "sfx": "ding",
+      "trim": -5,
+      "pitch": 0.8,
+      "why": "The llamas. He starts to grin."
+    },
+    {
+      "cue": "4.took",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "He already has both leads."
+    },
+    {
+      "cue": "4.took",
+      "at": 0.15,
+      "sfx": "crack",
+      "trim": -5,
+      "why": "Two leads off the post."
+    },
+    {
+      "cue": "4.took",
+      "at": 0.4,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Walking off with them."
+    },
+    {
+      "cue": "4.took",
+      "at": 0.65,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Walking off."
+    },
+    {
+      "cue": "4.pay",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: his face."
+    },
+    {
+      "cue": "4.pay",
+      "word": "forgot",
+      "at": 0.0,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "I think he forgot."
+    },
+    {
+      "cue": "4.pay",
+      "at": 1.2,
+      "sfx": "tick",
+      "trim": -7,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "4.gone",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Over his shoulder, down the road."
+    },
+    {
+      "cue": "4.gone",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Llamas walking away."
+    },
+    {
+      "cue": "4.gone",
+      "at": 0.8,
+      "sfx": "rustle",
+      "trim": -5,
+      "why": "He lifts a sleeve to wave."
+    },
+    {
+      "cue": "4.gone",
+      "at": 1.6,
+      "sfx": "gust",
+      "trim": -6,
+      "why": "Evening wind."
+    },
+    {
+      "cue": "5.night",
+      "at": 0.0,
+      "sfx": "whoosh_low",
+      "trim": -3,
+      "why": "Night. Not one lit window."
+    },
+    {
+      "cue": "5.night",
+      "at": 0.3,
+      "sfx": "crackle",
+      "trim": -5,
+      "why": "Torches."
+    },
+    {
+      "cue": "5.night",
+      "at": 0.55,
+      "sfx": "tick",
+      "trim": -6,
+      "why": "The clock is still going."
+    },
+    {
+      "cue": "5.potion",
+      "at": 0.3,
+      "sfx": "plink",
+      "trim": -4,
+      "why": "A bottle comes up out of his sleeves."
+    },
+    {
+      "cue": "5.potion",
+      "word": "this",
+      "at": 0.2,
+      "sfx": "pop",
+      "trim": -5,
+      "why": "His one trick."
+    },
+    {
+      "cue": "5.invisible",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: him and the shop."
+    },
+    {
+      "cue": "5.invisible",
+      "word": "invisible",
+      "at": -0.1,
+      "sfx": "power_down",
+      "trim": -3,
+      "why": "And he is gone."
+    },
+    {
+      "cue": "5.invisible",
+      "word": "invisible",
+      "at": 0.2,
+      "sfx": "sparkle",
+      "trim": -6,
+      "why": "A grey swirl where he was."
+    },
+    {
+      "cue": "5.invisible",
+      "word": "So",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "A villager walks past the shop."
+    },
+    {
+      "cue": "5.invisible",
+      "word": "So",
+      "at": 0.5,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Without looking."
+    },
+    {
+      "cue": "5.invisible",
+      "word": "So",
+      "at": 0.9,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "As always."
+    },
+    {
+      "cue": "5.clock",
+      "at": 0.2,
+      "sfx": "tick",
+      "trim": -3,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "5.clock",
+      "at": 1.2,
+      "sfx": "tick",
+      "trim": -3,
+      "pitch": 1.0,
+      "why": "The clock."
+    },
+    {
+      "cue": "5.clock",
+      "word": "Nine",
+      "at": 0.2,
+      "sfx": "stamp",
+      "trim": -5,
+      "why": "9:00."
+    },
+    {
+      "cue": "5.alone",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Up and away from the dark square."
+    },
+    {
+      "cue": "5.alone",
+      "at": 0.35,
+      "sfx": "tick",
+      "trim": -6,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "5.alone",
+      "at": 1.55,
+      "sfx": "tick",
+      "trim": -6,
+      "pitch": 1.0,
+      "why": "The clock."
+    },
+    {
+      "cue": "6.kid",
+      "at": 0.15,
+      "sfx": "sting",
+      "trim": -6,
+      "why": "3:00."
+    },
+    {
+      "cue": "6.kid",
+      "at": 0.3,
+      "sfx": "tick",
+      "trim": -5,
+      "pitch": 1.25,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "6.kid",
+      "at": 1.3,
+      "sfx": "tick",
+      "trim": -5,
+      "pitch": 1.25,
+      "why": "The clock."
+    },
+    {
+      "cue": "6.kid",
+      "at": 0.9,
+      "sfx": "rustle",
+      "trim": -4,
+      "why": "A small hand pulls at nothing."
+    },
+    {
+      "cue": "6.see",
+      "at": 0.2,
+      "sfx": "blip",
+      "trim": -5,
+      "pitch": 1.4,
+      "why": "A kid."
+    },
+    {
+      "cue": "6.see",
+      "word": "He",
+      "at": -0.1,
+      "sfx": "power_up",
+      "trim": -4,
+      "why": "The trader pops back, staring down."
+    },
+    {
+      "cue": "6.see",
+      "at": 1.4,
+      "sfx": "tick",
+      "trim": -2,
+      "pitch": 1.25,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "6.said",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the kid, looking up."
+    },
+    {
+      "cue": "6.said",
+      "word": "see",
+      "at": -0.15,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "A bubble with his clock in it."
+    },
+    {
+      "cue": "6.said",
+      "word": "clock",
+      "at": 0.25,
+      "sfx": "tick",
+      "trim": -4,
+      "pitch": 1.25,
+      "why": "The clock."
+    },
+    {
+      "cue": "6.said",
+      "word": "clock",
+      "at": 0.5,
+      "sfx": "tick",
+      "trim": -5,
+      "pitch": 1.25,
+      "why": "The clock."
+    },
+    {
+      "cue": "6.want",
+      "word": "bush",
+      "at": 0.1,
+      "sfx": "creak",
+      "trim": -6,
+      "pitch": 1.3,
+      "why": "The dead bush."
+    },
+    {
+      "cue": "6.want",
+      "word": "mum",
+      "at": -0.15,
+      "sfx": "chime",
+      "trim": -4,
+      "why": "A red heart: for his mum."
+    },
+    {
+      "cue": "6.one",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: closer."
+    },
+    {
+      "cue": "6.one",
+      "at": 0.3,
+      "sfx": "coin",
+      "trim": -3,
+      "why": "One emerald, held up in both sleeves."
+    },
+    {
+      "cue": "6.one",
+      "at": 0.6,
+      "sfx": "sparkle",
+      "trim": -6,
+      "why": "It shines."
+    },
+    {
+      "cue": "6.one",
+      "word": "five",
+      "at": -0.25,
+      "sfx": "stamp",
+      "trim": -4,
+      "why": "The price tag comes up: 5."
+    },
+    {
+      "cue": "6.one",
+      "word": "five",
+      "at": 0.3,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "He looks at the tag, then at his one emerald."
+    },
+    {
+      "cue": "6.looked",
+      "at": 0.2,
+      "sfx": "tick",
+      "trim": -4,
+      "pitch": 1.25,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "6.looked",
+      "at": 1.2,
+      "sfx": "tick",
+      "trim": 1,
+      "pitch": 1.25,
+      "why": "The clock."
+    },
+    {
+      "cue": "6.looked",
+      "word": "kid",
+      "at": 0.2,
+      "sfx": "heartbeat",
+      "trim": -5,
+      "why": "He decides."
+    },
+    {
+      "cue": "6.deal",
+      "word": "today",
+      "at": -0.1,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "A bubble: 1."
+    },
+    {
+      "cue": "6.first",
+      "at": 0.15,
+      "sfx": "register",
+      "trim": -3,
+      "why": "His first sale. Ever."
+    },
+    {
+      "cue": "6.first",
+      "word": "sale",
+      "at": -0.1,
+      "sfx": "slide_up",
+      "trim": -5,
+      "why": "He goes up on his toes."
+    },
+    {
+      "cue": "6.first",
+      "word": "sale",
+      "at": 0.3,
+      "sfx": "ding",
+      "trim": -5,
+      "why": "My first sale."
+    },
+    {
+      "cue": "6.home",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The kid, walking home with it over his head."
+    },
+    {
+      "cue": "6.home",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "trim": -5,
+      "pitch": 1.25,
+      "why": "Small quick steps."
+    },
+    {
+      "cue": "6.home",
+      "at": 0.6,
+      "sfx": "step_grass",
+      "trim": -5,
+      "pitch": 1.25,
+      "why": "Small quick steps."
+    },
+    {
+      "cue": "7.tell",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: behind him."
+    },
+    {
+      "cue": "7.tell",
+      "at": 0.15,
+      "sfx": "whoosh",
+      "trim": -5,
+      "why": "He spins round to tell them."
+    },
+    {
+      "cue": "7.tell",
+      "at": 0.6,
+      "sfx": "boing",
+      "trim": -6,
+      "why": "Happy."
+    },
+    {
+      "cue": "7.tell",
+      "at": 0.9,
+      "sfx": "sparkle",
+      "trim": -6,
+      "why": "Emerald up high."
+    },
+    {
+      "cue": "7.right",
+      "at": 0.15,
+      "sfx": "drop",
+      "trim": -4,
+      "why": "A post, two cut leads, nobody."
+    },
+    {
+      "cue": "7.right",
+      "at": 0.8,
+      "sfx": "creak",
+      "trim": -6,
+      "why": "A lead end swings."
+    },
+    {
+      "cue": "7.right",
+      "word": "llamas",
+      "at": 0.3,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "No llamas."
+    },
+    {
+      "cue": "7.two",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the clock and his face."
+    },
+    {
+      "cue": "7.two",
+      "at": 0.2,
+      "sfx": "tick",
+      "trim": -4,
+      "pitch": 1.35,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "7.two",
+      "at": 1.2,
+      "sfx": "tick",
+      "trim": -4,
+      "pitch": 1.35,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.two",
+      "at": 2.2,
+      "sfx": "tick",
+      "trim": -4,
+      "pitch": 1.35,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.two",
+      "word": "emerald",
+      "at": 0.2,
+      "sfx": "coin",
+      "trim": -4,
+      "why": "One emerald."
+    },
+    {
+      "cue": "7.two",
+      "word": "never",
+      "at": 0.2,
+      "sfx": "sparkle",
+      "trim": -6,
+      "why": "He turns it over."
+    },
+    {
+      "cue": "7.buy",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "He leaves his shop."
+    },
+    {
+      "cue": "7.buy",
+      "at": 0.35,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Across the dark square to the baker."
+    },
+    {
+      "cue": "7.buy",
+      "at": 0.7,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Across the dark square to the baker."
+    },
+    {
+      "cue": "7.buy",
+      "at": 1.05,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Across the dark square to the baker."
+    },
+    {
+      "cue": "7.buy",
+      "at": 1.75,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Across the dark square to the baker."
+    },
+    {
+      "cue": "7.buy",
+      "at": 2.1,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Across the dark square to the baker."
+    },
+    {
+      "cue": "7.buy",
+      "word": "bought",
+      "at": 0.15,
+      "sfx": "ding",
+      "trim": -5,
+      "why": "He bought something."
+    },
+    {
+      "cue": "7.bread",
+      "at": 0.3,
+      "sfx": "crackle",
+      "trim": -6,
+      "why": "A torch."
+    },
+    {
+      "cue": "7.bread",
+      "word": "baker",
+      "at": -0.1,
+      "sfx": "coin",
+      "trim": -3,
+      "why": "The emerald goes across the table."
+    },
+    {
+      "cue": "7.bread",
+      "word": "baker",
+      "at": 0.15,
+      "sfx": "place",
+      "trim": -5,
+      "why": "The loaf comes back."
+    },
+    {
+      "cue": "7.bread",
+      "word": "baker",
+      "at": 0.4,
+      "sfx": "register",
+      "trim": -5,
+      "why": "A sale."
+    },
+    {
+      "cue": "7.round",
+      "at": 0.2,
+      "sfx": "step_grass",
+      "trim": -5,
+      "pitch": 1.1,
+      "why": "The baker runs to the fisherman."
+    },
+    {
+      "cue": "7.round",
+      "at": 0.4,
+      "sfx": "step_grass",
+      "trim": -5,
+      "pitch": 1.1,
+      "why": "The baker runs to the fisherman."
+    },
+    {
+      "cue": "7.round",
+      "at": 0.6,
+      "sfx": "step_grass",
+      "trim": -5,
+      "pitch": 1.1,
+      "why": "The baker runs to the fisherman."
+    },
+    {
+      "cue": "7.round",
+      "at": 0.8,
+      "sfx": "step_grass",
+      "trim": -6,
+      "pitch": 1.1,
+      "why": "The baker runs to the fisherman."
+    },
+    {
+      "cue": "7.round",
+      "at": 1.0,
+      "sfx": "step_grass",
+      "trim": -6,
+      "pitch": 1.1,
+      "why": "The baker runs to the fisherman."
+    },
+    {
+      "cue": "7.round",
+      "word": "fisherman",
+      "at": 0.05,
+      "sfx": "register",
+      "trim": -6,
+      "why": "A fish, sold."
+    },
+    {
+      "cue": "7.round",
+      "word": "ran",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "trim": -5,
+      "pitch": 1.2,
+      "nth": 1,
+      "why": "The fisherman runs to the farmer."
+    },
+    {
+      "cue": "7.round",
+      "word": "ran",
+      "at": 0.7,
+      "sfx": "step_grass",
+      "trim": -6,
+      "pitch": 1.2,
+      "nth": 1,
+      "why": "The fisherman runs to the farmer."
+    },
+    {
+      "cue": "7.round",
+      "word": "farmer",
+      "at": 0.1,
+      "sfx": "register",
+      "trim": -6,
+      "why": "A carrot, sold."
+    },
+    {
+      "cue": "7.town",
+      "at": 0.3,
+      "sfx": "coin",
+      "trim": -4,
+      "why": "The emerald on the farmer's table."
+    },
+    {
+      "cue": "7.town",
+      "at": 0.75,
+      "sfx": "boing",
+      "trim": -6,
+      "why": "The fisherman jumps."
+    },
+    {
+      "cue": "7.why",
+      "at": 0.3,
+      "sfx": "rustle",
+      "trim": -6,
+      "why": "Chewing."
+    },
+    {
+      "cue": "7.why",
+      "at": 1.8,
+      "sfx": "rustle",
+      "trim": -6,
+      "why": "Chewing."
+    },
+    {
+      "cue": "7.why",
+      "at": 0.5,
+      "sfx": "tick",
+      "trim": -3,
+      "pitch": 1.4,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "7.why",
+      "word": "first",
+      "at": 0.1,
+      "sfx": "riser",
+      "trim": -6,
+      "dur": 0.8,
+      "why": "Somebody has to go first."
+    },
+    {
+      "cue": "7.lights",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The north side of the square."
+    },
+    {
+      "cue": "7.lights",
+      "at": 0.08,
+      "sfx": "power_up",
+      "trim": -2,
+      "why": "Every window, all at once."
+    },
+    {
+      "cue": "7.lights",
+      "at": 0.3,
+      "sfx": "cheer",
+      "trim": -6,
+      "why": "A town that has just sold something."
+    },
+    {
+      "cue": "7.lights",
+      "at": 0.5,
+      "sfx": "chime",
+      "trim": -5,
+      "why": "Lights."
+    },
+    {
+      "cue": "7.back",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: his own shop, windows lit behind it."
+    },
+    {
+      "cue": "7.back",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "The farmer walks up to it."
+    },
+    {
+      "cue": "7.back",
+      "at": 0.6,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "With the emerald."
+    },
+    {
+      "cue": "7.back",
+      "word": "farmer",
+      "at": 0.0,
+      "sfx": "blip",
+      "trim": -5,
+      "pitch": 1.2,
+      "why": "He points his nose at the slime ball."
+    },
+    {
+      "cue": "7.back",
+      "word": "slime",
+      "at": -0.1,
+      "sfx": "plink",
+      "trim": -4,
+      "pitch": 0.7,
+      "why": "The slime ball goes across."
+    },
+    {
+      "cue": "7.back",
+      "word": "slime",
+      "at": 0.05,
+      "sfx": "boing",
+      "trim": -6,
+      "why": "The trader jumps."
+    },
+    {
+      "cue": "7.back",
+      "word": "ball",
+      "at": 0.3,
+      "sfx": "register",
+      "trim": -3,
+      "why": "Two sales."
+    },
+    {
+      "cue": "7.back",
+      "at": 0.45,
+      "sfx": "tick",
+      "trim": -6,
+      "pitch": 1.5,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "7.back",
+      "at": 1.45,
+      "sfx": "tick",
+      "trim": -6,
+      "pitch": 1.5,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.back",
+      "at": 2.45,
+      "sfx": "tick",
+      "trim": -6,
+      "pitch": 1.5,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.zero",
+      "at": 0.3,
+      "sfx": "tick",
+      "trim": -2,
+      "pitch": 1.6,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "7.zero",
+      "at": 0.8,
+      "sfx": "tick",
+      "trim": -2,
+      "pitch": 1.6,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.zero",
+      "at": 1.3,
+      "sfx": "tick",
+      "trim": -2,
+      "pitch": 1.6,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.zero",
+      "at": 1.8,
+      "sfx": "tick",
+      "trim": -2,
+      "pitch": 1.6,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.zero",
+      "at": 2.3,
+      "sfx": "tick",
+      "trim": -2,
+      "pitch": 1.6,
+      "why": "The clock."
+    },
+    {
+      "cue": "7.zero",
+      "at": 0.25,
+      "sfx": "heartbeat",
+      "trim": -5,
+      "why": "Three."
+    },
+    {
+      "cue": "7.zero",
+      "at": 1.25,
+      "sfx": "heartbeat",
+      "trim": -4,
+      "why": "One."
+    },
+    {
+      "cue": "7.zero",
+      "word": "thank",
+      "at": -0.15,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "A bubble starts: TH."
+    },
+    {
+      "cue": "7.zero",
+      "word": "you",
+      "at": 0.4,
+      "sfx": "riser",
+      "trim": -5,
+      "dur": 0.6,
+      "why": "He has one second."
+    },
+    {
+      "cue": "7.poof",
+      "at": 0.0,
+      "sfx": "boom",
+      "trim": -3,
+      "why": "Zero. He is gone, and the shop with him."
+    },
+    {
+      "cue": "7.poof",
+      "at": 0.05,
+      "sfx": "power_down",
+      "trim": -4,
+      "why": "A puff of grey."
+    },
+    {
+      "cue": "7.poof",
+      "at": 0.35,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "The clock drops."
+    },
+    {
+      "cue": "7.poof",
+      "at": 0.6,
+      "sfx": "thud",
+      "trim": -5,
+      "why": "And lands."
+    },
+    {
+      "cue": "8.kid",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Morning, at the kid's house."
+    },
+    {
+      "cue": "8.kid",
+      "at": 0.3,
+      "sfx": "rustle",
+      "trim": -6,
+      "why": "His mum lifts the pot."
+    },
+    {
+      "cue": "8.kid",
+      "word": "window",
+      "at": -0.5,
+      "sfx": "place",
+      "trim": -3,
+      "why": "She sets it on the window sill."
+    },
+    {
+      "cue": "8.kid",
+      "word": "window",
+      "at": -0.35,
+      "sfx": "boing",
+      "trim": -6,
+      "pitch": 1.3,
+      "why": "The kid jumps."
+    },
+    {
+      "cue": "8.kid",
+      "word": "window",
+      "at": 0.2,
+      "sfx": "chime",
+      "trim": -5,
+      "why": "In the window."
+    },
+    {
+      "cue": "8.ugly",
+      "at": 0.8,
+      "sfx": "bonk",
+      "trim": -6,
+      "why": "The ugliest thing in town."
+    },
+    {
+      "cue": "8.ugly",
+      "word": "loves",
+      "at": -0.15,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "A heart comes up over it."
+    },
+    {
+      "cue": "8.next",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "A different town: blue roofs."
+    },
+    {
+      "cue": "8.next",
+      "word": "Forty",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -6,
+      "why": "40:00 again."
+    },
+    {
+      "cue": "8.next",
+      "at": 1.3,
+      "sfx": "tick",
+      "trim": -6,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "8.know",
+      "at": 0.3,
+      "sfx": "swish",
+      "trim": -6,
+      "why": "He looks over his shoulder at the shops."
+    },
+    {
+      "cue": "8.know",
+      "word": "And",
+      "at": -0.1,
+      "sfx": "coin",
+      "trim": -3,
+      "why": "The emerald comes up out of his sleeves."
+    },
+    {
+      "cue": "8.know",
+      "word": "one",
+      "at": -0.05,
+      "sfx": "boing",
+      "trim": -6,
+      "why": "He knows what it is for now."
+    },
+    {
+      "cue": "8.know",
+      "word": "emerald",
+      "at": 0.25,
+      "sfx": "sparkle",
+      "trim": -5,
+      "why": "One emerald."
+    },
+    {
+      "cue": "8.know",
+      "at": 0.5,
+      "sfx": "tick",
+      "trim": -3,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    },
+    {
+      "cue": "8.sub",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: wider."
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "at": -0.2,
+      "sfx": "pop",
+      "trim": -3,
+      "why": "The sign pops up over his clock."
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "at": 0.1,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "Subscribe."
+    },
+    {
+      "cue": "8.sub",
+      "word": "llamas",
+      "at": -0.25,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "A thought with a llama in it."
+    },
+    {
+      "cue": "8.sub",
+      "word": "llamas",
+      "at": -0.05,
+      "sfx": "boing",
+      "trim": -6,
+      "why": "He bobs up."
+    },
+    {
+      "cue": "8.sub",
+      "word": "back",
+      "at": 0.25,
+      "sfx": "chime",
+      "trim": -4,
+      "why": "He is going to buy them back."
+    },
+    {
+      "cue": "8.sub",
+      "word": "back",
+      "at": 0.6,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "He sets off toward the shops."
+    },
+    {
+      "cue": "8.sub",
+      "at": 0.6,
+      "sfx": "tick",
+      "trim": -3,
+      "pitch": 1.0,
+      "why": "His clock, counting."
+    }
+  ]
+}

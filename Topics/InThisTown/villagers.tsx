@@ -59,6 +59,8 @@ export type VillagerProps = {
   headwear?: React.ReactNode;
   /** Anything carried on the folded sleeves, since no hand ever comes out: drawn level, just in front of them. */
   carry?: React.ReactNode;
+  /** Skin colour. Leave it out for a villager; a green one is a zombie villager (it is the same face). */
+  skin?: string;
 };
 
 /**
@@ -84,6 +86,7 @@ export const Villager: React.FC<VillagerProps> = ({
   phase = 0,
   headwear,
   carry,
+  skin = VILLAGER_SKIN,
 }) => {
   const t = useFilmTime();
   const u = U;
@@ -133,7 +136,7 @@ export const Villager: React.FC<VillagerProps> = ({
           ))}
         </group>
         <group position={[0, 12 * u, 0]} rotation={[pitch + hmmBob, yaw, tilt]} scale={kid ? 1.16 : 1}>
-          <Block position={[0, 5 * u, 0]} size={[8 * u, 10 * u, 8 * u]} color={VILLAGER_SKIN} />
+          <Block position={[0, 5 * u, 0]} size={[8 * u, 10 * u, 8 * u]} color={skin} />
           {/* One long eyebrow. */}
           <Block position={[0, 5.6 * u, 4.04 * u]} size={[6.2 * u, 1.1 * u, 0.12 * u]} color="#35261c" castShadow={false} />
           {shut ? (
@@ -150,7 +153,7 @@ export const Villager: React.FC<VillagerProps> = ({
           )}
           {/* One long nose. It hangs past the chin, and it wags when they say "hmm". */}
           <group position={[0, 3 * u, 4 * u]} rotation={[0, 0, wag]}>
-            <Block position={[0, -2 * u, 1 * u]} size={[2 * u, 4 * u, 2 * u]} color={shade(VILLAGER_SKIN, -0.1)} />
+            <Block position={[0, -2 * u, 1 * u]} size={[2 * u, 4 * u, 2 * u]} color={shade(skin, -0.1)} />
           </group>
           {hat === "straw" ? (
             <>

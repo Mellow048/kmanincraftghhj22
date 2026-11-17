@@ -1,0 +1,2478 @@
+{
+  "film": "in-this-town-i-was-told-to-sit",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-i-was-told-to-sit",
+  "sfxGain": -2.0,
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.sit",
+        "mood": "town",
+        "why": "The topic's track, from the first frame."
+      },
+      {
+        "from": "2.creeper",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night, and a creeper who says nothing: the track steps back."
+      },
+      {
+        "from": "2.parrot",
+        "mood": "playful",
+        "why": "Day, and the parrot."
+      },
+      {
+        "from": "3.first",
+        "mood": "curious",
+        "gain": -2,
+        "why": "An empty meadow."
+      },
+      {
+        "from": "3.built",
+        "mood": "town",
+        "why": "A town arrives."
+      },
+      {
+        "from": "4.skel",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night: skeletons."
+      },
+      {
+        "from": "4.rain",
+        "mood": "sad",
+        "gain": -3,
+        "why": "Rain and snow, and he sits."
+      },
+      {
+        "from": "5.forgot",
+        "mood": "curious",
+        "why": "What his owner left."
+      },
+      {
+        "from": "5.torch",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night: what the torches are really for."
+      },
+      {
+        "from": "5.roof",
+        "mood": "playful",
+        "why": "He was not good at building."
+      },
+      {
+        "from": "5.forgotme",
+        "mood": "sad",
+        "gain": -4,
+        "why": "He thinks he was forgotten."
+      },
+      {
+        "from": "6.day",
+        "mood": "tense",
+        "why": "Two players walk in."
+      },
+      {
+        "from": "7.his",
+        "mood": "sad",
+        "gain": -4,
+        "why": "What a bed is for."
+      },
+      {
+        "from": "7.stood",
+        "mood": "tense",
+        "why": "He stands."
+      },
+      {
+        "from": "7.hiss2",
+        "mood": "none",
+        "why": "The held breath: a hiss, and nobody knows whose."
+      },
+      {
+        "from": "7.not",
+        "mood": "dark",
+        "gain": -2,
+        "why": "It was not the parrot."
+      },
+      {
+        "from": "7.gone",
+        "mood": "playful",
+        "why": "They run."
+      },
+      {
+        "from": "8.bad",
+        "mood": "drone",
+        "gain": -5,
+        "why": "He is standing. He has broken the one rule."
+      },
+      {
+        "from": "8.light",
+        "mood": "none",
+        "why": "The bed lights up: nothing, and then him."
+      },
+      {
+        "from": "8.him",
+        "mood": "hope",
+        "why": "His owner."
+      },
+      {
+        "from": "8.way",
+        "mood": "sad",
+        "gain": -4,
+        "why": "With nothing."
+      },
+      {
+        "from": "8.sat",
+        "mood": "playful",
+        "why": "He sits so fast it hurts."
+      },
+      {
+        "from": "9.bed",
+        "mood": "sad",
+        "gain": -3,
+        "why": "The list: every clue said back."
+      },
+      {
+        "from": "9.farmer",
+        "mood": "town",
+        "why": "Loaf four hundred and one."
+      },
+      {
+        "from": "10.still",
+        "mood": "dark",
+        "gain": -4,
+        "why": "It is still down there."
+      },
+      {
+        "from": "10.look",
+        "mood": "hope",
+        "why": "He looked at me."
+      },
+      {
+        "from": "10.come",
+        "mood": "town",
+        "why": "Come."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.sit",
+      "to": "1.owner",
+      "bed": "village"
+    },
+    {
+      "from": "2.creeper",
+      "to": "2.talk",
+      "bed": "night"
+    },
+    {
+      "from": "2.parrot",
+      "to": "4.job",
+      "bed": "village"
+    },
+    {
+      "from": "4.skel",
+      "to": "4.ran",
+      "bed": "night"
+    },
+    {
+      "from": "4.rain",
+      "to": "4.snow",
+      "bed": "wind"
+    },
+    {
+      "from": "5.forgot",
+      "to": "5.bones",
+      "bed": "village"
+    },
+    {
+      "from": "5.torch",
+      "to": "5.torch",
+      "bed": "night"
+    },
+    {
+      "from": "5.roof",
+      "to": "9.bones",
+      "bed": "village"
+    },
+    {
+      "from": "9.torch",
+      "to": "9.torch",
+      "bed": "night"
+    },
+    {
+      "from": "9.roof",
+      "to": "9.roof",
+      "bed": "wind"
+    },
+    {
+      "from": "9.not",
+      "to": "9.follow",
+      "bed": "village"
+    },
+    {
+      "from": "9.even",
+      "to": "9.even",
+      "bed": "cave"
+    },
+    {
+      "from": "9.safe",
+      "to": "10.still",
+      "bed": "village"
+    },
+    {
+      "from": "10.things",
+      "to": "10.things",
+      "bed": "cave"
+    },
+    {
+      "from": "10.look",
+      "to": "10.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.sit",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "why": "The film opens on him."
+    },
+    {
+      "cue": "1.sit",
+      "at": 0.04,
+      "sfx": "thud",
+      "trim": -1,
+      "why": "He drops into a sit: the first thing that happens, and the last (8.sat)."
+    },
+    {
+      "cue": "1.sit",
+      "at": 0.22,
+      "sfx": "pop",
+      "pitch": 0.8,
+      "pan": -0.5,
+      "why": "House 1 pops up behind him."
+    },
+    {
+      "cue": "1.sit",
+      "at": 0.38,
+      "sfx": "pop",
+      "pitch": 0.9,
+      "pan": 0.5,
+      "why": "House 2 pops up behind him."
+    },
+    {
+      "cue": "1.sit",
+      "at": 0.54,
+      "sfx": "pop",
+      "pitch": 1.0,
+      "pan": 0,
+      "why": "House 3 pops up behind him."
+    },
+    {
+      "cue": "1.sit",
+      "at": 0.7,
+      "sfx": "bell",
+      "trim": -1,
+      "why": "The bell lands. It rings again as they run (10.sub)."
+    },
+    {
+      "cue": "1.sit",
+      "at": 0.84,
+      "sfx": "pop",
+      "pitch": 1.2,
+      "pan": -0.4,
+      "why": "A villager pops in."
+    },
+    {
+      "cue": "1.sit",
+      "at": 0.98,
+      "sfx": "pop",
+      "pitch": 1.3,
+      "pan": 0.3,
+      "why": "A second."
+    },
+    {
+      "cue": "1.sit",
+      "at": 1.26,
+      "sfx": "pop",
+      "pitch": 1.45,
+      "why": "A third, a small one."
+    },
+    {
+      "cue": "1.sit",
+      "at": 1.4,
+      "sfx": "place",
+      "pan": 0.4,
+      "why": "The sign goes in at his shoulder."
+    },
+    {
+      "cue": "1.sit",
+      "at": 1.52,
+      "sfx": "blip",
+      "pitch": 1.6,
+      "pan": 0.4,
+      "why": "The parrot lands on it. The parrot is always this high blip."
+    },
+    {
+      "cue": "1.sit",
+      "at": 1.62,
+      "sfx": "pop",
+      "pitch": 1.1,
+      "pan": -0.5,
+      "why": "The farmer."
+    },
+    {
+      "cue": "1.sit",
+      "at": 1.86,
+      "sfx": "bonk",
+      "trim": -1,
+      "why": "A loaf on his head."
+    },
+    {
+      "cue": "1.days",
+      "sfx": "swish",
+      "why": "Cut in close."
+    },
+    {
+      "cue": "1.days",
+      "at": 0.05,
+      "sfx": "count",
+      "dur": 0.8,
+      "why": "The days run up: 1 to 400."
+    },
+    {
+      "cue": "1.days",
+      "word": "hundred",
+      "at": 0.12,
+      "sfx": "stamp",
+      "why": "DAY 400 lands. It lands again when the players come (6.day)."
+    },
+    {
+      "cue": "1.moved",
+      "sfx": "swish",
+      "why": "His face from the side."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.1,
+      "sfx": "sparkle",
+      "trim": 3.5,
+      "dur": 0.4,
+      "why": "A butterfly comes down."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.55,
+      "sfx": "blip",
+      "why": "It lands on his nose. His eyes go wide."
+    },
+    {
+      "cue": "1.owner",
+      "sfx": "whoosh",
+      "why": "Four hundred days back."
+    },
+    {
+      "cue": "1.owner",
+      "at": 0.12,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "His owner, in armour."
+    },
+    {
+      "cue": "1.owner",
+      "word": "one",
+      "at": -0.1,
+      "sfx": "pop",
+      "why": "SIT."
+    },
+    {
+      "cue": "1.owner",
+      "word": "one",
+      "at": 0.2,
+      "sfx": "thud",
+      "trim": 4,
+      "why": "He sits."
+    },
+    {
+      "cue": "1.owner",
+      "word": "walked",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.68,
+      "trim": -1,
+      "why": "He walks into the forest."
+    },
+    {
+      "cue": "2.creeper",
+      "sfx": "whoosh",
+      "why": "Night."
+    },
+    {
+      "cue": "2.creeper",
+      "at": 0.08,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.42,
+      "pitch": 0.8,
+      "pan": -0.5,
+      "why": "The creeper walks in: slow, low feet."
+    },
+    {
+      "cue": "2.creeper",
+      "at": 1.25,
+      "sfx": "blip",
+      "pitch": 0.7,
+      "why": "It turns to face the way he faces."
+    },
+    {
+      "cue": "2.talk",
+      "at": 0.2,
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.5,
+      "trim": -2,
+      "why": "Nobody says anything."
+    },
+    {
+      "cue": "2.talk",
+      "word": "good",
+      "at": -0.05,
+      "sfx": "swish",
+      "why": "The dog looks at the creeper. These two swishes come back for the dog and his owner (10.look)."
+    },
+    {
+      "cue": "2.talk",
+      "word": "good",
+      "at": 0.3,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "The creeper looks at the dog."
+    },
+    {
+      "cue": "2.talk",
+      "word": "good",
+      "at": 0.78,
+      "sfx": "blip",
+      "why": "Both snap back to the front."
+    },
+    {
+      "cue": "2.parrot",
+      "sfx": "whoosh",
+      "why": "Day."
+    },
+    {
+      "cue": "2.parrot",
+      "at": 0.05,
+      "sfx": "rustle",
+      "dur": 0.25,
+      "why": "Wings."
+    },
+    {
+      "cue": "2.parrot",
+      "at": 0.3,
+      "sfx": "place",
+      "pan": 0.3,
+      "why": "It lands on the sign."
+    },
+    {
+      "cue": "2.parrot",
+      "at": 0.55,
+      "sfx": "blip",
+      "pitch": 1.6,
+      "why": "It tips its head at us.",
+      "trim": 2.5
+    },
+    {
+      "cue": "2.hiss",
+      "word": "hiss",
+      "at": -0.1,
+      "sfx": "pop",
+      "why": "SSSSS: a white bubble."
+    },
+    {
+      "cue": "2.hiss",
+      "word": "hiss",
+      "at": 0.2,
+      "sfx": "fire_whoosh",
+      "dur": 0.7,
+      "trim": -2,
+      "why": "The parrot does the creeper: a thin hiss. The real one is lower (7.hiss2)."
+    },
+    {
+      "cue": "2.hiss",
+      "word": "hiss",
+      "at": 0.0,
+      "sfx": "boing",
+      "why": "Three villagers leave the ground."
+    },
+    {
+      "cue": "2.hiss",
+      "word": "hiss",
+      "at": 0.35,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.35,
+      "trim": 4,
+      "why": "And run."
+    },
+    {
+      "cue": "2.hiss",
+      "word": "liked",
+      "at": -0.22,
+      "sfx": "zip",
+      "pan": -0.6,
+      "why": "A loaf comes in from the left."
+    },
+    {
+      "cue": "2.hiss",
+      "word": "liked",
+      "sfx": "bonk",
+      "why": "It hits the parrot."
+    },
+    {
+      "cue": "2.hiss",
+      "word": "liked",
+      "at": 0.08,
+      "sfx": "slide_down",
+      "dur": 0.4,
+      "why": "The parrot goes off the sign."
+    },
+    {
+      "cue": "3.first",
+      "sfx": "whoosh",
+      "why": "Back to the empty meadow."
+    },
+    {
+      "cue": "3.first",
+      "at": 0.5,
+      "sfx": "gust",
+      "dur": 1.2,
+      "trim": -2,
+      "why": "Nothing for a long way."
+    },
+    {
+      "cue": "3.built",
+      "at": 0.15,
+      "sfx": "pop",
+      "repeat": 9,
+      "every": 0.2,
+      "pitchStep": 1.05,
+      "why": "Nine houses, one after another, each a little higher."
+    },
+    {
+      "cue": "3.built",
+      "at": 1.55,
+      "sfx": "bell",
+      "trim": -1,
+      "why": "The bell."
+    },
+    {
+      "cue": "3.built",
+      "at": 1.85,
+      "sfx": "cheer",
+      "trim": -1,
+      "dur": 0.5,
+      "why": "A town."
+    },
+    {
+      "cue": "3.farmer",
+      "sfx": "swish",
+      "why": "The farmer, from the side."
+    },
+    {
+      "cue": "3.farmer",
+      "at": 0.12,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "He leans in."
+    },
+    {
+      "cue": "3.farmer",
+      "at": 0.35,
+      "sfx": "creak",
+      "trim": -1,
+      "why": "Nose to nose."
+    },
+    {
+      "cue": "3.farmer",
+      "word": "statue",
+      "sfx": "blip",
+      "pitch": 0.7,
+      "why": "Hmm."
+    },
+    {
+      "cue": "3.loaf",
+      "at": 0.12,
+      "sfx": "place",
+      "repeat": 3,
+      "every": 0.45,
+      "pitchStep": 1.12,
+      "why": "Loaf, loaf, loaf, loaf: a tower.",
+      "trim": 2.5
+    },
+    {
+      "cue": "3.loaf",
+      "at": 0.12,
+      "sfx": "bonk",
+      "trim": -1,
+      "why": "The first one, on his head."
+    },
+    {
+      "cue": "3.loaf",
+      "at": 1.1,
+      "sfx": "boing",
+      "trim": -1,
+      "why": "The tower leans."
+    },
+    {
+      "cue": "3.sign",
+      "word": "sign",
+      "at": -0.4,
+      "sfx": "slide_down",
+      "dur": 0.25,
+      "why": "The sign comes down out of the air."
+    },
+    {
+      "cue": "3.sign",
+      "word": "sign",
+      "at": -0.18,
+      "sfx": "thud",
+      "why": "And goes in.",
+      "trim": 2.5
+    },
+    {
+      "cue": "3.sign",
+      "word": "sign",
+      "at": -0.1,
+      "sfx": "debris",
+      "dur": 0.3,
+      "why": "Dirt."
+    },
+    {
+      "cue": "3.sign",
+      "word": "I",
+      "sfx": "swish",
+      "why": "Cut in: we can read it."
+    },
+    {
+      "cue": "3.sign",
+      "word": "cannot",
+      "at": 0.05,
+      "sfx": "blip",
+      "why": "His head tips. He cannot."
+    },
+    {
+      "cue": "3.sign",
+      "word": "name",
+      "at": -0.25,
+      "sfx": "rustle",
+      "dur": 0.5,
+      "why": "His tail goes."
+    },
+    {
+      "cue": "3.sign",
+      "word": "think",
+      "sfx": "tick",
+      "pitch": 0.7,
+      "why": "\"I think\": he is wrong. The same dry tick each time he is (5.bones, 5.forgotme)."
+    },
+    {
+      "cue": "4.job",
+      "sfx": "whoosh",
+      "why": "The whole job."
+    },
+    {
+      "cue": "4.job",
+      "at": 0.2,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 1.26,
+      "pitch": 1.6,
+      "trim": 4,
+      "why": "A chicken walks under his nose."
+    },
+    {
+      "cue": "4.job",
+      "at": 0.6,
+      "sfx": "blip",
+      "pitch": 1.9,
+      "trim": -2,
+      "why": "Cluck."
+    },
+    {
+      "cue": "4.job",
+      "at": 1.3,
+      "sfx": "creak",
+      "trim": -1,
+      "why": "It costs him."
+    },
+    {
+      "cue": "4.job",
+      "at": 1.9,
+      "sfx": "blip",
+      "pitch": 1.9,
+      "trim": -2,
+      "why": "Cluck."
+    },
+    {
+      "cue": "4.job",
+      "word": "whole",
+      "at": 0.1,
+      "sfx": "ding",
+      "note": "E6",
+      "trim": -1,
+      "why": "His eyes come back to the forest. Job done."
+    },
+    {
+      "cue": "4.skel",
+      "sfx": "whoosh",
+      "why": "Night."
+    },
+    {
+      "cue": "4.skel",
+      "at": 0.1,
+      "sfx": "step_stick",
+      "repeat": 3,
+      "every": 0.435,
+      "why": "Skeletons: sticks for legs."
+    },
+    {
+      "cue": "4.dog",
+      "sfx": "swish",
+      "why": "Close on him."
+    },
+    {
+      "cue": "4.dog",
+      "at": 0.1,
+      "sfx": "heartbeat",
+      "repeat": 3,
+      "every": 0.72,
+      "why": "He is made for this."
+    },
+    {
+      "cue": "4.dog",
+      "word": "chase",
+      "sfx": "creak",
+      "trim": -2,
+      "why": "Holding himself down."
+    },
+    {
+      "cue": "4.ran",
+      "sfx": "swish",
+      "why": "The row again."
+    },
+    {
+      "cue": "4.ran",
+      "at": 0.15,
+      "sfx": "blip",
+      "pitch": 0.8,
+      "why": "Three skulls turn to him."
+    },
+    {
+      "cue": "4.ran",
+      "word": "They",
+      "sfx": "boing",
+      "why": "They jump."
+    },
+    {
+      "cue": "4.ran",
+      "word": "They",
+      "at": 0.2,
+      "sfx": "step_stick",
+      "repeat": 3,
+      "every": 0.35,
+      "trim": -1,
+      "why": "And run for it."
+    },
+    {
+      "cue": "4.ran",
+      "word": "They",
+      "at": 0.35,
+      "sfx": "zip",
+      "pan": 0.6,
+      "why": "Gone."
+    },
+    {
+      "cue": "4.ran",
+      "word": "anyway",
+      "at": 0.3,
+      "sfx": "plink",
+      "why": "One bone, left behind."
+    },
+    {
+      "cue": "4.rain",
+      "sfx": "whoosh",
+      "why": "Rain."
+    },
+    {
+      "cue": "4.rain",
+      "at": 0.3,
+      "sfx": "gust",
+      "dur": 1.1,
+      "why": "Weather."
+    },
+    {
+      "cue": "4.rain",
+      "at": 0.1,
+      "sfx": "plink",
+      "repeat": 3,
+      "every": 0.45,
+      "pitchStep": 1.03,
+      "why": "Through the hole in the roof, onto his head."
+    },
+    {
+      "cue": "4.snow",
+      "sfx": "swish",
+      "why": "Snow."
+    },
+    {
+      "cue": "4.snow",
+      "at": 0.4,
+      "sfx": "gust",
+      "dur": 1.3,
+      "why": "Colder."
+    },
+    {
+      "cue": "4.snow",
+      "word": "sat",
+      "at": -0.12,
+      "sfx": "pop",
+      "pitch": 1.4,
+      "why": "Two eyes open in the heap."
+    },
+    {
+      "cue": "5.forgot",
+      "sfx": "whoosh",
+      "why": "What he left."
+    },
+    {
+      "cue": "5.forgot",
+      "at": 0.6,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "His head goes to the chest."
+    },
+    {
+      "cue": "5.forgot",
+      "at": 1.55,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "And to the bed."
+    },
+    {
+      "cue": "5.forgot",
+      "at": 2.7,
+      "sfx": "blip",
+      "why": "And back to the forest."
+    },
+    {
+      "cue": "5.bed",
+      "sfx": "swish",
+      "why": "The bed."
+    },
+    {
+      "cue": "5.bed",
+      "at": 0.3,
+      "sfx": "place",
+      "trim": -2,
+      "why": "The bed. Each thing he left gets this, and gets it again in the list (9.bed)."
+    },
+    {
+      "cue": "5.bed",
+      "word": "Nobody",
+      "at": -0.5,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.24,
+      "pitch": 1.3,
+      "why": "A small villager walks up to it."
+    },
+    {
+      "cue": "5.bed",
+      "word": "Nobody",
+      "at": 0.3,
+      "sfx": "creak",
+      "why": "The dog: a low growl."
+    },
+    {
+      "cue": "5.bed",
+      "word": "Nobody",
+      "at": 0.75,
+      "sfx": "slide_down",
+      "dur": 0.5,
+      "trim": 4,
+      "why": "The small villager goes back the way he came."
+    },
+    {
+      "cue": "5.bed",
+      "word": "Nobody",
+      "at": 0.8,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.3,
+      "pitch": 1.3,
+      "trim": -2,
+      "why": "Backwards."
+    },
+    {
+      "cue": "5.bones",
+      "sfx": "swish",
+      "why": "The chest."
+    },
+    {
+      "cue": "5.bones",
+      "word": "chest",
+      "at": -0.15,
+      "sfx": "creak",
+      "why": "The lid."
+    },
+    {
+      "cue": "5.bones",
+      "word": "chest",
+      "at": 0.15,
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.105,
+      "pitch": 0.9,
+      "why": "Bones, to the top."
+    },
+    {
+      "cue": "5.bones",
+      "word": "bones",
+      "at": 0.1,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "His tail."
+    },
+    {
+      "cue": "5.bones",
+      "word": "I",
+      "at": -0.05,
+      "sfx": "swish",
+      "why": "His head snaps back to the front. Not his."
+    },
+    {
+      "cue": "5.bones",
+      "word": "think",
+      "sfx": "tick",
+      "pitch": 0.7,
+      "why": "\"I think\": wrong again."
+    },
+    {
+      "cue": "5.torch",
+      "sfx": "whoosh",
+      "why": "Night, from above."
+    },
+    {
+      "cue": "5.torch",
+      "at": 0.1,
+      "sfx": "crackle",
+      "repeat": 3,
+      "every": 0.95,
+      "why": "The torches."
+    },
+    {
+      "cue": "5.torch",
+      "at": 0.45,
+      "sfx": "sting",
+      "trim": -1,
+      "why": "Every monster in the dark, standing just outside the light. He does not see what the torches are for."
+    },
+    {
+      "cue": "5.torch",
+      "at": 1.3,
+      "sfx": "creak",
+      "trim": -1,
+      "pan": -0.6,
+      "why": "A zombie shifts its feet."
+    },
+    {
+      "cue": "5.torch",
+      "word": "dark",
+      "at": -0.3,
+      "sfx": "rustle",
+      "dur": 0.5,
+      "why": "He wags."
+    },
+    {
+      "cue": "5.roof",
+      "sfx": "whoosh",
+      "why": "Day. The roof."
+    },
+    {
+      "cue": "5.roof",
+      "word": "not",
+      "at": -0.25,
+      "sfx": "creak",
+      "why": "The middle plank."
+    },
+    {
+      "cue": "5.roof",
+      "word": "not",
+      "at": -0.1,
+      "sfx": "crack",
+      "why": "It lets go."
+    },
+    {
+      "cue": "5.roof",
+      "word": "not",
+      "at": 0.0,
+      "sfx": "slide_down",
+      "dur": 0.35,
+      "why": "And comes down past his ear."
+    },
+    {
+      "cue": "5.roof",
+      "word": "not",
+      "at": 0.32,
+      "sfx": "thud",
+      "why": "Onto the grass."
+    },
+    {
+      "cue": "5.roof",
+      "word": "not",
+      "at": 0.3,
+      "sfx": "blip",
+      "pitch": 1.6,
+      "why": "The parrot hops."
+    },
+    {
+      "cue": "5.took",
+      "sfx": "whoosh",
+      "why": "Four hundred days back, at sunset."
+    },
+    {
+      "cue": "5.took",
+      "word": "sword",
+      "at": -0.08,
+      "sfx": "pop",
+      "why": "A sword.",
+      "trim": 2.5
+    },
+    {
+      "cue": "5.took",
+      "word": "sword",
+      "at": 0.0,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "Iron."
+    },
+    {
+      "cue": "5.took",
+      "word": "pickaxe",
+      "at": -0.08,
+      "sfx": "pop",
+      "pitch": 1.1,
+      "why": "A pickaxe.",
+      "trim": 2.5
+    },
+    {
+      "cue": "5.took",
+      "word": "pickaxe",
+      "at": 0.0,
+      "sfx": "clank",
+      "trim": -2,
+      "f": 900,
+      "why": "Iron."
+    },
+    {
+      "cue": "5.took",
+      "word": "twelve",
+      "at": -0.1,
+      "sfx": "pop",
+      "repeat": 6,
+      "every": 0.121,
+      "pitchStep": 1.04,
+      "trim": 0.5,
+      "why": "Twelve green eyes, one after another."
+    },
+    {
+      "cue": "5.took",
+      "word": "green",
+      "sfx": "sparkle",
+      "dur": 0.5,
+      "why": "They glow."
+    },
+    {
+      "cue": "5.eyes",
+      "sfx": "swish",
+      "why": "He throws one.",
+      "trim": 2.5
+    },
+    {
+      "cue": "5.eyes",
+      "at": 0.15,
+      "sfx": "zip",
+      "dur": 0.5,
+      "why": "Up."
+    },
+    {
+      "cue": "5.eyes",
+      "at": 0.3,
+      "sfx": "slide_up",
+      "dur": 0.9,
+      "trim": -1,
+      "why": "It climbs and hangs."
+    },
+    {
+      "cue": "5.eyes",
+      "at": 0.6,
+      "sfx": "sparkle",
+      "dur": 0.6,
+      "why": "Its green trail. This is the sound of the eyes: it comes back when they are gone (8.nothing)."
+    },
+    {
+      "cue": "5.eyes",
+      "at": 0.75,
+      "sfx": "blip",
+      "why": "The dog tips his head."
+    },
+    {
+      "cue": "5.forgotme",
+      "at": 0.1,
+      "sfx": "drop",
+      "trim": -2,
+      "why": "Sunset. He thinks he has been forgotten."
+    },
+    {
+      "cue": "5.forgotme",
+      "word": "thought",
+      "sfx": "tick",
+      "pitch": 0.7,
+      "why": "\"That is what I thought\": the third time, and the biggest."
+    },
+    {
+      "cue": "6.day",
+      "sfx": "whoosh",
+      "why": "Day four hundred."
+    },
+    {
+      "cue": "6.day",
+      "word": "four",
+      "at": -0.1,
+      "sfx": "stamp",
+      "why": "DAY 400."
+    },
+    {
+      "cue": "6.day",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 1.05,
+      "why": "Two players walk in.",
+      "trim": 4
+    },
+    {
+      "cue": "6.day",
+      "at": 0.3,
+      "sfx": "sting",
+      "trim": -1,
+      "why": "Nobody here is glad to see them."
+    },
+    {
+      "cue": "6.day",
+      "at": 0.8,
+      "sfx": "rustle",
+      "dur": 0.5,
+      "why": "Villagers back away."
+    },
+    {
+      "cue": "6.chest",
+      "sfx": "swish",
+      "why": "The chest."
+    },
+    {
+      "cue": "6.chest",
+      "word": "opened",
+      "at": -0.1,
+      "sfx": "creak",
+      "why": "He flips it open."
+    },
+    {
+      "cue": "6.chest",
+      "word": "Bones",
+      "at": -0.08,
+      "sfx": "pop",
+      "why": "BONES."
+    },
+    {
+      "cue": "6.chest",
+      "word": "Junk",
+      "at": -0.08,
+      "sfx": "pop",
+      "pitch": 0.8,
+      "why": "JUNK."
+    },
+    {
+      "cue": "6.chest",
+      "word": "Junk",
+      "at": 0.0,
+      "sfx": "buzz",
+      "trim": -1,
+      "why": "Junk."
+    },
+    {
+      "cue": "6.chest",
+      "word": "Junk",
+      "at": 0.05,
+      "sfx": "zip",
+      "why": "A bone over his shoulder.",
+      "trim": 2.5
+    },
+    {
+      "cue": "6.chest",
+      "word": "Junk",
+      "at": 0.5,
+      "sfx": "plink",
+      "why": "It lands in front of the dog."
+    },
+    {
+      "cue": "6.bed",
+      "sfx": "swish",
+      "why": "The bed."
+    },
+    {
+      "cue": "6.bed",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.3,
+      "why": "He steps up to it."
+    },
+    {
+      "cue": "6.bed",
+      "word": "Free",
+      "at": -0.1,
+      "sfx": "pop",
+      "why": "FREE BED."
+    },
+    {
+      "cue": "6.bed",
+      "word": "Free",
+      "at": 0.25,
+      "sfx": "register",
+      "trim": -1,
+      "why": "Free."
+    },
+    {
+      "cue": "6.bed",
+      "word": "Free",
+      "at": 0.5,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "He rubs his hands."
+    },
+    {
+      "cue": "6.took",
+      "sfx": "swish",
+      "why": "Close on him."
+    },
+    {
+      "cue": "6.took",
+      "word": "axe",
+      "at": -0.3,
+      "sfx": "clank",
+      "why": "An axe."
+    },
+    {
+      "cue": "6.took",
+      "word": "axe",
+      "at": 0.0,
+      "sfx": "sparkle",
+      "dur": 0.3,
+      "trim": -1,
+      "why": "Its edge."
+    },
+    {
+      "cue": "6.growl",
+      "at": 0.1,
+      "sfx": "creak",
+      "why": "He growls."
+    },
+    {
+      "cue": "6.growl",
+      "at": 0.15,
+      "sfx": "scrape",
+      "dur": 0.6,
+      "trim": 0.5,
+      "why": "Teeth."
+    },
+    {
+      "cue": "6.growl",
+      "word": "They",
+      "at": -0.05,
+      "sfx": "swish",
+      "why": "From where he sits, looking up at them.",
+      "trim": 2.5
+    },
+    {
+      "cue": "6.growl",
+      "word": "They",
+      "at": 0.1,
+      "sfx": "boing",
+      "repeat": 3,
+      "every": 0.17,
+      "trim": -1,
+      "why": "Ha, ha, ha."
+    },
+    {
+      "cue": "6.bite",
+      "sfx": "swish",
+      "why": "From the side."
+    },
+    {
+      "cue": "6.bite",
+      "at": 0.2,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "He bends right down to him."
+    },
+    {
+      "cue": "6.bite",
+      "word": "bite",
+      "at": -0.12,
+      "sfx": "boing",
+      "why": "A poke on the nose.",
+      "trim": 2.5
+    },
+    {
+      "cue": "6.bite",
+      "word": "bite",
+      "at": 0.05,
+      "sfx": "blip",
+      "pitch": 1.5,
+      "why": "His eyes cross."
+    },
+    {
+      "cue": "6.hiss",
+      "sfx": "swish",
+      "why": "The parrot."
+    },
+    {
+      "cue": "6.hiss",
+      "at": 0.05,
+      "sfx": "blip",
+      "pitch": 1.6,
+      "why": "It looks left."
+    },
+    {
+      "cue": "6.hiss",
+      "at": 0.2,
+      "sfx": "blip",
+      "pitch": 1.7,
+      "why": "It looks right."
+    },
+    {
+      "cue": "6.hiss",
+      "at": 0.35,
+      "sfx": "pop",
+      "why": "SSSSSS."
+    },
+    {
+      "cue": "6.hiss",
+      "at": 0.7,
+      "sfx": "fire_whoosh",
+      "dur": 0.8,
+      "trim": -1,
+      "why": "The thin hiss, the parrot's."
+    },
+    {
+      "cue": "6.jump",
+      "at": 0.04,
+      "sfx": "boing",
+      "why": "A whole block in the air."
+    },
+    {
+      "cue": "6.jump",
+      "at": 0.04,
+      "sfx": "slide_up",
+      "dur": 0.28,
+      "why": "Up."
+    },
+    {
+      "cue": "6.jump",
+      "at": 0.6,
+      "sfx": "thud",
+      "repeat": 2,
+      "every": 0.05,
+      "why": "Down."
+    },
+    {
+      "cue": "6.jump",
+      "word": "Then",
+      "at": -0.1,
+      "sfx": "swish",
+      "why": "Both heads stop on the parrot."
+    },
+    {
+      "cue": "6.jump",
+      "word": "parrot",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 1.6,
+      "why": "The parrot bobs."
+    },
+    {
+      "cue": "6.axe",
+      "at": 0.05,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.25,
+      "why": "He steps up to the foot of the bed."
+    },
+    {
+      "cue": "6.axe",
+      "word": "went",
+      "sfx": "whoosh_low",
+      "why": "The axe goes up."
+    },
+    {
+      "cue": "6.axe",
+      "word": "went",
+      "at": 0.25,
+      "sfx": "clank",
+      "why": "Over the bed."
+    },
+    {
+      "cue": "6.axe",
+      "word": "over",
+      "at": 0.0,
+      "sfx": "heartbeat",
+      "repeat": 2,
+      "every": 0.42,
+      "why": "The dog has started to shake.",
+      "trim": 4
+    },
+    {
+      "cue": "7.his",
+      "sfx": "whoosh",
+      "why": "The dog, and the bed."
+    },
+    {
+      "cue": "7.his",
+      "at": 0.2,
+      "sfx": "drop",
+      "trim": -1,
+      "why": "He does not know what it is for."
+    },
+    {
+      "cue": "7.his",
+      "word": "I",
+      "at": -0.05,
+      "sfx": "swish",
+      "nth": 1,
+      "why": "What he does know: a night, long ago."
+    },
+    {
+      "cue": "7.his",
+      "word": "his",
+      "sfx": "chime",
+      "trim": -1,
+      "why": "It was his."
+    },
+    {
+      "cue": "7.good",
+      "at": 0.1,
+      "sfx": "heartbeat",
+      "repeat": 3,
+      "every": 0.7,
+      "why": "Four hundred days."
+    },
+    {
+      "cue": "7.good",
+      "word": "four",
+      "sfx": "creak",
+      "trim": -2,
+      "why": "He is shaking."
+    },
+    {
+      "cue": "7.stood",
+      "sfx": "riser",
+      "dur": 2.0,
+      "why": "It climbs into the first try."
+    },
+    {
+      "cue": "7.stood",
+      "at": 0.05,
+      "sfx": "slide_up",
+      "dur": 0.3,
+      "why": "Up."
+    },
+    {
+      "cue": "7.stood",
+      "at": 0.42,
+      "sfx": "slide_down",
+      "dur": 0.14,
+      "why": "Half way, and down."
+    },
+    {
+      "cue": "7.stood",
+      "at": 0.56,
+      "sfx": "thud",
+      "why": "A bump.",
+      "trim": 4
+    },
+    {
+      "cue": "7.legs",
+      "at": 0.02,
+      "sfx": "slide_up",
+      "dur": 0.22,
+      "why": "Second try.",
+      "trim": 2.5
+    },
+    {
+      "cue": "7.legs",
+      "at": 0.38,
+      "sfx": "bonk",
+      "trim": -1,
+      "why": "Down again."
+    },
+    {
+      "cue": "7.legs",
+      "at": 0.5,
+      "sfx": "slide_up",
+      "dur": 0.28,
+      "why": "Third.",
+      "trim": 2.5
+    },
+    {
+      "cue": "7.legs",
+      "at": 0.8,
+      "sfx": "ding",
+      "note": "G5",
+      "why": "He is up."
+    },
+    {
+      "cue": "7.legs",
+      "at": 1.0,
+      "sfx": "thud",
+      "trim": 4,
+      "why": "The loaf slides off his head."
+    },
+    {
+      "cue": "7.front",
+      "at": 0.08,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.36,
+      "pitch": 1.3,
+      "why": "Four stiff legs.",
+      "trim": 4
+    },
+    {
+      "cue": "7.front",
+      "at": 0.95,
+      "sfx": "swish",
+      "why": "He turns to face him."
+    },
+    {
+      "cue": "7.front",
+      "word": "teeth",
+      "at": -0.2,
+      "sfx": "creak",
+      "why": "The growl."
+    },
+    {
+      "cue": "7.front",
+      "word": "teeth",
+      "at": -0.1,
+      "sfx": "scrape",
+      "dur": 0.6,
+      "trim": -2,
+      "why": "Teeth."
+    },
+    {
+      "cue": "7.move",
+      "sfx": "swish",
+      "why": "From down by the dog."
+    },
+    {
+      "cue": "7.move",
+      "word": "Move",
+      "at": -0.08,
+      "sfx": "pop",
+      "why": "MOVE."
+    },
+    {
+      "cue": "7.move",
+      "word": "dog",
+      "at": 0.1,
+      "sfx": "sting",
+      "trim": -1,
+      "why": "He means it."
+    },
+    {
+      "cue": "7.over",
+      "at": 0.3,
+      "sfx": "whoosh_low",
+      "why": "The axe goes up again, over the dog."
+    },
+    {
+      "cue": "7.over",
+      "at": 0.6,
+      "sfx": "clank",
+      "why": "All the way."
+    },
+    {
+      "cue": "7.over",
+      "at": 0.35,
+      "sfx": "heartbeat",
+      "repeat": 2,
+      "every": 0.45,
+      "why": "He does not step back.",
+      "trim": 4
+    },
+    {
+      "cue": "7.hiss2",
+      "sfx": "riser",
+      "dur": 1.3,
+      "why": "Everything climbs to the hiss, and the music stops for it."
+    },
+    {
+      "cue": "7.hiss2",
+      "at": 0.18,
+      "sfx": "pop",
+      "pitch": 0.6,
+      "why": "SSSSSS: a dark bubble this time."
+    },
+    {
+      "cue": "7.hiss2",
+      "at": 0.6,
+      "sfx": "fire_whoosh",
+      "dur": 1.0,
+      "trim": 3,
+      "why": "The real hiss: lower, nearer, longer."
+    },
+    {
+      "cue": "7.hiss2",
+      "at": 0.5,
+      "sfx": "tick",
+      "why": "His eyes go to one side."
+    },
+    {
+      "cue": "7.nice",
+      "word": "Nice",
+      "sfx": "blip",
+      "pitch": 0.9,
+      "why": "He grins. He does not turn round."
+    },
+    {
+      "cue": "7.nice",
+      "at": 0.2,
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.625,
+      "pitchStep": 1.06,
+      "why": "Behind him the creeper flashes, and flashes faster."
+    },
+    {
+      "cue": "7.nice",
+      "word": "parrot",
+      "at": 0.1,
+      "sfx": "blip",
+      "repeat": 2,
+      "every": 0.2,
+      "pitch": 1.6,
+      "why": "The parrot shakes its head: not me."
+    },
+    {
+      "cue": "7.not",
+      "word": "not",
+      "sfx": "boom",
+      "why": "It was not the parrot."
+    },
+    {
+      "cue": "7.not",
+      "at": 0.1,
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.42,
+      "pitchStep": 1.07,
+      "why": "The fuse."
+    },
+    {
+      "cue": "7.not",
+      "at": 0.5,
+      "sfx": "swish",
+      "why": "Green hair, turning round."
+    },
+    {
+      "cue": "7.gone",
+      "sfx": "riser",
+      "dur": 0.9,
+      "why": "Into the run."
+    },
+    {
+      "cue": "7.gone",
+      "at": 0.05,
+      "sfx": "zip",
+      "pan": -0.4,
+      "why": "Gone."
+    },
+    {
+      "cue": "7.gone",
+      "at": 0.15,
+      "sfx": "zip",
+      "pan": 0.4,
+      "why": "Both."
+    },
+    {
+      "cue": "7.gone",
+      "at": 0.05,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.45,
+      "trim": -1,
+      "why": "Flat out, down the path."
+    },
+    {
+      "cue": "7.gone",
+      "at": 0.4,
+      "sfx": "whoosh",
+      "why": "Dust."
+    },
+    {
+      "cue": "7.gone",
+      "word": "ground",
+      "at": -0.1,
+      "sfx": "thud",
+      "why": "The axe hits the ground."
+    },
+    {
+      "cue": "7.gone",
+      "word": "ground",
+      "at": -0.08,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "And sticks."
+    },
+    {
+      "cue": "7.listener",
+      "at": 0.15,
+      "sfx": "power_down",
+      "why": "The creeper goes back to its own size.",
+      "trim": -3
+    },
+    {
+      "cue": "7.listener",
+      "at": 0.7,
+      "sfx": "pop",
+      "pitch": 0.7,
+      "trim": -1,
+      "why": "One small puff."
+    },
+    {
+      "cue": "7.listener",
+      "at": 0.85,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "The dog's tail, once."
+    },
+    {
+      "cue": "7.shade",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.75,
+      "pitch": 0.8,
+      "why": "The creeper walks back to the shade: the same slow feet as the first night (2.creeper)."
+    },
+    {
+      "cue": "7.shade",
+      "word": "shade",
+      "at": 0.2,
+      "sfx": "blip",
+      "pitch": 0.7,
+      "why": "It stands in it."
+    },
+    {
+      "cue": "8.bad",
+      "at": 0.2,
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.42,
+      "pitchStep": 0.94,
+      "why": "He looks at his legs. One. Two. Three. Four."
+    },
+    {
+      "cue": "8.bad",
+      "word": "I",
+      "at": -0.05,
+      "sfx": "swish",
+      "nth": 2,
+      "why": "The patch where he should be."
+    },
+    {
+      "cue": "8.bad",
+      "word": "standing",
+      "at": -0.1,
+      "sfx": "sting",
+      "trim": -2,
+      "why": "Nobody on it. DO NOT MOVE HIM."
+    },
+    {
+      "cue": "8.light",
+      "at": 0.05,
+      "sfx": "power_up",
+      "why": "The bed lights up.",
+      "trim": -3
+    },
+    {
+      "cue": "8.light",
+      "at": 0.4,
+      "sfx": "sparkle",
+      "dur": 0.8,
+      "why": "Light, standing up out of the blanket."
+    },
+    {
+      "cue": "8.light",
+      "at": 0.3,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "The dog turns round."
+    },
+    {
+      "cue": "8.him",
+      "word": "there",
+      "sfx": "riser",
+      "dur": 1.4,
+      "why": "Into the light."
+    },
+    {
+      "cue": "8.him",
+      "word": "there",
+      "sfx": "boom",
+      "why": "And there he was."
+    },
+    {
+      "cue": "8.him",
+      "word": "there",
+      "at": 0.2,
+      "sfx": "thud",
+      "trim": -1,
+      "why": "On the bed."
+    },
+    {
+      "cue": "8.him",
+      "word": "owner",
+      "sfx": "chime",
+      "trim": -2,
+      "why": "His owner."
+    },
+    {
+      "cue": "8.nothing",
+      "word": "sword",
+      "at": -0.1,
+      "sfx": "pop",
+      "pitch": 0.8,
+      "why": "A sword: grey."
+    },
+    {
+      "cue": "8.nothing",
+      "word": "sword",
+      "at": 0.26,
+      "sfx": "debris",
+      "dur": 0.3,
+      "why": "Gone."
+    },
+    {
+      "cue": "8.nothing",
+      "word": "armour",
+      "at": -0.1,
+      "sfx": "pop",
+      "pitch": 0.75,
+      "why": "Armour."
+    },
+    {
+      "cue": "8.nothing",
+      "word": "armour",
+      "at": 0.26,
+      "sfx": "debris",
+      "dur": 0.3,
+      "why": "Gone."
+    },
+    {
+      "cue": "8.nothing",
+      "word": "green",
+      "at": -0.1,
+      "sfx": "sparkle",
+      "dur": 0.3,
+      "why": "A green eye: the sound from the day he threw one (5.eyes)."
+    },
+    {
+      "cue": "8.nothing",
+      "word": "green",
+      "at": 0.26,
+      "sfx": "debris",
+      "dur": 0.3,
+      "why": "Gone."
+    },
+    {
+      "cue": "8.way",
+      "at": 0.15,
+      "sfx": "drop",
+      "trim": -2,
+      "why": "The only way a player can."
+    },
+    {
+      "cue": "8.way",
+      "word": "With",
+      "at": -0.05,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "Two empty hands."
+    },
+    {
+      "cue": "8.looked",
+      "at": 0.05,
+      "sfx": "step_wood",
+      "why": "He steps down off the bed."
+    },
+    {
+      "cue": "8.looked",
+      "at": 0.35,
+      "sfx": "step_grass",
+      "why": "Onto the grass."
+    },
+    {
+      "cue": "8.looked",
+      "at": 0.8,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "He turns right round. None of this was here."
+    },
+    {
+      "cue": "8.looked",
+      "word": "Then",
+      "at": -0.05,
+      "sfx": "swish",
+      "why": "Then down, at the dog."
+    },
+    {
+      "cue": "8.looked",
+      "word": "me",
+      "at": -0.1,
+      "sfx": "sting",
+      "trim": -1,
+      "why": "Caught."
+    },
+    {
+      "cue": "8.said",
+      "at": 0.1,
+      "sfx": "pop",
+      "why": "SIT."
+    },
+    {
+      "cue": "8.said",
+      "word": "sit",
+      "sfx": "stamp",
+      "why": "A rule."
+    },
+    {
+      "cue": "8.sat",
+      "at": 0.04,
+      "sfx": "zip",
+      "why": "A white streak."
+    },
+    {
+      "cue": "8.sat",
+      "at": 0.3,
+      "sfx": "hit",
+      "why": "He sits so hard the ground shakes."
+    },
+    {
+      "cue": "8.sat",
+      "at": 0.36,
+      "sfx": "debris",
+      "dur": 0.5,
+      "why": "Dust."
+    },
+    {
+      "cue": "8.sat",
+      "at": 0.38,
+      "sfx": "blip",
+      "pitch": 1.6,
+      "why": "The parrot hops."
+    },
+    {
+      "cue": "8.sat",
+      "word": "hurt",
+      "sfx": "bonk",
+      "trim": -1,
+      "why": "It hurt."
+    },
+    {
+      "cue": "8.down",
+      "at": 0.05,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.27,
+      "why": "His owner walks over."
+    },
+    {
+      "cue": "8.down",
+      "at": 0.95,
+      "sfx": "thud",
+      "trim": 4,
+      "why": "And sits down on the grass."
+    },
+    {
+      "cue": "8.down",
+      "at": 1.1,
+      "sfx": "rustle",
+      "repeat": 3,
+      "every": 0.55,
+      "dur": 0.2,
+      "trim": -1,
+      "why": "The tail starts and does not stop."
+    },
+    {
+      "cue": "8.down",
+      "word": "Right",
+      "at": 0.15,
+      "sfx": "chime",
+      "why": "A hand on his head."
+    },
+    {
+      "cue": "9.bed",
+      "sfx": "swish",
+      "why": "The list."
+    },
+    {
+      "cue": "9.bed",
+      "at": 0.1,
+      "sfx": "ding",
+      "note": "C5",
+      "why": "The bed. Four notes going up, one for each thing."
+    },
+    {
+      "cue": "9.bed",
+      "at": 0.12,
+      "sfx": "place",
+      "trim": -1,
+      "why": "The bed (5.bed)."
+    },
+    {
+      "cue": "9.bones",
+      "sfx": "swish",
+      "why": "A quick cut inside the list."
+    },
+    {
+      "cue": "9.bones",
+      "at": 0.1,
+      "sfx": "ding",
+      "note": "E5",
+      "why": "The bones."
+    },
+    {
+      "cue": "9.bones",
+      "at": 0.15,
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.105,
+      "pitch": 0.9,
+      "why": "Bones (5.bones)."
+    },
+    {
+      "cue": "9.torch",
+      "sfx": "swish",
+      "why": "A quick cut inside the list."
+    },
+    {
+      "cue": "9.torch",
+      "at": 0.1,
+      "sfx": "ding",
+      "note": "G5",
+      "why": "The torches."
+    },
+    {
+      "cue": "9.torch",
+      "at": 0.15,
+      "sfx": "crackle",
+      "why": "Torches, and what they keep out (5.torch)."
+    },
+    {
+      "cue": "9.roof",
+      "sfx": "swish",
+      "why": "A quick cut inside the list."
+    },
+    {
+      "cue": "9.roof",
+      "at": 0.1,
+      "sfx": "ding",
+      "note": "C6",
+      "why": "The roof."
+    },
+    {
+      "cue": "9.roof",
+      "at": 0.15,
+      "sfx": "plink",
+      "repeat": 3,
+      "every": 0.16,
+      "why": "Rain, and him dry under it.",
+      "trim": -3
+    },
+    {
+      "cue": "9.not",
+      "at": 0.2,
+      "sfx": "swish",
+      "why": "The dog looks up at him."
+    },
+    {
+      "cue": "9.not",
+      "word": "anything",
+      "sfx": "chime",
+      "trim": -2,
+      "why": "He had not forgotten anything."
+    },
+    {
+      "cue": "9.follow",
+      "sfx": "whoosh",
+      "why": "What would have happened."
+    },
+    {
+      "cue": "9.follow",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.825,
+      "why": "His owner, walking into the forest."
+    },
+    {
+      "cue": "9.follow",
+      "at": 0.2,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.855,
+      "pitch": 1.4,
+      "trim": -1,
+      "why": "And four paws right behind him."
+    },
+    {
+      "cue": "9.even",
+      "sfx": "whoosh",
+      "why": "Under the ground."
+    },
+    {
+      "cue": "9.even",
+      "at": 0.15,
+      "sfx": "drop",
+      "why": "A black square in the floor."
+    },
+    {
+      "cue": "9.even",
+      "word": "come",
+      "at": -0.25,
+      "sfx": "zip",
+      "why": "He steps in."
+    },
+    {
+      "cue": "9.even",
+      "word": "come",
+      "at": -0.05,
+      "sfx": "slide_down",
+      "dur": 0.5,
+      "why": "And the dog goes after him."
+    },
+    {
+      "cue": "9.even",
+      "word": "back",
+      "at": 0.15,
+      "sfx": "glitch",
+      "trim": -1,
+      "why": "Gone."
+    },
+    {
+      "cue": "9.safe",
+      "sfx": "whoosh",
+      "why": "What did happen."
+    },
+    {
+      "cue": "9.safe",
+      "at": 0.2,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "A hand on the dog's head."
+    },
+    {
+      "cue": "9.safe",
+      "at": 0.6,
+      "sfx": "crackle",
+      "why": "The torches, lit for the first time."
+    },
+    {
+      "cue": "9.safe",
+      "word": "safe",
+      "sfx": "chime",
+      "why": "Safe."
+    },
+    {
+      "cue": "9.farmer",
+      "sfx": "whoosh",
+      "why": "Now.",
+      "trim": 2.5
+    },
+    {
+      "cue": "9.farmer",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.6,
+      "pan": -0.5,
+      "why": "The farmer comes out."
+    },
+    {
+      "cue": "9.farmer",
+      "at": 1.6,
+      "sfx": "blip",
+      "pitch": 0.7,
+      "why": "He stops. Hmm."
+    },
+    {
+      "cue": "9.farmer",
+      "at": 1.8,
+      "sfx": "place",
+      "why": "Loaf four hundred and one."
+    },
+    {
+      "cue": "9.farmer",
+      "at": 1.82,
+      "sfx": "bonk",
+      "trim": 4,
+      "why": "On his head."
+    },
+    {
+      "cue": "9.sign",
+      "sfx": "swish",
+      "why": "The sign."
+    },
+    {
+      "cue": "9.sign",
+      "at": 0.25,
+      "sfx": "blip",
+      "repeat": 2,
+      "every": 0.22,
+      "pitch": 0.7,
+      "why": "He clears his throat."
+    },
+    {
+      "cue": "9.sign",
+      "word": "read",
+      "sfx": "paper",
+      "why": "And reads."
+    },
+    {
+      "cue": "9.read",
+      "word": "Do",
+      "sfx": "tick",
+      "why": "DO NOT MOVE HIM."
+    },
+    {
+      "cue": "9.read",
+      "word": "He",
+      "sfx": "tick",
+      "why": "HE IS"
+    },
+    {
+      "cue": "9.read",
+      "word": "waiting",
+      "sfx": "ding",
+      "note": "E6",
+      "why": "WAITING."
+    },
+    {
+      "cue": "9.read",
+      "word": "waiting",
+      "at": 0.15,
+      "sfx": "sparkle",
+      "dur": 0.6,
+      "why": "He was."
+    },
+    {
+      "cue": "9.read",
+      "word": "waiting",
+      "at": 0.35,
+      "sfx": "blip",
+      "why": "One white ear lifts."
+    },
+    {
+      "cue": "10.still",
+      "sfx": "whoosh",
+      "why": "His owner, looking at the forest."
+    },
+    {
+      "cue": "10.still",
+      "word": "down",
+      "sfx": "drop",
+      "trim": -2,
+      "why": "It is still down there."
+    },
+    {
+      "cue": "10.things",
+      "sfx": "whoosh",
+      "why": "Under the ground."
+    },
+    {
+      "cue": "10.things",
+      "word": "all",
+      "sfx": "riser",
+      "dur": 0.9,
+      "why": "Into the eyes."
+    },
+    {
+      "cue": "10.things",
+      "word": "all",
+      "sfx": "hit",
+      "trim": -1,
+      "why": "Two enormous purple eyes open in the dark."
+    },
+    {
+      "cue": "10.things",
+      "word": "all",
+      "at": 0.1,
+      "sfx": "sting",
+      "why": "Over his things."
+    },
+    {
+      "cue": "10.things",
+      "word": "things",
+      "sfx": "whoosh_low",
+      "dur": 0.8,
+      "why": "It is big."
+    },
+    {
+      "cue": "10.look",
+      "sfx": "whoosh",
+      "why": "The two of them."
+    },
+    {
+      "cue": "10.look",
+      "word": "Then",
+      "at": -0.1,
+      "sfx": "swish",
+      "why": "His head turns to the dog."
+    },
+    {
+      "cue": "10.look",
+      "word": "Then",
+      "at": 0.3,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "The dog's head turns to him: the two swishes from the creeper (2.talk)."
+    },
+    {
+      "cue": "10.look",
+      "word": "me",
+      "sfx": "blip",
+      "why": "They look at each other."
+    },
+    {
+      "cue": "10.word",
+      "at": 0.1,
+      "sfx": "rustle",
+      "repeat": 3,
+      "every": 0.96,
+      "dur": 0.2,
+      "trim": 1.5,
+      "why": "Every part of him is shaking."
+    },
+    {
+      "cue": "10.word",
+      "at": 0.45,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.42,
+      "why": "His owner walks three steps down the path."
+    },
+    {
+      "cue": "10.word",
+      "word": "four",
+      "at": -0.2,
+      "sfx": "heartbeat",
+      "repeat": 2,
+      "every": 0.5,
+      "why": "Four hundred days."
+    },
+    {
+      "cue": "10.come",
+      "word": "Come",
+      "sfx": "riser",
+      "dur": 1.6,
+      "why": "It has all been climbing to one word."
+    },
+    {
+      "cue": "10.come",
+      "word": "Come",
+      "at": -0.08,
+      "sfx": "pop",
+      "why": "COME."
+    },
+    {
+      "cue": "10.come",
+      "word": "Come",
+      "sfx": "ding",
+      "note": "G6",
+      "why": "The word."
+    },
+    {
+      "cue": "10.come",
+      "at": 0.85,
+      "sfx": "zip",
+      "why": "He is up in one go.",
+      "trim": 4
+    },
+    {
+      "cue": "10.come",
+      "at": 0.9,
+      "sfx": "hit",
+      "trim": 4,
+      "why": "No tries at all."
+    },
+    {
+      "cue": "10.come",
+      "at": 0.95,
+      "sfx": "slide_up",
+      "dur": 0.4,
+      "why": "The loaf is in the air."
+    },
+    {
+      "cue": "10.sub",
+      "at": 0.1,
+      "sfx": "cheer",
+      "dur": 1.2,
+      "trim": -2,
+      "why": "The whole town."
+    },
+    {
+      "cue": "10.sub",
+      "at": 0.05,
+      "sfx": "step_grass",
+      "repeat": 3,
+      "every": 0.72,
+      "why": "Running, side by side."
+    },
+    {
+      "cue": "10.sub",
+      "at": 0.25,
+      "sfx": "pop",
+      "why": "SUBSCRIBE, in the parrot's feet."
+    },
+    {
+      "cue": "10.sub",
+      "word": "subscribe",
+      "sfx": "ding",
+      "note": "C6",
+      "why": "Subscribe."
+    },
+    {
+      "cue": "10.sub",
+      "word": "two",
+      "sfx": "bell",
+      "trim": -1,
+      "why": "The town bell, from the first frame."
+    }
+  ]
+}

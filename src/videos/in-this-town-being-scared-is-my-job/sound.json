@@ -1,0 +1,1983 @@
+{
+  "film": "in-this-town-being-scared-is-my-job",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-being-scared-is-my-job",
+  "sfxGain": -1.0,
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.job",
+        "mood": "town",
+        "why": "The topic's track, from the first frame."
+      },
+      {
+        "from": "2.gary",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night: Gary asleep."
+      },
+      {
+        "from": "2.barb",
+        "mood": "playful",
+        "why": "The job, as he tells it."
+      },
+      {
+        "from": "3.problem",
+        "mood": "curious",
+        "gain": -2,
+        "why": "The problem: a friend."
+      },
+      {
+        "from": "4.empty",
+        "mood": "tense",
+        "gain": -4,
+        "why": "The chest is empty and the boss looks up."
+      },
+      {
+        "from": "5.tried",
+        "mood": "playful",
+        "gain": -2,
+        "why": "He tries to scream on purpose."
+      },
+      {
+        "from": "5.lift",
+        "mood": "dark",
+        "gain": -5,
+        "why": "The bucket goes up."
+      },
+      {
+        "from": "6.scared",
+        "mood": "none",
+        "why": "No music for the breath before the first real scream."
+      },
+      {
+        "from": "6.glass",
+        "mood": "hope",
+        "why": "It worked."
+      },
+      {
+        "from": "6.kevin",
+        "mood": "tense",
+        "gain": -4,
+        "why": "Iron men do not like zombies."
+      },
+      {
+        "from": "6.long",
+        "mood": "playful",
+        "why": "A long way down."
+      },
+      {
+        "from": "7.follow",
+        "mood": "curious",
+        "gain": -3,
+        "why": "He goes to see the nice place."
+      },
+      {
+        "from": "7.end",
+        "mood": "dark",
+        "why": "The truth, and it is bad: the water ends in fire. Low, and under the voice.",
+        "gain": -5
+      },
+      {
+        "from": "8.gave",
+        "mood": "sad",
+        "gain": -2,
+        "why": "A flower that is meant."
+      },
+      {
+        "from": "8.have",
+        "mood": "town",
+        "why": "Part 2 is coming."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.job",
+      "to": "2.town",
+      "bed": "wind"
+    },
+    {
+      "from": "2.gary",
+      "to": "2.gary",
+      "bed": "night"
+    },
+    {
+      "from": "2.barb",
+      "to": "2.nice",
+      "bed": "wind"
+    },
+    {
+      "from": "2.chest",
+      "to": "2.chest",
+      "bed": "cave"
+    },
+    {
+      "from": "2.pay",
+      "to": "2.pay",
+      "bed": "wind"
+    },
+    {
+      "from": "2.boss",
+      "to": "2.boss",
+      "bed": "cave"
+    },
+    {
+      "from": "3.problem",
+      "to": "3.barb",
+      "bed": "wind"
+    },
+    {
+      "from": "4.empty",
+      "to": "4.up",
+      "bed": "cave"
+    },
+    {
+      "from": "4.atme",
+      "to": "7.end",
+      "bed": "wind"
+    },
+    {
+      "from": "7.end",
+      "to": "7.end",
+      "bed": "fire",
+      "trim": -4
+    },
+    {
+      "from": "7.list",
+      "to": "7.list",
+      "bed": "cave"
+    },
+    {
+      "from": "7.count",
+      "to": "8.sub",
+      "bed": "wind"
+    },
+    {
+      "from": "7.job",
+      "to": "7.job",
+      "bed": "fire",
+      "trim": -4
+    },
+    {
+      "from": "8.gave",
+      "to": "8.gave",
+      "bed": "fire",
+      "trim": -6
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.job",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "why": "The film opens on a glass room in the sky."
+    },
+    {
+      "cue": "1.job",
+      "at": 0.08,
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "pitch": 1.3,
+      "trim": 0,
+      "why": "He is screaming at a zombie. A scream is this whistle going up with a knock under it, all film."
+    },
+    {
+      "cue": "1.job",
+      "at": 0.08,
+      "sfx": "hit",
+      "trim": -5,
+      "why": "The knock under the scream."
+    },
+    {
+      "cue": "1.job",
+      "at": 0.5,
+      "sfx": "gust",
+      "dur": 0.9,
+      "trim": -2,
+      "why": "Two hundred blocks up."
+    },
+    {
+      "cue": "1.job",
+      "word": "my",
+      "at": -0.1,
+      "sfx": "tick",
+      "why": "The scream stops dead. He looks at us."
+    },
+    {
+      "cue": "1.job",
+      "at": 0.45,
+      "sfx": "stamp",
+      "trim": -4,
+      "why": "KEVIN: the name tag lands over the zombie."
+    },
+    {
+      "cue": "1.job",
+      "at": 0.65,
+      "sfx": "slide_up",
+      "dur": 0.3,
+      "pitch": 1.6,
+      "pan": -0.6,
+      "trim": -3,
+      "why": "Gary screams too, on the left."
+    },
+    {
+      "cue": "1.job",
+      "at": 0.85,
+      "sfx": "slide_up",
+      "dur": 0.3,
+      "pitch": 1.25,
+      "pan": 0.6,
+      "trim": 0,
+      "why": "And Barb, on the right."
+    },
+    {
+      "cue": "1.job",
+      "at": 1.05,
+      "sfx": "pop",
+      "pitch": 0.7,
+      "pan": -0.3,
+      "trim": -2,
+      "why": "An iron man pops out of the air behind them: that is what the screaming is for."
+    },
+    {
+      "cue": "1.job",
+      "at": 1.3,
+      "sfx": "pop",
+      "pitch": 0.6,
+      "pan": 0.3,
+      "trim": -2,
+      "why": "And another."
+    },
+    {
+      "cue": "1.zombie",
+      "sfx": "swish",
+      "why": "From inside, over the hard hat."
+    },
+    {
+      "cue": "1.zombie",
+      "word": "zombie",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "The zombie, looking in. This low blip is Kevin, all film."
+    },
+    {
+      "cue": "1.years",
+      "sfx": "swish",
+      "why": "Kevin, close.",
+      "trim": 2.5
+    },
+    {
+      "cue": "1.years",
+      "at": 0.05,
+      "sfx": "count",
+      "dur": 0.7,
+      "why": "The days run up to 730."
+    },
+    {
+      "cue": "1.years",
+      "word": "years",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "DAY 730."
+    },
+    {
+      "cue": "1.kevin",
+      "sfx": "swish",
+      "why": "Closer."
+    },
+    {
+      "cue": "1.kevin",
+      "word": "Kevin",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "KEVIN. The name gets this note; the new one never gets it (4.new)."
+    },
+    {
+      "cue": "1.tag",
+      "at": 0.25,
+      "sfx": "blip",
+      "pitch": 1.2,
+      "why": "He looks up at his own tag."
+    },
+    {
+      "cue": "1.tag",
+      "word": "tag",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "And back down."
+    },
+    {
+      "cue": "1.scream",
+      "sfx": "swish",
+      "why": "Over Kevin's shoulder."
+    },
+    {
+      "cue": "1.scream",
+      "word": "Kevin",
+      "at": 0.1,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "He takes a breath."
+    },
+    {
+      "cue": "1.scream",
+      "word": "screamed",
+      "at": -0.12,
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "pitch": 1.3,
+      "trim": 0,
+      "why": "And screams, and jumps with it. A scream is this whistle going up with a knock under it, all film."
+    },
+    {
+      "cue": "1.scream",
+      "word": "screamed",
+      "at": -0.12,
+      "sfx": "hit",
+      "trim": -2.5,
+      "why": "The knock under the scream."
+    },
+    {
+      "cue": "1.scream",
+      "word": "screamed",
+      "at": -0.05,
+      "sfx": "boing",
+      "trim": 0.5,
+      "why": "He leaves the floor."
+    },
+    {
+      "cue": "1.lunch",
+      "at": 0.0,
+      "sfx": "tick",
+      "why": "A second later, perfectly calm."
+    },
+    {
+      "cue": "1.lunch",
+      "word": "lunch",
+      "at": -0.1,
+      "sfx": "pop",
+      "pitch": 1.1,
+      "why": "A loaf."
+    },
+    {
+      "cue": "2.town",
+      "sfx": "whoosh",
+      "why": "The whole town, hanging in the sky."
+    },
+    {
+      "cue": "2.town",
+      "at": 0.5,
+      "sfx": "gust",
+      "dur": 1.2,
+      "why": "Wind under it."
+    },
+    {
+      "cue": "2.town",
+      "word": "three",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -5,
+      "pitch": 1.3,
+      "why": "Three glass rooms."
+    },
+    {
+      "cue": "2.gary",
+      "sfx": "whoosh_low",
+      "why": "Night. Gary."
+    },
+    {
+      "cue": "2.gary",
+      "at": 0.3,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "He is asleep on the floor."
+    },
+    {
+      "cue": "2.gary",
+      "word": "screamed",
+      "at": -0.1,
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "pitch": 1.3,
+      "trim": -2,
+      "why": "He screams without waking up. A scream is this whistle going up with a knock under it, all film."
+    },
+    {
+      "cue": "2.gary",
+      "word": "screamed",
+      "at": -0.1,
+      "sfx": "hit",
+      "trim": -7,
+      "why": "The knock under the scream."
+    },
+    {
+      "cue": "2.gary",
+      "word": "sleep",
+      "at": 0.1,
+      "sfx": "slide_down",
+      "dur": 0.4,
+      "trim": -2,
+      "why": "And goes on sleeping."
+    },
+    {
+      "cue": "2.barb",
+      "sfx": "swish",
+      "why": "Barb."
+    },
+    {
+      "cue": "2.barb",
+      "word": "Barb",
+      "at": 0.2,
+      "sfx": "tick",
+      "why": "She counts. The tick is Barb counting."
+    },
+    {
+      "cue": "2.barb",
+      "word": "counted",
+      "at": -0.05,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "911."
+    },
+    {
+      "cue": "2.pop",
+      "sfx": "whoosh",
+      "why": "The stone behind the rooms."
+    },
+    {
+      "cue": "2.pop",
+      "at": 0.2,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "Three villagers shaking."
+    },
+    {
+      "cue": "2.pop",
+      "word": "popped",
+      "at": -0.1,
+      "sfx": "pop",
+      "pitch": 0.6,
+      "why": "An iron man, out of nothing. A low pop and a stomp: every iron man arrives like this."
+    },
+    {
+      "cue": "2.pop",
+      "word": "popped",
+      "at": 0.02,
+      "sfx": "stomp",
+      "trim": -2,
+      "why": "He lands."
+    },
+    {
+      "cue": "2.pop",
+      "word": "air",
+      "at": 0.0,
+      "sfx": "clank",
+      "why": "Iron."
+    },
+    {
+      "cue": "2.step",
+      "at": 0.2,
+      "sfx": "creak",
+      "pitch": 0.7,
+      "why": "He looks about him."
+    },
+    {
+      "cue": "2.step",
+      "word": "step",
+      "at": -0.15,
+      "sfx": "stomp",
+      "why": "One step."
+    },
+    {
+      "cue": "2.step",
+      "word": "step",
+      "at": 0.15,
+      "sfx": "splash",
+      "why": "Into the water."
+    },
+    {
+      "cue": "2.water",
+      "sfx": "whoosh_low",
+      "why": "The water takes him."
+    },
+    {
+      "cue": "2.water",
+      "at": 0.3,
+      "sfx": "splash",
+      "trim": -0.5,
+      "why": "He slides."
+    },
+    {
+      "cue": "2.water",
+      "word": "took",
+      "at": 0.0,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "Arms out."
+    },
+    {
+      "cue": "2.water",
+      "word": "away",
+      "at": -0.1,
+      "sfx": "slide_down",
+      "dur": 0.6,
+      "why": "Away down the channel.",
+      "trim": 2.5
+    },
+    {
+      "cue": "2.talk",
+      "sfx": "swish",
+      "why": "The three of them, from the front.",
+      "trim": 3
+    },
+    {
+      "cue": "2.talk",
+      "at": 0.3,
+      "sfx": "swish",
+      "why": "All three look away at once.",
+      "trim": 3
+    },
+    {
+      "cue": "2.talk",
+      "word": "talk",
+      "at": 0.1,
+      "sfx": "slide_up",
+      "dur": 0.5,
+      "pitch": 1.5,
+      "trim": 0,
+      "why": "And whistle at the sky."
+    },
+    {
+      "cue": "2.nice",
+      "word": "Clearly",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "Clearly. The stamp is him being wrong."
+    },
+    {
+      "cue": "2.nice",
+      "word": "nice",
+      "at": 0.0,
+      "sfx": "chime",
+      "trim": -3,
+      "why": "Somewhere nice."
+    },
+    {
+      "cue": "2.chest",
+      "sfx": "whoosh",
+      "why": "Under the floor."
+    },
+    {
+      "cue": "2.chest",
+      "at": 0.2,
+      "sfx": "creak",
+      "why": "A chest, lid up."
+    },
+    {
+      "cue": "2.chest",
+      "word": "Iron",
+      "at": -0.1,
+      "sfx": "coin",
+      "repeat": 3,
+      "every": 0.22,
+      "pitchStep": 0.95,
+      "why": "Iron drops out of the pipe."
+    },
+    {
+      "cue": "2.chest",
+      "word": "flowers",
+      "at": 0.05,
+      "sfx": "chime",
+      "why": "One red flower."
+    },
+    {
+      "cue": "2.pay",
+      "word": "Clearly",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "Clearly."
+    },
+    {
+      "cue": "2.pay",
+      "word": "pay",
+      "at": 0.0,
+      "sfx": "sparkle",
+      "dur": 0.4,
+      "trim": -2,
+      "why": "A heap of flowers at his feet."
+    },
+    {
+      "cue": "2.boss",
+      "sfx": "whoosh",
+      "why": "The boss."
+    },
+    {
+      "cue": "2.boss",
+      "at": 0.2,
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 0.3,
+      "why": "He walks up to the chest.",
+      "trim": 3
+    },
+    {
+      "cue": "2.boss",
+      "word": "took",
+      "at": 0.0,
+      "sfx": "coins",
+      "why": "He takes the iron."
+    },
+    {
+      "cue": "2.boss",
+      "word": "never",
+      "at": 0.0,
+      "sfx": "tick",
+      "why": "He has never looked up."
+    },
+    {
+      "cue": "3.problem",
+      "at": 0.1,
+      "sfx": "drop",
+      "trim": -4,
+      "why": "Here is the problem."
+    },
+    {
+      "cue": "3.long",
+      "sfx": "whoosh",
+      "why": "The two of them, a pane of glass between."
+    },
+    {
+      "cue": "3.long",
+      "at": 0.1,
+      "sfx": "count",
+      "dur": 1.2,
+      "why": "Two years of days."
+    },
+    {
+      "cue": "3.long",
+      "word": "one",
+      "at": 0.0,
+      "sfx": "tick",
+      "why": "And one face."
+    },
+    {
+      "cue": "3.wave",
+      "sfx": "swish",
+      "why": "Kevin."
+    },
+    {
+      "cue": "3.wave",
+      "word": "waved",
+      "at": -0.15,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "He waves."
+    },
+    {
+      "cue": "3.wave",
+      "word": "waved",
+      "at": -0.2,
+      "sfx": "slide_up",
+      "dur": 0.3,
+      "trim": -2,
+      "why": "One green arm comes up."
+    },
+    {
+      "cue": "3.back",
+      "at": 0.1,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "He has no hands. He strains at his sleeves."
+    },
+    {
+      "cue": "3.back",
+      "word": "back",
+      "at": -0.05,
+      "sfx": "boing",
+      "why": "And waves with his whole body."
+    },
+    {
+      "cue": "3.game",
+      "sfx": "swish",
+      "why": "The glass, close."
+    },
+    {
+      "cue": "3.game",
+      "at": 0.2,
+      "sfx": "tick",
+      "repeat": 2,
+      "every": 0.55,
+      "pitch": 1.2,
+      "why": "An X."
+    },
+    {
+      "cue": "3.game",
+      "at": 0.47,
+      "sfx": "plink",
+      "repeat": 2,
+      "every": 0.55,
+      "pitch": 0.7,
+      "why": "An O."
+    },
+    {
+      "cue": "3.game",
+      "word": "glass",
+      "at": 0.0,
+      "sfx": "scrape",
+      "dur": 0.25,
+      "trim": -2,
+      "why": "Scratched on the glass."
+    },
+    {
+      "cue": "3.lost",
+      "sfx": "swish",
+      "why": "Kevin, through the board."
+    },
+    {
+      "cue": "3.lost",
+      "word": "never",
+      "at": 0.0,
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "He has lost again."
+    },
+    {
+      "cue": "3.lost",
+      "word": "mind",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.7,
+      "why": "He does not mind."
+    },
+    {
+      "cue": "3.urr",
+      "word": "urr",
+      "at": -0.12,
+      "sfx": "pop",
+      "trim": -2,
+      "why": "A bubble."
+    },
+    {
+      "cue": "3.urr",
+      "word": "urr",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "URR."
+    },
+    {
+      "cue": "3.urr",
+      "word": "good",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 1.2,
+      "why": "He nods back: good morning."
+    },
+    {
+      "cue": "3.nothing",
+      "sfx": "swish",
+      "why": "Over Kevin's shoulder."
+    },
+    {
+      "cue": "3.nothing",
+      "word": "opened",
+      "at": -0.1,
+      "sfx": "rustle",
+      "dur": 0.35,
+      "why": "The big breath."
+    },
+    {
+      "cue": "3.nothing",
+      "word": "nothing",
+      "at": 0.0,
+      "sfx": "plink",
+      "pitch": 1.5,
+      "why": "Nothing. Three dots."
+    },
+    {
+      "cue": "3.nothing",
+      "word": "out",
+      "at": 0.1,
+      "sfx": "gust",
+      "dur": 0.5,
+      "trim": -3,
+      "why": "Wind."
+    },
+    {
+      "cue": "3.noiron",
+      "word": "scream",
+      "at": 0.0,
+      "sfx": "buzz",
+      "trim": -4,
+      "why": "No scream."
+    },
+    {
+      "cue": "3.noiron",
+      "word": "man",
+      "at": 0.0,
+      "sfx": "tick",
+      "why": "No iron man. One puff of dust."
+    },
+    {
+      "cue": "3.noiron",
+      "word": "No",
+      "at": -0.06,
+      "sfx": "swish",
+      "nth": 2,
+      "why": "The chest."
+    },
+    {
+      "cue": "3.noiron",
+      "word": "iron",
+      "at": 0.1,
+      "sfx": "creak",
+      "nth": 1,
+      "why": "Empty."
+    },
+    {
+      "cue": "3.gary",
+      "sfx": "swish",
+      "why": "Gary."
+    },
+    {
+      "cue": "3.gary",
+      "at": 0.15,
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "pitch": 1.3,
+      "trim": 2.5,
+      "why": "He screams for two. A scream is this whistle going up with a knock under it, all film."
+    },
+    {
+      "cue": "3.gary",
+      "at": 0.15,
+      "sfx": "hit",
+      "trim": 0,
+      "why": "The knock under the scream."
+    },
+    {
+      "cue": "3.gary",
+      "word": "both",
+      "at": 0.0,
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "pitch": 1.3,
+      "trim": 0.5,
+      "why": "And again. A scream is this whistle going up with a knock under it, all film."
+    },
+    {
+      "cue": "3.gary",
+      "word": "both",
+      "at": 0.0,
+      "sfx": "hit",
+      "trim": -2,
+      "why": "The knock under the scream."
+    },
+    {
+      "cue": "3.gary",
+      "word": "lost",
+      "at": 0.0,
+      "sfx": "slide_down",
+      "dur": 0.5,
+      "why": "His voice goes."
+    },
+    {
+      "cue": "3.gary",
+      "word": "voice",
+      "at": 0.1,
+      "sfx": "plink",
+      "pitch": 1.6,
+      "why": "A squeak."
+    },
+    {
+      "cue": "3.barb",
+      "sfx": "swish",
+      "why": "Barb.",
+      "trim": 2.5
+    },
+    {
+      "cue": "3.barb",
+      "word": "stopped",
+      "at": 0.0,
+      "sfx": "power_down",
+      "trim": -2,
+      "why": "The number goes dim. She has stopped."
+    },
+    {
+      "cue": "4.empty",
+      "sfx": "whoosh",
+      "why": "Under the floor."
+    },
+    {
+      "cue": "4.empty",
+      "at": 0.2,
+      "sfx": "hit",
+      "trim": -3,
+      "why": "He throws the lid up."
+    },
+    {
+      "cue": "4.empty",
+      "word": "empty",
+      "at": -0.2,
+      "sfx": "creak",
+      "why": "Nothing in it."
+    },
+    {
+      "cue": "4.empty",
+      "word": "empty",
+      "at": 0.25,
+      "sfx": "tick",
+      "why": "He stands there."
+    },
+    {
+      "cue": "4.up",
+      "word": "up",
+      "at": 0.2,
+      "sfx": "riser",
+      "dur": 1.2,
+      "trim": -2,
+      "why": "His face tips back. The climb ends when he is looking at us."
+    },
+    {
+      "cue": "4.up",
+      "word": "up",
+      "at": 0.2,
+      "sfx": "sting",
+      "trim": -3,
+      "why": "He looked up."
+    },
+    {
+      "cue": "4.atme",
+      "sfx": "swish",
+      "why": "His face at the glass."
+    },
+    {
+      "cue": "4.atme",
+      "word": "me",
+      "at": 0.0,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "He looks at me."
+    },
+    {
+      "cue": "4.atme",
+      "word": "Kevin",
+      "at": -0.3,
+      "sfx": "swish",
+      "why": "His eyes slide over."
+    },
+    {
+      "cue": "4.atme",
+      "word": "Kevin",
+      "at": 0.25,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "Kevin waves at him."
+    },
+    {
+      "cue": "4.left",
+      "at": 0.1,
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 0.34,
+      "why": "He walks off along the ledge."
+    },
+    {
+      "cue": "4.left",
+      "word": "left",
+      "at": 0.2,
+      "sfx": "gust",
+      "dur": 0.5,
+      "trim": -2,
+      "why": "Gone."
+    },
+    {
+      "cue": "4.left",
+      "word": "that",
+      "at": 0.1,
+      "sfx": "blip",
+      "nth": 1,
+      "pitch": 1.2,
+      "why": "That was that."
+    },
+    {
+      "cue": "4.rope",
+      "sfx": "whoosh",
+      "why": "He comes back."
+    },
+    {
+      "cue": "4.rope",
+      "at": 0.15,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.3,
+      "why": "Two pairs of feet."
+    },
+    {
+      "cue": "4.rope",
+      "word": "rope",
+      "at": 0.0,
+      "sfx": "creak",
+      "why": "A rope."
+    },
+    {
+      "cue": "4.rope",
+      "word": "zombie",
+      "at": -0.1,
+      "sfx": "sting",
+      "trim": -5,
+      "why": "And a zombie nobody has seen before."
+    },
+    {
+      "cue": "4.new",
+      "sfx": "swish",
+      "why": "The new one."
+    },
+    {
+      "cue": "4.new",
+      "word": "tag",
+      "at": 0.0,
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "No tag. No name: where Kevin got a bell note, he gets this."
+    },
+    {
+      "cue": "4.new",
+      "word": "He",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "Kevin waves at him."
+    },
+    {
+      "cue": "4.new",
+      "word": "wave",
+      "at": 0.15,
+      "sfx": "tick",
+      "why": "He does not wave."
+    },
+    {
+      "cue": "4.bucket",
+      "sfx": "swish",
+      "why": "The boss, beside the boat."
+    },
+    {
+      "cue": "4.bucket",
+      "word": "bucket",
+      "at": -0.05,
+      "sfx": "clank",
+      "why": "A bucket."
+    },
+    {
+      "cue": "4.fire",
+      "at": 0.25,
+      "sfx": "fire_whoosh",
+      "dur": 0.6,
+      "why": "What is in it is orange."
+    },
+    {
+      "cue": "4.fire",
+      "word": "water",
+      "at": 0.0,
+      "sfx": "crackle",
+      "why": "And it moves."
+    },
+    {
+      "cue": "4.fire",
+      "word": "bucket",
+      "at": 0.0,
+      "sfx": "sting",
+      "trim": -4,
+      "why": "No water."
+    },
+    {
+      "cue": "5.tried",
+      "sfx": "swish",
+      "why": "He squares up to the glass."
+    },
+    {
+      "cue": "5.tried",
+      "at": 0.2,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "He strains."
+    },
+    {
+      "cue": "5.tried",
+      "word": "scream",
+      "at": 0.1,
+      "sfx": "slide_up",
+      "dur": 0.7,
+      "pitch": 0.8,
+      "trim": -2,
+      "why": "The biggest breath of his life."
+    },
+    {
+      "cue": "5.hello",
+      "word": "hello",
+      "at": -0.12,
+      "sfx": "pop",
+      "why": "A small polite bubble."
+    },
+    {
+      "cue": "5.hello",
+      "word": "hello",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 1.3,
+      "why": "HELLO."
+    },
+    {
+      "cue": "5.hello",
+      "word": "hello",
+      "at": 0.3,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "Kevin waves back."
+    },
+    {
+      "cue": "5.eep",
+      "sfx": "swish",
+      "why": "Gary."
+    },
+    {
+      "cue": "5.eep",
+      "word": "tried",
+      "at": 0.0,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "He gives it everything he has left."
+    },
+    {
+      "cue": "5.eep",
+      "word": "eep",
+      "at": 0.0,
+      "sfx": "plink",
+      "pitch": 1.7,
+      "why": "EEP."
+    },
+    {
+      "cue": "5.lift",
+      "sfx": "whoosh_low",
+      "why": "The bucket goes up over the boat."
+    },
+    {
+      "cue": "5.lift",
+      "word": "lifted",
+      "at": 0.0,
+      "sfx": "creak",
+      "pitch": 0.8,
+      "why": "The handle."
+    },
+    {
+      "cue": "5.lift",
+      "word": "bucket",
+      "at": 0.0,
+      "sfx": "crackle",
+      "why": "It tips a little."
+    },
+    {
+      "cue": "5.lift",
+      "word": "bucket",
+      "at": 0.3,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "Kevin looks up at the bottom of it."
+    },
+    {
+      "cue": "5.kevin",
+      "sfx": "swish",
+      "why": "Kevin, through the glass."
+    },
+    {
+      "cue": "5.kevin",
+      "word": "urr",
+      "at": -0.12,
+      "sfx": "pop",
+      "trim": -2,
+      "why": "A small bubble."
+    },
+    {
+      "cue": "5.kevin",
+      "word": "urr",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.42,
+      "why": "URR. The same note as good morning (3.urr), and it is not that."
+    },
+    {
+      "cue": "5.bye",
+      "at": 0.2,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "He has understood it."
+    },
+    {
+      "cue": "5.bye",
+      "word": "not",
+      "at": 0.0,
+      "sfx": "drop",
+      "trim": -3,
+      "why": "Not good morning."
+    },
+    {
+      "cue": "6.scared",
+      "at": 0.1,
+      "sfx": "heartbeat",
+      "repeat": 2,
+      "every": 0.6,
+      "trim": 2,
+      "why": "His face starts to shake."
+    },
+    {
+      "cue": "6.scared",
+      "word": "Kevin",
+      "at": 0.0,
+      "sfx": "rustle",
+      "dur": 0.4,
+      "why": "It has never shaken like this."
+    },
+    {
+      "cue": "6.scared",
+      "word": "For",
+      "at": 0.9,
+      "sfx": "riser",
+      "dur": 1.4,
+      "why": "It climbs into the scream."
+    },
+    {
+      "cue": "6.real",
+      "word": "That",
+      "at": -0.25,
+      "sfx": "riser",
+      "dur": 1.3,
+      "trim": -1,
+      "why": "Still climbing: it ends on the scream."
+    },
+    {
+      "cue": "6.real",
+      "word": "That",
+      "at": -0.25,
+      "sfx": "boom",
+      "why": "The first real one. The only boom in the film."
+    },
+    {
+      "cue": "6.real",
+      "word": "That",
+      "at": -0.22,
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "pitch": 1.3,
+      "trim": 2,
+      "why": "The scream, with everything in it. A scream is this whistle going up with a knock under it, all film."
+    },
+    {
+      "cue": "6.real",
+      "word": "That",
+      "at": -0.22,
+      "sfx": "hit",
+      "trim": -3,
+      "why": "The knock under the scream."
+    },
+    {
+      "cue": "6.real",
+      "word": "That",
+      "at": -0.2,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "He leaves the floor."
+    },
+    {
+      "cue": "6.real",
+      "word": "first",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "why": "Rings go out through the glass."
+    },
+    {
+      "cue": "6.real",
+      "word": "real",
+      "at": 0.0,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "Kevin's tag blows flat."
+    },
+    {
+      "cue": "6.glass",
+      "at": 0.1,
+      "sfx": "crack",
+      "why": "A crack runs across the pane."
+    },
+    {
+      "cue": "6.glass",
+      "word": "cracked",
+      "at": 0.0,
+      "sfx": "crack",
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "And another."
+    },
+    {
+      "cue": "6.glass",
+      "word": "cracked",
+      "at": 0.25,
+      "sfx": "debris",
+      "dur": 0.4,
+      "why": "Bits."
+    },
+    {
+      "cue": "6.pop",
+      "sfx": "whoosh",
+      "why": "The stone behind the rooms."
+    },
+    {
+      "cue": "6.pop",
+      "word": "popped",
+      "at": -0.1,
+      "sfx": "pop",
+      "pitch": 0.5,
+      "why": "An iron man. Bigger than the others."
+    },
+    {
+      "cue": "6.pop",
+      "word": "popped",
+      "at": 0.02,
+      "sfx": "stomp",
+      "why": "He lands."
+    },
+    {
+      "cue": "6.pop",
+      "word": "air",
+      "at": 0.0,
+      "sfx": "clank",
+      "why": "Iron."
+    },
+    {
+      "cue": "6.barb",
+      "sfx": "swish",
+      "why": "Barb."
+    },
+    {
+      "cue": "6.barb",
+      "word": "nine",
+      "at": -0.15,
+      "sfx": "power_up",
+      "trim": -3,
+      "why": "The dim number lights up."
+    },
+    {
+      "cue": "6.barb",
+      "word": "twelve",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "912."
+    },
+    {
+      "cue": "6.barb",
+      "word": "nine",
+      "at": 0.1,
+      "sfx": "tick",
+      "why": "She counts again."
+    },
+    {
+      "cue": "6.step",
+      "at": 0.15,
+      "sfx": "creak",
+      "pitch": 0.7,
+      "why": "He looks about him."
+    },
+    {
+      "cue": "6.step",
+      "word": "step",
+      "at": -0.15,
+      "sfx": "stomp",
+      "why": "One step. The same step as the first one (2.step)."
+    },
+    {
+      "cue": "6.stop",
+      "word": "stopped",
+      "at": 0.0,
+      "sfx": "tick",
+      "why": "And no splash. One iron foot stays out over the water."
+    },
+    {
+      "cue": "6.stop",
+      "word": "stopped",
+      "at": 0.35,
+      "sfx": "plink",
+      "pitch": 0.8,
+      "why": "Water, under the foot."
+    },
+    {
+      "cue": "6.stop",
+      "word": "water",
+      "at": 0.0,
+      "sfx": "stomp",
+      "trim": 2.0,
+      "why": "He puts the foot back."
+    },
+    {
+      "cue": "6.kevin",
+      "sfx": "whoosh_low",
+      "why": "He has turned round."
+    },
+    {
+      "cue": "6.kevin",
+      "at": 0.2,
+      "sfx": "stomp",
+      "repeat": 3,
+      "every": 0.36,
+      "why": "He walks up to the back of the room."
+    },
+    {
+      "cue": "6.kevin",
+      "word": "Kevin",
+      "at": 0.0,
+      "sfx": "sting",
+      "trim": -4,
+      "why": "He is looking at the zombie."
+    },
+    {
+      "cue": "6.kevin",
+      "word": "Iron",
+      "at": -0.1,
+      "sfx": "clank",
+      "why": "His fists come up."
+    },
+    {
+      "cue": "6.said",
+      "word": "hit",
+      "at": 0.0,
+      "sfx": "bonk",
+      "why": "He bangs his head on the glass."
+    },
+    {
+      "cue": "6.said",
+      "word": "glass",
+      "at": 0.0,
+      "sfx": "bonk",
+      "pitch": 1.1,
+      "why": "Twice."
+    },
+    {
+      "cue": "6.said",
+      "word": "he",
+      "at": -0.12,
+      "sfx": "pop",
+      "why": "HE IS WITH US."
+    },
+    {
+      "cue": "6.said",
+      "word": "us",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -4,
+      "why": "He means it."
+    },
+    {
+      "cue": "6.said",
+      "word": "us",
+      "at": 0.3,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "The fists come down."
+    },
+    {
+      "cue": "6.turn",
+      "at": 0.2,
+      "sfx": "creak",
+      "pitch": 0.6,
+      "why": "The iron face looks down at him."
+    },
+    {
+      "cue": "6.turn",
+      "word": "me",
+      "at": 0.0,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "For a long moment."
+    },
+    {
+      "cue": "6.turn",
+      "word": "Then",
+      "at": -0.1,
+      "sfx": "creak",
+      "pitch": 0.5,
+      "why": "The head turns."
+    },
+    {
+      "cue": "6.turn",
+      "word": "boss",
+      "at": -0.1,
+      "sfx": "sting",
+      "trim": -3,
+      "why": "The red eyes are on somebody else."
+    },
+    {
+      "cue": "6.back",
+      "sfx": "swish",
+      "why": "The ledge, from the end of it."
+    },
+    {
+      "cue": "6.back",
+      "word": "one",
+      "at": 0.0,
+      "sfx": "step_stone",
+      "why": "One step back."
+    },
+    {
+      "cue": "6.back",
+      "word": "back",
+      "at": 0.2,
+      "sfx": "tick",
+      "why": "The edge is behind his heels."
+    },
+    {
+      "cue": "6.nofloor",
+      "at": 0.1,
+      "sfx": "gust",
+      "dur": 0.6,
+      "why": "He is standing on air."
+    },
+    {
+      "cue": "6.nofloor",
+      "word": "no",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 1.3,
+      "why": "He looks down."
+    },
+    {
+      "cue": "6.nofloor",
+      "word": "there",
+      "at": 0.1,
+      "sfx": "drop",
+      "why": "He goes."
+    },
+    {
+      "cue": "6.nofloor",
+      "word": "there",
+      "at": 0.15,
+      "sfx": "slide_down",
+      "dur": 0.7,
+      "why": "Down."
+    },
+    {
+      "cue": "6.long",
+      "sfx": "whoosh",
+      "why": "Straight down past the edge."
+    },
+    {
+      "cue": "6.long",
+      "at": 0.1,
+      "sfx": "slide_down",
+      "dur": 1.6,
+      "pitch": 0.8,
+      "why": "A small red shirt, getting smaller.",
+      "trim": 2.0
+    },
+    {
+      "cue": "6.long",
+      "at": 0.3,
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.5,
+      "pitchStep": 1.05,
+      "why": "He counts."
+    },
+    {
+      "cue": "6.long",
+      "word": "nine",
+      "at": 0.05,
+      "sfx": "thud",
+      "trim": -3,
+      "why": "Nine. A very small puff."
+    },
+    {
+      "cue": "7.quiet",
+      "at": 0.4,
+      "sfx": "gust",
+      "dur": 1.0,
+      "why": "Just us, and the wind."
+    },
+    {
+      "cue": "7.quiet",
+      "word": "us",
+      "at": 0.1,
+      "sfx": "tick",
+      "why": "Nobody moves.",
+      "trim": 3
+    },
+    {
+      "cue": "7.broke",
+      "sfx": "whoosh_low",
+      "why": "An iron fist."
+    },
+    {
+      "cue": "7.broke",
+      "word": "broke",
+      "at": -0.05,
+      "sfx": "hit",
+      "why": "Through the glass."
+    },
+    {
+      "cue": "7.broke",
+      "word": "broke",
+      "at": 0.0,
+      "sfx": "crack",
+      "why": "The whole pane."
+    },
+    {
+      "cue": "7.broke",
+      "word": "glass",
+      "at": 0.0,
+      "sfx": "debris",
+      "dur": 0.5,
+      "why": "It comes down in bits."
+    },
+    {
+      "cue": "7.broke",
+      "word": "let",
+      "at": 0.0,
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 0.3,
+      "why": "He walks out over it."
+    },
+    {
+      "cue": "7.legs",
+      "at": 0.15,
+      "sfx": "creak",
+      "why": "Kevin stands up in his boat."
+    },
+    {
+      "cue": "7.legs",
+      "word": "legs",
+      "at": 0.0,
+      "sfx": "boing",
+      "why": "His legs go in two directions."
+    },
+    {
+      "cue": "7.legs",
+      "word": "forgotten",
+      "at": 0.0,
+      "sfx": "slide_down",
+      "dur": 0.4,
+      "why": "Down he goes."
+    },
+    {
+      "cue": "7.legs",
+      "word": "how",
+      "at": 0.0,
+      "sfx": "thud",
+      "trim": 1.5,
+      "why": "He ends up sitting, pleased with himself."
+    },
+    {
+      "cue": "7.legs",
+      "word": "how",
+      "at": 0.3,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "Kevin."
+    },
+    {
+      "cue": "7.follow",
+      "sfx": "whoosh",
+      "why": "He follows the water."
+    },
+    {
+      "cue": "7.follow",
+      "at": 0.2,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.36,
+      "why": "Along the channel."
+    },
+    {
+      "cue": "7.follow",
+      "word": "water",
+      "at": 0.0,
+      "sfx": "splash",
+      "trim": -3,
+      "why": "The water runs beside him."
+    },
+    {
+      "cue": "7.follow",
+      "word": "nice",
+      "at": 0.0,
+      "sfx": "chime",
+      "trim": -3,
+      "why": "He wants to see the nice place: the same notes as 2.nice."
+    },
+    {
+      "cue": "7.end",
+      "at": 0.3,
+      "sfx": "fire_whoosh",
+      "dur": 0.9,
+      "why": "The end of the water."
+    },
+    {
+      "cue": "7.end",
+      "word": "fire",
+      "at": -0.3,
+      "sfx": "crackle",
+      "why": "Fire."
+    },
+    {
+      "cue": "7.end",
+      "word": "fire",
+      "at": 0.0,
+      "sfx": "sting",
+      "trim": -2,
+      "why": "That is where they went."
+    },
+    {
+      "cue": "7.list",
+      "sfx": "swish",
+      "why": "The chest."
+    },
+    {
+      "cue": "7.list",
+      "word": "chest",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "pitch": 0.9,
+      "why": "The chest."
+    },
+    {
+      "cue": "7.list",
+      "word": "iron",
+      "at": 0.0,
+      "sfx": "coin",
+      "why": "The iron."
+    },
+    {
+      "cue": "7.list",
+      "word": "flowers",
+      "at": 0.0,
+      "sfx": "chime",
+      "trim": -2,
+      "why": "The flowers."
+    },
+    {
+      "cue": "7.count",
+      "sfx": "swish",
+      "why": "Barb."
+    },
+    {
+      "cue": "7.count",
+      "at": 0.1,
+      "sfx": "count",
+      "dur": 0.6,
+      "why": "She counts back."
+    },
+    {
+      "cue": "7.count",
+      "word": "eleven",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "911."
+    },
+    {
+      "cue": "7.job",
+      "at": 0.2,
+      "sfx": "crackle",
+      "why": "His face, lit from underneath."
+    },
+    {
+      "cue": "7.job",
+      "word": "never",
+      "at": 0.0,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "He looks up from the fire."
+    },
+    {
+      "cue": "7.parts",
+      "sfx": "whoosh_low",
+      "why": "The whole platform, from high above."
+    },
+    {
+      "cue": "7.parts",
+      "word": "staff",
+      "at": 0.0,
+      "sfx": "clank",
+      "why": "Three boxes, a pad, a channel, a pipe."
+    },
+    {
+      "cue": "7.parts",
+      "word": "machine",
+      "at": -0.1,
+      "sfx": "sting",
+      "trim": -7,
+      "why": "Not a town. A machine."
+    },
+    {
+      "cue": "8.gave",
+      "at": 0.3,
+      "sfx": "crackle",
+      "why": "The iron man at the fire."
+    },
+    {
+      "cue": "8.gave",
+      "word": "long",
+      "at": 0.0,
+      "sfx": "creak",
+      "pitch": 0.6,
+      "why": "For a long time."
+    },
+    {
+      "cue": "8.gave",
+      "word": "Then",
+      "at": 0.0,
+      "sfx": "clank",
+      "why": "He turns, and bends."
+    },
+    {
+      "cue": "8.gave",
+      "word": "flower",
+      "at": -0.1,
+      "sfx": "chime",
+      "why": "One red flower, for Barb. The flower notes, and this time they are meant."
+    },
+    {
+      "cue": "8.edge",
+      "sfx": "whoosh",
+      "why": "The edge of town."
+    },
+    {
+      "cue": "8.edge",
+      "at": 0.2,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.3,
+      "why": "They come to the lip of the stone."
+    },
+    {
+      "cue": "8.edge",
+      "word": "looked",
+      "at": 0.0,
+      "sfx": "swish",
+      "why": "And look down."
+    },
+    {
+      "cue": "8.down",
+      "at": 0.3,
+      "sfx": "gust",
+      "dur": 1.2,
+      "why": "Nothing under them."
+    },
+    {
+      "cue": "8.down",
+      "word": "two",
+      "at": 0.0,
+      "sfx": "drop",
+      "trim": -2,
+      "why": "Two hundred blocks."
+    },
+    {
+      "cue": "8.have",
+      "sfx": "swish",
+      "why": "What they have."
+    },
+    {
+      "cue": "8.have",
+      "word": "iron",
+      "at": 0.0,
+      "sfx": "clank",
+      "why": "One iron man."
+    },
+    {
+      "cue": "8.have",
+      "word": "boat",
+      "at": 0.0,
+      "sfx": "creak",
+      "why": "One boat."
+    },
+    {
+      "cue": "8.have",
+      "word": "Kevin",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "And a zombie called Kevin. His note (1.kevin)."
+    },
+    {
+      "cue": "8.have",
+      "word": "Kevin",
+      "at": 0.3,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "He waves."
+    },
+    {
+      "cue": "8.bed",
+      "sfx": "whoosh",
+      "why": "Straight down, a long way."
+    },
+    {
+      "cue": "8.bed",
+      "word": "lit",
+      "at": -0.1,
+      "sfx": "power_up",
+      "why": "A bed lights up."
+    },
+    {
+      "cue": "8.bed",
+      "word": "up",
+      "at": 0.1,
+      "sfx": "sting",
+      "trim": -2,
+      "why": "He is standing on it, looking up."
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "at": -0.2,
+      "sfx": "swish",
+      "why": "They look up at us.",
+      "trim": 2.5
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "at": -0.2,
+      "sfx": "pop",
+      "why": "The sign."
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "at": 0.25,
+      "sfx": "ding",
+      "trim": -4,
+      "why": "Like and subscribe."
+    },
+    {
+      "cue": "8.sub",
+      "word": "back",
+      "at": 0.3,
+      "sfx": "riser",
+      "dur": 1.0,
+      "trim": -2,
+      "why": "He is on his way back up."
+    },
+    {
+      "cue": "8.sub",
+      "word": "boss",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "Kevin waves."
+    }
+  ]
+}

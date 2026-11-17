@@ -33,7 +33,7 @@ code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown
 | asks for a 20-second short, or for none of the above | The **base film** | This file, from "The base film" down | `npm run new -- "The Title"` |
 | could be either | | | Ask the owner one question. Do not guess |
 
-**"In This Town" is the name of a format, not a title.** It runs one to three minutes. One kid tells it in the past
+**"In This Town" is the name of a format, not a title.** It runs one to three minutes, **never over three** (strict rule, below). One kid tells it in the past
 tense. It cuts about every two seconds to a recorded voice, captions every word, has music and sound effects, and ends
 on a twist that was planted in the first minute. A 20-second film with that name is not a short version of it. The
 short version is the topic's own `cut: "short"`: one to two minutes.
@@ -77,6 +77,36 @@ What a topic gives a film, that the base does not:
 Do not get past a refusal by renaming the film, rewording its first line, deleting the `topic` line, or writing an
 excuse into `topic.json`. The excuses there (`sound.voiceOnly`, a new `cut`) are the owner's to give. If you think a
 check is wrong, say so and ask.
+
+### STRICT RULE: no film runs over three minutes
+
+The owner, 2026-11-14: **"add a strict rule, no over 3 minutes"**. A vertical video over 3:00 is not a YouTube Short:
+YouTube files it as a long video, and that happened to two delivered films (3:41 and 3:25), which then had to be cut
+down. So:
+
+- **Every film is 2:58 (178 s) or shorter.** No topic, no named cut and no request for "a longer ending" raises that.
+  If a story does not fit, **split it into parts**; do not make it longer.
+- `npm run check` fails a script over 178 s, and `render.yml` refuses to render a vertical film over 180 s.
+- Check the length when the script is written (`narration.py build <film> --estimate`), not after the render.
+- A recorded film that is too long loses whole lines with `python3 scripts/trim-narration.py <film> <cue.id> …`
+  (no new recording), then their shots and their rows in `sound.json`. Look at both sides of every join on stills.
+
+### Read the master prompt first, every time
+
+(The same brief as `MASTERPROMPT-01.md` in section 0 above: the owner gave it twice, to two sessions. The copy named
+here is the one the In This Town films, their `REVIEW.md` files and `OWNER.md` point to.)
+
+`Topics/InThisTown/MASTERPROMPT.md` is the owner's own brief for every In This Town film (2026-11-17): the principles
+of Monster Village part 1, the six-stage workflow, and the eleven things each film must be delivered with. **Read it at
+the start of every session and before every film, and again before reviewing one.** A finished film is reviewed against
+its Stage 6 list on frames taken from the rendered mp4, and the result is written to `src/videos/<film>/REVIEW.md`.
+
+### Read the owner's notes first
+
+`Topics/InThisTown/OWNER.md` is what the owner likes, what reviews of his films said, and the two rules that came out
+of them: **the premise is on screen in the first second**, and **no two shots in a row look alike** (every scene has
+an environment shot, a travelling shot and an odd angle). Read it before a script or a shot. When he says what he
+liked or did not like, write it there, with the date.
 
 ### Five things that hold for every topic film
 

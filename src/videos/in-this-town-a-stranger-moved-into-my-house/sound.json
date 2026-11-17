@@ -1,0 +1,2076 @@
+{
+  "film": "in-this-town-a-stranger-moved-into-my-house",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-a-stranger-moved-into-my-house",
+  "sfxGain": -1.0,
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.moved",
+        "mood": "town",
+        "why": "The topic's track, from the first frame."
+      },
+      {
+        "from": "3.bread",
+        "mood": "playful",
+        "why": "The list of what he did."
+      },
+      {
+        "from": "5.boat",
+        "mood": "curious",
+        "gain": -3,
+        "why": "The boat he does not remember getting into: the first thing he cannot explain."
+      },
+      {
+        "from": "5.green",
+        "mood": "sneak",
+        "gain": -5,
+        "why": "Night, and green."
+      },
+      {
+        "from": "6.cloud",
+        "mood": "town",
+        "why": "Day thirty starts like any other."
+      },
+      {
+        "from": "6.horn",
+        "mood": "tense",
+        "gain": -4,
+        "why": "The horn: the track steps back for the raid."
+      },
+      {
+        "from": "7.rang",
+        "mood": "hope",
+        "why": "A bell. Somebody rang it."
+      },
+      {
+        "from": "7.quiet",
+        "mood": "none",
+        "why": "Then it was quiet."
+      },
+      {
+        "from": "8.hero",
+        "mood": "playful",
+        "why": "A discount."
+      },
+      {
+        "from": "8.list",
+        "mood": "curious",
+        "gain": -4,
+        "why": "He thinks about it."
+      },
+      {
+        "from": "8.built",
+        "mood": "sad",
+        "gain": -2,
+        "why": "What the stranger did, long ago."
+      },
+      {
+        "from": "8.truth",
+        "mood": "none",
+        "why": "The line the film was built for is said into silence."
+      },
+      {
+        "from": "9.back",
+        "mood": "town",
+        "why": "This morning. Another boat."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.moved",
+      "to": "1.pocket",
+      "bed": "room"
+    },
+    {
+      "from": "1.days",
+      "to": "1.days",
+      "bed": "night"
+    },
+    {
+      "from": "1.want",
+      "to": "2.me",
+      "bed": "village"
+    },
+    {
+      "from": "2.books",
+      "to": "3.eye",
+      "bed": "room"
+    },
+    {
+      "from": "3.wheat",
+      "to": "3.hiding",
+      "bed": "village"
+    },
+    {
+      "from": "4.desk",
+      "to": "4.hates",
+      "bed": "room"
+    },
+    {
+      "from": "5.torch",
+      "to": "5.torch",
+      "bed": "village"
+    },
+    {
+      "from": "5.dark",
+      "to": "5.dark",
+      "bed": "night"
+    },
+    {
+      "from": "5.wall",
+      "to": "5.keep",
+      "bed": "village"
+    },
+    {
+      "from": "5.boat",
+      "to": "5.before",
+      "bed": "wind"
+    },
+    {
+      "from": "5.green",
+      "to": "5.green",
+      "bed": "night"
+    },
+    {
+      "from": "6.cloud",
+      "to": "8.hero",
+      "bed": "village"
+    },
+    {
+      "from": "6.men",
+      "to": "7.hole",
+      "bed": "crowd",
+      "trim": -4
+    },
+    {
+      "from": "8.one",
+      "to": "8.list",
+      "bed": "room"
+    },
+    {
+      "from": "8.wall",
+      "to": "8.wall",
+      "bed": "village"
+    },
+    {
+      "from": "8.torch",
+      "to": "8.torch",
+      "bed": "night"
+    },
+    {
+      "from": "8.desk",
+      "to": "8.desk",
+      "bed": "room"
+    },
+    {
+      "from": "8.boat",
+      "to": "8.house",
+      "bed": "village"
+    },
+    {
+      "from": "8.same",
+      "to": "8.same",
+      "bed": "room"
+    },
+    {
+      "from": "8.built",
+      "to": "8.boats",
+      "bed": "wind"
+    },
+    {
+      "from": "8.apple",
+      "to": "8.lunch",
+      "bed": "night"
+    },
+    {
+      "from": "8.truth",
+      "to": "9.in",
+      "bed": "village"
+    },
+    {
+      "from": "9.knock",
+      "to": "9.floor",
+      "bed": "room"
+    },
+    {
+      "from": "9.sub",
+      "to": "9.sub",
+      "bed": "night"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.moved",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "why": "The film opens in his room."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.8,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "why": "The stranger rolls over in the bed."
+    },
+    {
+      "cue": "1.moved",
+      "word": "stranger",
+      "at": 0.0,
+      "sfx": "swish",
+      "why": "The villager looks at him."
+    },
+    {
+      "cue": "1.moved",
+      "word": "house",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "And back at us. This low blip is a villager saying hmm, all film."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.15,
+      "sfx": "pop",
+      "pitch": 0.7,
+      "trim": -3,
+      "why": "A Z comes off the sleeper."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.28,
+      "sfx": "place",
+      "pan": -0.2,
+      "trim": -2,
+      "why": "His pickaxe, against my bed."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.62,
+      "sfx": "pop",
+      "pitch": 1.1,
+      "pan": 0.3,
+      "trim": -3,
+      "why": "My bread, on my blanket."
+    },
+    {
+      "cue": "1.moved",
+      "at": 0.9,
+      "sfx": "place",
+      "pan": 0.5,
+      "trim": -2,
+      "why": "A block of dirt on my floor."
+    },
+    {
+      "cue": "1.moved",
+      "at": 1.25,
+      "sfx": "place",
+      "pitch": 1.2,
+      "pan": 0.5,
+      "trim": -2,
+      "why": "And another on top of it."
+    },
+    {
+      "cue": "1.knock",
+      "at": 0.0,
+      "sfx": "hit",
+      "trim": -0.5,
+      "why": "The door, flat on the floor."
+    },
+    {
+      "cue": "1.slept",
+      "sfx": "swish",
+      "why": "From above the bed."
+    },
+    {
+      "cue": "1.slept",
+      "at": 0.5,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "Boots on the blanket."
+    },
+    {
+      "cue": "1.pocket",
+      "at": 0.28,
+      "sfx": "hit",
+      "trim": -0.5,
+      "why": "He hits the bed once."
+    },
+    {
+      "cue": "1.pocket",
+      "at": 0.4,
+      "sfx": "zip",
+      "why": "It shrinks and flies into him. This zip and pop is his pocket, every time."
+    },
+    {
+      "cue": "1.pocket",
+      "at": 0.82,
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "Gone."
+    },
+    {
+      "cue": "1.pocket",
+      "word": "pocket",
+      "at": 0.15,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "The villager watches it go."
+    },
+    {
+      "cue": "1.days",
+      "sfx": "whoosh",
+      "why": "Thirty nights later."
+    },
+    {
+      "cue": "1.days",
+      "at": 0.1,
+      "sfx": "count",
+      "dur": 0.5,
+      "why": "Thirty."
+    },
+    {
+      "cue": "1.days",
+      "word": "ago",
+      "at": 0.0,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "Asleep on the bare boards."
+    },
+    {
+      "cue": "1.want",
+      "sfx": "whoosh",
+      "why": "Outside."
+    },
+    {
+      "cue": "1.want",
+      "at": 0.15,
+      "sfx": "boing",
+      "repeat": 3,
+      "every": 0.32,
+      "pitchStep": 1.04,
+      "why": "He jumps with every step, the way players do. The boing is the stranger.",
+      "trim": 2.5
+    },
+    {
+      "cue": "1.want",
+      "word": "wants",
+      "at": -0.1,
+      "sfx": "swish",
+      "why": "Three heads follow him."
+    },
+    {
+      "cue": "2.hrmm",
+      "sfx": "whoosh",
+      "why": "Three villagers in a row."
+    },
+    {
+      "cue": "2.hrmm",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.32,
+      "why": "He runs at them."
+    },
+    {
+      "cue": "2.hrmm",
+      "word": "not",
+      "at": 0.0,
+      "sfx": "bonk",
+      "why": "Straight through the middle."
+    },
+    {
+      "cue": "2.hrmm",
+      "word": "not",
+      "at": 0.08,
+      "sfx": "slide_up",
+      "dur": 0.45,
+      "why": "The middle one is spun right round."
+    },
+    {
+      "cue": "2.say",
+      "sfx": "swish",
+      "why": "Closer."
+    },
+    {
+      "cue": "2.say",
+      "word": "hmm",
+      "at": -0.12,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "HMM."
+    },
+    {
+      "cue": "2.say",
+      "word": "hmm",
+      "at": 0.14,
+      "sfx": "blip",
+      "pitch": 0.52,
+      "why": "HMM."
+    },
+    {
+      "cue": "2.say",
+      "word": "hmm",
+      "at": 0.4,
+      "sfx": "blip",
+      "pitch": 0.68,
+      "why": "HMM."
+    },
+    {
+      "cue": "2.oldman",
+      "sfx": "whoosh",
+      "why": "The old man and the bell."
+    },
+    {
+      "cue": "2.oldman",
+      "at": 0.4,
+      "sfx": "plink",
+      "repeat": 2,
+      "every": 0.44,
+      "pitch": 1.3,
+      "why": "A chicken walks past."
+    },
+    {
+      "cue": "2.oldman",
+      "word": "rings",
+      "at": 0.0,
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "He bangs it with his head."
+    },
+    {
+      "cue": "2.oldman",
+      "word": "bell",
+      "at": 0.0,
+      "sfx": "bell",
+      "why": "The bell. It is the only alarm they have, and soon it is gone (3.bell)."
+    },
+    {
+      "cue": "2.oldman",
+      "word": "trouble",
+      "at": -0.05,
+      "sfx": "boing",
+      "why": "Two villagers leave the ground."
+    },
+    {
+      "cue": "2.oldman",
+      "word": "trouble",
+      "at": 0.3,
+      "sfx": "bell",
+      "trim": -3,
+      "why": "Again."
+    },
+    {
+      "cue": "2.golem",
+      "sfx": "whoosh",
+      "why": "The iron man."
+    },
+    {
+      "cue": "2.golem",
+      "at": 0.2,
+      "sfx": "stomp",
+      "trim": -2,
+      "why": "He is very heavy. The stomp and the clank are his."
+    },
+    {
+      "cue": "2.golem",
+      "word": "iron",
+      "at": 0.1,
+      "sfx": "clank",
+      "why": "He bends down."
+    },
+    {
+      "cue": "2.golem",
+      "word": "flowers",
+      "at": 0.0,
+      "sfx": "chime",
+      "why": "A poppy, held out."
+    },
+    {
+      "cue": "2.golem",
+      "word": "children",
+      "at": 0.05,
+      "sfx": "boing",
+      "pitch": 1.4,
+      "why": "The child hops."
+    },
+    {
+      "cue": "2.me",
+      "sfx": "swish",
+      "why": "And the teller."
+    },
+    {
+      "cue": "2.me",
+      "word": "me",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "Him."
+    },
+    {
+      "cue": "2.books",
+      "sfx": "whoosh",
+      "why": "His desk."
+    },
+    {
+      "cue": "2.books",
+      "word": "books",
+      "at": 0.0,
+      "sfx": "paper",
+      "why": "A page."
+    },
+    {
+      "cue": "2.books",
+      "word": "why",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "He does not know."
+    },
+    {
+      "cue": "3.bread",
+      "sfx": "whoosh",
+      "why": "The list starts."
+    },
+    {
+      "cue": "3.bread",
+      "at": 0.15,
+      "sfx": "creak",
+      "why": "The chest opens."
+    },
+    {
+      "cue": "3.bread",
+      "word": "bread",
+      "at": 0.0,
+      "sfx": "pop",
+      "why": "A loaf comes out."
+    },
+    {
+      "cue": "3.bread",
+      "word": "chest",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "The villager is standing right there."
+    },
+    {
+      "cue": "3.eye",
+      "sfx": "swish",
+      "why": "Nose to nose."
+    },
+    {
+      "cue": "3.eye",
+      "word": "eye",
+      "at": -0.25,
+      "sfx": "crack",
+      "trim": -4,
+      "dur": 0.2,
+      "why": "He eats it."
+    },
+    {
+      "cue": "3.eye",
+      "word": "while",
+      "at": 0.0,
+      "sfx": "crack",
+      "trim": -4,
+      "dur": 0.2,
+      "pitch": 1.1,
+      "why": "And again."
+    },
+    {
+      "cue": "3.eye",
+      "word": "did",
+      "at": 0.15,
+      "sfx": "tick",
+      "why": "Neither looks away."
+    },
+    {
+      "cue": "3.wheat",
+      "sfx": "whoosh",
+      "why": "The wheat field."
+    },
+    {
+      "cue": "3.wheat",
+      "at": 0.15,
+      "sfx": "boing",
+      "repeat": 3,
+      "every": 0.38,
+      "why": "He jumps."
+    },
+    {
+      "cue": "3.wheat",
+      "at": 0.33,
+      "sfx": "rustle",
+      "repeat": 3,
+      "every": 0.38,
+      "dur": 0.25,
+      "why": "Wheat goes flat."
+    },
+    {
+      "cue": "3.wheat",
+      "word": "All",
+      "at": 0.0,
+      "sfx": "slide_down",
+      "dur": 0.4,
+      "why": "All of it."
+    },
+    {
+      "cue": "3.bell",
+      "sfx": "swish",
+      "why": "The bell."
+    },
+    {
+      "cue": "3.bell",
+      "at": 0.25,
+      "sfx": "bell",
+      "trim": -2,
+      "why": "He hits it once."
+    },
+    {
+      "cue": "3.bell",
+      "at": 0.32,
+      "sfx": "zip",
+      "why": "Into the pocket."
+    },
+    {
+      "cue": "3.bell",
+      "word": "bell",
+      "at": 0.15,
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "Gone."
+    },
+    {
+      "cue": "3.ding",
+      "sfx": "swish",
+      "why": "The old man under the empty hook."
+    },
+    {
+      "cue": "3.ding",
+      "word": "ding",
+      "at": 0.2,
+      "sfx": "ding",
+      "pitch": 0.7,
+      "why": "DING, in an old voice: a small flat note where the bell was. It comes back at 6.ding.",
+      "trim": -3
+    },
+    {
+      "cue": "3.ding",
+      "word": "ding",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.48,
+      "trim": -1,
+      "why": "Two villagers walk past and do not look round."
+    },
+    {
+      "cue": "3.hit",
+      "sfx": "whoosh",
+      "why": "A chicken, and a sword."
+    },
+    {
+      "cue": "3.hit",
+      "at": 0.1,
+      "sfx": "plink",
+      "repeat": 2,
+      "every": 0.32,
+      "pitch": 1.4,
+      "why": "The chicken runs."
+    },
+    {
+      "cue": "3.hit",
+      "word": "iron",
+      "at": 0.0,
+      "sfx": "swish",
+      "why": "The sword comes down."
+    },
+    {
+      "cue": "3.hit",
+      "word": "Once",
+      "at": -0.1,
+      "sfx": "clank",
+      "why": "On an iron leg."
+    },
+    {
+      "cue": "3.hit",
+      "word": "Once",
+      "at": 0.0,
+      "sfx": "sparkle",
+      "dur": 0.3,
+      "trim": -2,
+      "why": "A spark."
+    },
+    {
+      "cue": "3.hit",
+      "word": "accident",
+      "at": -0.2,
+      "sfx": "creak",
+      "pitch": 0.7,
+      "why": "The head comes slowly down and round."
+    },
+    {
+      "cue": "3.hit",
+      "word": "accident",
+      "at": 0.3,
+      "sfx": "blip",
+      "pitch": 1.3,
+      "why": "The stranger waves.",
+      "trim": 2.5
+    },
+    {
+      "cue": "3.remember",
+      "sfx": "swish",
+      "why": "The iron face, from below."
+    },
+    {
+      "cue": "3.remember",
+      "at": 0.15,
+      "sfx": "sting",
+      "trim": -5,
+      "why": "He remembers. It is paid off at the gate (7.golem)."
+    },
+    {
+      "cue": "3.remember",
+      "word": "remembers",
+      "at": 0.0,
+      "sfx": "creak",
+      "pitch": 0.6,
+      "why": "The head turns after him."
+    },
+    {
+      "cue": "3.hole",
+      "sfx": "whoosh",
+      "why": "The square, from above."
+    },
+    {
+      "cue": "3.hole",
+      "at": 0.3,
+      "sfx": "dig",
+      "repeat": 3,
+      "every": 0.36,
+      "why": "He digs under his own feet."
+    },
+    {
+      "cue": "3.hole",
+      "word": "town",
+      "at": 0.0,
+      "sfx": "break",
+      "trim": -2,
+      "why": "A block goes."
+    },
+    {
+      "cue": "3.hole",
+      "word": "Straight",
+      "at": 0.0,
+      "sfx": "slide_down",
+      "dur": 0.55,
+      "why": "Straight down."
+    },
+    {
+      "cue": "3.hole",
+      "word": "Straight",
+      "at": 0.75,
+      "sfx": "plink",
+      "pitch": 0.6,
+      "why": "Something lands, a long way down."
+    },
+    {
+      "cue": "3.pick",
+      "sfx": "whoosh",
+      "why": "Three days later, at sunset."
+    },
+    {
+      "cue": "3.pick",
+      "at": 0.2,
+      "sfx": "zip",
+      "why": "He comes up out of the hole like a cork."
+    },
+    {
+      "cue": "3.pick",
+      "at": 0.42,
+      "sfx": "pop",
+      "pitch": 0.8,
+      "why": "Out."
+    },
+    {
+      "cue": "3.pick",
+      "word": "later",
+      "at": 0.0,
+      "sfx": "thud",
+      "trim": -1,
+      "why": "He lands beside it."
+    },
+    {
+      "cue": "3.pick",
+      "word": "pickaxe",
+      "at": 0.0,
+      "sfx": "power_up",
+      "trim": -2,
+      "why": "The pickaxe glows."
+    },
+    {
+      "cue": "3.pick",
+      "word": "glowed",
+      "at": 0.0,
+      "sfx": "sparkle",
+      "dur": 0.5,
+      "why": "Purple."
+    },
+    {
+      "cue": "3.hiding",
+      "sfx": "swish",
+      "why": "The teller, sure of himself."
+    },
+    {
+      "cue": "3.hiding",
+      "word": "Clearly",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "Clearly. The stamp is him being wrong: it lands on every Clearly."
+    },
+    {
+      "cue": "4.desk",
+      "sfx": "whoosh",
+      "why": "His room."
+    },
+    {
+      "cue": "4.desk",
+      "at": 0.3,
+      "sfx": "place",
+      "why": "A desk goes down."
+    },
+    {
+      "cue": "4.desk",
+      "at": 0.45,
+      "sfx": "pop",
+      "pitch": 1.2,
+      "why": "A red cap appears on his head."
+    },
+    {
+      "cue": "4.desk",
+      "word": "room",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "He looks at it."
+    },
+    {
+      "cue": "4.broke",
+      "word": "broke",
+      "at": -0.05,
+      "sfx": "break",
+      "why": "He breaks the desk."
+    },
+    {
+      "cue": "4.broke",
+      "word": "back",
+      "at": -0.05,
+      "sfx": "place",
+      "why": "Puts it back."
+    },
+    {
+      "cue": "4.broke",
+      "word": "broke",
+      "at": -0.05,
+      "sfx": "break",
+      "nth": 1,
+      "why": "Breaks it."
+    },
+    {
+      "cue": "4.times",
+      "at": 0.0,
+      "sfx": "count",
+      "dur": 0.6,
+      "why": "Forty one."
+    },
+    {
+      "cue": "4.times",
+      "at": 0.2,
+      "sfx": "break",
+      "repeat": 2,
+      "every": 0.48,
+      "trim": -2,
+      "pitchStep": 1.05,
+      "why": "Still going."
+    },
+    {
+      "cue": "4.times",
+      "word": "times",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "41."
+    },
+    {
+      "cue": "4.sadder",
+      "sfx": "swish",
+      "why": "His face, close."
+    },
+    {
+      "cue": "4.sadder",
+      "word": "sadder",
+      "at": -0.1,
+      "sfx": "slide_down",
+      "dur": 0.5,
+      "why": "Sadder."
+    },
+    {
+      "cue": "4.sadder",
+      "word": "looked",
+      "at": 0.0,
+      "sfx": "break",
+      "trim": -3,
+      "why": "Behind it, the desk again."
+    },
+    {
+      "cue": "4.mending",
+      "word": "Mending",
+      "at": -0.12,
+      "sfx": "boing",
+      "why": "He leaves the floor."
+    },
+    {
+      "cue": "4.mending",
+      "word": "Mending",
+      "at": -0.1,
+      "sfx": "pop",
+      "why": "MENDING!"
+    },
+    {
+      "cue": "4.mending",
+      "word": "Mending",
+      "at": 0.1,
+      "sfx": "cheer",
+      "dur": 0.5,
+      "trim": -2,
+      "why": "He is the only one cheering."
+    },
+    {
+      "cue": "4.mending",
+      "word": "gave",
+      "at": 0.1,
+      "sfx": "coins",
+      "why": "All his emeralds."
+    },
+    {
+      "cue": "4.mending",
+      "word": "emeralds",
+      "at": 0.0,
+      "sfx": "coin",
+      "repeat": 3,
+      "every": 0.12,
+      "pitchStep": 1.06,
+      "why": "They pile up on his sleeves."
+    },
+    {
+      "cue": "4.hates",
+      "sfx": "swish",
+      "why": "The teller explains."
+    },
+    {
+      "cue": "4.hates",
+      "word": "Clearly",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "Clearly."
+    },
+    {
+      "cue": "4.hates",
+      "word": "hates",
+      "at": 0.0,
+      "sfx": "boing",
+      "repeat": 2,
+      "every": 0.34,
+      "trim": -2,
+      "why": "Behind him the stranger hops out with the book."
+    },
+    {
+      "cue": "5.torch",
+      "sfx": "whoosh",
+      "why": "The town."
+    },
+    {
+      "cue": "5.torch",
+      "at": 0.15,
+      "sfx": "place",
+      "repeat": 2,
+      "every": 0.4,
+      "pitchStep": 1.05,
+      "why": "Torches go up, one after another."
+    },
+    {
+      "cue": "5.torch",
+      "at": 0.5,
+      "sfx": "crackle",
+      "trim": 0.5,
+      "why": "They burn."
+    },
+    {
+      "cue": "5.torch",
+      "word": "roofs",
+      "at": -0.1,
+      "sfx": "place",
+      "repeat": 2,
+      "every": 0.2,
+      "pitch": 1.2,
+      "why": "Along the roofs."
+    },
+    {
+      "cue": "5.torch",
+      "word": "well",
+      "at": -0.1,
+      "sfx": "place",
+      "pitch": 1.35,
+      "why": "On the well."
+    },
+    {
+      "cue": "5.torch",
+      "word": "My",
+      "at": -0.06,
+      "sfx": "swish",
+      "why": "His floor."
+    },
+    {
+      "cue": "5.torch",
+      "word": "floor",
+      "at": 0.0,
+      "sfx": "crackle",
+      "why": "A torch on every plank.",
+      "trim": 2.5
+    },
+    {
+      "cue": "5.torch",
+      "word": "floor",
+      "at": 0.2,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "He looks down at them."
+    },
+    {
+      "cue": "5.dark",
+      "sfx": "whoosh",
+      "why": "Night."
+    },
+    {
+      "cue": "5.dark",
+      "word": "Clearly",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "Clearly."
+    },
+    {
+      "cue": "5.dark",
+      "word": "dark",
+      "at": 0.0,
+      "sfx": "crackle",
+      "trim": -2,
+      "why": "A town lit up like a birthday cake."
+    },
+    {
+      "cue": "5.wall",
+      "sfx": "whoosh",
+      "why": "The wall goes up."
+    },
+    {
+      "cue": "5.wall",
+      "at": 0.15,
+      "sfx": "place",
+      "repeat": 2,
+      "every": 0.6,
+      "pitch": 0.7,
+      "why": "Stone on stone."
+    },
+    {
+      "cue": "5.keep",
+      "sfx": "swish",
+      "why": "From the top of it."
+    },
+    {
+      "cue": "5.keep",
+      "word": "Clearly",
+      "at": 0.0,
+      "sfx": "stamp",
+      "why": "Clearly."
+    },
+    {
+      "cue": "5.keep",
+      "word": "keep",
+      "at": 0.0,
+      "sfx": "boing",
+      "pitch": 1.4,
+      "repeat": 2,
+      "every": 0.7,
+      "why": "The child jumps, and cannot see over."
+    },
+    {
+      "cue": "5.boat",
+      "sfx": "whoosh",
+      "why": "Before all of that."
+    },
+    {
+      "cue": "5.boat",
+      "word": "put",
+      "at": 0.0,
+      "sfx": "hit",
+      "trim": -4,
+      "why": "He is pushed."
+    },
+    {
+      "cue": "5.boat",
+      "word": "boat",
+      "at": -0.05,
+      "sfx": "thud",
+      "why": "Into a boat."
+    },
+    {
+      "cue": "5.boat",
+      "word": "boat",
+      "at": 0.2,
+      "sfx": "creak",
+      "why": "The boat takes him."
+    },
+    {
+      "cue": "5.week",
+      "sfx": "whoosh",
+      "why": "A boat going across a field."
+    },
+    {
+      "cue": "5.week",
+      "at": 0.1,
+      "sfx": "scrape",
+      "dur": 0.5,
+      "why": "It is on grass."
+    },
+    {
+      "cue": "5.week",
+      "at": 0.3,
+      "sfx": "creak",
+      "repeat": 2,
+      "every": 0.76,
+      "trim": -1,
+      "why": "Rowing."
+    },
+    {
+      "cue": "5.before",
+      "sfx": "swish",
+      "why": "His face in the boat."
+    },
+    {
+      "cue": "5.before",
+      "at": 0.3,
+      "sfx": "creak",
+      "repeat": 2,
+      "every": 0.8,
+      "trim": -2,
+      "why": "The oars, behind him."
+    },
+    {
+      "cue": "5.before",
+      "word": "before",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "Nothing there."
+    },
+    {
+      "cue": "5.green",
+      "sfx": "whoosh_low",
+      "why": "Night, and a burnt hut."
+    },
+    {
+      "cue": "5.green",
+      "word": "green",
+      "at": -0.3,
+      "sfx": "sting",
+      "trim": -4,
+      "why": "Green. The film does not explain it until 8.apple."
+    },
+    {
+      "cue": "5.green",
+      "word": "green",
+      "at": 0.25,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "He looks at us."
+    },
+    {
+      "cue": "6.cloud",
+      "sfx": "whoosh",
+      "why": "Day thirty."
+    },
+    {
+      "cue": "6.cloud",
+      "at": 0.2,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.72,
+      "why": "He walks in through the gate."
+    },
+    {
+      "cue": "6.cloud",
+      "word": "grey",
+      "at": 0.0,
+      "sfx": "glitch",
+      "trim": -3,
+      "why": "A grey cloud goes round his head."
+    },
+    {
+      "cue": "6.cloud",
+      "word": "head",
+      "at": 0.0,
+      "sfx": "swish",
+      "why": "Two villagers look at it."
+    },
+    {
+      "cue": "6.horn",
+      "word": "blew",
+      "at": 0.3,
+      "sfx": "riser",
+      "dur": 0.9,
+      "why": "A horn, a long way off: it climbs into the cut."
+    },
+    {
+      "cue": "6.horn",
+      "word": "horn",
+      "at": 0.1,
+      "sfx": "boing",
+      "why": "Everybody leaves the ground."
+    },
+    {
+      "cue": "6.men",
+      "at": 0.02,
+      "sfx": "boom",
+      "trim": -3,
+      "why": "The raid. This is the only boom until the hole."
+    },
+    {
+      "cue": "6.men",
+      "at": 0.25,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.6,
+      "pitch": 0.8,
+      "why": "They walk out of the trees."
+    },
+    {
+      "cue": "6.men",
+      "word": "crossbows",
+      "at": 0.0,
+      "sfx": "clank",
+      "why": "Crossbows."
+    },
+    {
+      "cue": "6.cow",
+      "sfx": "whoosh_low",
+      "why": "The beast."
+    },
+    {
+      "cue": "6.cow",
+      "at": 0.2,
+      "sfx": "stomp",
+      "repeat": 2,
+      "every": 0.72,
+      "why": "It has four of these."
+    },
+    {
+      "cue": "6.cow",
+      "word": "house",
+      "at": -0.1,
+      "sfx": "sting",
+      "trim": -4,
+      "why": "The size of a house."
+    },
+    {
+      "cue": "6.nobell",
+      "sfx": "whoosh",
+      "why": "The old man runs for the bell."
+    },
+    {
+      "cue": "6.nobell",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.4,
+      "pitch": 1.2,
+      "why": "As fast as a villager can."
+    },
+    {
+      "cue": "6.nobell",
+      "word": "There",
+      "at": -0.2,
+      "sfx": "scrape",
+      "dur": 0.25,
+      "why": "He skids."
+    },
+    {
+      "cue": "6.nobell",
+      "word": "no",
+      "at": 0.0,
+      "sfx": "buzz",
+      "trim": -2,
+      "why": "No bell."
+    },
+    {
+      "cue": "6.ding",
+      "word": "ding",
+      "at": 0.22,
+      "sfx": "ding",
+      "pitch": 0.7,
+      "why": "DING. As loud as he can.",
+      "trim": -5
+    },
+    {
+      "cue": "6.ding",
+      "word": "Nobody",
+      "at": 0.0,
+      "sfx": "plink",
+      "repeat": 2,
+      "every": 0.25,
+      "pitch": 1.4,
+      "why": "A chicken."
+    },
+    {
+      "cue": "6.walked",
+      "sfx": "whoosh",
+      "why": "He walks out to them."
+    },
+    {
+      "cue": "6.walked",
+      "at": 0.15,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.8,
+      "why": "On his own."
+    },
+    {
+      "cue": "6.walked",
+      "word": "biggest",
+      "at": 0.0,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "The beast looks down at him."
+    },
+    {
+      "cue": "6.hrmm",
+      "sfx": "swish",
+      "why": "Nose to nose."
+    },
+    {
+      "cue": "6.hrmm",
+      "word": "hmm",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "HMM. The same hmm as always."
+    },
+    {
+      "cue": "6.hrmm",
+      "word": "hmm",
+      "at": 0.45,
+      "sfx": "tick",
+      "why": "Nothing happens."
+    },
+    {
+      "cue": "6.help",
+      "at": 0.1,
+      "sfx": "hit",
+      "why": "One flick of the head."
+    },
+    {
+      "cue": "6.help",
+      "at": 0.14,
+      "sfx": "slide_up",
+      "dur": 0.5,
+      "why": "He goes up."
+    },
+    {
+      "cue": "6.help",
+      "word": "help",
+      "at": -0.1,
+      "sfx": "zip",
+      "why": "Over the wall."
+    },
+    {
+      "cue": "7.rang",
+      "at": 0.0,
+      "sfx": "thud",
+      "why": "He comes down in the square."
+    },
+    {
+      "cue": "7.rang",
+      "word": "rang",
+      "at": -0.1,
+      "sfx": "bell",
+      "why": "A real one. The bell from 2.oldman, back."
+    },
+    {
+      "cue": "7.rang",
+      "word": "real",
+      "at": 0.0,
+      "sfx": "bell",
+      "trim": -2,
+      "why": "And again."
+    },
+    {
+      "cue": "7.him",
+      "sfx": "whoosh",
+      "why": "The gate."
+    },
+    {
+      "cue": "7.him",
+      "at": 0.25,
+      "sfx": "bell",
+      "repeat": 2,
+      "every": 0.4,
+      "trim": -1,
+      "why": "He rings it over his head."
+    },
+    {
+      "cue": "7.him",
+      "word": "stranger",
+      "at": 0.0,
+      "sfx": "power_up",
+      "trim": -3,
+      "why": "It was him."
+    },
+    {
+      "cue": "7.pocket",
+      "sfx": "swish",
+      "why": "Down him to his pocket."
+    },
+    {
+      "cue": "7.pocket",
+      "word": "bed",
+      "at": -0.15,
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "A very small bed."
+    },
+    {
+      "cue": "7.pocket",
+      "word": "pocket",
+      "at": 0.0,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.36,
+      "trim": -1,
+      "why": "Villagers go indoors."
+    },
+    {
+      "cue": "7.wall",
+      "sfx": "whoosh",
+      "why": "Outside the wall."
+    },
+    {
+      "cue": "7.wall",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.32,
+      "pitch": 0.8,
+      "why": "They run at it."
+    },
+    {
+      "cue": "7.wall",
+      "word": "wall",
+      "at": 0.05,
+      "sfx": "hit",
+      "why": "One."
+    },
+    {
+      "cue": "7.wall",
+      "word": "wall",
+      "at": 0.15,
+      "sfx": "bonk",
+      "why": "Two."
+    },
+    {
+      "cue": "7.wall",
+      "word": "wall",
+      "at": 0.25,
+      "sfx": "bonk",
+      "pitch": 0.85,
+      "why": "Three."
+    },
+    {
+      "cue": "7.wall",
+      "word": "wall",
+      "at": 0.5,
+      "sfx": "thud",
+      "why": "On their backs in a row."
+    },
+    {
+      "cue": "7.wall",
+      "word": "move",
+      "at": 0.1,
+      "sfx": "tick",
+      "why": "The wall has not moved."
+    },
+    {
+      "cue": "7.golem",
+      "at": 0.15,
+      "sfx": "stomp",
+      "repeat": 2,
+      "every": 0.68,
+      "why": "The iron man walks up."
+    },
+    {
+      "cue": "7.golem",
+      "word": "him",
+      "at": 0.0,
+      "sfx": "clank",
+      "why": "He stands beside him."
+    },
+    {
+      "cue": "7.golem",
+      "word": "He",
+      "at": 0.0,
+      "sfx": "creak",
+      "pitch": 0.6,
+      "why": "He looks down at him sideways, for a long time."
+    },
+    {
+      "cue": "7.golem",
+      "word": "happy",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 1.3,
+      "why": "A very small wave."
+    },
+    {
+      "cue": "7.leader",
+      "sfx": "whoosh",
+      "why": "The leader comes through the gate.",
+      "trim": 2.5
+    },
+    {
+      "cue": "7.leader",
+      "at": 0.1,
+      "sfx": "step_grass",
+      "repeat": 2,
+      "every": 0.6,
+      "pitch": 0.8,
+      "why": "Straight down the path."
+    },
+    {
+      "cue": "7.leader",
+      "word": "stranger",
+      "at": 0.45,
+      "sfx": "riser",
+      "dur": 1.1,
+      "trim": -2,
+      "why": "At the stranger. It ends on the hole."
+    },
+    {
+      "cue": "7.hole",
+      "word": "fell",
+      "at": -0.02,
+      "sfx": "slide_down",
+      "dur": 0.6,
+      "why": "Feet first."
+    },
+    {
+      "cue": "7.hole",
+      "word": "fell",
+      "at": 0.0,
+      "sfx": "drop",
+      "trim": -2,
+      "why": "The floor is not there."
+    },
+    {
+      "cue": "7.hole",
+      "word": "hole",
+      "at": 0.25,
+      "sfx": "boom",
+      "trim": -3,
+      "why": "A long way down."
+    },
+    {
+      "cue": "7.hole",
+      "word": "Straight",
+      "at": 0.0,
+      "sfx": "debris",
+      "dur": 0.4,
+      "why": "The banner follows him."
+    },
+    {
+      "cue": "7.hole",
+      "word": "down",
+      "at": 0.3,
+      "sfx": "plink",
+      "pitch": 0.6,
+      "why": "And lands."
+    },
+    {
+      "cue": "7.quiet",
+      "at": 0.4,
+      "sfx": "gust",
+      "dur": 0.9,
+      "why": "Nobody."
+    },
+    {
+      "cue": "7.quiet",
+      "at": 0.3,
+      "sfx": "stomp",
+      "repeat": 2,
+      "every": 0.5,
+      "trim": -3,
+      "why": "The iron man walks after the beast, not fast."
+    },
+    {
+      "cue": "8.hero",
+      "sfx": "whoosh",
+      "why": "The square."
+    },
+    {
+      "cue": "8.hero",
+      "at": 0.2,
+      "sfx": "cheer",
+      "dur": 0.7,
+      "why": "Everybody."
+    },
+    {
+      "cue": "8.hero",
+      "word": "He",
+      "at": -0.1,
+      "sfx": "paper",
+      "why": "The price turns over."
+    },
+    {
+      "cue": "8.hero",
+      "word": "already",
+      "at": 0.1,
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "It is still one."
+    },
+    {
+      "cue": "8.one",
+      "sfx": "swish",
+      "why": "His desk."
+    },
+    {
+      "cue": "8.one",
+      "at": 0.3,
+      "sfx": "coin",
+      "why": "One green stone."
+    },
+    {
+      "cue": "8.one",
+      "word": "everything",
+      "at": -0.1,
+      "sfx": "paper",
+      "repeat": 3,
+      "every": 0.2,
+      "pitchStep": 1.06,
+      "why": "Books come off the desk in a stream."
+    },
+    {
+      "cue": "8.one",
+      "word": "emerald",
+      "at": 0.0,
+      "sfx": "register",
+      "trim": -2,
+      "why": "For one."
+    },
+    {
+      "cue": "8.why",
+      "sfx": "swish",
+      "why": "He looks at the stone."
+    },
+    {
+      "cue": "8.why",
+      "word": "why",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "And at us."
+    },
+    {
+      "cue": "8.list",
+      "at": 0.2,
+      "sfx": "tick",
+      "repeat": 2,
+      "every": 0.6,
+      "why": "He is thinking. Nobody here has had to before."
+    },
+    {
+      "cue": "8.list",
+      "at": 0.3,
+      "sfx": "pop",
+      "trim": -2,
+      "why": "Three dots."
+    },
+    {
+      "cue": "8.wall",
+      "word": "wall",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "pitch": 0.8,
+      "why": "One."
+    },
+    {
+      "cue": "8.torch",
+      "word": "torches",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "pitch": 0.9,
+      "why": "Two."
+    },
+    {
+      "cue": "8.desk",
+      "word": "desk",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "Three."
+    },
+    {
+      "cue": "8.boat",
+      "word": "boat",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "pitch": 1.1,
+      "why": "Four."
+    },
+    {
+      "cue": "8.boat",
+      "word": "boat",
+      "at": 0.25,
+      "sfx": "creak",
+      "why": "It has been there all along."
+    },
+    {
+      "cue": "8.house",
+      "sfx": "whoosh_low",
+      "why": "He looks at his house."
+    },
+    {
+      "cue": "8.house",
+      "word": "house",
+      "at": 0.0,
+      "sfx": "tick",
+      "why": "One house."
+    },
+    {
+      "cue": "8.house",
+      "word": "other",
+      "at": 0.0,
+      "sfx": "tick",
+      "pitch": 1.1,
+      "why": "The next."
+    },
+    {
+      "cue": "8.house",
+      "word": "houses",
+      "at": 0.0,
+      "sfx": "tick",
+      "pitch": 1.2,
+      "why": "The next."
+    },
+    {
+      "cue": "8.same",
+      "sfx": "swish",
+      "why": "Three rooms."
+    },
+    {
+      "cue": "8.same",
+      "word": "door",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -1,
+      "why": "Same door."
+    },
+    {
+      "cue": "8.same",
+      "word": "bed",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -1,
+      "why": "Same bed."
+    },
+    {
+      "cue": "8.same",
+      "word": "desk",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -1,
+      "why": "Same desk."
+    },
+    {
+      "cue": "8.built",
+      "sfx": "whoosh",
+      "why": "Long ago, and nothing here."
+    },
+    {
+      "cue": "8.built",
+      "at": 0.2,
+      "sfx": "place",
+      "repeat": 2,
+      "every": 0.44,
+      "pitchStep": 1.06,
+      "why": "He builds."
+    },
+    {
+      "cue": "8.built",
+      "at": 0.3,
+      "sfx": "slide_up",
+      "dur": 0.9,
+      "why": "A house comes up out of the grass."
+    },
+    {
+      "cue": "8.built",
+      "word": "He",
+      "at": 0.0,
+      "sfx": "chime",
+      "why": "That house."
+    },
+    {
+      "cue": "8.boats",
+      "sfx": "whoosh",
+      "why": "The town when it was new."
+    },
+    {
+      "cue": "8.boats",
+      "at": 0.2,
+      "sfx": "scrape",
+      "dur": 0.5,
+      "why": "A boat comes in over the grass."
+    },
+    {
+      "cue": "8.boats",
+      "word": "here",
+      "at": 0.0,
+      "sfx": "creak",
+      "repeat": 2,
+      "every": 0.72,
+      "trim": -1,
+      "why": "Rowing."
+    },
+    {
+      "cue": "8.boats",
+      "word": "time",
+      "at": 0.1,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "It stops."
+    },
+    {
+      "cue": "8.apple",
+      "sfx": "whoosh_low",
+      "why": "The burnt hut, at night."
+    },
+    {
+      "cue": "8.apple",
+      "word": "bottle",
+      "at": -0.3,
+      "sfx": "zip",
+      "why": "A bottle."
+    },
+    {
+      "cue": "8.apple",
+      "word": "bottle",
+      "at": 0.15,
+      "sfx": "crack",
+      "why": "It breaks on him."
+    },
+    {
+      "cue": "8.apple",
+      "word": "bottle",
+      "at": 0.2,
+      "sfx": "splash",
+      "trim": -3,
+      "why": "A grey cloud."
+    },
+    {
+      "cue": "8.gold",
+      "sfx": "swish",
+      "why": "A hand, and an apple made of gold."
+    },
+    {
+      "cue": "8.gold",
+      "word": "golden",
+      "at": 0.0,
+      "sfx": "chime",
+      "why": "Gold."
+    },
+    {
+      "cue": "8.gold",
+      "word": "apple",
+      "at": 0.0,
+      "sfx": "sparkle",
+      "dur": 0.5,
+      "why": "It shines."
+    },
+    {
+      "cue": "8.lunch",
+      "at": 0.15,
+      "sfx": "crack",
+      "trim": -3,
+      "dur": 0.2,
+      "why": "He eats it."
+    },
+    {
+      "cue": "8.lunch",
+      "word": "lunch",
+      "at": -0.2,
+      "sfx": "power_up",
+      "trim": -2,
+      "why": "And goes less green."
+    },
+    {
+      "cue": "8.truth",
+      "sfx": "whoosh",
+      "why": "The house he has called his."
+    },
+    {
+      "cue": "8.truth",
+      "at": 0.3,
+      "sfx": "swish",
+      "why": "He looks back at it."
+    },
+    {
+      "cue": "8.truth",
+      "word": "not",
+      "at": 0.0,
+      "sfx": "place",
+      "why": "The stranger, on the roof, with a torch."
+    },
+    {
+      "cue": "8.his",
+      "at": 0.1,
+      "sfx": "heartbeat",
+      "trim": 2,
+      "why": "He understands."
+    },
+    {
+      "cue": "8.his",
+      "word": "his",
+      "at": 0.0,
+      "sfx": "ding",
+      "why": "His. Not mine."
+    },
+    {
+      "cue": "9.back",
+      "sfx": "whoosh",
+      "why": "This morning."
+    },
+    {
+      "cue": "9.back",
+      "at": 0.2,
+      "sfx": "scrape",
+      "dur": 0.5,
+      "why": "A boat, through the gate."
+    },
+    {
+      "cue": "9.back",
+      "word": "boat",
+      "at": -0.2,
+      "sfx": "creak",
+      "repeat": 2,
+      "every": 0.36,
+      "why": "Rowing."
+    },
+    {
+      "cue": "9.in",
+      "sfx": "swish",
+      "why": "The one in the front of it."
+    },
+    {
+      "cue": "9.in",
+      "word": "green",
+      "at": -0.25,
+      "sfx": "sting",
+      "trim": -5,
+      "why": "Very green. The chord from 5.green, and now we know what it means."
+    },
+    {
+      "cue": "9.in",
+      "word": "green",
+      "at": 0.25,
+      "sfx": "blip",
+      "pitch": 0.5,
+      "why": "He looks at us."
+    },
+    {
+      "cue": "9.knock",
+      "at": 0.1,
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.52,
+      "why": "He walks in over the door."
+    },
+    {
+      "cue": "9.knock",
+      "word": "knock",
+      "at": 0.0,
+      "sfx": "creak",
+      "why": "The door, under him."
+    },
+    {
+      "cue": "9.floor",
+      "word": "hmm",
+      "at": -0.12,
+      "sfx": "pop",
+      "trim": 2,
+      "why": "A bubble."
+    },
+    {
+      "cue": "9.floor",
+      "word": "hmm",
+      "at": 0.0,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "HMM."
+    },
+    {
+      "cue": "9.floor",
+      "word": "Then",
+      "at": -0.06,
+      "sfx": "whoosh",
+      "why": "Night."
+    },
+    {
+      "cue": "9.floor",
+      "word": "half",
+      "at": 0.0,
+      "sfx": "thud",
+      "repeat": 2,
+      "every": 0.2,
+      "trim": -1,
+      "why": "Two on the bare boards."
+    },
+    {
+      "cue": "9.sub",
+      "sfx": "whoosh",
+      "why": "The bed, in the square."
+    },
+    {
+      "cue": "9.sub",
+      "word": "subscribe",
+      "at": -0.2,
+      "sfx": "pop",
+      "why": "The sign."
+    },
+    {
+      "cue": "9.sub",
+      "word": "subscribe",
+      "at": 0.0,
+      "sfx": "ding",
+      "why": "Like and subscribe."
+    },
+    {
+      "cue": "9.sub",
+      "word": "bed",
+      "at": 0.15,
+      "sfx": "blip",
+      "pitch": 0.6,
+      "why": "He looks at us."
+    }
+  ]
+}
