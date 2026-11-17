@@ -1,87 +1,110 @@
 import type React from "react";
-import { Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
-import { Bell, Hut, LampPost, Room, Stall, Well } from "../../../Topics/InThisTown";
-import { PLACE } from "./kit";
+import { Block, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
+import { ForestEdge, Hut, Moon, Stars } from "../../../Topics/InThisTown";
+import { PLACE, WALL } from "./kit";
 
 /**
- * THE TOWN, in zones. A shot names the zone it plays in, and the others are not drawn.
+ * Where it happens.
  *
- *   village  One street, west–east (x). House fronts on the north side face south, at the camera.
- *            The square is at x = 0.
- *   room     The teller's room. No south wall: that is where the camera lives. Lens north, east or west.
+ *   town    The ground, the roads, the other houses, the woods beyond the wall. Our house, the old lady's, the stall, the wall and its
+ *           gate change (doors open, windows lit, the apple gone), so the scenes draw them (kit.tsx: `TownSet`).
+ *   room    Our room, drawn by the scenes (`OurRoom`): this zone is only the dark round it.
+ *   cellar  The room under the house, drawn by the scenes (`Cellar`): this zone is only the dark round it.
+ *   woods   The road to the witch, at night.
  *
- * This is a STARTER: the town of "Everyone Had the Same Face", without its hill. Change it to fit the story.
- * The story's THIRD place (what the rule was hiding: the other side, the bottom of the well, behind the wall)
- * is yours to build, as a third zone. See src/videos/in-this-town-same-face/world.tsx for a whole valley.
- *
- * The parts come from the topic's pack (Topics/InThisTown/places.tsx). 1 unit = 1 block = 1 metre. Ground is y = 0.
+ * Night, sunset and day are the shot's `look`. The sky itself is the look's (src/engine/Look.tsx).
  */
 
-const Village: React.FC = () => (
+const ring = (n: number, r0: number, r1: number, seed: number) =>
+  Array.from({ length: n }, (_, i) => {
+    const a = (i / n) * Math.PI * 2 + ((i * 7 + seed) % 5) * 0.07;
+    const r = r0 + (((i * 37 + seed * 13) % 100) / 100) * (r1 - r0);
+    return [Math.sin(a) * r, Math.cos(a) * r, 4.6 + ((i * 7 + seed) % 5) * 0.8] as [number, number, number];
+  });
+
+const Night: React.FC = () => (
   <>
-    <Vox kind="grass" position={[0, -0.5, 0]} size={[120, 1, 90]} />
-    <Vox kind="path" position={[3, 0.02, 2]} size={[60, 0.06, 4.6]} />
-    <Vox kind="path" position={[0, 0.021, 1.5]} size={[13, 0.06, 12]} />
-
-    {/* North side, west to east. Fronts face south. */}
-    <Hut at={[-21, 0, -5]} w={7} windows={[-2, 2]} roof="#3f6b3a" />
-    <Hut at={[-10, 0, -5]} w={6} h={3.6} wall="cobble" roof="#5a4a6a" windows={[-2, 2]} />
-    {/* A raised porch: whoever stands on it looks down at a kid, and the two stack in a tall frame. */}
-    <Vox kind="cobble" position={[-10, 0.25, -4.15]} size={[2.8, 0.5, 1.7]} />
-    <Vox kind="stone" position={[-10, 0.12, -3.1]} size={[1.6, 0.24, 0.5]} />
-    <Hut at={[0, 0, -7]} w={9} d={7} h={4.6} roof="#8a3b2a" windows={[-2.9, 2.9]} />
-    <Hut at={PLACE.home} w={6.5} tint="#caa268" roof="#3f6b3a" door={-1.3} windows={[1.5]} />
-    <Hut at={[20, 0, -5]} w={6} h={3.6} tint="#d8c49a" roof="#3d5f9a" door={1.2} windows={[-1.6]} />
-
-    {/* South side: backs to the usual camera. */}
-    <Hut at={[-13, 0, 11]} w={7} tint="#d8c49a" roof="#8a3b2a" windows={[-1.8, 1.8]} turn={Math.PI} />
-    <Hut at={[1.5, 0, 12.5]} w={6} h={3.6} wall="cobble" roof="#3d5f9a" windows={[1.5]} door={-1.2} turn={Math.PI} />
-    <Hut at={[15, 0, 11]} w={6.5} tint="#caa268" roof="#5a4a6a" windows={[-1.6]} door={1.3} turn={Math.PI} />
-
-    <Bell position={PLACE.bell} />
-    <Well position={PLACE.well} />
-    <Stall position={PLACE.stall} />
-
-    {(
-      [
-        [-28, -12, 4.6],
-        [-15.5, -13.5, 4],
-        [6, -15.5, 4.4],
-        [15, -13, 3.8],
-        [27, -11, 4.6],
-        [-25, 14, 4],
-        [8, 17, 4.4],
-        [25, 13, 4],
-        [-33, 1, 4.8],
-        [31, 3, 4.4],
-      ] as Array<[number, number, number]>
-    ).map(([x, z, height], i) => (
-      <Tree key={i} position={[x, 0, z]} height={height} leaf={i % 2 ? "#3f7f2d" : "#4a8c33"} />
-    ))}
-    <LampPost position={[-5.6, 0, -3.6]} seed={2} />
-    <LampPost position={[5.2, 0, 6.6]} seed={3} />
-    <LampPost position={[15.6, 0, -3.4]} seed={4} />
-    <LampPost position={[-16, 0, 4.6]} seed={5} />
-    <Clouds y={48} center={[0, 0, 0]} />
-
-    {/* Atmosphere is not optional: a ray, a pool of light, a glow and dust in every zone. */}
-    <GodRay position={[-3, 6.5, -3]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.06} />
-    <LightPool position={[0, 0.07, 1.5]} width={11} depth={9} color="#fff2c8" opacity={0.14} />
-    <Glow position={[0, 2.3, -2.5]} size={1.6} color="#ffe08a" opacity={0.35} />
-    <Dust position={[0, 2.2, 1]} area={[30, 4, 14]} count={70} size={0.045} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
+    <Moon position={[-18, 46, -90]} radius={6} />
+    <Stars center={[0, 0, 0]} />
   </>
+);
+
+const Town: React.FC<{ night: boolean; warm: boolean }> = ({ night, warm }) => (
+  <group>
+    <Vox kind="grass" position={[0, -0.5, 0]} size={[400, 1, 400]} />
+    {/* the square, the street in front of the houses, the road to the gate and out into the woods */}
+    <Vox kind="path" position={[0, 0.02, 0]} size={[6, 0.06, 9]} />
+    <Vox kind="path" position={[0, 0.021, -4.2]} size={[26, 0.06, 2.8]} />
+    <Vox kind="path" position={[0, 0.022, 16]} size={[2.8, 0.06, 26]} />
+    {/* the other houses: west, and two with their backs to the usual lens */}
+    <Hut at={[-13.5, 0, -6]} w={5.5} h={3.4} tint="#d8c49a" roof="#3d5f9a" windows={[-1.6, 1.6]} lit={night} />
+    <Hut at={[14.5, 0, -6]} w={5} h={3.4} tint="#c8a878" roof="#3f6b3a" windows={[-1.5]} door={1.2} lit={night} />
+    <Hut at={[-11, 0, 7]} w={5} h={3.4} wall="cobble" roof="#8a3b2a" windows={[-1.5, 1.5]} turn={Math.PI / 2} lit={night} />
+    <Hut at={[13.5, 0, 8.5]} w={5} h={3.4} tint="#d8c49a" roof="#5a4a6a" windows={[-1.5, 1.5]} turn={-Math.PI / 2} lit={night} />
+    {Array.from({ length: 40 }, (_, i) => {
+      const a = i * 2.399;
+      const r = 4 + ((i * 53) % 100) / 7;
+      const x = Math.sin(a) * r;
+      const z = Math.cos(a) * r;
+      if (Math.abs(x) < 3.2 || z < -3 || (Math.abs(x - PLACE.field[0]) < 4 && Math.abs(z - PLACE.field[2]) < 3.6)) return null;
+      const c = ["#f2d24a", "#ffffff", "#e8566a", "#6a9be8"][i % 4];
+      return (
+        <group key={`f${i}`} position={[x, 0, z]}>
+          <Block position={[0, 0.1, 0]} size={[0.04, 0.2, 0.04]} color="#3f8a34" castShadow={false} />
+          <Block position={[0, 0.23, 0]} size={[0.13, 0.1, 0.13]} color={c} castShadow={false} />
+        </group>
+      );
+    })}
+    <ForestEdge from={[-46, 0, WALL.z + 13]} to={[-2.6, 0, WALL.z + 13]} back={[0, 0, 1]} depth={12} count={40} seed={3} />
+    <ForestEdge from={[2.6, 0, WALL.z + 13]} to={[46, 0, WALL.z + 13]} back={[0, 0, 1]} depth={12} count={40} seed={5} />
+    {ring(60, 26, 58, 3).map(([x, z, h], i) => (z > 10 ? null : <Tree key={i} position={[x, 0, z]} height={h + 1} leaf={i % 2 ? "#3f7f2d" : "#356430"} />))}
+    {night ? null : <GodRay position={[-4, 7, 1]} rotation={[0, 0, 0.5]} width={6} height={14} color={warm ? "#ffd9a0" : "#fff0c8"} opacity={warm ? 0.1 : 0.05} />}
+    <LightPool position={[0, 0.05, 0]} width={10} depth={10} color={night ? "#ffcf8a" : "#fff2c0"} opacity={night ? 0.16 : 0.1} />
+    <Dust position={[0, 2.2, 1]} area={[20, 4, 22]} count={50} size={0.045} color={night ? "#ffe6c0" : "#fff7d8"} opacity={0.5} seed={3} speed={0.2} />
+    {night ? <Night /> : null}
+  </group>
+);
+
+const Woods: React.FC = () => (
+  <group>
+    <Vox kind="grass" tint="#4f6f3a" position={[0, -0.5, 0]} size={[300, 1, 300]} />
+    <Vox kind="path" position={[0, 0.02, -10]} size={[2.4, 0.06, 60]} />
+    <ForestEdge from={[-2.6, 0, 8]} to={[-2.6, 0, -40]} back={[-1, 0, 0]} depth={14} count={46} seed={2} />
+    <ForestEdge from={[2.6, 0, 8]} to={[2.6, 0, -40]} back={[1, 0, 0]} depth={14} count={46} seed={7} />
+    {/* the witch's hut, far up the road: one purple window */}
+    <Hut at={[0, 0, -30]} w={4} h={3} wall="darkPlanks" roof="#3a2a4a" windows={[1.1]} door={-0.9} />
+    <Block position={[1.1, 1.75, -29.94]} size={[0.8, 0.8, 0.04]} color="#b070ff" emissive="#b070ff" emissiveIntensity={1.6} castShadow={false} />
+    <Glow position={[1.1, 1.75, -29.6]} size={5} color="#b070ff" opacity={0.4} />
+    <Dust position={[0, 1.6, -4]} area={[8, 3, 16]} count={40} size={0.04} color="#cfe0ff" opacity={0.5} seed={5} speed={0.2} />
+    <Night />
+  </group>
+);
+
+/** Under a roof there is no sky: a dark box far outside the set, so nothing of the look's sky shows through a gap. */
+const Dark: React.FC<{ color?: string }> = ({ color = "#07060a" }) => (
+  <mesh>
+    <boxGeometry args={[70, 50, 70]} />
+    <meshBasicMaterial color={color} side={1} fog={false} />
+  </mesh>
 );
 
 export const World: React.FC = () => {
   const active = useActiveShot();
-  const night = (active?.shot.look ?? "overworld-day") === "overworld-night";
+  const look = active?.shot.look ?? "overworld-day";
+  const night = look === "overworld-night" || look === "lantern-night";
   return (
     <>
-      <Zone name="village">
-        <Village />
+      <Zone name="town">
+        <Town night={night} warm={look === "overworld-sunset"} />
       </Zone>
       <Zone name="room">
-        <Room at={PLACE.room} night={night} />
+        <Dark color="#0b0a10" />
+      </Zone>
+      <Zone name="cellar">
+        <Dark />
+      </Zone>
+      <Zone name="woods">
+        <Woods />
       </Zone>
     </>
   );

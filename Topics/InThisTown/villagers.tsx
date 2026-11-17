@@ -61,6 +61,14 @@ export type VillagerProps = {
   carry?: React.ReactNode;
   /** Skin colour. Leave it out for a villager; a green one is a zombie villager (it is the same face). */
   skin?: string;
+  /**
+   * The arms out of the sleeves, the way a zombie villager holds them (a villager's own stay folded: leave this out).
+   * Radians: 0 hangs, −1.5 is straight out in front, −3 is straight up. `l` is the −X arm, `r` the +X arm.
+   * `hold` is drawn at the end of the +X arm; `holdL` at the end of the −X arm.
+   */
+  arms?: { l?: number; r?: number; hold?: React.ReactNode; holdL?: React.ReactNode };
+  /** Colour of the pupils. A villager's are green; a zombie villager's are red. */
+  eyes?: string;
 };
 
 /**
@@ -87,6 +95,8 @@ export const Villager: React.FC<VillagerProps> = ({
   headwear,
   carry,
   skin = VILLAGER_SKIN,
+  arms,
+  eyes = "#2f8f3a",
 }) => {
   const t = useFilmTime();
   const u = U;
@@ -124,6 +134,16 @@ export const Villager: React.FC<VillagerProps> = ({
         <Block position={[0, 6 * u, 0]} size={[8 * u, 12 * u, 6 * u]} color={robe} />
         <Block position={[0, -2.6 * u, 0]} size={[8.7 * u, 7.2 * u, 6.7 * u]} color={shade(robe, -0.09)} />
         {/* The arms: two sleeves and the block that joins them. They are one piece, and they stay one piece. */}
+        {arms ? (
+          ([-1, 1] as const).map((sd) => (
+            <group key={`arm${sd}`} position={[sd * 6 * u, 10.5 * u, 0]} rotation={[(sd < 0 ? arms.l : arms.r) ?? -1.5, 0, 0]}>
+              <Block position={[0, -4 * u, 0]} size={[4 * u, 9 * u, 4 * u]} color={sleeve} />
+              <Block position={[0, -8.4 * u, 0]} size={[4.3 * u, 0.8 * u, 4.3 * u]} color={shade(robe, -0.42)} castShadow={false} />
+              <Block position={[0, -10 * u, 0]} size={[3.4 * u, 3 * u, 3.4 * u]} color={skin} />
+              {(sd < 0 ? arms.holdL : arms.hold) ? <group position={[0, -10.4 * u, 0]}>{sd < 0 ? arms.holdL : arms.hold}</group> : null}
+            </group>
+          ))
+        ) : (
         <group position={[0, (9 + strain * 1.6) * u + shake * 0.007, 1 * u]} rotation={[-0.75 - strain * 0.3 + shake * 0.05, 0, 0]}>
           {[-1, 1].map((s) => (
             <Block key={s} position={[s * 6 * u, -2 * u, 0]} size={[4 * u, 8 * u, 4 * u]} color={sleeve} />
@@ -135,6 +155,7 @@ export const Villager: React.FC<VillagerProps> = ({
             <Block key={`cuff${s}`} position={[s * 4 * u, -4 * u, 0]} size={[0.8 * u, 4.3 * u, 4.3 * u]} color={shade(robe, -0.42)} castShadow={false} />
           ))}
         </group>
+        )}
         <group position={[0, 12 * u, 0]} rotation={[pitch + hmmBob, yaw, tilt]} scale={kid ? 1.16 : 1}>
           <Block position={[0, 5 * u, 0]} size={[8 * u, 10 * u, 8 * u]} color={skin} />
           {/* One long eyebrow. */}
@@ -147,7 +168,7 @@ export const Villager: React.FC<VillagerProps> = ({
             [-1, 1].map((s) => (
               <group key={s}>
                 <Block position={[s * 2.5 * u, 4.5 * u, 4.04 * u]} size={[1 * u, 1 * u, 0.1 * u]} color="#fbfbf5" castShadow={false} />
-                <Block position={[s * 1.5 * u, 4.5 * u, 4.04 * u]} size={[1 * u, 1 * u, 0.1 * u]} color="#2f8f3a" castShadow={false} />
+                <Block position={[s * 1.5 * u, 4.5 * u, 4.04 * u]} size={[1 * u, 1 * u, 0.1 * u]} color={eyes} castShadow={false} />
               </group>
             ))
           )}
