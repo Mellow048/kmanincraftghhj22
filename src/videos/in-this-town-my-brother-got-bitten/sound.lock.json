@@ -1,0 +1,193 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-my-brother-got-bitten",
+  "mix": "public/audio/in-this-town-my-brother-got-bitten/mix.mp3",
+  "seconds": 123.8333,
+  "built_from": {
+    "timing.json": "94484e26efc981f79515547988fdd6a1dda46ec8",
+    "sound.json": "3b0c8b017efc3f47b7a75a728a97be6fca88a69b",
+    "narration.mp3": "c1a270a9e43573e865ea8b5c5253cdfb4695f43b"
+  },
+  "mix_sha1": "834974303d2489d7c67f3daf5e517a00afe39e0d",
+  "music_sections": [
+    {
+      "from": "1.bitten",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.rule",
+      "mood": "curious",
+      "at": 5.2
+    },
+    {
+      "from": "3.late",
+      "mood": "town",
+      "at": 20.0
+    },
+    {
+      "from": "3.wheat",
+      "mood": "tense",
+      "at": 22.37
+    },
+    {
+      "from": "3.thought",
+      "mood": "sad",
+      "at": 33.43
+    },
+    {
+      "from": "4.heard",
+      "mood": "none",
+      "at": 38.23
+    },
+    {
+      "from": "4.his",
+      "mood": "hope",
+      "at": 41.27
+    },
+    {
+      "from": "4.lantern",
+      "mood": "sneak",
+      "at": 43.8
+    },
+    {
+      "from": "5.fix",
+      "mood": "playful",
+      "at": 52.3
+    },
+    {
+      "from": "5.grey",
+      "mood": "tense",
+      "at": 60.8
+    },
+    {
+      "from": "6.sat",
+      "mood": "explain",
+      "at": 63.17
+    },
+    {
+      "from": "7.door",
+      "mood": "hope",
+      "at": 73.73
+    },
+    {
+      "from": "7.shake",
+      "mood": "tense",
+      "at": 86.6
+    },
+    {
+      "from": "7.stood",
+      "mood": "hope",
+      "at": 92.0
+    },
+    {
+      "from": "8.how",
+      "mood": "explain",
+      "at": 94.53
+    },
+    {
+      "from": "9.stop",
+      "mood": "none",
+      "at": 110.17
+    },
+    {
+      "from": "9.eyes",
+      "mood": "hope",
+      "at": 111.6
+    },
+    {
+      "from": "9.floor",
+      "mood": "none",
+      "at": 119.93
+    },
+    {
+      "from": "9.sub",
+      "mood": "town",
+      "at": 121.93
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 21,
+  "measured": {
+    "musicUnderVoiceDb": 19.4,
+    "secondsWithoutMusic": 6.2,
+    "bedsUnderVoiceDb": 25.3,
+    "sfx": 319,
+    "sfxPerMinute": 154.6,
+    "sfxKinds": 43,
+    "longestGapSeconds": 1.6,
+    "longestGapAt": 102.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.8,
+    "voiceOverRestWorstDb": 5.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.1,
+        "t": 87.4,
+        "cue": "7.shake",
+        "sounding": [
+          "ding",
+          "power_up",
+          "rustle",
+          "sparkle",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 105.4,
+        "cue": "8.town",
+        "sounding": [
+          "hit",
+          "power_down",
+          "register"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 112.3,
+        "cue": "9.eyes",
+        "sounding": [
+          "ding",
+          "power_up",
+          "riser",
+          "swish"
+        ]
+      },
+      {
+        "db": 5.5,
+        "t": 102.2,
+        "cue": "8.priest",
+        "sounding": [
+          "creak",
+          "ding",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 91.4,
+        "cue": "7.sun",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 78.0,
+        "cue": "7.had",
+        "sounding": [
+          "ding",
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -15.3,
+    "truePeakDb": -1.8,
+    "limiterMaxDb": 4.2
+  },
+  "failures": []
+}

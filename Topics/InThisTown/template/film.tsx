@@ -19,6 +19,9 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "short",
   look: "overworld-day",
+  // The shader chain (painted sky and sun, bloom, tone mapping, grade): the owner asked for it on every film from
+  // 2026-11-17 on. Read "With the shaders on" in Topics/InThisTown/PACK.md before lighting a shot.
+  post: { shaders: true },
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/__ID__/mix.mp3" },

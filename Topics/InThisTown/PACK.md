@@ -58,7 +58,7 @@ wired this way. The reference for both is `src/videos/in-this-town-same-face/`.
 
 | Name | What it is | Props that matter |
 |---|---|---|
-| `Villager` | The villager. One face, one eyebrow, one long nose, arms folded into one block. **There is exactly one face: do not add another** | `robe`, `scale` (`ADULT` 0.94, `CHILD` 0.7), `kid`, `walk` (metres), `lookAt` (a world point), `nod` `turn` `tilt`, `skin` (a colour: `"#5f9a4e"` makes a zombie villager), `hmm` 0–1, `strain` 0–1 (trying to get the arms out), `lean` (a bow), `hat` (`"straw"` a farmer's small hat, `"wide"` a `StrawHat` as wide as a door), `sit` (legs straight out, the way a doll sits: put `position` 0.56 m × scale under the seat), `phase` |
+| `Villager` | The villager. One face, one eyebrow, one long nose, arms folded into one block. **There is exactly one face: do not add another** | `robe`, `scale` (`ADULT` 0.94, `CHILD` 0.7), `kid`, `walk` (metres), `lookAt` (a world point), `nod` `turn` `tilt`, `skin` (a colour: `"#5f9a4e"` makes a zombie villager), `hmm` 0–1, `strain` 0–1 (trying to get the arms out), `lean` (a bow), `hat` (`"straw"` a farmer's small hat, `"wide"` a `StrawHat` as wide as a door), `sit` (legs straight out, the way a doll sits: put `position` 0.56 m × scale under the seat), `phase`, `headwear`, `carry` (what lies on the folded sleeves), `eyes` (the pupil colour: `"#d82a1e"` for a zombie villager), `arms` (`{ l, r, hold, holdL }`: the two arms OUT of the sleeves, radians, 0 hangs, −1.5 straight out in front, −3 straight up; `hold` is put in the +X hand, `holdL` in the −X hand. **Only a zombie villager has arms out**: a villager's stay folded, so leave `arms` off for him. First used in `src/videos/in-this-town-my-brother-got-bitten/kit.tsx`) |
 | `ROBE` | Eight robe colours: `brown elder friend white smith farmer red blue`. The robe is the only way to tell two villagers apart, so give each named one their own | |
 | `villagerFace(p, scale?)`, `villagerChest(p, scale?)` | Where a villager's face and chest are, for the camera | |
 | `IronGolem` | The iron golem, 2.7 m tall | `walk`, `armR` / `armL` (radians: 0 hangs, −1.5 points ahead; leave out and they swing), `headPitch`, `headYaw`, `bow`, `flower`, `hat` (a `StrawHat` 1.7 m wide) |
@@ -158,6 +158,31 @@ What the moon film found out, so you do not find it out again:
 - **Light the place the story is about, and nothing else.** One `Moonlight` cone that moves is a character. A moon
   that lights everything evenly is weather.
 
+### With the shaders on
+
+Every film from *I Had Never Seen the Sun* on has `post: { shaders: true }` in `film.tsx` (the owner's instruction of
+2026-11-17; the chain is `src/engine/shaders.tsx`, explained in `Topics/Shared/SHADERS.md`). The template has the line.
+It gives the painted sky with its sun, bloom, tone mapping and the grade. Stills made on a laptop show it, so judge
+the look from stills as before. What it changes for staging, learnt on that film:
+
+- **Bright things bloom.** An emissive block at intensity 2 with a `Glow` beside it, near the lens, is a white blob
+  that covers the shot. Keep emissive under 1, and a lamp's light modest (power 2 to 3 at arm's length).
+- **A sunset look under a roof of leaves reads as plain day.** For a pink moment in a dark place keep
+  `overworld-night` and add a pink side light and pool of your own.
+- **Captions and bubbles stay crisp** as long as the bloom threshold stays above 1.0 (the default does).
+- **Use `dark` on every `Bubble`.** The white bubble blooms into a white blob in daylight. And its letters are dark
+  with a dark outline, so they close up into a block that cannot be read; the `dark` bubble has pale letters and reads
+  at any size. One or two words a bubble, scale 0.4 to 0.55; stack two bubbles for a longer line.
+- **A lit open doorway in full sun** (`Hut open`) blooms to white from across a street. Lay a plain brown block over it
+  for that shot.
+- **Rain by day is the look `overworld-rain`** (added to the engine with that film): grey cloud from edge to edge and
+  soft cool light. `overworld-storm` is bruise-purple with a warm low sun, and reads as a strange sunset, not as rain.
+  Keep `Rain` away from the lens (move its `center` off the camera, narrow its `area`): a streak a hand from the
+  camera blooms into a white bar.
+- The sun is in the sky: in `overworld-day` it is 14° west of north and 22° up, in `overworld-sunset` 11° west of
+  north and 9° up. A shot that says "there it was" has to point there (`yaw: 14, pitch: -20`).
+- A still takes about four times as long. Shoot in groups of thirty.
+
 ## Creatures — `creatures.tsx`
 
 Built for the monster-egg film. Any film may use them.
@@ -190,7 +215,7 @@ Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a w
 
 | Name | What it is | Its own props |
 |---|---|---|
-| `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs` |
+| `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs`, `armPitch` (`[left, right]`: 0 hangs, −1.5 straight ahead, −3 up), `headwear` (anything drawn on the head and moving with it: a helmet, a blindfold) |
 | `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1, `noArm` (the waving arm has come off: draw it yourself), `raise` 0–1 (the other arm held out in front), `headDrop` (metres the skull has fallen off the neck) |
 | `Creeper` | 1.6 m, no arms, four short legs, that face | `fuse` 0–1 (swells and flashes white), `color`. `mood="happy"` turns the mouth over |
 | `Spider` | 2 m across, under 1 m tall, glowing red eyes | `rear` 0–1 (front legs up), `color`, `eyes`. Wide: turn it three-quarters on in a tall frame |

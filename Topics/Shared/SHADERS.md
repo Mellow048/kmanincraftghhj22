@@ -18,7 +18,7 @@ post: { shaders: { bloom: 0.6, threshold: 1.25, vignette: 0.22, warmth: 0.45 } }
 1. **Sky dome** (outdoor looks only). A shader on a sphere that follows the camera: vertical gradient, haze
    band at the horizon, a sun disc with a halo. Colours live in `LOOKS` in `Look.tsx` as `sky: { top, horizon,
    bottom, sun, haze }`. `overworld-day`, `overworld-sunset`, `overworld-night`, `lantern-night`,
-   `overworld-storm`, `town-day`, `street-day` and `lava-shore` all have one.
+   `overworld-storm`, `overworld-rain`, `town-day`, `street-day` and `lava-shore` all have one.
 2. **Bloom** (`UnrealBloomPass`). Only genuinely over-bright things glow. The threshold is **above 1.0 on
    purpose**: a white caption is exactly 1.0 in linear light, so words stay crisp and the sun, torches and
    lanterns bloom. At 0.94 captions turned into fuzzy white blobs — do not go back there.
