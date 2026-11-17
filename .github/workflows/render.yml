@@ -115,6 +115,7 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
           SCALE: ${{ inputs.scale }}
+          CONCURRENCY: ${{ inputs.concurrency }}
           INDEX: ${{ matrix.index }}
           FROM: ${{ matrix.from }}
           TO: ${{ matrix.to }}
