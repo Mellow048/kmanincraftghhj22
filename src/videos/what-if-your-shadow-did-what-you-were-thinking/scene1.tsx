@@ -66,15 +66,17 @@ export const scene1 = storyScene(timing, {
     {
       // THE HOOK. The question over the one picture that explains it.
       cue: "1.if",
-      // THE HOOK. Off to the side and low, so the board behind him is a clean face: he fills a third of the frame and
-      // the shadow waving on the board fills the rest. A lens straight behind him puts his head exactly over it.
-      ...cam.push({ on: SPOT.at(-0.15, 1.30, -2.0), dist: 2.9, to: 2.5, yaw: 27, pitch: 1, fov: 44 }),
+      // THE HOOK, and it took three tries. `on` is what the lens LOOKS AT, so looking at the boy keeps him dead centre
+      // and the board behind him dead centre too - his head lands on the shadow's hand at every yaw. The lens now looks
+      // at the BOARD, still and close: the waving shadow fills frame one, and he is the small thing at the bottom edge.
+      // He is turned away, so we read the shadow - the wrong one of the two - first.
+      ...cam.push({ on: SPOT.at(-0.75, 2.05, -3.6), dist: 3.5, to: 3.1, yaw: 9, pitch: 2, fov: 40 }),
       zone: "class",
       note: "The question, over the picture that answers it: the teller standing in front of the board, and on the board behind him a flat black shadow with its arm up, waving. It is his size, it is in the right place, and it is doing the one thing he is not.",
       stage: (t) => (
         <>
           <Hero position={SPOT.at(0, 0, -2.0)} rotationY={NORTH + 0.35} animation="idle" face="calm" />
-          <Shadow at={WALL} arm={ease(ramp(t, 0.35, 0.8))} />
+          <Shadow at={WALL} arm={ease(ramp(t, 0.2, 0.7))} />
         </>
       ),
     },
