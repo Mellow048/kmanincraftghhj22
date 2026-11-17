@@ -32,6 +32,7 @@ export const film = defineFilm({
   title: "In This Town, I Live in a Monster Village",
   topic: "in-this-town",
   look: "overworld-day",
+  post: { shaders: true },
   audio: { src: "audio/in-this-town-monster-village/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },
   World,

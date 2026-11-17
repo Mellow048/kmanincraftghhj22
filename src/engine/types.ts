@@ -115,13 +115,63 @@ export type LookPreset =
   | "lantern-night"
   | "lava-shore"
   | "warm-room"
+  | "prom-night"
   | "void";
+
+/**
+ * A painted sky: vertical gradient, a horizon haze band and a sun disc bright
+ * enough for the bloom pass. Given to a look preset, this replaces the flat
+ * background colour. Colours are plain hex, so a preset stays readable.
+ */
+export type SkySettings = {
+  /** Straight up. */
+  top: string;
+  /** At the horizon line — the haze colour. */
+  horizon: string;
+  /** Below the horizon, if the camera ever tilts down that far. */
+  bottom?: string;
+  /** Sun / moon colour. */
+  sun?: string;
+  /** Direction of the sun from the camera, in world space. Defaults to the key light's position. */
+  sunDir?: [number, number, number];
+  /** Falloff of the halo: higher is a tighter halo. */
+  sunSize?: number;
+  /** Halo strength. */
+  sunPower?: number;
+  /** How much the haze band eats the gradient, 0–1. */
+  haze?: number;
+};
+
+/** The post-processing controls exposed to a film. */
+export type ShaderSettings = {
+  enabled?: boolean;
+  /** Bloom strength. 0.4–0.8 is a warm sunny day; 1.0+ starts to look like a game. */
+  bloom?: number;
+  /** Luminance above which pixels bloom. Lower = more of the sky glows. */
+  threshold?: number;
+  /** Bloom spread. */
+  radius?: number;
+  /** Darkening at the corners, 0–1. */
+  vignette?: number;
+  /** Colour saturation, 1 is neutral. */
+  saturation?: number;
+  /** Contrast around mid-grey, 1 is neutral. */
+  contrast?: number;
+  /** Warm highlights / cool shadows. 0 is neutral, 1 is a golden hour. */
+  warmth?: number;
+  /** Film grain, 0–0.03. */
+  grain?: number;
+  /** Lens fringing at the frame edges, 0–1. */
+  aberration?: number;
+};
 
 export type PostSettings = {
   /** Tone-mapping exposure. 1.0 is neutral. */
   exposure?: number;
-  /** Multiplier on every 3D glow card in the film. This is our bloom. */
+  /** Multiplier on every 3D glow card in the film. This is our fake bloom. */
   bloom?: number;
+  /** Real post: bloom, grade, vignette, grain. `true` for the defaults. */
+  shaders?: ShaderSettings | boolean;
 };
 
 export type FilmConfig = {

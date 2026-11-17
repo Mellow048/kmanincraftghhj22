@@ -1,0 +1,146 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-me-and-my-shadow-dont-get-along",
+  "mix": "public/audio/in-this-town-me-and-my-shadow-dont-get-along/mix.mp3",
+  "seconds": 116.1,
+  "built_from": {
+    "timing.json": "a9553d220a3da68e73added9cf27eb03428045e1",
+    "sound.json": "7b34fd47e0701789bcde1082bc8e20283cdd0c24",
+    "narration.mp3": "9f1b05221f00e43ba3430e189d3b758f7604def5"
+  },
+  "mix_sha1": "07f2600b4fa300a85fa6af2a3e4b49edef860f70",
+  "music_sections": [
+    {
+      "from": "1.copy",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.rule",
+      "mood": "town",
+      "at": 6.8
+    },
+    {
+      "from": "4.one",
+      "mood": "curious",
+      "at": 26.17
+    },
+    {
+      "from": "5.friend",
+      "mood": "playful",
+      "at": 30.3
+    },
+    {
+      "from": "7.jan",
+      "mood": "curious",
+      "at": 43.63
+    },
+    {
+      "from": "8.night",
+      "mood": "sneak",
+      "at": 50.43
+    },
+    {
+      "from": "9.night",
+      "mood": "playful",
+      "at": 60.53
+    },
+    {
+      "from": "9.mirror",
+      "mood": "tense",
+      "at": 62.4
+    },
+    {
+      "from": "11.stop",
+      "mood": "none",
+      "at": 83.13
+    },
+    {
+      "from": "12.ask",
+      "mood": "hope",
+      "at": 88.13
+    },
+    {
+      "from": "15.like",
+      "mood": "town",
+      "at": 112.77
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 10,
+  "measured": {
+    "musicUnderVoiceDb": 18.8,
+    "secondsWithoutMusic": 5.2,
+    "bedsUnderVoiceDb": 26.6,
+    "sfx": 136,
+    "sfxPerMinute": 70.3,
+    "sfxKinds": 29,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 45.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.3,
+    "voiceOverRestWorstDb": 3.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.4,
+        "t": 91.7,
+        "cue": "12.still",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 4.1,
+        "t": 17.5,
+        "cue": "3.mark",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.3,
+        "t": 49.4,
+        "cue": "7.mop",
+        "sounding": [
+          "step_wood",
+          "sting"
+        ]
+      },
+      {
+        "db": 4.4,
+        "t": 105.8,
+        "cue": "14.mine",
+        "sounding": [
+          "blip",
+          "chime",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 112.6,
+        "cue": "14.together",
+        "sounding": [
+          "chime",
+          "pop"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 97.7,
+        "cue": "13.follow",
+        "sounding": [
+          "ding",
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -1.1,
+    "limiterMaxDb": 1.1
+  },
+  "failures": []
+}

@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { Camera, pickShot } from "./Camera";
 import { Captions } from "./Captions";
 import { GlowProvider, Look } from "./Look";
+import { PostFX } from "./shaders";
 import type { FilmConfig, SceneDef, Shot } from "./types";
 import { clamp01 } from "./math";
 
@@ -134,6 +135,7 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
         <GlowProvider value={config.post?.bloom ?? 1}>
         <ActiveShotContext.Provider value={active}>
           <Look preset={active.shot.look ?? config.look} post={config.post} focus={active.shot.target} />
+          {config.post?.shaders ? <PostFX settings={config.post.shaders} /> : null}
           {config.World ? <config.World /> : null}
 
           {sequences.map(({ scene, index, from, durationInFrames }) => (
