@@ -1,0 +1,468 @@
+{
+ "film": "what-if-you-could-hear-every-unsaid-thing",
+ "README": "Sound sheet. Times are cues. Build: python3 scripts/sound.py build what-if-you-could-hear-every-unsaid-thing",
+ "music": {
+  "gain": -16,
+  "sections": [
+   {
+    "from": "1.hook",
+    "mood": "curious",
+    "why": "the question, and the man who never answers it"
+   },
+   {
+    "from": "2.first",
+    "mood": "explain",
+    "why": "school: the rule being learned"
+   },
+   {
+    "from": "3.friend",
+    "mood": "sad",
+    "why": "the friend who will not say it"
+   },
+   {
+    "from": "4.mum",
+    "mood": "sad",
+    "why": "the kitchen arithmetic"
+   },
+   {
+    "from": "5.dad",
+    "mood": "curious",
+    "why": "the four words, still withheld"
+   },
+   {
+    "from": "6.use",
+    "mood": "playful",
+    "why": "he starts collecting secrets"
+   },
+   {
+    "from": "7.cost",
+    "mood": "dark",
+    "why": "what it costs: the friend who moved"
+   },
+   {
+    "from": "8.close",
+    "mood": "none",
+    "why": "one held breath: the four words are heard properly with nothing under them"
+   },
+   {
+    "from": "9.night",
+    "mood": "sad",
+    "why": "the last night of it"
+   },
+   {
+    "from": "9.say",
+    "mood": "hope",
+    "why": "he answers out loud"
+   },
+   {
+    "from": "9.sub",
+    "mood": "hope",
+    "why": "ends on the lift"
+   }
+  ]
+ },
+ "beds": [
+  {
+   "from": "1.hook",
+   "to": "1.only",
+   "bed": "room"
+  },
+  {
+   "from": "2.first",
+   "to": "2.said",
+   "bed": "classroom"
+  },
+  {
+   "from": "3.friend",
+   "to": "3.why",
+   "bed": "classroom"
+  },
+  {
+   "from": "4.mum",
+   "to": "4.keep",
+   "bed": "room"
+  },
+  {
+   "from": "5.dad",
+   "to": "5.assume",
+   "bed": "room"
+  },
+  {
+   "from": "6.use",
+   "to": "7.late",
+   "bed": "classroom"
+  },
+  {
+   "from": "8.turn",
+   "to": "8.real",
+   "bed": "room"
+  },
+  {
+   "from": "9.night",
+   "to": "9.sub",
+   "bed": "room"
+  }
+ ],
+ "sfx": [
+  {
+   "cue": "1.hook",
+   "sfx": "swish",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "1.hook",
+   "sfx": "plink",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "1.mouth",
+   "sfx": "tick",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "1.mouth",
+   "sfx": "sparkle",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "1.rule",
+   "sfx": "blip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "1.rule",
+   "sfx": "zip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "1.only",
+   "sfx": "plink",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "1.only",
+   "sfx": "pop",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "2.first",
+   "sfx": "sparkle",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "2.first",
+   "sfx": "chime",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "2.maths",
+   "sfx": "zip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "2.maths",
+   "sfx": "tick",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "2.heard",
+   "sfx": "pop",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "2.heard",
+   "sfx": "blip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "2.said",
+   "sfx": "chime",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "2.said",
+   "sfx": "swish",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "3.friend",
+   "sfx": "tick",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "3.friend",
+   "sfx": "tick",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "3.almost",
+   "sfx": "blip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "3.almost",
+   "sfx": "blip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "3.heard",
+   "sfx": "swish",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "3.heard",
+   "sfx": "plink",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "3.why",
+   "sfx": "tick",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "3.why",
+   "sfx": "sparkle",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "4.mum",
+   "sfx": "blip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "4.mum",
+   "sfx": "zip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "4.money",
+   "sfx": "plink",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "4.money",
+   "sfx": "pop",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "4.smile",
+   "sfx": "sparkle",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "4.smile",
+   "sfx": "chime",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "4.keep",
+   "sfx": "zip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "4.keep",
+   "sfx": "tick",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "5.dad",
+   "sfx": "pop",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "5.dad",
+   "sfx": "blip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "5.door",
+   "sfx": "chime",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "5.door",
+   "sfx": "swish",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "5.words",
+   "sfx": "tick",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "5.words",
+   "sfx": "tick",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "5.assume",
+   "sfx": "blip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "5.assume",
+   "sfx": "blip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "6.use",
+   "sfx": "swish",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "6.use",
+   "sfx": "plink",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "6.quiet",
+   "sfx": "tick",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "6.quiet",
+   "sfx": "sparkle",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "6.hunt",
+   "sfx": "blip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "6.hunt",
+   "sfx": "zip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "6.cheap",
+   "sfx": "plink",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "6.cheap",
+   "sfx": "pop",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "7.cost",
+   "sfx": "sparkle",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "7.cost",
+   "sfx": "chime",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "7.weird",
+   "sfx": "zip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "7.weird",
+   "sfx": "tick",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "7.move",
+   "sfx": "pop",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "7.move",
+   "sfx": "blip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "7.late",
+   "sfx": "chime",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "7.late",
+   "sfx": "swish",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "8.turn",
+   "sfx": "tick",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "8.turn",
+   "sfx": "tick",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "8.close",
+   "sfx": "blip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "8.close",
+   "sfx": "blip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "8.four",
+   "sfx": "swish",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "8.four",
+   "sfx": "plink",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "8.real",
+   "sfx": "tick",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "8.real",
+   "sfx": "sparkle",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "9.night",
+   "sfx": "blip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "9.night",
+   "sfx": "zip",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "9.say",
+   "sfx": "plink",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "9.say",
+   "sfx": "pop",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "9.after",
+   "sfx": "sparkle",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "9.after",
+   "sfx": "chime",
+   "why": "the second half of the beat, so nothing sits alone"
+  },
+  {
+   "cue": "9.sub",
+   "sfx": "zip",
+   "why": "a beat of its own: a look, a decision, a step"
+  },
+  {
+   "cue": "9.sub",
+   "sfx": "tick",
+   "why": "the second half of the beat, so nothing sits alone"
+  }
+ ]
+}

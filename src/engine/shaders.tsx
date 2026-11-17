@@ -203,6 +203,9 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
   const cfg = resolve(settings);
+  /** A stable identity for the settings: a fresh object every render would rebuild
+   *  the whole composer, which leaks render targets and kills a long CI render. */
+  const cfgKey = cfg ? JSON.stringify(cfg) : "";
 
   const rig = useMemo(() => {
     if (!cfg) return null;
@@ -213,8 +216,10 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
     if (composer.renderTarget2) composer.renderTarget2.samples = 4;
 
     const render = new RenderPass(scene, camera);
+    // Bloom runs at half resolution: the pass blurs it anyway, and at 1080x1920
+    // in software GL the full-size chain was heavy enough to fail a CI render.
     const bloom = new UnrealBloomPass(
-      new THREE.Vector2(size.width, size.height),
+      new THREE.Vector2(Math.max(1, Math.round(size.width / 2)), Math.max(1, Math.round(size.height / 2))),
       cfg.bloom,
       cfg.radius,
       cfg.threshold,
@@ -231,7 +236,17 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
     composer.addPass(grade);
     grade.renderToScreen = true;
     return { composer, bloom, grade };
-  }, [gl, scene, camera, cfg, size.width, size.height]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gl, scene, camera, cfgKey, size.width, size.height]);
+
+  useEffect(() => {
+    if (!rig) return;
+    return () => {
+      rig.composer.dispose();
+      rig.bloom.dispose();
+      rig.grade.dispose();
+    };
+  }, [rig]);
 
   useEffect(() => {
     if (!rig) return;

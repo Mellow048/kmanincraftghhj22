@@ -25,6 +25,11 @@ on:
         required: false
         type: string
         default: ""
+      concurrency:
+        description: "Remotion concurrency. Lower it for films with heavy post-processing (2 is safe, 4 is fast)"
+        required: false
+        type: string
+        default: "4"
       commit_max_mb:
         description: "Size limit of the committed copy in MB (5-95). A bigger render is re-encoded to fit; the release keeps the full-quality file"
         required: false
@@ -80,6 +85,7 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
           SCALE: ${{ inputs.scale }}
+          CONCURRENCY: ${{ inputs.concurrency }}
         run: node scripts/render-plan.mjs "$COMPOSITION" --scale "$SCALE"
 
   render:
@@ -109,6 +115,7 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
           SCALE: ${{ inputs.scale }}
+          CONCURRENCY: ${{ inputs.concurrency }}
           INDEX: ${{ matrix.index }}
           FROM: ${{ matrix.from }}
           TO: ${{ matrix.to }}
@@ -119,11 +126,24 @@ jobs:
           if ! npx remotion render src/index.ts "$COMPOSITION" "out/chunk-$INDEX.mov" \
             --frames="$FROM-$TO" --scale="$SCALE" \
             --codec=h264 --crf=20 --audio-codec=pcm-16 --enforce-audio-track \
-            --concurrency=4 --gl=swangle --timeout=240000 2>&1 | tee render.log; then
+            --concurrency=$CONCURRENCY --gl=swangle --timeout=240000 2>&1 | tee render.log; then
             MSG=$(grep -v "Rendered\|Encoded\|Stitching" render.log | tail -c 2500 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
             echo "::error title=Chunk $INDEX (frames $FROM-$TO) failed::$MSG"
+            mkdir -p out
+            cp render.log "out/render-fail-$INDEX.log" || true
             exit 1
           fi
+
+      # The log of a failed chunk, committed to the branch: a sandbox that cannot download
+      # Actions logs can still read the error this way.
+      - name: Keep the failure log
+        if: failure() && github.ref_name != 'main'
+        run: |
+          git config user.name "render-bot"
+          git config user.email "render-bot@users.noreply.github.com"
+          git add -f out/render-fail-*.log 2>/dev/null || true
+          git commit -m "Render failure log [skip ci]" || true
+          git push || true
 
       - name: Hand the chunk to the join job
         uses: actions/upload-artifact@v4

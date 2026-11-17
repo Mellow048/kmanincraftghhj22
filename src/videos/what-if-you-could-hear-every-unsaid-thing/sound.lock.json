@@ -1,0 +1,141 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-you-could-hear-every-unsaid-thing",
+  "mix": "public/audio/what-if-you-could-hear-every-unsaid-thing/mix.mp3",
+  "seconds": 81.2333,
+  "built_from": {
+    "timing.json": "d56936528f9b54d4c4b327bab1afc30515324a0d",
+    "sound.json": "e4fe26632c8d6ba175bbca54eaee732534bb1a6a",
+    "narration.mp3": "de6939fd20d4822e3ee1b31470386e2f736b51d1"
+  },
+  "mix_sha1": "edd02053ff086d18f40da3f9d47b905bfe2549be",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "2.first",
+      "mood": "explain",
+      "at": 8.53
+    },
+    {
+      "from": "3.friend",
+      "mood": "sad",
+      "at": 16.47
+    },
+    {
+      "from": "4.mum",
+      "mood": "sad",
+      "at": 24.17
+    },
+    {
+      "from": "5.dad",
+      "mood": "curious",
+      "at": 31.9
+    },
+    {
+      "from": "6.use",
+      "mood": "playful",
+      "at": 41.67
+    },
+    {
+      "from": "7.cost",
+      "mood": "dark",
+      "at": 50.03
+    },
+    {
+      "from": "8.close",
+      "mood": "none",
+      "at": 63.9
+    },
+    {
+      "from": "9.night",
+      "mood": "sad",
+      "at": 71.03
+    },
+    {
+      "from": "9.say",
+      "mood": "hope",
+      "at": 73.3
+    },
+    {
+      "from": "9.sub",
+      "mood": "hope",
+      "at": 79.7
+    }
+  ],
+  "beds": 8,
+  "measured": {
+    "musicUnderVoiceDb": 18.5,
+    "secondsWithoutMusic": 7.4,
+    "bedsUnderVoiceDb": 30.4,
+    "sfx": 72,
+    "sfxPerMinute": 53.2,
+    "sfxKinds": 8,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 36.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.2,
+    "voiceOverRestWorstDb": 6.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 6.1,
+        "t": 50.4,
+        "cue": "7.cost",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 43.7,
+        "cue": "6.quiet",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 28.8,
+        "cue": "4.smile",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 7.7,
+        "t": 15.4,
+        "cue": "2.said",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 8.3,
+        "t": 8.6,
+        "cue": "2.first",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 8.7,
+        "t": 77.0,
+        "cue": "9.after",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -1.6,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}
