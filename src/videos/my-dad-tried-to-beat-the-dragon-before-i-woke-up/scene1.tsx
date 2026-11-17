@@ -325,14 +325,14 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "4.torch",
-      ...cam.push({ on: at(PLACE.shaft, 0.3, -2.7, -1.15), dist: 4.0, to: 3.4, yaw: -20, pitch: 8, fov: 42 }),
+      ...cam.push({ on: at(PLACE.shaft, -0.2, -2.7, -0.3), dist: 4.0, to: 3.4, yaw: -20, pitch: 8, fov: 42 }),
       zone: "shaft",
       look: "overworld-night",
       note: "A hand placing a torch on the wall, every ten blocks, each one a decision not to be frightened. The flame is the warmest thing in the film so far.",
       stage: () => (
         <>
           <Shaft position={PLACE.shaft} depth={6} />
-          <Torch position={at(PLACE.shaft, -0.62, -2.6, -1.15)} light={4} seed={2} />
+          <Torch position={at(PLACE.shaft, -0.62, -2.5, -0.62)} light={7} seed={2} />
         </>
       ),
     },
