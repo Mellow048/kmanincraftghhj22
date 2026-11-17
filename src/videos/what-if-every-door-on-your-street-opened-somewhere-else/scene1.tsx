@@ -321,13 +321,14 @@ export const scene1 = storyScene(timing, {
     {
       cue: "3.good",
       // Best month of his life, and the room he says it in.
-      ...cam.push({ on: [0, 1.20, -2.60], dist: 4.21, to: 3.61, yaw: 3, pitch: 1, fov: 46 }),
+      // Also H(): the room is at hall z 125.1, so a lens at z -2.60 was half a street away and looking at nothing.
+      ...cam.push({ on: H(-0.95, 1.15, 1.80), dist: 2.20, to: 1.45, yaw: 120, pitch: 4, fov: 62 }),
       zone: "bed",
       look: "overworld-night",
       note: "The whole room: the bed, the marks, the window, and him sitting on the bed grinning. It is a good room. That is the point of it.",
       stage: () => (
         <>
-          <Hero position={[-0.95, 0.68, 1.80]} rotationY={EAST} animation="sit" face="grin" />
+          <Hero position={H(-0.95, 0.68, 1.80)} rotationY={EAST} animation="sit" face="grin" />
         </>
       ),
     },
