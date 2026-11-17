@@ -7,7 +7,6 @@ import { film as superpowerAt18 } from "./videos/in-this-town-superpower-at-18/f
 import { film as superpowerAt18Part2 } from "./videos/in-this-town-superpower-at-18-part-2/film";
 import { film as inThisTownNobodyLookedAtTheMoon } from "./videos/in-this-town-nobody-looked-at-the-moon/film";
 import { film as whatIfYouCouldSeeWhoHadACrushOnYou } from "./videos/what-if-you-could-see-who-had-a-crush-on-you/film";
-import { film as whyDoesBreadCostMoreEveryYear } from "./videos/why-does-bread-cost-more-every-year/film";
 import { film as monsterVillage } from "./videos/in-this-town-monster-village/film";
 import { film as inThisTownILiveInAMonsterVillagePart2 } from "./videos/in-this-town-monster-village-part-2/film";
 import { film as inThisTownEveryoneGetsARobotAt18 } from "./videos/in-this-town-robot-at-18/film";
@@ -19,6 +18,7 @@ import { film as inThisTownMonsterVillagePart4 } from "./videos/in-this-town-mon
 import { film as inThisTownTheFastestKidWinsPart2 } from "./videos/in-this-town-the-fastest-kid-wins-part-2/film";
 import { film as inThisTownMeAndMyShadowDontGetAlong } from "./videos/in-this-town-me-and-my-shadow-dont-get-along/film";
 import { film as whatIfYouCouldSmellALie } from "./videos/what-if-you-could-smell-a-lie/film";
+import { film as myDadHasntLeftTheDoorway } from "./videos/my-dad-hasnt-left-the-doorway-in-six-years/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -34,7 +34,6 @@ export const FILMS = [
   superpowerAt18Part2,
   inThisTownNobodyLookedAtTheMoon,
   whatIfYouCouldSeeWhoHadACrushOnYou,
-  whyDoesBreadCostMoreEveryYear,
   monsterVillage,
   inThisTownILiveInAMonsterVillagePart2,
   inThisTownEveryoneGetsARobotAt18,
@@ -46,4 +45,5 @@ export const FILMS = [
   inThisTownTheFastestKidWinsPart2,
   inThisTownMeAndMyShadowDontGetAlong,
   whatIfYouCouldSmellALie,
+  myDadHasntLeftTheDoorway,
 ];

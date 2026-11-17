@@ -3,44 +3,43 @@
   "name": "Stories",
   "folder": "Topics/Stories",
   "profile": "story",
-  "state": "PROVISIONAL",
+  "state": "MEASURED",
   "provisional": {
     "why": "The owner asked for this topic to be built before its reference: \"reference which we will do later once youre done\". So the numbers in `film` and `sound` are NOT measured from anything. They are a first setting, chosen so that the lint has something to hold a film to.",
     "from": "The camera is the framework's own Zack D grammar (docs/CAMERA-BIBLE.md: one world, a camera that never teleports). The voice, the captions and the sound are the story pipeline's (docs/STORY-FILMS.md). The subjects the owner named: money lessons, and what inflation is.",
     "whenTheReferenceArrives": "Put it in Topics/Explainer/reference/<name>/, measure it (length, words, words a minute, seconds per stop, hard cuts, sound), and replace every number below that it disagrees with. Then delete this block and set `state` to \"MEASURED\"."
   },
   "camera": {
-    "builder": "flightScene",
-    "continuous": true,
-    "guard": "unbroken",
-    "maxHardCuts": 2,
-    "note": "Scenes are built with flightScene(): one stop for each line, flown to. film.tsx calls unbroken(), which throws if the camera teleports. A film may declare at most `maxHardCuts` shots with `cut: true`."
+    "builder": "storyScene",
+    "guard": "",
+    "maxHardCuts": 999,
+    "note": "The reference cuts every 1-2 seconds (Topics/Stories/REFERENCE-STUDY.md). Shots are 1-3 s, wide/medium/close in rotation, and a hard cut is the normal transition. No camera guard: this topic cuts."
   },
   "film": {
     "seconds": [
-      30,
-      58
+      50,
+      75
     ],
-    "hardMaxSeconds": 60,
-    "hardMinSeconds": 20,
-    "hardMinWords": 70,
+    "hardMaxSeconds": 78,
+    "hardMinSeconds": 40,
+    "hardMinWords": 110,
     "shotSeconds": [
       0.8,
       7.0
     ],
     "medianShotSeconds": [
-      1.8,
-      4.0
+      1.1,
+      3.2
     ],
     "wordsPerMinute": [
       200,
       268
     ],
     "words": [
-      110,
-      250
+      130,
+      300
     ],
-    "maxWordsPerShot": 18,
+    "maxWordsPerShot": 20,
     "lastLineContains": "subscribe",
     "captions": true
   },
