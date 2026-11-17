@@ -25,14 +25,14 @@ export const scenes = storyScene(timing, {
       ...cam.push({ on: A("room", 0, 1.3, 2.1), dist: 3.4, to: 3.1, yaw: 186, pitch: 3, fov: 50 }),
       look: WARM,
       note: "His father in the doorway, from inside the room: the man who has said the same nothing every night.",
-      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />,
+      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />,
     },
     {
       cue: "1.mouth",
       ...cam.push({ on: A("room", -0.02, 1.55, 2.12), dist: 2.0, to: 1.9, yaw: 178, pitch: 2, fov: 38 }),
       look: WARM,
       note: "Close on a mouth that stays shut. The title is a contradiction and this is the proof of it.",
-      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />,
+      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />,
     },
     {
       cue: "1.rule",
@@ -68,37 +68,37 @@ export const scenes = storyScene(timing, {
       note: "The classroom wide, the teacher at the front, the boy at his desk with a test in front of him.",
       stage: () => (
         <>
-          <Teacher position={A("class", 0.2, 0, -2.4)} rotationY={Math.PI} animation="talk" face="calm" />
-          <Hero position={A("class", -0.6, 0, 1.4)} rotationY={0} animation="sit" face="calm" />
+          <Teacher position={A("class", 0.2, 0, -2.4)} rotationY={0} animation="talk" face="calm" />
+          <Hero position={A("class", -0.6, 0, 1.4)} rotationY={Math.PI} animation="sit" face="calm" />
           <Classmate who={2} position={A("class", 1.2, 0, 1.4)} rotationY={0} animation="sit" face="calm" />
         </>
       ),
     },
     {
       cue: "2.maths",
-      ...cam.push({ on: A("class", 0.2, 1.45, -2.4), dist: 2.9, to: 2.75, yaw: 168, pitch: 2, fov: 42 }),
+      ...cam.push({ on: A("class", 0.2, 1.45, -2.4), dist: 2.9, to: 2.75, yaw: 12, pitch: 2, fov: 42 }),
       look: DAY,
       note: "Her, looking down at the paper, already deciding. The whole film turns on a teacher's silence.",
-      stage: () => <Teacher position={A("class", 0.2, 0, -2.4)} rotationY={Math.PI} animation="idle" face="calm" headPitch={0.3} />,
+      stage: () => <Teacher position={A("class", 0.2, 0, -2.4)} rotationY={0} animation="idle" face="calm" headPitch={0.3} />,
     },
     {
       cue: "2.heard",
-      ...cam.push({ on: A("class", 0.2, 1.75, -2.2), dist: 2.6, to: 2.45, yaw: 170, pitch: 3, fov: 42 }),
+      ...cam.push({ on: A("class", 0.2, 1.75, -2.2), dist: 2.6, to: 2.45, yaw: 10, pitch: 3, fov: 42 }),
       look: DAY,
       note: "The sentence she did not say, grey in the air over her head, and nobody else in the room reacts to it.",
       stage: () => (
         <>
-          <Teacher position={A("class", 0.2, 0, -2.4)} rotationY={Math.PI} animation="idle" face="calm" />
+          <Teacher position={A("class", 0.2, 0, -2.4)} rotationY={0} animation="idle" face="calm" />
           <Unsaid text="THIS KID IS GOING TO FAIL" at={A("class", 0.2, 2.2, -2.3)} from={0.2} />
         </>
       ),
     },
     {
       cue: "2.said",
-      ...cam.push({ on: A("class", -0.6, 1.35, 1.4), dist: 2.5, to: 2.4, yaw: 4, pitch: 3, fov: 40 }),
+      ...cam.push({ on: A("class", -0.6, 1.35, 1.4), dist: 2.5, to: 2.4, yaw: 178, pitch: 3, fov: 40 }),
       look: DAY,
       note: "The boy, nine years old, taking it without a word. He has already learned the only safe answer.",
-      stage: () => <Hero position={A("class", -0.6, 0, 1.4)} rotationY={0} animation="sit" face="sad" />,
+      stage: () => <Hero position={A("class", -0.6, 0, 1.4)} rotationY={Math.PI} animation="sit" face="sad" />,
     },
 
     // ---------------------------------------------------------------- 03 the friend
@@ -155,34 +155,34 @@ export const scenes = storyScene(timing, {
     // ---------------------------------------------------------------- 04 the kitchen
     {
       cue: "4.mum",
-      ...cam.push({ on: A("kitchen", 0, 1.15, 0.6), dist: 4.2, to: 3.9, yaw: 168, pitch: 6, fov: 52 }),
+      ...cam.push({ on: A("kitchen", 0, 1.15, 0.6), dist: 4.2, to: 3.9, yaw: 14, pitch: 6, fov: 52 }),
       look: WARM,
       note: "The kitchen: one lamp, one table, a mother standing at the counter with a bill in her hand.",
       stage: () => (
         <>
-          <Mum position={A("kitchen", -0.9, 0, -1.6)} rotationY={Math.PI} animation="idle" face="smile" />
+          <Mum position={A("kitchen", -0.9, 0, -1.6)} rotationY={0} animation="idle" face="smile" />
           <Hero position={A("kitchen", 1.1, 0, 0.8)} rotationY={-0.5} animation="sit" face="calm" />
         </>
       ),
     },
     {
       cue: "4.money",
-      ...cam.push({ on: A("kitchen", -0.9, 1.5, -1.6), dist: 2.5, to: 2.4, yaw: 172, pitch: 2, fov: 40 }),
+      ...cam.push({ on: A("kitchen", -0.9, 1.5, -1.6), dist: 2.5, to: 2.4, yaw: 10, pitch: 2, fov: 40 }),
       look: WARM,
       note: "Her face doing arithmetic, and the sentence she does not say about it, every month, in this room.",
       stage: () => (
         <>
-          <Mum position={A("kitchen", -0.9, 0, -1.6)} rotationY={Math.PI} animation="idle" face="sad" />
+          <Mum position={A("kitchen", -0.9, 0, -1.6)} rotationY={0} animation="idle" face="sad" />
           <Unsaid text="WE CANT AFFORD IT" at={A("kitchen", -0.9, 1.95, -1.6)} from={0.4} />
         </>
       ),
     },
     {
       cue: "4.smile",
-      ...cam.push({ on: A("kitchen", -0.9, 1.45, -1.5), dist: 2.2, to: 2.1, yaw: 176, pitch: 1, fov: 38 }),
+      ...cam.push({ on: A("kitchen", -0.9, 1.45, -1.5), dist: 2.2, to: 2.1, yaw: 8, pitch: 1, fov: 38 }),
       look: WARM,
       note: "The smile arriving a half second later, on top of the sentence. This is the whole trick of parents.",
-      stage: () => <Mum position={A("kitchen", -0.9, 0, -1.6)} rotationY={Math.PI} animation="talk" face="smile" />,
+      stage: () => <Mum position={A("kitchen", -0.9, 0, -1.6)} rotationY={0} animation="talk" face="smile" />,
     },
     {
       cue: "4.keep",
@@ -203,14 +203,14 @@ export const scenes = storyScene(timing, {
       ...cam.push({ on: A("room", 0, 1.35, 1.9), dist: 3.2, to: 3.0, yaw: 182, pitch: 3, fov: 48 }),
       look: WARM,
       note: "Back to the doorway, and this time the night behind him is calm: the same man, the same silence.",
-      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />,
+      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />,
     },
     {
       cue: "5.door",
       ...cam.push({ on: A("room", 0, 1.3, 1.6), dist: 2.9, to: 2.8, yaw: 196, pitch: 4, fov: 46 }),
       look: WARM,
       note: "His shoulder in the door frame, from the side: six years of standing exactly there, deciding.",
-      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />,
+      stage: () => <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />,
     },
     {
       cue: "5.words",
@@ -219,7 +219,7 @@ export const scenes = storyScene(timing, {
       note: "Four grey words in the air, unreadable from this side: the film refuses to let the audience have them.",
       stage: () => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />
+          <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />
           <Unsaid text="• • • •" at={A("room", 0.1, 1.95, 2.05)} from={0.2} height={0.16} />
         </>
       ),
@@ -334,7 +334,7 @@ export const scenes = storyScene(timing, {
       note: "The bedroom again, the door full of his father, and the boy walking closer than he ever has.",
       stage: (t) => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />
+          <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />
           <Hero position={A("room", 0, 0, lerp(1.2, 1.7, ramp(t, 0, 1.6)))} rotationY={0} animation="walk" face="uneasy" />
         </>
       ),
@@ -346,7 +346,7 @@ export const scenes = storyScene(timing, {
       note: "The back of his father's head at arm's length. Close enough, this time, to hear the whole sentence.",
       stage: () => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />
+          <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />
           <Hero position={A("room", 0.15, 0, 1.55)} rotationY={0} animation="idle" face="uneasy" headPitch={-0.1} />
         </>
       ),
@@ -358,7 +358,7 @@ export const scenes = storyScene(timing, {
       note: "The sentence in full, grey above him: four words, and not one of them thanks.",
       stage: () => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={0} animation="idle" face="bearded" />
+          <Dad position={A("room", 0, 0, 2.15)} rotationY={Math.PI} animation="idle" face="bearded" />
           <Unsaid text="DO YOU STILL NEED ME" at={A("room", 0, 2.05, 2.02)} from={0.5} height={0.14} />
         </>
       ),
@@ -409,7 +409,7 @@ export const scenes = storyScene(timing, {
       note: "His father turning in the doorway, and the grey words gone out of the air between them.",
       stage: (t) => (
         <>
-          <Dad position={A("room", 0, 0, 2.15)} rotationY={lerp(0, Math.PI * 0.92, ramp(t, 0.3, 1.4))} animation="idle" face="smile" />
+          <Dad position={A("room", 0, 0, 2.15)} rotationY={lerp(0.15, Math.PI, ramp(t, 0.3, 1.4))} animation="idle" face="smile" />
           <Hero position={A("room", 0.05, 0, 1.5)} rotationY={0} animation="idle" face="smile" />
         </>
       ),
