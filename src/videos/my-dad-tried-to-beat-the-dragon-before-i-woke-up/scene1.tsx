@@ -86,7 +86,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.never",
       cut: 1.75,
-      ...cam.push({ on: [DAD_AT[0] + 0.1, 0.85, DAD_AT[2] + 0.5], dist: 1.15, to: 0.95, yaw: -22, pitch: 14, fov: 34 }),
+      ...cam.push({ on: [DAD_AT[0] + 0.1, 0.85, DAD_AT[2] + 0.55], dist: 1.75, to: 1.45, yaw: -22, pitch: 16, fov: 34 }),
       zone: "room",
       look: "ward-night",
       note: "The second half of the line is the proof: one finger pressing the mouse, over and over, the way you would knock on a door. Nothing in the game responds.",
@@ -592,7 +592,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "8.portal",
-      ...cam.push({ on: at(PLACE.stronghold, 0, 0.6, 0), dist: 5.6, to: 4.2, yaw: 0, pitch: 12, fov: 46 }),
+      ...cam.push({ on: at(PLACE.stronghold, 0, 0.6, 0), dist: 4.4, to: 3.6, yaw: 0, pitch: 12, fov: 46 }),
       zone: "stronghold",
       look: "overworld-sunset",
       note: "The portal room, and twelve eyes going into twelve slots: the grid from the second beat, full at last. Breakfast light comes in from somewhere off frame — it is morning and they have been up all night.",

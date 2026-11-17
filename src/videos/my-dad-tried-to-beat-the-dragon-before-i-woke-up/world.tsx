@@ -18,10 +18,10 @@ const Sets: React.FC = () => (
   <>
     {/* ---- room: the bedroom where he starts ---- */}
     <group name="set-room">
-      <Vox kind="planks" position={at(PLACE.room, 0, -0.1, 0)} size={[9, 0.2, 8]} />
-      <Vox kind="planks" position={at(PLACE.room, 0, 1.4, -3.6)} size={[9, 3.2, 0.2]} />
-      <Vox kind="planks" position={at(PLACE.room, -4.3, 1.4, 0)} size={[0.2, 3.2, 8]} />
-      <Vox kind="wool" position={at(PLACE.room, 0, 1.4, 3.9)} size={[9, 3.2, 0.2]} tint="#cfc6b4" />
+      <Vox kind="planks" position={at(PLACE.room, 0, -0.1, 0)} size={[9, 0.2, 10]} />
+      <Vox kind="planks" position={at(PLACE.room, 0, 1.4, -4.9)} size={[9, 3.2, 0.2]} />
+      <Vox kind="planks" position={at(PLACE.room, -4.3, 1.4, 0)} size={[0.2, 3.2, 10]} />
+      <Vox kind="wool" position={at(PLACE.room, 0, 1.4, 4.9)} size={[9, 3.2, 0.2]} tint="#cfc6b4" />
       {/* the window: night outside, so the room stays cold */}
       <Block position={at(PLACE.room, 4.2, 1.9, -1.2)} size={[0.08, 1.1, 1.6]} color="#0b1430" emissive="#1b2a5c" emissiveIntensity={0.5} castShadow={false} />
       {/* the bed he never gets into */}
@@ -34,7 +34,15 @@ const Sets: React.FC = () => (
 
     {/* ---- shaft: four hundred blocks straight down ---- */}
     <group name="set-shaft">
-      <Vox kind="grass" position={at(PLACE.shaft, 0, -0.1, 0)} size={[14, 0.2, 14]} />
+      {/* the ground, in four slabs: the hole in the middle is the whole point of the set */}
+      <Vox kind="grass" position={at(PLACE.shaft, -4.15, -0.1, 0)} size={[5.7, 0.2, 14]} />
+      <Vox kind="grass" position={at(PLACE.shaft, 4.15, -0.1, 0)} size={[5.7, 0.2, 14]} />
+      <Vox kind="grass" position={at(PLACE.shaft, 0, -0.1, -4.15)} size={[2.6, 0.2, 5.7]} />
+      <Vox kind="grass" position={at(PLACE.shaft, 0, -0.1, 4.15)} size={[2.6, 0.2, 5.7]} />
+      <Vox kind="dirt" position={at(PLACE.shaft, -4.15, -0.5, 0)} size={[5.7, 0.6, 14]} />
+      <Vox kind="dirt" position={at(PLACE.shaft, 4.15, -0.5, 0)} size={[5.7, 0.6, 14]} />
+      <Vox kind="dirt" position={at(PLACE.shaft, 0, -0.5, -4.15)} size={[2.6, 0.6, 5.7]} />
+      <Vox kind="dirt" position={at(PLACE.shaft, 0, -0.5, 4.15)} size={[2.6, 0.6, 5.7]} />
       <Shaft position={PLACE.shaft} depth={6} />
       <Tree position={at(PLACE.shaft, -4.2, 0, -3.4)} height={4.2} />
       <Tree position={at(PLACE.shaft, 4.6, 0, -2.2)} height={3.4} leaf="#3a6f28" />
