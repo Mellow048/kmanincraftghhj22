@@ -1,8 +1,8 @@
-head-before: ea8ccbb72022eae54f30ca6fd210fb94ff109bac
+head-before: 360f9af1ae7767619324e17feae00cf0fe4939cf
 error: cannot pull with rebase: You have unstaged changes.
 error: Please commit or stash them.
 rebase-failed
 To https://github.com/Mellow048/kmanincraftghhj22
-   2dd7faf..ea8ccbb  HEAD -> arena/1a8f761c-kmanincraftghhj22
+   aacf99f..360f9af  HEAD -> arena/1a8f761c-kmanincraftghhj22
 push-ok
-remote-after: ea8ccbb72022eae54f30ca6fd210fb94ff109bac	refs/heads/arena/1a8f761c-kmanincraftghhj22
+remote-after: 360f9af1ae7767619324e17feae00cf0fe4939cf	refs/heads/arena/1a8f761c-kmanincraftghhj22
