@@ -68,6 +68,13 @@ down. So:
 - A recorded film that is too long loses whole lines with `python3 scripts/trim-narration.py <film> <cue.id> …`
   (no new recording), then their shots and their rows in `sound.json`. Look at both sides of every join on stills.
 
+### Read the master prompt first, every time
+
+`Topics/InThisTown/MASTERPROMPT.md` is the owner's own brief for every In This Town film (2026-11-17): the principles
+of Monster Village part 1, the six-stage workflow, and the eleven things each film must be delivered with. **Read it at
+the start of every session and before every film, and again before reviewing one.** A finished film is reviewed against
+its Stage 6 list on frames taken from the rendered mp4, and the result is written to `src/videos/<film>/REVIEW.md`.
+
 ### Read the owner's notes first
 
 `Topics/InThisTown/OWNER.md` is what the owner likes, what reviews of his films said, and the two rules that came out

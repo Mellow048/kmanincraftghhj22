@@ -1,5 +1,7 @@
 # What the owner likes, and what the channel has learned
 
+**Read `MASTERPROMPT.md` first, every time: it is the owner's brief for every film (2026-11-17).** Then this.
+
 **Read this before you write a script or a shot.** It is the owner's taste and the feedback his films have had, in one
 place. `SCRIPT.md` and `SHOTS.md` are how the reference channel does it; this file is how *he* wants it, and where the
 two disagree, this file wins. Add to it every time he says what he liked or did not like. Date every entry. Never
@@ -11,6 +13,7 @@ delete one unless he takes it back.
 |---|---|
 | 2026-11-14 | 11+ subscribers. The two superpower films: about 1.3k views each, 873–875 engaged viewers, 63–65% stayed to watch. |
 | 2026-11-15 | **Monster Village part 1 reached about 5k views**, his best by far, and YouTube kept pushing it. He does not know why: "i have no idea what i did there". He wants more like it. The study of why, and the recipe that came out of it, are in [`reference/monster-village/README.md`](reference/monster-village/README.md), "Why this one travelled". |
+| 2026-11-17 | **Monster Village part 1 passed 15,000 views**: "ive never had that before". Export at 7,047 views: 178.33 hours watched, about 91 s watched per view, 21 subscribers from it, 81.1% stayed to watch. He wrote `MASTERPROMPT.md` from it and wants every film, finished or not, reviewed against it on the rendered mp4 and remastered where it falls short. He is the final tester, but he is not always there: **look at the frames yourself and fix what you see before he has to.** |
 | 2026-11-14 | His target: **70% or more stay to watch**. His words: it "will unlock more viewers"; "just a small adjustment and we are near to getting out of that 1k view jail". |
 
 The format stays. An outside review he trusts said to keep this format and keep improving it, and he agrees. Do not
