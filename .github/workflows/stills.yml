@@ -80,10 +80,10 @@ jobs:
         run: |
           # Somebody may have pushed while the stills rendered: take their commits first, or the push is refused
           # and ten minutes of frames are lost.
-          git pull --rebase origin "${REF_NAME}" > ../push-proof.txt 2>&1 || echo "rebase-failed" >> ../push-proof.txt
-          git rev-parse HEAD >> ../push-proof.txt
-          git push origin "HEAD:${REF_NAME}" >> ../push-proof.txt 2>&1 || echo "push-failed" >> ../push-proof.txt
-          git ls-remote origin "refs/heads/${REF_NAME}" >> ../push-proof.txt 2>&1
+          git pull --rebase origin "${REF_NAME}" > out/stills/push-proof.txt 2>&1 || echo "rebase-failed" >> out/stills/push-proof.txt
+          git rev-parse HEAD >> out/stills/push-proof.txt
+          git push origin "HEAD:${REF_NAME}" >> out/stills/push-proof.txt 2>&1 || echo "push-failed" >> out/stills/push-proof.txt
+          git ls-remote origin "refs/heads/${REF_NAME}" >> out/stills/push-proof.txt 2>&1
 
       - name: Publish release assets
         uses: softprops/action-gh-release@v2
@@ -96,7 +96,5 @@ jobs:
             - Composition: `${{ inputs.composition }}`
             - Frames: `${{ inputs.frames }}`
             - Commit: `${{ github.sha }}`
-          files: |
-            out/stills/*.png
-            push-proof.txt
+          files: "out/stills/*"
           token: ${{ secrets.GITHUB_TOKEN }}
