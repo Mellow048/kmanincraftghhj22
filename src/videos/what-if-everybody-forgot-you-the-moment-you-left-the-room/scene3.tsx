@@ -169,17 +169,17 @@ export const scene3 = storyScene(timing, {
       // The last frame. Three things have to be true at once: he faces the lens (he was turned away at 0.33 rad
       // when the lens is on his other side), the person at the gate is visible and small, and the sign is in frame.
       // The sign was hung at x -2.0, i.e. two metres to his left and outside a 50-degree frame at this range.
-      // Solved: hero faces 3.01 rad. The sign was at x -1.05, z +2.9 — 22° off the lens axis, i.e. outside the
-      // 16° half-angle of a 54° frame: it was clipped by the right edge in the finished render. Now at x -0.65,
-      // z +3.4: 9° off axis, 1.28 m wide in a 2.29 m frame, so it reads whole above his shoulder.
-      ...cam.push({ on: [24.20, 1.30, 64.60], dist: 5.20, to: 4.65, yaw: 178, pitch: 0, fov: 54 }),
+      // Solved by projection, not by eye. The sign was clipped twice: at x -1.05 it was 22 deg off the lens axis, and at
+      // x -0.65 its right end reached 1.19 of a 1.0 NDC half-frame. Its corners now project to -0.49 and +0.36 with the
+      // hero's face at 0.00, so the whole 1.33 m sign sits above and to the left of him inside a 60 deg frame.
+      ...cam.push({ on: [24.20, 1.30, 64.60], dist: 5.20, to: 4.65, yaw: 178, pitch: 0, fov: 60 }),
       zone: "drive",
       note: "The street, empty except for one person at the gate, and the sign.",
       stage: (_t) => (
         <>
           <Hero position={DRIVE.at(0.1, 0, 1.6)} rotationY={3.01} animation="idle" face="wow" />
           <Player who={11} position={DRIVE.at(1.6, 0, 4.2)} rotationY={SOUTH} animation="idle" />
-          <SubscribeSign position={DRIVE.at(-0.65, 2.10, 3.40)} rotationY={NORTH + 0.2} scale={0.78} tilt={0.03} />
+          <SubscribeSign position={DRIVE.at(0.00, 2.30, 3.60)} rotationY={NORTH + 0.2} scale={0.78} tilt={0.03} />
         </>
       ),
     },
