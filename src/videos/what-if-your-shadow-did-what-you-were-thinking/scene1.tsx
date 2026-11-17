@@ -77,7 +77,9 @@ export const scene1 = storyScene(timing, {
       // cannot see, from any angle, because `on` is the look point. So the hook is not "him and his shadow" - it is
       // the shadow ALONE, a metre and a half to the right of him, waving at nothing. That is also the better image:
       // frame one is a hand that is not doing what its owner is doing.
-      ...cam.push({ on: SPOT.at(1.75, 1.05, -3.885), dist: 2.5, to: 2.2, yaw: 6, pitch: 1, fov: 40 }),
+      // Stand it in the gap between the front desk row and the board (z ~ -1.8) and put it up at chest height looking
+      // slightly down, or the desks fill the bottom third and the board's bottom rail cuts the shadow's head off.
+      ...cam.push({ on: SPOT.at(1.75, 0.88, -3.885), dist: 2.15, to: 1.95, yaw: 8, pitch: 14, fov: 44 }),
       zone: "class",
       note: "The question, over the picture that answers it: the teller standing in front of the board, and on the board behind him a flat black shadow with its arm up, waving. It is his size, it is in the right place, and it is doing the one thing he is not.",
       stage: (t) => (
