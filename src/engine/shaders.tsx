@@ -171,9 +171,11 @@ export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   // Tuned against a still render: 0.8 / 0.55 melted white sleeves and skin.
   // Bloom is now only for things that are actually light — the sun, torches,
   // lanterns, glow cards — not for pale materials in a bright room.
-  bloom: 0.34,
-  threshold: 0.94,
-  radius: 0.55,
+  bloom: 0.6,
+  // Threshold is in linear light, where a white caption is exactly 1.0 and the
+  // sun disc is far above it. Set above 1 so words stay crisp and only light blooms.
+  threshold: 1.25,
+  radius: 0.6,
   vignette: 0.22,
   saturation: 1.10,
   contrast: 1.03,
