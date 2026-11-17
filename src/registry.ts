@@ -27,6 +27,8 @@ import { film as inThisTownAStrangerMovedIntoMyHouse } from "./videos/in-this-to
 import { film as inThisTownBeingScaredIsMyJob } from "./videos/in-this-town-being-scared-is-my-job/film";
 import { film as inThisTownIHaveFortyMinutes } from "./videos/in-this-town-i-have-forty-minutes/film";
 import { film as inThisTownWeLostTheVote } from "./videos/in-this-town-we-lost-the-vote/film";
+import { film as inThisTownMeAndMyShadowDontGetAlong } from "./videos/in-this-town-me-and-my-shadow-dont-get-along/film";
+import { film as whatIfYouCouldSmellALie } from "./videos/what-if-you-could-smell-a-lie/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -62,4 +64,6 @@ export const FILMS = [
   inThisTownBeingScaredIsMyJob,
   inThisTownIHaveFortyMinutes,
   inThisTownWeLostTheVote,
+  inThisTownMeAndMyShadowDontGetAlong,
+  whatIfYouCouldSmellALie,
 ];

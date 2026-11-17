@@ -115,13 +115,87 @@ export type LookPreset =
   | "lantern-night"
   | "lava-shore"
   | "warm-room"
+  | "prom-night"
   | "void";
+
+/**
+ * A painted sky: vertical gradient, a horizon haze band and a sun disc bright
+ * enough for the bloom pass. Given to a look preset, this replaces the flat
+ * background colour. Colours are plain hex, so a preset stays readable.
+ */
+export type SkySettings = {
+  /** Straight up. */
+  top: string;
+  /** At the horizon line — the haze colour. */
+  horizon: string;
+  /** Below the horizon, if the camera ever tilts down that far. */
+  bottom?: string;
+  /** Sun / moon colour. */
+  sun?: string;
+  /** Direction of the sun from the camera, in world space. Defaults to the key light's position. */
+  sunDir?: [number, number, number];
+  /** Falloff of the halo: higher is a tighter halo. */
+  sunSize?: number;
+  /** Halo strength. */
+  sunPower?: number;
+  /** How much the haze band eats the gradient, 0–1. */
+  haze?: number;
+  /** Cloud cover, 0 is a clear sky and 1 is overcast. 0.4–0.7 looks like weather. */
+  clouds?: number;
+  /** Size of the cloud layer: smaller numbers are bigger, softer clouds. */
+  cloudScale?: number;
+  /** Where the noise is cut into cloud: higher is a clearer sky. */
+  cloudCover?: number;
+  /** How far away the cloud layer sits, in sky units. Bigger is higher and calmer. */
+  cloudHeight?: number;
+  /** The colour of cloud in shade. The sun lights the rest. */
+  cloudShade?: string;
+  /** Noise added to the gradient so a wide sky cannot band on an 8-bit frame. */
+  dither?: number;
+};
+
+/** The post-processing controls exposed to a film. */
+export type ShaderSettings = {
+  enabled?: boolean;
+  /** Bloom strength. 0.4–0.8 is a warm sunny day; 1.0+ starts to look like a game. */
+  bloom?: number;
+  /** Luminance above which pixels bloom. Lower = more of the sky glows. */
+  threshold?: number;
+  /** Bloom spread. */
+  radius?: number;
+  /** Darkening at the corners, 0–1. */
+  vignette?: number;
+  /** Colour saturation, 1 is neutral. */
+  saturation?: number;
+  /** Contrast around mid-grey, 1 is neutral. */
+  contrast?: number;
+  /** Warm highlights / cool shadows. 0 is neutral, 1 is a golden hour. */
+  warmth?: number;
+  /** Film grain, 0–0.03. */
+  grain?: number;
+  /** Lens fringing at the frame edges, 0–1. */
+  aberration?: number;
+  /** Highlight diffusion: the glow a real lens spreads around anything bright. 0–0.4. */
+  diffusion?: number;
+  /** Veiling glare: light the whole frame picks up from the lens. It lifts the shadows. */
+  veil?: number;
+  /** Black lift. Film does not reach black, it reaches a dark grey. */
+  lift?: number;
+  /** Highlight shoulder: how far bright things roll off instead of clipping. */
+  shoulder?: number;
+  /** How much the deepest shadows are cooled against the warm midtones, 0–1. */
+  coolShadow?: number;
+  /** Volumetric shafts from the sun, 0–1. Needs a look with a sky. */
+  shafts?: number;
+};
 
 export type PostSettings = {
   /** Tone-mapping exposure. 1.0 is neutral. */
   exposure?: number;
-  /** Multiplier on every 3D glow card in the film. This is our bloom. */
+  /** Multiplier on every 3D glow card in the film. This is our fake bloom. */
   bloom?: number;
+  /** Real post: bloom, grade, vignette, grain. `true` for the defaults. */
+  shaders?: ShaderSettings | boolean;
 };
 
 export type FilmConfig = {

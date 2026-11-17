@@ -1,0 +1,137 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-you-could-see-who-had-a-crush-on-you",
+  "mix": "public/audio/what-if-you-could-see-who-had-a-crush-on-you/mix.mp3",
+  "seconds": 113.6333,
+  "built_from": {
+    "timing.json": "3c9a72cf220136d061b1b4e2cc02981a31420e18",
+    "sound.json": "20548986a92c36d763725237bce3feab0e77badf",
+    "narration.mp3": "8c84d40316f75fd48b619940ae6a836f80882079"
+  },
+  "mix_sha1": "f601857530b6fd858cadbda4dc337940c2da14f1",
+  "music_sections": [
+    {
+      "from": "1.what",
+      "mood": "wonder",
+      "at": 0.0
+    },
+    {
+      "from": "5.mia",
+      "mood": "curious",
+      "at": 31.9
+    },
+    {
+      "from": "7.walk",
+      "mood": "playful",
+      "at": 46.53
+    },
+    {
+      "from": "8.line",
+      "mood": "curious",
+      "at": 54.3
+    },
+    {
+      "from": "10.dance",
+      "mood": "tense",
+      "at": 70.73
+    },
+    {
+      "from": "12.shook",
+      "mood": "hope",
+      "at": 86.83
+    },
+    {
+      "from": "12.sure",
+      "mood": "none",
+      "at": 91.17
+    },
+    {
+      "from": "13.leo",
+      "mood": "sad",
+      "at": 93.3
+    },
+    {
+      "from": "13.step",
+      "mood": "hope",
+      "at": 100.97
+    }
+  ],
+  "beds": 18,
+  "measured": {
+    "musicUnderVoiceDb": 18.6,
+    "secondsWithoutMusic": 2.3,
+    "bedsUnderVoiceDb": 28.4,
+    "sfx": 321,
+    "sfxPerMinute": 169.5,
+    "sfxKinds": 39,
+    "longestGapSeconds": 2.1,
+    "longestGapAt": 39.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.8,
+    "voiceOverRestWorstDb": 3.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.7,
+        "t": 89.5,
+        "cue": "12.grew",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 3.9,
+        "t": 46.1,
+        "cue": "6.eraser",
+        "sounding": [
+          "boing",
+          "bonk",
+          "whoosh",
+          "zip"
+        ]
+      },
+      {
+        "db": 4.0,
+        "t": 91.4,
+        "cue": "12.sure",
+        "sounding": [
+          "chime",
+          "heartbeat",
+          "riser"
+        ]
+      },
+      {
+        "db": 4.2,
+        "t": 94.1,
+        "cue": "13.leo",
+        "sounding": [
+          "boom",
+          "sting"
+        ]
+      },
+      {
+        "db": 4.2,
+        "t": 23.8,
+        "cue": "4.ben",
+        "sounding": [
+          "sparkle",
+          "swish"
+        ]
+      },
+      {
+        "db": 4.2,
+        "t": 51.4,
+        "cue": "7.door",
+        "sounding": [
+          "boing",
+          "bonk",
+          "hit"
+        ]
+      }
+    ],
+    "lufs": -14.9,
+    "truePeakDb": -0.8,
+    "limiterMaxDb": 1.6
+  },
+  "failures": []
+}

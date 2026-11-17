@@ -1,14 +1,19 @@
-# Read `AGENTS.md` first
+# Read `MASTERPROMPT-01.md` first, then `AGENTS.md`
 
-It is the contract for this repository, and it opens with the one question that decides everything else:
+**`MASTERPROMPT-01.md` is the owner's standing brief** (2026-11-11, the day Monster Village Part 1 passed 15,000
+views). Read it at the start of every turn that touches a film. It is where the hook-in-three-seconds rule, the
+seven-beat spine, the shot-variety and caption rules, the "readable with the sound off" test, the CTA-after-payoff
+rule and the self-review checklist live.
+
+Then `AGENTS.md`, the contract for this repository, which opens with the one question that decides everything else:
 **which kind of film were you asked for?**
 
 - "In This Town", a story that begins "In this town, …", a storytime, a narrated story of a minute or more
   → the topic in `Topics/InThisTown/`. Start with `npm run new -- "In This Town, …" --topic in-this-town`.
 - "Explain …", "What is …", "Why does …", a money lesson, inflation
-  → the topic in `Topics/Explainer/` (provisional). Start with `npm run new -- "…" --topic explainer`.
+  → the topic in `Topics/Stories/`. Start with `npm run new -- "…" --topic stories`.
 - "What if you could …", the story of a kid who gets a power
-  → the topic in `Topics/WhatIf/` (provisional). Start with `npm run new -- "What If …" --topic what-if`.
+  → the topic in `Topics/WhatIf/`. Start with `npm run new -- "What If …" --topic what-if`.
 - A 20-second short → the base film. Start with `npm run new -- "The Title"`.
 - Not sure → ask the owner one question.
 

@@ -12,10 +12,10 @@ word now means recording that clip again and rebuilding the timing.
 `python3 scripts/narration.py build why-does-bread-cost-more-every-year --wpm 225`. An explanation is read slower
 than a story (224 words a minute here; the story films run at 254).
 
-Topic: `Topics/Explainer`. Read `Topics/Explainer/SCRIPT.md` before changing a word. **This film is meant to become
+Topic: `Topics/Stories`. Read `Topics/Stories/SCRIPT.md` before changing a word. **This film is meant to become
 the topic's reference** (the owner: "you are the one making that reference!"; his subjects: "money lessons, what
 inflation is"): once he approves it, it is measured and the provisional numbers of the topic are corrected from it
-(`Topics/Explainer/reference/README.md`).
+(`Topics/Stories/reference/README.md`).
 
 **The question:** Why does bread cost more every year?
 
@@ -120,7 +120,7 @@ what it lacked: an oven, a loaf that comes apart, a price too long for a tag, a 
 a number, a wheelbarrow and its heap of notes, notes falling off an island, a bundle of notes for a tall stack.
 They are in this film's `parts.tsx`,
 built so that they can move into the pack unchanged once the owner has approved the film
-(`Topics/Explainer/PACK.md`, "Adding a part"). In `kit.tsx`, because they are this film's own: the five islands,
+(`Topics/Stories/PACK.md`, "Adding a part"). In `kit.tsx`, because they are this film's own: the five islands,
 the route, the shop (the same on "today" and "then") and the village's rack.
 
 ```narration

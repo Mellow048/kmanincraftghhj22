@@ -1,0 +1,666 @@
+{
+  "film": "what-if-i-could-hear-what-blocks-remember",
+  "README": "The sound sheet. Each cue and word mirrors a visible action. Echoes keep one low plink as their signature; music moves from wonder to a held breath, then hope.",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.what",
+        "mood": "wonder",
+        "why": "The impossible thing is immediately visible, then useful and fun."
+      },
+      {
+        "from": "5.want",
+        "mood": "curious",
+        "why": "The wish becomes personal: the boy wants Eli to stay."
+      },
+      {
+        "from": "7.hall",
+        "mood": "sneak",
+        "why": "He follows the echoes instead of asking his friend."
+      },
+      {
+        "from": "10.dark",
+        "mood": "tense",
+        "why": "The stage-side walk slows into the hardest choice."
+      },
+      {
+        "from": "11.enter",
+        "mood": "drone",
+        "why": "The curtain opens, but he still does not know what the words mean."
+      },
+      {
+        "from": "12.script",
+        "mood": "none",
+        "why": "A short held breath while the script page turns toward camera."
+      },
+      {
+        "from": "12.role",
+        "mood": "hope",
+        "why": "The missing role explains the echo; the boys choose to read together."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.what",
+      "to": "1.echo",
+      "bed": "crowd",
+      "why": "The first gym wall is at school, before the day quiets down."
+    },
+    {
+      "from": "2.friend",
+      "to": "4.desk",
+      "bed": "classroom",
+      "why": "The classroom and locker corridor share the school's soft daytime room tone."
+    },
+    {
+      "from": "4.lunch",
+      "to": "4.lunch",
+      "bed": "crowd",
+      "why": "The lunch room is busy around the small discovery."
+    },
+    {
+      "from": "4.locker",
+      "to": "7.empty",
+      "bed": "classroom",
+      "why": "The search moves through quiet school rooms and the hall."
+    },
+    {
+      "from": "8.gym",
+      "to": "14.sub",
+      "bed": "room",
+      "why": "After school, the gym and stage are empty enough to hear every echo."
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.what",
+      "word": "block",
+      "sfx": "power_up",
+      "why": "The blue echo-look arrives on the first picture of the power."
+    },
+    {
+      "cue": "1.echo",
+      "word": "whispered",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "First use of the block's remembered-phrase sound; it returns at every echo."
+    },
+    {
+      "cue": "2.friend",
+      "sfx": "whoosh",
+      "why": "Hard cut from the hook into the morning classroom."
+    },
+    {
+      "cue": "2.script",
+      "word": "script",
+      "sfx": "paper",
+      "why": "The folded rehearsal pages enter the story."
+    },
+    {
+      "cue": "2.question",
+      "word": "leaving",
+      "sfx": "rustle",
+      "why": "Eli gets up and moves toward the door."
+    },
+    {
+      "cue": "2.follow",
+      "word": "whispers",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The same echo sound leads him down the hall."
+    },
+    {
+      "cue": "2.follow",
+      "at": 0.16,
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.32,
+      "why": "The narrator runs along the tiled locker corridor."
+    },
+    {
+      "cue": "3.touch",
+      "sfx": "whoosh",
+      "why": "Cut into the power rule, close to the block."
+    },
+    {
+      "cue": "3.touch",
+      "word": "block",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "His touch wakes the same blue echo rings."
+    },
+    {
+      "cue": "3.voice",
+      "word": "echo",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The hollow stone sound becomes the power's audio signature."
+    },
+    {
+      "cue": "3.name",
+      "word": "speaker",
+      "sfx": "tick",
+      "why": "There is a phrase but no person attached to it."
+    },
+    {
+      "cue": "3.meaning",
+      "word": "meaning",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "The missing context lands as a small unease, not a scare."
+    },
+    {
+      "cue": "3.power",
+      "word": "stone",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The block repeats its phrase, never its speaker."
+    },
+    {
+      "cue": "4.desk",
+      "sfx": "whoosh",
+      "why": "Cut to the first useful clue."
+    },
+    {
+      "cue": "4.desk",
+      "word": "desk",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The wooden desk gives its old instruction in the established echo sound."
+    },
+    {
+      "cue": "4.lunch",
+      "word": "sandwich",
+      "sfx": "slide_up",
+      "trim": -3,
+      "why": "The tray rises and the missing lunch is revealed."
+    },
+    {
+      "cue": "4.lunch",
+      "word": "there",
+      "sfx": "chime",
+      "trim": -4,
+      "why": "A gentle reward for a useful, harmless echo."
+    },
+    {
+      "cue": "4.locker",
+      "word": "locker",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "Second practical clue, same remembered-block sound."
+    },
+    {
+      "cue": "4.locker",
+      "word": "top",
+      "sfx": "swish",
+      "trim": -3,
+      "why": "The camera finds the locker shelf named by the phrase."
+    },
+    {
+      "cue": "4.key",
+      "word": "key",
+      "sfx": "clank",
+      "trim": -3,
+      "why": "The small metal key comes into view behind the book."
+    },
+    {
+      "cue": "4.key",
+      "word": "found",
+      "sfx": "ding",
+      "trim": -4,
+      "why": "The clue pays off in a bright, small win."
+    },
+    {
+      "cue": "4.class",
+      "word": "replayed",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The classroom wall repeats the teacher's sneeze."
+    },
+    {
+      "cue": "4.laugh",
+      "word": "laughing",
+      "sfx": "cheer",
+      "trim": -2,
+      "why": "The kids jump and the class laughs together."
+    },
+    {
+      "cue": "5.want",
+      "sfx": "whoosh",
+      "why": "The comic run of discoveries cuts to the boy's real wish."
+    },
+    {
+      "cue": "5.want",
+      "word": "needed",
+      "sfx": "heartbeat",
+      "trim": -3,
+      "why": "The quiet fear underneath his question."
+    },
+    {
+      "cue": "5.team",
+      "word": "block",
+      "sfx": "place",
+      "repeat": 2,
+      "every": 0.28,
+      "trim": -1,
+      "why": "The two friends finish their shared little bridge model."
+    },
+    {
+      "cue": "5.fear",
+      "word": "scared",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "The empty space between them grows into a possible loss."
+    },
+    {
+      "cue": "5.fear",
+      "at": 0.18,
+      "sfx": "step_wood",
+      "repeat": 3,
+      "every": 0.34,
+      "trim": -2,
+      "why": "Eli walks away from the shared classroom project."
+    },
+    {
+      "cue": "6.pages",
+      "sfx": "whoosh",
+      "why": "Cut to the first clear plant in the story."
+    },
+    {
+      "cue": "6.pages",
+      "word": "script",
+      "sfx": "paper",
+      "why": "The rehearsal pages lie open beside the desk."
+    },
+    {
+      "cue": "6.line",
+      "word": "play",
+      "sfx": "rustle",
+      "why": "Eli turns a page as he explains it is only a play.",
+      "trim": 2
+    },
+    {
+      "cue": "6.ignore",
+      "word": "can't",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The wall's old phrase cuts across Eli's reassurance."
+    },
+    {
+      "cue": "6.ignore",
+      "word": "ignored",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "The boy chooses the wall over the sentence in front of him."
+    },
+    {
+      "cue": "6.words",
+      "word": "page",
+      "sfx": "paper",
+      "why": "The camera finds the printed line on the script.",
+      "trim": 2
+    },
+    {
+      "cue": "6.words",
+      "word": "words",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The matching memory rings answer the page without naming its role."
+    },
+    {
+      "cue": "7.hall",
+      "sfx": "whoosh",
+      "why": "Cut back to the corridor and the phrase he misreads."
+    },
+    {
+      "cue": "7.hall",
+      "word": "away",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The hall repeats the line with no speaker or date."
+    },
+    {
+      "cue": "7.assume",
+      "word": "me",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "He fills the missing context with himself."
+    },
+    {
+      "cue": "7.walk",
+      "at": 0.12,
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.32,
+      "why": "His feet carry him past the classroom door.",
+      "trim": 2
+    },
+    {
+      "cue": "7.empty",
+      "word": "open",
+      "sfx": "creak",
+      "why": "The classroom door swings open on an empty room."
+    },
+    {
+      "cue": "7.empty",
+      "word": "wasn't",
+      "sfx": "thud",
+      "trim": -3,
+      "why": "The empty desk is a small, heavy confirmation of his guess."
+    },
+    {
+      "cue": "8.gym",
+      "sfx": "whoosh",
+      "why": "Cut to the dark gym and the back curtain."
+    },
+    {
+      "cue": "8.gym",
+      "word": "tell",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The gym wall repeats the same blue-ring memory."
+    },
+    {
+      "cue": "8.run",
+      "at": 0.12,
+      "sfx": "step_wood",
+      "repeat": 4,
+      "every": 0.31,
+      "why": "The narrator runs across the gym toward the stage.",
+      "trim": 1
+    },
+    {
+      "cue": "8.stage",
+      "word": "light",
+      "sfx": "pop",
+      "trim": -3,
+      "why": "The single warm stage light snaps on by itself."
+    },
+    {
+      "cue": "8.goodbye",
+      "word": "goodbye",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "A floor block repeats the villain's goodbye line."
+    },
+    {
+      "cue": "8.stone",
+      "word": "leaving",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "The boy imagines Eli walking away without a wave."
+    },
+    {
+      "cue": "9.call",
+      "sfx": "whoosh",
+      "why": "Cut as Eli catches up from behind the curtain."
+    },
+    {
+      "cue": "9.call",
+      "word": "Wait",
+      "sfx": "swish",
+      "trim": 0,
+      "why": "Eli turns and calls the narrator back."
+    },
+    {
+      "cue": "9.call",
+      "at": 0.15,
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.38,
+      "trim": 1,
+      "why": "Eli takes two quick steps toward him."
+    },
+    {
+      "cue": "9.echo",
+      "word": "echo",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "A new ring comes from a block behind the curtain."
+    },
+    {
+      "cue": "9.script",
+      "word": "dropped",
+      "sfx": "thud",
+      "trim": -3,
+      "why": "The folded script falls onto the stage boards."
+    },
+    {
+      "cue": "9.script",
+      "word": "script",
+      "sfx": "paper",
+      "why": "The pages land open where the camera can see them."
+    },
+    {
+      "cue": "9.script",
+      "at": 0.45,
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.34,
+      "trim": -3,
+      "why": "Eli follows the narrator around the stage edge."
+    },
+    {
+      "cue": "10.dark",
+      "sfx": "whoosh",
+      "why": "The edge beat begins in front of the closed curtains."
+    },
+    {
+      "cue": "10.dark",
+      "p": 0.55,
+      "sfx": "heartbeat",
+      "trim": -4,
+      "why": "A slow pulse carries the held breath before he touches the brick."
+    },
+    {
+      "cue": "10.touch",
+      "word": "touched",
+      "sfx": "scrape",
+      "trim": -3,
+      "why": "His hand presses the loose block beside the stage."
+    },
+    {
+      "cue": "10.last",
+      "word": "repeated",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The same signature sound now carries the most frightening phrase."
+    },
+    {
+      "cue": "10.breath",
+      "word": "pretend",
+      "sfx": "heartbeat",
+      "trim": -3,
+      "why": "He cannot take back what he has just heard."
+    },
+    {
+      "cue": "10.bell",
+      "word": "bell",
+      "sfx": "school_bell",
+      "trim": -3,
+      "why": "The final school bell interrupts the silence above the stage."
+    },
+    {
+      "cue": "10.bell",
+      "word": "rang",
+      "sfx": "tick",
+      "trim": -4,
+      "why": "The clock's red hand moves as the bell finishes ringing."
+    },
+    {
+      "cue": "10.choice",
+      "word": "or",
+      "sfx": "swish",
+      "trim": -3,
+      "why": "He turns from the exit toward the curtain-side echo."
+    },
+    {
+      "cue": "10.choice",
+      "word": "follow",
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.34,
+      "trim": -1,
+      "why": "He takes two steps toward the stage gap."
+    },
+    {
+      "cue": "11.enter",
+      "sfx": "whoosh",
+      "why": "Cut with the curtain as the scene changes from fear to discovery."
+    },
+    {
+      "cue": "11.enter",
+      "word": "curtain",
+      "sfx": "rustle",
+      "why": "The red fabric parts as the boy steps through."
+    },
+    {
+      "cue": "11.enter",
+      "at": 0.38,
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.4,
+      "trim": -3,
+      "why": "His steps cross onto the wooden stage."
+    },
+    {
+      "cue": "11.find",
+      "word": "reading",
+      "sfx": "paper",
+      "why": "Eli quietly turns the open rehearsal page."
+    },
+    {
+      "cue": "11.stop",
+      "word": "stopped",
+      "sfx": "blip",
+      "trim": -3,
+      "why": "Eli's voice and hand stop when he sees his friend."
+    },
+    {
+      "cue": "12.ask",
+      "sfx": "whoosh",
+      "why": "Cut to the first direct question between the friends."
+    },
+    {
+      "cue": "12.ask",
+      "word": "leaving",
+      "sfx": "heartbeat",
+      "trim": -4,
+      "why": "The fear is still present while he asks if Eli is going."
+    },
+    {
+      "cue": "12.script",
+      "word": "page",
+      "sfx": "paper",
+      "why": "Eli turns the script toward the camera."
+    },
+    {
+      "cue": "12.role",
+      "word": "villain's",
+      "sfx": "chime",
+      "trim": -3,
+      "why": "The missing label arrives: the words belong to a villain's role."
+    },
+    {
+      "cue": "13.practice",
+      "sfx": "whoosh",
+      "why": "The explanation becomes a clear picture of rehearsal."
+    },
+    {
+      "cue": "13.practice",
+      "word": "practicing",
+      "sfx": "paper",
+      "why": "Eli reads the line from his script under the audition sign."
+    },
+    {
+      "cue": "13.opening",
+      "word": "echo",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The first phrase returns to the opening brick, now with its source visible."
+    },
+    {
+      "cue": "13.heard",
+      "word": "wall",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "repeat": 3,
+      "every": 0.22,
+      "why": "The same remembered line rings from several blocks Eli rehearsed beside."
+    },
+    {
+      "cue": "13.limit",
+      "word": "meaning",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The blocks keep the voice but not what the line was meant to say."
+    },
+    {
+      "cue": "13.limit",
+      "word": "not",
+      "sfx": "glitch",
+      "trim": -4,
+      "why": "The absent context is the power's one hard limit."
+    },
+    {
+      "cue": "13.mistake",
+      "word": "lost",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "The boy sees how close his guess came to costing him Eli."
+    },
+    {
+      "cue": "13.reader",
+      "word": "read",
+      "sfx": "paper",
+      "why": "He offers to take a part in the play instead of chasing another echo."
+    },
+    {
+      "cue": "13.smile",
+      "word": "smiled",
+      "sfx": "chime",
+      "trim": -4,
+      "why": "Eli accepts the offer and smiles."
+    },
+    {
+      "cue": "13.smile",
+      "word": "handed",
+      "sfx": "paper",
+      "why": "The script passes from Eli's hands to his friend's."
+    },
+    {
+      "cue": "14.scene",
+      "sfx": "whoosh",
+      "why": "Cut into the friends' shared stage scene."
+    },
+    {
+      "cue": "14.scene",
+      "word": "acted",
+      "sfx": "paper",
+      "why": "The script pages turn as they take their lines."
+    },
+    {
+      "cue": "14.out",
+      "word": "echo",
+      "sfx": "plink",
+      "pitch": 1.1,
+      "why": "The same block sound now carries laughter instead of a feared goodbye."
+    },
+    {
+      "cue": "14.out",
+      "word": "laughter",
+      "sfx": "cheer",
+      "trim": -2,
+      "why": "Both friends laugh at the echo after performing the scene."
+    },
+    {
+      "cue": "14.sub",
+      "word": "Subscribe",
+      "sfx": "ding",
+      "note": "C6",
+      "why": "A warm, small finish on the red diegetic subscribe sign."
+    }
+  ]
+}

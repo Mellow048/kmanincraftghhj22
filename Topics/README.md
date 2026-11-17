@@ -6,28 +6,29 @@ its own references and its own kit. The engine in `src/engine/` is shared by all
 | Topic | Folder | What it makes | State |
 |---|---|---|---|
 | In This Town | [`InThisTown/`](InThisTown/README.md) | A 2–3 minute first-person Minecraft story: "In this town, …", a rule nobody explains, and a twist. Also has a 1–2 minute short cut | **Measured.** Rules, pack, starter and sound in place. Reference film: `in-this-town-same-face` (short cut, with sound). Also finished: `in-this-town-monster-egg` (voice only) |
-| Explainer | [`Explainer/`](Explainer/README.md) | A 30–60 second answer to one question ("Why does bread cost more every year?"): money lessons, what inflation is. The camera never cuts: it flies from one thing to the next | **PROVISIONAL.** Rules, camera, pack, starter and sounds in place. No reference yet, so no number is measured. No film yet |
-| What If | [`WhatIf/`](WhatIf/README.md) | A 1–2 minute first-person story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town | **PROVISIONAL.** Rules, pack, starter and sounds in place. Its numbers are In This Town's until a reference is measured. No film yet |
+| Stories | [`Stories/`](Stories/README.md) | A 30–60 second answer to one question ("Why does bread cost more every year?"): money lessons, what inflation is. The camera never cuts: it flies from one thing to the next. **The owner renamed this topic from Explainer to Stories on 2026-11-11** and gave it a new reference to study: `Stories/reference for new topic/`, a narrated Minecraft story | **Measured.** Rules, camera, pack, starter and sounds in place. Reference film: `why-does-bread-cost-more-every-year` (0:49, with sound), our own, approved by the owner |
+| What If | [`WhatIf/`](WhatIf/README.md) | A 1–2 minute first-person story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town | **Measured.** Rules, pack, starter and sounds in place. Reference film: `what-if-you-could-see-who-had-a-crush-on-you` (1:54, with sound), our own, approved by the owner |
 
 [`Shared/`](Shared/README.md) is not a topic. It holds the parts that more than one topic builds from.
 
-**PROVISIONAL** means the owner asked for the topic before its reference ("reference which we will do later once
-youre done"). Its `topic.json` says `"state": "PROVISIONAL"` and carries a `provisional` block: why, where each
-number was borrowed from, and what to do when the reference arrives. `npm run new` prints the warning. The first
-job when a reference arrives is to measure it and correct the folder: `Topics/<Folder>/reference/README.md`.
+**PROVISIONAL** is the state of a topic the owner asked for before its reference. Its `topic.json` says
+`"state": "PROVISIONAL"` and carries a `provisional` block: why, where each number was borrowed from, and what to do
+when the reference arrives. `npm run new` prints the warning. No topic is provisional now: Stories and What If
+were, until the owner approved the first film of each (2026-11-13) and it became the topic's reference
+(`Topics/<Folder>/reference/README.md` tells how that went).
 
 ## Starting a film of a topic
 
 ```bash
 npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
-npm run new -- "Why Bread Costs More" --topic explainer
+npm run new -- "Why Bread Costs More" --topic stories
 npm run new -- "What If You Could See Who Has a Crush on You" --topic what-if
 ```
 
 The film is made from the topic's own starter, not from the 20-second template, and it says `topic: "<id>"` from its
 first commit. `npm run new` refuses a title that opens the way a topic opens ("In This Town …", "What If …") if
 `--topic` is missing, and `npm run check` fails a film whose title or first line opens that way and which does not
-declare a topic. A "What if" that is answered with facts is an explainer: pass `--topic explainer`. The reason is in
+declare a topic. A "What if" that is answered with facts is a story: pass `--topic stories`. The reason is in
 [`InThisTown/reference/moon-20-seconds/`](InThisTown/reference/moon-20-seconds/README.md).
 
 ## How the rules stack
@@ -45,14 +46,14 @@ against the base contract.
 | | |
 |---|---|
 | `README.md` | Start here. One page: what the format is, what changes from the base, the work order |
-| `topic.json` | The numbers the lint enforces: length, cut rate, voice pace, and the limits of the sound. `hardMinSeconds` and `hardMinWords` are the floor: under it a film is not a film of this topic. `cuts.<name>` holds other lengths of the same format; a film picks one with `cut: "<name>"`. `reference` names the topic's reference film, the finished film of ours that the owner chose to build like, and `models` lists every finished film. `film.opensWith` is the opening that belongs to the topic, and `film.opensWithHint` is a line the refusal adds (What If's points a factual "what if" to the Explainer). `state` and `provisional` mark a topic built before its reference; `camera` names a scene builder other than `storyScene` |
+| `topic.json` | The numbers the lint enforces: length, cut rate, voice pace, and the limits of the sound. `hardMinSeconds` and `hardMinWords` are the floor: under it a film is not a film of this topic. `cuts.<name>` holds other lengths of the same format; a film picks one with `cut: "<name>"`. `reference` names the topic's reference film, the finished film of ours that the owner chose to build like, and `models` lists every finished film. `film.opensWith` is the opening that belongs to the topic, and `film.opensWithHint` is a line the refusal adds (What If's points a factual "what if" to the Stories). `state` and `provisional` mark a topic built before its reference; `camera` names a scene builder other than `storyScene` |
 | Playbooks (`SCRIPT.md`, `SHOTS.md`, `SOUND.md`, …) | How to write it, how to shoot it, how it sounds |
 | `reference/<name>/` | The video or script the format came from, and the evidence taken from it: contact sheets, a shot log, the transcript. Once the owner approves a film of ours as the reference, its page is here too. **So is every other film of ours that the owner approved, each in a folder with its mp4, a snapshot of its source, a contact sheet and a log of every shot** (`node scripts/shot-log.mjs <film>`); the folder's own `README.md` lists them and says how to add one. Rejected attempts are kept here as well, one page each |
 | The pack (`index.ts` and the files it passes on, `PACK.md`) | People, places, things and helpers shared by that topic's films, taken from films the owner approved. Films themselves stay in `src/videos/` |
 | `template/` | The starter film `npm run new -- … --topic <id>` copies. It is left out of the type check, because its imports only resolve once it sits in `src/videos/`. Test it by scaffolding a film from it |
-| `sheet/` (Explainer, What If) | The source of `pack.jpg`: a film that only shows the pack's parts, and `scripts/pack-sheet.py` to lay its stills out. The topic's `PACK.md` has the commands. Left out of the type check, like `template/` |
+| `sheet/` (Stories, What If) | The source of `pack.jpg`: a film that only shows the pack's parts, and `scripts/pack-sheet.py` to lay its stills out. The topic's `PACK.md` has the commands. Left out of the type check, like `template/` |
 
-A topic whose camera is not the story camera says so in `topic.json`, in a `camera` block. Explainer's is
+A topic whose camera is not the story camera says so in `topic.json`, in a `camera` block. Stories's is
 `{ "builder": "flightScene", "continuous": true, "guard": "unbroken", "maxHardCuts": 2 }`: `npm run check` then
 wants every scene built with that builder, `film.tsx` calling that guard, and no more declared cuts than that.
 
@@ -60,7 +61,7 @@ wants every scene built with that builder, `film.tsx` calling that guard, and no
 
 1. Start from a real reference the owner chose. Put it in `reference/<name>/` and measure it before writing any rule:
    length, words, cuts, what is on screen. A rule with no number behind it is a guess.
-   **Only if the owner asks for the topic before its reference** (as for Explainer and What If): build it as
+   **Only if the owner asks for the topic before its reference** (as he did for Stories and What If): build it as
    PROVISIONAL. Borrow each number from the nearest measured topic and say where it came from, set
    `"state": "PROVISIONAL"` with a `provisional` block in `topic.json`, say so at the top of the `README.md`, and
    write a `reference/README.md` that lists what to measure when the reference arrives.

@@ -1,6 +1,6 @@
 {
   "film": "why-does-bread-cost-more-every-year",
-  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build why-does-bread-cost-more-every-year",
+  "README": "The sound sheet. Read Topics/Stories/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build why-does-bread-cost-more-every-year",
   "music": {
     "gain": -16,
     "sections": [
