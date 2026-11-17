@@ -20,6 +20,14 @@ export {
   ADULT, CHILD, IronGolem, Poppy, ROBE, Villager, golemHand, villagerChest, villagerFace,
   // people who are not from the town: twelve different players
   Player, Pumpkin,
+  // cats and dogs: each of the three bodies as a cat and as a dog (PACK.md, "Cats and dogs"). Delete if the film has none
+  CatDogGolem, CatDogPlayer, CatDogVillager, CatGolem, CatPlayer, CatVillager, DogGolem, DogPlayer, DogVillager, catArchPose,
+  // the creeper town: creepers as people, and the players who farm them (PACK.md, "The creeper town"). Delete if the film has none
+  CardboardBox, Creeper, CreeperCrowd, CreeperDad, CreeperFace, CreeperHouse, CreeperKid, CreeperMum, CreeperSuit, EmptySack, GROUND_SIT,
+  GunpowderPlayer, LongTable, LostShoe, NightFill, PixelHeart, PlayerSword, SchoolDesk, creeperBolt, groundSitPose, openArmsPose,
+  // the enderman town: endermen as people, the players who come for pearls in pumpkins, a kitchen, rain (PACK.md, "The enderman town"). Delete if the film has none
+  BlockPile, DinnerPlate, ENDER_PINK, ENDER_PURPLE, EnderCrowd, EnderDad, EnderHouse, EnderMum, EnderPearl, EnderThing, EnderZap, Enderman, FryingPan,
+  KidDrawing, KitchenCounter, KitchenGone, KitchenShelf, KitchenStove, KnockedPumpkin, PearlSign, PhotoBorder, Puddle, PumpkinHat, PumpkinPlayer, PumpkinView, Rain,
   // things
   BedBox, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Wisps,
 } from "../../../Topics/InThisTown";

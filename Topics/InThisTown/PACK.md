@@ -201,6 +201,16 @@ Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a w
 
 Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build it in `monsters.tsx` the same way.
 
+**Cats and dogs** (a cat or a dog player, villager and golem) have their own section at the bottom of this page:
+["Cats and dogs"](#cats-and-dogs--catsdogstsx).
+
+**The creeper town** (creepers as people: a family, a crowd that bolts and hisses, their houses, and the players who
+come for gunpowder) has its own section too: ["The creeper town"](#the-creeper-town--creepertowntsx).
+
+**The enderman town** (endermen as people: a mum and a dad, a town that carries blocks, teleports and screams, their
+houses, and the players who come for pearls in carved pumpkins) has its own section too:
+["The enderman town"](#the-enderman-town--endertowntsx).
+
 ## What is not in the pack
 
 - **The story.** Never reuse a premise, a line or a twist from a finished film.
@@ -219,7 +229,7 @@ Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build 
    must not differ by a pixel. The same goes for a change to `src/engine/`.
 
    ```bash
-   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon"
+   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon in-this-town-we-are-all-cats in-this-town-everyone-runs-away-from-me"
    for f in $FILMS; do node scripts/shots.mjs $f --scale 0.4 --at 0.55 --out out/before/$f; done
    #   …the change…
    for f in $FILMS; do
@@ -290,3 +300,147 @@ Two ways of shooting that came out of the same review (they are shots, not compo
   fist, then the jaw, then everybody thrown in the air. A golem is 6 m tall: the camera has to be 10 m off and above
   the cage roofs, or the picture is a white wall.
 
+## Cats and dogs — `catsdogs.tsx`
+
+The three bodies of the series, each as a cat and as a dog. Built for "In This Town, We Are All Cats"; the owner,
+2026-11-15: "this is actually really funny, i love this … for the cat and dog skins please put it on the templates
+for other agents to use if i want something new". **So when he asks for a film with cats or dogs in it, they are
+here: do not build them again, and do not restyle them.** How each is staged, shot by shot, is in
+[`reference/we-are-all-cats/`](reference/we-are-all-cats/README.md).
+
+![The cats and dogs](catsdogs.jpg)
+
+Every still above is a shot from `in-this-town-we-are-all-cats`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-we-are-all-cats --scale 0.5 --at 0.6 --out out/catsdogs \
+  --only 1.me,2.dogs,1.folk,2.all,1.golem,3.golems,3.fur,3.bark,4.grass,7.trade,7.sit,8.sub
+python3 scripts/pack-sheet.py out/catsdogs Topics/InThisTown/catsdogs.jpg --labels Topics/InThisTown/catsdogs.labels.txt
+```
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `CatPlayer`, `DogPlayer` | A cat or a dog with hands, in a shirt: a `MinecraftAvatar` with a cat's or a dog's head and a tail. Takes every avatar prop, so every clip, pose and face works | `who` 0–5 (the coat and the shirt; 0 is the red cat and the blue dog), `scale` (`KID` for a kid), `animation`, `pose`, `face`, `lookAt`; a cat's `puff` 0–1 (fur up) and `tailUp` 0–1; a dog's `bark` 0–1 and `wag` 0–1; `noTail` (lying down) |
+| `CatVillager`, `DogVillager` | A cat or a dog in a villager's robe, with the folded sleeves and the one eyebrow. No hands | `who` 0–5, `robe`, `fur`, `walk` (metres), `lookAt` or `nod` / `turn` / `tilt`, `lean` (a bow, or an arched back), `puff`, `tailUp`, `bark`, `wag`, `sit`, `old` (a shawl and glasses: a grandma), `carry` (what lies on the sleeves), `phase` |
+| `CatGolem`, `DogGolem` | The iron golem with ears, whiskers and a long tail, or with hanging ears, a snout, a red collar and a tag. 2.7 m | `walk`, `armR` / `armL` (0 hangs, −1.5 points ahead), `headPitch`, `headYaw`, `bow`, `puff`, `tailUp`, `bark`, `wag`, `sit` 0–1 (down on the ground, legs out), `grass` 0–1 (grass and flowers over its feet: it has stood there for years) |
+| `CatDogPlayer`, `CatDogVillager`, `CatDogGolem` | The same six, picked by `kind="cat"` or `kind="dog"`: for a crowd drawn in a loop. A prop of the other animal is ignored, so one crowd can be given all of them | `kind`, and everything above |
+| `catArchPose(t, k, yaw?, sag?)` | The pose every cat knows: back up, head level, legs stiff, a shiver. Give it to a cat player as `pose`, with `puff` and `tailUp` on the same number `k` 0–1. `sag` 0–1 is a cat too tired to hold it | |
+| `CatDogHead`, `CatDogTail` | The ears, nose and whiskers (or the ears, snout and jaw) and the tail, on their own: **how to make a cat or a dog of a body that is not here yet** (a zombie, a pillager, a kid in a helmet). Draw the head part inside the head's group and the tail where the back ends | `kind`, `fur`; head: `half` `top` `mouth` (the head's measurements), `puff`, `open`, `beat`; tail: `up`, `puff`, `wag`, `t`, `size` |
+| `CAT_DOG_FUR`, `CAT_DOG_SHIRT`, `CAT_DOG_ROBE`, `catDogFur(kind, who)` | The colours: six coats, six shirts and six robes for each. Cats wear warm colours and dogs cool ones, so two crowds read as two sides from far off | |
+| `Fish`, `Bone` | What each side likes, 30 cm long. `position` is the middle | `rotation`, `scale` |
+
+How they behave, as the film used them:
+
+- **A cat that is cross** has `puff` 1, `tailUp` 1, `pose={catArchPose(t, 1)}`, stands sideways to what it is cross
+  with and turns only its head (`scene2.tsx`, `3.fur`). **A dog that is cross** has `bark` 1: the jaw, the ears and
+  the rings run on the film clock, each dog on its own beat. **A dog that is pleased** has `wag` 1.
+- The teller of a cat or dog film is still the film's own: a `CatPlayer` or `DogPlayer` at `scale={KID}` in the one
+  colour nobody else wears (`Hero` and `Pup` in `reference/we-are-all-cats/source/kit.tsx`).
+- **The sound kit has no bark and no hiss.** The film used `bonk` at `pitch` 0.75 repeated every 0.17 s for a bark
+  and `gust` at `pitch` 1.6, `dur` 0.4, for a hiss ([`SOUND.md`](SOUND.md) has the kit).
+- Another animal (a rabbit, a fox) is a new branch in `CatDogHead` and `CatDogTail` and two rows of colours. Add it
+  so that the cats and dogs do not change by a pixel (rule 4 above).
+
+## The creeper town — `creepertown.tsx`
+
+Creepers as people. Built for "In This Town, Everyone Runs Away From Me"; the owner, 2026-11-16: "really cute short,
+i like it. now put it on the main branch as reference + the creeper skins u made so that other agents can use it too
+as a template or pack". **So when he asks for a film with creepers who are somebody (a family, a town, a class), they
+are here: do not build them again, and do not restyle them.** How each is staged, shot by shot, is in
+[`reference/everyone-runs-away-from-me/`](reference/everyone-runs-away-from-me/README.md).
+
+![The creeper town](creepertown.jpg)
+
+Every still above is a shot from `in-this-town-everyone-runs-away-from-me`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-everyone-runs-away-from-me --scale 0.5 --at 0.6 --out out/creepertown \
+  --only 1.all,1.hello,1.mum,1.box,2.table,2.school,3.suit,3.little,4.six,4.hiss,4.chain,6.arms
+python3 scripts/pack-sheet.py out/creepertown Topics/InThisTown/creepertown.jpg --labels Topics/InThisTown/creepertown.labels.txt
+```
+
+The creeper itself is `Creeper` in `monsters.tsx` (above). **A creeper has no arms**, so it acts with four things:
+its face (`mood`: `calm`, `happy`, `scared`, `angry`, `sad`), shaking (move its `position` a centimetre, fast),
+leaning (`lean`: 0.3 is a run, 0.34 against somebody is a hug) and `fuse` (0–1: it swells and flashes white, which
+every player reads as "about to blow up").
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `CreeperMum`, `CreeperDad`, `CreeperKid` | The family: a pink bow and scarf; a straw hat, a blue scarf, a little bigger and darker; a small pale one in a yellow scarf (0.58). Each is a `Creeper` and takes every one of its props | `position`, `rotationY`, `mood`, `lookAt` or `nod` / `turn` / `tilt`, `walk` (metres), `lean`, `fuse` |
+| `CreeperCrowd` | A town of them: every green, some in scarves, some in hats, a few small. One component, directed by numbers | `spots` (`[x, z, facing?][]`), `t`; **`cat` + `at`: they bolt from that point at that second, the near ones first**; `speed` (6 is a stampede a shot can hold; 8 leaves the frame in half a second); `fuse` (hissing); `mood`, `lookAt`, `face`; `walk` + `shift` (the whole lot walks); `shake`; `skip` (leave some out); `first` (so two crowds are not twins) |
+| `creeperBolt(home, cat, t, at, i?, speed?, face?)` | The same for one creeper you draw yourself: gives `position`, `rotationY`, `walk`, `lean` and `gone`. It jumps, turns and runs straight away from `cat` | |
+| `CreeperHouse` | A `Hut` with a green roof and the face over its door. Faces +Z | `position`, `rotationY`, `w`, `h`, `n` (the roof, wall and tint: give each house its own), `lit` (night) |
+| `CreeperFace` | The face alone, flat, facing +Z: on a house, a costume, a flag, a school | `position`, `size`, `color` |
+| `CreeperSuit` | The costume: a green box with the face painted on, worn over a kid. At `position` y = −0.14 a cat's ears come out of the top | `position` (his feet), `rotationY`, `wobble` |
+| `GunpowderPlayer` | A player who has come to farm creepers: six looks. Even `who` holds a sword, odd an empty sack. A `MinecraftAvatar`: every clip, pose and face works | `who` 0–5, `hand={false}` (he has dropped it), `arms="hold"` to show it |
+| `PlayerSword`, `EmptySack`, `LostShoe` | What they leave behind. Each faces +Z from where it is held | `position`, `rotation`, `scale` |
+| `LongTable` | A dinner table of planks, `length` metres along Z, a plate at each end. **Shoot it from one end, never from the side** | `position` (the ground under its middle), `length` |
+| `SchoolDesk` | A desk for a lesson held outdoors, facing −Z | `position` |
+| `CardboardBox` | An open box a kitten fits in (a kid at scale 0.42) | `position`, `rotationY` |
+| `PixelHeart` | A small pixel heart, facing +Z: over a hug | `position`, `rotationY`, `scale` |
+| `NightFill` | A warm point light for faces at night: the engine's night key light is on the north side | `at`, `power`, `reach`, `color` |
+| `groundSitPose(t, patch?)`, `GROUND_SIT` | Sitting on the ground with the legs straight out. Give it as `pose` and put the feet at y = `GROUND_SIT` | |
+| `openArmsPose(t, k?)` | Both arms held wide open, `k` 0–1: he wants a hug | |
+
+## The enderman town — `endertown.tsx`
+
+Endermen as people. Built for "In This Town, I Have Never Seen My Mum's Face"; the owner, 2026-11-16: "i like it …
+put the enderman skins and other stuff as a template and put the source code + mp4 into the reference for other
+agents to see". **So when he asks for a film with endermen who are somebody, they are here: do not build them again,
+and do not restyle them.** How each is staged, shot by shot, is in
+[`reference/never-seen-my-mums-face/`](reference/never-seen-my-mums-face/README.md).
+
+**These are parts, not a story.** In the same message he said the film "was kinda similar to the creeper one … it
+might get me in trouble of reused content". A third film of "one odd kid in a town of one famous mob, the players
+come at night" is not wanted, with these or with the creepers ([`OWNER.md`](OWNER.md) §5, 2026-11-16). Use an
+enderman, a house, a pumpkin, the rain, the kitchen: in a film whose hero, place, danger and ending are its own.
+
+![The enderman town](endertown.jpg)
+
+Every still above is a shot from `in-this-town-i-have-never-seen-my-mums-face`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-i-have-never-seen-my-mums-face --scale 0.5 --at 0.6 --out out/endertown \
+  --only 1.face,1.ender,1.dad,2.dinner,2.photo,2.rain,3.guess,4.six,4.pearls,5.holes,5.scream,6.on
+python3 scripts/pack-sheet.py out/endertown Topics/InThisTown/endertown.jpg --labels Topics/InThisTown/endertown.labels.txt
+```
+
+The enderman itself is `Enderman` in `monsters.tsx` (above): 2.9 m tall, eyes at about 2.75 m. It acts with `jaw`
+(0–1: the mouth drops open, the scream), `shake` (0–1), `carry` (0–1, arms out, with the block it holds as
+`children`), `lean` (0.6 bends it down to a kid), `lookAt` and `mood`. **It is nearly three metres tall and a tall
+frame is narrow**: stage it in depth, tilt the lens up, or cut it off at the chest on purpose (a kid's eyes are at
+1.22 m, which is an enderman's knees, and the film is built on that).
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `EnderMum`, `EnderDad` | The parents: a pink bow, and a pink band on each knee (how a kid who cannot look up knows her); a straw hat and a blue scarf, a little taller. Each is an `Enderman` and takes every one of its props. Mum has no scarf: bent over a kid, a scarf hangs like a tongue | `position`, `rotationY`, `lookAt`, `lean`, `jaw`, `shake`, `mood`, `walk`, `carry` + `children` |
+| `EnderCrowd` | A town of them, each a little different in height, each holding a thing. One component, directed by numbers | `spots` (`[x, z, facing?][]`), `t`; **`jaw` + `shake`: they all scream**; `hold` (they carry), `drop` (seconds since they all let go: the blocks fall); **`outAt={(i) => seconds}`: each teleports away at its own second and leaves an `EnderZap`**; `lookAt`, `mood`, `face`; `walk` + `shift`; `tilt`; `skip`; `first` (so two crowds are not twins); `scale` |
+| `EnderThing` | What an enderman holds, half a block big: `kind` 0 grass, 1 cobble, 2 sand, 3 planks, 4 melon, 5 a flower pot, 6 TNT, 7 hay, 8 grass with a poppy | `kind`, `position` |
+| `EnderZap` | The purple pop left where one teleported | `position`, `t` (seconds since it went), `seed` |
+| `EnderHouse`, `ENDER_WALL`, `ENDER_ROOF` | A `Hut` with dark purple plank walls and a purple roof. Takes every `Hut` prop but the three colours | as `Hut` |
+| `BlockPile` | What an enderman brings home: a heap of blocks that do not match, beside a house | `at` (`[x, z]`), `n` (which heap), `wide`, `high` |
+| `PumpkinPlayer` | A player who has come for pearls: six looks, a sword, and a carved pumpkin over the head. A `MinecraftAvatar`: every clip, pose and face works | `who` 0–5, **`on` (the pumpkin: `on={t < knock}` takes it off)**, `sword` |
+| `KnockedPumpkin` | A pumpkin knocked off a head: it tumbles, lands and lies still | `from` (where the head was), `t` (seconds since), `v` (the push: x, up, z), `seed` |
+| `PumpkinHat` | A carved pumpkin for a kid, for the `head` prop of a `MinecraftAvatar`. 1.15 is too big for him, which is the joke | `scale`, `up` 0–1 (pushed back off the face like a hat), `askew` |
+| `PumpkinView` | **What you see from inside a pumpkin**: black, and two small holes. Stands half a metre in front of a lens that does not move and looks north with no tilt | `camera`, `fov`, `sway`, `hole` |
+| `PhotoBorder` | The white border of a photo, for a shot that is a photograph. Same rules as `PumpkinView` | `camera`, `fov` |
+| `EnderPearl`, `PearlSign` | A pearl, drawn flat, facing +Z; and a pearl on a board, for over a player's head (what he wants) | `position`, `scale`, `rotationY` |
+| `KidDrawing` | A kid's drawing of his mum on paper (0.62 × 0.78, facing +Z): two purple dots, then what he had to guess | `position`, `rotation`, `scale`, `dots` 0–2, `rest` |
+| `Rain`, `Puddle` | Rain over a place, and a puddle on the ground. Endermen will not stand in either | `center`, `t`, `area`, `count`, `k` 0–1 (how hard); `position`, `size` |
+| `DinnerPlate` | A plate with something on it, for a table top | `position`, `food` (a colour) |
+| `KitchenStove`, `KitchenCounter`, `KitchenShelf`, `FryingPan` | A kitchen along a wall: a furnace (`lit`), a counter with a pot or a loaf (`on`), a shelf of jars, and a pan with an egg for a hand | `position` |
+| `KitchenGone` | Where the kitchen was: pale shapes on the wall and the floor | `position` (the middle slot) |
+| `ENDER_PINK`, `ENDER_PURPLE` | Mum's pink and the eyes' purple | |
+
+**What to know before using them:**
+
+- **The scream is `jaw` and `shake` together, and the sound is yours to make**: the kit has no scream and no
+  teleport. The film used a high `buzz` (`pitch` 1.4 to 1.9) for a scream and `glitch` for a teleport, and taught
+  the viewer both in the first six seconds ([`SOUND.md`](SOUND.md) has the kit).
+- **`PumpkinView` and `PhotoBorder` are drawn in the world, not on the screen**: they only line up with a camera
+  that stands still, looks north and is not tilted. Give them the same `camera` and `fov` as the shot.
+- **A crowd that teleports**: `outAt={(i) => 0.5 + i * 0.09}` empties a street one after another in about a second.
+- Names in the film's own `kit.tsx` are shorter (`Mum`, `Enders`, `Hunter`, `Knocked`, `Plate`): it re-exports the
+  pack under them, so its scenes read like the script. A new film may do the same.
+- The parts were moved here from the film after he approved it, and a still of every shot was taken before and
+  after: 104 of 104 the same, pixel for pixel. Anything added here later must keep it so (rule 4 above).

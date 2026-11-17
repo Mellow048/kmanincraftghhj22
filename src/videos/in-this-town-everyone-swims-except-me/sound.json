@@ -1,0 +1,1476 @@
+{
+ "film": "in-this-town-everyone-swims-except-me",
+ "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-everyone-swims-except-me",
+ "music": {
+  "track": "Topics/InThisTown/InThisTownMusic.aac",
+  "gain": -16,
+  "sections": [
+   {
+    "from": "1.race",
+    "mood": "town",
+    "why": "The town, and the race it holds every summer."
+   },
+   {
+    "from": "1.shower",
+    "mood": "playful",
+    "why": "The boy who can shower and cannot swim."
+   },
+   {
+    "from": "1.worm",
+    "mood": "sad",
+    "why": "A worm under salt."
+   },
+   {
+    "from": "1.want",
+    "mood": "hope",
+    "why": "But he wanted the trophy."
+   },
+   {
+    "from": "2.smell",
+    "mood": "playful",
+    "why": "Training, badly, every morning."
+   },
+   {
+    "from": "2.deep",
+    "mood": "tense",
+    "why": "The deep end."
+   },
+   {
+    "from": "3.phone",
+    "mood": "sneak",
+    "why": "One video, at night."
+   },
+   {
+    "from": "3.try",
+    "mood": "playful",
+    "why": "Learn fast, sink fast."
+   },
+   {
+    "from": "3.up",
+    "mood": "hope",
+    "why": "Then he stayed on top."
+   },
+   {
+    "from": "3.stop",
+    "mood": "dark",
+    "why": "The moment he stops."
+   },
+   {
+    "from": "4.bottom",
+    "mood": "none",
+    "why": "The bottom of the pool: nothing but water."
+   },
+   {
+    "from": "4.shoes",
+    "mood": "playful",
+    "why": "The rescue, with shoes on."
+   },
+   {
+    "from": "5.home",
+    "mood": "sneak",
+    "why": "The walk home in the dark."
+   },
+   {
+    "from": "5.call",
+    "mood": "curious",
+    "why": "Somebody said his name."
+   },
+   {
+    "from": "5.cold",
+    "mood": "drone",
+    "why": "The ring, cold, humming."
+   },
+   {
+    "from": "6.morning",
+    "mood": "hope",
+    "why": "Worn for luck."
+   },
+   {
+    "from": "6.bonk",
+    "mood": "wonder",
+    "why": "The pool is suddenly one stroke long."
+   },
+   {
+    "from": "6.hurt",
+    "mood": "curious",
+    "why": "It is real, and it hurts."
+   },
+   {
+    "from": "6.medium",
+    "mood": "tense",
+    "why": "Medium is too fast."
+   },
+   {
+    "from": "6.fast",
+    "mood": "wonder",
+    "why": "Low is fast enough."
+   },
+   {
+    "from": "7.days",
+    "mood": "town",
+    "why": "The contest, and the whole town in it."
+   },
+   {
+    "from": "7.pro",
+    "mood": "tense",
+    "why": "Professionals at the blocks."
+   },
+   {
+    "from": "7.big",
+    "mood": "curious",
+    "why": "Three pools, and the smallest is his."
+   },
+   {
+    "from": "8.water",
+    "mood": "tense",
+    "why": "The race."
+   },
+   {
+    "from": "8.glint",
+    "mood": "none",
+    "why": "The ring on the other hand: the world stops."
+   },
+   {
+    "from": "8.panic",
+    "mood": "tense",
+    "why": "He swims harder."
+   },
+   {
+    "from": "8.lose",
+    "mood": "sad",
+    "why": "One place away."
+   },
+   {
+    "from": "8.hand",
+    "mood": "dark",
+    "why": "The hand, and the ring."
+   },
+   {
+    "from": "8.sub",
+    "mood": "town",
+    "why": "Part two."
+   }
+  ]
+ },
+ "beds": [
+  {
+   "from": "1.race",
+   "to": "1.shower",
+   "bed": "village"
+  },
+  {
+   "from": "1.shower",
+   "to": "1.want",
+   "bed": "pool"
+  },
+  {
+   "from": "2.smell",
+   "to": "2.days",
+   "bed": "pool"
+  },
+  {
+   "from": "3.phone",
+   "to": "3.title",
+   "bed": "room"
+  },
+  {
+   "from": "3.try",
+   "to": "3.coin",
+   "bed": "pool"
+  },
+  {
+   "from": "4.bottom",
+   "to": "4.tired",
+   "bed": "pool"
+  },
+  {
+   "from": "5.home",
+   "to": "5.call",
+   "bed": "night"
+  },
+  {
+   "from": "5.woods",
+   "to": "5.left",
+   "bed": "night"
+  },
+  {
+   "from": "5.cold",
+   "to": "5.cold",
+   "bed": "night"
+  },
+  {
+   "from": "5.lamp",
+   "to": "5.lamp",
+   "bed": "room"
+  },
+  {
+   "from": "6.morning",
+   "to": "6.luck",
+   "bed": "room"
+  },
+  {
+   "from": "6.alone",
+   "to": "6.shrug",
+   "bed": "pool"
+  },
+  {
+   "from": "7.days",
+   "to": "7.crowd",
+   "bed": "crowd"
+  },
+  {
+   "from": "7.pro",
+   "to": "7.go",
+   "bed": "crowd"
+  },
+  {
+   "from": "8.water",
+   "to": "8.water",
+   "bed": "crowd"
+  },
+  {
+   "from": "8.tenth",
+   "to": "8.sub",
+   "bed": "pool"
+  }
+ ],
+ "sfx": [
+  {
+   "cue": "1.race",
+   "at": 0.05,
+   "sfx": "step_stone",
+   "why": "The town walking to the water."
+  },
+  {
+   "cue": "1.race",
+   "at": 0.3,
+   "sfx": "step_stone",
+   "why": "More feet."
+  },
+  {
+   "cue": "1.race",
+   "at": 0.7,
+   "sfx": "swish",
+   "why": "One red shirt standing still."
+  },
+  {
+   "cue": "1.trophy",
+   "at": 0.1,
+   "sfx": "sparkle",
+   "why": "The cup, lit in its case."
+  },
+  {
+   "cue": "1.trophy",
+   "at": 0.65,
+   "sfx": "chime",
+   "why": "A prize that belongs to somebody else."
+  },
+  {
+   "cue": "1.window",
+   "at": 0.05,
+   "sfx": "swish",
+   "why": "Sliding along the hall front."
+  },
+  {
+   "cue": "1.window",
+   "at": 0.7,
+   "sfx": "place",
+   "why": "The case, fixed in the wall."
+  },
+  {
+   "cue": "1.shower",
+   "at": 0.05,
+   "sfx": "splash",
+   "why": "Water, from above."
+  },
+  {
+   "cue": "1.shower",
+   "at": 0.9,
+   "sfx": "plink",
+   "why": "The one safe kind of water."
+  },
+  {
+   "cue": "1.toes",
+   "at": 0.15,
+   "sfx": "heartbeat",
+   "why": "Ten toes and a water line."
+  },
+  {
+   "cue": "1.toes",
+   "at": 0.85,
+   "sfx": "plink",
+   "why": "One centimetre too far."
+  },
+  {
+   "cue": "1.worm",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Hanging on the wall."
+  },
+  {
+   "cue": "1.worm",
+   "at": 0.6,
+   "sfx": "swish",
+   "why": "Legs going nowhere."
+  },
+  {
+   "cue": "1.want",
+   "at": 0.1,
+   "sfx": "chime",
+   "why": "He wants it.",
+   "trim": 3
+  },
+  {
+   "cue": "1.want",
+   "at": 0.8,
+   "sfx": "ding",
+   "why": "And he has decided."
+  },
+  {
+   "cue": "2.smell",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Somebody in the water already."
+  },
+  {
+   "cue": "2.smell",
+   "at": 0.7,
+   "sfx": "step_stone",
+   "why": "Him, arriving."
+  },
+  {
+   "cue": "2.everyday",
+   "at": 0.1,
+   "sfx": "step_stone",
+   "why": "Every morning."
+  },
+  {
+   "cue": "2.everyday",
+   "at": 0.4,
+   "sfx": "step_stone",
+   "why": "The same walk."
+  },
+  {
+   "cue": "2.everyday",
+   "at": 0.7,
+   "sfx": "step_stone",
+   "why": "The same water."
+  },
+  {
+   "cue": "2.hold",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Hands on the tile."
+  },
+  {
+   "cue": "2.hold",
+   "at": 0.8,
+   "sfx": "plink",
+   "why": "The wall is the only thing holding him up."
+  },
+  {
+   "cue": "2.kick",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Kicking."
+  },
+  {
+   "cue": "2.kick",
+   "at": 0.4,
+   "sfx": "splash",
+   "why": "Kicking."
+  },
+  {
+   "cue": "2.kick",
+   "at": 0.7,
+   "sfx": "splash",
+   "why": "Still in the same place."
+  },
+  {
+   "cue": "2.sink",
+   "at": 0.15,
+   "sfx": "drop",
+   "why": "Legs going down."
+  },
+  {
+   "cue": "2.sink",
+   "at": 0.6,
+   "sfx": "splash",
+   "why": "The water takes the rest."
+  },
+  {
+   "cue": "2.laugh",
+   "at": 0.1,
+   "sfx": "cheer",
+   "why": "The little kids.",
+   "trim": -3
+  },
+  {
+   "cue": "2.laugh",
+   "at": 0.7,
+   "sfx": "swish",
+   "why": "Pointing."
+  },
+  {
+   "cue": "2.deep",
+   "at": 0.1,
+   "sfx": "sting",
+   "why": "The deep end, at its own height.",
+   "trim": -4
+  },
+  {
+   "cue": "2.down",
+   "at": 0.05,
+   "sfx": "splash",
+   "why": "Under."
+  },
+  {
+   "cue": "2.down",
+   "at": 0.6,
+   "sfx": "drop",
+   "why": "And the surface is gone."
+  },
+  {
+   "cue": "2.arms",
+   "at": 0.1,
+   "sfx": "plink",
+   "why": "Bubbles."
+  },
+  {
+   "cue": "2.arms",
+   "at": 0.55,
+   "sfx": "heartbeat",
+   "why": "Reaching for a top that is not there."
+  },
+  {
+   "cue": "2.hand",
+   "at": 0.1,
+   "sfx": "swish",
+   "why": "An arm comes in from the side."
+  },
+  {
+   "cue": "2.hand",
+   "at": 0.35,
+   "sfx": "rustle",
+   "why": "A fist closes on a sleeve."
+  },
+  {
+   "cue": "2.friend",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Out of the water."
+  },
+  {
+   "cue": "2.friend",
+   "at": 0.55,
+   "sfx": "thud",
+   "why": "Two kids on the tiles."
+  },
+  {
+   "cue": "2.breath",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Everything he swallowed.",
+   "trim": 0
+  },
+  {
+   "cue": "2.breath",
+   "at": 0.92,
+   "sfx": "heartbeat",
+   "why": "Getting his breath back.",
+   "trim": 0
+  },
+  {
+   "cue": "2.days",
+   "at": 0.1,
+   "sfx": "tick",
+   "why": "Three days."
+  },
+  {
+   "cue": "2.days",
+   "at": 0.25,
+   "sfx": "tick",
+   "why": "Two."
+  },
+  {
+   "cue": "2.days",
+   "at": 0.75,
+   "sfx": "stamp",
+   "why": "Saturday is set."
+  },
+  {
+   "cue": "3.phone",
+   "at": 0.1,
+   "sfx": "blip",
+   "why": "A video starts."
+  },
+  {
+   "cue": "3.phone",
+   "at": 0.75,
+   "sfx": "pop",
+   "why": "The idea arrives."
+  },
+  {
+   "cue": "3.title",
+   "at": 0.15,
+   "sfx": "ding",
+   "why": "Learn fast.",
+   "trim": -4
+  },
+  {
+   "cue": "3.title",
+   "at": 0.7,
+   "sfx": "sparkle",
+   "why": "Two words and a plan."
+  },
+  {
+   "cue": "3.try",
+   "at": 0.1,
+   "sfx": "heartbeat",
+   "why": "At the wall, alone.",
+   "trim": 3.5
+  },
+  {
+   "cue": "3.try",
+   "at": 0.6,
+   "sfx": "whoosh",
+   "why": "He goes for it."
+  },
+  {
+   "cue": "3.sank",
+   "at": 0.05,
+   "sfx": "splash",
+   "why": "Down."
+  },
+  {
+   "cue": "3.sank",
+   "at": 0.3,
+   "sfx": "drop",
+   "why": "Straight down.",
+   "trim": -3
+  },
+  {
+   "cue": "3.again",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Up."
+  },
+  {
+   "cue": "3.again",
+   "at": 0.75,
+   "sfx": "plink",
+   "why": "And under."
+  },
+  {
+   "cue": "3.again2",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Again."
+  },
+  {
+   "cue": "3.again2",
+   "at": 0.45,
+   "sfx": "splash",
+   "why": "And again."
+  },
+  {
+   "cue": "3.again2",
+   "at": 0.8,
+   "sfx": "splash",
+   "why": "And again."
+  },
+  {
+   "cue": "3.up",
+   "at": 0.1,
+   "sfx": "slide_up",
+   "why": "He stays on top."
+  },
+  {
+   "cue": "3.up",
+   "at": 0.65,
+   "sfx": "chime",
+   "why": "The water holds him."
+  },
+  {
+   "cue": "3.cross",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Moving."
+  },
+  {
+   "cue": "3.cross",
+   "at": 0.55,
+   "sfx": "swish",
+   "why": "The far wall, arriving."
+  },
+  {
+   "cue": "3.stop",
+   "at": 0.1,
+   "sfx": "plink",
+   "why": "He stops."
+  },
+  {
+   "cue": "3.stop",
+   "at": 0.55,
+   "sfx": "drop",
+   "why": "And the water lets go."
+  },
+  {
+   "cue": "3.coin",
+   "at": 0.1,
+   "sfx": "drop",
+   "why": "Like a coin."
+  },
+  {
+   "cue": "3.coin",
+   "at": 0.7,
+   "sfx": "plink",
+   "why": "A long way down."
+  },
+  {
+   "cue": "4.bottom",
+   "at": 0.1,
+   "sfx": "drop",
+   "why": "The floor of the pool."
+  },
+  {
+   "cue": "4.bottom",
+   "at": 0.6,
+   "sfx": "heartbeat",
+   "why": "Looking up."
+  },
+  {
+   "cue": "4.bubble",
+   "at": 0.1,
+   "sfx": "plink",
+   "why": "Bubbles."
+  },
+  {
+   "cue": "4.bubble",
+   "at": 0.55,
+   "sfx": "plink",
+   "why": "Going where he cannot."
+  },
+  {
+   "cue": "4.shoes",
+   "at": 0.05,
+   "sfx": "splash",
+   "why": "Shoes, and all."
+  },
+  {
+   "cue": "4.shoes",
+   "at": 0.55,
+   "sfx": "thud",
+   "why": "He lands in the deep end."
+  },
+  {
+   "cue": "4.pull",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Out by the shirt."
+  },
+  {
+   "cue": "4.pull",
+   "at": 0.45,
+   "sfx": "rustle",
+   "why": "Wet cloth on tile."
+  },
+  {
+   "cue": "4.taste",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Pool water."
+  },
+  {
+   "cue": "4.taste",
+   "at": 0.65,
+   "sfx": "plink",
+   "why": "On his own hands."
+  },
+  {
+   "cue": "4.tiles",
+   "at": 0.05,
+   "sfx": "thud",
+   "why": "Flat on the tiles.",
+   "trim": 4
+  },
+  {
+   "cue": "4.tiles",
+   "at": 0.8,
+   "sfx": "heartbeat",
+   "why": "Nothing left."
+  },
+  {
+   "cue": "4.tired",
+   "at": 0.2,
+   "sfx": "heartbeat",
+   "why": "Too tired to be embarrassed.",
+   "trim": 3
+  },
+  {
+   "cue": "5.home",
+   "at": 0.1,
+   "sfx": "step_grass",
+   "why": "Walking home."
+  },
+  {
+   "cue": "5.home",
+   "at": 0.4,
+   "sfx": "step_grass",
+   "why": "Alone."
+  },
+  {
+   "cue": "5.home",
+   "at": 0.75,
+   "sfx": "gust",
+   "why": "Night air."
+  },
+  {
+   "cue": "5.call",
+   "at": 0.1,
+   "sfx": "swish",
+   "why": "He stops."
+  },
+  {
+   "cue": "5.call",
+   "at": 0.65,
+   "sfx": "sting",
+   "why": "His name, out of the trees."
+  },
+  {
+   "cue": "5.woods",
+   "at": 0.1,
+   "sfx": "step_grass",
+   "why": "Into the trees."
+  },
+  {
+   "cue": "5.woods",
+   "at": 0.6,
+   "sfx": "creak",
+   "why": "The path is old."
+  },
+  {
+   "cue": "5.stranger",
+   "at": 0.1,
+   "sfx": "sparkle",
+   "why": "Something held out."
+  },
+  {
+   "cue": "5.stranger",
+   "at": 0.6,
+   "sfx": "chime",
+   "why": "A ring."
+  },
+  {
+   "cue": "5.ask",
+   "at": 0.1,
+   "sfx": "blip",
+   "why": "The question."
+  },
+  {
+   "cue": "5.silent",
+   "at": 0.85,
+   "sfx": "tick",
+   "why": "No answer at all."
+  },
+  {
+   "cue": "5.left",
+   "at": 0.1,
+   "sfx": "whoosh",
+   "why": "Gone."
+  },
+  {
+   "cue": "5.left",
+   "at": 0.55,
+   "sfx": "swish",
+   "why": "Nothing where he stood."
+  },
+  {
+   "cue": "5.cold",
+   "at": 0.1,
+   "sfx": "sparkle",
+   "why": "Cold metal."
+  },
+  {
+   "cue": "5.cold",
+   "at": 0.5,
+   "sfx": "glitch",
+   "why": "And it hums."
+  },
+  {
+   "cue": "5.lamp",
+   "at": 0.1,
+   "sfx": "place",
+   "why": "Put down by the lamp."
+  },
+  {
+   "cue": "5.lamp",
+   "at": 0.7,
+   "sfx": "tick",
+   "why": "Asleep."
+  },
+  {
+   "cue": "6.morning",
+   "at": 0.1,
+   "sfx": "chime",
+   "why": "Morning."
+  },
+  {
+   "cue": "6.morning",
+   "at": 0.6,
+   "sfx": "sparkle",
+   "why": "The ring goes on."
+  },
+  {
+   "cue": "6.luck",
+   "at": 0.1,
+   "sfx": "ding",
+   "why": "For luck."
+  },
+  {
+   "cue": "6.luck",
+   "at": 0.55,
+   "sfx": "blip",
+   "why": "He still thinks it is luck."
+  },
+  {
+   "cue": "6.alone",
+   "at": 0.1,
+   "sfx": "step_stone",
+   "why": "The empty deck."
+  },
+  {
+   "cue": "6.alone",
+   "at": 0.4,
+   "sfx": "step_stone",
+   "why": "No friend today."
+  },
+  {
+   "cue": "6.alone",
+   "at": 0.75,
+   "sfx": "whoosh",
+   "why": "All the water to himself."
+  },
+  {
+   "cue": "6.dive",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "In."
+  },
+  {
+   "cue": "6.dive",
+   "at": 0.55,
+   "sfx": "whoosh",
+   "why": "He swims."
+  },
+  {
+   "cue": "6.bonk",
+   "at": 0.1,
+   "sfx": "bonk",
+   "why": "Head first into tile."
+  },
+  {
+   "cue": "6.bonk",
+   "at": 0.5,
+   "sfx": "thud",
+   "why": "The wall."
+  },
+  {
+   "cue": "6.side",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Up."
+  },
+  {
+   "cue": "6.side",
+   "at": 0.5,
+   "sfx": "sparkle",
+   "why": "The other side of the pool."
+  },
+  {
+   "cue": "6.back",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Back the other way."
+  },
+  {
+   "cue": "6.back",
+   "at": 0.5,
+   "sfx": "swish",
+   "why": "The pool keeps shortening."
+  },
+  {
+   "cue": "6.bonk2",
+   "at": 0.1,
+   "sfx": "bonk",
+   "why": "Again."
+  },
+  {
+   "cue": "6.bonk2",
+   "at": 0.5,
+   "sfx": "splash",
+   "why": "The same wall."
+  },
+  {
+   "cue": "6.same",
+   "at": 0.1,
+   "sfx": "bonk",
+   "why": "Same thing."
+  },
+  {
+   "cue": "6.same",
+   "at": 0.65,
+   "sfx": "glitch",
+   "why": "Nothing about it makes sense."
+  },
+  {
+   "cue": "6.dream",
+   "at": 0.1,
+   "sfx": "glitch",
+   "why": "A dream, maybe."
+  },
+  {
+   "cue": "6.dream",
+   "at": 0.6,
+   "sfx": "tick",
+   "why": "He checks."
+  },
+  {
+   "cue": "6.hurt",
+   "at": 0.1,
+   "sfx": "thud",
+   "why": "It hurts."
+  },
+  {
+   "cue": "6.hurt",
+   "at": 0.5,
+   "sfx": "heartbeat",
+   "why": "So it is real."
+  },
+  {
+   "cue": "6.looked",
+   "at": 0.1,
+   "sfx": "sparkle",
+   "why": "The ring, glowing."
+  },
+  {
+   "cue": "6.looked",
+   "at": 0.55,
+   "sfx": "chime",
+   "why": "Three little buttons."
+  },
+  {
+   "cue": "6.buttons",
+   "at": 0.1,
+   "sfx": "pop",
+   "why": "Three of them."
+  },
+  {
+   "cue": "6.buttons",
+   "at": 0.3,
+   "sfx": "tick",
+   "why": "Max."
+  },
+  {
+   "cue": "6.buttons",
+   "at": 0.5,
+   "sfx": "tick",
+   "why": "Medium."
+  },
+  {
+   "cue": "6.buttons",
+   "at": 0.7,
+   "sfx": "tick",
+   "why": "Low."
+  },
+  {
+   "cue": "6.medium",
+   "at": 0.1,
+   "sfx": "power_up",
+   "why": "The middle button."
+  },
+  {
+   "cue": "6.medium",
+   "at": 0.6,
+   "sfx": "buzz",
+   "why": "The pool goes short."
+  },
+  {
+   "cue": "6.scared",
+   "at": 0.1,
+   "sfx": "drop",
+   "why": "Too fast."
+  },
+  {
+   "cue": "6.scared",
+   "at": 0.6,
+   "sfx": "heartbeat",
+   "why": "That is frightening."
+  },
+  {
+   "cue": "6.low",
+   "at": 0.1,
+   "sfx": "tick",
+   "why": "One button down."
+  },
+  {
+   "cue": "6.low",
+   "at": 0.55,
+   "sfx": "power_up",
+   "why": "Low."
+  },
+  {
+   "cue": "6.fast",
+   "at": 0.1,
+   "sfx": "zip",
+   "why": "Fast."
+  },
+  {
+   "cue": "6.fast",
+   "at": 0.3,
+   "sfx": "splash",
+   "why": "A wake."
+  },
+  {
+   "cue": "6.fast",
+   "at": 0.65,
+   "sfx": "whoosh",
+   "why": "Very fast."
+  },
+  {
+   "cue": "6.how",
+   "at": 0.1,
+   "sfx": "blip",
+   "why": "How?"
+  },
+  {
+   "cue": "6.how",
+   "at": 0.6,
+   "sfx": "buzz",
+   "why": "No answer in the ring."
+  },
+  {
+   "cue": "6.shrug",
+   "at": 0.5,
+   "sfx": "pop",
+   "why": "He does not know either."
+  },
+  {
+   "cue": "7.days",
+   "at": 0.1,
+   "sfx": "paper",
+   "why": "A form."
+  },
+  {
+   "cue": "7.days",
+   "at": 0.45,
+   "sfx": "step_stone",
+   "why": "A queue."
+  },
+  {
+   "cue": "7.days",
+   "at": 0.8,
+   "sfx": "stamp",
+   "why": "Signed."
+  },
+  {
+   "cue": "7.hands",
+   "at": 0.1,
+   "sfx": "paper",
+   "why": "The pen moves."
+  },
+  {
+   "cue": "7.hands",
+   "at": 0.5,
+   "sfx": "rustle",
+   "why": "Shaking hands."
+  },
+  {
+   "cue": "7.number",
+   "at": 0.1,
+   "sfx": "stamp",
+   "why": "Number sixty-six."
+  },
+  {
+   "cue": "7.number",
+   "at": 0.6,
+   "sfx": "paper",
+   "why": "Pinned on."
+  },
+  {
+   "cue": "7.crowd",
+   "at": 0.15,
+   "sfx": "cheer",
+   "why": "The whole field."
+  },
+  {
+   "cue": "7.crowd",
+   "at": 0.7,
+   "sfx": "swish",
+   "why": "More people than he has ever seen.",
+   "trim": 3
+  },
+  {
+   "cue": "7.pro",
+   "at": 0.1,
+   "sfx": "clank",
+   "why": "Professionals."
+  },
+  {
+   "cue": "7.pro",
+   "at": 0.55,
+   "sfx": "swish",
+   "why": "All of them, looking at the water."
+  },
+  {
+   "cue": "7.matter",
+   "at": 0.1,
+   "sfx": "ding",
+   "why": "It did not matter."
+  },
+  {
+   "cue": "7.matter",
+   "at": 0.45,
+   "sfx": "sparkle",
+   "why": "He had a ring."
+  },
+  {
+   "cue": "7.table",
+   "at": 0.1,
+   "sfx": "sparkle",
+   "why": "The cup, on a table."
+  },
+  {
+   "cue": "7.table",
+   "at": 0.6,
+   "sfx": "chime",
+   "why": "Right where he will arrive."
+  },
+  {
+   "cue": "7.big",
+   "at": 0.1,
+   "sfx": "boom",
+   "why": "The pool."
+  },
+  {
+   "cue": "7.big",
+   "at": 0.6,
+   "sfx": "whoosh",
+   "why": "Not one pool."
+  },
+  {
+   "cue": "7.speaker",
+   "at": 0.1,
+   "sfx": "buzz",
+   "why": "The speaker."
+  },
+  {
+   "cue": "7.speaker",
+   "at": 0.55,
+   "sfx": "crackle",
+   "why": "Crackling."
+  },
+  {
+   "cue": "7.three",
+   "at": 0.1,
+   "sfx": "tick",
+   "why": "Three pools."
+  },
+  {
+   "cue": "7.three",
+   "at": 0.5,
+   "sfx": "whoosh",
+   "why": "Each one bigger."
+  },
+  {
+   "cue": "7.smallest",
+   "at": 0.1,
+   "sfx": "buzz",
+   "why": "Pool one."
+  },
+  {
+   "cue": "7.smallest",
+   "at": 0.6,
+   "sfx": "drop",
+   "why": "The smallest."
+  },
+  {
+   "cue": "7.most",
+   "at": 0.1,
+   "sfx": "stamp",
+   "why": "The rule."
+  },
+  {
+   "cue": "7.most",
+   "at": 0.55,
+   "sfx": "ding",
+   "why": "Most wins."
+  },
+  {
+   "cue": "7.what",
+   "at": 0.1,
+   "sfx": "blip",
+   "why": "The arithmetic."
+  },
+  {
+   "cue": "7.what",
+   "at": 0.5,
+   "sfx": "riser",
+   "why": "And then the count."
+  },
+  {
+   "cue": "7.go",
+   "at": 0.9,
+   "sfx": "hit",
+   "why": "Go."
+  },
+  {
+   "cue": "8.water",
+   "at": 0.05,
+   "sfx": "splash",
+   "why": "Everybody at once."
+  },
+  {
+   "cue": "8.water",
+   "at": 0.25,
+   "sfx": "splash",
+   "why": "Five lanes."
+  },
+  {
+   "cue": "8.water",
+   "at": 0.6,
+   "sfx": "whoosh",
+   "why": "The water opens."
+  },
+  {
+   "cue": "8.tenth",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Feet ahead of him."
+  },
+  {
+   "cue": "8.tenth",
+   "at": 0.55,
+   "sfx": "heartbeat",
+   "why": "He is last."
+  },
+  {
+   "cue": "8.eighth",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Past one."
+  },
+  {
+   "cue": "8.eighth",
+   "at": 0.45,
+   "sfx": "splash",
+   "why": "Past another."
+  },
+  {
+   "cue": "8.eighth",
+   "at": 0.8,
+   "sfx": "swish",
+   "why": "Moving up."
+  },
+  {
+   "cue": "8.seventh",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Seventh."
+  },
+  {
+   "cue": "8.seventh",
+   "at": 0.55,
+   "sfx": "whoosh",
+   "why": "The lanes slide by."
+  },
+  {
+   "cue": "8.fourth",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Fourth."
+  },
+  {
+   "cue": "8.fourth",
+   "at": 0.5,
+   "sfx": "zip",
+   "why": "The ring is working."
+  },
+  {
+   "cue": "8.feel",
+   "at": 0.1,
+   "sfx": "power_up",
+   "why": "He can feel it."
+  },
+  {
+   "cue": "8.feel",
+   "at": 0.55,
+   "sfx": "heartbeat",
+   "why": "In his hands."
+  },
+  {
+   "cue": "8.saw",
+   "at": 0.1,
+   "sfx": "swish",
+   "why": "He turns his head."
+  },
+  {
+   "cue": "8.saw",
+   "at": 0.55,
+   "sfx": "sting",
+   "why": "Something is there."
+  },
+  {
+   "cue": "8.glint",
+   "at": 0.1,
+   "sfx": "sparkle",
+   "why": "Gold, on the hand in front."
+  },
+  {
+   "cue": "8.glint",
+   "at": 0.35,
+   "sfx": "boom",
+   "why": "The same ring."
+  },
+  {
+   "cue": "8.panic",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Harder."
+  },
+  {
+   "cue": "8.panic",
+   "at": 0.4,
+   "sfx": "splash",
+   "why": "Harder."
+  },
+  {
+   "cue": "8.panic",
+   "at": 0.7,
+   "sfx": "whoosh",
+   "why": "And the wall is close."
+  },
+  {
+   "cue": "8.third",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Third."
+  },
+  {
+   "cue": "8.third",
+   "at": 0.5,
+   "sfx": "ding",
+   "why": "One more."
+  },
+  {
+   "cue": "8.second",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "Second."
+  },
+  {
+   "cue": "8.second",
+   "at": 0.55,
+   "sfx": "heartbeat",
+   "why": "One shoulder ahead."
+  },
+  {
+   "cue": "8.catch",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "He cannot close it."
+  },
+  {
+   "cue": "8.catch",
+   "at": 0.5,
+   "sfx": "drop",
+   "why": "Not on low."
+  },
+  {
+   "cue": "8.dare",
+   "at": 0.1,
+   "sfx": "tick",
+   "why": "His thumb, over the red."
+  },
+  {
+   "cue": "8.dare",
+   "at": 0.5,
+   "sfx": "heartbeat",
+   "why": "He does not press it."
+  },
+  {
+   "cue": "8.lose",
+   "at": 0.1,
+   "sfx": "splash",
+   "why": "The wall."
+  },
+  {
+   "cue": "8.lose",
+   "at": 0.45,
+   "sfx": "boom",
+   "why": "Somebody else's hand."
+  },
+  {
+   "cue": "8.secondplace",
+   "at": 0.1,
+   "sfx": "drop",
+   "why": "One place away."
+  },
+  {
+   "cue": "8.secondplace",
+   "at": 0.5,
+   "sfx": "sting",
+   "why": "The trophy is right there."
+  },
+  {
+   "cue": "8.tiles",
+   "at": 0.1,
+   "sfx": "heartbeat",
+   "why": "On the tiles."
+  },
+  {
+   "cue": "8.tiles",
+   "at": 0.6,
+   "sfx": "tick",
+   "why": "Nothing left in him."
+  },
+  {
+   "cue": "8.atleast",
+   "at": 0.8,
+   "sfx": "sparkle",
+   "why": "A tired fist in the air.",
+   "trim": -1.5
+  },
+  {
+   "cue": "8.hand",
+   "at": 0.1,
+   "sfx": "sparkle",
+   "why": "A hand, held out."
+  },
+  {
+   "cue": "8.hand",
+   "at": 0.5,
+   "sfx": "sting",
+   "why": "With a ring on it."
+  },
+  {
+   "cue": "8.problem",
+   "at": 0.1,
+   "sfx": "sting",
+   "why": "This is going to be a problem.",
+   "trim": -3
+  },
+  {
+   "cue": "8.sub",
+   "at": 0.1,
+   "sfx": "ding",
+   "why": "Part two."
+  },
+  {
+   "cue": "8.sub",
+   "at": 0.6,
+   "sfx": "chime",
+   "why": "Like and subscribe."
+  }
+ ]
+}

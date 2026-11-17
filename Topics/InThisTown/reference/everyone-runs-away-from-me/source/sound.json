@@ -1,0 +1,931 @@
+{
+  "film": "in-this-town-everyone-runs-away-from-me",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-everyone-runs-away-from-me. The kit has no hiss and no purr: a hiss here is a short high `gust`, a purr is a low fast run of `step_stone`. A creeper running is `zip` and a burst of quick `step_grass`: the viewer learns it in the first five seconds and hears it eight times.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.cat",
+        "mood": "town",
+        "why": "The topic's track from frame one: a town, and one cat."
+      },
+      {
+        "from": "2.why",
+        "mood": "playful",
+        "why": "What it is like: every line is a joke."
+      },
+      {
+        "from": "2.hug",
+        "mood": "curious",
+        "gain": -3,
+        "why": "'All I ever wanted was one hug.' The track steps back for it."
+      },
+      {
+        "from": "3.tried",
+        "mood": "playful",
+        "why": "Three plans, three failures."
+      },
+      {
+        "from": "3.still",
+        "mood": "hope",
+        "gain": -3,
+        "why": "He sits still, and one stays."
+      },
+      {
+        "from": "3.gone",
+        "mood": "curious",
+        "gain": -4,
+        "why": "A week."
+      },
+      {
+        "from": "4.night",
+        "mood": "sneak",
+        "gain": -2,
+        "why": "Players, at night."
+      },
+      {
+        "from": "4.started",
+        "mood": "tense",
+        "why": "The town starts to hiss. It climbs to the end of the clip."
+      },
+      {
+        "from": "5.small",
+        "mood": "drone",
+        "gain": -2,
+        "why": "He is small. One low note while he thinks."
+      },
+      {
+        "from": "5.said",
+        "mood": "none",
+        "why": "'And I said hello.' Nothing under it."
+      },
+      {
+        "from": "5.ran",
+        "mood": "playful",
+        "why": "The stampede: full level, it is the funniest thing in the film."
+      },
+      {
+        "from": "5.left",
+        "mood": "curious",
+        "gain": -3,
+        "why": "Swords, sacks, and one shoe."
+      },
+      {
+        "from": "6.morning",
+        "mood": "hope",
+        "gain": -3,
+        "why": "They come back."
+      },
+      {
+        "from": "6.arms",
+        "mood": "none",
+        "why": "She leans. Silence is the picture."
+      },
+      {
+        "from": "6.came",
+        "mood": "hope",
+        "why": "She came back."
+      },
+      {
+        "from": "7.turns",
+        "mood": "town",
+        "why": "Now: the town as it is."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.cat",
+      "to": "1.box",
+      "bed": "village"
+    },
+    {
+      "from": "1.love",
+      "to": "1.love",
+      "bed": "room"
+    },
+    {
+      "from": "2.why",
+      "to": "3.gone",
+      "bed": "village"
+    },
+    {
+      "from": "4.night",
+      "to": "5.left",
+      "bed": "night"
+    },
+    {
+      "from": "6.morning",
+      "to": "8.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.cat",
+      "at": 0.05,
+      "sfx": "pop",
+      "why": "Frame one: a cat waves."
+    },
+    {
+      "cue": "1.cat",
+      "word": "cat",
+      "pitch": 1.3,
+      "sfx": "blip",
+      "why": "'Cat': his tail flicks."
+    },
+    {
+      "cue": "1.all",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut: the street from above."
+    },
+    {
+      "cue": "1.all",
+      "at": 0.3,
+      "repeat": 3,
+      "every": 0.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Creepers going about."
+    },
+    {
+      "cue": "1.hello",
+      "at": 0.25,
+      "sfx": "pop",
+      "why": "HELLO pops up."
+    },
+    {
+      "cue": "1.hello",
+      "word": "runs",
+      "trim": 2,
+      "sfx": "zip",
+      "why": "'Runs': the street jumps and bolts."
+    },
+    {
+      "cue": "1.hello",
+      "word": "runs",
+      "at": 0.15,
+      "repeat": 5,
+      "every": 0.09,
+      "trim": -1,
+      "pitch": 1.25,
+      "sfx": "step_grass",
+      "why": "Many small feet, fast."
+    },
+    {
+      "cue": "1.mum",
+      "word": "mum",
+      "pitch": 1.2,
+      "sfx": "blip",
+      "why": "Mum tips her head."
+    },
+    {
+      "cue": "1.mum",
+      "word": "dad",
+      "pitch": 0.8,
+      "sfx": "blip",
+      "why": "Dad nods."
+    },
+    {
+      "cue": "1.box",
+      "word": "box",
+      "sfx": "rustle",
+      "why": "A cardboard box on the doorstep."
+    },
+    {
+      "cue": "1.box",
+      "word": "kitten",
+      "trim": 1,
+      "sfx": "boing",
+      "why": "'Kitten': a paw comes up and they both jump back."
+    },
+    {
+      "cue": "1.love",
+      "word": "love",
+      "trim": -2,
+      "sfx": "sparkle",
+      "why": "They love him."
+    },
+    {
+      "cue": "1.love",
+      "word": "other",
+      "trim": 1,
+      "sfx": "slide_down",
+      "why": "'From the other side of the room.'"
+    },
+    {
+      "cue": "2.why",
+      "word": "cats",
+      "trim": -1,
+      "sfx": "boing",
+      "why": "'Cats': the creeper jumps a foot in the air."
+    },
+    {
+      "cue": "2.why",
+      "word": "cats",
+      "at": 0.25,
+      "sfx": "zip",
+      "why": "And it is gone."
+    },
+    {
+      "cue": "2.knows",
+      "word": "why",
+      "pitch": 1.4,
+      "sfx": "blip",
+      "why": "'Why?' A head tips."
+    },
+    {
+      "cue": "2.knows",
+      "word": "Not",
+      "pitch": 0.7,
+      "sfx": "blip",
+      "why": "They both look at us."
+    },
+    {
+      "cue": "2.table",
+      "at": 0.1,
+      "sfx": "place",
+      "why": "A fish on a plate."
+    },
+    {
+      "cue": "2.table",
+      "word": "nine",
+      "repeat": 5,
+      "every": 0.2,
+      "trim": 4,
+      "sfx": "tick",
+      "why": "Plank after plank: the table goes on."
+    },
+    {
+      "cue": "2.table",
+      "word": "far",
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "'The far end.'"
+    },
+    {
+      "cue": "2.school",
+      "at": 0.05,
+      "trim": -4,
+      "sfx": "school_bell",
+      "why": "School."
+    },
+    {
+      "cue": "2.school",
+      "word": "And",
+      "sfx": "swish",
+      "why": "The camera swings to his own door."
+    },
+    {
+      "cue": "2.school",
+      "word": "door",
+      "at": 0.15,
+      "pitch": 1.2,
+      "trim": -5,
+      "sfx": "ding",
+      "why": "A door with a paw over it."
+    },
+    {
+      "cue": "2.street",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.4,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "He walks up the street."
+    },
+    {
+      "cue": "2.street",
+      "word": "walk",
+      "trim": 3,
+      "sfx": "zip",
+      "why": "A creeper dives out of his way."
+    },
+    {
+      "cue": "2.street",
+      "word": "street",
+      "pitch": 1.15,
+      "trim": 4,
+      "sfx": "zip",
+      "why": "And another."
+    },
+    {
+      "cue": "2.street",
+      "word": "empties",
+      "pitch": 1.3,
+      "sfx": "zip",
+      "why": "And another."
+    },
+    {
+      "cue": "2.street",
+      "word": "that",
+      "at": 0.2,
+      "pitch": 0.8,
+      "sfx": "pop",
+      "why": "'Just like that.'"
+    },
+    {
+      "cue": "2.never",
+      "word": "scratch",
+      "trim": 1,
+      "sfx": "tick",
+      "why": "'Scratch': he shows his paws."
+    },
+    {
+      "cue": "2.never",
+      "word": "bite",
+      "pitch": 1.2,
+      "trim": 1,
+      "sfx": "tick",
+      "why": "'Bite': he shows his teeth."
+    },
+    {
+      "cue": "2.never",
+      "word": "chased",
+      "repeat": 3,
+      "every": 0.2,
+      "pitch": 1.6,
+      "trim": -1,
+      "sfx": "blip",
+      "why": "A chicken walks up to him."
+    },
+    {
+      "cue": "2.never",
+      "word": "chicken",
+      "at": 0.3,
+      "sfx": "plink",
+      "why": "It pecks his foot. He does nothing."
+    },
+    {
+      "cue": "2.hug",
+      "word": "hug",
+      "trim": -1,
+      "sfx": "slide_up",
+      "why": "Arms wide open: one hug."
+    },
+    {
+      "cue": "3.tried",
+      "word": "everything",
+      "at": 0.1,
+      "sfx": "thud",
+      "why": "'Everything': a green box drops over his head.",
+      "trim": 3
+    },
+    {
+      "cue": "3.suit",
+      "word": "creeper",
+      "pitch": 1.5,
+      "sfx": "blip",
+      "why": "Two ears twitch over the top."
+    },
+    {
+      "cue": "3.suitran",
+      "at": 0.05,
+      "repeat": 2,
+      "every": 0.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "The box waddles up the street."
+    },
+    {
+      "cue": "3.suitran",
+      "word": "ran",
+      "sfx": "zip",
+      "why": "They ran from the costume."
+    },
+    {
+      "cue": "3.suitran",
+      "word": "costume",
+      "at": 0.3,
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "The plan fails, lightly."
+    },
+    {
+      "cue": "3.back",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.38,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Walking backwards."
+    },
+    {
+      "cue": "3.back",
+      "word": "backwards",
+      "trim": -3,
+      "sfx": "slide_up",
+      "why": "Feeling behind him with one paw."
+    },
+    {
+      "cue": "3.tail",
+      "word": "ran",
+      "sfx": "zip",
+      "why": "They ran from his tail."
+    },
+    {
+      "cue": "3.tail",
+      "word": "tail",
+      "at": 0.3,
+      "pitch": 0.9,
+      "trim": -1,
+      "sfx": "bonk",
+      "why": "Again."
+    },
+    {
+      "cue": "3.still",
+      "word": "still",
+      "repeat": 5,
+      "every": 0.2,
+      "trim": -1,
+      "sfx": "tick",
+      "why": "A whole day goes by behind him."
+    },
+    {
+      "cue": "3.little",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.2,
+      "pitch": 1.5,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "Very small feet walk in and stop."
+    },
+    {
+      "cue": "3.little",
+      "word": "next",
+      "pitch": 1.3,
+      "sfx": "blip",
+      "why": "One eye opens and slides sideways."
+    },
+    {
+      "cue": "3.purr",
+      "word": "purred",
+      "repeat": 10,
+      "every": 0.07,
+      "pitch": 0.5,
+      "trim": -1,
+      "sfx": "step_stone",
+      "why": "The stand-in for a purr: a low, fast rattle."
+    },
+    {
+      "cue": "3.purr",
+      "word": "help",
+      "trim": -6,
+      "sfx": "sting",
+      "why": "'I could not help it.'"
+    },
+    {
+      "cue": "3.gone",
+      "at": 0.05,
+      "trim": 1,
+      "sfx": "zip",
+      "why": "Gone, with a line of dust behind."
+    },
+    {
+      "cue": "3.gone",
+      "word": "week",
+      "trim": -1,
+      "sfx": "slide_down",
+      "why": "A week."
+    },
+    {
+      "cue": "4.night",
+      "at": 0.2,
+      "repeat": 4,
+      "every": 0.34,
+      "pitch": 0.8,
+      "trim": 1,
+      "sfx": "step_stone",
+      "why": "Six players walk in."
+    },
+    {
+      "cue": "4.night",
+      "word": "players",
+      "trim": -3,
+      "sfx": "sting",
+      "why": "Players."
+    },
+    {
+      "cue": "4.six",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Along the line of six."
+    },
+    {
+      "cue": "4.six",
+      "word": "swords",
+      "trim": -1,
+      "sfx": "clank",
+      "why": "Swords."
+    },
+    {
+      "cue": "4.six",
+      "word": "sacks",
+      "trim": 2,
+      "sfx": "rustle",
+      "why": "Empty sacks."
+    },
+    {
+      "cue": "4.powder",
+      "word": "gunpowder",
+      "trim": -2,
+      "sfx": "heartbeat",
+      "why": "They want gunpowder."
+    },
+    {
+      "cue": "4.powder",
+      "word": "creepers",
+      "trim": -3,
+      "sfx": "drop",
+      "why": "'Comes from creepers.'"
+    },
+    {
+      "cue": "4.square",
+      "at": 0.1,
+      "repeat": 6,
+      "every": 0.2,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "The whole town backs up the street."
+    },
+    {
+      "cue": "4.started",
+      "word": "hiss",
+      "pitch": 1.6,
+      "trim": 2,
+      "sfx": "gust",
+      "why": "The stand-in for a hiss: a short high gust. The first one."
+    },
+    {
+      "cue": "4.hiss",
+      "word": "hisses",
+      "pitch": 1.7,
+      "trim": 2,
+      "sfx": "gust",
+      "why": "Hiss: it swells and flashes."
+    },
+    {
+      "cue": "4.hiss",
+      "word": "up",
+      "trim": -3,
+      "sfx": "riser",
+      "why": "'About to blow up.'"
+    },
+    {
+      "cue": "4.chain",
+      "at": 0.2,
+      "pitch": 1.5,
+      "trim": 2,
+      "dur": 1.2,
+      "sfx": "gust",
+      "why": "The whole pack hissing."
+    },
+    {
+      "cue": "4.chain",
+      "word": "all",
+      "trim": 1,
+      "sfx": "heartbeat",
+      "why": "'They all do.'"
+    },
+    {
+      "cue": "4.white",
+      "word": "white",
+      "pitch": 1.4,
+      "repeat": 2,
+      "every": 0.16,
+      "sfx": "tick",
+      "why": "Mum, flashing white.",
+      "trim": 4
+    },
+    {
+      "cue": "4.white",
+      "word": "white",
+      "nth": 1,
+      "pitch": 1.1,
+      "repeat": 2,
+      "every": 0.16,
+      "sfx": "tick",
+      "why": "Dad, flashing white.",
+      "trim": 4
+    },
+    {
+      "cue": "5.small",
+      "word": "six",
+      "repeat": 3,
+      "every": 0.32,
+      "pitch": 0.8,
+      "trim": 1,
+      "sfx": "step_stone",
+      "why": "Two players walk right past him."
+    },
+    {
+      "cue": "5.good",
+      "word": "one",
+      "pitch": 1.3,
+      "sfx": "blip",
+      "why": "An idea."
+    },
+    {
+      "cue": "5.good",
+      "word": "good",
+      "trim": -1,
+      "sfx": "slide_up",
+      "why": "A slow grin, and the tail goes up."
+    },
+    {
+      "cue": "5.behind",
+      "at": 0.1,
+      "repeat": 4,
+      "every": 0.3,
+      "pitch": 1.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "On tiptoe, behind thirty flashing backs."
+    },
+    {
+      "cue": "5.behind",
+      "at": 0.6,
+      "pitch": 1.6,
+      "trim": -2,
+      "sfx": "gust",
+      "why": "The hiss goes on."
+    },
+    {
+      "cue": "5.said",
+      "word": "hello",
+      "trim": 3,
+      "sfx": "pop",
+      "why": "HELLO."
+    },
+    {
+      "cue": "5.ran",
+      "word": "ran",
+      "trim": 1,
+      "sfx": "boing",
+      "why": "Thirty creepers jump."
+    },
+    {
+      "cue": "5.ran",
+      "word": "Every",
+      "repeat": 12,
+      "every": 0.08,
+      "pitch": 1.2,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "The whole town running."
+    },
+    {
+      "cue": "5.ran",
+      "word": "ahead",
+      "trim": 1,
+      "sfx": "whoosh",
+      "why": "A green wave down the street."
+    },
+    {
+      "cue": "5.through",
+      "at": 0.25,
+      "trim": -2,
+      "sfx": "hit",
+      "why": "The wall of creepers hits the players."
+    },
+    {
+      "cue": "5.through",
+      "word": "players",
+      "trim": 1,
+      "sfx": "clank",
+      "why": "Swords fly."
+    },
+    {
+      "cue": "5.through",
+      "word": "players",
+      "at": 0.25,
+      "sfx": "slide_down",
+      "why": "A player spins away."
+    },
+    {
+      "cue": "5.boom",
+      "at": 0.05,
+      "sfx": "debris",
+      "why": "Dust settling. Every house still standing."
+    },
+    {
+      "cue": "5.cant",
+      "at": 0.05,
+      "repeat": 10,
+      "every": 0.09,
+      "pitch": 1.2,
+      "trim": -1,
+      "sfx": "step_grass",
+      "why": "Flat out, and not one of them flashing."
+    },
+    {
+      "cue": "5.left",
+      "word": "swords",
+      "trim": -2,
+      "sfx": "clank",
+      "why": "Swords on the ground."
+    },
+    {
+      "cue": "5.left",
+      "word": "sacks",
+      "trim": 2,
+      "sfx": "rustle",
+      "why": "Sacks."
+    },
+    {
+      "cue": "5.left",
+      "word": "shoe",
+      "at": 0.2,
+      "pitch": 1.2,
+      "sfx": "bonk",
+      "why": "One shoe."
+    },
+    {
+      "cue": "6.morning",
+      "at": 0.2,
+      "repeat": 5,
+      "every": 0.3,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "The town walks back in."
+    },
+    {
+      "cue": "6.nine",
+      "word": "Nine",
+      "repeat": 9,
+      "every": 0.1,
+      "trim": 5,
+      "sfx": "tick",
+      "why": "Nine blocks, counted off."
+    },
+    {
+      "cue": "6.step",
+      "word": "step",
+      "at": 0.05,
+      "trim": 4,
+      "sfx": "step_grass",
+      "why": "One step."
+    },
+    {
+      "cue": "6.step",
+      "word": "more",
+      "trim": 4,
+      "sfx": "step_grass",
+      "why": "And one more."
+    },
+    {
+      "cue": "6.shake",
+      "at": 0.1,
+      "repeat": 12,
+      "every": 0.07,
+      "pitch": 1.8,
+      "trim": -3,
+      "sfx": "step_stone",
+      "why": "She is shaking all over."
+    },
+    {
+      "cue": "6.arms",
+      "word": "leaned",
+      "trim": -2,
+      "sfx": "slide_down",
+      "why": "She tips forward, slowly."
+    },
+    {
+      "cue": "6.arms",
+      "word": "me",
+      "at": 0.15,
+      "trim": -5,
+      "sfx": "thud",
+      "why": "Her head lands on his shoulder."
+    },
+    {
+      "cue": "6.second",
+      "at": 0.1,
+      "trim": -1,
+      "sfx": "chime",
+      "why": "The hug."
+    },
+    {
+      "cue": "6.second",
+      "word": "whole",
+      "pitch": 0.8,
+      "sfx": "tick",
+      "why": "One whole second."
+    },
+    {
+      "cue": "6.second",
+      "word": "Then",
+      "at": 0.12,
+      "trim": 1,
+      "sfx": "boing",
+      "why": "'Then she ran': straight up and gone."
+    },
+    {
+      "cue": "6.second",
+      "word": "ran",
+      "sfx": "zip",
+      "why": "Gone."
+    },
+    {
+      "cue": "6.came",
+      "at": 0.05,
+      "repeat": 3,
+      "every": 0.24,
+      "trim": 2,
+      "sfx": "step_grass",
+      "why": "She walks back."
+    },
+    {
+      "cue": "6.came",
+      "word": "back",
+      "at": 0.25,
+      "sfx": "sparkle",
+      "why": "She came back. And dad."
+    },
+    {
+      "cue": "7.turns",
+      "word": "hug",
+      "pitch": 1.2,
+      "trim": -3,
+      "sfx": "ding",
+      "why": "One hug a day."
+    },
+    {
+      "cue": "7.turns",
+      "word": "They",
+      "trim": -3,
+      "sfx": "boing",
+      "why": "Next, please: the first one jumps and runs."
+    },
+    {
+      "cue": "7.turns",
+      "word": "turns",
+      "repeat": 3,
+      "every": 0.14,
+      "trim": 1,
+      "sfx": "step_grass",
+      "why": "The queue shuffles up."
+    },
+    {
+      "cue": "7.table",
+      "word": "six",
+      "trim": 1,
+      "sfx": "place",
+      "why": "The table again. Six."
+    },
+    {
+      "cue": "7.little",
+      "word": "purr",
+      "at": 0.1,
+      "repeat": 10,
+      "every": 0.07,
+      "pitch": 0.5,
+      "trim": -1,
+      "sfx": "step_stone",
+      "why": "He purrs. The little one stays."
+    },
+    {
+      "cue": "7.little",
+      "word": "purr",
+      "at": 0.55,
+      "trim": -2,
+      "sfx": "chime",
+      "why": "And leans in."
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "trim": -2,
+      "sfx": "ding",
+      "why": "Like and subscribe."
+    },
+    {
+      "cue": "8.sub",
+      "word": "hello",
+      "trim": 2,
+      "sfx": "pop",
+      "why": "'Hello.'"
+    },
+    {
+      "cue": "8.sub",
+      "word": "hello",
+      "at": 0.25,
+      "sfx": "zip",
+      "why": "And the whole town runs, sign and all."
+    },
+    {
+      "cue": "8.sub",
+      "word": "hello",
+      "at": 0.3,
+      "repeat": 5,
+      "every": 0.09,
+      "trim": -1,
+      "pitch": 1.25,
+      "sfx": "step_grass",
+      "why": "Feet."
+    }
+  ]
+}

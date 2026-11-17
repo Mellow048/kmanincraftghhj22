@@ -20,6 +20,11 @@ And 2026-11-15, of the snow golem film:
 
 > "this is a good short. souce code + mp4 put it in there for other agents to see how to make a good short."
 
+And 2026-11-15, of the cats and dogs film:
+
+> "this is actually really funny, i love this please put it in the reference in the main branch, and for the cat and
+> dog skins please put it on the templates for other agents to use if i want something new"
+
 ## Films the owner approved: build like these
 
 | Folder | Film | Size | The owner said | Open it for |
@@ -37,6 +42,9 @@ And 2026-11-15, of the snow golem film:
 | [`iron-golem/`](iron-golem/README.md) | *In This Town, Every Kid Got an Iron Golem* (part 1) | Middle cut. 2:13, 14 beats, 61 shots, 516 words. Day and night. Full sound | "pretty nice", "this is a good short" (2026-11-15, the sixth render) | **Pace, and telling the reason.** The pace he approved after rejecting one faster and one slower (234 words a minute, with short silences between story steps); a premise told in five full sentences after he rejected three fragments; a prop planted as a joke that becomes the ending; recorded clips cut at their pauses; why one quiet clip got through |
 | [`robot-at-18/`](robot-at-18/README.md) | *In This Town, Everyone Gets a Robot at 18* | Full film. 2:54, 86 shots, 697 words (trimmed from 3:25 to be a Short). Sunset forest and sky. Full sound | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A fight.** Sword against a kid in a suit, on the ground and in the air: posed bodies, hit-freezes, cuts inside a line, flying poses. Two rejected fights and what was wrong with each. A sheet of the whole fight at five frames a second |
 | [`pumpkin-heads/`](pumpkin-heads/README.md) | *In This Town, Everyone Wore a Pumpkin on Their Head* | Short cut. 1:56, 14 beats, 58 shots, 490 words. Day and night. Full sound | He approved the script and asked for another ending | A second **short cut** with sound; a teller whose face is a carved pumpkin; an ending that is a picture and not a punchline |
+| [`we-are-all-cats/`](we-are-all-cats/README.md) | *In This Town, We Are All Cats* | Short cut. 1:23, 6 beats, 42 shots, 342 words. Day and one night. Full sound | "this is actually really funny, i love this" (2026-11-15, the first render) | **A whole story in one film** (no part two: he asked for that), and **comedy**: a fight where nobody touches anybody, jokes that are pictures. The owner's own outline. Where the pack's **cats and dogs** come from (`../catsdogs.tsx`). Two crowds from one component; one prop carried from the first beat to the last |
+| [`everyone-runs-away-from-me/`](everyone-runs-away-from-me/README.md) | *In This Town, Everyone Runs Away From Me* | Short cut. 1:40, 6 beats, 50 shots, 402 words. Day and one night. Full sound | "really cute short, i like it" (2026-11-16, the first render) | **The Monster Village recipe in 100 seconds**: one cat in a town of creepers; a famous mob as family, players as the danger, **Minecraft facts as the jokes and the plot**. **How to stage for a tall frame** (shoot along a long thing, not across it). Where the pack's **creeper town** comes from (`../creepertown.tsx`) |
+| [`never-seen-my-mums-face/`](never-seen-my-mums-face/README.md) | *In This Town, I Have Never Seen My Mum's Face* | Short cut. 1:46, 6 beats, 52 shots, 413 words. Day and one night. Full sound | "another banger idea" (the script); then "i like it but it was kinda similar to the creeper one … it might get me in trouble of reused content" (2026-11-16, the first render) | **Script first, done right**; **a reveal that is a picture, with silence**; seven plants that pay off. A kid raised by endermen. Where the pack's **enderman town** comes from (`../endertown.tsx`). **And a warning: it is the creeper film's outline with another mob, and he saw it.** Its page has the two films side by side and the test to run before the next pitch |
 
 All of them use the same pack
 ([`../PACK.md`](../PACK.md)), the same engine and the same checks.
