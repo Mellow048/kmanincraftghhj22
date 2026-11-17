@@ -1,21 +1,23 @@
 import { defineFilm } from "../../engine";
-import { timing, unbroken } from "./kit";
+import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
 
 /**
  * __TITLE__
  *
- * TODO: the film in two sentences. The question, and the answer a nine-year-old could repeat.
+ * TODO: the film in three sentences. Who tells it, the rule nobody explains, what the rule was hiding.
  *
- * An EXPLAINER (Topics/Explainer): one question, answered in under a minute. The recorded narration is the
- * clock, every line of narration.md is one place the camera comes to rest, and the camera FLIES from each
- * to the next: it never teleports. Read Topics/Explainer/README.md before changing anything here.
+ * An "In This Town" film (Topics/Stories): the recorded narration is the clock, and every line of
+ * narration.md is one shot. Read Topics/Stories/README.md before changing anything here.
+ *
+ * `cut: "short"` is the one-to-two-minute cut (14 beats). Delete the line for the three-minute cut (18 beats).
  */
 export const film = defineFilm({
   id: "__ID__",
   title: "__TITLE__",
-  topic: "explainer",
+  topic: "in-this-town",
+  cut: "short",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },
@@ -25,7 +27,3 @@ export const film = defineFilm({
   World,
   scenes: [scene1],
 });
-
-// The promise of the format, checked every time the film is loaded: the camera never teleports. This throws,
-// naming the line, if a scene does not begin on the stop where the scene before it ended.
-unbroken(film.scenes, { maxCuts: 2 });

@@ -1,133 +1,446 @@
-# The Explainer pack
+# The pack: what an "In This Town" film is built from
 
-Everything a film of this topic is built from. One import:
+The people, places, things and staging maths of the finished films, kept in this folder so the next film starts from
+them and not from nothing. The owner approved these as they look ("i like the assets"). **Use them. Do not rebuild
+them, and do not restyle them.**
 
-```ts
-import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Explainer";
-```
+![The pack: one still for each part](pack.jpg)
 
-A film's `kit.tsx` imports from the pack and passes the names on, so its scenes import only from `"./kit"`.
+Every still above is a shot from one of two finished films: the reference film, `in-this-town-same-face` (the
+first sixteen and the last), and `in-this-town-monster-egg`.
 
-![Every part of the pack](pack.jpg)
+![The night parts: one still for each](pack-night.jpg)
 
-> **Not yet approved in a film.** Every other pack in this framework was taken out of films the owner approved.
-> This one was built ahead of its first film, so each part here has been rendered and looked at (the picture
-> above) but none has been seen by the owner in a film. The first approved explainer decides what stays.
-
-1 unit = 1 block = 1 metre. `position` is the middle of a part's underside unless its row says otherwise.
-Everything is deterministic: a part that moves is given seconds (`t`, or `clock.useSince(…)`), never a clock of its own.
-
-## The camera — `flight.tsx`
-
-[`SHOTS.md`](SHOTS.md) is the guide. Picture: none; it is the camera.
-
-| Name | What it is |
-|---|---|
-| `stop(lookAt, metres, yaw°, pitch°, fov°)` | A framing the camera comes to rest on |
-| `near(stop, { closer, turn, raise, on, fov })` | A second stop made from a first: for the second line about one thing |
-| `flightScene(timing, { id, title, from, shots })` | A scene whose camera flies to one stop for each narration line |
-| `unbroken(film.scenes, { maxCuts })` | Throws if the camera teleports. Called in `film.tsx` |
-| `eyeOf(stop)` | Where the lens is when the camera is on a stop |
-
-## The stage — `stage.tsx` (picture 1)
-
-| Part | Props | Use it for |
-|---|---|---|
-| `Island` | `position` (the middle of its TOP), `size` [x, z], `layers`, `top`, `under`, `rock`, `seed` | One idea. People and things stand at `position[1]` |
-| `Sun` | `position`, `size` | The square sun of a Minecraft sky. A picture of a sun, not the light |
-| `Plinth` | `position`, `height`, `width` | One thing shown on its own. Its top is `height` over `position` |
-| `Signpost` | `text`, `position`, `rotationY`, `height` | The NAME of a place, in the world. One or two short words |
-| `Bridge` | `from`, `to` | Two ideas that are joined |
-
-## Money — `money.tsx` (pictures 2–4)
-
-Use ONE kind of money in a film, and keep it. A village trades in emeralds: `kind="emerald"`.
-
-| Part | Props | Use it for |
-|---|---|---|
-| `Coin` | `position` (its middle), `size`, `kind` (`gold` `silver` `copper` `emerald`), `spin`, `glow` | One coin as the subject of a shot. `spin={t * 3}` turns it in the air |
-| `CoinStack` | `position`, `count` (may be a fraction), `kind` | An amount. `count={12 * k}` grows it as a number is said: the top coin drops in |
-| `CoinPile` | `position`, `count`, `spread`, `kind`, `seed` | "A lot". A heap is `spread={0.4}`; a mess is `1.6` |
-| `Bill` | `position`, `rotationY`, `color` | One banknote, lying flat |
-| `BillStack` | `position`, `count`, `rotationY` | A banded stack of notes |
-| `MoneyBag` | `position`, `full` 0–1, `sign` | Money that belongs to somebody |
-| `Chest` | `position`, `open` 0–1, `gold` 0–1 | A saving: something kept. Open it on the word |
-| `Printer` | `position`, `out` (notes so far; may be a fraction), `tray`, `running`, `sign` | More money being made. `out={t * 3}` prints three a second. `sign` is the letter on its side: `$` unless you say so (`sign="M"` for marks) |
-
-## Numbers you can stand next to — `charts.tsx` (pictures 5–6, 8)
-
-| Part | Props | Use it for |
-|---|---|---|
-| `PriceTag` | `text`, `position` (the knot at the top of its string), `scale`, `swing` | The price OF something. Hang it on the thing. Change `text` on the word and the price has changed |
-| `Bar` | `position`, `height`, `width`, `color`, `label` | One column. Its label rises with it |
-| `BarChart` | `position`, `values` (metres), `grow` (0–1, one number or one for each bar), `labels` | "It doubled." `grow={[1, 1, k]}` holds two bars and raises the third |
-| `Arrow` | `position` (its tail), `dir` (`up` `down` `right` `left`), `length`, `grow` 0–1 | More, or less. Green goes up and red goes down |
-| `Balance` | `position`, `tilt` −1…1, `left`, `right` (anything, on each pan), `scale` | What a thing is WORTH against what it COSTS |
-
-## Things money buys — `goods.tsx` (picture 7)
-
-| Part | Props | Use it for |
-|---|---|---|
-| `Bread` | `position`, `rotationY`, `scale` | The thing everybody knows the price of. `scale={2}` for a shot about it |
-| `Apple` | `position`, `scale`, `color` | A second thing, when the film needs to say "and everything else" |
-| `Crate` | `position`, `size`, `label` | Stock, a delivery, "more of them" |
-| `BreadShelf` | `position`, `count`, `width` | A shop that has plenty, or one that has not |
-
-## Shared with the other topics — [`Topics/Shared`](../Shared/README.md) (picture 8)
-
-| Part | Use it for |
-|---|---|
-| `Figure` (`text`, `height`, `color`, `glow`, `outline`) | A number or a short word in cubes: "+20%", "$5", "×2". Six signs or fewer |
-| `Icon` (`kind`, `height`, `color`) | One small picture in cubes. Sixteen kinds: heart star bolt bang question check cross up down eye clock skull coin gem drop crown |
-| `Voxels` (`rows`) | Any picture you draw yourself, in rows of `#` |
-| `filmClock(timing)` → `clock.useSince(cue, word)`, `clock.at`, `clock.end` | When a word is said, in seconds of the whole film |
-| `pop`, `ramp`, `ease`, `jolt`, `ahead`, `beside`, `faceOf`, `chestOf`, directions | Staging, from In This Town |
-| `Player`, `Villager`, `ROBE`, `Hut`, `Stall`, `LampPost` | People and a village, from In This Town ([its pack](../InThisTown/PACK.md)) |
-| `Bubble`, `Bits`, `Puffs` | A speech bubble; bits that fly when something breaks; puffs of dust |
-| `SubscribeSign` | The red sign every film of the channel ends on |
-
-## Parts waiting in the first film
-
-The pack was made before its first film, and that film found out what it lacked. These are in
-[`src/videos/why-does-bread-cost-more-every-year/parts.tsx`](../../src/videos/why-does-bread-cost-more-every-year/parts.tsx),
-built to the rules below (a `position`, seconds, no knowledge of that film's islands). Import them from there until
-the owner has approved the film; then they move into this folder unchanged, and get a row above and a place on the sheet.
-
-| Part | What it is FOR |
-|---|---|
-| `Oven` | A baker's oven: `fire` 0–1 flares on a word, and its flat top holds a stack of what it made |
-| `Loaf` | The pack's `Bread` in two halves. `split` (metres) pulls them apart: "each coin buys less" |
-| `PriceRoll` | A price too long for a tag. `rows` unroll one at a time (`shown`): 200 / ,000 / ,000 / ,000 |
-| `Balloon` | Tie a price to its knot and grow `size` on the word: the thing called inflation |
-| `FigureBubble` | A speech bubble that says a NUMBER. `Bubble` writes in the caption font, whose black edge turns a dark "10" into two blobs |
-| `Wheelbarrow`, `NoteHeap` | What a man brings to pay for one loaf, and the heaps nobody picks up |
-| `NoteFall` | Notes pouring off the edge of an island for as long as the film runs |
-| `NoteBundle` | One banded bundle, for a stack that is counted by its height |
-
-## Adding a part
-
-1. Build it in the film first, in its `kit.tsx`. A part goes into the pack when a second film could use it.
-2. Put it in the file it belongs to, with a comment that says what `position` is and what it is FOR.
-3. It takes a `position`, so it does not know where a film's islands are. If it moves, it takes seconds.
-4. Add its row to the table above, and add it to the sheet (below).
-5. If you change a part that a finished film uses, prove the film did not change:
-   `python3 scripts/compare-stills.py out/before/<film> out/after/<film>`.
-
-## Rebuilding the sheet
-
-`pack.jpg` is eight stills of a film that exists only to show the parts. Its source is in [`sheet/`](sheet/):
-eight islands with one group of parts on each (`world.tsx`), a stop at each (`scene1.tsx`), and the name over
-each picture (`labels.txt`). To add a part, stand it on an island there, or add an island, a stop, and a line of
-`narration.md` and of `labels.txt`. Then:
+The second sheet is the night: the fields, the moon, the lanterns, and what is worn. Every still on it is a shot
+from `in-this-town-nobody-looked-at-the-moon`. Those parts are listed under "Fields and night" below, and in the
+rows for `things.tsx` and `places.tsx`. To make the sheet again:
 
 ```bash
-npm run new -- "Pack Sheet" --topic explainer
-cp Topics/Explainer/sheet/*.tsx Topics/Explainer/sheet/narration.md src/videos/pack-sheet/
-#   delete the `captions:` line from src/videos/pack-sheet/film.tsx, so the stills have no words on them
-python3 scripts/narration.py build pack-sheet --estimate
-npm run shots -- pack-sheet --at 0.6 --out out/pack-explainer
-python3 scripts/pack-sheet.py out/pack-explainer Topics/Explainer/pack.jpg --labels Topics/Explainer/sheet/labels.txt
-#   then delete src/videos/pack-sheet/ and take its two lines out of src/registry.ts
+node scripts/shots.mjs in-this-town-nobody-looked-at-the-moon --scale 0.5 --at 0.6 --out out/night \
+  --only 1.wake,2.awake,2.crows,3.crows,3.forest,3.golem,3.eyes,3.lid,4.good,7.week,8.lid,10.town,10.hat,10.lean,11.light,13.held
+python3 scripts/pack-sheet.py out/night Topics/Stories/pack-night.jpg --labels Topics/Stories/pack-night.labels.txt
 ```
 
-`sheet/` is left out of the type check, like `template/`: its imports only resolve inside `src/videos/`.
+## How a film uses it
+
+```
+Topics/Stories/index.ts      everything below, from one import
+        ↓
+src/videos/<film>/kit.tsx       passes on what the film uses, and adds the film's own: the teller, PLACE, timing
+        ↓
+src/videos/<film>/sceneN.tsx    imports only from "./kit"
+src/videos/<film>/world.tsx     lays the town out with the pack's places
+```
+
+`npm run new -- "In This Town, …" --topic in-this-town` gives you a `kit.tsx` and a `world.tsx` that are already
+wired this way. The reference for both is `src/videos/in-this-town-same-face/`.
+
+**Before you build anything, look for it here.** If it is not here and a second film could use it, build it here
+(the rules are at the bottom). Only what belongs to one story stays in that film's `kit.tsx`.
+
+## Staging — `staging.ts`
+
+| Name | What it gives you |
+|---|---|
+| `wordClock(timing)` | Makes `wordAt(cue, word, nth?)`: seconds into a shot at which a word is said. **Hang every action on a word** |
+| `pop(t, at, dur?)` | The scale of a thing that pops into being at `at`: 0, a small overshoot, then 1 |
+| `ramp(t, a, b)` | 0 before `a`, 1 after `b`, straight between. `ease(k)` smooths it |
+| `jolt(t, at, size?)` | A short shake that dies away: a hit, a landing |
+| `ahead(p, rotY, dist, up?)` | The point `dist` metres in front of someone |
+| `beside(p, rotY, side, up?, front?)` | A point in someone's own axes: to their right, up, in front |
+| `SOUTH` `EAST` `NORTH` `WEST` | Facings, as `rotationY`. The street runs west–east; the camera usually stands south |
+| `DEG` | `Math.PI / 180` |
+| `KID` | 0.8: the scale of a child player |
+| `faceOf(p, scale?)`, `chestOf(p, scale?)` | Where a player's face and chest are, for the camera's `on` |
+| `hill({ x, layers, width, step })` | The maths of a stepped hill: `stepAt(i)`, `stepEast(i)`, `climb(from, steps, p)`, `top` |
+
+## The town's people — `villagers.tsx`
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `Villager` | The villager. One face, one eyebrow, one long nose, arms folded into one block. **There is exactly one face: do not add another** | `robe`, `scale` (`ADULT` 0.94, `CHILD` 0.7), `kid`, `walk` (metres), `lookAt` (a world point), `nod` `turn` `tilt`, `hmm` 0–1, `strain` 0–1 (trying to get the arms out), `lean` (a bow), `hat` (`"straw"` a farmer's small hat, `"wide"` a `StrawHat` as wide as a door), `sit` (legs straight out, the way a doll sits: put `position` 0.56 m × scale under the seat), `phase` |
+| `ROBE` | Eight robe colours: `brown elder friend white smith farmer red blue`. The robe is the only way to tell two villagers apart, so give each named one their own | |
+| `villagerFace(p, scale?)`, `villagerChest(p, scale?)` | Where a villager's face and chest are, for the camera | |
+| `IronGolem` | The iron golem, 2.7 m tall | `walk`, `armR` / `armL` (radians: 0 hangs, −1.5 points ahead; leave out and they swing), `headPitch`, `headYaw`, `bow`, `flower`, `hat` (a `StrawHat` 1.7 m wide) |
+| `golemHand(p, rotY, angle, scale?, side?)` | Where its hand is in the world, for an arm at `angle`. Put the thing it gives there | |
+| `Poppy` | A poppy. `position` is the bottom of the stem | `rotation`, `scale` |
+
+## People who are not from the town — `players.tsx`
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `Player` | One of twelve players, no two alike in skin, hair and clothes. Takes every `MinecraftAvatar` prop | `who` 0–11, `torch`, `light` (makes the torch a real light), `animation`, `face` |
+| `PLAYERS` | The twelve looks. `who = 0` has a beard, `who = 2` wears a pumpkin | |
+| `Pumpkin` | A carved pumpkin, worn as a head | `position` (its middle), `rotationY`, `scale` |
+
+The **teller** is not in the pack. Each film has its own, in its `kit.tsx`: a kid in one loud colour nobody else in
+that film wears.
+
+## Things — `things.tsx`
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `Bubble` | A speech bubble. It faces +Z: give it the camera's yaw | `text`, `position`, `rotationY`, `scale` (use `pop`), `dark`, `tilt`, `tail` −1 / 1 |
+| `BedBox` | A Minecraft bed, red blanket. The pillow is at −Z | `position` (its middle, on the floor), `rotationY` |
+| `Hole` | A hole in a floor: black, with a broken edge | `position`, `size`, `rim` |
+| `Bits` | Bits of a block that has just been broken | `position`, `t` (seconds since the hit), `color`, `count`, `power`, `toward` |
+| `Smoke` | A column of smoke that rises, swells and thins | `position`, `rise`, `spread`, `size`, `count`, `lean`, `opacity` |
+| `SmokeBank` | A wall of smoke across a valley, seen from the west | `x`, `amount` (1 hides everything, 0 is clear), `part` (opens it like a curtain), `t` |
+| `Wisps` | Smoke drifting across a face | `position`, `t`, `dir`, `reach`, `count`, `opacity` |
+| `Blaze` | A roof on fire: cubes of flame that rise and redden | `position` (the bottom of it), `size`, `height`, `count` |
+| `FireLight` | Warm, flickering light from a fire that is out of frame | `position`, `power`, `reach` |
+| `StrawHat` | A straw hat with a flat square brim. `position` is where it sits: the middle of the top of a head. Put it inside the head's own group and it nods with the head | `width` (brim edge to edge; 1.1 is as wide as a door), `crown`, `tilt` (negative tips it back), `band`, `scale` |
+| `Bucket` | An iron bucket. `position` is the middle of its rim; the body hangs under it. Turned over (`rotation={[Math.PI, 0, 0]}`) it fits over a head | `rotation`, `scale`, `handle`, `swing` (radians the handle has swung), `color` |
+| `Lantern` | A lantern on a chain. `position` is the point it hangs from. The flame is always bright | `chain`, `light` (over 0 makes it a real light: use that on a few, not on all), `reach`, `sway`, `seed`, `scale` |
+
+**Wearing a hat.** A villager and the iron golem wear theirs through a prop (`hat="wide"`, `hat`). A player wears
+one through `MinecraftAvatar`'s `head` prop, whose origin is the **middle** of the head cube, so the hat sits 0.225 m
+over it: `head={<StrawHat position={[0, 0.225, 0]} />}`. A hat on the ground or in a hand is just a `StrawHat` with
+a `position`.
+
+## Places — `places.tsx`
+
+These are **parts**. Where they stand is the film's business: each film lays out its own town in its `world.tsx`.
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `Hut` | A village house. `at` is the middle of its front wall, on the ground. `turn` 0 faces south | `w` `d` `h`, `wall` (a block kind), `tint`, `roof`, `door` (x offset), `windows` (x offsets), `burnt` (black, half a roof, long ago), `ablaze` (the windows glow; add `Blaze` and `Smoke`), `lit` (somebody is home and it is dark out: warm windows), `open` (the door stands open, with the light of the room in the doorway and on the step) |
+| `Bell` | The village bell on its stone step | `position`, `fallen` |
+| `Well` | The village well. The wall is 0.8 m high and 2.4 m square; the hole is 1.4 m square | `position`, `roof` (`false` leaves off the posts and the roof: an open ring to look down into, or to put a `WellLid` on) |
+| `WellLid` | A stone lid for a well with no roof: a slab 2.1 m square, with an iron ring. `position` is the well's. Its top is y = 0.98 | `slide` (metres it has been pushed off, towards +Z; at 1.0 the gap behind it is 0.65 m), `turn` (which way it slides), `skew` |
+| `Stall` | A market stall. Its counter top is y = 1.0 | `position` |
+| `LampPost` | A torch on a post | `position`, `seed` |
+| `LanternPost` | A `Lantern` on a post with an arm | `position`, `turn` (the way the arm points; 0 is south), `height`, `light`, `seed` |
+| `LanternLine` | A line of lanterns strung between two points, sagging in the middle: across a street, from eave to eave | `from`, `to`, `count`, `sag`, `lit` (which of them are real lights, 0 = the first; the rest only glow), `light` |
+| `Fence` | A post-and-rail fence from one point to another | `from`, `to`, `height`, `gap` (metres between posts) |
+| `SteppedHill` | The slabs of a stepped hill. Give it the same numbers as `hill()` | `x`, `layers`, `width`, `length`, `step`, `taper`, `tints` |
+| `Room` | A bedroom, 5.4 m wide and 8 m deep, one window. **No south wall: the camera lives there.** It has no bed; the scene puts one in | `at`, `night` |
+| `Tunnel` | A tunnel through dirt, 16 m long, one block wide, two torches. Open at +x: the camera stands where the dirt still is | `at` |
+
+## Fields and night — `fields.tsx`
+
+What lies round the town, and what hangs over it after dark. Built for `in-this-town-nobody-looked-at-the-moon`,
+which is the film to read for how they are used (`world.tsx`, and `skyAt()` in its `kit.tsx`). Any film may use them.
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `Wheat` | A field of standing wheat on tilled soil, in rows that run west–east. `position` is the middle of the field, on the ground. The rows are cutout planes, so you see between them | `size` ([west–east, north–south] in metres), `height`, `rows` (metres between rows), `glow` 0–1 (how much it shines by itself: 1 under a moon, 0 in the dark), `sway`, `seed` |
+| `Scarecrow` | A scarecrow, 2.3 m tall: taller than anyone in the town. A sack for a head, a stuffed shirt on a crossbar, a straw hat. **Standing, it does not move at all: no breath, no sway. That is the point of it** | `walk` (metres: it strides, stiff, arms still straight out), `pole` (a pole down its back into the ground, as if somebody had put it there), `lean`, `headTurn` `headTilt` `headNod`, `droop` (how far the arms have dropped), `eyes` 0–1 (a cold glint in the eye holes, and a cold edge on the body: **use it whenever one stands in the dark**), `shirt`, `hat` |
+| `scarecrowFace(p, scale?)` | Where a scarecrow's face is, for the camera | |
+| `Pine` | A spruce: a dark trunk and stepped needles | `position` (the foot of the trunk), `height`, `spread`, `leaf` |
+| `ForestEdge` | The edge of a forest: pines three deep along a line, needles on the ground, and a black wall behind them. You never see into it | `from`, `to`, `back` (the way into the forest, a unit vector; default north), `depth`, `count`, `seed` |
+| `Moon` | The moon: a circle of 16 rows of pixels with craters and a halo. `position` is its middle. It faces +Z, so give it a `rotation` that turns it to the town. It takes no fog and no light: it looks the same from anywhere | `radius`, `rotation`, `glow` (the halo, 0–1), `from` / `to` (−1 … 1: cut it off, for a moon rising behind a roof or shutting), `shift(y)` (slide each row sideways: a reflection on water), `children` (drawn on its face) |
+| `PixelDisc` | The circle of pixel rows the moon is made of, for anything else that is round and self-lit: a pupil, a sun, a reflection | `radius`, `color`, `n` (pixels across), `center`, `from` / `to`, `shift`, `within` (clip it to a circle, so a part never sticks out of the whole) |
+| `Moonlight` | Moonlight that falls on **one place**: a cone of cold light, with shadows, from where the moon is onto `on`. Everything outside the cone keeps the light the look gives it. Move `on` and the light crosses the land | `on`, `from`, `radius` (metres of ground it covers), `power` 0–1 (fade it, or shut it for a blink), `strength` |
+| `Stars` | Stars: pixels on a dome. They take no fog. Keep `radius` under 200 m, the reach of the camera | `center`, `radius`, `count`, `seed`, `size` |
+
+### A film at night
+
+The look is `"lantern-night"` (`film.look`, or `look` on a shot). The night is nearly black and the moon gives only
+a thin cold edge from the south, so **the lamps in the world do the lighting**: `Lantern`, `LanternPost`,
+`LanternLine`, `Hut lit`, `Hut open`, and a `Moonlight` cone where the moon is looking. `"overworld-night"` is the
+other night: an even blue with no lamps needed, and no contrast between warm and cold.
+
+What the moon film found out, so you do not find it out again:
+
+- **Give some lanterns a real `light`, and let the rest only glow.** A real light is worked out for every block
+  it reaches, on every frame. The moon film's town has 25 lanterns, and 12 of them are real lights: the ones
+  beside where people stand.
+- **A face needs a lamp on the camera's side.** Looking south down a lit street, every lamp is behind the person and
+  the face is a black square. Stand a `Lantern` with `light` low and just beside the lens.
+- **A hat as wide as a door hides the face from above.** Put the lens under the chin and look up (pitch below zero).
+  That is also why this town never sees the moon, so use it.
+- **Anything on the line from the lens to the moon covers the moon**: a roof, a lantern line, a head. Check that
+  line before you frame a shot with the moon in it.
+- **A scarecrow in the dark is a hole in the picture** unless it has `eyes`: that gives it a cold edge of its own.
+- **Moonlight that has to beat lanterns must be stronger in town than on the wheat.** The moon film uses a
+  `strength` of 2.4 in the fields and 3.5 in the square, and that is the pair that was checked on stills.
+- **Light the place the story is about, and nothing else.** One `Moonlight` cone that moves is a character. A moon
+  that lights everything evenly is weather.
+
+## Creatures — `creatures.tsx`
+
+Built for the monster-egg film. Any film may use them.
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `MonsterEgg` | An egg the size of a kid's chest | `color`, `spots`, `cracked`, `glow` 0–1, `open` 0–1, `tilt`, `halo` |
+| `Worm` | What was in the egg | `crawl` (metres), `lift`, `mouth`, `rank` |
+| `Dragon` | A dragon a kid can ride | `color`, `belly`, `bow`, `headYaw`, `mouth`, `fly`, `rear`, `fold` (wings back, for a narrow frame), `rank`, `gold` |
+| `Phoenix` | Fire with wings | `fly`, `bow`, `letter`, `rank` |
+| `Golem` | A stone golem that carries things. Not the iron one | `walk`, `carry` 0–1, `bow`, `eyes`, `rank`, `children` (what lies in its arms) |
+| `Mother` | Bigger than the town | `spread`, `lower`, `fire` |
+| `Chicken` | A chicken | `phase` |
+| `Fire` | A stream of fire from one point to another | `from`, `to`, `power`, `tail`, `funnel` |
+| `Puffs` | Smoke, steam or dust as cubes | `position`, `color`, `count`, `rise`, `spread`, `size` |
+| `SoundRings` | A roar you can see | `position`, `t`, `color`, `reach` |
+| `RankSign` | A wooden board with a number | `rank`, `gold`, `post` |
+| `SubscribeSign` | The red sign the last shot of **every** film holds | `position`, `rotationY`, `scale`, `tilt` |
+
+## Monsters — `monsters.tsx`
+
+The people of a monster village. Built for the owner to reuse: characters who can act, not enemies. Same pixel grid
+as the villagers, so they stand beside one.
+
+![The monsters, with a villager for scale](monsters.jpg)
+
+Every one takes `position`, `rotationY`, `scale`, `walk` (metres), `lookAt` (a world point) or `nod` / `turn` /
+`tilt`, `mood` (`calm happy sad angry scared`), `hat` (`straw`, `bow`) and `phase`. All but the slime take `scarf`
+(a colour: how you tell two zombies apart), and all but the spider and the slime take `lean`.
+
+| Name | What it is | Its own props |
+|---|---|---|
+| `Zombie` | 1.8 m, green, teal shirt, arms straight out | `arms` (1 out in front, 0 hanging and swinging), `wave` 0–1, `baby` (small, big head), `skin`, `shirt`, `legs` |
+| `Skeleton` | 1.8 m, bone, thin limbs, ribs | `bow` (holds one), `wave` 0–1, `rattle` 0–1, `noArm` (the waving arm has come off: draw it yourself), `raise` 0–1 (the other arm held out in front), `headDrop` (metres the skull has fallen off the neck) |
+| `Creeper` | 1.6 m, no arms, four short legs, that face | `fuse` 0–1 (swells and flashes white), `color`. `mood="happy"` turns the mouth over |
+| `Spider` | 2 m across, under 1 m tall, glowing red eyes | `rear` 0–1 (front legs up), `color`, `eyes`. Wide: turn it three-quarters on in a tall frame |
+| `Enderman` | 2.9 m, black, purple eyes | `jaw` 0–1 (the scream), `shake` 0–1, `carry` 0–1 with `children` (the block it holds) |
+| `Slime` | A see-through cube with a face | `size` in metres (0.5, 1, 2), `squash` −1…1 (flat on landing, tall on leaving), `color` |
+| `MONSTER` | Their colours, and four scarf colours | |
+| `monsterFace(kind, p, scale?)` | Where a monster's face is, for the camera's `on` | `kind`: `zombie skeleton creeper spider enderman slime` |
+
+Not built yet: witch, ghast, blaze, piglin, phantom. If a film needs one, build it in `monsters.tsx` the same way.
+
+**Cats and dogs** (a cat or a dog player, villager and golem) have their own section at the bottom of this page:
+["Cats and dogs"](#cats-and-dogs--catsdogstsx).
+
+**The creeper town** (creepers as people: a family, a crowd that bolts and hisses, their houses, and the players who
+come for gunpowder) has its own section too: ["The creeper town"](#the-creeper-town--creepertowntsx).
+
+**The enderman town** (endermen as people: a mum and a dad, a town that carries blocks, teleports and screams, their
+houses, and the players who come for pearls in carved pumpkins) has its own section too:
+["The enderman town"](#the-enderman-town--endertowntsx).
+
+## What is not in the pack
+
+- **The story.** Never reuse a premise, a line or a twist from a finished film.
+- **The teller.** A new kid for every film.
+- **The layout of the town.** `template/world.tsx` is a starter to change.
+- **The third place**: what the rule was hiding (the other side of the hill, the bottom of the lake). That is new in
+  every film, and it is where the film's own building work goes.
+
+## Adding to the pack, or changing it
+
+1. A pack part takes a `position` (or `at`) and knows nothing about any film's town. No film's coordinates in it.
+2. Same look as the rest: boxes, flat colours, the engine's block kinds. Feet on `position`, facing +Z, 1 unit = 1 m.
+3. Export it from its file; `index.ts` already passes every file on. Add a row to this page.
+4. **A change here changes every film that uses it, and the finished films are approved exactly as they are.** Before
+   you touch a part that exists, take the stills of every finished film of the topic; after, take them again; they
+   must not differ by a pixel. The same goes for a change to `src/engine/`.
+
+   ```bash
+   FILMS="in-this-town-same-face in-this-town-monster-egg in-this-town-pumpkin-heads in-this-town-superpower-at-18 in-this-town-nobody-looked-at-the-moon in-this-town-we-are-all-cats in-this-town-everyone-runs-away-from-me"
+   for f in $FILMS; do node scripts/shots.mjs $f --scale 0.4 --at 0.55 --out out/before/$f; done
+   #   …the change…
+   for f in $FILMS; do
+     node scripts/shots.mjs $f --scale 0.4 --at 0.55 --out out/after/$f
+     python3 scripts/compare-stills.py out/before/$f out/after/$f
+   done
+   ```
+
+   Each must end "N of N stills are the same, pixel for pixel". One pass over the five films is 361 stills: about
+   twenty minutes on two cores, so run one film at a time and never two jobs at once. When your film is finished,
+   add it to the list.
+
+   If your film needs a part to look different, give the part a new prop whose default is the old look.
+
+## Pillagers — `pillagers.tsx`
+
+The people of the mansion. The owner's brief: "duplicate the villagers and turn them grey and make them mad". So a
+pillager is the villager's body on the villager's pixel grid, grey, scowling, and with its arms out of its sleeves,
+because a pillager holds a crossbow, shakes on a deal and cheers. Same height as a villager.
+
+![The pillagers](pillagers.jpg)
+
+| Name | What it is | Props |
+|---|---|---|
+| `Pillager` | A pillager: grey skin, the villager's nose, the brow pulled down, a dark coat, teal legs | `n` (which one: picks the coat and the beat), `coat`, `walk` (metres), `lookAt` or `nod` / `turn` / `tilt`, `armR` / `armL` (radians: 0 hangs, −1.5 points ahead, −3 is up; leave out and they swing), `cheer` 0–1, `talk` 0–1, `lean`, `crossbow` (aim it with `armR` about −1.3), `chief` (darker coat, gold band and cuffs, a head taller), `sit`, `mad` 0–1 (1 is the full scowl), `children` (what is in the +X hand) |
+| `PILLAGER` | Their colours: `skin`, four `coats`, `chief`, `legs`, `gold` | |
+| `pillagerFace(p, scale?)`, `pillagerHand(p, rotY, angle, scale?, side?)` | Where the face and a hand are, for the camera and for a handshake | |
+
+## The mansion — `mansion.tsx`
+
+Where the pillagers live, built from the owner's two pictures (`outlines/monster-village-part-3-mansion/`). The
+outside and the hall are two separate sets: give each its own Zone, far apart. Both are open to the south.
+
+![The mansion, outside and in](mansion.jpg)
+
+| Name | What it is | Props |
+|---|---|---|
+| `Mansion` | The house from outside: dark planks, cobble pillars, three floors stepping back, wide flat dark roofs, warm windows. 38 m wide, 15 m tall | `at` (the ground in front of the front door), `lit` (false: nobody home). The doorway is drawn dark; a shot that opens the door draws its own two leaves in it |
+| `DarkOakForest` | The forest in front of it: ground, 22 dark oaks, and a lane with a path running south from the door | `at` (the same point as the mansion's) |
+| `DarkOak`, `DARK_OAKS` | One dark oak (lower and wider than a village tree), and where the forest's trees stand | `position`, `height`, `n` |
+| `MansionHall` | The hall: pale plank floor, dark plank walls, a band of cobble under the roof, four big windows, bookshelves, a chandelier, and a long table with a map on it and five plank seats. Brings its own light | `at` (the floor under the middle of the table), `table` (false leaves the table and seats out) |
+| `MANSION_HALL` | The hall's measurements for staging: walls, table top height, the doorway (west wall), the five seats | |
+| `PlankSeat` | A plank block with a back | `position`, `turn` |
+
+## The siege — `siege.tsx`
+
+Everything Monster Village part four built to attack a castle at night. It was rebuilt after the owner's review
+(2026-11-15: "quality is degrading"), so every piece here is the version that answers a fault he named. Import from
+`Topics/Stories`; how each is used, shot by shot, is in `Old Reference/monster-village-part-4/source/`.
+
+| Piece | What it is | The rule it was built to |
+|---|---|---|
+| `Horde` | An army of pillagers in rows, marching: crossbows, torches, banners, vindicators with axes, evokers with arms up, witches, and (`beasts`) ravagers. `position` (front row, middle), `t`, `rows`, `cols`, `width`, `gap`, `adv`, `fan`, `seed` | **Every one is a real `Pillager`.** No grey boxes behind two actors. About 150 is fine for a three second shot |
+| `WatchTower` | A lookout tower with a floor every 3.3 m: ladders, a lamp and furniture on each, walls below, open sides above, a deck and a flag on top | **A building has an inside.** Cut the castle wall where it stands, or the rooms are full of wall |
+| `spyglassPose`, `spyglassAt`, `Spyglass` | Both arms up, and the glass at the eye between the hands | **Somebody who uses a thing uses his arms** |
+| `SpyMask`, `spyLook` | What the glass sees: black round a circle, a brass rim (no cross hair), for a still camera with fov 30 tipped `down` | Level (0.1) for trees, down (0.2) for a field of people |
+| `Boom`, `TNT` | An explosion (flash, fire, stones thrown along `dir`, smoke) and the block that makes it | **Smoke must not hide the shot**: `smoke` is 0.2 or less |
+| `Ravager`, `Vex`, `Witch`, `Axe`, `HandTorch`, `HandBanner` | The beasts and what pillagers carry (the last three are `Pillager` children) | A ravager's `jaw` and `head` move: use them |
+| `Bush`, `Key`, `LitWindow`, `Web` | Small things | |
+| `Skeleton` `jaw` (in `monsters.tsx`) | 0–1: the lower jaw is its own piece and swings down off the skull | "His jaw wide open" has to be a jaw, open |
+
+Two ways of shooting that came out of the same review (they are shots, not components: copy them from
+`Old Reference/monster-village-part-4/source/scene1.tsx`):
+
+- **Through somebody's eyes** (`3.slow`, `3.bam`): the camera is at his eye height on his path, his own hand and
+  sword are drawn at the bottom of the picture, and the thing that jumps out comes to within a metre of the lens.
+- **A fight is one cut per blow** (`5.clash`, five cuts in 3.4 seconds): each of them runs at the lens, then the
+  fist, then the jaw, then everybody thrown in the air. A golem is 6 m tall: the camera has to be 10 m off and above
+  the cage roofs, or the picture is a white wall.
+
+## Cats and dogs — `catsdogs.tsx`
+
+The three bodies of the series, each as a cat and as a dog. Built for "In This Town, We Are All Cats"; the owner,
+2026-11-15: "this is actually really funny, i love this … for the cat and dog skins please put it on the templates
+for other agents to use if i want something new". **So when he asks for a film with cats or dogs in it, they are
+here: do not build them again, and do not restyle them.** How each is staged, shot by shot, is in
+[`Old Reference/we-are-all-cats/`](Old Reference/we-are-all-cats/README.md).
+
+![The cats and dogs](catsdogs.jpg)
+
+Every still above is a shot from `in-this-town-we-are-all-cats`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-we-are-all-cats --scale 0.5 --at 0.6 --out out/catsdogs \
+  --only 1.me,2.dogs,1.folk,2.all,1.golem,3.golems,3.fur,3.bark,4.grass,7.trade,7.sit,8.sub
+python3 scripts/pack-sheet.py out/catsdogs Topics/Stories/catsdogs.jpg --labels Topics/Stories/catsdogs.labels.txt
+```
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `CatPlayer`, `DogPlayer` | A cat or a dog with hands, in a shirt: a `MinecraftAvatar` with a cat's or a dog's head and a tail. Takes every avatar prop, so every clip, pose and face works | `who` 0–5 (the coat and the shirt; 0 is the red cat and the blue dog), `scale` (`KID` for a kid), `animation`, `pose`, `face`, `lookAt`; a cat's `puff` 0–1 (fur up) and `tailUp` 0–1; a dog's `bark` 0–1 and `wag` 0–1; `noTail` (lying down) |
+| `CatVillager`, `DogVillager` | A cat or a dog in a villager's robe, with the folded sleeves and the one eyebrow. No hands | `who` 0–5, `robe`, `fur`, `walk` (metres), `lookAt` or `nod` / `turn` / `tilt`, `lean` (a bow, or an arched back), `puff`, `tailUp`, `bark`, `wag`, `sit`, `old` (a shawl and glasses: a grandma), `carry` (what lies on the sleeves), `phase` |
+| `CatGolem`, `DogGolem` | The iron golem with ears, whiskers and a long tail, or with hanging ears, a snout, a red collar and a tag. 2.7 m | `walk`, `armR` / `armL` (0 hangs, −1.5 points ahead), `headPitch`, `headYaw`, `bow`, `puff`, `tailUp`, `bark`, `wag`, `sit` 0–1 (down on the ground, legs out), `grass` 0–1 (grass and flowers over its feet: it has stood there for years) |
+| `CatDogPlayer`, `CatDogVillager`, `CatDogGolem` | The same six, picked by `kind="cat"` or `kind="dog"`: for a crowd drawn in a loop. A prop of the other animal is ignored, so one crowd can be given all of them | `kind`, and everything above |
+| `catArchPose(t, k, yaw?, sag?)` | The pose every cat knows: back up, head level, legs stiff, a shiver. Give it to a cat player as `pose`, with `puff` and `tailUp` on the same number `k` 0–1. `sag` 0–1 is a cat too tired to hold it | |
+| `CatDogHead`, `CatDogTail` | The ears, nose and whiskers (or the ears, snout and jaw) and the tail, on their own: **how to make a cat or a dog of a body that is not here yet** (a zombie, a pillager, a kid in a helmet). Draw the head part inside the head's group and the tail where the back ends | `kind`, `fur`; head: `half` `top` `mouth` (the head's measurements), `puff`, `open`, `beat`; tail: `up`, `puff`, `wag`, `t`, `size` |
+| `CAT_DOG_FUR`, `CAT_DOG_SHIRT`, `CAT_DOG_ROBE`, `catDogFur(kind, who)` | The colours: six coats, six shirts and six robes for each. Cats wear warm colours and dogs cool ones, so two crowds read as two sides from far off | |
+| `Fish`, `Bone` | What each side likes, 30 cm long. `position` is the middle | `rotation`, `scale` |
+
+How they behave, as the film used them:
+
+- **A cat that is cross** has `puff` 1, `tailUp` 1, `pose={catArchPose(t, 1)}`, stands sideways to what it is cross
+  with and turns only its head (`scene2.tsx`, `3.fur`). **A dog that is cross** has `bark` 1: the jaw, the ears and
+  the rings run on the film clock, each dog on its own beat. **A dog that is pleased** has `wag` 1.
+- The teller of a cat or dog film is still the film's own: a `CatPlayer` or `DogPlayer` at `scale={KID}` in the one
+  colour nobody else wears (`Hero` and `Pup` in `Old Reference/we-are-all-cats/source/kit.tsx`).
+- **The sound kit has no bark and no hiss.** The film used `bonk` at `pitch` 0.75 repeated every 0.17 s for a bark
+  and `gust` at `pitch` 1.6, `dur` 0.4, for a hiss ([`SOUND.md`](SOUND.md) has the kit).
+- Another animal (a rabbit, a fox) is a new branch in `CatDogHead` and `CatDogTail` and two rows of colours. Add it
+  so that the cats and dogs do not change by a pixel (rule 4 above).
+
+## The creeper town — `creepertown.tsx`
+
+Creepers as people. Built for "In This Town, Everyone Runs Away From Me"; the owner, 2026-11-16: "really cute short,
+i like it. now put it on the main branch as reference + the creeper skins u made so that other agents can use it too
+as a template or pack". **So when he asks for a film with creepers who are somebody (a family, a town, a class), they
+are here: do not build them again, and do not restyle them.** How each is staged, shot by shot, is in
+[`Old Reference/everyone-runs-away-from-me/`](Old Reference/everyone-runs-away-from-me/README.md).
+
+![The creeper town](creepertown.jpg)
+
+Every still above is a shot from `in-this-town-everyone-runs-away-from-me`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-everyone-runs-away-from-me --scale 0.5 --at 0.6 --out out/creepertown \
+  --only 1.all,1.hello,1.mum,1.box,2.table,2.school,3.suit,3.little,4.six,4.hiss,4.chain,6.arms
+python3 scripts/pack-sheet.py out/creepertown Topics/Stories/creepertown.jpg --labels Topics/Stories/creepertown.labels.txt
+```
+
+The creeper itself is `Creeper` in `monsters.tsx` (above). **A creeper has no arms**, so it acts with four things:
+its face (`mood`: `calm`, `happy`, `scared`, `angry`, `sad`), shaking (move its `position` a centimetre, fast),
+leaning (`lean`: 0.3 is a run, 0.34 against somebody is a hug) and `fuse` (0–1: it swells and flashes white, which
+every player reads as "about to blow up").
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `CreeperMum`, `CreeperDad`, `CreeperKid` | The family: a pink bow and scarf; a straw hat, a blue scarf, a little bigger and darker; a small pale one in a yellow scarf (0.58). Each is a `Creeper` and takes every one of its props | `position`, `rotationY`, `mood`, `lookAt` or `nod` / `turn` / `tilt`, `walk` (metres), `lean`, `fuse` |
+| `CreeperCrowd` | A town of them: every green, some in scarves, some in hats, a few small. One component, directed by numbers | `spots` (`[x, z, facing?][]`), `t`; **`cat` + `at`: they bolt from that point at that second, the near ones first**; `speed` (6 is a stampede a shot can hold; 8 leaves the frame in half a second); `fuse` (hissing); `mood`, `lookAt`, `face`; `walk` + `shift` (the whole lot walks); `shake`; `skip` (leave some out); `first` (so two crowds are not twins) |
+| `creeperBolt(home, cat, t, at, i?, speed?, face?)` | The same for one creeper you draw yourself: gives `position`, `rotationY`, `walk`, `lean` and `gone`. It jumps, turns and runs straight away from `cat` | |
+| `CreeperHouse` | A `Hut` with a green roof and the face over its door. Faces +Z | `position`, `rotationY`, `w`, `h`, `n` (the roof, wall and tint: give each house its own), `lit` (night) |
+| `CreeperFace` | The face alone, flat, facing +Z: on a house, a costume, a flag, a school | `position`, `size`, `color` |
+| `CreeperSuit` | The costume: a green box with the face painted on, worn over a kid. At `position` y = −0.14 a cat's ears come out of the top | `position` (his feet), `rotationY`, `wobble` |
+| `GunpowderPlayer` | A player who has come to farm creepers: six looks. Even `who` holds a sword, odd an empty sack. A `MinecraftAvatar`: every clip, pose and face works | `who` 0–5, `hand={false}` (he has dropped it), `arms="hold"` to show it |
+| `PlayerSword`, `EmptySack`, `LostShoe` | What they leave behind. Each faces +Z from where it is held | `position`, `rotation`, `scale` |
+| `LongTable` | A dinner table of planks, `length` metres along Z, a plate at each end. **Shoot it from one end, never from the side** | `position` (the ground under its middle), `length` |
+| `SchoolDesk` | A desk for a lesson held outdoors, facing −Z | `position` |
+| `CardboardBox` | An open box a kitten fits in (a kid at scale 0.42) | `position`, `rotationY` |
+| `PixelHeart` | A small pixel heart, facing +Z: over a hug | `position`, `rotationY`, `scale` |
+| `NightFill` | A warm point light for faces at night: the engine's night key light is on the north side | `at`, `power`, `reach`, `color` |
+| `groundSitPose(t, patch?)`, `GROUND_SIT` | Sitting on the ground with the legs straight out. Give it as `pose` and put the feet at y = `GROUND_SIT` | |
+| `openArmsPose(t, k?)` | Both arms held wide open, `k` 0–1: he wants a hug | |
+
+## The enderman town — `endertown.tsx`
+
+Endermen as people. Built for "In This Town, I Have Never Seen My Mum's Face"; the owner, 2026-11-16: "i like it …
+put the enderman skins and other stuff as a template and put the source code + mp4 into the reference for other
+agents to see". **So when he asks for a film with endermen who are somebody, they are here: do not build them again,
+and do not restyle them.** How each is staged, shot by shot, is in
+[`Old Reference/never-seen-my-mums-face/`](Old Reference/never-seen-my-mums-face/README.md).
+
+**These are parts, not a story.** In the same message he said the film "was kinda similar to the creeper one … it
+might get me in trouble of reused content". A third film of "one odd kid in a town of one famous mob, the players
+come at night" is not wanted, with these or with the creepers ([`OWNER.md`](OWNER.md) §5, 2026-11-16). Use an
+enderman, a house, a pumpkin, the rain, the kitchen: in a film whose hero, place, danger and ending are its own.
+
+![The enderman town](endertown.jpg)
+
+Every still above is a shot from `in-this-town-i-have-never-seen-my-mums-face`. To make the sheet again:
+
+```bash
+node scripts/shots.mjs in-this-town-i-have-never-seen-my-mums-face --scale 0.5 --at 0.6 --out out/endertown \
+  --only 1.face,1.ender,1.dad,2.dinner,2.photo,2.rain,3.guess,4.six,4.pearls,5.holes,5.scream,6.on
+python3 scripts/pack-sheet.py out/endertown Topics/Stories/endertown.jpg --labels Topics/Stories/endertown.labels.txt
+```
+
+The enderman itself is `Enderman` in `monsters.tsx` (above): 2.9 m tall, eyes at about 2.75 m. It acts with `jaw`
+(0–1: the mouth drops open, the scream), `shake` (0–1), `carry` (0–1, arms out, with the block it holds as
+`children`), `lean` (0.6 bends it down to a kid), `lookAt` and `mood`. **It is nearly three metres tall and a tall
+frame is narrow**: stage it in depth, tilt the lens up, or cut it off at the chest on purpose (a kid's eyes are at
+1.22 m, which is an enderman's knees, and the film is built on that).
+
+| Name | What it is | Props that matter |
+|---|---|---|
+| `EnderMum`, `EnderDad` | The parents: a pink bow, and a pink band on each knee (how a kid who cannot look up knows her); a straw hat and a blue scarf, a little taller. Each is an `Enderman` and takes every one of its props. Mum has no scarf: bent over a kid, a scarf hangs like a tongue | `position`, `rotationY`, `lookAt`, `lean`, `jaw`, `shake`, `mood`, `walk`, `carry` + `children` |
+| `EnderCrowd` | A town of them, each a little different in height, each holding a thing. One component, directed by numbers | `spots` (`[x, z, facing?][]`), `t`; **`jaw` + `shake`: they all scream**; `hold` (they carry), `drop` (seconds since they all let go: the blocks fall); **`outAt={(i) => seconds}`: each teleports away at its own second and leaves an `EnderZap`**; `lookAt`, `mood`, `face`; `walk` + `shift`; `tilt`; `skip`; `first` (so two crowds are not twins); `scale` |
+| `EnderThing` | What an enderman holds, half a block big: `kind` 0 grass, 1 cobble, 2 sand, 3 planks, 4 melon, 5 a flower pot, 6 TNT, 7 hay, 8 grass with a poppy | `kind`, `position` |
+| `EnderZap` | The purple pop left where one teleported | `position`, `t` (seconds since it went), `seed` |
+| `EnderHouse`, `ENDER_WALL`, `ENDER_ROOF` | A `Hut` with dark purple plank walls and a purple roof. Takes every `Hut` prop but the three colours | as `Hut` |
+| `BlockPile` | What an enderman brings home: a heap of blocks that do not match, beside a house | `at` (`[x, z]`), `n` (which heap), `wide`, `high` |
+| `PumpkinPlayer` | A player who has come for pearls: six looks, a sword, and a carved pumpkin over the head. A `MinecraftAvatar`: every clip, pose and face works | `who` 0–5, **`on` (the pumpkin: `on={t < knock}` takes it off)**, `sword` |
+| `KnockedPumpkin` | A pumpkin knocked off a head: it tumbles, lands and lies still | `from` (where the head was), `t` (seconds since), `v` (the push: x, up, z), `seed` |
+| `PumpkinHat` | A carved pumpkin for a kid, for the `head` prop of a `MinecraftAvatar`. 1.15 is too big for him, which is the joke | `scale`, `up` 0–1 (pushed back off the face like a hat), `askew` |
+| `PumpkinView` | **What you see from inside a pumpkin**: black, and two small holes. Stands half a metre in front of a lens that does not move and looks north with no tilt | `camera`, `fov`, `sway`, `hole` |
+| `PhotoBorder` | The white border of a photo, for a shot that is a photograph. Same rules as `PumpkinView` | `camera`, `fov` |
+| `EnderPearl`, `PearlSign` | A pearl, drawn flat, facing +Z; and a pearl on a board, for over a player's head (what he wants) | `position`, `scale`, `rotationY` |
+| `KidDrawing` | A kid's drawing of his mum on paper (0.62 × 0.78, facing +Z): two purple dots, then what he had to guess | `position`, `rotation`, `scale`, `dots` 0–2, `rest` |
+| `Rain`, `Puddle` | Rain over a place, and a puddle on the ground. Endermen will not stand in either | `center`, `t`, `area`, `count`, `k` 0–1 (how hard); `position`, `size` |
+| `DinnerPlate` | A plate with something on it, for a table top | `position`, `food` (a colour) |
+| `KitchenStove`, `KitchenCounter`, `KitchenShelf`, `FryingPan` | A kitchen along a wall: a furnace (`lit`), a counter with a pot or a loaf (`on`), a shelf of jars, and a pan with an egg for a hand | `position` |
+| `KitchenGone` | Where the kitchen was: pale shapes on the wall and the floor | `position` (the middle slot) |
+| `ENDER_PINK`, `ENDER_PURPLE` | Mum's pink and the eyes' purple | |
+
+**What to know before using them:**
+
+- **The scream is `jaw` and `shake` together, and the sound is yours to make**: the kit has no scream and no
+  teleport. The film used a high `buzz` (`pitch` 1.4 to 1.9) for a scream and `glitch` for a teleport, and taught
+  the viewer both in the first six seconds ([`SOUND.md`](SOUND.md) has the kit).
+- **`PumpkinView` and `PhotoBorder` are drawn in the world, not on the screen**: they only line up with a camera
+  that stands still, looks north and is not tilted. Give them the same `camera` and `fov` as the shot.
+- **A crowd that teleports**: `outAt={(i) => 0.5 + i * 0.09}` empties a street one after another in about a second.
+- Names in the film's own `kit.tsx` are shorter (`Mum`, `Enders`, `Hunter`, `Knocked`, `Plate`): it re-exports the
+  pack under them, so its scenes read like the script. A new film may do the same.
+- The parts were moved here from the film after he approved it, and a still of every shot was taken before and
+  after: 104 of 104 the same, pixel for pixel. Anything added here later must keep it so (rule 4 above).

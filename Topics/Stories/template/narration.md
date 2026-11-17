@@ -2,33 +2,34 @@
 
 **Status: DRAFT. Not approved, not recorded.** Nothing is built until the owner approves the script.
 
-Topic: `Topics/Explainer`. Read `Topics/Explainer/SCRIPT.md` before writing a word.
+Topic: `Topics/Stories`. Read `Topics/Stories/SCRIPT.md` before writing a word, and read the script of the
+reference film, `src/videos/in-this-town-same-face/narration.md`, to see what a finished one looks like. Copy its SHAPE,
+never its story.
 
-**The question:** TODO. One question a nine-year-old would ask.
+**The premise, in four sentences.** TODO. In this town, … . Nobody would explain … . I … . On the other side … .
 
-**The answer, in one sentence a nine-year-old could repeat:** TODO. If you cannot write it, you cannot explain it yet.
+**One sentence:** TODO.
 
-- A narrator, present tense, talking to "you". Plain words: no word a nine-year-old would have to ask about.
-- Each `[cue]` line is **one stop of the camera**: the words heard while it flies to a thing and rests on it.
-  One idea a line, 6–14 words. If a line has two things in it, it is two lines.
+- One teller, first person, past tense. Fast and plain: about 255 words a minute, no gaps.
+- Each `[cue]` line is **one shot**: the words heard while that picture is on screen. Cut on the noun. 5–12 words.
 - Each `# clip` is one recording. Record it to `public/audio/__ID__/raw/<clip>.mp3`,
   then run `python3 scripts/narration.py build __ID__`.
-- The last line is the subscribe line.
-- 110–250 words, 30–58 seconds.
+- The first line starts "In this town". The last line is the subscribe line.
+- This is the short cut: 14 beats, 250–520 words, one to two minutes (`cut: "short"` in film.tsx).
 
-What each line SHOWS (fill this in BEFORE writing lines; a line with nothing to point a camera at is a line to cut):
+What is planted, and where it pays off (fill this in BEFORE writing lines; a twist nobody planted is a cheat):
 
-| Line | The picture |
+| Planted | Pays off |
 |---|---|
 | TODO | TODO |
 
-The lines below are placeholders. Replace all of them. Cue ids are `<beat>.<word>`: `2.price`, `5.twice`.
+The lines below are placeholders. Replace all of them. Cue ids are `<beat>.<word>`: `3.bell`, `13.truth`.
 
 ```narration
-# clip 01-question
-[1.ask]      Why does a loaf of bread cost more every year?
-[1.loaf]     Here is one loaf, and here is its price.
+# clip 01-hook
+[1.town]     In this town, everyone did one strange thing
+[1.me]       except me.
 
 # clip 02-button
-[9.sub]      Subscribe, before that costs more too.
+[14.sub]     Subscribe before I find out why.
 ```

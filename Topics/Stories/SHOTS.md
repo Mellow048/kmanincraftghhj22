@@ -1,170 +1,148 @@
-# The flight: how an explainer is shot
+# Shooting an "In This Town" film
 
-> **Provisional.** The camera grammar is the framework's own and is not provisional. The numbers on this page
-> (how long a flight takes, how far apart the islands are) are a first setting until a reference is measured
-> ([`reference/`](reference/README.md)).
+> **First read [`OWNER.md`](OWNER.md).** Premise on screen in the first second; no two shots in a row alike; every scene has an environment shot, a travelling shot and an odd angle; the owner's outline is the story.
 
-The camera of an explainer never cuts. It leaves one thing, crosses the space to the next, and comes to rest on it
-while the narrator is still saying its name. That is the Zack D grammar the whole framework started from
-([`docs/CAMERA-BIBLE.md`](../../docs/CAMERA-BIBLE.md)): one continuous world, and a camera that never teleports.
+What the reference video does with the picture, measured, and how we do the same in Minecraft blocks.
+The evidence is in [`Old Reference/treehouse/`](Old Reference/treehouse/README.md): look at the contact sheets before you
+read on.
 
-What this topic adds is the **clock**. A base film types the time of every move by hand. Here the recorded voice
-is the clock, as in every narrated film: one line of `narration.md`, one place the camera comes to rest.
+## 1. What was measured
 
-## 1. Stops, and the route
+| | |
+|---|---|
+| Length | 166.5 s |
+| Shots | 87 (about 31 cuts a minute) |
+| Shot length | Half are under 1.73 s. Mean 1.91 s. Shortest 0.4 s, longest 5.8 s |
+| Under 1 s | 16 shots: flashes inside a list ("houses", "bridges") and reaction faces |
+| 1–3 s | 59 shots: the normal shot |
+| Over 4 s | 4 shots: the look down into the cloud, the old man's stare, the bed, the bag |
+| Words per shot | About 8 |
+| The teller on screen | In a little over half the shots |
+| Captions | One word at a time, every word, about 72% of the way down the frame |
 
-A **stop** is a framing: what the lens looks at, from how far, from which side.
+## 2. What the picture does
 
-```ts
-stop(lookAt, metres, yaw°, pitch°, fov°)
-```
+**It shows the noun.** The cut lands on the word. "Barrels" is a shot of barrels. "Fruits" is a hand on a fruit.
+"Rope bridges" is a rope bridge. In the tour there are 15 shots in 23 seconds, one per thing named.
 
-- `yaw` 0 stands on the +z side of the thing (its front), 90 on its +x side, 180 behind it.
-- `pitch` 10 looks down a little; −5 looks up, from below.
-- `fov` 40–46 is the house lens.
+**It keeps coming back to the teller.** After two or three things, his face. He is how the viewer knows what to
+feel about them. He is almost always centred, waist up, looking near the lens.
 
-A film names its stops once, in `kit.tsx`. Together they are its **route**:
+**The face changes on the cut.** The original swaps flat face pictures: bored, glaring, happy, nervous, asleep,
+screaming. There is no lip sync and nobody misses it. A new face with a new shot reads as a new thought.
 
-```ts
-export const STOPS = {
-  open: stop(on(PLACE.ask, 0, 1.2, 0), 11.5, 14, 18, 46),   // the whole island, small in the sky
-  sam: stop([SAM[0], 1.25, SAM[2]], 4.2, 20, 3, 40),        // one person, head to knee
-  loaf: stop([LOAF[0], LOAF[1] + 0.7, LOAF[2]], 3.6, -14, 10, 40),   // the loaf, and its price over it
-  mint: stop([MINT[0], MINT[1] + 1.0, MINT[2]], 5.2, -24, 14, 42),
-};
-```
+**Every shot moves.** A slow push in. A pull back. A small arc around a head. A pan along a bridge. The bodies barely
+move: an arm scratching a head, a wave. The camera carries the energy, and it never stops.
 
-A scene is a list of lines and the stop each one lands on:
+**The long shots are the held breaths.** Four shots run over four seconds, and each is a moment of waiting: staring
+into the cloud, the old man deciding what to say, lying awake, the packed bag. Each still moves: the bed shot
+rotates, the bag shot pulls back.
 
-```ts
-export const scene2 = flightScene(timing, {
-  id: "scene2",
-  title: "One loaf, one emerald",
-  from: STOPS.sam,                       // the LAST stop of the scene before this one
-  shots: [
-    { cue: "2.loaf", to: STOPS.loaf, note: "The one thing everybody knows the price of…" },
-    { cue: "4.mint", to: STOPS.mint, lift: 3, note: "Up and over to the machine…" },
-  ],
-});
-```
+**Lists get flashes.** "Hundreds of wooden houses" is two shots of half a second each.
 
-For each line the camera flies to its stop, arriving a little short of it, and then keeps creeping in for the rest
-of the line. It is never still.
+**Top-down for things on the floor.** The bed and the bag are both shot straight down.
 
-| Field | What it does | Default |
-|---|---|---|
-| `to` | The stop this line lands on | required |
-| `travel` | Seconds the flight takes | By distance: 0.5–1.2 s. Never more than 55% of the line |
-| `lift` | Metres to rise over the straight line, at the middle of the flight | A tenth of the distance, at most 3. `0` flies straight |
-| `via` | Points to fly through: round a tree, over a roof, down a chimney | none |
-| `drift` | Metres the camera keeps creeping in after it arrives | 6% of the stop's distance, at most 0.6 |
-| `cut` | A hard cut to this stop, not a flight | `false`. At most 2 a film |
-| `note` | Why this picture, for these words. At least 24 characters | required |
+**Colour tells the three acts apart.** Bright blue sky and warm wood for the town. Flat white for the fall. Night blue
+and orange fire for the truth. The viewer can tell where they are in the story from one frame.
 
-**Two lines about one thing are two stops.** The camera has to keep moving, so the second line goes somewhere:
-closer, round to the other side, onto the price. `near` makes the second stop from the first:
+**The ending is five quick pictures.** His face drops. The dead city, wide. The sign, from behind. His horror, close
+and low. The bright town again for one second. Then the subscribe sign, straight to camera, and out.
 
-```ts
-tag: near(STOPS.loaf, { closer: 1.3, turn: 25, on: [LOAF[0] + 0.1, LOAF[1] + 1.0, LOAF[2]] })
-```
+## 3. Our rules
 
-`flightScene` throws if a line would leave the camera where it already is.
+`topic.json` holds the numbers that `npm run check` enforces.
 
-## 2. The promise is checked
+1. **One script line, one shot.** The line names what the shot shows. 5–12 words is normal; over 18 is two shots.
+2. **Median shot between 1.4 and 2.3 seconds.** No shot over 6. Use a 4–6 second shot three or four times, for waiting.
+3. **Every shot moves**, and moves one way. Use a camera recipe (section 5).
+4. **Come back to the teller** at least every third shot.
+5. **Change the face on the cut**, not during the shot.
+6. **Fill the frame.** A person is a medium shot unless the place is the point. Lens 30–46°. Never the 76–88° of
+   version 1, which made everyone small.
+7. **One colour world per act.** Set `look` on the shot when the act changes.
+8. **Wides are for two jobs only:** to show the town at the start, and to show the truth at the end.
+9. **Captions are the engine's.** Do not draw text over the picture in a scene.
 
-`film.tsx` ends with:
+## 4. From Roblox to Minecraft
 
-```ts
-unbroken(film.scenes, { maxCuts: 2 });
-```
+| The original | Ours |
+|---|---|
+| Blocky R6 figure, arm loops of two keyframes | `MinecraftAvatar` clips: `idle`, `talk`, `walk`, `run`, `reach`, `reachUp`, `point`, `wave`, `sit`, `lie`, `sleep`, `scared`, `panic`, `cower`, `crouch`, `peek`, `lookAround`, `jump`, `fall`, `leanOver` (over the rim of a well), `push` (something heavy) |
+| Six face pictures | The `face` prop. Bored → `neutral`. Glare → `angry`. Happy → `happy`. Nervous → `worried`. Asleep → `sleepy`. Scream → `scared` or `surprised` |
+| Hair meshes and printed shirts | Block colours: `skin`, `hair`, and `colors={{ torso, arms, legs }}`. One loud colour per character, so a phone can tell them apart |
+| Roblox props | `Block`, `Sign`, the creatures in this folder. A prop used by more than one film goes in `src/engine/` |
+| Skybox and sun | `look: "overworld-day"`. Night is `"overworld-night"` (an even blue), or `"lantern-night"` (nearly black: the lamps in the world light it; see "A film at night" in `PACK.md`) |
+| Three places | `<Zone name="…">` groups in `world.tsx`. A shot sets `zone` and the others are not drawn |
+| Captions: bold lowercase, white with a black edge | Engine captions: pixel capitals, white with a black edge, same height on the frame, a small pop on each word |
+| A fast male voice | One recorded narrator, sped up by `scripts/narration.py` to the pace in `topic.json` |
+| A grey square sliding under the cloud | The same trick: one dark `Block` under a `FogCard`. Cheap is fine if it reads |
+| Camera behind the sign, so no text is needed | The same, or a real `Sign`: ours can carry text |
+| The "SUBCRIBE" plaque | A `Sign` held to camera. Spell it correctly |
 
-It throws, naming the line, if a shot does not begin where the one before it ended (6 cm, 0.75° of lens: the limits
-`npm run check` uses on a base film). The usual cause is a scene whose `from` is not the last stop of the scene
-before it. `npm run check` fails a film of this topic whose `film.tsx` does not make that call, whose scenes are
-not built with `flightScene`, or which declares more than two cuts.
+## 5. Camera recipes
 
-**When a cut is right.** A cut is for a jump no camera could fly: inside the vault, a hundred years ago, the size
-of a grain of flour. Say why in the note. A cut to save the trouble of staging a flight is not a reason.
-
-## 3. What the camera looks at is not in the shot
-
-In a film of hard cuts, a shot's `stage` appears on the cut and is gone on the next. That cannot work here: a
-camera that flies away from a thing still sees it, and it sees the next thing before it gets there.
-
-So **everything an explainer shows lives in the world for the whole film**, and is driven by the film's clock:
+`cam` (from `src/engine`) turns a director's sentence into a move. Spread one into each shot.
 
 ```tsx
-export const Exhibit2: React.FC = () => {
-  const price = clock.useSince("2.loaf", "price");   // negative until "price" is said, then seconds since
-  return (
-    <>
-      <Bread position={LOAF} scale={2} />
-      <PriceTag text="1" position={…} scale={pop(price, 0)} />
-    </>
-  );
-};
+{
+  cue: "3.bakery",
+  ...cam.push({ on: [4, 1.2, -2], dist: 3.4, to: 2.6, yaw: 25, pitch: 6 }),
+  look: "overworld-day",
+  zone: "town",
+  note: "The word is 'bakery': the dragon lights the oven and the baker does not even look up.",
+  stage: (t) => <Bakery fire={t} />,
+},
 ```
 
-- A scene file holds an `ExhibitN` (what the beat shows) and a `sceneN` (where the camera goes).
-- `world.tsx` mounts every exhibit, next to the islands they stand on.
-- An exhibit **waits in its first state** until its word, and **keeps its last state** afterwards. The tag is not
-  there before "price"; it is still there when the camera flies back past it thirty seconds later.
-- `clock.useSince(cue, word)` is the only clock an exhibit needs. `pop`, `ramp`, `ease` and `jolt` turn it into
-  movement.
-- Something else on the island should already be moving when the camera arrives: the machine printing, a villager
-  walking. An island that only starts when it is looked at feels like a stage set.
+| Recipe | What it is | Use it for |
+|---|---|---|
+| `cam.push` | Dolly in (`to` smaller than `dist`) or pull out | Almost everything. Faces, objects, reveals |
+| `cam.orbit` | Swing around the subject from `yaw` to `yawTo` | A thought, a decision, a reveal of what is behind someone |
+| `cam.pan` | Camera fixed, the look sweeps from `on` to `onTo` | Along a row, from a face to what it sees |
+| `cam.truck` | Camera and look slide together | Beside a walker |
+| `cam.top` | Straight down, with an optional `spin` | A bed, a bag, a thing on the ground |
 
-## 4. One island, one idea
+`yaw` is where the camera stands: 0 is in front of an actor whose `rotationY` is 0, 90 is at their left hand side
+(+X), 180 is behind. `pitch` is height: positive looks down, negative looks up.
 
-The world of an explainer is a few floating islands in one sky ([`PACK.md`](PACK.md): `Island`).
+## 6. The frame is a slit
 
-- **One idea on each.** An island has an edge, so the frame has an edge.
-- **In the order the film visits them**, 14–17 blocks apart: far enough for sky between two ideas, near enough for
-  a flight of about a second.
-- **Change the height.** An island a block or two higher makes the flight climb. Climb towards the cause, and come
-  down for the answer.
-- **A bridge joins two ideas that are joined** ("so the baker pays more"). Sky separates two that are not.
-- **Go back.** The answer is shown on the first island, changed. The camera flying home is the film saying "and
-  that is why".
-- Every island the lens rests on needs its atmosphere: a `LightPool` and `Dust` at least, and one `GodRay` and one
-  `Glow` in the film (`npm run check` wants all four in `world.tsx`).
+A 9:16 frame with a 40° lens sees **23° across and 40° up and down**. At three metres that is a picture 1.2 m wide
+and 2.2 m tall: one person, and nothing beside them. Every framing mistake in the first film came from forgetting it.
 
-## 5. A tall frame is a slit
+**Stack, do not line up.** Two things go in a tall frame one above the other:
 
-The frame is 9 wide and 16 high. At a distance of `d` metres it shows only `0.41 × d` metres across at fov 40
-(`0.43 × d` at 42, `0.48 × d` at 46), and almost twice that from top to bottom.
+- **By depth.** The near thing low in the frame, the far thing over it. Egg at the bottom, his face above it. A kid in
+  front, a golem's head over his shoulder. Raise the camera and tilt down (`pitch` 15–30) to spread depth up the frame.
+- **By height.** Put one of them on something. The oldest woman sits on a raised porch so she is above the kid she
+  talks to. The best friend sits on his dragon.
+- **From above.** `cam.top` turns a floor into a tall picture: the bed, the bag, the well, four dragons round an egg.
 
-- **Stack, never line up.** Three things side by side need 7 metres of distance and turn small. Put them at three
-  depths and three heights: the stack on the ground in front, the bag behind it, the chest behind and above that.
-- **Hang numbers above things.** A tag over the loaf, a figure over the bar, an arrow over the scales.
-- Keep the thing a line is about in the middle 60% of the height: the caption sits at 72%.
+**Keep the near person off the lens axis.** Someone 1.5 m from the lens covers half the frame. Over a shoulder means
+the shoulder is at the *edge*, or the camera is above the head looking down.
 
-Stops that work, measured on the pack's own sheet (`pack.jpg`):
+**Check what is straight behind a close face.** It will look like it is growing out of the head.
 
-| The subject | Stop |
-|---|---|
-| A whole island, small in the sky | 11–12.5 m, pitch 6–18, fov 46 |
-| A grown-up, head to knee | look at y = 1.25, 4.2 m, pitch 3, fov 40 |
-| One thing on a plinth, with its tag hanging over it | look 0.7 m over the plinth, 3.6 m, pitch 10, fov 40 |
-| Small things on the ground: coins, notes, a bag, a chest | 3.7–4.0 m, pitch 13–20, fov 40 |
-| The printer | 3.7 m, pitch 14, fov 40 |
-| A chart 2.4 m tall, with its tags over it | 6.0 m, pitch 5, fov 42 |
-| The scales, with an arrow over each pan | 5.6 m, pitch 6, fov 42 |
+Distances that worked, measured on the finished film. `on` is the look point; a kid here is 1.44 m tall (scale 0.8),
+an adult 1.8 m.
 
-## 6. When the thing is in the frame
+| Shot | `on` | `dist` → `to` | `fov` | Example |
+|---|---|---|---|---|
+| Kid's face | face, y 1.2 | 1.9 → 1.4 | 36 | `9.not`, `4.but` |
+| Kid, waist up, holding something | chest, y 1.0 | 2.1 → 1.6 | 38–40 | `5.hold`, `1.eggs` |
+| Kid, whole body | y 1.0 | 2.4 → 1.9 | 40 | `1.me`, `8.decide` |
+| Adult's face | face, y 1.85 | 1.8 → 1.3 | 36 | `7.stare` |
+| A thing in the hands | the thing | 1.6 → 1.2, pitch 30 | 38 | `4.broken` |
+| A thing on a table or the ground | the thing | 1.4 → 1.0 | 36–38 | `8.alive`, `15.split` |
+| Two people, in profile | between them | 4.7 → 4.2 | 40 | `7.ask` |
+| A dragon and its rider | between them | 5.0 → 4.2 | 40 | `3.friend` |
+| A golem | its chest, y 2.0 | 5.6, low | 42 | `3.golem` |
+| Straight down on a bed | the bed | height 3.6 → 2.9 | 44 | `6.bed` |
+| The street from above | the middle of it | 27 → 21, pitch 21 | 50 | `3.town` |
+| Something bigger than the town | its middle | 46 → 41, low | 56 | `17.land` |
 
-The flight starts as the line starts and takes half a second to a second. So for the first few words of a line the
-camera is still on its way.
+## 7. Faces
 
-- Write lines whose first two words can travel: "So the baker…", "And when there is more…". The noun comes after
-  them, and by then the thing is in the frame. ([`SCRIPT.md`](SCRIPT.md))
-- Hang the action on the word, not on the cut: `clock.useSince("4.flour", "flour")`.
-- For a short line (under 1.5 s), put its stop near the last one: a `near`, not another island.
-- Review with two stills a stop: `npm run shots -- <film> --at 0.2,0.9`. At 0.9 the camera has come to rest: is
-  the thing readable? At 0.2 it is in the air: does the frame still make sense?
-
-## 7. Notes
-
-Every stop has a `note`: why this picture, for these words. "Fly to the mint" is the mechanic. "Up and over to the
-machine, because the cause is higher up and further back than the loaf: you have to go and look for it" is a
-reason.
+The face changes on the cut, and it is how the viewer knows what to feel. For a kid use the story set:
+`smile` `grin` `laugh` `frown` `uneasy` `brave` `fear` `wow` `ouch` `calm` (eyes shut). The older names
+(`worried`, `angry`, `sad`, …) were drawn for the horror films: a heavy brow that reads as a threat on a child.
