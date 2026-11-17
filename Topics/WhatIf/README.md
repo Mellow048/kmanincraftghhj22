@@ -1,3 +1,6 @@
+> **Read [`../../MASTERPROMPT.md`](../../MASTERPROMPT.md) first.** It is the owner's standing brief, written
+> after Monster Village Part 1 passed 15,000 views at 81.1% stayed-to-watch. It outranks this file where they differ.
+
 # What If — a kid, one impossible power, and what it cost
 
 "What if you could see who has a crush on you?" "What if you could see five seconds into the future?" "What if you
