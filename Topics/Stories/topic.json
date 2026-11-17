@@ -73,6 +73,24 @@
         2.4
       ],
       "maxWordsPerShot": 14
+    },
+    "explainer": {
+      "note": "The two explainer films delivered before the reference arrived. They keep the flying camera: one world, one stop per line, and film.tsx calls unbroken(). The `story` cut is the new grammar.",
+      "camera": {
+        "builder": "flightScene",
+        "continuous": true,
+        "guard": "unbroken",
+        "maxHardCuts": 2
+      },
+      "seconds": [
+        30,
+        58
+      ],
+      "hardMaxSeconds": 60,
+      "words": [
+        110,
+        250
+      ]
     }
   },
   "pack": "Topics/Stories/PACK.md",

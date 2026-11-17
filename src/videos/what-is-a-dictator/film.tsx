@@ -24,6 +24,8 @@ export const film = defineFilm({
   id: "what-is-a-dictator",
   title: "What Is a Dictator",
   topic: "stories",
+  // Built on the flying camera before the reference arrived: the `explainer` cut keeps that grammar.
+  cut: "explainer",
   look: "overworld-day",
   // The recorded narration and custom sound mix, built by scripts/sound.py.
   audio: { src: "audio/what-is-a-dictator/mix.mp3" },

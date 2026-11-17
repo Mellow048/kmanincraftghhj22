@@ -1,61 +1,98 @@
 import type React from "react";
-import { Clouds, Dust, Glow, GodRay, LightPool, Tree } from "../../engine";
-import { Bridge, BreadShelf, Island, LampPost, PLACE, Plinth, Signpost, Sun, on } from "./kit";
-import { Exhibit1 } from "./scene1";
+import { Block, Clouds, Dust, GodRay, Glow, LightPool, Torch, Tree, Vox } from "../../engine";
+import { PLACE, Shaft, at } from "./kit";
 
 /**
- * THE WORLD OF AN EXPLAINER: a few islands in one sky, and everything that happens on them.
+ * THE WORLD: five sets, far apart, one for each beat of the story.
  *
- *   ask     the question: one person, one thing, one price
- *   cause   why
- *   …       one island for each idea. Add them in the order the film visits them (PLACE, in kit.tsx).
+ *   room        his bedroom at midnight: a desk, a monitor, a bed. The only light is the screen.
+ *   shaft       forty metres east, a one-block hole straight down, a torch every ten blocks.
+ *   field       the field at night, where the enderman waits.
+ *   stronghold  the portal room, twelve eyes short of finished.
+ *   end         the obsidian platform, and the dragon.
  *
- * Two kinds of thing are mounted here, and both are here for the WHOLE film, because the camera flies:
- * it still sees what it has left, and it sees what it is coming to.
- *   1. The sets: the islands and what is fixed on them. This file.
- *   2. The exhibits: the people and things that DO something. One `ExhibitN` in each sceneN.tsx, driven by
- *      the film's clock. Mount every one of them below.
- *
- * This is a STARTER. The parts come from the topic's pack (Topics/Explainer/PACK.md).
- * 1 unit = 1 block = 1 metre.
+ * The sets are mounted for the whole film (the world does not cut, the camera does), wrapped in
+ * <Zone> so a shot only draws the one it is in.
  */
-
 const Sets: React.FC = () => (
   <>
-    {/* ---- ask: a baker's corner ---- */}
-    <Island position={PLACE.ask} size={[9, 7]} seed={1} />
-    <Plinth position={on(PLACE.ask, 1.2, 0, 0.3)} height={1} />
-    <BreadShelf position={on(PLACE.ask, 2.6, 0, -2.2)} rotationY={-0.25} count={6} />
-    <Signpost text="BAKERY" position={on(PLACE.ask, -3.1, 0, -2.2)} rotationY={0.35} />
-    <Tree position={on(PLACE.ask, -3.4, 0, 1.6)} height={3.6} />
-    <LampPost position={on(PLACE.ask, 3.8, 0, 2.4)} seed={2} />
+    {/* ---- room: the bedroom where he starts ---- */}
+    <group name="set-room">
+      <Vox kind="planks" position={at(PLACE.room, 0, -0.1, 0)} size={[9, 0.2, 8]} />
+      <Vox kind="planks" position={at(PLACE.room, 0, 1.4, -3.6)} size={[9, 3.2, 0.2]} />
+      <Vox kind="planks" position={at(PLACE.room, -4.3, 1.4, 0)} size={[0.2, 3.2, 8]} />
+      <Vox kind="wool" position={at(PLACE.room, 0, 1.4, 3.9)} size={[9, 3.2, 0.2]} tint="#cfc6b4" />
+      {/* the window: night outside, so the room stays cold */}
+      <Block position={at(PLACE.room, 4.2, 1.9, -1.2)} size={[0.08, 1.1, 1.6]} color="#0b1430" emissive="#1b2a5c" emissiveIntensity={0.5} castShadow={false} />
+      {/* the bed he never gets into */}
+      <Vox kind="wool" position={at(PLACE.room, -2.7, 0.3, 1.9)} size={[2.2, 0.4, 1.4]} tint="#4a6ea8" />
+      <Vox kind="wool" position={at(PLACE.room, -3.6, 0.62, 1.9)} size={[0.5, 0.35, 1.3]} tint="#e6e2d8" />
+      {/* the poster a twelve-year-old put up: the dragon he has never beaten */}
+      <Block position={at(PLACE.room, -4.15, 1.85, -1.4)} size={[0.06, 1.2, 1.0]} color="#241a33" castShadow={false} />
+      <Block position={at(PLACE.room, -4.1, 2.05, -1.4)} size={[0.02, 0.3, 0.5]} color="#8a4fe0" emissive="#6a2ec0" emissiveIntensity={0.7} castShadow={false} />
+    </group>
 
-    {/* ---- cause ---- */}
-    <Island position={PLACE.cause} size={[9, 7]} seed={2} />
-    <Signpost text="MINT" position={on(PLACE.cause, 2.6, 0, -2.4)} rotationY={-0.4} />
-    <Tree position={on(PLACE.cause, 3.4, 0, 1.8)} height={3.2} leaf="#4a8c33" />
+    {/* ---- shaft: four hundred blocks straight down ---- */}
+    <group name="set-shaft">
+      <Vox kind="grass" position={at(PLACE.shaft, 0, -0.1, 0)} size={[14, 0.2, 14]} />
+      <Shaft position={PLACE.shaft} depth={6} />
+      <Tree position={at(PLACE.shaft, -4.2, 0, -3.4)} height={4.2} />
+      <Tree position={at(PLACE.shaft, 4.6, 0, -2.2)} height={3.4} leaf="#3a6f28" />
+      {/* the spoil heap: every block he took out, piled beside the hole */}
+      <Vox kind="dirt" position={at(PLACE.shaft, 1.9, 0.35, 1.4)} size={[1.6, 0.7, 1.6]} />
+      <Vox kind="dirt" position={at(PLACE.shaft, 2.6, 0.2, 2.4)} size={[1.1, 0.4, 1.1]} />
+      <Vox kind="cobble" position={at(PLACE.shaft, 1.6, 0.25, -1.8)} size={[1.2, 0.5, 1.2]} />
+      <Torch position={at(PLACE.shaft, -1.1, 0.2, 1.1)} light={5} seed={9} />
+    </group>
 
-    {/* Two ideas that are joined get a bridge. Two that are not, get sky. */}
-    <Bridge from={on(PLACE.ask, 4.5, 0, -0.4)} to={on(PLACE.cause, -4.5, -1, 0.6)} />
+    {/* ---- field: where the enderman is ---- */}
+    <group name="set-field">
+      <Vox kind="grass" position={at(PLACE.field, 0, -0.1, 0)} size={[16, 0.2, 16]} />
+      <Tree position={at(PLACE.field, 3.4, 0, -3.2)} height={5.2} />
+      <Tree position={at(PLACE.field, -3.8, 0, -2.4)} height={4.0} leaf="#37682a" />
+      <Tree position={at(PLACE.field, 1.2, 0, 4.6)} height={3.6} leaf="#3f7f2d" />
+      <Torch position={at(PLACE.field, -1.6, 0.2, -1.2)} light={6} seed={4} />
+      <Torch position={at(PLACE.field, 2.2, 0.2, 0.8)} light={5} seed={7} />
+    </group>
+
+    {/* ---- stronghold: the portal room ---- */}
+    <group name="set-stronghold">
+      <Vox kind="stoneBrick" position={at(PLACE.stronghold, 0, -0.1, 0)} size={[11, 0.2, 11]} />
+      <Vox kind="stoneBrick" position={at(PLACE.stronghold, 0, 1.8, -5.4)} size={[11, 4, 0.4]} />
+      <Vox kind="stoneBrick" position={at(PLACE.stronghold, -5.4, 1.8, 0)} size={[0.4, 4, 11]} />
+      <Vox kind="stoneBrick" position={at(PLACE.stronghold, 0, 3.7, 0)} size={[11, 0.3, 11]} />
+      <Torch position={at(PLACE.stronghold, -4.9, 1.6, -3.4)} light={5} seed={2} />
+      <Torch position={at(PLACE.stronghold, -4.9, 1.6, 3.4)} light={5} seed={5} />
+      {/* the lava under the portal, the way the game builds it */}
+      <Block position={at(PLACE.stronghold, 0, -0.02, -2.6)} size={[3.2, 0.05, 1.0]} color="#ff7a14" emissive="#ff5a00" emissiveIntensity={1.2} castShadow={false} />
+      <Glow position={at(PLACE.stronghold, 0, 0.2, -2.6)} size={2.6} color="#ff8a2a" opacity={0.35} />
+    </group>
+
+    {/* ---- end: obsidian, endstone, and nothing else ---- */}
+    <group name="set-end">
+      <Vox kind="obsidian" position={at(PLACE.end, 0, -0.3, 0)} size={[16, 0.6, 16]} />
+      <Vox kind="sand" position={at(PLACE.end, 0, 0.05, 0)} size={[13, 0.1, 13]} tint="#d8d6a0" />
+      {[-4.2, -2.1, 0, 2.1, 4.2].map((x, i) => (
+        <Vox key={i} kind="obsidian" position={at(PLACE.end, x, 2.4, -5.6)} size={[1.4, 4.8, 1.4]} />
+      ))}
+      <Glow position={at(PLACE.end, 0, 3.2, -6.2)} size={9} color="#6a3fc0" opacity={0.18} />
+    </group>
   </>
 );
 
 export const World: React.FC = () => (
   <>
-    <Sun />
-    <Clouds y={-14} center={[14, 0, -6]} span={160} opacity={0.9} />
-    <Clouds y={34} center={[14, 0, -30]} span={200} />
+    <Clouds y={-14} center={[0, 0, -6]} span={200} opacity={0.85} />
+    <Clouds y={40} center={[0, 0, -30]} span={240} />
     <Sets />
 
-    {/* Every exhibit of the film, mounted for the whole film. */}
-    <Exhibit1 />
-
-    {/* Atmosphere is not optional: a ray, a pool of light, a glow and dust on every island the lens rests on. */}
-    <GodRay position={on(PLACE.ask, -1.5, 5.5, -1)} rotation={[0, 0, 0.5]} width={4} height={11} color="#fff0c8" opacity={0.07} />
-    <LightPool position={on(PLACE.ask, 0.4, 0.03, 0.4)} width={6} depth={4.6} color="#fff2c8" opacity={0.16} />
-    <Glow position={on(PLACE.ask, 1.2, 1.6, 0.1)} size={1.8} color="#ffe08a" opacity={0.28} />
-    <Dust position={on(PLACE.ask, 0, 2, 0)} area={[9, 4, 7]} count={40} size={0.04} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
-    <LightPool position={on(PLACE.cause, -0.8, 0.03, 0.2)} width={6} depth={4.6} color="#fff2c8" opacity={0.16} />
-    <Dust position={on(PLACE.cause, 0, 2, 0)} area={[9, 4, 7]} count={40} size={0.04} color="#fff7d8" opacity={0.6} seed={5} speed={0.2} />
+    {/* Atmosphere: dust where a light is, and a pool under every lamp. */}
+    <Dust position={at(PLACE.room, 0, 1.4, 0)} area={[7, 3, 6]} count={34} size={0.04} color="#cfe6ff" opacity={0.35} seed={3} speed={0.18} />
+    <Dust position={at(PLACE.shaft, 0, 1.2, 0)} area={[6, 4, 6]} count={30} size={0.05} color="#ffe2b0" opacity={0.4} seed={6} speed={0.24} />
+    <Dust position={at(PLACE.field, 0, 1.6, 0)} area={[9, 4, 9]} count={40} size={0.05} color="#dfe8ff" opacity={0.32} seed={11} speed={0.2} />
+    {/* A ray down the shaft: the only place in the film where light has a shape. */}
+    <GodRay position={at(PLACE.shaft, 0, 3.2, 0)} rotation={[0, 0, 0]} width={2.4} height={9} color="#ffd9a0" opacity={0.09} />
+    <LightPool position={at(PLACE.shaft, 0, 0.03, 0)} width={7} depth={7} color="#ffc078" opacity={0.14} />
+    <LightPool position={at(PLACE.stronghold, 0, 0.03, 0)} width={8} depth={8} color="#8a6fe0" opacity={0.12} />
   </>
 );

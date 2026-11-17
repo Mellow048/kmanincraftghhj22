@@ -23,6 +23,8 @@ export const film = defineFilm({
   id: "why-does-bread-cost-more-every-year",
   title: "Why Does Bread Cost More Every Year",
   topic: "stories",
+  // Built on the flying camera before the reference arrived: the `explainer` cut keeps that grammar.
+  cut: "explainer",
   look: "overworld-day",
   audio: { src: "audio/why-does-bread-cost-more-every-year/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },

@@ -15,7 +15,7 @@ import { scene1 } from "./scene1";
 export const film = defineFilm({
   id: "nobody-joined-my-brothers-server-for-three-years",
   title: "Nobody Joined My Brothers Server For Three Years",
-  topic: "explainer",
+  topic: "stories",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/nobody-joined-my-brothers-server-for-three-years/narration.mp3" },

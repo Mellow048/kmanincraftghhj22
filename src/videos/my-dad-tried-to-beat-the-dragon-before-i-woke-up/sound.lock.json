@@ -1,0 +1,144 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "my-dad-tried-to-beat-the-dragon-before-i-woke-up",
+  "mix": "public/audio/my-dad-tried-to-beat-the-dragon-before-i-woke-up/mix.mp3",
+  "seconds": 75.9667,
+  "built_from": {
+    "timing.json": "c1d1afa740002df34d520aed064ba4fec855b5a8",
+    "sound.json": "9150f83e88cc83950d4c580532b034319932e255",
+    "narration.mp3": "3d68d24382d42c8e6d336829d04203d8e0827a83"
+  },
+  "mix_sha1": "6c47fb90cc5cbd70297ee75b2d285edc58f3417e",
+  "music_sections": [
+    {
+      "from": "1.never",
+      "mood": "playful",
+      "at": 0.0
+    },
+    {
+      "from": "2.needs",
+      "mood": "curious",
+      "at": 8.1
+    },
+    {
+      "from": "3.slow",
+      "mood": "sad",
+      "at": 18.77
+    },
+    {
+      "from": "4.dug",
+      "mood": "sneak",
+      "at": 27.23
+    },
+    {
+      "from": "5.bed",
+      "mood": "sad",
+      "at": 35.0
+    },
+    {
+      "from": "6.lava",
+      "mood": "tense",
+      "at": 42.63
+    },
+    {
+      "from": "6.orange",
+      "mood": "none",
+      "at": 45.57
+    },
+    {
+      "from": "6.quiet",
+      "mood": "drone",
+      "at": 47.5
+    },
+    {
+      "from": "7.read",
+      "mood": "hope",
+      "at": 52.9
+    },
+    {
+      "from": "8.turned",
+      "mood": "tense",
+      "at": 60.93
+    },
+    {
+      "from": "8.portal",
+      "mood": "wonder",
+      "at": 66.17
+    },
+    {
+      "from": "8.sword",
+      "mood": "hope",
+      "at": 68.97
+    }
+  ],
+  "beds": 16,
+  "measured": {
+    "musicUnderVoiceDb": 18.6,
+    "secondsWithoutMusic": 3.1,
+    "bedsUnderVoiceDb": 26.8,
+    "sfx": 55,
+    "sfxPerMinute": 43.4,
+    "sfxKinds": 30,
+    "longestGapSeconds": 3.1,
+    "longestGapAt": 4.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.7,
+    "voiceOverRestWorstDb": 5.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.5,
+        "t": 74.4,
+        "cue": "8.dig",
+        "sounding": [
+          "chime",
+          "ding"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 2.6,
+        "cue": "1.never",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 6.3,
+        "t": 10.1,
+        "cue": "2.needs",
+        "sounding": [
+          "buzz"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 22.1,
+        "cue": "3.heard",
+        "sounding": [
+          "heartbeat"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 46.8,
+        "cue": "6.orange",
+        "sounding": [
+          "boom",
+          "debris"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 4.6,
+        "cue": "1.promise",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.3
+  },
+  "failures": []
+}

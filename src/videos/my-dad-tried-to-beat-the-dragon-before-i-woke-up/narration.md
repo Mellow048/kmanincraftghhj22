@@ -59,7 +59,8 @@ is the shape the reference opens on.
 | 5.bed | The boy at his bedroom door, years ago, asking |
 | 5.tired | Dad at the same door, saying tomorrow |
 | 5.now | Dad at the bottom of the shaft, looking up |
-| 6.lava | Lava light filling the shaft; the orange climb |
+| 6.lava | The torch finds it: lava light on the shaft wall |
+| 6.orange | The whole shaft turning orange, top to bottom |
 | 6.quiet | The empty shaft; the torches going out one by one |
 | 6.sign | A sign at the top of the shaft: SORRY. I TRIED. |
 | 7.read | Sunlight on the desk; the boy reading the sign |
@@ -69,7 +70,8 @@ is the shape the reference opens on.
 | 8.pearl | The pearl on the ground where the enderman was |
 | 8.portal | Twelve eyes of ender thrown; the stronghold portal lit |
 | 8.sword | The dragon, and one wooden sword hitting last |
-| 8.sub | The subscribe sign, in-world |
+| 8.dig | The two of them in the first gold of morning |
+| 9.sub | The subscribe sign, in-world, going up beside them |
 
 ## The lines
 
@@ -103,7 +105,8 @@ Past tense, first person, spoken by the son. 27 stops. About 250 words, about 75
 [5.now]       Now he's the one waiting on the other side.
 
 # clip 06-low
-[6.lava]      At four his torch found lava, and the shaft lit orange.
+[6.lava]      At four, his torch found lava.
+[6.orange]    And the shaft lit orange.
 [6.quiet]     Six hours of digging, and then nothing at all.
 [6.sign]      He left a sign at the top and went quiet.
 
@@ -117,5 +120,7 @@ Past tense, first person, spoken by the son. 27 stops. About 250 words, about 75
 [8.pearl]     And when he looked, it dropped a pearl.
 [8.portal]    We threw twelve eyes at breakfast. Together.
 [8.sword]     He hit the dragon last, with that wooden sword.
-[8.sub]       Subscribe, if your dad would dig four hundred blocks for you.
+[8.dig]       If your dad would dig four hundred blocks for you.
+# clip 09-cta
+[9.sub]       Subscribe.
 ```

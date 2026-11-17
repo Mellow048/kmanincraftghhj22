@@ -351,11 +351,15 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   // ---- 4. the scenes: one shot per script line ----------------------------
   // A topic may fly its camera (topic.json `camera`): its scenes are built with another builder, a shot names
   // the stop it lands on, and film.tsx calls a guard that throws if the camera ever teleports.
-  const builder = topic.camera?.builder ?? "storyScene";
+  // A CUT may also name the camera it was built with, so one topic can hold two grammars: the
+  // reference for Stories cuts 37 times in 67 seconds and needs storyScene, while the two explainers
+  // already delivered were built on the flying camera, which never teleports.
+  const camera = cut?.camera ?? topic.camera;
+  const builder = camera?.builder ?? "storyScene";
   const flies = builder !== "storyScene";
   const hardCuts = [];
-  if (topic.camera?.guard && !new RegExp(`\\b${topic.camera.guard}\\s*\\(`).test(film)) {
-    fail(`${tag}: film.tsx does not call ${topic.camera.guard}(film.scenes). In this topic the camera never teleports, and that call is what checks it.`);
+  if (camera?.guard && !new RegExp(`\\b${camera.guard}\\s*\\(`).test(film)) {
+    fail(`${tag}: film.tsx does not call ${camera.guard}(film.scenes). In this topic the camera never teleports, and that call is what checks it.`);
   }
   const used = [];
   for (const name of sceneNames) {
@@ -407,7 +411,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   }
 
   if (topic.camera?.maxHardCuts !== undefined && hardCuts.length > topic.camera.maxHardCuts) {
-    fail(`${tag}: ${hardCuts.length} shots are hard cuts (${hardCuts.join(", ")}). This topic allows ${topic.camera.maxHardCuts}: the camera flies.`);
+    fail(`${tag}: ${hardCuts.length} shots are hard cuts (${hardCuts.join(", ")}). This film allows ${camera?.maxHardCuts ?? 0}: the camera flies.`);
   }
 
   const want = cues.map((cue) => cue.id);
