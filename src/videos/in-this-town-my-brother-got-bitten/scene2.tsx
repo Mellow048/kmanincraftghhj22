@@ -13,7 +13,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "3.late",
-      ...cam.push({ on: [F[0] - 0.3, 0.9, F[2] + 1.2], dist: 6.2, to: 5.4, yaw: -24, pitch: 9, fov: 46 }),
+      ...cam.push({ on: [F[0] - 0.3, 0.85, F[2] + 2.7], dist: 5.0, to: 4.4, yaw: -16, pitch: 8, fov: 46 }),
       zone: "town",
       look: "overworld-sunset",
       note: "Sunset. The kid is alone at the edge of the wheat, fighting it with his wooden sword. Behind him the windows are already lit and the street is empty.",
@@ -21,7 +21,7 @@ export const scene2 = storyScene(timing, {
         <>
           <TownSet lit />
           <Wheat position={F} size={[6, 5]} />
-          <Me position={[F[0] - 0.4, hop(t, 0.5, 0.2, 0.3) + hop(t, 1.4, 0.2, 0.3), F[2] + 3.0]} rotationY={NORTH + 0.3} lean={Math.max(0, Math.sin(t * 7)) * 0.35} carry={<WoodSword position={[0.05, 0.1, 0.1]} rotation={[-0.75 - Math.max(0, Math.sin(t * 7)) * 1.1, 0, 0]} />} />
+          <Me position={[F[0] - 0.4, hop(t, 0.5, 0.2, 0.3) + hop(t, 1.4, 0.2, 0.3), F[2] + 3.0]} rotationY={SOUTH + 0.9} lean={Math.max(0, Math.sin(t * 7)) * 0.35} carry={<WoodSword position={[0.05, 0.1, 0.1]} rotation={[-0.75 - Math.max(0, Math.sin(t * 7)) * 1.1, 0, 0]} />} />
         </>
       ),
     },
@@ -43,7 +43,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.pull",
-      ...cam.push({ on: [-1.0, 1.0, -4.6], dist: 6.0, to: 5.4, yaw: 62, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [-1.0, 1.0, -4.5], dist: 5.2, to: 4.5, yaw: 60, pitch: 6, fov: 46 }),
       zone: "town",
       look: "overworld-night",
       note: "Our door, open, with the light coming out. The big brother stands in it and pulls the kid in off the street. The zombie is two steps behind, arms out.",
@@ -91,7 +91,8 @@ export const scene2 = storyScene(timing, {
           <OurRoom night />
           <Bro position={[-1.0, 0, 0.6]} rotationY={SOUTH + 0.35} bitten carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
           <Me position={[-0.15, 0, 1.25]} rotationY={WEST} lookAt={[-1.25, 0.9, 0.8]} />
-          <Bubble text="I'M FINE." position={[-1.0, 2.1, 0.6]} scale={0.62 * pop(t, 0.5, 0.14)} tail={-1} />
+          <Bubble text="I'M FINE." position={[-0.85, 2.0, 0.7]} scale={0.5 * pop(t, 0.5, 0.14)} tail={-1} />
+          <Fill at={[-0.6, 1.8, 3.2]} power={34} />
         </>
       ),
     },
@@ -105,6 +106,7 @@ export const scene2 = storyScene(timing, {
         <>
           <OurRoom night />
           <Bro position={[-1.0, 0, 0.6]} rotationY={SOUTH + 0.2} bitten green={0.25 + tw(t, 0, 0.8) * 0.3} nod={tw(t, 0.2, 0.8) * 0.3} tilt={Math.sin(t * 14) * 0.03} />
+          <Fill at={[-0.6, 1.6, 2.6]} power={30} />
         </>
       ),
     },
@@ -129,44 +131,47 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.dad",
-      ...cam.push({ on: [-0.5, 1.2, 1.5], dist: 5.0, to: 4.6, yaw: 20, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [-0.75, 1.1, 1.5], dist: 4.8, to: 4.3, yaw: -10, pitch: 6, fov: 46 }),
       zone: "room",
       look: "lantern-night",
-      note: "Dad comes in, picks him up like a sack, and carries him out across the frame. The brother's green arms hang over dad's back.",
+      note: "Dad walks straight at the lens with the brother lying across his arms, green, head hanging one side and feet the other, the wooden sword still in his hand. The kid stands behind and watches them go.",
       stage: (t) => {
-        const x = 0.9 - tw(t, 0.1, 1.7) * 2.6;
+        const z = 0.3 + tw(t, 0.1, 1.8) * 1.6;
         return (
           <>
             <OurRoom night />
-            <Dad position={[x, 0, 1.7]} rotationY={WEST} walk={(0.9 - x) * 1.2} lean={-0.12} />
-            <Lying position={[x - 0.42, 1.5, 1.7 + 0.75]} turn={0}>
-              <Bro position={[0, 0, 0]} green={1} bitten arms={{ hold: <WoodSword position={[0, -0.16, 0.13]} /> }} />
+            <Dad position={[-0.9, 0, z]} rotationY={SOUTH} walk={z * 1.2} lean={-0.12} nod={0.2} />
+            <Lying position={[-0.9 + 0.78, 1.12, z + 0.42]} turn={Math.PI / 2}>
+              <Bro position={[0, 0, 0]} green={1} bitten arms={{ l: -0.3, r: -0.3, hold: <WoodSword position={[0, -0.16, 0.13]} /> }} />
             </Lying>
-            <Me position={[1.5, 0, 0.5]} rotationY={WEST} lookAt={[x, 1.4, 1.7]} />
-            <HandLantern position={[0.2, 0, 0.6]} light={18} />
-            <Fill at={[0, 2.6, 3.0]} power={16} />
+            <Me position={[0.65, 0, 0.95]} rotationY={SOUTH - 0.5} lookAt={[-0.9, 1.4, z]} />
+            <HandLantern position={[0.3, 0, 1.7]} light={18} />
+            <Fill at={[0, 2.6, 3.4]} power={18} />
           </>
         );
       },
     },
     {
       cue: "3.look",
-      ...cam.push({ on: [-1.5, 1.25, 2.2], dist: 3.6, to: 3.2, yaw: 150, pitch: 2, fov: 42 }),
+      ...cam.push({ on: [-0.95, 1.15, 1.9], dist: 3.9, to: 3.5, yaw: 180, pitch: 5, fov: 44 }),
       zone: "room",
       look: "lantern-night",
-      note: "From behind the kid: dad's back going away with the brother's arms hanging. Dad's head does not turn.",
-      stage: (t) => (
-        <>
-          <OurRoom night />
-          <Dad position={[-1.5, 0, 2.6 + t * 0.7]} rotationY={SOUTH} walk={t * 0.8} lean={-0.12} />
-          <Lying position={[-1.5, 1.5, 2.6 + t * 0.7 + 1.2]}>
-            <Bro position={[0, 0, 0]} green={1} bitten arms={{ hold: <WoodSword position={[0, -0.16, 0.13]} /> }} />
-          </Lying>
-          <Me position={[-0.9, 0, 0.9]} rotationY={SOUTH - 0.3} lookAt={[-1.5, 1.5, 3]} />
-          <HandLantern position={[0.2, 0, 0.6]} light={18} />
-          <Fill at={[0, 2.6, 3.0]} power={14} />
-        </>
-      ),
+      note: "From behind the kid: dad's back going away into the dark with the brother's head and feet either side of him. Dad's head does not turn.",
+      stage: (t) => {
+        const z = 1.5 + t * 0.6;
+        return (
+          <>
+            <OurRoom night />
+            <Dad position={[-1.1, 0, z]} rotationY={SOUTH} walk={t * 0.8} lean={-0.12} />
+            <Lying position={[-1.1 + 0.78, 1.12, z + 0.42]} turn={Math.PI / 2}>
+              <Bro position={[0, 0, 0]} green={1} bitten arms={{ l: -0.3, r: -0.3, hold: <WoodSword position={[0, -0.16, 0.13]} /> }} />
+            </Lying>
+            <Me position={[-0.5, 0, 0.55]} rotationY={SOUTH - 0.2} lookAt={[-1.1, 1.5, z]} />
+            <HandLantern position={[-1.9, 0, 0.9]} light={18} />
+            <Fill at={[-1.0, 2.4, -1.0]} power={16} />
+          </>
+        );
+      },
     },
     {
       cue: "3.thought",

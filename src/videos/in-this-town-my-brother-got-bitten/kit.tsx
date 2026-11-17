@@ -446,7 +446,7 @@ export const Cellar: React.FC<{
       {floorReach > 0.01 ? (
         <>
           <Block position={[-0.75, 0.012, 0.25 - floorReach * 1.05]} size={[3.1, 0.012, 0.3 + floorReach * 2.1]} color={day} emissive={day} emissiveIntensity={0.9} castShadow={false} />
-          {shadow ? <Block position={[PLACE.bro[0], 0.02, -0.72]} size={[0.62, 0.012, 1.75]} color="#3d3f4a" castShadow={false} /> : null}
+          {shadow ? <Block position={[PLACE.bro[0], 0.02, -0.72]} size={[0.86, 0.012, 1.95]} color="#34363f" castShadow={false} /> : null}
         </>
       ) : null}
     </group>

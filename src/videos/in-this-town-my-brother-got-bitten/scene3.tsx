@@ -32,7 +32,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.heard",
-      ...cam.push({ on: [0.85, 0.75, 0.1], dist: 3.3, to: 2.9, yaw: 10, pitch: 3, fov: 44 }),
+      ...cam.push({ on: [0.85, 0.6, 0.2], dist: 3.5, to: 3.1, yaw: 10, pitch: 12, fov: 44 }),
       zone: "room",
       look: "lantern-night",
       note: "Low, at the level of the floor. The boards in front of his bed jump. He sits up and looks down at them.",
@@ -50,7 +50,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.two",
-      ...cam.push({ on: [0.92, 0.1, 1.05], dist: 2.5, to: 2.2, yaw: -14, pitch: 48, fov: 42 }),
+      ...cam.push({ on: [0.95, 0.15, 1.05], dist: 3.3, to: 2.9, yaw: -12, pitch: 46, fov: 42 }),
       zone: "room",
       look: "lantern-night",
       note: "The boards, from above, close. They jump twice, and the word KNOCK comes up off them each time.",
@@ -63,7 +63,7 @@ export const scene3 = storyScene(timing, {
             {[a, b].map((at, i) =>
               t > at ? (
                 <group key={i}>
-                  <PixelText text="KNOCK" position={[0.55 + i * 0.7, 0.5 + (t - at) * 0.5, 1.1 + i * 0.25]} rotation={[-0.8, -0.2, 0]} height={0.26 * pop(t, at, 0.1)} color="#ffe27a" />
+                  <PixelText text="KNOCK" position={[0.7 + i * 0.5, 0.35 + (t - at) * 0.4, 0.85 + i * 0.5]} rotation={[-0.8, -0.2, 0]} height={0.15 * pop(t, at, 0.1)} color="#ffe27a" />
                   <Puffs position={[0.9, 0.05, 0.95 + i * 0.3]} count={4} spread={0.5} size={0.1} rise={0.5} speed={1.6} color="#d8cdb8" />
                 </group>
               ) : null,
@@ -75,10 +75,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.his",
-      ...cam.push({ on: [0, 1.0, -0.2], dist: 4.6, to: 4.2, yaw: 0, pitch: 9, fov: 44 }),
+      ...cam.push({ on: [0, 1.0, 0.0], dist: 4.6, to: 4.2, yaw: 0, pitch: 9, fov: 44 }),
       zone: "room",
       look: "warm-room",
-      note: "A memory, in warm light: the wall between the beds, edge on. On the left the big brother bumps it twice. On the right the kid bumps back.",
+      note: "A memory, in warm light: the wall between the beds, edge on. On the left the big brother bumps it twice with his shoulder. On the right the kid bumps back.",
       stage: (t) => {
         const a = w("4.his", "knock");
         const k1 = bonk(t, a, 0.18) + bonk(t, a + 0.28, 0.18);
@@ -86,10 +86,11 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <OurRoom />
-            <Bro position={[-0.62 + k1 * 0.14, 0, 0.15]} rotationY={EAST} lean={k1 * 0.25} />
-            <Me position={[0.6 - k2 * 0.14, 0, 0.15]} rotationY={WEST} lean={k2 * 0.25} tilt={0.12} />
-            {[a + 0.06, a + 0.34].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[0.12, 1.0, 0.2]} rotationY={EAST} t={t - at} color="#fff0c0" reach={0.6} /> : null))}
-            {[a + 0.86, a + 1.14].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[-0.12, 0.85, 0.2]} rotationY={WEST} t={t - at} color="#ffd9a0" reach={0.6} /> : null))}
+            <Bro position={[-0.66 + k1 * 0.2, 0, 0.75]} rotationY={SOUTH + 0.3} lookAt={[0, 1.2, 0.75]} />
+            <Me position={[0.6 - k2 * 0.2, 0, 0.75]} rotationY={SOUTH - 0.3} tilt={-0.15} lookAt={t > a + 0.5 ? [0, 1.0, 0.75] : undefined} />
+            {[a + 0.06, a + 0.34].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[0.14, 1.0, 0.55]} rotationY={EAST} t={t - at} color="#fff0c0" reach={0.6} /> : null))}
+            {[a + 0.86, a + 1.14].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[-0.14, 0.85, 0.55]} rotationY={WEST} t={t - at} color="#ffd9a0" reach={0.6} /> : null))}
+            <Fill at={[0, 1.8, 3.4]} power={36} />
           </>
         );
       },
@@ -107,6 +108,7 @@ export const scene3 = storyScene(timing, {
           <>
             <Cellar walls="nws" door={0.6} day="#3a4a7a" />
             <Me position={[s[0], s[1] + hop(t % 0.4, 0.05, 0.06, 0.2), s[2]]} rotationY={NORTH} carry={<HandLantern position={[0, 0, 0.04]} light={22} scale={0.85} />} nod={0.15} />
+            <Fill at={[2.6, 2.0, 1.6]} power={18} />
           </>
         );
       },
@@ -144,10 +146,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.sword",
-      ...cam.push({ on: [-0.17, 1.0, -0.2], dist: 3.5, to: 3.0, yaw: 84, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [-0.17, 1.0, -0.3], dist: 3.9, to: 3.3, yaw: 50, pitch: 4, fov: 42 }),
       zone: "cellar",
       look: "lantern-night",
-      note: "From the side: the bars down the middle of the frame, him on one side and the kid on the other. He still has the wooden sword in his hand. He holds it out through the bars with the handle towards the kid.",
+      note: "From the side, across the bars: him behind them, the kid in front. He still has the wooden sword in his hand. He lifts it and holds it out between the bars with the handle towards the kid.",
       stage: (t) => {
         const a = w("4.sword", "held");
         const up = tw(t, a - 0.1, a + 0.4);
@@ -155,9 +157,9 @@ export const scene3 = storyScene(timing, {
           <>
             <Cellar walls="nws" />
             <Bro position={PLACE.bro} rotationY={SOUTH} green={1} bitten arms={{ l: -1.5, r: -0.5 - up * 1.0, hold: sword }} nod={0.2 * (1 - up)} />
-            <Me position={[PLACE.me[0], 0, 0.55]} rotationY={NORTH} lookAt={[-0.17, 1.0, -0.4]} />
-            <HandLantern position={[-0.9, 0, 0.3]} light={20} />
-            <Fill at={[2.4, 1.8, 0]} power={12} />
+            <Me position={[PLACE.me[0], 0, 0.6]} rotationY={NORTH} lookAt={[-0.17, 1.0, -0.4]} />
+            <HandLantern position={[-0.95, 0, 0.3]} light={20} />
+            <Fill at={[2.4, 1.8, 1.2]} power={14} />
           </>
         );
       },
@@ -182,13 +184,13 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: [-0.1, 0.95, -0.1], dist: 4.6, to: 4.1, yaw: 34, pitch: 16, fov: 46 }),
       zone: "cellar",
       look: "lantern-night",
-      note: "From higher up: the small kid in front of the bars with the sword back in his arms, jumping on the spot: I WILL FIX YOU. The brother's head tilts.",
+      note: "From higher up: the small kid in front of the bars with the sword back in his arms, jumping on the spot: I'LL FIX YOU. The brother's head tilts.",
       stage: (t) => (
         <>
           <Cellar />
           <Bro position={PLACE.bro} rotationY={SOUTH} green={1} out bitten tilt={-0.25} />
           <Me position={[PLACE.me[0], hop(t, 0.5, 0.25, 0.3), 0.45]} rotationY={NORTH} carry={<WoodSword position={[0, 0.03, 0.02]} rotation={[0, 0, Math.PI / 2]} scale={0.8} />} />
-          <Bubble text="I WILL FIX YOU." position={[0.75, 1.75, 0.6]} rotationY={0.5} scale={0.55 * pop(t, 0.45, 0.14)} tail={1} />
+          <Bubble text="I'LL FIX YOU." position={[0.55, 1.7, 0.6]} rotationY={0.5} scale={0.38 * pop(t, 0.45, 0.14)} tail={-1} />
           <HandLantern position={LAMP} light={20} />
           <Fill at={[0.6, 2.2, 2.0]} power={12} />
         </>
@@ -196,39 +198,39 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.bread",
-      ...cam.push({ on: [0.0, 0.75, -0.55], dist: 3.3, to: 2.9, yaw: 22, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [-0.05, 0.8, -0.45], dist: 3.7, to: 3.3, yaw: 48, pitch: 13, fov: 42 }),
       zone: "cellar",
       look: "lantern-night",
-      note: "He pushes a loaf under the bars. The brother looks down at it, and turns his head away. The loaf stays on the floor.",
+      note: "From the side. He pushes a loaf under the bars. The brother looks down at it, and turns his head away. The loaf stays on the floor.",
       stage: (t) => {
         const no = w("5.bread", "He");
         const k = tw(t, 0.2, 0.7);
         return (
           <>
-            <Cellar />
-            <Bro position={PLACE.bro} rotationY={SOUTH} green={1} out bitten nod={t < no ? 0.4 * k : 0.1} turn={tw(t, no, no + 0.3) * 0.9} />
-            <Me position={[0.25, 0, 0.3]} rotationY={NORTH} lean={0.4 * (1 - tw(t, 0.7, 1.0))} />
+            <Cellar walls="nws" />
+            <Bro position={PLACE.bro} rotationY={SOUTH} green={1} out bitten nod={t < no ? 0.45 * k : 0.1} turn={tw(t, no, no + 0.3) * -0.9} />
+            <Me position={[-0.25, 0, 0.35]} rotationY={NORTH} lean={0.4 * (1 - tw(t, 0.7, 1.0))} />
             <Loaf position={[LOAF[0], 0.02, -0.1 + (LOAF[2] + 0.1) * k]} rotation={[0, 0.3, 0]} />
-            <HandLantern position={LAMP} light={20} />
-            <Fill at={[0.6, 2.2, 2.0]} power={12} />
+            <HandLantern position={[-0.95, 0, 0.3]} light={20} />
+            <Fill at={[2.4, 2.0, 1.4]} power={14} />
           </>
         );
       },
     },
     {
       cue: "5.pink",
-      ...cam.push({ on: [0.3, 0.86, 0.7], dist: 2.0, to: 1.6, yaw: -24, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [0.3, 0.9, 0.75], dist: 2.5, to: 2.1, yaw: -22, pitch: 4, fov: 38 }),
       zone: "cellar",
       look: "lantern-night",
-      note: "The kid, close, holding up a round bottle of pink potion with both sleeves. It glows on his face. The bars and his brother are behind him, out of the light.",
+      note: "The kid, close, with a round bottle of pink potion in his arms. It glows a little on his chin. The bars and his brother are behind him, out of the light.",
       stage: (t) => (
         <>
           <Cellar />
           <Bro position={PLACE.bro} rotationY={SOUTH} green={1} out bitten />
           <Loaf position={LOAF} rotation={[0, 0.3, 0]} />
-          <Me position={[0.3, 0, 0.7]} rotationY={SOUTH - 0.3} carry={<Bottle pink position={[0, 0.1 + pop(t, 0.2, 0.2) * 0.12, 0.08]} rotation={[-0.75, 0, 0]} scale={1.25} />} nod={0.2} />
-          <pointLight position={[0.2, 1.0, 1.2]} color="#ff8ac8" intensity={6} distance={3} decay={1.6} />
-          <HandLantern position={LAMP} light={16} />
+          <Me position={[0.3, 0, 0.75]} rotationY={SOUTH - 0.3} carry={<Bottle pink position={[0, 0.02 + pop(t, 0.2, 0.2) * 0.05, 0.08]} rotation={[-0.75, 0, 0]} scale={0.62} />} nod={0.2} />
+          <pointLight position={[0.1, 1.3, 1.6]} color="#ffb0d8" intensity={2.2} distance={3} decay={1.6} />
+          <HandLantern position={[-0.6, 0, 0.5]} light={12} />
         </>
       ),
     },
@@ -257,23 +259,23 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.thought",
-      ...cam.push({ on: face([0.2, 0, 0.15], KID), dist: 2.2, to: 1.9, yaw: 170, pitch: -2, fov: 38 }),
+      ...cam.push({ on: face([0.17, 0, 0.15], KID), dist: 2.4, to: 2.1, yaw: 180, pitch: -2, fov: 38 }),
       zone: "cellar",
       look: "lantern-night",
       note: "The kid through the bars, from the cell side. The empty bottle is on the floor by his feet. His head goes down.",
       stage: (t) => (
         <>
           <Cellar walls="ew" />
-          <Me position={[0.2, 0, 0.15]} rotationY={NORTH} nod={tw(t, 0.2, 0.9) * 0.45} />
+          <Me position={[0.17, 0, 0.15]} rotationY={NORTH} nod={tw(t, 0.2, 0.9) * 0.45} />
           <Bottle position={[0.65, 0.06, 0.25]} rotation={[0, 0, 1.4]} />
-          <HandLantern position={[-0.55, 0, 0.5]} light={18} />
+          <HandLantern position={[-0.55, 0, 0.5]} light={10} />
           <Fill at={[0.2, 1.6, -1.6]} power={10} />
         </>
       ),
     },
     {
       cue: "5.grey",
-      ...cam.push({ on: [-1.25, 2.45, -2.5], dist: 3.5, to: 3.0, yaw: -8, pitch: -16, fov: 44 }),
+      ...cam.push({ on: [-1.25, 2.2, -2.5], dist: 3.6, to: 3.1, yaw: -8, pitch: -14, fov: 46 }),
       zone: "cellar",
       look: "lantern-night",
       note: "The little window, high in the cell wall. The square of sky in it goes from black to grey. Under it, the brother backs away from it.",

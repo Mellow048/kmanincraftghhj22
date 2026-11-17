@@ -29,47 +29,47 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "8.how",
-      ...cam.push({ on: [0.25, 1.05, 0.45], dist: 3.3, to: 2.9, yaw: 24, pitch: -3, fov: 42 }),
+      ...cam.push({ on: [0.2, 1.0, 0.4], dist: 3.3, to: 2.9, yaw: 158, pitch: 0, fov: 42 }),
       zone: "cellar",
       look: "warm-room",
-      note: "Low, from the kid's height. He is still standing in the light with his back to the door, and he turns his head up to dad: HOW DID YOU KNOW?",
+      note: "From inside the cell. The kid is still standing in the light with the bright door behind him, and he turns his head up to dad beside him: HOW DID YOU KNOW?",
       stage: (t) => (
         <>
-          <Cellar {...day} />
+          <Cellar walls="ew" {...day} />
           <Bro position={PLACE.bro} rotationY={SOUTH} green={0.8} out bitten tilt={Math.sin(t * 41) * 0.04} />
           <RedSwirl position={PLACE.bro} t={t + 2} />
-          {loaf}
-          <Me position={KIDP} rotationY={NORTH} lookAt={face(DAD, 1)} />
-          <Dad position={DAD} rotationY={WEST + 0.5} lookAt={face(KIDP, KID)} />
-          <Bubble text="HOW DID YOU KNOW?" position={[-0.55, 1.75, 0.55]} scale={0.46 * pop(t, 0.5, 0.14)} tail={-1} />
-          <Fill at={[0.6, 2.0, 2.4]} power={12} />
+          <Me position={KIDP} rotationY={NORTH} lookAt={t > 0.25 ? face(DAD, 1) : undefined} />
+          <Dad position={DAD} rotationY={NORTH - 0.4} lookAt={t > 0.6 ? face(KIDP, KID) : undefined} />
+          <Bubble text="HOW DID" position={[0.1, 1.72, 0.2]} rotationY={Math.PI} scale={0.36 * pop(t, 0.5, 0.14)} tail={1} />
+          <Bubble text="YOU KNOW?" position={[0.1, 1.5, 0.2]} rotationY={Math.PI} scale={0.36 * pop(t, 0.62, 0.14)} tail={1} />
+          <Fill at={[0.8, 1.8, -1.8]} power={20} />
         </>
       ),
     },
     {
       cue: "8.sleeve",
-      ...cam.push({ on: [DAD[0] + 0.1, 1.0, DAD[2] + 0.25], dist: 1.9, to: 1.6, yaw: 12, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [DAD[0] - 0.12, 1.12, DAD[2] + 0.2], dist: 2.6, to: 2.2, yaw: -24, pitch: 4, fov: 38 }),
       zone: "cellar",
       look: "warm-room",
       note: "Dad's folded arms, close. He pushes one sleeve back with the other.",
       stage: (t) => (
         <>
           <Cellar {...day} />
-          <Dad position={DAD} rotationY={SOUTH + 0.25} carry={<SleeveBite k={tw(t, 0.25, 0.8)} />} nod={0.35} />
+          <Dad position={DAD} rotationY={SOUTH - 0.1} carry={<SleeveBite k={tw(t, 0.25, 0.8)} />} nod={0.35} turn={-0.4} />
           <Fill at={[0.6, 2.0, 2.4]} power={14} />
         </>
       ),
     },
     {
       cue: "8.bite",
-      ...cam.push({ on: [DAD[0] - 0.3, 1.02, DAD[2] + 0.3], dist: 1.25, to: 0.95, yaw: -30, pitch: 8, fov: 36 }),
+      ...cam.push({ on: [DAD[0] - 0.32, 1.0, DAD[2] + 0.2], dist: 1.7, to: 1.3, yaw: -48, pitch: 10, fov: 36 }),
       zone: "cellar",
       look: "warm-room",
       note: "Closer, from the other side: on the bare arm, two rows of small pale green marks. Old ones. The same shape as the tear in the brother's sleeve.",
       stage: () => (
         <>
           <Cellar {...day} />
-          <Dad position={DAD} rotationY={SOUTH + 0.25} carry={<SleeveBite k={1} />} nod={0.35} />
+          <Dad position={DAD} rotationY={SOUTH - 0.1} carry={<SleeveBite k={1} />} nod={0.35} turn={-0.4} />
           <Fill at={[0.2, 1.6, 2.0]} power={14} />
         </>
       ),
@@ -89,21 +89,21 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.priest",
-      ...cam.push({ on: [0.1, 1.05, -0.3], dist: 4.6, to: 4.0, yaw: 20, pitch: 10, fov: 46 }),
+      ...cam.push({ on: [0.25, 1.0, -0.35], dist: 4.6, to: 4.0, yaw: 30, pitch: 11, fov: 46 }),
       zone: "cellar",
       look: "lantern-night",
-      note: "Years ago, the same kind of room: the priest behind the bars, green, arms out. A family sits on the floor in front with a lantern and stays. One emerald comes up over them.",
+      note: "Years ago, the same kind of room: the priest behind the bars, green, arms out, red sparks round him. A family sits on the floor in front with a lantern and stays. One emerald comes up over them.",
       stage: (t) => (
         <>
           <Cellar sky={skyAt(0.1)} />
-          <Priest position={PLACE.bro} rotationY={SOUTH} green={1} arms={{ l: -1.5 + Math.sin(t * 2) * 0.05, r: -1.5 - Math.sin(t * 2) * 0.05 }} />
-          <RedSwirl position={PLACE.bro} t={t} k={0.8} />
-          <Villager position={[0.55, -0.5, 0.75]} rotationY={NORTH} robe={ROBE.blue} sit phase={2} />
-          <Villager position={[-0.75, -0.47, 0.8]} rotationY={NORTH} robe={ROBE.brown} sit scale={0.94} phase={1} />
-          <Villager position={[-0.1, -0.35, 1.25]} rotationY={NORTH} robe={ROBE.friend} kid scale={KID} sit phase={3} />
-          <HandLantern position={[-0.1, 0, 0.45]} light={20} />
-          <Price position={[0.2, 1.75, 0.9]} n={1} scale={pop(t, w("8.priest", "half") - 0.1, 0.16)} rotationY={0.3} />
-          <Fill at={[0.6, 2.2, 2.2]} power={12} />
+          <Priest position={[0.52, 0, -1.0]} rotationY={SOUTH} green={1} arms={{ l: -1.5 + Math.sin(t * 2) * 0.05, r: -1.5 - Math.sin(t * 2) * 0.05 }} />
+          <RedSwirl position={[0.52, 0, -1.0]} t={t} k={0.8} />
+          <Villager position={[-0.3, -0.5, 0.55]} rotationY={NORTH + 0.3} robe={ROBE.blue} sit phase={2} />
+          <Villager position={[-1.05, -0.47, 0.3]} rotationY={NORTH + 0.5} robe={ROBE.brown} sit scale={0.94} phase={1} />
+          <Villager position={[-0.75, -0.35, 1.0]} rotationY={NORTH + 0.4} robe={ROBE.friend} kid scale={KID} sit phase={3} />
+          <HandLantern position={[0.3, 0, 0.35]} light={20} />
+          <Price position={[-0.6, 1.7, 0.6]} n={1} scale={0.8 * pop(t, w("8.priest", "half") - 0.1, 0.16)} rotationY={0.5} />
+          <Fill at={[1.4, 2.2, 2.2]} power={12} />
         </>
       ),
     },
@@ -152,7 +152,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "8.home",
-      ...cam.push({ on: [-1.0, 1.1, -4.4], dist: 6.2, to: 5.4, yaw: 16, pitch: 7, fov: 46 }),
+      ...cam.push({ on: [-0.7, 1.0, -3.2], dist: 6.6, to: 5.8, yaw: 58, pitch: 7, fov: 46 }),
       zone: "town",
       look: "overworld-sunset",
       note: "Our street at sunset, every window lit. Our door is open with the light coming out, and two brothers run for it: the big one behind, pushing the small one ahead.",
@@ -181,7 +181,7 @@ export const scene5 = storyScene(timing, {
             <Bro position={[PLACE.bro[0] + Math.sin(t * 46) * 0.02 * k, 0, PLACE.bro[2]]} rotationY={SOUTH} green={0.8 - (1 - k) * 0.25} bitten arms={{ l: -1.5 * k - 0.1, r: -1.5 * k - 0.1 }} nod={0.5 * (1 - k)} />
             <RedSwirl position={PLACE.bro} t={t + 4} k={k} />
             {loaf}
-            <Fill at={[0.6, 2.0, 2.4]} power={14} />
+            <Fill at={[0.6, 1.8, 1.6]} power={30} />
           </>
         );
       },
@@ -205,75 +205,75 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.hands",
-      ...cam.push({ on: [-0.17, 1.0, -0.3], dist: 3.6, to: 3.1, yaw: 82, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [-0.17, 1.0, -0.3], dist: 3.9, to: 3.4, yaw: 50, pitch: 4, fov: 42 }),
       zone: "cellar",
       look: "warm-room",
-      note: "From the side, the bars down the middle. His arms are folded back into his sleeves, like anybody's. He looks down at them, then up at the kid on the other side.",
+      note: "From the side, across the bars, the same place he held out the sword. His arms are folded back into his sleeves, like anybody's. He looks down at them, then up at the kid on the other side.",
       stage: (t) => {
         const up = w("9.hands", "He", 1);
         return (
           <>
             <Cellar walls="nws" {...day} />
-            <Bro position={PLACE.bro} rotationY={SOUTH} bitten nod={t < up ? 0.5 : 0.05} lookAt={t > up ? face(KIDP, KID) : undefined} />
-            <Me position={[KIDP[0], hop(t, up + 0.1, 0.14, 0.25), 0.4]} rotationY={NORTH} lookAt={face(PLACE.bro, TEEN)} />
+            <Bro position={PLACE.bro} rotationY={SOUTH} bitten nod={t < up ? 0.5 : 0.05} lookAt={t > up ? face([KIDP[0], 0, 0.6], KID) : undefined} />
+            <Me position={[KIDP[0], hop(t, up + 0.1, 0.14, 0.25), 0.6]} rotationY={NORTH} lookAt={face(PLACE.bro, TEEN)} />
             {loaf}
-            <Fill at={[2.4, 1.8, 0]} power={14} />
+            <Fill at={[2.4, 1.8, 1.2]} power={18} />
           </>
         );
       },
     },
     {
       cue: "9.said",
-      ...cam.push({ on: [0.05, 0.95, -0.35], dist: 3.5, to: 3.1, yaw: 26, pitch: 9, fov: 42 }),
+      ...cam.push({ on: [0.0, 0.95, -0.45], dist: 3.8, to: 3.4, yaw: 46, pitch: 9, fov: 42 }),
       zone: "cellar",
       look: "warm-room",
-      note: "IS THERE ANY BREAD? The loaf he would not look at is still on the floor of the cell. He looks down at it.",
+      note: "ANY BREAD? The loaf he would not look at is still on the floor of the cell. He looks down at it. The kid jumps.",
       stage: (t) => (
         <>
-          <Cellar {...day} />
-          <Bro position={PLACE.bro} rotationY={SOUTH} bitten nod={tw(t, 0.9, 1.2) * 0.5} turn={tw(t, 0.9, 1.2) * -0.35} />
-          <Me position={[KIDP[0] - 0.15, hop(t, 0.7, 0.2, 0.3), 0.4]} rotationY={NORTH} />
-          <Dad position={[1.0, 0, 0.7]} rotationY={NORTH - 0.5} nod={Math.max(0, Math.sin(t * 9)) * 0.2 * tw(t, 0.8, 1.0)} />
+          <Cellar walls="nws" {...day} />
+          <Bro position={PLACE.bro} rotationY={SOUTH} bitten nod={tw(t, 0.9, 1.2) * 0.5} turn={tw(t, 0.9, 1.2) * 0.35} />
+          <Me position={[KIDP[0] - 0.1, hop(t, 0.7, 0.22, 0.3) + hop(t, 1.1, 0.22, 0.3), 0.55]} rotationY={NORTH} />
+          <Dad position={[-1.15, 0, 0.75]} rotationY={NORTH + 0.5} nod={Math.max(0, Math.sin(t * 9)) * 0.2 * tw(t, 0.8, 1.0)} />
           {loaf}
-          <Bubble text="IS THERE ANY BREAD?" position={[0.55, 2.0, -0.4]} scale={0.46 * pop(t, 0.3, 0.14)} tail={-1} />
-          <Fill at={[0.6, 2.0, 2.4]} power={14} />
+          <Bubble text="ANY BREAD?" position={[0.25, 1.95, -0.9]} rotationY={0.8} scale={0.4 * pop(t, 0.3, 0.14)} tail={-1} />
+          <Fill at={[2.4, 2.0, 1.4]} power={18} />
         </>
       ),
     },
     {
       cue: "9.wall",
-      ...cam.push({ on: [-0.35, 1.0, 0.1], dist: 3.1, to: 2.8, yaw: -34, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [-0.45, 1.0, 0.75], dist: 3.2, to: 2.8, yaw: -16, pitch: 5, fov: 44 }),
       zone: "room",
       look: "lantern-night",
-      note: "That night, his side of the wall. He is back, in his blue robe, the sleeve still torn. He bumps the wall twice.",
+      note: "That night, his side of the wall. He is back, in his blue robe, the sleeve still torn. He looks at the wall and bumps it twice with his shoulder.",
       stage: (t) => {
         const a = w("9.wall", "Twice");
         const k = bonk(t, a - 0.5, 0.18) + bonk(t, a - 0.2, 0.18);
         return (
           <>
             <OurRoom night />
-            <Bro position={[-0.62 + k * 0.14, 0, 0.1]} rotationY={EAST} bitten lean={k * 0.25} />
-            {[a - 0.44, a - 0.14].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[-0.1, 1.0, 0.15]} rotationY={WEST} t={t - at} color="#fff0c0" reach={0.6} /> : null))}
-            <HandLantern position={[-1.6, 0, 0.9]} light={18} />
-            <Fill at={[-1.2, 2.4, 2.4]} power={16} />
+            <Bro position={[-0.68 + k * 0.22, 0, 0.75]} rotationY={SOUTH + 0.25} bitten lookAt={t < a - 0.6 ? [0, 1.2, 0.75] : undefined} />
+            {[a - 0.44, a - 0.14].map((at, i) => (t > at && t < at + 0.5 ? <SoundRings key={i} position={[-0.12, 1.0, 0.6]} rotationY={WEST} t={t - at} color="#fff0c0" reach={0.6} /> : null))}
+            <HandLantern position={[-1.7, 0, 1.0]} light={18} />
+            <Fill at={[-1.2, 2.2, 3.2]} power={22} />
           </>
         );
       },
     },
     {
       cue: "9.back",
-      ...cam.push({ on: [0.4, 0.85, 0.1], dist: 2.6, to: 2.3, yaw: 36, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [0.45, 0.85, 0.75], dist: 2.7, to: 2.4, yaw: 18, pitch: 4, fov: 42 }),
       zone: "room",
       look: "lantern-night",
-      note: "The kid's side. He bumps it back, twice, with his whole body.",
+      note: "The kid's side. He bumps it back, twice, with his whole body, and he is grinning at the wall.",
       stage: (t) => {
         const k = bonk(t, 0.25, 0.16) + bonk(t, 0.5, 0.16);
         return (
           <>
             <OurRoom night />
-            <Me position={[0.6 - k * 0.14, 0, 0.1]} rotationY={WEST} lean={k * 0.25} />
-            {[0.3, 0.55].map((at, i) => (t > at && t < at + 0.4 ? <SoundRings key={i} position={[0.1, 0.8, 0.15]} rotationY={EAST} t={t - at} color="#ffd9a0" reach={0.5} /> : null))}
-            <Fill at={[1.2, 2.4, 2.4]} power={18} />
+            <Me position={[0.62 - k * 0.22, hop(t, 0.2, 0.06, 0.2), 0.75]} rotationY={SOUTH - 0.25} lookAt={t > 0.7 ? [0, 1.0, 0.75] : undefined} />
+            {[0.3, 0.55].map((at, i) => (t > at && t < at + 0.4 ? <SoundRings key={i} position={[0.12, 0.8, 0.6]} rotationY={EAST} t={t - at} color="#ffd9a0" reach={0.5} /> : null))}
+            <Fill at={[1.2, 2.2, 3.2]} power={24} />
           </>
         );
       },
@@ -291,12 +291,12 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <OurRoom night shake={s} />
-            <Bro position={[-0.62, 0, 0.1]} rotationY={seen ? SOUTH - 0.5 : EAST} bitten lookAt={seen ? [0.9, 0, 0.95] : undefined} />
-            <Me position={[0.6, 0, 0.1]} rotationY={seen ? SOUTH + 0.3 : WEST} lookAt={seen ? [0.9, 0, 0.95] : undefined} />
+            <Bro position={[-0.68, 0, 0.75]} rotationY={SOUTH + 0.25} bitten lookAt={seen ? [0.9, 0, 1.3] : [0, 1.2, 0.75]} />
+            <Me position={[0.62, 0, 0.6]} rotationY={SOUTH - 0.25} lookAt={seen ? [0.9, 0, 1.3] : [0, 1.0, 0.75]} />
             {[a - 0.35, a - 0.05].map((at, i) =>
               t > at ? (
                 <group key={i}>
-                  <PixelText text="KNOCK" position={[0.5 + i * 0.75, 0.45 + (t - at) * 0.5, 1.25 + i * 0.2]} height={0.24 * pop(t, at, 0.1)} color="#ffe27a" />
+                  <PixelText text="KNOCK" position={[0.75 + i * 0.5, 0.4 + (t - at) * 0.5, 1.5 + i * 0.25]} height={0.2 * pop(t, at, 0.1)} color="#ffe27a" />
                   <Puffs position={[0.9, 0.05, 0.95]} count={4} spread={0.5} size={0.1} rise={0.5} speed={1.6} color="#d8cdb8" />
                 </group>
               ) : null,
@@ -309,7 +309,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "9.sub",
-      ...cam.push({ on: [0.15, 1.3, -0.5], dist: 4.4, to: 3.6, yaw: 6, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [0.1, 1.3, -0.5], dist: 4.4, to: 3.6, yaw: 6, pitch: 2, fov: 44 }),
       zone: "cellar",
       look: "lantern-night",
       note: "The cellar, dark, with nobody holding a lantern. Behind the bars, at head height, two red eyes open. The subscribe sign comes up in front.",
@@ -317,10 +317,15 @@ export const scene5 = storyScene(timing, {
         <>
           <Cellar sky={skyAt(0)} />
           {loaf}
-          {t > 0.25
-            ? [-1, 1].map((s) => <Block key={s} position={[0.3 + s * 0.085, 1.48, -1.75]} size={[0.07, 0.05 * pop(t, 0.25, 0.12), 0.02]} color="#ff3020" emissive="#ff3020" emissiveIntensity={2.4} castShadow={false} />)
-            : null}
-          <SubscribeSign position={[0.15, 0.55, 0.6]} scale={0.6 * pop(t, 0.6, 0.18)} />
+          {t > 0.25 ? (
+            <>
+              {[-1, 1].map((s) => (
+                <Block key={s} position={[0.5 + s * 0.1, 1.5, -1.7]} size={[0.1, 0.07 * pop(t, 0.25, 0.12), 0.02]} color="#ff3020" emissive="#ff3020" emissiveIntensity={3} castShadow={false} />
+              ))}
+              <pointLight position={[0.5, 1.5, -1.5]} color="#ff3020" intensity={1.2} distance={2} decay={1.6} />
+            </>
+          ) : null}
+          <SubscribeSign position={[-0.75, 0, 0.75]} scale={1.0 * pop(t, 0.6, 0.18)} rotationY={0.15} />
           <Fill at={[0.4, 2.2, 2.2]} power={10} />
         </>
       ),
