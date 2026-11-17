@@ -452,7 +452,12 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
   const scene = useThree((s) => s.scene);
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
-  const cfg = resolve(settings);
+  // `resolve` spreads the defaults into a new object, so calling it in the body hands the rig below
+  // a different `cfg` every render — and the rig is a composer: full-frame render targets, a bloom
+  // mip chain, four passes. Built every frame and never disposed, it takes Chrome down about two
+  // hundred frames into a render ("Could not take a screenshot because Google Chrome ran out of
+  // memory"). The settings object itself is stable — it is the literal in film.tsx — so hold on to it.
+  const cfg = useMemo(() => resolve(settings), [settings]);
   const sunOnScreen = useSunOnScreen();
 
   const rig = useMemo(() => {
@@ -486,6 +491,18 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
     // ShaderPass clones the uniforms of a plain shader object, so the two passes cannot share one.
     return { composer, bloom, shafts, grade };
   }, [gl, scene, camera, cfg, size.width, size.height]);
+
+  // The composer is a pile of frame-sized render targets. Give them back when it is replaced or the
+  // film unmounts: composer.dispose() only frees its own two targets, not the passes holding theirs.
+  useEffect(() => {
+    if (!rig) return;
+    return () => {
+      rig.bloom.dispose?.();
+      rig.shafts.dispose?.();
+      rig.grade.dispose?.();
+      rig.composer.dispose?.();
+    };
+  }, [rig]);
 
   useEffect(() => {
     if (!rig) return;
