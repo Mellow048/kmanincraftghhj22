@@ -186,7 +186,7 @@ export const SkyThing: React.FC<{ position?: Vec3; scale?: number; legs?: number
 
 /** A ring with nothing in the middle. Sky shows through it, so it is a hole and not a platform. */
 export const SkyHole: React.FC<{ position?: Vec3; open?: number }> = ({ position = [0, 8, -6], open = 1 }) => (
-  <group position={position} rotation={[0.55, 0.15, 0.08]} scale={Math.max(0.06, open)}>
+  <group position={position} rotation={[1.05, 0.12, 0]} scale={Math.max(0.06, open)}>
     {Array.from({ length: 16 }).map((_, i) => {
       const a = (i / 16) * Math.PI * 2;
       return <Vox key={i} kind="obsidian" position={[Math.cos(a) * 2.15, Math.sin(a) * 0.22, Math.sin(a) * 1.55]} size={[0.78, 0.42, 0.78]} />;
