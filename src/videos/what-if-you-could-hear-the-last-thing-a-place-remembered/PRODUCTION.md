@@ -2,7 +2,7 @@
 
 `src/videos/what-if-you-could-hear-the-last-thing-a-place-remembered/`
 
-**Status: built, every check green, voice recorded and word-aligned, sound built. NOT yet looked at frame by frame, NOT rendered.**
+**Status: DELIVERED.** `renders/what-if-you-could-hear-the-last-thing-a-place-remembered.mp4`, 1080×1920, 96.67 s. Every check green; voice word-aligned; sound built and measured; every shot reviewed on rendered pixels.
 
 ## 1. Title
 **What If You Could Hear The Last Thing A Place Remembered**
@@ -86,4 +86,26 @@ before they see it. A wall that has been spent does not make it. At `4.touch` th
 and pointed into him instead of out of the wall. Sound was measured, never heard: an agent cannot listen.
 
 ## 9. Render
-**None yet.** Stills for 12 shots requested on `83566cb` before the render.
+**Delivered.** `renders/what-if-you-could-hear-the-last-thing-a-place-remembered.mp4`, 26.1 MB, 1080×1920, 96.67 s,
+committed by CI from the composition in `src/registry.ts`.
+
+It took four camera passes and the last one was not about framing. What the passes found, in order:
+
+1. **A lens between two actors clips both.** `2.mirrorb` sat 0.4 m from his face. Solve for every subject in the
+   frame, not just the one the line is about.
+2. **A boy square to a wall cannot be shown from inside the room.** The avatar clamps head yaw to 1.25 rad, so
+   facing plaster he has 72° of turn and every lens south of him is outside it. Three re-framings of `2.class` were
+   hair. He now stands 46° off the wall.
+3. **A wall with nothing on it cannot be framed into meaning.** `8.wall` went through five versions before the
+   real answer: the pack's kitchen whitewashes that wall, so any lens close enough to hold the plaster blows it out
+   to a blank page. The shot is now the whole north wall from the far side of the room.
+4. **A prop 1.1 m tall centred at 1.55 is inside a cupboard.** The calendar ran through the cupboard fronts at
+   1.92 and up against the window's emissive pane, and the frame came out pure white. It is 0.82 m now, on the
+   clear band between the counter and the cupboards.
+5. **The night street had no light on its camera side.** Every street lens in this film stands on the road, where
+   there is no lamp; faces turned to the camera were black boxes. One cool fill over the road fixed the bus stop,
+   the bench and the shop at once.
+
+The bathroom mirror keeps its best trick: `2.mirror` and `2.mirrorb` are the same wall at two angles, and the
+reflection in the second one is built by mirroring the room through `Reflection glass={HOME.glass}` -- the pattern
+copied from `what-if-you-could-see-who-had-a-crush-on-you/scene2.tsx`.
