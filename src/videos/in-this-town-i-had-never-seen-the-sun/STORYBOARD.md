@@ -17,7 +17,7 @@ Written by `scripts/storyboard.py` from the film's own files on its last build: 
 | 0:17.8–0:19.6 `2.floor` | I used to lie on the floor and look at it. | From the side: he lies flat on his front with his chin up and his arms out towards the door, his face a hand from the line of gold. It lights his face from below. | MyRoom, Lying, Me | room, night | close-up, push in | thud, scrape, chime |
 | 0:19.6–0:21.6 `2.grandpa` | My grandpa was the oldest one in town. | Grandpa, in front of his house: stooped, paler than the rest, with a white beard and white brows. He looks straight at us. | Homes, Grandpa | under, night | medium, push in | **music: playful**; whoosh, creak, blip, step_stone (air: night) |
 | 0:21.6–0:24.6 `2.rain` | Whenever it rained, he said, "Ah. The good weather." | Rain comes down through the leaves. Everybody else is under the eaves. Grandpa stands out in it with both arms up and his face turned up, and says AH. THE GOOD WEATHER. | Homes, Rain, Puddle, Grandpa, Mum, Old | under, night | medium, push in | crackle, plink, rustle, pop, chime |
-| 0:24.6–0:25.6 `2.why` | Nobody knew why. | Under the eave, dry: mum and an old one look at each other. A question mark over the two of them. | Homes, Rain, Mum, Old | under, night | medium, push in | swish, pop, bonk |
+| 0:24.6–0:25.6 `2.why` | Nobody knew why. | Close, under the eave, out of the rain: mum and an old one look at each other. A question mark over the two of them. | Homes, Mum, Old | under, night | medium, push in | swish, pop, bonk |
 | 0:25.6–0:27.0 `2.puddles` | I thought he just liked puddles. | Low: grandpa jumps in a puddle, twice, and water flies. The kid stands by, watching him do it, and grins. | Homes, Rain, Puddle, Grandpa, Me | under, night | medium, push in | splash, boing |
 | 0:27.0–0:29.0 `3.morning` | One morning, I did not go to bed. | From above: there is a lump under the blanket where he should be, and the kid himself is on tiptoe half way to the door. | MyRoom, Me | room, night | medium, push in, from above | **music: tense**; whoosh, rustle, step_wood (air: room) |
 | 0:29.0–0:31.0 `3.wait` | I waited by the door until the sky went pink. | At the door, from behind him: both hands on it. The crack under the door is dark, then pink, then brighter. He looks back over his shoulder once. | MyRoom, Me | room, night | close-up, push in | tick, heartbeat, slide_up |
@@ -82,7 +82,7 @@ Written by `scripts/storyboard.py` from the film's own files on its last build: 
 
 Every component the shots put on screen, and in how many of them.
 
-`Me` (53), `Pal` (16), `Homes` (13), `MyRoom` (11), `Old` (10), `Grandpa` (9), `Rain` (9), `HelmetProp` (7), `Mum` (6), `Loaf` (6), `Bone` (6), `Sitters` (6), `Lying` (5), `Ripples` (5), `PalDad` (5), `Bees` (4), `Sunflower` (4), `DayTown` (4), `PinkDawn` (3), `Board` (3), `Puddle` (3), `WearBar` (3), `Blaze` (2), `Villager` (2), `Halves` (2), `Blindfold` (1), `SubscribeSign` (1)
+`Me` (53), `Pal` (16), `Homes` (13), `MyRoom` (11), `Old` (10), `Grandpa` (9), `Rain` (8), `HelmetProp` (7), `Mum` (6), `Loaf` (6), `Bone` (6), `Sitters` (6), `Lying` (5), `Ripples` (5), `PalDad` (5), `Bees` (4), `Sunflower` (4), `DayTown` (4), `PinkDawn` (3), `Board` (3), `Puddle` (3), `WearBar` (3), `Blaze` (2), `Villager` (2), `Halves` (2), `Blindfold` (1), `SubscribeSign` (1)
 
 ## Sound plan
 

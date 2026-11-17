@@ -231,15 +231,14 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [7.0, 1.5, -5.3], dist: 3.6, to: 3.2, yaw: -8, pitch: 2, fov: 40 }),
       zone: "under",
       look: "overworld-night",
-      note: "Under the eave, dry: mum and an old one look at each other. A question mark over the two of them.",
+      note: "Close, under the eave, out of the rain: mum and an old one look at each other. A question mark over the two of them.",
       stage: (t) => (
         <>
           <Homes />
-          <Rain center={[6.4, 0, -3.7]} t={t + 3} area={[8, 1.5]} count={60} />
           <Mum position={[6.45, 0, -5.4]} rotationY={SOUTH + 0.5} turn={0.4} tilt={0.12} />
           <Old position={[7.6, 0, -5.4]} rotationY={SOUTH - 0.5} turn={-0.4} tilt={-0.12} />
           <Bubble text="?" position={[7.0, 2.35, -5.3]} scale={0.7 * pop(t, 0.12, 0.14)} tail={-1} dark />
-          <Fill at={[6.6, 2.0, -3.2]} power={10} color="#cfe8ff" />
+          <Fill at={[6.9, 2.0, -2.1]} power={13} color="#cfe8ff" />
         </>
       ),
     },
