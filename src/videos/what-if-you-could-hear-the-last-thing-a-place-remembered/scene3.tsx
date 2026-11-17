@@ -76,16 +76,18 @@ export const scene3 = storyScene(timing, {
       // On his bedroom floor: the list, and his hand doing the writing. A prop shot, from above, so a phone can
       // read every line.
       cue: "3.tally",
-      ...cam.push({ on: R(0.10, 0.90, -0.30), dist: 1.95, to: 1.55, yaw: 6, pitch: 62, fov: 44 }),
+      // Down on the card, not on the rug: the room's floor is a 2.4 x 2 m mat at y 0.02 and the card is laid on the
+      // boards beside it, so the lens is 1.4 m up and 30 degrees off vertical and the ticks are readable at phone size.
+      ...cam.push({ on: R(-0.55, 0.10, -1.10), dist: 1.55, to: 1.30, yaw: 14, pitch: 40, fov: 46 }),
       zone: "room",
       look: "overworld-night",
-      note: "Straight down on his bedroom floor: a ruled card with a tick against every wall he has spent, and his pencil still moving.",
+      note: "Down on his bedroom floorboards: a ruled card with a tick against every wall he has spent, a pencil still moving on the next line, and the dark under the bed behind it.",
       stage: (t) => (
         <>
-          <List at={R(0.10, 0.06, -0.30)} written={6} />
-          <Hero position={R(0.95, 0, -0.05)} rotationY={NORTH + 2.2} animation="crouch" face="grin" headPitch={0.6} />
-          <PixelText text="BEST" position={R(-0.05, 0.52, -0.30)} rotation={[-Math.PI / 2, 0, 0]} height={0.1} color="#3a3f47" />
-          <Rings at={R(0.10, 0.10, -0.30)} t={t} from={BEST} />
+          <List at={R(-0.55, 0.06, -1.10)} written={6} />
+          <Hero position={R(0.10, 0, -0.86)} rotationY={NORTH + 2.6} animation="crouch" face="grin" headPitch={0.5} />
+          <PixelText text="BEST" position={R(-0.70, 0.28, -1.42)} rotation={[-Math.PI / 2, 0, 0]} height={0.09} color="#3a3f47" />
+          <Rings at={R(-0.55, 0.10, -1.10)} t={t} from={BEST} />
         </>
       ),
     },
@@ -100,8 +102,8 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={H(-0.30, 0, 1.30)} rotationY={NORTH} animation="walk" animDistance={1.1} face="uneasy" headYaw={0.5} />
-          <Adult position={H(-1.5, 0, 3.1)} rotationY={SOUTH} animation="talk" face="frown" />
-          <Rings at={H(-1.5, 1.20, 3.4)} t={t} from={THINK} />
+          <Adult position={H(-1.62, 0, 2.60)} rotationY={EAST - 0.5} animation="talk" face="frown" />
+          <Rings at={H(-1.55, 1.22, 2.95)} t={t} from={THINK} />
         </>
       ),
     },

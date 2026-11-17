@@ -70,15 +70,18 @@ export const scene2 = storyScene(timing, {
       // The classroom wall, from the wall's side of the room: the lens is low and close to the plaster so the joke
       // arrives along the surface and out towards the desks, not from the front of the room like a normal class shot.
       cue: "2.class",
-      ...cam.push({ on: SPOT.at(-3.05, 1.30, 1.35), dist: 2.75, to: 2.15, yaw: 118, pitch: 4, fov: 48 }),
+      // The NORTH wall, which carries the board: the classroom's one wall with something on it. He stands at its
+      // south end with his palm flat on the plaster and looks along it, so the lens sees him in profile against it
+      // and not the back of his head. (The first version framed the window wall: a white rectangle and no contact.)
+      ...cam.push({ on: SPOT.at(-1.30, 1.32, -3.86), dist: 2.30, to: 1.85, yaw: 96, pitch: 1, fov: 46 }),
       zone: "class",
       look: "overworld-day",
-      note: "Along the classroom wall at hand height, with the desks behind him: the plaster giving the teacher's worst joke back to an empty room.",
+      note: "The classroom's board wall along its length, chalk dust on the ledge, his palm flat on the plaster and his ear going towards it: the room giving the teacher's worst joke back.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(-2.55, 0, 0.90)} rotationY={EAST + 0.55} animation="press" face="grin" />
-          <Rings at={SPOT.at(-3.32, 1.18, 1.10)} t={t} from={JOKE} />
-          <SoundRings position={SPOT.at(-3.30, 1.25, 1.10)} rotationY={EAST} t={t - JOKE} reach={1.15} color="#e8f4ff" />
+          <Hero position={SPOT.at(-2.10, 0, -3.62)} rotationY={EAST} animation="press" face="grin" />
+          <Rings at={SPOT.at(-2.10, 1.20, -3.94)} t={t} from={JOKE} />
+          <SoundRings position={SPOT.at(-2.10, 1.26, -3.92)} rotationY={SOUTH} t={t - JOKE} reach={1.05} color="#e8f4ff" />
         </>
       ),
     },
@@ -93,7 +96,7 @@ export const scene2 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={SPOT.at(-2.30, 0, 1.10)} rotationY={SOUTH - 0.25} animation="idle" face="uneasy" headYaw={-0.35} />
-          <Friend position={SPOT.seat(2, 1)} rotationY={NORTH} animation="sit" face="laugh" />
+          <Friend position={SPOT.seat(2, 2)} rotationY={NORTH + 0.5} animation="sit" face="laugh" />
         </>
       ),
     },
@@ -101,14 +104,16 @@ export const scene2 = storyScene(timing, {
       // The bus stop. Same sentence, same hour, and he is not touching it kindly: he knows what is coming and he
       // puts his hand on it anyway, which is the first sign that this is becoming a habit.
       cue: "2.bus",
-      ...cam.push({ on: S(1.90, 1.42, 0.55), dist: 2.65, to: 2.10, yaw: -36, pitch: 2, fov: 44 }),
+      // From the road, at the height of the sign: the roundel end-on, his hand up at it, and his face turned to the
+      // lens. The first lens sat 0.37 m from the back of his head and the frame was all hair.
+      ...cam.push({ on: S(1.55, 1.62, 1.15), dist: 2.95, to: 2.45, yaw: 24, pitch: 2, fov: 46 }),
       zone: "street",
       look: "overworld-night",
-      note: "His hand on the bus stop roundel at midnight, the red sign lit from the lamp, and the sentence it has said every day for a year.",
+      note: "The bus stop roundel lit red from the lamp with his hand flat on the sign, his face turned out to the road: one sentence, said again, at midnight.",
       stage: (t) => (
         <>
-          <Hero position={S(1.30, 0, 0.95)} rotationY={NORTH + 0.7} animation="reach" face="frown" />
-          <Rings at={S(1.90, 1.62, 1.24)} t={t} from={SAME} />
+          <Hero position={S(1.55, 0, 0.72)} rotationY={SOUTH - 0.55} animation="reach" face="frown" />
+          <Rings at={S(1.90, 1.70, 1.22)} t={t} from={SAME} />
         </>
       ),
     },
@@ -132,14 +137,16 @@ export const scene2 = storyScene(timing, {
       // A wide, still, badly lit gym with a boy standing at a wall doing nothing. The joke needs the frame to be
       // boring: hold it, let the silence be long enough that the cut is the punchline.
       cue: "2.gym",
-      ...cam.push({ on: G(-5.40, 1.35, 0.40), dist: 5.6, to: 4.9, yaw: 96, pitch: 4, fov: 50 }),
+      // Wide, from the middle of the floor, looking at the bare west end from the side he can be seen from: the mats
+      // and the wall bars give the frame a scale, so "nothing at all" reads as a very large room with no voice in it.
+      ...cam.push({ on: G(-7.60, 1.30, 0.10), dist: 5.4, to: 4.6, yaw: 152, pitch: 4, fov: 50 }),
       zone: "gym",
       look: "overworld-day",
-      note: "The whole bare end of the gym with one boy standing against the silent wall, hand flat on it, nothing happening anywhere in the frame.",
+      note: "The bare west end of the gym from down the room: mats, wall bars and the scrubbed plaster, and one boy standing against it with nothing happening anywhere.",
       stage: (t) => (
         <>
-          <Hero position={G(-7.30, 0, 0.40)} rotationY={WEST} animation="press" face="uneasy" />
-          <Rings at={G(-7.95, 1.18, 0.40)} t={t} from={NOTHING} />
+          <Hero position={G(-7.75, 0, 0.10)} rotationY={SOUTH + 0.2} animation="press" face="uneasy" />
+          <Rings at={G(-7.96, 1.20, 0.10)} t={t} from={NOTHING} />
         </>
       ),
     },
@@ -147,14 +154,16 @@ export const scene2 = storyScene(timing, {
       // And the thing a kid does to a machine that has stopped working: he hits it. Knuckles on plaster, ear to it
       // after, which is the wrong way round and funnier for it.
       cue: "2.gymb",
-      ...cam.push({ on: G(-7.70, 1.22, 0.40), dist: 2.20, to: 1.72, yaw: 68, pitch: 1, fov: 42 }),
+      // Side-on and close, lens to the south of him looking north: the knuckles on the plaster on one side of the
+      // frame and his ear going to it on the other.
+      ...cam.push({ on: G(-7.72, 1.26, 0.12), dist: 1.95, to: 1.55, yaw: 178, pitch: 0, fov: 44 }),
       zone: "gym",
       look: "overworld-day",
-      note: "Close on his knuckles on the bare plaster and his ear going to it afterwards: he is knocking on a wall to see if a wall is broken.",
+      note: "Close and side-on: his knuckles white on the bare plaster, and then the side of his head going to the wall to listen to a wall that has nothing to say.",
       stage: (t) => (
         <>
-          <Hero position={G(-7.30, 0, 0.40)} rotationY={WEST + 0.1} animation="press" face="ouch" />
-          <Rings at={G(-7.94, 1.20, 0.40)} t={t} from={KNOCK} />
+          <Hero position={G(-7.70, 0, 0.12)} rotationY={WEST + 0.05} animation="press" face="ouch" />
+          <Rings at={G(-7.92, 1.20, 0.12)} t={t} from={KNOCK} />
         </>
       ),
     },
@@ -162,14 +171,18 @@ export const scene2 = storyScene(timing, {
       // The bathroom: the one set in the film with no dark in it. Hard white tiles, a mirror, and his mother's voice
       // coming out of the grout — the first sentence that is about him.
       cue: "2.mirror",
-      ...cam.push({ on: B(0.10, 1.45, -0.35), dist: 2.35, to: 1.85, yaw: -6, pitch: 3, fov: 42 }),
+      // The tiles to the LEFT of the glass, so the mirror is in frame and he is not standing in front of it. The
+      // lens is behind his right shoulder: hand, grout, the edge of the mirror and the toothbrushes in one frame.
+      // Solved by projection: from the corner of the basin, looking east along the tiles. His face centres in the
+      // frame, the hand on the grout holds the left edge, and the near edge of the mirror comes into the right.
+      ...cam.push({ on: B(0.15, 1.34, -0.90), dist: 2.40, to: 1.95, yaw: -68, pitch: 2, fov: 52 }),
       zone: "bath",
       look: "overworld-day",
-      note: "The bathroom wall beside the mirror, tiles and toothbrushes, with his hand on the white grout and a sentence coming out of the plumbing.",
+      note: "Along the bathroom tiles from the corner of the basin, the edge of the mirror on one side and his palm flat on the white grout on the other: a sentence coming out of the plumbing.",
       stage: (t) => (
         <>
-          <Hero position={B(-0.35, 0, 0.10)} rotationY={NORTH - 0.15} animation="press" face="wow" />
-          <Rings at={B(-0.62, 1.30, -1.10)} t={t} from={NICE} />
+          <Hero position={B(-0.35, 0, -0.72)} rotationY={NORTH} animation="press" face="wow" />
+          <Rings at={B(-0.35, 1.26, -1.22)} t={t} from={NICE} />
         </>
       ),
     },
@@ -177,14 +190,16 @@ export const scene2 = storyScene(timing, {
       // The turn. He is not looking at the wall any more, he is looking at himself in the glass, because the sentence
       // made him do it. Reflections face off-axis: he sees the mirror, the lens sees his face.
       cue: "2.mirrorb",
-      ...cam.push({ on: B(-0.30, 1.52, -0.30), dist: 1.85, to: 1.42, yaw: -20, pitch: 3, fov: 38 }),
+      // His face and the mirror's edge together: he is looking INTO the glass and the audience is looking at him,
+      // which is what the line is about. The voice sits between the two, at the height of a person standing there.
+      ...cam.push({ on: B(0.10, 1.46, -0.68), dist: 1.90, to: 1.50, yaw: -58, pitch: 2, fov: 42 }),
       zone: "bath",
       look: "overworld-day",
-      note: "His face close and turned towards the mirror, eyes wet, the sentence six years old: the first time the power gives him something he wanted.",
+      note: "His face close and turned into the mirror, eyes wet, and the sentence six years old: the first thing the power gives him that he wanted.",
       stage: () => (
         <>
-          <Hero position={B(-0.30, 0, 0.10)} rotationY={NORTH} animation="idle" face="calm" headPitch={-0.1} />
-          <ChestVoice at={B(-1.06, 1.42, -0.20)} t={SIX} />
+          <Hero position={B(-0.20, 0, -0.74)} rotationY={NORTH + 0.42} animation="idle" face="calm" headPitch={-0.1} />
+          <ChestVoice at={B(-0.74, 1.40, -1.00)} t={SIX} />
         </>
       ),
     },

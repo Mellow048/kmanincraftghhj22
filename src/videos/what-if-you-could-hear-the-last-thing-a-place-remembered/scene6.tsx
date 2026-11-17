@@ -62,14 +62,15 @@ export const scene6 = storyScene(timing, {
       // The wall takes it: a hard cut to the plaster beside the window, no actor in frame, and the sentence going
       // into it and staying. The last time the power works in the film, and it works away from him.
       cue: "8.wall",
-      ...cam.push({ on: K(-1.20, 1.22, -2.96), dist: 1.95, to: 1.50, yaw: 22, pitch: 2, fov: 40 }),
+      // The north wall between the window and the fridge: plaster, the painted splash-back, and no actor. The lens
+      // sits on the room side of it and looks along the surface, so the rings read against the wall and not the air.
+      ...cam.push({ on: K(-0.90, 1.30, -3.02), dist: 2.25, to: 1.80, yaw: 62, pitch: 2, fov: 44 }),
       zone: "kitchen",
       look: "overworld-day",
-      note: "The kitchen wall beside the window taking the sentence with nobody in frame: the one wall in the film that hears something for the first time.",
+      note: "The kitchen wall between the window and the fridge taking the sentence with nobody in frame: the one wall in the film that hears something for the first time.",
       stage: (t) => (
         <>
-          <Rings at={K(-1.20, 1.22, -2.92)} t={t} from={TAKE} />
-          <Block size={[1.5, 1.3, 0.08]} position={K(-1.20, 2.10, -2.98)} color="#f6f0dc" castShadow={false} />
+          <Rings at={K(-0.90, 1.24, -3.06)} t={t} from={TAKE} />
         </>
       ),
     },
@@ -131,15 +132,17 @@ export const scene6 = storyScene(timing, {
       // The last picture: the sign, in the kitchen, and he is looking at it instead of at us. Every film of the
       // topic ends on the same red board — hold it in the same place in frame every time.
       cue: "10.sub",
-      ...cam.push({ on: K(0.10, 1.62, -1.40), dist: 3.0, to: 2.65, yaw: 6, pitch: 1, fov: 40 }),
+      // Solved by projection: from the doorway, the board's whole width lands inside +-0.45 of frame with his face
+      // at +0.34 beside it. The first version hung the board above a bare wall and cut it off at the top.
+      ...cam.push({ on: K(0.10, 1.66, -1.30), dist: 4.20, to: 3.70, yaw: 30, pitch: 4, fov: 52 }),
       zone: "kitchen",
       look: "overworld-day",
-      note: "The red subscribe board held up in the kitchen with him beside it and his mother still at the sink behind: the one promise the film makes about what happens next.",
+      note: "The red subscribe board on the kitchen wall with him standing beside it and his mother still at the sink: the one promise the film makes about what happens next.",
       stage: (t) => (
         <>
-          <Hero position={K(1.10, 0, -1.20)} rotationY={SOUTH + 0.4} animation="idle" face="grin" />
-          <SubscribeSign position={K(-0.20, 2.20, -1.55)} rotationY={SOUTH + 0.1} scale={0.8} tilt={0.02} />
-          <Rings at={K(-0.20, 2.20, -1.50)} t={t} from={SUB} />
+          <Hero position={K(0.62, 0, -1.10)} rotationY={SOUTH - 0.2} animation="idle" face="grin" />
+          <SubscribeSign position={K(-0.30, 2.05, -1.95)} rotationY={SOUTH + 0.06} scale={0.8} tilt={0.02} />
+          <Rings at={K(-0.30, 2.05, -1.90)} t={t} from={SUB} />
         </>
       ),
     },
