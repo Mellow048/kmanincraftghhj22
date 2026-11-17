@@ -70,7 +70,9 @@ jobs:
         if: ${{ inputs.commit_review && github.ref_name != 'main' }}
         env:
           COMPOSITION: ${{ inputs.composition }}
-        run: git commit -m "Diagnostic review frames for ${COMPOSITION}"
+        run: |
+          git diff --cached --stat
+          git commit -m "Diagnostic review frames for ${COMPOSITION}"
 
       - name: Push review frames
         if: ${{ inputs.commit_review && github.ref_name != 'main' }}
