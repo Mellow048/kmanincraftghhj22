@@ -121,7 +121,7 @@ export const scene1 = storyScene(timing, {
     {
       // The canteen: him with a tray, halfway out, the dinner lady already turning to the next kid.
       cue: "2.food",
-      ...cam.push({ on: [13.60, 1.05, -3.30], dist: 4.91, to: 4.36, yaw: 17, pitch: 4, fov: 48 }),
+      ...cam.push({ on: [13.30, 1.18, -2.10], dist: 3.20, to: 2.60, yaw: 158, pitch: 3, fov: 54 }),
       zone: "lunch",
       note: "The canteen: him with a tray, halfway out, the dinner lady already turning to the next kid.",
       stage: (_t) => (

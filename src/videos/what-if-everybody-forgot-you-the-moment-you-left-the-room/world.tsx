@@ -247,6 +247,13 @@ export const World: React.FC = () => {
           <Block size={[8, 4.6, 0.4]} position={[-10, 2.3, -2.6]} color="#7a6656" castShadow={false} />
           <Block size={[8, 4.6, 0.4]} position={[10, 2.3, -2.6]} color="#6e5c4e" castShadow={false} />
           <LightPool position={[0, 0.02, 1.6]} width={9} depth={5} color="#ffcf92" opacity={0.16} />
+          {/* The doorstep is the last shot's stage and there was no light on it: the porch glow is a decal and the
+              road lamp is 25 m east. A lamp over the door, pointed at where he stands. */}
+          <Block size={[0.44, 0.1, 0.44]} position={[0, 2.62, -1.30]} color="#fff2c8" emissive="#ffe9a8" emissiveIntensity={2.4} castShadow={false} />
+          <pointLight position={[0, 2.45, -0.90]} color="#ffe9b0" intensity={26} distance={9} decay={1.7} />
+          {/* a house across the road, so the last shot has a horizon and not a white void */}
+          <Block size={[14, 3.2, 0.5]} position={[2, 1.6, 13.0]} color="#6a5a4c" castShadow={false} />
+          <Block size={[14.4, 0.3, 0.7]} position={[2, 3.3, 12.9]} color="#4e4238" castShadow={false} />
           <Glow position={[0, 2.6, -2.4]} size={2.2} color="#ffcf92" opacity={0.26} />
           <Dust position={[0, 1.8, 1.6]} area={[14, 3, 6]} count={30} size={0.03} color="#ffe9c8" opacity={0.3} seed={9} speed={0.1} />
         </group>
