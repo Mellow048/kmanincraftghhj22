@@ -99,7 +99,7 @@ const cast = ([who, x, z, ry = 0, anim = "idle", face = "calm"]: Who, zone: Zone
 };
 
 export const scenes = storyScene(timing, {
-  id: "scenes",
+  id: "scene1",
   title: "The number over your head",
   shots: ROWS.map(([cue, zone, kind, yaw, who, nums, look]) => {
     const [dist, fov, pitch] = FRAME[kind];
