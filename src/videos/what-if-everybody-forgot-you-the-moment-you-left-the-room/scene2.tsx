@@ -250,13 +250,44 @@ export const scene2 = storyScene(timing, {
       cue: "9.arrangeda",
       ...cam.push({ on: [-1.00, 1.45, -3.50], dist: 1.97, to: 1.42, yaw: 24, pitch: 0, fov: 36 }),
       zone: "class",
-      note: "The same timetable, and every circled room is one he has been in.",
+      note: "The same timetable, ruled and written on, and every circled room is one he has been in.",
       stage: (_t) => (
         <>
+          {/* A TIMETABLE, not a bare board: a heading, five periods ruled across it, and the names of the
+              rooms in them. The two circles are rings round what he has already been in — a solid red block
+              is a red block, and reads as nothing at all from four metres. */}
           <Block position={SPOT.at(-1.0, 1.5, -3.84)} size={[1.6, 1.1, 0.04]} color="#f4f1e8" castShadow={false} />
-          {[0, 1].flatMap((i) => [0, 1, 2].map((j) => (
-            <Block key={`${i}${j}`} position={SPOT.at(-1.4 + j * 0.42, 1.72 - i * 0.26, -3.8)} size={[0.3, 0.16, 0.02]} color="#e3261c" castShadow={false} />
-          )))}
+          <Block position={SPOT.at(-1.0, 1.98, -3.815)} size={[1.3, 0.05, 0.03]} color="#2f3540" castShadow={false} />
+          {[1.78, 1.63, 1.48, 1.33, 1.18].map((y) => (
+            <Block key={y} position={SPOT.at(-1.0, y, -3.815)} size={[1.48, 0.012, 0.02]} color="#8a92a0" castShadow={false} />
+          ))}
+          {/* what is written in the periods: little runs of text, and two blanks where he was not there */}
+          {[0, 1, 2, 3, 4].flatMap((i) =>
+            [0, 1, 2, 3, 4, 5].map((j) => {
+              const empty = (i === 2 && j > 2) || (i === 3 && j === 4);
+              return empty ? null : (
+                <Block
+                  key={`${i}${j}`}
+                  position={SPOT.at(-1.62 + j * 0.24, 1.845 - i * 0.15, -3.8)}
+                  size={[0.16, 0.035, 0.014]}
+                  color={["#3f6fb8", "#2f6a4a", "#7a4a6a", "#8a6a2f", "#4a4a5a"][i]}
+                  castShadow={false}
+                />
+              );
+            }),
+          )}
+          {/* the two rings: rooms he has been in, circled in red */}
+          {[
+            [-1.14, 1.845],
+            [-0.42, 1.695],
+          ].map(([x, y], i) => (
+            <group key={i} position={SPOT.at(x, y, -3.795)}>
+              <Block position={[0, 0.075, 0]} size={[0.26, 0.018, 0.012]} color="#c8322a" castShadow={false} />
+              <Block position={[0, -0.075, 0]} size={[0.26, 0.018, 0.012]} color="#c8322a" castShadow={false} />
+              <Block position={[-0.13, 0, 0]} size={[0.018, 0.15, 0.012]} color="#c8322a" castShadow={false} />
+              <Block position={[0.13, 0, 0]} size={[0.018, 0.15, 0.012]} color="#c8322a" castShadow={false} />
+            </group>
+          ))}
         </>
       ),
     },
