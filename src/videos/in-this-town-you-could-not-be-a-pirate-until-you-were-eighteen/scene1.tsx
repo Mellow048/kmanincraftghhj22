@@ -45,26 +45,26 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.map",
-      ...cam.push({ on: [0.35, 1.25, 1.65], dist: 2.7, to: 2.1, yaw: 28, pitch: 10, fov: 38 }),
+      ...cam.push({ on: [0.42, 1.05, 1.55], dist: 2.35, to: 1.85, yaw: 22, pitch: 4, fov: 36 }),
       zone: "dock",
       look: DAY,
-      note: "The map is in his hands, the red X readable, and he will not put it down.",
+      note: "He holds the map up. The red X sits in the middle of the frame, above the caption.",
       stage: () => (
-        <Hero position={ME} animation="idle" face="smile" headPitch={0.35} head={<PaperHat />}>
-          <MapSheet position={[0.02, 0.01, 0.08]} rotation={[0.55, 0.1, 0]} />
+        <Hero position={ME} animation="reach" face="smile" head={<PaperHat />}>
+          <MapSheet position={[0.02, 0.04, 0.1]} rotation={[0.95, 0.15, 0]} big={1.35} />
         </Hero>
       ),
     },
     {
       cue: "1.x",
-      ...cam.push({ on: [0.42, 1.3, 1.7], dist: 2.3, to: 1.8, yaw: 36, pitch: 12, fov: 34 }),
+      ...cam.push({ on: [0.48, 1.02, 1.58], dist: 1.85, to: 1.5, yaw: 16, pitch: 6, fov: 32 }),
       zone: "dock",
       look: DAY,
-      note: "The red X fills the sheet beside his face. The buoy is still small behind him.",
+      note: "The red X fills the sheet. His face is above it. The buoy is still small behind him.",
       stage: () => (
         <>
-          <Hero position={ME} animation="idle" face="frown" headPitch={0.3} head={<PaperHat />}>
-            <MapSheet position={[0.04, 0.02, 0.1]} rotation={[0.7, -0.15, 0]} big={1.15} />
+          <Hero position={ME} animation="reach" face="frown" head={<PaperHat />}>
+            <MapSheet position={[0.02, 0.05, 0.12]} rotation={[1.05, 0.05, 0]} big={1.55} />
           </Hero>
           <Buoy position={[2.4, 0, 11.5]} />
         </>

@@ -39,17 +39,17 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.lock",
-      ...cam.push({ on: [0.2, 1.15, 2.3], dist: 4.4, to: 3.3, yaw: 128, pitch: 10, fov: 42 }),
+      ...cam.push({ on: [0.5, 1.2, 5.4], dist: 8.4, to: 6.8, yaw: 152, pitch: 8, fov: 50 }),
       zone: "dock",
       look: DAY,
-      note: "From behind him, his hand goes onto the chain. The boat stays on the far side.",
+      note: "Over his shoulder: his hand on the chain, and the boat still on the far side of it.",
       stage: (t) => {
         const reach = ease(ramp(t, wordAt("2.lock", "hand"), wordAt("2.lock", "hand") + 0.4));
         return (
           <>
             <DockChain />
-            <Hero position={[0.15, 0, 1.7 + reach * 0.35]} rotationY={0} animation="reach" face="frown" />
-            <Boat position={[0, 0, 8.8]} />
+            <Hero position={[-0.55, 0, 1.55 + reach * 0.2]} rotationY={0.35} animation="reach" face="frown" />
+            <Boat position={[0.2, 0, 8.6]} />
           </>
         );
       },

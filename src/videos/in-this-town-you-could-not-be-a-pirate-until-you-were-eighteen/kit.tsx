@@ -76,21 +76,27 @@ export const PaperHat: React.FC = () => (
   </>
 );
 
-/** The map. A sheet with a red X. `children` of the avatar puts it in his right hand; otherwise place it in the world. */
+/** The map. A sheet with a red X a phone can read. In the right hand when it is a child of the avatar. */
 export const MapSheet: React.FC<{ position?: Vec3; rotation?: Vec3; big?: number }> = ({ position = [0, 0, 0], rotation = [0.4, 0, 0], big = 1 }) => (
   <group position={position} rotation={rotation} scale={big}>
-    <Block position={[0, 0, 0]} size={[0.46, 0.02, 0.62]} color="#f3e6c4" />
-    <Block position={[0.08, 0.02, 0.08]} size={[0.22, 0.015, 0.04]} color="#c0392b" />
-    <Block position={[-0.04, 0.02, -0.06]} size={[0.04, 0.015, 0.22]} color="#c0392b" />
-    <Block position={[0.02, 0.025, 0.02]} size={[0.08, 0.02, 0.08]} color="#e74c3c" />
-    <Block position={[-0.12, 0.02, 0.16]} size={[0.1, 0.012, 0.012]} color="#3d6ea8" />
+    <Block position={[0, 0, 0]} size={[0.52, 0.02, 0.68]} color="#f3e6c4" />
+    <Block position={[0, 0.02, 0]} size={[0.34, 0.02, 0.07]} rotation={[0, 0.78, 0]} color="#c0392b" />
+    <Block position={[0, 0.025, 0]} size={[0.34, 0.02, 0.07]} rotation={[0, -0.78, 0]} color="#e74c3c" />
+    <Block position={[-0.14, 0.02, 0.18]} size={[0.12, 0.012, 0.014]} color="#3d6ea8" />
   </group>
 );
 
+/** A red ball, built as a cluster so it is not one cube. */
 export const RedBall: React.FC<{ position?: Vec3; scale?: number }> = ({ position = [0, 0, 0], scale = 1 }) => (
   <group position={position} scale={scale}>
-    <Block position={[0, 0, 0]} size={[0.28, 0.28, 0.28]} color="#e23b3b" />
-    <Block position={[0.06, 0.08, 0.12]} size={[0.06, 0.06, 0.02]} color="#ffd0d0" />
+    <Block position={[0, 0, 0]} size={[0.2, 0.2, 0.2]} color="#e23b3b" />
+    <Block position={[0.11, 0, 0]} size={[0.1, 0.14, 0.14]} color="#e23b3b" />
+    <Block position={[-0.11, 0, 0]} size={[0.1, 0.14, 0.14]} color="#c0392b" />
+    <Block position={[0, 0.11, 0]} size={[0.14, 0.1, 0.14]} color="#e23b3b" />
+    <Block position={[0, -0.11, 0]} size={[0.14, 0.1, 0.14]} color="#c0392b" />
+    <Block position={[0, 0, 0.11]} size={[0.14, 0.14, 0.1]} color="#e23b3b" />
+    <Block position={[0, 0, -0.11]} size={[0.14, 0.14, 0.1]} color="#c0392b" />
+    <Block position={[0.06, 0.08, 0.1]} size={[0.05, 0.05, 0.02]} color="#ffd0d0" />
   </group>
 );
 
@@ -207,9 +213,14 @@ export const Kraken: React.FC<{ position?: Vec3; rise?: number; arms?: number }>
   );
 };
 
-/** A dark patch on the water, before the head is up. */
+/** A dark patch on the water, wider than the hull, with an edge the night sea does not have. */
 export const SeaShadow: React.FC<{ position?: Vec3; spread?: number }> = ({ position = [0, 0, 0], spread = 1 }) => (
-  <Block position={position} size={[4.2 * spread, 0.08, 5.4 * spread]} color="#05070c" />
+  <group position={position} scale={[spread, 1, spread]}>
+    <Block position={[0, 0, 0]} size={[6.4, 0.05, 7.2]} color="#07111c" />
+    <Block position={[0, 0.04, 0]} size={[5.2, 0.05, 5.8]} color="#020308" />
+    <Block position={[1.5, 0.05, 0.8]} size={[2.2, 0.04, 2.4]} color="#020308" />
+    <Block position={[-1.3, 0.05, -0.6]} size={[1.8, 0.04, 2.2]} color="#020308" />
+  </group>
 );
 
 export const Fill: React.FC<{ on: Vec3; yaw?: number; power?: number }> = ({ on, yaw = 0, power = 5 }) => {

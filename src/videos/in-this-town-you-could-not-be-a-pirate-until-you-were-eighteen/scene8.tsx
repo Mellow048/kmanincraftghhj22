@@ -44,33 +44,33 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "10.dark",
-      ...cam.push({ on: [0, 1.15, -3.2], dist: 7.2, to: 5.6, yaw: 8, pitch: 16, fov: 48 }),
+      ...cam.push({ on: [0.4, 1.3, -0.8], dist: 8.6, to: 7, yaw: 78, pitch: 24, fov: 48 }),
       zone: "sea",
       look: NIGHT,
-      note: "From the side of the boat: the water astern has gone dark, wider than the hull.",
+      note: "From the side, looking down: the water beside the hull has gone black. The sail is edge-on and out of the way.",
       stage: () => (
         <>
-          <Fill on={[0.8, 1.5, 0.4]} yaw={60} />
+          <Fill on={[1.6, 2.2, 0.4]} yaw={70} power={6} />
           <Boat position={[0, 0.05, 0]} lantern={1} />
-          <SeaShadow position={[0.2, 0.08, -4.2]} spread={1.8} />
-          <Hero position={[0.35, D, 0.4]} rotationY={Math.PI} animation="idle" face="fear" />
+          <SeaShadow position={[0.3, 0.12, -0.6]} spread={1.05} />
+          <Hero position={[0.35, D, 0.55]} rotationY={Math.PI} animation="idle" face="fear" />
         </>
       ),
     },
     {
       cue: "10.big",
-      ...cam.push({ on: [0.2, 1.2, -3.6], dist: 8, to: 6.2, yaw: 12, pitch: 18, fov: 48 }),
+      ...cam.push({ on: [0.2, 1.6, -0.4], dist: 10.5, to: 8.6, yaw: 62, pitch: 36, fov: 50 }),
       zone: "sea",
       look: NIGHT,
-      note: "The shadow is bigger than the boat. Both are in the frame, so bigger is a fact.",
+      note: "Higher, so the shadow and the hull are both on the water. The dark shape sticks out past the boat.",
       stage: (t) => {
-        const grow = 1.4 + ease(ramp(t, 0.1, 0.9)) * 0.8;
+        const grow = 1.15 + ease(ramp(t, 0.1, 0.9)) * 0.35;
         return (
           <>
-            <Fill on={[1, 1.6, 0.2]} yaw={70} />
+            <Fill on={[1.4, 2.4, 0.6]} yaw={55} power={7} />
             <Boat position={[0, 0.05, 0]} lantern={1} />
-            <SeaShadow position={[0.3, 0.08, -4.6]} spread={grow} />
-            <Hero position={[0.3, D, 0.35]} rotationY={Math.PI} animation="point" face="fear" />
+            <SeaShadow position={[0.2, 0.12, -0.5]} spread={grow} />
+            <Hero position={[0.3, D, 0.5]} rotationY={-2.2} animation="point" face="fear" />
           </>
         );
       },

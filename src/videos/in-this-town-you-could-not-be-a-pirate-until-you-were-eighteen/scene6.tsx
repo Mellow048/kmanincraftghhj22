@@ -46,19 +46,19 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.chest",
-      ...cam.push({ on: [0.15, 1.15, 0.15], dist: 2.8, to: 2.15, yaw: -24, pitch: 24, fov: 38 }),
+      ...cam.push({ on: [-0.45, 1.2, 0.35], dist: 3.1, to: 2.4, yaw: -48, pitch: 12, fov: 40 }),
       zone: "sea",
       look: NIGHT,
-      note: "He comes back up through the hatch with the red ball. The chest is open behind him.",
+      note: "From his left, clear of the mast: he comes up with the red ball, and the chest is open behind him.",
       stage: (t) => {
         const up = ease(ramp(t, wordAt("6.chest", "came"), wordAt("6.chest", "ball")));
         return (
           <>
-            <Fill on={[0.5, 1.3, 0.9]} yaw={-10} power={6} />
+            <Fill on={[-0.2, 1.4, 1.1]} yaw={-40} power={6} />
             <Boat position={[0, 0.05, 0]} hatch={0.8} lantern={1} />
-            <Chest position={[0.55, D, -0.55]} open={0.7} />
-            <HatKid position={[-0.1, D - 0.35 + up * 0.4, -0.1]} />
-            <RedBall position={[0.15, 0.85 + up * 0.45, 0.15]} />
+            <Chest position={[0.35, D, -0.45]} open={0.75} />
+            <HatKid position={[-0.55, D - 0.15 + up * 0.2, 0.15]} rotationY={0.4} />
+            <RedBall position={[-0.28, 1.05 + up * 0.35, 0.32]} scale={1.35} />
           </>
         );
       },
