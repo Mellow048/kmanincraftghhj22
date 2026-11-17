@@ -1,96 +1,233 @@
 import type React from "react";
-import { MinecraftAvatar } from "../../engine";
+import { Bed, Block, Glow, LightPool, MinecraftAvatar, Monitor, PixelText, Sign, Torch, Tree, Vox } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { filmClock, near, stop } from "../../../Topics/Explainer";
+import { KID, SubscribeSign, ease, pop, ramp, wordClock } from "../../../Topics/Stories";
 import timingJson from "./timing.json";
 
 /**
- * This film's own route, places and people.
+ * This film's own cast and places.
  *
- * Everything another explainer could use is in the topic's pack, Topics/Explainer (catalogue with pictures:
- * Topics/Explainer/PACK.md). It is passed on from here, so a scene imports only from "./kit". Build something
- * new here ONLY if the pack does not have it; if a second film could use it, put it in the pack instead.
+ * Two brothers and one castle. The younger one has kept a server alive for three years on his own,
+ * one block a night, for an older brother who has not logged on once — and the film is about the
+ * night that stops being true.
+ *
+ * Three places, far apart so every beat arrives with a new picture: the boy's room where the
+ * player list lives, the hill with the half-built castle, and the spawn point where he leaves
+ * things for his brother to find.
+ *
+ * 1 unit = 1 block = 1 metre. `PLACE` is where each set sits; everything inside a set is written
+ * relative to it with `at()`.
  */
-
-export {
-  // the camera: stops, and the scene that flies between them
-  flightScene, near, stop, unbroken,
-  // the stage: islands in one sky, and what stands on them
-  Bridge, Island, Plinth, Signpost, Sun,
-  // money
-  Bill, BillStack, Chest, Coin, CoinPile, CoinStack, MoneyBag, Printer,
-  // numbers you can stand next to
-  Arrow, Balance, Bar, BarChart, PriceTag,
-  // things money buys
-  Apple, Bread, BreadShelf, Crate,
-  // shared with the other topics: cubes that spell, people, a village, the last picture
-  Bits, Bubble, Figure, Hut, Icon, LampPost, Player, Puffs, ROBE, Stall, SubscribeSign, Villager, Voxels,
-  // staging: how a thing pops in, where "in front of him" is
-  ADULT, CHILD, DEG, EAST, KID, NORTH, SOUTH, WEST, ahead, beside, chestOf, ease, faceOf, jolt, pop, ramp, villagerChest, villagerFace,
-} from "../../../Topics/Explainer";
-
 export const timing = timingJson as unknown as Timing;
+export const wordAt = wordClock(timing);
 
-/**
- * The film's clock. Everything an explainer shows lives in the world for the whole film, so it asks
- * "how long ago was this word said?":
- *
- *   const t = clock.useSince("1.loaf", "price");     // negative until "price" is said, then seconds since
- *   <PriceTag text="1" scale={pop(t, 0)} … />
- */
-export const clock = filmClock(timing);
-
-// ----------------------------------------------------------------------------- places
-
-/**
- * The islands, in the order the film visits them. Each holds ONE idea. `position` of an island is the middle
- * of its top, so people and things stand at that height. world.tsx builds the islands from these and the
- * exhibits stand on them: change a number here, never in two places.
- */
+/** The sets. */
 export const PLACE = {
-  /** The question: one person, one thing, one price. */
-  ask: [0, 0, 0] as Vec3,
-  /** The cause. A block higher, so the flight to it climbs. */
-  cause: [17, 1, -4] as Vec3,
+  room: [0, 0, 0] as Vec3,
+  hill: [16, 0, 0] as Vec3,
+  spawn: [-16, 0, 0] as Vec3,
 };
-/** A point on an island, given from the middle of its top. */
-export const on = (island: Vec3, x: number, y: number, z: number): Vec3 => [island[0] + x, island[1] + y, island[2] + z];
 
-// ----------------------------------------------------------------------------- the route
-
-/** Where Sam stands, and where the loaf is. Stops look at these. */
-export const SAM = on(PLACE.ask, -1.1, 0, 0.5);
-export const LOAF = on(PLACE.ask, 1.2, 1.0, 0.3);
-export const MINT = on(PLACE.cause, -1.2, 0, -0.4);
+/** A point inside a set, written relative to the set's own origin. */
+export const at = (p: Vec3, x: number, y: number, z: number): Vec3 => [p[0] + x, p[1] + y, p[2] + z];
 
 /**
- * THE ROUTE: every place the camera comes to rest, in order. `stop(lookAt, metres, yaw°, pitch°, fov°)`.
- * Yaw 0 stands on the +z side of the thing (its front); 90 on its +x side. Pitch 15 looks down a little.
- * Two lines about one thing are two stops (`near`): the camera has to keep moving.
+ * The narrator: the younger brother. Twelve when his brother left, fifteen now, and every night of
+ * the three years is on him. Green hoodie, because he is the one who stays.
  */
-export const STOPS = {
-  /** Where the film opens: the whole island, small in the sky. */
-  open: stop(on(PLACE.ask, 0, 1.2, 0), 11.5, 14, 18, 46),
-  /** Sam, head to knee, a little from below. A grown-up is 1.8 m: stand 4 m off. */
-  sam: stop([SAM[0], SAM[1] + 1.25, SAM[2]], 4.2, 20, 3, 40),
-  /** The loaf on its plinth, and room OVER it for its price: in a tall frame a number hangs above its thing. */
-  loaf: stop([LOAF[0], LOAF[1] + 0.7, LOAF[2]], 3.6, -14, 10, 40),
-  /** The second island: the machine. */
-  mint: stop([MINT[0], MINT[1] + 1.0, MINT[2]], 5.2, -24, 14, 42),
-};
-// Two lines about one thing are two stops. Make the second from the first:
-//   tag: near(STOPS.loaf, { closer: 1.3, turn: 25, on: [LOAF[0] + 0.1, LOAF[1] + 1.0, LOAF[2]] })
-void near;
-
-// ----------------------------------------------------------------------------- the people
-
-type A = Partial<MinecraftAvatarProps>;
-
-/**
- * SAM: the one person an explainer follows. Whatever is being explained happens to Sam, so the viewer has
- * somebody to be. One loud colour nobody else in the film wears.
- * Faces: smile grin laugh frown uneasy brave fear wow ouch calm. Change the face ON the word.
- */
-export const Sam: React.FC<A> = (p) => (
-  <MinecraftAvatar outfit="tee" skin="#dba47c" hair="#3a2415" colors={{ torso: "#2f7de0", arms: "#2f7de0", legs: "#2b2f45" }} blink {...p} />
+export const Kid: React.FC<Partial<MinecraftAvatarProps>> = (p) => (
+  <MinecraftAvatar
+    scale={KID}
+    skin="#e6b184"
+    hair="#241a12"
+    outfit="tee"
+    colors={{ torso: "#2f7d4f", arms: "#2f7d4f", legs: "#33384a" }}
+    blink
+    {...p}
+  />
 );
+
+/**
+ * The brother: nineteen, gone three years, in the jacket he left in. He is the only other person in
+ * the film, and he does not appear until the last fifteen seconds.
+ */
+export const Brother: React.FC<Partial<MinecraftAvatarProps>> = (p) => (
+  <MinecraftAvatar
+    scale={1.04}
+    skin="#d8a97a"
+    hair="#171310"
+    outfit="hoodie"
+    colors={{ torso: "#8a3f2f", arms: "#8a3f2f", legs: "#2a2f3d" }}
+    blink
+    {...p}
+  />
+);
+
+/**
+ * The castle on the hill, half finished.
+ *
+ * `filled` is how much of the broken wall has been filled in, block by block, one a night (0 to 1).
+ * `roof` is the roof he never started, finished three years later by his little brother.
+ * `last` is the final block, lit, the one the brother puts down himself.
+ */
+export const Castle: React.FC<{ position: Vec3; filled?: number; roof?: number; last?: number }> = ({
+  position,
+  filled = 0,
+  roof = 0,
+  last = 0,
+}) => {
+  const cells = 72; // twelve wide, six high: the wall he has been filling in
+  const placed = Math.round(filled * cells);
+  return (
+    <group position={position}>
+      {/* the hill it stands on */}
+      <Vox kind="grass" position={[0, -0.3, 0]} size={[15, 0.6, 15]} />
+      <Vox kind="dirt" position={[0, -0.9, 0]} size={[13, 0.7, 13]} />
+      <Vox kind="grass" position={[6.4, 0.15, 5.6]} size={[3, 0.5, 3]} />
+      <Tree position={[-6.2, 0, 5.4]} height={3.4} leaf="#3f7a3a" spread={1.9} />
+      <Tree position={[-7.4, 0, 2.2]} height={2.6} leaf="#376d36" spread={1.6} />
+
+      {/* the keep: three walls that were finished, and one that was not */}
+      <Vox kind="stoneBrick" position={[0, 2.2, -4.2]} size={[9, 4.4, 0.7]} />
+      <Vox kind="stoneBrick" position={[-4.2, 2.2, 0]} size={[0.7, 4.4, 9]} />
+      <Vox kind="stoneBrick" position={[4.2, 2.2, 0]} size={[0.7, 4.4, 9]} />
+      {/* the broken front wall: filled in one block a night, bottom row first */}
+      {Array.from({ length: cells }, (_, i) => {
+        const col = i % 12;
+        const row = Math.floor(i / 12);
+        if (i >= placed) return null;
+        const newest = i === placed - 1 && filled < 1;
+        return (
+          <Vox
+            key={i}
+            kind={newest ? "mossy" : "stoneBrick"}
+            position={[-3.85 + col * 0.7, 0.35 + row * 0.7, 4.2]}
+            size={[0.7, 0.7, 0.7]}
+          />
+        );
+      })}
+      <Vox kind="stoneBrick" position={[0, 0.2, 4.2]} size={[9, 0.4, 0.7]} />
+
+      {/* two towers, and the torches he keeps lit */}
+      <Vox kind="cobble" position={[-4.2, 5.6, -4.2]} size={[1.8, 2.6, 1.8]} />
+      <Vox kind="cobble" position={[4.2, 5.6, -4.2]} size={[1.8, 2.6, 1.8]} />
+      <Torch position={[-4.2, 7.1, -4.2]} light={7} seed={11} />
+      <Torch position={[4.2, 7.1, -4.2]} light={7} seed={12} />
+      <Torch position={[-3.6, 3.9, 3.6]} light={5} seed={13} />
+      <Torch position={[3.6, 3.9, 3.6]} light={5} seed={14} />
+
+      {/* the doorway he never put a door in */}
+      <Vox kind="darkPlanks" position={[0, 3.5, 4.2]} size={[1.6, 2.6, 0.8]} tint="#2a1d12" />
+
+      {/* the roof he never started, finished last month */}
+      {roof > 0 ? (
+        <group scale={[1, roof, 1]}>
+          <Vox kind="planks" position={[0, 5.0, -2.1]} size={[9.4, 0.3, 4.9]} tint="#7a5330" />
+          <Vox kind="planks" position={[0, 5.5, -0.4]} size={[9.4, 0.3, 3.2]} tint="#8a5f36" />
+          <Vox kind="planks" position={[0, 6.0, 1.1]} size={[9.4, 0.3, 1.6]} tint="#96683c" />
+        </group>
+      ) : null}
+
+      {/* the last block: the one his brother puts down */}
+      {last > 0 ? (
+        <group position={[0, 6.3, 1.5]}>
+          <Vox kind="stoneBrick" position={[0, 0, 0]} size={[0.7, 0.7, 0.7]} />
+          <Glow position={[0, 0, 0.6]} size={1.8 * last} color="#ffd27a" opacity={0.5 * last} />
+          <LightPool position={[0, -0.6, 0]} width={4} depth={4} color="#ffcf70" opacity={0.2 * last} />
+        </group>
+      ) : null}
+    </group>
+  );
+};
+
+/** A chest with a name on it. Everything he left is labelled with his name. */
+export const NamedChest: React.FC<{ position: Vec3; rotationY?: number; name?: string }> = ({
+  position,
+  rotationY = 0,
+  name = "SAM",
+}) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Vox kind="planks" position={[0, 0.42, 0]} size={[1.1, 0.84, 0.7]} tint="#8a5f36" />
+    <Vox kind="log" position={[0, 0.72, 0.37]} size={[1.1, 0.24, 0.06]} />
+    <Block position={[0, 0.62, 0.41]} size={[0.2, 0.16, 0.06]} color="#c8b072" castShadow={false} />
+    <PixelText text={name} position={[0, 1.18, 0.02]} height={0.22} maxWidth={1.2} color="#e8dcc0" />
+  </group>
+);
+
+/** The screen the whole film hangs on: the player list. One name on it for three years. */
+export const ServerScreen: React.FC<{
+  position: Vec3;
+  rotationY?: number;
+  players?: number;
+  name?: string;
+  highlight?: number;
+}> = ({ position, rotationY = 0, players = 1, name = "", highlight = 0 }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Vox kind="planks" position={[0, 0.74, 0]} size={[2.2, 0.12, 1.0]} />
+    <Vox kind="log" position={[-0.95, 0.37, -0.4]} size={[0.14, 0.74, 0.14]} />
+    <Vox kind="log" position={[0.95, 0.37, -0.4]} size={[0.14, 0.74, 0.14]} />
+    <Vox kind="log" position={[-0.95, 0.37, 0.4]} size={[0.14, 0.74, 0.14]} />
+    <Vox kind="log" position={[0.95, 0.37, 0.4]} size={[0.14, 0.74, 0.14]} />
+    <Block position={[0, 1.12, -0.28]} size={[1.5, 0.9, 0.07]} color="#1b1f26" />
+    <Block position={[0, 1.12, -0.23]} size={[1.34, 0.76, 0.02]} color="#101a24" emissive="#0a1420" emissiveIntensity={0.6} castShadow={false} />
+    <PixelText text={`${players} PLAYER${players === 1 ? "" : "S"} ONLINE`} position={[0, 1.44, -0.21]} height={0.15} maxWidth={1.25} color="#7fd6a0" />
+    {name ? (
+      <PixelText text={name} position={[0, 1.14, -0.21]} height={0.15} maxWidth={1.25} color={highlight > 0 ? "#ffd27a" : "#8fb4d8"} />
+    ) : null}
+    <Glow position={[0, 1.12, 0.05]} size={2.8} color="#7fd6a0" opacity={0.14 + highlight * 0.16} />
+    <LightPool position={[0, 0.81, 0.2]} width={2.4} depth={1.3} color="#8fe0b0" opacity={0.12} />
+  </group>
+);
+
+/** A creeper at the edge of the torchlight: the reason the torches matter. */
+export const Creeper: React.FC<{ position: Vec3; rotationY?: number }> = ({ position, rotationY = 0 }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Vox kind="wool" position={[0, 1.0, 0]} size={[0.7, 1.0, 0.45]} tint="#4f9e46" />
+    <Vox kind="wool" position={[0, 1.72, 0]} size={[0.8, 0.66, 0.55]} tint="#58aa4d" />
+    <Vox kind="wool" position={[-0.2, 0.28, 0]} size={[0.24, 0.6, 0.24]} tint="#43853c" />
+    <Vox kind="wool" position={[0.2, 0.28, 0]} size={[0.24, 0.6, 0.24]} tint="#43853c" />
+    <Block position={[-0.19, 1.78, 0.29]} size={[0.16, 0.16, 0.02]} color="#101010" castShadow={false} />
+    <Block position={[0.19, 1.78, 0.29]} size={[0.16, 0.16, 0.02]} color="#101010" castShadow={false} />
+    <Block position={[-0.09, 1.5, 0.29]} size={[0.34, 0.2, 0.02]} color="#101010" castShadow={false} />
+  </group>
+);
+
+/** Lunch money, counted out on the desk: what a server costs when you are fifteen. */
+export const Coins: React.FC<{ position: Vec3; count?: number }> = ({ position, count = 9 }) => (
+  <group position={position}>
+    {Array.from({ length: count }, (_, i) => {
+      const col = i % 4;
+      const row = Math.floor(i / 4);
+      return (
+        <Block
+          key={i}
+          position={[col * 0.14 - 0.2, 0.03 + row * 0.05, row * 0.12 - 0.1]}
+          size={[0.13, 0.05, 0.13]}
+          color={i % 3 === 0 ? "#d9b34a" : "#c0a24a"}
+          castShadow={false}
+        />
+      );
+    })}
+  </group>
+);
+
+/** The sign at the spawn point, left just in case. */
+export const SpawnSign: React.FC<{ position: Vec3; rotationY?: number }> = ({ position, rotationY = 0 }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Sign position={[0, 0, 0]} rotationY={0} title="STILL HERE." subtitle="— YOUR BROTHER" lines={["SERVER CLOSES FRIDAY"]} />
+  </group>
+);
+
+/** The boy's desk, where he logs on every night. */
+export const Desk: React.FC<{ position: Vec3; rotationY?: number }> = ({ position, rotationY = 0 }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Vox kind="planks" position={[0, 0.74, 0]} size={[2.2, 0.12, 1.0]} />
+    <Vox kind="log" position={[-0.95, 0.37, -0.4]} size={[0.14, 0.74, 0.14]} />
+    <Vox kind="log" position={[0.95, 0.37, -0.4]} size={[0.14, 0.74, 0.14]} />
+    <Vox kind="log" position={[-0.95, 0.37, 0.4]} size={[0.14, 0.74, 0.14]} />
+    <Vox kind="log" position={[0.95, 0.37, 0.4]} size={[0.14, 0.74, 0.14]} />
+  </group>
+);
+
+export { Bed, Monitor, SubscribeSign, ease, pop, ramp };
+export type { Vec3 };
