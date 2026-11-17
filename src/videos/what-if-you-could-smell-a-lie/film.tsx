@@ -2,15 +2,6 @@ import { defineFilm } from "../../engine";
 import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
-<<<<<<< HEAD
-=======
-import { scene2 } from "./scene2";
-import { scene3 } from "./scene3";
-import { scene4 } from "./scene4";
-import { scene5 } from "./scene5";
-import { scene6 } from "./scene6";
-import { scene7 } from "./scene7";
->>>>>>> 8510bb0b99d0dbaa89384979ebff0f03bdd1b7c2
 
 /**
  * What If You Could Smell a Lie
@@ -29,20 +20,10 @@ export const film = defineFilm({
   topic: "what-if",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
-<<<<<<< HEAD
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/what-if-you-could-smell-a-lie/narration.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/what-if-you-could-smell-a-lie/mix.mp3" },
   // A finished film plays the mix. `npm run check` fails one that does not.
   captions: { words: timing.words, y: 0.72 },
   World,
   scenes: [scene1],
-=======
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/what-if-you-could-smell-a-lie/mix.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/what-if-you-could-smell-a-lie/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
-  audio: { src: "audio/what-if-you-could-smell-a-lie/mix.mp3" },
-  captions: { words: timing.words, y: 0.72 },
-  World,
-  scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7],
->>>>>>> 8510bb0b99d0dbaa89384979ebff0f03bdd1b7c2
 });
