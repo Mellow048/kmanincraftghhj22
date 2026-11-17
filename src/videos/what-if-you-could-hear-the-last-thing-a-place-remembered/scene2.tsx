@@ -178,7 +178,7 @@ export const scene2 = storyScene(timing, {
       // lens is behind his right shoulder: hand, grout, the edge of the mirror and the toothbrushes in one frame.
       // Solved by projection: from the corner of the basin, looking east along the tiles. His face centres in the
       // frame, the hand on the grout holds the left edge, and the near edge of the mirror comes into the right.
-      ...cam.push({ on: B(-0.35, 1.34, -0.85), dist: 1.70, to: 1.42, yaw: 90, pitch: 2, fov: 44 }),
+      ...cam.push({ on: B(-0.35, 1.30, -0.85), dist: 1.75, to: 1.45, yaw: -50, pitch: 3, fov: 46 }),
       zone: "bath",
       look: "overworld-day",
       note: "Along the bathroom tiles from the corner of the basin, the edge of the mirror on one side and his palm flat on the white grout on the other: a sentence coming out of the plumbing.",

@@ -80,21 +80,25 @@ export const scene6 = storyScene(timing, {
       // Nineteen years, in one frame: the calendar on the kitchen wall, and his dad's handwriting on it in the same
       // place month after month.
       cue: "8.why",
-      ...cam.push({ on: K(1.40, 1.55, -2.90), dist: 1.70, to: 1.35, yaw: -8, pitch: 2, fov: 38 }),
+      // THE CALENDAR HAS TO FIT BETWEEN THE COUNTER AND THE CUPBOARDS. It was 1.1 m tall centred at 1.55, which
+      // runs from 1.0 to 2.1 -- straight through the cupboard fronts at 1.92 and up against the window's emissive
+      // pane. One frame of that is the white-out this shot kept producing. It is now 0.82 m tall on the clear
+      // plaster band at 1.42, under the cupboards and right of the window.
+      ...cam.push({ on: K(1.40, 1.42, -2.96), dist: 2.40, to: 2.05, yaw: -3, pitch: 1, fov: 56 }),
       zone: "kitchen",
       look: "overworld-day",
       note: "A calendar on the kitchen wall with nineteen years of the same handwriting in the same corner of every month: a man keeping a record of a conversation.",
       stage: (t) => (
         <>
-          <Block size={[0.9, 1.1, 0.03]} position={K(1.40, 1.55, -2.96)} color="#f6f0dc" castShadow={false} />
-          <Block size={[0.86, 0.16, 0.02]} position={K(1.40, 1.98, -2.93)} color="#8a2b28" castShadow={false} />
-          {Array.from({ length: 4 }, (_, i) =>
-            Array.from({ length: 5 }, (_, j) => (
-              <Block key={`${i}${j}`} size={[0.12, 0.12, 0.008]} position={K(1.14 + j * 0.13, 1.80 - i * 0.15, -2.93)} color="#eae4d2" castShadow={false} />
+          <Block size={[0.78, 0.82, 0.03]} position={K(1.40, 1.42, -2.96)} color="#f6f0dc" castShadow={false} />
+          <Block size={[0.74, 0.13, 0.02]} position={K(1.40, 1.76, -2.93)} color="#8a2b28" castShadow={false} />
+          {Array.from({ length: 3 }, (_, i) =>
+            Array.from({ length: 4 }, (_, j) => (
+              <Block key={`${i}${j}`} size={[0.11, 0.11, 0.008]} position={K(1.19 + j * 0.14, 1.66 - i * 0.15, -2.93)} color="#eae4d2" castShadow={false} />
             )),
           )}
-          <PixelText text="1997" position={K(1.40, 2.02, -2.92)} height={0.1} color="#fff2cf" />
-          <Rings at={K(1.40, 1.55, -2.90)} t={t} from={EVERY} />
+          <PixelText text="1997" position={K(1.40, 1.79, -2.92)} height={0.085} color="#fff2cf" />
+          <Rings at={K(1.40, 1.42, -2.90)} t={t} from={EVERY} />
         </>
       ),
     },
