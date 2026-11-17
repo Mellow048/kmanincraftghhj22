@@ -337,3 +337,18 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   4. One thing differs from the reference in all five and was left alone: the master has to raise these mixes about
      2 dB and its limiter works for about a third of each film; on Monster Village it does not work at all. That is the
      voice recording, not the sheet. **Somebody has to listen** before more is done to the sound.
+
+- **2026-11-17, "i love them", and the films go to `main`.** On the five films after the third pass: "okay i love them
+  but the only 1 thats lacking is the stranger moving inside my house one, but its decent enough". He did not say what
+  it lacks, and asked for no fix. Then: "please put them on the main branch first, source code + mp4 so that other
+  agents can see it then lets make a new batch of ideas."
+  1. **Four of five loved; "A Stranger Moved Into My House" is the weakest.** It is the only one of the five whose
+     teller is a grown villager who is wronged and loses, and whose ending is a joke on the viewer. The other four have
+     a teller you feel for (a dog, a worker, a trader, a mob nobody chose). That is a guess, not his word: ask him if
+     it matters for a later film.
+  2. **Finished films go to `main`, with their mp4s**, so every session can open them. Do it without being asked.
+  3. When this branch was merged, `main` had lost five films from `src/registry.ts`, the three-minute rule from
+     `AGENTS.md` and five words from `scripts/narration.py` (two merges of unrelated histories by other sessions).
+     They were put back. **After any merge with `main`, diff those three files against what you had.**
+  4. `main` now paints a sky with clouds behind every outdoor look (`src/engine/Look.tsx`). The five mp4s were rendered
+     before that, with a flat sky. A new render of any of them will not match its mp4 until somebody has looked.
