@@ -42,9 +42,17 @@ jobs:
         run: npm run typecheck && npm run check
 
       - name: Render stills
-        run: node scripts/stills.mjs "${{ inputs.composition }}" "${{ inputs.frames }}" out/stills
+        id: render
+        continue-on-error: true
+        run: |
+          set +e
+          node scripts/stills.mjs "${{ inputs.composition }}" "${{ inputs.frames }}" out/stills > /tmp/stills.log 2>&1
+          echo "exit=$?" >> /tmp/stills.log
+          tail -80 /tmp/stills.log
+          exit 0
 
       - name: Upload artifact
+        if: ${{ steps.render.outcome == 'success' }}
         uses: actions/upload-artifact@v4
         with:
           name: "stills-${{ inputs.composition }}"
@@ -54,8 +62,11 @@ jobs:
       # For sandboxes that can fetch the repository but not Actions' external
       # artifact-storage host. The frames land in review/<composition>/ on the
       # branch that ran the workflow. Delete that folder before delivery.
+      #
+      # This also runs when the render fails, so the reason is readable: Actions' own logs are not
+      # always reachable from the sandbox, and "Render stills failed" with no message is unworkable.
       - name: Temporarily commit review frames
-        if: ${{ inputs.commit_review && github.ref_name != 'main' }}
+        if: ${{ always() && github.ref_name != 'main' && (inputs.commit_review || steps.render.outcome == 'failure') }}
         env:
           REF_NAME: ${{ github.ref_name }}
           COMPOSITION: ${{ inputs.composition }}
@@ -63,8 +74,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p "review/${COMPOSITION}"
-          cp out/stills/*.png "review/${COMPOSITION}/"
+          cp out/stills/*.png "review/${COMPOSITION}/" 2>/dev/null || true
+          cp /tmp/stills.log "review/${COMPOSITION}/LAST_RUN.txt" 2>/dev/null || true
           git add "review/${COMPOSITION}/"
+          git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
           git commit -m "Diagnostic review frames for ${COMPOSITION}"
           # Somebody may have pushed while the stills rendered: take their commits first, or the push is refused
           # and ten minutes of frames are lost.
@@ -76,6 +89,12 @@ jobs:
             sleep $((i * 5))
           done
           echo "Could not push review frames after 5 attempts" >&2
+          exit 1
+
+      - name: Fail if the render failed
+        if: ${{ steps.render.outcome == 'failure' }}
+        run: |
+          echo "The stills render failed; see review/${{ inputs.composition }}/LAST_RUN.txt" >&2
           exit 1
 
       - name: Publish release assets
