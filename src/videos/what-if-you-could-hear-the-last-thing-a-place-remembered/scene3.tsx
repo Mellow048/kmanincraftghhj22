@@ -95,7 +95,7 @@ export const scene3 = storyScene(timing, {
       // Three quarters behind his shoulder in the corridor, and the sentence coming out of the doorway he has just
       // walked past: what somebody says to the door after you leave is the whole premise.
       cue: "3.what",
-      ...cam.push({ on: H(-0.90, 1.45, 2.60), dist: 4.40, to: 3.60, yaw: 174, pitch: 2, fov: 56 }),
+      ...cam.push({ on: H(-0.45, 1.32, 2.60), dist: 4.30, to: 3.50, yaw: 176, pitch: 2, fov: 58 }),
       zone: "hall",
       look: "overworld-day",
       note: "Him walking away down the corridor with his head half turned, and a sentence coming out of a doorway behind him that was meant for when he had gone.",
