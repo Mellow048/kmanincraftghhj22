@@ -40,7 +40,7 @@ void main() {
   vec3 d = normalize(vDir);
   float h = d.y;
 
-  vec3 col = mix(uHorizon, uTop, pow(clamp(h, 0.0, 1.0), 0.62));
+  vec3 col = mix(uHorizon, uTop, pow(clamp(h, 0.0, 1.0), 0.40));
   col = mix(col, uBottom, pow(clamp(-h, 0.0, 1.0), 0.42));
 
   // The sun: a tight disc with a wide halo, so bloom has something to bloom.

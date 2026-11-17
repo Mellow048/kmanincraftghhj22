@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Glow, LightPool, Tree, Vox, cam, defineFilm, storyScene } from "./engine";
+import { Block, Glow, LightPool, Vox, cam, defineFilm, storyScene } from "./engine";
 import { Hut } from "../Topics/InThisTown";
 
 /**
@@ -10,6 +10,15 @@ import { Hut } from "../Topics/InThisTown";
  * It lives outside src/videos on purpose, so `npm run check` does not ask it for
  * narration or cues.
  */
+
+/** An oak: a planks trunk and a blocky canopy. */
+const Oak: React.FC<{ at: [number, number, number]; height: number }> = ({ at, height }) => (
+  <group position={at}>
+    <Vox kind="planks" position={[0, height / 2, 0]} size={[0.7, height, 0.7]} />
+    <Vox kind="leaves" position={[0, height + 0.6, 0]} size={[3.4, 2.2, 3.4]} />
+    <Vox kind="leaves" position={[0, height + 2.1, 0]} size={[2.2, 1.6, 2.2]} />
+  </group>
+);
 
 const World: React.FC = () => (
   <>
@@ -29,10 +38,21 @@ const World: React.FC = () => (
     <Block position={[2.6, 0.12, -3.4]} size={[0.3, 0.24, 0.3]} color="#c8483a" castShadow={false} />
     <Block position={[-2.4, 0.12, -3.1]} size={[0.3, 0.24, 0.3]} color="#e0c040" castShadow={false} />
 
-    {/* Three oaks, placed so they frame the cottage rather than hide it. */}
-    <Tree position={[-7, 0, -2]} height={7} />
-    <Tree position={[8, 0, -4]} height={8} />
-    <Tree position={[-12, 0, 4]} height={6} />
+    {/* Three oaks, built from blocks so they cannot go missing. */}
+    <Oak at={[-6.5, 0, -3]} height={6.5} />
+    <Oak at={[7.5, 0, -4.5]} height={7.5} />
+    <Oak at={[-10, 0, 2]} height={5.5} />
+
+    {/* Flowers in the grass, so the meadow is not a lawn. */}
+    {[[-2.1, 1.2], [1.9, 2.4], [-4.2, 4.6], [3.6, 5.2], [-1.2, 6.4], [5.1, 1.4]].map(([x, z], i) => (
+      <Block
+        key={i}
+        position={[x, 0.12, z]}
+        size={[0.26, 0.24, 0.26]}
+        color={["#c8483a", "#e0c040", "#7a5fd0", "#e07a40"][i % 4]}
+        castShadow={false}
+      />
+    ))}
 
     {/* A lamp post east of the door, for a warm practical in the dusk shot. */}
     <Vox kind="planks" position={[2.6, 1.6, -3.6]} size={[0.24, 3.2, 0.24]} />
@@ -40,7 +60,6 @@ const World: React.FC = () => (
     <LightPool position={[2.6, 0.04, -3.6]} width={5} depth={5} color="#ffb45e" opacity={0.3} />
     <pointLight position={[2.6, 3.2, -3.6]} color="#ffb066" intensity={7} distance={11} decay={2} />
 
-    <Clouds y={38} span={110} opacity={0.9} />
   </>
 );
 
@@ -62,19 +81,19 @@ const SCENE = storyScene(TIMING, {
   shots: [
     {
       cue: "scenery.wide",
-      ...cam.push({ on: [0, 1.4, -1.5], dist: 12.5, to: 12, yaw: 0, pitch: 9, fov: 46 }),
+      ...cam.push({ on: [-1.6, 2.2, -3.4], dist: 10.5, to: 9.6, yaw: -9, pitch: 13, fov: 46 }),
       note: "Wide: the whole meadow, the cottage small against the sky.",
       stage: () => null,
     },
     {
       cue: "scenery.medium",
-      ...cam.push({ on: [0, 1.35, -3.5], dist: 7.2, to: 6.6, yaw: 0, pitch: 7, fov: 44 }),
+      ...cam.push({ on: [-0.8, 1.9, -3.8], dist: 6.4, to: 5.9, yaw: -7, pitch: 10, fov: 44 }),
       note: "Medium: the cottage and the path, sky still above the roof.",
       stage: () => null,
     },
     {
       cue: "scenery.close",
-      ...cam.push({ on: [0.4, 1.3, -3.0], dist: 4.2, to: 3.6, yaw: 8, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [0.9, 1.5, -4.2], dist: 3.4, to: 3.0, yaw: 10, pitch: 5, fov: 42 }),
       note: "Close: the door and the flowers, to check texture and shadow detail.",
       stage: () => null,
     },
