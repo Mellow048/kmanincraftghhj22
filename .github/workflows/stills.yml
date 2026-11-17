@@ -82,6 +82,8 @@ jobs:
           # and ten minutes of frames are lost.
           git pull --rebase origin "${REF_NAME}"
           git push origin "HEAD:${REF_NAME}"
+          git rev-parse HEAD
+          git ls-remote origin "refs/heads/${REF_NAME}"
 
       - name: Publish release assets
         uses: softprops/action-gh-release@v2
