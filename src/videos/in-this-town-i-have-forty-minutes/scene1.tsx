@@ -1,53 +1,93 @@
 import { cam, storyScene } from "../../engine";
-import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import { DEG, EAST, Him, Llamas, NORTH, SOUTH, SPOT, Shop, Square, Villager, ROBE, hop, timing, tw, w } from "./kit";
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+/** 01 — The hook. A trader, two llamas, a shop, and a clock over his head that is already running. */
+const ME = SPOT.me;
 
-/**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
- */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Hook",
+  title: "Forty minutes",
   shots: [
     {
-      cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
-      zone: "village",
+      cue: "1.forty",
+      ...cam.push({ on: [0, 1.25, 2.6], dist: 5.6, to: 4.9, yaw: 0, pitch: 3, fov: 46 }),
+      zone: "town",
       look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
-      stage: () => (
+      note: "The hook, and the premise in one frame. A trader in a blue hood looks at us; over his head a clock, 40:00, is already counting down; a llama looks over each shoulder; his shop is at his elbow; and a villager walks straight past between him and us without turning his head.",
+      stage: (t) => (
         <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
+          <Square t={t} folk={5} />
+          <Llamas t={t} />
+          <Shop />
+          <Him cue="1.forty" t={t} rotationY={SOUTH} rise={hop(t, 0.25, 0.22, 0.3) + hop(t, 0.9, 0.16, 0.28)} hmm={tw(t, 0.2, 0.6)} />
+          <Villager position={[0.9 + t * 2.6, 0, 4.4]} rotationY={EAST} walk={t * 2.6} robe={ROBE.brown} />
         </>
       ),
     },
     {
-      cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
-      zone: "village",
+      cue: "1.sell",
+      ...cam.push({ on: [0.5, 1.1, 3.3], dist: 5.2, to: 4.7, yaw: 36, pitch: 8, fov: 46 }),
+      zone: "town",
       look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      note: "From the side of the shop. A villager walks along the front of it. The trader's head follows him the whole way. The villager does not slow down.",
+      stage: (t, { dur }) => {
+        const x = 1.9 - (t / dur) * 4.4;
+        return (
+          <>
+            <Square t={t} folk={4} />
+            <Llamas t={t} />
+            <Shop />
+            <Him cue="1.sell" t={t} face={36 * DEG} rotationY={SOUTH + 0.3} lookAt={[x, 1.5, 4.3]} strain={tw(t, 0.2, 0.7)} />
+            <Villager position={[x, 0, 4.3]} rotationY={-EAST} walk={t * 3.2} robe={ROBE.red} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.llamas",
+      ...cam.push({ on: [-0.1, 1.45, 1.4], dist: 4.2, to: 3.7, yaw: -8, pitch: 2, fov: 46 }),
+      zone: "town",
+      look: "overworld-day",
+      note: "The two llamas, close, chewing. On 'they do not want them either' both heads turn away from the shop at the same moment, one left and one right.",
+      stage: (t) => {
+        const no = tw(t, w("1.llamas", "They") - 0.05, w("1.llamas", "They") + 0.3);
+        return (
+          <>
+            <Square t={t} folk={3} />
+            <Llamas t={t} look={[0.15 + 0.85 * no, -0.2 - 0.85 * no]} nod={-0.12 * no} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.clock",
+      ...cam.push({ on: [0, 1.6, 3.0], dist: 4.1, to: 3.6, yaw: 14, pitch: -8, fov: 46 }),
+      zone: "town",
+      look: "overworld-day",
+      note: "From below: his face, and the clock over it, ticking. He looks up at it.",
+      stage: (t) => (
+        <>
+          <Square t={t} folk={2} />
+          <Him cue="1.clock" t={t} face={14 * DEG} rotationY={SOUTH + 0.2} nod={-0.55 * tw(t, 0.2, 0.6)} clockScale={0.62} />
+        </>
+      ),
+    },
+    {
+      cue: "1.where",
+      ...cam.push({ on: [0, 0.6, 1.2], dist: 15, to: 18, yaw: 22, pitch: 40, fov: 46 }),
+      zone: "town",
+      look: "overworld-day",
+      note: "High over the square, pulling away: the whole town going about its day, and in the middle of it one blue hood with a clock, two llamas and nobody near him. He shrugs with his head.",
+      stage: (t) => (
+        <>
+          <Square t={t} folk={6} />
+          <Llamas t={t} />
+          <Shop />
+          <Him cue="1.where" t={t} face={22 * DEG} rotationY={SOUTH} tilt={0.25 * Math.sin(tw(t, w("1.where", "never") - 0.1, w("1.where", "never") + 0.5) * Math.PI)} clockScale={1.3} />
+        </>
+      ),
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;
+void NORTH;
+void ME;
