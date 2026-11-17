@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, Bell, BellRope, Friend, Golem, Hero, Mum, PLACE, SkyHole, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
+import { Baker, BellRope, Crowd, Friend, Golem, Hero, Mum, SkyHole, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
 
 /** The law, already broken, in the first second. */
 export const scene1 = storyScene(timing, {
@@ -8,25 +8,22 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.bell",
-      ...cam.push({ on: [0.2, 1.6, 0.2], dist: 6.2, to: 4.4, yaw: 8, pitch: -8, fov: 48 }),
+      ...cam.push({ on: [0.2, 2.05, 0.15], dist: 6.6, to: 5.1, yaw: 4, pitch: -8, fov: 48 }),
       zone: "village",
       look: DAY,
-      note: "Frame one: the bell, every nose in the dirt, and one orange kid already looking up.",
+      note: "Frame one: the hole, the eye, the bell, noses in the dirt, and one orange kid already looking up.",
       stage: (t) => {
-        const up = wordAt("1.bell", "up");
-        const leg = ease(ramp(t, up - 0.15, up + 0.35));
+        const leg = 0.35 + ease(ramp(t, 0.05, 0.7)) * 0.4;
         return (
           <>
-            <group position={PLACE.bell} rotation={[0, 0, Math.sin(t * 10) * 0.05]}>
-              <Bell position={[0, 0, 0]} />
-            </group>
             <BellRope />
-            <Hero position={[0.35, 0, 1.7]} animation="reachUp" face="wow" />
-            <Mum position={[-1.5, 0, 1.15]} lean={1.15} nod={0.7} />
-            <Baker position={[1.7, 0, 0.95]} lean={1.2} nod={0.65} />
-            <Golem position={[3.1, 0, 2.2]} bow={1.15} />
-            <SkyHole />
-            <SkyThing position={[0.4, 11 - leg * 2.2, -5]} scale={1.3} legs={8} />
+            <Hero position={[0.35, 0, 2.05]} animation="reachUp" face="wow" />
+            <Mum position={[-1.35, 0, 1.25]} lean={1.1} />
+            <Baker position={[1.55, 0, 1.05]} lean={1.2} nod={0.7} />
+            <Golem position={[2.7, 0, 2.15]} bow={1.15} />
+            <Crowd n={6} at={[0.1, 0, 0.2]} />
+            <SkyHole position={[0.15, 4.85, -3.1]} open={1} />
+            <SkyThing position={[0.15, 3.35, -2.15]} scale={1.05} legs={8} reach={leg} />
           </>
         );
       },
@@ -40,8 +37,9 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <Baker position={[-2.2, 0, 1.1]} lean={1.2} nod={0.7} />
-          <Friend position={[0.3, 0, 1.35]} lean={1.05} nod={0.8} />
+          <Friend position={[0.3, 0, 1.35]} lean={1.05} />
           <Golem position={[2.8, 0, 2.1]} bow={1.25} />
+          <Crowd n={5} at={[0.4, 0, 0.6]} />
         </>
       ),
     },
@@ -55,7 +53,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.saw",
-      ...cam.push({ on: [0, 14, -6], dist: 9, to: 6.2, yaw: 14, pitch: 18, fov: 50 }),
+      ...cam.push({ on: [0.1, 4.2, -0.6], dist: 6.4, to: 4.6, yaw: 16, pitch: 8, fov: 46 }),
       zone: "village",
       look: DAY,
       note: "The hole, and on climbing the thing is already halfway out of it.",
@@ -63,8 +61,8 @@ export const scene1 = storyScene(timing, {
         const climb = ease(ramp(t, wordAt("1.saw", "climbing"), wordAt("1.saw", "climbing") + 0.8));
         return (
           <>
-            <SkyHole position={[0, 20, -7]} />
-            <SkyThing position={[0.2, 16 - climb * 3, -6.5]} scale={1.6} legs={9} />
+            <SkyHole position={[0, 5.4, -1.2]} />
+            <SkyThing position={[0.15, 3.6 - climb * 1.1, -0.2]} scale={1.45} legs={9} reach={0.2 + climb * 0.5} />
           </>
         );
       },

@@ -333,11 +333,6 @@
     },
     {
       "cue": "6.pull",
-      "sfx": "step_wood",
-      "why": "The picture for 6.pull starts moving."
-    },
-    {
-      "cue": "6.pull",
       "at": 0.4,
       "sfx": "plink",
       "trim": -2,
@@ -348,13 +343,7 @@
       "sfx": "pop",
       "why": "The picture for 6.twice starts moving."
     },
-    {
-      "cue": "6.twice",
-      "at": 0.4,
-      "sfx": "gust",
-      "trim": -2,
-      "why": "A second thing happens in 6.twice."
-    },
+
     {
       "cue": "7.scream",
       "sfx": "whoosh",
@@ -396,13 +385,7 @@
       "sfx": "thud",
       "why": "The picture for 7.ring starts moving."
     },
-    {
-      "cue": "7.ring",
-      "at": 0.4,
-      "sfx": "swish",
-      "trim": -2,
-      "why": "A second thing happens in 7.ring."
-    },
+
     {
       "cue": "8.back",
       "sfx": "whoosh",
@@ -499,18 +482,7 @@
       "trim": -2,
       "why": "A second thing happens in 9.up."
     },
-    {
-      "cue": "9.end",
-      "sfx": "slide_down",
-      "why": "The picture for 9.end starts moving."
-    },
-    {
-      "cue": "9.end",
-      "at": 0.4,
-      "sfx": "rustle",
-      "trim": -2,
-      "why": "A second thing happens in 9.end."
-    },
+
     {
       "cue": "1.bell",
       "word": "bell",

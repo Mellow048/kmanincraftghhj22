@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Dad, Fill, Hero, Mum, SkyThing, Well, PLACE, DAY, NIGHT, ease, ramp, timing, wordAt } from "./kit";
+import { Dad, Fill, Hero, Mum, SkyThing, DAY, NIGHT, ease, ramp, timing, wordAt } from "./kit";
 
 export const scene4 = storyScene(timing, {
   id: "scene4",
@@ -7,23 +7,23 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.mum",
-      ...cam.push({ on: [10.1, 1.25, -2.9], dist: 3.1, to: 2.2, yaw: 16, pitch: 8, fov: 36 }),
+      ...cam.push({ on: [9.85, 1.25, -2.95], dist: 3.2, to: 2.3, yaw: 78, pitch: 14, fov: 34 }),
       zone: "village",
       look: DAY,
-      note: "She loves him, so she leans her whole weight onto his head and puts it down.",
+      note: "Side on, so her hands land on his head and his chin goes down.",
       stage: (t) => {
-        const push = ease(ramp(t, wordAt("4.mum", "pushed"), wordAt("4.mum", "down") + 0.25));
+        const push = ease(ramp(t, wordAt("4.mum", "hand"), wordAt("4.mum", "down") + 0.2));
         return (
           <>
-            <Mum position={[9.7, 0, -3.5]} lean={0.35 + push * 0.7} nod={push * 0.4} />
-            <Hero position={[10.25, 0, -2.35]} animation={push > 0.45 ? "crouch" : "talk"} face="frown" />
+            <Mum position={[9.5, 0, -3.2]} rotationY={0.75} press={push} />
+            <Hero position={[10.02, 0, -2.72]} animation={push > 0.35 ? "crouch" : "talk"} face="frown" />
           </>
         );
       },
     },
     {
       cue: "4.dad",
-      ...cam.push({ on: [8.9, 1.4, -3.3], dist: 2.5, to: 1.8, yaw: -18, pitch: 4, fov: 34 }),
+      ...cam.push({ on: [8.8, 1.35, -3.45], dist: 2.3, to: 1.65, yaw: -20, pitch: -18, fov: 32 }),
       zone: "village",
       look: DAY,
       note: "Dad, calm, which is worse than angry. The smile is in the voice.",
@@ -44,18 +44,17 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.night",
-      ...cam.push({ on: [-4.2, 2.4, 6.2], dist: 6.4, to: 4.4, yaw: 22, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [-4.4, 2.6, 6.1], dist: 6.6, to: 4.8, yaw: 26, pitch: 10, fov: 42 }),
       zone: "village",
       look: NIGHT,
-      note: "Night. The thing is on the well, and he is the only one awake to hear it.",
+      note: "Night. The thing sits on the well, and he is the only one awake to hear it.",
       stage: (t) => {
         const hear = ease(ramp(t, wordAt("4.night", "heard"), wordAt("4.night", "heard") + 0.3));
         return (
           <>
-            <Fill on={[-2.2, 1.4, 7.2]} yaw={20} power={6} />
-            <Well position={PLACE.well} />
-            <SkyThing position={[-5, 3.4, 5.1]} scale={0.72} legs={8} />
-            <Hero position={[-2.1, 0, 7.3]} animation={hear > 0.4 ? "peek" : "idle"} face="fear" />
+            <Fill on={[-4.6, 3.2, 6.4]} yaw={40} power={8} />
+            <SkyThing position={[-5, 4.55, 5.5]} scale={0.72} legs={8} turn={0.5} reach={0.15} />
+            <Hero position={[-2.2, 0, 7.4]} animation={hear > 0.4 ? "peek" : "idle"} face="fear" />
           </>
         );
       },

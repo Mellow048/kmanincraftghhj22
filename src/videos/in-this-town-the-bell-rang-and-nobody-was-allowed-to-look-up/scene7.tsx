@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, Bell, BellRope, Dad, Friend, Golem, Hero, Mum, PLACE, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
+import { Baker, BellRope, Crowd, Dad, Friend, Golem, Hero, Mum, Puller, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
 
 export const scene7 = storyScene(timing, {
   id: "scene7",
@@ -41,22 +41,24 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.rope",
-      ...cam.push({ on: [0.2, 1.55, -0.8], dist: 3.6, to: 2.5, yaw: 8, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [0.1, 1.7, -1.15], dist: 4.4, to: 3.1, yaw: 18, pitch: 16, fov: 44 }),
       zone: "village",
       look: DAY,
-      note: "The rope, and the square arriving on it. Ten, then twenty, is the picture.",
+      note: "Hands on the rope first. Ten, then twenty, fills the square.",
       stage: (t) => {
         const more = ease(ramp(t, wordAt("7.rope", "twenty"), wordAt("7.rope", "twenty") + 0.3));
         return (
           <>
-            <Bell position={PLACE.bell} />
-            <BellRope pull={0.4} />
-            <Hero position={[-0.35, 0, -0.55]} animation="reachUp" />
-            <Mum position={[0.55, 0, -0.35]} lean={0.15} nod={-0.2} />
-            <Dad position={[1.15, 0, -0.7]} lean={0.1} nod={-0.15} />
-            <Friend position={[-1.05, 0, -0.25]} lean={0.05} nod={-0.25} />
-            <Baker position={[1.7, 0, 0.15]} lean={0.1} nod={-0.2} />
-            {more > 0.4 ? <Golem position={[2.5, 0, 0.8]} bow={-0.1} /> : null}
+            <BellRope pull={0.55} />
+            <Hero position={[-0.35, 0, -1.35]} rotationY={3.1} animation="reachUp" face="brave" />
+            <Puller position={[0.45, 0, -1.2]} rotationY={3.0} tint="#6a8f4a" />
+            <Puller position={[-0.85, 0, -0.95]} rotationY={2.7} tint="#8a5a3a" />
+            <Mum position={[0.85, 0, -0.45]} nod={-0.35} />
+            <Dad position={[1.35, 0, -0.15]} lean={0.05} nod={-0.2} />
+            <Friend position={[-1.2, 0, -0.35]} nod={-0.3} />
+            <Baker position={[1.7, 0, 0.45]} lean={0.05} nod={-0.25} />
+            <Crowd n={more > 0.45 ? 14 : 6} up={1} at={[0.1, 0, 0.35]} />
+            {more > 0.4 ? <Golem position={[2.6, 0, 1.1]} bow={-0.1} /> : null}
           </>
         );
       },
@@ -69,10 +71,7 @@ export const scene7 = storyScene(timing, {
       note: "The bell will not stop, and the thing has turned toward all of them.",
       stage: (t) => (
         <>
-          <group position={PLACE.bell} rotation={[0, 0, Math.sin(t * 16) * 0.1]}>
-            <Bell position={[0, 0, 0]} />
-          </group>
-          <SkyThing position={[1.6, 5.2, -2.8]} scale={1.8} />
+          <SkyThing position={[1.1, 3.8, -2.2]} scale={1.45} turn={-0.35} reach={0.25} />
           <Hero position={[0.1, 0, 0.8]} animation="reachUp" face="brave" />
         </>
       ),

@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, Bell, BellRope, Hero, PLACE, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
+import { Baker, BellRope, Crowd, Hero, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
 
 export const scene6 = storyScene(timing, {
   id: "scene6",
@@ -7,7 +7,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "6.reach",
-      ...cam.push({ on: [0.2, 4.2, -1.6], dist: 5.8, to: 4, yaw: -14, pitch: 18, fov: 44 }),
+      ...cam.push({ on: [0.3, 2.6, -1.2], dist: 6.2, to: 4.4, yaw: -16, pitch: 12, fov: 44 }),
       zone: "village",
       look: DAY,
       note: "A leg reaches for the rope, and one orange kid is still on his feet.",
@@ -15,10 +15,10 @@ export const scene6 = storyScene(timing, {
         const reach = ease(ramp(t, wordAt("6.reach", "rope"), wordAt("6.reach", "rope") + 0.45));
         return (
           <>
-            <SkyThing position={[1.4, 4.8 - reach * 0.6, -2.4]} scale={1.7} />
-            <Bell position={PLACE.bell} />
+            <SkyThing position={[0.7, 3.5, -2.1]} scale={1.4} reach={0.25 + reach * 0.7} turn={-0.15} />
             <BellRope />
             <Hero position={[0.2, 0, 1.5]} animation="reachUp" face="brave" />
+            <Crowd n={5} at={[0.2, 0, 0.7]} />
           </>
         );
       },
@@ -35,26 +35,23 @@ export const scene6 = storyScene(timing, {
           <>
             <Hero position={[-0.4 + run * 2.2, 0, 1.3 - run * 1.4]} animation="run" face="fear" />
             <Baker position={[1.8, 0, 0.3]} lean={1.15} nod={0.7} />
-            <SkyThing position={[0.8, 4.2, -1.8]} scale={1.35} />
+            <SkyThing position={[0.5, 3.4, -1.6]} scale={1.2} reach={0.8} turn={-0.2} />
           </>
         );
       },
     },
     {
       cue: "6.pull",
-      ...cam.push({ on: [0.15, 1.5, -1.15], dist: 2.4, to: 1.6, yaw: 16, pitch: 8, fov: 34 }),
+      ...cam.push({ on: [0.15, 1.45, -1.7], dist: 2.3, to: 1.55, yaw: 72, pitch: 6, fov: 32 }),
       zone: "village",
       look: DAY,
-      note: "His hands are on the rope before the leg gets there, and he pulls.",
+      note: "Side on: his hands meet the rope, and the rope goes down.",
       stage: (t) => {
         const pull = ease(ramp(t, wordAt("6.pull", "pulled"), wordAt("6.pull", "pulled") + 0.35));
         return (
           <>
-            <Hero position={[0.2, 0, -0.85]} animation="reachUp" face="brave" />
+            <Hero position={[0.22, 0, -1.55]} rotationY={3.14} animation="reachUp" face="brave" />
             <BellRope pull={pull} />
-            <group position={PLACE.bell} rotation={[0, 0, Math.sin(pull * 12) * 0.08]}>
-              <Bell position={[0, 0, 0]} />
-            </group>
           </>
         );
       },
@@ -70,10 +67,10 @@ export const scene6 = storyScene(timing, {
         const bow = 1.15 * (1 - up);
         return (
           <>
-            <Bell position={PLACE.bell} />
             <Hero position={[0.2, 0, 1.1]} animation="reachUp" />
             <Baker position={[1.8, 0, 0.8]} lean={bow} nod={bow * 0.5} />
-            <SkyThing position={[1.5, 8, -3]} scale={1.2} />
+            <Crowd n={8} up={up} at={[0.2, 0, 0.5]} />
+            <SkyThing position={[1.2, 4.2, -2.4]} scale={0.85} turn={0.3} />
           </>
         );
       },

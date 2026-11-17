@@ -21,11 +21,11 @@ The hook is a law and a kid already breaking it. The bell rings once a day. The 
 - 3.again: The next day I looked up again. It was closer.
 - 3.roof: One leg was on the baker's roof. The baker had his face in his bread.
 - 3.tell: I grabbed my friend. "Look up. Please look up."
-- 3.wont: He would not. He shut his eyes and sang the town song.
+- 3.wont: He would not. He put his hands over his eyes and sang the town song.
 
 ## 4. The rule, again
 
-- 4.mum: I told my mum. She pushed my head down.
+- 4.mum: I told my mum. She put a hand on my head and pushed it down.
 - 4.dad: My dad said, "The bell keeps us. Do not make it ring twice."
 - 4.why: "Keeps us from what?" He smiled. He did not answer.
 - 4.night: That night I could not sleep. The thing was on the well. I heard it.
@@ -48,7 +48,7 @@ The hook is a law and a kid already breaking it. The bell rings once a day. The 
 
 - 7.scream: My mum screamed. My friend stopped singing.
 - 7.run: Everybody ran. Not away. Toward the tower.
-- 7.rope: All of us on the rope. Ten of them. Then twenty.
+- 7.rope: Hands on the rope. Ten of them. Then twenty.
 - 7.ring: The bell did not stop. The thing hated it. It hated all of us now.
 
 ## 8. It left
@@ -83,10 +83,10 @@ The hook is a law and a kid already breaking it. The bell rings once a day. The 
 [3.again] The next day I looked up again. It was closer.
 [3.roof] One leg was on the baker's roof. The baker had his face in his bread.
 [3.tell] I grabbed my friend. "Look up. Please look up."
-[3.wont] He would not. He shut his eyes and sang the town song.
+[3.wont] He would not. He put his hands over his eyes and sang the town song.
 
 # clip 04-rule
-[4.mum] I told my mum. She pushed my head down.
+[4.mum] I told my mum. She put a hand on my head and pushed it down.
 [4.dad] My dad said, "The bell keeps us. Do not make it ring twice."
 [4.why] "Keeps us from what?" He smiled. He did not answer.
 [4.night] That night I could not sleep. The thing was on the well. I heard it.
@@ -106,7 +106,7 @@ The hook is a law and a kid already breaking it. The bell rings once a day. The 
 # clip 07-saw2
 [7.scream] My mum screamed. My friend stopped singing.
 [7.run] Everybody ran. Not away. Toward the tower.
-[7.rope] All of us on the rope. Ten of them. Then twenty.
+[7.rope] Hands on the rope. Ten of them. Then twenty.
 [7.ring] The bell did not stop. The thing hated it. It hated all of us now.
 
 # clip 08-left

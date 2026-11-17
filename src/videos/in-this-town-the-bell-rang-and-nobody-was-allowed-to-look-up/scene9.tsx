@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, Bell, Friend, Golem, Hero, Mum, PLACE, SubscribeSign, DAY, ease, pop, ramp, timing, wordAt } from "./kit";
+import { Baker, Crowd, Friend, Golem, Hero, Mum, SubscribeSign, DAY, ease, pop, ramp, timing, wordAt } from "./kit";
 
 export const scene9 = storyScene(timing, {
   id: "scene9",
@@ -31,15 +31,11 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.bell",
-      ...cam.push({ on: [0, 2.4, -2.2], dist: 4.6, to: 3.2, yaw: 10, pitch: 8, fov: 38 }),
+      ...cam.push({ on: [0.1, 2.15, -1.4], dist: 3.6, to: 2.6, yaw: 8, pitch: -24, fov: 36 }),
       zone: "village",
       look: DAY,
-      note: "The bell, once, the way it always rang. Nobody drops.",
-      stage: (t) => (
-        <group position={PLACE.bell} rotation={[0, 0, Math.sin(t * 9) * 0.07]}>
-          <Bell position={[0, 0, 0]} />
-        </group>
-      ),
+      note: "From under the bell, looking up. It rings. Nobody drops.",
+      stage: () => <Hero position={[0.35, 0, 0.4]} animation="reachUp" face="brave" />,
     },
     {
       cue: "9.up",
@@ -53,6 +49,7 @@ export const scene9 = storyScene(timing, {
           <Friend position={[0.4, 0, 1.55]} nod={-0.5} />
           <Hero position={[1.8, 0, 1.3]} animation="reachUp" face="grin" />
           <Golem position={[3.6, 0, 2.1]} bow={-0.35} />
+          <Crowd n={7} up={1} at={[0.6, 0, 0.5]} />
         </>
       ),
     },
@@ -64,10 +61,10 @@ export const scene9 = storyScene(timing, {
       note: "The bell, the town looking up, and the sign. The picture stays the story.",
       stage: (t) => (
         <>
-          <Bell position={PLACE.bell} />
           <Hero position={[0.35, 0, 1.6]} animation="reachUp" face="brave" />
           <Mum position={[-1.2, 0, 1.3]} nod={-0.4} />
-          <SubscribeSign position={[0.3, 2.55, 0.2]} scale={0.42 * pop(t, 0.2)} />
+          <Crowd n={5} up={1} at={[0.2, 0, 0.3]} />
+          <SubscribeSign position={[1.55, 0.85, 1.35]} scale={0.34 * pop(t, 0.35)} />
         </>
       ),
     },

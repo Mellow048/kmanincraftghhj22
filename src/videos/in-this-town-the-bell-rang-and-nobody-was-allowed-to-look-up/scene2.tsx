@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, Bell, Hero, PLACE, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
+import { Baker, Hero, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
 
 export const scene2 = storyScene(timing, {
   id: "scene2",
@@ -7,26 +7,21 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.big",
-      ...cam.push({ on: [0.4, 8, -3], dist: 11, to: 8, yaw: 18, pitch: 12, fov: 50 }),
+      ...cam.push({ on: [0.6, 3.6, -2.4], dist: 11.5, to: 9, yaw: 74, pitch: 12, fov: 46 }),
       zone: "village",
       look: DAY,
-      note: "The thing and the bell tower in one frame, so bigger is a measurement.",
-      stage: () => (
-        <>
-          <Bell position={PLACE.bell} />
-          <SkyThing position={[1.2, 9, -4]} scale={2.4} legs={9} />
-        </>
-      ),
+      note: "Side on: the thing and the bell in one frame, so bigger is a measurement.",
+      stage: () => <SkyThing position={[1.6, 4.4, -2.5]} scale={1.85} legs={9} turn={1.35} />,
     },
     {
       cue: "2.slow",
-      ...cam.orbit({ on: [1, 8, -4], dist: 8, yaw: -36, yawTo: 28, pitch: 14, fov: 42 }),
+      ...cam.orbit({ on: [0.6, 3.4, -1.2], dist: 7.2, yaw: -40, yawTo: 30, pitch: 10, fov: 42 }),
       zone: "village",
       look: DAY,
-      note: "A slow orbit. It is not chasing him. That is worse.",
+      note: "A slow orbit. He is small under it. It is not chasing him.",
       stage: () => (
         <>
-          <SkyThing position={[1, 7.5, -4]} scale={2} />
+          <SkyThing position={[0.8, 3.8, -1.6]} scale={1.55} turn={0.4} />
           <Hero position={[0.3, 0, 2.4]} animation="reachUp" face="fear" />
         </>
       ),

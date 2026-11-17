@@ -5,10 +5,10 @@
   "seconds": 103.8667,
   "built_from": {
     "timing.json": "399c38f0ed9059e7ff6f598a686eab3aec2298bf",
-    "sound.json": "fda596faf25db996835977bcae78e31b06ad877f",
+    "sound.json": "b093fba2502a1ca849d4951f5caa8a357b0b15fe",
     "narration.mp3": "33bbc99ad905e69907a902cf9d8a25b14340e321"
   },
-  "mix_sha1": "a68be18b717987f94ecfd9fc0568ee6e2ca4cb7b",
+  "mix_sha1": "46b096542de4a69c87e0baa49e397267e9fb5328",
   "music_sections": [
     {
       "from": "1.bell",
@@ -60,12 +60,12 @@
     "musicUnderVoiceDb": 17.8,
     "secondsWithoutMusic": 0.4,
     "bedsUnderVoiceDb": 26.0,
-    "sfx": 81,
-    "sfxPerMinute": 46.8,
+    "sfx": 76,
+    "sfxPerMinute": 43.9,
     "sfxKinds": 23,
-    "longestGapSeconds": 4.0,
+    "longestGapSeconds": 4.4,
     "longestGapAt": 61.9,
-    "sfxBuried": 4,
+    "sfxBuried": 0,
     "voiceOverRestMedianDb": 16.2,
     "voiceOverRestWorstDb": 3.5,
     "voiceOverRestWorst": [
@@ -76,7 +76,7 @@
         "sounding": []
       },
       {
-        "db": 4.1,
+        "db": 4.2,
         "t": 99.4,
         "cue": "9.up",
         "sounding": [
@@ -107,19 +107,17 @@
         "sounding": []
       },
       {
-        "db": 7.9,
-        "t": 102.5,
-        "cue": "9.end",
+        "db": 8.5,
+        "t": 94.8,
+        "cue": "9.new",
         "sounding": [
-          "ding",
-          "rustle",
-          "slide_down"
+          "crack"
         ]
       }
     ],
-    "lufs": -14.8,
+    "lufs": -14.7,
     "truePeakDb": -2.2,
-    "limiterMaxDb": 0.6
+    "limiterMaxDb": 0.7
   },
   "failures": []
 }
