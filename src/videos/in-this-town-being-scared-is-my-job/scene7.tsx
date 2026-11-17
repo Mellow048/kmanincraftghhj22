@@ -22,7 +22,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.quiet",
       ...cam.push({ on: [0.3, 1.2, 0.6], dist: 13.5, to: 12.5, yaw: 24, pitch: 14, fov: 46 }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "The platform, wide. Three villagers in three rooms, a zombie in a boat, a zombie on a rope with nobody holding the rope, an iron man, and an empty bucket on its side at the edge. Nobody moves.",
       stage: (t) => (
         <>
@@ -41,7 +41,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.broke",
       ...cam.push({ on: [0.5, 1.5, -0.9], dist: 6.6, to: 5.8, yaw: 198, pitch: 8, fov: 46 }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "From the north. One iron fist goes through the back of the glass room and the whole pane comes down in bits. The iron man steps aside. The villager walks out over the glass.",
       stage: (t) => {
         const hit = w("7.broke", "broke") - 0.05;
@@ -64,7 +64,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.legs",
       ...cam.push({ on: [0.2, 1.1, 2.4], onTo: [0.95, 0.85, 2.6], dist: 5.6, to: 4.2, yaw: 30, pitch: 7, fov: 46 }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "Kevin stands up in his boat, steps out of it, and his legs go in two different directions. He ends up sitting on the stone beside it, pleased with himself.",
       stage: (t) => {
         const fall = w("7.legs", "legs") - 0.05;
@@ -85,7 +85,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.follow",
       ...cam.truck({ on: [1.3, 1.1, WZ + 1.3], dist: 3.1, yaw: 20, pitch: 8, fov: 46, by: [4.0, 0, 0] }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "The villager walks along the edge of the channel, the way the water runs, and the lens goes with him. He is looking ahead, and he is hopeful.",
       stage: (t, { p }) => (
         <>
@@ -98,7 +98,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.end",
       ...cam.push({ on: [END[0] - 0.1, 0.7, WZ + 0.5], dist: 6.0, to: 5.0, yaw: 14, pitch: 34, fov: 44 }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "The end of the channel, from above. The water runs over a lip and into a square hole, and the hole is orange and bright. He stands at the brink of it with the light coming up on his face.",
       stage: (t) => (
         <>
@@ -124,7 +124,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.count",
       ...cam.push({ on: [2.3, 1.9, 0.3], dist: 4.6, to: 3.8, yaw: 8, pitch: 5, fov: 44 }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "Barb, and the number over her head. It turns back by one: 911. She takes her eyes off it.",
       stage: (t) => (
         <>
@@ -138,7 +138,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.job",
       ...cam.push({ on: [BRINK[0], 1.5, BRINK[2]], dist: 3.4, to: 2.9, yaw: 196, pitch: 4, fov: 42 }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "His face at the brink, lit orange from underneath. He looks up from the fire, at us.",
       stage: (t) => (
         <>
@@ -151,7 +151,7 @@ export const scene7 = storyScene(timing, {
       cue: "7.parts",
       ...cam.push({ on: [1.4, 0, -1.2], dist: 19, to: 16.5, yaw: 20, pitch: 46, fov: 44 }),
       zone: "farm",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "The whole platform from high above, and from here it is plain what it is: three boxes with a villager in each, a zombie for them to look at, a pad, a channel, a fire, a pipe. Not a town. A machine.",
       stage: () => (
         <>

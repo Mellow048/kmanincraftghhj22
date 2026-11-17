@@ -1,10 +1,9 @@
 # Narration — In This Town, Being Scared Is My Job
 
-**Status: WRITTEN IN AUTOMATIC MODE (2026-11-16), NOT RECORDED YET.** The owner did not review this script, at his own
-word ("i wont be reviewing the scripts i will put you on automatic mode lad, 5 videos"). The voice tool allows ten
-clips in one turn and films 1 and 2 used them, so `timing.json` here is an ESTIMATE (`narration.py build --estimate`).
-Record the three clips below with the same voice as films 1 and 2, then build without `--estimate`. It is film 3 of
-the five (idea 2 in `Topics/InThisTown/outlines/ideas-2026-11-16.md`).
+**Status: RECORDED AND BUILT (2026-11-17).** Written in automatic mode on 2026-11-16: the owner did not review this
+script before it was built. Three clips, the same voice as films 1 and 2, tempo 1.38: 71 shots, 573 words, 143.1 s.
+It is film 3 of the five from `Topics/InThisTown/outlines/ideas-2026-11-16.md`. Reviewed against
+`Topics/InThisTown/MASTERPROMPT.md` in `REVIEW.md`.
 
 Topic: `Topics/InThisTown`. Middle cut. Part 1: it ends on a cliffhanger.
 

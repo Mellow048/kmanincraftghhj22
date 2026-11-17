@@ -46,9 +46,9 @@
         "why": "The bucket goes up."
       },
       {
-        "from": "5.bye",
+        "from": "6.scared",
         "mood": "none",
-        "why": "Silence before the first real scream."
+        "why": "No music for the breath before the first real scream."
       },
       {
         "from": "6.glass",
@@ -74,8 +74,9 @@
       },
       {
         "from": "7.end",
-        "mood": "none",
-        "why": "The fire. No music under the truth."
+        "mood": "dark",
+        "why": "The truth, and it is bad: the water ends in fire. Low, and under the voice.",
+        "gain": -5
       },
       {
         "from": "8.gave",
@@ -484,13 +485,15 @@
     {
       "cue": "2.talk",
       "sfx": "swish",
-      "why": "The three of them, from the front."
+      "why": "The three of them, from the front.",
+      "trim": 3
     },
     {
       "cue": "2.talk",
       "at": 0.3,
       "sfx": "swish",
-      "why": "All three look away at once."
+      "why": "All three look away at once.",
+      "trim": 3
     },
     {
       "cue": "2.talk",
@@ -499,7 +502,7 @@
       "sfx": "slide_up",
       "dur": 0.5,
       "pitch": 1.5,
-      "trim": -3,
+      "trim": 0,
       "why": "And whistle at the sky."
     },
     {
@@ -572,7 +575,8 @@
       "sfx": "step_stone",
       "repeat": 2,
       "every": 0.3,
-      "why": "He walks up to the chest."
+      "why": "He walks up to the chest.",
+      "trim": 3
     },
     {
       "cue": "2.boss",
@@ -806,7 +810,7 @@
       "cue": "3.gary",
       "at": 0.15,
       "sfx": "hit",
-      "trim": -5,
+      "trim": 0,
       "why": "The knock under the scream."
     },
     {
@@ -824,7 +828,7 @@
       "word": "both",
       "at": 0.0,
       "sfx": "hit",
-      "trim": -7,
+      "trim": -2,
       "why": "The knock under the scream."
     },
     {
@@ -1527,7 +1531,8 @@
       "sfx": "slide_down",
       "dur": 1.6,
       "pitch": 0.8,
-      "why": "A small red shirt, getting smaller."
+      "why": "A small red shirt, getting smaller.",
+      "trim": -3
     },
     {
       "cue": "6.long",
@@ -1558,7 +1563,8 @@
       "word": "us",
       "at": 0.1,
       "sfx": "tick",
-      "why": "Nobody moves."
+      "why": "Nobody moves.",
+      "trim": 3
     },
     {
       "cue": "7.broke",
@@ -1763,7 +1769,7 @@
       "word": "machine",
       "at": -0.1,
       "sfx": "sting",
-      "trim": -2,
+      "trim": -7,
       "why": "Not a town. A machine."
     },
     {

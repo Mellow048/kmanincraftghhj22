@@ -170,6 +170,8 @@ def find_raw(slug: str, clip: str):
 # captions drift off the voice. Add a word here when `build` says it does not know it.
 SAY = {
     "pickaxe": "P IH K AE K S",
+    "urr": "ER",
+    "eep": "IY P",
     "creeper": "K R IY P ER",
     "purred": "P ER D",
     "purr": "P ER",
