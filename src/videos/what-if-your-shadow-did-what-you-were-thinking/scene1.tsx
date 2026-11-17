@@ -71,7 +71,9 @@ export const scene1 = storyScene(timing, {
       // at the SHADOW's own height on the board (WALL is the foot of it): the waving figure fills frame one, and he is
       // the small dark thing at the bottom edge.
       // He is turned away, so we read the shadow - the wrong one of the two - first.
-      ...cam.push({ on: WALL, dist: 3.2, to: 2.85, yaw: 8, pitch: 1, fov: 42 }),
+      // WALL is the FOOT of the board; aiming at it put the lens on the floor at the skirting board. Aim at the
+      // shadow's own chest, 0.85 m up the wall, and stand back far enough for the whole figure to fit.
+      ...cam.push({ on: SPOT.at(0, 0.85, -3.885), dist: 2.6, to: 2.35, yaw: 10, pitch: 2, fov: 42 }),
       zone: "class",
       note: "The question, over the picture that answers it: the teller standing in front of the board, and on the board behind him a flat black shadow with its arm up, waving. It is his size, it is in the right place, and it is doing the one thing he is not.",
       stage: (t) => (
