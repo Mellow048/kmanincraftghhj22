@@ -80,9 +80,14 @@ export const PaperHat: React.FC = () => (
 export const MapSheet: React.FC<{ position?: Vec3; rotation?: Vec3; big?: number }> = ({ position = [0, 0, 0], rotation = [0.4, 0, 0], big = 1 }) => (
   <group position={position} rotation={rotation} scale={big}>
     <Block position={[0, 0, 0]} size={[0.52, 0.02, 0.68]} color="#f3e6c4" />
-    <Block position={[0, 0.02, 0]} size={[0.34, 0.02, 0.07]} rotation={[0, 0.78, 0]} color="#c0392b" />
-    <Block position={[0, 0.025, 0]} size={[0.34, 0.02, 0.07]} rotation={[0, -0.78, 0]} color="#e74c3c" />
-    <Block position={[-0.14, 0.02, 0.18]} size={[0.12, 0.012, 0.014]} color="#3d6ea8" />
+    {/* Both faces. The hand flips the sheet, and the X has to survive that. */}
+    {[0.03, -0.03].map((y) => (
+      <group key={y} position={[0, y, 0]}>
+        <Block position={[0, 0, 0]} size={[0.36, 0.012, 0.08]} rotation={[0, 0.78, 0]} color="#c0392b" />
+        <Block position={[0, 0, 0]} size={[0.36, 0.012, 0.08]} rotation={[0, -0.78, 0]} color="#e74c3c" />
+      </group>
+    ))}
+    <Block position={[-0.14, 0.03, 0.2]} size={[0.12, 0.01, 0.016]} color="#3d6ea8" />
   </group>
 );
 
@@ -216,10 +221,8 @@ export const Kraken: React.FC<{ position?: Vec3; rise?: number; arms?: number }>
 /** A dark patch on the water, wider than the hull, with an edge the night sea does not have. */
 export const SeaShadow: React.FC<{ position?: Vec3; spread?: number }> = ({ position = [0, 0, 0], spread = 1 }) => (
   <group position={position} scale={[spread, 1, spread]}>
-    <Block position={[0, 0, 0]} size={[6.4, 0.05, 7.2]} color="#07111c" />
-    <Block position={[0, 0.04, 0]} size={[5.2, 0.05, 5.8]} color="#020308" />
-    <Block position={[1.5, 0.05, 0.8]} size={[2.2, 0.04, 2.4]} color="#020308" />
-    <Block position={[-1.3, 0.05, -0.6]} size={[1.8, 0.04, 2.2]} color="#020308" />
+    <Block position={[0, 0, 0]} size={[4.6, 0.04, 3.8]} color="#2a5070" />
+    <Block position={[0, 0.05, 0]} size={[3.9, 0.05, 3.1]} color="#020308" />
   </group>
 );
 
