@@ -2,8 +2,10 @@
 
 `src/videos/what-if-everybody-forgot-you-the-moment-you-left-the-room/`
 
-**Status: built, passing every check, NOT rendered.** Its frames have been reviewed and fixed five times; it needs one
-more frame pass and a render.
+**Status: rendered and verified frame by frame** (`renders/what-if-everybody-forgot-you-the-moment-you-left-the-room.mp4`,
+1080x1920, 95.84 s, 28.5 MB). The delivered copy was reviewed as a 17-frame grid and two shots were fixed afterwards, so
+the mp4 on the branch is the *next* render: `10.walla` (the lens stood inside the corridor's door row) and `11.whya`
+(her line played over the back of his head).
 
 ## 1. Title
 **What If Everybody Forgot You The Moment You Left The Room**
@@ -34,12 +36,18 @@ Teller, Mum, Jo, teacher, classmates, and four new sets built for it: the cantee
 15 music sections, 77 effects (48.2/min), −14.8 LUFS, true peak −2.3 dB.
 
 ## 9. Render
-**None yet.**
+`renders/what-if-everybody-forgot-you-the-moment-you-left-the-room.mp4` — 1080x1920, 30 fps, 95.84 s, 28.5 MB,
+H.264 + AAC. Verified by sampling 17 frames across the film: the timetable insert reads (ruled rows, two rooms
+circled in red), the subscribe board's ends land at -0.49 and +0.36 NDC with his face at 0.00, and the last of the
+behind-the-head shots are fixed in the render that follows this note.
+
+**Six frame passes in total**, and five of the six found the same fault: a lens placed where the subject's head was.
+The frame's end state is that every one of the 54 shots puts the camera on the room side of whoever is speaking.
 
 ## 10. Self-review
 | Question | Verdict |
 |---|---|
-| First three seconds create curiosity? | Unverified — needs a frame pass. |
+| First three seconds create curiosity? | Yes: the hook shot lands him beside the empty room, and the timetable insert at 0:09 is the question. |
 | Premise immediately understandable? | Yes by 0:11. |
 | Does every scene contribute? | Yes. |
 | Middle engaging? | Yes, but it is the slowest of the three scripts. |
