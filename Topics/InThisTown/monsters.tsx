@@ -147,6 +147,8 @@ export const Zombie: React.FC<
     baby?: boolean;
     /** Pose the two arms yourself, radians, [−X arm, +X arm]: 0 hangs, −1.5 is straight out in front, −3 is straight up. Overrides `arms` and `wave`. */
     armPitch?: [number, number];
+    /** Anything worn on the head (a helmet). It is drawn in the head's own space: the head is a cube 8 `U` wide whose middle is 4 `U` up, and it turns with the head. */
+    headwear?: React.ReactNode;
   }
 > = ({
   position = [0, 0, 0],
@@ -169,6 +171,7 @@ export const Zombie: React.FC<
   wave: waveIn = 0,
   baby = false,
   armPitch,
+  headwear,
 }) => {
   const wave = Math.max(0, Math.min(1, waveIn));
   const t = useFilmTime();
@@ -217,6 +220,7 @@ export const Zombie: React.FC<
           <Block position={[0, 2.9 * u, 4.05 * u]} size={[2 * u, 1 * u, 0.1 * u]} color={shade(skin, -0.2)} castShadow={false} />
           <Mouth mood={mood} y={1.4 * u} z={4.05 * u} color={dark} />
           <Hat hat={hat} top={8 * u} />
+          {headwear}
         </group>
       </group>
     </group>
