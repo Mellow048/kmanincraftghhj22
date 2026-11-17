@@ -1,5 +1,6 @@
 import { cam, storyScene } from "../../engine";
-import { Baker, BellRope, Crowd, Friend, Golem, Hero, Mum, SkyHole, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
+import { ROBE, Villager } from "../../../Topics/InThisTown";
+import { Baker, BellRope, Crowd, Friend, Golem, Hero, SkyHole, SkyThing, DAY, ease, ramp, timing, wordAt } from "./kit";
 
 /** The law, already broken, in the first second. */
 export const scene1 = storyScene(timing, {
@@ -17,9 +18,9 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <BellRope />
-            <Hero position={[0.25, 0, 1.15]} animation="reachUp" face="wow" />
-            <Mum position={[-1.45, 0, 0.55]} lean={1.1} />
-            <Baker position={[1.55, 0, 0.4]} lean={1.2} nod={0.75} />
+            <Hero position={[0.2, 0, 1.05]} animation="reachUp" face="wow" />
+            <Villager position={[-1.25, 0, 0.72]} robe={ROBE.red} lean={1.25} nod={0.85} />
+            <Baker position={[1.2, 0, 0.62]} lean={1.25} nod={0.85} />
             <Golem position={[2.55, 0, 1.35]} bow={1.15} />
             <Crowd n={6} at={[0.1, 0, 0.15]} />
             <SkyThing position={[0.05, 4.15, -3.05]} scale={1.15} legs={8} reach={leg} />
@@ -52,16 +53,16 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.saw",
-      ...cam.push({ on: [0, 9.2, -0.4], dist: 8.2, to: 6.4, yaw: 8, pitch: -18, fov: 46 }),
+      ...cam.push({ on: [0, 8.4, 1.2], dist: 9.5, to: 7.6, yaw: 4, pitch: -14, fov: 48 }),
       zone: "village",
       look: DAY,
-      note: "Looking up into open sky: a dark mouth, and the thing already climbing out of it.",
+      note: "Open sky through the ring, and the thing climbing out of that ring.",
       stage: (t) => {
         const climb = ease(ramp(t, wordAt("1.saw", "climbing"), wordAt("1.saw", "climbing") + 0.8));
         return (
           <>
-            <SkyHole position={[0, 11.4, -0.6]} />
-            <SkyThing position={[0.1, 8.6 - climb * 1.4, -0.15]} scale={1.2} legs={9} reach={0.15 + climb * 0.45} />
+            <SkyHole position={[0, 10.2, -0.2]} open={1} />
+            <SkyThing position={[0.05, 7.4 - climb * 1.1, 0.15]} scale={0.95} legs={8} reach={0.2 + climb * 0.4} />
           </>
         );
       },

@@ -36,7 +36,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.gone",
-      ...cam.push({ on: [0, 10.5, 0.2], dist: 7.5, to: 9.5, yaw: 4, pitch: -16, fov: 44 }),
+      ...cam.push({ on: [0, 9.2, 0.4], dist: 8.5, to: 10.5, yaw: 2, pitch: -6, fov: 44 }),
       zone: "village",
       look: DAY,
       note: "Open sky. The mouth closes. No roof behind it.",

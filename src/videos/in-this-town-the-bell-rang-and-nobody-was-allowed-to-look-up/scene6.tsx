@@ -42,15 +42,15 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.pull",
-      ...cam.push({ on: [0.05, 1.7, -2.05], dist: 3.6, to: 2.6, yaw: 28, pitch: 10, fov: 34 }),
+      ...cam.push({ on: [0.15, 1.55, -1.85], dist: 2.5, to: 1.85, yaw: 36, pitch: 12, fov: 32 }),
       zone: "village",
       look: DAY,
-      note: "His raised hand, the rope, and the bell, all in one frame.",
+      note: "Close: his raised hand meets the hanging rope, and the bell is in the same frame.",
       stage: (t) => {
         const pull = ease(ramp(t, wordAt("6.pull", "pulled"), wordAt("6.pull", "pulled") + 0.35));
         return (
           <>
-            <Hero position={[0.35, 0, -1.15]} rotationY={3.05} animation="reachUp" face="brave" />
+            <Hero position={[0.28, 0, -1.55]} rotationY={3.1} animation="reachUp" face="brave" />
             <BellRope pull={pull} />
           </>
         );

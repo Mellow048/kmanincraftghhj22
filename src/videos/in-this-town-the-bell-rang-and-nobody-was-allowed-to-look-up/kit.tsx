@@ -184,15 +184,16 @@ export const SkyThing: React.FC<{ position?: Vec3; scale?: number; legs?: number
   );
 };
 
-/** A dark mouth with a stone rim. From below it is a hole, not a platform. */
+/** A ring with nothing in the middle. Sky shows through it, so it is a hole and not a platform. */
 export const SkyHole: React.FC<{ position?: Vec3; open?: number }> = ({ position = [0, 8, -6], open = 1 }) => (
-  <group position={position} scale={[1, 1, 1]} rotation={[0.15, 0.2, 0]}>
-    <group scale={Math.max(0.08, open)}>
-      <Vox kind="obsidian" position={[0, 0, 0]} size={[4.4, 0.22, 3.3]} />
-      {Array.from({ length: 12 }).map((_, i) => {
-        const a = (i / 12) * Math.PI * 2;
-        return <Vox key={i} kind="stone" tint="#b7bcc4" position={[Math.cos(a) * 2.55, 0.16, Math.sin(a) * 1.9]} size={[0.62, 0.32, 0.62]} />;
-      })}
-    </group>
+  <group position={position} rotation={[0.55, 0.15, 0.08]} scale={Math.max(0.06, open)}>
+    {Array.from({ length: 16 }).map((_, i) => {
+      const a = (i / 16) * Math.PI * 2;
+      return <Vox key={i} kind="obsidian" position={[Math.cos(a) * 2.15, Math.sin(a) * 0.22, Math.sin(a) * 1.55]} size={[0.78, 0.42, 0.78]} />;
+    })}
+    {Array.from({ length: 16 }).map((_, i) => {
+      const a = (i / 16) * Math.PI * 2 + 0.2;
+      return <Vox key={`r${i}`} kind="stone" tint="#d0d4da" position={[Math.cos(a) * 2.7, 0.15, Math.sin(a) * 1.95]} size={[0.48, 0.26, 0.48]} />;
+    })}
   </group>
 );
