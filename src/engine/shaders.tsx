@@ -213,8 +213,10 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
     if (composer.renderTarget2) composer.renderTarget2.samples = 4;
 
     const render = new RenderPass(scene, camera);
+    // Bloom runs at half resolution: the pass blurs it anyway, and at 1080x1920
+    // in software GL the full-size chain was heavy enough to fail a CI render.
     const bloom = new UnrealBloomPass(
-      new THREE.Vector2(size.width, size.height),
+      new THREE.Vector2(Math.max(1, Math.round(size.width / 2)), Math.max(1, Math.round(size.height / 2))),
       cfg.bloom,
       cfg.radius,
       cfg.threshold,
