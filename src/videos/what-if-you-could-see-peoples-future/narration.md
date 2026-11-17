@@ -1,10 +1,11 @@
 # Narration — What If You Could See People's Future
 
-**Status: SCRIPT APPROVED, VOICE RECORDED. The picture is being built.** The owner approved this script on
+**Status: SCRIPT APPROVED, VOICE RECORDED, PICTURE BUILT, SOUND BUILT.** The owner approved this script on
 2026-11-13 ("yes both go", to the two scripts that were put to him together). The six clips are recorded with
 `voice-00` (`public/audio/what-if-you-could-see-peoples-future/raw/`) and the film's clock is measured from them
-(`timing.json`): 115.7 seconds, 254 words a minute. Changing a word now means recording that clip again and
-rebuilding the timing.
+(`timing.json`): 115.7 seconds, 254 words a minute. The custom sound sheet and mix are built, and the mechanical
+checks pass. Five diagnostic stills have been reviewed; no full MP4 has been rendered. Changing a word now means
+recording that clip again and rebuilding the timing.
 
 Topic: `Topics/WhatIf`. Read `Topics/WhatIf/SCRIPT.md` before changing a word. The reference film, to build like
 and never to retell: `Topics/WhatIf/reference/crush/`.
@@ -177,9 +178,34 @@ yard):
 [14.sub]      Subscribe. The one standing behind you already has.
 ```
 
-## Two endings that were not written
+## AS BUILT PICTURES (57 shots, 115.7 s, 254 wpm)
 
-- **He causes it.** Everything the teller does to pull Max away from Ruby is what makes him poor: the future he
-  saw was the one he was about to make. True to the power, and a sad film.
-- **She says yes.** On the thirteenth try Ruby gives in, and the man behind Max gets worse, not better: he had
-  never wanted her, only the yes. Clever, and unfair to Ruby.
+The film now has one scene file per beat (`scene1.tsx` through `scene14.tsx`), with one timed shot for every cue.
+
+- **1 — The question** (`1.what`, `1.me`): Max carries flowers in the hall; a shoeless, ragged grown-up Echo stands behind him.
+- **2 — The rule** (`2.hall`, `2.older`): two classmates each have a grown-up Echo behind them; then one child and future move together down the lockers.
+- **3 — The examples** (`3.painter`–`3.why`): palette-and-brush painter, sleeping future at a desk, pirate hat and patch, then the teller's puzzled close-up.
+- **4 — The fun** (`4.star`–`4.cow`): football-star future signs the teller's shirt, the teller helps the smallest kid, and that child's future lifts a cow.
+- **5 — Max** (`5.max`–`5.ruby`): the teller finds Max, reveals the ragged coat and bare feet, sees Max's three-bike repair, then makes his first guess about Ruby.
+- **6 — The repeated no** (`6.asked`–`6.light`): Ruby says no; Max's gift grows, the future loses its coat, and boots return while Max repairs the teller's bike chain. The teller blames the light.
+- **7 — The bear** (`7.told`–`7.coat`): the warning, Max's rush, the toolbox traded for a door-sized bear, Ruby's twelfth no, and the coat disappearing.
+- **8 — The lie** (`8.lie`–`8.side`): the teller whispers the lie; Max repairs a locker; boots appear on the future; Ruby denies the boyfriend, and Max confronts the teller.
+- **9 — Ruby's future** (`9.ruby`–`9.moon`): Ruby asks the teller to make Max hear her no; her own astronaut Echo appears, then she walks away from the bear.
+- **10 — Friday** (`10.bike`–`10.table`): Max sells his bike for a necklace, the future sits with a cup, and Max climbs onto the table to ask Ruby.
+- **11 — The public no** (`11.no`, `11.worse`): in the lunchroom, Ruby says no with her astronaut future behind her; Max lowers the necklace and nobody laughs.
+- **12 — The empty rack** (`12.rack`–`12.chain`): Max sits beside the empty rack; the teller remembers the boots and offers his broken bike and wrench.
+- **13 — The reveal** (`13.look`–`13.hand`): Max kneels to repair the chain; the future stands, gains a clean coat and boots, and a MAX workshop; coins are secondary to the wrench.
+- **14 — The button** (`14.nine`–`14.sub`): Max repairs bikes, Ruby returns as a customer with her astronaut future, and the teller ends on the red subscribe sign.
+
+## SOUND AND RENDER NOTES
+- Sound: custom sheet built; 9 music sections, 5 beds and 107 effects (55.5/min). The mix measures −14.8 LUFS / −1.1 dB true peak; median voice-over-rest is 15.8 dB. All effect anchors and the film's mechanical sound checks pass.
+- The mix was measured, **not listened to**. Please listen once on a phone speaker.
+- Validation: `npm run typecheck` and `npm run check` pass (57/57 shots).
+- Visual review: five diagnostic stills reviewed after the staging pass; no full MP4 has been rendered.
+
+## WHAT WAS LEFT IN
+- The ending: Max is saved by being handed a broken bike (not talked out of Ruby).
+- Ruby is never mean; she says no clearly, and her own future is an astronaut.
+- The names are Max and Ruby; the teller has no name.
+- The power remains the same translucent grown-up Echo; the change is in what each future wears and does.
+- Story props include the bike, wrench, flowers, bear, necklace, cow, locker repair, shop and red subscribe sign.
