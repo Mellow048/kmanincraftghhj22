@@ -222,10 +222,12 @@ export const scene3 = storyScene(timing, {
     {
       // Acceptance, then a new stair.
       cue: "12.wrong",
-      // The last joke: every kid's shadow doing something else. The class sits facing the board, so the ONLY lens that
-      // sees nine faces at once is at the board looking south - and it has to stand back far enough to clear the desks,
-      // or the back row's heads fill the bottom of frame (which is what the last two attempts did).
-      ...cam.push({ on: SPOT.at(0, 1.65, 0.9), dist: 5.6, to: 5.0, yaw: 179, pitch: 10, fov: 52 }),
+      // The last joke: every kid's shadow doing something else. THE GEOMETRY, worked out instead of guessed, because
+      // three attempts got it wrong: desks are at z = -0.9, 0.75, 2.4 and every kid faces NORTH, so the only lens
+      // that sees nine FACES is north of them looking south. `on` is the look point, so aim at the middle of the class
+      // (z +1.5) and stand north of it: yaw 0 puts the lens at z = 1.5 - dist, i.e. between the board and the front
+      // row. dist 4.2 => z -2.7, clear of the board at -3.9 and looking back over all three rows.
+      ...cam.push({ on: SPOT.at(0, 1.15, 1.5), dist: 4.2, to: 3.9, yaw: 0, pitch: 4, fov: 56 }),
       zone: "class",
       note: "Back in the classroom daylight, which should feel wrong after the dark street: the whole class around him, every one of them with a shadow doing something different, and he is looking at his own. The film has to come back to the joke one last time before it asks anything of the viewer.",
       stage: (t) => (
@@ -285,12 +287,14 @@ export const scene3 = storyScene(timing, {
       cue: "12.sub2",
       // The sign has to be against a clean piece of wall: at z -3.4 it stood in front of the board's own lettering
       // and the two read as one double-exposed word. Off to the right of the board, and closer.
-      ...cam.push({ on: SPOT.at(2.6, 2.05, -3.78), dist: 2.6, to: 2.3, yaw: 0, pitch: 0, fov: 34 }),
+      // The board ends at x +2.2 and the east wall is at x +4.7, so the clean strip of wall is centred on x 3.45.
+      // Stand square in front of it (yaw 0) far enough back that the 1.7 m sign fits the frame with air around it.
+      ...cam.push({ on: SPOT.at(3.45, 2.05, -3.78), dist: 3.2, to: 3.0, yaw: 0, pitch: 0, fov: 36 }),
       zone: "class",
       note: "SPLIT: the ask, tight on the drawing and the sign together, so the last frame is the house that was on the wall all along and the reason to stay.",
       stage: (t) => (
         <>
-          <SubscribeSign position={SPOT.at(2.6, 2.05, -3.78)} rotationY={0} scale={1.0} tilt={0.04 + Math.sin(t * 9) * 0.012} />
+          <SubscribeSign position={SPOT.at(3.45, 2.05, -3.78)} rotationY={0} scale={1.0} tilt={0.04 + Math.sin(t * 9) * 0.012} />
         </>
       ),
     },
