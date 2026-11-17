@@ -30,7 +30,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.dirt",
-      ...cam.push({ on: [0.2, 1.8, 1.2], dist: 8.2, to: 6.6, yaw: 16, pitch: 20, fov: 46 }),
+      ...cam.push({ on: [0.15, 0.95, 1.05], dist: 4.6, to: 3.7, yaw: 8, pitch: 32, fov: 42 }),
       zone: "village",
       look: DAY,
       note: "One frame: the baker, the kids and the iron golem, every face in the dirt.",

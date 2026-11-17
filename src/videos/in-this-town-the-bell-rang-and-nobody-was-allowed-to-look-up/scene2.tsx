@@ -28,7 +28,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.down",
-      ...cam.push({ on: [0.3, 1.5, 1.5], dist: 5.6, to: 4.4, yaw: 12, pitch: 16, fov: 42 }),
+      ...cam.push({ on: [0.25, 0.85, 1.25], dist: 3.6, to: 2.9, yaw: 6, pitch: 34, fov: 40 }),
       zone: "village",
       look: DAY,
       note: "The bell is done. His face goes into the dirt with everybody else's.",

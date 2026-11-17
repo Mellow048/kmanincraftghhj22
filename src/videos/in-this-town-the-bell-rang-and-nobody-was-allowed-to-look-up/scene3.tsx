@@ -34,14 +34,14 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.tell",
-      ...cam.push({ on: [0.45, 1.3, 1.55], dist: 4.2, to: 3.3, yaw: 24, pitch: 8, fov: 38 }),
+      ...cam.push({ on: [0.42, 1.25, 1.35], dist: 2.7, to: 2.15, yaw: 6, pitch: 8, fov: 36 }),
       zone: "village",
       look: DAY,
       note: "His arm is on his friend. Both of them are in the frame.",
       stage: () => (
         <>
-          <Hero position={[0.05, 0, 1.55]} animation="reach" face="fear" />
-          <Friend position={[0.85, 0, 1.4]} rotationY={-0.6} lean={0.2} nod={0.35} />
+          <Hero position={[0.15, 0, 1.35]} animation="reach" face="fear" />
+          <Friend position={[0.72, 0, 1.2]} rotationY={-0.5} lean={0.15} nod={0.3} />
         </>
       ),
     },

@@ -39,16 +39,16 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.up",
-      ...cam.push({ on: [0.55, 1.8, 1.25], dist: 7.6, to: 6.1, yaw: 8, pitch: 8, fov: 46 }),
+      ...cam.push({ on: [0.6, 1.55, 1.15], dist: 4.6, to: 3.7, yaw: 6, pitch: 10, fov: 42 }),
       zone: "village",
       look: DAY,
       note: "Travelling the square: the baker, the kids, the iron golem, every chin up.",
       stage: () => (
         <>
-          <Baker position={[-1.5, 0, 1.15]} nod={-0.5} />
-          <Friend position={[0.15, 0, 1.35]} nod={-0.5} />
-          <Hero position={[1.55, 0, 1.2]} animation="reachUp" face="grin" />
-          <Golem position={[2.7, 0, 1.7]} bow={-0.3} />
+          <Baker position={[-0.9, 0, 0.85]} nod={-0.5} />
+          <Friend position={[0.15, 0, 1.15]} nod={-0.5} />
+          <Hero position={[1.05, 0, 0.95]} animation="reachUp" face="grin" />
+          <Golem position={[1.9, 0, 1.45]} bow={-0.3} />
         </>
       ),
     },
