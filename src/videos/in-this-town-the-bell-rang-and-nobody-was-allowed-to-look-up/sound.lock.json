@@ -1,0 +1,125 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-the-bell-rang-and-nobody-was-allowed-to-look-up",
+  "mix": "public/audio/in-this-town-the-bell-rang-and-nobody-was-allowed-to-look-up/mix.mp3",
+  "seconds": 103.8667,
+  "built_from": {
+    "timing.json": "399c38f0ed9059e7ff6f598a686eab3aec2298bf",
+    "sound.json": "fda596faf25db996835977bcae78e31b06ad877f",
+    "narration.mp3": "33bbc99ad905e69907a902cf9d8a25b14340e321"
+  },
+  "mix_sha1": "a68be18b717987f94ecfd9fc0568ee6e2ca4cb7b",
+  "music_sections": [
+    {
+      "from": "1.bell",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.big",
+      "mood": "drone",
+      "at": 11.73
+    },
+    {
+      "from": "3.again",
+      "mood": "curious",
+      "at": 23.97
+    },
+    {
+      "from": "4.night",
+      "mood": "sneak",
+      "at": 44.53
+    },
+    {
+      "from": "6.reach",
+      "mood": "tense",
+      "at": 58.83
+    },
+    {
+      "from": "7.scream",
+      "mood": "wonder",
+      "at": 70.8
+    },
+    {
+      "from": "8.back",
+      "mood": "dark",
+      "at": 81.73
+    },
+    {
+      "from": "9.mum",
+      "mood": "hope",
+      "at": 90.9
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 3,
+  "measured": {
+    "musicUnderVoiceDb": 17.8,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 26.0,
+    "sfx": 81,
+    "sfxPerMinute": 46.8,
+    "sfxKinds": 23,
+    "longestGapSeconds": 4.0,
+    "longestGapAt": 61.9,
+    "sfxBuried": 4,
+    "voiceOverRestMedianDb": 16.2,
+    "voiceOverRestWorstDb": 3.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.5,
+        "t": 5.5,
+        "cue": "1.dirt",
+        "sounding": []
+      },
+      {
+        "db": 4.1,
+        "t": 99.4,
+        "cue": "9.up",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 71.0,
+        "cue": "7.scream",
+        "sounding": [
+          "paper",
+          "sting"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 0.2,
+        "cue": "1.bell",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 87.1,
+        "cue": "8.gone",
+        "sounding": []
+      },
+      {
+        "db": 7.9,
+        "t": 102.5,
+        "cue": "9.end",
+        "sounding": [
+          "ding",
+          "rustle",
+          "slide_down"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.6
+  },
+  "failures": []
+}

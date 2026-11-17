@@ -1,0 +1,556 @@
+{
+  "film": "in-this-town-the-bell-rang-and-nobody-was-allowed-to-look-up",
+  "README": "The sound sheet. The owner's track under the whole film. Times are cues, not seconds.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.bell",
+        "mood": "town",
+        "why": "The law, and a kid already breaking it."
+      },
+      {
+        "from": "2.big",
+        "mood": "drone",
+        "why": "He has seen it. The town has not."
+      },
+      {
+        "from": "3.again",
+        "mood": "curious",
+        "why": "It is closer. He tries to make someone look."
+      },
+      {
+        "from": "4.night",
+        "mood": "sneak",
+        "gain": -2,
+        "why": "Night. The thing is on the well."
+      },
+      {
+        "from": "6.reach",
+        "mood": "tense",
+        "why": "It wants the rope. He runs."
+      },
+      {
+        "from": "7.scream",
+        "mood": "wonder",
+        "why": "They see it, and they run toward it."
+      },
+      {
+        "from": "8.back",
+        "mood": "dark",
+        "gain": -2,
+        "why": "It leaves, looking at him."
+      },
+      {
+        "from": "9.mum",
+        "mood": "hope",
+        "why": "The new rule. They look up."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.bell",
+      "to": "4.why",
+      "bed": "village"
+    },
+    {
+      "from": "4.night",
+      "to": "4.night",
+      "bed": "night"
+    },
+    {
+      "from": "5.wait",
+      "to": "9.end",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.bell",
+      "sfx": "whoosh",
+      "why": "The picture for 1.bell starts moving."
+    },
+    {
+      "cue": "1.bell",
+      "at": 0.4,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "A second thing happens in 1.bell."
+    },
+    {
+      "cue": "1.dirt",
+      "sfx": "swish",
+      "why": "The picture for 1.dirt starts moving."
+    },
+    {
+      "cue": "1.dirt",
+      "at": 0.4,
+      "sfx": "pop",
+      "trim": -2,
+      "why": "A second thing happens in 1.dirt."
+    },
+    {
+      "cue": "1.me",
+      "sfx": "step_wood",
+      "why": "The picture for 1.me starts moving."
+    },
+    {
+      "cue": "1.me",
+      "at": 0.4,
+      "sfx": "plink",
+      "trim": -2,
+      "why": "A second thing happens in 1.me."
+    },
+    {
+      "cue": "1.saw",
+      "sfx": "pop",
+      "why": "The picture for 1.saw starts moving."
+    },
+    {
+      "cue": "1.saw",
+      "at": 0.4,
+      "sfx": "gust",
+      "trim": -2,
+      "why": "A second thing happens in 1.saw."
+    },
+    {
+      "cue": "2.big",
+      "sfx": "whoosh",
+      "why": "The picture for 2.big starts moving."
+    },
+    {
+      "cue": "2.big",
+      "at": 0.4,
+      "sfx": "paper",
+      "trim": -2,
+      "why": "A second thing happens in 2.big."
+    },
+    {
+      "cue": "2.slow",
+      "sfx": "creak",
+      "why": "The picture for 2.slow starts moving."
+    },
+    {
+      "cue": "2.slow",
+      "at": 0.4,
+      "sfx": "slide_up",
+      "trim": -2,
+      "why": "A second thing happens in 2.slow."
+    },
+    {
+      "cue": "2.down",
+      "sfx": "plink",
+      "why": "The picture for 2.down starts moving."
+    },
+    {
+      "cue": "2.down",
+      "at": 0.4,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "A second thing happens in 2.down."
+    },
+    {
+      "cue": "2.fine",
+      "sfx": "thud",
+      "why": "The picture for 2.fine starts moving."
+    },
+    {
+      "cue": "2.fine",
+      "at": 0.4,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "A second thing happens in 2.fine."
+    },
+    {
+      "cue": "3.again",
+      "sfx": "whoosh",
+      "why": "The picture for 3.again starts moving."
+    },
+    {
+      "cue": "3.again",
+      "at": 0.4,
+      "sfx": "blip",
+      "trim": -2,
+      "why": "A second thing happens in 3.again."
+    },
+    {
+      "cue": "3.roof",
+      "sfx": "gust",
+      "why": "The picture for 3.roof starts moving."
+    },
+    {
+      "cue": "3.roof",
+      "at": 0.4,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "A second thing happens in 3.roof."
+    },
+    {
+      "cue": "3.tell",
+      "sfx": "tick",
+      "why": "The picture for 3.tell starts moving."
+    },
+    {
+      "cue": "3.tell",
+      "at": 0.4,
+      "sfx": "tick",
+      "trim": -2,
+      "why": "A second thing happens in 3.tell."
+    },
+    {
+      "cue": "3.wont",
+      "sfx": "clank",
+      "why": "The picture for 3.wont starts moving."
+    },
+    {
+      "cue": "3.wont",
+      "at": 0.4,
+      "sfx": "place",
+      "trim": -2,
+      "why": "A second thing happens in 3.wont."
+    },
+    {
+      "cue": "4.mum",
+      "sfx": "whoosh",
+      "why": "The picture for 4.mum starts moving."
+    },
+    {
+      "cue": "4.mum",
+      "at": 0.4,
+      "sfx": "slide_down",
+      "trim": -2,
+      "why": "A second thing happens in 4.mum."
+    },
+    {
+      "cue": "4.dad",
+      "sfx": "place",
+      "why": "The picture for 4.dad starts moving."
+    },
+    {
+      "cue": "4.dad",
+      "at": 0.4,
+      "sfx": "crack",
+      "trim": -2,
+      "why": "A second thing happens in 4.dad."
+    },
+    {
+      "cue": "4.why",
+      "sfx": "heartbeat",
+      "why": "The picture for 4.why starts moving."
+    },
+    {
+      "cue": "4.why",
+      "at": 0.4,
+      "sfx": "step_wood",
+      "trim": -2,
+      "why": "A second thing happens in 4.why."
+    },
+    {
+      "cue": "4.night",
+      "sfx": "slide_up",
+      "why": "The picture for 4.night starts moving."
+    },
+    {
+      "cue": "4.night",
+      "at": 0.4,
+      "sfx": "creak",
+      "trim": -2,
+      "why": "A second thing happens in 4.night."
+    },
+    {
+      "cue": "5.wait",
+      "sfx": "whoosh",
+      "why": "The picture for 5.wait starts moving."
+    },
+    {
+      "cue": "5.wait",
+      "at": 0.4,
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "A second thing happens in 5.wait."
+    },
+    {
+      "cue": "5.count",
+      "sfx": "bonk",
+      "why": "The picture for 5.count starts moving."
+    },
+    {
+      "cue": "5.count",
+      "at": 0.4,
+      "sfx": "clank",
+      "trim": -2,
+      "why": "A second thing happens in 5.count."
+    },
+    {
+      "cue": "5.eye",
+      "sfx": "boing",
+      "why": "The picture for 5.eye starts moving."
+    },
+    {
+      "cue": "5.eye",
+      "at": 0.4,
+      "sfx": "heartbeat",
+      "trim": -2,
+      "why": "A second thing happens in 5.eye."
+    },
+    {
+      "cue": "5.want",
+      "sfx": "crack",
+      "why": "The picture for 5.want starts moving."
+    },
+    {
+      "cue": "5.want",
+      "at": 0.4,
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "A second thing happens in 5.want."
+    },
+    {
+      "cue": "6.reach",
+      "sfx": "whoosh",
+      "why": "The picture for 6.reach starts moving."
+    },
+    {
+      "cue": "6.reach",
+      "at": 0.4,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "A second thing happens in 6.reach."
+    },
+    {
+      "cue": "6.run",
+      "sfx": "swish",
+      "why": "The picture for 6.run starts moving."
+    },
+    {
+      "cue": "6.run",
+      "at": 0.4,
+      "sfx": "pop",
+      "trim": -2,
+      "why": "A second thing happens in 6.run."
+    },
+    {
+      "cue": "6.pull",
+      "sfx": "step_wood",
+      "why": "The picture for 6.pull starts moving."
+    },
+    {
+      "cue": "6.pull",
+      "at": 0.4,
+      "sfx": "plink",
+      "trim": -2,
+      "why": "A second thing happens in 6.pull."
+    },
+    {
+      "cue": "6.twice",
+      "sfx": "pop",
+      "why": "The picture for 6.twice starts moving."
+    },
+    {
+      "cue": "6.twice",
+      "at": 0.4,
+      "sfx": "gust",
+      "trim": -2,
+      "why": "A second thing happens in 6.twice."
+    },
+    {
+      "cue": "7.scream",
+      "sfx": "whoosh",
+      "why": "The picture for 7.scream starts moving."
+    },
+    {
+      "cue": "7.scream",
+      "at": 0.4,
+      "sfx": "paper",
+      "trim": -2,
+      "why": "A second thing happens in 7.scream."
+    },
+    {
+      "cue": "7.run",
+      "sfx": "creak",
+      "why": "The picture for 7.run starts moving."
+    },
+    {
+      "cue": "7.run",
+      "at": 0.4,
+      "sfx": "slide_up",
+      "trim": -2,
+      "why": "A second thing happens in 7.run."
+    },
+    {
+      "cue": "7.rope",
+      "sfx": "plink",
+      "why": "The picture for 7.rope starts moving."
+    },
+    {
+      "cue": "7.rope",
+      "at": 0.4,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "A second thing happens in 7.rope."
+    },
+    {
+      "cue": "7.ring",
+      "sfx": "thud",
+      "why": "The picture for 7.ring starts moving."
+    },
+    {
+      "cue": "7.ring",
+      "at": 0.4,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "A second thing happens in 7.ring."
+    },
+    {
+      "cue": "8.back",
+      "sfx": "whoosh",
+      "why": "The picture for 8.back starts moving."
+    },
+    {
+      "cue": "8.back",
+      "at": 0.4,
+      "sfx": "blip",
+      "trim": -2,
+      "why": "A second thing happens in 8.back."
+    },
+    {
+      "cue": "8.slow",
+      "sfx": "gust",
+      "why": "The picture for 8.slow starts moving."
+    },
+    {
+      "cue": "8.slow",
+      "at": 0.4,
+      "sfx": "thud",
+      "trim": -2,
+      "why": "A second thing happens in 8.slow."
+    },
+    {
+      "cue": "8.gone",
+      "sfx": "tick",
+      "why": "The picture for 8.gone starts moving."
+    },
+    {
+      "cue": "8.gone",
+      "at": 0.4,
+      "sfx": "tick",
+      "trim": -2,
+      "why": "A second thing happens in 8.gone."
+    },
+    {
+      "cue": "8.quiet",
+      "sfx": "clank",
+      "why": "The picture for 8.quiet starts moving."
+    },
+    {
+      "cue": "8.quiet",
+      "at": 0.4,
+      "sfx": "place",
+      "trim": -2,
+      "why": "A second thing happens in 8.quiet."
+    },
+    {
+      "cue": "9.mum",
+      "sfx": "whoosh",
+      "why": "The picture for 9.mum starts moving."
+    },
+    {
+      "cue": "9.mum",
+      "at": 0.4,
+      "sfx": "slide_down",
+      "trim": -2,
+      "why": "A second thing happens in 9.mum."
+    },
+    {
+      "cue": "9.new",
+      "sfx": "place",
+      "why": "The picture for 9.new starts moving."
+    },
+    {
+      "cue": "9.new",
+      "at": 0.4,
+      "sfx": "crack",
+      "trim": -2,
+      "why": "A second thing happens in 9.new."
+    },
+    {
+      "cue": "9.bell",
+      "sfx": "heartbeat",
+      "why": "The picture for 9.bell starts moving."
+    },
+    {
+      "cue": "9.bell",
+      "at": 0.4,
+      "sfx": "step_wood",
+      "trim": -2,
+      "why": "A second thing happens in 9.bell."
+    },
+    {
+      "cue": "9.up",
+      "sfx": "slide_up",
+      "why": "The picture for 9.up starts moving."
+    },
+    {
+      "cue": "9.up",
+      "at": 0.4,
+      "sfx": "creak",
+      "trim": -2,
+      "why": "A second thing happens in 9.up."
+    },
+    {
+      "cue": "9.end",
+      "sfx": "slide_down",
+      "why": "The picture for 9.end starts moving."
+    },
+    {
+      "cue": "9.end",
+      "at": 0.4,
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "A second thing happens in 9.end."
+    },
+    {
+      "cue": "1.bell",
+      "word": "bell",
+      "sfx": "clank",
+      "why": "The bell, once."
+    },
+    {
+      "cue": "1.saw",
+      "word": "hole",
+      "sfx": "whoosh_low",
+      "why": "The hole opens."
+    },
+    {
+      "cue": "4.night",
+      "word": "well",
+      "sfx": "creak",
+      "why": "Something on the well."
+    },
+    {
+      "cue": "6.pull",
+      "word": "pulled",
+      "sfx": "clank",
+      "why": "He pulls the rope."
+    },
+    {
+      "cue": "6.twice",
+      "word": "twice",
+      "sfx": "clank",
+      "why": "The second ring."
+    },
+    {
+      "cue": "7.scream",
+      "word": "screamed",
+      "sfx": "sting",
+      "why": "She sees it."
+    },
+    {
+      "cue": "9.end",
+      "sfx": "ding",
+      "why": "The sign."
+    }
+  ]
+}
