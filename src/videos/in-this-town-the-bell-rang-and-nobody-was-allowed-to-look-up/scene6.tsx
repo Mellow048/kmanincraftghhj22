@@ -42,7 +42,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.pull",
-      ...cam.push({ on: [1.5, 1.6, -0.4], dist: 4.6, to: 3.6, yaw: 150, pitch: 10, fov: 40 }),
+      ...cam.push({ on: [1.5, 1.6, -0.4], dist: 4.6, to: 3.6, yaw: -30, pitch: 10, fov: 40 }),
       zone: "village",
       look: DAY,
       note: "Looking back at the square: his raised arm meets the rope, and the bell is above it.",

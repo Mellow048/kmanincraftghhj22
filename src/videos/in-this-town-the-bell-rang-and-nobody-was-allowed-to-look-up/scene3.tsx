@@ -21,9 +21,9 @@ export const scene3 = storyScene(timing, {
       note: "From the street: the roof, one black leg on it, and the baker under it with his nose in the bread.",
       stage: () => (
         <>
-          <SkyThing position={[1.6, 6.6, -7.6]} scale={0.55} legs={6} reach={1} />
-          <Baker position={[2.2, 0, -4.2]} lean={1.2} nod={0.85} />
-          <Vox kind="hay" position={[2.25, 0.55, -3.65]} size={[0.42, 0.16, 0.28]} />
+          <SkyThing position={[0.4, 6.4, -7.2]} scale={0.5} legs={6} reach={1} />
+          <Baker position={[1.1, 0, -3.6]} lean={1.2} nod={0.85} />
+          <Vox kind="hay" position={[1.15, 0.55, -3.05]} size={[0.42, 0.16, 0.28]} />
         </>
       ),
     },
