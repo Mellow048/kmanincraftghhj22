@@ -141,8 +141,8 @@ export const Fill: React.FC<{ on: Vec3; yaw?: number; power?: number }> = ({ on,
 /** The rope under the bell. `pull` 0..1 drops it. */
 export const BellRope: React.FC<{ pull?: number }> = ({ pull = 0 }) => (
   <group position={[PLACE.bell[0], 2.15 - pull * 0.45, PLACE.bell[2] + 0.15]}>
-    <Vox kind="wool" tint="#6a3a28" position={[0, -0.85, 0]} size={[0.08, 1.7, 0.08]} />
-    <Vox kind="wool" tint="#8a4a30" position={[0, -1.7, 0]} size={[0.16, 0.12, 0.16]} />
+    <Vox kind="wool" tint="#6a3a28" position={[0, -1.45, 0]} size={[0.08, 2.9, 0.08]} />
+    <Vox kind="wool" tint="#8a4a30" position={[0, -2.9, 0]} size={[0.16, 0.12, 0.16]} />
   </group>
 );
 
