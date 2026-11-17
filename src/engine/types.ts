@@ -77,9 +77,16 @@ export type Shot = {
 /** One spoken word and when it is heard, in film seconds. */
 export type CaptionWord = { w: string; s: number; e: number };
 
-/** One-word captions. Engine-owned: scenes never draw text over the picture themselves. */
+/**
+ * Captions. Engine-owned: scenes never draw text over the picture themselves.
+ *
+ * `chunk` is how many words share the screen. 1 is the old one-word pop; 2-4 is what the reference does, and it is
+ * readable at a glance where a 0.23 s single word is not. A chunk breaks early at a full stop or a comma.
+ */
 export type CaptionSettings = {
   words: CaptionWord[];
+  /** Words on screen together. Default 3. */
+  chunk?: number;
   /** Vertical position, 0 = top of frame, 1 = bottom. Default 0.72. */
   y?: number;
   /** Size multiplier. Default 1. */
