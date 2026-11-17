@@ -76,15 +76,15 @@ export const scene2 = storyScene(timing, {
       // Head-on at the wall, from his shoulder-line: he is in profile with his palm on the board wall, and the board
       // and its chalk run across the top of the frame he has his ear against. (Two earlier lenses on this cue framed
       // a window, then put the camera outside the room.)
-      ...cam.push({ on: SPOT.at(-2.10, 1.30, -3.55), dist: 2.20, to: 1.85, yaw: 0, pitch: 3, fov: 46 }),
+      ...cam.push({ on: SPOT.at(-1.35, 1.32, -3.30), dist: 1.95, to: 1.62, yaw: -16, pitch: 4, fov: 44 }),
       zone: "class",
       look: "overworld-day",
       note: "Him in profile with his palm flat on the board wall and his ear against the chalk: the classroom giving the teacher's worst joke back to somebody who is not laughing.",
       stage: (t) => (
         <>
-          <Hero position={SPOT.at(-2.10, 0, -3.58)} rotationY={NORTH} animation="press" face="grin" />
-          <Rings at={SPOT.at(-2.10, 1.20, -3.94)} t={t} from={JOKE} />
-          <SoundRings position={SPOT.at(-2.10, 1.26, -3.94)} rotationY={SOUTH} t={t - JOKE} reach={1.0} color="#e8f4ff" />
+          <Hero position={SPOT.at(-1.35, 0, -3.42)} rotationY={NORTH} animation="press" face="grin" />
+          <Rings at={SPOT.at(-1.60, 1.20, -3.94)} t={t} from={JOKE} />
+          <SoundRings position={SPOT.at(-1.60, 1.26, -3.94)} rotationY={SOUTH} t={t - JOKE} reach={1.0} color="#e8f4ff" />
         </>
       ),
     },
@@ -109,13 +109,13 @@ export const scene2 = storyScene(timing, {
       cue: "2.bus",
       // From the road, at the height of the sign: the roundel end-on, his hand up at it, and his face turned to the
       // lens. The first lens sat 0.37 m from the back of his head and the frame was all hair.
-      ...cam.push({ on: S(1.55, 1.45, 0.90), dist: 2.95, to: 2.45, yaw: -25, pitch: 3, fov: 46 }),
+      ...cam.push({ on: S(1.55, 1.40, 0.75), dist: 2.40, to: 2.00, yaw: -150, pitch: 4, fov: 46 }),
       zone: "street",
       look: "overworld-night",
       note: "The bus stop roundel lit red from the lamp with his hand flat on the sign, his face turned out to the road: one sentence, said again, at midnight.",
       stage: (t) => (
         <>
-          <Hero position={S(1.55, 0, 0.72)} rotationY={SOUTH - 0.55} animation="reach" face="frown" />
+          <Hero position={S(1.55, 0, 0.78)} rotationY={SOUTH - 0.35} animation="reach" face="frown" />
           <Rings at={S(1.90, 1.70, 1.22)} t={t} from={SAME} />
         </>
       ),
