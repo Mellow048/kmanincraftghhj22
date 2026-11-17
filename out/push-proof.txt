@@ -1,8 +1,8 @@
-head-before: cda0ddf84ef2db2d50ab8f4c60db520832084ebe
-From https://github.com/Mellow048/kmanincraftghhj22
- * branch            arena/1a8f761c-kmanincraftghhj22 -> FETCH_HEAD
-Already up to date.
-rebase-ok
-Everything up-to-date
+head-before: 562db222e47937e3c65379c32bc174d13a4aac59
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+rebase-failed
+To https://github.com/Mellow048/kmanincraftghhj22
+   928080d..562db22  HEAD -> arena/1a8f761c-kmanincraftghhj22
 push-ok
-remote-after: cda0ddf84ef2db2d50ab8f4c60db520832084ebe	refs/heads/arena/1a8f761c-kmanincraftghhj22
+remote-after: 562db222e47937e3c65379c32bc174d13a4aac59	refs/heads/arena/1a8f761c-kmanincraftghhj22
