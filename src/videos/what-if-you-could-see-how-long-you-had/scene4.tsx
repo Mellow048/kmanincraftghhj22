@@ -198,7 +198,10 @@ export const scene4 = storyScene(timing, {
     {
       // Subscribe, and I will tell you what they were counting down to. The last picture: the sign, and a clock.
       cue: "14.sub",
-      ...cam.push({ on: SPOT.at(0.25, 1.75, -1.2), dist: 6.0, to: 6.8, yaw: 4, pitch: 12, fov: 48 }),
+      // `to: 6.8` again: a dolly-back that ends outside the room. And the sign hung at z -3.42, in front of the board,
+      // so it glowed through the board's own lettering. Sign moved to the clean wall right of the board (the board ends
+      // at x 2.2, the east wall is 4.7), lens inside, and both the room and the sign are in frame.
+      ...cam.push({ on: SPOT.at(0, 1.30, 1.4), dist: 4.6, to: 4.2, yaw: 182, pitch: 10, fov: 54 }),
       zone: "class",
       note: "Back up and away off the whole room: forty clocks counting and the red sign coming up over the board. The film ends on the teller's back, in a room full of clocks, with the question asked - which is a reason to subscribe, not a request for one.",
       stage: (t) => {
@@ -215,7 +218,7 @@ export const scene4 = storyScene(timing, {
             ))}
             <pointLight position={SPOT.at(0.4, 2.2, 2.6)} color="#fff4e2" intensity={40} distance={9} decay={2} />
             <pointLight position={[ME[0], 2.0, ME[2] + 1.1]} color="#fff6e8" intensity={14} distance={3.6} decay={2} />
-            <SubscribeSign position={SPOT.at(0.2, 3.05, -3.42)} rotationY={0} scale={0.8} tilt={0.03 + Math.sin(t * 9) * 0.01} />
+            <SubscribeSign position={SPOT.at(3.45, 2.5, -3.86)} rotationY={0} scale={0.72} tilt={0.03 + Math.sin(t * 9) * 0.01} />
           </>
         );
       },

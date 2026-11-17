@@ -73,7 +73,10 @@ export const scene2 = storyScene(timing, {
     {
       // So I stopped guessing out loud. He shuts up about it, and the picture says what that costs: nobody.
       cue: "4.wrong",
-      ...cam.push({ on: SPOT.at(0, 1.5, 0.2), dist: 3.2, to: 5.6, yaw: 176, pitch: -4, fov: 52 }),
+      // `to: 5.6` on a dist of 3.2 dollies the lens BACKWARD through the south wall: the frame was the back of the
+      // room and a bookcase. Pulling back needs somewhere to pull back TO, and this room is 8 m deep. Aim at the
+      // teller from the board side and let the class fall away behind him - the same idea, inside the box.
+      ...cam.push({ on: SPOT.at(0, 1.15, 1.6), dist: 3.9, to: 3.5, yaw: 178, pitch: 6, fov: 56 }),
       zone: "class",
       note: "Pull back off his face and let the whole class come in around him: everybody heads-down at their desks and the teller sitting perfectly still with his mouth shut. The price of being right about people is that you stop talking to them, and this is the shot where he starts paying it.",
       stage: () => (
