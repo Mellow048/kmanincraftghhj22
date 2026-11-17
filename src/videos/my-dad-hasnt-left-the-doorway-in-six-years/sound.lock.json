@@ -5,10 +5,10 @@
   "seconds": 60.7667,
   "built_from": {
     "timing.json": "6551adeaf6a62df15aa400825824e2c7bd3bde3d",
-    "sound.json": "402a717189cced0fe72bb6b0f400e2acf34d8791",
+    "sound.json": "00eb3f2903fd0184dafec4d9ca014e4facfd4c9a",
     "narration.mp3": "a842f7b095b0bc0ebc16e3d8798b4d4575ce62d5"
   },
-  "mix_sha1": "4a82eb9360b7f0bc81134b4b9dead0bd9c418e89",
+  "mix_sha1": "4478b7655611ec6a151d317111dcad19762c2257",
   "music_sections": [
     {
       "from": "1.door",
@@ -61,15 +61,31 @@
     "musicUnderVoiceDb": 18.4,
     "secondsWithoutMusic": 2.4,
     "bedsUnderVoiceDb": 29.3,
-    "sfx": 17,
-    "sfxPerMinute": 16.8,
-    "sfxKinds": 6,
-    "longestGapSeconds": 8.6,
-    "longestGapAt": 37.2,
+    "sfx": 46,
+    "sfxPerMinute": 45.4,
+    "sfxKinds": 9,
+    "longestGapSeconds": 3.0,
+    "longestGapAt": 38.5,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 18.1,
-    "voiceOverRestWorstDb": 6.1,
+    "voiceOverRestMedianDb": 17.5,
+    "voiceOverRestWorstDb": 5.2,
     "voiceOverRestWorst": [
+      {
+        "db": 5.2,
+        "t": 59.3,
+        "cue": "8.now",
+        "sounding": [
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 3.1,
+        "cue": "1.why",
+        "sounding": [
+          "gust"
+        ]
+      },
       {
         "db": 6.1,
         "t": 60.0,
@@ -77,15 +93,18 @@
         "sounding": []
       },
       {
+        "db": 6.5,
+        "t": 35.5,
+        "cue": "6.stand",
+        "sounding": [
+          "blip",
+          "swish"
+        ]
+      },
+      {
         "db": 8.8,
         "t": 9.4,
         "cue": "2.first",
-        "sounding": []
-      },
-      {
-        "db": 9.0,
-        "t": 59.3,
-        "cue": "8.now",
         "sounding": []
       },
       {
@@ -95,23 +114,11 @@
         "sounding": [
           "chime"
         ]
-      },
-      {
-        "db": 9.8,
-        "t": 41.0,
-        "cue": "6.freeze",
-        "sounding": []
-      },
-      {
-        "db": 10.6,
-        "t": 27.6,
-        "cue": "5.asked",
-        "sounding": []
       }
     ],
-    "lufs": -14.8,
+    "lufs": -14.7,
     "truePeakDb": -1.7,
-    "limiterMaxDb": 0.8
+    "limiterMaxDb": 0.7
   },
   "failures": []
 }
