@@ -62,11 +62,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p "review/${COMPOSITION}"
-          ls -la out/stills
-          cp -v out/stills/*.png "review/${COMPOSITION}/"
-          git add -f "review/${COMPOSITION}/"
-          git status --short
-          find review -name "*.png" -newer .git/HEAD | head
+          ls out/stills > out/stage-proof.txt 2>&1
+          cp out/stills/*.png "review/${COMPOSITION}/" >> out/stage-proof.txt 2>&1 || echo "copy-failed" >> out/stage-proof.txt
+          git check-ignore -v "review/${COMPOSITION}" >> out/stage-proof.txt 2>&1 || true
+          git add -f "review/${COMPOSITION}/" >> out/stage-proof.txt 2>&1
+          git status --short >> out/stage-proof.txt 2>&1
+          git add -f out/stage-proof.txt
 
       - name: Commit review frames
         if: ${{ inputs.commit_review && github.ref_name != 'main' }}
@@ -74,7 +75,7 @@ jobs:
           COMPOSITION: ${{ inputs.composition }}
         run: |
           # git commit itself does not persist on this runner, so the commit is built by hand.
-          git add -f "review/${COMPOSITION}/"
+          git add -f "review/${COMPOSITION}/" out/stage-proof.txt
           TREE=$(git write-tree)
           PARENT=$(git rev-parse HEAD)
           COMMIT=$(git commit-tree "$TREE" -p "$PARENT" -m "Diagnostic review frames for ${COMPOSITION}")
