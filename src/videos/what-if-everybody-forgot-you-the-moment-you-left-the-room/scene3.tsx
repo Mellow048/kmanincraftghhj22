@@ -144,7 +144,7 @@ export const scene3 = storyScene(timing, {
     {
       // Him on the step under the sky, and somebody off-camera has said his name.
       cue: "12.outa",
-      ...cam.push({ on: [24.10, 1.28, 62.00], dist: 2.60, to: 2.05, yaw: 178, pitch: -1, fov: 44 }),
+      ...cam.push({ on: [24.00, 1.32, 61.20], dist: 2.30, to: 2.05, yaw: 0, pitch: 1, fov: 44 }),
       zone: "drive",
       note: "Him on the step under the sky, and somebody off-camera has said his name.",
       stage: (_t) => (
