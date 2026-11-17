@@ -124,7 +124,10 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.day",
-      ...cam.top({ on: SPOT.at(0, 0.2, -1.6), height: 4.0, to: 3.0 }),
+      // A straight-down lens 4 m above the floor, in a room whose ceiling is at 3.6 m: the shot was the inside of a
+      // roof slab. A high diagonal from inside the room does the same job - him, his shadow, and everyone else's
+      // shadow lying still - and it can actually be inside the box.
+      ...cam.push({ on: SPOT.at(0, 0.55, -1.4), dist: 3.0, to: 2.7, yaw: 168, pitch: 34, fov: 54 }),
       zone: "class",
       note: "Straight down: him standing in an empty aisle with his shadow behind him on the floor, and every other shadow in the room lying still the way shadows are supposed to. The odd one out is the whole picture, and from above it needs no explaining.",
       stage: (t) => (
@@ -337,7 +340,7 @@ export const scene1 = storyScene(timing, {
       note: "The board from below, so the house is above him, and he is underneath it: the day-a-week house, the same three windows. He looks up at it the way you look at something you have seen before and cannot place.",
       stage: (_t) => (
         <>
-          <Hero position={SPOT.at(0.2, 0, -2.7)} rotationY={NORTH} animation="idle" face="uneasy" headPitch={-0.3} />
+          <Hero position={SPOT.at(0.2, 0, -2.7)} rotationY={0.00} animation="idle" face="uneasy" headPitch={-0.3} />
           <DrawnHouse at={SPOT.at(0.2, 2.1, -3.68)} scale={1.15} />
         </>
       ),
