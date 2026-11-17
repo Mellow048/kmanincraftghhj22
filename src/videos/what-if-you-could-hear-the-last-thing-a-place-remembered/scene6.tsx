@@ -1,6 +1,6 @@
 import type React from "react";
 import { Block, PixelText, cam, storyScene } from "../../engine";
-import { Adult, Hero, K, Mum, NORTH, SOUTH, WEST, ramp, timing, wordAt } from "./kit";
+import { Adult, Hero, K, Mum, NORTH, S, SOUTH, WEST, ramp, timing, wordAt } from "./kit";
 import { Rings } from "./scene1";
 import { SubscribeSign, SoundRings } from "./kit";
 
@@ -62,18 +62,17 @@ export const scene6 = storyScene(timing, {
       // The wall takes it: a hard cut to the plaster beside the window, no actor in frame, and the sentence going
       // into it and staying. The last time the power works in the film, and it works away from him.
       cue: "8.wall",
-      // THE WINDOW OVER THE SINK. Three earlier versions pointed at the plaster beside it and read as a blank
-      // tile: at eye level that wall genuinely is one -- no shelf, no clock, nothing but the tile. The window is
-      // the only object in the room with light behind it, and the sink under it is the thing his father talked to
-      // for nineteen years, so the sentence lands here: the whole window across the top of frame, the tap below
-      // it, and the rings going out across the glass.
-      ...cam.push({ on: K(-2.30, 1.48, -2.98), dist: 3.20, to: 2.85, yaw: 14, pitch: 6, fov: 48 }),
-      zone: "kitchen",
-      look: "overworld-day",
-      note: "The window over the sink with the morning in it and the tap just below: the place his dad said it to every day, taking the sentence for the first time.",
+      // THE SHOP WINDOW, which is the only lit thing on this street. The kitchen was tried four times and every
+      // version failed for the same reason: the pack's kitchen whitewashes that wall, so any lens close enough to
+      // hold the plaster blows it out to a blank page. The window has a frame, a lit sill and a dark street behind
+      // the lens, which is what a reflection needs, and the film already has the street in it.
+      ...cam.push({ on: S(-9.40, 2.00, -0.98), dist: 4.00, to: 3.30, yaw: 0, pitch: 2, fov: 58 }),
+      zone: "street",
+      look: "overworld-night",
+      note: "The shop window at midnight with the lit sill and the dark glass, taking the sentence without a person anywhere near it.",
       stage: (t) => (
         <>
-          <Rings at={K(-2.30, 2.05, -2.96)} t={t} from={TAKE} />
+          <Rings at={S(-9.40, 2.30, -0.94)} t={t} from={TAKE} />
         </>
       ),
     },
