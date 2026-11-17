@@ -22,8 +22,8 @@ hear it. It fades in seconds. It never tells you why they held it back.
 
 ```narration
 # clip 01-hook
-[1.hook]     My dad has said the same thing to me every night for six years.
-[1.mouth]    He has never once opened his mouth.
+[1.hook]     What if I could hear every sentence you decided not to say?
+[1.mouth]    My dad has said the same thing to me every night for six years. He has never opened his mouth.
 [1.rule]     Since I was nine, I hear every sentence a person decides not to say.
 [1.only]     Only the person it was meant for can hear it.
 
