@@ -250,7 +250,7 @@ export const scene2 = storyScene(timing, {
       // standing under it: a 1.6 m board cannot fill a 9:16 frame flat-on without losing half of it, so the
       // frame is the board AND the kid reading his own name off it.
       cue: "9.arrangeda",
-      ...cam.push({ on: [-1.10, 1.72, -3.60], dist: 2.66, to: 2.21, yaw: 39, pitch: -9, fov: 46 }),
+      ...cam.push({ on: [-1.05, 1.55, -3.70], dist: 2.84, to: 2.39, yaw: 34, pitch: -2, fov: 56 }),
       zone: "class",
       note: "The same timetable, ruled and written on, and every circled room is one he has been in.",
       stage: (_t) => (
@@ -278,7 +278,7 @@ export const scene2 = storyScene(timing, {
               );
             }),
           )}
-          <Hero position={SPOT.at(-0.55, 0, -3.05)} rotationY={NORTH + 0.35} animation="idle" face="uneasy" headPitch={0.28} />
+          <Hero position={SPOT.at(0.55, 0, -2.75)} rotationY={NORTH + 0.5} animation="idle" face="uneasy" headPitch={0.3} />
           {/* the two rings: rooms he has been in, circled in red */}
           {[
             [-1.14, 1.845],
