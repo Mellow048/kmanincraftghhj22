@@ -49,7 +49,7 @@ const WALL: Vec3 = SPOT.at(0, 0, -3.885);
  * would be if the light came from behind the camera. Not ON the board: the board has a chalk tray along its bottom
  * edge, and anything standing on the board has its head cut off by it.
  */
-const WALL_ASIDE: Vec3 = SPOT.at(1.95, 0, -3.15);
+const WALL_ASIDE: Vec3 = SPOT.at(1.2, 0, -2.7);
 
 /** The house the shadow draws: three windows, one door. Used twice here and once at the end of the film. */
 const DrawnHouse: React.FC<{ at: Vec3; scale?: number; draw?: number }> = ({ at, scale = 1, draw = 1 }) => (
@@ -81,10 +81,12 @@ export const scene1 = storyScene(timing, {
       // cannot see, from any angle, because `on` is the look point. So the hook is not "him and his shadow" - it is
       // the shadow ALONE, a metre and a half to the right of him, waving at nothing. That is also the better image:
       // frame one is a hand that is not doing what its owner is doing.
-      // Close, level with the shadow's chest, in the metre and a half of floor between the front desk row and the
-      // board. At dist 2.3 the lens was standing inside the front-row desk, which is the big brown block that was
-      // filling the bottom of frame. fov is wide enough to take in a whole standing figure at this range.
-      ...cam.push({ on: SPOT.at(1.95, 0.80, -3.15), dist: 1.78, to: 1.62, yaw: 5, pitch: 4, fov: 52 }),
+      // Six lenses taught me the layout the hard way, so here it is for good: the classroom is 9.4 m wide with three
+      // desk columns at x = -2.4, 0, 2.4, each 0.9 m wide. Between columns 1 and 2 is a clear 1.5 m aisle running all
+      // the way to the board. ANY lens that looks at the board from the front crosses a desk unless it is in that
+      // aisle. So the shadow stands in the aisle, and the lens stands back along the same aisle: nothing between them
+      // but floor, with the board as the green wall behind and desk edges framing both sides.
+      ...cam.push({ on: SPOT.at(1.2, 0.82, -2.7), dist: 2.45, to: 2.2, yaw: 3, pitch: 3, fov: 46 }),
       zone: "class",
       note: "The question, over the picture that answers it: the teller standing in front of the board, and on the board behind him a flat black shadow with its arm up, waving. It is his size, it is in the right place, and it is doing the one thing he is not.",
       stage: (t) => (
