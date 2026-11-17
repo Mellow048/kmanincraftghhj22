@@ -70,24 +70,24 @@ export const scene1 = storyScene(timing, {
     {
       // Not how long you had to live. The clock is a clock, not a timer on a life: one small tick past it.
       cue: "1.live",
-      // The subject is the boy with the four over his head, and he sits facing the BOARD. A lens south of him films the
-      // back of his head - which is what this shot did. Lens now stands on the board side looking back, so the clock
-      // and the face are both in frame with the room's back wall behind them.
-      ...cam.push({ on: SPOT.face(1, 0), dist: 2.5, to: 2.2, yaw: 176, pitch: -2, fov: 46 }),
+      // The subject is the number, not the boy. Clock sits at face + tall(1.34) + 0.42 + size*0.5, so with the number
+      // at 0.62 it is centred about 2.07 m up. Aiming at the face put it in the bottom of frame with the top of the
+      // shot wasted on wall. Aim between the two, and it is a number over a head, which is the whole power.
+      ...cam.push({ on: SPOT.at(0, 1.72, 0.5), dist: 2.6, to: 2.3, yaw: 176, pitch: 0, fov: 44 }),
       zone: "class",
       note: "Up to the clock itself on the word: it hangs over the front row, small, plain, ordinary, the way a clock is ordinary when it is counting something that is not a life. The heads underneath are calm and the clock is calm. This is the picture that says the film is not about dying.",
       stage: (t) => (
         <>
           <Classmate who={3} position={SPOT.seat(1, 0)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
           <Classmate who={1} position={SPOT.seat(1, 1)} rotationY={NORTH} animation="sit" face="calm" headPitch={0.3} />
-          <Clock over={SPOT.seat(1, 0)} n="4" t={t - LIVE} size={0.62}  rotationY={0.0698}/>
+          <Clock over={SPOT.seat(1, 0)} n="4" t={t - LIVE} size={0.62} rotationY={0.07} />
         </>
       ),
     },
     {
       // How long before you lost your temper: the clock starts to run. Same clock, and now it is winding down.
       cue: "1.temper",
-      ...cam.push({ on: SPOT.face(1, 0), dist: 2.0, to: 1.8, yaw: 168, pitch: 4, fov: 42 }),
+      ...cam.push({ on: SPOT.at(0, 1.70, 0.5), dist: 2.4, to: 2.15, yaw: 166, pitch: 1, fov: 46 }),
       zone: "class",
       note: "The clock from the side, and it begins to run: the boy under it starts to fidget, and the thing over his head gets smaller as the line says what it counts. Two people, one small bright clock, no explanation - the viewer works out the rule of the film from this one shot.",
       stage: (t) => {
@@ -131,7 +131,7 @@ export const scene1 = storyScene(timing, {
     {
       // Four seconds. I did not know four what. On the clock, and it is running out.
       cue: "2.four",
-      ...cam.push({ on: SPOT.seat(1, 0), dist: 1.9, to: 1.6, yaw: 172, pitch: 14, fov: 44 }),
+      ...cam.push({ on: SPOT.at(0, 1.72, 0.5), dist: 2.15, to: 1.95, yaw: 174, pitch: 2, fov: 44 }),
       zone: "class",
       note: "Hard on the clock, from under it, so it fills the top of the frame and the boy's head is a dark shape under it. It is going down while he says he did not know four what. The audience does not know either, and the clock is not going to tell them.",
       stage: (t) => {
