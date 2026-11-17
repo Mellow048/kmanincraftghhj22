@@ -65,16 +65,16 @@ export const scene3 = storyScene(timing, {
     {
       cue: "12.sat",
       // Her hands, and her shoes: she has been walking all day.
-      ...cam.push({ on: K(0.30, 0.58, 1.80), dist: 2.60, to: 2.20, yaw: 0, pitch: -6, fov: 48 }),
+      ...cam.push({ on: K(0.30, 0.62, 1.05), dist: 2.40, to: 2.00, yaw: 0, pitch: -8, fov: 46 }),
       zone: "kitchen",
       look: "overworld-night",
       note: "Down at her feet under the table: her shoes, dusty to the laces, and the hem of her coat. The walking is the proof.",
       stage: (t) => (
         <>
           <Mum position={K(0.30, 0, 1.30)} rotationY={NORTH} animation="sit" face="calm" />
-          <Block size={[0.22, 0.12, 0.34]} position={K(0.10, 0.06, 1.90)} color="#4a3a2e" castShadow={false} />
-          <Block size={[0.22, 0.12, 0.34]} position={K(0.52, 0.06, 1.90)} color="#4a3a2e" castShadow={false} />
-          <Block size={[0.44, 0.03, 0.4]} position={K(0.31, 0.02, 1.95)} color="#b8a894" opacity={0.55 * pop(t, MUM_SIT)} transparent castShadow={false} />
+          <Block size={[0.22, 0.12, 0.34]} position={K(0.10, 0.06, 1.18)} color="#4a3a2e" castShadow={false} />
+          <Block size={[0.22, 0.12, 0.34]} position={K(0.52, 0.06, 1.18)} color="#4a3a2e" castShadow={false} />
+          <Block size={[0.44, 0.03, 0.4]} position={K(0.31, 0.02, 1.22)} color="#b8a894" opacity={0.55 * pop(t, MUM_SIT)} transparent castShadow={false} />
         </>
       ),
     },
