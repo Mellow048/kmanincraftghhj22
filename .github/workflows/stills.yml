@@ -72,6 +72,7 @@ jobs:
           COMPOSITION: ${{ inputs.composition }}
         run: |
           # git commit itself does not persist on this runner, so the commit is built by hand.
+          git add -f "review/${COMPOSITION}/"
           TREE=$(git write-tree)
           PARENT=$(git rev-parse HEAD)
           COMMIT=$(git commit-tree "$TREE" -p "$PARENT" -m "Diagnostic review frames for ${COMPOSITION}")
