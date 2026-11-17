@@ -1,0 +1,528 @@
+{
+  "film": "what-if-every-lie-added-a-netherite-block",
+  "README": "Sound follows the recurring lie-block clank, then lets the honest confession clear it. Cues and spoken words anchor every event; run scripts/sound.py build after edits.",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.what",
+        "mood": "tense",
+        "why": "Cold open: the lantern is in danger before the story rewinds."
+      },
+      {
+        "from": "2.day",
+        "mood": "wonder",
+        "why": "Daylight reveals the impossible rule and the friends' bright lantern plan."
+      },
+      {
+        "from": "5.proud",
+        "mood": "curious",
+        "why": "The blue ribbon is a wish, and the friend plants the promise to fix things together."
+      },
+      {
+        "from": "6.accident",
+        "mood": "sneak",
+        "why": "The switch breaks, and the teller starts hiding what he did."
+      },
+      {
+        "from": "10.storm",
+        "mood": "tense",
+        "why": "The storm and the accumulated weight push the teller to the edge."
+      },
+      {
+        "from": "11.admit",
+        "mood": "hope",
+        "why": "The first honest confession changes the danger into a chance to help each other."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.what",
+      "to": "1.weight",
+      "bed": "wind",
+      "why": "The cold-open gust around the parade lantern."
+    },
+    {
+      "from": "2.day",
+      "to": "5.friend",
+      "bed": "village",
+      "why": "Open schoolyard air while the friends build and plan."
+    },
+    {
+      "from": "6.accident",
+      "to": "14.sub",
+      "bed": "night",
+      "why": "The parade route at night, under every lie and the final repair."
+    },
+    {
+      "from": "10.storm",
+      "to": "12.help",
+      "bed": "wind",
+      "why": "Rain and wind rise with the lantern's near-fall."
+    },
+    {
+      "from": "13.light",
+      "to": "14.sub",
+      "bed": "crowd",
+      "why": "The waiting parade crowd cheers once the lantern lights again."
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.what",
+      "word": "block",
+      "sfx": "clank",
+      "why": "The first Netherite block enters the pack."
+    },
+    {
+      "cue": "1.what",
+      "word": "block",
+      "sfx": "gust",
+      "trim": -3,
+      "why": "A storm gust blows through the opening picture."
+    },
+    {
+      "cue": "1.weight",
+      "word": "buckle",
+      "sfx": "thud",
+      "trim": -2,
+      "why": "His knees hit the ground under the first block."
+    },
+    {
+      "cue": "2.day",
+      "sfx": "whoosh",
+      "why": "The cold open cuts back to the bright daytime build."
+    },
+    {
+      "cue": "2.day",
+      "word": "built",
+      "sfx": "place",
+      "why": "The friends set their lantern frame onto the parade cart."
+    },
+    {
+      "cue": "2.day",
+      "word": "friend",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "Cloth shifts as the two friends lift the frame together."
+    },
+    {
+      "cue": "2.goal",
+      "word": "glowing",
+      "sfx": "chime",
+      "why": "The finished lantern is their bright parade hope."
+    },
+    {
+      "cue": "3.rule",
+      "word": "one",
+      "sfx": "clank",
+      "why": "A single cube demonstrates the rule of the power."
+    },
+    {
+      "cue": "3.secret",
+      "word": "see",
+      "sfx": "glitch",
+      "trim": -3,
+      "why": "Only the teller notices the impossible cube."
+    },
+    {
+      "cue": "3.truth",
+      "word": "cleared",
+      "sfx": "power_down",
+      "trim": -5,
+      "why": "Truth makes the demonstration block disappear (trimmed 5 dB: at full level it left the voice only 4 dB above the mix; at 7 it fell under the music)."
+    },
+    {
+      "cue": "3.limit",
+      "word": "told",
+      "sfx": "blip",
+      "trim": -3,
+      "why": "The blank block gives him no hint about what to confess."
+    },
+    {
+      "cue": "3.danger",
+      "word": "pass",
+      "sfx": "heartbeat",
+      "repeat": 2,
+      "every": 0.65,
+      "trim": -2,
+      "why": "A brief pulse under the warning about the real danger."
+    },
+    {
+      "cue": "3.danger",
+      "word": "away",
+      "sfx": "drop",
+      "trim": -2,
+      "why": "The stakes fall dark on 'pass away'."
+    },
+    {
+      "cue": "4.test",
+      "word": "tested",
+      "sfx": "blip",
+      "trim": -3,
+      "why": "He tries to sound certain about a switch he never tested."
+    },
+    {
+      "cue": "4.block",
+      "word": "block",
+      "sfx": "clank",
+      "why": "The first lie in the story adds its matching block."
+    },
+    {
+      "cue": "4.told",
+      "word": "never",
+      "sfx": "power_down",
+      "why": "He tells the truth and clears that first block."
+    },
+    {
+      "cue": "5.proud",
+      "sfx": "whoosh",
+      "why": "The next beat turns from the rule to the blue-ribbon wish."
+    },
+    {
+      "cue": "5.proud",
+      "word": "ribbon",
+      "sfx": "chime",
+      "why": "The little blue ribbon marks the prize they hope to win."
+    },
+    {
+      "cue": "5.friend",
+      "word": "together",
+      "sfx": "chime",
+      "trim": -3,
+      "why": "The friend's promise to fix the lantern together."
+    },
+    {
+      "cue": "6.accident",
+      "sfx": "whoosh",
+      "why": "The story turns to the night parade and its new mistake."
+    },
+    {
+      "cue": "6.accident",
+      "word": "snapped",
+      "sfx": "crack",
+      "why": "The teller breaks the redstone switch while showing off."
+    },
+    {
+      "cue": "6.deny",
+      "word": "touch",
+      "sfx": "buzz",
+      "trim": -2,
+      "why": "His denial is immediately false."
+    },
+    {
+      "cue": "6.weight",
+      "word": "block",
+      "sfx": "clank",
+      "why": "The denial adds one cube to the pack."
+    },
+    {
+      "cue": "6.hide",
+      "word": "smiled",
+      "sfx": "rustle",
+      "why": "He turns away and tries to hide the strain."
+    },
+    {
+      "cue": "7.fix",
+      "sfx": "whoosh",
+      "why": "Cut to the friend offering a chance to repair the lantern."
+    },
+    {
+      "cue": "7.fix",
+      "word": "asked",
+      "sfx": "blip",
+      "trim": -3,
+      "why": "The friend asks if he can fix it."
+    },
+    {
+      "cue": "7.lie",
+      "word": "myself",
+      "sfx": "clank",
+      "why": "The 'by myself' lie adds another Netherite block."
+    },
+    {
+      "cue": "7.spare",
+      "word": "swore",
+      "sfx": "rustle",
+      "why": "He searches an empty pocket for a switch that is not there."
+    },
+    {
+      "cue": "7.spare",
+      "word": "spare",
+      "sfx": "clank",
+      "why": "The false spare-switch claim adds a third block."
+    },
+    {
+      "cue": "7.blocks",
+      "word": "bent",
+      "sfx": "scrape",
+      "why": "The growing stack drags him down onto his knees (trimmed -5 dB: measured, it left the voice only 3-5 dB above the mix, the tightest moment in the film).",
+      "trim": -5
+    },
+    {
+      "cue": "8.red",
+      "sfx": "whoosh",
+      "why": "The next shot isolates the lantern's red fault light."
+    },
+    {
+      "cue": "8.red",
+      "word": "red",
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "The switch is still broken, not warming up."
+    },
+    {
+      "cue": "8.lie",
+      "word": "warming",
+      "sfx": "clank",
+      "why": "Another lie adds the fourth cube."
+    },
+    {
+      "cue": "8.weight",
+      "word": "slower",
+      "sfx": "scrape",
+      "why": "His feet drag as the added weight slows him."
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "whoosh",
+      "why": "Cut to the friend noticing the teller's sweat and strain."
+    },
+    {
+      "cue": "9.friend",
+      "word": "sweat",
+      "sfx": "blip",
+      "trim": -3,
+      "why": "A small warning as the friend spots the sweat."
+    },
+    {
+      "cue": "9.fine",
+      "word": "okay",
+      "sfx": "heartbeat",
+      "trim": 4,
+      "why": "His friend asks if he is okay; a quiet pulse becomes audible under the question."
+    },
+    {
+      "cue": "9.lie",
+      "word": "fine",
+      "sfx": "clank",
+      "why": "The fifth lie adds the heaviest cube yet."
+    },
+    {
+      "cue": "9.breath",
+      "word": "breathe",
+      "sfx": "heartbeat",
+      "trim": -4,
+      "why": "One close, restrained pulse as he struggles to breathe."
+    },
+    {
+      "cue": "9.breath",
+      "word": "chest",
+      "sfx": "drop",
+      "trim": -3,
+      "why": "The fear tightens as his chest does."
+    },
+    {
+      "cue": "10.storm",
+      "sfx": "whoosh",
+      "why": "The schoolyard storms over as the climax begins."
+    },
+    {
+      "cue": "10.storm",
+      "word": "storm",
+      "sfx": "gust",
+      "why": "A gust drives the rain and yanks the lantern sideways."
+    },
+    {
+      "cue": "10.storm",
+      "word": "sideways",
+      "sfx": "riser",
+      "dur": 1.6,
+      "why": "Wind rises into the lantern's dangerous swing."
+    },
+    {
+      "cue": "10.rope",
+      "word": "caught",
+      "sfx": "rustle",
+      "why": "The friend catches and braces the lantern's rope."
+    },
+    {
+      "cue": "10.run",
+      "word": "ran",
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 0.62,
+      "trim": -2,
+      "why": "Two slow, wet steps toward the friend."
+    },
+    {
+      "cue": "10.run",
+      "word": "slower",
+      "sfx": "scrape",
+      "why": "The blocks drag against every attempted step."
+    },
+    {
+      "cue": "10.down",
+      "word": "knees",
+      "sfx": "thud",
+      "trim": -2,
+      "why": "The weight wins and drops him onto his knees."
+    },
+    {
+      "cue": "10.danger",
+      "word": "pass",
+      "sfx": "heartbeat",
+      "trim": -4,
+      "why": "One restrained pulse holds the danger of passing away (trimmed -4 dB: measured, it left the voice only 3-5 dB above the mix, the tightest moment in the film)."
+    },
+    {
+      "cue": "10.danger",
+      "word": "away",
+      "sfx": "drop",
+      "trim": -4,
+      "why": "The edge of the danger lands on 'away' (trimmed -4 dB: measured, it left the voice only 3-5 dB above the mix, the tightest moment in the film)."
+    },
+    {
+      "cue": "11.admit",
+      "sfx": "whoosh",
+      "why": "Cut into the first honest confession."
+    },
+    {
+      "cue": "11.admit",
+      "word": "broke",
+      "sfx": "power_down",
+      "why": "Owning the broken switch removes the first matching block."
+    },
+    {
+      "cue": "11.admit",
+      "word": "lied",
+      "sfx": "boom",
+      "trim": -4,
+      "why": "The reveal: the lie, not the lantern, has been weighing him down."
+    },
+    {
+      "cue": "11.spare",
+      "word": "spare",
+      "sfx": "power_down",
+      "why": "His second confession clears the block from the invented spare (trimmed -4 dB: measured, it left the voice only 3-5 dB above the mix, the tightest moment in the film).",
+      "trim": -4
+    },
+    {
+      "cue": "11.vanish",
+      "word": "vanished",
+      "sfx": "power_down",
+      "why": "Two blocks finish fading, leaving three still pinned to him."
+    },
+    {
+      "cue": "12.remain",
+      "sfx": "whoosh",
+      "why": "The next truth starts with the three blocks that still remain."
+    },
+    {
+      "cue": "12.remain",
+      "word": "pinned",
+      "sfx": "scrape",
+      "why": "The remaining cubes keep his shoulders and knees down."
+    },
+    {
+      "cue": "12.why",
+      "word": "rope",
+      "sfx": "creak",
+      "why": "The friend strains to keep one hand on the rope."
+    },
+    {
+      "cue": "12.reach",
+      "word": "reached",
+      "sfx": "swish",
+      "why": "The friend's free hand reaches toward the teller."
+    },
+    {
+      "cue": "12.truth",
+      "word": "warming",
+      "sfx": "power_down",
+      "why": "He names the warming-switch lie and its block begins to clear."
+    },
+    {
+      "cue": "12.fine",
+      "word": "scared",
+      "sfx": "power_down",
+      "why": "He admits he was scared, not fine."
+    },
+    {
+      "cue": "12.help",
+      "word": "needed",
+      "sfx": "power_down",
+      "why": "The final admission releases the last invisible weight."
+    },
+    {
+      "cue": "12.help",
+      "word": "you",
+      "sfx": "chime",
+      "trim": -3,
+      "why": "The words 'I needed you' turn the confession into a request for help."
+    },
+    {
+      "cue": "13.release",
+      "sfx": "whoosh",
+      "why": "The next beat begins as the friend pulls him up."
+    },
+    {
+      "cue": "13.release",
+      "word": "pulled",
+      "sfx": "slide_up",
+      "why": "The friend lifts him as the weight releases."
+    },
+    {
+      "cue": "13.repair",
+      "word": "switch",
+      "sfx": "clank",
+      "why": "The friends set the repaired switch back into place."
+    },
+    {
+      "cue": "13.repair",
+      "word": "steadied",
+      "sfx": "place",
+      "why": "Together they steady the crooked lantern on its cart."
+    },
+    {
+      "cue": "13.light",
+      "word": "lit",
+      "sfx": "power_up",
+      "why": "The lantern glows again after the repair."
+    },
+    {
+      "cue": "13.light",
+      "word": "cheered",
+      "sfx": "cheer",
+      "trim": -2,
+      "why": "The parade crowd responds when the lantern lights."
+    },
+    {
+      "cue": "14.action",
+      "sfx": "whoosh",
+      "why": "A final quiet cut to the empty pack beside the lantern."
+    },
+    {
+      "cue": "14.action",
+      "word": "pack",
+      "sfx": "rustle",
+      "why": "He sets down the now-empty cloth pack."
+    },
+    {
+      "cue": "14.action",
+      "word": "beside",
+      "sfx": "place",
+      "trim": -2,
+      "why": "The pack settles on the ground beside their lantern."
+    },
+    {
+      "cue": "14.sub",
+      "word": "Subscribe",
+      "sfx": "ding",
+      "note": "A6",
+      "trim": -2,
+      "why": "A warm, small button on the subscribe line, not a new music swell."
+    }
+  ]
+}

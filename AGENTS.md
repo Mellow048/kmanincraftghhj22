@@ -1,5 +1,24 @@
 # AGENTS.md — The Director's Contract
 
+## 0. Before everything: read [`MASTERPROMPT-01.md`](MASTERPROMPT-01.md)
+
+The owner's standing brief, given 2026-11-11, the day Monster Village Part 1 passed 15,000 views. Read it at the
+start of every turn that touches a film — before a script, a scene, a render or a review. It is short and it is
+above the topic rules:
+
+- a hook in the first three seconds: no logo, no greeting, no empty establishing shot;
+- familiar Minecraft things in an unfamiliar human situation — family, secrets, fear, embarrassment, consequences;
+- a seven-beat spine (hook, setup, objective, complication, escalation, twist, payoff) and no scene that earns none of them;
+- the story readable with the sound off: faces, movement, framing, lighting, action and consequence;
+- real shot variety: wide for place and group, medium for interaction, close for reaction, action for the event;
+- uppercase pixel captions, white with a black outline, that match the words actually spoken;
+- atmosphere that changes for a narrative reason — day to sunset to lantern light;
+- the CTA only after the payoff, never over the story;
+- the six-stage workflow, ending in an honest self-review, and the required final output list.
+
+This file decides **which kind** of film is being made. `MASTERPROMPT-01.md` decides **whether it will hold a
+viewer**. A film that satisfies this file and fails that one is not finished.
+
 ## 0. First: which kind of film were you asked for?
 
 This framework makes more than one kind of video. **Decide which one before you read another rule or write a line of
@@ -8,24 +27,28 @@ code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown
 | The request… | It is | Read | Start with |
 |---|---|---|---|
 | says "In This Town"; or tells a story that begins "In this town, …"; or asks for a storytime, a narrated story of a minute or more, or a film "like Same Face", "like the monster egg" or "like the treehouse video" | The topic **In This Town** | [`Topics/InThisTown/README.md`](Topics/InThisTown/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "In This Town, …" --topic in-this-town` |
-| asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation; or asks a "What if …" that is answered with facts | The topic **Explainer** (provisional) | [`Topics/Explainer/README.md`](Topics/Explainer/README.md) and what it lists. From this file, sections 9–11, and rule 3: the camera never teleports | `npm run new -- "Why Bread Costs More" --topic explainer` |
-| says "What if you could …"; or tells the story of a kid who gets a power | The topic **What If** (provisional) | [`Topics/WhatIf/README.md`](Topics/WhatIf/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "What If You Could …" --topic what-if` |
+| asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation; or asks a "What if …" that is answered with facts | The topic **Stories** | [`Topics/Stories/README.md`](Topics/Stories/README.md) and what it lists. From this file, sections 9–11, and rule 3: the camera never teleports | `npm run new -- "Why Bread Costs More" --topic stories` |
+| says "What if you could …"; or tells the story of a kid who gets a power | The topic **What If** | [`Topics/WhatIf/README.md`](Topics/WhatIf/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "What If You Could …" --topic what-if` |
 | names another folder in `Topics/` | That topic | [`Topics/README.md`](Topics/README.md), then the topic's `README.md` | `npm run new -- "…" --topic <id>` |
 | asks for a 20-second short, or for none of the above | The **base film** | This file, from "The base film" down | `npm run new -- "The Title"` |
 | could be either | | | Ask the owner one question. Do not guess |
 
-**"In This Town" is the name of a format, not a title.** It runs one to three minutes, **never over three** (strict rule, below). One kid tells it in the past
+**"In This Town" is the name of a format, not a title.** It runs one to three minutes. One kid tells it in the past
 tense. It cuts about every two seconds to a recorded voice, captions every word, has music and sound effects, and ends
 on a twist that was planted in the first minute. A 20-second film with that name is not a short version of it. The
 short version is the topic's own `cut: "short"`: one to two minutes.
 
-**Explainer and What If are PROVISIONAL.** The owner asked for them before their references. Their rules, packs,
-starters and sounds are in place and `npm run check` holds a film to their numbers, but no number is measured from
-a real video yet, and no film of either has been approved. The owner decided that we make each reference ourselves
-("you are the one making that reference!"): the first film of each topic that he approves becomes it. When that
-happens, measure it and correct the topic: `Topics/<Folder>/reference/README.md` says how. An Explainer is not a story: its
-camera does not cut. It flies from one thing to the next (`flightScene`), which is this file's rule 3 driven by a
-recorded voice.
+**Stories and What If each have a reference film of our own.** The owner asked for both topics before their
+references, and then for us to make each reference ourselves ("you are the one making that reference!"). The first
+film of each is built, approved (2026-11-13: "okay i love both really, this can be uploaded too!") and measured:
+`Topics/Stories/reference/bread/` and `Topics/WhatIf/reference/crush/`. Open the one for your topic before you
+build. A film of this topic does not cut: its camera flies from one thing to the next (`flightScene`), which is
+this file's rule 3 driven by a recorded voice.
+
+**The owner renamed this topic from Explainer to Stories on 2026-11-11**, and pointed it at a new reference: a
+narrated Minecraft story, studied in `Topics/Stories/reference for new topic/`. The two films already in it
+(`why-does-bread-cost-more-every-year`, `what-is-a-dictator`) answer one question each and keep the flying camera;
+read the new reference before you build anything else here, and read the topic's `README.md` for where it is going.
 
 What a topic gives a film, that the base does not:
 
@@ -55,26 +78,6 @@ Do not get past a refusal by renaming the film, rewording its first line, deleti
 excuse into `topic.json`. The excuses there (`sound.voiceOnly`, a new `cut`) are the owner's to give. If you think a
 check is wrong, say so and ask.
 
-### STRICT RULE: no film runs over three minutes
-
-The owner, 2026-11-14: **"add a strict rule, no over 3 minutes"**. A vertical video over 3:00 is not a YouTube Short:
-YouTube files it as a long video, and that happened to two delivered films (3:41 and 3:25), which then had to be cut
-down. So:
-
-- **Every film is 2:58 (178 s) or shorter.** No topic, no named cut and no request for "a longer ending" raises that.
-  If a story does not fit, **split it into parts**; do not make it longer.
-- `npm run check` fails a script over 178 s, and `render.yml` refuses to render a vertical film over 180 s.
-- Check the length when the script is written (`narration.py build <film> --estimate`), not after the render.
-- A recorded film that is too long loses whole lines with `python3 scripts/trim-narration.py <film> <cue.id> …`
-  (no new recording), then their shots and their rows in `sound.json`. Look at both sides of every join on stills.
-
-### Read the owner's notes first
-
-`Topics/InThisTown/OWNER.md` is what the owner likes, what reviews of his films said, and the two rules that came out
-of them: **the premise is on screen in the first second**, and **no two shots in a row look alike** (every scene has
-an environment shot, a travelling shot and an odd angle). Read it before a script or a shot. When he says what he
-liked or did not like, write it there, with the date.
-
 ### Five things that hold for every topic film
 
 1. **The owner approves the script before anything is built.** Ideas, then the script, then stop and wait.
@@ -85,8 +88,8 @@ liked or did not like, write it there, with the date.
    changes with the story. The topic's `SOUND.md` says which.
 4. **An approved film does not change.** If you touch the engine or a pack, prove that the finished films' stills are the
    same before and after: `scripts/compare-stills.py`.
-5. **Copy how the reference film is built. Never copy its story**, its sentences or its twist. A provisional topic
-   has no reference film yet: its `README.md` names the finished film to learn the building from.
+5. **Copy how the reference film is built. Never copy its story**, its sentences or its twist. Every topic has
+   one: `reference` in its `topic.json` names it, and `Topics/<Folder>/reference/README.md` lists the others.
 
 ### If the topic's folder is not there
 
@@ -459,7 +462,7 @@ npm install                 # once
 npm run dev                 # Remotion Studio
 npm run new -- "The Title"  # scaffold a base film folder + registry entry
 npm run new -- "In This Town, …" --topic in-this-town   # scaffold a topic film from the topic's own starter
-npm run new -- "Why Bread Costs More" --topic explainer # …an explainer: one question, a camera that flies
+npm run new -- "Why Bread Costs More" --topic stories # …a story: one question, a camera that flies
 npm run new -- "What If You Could …" --topic what-if    # …a "What if" story: a kid and one power
 npm run typecheck           # TypeScript
 npm run check               # director/contract lint

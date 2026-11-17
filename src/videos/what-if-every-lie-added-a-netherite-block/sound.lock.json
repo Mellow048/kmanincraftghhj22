@@ -1,0 +1,116 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-every-lie-added-a-netherite-block",
+  "mix": "public/audio/what-if-every-lie-added-a-netherite-block/mix.mp3",
+  "seconds": 91.0667,
+  "built_from": {
+    "timing.json": "a4ca1eb659aa51061017c3ddb9e91bbbacc48201",
+    "sound.json": "3ee634c3dc9eb3df4777096d1e0e5043a71e3f2f",
+    "narration.mp3": "2da5b17e9c2f72cfd89046bd821001fea218f48f"
+  },
+  "mix_sha1": "9cc4531ab684ac6c3816591dfca4d0e3c016eeec",
+  "music_sections": [
+    {
+      "from": "1.what",
+      "mood": "tense",
+      "at": 0.0
+    },
+    {
+      "from": "2.day",
+      "mood": "wonder",
+      "at": 4.17
+    },
+    {
+      "from": "5.proud",
+      "mood": "curious",
+      "at": 23.63
+    },
+    {
+      "from": "6.accident",
+      "mood": "sneak",
+      "at": 28.13
+    },
+    {
+      "from": "10.storm",
+      "mood": "tense",
+      "at": 55.4
+    },
+    {
+      "from": "11.admit",
+      "mood": "hope",
+      "at": 64.6
+    }
+  ],
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 19.0,
+    "secondsWithoutMusic": 3.0,
+    "bedsUnderVoiceDb": 24.6,
+    "sfx": 74,
+    "sfxPerMinute": 48.8,
+    "sfxKinds": 24,
+    "longestGapSeconds": 2.9,
+    "longestGapAt": 11.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.4,
+    "voiceOverRestWorstDb": 4.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.7,
+        "t": 14.4,
+        "cue": "3.truth",
+        "sounding": [
+          "power_down"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 88.1,
+        "cue": "14.action",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 64.1,
+        "cue": "10.danger",
+        "sounding": [
+          "drop",
+          "heartbeat",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 23.0,
+        "cue": "4.told",
+        "sounding": [
+          "power_down",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 1.7,
+        "cue": "1.what",
+        "sounding": [
+          "clank",
+          "gust"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 77.5,
+        "cue": "12.fine",
+        "sounding": [
+          "power_down"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}
