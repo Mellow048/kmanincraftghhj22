@@ -232,15 +232,19 @@ export const scene1 = storyScene(timing, {
       note: "The back door, open onto a brick wall he can touch, and his dad doing exactly what the street has done to everyone: walking into it and trying again.",
       stage: (t) => (
         <>
-          <Block size={[0.4, 2.6, 7.0]} position={S(-8.30, 1.3, -3.9)} color="#7a5f4a" castShadow={false} />
+          <Block size={[0.4, 2.6, 7.0]} position={S(-8.30, 1.3, -3.9)} color="#8a4436" castShadow={false} />
           <Adult
             position={S(-8.95, 0, -2.00)}
-            rotationY={WEST}
+            rotationY={EAST}
             animation="walk"
             animDistance={ramp(t, 0, 1.6) * 1.1}
             face="frown"
           />
           <Block size={[0.4, 3.6, 9.0]} position={S(-9.60, 1.8, -4.6)} color="#9a7f62" castShadow={false} />
+          {/* mortar courses, so the wall he is walking into reads as brick and not as a lit door */}
+          {[0.55, 1.05, 1.55, 2.05, 2.55].map((y) => (
+            <Block key={`m${y}`} size={[0.02, 0.05, 7.0]} position={S(-8.49, y, -3.9)} color="#c9b49a" castShadow={false} />
+          ))}
           {/* This alley is sealed by two walls and has no street lamp in it, so it needs its own light or the
               frame is black however the lens is placed. A service lamp over the back door, the same sodium
               colour as the street. */}
