@@ -1,0 +1,81 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "what-if-you-could-smell-a-lie",
+  "mix": "public/audio/what-if-you-could-smell-a-lie/mix.mp3",
+  "seconds": 115.6333,
+  "built_from": {
+    "timing.json": "0d0f4d167001eeb66b748679e0c2795af7199265",
+    "sound.json": "3cdf7f3ca7294c415a2dd6f52540749044ebddf8",
+    "narration.mp3": "49f53ea3cdb11f9744026084753d0c924102ba68"
+  },
+  "mix_sha1": "32f92d26227a118d581a86923d9416b879e69ba9",
+  "music_sections": [
+    {
+      "from": "1.what",
+      "mood": "wonder",
+      "at": 0.0
+    }
+  ],
+  "beds": 12,
+  "measured": {
+    "musicUnderVoiceDb": 19.1,
+    "secondsWithoutMusic": 0.1,
+    "bedsUnderVoiceDb": 29.9,
+    "sfx": 14,
+    "sfxPerMinute": 7.3,
+    "sfxKinds": 2,
+    "longestGapSeconds": 13.7,
+    "longestGapAt": 85.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 18.6,
+    "voiceOverRestWorstDb": 9.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 9.1,
+        "t": 7.4,
+        "cue": "2.smell",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 9.1,
+        "t": 47.8,
+        "cue": "7.proud",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 9.4,
+        "t": 75.6,
+        "cue": "10.smile",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 9.5,
+        "t": 103.2,
+        "cue": "14.smell",
+        "sounding": []
+      },
+      {
+        "db": 10.4,
+        "t": 89.8,
+        "cue": "13.not",
+        "sounding": []
+      },
+      {
+        "db": 10.9,
+        "t": 13.4,
+        "cue": "3.rule",
+        "sounding": []
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -1.1,
+    "limiterMaxDb": 1.1
+  },
+  "failures": []
+}

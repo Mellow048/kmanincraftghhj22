@@ -1,0 +1,148 @@
+{
+  "film": "what-if-you-could-smell-a-lie",
+  "README": "The sound sheet. Read Topics/WhatIf/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build what-if-you-could-smell-a-lie",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.what",
+        "mood": "wonder",
+        "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.what",
+      "to": "3.hair",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.dad",
+      "to": "3.dad",
+      "bed": "room"
+    },
+    {
+      "from": "3.rule",
+      "to": "3.rule",
+      "bed": "classroom"
+    },
+    {
+      "from": "3.limit",
+      "to": "3.limit",
+      "bed": "room"
+    },
+    {
+      "from": "4.class",
+      "to": "4.class",
+      "bed": "classroom"
+    },
+    {
+      "from": "5.mum",
+      "to": "6.fine",
+      "bed": "room"
+    },
+    {
+      "from": "6.honest",
+      "to": "6.silent",
+      "bed": "classroom"
+    },
+    {
+      "from": "7.sunday",
+      "to": "8.lost",
+      "bed": "room"
+    },
+    {
+      "from": "9.friend",
+      "to": "13.not",
+      "bed": "classroom"
+    },
+    {
+      "from": "13.mine",
+      "to": "13.mum",
+      "bed": "room"
+    },
+    {
+      "from": "13.det",
+      "to": "14.truth",
+      "bed": "classroom"
+    },
+    {
+      "from": "14.sub",
+      "to": "14.sub",
+      "bed": "room"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "2.maths",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "3.hair",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.class",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "5.mum",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time"
+    },
+    {
+      "cue": "6.never",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time"
+    },
+    {
+      "cue": "7.sunday",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time"
+    },
+    {
+      "cue": "8.shout",
+      "sfx": "whoosh",
+      "why": "scene 8 starts: a new place or a new time"
+    },
+    {
+      "cue": "9.friend",
+      "sfx": "whoosh",
+      "why": "scene 9 starts: a new place or a new time"
+    },
+    {
+      "cue": "10.bday",
+      "sfx": "whoosh",
+      "why": "scene 10 starts: a new place or a new time"
+    },
+    {
+      "cue": "11.stand",
+      "sfx": "whoosh",
+      "why": "scene 11 starts: a new place or a new time"
+    },
+    {
+      "cue": "12.mum",
+      "sfx": "whoosh",
+      "why": "scene 12 starts: a new place or a new time"
+    },
+    {
+      "cue": "13.all",
+      "sfx": "whoosh",
+      "why": "scene 13 starts: a new place or a new time"
+    },
+    {
+      "cue": "14.smell",
+      "sfx": "whoosh",
+      "why": "scene 14 starts: a new place or a new time"
+    },
+    {
+      "cue": "14.sub",
+      "sfx": "ding",
+      "why": "the subscribe line"
+    }
+  ]
+}
