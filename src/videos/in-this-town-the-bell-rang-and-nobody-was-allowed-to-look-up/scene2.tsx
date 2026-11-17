@@ -7,11 +7,11 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.big",
-      ...cam.push({ on: [3.4, 4.6, -2.5], dist: 20, to: 17, yaw: 0, pitch: 4, fov: 52 }),
+      ...cam.push({ on: [4, 5.2, -2.5], dist: 18, to: 15, yaw: 0, pitch: 6, fov: 50 }),
       zone: "village",
       look: DAY,
-      note: "From the front, same distance: the whole bell and the whole thing, side by side.",
-      stage: () => <SkyThing position={[6.4, 5.6, -2.5]} scale={1.15} legs={9} turn={0} />,
+      note: "The thing stands in the open gap, beside the bell, so bigger is a measurement.",
+      stage: () => <SkyThing position={[5.2, 3.2, -1.2]} scale={1.3} legs={9} turn={0} />,
     },
     {
       cue: "2.slow",

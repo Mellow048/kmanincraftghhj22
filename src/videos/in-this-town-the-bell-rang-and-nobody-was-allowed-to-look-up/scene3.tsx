@@ -15,15 +15,15 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.roof",
-      ...cam.push({ on: [0.4, 2.4, -5.6], dist: 6.4, to: 5, yaw: 10, pitch: 22, fov: 42 }),
+      ...cam.push({ on: [3.4, 2.2, -4.6], dist: 9, to: 7.2, yaw: 28, pitch: 14, fov: 42 }),
       zone: "village",
       look: DAY,
-      note: "The roof, one black leg on it, and the baker under it with his nose in the bread.",
+      note: "From the street: the roof, one black leg on it, and the baker under it with his nose in the bread.",
       stage: () => (
         <>
-          <SkyThing position={[0.2, 6.2, -7.4]} scale={0.62} legs={6} reach={1} />
-          <Baker position={[0.7, 0, -4.6]} lean={1.2} nod={0.85} />
-          <Vox kind="hay" position={[0.75, 0.55, -4.05]} size={[0.42, 0.16, 0.28]} />
+          <SkyThing position={[1.6, 6.6, -7.6]} scale={0.55} legs={6} reach={1} />
+          <Baker position={[2.2, 0, -4.2]} lean={1.2} nod={0.85} />
+          <Vox kind="hay" position={[2.25, 0.55, -3.65]} size={[0.42, 0.16, 0.28]} />
         </>
       ),
     },
