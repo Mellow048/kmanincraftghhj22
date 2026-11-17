@@ -181,14 +181,16 @@ export const scene1 = storyScene(timing, {
     {
       // The dinner lady had two, so I let people go first. A tiny clock, a small kindness, played as routine.
       cue: "3.lady",
-      ...cam.push({ on: SPOT.at(2.4, 1.3, 2.6), dist: 3.6, to: 3.0, yaw: -52, pitch: 2, fov: 46 }),
+      // Solved, not typed: the dinner lady stands at (2.2, ., 0.7) and `yaw -52` from x 2.4 walked the lens out
+      // through the east wall, so the shot was 2 seconds of plaster. Stand at (0.21, 2.62), inside the room.
+      ...cam.push({ on: [2.2, 1.2, 0.7], dist: 2.76, to: 2.46, yaw: -46, pitch: 3, fov: 46 }),
       zone: "class",
       note: "The back of the room and the door: a dinner lady with a clock at two, and the teller stepping out of the way to let her past. He does not look at her face, he looks at the number - which is the whole character in one picture, and the reason the last act costs him something.",
       stage: (t) => (
         <>
           <Hero position={[ME[0] + 0.5, 0, ME[2] - 0.9]} rotationY={NORTH - 0.7} animation="idle" face="calm" />
           <Classmate who={7} position={[ME[0] + 2.2, 0, ME[2] - 2.2]} rotationY={SPOT.door ? NORTH : NORTH} animation="walk" face="calm" headPitch={0.1} />
-          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} n="2" tall={1.8} t={t} size={0.52} tint="#e8f2ff"  rotationY={-0.9076}/>
+          <Clock over={[ME[0] + 2.2, 0, ME[2] - 2.2]} n="2" tall={1.8} t={t} size={0.52} tint="#e8f2ff"  rotationY={2.20} />
         </>
       ),
     },

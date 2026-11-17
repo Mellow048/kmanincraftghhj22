@@ -90,7 +90,9 @@ export const scene3 = storyScene(timing, {
       // Then one day the school was quiet. Every clock was far off. The calm wide shot: every clock in the frame is
       // big and far away, and the whole room is at rest. The misdirection: it reads as him being good at this.
       cue: "8.quiet",
-      ...cam.orbit({ on: SPOT.at(0, 1.3, 0.4), dist: 5.4, yaw: 186, yawTo: 200, pitch: 12, fov: 50 }),
+      // The orbit swung to yaw 200 at 5.4 m, which walks the lens out of the room: the "whole class at peace"
+      // shot was a wall. A push from inside works better anyway - it creeps toward the class instead of leaving.
+      ...cam.push({ on: SPOT.at(0, 1.10, 0.9), dist: 3.73, to: 3.43, yaw: 180, pitch: 8, fov: 52 }),
       zone: "class",
       note: "The whole class from the board side, swinging round: every head in the frame has a big calm clock over it, forty, sixty, ninety, at 0:55 of a two-minute film. It is the most peaceful shot so far, and the audience should be waiting for the catch, because that is what a quiet frame this late means.",
       stage: (t) => (
