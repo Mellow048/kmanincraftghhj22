@@ -24,7 +24,7 @@ export const film = defineFilm({
   cut: "short",
   look: "overworld-day",
   audio: { src: "audio/in-this-town-you-could-not-be-a-pirate-until-you-were-eighteen/mix.mp3" },
-  captions: { words: timing.words, y: 0.62 },
+  captions: { words: timing.words, y: 0.84 },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8],
 });

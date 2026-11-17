@@ -47,6 +47,7 @@ export const timing = timingJson as unknown as Timing;
 export const wordAt = wordClock(timing);
 
 export const DAY = "overworld-day";
+export const SUNSET = "overworld-sunset";
 export const NIGHT = "overworld-night";
 
 type A = Partial<MinecraftAvatarProps>;
@@ -159,11 +160,14 @@ export const Boat: React.FC<{ position?: Vec3; rotationY?: number; hatch?: numbe
   </group>
 );
 
-/** A door he called a boat. `sink` 0–1 takes it under the pond. */
+/** A door he called a boat. It stands up, then tips and sinks. `sink` 0–1. */
 export const DoorBoat: React.FC<{ sink?: number }> = ({ sink = 0 }) => (
-  <group position={[-6.2, 0.55 - sink * 0.7, 5.2]} rotation={[sink * 0.4, 0.3, sink * 0.2]}>
-    <Block position={[0, 0, 0]} size={[0.9, 0.08, 1.7]} color="#a56b32" />
-    <Block position={[0, 0.08, 0.5]} size={[0.16, 0.5, 0.08]} color="#f4efe2" />
+  <group position={[-6.2, 0.15 - sink * 0.45, 5.2]}>
+    <group position={[0, 0.85, 0]} rotation={[sink * 1.35, 0.15, sink * 0.15]}>
+      <Block position={[0, 0, 0]} size={[0.86, 1.7, 0.1]} color="#8a5a2a" />
+      <Block position={[0, 0.35, 0.07]} size={[0.62, 0.08, 0.02]} color="#6b4423" />
+      <Block position={[0.28, -0.15, 0.08]} size={[0.08, 0.1, 0.04]} color="#e0b83a" />
+    </group>
   </group>
 );
 
@@ -177,9 +181,9 @@ export const Kraken: React.FC<{ position?: Vec3; rise?: number; arms?: number }>
     <group position={[position[0], position[1] + y, position[2]]}>
       <Block position={[0, 0.8, 0]} size={[3.2, 2.2, 2.6]} color="#1e4d3a" />
       <Block position={[0, 1.7, 0]} size={[2.4, 1.1, 2.2]} color="#163d2e" />
-      <Block position={[0.7, 1.15, 1.15]} size={[0.55, 0.55, 0.2]} color="#f2e27a" emissive="#f2e27a" emissiveIntensity={0.6} />
-      <Block position={[-0.55, 1.1, 1.1]} size={[0.42, 0.42, 0.16]} color="#f2e27a" emissive="#f2e27a" emissiveIntensity={0.45} />
-      <Block position={[0.7, 1.15, 1.26]} size={[0.18, 0.18, 0.06]} color="#1a1a1a" />
+      <Block position={[0.55, 1.25, 1.2]} size={[0.78, 0.78, 0.22]} color="#f2e27a" emissive="#f2e27a" emissiveIntensity={0.8} />
+      <Block position={[-0.55, 1.15, 1.15]} size={[0.5, 0.5, 0.18]} color="#f2e27a" emissive="#f2e27a" emissiveIntensity={0.55} />
+      <Block position={[0.55, 1.25, 1.34]} size={[0.24, 0.24, 0.06]} color="#1a1a1a" />
       {[-1.3, -0.4, 0.5, 1.3].map((x, i) => {
         const k = Math.max(0, Math.min(1, arms * 1.3 - i * 0.12));
         return (

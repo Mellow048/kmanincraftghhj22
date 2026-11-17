@@ -49,12 +49,8 @@ const Sea: React.FC<{ night: boolean }> = ({ night }) => (
       <planeGeometry args={[120, 120]} />
       <meshStandardMaterial color={night ? "#14324e" : "#4ea0dc"} transparent opacity={night ? 0.72 : 0.5} roughness={0.2} />
     </mesh>
-    {/* The town, small, behind them. */}
-    <group position={[0, 0, -28]}>
-      <Vox kind="grass" position={[0, 0.2, 0]} size={[14, 0.4, 4]} />
-      <Hut at={[-3, 0.4, 0]} w={3} h={2.2} roof="#8a3b2a" />
-      <Hut at={[3, 0.4, 0]} w={3} h={2.4} roof="#3f6b3a" />
-    </group>
+    {/* No town here. A house at talking distance looked like it was floating beside the boat.
+        The sail-away shot places its own far shore. */}
     {night ? (
       <>
         <Moon position={[6, 18, -10]} radius={3.2} />
