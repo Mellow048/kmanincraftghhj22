@@ -338,7 +338,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "4.count",
-      ...cam.truck({ on: at(PLACE.shaft, 0.6, -1.1, -0.66), dist: 1.5, yaw: 90, pitch: 2, fov: 34, by: [0, -4.2, 0] }),
+      ...cam.truck({ on: at(PLACE.shaft, -0.15, -1.1, -0.3), dist: 3.8, yaw: 8, pitch: 4, fov: 42, by: [0, -4.2, 0] }),
       zone: "shaft",
       look: "overworld-night",
       note: "The count, written on the wall like a calendar: one hundred, two, three, four. The lens slides down past all of them, which is how you show six hours in three seconds.",
