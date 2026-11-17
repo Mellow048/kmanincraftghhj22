@@ -226,7 +226,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.dad",
       // The back door and the wall behind it, 0.9 m apart. He walks into it, and tries again.
-      ...cam.push({ on: [-8.95, 1.35, -2.00], dist: 2.00, to: 1.60, yaw: 0, pitch: 2, fov: 48 }),
+      ...cam.push({ on: [-8.95, 1.55, -2.00], dist: 4.60, to: 3.60, yaw: 0, pitch: 6, fov: 44 }),
       zone: "street",
       look: "overworld-night",
       note: "The back door, open onto a brick wall he can touch, and his dad doing exactly what the street has done to everyone: walking into it and trying again.",
