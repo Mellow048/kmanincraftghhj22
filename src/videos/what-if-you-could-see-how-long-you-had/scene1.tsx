@@ -49,10 +49,11 @@ export const scene1 = storyScene(timing, {
       // THE HOOK. The power as one picture: the teller's back at the bottom of the frame, the class stacked ahead of
       // him, and over the head in front of him a clock at four - while the boy's own line is still being asked.
       cue: "1.what",
-      // THE HOOK, and it has to be the strange thing on frame one, not a room. Close and low over the boy in the
-      // front row: one face with a clock at four over it, and the rest of the class falling away behind. The old
-      // wide put the teller's back in the middle of frame and the clock the size of a fingernail.
-      ...cam.push({ on: SPOT.face(1, 0), dist: 1.55, to: 1.28, yaw: 6, pitch: -3, fov: 40 }),
+      // THE HOOK. The class sits facing NORTH at the board, so a lens behind them sees the backs of nine heads - which
+      // is what the first two attempts did, and it is why frame one read as a room instead of a power. The lens now
+      // stands at the BOARD and looks SOUTH: the front-row boy's face fills the frame with a clock at four over it,
+      // and the rest of the class falls away behind him. Face, number, and a crowd that has not got one.
+      ...cam.push({ on: SPOT.face(1, 0), dist: 2.55, to: 2.3, yaw: 169, pitch: 1, fov: 42 }),
       zone: "class",
       note: "THE HOOK, and the power in one picture: the teller's back low in the frame, the class stacked away in front of him, the board at the top, and over the boy in the front row a clock at four. Nothing else in the school has one, so the clock is the only bright thing above the heads.",
       stage: (t) => (
