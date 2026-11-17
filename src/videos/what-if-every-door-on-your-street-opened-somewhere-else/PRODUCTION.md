@@ -78,3 +78,21 @@ the voice 16.3 dB over the rest, worst half-second 5.0 dB (at 113.8 s, on "where
 - 11.room is filmed through a doorway from the hall, so the frame has a dark border on three sides by design. If it
   reads as a mistake rather than a point of view, it needs the doorway widened, not the shot re-framed.
 - Nobody has listened to the mix. The numbers are good; an agent cannot hear.
+
+## 12. What the camera passes cost, and what they taught
+The film took five renders. Four of them were fixing things that a projection solve would have caught in ten
+seconds, and each one is now written into the shot where it happened:
+
+- **`H()` IS THE HALL'S ORIGIN, NOT THE BEDROOM'S.** The bedroom is built at `H(0,0,5.1)`, so its interior
+  z 0..3 is hall z 5.1..8.1 and the tally wall is at 8.1. Three shots were written with the room's own numbers and
+  played 120 m away in empty world -- which read, for two rounds, as a lighting problem. It was not: there was
+  nothing in frame to light. `zone` only toggles visibility; it does not move the camera.
+- **A decal is not a lamp.** The canteen in film three carried a `LightPool` and no point light, and a `LightPool`
+  is a light-coloured rectangle on the floor. A sealed alley in this film had neither, and two walls 0.9 m apart,
+  so the only possible frame was black. `2.dad` now has both walls cut down to 2.6 and 3.6 m -- open to the sky --
+  plus a sodium service lamp outside the mouth of the alley.
+- **`126.10` is not `1.26`.** `11.room` had a decimal point in the wrong place and put the lens 126 m in the air.
+  It rendered as the black inside of a ceiling for a whole render cycle.
+- **The subject has to be in frame, not behind the actor.** `3.tally` and `11.count` were aimed at the wall with
+  the boy standing in front of the marks, which is exactly the thing the shot exists to show. He now stands to the
+  right of frame with his hand up at the plaster.
