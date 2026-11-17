@@ -22,7 +22,7 @@ import { scene7 } from "./scene7";
 export const film = defineFilm({
   id: "why-does-bread-cost-more-every-year",
   title: "Why Does Bread Cost More Every Year",
-  topic: "explainer",
+  topic: "stories",
   look: "overworld-day",
   audio: { src: "audio/why-does-bread-cost-more-every-year/mix.mp3" },
   captions: { words: timing.words, y: 0.72 },

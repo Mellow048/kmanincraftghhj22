@@ -1,0 +1,792 @@
+{
+ "film": "in-this-town-me-and-my-shadow-dont-get-along",
+ "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds.",
+ "music": {
+  "track": "Topics/InThisTown/InThisTownMusic.aac",
+  "gain": -16,
+  "sections": [
+   {
+    "from": "1.copy",
+    "mood": "town",
+    "why": "The classroom, the rule, and the joke of it."
+   },
+   {
+    "from": "2.rule",
+    "mood": "town",
+    "gain": -1,
+    "why": "The tour: class, hallway, lunch."
+   },
+   {
+    "from": "4.one",
+    "mood": "curious",
+    "gain": -2,
+    "why": "The one thing it cannot do."
+   },
+   {
+    "from": "5.friend",
+    "mood": "playful",
+    "gain": -2,
+    "why": "The friend, and the bread roll."
+   },
+   {
+    "from": "7.jan",
+    "mood": "curious",
+    "gain": -3,
+    "why": "The janitor's rule."
+   },
+   {
+    "from": "8.night",
+    "mood": "sneak",
+    "why": "Night, and the question on the wall."
+   },
+   {
+    "from": "9.night",
+    "mood": "playful",
+    "gain": -1,
+    "why": "Prom, and everybody dancing."
+   },
+   {
+    "from": "9.mirror",
+    "mood": "tense",
+    "gain": -3,
+    "why": "Three steps, and then the plant."
+   },
+   {
+    "from": "11.stop",
+    "mood": "none",
+    "why": "The music stopped. Let it be silent."
+   },
+   {
+    "from": "12.ask",
+    "mood": "hope",
+    "why": "His own voice, and yes."
+   },
+   {
+    "from": "15.like",
+    "mood": "town",
+    "gain": 1,
+    "why": "The like line, up."
+   }
+  ]
+ },
+ "beds": [
+  {
+   "from": "1.copy",
+   "to": "1.me",
+   "bed": "classroom"
+  },
+  {
+   "from": "2.rule",
+   "to": "2.why",
+   "bed": "classroom"
+  },
+  {
+   "from": "2.only",
+   "to": "3.hall",
+   "bed": "classroom"
+  },
+  {
+   "from": "3.lunch",
+   "to": "4.stop",
+   "bed": "crowd"
+  },
+  {
+   "from": "5.friend",
+   "to": "6.laugh",
+   "bed": "crowd"
+  },
+  {
+   "from": "7.jan",
+   "to": "7.mop",
+   "bed": "classroom"
+  },
+  {
+   "from": "8.night",
+   "to": "8.dec",
+   "bed": "night"
+  },
+  {
+   "from": "9.night",
+   "to": "9.found",
+   "bed": "crowd"
+  },
+  {
+   "from": "10.legs",
+   "to": "13.friend",
+   "bed": "crowd"
+  },
+  {
+   "from": "14.real",
+   "to": "15.like",
+   "bed": "crowd"
+  }
+ ],
+ "sfx": [
+  {
+   "cue": "1.copy",
+   "sfx": "school_bell",
+   "at": 0.05,
+   "why": "The bell, and we are in a classroom."
+  },
+  {
+   "cue": "1.copy",
+   "sfx": "swish",
+   "word": "copies",
+   "why": "Every shadow in the room, under a desk."
+  },
+  {
+   "cue": "1.own",
+   "sfx": "pop",
+   "word": "own",
+   "why": "His shadow stands up on its own."
+  },
+  {
+   "cue": "1.brave",
+   "sfx": "blip",
+   "word": "not",
+   "why": "It is not scared of anything."
+  },
+  {
+   "cue": "1.me",
+   "sfx": "heartbeat",
+   "word": "everything",
+   "why": "One heartbeat: he is scared of everything."
+  },
+  {
+   "cue": "2.rule",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "A new idea of a place: the corridor."
+  },
+  {
+   "cue": "2.rule",
+   "sfx": "step_wood",
+   "word": "shoes",
+   "why": "A pair of shoes, and the shadow under it."
+  },
+  {
+   "cue": "2.mine",
+   "sfx": "swish",
+   "word": "walls",
+   "why": "Up the wall."
+  },
+  {
+   "cue": "2.mine",
+   "sfx": "zip",
+   "word": "rooms",
+   "why": "Across the ceiling, into a room without him."
+  },
+  {
+   "cue": "2.why",
+   "sfx": "tick",
+   "word": "why",
+   "why": "Nobody knew why: one dry tick."
+  },
+  {
+   "cue": "2.why",
+   "sfx": "bonk",
+   "word": "doctor",
+   "why": "Not even the doctor."
+  },
+  {
+   "cue": "2.only",
+   "sfx": "blip",
+   "word": "only",
+   "why": "He is the only one."
+  },
+  {
+   "cue": "3.class",
+   "sfx": "swish",
+   "word": "class",
+   "why": "In class."
+  },
+  {
+   "cue": "3.class",
+   "sfx": "place",
+   "word": "answered",
+   "why": "It stands up and answers."
+  },
+  {
+   "cue": "3.hall",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "The hallway."
+  },
+  {
+   "cue": "3.hall",
+   "sfx": "step_wood",
+   "word": "wall",
+   "why": "Walking the wall."
+  },
+  {
+   "cue": "3.hall",
+   "sfx": "blip",
+   "word": "waved",
+   "why": "A wave at the principal."
+  },
+  {
+   "cue": "3.lunch",
+   "sfx": "pop",
+   "word": "pudding",
+   "why": "The last pudding."
+  },
+  {
+   "cue": "3.cook",
+   "sfx": "hit",
+   "word": "shouted",
+   "why": "The cook shouting."
+  },
+  {
+   "cue": "3.cook",
+   "sfx": "sparkle",
+   "word": "kiss",
+   "why": "It blows her a kiss."
+  },
+  {
+   "cue": "3.good",
+   "sfx": "chime",
+   "word": "good",
+   "why": "A good life."
+  },
+  {
+   "cue": "3.good",
+   "sfx": "tick",
+   "word": "me",
+   "why": "The best part of me was not me."
+  },
+  {
+   "cue": "4.one",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "One thing it could not do."
+  },
+  {
+   "cue": "4.one",
+   "sfx": "tick",
+   "word": "one",
+   "why": "One thing."
+  },
+  {
+   "cue": "4.her",
+   "sfx": "heartbeat",
+   "word": "her",
+   "why": "Her."
+  },
+  {
+   "cue": "4.her",
+   "sfx": "sparkle",
+   "word": "just",
+   "why": "Just her."
+  },
+  {
+   "cue": "4.stop",
+   "sfx": "bonk",
+   "word": "stopped",
+   "why": "His legs stopped."
+  },
+  {
+   "cue": "4.stop",
+   "sfx": "swish",
+   "word": "hi",
+   "why": "He cannot say hi."
+  },
+  {
+   "cue": "5.friend",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "The best friend."
+  },
+  {
+   "cue": "5.friend",
+   "sfx": "rustle",
+   "word": "tired",
+   "why": "Tired of hearing about her."
+  },
+  {
+   "cue": "5.quote",
+   "sfx": "pop",
+   "word": "twice",
+   "why": "The bubble: twice today."
+  },
+  {
+   "cue": "5.cat",
+   "sfx": "pop",
+   "word": "cat",
+   "why": "It has a cat on it."
+  },
+  {
+   "cue": "5.cat",
+   "sfx": "blip",
+   "word": "cat",
+   "why": "A cat, painted badly."
+  },
+  {
+   "cue": "5.ask",
+   "sfx": "stamp",
+   "word": "ask",
+   "why": "Ask her."
+  },
+  {
+   "cue": "5.ask",
+   "sfx": "slide_down",
+   "at": 0.3,
+   "why": "He says nothing."
+  },
+  {
+   "cue": "6.prac",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "A bread roll, and a rehearsal."
+  },
+  {
+   "cue": "6.prac",
+   "sfx": "place",
+   "word": "roll",
+   "why": "The roll on the table.",
+   "trim": -4
+  },
+  {
+   "cue": "6.quote",
+   "sfx": "blip",
+   "word": "want",
+   "why": "Do you want to..."
+  },
+  {
+   "cue": "6.walk",
+   "sfx": "whoosh_low",
+   "word": "walked",
+   "why": "It gets up off the floor."
+  },
+  {
+   "cue": "6.walk",
+   "sfx": "step_wood",
+   "at": 0.6,
+   "repeat": 6,
+   "every": 0.16,
+   "why": "And walks, in the open."
+  },
+  {
+   "cue": "6.laugh",
+   "sfx": "pop",
+   "word": "laughed",
+   "why": "She laughs."
+  },
+  {
+   "cue": "6.laugh",
+   "sfx": "sparkle",
+   "word": "laughed",
+   "why": "A laugh at his expense."
+  },
+  {
+   "cue": "7.jan",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "The janitor, in the doorway."
+  },
+  {
+   "cue": "7.jan",
+   "sfx": "creak",
+   "word": "janitor",
+   "why": "An old man, a mop, and a door."
+  },
+  {
+   "cue": "7.why",
+   "sfx": "rustle",
+   "word": "why",
+   "why": "The question."
+  },
+  {
+   "cue": "7.ans",
+   "sfx": "sting",
+   "word": "brave",
+   "why": "Because you keep letting it do the brave parts."
+  },
+  {
+   "cue": "7.ans",
+   "sfx": "stamp",
+   "word": "parts",
+   "why": "That is the rule."
+  },
+  {
+   "cue": "7.mop",
+   "sfx": "step_wood",
+   "at": 0.1,
+   "repeat": 4,
+   "every": 0.3,
+   "why": "He walks off."
+  },
+  {
+   "cue": "8.night",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "Night, and his room."
+  },
+  {
+   "cue": "8.night",
+   "sfx": "heartbeat",
+   "word": "sleep",
+   "why": "He cannot sleep."
+  },
+  {
+   "cue": "8.wall",
+   "sfx": "thud",
+   "word": "wall",
+   "why": "Push-ups on the wall."
+  },
+  {
+   "cue": "8.wall",
+   "sfx": "tick",
+   "at": 0.5,
+   "repeat": 4,
+   "every": 0.42,
+   "why": "Up and down."
+  },
+  {
+   "cue": "8.q",
+   "sfx": "drop",
+   "word": "living",
+   "why": "Whose shadow is it?"
+  },
+  {
+   "cue": "8.dec",
+   "sfx": "riser",
+   "word": "decided",
+   "why": "The decision climbing, ending on the word."
+  },
+  {
+   "cue": "8.dec",
+   "sfx": "stamp",
+   "word": "it",
+   "why": "Me. Not it."
+  },
+  {
+   "cue": "9.night",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "Prom night."
+  },
+  {
+   "cue": "9.night",
+   "sfx": "cheer",
+   "word": "loud",
+   "why": "Loud music, and everybody dancing."
+  },
+  {
+   "cue": "9.night",
+   "sfx": "bonk",
+   "word": "tight",
+   "why": "Shoes too tight."
+  },
+  {
+   "cue": "9.mirror",
+   "sfx": "swish",
+   "word": "mirror",
+   "why": "The mirror."
+  },
+  {
+   "cue": "9.mirror",
+   "sfx": "blip",
+   "word": "perfectly",
+   "why": "It says it perfectly."
+  },
+  {
+   "cue": "9.steps",
+   "sfx": "step_wood",
+   "at": 0.1,
+   "repeat": 3,
+   "every": 0.3,
+   "why": "Three steps."
+  },
+  {
+   "cue": "9.steps",
+   "sfx": "thud",
+   "word": "floor",
+   "why": "Then the shoes stop."
+  },
+  {
+   "cue": "9.plant",
+   "sfx": "rustle",
+   "word": "plant",
+   "why": "Behind the plant."
+  },
+  {
+   "cue": "9.plant",
+   "sfx": "creak",
+   "word": "hiding",
+   "why": "Hiding."
+  },
+  {
+   "cue": "9.found",
+   "sfx": "pop",
+   "word": "found",
+   "why": "My friend found me."
+  },
+  {
+   "cue": "9.found",
+   "sfx": "tick",
+   "word": "record",
+   "why": "Three steps. That is a record."
+  },
+  {
+   "cue": "10.legs",
+   "sfx": "step_wood",
+   "at": 0.1,
+   "repeat": 4,
+   "every": 0.2,
+   "why": "His legs start walking."
+  },
+  {
+   "cue": "10.legs",
+   "sfx": "slide_up",
+   "word": "walking",
+   "why": "And he is not doing it."
+  },
+  {
+   "cue": "10.push",
+   "sfx": "whoosh_low",
+   "word": "pushing",
+   "why": "The shadow pushing."
+  },
+  {
+   "cue": "10.push",
+   "sfx": "creak",
+   "word": "shadow",
+   "why": "Pushing him across the floor."
+  },
+  {
+   "cue": "10.her",
+   "sfx": "heartbeat",
+   "word": "waiting",
+   "why": "She is waiting."
+  },
+  {
+   "cue": "10.her",
+   "sfx": "sparkle",
+   "word": "lights",
+   "why": "Under the lights."
+  },
+  {
+   "cue": "10.mouth",
+   "sfx": "drop",
+   "word": "nothing",
+   "why": "Nothing came out."
+  },
+  {
+   "cue": "10.mouth",
+   "sfx": "tick",
+   "at": 0.1,
+   "why": "Nothing at all."
+  },
+  {
+   "cue": "11.hand",
+   "sfx": "swish",
+   "word": "hand",
+   "why": "The hand comes out."
+  },
+  {
+   "cue": "11.hand",
+   "sfx": "riser",
+   "word": "me",
+   "why": "And it is not his."
+  },
+  {
+   "cue": "11.past",
+   "sfx": "blip",
+   "word": "past",
+   "why": "She looks past it."
+  },
+  {
+   "cue": "11.q",
+   "sfx": "pop",
+   "word": "shadow",
+   "why": "The bubble: is your shadow going to ask me?"
+  },
+  {
+   "cue": "11.stop",
+   "sfx": "drop",
+   "word": "stopped",
+   "why": "The music stopped."
+  },
+  {
+   "cue": "11.stop",
+   "sfx": "tick",
+   "word": "shadow",
+   "why": "Even my shadow stopped."
+  },
+  {
+   "cue": "12.knees",
+   "sfx": "rustle",
+   "word": "knees",
+   "why": "His knees, and his shoelaces."
+  },
+  {
+   "cue": "12.knees",
+   "sfx": "tick",
+   "at": 0.15,
+   "repeat": 5,
+   "every": 0.12,
+   "why": "Shaking."
+  },
+  {
+   "cue": "12.breath",
+   "sfx": "swish",
+   "word": "breath",
+   "why": "One breath."
+  },
+  {
+   "cue": "12.ask",
+   "sfx": "chime",
+   "word": "me",
+   "why": "He asks her."
+  },
+  {
+   "cue": "12.voice",
+   "sfx": "sparkle",
+   "word": "mine",
+   "why": "My voice. Cracked and quiet and mine."
+  },
+  {
+   "cue": "12.still",
+   "sfx": "glitch",
+   "word": "still",
+   "why": "The shadow stops, all at once."
+  },
+  {
+   "cue": "12.still",
+   "sfx": "power_down",
+   "word": "still",
+   "why": "Like a machine switched off."
+  },
+  {
+   "cue": "12.floor",
+   "sfx": "slide_down",
+   "word": "slid",
+   "why": "It slides under his shoes."
+  },
+  {
+   "cue": "12.floor",
+   "sfx": "step_wood",
+   "word": "floor",
+   "why": "And the floor takes it back."
+  },
+  {
+   "cue": "13.yes",
+   "sfx": "ding",
+   "word": "yes",
+   "why": "She said yes."
+  },
+  {
+   "cue": "13.yes",
+   "sfx": "chime",
+   "word": "yes",
+   "why": "Yes."
+  },
+  {
+   "cue": "13.follow",
+   "sfx": "step_wood",
+   "at": 0.1,
+   "repeat": 4,
+   "every": 0.3,
+   "why": "Both of them walking."
+  },
+  {
+   "cue": "13.follow",
+   "sfx": "sparkle",
+   "word": "followed",
+   "why": "The shadow follows on the floor."
+  },
+  {
+   "cue": "13.dance",
+   "sfx": "step_wood",
+   "at": 0.1,
+   "repeat": 6,
+   "every": 0.24,
+   "why": "Dancing badly."
+  },
+  {
+   "cue": "13.dance",
+   "sfx": "chime",
+   "word": "care",
+   "why": "He does not care.",
+   "trim": -3
+  },
+  {
+   "cue": "13.friend",
+   "sfx": "rustle",
+   "word": "cried",
+   "why": "Crying in the corner."
+  },
+  {
+   "cue": "13.friend",
+   "sfx": "plink",
+   "word": "smoke",
+   "why": "She blames the smoke machine."
+  },
+  {
+   "cue": "14.real",
+   "sfx": "whoosh",
+   "at": 0.02,
+   "why": "What it was, all along."
+  },
+  {
+   "cue": "14.real",
+   "sfx": "chime",
+   "word": "own",
+   "why": "Never had a mind of its own. It had his."
+  },
+  {
+   "cue": "14.mine",
+   "sfx": "blip",
+   "word": "mind",
+   "why": "It had my mind."
+  },
+  {
+   "cue": "14.mine",
+   "sfx": "sparkle",
+   "word": "mind",
+   "why": "His mind."
+  },
+  {
+   "cue": "14.part",
+   "sfx": "chime",
+   "word": "scared",
+   "why": "The part of him that was not scared."
+  },
+  {
+   "cue": "14.part",
+   "sfx": "sparkle",
+   "word": "wanted",
+   "why": "Doing what he wanted."
+  },
+  {
+   "cue": "14.now",
+   "sfx": "heartbeat",
+   "word": "asleep",
+   "why": "She is asleep on his shoulder."
+  },
+  {
+   "cue": "14.together",
+   "sfx": "chime",
+   "word": "belong",
+   "why": "Both of them where they belong."
+  },
+  {
+   "cue": "15.like",
+   "sfx": "pop",
+   "word": "like",
+   "why": "The like card."
+  },
+  {
+   "cue": "15.like",
+   "sfx": "ding",
+   "word": "video",
+   "why": "Like this video."
+  },
+  {
+   "cue": "15.like",
+   "sfx": "sparkle",
+   "word": "courage",
+   "why": "For anybody who had to borrow their courage."
+  }
+ ]
+}

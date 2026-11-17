@@ -1,7 +1,7 @@
 {
-  "id": "explainer",
-  "name": "Explainer",
-  "folder": "Topics/Explainer",
+  "id": "stories",
+  "name": "Stories",
+  "folder": "Topics/Stories",
   "profile": "story",
   "state": "PROVISIONAL",
   "provisional": {
@@ -17,23 +17,44 @@
     "note": "Scenes are built with flightScene(): one stop for each line, flown to. film.tsx calls unbroken(), which throws if the camera teleports. A film may declare at most `maxHardCuts` shots with `cut: true`."
   },
   "film": {
-    "seconds": [30, 58],
+    "seconds": [
+      30,
+      58
+    ],
     "hardMaxSeconds": 60,
     "hardMinSeconds": 20,
     "hardMinWords": 70,
-    "shotSeconds": [0.8, 7.0],
-    "medianShotSeconds": [1.8, 4.0],
-    "wordsPerMinute": [200, 268],
-    "words": [110, 250],
+    "shotSeconds": [
+      0.8,
+      7.0
+    ],
+    "medianShotSeconds": [
+      1.8,
+      4.0
+    ],
+    "wordsPerMinute": [
+      200,
+      268
+    ],
+    "words": [
+      110,
+      250
+    ],
     "maxWordsPerShot": 18,
     "lastLineContains": "subscribe",
     "captions": true
   },
   "cuts": {
     "long": {
-      "seconds": [60, 118],
+      "seconds": [
+        60,
+        118
+      ],
       "hardMaxSeconds": 120,
-      "words": [250, 500]
+      "words": [
+        250,
+        500
+      ]
     }
   },
   "pack": "Topics/Explainer/PACK.md",
@@ -45,14 +66,20 @@
     "required": true,
     "guide": "Topics/Explainer/SOUND.md",
     "minMusicSections": 3,
-    "musicUnderVoiceDb": [15, 24],
+    "musicUnderVoiceDb": [
+      15,
+      24
+    ],
     "maxSecondsWithoutMusic": 4,
     "minSfxPerMinute": 40,
     "maxGapSeconds": 6,
     "maxBuried": 0,
     "minVoiceOverRestDb": 3,
     "minVoiceOverRestMedianDb": 10,
-    "lufs": [-16.5, -13],
+    "lufs": [
+      -16.5,
+      -13
+    ],
     "maxTruePeakDb": -0.3,
     "bedDefault": "sky",
     "moodDefault": "explain",
