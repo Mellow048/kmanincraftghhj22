@@ -226,7 +226,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.dad",
       // The back door and the wall behind it, 0.9 m apart. He walks into it, and tries again.
-      ...cam.push({ on: [-8.85, 1.30, -3.70], dist: 2.60, to: 2.10, yaw: 90, pitch: 2, fov: 46 }),
+      ...cam.push({ on: [-7.35, 1.30, -3.70], dist: 2.40, to: 1.95, yaw: 90, pitch: 2, fov: 46 }),
       zone: "street",
       look: "overworld-night",
       note: "The back door, open onto a brick wall he can touch, and his dad doing exactly what the street has done to everyone: walking into it and trying again.",
@@ -234,7 +234,7 @@ export const scene1 = storyScene(timing, {
         <>
           <Block size={[0.4, 2.6, 7.0]} position={S(-8.30, 1.3, -3.9)} color="#7a5f4a" castShadow={false} />
           <Adult
-            position={S(-8.85, 0, -3.70)}
+            position={S(-7.35, 0, -3.70)}
             rotationY={WEST}
             animation="walk"
             animDistance={ramp(t, 0, 1.6) * 1.1}

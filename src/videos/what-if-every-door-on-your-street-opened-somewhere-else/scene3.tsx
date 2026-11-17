@@ -95,7 +95,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "12.why",
       // Her face, close, and she is not angry about any of it.
-      ...cam.push({ on: K(0.30, 1.02, 1.30), dist: 1.25, to: 0.80, yaw: -70, pitch: 10, fov: 38 }),
+      ...cam.push({ on: K(0.30, 1.10, 1.30), dist: 1.55, to: 1.05, yaw: -74, pitch: 3, fov: 42 }),
       zone: "kitchen",
       look: "overworld-night",
       note: "Her, close, tired and kind: not to get anywhere, just to see where he had got to. The whole cost of the power in one face.",
