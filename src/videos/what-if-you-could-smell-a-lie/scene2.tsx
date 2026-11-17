@@ -13,7 +13,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "4.class",
-      ...cam.push(fit({ on: SPOT.at(0, 1.1, 0.4), dist: 3.6, to: 3.2, yaw: -8, pitch: 11, fov: 46 })),
+      ...cam.push(fit({ on: SPOT.at(0, 1.1, 0.4), dist: 5.4, to: 4.9, yaw: -30, pitch: 12, fov: 50 })),
       zone: "class",
       note: "The boy who cannot be lied to, sitting in a room of smoke, enjoying it. Three heads with smoke and one without.",
       stage: () => (
@@ -29,7 +29,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.mum",
-      ...cam.push(fit({ on: A("kitchen", 0.3, 1.45, -2.0), dist: 2.7, to: 2.4, yaw: 8, pitch: 6, fov: 44 })),
+      ...cam.push(fit({ on: A("kitchen", 0.3, 1.45, -2.0), dist: 3.5, to: 3.1, yaw: -30, pitch: 10, fov: 48 })),
       zone: "kitchen",
       note: "His mum at the counter, back half turned. The one person he wants to check.",
       stage: () => (
@@ -41,7 +41,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "6.never",
-      ...cam.push(fit({ on: A("kitchen", 0.1, 1.35, -0.9), dist: 3.1, to: 2.7, yaw: 12, pitch: 7, fov: 46 })),
+      ...cam.push(fit({ on: A("kitchen", 0.1, 1.35, -0.9), dist: 3.5, to: 3.1, yaw: -30, pitch: 10, fov: 48 })),
       zone: "kitchen",
       note: "The two of them, and the empty air between their mouths. Nothing rising. The absence is the picture.",
       stage: () => (
@@ -53,14 +53,14 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "6.fine",
-      ...cam.push(fit({ on: A("kitchen", 0.5, 1.5, -1.75), dist: 1.7, to: 1.5, yaw: 4, pitch: 2, fov: 36 })),
+      ...cam.push(fit({ on: A("kitchen", 0.5, 1.5, -1.75), dist: 2.3, to: 2.1, yaw: -30, pitch: 6, fov: 52 })),
       zone: "kitchen",
       note: "Her face, unbothered, mid-lie that is not a lie. Not one crumb in the air.",
       stage: () => <Mum position={A("kitchen", 0.5, 0, -1.8)} rotationY={0} animation="talk" face="calm" />,
     },
     {
       cue: "6.honest",
-      ...cam.push(fit({ on: A("hall", 0, 1.25, 0.1), dist: 2.6, to: 2.3, yaw: -6, pitch: 7, fov: 42 })),
+      ...cam.push(fit({ on: A("hall", 0, 1.25, 0.1), dist: 3.5, to: 3.1, yaw: -30, pitch: 10, fov: 48 })),
       zone: "hall",
       note: "The friend, told the good news about his mum, and not saying anything back.",
       stage: () => (
@@ -72,7 +72,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "6.silent",
-      ...cam.push(fit({ on: A("hall", 0.6, 1.3, 0.1), dist: 2.0, to: 1.75, yaw: 10, pitch: 4, fov: 38 })),
+      ...cam.push(fit({ on: A("hall", 0.6, 1.3, 0.1), dist: 2.3, to: 2.1, yaw: -30, pitch: 6, fov: 52 })),
       zone: "hall",
       note: "The friend's face alone, saying nothing. The camera holds on the silence, because the silence is the clue.",
       stage: () => (
