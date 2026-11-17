@@ -173,10 +173,10 @@ export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   bloom: 0.34,
   threshold: 0.94,
   radius: 0.55,
-  vignette: 0.28,
+  vignette: 0.22,
   saturation: 1.10,
-  contrast: 1.05,
-  warmth: 0.5,
+  contrast: 1.03,
+  warmth: 0.45,
   grain: 0.008,
   aberration: 0.16,
 };
