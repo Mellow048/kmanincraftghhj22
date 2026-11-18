@@ -1,5 +1,5 @@
 import type React from "react";
-import { MinecraftAvatar } from "../../engine";
+import { MinecraftAvatar, Vox } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
 import { KID, wordClock } from "../../../Topics/InThisTown";
 import timingJson from "./timing.json";
@@ -24,6 +24,7 @@ export {
   BedBox, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Wisps,
 } from "../../../Topics/InThisTown";
 
+export { Vox };
 export const timing = timingJson as unknown as Timing;
 
 /** Seconds into its shot at which a word is said: `wordAt("3.bell", "bell")`. Hang every action on a word. */
