@@ -113,7 +113,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.apron",
       // The calmest person in the building. He ties his apron, and the frame is his hands.
-      ...cam.top({ on: [-1.5, 1.0, 499.8], height: 3.2, to: 2.7, spin: [6, -6], fov: 42 }),
+      ...cam.push({ on: [-1.5, 1.2, 499.8], dist: 3.5, to: 3.0, yaw: -24, pitch: 6, fov: 40 }),
       zone: "restaurant",
       look: "lava-shore",
       note: "His hands tying the apron knot, and behind them the kitchen in chaos. Still hands in a moving frame, which is the whole character.",
@@ -128,7 +128,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.hands",
       // Chopping. Flipping. Plating. Chopping again. The fastest cutting in the film.
-      ...cam.top({ on: [-1.5, 1.0, 498.9], height: 3.0, to: 2.5, spin: [8, -8], fov: 42 }),
+      ...cam.top({ on: [-1.5, 1.0, 498.9], height: 2.7, to: 2.3, spin: [8, -8], fov: 40 }),
       zone: "restaurant",
       look: "lava-shore",
       note: "His hands at the board at full speed, four plates in different states around him. The training arc, cashed.",

@@ -54,7 +54,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "4.cannot",
       // The thesis, in one picture: a thing you cannot want if you have never had it. A plate, untouched.
-      ...cam.top({ on: [0, 0.9, 400.5], height: 3.2, to: 2.7, spin: [8, -8], fov: 40 }),
+      ...cam.push({ on: [0, 1.25, 400.5], dist: 3.6, to: 3.1, yaw: -22, pitch: -6, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "Straight down on a hot plate of food on the kitchen table, steaming, with nobody at the table. The one thing in town nobody has ever wanted.",
@@ -237,7 +237,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.slow",
       // One onion. Then another. Slow, deliberate, boring on purpose.
-      ...cam.top({ on: [-0.25, 0.94, 400.3], height: 3.0, to: 2.5, spin: [5, -5], fov: 40 }),
+      ...cam.push({ on: [-0.25, 1.05, 400.3], dist: 3.3, to: 2.8, yaw: 20, pitch: 22, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "Extreme close on a single onion being cut slowly: the knife down, the pieces separating, his fingers holding it. The discipline before the spectacle.",

@@ -66,7 +66,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.mum",
       // Cereal at eleven at night, called dinner. Straight down on the bowl so the joke is the SOUND of it.
-      ...cam.top({ on: [-0.2, 0.78, 400.5], height: 3.2, to: 2.7, spin: [10, -10], fov: 40 }),
+      ...cam.push({ on: [-0.2, 1.05, 400.5], dist: 3.5, to: 3.0, yaw: 22, pitch: 16, fov: 42 }),
       zone: "home",
       look: "kitchen-day",
       note: "Looking down at a bowl of dry cereal on the kitchen table at night, with a fork beside it because nobody in this house knows what to do with it either.",
@@ -80,7 +80,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.fridge",
       // THE BEST JOKE IN THE FILM, and it needs to be a WIDE: the fridge open, and nothing in it.
-      ...cam.push({ on: [2.75, 1.3, 397.8], dist: 3.5, to: 3.0, yaw: 28, pitch: -8, fov: 40 }),
+      ...cam.push({ on: [2.75, 1.25, 397.9], dist: 3.4, to: 2.9, yaw: 8, pitch: -4, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "The fridge standing open with exactly one shelf and nothing on it. The line says the fridge contains a fridge; the picture has to be at least as empty as that.",
