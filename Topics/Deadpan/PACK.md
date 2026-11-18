@@ -32,7 +32,6 @@ Staging maths (`staging.ts`: `A()`, `SEAT`, zone helpers) and the caption/clock 
 
 | Thing | Where | Notes |
 |---|---|---|
-| Two-colour captions (yellow / white) | `captions.colors` in `defineFilm` | Added with this topic, 2026-11-12 |
 | The comic-face set | `src/engine/face.ts` | `blank`, `smug`, `surprised`, `angry`, `crying`, `dizzy`, `hollow` are the useful ones here |
 
 ## What you will have to build, film by film

@@ -122,18 +122,13 @@ Already in the engine; do not fake it with a moving set.
 
 ## 11. Captions
 
-One word at a time, lower third, sentence case, alternating yellow and white:
+One word at a time, lower third, sentence case — **the engine's captions, unchanged**. White letters, black edge, a
+two-frame pop on the cut. This topic does not restyle them: the caption design is shared by every film in the
+project, and it is in every short the owner has approved.
 
 ```ts
-captions: {
-  words: timing.words,
-  y: 0.78,
-  letterCase: "lower",
-  colors: ["#ffd400", "#ffffff"], // alternates per word; the black outline is drawn by the font
-},
+captions: { words: timing.words, y: 0.78, letterCase: "lower" },
 ```
-
-That `colors` field is new with this topic (2026-11-12). Without it, captions are white — as every earlier film is.
 
 ## 12. The read-back
 

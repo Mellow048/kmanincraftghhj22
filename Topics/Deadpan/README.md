@@ -25,7 +25,7 @@ button rather than a revelation. Do not bring a Deadpan premise to the Stories t
 | Length | 1:40–2:12 (340–420 words). Never over 2:58: over 3:00 YouTube does not call it a Short |
 | Cuts | **95–115.** 0.8–1.4 s a shot. Nothing static, nothing held |
 | Voice | First person, past tense, flat. Short active sentences (5–14 words). Exact numbers, days, prices |
-| Captions | One word at a time, lower third, **alternating bright yellow and white** |
+| Captions | One word at a time, lower third, in the engine's own design |
 | Music | Light, comic, under everything. A hit on every snap, knock and zoom |
 | Ending | The goal succeeds, then one ironic line that loops the premise back on itself |
 
@@ -58,7 +58,7 @@ The engine is further along than the brief assumes. Check before you write code:
 | The brief asks for | Where it already is |
 |---|---|
 | Blocky people, swappable faces snapped per beat | `MinecraftAvatar` + `FaceName` (26 faces, incl. `angry`, `smug`, `surprised`, `crying`, `dizzy`, `hollow`, `blank`) — set `face` per shot, no lip-sync |
-| One-word captions | `captions` in `defineFilm`; now takes `colors: ["#ffd400", "#ffffff"]` to alternate per word |
+| One-word captions | `captions` in `defineFilm` — the shared design, unchanged |
 | Handheld drift on every frame | `handheld` on a shot (0.005–0.03 m) |
 | Camera jolts on knocks and impacts | `shake`, and timed `impacts` |
 | Crash zooms, whip pans, prop tracking, low angles, top-downs | `cam.push`, `cam.pan`, `cam.truck`, `cam.orbit`, `cam.top`, `pitch` below zero |

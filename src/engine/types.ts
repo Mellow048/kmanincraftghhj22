@@ -86,12 +86,6 @@ export type CaptionSettings = {
   size?: number;
   /** "upper" (default) or "lower". */
   letterCase?: "upper" | "lower";
-  /**
-   * Colours the words cycle through, as hex ("#ffd400"). Default: white.
-   * The black edge is drawn by the font, so it stays black — only the letters take the colour.
-   * A Deadpan film alternates yellow and white: `colors: ["#ffd400", "#ffffff"]`.
-   */
-  colors?: string[];
 };
 
 export type SceneDef = {
