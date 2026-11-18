@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pelican Pedal Club</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;background:#f2eee5;color:#193d3a;font-family:Georgia,serif;padding:24px}.poster{width:min(100%,1000px);position:relative;overflow:hidden;border:1px solid #193d3a33;border-radius:8px;background:#faefda;box-shadow:0 24px 70px #344a3420}.art{display:block;width:100%;height:auto}.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;border-top:1px solid #193d3a22;font:12px/1.4 system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase}button{font:inherit;letter-spacing:inherit;cursor:pointer;border:1px solid #193d3a55;border-radius:30px;background:transparent;color:inherit;padding:9px 17px}button:hover{background:#193d3a;color:#fff5df}button:focus-visible{outline:3px solid #e9854c;outline-offset:3px}.wheel{transform-origin:0 0}.body-bob{animation:bob .9s ease-in-out infinite}.scarf-tail{transform-origin:451px 284px;animation:scarf .9s ease-in-out infinite}.cloud{animation:cloud 22s linear infinite}.road{animation:road 1.8s linear infinite}.blink{transform-origin:582px 197px;animation:blink 5.5s infinite}.crank{transform-origin:470px 503px}.counter{transform-origin:0 0}.paused *{animation-play-state:paused!important}@keyframes turn{to{transform:rotate(360deg)}}@keyframes counter{to{transform:rotate(-360deg)}}@keyframes bob{50%{transform:translateY(-3px) rotate(-.3deg)}}@keyframes scarf{50%{transform:rotate(9deg)}}@keyframes road{to{transform:translateX(-150px)}}@keyframes cloud{from{transform:translateX(30px)}to{transform:translateX(-60px)}}@keyframes blink{0%,44%,47%,100%{transform:scaleY(1)}45.5%{transform:scaleY(.08)}}@media(prefers-reduced-motion:reduce){.poster *{animation:none!important}}
+</style>
+</head>
+<body>
+<main class="poster" id="poster">
+<svg class="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" role="img" aria-labelledby="title description">
+<title id="title">A pelican riding a bicycle by the sea</title>
+<desc id="description">A white pelican with a long orange bill and a flying green scarf pedals a red bicycle down a seaside path. Spokes spin and its webbed feet follow the pedals.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d7e9dd"/><stop offset="1" stop-color="#f6efd9"/></linearGradient>
+ <linearGradient id="beak" x2="0" y2="1"><stop stop-color="#f6be5e"/><stop offset="1" stop-color="#df823f"/></linearGradient>
+ <linearGradient id="wing" x2="1" y2="1"><stop stop-color="#fffdf2"/><stop offset="1" stop-color="#c4d4c7"/></linearGradient>
+ <pattern id="grain" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="4" r=".6" fill="#294e42" opacity=".08"/><circle cx="7" cy="8" r=".4" fill="#294e42" opacity=".1"/></pattern>
+ <g id="spokes" stroke="#67827a" stroke-width="1.4"><path d="M-91 0H91M0-91V91M-64-64L64 64M-64 64L64-64M-84-35L84 35M-84 35L84-35M-35-84L35 84M-35 84L35-84"/></g>
+</defs>
+<!-- A small illustrated travel poster, drawn entirely with SVG geometry. -->
+<path fill="url(#sky)" d="M0 0H1000V720H0z"/>
+<circle cx="774" cy="210" r="91" fill="#efc571"/>
+<circle cx="774" cy="210" r="113" fill="none" stroke="#f3d794" stroke-width="1"/>
+<g fill="#fbf6e4" class="cloud" opacity=".85"><path d="M80 228c-9-17 6-35 24-32 2-31 48-39 61-10 20-11 44 6 42 24 18-3 29 6 31 18z"/><path d="M619 126c-8-15 7-26 19-24 6-27 42-25 48 0 16-6 35 7 33 24z"/></g>
+<g fill="#193d3a" text-anchor="middle"><text x="500" y="60" font-family="system-ui,sans-serif" font-size="11" letter-spacing="6">THE SLOW COAST COLLECTION · NO. 01</text><text x="500" y="120" font-family="Georgia,serif" font-size="58" letter-spacing="-2">Pelican Pedal Club</text></g>
+<g stroke="#3d665b" stroke-width="2.3" fill="none" stroke-linecap="round"><path d="M100 314q10-11 20 0 10-11 20 0M811 345q9-10 18 0 9-10 18 0M870 305q7-8 14 0 7-8 14 0"/></g>
+<!-- Distant headland and water -->
+<path d="M0 380Q126 331 241 367T470 380L548 418H0" fill="#93b4a0"/>
+<path d="M0 406q165-21 345 0t655-12v171H0" fill="#88b6ac"/>
+<path d="M0 441q200-20 386 0t614-8v120H0" fill="#a7c9b6"/>
+<g fill="none" stroke="#e4e8cd" stroke-width="3" opacity=".65"><path d="M34 425h115m-59 28h155m516-37h104m-71 30h140M12 477h195m512 10h150M290 426h70"/></g>
+<path d="M0 521q201-32 387-3t613-13v215H0" fill="#dfd7ad"/>
+<path d="M0 566q350-32 1000-2v100H0" fill="#ebe2c5"/>
+<path d="M0 655h1000" stroke="#c4c19b" stroke-width="2"/>
+<g class="road" stroke="#c3ba96" stroke-width="3" stroke-linecap="round"><path d="M-50 631h40m110 0h40m110 0h40m110 0h40m110 0h40m110 0h40m110 0h40m110 0h40m110 0h40"/></g>
+<ellipse cx="490" cy="600" rx="269" ry="14" fill="#5b7656" opacity=".13"/>
+<!-- Bicycle wheels: fixed tyres and independently rotating spokes -->
+<g fill="#f9f0d8" stroke="#233f3b" stroke-width="10"><circle cx="301" cy="503" r="95"/><circle cx="685" cy="503" r="95"/></g>
+<g fill="none" stroke="#eee6cf" stroke-width="3"><circle cx="301" cy="503" r="88"/><circle cx="685" cy="503" r="88"/></g>
+<g transform="translate(301 503)"><g class="wheel"><use href="#spokes"/><circle cy="-84" r="4" fill="#e9a343"/></g></g>
+<g transform="translate(685 503)"><g class="wheel"><use href="#spokes"/><circle cy="-84" r="4" fill="#e9a343"/></g></g>
+<!-- Far leg, mechanically following the opposite crank pin -->
+<path id="far-leg" d="M420 366L395 443L426 503" stroke="#c78741" stroke-width="15" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="far-foot" d="M426 503l-23 10h43l-13-10" fill="#da9849" stroke="#a96e39" stroke-width="2"/>
+<!-- Chain and diamond frame -->
+<path d="M300 497L469 482a22 22 0 0 1 0 42L300 512z" fill="none" stroke="#465651" stroke-width="3"/>
+<g fill="none" stroke="#bd543e" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"><path d="M301 503L400 369L470 503H301L618 369H400M470 503L618 369L685 503"/></g>
+<g fill="none" stroke="#e38a63" stroke-width="3" stroke-linecap="round"><path d="M309 497L398 377M410 375L465 490M483 494L615 376"/></g>
+<path d="M400 372L386 333M619 371L600 313L626 287L653 292" fill="none" stroke="#324e47" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M364 333q24-14 53-2q5 9-7 13l-42-1q-11-1-4-10" fill="#493f33"/>
+<path d="M639 290l24 5" stroke="#604734" stroke-width="11" stroke-linecap="round"/>
+<circle cx="619" cy="296" r="8" fill="#d4a354" stroke="#344c40" stroke-width="2"/>
+<circle cx="301" cy="503" r="7" fill="#344e47"/><circle cx="685" cy="503" r="7" fill="#344e47"/>
+<circle cx="470" cy="503" r="24" fill="#d4d5bc" stroke="#344e47" stroke-width="4"/>
+<g class="crank"><path d="M427 503H513" stroke="#344e47" stroke-width="7" stroke-linecap="round"/><g transform="translate(513 503)"><g class="counter"><path d="M-14 0H14" stroke="#344e47" stroke-width="7" stroke-linecap="round"/></g></g><g transform="translate(427 503)"><g class="counter"><path d="M-14 0H14" stroke="#344e47" stroke-width="7" stroke-linecap="round"/></g></g></g>
+<!-- The rider: swept tail, heavy white body, tucked wing and a long curved neck -->
+<g class="body-bob">
+ <path d="M342 306l-60-27 25 45-40-7 58 40" fill="#e9ecdc" stroke="#55716a" stroke-width="2" stroke-linejoin="round"/>
+ <path d="M326 306c26-37 104-45 155-11 27 18 37 49 17 74-22 29-72 24-113 6-45-19-76-42-59-69z" fill="#fcf9e9" stroke="#55716a" stroke-width="2.5"/>
+ <path d="M371 313c14-18 67-20 100 6l-22 44c-29 5-76-16-91-35z" fill="url(#wing)" stroke="#71877a" stroke-width="2"/>
+ <g fill="none" stroke="#a3b6a5" stroke-width="2.4" stroke-linecap="round"><path d="M377 326q31 22 63 24M385 317q35 16 60 20M369 333q22 20 49 23"/></g>
+ <path d="M466 320c25-7 21-32 24-67 2-29 20-58 45-66 17-6 36 5 34 25-2 17-19 24-29 23-6 0-12 10-12 28 0 36 5 69-24 91" fill="#fcfaec" stroke="#55716a" stroke-width="2.5"/>
+ <path d="M505 308c9-23 3-47 12-67" fill="none" stroke="#d5dfcf" stroke-width="10" stroke-linecap="round"/>
+ <!-- A little windswept crest -->
+ <path d="M541 183l-12-17q18 1 27 13l1-16q12 7 15 20" fill="#fffbed" stroke="#55716a" stroke-width="2" stroke-linejoin="round"/>
+ <path d="M531 191c4-20 45-30 67-7 13 13 9 34-5 44-18 11-54-1-62-16" fill="#fffbed" stroke="#55716a" stroke-width="2.5"/>
+ <!-- Bill: narrow top and the pelican's unmistakable hanging pouch -->
+ <path d="M592 212L761 227Q704 292 634 267Q601 253 592 212" fill="url(#beak)" stroke="#a76738" stroke-width="2.3"/>
+ <path d="M593 202q81 1 175 24l-8 9-166-17z" fill="#efb054" stroke="#a76738" stroke-width="2.3" stroke-linejoin="round"/>
+ <path d="M616 230q35 36 93 20" fill="none" stroke="#f8d584" stroke-width="4" stroke-linecap="round"/>
+ <path d="M753 227l15-1-8 9" fill="#a55c34"/>
+ <circle cx="580" cy="198" r="11" fill="#e1c983"/>
+ <g class="blink"><circle cx="582" cy="197" r="5.3" fill="#213e38"/><circle cx="584" cy="195" r="1.5" fill="#fffdf0"/></g>
+ <!-- Wing reaches to the handlebar, rather than hovering above it -->
+ <path d="M462 322q48-5 76-40 8-10 20-4l76 19" fill="none" stroke="#678178" stroke-width="15" stroke-linecap="round"/>
+ <path d="M462 319q48-5 76-40 8-10 20-4l76 19" fill="none" stroke="#f5f3e1" stroke-width="11" stroke-linecap="round"/>
+ <path d="M625 291l7 8m-1-10 7 9m-1-8 6 9" stroke="#647d70" stroke-width="2" stroke-linecap="round"/>
+ <!-- Green neckerchief -->
+ <path d="M490 261l40 9-6 18-40-11z" fill="#2a7463" stroke="#235547" stroke-width="2"/>
+ <g class="scarf-tail"><path d="M491 271q-45-6-89-32l12 27-22 5q40 26 99 12" fill="#348c72" stroke="#235547" stroke-width="2" stroke-linejoin="round"/><path d="M410 253q35 20 66 21" fill="none" stroke="#73b191" stroke-width="3"/></g>
+ <circle cx="494" cy="278" r="10" fill="#28705d"/>
+</g>
+<!-- Near webbed foot follows the crank continuously. JS solves the bent knee. -->
+<path id="near-leg" d="M440 369L495 427L513 503" stroke="#e1a24e" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="near-foot" d="M513 503l-23 10h43l-13-10" fill="#edb35d" stroke="#ab733d" stroke-width="2" stroke-linejoin="round"/>
+<!-- Roadside grass and restrained print texture -->
+<g fill="none" stroke="#77865d" stroke-width="3" stroke-linecap="round"><path d="M81 589l-9-23m9 23 4-31m-4 31 17-17M909 585l-3-28m3 28 14-19m-14 19-14-16M865 612l-6-20m6 20 9-17"/></g>
+<path d="M0 0h1000v720H0z" fill="url(#grain)" pointer-events="none"/>
+<text x="500" y="691" text-anchor="middle" fill="#496353" font-family="Georgia,serif" font-size="17" font-style="italic">A little less hurry. A little more coast.</text>
+</svg>
+<div class="controls"><span>Est. somewhere by the sea</span><button id="toggle" type="button" aria-pressed="false">Pause ride</button></div>
+</main>
+<script>
+const poster=document.getElementById('poster'),button=document.getElementById('toggle');
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+let paused=reduced.matches,elapsed=0,last=null;
+function setPaused(value){paused=value;poster.classList.toggle('paused',value);button.textContent=value?'Resume ride':'Pause ride';button.setAttribute('aria-pressed',String(value));}
+button.addEventListener('click',()=>setPaused(!paused));
+// Both feet share the exact crank phase. The knee is a two-link inverse-kinematics solution.
+function leg(id,hip,phase){
+ const angle=elapsed/1800*Math.PI*2+phase;
+ const foot=[470+43*Math.cos(angle),503+43*Math.sin(angle)];
+ const dx=foot[0]-hip[0],dy=foot[1]-hip[1],distance=Math.hypot(dx,dy);
+ const thigh=100,shin=100,along=(thigh*thigh-shin*shin+distance*distance)/(2*distance);
+ const bend=Math.sqrt(Math.max(0,thigh*thigh-along*along));
+ const knee=[hip[0]+dx/distance*along+dy/distance*bend,hip[1]+dy/distance*along-dx/distance*bend];
+ document.getElementById(id+'-leg').setAttribute('d',`M${hip}L${knee}L${foot}`);
+ document.getElementById(id+'-foot').setAttribute('d',`M${foot[0]-7} ${foot[1]-4}l-19 13h43l-17-13z`);
+}
+function animate(now){if(last!==null&&!paused)elapsed+=Math.min(now-last,80);last=now;const degrees=elapsed/1800*360;document.querySelector('.crank').style.transform=`rotate(${degrees}deg)`;document.querySelectorAll('.wheel').forEach(w=>w.style.transform=`rotate(${degrees}deg)`);document.querySelectorAll('.counter').forEach(w=>w.style.transform=`rotate(${-degrees}deg)`);leg('near',[440,369],0);leg('far',[420,366],Math.PI);requestAnimationFrame(animate);}
+setPaused(paused);requestAnimationFrame(animate);
+</script>
+</body>
+</html>
