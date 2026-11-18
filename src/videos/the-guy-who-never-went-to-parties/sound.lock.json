@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "the-guy-who-never-went-to-parties",
   "mix": "public/audio/the-guy-who-never-went-to-parties/mix.mp3",
-  "seconds": 169.5667,
+  "seconds": 168.7333,
   "built_from": {
-    "timing.json": "561d98391867e631efd698e5b69206986f6148e1",
+    "timing.json": "04a16c8c2c5f83dc841b5f783c8a9a3b740589bb",
     "sound.json": "912c8df9f1b1ae5f6fbc50fceb7f5d293d8739f1",
-    "narration.mp3": "3c07690da0e3982dd23ca27c6882d07aa002c33d"
+    "narration.mp3": "4ce662aae7e96277c5b3b4b403a7c4cb269cd857"
   },
-  "mix_sha1": "a6ea9955ab99671a865eac762d0b324f13f504fd",
+  "mix_sha1": "7a66e94d659d828d3721d088ed28e6966bc96755",
   "music_sections": [
     {
       "from": "1.party",
@@ -58,27 +58,27 @@
     {
       "from": "7.walked",
       "mood": "hope",
-      "at": 110.3
+      "at": 109.9
     },
     {
       "from": "8.door",
       "mood": "tense",
-      "at": 134.6
+      "at": 134.23
     },
     {
       "from": "8.dressed",
       "mood": "tense",
-      "at": 136.67
+      "at": 136.27
     },
     {
       "from": "9.now",
       "mood": "dark",
-      "at": 155.73
+      "at": 154.9
     },
     {
       "from": "10.sub",
       "mood": "town",
-      "at": 166.6
+      "at": 165.77
     }
   ],
   "music_file": {
@@ -91,20 +91,29 @@
     "secondsWithoutMusic": 3.1,
     "bedsUnderVoiceDb": 27.6,
     "sfx": 121,
-    "sfxPerMinute": 42.8,
+    "sfxPerMinute": 43.0,
     "sfxKinds": 34,
     "longestGapSeconds": 4.7,
     "longestGapAt": 83.1,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 16.1,
-    "voiceOverRestWorstDb": 4.8,
+    "voiceOverRestMedianDb": 16.2,
+    "voiceOverRestWorstDb": 3.0,
     "voiceOverRestWorst": [
       {
-        "db": 4.8,
-        "t": 146.6,
-        "cue": "8.turned",
+        "db": 3.0,
+        "t": 165.6,
+        "cue": "9.and",
         "sounding": [
-          "creak"
+          "ding",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 3.1,
+        "t": 149.3,
+        "cue": "8.training",
+        "sounding": [
+          "sting"
         ]
       },
       {
@@ -117,11 +126,12 @@
         ]
       },
       {
-        "db": 6.0,
-        "t": 150.2,
+        "db": 6.4,
+        "t": 150.0,
         "cue": "8.training",
         "sounding": [
-          "sting"
+          "sting",
+          "tick"
         ]
       },
       {
@@ -140,20 +150,11 @@
         "sounding": [
           "sting"
         ]
-      },
-      {
-        "db": 7.4,
-        "t": 32.9,
-        "cue": "2.queue",
-        "sounding": [
-          "count",
-          "sting"
-        ]
       }
     ],
     "lufs": -14.8,
     "truePeakDb": -2.3,
-    "limiterMaxDb": 0.5
+    "limiterMaxDb": 0.7
   },
   "failures": []
 }

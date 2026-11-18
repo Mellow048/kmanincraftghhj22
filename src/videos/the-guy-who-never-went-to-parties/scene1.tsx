@@ -60,7 +60,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.dinner",
       // THE JOKE THAT SETS THE FILM. A long table in the street with a party on it and not one plate of food.
-      ...cam.top({ on: [0.4, 0.74, 0.8], height: 3.8, to: 3.2, spin: [-8, 8], fov: 42 }),
+      ...cam.push({ on: [0.4, 1.15, 0.8], dist: 5.0, to: 4.3, yaw: -18, pitch: 12, fov: 46 }),
       zone: "village",
       look: "overworld-sunset",
       note: "Straight down on the party's table: bowls, glasses, confetti, a speaker, a birthday cake nobody has cut, and no food at all. The viewer should notice what is missing before the line says it.",

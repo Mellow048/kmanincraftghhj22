@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type React from "react";
-import { Bubble, Hero, Player, ROBE, Villager, Vox, chestOf, faceOf, pop, ramp, timing, wordAt } from "./kit";
+import { Bubble, Chant, Hero, Player, ROBE, Villager, Vox, chestOf, faceOf, pop, ramp, timing, wordAt } from "./kit";
 
 /**
  * BEAT 7 — THE JOB (1:47–2:09), BEAT 8 — THE REUNION (2:09–2:32), BEAT 9 — THE TURN (2:32–2:37).
@@ -318,7 +318,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[-1.2, 0, 498.8]} rotationY={0.05} animation="idle" face="brave" gaze={0} headPitch={0.16} />
-          <Bubble text="HUS" position={[-1.6, 2.0 + Math.sin(t * 9) * 0.03, 499]} scale={pop(t, CHANT) * 0.6 * (0.55 + 0.45 * Math.abs(Math.sin(t * 4.5)))} rotationY={0} dark tail={1} />
+          <Chant t={t} at={[-1.68, 2.02, 499.1]} scale={pop(t, CHANT) * 0.54} rotationY={0.1} />
         </>
       ),
     },

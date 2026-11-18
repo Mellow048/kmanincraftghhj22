@@ -47,7 +47,7 @@ want a thing you have never had. Every joke in the first third is a clue to it, 
 
 | The meme | Where it is | What it actually is |
 |---|---|---|
-| **"HUS HUS HUS"** | Hook (0:03) and the whole training arc | Not a chopping sound. It is the **running/training chant** from Daniel LaBelle run edits, Forrest Gump and the Spider-Man run memes: rhythmic breathing at speed. So he chants it *while training*, treating cooking like athletics. That is the joke, and it is why it lands twice |
+| **"HUS HUS HUS"** | Hook (0:03) and the whole training arc (`rate 1.55`: the chant is **speed**, so it is said fast) | Not a chopping sound. It is the **running/training chant** from Daniel LaBelle run edits, Forrest Gump and the Spider-Man run memes: rhythmic breathing at speed. So he chants it *while training*, treating cooking like athletics. That is the joke, and it is why it lands twice |
 | **The egg flip fail** | `4.egg`–`4.almost` | The real cooking-fail format ("an almost perfect egg flip", "moments before disaster"). The word is **"almost"**, said alone, to nobody |
 | **"bro come on / you only live once"** | `2.bro`, `8.how` | The friend-who-spams-invites format. Used straight, then turned over at the reunion |
 | **"In this town, …"** | The opening | The Roblox/Cluewick story short format: one impossible rule, stated flat, then the consequences |
@@ -122,7 +122,7 @@ are treated as grave matters.
 [6.trained]   So I trained. Properly. Like an athlete.
 [6.slow]      At first I chopped slowly. One onion. Then another.
 [6.faster]    Then faster. Then I found the rhythm.
-[6.chant]     Huh huh huh. Huh huh huh.
+[6.chant rate 1.55] Huh huh huh. Huh huh huh.
 [6.blade]     My knife started to blur.
 [6.pancake]   I flipped pancakes and caught them every time.
 [6.again]     Then again. Then four at once.
@@ -153,7 +153,7 @@ are treated as grave matters.
 [8.training]  I said one word. Training.
 [8.nothing]   Nobody said anything for a whole second.
 [8.onions]    Then I went back to the onions.
-[8.chant]     Huh huh huh. Huh huh huh.
+[8.chant rate 1.55] Huh huh huh. Huh huh huh.
 
 # clip 09-outro wait 0.35
 [9.now]       Now the parties start at my restaurant.

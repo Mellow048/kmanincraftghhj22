@@ -195,7 +195,9 @@ export function readScript(raw) {
     if (line.startsWith("#") || line.startsWith(">")) continue;
     const match = line.match(/^\[([^\]]+)\]\s*(.+)$/);
     if (!match) return { error: `cannot read script line: "${line}"` };
-    cues.push({ id: match[1].trim(), text: match[2].trim() });
+    // `[6.chant rate 1.55] words`: a line said faster than the rest of its clip (see scripts/narration.py)
+    const head = match[1].trim().replace(/\s+rate\s+[0-9.]+$/, "");
+    cues.push({ id: head, text: match[2].trim() });
   }
   return { cues, clips };
 }

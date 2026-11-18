@@ -17,6 +17,7 @@ The script lives in src/videos/<film>/narration.md, inside a ```narration block:
     # clip 01-hook                 <- one recording (one text-to-speech call)
     [1.me]   In this town,         <- one SHOT: the words spoken while it is on screen
     [1.eggs] every kid got a monster egg on their tenth birthday.
+    [1.chant rate 1.5] uh uh uh   <- `rate`: say THIS line faster than the rest (keeps its pitch)
 
 Record each clip to public/audio/<film>/raw/<clip>.mp3 (or .wav), then build.
 
@@ -74,11 +75,19 @@ def read_script(slug: str):
             sys.exit(f"Cannot read this script line (expected `[cue.id] words`): {line}")
         if current is None:
             sys.exit("The first line of the narration block must be `# clip <name>`.")
-        cue_id, text = m.group(1).strip(), m.group(2).strip()
+        head, text = m.group(1).strip(), m.group(2).strip()
+        rate, rm = 1.0, re.search(r"\s+rate\s+([0-9.]+)$", head)
+        if rm:
+            rate = float(rm.group(1))
+            head = head[: rm.start()].strip()
+        cue_id = head
         if cue_id in seen:
             sys.exit(f"Cue id used twice: {cue_id}")
         seen.add(cue_id)
-        current["cues"].append({"id": cue_id, "text": text})
+        cue = {"id": cue_id, "text": text}
+        if rate != 1.0:
+            cue["rate"] = rate
+        current["cues"].append(cue)
     clips = [c for c in clips if c["cues"]]
     if not clips:
         sys.exit("The narration block has no lines.")
@@ -281,6 +290,45 @@ def spread(words, start: float, end: float):
 
 
 # ----------------------------------------------------------------------------- build
+def _compress_cues(path, xo, spans, cues, tempo, k, a, sr_in, sr_out):
+    """Splice the `rate` cues of one clip faster. `spans` are word times in the tempo'd clip and are
+    rewritten in place (so the caller's word times, and every cut after them, follow the new audio)."""
+    idx, cum = 0, 0.0
+    for cue in cues:
+        n = len(spoken_words(cue["text"]))
+        rate = float(cue.get("rate", 1.0))
+        if n == 0:
+            continue
+        if abs(rate - 1.0) < 1e-3:
+            spans[idx:idx + n] = [(s0 - cum, e0 - cum) for s0, e0 in spans[idx:idx + n]]
+            idx += n
+            continue
+        cs, ce = spans[idx][0] - cum, spans[idx + n - 1][1] - cum
+        # the same words in the clip as recorded (spans are in the tempo'd timeline, hence /k), so the
+        # faster pass starts and ends on the same phonemes
+        ns, ne = (spans[idx][0] - cum) / k, (spans[idx + n - 1][1] - cum) / k
+        if ce - cs < 1e-3:
+            idx += n
+            continue
+        seg = decode(path, sr_out, tempo * rate, start=a / sr_in + ns, end=a / sr_in + ne)
+        if len(seg) < 64:
+            idx += n
+            continue
+        fade = int(0.008 * sr_out)
+        seg = seg.copy()
+        seg[:fade] *= np.linspace(0, 1, fade)
+        seg[-fade:] *= np.linspace(1, 0, fade)
+        a0, a1 = int(cs * sr_out), int(ce * sr_out)
+        a0, a1 = max(0, a0), min(len(xo), a1)
+        xo = np.concatenate([xo[:a0], seg, xo[a1:]])
+        grew = ce - cs - len(seg) / sr_out
+        ratio = (len(seg) / sr_out) / (ce - cs)
+        spans[idx:idx + n] = [(cs + (s0 - cum - cs) * ratio, cs + (e0 - cum - cs) * ratio) for s0, e0 in spans[idx:idx + n]]
+        cum += grew
+        idx += n
+    return xo
+
+
 def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps: int, tail: float, lead: float):
     clips = read_script(slug)
     all_cues = [cue for clip in clips for cue in clip["cues"]]
@@ -336,14 +384,20 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
             spans = align(xn[a:b], clip_words)
             xo = decode(p, SR_OUT, tempo, start=a / SR_ALIGN, end=b / SR_ALIGN)
             dur = len(xo) / SR_OUT
+            k = dur / natural_dur  # what the tempo filter really did, measured
             how = "aligned"
             if spans is None:
                 spans = spread(clip_words, 0.0, dur)
                 how = "estimated"
             else:
-                k = dur / natural_dur  # what the tempo filter really did, measured
                 spans = [(s0 * k, e0 * k) for s0, e0 in spans]
                 measured = True
+            # A cue marked `rate` is said faster than the rest of its clip: its words are cut out of the
+            # clip, time-compressed again, and spliced back, and every later word moves up by the time
+            # saved. The film's cuts then follow the voice, as they always do.
+            if any(abs(cue.get("rate", 1.0) - 1.0) > 1e-3 for cue in clip["cues"]):
+                xo = _compress_cues(p, xo, spans, clip["cues"], tempo, k, a, SR_ALIGN, SR_OUT)
+            dur = len(xo) / SR_OUT
             i = 0
             for cue in clip["cues"]:
                 cue_first_word.append(len(words_out))

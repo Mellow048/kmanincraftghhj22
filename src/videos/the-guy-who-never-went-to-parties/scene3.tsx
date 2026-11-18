@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type React from "react";
-import { Bubble, Hero, Player, ROBE, Villager, Vox, chestOf, faceOf, pop, ramp, timing, wordAt } from "./kit";
+import { Bubble, Chant, Hero, Player, ROBE, Villager, Vox, chestOf, faceOf, pop, ramp, timing, wordAt } from "./kit";
 
 /**
  * BEAT 4 — THE ANSWER (0:52–1:07), BEAT 5 — THE FAIL (1:07–1:19), BEAT 6 — THE TRAINING (1:19–1:47).
@@ -276,7 +276,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[0, 0, 400.9]} rotationY={0.05} animation="idle" face="brave" gaze={0} headPitch={0.18} />
-          <Bubble text="HUS" position={[-0.55, 2.0 + Math.sin(t * 9) * 0.03, 401]} scale={pop(t, CHANT) * 0.55 * pulse(t, 9)} rotationY={0} dark tail={1} />
+          <Chant t={t} at={[-0.62, 2.02, 401.1]} scale={pop(t, CHANT) * 0.52} rotationY={0.1} />
         </>
       ),
     },
@@ -372,7 +372,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.calendar",
       // Months pass like a flip book. A calendar on the wall, torn, then bare.
-      ...cam.push({ on: [1.6, 1.7, 397.3], dist: 3.7, to: 3.1, yaw: 36, pitch: -4, fov: 40 }),
+      ...cam.push({ on: [1.6, 1.62, 397.25], dist: 3.4, to: 2.9, yaw: -24, pitch: -2, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "A wall calendar with its pages flicking over, then nothing left but the backing board. Months, in one object, in one shot.",
@@ -380,7 +380,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Vox kind="wool" tint="#f2ecd8" position={[1.6, 1.7, 397.08]} size={[0.8, 1.0, 0.03]} />
           <Vox kind="wool" tint="#c8402f" position={[1.6, 2.06, 397.1]} size={[0.82, 0.12, 0.02]} />
-          <Vox kind="wool" tint="#e8e2d0" position={[1.6, 1.62 - ramp(t, 0.3, 1.8) * 0.5, -2.89]} size={[0.66, 0.06 + ramp(t, 0.3, 1.8) * 0.5, 0.02]} />
+          <Vox kind="wool" tint="#e8e2d0" position={[1.6, 1.62 - ramp(t, 0.3, 1.8) * 0.5, 397.11]} size={[0.66, 0.06 + ramp(t, 0.3, 1.8) * 0.5, 0.02]} />
           {Array.from({ length: 6 }, (_, i) => (
             <Vox key={i} kind="wool" tint="#f7f4ea" position={[1.25 + (i % 3) * 0.35, 1.9 - Math.floor(i / 3) * 0.3, 397]} size={[0.16, 0.16, 0.01]} opacity={1 - ramp(t, 0.5 + i * 0.15, 1.0 + i * 0.15)} />
           ))}
@@ -407,10 +407,6 @@ export const scene3 = storyScene(timing, {
   ],
 });
 
-/** The chant, on the beat: 0 except for a short punch on each beat. */
-function pulse(t: number, perSecond: number): number {
-  return 0.55 + 0.45 * Math.abs(Math.sin(t * perSecond * 0.5));
-}
 void Player;
 void Vox;
 void ramp;

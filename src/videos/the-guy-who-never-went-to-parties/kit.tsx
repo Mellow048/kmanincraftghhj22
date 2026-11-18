@@ -1,7 +1,7 @@
 import type React from "react";
 import { MinecraftAvatar, Vox } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { KID, wordClock } from "../../../Topics/InThisTown";
+import { Bubble, KID, wordClock } from "../../../Topics/InThisTown";
 import timingJson from "./timing.json";
 
 /**
@@ -97,6 +97,42 @@ export const REST2 = {
 };
 
 // ----------------------------------------------------------------------------- the teller
+
+/**
+ * "HUS HUS HUS": the running chant. It is a meme about SPEED, and the first cut drew one slow bubble,
+ * which read as a cough. Three bubbles now, half a beat apart, repeating five times a second, each one
+ * popping and dying, so the chant is visibly faster than the knife hand in the same frame.
+ */
+export const Chant: React.FC<{ t: number; at: Vec3; scale?: number; rotationY?: number; tail?: number }> = ({
+  t,
+  at,
+  scale = 0.5,
+  rotationY = 0,
+  tail = -1,
+}) => (
+  <group position={at} rotation={[0, rotationY, 0]}>
+    {[0, 1, 2].map((i) => {
+      const period = 0.62; // three bubbles, one every 0.21 s: a breath in a run
+      const cycle = (((t - i * 0.075) % period) + period) % period;
+      const local = cycle / period;
+      if (local > 0.5) return null;
+      const grow = Math.min(1, local / 0.16);
+      const fade = Math.min(1, (0.5 - local) / 0.14);
+      const s = scale * grow * fade;
+      return (
+        <Bubble
+          key={i}
+          text="HUS"
+          position={[i * 0.62, i * 0.06 + Math.sin(t * 26 + i) * 0.02, -i * 0.05]}
+          scale={s}
+          rotationY={rotationY * i * 0.3}
+          dark
+          tail={i === 0 ? tail : 0}
+        />
+      );
+    })}
+  </group>
+);
 
 type A = Partial<MinecraftAvatarProps>;
 

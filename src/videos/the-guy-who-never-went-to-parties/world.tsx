@@ -235,6 +235,9 @@ const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean; fridge?: "closed"
     {fill && (
       <Hero position={[0.15, 0, 0.95]} rotationY={0.12} animation="idle" face="calm" />
     )}
+    {/* a fill from the open front: a lens that looks north into the kitchen is looking INTO the key,
+        and without this the faces on that side of the room go to silhouette */}
+    <pointLight position={[0.4, 2.3, 2.7]} color="#ffe6bd" intensity={9} distance={12} decay={1.8} />
     <pointLight position={[0, 2.55, 0.5]} color="#ffe8c0" intensity={night ? 7 : 8} distance={9} decay={1.7} />
     <pointLight position={[0.6, 2.4, -2.2]} color="#fff0d0" intensity={4} distance={6} decay={2} />
     <Glow position={[0, 2.3, 0.4]} size={1.5} color="#ffe8c0" opacity={0.2} />
