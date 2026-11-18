@@ -150,6 +150,8 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <HomeDoor open={1 - tw(t, 0.25, 0.7)} />
+          {/* the hall lamp is behind the lens: without this the shut door is a black frame */}
+          <pointLight position={home(0.3, 1.9, 1.9)} color="#ffdcae" intensity={5} distance={5} decay={2} />
           <Friend1 position={F1_STEP} animation="shrug" face="frown" gaze={0} />
           <Friend2 position={F2_STEP} animation="idle" face="neutral" gaze={0} />
           <Dancers t={t} />

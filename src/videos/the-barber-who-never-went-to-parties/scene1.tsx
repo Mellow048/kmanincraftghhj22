@@ -37,7 +37,7 @@ export const scene1 = storyScene(timing, {
             <Cape position={PLACE.chair} scale={0.96} />
             <Me t={t} fast={1} face="calm" />
             <HairFly position={SIT_TOP} t={t} at={[-0.25, ...HUS]} color={HAIR.f2} count={10} power={1.25} />
-            <Plate lines={["HE NEVER WENT", "TO A SINGLE PARTY"]} position={[0.06, 2.55, 0.3]} width={1.05} />
+            <Plate lines={["HE NEVER WENT", "TO A SINGLE PARTY"]} position={[0.14, 2.4, 0.3]} width={0.9} />
           </>
         );
       },
@@ -45,7 +45,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.hus",
       cut: HUS[5] + 0.16,
-      ...cam.push({ on: [0, 1.74, 0], dist: 2.75, to: 2.45, yaw: -9, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [0, 1.8, 0], dist: 3.25, to: 2.95, yaw: -9, pitch: 2, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
       note: "The chant ends and the cape comes off on a perfect head: the skill, proved in two seconds.",
@@ -55,7 +55,7 @@ export const scene1 = storyScene(timing, {
           <Cape position={PLACE.chair} scale={0.96} off={tw(t, 0.02, 0.32)} side={1} />
           <Me t={t} fast={0} up={1.15} face="smug" />
           <Sparkle position={[0.3, 1.56, 0.35]} k={pop(t, 0.26, 0.2)} size={0.3} />
-          <Plate lines={["HE NEVER WENT", "TO A SINGLE PARTY"]} position={[-0.03, 2.5, 0.3]} width={0.84} />
+          <Plate lines={["HE NEVER WENT", "TO A SINGLE PARTY"]} position={[-0.03, 2.44, 0.3]} width={0.84} />
         </>
       ),
     },
@@ -105,7 +105,7 @@ export const scene1 = storyScene(timing, {
             <Me t={-t * 2.5} fast={1} face="calm" />
             <HairFly position={SIT_TOP} t={dur - t} at={[0.1, 0.3, 0.5, 0.7]} color={HAIR.f2} count={10} power={1.25} />
             <Rewind t={t} lens={lensOf(WIDE, 3.28, 14, 3)} on={WIDE} depth={1.0} />
-            <Plate lines={["REWIND"]} position={[0.06, 2.5, 0.3]} width={0.8} color="#ffe14a" k={Math.floor(t * 8) % 2 ? 1 : 0.92} />
+            <Plate lines={["REWIND"]} position={[0.1, 2.4, 0.3]} width={0.8} color="#ffe14a" k={Math.floor(t * 8) % 2 ? 1 : 0.92} />
           </>
         );
       },

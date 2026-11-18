@@ -109,7 +109,7 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.weirdone",
       cut: 0.76,
-      ...cam.push({ on: [0.25, 1.15, 0], dist: 3.1, to: 2.8, yaw: 196, pitch: 5, fov: 40 }),
+      ...cam.push({ on: [0.5, 1.2, 0.1], dist: 3.6, to: 3.3, yaw: 192, pitch: 5, fov: 40 }),
       zone: "front",
       look: "overworld-day",
       note: "No words: I pat the back of the chair. The calm of somebody who has done this before.",
@@ -194,7 +194,7 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.training",
       cut: 0.95,
-      ...cam.push({ on: [-0.36, 1.5, -0.1], dist: 2.5, to: 2.4, yaw: 16, pitch: 0, fov: 38 }),
+      ...cam.push({ on: [-0.31, 1.42, -0.1], dist: 3.3, to: 3.2, yaw: 10, pitch: 0, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
       note: "Two blank faces and no sound at all: the word lands on them, and on the viewer.",
@@ -202,7 +202,7 @@ export const scene7 = storyScene(timing, {
         <>
           <ShopDoor open={1} />
           <Friend2 position={SIT} hair="cut" pose={seatedPose(0)} face="blank" gaze={0} blink={false} />
-          <Friend1 position={[-0.78, 0, -0.2]} animation="idle" face="blank" gaze={0} blink={false} phase={0} />
+          <Friend1 position={[-0.62, 0, -0.25]} animation="idle" face="blank" gaze={0} blink={false} phase={0} />
         </>
       ),
     },

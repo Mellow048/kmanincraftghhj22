@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Bits, Cape, Clippers, Comb, Drop, FloorHair, HairFly, Hero, InHand, PLACE, Person, Plate, SEAT, ShopDoor, Sparkle, WindowBoard, add, go, holdUp, personOf, pop, seatedPose, timing, tw } from "./kit";
+import { Bits, Block, Cape, Clippers, Comb, Drop, FloorHair, HairFly, Hero, InHand, PLACE, Person, PixelText, Plate, SEAT, ShopDoor, Sparkle, WindowBoard, add, go, holdUp, personOf, pop, seatedPose, timing, tw } from "./kit";
 import { MY_FACE, Me, SIT, SIT_TOP } from "./acts";
 
 /**
@@ -122,7 +122,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.beard",
       cut: 2.4,
-      ...cam.push({ on: [0.55, 0.1, 0.75], dist: 1.7, to: 1.45, yaw: 22, pitch: 24, fov: 40 }),
+      ...cam.push({ on: [0.55, 0.12, 0.75], dist: 2.9, to: 2.6, yaw: 22, pitch: 30, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
       note: "Clippers buzzing in circles on the floor on their own: nobody has a hand free.",
@@ -138,7 +138,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.beard",
       cut: 3.2,
-      ...cam.push({ on: MY_FACE, dist: 2.6, to: 2.3, yaw: 5, pitch: -2, fov: 40 }),
+      ...cam.push({ on: add(MY_FACE, 0.2, 0.08, 0), dist: 2.7, to: 2.4, yaw: 5, pitch: -2, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
       note: "Two clicks of the scissors, close on my face: the sound that says he is ready.",
@@ -199,8 +199,11 @@ export const scene6 = storyScene(timing, {
                 </group>
               );
             })}
-            <Plate lines={[String(n)]} position={[-2.3, 2.55, -5.0]} rotationY={Math.PI} width={0.9} color="#ffe14a" />
-            <Sparkle position={[-1.75, 2.7, -5.05]} k={n === 40 ? pop(t, 1.0, 0.2) : 0} size={0.24} rotationY={Math.PI} />
+            <group position={[-2.85, 2.72, -5.0]} rotation={[0, Math.PI, 0]}>
+              <Block size={[1.0, 0.66, 0.04]} color="#101018" castShadow={false} />
+              <PixelText text={String(n)} position={[0, 0, 0.03]} height={0.5} maxWidth={0.9} color="#ffe14a" />
+            </group>
+            <Sparkle position={[-2.3, 3.0, -5.06]} k={n === 40 ? pop(t, 1.0, 0.2) : 0} size={0.24} rotationY={Math.PI} />
           </>
         );
       },

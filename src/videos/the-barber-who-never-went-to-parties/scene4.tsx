@@ -120,7 +120,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.hat",
       cut: 1.2,
-      ...cam.push({ on: add(ME_TABLE, -0.12, 1.34, 0), dist: 2.1, to: 1.85, yaw: 5, pitch: 3, fov: 38 }),
+      ...cam.push({ on: add(ME_TABLE, -0.34, 1.36, 0), dist: 3.0, to: 2.7, yaw: 4, pitch: 3, fov: 38 }),
       zone: "dinner",
       look: "overworld-night",
       note: "My face at the end of the table, looking anywhere else: I know whose fault the hat is.",
