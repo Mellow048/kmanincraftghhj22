@@ -1,0 +1,61 @@
+name: Render one film (single job)
+
+# A fallback renderer: one runner, no chunk planning. Use it when the chunked workflow's plan step fails.
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: "Remotion composition id"
+        required: true
+      commit_to:
+        description: "renders/<name>.mp4 to commit back to the branch"
+        required: true
+      concurrency:
+        description: "Remotion concurrency (2 is safe on software GL)"
+        required: false
+        default: "2"
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Verify
+        run: npm run typecheck && npm run check
+
+      - name: Render
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          CONCURRENCY: ${{ inputs.concurrency }}
+        run: |
+          mkdir -p out
+          npx remotion render src/index.ts "$COMPOSITION" out/film.mp4 \
+            --codec=h264 --crf=20 --concurrency=$CONCURRENCY --gl=swangle --timeout=240000 \
+            2>&1 | tail -40
+
+      - name: Size
+        run: ls -la out/film.mp4 && ffprobe -hide_banner out/film.mp4 2>&1 | head -6 || true
+
+      - name: Commit it to the branch
+        env:
+          DEST: ${{ inputs.commit_to }}
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "arena-agent@users.noreply.github.com"
+          mkdir -p "$(dirname "$DEST")"
+          cp out/film.mp4 "$DEST"
+          git add "$DEST"
+          git commit -m "Deliver $(basename "$DEST" .mp4) render (1080x1920)" || echo "nothing to commit"
+          git push
