@@ -187,12 +187,12 @@ export const LOOKS: Record<LookPreset, Preset> = {
    * lights the whole interior instead of one black corner. Built for the parties film's kitchen act.
    */
   "kitchen-day": {
-    bg: "#e7d2ac",
-    fog: "#e7d2ac",
-    fogDensity: 0.0035,
-    ambient: { color: "#ffffff", intensity: 0.82 },
-    hemi: { sky: "#fff3dc", ground: "#8a6a44", intensity: 1.0 },
-    key: { color: "#ffe2b0", intensity: 3.2, position: [-6, 10, 5], shadow: true },
+    bg: "#8a6a4a",
+    fog: "#8a6a4a",
+    fogDensity: 0.006,
+    ambient: { color: "#ffffff", intensity: 0.48 },
+    hemi: { sky: "#fff0d4", ground: "#6a4f34", intensity: 0.58 },
+    key: { color: "#ffd9a0", intensity: 1.8, position: [-6, 10, 5], shadow: true },
     fills: [],
     follow: true,
     shadowSpan: 14,

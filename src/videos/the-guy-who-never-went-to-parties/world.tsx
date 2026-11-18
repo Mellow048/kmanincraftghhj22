@@ -110,9 +110,9 @@ const Village: React.FC = () => (
     <Lantern position={[6.4, 2.62, -2.05]} chain={0.2} light={10} reach={6} seed={17} />
 
     {/* warm pools on the ground: the street reads as a room the whole town is inside of */}
-    <pointLight position={[0, 3.4, 1.2]} color="#ffc478" intensity={34} distance={16} decay={1.7} />
-    <pointLight position={[-9, 3.0, -1.0]} color="#ffb45c" intensity={22} distance={12} decay={1.8} />
-    <pointLight position={[9, 3.0, 1.0]} color="#ffb45c" intensity={22} distance={12} decay={1.8} />
+    <pointLight position={[0, 3.4, 1.2]} color="#ffc478" intensity={16} distance={16} decay={1.7} />
+    <pointLight position={[-9, 3.0, -1.0]} color="#ffb45c" intensity={11} distance={12} decay={1.8} />
+    <pointLight position={[9, 3.0, 1.0]} color="#ffb45c" intensity={11} distance={12} decay={1.8} />
 
     <GodRay position={[-3, 6.5, -3]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.09} />
     <LightPool position={[0, 0.07, 1.5]} width={13} depth={10} color="#ffd798" opacity={0.22} />
@@ -165,7 +165,7 @@ const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean }> = ({ night, fil
     <Vox kind="obsidian" position={[-2.1, 1.0, -2.55]} size={[0.9, 0.1, 0.8]} />
     <Vox kind="magma" position={[-2.1, 1.06, -2.55]} size={[0.5, 0.04, 0.5]} />
     <Vox kind="stone" position={[-2.1, 1.16, -2.55]} size={[0.5, 0.2, 0.5]} />
-    <pointLight position={[-2.1, 1.5, -2.3]} color="#ff9a3c" intensity={7} distance={4} decay={2} />
+    <pointLight position={[-2.1, 1.5, -2.3]} color="#ff9a3c" intensity={5} distance={4} decay={2} />
 
     {/* a window over the sink, boarded outside — it is night in most of this film */}
     <Vox kind="wool" tint="#bfe2ff" position={[1.4, 1.7, -HOME.d + 0.06]} size={[1.6, 1.0, 0.02]} />
@@ -193,8 +193,8 @@ const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean }> = ({ night, fil
     {fill && (
       <Hero position={[0.15, 0, 0.95]} rotationY={0.12} animation="idle" face="calm" />
     )}
-    <pointLight position={[0, 2.55, 0.5]} color="#ffe8c0" intensity={night ? 26 : 30} distance={9} decay={1.7} />
-    <pointLight position={[0.6, 2.4, -2.2]} color="#fff0d0" intensity={14} distance={6} decay={2} />
+    <pointLight position={[0, 2.55, 0.5]} color="#ffe8c0" intensity={night ? 12 : 14} distance={9} decay={1.7} />
+    <pointLight position={[0.6, 2.4, -2.2]} color="#fff0d0" intensity={7} distance={6} decay={2} />
     <Glow position={[0, 2.3, 0.4]} size={1.5} color="#ffe8c0" opacity={0.2} />
     <Dust position={[0, 1.5, 0.4]} area={[6, 2.4, 5]} count={28} size={0.03} color="#fff2d8" opacity={0.35} seed={21} speed={0.09} />
   </group>
@@ -246,8 +246,8 @@ const Restaurant: React.FC<{ fill?: boolean }> = ({ fill }) => (
     {fill && (
       <Hero position={[-1.2, 0, -0.8]} rotationY={0.2} animation="idle" face="calm" />
     )}
-    <pointLight position={[0, 3.0, -1.0]} color="#ffd9a8" intensity={34} distance={12} decay={1.7} />
-    <pointLight position={[0, 2.9, 2.6]} color="#fff0d0" intensity={18} distance={8} decay={2} />
+    <pointLight position={[0, 3.0, -1.0]} color="#ffd9a8" intensity={17} distance={12} decay={1.7} />
+    <pointLight position={[0, 2.9, 2.6]} color="#fff0d0" intensity={9} distance={8} decay={2} />
     <GodRay position={[0, 3.3, -3.0]} rotation={[0, 0, 0]} width={6} height={5} color="#ffb070" opacity={0.1} />
     <Glow position={[0, 1.4, -3.4]} size={2.2} color="#ff8f30" opacity={0.24} />
     <Dust position={[0, 2.0, -1]} area={[11, 2.6, 7]} count={36} size={0.035} color="#ffe4b0" opacity={0.4} seed={33} speed={0.14} />

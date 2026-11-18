@@ -60,7 +60,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.dinner",
       // THE JOKE THAT SETS THE FILM. A long table in the street with a party on it and not one plate of food.
-      ...cam.top({ on: [0.4, 0.74, 0.8], height: 5.4, to: 4.3, spin: [-8, 8], fov: 44 }),
+      ...cam.top({ on: [0.4, 0.74, 0.8], height: 4.4, to: 3.6, spin: [-8, 8], fov: 42 }),
       zone: "village",
       look: "overworld-sunset",
       note: "Straight down on the party's table: bowls, glasses, confetti, a speaker, a birthday cake nobody has cut, and no food at all. The viewer should notice what is missing before the line says it.",
@@ -118,7 +118,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.cook",
       // The dream, said as a fact: he is now in his own bedroom under the poster of a chef, holding a knife.
-      ...cam.push({ on: chestOf(B(0, 0, 0), 0.8), dist: 3.7, to: 3.1, yaw: -12, pitch: 8, fov: 40 }),
+      ...cam.orbit({ on: chestOf(B(0, 0, 0), 0.8), dist: 3.9, distTo: 3.2, yaw: -30, yawTo: 14, pitch: 8, fov: 40 }),
       zone: "room",
       look: "kitchen-day",
       note: "The teller alone in his bedroom under a hand-drawn poster of a chef, holding a kitchen knife like a sword. The want, in one picture.",
@@ -133,7 +133,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.chop",
       // THE HOOK'S PAYOFF: the first chop, close, in the kitchen, on the board. The film's central object.
-      ...cam.push({ on: [0, 1.15, 400.3], dist: 3.5, to: 3.0, yaw: -24, pitch: 14, fov: 40 }),
+      ...cam.push({ on: [0, 1.15, 400.3], dist: 3.9, to: 3.3, yaw: 34, pitch: 18, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "Close on the cutting board: one onion, a knife coming down, and his hands. The object the whole film is about, in its own light.",

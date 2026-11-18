@@ -54,7 +54,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "4.cannot",
       // The thesis, in one picture: a thing you cannot want if you have never had it. A plate, untouched.
-      ...cam.top({ on: [0, 0.9, 400.5], height: 4.4, to: 3.7, spin: [8, -8], fov: 42 }),
+      ...cam.top({ on: [0, 0.9, 400.5], height: 3.2, to: 2.7, spin: [8, -8], fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "Straight down on a hot plate of food on the kitchen table, steaming, with nobody at the table. The one thing in town nobody has ever wanted.",
@@ -116,7 +116,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "4.whole",
       // The whole party stops, for a bowl of soup. Wide, and every single body turned the same way.
-      ...cam.push({ on: [0, 2.0, -2.6], dist: 11.0, to: 9.2, yaw: 4, pitch: 12, fov: 48 }),
+      ...cam.push({ on: [0, 2.0, -2.6], dist: 13.0, to: 11.0, yaw: 4, pitch: 14, fov: 50 }),
       zone: "village",
       look: "overworld-sunset",
       note: "Wide on the street: every dancer stopped, every body turned toward one bowl. The party has become a crowd around a plate.",
@@ -134,7 +134,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "5.but",
       // Back to the kitchen, and back to bad. The board, the egg, and total confidence.
-      ...cam.push({ on: [0, 1.25, 400.3], dist: 3.6, to: 3.0, yaw: -18, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [0, 1.3, 400.3], dist: 3.7, to: 3.1, yaw: -32, pitch: -6, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "The pan on the stove, one egg in it, and his hands in position. Everything about this frame says he thinks he can do it.",
@@ -148,7 +148,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "5.egg",
       // THE EGG GOES UP. Cut inside the line is not needed: the thrust of the pan is the whole first half second.
-      ...cam.push({ on: [-2.1, 1.45, 397.7], dist: 3.4, to: 2.9, yaw: 10, pitch: -4, fov: 42 }),
+      ...cam.top({ on: [-2.1, 1.1, 397.7], height: 3.0, to: 2.5, spin: [6, -6], fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "Low angle on the pan as he flicks it: the egg leaving the pan and still going, and his face coming round to follow it.",
@@ -163,7 +163,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "5.flipped",
       // It kept going. The ceiling, and the egg flattening against it.
-      ...cam.push({ on: [-2.1, 2.0, 397.9], dist: 4.0, to: 3.4, yaw: 8, pitch: -18, fov: 46 }),
+      ...cam.push({ on: [-2.1, 2.0, 397.9], dist: 3.7, to: 3.1, yaw: 8, pitch: -22, fov: 44 }),
       zone: "home",
       look: "kitchen-day",
       note: "Tilted up at the ceiling where the egg has just hit and is spreading. The single funniest frame in the film, so it gets its own shot and no caption over the pan.",
@@ -177,7 +177,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "5.ceiling",
       // Then it came back down. The egg on the floor, and the dog arriving.
-      ...cam.push({ on: [-2, 1.7, 398], dist: 3.8, to: 3.2, yaw: -10, pitch: 14, fov: 44 }),
+      ...cam.push({ on: [-2, 1.7, 398], dist: 4.1, to: 3.5, yaw: -14, pitch: 22, fov: 44 }),
       zone: "home",
       look: "kitchen-day",
       note: "Down on the floor: the egg landed, and the dog is already there with its nose in it. Down is the joke, so the camera is high.",
@@ -192,7 +192,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "5.dog2",
       // The dog got there first. Over his shoulder at the dog, and his hands still up.
-      ...cam.push({ on: [-1.6, 0.7, 398], dist: 3.4, to: 2.9, yaw: -22, pitch: 12, fov: 42 }),
+      ...cam.push({ on: [-1.6, 0.6, 398], dist: 3.2, to: 2.7, yaw: -28, pitch: 4, fov: 42 }),
       zone: "home",
       look: "kitchen-day",
       note: "Over his shoulder: the dog eating the egg off the floor, and the teller's hands still up in the air where the pan left them.",
@@ -221,7 +221,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.trained",
       // THE TRAINING ARC. Every shot from here is one image of work, and the lens is always low and close.
-      ...cam.push({ on: [0, 1.25, 400.25], dist: 3.7, to: 3.1, yaw: -14, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [0, 1.5, 400.25], dist: 5.8, to: 4.9, yaw: -10, pitch: 10, fov: 46 }),
       zone: "home",
       look: "kitchen-day",
       note: "The board, the pile of vegetables, and him at the top of the frame with his sleeves pushed up. The start of the arc, and it has to look like training, not cooking.",
@@ -237,7 +237,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.slow",
       // One onion. Then another. Slow, deliberate, boring on purpose.
-      ...cam.top({ on: [-0.25, 0.94, 400.3], height: 3.8, to: 3.2, spin: [5, -5], fov: 42 }),
+      ...cam.top({ on: [-0.25, 0.94, 400.3], height: 3.0, to: 2.5, spin: [5, -5], fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "Extreme close on a single onion being cut slowly: the knife down, the pieces separating, his fingers holding it. The discipline before the spectacle.",
@@ -252,7 +252,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.faster",
       // Then faster. The same frame, and the knife is now a different object.
-      ...cam.truck({ on: [-0.2, 1.1, 400.3], dist: 3.4, yaw: -22, pitch: 10, fov: 42, by: [1.4, 0, 0] }),
+      ...cam.truck({ on: [-0.2, 1.1, 400.3], dist: 3.4, yaw: -34, pitch: 10, fov: 42, by: [1.4, 0, 0] }),
       zone: "home",
       look: "kitchen-day",
       note: "The identical frame to the shot before, at twice the speed. A cut back to the same setup is the cleanest way to show speed without a word.",
@@ -269,7 +269,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.chant",
       // HUS HUS HUS. The chant shot: his face, mid-effort, breathing in rhythm. This is the meme.
-      ...cam.push({ on: faceOf([0, 0, 400.9], 0.8), dist: 3.1, to: 2.6, yaw: -8, pitch: 2, fov: 38 }),
+      ...cam.push({ on: faceOf([0, 0, 400.9], 0.8), dist: 3.0, to: 2.5, yaw: 8, pitch: -6, fov: 38 }),
       zone: "home",
       look: "kitchen-day",
       note: "His face at the board, breathing in rhythm, eyes on the knife and not on us. The chant is the running meme, so this is a training shot and it has to look like effort.",
@@ -283,7 +283,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.blade",
       // The knife blurs. The chant again, and this time the frame is the blade and the debris.
-      ...cam.push({ on: [-0.15, 1.15, 400.3], dist: 3.3, to: 2.8, yaw: -26, pitch: 12, fov: 42 }),
+      ...cam.orbit({ on: [-0.15, 1.15, 400.3], dist: 3.3, distTo: 2.8, yaw: -42, yawTo: 20, pitch: 12, fov: 42 }),
       zone: "home",
       look: "kitchen-day",
       note: "The knife at full speed with vegetable going everywhere, the frame almost full of flying pieces. The visual equivalent of the chant.",
@@ -305,7 +305,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.pancake",
       // A pancake, caught. After the egg, this is the payoff, and it should look easy.
-      ...cam.push({ on: [-2.1, 1.55, 397.8], dist: 3.6, to: 3.0, yaw: 12, pitch: -8, fov: 44 }),
+      ...cam.push({ on: [-2.1, 1.55, 397.8], dist: 3.7, to: 3.1, yaw: 24, pitch: -8, fov: 44 }),
       zone: "home",
       look: "kitchen-day",
       note: "A pancake landing back in the pan, and his hand already moving to catch the handle. The same frame as the egg, with the opposite result.",
@@ -320,7 +320,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.again",
       // Again. Then four at once. A stack of pans.
-      ...cam.push({ on: [-2.1, 1.7, 397.9], dist: 4.2, to: 3.5, yaw: -12, pitch: -10, fov: 46 }),
+      ...cam.push({ on: [-2.1, 1.7, 397.9], dist: 4.7, to: 4.0, yaw: -14, pitch: -12, fov: 46 }),
       zone: "home",
       look: "kitchen-day",
       note: "Four pans on the stove at once, and four pancakes in the air, all at different heights. The joke is the confidence with which this is done.",
@@ -338,7 +338,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.burn",
       // The pan gave up. Smoke, black food, and his face lit by the fire.
-      ...cam.push({ on: [-2.1, 1.4, 397.8], dist: 3.5, to: 3.0, yaw: 16, pitch: 6, fov: 42 }),
+      ...cam.top({ on: [-2.1, 1.1, 397.8], height: 3.2, to: 2.7, spin: [6, -6], fov: 42 }),
       zone: "home",
       look: "kitchen-day",
       note: "A pan of food so burnt the pan has gone black, with smoke coming off it and the orange firelight on his face. The one failure in the montage, kept brief.",
@@ -354,7 +354,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.omelette",
       // Omelettes until the arms stopped. Top-down: a table covered in plated omelettes.
-      ...cam.top({ on: [0, 0.8, 400.6], height: 4.4, to: 3.7, spin: [-9, 9], fov: 46 }),
+      ...cam.top({ on: [0, 0.8, 400.6], height: 3.4, to: 2.9, spin: [-9, 9], fov: 44 }),
       zone: "home",
       look: "kitchen-day",
       note: "Straight down on the table, covered in plate after plate after plate of omelettes. The volume is the joke, and only a top-down can hold it.",
@@ -372,7 +372,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.calendar",
       // Months pass like a flip book. A calendar on the wall, torn, then bare.
-      ...cam.truck({ on: [1.6, 1.7, 397.3], dist: 3.8, yaw: 0, pitch: 3, fov: 42, by: [-2.6, 0, 0] }),
+      ...cam.push({ on: [1.6, 1.7, 397.3], dist: 3.7, to: 3.1, yaw: 36, pitch: -4, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "A wall calendar with its pages flicking over, then nothing left but the backing board. Months, in one object, in one shot.",
@@ -390,7 +390,7 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.months",
       // The last line of the arc, and the frame is a wide of the same kitchen, changed: knives everywhere.
-      ...cam.push({ on: [0, 1.7, 400.2], dist: 6.4, to: 5.5, yaw: -6, pitch: 8, fov: 48 }),
+      ...cam.push({ on: [0, 1.7, 400.2], dist: 7.0, to: 6.0, yaw: 18, pitch: 12, fov: 48 }),
       zone: "home",
       look: "kitchen-day",
       note: "Wide on the kitchen at the end of the arc: a knife rack full, every surface worn, the calendar gone, and him small in the middle of it. The room has changed.",

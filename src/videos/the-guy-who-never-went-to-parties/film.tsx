@@ -22,6 +22,10 @@ export const film = defineFilm({
   title: "The Guy Who Never Went To Parties",
   topic: "in-this-town",
   look: "overworld-day",
+  // The delivered first render was 75/76 shots of near-black night; the rebuild is three bright
+  // colour acts. 0.82 brings them back to the reference film's exposure instead of blowing the
+  // warm kitchen walls to white.
+  post: { exposure: 0.82 },
   // THE VOICE. Timed from the real audio (scripts/narration.py build). Swapped for the mix once
   // scripts/sound.py build has made it.
   audio: { src: "audio/the-guy-who-never-went-to-parties/mix.mp3" },

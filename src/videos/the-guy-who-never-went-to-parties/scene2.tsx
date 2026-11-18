@@ -66,7 +66,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.mum",
       // Cereal at eleven at night, called dinner. Straight down on the bowl so the joke is the SOUND of it.
-      ...cam.top({ on: [-0.2, 0.78, 400.5], height: 4.2, to: 3.5, spin: [6, -6], fov: 44 }),
+      ...cam.top({ on: [-0.2, 0.78, 400.5], height: 3.2, to: 2.7, spin: [10, -10], fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "Looking down at a bowl of dry cereal on the kitchen table at night, with a fork beside it because nobody in this house knows what to do with it either.",
@@ -80,7 +80,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.fridge",
       // THE BEST JOKE IN THE FILM, and it needs to be a WIDE: the fridge open, and nothing in it.
-      ...cam.push({ on: [2.75, 1.25, 397.8], dist: 3.8, to: 3.2, yaw: 18, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [2.75, 1.3, 397.8], dist: 3.5, to: 3.0, yaw: 28, pitch: -8, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "The fridge standing open with exactly one shelf and nothing on it. The line says the fridge contains a fridge; the picture has to be at least as empty as that.",
@@ -190,7 +190,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.time",
       // The teller's theory, and it is wrong. He says it in the kitchen, knife in hand, mid-work.
-      ...cam.push({ on: chestOf([0, 0, 400.2], 0.8), dist: 3.4, to: 2.9, yaw: -16, pitch: 5, fov: 40 }),
+      ...cam.push({ on: chestOf([0, 0, 400.2], 0.8), dist: 3.5, to: 3.0, yaw: -32, pitch: 6, fov: 40 }),
       zone: "home",
       look: "kitchen-day",
       note: "The teller at his board, knife up, saying what he thinks of them. He is going to be wrong, and the frame should make him look confident.",
@@ -204,7 +204,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.showed",
       // The friend's kitchen. The lens goes in through the doorway and the room is a museum.
-      ...cam.push({ on: [0, 1.4, 399.2], dist: 4.4, to: 3.8, yaw: 0, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [0, 1.4, 399.2], dist: 5.8, to: 4.9, yaw: 8, pitch: 12, fov: 46 }),
       zone: "home",
       look: "kitchen-day",
       note: "The friend walking into his own kitchen and waving at it like a showroom. Nothing in this room has ever been used.",
@@ -217,7 +217,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.brand",
       // Everything still wrapped. Close on the counter with the plastic still on it.
-      ...cam.push({ on: [-1.4, 1.3, 397.6], dist: 3.6, to: 3.0, yaw: -18, pitch: 10, fov: 42 }),
+      ...cam.top({ on: [-1.4, 0.98, 397.6], height: 3.2, to: 2.7, spin: [-8, 8], fov: 42 }),
       zone: "home",
       look: "kitchen-day",
       note: "Close on a brand new counter with the protective film still on it, still creased in the corners. Not used once.",
@@ -231,7 +231,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.never",
       // A brand-new, never-used pan, still in its box, hanging on a wall. The hinge of the whole film.
-      ...cam.truck({ on: [-1, 1.5, 397.4], dist: 3.5, yaw: -8, pitch: 4, fov: 42, by: [2.6, 0, 0] }),
+      ...cam.truck({ on: [-1, 1.4, 397.4], dist: 3.6, yaw: -34, pitch: 8, fov: 42, by: [2.6, 0, 0] }),
       zone: "home",
       look: "kitchen-day",
       note: "A pan still in its cardboard, hung on a nail at eye level, because that is where you put a thing you own and do not use. The single most important object in the film after the knife.",
@@ -246,7 +246,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.every",
       // Every house on the street, and every one is the same. The camera walks the fronts.
-      ...cam.truck({ on: [-2.0, 1.8, -3.2], dist: 9.0, yaw: 12, pitch: 14, fov: 48, by: [6.0, 0, 1.0] }),
+      ...cam.truck({ on: [-2.0, 1.8, -3.2], dist: 11.0, yaw: 12, pitch: 16, fov: 50, by: [6.0, 0, 1.0] }),
       zone: "village",
       look: "overworld-sunset",
       note: "The camera trucks along the fronts of five houses and every single kitchen window shows the same unused counter. Saying it once with a picture instead of five times with words.",
