@@ -1,8 +1,9 @@
-import { storyScene } from "../../engine";
-import { Boss, Car, Hero, Pal, PLACE, Tv, Wrench } from "./kit";
-import { timing } from "./kit";
+import { cam, storyScene } from "../../engine";
+import { Boss, Car, Hero, Pal, PLACE, Tv, Wrench, timing } from "./kit";
 
 const CAR: [number, number, number] = [PLACE.yard[0], 0, PLACE.yard[2] + 1.4];
+/** The work, seen from the front corner. The lens stays outside the head and outside the car. */
+const BAY = [CAR[0], 1.15, CAR[2] + 0.35] as [number, number, number];
 
 export const scene1 = storyScene(timing, {
   id: "scene1",
@@ -15,15 +16,12 @@ export const scene1 = storyScene(timing, {
       look: "overworld-day",
       stage: () => (
         <>
-          <Car position={CAR} hood={0.9} light={0.4} />
-          <Hero position={[CAR[0] + 0.4, 0, CAR[2] + 1.6]} rotationY={Math.PI} face="grin" animation="reach" />
-          <Wrench position={[CAR[0] + 0.1, 1.35, CAR[2] + 1.15]} spin={18} />
+          <Car position={CAR} hood={1} light={0.5} />
+          <Hero position={[CAR[0] + 0.15, 0, CAR[2] + 1.25]} rotationY={0.35} face="grin" animation="reach" />
+          <Wrench position={[CAR[0] + 0.72, 1.42, CAR[2] + 0.85]} spin={18} />
         </>
       ),
-      from: [CAR[0] + 0.9, 1.45, CAR[2] + 2.7],
-      to: [CAR[0] + 0.2, 1.35, CAR[2] + 2.1],
-      target: [CAR[0], 1.2, CAR[2] + 0.6],
-      fov: 40,
+      ...cam.push({ on: BAY, dist: 3.5, to: 2.85, yaw: 32, pitch: 8, fov: 38 }),
     },
     {
       cue: "1.catch",
@@ -31,14 +29,11 @@ export const scene1 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={CAR} hood={0.9} running={1} light={1} />
-          <Hero position={[CAR[0] + 0.5, 0, CAR[2] + 1.5]} rotationY={Math.PI} face="happy" animation="idle" />
+          <Car position={CAR} hood={0.85} running={1} light={1} />
+          <Hero position={[CAR[0] + 0.9, 0, CAR[2] + 1.15]} rotationY={-0.6} face="happy" animation="idle" />
         </>
       ),
-      from: [CAR[0] + 1.6, 1.3, CAR[2] + 2.4],
-      to: [CAR[0] + 1.2, 1.2, CAR[2] + 2],
-      target: [CAR[0], 1.1, CAR[2] + 0.4],
-      fov: 38,
+      ...cam.push({ on: [CAR[0] + 0.3, 1.05, CAR[2] + 0.2], dist: 4.4, to: 3.6, yaw: 58, pitch: 14, fov: 40 }),
     },
     {
       cue: "2.love",
@@ -46,45 +41,33 @@ export const scene1 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Pal shirt="#d23b6e" position={[-1.2, 0, 0.4]} rotationY={0.4} face="laugh" animation="wave" />
-          <Pal shirt="#3d6ad4" hair="#1d1a18" position={[0.4, 0, 0.1]} rotationY={-0.3} face="grin" animation="talk" />
-          <Pal shirt="#2f9a62" position={[1.5, 0, 0.6]} rotationY={0.2} face="happy" animation="wave" />
+          <Pal shirt="#d23b6e" position={[-1.1, 0, 0.2]} rotationY={0.3} face="laugh" animation="wave" />
+          <Pal shirt="#3d6ad4" hair="#1d1a18" position={[0.2, 0, 0]} rotationY={-0.15} face="grin" animation="talk" />
+          <Pal shirt="#2f9a62" position={[1.3, 0, 0.35]} rotationY={0.1} face="happy" animation="wave" />
         </>
       ),
-      from: [2.4, 1.6, 3.2],
-      to: [-0.6, 1.5, 2.6],
-      target: [0.2, 1.2, 0.3],
-      fov: 42,
+      ...cam.push({ on: [0.1, 1.25, 0.15], dist: 4.6, to: 3.7, yaw: 18, pitch: 8, fov: 42 }),
     },
     {
       cue: "2.invite",
       note: "One friend, close, waving him out of the garage.",
       zone: "village",
-      stage: () => <Pal shirt="#d23b6e" position={[0, 0, 0]} rotationY={0.1} face="smile" animation="wave" />,
-      from: [0.7, 1.5, 2.6],
-      to: [0.3, 1.45, 2.2],
-      target: [0, 1.35, 0],
-      fov: 34,
+      stage: () => <Pal shirt="#d23b6e" position={[0, 0, 0]} rotationY={0.05} face="smile" animation="wave" />,
+      ...cam.push({ on: [0, 1.4, 0], dist: 2.7, to: 2.3, yaw: 10, pitch: 4, fov: 32 }),
     },
     {
       cue: "2.once",
       note: "The blue shirt, in his face: you only live once.",
       zone: "village",
       stage: () => <Pal shirt="#3d6ad4" hair="#1d1a18" position={[0, 0, 0]} rotationY={0} face="grin" animation="talk" />,
-      from: [-0.6, 1.4, 2.4],
-      to: [-0.2, 1.35, 2],
-      target: [0, 1.4, 0],
-      fov: 32,
+      ...cam.push({ on: [0, 1.42, 0], dist: 2.55, to: 2.25, yaw: -12, pitch: 3, fov: 30 }),
     },
     {
       cue: "2.hide",
       note: "Green shirt pointing. Stop hiding in that garage.",
       zone: "village",
-      stage: () => <Pal shirt="#2f9a62" position={[0, 0, 0]} rotationY={0.2} face="angry" animation="point" />,
-      from: [0.5, 1.35, 2.3],
-      to: [0.15, 1.3, 1.9],
-      target: [0, 1.4, 0],
-      fov: 32,
+      stage: () => <Pal shirt="#2f9a62" position={[0, 0, 0]} rotationY={0.1} face="angry" animation="point" />,
+      ...cam.push({ on: [0, 1.4, 0], dist: 2.6, to: 2.25, yaw: 14, pitch: 2, fov: 30 }),
     },
     {
       cue: "2.hood",
@@ -93,13 +76,10 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={1} />
-          <Hero position={[CAR[0], 0, CAR[2] + 1.3]} rotationY={Math.PI} face="calm" animation="leanOver" />
+          <Hero position={[CAR[0] - 0.85, 0, CAR[2] + 0.7]} rotationY={0.7} face="calm" animation="leanOver" />
         </>
       ),
-      from: [CAR[0] - 1.4, 1.5, CAR[2] + 2.6],
-      to: [CAR[0] - 0.6, 1.4, CAR[2] + 2.1],
-      target: [CAR[0], 1.1, CAR[2] + 0.5],
-      fov: 38,
+      ...cam.push({ on: [CAR[0] - 0.2, 1.15, CAR[2] + 0.3], dist: 4.2, to: 3.5, yaw: -36, pitch: 12, fov: 38 }),
     },
     {
       cue: "2.light",
@@ -108,24 +88,18 @@ export const scene1 = storyScene(timing, {
       look: "overworld-night",
       stage: () => (
         <>
-          <Car position={CAR} hood={1} light={0.3} />
-          <Hero position={[CAR[0] + 0.3, 0, CAR[2] + 1.4]} rotationY={Math.PI} face="calm" animation="leanOver" />
+          <Car position={CAR} hood={1} light={0.6} />
+          <Hero position={[CAR[0] + 0.2, 0, CAR[2] + 1.2]} rotationY={Math.PI} face="calm" animation="leanOver" />
         </>
       ),
-      from: [4, 2.4, 8],
-      to: [2, 2.1, 6],
-      target: [1.2, 1.6, -3],
-      fov: 40,
+      ...cam.push({ on: [CAR[0], 1.4, CAR[2]], dist: 7.2, to: 5.8, yaw: 24, pitch: 10, fov: 44 }),
     },
     {
       cue: "2.dream",
       note: "His face, close. The dream is his, not theirs.",
       zone: "village",
-      stage: () => <Hero position={[0, 0, 0]} rotationY={0.1} face="smile" animation="idle" />,
-      from: [0.4, 1.5, 2.4],
-      to: [0.1, 1.45, 2],
-      target: [0, 1.4, 0],
-      fov: 32,
+      stage: () => <Hero position={[0, 0, 0]} rotationY={0.05} face="smile" animation="idle" />,
+      ...cam.push({ on: [0, 1.42, 0], dist: 2.5, to: 2.2, yaw: 6, pitch: 2, fov: 30 }),
     },
     {
       cue: "3.tv",
@@ -134,55 +108,40 @@ export const scene1 = storyScene(timing, {
       look: "overworld-night",
       stage: () => (
         <>
-          <Tv position={[0, 1.7, -1.6]} on={1} />
-          <Boss position={[0, 0, -1.2]} rotationY={0} face="calm" animation="reach" scale={0.55} />
+          <Tv position={[0, 1.55, -1.4]} on={1} />
+          <Boss position={[0, 0.15, -1.15]} rotationY={0} face="calm" animation="reach" scale={0.42} />
         </>
       ),
-      from: [0.8, 1.6, 1.2],
-      to: [0.3, 1.55, 0.6],
-      target: [0, 1.6, -1.4],
-      fov: 34,
+      ...cam.push({ on: [0, 1.45, -1.2], dist: 3.6, to: 3.05, yaw: 12, pitch: 2, fov: 34 }),
     },
     {
       cue: "3.start",
       note: "He leans all the way in. The dead car on the screen has started.",
       zone: "room",
-      stage: () => <Hero position={[0, 0, 0.4]} rotationY={Math.PI} face="wow" animation="leanOver" />,
-      from: [1.1, 1.4, 2.2],
-      to: [0.5, 1.35, 1.7],
-      target: [0, 1.3, 0.2],
-      fov: 34,
+      stage: () => <Hero position={[0, 0, 0.2]} rotationY={Math.PI * 0.92} face="wow" animation="leanOver" />,
+      ...cam.push({ on: [0, 1.3, 0.15], dist: 3.1, to: 2.6, yaw: 40, pitch: 8, fov: 34 }),
     },
     {
       cue: "3.want",
       note: "Close on him. He wants to be the mechanic, not the guest.",
       zone: "room",
-      stage: () => <Hero position={[0, 0, 0]} rotationY={0.15} face="smile" animation="talk" />,
-      from: [0.3, 1.5, 2.3],
-      to: [0.05, 1.45, 1.9],
-      target: [0, 1.4, 0],
-      fov: 30,
+      stage: () => <Hero position={[0, 0, 0]} rotationY={0.08} face="smile" animation="talk" />,
+      ...cam.push({ on: [0, 1.42, 0], dist: 2.45, to: 2.15, yaw: 8, pitch: 2, fov: 30 }),
     },
     {
       cue: "3.any",
       note: "Same face, a new thought: any car, not just this one.",
       zone: "room",
-      stage: () => <Hero position={[0, 0, 0]} rotationY={-0.1} face="grin" animation="idle" />,
-      from: [-0.4, 1.4, 2.2],
-      to: [-0.1, 1.35, 1.8],
-      target: [0, 1.4, 0],
-      fov: 30,
+      stage: () => <Hero position={[0, 0, 0]} rotationY={-0.06} face="grin" animation="idle" />,
+      ...cam.push({ on: [0, 1.42, 0], dist: 2.5, to: 2.2, yaw: -10, pitch: 3, fov: 30 }),
     },
     {
       cue: "3.sleeve",
       note: "Sleeves up. The decision is in the arms, not a speech.",
       zone: "village",
       look: "overworld-day",
-      stage: () => <Hero position={[0, 0, 0]} rotationY={0.2} face="brave" animation="reach" />,
-      from: [1.2, 1.3, 2],
-      to: [0.7, 1.25, 1.6],
-      target: [0, 1.2, 0],
-      fov: 32,
+      stage: () => <Hero position={[0, 0, 0]} rotationY={0.15} face="brave" animation="reach" />,
+      ...cam.push({ on: [0, 1.25, 0], dist: 2.8, to: 2.35, yaw: 22, pitch: 6, fov: 32 }),
     },
     {
       cue: "3.walk",
@@ -191,13 +150,10 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={1} />
-          <Hero position={[CAR[0] - 1.4, 0, CAR[2] + 2.2]} rotationY={Math.PI} face="calm" animation="walk" />
+          <Hero position={[CAR[0] - 1.6, 0, CAR[2] + 2.1]} rotationY={2.4} face="calm" animation="walk" />
         </>
       ),
-      from: [CAR[0] + 1.6, 1.6, CAR[2] + 4],
-      to: [CAR[0] - 0.4, 1.5, CAR[2] + 3.2],
-      target: [CAR[0] - 0.4, 1.1, CAR[2] + 1.2],
-      fov: 38,
+      ...cam.push({ on: [CAR[0] - 0.4, 1.15, CAR[2] + 1.1], dist: 5.2, to: 4.2, yaw: 30, pitch: 12, fov: 40 }),
     },
   ],
 });

@@ -1,7 +1,8 @@
-import { storyScene } from "../../engine";
+import { cam, storyScene } from "../../engine";
 import { Car, Hero, PLACE, Tire, Wrench, timing } from "./kit";
 
 const CAR: [number, number, number] = [PLACE.yard[0], 0, PLACE.yard[2] + 1.4];
+const WORK = [CAR[0], 1.1, CAR[2] + 0.2] as [number, number, number];
 
 export const scene2 = storyScene(timing, {
   id: "scene2",
@@ -14,14 +15,11 @@ export const scene2 = storyScene(timing, {
       look: "overworld-day",
       stage: () => (
         <>
-          <Car position={CAR} lift={0.7} />
-          <Hero position={[CAR[0] - 1.1, 0, CAR[2]]} rotationY={1.4} face="grin" animation="push" />
+          <Car position={CAR} lift={0.55} />
+          <Hero position={[CAR[0] - 1.35, 0, CAR[2] + 0.3]} rotationY={1.15} face="grin" animation="push" />
         </>
       ),
-      from: [CAR[0] - 2.6, 1.5, CAR[2] + 2.4],
-      to: [CAR[0] - 1.8, 1.3, CAR[2] + 1.6],
-      target: [CAR[0], 0.9, CAR[2]],
-      fov: 38,
+      ...cam.push({ on: [CAR[0] - 0.3, 0.9, CAR[2]], dist: 4.6, to: 3.8, yaw: -48, pitch: 16, fov: 40 }),
     },
     {
       cue: "4.tire",
@@ -29,15 +27,12 @@ export const scene2 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={CAR} lift={0.7} />
-          <Hero position={[CAR[0] - 1.3, 0, CAR[2] + 0.4]} rotationY={0.6} face="happy" animation="reachUp" />
-          <Tire position={[CAR[0] - 0.7, 1.5, CAR[2] + 0.2]} />
+          <Car position={CAR} lift={0.45} />
+          <Hero position={[CAR[0] - 1.2, 0, CAR[2] + 0.8]} rotationY={0.45} face="happy" animation="reachUp" />
+          <Tire position={[CAR[0] - 0.35, 1.35, CAR[2] + 1.15]} />
         </>
       ),
-      from: [CAR[0] - 2.4, 1.6, CAR[2] + 2],
-      to: [CAR[0] - 1.6, 1.5, CAR[2] + 1.4],
-      target: [CAR[0] - 0.6, 1.4, CAR[2]],
-      fov: 36,
+      ...cam.push({ on: [CAR[0] - 0.6, 1.2, CAR[2] + 0.7], dist: 4.2, to: 3.4, yaw: -28, pitch: 10, fov: 38 }),
     },
     {
       cue: "4.roll",
@@ -45,24 +40,18 @@ export const scene2 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={[CAR[0] + 1.6, 0, CAR[2] - 0.4]} rotationY={0.3} />
-          <Hero position={[CAR[0] - 1.2, 0, CAR[2] + 0.6]} rotationY={0.5} face="scared" animation="scared" />
+          <Car position={[CAR[0] + 1.8, 0, CAR[2] - 0.2]} rotationY={0.35} />
+          <Hero position={[CAR[0] - 1.3, 0, CAR[2] + 1.1]} rotationY={0.5} face="scared" animation="scared" />
         </>
       ),
-      from: [CAR[0] - 1, 1.6, CAR[2] + 3.4],
-      to: [CAR[0] + 0.6, 1.4, CAR[2] + 2.6],
-      target: [CAR[0] + 1.4, 0.8, CAR[2] - 0.2],
-      fov: 40,
+      ...cam.push({ on: [CAR[0] + 0.4, 1.0, CAR[2] + 0.2], dist: 5.4, to: 4.4, yaw: 20, pitch: 14, fov: 42 }),
     },
     {
       cue: "4.hedge",
       note: "The car, in the hedge, slow, like it meant to stop there.",
       zone: "village",
-      stage: () => <Car position={[PLACE.hedge[0] - 1.2, 0, PLACE.hedge[2] - 0.6]} rotationY={0.5} />,
-      from: [PLACE.hedge[0] - 3, 1.7, PLACE.hedge[2] + 2.4],
-      to: [PLACE.hedge[0] - 2, 1.4, PLACE.hedge[2] + 1.6],
-      target: [PLACE.hedge[0], 0.8, PLACE.hedge[2]],
-      fov: 38,
+      stage: () => <Car position={[PLACE.hedge[0] - 1.4, 0, PLACE.hedge[2] - 0.8]} rotationY={0.4} />,
+      ...cam.push({ on: [PLACE.hedge[0] - 0.4, 0.8, PLACE.hedge[2] - 0.2], dist: 4.8, to: 3.9, yaw: -30, pitch: 12, fov: 40 }),
     },
     {
       cue: "4.hold",
@@ -71,33 +60,24 @@ export const scene2 = storyScene(timing, {
       stage: () => (
         <>
           <Hero position={[0, 0, 0]} rotationY={0.1} face="ouch" animation="reachUp" />
-          <Tire position={[0.35, 1.45, 0.3]} />
+          <Tire position={[0.85, 1.15, 0.15]} />
         </>
       ),
-      from: [1.1, 1.5, 2.4],
-      to: [0.5, 1.4, 2],
-      target: [0.2, 1.3, 0.1],
-      fov: 32,
+      ...cam.push({ on: [0.3, 1.3, 0.05], dist: 3.1, to: 2.6, yaw: 18, pitch: 6, fov: 34 }),
     },
     {
       cue: "4.almost",
       note: "He shouts at the hedge. Almost. The face is the shout.",
       zone: "village",
-      stage: () => <Hero position={[0, 0, 0]} rotationY={0.3} face="angry" animation="talk" />,
-      from: [0.6, 1.4, 2.2],
-      to: [0.2, 1.35, 1.8],
-      target: [0, 1.4, 0],
-      fov: 30,
+      stage: () => <Hero position={[0, 0, 0]} rotationY={0.12} face="angry" animation="talk" />,
+      ...cam.push({ on: [0, 1.42, 0], dist: 2.5, to: 2.2, yaw: 8, pitch: 2, fov: 30 }),
     },
     {
       cue: "4.learn",
       note: "The grin is gone. He still had a lot to learn.",
       zone: "village",
-      stage: () => <Hero position={[0, 0, 0]} rotationY={-0.1} face="uneasy" animation="idle" />,
-      from: [-0.3, 1.5, 2.3],
-      to: [0, 1.45, 1.9],
-      target: [0, 1.4, 0],
-      fov: 30,
+      stage: () => <Hero position={[0, 0, 0]} rotationY={-0.05} face="uneasy" animation="idle" />,
+      ...cam.push({ on: [0, 1.42, 0], dist: 2.55, to: 2.2, yaw: -8, pitch: 3, fov: 30 }),
     },
     {
       cue: "5.bolt",
@@ -106,14 +86,11 @@ export const scene2 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={1} />
-          <Hero position={[CAR[0] + 0.5, 0, CAR[2] + 1.4]} rotationY={Math.PI} face="calm" animation="leanOver" />
-          <Wrench position={[CAR[0], 1.15, CAR[2] + 0.9]} spin={1.2} />
+          <Hero position={[CAR[0] + 0.85, 0, CAR[2] + 1.05]} rotationY={-0.7} face="calm" animation="leanOver" />
+          <Wrench position={[CAR[0] + 0.25, 1.2, CAR[2] + 0.55]} spin={1.2} />
         </>
       ),
-      from: [CAR[0] + 1.6, 1.5, CAR[2] + 2.6],
-      to: [CAR[0] + 0.8, 1.35, CAR[2] + 2.1],
-      target: [CAR[0], 1.1, CAR[2] + 0.6],
-      fov: 36,
+      ...cam.push({ on: WORK, dist: 4.0, to: 3.3, yaw: 46, pitch: 14, fov: 38 }),
     },
     {
       cue: "5.fast",
@@ -122,15 +99,12 @@ export const scene2 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={1} />
-          <Hero position={[CAR[0] - 0.9, 0, CAR[2] + 0.2]} rotationY={1.2} face="grin" animation="reach" />
-          <Tire position={[CAR[0] - 1.5, 0.4, CAR[2] + 0.8]} />
-          <Wrench position={[CAR[0] - 0.4, 0.9, CAR[2] + 0.5]} spin={8} />
+          <Hero position={[CAR[0] - 1.05, 0, CAR[2] + 0.55]} rotationY={0.9} face="grin" animation="reach" />
+          <Tire position={[CAR[0] - 1.7, 0.45, CAR[2] + 1.1]} />
+          <Wrench position={[CAR[0] - 0.35, 1.15, CAR[2] + 0.4]} spin={10} />
         </>
       ),
-      from: [CAR[0] - 2.4, 1.4, CAR[2] + 2.2],
-      to: [CAR[0] - 1.6, 1.2, CAR[2] + 1.5],
-      target: [CAR[0] - 0.6, 0.9, CAR[2]],
-      fov: 36,
+      ...cam.push({ on: [CAR[0] - 0.4, 1.05, CAR[2] + 0.3], dist: 4.2, to: 3.4, yaw: -40, pitch: 12, fov: 38 }),
     },
     {
       cue: "5.hus",
@@ -138,14 +112,11 @@ export const scene2 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Hero position={[0.3, 0, 0.4]} rotationY={Math.PI * 0.9} face="grin" animation="reach" />
-          <Wrench position={[-0.1, 1.2, 0.2]} spin={20} />
+          <Hero position={[0.15, 0, 0.15]} rotationY={0.7} face="grin" animation="reach" />
+          <Wrench position={[-0.35, 1.25, 0.05]} spin={16} />
         </>
       ),
-      from: [0.9, 1.4, 1.8],
-      to: [0.4, 1.3, 1.3],
-      target: [0, 1.15, 0.1],
-      fov: 32,
+      ...cam.push({ on: [0, 1.25, 0.05], dist: 2.9, to: 2.45, yaw: 36, pitch: 8, fov: 34 }),
     },
     {
       cue: "5.back",
@@ -153,24 +124,18 @@ export const scene2 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={CAR} hood={0.4} light={0.2} />
-          <Hero position={[CAR[0] - 0.8, 0, CAR[2] + 1.5]} rotationY={Math.PI} face="uneasy" animation="reach" />
+          <Car position={CAR} hood={0.35} light={0.3} />
+          <Hero position={[CAR[0] + 0.7, 0, CAR[2] + 1.2]} rotationY={-0.4} face="uneasy" animation="reach" />
         </>
       ),
-      from: [CAR[0] + 0.4, 1.3, CAR[2] + 2.8],
-      to: [CAR[0] - 0.2, 1.2, CAR[2] + 2.3],
-      target: [CAR[0] - 0.3, 1, CAR[2] + 1.2],
-      fov: 34,
+      ...cam.push({ on: [CAR[0] + 0.2, 1.1, CAR[2] + 0.5], dist: 4.0, to: 3.3, yaw: 50, pitch: 12, fov: 38 }),
     },
     {
       cue: "5.face",
       note: "Close. The lamp is in his own face. He flinches.",
       zone: "village",
       stage: () => <Hero position={[0, 0, 0]} rotationY={0} face="ouch" animation="scared" />,
-      from: [0.2, 1.45, 2.1],
-      to: [0, 1.4, 1.7],
-      target: [0, 1.45, 0],
-      fov: 28,
+      ...cam.push({ on: [0, 1.45, 0], dist: 2.35, to: 2.1, yaw: 4, pitch: 0, fov: 28 }),
     },
     {
       cue: "5.fix",
@@ -178,14 +143,11 @@ export const scene2 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={CAR} hood={0.5} />
-          <Hero position={[CAR[0] + 0.6, 0, CAR[2] + 1.4]} rotationY={Math.PI} face="brave" animation="reach" />
+          <Car position={CAR} hood={0.45} />
+          <Hero position={[CAR[0] - 0.9, 0, CAR[2] + 1.05]} rotationY={0.55} face="brave" animation="reach" />
         </>
       ),
-      from: [CAR[0] - 1.2, 1.4, CAR[2] + 2.6],
-      to: [CAR[0] - 0.4, 1.3, CAR[2] + 2.1],
-      target: [CAR[0] + 0.3, 1.1, CAR[2] + 0.8],
-      fov: 36,
+      ...cam.push({ on: [CAR[0] - 0.2, 1.1, CAR[2] + 0.4], dist: 4.1, to: 3.4, yaw: -32, pitch: 12, fov: 38 }),
     },
     {
       cue: "5.smoke",
@@ -194,13 +156,10 @@ export const scene2 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={1} />
-          <Hero position={[CAR[0], 0, CAR[2] + 1.6]} rotationY={Math.PI} face="ouch" animation="cower" />
+          <Hero position={[CAR[0] + 0.2, 0, CAR[2] + 1.35]} rotationY={Math.PI * 0.85} face="ouch" animation="cower" />
         </>
       ),
-      from: [CAR[0] + 1.4, 1.6, CAR[2] + 3],
-      to: [CAR[0] + 0.6, 1.4, CAR[2] + 2.4],
-      target: [CAR[0], 1.2, CAR[2] + 0.6],
-      fov: 36,
+      ...cam.push({ on: [CAR[0], 1.2, CAR[2] + 0.6], dist: 4.0, to: 3.3, yaw: 24, pitch: 10, fov: 38 }),
     },
   ],
 });

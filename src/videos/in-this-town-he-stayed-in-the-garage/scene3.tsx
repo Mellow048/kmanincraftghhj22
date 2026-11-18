@@ -1,4 +1,4 @@
-import { storyScene } from "../../engine";
+import { cam, storyScene } from "../../engine";
 import { Boss, Car, Hero, Pages, Pal, PLACE, Tire, Wrench, timing } from "./kit";
 
 const CAR: [number, number, number] = [PLACE.yard[0], 0, PLACE.yard[2] + 1.4];
@@ -15,14 +15,11 @@ export const scene3 = storyScene(timing, {
       look: "overworld-night",
       stage: () => (
         <>
-          <Car position={CAR} hood={0.6} />
-          <Hero position={[CAR[0] + 0.7, 0, CAR[2] + 1.2]} rotationY={-1.2} face="calm" animation="reach" />
+          <Car position={CAR} hood={0.55} />
+          <Hero position={[CAR[0] + 0.85, 0, CAR[2] + 1.15]} rotationY={-0.8} face="calm" animation="reach" />
         </>
       ),
-      from: [CAR[0] + 2.2, 1.5, CAR[2] + 2.2],
-      to: [CAR[0] + 1.5, 1.4, CAR[2] + 1.7],
-      target: [CAR[0] + 0.4, 1.1, CAR[2] + 0.6],
-      fov: 36,
+      ...cam.push({ on: [CAR[0] + 0.3, 1.15, CAR[2] + 0.4], dist: 4.2, to: 3.5, yaw: 52, pitch: 12, fov: 38 }),
     },
     {
       cue: "5.night",
@@ -30,14 +27,11 @@ export const scene3 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={CAR} hood={1} light={0.5} />
-          <Hero position={[CAR[0], 0, CAR[2] + 1.5]} rotationY={Math.PI} face="calm" animation="leanOver" />
+          <Car position={CAR} hood={1} light={0.7} />
+          <Hero position={[CAR[0], 0, CAR[2] + 1.3]} rotationY={Math.PI} face="calm" animation="leanOver" />
         </>
       ),
-      from: [2, 2.6, 7],
-      to: [5, 2.2, 5],
-      target: [11, 1.4, 0],
-      fov: 40,
+      ...cam.push({ on: [CAR[0], 1.5, CAR[2]], dist: 8, to: 6.4, yaw: 18, pitch: 12, fov: 44 }),
     },
     {
       cue: "5.while",
@@ -45,14 +39,11 @@ export const scene3 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={CAR} lift={0.5} />
-          <Hero position={[CAR[0], 0, CAR[2] + 0.2]} rotationY={Math.PI} face="calm" animation="lie" />
+          <Car position={CAR} lift={0.55} />
+          <Hero position={[CAR[0] + 0.15, 0, CAR[2] + 0.15]} rotationY={0.2} face="calm" animation="lie" />
         </>
       ),
-      from: [CAR[0] - 2.2, 1.1, CAR[2] + 2],
-      to: [CAR[0] - 1.4, 0.9, CAR[2] + 1.2],
-      target: [CAR[0], 0.5, CAR[2]],
-      fov: 36,
+      ...cam.push({ on: [CAR[0], 0.55, CAR[2]], dist: 3.6, to: 3.0, yaw: -70, pitch: 8, fov: 36 }),
     },
     {
       cue: "5.strip",
@@ -62,34 +53,25 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={1} />
-          <Hero position={[CAR[0] + 0.4, 0, CAR[2] + 1.4]} rotationY={Math.PI} face="ouch" animation="reach" />
-          <Wrench position={[CAR[0] - 0.3, 1.2, CAR[2] + 0.9]} spin={3} />
+          <Hero position={[CAR[0] + 0.75, 0, CAR[2] + 1.1]} rotationY={-0.55} face="ouch" animation="reach" />
+          <Wrench position={[CAR[0] + 0.15, 1.2, CAR[2] + 0.55]} spin={4} />
         </>
       ),
-      from: [CAR[0] + 1.5, 1.5, CAR[2] + 2.7],
-      to: [CAR[0] + 0.7, 1.35, CAR[2] + 2.1],
-      target: [CAR[0], 1.1, CAR[2] + 0.7],
-      fov: 36,
+      ...cam.push({ on: [CAR[0] + 0.2, 1.1, CAR[2] + 0.4], dist: 4.1, to: 3.4, yaw: 44, pitch: 12, fov: 38 }),
     },
     {
       cue: "5.water",
       note: "He comes in for water and he is already walking back out.",
       zone: "village",
-      stage: () => <Hero position={[0, 0, 0]} rotationY={0.4} face="calm" animation="walk" />,
-      from: [-1.6, 1.5, 2.4],
-      to: [0.4, 1.4, 2],
-      target: [0.6, 1.2, 0.2],
-      fov: 36,
+      stage: () => <Hero position={[0, 0, 0]} rotationY={0.35} face="calm" animation="walk" />,
+      ...cam.push({ on: [0.2, 1.3, 0.1], dist: 3.4, to: 2.7, yaw: -20, pitch: 6, fov: 36 }),
     },
     {
       cue: "5.months",
       note: "The calendar, pages already mid-flip. The months, not a clock.",
       zone: "village",
-      stage: () => <Pages position={[0, 1.4, 0]} flip={0.7} />,
-      from: [0.5, 1.7, 1.8],
-      to: [0.1, 1.55, 1.3],
-      target: [0, 1.4, 0],
-      fov: 30,
+      stage: () => <Pages position={[0, 1.35, 0]} flip={0.7} />,
+      ...cam.push({ on: [0, 1.4, 0], dist: 2.4, to: 2.0, yaw: 16, pitch: 8, fov: 32 }),
     },
     {
       cue: "5.hired",
@@ -97,15 +79,12 @@ export const scene3 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={SHOP} hood={0.5} />
-          <Hero position={[SHOP[0] + 1.4, 0, SHOP[2] + 1.6]} rotationY={-2.2} face="smile" animation="walk" />
-          <Boss position={[SHOP[0] - 1.2, 0, SHOP[2] + 1.4]} rotationY={0.8} face="calm" animation="idle" />
+          <Car position={SHOP} hood={0.4} />
+          <Hero position={[SHOP[0] + 1.6, 0, SHOP[2] + 1.8]} rotationY={-2.2} face="smile" animation="walk" />
+          <Boss position={[SHOP[0] - 1.3, 0, SHOP[2] + 1.5]} rotationY={0.7} face="calm" animation="idle" />
         </>
       ),
-      from: [SHOP[0] + 3, 2, SHOP[2] + 4],
-      to: [SHOP[0] + 1.4, 1.7, SHOP[2] + 3],
-      target: [SHOP[0], 1.2, SHOP[2]],
-      fov: 40,
+      ...cam.push({ on: [SHOP[0], 1.2, SHOP[2] + 0.6], dist: 6.2, to: 5.1, yaw: 28, pitch: 12, fov: 42 }),
     },
     {
       cue: "6.sat",
@@ -114,14 +93,11 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={SHOP} color="#3d6ad4" />
-          <Car position={[SHOP[0] + 2.4, 0, SHOP[2] + 4]} color="#2f9a62" />
-          <Car position={[SHOP[0] - 2.2, 0, SHOP[2] + 3.6]} color="#e8a21c" />
+          <Car position={[SHOP[0] + 2.2, 0, SHOP[2] + 3.6]} color="#2f9a62" />
+          <Car position={[SHOP[0] - 2.1, 0, SHOP[2] + 3.2]} color="#e8a21c" />
         </>
       ),
-      from: [SHOP[0] + 4, 2.4, SHOP[2] + 7],
-      to: [SHOP[0] + 1, 2, SHOP[2] + 5.4],
-      target: [SHOP[0], 0.8, SHOP[2] + 1],
-      fov: 42,
+      ...cam.push({ on: [SHOP[0], 0.9, SHOP[2] + 1.6], dist: 7.4, to: 6.0, yaw: 22, pitch: 16, fov: 44 }),
     },
     {
       cue: "6.behind",
@@ -130,24 +106,18 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={SHOP} hood={1} />
-          <Pal shirt="#8a5a3a" position={[SHOP[0] - 1.4, 0, SHOP[2] + 0.4]} rotationY={0.6} face="uneasy" animation="idle" />
-          <Pal shirt="#4a4a55" hair="#1d1a18" position={[SHOP[0] + 1.3, 0, SHOP[2] + 0.6]} rotationY={-0.5} face="worried" animation="lookAround" />
+          <Pal shirt="#8a5a3a" position={[SHOP[0] - 1.5, 0, SHOP[2] + 0.8]} rotationY={0.4} face="uneasy" animation="idle" />
+          <Pal shirt="#4a4a55" hair="#1d1a18" position={[SHOP[0] + 1.4, 0, SHOP[2] + 1.0]} rotationY={-0.35} face="worried" animation="lookAround" />
         </>
       ),
-      from: [SHOP[0] - 2.4, 1.6, SHOP[2] + 2.8],
-      to: [SHOP[0] - 0.6, 1.5, SHOP[2] + 2.2],
-      target: [SHOP[0], 1.2, SHOP[2]],
-      fov: 38,
+      ...cam.push({ on: [SHOP[0], 1.2, SHOP[2] + 0.5], dist: 5.2, to: 4.3, yaw: -18, pitch: 12, fov: 40 }),
     },
     {
       cue: "6.board",
       note: "The clipboard, flat, nobody's hands on it.",
       zone: "village",
-      stage: () => <Pages position={[0, 1.2, 0]} flip={0} />,
-      from: [0.2, 1.7, 1.6],
-      to: [0, 1.5, 1.2],
-      target: [0, 1.2, 0],
-      fov: 28,
+      stage: () => <Pages position={[0, 1.15, 0]} flip={0} />,
+      ...cam.push({ on: [0, 1.2, 0], dist: 2.3, to: 1.95, yaw: 8, pitch: 18, fov: 32 }),
     },
     {
       cue: "6.under",
@@ -156,13 +126,10 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={SHOP} lift={0.6} color="#3d6ad4" />
-          <Hero position={[SHOP[0], 0, SHOP[2]]} rotationY={0} face="calm" animation="lie" />
+          <Hero position={[SHOP[0] + 0.1, 0, SHOP[2] + 0.1]} rotationY={0.15} face="calm" animation="lie" />
         </>
       ),
-      from: [SHOP[0] - 1.8, 0.7, SHOP[2] + 1.6],
-      to: [SHOP[0] - 0.8, 0.55, SHOP[2] + 0.8],
-      target: [SHOP[0], 0.4, SHOP[2]],
-      fov: 34,
+      ...cam.push({ on: [SHOP[0], 0.5, SHOP[2]], dist: 3.8, to: 3.1, yaw: 64, pitch: 6, fov: 36 }),
     },
     {
       cue: "6.wrench",
@@ -170,15 +137,12 @@ export const scene3 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={SHOP} lift={0.5} color="#3d6ad4" />
-          <Hero position={[SHOP[0] + 0.7, 0, SHOP[2] + 0.2]} rotationY={1.5} face="grin" animation="reach" />
-          <Wrench position={[SHOP[0] + 0.2, 0.9, SHOP[2]]} spin={22} />
+          <Car position={SHOP} lift={0.45} color="#3d6ad4" />
+          <Hero position={[SHOP[0] + 1.05, 0, SHOP[2] + 0.35]} rotationY={-1.2} face="grin" animation="reach" />
+          <Wrench position={[SHOP[0] + 0.35, 0.95, SHOP[2] + 0.15]} spin={18} />
         </>
       ),
-      from: [SHOP[0] + 1.8, 1.2, SHOP[2] + 1.6],
-      to: [SHOP[0] + 1.1, 1, SHOP[2] + 1],
-      target: [SHOP[0] + 0.2, 0.8, SHOP[2]],
-      fov: 32,
+      ...cam.push({ on: [SHOP[0] + 0.4, 0.9, SHOP[2] + 0.15], dist: 3.6, to: 3.0, yaw: 70, pitch: 14, fov: 36 }),
     },
     {
       cue: "6.wheel",
@@ -187,14 +151,11 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={SHOP} color="#2f9a62" />
-          <Hero position={[SHOP[0] - 1.1, 0, SHOP[2]]} rotationY={1.3} face="calm" animation="push" />
-          <Tire position={[SHOP[0] - 0.7, 0.5, SHOP[2] - 0.2]} />
+          <Hero position={[SHOP[0] - 1.25, 0, SHOP[2] + 0.4]} rotationY={1.1} face="calm" animation="push" />
+          <Tire position={[SHOP[0] - 0.55, 0.55, SHOP[2] + 0.15]} />
         </>
       ),
-      from: [SHOP[0] - 2.4, 1.3, SHOP[2] + 1.8],
-      to: [SHOP[0] - 1.6, 1.15, SHOP[2] + 1.1],
-      target: [SHOP[0] - 0.5, 0.7, SHOP[2]],
-      fov: 34,
+      ...cam.push({ on: [SHOP[0] - 0.5, 0.9, SHOP[2]], dist: 4.0, to: 3.3, yaw: -50, pitch: 12, fov: 38 }),
     },
     {
       cue: "6.spark",
@@ -203,13 +164,10 @@ export const scene3 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={SHOP} hood={1} color="#e8a21c" />
-          <Hero position={[SHOP[0] + 0.5, 0, SHOP[2] + 1.4]} rotationY={Math.PI} face="brave" animation="reach" />
+          <Hero position={[SHOP[0] + 0.8, 0, SHOP[2] + 1.15]} rotationY={-0.5} face="brave" animation="reach" />
         </>
       ),
-      from: [SHOP[0] - 0.8, 1.5, SHOP[2] + 2.6],
-      to: [SHOP[0] - 0.2, 1.35, SHOP[2] + 2.1],
-      target: [SHOP[0] + 0.3, 1.1, SHOP[2] + 0.8],
-      fov: 34,
+      ...cam.push({ on: [SHOP[0] + 0.2, 1.15, SHOP[2] + 0.45], dist: 4.0, to: 3.3, yaw: 40, pitch: 12, fov: 38 }),
     },
   ],
 });
