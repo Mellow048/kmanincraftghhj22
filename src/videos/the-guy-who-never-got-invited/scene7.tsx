@@ -23,7 +23,7 @@ const Label: React.FC<{ position: [number, number, number]; rotationY?: number }
 export const scene7 = stagedScene("scene7", [
   {
     id: "7.try1",
-    ...cam.push({ on: DECKS, dist: 2.1, to: 1.75, fov: 34, pitch: 22, yaw: -16 }),
+    ...cam.push({ on: DECKS, dist: 2.1, to: 1.75, fov: 36, pitch: 20, yaw: 16 }),
     zone: "bedroom",
     look: "warm-room",
     note: "One hand, one record, the needle down on the first beat: the first try, and it is wrong.",
@@ -58,7 +58,7 @@ export const scene7 = stagedScene("scene7", [
       <>
         <Label position={[-1.5, 0.9, 0.55]} rotationY={0.4} />
         <Record position={[-1.72, 0.9, 0.2]} rotationY={0.2} tilt={1.5} />
-        <Him position={[-1.2, 0, 1.05]} rotationY={0.6} animation="reach" face="calm" headphones="ears" />
+        <Him position={[-1.35, 0, -0.6]} rotationY={2.55} animation="reach" face="calm" headphones="ears" />
       </>
     ),
   },

@@ -73,15 +73,15 @@ export const scene9 = stagedScene("scene9", [
   },
   {
     id: "9.faces",
-    ...cam.push({ on: [1.1, 1.35, 0.7], dist: 2.8, to: 2.4, fov: 46, yaw: 34, pitch: 6 }),
+    ...cam.push({ on: [1.95, 1.35, 0.85], dist: 3.2, to: 2.8, fov: 56, yaw: -90, pitch: 5 }),
     zone: "club",
     look: "prom-night",
     note: "Their faces, having the night of their lives, lit by a rig he built: they are happy and they still do not know who he is.",
     stage: () => (
       <>
-        <Friend v={0} position={[2.0, 0, 0.2]} rotationY={Math.PI / 2 + 0.9} animation="cheer" face="laugh" headPitch={-0.15} />
-        <Friend v={1} position={[2.2, 0, 0.95]} rotationY={Math.PI / 2} animation="cheer" face="grin" />
-        <Friend v={2} position={[1.9, 0, 1.45]} rotationY={Math.PI / 2 + 0.3} animation="laugh" face="laugh" />
+        <Friend v={0} position={[2.0, 0, 0.2]} rotationY={-Math.PI / 2 + 0.35} animation="cheer" face="laugh" headPitch={-0.15} />
+        <Friend v={1} position={[2.2, 0, 0.95]} rotationY={-Math.PI / 2} animation="cheer" face="grin" />
+        <Friend v={2} position={[1.9, 0, 1.45]} rotationY={-Math.PI / 2 - 0.3} animation="laugh" face="laugh" />
       </>
     ),
   },
