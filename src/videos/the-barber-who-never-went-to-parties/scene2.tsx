@@ -35,7 +35,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: add(TABLE, 0, 1.12, -0.3), dist: 2.5, to: 2.15, yaw: -8, pitch: 13, fov: 40 }),
       zone: "dinner",
       look: "overworld-night",
-      note: "I could not follow a line",
+      note: "The start of the skill: safety scissors, a dotted line, and a cut that leaves it at once.",
       stage: (t) => {
         const p = holdUp(t, 0.42, 0.05);
         p.armR = [-0.82 + Math.sin(t * 9) * 0.07, 0, 0.1 - tw(t, 0.6, 1.9) * 0.3];
@@ -55,10 +55,10 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.party",
-      ...cam.push({ on: [PARTY[0], 3.3, PARTY[2]], dist: 13.5, to: 12, yaw: -10, pitch: -2, fov: 40 }),
+      ...cam.push({ on: [PARTY[0], 3.4, PARTY[2]], dist: 14.5, to: 13, yaw: -8, pitch: -2, fov: 40 }),
       zone: "home",
       look: "overworld-night",
-      note: "The house across the road",
+      note: "The town's parties as one place we can come back to: the house across the road, flashing.",
       stage: (t) => <Dancers t={t} />,
     },
     {
@@ -66,7 +66,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: home(0, 1.35, 0.3), dist: 3.7, to: 3.2, yaw: 172, pitch: 4, fov: 40 }),
       zone: "home",
       look: "overworld-night",
-      note: "Every night: knock, knock",
+      note: "From the path, their backs at my door: the same two every night, and me small in the hall.",
       stage: (t) => {
         const knock = w("2.door", "knocked");
         const open = tw(t, knock + 0.45, knock + 0.75);
@@ -85,7 +85,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: faceOf(F1_STEP, F1_SCALE), dist: 1.75, to: 1.5, yaw: -6, pitch: -1, fov: 36 }),
       zone: "home",
       look: "overworld-night",
-      note: "The loud one",
+      note: "The loud friend close, party hat on, the party behind his head: he is not cruel, he is keen.",
       stage: (t) => (
         <>
           <HomeDoor open={1} />
@@ -100,7 +100,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: add(PLACE.step, 0, 1.45, 0), dist: 2.7, to: 2.4, yaw: 5, pitch: -3, fov: 40 }),
       zone: "home",
       look: "overworld-night",
-      note: "He points at it",
+      note: "He points back at the house: everybody is there, and the picture shows how near it is.",
       stage: (t) => (
         <>
           <HomeDoor open={1} />
@@ -115,7 +115,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: faceOf(F2_STEP, F2_SCALE), dist: 1.8, to: 1.5, yaw: 8, pitch: -1, fov: 36 }),
       zone: "home",
       look: "overworld-night",
-      note: "The big one",
+      note: "The big friend's face, with his own neat hair: the head that is wrecked in frame one.",
       stage: (t) => (
         <>
           <HomeDoor open={1} />
@@ -130,7 +130,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: faceOf(ME_HALL), dist: 2.1, to: 1.75, yaw: 174, pitch: 1, fov: 36 }),
       zone: "home",
       look: "overworld-night",
-      note: "The word that comes back",
+      note: "My face as the word WEIRD lands: scissors and paper still in my hand. The word returns later.",
       stage: (t) => (
         <>
           <HomeDoor open={1} />
@@ -146,7 +146,7 @@ export const scene2 = storyScene(timing, {
       ...cam.push({ on: home(0, 1.4, 0.4), dist: 2.3, to: 2.05, yaw: 0, pitch: 0, fov: 40 }),
       zone: "home",
       look: "overworld-night",
-      note: "I shut the door on it",
+      note: "The door swings shut across the party: my choice, made without a word, every night.",
       stage: (t) => (
         <>
           <HomeDoor open={1 - tw(t, 0.25, 0.7)} />

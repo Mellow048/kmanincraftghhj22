@@ -22,7 +22,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [-1.55, 2.05, -4.8], dist: 8.6, to: 7.6, yaw: 186, pitch: -2, fov: 40 }),
       zone: "front",
       look: "overworld-day",
-      note: "The shop everybody goes to",
+      note: "The busiest shop in town from the street: its name, its pole, people going in and out.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -37,7 +37,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [0.4, 1.72, -4.7], dist: 3.6, to: 3.1, yaw: 178, pitch: 0, fov: 40 }),
       zone: "front",
       look: "overworld-day",
-      note: "HELP WANTED",
+      note: "The sign in the window, and me in front of it turning round with a grin.",
       stage: (t) => {
         const turn = tw(t, 1.0, 1.35);
         return (
@@ -54,7 +54,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.5, to: 3.2, yaw: -12, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "My first day",
+      note: "My first day: me on my crate behind an empty chair, and faces pressed to the window.",
       stage: (t) => (
         <>
           <Me t={t} fast={0} up={0.45} face="uneasy" />
@@ -69,7 +69,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [3.2, 1.4, -5.5], dist: 6.4, to: 5.6, yaw: -82, pitch: 10, fov: 40 }),
       zone: "front",
       look: "overworld-day",
-      note: "Round the block",
+      note: "The queue down the pavement, every head a bush: Saturday, as one long line.",
       stage: (t) => (
         <>
           <ShopDoor open={0} />
@@ -84,7 +84,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [3.0, 1.2, -5.6], dist: 2.5, to: 2.2, yaw: 187, pitch: 2, fov: 38 }),
       zone: "front",
       look: "overworld-day",
-      note: "He came in clean shaven",
+      note: "The joke of the line: one man in the queue with a beard to his belt, half asleep.",
       stage: (t) => {
         const p = holdUp(t, 0, 0);
         p.armL = [-1.1, 0, 0.5];
@@ -104,7 +104,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [0.2, 1.45, -0.3], dist: 5.0, to: 4.5, yaw: -57, pitch: 7, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "Three barbers going under",
+      note: "Inside: three grown barbers sweating over three heads. The shop is losing.",
       stage: (t) => (
         <>
           {([PLACE.chairL, PLACE.chair, PLACE.chairR] as Vec3[]).map((c, i) => (
@@ -125,7 +125,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [0.55, 0.1, 0.75], dist: 1.7, to: 1.45, yaw: 22, pitch: 24, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "Somebody dropped the clippers",
+      note: "Clippers buzzing in circles on the floor on their own: nobody has a hand free.",
       stage: (t) => (
         <>
           <FloorHair position={[0.5, 0, 0.7]} area={[1.6, 1.2]} amount={0.5} seed={3} />
@@ -139,7 +139,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: MY_FACE, dist: 1.75, to: 1.45, yaw: 5, pitch: -2, fov: 36 }),
       zone: "shop",
       look: "overworld-day",
-      note: "Click, click",
+      note: "Two clicks of the scissors, close on my face: the sound that says he is ready.",
       stage: (t) => <Me t={t} fast={0} up={1.0} face="brave" />,
     },
     {
@@ -148,7 +148,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.4, to: 3.1, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "Chair, cape, chair, cape",
+      note: "The year paying out: a new head in the chair every quarter second, each one done.",
       stage: (t) => {
         const i = Math.floor(t / 0.25);
         const k = (t % 0.25) / 0.25;
@@ -168,7 +168,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: add(OWNER, -0.1, 0.95, 0), dist: 3.1, to: 2.8, yaw: -16, pitch: 9, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "The floor",
+      note: "The owner standing shin deep in hair, staring: how much work that was, as a floor.",
       stage: (t) => (
         <>
           <FloorHair position={[1.2, 0, 0.6]} area={[3.4, 2.6]} amount={1} depth={0.34} seed={5} />
@@ -183,7 +183,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [-2.3, 1.45, -5.3], dist: 4.0, to: 3.6, yaw: 188, pitch: 2, fov: 40 }),
       zone: "front",
       look: "overworld-day",
-      note: "Forty, before lunch",
+      note: "Finished heads walking out of the door while a counter over it runs up to forty.",
       stage: (t) => {
         const n = Math.min(40, 31 + Math.floor(t * 9));
         return (
@@ -209,7 +209,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: add(OWNER, 0, 1.36, 0), dist: 2.2, to: 1.9, yaw: 8, pitch: 2, fov: 38 }),
       zone: "shop",
       look: "overworld-day",
-      note: "The owner",
+      note: "The owner's face, and the comb slipping out of his hand: a grown barber, amazed.",
       stage: (t) => {
         const p = holdUp(t, 0.45, 0.35);
         return (
@@ -227,7 +227,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: add(OWNER, -0.3, 0.36, 0.5), dist: 1.5, to: 1.3, yaw: 14, pitch: 26, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "His comb",
+      note: "His comb lands in the hair and snaps: thousands of combs, and now one of his.",
       stage: (t) => (
         <>
           <FloorHair position={[1.2, 0, 0.6]} area={[3.4, 2.6]} amount={1} depth={0.34} seed={5} />
@@ -241,7 +241,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: [-1.9, 1.3, -3.4], dist: 3.9, to: 3.5, yaw: 9, pitch: 4, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "Then the door",
+      note: "A quiet shop and a closed door, which then bangs open: the past is about to come in.",
       stage: (t) => (
         <>
           <ShopDoor open={tw(t, 0.62, 0.72)} />

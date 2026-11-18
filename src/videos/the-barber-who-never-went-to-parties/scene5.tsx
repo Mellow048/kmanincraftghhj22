@@ -40,7 +40,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(G, 0, 1.66, 0), dist: 3.4, to: 3.0, yaw: 13, pitch: 3, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "The chant, on a mop",
+      note: "The frame of the hook, a year early and in a garage: the same chant, on a mop.",
       stage: (t) => (
         <>
           <MopHead position={MOP} face="worried" hair={1 - tw(t, 0, HUS[5] + 0.1) * 0.78} />
@@ -55,7 +55,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(G, 0, 1.6, 0), dist: 2.5, to: 2.25, yaw: -9, pitch: 2, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "It is worse",
+      note: "What the chant did then: a mop with four strings left. The skill is not there yet.",
       stage: (t) => (
         <>
           <MopHead position={MOP} face="worried" hair={0.22} lean={tw(t, 0.3, 0.6) * 0.1} />
@@ -69,7 +69,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(RACK, 0, 1.25, 0), dist: 4.2, to: 3.8, yaw: 16, pitch: 2, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "Every head I ever ruined",
+      note: "A rack of mannequin heads stacked worst to best: the year, as one tall picture.",
       stage: (t) => (
         <>
           <Block position={add(RACK, -0.34, 1.25, 0)} size={[0.06, 2.5, 0.4]} color="#5c3f24" />
@@ -90,7 +90,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(G, 0, 1.78, 0), dist: 3.5, to: 3.2, yaw: -10, pitch: 2, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "The line of the meme",
+      note: "The meme's own line in blocks over the garage, with the party flashing in the window.",
       stage: (t) => (
         <>
           <OnStand style={3} />
@@ -104,7 +104,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: [PARTY[0], 1.35, PARTY[2] + 1.6], dist: 3.5, to: 3.1, yaw: -8, pitch: -2, fov: 40 }),
       zone: "home",
       look: "overworld-night",
-      note: "They were dancing",
+      note: "The two friends dancing on the lawn across the road: what I was missing, and it looks fun.",
       stage: (t) => (
         <>
           <Friend1 position={[PARTY[0] - 0.36, 0.02 + hop(t % 0.5, 0.02, 0.2, 0.3), PARTY[2] + 1.75]} rotationY={Math.sin(t * 5) * 0.5} animation="cheer" face="laugh" gaze={0} />
@@ -123,7 +123,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(G_ME_FACE, 0, -0.1, 0), dist: 1.9, to: 1.6, yaw: 7, pitch: -1, fov: 36 }),
       zone: "garage",
       look: "overworld-night",
-      note: "And I was here",
+      note: "My face under the garage bulb, cutting: the other half of the same night.",
       stage: (t) => (
         <>
           <OnStand style={3} />
@@ -136,7 +136,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(G, 0.1, 1.05, -0.3), dist: 3.6, to: 3.1, yaw: -22, pitch: 9, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "Hundreds of them",
+      note: "Bald mops standing in a row down the garage, each with a face: the count, as a queue.",
       stage: (t) => (
         <>
           {[0, 1, 2, 3, 4, 5].map((i) => (
@@ -150,7 +150,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(G, 0, 0.22, 0.5), dist: 1.9, to: 1.6, yaw: 12, pitch: 30, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "Thousands of them",
+      note: "A heap of snapped combs and one more landing on it: the count, as a pile.",
       stage: (t) => (
         <>
           {Array.from({ length: 34 }, (_, i) => {
@@ -167,7 +167,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(DOG, -0.05, 0.85, -0.2), dist: 3.0, to: 2.6, yaw: 10, pitch: 7, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "He knows what is coming",
+      note: "The dog sits and looks round at the scissors behind him: he knows, and he stays.",
       stage: (t) => (
         <>
           <FadeDog position={DOG} rotationY={0.35} cut={false} headYaw={t < 0.7 ? 0 : -0.5} headTilt={t < 0.7 ? 0 : 0.2} />
@@ -183,7 +183,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(HEDGE, 0, 1.0, -0.2), dist: 3.6, to: 3.2, yaw: -12, pitch: 5, fov: 40 }),
       zone: "home",
       look: "overworld-day",
-      note: "The hedge: a side parting",
+      note: "Proof I cut anything that held still: the garden hedge with a side parting.",
       stage: (t) => (
         <>
           <group position={HEDGE} scale={0.62}>
@@ -202,7 +202,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(DOG, 0.05, 0.62, 0.1), dist: 2.0, to: 1.7, yaw: 4, pitch: 6, fov: 38 }),
       zone: "garage",
       look: "overworld-night",
-      note: "The dog, with a fade",
+      note: "The dog afterwards, with a flat top, looking at the lens: patient is the word.",
       stage: (t) => <FadeDog position={DOG} rotationY={0.3} headYaw={-0.3} headTilt={tw(t, 0.25, 0.5) * 0.3} />,
     },
     {
@@ -211,7 +211,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: G_ME_FACE, dist: 1.75, to: 1.5, yaw: -5, pitch: -1, fov: 36 }),
       zone: "garage",
       look: "overworld-night",
-      note: "Then my own",
+      note: "My own fringe, cut far too short, and the hair still falling: nobody was spared.",
       stage: (t) => (
         <>
           <Me t={t} fast={0} up={1.05} at={G_CRATE} job={false} kitchen look="short" face="scared" />
@@ -224,7 +224,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: G_ME_FACE, dist: 1.6, to: 1.35, yaw: 6, pitch: -1, fov: 36 }),
       zone: "garage",
       look: "overworld-night",
-      note: "I said it again",
+      note: "The line again, to myself this time, with the same grin: the second time it is said.",
       stage: (t) => (
         <>
           <Me t={t} fast={0} up={0.3} at={G_CRATE} job={false} kitchen look="short" face="grin" />
@@ -238,7 +238,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: G_ME_FACE, dist: 1.5, to: 1.4, yaw: -4, pitch: -1, fov: 36 }),
       zone: "garage",
       look: "overworld-night",
-      note: "A cap, for a while",
+      note: "The answer to my own fringe: a cap, and a blank face. Dad's hat, in small.",
       stage: (t) => <Me t={t} fast={0} up={0.2} at={G_CRATE} job={false} kitchen look="cap" face="blank" />,
     },
     {
@@ -247,7 +247,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(CAL, 0, -0.02, 0), dist: 1.7, to: 1.45, yaw: 5, pitch: 0, fov: 38 }),
       zone: "spring",
       look: "overworld-night",
-      note: "The months go",
+      note: "The calendar turning from October to March: until spring, as one move.",
       stage: (t) => <Calendar position={CAL} page={Math.min(4.999, tw(t, 0.1, 1.45) * 5)} />,
     },
     {
@@ -255,7 +255,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(HEDGE, -0.3, 1.2, 0), dist: 4.6, to: 4.2, yaw: -14, pitch: 3, fov: 40 }),
       zone: "home",
       look: "overworld-day",
-      note: "Spring",
+      note: "Spring outside: blossom falling on the hedge I cut, and the dog still with his haircut.",
       stage: (t) => (
         <>
           <group position={HEDGE} scale={0.62}>
@@ -276,7 +276,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(CHAIR, 0, 1.5, -0.2), dist: 3.2, to: 2.8, yaw: -10, pitch: 4, fov: 40 }),
       zone: "spring",
       look: "overworld-day",
-      note: "The hat comes off",
+      note: "Dad takes the hat off and sits down in the chair on purpose: the trust comes back.",
       stage: (t) => {
         const sit = tw(t, 0.75, 1.15);
         return (
@@ -298,7 +298,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(CHAIR, 0, 1.6, -0.3), dist: 2.5, to: 2.25, yaw: 9, pitch: 2, fov: 38 }),
       zone: "spring",
       look: "overworld-day",
-      note: "He shuts his eyes",
+      note: "He shuts his eyes and I lift the scissors over him: the first try, about to be redone.",
       stage: (t) => (
         <>
           <Calendar position={CAL} page={5} />
@@ -316,7 +316,7 @@ export const scene5 = storyScene(timing, {
       ...cam.push({ on: add(CHAIR, 0, 1.6, -0.3), dist: 2.7, to: 2.4, yaw: -8, pitch: 2, fov: 40 }),
       zone: "spring",
       look: "overworld-day",
-      note: "And this time",
+      note: "This time the hair falls right, a sparkle, and Dad smiles: the hat is paid off.",
       stage: (t) => (
         <>
           <Calendar position={CAL} page={5} />

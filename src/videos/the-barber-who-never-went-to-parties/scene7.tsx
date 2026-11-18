@@ -27,7 +27,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [-1.9, 1.3, -3.4], dist: 3.5, to: 3.0, yaw: 9, pitch: 4, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "They fall through the door",
+      note: "The two friends fall in through the door, one of them hiding his head: they need help.",
       stage: (t) => (
         <>
           <ShopDoor open={tw(t, 0, 0.14)} />
@@ -41,7 +41,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [F2_IN[0], 1.66, F2_IN[2]], dist: 2.5, to: 2.25, yaw: -6, pitch: 2, fov: 38 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "The head of frame one",
+      note: "The hair of frame one, and now we know whose it is: the hook is this scene, seen early.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -54,7 +54,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [F2_IN[0], 1.56, F2_IN[2]], dist: 1.9, to: 1.6, yaw: 8, pitch: 0, fov: 36 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "The word I used to say",
+      note: "He says FIXABLE: my word, from the worst night of my year, now asked of me.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -68,7 +68,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: faceOf(ME_FLOOR), dist: 1.75, to: 1.45, yaw: 5, pitch: 0, fov: 36 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "I know that voice",
+      note: "My face in the mirror as I hear the voice I heard at my door every night.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -83,7 +83,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: faceOf(F1_IN, F1_SCALE), dist: 1.7, to: 1.5, yaw: -8, pitch: 0, fov: 36 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "He knows my face",
+      note: "The loud friend's face as he works out who the barber is.",
       stage: () => (
         <>
           <ShopDoor open={1} />
@@ -97,7 +97,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [-1.9, 1.55, -3.3], dist: 2.6, to: 2.3, yaw: 4, pitch: 2, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "What they called me",
+      note: "Both of them staring and pointing: the name they gave me, said with respect this time.",
       stage: () => (
         <>
           <ShopDoor open={1} />
@@ -112,7 +112,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [0.25, 1.15, 0], dist: 3.1, to: 2.8, yaw: 196, pitch: 5, fov: 40 }),
       zone: "front",
       look: "overworld-day",
-      note: "I pat the chair",
+      note: "No words: I pat the back of the chair. The calm of somebody who has done this before.",
       stage: (t) => {
         const p = holdUp(t, 0.1, 0.3);
         p.armL = [-1.25 + Math.abs(Math.sin(t * 9)) * 0.3, 0, 0];
@@ -133,7 +133,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.45, to: 3.05, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "Frame one again: six snips",
+      note: "The picture of frame one again, in order this time: six snips and the bush is gone.",
       stage: (t) => {
         const bush = 1 - tw(t, 0.08, SNIPS[5] + 0.12);
         const off = tw(t, 1.3, 1.62);
@@ -154,7 +154,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [0, 1.66, 0], dist: 2.2, to: 1.9, yaw: 13, pitch: 0, fov: 38 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "The question of the start",
+      note: "The same face and the same question as the start, so the viewer feels the loop close.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -169,7 +169,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: MY_FACE, dist: 1.7, to: 1.4, yaw: 4, pitch: -2, fov: 36 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "This time I answer",
+      note: "The same breath in as at the start: this time the film lets me answer.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -183,7 +183,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: MY_FACE, dist: 1.6, to: 1.2, yaw: 0, pitch: -1, fov: 34 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "One word",
+      note: "My face, close, for the one word that answers the film: nothing else in the picture.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -197,7 +197,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [-0.36, 1.5, -0.1], dist: 2.5, to: 2.4, yaw: 16, pitch: 0, fov: 38 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "A second of nothing",
+      note: "Two blank faces and no sound at all: the word lands on them, and on the viewer.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -211,7 +211,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.3, to: 3.0, yaw: -12, pitch: 3, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "The other one, too",
+      note: "The chant again, on the loud friend now, with green hair flying: he wanted one too.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -228,7 +228,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [0, 1.7, 0], dist: 2.75, to: 2.5, yaw: 10, pitch: 2, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "Two heads fit for a party",
+      note: "The cape comes off the second friend: both of them are ready for the party.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -244,7 +244,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [-2.15, 1.3, -4.0], dist: 3.3, to: 3.0, yaw: 7, pitch: 3, fov: 40 }),
       zone: "shopx",
       look: "overworld-sunset",
-      note: "What they always asked",
+      note: "At the door, hats on, waving me over: the question they asked every night for a year.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -259,7 +259,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: faceOf(ME_FLOOR), dist: 1.8, to: 1.55, yaw: -5, pitch: 0, fov: 36 }),
       zone: "shopx",
       look: "overworld-sunset",
-      note: "And what I always said",
+      note: "My face: a smile and a shake of the head. The same answer, and now it is a happy one.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
@@ -274,7 +274,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: [-0.55, 1.38, -4.55], dist: 3.0, to: 2.7, yaw: 176, pitch: 2, fov: 40 }),
       zone: "front",
       look: "overworld-sunset",
-      note: "From the street: CLOSED",
+      note: "From the street: I turn the board in the window to CLOSED and look over it.",
       stage: (t) => (
         <>
           <ShopDoor open={0} />
@@ -290,7 +290,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.5, to: 3.2, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-sunset",
-      note: "The last customer",
+      note: "The shop is shut and the mop is in the chair, in a cape: I never stopped training.",
       stage: (t) => (
         <>
           <MopHead position={[0, 0.2, 0.02]} bucket={false} face="worried" />
@@ -304,7 +304,7 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.2, to: 2.8, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-sunset",
-      note: "HUS HUS HUS",
+      note: "The first sound of the film is its last: the chant, on the mop, strings flying.",
       stage: (t) => (
         <>
           <MopHead position={[0, 0.2, 0.02]} bucket={false} face="worried" hair={1 - tw(t, 0, 0.7) * 0.8} />

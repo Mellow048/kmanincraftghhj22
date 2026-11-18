@@ -683,10 +683,10 @@ export const Television: React.FC<{ position: Vec3; rotationY?: number; on?: boo
     <Block position={[0, 0.25, 0]} size={[1.7, 0.5, 0.5]} color="#5c3f24" />
     <Block position={[0, 0.51, 0]} size={[1.76, 0.04, 0.54]} color="#7a5536" />
     <Block position={[0, 1.08, -0.02]} size={[1.66, 1.06, 0.14]} color="#15161b" />
-    <Block position={[0, 1.08, 0.05]} size={[1.5, 0.9, 0.02]} color={on ? "#bfe0ff" : "#0a0c10"} emissive={on ? tint : "#000000"} emissiveIntensity={on ? 0.55 : 0} castShadow={false} />
+    <Block position={[0, 1.08, 0.05]} size={[1.5, 0.9, 0.02]} color={on ? "#bfe0ff" : "#0a0c10"} emissive={on ? tint : "#000000"} emissiveIntensity={on ? 0.15 : 0} castShadow={false} />
     <Block position={[0, 0.58, 0.02]} size={[0.5, 0.06, 0.2]} color="#15161b" />
     {on ? <group position={[0, 1.08, 0.07]}>{children}</group> : null}
-    {on ? <pointLight position={[0, 1.1, 0.9]} color={tint} intensity={5} distance={5} decay={2} /> : null}
+    {on ? <pointLight position={[0, 1.1, 1.2]} color="#cfe0ff" intensity={1.6} distance={5} decay={2} /> : null}
   </group>
 );
 
@@ -734,7 +734,7 @@ export const Calendar: React.FC<{ position: Vec3; page: number; scale?: number }
 /** A sheet of paper with a cut that started straight and went off sideways. Flat on a table. */
 export const CutPaper: React.FC<{ position: Vec3; cut?: number }> = ({ position, cut = 1 }) => (
   <group position={position}>
-    <Block size={[0.5, 0.008, 0.66]} color="#fbfaf4" castShadow={false} />
+    <Block size={[0.5, 0.008, 0.66]} color="#cfcabb" castShadow={false} />
     {/* the cut: three steps, each further off the line */}
     {(
       [
@@ -754,7 +754,7 @@ export const CutPaper: React.FC<{ position: Vec3; cut?: number }> = ({ position,
 /** A dinner plate with something on it. */
 export const Plate2: React.FC<{ position: Vec3 }> = ({ position }) => (
   <group position={position}>
-    <Block size={[0.3, 0.02, 0.3]} color="#f2f2ee" />
+    <Block size={[0.3, 0.02, 0.3]} color="#c9c6ba" />
     <Block position={[-0.04, 0.03, 0]} size={[0.12, 0.05, 0.1]} color="#8a5a2a" />
     <Block position={[0.07, 0.025, 0.04]} size={[0.08, 0.03, 0.08]} color="#5fa03c" />
   </group>

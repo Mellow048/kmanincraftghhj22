@@ -28,7 +28,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.45, to: 3.05, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "Frame one: the payoff",
+      note: "Frame one is the payoff: the worst hair in town, the blur behind it, the meme's line over both.",
       stage: (t) => {
         const bush = 1 - tw(t, 0.02, HUS[5] + 0.12);
         return (
@@ -48,7 +48,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [0, 1.74, 0], dist: 2.75, to: 2.45, yaw: -9, pitch: 2, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "The cape comes off: perfect",
+      note: "The chant ends and the cape comes off on a perfect head: the skill, proved in two seconds.",
       stage: (t) => (
         <>
           <Friend2 position={SIT} hair="cut" pose={seatedPose(t)} face={t < 0.25 ? "scared" : "wow"} gaze={0} />
@@ -64,7 +64,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [0, 1.66, 0], dist: 2.2, to: 1.9, yaw: 13, pitch: 0, fov: 38 }),
       zone: "shop",
       look: "overworld-day",
-      note: "He sees himself",
+      note: "The friend sees himself and asks what the viewer is asking; my face is stacked over his.",
       stage: (t) => {
         const p = seatedPose(t);
         return (
@@ -81,7 +81,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: MY_FACE, dist: 1.7, to: 1.35, yaw: 4, pitch: -2, fov: 36 }),
       zone: "shop",
       look: "overworld-day",
-      note: "He opens his mouth to say",
+      note: "I breathe in to answer, so the viewer waits for the answer, and does not get it yet.",
       stage: (t) => (
         <>
           <Friend2 position={SIT} hair="cut" pose={seatedPose(t)} face="wow" />
@@ -95,7 +95,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.05, to: 3.5, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "The tape runs backwards",
+      note: "The same picture run backwards, hair flying back on: the answer is the year we now go to.",
       stage: (t, { dur }) => {
         const back = tw(t, 0, dur - 0.1);
         return (

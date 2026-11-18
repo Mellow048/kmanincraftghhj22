@@ -21,7 +21,7 @@ const DRAWER = PLACE.drawer;
 
 /** A block of a television picture: it glows in its own colour. Screen space: x right, y up, z out of the glass. */
 const P: React.FC<{ at: [number, number]; size: [number, number]; c: string; z?: number; rot?: number }> = ({ at, size, c, z = 0.01, rot = 0 }) => (
-  <Block position={[at[0], at[1], z]} rotation={[0, 0, rot]} size={[size[0], size[1], 0.004]} color={c} emissive={c} emissiveIntensity={0.45} castShadow={false} receiveShadow={false} />
+  <Block position={[at[0], at[1], z]} rotation={[0, 0, rot]} size={[size[0], size[1], 0.004]} color={c} emissive={c} emissiveIntensity={0.14} castShadow={false} receiveShadow={false} />
 );
 
 /** The programme: a barber spins the chair, and the man in it has a new head. `t` from the start of the show. */
@@ -91,7 +91,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: SOFA_FACE, dist: 2.2, to: 1.8, yaw: -82, pitch: 1, fov: 36 }),
       zone: "tv",
       look: "overworld-night",
-      note: "What a kid sees once",
+      note: "My face in the light of the television: this is the moment the whole year comes from.",
       stage: (t) => (
         <>
           <Television position={TV} rotationY={Math.PI / 2}>
@@ -106,7 +106,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: add(SCREEN, 0, -0.03, 0), dist: 2.1, to: 1.75, yaw: 90, pitch: 0, fov: 36 }),
       zone: "tv",
       look: "overworld-night",
-      note: "The chair turns",
+      note: "What I saw: the barber spins the chair and the man in it has a different head.",
       stage: (t) => (
         <Television position={TV} rotationY={Math.PI / 2}>
           <Show t={t} />
@@ -119,7 +119,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: add(SCREEN, 0, 0.03, 0), dist: 1.1, to: 0.9, yaw: 90, pitch: 0, fov: 36 }),
       zone: "tv",
       look: "overworld-night",
-      note: "A grown man cries",
+      note: "Closer on the screen: the grown man's tears, which is the thing I could not get over.",
       stage: (t) => (
         <Television position={TV} rotationY={Math.PI / 2}>
           <Show t={t + 1.25} />
@@ -131,7 +131,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: add(SCREEN, 0, 0.03, 0), dist: 0.85, to: 0.72, yaw: 90, pitch: 0, fov: 36 }),
       zone: "tv",
       look: "overworld-night",
-      note: "Because he is happy",
+      note: "Closer again, and he is smiling: the tears are happy ones. That is the power I wanted.",
       stage: (t) => (
         <Television position={TV} rotationY={Math.PI / 2}>
           <Show t={t + 2.6} smile />
@@ -143,7 +143,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: SOFA_FACE, dist: 1.7, to: 1.35, yaw: -84, pitch: 0, fov: 36 }),
       zone: "tv",
       look: "overworld-night",
-      note: "That. I want that",
+      note: "Back on me, and the wonder turns into a decision: the face changes on the word WANTED.",
       stage: (t) => (
         <>
           <Television position={TV} rotationY={Math.PI / 2}>
@@ -156,10 +156,10 @@ export const scene3 = storyScene(timing, {
     {
       cue: "3.wanted",
       cut: 0.95,
-      ...cam.push({ on: add(DRAWER, 0.5, 0.95, 0.35), dist: 2.7, to: 2.35, yaw: 14, pitch: 9, fov: 40 }),
+      ...cam.push({ on: add(DRAWER, 0.4, 1.05, 0.35), dist: 2.9, to: 2.5, yaw: 6, pitch: 9, fov: 40 }),
       zone: "tv",
       look: "overworld-night",
-      note: "The kitchen scissors",
+      note: "No words: the drawer, and the only scissors in the house, far too big for a kid.",
       stage: (t) => {
         const out = tw(t, 0.1, 0.4);
         const lift = tw(t, 0.55, 1.0);
@@ -171,10 +171,10 @@ export const scene3 = storyScene(timing, {
             {/* the top drawer, coming out */}
             <Block position={add(DRAWER, 0, 0.74, 0.06 + out * 0.36)} size={[1.3, 0.2, 0.56]} color="#d8cfb8" />
             <Block position={add(DRAWER, 0, 0.74, 0.36 + out * 0.36)} size={[0.2, 0.04, 0.04]} color="#5c3f24" castShadow={false} />
-            <group position={add(DRAWER, 0.2, 0.86 + lift * 0.75, 0.3 + out * 0.3)} rotation={[lift < 0.05 ? -1.45 : -1.45 + lift * 1.45, 0, 0.3 - lift * 0.3]}>
+            <group position={add(DRAWER, 0.3, 0.86 + lift * 0.75, 0.3 + out * 0.3)} rotation={[lift < 0.05 ? -1.45 : -1.45 + lift * 1.45, 0, 0.3 - lift * 0.3]}>
               <Scissors open={0.12} handle="#e8842a" scale={1.5} />
             </group>
-            <Hero position={add(DRAWER, 1.05, 0, 0.55)} rotationY={-1.25} pose={holdUp(t, 0.25 + lift * 0.75, 0.2)} face="brave" gaze={0} />
+            <Hero position={add(DRAWER, 1.0, 0, 0.75)} rotationY={-2.0} pose={holdUp(t, 0.25 + lift * 0.75, 0.2)} face="brave" gaze={0} />
           </>
         );
       },
@@ -182,10 +182,10 @@ export const scene3 = storyScene(timing, {
     {
       cue: "3.wanted",
       cut: 2.2,
-      ...cam.push({ on: add(DRAWER, 1.0, 1.72, 1.0), dist: 2.4, to: 2.1, yaw: -6, pitch: -11, fov: 40 }),
+      ...cam.push({ on: add(DRAWER, 1.0, 1.62, 1.0), dist: 2.6, to: 2.3, yaw: -6, pitch: -9, fov: 40 }),
       zone: "tv",
       look: "overworld-night",
-      note: "Too big for my hand",
+      note: "Low angle, the scissors held up like a sword and a glint on them: he thinks he is ready.",
       stage: (t) => (
         <>
           <Television position={TV} rotationY={Math.PI / 2} on={false} />
@@ -202,7 +202,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: add(CHAIR, 0, 1.2, 0), dist: 2.9, to: 2.6, yaw: -12, pitch: 5, fov: 40 }),
       zone: "tv",
       look: "overworld-night",
-      note: "The only head asleep",
+      note: "The only head in the house that will hold still: Dad asleep in his armchair.",
       stage: (t) => (
         <>
           <Television position={TV} rotationY={Math.PI / 2} on={false} />
@@ -219,7 +219,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: add(CHAIR, 0, 1.62, -0.3), dist: 2.9, to: 2.6, yaw: -10, pitch: 3, fov: 40 }),
       zone: "tv",
       look: "overworld-night",
-      note: "I come up behind him",
+      note: "I rise up behind the armchair on a crate: the picture of the shop, the very first time.",
       stage: (t) => {
         const up = tw(t, 0.05, 0.6);
         return (
@@ -240,7 +240,7 @@ export const scene3 = storyScene(timing, {
       ...cam.push({ on: add(DAD_FACE, 0, 0.22, 0), dist: 1.75, to: 1.5, yaw: 8, pitch: 12, fov: 38 }),
       zone: "tv",
       look: "overworld-night",
-      note: "One snip",
+      note: "One snip, seen close: a strip of his hair leaves, and his eyes open.",
       stage: (t) => {
         const snip = 0.36;
         const p = holdUp(t, 0, 0);

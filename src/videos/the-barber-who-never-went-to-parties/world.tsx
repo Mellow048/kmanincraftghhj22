@@ -41,9 +41,9 @@ const LivingShell: React.FC<{ t: number; party: boolean }> = ({ t, party }) => (
     <Block position={[0, 3.85, 0.4]} size={[7.4, 0.1, 6.6]} color="#e9e0c8" castShadow={false} />
     <PartyWindow position={[0.1, 2.0, -2.58]} t={t} size={[1.2, 1.1]} on={party} />
     {/* the ceiling lamp, and what it does */}
-    <Block position={[0.4, 3.6, -0.4]} size={[0.5, 0.25, 0.5]} color="#ffe9b8" emissive="#ffd88a" emissiveIntensity={0.7} castShadow={false} />
-    <pointLight position={[0.4, 3.2, -0.2]} color="#ffdcae" intensity={30} distance={9} decay={2} />
-    <pointLight position={[0.5, 1.9, 3.4]} color="#ffe8cc" intensity={22} distance={9} decay={2} />
+    <Block position={[0.4, 3.6, -0.4]} size={[0.5, 0.25, 0.5]} color="#ffe9b8" emissive="#ffd88a" emissiveIntensity={0.35} castShadow={false} />
+    <pointLight position={[0.4, 3.2, -0.2]} color="#ffdcae" intensity={7} distance={9} decay={2} />
+    <pointLight position={[0.5, 1.9, 3.4]} color="#ffe8cc" intensity={6} distance={9} decay={2} />
     <Glow position={[0.4, 3.5, -0.4]} size={1.6} color="#ffd88a" opacity={0.3} />
     <LightPool position={[0.4, 0.02, -0.2]} width={4.2} depth={3.6} color="#ffdfa8" opacity={0.12} />
     <GodRay position={[0.1, 1.2, -1.9]} rotation={[0.5, 0, 0]} width={1.2} height={2.2} color={party ? partyColor(t) : "#fff0c8"} opacity={0.07} />
@@ -81,9 +81,9 @@ const Living: React.FC = () => (
     <Armchair position={PLACE.armchair} />
     <group position={ROOM}>
       {/* a floor lamp by the armchair: the pool Dad sleeps in */}
-      <Block position={[2.95, 0.8, -1.5]} size={[0.06, 1.6, 0.06]} color="#2a2c33" />
-      <Block position={[2.95, 1.7, -1.5]} size={[0.36, 0.3, 0.36]} color="#ffe2a8" emissive="#ffcf8a" emissiveIntensity={0.6} castShadow={false} />
-      <pointLight position={[2.6, 1.6, -1.2]} color="#ffcf8a" intensity={8} distance={4} decay={2} />
+      <Block position={[3.2, 0.6, -0.3]} size={[0.06, 1.2, 0.06]} color="#2a2c33" />
+      <Block position={[3.2, 1.3, -0.3]} size={[0.34, 0.28, 0.34]} color="#e8c890" emissive="#ffcf8a" emissiveIntensity={0.25} castShadow={false} />
+      <pointLight position={[2.9, 1.5, -0.2]} color="#ffcf8a" intensity={2.5} distance={4} decay={2} />
     </group>
   </>
 );
@@ -280,37 +280,37 @@ const Street: React.FC<{ t: number; night: boolean }> = ({ t, night }) => (
     ))}
     <Vox kind="stone" tint="#b9b6ac" position={[0, 0.02, -12.4]} size={[70, 0.06, 2]} />
 
-    {/* THE PARTY HOUSE, across the road. Two floors, every window going. */}
+    {/* THE PARTY HOUSE, across the road. Two floors, every window going. A tall frame sees about 5 m of it. */}
     <group position={[PARTY_X, 0, -18]}>
-      <Vox kind="planks" tint="#e9e2d0" position={[0, 3.1, 0]} size={[11, 6.2, 6]} />
-      <Block position={[0, 6.5, 0]} size={[11.8, 0.5, 6.8]} color="#8a3b2a" />
-      <Block position={[0, 7.1, 0]} size={[9.6, 0.7, 5]} color="#8a3b2a" />
-      <Block position={[0, 7.75, 0]} size={[7, 0.6, 3.2]} color="#7a3324" />
-      {[-3.6, 3.6].map((x, i) => (
-        <PartyWindow key={`g${i}`} position={[x, 1.9, 3.02]} t={t} size={[2.0, 1.6]} phase={i * 3} on={night} />
+      <Vox kind="planks" tint="#8f7f9a" position={[0, 3.1, 0]} size={[8.4, 6.2, 6]} />
+      <Block position={[0, 6.5, 0]} size={[9.2, 0.5, 6.8]} color="#5a2a3a" />
+      <Block position={[0, 7.1, 0]} size={[7.2, 0.7, 5]} color="#5a2a3a" />
+      <Block position={[0, 7.75, 0]} size={[5, 0.6, 3.2]} color="#4a2232" />
+      {[-2.1, 2.1].map((x, i) => (
+        <PartyWindow key={`g${i}`} position={[x, 1.9, 3.02]} t={t} size={[1.7, 1.6]} phase={i * 3} on={night} />
       ))}
-      {[-3.6, 0, 3.6].map((x, i) => (
-        <PartyWindow key={`u${i}`} position={[x, 4.6, 3.02]} t={t} size={[1.8, 1.5]} phase={i * 2 + 1} on={night} />
+      {[-2.1, 2.1].map((x, i) => (
+        <PartyWindow key={`u${i}`} position={[x, 4.6, 3.02]} t={t} size={[1.7, 1.5]} phase={i * 2 + 1} on={night} />
       ))}
       <Block position={[0, 1.15, 3.03]} size={[1.2, 2.3, 0.08]} color="#3f6fd0" />
       <Block position={[0, 0.12, 3.6]} size={[2.2, 0.24, 1.2]} color="#b9b6ac" />
       {/* a string of bulbs along the front */}
       {night
-        ? Array.from({ length: 15 }, (_, i) => {
+        ? Array.from({ length: 13 }, (_, i) => {
             const c = partyColor(t, i);
-            return <Block key={i} position={[-5.3 + i * 0.76, 3.25 - Math.sin((i / 14) * Math.PI) * 0.35, 3.1]} size={[0.18, 0.18, 0.18]} color={c} emissive={c} emissiveIntensity={0.8} castShadow={false} />;
+            return <Block key={i} position={[-4.0 + i * 0.667, 3.3 - Math.sin((i / 12) * Math.PI) * 0.3, 3.1]} size={[0.2, 0.2, 0.2]} color={c} emissive={c} emissiveIntensity={0.6} castShadow={false} />;
           })
         : null}
       {night ? (
         <>
-          <pointLight position={[-3, 2.4, 6]} color={partyColor(t, 0)} intensity={70} distance={16} decay={2} />
-          <pointLight position={[3, 2.4, 6]} color={partyColor(t, 3)} intensity={70} distance={16} decay={2} />
-          <Glow position={[0, 3.2, 3.6]} size={12} color={partyColor(t, 1)} opacity={0.2} />
+          <pointLight position={[-2, 2.2, 5.5]} color={partyColor(t, 0)} intensity={16} distance={12} decay={2} />
+          <pointLight position={[2, 2.2, 5.5]} color={partyColor(t, 3)} intensity={16} distance={12} decay={2} />
+          <Glow position={[0, 3.2, 3.6]} size={7} color={partyColor(t, 1)} opacity={0.1} />
         </>
       ) : null}
     </group>
-    <Fence from={[-4.6, 0, -13.6]} to={[-2.4, 0, -13.6]} />
-    <Fence from={[10.4, 0, -13.6]} to={[13, 0, -13.6]} />
+    <Fence from={[-4.6, 0, -13.6]} to={[-1, 0, -13.6]} />
+    <Fence from={[9, 0, -13.6]} to={[12, 0, -13.6]} />
     {/* the neighbours, dark */}
     <Vox kind="planks" tint="#b8a888" position={[-9.5, 2.6, -18.5]} size={[9, 5.2, 6]} />
     <Block position={[-9.5, 5.5, -18.5]} size={[9.8, 0.6, 6.8]} color="#3d5f9a" />
@@ -321,9 +321,9 @@ const Street: React.FC<{ t: number; night: boolean }> = ({ t, night }) => (
     <Tree position={[-9, 0, -3]} height={3.8} />
     {/* a street lamp on our side */}
     <Block position={[-2.6, 1.6, -5.2]} size={[0.12, 3.2, 0.12]} color="#2a2c33" />
-    <Block position={[-2.6, 3.25, -5.2]} size={[0.4, 0.26, 0.4]} color="#ffe9b8" emissive="#ffd88a" emissiveIntensity={night ? 0.8 : 0} castShadow={false} />
-    {night ? <pointLight position={[-2.6, 3.0, -5.0]} color="#ffd9a0" intensity={30} distance={11} decay={2} /> : null}
-    {night ? <Glow position={[-2.6, 3.2, -5.1]} size={2.4} color="#ffd88a" opacity={0.35} /> : null}
+    <Block position={[-2.6, 3.25, -5.2]} size={[0.4, 0.26, 0.4]} color="#ffe9b8" emissive="#ffd88a" emissiveIntensity={night ? 0.4 : 0} castShadow={false} />
+    {night ? <pointLight position={[-2.6, 3.0, -5.0]} color="#ffd9a0" intensity={8} distance={11} decay={2} /> : null}
+    {night ? <Glow position={[-2.6, 3.2, -5.1]} size={2.0} color="#ffd88a" opacity={0.2} /> : null}
     <LightPool position={[-2.6, 0.07, -5]} width={5} depth={4} color="#ffd9a0" opacity={night ? 0.16 : 0.05} />
     <GodRay position={[-2.6, 1.7, -5]} rotation={[0, 0, 0]} width={2.6} height={3.2} color="#ffd9a0" opacity={night ? 0.05 : 0.02} />
     <Dust position={[2, 2, -4]} area={[18, 4, 10]} count={50} size={0.035} color={night ? "#cfd8ff" : "#fff7d8"} opacity={0.5} seed={9} speed={0.15} />
@@ -334,9 +334,9 @@ const Street: React.FC<{ t: number; night: boolean }> = ({ t, night }) => (
 const OurHouse: React.FC = () => (
   <group position={HOME}>
     {/* the front wall, with the door hole in it */}
-    <Vox kind="planks" tint="#d8c8a8" position={[-3.375, 1.7, 0.75]} size={[5.25, 3.4, 0.2]} castShadow={false} />
-    <Vox kind="planks" tint="#d8c8a8" position={[3.075, 1.7, 0.75]} size={[4.65, 3.4, 0.2]} castShadow={false} />
-    <Vox kind="planks" tint="#d8c8a8" position={[0, 2.85, 0.75]} size={[1.5, 1.1, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#a89878" position={[-3.375, 1.7, 0.75]} size={[5.25, 3.4, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#a89878" position={[3.075, 1.7, 0.75]} size={[4.65, 3.4, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#a89878" position={[0, 2.85, 0.75]} size={[1.5, 1.1, 0.2]} castShadow={false} />
     {[-1, 1].map((s) => (
       <Block key={s} position={[s * 0.81, 1.15, 0.72]} size={[0.14, 2.3, 0.3]} color="#f2efe6" castShadow={false} />
     ))}
@@ -357,29 +357,29 @@ const OurHouse: React.FC = () => (
     <Block position={[0.9, 1.9, 4.85]} size={[0.56, 0.76, 0.02]} color="#7fb0c8" castShadow={false} />
     <Block position={[-0.9, 2.0, 4.86]} size={[0.8, 0.08, 0.08]} color="#3a2616" castShadow={false} />
     <Block position={[-1.1, 1.6, 4.82]} size={[0.3, 0.8, 0.12]} color="#3f6fb8" castShadow={false} />
-    <pointLight position={[0, 2.7, 2.6]} color="#ffdcae" intensity={16} distance={7} decay={2} />
-    <pointLight position={[0, 2.1, 0.0]} color="#ffe2b8" intensity={9} distance={5} decay={2} />
-    <Block position={[0, 3.3, 2.6]} size={[0.3, 0.2, 0.3]} color="#ffe9b8" emissive="#ffd88a" emissiveIntensity={0.7} castShadow={false} />
+    <pointLight position={[0, 2.7, 2.6]} color="#ffdcae" intensity={4} distance={7} decay={2} />
+    <pointLight position={[0, 2.1, -0.4]} color="#ffe2b8" intensity={3} distance={5} decay={2} />
+    <Block position={[0, 3.3, 2.6]} size={[0.3, 0.2, 0.3]} color="#ffe9b8" emissive="#ffd88a" emissiveIntensity={0.35} castShadow={false} />
   </group>
 );
 
 /** Our garage. Floor 4.8 wide; the window to the street is in its north wall, with a deep shelf under it. */
 const Garage: React.FC = () => (
   <group position={PLACE.garage}>
-    <Block position={[0, 0.01, 0.4]} size={[5.0, 0.06, 5.8]} color="#8f8d86" castShadow={false} />
+    <Block position={[0, 0.01, 0.4]} size={[5.0, 0.06, 5.8]} color="#6f6d68" castShadow={false} />
     {/* north wall, with the window hole: x ±1.5, y 1.15–2.35 */}
-    <Block position={[-2.0, 1.5, -2.4]} size={[1.0, 3.0, 0.2]} color="#d8d2c0" castShadow={false} />
-    <Block position={[2.0, 1.5, -2.4]} size={[1.0, 3.0, 0.2]} color="#d8d2c0" castShadow={false} />
-    <Block position={[0, 0.575, -2.4]} size={[3.0, 1.15, 0.2]} color="#d8d2c0" castShadow={false} />
-    <Block position={[0, 2.675, -2.4]} size={[3.0, 0.65, 0.2]} color="#d8d2c0" castShadow={false} />
+    <Block position={[-2.0, 1.5, -2.4]} size={[1.0, 3.0, 0.2]} color="#9a9484" castShadow={false} />
+    <Block position={[2.0, 1.5, -2.4]} size={[1.0, 3.0, 0.2]} color="#9a9484" castShadow={false} />
+    <Block position={[0, 0.575, -2.4]} size={[3.0, 1.15, 0.2]} color="#9a9484" castShadow={false} />
+    <Block position={[0, 2.675, -2.4]} size={[3.0, 0.65, 0.2]} color="#9a9484" castShadow={false} />
     <Block position={[0, 1.75, -2.4]} size={[3.0, 1.2, 0.03]} color="#bfe6ff" opacity={0.1} transparent castShadow={false} />
     <Block position={[0, 1.75, -2.38]} size={[0.06, 1.2, 0.06]} color="#f2efe6" castShadow={false} />
     {/* the shelf under the window */}
     <Block position={[0, 1.1, -2.1]} size={[3.3, 0.08, 0.5]} color="#5c3f24" />
     <Block position={[-1.5, 0.55, -2.1]} size={[0.08, 1.1, 0.45]} color="#3a2616" />
     <Block position={[1.5, 0.55, -2.1]} size={[0.08, 1.1, 0.45]} color="#3a2616" />
-    <Block position={[-2.5, 1.5, 0.4]} size={[0.2, 3.0, 5.8]} color="#cfc9b6" castShadow={false} />
-    <Block position={[2.5, 1.5, 0.4]} size={[0.2, 3.0, 5.8]} color="#cfc9b6" castShadow={false} />
+    <Block position={[-2.5, 1.5, 0.4]} size={[0.2, 3.0, 5.8]} color="#9a9484" castShadow={false} />
+    <Block position={[2.5, 1.5, 0.4]} size={[0.2, 3.0, 5.8]} color="#9a9484" castShadow={false} />
     <Block position={[0, 3.05, 0.4]} size={[5.2, 0.1, 6]} color="#5a5a64" castShadow={false} />
     {/* garage things: a tyre, a box, tools on the west wall */}
     <Block position={[-2.0, 0.3, -1.7]} size={[0.6, 0.6, 0.6]} color="#b48d52" />
@@ -389,10 +389,10 @@ const Garage: React.FC = () => (
     <Block position={[-2.38, 1.9, 0.1]} size={[0.04, 0.2, 0.5]} color="#c8362e" castShadow={false} />
     {/* the bulb */}
     <Block position={[0, 2.8, -0.2]} size={[0.03, 0.4, 0.03]} color="#1c1c22" castShadow={false} />
-    <Block position={[0, 2.55, -0.2]} size={[0.14, 0.18, 0.14]} color="#fff4c8" emissive="#ffe9a0" emissiveIntensity={0.8} castShadow={false} />
-    <pointLight position={[0, 2.3, 0]} color="#ffe2b0" intensity={26} distance={8} decay={2} />
-    <pointLight position={[0, 1.6, 2.8]} color="#ffe8cc" intensity={14} distance={7} decay={2} />
-    <Glow position={[0, 2.5, -0.2]} size={1.2} color="#ffe9a0" opacity={0.4} />
+    <Block position={[0, 2.55, -0.2]} size={[0.14, 0.18, 0.14]} color="#fff4c8" emissive="#ffe9a0" emissiveIntensity={0.4} castShadow={false} />
+    <pointLight position={[0, 2.3, 0]} color="#ffe2b0" intensity={6} distance={8} decay={2} />
+    <pointLight position={[0, 1.6, 2.8]} color="#ffe8cc" intensity={4} distance={7} decay={2} />
+    <Glow position={[0, 2.5, -0.2]} size={1.0} color="#ffe9a0" opacity={0.2} />
   </group>
 );
 
