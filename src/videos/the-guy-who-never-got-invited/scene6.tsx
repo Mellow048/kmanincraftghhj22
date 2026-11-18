@@ -25,7 +25,7 @@ export const scene6 = stagedScene("scene6", [
   },
   {
     id: "6.sleeve",
-    ...cam.push({ on: [0.05, 0.85, 0.2], dist: 2.5, to: 2.0, fov: 38, pitch: 26, yaw: 4 }),
+    ...cam.push({ on: [0.05, 0.86, 0.22], dist: 1.7, to: 1.45, fov: 34, pitch: 28, yaw: 6 }),
     zone: "kitchen",
     look: "warm-room",
     note: "The record back in its sleeve, both hands, very carefully: the only thing in the film he is gentle with.",

@@ -10,7 +10,7 @@ import { Booth, Friend, Him, stagedScene } from "./kit";
 export const scene9 = stagedScene("scene9", [
   {
     id: "9.in",
-    ...cam.push({ on: [0, 1.4, 3.0], dist: 3.2, to: 2.6, fov: 44, yaw: 180, pitch: 4 }),
+    ...cam.push({ on: [0, 1.4, 2.2], dist: 4.4, to: 3.8, fov: 46, yaw: 180, pitch: 6 }),
     zone: "club",
     look: "prom-night",
     note: "They push in through the door of the club they queue at every weekend, still talking to each other, already loud.",
@@ -73,7 +73,7 @@ export const scene9 = stagedScene("scene9", [
   },
   {
     id: "9.faces",
-    ...cam.push({ on: [1.5, 1.42, 0.5], dist: 3.2, to: 2.7, fov: 42, yaw: 24, pitch: 4 }),
+    ...cam.push({ on: [1.4, 1.4, 0.3], dist: 4.2, to: 3.6, fov: 46, yaw: 24, pitch: 6 }),
     zone: "club",
     look: "prom-night",
     note: "Their faces, having the night of their lives, lit by a rig he built: they are happy and they still do not know who he is.",

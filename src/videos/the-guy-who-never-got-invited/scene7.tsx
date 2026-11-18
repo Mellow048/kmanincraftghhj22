@@ -43,7 +43,8 @@ export const scene7 = stagedScene("scene7", [
     stage: () => (
       <>
         <Turntable position={DECKS} spin={4.4} arm={1} />
-        <Him position={[-1.55, 0, 0.55]} rotationY={1.1} animation="reach" face="uneasy" headphones="ears" />
+        <Record position={[-2.05, 0.92, 0.45]} rotationY={0.6} tilt={1.4} />
+        <Record position={[-1.72, 0.92, 0.62]} rotationY={-0.4} tilt={1.5} />
       </>
     ),
   },
@@ -84,7 +85,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.window",
-    ...cam.push({ on: [1.3, 1.52, -2.35], dist: 3.0, to: 2.4, fov: 42, yaw: 4, pitch: 1 }),
+    ...cam.push({ on: [0.55, 1.35, 0.5], dist: 3.4, to: 2.8, fov: 44, yaw: 128, pitch: 6 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The window at night, him working in the foreground: the town is asleep and one room is not.",
@@ -97,7 +98,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.onehand",
-    ...cam.push({ on: DECKS, dist: 2.2, to: 1.8, fov: 36, pitch: 18, yaw: -32 }),
+    ...cam.push({ on: [-1.7, 1.0, 0.1], dist: 2.3, to: 1.9, fov: 38, pitch: 20, yaw: -62 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Mixing with one hand behind his back: the trick that has no use in the world.",
@@ -163,7 +164,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.stack",
-    ...cam.push({ on: [-1.4, 0.62, 1.3], dist: 2.7, to: 2.25, fov: 38, pitch: 12, yaw: -22 }),
+    ...cam.push({ on: [-1.4, 0.72, 1.3], dist: 3.3, to: 2.8, fov: 42, pitch: 14, yaw: -26 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The stack of labelled records beside the speaker, waist high: time, counted in cardboard.",

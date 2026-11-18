@@ -54,8 +54,8 @@ const Street: React.FC = () => {
       <Vox kind="cobble" position={[0, 0.06, -3.55]} size={[2.4, 0.12, 0.75]} />
 
       {/* Inside the door and behind the window: the party. Warm, and never quite in focus. */}
-      <Block position={[0, 1.15, -4.6]} size={[1.86, 2.3, 0.06]} color="#f0b070" emissive="#ff9a4a" emissiveIntensity={0.34} />
-      <Block position={[2.6, 1.72, -4.62]} size={[1.58, 1.13, 0.06]} color="#ffb877" emissive="#ffa85c" emissiveIntensity={0.4} />
+      <Block position={[0, 1.15, -4.6]} size={[1.86, 2.3, 0.06]} color="#f0b070" emissive="#ff9a4a" emissiveIntensity={0.22} />
+      <Block position={[2.6, 1.72, -4.62]} size={[1.58, 1.13, 0.06]} color="#ffb877" emissive="#ffa85c" emissiveIntensity={0.28} />
 
       {/* Two shapes dancing behind the window. Nobody you can name yet. */}
       {[
@@ -69,6 +69,17 @@ const Street: React.FC = () => {
         </group>
       ))}
 
+      {[
+        [-0.55, 0.0],
+        [0.2, 1.4],
+        [0.75, 2.6],
+      ].map(([x, phase], i) => (
+        <group key={`d${i}`} position={[x, 0.5 + bob(frame, fps, phase, 0.04), -4.5]}>
+          <Block size={[0.32, 0.6, 0.22]} color="#2a1408" />
+          <Block position={[0, 0.44, 0]} size={[0.26, 0.26, 0.24]} color="#2a1408" />
+        </group>
+      ))}
+
       <LampPost position={STREET.lamp} seed={7} />
       <Hut at={[-8.5, 0, -1.5]} w={6} tint="#c2a477" roof="#3f4d6b" turn={0.25} lit windows={[-1.6]} />
       <Hut at={[9.5, 0, -2.2]} w={6.5} tint="#b59a70" roof="#5a3a2a" turn={-0.2} lit windows={[1.7, -1.2]} />
@@ -76,8 +87,8 @@ const Street: React.FC = () => {
       <Tree position={[8.4, 0, 3.2]} height={4.2} leaf="#356330" />
 
       {/* The step, the spill of the door, the air. */}
-      <pointLight position={[0, 1.9, -4.3]} color="#ffb066" intensity={3.0} distance={9} decay={2} />
-      <pointLight position={[2.6, 1.7, -4.3]} color="#ffa858" intensity={1.8} distance={6} decay={2} />
+      <pointLight position={[0, 2.15, -2.5]} color="#ffb066" intensity={3.2} distance={10} decay={2} />
+      <pointLight position={[2.6, 1.9, -2.6]} color="#ffa858" intensity={2.2} distance={8} decay={2} />
       <LightPool position={[0, 0.08, -3.1]} width={3.6} depth={2.4} color="#ffb469" opacity={0.26} />
       <LightPool position={[2.6, 0.08, -3.2]} width={2.6} depth={2.0} color="#ffab5e" opacity={0.18} />
       <GodRay position={[0, 1.4, -3.8]} rotation={[0.2, 0, 0]} width={1.9} height={2.6} color="#ffb877" opacity={0.05} />
