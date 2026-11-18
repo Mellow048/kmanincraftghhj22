@@ -47,11 +47,53 @@ export const PLACE = {
   porchFoot: [-10, 0, -2.5] as Vec3,
   /** The teller's house. Middle of its front wall. */
   home: [10, 0, -5] as Vec3,
+  /** The vending machine, on the south side of the street. The town's only restaurant. */
+  vending: [8.0, 0, 5.0] as Vec3,
+  /** THE TELLER'S KITCHEN. Its own set, sealed on four sides, far from the street. */
+  home2: [0, 0, 400] as Vec3,
+  /** The restaurant: 12 x 9, its pass on the south wall. Its own set again. */
+  restaurant: [0, 0, 500] as Vec3,
   /** The teller's room. Its own zone, far from everything. */
-  room: [0, 0, 80] as Vec3,
+  room: [0, 0, 600] as Vec3,
 };
-/** The teller's room: a point given in room coordinates. */
-export const room = (x: number, y: number, z: number): Vec3 => [PLACE.room[0] + x, PLACE.room[1] + y, PLACE.room[2] + z];
+/** The kitchen at home: a point given in the kitchen's own coordinates. */
+export const K = (x: number, y: number, z: number): Vec3 => [PLACE.home2[0] + x, PLACE.home2[1] + y, PLACE.home2[2] + z];
+/** A point in the restaurant kitchen. */
+export const R = (x: number, y: number, z: number): Vec3 => [PLACE.restaurant[0] + x, PLACE.restaurant[1] + y, PLACE.restaurant[2] + z];
+/** A point inside his bedroom. */
+export const B = (x: number, y: number, z: number): Vec3 => [PLACE.room[0] + x, PLACE.room[1] + y, PLACE.room[2] + z];
+
+/**
+ * THE KITCHEN'S OWN NUMBERS. Every lens in `home` is placed from these, never by eye: a sealed room will
+ * happily render the inside of a wall, and it looks exactly like a lighting fault.
+ *
+ *   floor      x -3.5 .. 3.5, z -3.0 .. 3.0, ceiling 3.0
+ *   counter    along the north wall, top y 0.93
+ *   stove      x -2.1
+ *   fridge     x 2.75
+ *   table      middle (0, 0.76, 0.6), 2.2 x 1.3
+ *   board      THE CUTTING BOARD (0, 0.85, 0.25): the subject of the whole training arc
+ *   doorway    the south wall's gap, x -0.7 .. 0.7: the lens stands in it, outside the room
+ */
+export const HOME2 = {
+  x: [-3.4, 3.4] as [number, number],
+  z: [-2.9, 2.9] as [number, number],
+  ceiling: 3.0,
+  counterTop: 0.93,
+  stove: K(-2.1, 1.02, -2.55),
+  fridge: K(2.75, 0.9, -2.5),
+  table: K(0, 0.76, 0.6),
+  board: K(0, 0.88, 0.25),
+};
+/** The restaurant's numbers, for the same reason. */
+export const REST2 = {
+  x: [-5.9, 5.9] as [number, number],
+  z: [-4.4, 4.4] as [number, number],
+  ceiling: 3.4,
+  hotLine: R(0, 1.02, -3.6),
+  pass: R(0, 1.1, 3.2),
+  bench: R(-1.6, 0.88, -1.2),
+};
 
 // ----------------------------------------------------------------------------- the teller
 
