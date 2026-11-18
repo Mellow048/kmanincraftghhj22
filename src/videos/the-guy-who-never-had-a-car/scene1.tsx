@@ -143,7 +143,7 @@ export const scene1=storyScene(timing, {
   },
   {
    cue: '20',
-   ...cam.push({on:[0.95, 0.55, 1.25],dist:2.8,to:2.35,yaw:55,pitch:12,fov:36}),
+   ...cam.push({on:[1.1, 0.7, 1.25],dist:4,to:3.5,yaw:45,pitch:20,fov:40}),
    zone: 'drive', look: 'overworld-night',
    note: "toothbrush: Cut on the measured voice; show a new action or consequence rather than a held portrait.",
    stage: (t)=><Stage mode="toothbrush" time={t} absolute={30.133333} offset={0} card={"THEY SLEPT I BUFFED"}/>,
@@ -192,7 +192,7 @@ export const scene1=storyScene(timing, {
   },
   {
    cue: '27',
-   ...cam.push({on:[0.95, 0.55, 1.25],dist:2.8,to:2.35,yaw:55,pitch:12,fov:36}),
+   ...cam.push({on:[1.1, 0.7, 1.25],dist:4,to:3.5,yaw:45,pitch:20,fov:40}),
    zone: 'drive', look: 'overworld-night',
    note: "toothbrush: Cut on the measured voice; show a new action or consequence rather than a held portrait.",
    stage: (t)=><Stage mode="toothbrush" time={t} absolute={36.533333} offset={0} card={""}/>,
@@ -318,7 +318,7 @@ export const scene1=storyScene(timing, {
   },
   {
    cue: '45',
-   ...cam.push({on:[-39.05, 0.55, 1.25],dist:2.8,to:2.35,yaw:55,pitch:12,fov:36}),
+   ...cam.push({on:[-38.9, 0.7, 1.25],dist:4,to:3.5,yaw:45,pitch:20,fov:40}),
    zone: 'shop', look: 'warm-room',
    note: "toothbrush: Cut on the measured voice; show a new action or consequence rather than a held portrait.",
    stage: (t)=><Stage mode="toothbrush" time={t} absolute={51.866667} offset={-40} card={""}/>,

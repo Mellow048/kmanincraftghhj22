@@ -35,7 +35,7 @@ export const Stage:React.FC<{mode:string;time:number;absolute:number;offset:numb
   {(mode==='invite'||mode==='reunion'||mode==='wreck')&&<><Friend position={[-1.5,0,1.7]} time={time} surprise={late}/><Friend position={[2.8,0,1.6]} time={time+.3} blue surprise={late}/></>}
   {washing&&<Water time={time} fast={fast}/>}
   {mode==='fail'&&<Vox kind="wool" position={[.95,.87,.15]} size={[.03,.22,1.3]} tint="#b63829"/>}
-  <Bucket position={[1.9,0,2.1]}/>
+  <Bucket position={mode==='toothbrush'?[2.5,0,-.5]:[1.9,0,2.1]}/>
   {mode==='dry'&&<Vox kind="wool" position={[.8+Math.sin(time*23)*.4,1.15,1.05]} rotation={[0,Math.sin(time*23)*.5,0]} size={[.6,.04,.42]} tint="#e2e2cc"/>}
   {mode==='meal'&&<group position={[.8,.48,2.1]}><Block size={[.9,.1,.7]} color="#e2e0cd"/>{[0,1,2,3,4,5].map(i=><Block key={i} position={[-.3+(i%3)*.16,.09,Math.floor(i/3)*.14-.1]} size={[.13,.09,.12]} color="#f3f1dc"/>)}<Block position={[.22,.1,0]} size={[.3,.12,.4]} color="#c6945c"/></group>}
   {mode==='sponges'&&Array.from({length:46},(_,i)=><Vox key={i} kind="wool" position={[-1.4+(i*17%19)*.14,.1+Math.floor(i/13)*.12+Math.max(0,1-time*5-(i%7)*.1)*1.7,1+(i*13%17)*.09]} size={[.24,.12,.19]} tint={i%3?'#978047':'#b5a458'}/>)}

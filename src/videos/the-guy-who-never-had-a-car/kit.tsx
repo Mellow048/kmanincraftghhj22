@@ -61,7 +61,7 @@ export const Worker: React.FC<{position?:Vec3;time:number;wash?:boolean;fast?:bo
  if(wash){
   // The opening keeps its approved choreography. Post-hook work is a real accelerated action.
   const hz=action?(fast?30:17):(fast?24:6);
-  p.armR=[-1.3+Math.sin(time*hz)*(action?.62:.35),0,-.2];
+  p.armR=[-1.3+Math.sin(time*hz)*(action ? .62 : .35),0,-.2];
   p.armL=[-.55+ (action?Math.sin(time*hz+.8)*.28:0),0,.12];
   p.bodyPitch=.16+(action?Math.sin(time*hz*.5)*.09:0);
   p.bodyRoll=action?Math.sin(time*hz*.5)*.055:0;
@@ -105,6 +105,15 @@ export const Card: React.FC<{text:string;position?:Vec3;offset?:number}> = ({tex
   group.current.position.x-=offset;
   group.current.quaternion.copy(camera.quaternion);
   group.current.scale.setScalar(halfH*.28);
+  // Title typography must not disappear behind a close-up actor. Film-local only.
+  group.current.traverse(object=>{
+   if(object instanceof THREE.Mesh){
+    object.renderOrder=9000;
+    for(const material of Array.isArray(object.material)?object.material:[object.material]){
+     material.depthTest=false;material.depthWrite=false;
+    }
+   }
+  });
  });
  const rows:string[]=[];
  for(const phrase of text.split('|')) {
