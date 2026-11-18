@@ -1,8 +1,20 @@
 # Dishwasher Training Arc — export review
 
-**Delivered:** [GitHub release MP4](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-237/dishwasher-training-arc.mp4) · [Permanently pinned copy](https://raw.githubusercontent.com/Mellow048/kmanincraftghhj22/8ac7d518d7a1076ea1e8e5858e49ca755e5c1244/renders/dishwasher-training-arc.mp4).
+**Current export (dialogue fix):** [GitHub release MP4](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-239/dishwasher-training-arc.mp4) · [Permanently pinned copy](https://raw.githubusercontent.com/Mellow048/kmanincraftghhj22/821b8a15e6a2c2a39894f350da6040a78f9021db/renders/dishwasher-training-arc.mp4).
 
-[Render short run 237](https://github.com/Mellow048/kmanincraftghhj22/actions/runs/44295398939) built five chunks from `6185611` and joined them. This review uses frames decoded from the **exact delivered file**, not Studio stills. The release digest matches the branch MP4. The original Popcorn MP4, Pelican postcard and shared engine were not changed.
+## Render 239 — Finn’s dialogue
+
+[GitHub render 239](https://github.com/Mellow048/kmanincraftghhj22/actions/runs/44303665518) rendered the revision from `1ceaae3`. Finn holds the expression and gaze for each of his five lines instead of swapping the whole face on loud syllables. An eleven-frame smoothed envelope opens just his mouth; the authored head poses, blinks and reactions stay in place. The change is local to this film.
+
+- Compared consecutive frames from the **released MP4** against the original: f145–154 (goal), f296–305 (boast), and f810–819 (“almost”). The eyes and brows no longer flip on speech peaks; the mouth opens without losing each line’s expression.
+- `npm run typecheck`, `npm run check` and the full `check_export.py` passed. Still **41.40 s**, 1,242 frames at 1080 × 1920/30 fps, with the f60 sink cut and exactly three final HUS. The edit, captions and soundtrack sources did not change. The exported **AAC payload is byte-identical** to render 237, and all nine sync checks report 0 ms lag.
+- The revised release and branch copy match: 27,634,430 bytes, SHA-256 `63c2471bfaac20da3987cb1a6ae402904417285fd390179e8c3f77cd3ea9f176`, GitHub blob `e7833e781e752a8d8735c7d64e3f8c4d58f4d443`. Popcorn, Pelican and the shared engine remain untouched.
+
+## Original cut — render 237
+
+**Superseded export:** [GitHub release MP4](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-237/dishwasher-training-arc.mp4) · [Pinned copy](https://raw.githubusercontent.com/Mellow048/kmanincraftghhj22/8ac7d518d7a1076ea1e8e5858e49ca755e5c1244/renders/dishwasher-training-arc.mp4).
+
+[Render short run 237](https://github.com/Mellow048/kmanincraftghhj22/actions/runs/44295398939) built five chunks from `6185611` and joined them. This original review used frames decoded from the exact delivered file, not Studio stills. The release digest matched the branch MP4.
 
 | Beat | Checked in the exported picture |
 | --- | --- |
