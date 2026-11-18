@@ -1,3 +1,7 @@
+# Historical review — the earlier 108-second cut
+
+The current remaster is documented in [REMASTER.md](./REMASTER.md). The timings and limitations below describe the superseded cut.
+
 # Replacement build — production and review log
 
 **Title:** The Guy Who Never Had a Car.
