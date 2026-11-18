@@ -48,6 +48,14 @@ jobs:
       - name: Size
         run: ls -la out/film.mp4 && ffprobe -hide_banner out/film.mp4 2>&1 | head -6 || true
 
+      - name: Keep the file on the run
+        uses: actions/upload-artifact@v4
+        with:
+          name: film-mp4
+          path: out/film.mp4
+          retention-days: 3
+          compression-level: 0
+
       - name: Commit it to the branch
         env:
           DEST: ${{ inputs.commit_to }}
@@ -58,4 +66,4 @@ jobs:
           cp out/film.mp4 "$DEST"
           git add "$DEST"
           git commit -m "Deliver $(basename "$DEST" .mp4) render (1080x1920)" || echo "nothing to commit"
-          git push
+          git push origin HEAD:"${GITHUB_REF_NAME}"
