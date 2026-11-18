@@ -108,7 +108,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.dog",
       // The dog eats better than the children, and the dog eats grass. Low angle so the dog is a giant.
-      ...cam.push({ on: [-0.4, 0.45, 0.4], dist: 3.0, to: 2.5, yaw: 16, pitch: -10, fov: 44 }),
+      ...cam.push({ on: [-0.4, 0.5, 0.4], dist: 2.8, to: 2.3, yaw: 18, pitch: 6, fov: 44 }),
       zone: "village",
       look: "overworld-sunset",
       note: "Low angle on the dog, nose down in the grass, with a plate beside it that has been licked clean. The dog is eating better than anybody.",

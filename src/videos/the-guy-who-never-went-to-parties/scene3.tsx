@@ -269,14 +269,14 @@ export const scene3 = storyScene(timing, {
     {
       cue: "6.chant",
       // HUS HUS HUS. The chant shot: his face, mid-effort, breathing in rhythm. This is the meme.
-      ...cam.push({ on: faceOf([0, 0, 400.9], 0.8), dist: 3.0, to: 2.5, yaw: 8, pitch: -6, fov: 38 }),
+      ...cam.push({ on: faceOf([0, 0, 400.9], 0.8), dist: 3.6, to: 3.0, yaw: 8, pitch: 2, fov: 42 }),
       zone: "home",
       look: "kitchen-day",
       note: "His face at the board, breathing in rhythm, eyes on the knife and not on us. The chant is the running meme, so this is a training shot and it has to look like effort.",
       stage: (t) => (
         <>
           <Hero position={[0, 0, 400.9]} rotationY={0.05} animation="idle" face="brave" gaze={0} headPitch={0.18} />
-          <Chant t={t} at={[-0.62, 2.02, 401.1]} scale={pop(t, CHANT) * 0.52} rotationY={0.1} />
+          <Chant t={t} at={[-1.15, 1.58, 400.5]} scale={pop(t, CHANT) * 0.5} spread={0.44} rotationY={0.1} />
         </>
       ),
     },

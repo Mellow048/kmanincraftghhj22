@@ -297,7 +297,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.onions",
       // Back to work. The turn, and the knife comes back out.
-      ...cam.top({ on: [-1.2, 1.0, 498.7], height: 3.1, to: 2.6, spin: [6, -6], fov: 42 }),
+      ...cam.push({ on: [-1.2, 1.1, 498.95], dist: 3.4, to: 2.9, yaw: 6, pitch: 9, fov: 44 }),
       zone: "restaurant",
       look: "lava-shore",
       note: "He turns back to the board and picks the knife up again, and the friends are still in the corner of the frame, uncomprehending.",

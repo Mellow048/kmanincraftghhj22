@@ -103,12 +103,13 @@ export const REST2 = {
  * which read as a cough. Three bubbles now, half a beat apart, repeating five times a second, each one
  * popping and dying, so the chant is visibly faster than the knife hand in the same frame.
  */
-export const Chant: React.FC<{ t: number; at: Vec3; scale?: number; rotationY?: number; tail?: number }> = ({
+export const Chant: React.FC<{ t: number; at: Vec3; scale?: number; rotationY?: number; tail?: number; spread?: number }> = ({
   t,
   at,
   scale = 0.5,
   rotationY = 0,
   tail = -1,
+  spread = 0.62,
 }) => (
   <group position={at} rotation={[0, rotationY, 0]}>
     {[0, 1, 2].map((i) => {
@@ -123,7 +124,7 @@ export const Chant: React.FC<{ t: number; at: Vec3; scale?: number; rotationY?: 
         <Bubble
           key={i}
           text="HUS"
-          position={[i * 0.62, i * 0.06 + Math.sin(t * 26 + i) * 0.02, -i * 0.05]}
+          position={[i * spread, i * 0.06 + Math.sin(t * 26 + i) * 0.02, -i * 0.05]}
           scale={s}
           rotationY={rotationY * i * 0.3}
           dark

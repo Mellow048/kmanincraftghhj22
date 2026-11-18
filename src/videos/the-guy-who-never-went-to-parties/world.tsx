@@ -143,7 +143,7 @@ const FILL_HOME = new Set([
   "1.chop", "2.mum", "2.fridge", "3.brand", "3.never", "4.cannot", "5.but", "5.flipped",
   "5.ceiling", "6.slow", "6.faster", "6.blade", "6.again", "6.omelette", "6.calendar", "9.fridge",
 ]);
-const FILL_RESTAURANT = new Set(["7.hands"]);
+const FILL_RESTAURANT = new Set(["7.hands", "8.onions"]);
 
 const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean; fridge?: "closed" | "empty" | "full" }> = ({ night, fill, fridge = "closed" }) => (
   <group position={PLACE.home2}>
