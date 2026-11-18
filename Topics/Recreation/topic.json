@@ -44,7 +44,7 @@
   },
   "film": {
     "seconds": [
-      90,
+      75,
       120
     ],
     "hardMaxSeconds": 140,

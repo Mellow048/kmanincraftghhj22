@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Cape, Crate, Friend1, Friend2, HAIR, HairFly, Hero, InHand, MopHead, PLACE, ShopDoor, Sparkle, WindowBoard, cuttingPose, faceOf, go, holdUp, pop, seatedPose, timing, tw, w, F1_SCALE, F2_SCALE } from "./kit";
+import { Cape, Crate, Friend1, Friend2, HAIR, HairFly, Hero, InHand, MopHead, PLACE, Plate, ShopDoor, Sparkle, WindowBoard, cuttingPose, faceOf, go, holdUp, pop, seatedPose, timing, tw, w, F1_SCALE, F2_SCALE } from "./kit";
 import { CRATE, MY, MY_FACE, Me, SIT, SIT_TOP } from "./acts";
 
 /**
@@ -16,7 +16,8 @@ const F2_IN: Vec3 = [-2.25, 0, -3.5];
 /** Where I am when they fall in: at the middle chair, my back to the door, looking in the mirror. */
 const ME_FLOOR: Vec3 = [0.72, 0, 0.1];
 const HUS = [0, 1, 2, 3, 4, 5].map((i) => w("7.hus", "HUS", i));
-const SNIPS = [0.14, 0.32, 0.5, 0.68, 0.86, 1.04];
+const SNIPS = [0, 1, 2, 3, 4, 5].map((i) => w("7.hus1", "HUS", i));
+const END = [0, 1, 2, 3, 4, 5].map((i) => w("7.end", "HUS", i));
 
 export const scene7 = storyScene(timing, {
   id: "scene7",
@@ -64,7 +65,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.please",
-      cut: 1.36,
+      cut: 1.2,
       ...cam.push({ on: faceOf(ME_FLOOR), dist: 1.75, to: 1.45, yaw: 5, pitch: 0, fov: 36 }),
       zone: "shopx",
       look: "overworld-day",
@@ -72,7 +73,7 @@ export const scene7 = storyScene(timing, {
       stage: (t) => (
         <>
           <ShopDoor open={1} />
-          <Hero job position={ME_FLOOR} pose={holdUp(t, 0.5, -0.3)} face={t < 0.35 ? "calm" : "smug"} gaze={t < 0.35 ? 0 : -1} headYaw={-tw(t, 0.3, 0.7) * 0.35}>
+          <Hero job position={ME_FLOOR} pose={holdUp(t, 0.5, -0.3)} face={t < 0.25 ? "calm" : "smug"} gaze={t < 0.25 ? 0 : -1} headYaw={-tw(t, 0.2, 0.5) * 0.35}>
             <InHand rate={0} scale={1.1} />
           </Hero>
         </>
@@ -108,7 +109,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.weirdone",
-      cut: 0.76,
+      cut: 0.66,
       ...cam.push({ on: [0.5, 1.2, 0.1], dist: 3.6, to: 3.3, yaw: 192, pitch: 5, fov: 40 }),
       zone: "front",
       look: "overworld-day",
@@ -128,23 +129,23 @@ export const scene7 = storyScene(timing, {
       },
     },
     {
-      cue: "7.weirdone",
-      cut: 1.5,
+      cue: "7.hus1",
       ...cam.push({ on: WIDE, dist: 3.45, to: 3.05, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
-      note: "The picture of frame one again, in order this time: six snips and the bush is gone.",
+      note: "The picture of frame one again, in order this time, chant and all: six HUS and the bush is gone.",
       stage: (t) => {
-        const bush = 1 - tw(t, 0.08, SNIPS[5] + 0.12);
-        const off = tw(t, 1.3, 1.62);
+        const end = SNIPS[5];
+        const bush = 1 - tw(t, SNIPS[0], end + 0.12);
+        const off = tw(t, end + 0.25, end + 0.55);
         return (
           <>
             <ShopDoor open={1} />
-            <Friend2 position={SIT} hair={bush > 0.02 ? "bush" : "cut"} bush={bush} pose={seatedPose(t)} face={t < 1.3 ? "scared" : "wow"} gaze={0} />
+            <Friend2 position={SIT} hair={bush > 0.02 ? "bush" : "cut"} bush={bush} pose={seatedPose(t)} face={t < end + 0.25 ? "scared" : "wow"} gaze={0} />
             <Cape position={PLACE.chair} scale={0.96} off={off} />
-            <Me t={t} fast={t < SNIPS[5] + 0.15 ? 1 : 0} up={1.15} face={t < 1.2 ? "calm" : "smug"} />
+            <Me t={t} fast={t < end + 0.15 ? 1 : 0} up={1.15} face={t < end + 0.2 ? "calm" : "smug"} />
             <HairFly position={SIT_TOP} t={t} at={SNIPS} color={HAIR.f2} count={10} power={1.25} />
-            <Sparkle position={[0.3, 1.56, 0.35]} k={pop(t, 1.5, 0.2)} size={0.3} />
+            <Sparkle position={[0.3, 1.56, 0.35]} k={pop(t, end + 0.42, 0.2)} size={0.2} />
           </>
         );
       },
@@ -165,7 +166,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.bro",
-      cut: 1.3,
+      cut: 1.18,
       ...cam.push({ on: MY_FACE, dist: 1.7, to: 1.4, yaw: 4, pitch: -2, fov: 36 }),
       zone: "shopx",
       look: "overworld-day",
@@ -193,7 +194,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.training",
-      cut: 0.95,
+      cut: 0.52,
       ...cam.push({ on: [-0.31, 1.42, -0.1], dist: 3.3, to: 3.2, yaw: 10, pitch: 0, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
@@ -235,7 +236,7 @@ export const scene7 = storyScene(timing, {
           <Friend1 position={SIT} cut pose={seatedPose(t)} face="wow" gaze={0} />
           <Cape position={PLACE.chair} scale={F1_SCALE} off={tw(t, 0.02, 0.3)} side={-1} />
           <Me t={t} fast={0} up={1.15} face="smug" />
-          <Sparkle position={[0.3, 1.45, 0.35]} k={pop(t, 0.25, 0.2)} size={0.3} />
+          <Sparkle position={[0.3, 1.45, 0.35]} k={pop(t, 0.25, 0.2)} size={0.2} />
         </>
       ),
     },
@@ -254,63 +255,79 @@ export const scene7 = storyScene(timing, {
       ),
     },
     {
-      cue: "7.coming",
-      cut: 0.9,
-      ...cam.push({ on: faceOf(ME_FLOOR), dist: 1.8, to: 1.55, yaw: -5, pitch: 0, fov: 36 }),
+      cue: "7.no",
+      ...cam.push({ on: faceOf(ME_FLOOR), dist: 1.8, to: 1.5, yaw: -5, pitch: 0, fov: 36 }),
       zone: "shopx",
       look: "overworld-sunset",
-      note: "My face: a smile and a shake of the head. The same answer, and now it is a happy one.",
+      note: "My face, and one word: no. Not sorry, not angry. The answer of every night, said out loud at last.",
       stage: (t) => (
         <>
           <ShopDoor open={1} />
-          <Hero job position={ME_FLOOR} pose={holdUp(t, 0.75, -0.3)} face="happy" gaze={0} headYaw={Math.sin(t * 7.5) * 0.3}>
-            <InHand t={t} rate={3} scale={1.1} />
+          <Hero job position={ME_FLOOR} pose={holdUp(t, 0.75, -0.3)} face="calm" gaze={0} headYaw={t > 0.3 ? Math.sin((t - 0.3) * 16) * 0.16 * Math.max(0, 1 - (t - 0.3) * 3) : 0}>
+            <InHand rate={0} scale={1.1} />
           </Hero>
         </>
       ),
     },
     {
-      cue: "7.never",
-      ...cam.push({ on: [-0.55, 1.38, -4.55], dist: 3.0, to: 2.7, yaw: 176, pitch: 2, fov: 40 }),
-      zone: "front",
+      cue: "7.no",
+      cut: 0.5,
+      ...cam.push({ on: [-2.15, 1.3, -4.0], dist: 3.2, to: 3.0, yaw: 7, pitch: 3, fov: 40 }),
+      zone: "shopx",
       look: "overworld-sunset",
-      note: "From the street: I turn the board in the window to CLOSED and look over it.",
+      note: "The two of them at the door, the waving stopped dead: two blank faces, then a look at each other.",
       stage: (t) => (
         <>
-          <ShopDoor open={0} />
-          <WindowBoard position={[-0.55, 1.2, -4.52]} front="OPEN" back="CLOSED" flip={tw(t, 0.15, 0.5)} width={0.9} height={0.4} bg="#bff0c0" />
-          <Hero job position={[-0.55, 0.32, -4.1]} rotationY={Math.PI} face="happy" gaze={0} />
-          <Crate position={[-0.55, -0.28, -4.1]} />
+          <ShopDoor open={1} />
+          <Friend1 position={[-2.05, 0, -3.9]} cut animation={t > 0.3 ? "shrug" : "idle"} face="blank" gaze={0} blink={false} headYaw={t > 0.3 ? -0.8 : 0} />
+          <Friend2 position={[-2.55, 0, -4.75]} hair="cut" hat animation="idle" face="blank" gaze={0} blink={false} headYaw={t > 0.36 ? 0.8 : 0} />
         </>
       ),
     },
     {
-      cue: "7.never",
-      cut: 1.05,
+      cue: "7.no",
+      cut: 1.08,
       ...cam.push({ on: WIDE, dist: 3.5, to: 3.2, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-sunset",
-      note: "The shop is shut and the mop is in the chair, in a cape: I never stopped training.",
+      note: "They are gone, and the mop is in the chair in a cape: the scissors go up. This is my party.",
       stage: (t) => (
         <>
           <MopHead position={[0, 0.2, 0.02]} bucket={false} face="worried" />
           <Cape position={PLACE.chair} scale={0.96} />
-          <Me t={t} fast={0} up={tw(t, 0.1, 0.5) * 1.2} face="smug" />
+          <Me t={t} fast={0} up={tw(t, 0.05, 0.4) * 1.2} face="smug" />
         </>
       ),
     },
     {
       cue: "7.end",
-      ...cam.push({ on: WIDE, dist: 3.2, to: 2.8, yaw: 14, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [0, 1.7, 0], dist: 2.6, to: 2.3, yaw: -13, pitch: 1, fov: 40 }),
       zone: "shop",
       look: "overworld-sunset",
-      note: "The first sound of the film is its last: the chant, on the mop, strings flying.",
+      note: "The first sound of the film is its last: the chant on the mop, four HUS and then two at once.",
       stage: (t) => (
         <>
-          <MopHead position={[0, 0.2, 0.02]} bucket={false} face="worried" hair={1 - tw(t, 0, 0.7) * 0.8} />
+          <MopHead position={[0, 0.2, 0.02]} bucket={false} face="worried" hair={1 - tw(t, END[0], END[5] + 0.1) * 0.72} />
           <Cape position={PLACE.chair} scale={0.96} />
           <Me t={t} fast={1} face="happy" />
-          <HairFly position={SIT_TOP} t={t} at={[0.0, 0.15, 0.3, 0.45, 0.6]} color="#f6f1e2" count={10} power={1.25} />
+          <HairFly position={SIT_TOP} t={t} at={END} color="#f6f1e2" count={10} power={1.25} />
+        </>
+      ),
+    },
+    {
+      cue: "7.end",
+      cut: END[5] + 0.16,
+      ...cam.push({ on: WIDE, dist: 3.45, to: 3.15, yaw: -9, pitch: 3, fov: 40 }),
+      zone: "shop",
+      look: "overworld-sunset",
+      note: "The last picture is held: the mop, done; me, content; the meme's line over us; and two clicks of the scissors.",
+      stage: (t) => (
+        <>
+          <MopHead position={[0, 0.2, 0.02]} bucket={false} face="happy" hair={0.28} />
+          <Cape position={PLACE.chair} scale={0.96} />
+          <Me t={t} fast={0} up={1.15} face="smug" />
+          <Sparkle position={[0.3, 1.6, 0.35]} k={pop(t, 0.08, 0.2)} size={0.3} />
+          <Plate lines={["WHILE THEY'RE", "OUT PARTYING BTW"]} position={[-0.03, 2.44, 0.3]} width={0.84} k={Math.min(1, pop(t, 0.3, 0.18) + (t > 0.48 ? 1 : 0))} />
         </>
       ),
     },

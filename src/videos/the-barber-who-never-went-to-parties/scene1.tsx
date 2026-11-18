@@ -77,7 +77,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.how",
-      cut: 1.32,
+      cut: 1.05,
       ...cam.push({ on: MY_FACE, dist: 1.7, to: 1.35, yaw: 4, pitch: -2, fov: 36 }),
       zone: "shop",
       look: "overworld-day",
@@ -91,7 +91,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.how",
-      cut: 1.95,
+      cut: 1.42,
       ...cam.push({ on: WIDE, dist: 3.05, to: 3.5, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
@@ -103,7 +103,7 @@ export const scene1 = storyScene(timing, {
             <Friend2 position={SIT} hair="bush" bush={back} pose={seatedPose(-t * 3)} face="scared" gaze={0} />
             <Cape position={PLACE.chair} scale={0.96} off={Math.max(0, 0.9 - t * 4)} />
             <Me t={-t * 2.5} fast={1} face="calm" />
-            <HairFly position={SIT_TOP} t={dur - t} at={[0.1, 0.3, 0.5, 0.7]} color={HAIR.f2} count={10} power={1.25} />
+            <HairFly position={SIT_TOP} t={dur - t} at={[0.08, 0.24, 0.4, 0.56]} color={HAIR.f2} count={10} power={1.25} />
             <Rewind t={t} lens={lensOf(WIDE, 3.28, 14, 3)} on={WIDE} depth={1.0} />
             <Plate lines={["REWIND"]} position={[0.1, 2.4, 0.3]} width={0.8} color="#ffe14a" k={Math.floor(t * 8) % 2 ? 1 : 0.92} />
           </>

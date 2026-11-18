@@ -27,7 +27,7 @@ export const film = defineFilm({
   // The shader chain: the owner asked for it on every film from 2026-11-17 on.
   post: { shaders: true },
   audio: { src: "audio/the-barber-who-never-went-to-parties/mix.mp3" },
-  captions: { words: timing.words, y: 0.72 },
+  captions: { words: timing.words, y: 0.72, motion: "on-beat" },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6, scene7],
 });

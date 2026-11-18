@@ -142,19 +142,19 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.weird",
-      cut: 1.05,
+      cut: 0.93,
       ...cam.push({ on: home(0, 1.4, 0.3), dist: 3.9, to: 3.5, yaw: 168, pitch: 4, fov: 40 }),
       zone: "home",
       look: "overworld-night",
       note: "From the path, the door shuts on the two of them: my choice, made without a word, every night.",
       stage: (t) => {
-        const shut = tw(t, 0.25, 0.7);
+        const shut = tw(t, 0.12, 0.45);
         return (
           <>
             <HomeDoor open={1 - shut} />
             {shut < 0.8 ? <Hero position={ME_HALL} rotationY={Math.PI} face="neutral" gaze={0} /> : null}
-            <Friend1 position={F1_STEP} animation={t > 0.75 ? "shrug" : "idle"} face="frown" headYaw={t > 0.85 ? -0.9 : 0} />
-            <Friend2 position={F2_STEP} animation="idle" face="neutral" headYaw={t > 0.95 ? 0.9 : 0} />
+            <Friend1 position={F1_STEP} animation={t > 0.42 ? "shrug" : "idle"} face="frown" headYaw={t > 0.5 ? -0.9 : 0} />
+            <Friend2 position={F2_STEP} animation="idle" face="neutral" headYaw={t > 0.58 ? 0.9 : 0} />
           </>
         );
       },
