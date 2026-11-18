@@ -1,0 +1,110 @@
+{
+  "id": "recreation",
+  "name": "Recreation",
+  "folder": "Topics/Recreation",
+  "profile": "story",
+  "state": "PROVISIONAL",
+  "provisional": {
+    "why": "The owner asked for the first film (2026-11-18, 'go i wont review it') before any film of this kind of ours existed. The reference is his own script, not a finished video, so nothing here is measured from a picture.",
+    "borrowed": {
+      "film.seconds": "His script: 'Target duration: 1:40-1:50'. The range is that with ten seconds each side.",
+      "film.words": "His script has about 150 spoken words; ours has about 200. No reference video to count.",
+      "film.shotSeconds": "One script line holds a whole stretch of action under it (the training, the busy shop), cut into several angles with `cut:`. So the limit on one LINE is long. The limit on one PICTURE is in README.md: nothing holds over 3 seconds.",
+      "sound": "Topics/InThisTown/topic.json, with the changes named in sound.note."
+    },
+    "whenTheReferenceArrives": "When the owner approves a film of this topic, or sends the reel he took the format from: measure its length, words, cuts and sound, replace the borrowed numbers, name the film in `reference` and `models`, and delete this block and `state`."
+  },
+  "origin": {
+    "page": "Topics/Recreation/reference/OWNER-SCRIPT.md",
+    "what": "A format the owner found on a reel and wrote his own script for on 2026-11-18: the 'While they're out partying btw' and 'huss huss huss' memes told as a one-and-three-quarter-minute story. His corrections to our first draft are the rules of the topic.",
+    "owner": "its IRL coated with minecraft. No nether, no mc shenanigans. its a recreation cmon."
+  },
+  "premise": {
+    "oneLiner": "A real-life story from a meme, recreated with block people in a block town. Somebody skips every party to train one ordinary skill, far too seriously, and the people who laughed need it at the end.",
+    "mustHave": [
+      "frame one is the skill at full speed and its result, readable with the sound off",
+      "a question asked in the hook and answered in the last scene",
+      "a real place, a real job, real things: a house, a street, a shop",
+      "the first failure, on somebody who did not ask for it",
+      "a training run with at least four different failures",
+      "'Training.', a silence, and the chant as the last sound"
+    ],
+    "never": [
+      "anything from the game: no Nether, no lava, no mobs, no crafting, no game mechanics, no Minecraft jokes",
+      "the owner's own lines from his script, or another film's",
+      "a hook that opens on a face, a title or a sentence of narration",
+      "the main character finding any of it funny"
+    ]
+  },
+  "camera": {
+    "builder": "storyScene",
+    "guard": "",
+    "maxHardCuts": 999,
+    "note": "Hard cuts. A script line with action under it is cut into several pictures with `cut:`."
+  },
+  "film": {
+    "seconds": [
+      90,
+      120
+    ],
+    "hardMaxSeconds": 140,
+    "hardMinSeconds": 60,
+    "hardMinWords": 120,
+    "shotSeconds": [
+      0.3,
+      12.0
+    ],
+    "medianShotSeconds": [
+      0.8,
+      4.0
+    ],
+    "wordsPerMinute": [
+      90,
+      200
+    ],
+    "words": [
+      150,
+      260
+    ],
+    "maxWordsPerShot": 12,
+    "captions": true,
+    "shortsRule": "A vertical video over 3:00 is not a YouTube Short. No film of this topic comes near it."
+  },
+  "pack": "Topics/Recreation/README.md",
+  "template": "Topics/InThisTown/template",
+  "models": {
+    "note": "No APPROVED film yet. The first one built is src/videos/the-barber-who-never-went-to-parties; its kit.tsx holds every part a second film would want (the block town street, the living room, the shop, people with hair that can be cut)."
+  },
+  "sound": {
+    "required": true,
+    "musicUnderVoiceDb": [
+      15,
+      24
+    ],
+    "maxBuried": 0,
+    "minVoiceOverRestDb": 3,
+    "minVoiceOverRestMedianDb": 10,
+    "lufs": [
+      -16.5,
+      -13
+    ],
+    "maxTruePeakDb": -0.3,
+    "guide": "Topics/Recreation/README.md",
+    "minMusicSections": 5,
+    "maxSecondsWithoutMusic": 8,
+    "minSfxPerMinute": 60,
+    "maxGapSeconds": 5,
+    "bedDefault": "room",
+    "moodDefault": "playful",
+    "bedForLook": {
+      "overworld-night": "night"
+    },
+    "bedForZone": {
+      "street": "village",
+      "yard": "village",
+      "room": "room",
+      "shop": "room"
+    },
+    "note": "Borrowed from Topics/InThisTown/topic.json, except: no owner's track (that track belongs to the In This Town shorts), so the music is written from moods, one for each scene; more effects a minute and a shorter longest gap, because half of a film of this topic has no words over it."
+  }
+}

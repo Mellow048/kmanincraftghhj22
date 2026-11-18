@@ -200,6 +200,7 @@ SAY = {
     "hummed": "HH AH M D",
     "uncrossed": "AH N K R AO S T",
     "sixtysix": "S IH K S T IY S IH K S",
+    "hus": "HH AH S",
 }
 
 def align(pcm16k, words):
@@ -339,6 +340,13 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
             natural_dur = (b - a) / SR_ALIGN
             clip_words = [w for cue in clip["cues"] for w in spoken_words(cue["text"])]
             spans = align(xn[a:b], clip_words)
+            # A clip that was assembled by a tool (a chant laid out burst by burst: scripts/split-takes.py) comes with
+            # the time of each of its words, in seconds from the first sound. That is exact; the aligner is not asked.
+            known = os.path.splitext(p)[0] + ".words.json"
+            if os.path.exists(known):
+                given = json.load(open(known, encoding="utf8"))
+                if len(given) == len(clip_words):
+                    spans = [(float(s0), float(e0)) for s0, e0 in given]
             xo = decode(p, SR_OUT, tempo, start=a / SR_ALIGN, end=b / SR_ALIGN)
             dur = len(xo) / SR_OUT
             how = "aligned"
