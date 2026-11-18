@@ -1,0 +1,830 @@
+{
+  "film": "in-this-town-he-stayed-in-the-garage",
+  "README": "Mechanic, not a cook. HUS is a fast chant: the clanks sit on the hus words, and the last burst is faster than the hook. The track is the owner's.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The hook: the wrench is already moving."
+      },
+      {
+        "from": "2.love",
+        "mood": "playful",
+        "why": "The party he does not go to."
+      },
+      {
+        "from": "2.light",
+        "mood": "sneak",
+        "gain": -4,
+        "why": "Night. Their light in the window, his light under the hood."
+      },
+      {
+        "from": "3.tv",
+        "mood": "wonder",
+        "why": "The mechanic on the television."
+      },
+      {
+        "from": "3.sleeve",
+        "mood": "town",
+        "why": "Back under the hood, by day."
+      },
+      {
+        "from": "4.jack",
+        "mood": "playful",
+        "why": "He is sure. He is wrong."
+      },
+      {
+        "from": "4.learn",
+        "mood": "curious",
+        "why": "Still a lot to learn."
+      },
+      {
+        "from": "5.bolt",
+        "mood": "explain",
+        "why": "The training. The chant starts slow."
+      },
+      {
+        "from": "5.key",
+        "mood": "sneak",
+        "gain": -3,
+        "why": "Night again. He does not stop."
+      },
+      {
+        "from": "5.strip",
+        "mood": "town",
+        "why": "Day. The months."
+      },
+      {
+        "from": "6.sat",
+        "mood": "hope",
+        "why": "The busiest garage. He is not behind."
+      },
+      {
+        "from": "7.push",
+        "mood": "tense",
+        "why": "The old friends, and a dead car."
+      },
+      {
+        "from": "7.quiet",
+        "mood": "none",
+        "why": "One second. The engine is dead quiet."
+      },
+      {
+        "from": "7.hus",
+        "mood": "town",
+        "why": "The chant, faster than the hook. The engine catches."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "2.hood",
+      "bed": "village"
+    },
+    {
+      "from": "2.love",
+      "to": "2.hide",
+      "bed": "crowd",
+      "trim": -4
+    },
+    {
+      "from": "2.light",
+      "to": "3.any",
+      "bed": "night"
+    },
+    {
+      "from": "3.tv",
+      "to": "3.any",
+      "bed": "room"
+    },
+    {
+      "from": "3.sleeve",
+      "to": "5.smoke",
+      "bed": "village"
+    },
+    {
+      "from": "5.key",
+      "to": "5.while",
+      "bed": "night"
+    },
+    {
+      "from": "5.strip",
+      "to": "6.boss",
+      "bed": "village"
+    },
+    {
+      "from": "6.sat",
+      "to": "6.boss",
+      "bed": "crowd",
+      "trim": -6
+    },
+    {
+      "from": "7.push",
+      "to": "7.catch",
+      "bed": "night"
+    },
+    {
+      "from": "7.end",
+      "to": "7.end",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "whoosh_low",
+      "why": "The hook opens on the wrench, already moving.",
+      "trim": -8,
+      "dur": 0.18
+    },
+    {
+      "cue": "1.catch",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "1.catch",
+      "sfx": "power_up",
+      "why": "The engine catches."
+    },
+    {
+      "cue": "2.love",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "2.love",
+      "sfx": "cheer",
+      "why": "The party, all at once."
+    },
+    {
+      "cue": "2.invite",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "2.invite",
+      "sfx": "swish",
+      "why": "A hand waved at him."
+    },
+    {
+      "cue": "2.once",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "2.once",
+      "sfx": "pop",
+      "why": "Come on."
+    },
+    {
+      "cue": "2.hide",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "2.hide",
+      "sfx": "hit",
+      "why": "Stop hiding: a shout and a point."
+    },
+    {
+      "cue": "2.hood",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "2.hood",
+      "sfx": "creak",
+      "why": "He stays under the hood."
+    },
+    {
+      "cue": "2.light",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "2.light",
+      "sfx": "blip",
+      "why": "One light in the window."
+    },
+    {
+      "cue": "2.dream",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "2.dream",
+      "sfx": "sparkle",
+      "why": "A different dream."
+    },
+    {
+      "cue": "3.tv",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "3.tv",
+      "sfx": "power_up",
+      "why": "The television comes on."
+    },
+    {
+      "cue": "3.start",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "3.start",
+      "sfx": "power_up",
+      "why": "The dead car on the television starts."
+    },
+    {
+      "cue": "3.want",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "3.want",
+      "sfx": "blip",
+      "why": "He leans in."
+    },
+    {
+      "cue": "3.any",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "3.sleeve",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "3.sleeve",
+      "sfx": "rustle",
+      "why": "Sleeves rolled up."
+    },
+    {
+      "cue": "3.walk",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "3.walk",
+      "sfx": "step_stone",
+      "why": "He walks back under the hood."
+    },
+    {
+      "cue": "4.jack",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "4.jack",
+      "sfx": "creak",
+      "why": "The car goes up on the jack."
+    },
+    {
+      "cue": "4.tire",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "4.tire",
+      "sfx": "scrape",
+      "why": "The tire comes off."
+    },
+    {
+      "cue": "4.roll",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "4.roll",
+      "sfx": "whoosh_low",
+      "why": "The car rolls off the jack."
+    },
+    {
+      "cue": "4.hedge",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "4.hedge",
+      "sfx": "thud",
+      "why": "It stops in the hedge."
+    },
+    {
+      "cue": "4.hold",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "4.hold",
+      "sfx": "place",
+      "why": "He is still holding the tire."
+    },
+    {
+      "cue": "4.almost",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "4.almost",
+      "sfx": "bonk",
+      "why": "Almost. The plan failed."
+    },
+    {
+      "cue": "4.learn",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "4.learn",
+      "sfx": "drop",
+      "why": "Still a lot to learn."
+    },
+    {
+      "cue": "5.bolt",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.bolt",
+      "sfx": "tick",
+      "why": "One rusty bolt, turned slow."
+    },
+    {
+      "cue": "5.fast",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.fast",
+      "sfx": "clank",
+      "why": "Then faster. The wheel comes off."
+    },
+    {
+      "cue": "5.back",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.back",
+      "sfx": "place",
+      "why": "A headlight put in backwards."
+    },
+    {
+      "cue": "5.face",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.face",
+      "sfx": "blink",
+      "why": "It shines into his own face."
+    },
+    {
+      "cue": "5.fix",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.fix",
+      "sfx": "clank",
+      "why": "He turns it around."
+    },
+    {
+      "cue": "5.smoke",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.smoke",
+      "sfx": "crackle",
+      "why": "A cloud of smoke."
+    },
+    {
+      "cue": "5.key",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.night",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.night",
+      "sfx": "blip",
+      "why": "His light stays on."
+    },
+    {
+      "cue": "5.while",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.while",
+      "sfx": "scrape",
+      "why": "Under the car while they are out."
+    },
+    {
+      "cue": "5.strip",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.strip",
+      "sfx": "break",
+      "why": "A hundred bolts, stripped."
+    },
+    {
+      "cue": "5.water",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.water",
+      "sfx": "plink",
+      "why": "In for water."
+    },
+    {
+      "cue": "5.months",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.months",
+      "sfx": "paper",
+      "why": "A page of the calendar turns."
+    },
+    {
+      "cue": "5.hired",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "5.hired",
+      "sfx": "stamp",
+      "why": "The garage on the main street hires him."
+    },
+    {
+      "cue": "6.sat",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.sat",
+      "sfx": "whoosh",
+      "why": "Cars lined up out the door."
+    },
+    {
+      "cue": "6.behind",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.behind",
+      "sfx": "step_stone",
+      "why": "The other mechanics, already behind."
+    },
+    {
+      "cue": "6.board",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.board",
+      "sfx": "paper",
+      "why": "A clipboard nobody picks up."
+    },
+    {
+      "cue": "6.under",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.under",
+      "sfx": "scrape",
+      "why": "He rolls under the first car."
+    },
+    {
+      "cue": "6.wheel",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.wheel",
+      "sfx": "thud",
+      "why": "A tire seated in one push."
+    },
+    {
+      "cue": "6.spark",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.spark",
+      "sfx": "crackle",
+      "why": "The cables spark."
+    },
+    {
+      "cue": "6.hood",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.hood",
+      "sfx": "hit",
+      "why": "The hood drops."
+    },
+    {
+      "cue": "6.blink",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.blink",
+      "sfx": "power_up",
+      "why": "The car starts. The owner blinks."
+    },
+    {
+      "cue": "6.boss",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "6.boss",
+      "sfx": "stamp",
+      "why": "Nothing left to fix."
+    },
+    {
+      "cue": "7.push",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.push",
+      "sfx": "scrape",
+      "why": "A dead car pushed up the street."
+    },
+    {
+      "cue": "7.dress",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.dress",
+      "sfx": "rustle",
+      "why": "Still dressed for the party."
+    },
+    {
+      "cue": "7.stop",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.stop",
+      "sfx": "thud",
+      "why": "It stops at his feet."
+    },
+    {
+      "cue": "7.wait",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.wait",
+      "sfx": "blip",
+      "why": "Wait. Is that him."
+    },
+    {
+      "cue": "7.how",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.how",
+      "sfx": "swish",
+      "why": "How did you get so good."
+    },
+    {
+      "cue": "7.train",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.train",
+      "sfx": "stamp",
+      "why": "Training. He does not smile."
+    },
+    {
+      "cue": "7.quiet",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.quiet",
+      "sfx": "heartbeat",
+      "why": "One second. The engine is dead quiet."
+    },
+    {
+      "cue": "7.up",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.up",
+      "sfx": "slide_up",
+      "why": "The wrench comes up with him."
+    },
+    {
+      "cue": "7.hus",
+      "sfx": "whoosh",
+      "why": "The cut.",
+      "trim": -8,
+      "dur": 0.18
+    },
+    {
+      "cue": "7.catch",
+      "sfx": "swish",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.catch",
+      "sfx": "power_up",
+      "why": "The engine catches before they let go."
+    },
+    {
+      "cue": "7.end",
+      "sfx": "whoosh",
+      "why": "The cut."
+    },
+    {
+      "cue": "7.end",
+      "sfx": "ding",
+      "why": "Like and subscribe."
+    },
+    {
+      "cue": "1.town",
+      "word": "hus",
+      "nth": 0,
+      "sfx": "clank",
+      "f": 210,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "1.town",
+      "word": "hus",
+      "nth": 1,
+      "sfx": "clank",
+      "f": 238,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "1.town",
+      "word": "hus",
+      "nth": 3,
+      "sfx": "clank",
+      "f": 294,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "1.town",
+      "word": "hus",
+      "nth": 4,
+      "sfx": "clank",
+      "f": 322,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "5.hus",
+      "word": "hus",
+      "nth": 0,
+      "sfx": "clank",
+      "f": 140,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "5.hus",
+      "word": "hus",
+      "nth": 2,
+      "sfx": "clank",
+      "f": 184,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "5.hus",
+      "word": "hus",
+      "nth": 3,
+      "sfx": "clank",
+      "f": 206,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "5.hus",
+      "word": "hus",
+      "nth": 5,
+      "sfx": "clank",
+      "f": 250,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "7.hus",
+      "word": "hus",
+      "nth": 0,
+      "sfx": "clank",
+      "f": 280,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "7.hus",
+      "word": "hus",
+      "nth": 1,
+      "sfx": "clank",
+      "f": 320,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "7.hus",
+      "word": "hus",
+      "nth": 2,
+      "sfx": "clank",
+      "f": 360,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "7.hus",
+      "word": "hus",
+      "nth": 3,
+      "sfx": "clank",
+      "f": 400,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "7.hus",
+      "word": "hus",
+      "nth": 5,
+      "sfx": "clank",
+      "f": 480,
+      "trim": -6,
+      "why": "One hus. The wrench, sped up with the chant."
+    },
+    {
+      "cue": "3.walk",
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.38,
+      "why": "Walking back to the bay."
+    },
+    {
+      "cue": "5.water",
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.34,
+      "why": "In, and straight back out."
+    },
+    {
+      "cue": "7.push",
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.32,
+      "why": "Three of them, pushing."
+    },
+    {
+      "cue": "2.love",
+      "sfx": "step_grass",
+      "repeat": 4,
+      "every": 0.28,
+      "why": "The party moving."
+    },
+    {
+      "cue": "6.wrench",
+      "word": "wrench",
+      "sfx": "clank",
+      "why": "The wrench, before the chant."
+    },
+    {
+      "cue": "6.wrench",
+      "word": "blur",
+      "sfx": "zip",
+      "dur": 0.2,
+      "why": "A blur. Then the chant, in the voice."
+    }
+  ]
+}

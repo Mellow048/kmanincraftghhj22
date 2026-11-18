@@ -1,0 +1,158 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-he-stayed-in-the-garage",
+  "mix": "public/audio/in-this-town-he-stayed-in-the-garage/mix.mp3",
+  "seconds": 109.0,
+  "built_from": {
+    "timing.json": "23241cff5b7c1079f0b31098befeafc2c111fa29",
+    "sound.json": "fb2cec024513122510d9cddb66a7d0750e88154c",
+    "narration.mp3": "604bd526fcde37f7a1d5f228a78964a77d3a0d6b"
+  },
+  "mix_sha1": "3af7e5e9a837e17a565624c086b0cb007a6348fc",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.love",
+      "mood": "playful",
+      "at": 3.1
+    },
+    {
+      "from": "2.light",
+      "mood": "sneak",
+      "at": 13.3
+    },
+    {
+      "from": "3.tv",
+      "mood": "wonder",
+      "at": 16.37
+    },
+    {
+      "from": "3.sleeve",
+      "mood": "town",
+      "at": 24.83
+    },
+    {
+      "from": "4.jack",
+      "mood": "playful",
+      "at": 27.77
+    },
+    {
+      "from": "4.learn",
+      "mood": "curious",
+      "at": 39.33
+    },
+    {
+      "from": "5.bolt",
+      "mood": "explain",
+      "at": 41.07
+    },
+    {
+      "from": "5.key",
+      "mood": "sneak",
+      "at": 54.5
+    },
+    {
+      "from": "5.strip",
+      "mood": "town",
+      "at": 61.23
+    },
+    {
+      "from": "6.sat",
+      "mood": "hope",
+      "at": 70.67
+    },
+    {
+      "from": "7.push",
+      "mood": "tense",
+      "at": 89.63
+    },
+    {
+      "from": "7.quiet",
+      "mood": "none",
+      "at": 100.7
+    },
+    {
+      "from": "7.hus",
+      "mood": "town",
+      "at": 104.77
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 10,
+  "measured": {
+    "musicUnderVoiceDb": 17.8,
+    "secondsWithoutMusic": 4.4,
+    "bedsUnderVoiceDb": 25.9,
+    "sfx": 135,
+    "sfxPerMinute": 74.3,
+    "sfxKinds": 30,
+    "longestGapSeconds": 2.9,
+    "longestGapAt": 18.2,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.8,
+    "voiceOverRestWorstDb": 4.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.4,
+        "t": 79.4,
+        "cue": "6.wrench",
+        "sounding": [
+          "swish"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 18.7,
+        "cue": "3.start",
+        "sounding": [
+          "power_up"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 4.1,
+        "cue": "2.love",
+        "sounding": [
+          "cheer",
+          "step_grass"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 86.2,
+        "cue": "6.blink",
+        "sounding": [
+          "power_up"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 1.4,
+        "cue": "1.catch",
+        "sounding": [
+          "power_up"
+        ]
+      },
+      {
+        "db": 8.1,
+        "t": 61.0,
+        "cue": "5.while",
+        "sounding": [
+          "break",
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.1,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}

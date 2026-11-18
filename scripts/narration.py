@@ -195,6 +195,7 @@ SAY = {
     "kraken": "K R EY K AH N",
     "buoy": "B UW IY",
     "octopus": "AA K T AH P UH S",
+    "hus": "HH AH S",
 }
 
 def align(pcm16k, words):

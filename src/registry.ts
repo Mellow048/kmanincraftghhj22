@@ -19,6 +19,7 @@ import { film as inThisTownMonsterVillagePart4 } from "./videos/in-this-town-mon
 import { film as inThisTownTheFastestKidWinsPart2 } from "./videos/in-this-town-the-fastest-kid-wins-part-2/film";
 import { film as inThisTownYouCouldNotBeAPirateUntilYouWereEighteen } from "./videos/in-this-town-you-could-not-be-a-pirate-until-you-were-eighteen/film";
 import { film as inThisTownTheBellRangAndNobodyWasAllowedToLookUp } from "./videos/in-this-town-the-bell-rang-and-nobody-was-allowed-to-look-up/film";
+import { film as inThisTownHeStayedInTheGarage } from "./videos/in-this-town-he-stayed-in-the-garage/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -46,4 +47,5 @@ export const FILMS = [
   inThisTownTheFastestKidWinsPart2,
   inThisTownYouCouldNotBeAPirateUntilYouWereEighteen,
   inThisTownTheBellRangAndNobodyWasAllowedToLookUp,
+  inThisTownHeStayedInTheGarage,
 ];
