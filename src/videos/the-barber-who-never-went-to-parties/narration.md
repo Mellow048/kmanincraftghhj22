@@ -43,7 +43,7 @@ is cut into several pictures in the scene files (`cut:`).
 # clip 02-how wait 0.7
 [1.how] BRO. HOW?!
 
-# clip 03-paper wait 1.3
+# clip 03-paper wait 1.0
 [2.paper] One year earlier, I could not cut paper.
 # clip 04-party wait 0.25
 [2.party] In this town, every night was a party.
@@ -55,24 +55,24 @@ is cut into several pictures in the scene files (`cut:`).
 [2.who] WHO STAYS HOME ON A FRIDAY?!
 [2.weird] YOU'RE BEING WEIRD AGAIN!
 
-# clip 07-tv wait 1.0
+# clip 07-tv wait 0.7
 [3.tv] I had seen a barber on TV
 [3.cry] make a grown man cry with one haircut.
 [3.happy] Happy tears.
 [3.wanted] I wanted to do that.
-# clip 07b-dadhus wait 2.5
+# clip 07b-dadhus wait 1.7
 [3.hus] HUS HUS HUS!
 
 # clip 08-okay wait 0.6
 [4.okay] OKAY! OKAY!
 [4.fixable] THAT'S FIXABLE!
-# clip 09-not wait 1.5
+# clip 09-not wait 1.0
 [4.not] It was not fixable.
 [4.hat] Dad wore a hat until spring.
 
-# clip 10-hus2 wait 1.9
+# clip 10-hus2 wait 1.35
 [5.hus] HUS HUS HUS! HUS HUS HUS!
-# clip 11-while wait 1.5
+# clip 11-while wait 1.15
 [5.while] While my friends were out dancing,
 [5.cutting] I was cutting.
 # clip 12-mops wait 0.3
@@ -93,7 +93,7 @@ is cut into several pictures in the scene files (`cut:`).
 [5.m6] HUS HUS HUS!
 # clip 13-fix2 wait 0.55
 [5.fixable] THAT'S FIXABLE!
-# clip 14-spring wait 1.3
+# clip 14-spring wait 0.95
 [5.spring] Spring came.
 [5.sat] And Dad sat back down in the chair.
 # clip 14b-dadhus2 wait 0.7
@@ -106,32 +106,32 @@ is cut into several pictures in the scene files (`cut:`).
 [6.saturday] It was a Saturday.
 [6.line] The line went around the block.
 [6.beard] One man had grown a beard waiting.
-# clip 16b-shophus wait 1.6
+# clip 16b-shophus wait 1.3
 [6.hus] HUS HUS HUS! HUS HUS HUS! HUS HUS HUS!
 # clip 17-forty wait 0.8
 [6.forty] I cut forty heads before lunch.
 
-# clip 18-help wait 1.0
+# clip 18-help wait 0.25
 [7.help] HELP! THE PARTY STARTS IN AN HOUR,
 [7.look] AND LOOK AT HIM!
 # clip 19-please wait 0.12
 [7.please] PLEASE! IS THIS FIXABLE?!
-# clip 20-wait wait 0.75
+# clip 20-wait wait 0.6
 [7.wait] WAIT.
 [7.weirdone] IT'S THE WEIRD ONE!
-# clip 20b-hus wait 0.7
+# clip 20b-hus wait 0.6
 [7.hus1] HUS HUS HUS! HUS HUS HUS!
-# clip 21-bro wait 0.8
+# clip 21-bro wait 0.65
 [7.bro] BRO. HOW?!
-# clip 22-training wait 0.75
+# clip 22-training wait 0.6
 [7.training] Training.
-# clip 23-hus3 wait 0.9
+# clip 23-hus3 wait 0.75
 [7.hus] HUS HUS HUS! HUS HUS HUS!
-# clip 24-coming wait 0.7
+# clip 24-coming wait 0.6
 [7.coming] YOU COMING?!
 # clip 25-no wait 0.45
 [7.no] No.
-# clip 26-end wait 2.0
+# clip 26-end wait 1.3
 [7.end] HUS HUS HUS HUS HUS HUS!
 ```
 

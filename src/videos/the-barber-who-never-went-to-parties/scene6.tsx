@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Bits, Block, Cape, Clippers, Comb, Drop, FloorHair, HairFly, Hero, InHand, PLACE, Person, PixelText, Plate, SEAT, ShopDoor, Sparkle, WindowBoard, add, go, holdUp, personOf, pop, seatedPose, timing, tw } from "./kit";
+import { Bits, Block, Cape, Clippers, Comb, Drop, FloorHair, HairFly, Hero, InHand, PLACE, Person, PixelText, Plate, SEAT, ShopDoor, Sparkle, WindowBoard, add, go, holdUp, personOf, pop, seatedPose, timing, tw, w } from "./kit";
 import { MY_FACE, Me, SIT, SIT_TOP } from "./acts";
 
 /**
@@ -12,6 +12,9 @@ const WIDE: Vec3 = [0, 1.72, 0];
 const OWNER: Vec3 = [1.45, 0, 0.45];
 /** The queue stands on the pavement and runs east from the door. */
 const inLine = (i: number): Vec3 => [-1.2 + i * 0.95, 0, -5.55 + (i % 2 ? 0.28 : -0.22)];
+
+/** The nine HUS of the shop chant, in seconds from the start of its cue. */
+const S9 = Array.from({ length: 9 }, (_, i) => w("6.hus", "HUS", i));
 
 export const scene6 = storyScene(timing, {
   id: "scene6",
@@ -100,7 +103,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.beard",
-      cut: 1.4,
+      cut: 1.3,
       ...cam.push({ on: [0.2, 1.45, -0.3], dist: 5.0, to: 4.5, yaw: -57, pitch: 7, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
@@ -121,23 +124,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.beard",
-      cut: 2.4,
-      ...cam.push({ on: [0.55, 0.12, 0.75], dist: 2.9, to: 2.6, yaw: 22, pitch: 30, fov: 40 }),
-      zone: "shop",
-      look: "overworld-day",
-      note: "Clippers buzzing in circles on the floor on their own: nobody has a hand free.",
-      stage: (t) => (
-        <>
-          <FloorHair position={[0.5, 0, 0.2]} area={[1.6, 0.5]} amount={0.25} seed={3} />
-          <group position={[0.55 + Math.sin(t * 4) * 0.12, 0.03, 0.75 + Math.cos(t * 4) * 0.12]} scale={2.2}>
-            <Clippers position={[0, 0, 0]} rotationY={0.6 + t * 4} t={t} />
-          </group>
-        </>
-      ),
-    },
-    {
-      cue: "6.beard",
-      cut: 3.2,
+      cut: 1.95,
       ...cam.push({ on: add(MY_FACE, 0.2, 0.08, 0), dist: 2.7, to: 2.4, yaw: 5, pitch: -2, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
@@ -145,28 +132,29 @@ export const scene6 = storyScene(timing, {
       stage: (t) => <Me t={t} fast={0} up={1.15} face="brave" />,
     },
     {
-      cue: "6.beard",
-      cut: 4.0,
-      ...cam.push({ on: WIDE, dist: 3.4, to: 3.1, yaw: 14, pitch: 3, fov: 40 }),
+      cue: "6.hus",
+      ...cam.push({ on: WIDE, dist: 3.4, to: 3.0, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "The year paying out: a new head in the chair every quarter second, each one done.",
+      note: "The year paying out: nine HUS and nine heads, a new one in the chair on every HUS, each one done.",
       stage: (t) => {
-        const i = Math.floor(t / 0.25);
-        const k = (t % 0.25) / 0.25;
+        let i = 0;
+        for (let n = 0; n < S9.length; n++) if (t >= S9[n]) i = n;
+        const next = i + 1 < S9.length ? S9[i + 1] : S9[i] + 0.16;
+        const k = Math.min(1, Math.max(0, (t - S9[i]) / (next - S9[i])));
         return (
           <>
-            <Person who={i + 1} top={k < 0.72 ? "bush" : "cut"} bush={1 - k / 0.72} position={SIT} pose={seatedPose(t)} face={k < 0.72 ? "scared" : "wow"} gaze={0} />
+            <Person who={i + 1} top={k < 0.7 ? "bush" : "cut"} bush={1 - k / 0.7} position={SIT} pose={seatedPose(t)} face={k < 0.7 ? "scared" : "wow"} gaze={0} />
             <Cape position={PLACE.chair} scale={0.95} color={["#2f4fa8", "#a82a2a", "#2f8a8a", "#6a3fa0"][i % 4]} />
             <Me t={t} fast={1} face="calm" />
-            <HairFly position={SIT_TOP} t={t} at={[0.03, 0.28, 0.53, 0.78]} color={personOf(i + 1).hair} count={10} power={1.3} />
+            <HairFly position={SIT_TOP} t={t} at={S9} color={personOf(i + 1).hair} count={10} power={1.3} />
           </>
         );
       },
     },
     {
-      cue: "6.beard",
-      cut: 5.0,
+      cue: "6.hus",
+      cut: S9[8] + 0.2,
       ...cam.push({ on: add(OWNER, -0.1, 0.95, 0), dist: 3.1, to: 2.8, yaw: -16, pitch: 9, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
@@ -210,7 +198,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.forty",
-      cut: 1.25,
+      cut: 1.15,
       ...cam.push({ on: add(OWNER, 0, 1.36, 0), dist: 2.2, to: 1.9, yaw: 8, pitch: 2, fov: 38 }),
       zone: "shop",
       look: "overworld-day",
@@ -221,36 +209,22 @@ export const scene6 = storyScene(timing, {
           <>
             <FloorHair position={[1.2, 0, 0.6]} area={[3.4, 2.6]} amount={1} depth={0.34} seed={5} />
             <Person who={4} coat position={OWNER} pose={p} face="wow" gaze={0} />
-            <Comb position={add(OWNER, -0.3, Math.max(0.36, 1.12 - Math.max(0, t - 0.3) * Math.max(0, t - 0.3) * 6), 0.42)} rotation={[1.2 + t * 6, 0.3, 0.2]} scale={1.5} />
+            <Comb position={add(OWNER, -0.3, Math.max(0.36, 1.12 - Math.max(0, t - 0.12) * Math.max(0, t - 0.12) * 6), 0.42)} rotation={[1.2 + t * 6, 0.3, 0.2]} scale={1.5} />
           </>
         );
       },
     },
     {
       cue: "6.forty",
-      cut: 2.15,
-      ...cam.push({ on: add(OWNER, -0.3, 0.36, 0.5), dist: 1.5, to: 1.3, yaw: 14, pitch: 26, fov: 40 }),
-      zone: "shop",
-      look: "overworld-day",
-      note: "His comb lands in the hair and snaps: thousands of combs, and now one of his.",
-      stage: (t) => (
-        <>
-          <FloorHair position={[1.2, 0, 0.6]} area={[3.4, 2.6]} amount={1} depth={0.34} seed={5} />
-          <Comb position={add(OWNER, -0.3, 0.36 + Math.max(0, 0.12 - t) * 4, 0.5)} rotation={[0, 0.4, 0]} broken={t > 0.12} scale={1.7} color="#e8c44a" />
-        </>
-      ),
-    },
-    {
-      cue: "6.forty",
-      cut: 3.0,
+      cut: 1.85,
       ...cam.push({ on: [-1.9, 1.3, -3.4], dist: 3.9, to: 3.5, yaw: 9, pitch: 4, fov: 40 }),
       zone: "shopx",
       look: "overworld-day",
       note: "A quiet shop and a closed door, which then bangs open: the past is about to come in.",
       stage: (t) => (
         <>
-          <ShopDoor open={tw(t, 0.62, 0.72)} />
-          <Hero job position={[-0.9, 0, -1.4]} rotationY={0.5} pose={holdUp(t, 0.5, 0.3)} face="calm" headYaw={t > 0.66 ? -1.2 : 0}>
+          <ShopDoor open={tw(t, 0.22, 0.32)} />
+          <Hero job position={[-0.9, 0, -1.4]} rotationY={0.5} pose={holdUp(t, 0.5, 0.3)} face="calm" headYaw={t > 0.28 ? -1.2 : 0}>
             <InHand rate={0} scale={1.1} />
           </Hero>
         </>

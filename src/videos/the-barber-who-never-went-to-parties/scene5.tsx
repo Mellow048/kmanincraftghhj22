@@ -21,6 +21,8 @@ const STAND: Vec3 = add(G, 0, 0, 0);
 const DOG: Vec3 = add(G, 0.12, 0, 0.25);
 const HEDGE: Vec3 = home(2.6, 0, -3.2);
 const CAL = PLACE.calendar;
+/** The HUS of montage clip `n`, in seconds from the start of its cue. */
+const M = (n: number, count = 3) => Array.from({ length: count }, (_, i) => w(`5.m${n}`, "HUS", i));
 
 /** A mannequin head on a post, where the mop stood. */
 const OnStand = ({ style }: { style: number }) => (
@@ -58,35 +60,14 @@ export const scene5 = storyScene(timing, {
       note: "What the chant did then: a mop with four strings left. The skill is not there yet.",
       stage: (t) => (
         <>
-          <MopHead position={MOP} face="worried" hair={0.22} lean={tw(t, 0.3, 0.6) * 0.1} />
-          <Me t={t} fast={0} up={0.4} at={G_CRATE} job={false} kitchen face={t < 0.35 ? "brave" : "uneasy"} />
+          <MopHead position={MOP} face="worried" hair={0.22} lean={tw(t, 0.1, 0.35) * 0.1} />
+          <Me t={t} fast={0} up={0.4} at={G_CRATE} job={false} kitchen face={t < 0.18 ? "brave" : "uneasy"} />
         </>
       ),
     },
     {
       cue: "5.hus",
-      cut: 2.1,
-      ...cam.push({ on: add(RACK, 0, 1.25, 0), dist: 4.2, to: 3.8, yaw: 16, pitch: 2, fov: 40 }),
-      zone: "garage",
-      look: "overworld-night",
-      note: "A rack of mannequin heads stacked worst to best: the year, as one tall picture.",
-      stage: (t) => (
-        <>
-          <Block position={add(RACK, -0.34, 1.25, 0)} size={[0.06, 2.5, 0.4]} color="#5c3f24" />
-          <Block position={add(RACK, 0.34, 1.25, 0)} size={[0.06, 2.5, 0.4]} color="#5c3f24" />
-          {[0, 1, 2, 3].map((i) => (
-            <group key={i}>
-              <Block position={add(RACK, 0, 0.04 + i * 0.62, 0)} size={[0.74, 0.05, 0.44]} color="#7a5536" />
-              <Mannequin position={add(RACK, 0, 0.07 + i * 0.62, 0.02)} style={i} rotationY={0.25} />
-            </group>
-          ))}
-          <Sparkle position={add(RACK, 0.2, 2.5, 0.3)} k={pop(t, 0.5, 0.2) * 0.7} size={0.2} />
-        </>
-      ),
-    },
-    {
-      cue: "5.hus",
-      cut: 3.05,
+      cut: HUS[5] + 0.58,
       ...cam.push({ on: add(G, 0, 1.92, 0), dist: 3.6, to: 3.3, yaw: -10, pitch: 2, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
@@ -170,54 +151,111 @@ export const scene5 = storyScene(timing, {
       note: "The dog sits and looks round at the scissors behind him: he knows, and he stays.",
       stage: (t) => (
         <>
-          <FadeDog position={DOG} rotationY={0.35} cut={false} headYaw={t < 0.7 ? 0 : -0.5} headTilt={t < 0.7 ? 0 : 0.2} />
+          <FadeDog position={DOG} rotationY={0.35} cut={false} headYaw={t < 0.5 ? 0 : -0.5} headTilt={t < 0.5 ? 0 : 0.2} />
           <Hero position={add(DOG, -0.25, 0, -0.95)} pose={holdUp(t, 0.8, 0.42)} face="smug" gaze={0}>
             <InHand t={t} rate={2.5} handle="#e8842a" scale={1.5} />
           </Hero>
         </>
       ),
     },
+    // ------------------------------------------------------------ THE MONTAGE: one victim for every three HUS
     {
-      cue: "5.dog",
-      cut: 1.36,
-      ...cam.push({ on: add(HEDGE, 0, 1.0, -0.2), dist: 3.6, to: 3.2, yaw: -12, pitch: 5, fov: 40 }),
+      cue: "5.m1",
+      ...cam.push({ on: add(DOG, -0.05, 1.0, -0.3), dist: 3.1, to: 2.8, yaw: 10, pitch: 7, fov: 40 }),
+      zone: "garage",
+      look: "overworld-night",
+      note: "The montage starts on the dog: three HUS, brown fur in the air, and he has a flat top.",
+      stage: (t) => (
+        <>
+          <FadeDog position={DOG} rotationY={0.35} cut={t > M(1)[2]} headYaw={-0.3} headTilt={0.15} />
+          <Me t={t} fast={1} at={add(DOG, -0.2, -0.36, -0.82)} job={false} kitchen face="brave" />
+          <HairFly position={add(DOG, 0.05, 1.0, 0.2)} t={t} at={M(1)} color="#b06a2c" count={9} power={1.1} />
+        </>
+      ),
+    },
+    {
+      cue: "5.m2",
+      ...cam.push({ on: add(HEDGE, 0, 1.0, -0.2), dist: 3.6, to: 3.3, yaw: -12, pitch: 5, fov: 40 }),
       zone: "home",
       look: "overworld-day",
-      note: "Proof I cut anything that held still: the garden hedge with a side parting.",
+      note: "The same three HUS on the garden hedge, in daylight: leaves fly and it has a side parting.",
       stage: (t) => (
         <>
           <group position={HEDGE} scale={0.62}>
-            <Hedge position={[0, 0, 0]} />
+            <Hedge position={[0, 0, 0]} cut={t > M(2)[2]} />
           </group>
-          <Hero position={add(HEDGE, 0.1, 0.2, -0.75)} pose={holdUp(t, 1.1, 0.42)} face="smug" gaze={0}>
-            <InHand t={t} rate={2} handle="#e8842a" scale={1.5} />
-          </Hero>
-          <Block position={add(HEDGE, 0.1, 0.1, -0.75)} size={[0.5, 0.2, 0.4]} color="#b48d52" />
+          <Me t={t} fast={1} at={add(HEDGE, 0.1, -0.38, -0.78)} job={false} kitchen face="brave" />
+          <HairFly position={add(HEDGE, 0, 0.9, 0.3)} t={t} at={M(2)} color="#3f9a2f" count={10} power={1.2} />
         </>
       ),
     },
     {
-      cue: "5.dog",
-      cut: 2.26,
-      ...cam.push({ on: add(DOG, 0.05, 0.62, 0.1), dist: 2.0, to: 1.7, yaw: 4, pitch: 6, fov: 38 }),
+      cue: "5.m3",
+      ...cam.push({ on: add(G, 0, 1.66, 0), dist: 3.2, to: 2.9, yaw: -12, pitch: 3, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
-      note: "The dog afterwards, with a flat top, looking at the lens: patient is the word.",
-      stage: (t) => <FadeDog position={DOG} rotationY={0.3} headYaw={-0.3} headTilt={tw(t, 0.25, 0.5) * 0.3} />,
-    },
-    {
-      cue: "5.dog",
-      cut: 3.16,
-      ...cam.push({ on: G_ME_FACE, dist: 1.75, to: 1.5, yaw: -5, pitch: -1, fov: 36 }),
-      zone: "garage",
-      look: "overworld-night",
-      note: "My own fringe, cut far too short, and the hair still falling: nobody was spared.",
+      note: "Three more on a shop dummy: the first head with a face that is not drawn on a mop.",
       stage: (t) => (
         <>
-          <Me t={t} fast={0} up={1.05} at={G_CRATE} job={false} kitchen look="short" face="scared" />
-          <HairFly position={add(G_ME_FACE, 0, 0.2, 0.25)} t={t} at={[0.02]} color={HAIR.me} count={10} power={0.8} />
+          <OnStand style={t > M(3)[2] ? 1 : 0} />
+          <Me t={t} fast={1} at={G_CRATE} job={false} kitchen face="brave" />
+          <HairFly position={MOP_TOP} t={t} at={M(3)} color="#3a2414" count={9} power={1.2} />
         </>
       ),
+    },
+    {
+      cue: "5.m4",
+      ...cam.push({ on: add(G, 0, 1.62, 0), dist: 3.0, to: 2.7, yaw: 13, pitch: 3, fov: 40 }),
+      zone: "garage",
+      look: "overworld-night",
+      note: "Three on a new mop, which is bald by the third: hundreds of mops, one of them seen going.",
+      stage: (t) => (
+        <>
+          <MopHead position={MOP} face="worried" hair={1 - tw(t, 0, M(4)[2] + 0.1) * 0.97} />
+          <Me t={t} fast={1} at={G_CRATE} job={false} kitchen face="brave" />
+          <HairFly position={MOP_TOP} t={t} at={M(4)} color="#f6f1e2" count={10} power={1.25} />
+        </>
+      ),
+    },
+    {
+      cue: "5.m5",
+      ...cam.push({ on: add(G, 0, 1.62, 0), dist: 3.5, to: 2.3, yaw: 2, pitch: 2, fov: 40 }),
+      zone: "garage",
+      look: "overworld-night",
+      note: "Six HUS, faster, and a better head on the post with nearly every one: the year, as a push in.",
+      stage: (t) => {
+        const hus = M(5, 6);
+        let n = 0;
+        for (let i = 0; i < hus.length; i++) if (t >= hus[i]) n = i;
+        return (
+          <>
+            <OnStand style={[0, 1, 1, 2, 2, 3][n]} />
+            <Me t={t} fast={1} at={G_CRATE} job={false} kitchen face="calm" />
+            <HairFly position={MOP_TOP} t={t} at={hus} color={["#3a2414", "#e8c44a", "#3a2414", "#c8362e", "#3a2414", "#e8c44a"][n]} count={8} power={1.3} />
+            <Sparkle position={add(G, 0.28, 1.75, 0.35)} k={pop(t, hus[5] + 0.04, 0.14)} size={0.24} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "5.m6",
+      ...cam.push({ on: G_ME_FACE, dist: 1.9, to: 1.55, yaw: -5, pitch: -1, fov: 36 }),
+      zone: "garage",
+      look: "overworld-night",
+      note: "The last three are on my own fringe, and the chant stops dead: it is far too short.",
+      stage: (t) => {
+        const hus = M(6);
+        const done = hus[2];
+        return (
+          <>
+            <Crate position={G_CRATE} />
+            <Hero look={t < done ? "own" : "short"} position={add(G_CRATE, 0, STOOL, 0)} pose={holdUp(t, 1.05 + (t < done ? Math.sin(t * 40) * 0.06 : 0), 0.42)} face={t < done + 0.14 ? "brave" : "scared"} gaze={0}>
+              <InHand t={t} rate={t < done + 0.05 ? 8 : 0} handle="#e8842a" scale={1.5} />
+            </Hero>
+            <HairFly position={add(G_ME_FACE, 0, 0.2, 0.25)} t={t} at={hus} color={HAIR.me} count={8} power={0.8} />
+          </>
+        );
+      },
     },
     {
       cue: "5.fixable",
@@ -234,7 +272,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.fixable",
-      cut: 0.86,
+      cut: 0.75,
       ...cam.push({ on: G_ME_FACE, dist: 1.5, to: 1.4, yaw: -4, pitch: -1, fov: 36 }),
       zone: "garage",
       look: "overworld-night",
@@ -243,12 +281,12 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.fixable",
-      cut: 1.66,
+      cut: 1.2,
       ...cam.push({ on: add(CAL, 0, -0.02, 0), dist: 1.7, to: 1.45, yaw: 5, pitch: 0, fov: 38 }),
       zone: "spring",
       look: "overworld-night",
       note: "The calendar turning from October to March: until spring, as one move.",
-      stage: (t) => <Calendar position={CAL} page={Math.min(4.999, tw(t, 0.1, 1.45) * 5)} />,
+      stage: (t) => <Calendar position={CAL} page={Math.min(4.999, tw(t, 0.03, 0.48) * 5)} />,
     },
     {
       cue: "5.spring",
@@ -278,12 +316,12 @@ export const scene5 = storyScene(timing, {
       look: "overworld-day",
       note: "Dad takes the hat off and sits down in the chair on purpose: the trust comes back.",
       stage: (t) => {
-        const sit = tw(t, 0.75, 1.15);
+        const sit = tw(t, 0.55, 0.9);
         return (
           <>
             <Calendar position={CAL} page={5} />
-            <Dad position={add(DAD_SIT, 0, 0.13 * (1 - sit), 0.5 * (1 - sit))} top={t < 0.4 ? "hat" : "hair"} pose={sit > 0.5 ? seatedPose(t) : undefined} face="neutral" gaze={0} />
-            {t >= 0.4 ? <Block position={add(CHAIR, 0.62, Math.max(0.5, 1.5 - (t - 0.4) * 3), 0.5)} size={[0.3, 0.2, 0.3]} color="#c8362e" /> : null}
+            <Dad position={add(DAD_SIT, 0, 0.13 * (1 - sit), 0.5 * (1 - sit))} top={t < 0.3 ? "hat" : "hair"} pose={sit > 0.5 ? seatedPose(t) : undefined} face="neutral" gaze={0} />
+            {t >= 0.3 ? <Block position={add(CHAIR, 0.62, Math.max(0.5, 1.5 - (t - 0.3) * 3), 0.5)} size={[0.3, 0.2, 0.3]} color="#c8362e" /> : null}
             <Crate position={BEHIND} />
             <Hero position={add(BEHIND, 0, STOOL, 0)} pose={holdUp(t, 0.5, 0.42)} face={t < 0.5 ? "uneasy" : "wow"} gaze={0}>
               <InHand rate={0} handle="#e8842a" scale={1.5} />
@@ -294,7 +332,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.sat",
-      cut: 1.4,
+      cut: 1.25,
       ...cam.push({ on: add(CHAIR, 0, 1.6, -0.3), dist: 2.5, to: 2.25, yaw: 9, pitch: 2, fov: 38 }),
       zone: "spring",
       look: "overworld-day",
@@ -305,27 +343,30 @@ export const scene5 = storyScene(timing, {
           <Dad position={DAD_SIT} top="hair" pose={seatedPose(t)} face="sleepy" blink={false} />
           <Crate position={BEHIND} />
           <Hero position={add(BEHIND, 0, STOOL, 0)} pose={holdUp(t, 1.1, 0.42)} face="brave" gaze={0}>
-            <InHand t={t} rate={t > 0.4 ? 2.5 : 0} handle="#e8842a" scale={1.5} />
+            <InHand t={t} rate={t > 0.25 ? 4 : 0} handle="#e8842a" scale={1.5} />
           </Hero>
         </>
       ),
     },
     {
-      cue: "5.sat",
-      cut: 2.3,
+      cue: "5.dadhus",
       ...cam.push({ on: add(CHAIR, 0, 1.6, -0.3), dist: 2.7, to: 2.4, yaw: -8, pitch: 2, fov: 40 }),
       zone: "spring",
       look: "overworld-day",
-      note: "This time the hair falls right, a sparkle, and Dad smiles: the hat is paid off.",
-      stage: (t) => (
-        <>
-          <Calendar position={CAL} page={5} />
-          <Dad position={DAD_SIT} top={t < 0.42 ? "hair" : "cut"} pose={seatedPose(t)} face={t < 0.5 ? "sleepy" : "happy"} blink={t > 0.5} gaze={0} />
-          <Me t={t} fast={t < 0.45 ? 0.9 : 0} up={1.1} at={BEHIND} job={false} kitchen face={t < 0.5 ? "brave" : "happy"} lines={false} />
-          <HairFly position={add(CHAIR, 0, 1.6, 0.1)} t={t} at={[0.05, 0.2, 0.35]} color={HAIR.dad} count={8} power={1.0} />
-          <Sparkle position={add(CHAIR, 0.3, 1.42, 0.4)} k={pop(t, 0.5, 0.2)} size={0.28} />
-        </>
-      ),
+      note: "The chant on Dad again, and this time the hair falls right: a sparkle, and he smiles. The hat is paid off.",
+      stage: (t) => {
+        const hus = [0, 1, 2].map((i) => w("5.dadhus", "HUS", i));
+        const done = hus[2] + 0.1;
+        return (
+          <>
+            <Calendar position={CAL} page={5} />
+            <Dad position={DAD_SIT} top={t < done ? "hair" : "cut"} pose={seatedPose(t)} face={t < done + 0.1 ? "sleepy" : "happy"} blink={t > done + 0.1} gaze={0} />
+            <Me t={t} fast={t < done ? 1 : 0} up={1.1} at={BEHIND} job={false} kitchen face={t < done ? "brave" : "happy"} lines={t < done} />
+            <HairFly position={add(CHAIR, 0, 1.6, 0.1)} t={t} at={hus} color={HAIR.dad} count={8} power={1.0} />
+            <Sparkle position={add(CHAIR, 0.3, 1.42, 0.4)} k={pop(t, done + 0.12, 0.2)} size={0.28} />
+          </>
+        );
+      },
     },
   ],
 });
