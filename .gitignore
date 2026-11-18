@@ -8,3 +8,7 @@ out
 .DS_Store
 __pycache__
 .venv/
+
+# Reel working renders
+reels/**/build/
+reels/**/audio/raw/

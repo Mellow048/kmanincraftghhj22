@@ -66,4 +66,18 @@ as perfectly word-synchronised. Motivational title cards are intentionally not s
 
 ## Remaining weaknesses
 The assets are procedural Minecraft models, not imported mod assets. The word timings are approximate.
-The full moving export still needs inspection; diagnostic stills do not prove animation or audio quality.
+Word-level captions remain approximate; I have not performed a real-time listening review.
+Still-frame inspection does not establish subjective pacing or audible mix quality.
+
+
+## Final export verification
+- Full framework render: GitHub Actions run `44249688509` — success.
+- Examined twelve frames extracted from the actual full MP4, not just the diagnostic still render.
+- Found and corrected the sponge insert framing; re-rendered its exact 69 frames (600–668) with
+  the same framework using Actions run `44251967207`, then spliced that excerpt into the master.
+- Final assembly used FFmpeg only for the edit/encode; all replacement imagery comes from the 3D framework.
+- Checked the corrected insert in the assembled file.
+- Final file: `renders/the-guy-who-never-had-a-car.mp4`.
+- Verified: 3,240 video frames, 30 fps, 1080×1920, 108 seconds, H.264 + AAC, 41,554,254 bytes.
+- The final assembly copied the original audio stream; voice-20 and both 1.65× chants are unchanged.
+- Removed the rejected slideshow MP4, temporary diagnostic frames and excerpt composition from the branch.
