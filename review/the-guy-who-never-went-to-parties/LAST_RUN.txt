@@ -1,5 +1,0 @@
-
-▶ the-guy-who-never-went-to-parties frame 3659 → out/stills/the-guy-who-never-went-to-parties-3659.png
-
-Done. 1 still(s) in out/stills
-exit=0
