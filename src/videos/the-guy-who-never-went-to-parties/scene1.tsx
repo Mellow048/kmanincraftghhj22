@@ -141,8 +141,8 @@ export const scene1 = storyScene(timing, {
         <>
           <Vox kind="wool" tint="#d9c8a8" position={[-0.15, 0.9, 400.25]} size={[0.26, 0.18, 0.26]} />
           <Vox kind="wool" tint="#e8e2d0" position={[-0.42, 0.89, 400.3]} size={[0.12, 0.06, 0.12]} />
-          <Vox kind="wool" tint="#c8ced4" position={[-0.1, 1.02 + Math.abs(Math.sin(t * 9)) * 0.12, 0.25]} size={[0.05, 0.3, 0.12]} />
-          <Vox kind="wool" tint="#8a6a44" position={[-0.1, 0.92 + Math.abs(Math.sin(t * 9)) * 0.12, 0.06]} size={[0.06, 0.08, 0.16]} />
+          <Vox kind="wool" tint="#c8ced4" position={[-0.1, 1.02 + Math.abs(Math.sin(t * 9)) * 0.12, 400]} size={[0.05, 0.3, 0.12]} />
+          <Vox kind="wool" tint="#8a6a44" position={[-0.1, 0.92 + Math.abs(Math.sin(t * 9)) * 0.12, 400]} size={[0.06, 0.08, 0.16]} />
         </>
       ),
     },

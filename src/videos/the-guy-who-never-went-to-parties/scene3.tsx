@@ -33,17 +33,21 @@ export const scene3 = storyScene(timing, {
     {
       cue: "4.truth",
       // THE REVERSAL. One villager, close, and behind him the whole street eating raw vegetables.
-      ...cam.push({ on: chestOf([0.2, 0, -0.8], 0.94), dist: 2.6, to: 2.0, yaw: 8, pitch: 3, fov: 40 }),
+      ...cam.push({ on: chestOf([0.2, 0, -0.8], 0.94), dist: 2.9, to: 2.3, yaw: 8, pitch: 3, fov: 42 }),
       zone: "village",
       look: "overworld-night",
-      note: "A villager mid-bite of a plain raw carrot, and behind him the whole street doing the same. The answer to the question, as a picture, at 0:57 of the film.",
+      note: "A villager mid-bite of a plain raw carrot, and behind him the whole street doing the same. The answer to the question, as a picture, at 0:57 of the film, and the one frame in the film that has to be unmissable.",
       stage: () => (
         <>
           <Villager position={[0.2, 0, -0.8]} robe={ROBE.brown} phase={0.7} />
           <Vox kind="wool" tint="#e8853c" position={[0.2, 1.28, -0.5]} size={[0.09, 0.3, 0.09]} />
           <Villager position={[-1.0, 0, -2.2]} robe={ROBE.white} phase={1.6} />
           <Villager position={[1.1, 0, -2.6]} robe={ROBE.red} phase={2.3} />
+          <Vox kind="wool" tint="#e8853c" position={[1.1, 1.28, -2.3]} size={[0.09, 0.3, 0.09]} />
           <Villager position={[0.1, 0, -3.6]} robe={ROBE.farmer} phase={0.4} />
+          {/* The street is dark in every other night shot. This one is the reveal, so it is lit like one. */}
+          <pointLight position={[1.6, 2.4, 1.2]} color="#fff0d8" intensity={34} distance={9} decay={1.8} />
+          <pointLight position={[-1.8, 1.8, -2.4]} color="#cfe0ff" intensity={18} distance={7} decay={2} />
         </>
       ),
     },
@@ -151,7 +155,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Vox kind="wool" tint="#3a3a42" position={[-2.1, 1.06 + Math.max(0, t - 0.05) * 0.2, -2.55]} size={[0.5, 0.06, 0.5]} />
-          <Vox kind="wool" tint="#f2f0e8" position={[-2.1, 1.2 + t * t * 6.2, -2.55]} size={[0.2, 0.06, 0.2]} />
+          <Vox kind="wool" tint="#f2f0e8" position={[-2.1, 1.2 + t * t * 6.2, 397]} size={[0.2, 0.06, 0.2]} />
           <Hero position={[-2.1, 0, 398.5]} rotationY={Math.PI} animation="idle" face="wow" gaze={0} headPitch={-0.5} />
         </>
       ),
@@ -241,7 +245,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Vox kind="wool" tint="#d9c8a8" position={[-0.35, 0.9, 400.3]} size={[0.2, 0.14, 0.2]} />
           <Vox kind="wool" tint="#e8e2d0" position={[-0.5, 0.9, 400.34]} size={[0.09, 0.05, 0.09]} />
-          <Vox kind="wool" tint="#c8ced4" position={[-0.35, 1.05 + Math.abs(Math.sin(t * 2.2)) * 0.08, 0.3]} size={[0.04, 0.28, 0.1]} />
+          <Vox kind="wool" tint="#c8ced4" position={[-0.35, 1.05 + Math.abs(Math.sin(t * 2.2)) * 0.08, 400]} size={[0.04, 0.28, 0.1]} />
         </>
       ),
     },
@@ -258,7 +262,7 @@ export const scene3 = storyScene(timing, {
           <Vox kind="wool" tint="#e8e2d0" position={[-0.42, 0.9, 400.36]} size={[0.1, 0.05, 0.1]} />
           <Vox kind="wool" tint="#e8e2d0" position={[-0.2, 0.9, 400.24]} size={[0.1, 0.05, 0.1]} />
           <Vox kind="wool" tint="#e8e2d0" position={[-0.09, 0.9, 400.33]} size={[0.07, 0.05, 0.07]} />
-          <Vox kind="wool" tint="#c8ced4" position={[-0.26, 1.02 + Math.abs(Math.sin(t * 22)) * 0.16, 0.3]} size={[0.04, 0.28, 0.1]} />
+          <Vox kind="wool" tint="#c8ced4" position={[-0.26, 1.02 + Math.abs(Math.sin(t * 22)) * 0.16, 400]} size={[0.04, 0.28, 0.1]} />
         </>
       ),
     },
@@ -272,7 +276,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[0, 0, 400.9]} rotationY={0.05} animation="idle" face="brave" gaze={0} headPitch={0.18} />
-          <Bubble text="HUS" position={[-0.55, 2.0 + Math.sin(t * 9) * 0.03, 1.2]} scale={pop(t, CHANT) * 0.55 * pulse(t, 9)} rotationY={0} dark tail={1} />
+          <Bubble text="HUS" position={[-0.55, 2.0 + Math.sin(t * 9) * 0.03, 401]} scale={pop(t, CHANT) * 0.55 * pulse(t, 9)} rotationY={0} dark tail={1} />
         </>
       ),
     },
@@ -285,13 +289,13 @@ export const scene3 = storyScene(timing, {
       note: "The knife at full speed with vegetable going everywhere, the frame almost full of flying pieces. The visual equivalent of the chant.",
       stage: (t) => (
         <>
-          <Vox kind="wool" tint="#c8ced4" position={[-0.15, 0.96 + Math.abs(Math.sin(t * 26)) * 0.2, 0.3]} size={[0.04, 0.3, 0.1]} />
+          <Vox kind="wool" tint="#c8ced4" position={[-0.15, 0.96 + Math.abs(Math.sin(t * 26)) * 0.2, 400]} size={[0.04, 0.3, 0.1]} />
           {Array.from({ length: 9 }, (_, i) => (
             <Vox
               key={i}
               kind="wool"
               tint={i % 3 === 0 ? "#e8853c" : i % 3 === 1 ? "#7ac04f" : "#e8e2d0"}
-              position={[-0.3 + Math.sin(t * 7 + i) * 0.5, 0.95 + Math.abs(Math.cos(t * 5 + i)) * 0.4, 0.3 + Math.cos(t * 6 + i) * 0.35]}
+              position={[-0.3 + Math.sin(t * 7 + i) * 0.5, 0.95 + Math.abs(Math.cos(t * 5 + i)) * 0.4, 400 + Math.cos(t * 6 + i) * 0.35]}
               size={[0.06, 0.06, 0.06]}
             />
           ))}
@@ -308,7 +312,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Vox kind="wool" tint="#3a3a42" position={[-2.1, 1.06, 397.45]} size={[0.5, 0.06, 0.5]} />
-          <Vox kind="wool" tint="#e8c07a" position={[-2.1, 1.2 + Math.abs(Math.cos((t / 1.2) * Math.PI)) * 0.45, -2.55]} size={[0.3, 0.05, 0.3]} />
+          <Vox kind="wool" tint="#e8c07a" position={[-2.1, 1.2 + Math.abs(Math.cos((t / 1.2) * Math.PI)) * 0.45, 397]} size={[0.3, 0.05, 0.3]} />
           <Hero position={[-2.1, 0, 398.6]} rotationY={Math.PI} animation="idle" face="grin" gaze={0} />
         </>
       ),
@@ -324,8 +328,8 @@ export const scene3 = storyScene(timing, {
         <>
           {[-2.7, -2.3, -1.9, -1.5].map((x, i) => (
             <group key={x}>
-              <Vox kind="wool" tint="#3a3a42" position={[x, 1.06, -2.55]} size={[0.42, 0.06, 0.42]} />
-              <Vox kind="wool" tint="#e8c07a" position={[x, 1.24 + Math.abs(Math.cos(t * 3 + i * 0.7)) * 0.4, -2.55]} size={[0.24, 0.05, 0.24]} />
+              <Vox kind="wool" tint="#3a3a42" position={[x, 1.06, 397]} size={[0.42, 0.06, 0.42]} />
+              <Vox kind="wool" tint="#e8c07a" position={[x, 1.24 + Math.abs(Math.cos(t * 3 + i * 0.7)) * 0.4, 397]} size={[0.24, 0.05, 0.24]} />
             </group>
           ))}
         </>
@@ -358,8 +362,8 @@ export const scene3 = storyScene(timing, {
         <>
           {[-0.9, -0.3, 0.3, 0.9].flatMap((x) => [-0.4, 0.2, 0.8].map((z, j) => (
             <group key={`${x}${z}`}>
-              <Vox kind="wool" tint="#f7f4ea" position={[x, 0.81, z]} size={[0.3, 0.03, 0.3]} />
-              <Vox kind="wool" tint={j % 2 ? "#e8c07a" : "#efd08c"} position={[x, 0.84, z]} size={[0.22, 0.04, 0.22]} />
+              <Vox kind="wool" tint="#f7f4ea" position={[x, 0.81, z + 400.6]} size={[0.3, 0.03, 0.3]} />
+              <Vox kind="wool" tint={j % 2 ? "#e8c07a" : "#efd08c"} position={[x, 0.84, z + 400.6]} size={[0.22, 0.04, 0.22]} />
             </group>
           )))}
         </>
@@ -378,7 +382,7 @@ export const scene3 = storyScene(timing, {
           <Vox kind="wool" tint="#c8402f" position={[1.6, 2.06, 397.1]} size={[0.82, 0.12, 0.02]} />
           <Vox kind="wool" tint="#e8e2d0" position={[1.6, 1.62 - ramp(t, 0.3, 1.8) * 0.5, -2.89]} size={[0.66, 0.06 + ramp(t, 0.3, 1.8) * 0.5, 0.02]} />
           {Array.from({ length: 6 }, (_, i) => (
-            <Vox key={i} kind="wool" tint="#f7f4ea" position={[1.25 + (i % 3) * 0.35, 1.9 - Math.floor(i / 3) * 0.3, -2.88]} size={[0.16, 0.16, 0.01]} opacity={1 - ramp(t, 0.5 + i * 0.15, 1.0 + i * 0.15)} />
+            <Vox key={i} kind="wool" tint="#f7f4ea" position={[1.25 + (i % 3) * 0.35, 1.9 - Math.floor(i / 3) * 0.3, 397]} size={[0.16, 0.16, 0.01]} opacity={1 - ramp(t, 0.5 + i * 0.15, 1.0 + i * 0.15)} />
           ))}
         </>
       ),
@@ -395,7 +399,7 @@ export const scene3 = storyScene(timing, {
           <Hero position={[-0.2, 0, 401.2]} rotationY={0.3} animation="idle" face="calm" gaze={0} />
           <Vox kind="wool" tint="#c9a06a" position={[1.6, 2.05, 397.1]} size={[0.7, 0.14, 0.05]} />
           {Array.from({ length: 7 }, (_, i) => (
-            <Vox key={i} kind="wool" tint="#c8ced4" position={[1.35 + i * 0.09, 1.88, -2.9]} size={[0.03, 0.2 + (i % 3) * 0.05, 0.02]} />
+            <Vox key={i} kind="wool" tint="#c8ced4" position={[1.35 + i * 0.09, 1.88, 397]} size={[0.03, 0.2 + (i % 3) * 0.05, 0.02]} />
           ))}
         </>
       ),

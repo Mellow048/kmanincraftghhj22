@@ -197,7 +197,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[0, 0, 400.2]} rotationY={-0.3} animation="idle" face="smug" gaze={0} />
-          <Vox kind="wool" tint="#c8ced4" position={[0.3, 1.06 + Math.abs(Math.sin(t * 7)) * 0.1, 0.45]} size={[0.05, 0.3, 0.12]} />
+          <Vox kind="wool" tint="#c8ced4" position={[0.3, 1.06 + Math.abs(Math.sin(t * 7)) * 0.1, 400]} size={[0.05, 0.3, 0.12]} />
         </>
       ),
     },

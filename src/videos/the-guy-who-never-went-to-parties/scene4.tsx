@@ -134,12 +134,12 @@ export const scene4 = storyScene(timing, {
       note: "His hands at the board at full speed, four plates in different states around him. The training arc, cashed.",
       stage: (t) => (
         <>
-          <Vox kind="wool" tint="#c8ced4" position={[-1.5, 1.0 + Math.abs(Math.sin(t * 24)) * 0.16, -1.3]} size={[0.04, 0.3, 0.1]} />
+          <Vox kind="wool" tint="#c8ced4" position={[-1.5, 1.0 + Math.abs(Math.sin(t * 24)) * 0.16, 498]} size={[0.04, 0.3, 0.1]} />
           {[-1.9, -1.5, -1.1, -0.7].map((x, i) => (
-            <Vox key={x} kind="wool" tint={i % 2 ? "#e8c07a" : "#f7f4ea"} position={[x, 0.92, -1.0 + (i % 2) * 0.16]} size={[0.28, 0.04, 0.28]} />
+            <Vox key={x} kind="wool" tint={i % 2 ? "#e8c07a" : "#f7f4ea"} position={[x, 0.92, 499 + (i % 2) * 0.16]} size={[0.28, 0.04, 0.28]} />
           ))}
           {Array.from({ length: 5 }, (_, i) => (
-            <Vox key={i} kind="wool" tint={i % 2 ? "#7ac04f" : "#e8853c"} position={[-1.7 + Math.sin(t * 9 + i) * 0.35, 1.05 + Math.abs(Math.cos(t * 7 + i)) * 0.3, -1.3]} size={[0.05, 0.05, 0.05]} />
+            <Vox key={i} kind="wool" tint={i % 2 ? "#7ac04f" : "#e8853c"} position={[-1.7 + Math.sin(t * 9 + i) * 0.35, 1.05 + Math.abs(Math.cos(t * 7 + i)) * 0.3, 498]} size={[0.05, 0.05, 0.05]} />
           ))}
         </>
       ),
@@ -147,16 +147,18 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.smoke",
       // Something catches fire behind him and he does not look. This is the character, in one shot.
-      ...cam.push({ on: [-1.2, 1.4, 498.6], dist: 2.6, to: 2.1, yaw: -8, pitch: 4, fov: 46 }),
+      // The lens stands at the west end of the hot line, looking east along it: the fire is BEHIND him in
+      // depth and both of them read. From the front of the room the bench hides him and the fire is off frame.
+      ...cam.push({ on: [1.15, 1.52, 497.15], dist: 3.0, to: 2.5, yaw: 168, pitch: 6, fov: 48 }),
       zone: "restaurant",
       look: "overworld-night",
       note: "Fire behind him on the line, another cook panicking, and the teller not turning round. The whole film's thesis in a single frame.",
       stage: (t) => (
         <>
-          <Hero position={[-1.2, 0, 499]} rotationY={0.1} animation="idle" face="calm" gaze={0} />
-          <Villager position={[1.2, 0, 496.7]} robe={ROBE.red} phase={t * 5} walk={Math.sin(t * 12) * 0.7} hmm={0.9} />
-          <Vox kind="wool" tint="#ff7a14" position={[1.2, 1.25 + ramp(t, 0, 1.8) * 0.7, -3.5]} size={[0.4, 0.5 + ramp(t, 0, 1.8) * 0.6, 0.4]} />
-          <pointLight position={[1.2, 1.6, 496.9]} color="#ff7a2a" intensity={16 + Math.sin(t * 12) * 6} distance={6} decay={2} />
+          <Hero position={[0.45, 0, 498.7]} rotationY={-0.35} animation="idle" face="calm" gaze={0} />
+          <Villager position={[1.9, 0, 496.6]} robe={ROBE.red} phase={t * 5} walk={Math.sin(t * 12) * 0.7} hmm={0.9} />
+          <Vox kind="wool" tint="#ff7a14" position={[2.6, 1.25 + ramp(t, 0, 1.8) * 0.7, 496.5]} size={[0.4, 0.5 + ramp(t, 0, 1.8) * 0.6, 0.4]} />
+          <pointLight position={[2.6, 1.7, 497.0]} color="#ff7a2a" intensity={20 + Math.sin(t * 12) * 7} distance={7} decay={2} />
         </>
       ),
     },
@@ -296,7 +298,7 @@ export const scene4 = storyScene(timing, {
       note: "He turns back to the board and picks the knife up again, and the friends are still in the corner of the frame, uncomprehending.",
       stage: (t) => (
         <>
-          <Vox kind="wool" tint="#c8ced4" position={[-1.2, 0.98 + Math.abs(Math.sin(t * 18)) * 0.12, -1.4]} size={[0.04, 0.28, 0.1]} />
+          <Vox kind="wool" tint="#c8ced4" position={[-1.2, 0.98 + Math.abs(Math.sin(t * 18)) * 0.12, 498]} size={[0.04, 0.28, 0.1]} />
           <Player who={4} position={[0.9, 0, 500.6]} rotationY={0.4} animation="idle" face="wow" />
         </>
       ),
@@ -311,7 +313,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[-1.2, 0, 498.8]} rotationY={0.05} animation="idle" face="brave" gaze={0} headPitch={0.16} />
-          <Bubble text="HUS" position={[-1.6, 2.0 + Math.sin(t * 9) * 0.03, -1.0]} scale={pop(t, CHANT) * 0.6 * (0.55 + 0.45 * Math.abs(Math.sin(t * 4.5)))} rotationY={0} dark tail={1} />
+          <Bubble text="HUS" position={[-1.6, 2.0 + Math.sin(t * 9) * 0.03, 499]} scale={pop(t, CHANT) * 0.6 * (0.55 + 0.45 * Math.abs(Math.sin(t * 4.5)))} rotationY={0} dark tail={1} />
         </>
       ),
     },
@@ -354,19 +356,32 @@ export const scene4 = storyScene(timing, {
     {
       cue: "9.fridge",
       // My fridge is full. The first joke of the film, reversed in one frame.
-      ...cam.push({ on: [2.75, 0.95, 397.65], dist: 2.2, to: 1.8, yaw: -18, pitch: 2, fov: 42 }),
+      //
+      // The lens stands back in the room's open floor and looks across at the open fridge, so the door is a
+      // wing of the frame instead of a wall in front of it. Every shelf is at z 397.9 and the food sits
+      // between the door and the body, which is the only place it can be seen from.
+      ...cam.push({ on: [1.15, 1.4, 399.2], dist: 3.0, to: 2.5, yaw: 142, pitch: 5, fov: 48 }),
       zone: "home",
       look: "overworld-night",
-      note: "The same fridge, open, and stacked to the door with food. The first joke in the film, paid off in the last minute, in the same frame size.",
+      note: "The same fridge, open, and stacked to the door with food. The first joke in the film, paid off in the last minute.",
       stage: () => (
         <>
-          <Vox kind="wool" tint="#e8eef2" position={[2.75, 0.9, 398]} size={[0.9, 1.7, 0.05]} />
-          {[-0.55, -0.05, 0.45, 0.95, 1.35].map((y, i) => (
+          {/* body, open door swung to the left, and the lit inside */}
+          <Vox kind="wool" tint="#dfe6ea" position={[2.75, 0.9, 398.35]} size={[1.02, 1.8, 0.7]} />
+          <Vox kind="wool" tint="#f7fbff" position={[2.75, 0.9, 397.98]} size={[0.94, 1.72, 0.04]} />
+          <Vox kind="wool" tint="#e8eef2" position={[2.2, 0.9, 397.6]} size={[0.06, 1.72, 0.62]} />
+          <pointLight position={[2.1, 1.6, 398.2]} color="#f2f8ff" intensity={26} distance={5} decay={2} />
+          {[-0.62, -0.12, 0.38, 0.86].map((y, i) => (
             <group key={y}>
-              <Vox kind="wool" tint="#d8e2e8" position={[2.75, y, -2.08]} size={[0.82, 0.04, 0.3]} />
-              <Vox kind="wool" tint={["#c8402f", "#7ac04f", "#e8853c", "#f7f4ea", "#e8c07a"][i]} position={[2.5, y + 0.1, -2.08]} size={[0.14, 0.14, 0.2]} />
-              <Vox kind="wool" tint={["#3f8a4f", "#e8a21c", "#c9783c", "#d8dfe4", "#9a5230"][i]} position={[2.95, y + 0.1, -2.08]} size={[0.14, 0.14, 0.2]} />
+              <Vox kind="wool" tint="#d8e2e8" position={[2.75, y, 397.99]} size={[0.86, 0.04, 0.28]} />
+              <Vox kind="wool" tint={["#c8402f", "#7ac04f", "#e8853c", "#e8c07a"][i]} position={[2.52, y + 0.11, 397.99]} size={[0.16, 0.16, 0.22]} />
+              <Vox kind="wool" tint={["#3f8a4f", "#e8a21c", "#c9783c", "#f7f4ea"][i]} position={[2.92, y + 0.11, 397.99]} size={[0.16, 0.16, 0.22]} />
             </group>
+          ))}
+          {/* the top shelf, packed to the door: the punchline is volume, so it is a wall of colour */}
+          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 1.34, 397.99]} size={[0.86, 0.04, 0.28]} />
+          {[2.42, 2.6, 2.78, 2.96, 3.12].map((x, i) => (
+            <Vox key={x} kind="wool" tint={["#c8402f", "#f7f4ea", "#7ac04f", "#e8c07a", "#c9783c"][i]} position={[x, 1.48, 397.99]} size={[0.15, 0.22, 0.2]} />
           ))}
         </>
       ),
