@@ -22,6 +22,7 @@ import { film as whatIfYourShadowDidWhatYouWereThinking } from "./videos/what-if
 import { film as whatIfEverybodyForgotYouTheMomentYouLeftTheRoom } from "./videos/what-if-everybody-forgot-you-the-moment-you-left-the-room/film";
 import { film as whatIfEveryDoorOnYourStreetOpenedSomewhereElse } from "./videos/what-if-every-door-on-your-street-opened-somewhere-else/film";
 import { film as whatIfYouCouldHearTheLastThingAPlaceRemembered } from "./videos/what-if-you-could-hear-the-last-thing-a-place-remembered/film";
+import { film as theGuyWhoNeverWentToParties } from "./videos/the-guy-who-never-went-to-parties/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -52,4 +53,5 @@ export const FILMS = [
   whatIfEverybodyForgotYouTheMomentYouLeftTheRoom,
   whatIfEveryDoorOnYourStreetOpenedSomewhereElse,
   whatIfYouCouldHearTheLastThingAPlaceRemembered,
+  theGuyWhoNeverWentToParties,
 ];

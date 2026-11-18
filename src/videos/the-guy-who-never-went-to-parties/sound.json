@@ -1,0 +1,830 @@
+{
+  "film": "the-guy-who-never-went-to-parties",
+  "README": "The sound sheet. Times are cues and words, never seconds. Build: python3 scripts/sound.py build the-guy-who-never-went-to-parties",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.party",
+        "mood": "town",
+        "why": "The hook: the town as it is, bright and busy and wrong."
+      },
+      {
+        "from": "2.bro",
+        "mood": "playful",
+        "why": "The five jokes. The film is funny before it is strange."
+      },
+      {
+        "from": "3.ask",
+        "mood": "curious",
+        "why": "The question: why does nobody here cook?"
+      },
+      {
+        "from": "3.showed",
+        "mood": "sneak",
+        "why": "The unused kitchens. He is looking where nobody looks."
+      },
+      {
+        "from": "4.lazy",
+        "mood": "none",
+        "why": "The second before the reveal, and it is silent. RETENTION.md: silence is a sound."
+      },
+      {
+        "from": "4.truth",
+        "mood": "dark",
+        "why": "The reversal: nobody in this town has ever eaten cooked food."
+      },
+      {
+        "from": "4.cried",
+        "mood": "hope",
+        "why": "A grown man cries at soup. The first time the power is worth anything."
+      },
+      {
+        "from": "5.but",
+        "mood": "playful",
+        "why": "The egg. The failure is funny, so the music has to be."
+      },
+      {
+        "from": "6.trained",
+        "mood": "wonder",
+        "why": "The training arc: the fun before the price, and the chant lives here."
+      },
+      {
+        "from": "7.walked",
+        "mood": "hope",
+        "why": "He walks into the restaurant with his knife."
+      },
+      {
+        "from": "8.door",
+        "mood": "tense",
+        "why": "The reunion. The film changes gear and cannot be paused."
+      },
+      {
+        "from": "8.dressed",
+        "mood": "tense",
+        "gain": -6,
+        "why": "the reunion is talk and small sounds: step back so they can be heard"
+      },
+      {
+        "from": "9.now",
+        "mood": "dark",
+        "why": "The turn: they are not going to learn."
+      },
+      {
+        "from": "10.sub",
+        "mood": "town",
+        "why": "The ask, back with the town's own tune, so the button is a joke and not a beg."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.party",
+      "to": "1.normal",
+      "bed": "night"
+    },
+    {
+      "from": "1.cook",
+      "to": "1.chop",
+      "bed": "room"
+    },
+    {
+      "from": "2.bro",
+      "to": "2.queue",
+      "bed": "night"
+    },
+    {
+      "from": "3.ask",
+      "to": "3.same",
+      "bed": "night"
+    },
+    {
+      "from": "3.time",
+      "to": "3.brand",
+      "bed": "room"
+    },
+    {
+      "from": "3.never",
+      "to": "3.school",
+      "bed": "village"
+    },
+    {
+      "from": "3.name",
+      "to": "3.name",
+      "bed": "night"
+    },
+    {
+      "from": "4.lazy",
+      "to": "4.whole",
+      "bed": "night"
+    },
+    {
+      "from": "5.but",
+      "to": "5.almost",
+      "bed": "room"
+    },
+    {
+      "from": "6.trained",
+      "to": "6.months",
+      "bed": "room"
+    },
+    {
+      "from": "7.walked",
+      "to": "7.door",
+      "bed": "night"
+    },
+    {
+      "from": "7.asked",
+      "to": "7.watch",
+      "bed": "crowd"
+    },
+    {
+      "from": "8.door",
+      "to": "8.chant",
+      "bed": "crowd"
+    },
+    {
+      "from": "9.now",
+      "to": "9.line",
+      "bed": "crowd"
+    },
+    {
+      "from": "9.fridge",
+      "to": "9.and",
+      "bed": "room"
+    },
+    {
+      "from": "10.sub",
+      "to": "10.sub",
+      "bed": "crowd"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.party",
+      "sfx": "cheer",
+      "why": "the whole town, at once, before a word of it is explained"
+    },
+    {
+      "cue": "1.party",
+      "word": "party",
+      "sfx": "pop",
+      "why": "the line lands on the word"
+    },
+    {
+      "cue": "1.home",
+      "sfx": "whoosh",
+      "why": "the camera tracks the street"
+    },
+    {
+      "cue": "1.home",
+      "word": "home",
+      "sfx": "swish",
+      "why": "nobody ever went home"
+    },
+    {
+      "cue": "1.dinner",
+      "sfx": "whoosh",
+      "why": "cut to straight down on the table"
+    },
+    {
+      "cue": "1.dinner",
+      "word": "ate",
+      "sfx": "place",
+      "why": "a plate, untouched"
+    },
+    {
+      "cue": "1.dinner",
+      "word": "dinner",
+      "sfx": "tick",
+      "why": "the missing word, and the missing food"
+    },
+    {
+      "cue": "1.me",
+      "sfx": "blip",
+      "why": "he disagrees"
+    },
+    {
+      "cue": "1.cook",
+      "sfx": "pop",
+      "why": "the dream, stated as a fact"
+    },
+    {
+      "cue": "1.chop",
+      "sfx": "whoosh",
+      "why": "cut into the kitchen"
+    },
+    {
+      "cue": "1.chop",
+      "sfx": "swish",
+      "why": "and again"
+    },
+    {
+      "cue": "1.chop",
+      "word": "chopping",
+      "sfx": "step_wood",
+      "why": "the first knife stroke of the film"
+    },
+    {
+      "cue": "2.bro",
+      "sfx": "whoosh",
+      "why": "new scene, new place"
+    },
+    {
+      "cue": "2.bro",
+      "word": "bro",
+      "sfx": "pop",
+      "why": "the bubble"
+    },
+    {
+      "cue": "2.yolo",
+      "word": "once",
+      "sfx": "blip",
+      "why": "the friend is very sure"
+    },
+    {
+      "cue": "2.said",
+      "word": "know",
+      "sfx": "blip",
+      "why": "the teller is very sure too"
+    },
+    {
+      "cue": "2.mum",
+      "sfx": "whoosh",
+      "why": "cut to the kitchen table"
+    },
+    {
+      "cue": "2.mum",
+      "word": "cereal",
+      "sfx": "place",
+      "why": "a bowl put down"
+    },
+    {
+      "cue": "2.fridge",
+      "sfx": "creak",
+      "why": "a fridge door standing open"
+    },
+    {
+      "cue": "2.fridge",
+      "word": "fridge",
+      "sfx": "pop",
+      "why": "the joke, on the word"
+    },
+    {
+      "cue": "2.onion",
+      "sfx": "swish",
+      "why": "cut to the kid"
+    },
+    {
+      "cue": "2.onion",
+      "word": "onion",
+      "sfx": "bonk",
+      "why": "the crunch of a raw onion"
+    },
+    {
+      "cue": "2.dog",
+      "sfx": "swish",
+      "why": "cut down low"
+    },
+    {
+      "cue": "2.dog",
+      "word": "grass",
+      "sfx": "rustle",
+      "why": "the dog, eating"
+    },
+    {
+      "cue": "2.vending",
+      "sfx": "whoosh",
+      "why": "the vending machine, in one push"
+    },
+    {
+      "cue": "2.vending",
+      "word": "machine",
+      "sfx": "register",
+      "why": "the town's only restaurant, and it is a shop"
+    },
+    {
+      "cue": "2.queue",
+      "sfx": "tick",
+      "why": "the queue, not moving"
+    },
+    {
+      "cue": "2.queue",
+      "word": "queue",
+      "sfx": "count",
+      "why": "the queue that does not move"
+    },
+    {
+      "cue": "3.ask",
+      "sfx": "sting",
+      "why": "the question the film is built on"
+    },
+    {
+      "cue": "3.same",
+      "sfx": "blip",
+      "why": "the same shrug, three times"
+    },
+    {
+      "cue": "3.time",
+      "sfx": "whoosh",
+      "why": "into the kitchen"
+    },
+    {
+      "cue": "3.showed",
+      "sfx": "whoosh",
+      "why": "the friend's kitchen"
+    },
+    {
+      "cue": "3.showed",
+      "word": "kitchen",
+      "sfx": "pop",
+      "why": "everything still wrapped"
+    },
+    {
+      "cue": "3.brand",
+      "word": "brand",
+      "sfx": "sparkle",
+      "why": "brand new, still shining"
+    },
+    {
+      "cue": "3.brand",
+      "word": "wrapped",
+      "sfx": "paper",
+      "why": "the protective film still on it"
+    },
+    {
+      "cue": "3.never",
+      "sfx": "tick",
+      "why": "not used. not once."
+    },
+    {
+      "cue": "3.every",
+      "sfx": "whoosh",
+      "why": "the camera walks the whole street"
+    },
+    {
+      "cue": "3.every",
+      "word": "every",
+      "sfx": "step_stone",
+      "why": "he walks the whole street"
+    },
+    {
+      "cue": "3.school",
+      "sfx": "school_bell",
+      "why": "a school, and the joke is the timetable"
+    },
+    {
+      "cue": "3.school",
+      "word": "four",
+      "sfx": "stamp",
+      "why": "four party classes"
+    },
+    {
+      "cue": "3.name",
+      "sfx": "boom",
+      "why": "the question said out loud, once, in an empty street"
+    },
+    {
+      "cue": "4.lazy",
+      "sfx": "whoosh",
+      "why": "the answer, starting over"
+    },
+    {
+      "cue": "4.truth",
+      "sfx": "boom",
+      "why": "THE REVERSAL"
+    },
+    {
+      "cue": "4.cannot",
+      "sfx": "sting",
+      "why": "the thesis"
+    },
+    {
+      "cue": "4.plate",
+      "sfx": "whoosh",
+      "why": "the plate leaves his hand"
+    },
+    {
+      "cue": "4.plate",
+      "word": "frisbee",
+      "sfx": "zip",
+      "why": "the plate flies"
+    },
+    {
+      "cue": "4.plate",
+      "word": "plate",
+      "sfx": "whoosh",
+      "why": "he takes it to a party"
+    },
+    {
+      "cue": "4.cried",
+      "sfx": "chime",
+      "why": "the first time the power is worth anything"
+    },
+    {
+      "cue": "4.cried",
+      "word": "cried",
+      "sfx": "plink",
+      "why": "a grown man, and a spoon"
+    },
+    {
+      "cue": "4.told",
+      "word": "soup",
+      "sfx": "plink",
+      "why": "one word, one bowl"
+    },
+    {
+      "cue": "4.whole",
+      "sfx": "boom",
+      "why": "the whole party stops"
+    },
+    {
+      "cue": "4.whole",
+      "word": "stopped",
+      "sfx": "tick",
+      "why": "the music stops, so this is the only thing left"
+    },
+    {
+      "cue": "5.but",
+      "sfx": "whoosh",
+      "why": "back to the kitchen, back to bad"
+    },
+    {
+      "cue": "5.flipped",
+      "sfx": "swish",
+      "why": "the egg leaving the pan"
+    },
+    {
+      "cue": "5.flipped",
+      "word": "flipped",
+      "sfx": "swish",
+      "why": "the flick of the pan"
+    },
+    {
+      "cue": "5.ceiling",
+      "sfx": "slide_down",
+      "why": "and it is coming back down"
+    },
+    {
+      "cue": "5.ceiling",
+      "word": "ceiling",
+      "sfx": "bonk",
+      "why": "the egg, arriving"
+    },
+    {
+      "cue": "5.dog2",
+      "sfx": "step_grass",
+      "why": "the dog, arriving first"
+    },
+    {
+      "cue": "5.dog2",
+      "word": "first",
+      "sfx": "bonk",
+      "why": "the dog beats him to it"
+    },
+    {
+      "cue": "6.trained",
+      "sfx": "whoosh",
+      "why": "the training arc starts"
+    },
+    {
+      "cue": "6.slow",
+      "word": "another",
+      "sfx": "step_wood",
+      "why": "the second onion"
+    },
+    {
+      "cue": "6.slow",
+      "word": "slowly",
+      "sfx": "step_wood",
+      "why": "one stroke, slow"
+    },
+    {
+      "cue": "6.faster",
+      "word": "faster",
+      "sfx": "swish",
+      "why": "and now it is not slow"
+    },
+    {
+      "cue": "6.faster",
+      "word": "faster",
+      "sfx": "tick",
+      "why": "the tempo steps up"
+    },
+    {
+      "cue": "6.chant",
+      "word": "huh",
+      "sfx": "step_wood",
+      "why": "the chant lands on the breath"
+    },
+    {
+      "cue": "6.blade",
+      "sfx": "zip",
+      "why": "the blade blurs"
+    },
+    {
+      "cue": "6.blade",
+      "word": "blur",
+      "sfx": "swish",
+      "why": "the knife, at speed"
+    },
+    {
+      "cue": "6.pancake",
+      "sfx": "boing",
+      "why": "a pancake, caught"
+    },
+    {
+      "cue": "6.pancake",
+      "word": "pancakes",
+      "sfx": "slide_up",
+      "why": "three of them, in the air"
+    },
+    {
+      "cue": "6.again",
+      "word": "four",
+      "sfx": "boing",
+      "why": "four at once"
+    },
+    {
+      "cue": "6.burn",
+      "sfx": "fire_whoosh",
+      "why": "a pan giving up"
+    },
+    {
+      "cue": "6.burn",
+      "sfx": "crackle",
+      "why": "and the fire after it"
+    },
+    {
+      "cue": "6.omelette",
+      "sfx": "place",
+      "why": "plate after plate, set down"
+    },
+    {
+      "cue": "6.calendar",
+      "sfx": "paper",
+      "why": "the pages going past"
+    },
+    {
+      "cue": "6.months",
+      "sfx": "whoosh",
+      "why": "months, in a cut"
+    },
+    {
+      "cue": "7.walked",
+      "sfx": "whoosh",
+      "why": "act three"
+    },
+    {
+      "cue": "7.walked",
+      "word": "walked",
+      "sfx": "step_grass",
+      "why": "he walks up to it"
+    },
+    {
+      "cue": "7.door",
+      "sfx": "creak",
+      "why": "the machine's front panel, swinging open"
+    },
+    {
+      "cue": "7.door",
+      "word": "door",
+      "sfx": "power_up",
+      "why": "warm kitchen light, out of a vending machine"
+    },
+    {
+      "cue": "7.asked",
+      "sfx": "blip",
+      "why": "he asks anyway"
+    },
+    {
+      "cue": "7.chef",
+      "sfx": "clank",
+      "why": "a knife on a bench"
+    },
+    {
+      "cue": "7.word",
+      "word": "one",
+      "sfx": "stamp",
+      "why": "one word, and it is the whole answer"
+    },
+    {
+      "cue": "7.night",
+      "sfx": "cheer",
+      "why": "the whole town came"
+    },
+    {
+      "cue": "7.apron",
+      "sfx": "rustle",
+      "why": "cloth, and a knot"
+    },
+    {
+      "cue": "7.hands",
+      "sfx": "whoosh",
+      "why": "the fastest cutting in the film"
+    },
+    {
+      "cue": "7.hands",
+      "word": "chopping",
+      "sfx": "step_wood",
+      "why": "the knife, again"
+    },
+    {
+      "cue": "7.smoke",
+      "sfx": "fire_whoosh",
+      "why": "something catches fire behind him"
+    },
+    {
+      "cue": "7.smoke",
+      "sfx": "crackle",
+      "why": "the fire, getting worse behind him"
+    },
+    {
+      "cue": "7.smoke",
+      "word": "behind",
+      "sfx": "fire_whoosh",
+      "why": "it catches on the word"
+    },
+    {
+      "cue": "7.watch",
+      "sfx": "heartbeat",
+      "why": "the one second where he is small"
+    },
+    {
+      "cue": "8.door",
+      "sfx": "whoosh",
+      "why": "the reunion"
+    },
+    {
+      "cue": "8.door",
+      "word": "door",
+      "sfx": "creak",
+      "why": "the restaurant door, and the hinge on it"
+    },
+    {
+      "cue": "8.door",
+      "word": "opened",
+      "sfx": "swish",
+      "why": "the friends come through it"
+    },
+    {
+      "cue": "8.dressed",
+      "sfx": "place",
+      "why": "a plate set down in front of somebody who will not eat it"
+    },
+    {
+      "cue": "8.dressed",
+      "word": "eating",
+      "sfx": "place",
+      "why": "everybody else has a plate"
+    },
+    {
+      "cue": "8.looked",
+      "word": "kitchen",
+      "sfx": "clank",
+      "why": "he looks at the hot line"
+    },
+    {
+      "cue": "8.looked",
+      "word": "me",
+      "sfx": "blip",
+      "why": "then at him"
+    },
+    {
+      "cue": "8.wait",
+      "word": "wait",
+      "sfx": "blip",
+      "why": "the double take"
+    },
+    {
+      "cue": "8.how",
+      "word": "bro",
+      "sfx": "pop",
+      "why": "the bubble"
+    },
+    {
+      "cue": "8.how",
+      "word": "good",
+      "sfx": "boing",
+      "why": "the friend cannot believe it"
+    },
+    {
+      "cue": "8.turned",
+      "sfx": "riser",
+      "why": "the camera swings all the way round him"
+    },
+    {
+      "cue": "8.turned",
+      "word": "slowly",
+      "sfx": "creak",
+      "why": "he turns, and it takes its time"
+    },
+    {
+      "cue": "8.training",
+      "sfx": "sting",
+      "why": "ONE WORD"
+    },
+    {
+      "cue": "8.training",
+      "word": "training",
+      "sfx": "sting",
+      "why": "on the word itself"
+    },
+    {
+      "cue": "8.nothing",
+      "sfx": "tick",
+      "why": "the whole second, counted"
+    },
+    {
+      "cue": "8.onions",
+      "sfx": "stamp",
+      "why": "he goes back to work, and that is final"
+    },
+    {
+      "cue": "8.onions",
+      "word": "onions",
+      "sfx": "stamp",
+      "why": "he goes back to work, and that is final"
+    },
+    {
+      "cue": "8.chant",
+      "word": "huh",
+      "sfx": "step_wood",
+      "why": "the chant, in a professional kitchen"
+    },
+    {
+      "cue": "9.now",
+      "sfx": "whoosh",
+      "why": "the turn"
+    },
+    {
+      "cue": "9.line",
+      "word": "dog",
+      "sfx": "step_grass",
+      "why": "the dog is always first"
+    },
+    {
+      "cue": "9.line",
+      "word": "queue",
+      "sfx": "count",
+      "why": "the queue, longer than before"
+    },
+    {
+      "cue": "9.fridge",
+      "sfx": "creak",
+      "why": "the fridge, and this time it is full"
+    },
+    {
+      "cue": "9.fridge",
+      "word": "fridge",
+      "sfx": "creak",
+      "why": "the door of it"
+    },
+    {
+      "cue": "9.fridge",
+      "word": "full",
+      "sfx": "chime",
+      "why": "the first joke in the film, paid"
+    },
+    {
+      "cue": "9.nobody",
+      "sfx": "whoosh",
+      "why": "the street, and nobody asking"
+    },
+    {
+      "cue": "9.nobody",
+      "word": "nobody",
+      "sfx": "whoosh",
+      "why": "the camera pulls back off the whole town"
+    },
+    {
+      "cue": "9.but",
+      "sfx": "sting",
+      "why": "the line the film turns on, and it is a bad one"
+    },
+    {
+      "cue": "10.sub",
+      "sfx": "whoosh",
+      "why": "the ask"
+    },
+    {
+      "cue": "10.sub",
+      "word": "soup",
+      "sfx": "plink",
+      "why": "what is actually in the soup"
+    },
+    {
+      "cue": "10.sub",
+      "word": "subscribe",
+      "sfx": "ding",
+      "why": "the subscribe line, and the joke continues into it"
+    },
+    {
+      "cue": "10.sub",
+      "word": "tell",
+      "sfx": "blip",
+      "why": "the promise at the end"
+    }
+  ]
+}
