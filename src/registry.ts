@@ -1,3 +1,4 @@
+import { film as theGuyWhoNeverHadACar } from "./videos/the-guy-who-never-had-a-car/film";
 import { film as theSchedule } from "./videos/the-schedule/film";
 import { film as theHallway } from "./videos/the-hallway/film";
 import { film as monsterEgg } from "./videos/in-this-town-monster-egg/film";
@@ -27,6 +28,7 @@ import { film as nobodyJoinedMyBrothersServerForThreeYears } from "./videos/nobo
  * `npm run new -- "My Title"` appends to this list automatically.
  */
 export const FILMS = [
+  theGuyWhoNeverHadACar,
   theSchedule,
   theHallway,
   monsterEgg,

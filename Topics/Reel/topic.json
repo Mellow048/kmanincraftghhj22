@@ -1,0 +1,14 @@
+{
+  "id": "reel",
+  "name": "Reel",
+  "folder": "Topics/Reel",
+  "profile": "story",
+  "film": {
+    "seconds": [100,110],
+    "hardMaxSeconds": 120,
+    "shotSeconds": [0.5,6],
+    "medianShotSeconds": [1.5,3.5],
+    "captions": true
+  },
+  "camera": {"builder":"storyScene","minDist":1.5,"pitch":[-12,60],"yaw":[-80,80]}
+}
