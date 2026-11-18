@@ -1,0 +1,322 @@
+import { cam, storyScene } from "../../engine";
+import type { Vec3 } from "../../engine";
+import { Cape, Crate, Friend1, Friend2, HAIR, HairFly, Hero, InHand, MopHead, PLACE, ShopDoor, Sparkle, WindowBoard, cuttingPose, faceOf, go, holdUp, pop, seatedPose, timing, tw, w, F1_SCALE, F2_SCALE } from "./kit";
+import { CRATE, MY, MY_FACE, Me, SIT, SIT_TOP } from "./acts";
+
+/**
+ * 7. THE REUNION. The door bangs open and it is the two who knocked on mine every night for a year: one of them has
+ * cut his own hair for the party. It is the head of frame one, and now we know whose it is and who is behind it.
+ * "BRO. HOW?!" is answered this time, in one word. Then they ask what they always asked.
+ */
+
+const WIDE: Vec3 = [0, 1.72, 0];
+/** Where the two of them stop, just inside the door. */
+const F1_IN: Vec3 = [-1.55, 0, -3.1];
+const F2_IN: Vec3 = [-2.25, 0, -3.5];
+/** Where I am when they fall in: at the middle chair, my back to the door, looking in the mirror. */
+const ME_FLOOR: Vec3 = [0.72, 0, 0.1];
+const HUS = [0, 1, 2, 3, 4, 5].map((i) => w("7.hus", "HUS", i));
+const SNIPS = [0.14, 0.32, 0.5, 0.68, 0.86, 1.04];
+
+export const scene7 = storyScene(timing, {
+  id: "scene7",
+  title: "The reunion",
+  shots: [
+    {
+      cue: "7.help",
+      ...cam.push({ on: [-1.9, 1.3, -3.4], dist: 3.5, to: 3.0, yaw: 9, pitch: 4, fov: 40 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "They fall through the door",
+      stage: (t) => (
+        <>
+          <ShopDoor open={tw(t, 0, 0.14)} />
+          <Friend1 {...go([-2.3, 0, -4.9], F1_IN, tw(t, 0, 0.55))} animation={t < 0.55 ? "run" : "panic"} face="scared" />
+          <Friend2 {...go([-2.3, 0, -5.9], F2_IN, tw(t, 0.1, 0.8))} hair="bush" animation={t < 0.8 ? "run" : "ache"} face="crying" />
+        </>
+      ),
+    },
+    {
+      cue: "7.look",
+      ...cam.push({ on: [F2_IN[0], 1.66, F2_IN[2]], dist: 2.5, to: 2.25, yaw: -6, pitch: 2, fov: 38 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "The head of frame one",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend2 position={F2_IN} hair="bush" animation="ache" face="crying" gaze={0} />
+        </>
+      ),
+    },
+    {
+      cue: "7.please",
+      ...cam.push({ on: [F2_IN[0], 1.56, F2_IN[2]], dist: 1.9, to: 1.6, yaw: 8, pitch: 0, fov: 36 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "The word I used to say",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend2 position={F2_IN} hair="bush" animation="talk" face={t < w("7.please", "IS") ? "crying" : "worried"} gaze={0} headPitch={0.1} />
+        </>
+      ),
+    },
+    {
+      cue: "7.please",
+      cut: 1.36,
+      ...cam.push({ on: faceOf(ME_FLOOR), dist: 1.75, to: 1.45, yaw: 5, pitch: 0, fov: 36 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "I know that voice",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Hero job position={ME_FLOOR} pose={holdUp(t, 0.5, -0.3)} face={t < 0.35 ? "calm" : "smug"} gaze={t < 0.35 ? 0 : -1} headYaw={-tw(t, 0.3, 0.7) * 0.35}>
+            <InHand rate={0} scale={1.1} />
+          </Hero>
+        </>
+      ),
+    },
+    {
+      cue: "7.wait",
+      ...cam.push({ on: faceOf(F1_IN, F1_SCALE), dist: 1.7, to: 1.5, yaw: -8, pitch: 0, fov: 36 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "He knows my face",
+      stage: () => (
+        <>
+          <ShopDoor open={1} />
+          <Friend1 position={F1_IN} animation="idle" face="surprised" gaze={0} />
+          <Friend2 position={F2_IN} hair="bush" animation="idle" face="worried" />
+        </>
+      ),
+    },
+    {
+      cue: "7.weirdone",
+      ...cam.push({ on: [-1.9, 1.55, -3.3], dist: 2.6, to: 2.3, yaw: 4, pitch: 2, fov: 40 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "What they called me",
+      stage: () => (
+        <>
+          <ShopDoor open={1} />
+          <Friend1 position={F1_IN} animation="point" face="wow" gaze={0} />
+          <Friend2 position={F2_IN} hair="bush" animation="idle" face="wow" gaze={0} />
+        </>
+      ),
+    },
+    {
+      cue: "7.weirdone",
+      cut: 0.76,
+      ...cam.push({ on: [0.25, 1.15, 0], dist: 3.1, to: 2.8, yaw: 196, pitch: 5, fov: 40 }),
+      zone: "front",
+      look: "overworld-day",
+      note: "I pat the chair",
+      stage: (t) => {
+        const p = holdUp(t, 0.1, 0.3);
+        p.armL = [-1.25 + Math.abs(Math.sin(t * 9)) * 0.3, 0, 0];
+        return (
+          <>
+            <ShopDoor open={1} />
+            <Hero job position={[0.5, 0, 0.3]} rotationY={-2.36} pose={p} face="smug" gaze={0}>
+              <InHand rate={0} scale={1.1} />
+            </Hero>
+            <Crate position={CRATE} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "7.weirdone",
+      cut: 1.5,
+      ...cam.push({ on: WIDE, dist: 3.45, to: 3.05, yaw: 14, pitch: 3, fov: 40 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "Frame one again: six snips",
+      stage: (t) => {
+        const bush = 1 - tw(t, 0.08, SNIPS[5] + 0.12);
+        const off = tw(t, 1.3, 1.62);
+        return (
+          <>
+            <ShopDoor open={1} />
+            <Friend2 position={SIT} hair={bush > 0.02 ? "bush" : "cut"} bush={bush} pose={seatedPose(t)} face={t < 1.3 ? "scared" : "wow"} gaze={0} />
+            <Cape position={PLACE.chair} scale={0.96} off={off} />
+            <Me t={t} fast={t < SNIPS[5] + 0.15 ? 1 : 0} up={1.15} face={t < 1.2 ? "calm" : "smug"} />
+            <HairFly position={SIT_TOP} t={t} at={SNIPS} color={HAIR.f2} count={10} power={1.25} />
+            <Sparkle position={[0.3, 1.56, 0.35]} k={pop(t, 1.5, 0.2)} size={0.3} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "7.bro",
+      ...cam.push({ on: [0, 1.66, 0], dist: 2.2, to: 1.9, yaw: 13, pitch: 0, fov: 38 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "The question of the start",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend2 position={SIT} hair="cut" pose={seatedPose(t)} face={t < w("7.bro", "HOW") ? "surprised" : "wow"} gaze={0} headYaw={Math.sin(t * 9) * 0.14} />
+          <Me t={t} fast={0} up={0.3} face="smug" />
+        </>
+      ),
+    },
+    {
+      cue: "7.bro",
+      cut: 1.3,
+      ...cam.push({ on: MY_FACE, dist: 1.7, to: 1.4, yaw: 4, pitch: -2, fov: 36 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "This time I answer",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend2 position={SIT} hair="cut" pose={seatedPose(t)} face="wow" />
+          <Me t={t} fast={0} up={tw(t, 0.05, 0.3) * 1.2} face={t < 0.3 ? "smug" : "happy"} />
+        </>
+      ),
+    },
+    {
+      cue: "7.training",
+      ...cam.push({ on: MY_FACE, dist: 1.6, to: 1.2, yaw: 0, pitch: -1, fov: 34 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "One word",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Me t={t} fast={0} up={0.2} face="calm" lines={false} />
+        </>
+      ),
+    },
+    {
+      cue: "7.training",
+      cut: 0.95,
+      ...cam.push({ on: [-0.36, 1.5, -0.1], dist: 2.5, to: 2.4, yaw: 16, pitch: 0, fov: 38 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "A second of nothing",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend2 position={SIT} hair="cut" pose={seatedPose(0)} face="blank" gaze={0} blink={false} />
+          <Friend1 position={[-0.78, 0, -0.2]} animation="idle" face="blank" gaze={0} blink={false} phase={0} />
+        </>
+      ),
+    },
+    {
+      cue: "7.hus",
+      ...cam.push({ on: WIDE, dist: 3.3, to: 3.0, yaw: -12, pitch: 3, fov: 40 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "The other one, too",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend1 position={SIT} hat={false} cut={t > HUS[3]} pose={seatedPose(t)} face="scared" gaze={0} />
+          <Cape position={PLACE.chair} scale={F1_SCALE} />
+          <Me t={t} fast={1} face="calm" />
+          <HairFly position={SIT_TOP} t={t} at={HUS} color={HAIR.f1} count={10} power={1.25} />
+        </>
+      ),
+    },
+    {
+      cue: "7.hus",
+      cut: HUS[5] + 0.16,
+      ...cam.push({ on: [0, 1.7, 0], dist: 2.75, to: 2.5, yaw: 10, pitch: 2, fov: 40 }),
+      zone: "shopx",
+      look: "overworld-day",
+      note: "Two heads fit for a party",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend1 position={SIT} cut pose={seatedPose(t)} face="wow" gaze={0} />
+          <Cape position={PLACE.chair} scale={F1_SCALE} off={tw(t, 0.02, 0.3)} side={-1} />
+          <Me t={t} fast={0} up={1.15} face="smug" />
+          <Sparkle position={[0.3, 1.45, 0.35]} k={pop(t, 0.25, 0.2)} size={0.3} />
+        </>
+      ),
+    },
+    {
+      cue: "7.coming",
+      ...cam.push({ on: [-2.15, 1.3, -4.0], dist: 3.3, to: 3.0, yaw: 7, pitch: 3, fov: 40 }),
+      zone: "shopx",
+      look: "overworld-sunset",
+      note: "What they always asked",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Friend1 position={[-2.05, 0, -3.9]} cut animation="wave" face="grin" gaze={0} />
+          <Friend2 position={[-2.55, 0, -4.75]} hair="cut" hat animation="cheer" face="laugh" gaze={0} />
+        </>
+      ),
+    },
+    {
+      cue: "7.coming",
+      cut: 0.9,
+      ...cam.push({ on: faceOf(ME_FLOOR), dist: 1.8, to: 1.55, yaw: -5, pitch: 0, fov: 36 }),
+      zone: "shopx",
+      look: "overworld-sunset",
+      note: "And what I always said",
+      stage: (t) => (
+        <>
+          <ShopDoor open={1} />
+          <Hero job position={ME_FLOOR} pose={holdUp(t, 0.75, -0.3)} face="happy" gaze={0} headYaw={Math.sin(t * 7.5) * 0.3}>
+            <InHand t={t} rate={3} scale={1.1} />
+          </Hero>
+        </>
+      ),
+    },
+    {
+      cue: "7.never",
+      ...cam.push({ on: [-0.55, 1.38, -4.55], dist: 3.0, to: 2.7, yaw: 176, pitch: 2, fov: 40 }),
+      zone: "front",
+      look: "overworld-sunset",
+      note: "From the street: CLOSED",
+      stage: (t) => (
+        <>
+          <ShopDoor open={0} />
+          <WindowBoard position={[-0.55, 1.2, -4.52]} front="OPEN" back="CLOSED" flip={tw(t, 0.15, 0.5)} width={0.9} height={0.4} bg="#bff0c0" />
+          <Hero job position={[-0.55, 0.32, -4.1]} rotationY={Math.PI} face="happy" gaze={0} />
+          <Crate position={[-0.55, -0.28, -4.1]} />
+        </>
+      ),
+    },
+    {
+      cue: "7.never",
+      cut: 1.05,
+      ...cam.push({ on: WIDE, dist: 3.5, to: 3.2, yaw: 14, pitch: 3, fov: 40 }),
+      zone: "shop",
+      look: "overworld-sunset",
+      note: "The last customer",
+      stage: (t) => (
+        <>
+          <MopHead position={[0, 0.2, 0.02]} bucket={false} face="worried" />
+          <Cape position={PLACE.chair} scale={0.96} />
+          <Me t={t} fast={0} up={tw(t, 0.1, 0.5) * 1.2} face="smug" />
+        </>
+      ),
+    },
+    {
+      cue: "7.end",
+      ...cam.push({ on: WIDE, dist: 3.2, to: 2.8, yaw: 14, pitch: 3, fov: 40 }),
+      zone: "shop",
+      look: "overworld-sunset",
+      note: "HUS HUS HUS",
+      stage: (t) => (
+        <>
+          <MopHead position={[0, 0.2, 0.02]} bucket={false} face="worried" hair={1 - tw(t, 0, 0.7) * 0.8} />
+          <Cape position={PLACE.chair} scale={0.96} />
+          <Me t={t} fast={1} face="happy" />
+          <HairFly position={SIT_TOP} t={t} at={[0.0, 0.15, 0.3, 0.45, 0.6]} color="#f6f1e2" count={10} power={1.25} />
+        </>
+      ),
+    },
+  ],
+});
+
+void cuttingPose;
+void MY;
+void F2_SCALE;

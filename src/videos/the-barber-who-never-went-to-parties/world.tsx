@@ -12,6 +12,8 @@ import { BarberChair, Calendar, HOME, PLACE, PartyWindow, PixelText, ROOM, SHOP,
  *   room     Our living room (ROOM). The television on the WEST wall, the sofa facing it, Dad's armchair in the back
  *            on the right with space behind it, a window in the back wall with the party in it, the drawer unit in
  *            the back left corner, the calendar. No south wall: the lens looks north, east or west.
+ *   tv       The same, without its television: the scene draws it, switched on.
+ *   spring   The same, without television or calendar: the scene draws the calendar, to turn its pages.
  *   dinner   The same room with the table in it and no sofa.
  *   shop     The barbershop (SHOP). Three chairs face south: the lens is the mirror. Back wall: the door on the
  *            left, the big window on the right, a bench under it. Outside: pavement, road, the town.
@@ -210,10 +212,10 @@ const ShopBuilding: React.FC<{ t: number }> = ({ t }) => (
     {[-2.6, 0, 2.6].map((x) => (
       <group key={x}>
         <Block position={[x, 3.56, -0.6]} size={[1.2, 0.08, 0.3]} color="#fffbe8" emissive="#fff4d0" emissiveIntensity={0.7} castShadow={false} />
-        <pointLight position={[x, 3.1, 0.2]} color="#fff4dc" intensity={16} distance={8} decay={2} />
+        <pointLight position={[x, 3.1, 0.2]} color="#fff4dc" intensity={4} distance={8} decay={2} />
       </group>
     ))}
-    <pointLight position={[0, 2.0, 3.6]} color="#ffffff" intensity={34} distance={10} decay={2} />
+    <pointLight position={[0, 2.0, 3.6]} color="#ffffff" intensity={5} distance={10} decay={2} />
     <Glow position={[0, 3.4, -0.6]} size={2.2} color="#fff4d0" opacity={0.2} />
     <GodRay position={[1.6, 1.6, -3.2]} rotation={[0.75, 0, 0.1]} width={4.4} height={3.4} color="#fff3d0" opacity={0.06} />
     <LightPool position={[1.4, 0.012, -2.6]} width={4.6} depth={2.4} color="#fff3d0" opacity={0.16} />
@@ -234,10 +236,12 @@ const ShopBuilding: React.FC<{ t: number }> = ({ t }) => (
     <Building position={[19, 0, -21]} w={7} h={6} color="#d8c49a" t={t} />
     <Tree position={[4, 0, -17]} height={3.4} />
     <Tree position={[-6.5, 0, -17]} height={3} leaf="#4a8c33" />
-    <BarberPole position={[-3.6, 0, -4.95]} t={t} />
-    {/* the name over the window, read from the street */}
-    <Block position={[0.6, 3.2, -4.76]} size={[7.6, 0.8, 0.1]} color="#17171c" />
-    <PixelText text="BARBER SHOP" position={[0.6, 3.2, -4.82]} rotationY={Math.PI} height={0.56} color="#ffe14a" />
+    <BarberPole position={[-1.4, 0, -4.95]} t={t} />
+    {/* the name over the door, read from the street: two lines, because the picture is tall */}
+    <Block position={[-1.6, 3.2, -4.76]} size={[3.0, 1.3, 0.1]} color="#17171c" />
+    <Block position={[-1.6, 3.2, -4.74]} size={[3.16, 1.46, 0.04]} color="#c8362e" />
+    <PixelText text="BARBER" position={[-1.6, 3.48, -4.83]} rotationY={Math.PI} height={0.5} color="#ffe14a" />
+    <PixelText text="SHOP" position={[-1.6, 2.92, -4.83]} rotationY={Math.PI} height={0.5} color="#ffe14a" />
     {/* the neighbours on each side */}
     <Vox kind="bricks" tint="#8fa6c0" position={[-9.2, 2.2, -2.1]} size={[8, 4.4, 5]} />
     <Vox kind="bricks" tint="#d8c49a" position={[9.6, 2.5, -2.1]} size={[9, 5, 5]} />
@@ -326,17 +330,17 @@ const Street: React.FC<{ t: number; night: boolean }> = ({ t, night }) => (
   </group>
 );
 
-/** Our house front and the hall behind the door. The door itself is drawn by the scene. Door hole: x ±0.6, 2.3 high. */
+/** Our house front and the hall behind the door. The door itself is drawn by the scene. Door hole: x ±0.75, 2.3 high. */
 const OurHouse: React.FC = () => (
   <group position={HOME}>
     {/* the front wall, with the door hole in it */}
-    <Vox kind="planks" tint="#d8c8a8" position={[-3.3, 1.7, 0.75]} size={[5.4, 3.4, 0.2]} castShadow={false} />
-    <Vox kind="planks" tint="#d8c8a8" position={[3.0, 1.7, 0.75]} size={[4.8, 3.4, 0.2]} castShadow={false} />
-    <Vox kind="planks" tint="#d8c8a8" position={[0, 2.85, 0.75]} size={[1.2, 1.1, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#d8c8a8" position={[-3.375, 1.7, 0.75]} size={[5.25, 3.4, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#d8c8a8" position={[3.075, 1.7, 0.75]} size={[4.65, 3.4, 0.2]} castShadow={false} />
+    <Vox kind="planks" tint="#d8c8a8" position={[0, 2.85, 0.75]} size={[1.5, 1.1, 0.2]} castShadow={false} />
     {[-1, 1].map((s) => (
-      <Block key={s} position={[s * 0.66, 1.15, 0.72]} size={[0.14, 2.3, 0.3]} color="#f2efe6" castShadow={false} />
+      <Block key={s} position={[s * 0.81, 1.15, 0.72]} size={[0.14, 2.3, 0.3]} color="#f2efe6" castShadow={false} />
     ))}
-    <Block position={[0, 2.37, 0.72]} size={[1.46, 0.14, 0.3]} color="#f2efe6" castShadow={false} />
+    <Block position={[0, 2.37, 0.72]} size={[1.76, 0.14, 0.3]} color="#f2efe6" castShadow={false} />
     <Block position={[0, 3.5, 0.6]} size={[11.6, 0.3, 0.9]} color="#8a3b2a" />
     <PartyWindow position={[-2.6, 1.7, 0.63]} t={0} size={[1.2, 1.2]} on={false} rotationY={Math.PI} />
     {/* the step, and the mat */}
@@ -399,12 +403,16 @@ export const World: React.FC = () => {
   const night = look === "overworld-night" || look === "lantern-night";
   return (
     <>
-      <Zone name="room" with={["dinner"]}>
+      <Zone name="room" with={["dinner", "tv", "spring"]}>
         <LivingShell t={t} party={night} />
-        <Television position={PLACE.tv} rotationY={Math.PI / 2} on={false} />
-        <Calendar position={[ROOM[0] + 2.2, 1.75, ROOM[2] - 2.585]} page={0} />
       </Zone>
-      <Zone name="room">
+      <Zone name="room" with={["dinner"]}>
+        <Television position={PLACE.tv} rotationY={Math.PI / 2} on={false} />
+      </Zone>
+      <Zone name="room" with={["dinner", "tv"]}>
+        <Calendar position={PLACE.calendar} page={0} />
+      </Zone>
+      <Zone name="room" with={["tv", "spring"]}>
         <Living />
       </Zone>
       <Zone name="dinner">

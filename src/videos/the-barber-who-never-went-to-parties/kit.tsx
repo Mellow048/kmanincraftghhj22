@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Glow, MinecraftAvatar, PixelText, Vox, getPose } from "../../engine";
+import { Block, Door, Glow, MinecraftAvatar, PixelText, Sign, Vox, getPose } from "../../engine";
 import type { MinecraftAvatarProps, Pose, Timing, Vec3 } from "../../engine";
 import { Bits, ease, ramp, wordClock } from "../../../Topics/Recreation";
 import { Dog } from "../../../Topics/WhatIf/things";
@@ -71,23 +71,29 @@ export const room = (x: number, y: number, z: number): Vec3 => [ROOM[0] + x, ROO
 export const home = (x: number, y: number, z: number): Vec3 => [HOME[0] + x, HOME[1] + y, HOME[2] + z];
 
 export const PLACE = {
-  /** shop: the three chairs (the middle one is ours), and where the barber stands behind each. */
+  /** shop: the three chairs (the middle one is ours), and where the barber stands behind a chair. */
   chair: [0, 0, 0] as Vec3,
   chairL: [-2.1, 0, 0] as Vec3,
   chairR: [2.1, 0, 0] as Vec3,
   behind: [0, 0, -0.62] as Vec3,
-  /** shop: the door in the back wall, and the bench under the window. */
-  door: [-2.3, 0, -4.4] as Vec3,
-  /** room: the sofa seat, the armchair, the television, the table and its two chairs, the drawer. */
-  sofa: room(-0.5, 0, 0.2),
-  armchair: room(1.6, 0, -0.6),
-  tv: room(-1.5, 0, -2.2),
-  table: room(0, 0, 0),
-  drawer: room(2.2, 0, -2.0),
-  /** home: our doorstep (the lens is in the doorway), the garage floor, the party house across the road. */
-  step: home(0, 0, 0),
+  /** shop: the middle of the door in the back wall; the window to the street (its middle, at eye height). */
+  door: [-2.3, 0, -4.6] as Vec3,
+  window: [1.4, 1.85, -4.6] as Vec3,
+  /** room: the sofa (it faces west, at the television), Dad's armchair (faces the lens), the television on the west
+   *  wall, the table, the drawer unit in the back left corner, the calendar on the back wall. */
+  sofa: room(0.5, 0, 0.5),
+  armchair: room(1.9, 0, -1.0),
+  tv: room(-3.15, 0, 0.5),
+  table: room(0, 0, 0.3),
+  drawer: room(-2.3, 0, -2.25),
+  calendar: room(2.3, 1.75, -2.585),
+  /** home: the step outside our door (its top), the hall inside it. */
+  step: home(0, 0.12, -0.05),
+  hall: home(0, 0.12, 1.9),
+  /** garage: the middle of the floor, where the mop stands; the shelf under the window (its top). */
   garage: home(8, 0, 0),
-  party: home(1.5, 0, -15),
+  shelf: home(8, 1.14, -2.1),
+  party: home(4, 0, -15),
 };
 
 // ----------------------------------------------------------------------------- hair, and hats
@@ -236,7 +242,7 @@ export const snipOpen = (t: number, rate = 8) => 0.08 + 0.55 * Math.abs(Math.sin
 
 /** The scissors as he holds them: give this to an avatar as its child. `t` drives the snipping; `rate` 0 holds them shut. */
 export const InHand: React.FC<{ t?: number; rate?: number; handle?: string; scale?: number; open?: number }> = ({ t = 0, rate = 0, handle, scale = 1, open }) => (
-  <group position={[0, -0.03, 0.05]} rotation={[-1.25, 0, 0]}>
+  <group position={[0, -0.03, 0.05]} rotation={[1.0, 0, 0]}>
     <Scissors open={open ?? (rate > 0 ? snipOpen(t, rate) : 0.1)} handle={handle} scale={scale} />
   </group>
 );
@@ -462,8 +468,8 @@ export const cuttingPose = (t: number, fast = 1, reach = 1): Pose => {
   const p = getPose("idle", t);
   const r = 26 * fast + 3;
   p.bodyPitch = 0.1 * reach;
-  p.armR = [-1.15 * reach + Math.sin(t * r) * 0.3 * fast, 0, 0.12 + Math.cos(t * r * 0.7) * 0.22 * fast];
-  p.armL = [-1.05 * reach + Math.cos(t * r * 0.9) * 0.3 * fast, 0, -0.12 - Math.sin(t * r * 0.8) * 0.22 * fast];
+  p.armR = [-1.2 * reach + Math.sin(t * r) * 0.3 * fast, 0, 0.34 + Math.cos(t * r * 0.7) * 0.16 * fast];
+  p.armL = [-1.1 * reach + Math.cos(t * r * 0.9) * 0.3 * fast, 0, -0.34 - Math.sin(t * r * 0.8) * 0.16 * fast];
   p.head = [0.32, Math.sin(t * r * 0.3) * 0.08 * fast, 0];
   p.bodyY = Math.abs(Math.sin(t * r * 0.5)) * 0.03 * fast;
   return p;
@@ -490,12 +496,21 @@ const CHROME = "#c9d0d8";
 const LEATHER = "#a82a2a";
 
 /** How high the seat is: somebody sitting in the barber chair has their feet at `position` + this. */
-export const SEAT = 0.2;
+export const SEAT = 0.06;
+/** The crate I stand on to reach: I am a kid, and the heads are a long way up. */
+export const STOOL = 0.6;
+export const Crate: React.FC<{ position: Vec3 }> = ({ position }) => (
+  <group position={position}>
+    <Block position={[0, STOOL / 2, 0]} size={[0.56, STOOL, 0.5]} color="#b48d52" />
+    <Block position={[0, STOOL - 0.03, 0]} size={[0.6, 0.06, 0.54]} color="#8a6a3a" />
+    <Block position={[0, 0.06, 0]} size={[0.6, 0.06, 0.54]} color="#8a6a3a" />
+  </group>
+);
 
 /** A barber chair. It faces +Z. The person in it sits at `position` raised by SEAT. */
 export const BarberChair: React.FC<{ position: Vec3; rotationY?: number; color?: string }> = ({ position, rotationY = 0, color = LEATHER }) => (
-  <group position={position} rotation={[0, rotationY, 0]}>
-    <Block position={[0, 0.04, -0.02]} size={[0.62, 0.08, 0.62]} color="#2a2c33" metalness={0.4} roughness={0.5} />
+  <group position={[position[0], position[1] - 0.1, position[2]]} rotation={[0, rotationY, 0]}>
+    <Block position={[0, 0.14, -0.02]} size={[0.62, 0.08, 0.62]} color="#2a2c33" metalness={0.4} roughness={0.5} />
     <Block position={[0, 0.3, -0.02]} size={[0.14, 0.46, 0.14]} color={CHROME} metalness={0.7} roughness={0.3} />
     <Block position={[0, 0.6, 0.0]} size={[0.64, 0.13, 0.6]} color={color} />
     <Block position={[0, 1.02, -0.3]} size={[0.62, 0.78, 0.12]} color={color} />
@@ -518,7 +533,7 @@ function mixColor(c: string) {
  * The cape, on whoever is in the chair. `position` is the chair's. `off` 0–1 whips it off, up and to the side.
  * `scale` is the sitter's.
  */
-export const Cape: React.FC<{ position: Vec3; off?: number; scale?: number; color?: string; side?: number }> = ({ position, off = 0, scale = 1, color = "#f4f4f0", side = 1 }) => {
+export const Cape: React.FC<{ position: Vec3; off?: number; scale?: number; color?: string; side?: number }> = ({ position, off = 0, scale = 1, color = "#2f4fa8", side = 1 }) => {
   if (off >= 1) return null;
   const k = off * off;
   return (
@@ -527,7 +542,7 @@ export const Cape: React.FC<{ position: Vec3; off?: number; scale?: number; colo
       <Block position={[0, 0.82, 0.36]} size={[0.98, 0.3, 0.5]} color={color} />
       <Block position={[0, 1.335, 0.03]} size={[0.56, 0.04, 0.5]} color="#2a2c33" castShadow={false} />
       {[-0.3, 0, 0.3].map((x) => (
-        <Block key={x} position={[x, 1.0, 0.325]} size={[0.05, 0.6, 0.012]} color="#c8362e" castShadow={false} />
+        <Block key={x} position={[x, 1.0, 0.325]} size={[0.05, 0.6, 0.012]} color="#e9e6da" castShadow={false} />
       ))}
     </group>
   );
@@ -776,3 +791,53 @@ export const Note: React.FC<{ position: Vec3; t: number; phase?: number; color?:
 
 /** The grass block under everything outdoors, and the pavement: re-exported so scenes can lay a mat under a close-up. */
 export const Ground: React.FC<{ position: Vec3; size: Vec3; kind?: "grass" | "stone" | "planks" | "path" }> = ({ position, size, kind = "grass" }) => <Vox kind={kind} position={position} size={size} />;
+
+// ----------------------------------------------------------------------------- doors, signs, the hedge
+
+/** The shop's door, from inside or out. `open` 0–1 swings it into the shop. World draws it shut in zone "shop". */
+export const ShopDoor: React.FC<{ open?: number }> = ({ open = 0 }) => <Door position={[SHOP[0] - 2.82, 0, SHOP[2] - 4.6]} width={1.04} height={2.28} open={-open * 1.75} color="#2f6f6a" handleColor="#e8c44a" />;
+
+/** Our front door. `open` 0–1 swings it into the hall. */
+export const HomeDoor: React.FC<{ open?: number }> = ({ open = 1 }) => <Door position={[HOME[0] - 0.75, 0.12, HOME[2] + 0.75]} width={1.5} height={2.2} open={-open * 1.55} color="#7a2f2a" handleColor="#e8c44a" />;
+
+/** A board in the shop window, read from the street (it faces north). `flip` 0–1 turns it over to its other side. */
+export const WindowBoard: React.FC<{ position: Vec3; front: string; back?: string; flip?: number; width?: number; height?: number; bg?: string; fg?: string }> = ({ position, front, back, flip = 0, width = 1.7, height = 0.9, bg = "#fff3b8", fg = "#16161c" }) => {
+  const a = Math.PI + flip * Math.PI;
+  const showBack = back !== undefined && flip > 0.5;
+  return (
+    <group position={position} rotation={[0, a + (showBack ? Math.PI : 0), 0]}>
+      <Block position={[0, 0, -0.02]} size={[width + 0.1, height + 0.1, 0.03]} color="#20242c" castShadow={false} />
+      <Block size={[width, height, 0.02]} color={showBack ? "#c8362e" : bg} castShadow={false} />
+      {(showBack ? (back as string) : front).split(" ").map((word, i, all) => (
+        <PixelText key={i} text={word} position={[0, ((all.length - 1) / 2 - i) * (height / (all.length + 0.4)), 0.02]} height={(height / (all.length + 0.4)) * 0.8} maxWidth={width * 0.9} color={showBack ? "#ffffff" : fg} />
+      ))}
+    </group>
+  );
+};
+
+/** The hedge, after I had been at it: a head of hair in leaves, with a side parting and a quiff. It faces +Z. */
+export const Hedge: React.FC<{ position: Vec3; cut?: boolean }> = ({ position, cut = true }) => (
+  <group position={position}>
+    <Vox kind="leaves" position={[0, 0.5, 0]} size={[2.2, 1.0, 0.8]} />
+    {cut ? (
+      <>
+        {/* the long side, combed over to the right */}
+        <Vox kind="leaves" position={[0.25, 1.12, 0]} size={[1.5, 0.26, 0.84]} />
+        <Vox kind="leaves" position={[0.75, 1.3, 0.05]} size={[0.7, 0.24, 0.8]} />
+        <Vox kind="leaves" position={[1.0, 1.46, 0.1]} size={[0.4, 0.22, 0.7]} />
+        {/* the short side */}
+        <Vox kind="leaves" position={[-0.9, 1.06, 0]} size={[0.4, 0.12, 0.82]} />
+        {/* the parting: a line cut down to the wood */}
+        <Block position={[-0.6, 1.02, 0]} size={[0.1, 0.06, 0.84]} color="#5c3f24" castShadow={false} />
+      </>
+    ) : (
+      <>
+        <Vox kind="leaves" position={[-0.5, 1.2, 0]} size={[0.9, 0.5, 0.9]} />
+        <Vox kind="leaves" position={[0.6, 1.1, -0.05]} size={[0.8, 0.36, 0.86]} />
+        <Vox kind="leaves" position={[0.2, 1.5, 0.05]} size={[0.5, 0.3, 0.6]} />
+      </>
+    )}
+  </group>
+);
+
+export { Sign };

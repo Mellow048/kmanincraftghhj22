@@ -1,53 +1,114 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
-
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+import { Cape, Friend2, HAIR, HairFly, PLACE, Plate, Sparkle, pop, seatedPose, timing, tw, w } from "./kit";
+import { MY_FACE, Me, Rewind, SIT, SIT_TOP } from "./acts";
 
 /**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
+ * 1. THE HOOK. The owner: "no one is going to stay and listen, throw the main thing at the start". So frame one is
+ * the main thing: the worst hair in town in a barber chair, a kid on a crate whose scissors are a blur, and the
+ * line of the meme in blocks over them. Six HUS, and the hair is gone. "BRO. HOW?!" He opens his mouth to say how,
+ * and the tape runs backwards: the answer is the film.
  */
+
+const HUS = [0, 1, 2, 3, 4, 5].map((i) => w("1.hus", "HUS", i));
+const WIDE: Vec3 = [0, 1.72, 0];
+/** Where the lens of the wide shot stands, for the bars of the rewind. */
+const lensOf = (on: Vec3, dist: number, yawDeg: number, pitchDeg: number): Vec3 => {
+  const y = (yawDeg * Math.PI) / 180;
+  const p = (pitchDeg * Math.PI) / 180;
+  return [on[0] + Math.sin(y) * Math.cos(p) * dist, on[1] + Math.sin(p) * dist, on[2] + Math.cos(y) * Math.cos(p) * dist];
+};
+
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Hook",
+  title: "The hook",
   shots: [
     {
-      cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
-      zone: "village",
+      cue: "1.hus",
+      ...cam.push({ on: WIDE, dist: 3.45, to: 3.05, yaw: 14, pitch: 3, fov: 40 }),
+      zone: "shop",
       look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
-      stage: () => (
+      note: "Frame one: the payoff",
+      stage: (t) => {
+        const bush = 1 - tw(t, 0.02, HUS[5] + 0.12);
+        return (
+          <>
+            <Friend2 position={SIT} hair="bush" bush={bush} snag={t < HUS[1]} pose={seatedPose(t)} face="scared" gaze={0} />
+            <Cape position={PLACE.chair} scale={0.96} />
+            <Me t={t} fast={1} face="calm" />
+            <HairFly position={SIT_TOP} t={t} at={[-0.25, ...HUS]} color={HAIR.f2} count={10} power={1.25} />
+            <Plate lines={["HE NEVER WENT", "TO A SINGLE PARTY"]} position={[0.06, 2.55, 0.3]} width={1.05} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.hus",
+      cut: HUS[5] + 0.16,
+      ...cam.push({ on: [0, 1.74, 0], dist: 2.75, to: 2.45, yaw: -9, pitch: 2, fov: 40 }),
+      zone: "shop",
+      look: "overworld-day",
+      note: "The cape comes off: perfect",
+      stage: (t) => (
         <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
+          <Friend2 position={SIT} hair="cut" pose={seatedPose(t)} face={t < 0.25 ? "scared" : "wow"} gaze={0} />
+          <Cape position={PLACE.chair} scale={0.96} off={tw(t, 0.02, 0.32)} side={1} />
+          <Me t={t} fast={0} up={1.15} face="smug" />
+          <Sparkle position={[0.3, 1.56, 0.35]} k={pop(t, 0.26, 0.2)} size={0.3} />
+          <Plate lines={["HE NEVER WENT", "TO A SINGLE PARTY"]} position={[-0.03, 2.5, 0.3]} width={0.84} />
         </>
       ),
     },
     {
-      cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
-      zone: "village",
+      cue: "1.how",
+      ...cam.push({ on: [0, 1.66, 0], dist: 2.2, to: 1.9, yaw: 13, pitch: 0, fov: 38 }),
+      zone: "shop",
       look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      note: "He sees himself",
+      stage: (t) => {
+        const p = seatedPose(t);
+        return (
+          <>
+            <Friend2 position={SIT} hair="cut" pose={p} face={t < w("1.how", "HOW") ? "surprised" : "wow"} gaze={0} headYaw={Math.sin(t * 9) * 0.14} />
+            <Me t={t} fast={0} up={0.3} face="smug" />
+          </>
+        );
+      },
+    },
+    {
+      cue: "1.how",
+      cut: 1.32,
+      ...cam.push({ on: MY_FACE, dist: 1.7, to: 1.35, yaw: 4, pitch: -2, fov: 36 }),
+      zone: "shop",
+      look: "overworld-day",
+      note: "He opens his mouth to say",
+      stage: (t) => (
+        <>
+          <Friend2 position={SIT} hair="cut" pose={seatedPose(t)} face="wow" />
+          <Me t={t} fast={0} up={tw(t, 0.05, 0.3) * 1.2} face={t < 0.3 ? "smug" : "happy"} />
+        </>
+      ),
+    },
+    {
+      cue: "1.how",
+      cut: 1.95,
+      ...cam.push({ on: WIDE, dist: 3.05, to: 3.5, yaw: 14, pitch: 3, fov: 40 }),
+      zone: "shop",
+      look: "overworld-day",
+      note: "The tape runs backwards",
+      stage: (t, { dur }) => {
+        const back = tw(t, 0, dur - 0.1);
+        return (
+          <>
+            <Friend2 position={SIT} hair="bush" bush={back} pose={seatedPose(-t * 3)} face="scared" gaze={0} />
+            <Cape position={PLACE.chair} scale={0.96} off={Math.max(0, 0.9 - t * 4)} />
+            <Me t={-t * 2.5} fast={1} face="calm" />
+            <HairFly position={SIT_TOP} t={dur - t} at={[0.1, 0.3, 0.5, 0.7]} color={HAIR.f2} count={10} power={1.25} />
+            <Rewind t={t} lens={lensOf(WIDE, 3.28, 14, 3)} on={WIDE} depth={1.0} />
+            <Plate lines={["REWIND"]} position={[0.06, 2.5, 0.3]} width={0.8} color="#ffe14a" k={Math.floor(t * 8) % 2 ? 1 : 0.92} />
+          </>
+        );
+      },
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;
