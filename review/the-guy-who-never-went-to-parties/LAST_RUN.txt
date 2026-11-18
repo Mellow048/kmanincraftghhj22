@@ -1,2 +1,5 @@
-No frames requested.
-exit=1
+
+▶ the-guy-who-never-went-to-parties frame 4479 → out/stills/the-guy-who-never-went-to-parties-4479.png
+
+Done. 1 still(s) in out/stills
+exit=0
