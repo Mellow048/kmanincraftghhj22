@@ -149,7 +149,9 @@ export const scene4 = storyScene(timing, {
       // Something catches fire behind him and he does not look. This is the character, in one shot.
       // The lens stands at the west end of the hot line, looking east along it: the fire is BEHIND him in
       // depth and both of them read. From the front of the room the bench hides him and the fire is off frame.
-      ...cam.push({ on: [1.15, 1.52, 497.15], dist: 3.0, to: 2.5, yaw: 168, pitch: 6, fov: 48 }),
+      // The look point is the hero, not empty air west of him: aiming at a point with nothing behind the
+      // subject is how a lens ends up pointed at a wall.
+      ...cam.push({ on: [0.45, 1.12, 498.7], dist: 3.2, to: 2.6, yaw: 22, pitch: 7, fov: 52 }),
       zone: "restaurant",
       look: "overworld-night",
       note: "Fire behind him on the line, another cook panicking, and the teller not turning round. The whole film's thesis in a single frame.",
