@@ -39,6 +39,11 @@ export const Can: React.FC<{at:Vec3; tint?:string; tilt?:number}> = ({at,tint="#
   <Block position={[0,.2,.101]} size={[.09,.14,.008]} color="#e8d29c" castShadow={false}/>
 </group>;
 export const Fruit: React.FC<{at:Vec3; tint?:string; size?:number}> = ({at,tint="#e77b27",size=.22}) => <Block position={at} size={[size,size,size]} color={tint}/>;
+export const Potato: React.FC<{at:Vec3; scale?:number}> = ({at,scale=1}) => <group position={at} scale={scale}>
+  <Block position={[0,0,0]} size={[.38,.22,.3]} color="#a67a48"/>
+  <Block position={[-.04,.12,-.015]} size={[.23,.07,.24]} color="#bd925b"/>
+  <Block position={[.1,-.035,.14]} size={[.1,.07,.07]} color="#87623d"/>
+</group>;
 export const Bread: React.FC<{at:Vec3; tilt?:number}> = ({at,tilt=0}) => <group position={at} rotation-z={tilt}>
   <Block position={[0,.08,0]} size={[.56,.22,.24]} color="#b66d32"/>
   <Block position={[0,.205,0]} size={[.45,.06,.2]} color="#dfad62"/>

@@ -1,5 +1,5 @@
 import { Block, cam, storyScene } from "../../engine";
-import { Car, Kid, Load, Sister, timing, smooth, move } from "./kit";
+import { Car, Kid, Load, Potato, Sister, timing, smooth, move } from "./kit";
 import type {Vec3} from "../../engine";
 const FROM:Vec3=[-1.7,0,1.7], TO:Vec3=[1.1,0,2.8];
 export const scene7=storyScene(timing,{
@@ -17,21 +17,21 @@ export const scene7=storyScene(timing,{
   <Block position={[-1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
   <Block position={[1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
   <Block position={[-.55,1.32,1.49]} size={[1.12,.09,.62]} color="#65717a" rotation-x={-.58*smooth(t/.38)}/>
-  <Block position={[.38,1.48,2.02]} size={[.42,.29,.34]} color="#e3b76d"/>
+  <Potato at={[.38,1.39,2.02]} scale={1.1}/>
  </>},
  {cue:"7.potato",...cam.push({on:[0,1.28,1.72],dist:4.8,to:4.0,yaw:0,pitch:24,fov:43}),zone:"driveway",look:"overworld-sunset",note:"Hold on the one bright potato, unmistakably alone in the open trunk. Let the quiet visual reveal land before he moves.",stage:()=> <>
   <Block position={[0,1.17,1.72]} size={[2.4,.12,1.05]} color="#252c32"/>
   <Block position={[-1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
   <Block position={[1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
   <Block position={[-.55,1.32,1.49]} size={[1.12,.09,.62]} color="#65717a" rotation-x={-.58}/>
-  <Block position={[.38,1.48,2.02]} size={[.44,.31,.36]} color="#e3b76d"/>
+  <Potato at={[.38,1.39,2.02]} scale={1.15}/>
  </>},
  {cue:"7.back",...cam.push({on:[0,1.35,2.75],dist:5.5,to:4.8,yaw:0,pitch:8,fov:45}),zone:"driveway",look:"overworld-sunset",note:"He has retrieved the potato and turns back toward the house; the small golden prop is clearly in his hands.",stage:(t)=> <>
   <Kid position={[0,0,2.65]} animation="reach" arms="hold" face="uneasy" time={t}/>
-  <Block position={[0,1.02,3.02]} size={[.36,.25,.3]} color="#e3b76d"/>
+  <Potato at={[0,1.1,3.02]} scale={.95}/>
  </>},
  {cue:"7.hus",...cam.truck({on:[0,1.25,2.7],by:[0,0,.45],dist:5.7,yaw:0,pitch:8,fov:44}),zone:"driveway",look:"overworld-sunset",note:"Final button, not a montage: he carries one potato in both hands, solemnly as the whole grocery mountain, breathing HUS on each visible step. Cut on the carry.",stage:(t)=> <>
   <Kid position={[0,0,2.65+1.05*smooth(t/1.15)]} animation="walk" arms="hold" animDistance={1.05*smooth(t/1.15)} face="calm" time={t}/>
-  <Block position={[0,1.02,3.02+1.05*smooth(t/1.15)]} size={[.36,.25,.3]} color="#e3b76d"/>
+  <Potato at={[0,1.1,3.02+1.05*smooth(t/1.15)]} scale={.95}/>
  </>}
 ]});
