@@ -87,7 +87,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.hus",
       cut: 3.05,
-      ...cam.push({ on: add(G, 0, 1.78, 0), dist: 3.5, to: 3.2, yaw: -10, pitch: 2, fov: 40 }),
+      ...cam.push({ on: add(G, 0, 1.92, 0), dist: 3.6, to: 3.3, yaw: -10, pitch: 2, fov: 40 }),
       zone: "garage",
       look: "overworld-night",
       note: "The meme's own line in blocks over the garage, with the party flashing in the window.",
@@ -95,7 +95,7 @@ export const scene5 = storyScene(timing, {
         <>
           <OnStand style={3} />
           <Me t={t} fast={0.5} at={G_CRATE} job={false} kitchen face="brave" lines={false} />
-          <Plate lines={["WHILE THEY'RE", "OUT PARTYING BTW"]} position={add(G, 0, 2.68, 0.3)} width={1.05} k={Math.min(1, pop(t, 0.05, 0.18) + (t > 0.23 ? 1 : 0))} />
+          <Plate lines={["WHILE THEY'RE", "OUT PARTYING BTW"]} position={add(G, 0, 2.62, 0.3)} width={1.05} k={Math.min(1, pop(t, 0.05, 0.18) + (t > 0.23 ? 1 : 0))} />
         </>
       ),
     },
@@ -252,7 +252,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.spring",
-      ...cam.push({ on: add(HEDGE, -0.3, 1.2, 0), dist: 4.6, to: 4.2, yaw: -14, pitch: 3, fov: 40 }),
+      ...cam.push({ on: add(HEDGE, -0.1, 0.95, 0), dist: 3.4, to: 3.1, yaw: -12, pitch: 5, fov: 46 }),
       zone: "home",
       look: "overworld-day",
       note: "Spring outside: blossom falling on the hedge I cut, and the dog still with his haircut.",
@@ -267,7 +267,7 @@ export const scene5 = storyScene(timing, {
           {Array.from({ length: 7 }, (_, i) => (
             <Drop key={i} position={add(HEDGE, -1.4 + i * 0.45, 2.6, 0.5 - (i % 3) * 0.5)} t={t} every={1.6} fall={-2.4} drift={0.5} size={0.045} color="#ff9fc8" phase={i * 0.23} />
           ))}
-          <FadeDog position={add(HEDGE, -1.1, 0, 0.6)} rotationY={0.6} headTilt={0.1} />
+          <FadeDog position={add(HEDGE, -0.5, 0, 0.8)} rotationY={0.3} headTilt={0.1} />
         </>
       ),
     },

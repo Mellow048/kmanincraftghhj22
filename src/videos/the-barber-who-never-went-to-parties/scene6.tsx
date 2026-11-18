@@ -43,7 +43,7 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <ShopDoor open={0} />
-            <WindowBoard position={[0.4, 2.2, -4.52]} front="HELP WANTED" width={1.15} height={0.7} />
+            <WindowBoard position={[0.4, 2.25, -4.7]} front="HELP WANTED" width={1.5} height={0.9} bg="#1f3f8a" fg="#ffffff" />
             <Hero position={[0.4, 0, -5.5]} rotationY={turn * Math.PI * 0.92} animation={turn > 0.9 ? "cheer" : "idle"} face={turn > 0.5 ? "grin" : "wow"} gaze={0} />
           </>
         );
@@ -66,7 +66,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.line",
-      ...cam.push({ on: [3.2, 1.4, -5.5], dist: 6.4, to: 5.6, yaw: -82, pitch: 10, fov: 40 }),
+      ...cam.push({ on: [3.0, 1.2, -5.55], dist: 6.0, to: 5.4, yaw: -104, pitch: 11, fov: 40 }),
       zone: "front",
       look: "overworld-day",
       note: "The queue down the pavement, every head a bush: Saturday, as one long line.",
@@ -128,19 +128,21 @@ export const scene6 = storyScene(timing, {
       note: "Clippers buzzing in circles on the floor on their own: nobody has a hand free.",
       stage: (t) => (
         <>
-          <FloorHair position={[0.5, 0, 0.7]} area={[1.6, 1.2]} amount={0.5} seed={3} />
-          <Clippers position={[0.55 + t * 0.12, 0.03, 0.75]} rotationY={0.6 + t * 1.2} t={t} />
+          <FloorHair position={[0.5, 0, 0.2]} area={[1.6, 0.5]} amount={0.25} seed={3} />
+          <group position={[0.55 + Math.sin(t * 4) * 0.12, 0.03, 0.75 + Math.cos(t * 4) * 0.12]} scale={2.2}>
+            <Clippers position={[0, 0, 0]} rotationY={0.6 + t * 4} t={t} />
+          </group>
         </>
       ),
     },
     {
       cue: "6.beard",
       cut: 3.2,
-      ...cam.push({ on: MY_FACE, dist: 1.75, to: 1.45, yaw: 5, pitch: -2, fov: 36 }),
+      ...cam.push({ on: MY_FACE, dist: 2.6, to: 2.3, yaw: 5, pitch: -2, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
       note: "Two clicks of the scissors, close on my face: the sound that says he is ready.",
-      stage: (t) => <Me t={t} fast={0} up={1.0} face="brave" />,
+      stage: (t) => <Me t={t} fast={0} up={1.15} face="brave" />,
     },
     {
       cue: "6.beard",
@@ -180,7 +182,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.forty",
-      ...cam.push({ on: [-2.3, 1.45, -5.3], dist: 4.0, to: 3.6, yaw: 188, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [-2.3, 1.7, -5.3], dist: 5.4, to: 5.0, yaw: 186, pitch: 2, fov: 40 }),
       zone: "front",
       look: "overworld-day",
       note: "Finished heads walking out of the door while a counter over it runs up to forty.",
@@ -193,12 +195,12 @@ export const scene6 = storyScene(timing, {
               const k = t / 1.3 + i * 0.36;
               return (
                 <group key={i}>
-                  <Person who={i + n} top="cut" {...go([-2.3, 0, -4.2], [-2.3 + (i - 1) * 0.5, 0, -9.5], k % 1)} animation="walk" face="happy" />
+                  <Person who={i + n} top="cut" {...go([-2.3, 0, -4.2], [-2.3 + (i % 2 ? 2.6 : -2.6), 0, -6.6], k % 1)} animation="walk" face="happy" />
                 </group>
               );
             })}
-            <Plate lines={[String(n)]} position={[-2.3, 2.75, -5.4]} rotationY={Math.PI} width={0.62} color="#ffe14a" />
-            <Sparkle position={[-1.85, 2.9, -5.45]} k={n === 40 ? pop(t, 1.0, 0.2) : 0} size={0.24} rotationY={Math.PI} />
+            <Plate lines={[String(n)]} position={[-2.3, 2.55, -5.0]} rotationY={Math.PI} width={0.9} color="#ffe14a" />
+            <Sparkle position={[-1.75, 2.7, -5.05]} k={n === 40 ? pop(t, 1.0, 0.2) : 0} size={0.24} rotationY={Math.PI} />
           </>
         );
       },

@@ -388,11 +388,12 @@ const Garage: React.FC = () => (
     <Block position={[-2.38, 1.7, -0.3]} size={[0.04, 0.6, 0.1]} color="#8a919c" castShadow={false} />
     <Block position={[-2.38, 1.9, 0.1]} size={[0.04, 0.2, 0.5]} color="#c8362e" castShadow={false} />
     {/* the bulb */}
-    <Block position={[0, 2.8, -0.2]} size={[0.03, 0.4, 0.03]} color="#1c1c22" castShadow={false} />
-    <Block position={[0, 2.55, -0.2]} size={[0.14, 0.18, 0.14]} color="#fff4c8" emissive="#ffe9a0" emissiveIntensity={0.4} castShadow={false} />
-    <pointLight position={[0, 2.3, 0]} color="#ffe2b0" intensity={6} distance={8} decay={2} />
-    <pointLight position={[0, 1.6, 2.8]} color="#ffe8cc" intensity={4} distance={7} decay={2} />
-    <Glow position={[0, 2.5, -0.2]} size={1.0} color="#ffe9a0" opacity={0.2} />
+    {/* It hangs off to one side: straight over the mop it burnt every face under it white. */}
+    <Block position={[-1.5, 2.8, -0.6]} size={[0.03, 0.4, 0.03]} color="#1c1c22" castShadow={false} />
+    <Block position={[-1.5, 2.55, -0.6]} size={[0.14, 0.18, 0.14]} color="#fff4c8" emissive="#ffe9a0" emissiveIntensity={0.3} castShadow={false} />
+    <pointLight position={[-1.3, 2.35, 0.2]} color="#ffe2b0" intensity={5} distance={8} decay={2} />
+    <pointLight position={[0.7, 1.6, 2.8]} color="#ffe8cc" intensity={3} distance={7} decay={2} />
+    <Glow position={[-1.5, 2.5, -0.6]} size={0.8} color="#ffe9a0" opacity={0.15} />
   </group>
 );
 

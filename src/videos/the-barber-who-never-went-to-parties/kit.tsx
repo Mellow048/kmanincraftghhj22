@@ -562,7 +562,7 @@ export const MopHead: React.FC<{ position: Vec3; hair?: number; rotationY?: numb
       ) : null}
       <Block position={[0, 0.7, 0]} size={[0.05, 1.1, 0.05]} color="#b48d52" />
       {/* the head */}
-      <Block position={[0, 1.36, 0]} size={[0.34, 0.34, 0.3]} color="#efe6cf" />
+      <Block position={[0, 1.36, 0]} size={[0.34, 0.34, 0.3]} color="#cfc6ae" />
       <Block position={[-0.08, 1.4, 0.152]} size={[0.05, 0.06, 0.01]} color="#16161c" castShadow={false} />
       <Block position={[0.08, 1.4, 0.152]} size={[0.05, 0.06, 0.01]} color="#16161c" castShadow={false} />
       {face === "worried" ? (

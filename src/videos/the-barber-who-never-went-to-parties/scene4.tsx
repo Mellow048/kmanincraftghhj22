@@ -12,7 +12,7 @@ import { CRATE as SHOP_CRATE } from "./acts";
 const CHAIR = PLACE.armchair;
 const TABLE = PLACE.table;
 const DAD_TABLE: Vec3 = add(TABLE, 0, -0.07, -0.72);
-const ME_TABLE: Vec3 = add(TABLE, 1.3, 0, 0.1);
+const ME_TABLE: Vec3 = add(TABLE, 0.68, 0, -0.72);
 const G = PLACE.garage;
 /** In the garage the mop stands where a head would be, and my crate behind it: the same picture as the shop. */
 export const MOP: Vec3 = add(G, 0, 0, 0);
@@ -120,16 +120,16 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.hat",
       cut: 1.2,
-      ...cam.push({ on: add(ME_TABLE, 0, 1.36, 0), dist: 1.9, to: 1.65, yaw: 30, pitch: 2, fov: 38 }),
+      ...cam.push({ on: add(ME_TABLE, -0.12, 1.34, 0), dist: 2.1, to: 1.85, yaw: 5, pitch: 3, fov: 38 }),
       zone: "dinner",
       look: "overworld-night",
       note: "My face at the end of the table, looking anywhere else: I know whose fault the hat is.",
       stage: (t) => (
         <>
-          <Dad position={DAD_TABLE} top="hat" pose={seatedPose(t)} face="frown" headYaw={0.7} />
+          <Dad position={DAD_TABLE} top="hat" pose={seatedPose(t)} face="frown" gaze={0} />
           <Plate2 position={add(TABLE, 0, 0.8, -0.2)} />
           <Plate2 position={add(TABLE, 0.7, 0.8, 0.1)} />
-          <Hero position={ME_TABLE} rotationY={-0.5} face="uneasy" gaze={t < 0.6 ? 1 : -1} />
+          <Hero position={ME_TABLE} face="uneasy" gaze={t < 0.6 ? 1 : -1} />
         </>
       ),
     },
