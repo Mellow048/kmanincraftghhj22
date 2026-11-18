@@ -125,12 +125,12 @@ export const scene4 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={SHOP} hood={1} color="#d23b6e" />
-          <Hero position={[SHOP[0] + 0.2, 0, SHOP[2] + 1.25]} rotationY={0.4} face="grin" animation="reach" />
-          <Wrench position={[SHOP[0] + 0.75, 1.4, SHOP[2] + 0.8]} spin={28} />
-          <Pal shirt="#d23b6e" position={[SHOP[0] - 1.6, 0, SHOP[2] + 1.8]} rotationY={0.6} face="wow" animation="idle" />
+          <Hero position={[SHOP[0] - 1.25, 0, SHOP[2] + 0.9]} rotationY={0.85} face="grin" animation="reach" />
+          <Wrench position={[SHOP[0] - 0.4, 1.5, SHOP[2] + 0.5]} spin={28} />
+          <Pal shirt="#d23b6e" position={[SHOP[0] + 1.5, 0, SHOP[2] + 1.7]} rotationY={-0.8} face="wow" animation="idle" />
         </>
       ),
-      ...cam.push({ on: [SHOP[0] + 0.2, 1.2, SHOP[2] + 0.5], dist: 3.8, to: 3.1, yaw: 34, pitch: 10, fov: 38 }),
+      ...cam.push({ on: [SHOP[0] - 0.4, 1.2, SHOP[2] + 0.4], dist: 4.4, to: 3.6, yaw: -40, pitch: 12, fov: 40 }),
     },
     {
       cue: "7.catch",

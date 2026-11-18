@@ -40,18 +40,18 @@ export const scene2 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={[CAR[0] + 1.8, 0, CAR[2] - 0.2]} rotationY={0.35} />
-          <Hero position={[CAR[0] - 1.3, 0, CAR[2] + 1.1]} rotationY={0.5} face="scared" animation="scared" />
+          <Car position={[CAR[0] + 1.4, 0, CAR[2] + 0.2]} rotationY={0.3} />
+          <Hero position={[CAR[0] - 1.5, 0, CAR[2] + 1.2]} rotationY={0.45} face="scared" animation="scared" />
         </>
       ),
-      ...cam.push({ on: [CAR[0] + 0.4, 1.0, CAR[2] + 0.2], dist: 5.4, to: 4.4, yaw: 20, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [CAR[0] + 0.6, 1.0, CAR[2] + 0.4], dist: 6.2, to: 5.2, yaw: 8, pitch: 14, fov: 44 }),
     },
     {
       cue: "4.hedge",
       note: "The car, in the hedge, slow, like it meant to stop there.",
       zone: "village",
-      stage: () => <Car position={[PLACE.hedge[0] - 1.4, 0, PLACE.hedge[2] - 0.8]} rotationY={0.4} />,
-      ...cam.push({ on: [PLACE.hedge[0] - 0.4, 0.8, PLACE.hedge[2] - 0.2], dist: 4.8, to: 3.9, yaw: -30, pitch: 12, fov: 40 }),
+      stage: () => <Car position={[PLACE.hedge[0] - 1.6, 0, PLACE.hedge[2]]} rotationY={0.55} />,
+      ...cam.push({ on: [PLACE.hedge[0] - 1.2, 0.9, PLACE.hedge[2]], dist: 5.4, to: 4.4, yaw: 18, pitch: 14, fov: 42 }),
     },
     {
       cue: "4.hold",
@@ -125,10 +125,10 @@ export const scene2 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={0.35} light={0.3} />
-          <Hero position={[CAR[0] + 0.7, 0, CAR[2] + 1.2]} rotationY={-0.4} face="uneasy" animation="reach" />
+          <Hero position={[CAR[0] - 1.35, 0, CAR[2] + 0.9]} rotationY={0.7} face="uneasy" animation="reach" />
         </>
       ),
-      ...cam.push({ on: [CAR[0] + 0.2, 1.1, CAR[2] + 0.5], dist: 4.0, to: 3.3, yaw: 50, pitch: 12, fov: 38 }),
+      ...cam.push({ on: [CAR[0] - 0.4, 1.15, CAR[2] + 0.35], dist: 4.6, to: 3.8, yaw: -38, pitch: 12, fov: 40 }),
     },
     {
       cue: "5.face",

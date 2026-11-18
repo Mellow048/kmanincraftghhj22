@@ -129,7 +129,7 @@ export const scene3 = storyScene(timing, {
           <Hero position={[SHOP[0] + 0.1, 0, SHOP[2] + 0.1]} rotationY={0.15} face="calm" animation="lie" />
         </>
       ),
-      ...cam.push({ on: [SHOP[0], 0.5, SHOP[2]], dist: 3.8, to: 3.1, yaw: 64, pitch: 6, fov: 36 }),
+      ...cam.push({ on: [SHOP[0], 0.85, SHOP[2] + 0.2], dist: 4.6, to: 3.8, yaw: 48, pitch: 24, fov: 40 }),
     },
     {
       cue: "6.wrench",

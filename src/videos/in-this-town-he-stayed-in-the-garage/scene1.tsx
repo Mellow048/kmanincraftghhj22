@@ -17,11 +17,11 @@ export const scene1 = storyScene(timing, {
       stage: () => (
         <>
           <Car position={CAR} hood={1} light={0.5} />
-          <Hero position={[CAR[0] + 0.15, 0, CAR[2] + 1.25]} rotationY={0.35} face="grin" animation="reach" />
-          <Wrench position={[CAR[0] + 0.72, 1.42, CAR[2] + 0.85]} spin={18} />
+          <Hero position={[CAR[0] - 1.25, 0, CAR[2] + 0.85]} rotationY={0.85} face="grin" animation="reach" />
+          <Wrench position={[CAR[0] - 0.45, 1.45, CAR[2] + 0.55]} spin={18} />
         </>
       ),
-      ...cam.push({ on: BAY, dist: 3.5, to: 2.85, yaw: 32, pitch: 8, fov: 38 }),
+      ...cam.push({ on: [CAR[0] - 0.45, 1.25, CAR[2] + 0.4], dist: 4.2, to: 3.5, yaw: -42, pitch: 12, fov: 40 }),
     },
     {
       cue: "1.catch",
