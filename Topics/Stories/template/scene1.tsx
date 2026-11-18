@@ -1,53 +1,38 @@
-import { cam, storyScene } from "../../engine";
-import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import { cam, storyScene } from '../../engine';
+import type { Vec3 } from '../../engine';
+import { Hero, Villager, ROBE, ease, ramp, timing, wordAt } from './kit';
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
-
-/**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/Stories/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
- */
+// A two-shot rehearsal, NOT a script to repeat. Keep both sides of the edit in
+// the same physical queue: first his signal, then what lowering the hand does.
+const me: Vec3 = [-.42, .051, 2.65];
+const queue: Vec3[] = [[.28, .051, 1.68], [.12, .051, .5], [.28, .051, -.64]];
+const Queue = ({ bow }: { bow: number }) => <>{queue.map((p, i) =>
+  <Villager key={i} position={p} robe={[ROBE.white, ROBE.brown, ROBE.friend][i]} lean={.64 * bow} nod={.22 * bow} phase={i * .6} />
+)}</>;
+const hand = wordAt('1.hand', 'hand'), bow = wordAt('1.hand', 'bowed');
+const down = wordAt('1.me', 'lowered'), up = wordAt('1.me', 'stood');
 export const scene1 = storyScene(timing, {
-  id: "scene1",
-  title: "Hook",
+  id: 'scene1', title: 'The queue and the signal',
   shots: [
     {
-      cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
-      stage: () => (
-        <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
-        </>
-      ),
+      cue: "1.hand",
+      ...cam.orbit({ on: [0, 1.18, 2.1], dist: 4.3, yaw: -7, yawTo: 9, pitch: 10, fov: 42 }),
+      zone: 'village',
+      note: 'Look along the queue, not across a row of extras. His hand goes up; the folded-sleeve bodies tip towards him.',
+      stage: t => <>
+        <Hero position={me} rotationY={.5} animation="reachUp" blendTo="talk" blend={ease(ramp(t, hand - .32, hand))} time={t} />
+        <Queue bow={ease(ramp(t, bow - .12, bow + .14))} />
+      </>,
     },
     {
       cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      ...cam.push({ on: [.17, 1.34, 1.62], dist: 3.0, to: 2.65, yaw: 41, pitch: 2, fov: 38 }),
+      zone: 'village',
+      note: 'Leave the hand in the edge of the reverse. Its owner drops it, and the first villager straightens up on stood.',
+      stage: t => <>
+        <Hero position={me} rotationY={.5} animation="reachUp" blendTo="idle" blend={1 - ease(ramp(t, down, down + .22))} time={t} />
+        <Queue bow={1 - ease(ramp(t, up, up + .22))} />
+      </>,
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/Stories/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;

@@ -46,7 +46,7 @@ export const wordAt = wordClock(timing);
 export const PLACE = {
   /** The middle of the square. The bell is north of it, the well south-west. */
   square: [0, 0, 2] as Vec3,
-  bell: [0, 0, -2.5] as Vec3,
+  bell: [2.8, 0, -2.5] as Vec3,
   stall: [6.4, 0, -2.6] as Vec3,
   well: [-5, 0, 5.5] as Vec3,
   /** The oldest villager's porch. It is half a block high, so she stands over a kid and the two stack in a tall frame. */
@@ -76,7 +76,7 @@ export const Hero: React.FC<A> = (p) => (
     outfit="tee"
     skin="#dba47c"
     hair="#3a2415"
-    colors={{ torso: "#e8a21c", arms: "#e8a21c", legs: "#3b3fa0" }}
+    colors={{ torso: "#3986b6", arms: "skin", legs: "#343d6a" }}
     blink
     {...p}
   />

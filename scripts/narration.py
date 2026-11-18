@@ -9,7 +9,7 @@ the script, measures the recorded voice, and writes the two files the film needs
     src/videos/<film>/timing.json         when every word and every shot starts
 
     python3 scripts/narration.py clips <film>        list the clips to record
-    python3 scripts/narration.py build <film>        measure the recordings
+    python3 scripts/narration.py build <film> --require-alignment   align every recorded word, or stop
     python3 scripts/narration.py build <film> --estimate   no audio yet: guess from words per minute
 
 The script lives in src/videos/<film>/narration.md, inside a ```narration block:
@@ -38,7 +38,7 @@ import sys
 try:
     import numpy as np
 except ImportError:  # pragma: no cover
-    sys.exit("narration.py needs numpy:  pip install numpy")
+    np = None  # Script listing and estimated drafts have no audio dependency.
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SR_ALIGN = 16000
@@ -203,7 +203,27 @@ SAY = {
     "hus": "HH AH S",
 }
 
-def align(pcm16k, words):
+def assembled_spans(raw, count, length):
+    """A split-takes chant supplies word times relative to its first sound. Keep
+    the supplied clock, in natural seconds, if it fits the clip and transcript."""
+    path = os.path.splitext(raw)[0] + ".words.json"
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf8") as f:
+        given = json.load(f)
+    if isinstance(given, list) and len(given) == count:
+        try:
+            spans = [(float(s), float(e)) for s, e in given]
+            if all(0 <= s < e <= length and (i == 0 or s >= spans[i-1][1])
+                   for i, (s, e) in enumerate(spans)):
+                return spans
+        except (TypeError, ValueError):
+            pass
+    print(f"    {os.path.basename(path)} does not fit the words or the clip; trying forced alignment")
+    return None
+
+
+def align(pcm16k, words, *, strict=False, interpolated=None):
     """[(start, end)] in seconds for each word, or None if the aligner cannot do it."""
     try:
         from pocketsphinx import Decoder
@@ -241,6 +261,15 @@ def align(pcm16k, words):
         return None
     length = len(pcm16k) / SR_ALIGN
     found = [(re.sub(r"\(\d+\)$", "", w), max(0.0, a), min(length, b)) for (w, a, b) in segs if not w.startswith("<")]
+    return match_spans(tokens, found, length, strict=strict, interpolated=interpolated)
+
+
+def match_spans(tokens, found, length, *, strict=False, interpolated=None):
+    """Reconcile forced-alignment segments with the transcript. Never label a filled hole measured."""
+    if any(not (0 <= a < b <= length) or (i and a < found[i-1][2] - 1e-6)
+           for i, (_, a, b) in enumerate(found)):
+        print("    aligner returned invalid word spans")
+        return None
     if [w for w, _, _ in found] == tokens:
         return [(a, b) for _, a, b in found]
 
@@ -252,9 +281,10 @@ def align(pcm16k, words):
         for k in range(block.size):
             spans[block.a + k] = (found[block.b + k][1], found[block.b + k][2])
     missing = sum(1 for x in spans if x is None)
-    if missing > max(2, len(tokens) // 10):
-        print(f"    aligner lost {missing} of {len(tokens)} words; this clip falls back to an estimate")
+    if strict or missing in (0, len(tokens)) or missing > max(2, len(tokens) // 10):
+        print(f"    aligner/transcript mismatch ({missing} of {len(tokens)} words missing)")
         return None
+    guessed = [t for t, span in zip(tokens, spans) if span is None]
     i = 0
     while i < len(spans):
         if spans[i] is not None:
@@ -265,11 +295,15 @@ def align(pcm16k, words):
             j += 1
         left = spans[i - 1][1] if i > 0 else 0.0
         right = spans[j][0] if j < len(spans) else length
+        if right <= left:
+            return None  # no time to interpolate a word here
         step = (right - left) / (j - i)
         for k in range(i, j):
             spans[k] = (left + step * (k - i), left + step * (k - i + 1))
         i = j
-    print(f"    aligner lost {missing} word(s); their times are shared out between their neighbours")
+    if interpolated is not None:
+        interpolated.extend(guessed)
+    print(f"    interpolated between neighbours: {', '.join(guessed)}")
     return spans
 
 
@@ -287,7 +321,11 @@ def spread(words, start: float, end: float):
 
 
 # ----------------------------------------------------------------------------- build
-def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps: int, tail: float, lead: float):
+def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps: int, tail: float, lead: float, require_alignment: bool = False):
+    if estimate and require_alignment:
+        sys.exit("--estimate is a draft; --require-alignment needs recordings.")
+    if not estimate and np is None:
+        sys.exit("Building recorded audio requires numpy: pip install numpy")
     clips = read_script(slug)
     all_cues = [cue for clip in clips for cue in clip["cues"]]
     n_words = sum(len(spoken_words(c["text"])) for c in all_cues)
@@ -339,23 +377,24 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
             a, b = speech_span(xn, SR_ALIGN)
             natural_dur = (b - a) / SR_ALIGN
             clip_words = [w for cue in clip["cues"] for w in spoken_words(cue["text"])]
-            spans = align(xn[a:b], clip_words)
-            # A clip that was assembled by a tool (a chant laid out burst by burst: scripts/split-takes.py) comes with
-            # the time of each of its words, in seconds from the first sound. That is exact; the aligner is not asked.
-            known = os.path.splitext(p)[0] + ".words.json"
-            if os.path.exists(known):
-                given = json.load(open(known, encoding="utf8"))
-                if len(given) == len(clip_words):
-                    spans = [(float(s0), float(e0)) for s0, e0 in given]
+            interpolated = []
+            spans = assembled_spans(p, len(clip_words), natural_dur)
+            if spans is None:
+                spans = align(xn[a:b], clip_words, strict=require_alignment, interpolated=interpolated)
             xo = decode(p, SR_OUT, tempo, start=a / SR_ALIGN, end=b / SR_ALIGN)
             dur = len(xo) / SR_OUT
-            how = "aligned"
+            how = "interpolated" if interpolated else "aligned"
+            if spans is not None:
+                k = dur / natural_dur  # what the tempo filter really did, measured
+                spans = [(s0 * k, e0 * k) for s0, e0 in spans]
+                if any(round(t + end, 3) <= round(t + start, 3) for start, end in spans):
+                    spans = None  # a word vanished on the output clock
             if spans is None:
+                if require_alignment:
+                    sys.exit(f"{clip['name']}: words could not all be aligned. Install pocketsphinx, check the transcript and pronunciations, then retry. No outputs were replaced.")
                 spans = spread(clip_words, 0.0, dur)
                 how = "estimated"
             else:
-                k = dur / natural_dur  # what the tempo filter really did, measured
-                spans = [(s0 * k, e0 * k) for s0, e0 in spans]
                 measured = True
             i = 0
             for cue in clip["cues"]:
@@ -364,7 +403,10 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
                     s, e = spans[i]
                     words_out.append({"w": w, "s": t + s, "e": t + e})
                     i += 1
-            clip_info.append({"name": clip["name"], "at": round(t, 3), "seconds": round(dur, 3), "timing": how})
+            info = {"name": clip["name"], "at": round(t, 3), "seconds": round(dur, 3), "timing": how}
+            if how == "interpolated":
+                info["interpolatedWords"] = interpolated
+            clip_info.append(info)
             print(f"  {clip['name']:<14} {dur:6.2f}s  {len(clip_words):3d} words  {how}")
             fade = int(0.004 * SR_OUT)
             xo[:fade] *= np.linspace(0, 1, fade)
@@ -406,6 +448,7 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
         "fps": fps,
         "duration": round(end, 4),
         "estimated": not measured,
+        "wordTiming": "estimated" if not measured else ("aligned" if all(c["timing"] == "aligned" for c in clip_info) else "partial"),
         "tempo": round(tempo, 4),
         "wordsPerMinute": round(n_words / words_out[-1]["e"] * 60.0, 1),
         "audio": audio_rel,
@@ -420,7 +463,7 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
 
     durs = sorted(c["end"] - c["start"] for c in cues)
     print(f"\n  {len(cues)} shots, {n_words} words, {end:.1f}s, {timing['wordsPerMinute']:.0f} words/min"
-          f"{' (ESTIMATED: no audio measured)' if not measured else ''}")
+          f" (word times: {timing['wordTiming']})")
     print(f"  shot length: shortest {durs[0]:.2f}s, median {durs[len(durs)//2]:.2f}s, longest {durs[-1]:.2f}s")
     long = [c for c in cues if c["end"] - c["start"] > 6.0]
     for c in long:
@@ -450,6 +493,7 @@ if __name__ == "__main__":
     b.add_argument("--tempo", default="auto", help="'auto' (reach --wpm, at most x1.6), or a number such as 1.3")
     b.add_argument("--gap", type=float, default=0.08, help="seconds of air between two clips (default 0.08)")
     b.add_argument("--estimate", action="store_true", help="no recordings yet: time the words from --wpm alone")
+    b.add_argument("--require-alignment", action="store_true", help="stop before replacing any output if any recorded word needs an estimate")
     b.add_argument("--fps", type=int, default=30)
     b.add_argument("--tail", type=float, default=0.5, help="seconds held after the last word")
     b.add_argument("--lead", type=float, default=0.06, help="how far before a line's first word its shot cuts in")
@@ -457,4 +501,4 @@ if __name__ == "__main__":
     if args.cmd == "clips":
         list_clips(args.film)
     else:
-        build(args.film, args.wpm, args.tempo, args.gap, args.estimate, args.fps, args.tail, args.lead)
+        build(args.film, args.wpm, args.tempo, args.gap, args.estimate, args.fps, args.tail, args.lead, args.require_alignment)

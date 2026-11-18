@@ -18,7 +18,9 @@
     "shots": "node scripts/shots.mjs",
     "shot-log": "node scripts/shot-log.mjs",
     "sound": "python3 scripts/sound.py",
-    "metrics": "python3 scripts/film-metrics.py"
+    "metrics": "python3 scripts/film-metrics.py",
+    "rehearse": "node scripts/rehearse.mjs",
+    "test:direction": "node --test tests/direction.test.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.2",
@@ -34,6 +36,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@types/three": "^0.187.0",
+    "esbuild": "0.28.1",
     "typescript": "^5.9.0"
   }
 }

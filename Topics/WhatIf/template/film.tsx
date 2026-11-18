@@ -17,13 +17,14 @@ import { scene1 } from "./scene1";
 export const film = defineFilm({
   id: "__ID__",
   title: "__TITLE__",
-  topic: "what-if",
+  topic: "__TOPIC__",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/__ID__/mix.mp3" },
   // A finished film plays the mix. `npm run check` fails one that does not.
-  captions: { words: timing.words, y: 0.72 },
+  post: { shaders: true },
+  captions: { words: timing.words, y: 0.72, motion: "on-beat" },
   World,
   scenes: [scene1],
 });

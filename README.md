@@ -9,7 +9,9 @@ This is not a template for "a Minecraft video". It is a director's framework wit
 > **It makes more than one kind of video.** The 20-second short below is the base. A narrated one-to-three-minute
 > story that begins "In this town, …" is a different kind, a **topic**, with its own rules, pack, starter and
 > sound: see [Topics](#topics-more-than-one-kind-of-video). Decide which one you are making first.
-> [`AGENTS.md`](AGENTS.md) starts with that question.
+> [`AGENTS.md`](AGENTS.md) starts with that question. For narrated films, follow the
+> [reference-to-delivery directing pass](docs/DIRECTING.md), including the no-render rehearsal.
+> Using Monster Village Part 1? [Read the study for new Shorts](Topics/InThisTown/reference/monster-village/NEW-SHORT.md).
 
 ---
 
@@ -80,15 +82,18 @@ Then:
 Everything above is the base format, the 20-second cinematic short. A **topic** is another kind of video with its own
 rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules are not.
 
-| Topic | What it makes | Reference film |
+| Topic | What it makes | Start here |
 |---|---|---|
-| [In This Town](Topics/InThisTown/README.md) | A one-to-three-minute narrated Minecraft story: "In this town, …", a rule nobody explains, a twist. A cut about every two seconds, every word captioned, music and sound effects under the voice | `in-this-town-same-face` (1:45, with sound): [its page](Topics/InThisTown/reference/same-face/README.md). **Four films the owner approved are kept with their source code and their mp4 in [`Topics/InThisTown/reference/`](Topics/InThisTown/reference/README.md)**: Same Face, Nobody Looked at the Moon (1:52, at night), The Monster Egg (2:57, voice only) and Superpower at 18 (2:48) |
-| [Stories](Topics/Stories/README.md) — renamed from Explainer by the owner on 2026-11-11 | A 30–60 second answer to one question: a money lesson, what inflation is. One narrator, every sentence shown as a thing in the world, and a camera that never cuts: it flies from one floating island to the next | `why-does-bread-cost-more-every-year` (0:49, with sound), our own first film of the topic, approved by the owner: [its page](Topics/Stories/reference/bread/README.md). The film: `renders/why-does-bread-cost-more-every-year.mp4` |
-| [What If](Topics/WhatIf/README.md) | A one-to-two-minute story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town, with a school to tell it in and parts that show a power | `what-if-you-could-see-who-had-a-crush-on-you` (1:54, with sound), our own first film of the topic, approved by the owner: [its page](Topics/WhatIf/reference/crush/README.md). The film: `renders/what-if-you-could-see-who-had-a-crush-on-you.mp4` |
+| [In This Town](Topics/InThisTown/README.md) | One kid and an unexplained town rule; cuts to the recorded words | [Same Face and the indexed references](Topics/InThisTown/reference/README.md) |
+| [Stories](Topics/Stories/README.md) | First-person story, any world; escalation, cost, visible payoff | [Topic guide and inherited craft reference](Topics/Stories/README.md) |
+| [What If](Topics/WhatIf/README.md) | One impossible power and what it costs the teller | [Topic guide](Topics/WhatIf/README.md) |
+| [Explainer](Topics/Explainer/README.md) | A factual question answered by a continuous flight through exhibits | [Topic guide](Topics/Explainer/README.md) |
+| [Recreation](Topics/Recreation/README.md) | Real-life skills and memes, played straight by block people | [Topic and owner’s script](Topics/Recreation/README.md) |
+| [Deadpan](Topics/Deadpan/README.md) | One mundane rule taken literally; fast cuts and an ironic button | [Owner's brief](Topics/Deadpan/reference/OWNER-BRIEF.md) |
 
 ```bash
 npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
-npm run new -- "Why Bread Costs More" --topic stories
+npm run new -- "Why Bread Costs More" --topic explainer
 npm run new -- "What If You Could See Who Has a Crush on You" --topic what-if
 ```
 

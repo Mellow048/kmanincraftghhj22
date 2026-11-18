@@ -1,112 +1,138 @@
 {
  "film": "__ID__",
  "fps": 30,
- "duration": 4.0667,
+ "duration": 5.2333,
  "estimated": true,
+ "wordTiming": "estimated",
  "tempo": 1.0,
- "wordsPerMinute": 269.1,
+ "wordsPerMinute": 265.4,
  "audio": null,
  "clips": [],
  "cues": [
   {
-   "id": "1.town",
+   "id": "1.hand",
    "start": 0.0,
-   "end": 1.6667,
-   "text": "In this town, everyone did one strange thing"
+   "end": 1.8333,
+   "text": "Whenever I raised my hand the whole queue bowed."
   },
   {
    "id": "1.me",
-   "start": 1.6667,
-   "end": 2.2667,
-   "text": "except me."
+   "start": 1.8333,
+   "end": 3.3333,
+   "text": "I lowered it. They stood up."
   },
   {
    "id": "14.sub",
-   "start": 2.2667,
-   "end": 4.0667,
-   "text": "Subscribe before I find out why."
+   "start": 3.3333,
+   "end": 5.2333,
+   "text": "Subscribe before I try it again."
   }
  ],
  "words": [
   {
-   "w": "In",
+   "w": "Whenever",
    "s": 0.0,
-   "e": 0.167
-  },
-  {
-   "w": "this",
-   "s": 0.167,
-   "e": 0.333
-  },
-  {
-   "w": "town,",
-   "s": 0.333,
-   "e": 0.5
-  },
-  {
-   "w": "everyone",
-   "s": 0.586,
-   "e": 1.0
-  },
-  {
-   "w": "did",
-   "s": 1.0,
-   "e": 1.166
-  },
-  {
-   "w": "one",
-   "s": 1.166,
-   "e": 1.333
-  },
-  {
-   "w": "strange",
-   "s": 1.333,
-   "e": 1.5
-  },
-  {
-   "w": "thing",
-   "s": 1.5,
-   "e": 1.666
-  },
-  {
-   "w": "except",
-   "s": 1.666,
-   "e": 1.956
-  },
-  {
-   "w": "me.",
-   "s": 1.956,
-   "e": 2.123
-  },
-  {
-   "w": "Subscribe",
-   "s": 2.321,
-   "e": 2.611
-  },
-  {
-   "w": "before",
-   "s": 2.611,
-   "e": 2.901
+   "e": 0.406
   },
   {
    "w": "I",
-   "s": 2.901,
-   "e": 3.067
+   "s": 0.406,
+   "e": 0.57
   },
   {
-   "w": "find",
-   "s": 3.067,
-   "e": 3.234
+   "w": "raised",
+   "s": 0.57,
+   "e": 0.734
   },
   {
-   "w": "out",
-   "s": 3.234,
-   "e": 3.401
+   "w": "my",
+   "s": 0.734,
+   "e": 0.897
   },
   {
-   "w": "why.",
+   "w": "hand",
+   "s": 0.897,
+   "e": 1.061
+  },
+  {
+   "w": "the",
+   "s": 1.061,
+   "e": 1.225
+  },
+  {
+   "w": "whole",
+   "s": 1.225,
+   "e": 1.388
+  },
+  {
+   "w": "queue",
+   "s": 1.388,
+   "e": 1.552
+  },
+  {
+   "w": "bowed.",
+   "s": 1.552,
+   "e": 1.716
+  },
+  {
+   "w": "I",
+   "s": 1.91,
+   "e": 2.073
+  },
+  {
+   "w": "lowered",
+   "s": 2.073,
+   "e": 2.358
+  },
+  {
+   "w": "it.",
+   "s": 2.358,
+   "e": 2.522
+  },
+  {
+   "w": "They",
+   "s": 2.716,
+   "e": 2.88
+  },
+  {
+   "w": "stood",
+   "s": 2.88,
+   "e": 3.044
+  },
+  {
+   "w": "up.",
+   "s": 3.044,
+   "e": 3.207
+  },
+  {
+   "w": "Subscribe",
    "s": 3.401,
-   "e": 3.567
+   "e": 3.686
+  },
+  {
+   "w": "before",
+   "s": 3.686,
+   "e": 3.971
+  },
+  {
+   "w": "I",
+   "s": 3.971,
+   "e": 4.135
+  },
+  {
+   "w": "try",
+   "s": 4.135,
+   "e": 4.299
+  },
+  {
+   "w": "it",
+   "s": 4.299,
+   "e": 4.462
+  },
+  {
+   "w": "again.",
+   "s": 4.462,
+   "e": 4.747
   }
  ]
 }

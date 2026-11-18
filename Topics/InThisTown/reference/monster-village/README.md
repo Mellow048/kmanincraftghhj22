@@ -1,14 +1,16 @@
 # Reference: "In This Town, I Live in a Monster Village" (part one)
 
+**Making a new Short? Start with [the Part 1 director’s readme](NEW-SHORT.md).** It pairs [frames from the delivered cut](reading-frames.jpg) with the words, the choices they set up, and a transfer card for your own film. Use that page for the latest owner-reported numbers and what “stayed to watch” measures. The dated studies below are kept as written, not as shot or analytics requirements.
+
 **Approved by the owner** ("i liked the superhero and this one"), and kept here at his request with its source, so
 the next agent can build like it. A boy is the only human in a village of monsters who are his family; the one
 player who watches him, Mo, turns out to have been guarding them all along.
 
 | File | What it is |
 |---|---|
-| `in-this-town-monster-village.mp4` | **The film as delivered**: 1080×1920, 2:55, 74 shots, full sound. A copy of `renders/in-this-town-monster-village.mp4` |
-| `contact-sheet-every-5-seconds.jpg` | One frame every five seconds, on one sheet. An agent cannot watch a video: read this first |
-| `shot-log.md` | Every shot on one page: start, length, words, place, camera, and why this picture |
+| [in-this-town-monster-village.mp4](in-this-town-monster-village.mp4) | **The film as delivered**: 1080×1920, 2:55, 74 shots, full sound. A copy of `renders/in-this-town-monster-village.mp4` |
+| [contact-sheet-every-5-seconds.jpg](contact-sheet-every-5-seconds.jpg) | One frame every five seconds for a broad survey; the [reading frames](reading-frames.jpg) show changes this sampling misses |
+| [shot-log.md](shot-log.md) | Every shot on one page: start, length, words, place, camera, and why this picture |
 | `source/` | A **snapshot** of the source: `narration.md`, `timing.json`, `kit.tsx`, `world.tsx`, `scene1.tsx` … `scene10.tsx`, `film.tsx`, `sound.json` |
 
 The film that renders lives in `src/videos/in-this-town-monster-village/`. `source/` is a copy to read; it is not

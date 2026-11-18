@@ -130,7 +130,7 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
       camera.fov = fov;
       camera.updateProjectionMatrix();
     }
-  });
+  }, -1); // Update before sky, billboards and post, including on a non-sequential frame seek.
 
   useEffect(() => {
     const last = shots[shots.length - 1];

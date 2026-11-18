@@ -121,6 +121,7 @@
     "wordsPerMinute": 259
   },
   "pack": "Topics/Stories/PACK.md",
+  "starterCut": "short",
   "template": "Topics/Stories/template",
   "models": {
     "note": "Finished films the owner approved, to build like. The first is the topic's reference film. Each is kept with its source and its mp4 in Topics/Stories/Old Reference (README.md there lists them). Copy how they are built; never copy their story.",

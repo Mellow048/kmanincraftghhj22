@@ -101,6 +101,9 @@ const codeTitle = title.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 const fill = (source, isCode) =>
   source
     .replaceAll("__TITLE__", isCode ? codeTitle : title)
+    .replaceAll("__TOPIC__", topic?.id ?? "")
+    .replaceAll("__TOPIC_FOLDER__", topic?.folder ?? "")
+    .replace(/^  __CUT_LINE__\r?\n/gm, topic?.starterCut ? `  cut: ${JSON.stringify(topic.starterCut)},\n` : "")
     .replaceAll("__ID__", slug)
     .replaceAll("__SLUG__", slug)
     .replaceAll("__CAMEL__", camel);
@@ -198,23 +201,24 @@ if (topic) {
   const estimate = `python3 scripts/narration.py build ${slug} --estimate`;
   const run = spawnSync("python3", ["scripts/narration.py", "build", slug, "--estimate"], { cwd: root, encoding: "utf8" });
   if (run.status === 0) console.log(`Wrote src/videos/${slug}/timing.json (estimated from the placeholder script).`);
-  else console.log(`python3 was not found, so timing.json is the starter's own. After you change narration.md, run:\n  ${estimate}`);
+  else console.log(`Could not estimate the script (${run.error?.message ?? run.stderr.trim()}). Keeping the starter timing. After you change narration.md, run:\n  ${estimate}`);
   console.log("");
   console.log(`This is a film of the topic "${topic.name}". Its rules are in ${topic.folder}/README.md: read it first.`);
+  if (topic.id === "in-this-town") console.log(`Using Monster Village Part 1? Start with ${topic.folder}/reference/monster-village/NEW-SHORT.md (frames and transfer card).`);
   console.log("The order of work, and each step needs the owner's yes before the next:");
   console.log(`  1. IDEAS, then the SCRIPT in narration.md (${topic.folder}/SCRIPT.md). Stop. The owner approves the script.`);
-  console.log(`  2. VOICE: python3 scripts/narration.py clips ${slug}, record each clip, then narration.py build ${slug}.`);
+  console.log(`  2. VOICE: python3 scripts/narration.py clips ${slug}, record each clip, then python3 scripts/narration.py build ${slug} --require-alignment.`);
   if (topic.camera?.continuous) {
     console.log(`  3. STOPS: one for each script line, flown to (${topic.folder}/SHOTS.md), from the pack (${topic.pack ?? topic.folder}).`);
   } else {
     console.log(`  3. SHOTS: one per script line (${topic.folder}/SHOTS.md), from the pack (${topic.pack ?? topic.folder}).`);
   }
-  console.log(`     Review with: node scripts/shots.mjs ${slug}`);
+  console.log(`     Rehearse without rendering: npm run rehearse -- ${slug} (docs/DIRECTING.md).`);
   if (topic.sound?.required) {
     console.log(`  4. SOUND: python3 scripts/sound.py draft ${slug}, fill in sound.json (${topic.sound.guide}),`);
     console.log(`     then python3 scripts/sound.py build ${slug}, and point film.tsx at the mix.`);
   }
-  console.log("  5. npm run typecheck && npm run check, then render (AGENTS.md §9).");
+  console.log(`  5. npm run typecheck && npm run check, then npm run rehearse -- ${slug} --final. Review picture AND sound (docs/DIRECTING.md; AGENTS.md §9).`);
   // The topic's reference film: a finished film of ours that the owner chose. Older topic files only list `models`.
   const model = topic.reference?.film ?? Object.keys(topic.models ?? {}).find((key) => key !== "note");
   if (model) {

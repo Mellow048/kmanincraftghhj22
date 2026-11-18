@@ -20,8 +20,10 @@ export type Timing = {
   fps: number;
   /** Whole film, seconds. */
   duration: number;
-  /** True when no audio was measured and the times are a words-per-minute guess. */
+  /** Legacy summary: true if no words were measured. False does not rule out a guessed clip. */
   estimated?: boolean;
+  /** Written by new builds. Archived clocks may only record the method per clip. */
+  wordTiming?: "estimated" | "aligned" | "partial";
   cues: Array<{ id: string; start: number; end: number; text: string }>;
   words: CaptionWord[];
 };
@@ -101,23 +103,25 @@ export function storyScene(timing: Timing, def: StorySceneDef): SceneDef {
     return { ...camera, at: begins[i] - start, dur: end - begins[i] };
   });
 
+  const sampleStage = (index: number, local: number) => {
+    const dur = shots[index].dur;
+    return def.shots[index].stage?.(local, { dur, p: clamp01(local / dur) });
+  };
   const Component: React.FC = () => {
     const t = useTime();
     let index = 0;
     for (let i = 0; i < shots.length; i++) if (shots[i].at <= t + 1e-6) index = i;
     const local = t - shots[index].at;
-    const dur = shots[index].dur;
-    const stage = def.shots[index].stage;
     return (
       <>
         {def.Component ? <def.Component /> : null}
         {/* The key remounts the stage on every cut, so one shot's state never leaks into the next. */}
-        <Fragment key={`${def.shots[index].cue}#${index}`}>{stage ? stage(local, { dur, p: clamp01(local / dur) }) : null}</Fragment>
+        <Fragment key={`${def.shots[index].cue}#${index}`}>{sampleStage(index, local)}</Fragment>
       </>
     );
   };
 
-  return { id: def.id, title: def.title, duration: cursor - start, shots, Component };
+  return { id: def.id, title: def.title, duration: cursor - start, shots, Component, sampleStage };
 }
 
 /**

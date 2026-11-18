@@ -20,8 +20,10 @@ npm run new -- "In This Town, Nobody Rang the Bell" --topic in-this-town
 ```
 
 That gives you a film folder made from this topic's starter ([`template/`](template/)): a script page to fill in, a
-`kit.tsx` wired to the pack, a town to change, and one scene with two shots that already render. It does not give
-you a story.
+`kit.tsx` wired to the pack, a town to change, and a three-setup blocking study: reach, walk around the table, reverse for the consequence.
+It does not give you a story. Follow the [directing pass](../../docs/DIRECTING.md) from reference to phone-size review.
+
+Using Monster Village Part 1? Open [its director’s readme](reference/monster-village/NEW-SHORT.md) **before pitching**. Bring back a time in that cut and a different action in yours, not its family or its raid.
 
 ## The reference film, and the other films the owner approved
 

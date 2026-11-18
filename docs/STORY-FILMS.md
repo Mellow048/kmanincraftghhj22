@@ -15,6 +15,8 @@ npm run new -- "What If You Could See Who Has a Crush on You" --topic what-if
 npm run new -- "Why Bread Costs More" --topic explainer
 ```
 
+**Directing and delivery:** [choose the reference, block the act, rehearse without rendering, then review picture and sound](DIRECTING.md).
+
 ## 1. The script: `src/videos/<film>/narration.md`
 
 Inside a ```` ```narration ```` block:
@@ -34,7 +36,7 @@ Inside a ```` ```narration ```` block:
 ```bash
 python3 scripts/narration.py clips <film>              # prints each clip's text and where to save it
 python3 scripts/narration.py build <film> --estimate   # no audio yet: time the words from the target pace
-python3 scripts/narration.py build <film>              # measure the recordings
+python3 scripts/narration.py build <film> --require-alignment  # delivery: stop if a word cannot be measured
 ```
 
 Record each clip to `public/audio/<film>/raw/<clip>.mp3`. `build` then:
@@ -48,7 +50,9 @@ Record each clip to `public/audio/<film>/raw/<clip>.mp3`. `build` then:
    cuts in on, a hair before its first word.
 
 Needs Python 3.9+, `numpy`, ffmpeg (or `pip install imageio-ffmpeg`), and `pip install pocketsphinx` for word-accurate
-timing. Rendering needs none of these: the outputs are committed.
+timing. Listing clips and making an estimated draft need only Python. Without `--require-alignment`, a build may
+interpolate missing words or estimate a clip; inspect `wordTiming` and `clips[].timing`, not only `estimated`.
+Rendering needs none of the audio tools: the outputs are committed.
 
 **Change a word → run `build` again.** Every cut and every caption moves with it. Never edit `timing.json` by hand.
 

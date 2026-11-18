@@ -14,7 +14,7 @@ really doing was … .
 - One teller, first person, past tense. Fast and plain: about 255 words a minute, no gaps.
 - Each `[cue]` line is **one shot**: the words heard while that picture is on screen. Cut on the noun. 5–12 words.
 - Each `# clip` is one recording. Record it to `public/audio/__ID__/raw/<clip>.mp3`,
-  then run `python3 scripts/narration.py build __ID__`.
+  then run `python3 scripts/narration.py build __ID__ --require-alignment`.
 - The first line is the question, and it starts "What if". The last line is the subscribe line.
 - 14 beats, 250–520 words, one to two minutes.
 

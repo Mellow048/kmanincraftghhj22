@@ -101,6 +101,7 @@
     "wordsPerMinute": 259
   },
   "pack": "Topics/InThisTown/PACK.md",
+  "starterCut": "short",
   "template": "Topics/InThisTown/template",
   "models": {
     "note": "Finished films the owner approved, to build like. The first is the topic's reference film. Each is kept with its source and its mp4 in Topics/InThisTown/reference (README.md there lists them). Copy how they are built; never copy their story.",
