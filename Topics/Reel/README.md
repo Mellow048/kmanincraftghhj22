@@ -5,7 +5,7 @@ The owner explicitly required the existing Minecraft film framework after reject
 
 This is a recreation of an approved meme format, not an In This Town story or an explainer. Use `storyScene`,
 `MinecraftAvatar`, `Vox`, the engine camera, real staged props and the engine caption track.
-The sincere narration and sped-up chant stay. The large motivational lines are physical 3D title cards,
+The sincere narration and sped-up chant stay. The large motivational lines are 3D pixel-font title meshes,
 not replacement narration. Caption only the spoken words with the ordinary caption track.
 
 Production target from the approved treatment: roughly 100–110 seconds. Sound: voice-20,
