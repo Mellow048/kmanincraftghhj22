@@ -10,7 +10,7 @@ its own references and its own kit. The engine in `src/engine/` is shared by all
 | [What If](WhatIf/README.md) | A kid gets one impossible power | `--topic what-if` |
 | [Explainer](Explainer/README.md) | A factual question; fly to the exhibits without a cut | `--topic explainer` |
 | [Deadpan](Deadpan/README.md) | A mundane rule taken literally; fast escalation and an ironic button | `--topic deadpan` |
-| [Recreation](Recreation/README.md) | Real-life meme stories in a block town, not game mechanics. Provisional; the owner's script is the reference | `--topic recreation` |
+| [Recreation](Recreation/README.md) | Real-life meme stories in a block town, not game mechanics | [Hus hus reference: approved MP4 and source](Recreation/Hus%20hus%20reference/README.md) · `--topic recreation` |
 
 [`Shared/`](Shared/README.md) holds common parts; it isn't a format. The selected `topic.json` is the
 machine contract (`state`/`provisional` if its numbers are provisional). For direction and delivery

@@ -3,16 +3,19 @@
   "name": "Recreation",
   "folder": "Topics/Recreation",
   "profile": "story",
-  "state": "PROVISIONAL",
-  "provisional": {
-    "why": "The owner asked for the first film (2026-11-18, 'go i wont review it') before any film of this kind of ours existed. The reference is his own script, not a finished video, so nothing here is measured from a picture.",
-    "borrowed": {
-      "film.seconds": "His script: 'Target duration: 1:40-1:50'. The range is that with ten seconds each side.",
-      "film.words": "His script has about 150 spoken words; ours has about 200. No reference video to count.",
-      "film.shotSeconds": "One script line holds a whole stretch of action under it (the training, the busy shop), cut into several angles with `cut:`. So the limit on one LINE is long. The limit on one PICTURE is in README.md: nothing holds over 3 seconds.",
-      "sound": "Topics/InThisTown/topic.json, with the changes named in sound.note."
-    },
-    "whenTheReferenceArrives": "When the owner approves a film of this topic, or sends the reel he took the format from: measure its length, words, cuts and sound, replace the borrowed numbers, name the film in `reference` and `models`, and delete this block and `state`."
+  "reference": {
+    "film": "thats-me-the-elbow",
+    "page": "Topics/Recreation/Hus hus reference",
+    "owner": "i like it the humor is top tier",
+    "use": "Study the deadpan narrator, the chant tied to visible actions and the payoff in the picture; do not reuse the family photo gag.",
+    "measured": {
+      "seconds": 77.5,
+      "words": 242,
+      "cues": 39,
+      "setups": 49,
+      "sfxPerMinute": 72.8,
+      "musicUnderVoiceDb": 18.3
+    }
   },
   "origin": {
     "page": "Topics/Recreation/reference/OWNER-SCRIPT.md",
@@ -20,21 +23,25 @@
     "owner": "its IRL coated with minecraft. No nether, no mc shenanigans. its a recreation cmon."
   },
   "premise": {
-    "oneLiner": "A real-life story from a meme, recreated with block people in a block town. Somebody skips every party to train one ordinary skill, far too seriously, and the people who laughed need it at the end.",
+    "oneLiner": "A real, everyday skill done far too seriously by a block-town character, told with the breathy HUS HUS HUS meme. The skill must change the story, not just decorate a montage.",
     "mustHave": [
-      "frame one is the skill at full speed and its result, readable with the sound off",
-      "a question asked in the hook and answered in the last scene",
-      "a real place, a real job, real things: a house, a street, a shop",
-      "the first failure, on somebody who did not ask for it",
-      "a training run with at least four different failures",
-      "'Training.', a silence, and the chant as the last sound"
+      "The first two seconds show the real skill in action and its readable result, with the premise clear muted.",
+      "One identifiable ordinary skill is overtrained through visible, distinct attempts and failures.",
+      "Every on-screen performance of the HUS skill has the matching HUS breaths; the chant marks actual actions, not generic montage filler.",
+      "An original real-life problem and payoff; the practiced skill has a visible consequence.",
+      "The lead treats the disproportionate practice seriously; the comedy comes from the contrast and the images.",
+      "Keep spoken gaps at or under 1.9 seconds; use pictures and action to carry quieter beats."
     ],
     "never": [
-      "anything from the game: no Nether, no lava, no mobs, no crafting, no game mechanics, no Minecraft jokes",
-      "the owner's own lines from his script, or another film's",
-      "a hook that opens on a face, a title or a sentence of narration",
-      "the main character finding any of it funny"
-    ]
+      "game mechanics, Nether, mobs, lava, crafting, or Minecraft jokes: the real world is recreated with block people and places.",
+      "reuse another film’s lines, gag, characters, or exact story; especially do not retell the family-photo / four-ears plot of the approved Elbow reference.",
+      "begin on a face, title card, or narration instead of the skill in action.",
+      "make the lead knowingly play the dedication as a joke."
+    ],
+    "formats": {
+      "approved-elbow": "The first approved HUS film starts with an awkward family photo, then turns practiced posing into a solution and an unrelated final-image joke. Its seven-scene storyboard is a model of action-to-chant and a visual payoff, not a plot template.",
+      "owner-origin": "The cook / party / job / reunion outline in origin.page is one format, not a mandatory plot. The barber is an unreviewed first build that supplies reusable production assets."
+    }
   },
   "camera": {
     "builder": "storyScene",
@@ -68,12 +75,13 @@
     ],
     "maxWordsPerShot": 12,
     "captions": true,
-    "shortsRule": "A vertical video over 3:00 is not a YouTube Short. No film of this topic comes near it."
+    "shortsRule": "Keep the vertical film well under 3:00. Working target and hard limits below are retained from the current Recreation contract; the approved 77.50 s Elbow film is a measured reference, not a duration quota."
   },
   "pack": "Topics/Recreation/README.md",
   "template": "Topics/InThisTown/template",
   "models": {
-    "note": "No APPROVED film yet. The first one built is src/videos/the-barber-who-never-went-to-parties; its kit.tsx holds every part a second film would want (the block town street, the living room, the shop, people with hair that can be cut)."
+    "thats-me-the-elbow": "The approved HUS reference: film, source, shot sheet and measured review in Topics/Recreation/Hus hus reference.",
+    "note": "The owner-approved Elbow film is the comedy, action/chant and visual-payoff reference; its story is not reusable. The barber is an unreviewed first build with reusable room and shop parts. The cook / parties outline is the owner’s originating example, not a mandatory plot."
   },
   "sound": {
     "required": true,
@@ -105,6 +113,6 @@
       "room": "room",
       "shop": "room"
     },
-    "note": "Borrowed from Topics/InThisTown/topic.json, except: no owner's track (that track belongs to the In This Town shorts), so the music is written from moods, one for each scene; more effects a minute and a shorter longest gap, because half of a film of this topic has no words over it."
+    "note": "Use an original score, not the In This Town track. The approved HUS mix is measured in reference.measured and in the archived source/sound.lock.json; the ranges here are working limits."
   }
 }

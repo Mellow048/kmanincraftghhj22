@@ -1,14 +1,11 @@
 # Recreation
 
-**PROVISIONAL: no film of this topic is approved yet, and its numbers are borrowed (`topic.json`, `provisional`).**
+**Approved HUS film: [That’s Me. The Elbow. — MP4, source and shot sheet](Hus%20hus%20reference/README.md).** Study how the chant marks individual movements and how the last joke works with the sound off. The 77.50 s cut has 49 setups and 242 spoken words. The ranges in `topic.json` are working limits, not a requirement to match one film.
 
 A real-life story from a meme, **recreated with block people in a block town**. The owner's words: "its IRL coated
 with minecraft. No nether, no mc shenanigans. its a recreation cmon."
 
-The first format is *The Guy Who Never Went to Parties*: somebody skips every party to train one ordinary skill, far
-too seriously, and the friends who laughed need that skill in the last scene. The owner's own script (a cook) is in
-[`reference/OWNER-SCRIPT.md`](reference/OWNER-SCRIPT.md). Ours is the barber:
-`src/videos/the-barber-who-never-went-to-parties`.
+The owner’s originating format is *The Guy Who Never Went to Parties*: somebody skips parties to train one ordinary skill, far too seriously, and the friends who laughed need it at the end. His cook script is in [`reference/OWNER-SCRIPT.md`](reference/OWNER-SCRIPT.md); our first build was the [barber](../../src/videos/the-barber-who-never-went-to-parties/), which was built without his review. The party / job / reunion beat sheet below records that version; it is not a required plot. The approved Elbow reference instead turns an awkward family photo into a different final joke. Learn its action-to-chant and visual payoff, not its photo gag. Pitch a fresh real-life skill and consequence; after selection, get script approval before recording or building.
 
 ## The meme
 
@@ -36,6 +33,8 @@ The meme spells it HUSS. The owner spells it HUS, and so do the captions. The vo
 
 ## The seven scenes
 
+This is the owner-origin party / job / reunion example, not a fixed beat sheet for every Recreation story. Keep the current numerical, caption and voice-gap rules below, and use the approved reference for how to show the action.
+
 | | Scene | Seconds | What it must do |
 |---|---|---|---|
 | 1 | The hook | 0–5 | The skill, the result, "HOW?!", the rewind |
@@ -61,7 +60,7 @@ The meme spells it HUSS. The owner spells it HUS, and so do the captions. The vo
 
 ## Work order
 
-1. The idea, in the owner's layout (title, target duration, theme, seven scenes).
+1. Pitch the idea in the owner's layout (title, target duration, theme, seven scenes). Write the selected script for approval before recording or building anything.
 2. `npm run new -- "<Title>" --topic recreation` ([`SCRIPT.md`](SCRIPT.md) and [`SHOTS.md`](SHOTS.md), which it names, are the short forms of this page)
 3. `narration.md`, the voices, `scripts/narration.py build <film> --tempo 1.3`
 4. `kit.tsx` (people, things), `world.tsx` (places), one scene file per scene.

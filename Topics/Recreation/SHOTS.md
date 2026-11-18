@@ -15,4 +15,4 @@ first film learnt on top of them.
 | 7 | **A fast run changes one thing per picture.** A new head in the same chair, from the same camera | Scene 6 |
 | 8 | **The hook and the reunion are the same pictures**, from the same cameras, so the loop is felt and not explained | Scenes 1 and 7 |
 
-The model: `src/videos/the-barber-who-never-went-to-parties/`.
+The chair and queue examples are from [the barber](../../src/videos/the-barber-who-never-went-to-parties/). For an approved HUS action run, compare the [Elbow storyboard](Hus%20hus%20reference/source/STORYBOARD.md) with the [decoded shot sheet](Hus%20hus%20reference/shots.jpg): the thumb presses, the kid clears the sofa, and his shoes land on the tape.

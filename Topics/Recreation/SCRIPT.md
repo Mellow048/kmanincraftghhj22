@@ -19,4 +19,4 @@ the eight rules above them. This page is the checklist to hold a draft against.
 The chant is said fast. It is recorded as one long take and cut by `scripts/split-takes.py`; `speed` in the film's
 `takes.json` sets how fast each chant plays (the first film: 1.7 and 1.8). Shortening the gap alone clips the words.
 
-The model: `src/videos/the-barber-who-never-went-to-parties/narration.md`.
+For the original party / job / reunion outline, see the [barber script](../../src/videos/the-barber-who-never-went-to-parties/narration.md). For the owner-approved HUS comedy, read the [Elbow script](Hus%20hus%20reference/source/narration.md): its opening poses the problem with an elbow in a photograph, and the last image answers a different question from the one the couple asked.
