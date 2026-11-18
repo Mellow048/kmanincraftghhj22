@@ -360,7 +360,7 @@ export const scene4 = storyScene(timing, {
       // The lens stands back in the room's open floor and looks across at the open fridge, so the door is a
       // wing of the frame instead of a wall in front of it. Every shelf is at z 397.9 and the food sits
       // between the door and the body, which is the only place it can be seen from.
-      ...cam.push({ on: [1.15, 1.4, 399.2], dist: 3.0, to: 2.5, yaw: 142, pitch: 5, fov: 48 }),
+      ...cam.push({ on: [2.75, 1.05, 397.95], dist: 3.3, to: 2.7, yaw: -38, pitch: 4, fov: 50 }),
       zone: "home",
       look: "overworld-night",
       note: "The same fridge, open, and stacked to the door with food. The first joke in the film, paid off in the last minute.",
