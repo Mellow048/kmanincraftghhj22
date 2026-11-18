@@ -27,11 +27,15 @@ const VERT = /* glsl */ `
 
 const FRAG = /* glsl */ `
   uniform sampler2D map;
+  uniform vec3 tint;
   varying vec2 vUv;
   void main() {
     vec4 c = texture2D(map, vUv);
     if (c.a < 0.5) discard;
-    gl_FragColor = vec4(c.rgb, 1.0);
+    // Only the letters take the tint; the dark edge the font draws stays dark.
+    float l = max(c.r, max(c.g, c.b));
+    vec3 col = mix(c.rgb, c.rgb * tint, step(0.55, l));
+    gl_FragColor = vec4(col, 1.0);
   }
 `;
 
@@ -61,7 +65,13 @@ export function activeWord(words: CaptionWord[], t: number): CaptionWord | null 
   return t < holdUntil ? word : null;
 }
 
-export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1, letterCase = "upper" }) => {
+export const Captions: React.FC<CaptionSettings> = ({
+  words,
+  y = 0.72,
+  size = 1,
+  letterCase = "upper",
+  colors,
+}) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = frame / fps;
@@ -69,7 +79,11 @@ export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1,
   const material = useMemo(
     () =>
       new THREE.ShaderMaterial({
-        uniforms: { map: { value: null }, rect: { value: new THREE.Vector4(0, 0, 0, 0) } },
+        uniforms: {
+          map: { value: null },
+          rect: { value: new THREE.Vector4(0, 0, 0, 0) },
+          tint: { value: new THREE.Color(1, 1, 1) },
+        },
         vertexShader: VERT,
         fragmentShader: FRAG,
         transparent: true,
@@ -104,6 +118,10 @@ export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1,
     if (rect && tex) {
       material.uniforms.map.value = tex;
       (material.uniforms.rect.value as THREE.Vector4).set(rect[0], rect[1], rect[2], rect[3]);
+      if (colors && colors.length > 0) {
+        const i = word ? Math.max(0, words.indexOf(word)) % colors.length : 0;
+        (material.uniforms.tint.value as THREE.Color).set(colors[i]);
+      }
     }
   });
 
