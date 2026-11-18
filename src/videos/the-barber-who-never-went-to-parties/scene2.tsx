@@ -143,20 +143,21 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.weird",
       cut: 1.05,
-      ...cam.push({ on: home(0, 1.4, 0.4), dist: 2.3, to: 2.05, yaw: 0, pitch: 0, fov: 40 }),
+      ...cam.push({ on: home(0, 1.4, 0.3), dist: 3.9, to: 3.5, yaw: 168, pitch: 4, fov: 40 }),
       zone: "home",
       look: "overworld-night",
-      note: "The door swings shut across the party: my choice, made without a word, every night.",
-      stage: (t) => (
-        <>
-          <HomeDoor open={1 - tw(t, 0.25, 0.7)} />
-          {/* the hall lamp is behind the lens: without this the shut door is a black frame */}
-          <pointLight position={home(0.3, 1.9, 1.9)} color="#ffdcae" intensity={5} distance={5} decay={2} />
-          <Friend1 position={F1_STEP} animation="shrug" face="frown" gaze={0} />
-          <Friend2 position={F2_STEP} animation="idle" face="neutral" gaze={0} />
-          <Dancers t={t} />
-        </>
-      ),
+      note: "From the path, the door shuts on the two of them: my choice, made without a word, every night.",
+      stage: (t) => {
+        const shut = tw(t, 0.25, 0.7);
+        return (
+          <>
+            <HomeDoor open={1 - shut} />
+            {shut < 0.8 ? <Hero position={ME_HALL} rotationY={Math.PI} face="neutral" gaze={0} /> : null}
+            <Friend1 position={F1_STEP} animation={t > 0.75 ? "shrug" : "idle"} face="frown" headYaw={t > 0.85 ? -0.9 : 0} />
+            <Friend2 position={F2_STEP} animation="idle" face="neutral" headYaw={t > 0.95 ? 0.9 : 0} />
+          </>
+        );
+      },
     },
   ],
 });
