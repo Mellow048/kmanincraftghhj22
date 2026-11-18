@@ -1,0 +1,130 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "i-traded-my-bed-for-a-plate-of-stew",
+  "mix": "public/audio/i-traded-my-bed-for-a-plate-of-stew/mix.mp3",
+  "seconds": 106.6,
+  "built_from": {
+    "timing.json": "fd8c33e93e0d866bc11a12bd06ad8496994f2d49",
+    "sound.json": "d599586bd9f4b1b964b2078379b6e8d2bb006965",
+    "narration.mp3": "5a8420bded53a4c06e6175c22784ce6fc25e130c"
+  },
+  "mix_sha1": "57aa68272c0a98d6da7d17c179865482fcf5ea28",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "playful",
+      "at": 0.0
+    },
+    {
+      "from": "2.stick",
+      "mood": "curious",
+      "at": 9.87
+    },
+    {
+      "from": "3.why",
+      "mood": "playful",
+      "at": 20.03
+    },
+    {
+      "from": "4.hours",
+      "mood": "dark",
+      "at": 30.57
+    },
+    {
+      "from": "5.carried",
+      "mood": "dark",
+      "at": 42.17
+    },
+    {
+      "from": "6.pivot",
+      "mood": "curious",
+      "at": 51.4
+    },
+    {
+      "from": "7.bellfoot",
+      "mood": "wonder",
+      "at": 65.5
+    },
+    {
+      "from": "8.bed",
+      "mood": "hope",
+      "at": 76.03
+    },
+    {
+      "from": "9.but",
+      "mood": "playful",
+      "at": 91.13
+    },
+    {
+      "from": "10.dinner",
+      "mood": "playful",
+      "at": 97.73
+    }
+  ],
+  "beds": 6,
+  "measured": {
+    "musicUnderVoiceDb": 17.3,
+    "secondsWithoutMusic": 2.4,
+    "bedsUnderVoiceDb": 32.0,
+    "sfx": 136,
+    "sfxPerMinute": 76.5,
+    "sfxKinds": 12,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 51.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.9,
+    "voiceOverRestWorstDb": 8.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 8.0,
+        "t": 32.4,
+        "cue": "4.hours",
+        "sounding": []
+      },
+      {
+        "db": 8.6,
+        "t": 11.3,
+        "cue": "2.stick",
+        "sounding": [
+          "blip",
+          "thud"
+        ]
+      },
+      {
+        "db": 8.9,
+        "t": 44.2,
+        "cue": "5.duty",
+        "sounding": [
+          "swish"
+        ]
+      },
+      {
+        "db": 9.0,
+        "t": 97.4,
+        "cue": "9.best",
+        "sounding": [
+          "chime",
+          "paper"
+        ]
+      },
+      {
+        "db": 9.1,
+        "t": 78.7,
+        "cue": "8.floor2",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 9.2,
+        "t": 83.3,
+        "cue": "8.legs2",
+        "sounding": []
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -1.9,
+    "limiterMaxDb": 1.1
+  },
+  "failures": []
+}
