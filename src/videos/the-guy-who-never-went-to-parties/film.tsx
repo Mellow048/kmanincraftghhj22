@@ -11,13 +11,13 @@ import { scene1 } from "./scene1";
  * An "In This Town" film (Topics/InThisTown): the recorded narration is the clock, and every line of
  * narration.md is one shot. Read Topics/InThisTown/README.md before changing anything here.
  *
- * `cut: "short"` is the one-to-two-minute cut (14 beats). Delete the line for the three-minute cut (18 beats).
+ * This is the three-minute cut (18 beats): no `cut:` line, so the topic's `film` limits apply (150-178 s).
+ * 668 words at 255 a minute is 2:37, and 76 shots is a cut every 1.7 s - the montage carries the pace.
  */
 export const film = defineFilm({
   id: "the-guy-who-never-went-to-parties",
   title: "The Guy Who Never Went To Parties",
   topic: "in-this-town",
-  cut: "short",
   look: "overworld-day",
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/the-guy-who-never-went-to-parties/narration.mp3" },
