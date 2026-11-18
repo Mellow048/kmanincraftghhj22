@@ -5,6 +5,7 @@ import { Creeper, Skeleton, Slime, Zombie } from "../../../Topics/InThisTown/mon
 import { Villager } from "../../../Topics/InThisTown/villagers";
 import { mixVec, rise, sec, unit } from "./marks";
 import { Cubes } from "./props";
+import { finnDialogue } from "./dialogue";
 import type { Cube } from "./props";
 import meter from "./voice-meter.json";
 
@@ -57,14 +58,28 @@ export function walk(f:number,a:number,b:number,from:Vec3,to:Vec3,face:FaceName=
   return {at:pos,yaw:yaw??facing(from,to),pose:blendPose(idle(),gaitPose("walk",distance),k),face};
 }
 
+/** The closed lip is already on the 8×8 face. Extend its middle down a
+ * fraction of a pixel, on the head itself, without replacing any eye pixels. */
+function FinnMouth({ open }: { open: number }) {
+  const h = (1 + .65 * open) * UNIT;
+  const w = (2 + .55 * open) * UNIT;
+  const lip = new T.Color("#7a4038").lerp(new T.Color("#311a1c"), open);
+  return (
+    <mesh position={[0, -2 * UNIT - h / 2, 4 * UNIT + .0005]} scale={[w, h, 1]} receiveShadow>
+      <planeGeometry args={[1, 1]} />
+      <meshStandardMaterial color={lip} roughness={1} metalness={0} />
+    </mesh>
+  );
+}
+
 export function Finn({ f, state, apron = false, talk = true }: { f:number; state:State; apron?:boolean; talk?:boolean }) {
   const p=state.pose;
-  const speaking=talk ? voice(f,"finn") : 0;
-  const face=speaking>.62&&state.face!=="uneasy"&&state.face!=="worried" ? (state.face==="smug"?"grin":"surprised") : state.face;
+  const speech = talk ? finnDialogue(f) : null;
   return <>
-    <MinecraftAvatar position={state.at} rotationY={state.yaw} pose={p} face={face}
+    <MinecraftAvatar position={state.at} rotationY={state.yaw} pose={p} face={speech?.face ?? state.face}
       outfit="tee" colors={{torso:"#dfa633",arms:"skin",legs:"#365b77"}} shoes="#4c5253" skin="#dca478" hair="#3c261f"
-      shadow shadowOpacity={.34} blink time={sec(f)} saccade={false} gaze={state.gaze ?? 0} headPitch={speaking*.04}
+      shadow shadowOpacity={.34} blink time={sec(f)} saccade={false} gaze={speech?.gaze ?? state.gaze ?? 0}
+      head={speech && speech.mouth > 0 ? <FinnMouth open={speech.mouth} /> : null}
       weightShift={0} breath={0} />
     {apron && <group position={state.at} rotation-y={state.yaw}>
       <group position={[0,HIP+p.bodyY,0]} rotation={bodyRotation(p)}>
