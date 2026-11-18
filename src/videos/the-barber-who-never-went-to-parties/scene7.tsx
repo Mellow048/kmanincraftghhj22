@@ -145,7 +145,7 @@ export const scene7 = storyScene(timing, {
             <Cape position={PLACE.chair} scale={0.96} off={off} />
             <Me t={t} fast={t < end + 0.15 ? 1 : 0} up={1.15} face={t < end + 0.2 ? "calm" : "smug"} />
             <HairFly position={SIT_TOP} t={t} at={SNIPS} color={HAIR.f2} count={10} power={1.25} />
-            <Sparkle position={[0.3, 1.56, 0.35]} k={pop(t, end + 0.42, 0.2)} size={0.3} />
+            <Sparkle position={[0.3, 1.56, 0.35]} k={pop(t, end + 0.42, 0.2)} size={0.2} />
           </>
         );
       },
@@ -236,7 +236,7 @@ export const scene7 = storyScene(timing, {
           <Friend1 position={SIT} cut pose={seatedPose(t)} face="wow" gaze={0} />
           <Cape position={PLACE.chair} scale={F1_SCALE} off={tw(t, 0.02, 0.3)} side={-1} />
           <Me t={t} fast={0} up={1.15} face="smug" />
-          <Sparkle position={[0.3, 1.45, 0.35]} k={pop(t, 0.25, 0.2)} size={0.3} />
+          <Sparkle position={[0.3, 1.45, 0.35]} k={pop(t, 0.25, 0.2)} size={0.2} />
         </>
       ),
     },

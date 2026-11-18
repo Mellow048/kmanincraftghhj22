@@ -239,7 +239,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.m6",
-      ...cam.push({ on: G_ME_FACE, dist: 1.9, to: 1.55, yaw: -5, pitch: -1, fov: 36 }),
+      ...cam.push({ on: G_ME_FACE, dist: 2.5, to: 2.15, yaw: -5, pitch: -1, fov: 36 }),
       zone: "garage",
       look: "overworld-night",
       note: "The last three are on my own fringe, and the chant stops dead: it is far too short.",

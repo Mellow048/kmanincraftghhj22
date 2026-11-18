@@ -21,7 +21,7 @@ narrator's voice, moved. **If the owner wants real second and third voices: reco
 
 ## How it is recorded
 
-Twenty-six clips and four speakers, and the recording tool allows ten calls a turn. So each voice is recorded as a few
+Thirty-six clips and four speakers, and the recording tool allows ten calls a turn. So each voice is recorded as a few
 long takes (`public/audio/<film>/takes/`), and `scripts/split-takes.py` cuts them into the clips with the aligner.
 `takes.json` says which sentences of which take are which clip. "HUS" is given to the voice as "Huss!"; the tool cuts
 every "huss" out and lays them back at chant speed.
@@ -140,12 +140,12 @@ is cut into several pictures in the scene files (`cut:`).
 | Scene | Lines | What happens with no words over it |
 |---|---|---|
 | 1. The hook | `1.hus`, `1.how` | Frame one: the worst hair in town in a barber chair, the scissors already a blur, block text HE NEVER WENT TO A SINGLE PARTY. The cape comes off on a perfect haircut. He opens his mouth to answer and the film rewinds |
-| 2. Every night was a party | `2.paper` – `2.weird` | Safety scissors and a sheet of paper. The house across the street, flashing. Two friends at his door. His curtain closes |
-| 3. The dream | `3.tv` – `3.wanted` | The barber on television; the man in the chair cries. He takes the kitchen scissors out of the drawer and holds them up |
-| 4. The first failure | `4.okay` – `4.hat` | Dad asleep in the armchair. One snip: a strip down the middle. Dad feels the top of his head. Dad at dinner in a woolly hat |
-| 5. The training | `5.hus` – `5.sat` | A mop in a bucket with a face on it, slowly, then the chant. A shelf of mannequin heads, worst to best. Block text WHILE THEY'RE OUT PARTYING BTW. The hedge with a side parting. The dog with a fade. His own fringe, too short, and a cap. The calendar. Dad takes the hat off and sits down in the chair on purpose |
-| 6. The job | `6.busiest` – `6.forty` | HELP WANTED. The queue, three barbers in trouble, the man with the beard. He clicks the scissors twice. Chair, cape, chair, cape. The owner drops his comb |
-| 7. The reunion | `7.help` – `7.end` | The door bangs open: the friends, one with the hair from frame one. He pats the chair. Six snips. "Training." A second with no sound at all. The chant. They wave from the door; he turns the sign to CLOSED and gets the mop out |
+| 2. Every night was a party | `2.paper` – `2.weird` | Safety scissors and a sheet of paper. The house across the street, flashing. Two friends at his door. The door shuts |
+| 3. The dream | `3.tv` – `3.hus` | The barber on television; the man in the chair cries. The kitchen scissors out of the drawer, held up. He rises behind Dad's armchair, and the chant is heard for the first time in the story: three HUS, a strip down the middle, Dad's eyes open |
+| 4. The first failure | `4.okay` – `4.hat` | Dad feels the top of his head and turns round. Dad at dinner in a woolly hat. The garage, and a mop |
+| 5. The training | `5.hus` – `5.dadhus` | The chant on the mop; four strings left. Block text WHILE THEY'RE OUT PARTYING BTW. **The montage, which is only the chant:** the dog, the hedge, a shop dummy, a mop, six heads on one post, and his own fringe, too short. A cap. The calendar. Dad takes the hat off, sits down, and gets the chant again: this time it is right |
+| 6. The job | `6.busiest` – `6.forty` | HELP WANTED. The queue, the man with the beard, three barbers in trouble. He clicks the scissors twice. Nine HUS, three heads. The owner shin deep in hair; he drops his comb. The door bangs open |
+| 7. The reunion | `7.help` – `7.end` | The friends, one with the hair from frame one. He pats the chair. Six HUS. "Training." A second with no sound at all. Six HUS on the other friend. "YOU COMING?!" "No." Two blank faces. The mop in the chair, the scissors go up, the last chant, and the last picture held under the meme's line |
 
 ## Planted, and paid
 
@@ -157,3 +157,4 @@ is cut into several pictures in the scene files (`cut:`).
 | "THAT'S FIXABLE!" on Dad, and again on his own fringe | "PLEASE! IS THIS FIXABLE?!" And this time it is |
 | Dad's hat | Dad takes it off and sits back down in the chair |
 | The mop | The last picture, and the last sound, which is the first sound of the film |
+| The knock on his door every night | "YOU COMING?!" in the last scene, and for the first time we hear his answer: "No." |
