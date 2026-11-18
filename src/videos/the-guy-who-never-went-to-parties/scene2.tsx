@@ -108,16 +108,27 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.dog",
       // The dog eats better than the children, and the dog eats grass. Low angle so the dog is a giant.
-      ...cam.push({ on: [-0.4, 0.5, 0.4], dist: 2.8, to: 2.3, yaw: 18, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [-0.4, 0.55, 0.1], dist: 2.6, to: 2.1, yaw: 26, pitch: 2, fov: 44 }),
       zone: "village",
       look: "overworld-sunset",
       note: "Low angle on the dog, nose down in the grass, with a plate beside it that has been licked clean. The dog is eating better than anybody.",
-      stage: () => (
+      stage: (t) => (
         <>
-          <Vox kind="wool" tint="#c8b08a" position={[-0.4, 0.34, 0.4]} size={[0.6, 0.36, 0.9]} />
-          <Vox kind="wool" tint="#c8b08a" position={[-0.4, 0.52, -0.06]} size={[0.36, 0.32, 0.36]} />
-          <Vox kind="wool" tint="#3a2f28" position={[-0.4, 0.74, -0.16]} size={[0.14, 0.12, 0.1]} />
-          <Vox kind="wool" tint="#e8e2d0" position={[0.5, 0.03, 0.5]} size={[0.5, 0.04, 0.5]} />
+          {/* body, four legs, head, snout, two ears, a tail that wags, and a plate licked clean */}
+          <Vox kind="wool" tint="#c8b08a" position={[-0.4, 0.46, 0.4]} size={[0.5, 0.34, 0.86]} />
+          {[[-0.62, 0.0], [-0.18, 0.0], [-0.62, 0.78], [-0.18, 0.78]].map(([x, dz], i) => (
+            <Vox key={i} kind="wool" tint="#b39a76" position={[x, 0.14, 0.4 + dz]} size={[0.14, 0.3, 0.14]} />
+          ))}
+          <Vox kind="wool" tint="#c8b08a" position={[-0.4, 0.62, -0.12]} size={[0.36, 0.32, 0.34]} />
+          <Vox kind="wool" tint="#e0cca6" position={[-0.4, 0.5, -0.33]} size={[0.22, 0.18, 0.14]} />
+          <Vox kind="wool" tint="#2a2320" position={[-0.4, 0.66, -0.4]} size={[0.1, 0.08, 0.04]} />
+          <Vox kind="wool" tint="#a89070" position={[-0.56, 0.82, -0.1]} size={[0.1, 0.16, 0.08]} />
+          <Vox kind="wool" tint="#a89070" position={[-0.24, 0.82, -0.1]} size={[0.1, 0.16, 0.08]} />
+          <Vox kind="wool" tint="#c8b08a" position={[-0.4 + Math.sin(t * 7) * 0.06, 0.6, 0.9]} size={[0.1, 0.1, 0.34]} />
+          <Vox kind="wool" tint="#c8402f" position={[-0.4, 0.4, 0.55]} size={[0.28, 0.06, 0.12]} />
+          <Vox kind="wool" tint="#e8e2d0" position={[0.35, 0.03, 0.62]} size={[0.5, 0.04, 0.5]} />
+          {/* grass in the mouth: the joke, in one green pixel of the right size */}
+          <Vox kind="wool" tint="#6fae4a" position={[-0.4, 0.52, -0.42]} size={[0.16, 0.05, 0.08]} />
         </>
       ),
     },

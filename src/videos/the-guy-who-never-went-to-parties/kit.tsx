@@ -116,9 +116,9 @@ export const Chant: React.FC<{ t: number; at: Vec3; scale?: number; rotationY?: 
       const period = 0.62; // three bubbles, one every 0.21 s: a breath in a run
       const cycle = (((t - i * 0.075) % period) + period) % period;
       const local = cycle / period;
-      if (local > 0.5) return null;
-      const grow = Math.min(1, local / 0.16);
-      const fade = Math.min(1, (0.5 - local) / 0.14);
+      if (local > 0.74) return null; // two of the three are on screen most of the time: a chant, not a cough
+      const grow = Math.min(1, local / 0.14);
+      const fade = Math.min(1, (0.74 - local) / 0.12);
       const s = scale * grow * fade;
       return (
         <Bubble
