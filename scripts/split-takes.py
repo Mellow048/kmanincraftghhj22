@@ -18,6 +18,7 @@ It reads src/videos/<film>/takes.json:
           "clips": [ … ] },
         { "file": "hero-hus-a.mp3", "bursts": true,       a chant: every burst of sound is cut out on its own, and each clip
           "clips": [ { "clip": "01-hus", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.25, "pause": 0.16, "speed": 1.4 } ] } ] }
+                                                          `every` may be a list, one step after each burst: [0.2, 0.2, 0.1]
                                                           names the bursts it wants; 0 is the pause. `every` is seconds
                                                           from the start of one burst to the start of the next.
                                                           `speed` says each burst faster (same pitch) so it fits `every`.
@@ -107,9 +108,15 @@ def split_sentences(x, clips, out_dir):
             owner.append(i)
     x16 = to16k(x)
     a, b = narr.speech_span(x16, SRA)
-    spans = narr.align(x16[a:b], words)
+    missing = []
+    spans = narr.align(x16[a:b], words, interpolated=missing)
     if spans is None:
         sys.exit("  the aligner could not place the words of this take")
+    # Positions of the words whose time is a guess between neighbours, not a measurement.
+    guessed, pool = set(), [narr.bare(m) for m in missing]
+    for k, w in enumerate(words):
+        if narr.bare(w) in pool:
+            guessed.add(k)
     off = a / SRA
     cuts = [0.0]
     for k in range(1, len(words)):
@@ -130,6 +137,28 @@ def split_sentences(x, clips, out_dir):
                 input=piece.astype(np.float32).tobytes(), check=True, capture_output=True).stdout, dtype=np.float32).copy()
         write(os.path.join(out_dir, c["clip"] + ".wav"), level(piece))
         print(f"  {c['clip']:<14} {len(piece) / SR:5.2f}s  {c['text']}" + (f"  (tempo x{c['tempo']})" if c.get("tempo") else ""))
+        words_path = os.path.join(out_dir, c["clip"] + ".words.json")
+        if c.get("words") == "take":
+            # The aligner placed every word of the whole take, and can lose one in the short clip cut from it.
+            # Hand narration.py the times measured in the take, moved to this clip's own first sound.
+            mine = [k for k in range(len(words)) if owner[k] == i]
+            if any(bare_index in guessed for bare_index in mine):
+                sys.exit(f"  {c['clip']}: the take's own alignment guessed a word here; there is nothing measured to hand over")
+            zero = cuts[i] + s / SRA
+            rate = float(c.get("tempo") or 1.0)
+            clip16 = narr.decode(os.path.join(out_dir, c["clip"] + ".wav"), SRA)
+            a2, b2 = narr.speech_span(clip16, SRA)
+            length = (b2 - a2) / SRA
+            said, last = [], 0.0
+            for k in mine:
+                w0 = min(length, max(last, (off + spans[k][0] - zero) / rate - a2 / SRA))
+                w1 = min(length, max(w0 + 0.01, (off + spans[k][1] - zero) / rate - a2 / SRA))
+                said.append([round(w0, 3), round(w1, 3)])
+                last = w1
+            json.dump(said, open(words_path, "w"))
+            print(f"    word times from the take: {said}")
+        elif os.path.exists(words_path):
+            os.remove(words_path)
 
 
 def retime(x, tempo: float):
@@ -165,10 +194,13 @@ def chant(x, clips, out_dir):
     for c in clips:
         every, pause, speed = c.get("every", 0.25), c.get("pause", 0.15), c.get("speed", 1.0)
         parts, t, said = [], 0.0, []
+        steps = every if isinstance(every, list) else None  # a list: its own step after each burst (a chant that speeds up)
+        widest = max(steps) if steps else every
         for k in c["pick"]:
             if k == 0:
                 t += pause
                 continue
+            every = steps[min(len(parts), len(steps) - 1)] if steps else widest
             a, b = bursts[k - 1]
             piece = x[a:b].copy()
             if speed != 1.0:  # the whole word, said faster: cutting it short instead would lose its "s"
@@ -209,6 +241,8 @@ def main():
             split_sentences(x, take["clips"], out_dir)
     for new, old in sheet.get("copies", {}).items():
         shutil.copyfile(os.path.join(out_dir, old + ".wav"), os.path.join(out_dir, new + ".wav"))
+        if os.path.exists(os.path.join(out_dir, old + ".words.json")):
+            shutil.copyfile(os.path.join(out_dir, old + ".words.json"), os.path.join(out_dir, new + ".words.json"))
         print(f"  {new:<14} = {old}")
 
 

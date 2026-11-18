@@ -30,7 +30,7 @@ The meme spells it HUSS. The owner spells it HUS, and so do the captions. The vo
 | 3 | **The main thing on frame one.** The skill at full speed, then its result by second two, with a line of block text that says the premise for a viewer with the sound off. No face, no title, no narration first | The owner: "no one is going to stay and listen, throw the main thing at the start" |
 | 4 | **The hook asks, the last scene answers.** Somebody asks how; the rewind cuts off the answer; the answer is "Training." | Ours |
 | 5 | **He never finds it funny.** The narrator is as serious as a sports documentary. The skill is small and the dedication is far too big | The meme |
-| 6 | **HUS is breath.** One HUS for one move of the skill, said by him, out of breath | The meme |
+| 6 | **HUS is breath.** One HUS for one move of the skill, said by him, out of breath. **Every time the skill is done on screen, the chant is there** (the owner, 2026-11-18: on Dad, on every head in the shop, and a montage of nothing else) | The meme, and the owner |
 | 7 | **The friends need the skill**, for the party itself. The reunion is not a coincidence | Ours |
 | 8 | **The last sound is the chant**, so the film loops into its own first frame | Ours |
 
@@ -50,10 +50,10 @@ The meme spells it HUSS. The owner spells it HUS, and so do the captions. The vo
 
 | | Base (`AGENTS.md`) | This topic |
 |---|---|---|
-| Length | 20 seconds | 90–120 seconds |
+| Length | 20 seconds | 75–120 seconds. The first film was 97 s; the owner asked for the voice 1.1 times faster and the waits out, and the second cut is 80 s |
 | Clock | Typed seconds | The recorded voices (`docs/STORY-FILMS.md`): `narration.md` → clips → `timing.json` |
 | Voices | One | **Three people, one actor, for now.** The narrator and the main character are the same person and the same voice (`voice-03`). The two friends should each have a voice of their own; in the first film only `voice-03` could be recorded, so both friends are `voice-03` shifted in pitch (+3 and −3.5 semitones, `takes.json`). Register two more voices with the owner and re-record the friends when he is there to choose them. One `# clip` per change of speaker. The recording tool allows about ten calls a turn, so each voice is recorded as a few long takes and cut into its clips by `scripts/split-takes.py` (`takes.json` says where; the chant's speed is set there too) |
-| Words | Over every shot | Over about half the film. The rest is action, held open with `wait` on the next clip and cut into pictures with `cut:` |
+| Words | Over every shot | Over most of the film. Action with no words is held open with `wait` on the next clip and cut into pictures with `cut:`. **No stretch without a voice runs over 1.9 seconds** (the owner on the first film, 2026-11-18: "remove pretty long pauses"), and most are under 1 |
 | One picture | 1.5–4 s | **Never over 3 seconds**; under 1 second in the fast runs |
 | Text on screen | None | Captions for every spoken word, and block text built in the scene (`PixelText`) for signs and for the two meme lines |
 | Music | One written mood | A mood for each turn of the story, written by `scripts/sound.py`. Two were written for this topic: `party` for the house across the street, `grind` for the chant, the training and the job. No music under "Training." and none under the rewind. One `snip` for every HUS; `rewind`, `clippers` and `hair` are in the effect list too |

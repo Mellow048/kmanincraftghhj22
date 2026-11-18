@@ -1,7 +1,7 @@
 import type React from "react";
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { Block, Crate, Dad, Drop, HAIR, HairFly, Hero, InHand, ME_SCALE, PLACE, STOOL, Scissors, Sparkle, Television, add, holdUp, pop, seatedPose, timing, tw } from "./kit";
+import { Block, Crate, Dad, Drop, HAIR, HairFly, Hero, InHand, ME_SCALE, PLACE, STOOL, Scissors, Sparkle, Television, add, holdUp, pop, seatedPose, timing, tw, w } from "./kit";
 
 /**
  * 3. THE DREAM. What I saw, once, on television: a barber turn a chair round, and the grown man in it cry because
@@ -18,6 +18,8 @@ export const DAD_FACE: Vec3 = add(CHAIR, 0, 1.32, 0.06);
 export const BEHIND: Vec3 = add(CHAIR, 0, 0, -0.82);
 export const BEHIND_FACE: Vec3 = add(BEHIND, 0, STOOL + 1.575 * ME_SCALE, 0);
 const DRAWER = PLACE.drawer;
+/** The three HUS of the first chant, in seconds from the start of its cue. */
+const H3 = [0, 1, 2].map((i) => w("3.hus", "HUS", i));
 
 /** A block of a television picture: it glows in its own colour. Screen space: x right, y up, z out of the glass. */
 const P: React.FC<{ at: [number, number]; size: [number, number]; c: string; z?: number; rot?: number }> = ({ at, size, c, z = 0.01, rot = 0 }) => (
@@ -155,14 +157,14 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.wanted",
-      cut: 0.95,
+      cut: 0.8,
       ...cam.push({ on: add(DRAWER, 0.4, 1.05, 0.35), dist: 2.9, to: 2.5, yaw: 6, pitch: 9, fov: 40 }),
       zone: "tv",
       look: "overworld-night",
       note: "No words: the drawer, and the only scissors in the house, far too big for a kid.",
       stage: (t) => {
-        const out = tw(t, 0.1, 0.4);
-        const lift = tw(t, 0.55, 1.0);
+        const out = tw(t, 0.04, 0.24);
+        const lift = tw(t, 0.24, 0.5);
         return (
           <>
             <Television position={TV} rotationY={Math.PI / 2}>
@@ -181,7 +183,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.wanted",
-      cut: 2.2,
+      cut: 1.4,
       ...cam.push({ on: add(DRAWER, 1.0, 1.62, 1.0), dist: 2.6, to: 2.3, yaw: -6, pitch: -9, fov: 40 }),
       zone: "tv",
       look: "overworld-night",
@@ -190,7 +192,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Television position={TV} rotationY={Math.PI / 2} on={false} />
           <Hero position={add(DRAWER, 1.0, 0, 1.0)} pose={holdUp(t, 1.45, 0.3)} face="brave" gaze={0} headPitch={-0.25}>
-            <InHand t={t} rate={t > 0.55 ? 2.5 : 0} handle="#e8842a" scale={1.5} />
+            <InHand t={t} rate={t > 0.15 ? 5 : 0} handle="#e8842a" scale={1.5} />
           </Hero>
           <Sparkle position={add(DRAWER, 0.72, 2.25, 1.25)} k={pop(t, 0.25, 0.25)} size={0.22} />
         </>
@@ -198,30 +200,13 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.wanted",
-      cut: 3.3,
-      ...cam.push({ on: add(CHAIR, 0, 1.2, 0), dist: 2.9, to: 2.6, yaw: -12, pitch: 5, fov: 40 }),
-      zone: "tv",
-      look: "overworld-night",
-      note: "The only head in the house that will hold still: Dad asleep in his armchair.",
-      stage: (t) => (
-        <>
-          <Television position={TV} rotationY={Math.PI / 2} on={false} />
-          <Dad position={DAD_SIT} pose={seatedPose(t, 1)} face="sleepy" blink={false} />
-          {[0, 1, 2].map((i) => (
-            <Drop key={i} position={add(DAD_FACE, 0.28 + i * 0.1, 0.25 + i * 0.16, 0.2)} t={t} every={1.0} fall={0.35} drift={0.12} size={0.05 + i * 0.02} color="#dfe8ff" phase={i * 0.33} />
-          ))}
-        </>
-      ),
-    },
-    {
-      cue: "3.wanted",
-      cut: 4.3,
+      cut: 1.92,
       ...cam.push({ on: add(CHAIR, 0, 1.62, -0.3), dist: 2.9, to: 2.6, yaw: -10, pitch: 3, fov: 40 }),
       zone: "tv",
       look: "overworld-night",
-      note: "I rise up behind the armchair on a crate: the picture of the shop, the very first time.",
+      note: "Dad asleep in his armchair, and me rising up behind it on a crate: the picture of the shop, the first time.",
       stage: (t) => {
-        const up = tw(t, 0.05, 0.6);
+        const up = tw(t, 0.1, 0.52);
         return (
           <>
             <Television position={TV} rotationY={Math.PI / 2} on={false} />
@@ -235,26 +220,25 @@ export const scene3 = storyScene(timing, {
       },
     },
     {
-      cue: "3.wanted",
-      cut: 5.2,
-      ...cam.push({ on: add(DAD_FACE, 0, 0.22, 0), dist: 1.75, to: 1.5, yaw: 8, pitch: 12, fov: 38 }),
+      cue: "3.hus",
+      ...cam.push({ on: add(DAD_FACE, 0, 0.22, 0), dist: 1.9, to: 1.6, yaw: 8, pitch: 12, fov: 38 }),
       zone: "tv",
       look: "overworld-night",
-      note: "One snip, seen close: a strip of his hair leaves, and his eyes open.",
+      note: "The chant, for the first time, on Dad: three snips, a strip of his hair is gone, and his eyes open.",
       stage: (t) => {
-        const snip = 0.36;
+        const last = H3[2];
         const p = holdUp(t, 0, 0);
-        p.armR = [-1.0, 0, 0.12];
+        p.armR = [-1.0 + (t < last + 0.05 ? Math.sin(t * 38) * 0.2 : 0), 0, 0.12];
         p.bodyPitch = 0.14;
         p.head = [0.4, 0, 0];
         return (
           <>
-            <Dad position={DAD_SIT} top={t < snip ? "hair" : "stripe"} pose={seatedPose(t, t < snip + 0.2 ? 1 : 0)} face={t < snip + 0.2 ? "sleepy" : "surprised"} blink={false} gaze={0} />
+            <Dad position={DAD_SIT} top={t < last ? "hair" : "stripe"} pose={seatedPose(t, t < last + 0.22 ? 1 : 0)} face={t < last + 0.22 ? "sleepy" : "surprised"} blink={false} gaze={0} />
             <Crate position={BEHIND} />
-            <Hero position={add(BEHIND, 0, STOOL, 0)} pose={p} face={t < snip ? "brave" : "scared"} gaze={0}>
-              <InHand open={t < snip ? 0.7 - (t / snip) * 0.6 : 0.08} handle="#e8842a" scale={1.5} />
+            <Hero position={add(BEHIND, 0, STOOL, 0)} pose={p} face={t < last + 0.12 ? "brave" : "scared"} gaze={0}>
+              <InHand t={t} rate={t < last + 0.05 ? 7 : 0} handle="#e8842a" scale={1.5} />
             </Hero>
-            <HairFly position={add(DAD_FACE, 0, 0.3, 0.05)} t={t} at={[snip]} color={HAIR.dad} count={14} power={1.1} />
+            <HairFly position={add(DAD_FACE, 0, 0.3, 0.05)} t={t} at={H3} color={HAIR.dad} count={9} power={1.1} />
           </>
         );
       },
