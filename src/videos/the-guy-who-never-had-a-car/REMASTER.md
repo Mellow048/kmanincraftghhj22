@@ -70,7 +70,7 @@ The video is rendered with the ordinary repository GitHub Actions/Remotion frame
   pile, pigeon and actual Three.js planar mirror. All live inside the existing Minecraft engine.
 - **Sound plan:** Voice-20, preserved hook, faster recorded performances, 158 BPM bed, water/wipe
   accents, impacts on the failure/reveal, brief silence for the pigeon, final fade.
-- **Current output:** `renders/the-guy-who-never-had-a-car-remastered.mp4` once the export completes.
+- **Current output:** `renders/the-guy-who-never-had-a-car-remastered.mp4` (completed).
 
 ## Review status
 - TypeScript: PASS.
@@ -78,7 +78,14 @@ The video is rendered with the ordinary repository GitHub Actions/Remotion frame
 - Audio clock test against the mix: PASS for all ten takes.
 - Seven actual diagnostic frames reviewed. Found and fixed a foreground actor obscuring a title;
   widened the toothbrush shot, moved the bucket and retained rig-attached tool motion.
-- Final moving export and encoded-file clock checks are pending at the time this document was written.
+- Three additional tool-action frames reviewed after the framing/title fixes.
+- Final full export: GitHub Actions run `44259095140` — success.
+- Twelve frames extracted from the actual final MP4 reviewed, including three points during the fast
+  Almost reaction to check changing arm/body poses, not just a moving camera.
+- Final encoded-file clock check: PASS at 8, 20, 35 and 49 seconds; measured waveform offset 0.0 ms
+  at all four checkpoints. This rules out mix-to-MP4 mux drift at those points.
+- Verified delivery: 1,797 frames, 59.90 seconds, 1080×1920, 30 fps, H.264 + AAC, 39,340,878 bytes.
+- Video is committed directly to the current GitHub branch, not only to an inaccessible artifact store.
 
 ## Honest limitations
 Forced alignment is much better than spreading words evenly, but it is not a human listening review.

@@ -1,0 +1,80 @@
+{
+  "file": "renders/the-guy-who-never-had-a-car-remastered.mp4",
+  "sha256": "48e367e465a64ea81baef8bc36db10aa2dd717b92902a8b3ad43adaf46ba9f69",
+  "bytes": 39340878,
+  "frames": 1797,
+  "fps": 30,
+  "duration": 59.9,
+  "width": 1080,
+  "height": 1920,
+  "renderRun": 44259095140,
+  "clockChecks": [
+    {
+      "take": "02-invite",
+      "tempo": 1.12,
+      "mixOffsetMs": -5.25
+    },
+    {
+      "take": "03-town",
+      "tempo": 1.24,
+      "mixOffsetMs": 0.25
+    },
+    {
+      "take": "04-dream",
+      "tempo": 1.22,
+      "mixOffsetMs": -5.42
+    },
+    {
+      "take": "05-almost",
+      "tempo": 2.4,
+      "mixOffsetMs": -1.0
+    },
+    {
+      "take": "06-grind",
+      "tempo": 1.25,
+      "mixOffsetMs": -5.42
+    },
+    {
+      "take": "07-months",
+      "tempo": 1.2,
+      "mixOffsetMs": -0.08
+    },
+    {
+      "take": "08-hired",
+      "tempo": 1.2,
+      "mixOffsetMs": -8.33
+    },
+    {
+      "take": "09-reunion",
+      "tempo": 1.15,
+      "mixOffsetMs": -3.08
+    },
+    {
+      "take": "10-training",
+      "tempo": 1.1,
+      "mixOffsetMs": 0.25
+    },
+    {
+      "take": "01-chant",
+      "tempo": 1.65,
+      "mixOffsetMs": -1.92
+    },
+    {
+      "encodedAt": 8.0,
+      "mixOffsetMs": 0.0
+    },
+    {
+      "encodedAt": 20.0,
+      "mixOffsetMs": 0.0
+    },
+    {
+      "encodedAt": 35.0,
+      "mixOffsetMs": 0.0
+    },
+    {
+      "encodedAt": 49.0,
+      "mixOffsetMs": 0.0
+    }
+  ],
+  "note": "Waveform placement/mux tests are not a human phoneme-by-phoneme listening review."
+}
