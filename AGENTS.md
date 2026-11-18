@@ -467,6 +467,8 @@ A film is not done until all of these are true:
 - Delete or ignore `out/` artifacts; they are not source.
 - Do not add a dependency that requires a browser download or a cloud key unless the user approves it.
 
+**Deliver on GitHub.** The owner cannot view or download Arena workspace files. Push each requested deliverable to the current working branch and give the owner a verified GitHub link. For a finished film, include the actual MP4 in `renders/` (not just its source or shot sheet) and link directly to the download. Keep scratch renders out of Git. Delivery does not require merging into `main`.
+
 ---
 
 ## 10. API discipline
