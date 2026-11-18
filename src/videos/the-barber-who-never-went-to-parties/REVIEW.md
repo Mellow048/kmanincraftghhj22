@@ -27,6 +27,13 @@ The owner on the first cut: "i love it but sometimes its good but sometimes its 
 | A montage of cutting and HUS HUS HUS | `5.m1` to `5.m6`, 4.6 s, nothing but the chant: the dog, the hedge, a dummy, a mop, six heads on one post getting better, and his own fringe, where the chant stops dead |
 | The ending just cuts: they go to a party, he says no, then HUS | "YOU COMING?!" → his face, "No.", the music stops → two blank faces at the door → the mop in the chair, the scissors go up → six HUS, the last two run together → the finished mop held for 1.5 s under WHILE THEY'RE OUT PARTYING BTW, two clicks of the scissors and a last note. The line "I never went to a single party." is gone: "No." says it |
 
+The render preflight on `main` (`npm run rehearse -- <film> --pre-render`) is newer than the first cut and stopped the
+first render of this one: three clips had a word whose time was a guess, and the captions were on the old motion. Now
+every word is measured (`"words": "take"` in `takes.json` hands over the times the aligner found in the whole take for
+`02-how` and `18-help`, where it loses a word in the short clip) and `captions.motion` is `on-beat`.
+
+The mp4 was checked on 80 frames, one a second: every chant, the montage, "No." and the last picture are in it.
+
 `hero-no.mp3` ("No.") is the one new recording. Every new chant is cut from the two chant takes of the first cut.
 
 ## Against the rules of the topic
