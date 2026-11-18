@@ -1,0 +1,39 @@
+{
+  "README": "Which sentences of which long recording make which clip of narration.md. Run: python3 scripts/split-takes.py the-barber-who-never-went-to-parties, then scripts/narration.py build. All takes are voice-03. The narrator and the barber are one person, so one voice. The two friends are the same voice moved up and down (pitch and size together): the voices picked for them (voice-07, voice-06) were not available in the session that recorded this.",
+  "takes": [
+    { "file": "narrator-a.mp3", "clips": [
+      { "clip": "03-paper", "text": "One year earlier, I could not cut paper." },
+      { "clip": "04-party", "text": "In this town, every night was a party. And every night, my friends knocked on my door." },
+      { "clip": "07-tv", "text": "I had seen a barber on TV make a grown man cry with one haircut. Happy tears. I wanted to do that." },
+      { "clip": "09-not", "text": "It was not fixable. Dad wore a hat until spring." } ] },
+    { "file": "narrator-b.mp3", "clips": [
+      { "clip": "11-while", "text": "While my friends were out dancing, I was cutting." },
+      { "clip": "12-mops", "text": "I went through hundreds of mops, thousands of combs, and one very patient dog." },
+      { "clip": "14-spring", "text": "Spring came. And Dad sat back down in the chair." },
+      { "clip": "15-busiest", "text": "Then the busiest barbershop in town put a sign in the window." },
+      { "clip": "16-saturday", "text": "It was a Saturday. The line went around the block. One man had grown a beard waiting." },
+      { "clip": "17-forty", "text": "I cut forty heads before lunch." },
+      { "clip": "25-never", "text": "I still have not been to a party.", "tempo": 0.74 } ] },
+    { "file": "friend1.mp3", "semitones": 3, "clips": [
+      { "clip": "05-friday", "text": "Dude! It's Friday! The whole town is over there!" },
+      { "clip": "18-help", "text": "Help! The party starts in an hour, and look at him!" },
+      { "clip": "20-wait", "text": "Wait. It's the weird one!" },
+      { "clip": "24-coming", "text": "You coming?!" } ] },
+    { "file": "friend2.mp3", "semitones": -3.5, "clips": [
+      { "clip": "02-how", "text": "Bro. How?!" },
+      { "clip": "06-who", "text": "Who stays home on a Friday?! You're being weird again!" },
+      { "clip": "19-please", "text": "Please! Is this fixable?!" } ] },
+    { "file": "hero-fixable.mp3", "clips": [
+      { "clip": "08-okay", "text": "Okay! Okay! That's fixable!" },
+      { "clip": "13-fix2", "text": "That's fixable!" } ] },
+    { "file": "hero-training.mp3", "clips": [
+      { "clip": "22-training", "text": "Training.", "tempo": 0.8 } ] },
+    { "file": "hero-hus-a.mp3", "bursts": true, "clips": [
+      { "clip": "01-hus", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.22, "pause": 0.09, "speed": 1.7 },
+      { "clip": "23-hus3", "pick": [2, 3, 4, 0, 5, 6, 7], "every": 0.2, "pause": 0.08, "speed": 1.8 } ] },
+    { "file": "hero-hus-b.mp3", "bursts": true, "clips": [
+      { "clip": "10-hus2", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.22, "pause": 0.09, "speed": 1.7 },
+      { "clip": "26-end", "pick": [2, 3, 4], "every": 0.2, "speed": 1.8 } ] }
+  ],
+  "copies": { "21-bro": "02-how" }
+}

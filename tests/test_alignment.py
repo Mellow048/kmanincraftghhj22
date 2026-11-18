@@ -34,6 +34,17 @@ class Alignment(unittest.TestCase):
                       [('a', .4, .5), ('red', .35, .42), ('flower', .6, .8)]):
             self.assertIsNone(n.match_spans(self.words, found, 1))
 
+    def test_assembled_chant_clock(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            raw = str(Path(tmp, 'chant.wav'))
+            clock = Path(tmp, 'chant.words.json')
+            clock.write_text('[[0.25, 0.5], [0.75, 1.0]]')
+            self.assertEqual(n.assembled_spans(raw, 2, 1.25), [(.25, .5), (.75, 1.)])
+            self.assertIsNone(n.assembled_spans(raw, 3, 1.25))
+            self.assertIsNone(n.assembled_spans(raw, 2, .875))
+            clock.write_text('[[0, 0.2], [0.1, 0.3]]')
+            self.assertIsNone(n.assembled_spans(raw, 2, 1))
+
     def test_strict_refusal_leaves_both_outputs_alone(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(n, 'ROOT', tmp):
             film = Path(tmp, 'src/videos/test'); film.mkdir(parents=True)

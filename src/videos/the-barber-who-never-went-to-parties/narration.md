@@ -1,0 +1,139 @@
+# The Barber Who Never Went to Parties — script
+
+**Status: built without a script review.** The owner, 2026-11-18, on the idea: "go i wont review it, im busy. Make
+sure you do this rigth". The idea, his three corrections and the meme are in `Topics/Recreation/`.
+
+A real-life story in blocks: a boy skips every party to learn to cut hair. One thing from the game would break it,
+so there is none.
+
+## Who speaks
+
+| Speaker | Voice | Lines |
+|---|---|---|
+| The narrator, and the barber when he speaks out loud | `voice-03`, as recorded. They are one person | Everything not below; `HUS HUS HUS`, `THAT'S FIXABLE!`, `Training.` |
+| Friend 1 (the loud one, green hair) | `voice-03`, three semitones up | `05-friday`, `18-help`, `20-wait`, `24-coming` |
+| Friend 2 (the big one, who gets the haircut) | `voice-03`, three and a half semitones down | `02-how`, `06-who`, `19-please`, `21-bro` |
+
+`voice-07` and `voice-06` were picked for the friends and the recording tool did not know them in this session; asking
+the owner to pick voices again would have stopped the build, and he had said he was busy. So the friends are the
+narrator's voice, moved. **If the owner wants real second and third voices: record `friend1` and `friend2` again
+(the two texts are in `takes.json`), drop the `semitones`, and run the three commands below.**
+
+## How it is recorded
+
+Twenty-six clips and four speakers, and the recording tool allows ten calls a turn. So each voice is recorded as a few
+long takes (`public/audio/<film>/takes/`), and `scripts/split-takes.py` cuts them into the clips with the aligner.
+`takes.json` says which sentences of which take are which clip. "HUS" is given to the voice as "Huss!"; the tool cuts
+every "huss" out and lays them back at chant speed.
+
+```bash
+python3 scripts/split-takes.py the-barber-who-never-went-to-parties
+python3 scripts/narration.py build the-barber-who-never-went-to-parties --tempo 1.3
+python3 scripts/sound.py build the-barber-who-never-went-to-parties
+```
+
+`wait` on a clip line is silence before it: that is where the action with no words over it happens. Each such stretch
+is cut into several pictures in the scene files (`cut:`).
+
+## The script
+
+```narration
+# clip 01-hus
+[1.hus] HUS HUS HUS! HUS HUS HUS!
+# clip 02-how wait 0.75
+[1.how] BRO. HOW?!
+
+# clip 03-paper wait 1.5
+[2.paper] One year earlier, I could not cut paper.
+# clip 04-party wait 0.35
+[2.party] In this town, every night was a party.
+[2.door] And every night, my friends knocked on my door.
+# clip 05-friday wait 0.25
+[2.friday] DUDE! IT'S FRIDAY!
+[2.whole] THE WHOLE TOWN IS OVER THERE!
+# clip 06-who wait 0.1
+[2.who] WHO STAYS HOME ON A FRIDAY?!
+[2.weird] YOU'RE BEING WEIRD AGAIN!
+
+# clip 07-tv wait 1.3
+[3.tv] I had seen a barber on TV
+[3.cry] make a grown man cry with one haircut.
+[3.happy] Happy tears.
+[3.wanted] I wanted to do that.
+
+# clip 08-okay wait 5.0
+[4.okay] OKAY! OKAY!
+[4.fixable] THAT'S FIXABLE!
+# clip 09-not wait 2.4
+[4.not] It was not fixable.
+[4.hat] Dad wore a hat until spring.
+
+# clip 10-hus2 wait 4.6
+[5.hus] HUS HUS HUS! HUS HUS HUS!
+# clip 11-while wait 2.8
+[5.while] While my friends were out dancing,
+[5.cutting] I was cutting.
+# clip 12-mops wait 0.6
+[5.mops] I went through hundreds of mops,
+[5.combs] thousands of combs,
+[5.dog] and one very patient dog.
+# clip 13-fix2 wait 2.6
+[5.fixable] THAT'S FIXABLE!
+# clip 14-spring wait 2.4
+[5.spring] Spring came.
+[5.sat] And Dad sat back down in the chair.
+
+# clip 15-busiest wait 1.8
+[6.busiest] Then the busiest barbershop in town
+[6.sign] put a sign in the window.
+# clip 16-saturday wait 0.5
+[6.saturday] It was a Saturday.
+[6.line] The line went around the block.
+[6.beard] One man had grown a beard waiting.
+# clip 17-forty wait 4.6
+[6.forty] I cut forty heads before lunch.
+
+# clip 18-help wait 2.6
+[7.help] HELP! THE PARTY STARTS IN AN HOUR,
+[7.look] AND LOOK AT HIM!
+# clip 19-please wait 0.15
+[7.please] PLEASE! IS THIS FIXABLE?!
+# clip 20-wait wait 0.9
+[7.wait] WAIT.
+[7.weirdone] IT'S THE WEIRD ONE!
+# clip 21-bro wait 2.6
+[7.bro] BRO. HOW?!
+# clip 22-training wait 1.1
+[7.training] Training.
+# clip 23-hus3 wait 1.2
+[7.hus] HUS HUS HUS! HUS HUS HUS!
+# clip 24-coming wait 0.9
+[7.coming] YOU COMING?!
+# clip 25-never wait 1.3
+[7.never] I still have not been to a party.
+# clip 26-end wait 0.7
+[7.end] HUS HUS HUS!
+```
+
+## What each scene is for
+
+| Scene | Lines | What happens with no words over it |
+|---|---|---|
+| 1. The hook | `1.hus`, `1.how` | Frame one: the worst hair in town in a barber chair, the scissors already a blur, block text HE NEVER WENT TO A SINGLE PARTY. The cape comes off on a perfect haircut. He opens his mouth to answer and the film rewinds |
+| 2. Every night was a party | `2.paper` – `2.weird` | Safety scissors and a sheet of paper. The house across the street, flashing. Two friends at his door. His curtain closes |
+| 3. The dream | `3.tv` – `3.wanted` | The barber on television; the man in the chair cries. He takes the kitchen scissors out of the drawer and holds them up |
+| 4. The first failure | `4.okay` – `4.hat` | Dad asleep in the armchair. One snip: a strip down the middle. Dad feels the top of his head. Dad at dinner in a woolly hat |
+| 5. The training | `5.hus` – `5.sat` | A mop in a bucket with a face on it, slowly, then the chant. A shelf of mannequin heads, worst to best. Block text WHILE THEY'RE OUT PARTYING BTW. The hedge with a side parting. The dog with a fade. His own fringe, too short, and a cap. The calendar. Dad takes the hat off and sits down in the chair on purpose |
+| 6. The job | `6.busiest` – `6.forty` | HELP WANTED. The queue, three barbers in trouble, the man with the beard. He clicks the scissors twice. Chair, cape, chair, cape. The owner drops his comb |
+| 7. The reunion | `7.help` – `7.end` | The door bangs open: the friends, one with the hair from frame one. He pats the chair. Six snips. "Training." A second with no sound at all. The chant. They wave from the door; he turns the sign to CLOSED and gets the mop out |
+
+## Planted, and paid
+
+| Planted | Paid |
+|---|---|
+| The wrecked hair of frame one | It is Friend 2's, and the hook is the reunion seen early |
+| "BRO. HOW?!" and the open mouth | "Training." |
+| "YOU'RE BEING WEIRD AGAIN!" | "WAIT. IT'S THE WEIRD ONE!" |
+| "THAT'S FIXABLE!" on Dad, and again on his own fringe | "PLEASE! IS THIS FIXABLE?!" And this time it is |
+| Dad's hat | Dad takes it off and sits back down in the chair |
+| The mop | The last picture, and the last sound, which is the first sound of the film |

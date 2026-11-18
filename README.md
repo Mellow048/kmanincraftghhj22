@@ -87,6 +87,7 @@ rules, kept in [`Topics/`](Topics/README.md). The engine is shared; the rules ar
 | [Stories](Topics/Stories/README.md) | First-person story, any world; escalation, cost, visible payoff | [Topic guide and inherited craft reference](Topics/Stories/README.md) |
 | [What If](Topics/WhatIf/README.md) | One impossible power and what it costs the teller | [Topic guide](Topics/WhatIf/README.md) |
 | [Explainer](Topics/Explainer/README.md) | A factual question answered by a continuous flight through exhibits | [Topic guide](Topics/Explainer/README.md) |
+| [Recreation](Topics/Recreation/README.md) | Real-life skills and memes, played straight by block people | [Topic and owner’s script](Topics/Recreation/README.md) |
 | [Deadpan](Topics/Deadpan/README.md) | One mundane rule taken literally; fast cuts and an ironic button | [Owner's brief](Topics/Deadpan/reference/OWNER-BRIEF.md) |
 
 ```bash

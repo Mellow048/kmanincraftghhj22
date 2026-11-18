@@ -1089,6 +1089,55 @@ def _school_bell(rng, dur=0.9, **_):
     return edges(norm(out), 0.002, 0.2)
 
 
+# ---- the barber's tools (added for the recreation topic; nothing above was changed)
+@sfx("snip", "scissors closing once: two blades sliding, then the click. One for every cut", -9)
+def _snip(rng, pitch=1.0, **_):
+    n = n_of(0.11)
+    out = np.zeros(n)
+    m = n_of(0.05)
+    k = np.linspace(0, 1, m)
+    out[:m] += 0.5 * sweep(m, 3200.0 * pitch * (7800.0 / 3200.0) ** k, rng, 0.5) * k ** 1.5  # the blades sliding shut
+    click = partials(2900.0 * pitch * rng.uniform(0.96, 1.04), 0.05, [(1.0, 1.0, 0.012), (1.47, 0.8, 0.009), (2.31, 0.6, 0.007), (3.9, 0.4, 0.005)], attack=0.0004)
+    a = n_of(0.045)
+    out[a : a + len(click)] += click[: n - a]
+    c = n_of(0.012)
+    out[a : a + c] += 0.7 * noise(c, 2500, 9000, rng) * decay(c, 0.003)
+    return norm(out)
+
+
+@sfx("clippers", "electric hair clippers running: a hard little motor. It lasts `dur` seconds", -12)
+def _clippers(rng, dur=0.6, **_):
+    n = n_of(dur)
+    t = t_of(n)
+    f = 118.0 * (1 + 0.02 * np.sin(2 * np.pi * 5.0 * t))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = np.sign(np.sin(ph)) * 0.5 + 0.4 * np.sin(2 * ph) + 0.3 * np.sin(5 * ph) + 0.25 * np.sin(9 * ph)
+    y = filt(y, 180, 5200, 2) + 0.12 * noise(n, 2000, 7000, rng)
+    return edges(norm(y), 0.03, 0.06)
+
+
+@sfx("rewind", "a tape run backwards: a squeal climbing fast with a flutter on it. It ENDS on its time, where the story starts again", -9, "end")
+def _rewind(rng, dur=0.9, **_):
+    n = n_of(dur)
+    t = t_of(n)
+    k = np.linspace(0, 1, n)
+    f = 420.0 * (2600.0 / 420.0) ** (k ** 1.4)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    flutter = 0.55 + 0.45 * np.sin(2 * np.pi * 23.0 * t) ** 2
+    y = (np.sin(ph) + 0.5 * np.sign(np.sin(ph * 1.5))) * flutter
+    y = 0.7 * filt(y, 400, 6500, 2) + 0.45 * sweep(n, 1200.0 * (6000.0 / 1200.0) ** k, rng, 0.6) * flutter
+    y *= 0.35 + 0.65 * k
+    stop = n_of(0.03)  # the tape stopping dead
+    y[-stop:] *= np.linspace(1, 0, stop)
+    return norm(y)
+
+
+@sfx("hair", "a lock of hair cut and falling: one soft, dry brush", -14)
+def _hair(rng, dur=0.16, **_):
+    n = n_of(dur)
+    return noise(n, 2600, 9000, rng, -2) * bell(n, 0.7)
+
+
 # ============================================================================= beds
 # A bed is the air of a place: it runs under a stretch of shots, quietly.
 BEDS: dict[str, dict] = {}
@@ -1566,6 +1615,52 @@ def _mood_sad(seconds, rng):
             s.play(keys, note, b, beat, length, 0.34, 0.25)
         s.play(pad, broken[0], b, 0, 4, 0.14)
         s.play(pad, broken[2], b, 0, 4, 0.09)
+    return s.buf
+
+
+@mood("party", "the party he is not at: four on the floor, a fat bass and three bright stabs. Loud, happy, a little stupid", 128)
+def _mood_party(seconds, rng):
+    s = Seq(seconds, 128, rng)
+    bars = [("A2", ("A4", "C5", "E5")), ("F2", ("A4", "C5", "F5")), ("C3", ("G4", "C5", "E5")), ("G2", ("G4", "B4", "D5"))]
+    hook = [("E5", 0), ("E5", 0.75), ("G5", 1.5), ("E5", 2.5), ("D5", 3), ("C5", 3.5)]
+    for b in range(s.bars):
+        root, triad = bars[b % 4]
+        for beat in range(4):
+            s.hit(kick(0.5, 58.0, 110.0, 0.12), b, beat)
+            s.hit(hat(rng, 0.34), b, beat + 0.5, 1.0, 0.3)
+            s.play(bass, root, b, beat + 0.5, 0.45, 0.5)
+        for beat in (1, 3):
+            s.hit(rim(rng, 0.4), b, beat, 1.0, -0.2)
+        for beat in (0, 1.5, 3):
+            for note in triad:
+                s.play(keys, note, b, beat, 0.4, 0.34, 0.25)
+        if b % 2 == 0:
+            for note, beat in hook:
+                s.play(glock, note, b, beat, 0.5, 0.3, -0.3)
+    return s.buf
+
+
+@mood("grind", "the work, night after night: a bass that does not stop, a clock of a woodblock, and a tune that climbs one step each bar. The montage", 138, -1.0)
+def _mood_grind(seconds, rng):
+    s = Seq(seconds, 138, rng)
+    bars = [("D3", ("D4", "F4", "A4"), "A4"), ("D3", ("D4", "F4", "A4"), "C5"), ("Bb2", ("D4", "F4", "Bb4"), "D5"), ("C3", ("E4", "G4", "C5"), "E5"),
+            ("D3", ("D4", "F4", "A4"), "F5"), ("D3", ("D4", "F4", "A4"), "G5"), ("Bb2", ("D4", "F4", "Bb4"), "A5"), ("C3", ("E4", "G4", "C5"), "C6")]
+    for b in range(s.bars):
+        p = s.progress(b)
+        root, triad, top = bars[b % 8]
+        for i in range(8):
+            s.play(bass, root, b, i * 0.5, 0.4, 0.42 + 0.1 * p)
+        for beat in range(4):
+            s.hit(kick(0.34 + 0.1 * p), b, beat)
+            s.hit(woodblock(0.24), b, beat + 0.5, 1.0, 0.35)
+        for i in range(8):
+            s.play(pizz, triad[i % 3], b, i * 0.5, 0.3, 0.34, -0.3 if i % 2 else 0.3)
+        s.play(marimba, top, b, 0, 1, 0.5 + 0.1 * p, -0.15)
+        s.play(marimba, top, b, 1.5, 0.5, 0.44 + 0.1 * p, -0.15)
+        s.play(marimba, top, b, 2.5, 1, 0.48 + 0.1 * p, -0.15)
+        s.play(strings, triad[0], b, 0, 4, 0.1 + 0.16 * p)
+        for i in range(8):
+            s.hit(shaker(rng, 0.16 if i % 2 == 0 else 0.3), b, i * 0.5, 1.0, -0.35)
     return s.buf
 
 

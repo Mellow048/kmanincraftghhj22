@@ -200,7 +200,28 @@ SAY = {
     "hummed": "HH AH M D",
     "uncrossed": "AH N K R AO S T",
     "sixtysix": "S IH K S T IY S IH K S",
+    "hus": "HH AH S",
 }
+
+def assembled_spans(raw, count, length):
+    """A split-takes chant supplies word times relative to its first sound. Keep
+    the supplied clock, in natural seconds, if it fits the clip and transcript."""
+    path = os.path.splitext(raw)[0] + ".words.json"
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf8") as f:
+        given = json.load(f)
+    if isinstance(given, list) and len(given) == count:
+        try:
+            spans = [(float(s), float(e)) for s, e in given]
+            if all(0 <= s < e <= length and (i == 0 or s >= spans[i-1][1])
+                   for i, (s, e) in enumerate(spans)):
+                return spans
+        except (TypeError, ValueError):
+            pass
+    print(f"    {os.path.basename(path)} does not fit the words or the clip; trying forced alignment")
+    return None
+
 
 def align(pcm16k, words, *, strict=False, interpolated=None):
     """[(start, end)] in seconds for each word, or None if the aligner cannot do it."""
@@ -357,7 +378,9 @@ def build(slug: str, wpm: float, tempo_arg: str, gap: float, estimate: bool, fps
             natural_dur = (b - a) / SR_ALIGN
             clip_words = [w for cue in clip["cues"] for w in spoken_words(cue["text"])]
             interpolated = []
-            spans = align(xn[a:b], clip_words, strict=require_alignment, interpolated=interpolated)
+            spans = assembled_spans(p, len(clip_words), natural_dur)
+            if spans is None:
+                spans = align(xn[a:b], clip_words, strict=require_alignment, interpolated=interpolated)
             xo = decode(p, SR_OUT, tempo, start=a / SR_ALIGN, end=b / SR_ALIGN)
             dur = len(xo) / SR_OUT
             how = "interpolated" if interpolated else "aligned"
