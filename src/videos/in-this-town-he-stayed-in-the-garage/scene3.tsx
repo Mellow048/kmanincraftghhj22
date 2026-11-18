@@ -129,7 +129,7 @@ export const scene3 = storyScene(timing, {
           <Hero position={[SHOP[0] + 0.1, 0, SHOP[2] + 0.1]} rotationY={0.15} face="calm" animation="lie" />
         </>
       ),
-      ...cam.push({ on: [SHOP[0], 0.7, SHOP[2] + 0.4], dist: 5.2, to: 4.4, yaw: 28, pitch: 28, fov: 42 }),
+      ...cam.push({ on: [SHOP[0] - 0.5, 1.05, SHOP[2] + 0.7], dist: 4.4, to: 3.6, yaw: -36, pitch: 16, fov: 40 }),
     },
     {
       cue: "6.wrench",
@@ -142,7 +142,7 @@ export const scene3 = storyScene(timing, {
           <Wrench position={[SHOP[0] - 0.4, 1.35, SHOP[2] + 0.5]} spin={18} />
         </>
       ),
-      ...cam.push({ on: [SHOP[0] + 0.4, 0.9, SHOP[2] + 0.15], dist: 3.6, to: 3.0, yaw: 70, pitch: 14, fov: 36 }),
+      ...cam.push({ on: [SHOP[0] - 0.5, 1.2, SHOP[2] + 0.6], dist: 4.2, to: 3.5, yaw: -40, pitch: 12, fov: 40 }),
     },
     {
       cue: "6.wheel",
