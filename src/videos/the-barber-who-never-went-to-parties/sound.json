@@ -200,18 +200,11 @@
   "sfx": [
     {
       "cue": "1.hus",
-      "at": 0.0,
-      "sfx": "pop",
-      "trim": -3,
-      "why": "Frame one: the block letters over the chair."
-    },
-    {
-      "cue": "1.hus",
       "word": "HUS",
       "nth": 0,
       "sfx": "snip",
       "pitch": 1.0,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "One snip under every HUS: the chant is the scissors (snip 1)"
     },
@@ -221,7 +214,7 @@
       "nth": 1,
       "sfx": "snip",
       "pitch": 1.08,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "One snip under every HUS: the chant is the scissors (snip 2)"
     },
@@ -231,7 +224,7 @@
       "nth": 2,
       "sfx": "snip",
       "pitch": 0.94,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "One snip under every HUS: the chant is the scissors (snip 3)"
     },
@@ -241,7 +234,7 @@
       "nth": 3,
       "sfx": "snip",
       "pitch": 1.0,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "One snip under every HUS: the chant is the scissors (snip 4)"
     },
@@ -251,7 +244,7 @@
       "nth": 4,
       "sfx": "snip",
       "pitch": 1.08,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "One snip under every HUS: the chant is the scissors (snip 5)"
     },
@@ -261,7 +254,7 @@
       "nth": 5,
       "sfx": "snip",
       "pitch": 0.94,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "One snip under every HUS: the chant is the scissors (snip 6)"
     },
@@ -369,7 +362,7 @@
       "cue": "2.paper",
       "at": 1.85,
       "sfx": "slide_down",
-      "trim": -1,
+      "trim": 1,
       "why": "And it is a bad cut."
     },
     {
@@ -502,7 +495,7 @@
       "sfx": "plink",
       "repeat": 3,
       "every": 0.28,
-      "trim": 4,
+      "trim": 2,
       "why": "A grown man's tears."
     },
     {
@@ -587,7 +580,7 @@
       "cue": "3.wanted",
       "at": 5.22,
       "sfx": "heartbeat",
-      "trim": -2,
+      "trim": 3,
       "why": "The blades over his head."
     },
     {
@@ -771,7 +764,7 @@
       "nth": 0,
       "sfx": "snip",
       "pitch": 1.0,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The chant, a year early, on a mop (snip 1)"
     },
@@ -781,7 +774,7 @@
       "nth": 1,
       "sfx": "snip",
       "pitch": 1.08,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "The chant, a year early, on a mop (snip 2)"
     },
@@ -791,7 +784,7 @@
       "nth": 2,
       "sfx": "snip",
       "pitch": 0.94,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The chant, a year early, on a mop (snip 3)"
     },
@@ -801,7 +794,7 @@
       "nth": 3,
       "sfx": "snip",
       "pitch": 1.0,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "The chant, a year early, on a mop (snip 4)"
     },
@@ -811,7 +804,7 @@
       "nth": 4,
       "sfx": "snip",
       "pitch": 1.08,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The chant, a year early, on a mop (snip 5)"
     },
@@ -821,7 +814,7 @@
       "nth": 5,
       "sfx": "snip",
       "pitch": 0.94,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "The chant, a year early, on a mop (snip 6)"
     },
@@ -891,7 +884,7 @@
       "cue": "5.hus",
       "at": 3.4,
       "sfx": "cheer",
-      "trim": -4,
+      "trim": -1,
       "why": "The party, through the garage window."
     },
     {
@@ -990,13 +983,14 @@
       "at": 1.85,
       "sfx": "ding",
       "pitch": 1.0,
-      "trim": -4,
+      "trim": -1,
       "why": "Neat."
     },
     {
       "cue": "5.dog",
       "at": 2.26,
       "sfx": "swish",
+      "trim": 2,
       "why": "The dog, afterwards."
     },
     {
@@ -1047,7 +1041,7 @@
       "cue": "5.fixable",
       "at": 2.95,
       "sfx": "chime",
-      "trim": -1,
+      "trim": 2,
       "why": "Spring."
     },
     {
@@ -1116,7 +1110,7 @@
       "sfx": "ding",
       "pitch": 1.0,
       "note": "A6",
-      "trim": -4,
+      "trim": -1,
       "why": "The shop door."
     },
     {
@@ -1396,7 +1390,7 @@
       "sfx": "thud",
       "repeat": 2,
       "every": 0.24,
-      "trim": -5,
+      "trim": 0,
       "why": "I pat the back of the chair."
     },
     {
@@ -1515,7 +1509,7 @@
       "nth": 0,
       "sfx": "snip",
       "pitch": 1.0,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The chant again, on the loud friend (snip 1)"
     },
@@ -1525,7 +1519,7 @@
       "nth": 1,
       "sfx": "snip",
       "pitch": 1.08,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "The chant again, on the loud friend (snip 2)"
     },
@@ -1535,7 +1529,7 @@
       "nth": 2,
       "sfx": "snip",
       "pitch": 0.94,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The chant again, on the loud friend (snip 3)"
     },
@@ -1545,7 +1539,7 @@
       "nth": 3,
       "sfx": "snip",
       "pitch": 1.0,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "The chant again, on the loud friend (snip 4)"
     },
@@ -1555,7 +1549,7 @@
       "nth": 4,
       "sfx": "snip",
       "pitch": 1.08,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The chant again, on the loud friend (snip 5)"
     },
@@ -1565,7 +1559,7 @@
       "nth": 5,
       "sfx": "snip",
       "pitch": 0.94,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "The chant again, on the loud friend (snip 6)"
     },
@@ -1608,6 +1602,7 @@
       "cue": "7.hus",
       "at": 1.2,
       "sfx": "sparkle",
+      "trim": 3,
       "why": "Both of them, ready for the party."
     },
     {
@@ -1689,7 +1684,7 @@
       "nth": 0,
       "sfx": "snip",
       "pitch": 1.0,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The first sound of the film is its last (snip 1)"
     },
@@ -1699,7 +1694,7 @@
       "nth": 1,
       "sfx": "snip",
       "pitch": 1.08,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": -0.25,
       "why": "The first sound of the film is its last (snip 2)"
     },
@@ -1709,7 +1704,7 @@
       "nth": 2,
       "sfx": "snip",
       "pitch": 0.94,
-      "trim": 2.0,
+      "trim": 1.0,
       "pan": 0.25,
       "why": "The first sound of the film is its last (snip 3)"
     },

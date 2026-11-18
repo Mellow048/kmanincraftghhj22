@@ -5,10 +5,10 @@
   "seconds": 97.0667,
   "built_from": {
     "timing.json": "a78e2ec9057beef760524855d3a4541fc881d2e5",
-    "sound.json": "0ca6f474e3710a1fc6ec18e531281dfe53094bbc",
+    "sound.json": "73ad22a55589646458634f9c8e9ca6f96ad966b1",
     "narration.mp3": "b925b895ad137ec0dff291e622842977c85bae9e"
   },
-  "mix_sha1": "5592673fd167c68b3c1191485261602ce7779531",
+  "mix_sha1": "68a1bdd8dc9a5151e659cdfe1047e353be9ade4d",
   "music_sections": [
     {
       "from": "1.hus",
@@ -121,42 +121,15 @@
     "musicUnderVoiceDb": 18.6,
     "secondsWithoutMusic": 7.4,
     "bedsUnderVoiceDb": 28.4,
-    "sfx": 256,
-    "sfxPerMinute": 158.2,
+    "sfx": 255,
+    "sfxPerMinute": 157.6,
     "sfxKinds": 43,
     "longestGapSeconds": 2.0,
     "longestGapAt": 87.3,
-    "sfxBuried": 3,
+    "sfxBuried": 0,
     "voiceOverRestMedianDb": 13.3,
-    "voiceOverRestWorstDb": 4.8,
+    "voiceOverRestWorstDb": 5.9,
     "voiceOverRestWorst": [
-      {
-        "db": 4.8,
-        "t": 20.9,
-        "cue": "3.cry",
-        "sounding": [
-          "plink",
-          "sparkle"
-        ]
-      },
-      {
-        "db": 5.4,
-        "t": 0.5,
-        "cue": "1.hus",
-        "sounding": [
-          "hair",
-          "snip"
-        ]
-      },
-      {
-        "db": 5.9,
-        "t": 96.2,
-        "cue": "7.end",
-        "sounding": [
-          "hair",
-          "snip"
-        ]
-      },
       {
         "db": 5.9,
         "t": 74.4,
@@ -168,18 +141,46 @@
         ]
       },
       {
-        "db": 6.3,
-        "t": 90.5,
-        "cue": "7.hus",
+        "db": 6.1,
+        "t": 6.5,
+        "cue": "2.paper",
+        "sounding": [
+          "paper",
+          "slide_down",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 0.5,
+        "cue": "1.hus",
         "sounding": [
           "hair",
           "snip"
         ]
       },
       {
+        "db": 6.2,
+        "t": 20.9,
+        "cue": "3.cry",
+        "sounding": [
+          "plink",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 62.9,
+        "cue": "6.busiest",
+        "sounding": [
+          "ding",
+          "step_stone"
+        ]
+      },
+      {
         "db": 6.6,
-        "t": 41.3,
-        "cue": "5.hus",
+        "t": 96.2,
+        "cue": "7.end",
         "sounding": [
           "hair",
           "snip"
@@ -187,8 +188,8 @@
       }
     ],
     "lufs": -15.7,
-    "truePeakDb": -1.0,
-    "limiterMaxDb": 6.7
+    "truePeakDb": -1.2,
+    "limiterMaxDb": 6.2
   },
   "failures": []
 }
