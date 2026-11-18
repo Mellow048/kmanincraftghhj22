@@ -213,3 +213,19 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   into main as a reference … souce code + mp4 put it in there for other agents to see how to make a good short". It is
   in `reference/iron-golem/`. So the pace above is confirmed: **about 235 words a minute, with a quarter to three
   quarters of a second of silence before each new step of the story**, and the film moved up a cut to make room.
+- **2026-11-16, the parties film REJECTED: "tf happened? you were good at making shorts now you downgraded …
+  overall the video is a 1/10 what happened to you", "please study the references."** He is right, and the
+  reference folder had not been opened before the film was built. Measured against `same-face`,
+  `iron-golem` and `robot-at-18`: **75 of 76 shots were `overworld-night`** (the reference uses three colour
+  acts, 35 day / 17 lava / 4 night); **median camera distance 2.2 m** against their 3.6–5.7 m, so a person
+  filled **107% of the frame height** and was cut in half; **30% of the film was near-black and 41% was a
+  blown-out blank wall** (approved films: 8% and 29%). Cameras with `yaw` near 180 sat *behind* the north
+  wall of a house or a sealed room, and the sets had ceilings that blocked every `cam.top`. The pace was
+  **254 wpm with no gaps** — exactly the fault he rejected twice on the iron golem film. `narration.md`
+  even said "no gaps" as a rule. **Lessons. (1) Read `reference/README.md`, `OWNER.md` and a contact sheet
+  BEFORE writing a shot, and measure your own numbers against theirs. (2) A phone frame at 40° is 23° across:
+  shoot people at 3–6 m, not 1–2 m. (3) A film is not one colour, one distance and one angle. (4) A zone is
+  exclusive: sealing a set on four sides only puts the lens inside plaster. (5) A prop that is used is built
+  as a real box with an inside — a shot must never draw a second solid copy over it. (6) Build the pace from
+  the approved 235 wpm, not the topic's upper gate. (7) Pull one still per shot out of the delivered mp4
+  before saying a film is done.** The rebuild is in `outlines/parties-rebuild-notes.md`. Not yet judged by him.

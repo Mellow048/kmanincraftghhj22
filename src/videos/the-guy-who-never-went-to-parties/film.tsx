@@ -9,7 +9,8 @@ import { scene4 } from "./scene4";
 /**
  * The Guy Who Never Went To Parties
  *
- * TODO: the film in three sentences. Who tells it, the rule nobody explains, what the rule was hiding.
+ * A kid in a town where everybody parties every night and nobody has ever eaten cooked food. He
+ * wants to be a cook; the reason nobody else does is that you cannot want a thing you have never had.
  *
  * An "In This Town" film (Topics/InThisTown): the recorded narration is the clock, and every line of
  * narration.md is one shot. Read Topics/InThisTown/README.md before changing anything here.
