@@ -3,6 +3,8 @@
 The owner's question, 2026-11-12: *"that video got me like 5.5k views on shorts... i have no idea what i did there...
 i need you to study that short and make a similar one... increase our stayed to watch to atleast above 75%."*
 
+For a new Short use the [Nov 18 study of the delivered Part 1](reference/monster-village/NEW-SHORT.md). The figures and hypotheses below are historical; average percentage viewed and stayed-to-watch are different measures.
+
 This is the audit. It is written from `src/videos/in-this-town-monster-village/` and it exists so the next films copy
 the machinery instead of the plot.
 

@@ -16,6 +16,8 @@ above the topic rules:
 - the CTA only after the payoff, never over the story;
 - the six-stage workflow, ending in an honest self-review, and the required final output list.
 
+When Monster Village Part 1 is the reference, use the [Part 1 director’s readme](Topics/InThisTown/reference/monster-village/NEW-SHORT.md). Carry its transfer card from pitch to `REVIEW.md`: cite the reference moment, the different choice in this film, and what actually read on screen.
+
 This file decides **which kind** of film is being made. `MASTERPROMPT-01.md` decides **whether it will hold a
 viewer**. A film that satisfies this file and fails that one is not finished.
 

@@ -11,6 +11,7 @@ This is not a template for "a Minecraft video". It is a director's framework wit
 > sound: see [Topics](#topics-more-than-one-kind-of-video). Decide which one you are making first.
 > [`AGENTS.md`](AGENTS.md) starts with that question. For narrated films, follow the
 > [reference-to-delivery directing pass](docs/DIRECTING.md), including the no-render rehearsal.
+> Using Monster Village Part 1? [Read the study for new Shorts](Topics/InThisTown/reference/monster-village/NEW-SHORT.md).
 
 ---
 

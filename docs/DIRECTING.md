@@ -4,6 +4,8 @@ Read the [owner's brief](../MASTERPROMPT-01.md) and the chosen topic first. For 
 
 ## Before the script: pick the comparison
 
+Using Monster Village Part 1? Use the [director’s readme and transfer card](../Topics/InThisTown/reference/monster-village/NEW-SHORT.md) at pitch and again at picture review.
+
 Open the actual reference, its shot log and the corresponding scene. Write down **one thing the audience can see** and **where your film needs to do that job**. Don't import its plot. Keep the owner's idea/script/voice approval stops.
 
 | If the problem is… | Study this | Decision it should change |

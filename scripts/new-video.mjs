@@ -204,6 +204,7 @@ if (topic) {
   else console.log(`Could not estimate the script (${run.error?.message ?? run.stderr.trim()}). Keeping the starter timing. After you change narration.md, run:\n  ${estimate}`);
   console.log("");
   console.log(`This is a film of the topic "${topic.name}". Its rules are in ${topic.folder}/README.md: read it first.`);
+  if (topic.id === "in-this-town") console.log(`Using Monster Village Part 1? Start with ${topic.folder}/reference/monster-village/NEW-SHORT.md (frames and transfer card).`);
   console.log("The order of work, and each step needs the owner's yes before the next:");
   console.log(`  1. IDEAS, then the SCRIPT in narration.md (${topic.folder}/SCRIPT.md). Stop. The owner approves the script.`);
   console.log(`  2. VOICE: python3 scripts/narration.py clips ${slug}, record each clip, then python3 scripts/narration.py build ${slug} --require-alignment.`);
