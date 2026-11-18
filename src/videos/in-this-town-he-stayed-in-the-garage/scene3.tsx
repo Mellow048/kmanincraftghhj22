@@ -125,11 +125,11 @@ export const scene3 = storyScene(timing, {
       zone: "village",
       stage: () => (
         <>
-          <Car position={SHOP} lift={0.45} color="#3d6ad4" />
-          <Hero position={[SHOP[0] - 1.35, 0, SHOP[2] + 1.05]} rotationY={0.7} face="calm" animation="leanOver" />
+          <Car position={SHOP} lift={0.35} color="#3d6ad4" />
+          <Hero position={[SHOP[0] - 1.7, 0, SHOP[2] + 1.15]} rotationY={0.55} face="calm" animation="idle" />
         </>
       ),
-      ...cam.push({ on: [SHOP[0] - 0.5, 1.15, SHOP[2] + 0.55], dist: 4.4, to: 3.6, yaw: -40, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [SHOP[0] - 0.7, 1.2, SHOP[2] + 0.6], dist: 4.8, to: 4.0, yaw: -34, pitch: 10, fov: 40 }),
     },
     {
       cue: "6.wrench",
