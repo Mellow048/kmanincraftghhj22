@@ -29,11 +29,11 @@
     { "file": "hero-training.mp3", "clips": [
       { "clip": "22-training", "text": "Training.", "tempo": 0.8 } ] },
     { "file": "hero-hus-a.mp3", "bursts": true, "clips": [
-      { "clip": "01-hus", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.33, "pause": 0.14 },
-      { "clip": "23-hus3", "pick": [2, 3, 4, 0, 5, 6, 7], "every": 0.31, "pause": 0.12 } ] },
+      { "clip": "01-hus", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.22, "pause": 0.09, "speed": 1.7 },
+      { "clip": "23-hus3", "pick": [2, 3, 4, 0, 5, 6, 7], "every": 0.2, "pause": 0.08, "speed": 1.8 } ] },
     { "file": "hero-hus-b.mp3", "bursts": true, "clips": [
-      { "clip": "10-hus2", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.36, "pause": 0.16 },
-      { "clip": "26-end", "pick": [2, 3, 4], "every": 0.33 } ] }
+      { "clip": "10-hus2", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.22, "pause": 0.09, "speed": 1.7 },
+      { "clip": "26-end", "pick": [2, 3, 4], "every": 0.2, "speed": 1.8 } ] }
   ],
   "copies": { "21-bro": "02-how" }
 }

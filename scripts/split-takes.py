@@ -17,9 +17,10 @@ It reads src/videos/<film>/takes.json:
         { "file": "friend1.mp3", "semitones": 3,          the same actor as a smaller person: pitch AND size, 3 semitones up
           "clips": [ … ] },
         { "file": "hero-hus-a.mp3", "bursts": true,       a chant: every burst of sound is cut out on its own, and each clip
-          "clips": [ { "clip": "01-hus", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.25, "pause": 0.16 } ] } ] }
+          "clips": [ { "clip": "01-hus", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.25, "pause": 0.16, "speed": 1.4 } ] } ] }
                                                           names the bursts it wants; 0 is the pause. `every` is seconds
                                                           from the start of one burst to the start of the next.
+                                                          `speed` says each burst faster (same pitch) so it fits `every`.
                                                           A sentence clip may give "tempo": 0.8 to be slower than its take
       "copies": { "21-bro": "02-how" } }                  the same recording used twice
 
@@ -131,6 +132,14 @@ def split_sentences(x, clips, out_dir):
         print(f"  {c['clip']:<14} {len(piece) / SR:5.2f}s  {c['text']}" + (f"  (tempo x{c['tempo']})" if c.get("tempo") else ""))
 
 
+def retime(x, tempo: float):
+    """The same sound, faster or slower, at the same pitch."""
+    out = subprocess.run(
+        [narr.ffmpeg_exe(), "-v", "error", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-", "-af", f"atempo={tempo:.4f}", "-f", "f32le", "-"],
+        input=x.astype(np.float32).tobytes(), check=True, capture_output=True).stdout
+    return np.frombuffer(out, dtype=np.float32).copy()
+
+
 def find_bursts(x):
     hop = SR // 200
     r = rms_frames(x, hop)
@@ -154,14 +163,17 @@ def chant(x, clips, out_dir):
     bursts = find_bursts(x)
     print("  bursts:", ", ".join(f"{k + 1}: {a / SR:.2f}–{b / SR:.2f}s" for k, (a, b) in enumerate(bursts)))
     for c in clips:
-        every, pause = c.get("every", 0.25), c.get("pause", 0.15)
+        every, pause, speed = c.get("every", 0.25), c.get("pause", 0.15), c.get("speed", 1.0)
         parts, t, said = [], 0.0, []
         for k in c["pick"]:
             if k == 0:
                 t += pause
                 continue
             a, b = bursts[k - 1]
-            piece = x[a:b][: int((every + 0.02) * SR)].copy()  # a burst never runs into the next one
+            piece = x[a:b].copy()
+            if speed != 1.0:  # the whole word, said faster: cutting it short instead would lose its "s"
+                piece = retime(piece, speed)
+            piece = piece[: int((every + 0.02) * SR)]  # a burst never runs into the next one
             fade, tail = int(0.006 * SR), int(0.03 * SR)
             piece[:fade] *= np.linspace(0, 1, fade)
             piece[-tail:] *= np.linspace(1, 0, tail)
