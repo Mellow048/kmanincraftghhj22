@@ -472,7 +472,7 @@ A film is not done until all of these are true:
 
 ### GitHub delivery (all formats)
 
-The owner reviews and downloads finished work on GitHub. Push the source to the active working branch and give the owner GitHub links to the actual deliverables, not just to source or to a local preview. Prefer GitHub release assets for finished MP4s and other exports so they do not have to be committed to Git.
+The owner reviews and downloads finished work on GitHub. Push the source to the active working branch and give the owner GitHub links to the actual deliverables, not just to source or to a local preview. Prefer GitHub release assets for finished MP4s and other exports so they do not have to be committed to Git. If the release upload is unavailable, put the requested final export (not scratch renders) on the active branch and link directly to it.
 
 ---
 

@@ -1,6 +1,6 @@
 # Final review — Popcorn Training Arc
 
-**Delivery:** [`renders/popcorn-training-arc.mp4`](../../../renders/popcorn-training-arc.mp4) — 19.6 s, 588 frames, 1080 × 1920 at 30 fps. H.264, 4:2:0 BT.709, stereo AAC at 48 kHz, 22.24 MiB. The MP4 is an export, not a tracked source asset. [Edit notes](EDIT.md) record the hook alternatives, complete script, storyboard, asset and sound plans, Monster Village reference transfer, and upload tests.
+**Delivery:** [`renders/popcorn-training-arc.mp4`](../../../renders/popcorn-training-arc.mp4) — 19.6 s, 588 frames, 1080 × 1920 at 30 fps. H.264, 4:2:0 BT.709, stereo AAC at 48 kHz, 22.24 MiB. The final MP4 is included on this branch because the GitHub release upload endpoint was unreachable. [Edit notes](EDIT.md) record the hook alternatives, complete script, storyboard, asset and sound plans, Monster Village reference transfer, and upload tests.
 
 ## Read it with the sound off
 
