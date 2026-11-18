@@ -50,8 +50,8 @@ export const scene2 = storyScene(timing, {
       cue: "4.hedge",
       note: "The car, in the hedge, slow, like it meant to stop there.",
       zone: "village",
-      stage: () => <Car position={[PLACE.hedge[0] - 1.6, 0, PLACE.hedge[2]]} rotationY={0.55} />,
-      ...cam.push({ on: [PLACE.hedge[0] - 1.2, 0.9, PLACE.hedge[2]], dist: 5.4, to: 4.4, yaw: 18, pitch: 14, fov: 42 }),
+      stage: () => <Car position={[PLACE.hedge[0] - 2.1, 0, PLACE.hedge[2]]} rotationY={0.7} />,
+      ...cam.push({ on: [PLACE.hedge[0] - 0.6, 0.9, PLACE.hedge[2]], dist: 6.4, to: 5.4, yaw: 24, pitch: 16, fov: 46 }),
     },
     {
       cue: "4.hold",
