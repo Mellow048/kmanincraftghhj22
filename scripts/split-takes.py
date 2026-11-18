@@ -108,9 +108,15 @@ def split_sentences(x, clips, out_dir):
             owner.append(i)
     x16 = to16k(x)
     a, b = narr.speech_span(x16, SRA)
-    spans = narr.align(x16[a:b], words)
+    missing = []
+    spans = narr.align(x16[a:b], words, interpolated=missing)
     if spans is None:
         sys.exit("  the aligner could not place the words of this take")
+    # Positions of the words whose time is a guess between neighbours, not a measurement.
+    guessed, pool = set(), [narr.bare(m) for m in missing]
+    for k, w in enumerate(words):
+        if narr.bare(w) in pool:
+            guessed.add(k)
     off = a / SRA
     cuts = [0.0]
     for k in range(1, len(words)):
@@ -131,6 +137,28 @@ def split_sentences(x, clips, out_dir):
                 input=piece.astype(np.float32).tobytes(), check=True, capture_output=True).stdout, dtype=np.float32).copy()
         write(os.path.join(out_dir, c["clip"] + ".wav"), level(piece))
         print(f"  {c['clip']:<14} {len(piece) / SR:5.2f}s  {c['text']}" + (f"  (tempo x{c['tempo']})" if c.get("tempo") else ""))
+        words_path = os.path.join(out_dir, c["clip"] + ".words.json")
+        if c.get("words") == "take":
+            # The aligner placed every word of the whole take, and can lose one in the short clip cut from it.
+            # Hand narration.py the times measured in the take, moved to this clip's own first sound.
+            mine = [k for k in range(len(words)) if owner[k] == i]
+            if any(bare_index in guessed for bare_index in mine):
+                sys.exit(f"  {c['clip']}: the take's own alignment guessed a word here; there is nothing measured to hand over")
+            zero = cuts[i] + s / SRA
+            rate = float(c.get("tempo") or 1.0)
+            clip16 = narr.decode(os.path.join(out_dir, c["clip"] + ".wav"), SRA)
+            a2, b2 = narr.speech_span(clip16, SRA)
+            length = (b2 - a2) / SRA
+            said, last = [], 0.0
+            for k in mine:
+                w0 = min(length, max(last, (off + spans[k][0] - zero) / rate - a2 / SRA))
+                w1 = min(length, max(w0 + 0.01, (off + spans[k][1] - zero) / rate - a2 / SRA))
+                said.append([round(w0, 3), round(w1, 3)])
+                last = w1
+            json.dump(said, open(words_path, "w"))
+            print(f"    word times from the take: {said}")
+        elif os.path.exists(words_path):
+            os.remove(words_path)
 
 
 def retime(x, tempo: float):
@@ -213,6 +241,8 @@ def main():
             split_sentences(x, take["clips"], out_dir)
     for new, old in sheet.get("copies", {}).items():
         shutil.copyfile(os.path.join(out_dir, old + ".wav"), os.path.join(out_dir, new + ".wav"))
+        if os.path.exists(os.path.join(out_dir, old + ".words.json")):
+            shutil.copyfile(os.path.join(out_dir, old + ".words.json"), os.path.join(out_dir, new + ".words.json"))
         print(f"  {new:<14} = {old}")
 
 

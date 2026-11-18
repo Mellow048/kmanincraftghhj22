@@ -4,11 +4,11 @@
   "mix": "public/audio/the-barber-who-never-went-to-parties/mix.mp3",
   "seconds": 79.6333,
   "built_from": {
-    "timing.json": "cbc6304659a4423935fdc1221c491cbb3d87cffd",
+    "timing.json": "3553ebaf6a8f045469cccd3544219659b9e319eb",
     "sound.json": "d0d95c9469b784308521774225d3b57d9b4bc76c",
     "narration.mp3": "236f92824153004c5c68f5c670d5f1e6305825d9"
   },
-  "mix_sha1": "b65e450b11b478f7a7bbbe1b11edaab793fb0757",
+  "mix_sha1": "4fea1013ca1abcacb1bd72e34c485746418e1595",
   "music_sections": [
     {
       "from": "1.hus",
@@ -88,7 +88,7 @@
     {
       "from": "7.help",
       "mood": "playful",
-      "at": 62.27
+      "at": 62.23
     },
     {
       "from": "7.hus1",
@@ -124,7 +124,7 @@
   "beds": 13,
   "measured": {
     "musicUnderVoiceDb": 18.7,
-    "secondsWithoutMusic": 5.0,
+    "secondsWithoutMusic": 4.9,
     "bedsUnderVoiceDb": 28.3,
     "sfx": 274,
     "sfxPerMinute": 206.4,
@@ -158,6 +158,16 @@
       },
       {
         "db": 4.9,
+        "t": 48.2,
+        "cue": "5.sat",
+        "sounding": [
+          "hair",
+          "slide_up",
+          "snip"
+        ]
+      },
+      {
+        "db": 4.9,
         "t": 67.9,
         "cue": "7.weirdone",
         "sounding": [
@@ -165,16 +175,6 @@
           "snip",
           "sting",
           "thud"
-        ]
-      },
-      {
-        "db": 4.9,
-        "t": 48.2,
-        "cue": "5.sat",
-        "sounding": [
-          "hair",
-          "slide_up",
-          "snip"
         ]
       },
       {

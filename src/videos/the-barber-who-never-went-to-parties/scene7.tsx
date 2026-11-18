@@ -301,7 +301,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.end",
-      ...cam.push({ on: WIDE, dist: 3.3, to: 3.0, yaw: 14, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [0, 1.7, 0], dist: 2.6, to: 2.3, yaw: -13, pitch: 1, fov: 40 }),
       zone: "shop",
       look: "overworld-sunset",
       note: "The first sound of the film is its last: the chant on the mop, four HUS and then two at once.",

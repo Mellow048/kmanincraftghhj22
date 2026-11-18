@@ -3,7 +3,7 @@
  "fps": 30,
  "duration": 79.6333,
  "estimated": false,
- "wordTiming": "partial",
+ "wordTiming": "aligned",
  "tempo": 1.43,
  "wordsPerMinute": 187.8,
  "audio": "audio/the-barber-who-never-went-to-parties/narration.mp3",
@@ -18,10 +18,7 @@
    "name": "02-how",
    "at": 1.797,
    "seconds": 1.091,
-   "timing": "interpolated",
-   "interpolatedWords": [
-    "how"
-   ]
+   "timing": "aligned"
   },
   {
    "name": "03-paper",
@@ -171,11 +168,7 @@
    "name": "18-help",
    "at": 62.306,
    "seconds": 1.965,
-   "timing": "interpolated",
-   "interpolatedWords": [
-    "at",
-    "him"
-   ]
+   "timing": "aligned"
   },
   {
    "name": "19-please",
@@ -199,10 +192,7 @@
    "name": "21-bro",
    "at": 69.795,
    "seconds": 1.091,
-   "timing": "interpolated",
-   "interpolatedWords": [
-    "how"
-   ]
+   "timing": "aligned"
   },
   {
    "name": "22-training",
@@ -479,18 +469,18 @@
   {
    "id": "6.forty",
    "start": 59.7667,
-   "end": 62.2667,
+   "end": 62.2333,
    "text": "I cut forty heads before lunch."
   },
   {
    "id": "7.help",
-   "start": 62.2667,
-   "end": 63.8333,
+   "start": 62.2333,
+   "end": 63.7667,
    "text": "HELP! THE PARTY STARTS IN AN HOUR,"
   },
   {
    "id": "7.look",
-   "start": 63.8333,
+   "start": 63.7667,
    "end": 64.4333,
    "text": "AND LOOK AT HIM!"
   },
@@ -588,13 +578,13 @@
   },
   {
    "w": "BRO.",
-   "s": 1.804,
-   "e": 1.965
+   "s": 1.797,
+   "e": 2.112
   },
   {
    "w": "HOW?!",
-   "s": 1.965,
-   "e": 2.888
+   "s": 2.461,
+   "e": 2.734
   },
   {
    "w": "One",
@@ -1558,58 +1548,58 @@
   },
   {
    "w": "HELP!",
-   "s": 62.313,
-   "e": 62.578
+   "s": 62.306,
+   "e": 62.573
   },
   {
    "w": "THE",
-   "s": 62.947,
-   "e": 63.01
+   "s": 62.901,
+   "e": 62.977
   },
   {
    "w": "PARTY",
-   "s": 63.01,
-   "e": 63.212
+   "s": 62.977,
+   "e": 63.179
   },
   {
    "w": "STARTS",
-   "s": 63.212,
-   "e": 63.435
+   "s": 63.179,
+   "e": 63.395
   },
   {
    "w": "IN",
-   "s": 63.435,
-   "e": 63.498
+   "s": 63.395,
+   "e": 63.465
   },
   {
    "w": "AN",
-   "s": 63.498,
-   "e": 63.56
+   "s": 63.465,
+   "e": 63.521
   },
   {
    "w": "HOUR,",
-   "s": 63.56,
-   "e": 63.797
+   "s": 63.521,
+   "e": 63.758
   },
   {
    "w": "AND",
-   "s": 63.895,
-   "e": 63.978
+   "s": 63.758,
+   "e": 63.946
   },
   {
    "w": "LOOK",
-   "s": 63.978,
-   "e": 64.076
+   "s": 63.946,
+   "e": 64.057
   },
   {
    "w": "AT",
-   "s": 64.076,
-   "e": 64.174
+   "s": 64.057,
+   "e": 64.099
   },
   {
    "w": "HIM!",
-   "s": 64.174,
-   "e": 64.271
+   "s": 64.099,
+   "e": 64.231
   },
   {
    "w": "PLEASE!",
@@ -1688,13 +1678,13 @@
   },
   {
    "w": "BRO.",
-   "s": 69.802,
-   "e": 69.963
+   "s": 69.795,
+   "e": 70.11
   },
   {
    "w": "HOW?!",
-   "s": 69.963,
-   "e": 70.886
+   "s": 70.459,
+   "e": 70.732
   },
   {
    "w": "Training.",

@@ -1,5 +1,5 @@
 {
-  "README": "Which sentences of which long recording make which clip of narration.md. Run: python3 scripts/split-takes.py the-barber-who-never-went-to-parties, then scripts/narration.py build. All takes are voice-03. The narrator and the barber are one person, so one voice. The two friends are the same voice moved up and down (pitch and size together): the voices picked for them (voice-07, voice-06) were not available in the session that recorded this. Second cut (2026-11-18, the owner: a chant every time hair is cut, a montage, a new ending): the chant clips are all cut from the same two takes of seven bursts each, and `25-no` is a take of its own.",
+  "README": "Which sentences of which long recording make which clip of narration.md. Run: python3 scripts/split-takes.py the-barber-who-never-went-to-parties, then scripts/narration.py build. All takes are voice-03. The narrator and the barber are one person, so one voice. The two friends are the same voice moved up and down (pitch and size together): the voices picked for them (voice-07, voice-06) were not available in the session that recorded this. Second cut (2026-11-18, the owner: a chant every time hair is cut, a montage, a new ending): the chant clips are all cut from the same two takes of seven bursts each, and `25-no` is a take of its own. A clip with 'words': 'take': the aligner loses a word in that short clip but places every word of the whole take, so split-takes.py hands narration.py the times it measured in the take (raw/<clip>.words.json).",
   "takes": [
     {
       "file": "narrator-a.mp3",
@@ -61,7 +61,8 @@
         },
         {
           "clip": "18-help",
-          "text": "Help! The party starts in an hour, and look at him!"
+          "text": "Help! The party starts in an hour, and look at him!",
+          "words": "take"
         },
         {
           "clip": "20-wait",
@@ -79,7 +80,8 @@
       "clips": [
         {
           "clip": "02-how",
-          "text": "Bro. How?!"
+          "text": "Bro. How?!",
+          "words": "take"
         },
         {
           "clip": "06-who",
