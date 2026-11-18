@@ -1,0 +1,773 @@
+{
+ "film": "i-traded-my-bed-for-a-plate-of-stew",
+ "README": "Sound sheet for a Deadpan film: a hit on most cuts, light music that never stops. Build: python3 scripts/sound.py build i-traded-my-bed-for-a-plate-of-stew",
+ "music": {
+  "gain": -15,
+  "sections": [
+   {
+    "from": "1.hook",
+    "mood": "playful",
+    "why": "the joke is already running"
+   },
+   {
+    "from": "2.stick",
+    "mood": "curious",
+    "why": "the two boring objects are planted"
+   },
+   {
+    "from": "3.why",
+    "mood": "playful",
+    "why": "the ladder starts compounding"
+   },
+   {
+    "from": "4.hours",
+    "mood": "dark",
+    "why": "he starts losing pieces"
+   },
+   {
+    "from": "5.carried",
+    "mood": "dark",
+    "why": "the low point, carried through his own door"
+   },
+   {
+    "from": "6.pivot",
+    "mood": "curious",
+    "why": "everything drops to one instrument"
+   },
+   {
+    "from": "7.bellfoot",
+    "mood": "wonder",
+    "why": "the loophole, short"
+   },
+   {
+    "from": "8.bed",
+    "mood": "hope",
+    "why": "the pay-out, one noun at a time"
+   },
+   {
+    "from": "9.but",
+    "mood": "playful",
+    "why": "the button turns"
+   },
+   {
+    "from": "10.dinner",
+    "mood": "playful",
+    "why": "ends on the same music it opened on"
+   }
+  ]
+ },
+ "beds": [
+  {
+   "from": "1.hook",
+   "to": "2.table",
+   "bed": "room"
+  },
+  {
+   "from": "3.why",
+   "to": "5.prices",
+   "bed": "room"
+  },
+  {
+   "from": "6.pivot",
+   "to": "6.trousers",
+   "bed": "room"
+  },
+  {
+   "from": "7.bellfoot",
+   "to": "7.refuse",
+   "bed": "room"
+  },
+  {
+   "from": "7.offer",
+   "to": "7.witharm",
+   "bed": "room"
+  },
+  {
+   "from": "8.bed",
+   "to": "10.sub",
+   "bed": "room"
+  }
+ ],
+ "sfx": [
+  {
+   "cue": "1.hook",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "1.hook",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "1.cold",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "1.cold",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "1.fine",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "1.fine",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "1.plate",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "1.plate",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "1.rule",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "1.rule",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "1.both",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "1.both",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "1.bell",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "1.bell",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "2.stick",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "2.stick",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "2.pocket",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "2.pocket",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "2.night",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "2.night",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "2.floor",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "2.floor",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "2.hisfloor",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "2.hisfloor",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "2.morning",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "2.morning",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "2.table",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "2.table",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "3.why",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "3.why",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "3.tuesday",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "3.tuesday",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "3.floorplan",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "3.floorplan",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "3.chair",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "3.chair",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "3.stood",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "3.stood",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "3.wednesday",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "3.wednesday",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "3.because",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "3.because",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "4.hours",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "4.hours",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "4.thursday",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "4.thursday",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "4.armwhy",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "4.armwhy",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "4.inspect",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "4.inspect",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "4.goodwork",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "4.goodwork",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "4.friday",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "4.friday",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "4.legswhy",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "4.legswhy",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "5.carried",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "5.carried",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "5.duty",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "5.duty",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "5.saturday",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "5.saturday",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "5.mouthwhy",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "5.mouthwhy",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "5.talks",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "5.talks",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "5.prices",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "5.prices",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "5.nothing",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "5.nothing",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "6.pivot",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "6.pivot",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "6.how",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "6.how",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "6.simply",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "6.simply",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "6.stick2",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "6.stick2",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "6.neverheld",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "6.neverheld",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "6.receipt",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "6.receipt",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "6.trousers",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "6.trousers",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "7.bellfoot",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "7.bellfoot",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "7.refuse",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "7.refuse",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "7.offer",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "7.offer",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "7.terms",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "7.terms",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "7.read",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "7.read",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "7.accepted",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "7.accepted",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "7.witharm",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "7.witharm",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "8.bed",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "8.bed",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "8.table2",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "8.table2",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "8.floor2",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "8.floor2",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "8.chair2",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "8.chair2",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "8.arm2",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "8.arm2",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "8.legs2",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "8.legs2",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "8.mouth2",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "8.mouth2",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "9.price",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "9.price",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "9.tuesday2",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "9.tuesday2",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "9.but",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "9.but",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "9.debt",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "9.debt",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "9.four",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "9.four",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "9.before",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "9.before",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "9.best",
+   "sfx": "blip",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "9.best",
+   "sfx": "thud",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "10.dinner",
+   "sfx": "chime",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "10.dinner",
+   "sfx": "paper",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "10.onfloor",
+   "sfx": "coin",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "10.onfloor",
+   "sfx": "bonk",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "10.stillcold",
+   "sfx": "pop",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "10.stillcold",
+   "sfx": "stamp",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "10.again",
+   "sfx": "tick",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "10.again",
+   "sfx": "swish",
+   "why": "the cut lands, so the cut gets a sound"
+  },
+  {
+   "cue": "10.sub",
+   "sfx": "clank",
+   "why": "the object the sentence just named"
+  },
+  {
+   "cue": "10.sub",
+   "sfx": "plink",
+   "why": "the cut lands, so the cut gets a sound"
+  }
+ ]
+}
