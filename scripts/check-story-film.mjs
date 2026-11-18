@@ -483,3 +483,145 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
       `${Math.round(pace)} words/min, median shot ${mid.toFixed(2)}s${timing.estimated ? " (timing estimated)" : ""}`,
   );
 }
+
+/**
+ * THE DIALOGUE PROFILE. A meme short: a cut of its own with a few spoken lines inside it, no narrator.
+ *
+ * The base contract cannot hold one (it is 20 seconds long), and the story profile cannot either (it is cut
+ * to a continuous voice-over). So a topic can say `"profile": "dialogue"`, and this is what that means:
+ *
+ *   - the cut is written down in one file (`script` in topic.json, e.g. lines.json): every scene, every shot
+ *     and its length, and every line with the second of its shot it starts on;
+ *   - `timing.json` is written from it (scripts/dialogue-timing.py), and has one cue per shot, in order;
+ *   - the film has captions and a mix, and the mix is not older than the cut;
+ *   - every shot says why it is on screen, and every shot's camera moves.
+ */
+export function checkDialogueFilm({ root, slug, dir, film, topic, fail, info, TWO_D }) {
+  const tag = `${slug} [${topic.id}]`;
+  const rules = topic.film ?? {};
+  const scriptName = topic.script ?? "lines.json";
+  const scriptPath = path.join(dir, scriptName);
+
+  if (!fs.existsSync(scriptPath)) {
+    fail(`${tag}: missing ${scriptName}. A dialogue film writes its cut down before it builds a shot.`);
+    return;
+  }
+  let sheet;
+  try {
+    sheet = JSON.parse(fs.readFileSync(scriptPath, "utf8"));
+  } catch (error) {
+    fail(`${tag}: ${scriptName} is not valid JSON: ${error.message}`);
+    return;
+  }
+
+  const shots = [];
+  const ids = new Set();
+  let total = 0;
+  for (const scene of sheet.scenes ?? []) {
+    if (!scene.id) fail(`${tag}: ${scriptName}: a scene has no id`);
+    let sceneTotal = 0;
+    for (const shot of scene.shots ?? []) {
+      const dur = Number(shot.dur);
+      if (!shot.id) fail(`${tag}: ${scriptName}: a shot in ${scene.id} has no id (the id is its cue in sound.json)`);
+      if (!Number.isFinite(dur) || dur <= 0) fail(`${tag}: ${scriptName}: shot ${shot.id} has no length`);
+      if (ids.has(shot.id)) fail(`${tag}: ${scriptName}: shot id "${shot.id}" is used twice`);
+      ids.add(shot.id);
+      if (shot.line) {
+        if (!shot.line.text) fail(`${tag}: ${scriptName}: the line on ${shot.id} has no text`);
+        if (Number(shot.line.at ?? 0) >= dur) fail(`${tag}: ${scriptName}: the line on ${shot.id} starts after the shot ends`);
+        const who = shot.line.who ?? "me";
+        if (topic.voices && !(topic.voices ?? []).includes(who)) {
+          fail(`${tag}: ${scriptName}: "${who}" is not a voice of this topic (${(topic.voices ?? []).join(", ")})`);
+        }
+      }
+      shots.push({ ...shot, scene: scene.id });
+      sceneTotal += dur;
+      total += dur;
+    }
+    if (rules.maxShotSeconds && sceneTotal > (rules.maxSceneSeconds ?? Infinity)) {
+      info(`${tag}: ${scene.id} runs ${sceneTotal.toFixed(1)}s`);
+    }
+  }
+  const lines = shots.filter((shot) => shot.line);
+  const words = lines.reduce((n, shot) => n + wordsOf(shot.line.caption ?? shot.line.text).length, 0);
+  info(`${tag}: ${shots.length} shots, ${lines.length} lines, ${words} caption word(s), ${total.toFixed(1)}s`);
+
+  if (rules.seconds && (total < rules.seconds[0] || total > rules.seconds[1])) {
+    info(`${tag}: ${total.toFixed(1)}s is outside this topic's ${rules.seconds[0]}–${rules.seconds[1]}s`);
+  }
+  if (rules.hardMaxSeconds && total > rules.hardMaxSeconds) {
+    fail(`${tag}: ${total.toFixed(1)}s is over the hard limit of ${rules.hardMaxSeconds}s.`);
+  }
+  if (rules.minLines && lines.length < rules.minLines) {
+    fail(`${tag}: ${lines.length} spoken line(s). This format needs at least ${rules.minLines}.`);
+  }
+
+  // The timing and the voice are written from the cut, so they must agree with it.
+  const timingPath = path.join(dir, "timing.json");
+  if (!fs.existsSync(timingPath)) {
+    fail(`${tag}: missing timing.json. Run: python3 scripts/dialogue-timing.py ${slug}`);
+    return;
+  }
+  let timing;
+  try {
+    timing = JSON.parse(fs.readFileSync(timingPath, "utf8"));
+  } catch (error) {
+    fail(`${tag}: timing.json is not valid JSON: ${error.message}`);
+    return;
+  }
+  const cueIds = (timing.cues ?? []).map((cue) => cue.id);
+  if (cueIds.length !== shots.length) {
+    fail(`${tag}: timing.json has ${cueIds.length} cues and ${scriptName} has ${shots.length} shots. Rebuild: python3 scripts/dialogue-timing.py ${slug}`);
+  } else {
+    const wrong = shots.findIndex((shot, i) => shot.id !== cueIds[i]);
+    if (wrong >= 0) fail(`${tag}: timing.json cue ${wrong + 1} is "${cueIds[wrong]}" but ${scriptName} says "${shots[wrong].id}". Rebuild the timing.`);
+  }
+  if (Math.abs((timing.duration ?? 0) - total) > 0.05) {
+    fail(`${tag}: timing.json is ${timing.duration}s and the cut is ${total.toFixed(2)}s. Rebuild: python3 scripts/dialogue-timing.py ${slug}`);
+  }
+  if (!(timing.words ?? []).length) fail(`${tag}: timing.json has no words, so nothing can be captioned.`);
+  const voicePath = path.join(root, "public", "audio", slug, "narration.mp3");
+  if (!fs.existsSync(voicePath)) fail(`${tag}: no voice track. Run: python3 scripts/dialogue-timing.py ${slug}`);
+
+  if (!/\bcaptions\s*:/.test(film)) fail(`${tag}: film.tsx has no \`captions\`. Every spoken word goes on screen.`);
+  if (!/\baudio\s*:\s*\{/.test(film)) fail(`${tag}: film.tsx has no \`audio\`. The film is silent.`);
+  if (TWO_D.test(film)) fail(`${tag}: film.tsx contains a 2D overlay`);
+
+  // Every scene is built from the cut, not from hand-typed numbers.
+  const sceneIds = (film.match(/scenes:\s*\[([\s\S]*?)\]/)?.[1] ?? "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter((value) => /^scene\d+$/.test(value));
+  if (sceneIds.length === 0) {
+    fail(`${tag}: film.tsx lists no scenes.`);
+    return;
+  }
+  for (const name of sceneIds) {
+    const scenePath = path.join(dir, `${name}.tsx`);
+    if (!fs.existsSync(scenePath)) {
+      fail(`${tag}: scene "${name}" is in film.tsx but ${name}.tsx does not exist`);
+      continue;
+    }
+    const scene = fs.readFileSync(scenePath, "utf8");
+    const label = `${slug}/${name}`;
+    if (TWO_D.test(scene)) fail(`${label}: 2D overlay found. Build the object in 3D.`);
+    if (!/\bstagedScene\s*\(/.test(scene)) fail(`${label}: a dialogue film's scenes are built with stagedScene(), so their lengths come from ${scriptName}`);
+    if (!/^\s*id:\s*["']scene\d+["']/m.test(scene) && !new RegExp(`stagedScene\\(\\s*["']${name}["']`).test(scene)) {
+      fail(`${label}: the scene must say stagedScene("${name}", …) — its shots are looked up by that name`);
+    }
+    const shotBlocks = scene.split(/\n\s*\{\s*\n/).slice(1);
+    if (shotBlocks.length === 0) fail(`${label}: no shots found.`);
+    for (const block of shotBlocks) {
+      const id = block.match(/\bid:\s*["']([^"']+)["']/)?.[1];
+      if (!id) continue;
+      if (!ids.has(id)) fail(`${label}: shot "${id}" is not in ${scriptName}`);
+      const note = block.match(/\bnote:\s*(["'`])([\s\S]*?)\1/)?.[2] ?? "";
+      if (note.trim().length < 24) fail(`${label}/${id}: note must say why this picture is on screen (24+ chars)`);
+      const recipe = /[.][.]\s*cam\.\w+\s*\(/.test(block) || /\bcam\.\w+\s*\(/.test(block);
+      const literal = /(^|[\s{,])from\s*:/.test(block) && /(^|[\s{,])to\s*:|path\s*:/.test(block) && /(^|[\s{,])target\s*:/.test(block);
+      if (!recipe && !literal) fail(`${label}/${id}: no camera. Spread a cam.* recipe, or give from, to and target.`);
+    }
+  }
+
+  checkSound({ root, slug, dir, film, topic, tag, timing, complete: true, fail, info });
+}

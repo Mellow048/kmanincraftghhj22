@@ -1,0 +1,44 @@
+{
+  "id": "meme-shorts",
+  "name": "Meme Shorts",
+  "folder": "Topics/MemeShorts",
+  "profile": "dialogue",
+  "script": "lines.json",
+  "voices": [
+    "me",
+    "friends",
+    "friend",
+    "friend2",
+    "kid",
+    "owner"
+  ],
+  "why": "A third kind of film, added 2026-11-18 at the owner's request: a recreation of a TikTok/Reels meme, not a story. There is no narrator and no continuous voice-over, so neither the 20-second base contract nor the story profile can hold one. The cut is written down in lines.json (scene, shot, length, and where each line starts) and everything else is generated from it.",
+  "film": {
+    "seconds": [
+      75,
+      150
+    ],
+    "hardMaxSeconds": 178,
+    "minLines": 4,
+    "maxSceneSeconds": 22
+  },
+  "sound": {
+    "required": true,
+    "guide": "Topics/MemeShorts/README.md",
+    "minMusicSections": 5,
+    "maxSecondsWithoutMusic": 20,
+    "minSfxPerMinute": 40,
+    "maxGapSeconds": 7,
+    "maxBuried": 0,
+    "lufs": [
+      -17.5,
+      -12
+    ],
+    "maxTruePeakDb": -0.3,
+    "musicUnderVoiceDb": [
+      10,
+      26
+    ],
+    "maxSecondsWithoutMusicWhy": "A dialogue film is mostly silence by design: the film holds its breath between lines. Twenty seconds across two minutes, never more than three at once."
+  }
+}

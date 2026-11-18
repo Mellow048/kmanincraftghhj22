@@ -1,0 +1,122 @@
+{
+  "film": "the-guy-who-never-got-invited",
+  "title": "The Guy Who Never Got Invited",
+  "fps": 30,
+  "note": "The one source of truth for the cut: scene and shot lengths, and every spoken line with the second of its shot it starts on. scripts/dialogue-timing.py turns this into timing.json and the voice track; kit.tsx reads it back for the shot durations, so the picture, the captions and the sound cannot drift apart.",
+  "scenes": [
+    {
+      "id": "scene1",
+      "title": "Hush",
+      "shots": [
+        { "id": "1.hush", "dur": 2.6, "line": { "who": "friends", "text": "Hush. Hush. Hush.", "caption": "HUS. HUS. HUS.", "at": 0.35, "speed": 2.1 } },
+        { "id": "1.eyes", "dur": 1.8 },
+        { "id": "1.back", "dur": 2.6 }
+      ]
+    },
+    {
+      "id": "scene2",
+      "title": "Rewind, four years",
+      "shots": [
+        { "id": "2.empty", "dur": 1.7 },
+        { "id": "2.walk", "dur": 2.3 }
+      ]
+    },
+    {
+      "id": "scene3",
+      "title": "The party he is not at",
+      "shots": [
+        { "id": "3.window", "dur": 3.0 },
+        { "id": "3.hope", "dur": 2.0 },
+        { "id": "3.door", "dur": 2.4, "line": { "who": "friend", "text": "Yo. We're full, bro.", "at": "end" } },
+        { "id": "3.leave", "dur": 2.6 }
+      ]
+    },
+    {
+      "id": "scene4",
+      "title": "The dream",
+      "shots": [
+        { "id": "4.room", "dur": 3.0 },
+        { "id": "4.say", "dur": 2.4, "line": { "who": "me", "text": "I want to be a DJ.", "at": "end" } },
+        { "id": "4.hand", "dur": 2.6 }
+      ]
+    },
+    {
+      "id": "scene5",
+      "title": "The egg",
+      "shots": [
+        { "id": "5.yard", "dur": 3.0 },
+        { "id": "5.needle", "dur": 2.4 },
+        { "id": "5.skip", "dur": 2.2 },
+        { "id": "5.feed", "dur": 2.4 },
+        { "id": "5.silence", "dur": 3.0, "line": { "who": "kid", "text": "Put on my phone.", "at": "end" } },
+        { "id": "5.alone", "dur": 3.0 }
+      ]
+    },
+    {
+      "id": "scene6",
+      "title": "Clean-up",
+      "shots": [
+        { "id": "6.table", "dur": 3.0 },
+        { "id": "6.sleeve", "dur": 3.0 }
+      ]
+    },
+    {
+      "id": "scene7",
+      "title": "Practice",
+      "shots": [
+        { "id": "7.try1", "dur": 1.6667 },
+        { "id": "7.try2", "dur": 1.6667 },
+        { "id": "7.label", "dur": 1.6667 },
+        { "id": "7.teeth", "dur": 1.6667 },
+        { "id": "7.window", "dur": 1.6667 },
+        { "id": "7.onehand", "dur": 1.6667 },
+        { "id": "7.eyes", "dur": 1.6667 },
+        { "id": "7.dark", "dur": 1.6667 },
+        { "id": "7.sign", "dur": 1.6667 },
+        { "id": "7.dawn", "dur": 1.6667 },
+        { "id": "7.stack", "dur": 1.6667 },
+        { "id": "7.hit", "dur": 2.0 }
+      ]
+    },
+    {
+      "id": "scene8",
+      "title": "The job",
+      "shots": [
+        { "id": "8.out", "dur": 3.0 },
+        { "id": "8.booth", "dur": 3.0 },
+        { "id": "8.owner", "dur": 2.0, "line": { "who": "owner", "text": "You're the best I've had.", "at": "end" } },
+        { "id": "8.thanks", "dur": 1.0, "line": { "who": "me", "text": "Thank you.", "at": 0.2 } },
+        { "id": "8.smile", "dur": 2.6 }
+      ]
+    },
+    {
+      "id": "scene9",
+      "title": "They walk in",
+      "shots": [
+        { "id": "9.in", "dur": 3.0 },
+        { "id": "9.bar", "dur": 2.8, "line": { "who": "friend", "text": "Bro, who is this guy? This guy is sick.", "at": "end" } },
+        { "id": "9.back", "dur": 2.8, "line": { "who": "friend2", "text": "How'd you get this good, man?", "at": "end" } },
+        { "id": "9.decks", "dur": 2.4 },
+        { "id": "9.faces", "dur": 3.0 }
+      ]
+    },
+    {
+      "id": "scene10",
+      "title": "The word",
+      "shots": [
+        { "id": "10.word", "dur": 2.4, "line": { "who": "me", "text": "Bedroom.", "at": "end" } },
+        { "id": "10.slam", "dur": 1.6 },
+        { "id": "10.noface", "dur": 2.0 }
+      ]
+    },
+    {
+      "id": "scene11",
+      "title": "Button",
+      "shots": [
+        { "id": "11.hush", "dur": 3.0, "line": { "who": "friends", "text": "Hush. Hush. Hush.", "caption": "HUS. HUS. HUS.", "at": 0.3, "speed": 2.1 } },
+        { "id": "11.pass", "dur": 3.2 },
+        { "id": "11.dark", "dur": 2.8 }
+      ]
+    }
+  ]
+}

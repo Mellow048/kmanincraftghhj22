@@ -1,0 +1,1011 @@
+{
+ "film": "the-guy-who-never-got-invited",
+ "README": "The sound sheet of a meme short. Times are cues (the shot ids of lines.json) and words, never seconds. Then: python3 scripts/sound.py build the-guy-who-never-got-invited",
+ "sfxGain": -1.0,
+ "music": {
+  "gain": 0,
+  "sections": [
+   {
+    "from": "1.hush",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "1.eyes",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "1.back",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "2.empty",
+    "mood": "curious",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "2.walk",
+    "mood": "curious",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "3.window",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "3.hope",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "3.door",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "3.leave",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "4.room",
+    "mood": "hope",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "4.say",
+    "mood": "hope",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "4.hand",
+    "mood": "hope",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "5.yard",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "5.needle",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "5.skip",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "5.feed",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "5.silence",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "5.alone",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "6.table",
+    "mood": "drone",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "6.sleeve",
+    "mood": "drone",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.try1",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.try2",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.label",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.teeth",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.window",
+    "mood": "sneak",
+    "gain": -16,
+    "why": "Under the needle drop and the one-handed mix: the music has to get out of the way of the effect, not the other way round."
+   },
+   {
+    "from": "7.onehand",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.eyes",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.dark",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.sign",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.dawn",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "7.stack",
+    "mood": "sneak",
+    "gain": -16,
+    "why": "Under the needle drop and the one-handed mix: the music has to get out of the way of the effect, not the other way round."
+   },
+   {
+    "from": "7.hit",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "8.out",
+    "mood": "tense",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "8.booth",
+    "mood": "tense",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "8.owner",
+    "mood": "tense",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "8.thanks",
+    "mood": "tense",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "8.smile",
+    "mood": "tense",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "9.in",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "9.bar",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "9.back",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "9.decks",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "9.faces",
+    "mood": "playful",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "10.word",
+    "mood": "drone",
+    "gain": -16,
+    "why": "The one held breath: everything drops for one word."
+   },
+   {
+    "from": "10.slam",
+    "mood": "dark",
+    "gain": -9,
+    "why": "The needle comes down and the room goes up."
+   },
+   {
+    "from": "10.noface",
+    "mood": "dark",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "11.hush",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "11.pass",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   },
+   {
+    "from": "11.dark",
+    "mood": "sneak",
+    "gain": -9,
+    "why": "The bed of the film, stepped back under every spoken line."
+   }
+  ],
+  "duck": 15.0
+ },
+ "beds": [
+  {
+   "from": "1.hush",
+   "to": "1.back",
+   "bed": "night",
+   "why": "The street at night: crickets and still air.",
+   "trim": 0
+  },
+  {
+   "from": "2.empty",
+   "to": "2.walk",
+   "bed": "village",
+   "why": "Daylight: birds, open air, the town awake.",
+   "trim": 0
+  },
+  {
+   "from": "3.window",
+   "to": "3.leave",
+   "bed": "night",
+   "why": "Night outside the party.",
+   "trim": 0
+  },
+  {
+   "from": "3.window",
+   "to": "3.leave",
+   "bed": "crowd",
+   "trim": -4,
+   "why": "The party on the other side of the glass."
+  },
+  {
+   "from": "4.room",
+   "to": "4.hand",
+   "bed": "room",
+   "why": "A bedroom with two speakers in it.",
+   "trim": 0
+  },
+  {
+   "from": "5.yard",
+   "to": "5.alone",
+   "bed": "village",
+   "trim": -3,
+   "why": "A garden in the evening."
+  },
+  {
+   "from": "5.yard",
+   "to": "5.alone",
+   "bed": "crowd",
+   "trim": -6,
+   "why": "The birthday party, one metre away."
+  },
+  {
+   "from": "6.table",
+   "to": "6.sleeve",
+   "bed": "room",
+   "trim": 2,
+   "why": "An empty kitchen: it has to be almost silent."
+  },
+  {
+   "from": "7.try1",
+   "to": "7.hit",
+   "bed": "room",
+   "why": "The room where all the practice happens.",
+   "trim": 0
+  },
+  {
+   "from": "8.out",
+   "to": "8.out",
+   "bed": "night",
+   "why": "The street outside the club.",
+   "trim": 0
+  },
+  {
+   "from": "8.out",
+   "to": "10.noface",
+   "bed": "crowd",
+   "trim": -2,
+   "why": "A hundred people in a room with no windows."
+  },
+  {
+   "from": "11.hush",
+   "to": "11.dark",
+   "bed": "night",
+   "why": "Back outside, and the night is the same night.",
+   "trim": 0
+  }
+ ],
+ "sfx": [
+  {
+   "cue": "1.back",
+   "sfx": "whoosh_low",
+   "why": "Round to his back, the speaker in his arms, the lit door in front of him.",
+   "trim": 10
+  },
+  {
+   "cue": "1.back",
+   "sfx": "tick",
+   "at": 0.2,
+   "why": "The third hush behind him.",
+   "trim": 4
+  },
+  {
+   "cue": "2.empty",
+   "sfx": "glitch",
+   "why": "The tape rewind: the same doorway, four years earlier.",
+   "trim": 11
+  },
+  {
+   "cue": "2.empty",
+   "sfx": "zip",
+   "at": 0.15,
+   "dur": 0.5,
+   "why": "The rewind running out as the daylight lands.",
+   "trim": 11
+  },
+  {
+   "cue": "2.walk",
+   "sfx": "swish",
+   "why": "The cut to him arriving with the speaker.",
+   "trim": 10
+  },
+  {
+   "cue": "2.walk",
+   "sfx": "step_grass",
+   "at": 0.1,
+   "repeat": 4,
+   "every": 0.52,
+   "why": "His feet on the road.",
+   "trim": 11
+  },
+  {
+   "cue": "3.window",
+   "sfx": "whoosh",
+   "why": "Into the party behind the glass.",
+   "trim": 9
+  },
+  {
+   "cue": "3.window",
+   "sfx": "cheer",
+   "at": 0.8,
+   "dur": 1.6,
+   "trim": 5,
+   "why": "The room going up inside, muffled by the window."
+  },
+  {
+   "cue": "3.hope",
+   "sfx": "swish",
+   "why": "Out to him on the step, hopeful.",
+   "trim": 11
+  },
+  {
+   "cue": "3.door",
+   "sfx": "tick",
+   "at": 0.45,
+   "why": "He says it in one breath and it lands.",
+   "trim": 4
+  },
+  {
+   "cue": "3.leave",
+   "sfx": "step_grass",
+   "at": 0.2,
+   "repeat": 5,
+   "every": 0.5,
+   "pitchStep": 0.97,
+   "why": "His feet taking him away from the door.",
+   "trim": 12
+  },
+  {
+   "cue": "4.room",
+   "sfx": "whoosh",
+   "why": "Into the bedroom: the smallest room in the film.",
+   "trim": 5
+  },
+  {
+   "cue": "4.room",
+   "sfx": "creak",
+   "at": 1.1,
+   "trim": 7,
+   "why": "The chair he sits down on."
+  },
+  {
+   "cue": "4.hand",
+   "sfx": "plink",
+   "at": 0.9,
+   "trim": 7,
+   "why": "The little green light on the cabinet."
+  },
+  {
+   "cue": "5.yard",
+   "sfx": "whoosh",
+   "why": "Into the birthday: the fairy lights, the cake, the borrowed setup.",
+   "trim": 10
+  },
+  {
+   "cue": "5.yard",
+   "sfx": "cheer",
+   "at": 0.6,
+   "dur": 1.8,
+   "trim": 14,
+   "why": "The yard, happy, before he plays."
+  },
+  {
+   "cue": "5.yard",
+   "sfx": "crackle",
+   "at": 1.4,
+   "trim": 5,
+   "why": "The fairy lights overhead."
+  },
+  {
+   "cue": "5.needle",
+   "sfx": "place",
+   "at": 0.15,
+   "why": "The needle going down on the record.",
+   "trim": 6
+  },
+  {
+   "cue": "5.needle",
+   "sfx": "tick",
+   "at": 0.55,
+   "repeat": 2,
+   "every": 0.35,
+   "why": "Two bars play.",
+   "trim": 29
+  },
+  {
+   "cue": "5.skip",
+   "sfx": "glitch",
+   "why": "The needle skips.",
+   "trim": 10
+  },
+  {
+   "cue": "5.skip",
+   "sfx": "buzz",
+   "at": 0.3,
+   "trim": 5,
+   "why": "His hands grabbing at the wrong cable."
+  },
+  {
+   "cue": "5.feed",
+   "sfx": "hit",
+   "why": "The feedback squeal, and forty faces turning.",
+   "trim": 12
+  },
+  {
+   "cue": "5.feed",
+   "sfx": "sting",
+   "at": 0.35,
+   "trim": 3,
+   "why": "The moment it stops being his party."
+  },
+  {
+   "cue": "5.silence",
+   "sfx": "drop",
+   "why": "The whole yard goes quiet, and the floor goes out from under him.",
+   "trim": 5
+  },
+  {
+   "cue": "5.silence",
+   "sfx": "blip",
+   "at": 0.55,
+   "pitch": 1.3,
+   "trim": 8,
+   "why": "Put on my phone: four words, not even meant badly."
+  },
+  {
+   "cue": "5.silence",
+   "sfx": "tick",
+   "at": 1.9,
+   "pitch": 1.15,
+   "why": "The phone starts playing.",
+   "trim": 10
+  },
+  {
+   "cue": "5.alone",
+   "sfx": "scrape",
+   "at": 0.3,
+   "dur": 1.4,
+   "trim": 7,
+   "why": "The cable coming off the floor."
+  },
+  {
+   "cue": "5.alone",
+   "sfx": "cheer",
+   "at": 1.2,
+   "dur": 1.5,
+   "trim": 0,
+   "why": "The yard dancing to a phone behind him."
+  },
+  {
+   "cue": "6.table",
+   "sfx": "whoosh",
+   "why": "Into the kitchen, later.",
+   "trim": 6
+  },
+  {
+   "cue": "6.table",
+   "sfx": "rustle",
+   "at": 0.4,
+   "dur": 1.1,
+   "trim": 5,
+   "why": "The cloth on the table."
+  },
+  {
+   "cue": "6.table",
+   "sfx": "place",
+   "at": 1.5,
+   "trim": 7,
+   "why": "The plate he moves out of the way."
+  },
+  {
+   "cue": "6.sleeve",
+   "sfx": "swish",
+   "why": "Down to the record and the sleeve.",
+   "trim": 5
+  },
+  {
+   "cue": "6.sleeve",
+   "sfx": "paper",
+   "at": 0.45,
+   "trim": 11,
+   "why": "The sleeve opening."
+  },
+  {
+   "cue": "6.sleeve",
+   "sfx": "paper",
+   "at": 1.5,
+   "trim": 10,
+   "why": "The record sliding back in, carefully."
+  },
+  {
+   "cue": "7.try1",
+   "sfx": "whoosh",
+   "why": "Into the montage.",
+   "trim": 10
+  },
+  {
+   "cue": "7.try1",
+   "sfx": "place",
+   "at": 0.35,
+   "why": "The needle down, first try."
+  },
+  {
+   "cue": "7.try1",
+   "sfx": "bonk",
+   "at": 0.95,
+   "trim": -4,
+   "why": "And it is wrong."
+  },
+  {
+   "cue": "7.try2",
+   "sfx": "swish",
+   "why": "The same try, closer.",
+   "trim": 23
+  },
+  {
+   "cue": "7.try2",
+   "sfx": "tick",
+   "at": 0.3,
+   "repeat": 3,
+   "every": 0.3,
+   "why": "The hand shaking on the record.",
+   "trim": 9
+  },
+  {
+   "cue": "7.label",
+   "sfx": "paper",
+   "at": 0.3,
+   "trim": -3,
+   "why": "Writing 84 on a label."
+  },
+  {
+   "cue": "7.label",
+   "sfx": "tick",
+   "at": 0.9,
+   "pitch": 1.2,
+   "trim": 30,
+   "why": "The pencil."
+  },
+  {
+   "cue": "7.teeth",
+   "sfx": "swish",
+   "why": "The brush, and the beat he is counting.",
+   "trim": 23
+  },
+  {
+   "cue": "7.teeth",
+   "sfx": "tick",
+   "at": 0.25,
+   "repeat": 4,
+   "every": 0.32,
+   "pitchStep": 1.03,
+   "why": "Beats, tapped out on his teeth.",
+   "trim": 31
+  },
+  {
+   "cue": "7.window",
+   "sfx": "whoosh",
+   "why": "To the window at night, and the town asleep.",
+   "trim": 20
+  },
+  {
+   "cue": "7.window",
+   "sfx": "gust",
+   "at": 0.5,
+   "dur": 1.4,
+   "trim": 1,
+   "why": "Air moving in the room."
+  },
+  {
+   "cue": "7.onehand",
+   "sfx": "swish",
+   "why": "Mixing one-handed.",
+   "trim": 40
+  },
+  {
+   "cue": "7.onehand",
+   "sfx": "zip",
+   "at": 0.4,
+   "dur": 0.5,
+   "trim": 10,
+   "why": "The record spinning up."
+  },
+  {
+   "cue": "7.eyes",
+   "sfx": "whoosh_low",
+   "why": "His eyes shut, headphones on.",
+   "trim": 21
+  },
+  {
+   "cue": "7.eyes",
+   "sfx": "plink",
+   "at": 1.0,
+   "trim": -4,
+   "why": "The record turning under his hands."
+  },
+  {
+   "cue": "7.dark",
+   "sfx": "whoosh",
+   "why": "The lamp off: only the mixer lights.",
+   "trim": 20
+  },
+  {
+   "cue": "7.dark",
+   "sfx": "blip",
+   "at": 0.6,
+   "pitch": 1.4,
+   "trim": 7,
+   "why": "One light on the desk."
+  },
+  {
+   "cue": "7.sign",
+   "sfx": "swish",
+   "why": "The word on the wall.",
+   "trim": 25
+  },
+  {
+   "cue": "7.sign",
+   "sfx": "place",
+   "at": 0.4,
+   "trim": 1,
+   "why": "The tape pressed flat."
+  },
+  {
+   "cue": "7.dawn",
+   "sfx": "whoosh",
+   "why": "Dawn through the window.",
+   "trim": 21
+  },
+  {
+   "cue": "7.dawn",
+   "sfx": "chime",
+   "at": 0.5,
+   "trim": 7,
+   "why": "He is asleep sitting up, headphones still on."
+  },
+  {
+   "cue": "7.stack",
+   "sfx": "whoosh_low",
+   "why": "Down to the stack of records.",
+   "trim": 21
+  },
+  {
+   "cue": "7.stack",
+   "sfx": "paper",
+   "at": 0.3,
+   "repeat": 3,
+   "every": 0.24,
+   "trim": 7,
+   "why": "The sleeves, counted."
+  },
+  {
+   "cue": "7.hit",
+   "sfx": "riser",
+   "align": "end",
+   "dur": 1.5,
+   "trim": 12,
+   "why": "The last record, and the room finally moving with him."
+  },
+  {
+   "cue": "7.hit",
+   "sfx": "hit",
+   "why": "The needle down and it lands.",
+   "trim": 20
+  },
+  {
+   "cue": "7.hit",
+   "sfx": "whoosh_low",
+   "at": 0.6,
+   "trim": -4,
+   "why": "The room opening up."
+  },
+  {
+   "cue": "8.out",
+   "sfx": "whoosh",
+   "why": "Out to the street, and the queue at THE DOOR.",
+   "trim": 10
+  },
+  {
+   "cue": "8.out",
+   "sfx": "cheer",
+   "at": 0.7,
+   "dur": 1.8,
+   "trim": 5,
+   "why": "The club, from outside."
+  },
+  {
+   "cue": "8.out",
+   "sfx": "step_stone",
+   "at": 0.3,
+   "repeat": 3,
+   "every": 0.9,
+   "trim": 5,
+   "why": "The queue shuffling on the pavement."
+  },
+  {
+   "cue": "8.booth",
+   "sfx": "swish",
+   "why": "In to him behind the booth.",
+   "trim": 6
+  },
+  {
+   "cue": "8.booth",
+   "sfx": "tick",
+   "at": 0.4,
+   "repeat": 3,
+   "every": 0.55,
+   "trim": 7,
+   "why": "A record already running."
+  },
+  {
+   "cue": "8.thanks",
+   "sfx": "tick",
+   "at": 0.3,
+   "pitch": 0.9,
+   "trim": 2,
+   "why": "Thank you, flat, no smile."
+  },
+  {
+   "cue": "8.smile",
+   "sfx": "chime",
+   "at": 0.95,
+   "trim": 8,
+   "why": "And it is gone."
+  },
+  {
+   "cue": "9.in",
+   "sfx": "whoosh",
+   "why": "The three of them push in through the door.",
+   "trim": 10
+  },
+  {
+   "cue": "9.in",
+   "sfx": "step_wood",
+   "at": 0.2,
+   "repeat": 3,
+   "every": 0.55,
+   "pitchStep": 0.98,
+   "why": "Their feet on the dance floor.",
+   "trim": 8
+  },
+  {
+   "cue": "9.bar",
+   "sfx": "cheer",
+   "at": 0.4,
+   "dur": 1.2,
+   "trim": -3,
+   "why": "The shout, and the room answering it."
+  },
+  {
+   "cue": "9.bar",
+   "sfx": "place",
+   "at": 1.6,
+   "trim": -4,
+   "why": "A glass put down on the bar."
+  },
+  {
+   "cue": "9.decks",
+   "sfx": "place",
+   "at": 0.5,
+   "trim": 10,
+   "why": "The record lifted off."
+  },
+  {
+   "cue": "9.decks",
+   "sfx": "tick",
+   "at": 1.2,
+   "pitch": 1.1,
+   "trim": 7,
+   "why": "The next one, already in his hand."
+  },
+  {
+   "cue": "9.faces",
+   "sfx": "whoosh",
+   "why": "To their faces, having the night of their lives.",
+   "trim": 15
+  },
+  {
+   "cue": "9.faces",
+   "sfx": "cheer",
+   "at": 0.6,
+   "dur": 1.6,
+   "trim": 5,
+   "why": "Their cheer, for the music."
+  },
+  {
+   "cue": "10.word",
+   "sfx": "heartbeat",
+   "at": 0.15,
+   "trim": -2,
+   "why": "Everything dropping away so one word can be heard."
+  },
+  {
+   "cue": "10.word",
+   "sfx": "tick",
+   "at": 0.5,
+   "pitch": 0.8,
+   "trim": -4,
+   "why": "Bedroom."
+  },
+  {
+   "cue": "10.slam",
+   "sfx": "hit",
+   "why": "The needle comes down hard.",
+   "trim": -2
+  },
+  {
+   "cue": "10.slam",
+   "sfx": "cheer",
+   "at": 0.1,
+   "dur": 1.5,
+   "trim": 5,
+   "why": "The whole room goes up."
+  },
+  {
+   "cue": "10.slam",
+   "sfx": "boom",
+   "at": 0.45,
+   "trim": 3,
+   "why": "The drop."
+  },
+  {
+   "cue": "10.noface",
+   "sfx": "whoosh_low",
+   "why": "Alone in the booth, and no smile at all.",
+   "trim": 11
+  },
+  {
+   "cue": "10.noface",
+   "sfx": "sting",
+   "at": 0.7,
+   "trim": 3,
+   "why": "The lights going round him."
+  },
+  {
+   "cue": "11.pass",
+   "sfx": "step_grass",
+   "at": 0.2,
+   "repeat": 4,
+   "every": 0.5,
+   "trim": 20,
+   "why": "His feet, passing them."
+  },
+  {
+   "cue": "11.pass",
+   "sfx": "blip",
+   "at": 1.9,
+   "trim": 13,
+   "why": "A nod each way, and neither of them places him."
+  },
+  {
+   "cue": "11.dark",
+   "sfx": "whoosh_low",
+   "why": "He keeps walking, out of the light.",
+   "trim": 6
+  },
+  {
+   "cue": "11.dark",
+   "sfx": "step_grass",
+   "at": 0.4,
+   "repeat": 5,
+   "every": 0.55,
+   "pitchStep": 0.96,
+   "trim": 7,
+   "why": "And out of the town."
+  },
+  {
+   "cue": "11.dark",
+   "sfx": "drop",
+   "at": 1.6,
+   "trim": 5,
+   "why": "The last of the light, and the cut."
+  }
+ ]
+}

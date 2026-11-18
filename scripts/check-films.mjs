@@ -27,7 +27,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { checkStoryFilm, loadTopic, loadTopics } from "./check-story-film.mjs";
+import { checkDialogueFilm, checkStoryFilm, loadTopic, loadTopics } from "./check-story-film.mjs";
 
 const root = process.cwd();
 const videosDir = path.join(root, "src", "videos");
@@ -285,6 +285,11 @@ for (const slug of filmDirs) {
     if (topic.profile === "story") {
       checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D, BANNED_PHRASES });
       info(`${slug}: ${width}x${height}@${fps}${id ? `, id=${id}` : ""}, topic=${topicId}`);
+      continue;
+    }
+    if (topic.profile === "dialogue") {
+      checkDialogueFilm({ root, slug, dir, film, topic, fail, info, TWO_D });
+      info(`${slug}: ${width}x${height}@${fps}${id ? `, id=${id}` : ""}, topic=${topicId}, profile=dialogue`);
       continue;
     }
   }

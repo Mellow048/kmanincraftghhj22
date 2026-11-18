@@ -1,0 +1,563 @@
+{
+ "film": "the-guy-who-never-got-invited",
+ "fps": 30,
+ "duration": 111.9337,
+ "estimated": false,
+ "note": "Written by scripts/dialogue-timing.py from lines.json. The picture is the clock; the voice sits inside it.",
+ "audio": "audio/the-guy-who-never-got-invited/narration.mp3",
+ "cues": [
+  {
+   "id": "1.hush",
+   "start": 0.0,
+   "end": 2.6,
+   "scene": "scene1",
+   "text": "HUS. HUS. HUS."
+  },
+  {
+   "id": "1.eyes",
+   "start": 2.6,
+   "end": 4.4,
+   "scene": "scene1",
+   "text": ""
+  },
+  {
+   "id": "1.back",
+   "start": 4.4,
+   "end": 7.0,
+   "scene": "scene1",
+   "text": ""
+  },
+  {
+   "id": "2.empty",
+   "start": 7.0,
+   "end": 8.7,
+   "scene": "scene2",
+   "text": ""
+  },
+  {
+   "id": "2.walk",
+   "start": 8.7,
+   "end": 11.0,
+   "scene": "scene2",
+   "text": ""
+  },
+  {
+   "id": "3.window",
+   "start": 11.0,
+   "end": 14.0,
+   "scene": "scene3",
+   "text": ""
+  },
+  {
+   "id": "3.hope",
+   "start": 14.0,
+   "end": 16.0,
+   "scene": "scene3",
+   "text": ""
+  },
+  {
+   "id": "3.door",
+   "start": 16.0,
+   "end": 18.4,
+   "scene": "scene3",
+   "text": "Yo. We're full, bro."
+  },
+  {
+   "id": "3.leave",
+   "start": 18.4,
+   "end": 21.0,
+   "scene": "scene3",
+   "text": ""
+  },
+  {
+   "id": "4.room",
+   "start": 21.0,
+   "end": 24.0,
+   "scene": "scene4",
+   "text": ""
+  },
+  {
+   "id": "4.say",
+   "start": 24.0,
+   "end": 26.4,
+   "scene": "scene4",
+   "text": "I want to be a DJ."
+  },
+  {
+   "id": "4.hand",
+   "start": 26.4,
+   "end": 29.0,
+   "scene": "scene4",
+   "text": ""
+  },
+  {
+   "id": "5.yard",
+   "start": 29.0,
+   "end": 32.0,
+   "scene": "scene5",
+   "text": ""
+  },
+  {
+   "id": "5.needle",
+   "start": 32.0,
+   "end": 34.4,
+   "scene": "scene5",
+   "text": ""
+  },
+  {
+   "id": "5.skip",
+   "start": 34.4,
+   "end": 36.6,
+   "scene": "scene5",
+   "text": ""
+  },
+  {
+   "id": "5.feed",
+   "start": 36.6,
+   "end": 39.0,
+   "scene": "scene5",
+   "text": ""
+  },
+  {
+   "id": "5.silence",
+   "start": 39.0,
+   "end": 42.0,
+   "scene": "scene5",
+   "text": "Put on my phone."
+  },
+  {
+   "id": "5.alone",
+   "start": 42.0,
+   "end": 45.0,
+   "scene": "scene5",
+   "text": ""
+  },
+  {
+   "id": "6.table",
+   "start": 45.0,
+   "end": 48.0,
+   "scene": "scene6",
+   "text": ""
+  },
+  {
+   "id": "6.sleeve",
+   "start": 48.0,
+   "end": 51.0,
+   "scene": "scene6",
+   "text": ""
+  },
+  {
+   "id": "7.try1",
+   "start": 51.0,
+   "end": 52.6667,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.try2",
+   "start": 52.6667,
+   "end": 54.3334,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.label",
+   "start": 54.3334,
+   "end": 56.0001,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.teeth",
+   "start": 56.0001,
+   "end": 57.6668,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.window",
+   "start": 57.6668,
+   "end": 59.3335,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.onehand",
+   "start": 59.3335,
+   "end": 61.0002,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.eyes",
+   "start": 61.0002,
+   "end": 62.6669,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.dark",
+   "start": 62.6669,
+   "end": 64.3336,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.sign",
+   "start": 64.3336,
+   "end": 66.0003,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.dawn",
+   "start": 66.0003,
+   "end": 67.667,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.stack",
+   "start": 67.667,
+   "end": 69.3337,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "7.hit",
+   "start": 69.3337,
+   "end": 71.3337,
+   "scene": "scene7",
+   "text": ""
+  },
+  {
+   "id": "8.out",
+   "start": 71.3337,
+   "end": 74.3337,
+   "scene": "scene8",
+   "text": ""
+  },
+  {
+   "id": "8.booth",
+   "start": 74.3337,
+   "end": 77.3337,
+   "scene": "scene8",
+   "text": ""
+  },
+  {
+   "id": "8.owner",
+   "start": 77.3337,
+   "end": 79.3337,
+   "scene": "scene8",
+   "text": "You're the best I've had."
+  },
+  {
+   "id": "8.thanks",
+   "start": 79.3337,
+   "end": 80.3337,
+   "scene": "scene8",
+   "text": "Thank you."
+  },
+  {
+   "id": "8.smile",
+   "start": 80.3337,
+   "end": 82.9337,
+   "scene": "scene8",
+   "text": ""
+  },
+  {
+   "id": "9.in",
+   "start": 82.9337,
+   "end": 85.9337,
+   "scene": "scene9",
+   "text": ""
+  },
+  {
+   "id": "9.bar",
+   "start": 85.9337,
+   "end": 88.7337,
+   "scene": "scene9",
+   "text": "Bro, who is this guy? This guy is sick."
+  },
+  {
+   "id": "9.back",
+   "start": 88.7337,
+   "end": 91.5337,
+   "scene": "scene9",
+   "text": "How'd you get this good, man?"
+  },
+  {
+   "id": "9.decks",
+   "start": 91.5337,
+   "end": 93.9337,
+   "scene": "scene9",
+   "text": ""
+  },
+  {
+   "id": "9.faces",
+   "start": 93.9337,
+   "end": 96.9337,
+   "scene": "scene9",
+   "text": ""
+  },
+  {
+   "id": "10.word",
+   "start": 96.9337,
+   "end": 99.3337,
+   "scene": "scene10",
+   "text": "Bedroom."
+  },
+  {
+   "id": "10.slam",
+   "start": 99.3337,
+   "end": 100.9337,
+   "scene": "scene10",
+   "text": ""
+  },
+  {
+   "id": "10.noface",
+   "start": 100.9337,
+   "end": 102.9337,
+   "scene": "scene10",
+   "text": ""
+  },
+  {
+   "id": "11.hush",
+   "start": 102.9337,
+   "end": 105.9337,
+   "scene": "scene11",
+   "text": "HUS. HUS. HUS."
+  },
+  {
+   "id": "11.pass",
+   "start": 105.9337,
+   "end": 109.1337,
+   "scene": "scene11",
+   "text": ""
+  },
+  {
+   "id": "11.dark",
+   "start": 109.1337,
+   "end": 111.9337,
+   "scene": "scene11",
+   "text": ""
+  }
+ ],
+ "words": [
+  {
+   "w": "HUS.",
+   "s": 0.35,
+   "e": 0.748
+  },
+  {
+   "w": "HUS.",
+   "s": 0.748,
+   "e": 1.147
+  },
+  {
+   "w": "HUS.",
+   "s": 1.147,
+   "e": 1.545
+  },
+  {
+   "w": "Yo.",
+   "s": 16.517,
+   "e": 17.213
+  },
+  {
+   "w": "We're",
+   "s": 17.213,
+   "e": 17.497
+  },
+  {
+   "w": "full,",
+   "s": 17.497,
+   "e": 17.88
+  },
+  {
+   "w": "bro.",
+   "s": 17.88,
+   "e": 18.38
+  },
+  {
+   "w": "I",
+   "s": 24.804,
+   "e": 25.038
+  },
+  {
+   "w": "want",
+   "s": 25.038,
+   "e": 25.271
+  },
+  {
+   "w": "to",
+   "s": 25.271,
+   "e": 25.504
+  },
+  {
+   "w": "be",
+   "s": 25.504,
+   "e": 25.737
+  },
+  {
+   "w": "a",
+   "s": 25.737,
+   "e": 25.97
+  },
+  {
+   "w": "DJ.",
+   "s": 25.97,
+   "e": 26.38
+  },
+  {
+   "w": "Put",
+   "s": 41.256,
+   "e": 41.408
+  },
+  {
+   "w": "on",
+   "s": 41.408,
+   "e": 41.56
+  },
+  {
+   "w": "my",
+   "s": 41.56,
+   "e": 41.712
+  },
+  {
+   "w": "phone.",
+   "s": 41.712,
+   "e": 41.98
+  },
+  {
+   "w": "You're",
+   "s": 77.973,
+   "e": 78.42
+  },
+  {
+   "w": "the",
+   "s": 78.42,
+   "e": 78.608
+  },
+  {
+   "w": "best",
+   "s": 78.608,
+   "e": 78.796
+  },
+  {
+   "w": "I've",
+   "s": 78.796,
+   "e": 78.983
+  },
+  {
+   "w": "had.",
+   "s": 78.983,
+   "e": 79.314
+  },
+  {
+   "w": "Thank",
+   "s": 79.534,
+   "e": 79.687
+  },
+  {
+   "w": "you.",
+   "s": 79.687,
+   "e": 80.169
+  },
+  {
+   "w": "Bro,",
+   "s": 85.344,
+   "e": 85.715
+  },
+  {
+   "w": "who",
+   "s": 85.715,
+   "e": 85.99
+  },
+  {
+   "w": "is",
+   "s": 85.99,
+   "e": 86.265
+  },
+  {
+   "w": "this",
+   "s": 86.265,
+   "e": 86.54
+  },
+  {
+   "w": "guy?",
+   "s": 86.54,
+   "e": 87.214
+  },
+  {
+   "w": "This",
+   "s": 87.214,
+   "e": 87.489
+  },
+  {
+   "w": "guy",
+   "s": 87.489,
+   "e": 87.954
+  },
+  {
+   "w": "is",
+   "s": 87.954,
+   "e": 88.23
+  },
+  {
+   "w": "sick.",
+   "s": 88.23,
+   "e": 88.714
+  },
+  {
+   "w": "How'd",
+   "s": 89.989,
+   "e": 90.155
+  },
+  {
+   "w": "you",
+   "s": 90.155,
+   "e": 90.551
+  },
+  {
+   "w": "get",
+   "s": 90.551,
+   "e": 90.717
+  },
+  {
+   "w": "this",
+   "s": 90.717,
+   "e": 90.883
+  },
+  {
+   "w": "good,",
+   "s": 90.883,
+   "e": 91.221
+  },
+  {
+   "w": "man?",
+   "s": 91.221,
+   "e": 91.514
+  },
+  {
+   "w": "Bedroom.",
+   "s": 98.57,
+   "e": 99.314
+  },
+  {
+   "w": "HUS.",
+   "s": 103.234,
+   "e": 103.632
+  },
+  {
+   "w": "HUS.",
+   "s": 103.632,
+   "e": 104.031
+  },
+  {
+   "w": "HUS.",
+   "s": 104.031,
+   "e": 104.429
+  }
+ ]
+}

@@ -1,0 +1,314 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-guy-who-never-got-invited",
+  "mix": "public/audio/the-guy-who-never-got-invited/mix.mp3",
+  "seconds": 111.9337,
+  "built_from": {
+    "timing.json": "2446b0e6ab85b711b1490234ca60bdecfbe366c5",
+    "sound.json": "6b6918e878b6b233e4e808ebadac6549a8331e30",
+    "narration.mp3": "3944315943c446588d35859428beefbdee961b21"
+  },
+  "mix_sha1": "883b01f80952f39e588a0e48c2ab5222ccbb1f68",
+  "music_sections": [
+    {
+      "from": "1.hush",
+      "mood": "sneak",
+      "at": 0.0
+    },
+    {
+      "from": "1.eyes",
+      "mood": "sneak",
+      "at": 2.6
+    },
+    {
+      "from": "1.back",
+      "mood": "sneak",
+      "at": 4.4
+    },
+    {
+      "from": "2.empty",
+      "mood": "curious",
+      "at": 7.0
+    },
+    {
+      "from": "2.walk",
+      "mood": "curious",
+      "at": 8.7
+    },
+    {
+      "from": "3.window",
+      "mood": "playful",
+      "at": 11.0
+    },
+    {
+      "from": "3.hope",
+      "mood": "playful",
+      "at": 14.0
+    },
+    {
+      "from": "3.door",
+      "mood": "playful",
+      "at": 16.0
+    },
+    {
+      "from": "3.leave",
+      "mood": "playful",
+      "at": 18.4
+    },
+    {
+      "from": "4.room",
+      "mood": "hope",
+      "at": 21.0
+    },
+    {
+      "from": "4.say",
+      "mood": "hope",
+      "at": 24.0
+    },
+    {
+      "from": "4.hand",
+      "mood": "hope",
+      "at": 26.4
+    },
+    {
+      "from": "5.yard",
+      "mood": "playful",
+      "at": 29.0
+    },
+    {
+      "from": "5.needle",
+      "mood": "playful",
+      "at": 32.0
+    },
+    {
+      "from": "5.skip",
+      "mood": "playful",
+      "at": 34.4
+    },
+    {
+      "from": "5.feed",
+      "mood": "playful",
+      "at": 36.6
+    },
+    {
+      "from": "5.silence",
+      "mood": "playful",
+      "at": 39.0
+    },
+    {
+      "from": "5.alone",
+      "mood": "playful",
+      "at": 42.0
+    },
+    {
+      "from": "6.table",
+      "mood": "drone",
+      "at": 45.0
+    },
+    {
+      "from": "6.sleeve",
+      "mood": "drone",
+      "at": 48.0
+    },
+    {
+      "from": "7.try1",
+      "mood": "sneak",
+      "at": 51.0
+    },
+    {
+      "from": "7.try2",
+      "mood": "sneak",
+      "at": 52.67
+    },
+    {
+      "from": "7.label",
+      "mood": "sneak",
+      "at": 54.33
+    },
+    {
+      "from": "7.teeth",
+      "mood": "sneak",
+      "at": 56.0
+    },
+    {
+      "from": "7.window",
+      "mood": "sneak",
+      "at": 57.67
+    },
+    {
+      "from": "7.onehand",
+      "mood": "sneak",
+      "at": 59.33
+    },
+    {
+      "from": "7.eyes",
+      "mood": "sneak",
+      "at": 61.0
+    },
+    {
+      "from": "7.dark",
+      "mood": "sneak",
+      "at": 62.67
+    },
+    {
+      "from": "7.sign",
+      "mood": "sneak",
+      "at": 64.33
+    },
+    {
+      "from": "7.dawn",
+      "mood": "sneak",
+      "at": 66.0
+    },
+    {
+      "from": "7.stack",
+      "mood": "sneak",
+      "at": 67.67
+    },
+    {
+      "from": "7.hit",
+      "mood": "sneak",
+      "at": 69.33
+    },
+    {
+      "from": "8.out",
+      "mood": "tense",
+      "at": 71.33
+    },
+    {
+      "from": "8.booth",
+      "mood": "tense",
+      "at": 74.33
+    },
+    {
+      "from": "8.owner",
+      "mood": "tense",
+      "at": 77.33
+    },
+    {
+      "from": "8.thanks",
+      "mood": "tense",
+      "at": 79.33
+    },
+    {
+      "from": "8.smile",
+      "mood": "tense",
+      "at": 80.33
+    },
+    {
+      "from": "9.in",
+      "mood": "playful",
+      "at": 82.93
+    },
+    {
+      "from": "9.bar",
+      "mood": "playful",
+      "at": 85.93
+    },
+    {
+      "from": "9.back",
+      "mood": "playful",
+      "at": 88.73
+    },
+    {
+      "from": "9.decks",
+      "mood": "playful",
+      "at": 91.53
+    },
+    {
+      "from": "9.faces",
+      "mood": "playful",
+      "at": 93.93
+    },
+    {
+      "from": "10.word",
+      "mood": "drone",
+      "at": 96.93
+    },
+    {
+      "from": "10.slam",
+      "mood": "dark",
+      "at": 99.33
+    },
+    {
+      "from": "10.noface",
+      "mood": "dark",
+      "at": 100.93
+    },
+    {
+      "from": "11.hush",
+      "mood": "sneak",
+      "at": 102.93
+    },
+    {
+      "from": "11.pass",
+      "mood": "sneak",
+      "at": 105.93
+    },
+    {
+      "from": "11.dark",
+      "mood": "sneak",
+      "at": 109.13
+    }
+  ],
+  "beds": 12,
+  "measured": {
+    "musicUnderVoiceDb": 11.2,
+    "secondsWithoutMusic": 13.9,
+    "bedsUnderVoiceDb": 27.9,
+    "sfx": 115,
+    "sfxPerMinute": 61.6,
+    "sfxKinds": 28,
+    "longestGapSeconds": 5.2,
+    "longestGapAt": 22.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 19.1,
+    "voiceOverRestWorstDb": 7.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 7.0,
+        "t": 79.2,
+        "cue": "8.owner",
+        "sounding": [
+          "tick"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 91.2,
+        "cue": "9.back",
+        "sounding": []
+      },
+      {
+        "db": 10.8,
+        "t": 26.2,
+        "cue": "4.say",
+        "sounding": []
+      },
+      {
+        "db": 11.6,
+        "t": 79.9,
+        "cue": "8.thanks",
+        "sounding": []
+      },
+      {
+        "db": 11.8,
+        "t": 86.9,
+        "cue": "9.bar",
+        "sounding": [
+          "cheer"
+        ]
+      },
+      {
+        "db": 13.6,
+        "t": 41.8,
+        "cue": "5.silence",
+        "sounding": []
+      }
+    ],
+    "lufs": -15.0,
+    "truePeakDb": -1.0,
+    "limiterMaxDb": 5.0
+  },
+  "failures": []
+}

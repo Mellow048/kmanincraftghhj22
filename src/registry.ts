@@ -1,3 +1,4 @@
+import { film as theGuyWhoNeverGotInvited } from "./videos/the-guy-who-never-got-invited/film";
 import { film as theSchedule } from "./videos/the-schedule/film";
 import { film as theHallway } from "./videos/the-hallway/film";
 import { film as monsterEgg } from "./videos/in-this-town-monster-egg/film";
@@ -68,4 +69,5 @@ export const FILMS = [
   whatIfYouCouldSmellALie,
   inThisTownMyBrotherGotBitten,
   inThisTownIHadNeverSeenTheSun,
+  theGuyWhoNeverGotInvited,
 ];
