@@ -73,7 +73,7 @@ export const scene9 = stagedScene("scene9", [
   },
   {
     id: "9.faces",
-    ...cam.push({ on: [1.4, 1.4, 0.3], dist: 4.2, to: 3.6, fov: 46, yaw: 24, pitch: 6 }),
+    ...cam.push({ on: [1.1, 1.35, 0.7], dist: 2.8, to: 2.4, fov: 46, yaw: 34, pitch: 6 }),
     zone: "club",
     look: "prom-night",
     note: "Their faces, having the night of their lives, lit by a rig he built: they are happy and they still do not know who he is.",

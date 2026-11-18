@@ -46,7 +46,7 @@ export const scene1 = stagedScene("scene1", [
   },
   {
     id: "1.back",
-    ...cam.push({ on: [0, 1.25, 0.4], dist: 4.1, to: 2.9, fov: 46, pitch: 2 }),
+    ...cam.push({ on: [-0.35, 1.3, 1.5], dist: 3.6, to: 3.1, fov: 46, yaw: 24, pitch: 8 }),
     zone: "street",
     look: "overworld-night",
     note: "Him from behind, speaker in his arms, the one lit door in front of him: the film's whole situation in one frame.",

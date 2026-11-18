@@ -36,7 +36,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.try2",
-    ...cam.push({ on: DECKS, dist: 2.0, to: 1.7, fov: 32, pitch: 26, yaw: 24 }),
+    ...cam.push({ on: [-1.3, 1.0, 0.15], dist: 2.7, to: 2.3, fov: 46, pitch: 12, yaw: 26 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The same try again, a hand's width closer: the hands are shaking and the record does not care.",
@@ -85,7 +85,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.window",
-    ...cam.push({ on: [0.55, 1.35, 0.5], dist: 3.4, to: 2.8, fov: 44, yaw: 128, pitch: 6 }),
+    ...cam.push({ on: [0.9, 1.35, 0.0], dist: 2.4, to: 2.0, fov: 50, yaw: 10, pitch: 4 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The window at night, him working in the foreground: the town is asleep and one room is not.",
@@ -98,7 +98,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.onehand",
-    ...cam.push({ on: [-1.7, 1.0, 0.1], dist: 2.3, to: 1.9, fov: 38, pitch: 20, yaw: -62 }),
+    ...cam.push({ on: [-1.4, 1.05, 0.15], dist: 2.9, to: 2.5, fov: 44, pitch: 16, yaw: 48 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Mixing with one hand behind his back: the trick that has no use in the world.",
