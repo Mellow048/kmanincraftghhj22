@@ -66,30 +66,30 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.mum",
       // Cereal at eleven at night, called dinner. Straight down on the bowl so the joke is the SOUND of it.
-      ...cam.top({ on: [-0.2, 0.78, 0.5], height: 1.5, to: 1.15, spin: [4, -4], fov: 46 }),
+      ...cam.top({ on: [-0.2, 0.78, 400.5], height: 1.5, to: 1.15, spin: [4, -4], fov: 46 }),
       zone: "home",
       look: "overworld-night",
       note: "Looking down at a bowl of dry cereal on the kitchen table at night, with a fork beside it because nobody in this house knows what to do with it either.",
       stage: () => (
         <>
-          <Bowl position={[-0.2, 0.9, 0.5]} />
-          <Vox kind="wool" tint="#c8ced4" position={[0.35, 0.9, 0.55]} size={[0.2, 0.02, 0.06]} />
+          <Bowl position={[-0.2, 0.9, 400.5]} />
+          <Vox kind="wool" tint="#c8ced4" position={[0.35, 0.9, 400.55]} size={[0.2, 0.02, 0.06]} />
         </>
       ),
     },
     {
       cue: "2.fridge",
       // THE BEST JOKE IN THE FILM, and it needs to be a WIDE: the fridge open, and nothing in it.
-      ...cam.push({ on: [2.75, 0.9, -2.4], dist: 2.1, to: 1.7, yaw: 22, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [2.75, 0.9, 397.6], dist: 2.1, to: 1.7, yaw: 22, pitch: 2, fov: 40 }),
       zone: "home",
       look: "overworld-night",
       note: "The fridge standing open with exactly one shelf and nothing on it. The line says the fridge contains a fridge; the picture has to be at least as empty as that.",
       stage: (t) => (
         <>
-          <Vox kind="wool" tint="#e8eef2" position={[2.75, 0.9, -1.95]} size={[0.9, 1.7, 0.05]} />
-          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 1.35, -2.05]} size={[0.82, 0.04, 0.3]} />
-          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 0.85, -2.05]} size={[0.82, 0.04, 0.3]} />
-          <pointLight position={[2.75, 1.5, -1.6]} color="#dff0ff" intensity={pop(t, 0.1) * 8} distance={4} decay={2} />
+          <Vox kind="wool" tint="#e8eef2" position={[2.75, 0.9, 398.05]} size={[0.9, 1.7, 0.05]} />
+          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 1.35, 397.95]} size={[0.82, 0.04, 0.3]} />
+          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 0.85, 397.95]} size={[0.82, 0.04, 0.3]} />
+          <pointLight position={[2.75, 1.5, 398.4]} color="#dff0ff" intensity={pop(t, 0.1) * 8} distance={4} decay={2} />
         </>
       ),
     },
@@ -190,13 +190,13 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.time",
       // The teller's theory, and it is wrong. He says it in the kitchen, knife in hand, mid-work.
-      ...cam.push({ on: chestOf([0, 0, 0.2], 0.8), dist: 2.1, to: 1.7, yaw: -14, pitch: 5, fov: 38 }),
+      ...cam.push({ on: chestOf([0, 0, 400.2], 0.8), dist: 2.1, to: 1.7, yaw: -14, pitch: 5, fov: 38 }),
       zone: "home",
       look: "overworld-night",
       note: "The teller at his board, knife up, saying what he thinks of them. He is going to be wrong, and the frame should make him look confident.",
       stage: (t) => (
         <>
-          <Hero position={[0, 0, 0.2]} rotationY={-0.3} animation="idle" face="smug" gaze={0} />
+          <Hero position={[0, 0, 400.2]} rotationY={-0.3} animation="idle" face="smug" gaze={0} />
           <Vox kind="wool" tint="#c8ced4" position={[0.3, 1.06 + Math.abs(Math.sin(t * 7)) * 0.1, 0.45]} size={[0.05, 0.3, 0.12]} />
         </>
       ),
@@ -204,42 +204,42 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.showed",
       // The friend's kitchen. The lens goes in through the doorway and the room is a museum.
-      ...cam.push({ on: [0, 1.4, -1.0], dist: 3.4, to: 2.8, yaw: 0, pitch: 3, fov: 46 }),
+      ...cam.push({ on: [0, 1.4, 399], dist: 3.4, to: 2.8, yaw: 0, pitch: 3, fov: 46 }),
       zone: "home",
       look: "overworld-night",
       note: "The friend walking into his own kitchen and waving at it like a showroom. Nothing in this room has ever been used.",
       stage: () => (
         <>
-          <Player who={0} position={[-0.5, 0, -1.4]} rotationY={0.4} animation="idle" face="grin" />
+          <Player who={0} position={[-0.5, 0, 398.6]} rotationY={0.4} animation="idle" face="grin" />
         </>
       ),
     },
     {
       cue: "3.brand",
       // Everything still wrapped. Close on the counter with the plastic still on it.
-      ...cam.push({ on: [-1.4, 0.98, -2.5], dist: 1.9, to: 1.5, yaw: -16, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [-1.4, 0.98, 397.5], dist: 1.9, to: 1.5, yaw: -16, pitch: 14, fov: 42 }),
       zone: "home",
       look: "overworld-night",
       note: "Close on a brand new counter with the protective film still on it, still creased in the corners. Not used once.",
       stage: () => (
         <>
-          <Vox kind="wool" tint="#dfe8ee" position={[-1.4, 1.0, -2.45]} size={[1.3, 0.06, 0.7]} />
-          <Vox kind="wool" tint="#c8d4dc" position={[-1.95, 1.0, -2.45]} size={[0.06, 0.07, 0.7]} />
+          <Vox kind="wool" tint="#dfe8ee" position={[-1.4, 1, 397.55]} size={[1.3, 0.06, 0.7]} />
+          <Vox kind="wool" tint="#c8d4dc" position={[-1.95, 1, 397.55]} size={[0.06, 0.07, 0.7]} />
         </>
       ),
     },
     {
       cue: "3.never",
       // A brand-new, never-used pan, still in its box, hanging on a wall. The hinge of the whole film.
-      ...cam.push({ on: [-1.0, 1.55, -2.85], dist: 1.6, to: 1.25, yaw: 2, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [-1, 1.55, 397.15], dist: 1.6, to: 1.25, yaw: 2, pitch: 4, fov: 38 }),
       zone: "home",
       look: "overworld-night",
       note: "A pan still in its cardboard, hung on a nail at eye level, because that is where you put a thing you own and do not use. The single most important object in the film after the knife.",
       stage: () => (
         <>
-          <Vox kind="wool" tint="#c9a06a" position={[-1.0, 1.55, -2.9]} size={[0.6, 0.7, 0.04]} />
-          <Vox kind="wool" tint="#3a3a42" position={[-1.0, 1.55, -2.84]} size={[0.4, 0.06, 0.4]} />
-          <Vox kind="wool" tint="#3a3a42" position={[-1.0, 1.62, -2.98]} size={[0.06, 0.3, 0.05]} />
+          <Vox kind="wool" tint="#c9a06a" position={[-1, 1.55, 397.1]} size={[0.6, 0.7, 0.04]} />
+          <Vox kind="wool" tint="#3a3a42" position={[-1, 1.55, 397.16]} size={[0.4, 0.06, 0.4]} />
+          <Vox kind="wool" tint="#3a3a42" position={[-1, 1.62, 397.02]} size={[0.06, 0.3, 0.05]} />
         </>
       ),
     },
