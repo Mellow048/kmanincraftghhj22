@@ -1,0 +1,917 @@
+{
+  "film": "thats-me-the-elbow",
+  "music": {
+    "gain": -18,
+    "duck": 3.0,
+    "sections": [
+      {
+        "from": "1.left",
+        "mood": "party",
+        "gain": 3,
+        "why": "Music in the yard, before the flash."
+      },
+      {
+        "from": "2.drill",
+        "mood": "grind",
+        "gain": 7,
+        "why": "The percussion comes forward for the first two practice runs."
+      },
+      {
+        "from": "2.timer",
+        "mood": "explain",
+        "gain": 0,
+        "why": "Duck under the explanation of the camera."
+      },
+      {
+        "from": "3.tape",
+        "mood": "curious",
+        "gain": -1,
+        "why": "Tape and failed prints."
+      },
+      {
+        "from": "3.reps",
+        "mood": "grind",
+        "gain": 7,
+        "why": "Open the training beat back up on the rep."
+      },
+      {
+        "from": "4.friends",
+        "mood": "playful",
+        "gain": 1,
+        "why": "The friends try the setup."
+      },
+      {
+        "from": "4.run",
+        "mood": "grind",
+        "gain": 7,
+        "why": "Run the test."
+      },
+      {
+        "from": "4.best",
+        "mood": "wonder",
+        "gain": 0,
+        "why": "A perfect portrait, or so he thinks."
+      },
+      {
+        "from": "4.ears",
+        "mood": "none",
+        "gain": 0,
+        "why": "Leave room for the four ears joke."
+      },
+      {
+        "from": "5.chairs",
+        "mood": "curious",
+        "gain": 1,
+        "why": "Shoes and stand-ins take over the room."
+      },
+      {
+        "from": "5.reps",
+        "mood": "grind",
+        "gain": 7,
+        "why": "Training is louder than the narration sections."
+      },
+      {
+        "from": "6.party",
+        "mood": "hope",
+        "gain": 1,
+        "why": "The real family fits around the cake table."
+      },
+      {
+        "from": "6.light",
+        "mood": "tense",
+        "gain": -1,
+        "why": "Let the timer needle through."
+      },
+      {
+        "from": "6.reps",
+        "mood": "grind",
+        "gain": 7,
+        "why": "One last race at the party."
+      },
+      {
+        "from": "6.fridge",
+        "mood": "hope",
+        "gain": -1,
+        "why": "Gran removes the old print."
+      },
+      {
+        "from": "7.couple",
+        "mood": "playful",
+        "gain": 0,
+        "why": "Two strangers ask for one simple favour."
+      },
+      {
+        "from": "7.reps",
+        "mood": "grind",
+        "gain": 7,
+        "why": "Muscle memory wins the last laugh."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.left",
+      "to": "1.elbow",
+      "bed": "crowd"
+    },
+    {
+      "from": "2.drill",
+      "to": "5.reps",
+      "bed": "room"
+    },
+    {
+      "from": "6.party",
+      "to": "6.reps",
+      "bed": "crowd"
+    },
+    {
+      "from": "6.fridge",
+      "to": "6.all",
+      "bed": "room"
+    },
+    {
+      "from": "7.couple",
+      "to": "7.reps",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "2.drill",
+      "at": 0.053,
+      "sfx": "tick",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 3.5,
+      "why": "Thumb depresses the timer."
+    },
+    {
+      "cue": "2.drill",
+      "at": 0.393,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Cross the sofa arm or slip behind the row."
+    },
+    {
+      "cue": "2.drill",
+      "at": 0.733,
+      "sfx": "step_wood",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": 1.5,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "2.drill",
+      "at": 0.906,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "2.drill",
+      "at": 1.213,
+      "sfx": "tick",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 3.5,
+      "why": "Thumb depresses the timer."
+    },
+    {
+      "cue": "2.drill",
+      "at": 1.553,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Cross the sofa arm or slip behind the row."
+    },
+    {
+      "cue": "2.drill",
+      "at": 1.893,
+      "sfx": "step_wood",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": 1.5,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "2.drill",
+      "at": 2.066,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.077,
+      "sfx": "tick",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 3.5,
+      "why": "Thumb depresses the timer."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.422,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Cross the sofa arm or slip behind the row."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.767,
+      "sfx": "step_wood",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": -2,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.94,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "4.run",
+      "at": 0.077,
+      "sfx": "tick",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 3.5,
+      "why": "Thumb depresses the timer."
+    },
+    {
+      "cue": "4.run",
+      "at": 0.437,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Cross the sofa arm or slip behind the row."
+    },
+    {
+      "cue": "4.run",
+      "at": 0.797,
+      "sfx": "step_wood",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": -2,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "4.run",
+      "at": 0.97,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "5.reps",
+      "at": 0.057,
+      "sfx": "tick",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 3.5,
+      "why": "Thumb depresses the timer."
+    },
+    {
+      "cue": "5.reps",
+      "at": 0.362,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Cross the sofa arm or slip behind the row."
+    },
+    {
+      "cue": "5.reps",
+      "at": 0.667,
+      "sfx": "step_wood",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": 1.5,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "5.reps",
+      "at": 0.84,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "5.reps",
+      "at": 1.112,
+      "sfx": "tick",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 3.5,
+      "why": "Thumb depresses the timer."
+    },
+    {
+      "cue": "5.reps",
+      "at": 1.417,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Cross the sofa arm or slip behind the row."
+    },
+    {
+      "cue": "5.reps",
+      "at": 1.722,
+      "sfx": "step_wood",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": 4.5,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "5.reps",
+      "at": 1.895,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "6.reps",
+      "at": 0.057,
+      "sfx": "rustle",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 2,
+      "why": "He ducks under the brim, coat brushes coat."
+    },
+    {
+      "cue": "6.reps",
+      "at": 0.482,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Sidestep from behind Uncle into the gap."
+    },
+    {
+      "cue": "6.reps",
+      "at": 0.907,
+      "sfx": "step_stone",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": -2,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "6.reps",
+      "at": 1.08,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "7.reps",
+      "at": 0.05,
+      "sfx": "tick",
+      "pan": -0.25,
+      "pitch": 1.12,
+      "trim": 3.5,
+      "why": "Thumb depresses the timer."
+    },
+    {
+      "cue": "7.reps",
+      "at": 0.39,
+      "sfx": "zip",
+      "pan": 0.02,
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "Cross the sofa arm or slip behind the row."
+    },
+    {
+      "cue": "7.reps",
+      "at": 0.73,
+      "sfx": "step_stone",
+      "pan": 0.21,
+      "pitch": 0.91,
+      "trim": -2,
+      "why": "Shoes land on the portrait mark."
+    },
+    {
+      "cue": "7.reps",
+      "at": 0.903,
+      "sfx": "stamp",
+      "pitch": 1.52,
+      "trim": 0,
+      "why": "Mechanical shutter at the end of this rep."
+    },
+    {
+      "cue": "1.left",
+      "word": "left",
+      "sfx": "swish",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "That's me on the left."
+    },
+    {
+      "cue": "1.left",
+      "sfx": "stamp",
+      "trim": 0,
+      "pan": -0.1,
+      "why": "The shutter turns the dancing group into the photograph.",
+      "at": 0.69,
+      "pitch": 1.55
+    },
+    {
+      "cue": "1.elbow",
+      "word": "elbow",
+      "sfx": "paper",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "Not him. The elbow."
+    },
+    {
+      "cue": "2.timer",
+      "word": "old",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "Grandma's old camera gave you three seconds."
+    },
+    {
+      "cue": "2.timer",
+      "word": "three",
+      "sfx": "count",
+      "trim": -3,
+      "pan": 0.13,
+      "why": "Grandma's old camera gave you three seconds."
+    },
+    {
+      "cue": "2.fridge",
+      "word": "six",
+      "sfx": "paper",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "She had six birthday pictures on her fridge."
+    },
+    {
+      "cue": "2.fridge",
+      "word": "fridge",
+      "sfx": "place",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "She had six birthday pictures on her fridge."
+    },
+    {
+      "cue": "2.four",
+      "word": "four",
+      "sfx": "count",
+      "trim": -3,
+      "pan": -0.1,
+      "why": "I was in four of them."
+    },
+    {
+      "cue": "2.blue",
+      "word": "blue",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "You could tell because I only owned one blue sweater."
+    },
+    {
+      "cue": "2.blue",
+      "word": "sweater",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "You could tell because I only owned one blue sweater."
+    },
+    {
+      "cue": "2.face",
+      "word": "face",
+      "sfx": "paper",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "This year I wanted my face on that fridge."
+    },
+    {
+      "cue": "2.face",
+      "word": "fridge",
+      "sfx": "blip",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "This year I wanted my face on that fridge."
+    },
+    {
+      "cue": "3.tape",
+      "word": "tape",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "I put tape where my shoes had to land."
+    },
+    {
+      "cue": "3.tape",
+      "word": "land",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "I put tape where my shoes had to land."
+    },
+    {
+      "cue": "3.ear",
+      "word": "print",
+      "sfx": "paper",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "My first print was an ear."
+    },
+    {
+      "cue": "3.ear",
+      "word": "ear",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "My first print was an ear."
+    },
+    {
+      "cue": "3.brow",
+      "word": "second",
+      "sfx": "paper",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "My second had eyebrows."
+    },
+    {
+      "cue": "3.brow",
+      "word": "eyebrows",
+      "sfx": "blip",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "My second had eyebrows."
+    },
+    {
+      "cue": "3.mine",
+      "word": "both",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "Both mine. Things were looking up."
+    },
+    {
+      "cue": "3.mine",
+      "word": "up",
+      "sfx": "slide_up",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "Both mine. Things were looking up."
+    },
+    {
+      "cue": "4.friends",
+      "word": "friday",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "On Friday my friends came over to test it."
+    },
+    {
+      "cue": "4.friends",
+      "word": "test",
+      "sfx": "thud",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "On Friday my friends came over to test it."
+    },
+    {
+      "cue": "4.tape",
+      "word": "side",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "I put one on each side of the tape."
+    },
+    {
+      "cue": "4.tape",
+      "word": "tape",
+      "sfx": "place",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "I put one on each side of the tape."
+    },
+    {
+      "cue": "4.best",
+      "word": "seconds",
+      "sfx": "paper",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "Three seconds later I had the best picture of me"
+    },
+    {
+      "cue": "4.best",
+      "word": "best",
+      "sfx": "ding",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "Three seconds later I had the best picture of me"
+    },
+    {
+      "cue": "4.taken",
+      "word": "taken",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "anybody had ever taken."
+    },
+    {
+      "cue": "4.ears",
+      "word": "friends",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "My friends came out as four ears."
+    },
+    {
+      "cue": "4.ears",
+      "word": "four",
+      "sfx": "count",
+      "trim": -3,
+      "pan": 0.13,
+      "why": "My friends came out as four ears."
+    },
+    {
+      "cue": "4.ears",
+      "word": "ears",
+      "sfx": "blip",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "My friends came out as four ears."
+    },
+    {
+      "cue": "4.almost",
+      "word": "ah",
+      "sfx": "slide_down",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "Ah, almost, almost."
+    },
+    {
+      "cue": "4.almost",
+      "word": "almost",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "Ah, almost, almost."
+    },
+    {
+      "cue": "5.chairs",
+      "word": "trained",
+      "sfx": "scrape",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "After that I trained with the dining chairs."
+    },
+    {
+      "cue": "5.chairs",
+      "word": "chairs",
+      "sfx": "creak",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "After that I trained with the dining chairs."
+    },
+    {
+      "cue": "5.glasses",
+      "word": "wore",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "One wore Grandma's glasses."
+    },
+    {
+      "cue": "5.glasses",
+      "word": "glasses",
+      "sfx": "plink",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "One wore Grandma's glasses."
+    },
+    {
+      "cue": "5.uncle",
+      "word": "uncle's",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "One wore my uncle's hat."
+    },
+    {
+      "cue": "5.uncle",
+      "word": "hat",
+      "sfx": "place",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "One wore my uncle's hat."
+    },
+    {
+      "cue": "5.count",
+      "word": "disappeared",
+      "sfx": "swish",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "If the hat disappeared, it didn't count."
+    },
+    {
+      "cue": "5.count",
+      "word": "count",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "If the hat disappeared, it didn't count."
+    },
+    {
+      "cue": "5.middle",
+      "word": "aiming",
+      "sfx": "scrape",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "I stopped aiming for the middle."
+    },
+    {
+      "cue": "5.middle",
+      "word": "middle",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "I stopped aiming for the middle."
+    },
+    {
+      "cue": "5.hats",
+      "word": "between",
+      "sfx": "swish",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "I aimed between the hats."
+    },
+    {
+      "cue": "5.hats",
+      "word": "hats",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "I aimed between the hats."
+    },
+    {
+      "cue": "6.party",
+      "word": "birthday",
+      "sfx": "cheer",
+      "trim": -3,
+      "pan": -0.1,
+      "why": "At Grandma's birthday they left me a spot."
+    },
+    {
+      "cue": "6.party",
+      "word": "spot",
+      "sfx": "step_stone",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "At Grandma's birthday they left me a spot."
+    },
+    {
+      "cue": "6.cake",
+      "word": "cake",
+      "sfx": "place",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "My uncle put the cake in it."
+    },
+    {
+      "cue": "6.light",
+      "word": "light",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "The red light was already blinking."
+    },
+    {
+      "cue": "6.light",
+      "word": "blinking",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "The red light was already blinking."
+    },
+    {
+      "cue": "6.behind",
+      "word": "behind",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "I went behind him this time."
+    },
+    {
+      "cue": "6.behind",
+      "word": "time",
+      "sfx": "step_stone",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "I went behind him this time."
+    },
+    {
+      "cue": "6.lean",
+      "word": "left",
+      "sfx": "swish",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "He leaned left. I leaned right."
+    },
+    {
+      "cue": "6.lean",
+      "word": "right",
+      "sfx": "step_stone",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "He leaned left. I leaned right."
+    },
+    {
+      "cue": "6.fridge",
+      "word": "took",
+      "sfx": "paper",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "Grandma took the elbow off the fridge."
+    },
+    {
+      "cue": "6.fridge",
+      "word": "off",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "Grandma took the elbow off the fridge."
+    },
+    {
+      "cue": "6.all",
+      "word": "all",
+      "sfx": "place",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "She put us all up there instead."
+    },
+    {
+      "cue": "6.all",
+      "word": "instead",
+      "sfx": "chime",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "She put us all up there instead."
+    },
+    {
+      "cue": "7.couple",
+      "word": "handed",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "Then a couple handed me the camera."
+    },
+    {
+      "cue": "7.couple",
+      "word": "camera",
+      "sfx": "place",
+      "trim": -1.5,
+      "pan": 0.13,
+      "why": "Then a couple handed me the camera."
+    },
+    {
+      "cue": "7.us",
+      "word": "just",
+      "sfx": "tick",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "Could you take one of just the two of us?"
+    },
+    {
+      "cue": "7.us",
+      "word": "two",
+      "sfx": "count",
+      "trim": -3,
+      "pan": 0.13,
+      "why": "Could you take one of just the two of us?"
+    },
+    {
+      "cue": "7.sure",
+      "word": "sure",
+      "sfx": "blip",
+      "trim": -1.5,
+      "pan": -0.1,
+      "why": "I said sure."
+    }
+  ]
+}
