@@ -16,17 +16,15 @@ export const scene7=storyScene(timing,{
   <Block position={[0,1.17,1.72]} size={[2.4,.12,1.05]} color="#252c32"/>
   <Block position={[-1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
   <Block position={[1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
-  <Block position={[0,1.4,2.22]} size={[2.1,.42,.12]} color="#39434b"/>
   <Block position={[-.55,1.32,1.49]} size={[1.12,.09,.62]} color="#65717a" rotation-x={-.58*smooth(t/.38)}/>
-  <Block position={[.38,1.34,1.79]} size={[.36,.23,.3]} color="#d7a75e"/>
+  <Block position={[.38,1.48,2.02]} size={[.42,.29,.34]} color="#e3b76d"/>
  </>},
  {cue:"7.potato",...cam.push({on:[0,1.28,1.72],dist:4.8,to:4.0,yaw:0,pitch:24,fov:43}),zone:"driveway",look:"overworld-sunset",note:"Hold on the one bright potato, unmistakably alone in the open trunk. Let the quiet visual reveal land before he moves.",stage:()=> <>
   <Block position={[0,1.17,1.72]} size={[2.4,.12,1.05]} color="#252c32"/>
   <Block position={[-1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
   <Block position={[1.08,1.4,1.72]} size={[.12,.42,1.05]} color="#39434b"/>
-  <Block position={[0,1.4,2.22]} size={[2.1,.42,.12]} color="#39434b"/>
   <Block position={[-.55,1.32,1.49]} size={[1.12,.09,.62]} color="#65717a" rotation-x={-.58}/>
-  <Block position={[.38,1.34,1.79]} size={[.4,.25,.34]} color="#e3b76d"/>
+  <Block position={[.38,1.48,2.02]} size={[.44,.31,.36]} color="#e3b76d"/>
  </>},
  {cue:"7.back",...cam.push({on:[0,1.35,2.75],dist:5.5,to:4.8,yaw:0,pitch:8,fov:45}),zone:"driveway",look:"overworld-sunset",note:"He has retrieved the potato and turns back toward the house; the small golden prop is clearly in his hands.",stage:(t)=> <>
   <Kid position={[0,0,2.65]} animation="reach" arms="hold" face="uneasy" time={t}/>

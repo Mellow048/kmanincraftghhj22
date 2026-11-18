@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, MinecraftAvatar, PixelText } from "../../engine";
+import { Block, MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
 import { wordClock } from "../../../Topics/Recreation";
 import json from "./timing.json";
@@ -67,7 +67,6 @@ export const Car: React.FC<{potato?:boolean}> = ({potato=true}) => <group>
   {potato && <Block position={[1.2,.94,.28]} size={[.2,.12,.15]} color="#987047"/>}
   <Block position={[0,.5,1.23]} size={[2.7,.76,.09]} color="#293644"/>
   <Block position={[0,1.13,1.16]} size={[2.7,.09,.12]} color="#33495b"/>
-  <PixelText text="ONE TRIP" position={[0,1.95,1.02]} height={.31} maxWidth={1.9}/>
 </group>;
 
 export const Doorbell: React.FC<{at?:Vec3; lit?:boolean}> = ({at=[1.45,1.2,-2.9],lit=false}) => <group position={at}>
