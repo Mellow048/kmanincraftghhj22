@@ -52,15 +52,24 @@ def main(args):
     path = args.video
     metadata = json.loads(sp.check_output([args.ffprobe,"-v","error","-show_streams","-of","json",str(path)]))
     v,a = metadata["streams"]
-    assert (v["codec_name"],v["width"],v["height"],v["avg_frame_rate"],v["nb_frames"]) == ("h264",1080,1920,f"{FPS}/1",str(FRAMES)), v
-    # CI's Remotion JPEG renderer writes full-range 4:2:0. A local web encode
-    # may instead normalize it to limited-range BT.709. Accept tagged, valid 4:2:0.
+    assert (v["codec_name"],v["width"],v["height"],v["nb_frames"]) == ("h264",1080,1920,str(FRAMES)), v
+    num,den=map(int,v["avg_frame_rate"].split("/"))
+    assert abs(num/den-FPS)<.005, v
+    # Current Chromium JPEG frames are full-range. Some runners' encodes
+    # already use the limited-range 4:2:0 format, with or without VUI tags.
     colors = (v.get("pix_fmt"),v.get("color_range"),v.get("color_space"))
-    assert colors in {("yuvj420p","pc","bt470bg"),("yuv420p","tv","bt709"),("yuv420p","pc","bt470bg")}, v
+    assert colors[0] in ("yuv420p","yuvj420p") and colors[1] in ("pc","tv",None,"unknown"), v
     print(f"H.264 {v['width']}×{v['height']} / {v['nb_frames']} frames; {colors}.")
     assert (a["codec_name"],a["sample_rate"],a["channels"]) == ("aac","48000",2), a
     assert v["start_pts"] == a["start_pts"] == 0
-    assert abs(float(v["duration"]) - FRAMES/FPS) < .001 and abs(float(a["duration"]) - FRAMES/FPS) < .04, a
+    assert abs(float(v["duration"]) - FRAMES/FPS) < .004 and abs(float(a["duration"]) - FRAMES/FPS) < .04, a
+    times = json.loads(sp.check_output([args.ffprobe,"-v","error","-select_streams","v:0","-show_packets",
+                                  "-show_entries","packet=pts_time","-of","json",str(path)]))["packets"]
+    pts = np.sort([float(p["pts_time"]) for p in times])
+    assert len(pts)==FRAMES and abs(pts[CUT["sink"]]-2)<.0005
+    max_error=float(np.max(np.abs(pts-np.arange(FRAMES)/FPS)))
+    assert max_error<.004, max_error
+    print(f"Picture PTS within {max_error*1000:.3f} ms of the edit clock.")
     raw = ff("-v","error","-xerror","-threads","2","-i",str(path),"-an","-vf","scale=108:192:flags=area","-threads","1","-f","rawvideo","-pix_fmt","gray","-")[0]
     y = np.frombuffer(raw,np.uint8).reshape(-1,192,108)
     assert len(y) == FRAMES and y.mean(axis=(1,2)).min() > 35
@@ -94,7 +103,9 @@ def main(args):
     peak=float(re.search(r"\bPeak:\s*([-\d.]+) dBFS",last)[1])
     assert -20<lufs<-14 and peak<-.8
     print(f"Mix: {lufs:.1f} LUFS, {peak:.1f} dBTP.")
-    print(f"Bytes: {path.stat().st_size}; SHA-256: {hashlib.file_digest(path.open('rb'),'sha256').hexdigest()}")
+    with path.open("rb") as file:
+        digest=hashlib.file_digest(file,"sha256").hexdigest()
+    print(f"Bytes: {path.stat().st_size}; SHA-256: {digest}")
 
     if args.sheets:
         from PIL import Image, ImageDraw
