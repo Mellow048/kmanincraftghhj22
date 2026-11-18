@@ -23,7 +23,7 @@ const Label: React.FC<{ position: [number, number, number]; rotationY?: number }
 export const scene7 = stagedScene("scene7", [
   {
     id: "7.try1",
-    ...cam.push({ on: DECKS, dist: 2.1, to: 1.75, fov: 36, pitch: 20, yaw: 16 }),
+    ...cam.push({ on: [-1.3, 1.05, 0.1], dist: 2.9, to: 2.5, fov: 46, pitch: 14, yaw: 22 }),
     zone: "bedroom",
     look: "warm-room",
     note: "One hand, one record, the needle down on the first beat: the first try, and it is wrong.",
