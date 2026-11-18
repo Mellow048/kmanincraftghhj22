@@ -54,8 +54,8 @@ const Street: React.FC = () => {
       <Vox kind="cobble" position={[0, 0.06, -3.55]} size={[2.4, 0.12, 0.75]} />
 
       {/* Inside the door and behind the window: the party. Warm, and never quite in focus. */}
-      <Block position={[0, 1.15, -4.42]} size={[1.86, 2.3, 0.06]} color="#f0b070" emissive="#ff9a4a" emissiveIntensity={1.3} />
-      <Block position={[2.6, 1.72, -4.4]} size={[1.58, 1.13, 0.06]} color="#ffb877" emissive="#ffa85c" emissiveIntensity={1.5} />
+      <Block position={[0, 1.15, -4.42]} size={[1.86, 2.3, 0.06]} color="#f0b070" emissive="#ff9a4a" emissiveIntensity={0.34} />
+      <Block position={[2.6, 1.72, -4.4]} size={[1.58, 1.13, 0.06]} color="#ffb877" emissive="#ffa85c" emissiveIntensity={0.4} />
 
       {/* Two shapes dancing behind the window. Nobody you can name yet. */}
       {[
@@ -76,12 +76,12 @@ const Street: React.FC = () => {
       <Tree position={[8.4, 0, 3.2]} height={4.2} leaf="#356330" />
 
       {/* The step, the spill of the door, the air. */}
-      <pointLight position={[0, 1.9, -4.3]} color="#ffb066" intensity={9} distance={9} decay={2} />
-      <pointLight position={[2.6, 1.7, -4.3]} color="#ffa858" intensity={5} distance={6} decay={2} />
-      <Glow position={[0, 1.2, -3.85]} size={2.2} color="#ffb469" opacity={0.4} />
+      <pointLight position={[0, 1.9, -4.3]} color="#ffb066" intensity={3.0} distance={9} decay={2} />
+      <pointLight position={[2.6, 1.7, -4.3]} color="#ffa858" intensity={1.8} distance={6} decay={2} />
+      <Glow position={[0, 1.2, -3.85]} size={2.2} color="#ffb469" opacity={0.2} />
       <LightPool position={[0, 0.08, -3.1]} width={3.6} depth={2.4} color="#ffb469" opacity={0.26} />
       <LightPool position={[2.6, 0.08, -3.2]} width={2.6} depth={2.0} color="#ffab5e" opacity={0.18} />
-      <GodRay position={[0, 1.4, -3.8]} rotation={[0.2, 0, 0]} width={1.9} height={2.6} color="#ffb877" opacity={0.1} />
+      <GodRay position={[0, 1.4, -3.8]} rotation={[0.2, 0, 0]} width={1.9} height={2.6} color="#ffb877" opacity={0.05} />
       <Dust position={[0, 1.6, -1.5]} area={[10, 3, 8]} count={50} size={0.04} color="#ffe0b0" opacity={0.5} seed={4} speed={0.15} />
       <Clouds y={44} center={[0, 0, 0]} opacity={0.5} />
     </group>
@@ -148,7 +148,7 @@ const Yard: React.FC = () => {
       <Vox kind="planks" tint="#c0a074" position={[-3.6, 1.6, -4.4]} size={[7.0, 3.2, 0.28]} />
       <Vox kind="planks" tint="#c0a074" position={[3.6, 1.6, -4.4]} size={[2.4, 3.2, 0.28]} />
       <Vox kind="planks" tint="#c0a074" position={[0, 2.95, -4.4]} size={[3.2, 0.5, 0.28]} />
-      <Block position={[0, 1.2, -4.6]} size={[2.0, 2.4, 0.06]} color="#ffc07a" emissive="#ffab5e" emissiveIntensity={1.2} />
+      <Block position={[0, 1.2, -4.6]} size={[2.0, 2.4, 0.06]} color="#ffc07a" emissive="#ffab5e" emissiveIntensity={0.35} />
 
       {/* The table with the cake, the chairs, the kids' corner. */}
       <Block position={[1.0, 0.72, -1.6]} size={[1.9, 0.08, 1.1]} color="#e6dcc8" />
@@ -174,13 +174,13 @@ const Yard: React.FC = () => {
       <FairyLights from={[-3.2, 2.5, -3.4]} to={[3.4, 2.4, -1.2]} bulbs={13} sag={0.42} />
       <FairyLights from={[-3.4, 2.4, 0.6]} to={[3.2, 2.6, 1.8]} bulbs={11} sag={0.5} colour="#ffd0a0" />
 
-      <pointLight position={[-0.4, 2.3, -2.2]} color="#ffcf9a" intensity={7} distance={11} decay={2} />
-      <pointLight position={[0.4, 1.6, -4.3]} color="#ffb066" intensity={6} distance={8} decay={2} />
+      <pointLight position={[-0.4, 2.3, -2.2]} color="#ffcf9a" intensity={3.2} distance={11} decay={2} />
+      <pointLight position={[0.4, 1.6, -4.3]} color="#ffb066" intensity={2.4} distance={8} decay={2} />
       <LightPool position={[-2.2, 0.06, 0.5]} width={3.4} depth={2.6} color="#ffca92" opacity={0.16} />
       <Dust position={[0, 1.6, -0.6]} area={[7, 3, 6]} count={44} size={0.035} color="#ffe7c0" opacity={0.5} seed={12} speed={0.12} />
       <Tree position={[4.6, 0, -2.2]} height={4.4} leaf="#3f6b2c" />
       <Tree position={[-4.9, 0, -1.2]} height={4.0} leaf="#456f30" />
-      <Glow position={[0.9, 0.95, -1.75]} size={1.0} color="#ffd08a" opacity={0.2} />
+      <Glow position={[0.9, 0.95, -1.75]} size={1.0} color="#ffd08a" opacity={0.13} />
       {bob(frame, fps, 0, 0) ? null : null}
     </group>
   );
@@ -218,7 +218,7 @@ const Kitchen: React.FC = () => (
     <Chair position={[1.0, 0, 1.3]} rotationY={-0.9} colour="#cfc7b4" />
 
     <WarmLamp position={[0, 2.16, 0.2]} size={0.2} />
-    <pointLight position={[0.2, 1.9, 1.4]} color="#ffcf9a" intensity={5} distance={8} decay={2} />
+    <pointLight position={[0.2, 1.9, 1.4]} color="#ffcf9a" intensity={2.6} distance={8} decay={2} />
     <GodRay position={[0.3, 2.1, 0.4]} rotation={[0.2, 0, 0.1]} width={1.6} height={2.4} color="#ffcf9a" opacity={0.08} />
     <LightPool position={[0, 0.06, 0.6]} width={3.2} depth={2.6} color="#ffcf9a" opacity={0.12} />
     <Dust position={[0, 1.2, 0.6]} area={[3.6, 2, 3]} count={26} size={0.03} color="#ffe7c0" opacity={0.4} seed={31} speed={0.08} />
@@ -294,9 +294,9 @@ const Club: React.FC = () => {
       <Dust position={[0, 1.6, 0]} area={[6, 3, 6]} count={70} size={0.04} color="#c88aff" opacity={0.4} seed={21} speed={0.18} />
       <GodRay position={[-1.6, 2.6, -0.6]} rotation={[0.15, 0, 0.2]} width={2.2} height={4.2} color="#b06aff" opacity={0.1} />
       <GodRay position={[1.7, 2.6, 0.8]} rotation={[0.15, 0, -0.2]} width={2.2} height={4.2} color="#5ad0d8" opacity={0.1} />
-      <pointLight position={[-1.0, 2.6, -1.3]} color="#b06aff" intensity={7} distance={9} decay={2} />
-      <pointLight position={[1.6, 2.4, 0.9]} color="#5ad0d8" intensity={5} distance={8} decay={2} />
-      <pointLight position={[0, 1.9, 3.0]} color="#ff8a6a" intensity={3} distance={6} decay={2} />
+      <pointLight position={[-1.0, 2.6, -1.3]} color="#b06aff" intensity={4.0} distance={9} decay={2} />
+      <pointLight position={[1.6, 2.4, 0.9]} color="#5ad0d8" intensity={3.0} distance={8} decay={2} />
+      <pointLight position={[0, 1.9, 3.0]} color="#ff8a6a" intensity={2.2} distance={6} decay={2} />
 
       <DanceFloor />
 
@@ -306,13 +306,13 @@ const Club: React.FC = () => {
       <Vox kind="darkPlanks" position={[-3.1, 2.0, 9.0]} size={[3.2, 4.0, 0.3]} tint="#2a2028" />
       <Vox kind="darkPlanks" position={[3.1, 2.0, 9.0]} size={[3.2, 4.0, 0.3]} tint="#2a2028" />
       <Vox kind="darkPlanks" position={[0, 3.7, 9.0]} size={[3.0, 0.6, 0.3]} tint="#2a2028" />
-      <Block position={[0, 1.3, 8.9]} size={[2.6, 2.6, 0.05]} color="#6a2ab0" emissive="#5a1fa0" emissiveIntensity={0.7} />
+      <Block position={[0, 1.3, 8.9]} size={[2.6, 2.6, 0.05]} color="#6a2ab0" emissive="#5a1fa0" emissiveIntensity={0.4} />
       <ClubSign position={[0, 3.0, 8.6]} />
       <LampPost position={[-3.0, 0, 6.4]} seed={3} />
       <Tree position={[5.2, 0, 8.2]} height={4.2} leaf="#2f4a28" />
       <Glow position={[0, 1.4, 8.7]} size={2.6} color="#a05aff" opacity={0.35} />
       <LightPool position={[0, 0.06, 7.4]} width={4.2} depth={2.6} color="#a05aff" opacity={0.2} />
-      <pointLight position={[0, 2.2, 8.4]} color="#a05aff" intensity={8} distance={9} decay={2} />
+      <pointLight position={[0, 2.2, 8.4]} color="#a05aff" intensity={3.4} distance={9} decay={2} />
       {bob(frame, fps, 0, 0) ? null : null}
     </group>
   );

@@ -24,7 +24,7 @@ export const scene4 = stagedScene("scene4", [
   },
   {
     id: "4.say",
-    ...cam.push({ on: [0, 1.4, 0.25], dist: 1.55, to: 1.25, fov: 34, yaw: 6, pitch: 2 }),
+    ...cam.push({ on: [0, 1.4, 0.25], dist: 2.9, to: 2.4, fov: 38, yaw: 6, pitch: 2 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Close on him saying it: eyes shut, headphones over his ears, no audience in the room at all.",
@@ -36,7 +36,7 @@ export const scene4 = stagedScene("scene4", [
   },
   {
     id: "4.hand",
-    ...cam.push({ on: [0.15, 1.35, 0.3], dist: 1.7, to: 1.3, fov: 36, yaw: 46, pitch: 6 }),
+    ...cam.push({ on: [0.15, 1.35, 0.3], dist: 2.8, to: 2.3, fov: 40, yaw: 46, pitch: 6 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Over the speaker's shoulder: the cabinet in the foreground, his face lit by the little green light, still not opening his eyes.",

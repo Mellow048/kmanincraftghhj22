@@ -12,7 +12,7 @@ import { Friend, Him, Speaker, stagedScene } from "./kit";
 export const scene3 = stagedScene("scene3", [
   {
     id: "3.window",
-    ...cam.push({ on: [2.6, 1.66, -3.95], dist: 2.3, to: 1.55, fov: 40, pitch: 1 }),
+    ...cam.push({ on: [2.6, 1.66, -3.95], dist: 3.2, to: 2.6, fov: 42, pitch: 1 }),
     zone: "street",
     look: "overworld-night",
     note: "The window from the pavement: warm, loud, full of people, and none of them are him.",
@@ -48,7 +48,7 @@ export const scene3 = stagedScene("scene3", [
   },
   {
     id: "3.door",
-    ...cam.push({ on: [0.4, 1.5, -2.95], dist: 2.3, to: 1.75, fov: 36, yaw: -26, pitch: 2 }),
+    ...cam.push({ on: [0.4, 1.5, -2.95], dist: 3.2, to: 2.7, fov: 40, yaw: -26, pitch: 2 }),
     zone: "street",
     look: "overworld-night",
     note: "The friend leans out of the door and says it in one breath, smiling: the refusal is social, not cruel.",

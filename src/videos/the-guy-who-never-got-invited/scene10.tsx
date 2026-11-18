@@ -11,7 +11,7 @@ import { Booth, Friend, Him, stagedScene } from "./kit";
 export const scene10 = stagedScene("scene10", [
   {
     id: "10.word",
-    ...cam.push({ on: [-1.0, 1.46, -2.98], dist: 1.2, to: 1.0, fov: 30, yaw: -12, pitch: 2 }),
+    ...cam.push({ on: [-1.0, 1.46, -2.98], dist: 2.8, to: 2.3, fov: 36, yaw: -12, pitch: 2 }),
     zone: "club",
     look: "prom-night",
     note: "Half his face lit, eyes on the record and not on them: the word is not a boast, it is a fact he has decided to share.",
@@ -40,7 +40,7 @@ export const scene10 = stagedScene("scene10", [
   },
   {
     id: "10.noface",
-    ...cam.push({ on: [-1.0, 1.42, -2.9], dist: 2.3, to: 1.95, fov: 36, yaw: 15, pitch: 4 }),
+    ...cam.push({ on: [-1.0, 1.42, -2.9], dist: 3.0, to: 2.5, fov: 38, yaw: 15, pitch: 4 }),
     zone: "club",
     look: "prom-night",
     note: "Alone in the booth with the room going off around him, and no smile at all: he won the argument nobody knew they were having.",

@@ -26,7 +26,7 @@ export const scene8 = stagedScene("scene8", [
   },
   {
     id: "8.booth",
-    ...cam.push({ on: [-1.0, 1.42, -2.9], dist: 2.9, to: 2.3, fov: 42, yaw: -8, pitch: 5 }),
+    ...cam.push({ on: [-1.0, 1.42, -2.9], dist: 3.3, to: 2.7, fov: 42, yaw: -8, pitch: 5 }),
     zone: "club",
     look: "prom-night",
     note: "Him behind the booth in the black shirt, headphones round his neck, looking at the room instead of the records.",
@@ -39,7 +39,7 @@ export const scene8 = stagedScene("scene8", [
   },
   {
     id: "8.owner",
-    ...cam.push({ on: [-0.5, 1.45, -2.5], dist: 1.75, to: 1.4, fov: 34, yaw: -36, pitch: 3 }),
+    ...cam.push({ on: [-0.5, 1.45, -2.5], dist: 2.9, to: 2.4, fov: 38, yaw: -36, pitch: 3 }),
     zone: "club",
     look: "prom-night",
     note: "The owner leans in over the booth and says it in his ear: the first time an adult in this town calls him good.",
@@ -53,7 +53,7 @@ export const scene8 = stagedScene("scene8", [
   },
   {
     id: "8.thanks",
-    ...cam.push({ on: [-1.0, 1.44, -2.98], dist: 1.55, to: 1.25, fov: 34, yaw: -14, pitch: 2 }),
+    ...cam.push({ on: [-1.0, 1.44, -2.98], dist: 2.9, to: 2.4, fov: 38, yaw: -14, pitch: 2 }),
     zone: "club",
     look: "prom-night",
     note: "Two words back, flat, no smile: he has practised this answer as long as he practised the rest.",
@@ -66,7 +66,7 @@ export const scene8 = stagedScene("scene8", [
   },
   {
     id: "8.smile",
-    ...cam.push({ on: [-1.0, 1.46, -2.98], dist: 1.2, to: 1.02, fov: 32, yaw: 9, pitch: 2 }),
+    ...cam.push({ on: [-1.0, 1.46, -2.98], dist: 2.7, to: 2.2, fov: 38, yaw: 9, pitch: 2 }),
     zone: "club",
     look: "prom-night",
     note: "The one smile, two frames of it, then gone: the only crack in him in the whole film.",

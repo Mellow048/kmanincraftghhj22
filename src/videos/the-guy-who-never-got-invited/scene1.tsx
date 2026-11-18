@@ -32,7 +32,7 @@ export const scene1 = stagedScene("scene1", [
   },
   {
     id: "1.eyes",
-    ...cam.push({ on: [0.24, 1.5, -3.2], dist: 2.1, to: 1.65, fov: 36, yaw: 8, pitch: 2 }),
+    ...cam.push({ on: [0.24, 1.5, -3.2], dist: 3.0, to: 2.5, fov: 40, yaw: 8, pitch: 2 }),
     zone: "street",
     look: "overworld-night",
     note: "Close on the three faces: one of them glances at him, which is the whole hook — he is being discussed.",

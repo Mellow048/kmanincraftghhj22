@@ -29,7 +29,7 @@ export const scene5 = stagedScene("scene5", [
   },
   {
     id: "5.needle",
-    ...cam.push({ on: [-2.2, 0.83, 0.6], dist: 1.15, to: 0.85, fov: 32, pitch: 22, yaw: 16 }),
+    ...cam.push({ on: [-2.2, 0.83, 0.6], dist: 1.7, to: 1.3, fov: 34, pitch: 22, yaw: 16 }),
     zone: "yard",
     look: "overworld-sunset",
     note: "The needle goes down on the record: his whole year, one and a half seconds long.",
@@ -41,7 +41,7 @@ export const scene5 = stagedScene("scene5", [
   },
   {
     id: "5.skip",
-    ...cam.push({ on: [-2.2, 1.32, 1.4], dist: 1.75, to: 1.3, fov: 36, yaw: 172, pitch: 4 }),
+    ...cam.push({ on: [-2.2, 1.32, 1.4], dist: 2.9, to: 2.4, fov: 40, yaw: 172, pitch: 4 }),
     zone: "yard",
     look: "overworld-sunset",
     note: "The skip, on his face: the warm yard behind him, and the exact second he stops being the DJ.",
@@ -72,7 +72,7 @@ export const scene5 = stagedScene("scene5", [
   },
   {
     id: "5.silence",
-    ...cam.push({ on: [1.82, 0.95, -0.9], dist: 1.7, to: 1.3, fov: 38, yaw: -12, pitch: -3 }),
+    ...cam.push({ on: [1.82, 0.95, -0.9], dist: 2.9, to: 2.4, fov: 40, yaw: -12, pitch: -3 }),
     zone: "yard",
     look: "overworld-sunset",
     note: "The kid, bored, holding up a phone: the sentence that ends him is four words long and not even meant badly.",

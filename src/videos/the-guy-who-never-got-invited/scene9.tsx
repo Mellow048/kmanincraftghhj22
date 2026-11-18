@@ -10,7 +10,7 @@ import { Booth, Friend, Him, stagedScene } from "./kit";
 export const scene9 = stagedScene("scene9", [
   {
     id: "9.in",
-    ...cam.push({ on: [0, 1.4, 3.0], dist: 2.7, to: 2.1, fov: 44, yaw: 180, pitch: 4 }),
+    ...cam.push({ on: [0, 1.4, 3.0], dist: 3.2, to: 2.6, fov: 44, yaw: 180, pitch: 4 }),
     zone: "club",
     look: "prom-night",
     note: "They push in through the door of the club they queue at every weekend, still talking to each other, already loud.",
@@ -60,7 +60,7 @@ export const scene9 = stagedScene("scene9", [
   },
   {
     id: "9.decks",
-    ...cam.push({ on: [-1.0, 1.16, -2.32], dist: 1.15, to: 0.92, fov: 30, pitch: 26, yaw: -18 }),
+    ...cam.push({ on: [-1.0, 1.16, -2.32], dist: 1.7, to: 1.35, fov: 32, pitch: 26, yaw: -18 }),
     zone: "club",
     look: "prom-night",
     note: "His hands change the record while the question is still in the air: he does not turn round.",
@@ -73,7 +73,7 @@ export const scene9 = stagedScene("scene9", [
   },
   {
     id: "9.faces",
-    ...cam.push({ on: [1.5, 1.42, 0.5], dist: 2.1, to: 1.7, fov: 40, yaw: 24, pitch: 4 }),
+    ...cam.push({ on: [1.5, 1.42, 0.5], dist: 3.2, to: 2.7, fov: 42, yaw: 24, pitch: 4 }),
     zone: "club",
     look: "prom-night",
     note: "Their faces, having the night of their lives, lit by a rig he built: they are happy and they still do not know who he is.",

@@ -23,7 +23,7 @@ const Label: React.FC<{ position: [number, number, number]; rotationY?: number }
 export const scene7 = stagedScene("scene7", [
   {
     id: "7.try1",
-    ...cam.push({ on: DECKS, dist: 1.15, to: 0.9, fov: 30, pitch: 24, yaw: -16 }),
+    ...cam.push({ on: DECKS, dist: 1.6, to: 1.25, fov: 32, pitch: 24, yaw: -16 }),
     zone: "bedroom",
     look: "warm-room",
     note: "One hand, one record, the needle down on the first beat: the first try, and it is wrong.",
@@ -36,7 +36,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.try2",
-    ...cam.push({ on: DECKS, dist: 0.95, to: 0.74, fov: 28, pitch: 30, yaw: 24 }),
+    ...cam.push({ on: DECKS, dist: 1.5, to: 1.15, fov: 30, pitch: 30, yaw: 24 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The same try again, a hand's width closer: the hands are shaking and the record does not care.",
@@ -49,7 +49,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.label",
-    ...cam.push({ on: [-1.5, 0.92, 0.55], dist: 1.05, to: 0.85, fov: 32, pitch: 34, yaw: 12 }),
+    ...cam.push({ on: [-1.5, 0.92, 0.55], dist: 1.5, to: 1.2, fov: 34, pitch: 34, yaw: 12 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Writing 84 on a label: he is not learning to play, he is building a system.",
@@ -63,7 +63,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.teeth",
-    ...cam.push({ on: [0, 1.42, 0.3], dist: 1.45, to: 1.15, fov: 34, yaw: -8, pitch: 3 }),
+    ...cam.push({ on: [0, 1.42, 0.3], dist: 2.8, to: 2.3, fov: 38, yaw: -8, pitch: 3 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Counting beats while he brushes his teeth, head bobbing: the practice has escaped the room.",
@@ -84,7 +84,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.window",
-    ...cam.push({ on: [1.3, 1.52, -2.35], dist: 2.4, to: 1.85, fov: 40, yaw: 4, pitch: 1 }),
+    ...cam.push({ on: [1.3, 1.52, -2.35], dist: 3.0, to: 2.4, fov: 42, yaw: 4, pitch: 1 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The window at night, him working in the foreground: the town is asleep and one room is not.",
@@ -97,7 +97,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.onehand",
-    ...cam.push({ on: DECKS, dist: 1.35, to: 1.05, fov: 32, pitch: 20, yaw: -32 }),
+    ...cam.push({ on: DECKS, dist: 1.8, to: 1.4, fov: 34, pitch: 20, yaw: -32 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Mixing with one hand behind his back: the trick that has no use in the world.",
@@ -110,7 +110,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.eyes",
-    ...cam.push({ on: [0, 1.44, 0.3], dist: 1.25, to: 1.0, fov: 32, yaw: -10, pitch: 2 }),
+    ...cam.push({ on: [0, 1.44, 0.3], dist: 2.7, to: 2.2, fov: 38, yaw: -10, pitch: 2 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Eyes closed, headphones on: he does not need to look at the records any more.",
@@ -133,7 +133,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.sign",
-    ...cam.push({ on: [2.05, 1.5, 0.55], dist: 1.75, to: 1.4, fov: 36, yaw: -90, pitch: 2 }),
+    ...cam.push({ on: [2.05, 1.5, 0.55], dist: 2.6, to: 2.1, fov: 38, yaw: -90, pitch: 2 }),
     zone: "bedroom",
     look: "warm-room",
     note: "A sheet of paper taped to the wall with one word on it: PRACTICE. Nobody is coming to read it.",
@@ -163,7 +163,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.stack",
-    ...cam.push({ on: [-1.4, 0.62, 1.3], dist: 1.8, to: 1.4, fov: 34, pitch: 12, yaw: -22 }),
+    ...cam.push({ on: [-1.4, 0.62, 1.3], dist: 2.3, to: 1.9, fov: 36, pitch: 12, yaw: -22 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The stack of labelled records beside the speaker, waist high: time, counted in cardboard.",
