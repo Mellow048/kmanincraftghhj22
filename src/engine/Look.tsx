@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
@@ -282,6 +282,8 @@ export const Look: React.FC<{ preset?: LookPreset; post?: PostSettings; focus?: 
   focus,
 }) => {
   const look = LOOKS[preset] ?? LOOKS["hospital-night"];
+  // Presets are stable: a fresh vector here would rebuild the sky material on every film frame.
+  const sunDir = useMemo(() => new THREE.Vector3(...(look.sky?.sunDir ?? look.key?.position ?? [6, 10, 4])), [look]);
   const span = look.shadowSpan ?? 9;
   const keyRef = useRef<THREE.DirectionalLight>(null);
   const follow = look.follow && focus ? focus : null;
@@ -306,7 +308,7 @@ export const Look: React.FC<{ preset?: LookPreset; post?: PostSettings; focus?: 
       {look.sky ? (
         <Sky
           sky={look.sky}
-          sunDir={new THREE.Vector3(...(look.sky.sunDir ?? look.key?.position ?? [6, 10, 4]))}
+          sunDir={sunDir}
         />
       ) : null}
       <fogExp2 attach="fog" args={[look.fog, look.fogDensity]} />

@@ -70,6 +70,8 @@ export type Shot = {
   /** Narration cue this shot is cut to. Set by `storyScene`; see docs in Topics/. */
   cue?: string;
 
+  /** Deliberately lock the lens (e.g. the family photograph). Explain the hold in `note`. */
+  locked?: true;
   /** The storytelling purpose of this shot. REQUIRED for reviewability. */
   note: string;
 };
@@ -82,6 +84,8 @@ export type CaptionSettings = {
   words: CaptionWord[];
   /** Vertical position, 0 = top of frame, 1 = bottom. Default 0.72. */
   y?: number;
+  /** New productions: snap the entry accent to the spoken frame; omit to keep the legacy cut. */
+  motion?: "on-beat";
   /** Size multiplier. Default 1. */
   size?: number;
   /** "upper" (default) or "lower". */
@@ -99,6 +103,8 @@ export type SceneDef = {
   shots: Shot[];
   /** The actors / props / actions in this beat. */
   Component: React.FC;
+  /** Optional, read-only rehearsal of the same stage used on screen; never invokes a child component. */
+  sampleStage?: (shot: number, seconds: number) => React.ReactNode;
 };
 
 export type LookPreset =

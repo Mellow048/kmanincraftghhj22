@@ -1,7 +1,7 @@
 # Shaders: the look, and how to switch it on
 
 `src/engine/shaders.tsx` gives every film a real post-processing chain and a painted sky. It is **off by
-default**, so no delivered film changes under you. One line turns it on:
+default in the engine**; the narrated topic starters now switch it **on** in `film.tsx`. Existing films keep their choice.
 
 ```ts
 post: { shaders: true },

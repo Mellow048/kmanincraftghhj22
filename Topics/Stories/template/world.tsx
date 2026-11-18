@@ -1,6 +1,6 @@
 import type React from "react";
 import { Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
-import { Bell, Hut, LampPost, Room, Stall, Well } from "../../../Topics/Stories";
+import { Bell, Hut, LampPost, Room, Stall, Well } from "../../../__TOPIC_FOLDER__";
 import { PLACE } from "./kit";
 
 /**
@@ -14,7 +14,7 @@ import { PLACE } from "./kit";
  * The story's THIRD place (what the rule was hiding: the other side, the bottom of the well, behind the wall)
  * is yours to build, as a third zone. See src/videos/in-this-town-same-face/world.tsx for a whole valley.
  *
- * The parts come from the topic's pack (Topics/Stories/places.tsx). 1 unit = 1 block = 1 metre. Ground is y = 0.
+ * The parts come from the topic's pack (__TOPIC_FOLDER__/places.tsx). 1 unit = 1 block = 1 metre. Ground is y = 0.
  */
 
 const Village: React.FC = () => (

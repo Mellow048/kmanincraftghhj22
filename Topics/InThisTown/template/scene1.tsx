@@ -1,53 +1,54 @@
-import { cam, storyScene } from "../../engine";
-import type { Vec3 } from "../../engine";
-import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+import { Block, cam, storyScene } from '../../engine';
+import type { Vec3 } from '../../engine';
+import { Hero, Poppy, ease, jolt, ramp, timing, wordAt } from './kit';
+import { route, tableAt, tabletop } from './marks';
 
-const ME: Vec3 = [0, 0, 2.3];
-const LENS: Vec3 = [0, 1.7, 5.8];
+// Disposable blocking study. Replace the PREMISE, keep the craft: action → travel → consequence.
+// The rooted stem bends, not the pot. The lens and the reaching hand share its mark.
+const root: Vec3 = [tableAt[0], tabletop + .21, tableAt[2]];
+const flower: Vec3 = [root[0], root[1] + .35, root[2]];
+const FlinchingFlower = ({ bend }: { bend: number }) => <>
+  <Block position={[root[0], tabletop + .105, root[2]]} size={[.24, .21, .24]} color="#ae603e" />
+  <Poppy position={root} rotation={[0, 0, bend]} scale={1.12} />
+</>;
+const flinch = wordAt('1.town', 'flinched'), other = wordAt('1.turn', 'other');
+// Start mid-attempt: the stem is already edging away on “In this town”. It peeks
+// upright as the hand pauses, then recoils fully on the measured word.
+const wary = (t: number) => (.38 + .22 * ease(ramp(t, 0, .28))) * (1 - ease(ramp(t, flinch * .36, flinch * .78)));
 
-/**
- * HOOK. The whole premise in one picture, then the teller.
- *
- * One scene file per BEAT of the script (Topics/InThisTown/SCRIPT.md); one shot per LINE of narration.md.
- * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
- * line that has no shot.
- *
- * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
- * a `note` that says why this picture for these words, and a `stage`.
- */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Hook",
+  title: "Even the flower was shy",
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
-      stage: () => (
-        <>
-          <Hero position={ME} animation="idle" face="smile" gaze={0} />
-          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
-          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
-          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
-          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
-        </>
-      ),
+      ...cam.orbit({ on: [-.34, 1.18, 0], dist: 3.85, distTo: 3.55, yaw: 47, yawTo: 59, pitch: 8, fov: 41 }),
+      zone: 'village',
+      note: 'See the hand, the face and the flower together. The hand starts forward; on flinched the stem recoils away from it.',
+      stage: (t) => <>
+        <Hero position={route(0).position} rotationY={1.38} animation="reach" blendTo="talk" blend={Math.max(wary(t), ease(ramp(t, flinch - .48, flinch)))} time={t} face={t < flinch ? 'smile' : 'wow'} lookAt={flower} />
+        <FlinchingFlower bend={-wary(t) - .78 * ease(ramp(t, flinch, flinch + .17)) + jolt(t, flinch, .15)} />
+      </>,
     },
     {
-      cue: "1.me",
-      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
-      zone: "village",
-      look: "overworld-day",
-      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
-      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
+      cue: "1.around",
+      ...cam.truck({ on: [-.8, .38, 1.22], by: [1.6, 0, 0], dist: 5.6, yaw: 4, pitch: 39, fov: 44 }),
+      zone: 'village',
+      note: 'Track from high above the table so the audience sees the path. His feet go around its front, not through the wood.',
+      stage: (t, { p }) => <>
+        <Hero {...route(ease(p))} animation="walk" plantFeet time={t} face="uneasy" lookAt={flower} />
+        <FlinchingFlower bend={-.78 * (1 - ease(p))} />
+      </>,
+    },
+    {
+      cue: "1.turn",
+      ...cam.push({ on: [.34, 1.20, 0], dist: 3.4, to: 3.12, yaw: -51, pitch: 9, fov: 43 }),
+      zone: 'village',
+      note: 'Reverse to the second attempt. This time the red head bends the OTHER way while the reaching arm drops.',
+      stage: (t) => <>
+        <Hero position={route(1).position} rotationY={-1.38} animation="reach" blendTo="shrug" blend={1 - ease(ramp(t, other, other + .34))} time={t} face={t < other ? 'brave' : 'frown'} lookAt={flower} />
+        <FlinchingFlower bend={.78 * ease(ramp(t, other, other + .18)) - jolt(t, other, .15)} />
+      </>,
     },
   ],
 });
-
-// Distances that work (measured on the finished films, Topics/InThisTown/SHOTS.md §6):
-//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
-//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
-//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
-void chestOf;

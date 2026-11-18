@@ -1,7 +1,8 @@
 import type React from "react";
 import { Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
-import { Bell, Hut, LampPost, Room, Stall, Well } from "../../../Topics/InThisTown";
+import { Bell, Hut, LampPost, LongTable, Room, Stall, Well } from "../../../Topics/InThisTown";
 import { PLACE } from "./kit";
+import { hallDepth, hallFront, hallHeight, hallWidth, pathTop, tableAt, tableLength } from "./marks";
 
 /**
  * THE TOWN, in zones. A shot names the zone it plays in, and the others are not drawn.
@@ -21,7 +22,7 @@ const Village: React.FC = () => (
   <>
     <Vox kind="grass" position={[0, -0.5, 0]} size={[120, 1, 90]} />
     <Vox kind="path" position={[3, 0.02, 2]} size={[60, 0.06, 4.6]} />
-    <Vox kind="path" position={[0, 0.021, 1.5]} size={[13, 0.06, 12]} />
+    <Vox kind="path" position={[0, pathTop - .03, 1.5]} size={[13, 0.06, 12]} />
 
     {/* North side, west to east. Fronts face south. */}
     <Hut at={[-21, 0, -5]} w={7} windows={[-2, 2]} roof="#3f6b3a" />
@@ -29,7 +30,7 @@ const Village: React.FC = () => (
     {/* A raised porch: whoever stands on it looks down at a kid, and the two stack in a tall frame. */}
     <Vox kind="cobble" position={[-10, 0.25, -4.15]} size={[2.8, 0.5, 1.7]} />
     <Vox kind="stone" position={[-10, 0.12, -3.1]} size={[1.6, 0.24, 0.5]} />
-    <Hut at={[0, 0, -7]} w={9} d={7} h={4.6} roof="#8a3b2a" windows={[-2.9, 2.9]} />
+    <Hut at={hallFront} w={hallWidth} d={hallDepth} h={hallHeight} roof="#8a3b2a" windows={[-2.9, 2.9]} />
     <Hut at={PLACE.home} w={6.5} tint="#caa268" roof="#3f6b3a" door={-1.3} windows={[1.5]} />
     <Hut at={[20, 0, -5]} w={6} h={3.6} tint="#d8c49a" roof="#3d5f9a" door={1.2} windows={[-1.6]} />
 
@@ -38,6 +39,7 @@ const Village: React.FC = () => (
     <Hut at={[1.5, 0, 12.5]} w={6} h={3.6} wall="cobble" roof="#3d5f9a" windows={[1.5]} door={-1.2} turn={Math.PI} />
     <Hut at={[15, 0, 11]} w={6.5} tint="#caa268" roof="#5a4a6a" windows={[-1.6]} door={1.3} turn={Math.PI} />
 
+    <LongTable position={tableAt} length={tableLength} />
     <Bell position={PLACE.bell} />
     <Well position={PLACE.well} />
     <Stall position={PLACE.stall} />
@@ -67,7 +69,7 @@ const Village: React.FC = () => (
     {/* Atmosphere is not optional: a ray, a pool of light, a glow and dust in every zone. */}
     <GodRay position={[-3, 6.5, -3]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.06} />
     <LightPool position={[0, 0.07, 1.5]} width={11} depth={9} color="#fff2c8" opacity={0.14} />
-    <Glow position={[0, 2.3, -2.5]} size={1.6} color="#ffe08a" opacity={0.35} />
+    <Glow position={[PLACE.bell[0], PLACE.bell[1] + 2.3, PLACE.bell[2]]} size={1.6} color="#ffe08a" opacity={0.35} />
     <Dust position={[0, 2.2, 1]} area={[30, 4, 14]} count={70} size={0.045} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
   </>
 );

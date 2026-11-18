@@ -16,8 +16,8 @@ import { scene1 } from "./scene1";
 export const film = defineFilm({
   id: "__ID__",
   title: "__TITLE__",
-  topic: "in-this-town",
-  cut: "short",
+  topic: "__TOPIC__",
+  __CUT_LINE__
   look: "overworld-day",
   // The shader chain (painted sky and sun, bloom, tone mapping, grade): the owner asked for it on every film from
   // 2026-11-17 on. Read "With the shaders on" in Topics/InThisTown/PACK.md before lighting a shot.
@@ -26,7 +26,7 @@ export const film = defineFilm({
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/__ID__/mix.mp3" },
   // A finished film plays the mix. `npm run check` fails one that does not.
-  captions: { words: timing.words, y: 0.72 },
+  captions: { words: timing.words, y: 0.72, motion: "on-beat" },
   World,
   scenes: [scene1],
 });

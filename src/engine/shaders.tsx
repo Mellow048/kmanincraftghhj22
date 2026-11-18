@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
@@ -129,11 +129,6 @@ export const Sky: React.FC<{ sky: SkySettings; sunDir: THREE.Vector3 }> = ({ sky
   // every time it is rendered, and Actions renders frames in whatever order it likes.
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  // The dome travels with the camera, so the sun never slides as the shot moves.
-  useFrame(() => {
-    if (group.current) group.current.position.copy(camera.position);
-  });
-
   const material = useMemo(() => {
     return new THREE.ShaderMaterial({
       vertexShader: SKY_VERT,
@@ -161,9 +156,11 @@ export const Sky: React.FC<{ sky: SkySettings; sunDir: THREE.Vector3 }> = ({ sky
     });
   }, [sky, dir]);
 
-  useEffect(() => {
+  // The camera runs first. Update both position and cloud time before this frame's draw.
+  useFrame(() => {
+    if (group.current) group.current.position.copy(camera.position);
     material.uniforms.uTime!.value = frame / fps;
-  }, [material, frame, fps]);
+  });
 
   useEffect(() => () => material.dispose(), [material]);
 
@@ -423,7 +420,7 @@ const useSunOnScreen = () => {
   const camera = useThree((s) => s.camera);
   const found = useRef<THREE.Object3D | null>(null);
   return (): { uv: THREE.Vector2; visible: number } => {
-    if (!found.current) found.current = scene.getObjectByName(SKY_NAME) ?? null;
+    if (found.current?.parent?.parent !== scene) found.current = scene.getObjectByName(SKY_NAME) ?? null;
     const sky = found.current;
     if (!sky) return { uv: new THREE.Vector2(0.5, 1.0), visible: 0 };
     const sd = sky.userData?.sunDir as number[] | undefined;
@@ -448,15 +445,21 @@ const useSunOnScreen = () => {
  * positive priority exists, so this component owns the frame from then on.
  */
 export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ settings }) => {
+  // Do not subscribe at positive priority when disabled: it takes over R3F's draw
+  // even if the callback returns without drawing anything. Film config is stable.
+  const cfg = useMemo(() => resolve(settings), [settings]);
+  return cfg ? <ComposedFrame cfg={cfg} /> : null;
+};
+
+const ComposedFrame: React.FC<{ cfg: Required<ShaderSettings> }> = ({ cfg }) => {
   const gl = useThree((s) => s.gl);
   const scene = useThree((s) => s.scene);
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
-  const cfg = resolve(settings);
   const sunOnScreen = useSunOnScreen();
 
-  const rig = useMemo(() => {
-    if (!cfg) return null;
+  const active = useRef<{ composer: EffectComposer; shafts: ShaderPass; grade: ShaderPass } | null>(null);
+  useLayoutEffect(() => {
     const composer = new EffectComposer(gl);
     composer.setPixelRatio(1);
     composer.setSize(size.width, size.height);
@@ -484,39 +487,34 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
     composer.addPass(grade);
     grade.renderToScreen = true;
     // ShaderPass clones the uniforms of a plain shader object, so the two passes cannot share one.
-    return { composer, bloom, shafts, grade };
-  }, [gl, scene, camera, cfg, size.width, size.height]);
-
-  useEffect(() => {
-    if (!rig) return;
-    const u = rig.grade.material.uniforms;
-    if (!u) return;
-    u.uVignette!.value = cfg!.vignette;
-    u.uSat!.value = cfg!.saturation;
-    u.uContrast!.value = cfg!.contrast;
-    u.uShoulder!.value = cfg!.shoulder;
-    u.uLift!.value = cfg!.lift;
-    u.uWarm!.value = cfg!.warmth;
-    u.uCool!.value = cfg!.coolShadow;
-    u.uDiffusion!.value = cfg!.diffusion;
-    u.uVeil!.value = cfg!.veil;
-    u.uGrain!.value = cfg!.grain;
-    u.uAberr!.value = cfg!.aberration;
+    const u = grade.material.uniforms;
+    u.uVignette!.value = cfg.vignette;
+    u.uSat!.value = cfg.saturation;
+    u.uContrast!.value = cfg.contrast;
+    u.uShoulder!.value = cfg.shoulder;
+    u.uLift!.value = cfg.lift;
+    u.uWarm!.value = cfg.warmth;
+    u.uCool!.value = cfg.coolShadow;
+    u.uDiffusion!.value = cfg.diffusion;
+    u.uVeil!.value = cfg.veil;
+    u.uGrain!.value = cfg.grain;
+    u.uAberr!.value = cfg.aberration;
     u.uTexel!.value = new THREE.Vector2(1 / size.width, 1 / size.height);
 
-    const s = rig.shafts.material.uniforms;
-    if (s) s.uShafts!.value = cfg!.shafts;
-  }, [rig, cfg, size.width, size.height]);
-
-  useEffect(() => {
-    if (!rig) return;
-    rig.composer.setSize(size.width, size.height);
-  }, [rig, size.width, size.height]);
+    shafts.material.uniforms.uShafts!.value = cfg.shafts;
+    active.current = { composer, shafts, grade };
+    return () => {
+      active.current = null;
+      for (const pass of composer.passes) pass.dispose();
+      composer.dispose();
+    };
+  }, [gl, scene, camera, cfg, size.width, size.height]);
 
   const filmFrame = useCurrentFrame();
   const { fps } = useVideoConfig();
   useFrame((_, delta) => {
-    if (!rig) return;
+    const rig = active.current;
+    if (!rig) { gl.render(scene, camera); return; }
     const g = rig.grade.material.uniforms;
     if (g) g.uTime!.value = filmFrame / fps;
     const s = rig.shafts.material.uniforms;

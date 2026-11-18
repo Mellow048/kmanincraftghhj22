@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import * as THREE from "three";
 import { clamp01 } from "./math";
+import { beatFrames, captionBeat, captionPixel } from "./caption-beat";
 import { wordTexture } from "./pixelfont";
 import type { CaptionSettings, CaptionWord } from "./types";
 
@@ -61,7 +62,7 @@ export function activeWord(words: CaptionWord[], t: number): CaptionWord | null 
   return t < holdUntil ? word : null;
 }
 
-export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1, letterCase = "upper" }) => {
+export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1, letterCase = "upper", motion }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = frame / fps;
@@ -81,7 +82,9 @@ export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1,
     [],
   );
 
-  const word = activeWord(words, t);
+  const starts = useMemo(() => motion === "on-beat" ? beatFrames(words, fps) : null, [motion, words, fps]);
+  const beat = starts ? captionBeat(words, starts, frame, fps) : null;
+  const word = motion === "on-beat" ? beat?.word : activeWord(words, t);
   const text = word ? captionText(word.w, letterCase) : "";
 
   let rect: [number, number, number, number] | null = null;
@@ -91,13 +94,12 @@ export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1,
     const texW = (tex.image as { width: number }).width;
     const texH = (tex.image as { height: number }).height;
     // One font pixel is 1/86 of the frame width; long words shrink to fit 88%.
-    let px = (width / 86) * size;
-    px = Math.min(px, (width * 0.88) / texW);
+    const px = captionPixel(width, texW, size, !!beat);
     // A two-frame pop on the cut to each word. It is what makes the eye follow.
-    const pop = 1 + 0.2 * Math.pow(1 - clamp01((t - word.s) / 0.1), 2);
+    const pop = beat?.scale ?? (1 + 0.2 * Math.pow(1 - clamp01((t - word.s) / 0.1), 2));
     const halfW = ((texW * px) / width) * pop;
     const halfH = ((texH * px) / height) * pop;
-    rect = [0, 1 - 2 * y, halfW, halfH];
+    rect = [0, 1 - 2 * (y - (beat?.lift ?? 0)), halfW, halfH];
   }
 
   useFrame(() => {

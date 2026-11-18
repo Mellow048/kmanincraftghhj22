@@ -184,12 +184,13 @@ export function readScript(raw) {
   const fence = raw.match(/```narration\s*\n([\s\S]*?)```/);
   if (!fence) return null;
   const cues = [];
-  let clips = 0;
+  const clipNames = [];
   for (const rawLine of fence[1].split("\n")) {
     const line = rawLine.trim();
     if (!line) continue;
-    if (/^#\s*clip\s+\S+/.test(line)) {
-      clips++;
+    const clip = line.match(/^#\s*clip\s+(\S+)/);
+    if (clip) {
+      clipNames.push(clip[1]);
       continue;
     }
     if (line.startsWith("#") || line.startsWith(">")) continue;
@@ -197,7 +198,7 @@ export function readScript(raw) {
     if (!match) return { error: `cannot read script line: "${line}"` };
     cues.push({ id: match[1].trim(), text: match[2].trim() });
   }
-  return { cues, clips };
+  return { cues, clips: clipNames.length, clipNames };
 }
 
 export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D, BANNED_PHRASES }) {
@@ -396,8 +397,8 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
       // The camera as two points: written out (`from: [x, y, z]`) or from a place's own helper (`from: GYM.at(x, y, z)`).
       const literal = /(^|\n)\s*from:\s*[\[\w]/.test(body) && /(^|\n)\s*target:\s*[\[\w]/.test(body);
       if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give \`from:\` and \`target:\` (two points).`);
-      if (!recipe && !/(^|\n)\s*(to|path|targetTo|targetPath|arc|shake):/.test(body)) {
-        fail(`${shot}: static shot. Every shot in a story film moves.`);
+      if (!recipe && !/\blocked\s*:\s*true\b/.test(body) && !/(^|\n)\s*(to|path|targetTo|targetPath|arc|shake|handheld|impacts|rollTo|fovTo|focalLengthTo):/.test(body)) {
+        fail(`${shot}: no camera move. A deliberate locked composition must say locked: true and explain the hold in its note.`);
       }
       if (!/\bstage\s*:/.test(body)) fail(`${shot}: nothing on stage. Add \`stage: (t) => …\`.`);
       for (const fov of body.matchAll(/\bfov(?:To)?:\s*([\d.]+)/g)) {

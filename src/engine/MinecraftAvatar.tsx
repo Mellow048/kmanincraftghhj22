@@ -5,6 +5,7 @@ import type { AnimName, GaitName, Pose } from "./anim";
 import { blendPose, gaitPose, getPose } from "./anim";
 import type { FaceName } from "./face";
 import { blinkFaceTexture, faceTexture, headSideTexture } from "./face";
+import { groundedHip, metres, PX, shin, sole, trainer } from "./footing";
 import { clamp, TAU, wobble } from "./math";
 import type { Vec3 } from "./math";
 import { glowTex, pixelTex, stripeTex } from "./textures";
@@ -30,6 +31,8 @@ export type MinecraftAvatarProps = {
    * match the ground and a character never walks in place.
    */
   animDistance?: number;
+  /** Grounded walks only: keep the lowest shin/shoe on position.y as the knees bend. Not for a jump. */
+  plantFeet?: boolean;
 
   /**
    * Take the ARMS from this clip and everything else from `animation`.
@@ -103,63 +106,63 @@ export type MinecraftAvatarProps = {
   head?: React.ReactNode;
 };
 
-const PX = 1.8 / 32; // one Minecraft pixel in metres
 const HIP = 12 * PX;
 
 const GAITS: AnimName[] = ["walk", "run", "creep", "stagger"];
 
 const isGait = (name: AnimName): name is GaitName => GAITS.includes(name);
 
+// Keep canvas-backed textures lazy: inspecting a shot plan does not mount a renderer.
 const OUTFITS: Record<
   OutfitName,
-  { torso: string; arms: string; legs: string; torsoTex?: THREE.Texture; armTex?: THREE.Texture; legTex?: THREE.Texture }
+  { torso: string; arms: string; legs: string; torsoTex?: () => THREE.Texture; armTex?: () => THREE.Texture; legTex?: () => THREE.Texture }
 > = {
   gown: {
     torso: "#f3a03f",
     arms: "#f3a03f",
     legs: "#c9dcea",
-    torsoTex: stripeTex("#f3a03f", "#f8eeda", { count: 4 }),
-    armTex: stripeTex("#f3a03f", "#f8eeda", { count: 4 }),
-    legTex: pixelTex("#e8b78d"),
+    torsoTex: () => stripeTex("#f3a03f", "#f8eeda", { count: 4 }),
+    armTex: () => stripeTex("#f3a03f", "#f8eeda", { count: 4 }),
+    legTex: () => pixelTex("#e8b78d"),
   },
   pajamas: {
     torso: "#3f6fa8",
     arms: "#3f6fa8",
     legs: "#315a8c",
-    torsoTex: stripeTex("#3f6fa8", "#8fb7d8", { count: 4, horizontal: true }),
-    armTex: stripeTex("#3f6fa8", "#8fb7d8", { count: 4, horizontal: true }),
-    legTex: pixelTex("#315a8c"),
+    torsoTex: () => stripeTex("#3f6fa8", "#8fb7d8", { count: 4, horizontal: true }),
+    armTex: () => stripeTex("#3f6fa8", "#8fb7d8", { count: 4, horizontal: true }),
+    legTex: () => pixelTex("#315a8c"),
   },
   hoodie: {
     torso: "#2f7d4f",
     arms: "#2f7d4f",
     legs: "#20293a",
-    torsoTex: pixelTex("#2f7d4f", [1, 1], { jitter: 0.09 }),
-    armTex: pixelTex("#2b7048", [1, 1], { jitter: 0.09 }),
-    legTex: pixelTex("#20293a"),
+    torsoTex: () => pixelTex("#2f7d4f", [1, 1], { jitter: 0.09 }),
+    armTex: () => pixelTex("#2b7048", [1, 1], { jitter: 0.09 }),
+    legTex: () => pixelTex("#20293a"),
   },
   tee: {
     torso: "#d9cdb4",
     arms: "",
     legs: "#3c5878",
-    torsoTex: pixelTex("#d9cdb4", [1, 1], { jitter: 0.05 }),
-    legTex: pixelTex("#3c5878"),
+    torsoTex: () => pixelTex("#d9cdb4", [1, 1], { jitter: 0.05 }),
+    legTex: () => pixelTex("#3c5878"),
   },
   shadow: {
     torso: "#121826",
     arms: "#101522",
     legs: "#0d121d",
-    torsoTex: pixelTex("#141b2a", [1, 1], { jitter: 0.16 }),
-    armTex: pixelTex("#111726", [1, 1], { jitter: 0.16 }),
-    legTex: pixelTex("#0e131f", [1, 1], { jitter: 0.14 }),
+    torsoTex: () => pixelTex("#141b2a", [1, 1], { jitter: 0.16 }),
+    armTex: () => pixelTex("#111726", [1, 1], { jitter: 0.16 }),
+    legTex: () => pixelTex("#0e131f", [1, 1], { jitter: 0.14 }),
   },
   suit: {
     torso: "#20242e",
     arms: "#20242e",
     legs: "#161a22",
-    torsoTex: pixelTex("#20242e", [1, 1], { jitter: 0.07 }),
-    armTex: pixelTex("#1b1f28", [1, 1], { jitter: 0.07 }),
-    legTex: pixelTex("#161a22"),
+    torsoTex: () => pixelTex("#20242e", [1, 1], { jitter: 0.07 }),
+    armTex: () => pixelTex("#1b1f28", [1, 1], { jitter: 0.07 }),
+    legTex: () => pixelTex("#161a22"),
   },
 };
 
@@ -179,6 +182,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   animSpeed = 1,
   phase = 0,
   animDistance,
+  plantFeet = false,
   arms,
   blendTo,
   blend = 1,
@@ -243,9 +247,9 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       emissiveIntensity: faceGlow,
       emissiveMap: faceGlow > 0 ? faceTexture(face, { skin, hair }) : null,
     });
-    const torsoMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.torsoTex ?? null, roughness: 1 });
-    const armMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.armTex ?? null, roughness: 1 });
-    const legMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.legTex ?? null, roughness: 1 });
+    const torsoMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.torsoTex?.() ?? null, roughness: 1 });
+    const armMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.armTex?.() ?? null, roughness: 1 });
+    const legMat = new THREE.MeshStandardMaterial({ color: "#ffffff", map: kit.legTex?.() ?? null, roughness: 1 });
     if (outfit === "tee") {
       torsoMat.color = new THREE.Color(kit.torso);
       armMat.color = new THREE.Color(skin);
@@ -324,6 +328,9 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     pitch = clamp(-Math.atan2(dy, Math.hypot(dx, dz)), -0.7, 0.65);
   }
 
+  const pitchBody = pose.bodyPitch + breathWave * 0.004 * breathAmt;
+  const roll = pose.bodyRoll + shiftWave * 0.012 * shiftAmt;
+  const hip = plantFeet ? groundedHip(pose, [pitchBody, pose.bodyYaw, roll], !!shoes) : HIP + pose.bodyY;
   const shadowTex = glowTex();
 
   return (
@@ -336,12 +343,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       )}
 
       <group
-        position={[shiftWave * 0.005 * shiftAmt, HIP + pose.bodyY, 0]}
-        rotation={[
-          pose.bodyPitch + breathWave * 0.004 * breathAmt,
-          pose.bodyYaw,
-          pose.bodyRoll + shiftWave * 0.012 * shiftAmt,
-        ]}
+        position={[shiftWave * 0.005 * shiftAmt, hip, 0]}
+        rotation={[pitchBody, pose.bodyYaw, roll]}
       >
         {/* torso */}
         <group rotation={pose.torso}>
@@ -408,17 +411,17 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
             <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
           </mesh>
           <group position={[0, -6 * PX, 0]} rotation={pose.kneeR}>
-            <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
-              <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
+            <mesh castShadow receiveShadow position={metres(shin.center)} material={materials.legMat}>
+              <boxGeometry args={metres(shin.size)} />
             </mesh>
             {shoes ? (
               <>
-                <mesh castShadow position={[0, -5.1 * PX, 0.5 * PX]}>
-                  <boxGeometry args={[4.1 * PX, 2 * PX, 5.4 * PX]} />
+                <mesh castShadow position={metres(trainer.center)}>
+                  <boxGeometry args={metres(trainer.size)} />
                   <meshStandardMaterial color={shoes} emissive={shoes} emissiveIntensity={shoeGlow} roughness={0.6} />
                 </mesh>
-                <mesh position={[0, -5.9 * PX, 0.5 * PX]}>
-                  <boxGeometry args={[4.2 * PX, 0.6 * PX, 5.5 * PX]} />
+                <mesh position={metres(sole.center)}>
+                  <boxGeometry args={metres(sole.size)} />
                   <meshStandardMaterial color="#f4f4f4" roughness={0.8} />
                 </mesh>
               </>
@@ -432,17 +435,17 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
             <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
           </mesh>
           <group position={[0, -6 * PX, 0]} rotation={pose.kneeL}>
-            <mesh castShadow receiveShadow position={[0, -3 * PX, 0]} material={materials.legMat}>
-              <boxGeometry args={[3.6 * PX, 6 * PX, 4 * PX]} />
+            <mesh castShadow receiveShadow position={metres(shin.center)} material={materials.legMat}>
+              <boxGeometry args={metres(shin.size)} />
             </mesh>
             {shoes ? (
               <>
-                <mesh castShadow position={[0, -5.1 * PX, 0.5 * PX]}>
-                  <boxGeometry args={[4.1 * PX, 2 * PX, 5.4 * PX]} />
+                <mesh castShadow position={metres(trainer.center)}>
+                  <boxGeometry args={metres(trainer.size)} />
                   <meshStandardMaterial color={shoes} emissive={shoes} emissiveIntensity={shoeGlow} roughness={0.6} />
                 </mesh>
-                <mesh position={[0, -5.9 * PX, 0.5 * PX]}>
-                  <boxGeometry args={[4.2 * PX, 0.6 * PX, 5.5 * PX]} />
+                <mesh position={metres(sole.center)}>
+                  <boxGeometry args={metres(sole.size)} />
                   <meshStandardMaterial color="#f4f4f4" roughness={0.8} />
                 </mesh>
               </>

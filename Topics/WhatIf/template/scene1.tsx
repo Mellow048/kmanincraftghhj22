@@ -1,7 +1,7 @@
 import { cam, storyScene } from "../../engine";
-import { Classmate, Friend, Hero, ME, NORTH, Overhead, SPOT, Teacher, chestOf, faceOf, timing, wordAt } from "./kit";
+import { Classmate, Friend, Hero, ME, NORTH, Overhead, SPOT, Teacher, chestOf, ease, faceOf, ramp, timing, wordAt } from "./kit";
 
-const SEE = wordAt("1.what", "see");
+const SEE = wordAt("1.what", "see"), COULD = wordAt("1.me", "could");
 
 /**
  * HOOK. The question is the title, said over ONE picture of the power at work. Then the teller.
@@ -41,7 +41,7 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: SPOT.face(1, 2), dist: 2.0, to: 1.6, yaw: 172, pitch: 2, fov: 36 }),
       zone: "class",
       note: "TODO. Cut round to the teller, from the front: the one who can see it. A new face on the cut. Behind him the back wall of the room: the lens is inside it now.",
-      stage: () => <Hero position={ME} rotationY={NORTH} animation="sit" face="grin" gaze={0} />,
+      stage: t => <Hero position={ME} rotationY={NORTH} animation="sit" gaze={0} headYaw={.35 * (1 - ease(ramp(t, 0, Math.max(.08, COULD))))} face={t < COULD ? "uneasy" : "grin"} />,
     },
   ],
 });

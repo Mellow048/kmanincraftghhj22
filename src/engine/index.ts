@@ -1,5 +1,6 @@
 export * from "./anim";
 export * from "./blocks";
+export * from "./blocking";
 export * from "./cam";
 export * from "./Camera";
 export * from "./Captions";

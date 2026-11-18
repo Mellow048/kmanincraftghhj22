@@ -12,7 +12,7 @@ Topic: `Topics/Explainer`. Read `Topics/Explainer/SCRIPT.md` before writing a wo
 - Each `[cue]` line is **one stop of the camera**: the words heard while it flies to a thing and rests on it.
   One idea a line, 6–14 words. If a line has two things in it, it is two lines.
 - Each `# clip` is one recording. Record it to `public/audio/__ID__/raw/<clip>.mp3`,
-  then run `python3 scripts/narration.py build __ID__`.
+  then run `python3 scripts/narration.py build __ID__ --require-alignment`.
 - The last line is the subscribe line.
 - 110–250 words, 30–58 seconds.
 

@@ -1,14 +1,14 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { KID, wordClock } from "../../../Topics/Stories";
+import { KID, wordClock } from "../../../__TOPIC_FOLDER__";
 import timingJson from "./timing.json";
 
 /**
  * This film's own cast and places.
  *
- * Everything another Stories film could use is in the topic's pack, Topics/Stories
- * (catalogue with pictures: Topics/Stories/PACK.md). It is passed on from here, so a scene
+ * Everything another Stories film could use is in the topic's pack, __TOPIC_FOLDER__
+ * (catalogue with pictures: __TOPIC_FOLDER__/PACK.md). It is passed on from here, so a scene
  * imports only from "./kit". Build something new here ONLY if the pack does not have it; if a
  * second film could use it, put it in the pack instead.
  */
@@ -30,7 +30,7 @@ export {
   KidDrawing, KitchenCounter, KitchenGone, KitchenShelf, KitchenStove, KnockedPumpkin, PearlSign, PhotoBorder, Puddle, PumpkinHat, PumpkinPlayer, PumpkinView, Rain,
   // things
   BedBox, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Wisps,
-} from "../../../Topics/Stories";
+} from "../../../__TOPIC_FOLDER__";
 
 export const timing = timingJson as unknown as Timing;
 

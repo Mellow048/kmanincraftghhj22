@@ -33,7 +33,9 @@ jobs:
       - run: npm ci
 
       - name: Verify
-        run: npm run typecheck && npm run check
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+        run: npm run typecheck && npm run check && npm run test:direction && npm run rehearse -- "$COMPOSITION" --pre-render
 
       - name: Render
         env:
