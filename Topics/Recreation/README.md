@@ -52,17 +52,17 @@ The meme spells it HUSS. The owner spells it HUS, and so do the captions. The vo
 |---|---|---|
 | Length | 20 seconds | 90–120 seconds |
 | Clock | Typed seconds | The recorded voices (`docs/STORY-FILMS.md`): `narration.md` → clips → `timing.json` |
-| Voices | One | **Four**: the narrator and the main character are the same person and the same voice (`voice-03`); each friend has his own (`voice-07`, `voice-06`). One `# clip` per change of speaker. The recording tool allows ten calls a turn, so each voice is recorded as a few long takes and cut into its clips by the aligner (`narration.md` says how) |
+| Voices | One | **Three people, one actor, for now.** The narrator and the main character are the same person and the same voice (`voice-03`). The two friends should each have a voice of their own; in the first film only `voice-03` could be recorded, so both friends are `voice-03` shifted in pitch (+3 and −3.5 semitones, `takes.json`). Register two more voices with the owner and re-record the friends when he is there to choose them. One `# clip` per change of speaker. The recording tool allows about ten calls a turn, so each voice is recorded as a few long takes and cut into its clips by `scripts/split-takes.py` (`takes.json` says where; the chant's speed is set there too) |
 | Words | Over every shot | Over about half the film. The rest is action, held open with `wait` on the next clip and cut into pictures with `cut:` |
 | One picture | 1.5–4 s | **Never over 3 seconds**; under 1 second in the fast runs |
 | Text on screen | None | Captions for every spoken word, and block text built in the scene (`PixelText`) for signs and for the two meme lines |
-| Music | One written mood | A mood for each scene, written by `scripts/sound.py`: `party` behind a wall across the street, `grind` under the training and the job. No music under "Training." |
+| Music | One written mood | A mood for each turn of the story, written by `scripts/sound.py`. Two were written for this topic: `party` for the house across the street, `grind` for the chant, the training and the job. No music under "Training." and none under the rewind. One `snip` for every HUS; `rewind`, `clippers` and `hair` are in the effect list too |
 | Shaders | Off | On: `post: { shaders: true }` (the owner, 2026-11-17, for every new film) |
 
 ## Work order
 
 1. The idea, in the owner's layout (title, target duration, theme, seven scenes).
-2. `npm run new -- "<Title>" --topic recreation`
+2. `npm run new -- "<Title>" --topic recreation` ([`SCRIPT.md`](SCRIPT.md) and [`SHOTS.md`](SHOTS.md), which it names, are the short forms of this page)
 3. `narration.md`, the voices, `scripts/narration.py build <film> --tempo 1.3`
 4. `kit.tsx` (people, things), `world.tsx` (places), one scene file per scene.
 5. Stills of every picture, on contact sheets. Fix. Again.
