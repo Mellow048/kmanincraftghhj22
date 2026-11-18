@@ -21,9 +21,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.bro",
       // The friends, stacked in depth at the teller's gate, leaning in. Every one of them is mid-shout.
-      ...cam.push({ on: [0.2, 1.5, -1.0], dist: 3.2, to: 2.6, yaw: -4, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [0.2, 1.5, -1.0], dist: 4.4, to: 3.7, yaw: -14, pitch: 4, fov: 42 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Three friends stacked up the frame at the gate, all talking at once. The invitation is a wall of faces, and the teller is not in it yet.",
       stage: (t) => (
         <>
@@ -37,9 +37,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.yolo",
       // One line, delivered as gospel, with a beat of air. The empty street behind it says nobody is coming.
-      ...cam.push({ on: faceOf([0.6, 0, -0.9], 0.8), dist: 1.7, to: 1.4, yaw: 6, pitch: 2, fov: 34 }),
+      ...cam.push({ on: faceOf([0.6, 0, -0.9], 0.8), dist: 3.2, to: 2.7, yaw: 10, pitch: 3, fov: 38 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Right into the loudest friend's face as he says the line. The joke is that he is completely serious about it.",
       stage: () => (
         <>
@@ -51,9 +51,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.said",
       // The teller's answer, and the first real joke of the film: he agrees, which is why he is staying in.
-      ...cam.push({ on: faceOf(ME, 0.8), dist: 2.0, to: 1.6, yaw: -8, pitch: 3, fov: 36 }),
+      ...cam.push({ on: faceOf(ME, 0.8), dist: 3.0, to: 2.5, yaw: -10, pitch: 2, fov: 38 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The teller agreeing with them, sincerely, holding the bag of vegetables. He is not being difficult. He has a plan.",
       stage: (t) => (
         <>
@@ -66,9 +66,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.mum",
       // Cereal at eleven at night, called dinner. Straight down on the bowl so the joke is the SOUND of it.
-      ...cam.top({ on: [-0.2, 0.78, 400.5], height: 1.5, to: 1.15, spin: [4, -4], fov: 46 }),
+      ...cam.top({ on: [-0.2, 0.78, 400.5], height: 4.2, to: 3.5, spin: [6, -6], fov: 44 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "Looking down at a bowl of dry cereal on the kitchen table at night, with a fork beside it because nobody in this house knows what to do with it either.",
       stage: () => (
         <>
@@ -80,9 +80,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.fridge",
       // THE BEST JOKE IN THE FILM, and it needs to be a WIDE: the fridge open, and nothing in it.
-      ...cam.push({ on: [2.75, 0.9, 397.6], dist: 2.1, to: 1.7, yaw: 22, pitch: 2, fov: 40 }),
+      ...cam.push({ on: [2.75, 1.25, 397.8], dist: 3.8, to: 3.2, yaw: 18, pitch: 4, fov: 42 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "The fridge standing open with exactly one shelf and nothing on it. The line says the fridge contains a fridge; the picture has to be at least as empty as that.",
       stage: (t) => (
         <>
@@ -96,9 +96,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.onion",
       // THE CLUE THAT IS ALSO THE FUNNIEST SHOT: a kid at a party eating a raw onion like an apple.
-      ...cam.push({ on: chestOf([0.4, 0, -0.6], 0.8), dist: 2.2, to: 1.7, yaw: -18, pitch: 3, fov: 38 }),
+      ...cam.push({ on: chestOf([0.4, 0, -0.6], 0.8), dist: 3.4, to: 2.9, yaw: -20, pitch: 5, fov: 40 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "A kid at a party with a whole raw onion in both hands, mid-bite, entirely happy. Played straight: nobody in the frame thinks this is strange.",
       stage: (t) => (
         <>
@@ -113,9 +113,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.dog",
       // The dog eats better than the children, and the dog eats grass. Low angle so the dog is a giant.
-      ...cam.push({ on: [-0.4, 0.35, 0.4], dist: 2.0, to: 1.5, yaw: 12, pitch: -12, fov: 44 }),
+      ...cam.push({ on: [-0.4, 0.45, 0.4], dist: 3.0, to: 2.5, yaw: 16, pitch: -10, fov: 44 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Low angle on the dog, nose down in the grass, with a plate beside it that has been licked clean. The dog is eating better than anybody.",
       stage: () => (
         <>
@@ -129,9 +129,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.vending",
       // THE VENDING MACHINE, lit blue in the middle of a warm street. The town's only restaurant.
-      ...cam.push({ on: [8.0, 1.3, 5.0], dist: 3.4, to: 2.9, yaw: -6, pitch: 2, fov: 42 }),
+      ...cam.push({ on: [8.0, 1.4, 5.0], dist: 4.4, to: 3.7, yaw: -12, pitch: 4, fov: 42 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The vending machine standing on the pavement in blue light, the only cold light in the film so far, and the only place in this town you can get food.",
       stage: (t) => (
         <>
@@ -143,9 +143,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.queue",
       // A QUEUE for it. Six of them, standing in a line up the street, all facing one blue box.
-      ...cam.truck({ on: [8.0, 1.1, 6.6], dist: 3.0, yaw: 16, pitch: 1, fov: 44, by: [-2.6, 0, 0] }),
+      ...cam.truck({ on: [8.0, 1.4, 6.6], dist: 5.0, yaw: 14, pitch: 5, fov: 44, by: [-3.0, 0, 0] }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The queue that does not move: six people in a line up the street, all facing the machine. The camera trucks along them so the length of the line is the punchline.",
       stage: () => (
         <>
@@ -161,9 +161,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.ask",
       // The question, asked to camera. The teller in the middle of the street, hands out, nobody answering.
-      ...cam.push({ on: faceOf(ME, 0.8), dist: 2.3, to: 1.8, yaw: 0, pitch: 3, fov: 38 }),
+      ...cam.push({ on: faceOf(ME, 0.8), dist: 3.2, to: 2.7, yaw: 4, pitch: 3, fov: 38 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The teller asking the question straight down the lens. This is the line the film is built on, so the face has to be the only thing in the frame.",
       stage: (t) => (
         <>
@@ -175,9 +175,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.same",
       // Everybody gives the same answer, so: the same shrug, three times, in three depths.
-      ...cam.push({ on: [0.4, 1.4, -1.6], dist: 3.6, to: 3.0, yaw: 8, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [0.4, 1.5, -1.6], dist: 5.2, to: 4.4, yaw: 12, pitch: 7, fov: 44 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Three villagers in a row up the street, all doing the identical shrug at the same moment. The sameness is the clue.",
       stage: (t) => (
         <>
@@ -190,9 +190,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.time",
       // The teller's theory, and it is wrong. He says it in the kitchen, knife in hand, mid-work.
-      ...cam.push({ on: chestOf([0, 0, 400.2], 0.8), dist: 2.1, to: 1.7, yaw: -14, pitch: 5, fov: 38 }),
+      ...cam.push({ on: chestOf([0, 0, 400.2], 0.8), dist: 3.4, to: 2.9, yaw: -16, pitch: 5, fov: 40 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "The teller at his board, knife up, saying what he thinks of them. He is going to be wrong, and the frame should make him look confident.",
       stage: (t) => (
         <>
@@ -204,9 +204,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.showed",
       // The friend's kitchen. The lens goes in through the doorway and the room is a museum.
-      ...cam.push({ on: [0, 1.4, 399], dist: 3.4, to: 2.8, yaw: 0, pitch: 3, fov: 46 }),
+      ...cam.push({ on: [0, 1.4, 399.2], dist: 4.4, to: 3.8, yaw: 0, pitch: 6, fov: 44 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "The friend walking into his own kitchen and waving at it like a showroom. Nothing in this room has ever been used.",
       stage: () => (
         <>
@@ -217,9 +217,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.brand",
       // Everything still wrapped. Close on the counter with the plastic still on it.
-      ...cam.push({ on: [-1.4, 0.98, 397.5], dist: 1.9, to: 1.5, yaw: -16, pitch: 14, fov: 42 }),
+      ...cam.push({ on: [-1.4, 1.3, 397.6], dist: 3.6, to: 3.0, yaw: -18, pitch: 10, fov: 42 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "Close on a brand new counter with the protective film still on it, still creased in the corners. Not used once.",
       stage: () => (
         <>
@@ -231,9 +231,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.never",
       // A brand-new, never-used pan, still in its box, hanging on a wall. The hinge of the whole film.
-      ...cam.push({ on: [-1, 1.55, 397.15], dist: 1.6, to: 1.25, yaw: 2, pitch: 4, fov: 38 }),
+      ...cam.truck({ on: [-1, 1.5, 397.4], dist: 3.5, yaw: -8, pitch: 4, fov: 42, by: [2.6, 0, 0] }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "A pan still in its cardboard, hung on a nail at eye level, because that is where you put a thing you own and do not use. The single most important object in the film after the knife.",
       stage: () => (
         <>
@@ -246,9 +246,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.every",
       // Every house on the street, and every one is the same. The camera walks the fronts.
-      ...cam.truck({ on: [-2.0, 1.3, -3.2], dist: 4.4, yaw: 178, pitch: 2, fov: 46, by: [5.0, 0, 0] }),
+      ...cam.truck({ on: [-2.0, 1.8, -3.2], dist: 9.0, yaw: 12, pitch: 14, fov: 48, by: [6.0, 0, 1.0] }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The camera trucks along the fronts of five houses and every single kitchen window shows the same unused counter. Saying it once with a picture instead of five times with words.",
       stage: () => (
         <>
@@ -260,9 +260,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.school",
       // Four party classes and no cooking class. The school board, in one picture.
-      ...cam.push({ on: [0, 1.7, -0.4], dist: 3.6, to: 3.0, yaw: 0, pitch: -2, fov: 48 }),
+      ...cam.push({ on: [0, 1.7, -0.4], dist: 6.2, to: 5.3, yaw: -10, pitch: -4, fov: 46 }),
       zone: "village",
-      look: "overworld-day",
+      look: "overworld-sunset",
       note: "A school noticeboard with four class names on it and not one of them is cooking. Read as a joke, not as information.",
       stage: (t) => (
         <>
@@ -276,9 +276,9 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.name",
       // THE QUESTION, NAMED. He is alone in the street in the rain, and the frame is just him and the empty town.
-      ...cam.push({ on: faceOf(ME, 0.8), dist: 2.4, to: 1.7, yaw: 4, pitch: 5, fov: 36 }),
+      ...cam.push({ on: faceOf(ME, 0.8), dist: 3.0, to: 2.5, yaw: 6, pitch: 4, fov: 38 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The question said out loud, to nobody, in the middle of an empty street. This line costs the viewer the most to leave after, so nothing else is in frame.",
       stage: () => (
         <>

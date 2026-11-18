@@ -1,7 +1,7 @@
 import type React from "react";
 import { Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot } from "../../engine";
-import { Bell, Hut, LampPost, Lantern, Stall, Well } from "../../../Topics/InThisTown";
-import { PLACE } from "./kit";
+import { Bell, Hut, LampPost, Lantern, LanternLine, LanternPost, Stall, Well } from "../../../Topics/InThisTown";
+import { Hero, PLACE, Player, ROBE, Villager } from "./kit";
 
 /**
  * THE TOWN, in four zones. A shot names the zone it plays in, and the others are not drawn.
@@ -43,6 +43,20 @@ const Village: React.FC = () => (
     <Well position={PLACE.well} />
     <Stall position={PLACE.stall} />
 
+    {/* THE TOWN IS AT A PARTY. A crowd in the world, not only in a shot's stage, so a wide shot or a
+        shot of a prop still has the premise behind it. The reference films fill the frame this way. */}
+    {([
+      [-8.5, 1.5, ROBE.red], [-6.2, 3.4, ROBE.blue], [-4.0, -1.6, ROBE.white],
+      [-2.6, 4.2, ROBE.farmer], [0.8, 3.8, ROBE.brown], [2.4, -1.8, ROBE.friend],
+      [4.6, 2.2, ROBE.red], [6.8, -1.2, ROBE.blue], [9.2, 3.0, ROBE.white],
+      [-11.5, -1.8, ROBE.farmer], [11.8, 1.2, ROBE.brown], [1.2, -3.0, ROBE.friend],
+    ] as Array<[number, number, string]>).map(([x, z, robe], i) => (
+      <Villager key={i} position={[x, 0, z]} robe={robe} phase={i * 0.8} walk={0.18} />
+    ))}
+    <Player who={2} position={[-5.0, 0, 6.4]} rotationY={0.4} animation="idle" face="grin" />
+    <Player who={7} position={[3.4, 0, 7.2]} rotationY={-0.6} animation="idle" face="laugh" />
+    <Player who={9} position={[10.4, 0, -1.6]} rotationY={1.0} animation="idle" face="smile" />
+
     {/* THE VENDING MACHINE. The town's only restaurant, and there is a queue for it. */}
     <Vox kind="stoneBrick" position={[PLACE.vending[0], 0.9, PLACE.vending[2]]} size={[1.4, 1.8, 0.9]} />
     <Vox kind="wool" tint="#2f6fb8" position={[PLACE.vending[0], 1.35, PLACE.vending[2] + 0.47]} size={[1.1, 1.0, 0.04]} />
@@ -81,9 +95,31 @@ const Village: React.FC = () => (
     <LampPost position={[-16, 0, 4.6]} seed={5} />
     <Clouds y={48} center={[0, 0, 0]} />
 
-    <GodRay position={[-3, 6.5, -3]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.06} />
-    <LightPool position={[0, 0.07, 1.5]} width={11} depth={9} color="#fff2c8" opacity={0.14} />
-    <Glow position={[0, 2.3, -2.5]} size={1.6} color="#ffe08a" opacity={0.35} />
+    {/* THE PARTY. A night street is not lit by one lamp: the approved night film
+        (`nobody-looked-at-the-moon`) strings lanterns over every part of the square. Every pool of
+        light here is also a place a camera can stand and still see the people in it. */}
+    <LanternLine from={[-7.2, 4.7, -2.4]} to={[7.2, 4.7, -2.4]} count={7} sag={0.9} lit={[0, 2, 4, 6]} light={30} seed={7} />
+    <LanternLine from={[-7.2, 4.4, 5.8]} to={[7.2, 4.4, 5.8]} count={7} sag={0.8} lit={[1, 3, 5]} light={24} seed={11} />
+    <LanternLine from={[-3.0, 4.2, -4.6]} to={[3.0, 4.2, -4.6]} count={3} sag={0.45} lit={[0, 2]} light={22} seed={13} />
+    <LanternPost position={[-11.5, 0, -0.6]} light={22} seed={5} />
+    <LanternPost position={[11.5, 0, -0.6]} light={22} seed={6} />
+    <LanternPost position={[-19, 0, 4.8]} turn={Math.PI} light={18} seed={8} />
+    <LanternPost position={[19, 0, 4.8]} turn={Math.PI} light={18} seed={9} />
+    <Lantern position={[1.05, 2.74, 9.22]} chain={0.2} light={14} reach={9} seed={21} />
+    <Lantern position={[-4.9, 0.9, 5.8]} chain={0.05} light={9} reach={6} seed={31} />
+    <Lantern position={[6.4, 2.62, -2.05]} chain={0.2} light={10} reach={6} seed={17} />
+
+    {/* warm pools on the ground: the street reads as a room the whole town is inside of */}
+    <pointLight position={[0, 3.4, 1.2]} color="#ffc478" intensity={34} distance={16} decay={1.7} />
+    <pointLight position={[-9, 3.0, -1.0]} color="#ffb45c" intensity={22} distance={12} decay={1.8} />
+    <pointLight position={[9, 3.0, 1.0]} color="#ffb45c" intensity={22} distance={12} decay={1.8} />
+
+    <GodRay position={[-3, 6.5, -3]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.09} />
+    <LightPool position={[0, 0.07, 1.5]} width={13} depth={10} color="#ffd798" opacity={0.22} />
+    <LightPool position={[-9, 0.07, 0.0]} width={7} depth={7} color="#ffd798" opacity={0.2} />
+    <LightPool position={[9, 0.07, 0.0]} width={7} depth={7} color="#ffd798" opacity={0.2} />
+    <Glow position={[0, 2.7, -2.5]} size={3.2} color="#ffe08a" opacity={0.3} />
+    <Glow position={[0, 2.7, 5.4]} size={2.8} color="#ffc478" opacity={0.24} />
     <Dust position={[0, 2.2, 1]} area={[30, 4, 14]} count={70} size={0.045} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
   </>
 );
@@ -97,17 +133,29 @@ const Village: React.FC = () => (
  */
 const HOME = { w: 3.5, d: 3.0, h: 3.0 };
 
-const HomeKitchen: React.FC<{ night?: boolean }> = ({ night }) => (
+/**
+ * Shots of a thing and not a person still need the teller in the room: `OWNER.md` rule B says come
+ * back to him at least every third shot, and an empty kitchen reads as a lighting fault. These are the
+ * cues whose `stage` is only props, so the world supplies him for them and only for them (a shot that
+ * already stages him does not get a second one).
+ */
+const FILL_HOME = new Set([
+  "1.chop", "2.mum", "2.fridge", "3.brand", "3.never", "4.cannot", "5.but", "5.flipped",
+  "5.ceiling", "6.slow", "6.faster", "6.blade", "6.again", "6.omelette", "6.calendar", "9.fridge",
+]);
+const FILL_RESTAURANT = new Set(["7.hands"]);
+
+const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean }> = ({ night, fill }) => (
   <group position={PLACE.home2}>
-    {/* floor, ceiling, and the four walls. The south wall has a door gap so the lens can live outside it. */}
-    <Vox kind="planks" tint="#c9a06a" position={[0, -0.05, 0]} size={[HOME.w * 2, 0.1, HOME.d * 2]} />
-    <Vox kind="stone" position={[0, HOME.h, 0]} size={[HOME.w * 2, 0.12, HOME.d * 2]} />
+    {/* AN OPEN SET. A zone is exclusive, so the village is not drawn while this is. Sealing the room
+        on all four sides only ever put the lens inside plaster (and its ceiling blocked every top
+        shot). North wall and two short side returns give the kitchen its shape; the front is open. */}
+    <Vox kind="planks" tint="#c9a06a" position={[0, -0.05, 0]} size={[18, 0.1, 16]} />
     <Vox kind="wool" tint="#efe6d2" position={[0, HOME.h / 2, -HOME.d]} size={[HOME.w * 2, HOME.h, 0.2]} />
-    <Vox kind="wool" tint="#e8dfc8" position={[-HOME.w, HOME.h / 2, 0]} size={[0.2, HOME.h, HOME.d * 2]} />
-    <Vox kind="wool" tint="#e8dfc8" position={[HOME.w, HOME.h / 2, 0]} size={[0.2, HOME.h, HOME.d * 2]} />
-    {/* south: two stubs and a doorway the lens stands in */}
-    <Vox kind="wool" tint="#efe6d2" position={[-2.1, HOME.h / 2, HOME.d]} size={[2.8, HOME.h, 0.2]} />
-    <Vox kind="wool" tint="#efe6d2" position={[2.1, HOME.h / 2, HOME.d]} size={[2.8, HOME.h, 0.2]} />
+    <Vox kind="wool" tint="#e8dfc8" position={[-HOME.w, HOME.h / 2, -1.4]} size={[0.2, HOME.h, 3.2]} />
+    <Vox kind="wool" tint="#e8dfc8" position={[HOME.w, HOME.h / 2, -1.4]} size={[0.2, HOME.h, 3.2]} />
+    {/* a low beam in front, so a wide shot still reads as being inside a room */}
+    <Vox kind="darkPlanks" position={[0, 2.86, 2.9]} size={[7.0, 0.16, 0.16]} />
 
     {/* THE COUNTER, along the north wall. Top at y 0.92. */}
     <Vox kind="planks" position={[0, 0.45, -2.55]} size={[6.0, 0.9, 0.8]} />
@@ -142,6 +190,9 @@ const HomeKitchen: React.FC<{ night?: boolean }> = ({ night }) => (
     ))}
 
     {/* LIGHT. Two warm lamps, and the stove. A kitchen with one LightPool and no point light renders black. */}
+    {fill && (
+      <Hero position={[0.15, 0, 0.95]} rotationY={0.12} animation="idle" face="calm" />
+    )}
     <pointLight position={[0, 2.55, 0.5]} color="#ffe8c0" intensity={night ? 26 : 30} distance={9} decay={1.7} />
     <pointLight position={[0.6, 2.4, -2.2]} color="#fff0d0" intensity={14} distance={6} decay={2} />
     <Glow position={[0, 2.3, 0.4]} size={1.5} color="#ffe8c0" opacity={0.2} />
@@ -155,17 +206,16 @@ const HomeKitchen: React.FC<{ night?: boolean }> = ({ night }) => (
  */
 const REST = { w: 6.0, d: 4.5, h: 3.4 };
 
-const Restaurant: React.FC = () => (
+const Restaurant: React.FC<{ fill?: boolean }> = ({ fill }) => (
   <group position={PLACE.restaurant}>
-    <Vox kind="stoneBrick" position={[0, -0.05, 0]} size={[REST.w * 2, 0.1, REST.d * 2]} />
-    <Vox kind="stone" position={[0, REST.h, 0]} size={[REST.w * 2, 0.12, REST.d * 2]} />
+    <Vox kind="stoneBrick" position={[0, -0.05, 0]} size={[24, 0.1, 20]} />
     <Vox kind="stoneBrick" tint="#c8bda8" position={[0, REST.h / 2, -REST.d]} size={[REST.w * 2, REST.h, 0.2]} />
-    <Vox kind="stoneBrick" tint="#c8bda8" position={[-REST.w, REST.h / 2, 0]} size={[0.2, REST.h, REST.d * 2]} />
-    <Vox kind="stoneBrick" tint="#c8bda8" position={[REST.w, REST.h / 2, 0]} size={[0.2, REST.h, REST.d * 2]} />
-    {/* south wall: the pass, a 5 m window onto the dining room, and the door the friends come through */}
-    <Vox kind="stoneBrick" tint="#c8bda8" position={[-3.4, REST.h / 2, REST.d]} size={[5.2, REST.h, 0.2]} />
-    <Vox kind="stoneBrick" tint="#c8bda8" position={[3.4, REST.h / 2, REST.d]} size={[5.2, REST.h, 0.2]} />
-    <Vox kind="planks" tint="#c9a06a" position={[0, 2.9, REST.d]} size={[1.7, 0.2, 0.24]} />
+    <Vox kind="stoneBrick" tint="#c8bda8" position={[-REST.w, REST.h / 2, -2.2]} size={[0.2, REST.h, 4.6]} />
+    <Vox kind="stoneBrick" tint="#c8bda8" position={[REST.w, REST.h / 2, -2.2]} size={[0.2, REST.h, 4.6]} />
+    {/* the pass beam: the front is open, so a lens can stand in the dining room and see the line */}
+    <Vox kind="planks" tint="#c9a06a" position={[0, 3.1, REST.d]} size={[5.0, 0.2, 0.24]} />
+    <Vox kind="stoneBrick" tint="#c8bda8" position={[-4.7, 1.0, REST.d]} size={[2.4, 2.0, 0.2]} />
+    <Vox kind="stoneBrick" tint="#c8bda8" position={[4.7, 1.0, REST.d]} size={[2.4, 2.0, 0.2]} />
 
     {/* THE HOT LINE along the north wall: six burners, all of them on. */}
     <Vox kind="stoneBrick" tint="#4a4a52" position={[0, 0.45, -3.6]} size={[11.0, 0.9, 0.9]} />
@@ -193,6 +243,9 @@ const Restaurant: React.FC = () => (
       <Vox key={i} kind="wool" tint="#e8e2d2" position={[4.4 + dx, 2.06, -3.9]} size={[0.4, 0.24, 0.3]} />
     ))}
 
+    {fill && (
+      <Hero position={[-1.2, 0, -0.8]} rotationY={0.2} animation="idle" face="calm" />
+    )}
     <pointLight position={[0, 3.0, -1.0]} color="#ffd9a8" intensity={34} distance={12} decay={1.7} />
     <pointLight position={[0, 2.9, 2.6]} color="#fff0d0" intensity={18} distance={8} decay={2} />
     <GodRay position={[0, 3.3, -3.0]} rotation={[0, 0, 0]} width={6} height={5} color="#ffb070" opacity={0.1} />
@@ -203,6 +256,7 @@ const Restaurant: React.FC = () => (
 
 export const World: React.FC = () => {
   const active = useActiveShot();
+  const cue = active?.shot.cue ?? "";
   const night = (active?.shot.look ?? "overworld-day") === "overworld-night";
   return (
     <>
@@ -210,13 +264,13 @@ export const World: React.FC = () => {
         <Village />
       </Zone>
       <Zone name="home">
-        <HomeKitchen night={night} />
+        <HomeKitchen night={night} fill={FILL_HOME.has(cue)} />
       </Zone>
       <Zone name="room">
         <Bedroom />
       </Zone>
       <Zone name="restaurant">
-        <Restaurant />
+        <Restaurant fill={FILL_RESTAURANT.has(cue)} />
       </Zone>
     </>
   );
@@ -225,11 +279,10 @@ export const World: React.FC = () => {
 /** HIS BEDROOM. 5 x 5, one window, no south wall: the lens lives in the gap. */
 const Bedroom: React.FC = () => (
   <group position={PLACE.room}>
-    <Vox kind="planks" tint="#a8834f" position={[0, -0.05, 0]} size={[10, 0.1, 10]} />
-    <Vox kind="stone" position={[0, 2.9, 0]} size={[10, 0.12, 10]} />
+    <Vox kind="planks" tint="#a8834f" position={[0, -0.05, 0]} size={[20, 0.1, 20]} />
     <Vox kind="wool" tint="#9fb4c8" position={[0, 1.45, -5]} size={[10, 2.9, 0.2]} />
-    <Vox kind="wool" tint="#a8bccd" position={[-5, 1.45, 0]} size={[0.2, 2.9, 10]} />
-    <Vox kind="wool" tint="#a8bccd" position={[5, 1.45, 0]} size={[0.2, 2.9, 10]} />
+    <Vox kind="wool" tint="#a8bccd" position={[-5, 1.45, -2.6]} size={[0.2, 2.9, 4.8]} />
+    <Vox kind="wool" tint="#a8bccd" position={[5, 1.45, -2.6]} size={[0.2, 2.9, 4.8]} />
     {/* bed */}
     <Vox kind="planks" tint="#8a6a44" position={[-1.6, 0.28, -3.4]} size={[2.0, 0.56, 3.0]} />
     <Vox kind="wool" tint="#c8402f" position={[-1.6, 0.62, -3.4]} size={[1.9, 0.12, 2.9]} />

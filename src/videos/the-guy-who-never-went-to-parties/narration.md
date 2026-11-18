@@ -61,7 +61,9 @@ are treated as grave matters.
 
 ## Rules it is built to
 
-- One teller, first person, past tense. About 255 words a minute, no gaps.
+- One teller, first person, past tense. About 238 words a minute, with a third of a second of air
+  before each new step of the story (`OWNER.md`, the pace he approved on the iron golem film).
+  254 words a minute with no gaps was part of why this film's first render was rejected.
 - Each `[cue]` line is **one shot**. Cut on the noun. 5–12 words.
 - First line starts "In this town". Last line is the subscribe line.
 - Short cut: 14 beats, 250–520 words, one to two minutes.
@@ -77,7 +79,7 @@ are treated as grave matters.
 [1.cook]      I wanted to be a cook.
 [1.chop]      So while they were dancing, I was at home. Chopping.
 
-# clip 02-jokes
+# clip 02-jokes wait 0.35
 [2.bro]       Every night my friends called me. Bro. Come on.
 [2.yolo]      You only live once.
 [2.said]      I said I know. That is exactly why I am staying in.
@@ -88,7 +90,7 @@ are treated as grave matters.
 [2.vending]   The town had one restaurant. It was a vending machine.
 [2.queue]     There was a queue for it.
 
-# clip 03-the-kitchens
+# clip 03-the-kitchens wait 0.35
 [3.ask]       So I asked everybody the same question. Why does nobody here cook?
 [3.same]      Everybody gave me the same answer.
 [3.time]      They said nobody had the time. I thought they were lazy.
@@ -99,7 +101,7 @@ are treated as grave matters.
 [3.school]    The school had no cooking class. It had four party classes.
 [3.name]      So why has nobody in this town ever cooked anything?
 
-# clip 04-the-answer
+# clip 04-the-answer wait 0.35
 [4.lazy]      I thought they were lazy. I was wrong.
 [4.truth]     They had never eaten cooked food. Not one of them. Not ever.
 [4.cannot]    You cannot want a thing you have never had.
@@ -108,7 +110,7 @@ are treated as grave matters.
 [4.told]      He asked me what it was. I said soup.
 [4.whole]     The whole party stopped. For a bowl of soup.
 
-# clip 05-the-fail
+# clip 05-the-fail wait 0.35
 [5.but]       But I still could not cook. Not at first.
 [5.egg]       I tried to fry an egg.
 [5.flipped]   I flipped it. It went up. It kept going.
@@ -116,7 +118,7 @@ are treated as grave matters.
 [5.dog2]      It landed on the floor and the dog got there first.
 [5.almost]    I stood in my kitchen, alone, and I said it out loud. Almost.
 
-# clip 06-the-training
+# clip 06-the-training wait 0.35
 [6.trained]   So I trained. Properly. Like an athlete.
 [6.slow]      At first I chopped slowly. One onion. Then another.
 [6.faster]    Then faster. Then I found the rhythm.
@@ -129,7 +131,7 @@ are treated as grave matters.
 [6.calendar]  My calendar went past like a flip book.
 [6.months]    Months went by. They kept dancing. I kept chopping.
 
-# clip 07-the-job
+# clip 07-the-job wait 0.35
 [7.walked]    So I walked into the biggest restaurant in town.
 [7.door]      It was a vending machine with a door.
 [7.asked]     I asked for a job anyway.
@@ -141,7 +143,7 @@ are treated as grave matters.
 [7.smoke]     Somebody set something on fire behind me. I did not look.
 [7.watch]     There was a lot of it I did not see. I was working.
 
-# clip 08-the-reunion
+# clip 08-the-reunion wait 0.35
 [8.door]      Then the door opened and my old friends walked in.
 [8.dressed]   Still dressed for a party. Still not eating.
 [8.looked]    One of them looked at the kitchen. Then at me.
@@ -153,7 +155,7 @@ are treated as grave matters.
 [8.onions]    Then I went back to the onions.
 [8.chant]     Huh huh huh. Huh huh huh.
 
-# clip 09-outro
+# clip 09-outro wait 0.35
 [9.now]       Now the parties start at my restaurant.
 [9.line]      The queue goes down the street. The dog is always first.
 [9.fridge]    My fridge is full.

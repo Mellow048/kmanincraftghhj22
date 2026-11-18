@@ -181,6 +181,22 @@ export const LOOKS: Record<LookPreset, Preset> = {
     key: { color: "#ffcf9a", intensity: 2.4, position: [3, 3.5, 2], shadow: true },
     fills: [{ color: "#ff9b4a", intensity: 10, position: [-1.5, 1.4, -1], distance: 5 }],
   },
+  /**
+   * A bright, warm room whose sun FOLLOWS the camera. Unlike `warm-room` (whose key light sits at the
+   * world origin) this one still works on a set built 400 m from origin, and with the ceiling off it
+   * lights the whole interior instead of one black corner. Built for the parties film's kitchen act.
+   */
+  "kitchen-day": {
+    bg: "#e7d2ac",
+    fog: "#e7d2ac",
+    fogDensity: 0.0035,
+    ambient: { color: "#ffffff", intensity: 0.82 },
+    hemi: { sky: "#fff3dc", ground: "#8a6a44", intensity: 1.0 },
+    key: { color: "#ffe2b0", intensity: 3.2, position: [-6, 10, 5], shadow: true },
+    fills: [],
+    follow: true,
+    shadowSpan: 14,
+  },
   void: {
     bg: "#000000",
     fog: "#000000",

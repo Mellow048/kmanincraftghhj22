@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import type { Vec3 } from "../../engine";
-import { CHILD, Hero, PLACE, Player, ROBE, Villager, Vox, chestOf, faceOf, timing } from "./kit";
+import { B, CHILD, Hero, PLACE, Player, ROBE, Villager, Vox, chestOf, faceOf, timing } from "./kit";
 
 /**
  * BEAT 1 — THE HOOK (0:00–0:11).
@@ -22,9 +22,9 @@ export const scene1 = storyScene(timing, {
       cue: "1.party",
       // The whole town at once, and it must read as a party in one second: people stacked into the depth of
       // the street, lanterns, and the teller's back at the bottom of the frame walking out of it.
-      ...cam.push({ on: [0, 2.2, -1.0], dist: 7.2, to: 6.2, yaw: 2, pitch: 9, fov: 46 }),
+      ...cam.push({ on: [0, 1.9, -0.5], dist: 12.0, to: 10.0, yaw: 6, pitch: 12, fov: 48 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The rule of the town as one picture: everybody in the street dancing under lanterns, and the teller in the foreground walking the other way with a bag. It has to read in one second.",
       stage: (t) => (
         <>
@@ -45,9 +45,9 @@ export const scene1 = storyScene(timing, {
       cue: "1.home",
       // Nobody leaves. The same crowd, but the camera is now low and pointing back at the house fronts: every
       // window is lit and every door is open, and nobody is going in.
-      ...cam.truck({ on: [-1.0, 1.4, -2.0], dist: 4.0, yaw: 176, pitch: 3, fov: 44, by: [2.4, 0, 0] }),
+      ...cam.truck({ on: [-1.0, 1.5, -2.0], dist: 6.4, yaw: -20, pitch: 9, fov: 46, by: [3.2, 0, 1.2] }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Nobody ever went home: the camera tracks past the house fronts at a low angle, every window lit, every door open, so the street reads as inside-out.",
       stage: (t) => (
         <>
@@ -60,9 +60,9 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.dinner",
       // THE JOKE THAT SETS THE FILM. A long table in the street with a party on it and not one plate of food.
-      ...cam.top({ on: [0.4, 0.74, 0.8], height: 3.6, to: 2.9, spin: [-6, 6], fov: 50 }),
+      ...cam.top({ on: [0.4, 0.74, 0.8], height: 5.4, to: 4.3, spin: [-8, 8], fov: 44 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Straight down on the party's table: bowls, glasses, confetti, a speaker, a birthday cake nobody has cut, and no food at all. The viewer should notice what is missing before the line says it.",
       stage: () => (
         <>
@@ -83,9 +83,9 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.me",
       // The teller in the crowd, not dancing, holding a bag of vegetables. Everyone around him is moving.
-      ...cam.push({ on: chestOf(ME, 0.8), dist: 2.6, to: 2.0, yaw: 4, pitch: 4, fov: 40 }),
+      ...cam.push({ on: chestOf(ME, 0.8), dist: 3.6, to: 3.0, yaw: -18, pitch: 5, fov: 40 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Cut in to the teller standing still in a moving crowd, holding a paper bag of vegetables like a briefcase. The one person in the frame not at the party.",
       stage: (t) => (
         <>
@@ -102,9 +102,9 @@ export const scene1 = storyScene(timing, {
       cue: "1.normal",
       // Everyone thinks this is normal, so: a two-shot of two villagers mid-dance, and NOTHING else in frame.
       // No food, no table, no plates. The normality is the joke.
-      ...cam.push({ on: [0.6, 1.5, -1.2], dist: 3.0, to: 2.5, yaw: -8, pitch: 3, fov: 42 }),
+      ...cam.orbit({ on: [0.6, 1.5, -1.2], dist: 5.2, distTo: 4.4, yaw: -32, yawTo: 16, pitch: 7, fov: 44 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "Two villagers dancing badly, entirely unbothered, with an empty street around them. No food anywhere. The town thinks this is normal.",
       stage: (t) => (
         <>
@@ -118,24 +118,24 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.cook",
       // The dream, said as a fact: he is now in his own bedroom under the poster of a chef, holding a knife.
-      ...cam.push({ on: chestOf([0, 0, 0], 0.8), dist: 2.4, to: 1.9, yaw: 10, pitch: 6, fov: 38 }),
+      ...cam.push({ on: chestOf(B(0, 0, 0), 0.8), dist: 3.7, to: 3.1, yaw: -12, pitch: 8, fov: 40 }),
       zone: "room",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "The teller alone in his bedroom under a hand-drawn poster of a chef, holding a kitchen knife like a sword. The want, in one picture.",
       stage: () => (
         <>
-          <Hero position={[0, 0, 0]} rotationY={0.2} animation="idle" face="brave" gaze={0} />
-          <Vox kind="wool" tint="#c8ced4" position={[0.34, 0.92, 0.24]} size={[0.05, 0.26, 0.05]} />
-          <Vox kind="wool" tint="#8a6a44" position={[0.34, 0.76, 0.24]} size={[0.09, 0.12, 0.06]} />
+          <Hero position={B(0, 0, 0)} rotationY={0.2} animation="idle" face="brave" gaze={0} />
+          <Vox kind="wool" tint="#c8ced4" position={B(0.34, 0.92, 0.24)} size={[0.05, 0.26, 0.05]} />
+          <Vox kind="wool" tint="#8a6a44" position={B(0.34, 0.76, 0.24)} size={[0.09, 0.12, 0.06]} />
         </>
       ),
     },
     {
       cue: "1.chop",
       // THE HOOK'S PAYOFF: the first chop, close, in the kitchen, on the board. The film's central object.
-      ...cam.push({ on: [-0.15, 0.92, 400.25], dist: 1.5, to: 1.15, yaw: -26, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [0, 1.15, 400.3], dist: 3.5, to: 3.0, yaw: -24, pitch: 14, fov: 40 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "Close on the cutting board: one onion, a knife coming down, and his hands. The object the whole film is about, in its own light.",
       stage: (t) => (
         <>

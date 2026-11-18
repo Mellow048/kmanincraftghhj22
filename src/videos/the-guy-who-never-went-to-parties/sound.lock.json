@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "the-guy-who-never-went-to-parties",
   "mix": "public/audio/the-guy-who-never-went-to-parties/mix.mp3",
-  "seconds": 158.3,
+  "seconds": 169.5667,
   "built_from": {
-    "timing.json": "9cd2d18c2489d6da5dff07d344a5fd6463546375",
-    "sound.json": "d45d48fa1e3d095d8218ea4c7b74d0c7e68c7cf6",
-    "narration.mp3": "69aa8a182c5bbc9dc3cff84b3a8500281c5a974c"
+    "timing.json": "561d98391867e631efd698e5b69206986f6148e1",
+    "sound.json": "912c8df9f1b1ae5f6fbc50fceb7f5d293d8739f1",
+    "narration.mp3": "3c07690da0e3982dd23ca27c6882d07aa002c33d"
   },
-  "mix_sha1": "4ec5f15dc89db31842a6c897e072439fe1b609d6",
+  "mix_sha1": "a6ea9955ab99671a865eac762d0b324f13f504fd",
   "music_sections": [
     {
       "from": "1.party",
@@ -18,67 +18,67 @@
     {
       "from": "2.bro",
       "mood": "playful",
-      "at": 12.43
+      "at": 13.43
     },
     {
       "from": "3.ask",
       "mood": "curious",
-      "at": 30.8
+      "at": 33.13
     },
     {
       "from": "3.showed",
       "mood": "sneak",
-      "at": 37.13
+      "at": 39.8
     },
     {
       "from": "4.lazy",
       "mood": "none",
-      "at": 50.53
+      "at": 54.27
     },
     {
       "from": "4.truth",
       "mood": "dark",
-      "at": 52.93
+      "at": 56.8
     },
     {
       "from": "4.cried",
       "mood": "hope",
-      "at": 61.3
+      "at": 65.63
     },
     {
       "from": "5.but",
       "mood": "playful",
-      "at": 67.6
+      "at": 72.6
     },
     {
       "from": "6.trained",
       "mood": "wonder",
-      "at": 81.63
+      "at": 87.73
     },
     {
       "from": "7.walked",
       "mood": "hope",
-      "at": 102.7
+      "at": 110.3
     },
     {
       "from": "8.door",
       "mood": "tense",
-      "at": 125.43
+      "at": 134.6
     },
     {
       "from": "8.dressed",
       "mood": "tense",
-      "at": 127.4
+      "at": 136.67
     },
     {
       "from": "9.now",
       "mood": "dark",
-      "at": 145.13
+      "at": 155.73
     },
     {
       "from": "10.sub",
       "mood": "town",
-      "at": 155.47
+      "at": 166.6
     }
   ],
   "music_file": {
@@ -88,71 +88,72 @@
   "beds": 16,
   "measured": {
     "musicUnderVoiceDb": 18.0,
-    "secondsWithoutMusic": 3.0,
+    "secondsWithoutMusic": 3.1,
     "bedsUnderVoiceDb": 27.6,
     "sfx": 121,
-    "sfxPerMinute": 45.9,
+    "sfxPerMinute": 42.8,
     "sfxKinds": 34,
-    "longestGapSeconds": 4.1,
-    "longestGapAt": 77.5,
+    "longestGapSeconds": 4.7,
+    "longestGapAt": 83.1,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 15.8,
-    "voiceOverRestWorstDb": 3.2,
+    "voiceOverRestMedianDb": 16.1,
+    "voiceOverRestWorstDb": 4.8,
     "voiceOverRestWorst": [
       {
-        "db": 3.2,
-        "t": 155.3,
-        "cue": "9.and",
+        "db": 4.8,
+        "t": 146.6,
+        "cue": "8.turned",
         "sounding": [
-          "ding",
+          "creak"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 29.0,
+        "cue": "2.dog",
+        "sounding": [
+          "rustle",
           "whoosh"
         ]
       },
       {
-        "db": 4.3,
-        "t": 139.7,
+        "db": 6.0,
+        "t": 150.2,
         "cue": "8.training",
         "sounding": [
           "sting"
         ]
       },
       {
-        "db": 4.7,
-        "t": 140.4,
-        "cue": "8.training",
+        "db": 7.0,
+        "t": 31.4,
+        "cue": "2.vending",
         "sounding": [
-          "sting",
+          "register",
           "tick"
         ]
       },
       {
-        "db": 5.9,
-        "t": 29.3,
-        "cue": "2.vending",
-        "sounding": [
-          "register"
-        ]
-      },
-      {
-        "db": 6.6,
-        "t": 138.7,
-        "cue": "8.turned",
+        "db": 7.1,
+        "t": 60.5,
+        "cue": "4.truth",
         "sounding": [
           "sting"
         ]
       },
       {
-        "db": 6.7,
-        "t": 77.5,
-        "cue": "5.dog2",
+        "db": 7.4,
+        "t": 32.9,
+        "cue": "2.queue",
         "sounding": [
-          "bonk"
+          "count",
+          "sting"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.2,
-    "limiterMaxDb": 0.7
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.5
   },
   "failures": []
 }

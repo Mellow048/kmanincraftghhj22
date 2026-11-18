@@ -291,7 +291,8 @@
       "cue": "2.dog",
       "word": "grass",
       "sfx": "rustle",
-      "why": "the dog, eating"
+      "trim": 4,
+      "why": "the dog, eating. Raised so the grass gag is audible over the music."
     },
     {
       "cue": "2.vending",
@@ -302,11 +303,13 @@
       "cue": "2.vending",
       "word": "machine",
       "sfx": "register",
-      "why": "the town's only restaurant, and it is a shop"
+      "trim": -7,
+      "why": "the town's only restaurant, and it is a shop. Quiet: the words must stay clear over the gag."
     },
     {
       "cue": "2.queue",
       "sfx": "tick",
+      "trim": -5,
       "why": "the queue, not moving"
     },
     {

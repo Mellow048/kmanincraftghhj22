@@ -122,6 +122,7 @@ export type LookPreset =
   | "lantern-night"
   | "lava-shore"
   | "warm-room"
+  | "kitchen-day"
   | "void";
 
 export type PostSettings = {

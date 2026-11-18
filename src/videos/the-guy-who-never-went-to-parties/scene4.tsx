@@ -21,9 +21,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.walked",
       // Walking into a restaurant that is a vending machine. The whole joke of act one, paid off.
-      ...cam.truck({ on: [8.0, 1.5, 5.0], dist: 4.6, yaw: 8, pitch: 3, fov: 46, by: [-3.2, 0, 0] }),
+      ...cam.truck({ on: [8.0, 1.6, 5.0], dist: 6.0, yaw: 10, pitch: 6, fov: 46, by: [-3.2, 0, 0] }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The teller walking up to the vending machine in a chef's uniform, and the camera trucking with him so the machine grows in frame. Full seriousness, which is the joke.",
       stage: (t) => (
         <>
@@ -35,9 +35,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.door",
       // The machine's door, open, with a real kitchen light coming out of it.
-      ...cam.push({ on: [8.0, 1.3, 4.7], dist: 2.0, to: 1.6, yaw: 4, pitch: 1, fov: 40 }),
+      ...cam.push({ on: [8.0, 1.5, 4.9], dist: 3.8, to: 3.2, yaw: -8, pitch: 3, fov: 40 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The vending machine's front panel swung open like a door, and warm kitchen light spilling out. The reveal that behind the joke there is a real restaurant.",
       stage: (t) => (
         <>
@@ -50,9 +50,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.asked",
       // He asks for a job. The head chef, close, and not impressed.
-      ...cam.push({ on: chestOf([0, 0, 500], 1.0), dist: 2.2, to: 1.75, yaw: 6, pitch: 3, fov: 38 }),
+      ...cam.push({ on: chestOf([0, 0, 500], 1.0), dist: 3.8, to: 3.2, yaw: 8, pitch: 5, fov: 40 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The head chef behind the hot line, arms folded, absolutely unimpressed. A big man in a big kitchen, and the teller small at the bottom of the frame.",
       stage: () => (
         <>
@@ -65,9 +65,9 @@ export const scene4 = storyScene(timing, {
       cue: "7.chef",
       // He looks at the knife, then at him. A close-up on an object, then the face — done inside one shot
       // by putting the knife in the foreground.
-      ...cam.push({ on: [-0.15, 1.06, 500.4], dist: 1.5, to: 1.2, yaw: -18, pitch: 14, fov: 40 }),
+      ...cam.push({ on: [-0.15, 1.25, 500.4], dist: 3.6, to: 3.0, yaw: -18, pitch: 10, fov: 42 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The chef's hand picking up the teller's knife off the bench and turning it over. The knife is judged before the boy is.",
       stage: () => (
         <>
@@ -80,9 +80,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.word",
       // One word. "When?" Delivered at a villager, from a villager who has never cooked anything.
-      ...cam.push({ on: faceOf([0.2, 0, 499.6], 1.05), dist: 1.7, to: 1.4, yaw: 2, pitch: 1, fov: 34 }),
+      ...cam.push({ on: faceOf([0.2, 0, 499.6], 1.05), dist: 3.1, to: 2.6, yaw: 4, pitch: 2, fov: 38 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The chef's face saying one word, and the teller's shoulder in the corner of the frame. The smallest possible answer to a big ask.",
       stage: (t) => (
         <>
@@ -95,9 +95,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.night",
       // That night: the whole town came. Wide on the restaurant, full, and the hot line going.
-      ...cam.push({ on: [0, 2, 500.6], dist: 6.8, to: 5.8, yaw: -4, pitch: 10, fov: 50 }),
+      ...cam.push({ on: [0, 2.0, 500.6], dist: 9.0, to: 7.6, yaw: -6, pitch: 12, fov: 50 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The restaurant full to the door, every table taken, and steam over the hot line. The town that has never eaten has turned up to eat.",
       stage: (t) => (
         <>
@@ -113,9 +113,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.apron",
       // The calmest person in the building. He ties his apron, and the frame is his hands.
-      ...cam.push({ on: [-1.5, 1.1, 499.8], dist: 1.6, to: 1.25, yaw: -12, pitch: 8, fov: 38 }),
+      ...cam.push({ on: [-1.5, 1.25, 499.8], dist: 3.5, to: 3.0, yaw: -12, pitch: 8, fov: 40 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "His hands tying the apron knot, and behind them the kitchen in chaos. Still hands in a moving frame, which is the whole character.",
       stage: (t) => (
         <>
@@ -128,9 +128,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.hands",
       // Chopping. Flipping. Plating. Chopping again. The fastest cutting in the film.
-      ...cam.push({ on: [-1.5, 1, 498.9], dist: 1.7, to: 1.3, yaw: -26, pitch: 16, fov: 44 }),
+      ...cam.top({ on: [-1.5, 1.0, 498.9], height: 4.2, to: 3.5, spin: [6, -6], fov: 44 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "His hands at the board at full speed, four plates in different states around him. The training arc, cashed.",
       stage: (t) => (
         <>
@@ -151,9 +151,9 @@ export const scene4 = storyScene(timing, {
       // depth and both of them read. From the front of the room the bench hides him and the fire is off frame.
       // The look point is the hero, not empty air west of him: aiming at a point with nothing behind the
       // subject is how a lens ends up pointed at a wall.
-      ...cam.push({ on: [0.45, 1.12, 498.7], dist: 3.2, to: 2.6, yaw: 22, pitch: 7, fov: 52 }),
+      ...cam.push({ on: [0.45, 1.3, 498.7], dist: 4.0, to: 3.4, yaw: 20, pitch: 7, fov: 46 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "Fire behind him on the line, another cook panicking, and the teller not turning round. The whole film's thesis in a single frame.",
       stage: (t) => (
         <>
@@ -170,18 +170,18 @@ export const scene4 = storyScene(timing, {
     {
       cue: "7.watch",
       // He did not see it. Said honestly, and it is the one time the film lets him be small.
-      ...cam.push({ on: faceOf([-1.2, 0, 499], 0.8), dist: 1.9, to: 1.5, yaw: -6, pitch: 2, fov: 34 }),
+      ...cam.push({ on: faceOf([-1.2, 0, 499], 0.8), dist: 3.2, to: 2.7, yaw: -8, pitch: 2, fov: 38 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "His face, still calm, with the orange firelight behind him doing all the acting. He genuinely did not look.",
       stage: () => <Hero position={[-1.2, 0, 499]} rotationY={0.05} animation="idle" face="smile" gaze={0} />,
     },
     {
       cue: "8.door",
       // The reunion. The restaurant door, and three people in party clothes standing in it.
-      ...cam.push({ on: [0, 1.6, 503], dist: 3.4, to: 2.9, yaw: 178, pitch: 2, fov: 48 }),
+      ...cam.push({ on: [0, 1.7, 503], dist: 4.4, to: 3.7, yaw: 158, pitch: 4, fov: 46 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The dining room door open, and his three old friends silhouetted in it in party clothes, looking for the first time at a room full of people eating.",
       stage: () => (
         <>
@@ -196,9 +196,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.dressed",
       // Still dressed for a party, still not eating. A quick look at the clothes: sequins, and a paper cup.
-      ...cam.push({ on: [0.2, 1, 501.6], dist: 1.9, to: 1.5, yaw: 12, pitch: 6, fov: 40 }),
+      ...cam.push({ on: [0.2, 1.25, 501.6], dist: 3.6, to: 3.0, yaw: 12, pitch: 6, fov: 42 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "Their party clothes from the chest down, and a paper cup from the vending machine in one hand, while everybody around them eats off plates. One detail shot carries it.",
       stage: () => (
         <>
@@ -210,9 +210,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.looked",
       // One of them looks at the kitchen, then at him. The double take, in one frame: both of them.
-      ...cam.push({ on: [0, 1.35, 500.2], dist: 3.0, to: 2.4, yaw: 20, pitch: 3, fov: 44 }),
+      ...cam.pan({ from: [2.6, 2.0, 503.2], on: [0, 1.35, 500.2], onTo: [-1.2, 1.35, 498.8], fov: 44 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The friend in the foreground with his head half turned, and the teller visible past him in the pass, working. The double take, played in depth.",
       stage: () => (
         <>
@@ -224,9 +224,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.wait",
       // "Wait. Is that him?" The face of a person recalculating four years of a friendship.
-      ...cam.push({ on: faceOf([0.4, 0, 501], 1.0), dist: 1.7, to: 1.35, yaw: -4, pitch: 2, fov: 34 }),
+      ...cam.push({ on: faceOf([0.4, 0, 501], 1.0), dist: 3.1, to: 2.6, yaw: -6, pitch: 2, fov: 38 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The friend's face, close, absolutely certain he is wrong and absolutely certain he is right. The best reaction shot in the film.",
       stage: (t) => (
         <>
@@ -238,9 +238,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.how",
       // "Bro. How did you get this good?" Two of them, stacked, both shouting.
-      ...cam.push({ on: [0, 1.5, 501.2], dist: 3.2, to: 2.7, yaw: 6, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [0, 1.5, 501.2], dist: 4.0, to: 3.4, yaw: 8, pitch: 4, fov: 44 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "Two friends stacked up the frame, both talking at once, exactly the way they were in the first party shot. Same composition, four years later.",
       stage: (t) => (
         <>
@@ -253,9 +253,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.turned",
       // He turns around slowly. The shot the whole film has been waiting for: the hero turn.
-      ...cam.orbit({ on: faceOf([-1.2, 0, 498.8], 0.8), dist: 2.2, distTo: 1.8, yaw: 150, yawTo: 20, pitch: 3, fov: 38 }),
+      ...cam.orbit({ on: faceOf([-1.2, 0, 498.8], 0.8), dist: 3.6, distTo: 3.0, yaw: 42, yawTo: -18, pitch: 4, fov: 40 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The camera swings all the way round him as he turns, so the frame goes from his back to his face while he is still moving. The one shot in the film that is allowed to be cool.",
       stage: (t) => (
         <>
@@ -267,9 +267,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.training",
       // ONE WORD. The deadpan. The frame holds on him for the whole beat.
-      ...cam.push({ on: faceOf([-1.2, 0, 498.8], 0.8), dist: 2.0, to: 1.6, yaw: 0, pitch: 2, fov: 34 }),
+      ...cam.push({ on: faceOf([-1.2, 0, 498.8], 0.8), dist: 3.0, to: 2.5, yaw: 0, pitch: 2, fov: 36 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "Said straight down the lens, one word, no expression. This is the line the thumbnail sells, so it gets a clean frame and the whole beat.",
       stage: (t) => (
         <>
@@ -281,9 +281,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.nothing",
       // Nobody says anything for a whole second. Wide, and four people standing still.
-      ...cam.push({ on: [0, 1.4, 500.2], dist: 4.2, to: 3.6, yaw: 6, pitch: 4, fov: 48 }),
+      ...cam.push({ on: [0, 1.5, 500.2], dist: 6.2, to: 5.3, yaw: 8, pitch: 6, fov: 46 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "Wide and still: him, the three friends, and a second of silence. Nothing moves. The quiet is the joke, so the camera must not either.",
       stage: () => (
         <>
@@ -297,9 +297,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.onions",
       // Back to work. The turn, and the knife comes back out.
-      ...cam.push({ on: [-1.2, 1, 498.7], dist: 1.5, to: 1.2, yaw: -8, pitch: 12, fov: 40 }),
+      ...cam.push({ on: [-1.2, 1.2, 498.7], dist: 3.3, to: 2.8, yaw: -10, pitch: 12, fov: 42 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "He turns back to the board and picks the knife up again, and the friends are still in the corner of the frame, uncomprehending.",
       stage: (t) => (
         <>
@@ -311,9 +311,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "8.chant",
       // HUS HUS HUS, in a restaurant, to two people who have never trained for anything.
-      ...cam.push({ on: faceOf([-1.2, 0, 498.8], 0.8), dist: 1.8, to: 1.45, yaw: -10, pitch: 2, fov: 34 }),
+      ...cam.push({ on: faceOf([-1.2, 0, 498.8], 0.8), dist: 3.2, to: 2.7, yaw: -12, pitch: 2, fov: 38 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The chant again, in a professional kitchen, at two friends who still do not understand what they are looking at. The film's last joke before the turn.",
       stage: (t) => (
         <>
@@ -325,9 +325,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "9.now",
       // The turn. The restaurant at night, full, and the queue outside.
-      ...cam.push({ on: [0, 2.2, 502], dist: 7.0, to: 6.0, yaw: 6, pitch: 9, fov: 50 }),
+      ...cam.push({ on: [0, 2.2, 502], dist: 9.5, to: 8.0, yaw: 6, pitch: 11, fov: 50 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The restaurant at the end: every table full, the hot line going, and a queue visible through the door. The town got what it wanted without ever wanting it.",
       stage: (t) => (
         <>
@@ -343,9 +343,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "9.line",
       // The queue goes down the street. The dog is first. The joke from the first act, paid.
-      ...cam.truck({ on: [8.0, 1.4, 6.4], dist: 3.2, yaw: 14, pitch: 2, fov: 46, by: [-4.0, 0, 0] }),
+      ...cam.truck({ on: [8.0, 1.6, 6.4], dist: 6.4, yaw: 14, pitch: 6, fov: 46, by: [-4.0, 0, 0] }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The queue again, longer than before, and the dog is at the front of it. The exact shot from the first act, four years later, with one more animal in it.",
       stage: () => (
         <>
@@ -365,9 +365,9 @@ export const scene4 = storyScene(timing, {
       // The lens stands back in the room's open floor and looks across at the open fridge, so the door is a
       // wing of the frame instead of a wall in front of it. Every shelf is at z 397.9 and the food sits
       // between the door and the body, which is the only place it can be seen from.
-      ...cam.push({ on: [2.75, 1.05, 397.95], dist: 3.3, to: 2.7, yaw: -38, pitch: 4, fov: 50 }),
+      ...cam.push({ on: [2.75, 1.2, 397.9], dist: 3.7, to: 3.1, yaw: -24, pitch: 5, fov: 44 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "The same fridge, open, and stacked to the door with food. The first joke in the film, paid off in the last minute.",
       stage: () => (
         <>
@@ -394,9 +394,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "9.nobody",
       // Nobody has ever asked why the parties never end. The town, at night, and not one of them looking up.
-      ...cam.push({ on: [0, 1.6, -2.0], dist: 5.6, to: 4.8, yaw: 4, pitch: 6, fov: 48 }),
+      ...cam.push({ on: [0, 1.8, -2.0], dist: 8.0, to: 6.8, yaw: 6, pitch: 10, fov: 48 }),
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       note: "The street at night, everyone dancing, nobody asking anything. The question the viewer has been carrying since the first act, put back on the screen as an answer.",
       stage: (t) => (
         <>
@@ -411,9 +411,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "9.but",
       // I know why. The teller, in his kitchen, and the frame is his face and the knife.
-      ...cam.push({ on: faceOf([-0.2, 0, 0.8], 0.8), dist: 2.1, to: 1.6, yaw: -8, pitch: 3, fov: 34 }),
+      ...cam.push({ on: faceOf([-0.2, 0, 400], 0.8), dist: 3.2, to: 2.7, yaw: -8, pitch: 3, fov: 38 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "The teller, the only person in this town who can cook, saying the thing the whole film has been building to. The knife is in frame, and it is his.",
       stage: () => (
         <>
@@ -426,9 +426,9 @@ export const scene4 = storyScene(timing, {
       cue: "9.and",
       // And they are not going to learn. The perfect button: he turns back to the board, and the frame
       // leaves him working while the town queues outside.
-      ...cam.push({ on: [0.2, 1.15, 400.4], dist: 3.6, to: 3.0, yaw: 4, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [0.2, 1.3, 400.4], dist: 4.2, to: 3.6, yaw: 6, pitch: 6, fov: 44 }),
       zone: "home",
-      look: "overworld-night",
+      look: "kitchen-day",
       note: "The last picture: him at the board with his back to us and the whole kitchen behind him, working, while outside a town queues for a thing it will never make itself.",
       stage: () => (
         <>
@@ -441,9 +441,9 @@ export const scene4 = storyScene(timing, {
     {
       cue: "10.sub",
       // THE ASK. The subscribe sign, and the joke continues into it.
-      ...cam.push({ on: [0, 1.5, 501.6], dist: 4.2, to: 3.6, yaw: 180, pitch: 2, fov: 46 }),
+      ...cam.push({ on: [0, 1.6, 501.6], dist: 5.0, to: 4.3, yaw: 150, pitch: 4, fov: 46 }),
       zone: "restaurant",
-      look: "overworld-night",
+      look: "lava-shore",
       note: "The teller at the pass with the sign beside him, and the restaurant working behind. The ask is part of the joke, not an interruption of it.",
       stage: (t) => (
         <>
