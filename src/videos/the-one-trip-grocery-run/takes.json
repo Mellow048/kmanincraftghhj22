@@ -1,0 +1,57 @@
+{
+  "takes": [
+    {
+      "file": "narration.mp3",
+      "clips": [
+        {
+          "clip": "02-hook",
+          "text": "One trip. Every bag. Even the eggs. How did I get it all inside without dropping a thing?"
+        },
+        {
+          "clip": "03-rule",
+          "text": "Last Saturday, my sister made four trips from the car. I said I could do it in one. She asked if the eggs had agreed. She had a plan. I had a contest."
+        },
+        {
+          "clip": "04-first-load",
+          "text": "Heavy bags on both arms. The bread went on my head."
+        },
+        {
+          "clip": "06-fail",
+          "text": "Three cans swung left. The oranges rolled right. I caught the oranges. The cans did not catch me. By round two, the handles felt like piano wire."
+        },
+        {
+          "clip": "07-door",
+          "text": "I tried the door with one foot, both hands full."
+        },
+        {
+          "clip": "09-eggs",
+          "text": "The door opened. The carton of eggs opened too. My sister said, maybe leave the eggs in the carton. The next morning, an egg rolled out of my shoe."
+        },
+        {
+          "clip": "10-method",
+          "text": "So I weighed every bag. Cans close. Soft things up top. A spare tote cushioned the handles. My fingers survived. Guessing the bag’s limit helped less."
+        },
+        {
+          "clip": "12-result",
+          "text": "At last, everything crossed the kitchen in one trip."
+        },
+        {
+          "clip": "13-neighbor",
+          "text": "Then our neighbor reached the apartment buzzer, both hands full. She had cans, paper bags, and a watermelon. She needed the door. I needed a real test."
+        },
+        {
+          "clip": "15-buzzer",
+          "text": "I took every grocery bag in one load. Then I pressed the buzzer with my elbow. The door clicked. She carried everything inside."
+        },
+        {
+          "clip": "16-trunk",
+          "text": "I carried ours inside in one trip. My sister checked the trunk. It looked empty until she lifted the blanket."
+        },
+        {
+          "clip": "16b-potato",
+          "text": "One potato sat alone. I went back for it."
+        }
+      ]
+    }
+  ]
+}
