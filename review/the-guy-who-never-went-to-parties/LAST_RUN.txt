@@ -3,13 +3,21 @@
 
 ▶ the-guy-who-never-went-to-parties frame 649 → out/stills/the-guy-who-never-went-to-parties-0649.png
 
+▶ the-guy-who-never-went-to-parties frame 708 → out/stills/the-guy-who-never-went-to-parties-0708.png
+
 ▶ the-guy-who-never-went-to-parties frame 1216 → out/stills/the-guy-who-never-went-to-parties-1216.png
+
+▶ the-guy-who-never-went-to-parties frame 1762 → out/stills/the-guy-who-never-went-to-parties-1762.png
 
 ▶ the-guy-who-never-went-to-parties frame 2673 → out/stills/the-guy-who-never-went-to-parties-2673.png
 
 ▶ the-guy-who-never-went-to-parties frame 3645 → out/stills/the-guy-who-never-went-to-parties-3645.png
 
+▶ the-guy-who-never-went-to-parties frame 4494 → out/stills/the-guy-who-never-went-to-parties-4494.png
+
 ▶ the-guy-who-never-went-to-parties frame 4803 → out/stills/the-guy-who-never-went-to-parties-4803.png
 
-Done. 6 still(s) in out/stills
+▶ the-guy-who-never-went-to-parties frame 5043 → out/stills/the-guy-who-never-went-to-parties-5043.png
+
+Done. 10 still(s) in out/stills
 exit=0
