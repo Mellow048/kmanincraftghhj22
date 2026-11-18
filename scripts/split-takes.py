@@ -18,6 +18,7 @@ It reads src/videos/<film>/takes.json:
           "clips": [ … ] },
         { "file": "hero-hus-a.mp3", "bursts": true,       a chant: every burst of sound is cut out on its own, and each clip
           "clips": [ { "clip": "01-hus", "pick": [1, 2, 3, 0, 4, 5, 6], "every": 0.25, "pause": 0.16, "speed": 1.4 } ] } ] }
+                                                          `every` may be a list, one step after each burst: [0.2, 0.2, 0.1]
                                                           names the bursts it wants; 0 is the pause. `every` is seconds
                                                           from the start of one burst to the start of the next.
                                                           `speed` says each burst faster (same pitch) so it fits `every`.
@@ -165,10 +166,13 @@ def chant(x, clips, out_dir):
     for c in clips:
         every, pause, speed = c.get("every", 0.25), c.get("pause", 0.15), c.get("speed", 1.0)
         parts, t, said = [], 0.0, []
+        steps = every if isinstance(every, list) else None  # a list: its own step after each burst (a chant that speeds up)
+        widest = max(steps) if steps else every
         for k in c["pick"]:
             if k == 0:
                 t += pause
                 continue
+            every = steps[min(len(parts), len(steps) - 1)] if steps else widest
             a, b = bursts[k - 1]
             piece = x[a:b].copy()
             if speed != 1.0:  # the whole word, said faster: cutting it short instead would lose its "s"

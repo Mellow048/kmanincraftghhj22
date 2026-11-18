@@ -28,7 +28,7 @@ every "huss" out and lays them back at chant speed.
 
 ```bash
 python3 scripts/split-takes.py the-barber-who-never-went-to-parties
-python3 scripts/narration.py build the-barber-who-never-went-to-parties --tempo 1.3
+python3 scripts/narration.py build the-barber-who-never-went-to-parties --tempo 1.43 --tail 1.7
 python3 scripts/sound.py build the-barber-who-never-went-to-parties
 ```
 
@@ -40,79 +40,99 @@ is cut into several pictures in the scene files (`cut:`).
 ```narration
 # clip 01-hus
 [1.hus] HUS HUS HUS! HUS HUS HUS!
-# clip 02-how wait 0.75
+# clip 02-how wait 0.7
 [1.how] BRO. HOW?!
 
-# clip 03-paper wait 1.5
+# clip 03-paper wait 1.3
 [2.paper] One year earlier, I could not cut paper.
-# clip 04-party wait 0.35
+# clip 04-party wait 0.25
 [2.party] In this town, every night was a party.
 [2.door] And every night, my friends knocked on my door.
-# clip 05-friday wait 0.25
+# clip 05-friday wait 0.2
 [2.friday] DUDE! IT'S FRIDAY!
 [2.whole] THE WHOLE TOWN IS OVER THERE!
 # clip 06-who wait 0.1
 [2.who] WHO STAYS HOME ON A FRIDAY?!
 [2.weird] YOU'RE BEING WEIRD AGAIN!
 
-# clip 07-tv wait 1.3
+# clip 07-tv wait 1.0
 [3.tv] I had seen a barber on TV
 [3.cry] make a grown man cry with one haircut.
 [3.happy] Happy tears.
 [3.wanted] I wanted to do that.
+# clip 07b-dadhus wait 2.5
+[3.hus] HUS HUS HUS!
 
-# clip 08-okay wait 5.0
+# clip 08-okay wait 0.6
 [4.okay] OKAY! OKAY!
 [4.fixable] THAT'S FIXABLE!
-# clip 09-not wait 2.4
+# clip 09-not wait 1.5
 [4.not] It was not fixable.
 [4.hat] Dad wore a hat until spring.
 
-# clip 10-hus2 wait 4.6
+# clip 10-hus2 wait 1.9
 [5.hus] HUS HUS HUS! HUS HUS HUS!
-# clip 11-while wait 2.8
+# clip 11-while wait 1.5
 [5.while] While my friends were out dancing,
 [5.cutting] I was cutting.
-# clip 12-mops wait 0.6
+# clip 12-mops wait 0.3
 [5.mops] I went through hundreds of mops,
 [5.combs] thousands of combs,
 [5.dog] and one very patient dog.
-# clip 13-fix2 wait 2.6
+# clip 12a-m1 wait 0.45
+[5.m1] HUS HUS HUS!
+# clip 12b-m2 wait 0.06
+[5.m2] HUS HUS HUS!
+# clip 12c-m3 wait 0.06
+[5.m3] HUS HUS HUS!
+# clip 12d-m4 wait 0.06
+[5.m4] HUS HUS HUS!
+# clip 12e-m5 wait 0.06
+[5.m5] HUS HUS HUS HUS HUS HUS!
+# clip 12f-m6 wait 0.1
+[5.m6] HUS HUS HUS!
+# clip 13-fix2 wait 0.55
 [5.fixable] THAT'S FIXABLE!
-# clip 14-spring wait 2.4
+# clip 14-spring wait 1.3
 [5.spring] Spring came.
 [5.sat] And Dad sat back down in the chair.
+# clip 14b-dadhus2 wait 0.7
+[5.dadhus] HUS HUS HUS!
 
-# clip 15-busiest wait 1.8
+# clip 15-busiest wait 0.7
 [6.busiest] Then the busiest barbershop in town
 [6.sign] put a sign in the window.
-# clip 16-saturday wait 0.5
+# clip 16-saturday wait 0.3
 [6.saturday] It was a Saturday.
 [6.line] The line went around the block.
 [6.beard] One man had grown a beard waiting.
-# clip 17-forty wait 4.6
+# clip 16b-shophus wait 1.6
+[6.hus] HUS HUS HUS! HUS HUS HUS! HUS HUS HUS!
+# clip 17-forty wait 0.8
 [6.forty] I cut forty heads before lunch.
 
-# clip 18-help wait 2.6
+# clip 18-help wait 1.0
 [7.help] HELP! THE PARTY STARTS IN AN HOUR,
 [7.look] AND LOOK AT HIM!
-# clip 19-please wait 0.15
+# clip 19-please wait 0.12
 [7.please] PLEASE! IS THIS FIXABLE?!
-# clip 20-wait wait 0.9
+# clip 20-wait wait 0.75
 [7.wait] WAIT.
 [7.weirdone] IT'S THE WEIRD ONE!
-# clip 21-bro wait 2.6
+# clip 20b-hus wait 0.7
+[7.hus1] HUS HUS HUS! HUS HUS HUS!
+# clip 21-bro wait 0.8
 [7.bro] BRO. HOW?!
-# clip 22-training wait 1.1
+# clip 22-training wait 0.75
 [7.training] Training.
-# clip 23-hus3 wait 1.2
+# clip 23-hus3 wait 0.9
 [7.hus] HUS HUS HUS! HUS HUS HUS!
-# clip 24-coming wait 0.9
+# clip 24-coming wait 0.7
 [7.coming] YOU COMING?!
-# clip 25-never wait 1.3
-[7.never] I still have not been to a party.
-# clip 26-end wait 0.7
-[7.end] HUS HUS HUS!
+# clip 25-no wait 0.45
+[7.no] No.
+# clip 26-end wait 2.0
+[7.end] HUS HUS HUS HUS HUS HUS!
 ```
 
 ## What each scene is for
