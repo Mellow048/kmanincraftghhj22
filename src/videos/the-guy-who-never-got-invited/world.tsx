@@ -140,7 +140,7 @@ const Bedroom: React.FC = () => (
     <Poster position={[2.0, 2.0, -ROOMBOX.z + 0.06]} colour="#ffab5e" shape="sun" />
 
     <WarmLamp position={[0, 2.28, -0.3]} size={0.22} />
-    <pointLight position={[-1.78, 1.62, 0.15]} color="#ffcf9a" intensity={2.4} distance={3.2} decay={2} />
+    <pointLight position={[-1.78, 1.62, 0.15]} color="#ffcf9a" intensity={1.5} distance={3.2} decay={2} />
     <Dust position={[0, 1.4, 0.2]} area={[4, 2.4, 4.4]} count={38} size={0.03} color="#ffe0b0" opacity={0.45} seed={9} speed={0.1} />
   </group>
 );
