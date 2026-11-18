@@ -157,10 +157,13 @@ export const scene4 = storyScene(timing, {
       note: "Fire behind him on the line, another cook panicking, and the teller not turning round. The whole film's thesis in a single frame.",
       stage: (t) => (
         <>
-          <Hero position={[0.45, 0, 498.7]} rotationY={-0.35} animation="idle" face="calm" gaze={0} />
-          <Villager position={[1.9, 0, 496.6]} robe={ROBE.red} phase={t * 5} walk={Math.sin(t * 12) * 0.7} hmm={0.9} />
-          <Vox kind="wool" tint="#ff7a14" position={[2.6, 1.25 + ramp(t, 0, 1.8) * 0.7, 496.5]} size={[0.4, 0.5 + ramp(t, 0, 1.8) * 0.6, 0.4]} />
-          <pointLight position={[2.6, 1.7, 497.0]} color="#ff7a2a" intensity={20 + Math.sin(t * 12) * 7} distance={7} decay={2} />
+          <Hero position={[0.45, 0, 498.05]} rotationY={-0.35} animation="idle" face="calm" gaze={0} />
+          <Villager position={[1.55, 0, 496.9]} robe={ROBE.red} phase={t * 5} walk={Math.sin(t * 12) * 0.7} hmm={0.9} />
+          {/* the fire, on the line behind him and INSIDE the frame: a fire the caption promises and the
+              lens cannot see is a stage direction, not a shot */}
+          <Vox kind="wool" tint="#ff7a14" position={[2.35, 1.35 + ramp(t, 0, 1.8) * 0.55, 496.7]} size={[0.55, 0.7 + ramp(t, 0, 1.8) * 0.7, 0.5]} />
+          <Vox kind="wool" tint="#ffd04a" position={[2.35, 1.3 + ramp(t, 0, 1.8) * 0.4, 496.68]} size={[0.3, 0.45 + ramp(t, 0, 1.8) * 0.45, 0.3]} />
+          <pointLight position={[2.35, 1.8, 497.1]} color="#ff7a2a" intensity={26 + Math.sin(t * 12) * 9} distance={8} decay={2} />
         </>
       ),
     },
