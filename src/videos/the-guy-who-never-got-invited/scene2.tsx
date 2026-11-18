@@ -11,7 +11,7 @@ import { Him, Speaker, stagedScene } from "./kit";
 export const scene2 = stagedScene("scene2", [
   {
     id: "2.empty",
-    ...cam.push({ on: [0, 1.55, -4.0], dist: 2.5, to: 3.8, fov: 50, pitch: 5 }),
+    ...cam.push({ on: [0, 1.55, -4.0], dist: 7.8, to: 6.8, fov: 50, pitch: 5 }),
     zone: "street",
     look: "overworld-day",
     note: "The same doorway, daylight, no party: the rewind lands on the empty version of the first picture.",

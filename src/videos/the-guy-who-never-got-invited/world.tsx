@@ -54,15 +54,15 @@ const Street: React.FC = () => {
       <Vox kind="cobble" position={[0, 0.06, -3.55]} size={[2.4, 0.12, 0.75]} />
 
       {/* Inside the door and behind the window: the party. Warm, and never quite in focus. */}
-      <Block position={[0, 1.15, -4.42]} size={[1.86, 2.3, 0.06]} color="#f0b070" emissive="#ff9a4a" emissiveIntensity={0.34} />
-      <Block position={[2.6, 1.72, -4.4]} size={[1.58, 1.13, 0.06]} color="#ffb877" emissive="#ffa85c" emissiveIntensity={0.4} />
+      <Block position={[0, 1.15, -4.6]} size={[1.86, 2.3, 0.06]} color="#f0b070" emissive="#ff9a4a" emissiveIntensity={0.34} />
+      <Block position={[2.6, 1.72, -4.62]} size={[1.58, 1.13, 0.06]} color="#ffb877" emissive="#ffa85c" emissiveIntensity={0.4} />
 
       {/* Two shapes dancing behind the window. Nobody you can name yet. */}
       {[
         [2.2, 0],
         [2.95, 1.9],
       ].map(([x, phase], i) => (
-        <group key={i} position={[x, 0.55 + bob(frame, fps, phase, 0.05), -4.55]}>
+        <group key={i} position={[x, 1.2 + bob(frame, fps, phase, 0.05), -4.55]}>
           <Block size={[0.34, 0.62, 0.22]} color="#2a1408" />
           <Block position={[0, 0.45, 0]} size={[0.26, 0.26, 0.24]} color="#2a1408" />
           <Block position={[0.22, 0.12 + bob(frame, fps, phase + 1, 0.16), 0]} size={[0.1, 0.3, 0.1]} color="#2a1408" />
@@ -78,7 +78,6 @@ const Street: React.FC = () => {
       {/* The step, the spill of the door, the air. */}
       <pointLight position={[0, 1.9, -4.3]} color="#ffb066" intensity={3.0} distance={9} decay={2} />
       <pointLight position={[2.6, 1.7, -4.3]} color="#ffa858" intensity={1.8} distance={6} decay={2} />
-      <Glow position={[0, 1.2, -3.85]} size={2.2} color="#ffb469" opacity={0.2} />
       <LightPool position={[0, 0.08, -3.1]} width={3.6} depth={2.4} color="#ffb469" opacity={0.26} />
       <LightPool position={[2.6, 0.08, -3.2]} width={2.6} depth={2.0} color="#ffab5e" opacity={0.18} />
       <GodRay position={[0, 1.4, -3.8]} rotation={[0.2, 0, 0]} width={1.9} height={2.6} color="#ffb877" opacity={0.05} />
@@ -130,6 +129,7 @@ const Bedroom: React.FC = () => (
     <Poster position={[2.0, 2.0, -ROOMBOX.z + 0.06]} colour="#ffab5e" shape="sun" />
 
     <WarmLamp position={[0, 2.28, -0.3]} size={0.22} />
+    <pointLight position={[-1.78, 1.62, 0.15]} color="#ffcf9a" intensity={2.4} distance={3.2} decay={2} />
     <Dust position={[0, 1.4, 0.2]} area={[4, 2.4, 4.4]} count={38} size={0.03} color="#ffe0b0" opacity={0.45} seed={9} speed={0.1} />
   </group>
 );
@@ -180,7 +180,7 @@ const Yard: React.FC = () => {
       <Dust position={[0, 1.6, -0.6]} area={[7, 3, 6]} count={44} size={0.035} color="#ffe7c0" opacity={0.5} seed={12} speed={0.12} />
       <Tree position={[4.6, 0, -2.2]} height={4.4} leaf="#3f6b2c" />
       <Tree position={[-4.9, 0, -1.2]} height={4.0} leaf="#456f30" />
-      <Glow position={[0.9, 0.95, -1.75]} size={1.0} color="#ffd08a" opacity={0.13} />
+      <Glow position={[0.9, 0.95, -1.75]} size={0.7} color="#ffd08a" opacity={0.07} />
       {bob(frame, fps, 0, 0) ? null : null}
     </group>
   );
@@ -310,7 +310,7 @@ const Club: React.FC = () => {
       <ClubSign position={[0, 3.0, 8.6]} />
       <LampPost position={[-3.0, 0, 6.4]} seed={3} />
       <Tree position={[5.2, 0, 8.2]} height={4.2} leaf="#2f4a28" />
-      <Glow position={[0, 1.4, 8.7]} size={2.6} color="#a05aff" opacity={0.35} />
+      <Glow position={[0, 1.4, 8.7]} size={1.6} color="#a05aff" opacity={0.1} />
       <LightPool position={[0, 0.06, 7.4]} width={4.2} depth={2.6} color="#a05aff" opacity={0.2} />
       <pointLight position={[0, 2.2, 8.4]} color="#a05aff" intensity={3.4} distance={9} decay={2} />
       {bob(frame, fps, 0, 0) ? null : null}

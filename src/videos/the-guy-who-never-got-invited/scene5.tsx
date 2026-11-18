@@ -29,7 +29,7 @@ export const scene5 = stagedScene("scene5", [
   },
   {
     id: "5.needle",
-    ...cam.push({ on: [-2.2, 0.83, 0.6], dist: 1.7, to: 1.3, fov: 34, pitch: 22, yaw: 16 }),
+    ...cam.push({ on: [-2.2, 0.83, 0.6], dist: 2.1, to: 1.7, fov: 36, pitch: 20, yaw: 16 }),
     zone: "yard",
     look: "overworld-sunset",
     note: "The needle goes down on the record: his whole year, one and a half seconds long.",

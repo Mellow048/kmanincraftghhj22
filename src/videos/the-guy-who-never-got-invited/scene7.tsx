@@ -23,7 +23,7 @@ const Label: React.FC<{ position: [number, number, number]; rotationY?: number }
 export const scene7 = stagedScene("scene7", [
   {
     id: "7.try1",
-    ...cam.push({ on: DECKS, dist: 1.6, to: 1.25, fov: 32, pitch: 24, yaw: -16 }),
+    ...cam.push({ on: DECKS, dist: 2.1, to: 1.75, fov: 34, pitch: 22, yaw: -16 }),
     zone: "bedroom",
     look: "warm-room",
     note: "One hand, one record, the needle down on the first beat: the first try, and it is wrong.",
@@ -36,7 +36,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.try2",
-    ...cam.push({ on: DECKS, dist: 1.5, to: 1.15, fov: 30, pitch: 30, yaw: 24 }),
+    ...cam.push({ on: DECKS, dist: 2.0, to: 1.7, fov: 32, pitch: 26, yaw: 24 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The same try again, a hand's width closer: the hands are shaking and the record does not care.",
@@ -49,7 +49,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.label",
-    ...cam.push({ on: [-1.5, 0.92, 0.55], dist: 1.5, to: 1.2, fov: 34, pitch: 34, yaw: 12 }),
+    ...cam.push({ on: [-1.5, 0.92, 0.55], dist: 2.0, to: 1.65, fov: 36, pitch: 30, yaw: 12 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Writing 84 on a label: he is not learning to play, he is building a system.",
@@ -97,7 +97,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.onehand",
-    ...cam.push({ on: DECKS, dist: 1.8, to: 1.4, fov: 34, pitch: 20, yaw: -32 }),
+    ...cam.push({ on: DECKS, dist: 2.2, to: 1.8, fov: 36, pitch: 18, yaw: -32 }),
     zone: "bedroom",
     look: "warm-room",
     note: "Mixing with one hand behind his back: the trick that has no use in the world.",
@@ -163,7 +163,7 @@ export const scene7 = stagedScene("scene7", [
   },
   {
     id: "7.stack",
-    ...cam.push({ on: [-1.4, 0.62, 1.3], dist: 2.3, to: 1.9, fov: 36, pitch: 12, yaw: -22 }),
+    ...cam.push({ on: [-1.4, 0.62, 1.3], dist: 2.7, to: 2.25, fov: 38, pitch: 12, yaw: -22 }),
     zone: "bedroom",
     look: "warm-room",
     note: "The stack of labelled records beside the speaker, waist high: time, counted in cardboard.",

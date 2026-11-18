@@ -60,7 +60,7 @@ export const scene9 = stagedScene("scene9", [
   },
   {
     id: "9.decks",
-    ...cam.push({ on: [-1.0, 1.16, -2.32], dist: 1.7, to: 1.35, fov: 32, pitch: 26, yaw: -18 }),
+    ...cam.push({ on: [-1.0, 1.16, -2.32], dist: 2.1, to: 1.75, fov: 34, pitch: 24, yaw: -18 }),
     zone: "club",
     look: "prom-night",
     note: "His hands change the record while the question is still in the air: he does not turn round.",

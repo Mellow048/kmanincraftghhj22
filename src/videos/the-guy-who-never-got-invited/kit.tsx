@@ -350,7 +350,7 @@ export const FairyLights: React.FC<{ from: Vec3; to: Vec3; bulbs?: number; sag?:
       return (
         <group key={i} position={[x, y, z]}>
           <Block size={[0.05, 0.05, 0.05]} color={colour} emissive={colour} emissiveIntensity={2.2} castShadow={false} />
-          <Glow position={[0, 0, 0]} size={0.5} color={colour} opacity={0.3} />
+          <Glow position={[0, 0, 0]} size={0.4} color={colour} opacity={0.12} />
         </group>
       );
     })}
@@ -361,7 +361,7 @@ export const FairyLights: React.FC<{ from: Vec3; to: Vec3; bulbs?: number; sag?:
 export const ClubSign: React.FC<{ position: Vec3; rotationY?: number }> = ({ position, rotationY = 0 }) => (
   <group position={position} rotation-y={rotationY}>
     <Sign position={[0, 0, 0]} width={2.5} height={0.9} title="THE DOOR" subtitle="CLUB · 11 TILL LATE" bg="#12060f" fg="#f4e9ff" accent="#d94bff" frame />
-    <Glow position={[0, 0, 0.2]} size={2.4} color="#c14bff" opacity={0.35} />
+    <Glow position={[0, 0, 0.2]} size={2.4} color="#c14bff" opacity={0.12} />
   </group>
 );
 
@@ -392,7 +392,7 @@ export const Booth: React.FC<{ position: Vec3; rotationY?: number; spin?: number
       ))}
       <Block position={[0.18, 0.06, -0.1]} size={[0.08, 0.02, 0.02]} color="#ff7a5a" emissive="#ff5a3a" emissiveIntensity={lit} />
     </group>
-    <Glow position={[0, 1.2, 0.1]} size={1.5} color="#7fd8ff" opacity={0.18 * lit} />
+    <Glow position={[0, 1.2, 0.1]} size={1.5} color="#7fd8ff" opacity={0.1 * lit} />
   </group>
 );
 
@@ -413,7 +413,7 @@ export const Rig: React.FC<{ position: Vec3; colour?: string; swing?: number }> 
   <group position={position} rotation={[swing * 0.4, 0, swing * 0.6]}>
     <Block size={[0.06, 0.06, 0.5]} color="#1a1c21" />
     <Block position={[0, 0, 0.26]} size={[0.16, 0.16, 0.08]} color={colour} emissive={colour} emissiveIntensity={2.6} castShadow={false} />
-    <Glow position={[0, 0, 0.3]} size={1.4} color={colour} opacity={0.3} />
+    <Glow position={[0, 0, 0.3]} size={1.4} color={colour} opacity={0.12} />
     <LightPool position={[0, -1.9, 1.6]} width={3.4} depth={3.4} color={colour} opacity={0.1} />
   </group>
 );
@@ -422,7 +422,7 @@ export const Rig: React.FC<{ position: Vec3; colour?: string; swing?: number }> 
 export const WarmLamp: React.FC<{ position: Vec3; size?: number; colour?: string }> = ({ position, size = 0.28, colour = "#ffcf8a" }) => (
   <group position={position}>
     <Block size={[size, size, size]} color={colour} emissive={colour} emissiveIntensity={2.4} castShadow={false} />
-    <Glow position={[0, 0, 0]} size={1.9} color={colour} opacity={0.34} />
+    <Glow position={[0, 0, 0]} size={1.9} color={colour} opacity={0.12} />
     <LightPool position={[0, -1.7, 0]} width={3.6} depth={3.6} color={colour} opacity={0.13} />
   </group>
 );

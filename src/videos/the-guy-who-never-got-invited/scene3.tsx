@@ -12,7 +12,7 @@ import { Friend, Him, Speaker, stagedScene } from "./kit";
 export const scene3 = stagedScene("scene3", [
   {
     id: "3.window",
-    ...cam.push({ on: [2.6, 1.66, -3.95], dist: 3.2, to: 2.6, fov: 42, pitch: 1 }),
+    ...cam.push({ on: [2.6, 1.66, -3.95], dist: 3.4, to: 2.8, fov: 44, pitch: 1 }),
     zone: "street",
     look: "overworld-night",
     note: "The window from the pavement: warm, loud, full of people, and none of them are him.",
@@ -21,10 +21,10 @@ export const scene3 = stagedScene("scene3", [
         {/* Extra bodies inside, so the window reads as a crowd and not a lamp. */}
         {[
           [2.2, -4.5],
-          [3.0, -4.55],
-          [2.55, -4.62],
+          [3.0, -4.52],
+          [2.55, -4.45],
         ].map(([x, z], i) => (
-          <group key={i} position={[x, 0.55, z]}>
+          <group key={i} position={[x, 1.2, z]}>
             <Block size={[0.3, 0.6, 0.2]} color="#331a0c" />
             <Block position={[0, 0.42, 0]} size={[0.24, 0.24, 0.22]} color="#331a0c" />
           </group>

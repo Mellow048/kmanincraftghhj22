@@ -14,7 +14,7 @@ const DOOR: Vec3 = [0, 0, -4.0];
 export const scene1 = stagedScene("scene1", [
   {
     id: "1.hush",
-    ...cam.push({ on: [0, 1.42, -3.1], dist: 4.6, to: 3.7, fov: 44, pitch: 3 }),
+    ...cam.push({ on: [0, 1.42, -3.1], dist: 5.8, to: 5.0, fov: 48, pitch: 3 }),
     zone: "street",
     look: "overworld-night",
     note: "Three heads together in the one lit doorway in the town, so the first picture is a secret being kept from somebody off-screen.",
@@ -32,7 +32,7 @@ export const scene1 = stagedScene("scene1", [
   },
   {
     id: "1.eyes",
-    ...cam.push({ on: [0.24, 1.5, -3.2], dist: 3.0, to: 2.5, fov: 40, yaw: 8, pitch: 2 }),
+    ...cam.push({ on: [0.15, 1.5, -3.15], dist: 5.4, to: 4.6, fov: 46, yaw: 14, pitch: 4 }),
     zone: "street",
     look: "overworld-night",
     note: "Close on the three faces: one of them glances at him, which is the whole hook — he is being discussed.",
