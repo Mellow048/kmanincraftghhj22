@@ -9,7 +9,7 @@ review the script or the stills ("go i wont review it, im busy"), so this page i
 | Length | 97.1 s, 43 cues, 85 pictures, none over 3 seconds. 206 words: about half the film has no words over it |
 | Narration | `narration.md` (26 clips cut from 8 takes by `scripts/split-takes.py`) |
 | Storyboard | `STORYBOARD.md`, written from the film's files by `scripts/storyboard.py` |
-| Sound | `sound.json`: 21 music sections, 13 beds, 197 entries (255 sounds), each with its reason |
+| Sound | `sound.json`: 21 music sections (five of them silence), 13 beds, 197 entries (255 sounds), each with its reason |
 | Render | `renders/the-barber-who-never-went-to-parties.mp4` (1080x1920, 30 fps) |
 
 ## Against the rules of the topic
