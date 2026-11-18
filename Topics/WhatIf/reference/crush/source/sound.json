@@ -1,0 +1,1925 @@
+{
+  "film": "what-if-you-could-see-who-had-a-crush-on-you",
+  "README": "The sound sheet. Read Topics/WhatIf/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build what-if-you-could-see-who-had-a-crush-on-you",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.what",
+        "mood": "wonder",
+        "why": "A power is new, and it is wonderful: breakfast, the hall, the rule, and three jobs it does for him."
+      },
+      {
+        "from": "5.mia",
+        "mood": "curious",
+        "why": "The one heart he cannot read. The wonder stops on this cut: it is the story saying 'but'. Jo is under this music too, and so is what he says to her."
+      },
+      {
+        "from": "7.walk",
+        "mood": "playful",
+        "why": "The first try: he walks into a door."
+      },
+      {
+        "from": "8.line",
+        "mood": "curious",
+        "why": "The second try works, and something is a little wrong: a seat is not saved, a friend walks home the other way. The music does not know which of the two matters, and neither does he."
+      },
+      {
+        "from": "10.dance",
+        "mood": "tense",
+        "why": "Friday: the card, the dog, the tie, the gym, the walk across it. A pulse that will not stop under four jokes and one question, and it grows the whole way."
+      },
+      {
+        "from": "12.shook",
+        "mood": "hope",
+        "why": "Her heart grows and he has never been so sure. The music believes him: it is as wrong as he is."
+      },
+      {
+        "from": "12.sure",
+        "at": 1.0,
+        "mood": "none",
+        "why": "It stops under 'of anything', and stays out under 'she was looking over my shoulder': the line is said into a room with no music in it."
+      },
+      {
+        "from": "13.leo",
+        "mood": "sad",
+        "why": "Leo. Then the biggest heart in school, and Jo at the gate with the smallest: understanding it, a week late."
+      },
+      {
+        "from": "13.step",
+        "mood": "hope",
+        "why": "One step, and it grows. The hopeful music again, and this time it is right. It stays through the next morning and the subscribe line: never a new tune for the last three seconds."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.what",
+      "to": "1.me",
+      "bed": "classroom",
+      "why": "The hall."
+    },
+    {
+      "from": "2.mom",
+      "to": "2.mirror",
+      "bed": "room",
+      "why": "The kitchen at home."
+    },
+    {
+      "from": "3.school",
+      "to": "4.ben",
+      "bed": "classroom"
+    },
+    {
+      "from": "4.lunch",
+      "to": "4.hands",
+      "bed": "crowd",
+      "trim": -3,
+      "why": "The lunch room and the gym: a lot of kids, some way off."
+    },
+    {
+      "from": "5.mia",
+      "to": "7.laugh",
+      "bed": "classroom"
+    },
+    {
+      "from": "8.line",
+      "to": "8.apart",
+      "bed": "crowd",
+      "trim": -2,
+      "why": "The lunch room."
+    },
+    {
+      "from": "9.smile",
+      "to": "9.ask",
+      "bed": "classroom"
+    },
+    {
+      "from": "9.home",
+      "to": "9.home",
+      "bed": "village",
+      "why": "The street outside the gate, by day."
+    },
+    {
+      "from": "10.dance",
+      "to": "10.dance",
+      "bed": "night",
+      "why": "Outside the gym after dark."
+    },
+    {
+      "from": "10.dance",
+      "to": "10.dance",
+      "bed": "crowd",
+      "trim": -5,
+      "why": "The dance, heard from the path."
+    },
+    {
+      "from": "10.card",
+      "to": "10.tie",
+      "bed": "room",
+      "why": "His room."
+    },
+    {
+      "from": "10.lights",
+      "to": "12.sure",
+      "bed": "crowd",
+      "why": "The dance."
+    },
+    {
+      "from": "10.jo",
+      "to": "10.jo",
+      "bed": "night",
+      "trim": -2,
+      "why": "He is in the doorway, looking out: the night comes in over the dance."
+    },
+    {
+      "from": "13.over",
+      "to": "13.over",
+      "bed": "room",
+      "why": "The dance has gone out of his ears: almost nothing."
+    },
+    {
+      "from": "13.leo",
+      "to": "13.leo",
+      "bed": "crowd",
+      "trim": -5,
+      "why": "It comes back, further off."
+    },
+    {
+      "from": "13.biggest",
+      "to": "13.biggest",
+      "bed": "classroom",
+      "why": "The classroom, remembered."
+    },
+    {
+      "from": "13.gate",
+      "to": "13.near",
+      "bed": "night",
+      "why": "The gate: crickets, and the party a long way behind."
+    },
+    {
+      "from": "14.gone",
+      "to": "14.sub",
+      "bed": "classroom",
+      "why": "The hall, the next morning."
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.what",
+      "at": 0.02,
+      "sfx": "power_up",
+      "dur": 0.5,
+      "trim": -3,
+      "why": "The first sound of the film: a power switching on. It goes out with the same notes falling at 14.gone."
+    },
+    {
+      "cue": "1.what",
+      "word": "see",
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "The first heart, over Jo, on 'see'. Every heart in the film pops with this pop at this pitch."
+    },
+    {
+      "cue": "1.what",
+      "word": "see",
+      "at": 0.06,
+      "sfx": "ding",
+      "note": "A6",
+      "trim": -3,
+      "why": "Jo's heart is the one that matters, and it has a note of its own. It rings again at 6.biggest, 13.biggest, 13.step and 13.near, and over HIS head at 14.loud."
+    },
+    {
+      "cue": "1.what",
+      "word": "crush",
+      "sfx": "sparkle",
+      "dur": 0.7,
+      "trim": -2,
+      "why": "The lens walks up to her and the heart grows. Every heart that grows makes this sound: the rule of the power, in the ear."
+    },
+    {
+      "cue": "1.what",
+      "word": "you",
+      "nth": 1,
+      "at": -0.18,
+      "sfx": "swish",
+      "trim": -3,
+      "why": "She waves at the lens."
+    },
+    {
+      "cue": "1.me",
+      "sfx": "swish",
+      "why": "The reverse: the one she waved at."
+    },
+    {
+      "cue": "1.me",
+      "word": "could",
+      "sfx": "blip",
+      "pitch": 1.2,
+      "why": "His grin: he can see it."
+    },
+    {
+      "cue": "2.mom",
+      "sfx": "whoosh",
+      "why": "Scene 2: breakfast."
+    },
+    {
+      "cue": "2.mom",
+      "at": 0.2,
+      "sfx": "rustle",
+      "dur": 0.35,
+      "trim": 1,
+      "why": "Mom turns round from the stove."
+    },
+    {
+      "cue": "2.mom",
+      "word": "pink",
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "Mom's heart, on 'pink'."
+    },
+    {
+      "cue": "2.mom",
+      "word": "floated",
+      "at": 0.1,
+      "sfx": "crackle",
+      "dur": 0.6,
+      "trim": -3,
+      "pan": -0.2,
+      "why": "Breakfast in the pan."
+    },
+    {
+      "cue": "2.dad",
+      "at": 0.03,
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.56,
+      "pan": 0.4,
+      "why": "Dad walks in: his legs are at full stride at 0.03 s and 0.59 s."
+    },
+    {
+      "cue": "2.dad",
+      "at": 0.3,
+      "sfx": "pop",
+      "pitch": 1.3,
+      "pan": 0.3,
+      "why": "Dad has one too: it pops as he comes through the door."
+    },
+    {
+      "cue": "2.dad",
+      "word": "doubled",
+      "at": -0.5,
+      "sfx": "sparkle",
+      "dur": 0.7,
+      "why": "Both hearts swell as he reaches her: 'it doubled'."
+    },
+    {
+      "cue": "2.dog",
+      "sfx": "swish",
+      "why": "Down to the dog."
+    },
+    {
+      "cue": "2.dog",
+      "at": 0.08,
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "Even the dog has one."
+    },
+    {
+      "cue": "2.dog",
+      "word": "for",
+      "at": -0.26,
+      "sfx": "tick",
+      "repeat": 4,
+      "every": 0.14,
+      "pitch": 1.4,
+      "trim": -1,
+      "why": "Claws on the kitchen floor: he trots to his bowl."
+    },
+    {
+      "cue": "2.dog",
+      "word": "for",
+      "at": -0.2,
+      "sfx": "sparkle",
+      "dur": 0.55,
+      "trim": -1,
+      "why": "His heart grows with every step towards his dinner."
+    },
+    {
+      "cue": "2.mirror",
+      "sfx": "swish",
+      "why": "To the mirror."
+    },
+    {
+      "cue": "2.mirror",
+      "word": "could",
+      "sfx": "blip",
+      "pitch": 0.8,
+      "trim": 2,
+      "why": "He looks up for his own, and there is nothing. A question, not a pop: the film answers it at 14.loud."
+    },
+    {
+      "cue": "2.mirror",
+      "word": "see",
+      "sfx": "swish",
+      "repeat": 2,
+      "every": 0.35,
+      "trim": -4,
+      "why": "His head goes from side to side, looking."
+    },
+    {
+      "cue": "3.school",
+      "sfx": "whoosh",
+      "why": "Scene 3: school."
+    },
+    {
+      "cue": "3.school",
+      "at": 0.05,
+      "sfx": "school_bell",
+      "dur": 0.8,
+      "trim": -3,
+      "why": "The school bell: it rings three times in the film. Here, when school is out (9.home), and the next morning (14.gone)."
+    },
+    {
+      "cue": "3.school",
+      "at": 0.35,
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 1.08,
+      "trim": -1,
+      "why": "He walks up the hall: full stride at 0.35 s and 1.43 s."
+    },
+    {
+      "cue": "3.school",
+      "word": "hearts",
+      "at": -0.45,
+      "sfx": "pop",
+      "repeat": 8,
+      "every": 0.11,
+      "pitch": 1.3,
+      "pitchStep": 1.03,
+      "trim": -3,
+      "why": "Hearts pop over one head after another, down the hall: 'everywhere'. Eight of them, 0.11 s apart, as in scene3."
+    },
+    {
+      "cue": "3.grew",
+      "sfx": "swish",
+      "why": "A quick cut inside the rule."
+    },
+    {
+      "cue": "3.grew",
+      "at": 0.49,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.35,
+      "pan": 0.4,
+      "trim": -1,
+      "why": "The boy comes along the hall: full stride at 0.49 s, 0.85 s and 1.19 s."
+    },
+    {
+      "cue": "3.grew",
+      "at": 0.3,
+      "sfx": "sparkle",
+      "dur": 1.3,
+      "pan": -0.2,
+      "why": "Her heart swells as he comes: the rule, said and shown."
+    },
+    {
+      "cue": "3.teacher",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Into the classroom."
+    },
+    {
+      "cue": "3.teacher",
+      "at": 0.43,
+      "sfx": "step_wood",
+      "repeat": 4,
+      "every": 0.527,
+      "pan": 0.2,
+      "trim": -1,
+      "why": "The gym teacher strolls through: full stride at 0.43, 0.95, 1.48 and 2.01 s."
+    },
+    {
+      "cue": "3.teacher",
+      "word": "filled",
+      "at": -0.2,
+      "sfx": "sparkle",
+      "dur": 1.5,
+      "why": "The math teacher's heart blows up behind her."
+    },
+    {
+      "cue": "3.teacher",
+      "word": "filled",
+      "at": 0.1,
+      "sfx": "slide_up",
+      "dur": 1.2,
+      "trim": -1,
+      "why": "It fills the room: the first joke of the power. A heart that grows too big gets a slide whistle on top of the sparkle: here, at the lunch line (8.ceiling) and at the dance (12.grew)."
+    },
+    {
+      "cue": "3.never",
+      "sfx": "swish",
+      "why": "Back to the hall: one heart and two boys."
+    },
+    {
+      "cue": "3.never",
+      "at": 0.3,
+      "sfx": "swish",
+      "repeat": 2,
+      "every": 0.6,
+      "trim": -1,
+      "why": "He looks from one to the other: his head is hard over at 0.3 s and 0.9 s."
+    },
+    {
+      "cue": "3.never",
+      "word": "who",
+      "sfx": "blip",
+      "pitch": 0.8,
+      "trim": 2,
+      "why": "'Who it was for': the question of the film, and its sound. A low blip wherever he does not know."
+    },
+    {
+      "cue": "3.never",
+      "word": "who",
+      "at": 0.12,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "trim": -2,
+      "why": "He shrugs."
+    },
+    {
+      "cue": "3.guess",
+      "sfx": "swish",
+      "why": "Closer."
+    },
+    {
+      "cue": "3.guess",
+      "word": "what",
+      "at": 0.02,
+      "sfx": "step_stone",
+      "pan": 0.4,
+      "why": "The boy on the right takes one step towards her."
+    },
+    {
+      "cue": "3.guess",
+      "word": "made",
+      "at": -0.05,
+      "sfx": "sparkle",
+      "dur": 0.45,
+      "why": "And the heart jumps: that is how he reads a heart."
+    },
+    {
+      "cue": "3.guess",
+      "word": "grow",
+      "sfx": "blip",
+      "pitch": 1.2,
+      "why": "He points: got it."
+    },
+    {
+      "cue": "4.ben",
+      "sfx": "whoosh",
+      "why": "Scene 4: he puts it to work."
+    },
+    {
+      "cue": "4.ben",
+      "word": "doubled",
+      "at": -0.2,
+      "sfx": "creak",
+      "dur": 0.3,
+      "trim": -1,
+      "pan": 0.2,
+      "why": "Ben sits: his chair."
+    },
+    {
+      "cue": "4.ben",
+      "word": "doubled",
+      "at": -0.28,
+      "sfx": "sparkle",
+      "dur": 0.4,
+      "why": "Lily's heart doubles as he sits."
+    },
+    {
+      "cue": "4.ben",
+      "word": "sat",
+      "at": -0.05,
+      "sfx": "creak",
+      "dur": 0.3,
+      "trim": -1,
+      "pan": 0.2,
+      "why": "He sits again."
+    },
+    {
+      "cue": "4.ben",
+      "word": "sat",
+      "at": -0.1,
+      "sfx": "sparkle",
+      "dur": 0.4,
+      "trim": -2,
+      "why": "And it doubles again."
+    },
+    {
+      "cue": "4.lunch",
+      "sfx": "swish",
+      "why": "By lunch."
+    },
+    {
+      "cue": "4.lunch",
+      "word": "sharing",
+      "sfx": "chime",
+      "why": "It worked: their heads come together over a sandwich."
+    },
+    {
+      "cue": "4.cookie",
+      "sfx": "swish",
+      "why": "By Wednesday."
+    },
+    {
+      "cue": "4.cookie",
+      "at": 0.2,
+      "sfx": "place",
+      "repeat": 6,
+      "every": 0.21,
+      "trim": -2,
+      "why": "The pile of cookies climbs: one for each question."
+    },
+    {
+      "cue": "4.cookie",
+      "word": "cookie",
+      "at": -0.1,
+      "sfx": "register",
+      "trim": -2,
+      "why": "A cookie paid on 'cookie': he has a business."
+    },
+    {
+      "cue": "4.hands",
+      "sfx": "whoosh",
+      "why": "By Friday: the gym."
+    },
+    {
+      "cue": "4.hands",
+      "at": 0.11,
+      "sfx": "step_wood",
+      "repeat": 9,
+      "every": 0.337,
+      "trim": -1,
+      "why": "The class runs laps round the two teachers: a foot comes down every 0.34 s."
+    },
+    {
+      "cue": "4.hands",
+      "word": "holding",
+      "at": -0.45,
+      "sfx": "sparkle",
+      "dur": 0.7,
+      "why": "Their two hearts grow as their heads come together."
+    },
+    {
+      "cue": "4.hands",
+      "word": "hands",
+      "at": -0.05,
+      "sfx": "chime",
+      "why": "Holding hands."
+    },
+    {
+      "cue": "5.mia",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Scene 5: Mia. The music has changed on this cut: the story says 'but'."
+    },
+    {
+      "cue": "5.mia",
+      "at": 0.3,
+      "sfx": "scrape",
+      "dur": 0.3,
+      "trim": -4,
+      "pan": -0.2,
+      "why": "Her pencil."
+    },
+    {
+      "cue": "5.mia",
+      "word": "cared",
+      "sfx": "scrape",
+      "dur": 0.25,
+      "trim": -4,
+      "pan": -0.2,
+      "why": "Her pencil again."
+    },
+    {
+      "cue": "5.mia",
+      "word": "mia's",
+      "sfx": "blip",
+      "pitch": 1.2,
+      "why": "She looks up and smiles: at the board, not at him."
+    },
+    {
+      "cue": "5.small",
+      "sfx": "swish",
+      "why": "Her column of desks, from the board."
+    },
+    {
+      "cue": "5.small",
+      "word": "window",
+      "sfx": "rustle",
+      "dur": 0.35,
+      "trim": -2,
+      "why": "She turns to the window."
+    },
+    {
+      "cue": "5.small",
+      "word": "small",
+      "sfx": "plink",
+      "pitch": 1.3,
+      "trim": 2,
+      "why": "'Small': one small high pluck. It is the sound of a heart that does not grow, here, at 7.walk, 7.laugh and under the lights (10.lights)."
+    },
+    {
+      "cue": "5.forme",
+      "sfx": "swish",
+      "why": "His face."
+    },
+    {
+      "cue": "5.forme",
+      "word": "me",
+      "sfx": "blip",
+      "pitch": 0.8,
+      "trim": 2,
+      "why": "'Could it be for me?': the low blip of not knowing."
+    },
+    {
+      "cue": "5.forme",
+      "word": "know",
+      "sfx": "stamp",
+      "trim": -3,
+      "why": "'I had to know': he nods, hard. A decision."
+    },
+    {
+      "cue": "6.jo",
+      "sfx": "whoosh",
+      "trim": -1,
+      "why": "Scene 6: Jo."
+    },
+    {
+      "cue": "6.jo",
+      "at": 0.25,
+      "sfx": "creak",
+      "dur": 0.4,
+      "trim": -1,
+      "why": "He swings round in his chair to her."
+    },
+    {
+      "cue": "6.jo",
+      "word": "jo",
+      "sfx": "blip",
+      "pitch": 1.3,
+      "why": "Jo grins at him."
+    },
+    {
+      "cue": "6.biggest",
+      "at": 0.45,
+      "sfx": "whoosh_low",
+      "dur": 0.8,
+      "trim": -1,
+      "why": "The lens goes in under the biggest heart in the school."
+    },
+    {
+      "cue": "6.biggest",
+      "word": "biggest",
+      "sfx": "ding",
+      "note": "A6",
+      "trim": -1,
+      "why": "Jo's note again, on 'biggest'. Nobody says why it is this big."
+    },
+    {
+      "cue": "6.lucky",
+      "sfx": "swish",
+      "why": "Her face, from where he sits."
+    },
+    {
+      "cue": "6.lucky",
+      "word": "he",
+      "sfx": "plink",
+      "pitch": 0.7,
+      "trim": 2,
+      "why": "'Whoever he is': her smile stops. One low drop. This is the sound of what he does to Jo: it falls again at 8.seat, 8.apart, 9.ask, 9.home and 10.jo."
+    },
+    {
+      "cue": "6.lucky",
+      "word": "guy",
+      "at": -0.05,
+      "sfx": "drop",
+      "dur": 0.6,
+      "trim": -5,
+      "why": "'One lucky guy': her face falls and her eyes go down."
+    },
+    {
+      "cue": "6.lucky",
+      "word": "guy",
+      "at": 0.3,
+      "sfx": "scrape",
+      "dur": 0.25,
+      "trim": -2,
+      "why": "Her hand goes to the eraser on her desk."
+    },
+    {
+      "cue": "6.eraser",
+      "sfx": "swish",
+      "why": "He has turned back to the front."
+    },
+    {
+      "cue": "6.eraser",
+      "word": "my",
+      "at": -0.2,
+      "sfx": "zip",
+      "dur": 0.18,
+      "pan": -0.3,
+      "why": "The eraser leaves her hand, 0.2 s before it lands."
+    },
+    {
+      "cue": "6.eraser",
+      "word": "my",
+      "sfx": "bonk",
+      "trim": 2,
+      "why": "Off the back of his head, on 'my head'. The same knock comes back on the last word of the film."
+    },
+    {
+      "cue": "6.eraser",
+      "word": "my",
+      "at": 0.1,
+      "sfx": "boing",
+      "dur": 0.4,
+      "trim": -4,
+      "why": "And away it bounces."
+    },
+    {
+      "cue": "7.walk",
+      "sfx": "whoosh",
+      "why": "Scene 7: the first try. The music turns silly on this cut."
+    },
+    {
+      "cue": "7.walk",
+      "at": 0.91,
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.93,
+      "trim": -2,
+      "pan": 0.3,
+      "why": "On tiptoe along the front of the room: a foot down at 0.91 s and 1.84 s."
+    },
+    {
+      "cue": "7.walk",
+      "word": "grow",
+      "sfx": "plink",
+      "pitch": 1.3,
+      "trim": 1,
+      "why": "He watches her heart. It does not grow: the small pluck, not the sparkle."
+    },
+    {
+      "cue": "7.walk",
+      "word": "heart",
+      "at": 0.1,
+      "sfx": "swish",
+      "why": "He turns round to keep watching it: his back is now the way he is going."
+    },
+    {
+      "cue": "7.watch",
+      "sfx": "swish",
+      "why": "His face, walking backwards."
+    },
+    {
+      "cue": "7.watch",
+      "at": 0.05,
+      "sfx": "step_wood",
+      "repeat": 4,
+      "every": 0.404,
+      "trim": -1,
+      "why": "Backwards: full stride at 0.05, 0.46, 0.86 and 1.26 s."
+    },
+    {
+      "cue": "7.door",
+      "word": "door",
+      "sfx": "riser",
+      "dur": 1.5,
+      "trim": -5,
+      "why": "The door is coming up behind him. It rises through two shots and ends on the back of his head."
+    },
+    {
+      "cue": "7.door",
+      "at": 0.33,
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One more step."
+    },
+    {
+      "cue": "7.door",
+      "word": "door",
+      "sfx": "hit",
+      "trim": -5,
+      "why": "The door, on 'door'. Kept under the word: he says it as it happens."
+    },
+    {
+      "cue": "7.door",
+      "word": "door",
+      "at": 0.03,
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "And his head on it: the eraser's knock."
+    },
+    {
+      "cue": "7.door",
+      "word": "door",
+      "at": 0.34,
+      "sfx": "boing",
+      "dur": 0.45,
+      "trim": -2,
+      "why": "He bounces off it, after the word."
+    },
+    {
+      "cue": "7.laugh",
+      "at": 0.08,
+      "sfx": "cheer",
+      "dur": 1.2,
+      "trim": -1,
+      "why": "The whole class goes up."
+    },
+    {
+      "cue": "7.laugh",
+      "word": "move",
+      "sfx": "plink",
+      "pitch": 1.3,
+      "trim": 2,
+      "why": "'Did not move at all': the lens goes in on her heart, and it is the size it was."
+    },
+    {
+      "cue": "7.laugh",
+      "word": "all",
+      "at": 0.1,
+      "sfx": "blip",
+      "pitch": 0.8,
+      "trim": 1,
+      "why": "And he does not know why."
+    },
+    {
+      "cue": "8.line",
+      "sfx": "whoosh",
+      "why": "Scene 8: the lunch room."
+    },
+    {
+      "cue": "8.line",
+      "at": 0.52,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.505,
+      "pan": 0.4,
+      "why": "He runs for the place behind her: a foot down at 0.52, 1.08 and 1.53 s."
+    },
+    {
+      "cue": "8.line",
+      "word": "spot",
+      "at": -0.14,
+      "sfx": "scrape",
+      "dur": 0.3,
+      "trim": 1,
+      "why": "He brakes into it on 'spot'."
+    },
+    {
+      "cue": "8.line",
+      "at": 1.55,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.255,
+      "pan": 0.6,
+      "trim": 2,
+      "why": "The tall kid in green walks up right behind him: 1.55, 1.80, 2.06 s. Listen to the right: these steps are the reason for what her heart does next."
+    },
+    {
+      "cue": "8.line",
+      "word": "right",
+      "at": -0.1,
+      "sfx": "sparkle",
+      "dur": 0.75,
+      "pan": -0.3,
+      "why": "And her heart starts to grow."
+    },
+    {
+      "cue": "8.ceiling",
+      "sfx": "swish",
+      "why": "From low down, the ceiling in the frame."
+    },
+    {
+      "cue": "8.ceiling",
+      "at": 0.18,
+      "sfx": "sparkle",
+      "dur": 1.3,
+      "why": "Up and up."
+    },
+    {
+      "cue": "8.ceiling",
+      "word": "grew",
+      "at": -0.1,
+      "sfx": "slide_up",
+      "dur": 1.2,
+      "trim": -1,
+      "why": "Too big: the slide whistle of the math teacher's heart."
+    },
+    {
+      "cue": "8.ceiling",
+      "word": "ceiling",
+      "sfx": "thud",
+      "trim": 1,
+      "why": "It bumps the ceiling on 'ceiling'."
+    },
+    {
+      "cue": "8.ceiling",
+      "word": "ceiling",
+      "at": 0.06,
+      "sfx": "debris",
+      "dur": 0.6,
+      "why": "And the dust comes down."
+    },
+    {
+      "cue": "8.mine",
+      "sfx": "swish",
+      "why": "His face, from where the heart is."
+    },
+    {
+      "cue": "8.mine",
+      "word": "me",
+      "sfx": "boing",
+      "dur": 0.4,
+      "trim": -1,
+      "why": "'For me': he bounces on his toes."
+    },
+    {
+      "cue": "8.mine",
+      "word": "me",
+      "at": 0.12,
+      "sfx": "chime",
+      "trim": -2,
+      "why": "He is sure. The same chime rings at 12.sure, and he is as wrong there."
+    },
+    {
+      "cue": "8.seat",
+      "sfx": "swish",
+      "why": "His table, full."
+    },
+    {
+      "cue": "8.seat",
+      "at": 0.09,
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 0.26,
+      "pan": 0.4,
+      "trim": -1,
+      "why": "Jo comes along behind the bench with her tray: 0.09 s and 0.35 s."
+    },
+    {
+      "cue": "8.seat",
+      "word": "seat",
+      "sfx": "plink",
+      "pitch": 0.7,
+      "trim": 2,
+      "why": "No place for her: Jo's drop."
+    },
+    {
+      "cue": "8.seat",
+      "at": 1.36,
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 0.24,
+      "pan": 0.4,
+      "trim": -1,
+      "why": "She turns and goes: 1.36 s and 1.60 s."
+    },
+    {
+      "cue": "8.seat",
+      "word": "seat",
+      "at": 0.2,
+      "sfx": "power_down",
+      "dur": 0.45,
+      "trim": -4,
+      "pan": 0.3,
+      "why": "Her heart shrinks as she walks away from him: the sparkle's notes, falling. It is quiet, because he does not hear it."
+    },
+    {
+      "cue": "8.apart",
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "The whole room between them."
+    },
+    {
+      "cue": "8.apart",
+      "at": 0.3,
+      "sfx": "cheer",
+      "dur": 0.9,
+      "trim": -4,
+      "pan": -0.4,
+      "why": "His table, small and loud in the far corner."
+    },
+    {
+      "cue": "8.apart",
+      "word": "eaten",
+      "sfx": "place",
+      "trim": -3,
+      "why": "She looks at her tray."
+    },
+    {
+      "cue": "8.apart",
+      "word": "apart",
+      "sfx": "plink",
+      "pitch": 0.62,
+      "trim": 2,
+      "why": "'Apart': the drop again, lower."
+    },
+    {
+      "cue": "9.smile",
+      "sfx": "whoosh",
+      "why": "Scene 9: the lockers, after lunch."
+    },
+    {
+      "cue": "9.smile",
+      "at": 0.01,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.2,
+      "pan": 0.4,
+      "trim": -1,
+      "why": "Jo walks up to him: 0.01, 0.20, 0.42 s."
+    },
+    {
+      "cue": "9.smile",
+      "at": 0.05,
+      "sfx": "sparkle",
+      "dur": 0.5,
+      "trim": -2,
+      "pan": 0.3,
+      "why": "Her heart swells with every step towards him. Nobody says so."
+    },
+    {
+      "cue": "9.smile",
+      "word": "smiling",
+      "at": -0.12,
+      "sfx": "swish",
+      "repeat": 2,
+      "every": 0.24,
+      "trim": -2,
+      "why": "She waves a hand in front of his face."
+    },
+    {
+      "cue": "9.smile",
+      "word": "nothing",
+      "sfx": "blip",
+      "pitch": 0.8,
+      "why": "'At nothing': he does not see the hand either."
+    },
+    {
+      "cue": "9.ask",
+      "sfx": "swish",
+      "why": "Her face, from low down."
+    },
+    {
+      "cue": "9.ask",
+      "word": "mia",
+      "at": 0.15,
+      "sfx": "plink",
+      "pitch": 0.7,
+      "trim": 2,
+      "why": "'About Mia': her smile goes."
+    },
+    {
+      "cue": "9.ask",
+      "word": "ask",
+      "at": -0.32,
+      "sfx": "pop",
+      "pitch": 0.8,
+      "why": "Her speech bubble. A bubble pops lower than a heart."
+    },
+    {
+      "cue": "9.ask",
+      "word": "ask",
+      "sfx": "blip",
+      "pitch": 1.0,
+      "trim": 2,
+      "why": "ASK"
+    },
+    {
+      "cue": "9.ask",
+      "word": "her",
+      "nth": 1,
+      "sfx": "blip",
+      "pitch": 0.9,
+      "trim": 2,
+      "why": "HER"
+    },
+    {
+      "cue": "9.home",
+      "sfx": "whoosh",
+      "why": "The school gate, after the bell."
+    },
+    {
+      "cue": "9.home",
+      "at": 0.02,
+      "sfx": "school_bell",
+      "dur": 0.7,
+      "trim": -4,
+      "why": "School is out: the bell a second time."
+    },
+    {
+      "cue": "9.home",
+      "at": 0.06,
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.405,
+      "pan": 0.3,
+      "trim": -3,
+      "why": "He goes right, the way they always walk, and never slows: 0.06, 0.47, 0.87, 1.28 s."
+    },
+    {
+      "cue": "9.home",
+      "word": "she",
+      "at": 0.12,
+      "sfx": "plink",
+      "pitch": 0.7,
+      "trim": 2,
+      "why": "She turns the other way."
+    },
+    {
+      "cue": "9.home",
+      "at": 0.86,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.47,
+      "pan": -0.2,
+      "why": "Her steps, towards us: 0.86, 1.33, 1.80 s."
+    },
+    {
+      "cue": "9.home",
+      "word": "walked",
+      "at": 0.1,
+      "sfx": "power_down",
+      "dur": 1.0,
+      "trim": -3,
+      "pan": -0.2,
+      "why": "And the heart over her shrinks with every step he takes."
+    },
+    {
+      "cue": "10.dance",
+      "sfx": "whoosh",
+      "dur": 0.6,
+      "why": "Scene 10: Friday night. The lens runs up the path."
+    },
+    {
+      "cue": "10.dance",
+      "at": 0.0,
+      "sfx": "thud",
+      "repeat": 4,
+      "every": 0.42,
+      "trim": -1,
+      "why": "The dance, through the wall: one thump for each ring that comes out of the door."
+    },
+    {
+      "cue": "10.dance",
+      "at": 0.31,
+      "sfx": "step_stone",
+      "repeat": 4,
+      "every": 0.335,
+      "trim": -3,
+      "why": "Kids running in ahead of us: 0.31, 0.64, 0.98, 1.32 s."
+    },
+    {
+      "cue": "10.dance",
+      "word": "night",
+      "at": -0.15,
+      "sfx": "cheer",
+      "dur": 0.8,
+      "trim": -2,
+      "why": "The door: the party comes out of it on 'night'."
+    },
+    {
+      "cue": "10.card",
+      "sfx": "swish",
+      "why": "His desk, from above."
+    },
+    {
+      "cue": "10.card",
+      "at": 0.236,
+      "sfx": "tick",
+      "repeat": 5,
+      "every": 0.136,
+      "pitch": 1.5,
+      "trim": 1,
+      "why": "The pencil: five letters go on after the first, 0.136 s apart, as in scene10."
+    },
+    {
+      "cue": "10.card",
+      "word": "card",
+      "sfx": "paper",
+      "trim": 2,
+      "why": "The card is done on 'card'."
+    },
+    {
+      "cue": "10.dog",
+      "sfx": "swish",
+      "why": "The floor of his room."
+    },
+    {
+      "cue": "10.dog",
+      "word": "practised",
+      "at": 0.05,
+      "sfx": "rustle",
+      "dur": 0.35,
+      "trim": -1,
+      "why": "He holds the card out to the dog with his eyes shut."
+    },
+    {
+      "cue": "10.dog",
+      "word": "yes",
+      "sfx": "boing",
+      "dur": 0.45,
+      "why": "The dog jumps."
+    },
+    {
+      "cue": "10.dog",
+      "word": "yes",
+      "at": 0.02,
+      "sfx": "blip",
+      "repeat": 2,
+      "every": 0.2,
+      "pitch": 0.6,
+      "trim": 3,
+      "why": "'He said yes': two low blips are a bark."
+    },
+    {
+      "cue": "10.dog",
+      "word": "yes",
+      "at": 0.3,
+      "sfx": "chime",
+      "trim": -3,
+      "why": "Both his fists go up."
+    },
+    {
+      "cue": "10.tie",
+      "sfx": "swish",
+      "why": "The tie."
+    },
+    {
+      "cue": "10.tie",
+      "at": 0.3,
+      "sfx": "rustle",
+      "dur": 0.5,
+      "why": "He pulls the knot up under his chin."
+    },
+    {
+      "cue": "10.tie",
+      "word": "tie",
+      "sfx": "zip",
+      "dur": 0.14,
+      "trim": -2,
+      "why": "Tight."
+    },
+    {
+      "cue": "10.tie",
+      "word": "knees",
+      "at": -0.6,
+      "sfx": "slide_down",
+      "dur": 0.6,
+      "why": "The lens goes down the tie, and down."
+    },
+    {
+      "cue": "10.tie",
+      "word": "knees",
+      "sfx": "boing",
+      "dur": 0.4,
+      "trim": -1,
+      "why": "It ends at his knees."
+    },
+    {
+      "cue": "10.lights",
+      "sfx": "whoosh",
+      "why": "The dance, from the door."
+    },
+    {
+      "cue": "10.lights",
+      "at": 0.15,
+      "sfx": "cheer",
+      "dur": 1.3,
+      "trim": -3,
+      "why": "Everybody jumping."
+    },
+    {
+      "cue": "10.lights",
+      "at": 0.0,
+      "sfx": "thud",
+      "repeat": 6,
+      "every": 0.604,
+      "trim": -1,
+      "why": "The beat of the dance: the dancers land every 0.6 s."
+    },
+    {
+      "cue": "10.lights",
+      "p": 0.42,
+      "sfx": "whoosh_low",
+      "dur": 1.6,
+      "trim": -1,
+      "why": "The lens goes in between the dancers, all the way to her."
+    },
+    {
+      "cue": "10.lights",
+      "word": "small",
+      "sfx": "plink",
+      "pitch": 1.3,
+      "trim": 3,
+      "why": "'Her heart was small': the small pluck."
+    },
+    {
+      "cue": "10.lights",
+      "word": "not",
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.125,
+      "pitchStep": 1.12,
+      "trim": 2,
+      "why": "'Not for long': three ticks, climbing."
+    },
+    {
+      "cue": "10.jo",
+      "sfx": "swish",
+      "why": "The other way: out of the door, to the gate."
+    },
+    {
+      "cue": "10.jo",
+      "at": 0.45,
+      "sfx": "gust",
+      "dur": 1.0,
+      "why": "The dark path, and nobody at the end of it."
+    },
+    {
+      "cue": "10.jo",
+      "word": "not",
+      "sfx": "plink",
+      "pitch": 0.7,
+      "trim": 2,
+      "why": "'Not coming': Jo's drop, with nobody under it."
+    },
+    {
+      "cue": "10.jo",
+      "word": "not",
+      "at": 0.05,
+      "sfx": "rustle",
+      "dur": 0.35,
+      "trim": 1,
+      "why": "He turns his back on the gate."
+    },
+    {
+      "cue": "11.walk",
+      "sfx": "whoosh",
+      "why": "Scene 11: across the gym."
+    },
+    {
+      "cue": "11.walk",
+      "at": 0.03,
+      "sfx": "step_wood",
+      "repeat": 5,
+      "every": 0.248,
+      "trim": 1,
+      "why": "His feet, over the dance: 0.03, 0.27, 0.52, 0.77, 1.02 s."
+    },
+    {
+      "cue": "11.walk",
+      "at": 0.5,
+      "sfx": "heartbeat",
+      "trim": 1,
+      "why": "His."
+    },
+    {
+      "cue": "11.card",
+      "sfx": "swish",
+      "why": "The two of them in the white beam."
+    },
+    {
+      "cue": "11.card",
+      "word": "held",
+      "sfx": "zip",
+      "dur": 0.15,
+      "why": "The card snaps up at arm's length on 'held out'."
+    },
+    {
+      "cue": "11.card",
+      "word": "out",
+      "sfx": "paper",
+      "trim": 2,
+      "why": "The card."
+    },
+    {
+      "cue": "11.card",
+      "word": "card",
+      "at": 0.1,
+      "sfx": "heartbeat",
+      "trim": -1,
+      "why": "His."
+    },
+    {
+      "cue": "11.ask",
+      "sfx": "swish",
+      "trim": 1,
+      "why": "Her face, past his shoulder."
+    },
+    {
+      "cue": "11.ask",
+      "word": "dance",
+      "at": 0.05,
+      "sfx": "blip",
+      "pitch": 1.2,
+      "why": "She looks up from the card at him."
+    },
+    {
+      "cue": "11.ask",
+      "word": "me",
+      "at": 0.05,
+      "sfx": "heartbeat",
+      "why": "The last second in which he does not know."
+    },
+    {
+      "cue": "12.shook",
+      "sfx": "swish",
+      "why": "Her heart, closer. The music turns hopeful on this cut: it believes him."
+    },
+    {
+      "cue": "12.shook",
+      "word": "shook",
+      "sfx": "boing",
+      "dur": 0.4,
+      "why": "It rattles, like a thing that has been knocked."
+    },
+    {
+      "cue": "12.shook",
+      "word": "shook",
+      "at": 0.02,
+      "sfx": "tick",
+      "repeat": 4,
+      "every": 0.06,
+      "pitch": 1.5,
+      "trim": -1,
+      "why": "The rattle."
+    },
+    {
+      "cue": "12.grew",
+      "sfx": "whoosh",
+      "trim": -1,
+      "why": "Wide: the lunch line again, at a dance."
+    },
+    {
+      "cue": "12.grew",
+      "at": 0.38,
+      "sfx": "step_wood",
+      "repeat": 4,
+      "every": 0.26,
+      "pan": 0.55,
+      "trim": -1,
+      "why": "The tall kid in green walks in with two cups: 0.38, 0.66, 0.90, 1.16 s. On the right again, under the sparkle: the reason."
+    },
+    {
+      "cue": "12.grew",
+      "at": 0.1,
+      "sfx": "sparkle",
+      "dur": 1.5,
+      "trim": 1,
+      "why": "Her heart swells: the sound of every heart that has grown in this film."
+    },
+    {
+      "cue": "12.grew",
+      "word": "grew",
+      "at": -0.1,
+      "sfx": "slide_up",
+      "dur": 1.3,
+      "trim": -1,
+      "why": "Past anything he has seen: the whistle of the lunch line."
+    },
+    {
+      "cue": "12.grew",
+      "word": "seen",
+      "at": 0.05,
+      "sfx": "chime",
+      "trim": -1,
+      "why": "It stops growing when he stops walking."
+    },
+    {
+      "cue": "12.sure",
+      "sfx": "swish",
+      "why": "His face, from where the heart is."
+    },
+    {
+      "cue": "12.sure",
+      "at": 0.4,
+      "sfx": "rustle",
+      "dur": 0.35,
+      "trim": -2,
+      "pan": 0.3,
+      "why": "Behind him, a cup is held out past his shoulder."
+    },
+    {
+      "cue": "12.sure",
+      "word": "sure",
+      "sfx": "chime",
+      "trim": -2,
+      "why": "'So sure': the chime of 'it had to be for me'."
+    },
+    {
+      "cue": "12.sure",
+      "word": "anything",
+      "at": 0.1,
+      "sfx": "heartbeat",
+      "trim": -2,
+      "why": "The music has stopped. His heart has not."
+    },
+    {
+      "cue": "12.sure",
+      "word": "anything",
+      "at": 0.55,
+      "sfx": "heartbeat",
+      "trim": -2,
+      "why": "Once more."
+    },
+    {
+      "cue": "13.over",
+      "sfx": "riser",
+      "dur": 0.9,
+      "trim": -6,
+      "why": "Through the silence, into the cut."
+    },
+    {
+      "cue": "13.over",
+      "at": 0.02,
+      "sfx": "boom",
+      "trim": -5,
+      "why": "The reveal. The only one in the film."
+    },
+    {
+      "cue": "13.over",
+      "word": "over",
+      "at": -0.1,
+      "sfx": "swish",
+      "trim": -2,
+      "why": "She lifts a hand: to the lens, not to him."
+    },
+    {
+      "cue": "13.over",
+      "word": "shoulder",
+      "sfx": "drop",
+      "dur": 0.9,
+      "trim": -1,
+      "why": "'Over my shoulder': the floor goes out from under him."
+    },
+    {
+      "cue": "13.leo",
+      "sfx": "swish",
+      "why": "The lunch line picture a third time."
+    },
+    {
+      "cue": "13.leo",
+      "word": "right",
+      "at": -0.15,
+      "sfx": "swish",
+      "trim": 1,
+      "why": "And now he looks: his head goes round."
+    },
+    {
+      "cue": "13.leo",
+      "word": "behind",
+      "sfx": "sting",
+      "trim": -7,
+      "why": "'Right behind me': there he is."
+    },
+    {
+      "cue": "13.leo",
+      "at": 1.47,
+      "sfx": "step_wood",
+      "repeat": 2,
+      "every": 0.32,
+      "pan": 0.3,
+      "trim": 2,
+      "why": "Leo steps round him, to her: 1.47 s and 1.79 s."
+    },
+    {
+      "cue": "13.leo",
+      "word": "lunch",
+      "sfx": "blip",
+      "pitch": 0.8,
+      "trim": 1,
+      "why": "'Just like in the lunch line': now he knows what he did not know there."
+    },
+    {
+      "cue": "13.biggest",
+      "at": 0.0,
+      "sfx": "glitch",
+      "dur": 0.4,
+      "trim": -2,
+      "why": "A moment played twice: the picture of 5.forme, in daylight, as it was all week."
+    },
+    {
+      "cue": "13.biggest",
+      "at": 0.3,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "trim": -1,
+      "why": "Her hand goes out to tap his shoulder."
+    },
+    {
+      "cue": "13.biggest",
+      "word": "biggest",
+      "sfx": "ding",
+      "note": "A6",
+      "why": "'The biggest heart in school': Jo's note."
+    },
+    {
+      "cue": "13.biggest",
+      "word": "school",
+      "at": -0.05,
+      "sfx": "plink",
+      "pitch": 0.7,
+      "trim": 1,
+      "why": "The hand comes back without doing it: her drop, one last time."
+    },
+    {
+      "cue": "13.gate",
+      "p": 0.4,
+      "sfx": "whoosh_low",
+      "dur": 2.2,
+      "trim": -1,
+      "why": "The lens leaves him in the doorway and flies down the dark path to the gate: the longest move in the film."
+    },
+    {
+      "cue": "13.gate",
+      "word": "long",
+      "sfx": "gust",
+      "dur": 1.2,
+      "trim": -3,
+      "why": "Night air: the gust of the empty gate at 10.jo. This time somebody is there."
+    },
+    {
+      "cue": "13.gate",
+      "word": "tiny",
+      "sfx": "ding",
+      "note": "A7",
+      "trim": -2,
+      "why": "'Tiny': her note, an octave up, as small as a bell gets."
+    },
+    {
+      "cue": "13.step",
+      "sfx": "swish",
+      "why": "From behind her, the lit door at the far end."
+    },
+    {
+      "cue": "13.step",
+      "word": "step",
+      "at": 0.2,
+      "sfx": "step_stone",
+      "trim": 4,
+      "why": "One step, out onto the path."
+    },
+    {
+      "cue": "13.step",
+      "word": "grew",
+      "at": -0.1,
+      "sfx": "sparkle",
+      "dur": 0.6,
+      "trim": 2,
+      "why": "And fourteen metres away the heart over her head grows. The same sparkle: this time it means what he thought it meant."
+    },
+    {
+      "cue": "13.step",
+      "word": "grew",
+      "sfx": "ding",
+      "note": "A6",
+      "trim": -2,
+      "why": "Her note, on 'grew'."
+    },
+    {
+      "cue": "13.near",
+      "sfx": "swish",
+      "why": "The same height, through the gate."
+    },
+    {
+      "cue": "13.near",
+      "at": 0.1,
+      "sfx": "step_stone",
+      "repeat": 6,
+      "every": 0.2,
+      "trim": -3,
+      "pan": -0.1,
+      "why": "He runs. Far off at first: 0.10, 0.28, 0.47, 0.67, 0.88, 1.11 s."
+    },
+    {
+      "cue": "13.near",
+      "at": 1.37,
+      "sfx": "step_stone",
+      "pan": -0.2,
+      "why": "Nearer, and slowing: 1.37 s."
+    },
+    {
+      "cue": "13.near",
+      "at": 1.69,
+      "sfx": "step_stone",
+      "trim": 1,
+      "pan": -0.3,
+      "why": "1.69 s."
+    },
+    {
+      "cue": "13.near",
+      "at": 0.2,
+      "sfx": "sparkle",
+      "dur": 1.9,
+      "pan": 0.3,
+      "trim": -1,
+      "why": "With every metre the heart swells."
+    },
+    {
+      "cue": "13.near",
+      "word": "near",
+      "at": -0.3,
+      "sfx": "scrape",
+      "dur": 0.3,
+      "pan": -0.3,
+      "why": "He brakes beside her: the skid of the lunch line, into the right place this time."
+    },
+    {
+      "cue": "13.near",
+      "word": "near",
+      "sfx": "ding",
+      "note": "A6",
+      "trim": -1,
+      "why": "'Near': her note, full."
+    },
+    {
+      "cue": "13.near",
+      "word": "me",
+      "at": 0.27,
+      "sfx": "chime",
+      "trim": -1,
+      "why": "After 'me': the chime he heard twice when he was wrong."
+    },
+    {
+      "cue": "14.gone",
+      "sfx": "whoosh",
+      "why": "Scene 14: the next morning."
+    },
+    {
+      "cue": "14.gone",
+      "at": 0.03,
+      "sfx": "school_bell",
+      "dur": 0.7,
+      "trim": -4,
+      "why": "The bell, a third time."
+    },
+    {
+      "cue": "14.gone",
+      "at": 0.36,
+      "sfx": "step_stone",
+      "repeat": 2,
+      "every": 1.11,
+      "trim": -1,
+      "why": "He walks up the hall: 0.36 s and 1.47 s."
+    },
+    {
+      "cue": "14.gone",
+      "word": "every",
+      "at": -0.3,
+      "sfx": "pop",
+      "repeat": 8,
+      "every": 0.13,
+      "pitch": 1.3,
+      "pitchStep": 0.94,
+      "trim": -2,
+      "why": "The hearts go out one after another, the farthest first: the same pop, eight times, falling."
+    },
+    {
+      "cue": "14.gone",
+      "word": "gone",
+      "at": -0.12,
+      "sfx": "power_down",
+      "dur": 0.7,
+      "trim": -3,
+      "why": "'Gone': the power goes out, with the notes it came in on."
+    },
+    {
+      "cue": "14.loud",
+      "sfx": "swish",
+      "why": "Jo's locker, where the film began."
+    },
+    {
+      "cue": "14.loud",
+      "at": 0.04,
+      "sfx": "pop",
+      "pitch": 1.3,
+      "pan": -0.3,
+      "why": "And there is one heart left in the school: over HIS head, where he cannot see it. The heart's pop."
+    },
+    {
+      "cue": "14.loud",
+      "at": 0.1,
+      "sfx": "ding",
+      "note": "A6",
+      "trim": -2,
+      "pan": -0.3,
+      "why": "With Jo's note."
+    },
+    {
+      "cue": "14.loud",
+      "at": 0.0,
+      "sfx": "step_stone",
+      "repeat": 3,
+      "every": 0.245,
+      "pan": -0.3,
+      "trim": -1,
+      "why": "He walks up to her: 0.00, 0.23, 0.49 s."
+    },
+    {
+      "cue": "14.loud",
+      "at": 0.83,
+      "sfx": "step_stone",
+      "pan": -0.1,
+      "trim": -1,
+      "why": "0.83 s."
+    },
+    {
+      "cue": "14.loud",
+      "at": 0.15,
+      "sfx": "sparkle",
+      "dur": 1.0,
+      "pan": -0.2,
+      "why": "It swells with every step he takes towards her, the way hers did."
+    },
+    {
+      "cue": "14.loud",
+      "word": "jo",
+      "sfx": "rustle",
+      "dur": 0.3,
+      "pan": 0.4,
+      "trim": -1,
+      "why": "She turns from her locker."
+    },
+    {
+      "cue": "14.loud",
+      "word": "out",
+      "at": -0.2,
+      "sfx": "pop",
+      "pitch": 0.8,
+      "why": "'Out loud': his bubble. The pop of ASK HER."
+    },
+    {
+      "cue": "14.loud",
+      "word": "loud",
+      "sfx": "blip",
+      "pitch": 1.0,
+      "why": "A heart, and a question mark."
+    },
+    {
+      "cue": "14.sub",
+      "at": 0.06,
+      "sfx": "ding",
+      "why": "The subscribe sign."
+    },
+    {
+      "cue": "14.sub",
+      "word": "tell",
+      "at": -0.15,
+      "sfx": "creak",
+      "dur": 0.4,
+      "pan": 0.4,
+      "why": "Behind him Jo opens her locker."
+    },
+    {
+      "cue": "14.sub",
+      "word": "what",
+      "at": 0.1,
+      "sfx": "rustle",
+      "dur": 0.3,
+      "pan": 0.4,
+      "why": "And comes round with her arm wound back."
+    },
+    {
+      "cue": "14.sub",
+      "word": "threw",
+      "sfx": "zip",
+      "dur": 0.12,
+      "pan": 0.3,
+      "why": "It leaves her hand on 'threw'."
+    },
+    {
+      "cue": "14.sub",
+      "word": "threw",
+      "at": 0.12,
+      "sfx": "bonk",
+      "trim": 2,
+      "why": "The eraser's knock. What it was is not shown."
+    },
+    {
+      "cue": "14.sub",
+      "word": "threw",
+      "at": 0.2,
+      "sfx": "boing",
+      "dur": 0.45,
+      "trim": -2,
+      "why": "The sign swings."
+    }
+  ]
+}

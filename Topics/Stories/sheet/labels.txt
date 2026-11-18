@@ -1,0 +1,8 @@
+Island, Plinth, Signpost, Bridge, Sun
+Coin (4 kinds), CoinStack, CoinPile
+Chest, MoneyBag, BillStack, Bill
+Printer
+PriceTag, BarChart
+Arrow, Balance
+BreadShelf, Crate, Bread, Apple
+Figure, Icon (16), Bar

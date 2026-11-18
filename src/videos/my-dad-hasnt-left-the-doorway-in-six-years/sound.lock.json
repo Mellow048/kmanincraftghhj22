@@ -1,0 +1,124 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "my-dad-hasnt-left-the-doorway-in-six-years",
+  "mix": "public/audio/my-dad-hasnt-left-the-doorway-in-six-years/mix.mp3",
+  "seconds": 60.7667,
+  "built_from": {
+    "timing.json": "6551adeaf6a62df15aa400825824e2c7bd3bde3d",
+    "sound.json": "00eb3f2903fd0184dafec4d9ca014e4facfd4c9a",
+    "narration.mp3": "a842f7b095b0bc0ebc16e3d8798b4d4575ce62d5"
+  },
+  "mix_sha1": "4478b7655611ec6a151d317111dcad19762c2257",
+  "music_sections": [
+    {
+      "from": "1.door",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "2.first",
+      "mood": "sneak",
+      "at": 7.77
+    },
+    {
+      "from": "3.grew",
+      "mood": "curious",
+      "at": 12.83
+    },
+    {
+      "from": "4.check",
+      "mood": "sad",
+      "at": 19.47
+    },
+    {
+      "from": "6.scared",
+      "mood": "none",
+      "at": 41.5
+    },
+    {
+      "from": "7.said",
+      "mood": "hope",
+      "at": 43.47
+    },
+    {
+      "from": "7.things",
+      "mood": "wonder",
+      "at": 48.5
+    },
+    {
+      "from": "8.sun",
+      "mood": "hope",
+      "at": 50.53
+    },
+    {
+      "from": "9.sub",
+      "mood": "wonder",
+      "at": 59.37
+    }
+  ],
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 18.4,
+    "secondsWithoutMusic": 2.4,
+    "bedsUnderVoiceDb": 29.3,
+    "sfx": 46,
+    "sfxPerMinute": 45.4,
+    "sfxKinds": 9,
+    "longestGapSeconds": 3.0,
+    "longestGapAt": 38.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.5,
+    "voiceOverRestWorstDb": 5.2,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.2,
+        "t": 59.3,
+        "cue": "8.now",
+        "sounding": [
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 3.1,
+        "cue": "1.why",
+        "sounding": [
+          "gust"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 60.0,
+        "cue": "9.sub",
+        "sounding": []
+      },
+      {
+        "db": 6.5,
+        "t": 35.5,
+        "cue": "6.stand",
+        "sounding": [
+          "blip",
+          "swish"
+        ]
+      },
+      {
+        "db": 8.8,
+        "t": 9.4,
+        "cue": "2.first",
+        "sounding": []
+      },
+      {
+        "db": 9.6,
+        "t": 48.7,
+        "cue": "7.things",
+        "sounding": [
+          "chime"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -1.7,
+    "limiterMaxDb": 0.7
+  },
+  "failures": []
+}

@@ -68,6 +68,75 @@ certain is what this film has that the 1.3k films do not.
 
 Ask him for the retention graph of this film if he can share it: where the line drops is worth more than this page.
 
+## Studied again, 2026-11-16: 82% stayed to watch
+
+The owner, 2026-11-16: "it got a whopping insane 82% stayed to watch percentage, study it please, the script, the
+hook, the sfx, the idea. everything", and "dont just copy and paste it, study it, learn it, apply it". This is the
+first number from his analytics. "Stayed to watch" on a Short is the share of people who were shown it and did not
+swipe away, so **82% is a verdict on the first two seconds**, and the views (about 5k against 1.3k) are what a
+strong start plus a story that keeps paying buys. The study above guessed at this; the points below were measured
+from the source, and each is set against the two films made since (the creeper and the enderman films).
+
+### The hook, frame by frame
+
+- **The picture changes eleven times in the first two seconds.** `1.town`: the boy hops in at 0.05 s, then a
+  monster pops up behind him at 0.25, 0.5, 0.75 and 1.0 s, then six more every 0.15 s. Every one looks into the
+  lens, and every one has its own `pop`. A thumb that is about to swipe never sees a finished picture. The creeper
+  and enderman films open on a picture that is already complete and holds.
+- **The teller is in the middle, looking at us, and what is odd is all around him.** One glance reads it.
+- **Four shots in 6.8 s, the three after the first about a second each**: mum, dad, the basket. Each is one short
+  sentence and one new face.
+- **The fourth line leaves a thing unexplained** ("a boy they found in a basket"). It is answered at 2:01.
+- **Daylight.** The first night shot is at 0:50.
+
+### The script
+
+| | Monster Village 1 | The creeper film | The enderman film |
+|---|---|---|---|
+| Tense | **past** ("I was the only one") | present | present |
+| Lines somebody else says | **16** | 0 | 0 |
+| "I thought …" (he is wrong, out loud) | **3** | 0 | 0 |
+| A second person with a secret | **Mo, from 0:20** | none | none |
+| Clues the viewer can catch first | **4, said back as a list** | none | none |
+| What the teller tries at the crisis | **fails** ("It is a trick") | works | works |
+| Reveals | **5, each bigger** (the ring, Mo is human, the basket, they came for him, "we always knew") | 1 | 1 |
+| Ends | **bigger danger, one left behind, part two** | closed | closed |
+| Voice | x1.33, 245 words a minute | x1.45, 241 | x1.47, 236 |
+
+- **The viewer is ahead of the teller.** "He did not burn. 'It is the hat,' he said." "No zombie eats bread. I did
+  not ask." The teller does not work it out; anybody who plays does, and stays to be proved right. This is the
+  engine of the middle of the film, and the two later films have none of it.
+- **Three times he says what he thinks, and he is wrong** (Mo does not like humans; the door is locked because he is
+  weak; they came for the village). Each time the truth is kinder or bigger.
+- **A truth lands as a picture, then one short sentence**: "And they were facing out." "Red."
+- **Every neighbour has one habit, and the habit comes back as plot.** Hiss wants a hug at 0:07; "Hug" wins the
+  fight at 2:15.
+- **Half the sentences are five words or fewer.**
+
+### The sound
+
+- **Every pop-in, wave, landing and step has a sound on its word**: 254 effects, 40 kinds, `pop` the most used (21).
+  It is 87 a minute, **fewer** than the later films (103 to 128), so more effects is not the secret.
+- **The music changes mood 23 times in 175 s**, about every 7.6 s, each change on a turn of the story. The later
+  films change 14 to 16 times in 100 s, which is about the same rate.
+- **One silence**: "It went quiet" has no music at all.
+- The level and the mix are the same as every film since.
+
+### The idea
+
+The game the viewer plays, turned inside out, with a family in it: the monsters are home and the players are the
+raid. And a plain kid, so the viewer has somebody to be.
+
+### What to carry into the next films, and what to leave
+
+**Carry (this is the engine):** a first shot that keeps changing for two seconds round a teller who looks at us; past
+tense; "I"; an unexplained thing in line four; two neighbours whose habit comes back; things the viewer works out
+before the teller; "I thought" said out loud and wrong; other people speaking; a crisis where his own try fails; the
+clues said back as a list; a second, bigger truth; an ending that opens.
+
+**Leave (this is the outline, and using it again is what he called "reused content"):** a kid, a mob mum and dad, a
+basket, players with swords at night, a friend in disguise, "we always knew".
+
 ## What it is good for
 
 - **Monsters as people.** Every monster comes from the pack (`Topics/InThisTown/monsters.tsx`) and is given a name

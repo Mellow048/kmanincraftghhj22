@@ -1,9 +1,9 @@
 # Writing a "What if" story
 
-> **Provisional.** This beat sheet is the fourteen beats of In This Town's short cut
-> ([`../InThisTown/SCRIPT.md`](../InThisTown/SCRIPT.md)), re-cast for a story about a power. It has not been
-> measured against a "What if" video yet ([`reference/`](reference/README.md)). When one arrives, its beats
-> replace these. Read In This Town's page too: how a line is written, and why, is the same.
+> The beat sheet below is the topic's reference film, measured: *What If You Could See Who Had a Crush on You*
+> ([`reference/crush/`](reference/crush/README.md)). It began as the fourteen beats of In This Town's short cut
+> ([`../InThisTown/SCRIPT.md`](../InThisTown/SCRIPT.md)), re-cast for a story about a power, and the film kept all
+> fourteen. Read In This Town's page too: how a line is written, and why, is the same.
 
 A "What if" story is a wish that comes true and then shows its other side. The title asks the question. The film
 is one kid's answer to it.
@@ -27,27 +27,29 @@ not expect.
 
 ## The beat sheet
 
-Fourteen beats, 250–520 words, 60–118 seconds, 35–65 shots. One line is one shot.
+Fourteen beats, 250–520 words, 60–118 seconds, 35–65 shots. One line is one shot. **From**, **Words** and
+**Shots** are the reference film's own (479 words, 55 shots, 1:53.6): a size to aim at, not a rule.
 
-| # | Beat | From | Words | Shots | What it does | In In This Town it was |
+| # | Beat | From | Words | Shots | What it does | In the reference film |
 |---|---|---|---|---|---|---|
-| 1 | The question | 0:00 | 14 | 2 | The title, said over ONE picture of the power at work. Then: "One morning, I could." | The hook |
-| 2 | The day it came | 0:04 | 26 | 3 | How it arrived, in one or two lines. No reason: nobody needs one. One question is left open | The mysteries |
-| 3 | The rule | 0:10 | 50 | 7 | What it does, shown three times, fast. And the one thing it cannot do, shown once, lightly | The tour |
-| 4 | The fun | 0:22 | 44 | 6 | Three wins, each bigger than the last. The best part of having it | The tour, still |
-| 5 | The wish | 0:32 | 22 | 3 | The one thing he really wants it for. It is a question | The itch |
-| 6 | The plant | 0:37 | 34 | 4 | One thing that does not fit. He says it out loud and waves it away. It is the answer, a minute early | The elder's rule, and the decision |
-| 7 | The first try | 0:45 | 34 | 5 | He uses it for the wish, and it goes wrong in a way that is funny | The funny failure |
-| 8 | The second try | 0:53 | 38 | 5 | He uses it harder, and it works. Something small is lost, and he does not notice | The success |
-| 9 | The friend | 1:02 | 24 | 3 | The one person who sees what it is doing to him. One line, or none: the friend can act | The friend |
-| 10 | The edge | 1:08 | 46 | 6 | The moment before the one big use. Slow down: the most words of any beat after the rule | The edge |
-| 11 | The act | 1:19 | 16 | 3 | He does it. Short lines | The act |
-| 12 | The wait | 1:23 | 20 | 3 | It seems to have worked. The music believes him | The wait |
-| 13 | The reveal | 1:28 | 44 | 6 | What he sees, in one short sentence. Then why: the limit from beat 3, and the plant from beat 6 | The reveal |
-| 14 | The button | 1:39 | 22 | 3 | What he does now. The title's question, answered. Then the subscribe line, which belongs to the story | The button |
+| 1 | The question | 0:00 | 15 | 2 | The title, said over ONE picture of the power at work. Then: "One morning, I could." | A girl with a heart over her head waves at the lens; then the boy who can see it |
+| 2 | The day it came | 0:03 | 34 | 4 | How it arrived, in one or two lines. No reason: nobody needs one. One question is left open | Breakfast: a heart over his mom that doubles when his dad walks in, one over the dog, none in the mirror |
+| 3 | The rule | 0:11 | 46 | 5 | What it does, shown three times, fast. And the one thing it cannot do, shown once, lightly | A heart grows when the one it is for comes close. It never says who that is |
+| 4 | The fun | 0:21 | 40 | 4 | Three wins, each bigger than the last. The best part of having it | A sandwich shared, a cookie a question, two teachers holding hands |
+| 5 | The wish | 0:32 | 29 | 3 | The one thing he really wants it for. It is a question | "Could it be for me? I had to know." |
+| 6 | The plant | 0:38 | 37 | 4 | One thing that does not fit. He says it out loud and waves it away. It is the answer, a minute early | His best friend's heart is the biggest in school. "Whoever he is, he is one lucky guy." |
+| 7 | The first try | 0:47 | 34 | 4 | He uses it for the wish, and it goes wrong in a way that is funny | He watches her heart and walks into a door |
+| 8 | The second try | 0:54 | 43 | 5 | He uses it harder, and it works. Something small is lost, and he does not notice | Her heart touches the ceiling. He forgets to save his friend a seat |
+| 9 | The friend | 1:05 | 26 | 3 | The one person who sees what it is doing to him. One line, or none: the friend can act | "Then ask her." She walks home the other way |
+| 10 | The edge | 1:11 | 50 | 6 | The moment before the one big use. Slow down: the most words of any beat but the reveal | The dance: a card, a dog to practise on, his dad's tie |
+| 11 | The act | 1:23 | 15 | 3 | He does it. Short lines | "Will you dance with me?" |
+| 12 | The wait | 1:27 | 22 | 3 | It seems to have worked. The music believes him | Her heart grows bigger than any he has seen |
+| 13 | The reveal | 1:32 | 59 | 6 | What he sees, in one short sentence. Then why: the limit from beat 3, and the plant from beat 6 | She is looking over his shoulder. Then the gate, one step, and what "biggest" had meant |
+| 14 | The button | 1:46 | 29 | 3 | What he does now. The title's question, answered. Then the subscribe line, which belongs to the story | The hearts are gone, so he has to ask out loud |
 
-About 434 words and 59 shots at these counts. A shorter film drops the wait (12), merges the day it came (2) into
-the hook, and gives the fun (4) two wins. Never drop the rule (3), the plant (6) or the edge (10).
+The world and the question (1–6) took 41% of the reference, the tries and the price (7–9) 21%, the edge and the
+answer (10–14) 38%. A shorter film drops the wait (12), merges the day it came (2) into the hook, and gives the fun
+(4) two wins. Never drop the rule (3), the plant (6) or the edge (10).
 
 ## The rules of a line
 
@@ -95,7 +97,7 @@ Not stories: the owner approves those. These are the kinds of limit and price th
 - [ ] The rule of the power is one line, with its limit. A viewer could repeat both.
 - [ ] The limit is SHOWN in beat 3, lightly, and is the hinge of beat 13.
 - [ ] The plant in beat 6 is said out loud, and pays off in beat 13. The table is filled in.
-- [ ] The edge (10) is the longest beat after the rule.
+- [ ] The edge (10) is the longest beat but the reveal.
 - [ ] The first line starts "What if". The last line is the subscribe line and belongs to the story.
 - [ ] 250–520 words. No line over 18 words. No pauses written in.
 - [ ] No premise, sentence, joke or twist from a finished film of any topic.

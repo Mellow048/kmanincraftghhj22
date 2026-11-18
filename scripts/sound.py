@@ -944,7 +944,7 @@ def _cheer(rng, dur=1.3, **_):
     return norm(_walla(rng, dur, 30, 600.0, 3400.0) * shape[:, None])
 
 
-# ---- money, and numbers: the Explainer topic
+# ---- money, and numbers: the Stories topic
 def _coin_ping(rng, pitch=1.0, ring=0.22):
     """One small disc of metal struck: two partials that do not agree, and a tick of contact."""
     f = 2350.0 * pitch * rng.uniform(0.97, 1.03)
@@ -1466,7 +1466,7 @@ def _mood_hope(seconds, rng):
     return s.buf
 
 
-@mood("explain", "facts, one after another: a steady light step, soft chords, and a two-note question that keeps being asked. The body of an explainer", 104, -1.0)
+@mood("explain", "facts, one after another: a steady light step, soft chords, and a two-note question that keeps being asked. The body of a story", 104, -1.0)
 def _mood_explain(seconds, rng):
     s = Seq(seconds, 104, rng)
     bars = [

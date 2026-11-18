@@ -1,0 +1,158 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-a-stranger-moved-into-my-house",
+  "mix": "public/audio/in-this-town-a-stranger-moved-into-my-house/mix.mp3",
+  "seconds": 132.1333,
+  "built_from": {
+    "timing.json": "ba8d5a417c48a8261857c72e4c0a5af6d8c339ad",
+    "sound.json": "8fba78bdc4d2279a5cf76b2d0339b14cc57ec121",
+    "narration.mp3": "382e7df78588dd0569f9f9a731cfc0c2573cc242"
+  },
+  "mix_sha1": "2c406aa639d59ead6c4dae4ac1b7ede568452500",
+  "music_sections": [
+    {
+      "from": "1.moved",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.bread",
+      "mood": "playful",
+      "at": 18.8
+    },
+    {
+      "from": "5.boat",
+      "mood": "curious",
+      "at": 57.23
+    },
+    {
+      "from": "5.green",
+      "mood": "sneak",
+      "at": 62.37
+    },
+    {
+      "from": "6.cloud",
+      "mood": "town",
+      "at": 64.73
+    },
+    {
+      "from": "6.horn",
+      "mood": "tense",
+      "at": 67.7
+    },
+    {
+      "from": "7.rang",
+      "mood": "hope",
+      "at": 81.23
+    },
+    {
+      "from": "7.quiet",
+      "mood": "none",
+      "at": 95.3
+    },
+    {
+      "from": "8.hero",
+      "mood": "playful",
+      "at": 96.43
+    },
+    {
+      "from": "8.list",
+      "mood": "curious",
+      "at": 102.07
+    },
+    {
+      "from": "8.built",
+      "mood": "sad",
+      "at": 111.4
+    },
+    {
+      "from": "8.truth",
+      "mood": "none",
+      "at": 119.13
+    },
+    {
+      "from": "9.back",
+      "mood": "town",
+      "at": 121.93
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 24,
+  "measured": {
+    "musicUnderVoiceDb": 18.2,
+    "secondsWithoutMusic": 3.7,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 300,
+    "sfxPerMinute": 136.2,
+    "sfxKinds": 48,
+    "longestGapSeconds": 1.6,
+    "longestGapAt": 73.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.8,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 68.2,
+        "cue": "6.horn",
+        "sounding": [
+          "boing",
+          "riser"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 30.2,
+        "cue": "3.remember",
+        "sounding": [
+          "creak",
+          "sting",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 46.6,
+        "cue": "4.mending",
+        "sounding": [
+          "coin",
+          "coins"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 13.7,
+        "cue": "2.golem",
+        "sounding": [
+          "bell",
+          "clank",
+          "stomp"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 130.3,
+        "cue": "9.sub",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 6.3,
+        "t": 84.0,
+        "cue": "7.him",
+        "sounding": [
+          "bell",
+          "power_up"
+        ]
+      }
+    ],
+    "lufs": -15.2,
+    "truePeakDb": -1.3,
+    "limiterMaxDb": 3.4
+  },
+  "failures": []
+}

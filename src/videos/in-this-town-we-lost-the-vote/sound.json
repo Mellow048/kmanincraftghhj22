@@ -1,0 +1,1880 @@
+{
+  "film": "in-this-town-we-lost-the-vote",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-we-lost-the-vote",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.vote",
+        "mood": "town",
+        "why": "The topic's track, from the first frame."
+      },
+      {
+        "from": "1.squid",
+        "mood": "playful",
+        "gain": -2,
+        "why": "She lost to a squid."
+      },
+      {
+        "from": "2.ice",
+        "mood": "town",
+        "why": "The neighbours, door by door."
+      },
+      {
+        "from": "2.mail",
+        "mood": "curious",
+        "gain": -2,
+        "why": "They all check the mail. Why?"
+      },
+      {
+        "from": "3.friend",
+        "mood": "playful",
+        "why": "Her friend, who pressed any button."
+      },
+      {
+        "from": "3.wait",
+        "mood": "sad",
+        "gain": -3,
+        "why": "Four years. He went green."
+      },
+      {
+        "from": "3.flag",
+        "mood": "hope",
+        "why": "His flag is up."
+      },
+      {
+        "from": "3.dot",
+        "mood": "sad",
+        "gain": -3,
+        "why": "He waved until he was a dot."
+      },
+      {
+        "from": "3.can",
+        "mood": "playful",
+        "gain": -2,
+        "why": "So it can happen: she tries to look real."
+      },
+      {
+        "from": "4.nothing",
+        "mood": "curious",
+        "gain": -3,
+        "why": "Nothing came."
+      },
+      {
+        "from": "5.stage",
+        "mood": "dark",
+        "gain": -3,
+        "why": "They take the stage away."
+      },
+      {
+        "from": "5.forgot",
+        "mood": "sad",
+        "gain": -3,
+        "why": "Nobody checks the mail."
+      },
+      {
+        "from": "6.press",
+        "mood": "tense",
+        "gain": -4,
+        "why": "Somebody presses the button."
+      },
+      {
+        "from": "6.him",
+        "mood": "hope",
+        "why": "Orange again."
+      },
+      {
+        "from": "6.job",
+        "mood": "explain",
+        "gain": -2,
+        "why": "His job out there."
+      },
+      {
+        "from": "6.for",
+        "mood": "curious",
+        "gain": -2,
+        "why": "This chest was for us."
+      },
+      {
+        "from": "6.open",
+        "mood": "wonder",
+        "why": "Thousands of little papers."
+      },
+      {
+        "from": "6.lost",
+        "mood": "hope",
+        "why": "They could only pick one."
+      },
+      {
+        "from": "6.left",
+        "mood": "sad",
+        "gain": -4,
+        "why": "He had to go back."
+      },
+      {
+        "from": "7.morning",
+        "mood": "town",
+        "why": "Morning. Like every morning."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.vote",
+      "to": "1.cow",
+      "bed": "village"
+    },
+    {
+      "from": "1.squid",
+      "to": "1.pick",
+      "bed": "crowd"
+    },
+    {
+      "from": "1.rest",
+      "to": "4.nothing",
+      "bed": "village"
+    },
+    {
+      "from": "5.stage",
+      "to": "5.forgot",
+      "bed": "night"
+    },
+    {
+      "from": "5.dark",
+      "to": "5.dark",
+      "bed": "wind"
+    },
+    {
+      "from": "6.press",
+      "to": "6.him",
+      "bed": "night"
+    },
+    {
+      "from": "6.job",
+      "to": "6.job",
+      "bed": "room"
+    },
+    {
+      "from": "6.for",
+      "to": "6.left",
+      "bed": "night"
+    },
+    {
+      "from": "7.morning",
+      "to": "7.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.vote",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The film opens on her and the street."
+    },
+    {
+      "cue": "1.vote",
+      "at": 0.12,
+      "sfx": "stamp",
+      "trim": -3,
+      "why": "LOST, over her head."
+    },
+    {
+      "cue": "1.vote",
+      "at": 0.3,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 0.9,
+      "why": "LOST over the next head up the street."
+    },
+    {
+      "cue": "1.vote",
+      "at": 0.42,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.0,
+      "why": "LOST over the next head up the street."
+    },
+    {
+      "cue": "1.vote",
+      "at": 0.54,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.1,
+      "why": "LOST over the next head up the street."
+    },
+    {
+      "cue": "1.vote",
+      "at": 0.66,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.2,
+      "why": "LOST over the next head up the street."
+    },
+    {
+      "cue": "1.vote",
+      "at": 0.78,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.3,
+      "why": "LOST over the next head up the street."
+    },
+    {
+      "cue": "1.vote",
+      "at": 0.9,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.4,
+      "why": "LOST over the next head up the street."
+    },
+    {
+      "cue": "1.vote",
+      "word": "lost",
+      "at": 0.1,
+      "sfx": "buzz",
+      "trim": -5,
+      "why": "Everybody lost."
+    },
+    {
+      "cue": "1.cow",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: her face."
+    },
+    {
+      "cue": "1.cow",
+      "at": 0.3,
+      "sfx": "blip",
+      "trim": -5,
+      "why": "She looks at us."
+    },
+    {
+      "cue": "1.cow",
+      "word": "flowers",
+      "at": -0.1,
+      "sfx": "pop",
+      "trim": -3,
+      "why": "Another flower comes out of her head."
+    },
+    {
+      "cue": "1.squid",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The night of the vote: the stage."
+    },
+    {
+      "cue": "1.squid",
+      "at": 0.15,
+      "sfx": "stamp",
+      "trim": -3,
+      "why": "WINNER, over the squid."
+    },
+    {
+      "cue": "1.squid",
+      "at": 0.4,
+      "sfx": "cheer",
+      "trim": -5,
+      "why": "The players."
+    },
+    {
+      "cue": "1.glow",
+      "at": 0.2,
+      "sfx": "power_up",
+      "trim": -5,
+      "why": "It glows."
+    },
+    {
+      "cue": "1.glow",
+      "at": 0.75,
+      "sfx": "power_down",
+      "trim": -5,
+      "why": "It glows less."
+    },
+    {
+      "cue": "1.glow",
+      "word": "That",
+      "at": -0.1,
+      "sfx": "blip",
+      "trim": -4,
+      "why": "She turns from it to us."
+    },
+    {
+      "cue": "1.glow",
+      "word": "all",
+      "at": 0.2,
+      "sfx": "bonk",
+      "trim": -5,
+      "why": "That is all it does."
+    },
+    {
+      "cue": "1.how",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "From behind them: the players in the dark."
+    },
+    {
+      "cue": "1.how",
+      "at": 0.3,
+      "sfx": "cheer",
+      "trim": -4,
+      "why": "Rows and rows of them."
+    },
+    {
+      "cue": "1.how",
+      "at": 1.2,
+      "sfx": "step_wood",
+      "trim": -6,
+      "why": "Shifting on the boards."
+    },
+    {
+      "cue": "1.how",
+      "word": "three",
+      "at": 0.0,
+      "sfx": "count",
+      "trim": -5,
+      "why": "Three of us."
+    },
+    {
+      "cue": "1.pick",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the front of the stage."
+    },
+    {
+      "cue": "1.pick",
+      "at": 0.2,
+      "sfx": "cheer",
+      "trim": -4,
+      "why": "The players jump."
+    },
+    {
+      "cue": "1.pick",
+      "word": "one",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -4,
+      "why": "They picked one."
+    },
+    {
+      "cue": "1.pick",
+      "word": "That",
+      "at": -0.1,
+      "sfx": "slide_up",
+      "trim": -4,
+      "why": "The squid lifts off its stand."
+    },
+    {
+      "cue": "1.pick",
+      "word": "real",
+      "at": 0.0,
+      "sfx": "power_up",
+      "trim": -4,
+      "why": "And becomes real."
+    },
+    {
+      "cue": "1.rest",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The town gate."
+    },
+    {
+      "cue": "1.rest",
+      "at": 0.1,
+      "sfx": "creak",
+      "trim": -4,
+      "why": "It swings open."
+    },
+    {
+      "cue": "1.rest",
+      "at": 0.45,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "The two who did not win walk in."
+    },
+    {
+      "cue": "1.rest",
+      "at": 0.8,
+      "sfx": "step_grass",
+      "trim": -6,
+      "why": "Side by side."
+    },
+    {
+      "cue": "2.ice",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the first door."
+    },
+    {
+      "cue": "2.ice",
+      "at": 0.3,
+      "sfx": "crack",
+      "trim": -6,
+      "pitch": 1.4,
+      "why": "Ice over his head, creaking."
+    },
+    {
+      "cue": "2.ice",
+      "word": "ice",
+      "at": 0.1,
+      "sfx": "plink",
+      "trim": -4,
+      "pitch": 1.3,
+      "why": "Ice."
+    },
+    {
+      "cue": "2.ice",
+      "word": "same",
+      "at": -0.15,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "He looks at her, she looks at him."
+    },
+    {
+      "cue": "2.talk",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: her, close."
+    },
+    {
+      "cue": "2.talk",
+      "at": 0.25,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "He lets the ice go."
+    },
+    {
+      "cue": "2.talk",
+      "at": 0.5,
+      "sfx": "break",
+      "trim": -3,
+      "why": "It breaks on the path."
+    },
+    {
+      "cue": "2.talk",
+      "word": "squid",
+      "at": -0.25,
+      "sfx": "rustle",
+      "trim": -4,
+      "why": "He turns his back."
+    },
+    {
+      "cue": "2.bush",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the bush."
+    },
+    {
+      "cue": "2.bush",
+      "word": "grumpy",
+      "at": 0.0,
+      "sfx": "sting",
+      "trim": -6,
+      "pitch": 1.3,
+      "why": "Grumpy."
+    },
+    {
+      "cue": "2.bush",
+      "word": "before",
+      "at": -0.2,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "He glares at us instead."
+    },
+    {
+      "cue": "2.bush",
+      "word": "before",
+      "at": 0.15,
+      "sfx": "bonk",
+      "trim": -5,
+      "why": "Before the vote."
+    },
+    {
+      "cue": "2.hide",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: a barrel."
+    },
+    {
+      "cue": "2.hide",
+      "at": 0.3,
+      "sfx": "paper",
+      "trim": -4,
+      "why": "Letters sticking out of his mailbox."
+    },
+    {
+      "cue": "2.hide",
+      "word": "Nobody",
+      "at": -0.4,
+      "sfx": "slide_up",
+      "trim": -4,
+      "why": "Two eyes come up behind her."
+    },
+    {
+      "cue": "2.hide",
+      "word": "found",
+      "at": -0.1,
+      "sfx": "blink",
+      "trim": -5,
+      "why": "They blink."
+    },
+    {
+      "cue": "2.hide",
+      "word": "since",
+      "at": -0.3,
+      "sfx": "zip",
+      "trim": -4,
+      "why": "Gone."
+    },
+    {
+      "cue": "2.hide",
+      "word": "since",
+      "at": -0.05,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "She turns round."
+    },
+    {
+      "cue": "2.hide",
+      "word": "since",
+      "at": 0.3,
+      "sfx": "thud",
+      "trim": -6,
+      "why": "The lid of the barrel."
+    },
+    {
+      "cue": "2.stone",
+      "at": 0.3,
+      "sfx": "step_stone",
+      "trim": -5,
+      "why": "He shuffles."
+    },
+    {
+      "cue": "2.stone",
+      "word": "holds",
+      "at": 0.0,
+      "sfx": "place",
+      "trim": -4,
+      "why": "He holds things."
+    },
+    {
+      "cue": "2.stone",
+      "word": "my",
+      "at": -0.2,
+      "sfx": "blip",
+      "trim": -4,
+      "why": "She looks at the gap on her back."
+    },
+    {
+      "cue": "2.new",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The end of the street: the newest two."
+    },
+    {
+      "cue": "2.new",
+      "at": 0.2,
+      "sfx": "pop",
+      "trim": -4,
+      "why": "LOST over the crab."
+    },
+    {
+      "cue": "2.new",
+      "at": 0.35,
+      "sfx": "pop",
+      "trim": -4,
+      "pitch": 1.15,
+      "why": "LOST over the penguin."
+    },
+    {
+      "cue": "2.new",
+      "word": "crab",
+      "at": 0.0,
+      "sfx": "crack",
+      "trim": -5,
+      "pitch": 1.5,
+      "why": "The crab waves his claw."
+    },
+    {
+      "cue": "2.new",
+      "word": "penguin",
+      "at": 0.0,
+      "sfx": "rustle",
+      "trim": -4,
+      "pitch": 1.3,
+      "why": "The penguin flaps."
+    },
+    {
+      "cue": "2.new",
+      "word": "armadillo",
+      "at": -0.2,
+      "sfx": "slide_down",
+      "trim": -4,
+      "why": "Both look down."
+    },
+    {
+      "cue": "2.new",
+      "word": "armadillo",
+      "at": 0.3,
+      "sfx": "bonk",
+      "trim": -5,
+      "why": "An armadillo."
+    },
+    {
+      "cue": "2.mail",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The whole street from above."
+    },
+    {
+      "cue": "2.mail",
+      "at": 0.3,
+      "sfx": "stamp",
+      "trim": -4,
+      "why": "Everybody turns to his mailbox at once."
+    },
+    {
+      "cue": "2.mail",
+      "word": "mail",
+      "at": 0.0,
+      "sfx": "paper",
+      "trim": -4,
+      "why": "The mail."
+    },
+    {
+      "cue": "2.mail",
+      "word": "morning",
+      "at": 0.2,
+      "sfx": "bell",
+      "trim": -6,
+      "why": "Morning."
+    },
+    {
+      "cue": "2.all",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: her at her own box."
+    },
+    {
+      "cue": "2.all",
+      "at": 0.25,
+      "sfx": "creak",
+      "trim": -4,
+      "pitch": 1.4,
+      "why": "She looks in."
+    },
+    {
+      "cue": "2.all",
+      "at": 0.6,
+      "sfx": "tick",
+      "trim": -4,
+      "why": "Nothing in it."
+    },
+    {
+      "cue": "2.all",
+      "word": "everybody",
+      "at": 0.1,
+      "sfx": "blip",
+      "trim": -5,
+      "why": "So does everybody."
+    },
+    {
+      "cue": "3.why",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Another mailbox, a long time ago."
+    },
+    {
+      "cue": "3.why",
+      "word": "letter",
+      "at": -0.35,
+      "sfx": "slide_up",
+      "trim": -4,
+      "why": "The flag swings up."
+    },
+    {
+      "cue": "3.why",
+      "word": "letter",
+      "at": -0.05,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "And stands there."
+    },
+    {
+      "cue": "3.why",
+      "word": "came",
+      "at": 0.2,
+      "sfx": "sparkle",
+      "trim": -4,
+      "why": "A letter came."
+    },
+    {
+      "cue": "3.friend",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: before. Him, next to her."
+    },
+    {
+      "cue": "3.friend",
+      "at": 0.25,
+      "sfx": "clank",
+      "trim": -4,
+      "pitch": 1.4,
+      "why": "A copper golem."
+    },
+    {
+      "cue": "3.friend",
+      "word": "pressed",
+      "at": 0.0,
+      "sfx": "tick",
+      "trim": -3,
+      "why": "He presses the air."
+    },
+    {
+      "cue": "3.friend",
+      "word": "pressed",
+      "at": 0.35,
+      "sfx": "tick",
+      "trim": -3,
+      "pitch": 1.2,
+      "why": "And again."
+    },
+    {
+      "cue": "3.friend",
+      "word": "Any",
+      "at": -0.15,
+      "sfx": "pop",
+      "trim": -3,
+      "why": "He presses her nose."
+    },
+    {
+      "cue": "3.friend",
+      "word": "button",
+      "at": 0.1,
+      "sfx": "boing",
+      "trim": -5,
+      "why": "Her eyes go wide."
+    },
+    {
+      "cue": "3.wait",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: him at his mailbox."
+    },
+    {
+      "cue": "3.wait",
+      "at": 0.3,
+      "sfx": "tick",
+      "trim": -4,
+      "why": "A day."
+    },
+    {
+      "cue": "3.wait",
+      "at": 0.7,
+      "sfx": "tick",
+      "trim": -4,
+      "why": "A day."
+    },
+    {
+      "cue": "3.wait",
+      "word": "four",
+      "at": 0.0,
+      "sfx": "count",
+      "trim": -5,
+      "why": "Four years."
+    },
+    {
+      "cue": "3.wait",
+      "word": "still",
+      "at": 0.0,
+      "sfx": "creak",
+      "trim": -4,
+      "pitch": 0.8,
+      "why": "He goes green from the feet up."
+    },
+    {
+      "cue": "3.wait",
+      "word": "green",
+      "at": 0.0,
+      "sfx": "power_down",
+      "trim": -5,
+      "why": "Green."
+    },
+    {
+      "cue": "3.wait",
+      "word": "green",
+      "at": 0.3,
+      "sfx": "blip",
+      "trim": -4,
+      "pitch": 1.5,
+      "why": "A bird lands on his head."
+    },
+    {
+      "cue": "3.thought",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: a statue, and all of them round it."
+    },
+    {
+      "cue": "3.thought",
+      "at": 0.25,
+      "sfx": "place",
+      "trim": -4,
+      "why": "She puts a flower at his feet."
+    },
+    {
+      "cue": "3.thought",
+      "word": "end",
+      "at": 0.0,
+      "sfx": "drop",
+      "trim": -5,
+      "why": "The end of him."
+    },
+    {
+      "cue": "3.flag",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Dawn."
+    },
+    {
+      "cue": "3.flag",
+      "at": 0.12,
+      "sfx": "slide_up",
+      "trim": -3,
+      "why": "His flag snaps up."
+    },
+    {
+      "cue": "3.flag",
+      "at": 0.3,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "Red."
+    },
+    {
+      "cue": "3.flag",
+      "at": 0.5,
+      "sfx": "rustle",
+      "trim": -4,
+      "pitch": 1.5,
+      "why": "The bird takes off."
+    },
+    {
+      "cue": "3.flag",
+      "at": 0.75,
+      "sfx": "blink",
+      "trim": -4,
+      "why": "Two eyes open."
+    },
+    {
+      "cue": "3.read",
+      "at": 0.05,
+      "sfx": "paper",
+      "trim": -3,
+      "why": "He unfolds it."
+    },
+    {
+      "cue": "3.read",
+      "word": "you",
+      "at": -0.05,
+      "sfx": "stamp",
+      "trim": -3,
+      "why": "YOU ARE IN."
+    },
+    {
+      "cue": "3.read",
+      "word": "in",
+      "at": 0.1,
+      "sfx": "power_up",
+      "trim": -4,
+      "why": "The green runs off him."
+    },
+    {
+      "cue": "3.gate",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Sunset. The whole street walks."
+    },
+    {
+      "cue": "3.gate",
+      "at": 0.25,
+      "sfx": "step_grass",
+      "trim": -4,
+      "why": "Everybody."
+    },
+    {
+      "cue": "3.gate",
+      "at": 0.75,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Down the path."
+    },
+    {
+      "cue": "3.gate",
+      "at": 1.0,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "To the gate."
+    },
+    {
+      "cue": "3.button",
+      "word": "pressed",
+      "at": -0.2,
+      "sfx": "whoosh_low",
+      "trim": -5,
+      "why": "His arm comes up."
+    },
+    {
+      "cue": "3.button",
+      "word": "pressed",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "He presses it."
+    },
+    {
+      "cue": "3.dot",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Through the gate: the road going away."
+    },
+    {
+      "cue": "3.dot",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "He walks backwards."
+    },
+    {
+      "cue": "3.dot",
+      "word": "waved",
+      "at": 0.0,
+      "sfx": "rustle",
+      "trim": -4,
+      "why": "Waving."
+    },
+    {
+      "cue": "3.dot",
+      "word": "dot",
+      "at": -0.1,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "Smaller."
+    },
+    {
+      "cue": "3.dot",
+      "word": "dot",
+      "at": 0.15,
+      "sfx": "plink",
+      "trim": -4,
+      "pitch": 1.5,
+      "why": "A dot."
+    },
+    {
+      "cue": "3.can",
+      "word": "can",
+      "at": -0.15,
+      "sfx": "pop",
+      "trim": -3,
+      "why": "A letter over her head, like an idea."
+    },
+    {
+      "cue": "3.can",
+      "word": "happen",
+      "at": -0.1,
+      "sfx": "boing",
+      "trim": -5,
+      "why": "She hops."
+    },
+    {
+      "cue": "3.can",
+      "word": "told",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "She turns to tell them."
+    },
+    {
+      "cue": "3.can",
+      "word": "everybody",
+      "at": 0.2,
+      "sfx": "bell",
+      "trim": -5,
+      "why": "Everybody."
+    },
+    {
+      "cue": "4.tried",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: her, standing very straight."
+    },
+    {
+      "cue": "4.tried",
+      "word": "tried",
+      "at": -0.1,
+      "sfx": "pop",
+      "trim": -3,
+      "why": "A card under her chin: REAL."
+    },
+    {
+      "cue": "4.tried",
+      "word": "real",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -4,
+      "why": "Real."
+    },
+    {
+      "cue": "4.tried",
+      "word": "real",
+      "at": 0.3,
+      "sfx": "blip",
+      "trim": -5,
+      "why": "One ear twitches."
+    },
+    {
+      "cue": "4.flowers",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The street."
+    },
+    {
+      "cue": "4.flowers",
+      "at": 0.15,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 0.9,
+      "why": "A buttercup out of the next thing."
+    },
+    {
+      "cue": "4.flowers",
+      "at": 0.29,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.0,
+      "why": "A buttercup out of the next thing."
+    },
+    {
+      "cue": "4.flowers",
+      "at": 0.43,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.1,
+      "why": "A buttercup out of the next thing."
+    },
+    {
+      "cue": "4.flowers",
+      "at": 0.57,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.2,
+      "why": "A buttercup out of the next thing."
+    },
+    {
+      "cue": "4.flowers",
+      "at": 0.71,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.3,
+      "why": "A buttercup out of the next thing."
+    },
+    {
+      "cue": "4.flowers",
+      "at": 0.85,
+      "sfx": "pop",
+      "trim": -5,
+      "pitch": 1.45,
+      "why": "A buttercup out of the next thing."
+    },
+    {
+      "cue": "4.flowers",
+      "word": "everything",
+      "at": 0.0,
+      "sfx": "sparkle",
+      "trim": -5,
+      "why": "On everything."
+    },
+    {
+      "cue": "4.flowers",
+      "word": "everything",
+      "at": 0.3,
+      "sfx": "rustle",
+      "trim": -5,
+      "pitch": 0.8,
+      "why": "The bush is furious."
+    },
+    {
+      "cue": "4.useful",
+      "at": 0.25,
+      "sfx": "clank",
+      "trim": -4,
+      "pitch": 1.3,
+      "why": "A bucket for a helmet."
+    },
+    {
+      "cue": "4.useful",
+      "at": 0.6,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "She looks left."
+    },
+    {
+      "cue": "4.useful",
+      "at": 1.05,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "She looks right."
+    },
+    {
+      "cue": "4.useful",
+      "word": "useful",
+      "at": 0.15,
+      "sfx": "bonk",
+      "trim": -5,
+      "why": "Useful."
+    },
+    {
+      "cue": "4.wrote",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: from above, a sheet of paper."
+    },
+    {
+      "cue": "4.wrote",
+      "at": 0.25,
+      "sfx": "paper",
+      "trim": -4,
+      "why": "Blank."
+    },
+    {
+      "cue": "4.wrote",
+      "word": "players",
+      "at": 0.0,
+      "sfx": "tick",
+      "trim": -5,
+      "why": "To the players."
+    },
+    {
+      "cue": "4.wrote",
+      "word": "hoof",
+      "at": -0.3,
+      "sfx": "whoosh_low",
+      "trim": -5,
+      "why": "Her hoof comes down."
+    },
+    {
+      "cue": "4.wrote",
+      "word": "hoof",
+      "at": -0.08,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "A hoof print."
+    },
+    {
+      "cue": "4.wrote",
+      "word": "print",
+      "at": 0.2,
+      "sfx": "bonk",
+      "trim": -5,
+      "why": "That is the letter."
+    },
+    {
+      "cue": "4.nothing",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: her mailbox."
+    },
+    {
+      "cue": "4.nothing",
+      "at": 0.2,
+      "sfx": "creak",
+      "trim": -4,
+      "pitch": 1.4,
+      "why": "Empty."
+    },
+    {
+      "cue": "4.nothing",
+      "at": 0.5,
+      "sfx": "gust",
+      "trim": -5,
+      "why": "A leaf blows out of it."
+    },
+    {
+      "cue": "5.stage",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "Night, the end of the street."
+    },
+    {
+      "cue": "5.stage",
+      "at": 0.3,
+      "sfx": "creak",
+      "trim": -3,
+      "pitch": 0.7,
+      "why": "The stage comes apart."
+    },
+    {
+      "cue": "5.stage",
+      "at": 0.6,
+      "sfx": "crack",
+      "trim": -4,
+      "why": "The curtain."
+    },
+    {
+      "cue": "5.stage",
+      "at": 0.9,
+      "sfx": "slide_up",
+      "trim": -5,
+      "why": "Lifted into the dark."
+    },
+    {
+      "cue": "5.stage",
+      "at": 1.2,
+      "sfx": "debris",
+      "trim": -4,
+      "why": "Boards."
+    },
+    {
+      "cue": "5.stage",
+      "word": "away",
+      "at": 0.0,
+      "sfx": "drop",
+      "trim": -4,
+      "why": "Away."
+    },
+    {
+      "cue": "5.no",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: what is left."
+    },
+    {
+      "cue": "5.no",
+      "at": 0.15,
+      "sfx": "stamp",
+      "trim": -3,
+      "why": "CLOSED."
+    },
+    {
+      "cue": "5.no",
+      "word": "votes",
+      "at": 0.0,
+      "sfx": "buzz",
+      "trim": -5,
+      "why": "No more votes."
+    },
+    {
+      "cue": "5.no",
+      "word": "ever",
+      "at": 0.0,
+      "sfx": "sting",
+      "trim": -5,
+      "why": "Not ever."
+    },
+    {
+      "cue": "5.forgot",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: her face in the lantern light."
+    },
+    {
+      "cue": "5.forgot",
+      "at": 0.3,
+      "sfx": "crackle",
+      "trim": -4,
+      "why": "The lantern."
+    },
+    {
+      "cue": "5.forgot",
+      "at": 0.8,
+      "sfx": "slide_down",
+      "trim": -5,
+      "why": "Her ears go down."
+    },
+    {
+      "cue": "5.dark",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Morning. The same view of the street."
+    },
+    {
+      "cue": "5.dark",
+      "at": 0.3,
+      "sfx": "gust",
+      "trim": -4,
+      "why": "Rain."
+    },
+    {
+      "cue": "5.dark",
+      "at": 0.9,
+      "sfx": "plink",
+      "trim": -4,
+      "why": "A drop on a mailbox."
+    },
+    {
+      "cue": "5.dark",
+      "word": "nobody",
+      "at": 0.0,
+      "sfx": "drop",
+      "trim": -4,
+      "why": "Nobody."
+    },
+    {
+      "cue": "6.press",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: night, the shut gate."
+    },
+    {
+      "cue": "6.press",
+      "at": 0.3,
+      "sfx": "crackle",
+      "trim": -4,
+      "why": "One lantern."
+    },
+    {
+      "cue": "6.press",
+      "word": "pressed",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "The button goes in by itself."
+    },
+    {
+      "cue": "6.press",
+      "word": "pressed",
+      "at": 0.25,
+      "sfx": "creak",
+      "trim": -3,
+      "pitch": 0.8,
+      "why": "The doors start to open."
+    },
+    {
+      "cue": "6.press",
+      "word": "gate",
+      "at": 0.0,
+      "sfx": "riser",
+      "trim": -5,
+      "why": "A line of light down the middle."
+    },
+    {
+      "cue": "6.press",
+      "word": "button",
+      "at": 0.2,
+      "sfx": "blip",
+      "trim": -4,
+      "why": "Her head comes up."
+    },
+    {
+      "cue": "6.him",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "The doors are open on a warm light."
+    },
+    {
+      "cue": "6.him",
+      "at": 0.3,
+      "sfx": "clank",
+      "trim": -4,
+      "pitch": 1.4,
+      "why": "He walks in."
+    },
+    {
+      "cue": "6.him",
+      "at": 0.7,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Small steps."
+    },
+    {
+      "cue": "6.him",
+      "word": "Orange",
+      "at": 0.0,
+      "sfx": "power_up",
+      "trim": -4,
+      "why": "Orange again."
+    },
+    {
+      "cue": "6.him",
+      "word": "chest",
+      "at": 0.0,
+      "sfx": "thud",
+      "trim": -4,
+      "why": "A chest, held out in front."
+    },
+    {
+      "cue": "6.him",
+      "word": "chest",
+      "at": 0.3,
+      "sfx": "clank",
+      "trim": -5,
+      "pitch": 1.2,
+      "why": "It is heavy."
+    },
+    {
+      "cue": "6.job",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Out there: a storeroom."
+    },
+    {
+      "cue": "6.job",
+      "at": 0.3,
+      "sfx": "step_wood",
+      "trim": -4,
+      "why": "He walks from one chest."
+    },
+    {
+      "cue": "6.job",
+      "at": 0.65,
+      "sfx": "step_wood",
+      "trim": -5,
+      "why": "Across the room."
+    },
+    {
+      "cue": "6.job",
+      "word": "chest",
+      "at": 0.0,
+      "sfx": "creak",
+      "trim": -4,
+      "pitch": 1.3,
+      "why": "A lid."
+    },
+    {
+      "cue": "6.job",
+      "word": "another",
+      "at": 0.0,
+      "sfx": "place",
+      "trim": -3,
+      "why": "He puts it in."
+    },
+    {
+      "cue": "6.job",
+      "word": "another",
+      "at": 0.3,
+      "sfx": "thud",
+      "trim": -5,
+      "why": "The lid shuts."
+    },
+    {
+      "cue": "6.for",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "From above: all of them round the chest."
+    },
+    {
+      "cue": "6.for",
+      "at": 0.25,
+      "sfx": "thud",
+      "trim": -3,
+      "why": "He sets it down."
+    },
+    {
+      "cue": "6.for",
+      "word": "us",
+      "at": 0.0,
+      "sfx": "blip",
+      "trim": -4,
+      "why": "For us."
+    },
+    {
+      "cue": "6.open",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: low, at the lid."
+    },
+    {
+      "cue": "6.open",
+      "at": 0.1,
+      "sfx": "creak",
+      "trim": -3,
+      "why": "The lid goes up."
+    },
+    {
+      "cue": "6.open",
+      "at": 0.35,
+      "sfx": "whoosh_low",
+      "trim": -3,
+      "why": "Paper comes out like a fountain."
+    },
+    {
+      "cue": "6.open",
+      "at": 0.6,
+      "sfx": "paper",
+      "trim": -3,
+      "why": "Slips."
+    },
+    {
+      "cue": "6.open",
+      "word": "Thousands",
+      "at": 0.0,
+      "sfx": "paper",
+      "trim": -3,
+      "pitch": 0.9,
+      "why": "Thousands."
+    },
+    {
+      "cue": "6.open",
+      "word": "papers",
+      "at": 0.0,
+      "sfx": "paper",
+      "trim": -4,
+      "pitch": 1.3,
+      "why": "Little papers."
+    },
+    {
+      "cue": "6.votes",
+      "at": 0.3,
+      "sfx": "paper",
+      "trim": -3,
+      "why": "It stops in front of her nose."
+    },
+    {
+      "cue": "6.votes",
+      "word": "votes",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "A vote."
+    },
+    {
+      "cue": "6.votes",
+      "word": "Ours",
+      "at": -0.05,
+      "sfx": "chime",
+      "trim": -3,
+      "why": "Hers."
+    },
+    {
+      "cue": "6.mine",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "Her, next to her pile."
+    },
+    {
+      "cue": "6.mine",
+      "at": 0.3,
+      "sfx": "count",
+      "trim": -4,
+      "why": "It is still growing."
+    },
+    {
+      "cue": "6.mine",
+      "at": 0.9,
+      "sfx": "paper",
+      "trim": -4,
+      "why": "Slip after slip."
+    },
+    {
+      "cue": "6.mine",
+      "word": "squid",
+      "at": 0.0,
+      "sfx": "plink",
+      "trim": -5,
+      "pitch": 0.7,
+      "why": "A squid."
+    },
+    {
+      "cue": "6.mine",
+      "word": "flowers",
+      "at": 0.0,
+      "sfx": "sparkle",
+      "trim": -4,
+      "why": "A cow with flowers on."
+    },
+    {
+      "cue": "6.mine",
+      "word": "picked",
+      "at": -0.1,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "She looks at us."
+    },
+    {
+      "cue": "6.mine",
+      "word": "cow",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -3,
+      "nth": 1,
+      "why": "They picked the cow."
+    },
+    {
+      "cue": "6.lost",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -4,
+      "why": "The ring from above: a pile each."
+    },
+    {
+      "cue": "6.lost",
+      "at": 0.3,
+      "sfx": "paper",
+      "trim": -4,
+      "why": "Everybody is reading."
+    },
+    {
+      "cue": "6.lost",
+      "word": "wanted",
+      "at": 0.0,
+      "sfx": "chime",
+      "trim": -4,
+      "why": "Somebody wanted them."
+    },
+    {
+      "cue": "6.one",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: her, a slip stuck to her nose."
+    },
+    {
+      "cue": "6.one",
+      "at": 0.25,
+      "sfx": "paper",
+      "trim": -4,
+      "why": "The slip."
+    },
+    {
+      "cue": "6.one",
+      "word": "one",
+      "at": 0.0,
+      "sfx": "bell",
+      "trim": -4,
+      "why": "Only one."
+    },
+    {
+      "cue": "6.hold",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the little stone one, under a stack."
+    },
+    {
+      "cue": "6.hold",
+      "at": 0.64,
+      "sfx": "place",
+      "trim": -4,
+      "pitch": 1.1,
+      "why": "One more on the stack."
+    },
+    {
+      "cue": "6.hold",
+      "at": 1.08,
+      "sfx": "place",
+      "trim": -4,
+      "pitch": 1.2,
+      "why": "One more on the stack."
+    },
+    {
+      "cue": "6.hold",
+      "at": 1.52,
+      "sfx": "place",
+      "trim": -4,
+      "pitch": 1.3,
+      "why": "One more on the stack."
+    },
+    {
+      "cue": "6.hold",
+      "word": "all",
+      "at": 0.0,
+      "sfx": "creak",
+      "trim": -5,
+      "pitch": 1.4,
+      "why": "It leans."
+    },
+    {
+      "cue": "6.hold",
+      "word": "happier",
+      "at": -0.1,
+      "sfx": "boing",
+      "trim": -5,
+      "why": "He hops."
+    },
+    {
+      "cue": "6.hold",
+      "word": "happier",
+      "at": 0.15,
+      "sfx": "chime",
+      "trim": -4,
+      "why": "He has never been happier."
+    },
+    {
+      "cue": "6.left",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: the post by the gate, at night."
+    },
+    {
+      "cue": "6.left",
+      "at": 0.3,
+      "sfx": "clank",
+      "trim": -4,
+      "pitch": 1.4,
+      "why": "He stops."
+    },
+    {
+      "cue": "6.left",
+      "at": 0.6,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "He looks back up the street."
+    },
+    {
+      "cue": "6.left",
+      "word": "pressed",
+      "at": -0.2,
+      "sfx": "whoosh_low",
+      "trim": -5,
+      "why": "His arm comes up."
+    },
+    {
+      "cue": "6.left",
+      "word": "pressed",
+      "at": 0.0,
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "He presses it anyway."
+    },
+    {
+      "cue": "6.left",
+      "word": "out",
+      "at": 0.0,
+      "sfx": "step_grass",
+      "trim": -4,
+      "why": "And goes."
+    },
+    {
+      "cue": "7.morning",
+      "at": 0.0,
+      "sfx": "whoosh",
+      "trim": -3,
+      "why": "Morning, and the sun is out."
+    },
+    {
+      "cue": "7.morning",
+      "at": 0.3,
+      "sfx": "step_grass",
+      "trim": -4,
+      "why": "She walks down the street."
+    },
+    {
+      "cue": "7.morning",
+      "at": 1.1,
+      "sfx": "paper",
+      "trim": -5,
+      "why": "Slips all over the path."
+    },
+    {
+      "cue": "7.morning",
+      "word": "mail",
+      "at": 0.0,
+      "sfx": "step_grass",
+      "trim": -5,
+      "why": "Not hurrying."
+    },
+    {
+      "cue": "7.morning",
+      "word": "every",
+      "at": 0.0,
+      "sfx": "tick",
+      "trim": -4,
+      "why": "Like every morning."
+    },
+    {
+      "cue": "7.flag",
+      "at": 0.0,
+      "sfx": "hit",
+      "trim": -4,
+      "why": "Her flag is up."
+    },
+    {
+      "cue": "7.flag",
+      "at": 0.1,
+      "sfx": "boing",
+      "trim": -4,
+      "why": "She jumps."
+    },
+    {
+      "cue": "7.flag",
+      "word": "up",
+      "at": 0.0,
+      "sfx": "ding",
+      "trim": -2,
+      "why": "Up."
+    },
+    {
+      "cue": "7.sub",
+      "at": 0.0,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "Cut: wider. She has sat down in front of it."
+    },
+    {
+      "cue": "7.sub",
+      "word": "subscribe",
+      "at": -0.2,
+      "sfx": "pop",
+      "trim": -3,
+      "why": "The sign."
+    },
+    {
+      "cue": "7.sub",
+      "word": "subscribe",
+      "at": 0.1,
+      "sfx": "ding",
+      "trim": -3,
+      "why": "Subscribe."
+    },
+    {
+      "cue": "7.sub",
+      "word": "I",
+      "at": -0.2,
+      "sfx": "swish",
+      "trim": -5,
+      "why": "She turns to us."
+    },
+    {
+      "cue": "7.sub",
+      "word": "yet",
+      "at": 0.2,
+      "sfx": "chime",
+      "trim": -4,
+      "why": "Not yet."
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-we-lost-the-vote",
+  "mix": "public/audio/in-this-town-we-lost-the-vote/mix.mp3",
+  "seconds": 99.1333,
+  "built_from": {
+    "timing.json": "c469a0006c9f4d4bc48532b1a9cd924f48e2dfda",
+    "sound.json": "22605e2ab3dbe89b9569ad85798c6c0e3d792363",
+    "narration.mp3": "d066cf722e41a56e77c54404ffd71ac465ddf82a"
+  },
+  "mix_sha1": "464e2f95e2cb5e099cc806a77b722a816457e151",
+  "music_sections": [
+    {
+      "from": "1.vote",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "1.squid",
+      "mood": "playful",
+      "at": 3.43
+    },
+    {
+      "from": "2.ice",
+      "mood": "town",
+      "at": 11.93
+    },
+    {
+      "from": "2.mail",
+      "mood": "curious",
+      "at": 27.73
+    },
+    {
+      "from": "3.friend",
+      "mood": "playful",
+      "at": 33.47
+    },
+    {
+      "from": "3.wait",
+      "mood": "sad",
+      "at": 36.3
+    },
+    {
+      "from": "3.flag",
+      "mood": "hope",
+      "at": 40.13
+    },
+    {
+      "from": "3.dot",
+      "mood": "sad",
+      "at": 46.47
+    },
+    {
+      "from": "3.can",
+      "mood": "playful",
+      "at": 47.97
+    },
+    {
+      "from": "4.nothing",
+      "mood": "curious",
+      "at": 57.57
+    },
+    {
+      "from": "5.stage",
+      "mood": "dark",
+      "at": 58.5
+    },
+    {
+      "from": "5.forgot",
+      "mood": "sad",
+      "at": 62.2
+    },
+    {
+      "from": "6.press",
+      "mood": "tense",
+      "at": 66.6
+    },
+    {
+      "from": "6.him",
+      "mood": "hope",
+      "at": 69.17
+    },
+    {
+      "from": "6.job",
+      "mood": "explain",
+      "at": 72.1
+    },
+    {
+      "from": "6.for",
+      "mood": "curious",
+      "at": 75.13
+    },
+    {
+      "from": "6.open",
+      "mood": "wonder",
+      "at": 76.2
+    },
+    {
+      "from": "6.lost",
+      "mood": "hope",
+      "at": 83.97
+    },
+    {
+      "from": "6.left",
+      "mood": "sad",
+      "at": 89.93
+    },
+    {
+      "from": "7.morning",
+      "mood": "town",
+      "at": 92.63
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 18.5,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 26.3,
+    "sfx": 224,
+    "sfxPerMinute": 135.6,
+    "sfxKinds": 41,
+    "longestGapSeconds": 1.6,
+    "longestGapAt": 72.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.8,
+    "voiceOverRestWorstDb": 5.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.5,
+        "t": 29.8,
+        "cue": "2.all",
+        "sounding": [
+          "bell",
+          "creak",
+          "tick"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 57.8,
+        "cue": "4.nothing",
+        "sounding": [
+          "creak",
+          "gust",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 7.8,
+        "t": 5.8,
+        "cue": "1.glow",
+        "sounding": [
+          "bonk",
+          "power_down",
+          "power_up",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 78.2,
+        "cue": "6.open",
+        "sounding": [
+          "paper"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 21.4,
+        "cue": "2.hide",
+        "sounding": [
+          "thud"
+        ]
+      },
+      {
+        "db": 8.4,
+        "t": 52.8,
+        "cue": "4.flowers",
+        "sounding": [
+          "pop",
+          "rustle",
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -15.2,
+    "truePeakDb": -1.9,
+    "limiterMaxDb": 2.6
+  },
+  "failures": []
+}

@@ -1,0 +1,782 @@
+{
+  "film": "what-if-you-could-see-peoples-future",
+  "README": "The story turns, in music; the power and the repair have their own repeated sounds. Word anchors keep every effect with the picture. Run scripts/sound.py build after changing this sheet.",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.what",
+        "mood": "wonder",
+        "why": "The power is new: the future is a bright, impossible thing."
+      },
+      {
+        "from": "5.max",
+        "mood": "curious",
+        "why": "The first future does not fit the teller’s happy guesses."
+      },
+      {
+        "from": "7.told",
+        "mood": "playful",
+        "why": "Max hears the warning as a dare and buys a bear."
+      },
+      {
+        "from": "8.lie",
+        "mood": "sneak",
+        "why": "The teller lies to stop him, and the lie buys one day."
+      },
+      {
+        "from": "10.cup",
+        "mood": "tense",
+        "why": "Friday is the edge: Max has sold his bike and is about to ask again."
+      },
+      {
+        "from": "11.no",
+        "mood": "tense",
+        "why": "Ruby says no in front of everyone; do not sweeten her answer."
+      },
+      {
+        "from": "12.boots",
+        "mood": "hope",
+        "why": "The teller remembers the boots and offers a broken thing to repair."
+      },
+      {
+        "from": "13.stood",
+        "mood": "hope",
+        "why": "The clue resolves: Max’s hands, not his money, change the future."
+      },
+      {
+        "from": "14.nine",
+        "mood": "playful",
+        "why": "A week later the shop is working; the final beat stays light, not tragic."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.what",
+      "to": "8.side",
+      "bed": "classroom",
+      "why": "The school hall and classrooms: quiet paper, pencils and distant chairs."
+    },
+    {
+      "from": "9.ruby",
+      "to": "10.table",
+      "bed": "crowd",
+      "why": "Ruby and Max are back in the lunch room with everybody watching."
+    },
+    {
+      "from": "11.no",
+      "to": "11.worse",
+      "bed": "classroom",
+      "why": "The hall after Ruby’s clear answer; keep the room small and quiet."
+    },
+    {
+      "from": "12.rack",
+      "to": "13.stood",
+      "bed": "crowd",
+      "why": "The school gym and bike rack, with the school still around them."
+    },
+    {
+      "from": "13.coat",
+      "to": "14.sub",
+      "bed": "room",
+      "why": "The enclosed repair shop: close wood, tools and a little room tone."
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.what",
+      "sfx": "power_up",
+      "why": "The first sound: the power switches on."
+    },
+    {
+      "cue": "1.what",
+      "word": "future",
+      "sfx": "glitch",
+      "why": "A half-step of the future appears behind Max.",
+      "trim": -2
+    },
+    {
+      "cue": "1.me",
+      "word": "could",
+      "sfx": "swish",
+      "why": "The teller turns to look."
+    },
+    {
+      "cue": "2.hall",
+      "sfx": "whoosh",
+      "why": "The classroom opens into the hall."
+    },
+    {
+      "cue": "2.hall",
+      "word": "school",
+      "sfx": "step_stone",
+      "why": "Footsteps on the hall floor.",
+      "repeat": 2,
+      "every": 0.46,
+      "trim": -2
+    },
+    {
+      "cue": "2.older",
+      "word": "older",
+      "sfx": "glitch",
+      "why": "The adult copy becomes legible."
+    },
+    {
+      "cue": "3.painter",
+      "word": "drew",
+      "sfx": "rustle",
+      "why": "The pencil moves over a desk.",
+      "trim": -2
+    },
+    {
+      "cue": "3.painter",
+      "word": "painter",
+      "sfx": "sparkle",
+      "why": "The future takes a surprising job."
+    },
+    {
+      "cue": "3.sleep",
+      "word": "slept",
+      "sfx": "blink",
+      "why": "A small, sleepy beat."
+    },
+    {
+      "cue": "3.sleep",
+      "word": "desk",
+      "sfx": "thud",
+      "why": "The adult future is asleep at work.",
+      "trim": -3
+    },
+    {
+      "cue": "3.pirate",
+      "word": "pirate",
+      "sfx": "swish",
+      "why": "Another future pops into the classroom."
+    },
+    {
+      "cue": "3.pirate",
+      "word": "quietest",
+      "sfx": "plink",
+      "why": "A quiet, odd counterpoint."
+    },
+    {
+      "cue": "3.why",
+      "word": "never",
+      "sfx": "glitch",
+      "why": "The power shows who, not why.",
+      "trim": -3
+    },
+    {
+      "cue": "4.star",
+      "word": "star",
+      "sfx": "cheer",
+      "why": "A shirt gets signed by a future celebrity.",
+      "trim": -3
+    },
+    {
+      "cue": "4.star",
+      "word": "sign",
+      "sfx": "chime",
+      "why": "The autograph is a small win."
+    },
+    {
+      "cue": "4.small",
+      "word": "smallest",
+      "sfx": "pop",
+      "why": "The teller is kind to the smallest kid."
+    },
+    {
+      "cue": "4.cow",
+      "word": "cow",
+      "sfx": "thud",
+      "why": "The future can carry a cow."
+    },
+    {
+      "cue": "4.cow",
+      "word": "carry",
+      "sfx": "stomp",
+      "why": "One heavy step under the strength reveal.",
+      "trim": -4
+    },
+    {
+      "cue": "5.max",
+      "word": "Max",
+      "sfx": "whoosh",
+      "why": "The camera finds the best friend."
+    },
+    {
+      "cue": "5.rags",
+      "word": "thin",
+      "sfx": "glitch",
+      "why": "The future skips into view."
+    },
+    {
+      "cue": "5.rags",
+      "word": "shoes",
+      "sfx": "power_down",
+      "why": "The first warning: no shoes.",
+      "trim": -2
+    },
+    {
+      "cue": "5.sense",
+      "word": "sense",
+      "sfx": "plink",
+      "why": "A small unresolved question."
+    },
+    {
+      "cue": "5.bike",
+      "word": "bike",
+      "sfx": "clank",
+      "why": "The handmade bike is part of Max.",
+      "trim": -3
+    },
+    {
+      "cue": "5.bike",
+      "word": "built",
+      "sfx": "step_stone",
+      "why": "Three broken bikes become one.",
+      "repeat": 2,
+      "every": 0.35,
+      "trim": -3
+    },
+    {
+      "cue": "5.ruby",
+      "word": "Ruby",
+      "sfx": "chime",
+      "why": "The name enters the story."
+    },
+    {
+      "cue": "6.asked",
+      "word": "eleven",
+      "sfx": "tick",
+      "why": "Count the repeated asks without making them triumphant.",
+      "repeat": 3,
+      "every": 0.38,
+      "trim": 3
+    },
+    {
+      "cue": "6.asked",
+      "word": "asked",
+      "sfx": "swish",
+      "why": "Another attempt, already in motion.",
+      "trim": -4
+    },
+    {
+      "cue": "6.no",
+      "word": "no",
+      "sfx": "buzz",
+      "why": "Ruby’s no is plain and final.",
+      "trim": -2
+    },
+    {
+      "cue": "6.gift",
+      "word": "bigger",
+      "sfx": "coin",
+      "why": "Each present costs something.",
+      "trim": -2
+    },
+    {
+      "cue": "6.gift",
+      "word": "present",
+      "sfx": "chime",
+      "why": "The gift looks cheerful; the consequence does not.",
+      "trim": -3
+    },
+    {
+      "cue": "6.lost",
+      "word": "lost",
+      "sfx": "power_down",
+      "why": "A piece of the future disappears.",
+      "trim": -2
+    },
+    {
+      "cue": "6.lost",
+      "word": "something",
+      "sfx": "glitch",
+      "why": "The teller still cannot explain it.",
+      "trim": -3
+    },
+    {
+      "cue": "6.chain",
+      "word": "chain",
+      "sfx": "clank",
+      "why": "The only time the future had boots.",
+      "trim": -3
+    },
+    {
+      "cue": "6.chain",
+      "word": "boots",
+      "sfx": "chime",
+      "why": "The clue glints, then is dismissed.",
+      "trim": -4
+    },
+    {
+      "cue": "6.light",
+      "word": "light",
+      "sfx": "plink",
+      "why": "The teller blames the light."
+    },
+    {
+      "cue": "7.told",
+      "word": "told",
+      "sfx": "swish",
+      "why": "The warning is finally spoken.",
+      "trim": -3
+    },
+    {
+      "cue": "7.told",
+      "word": "shoes",
+      "sfx": "power_down",
+      "why": "The missing shoes underline the cost.",
+      "trim": -3
+    },
+    {
+      "cue": "7.faster",
+      "word": "faster",
+      "sfx": "whoosh",
+      "why": "Max rushes past the warning.",
+      "trim": -3
+    },
+    {
+      "cue": "7.bear",
+      "word": "tools",
+      "sfx": "clank",
+      "why": "The toolbox is sold.",
+      "trim": -3
+    },
+    {
+      "cue": "7.bear",
+      "word": "bear",
+      "sfx": "thud",
+      "why": "The enormous bear lands in the hall.",
+      "trim": -3
+    },
+    {
+      "cue": "7.twelve",
+      "word": "no",
+      "sfx": "buzz",
+      "why": "Ruby says no again.",
+      "trim": -2
+    },
+    {
+      "cue": "7.twelve",
+      "word": "twelve",
+      "sfx": "tick",
+      "why": "The count advances, not the relationship.",
+      "trim": -4
+    },
+    {
+      "cue": "7.coat",
+      "word": "coat",
+      "sfx": "power_down",
+      "why": "The future loses its last coat.",
+      "trim": -2
+    },
+    {
+      "cue": "7.coat",
+      "word": "lost",
+      "sfx": "glitch",
+      "why": "The image loses another piece.",
+      "trim": -4
+    },
+    {
+      "cue": "8.lie",
+      "word": "lied",
+      "sfx": "swish",
+      "why": "The teller slips into the lie.",
+      "trim": -4
+    },
+    {
+      "cue": "8.lie",
+      "word": "boyfriend",
+      "sfx": "buzz",
+      "why": "The excuse lands badly.",
+      "trim": -3
+    },
+    {
+      "cue": "8.day",
+      "word": "day",
+      "sfx": "tick",
+      "why": "One day passes.",
+      "trim": -4
+    },
+    {
+      "cue": "8.day",
+      "word": "worked",
+      "sfx": "chime",
+      "why": "The false success rings too brightly.",
+      "trim": -4
+    },
+    {
+      "cue": "8.shoes",
+      "word": "shoes",
+      "sfx": "power_up",
+      "why": "The future briefly looks better.",
+      "trim": -3
+    },
+    {
+      "cue": "8.shoes",
+      "word": "man",
+      "sfx": "glitch",
+      "why": "The teller mistakes cause for proof.",
+      "trim": -4
+    },
+    {
+      "cue": "8.what",
+      "word": "asked",
+      "sfx": "swish",
+      "why": "Max checks the lie himself.",
+      "trim": 3
+    },
+    {
+      "cue": "8.what",
+      "word": "boyfriend",
+      "sfx": "buzz",
+      "why": "The story falls apart on Ruby’s question.",
+      "trim": -2
+    },
+    {
+      "cue": "8.side",
+      "word": "side",
+      "sfx": "plink",
+      "why": "The friendship takes the cost."
+    },
+    {
+      "cue": "9.ruby",
+      "word": "found",
+      "sfx": "swish",
+      "why": "Ruby seeks out the teller."
+    },
+    {
+      "cue": "9.ruby",
+      "word": "no",
+      "sfx": "buzz",
+      "why": "She makes her boundary unmistakable.",
+      "trim": -3
+    },
+    {
+      "cue": "9.suit",
+      "word": "suit",
+      "sfx": "power_up",
+      "why": "A future in a space suit appears."
+    },
+    {
+      "cue": "9.suit",
+      "word": "woman",
+      "sfx": "sparkle",
+      "why": "Ruby’s future is her own.",
+      "trim": -3
+    },
+    {
+      "cue": "9.moon",
+      "word": "moon",
+      "sfx": "chime",
+      "why": "A bright future, not a reward for Max."
+    },
+    {
+      "cue": "9.moon",
+      "word": "bears",
+      "sfx": "whoosh",
+      "why": "The moon is far beyond the bear.",
+      "trim": -4
+    },
+    {
+      "cue": "10.bike",
+      "word": "sold",
+      "sfx": "coin",
+      "why": "The bike sale begins the slide.",
+      "trim": -3
+    },
+    {
+      "cue": "10.bike",
+      "word": "necklace",
+      "sfx": "chime",
+      "why": "Gold, bought at a cost.",
+      "trim": -3
+    },
+    {
+      "cue": "10.lunch",
+      "word": "lunch",
+      "sfx": "school_bell",
+      "why": "The public moment begins.",
+      "trim": -3
+    },
+    {
+      "cue": "10.lunch",
+      "word": "lunch",
+      "sfx": "step_wood",
+      "why": "Max moves through the lunch room.",
+      "repeat": 3,
+      "every": 0.31,
+      "trim": -4
+    },
+    {
+      "cue": "10.cup",
+      "word": "cup",
+      "sfx": "power_down",
+      "why": "The future is now sitting on the ground.",
+      "trim": -3
+    },
+    {
+      "cue": "10.cup",
+      "word": "sat",
+      "sfx": "glitch",
+      "why": "The image changes under the lunchroom noise.",
+      "trim": -4
+    },
+    {
+      "cue": "10.lucky",
+      "word": "thirteen",
+      "sfx": "count",
+      "why": "A lucky number climbs while the future sinks.",
+      "trim": -4
+    },
+    {
+      "cue": "10.lucky",
+      "word": "lucky",
+      "sfx": "tick",
+      "why": "A small beat before the table.",
+      "trim": -5
+    },
+    {
+      "cue": "10.table",
+      "word": "table",
+      "sfx": "thud",
+      "why": "Max climbs up in front of everyone.",
+      "trim": -3
+    },
+    {
+      "cue": "10.table",
+      "word": "necklace",
+      "sfx": "chime",
+      "why": "The last gift is held up.",
+      "trim": -4
+    },
+    {
+      "cue": "11.no",
+      "word": "no",
+      "sfx": "buzz",
+      "why": "Ruby says no, Max. Please stop.",
+      "trim": -1
+    },
+    {
+      "cue": "11.no",
+      "word": "stop",
+      "sfx": "heartbeat",
+      "why": "Hold the audience in the pause.",
+      "trim": -4
+    },
+    {
+      "cue": "11.worse",
+      "word": "worse",
+      "sfx": "plink",
+      "why": "Nobody laughs; the quiet is worse."
+    },
+    {
+      "cue": "12.rack",
+      "word": "found",
+      "sfx": "whoosh",
+      "why": "The teller finds Max at the empty rack.",
+      "trim": -4
+    },
+    {
+      "cue": "12.rack",
+      "word": "sitting",
+      "sfx": "step_stone",
+      "why": "One careful approach.",
+      "trim": -4
+    },
+    {
+      "cue": "12.same",
+      "word": "same",
+      "sfx": "glitch",
+      "why": "The boy and his future line up.",
+      "trim": -3
+    },
+    {
+      "cue": "12.boots",
+      "word": "remembered",
+      "sfx": "riser",
+      "why": "The remembered boots pull the story toward its answer.",
+      "dur": 1.1,
+      "trim": -4
+    },
+    {
+      "cue": "12.boots",
+      "word": "boots",
+      "sfx": "chime",
+      "why": "The clue returns, now understood.",
+      "trim": -4
+    },
+    {
+      "cue": "12.chain",
+      "word": "chain",
+      "sfx": "clank",
+      "why": "The teller offers his own broken bike.",
+      "trim": -3
+    },
+    {
+      "cue": "12.chain",
+      "word": "wheeled",
+      "sfx": "scrape",
+      "why": "He wheels it over to Max.",
+      "trim": -3
+    },
+    {
+      "cue": "13.look",
+      "word": "long",
+      "sfx": "tick",
+      "why": "Give Max time to look before the repair.",
+      "trim": -5
+    },
+    {
+      "cue": "13.look",
+      "word": "looked",
+      "sfx": "plink",
+      "why": "The choice belongs to Max.",
+      "trim": -4
+    },
+    {
+      "cue": "13.stood",
+      "word": "stood",
+      "sfx": "riser",
+      "why": "The future rises on the answer, not a speech.",
+      "dur": 1.2,
+      "trim": -4
+    },
+    {
+      "cue": "13.stood",
+      "word": "knelt",
+      "sfx": "power_up",
+      "why": "Max kneels; the future starts to change.",
+      "trim": -4
+    },
+    {
+      "cue": "13.coat",
+      "word": "boots",
+      "sfx": "chime",
+      "why": "Boots and a clean coat return.",
+      "trim": -3
+    },
+    {
+      "cue": "13.coat",
+      "word": "coat",
+      "sfx": "rustle",
+      "why": "A clean coat settles into place.",
+      "trim": -4
+    },
+    {
+      "cue": "13.shop",
+      "word": "shop",
+      "sfx": "ding",
+      "why": "The shop appears with Max’s name.",
+      "trim": -3
+    },
+    {
+      "cue": "13.shop",
+      "word": "door",
+      "sfx": "place",
+      "why": "A place built by work.",
+      "trim": -4
+    },
+    {
+      "cue": "13.money",
+      "word": "never",
+      "sfx": "power_down",
+      "why": "The music says money is not the answer.",
+      "trim": -3
+    },
+    {
+      "cue": "13.money",
+      "word": "money",
+      "sfx": "coin",
+      "why": "One coin is not enough to explain it.",
+      "trim": -5
+    },
+    {
+      "cue": "13.sold",
+      "word": "sold",
+      "sfx": "clank",
+      "why": "The tools he sold echo back.",
+      "trim": -4
+    },
+    {
+      "cue": "13.sold",
+      "word": "what",
+      "sfx": "swish",
+      "why": "The answer turns from cash to skill.",
+      "trim": -4
+    },
+    {
+      "cue": "13.hand",
+      "word": "wrench",
+      "sfx": "clank",
+      "why": "The wrench is the recurring sound of the repair.",
+      "trim": -2
+    },
+    {
+      "cue": "13.hand",
+      "word": "shoes",
+      "sfx": "power_up",
+      "why": "The future stands when Max has the wrench.",
+      "trim": -4
+    },
+    {
+      "cue": "14.nine",
+      "word": "nine",
+      "sfx": "coins",
+      "why": "Nine bikes, earned one at a time.",
+      "trim": -3
+    },
+    {
+      "cue": "14.nine",
+      "word": "bought",
+      "sfx": "register",
+      "why": "Max buys his own bike back.",
+      "trim": -4
+    },
+    {
+      "cue": "14.ruby",
+      "word": "wheeled",
+      "sfx": "swish",
+      "why": "Ruby wheels her bike in as a customer.",
+      "trim": -4
+    },
+    {
+      "cue": "14.ruby",
+      "word": "Ruby",
+      "sfx": "bell",
+      "why": "A familiar name, now in a different scene.",
+      "trim": -4
+    },
+    {
+      "cue": "14.price",
+      "word": "charged",
+      "sfx": "stamp",
+      "why": "Full price: fair, not cruel.",
+      "trim": -3
+    },
+    {
+      "cue": "14.price",
+      "word": "price",
+      "sfx": "coin",
+      "why": "The payment is one detail, not the point.",
+      "trim": -4
+    },
+    {
+      "cue": "14.sub",
+      "word": "Subscribe",
+      "sfx": "ding",
+      "why": "The subscribe line is a button, not a new musical ending.",
+      "trim": -3
+    },
+    {
+      "cue": "14.sub",
+      "word": "behind",
+      "sfx": "whoosh",
+      "why": "The future is still there behind the teller.",
+      "trim": -4
+    }
+  ]
+}

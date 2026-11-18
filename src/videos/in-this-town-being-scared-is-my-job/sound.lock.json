@@ -1,0 +1,171 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-being-scared-is-my-job",
+  "mix": "public/audio/in-this-town-being-scared-is-my-job/mix.mp3",
+  "seconds": 144.5333,
+  "built_from": {
+    "timing.json": "d6553b9569435c39241822f55e990b1456768939",
+    "sound.json": "80bc6dc5c70810f893e250bdab5e031c6ad67ab0",
+    "narration.mp3": "de4a69688907ae7cd7e69dc5fa72245cfc8c0f15"
+  },
+  "mix_sha1": "9c2efeecc578b1448200caf29884238caf2101d2",
+  "music_sections": [
+    {
+      "from": "1.job",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.gary",
+      "mood": "sneak",
+      "at": 12.87
+    },
+    {
+      "from": "2.barb",
+      "mood": "playful",
+      "at": 15.07
+    },
+    {
+      "from": "3.problem",
+      "mood": "curious",
+      "at": 36.1
+    },
+    {
+      "from": "4.empty",
+      "mood": "tense",
+      "at": 61.1
+    },
+    {
+      "from": "5.tried",
+      "mood": "playful",
+      "at": 76.73
+    },
+    {
+      "from": "5.lift",
+      "mood": "dark",
+      "at": 82.43
+    },
+    {
+      "from": "6.scared",
+      "mood": "none",
+      "at": 87.3
+    },
+    {
+      "from": "6.glass",
+      "mood": "hope",
+      "at": 93.17
+    },
+    {
+      "from": "6.kevin",
+      "mood": "tense",
+      "at": 100.6
+    },
+    {
+      "from": "6.long",
+      "mood": "playful",
+      "at": 109.97
+    },
+    {
+      "from": "7.follow",
+      "mood": "curious",
+      "at": 118.0
+    },
+    {
+      "from": "7.end",
+      "mood": "dark",
+      "at": 120.4
+    },
+    {
+      "from": "8.gave",
+      "mood": "sad",
+      "at": 129.13
+    },
+    {
+      "from": "8.have",
+      "mood": "town",
+      "at": 136.17
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 14,
+  "measured": {
+    "musicUnderVoiceDb": 18.9,
+    "secondsWithoutMusic": 6.2,
+    "bedsUnderVoiceDb": 24.0,
+    "sfx": 265,
+    "sfxPerMinute": 110.0,
+    "sfxKinds": 40,
+    "longestGapSeconds": 2.8,
+    "longestGapAt": 77.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.2,
+    "voiceOverRestWorstDb": 3.8,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.8,
+        "t": 110.6,
+        "cue": "6.long",
+        "sounding": [
+          "slide_down",
+          "tick"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 141.1,
+        "cue": "8.bed",
+        "sounding": [
+          "ding",
+          "pop",
+          "power_up",
+          "sting",
+          "swish"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 77.5,
+        "cue": "5.tried",
+        "sounding": [
+          "slide_up",
+          "sting"
+        ]
+      },
+      {
+        "db": 7.2,
+        "t": 105.8,
+        "cue": "6.turn",
+        "sounding": [
+          "creak",
+          "ding",
+          "heartbeat"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 56.2,
+        "cue": "3.noiron",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 133.2,
+        "cue": "8.edge",
+        "sounding": [
+          "chime",
+          "step_stone",
+          "swish"
+        ]
+      }
+    ],
+    "lufs": -15.3,
+    "truePeakDb": -1.5,
+    "limiterMaxDb": 4.9
+  },
+  "failures": []
+}

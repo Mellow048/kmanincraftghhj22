@@ -111,6 +111,7 @@ export type LookPreset =
   | "overworld-day"
   | "overworld-night"
   | "overworld-storm"
+  | "overworld-rain"
   | "overworld-sunset"
   | "lantern-night"
   | "lava-shore"
@@ -140,6 +141,18 @@ export type SkySettings = {
   sunPower?: number;
   /** How much the haze band eats the gradient, 0–1. */
   haze?: number;
+  /** Cloud cover, 0 is a clear sky and 1 is overcast. 0.4–0.7 looks like weather. */
+  clouds?: number;
+  /** Size of the cloud layer: smaller numbers are bigger, softer clouds. */
+  cloudScale?: number;
+  /** Where the noise is cut into cloud: higher is a clearer sky. */
+  cloudCover?: number;
+  /** How far away the cloud layer sits, in sky units. Bigger is higher and calmer. */
+  cloudHeight?: number;
+  /** The colour of cloud in shade. The sun lights the rest. */
+  cloudShade?: string;
+  /** Noise added to the gradient so a wide sky cannot band on an 8-bit frame. */
+  dither?: number;
 };
 
 /** The post-processing controls exposed to a film. */
@@ -163,6 +176,18 @@ export type ShaderSettings = {
   grain?: number;
   /** Lens fringing at the frame edges, 0–1. */
   aberration?: number;
+  /** Highlight diffusion: the glow a real lens spreads around anything bright. 0–0.4. */
+  diffusion?: number;
+  /** Veiling glare: light the whole frame picks up from the lens. It lifts the shadows. */
+  veil?: number;
+  /** Black lift. Film does not reach black, it reaches a dark grey. */
+  lift?: number;
+  /** Highlight shoulder: how far bright things roll off instead of clipping. */
+  shoulder?: number;
+  /** How much the deepest shadows are cooled against the warm midtones, 0–1. */
+  coolShadow?: number;
+  /** Volumetric shafts from the sun, 0–1. Needs a look with a sky. */
+  shafts?: number;
 };
 
 export type PostSettings = {

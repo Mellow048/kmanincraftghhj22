@@ -1,5 +1,7 @@
 # What the owner likes, and what the channel has learned
 
+**Read `MASTERPROMPT.md` first, every time: it is the owner's brief for every film (2026-11-17).** Then this.
+
 **Read this before you write a script or a shot.** It is the owner's taste and the feedback his films have had, in one
 place. `SCRIPT.md` and `SHOTS.md` are how the reference channel does it; this file is how *he* wants it, and where the
 two disagree, this file wins. Add to it every time he says what he liked or did not like. Date every entry. Never
@@ -11,6 +13,7 @@ delete one unless he takes it back.
 |---|---|
 | 2026-11-14 | 11+ subscribers. The two superpower films: about 1.3k views each, 873–875 engaged viewers, 63–65% stayed to watch. |
 | 2026-11-15 | **Monster Village part 1 reached about 5k views**, his best by far, and YouTube kept pushing it. He does not know why: "i have no idea what i did there". He wants more like it. The study of why, and the recipe that came out of it, are in [`reference/monster-village/README.md`](reference/monster-village/README.md), "Why this one travelled". |
+| 2026-11-17 | **Monster Village part 1 passed 15,000 views**: "ive never had that before". Export at 7,047 views: 178.33 hours watched, about 91 s watched per view, 21 subscribers from it, 81.1% stayed to watch. He wrote `MASTERPROMPT.md` from it and wants every film, finished or not, reviewed against it on the rendered mp4 and remastered where it falls short. He is the final tester, but he is not always there: **look at the frames yourself and fix what you see before he has to.** |
 | 2026-11-14 | His target: **70% or more stay to watch**. His words: it "will unlock more viewers"; "just a small adjustment and we are near to getting out of that 1k view jail". |
 
 The format stays. An outside review he trusts said to keep this format and keep improving it, and he agrees. Do not
@@ -275,3 +278,77 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   4. Ideas 1 and 6 of `outlines/ideas-2026-11-15.md` have the same shape and are parked; idea 2 would need another
      danger than players. The new set is `outlines/ideas-2026-11-16.md`.
   Views and stayed-to-watch for the creeper film and this one are still not known.
+- **2026-11-16, "pick all", 82%, and automatic mode.** Of the five ideas in `outlines/ideas-2026-11-16.md`: "how
+  about we pick all … make sure they are similar to the monster village part 1 cuz that one got a whopping 82% stayed
+  to watch its crazy but dont just copy and paste it, study it, learn it, apply it to the 5 ideas u gave me." Then:
+  "study it please, the script, the hook, the sfx, the idea. everything … i wont be reviewing the scripts i will put
+  you on automatic mode lad, 5 videos. make sure you dont split your knowledge, do it like this, idea #1 make it
+  first, inspect it, review it, polish it, and one last polish then done then head to idea #2, dont just make
+  everything at once, the output will be bad", and "once youre done put the mp4 to your branch". So:
+  1. **82% stayed to watch on Monster Village part 1** is the first number from his analytics. The second study is
+     in `reference/monster-village/README.md` ("Studied again"): carry the engine, leave the outline.
+  2. **For these five films only, script first is off**: he will not review scripts. Each film is still written,
+     recorded, built, looked at shot by shot, fixed, looked at again, and only then rendered.
+  3. **One film at a time, finished, before the next is begun.** Nothing of film two is written while film one is
+     open.
+  4. Every finished mp4 is committed to the working branch (`renders/<film>.mp4`).
+
+- **2026-11-17, the five films of `outlines/ideas-2026-11-16.md`, built under the master prompt.** "nice ill review it
+  later now do the other films and always read that masterprompt." All five are on the working branch, each with
+  `narration.md` (concept, three hooks, script), `STORYBOARD.md`, `REVIEW.md` (the eleven outputs and a self-review made
+  on frames of the mp4) and `renders/<film>.mp4` at 1080x1920: I Was Told to Sit (2:27), A Stranger Moved Into My House
+  (2:12), Being Scared Is My Job (2:23), I Have Forty Minutes (1:52), We Lost the Vote (1:39). **He has not reviewed
+  any of them yet, and nobody has listened to any of the five mixes.** What building them taught:
+  1. **A body between the lens and the person the line is about is the commonest fault**: a strolling extra, a carried
+     loaf under the nose, a long cow in front of a small neighbour. Put the second body beside or behind.
+  2. **Night**: one warm light close to the face, and a close camera. Several lights at once turn a pale character
+     white; none leaves a far one black.
+  3. **Two things of one colour read as one thing** (two blue robes; an orange chest on an orange golem).
+  4. **Light must change through the film** (master prompt 2G): every one of the five now goes through at least three
+     of day, sunset, night, storm and morning.
+  5. The facts in films 4 and 5 (the wandering trader; the Mob Vote losers) were written from memory, because the wiki
+     cannot be opened from the sandbox. Each `REVIEW.md` lists them. Check them before upload.
+
+- **2026-11-17, "get us out of 1k view jail".** "wow okay now double check your work every frames and scripts then look
+  at the masterprompt + monstervillage to get us out of 1k view jail!" All 323 shots of the five films were looked at
+  again on frames of the mp4s, and the five scripts were read again against the Monster Village study. No broken shot
+  was found. The one place the five fell short of the 82% film was the same in four of them:
+  1. **The first two seconds must keep changing.** Monster Village changes its picture eleven times in two seconds.
+     Films 2, 3 and 4 opened on one finished picture and held it. Their first shots now build a piece at a time, each
+     piece with its own sound; film 1 already did, and its dog is now a third closer. Film 5 was left alone.
+  2. **The teller faces the lens in the first frame, and is big in it.** Film 3 opened on him in profile.
+  3. **What the first shot adds should be the story's own things** (his pickaxe, my bread, the name tag, the iron men,
+     the llamas), so the premise is in the picture before the line ends, with the sound off.
+  4. Not changed, because it means recording the voice again: film 3 and parts of films 2 and 4 are told in the
+     present tense; the benchmark is all past tense. Ask before doing it.
+  5. **Nothing here is proven.** One film with 82% is one data point, and no view or retention numbers exist yet for
+     any of these five. The fix to trust is the one the numbers confirm after upload.
+
+- **2026-11-17, "perfect the 5 films just like how monster village does it".** "i need you to perfect the 5 films just
+  like how monster village does it and read the masterprompt, once done please render it and give me the direct links."
+  What that pass did, and what it teaches:
+  1. **Tell it in the past from the first word.** Film 3's first clip was in the present tense; it was written and
+     recorded again in the past ("being scared was my job"). A film may keep a present-tense frame (film 4's clock,
+     film 2's "we say hmm") as long as what happened is told in the past.
+  2. **Shot two shows the thing line two names.** Film 3's second shot had the teller's back over the zombie.
+  3. **Measure a new mix against the reference's numbers**, not only against the limits in `SOUND.md`: Monster Village
+     has the voice 14.1 dB over everything else and 87 effects a minute. Films 1 to 3 were 12.7 to 13.4 dB; they are
+     13.8 to 14.2 dB now. Film 1 still has 163 effects a minute.
+  4. One thing differs from the reference in all five and was left alone: the master has to raise these mixes about
+     2 dB and its limiter works for about a third of each film; on Monster Village it does not work at all. That is the
+     voice recording, not the sheet. **Somebody has to listen** before more is done to the sound.
+
+- **2026-11-17, "i love them", and the films go to `main`.** On the five films after the third pass: "okay i love them
+  but the only 1 thats lacking is the stranger moving inside my house one, but its decent enough". He did not say what
+  it lacks, and asked for no fix. Then: "please put them on the main branch first, source code + mp4 so that other
+  agents can see it then lets make a new batch of ideas."
+  1. **Four of five loved; "A Stranger Moved Into My House" is the weakest.** It is the only one of the five whose
+     teller is a grown villager who is wronged and loses, and whose ending is a joke on the viewer. The other four have
+     a teller you feel for (a dog, a worker, a trader, a mob nobody chose). That is a guess, not his word: ask him if
+     it matters for a later film.
+  2. **Finished films go to `main`, with their mp4s**, so every session can open them. Do it without being asked.
+  3. When this branch was merged, `main` had lost five films from `src/registry.ts`, the three-minute rule from
+     `AGENTS.md` and five words from `scripts/narration.py` (two merges of unrelated histories by other sessions).
+     They were put back. **After any merge with `main`, diff those three files against what you had.**
+  4. `main` now paints a sky with clouds behind every outdoor look (`src/engine/Look.tsx`). The five mp4s were rendered
+     before that, with a flat sky. A new render of any of them will not match its mp4 until somebody has looked.
