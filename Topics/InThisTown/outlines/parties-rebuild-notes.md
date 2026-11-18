@@ -67,3 +67,28 @@ the voice (Arena TTS `voice-04`), the music and the 121 sound effects. All of th
 - Village lighting: lantern lines, posts, glows and warm light pools over the square.
 - Pace: ~238 wpm with 0.3–0.4 s of air before each story step; rebuild timing and sound together.
 - Verify from a fresh full render, one still per shot, against the reference contact sheet.
+
+## What the second build actually changed
+
+- **Three colour acts.** `overworld-sunset` for the town (27 shots), a new `kitchen-day` preset for the
+  kitchens (29), `lava-shore` for the restaurant line (20). The night look is gone. `kitchen-day`
+  follows the camera, so every kitchen shot is lit wherever it stands, and `film.tsx` carries
+  `post.exposure 0.82` so the warm walls sit at the reference's exposure, not at white.
+- **Framing rewritten twice.** First pass took every camera to the references' distances (median 3.5–10 m;
+  a person 40–60% of the frame). Second pass, from the contact sheet, gave neighbouring shots different
+  sizes, heights and moves, because 29 medium shots of a head in a kitchen is its own kind of flat.
+- **Sets opened.** No ceilings, no south wall, floor extended: a zone is exclusive, so the walls were
+  only ever in the way. Six `cam.top` shots remain, and the rest of the odd angles are high/low.
+- **The town is populated.** Twelve villagers and three players stand in the square in `world.tsx`
+  (not only inside a shot's own stage), and the square is strung with lantern lines, lantern posts,
+  light pools and a warm key, so a party is visible behind any shot.
+- **The teller is in the room.** The prop-only cues (`FILL_HOME`, `FILL_RESTAURANT`) get him from the
+  world, so the film returns to him at least every third shot.
+- **The fridge is one prop with three states** (closed / empty / full) owned by the world. Both fridge
+  shots used to draw a second solid box over it and film a white wall.
+- **The pace.** 242 wpm asked, 237 delivered, with 0.35 s of air before each story step. `narration.py`
+  grew a per-line `rate` (`[6.chant rate 1.55]`) so a line can be said faster than the rest of its clip:
+  the **"HUS HUS HUS" chant is time-compressed to ~2.1× natural speech**, and its on-screen bubbles
+  fire three-to-a-second instead of one slow pulse.
+- **Measured on the delivered mp4**: 0 frames dark or blown (reference: 8% dark, 29% bright); luma 125
+  sunset / 110 kitchen / 102 lava against the references' 98–102.

@@ -1,9 +1,0 @@
-
-▶ the-guy-who-never-went-to-parties frame 847 → out/stills/the-guy-who-never-went-to-parties-0847.png
-
-▶ the-guy-who-never-went-to-parties frame 2879 → out/stills/the-guy-who-never-went-to-parties-2879.png
-
-▶ the-guy-who-never-went-to-parties frame 2886 → out/stills/the-guy-who-never-went-to-parties-2886.png
-
-Done. 3 still(s) in out/stills
-exit=0
