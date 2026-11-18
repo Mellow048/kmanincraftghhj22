@@ -1,16 +1,23 @@
 /**
- * THE EXPLAINER PACK — everything a film of this topic is built from.
+ * THE "STORIES" PACK — everything a film of this topic is built from.
+ * It began as a copy of the In This Town pack (Topics/InThisTown), by the owner's instruction, 2026-11-12.
  * PACK.md is the catalogue, with a picture of each part.
  *
- *   import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Explainer";
+ *   import { Villager, IronGolem, Hut, Bubble, wordClock } from "../../../Topics/Stories";
  *
- * A film's kit.tsx imports from here and passes the names on, so its scenes import only from "./kit".
+ * A film's kit.tsx imports from here and passes the names on, so scenes import only from "./kit".
  */
-export * from "./flight";
-export * from "./stage";
-export * from "./money";
-export * from "./charts";
-export * from "./goods";
-// Shared with the other topics: the film's clock, numbers and icons in cubes, twelve people, the villagers
-// and their houses, a speech bubble, and the red sign every film ends on. See Topics/Shared/index.ts.
-export * from "../Shared";
+export * from "./staging";
+export * from "./players";
+export * from "./villagers";
+export * from "./things";
+export * from "./places";
+export * from "./creatures";
+export * from "./monsters";
+export * from "./fields";
+export * from "./pillagers";
+export * from "./mansion";
+export * from "./siege";
+export * from "./catsdogs";
+export * from "./creepertown";
+export * from "./endertown";

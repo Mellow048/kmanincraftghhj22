@@ -1,0 +1,313 @@
+{
+  "film": "my-dad-hasnt-left-the-doorway-in-six-years",
+  "README": "The sound sheet. Times are cues, never seconds. Build: python3 scripts/sound.py build my-dad-hasnt-left-the-doorway-in-six-years",
+  "music": {
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.door",
+        "mood": "curious",
+        "why": "the fact arrives as a question: why would a man do that"
+      },
+      {
+        "from": "2.first",
+        "mood": "sneak",
+        "why": "night outside, one plucked bass: the rule being tested"
+      },
+      {
+        "from": "3.grew",
+        "mood": "curious",
+        "why": "the boy behind him, still asking"
+      },
+      {
+        "from": "4.check",
+        "mood": "sad",
+        "why": "the inventory: six years and one object"
+      },
+      {
+        "from": "6.scared",
+        "mood": "none",
+        "why": "THE LOWS POINT. The reference cuts all music at 0:45; this film cuts it here, on his face"
+      },
+      {
+        "from": "7.said",
+        "mood": "hope",
+        "why": "he takes a step anyway"
+      },
+      {
+        "from": "7.things",
+        "mood": "wonder",
+        "why": "the garden reveal: bright notes running up"
+      },
+      {
+        "from": "8.sun",
+        "mood": "hope",
+        "why": "the sun on him, and the sword on the table"
+      },
+      {
+        "from": "9.sub",
+        "mood": "wonder",
+        "why": "ends on the lift, not on a fade"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.door",
+      "to": "1.why",
+      "bed": "room"
+    },
+    {
+      "from": "1.rule",
+      "to": "2.stayed",
+      "bed": "night"
+    },
+    {
+      "from": "3.grew",
+      "to": "6.scared",
+      "bed": "room"
+    },
+    {
+      "from": "7.said",
+      "to": "7.things",
+      "bed": "room"
+    },
+    {
+      "from": "8.sun",
+      "to": "9.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.door",
+      "sfx": "gust",
+      "why": "night air coming through the door"
+    },
+    {
+      "cue": "2.first",
+      "sfx": "tick",
+      "why": "a zombie foot on the path"
+    },
+    {
+      "cue": "2.saw",
+      "sfx": "blip",
+      "why": "it sees him"
+    },
+    {
+      "cue": "2.left",
+      "sfx": "swish",
+      "why": "it turns and goes"
+    },
+    {
+      "cue": "3.floor",
+      "sfx": "tick",
+      "why": "a nail in the second floor"
+    },
+    {
+      "cue": "4.check",
+      "sfx": "swish",
+      "why": "the chest lid"
+    },
+    {
+      "cue": "4.nothing",
+      "sfx": "tick",
+      "why": "nothing inside it"
+    },
+    {
+      "cue": "4.sword",
+      "sfx": "plink",
+      "why": "the wooden sword, one hit left"
+    },
+    {
+      "cue": "5.you",
+      "sfx": "blip",
+      "why": "the line that turns the film"
+    },
+    {
+      "cue": "6.hand",
+      "sfx": "swish",
+      "why": "a hand on a shoulder"
+    },
+    {
+      "cue": "6.swap",
+      "sfx": "tick",
+      "why": "one step backwards, and they have changed places"
+    },
+    {
+      "cue": "7.step",
+      "sfx": "tick",
+      "why": "his boot on the planks"
+    },
+    {
+      "cue": "7.another",
+      "sfx": "tick",
+      "why": "the second step"
+    },
+    {
+      "cue": "7.saw",
+      "sfx": "swish",
+      "why": "he turns round"
+    },
+    {
+      "cue": "7.things",
+      "sfx": "chime",
+      "why": "the garden: a pond, an oak, two chairs"
+    },
+    {
+      "cue": "8.sword",
+      "sfx": "plink",
+      "why": "the sword set down on the table"
+    },
+    {
+      "cue": "8.used",
+      "sfx": "tick",
+      "why": "his hand, not picking it up"
+    },
+    {
+      "cue": "1.why",
+      "sfx": "swish",
+      "why": "his hand settles on the frame"
+    },
+    {
+      "cue": "1.explain",
+      "sfx": "tick",
+      "why": "the zombie's foot stops"
+    },
+    {
+      "cue": "2.first",
+      "sfx": "tick",
+      "why": "another step on the path"
+    },
+    {
+      "cue": "2.stayed",
+      "sfx": "gust",
+      "why": "night air through the door"
+    },
+    {
+      "cue": "3.grew",
+      "sfx": "tick",
+      "why": "planks settling in the house"
+    },
+    {
+      "cue": "3.never",
+      "sfx": "swish",
+      "why": "his shoulders shift and settle again"
+    },
+    {
+      "cue": "3.busy",
+      "sfx": "blip",
+      "why": "the boy gets no answer"
+    },
+    {
+      "cue": "5.asked",
+      "sfx": "swish",
+      "why": "the boy steps closer"
+    },
+    {
+      "cue": "5.sixteen",
+      "sfx": "blip",
+      "why": "nobody told him"
+    },
+    {
+      "cue": "5.nobody",
+      "sfx": "tick",
+      "why": "one block apart, six years wide"
+    },
+    {
+      "cue": "6.stand",
+      "sfx": "tick",
+      "why": "a boot entering the doorway"
+    },
+    {
+      "cue": "6.freeze",
+      "sfx": "swish",
+      "why": "cloth: he turns inside his own house"
+    },
+    {
+      "cue": "6.scared",
+      "sfx": "zip",
+      "why": "his breath catching"
+    },
+    {
+      "cue": "7.said",
+      "sfx": "blip",
+      "why": "it's just grass"
+    },
+    {
+      "cue": "8.sun",
+      "sfx": "chime",
+      "why": "the sun on him"
+    },
+    {
+      "cue": "8.onehit",
+      "sfx": "plink",
+      "why": "one hit left"
+    },
+    {
+      "cue": "8.now",
+      "sfx": "sparkle",
+      "why": "he does not need it"
+    },
+    {
+      "cue": "9.sub",
+      "sfx": "whoosh_low",
+      "why": "the camera settling on the last frame"
+    },
+    {
+      "cue": "1.rule",
+      "sfx": "gust",
+      "why": "the torches on the path"
+    },
+    {
+      "cue": "2.saw",
+      "sfx": "tick",
+      "why": "the zombie's head coming up"
+    },
+    {
+      "cue": "3.floor",
+      "sfx": "tick",
+      "why": "a nail in the new ceiling"
+    },
+    {
+      "cue": "4.nothing",
+      "sfx": "swish",
+      "why": "nothing inside it"
+    },
+    {
+      "cue": "4.six",
+      "sfx": "tick",
+      "why": "the sword turning over"
+    },
+    {
+      "cue": "5.you",
+      "sfx": "swish",
+      "why": "he answers without turning round"
+    },
+    {
+      "cue": "6.hand",
+      "sfx": "blip",
+      "why": "a hand on a shoulder"
+    },
+    {
+      "cue": "6.swap",
+      "sfx": "tick",
+      "why": "one step back"
+    },
+    {
+      "cue": "7.another",
+      "sfx": "tick",
+      "why": "the second step"
+    },
+    {
+      "cue": "8.sword",
+      "sfx": "swish",
+      "why": "wood on wood"
+    },
+    {
+      "cue": "8.used",
+      "sfx": "plink",
+      "why": "his hand beside it, not on it"
+    }
+  ]
+}

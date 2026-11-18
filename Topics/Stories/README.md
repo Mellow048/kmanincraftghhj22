@@ -1,128 +1,234 @@
-# Explainer — one question, answered in under a minute
+# Stories — Minecraft storytime
 
-A narrator asks one question a nine-year-old would ask ("Why does bread cost more every year?"), and answers it
-with things you can point a camera at. Thirty to sixty seconds. Every sentence is shown, literally, as it is said.
-And the camera never cuts: it **flies** from each thing to the next, through one small world in the sky.
+**Stories is the flexible topic: one film, one story, any world.** A kid, a mob family, a player, a machine, a town
+rule somebody made up, a thing that should not be possible — the premise is invented per film and built out of the
+pack in this folder. What does **not** change is the shape, and the shape is why these films hold people:
 
-The subjects the owner named for this topic: money lessons, and what inflation is.
+- an impossible or strange fact, said in the first second, over the teller's face;
+- a rule of this world, stated plainly, that the viewer can play along with;
+- escalation, a step at a time, never the same beat twice;
+- a low point that costs the teller something;
+- a turn that makes an earlier line mean something else;
+- a payoff you can **see**, not one that is only said;
+- and the ask, last, inside the story.
 
-> **PROVISIONAL.** The owner asked for this topic to be built before its reference: "reference which we will do
-> later once youre done". So nothing here is measured from a real video yet. The camera is the framework's own
-> (`docs/CAMERA-BIBLE.md`); the voice, the captions and the sound are the story pipeline's
-> (`docs/STORY-FILMS.md`); the numbers in [`topic.json`](topic.json) are a first setting, so that `npm run check`
-> has something to hold a film to. **The reference will be our own first film** (the owner, asked for a video:
-> "you are the one making that reference!"): `src/videos/why-does-bread-cost-more-every-year/`. He approved its
-> script on 2026-11-13 ("yesboth"). The film is built and rendered (`renders/why-does-bread-cost-more-every-year.mp4`),
-> and it is waiting for him to watch it. When he approves it, measure it and correct this folder
-> ([`reference/`](reference/README.md) says how). No film of this topic has been approved yet.
+One to three minutes. First person, past tense, a fast voice, a new picture about every two seconds, one word of
+caption at a time, music and sound effects under all of it.
+
+**It is never a 20-second short.** A film built to the base rules instead of to this page has been rejected twice
+([`Old Reference/moon-20-seconds/`](Old Reference/moon-20-seconds/README.md),
+[`Old Reference/monster-egg-v1/`](Old Reference/monster-egg-v1/README.md)). `npm run check` now fails one.
+
+**Provenance.** This topic was made on 2026-11-12 by copying `Topics/InThisTown`, on the owner's instruction
+(*"duplicate InThisTown and rename that duplicated one Stories then work there"*). The pack, the numbers, the sound
+guide and the camera notes all came with it, and they are good: they were measured on films he approved. What changed
+is the **subject**. In This Town told one kind of story, in one kind of place, opening with the same three words every
+time; Stories does not. There is no town you must be from, no rule you must inherit, and no required opening. The old
+topic's reference material is parked in [`Old Reference/`](Old%20Reference/README.md) and is history, not the model.
+
+The **format** is still modelled on one Roblox video the owner supplied, "In This Town, Everyone Lived In A Treehouse"
+([`Old Reference/treehouse/`](Old Reference/treehouse/README.md)): a first-person teller, a rule, and a last line that
+turns the first one over. We make the same **kind** of video out of Minecraft blocks. We do not copy its story, its
+sentences or any Roblox asset, and we do not copy any earlier film of ours either.
 
 ## Start here
 
 ```bash
-npm run new -- "Why Bread Costs More" --topic explainer
+npm run new -- "The Day My Village Learned My Name" --topic stories
 ```
 
 That gives you a film folder made from this topic's starter ([`template/`](template/)): a script page to fill in, a
-`kit.tsx` wired to the pack, two islands, and one scene whose camera already flies between two stops. It does not
-give you an explanation.
+`kit.tsx` wired to the pack, a world to change, and one scene with two shots that already render. It does not give
+you a story.
 
-## Which kind of film is it?
+## The reference film, and the other films the owner approved
 
-| The request | It is |
-|---|---|
-| "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation | **This topic** |
-| "What if the sun went out?", answered with facts about what would happen | **This topic.** It is an explanation with "what if" in the title. Pass `--topic explainer` |
-| "What if you could …", a kid who gets a power and what happened to him | [`Topics/WhatIf`](../WhatIf/README.md). That is a story |
-| "In this town, …" | [`Topics/InThisTown`](../InThisTown/README.md) |
+**`in-this-town-same-face`, "In This Town, Everyone Had the Same Face Except Me".** The owner on the picture:
+"everything is perfect top to bottom", "i like the assets". On the finished film with its sound: "yes its good put it
+as the topic's reference". Open it before you write anything, and build like it.
 
-If you cannot tell whether a "what if" is a story or an explanation, ask the owner one question.
+Its page is [`Old Reference/same-face/`](Old Reference/same-face/README.md): the film itself, its source, its shape measured
+beat by beat, its sound in numbers, and a log of all 57 shots with the reason for each.
+
+**Every film the owner approved is kept in [`Old Reference/`](Old Reference/README.md), with its source code and its mp4**
+("so that other agents know how to make a good short"). Each folder there holds the film, one picture of all its
+shots, a log of every shot, a snapshot of its source, and a page on what it is good for and what was hard.
+
+| Film | The owner said | Use it for |
+|---|---|---|
+| [`Old Reference/same-face/`](Old Reference/same-face/README.md): `in-this-town-same-face` (short cut: 14 beats, 57 shots, 441 words, 1:45). **The reference** | "yes its good put it as the topic's reference" | **Everything.** `narration.md` for the shape of a script. `kit.tsx` for how a film uses the pack. `world.tsx` for a town in zones. Any `sceneN.tsx` for what a shot is. `sound.json` for the sound |
+| [`Old Reference/nobody-looked-at-the-moon/`](Old Reference/nobody-looked-at-the-moon/README.md): `in-this-town-nobody-looked-at-the-moon` (short cut: 14 beats, 63 shots, 471 words, 1:52) | "every single one u made is good" | A film at NIGHT: a town in warm lantern light, cold moonlight that lies on one place at a time and moves like a character (`skyAt()` in its `kit.tsx`), and every part under "Fields and night" in [`PACK.md`](PACK.md). A remake of a rejected 20-second film. The densest sound sheet, and what was cut from it |
+| [`Old Reference/monster-egg/`](Old Reference/monster-egg/README.md): `in-this-town-monster-egg` (full film: 18 beats, 93 shots, 746 words, 2:57) | "every single one u made is good" | The long cut: how 18 beats are spread over three minutes, and three places in one world. **It has a voice and no other sound**, because it was made before the sound rule. Do not copy that |
+| [`Old Reference/superpower-at-18/`](Old Reference/superpower-at-18/README.md): `in-this-town-superpower-at-18` (full film: 18 beats, 90 shots, 710 words, 2:48) | "wow i love it, i love how u made the short" | The long cut WITH sound, and a story the owner outlined himself. Its page says what he rejected on the way |
+| [`Old Reference/pumpkin-heads/`](Old Reference/pumpkin-heads/README.md): `in-this-town-pumpkin-heads` (short cut: 14 beats, 58 shots, 490 words, 1:56) | He approved the script and asked for another ending; its `narration.md` says which | A second short cut with sound, and an ending that is not the subscribe sign held to camera |
+| [`Old Reference/robot-at-18/`](Old Reference/robot-at-18/README.md): `in-this-town-robot-at-18` (full film: 86 shots, 697 words, 2:54) | "now thats MUCH better! 8.8/10 fight scene great job lad" | **A FIGHT.** `scene6.tsx` and `fight.tsx`: bodies posed joint by joint, hit-freezes, cuts inside a line, flying poses, and the two fights he rejected first |
+| [`Old Reference/iron-golem/`](Old Reference/iron-golem/README.md): `in-this-town-every-kid-got-an-iron-golem` (middle cut: 14 beats, 61 shots, 516 words, 2:13) | "pretty nice", "this is a good short" (2026-11-15) | **Pace** (234 words a minute with short silences between story steps: he rejected one faster and one slower) and a premise that states its reason in full sentences |
+| [`Old Reference/we-are-all-cats/`](Old Reference/we-are-all-cats/README.md): `in-this-town-we-are-all-cats` (short cut: 6 beats, 42 shots, 342 words, 1:23) | "this is actually really funny, i love this" (2026-11-15) | **A story that ends in one film** (no part two, at his request) and **a funny one**: where the jokes are and why each is a picture. Cats and dogs: the cat and dog players, villagers and golems built for it are in the pack ([`PACK.md`](PACK.md), "Cats and dogs") |
+| [`Old Reference/everyone-runs-away-from-me/`](Old Reference/everyone-runs-away-from-me/README.md): `in-this-town-everyone-runs-away-from-me` (short cut: 6 beats, 50 shots, 402 words, 1:40) | "really cute short, i like it" (2026-11-16) | **The Monster Village recipe in 100 seconds** ([`Old Reference/monster-village/README.md`](Old Reference/monster-village/README.md), "Why this one travelled"): a famous mob as family, the teller the odd one out, players as the danger, **Minecraft facts as the jokes and the plot**. One cat in a town of creepers; whole in one film, funny. Also: **how to stage for a tall frame** (shoot along a long thing, not across it). The creeper family, crowd, houses and players built for it are in the pack ([`PACK.md`](PACK.md), "The creeper town") |
+| [`Old Reference/never-seen-my-mums-face/`](Old Reference/never-seen-my-mums-face/README.md): `in-this-town-i-have-never-seen-my-mums-face` (short cut: 6 beats, 52 shots, 413 words, 1:46) | "another banger idea" (the script), then "i like it but it was kinda similar to the creeper one" (2026-11-16) | **Script first, done right** (he read and heard the script, said yes, and no line changed), **a reveal that is a picture** (her face, with half a second of silence), and **seven plants that pay off**. A kid raised by endermen. **Also the warning: it has the creeper film's shape, and he saw it.** Read "Too close to the creeper film" on its page before pitching anything. The enderman family, crowd, houses, pumpkin players, kitchen and rain built for it are in the pack ([`PACK.md`](PACK.md), "The enderman town") |
+
+Copy how they are **built**. Never copy what they **tell**: no premise, sentence, joke or twist from a finished film
+goes into a new one.
+
+The films that render live in `src/videos/<film>/`, and their delivered mp4s in `renders/`. What is in `Old Reference/`
+is a copy of both, kept beside the page that explains it.
+
+The treehouse video in `Old Reference/treehouse/` is where the format came from. It is a Roblox video by someone else,
+studied for its shape. The reference film is ours.
 
 ## Read in this order
 
-1. This page.
-2. [`SCRIPT.md`](SCRIPT.md) — how an explanation is written: one question, one answer, one idea a line.
-3. [`SHOTS.md`](SHOTS.md) — the flight: stops, islands, and why nothing an explainer shows lives in a shot.
-4. [`PACK.md`](PACK.md) — what already exists: the stage, money, charts you can stand next to, goods.
-5. [`SOUND.md`](SOUND.md) — the sounds of money and of numbers, and what differs from a story film's sound.
-6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → picture → captions → sound.
-7. [`docs/CAMERA-BIBLE.md`](../../docs/CAMERA-BIBLE.md) — the camera grammar this topic flies by.
+1. This page, then [`Old Reference/README.md`](Old Reference/README.md): which films the owner approved, and what each is
+   for. Then the reference film's page, [`Old Reference/same-face/`](Old Reference/same-face/README.md), its contact sheet and
+   its shot log.
+0. [`OWNER.md`](OWNER.md) — what the owner likes, what reviews said, and the rules that came out of them. It wins over the playbooks.
+2. [`SCRIPT.md`](SCRIPT.md) — how the story is written. This is where version 1 failed.
+3. [`SHOTS.md`](SHOTS.md) — how it is cut and shot, and how each Roblox trick becomes a Minecraft one.
+4. [`PACK.md`](PACK.md) — the people, places and things that already exist. One picture, one table for each file.
+5. [`SOUND.md`](SOUND.md) — the music, the air and the effects, and how to write the sound sheet.
+6. [`docs/STORY-FILMS.md`](../../docs/STORY-FILMS.md) — the engine side: script → voice → timing → shots → captions → sound.
+7. [`Old Reference/monster-egg-v1/`](Old Reference/monster-egg-v1/README.md) and
+   [`Old Reference/moon-20-seconds/`](Old Reference/moon-20-seconds/README.md) — one page each on the attempts the owner rejected.
+   Each has an approved film beside it that tells the same idea.
+8. The page of the approved film nearest to yours: night ([`Old Reference/nobody-looked-at-the-moon/`](Old Reference/nobody-looked-at-the-moon/README.md)),
+   the long cut ([`Old Reference/monster-egg/`](Old Reference/monster-egg/README.md)), or the long cut with sound and the
+   ending the owner threw out first ([`Old Reference/superpower-at-18/`](Old Reference/superpower-at-18/README.md)).
+9. [`Old Reference/superpower-at-18-part-2/`](Old Reference/superpower-at-18-part-2/README.md) — the film the owner rated highest
+   ("a banger… peak"), its source, and why its first render was rejected: motion and pace. Read it before any action scene.
+10. [`Old Reference/robot-at-18/`](Old Reference/robot-at-18/README.md) — **the fight** the owner scored 8.8/10, after he rejected
+    two ("it's like I'm watching a png fight another png"). Read it, and its five-frames-a-second sheet, before any fight.
 
 ## What changes from the base rules
 
-These apply to a film that declares `topic: "explainer"`, and to nothing else.
+These apply to a film that declares `topic: "stories"`, and to nothing else.
 
-| Base rule (`AGENTS.md`) | Explainer |
+| Base rule (`AGENTS.md`) | Stories |
 |---|---|
-| 18–20 s, ceiling 21 s | 30–58 s. Never over 60 s. (`cut: "long"`: 60–118 s, never over 120 s) |
-| Times of a camera move are typed by hand (`at`, `dur`) | The recorded voice is the clock. Each line of `narration.md` is one **stop**, and the camera flies to it as the line begins (`flightScene`) |
-| The camera never teleports; `npm run check` warns about a jump | The same promise, enforced: `film.tsx` calls `unbroken(film.scenes)`, which throws if the camera jumps. At most 2 declared hard cuts a film |
-| 3–5 shots in 20 s | One stop for each line: about 12–25 in a film. A new stop every 2–4 s (median 1.8–4.0 s). Nothing rests over 7 s |
-| A scene owns its actors and its performance | A scene owns its **exhibit** (`ExhibitN`) and its route. The exhibit is mounted by `world.tsx` for the whole film and driven by the film's clock, because a camera that flies away from a thing still sees it |
-| Narration optional, 4–7 lines, no recorded voice | A recorded narrator, present tense, talking to "you". 110–250 words. One idea a line |
-| No overlays; text only on 3D signs | One-word captions, drawn by the engine. And every number is a **thing in the world**: a tag, a bar, a stack (`PACK.md`) |
-| "Music: low drone, one pulse" | Music in three or more sections, the air of the place, and 40 or more sound effects a minute, built by `scripts/sound.py` from the film's `sound.json` |
-| The last frame is a button | The last line is the subscribe line, and it belongs to the explanation |
+| 18–20 s, ceiling 21 s | 83–176 s (the usual film is 100–160 s). **Never over 178 s: a strict rule.** Over 3:00 YouTube does not treat it as a Short |
+| 4–7 scenes, 3–5 shots per 20 s | About 18 beats and 80–95 shots. A cut about every 2 s (median 1.4–2.3 s). No shot over 6 s |
+| No camera teleports; a scene starts where the last one ended | Hard cuts are the language. Cut on the noun |
+| Narration in the present tense, 3–10 words a line, 4–7 lines | Past tense, first person, full sentences. 640–770 words at 235–268 words a minute. No pauses |
+| No overlays; text only on 3D signs | One-word captions, drawn by the engine (`captions` in `defineFilm`). Scenes still add no overlays of their own |
+| Hook in the first 1.5 s | The strange fact is in the first three words, over the teller's face. It does not have to name a place — any impossible premise the picture can prove in one shot |
+| The last line is a button, not a moral | The last line is the twist, then a 4–6 word "Subscribe …" line that belongs to the story |
+| One world, mounted once | One world, split into zones. Each shot names its zone |
+| "Music: low drone, one pulse"; a hit on the reveal | The owner's own track under the whole film ([`InThisTownMusic.aac`](InThisTownMusic.aac)), the air of each place, and 40 or more sound effects a minute. All of it mixed by `scripts/sound.py` from the film's `sound.json` |
 | Started from `templates/video/` | Started from this topic's `template/`, and built from its pack |
 
-Everything else in `AGENTS.md` still holds: one folder per film, real 3D sets, the picture shows what the voice
-says, deterministic code, atmosphere in the world, and the render policy.
+Everything else in `AGENTS.md` still holds: one folder per film, real 3D sets, something moving in every shot, the
+picture shows what the voice says, deterministic code, atmosphere in the world, and the render policy.
 
-## What makes an explanation work
+## The short cut: one to two minutes
 
-These are the rules this folder is built on. They are a first setting, like the numbers, until a reference is measured.
+The owner may ask for a shorter film ("keep it short like 1 min to 2 minute max"). That is a **cut** of this topic,
+not a different topic. A film takes it by adding one line to `defineFilm`, next to `topic`:
 
-1. **One question.** The title is the question. The film ends when it is answered.
-2. **One thing everybody knows.** A loaf of bread and its price. Every later number is measured against it.
-3. **One person it happens to.** Sam. Whatever is explained happens to Sam, so the viewer has somebody to be.
-4. **One idea a line, one stop a line.** If a line has two things in it, it is two lines.
-5. **A number is a thing.** Never a slide. A price is a tag on the loaf. "It doubled" is a bar that grows past Sam's head.
-6. **Show it on the word.** The tag pops on "price". The bar grows on "doubled". Not a second before or after.
-7. **The camera never lets go.** It flies from one thing to the next, so the viewer sees how the ideas are joined.
-8. **The surprising part comes late.** The cause everybody knows first; the part they do not know just before the end.
-9. **End on the viewer.** The last picture is what this means for them, and then the subscribe line.
+```ts
+topic: "stories",
+cut: "short",
+```
+
+`npm run check` then holds the film to `cuts.short` in `topic.json` in place of the topic's length and word count.
+Nothing else changes.
+
+| | Full film | Short cut |
+|---|---|---|
+| Length | 150–176 s, **never over 178 s** (strict rule) | 60–118 s, **never over 120 s** |
+| Words | 640–770 | 250–520 |
+| The floor, for both | Never under 60 s or 250 words. Under that it is not a short film of this topic; it is a different kind of video, and `npm run check` fails it | the same |
+| Beats | 18 | About 14 |
+| Shots | 80–95 | 35–65 |
+| Pace, shot length, captions, first line, last line | as in the table above | the same |
+
+What to keep, and what to drop from the 18 beats of `SCRIPT.md`:
+
+- **Keep:** the hook, the mysteries, the tour, the itch, the elder's rule, the decision with its planted question,
+  one funny failure, one success, the friend, the edge, the act, the wait, the reveal, the button.
+- **Drop first:** the adults' sensible reasons (beat 5), the tease (6), the price (11), the packing (12), and the
+  friend's two lines of dialogue (13: he can act instead of speak).
+- **Do not drop:** anything that is paid back at the end. A short cut has less room, so every planted thing has to
+  come back. Write the table of what is planted and where it pays off before you cut a line.
+
+The tour and the edge shrink in words, not in number of pictures: they are where the film is fastest.
+
+The first film in this cut is `in-this-town-same-face`: 14 beats, 57 shots, 441 words, 1:45.
+
+## What makes this kind of video work
+
+The evidence for each line is in `SCRIPT.md` and `SHOTS.md`.
+
+1. **The title is the first sentence.** One impossible fact, said over the teller's face, in the first three words.
+   In the films that came with this topic the fact was a place ("In this town…"); in a Stories film it can be
+   anything the picture can prove in one shot. What it must never be is a mood, or a question with no noun in it.
+2. **Questions before answers.** Three open questions in the first 11 seconds.
+3. **A tour before a problem.** Twenty-odd seconds of how this world lives, all of it things you can point a camera
+   at. In a flexible topic the tour is also where you tell the viewer *where* they are, because this time there is no
+   shared town they already know.
+4. **The wish is a question.** "What was down there?" The viewer stays to get the answer, not to see a goal reached.
+5. **The answer is planted.** The teller asks, out loud, the question whose answer is the twist, 90 seconds early.
+6. **Try, fail, try again.** One cheap funny failure, then one attempt that works.
+7. **Slow down at the edge.** The moment before the act gets the most words of any beat after the tour.
+8. **Picture, then explanation.** The reveal is one short sentence about what he saw. The reason comes second.
+9. **A new picture every two seconds.** 87 shots, 8 words each. Every shot is moving.
+10. **The ending rewrites the beginning.** The prison was a shelter. Then four words, and it is over.
 
 ## Work order
 
-1. `npm run new -- "…" --topic explainer`.
-2. Write the question, and the answer in ONE sentence a nine-year-old could repeat. If you cannot, you cannot
-   explain it yet: read more first.
-3. Write `src/videos/<film>/narration.md` to the beat sheet in `SCRIPT.md`. One line of script per stop. Fill in the
-   table of what each line SHOWS before you write the lines.
+1. `npm run new -- "<The Title Is The First Line>" --topic stories`.
+2. Write the premise as four sentences. The one that works most often: *Something impossible is true here (X).
+   Nobody would explain the rule (Y). I broke it. Y was really Z.* Any premise is allowed, but it must fit that
+   shape: a strange fact, a rule, a break, and a reversal. If Z does not change what X means, you do not have a
+   story yet.
+3. Write `src/videos/<film>/narration.md` to the beat sheet in `SCRIPT.md` (18 beats, or about 14 for the short
+   cut). One line of script per shot.
 4. `python3 scripts/narration.py build <film> --estimate`. Fix length and rhythm now, while it is only text.
 5. **Get the script approved by the owner before anything is built.** Then record one clip per `# clip` line and
    run `build` again without `--estimate`.
-6. Lay out the islands in `kit.tsx` (`PLACE`) and `world.tsx`, one for each idea, with the pack's parts. Name the
-   route (`STOPS`). Then the scenes: one `sceneN.tsx` per beat, each with its `ExhibitN` and its flight.
+6. Lay out the world in zones in `world.tsx` with the pack's places, and build the one new place this story needs.
+   Then the scenes: one `sceneN.tsx` per beat, one shot per script line, cast from the pack through `kit.tsx`.
+   Each shot has a `cam.*` move, a `note` and a `stage`.
 7. `npm run typecheck && npm run check`.
-8. One still per stop (`npm run shots -- <film> --at 0.9`: the frame the camera comes to rest on), read as a
-   contact sheet, fixed, and looked at again. Then `--at 0.2` for where it is in mid-flight.
-9. **The sound** ([`SOUND.md`](SOUND.md)): `python3 scripts/sound.py draft <film>`, write the sheet stop by stop,
+8. One still per shot (`npm run shots -- <film>`), read as a contact sheet, fixed, and looked at again. Expect
+   three or four passes.
+9. **The sound** ([`SOUND.md`](SOUND.md)): `python3 scripts/sound.py draft <film>`, write the sheet shot by shot,
    `python3 scripts/sound.py build <film>`, read the report, and point `film.tsx` at the mix.
 10. `npm run typecheck && npm run check` again, then the render. The render policy in `AGENTS.md` applies.
 11. Hand it over with what you could not judge: the sound was measured, not heard.
 
-`npm run check` tells you where you are at every step: which script line has no stop yet, whether the timing is
+`npm run check` tells you where you are at every step: which script line has no shot yet, whether the timing is
 still an estimate, and whether the mix is older than the script.
 
 ## What is in this folder
 
 | | |
 |---|---|
-| `topic.json` | The numbers `npm run check` enforces for this topic, its camera rule, the limits of the sound. `state: "PROVISIONAL"` until a reference is measured |
-| `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the explanation, the flight, the sound |
-| `PACK.md`, `pack.jpg` | The catalogue of the pack |
-| `index.ts` | The pack, from one import: `import { Island, Coin, flightScene } from "../../../Topics/Explainer"` |
-| `flight.tsx` | The camera: `stop`, `near`, `flightScene`, `unbroken` |
-| `stage.tsx` | Island, Sun, Plinth, Signpost, Bridge |
-| `money.tsx` | Coin, CoinStack, CoinPile, Bill, BillStack, MoneyBag, Chest, Printer |
-| `charts.tsx` | PriceTag, Bar, BarChart, Arrow, Balance |
-| `goods.tsx` | Bread, Apple, Crate, BreadShelf |
-| `template/` | The starter film that `npm run new -- … --topic explainer` copies |
-| `sheet/` | The source of `pack.jpg`: a film that only shows the parts. `PACK.md` says how to rebuild it |
-| `reference/` | Empty until the topic's first film is approved: the owner asked us to make the reference ourselves. What to do when it is |
+| `topic.json` | The numbers `npm run check` enforces for this topic and its short cut, the limits of the sound, the reference film and the other finished films |
+| `SCRIPT.md`, `SHOTS.md`, `SOUND.md` | The three playbooks: the story, the picture, the sound |
+| `PACK.md`, `pack.jpg`, `pack-night.jpg` | The catalogue of the pack, and one still for each part |
+| `index.ts` | The pack, from one import: `import { Villager, Hut, pop } from "../../../Topics/Stories"` |
+| `staging.ts` | When a word is said, how a thing pops in, where "in front of him" is, how to climb a hill |
+| `villagers.tsx` | The villager, the iron golem, the poppy |
+| `players.tsx` | Twelve players, no two alike, and the pumpkin head |
+| `things.tsx` | Speech bubble, bed, hole, flying bits, smoke of three kinds, a burning roof, firelight; a wide straw hat, a bucket, a lantern |
+| `places.tsx` | House (new, burned out, on fire, lit, door open), bell, well and its lid, stall, lamp post, lantern post, lantern line, fence, stepped hill, bedroom, tunnel |
+| `creatures.tsx` | Egg, worm, dragon, phoenix, stone golem, the mother, chicken, rank sign, fire, puffs, sound rings, and the red "Subscribe" sign every film ends on |
+| `fields.tsx` | What lies round the town and over it at night: wheat, scarecrows that stand and walk, pines and the edge of a forest, a moon, moonlight that falls on one place, stars |
+| `template/` | The starter film that `npm run new -- … --topic stories` copies |
+| `Old Reference/README.md` | **Start here for examples**: every film the owner approved, what each is for, and how to add one |
+| `Old Reference/same-face/` | **The reference film**: the mp4, its source, its shape and its sound measured, and a log of every shot |
+| `Old Reference/nobody-looked-at-the-moon/`, `Old Reference/monster-egg/`, `Old Reference/superpower-at-18/` | **Three more films the owner approved**, each with its mp4, its source, a log of every shot, and what was hard |
+| `Old Reference/treehouse/` | The video the format came from, its transcript, a shot log and contact sheets |
+| `Old Reference/monster-egg-v1/`, `Old Reference/moon-20-seconds/` | The two rejected attempts, as warnings |
+| `Old Reference/robot-at-18/` | **The fight reference**, with its mp4 and source: `scene6.tsx` is the fight, `fight.tsx` the poses, moves and hit effects |
+| `Old Reference/pumpkin-heads/`, `Old Reference/monster-village/`, `Old Reference/monster-village-part-2/` | **Three more approved films**, each with its mp4, its source and a shot log |
+| `Old Reference/superpower-at-18-part-2/` | **The owner's favourite so far**, with its mp4 and source: how to stage fast action and show the process |
+| `Old Reference/iron-golem/`, `Old Reference/we-are-all-cats/`, `Old Reference/everyone-runs-away-from-me/`, `Old Reference/never-seen-my-mums-face/` | **Four more approved films**, each with its mp4, its source and a shot log. The last page also says why it was too like the one before it |
+| `monsters.tsx` | The people of a monster village: zombie, skeleton, creeper, spider, enderman, slime. All of them can act |
+| `creepertown.tsx`, `endertown.tsx` | **Two towns of one mob each, as people**: creepers (a family, a crowd that bolts and hisses, houses, the players who farm them) and endermen (a family, a crowd that carries, teleports and screams, houses, the players in pumpkins, a kitchen, rain). `PACK.md` has a section and a picture for each. Parts to use, not a story to tell again |
+| `pillagers.tsx` | Pillagers: grey, scowling villagers with crossbows, and their chief |
+| `mansion.tsx` | The woodland mansion from outside, its dark oak forest, and its hall with the map table |
+| `InThisTownMusic.aac` | **The default background track for a Stories film.** The owner added it on 2026-11-13 for the In This Town shorts ("the music is used thats the new backround music for the in this town shorts"); it came into this topic with the copy, and it still works under any Minecraft story. 3:36, stereo. A film's `sound.json` names it (`"track"` in `music`) and `scripts/sound.py` mixes it under the voice ([`SOUND.md`](SOUND.md), section 3). A film whose world wants different music may name another file — say why in the sheet |
 
-Parts used by more than one topic (numbers and icons in cubes, the film's clock, twelve people, the villagers and
-their houses, the red "Subscribe" sign) are in [`Topics/Shared`](../Shared/README.md) and are passed on by this pack.
-
-Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one explanation: its route, its
-islands, its Sam. Anything new that a second film could use goes into the pack ([`PACK.md`](PACK.md) says how).
+Films live in `src/videos/`. A film's own `kit.tsx` holds only what belongs to that one story: its teller, its map
+of places, and anything no other film could use. Everything else comes from the pack, and anything new that a second
+film could use goes into the pack ([`PACK.md`](PACK.md) says how).

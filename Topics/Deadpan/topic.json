@@ -1,0 +1,114 @@
+{
+  "id": "deadpan",
+  "name": "Deadpan",
+  "folder": "Topics/Deadpan",
+  "profile": "story",
+  "origin": {
+    "page": "Topics/Deadpan/reference/OWNER-BRIEF.md",
+    "what": "A format the owner brought on 2026-11-12: Roblox deadpan-surrealist escalation shorts, rebuilt in Minecraft with our own premises. The brief is kept word for word; the numbers below are his, with the engine's floors applied.",
+    "owner": "this is a new topic that i really want to work ... its a roblox dominated stories but with my own twist i can make my own stuff but in minecraft"
+  },
+  "premise": {
+    "oneLiner": "One mundane rule, taken literally, in a world where everybody treats it as normal. First person, flat delivery, comic escalation, ironic button.",
+    "flexible": "Any idiom, childhood game, shop policy or superstition can be the law. The setting and the cast are invented per film, out of the Stories pack. What is fixed is the six beats, the cut rate, the deadpan, and the numbers in `film`.",
+    "mustHave": [
+      "a mundane rule made literal, and a Minecraft mechanic inside it",
+      "an everyman narrator who never finds any of it strange",
+      "exact numbers, days and prices, on screen and in the voice",
+      "one boring physical detail planted early and used in the loophole",
+      "5 to 7 ladder stages, each anchored to a count or a clock",
+      "an ironic button in the last two sentences, after the win"
+    ],
+    "never": [
+      "a wink, a 'crazy', or any line that tells the viewer how to feel",
+      "a moral at the end",
+      "a held shot, a static frame, or lip-sync",
+      "another film's premise: the reference's stories are Roblox's, ours are Minecraft's",
+      "voice only: music, air and effects are mandatory"
+    ]
+  },
+  "camera": {
+    "builder": "storyScene",
+    "guard": "",
+    "maxHardCuts": 999,
+    "note": "Micro-cuts: 0.8-1.4 s a shot, 95-115 a film, hard cuts only, expression snapped on the cut. Handheld drift on every shot. See SHOTS.md."
+  },
+  "film": {
+    "seconds": [
+      100,
+      132
+    ],
+    "hardMaxSeconds": 178,
+    "hardMinSeconds": 60,
+    "hardMinWords": 300,
+    "shotSeconds": [
+      0.4,
+      3.2
+    ],
+    "medianShotSeconds": [
+      0.8,
+      1.6
+    ],
+    "wordsPerMinute": [
+      175,
+      245
+    ],
+    "words": [
+      340,
+      420
+    ],
+    "maxWordsPerShot": 14,
+    "lastLineContains": "subscribe",
+    "captions": true,
+    "shortsRule": "A vertical video over 3:00 is not a YouTube Short. No film of this topic runs over 2:58, and there is no longer cut."
+  },
+  "cuts": {
+    "short": {
+      "seconds": [
+        55,
+        90
+      ],
+      "hardMaxSeconds": 120,
+      "words": [
+        190,
+        300
+      ]
+    }
+  },
+  "pack": "Topics/Deadpan/PACK.md",
+  "template": "Topics/Stories/template",
+  "models": {
+    "note": "No APPROVED film yet. The first one becomes the model named here, and its page goes in `reference/` beside the owner's brief."
+  },
+  "sound": {
+    "required": true,
+    "guide": "Topics/Deadpan/SOUND.md",
+    "minMusicSections": 3,
+    "musicUnderVoiceDb": [
+      15,
+      24
+    ],
+    "maxSecondsWithoutMusic": 6,
+    "minSfxPerMinute": 55,
+    "maxGapSeconds": 6,
+    "maxBuried": 0,
+    "minVoiceOverRestDb": 3,
+    "minVoiceOverRestMedianDb": 10,
+    "lufs": [
+      -16.5,
+      -13
+    ],
+    "maxTruePeakDb": -0.3,
+    "bedDefault": "room",
+    "moodDefault": "playful",
+    "bedForLook": {
+      "overworld-night": "night"
+    },
+    "bedForZone": {
+      "room": "room",
+      "shop": "room",
+      "bank": "room",
+      "class": "room"
+    }
+  }
+}

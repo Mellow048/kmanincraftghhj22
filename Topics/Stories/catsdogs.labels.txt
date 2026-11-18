@@ -1,0 +1,12 @@
+CatVillager: a robe, folded sleeves, a tail
+CatGolem (and CatPlayer, small)
+CatPlayer who 0: the red shirt
+DogPlayer who 0: the blue shirt
+DogVillager, and both players
+puff + catArchPose: fur up, back up
+bark: jaw, ears, white rings
+CatGolem puff, DogGolem bark
+Golem grass: feet overgrown
+Bone (and Fish), on the sleeves
+CatDogGolem sit
+Both kinds in one crowd

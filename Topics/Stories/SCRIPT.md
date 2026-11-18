@@ -1,74 +1,186 @@
-# Writing an explainer
+# Writing a Stories script
 
-> **Provisional.** This beat sheet is a first setting. It has not been measured against a reference yet
-> ([`reference/`](reference/README.md)). When one arrives, its beats replace these.
+> **First read [`OWNER.md`](OWNER.md).** Premise on screen in the first second; no two shots in a row alike; every scene has an environment shot, a travelling shot and an odd angle; the owner's outline is the story.
 
-An explainer is one question and one answer. It is the hardest kind of script to write short, because the writer
-knows too much. The method below is how to throw things away.
+**Any premise fits this topic; this shape does not change.** A Stories film can be about a town, a mob family, a
+player, a machine, a rule somebody invented — but it is told with the same 18 beats, the same pace and the same last
+line that turns the first one over. Read the beats below as a machine for holding a stranger for two minutes, not as a
+description of one town.
 
-## Before a line is written
+This is a study of one script, and then the rules we take from it.
 
-Write these three things at the top of `narration.md`. If you cannot, stop and read more about the subject.
+The script is the narration of "In This Town, Everyone Lived In A Treehouse"
+([`Old Reference/treehouse/transcript.md`](Old Reference/treehouse/transcript.md)). The owner chose it as the model: it is
+popular, and in his words it "explained well".
 
-1. **The question**, the way a nine-year-old would ask it. "Why does bread cost more every year?" Not "What is inflation?"
-2. **The answer, in one sentence the same child could repeat.** "There is more money than there used to be, so each
-   coin buys less."
-3. **The thing everybody knows.** One object with a price the viewer already has in their head: a loaf of bread.
-   Every number in the film is measured against it.
+**What this study rests on.** The words, the caption timestamps and the video file. It does not rest on the video's
+view count, its retention graph or its comments: none of those were available. So every "this is why people stay"
+below is an argument from the text and the edit, not a measurement of the audience. The counts are measurements.
 
-Then fill in the table of what each line SHOWS. A line with nothing to point a camera at is a line to cut.
+## 1. The numbers
 
-## The beat sheet
+| | |
+|---|---|
+| Length | 2:46.5 |
+| Words | 718 |
+| Pace | **259 words a minute**, 4.3 a second. The voice is sped up and never pauses for longer than a breath |
+| Sentences | 54. Half are 13 words or fewer. The longest is 25, the shortest 4 |
+| Sentences of six words or fewer | 9, and every one of them is a turn in the story (section 4) |
+| "I" | 41 times |
+| "we", "our", "us" | 8 times, half of them in the first 20 seconds |
+| Named characters | None. "The oldest man", "my best friend", "the adults" |
+| Lines of dialogue | 3 |
+| Questions | 3 |
+| Words of ten letters or more | 8 of 718 |
+| Words of one syllable | About 7 in 10 |
+| Pictures | 87 shots, so about 8 words per picture |
 
-About 12–25 lines, 110–250 words, 30–58 seconds. One line is one stop of the camera.
+The owner's builder prompt gives the pace as about 165 words a minute. Measured, it is 259. That matters: a script
+written for 165 comes out 450 words long and feels thin. **Write about 700 words.**
 
-| # | Beat | Lines | What it does | The picture |
-|---|---|---|---|---|
-| 1 | The question | 1 | The title, said. Ten words or fewer | The person it is a problem for, and the thing |
-| 2 | The thing you know | 1–2 | One loaf, one price. The anchor | The thing alone, and its price appearing on the word |
-| 3 | It was not always so | 1–2 | The same thing, earlier or elsewhere, at another price. Now there is something to explain | The same thing, a second time, with another tag |
-| 4 | The cause, step by step | 3–6 | One idea a line. Each line starts from the last one's ending: "so", "and then", "which means" | One island for each idea, joined by a bridge when the ideas are joined |
-| 5 | The part you did not know | 1–3 | The surprising consequence. The reason the film is worth watching | The biggest picture of the film: the scales tip, the bar passes his head |
-| 6 | The answer | 1 | The one sentence from the top of the page, nearly word for word | Back to the thing you know, changed |
-| 7 | You | 1–2 | What it means for the viewer. Then the subscribe line, which belongs to the explanation | The person again, with the thing; then the red sign |
+## 2. The shape: 18 beats
 
-## The rules of a line
+| # | Beat | Starts | Words | Shots | Its job | The line that does the job |
+|---|---|---|---|---|---|---|
+| 1 | Hook | 0:00 | 15 | 3 | Say one impossible fact in the first three words | "…we all lived in a giant tree house high above the clouds." |
+| 2 | Three mysteries | 0:04 | 36 | 3 | Stack questions before anyone can swipe | "nobody knew how we had ended up there… nobody knew how to get back down. Not even the oldest man…" |
+| 3 | The tour | 0:11 | 85 | 15 | Show how life works here, only in things a camera can see | "We collected rainwater in barrels, picked strange fruits…, and used thick vines…" |
+| 4 | The itch | 0:34 | 15 | 3 | Turn comfort into one question | "It was actually a pretty good life, but… What was down there?" |
+| 5 | The adults say no | 0:38 | 37 | 3 | Authority gives sensible reasons. He wants it more | "But that only made me more curious." |
+| 6 | The tease | 0:45 | 39 | 4 | One glimpse of evidence, then take it away | "…strange dark shapes moving far below, but they always disappeared…" |
+| 7 | The elder's warning | 0:55 | 42 | 3 | A rule with no reason, from the one person who should know | "All I remember is that we were told never to go down." |
+| 8 | The decision | 1:05 | 30 | 2 | Ask the question whose answer is the twist. Commit | "Why would someone build an entire town in a tree unless there was a reason to stay up here? So, I decided to find out." |
+| 9 | Attempt 1 fails | 1:11 | 43 | 5 | A cheap, funny failure. The town laughs | "…the wings immediately broke, and I landed in a pile of leaves." |
+| 10 | Attempt 2 works | 1:20 | 52 | 5 | Weeks of secret work in four clauses | "After several failed attempts, I finally managed to make one that actually worked." |
+| 11 | The price | 1:33 | 41 | 5 | Now that he can, say what it may cost | "…or whether I would ever make it back." |
+| 12 | Packing | 1:41 | 29 | 2 | A list of objects is a decision made | "…a bag with fruit, water, rope, and a few tools." |
+| 13 | The friend | 1:47 | 29 | 3 | One person asks him to stop. His answer is the theme | "What if there's nothing down there?" / "Then I'll finally know." |
+| 14 | The edge | 1:54 | 77 | 9 | Slow down at the point of no return. Look back at everything from beat 3 | "Nobody knew I was about to leave everything behind." |
+| 15 | The fall | 2:11 | 52 | 10 | The act itself, told through the body | "For a moment, I thought I had made the biggest mistake of my life." |
+| 16 | The long wait | 2:23 | 33 | 5 | Make the viewer wait one beat longer | "…wondering what kind of world could be hidden beneath us." |
+| 17 | The reveal | 2:31 | 59 | 6 | The picture first, the explanation second. The answer rewrites beat 1 | "The entire world below was dead." |
+| 18 | The button | 2:45 | 4 | 1 | The call to subscribe is the last line of the story | "Subscribe to save me." |
 
-- **Present tense, to "you".** "You buy a loaf." Or about Sam: "Sam buys a loaf." Pick one for the film and keep it.
-- **6–14 words.** Over 18 is two stops: split it. `npm run check` says which lines are too long.
-- **One idea a line.** "The baker pays more for flour, so he charges more for bread" is two lines.
-- **One number at a time, and round.** "Twice as much", not "a 97% increase". Spell numbers out, so the voice and the
-  captions agree.
-- **No word that needs explaining.** If the word is the subject ("inflation"), say it once, late, as the NAME of what
-  the viewer has just watched. Never open with it.
-- **The first two words of a line may travel.** The camera takes about a second to reach the next thing. Start a line
-  with "So", "And when", "Which means", and put the noun after them, so that the thing is in the frame when it is named.
-- **Compare with things, not with ideas.** "Like a pizza cut into more slices" works only if the pizza is built and
-  shown. If it will not be shown, do not say it.
-- **No questions to the viewer after the first line**, no "but wait", no "here's the thing". Say the next fact.
-- **Every claim is true.** An explainer that is wrong is worse than none. If a fact is disputed, leave it out or say
-  who says so. When a film is handed over, list the claims it makes and where each came from.
+In thirds: **the world and the question** take 43% of the runtime (beats 1–8), **the attempts and the preparation**
+26% (beats 9–13), **the act and the answer** 31% (beats 14–18).
 
-## What the engine needs
+The reveal itself is under 15 seconds. Almost everything before it is setup. That is the opposite of version 1, which
+spent three of its five scenes on the ending.
 
-```narration
-# clip 01-question
-[1.ask]      Why does a loaf of bread cost more every year?
-[2.loaf]     Here is one loaf, and here is its price.
-```
+## 3. Why it holds: twelve moves
 
-- Each `[cue]` line is one stop. Its id is `<beat>.<word>`: `4.flour`, `5.twice`.
-- Each `# clip` is one recording, 3–8 lines. Record it to `public/audio/<film>/raw/<clip>.mp3`.
-- `python3 scripts/narration.py build <film> --estimate` times the script from its word count. Without
-  `--estimate` it measures the recordings.
-- The last line contains "subscribe".
+Each move is what the script does, the words that do it, and the rule for ours.
 
-## Before it goes to the owner
+**1. The title is the first sentence.** "In this town, we all lived in a giant tree house high above the clouds."
+Fifteen words, four seconds, no greeting, no "let me tell you". *Rule: sentence one is one fact that cannot be normal,
+in the first three words, and it is also the title of the video. It does not need to name a place: "I could hear every
+sentence you decided not to say" hooks the same way, and so does any premise whose picture proves it instantly.*
 
-- [ ] The question is in the first line, and the film answers that question and no other.
-- [ ] The answer at the top of the page is in the script, nearly word for word, in beat 6.
-- [ ] Every line has a picture in the table, and no picture is "Sam talks".
-- [ ] No line has two ideas. No line is over 18 words.
-- [ ] Every number is round, spelled out, and measured against the thing you know.
-- [ ] Read it aloud. Every sentence could be said to a nine-year-old without stopping to explain a word.
-- [ ] The claims are listed, with where each came from.
+**2. Three questions in eleven seconds.** How did we get here? How do we get down? Why does not even the oldest man
+remember the ground? Nothing has happened yet and the viewer already has three reasons to stay. *Rule: before
+second 12, say "nobody knew" at least twice.*
+
+**3. Every clause is a picture.** "We collected rainwater in barrels, picked strange fruits growing from the tree,
+and used thick vines to climb between different levels." Barrels. Fruit. Vines. Three clauses, three shots. The tour
+contains no feelings and no opinions, only things. *Rule: if a clause has no noun you can point a camera at, cut the
+clause.*
+
+**4. Lists come in threes.** Barrels, fruits, vines. Children, workers, farmers. Bridges, children, cooking fires.
+Three is long enough to feel like a world and short enough to say in one breath.
+
+**5. Comfort first, then the itch.** "It was actually a pretty good life, but there was one thing I could never stop
+thinking about." The town is not a bad place. That is why leaving it costs something later. *Rule: the teller likes
+home. The problem is one thing, and it is his.*
+
+**6. The wish is a question.** "What was down there?" He does not want to win, escape or be the best. He wants to
+know. The viewer cannot leave without the same answer. *Rule: say the wish as a question of five words or fewer.*
+
+**7. Two kinds of "no".** The adults give reasons: the clouds are too thick, the fall is too dangerous. The oldest man
+gives none: "All I remember is that we were told never to go down." Then he walks away. A reason closes a question.
+A rule without a reason opens one. *Rule: the person who should know the answer refuses to give it, in one line.*
+
+**8. The answer is planted in plain sight.** "Why would someone build an entire town in a tree unless there was a
+reason to stay up here?" That is the twist, asked as a question, ninety seconds before it lands. So when the answer
+comes it feels fair. *Rule: before the first attempt, the teller asks the question whose answer is the ending.*
+
+**9. Fail once, cheaply.** Wings, a jump, a pile of leaves, "everyone laughed at me". Ten seconds. Then a second
+attempt that takes "weeks" and "several failed attempts" and gets four clauses. *Rule: attempt one is a joke that
+costs him some dignity. Attempt two works, and the work is skipped.*
+
+**10. Name the price, then pack.** "I had no idea what I would find down there, or whether I would ever make it
+back." Then a list of objects: fruit, water, rope, tools, a knife. No speech about courage. The bag is the courage.
+*Rule: show the decision as things put into a bag.*
+
+**11. Slow down at the edge.** The moment before he jumps gets 77 words, more than any beat except the tour. He looks
+back, and the script names the same things the tour named: bridges, children, cooking fires. "Nobody knew I was about
+to leave everything behind." Then three small physical actions: "I tightened the straps on my parachute, took a deep
+breath, and stepped off the branch." *Rule: before the act, look back at beat 3 and then do three small things with
+the body.*
+
+**12. Longest sentence, then shortest.** "Finally, the clouds began to clear down, and what I saw made me realize why
+nobody had ever been allowed to return to the ground." Twenty-five words, the longest sentence in the script, and it
+still has not said what he saw. Then: "The entire world below was dead." Six words. Only after the picture comes the
+reason, and the reason turns the first sentence inside out: the town was never a mystery, it was a shelter. Then four
+words and the video is over. *Rule: delay, picture, reason, stop. The reason must change what sentence one meant.*
+
+## 4. The voice
+
+- **One teller, "I", past tense, start to finish.** No narrator outside the story.
+- **Plain words.** About 7 words in 10 have one syllable. A nine-year-old follows all of it.
+- **No names.** Roles only. Nobody has to remember who Jake is.
+- **Time words carry the story forward.** Sentences open with: *Every morning. Whenever. Sometimes. One day. That
+  night. First. For the next few weeks. The next morning. For a moment. Then. For hours. Finally.* The viewer always
+  knows where they are.
+- **"But" and "So" do the turning.** "But that only made me more curious." "So, I decided to find out." "But there
+  was still a problem." "So, I packed a bag."
+- **Short sentences are for turns.** These are all nine sentences of six words or fewer: *What was down there? ·
+  Then he walked away. · That night, I couldn't sleep. · So, I decided to find out. · But there was still a problem. ·
+  "Then I'll finally know," I replied. · Then, I pulled the cord. · The entire world below was dead. · Subscribe to
+  save me.* Read only those and you have the plot.
+- **Almost no dialogue.** Three spoken lines in 718 words, and each one is a hinge.
+- **No lesson.** The script never says what it meant.
+
+## 5. The beat sheet to fill in
+
+Write to these budgets. The total should land between 640 and 770 words.
+
+| # | Beat | Words | Write |
+|---|---|---|---|
+| 1 | Hook | 12–18 | The impossible fact, in the first three words |
+| 2 | Mysteries | 30–45 | What nobody knows. Two or three things |
+| 3 | The tour | 70–100 | How the town lives. Lists of three. Things only. End on "It was actually a pretty good …" |
+| 4 | The itch | 12–25 | "but there was one thing…" + the wish, as a question or one flat fact |
+| 5 | The adults say no | 30–45 | Sensible reasons. End on "But that only made me …" |
+| 6 | The tease | 30–45 | A glimpse or a sound that stops when he looks |
+| 7 | The elder's warning | 35–45 | The one who should know. One line of dialogue: the rule, no reason. They walk away |
+| 8 | The decision | 25–35 | Can't sleep. The planted question. "So, I decided to …" |
+| 9 | Attempt 1 fails | 35–50 | Cheap, physical, funny. People laugh |
+| 10 | Attempt 2 works | 45–60 | Secret, slow, and it works |
+| 11 | The price | 35–50 | What it will cost. Where he must go |
+| 12 | Packing | 20–30 | Four objects, and one that says who he is |
+| 13 | The friend | 25–35 | Two lines of dialogue. The second is the theme |
+| 14 | The edge | 65–85 | Arrive. One thing the body feels. Look back at the tour. Three small actions |
+| 15 | The act | 45–60 | "For a second…" Then what happens, sense by sense |
+| 16 | The wait | 30–40 | One more beat before the answer |
+| 17 | The reveal | 50–65 | Long sentence that delays. Short sentence that shows. The reason. It rewrites the hook |
+| 18 | The button | 4–6 | "Subscribe …", as a line only this story could end on |
+
+## 6. Before you record
+
+- [ ] Sentence one states the impossible fact in its first three words, and is the title. (No required phrase.)
+- [ ] "Nobody knew" (or the same idea) twice before second 12.
+- [ ] The tour is only things a camera can see, and nothing has gone wrong yet.
+- [ ] The wish fits in five words.
+- [ ] Someone who should know the answer refuses to give it.
+- [ ] The teller asks the planted question out loud before the first attempt.
+- [ ] One failure that is funny. One success.
+- [ ] A bag is packed.
+- [ ] One friend, two lines.
+- [ ] The look back names things from the tour.
+- [ ] The reveal is a picture in one short sentence, then the reason.
+- [ ] The reason changes what sentence one meant.
+- [ ] The last line starts "Subscribe" and is under seven words.
+- [ ] Every line of the script is one shot, and every line names something to show.
+- [ ] `python3 scripts/narration.py build <film> --estimate` says 150–176 seconds. **Over 178 fails the check: no film runs over three minutes** (strict rule, `AGENTS.md`).
+- [ ] Read only the sentences of six words or fewer. Is the plot there?
+- [ ] No sentence is copied from the reference. We borrow the shape, not the words.

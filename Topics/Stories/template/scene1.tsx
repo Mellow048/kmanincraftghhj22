@@ -1,50 +1,53 @@
-import type React from "react";
-import { Bread, LOAF, MINT, PriceTag, Printer, SAM, STOPS, Sam, clock, ease, flightScene, pop, ramp, timing } from "./kit";
+import { cam, storyScene } from "../../engine";
+import type { Vec3 } from "../../engine";
+import { CHILD, Hero, ROBE, Villager, chestOf, faceOf, timing } from "./kit";
+
+const ME: Vec3 = [0, 0, 2.3];
+const LENS: Vec3 = [0, 1.7, 5.8];
 
 /**
- * THE QUESTION. One person, one thing everybody knows the price of, and the question the film answers.
+ * HOOK. The whole premise in one picture, then the teller.
  *
- * One scene file per BEAT of the script (Topics/Explainer/SCRIPT.md). A scene file holds two things:
+ * One scene file per BEAT of the script (Topics/Stories/SCRIPT.md); one shot per LINE of narration.md.
+ * Copy this file to scene2.tsx, scene3.tsx… and add each to film.tsx. `npm run check` tells you the next
+ * line that has no shot.
  *
- *   ExhibitN   what the beat SHOWS. It is mounted by world.tsx for the whole film, because a camera that
- *              flies away from a thing still sees it. It is driven by the film's clock: it waits in its first
- *              state until its word is said, and keeps its last state afterwards.
- *   sceneN     where the camera GOES: one stop for each line of narration.md, flown to as the line begins.
- *
- * Copy this file to scene2.tsx, scene3.tsx…, add each scene to film.tsx and each exhibit to world.tsx.
- * `npm run check` tells you the next line that has no stop.
+ * Every shot needs: a `cue` (the id of its line), a camera that MOVES (a `cam.*` recipe), a `zone`,
+ * a `note` that says why this picture for these words, and a `stage`.
  */
-export const Exhibit1: React.FC = () => {
-  // Seconds since a word was said. Negative before it: so `pop(…, 0)` is 0 until the word, and 1 after.
-  const price = clock.useSince("1.loaf", "price");
-  const asks = clock.useSince("1.ask");
-  // The machine on the next island is already running when the camera gets there.
-  const printing = clock.useSince("1.ask");
-  return (
-    <>
-      <Sam position={SAM} rotationY={0.5} animation="idle" blendTo="shrug" blend={1 - ease(ramp(asks, 0.3, 0.7))} face={price > 0 ? "wow" : "uneasy"} lookAt={price > 0 ? [LOAF[0], LOAF[1] + 0.3, LOAF[2]] : undefined} />
-      <Bread position={LOAF} rotationY={-0.3} scale={2} />
-      <PriceTag text="1" position={[LOAF[0] + 0.1, LOAF[1] + 1.5, LOAF[2] + 0.1]} rotationY={-0.2} scale={pop(price, 0) * 1.25} swing={Math.sin(price * 5) * 0.12 * Math.exp(-Math.max(0, price) * 1.5)} />
-      <Printer position={MINT} rotationY={0.35} out={Math.max(0, printing) * 3} />
-    </>
-  );
-};
-
-export const scene1 = flightScene(timing, {
+export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "The question",
-  // Scene 1 opens the film: `from` is where the first frame is. For scene 2 it is the LAST stop of scene 1.
-  from: STOPS.open,
+  title: "Hook",
   shots: [
     {
-      cue: "1.ask",
-      to: STOPS.sam,
-      note: "TODO. The question, on the face of the person it is a problem for. Fly in from the whole island to Sam: small world, then one man.",
+      cue: "1.town",
+      ...cam.push({ on: [0, 1.38, 2.0], dist: 4.0, to: 3.3, yaw: 0, pitch: 5, fov: 40 }),
+      zone: "village",
+      look: "overworld-day",
+      note: "TODO. The rule of the town as ONE picture: the teller low in the frame, and the town stacked up behind him doing the strange thing.",
+      stage: () => (
+        <>
+          <Hero position={ME} animation="idle" face="smile" gaze={0} />
+          {/* A tall frame is a slit: stack people by depth and height, never in a row. */}
+          <Villager position={[-0.57, 0, 1.6]} robe={ROBE.brown} lookAt={LENS} phase={0.3} />
+          <Villager position={[0.57, 0, 1.6]} robe={ROBE.white} lookAt={LENS} phase={1.9} />
+          <Villager position={[0.62, 0, 2.28]} robe={ROBE.friend} lookAt={LENS} phase={1.1} scale={CHILD} kid />
+        </>
+      ),
     },
     {
-      cue: "1.loaf",
-      to: STOPS.loaf,
-      note: "TODO. The one thing everybody knows the price of, and its price, popping on as the word is said. Every later number is measured against this one.",
+      cue: "1.me",
+      ...cam.push({ on: faceOf(ME), dist: 1.9, to: 1.5, yaw: 7, pitch: 3, fov: 36 }),
+      zone: "village",
+      look: "overworld-day",
+      note: "TODO. Cut in to the teller: the one who is different, or the one who asks. A new face on the cut.",
+      stage: () => <Hero position={ME} animation="shrug" face="grin" gaze={0} />,
     },
   ],
 });
+
+// Distances that work (measured on the finished films, Topics/Stories/SHOTS.md §6):
+//   a kid's face        on faceOf(p),  dist 1.9 → 1.4, fov 36
+//   a kid, waist up     on chestOf(p), dist 2.1 → 1.6, fov 38–40
+//   a kid, whole body   on [x, 1.0, z], dist 2.4 → 1.9, fov 40
+void chestOf;

@@ -7,7 +7,6 @@ import { film as superpowerAt18 } from "./videos/in-this-town-superpower-at-18/f
 import { film as superpowerAt18Part2 } from "./videos/in-this-town-superpower-at-18-part-2/film";
 import { film as inThisTownNobodyLookedAtTheMoon } from "./videos/in-this-town-nobody-looked-at-the-moon/film";
 import { film as whatIfYouCouldSeeWhoHadACrushOnYou } from "./videos/what-if-you-could-see-who-had-a-crush-on-you/film";
-import { film as whyDoesBreadCostMoreEveryYear } from "./videos/why-does-bread-cost-more-every-year/film";
 import { film as monsterVillage } from "./videos/in-this-town-monster-village/film";
 import { film as inThisTownILiveInAMonsterVillagePart2 } from "./videos/in-this-town-monster-village-part-2/film";
 import { film as inThisTownEveryoneGetsARobotAt18 } from "./videos/in-this-town-robot-at-18/film";
@@ -46,7 +45,6 @@ export const FILMS = [
   superpowerAt18Part2,
   inThisTownNobodyLookedAtTheMoon,
   whatIfYouCouldSeeWhoHadACrushOnYou,
-  whyDoesBreadCostMoreEveryYear,
   monsterVillage,
   inThisTownILiveInAMonsterVillagePart2,
   inThisTownEveryoneGetsARobotAt18,
