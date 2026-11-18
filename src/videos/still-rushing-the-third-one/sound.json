@@ -1,0 +1,976 @@
+{
+  "film": "still-rushing-the-third-one",
+  "music": {
+    "gain": -17,
+    "sections": [
+      {
+        "from": "1.trial",
+        "mood": "grind",
+        "why": "Practice starts mid-flick."
+      },
+      {
+        "from": "1.best",
+        "mood": "playful",
+        "why": "The forehead is a personal best."
+      },
+      {
+        "from": "2.gold",
+        "mood": "wonder",
+        "why": "A prize shown like crown jewels."
+      },
+      {
+        "from": "2.fold",
+        "mood": "playful",
+        "why": "The real reason for wanting it."
+      },
+      {
+        "from": "3.friday",
+        "mood": "party",
+        "why": "Across the street."
+      },
+      {
+        "from": "3.stay",
+        "mood": "grind",
+        "why": "Back in the kitchen."
+      },
+      {
+        "from": "4.almost",
+        "mood": "playful",
+        "why": "Three different misses."
+      },
+      {
+        "from": "4.dots",
+        "mood": "curious",
+        "why": "Bea has spotted something."
+      },
+      {
+        "from": "5.drill",
+        "mood": "grind",
+        "why": "Hold the third beat."
+      },
+      {
+        "from": "6.full",
+        "mood": "tense",
+        "why": "Sold out."
+      },
+      {
+        "from": "6.three",
+        "mood": "none",
+        "why": "Hear the last toss."
+      },
+      {
+        "from": "7.mine",
+        "mood": "hope",
+        "why": "The seat is his."
+      },
+      {
+        "from": "7.shut",
+        "mood": "playful",
+        "why": "One seat is not enough."
+      },
+      {
+        "from": "7.pair",
+        "mood": "hope",
+        "why": "The notebook has one more use."
+      },
+      {
+        "from": "7.training",
+        "mood": "none",
+        "why": "Wait for the back rows."
+      },
+      {
+        "from": "7.echo",
+        "mood": "grind",
+        "why": "The entire room is practising."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.trial",
+      "to": "2.fold",
+      "bed": "room"
+    },
+    {
+      "from": "3.friday",
+      "to": "3.friday",
+      "bed": "night"
+    },
+    {
+      "from": "3.stay",
+      "to": "5.drill",
+      "bed": "room"
+    },
+    {
+      "from": "6.full",
+      "to": "7.echo",
+      "bed": "crowd"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.two",
+      "word": "mouth",
+      "sfx": "plink",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Two in my mouth. One off my forehead."
+    },
+    {
+      "cue": "1.two",
+      "word": "forehead",
+      "sfx": "bonk",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Two in my mouth. One off my forehead."
+    },
+    {
+      "cue": "1.best",
+      "word": "personal",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "A personal best."
+    },
+    {
+      "cue": "1.best",
+      "word": "best",
+      "sfx": "blip",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "A personal best."
+    },
+    {
+      "cue": "1.drink",
+      "word": "moved",
+      "sfx": "scrape",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Bea moved her drink."
+    },
+    {
+      "cue": "1.drink",
+      "word": "drink",
+      "sfx": "plink",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Bea moved her drink."
+    },
+    {
+      "cue": "1.book",
+      "word": "saw",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Then she saw my notebook."
+    },
+    {
+      "cue": "1.book",
+      "word": "notebook",
+      "sfx": "paper",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Then she saw my notebook."
+    },
+    {
+      "cue": "1.day",
+      "word": "forty",
+      "sfx": "count",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Day forty seven. Still rushing the third one."
+    },
+    {
+      "cue": "1.day",
+      "word": "rushing",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Day forty seven. Still rushing the third one."
+    },
+    {
+      "cue": "1.day",
+      "word": "third",
+      "sfx": "stamp",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Day forty seven. Still rushing the third one."
+    },
+    {
+      "cue": "2.gold",
+      "word": "cinema",
+      "sfx": "swish",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Our cinema had one gold seat."
+    },
+    {
+      "cue": "2.gold",
+      "word": "gold",
+      "sfx": "chime",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Our cinema had one gold seat."
+    },
+    {
+      "cue": "2.win",
+      "word": "three",
+      "sfx": "count",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Catch three pieces of popcorn before the trailers"
+    },
+    {
+      "cue": "2.win",
+      "word": "popcorn",
+      "sfx": "pop",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Catch three pieces of popcorn before the trailers"
+    },
+    {
+      "cue": "2.win",
+      "word": "trailers",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Catch three pieces of popcorn before the trailers"
+    },
+    {
+      "cue": "2.year",
+      "word": "yours",
+      "sfx": "paper",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "and it was yours for a year."
+    },
+    {
+      "cue": "2.year",
+      "word": "year",
+      "sfx": "ding",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "and it was yours for a year."
+    },
+    {
+      "cue": "2.fame",
+      "word": "want",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "I didn't want fame."
+    },
+    {
+      "cue": "2.fame",
+      "word": "fame",
+      "sfx": "blip",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "I didn't want fame."
+    },
+    {
+      "cue": "2.fold",
+      "word": "seat",
+      "sfx": "creak",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "I wanted a seat that didn't fold me in half."
+    },
+    {
+      "cue": "2.fold",
+      "word": "fold",
+      "sfx": "boing",
+      "trim": -3,
+      "pan": 0.15,
+      "why": "I wanted a seat that didn't fold me in half."
+    },
+    {
+      "cue": "2.fold",
+      "word": "half",
+      "sfx": "thud",
+      "trim": -3,
+      "pan": -0.15,
+      "why": "I wanted a seat that didn't fold me in half."
+    },
+    {
+      "cue": "3.friday",
+      "word": "friday",
+      "sfx": "step_stone",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "On Friday nights my friends went out."
+    },
+    {
+      "cue": "3.friday",
+      "word": "friends",
+      "sfx": "cheer",
+      "trim": -3,
+      "pan": 0.15,
+      "why": "On Friday nights my friends went out."
+    },
+    {
+      "cue": "3.stay",
+      "word": "stayed",
+      "sfx": "step_wood",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "I stayed in the kitchen."
+    },
+    {
+      "cue": "3.stay",
+      "word": "kitchen",
+      "sfx": "place",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "I stayed in the kitchen."
+    },
+    {
+      "cue": "3.same",
+      "word": "bucket",
+      "sfx": "place",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Same bucket. Same distance."
+    },
+    {
+      "cue": "3.same",
+      "word": "distance",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Same bucket. Same distance."
+    },
+    {
+      "cue": "3.ceiling",
+      "word": "lower",
+      "sfx": "swish",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Slightly lower ceiling."
+    },
+    {
+      "cue": "3.ceiling",
+      "word": "ceiling",
+      "sfx": "clank",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Slightly lower ceiling."
+    },
+    {
+      "cue": "4.sink",
+      "word": "sink",
+      "sfx": "splash",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "One in the sink. One in the butter."
+    },
+    {
+      "cue": "4.sink",
+      "word": "butter",
+      "sfx": "plink",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "One in the sink. One in the butter."
+    },
+    {
+      "cue": "4.clock",
+      "word": "third",
+      "sfx": "zip",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "The third one stuck to the clock."
+    },
+    {
+      "cue": "4.clock",
+      "word": "stuck",
+      "sfx": "place",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "The third one stuck to the clock."
+    },
+    {
+      "cue": "4.clock",
+      "word": "clock",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "The third one stuck to the clock."
+    },
+    {
+      "cue": "4.almost",
+      "word": "ah",
+      "sfx": "slide_down",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Ah, almost, almost."
+    },
+    {
+      "cue": "4.almost",
+      "word": "almost",
+      "sfx": "blink",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Ah, almost, almost."
+    },
+    {
+      "cue": "4.dots",
+      "word": "drew",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Bea drew three dots in my notebook."
+    },
+    {
+      "cue": "4.dots",
+      "word": "three",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Bea drew three dots in my notebook."
+    },
+    {
+      "cue": "4.dots",
+      "word": "dots",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Bea drew three dots in my notebook."
+    },
+    {
+      "cue": "4.dots",
+      "word": "notebook",
+      "sfx": "paper",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Bea drew three dots in my notebook."
+    },
+    {
+      "cue": "4.gap",
+      "word": "gap",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "There was a gap before the last dot."
+    },
+    {
+      "cue": "4.gap",
+      "word": "last",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "There was a gap before the last dot."
+    },
+    {
+      "cue": "4.gap",
+      "word": "dot",
+      "sfx": "place",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "There was a gap before the last dot."
+    },
+    {
+      "cue": "5.watch",
+      "word": "watch",
+      "sfx": "swish",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "She made me watch my hand."
+    },
+    {
+      "cue": "5.watch",
+      "word": "hand",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "She made me watch my hand."
+    },
+    {
+      "cue": "5.reach",
+      "word": "third",
+      "sfx": "zip",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "On the third toss I was already reaching"
+    },
+    {
+      "cue": "5.reach",
+      "word": "reaching",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "On the third toss I was already reaching"
+    },
+    {
+      "cue": "5.bucket",
+      "word": "back",
+      "sfx": "swish",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "back into the bucket."
+    },
+    {
+      "cue": "5.bucket",
+      "word": "bucket",
+      "sfx": "bonk",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "back into the bucket."
+    },
+    {
+      "cue": "5.what",
+      "word": "what",
+      "sfx": "blip",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "For what? There's no fourth piece."
+    },
+    {
+      "cue": "5.what",
+      "word": "fourth",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "For what? There's no fourth piece."
+    },
+    {
+      "cue": "5.what",
+      "word": "piece",
+      "sfx": "plink",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "For what? There's no fourth piece."
+    },
+    {
+      "cue": "6.full",
+      "word": "friday",
+      "sfx": "swish",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Friday. Full house."
+    },
+    {
+      "cue": "6.full",
+      "word": "house",
+      "sfx": "cheer",
+      "trim": -3,
+      "pan": 0.15,
+      "why": "Friday. Full house."
+    },
+    {
+      "cue": "6.rope",
+      "word": "usher",
+      "sfx": "step_wood",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "The usher lifted the rope."
+    },
+    {
+      "cue": "6.rope",
+      "word": "rope",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "The usher lifted the rope."
+    },
+    {
+      "cue": "6.pick",
+      "word": "three",
+      "sfx": "count",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "I picked out three pieces and set the bucket down."
+    },
+    {
+      "cue": "6.pick",
+      "word": "bucket",
+      "sfx": "place",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "I picked out three pieces and set the bucket down."
+    },
+    {
+      "cue": "6.two",
+      "word": "two",
+      "sfx": "zip",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Two clean catches. Then I waited."
+    },
+    {
+      "cue": "6.two",
+      "word": "catches",
+      "sfx": "plink",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Two clean catches. Then I waited."
+    },
+    {
+      "cue": "6.two",
+      "word": "waited",
+      "sfx": "heartbeat",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Two clean catches. Then I waited."
+    },
+    {
+      "cue": "6.three",
+      "word": "three",
+      "sfx": "zip",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Number three came straight down."
+    },
+    {
+      "cue": "6.three",
+      "word": "down",
+      "sfx": "plink",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Number three came straight down."
+    },
+    {
+      "cue": "7.mine",
+      "word": "gold",
+      "sfx": "chime",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "The gold seat was mine."
+    },
+    {
+      "cue": "7.mine",
+      "word": "mine",
+      "sfx": "place",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "The gold seat was mine."
+    },
+    {
+      "cue": "7.beside",
+      "word": "bea",
+      "sfx": "step_wood",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Bea sat beside me."
+    },
+    {
+      "cue": "7.beside",
+      "word": "sat",
+      "sfx": "creak",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Bea sat beside me."
+    },
+    {
+      "cue": "7.shut",
+      "word": "folded",
+      "sfx": "boing",
+      "trim": -3,
+      "pan": -0.15,
+      "why": "Her seat folded shut."
+    },
+    {
+      "cue": "7.shut",
+      "word": "shut",
+      "sfx": "thud",
+      "trim": -3,
+      "pan": 0.15,
+      "why": "Her seat folded shut."
+    },
+    {
+      "cue": "7.research",
+      "word": "forty",
+      "sfx": "count",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Forty seven days of research finally paid off."
+    },
+    {
+      "cue": "7.research",
+      "word": "research",
+      "sfx": "paper",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Forty seven days of research finally paid off."
+    },
+    {
+      "cue": "7.research",
+      "word": "paid",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Forty seven days of research finally paid off."
+    },
+    {
+      "cue": "7.wedge",
+      "word": "folded",
+      "sfx": "paper",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "I folded my notebook and wedged it under her seat."
+    },
+    {
+      "cue": "7.wedge",
+      "word": "wedged",
+      "sfx": "place",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "I folded my notebook and wedged it under her seat."
+    },
+    {
+      "cue": "7.wedge",
+      "word": "seat",
+      "sfx": "creak",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "I folded my notebook and wedged it under her seat."
+    },
+    {
+      "cue": "7.pair",
+      "word": "now",
+      "sfx": "plink",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Now we had two."
+    },
+    {
+      "cue": "7.pair",
+      "word": "two",
+      "sfx": "ding",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Now we had two."
+    },
+    {
+      "cue": "7.trailers",
+      "word": "trailers",
+      "sfx": "swish",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Halfway through the trailers, I heard it behind me."
+    },
+    {
+      "cue": "7.trailers",
+      "word": "heard",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Halfway through the trailers, I heard it behind me."
+    },
+    {
+      "cue": "7.rows",
+      "word": "three",
+      "sfx": "tick",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Three entire rows."
+    },
+    {
+      "cue": "7.rows",
+      "word": "rows",
+      "sfx": "pop",
+      "trim": -1,
+      "pan": 0.15,
+      "why": "Three entire rows."
+    },
+    {
+      "cue": "7.training",
+      "word": "training",
+      "sfx": "rustle",
+      "trim": -1,
+      "pan": -0.15,
+      "why": "Training."
+    },
+    {
+      "cue": "1.trial",
+      "at": 0.0,
+      "sfx": "zip",
+      "pitch": 1.0,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "1.trial",
+      "at": 0.325,
+      "sfx": "plink",
+      "pitch": 0.95,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "1.trial",
+      "at": 0.4,
+      "sfx": "zip",
+      "pitch": 1.1,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "1.trial",
+      "at": 0.725,
+      "sfx": "plink",
+      "pitch": 1.04,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "1.trial",
+      "at": 0.8,
+      "sfx": "zip",
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "1.trial",
+      "at": 1.125,
+      "sfx": "bonk",
+      "pitch": 1.13,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.067,
+      "sfx": "zip",
+      "pitch": 1.0,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.457,
+      "sfx": "plink",
+      "pitch": 0.95,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.527,
+      "sfx": "zip",
+      "pitch": 1.1,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.917,
+      "sfx": "plink",
+      "pitch": 1.04,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "3.reps",
+      "at": 0.987,
+      "sfx": "zip",
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "3.reps",
+      "at": 1.377,
+      "sfx": "plink",
+      "pitch": 1.13,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "5.drill",
+      "at": 0.05,
+      "sfx": "zip",
+      "pitch": 1.0,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "5.drill",
+      "at": 0.375,
+      "sfx": "plink",
+      "pitch": 0.95,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "5.drill",
+      "at": 0.51,
+      "sfx": "zip",
+      "pitch": 1.1,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "5.drill",
+      "at": 0.835,
+      "sfx": "plink",
+      "pitch": 1.04,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "5.drill",
+      "at": 1.42,
+      "sfx": "zip",
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "5.drill",
+      "at": 1.745,
+      "sfx": "plink",
+      "pitch": 1.13,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "7.echo",
+      "at": 0.07,
+      "sfx": "zip",
+      "pitch": 1.0,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "7.echo",
+      "at": 0.395,
+      "sfx": "plink",
+      "pitch": 0.95,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "7.echo",
+      "at": 0.48,
+      "sfx": "zip",
+      "pitch": 1.1,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "7.echo",
+      "at": 0.805,
+      "sfx": "plink",
+      "pitch": 1.04,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    },
+    {
+      "cue": "7.echo",
+      "at": 0.89,
+      "sfx": "zip",
+      "pitch": 1.2,
+      "trim": -2,
+      "why": "An exhale releases one piece from the hand."
+    },
+    {
+      "cue": "7.echo",
+      "at": 1.215,
+      "sfx": "plink",
+      "pitch": 1.13,
+      "trim": -1,
+      "why": "Contact at the end of this arc."
+    }
+  ]
+}

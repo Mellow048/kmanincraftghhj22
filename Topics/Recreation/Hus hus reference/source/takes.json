@@ -1,0 +1,107 @@
+{
+  "takes": [
+    {
+      "file": "breaths.wav",
+      "bursts": true,
+      "clips": [
+        {
+          "clip": "02-six",
+          "pick": [
+            1,
+            2,
+            3,
+            0,
+            4,
+            5,
+            6
+          ],
+          "every": 0.34,
+          "speed": 1.6,
+          "pause": 0.14
+        },
+        {
+          "clip": "05-three",
+          "pick": [
+            4,
+            2,
+            5
+          ],
+          "every": 0.345,
+          "speed": 1.62,
+          "pause": 0.14
+        },
+        {
+          "clip": "06b-test",
+          "pick": [
+            2,
+            3,
+            6
+          ],
+          "every": 0.36,
+          "speed": 1.57,
+          "pause": 0.14
+        },
+        {
+          "clip": "09-six",
+          "pick": [
+            3,
+            1,
+            5,
+            0,
+            4,
+            2,
+            6
+          ],
+          "every": 0.305,
+          "speed": 1.71,
+          "pause": 0.14
+        },
+        {
+          "clip": "10b-family",
+          "pick": [
+            5,
+            3,
+            2
+          ],
+          "every": 0.425,
+          "speed": 1.59,
+          "pause": 0.14
+        },
+        {
+          "clip": "12-two",
+          "pick": [
+            2,
+            4,
+            6
+          ],
+          "every": 0.34,
+          "speed": 1.68,
+          "pause": 0.14
+        }
+      ]
+    },
+    {
+      "file": "friends.wav",
+      "clips": [
+        {
+          "clip": "06-visit",
+          "text": "On Friday my friends came over to test it. I put one on each side of the tape."
+        },
+        {
+          "clip": "06c-print",
+          "text": "Three seconds later I had the best picture of me anybody had ever taken. My friends came out as four ears."
+        }
+      ]
+    },
+    {
+      "file": "almost.wav",
+      "clips": [
+        {
+          "clip": "07-almost",
+          "text": "Ah, almost, almost.",
+          "tempo": 1.54
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,7 @@ out
 *.mp4
 # A reference video the user asked agents to study is source material, not a render.
 !Topics/*/reference/**/*.mp4
+!Topics/Recreation/Hus hus reference/*.mp4
 *.mov
 .DS_Store
 __pycache__

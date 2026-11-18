@@ -29,7 +29,7 @@ const TEAL = "#2f8a8a";
 
 // ----------------------------------------------------------------------------- the living room
 
-const LivingShell: React.FC<{ t: number; party: boolean }> = ({ t, party }) => (
+export const LivingShell: React.FC<{ t: number; party: boolean }> = ({ t, party }) => (
   <group position={ROOM}>
     <Vox kind="planks" position={[0, -0.1, 0.4]} size={[7.2, 0.2, 7]} />
     <Block position={[0, 1.9, -2.7]} size={[7.2, 3.8, 0.2]} color="#d6c08f" castShadow={false} />

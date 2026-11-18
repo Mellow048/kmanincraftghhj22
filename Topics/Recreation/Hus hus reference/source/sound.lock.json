@@ -1,0 +1,170 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "thats-me-the-elbow",
+  "mix": "public/audio/thats-me-the-elbow/mix.mp3",
+  "seconds": 77.5,
+  "built_from": {
+    "timing.json": "c9b71f37cc05eb79004d6f03790b6dce9787c4e0",
+    "sound.json": "65c287fe1a9fb8851da3c8cbf2d5e2576c34a5ec",
+    "narration.mp3": "d2b2b346757cdb5ae62ac71621c958428e6c3a66"
+  },
+  "mix_sha1": "a478c16753d74857aff7ec049943d67862c2c3ca",
+  "music_sections": [
+    {
+      "from": "1.left",
+      "mood": "party",
+      "at": 0.0
+    },
+    {
+      "from": "2.drill",
+      "mood": "grind",
+      "at": 2.97
+    },
+    {
+      "from": "2.timer",
+      "mood": "explain",
+      "at": 5.47
+    },
+    {
+      "from": "3.tape",
+      "mood": "curious",
+      "at": 16.93
+    },
+    {
+      "from": "3.reps",
+      "mood": "grind",
+      "at": 25.13
+    },
+    {
+      "from": "4.friends",
+      "mood": "playful",
+      "at": 26.47
+    },
+    {
+      "from": "4.run",
+      "mood": "grind",
+      "at": 30.53
+    },
+    {
+      "from": "4.best",
+      "mood": "wonder",
+      "at": 31.93
+    },
+    {
+      "from": "4.ears",
+      "mood": "none",
+      "at": 35.8
+    },
+    {
+      "from": "5.chairs",
+      "mood": "curious",
+      "at": 40.17
+    },
+    {
+      "from": "5.reps",
+      "mood": "grind",
+      "at": 52.03
+    },
+    {
+      "from": "6.party",
+      "mood": "hope",
+      "at": 54.37
+    },
+    {
+      "from": "6.light",
+      "mood": "tense",
+      "at": 58.5
+    },
+    {
+      "from": "6.reps",
+      "mood": "grind",
+      "at": 64.33
+    },
+    {
+      "from": "6.fridge",
+      "mood": "hope",
+      "at": 66.03
+    },
+    {
+      "from": "7.couple",
+      "mood": "playful",
+      "at": 70.3
+    },
+    {
+      "from": "7.reps",
+      "mood": "grind",
+      "at": 75.5
+    }
+  ],
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 18.3,
+    "secondsWithoutMusic": 5.2,
+    "bedsUnderVoiceDb": 29.3,
+    "sfx": 94,
+    "sfxPerMinute": 72.8,
+    "sfxKinds": 20,
+    "longestGapSeconds": 2.6,
+    "longestGapAt": 10.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.1,
+    "voiceOverRestWorstDb": 5.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.1,
+        "t": 0.7,
+        "cue": "1.left",
+        "sounding": [
+          "stamp"
+        ]
+      },
+      {
+        "db": 5.5,
+        "t": 42.0,
+        "cue": "5.chairs",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 31.4,
+        "cue": "4.run",
+        "sounding": [
+          "stamp",
+          "step_wood"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 7.4,
+        "cue": "2.timer",
+        "sounding": [
+          "count"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 76.3,
+        "cue": "7.reps",
+        "sounding": [
+          "stamp",
+          "step_stone"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 53.8,
+        "cue": "5.reps",
+        "sounding": [
+          "stamp",
+          "step_wood"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}
