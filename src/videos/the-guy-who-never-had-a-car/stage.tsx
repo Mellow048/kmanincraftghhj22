@@ -29,7 +29,7 @@ export const Stage:React.FC<{mode:string;time:number;absolute:number;offset:numb
   <Car position={isRoad?[0,0,-time*.35]:[0,0,-.35]} color={isRoad?'#b63728':clean?'#b7d6e3':'#286989'} dirty={dirty} foam={washing&&mode!=='dry'&&mode!=='toothbrush'} wreck={mode==='wreck'||mode==='reunion'} spin={isRoad?time*2:0}/>
   {offset===-40&&<><Car position={[-4.5,0,-2]} color="#f0e6c8"/><Car position={[4.5,0,-3]} color="#803831"/></>}
   {!heroOff&&<Worker position={heroPos} time={time} wash={washing} fast={fast} rotationY={['answer','react','gloves'].includes(mode)?0:departing?Math.PI:-.6} walk={departing||arriving}/>}
-  {(mode==='dream'||mode==='lonely'||mode==='sponge')&&<Worker position={[1.9,0,2.5]} time={time} rotationY={mode==='sponge'?0:-.6} gloves={mode!=='lonely'}/>}
+  {(mode==='dream'||mode==='lonely'||mode==='sponge')&&<Worker position={mode==='sponge'?[1.35,0,1]:[1.9,0,2.5]} time={time} rotationY={mode==='sponge'?0:-.6} gloves={mode!=='lonely'} holdSponge={mode==='sponge'}/>}
   {isRoad&&<><Friend position={[-.43,.16,-.5-time*.35]} time={time} seated/><Friend position={[.43,.16,-.5-time*.35]} time={time+.4} blue seated/></>}
   {(mode==='invite'||mode==='reunion'||mode==='wreck')&&<><Friend position={[-1.5,0,1.7]} time={time} surprise={late}/><Friend position={[2.8,0,1.6]} time={time+.3} blue surprise={late}/></>}
   {washing&&<Water time={time} fast={fast}/>}

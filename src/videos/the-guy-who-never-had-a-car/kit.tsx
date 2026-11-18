@@ -55,11 +55,12 @@ export const Car: React.FC<{position?:Vec3;color?:string;dirty?:number;foam?:boo
   {wreck && <group position={[.3,1.59,-.2]}><Block position={[0,.04,0]} size={[.48,.08,.48]} color="#171b1e"/><mesh position={[0,.29,0]}><coneGeometry args={[.2,.5,4]}/><meshStandardMaterial color="#f17820"/></mesh><Block position={[0,.28,0]} size={[.2,.08,.2]} color="white"/></group>}
 </group>;
 
-export const Worker: React.FC<{position?:Vec3;time:number;wash?:boolean;fast?:boolean;rotationY?:number;walk?:boolean;gloves?:boolean}> = ({position=[1.35,0,1],time,wash=false,fast=false,rotationY=-.6,walk=false,gloves=true}) => {
+export const Worker: React.FC<{position?:Vec3;time:number;wash?:boolean;fast?:boolean;rotationY?:number;walk?:boolean;gloves?:boolean;holdSponge?:boolean}> = ({position=[1.35,0,1],time,wash=false,fast=false,rotationY=-.6,walk=false,gloves=true,holdSponge=false}) => {
  const p=getPose(walk?'walk':'idle',time);
+ if(holdSponge){p.armR=[-1.0,0,0];}
  if(wash){p.armR=[-1.3+Math.sin(time*(fast?24:6))*.35,0,-.2];p.armL=[-.55,0,.12];p.bodyPitch=.16;p.head=[.2,0,0];}
  return <MinecraftAvatar position={position} rotationY={rotationY} outfit="hoodie" colors={{torso:'#247f7b',arms:'#247f7b',legs:'#293e64'}} face="calm" pose={p} blink={!fast} gaze={0} saccade={false} shoes="#252832" hair="#251b17" skin="#d9aa82">
- {gloves&&<Block position={[0,-.035,0]} size={[.245,.17,.25]} color="#ecbd29"/>}{wash&&<Sponge/>}
+ {gloves&&<Block position={[0,-.035,0]} size={[.245,.17,.25]} color="#ecbd29"/>}{(wash||holdSponge)&&<Sponge/>}
  </MinecraftAvatar>;
 };
 export const Friend: React.FC<{position:Vec3;time:number;blue?:boolean;surprise?:boolean;seated?:boolean;rotationY?:number}> = ({position,time,blue=false,surprise=false,seated=false,rotationY=-.25}) => <MinecraftAvatar position={position} rotationY={rotationY} outfit="tee" colors={{torso:blue?'#355fb5':'#b24938',arms:'skin',legs:'#2e313c'}} face={surprise?'wow':'smug'} animation={seated?'sit':surprise?'scared':'wave'} time={time} hair={blue?'#a77032':'#241815'}/>;
