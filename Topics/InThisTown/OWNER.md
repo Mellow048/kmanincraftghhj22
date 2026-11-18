@@ -352,3 +352,5 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
      They were put back. **After any merge with `main`, diff those three files against what you had.**
   4. `main` now paints a sky with clouds behind every outdoor look (`src/engine/Look.tsx`). The five mp4s were rendered
      before that, with a flat sky. A new render of any of them will not match its mp4 until somebody has looked.
+
+- **2026-11-18, Dishwasher Training Arc.** The owner accepted Finn’s speaking-face correction in render #239. Keep that approved export; the fix was to the face animation, not a recut or a new voice.
