@@ -4,11 +4,37 @@
   "folder": "Topics/Reel",
   "profile": "story",
   "film": {
-    "seconds": [100,110],
+    "seconds": [
+      100,
+      110
+    ],
     "hardMaxSeconds": 120,
-    "shotSeconds": [0.5,6],
-    "medianShotSeconds": [1.5,3.5],
+    "shotSeconds": [
+      0.5,
+      6
+    ],
+    "medianShotSeconds": [
+      1.5,
+      3.5
+    ],
     "captions": true
   },
-  "camera": {"builder":"storyScene","minDist":1.5,"pitch":[-12,60],"yaw":[-80,80]}
+  "camera": {
+    "builder": "storyScene",
+    "minDist": 1.5,
+    "pitch": [
+      -12,
+      60
+    ],
+    "yaw": [
+      -80,
+      80
+    ]
+  },
+  "state": "PROVISIONAL",
+  "provisional": {
+    "why": "Owner approved the car-reel script, then explicitly requested rebuilding the rejected standalone render in the existing Minecraft framework. This first framework version is not owner-approved.",
+    "from": "100\u2013110 seconds comes from the approved car outline. The camera minDist and pitch/yaw safety bounds come from the existing Minecraft framework; shot duration ranges are production targets, not measured claims about an approved reference.",
+    "whenTheReferenceArrives": "Measure the owner-approved recreation/reference before treating these production targets as the format rules."
+  }
 }

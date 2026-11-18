@@ -9,11 +9,13 @@ its own references and its own kit. The engine in `src/engine/` is shared by all
 | Stories | [`Stories/`](Stories/README.md) | A 30–60 second answer to one question ("Why does bread cost more every year?"): money lessons, what inflation is. The camera never cuts: it flies from one thing to the next. **The owner renamed this topic from Explainer to Stories on 2026-11-11** and gave it a new reference to study: `Stories/reference for new topic/`, a narrated Minecraft story | **Measured.** Rules, camera, pack, starter and sounds in place. Reference film: `why-does-bread-cost-more-every-year` (0:49, with sound), our own, approved by the owner |
 | What If | [`WhatIf/`](WhatIf/README.md) | A 1–2 minute first-person story: "What if you could …?", a kid, one impossible power, and what it cost. Built and shot like In This Town | **Measured.** Rules, pack, starter and sounds in place. Reference film: `what-if-you-could-see-who-had-a-crush-on-you` (1:54, with sound), our own, approved by the owner |
 
+| Reel | [`Reel/`](Reel/README.md) | Owner-approved grindset recreations rendered with the Minecraft framework, starting with the car-washing reel | **Provisional.** Script approved; first framework replacement under review. Not yet an owner-approved reference |
+
 [`Shared/`](Shared/README.md) is not a topic. It holds the parts that more than one topic builds from.
 
 **PROVISIONAL** is the state of a topic the owner asked for before its reference. Its `topic.json` says
 `"state": "PROVISIONAL"` and carries a `provisional` block: why, where each number was borrowed from, and what to do
-when the reference arrives. `npm run new` prints the warning. No topic is provisional now: Stories and What If
+when the reference arrives. `npm run new` prints the warning. Reel is provisional. Stories and What If
 were, until the owner approved the first film of each (2026-11-13) and it became the topic's reference
 (`Topics/<Folder>/reference/README.md` tells how that went).
 
