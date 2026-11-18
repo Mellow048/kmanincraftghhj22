@@ -38,7 +38,7 @@ export const scene1=storyScene(timing, {
   },
   {
    cue: '5',
-   ...cam.push({on:[40, 1.2, 0],onTo:[40, 1.2, -3.4099999999999993],dist:6.5,to:5.8,yaw:25,pitch:8,fov:44}),
+   ...cam.push({on:[40, 1.2, 0],onTo:[40, 1.2, 3.4099999999999993],dist:6.5,to:5.8,yaw:25,pitch:8,fov:44}),
    zone: 'road', look: 'overworld-sunset',
    note: "cruise: Cut on the measured voice; show a new action or consequence rather than a held portrait.",
    stage: (t)=><Stage mode="cruise" time={t} absolute={7.100000} offset={40} card={""}/>,
@@ -52,21 +52,21 @@ export const scene1=storyScene(timing, {
   },
   {
    cue: '7',
-   ...cam.push({on:[40, 1.2, 0],onTo:[40, 1.2, -4.125],dist:6.5,to:5.8,yaw:25,pitch:8,fov:44}),
+   ...cam.push({on:[40, 1.2, 0],onTo:[40, 1.2, 4.125],dist:6.5,to:5.8,yaw:25,pitch:8,fov:44}),
    zone: 'road', look: 'overworld-sunset',
    note: "cruise: Cut on the measured voice; show a new action or consequence rather than a held portrait.",
    stage: (t)=><Stage mode="cruise" time={t} absolute={11.700000} offset={40} card={""}/>,
   },
   {
    cue: '8',
-   ...cam.push({on:[40, 1.2, 1],onTo:[40, 1.2, -1.6400000000000023],dist:5.8,to:5,yaw:-20,pitch:4,fov:44}),
+   ...cam.push({on:[40, 1.2, 1],onTo:[40, 1.2, 3.6400000000000023],dist:5.8,to:5,yaw:-20,pitch:4,fov:44}),
    zone: 'road', look: 'overworld-sunset',
    note: "friends: Cut on the measured voice; show a new action or consequence rather than a held portrait.",
    stage: (t)=><Stage mode="friends" time={t} absolute={14.200000} offset={40} card={""}/>,
   },
   {
    cue: '9',
-   ...cam.push({on:[40.5, 1.1, 0.5],onTo:[40.5, 1.1, -2.360000000000001],dist:5.5,to:4.7,yaw:-25,pitch:12,fov:42}),
+   ...cam.push({on:[40.5, 1.1, 0.5],onTo:[40.5, 1.1, 3.360000000000001],dist:5.5,to:4.7,yaw:-25,pitch:12,fov:42}),
    zone: 'road', look: 'overworld-sunset',
    note: "cruise: Cut on the measured voice; show a new action or consequence rather than a held portrait.",
    stage: (t)=><Stage mode="cruise" time={t} absolute={15.800000} offset={40} card={""}/>,

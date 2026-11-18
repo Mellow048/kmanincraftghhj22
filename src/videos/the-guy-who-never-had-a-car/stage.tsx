@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import {Reflector} from 'three/examples/jsm/objects/Reflector.js';
 import {Block,Vox,PixelText,MinecraftAvatar} from '../../engine';
 import {Bucket,Car,Worker,Friend,Card} from './kit';
+import edit from './remaster-edit.json';
+const REUNION_AT=edit.takes.find(t=>t.name==='09-reunion')!.at;
 
 const Mirror:React.FC = () => {
  const mirror=useMemo(()=>new Reflector(new THREE.PlaneGeometry(1.52,.78),{textureWidth:512,textureHeight:512,color:0xd5e4ed}),[]);
@@ -16,7 +18,7 @@ export const Stage:React.FC<{mode:string;time:number;absolute:number;offset:numb
  const remastered=absolute>=6.8;
  const fast=mode==='fast'||absolute<6.8||(remastered&&['wash','dry','toothbrush','wipe','fail'].includes(mode));
  const washing=['wash','dry','fast','fail','wipe','toothbrush'].includes(mode);
- const late=['wreck','reunion','answer','pigeon','fast','wipe'].includes(mode)||(mode==='toothbrush'&&offset===-40);
+ const late=absolute>=REUNION_AT-.001&&offset===-40;
  const clean=mode==='mirror'||mode==='leave'||mode==='end'||(mode==='wipe'&&time>.35);
  const dirty=late&&!clean?Math.max(0,mode==='wipe'?1-time/.35:1):0;
  const isRoad=mode==='cruise'||mode==='friends';
@@ -27,11 +29,11 @@ export const Stage:React.FC<{mode:string;time:number;absolute:number;offset:numb
  return <group position={[offset,0,0]}>
   <pointLight position={[2.7,3.5,4]} intensity={34} distance={14} decay={2} color={offset===-40?'#e2f4ff':'#c3e6ff'}/>
   <pointLight position={[-2,2.8,2]} intensity={18} distance={10} decay={2} color="#ffcd93"/>
-  <Car position={isRoad?[0,0,-time*1.65]:[0,0,-.35]} color={isRoad?'#b63728':clean?'#b7d6e3':'#286989'} dirty={dirty} foam={washing&&mode!=='dry'&&mode!=='toothbrush'} wreck={mode==='wreck'||mode==='reunion'} spin={isRoad?time*8:0}/>
+  <Car position={isRoad?[0,0,+time*1.65]:[0,0,-.35]} color={isRoad?'#b63728':clean?'#b7d6e3':'#286989'} dirty={dirty} foam={washing&&mode!=='dry'&&mode!=='toothbrush'} wreck={mode==='wreck'||mode==='reunion'} spin={isRoad?time*8:0}/>
   {offset===-40&&<><Car position={[-4.5,0,-2]} color="#f0e6c8"/><Car position={[4.5,0,-3]} color="#803831"/></>}
-  {!heroOff&&<Worker position={heroPos} time={time} wash={washing} fast={fast} rotationY={['answer','react','gloves'].includes(mode)?0:departing?Math.PI:-.6} walk={departing||arriving} action={remastered?mode:''}/>}
+  {!heroOff&&<Worker position={heroPos} time={time} wash={washing} fast={fast} rotationY={['answer','react','gloves'].includes(mode)?0:(departing||arriving)?Math.PI:-.6} walk={departing||arriving} action={remastered?mode:''}/>}
   {(mode==='dream'||mode==='lonely'||mode==='sponge')&&<Worker position={mode==='sponge'?[1.35,0,1]:[1.9,0,2.5]} time={time} rotationY={mode==='sponge'?0:-.6} gloves={mode!=='lonely'} holdSponge={mode==='sponge'} action={remastered?mode:''}/>}
-  {isRoad&&<><Friend position={[-.43,.16,-.5-time*1.65]} time={time} seated/><Friend position={[.43,.16,-.5-time*1.65]} time={time+.4} blue seated/></>}
+  {isRoad&&<><Friend position={[-.43,.16,-.5+time*1.65]} time={time} seated/><Friend position={[.43,.16,-.5+time*1.65]} time={time+.4} blue seated/></>}
   {(mode==='invite'||mode==='reunion'||mode==='wreck')&&<><Friend position={[-1.5,0,1.7]} time={time} surprise={late}/><Friend position={[2.8,0,1.6]} time={time+.3} blue surprise={late}/></>}
   {washing&&<Water time={time} fast={fast}/>}
   {mode==='fail'&&<Vox kind="wool" position={[.95,.87,.15]} size={[.03,.22,1.3]} tint="#b63829"/>}

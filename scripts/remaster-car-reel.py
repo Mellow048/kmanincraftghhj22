@@ -156,7 +156,7 @@ for i,s in enumerate(shots):
  view=s['view'] or s['mode'];on,dist,to,yaw,pitch,fov=V[view];on=[on[0]+off,on[1],on[2]]
  camera=f'...cam.push({{on:{json.dumps(on)},dist:{dist},to:{to},yaw:{yaw},pitch:{pitch},fov:{fov}}})'
  if zone=='road' and s['mode'] in ('cruise','friends'):
-  endon=[on[0],on[1],on[2]-(b-a)*1.65]
+  endon=[on[0],on[1],on[2]+(b-a)*1.65]
   camera=f'...cam.push({{on:{json.dumps(on)},onTo:{json.dumps(endon)},dist:{dist},to:{to},yaw:{yaw},pitch:{pitch},fov:{fov}}})'
  text=' '.join(w['w'] for w in words if a<=w['s']<b) or '...'
  cues.append(dict(id=str(i+1),start=round(a,6),end=round(b,6),text=text))
