@@ -84,14 +84,9 @@ export const scene2 = storyScene(timing, {
       zone: "home",
       look: "kitchen-day",
       note: "The fridge standing open with exactly one shelf and nothing on it. The line says the fridge contains a fridge; the picture has to be at least as empty as that.",
-      stage: (t) => (
-        <>
-          <Vox kind="wool" tint="#e8eef2" position={[2.75, 0.9, 398.05]} size={[0.9, 1.7, 0.05]} />
-          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 1.35, 397.95]} size={[0.82, 0.04, 0.3]} />
-          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 0.85, 397.95]} size={[0.82, 0.04, 0.3]} />
-          <pointLight position={[2.75, 1.5, 398.4]} color="#dff0ff" intensity={pop(t, 0.1) * 8} distance={4} decay={2} />
-        </>
-      ),
+      // The fridge itself is the world's prop in its `empty` state, with the little fridge inside it.
+      // Nothing is drawn over it here. The camera does the movement.
+      stage: () => <></>,
     },
     {
       cue: "2.onion",

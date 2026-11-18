@@ -145,36 +145,78 @@ const FILL_HOME = new Set([
 ]);
 const FILL_RESTAURANT = new Set(["7.hands"]);
 
-const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean }> = ({ night, fill }) => (
+const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean; fridge?: "closed" | "empty" | "full" }> = ({ night, fill, fridge = "closed" }) => (
   <group position={PLACE.home2}>
     {/* AN OPEN SET. A zone is exclusive, so the village is not drawn while this is. Sealing the room
         on all four sides only ever put the lens inside plaster (and its ceiling blocked every top
         shot). North wall and two short side returns give the kitchen its shape; the front is open. */}
-    <Vox kind="planks" tint="#c9a06a" position={[0, -0.05, 0]} size={[18, 0.1, 16]} />
-    <Vox kind="wool" tint="#efe6d2" position={[0, HOME.h / 2, -HOME.d]} size={[HOME.w * 2, HOME.h, 0.2]} />
-    <Vox kind="wool" tint="#e8dfc8" position={[-HOME.w, HOME.h / 2, -1.4]} size={[0.2, HOME.h, 3.2]} />
-    <Vox kind="wool" tint="#e8dfc8" position={[HOME.w, HOME.h / 2, -1.4]} size={[0.2, HOME.h, 3.2]} />
+    <Vox kind="planks" tint="#a07d50" position={[0, -0.05, 0]} size={[18, 0.1, 16]} />
+    <Vox kind="wool" tint="#c2a882" position={[0, HOME.h / 2, -HOME.d]} size={[HOME.w * 2, HOME.h, 0.2]} />
+    <Vox kind="wool" tint="#b49a76" position={[-HOME.w, HOME.h / 2, -1.4]} size={[0.2, HOME.h, 3.2]} />
+    <Vox kind="wool" tint="#b49a76" position={[HOME.w, HOME.h / 2, -1.4]} size={[0.2, HOME.h, 3.2]} />
     {/* a low beam in front, so a wide shot still reads as being inside a room */}
     <Vox kind="darkPlanks" position={[0, 2.86, 2.9]} size={[7.0, 0.16, 0.16]} />
 
     {/* THE COUNTER, along the north wall. Top at y 0.92. */}
     <Vox kind="planks" position={[0, 0.45, -2.55]} size={[6.0, 0.9, 0.8]} />
-    <Vox kind="stoneBrick" tint="#d8d2c0" position={[0, 0.93, -2.55]} size={[6.1, 0.06, 0.9]} />
+    <Vox kind="stoneBrick" tint="#a89c84" position={[0, 0.93, -2.55]} size={[6.1, 0.06, 0.9]} />
 
     {/* THE STOVE, west end of the counter, with a pot on it. */}
     <Vox kind="obsidian" position={[-2.1, 1.0, -2.55]} size={[0.9, 0.1, 0.8]} />
     <Vox kind="magma" position={[-2.1, 1.06, -2.55]} size={[0.5, 0.04, 0.5]} />
     <Vox kind="stone" position={[-2.1, 1.16, -2.55]} size={[0.5, 0.2, 0.5]} />
-    <pointLight position={[-2.1, 1.5, -2.3]} color="#ff9a3c" intensity={5} distance={4} decay={2} />
+    <pointLight position={[-2.1, 1.5, -2.3]} color="#ff9a3c" intensity={3} distance={4} decay={2} />
 
     {/* a window over the sink, boarded outside — it is night in most of this film */}
     <Vox kind="wool" tint="#bfe2ff" position={[1.4, 1.7, -HOME.d + 0.06]} size={[1.6, 1.0, 0.02]} />
     <Vox kind="darkPlanks" position={[1.4, 1.7, -HOME.d - 0.02]} size={[1.9, 1.3, 0.08]} />
 
-    {/* THE FRIDGE. It is almost empty for the first half of the film and full at the end. */}
-    <Vox kind="wool" tint="#dfe6ea" position={[2.75, 0.9, -2.5]} size={[1.0, 1.8, 0.7]} />
-    <Vox kind="wool" tint="#b8c2c8" position={[2.75, 0.9, -2.14]} size={[0.92, 1.7, 0.03]} />
-    <Vox kind="stone" position={[2.75, 1.25, -2.12]} size={[0.06, 0.1, 0.04]} />
+    {/* THE FRIDGE. One prop, three states, owned by the world: a shot must never draw a second solid
+        fridge over it (the first render did, and the punchline was a white wall). The open states are
+        a real box with an inside, so the food on the shelves can be seen from the camera's side. */}
+    {fridge === "closed" ? (
+      <>
+        <Vox kind="wool" tint="#8b979e" position={[2.75, 0.9, -2.5]} size={[1.0, 1.8, 0.7]} />
+        <Vox kind="wool" tint="#c9d2d8" position={[2.75, 0.9, -2.14]} size={[0.92, 1.7, 0.03]} />
+        <Vox kind="stone" position={[2.75, 1.25, -2.12]} size={[0.06, 0.1, 0.04]} />
+      </>
+    ) : (
+      <>
+        <Vox kind="wool" tint="#7d8c96" position={[2.75, 0.9, -2.55]} size={[1.02, 1.8, 0.06]} />
+        <Vox kind="wool" tint="#b6c1c8" position={[2.23, 0.9, -2.2]} size={[0.06, 1.8, 0.7]} />
+        <Vox kind="wool" tint="#b6c1c8" position={[3.27, 0.9, -2.2]} size={[0.06, 1.8, 0.7]} />
+        <Vox kind="wool" tint="#b6c1c8" position={[2.75, 1.79, -2.2]} size={[1.02, 0.06, 0.7]} />
+        <Vox kind="wool" tint="#b6c1c8" position={[2.75, 0.03, -2.2]} size={[1.02, 0.06, 0.7]} />
+        {/* the door, swung open to the left: a wing at the edge of the frame, never a wall in front */}
+        <Vox kind="wool" tint="#c9d2d8" position={[2.08, 0.9, -1.78]} size={[0.06, 1.72, 0.62]} />
+        <pointLight position={[2.75, 1.25, -1.95]} color="#dff0ff" intensity={6} distance={3.4} decay={2} />
+        {fridge === "empty" ? (
+          <>
+            <Vox kind="wool" tint="#a9b5bc" position={[2.75, 0.88, -2.12]} size={[0.86, 0.04, 0.42]} />
+            {/* the whole joke: the fridge contains exactly one thing, and that thing is a fridge */}
+            <Vox kind="wool" tint="#e2e9ed" position={[2.75, 1.12, -2.05]} size={[0.34, 0.42, 0.26]} />
+            <Vox kind="stone" position={[2.62, 1.2, -1.91]} size={[0.04, 0.1, 0.03]} />
+          </>
+        ) : (
+          <>
+            {[0.32, 0.72, 1.12, 1.52].map((y, row) => (
+              <group key={y}>
+                <Vox kind="wool" tint="#a9b5bc" position={[2.75, y, -2.12]} size={[0.86, 0.04, 0.42]} />
+                {[2.47, 2.68, 2.89, 3.10].map((x, i) => (
+                  <Vox
+                    key={x}
+                    kind="wool"
+                    tint={["#c8402f", "#7ac04f", "#e8a21c", "#e8853c", "#f7f4ea", "#3f8a4f"][(i + row * 2) % 6]}
+                    position={[x, y + 0.14, -2.02]}
+                    size={[0.15, 0.22, 0.2]}
+                  />
+                ))}
+              </group>
+            ))}
+          </>
+        )}
+      </>
+    )}
 
     {/* THE TABLE he works at, and the chair he does not sit in. */}
     <Vox kind="planks" tint="#b0803f" position={[0, 0.76, 0.6]} size={[2.2, 0.08, 1.3]} />
@@ -193,8 +235,8 @@ const HomeKitchen: React.FC<{ night?: boolean; fill?: boolean }> = ({ night, fil
     {fill && (
       <Hero position={[0.15, 0, 0.95]} rotationY={0.12} animation="idle" face="calm" />
     )}
-    <pointLight position={[0, 2.55, 0.5]} color="#ffe8c0" intensity={night ? 12 : 14} distance={9} decay={1.7} />
-    <pointLight position={[0.6, 2.4, -2.2]} color="#fff0d0" intensity={7} distance={6} decay={2} />
+    <pointLight position={[0, 2.55, 0.5]} color="#ffe8c0" intensity={night ? 7 : 8} distance={9} decay={1.7} />
+    <pointLight position={[0.6, 2.4, -2.2]} color="#fff0d0" intensity={4} distance={6} decay={2} />
     <Glow position={[0, 2.3, 0.4]} size={1.5} color="#ffe8c0" opacity={0.2} />
     <Dust position={[0, 1.5, 0.4]} area={[6, 2.4, 5]} count={28} size={0.03} color="#fff2d8" opacity={0.35} seed={21} speed={0.09} />
   </group>
@@ -264,7 +306,11 @@ export const World: React.FC = () => {
         <Village />
       </Zone>
       <Zone name="home">
-        <HomeKitchen night={night} fill={FILL_HOME.has(cue)} />
+        <HomeKitchen
+          night={night}
+          fill={FILL_HOME.has(cue)}
+          fridge={cue === "9.fridge" ? "full" : cue === "2.fridge" ? "empty" : "closed"}
+        />
       </Zone>
       <Zone name="room">
         <Bedroom />

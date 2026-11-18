@@ -369,27 +369,9 @@ export const scene4 = storyScene(timing, {
       zone: "home",
       look: "kitchen-day",
       note: "The same fridge, open, and stacked to the door with food. The first joke in the film, paid off in the last minute.",
-      stage: () => (
-        <>
-          {/* body, open door swung to the left, and the lit inside */}
-          <Vox kind="wool" tint="#dfe6ea" position={[2.75, 0.9, 398.35]} size={[1.02, 1.8, 0.7]} />
-          <Vox kind="wool" tint="#f7fbff" position={[2.75, 0.9, 397.98]} size={[0.94, 1.72, 0.04]} />
-          <Vox kind="wool" tint="#e8eef2" position={[2.2, 0.9, 397.6]} size={[0.06, 1.72, 0.62]} />
-          <pointLight position={[2.1, 1.6, 398.2]} color="#f2f8ff" intensity={26} distance={5} decay={2} />
-          {[-0.62, -0.12, 0.38, 0.86].map((y, i) => (
-            <group key={y}>
-              <Vox kind="wool" tint="#d8e2e8" position={[2.75, y, 397.99]} size={[0.86, 0.04, 0.28]} />
-              <Vox kind="wool" tint={["#c8402f", "#7ac04f", "#e8853c", "#e8c07a"][i]} position={[2.52, y + 0.11, 397.99]} size={[0.16, 0.16, 0.22]} />
-              <Vox kind="wool" tint={["#3f8a4f", "#e8a21c", "#c9783c", "#f7f4ea"][i]} position={[2.92, y + 0.11, 397.99]} size={[0.16, 0.16, 0.22]} />
-            </group>
-          ))}
-          {/* the top shelf, packed to the door: the punchline is volume, so it is a wall of colour */}
-          <Vox kind="wool" tint="#d8e2e8" position={[2.75, 1.34, 397.99]} size={[0.86, 0.04, 0.28]} />
-          {[2.42, 2.6, 2.78, 2.96, 3.12].map((x, i) => (
-            <Vox key={x} kind="wool" tint={["#c8402f", "#f7f4ea", "#7ac04f", "#e8c07a", "#c9783c"][i]} position={[x, 1.48, 397.99]} size={[0.15, 0.22, 0.2]} />
-          ))}
-        </>
-      ),
+      // The open, full fridge is the world's prop in its `full` state. A shot that draws a second
+      // solid fridge over it hides every shelf and turns the punchline into a white wall.
+      stage: () => <></>,
     },
     {
       cue: "9.nobody",
