@@ -187,18 +187,18 @@
     {
       "id": "31",
       "start": 82,
-      "end": 85,
-      "text": "Training. I've got work in the morning."
+      "end": 83.2,
+      "text": "Training. I've got"
     },
     {
       "id": "32",
-      "start": 85,
-      "end": 88,
-      "text": "..."
+      "start": 83.2,
+      "end": 86,
+      "text": "work in the morning."
     },
     {
       "id": "33",
-      "start": 88,
+      "start": 86,
       "end": 90,
       "text": "..."
     },

@@ -33,8 +33,8 @@ Audio edit is preserved. Cue boundaries are shot boundaries. Word positions with
 [28] ...
 [29] Wait. Is that him? Bro?! How
 [30] did you get so good at cars?!
-[31] Training. I've got work in the morning.
-[32] ...
+[31] Training. I've got
+[32] work in the morning.
 [33] ...
 [34] Huss! Huss! Huss! Huss!
 [35] Huss! Huss! Huss!

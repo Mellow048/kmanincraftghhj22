@@ -62,7 +62,7 @@ export const Worker: React.FC<{position?:Vec3;time:number;wash?:boolean;fast?:bo
  {gloves&&<Block position={[0,-.035,0]} size={[.245,.17,.25]} color="#ecbd29"/>}{wash&&<Sponge/>}
  </MinecraftAvatar>;
 };
-export const Friend: React.FC<{position:Vec3;time:number;blue?:boolean;surprise?:boolean;seated?:boolean}> = ({position,time,blue=false,surprise=false,seated=false}) => <MinecraftAvatar position={position} rotationY={-.25} outfit="tee" colors={{torso:blue?'#355fb5':'#b24938',arms:'skin',legs:'#2e313c'}} face={surprise?'wow':'smug'} animation={seated?'sit':surprise?'scared':'wave'} time={time} hair={blue?'#a77032':'#241815'}/>;
+export const Friend: React.FC<{position:Vec3;time:number;blue?:boolean;surprise?:boolean;seated?:boolean;rotationY?:number}> = ({position,time,blue=false,surprise=false,seated=false,rotationY=-.25}) => <MinecraftAvatar position={position} rotationY={rotationY} outfit="tee" colors={{torso:blue?'#355fb5':'#b24938',arms:'skin',legs:'#2e313c'}} face={surprise?'wow':'smug'} animation={seated?'sit':surprise?'scared':'wave'} time={time} hair={blue?'#a77032':'#241815'}/>;
 export const Card: React.FC<{text:string;position?:Vec3;offset?:number}> = ({text,offset=0}) => {
  const group=useRef<THREE.Group>(null);
  const camera=useThree(s=>s.camera) as THREE.PerspectiveCamera;
@@ -79,10 +79,10 @@ export const Card: React.FC<{text:string;position?:Vec3;offset?:number}> = ({tex
  for(const phrase of text.split('|')) {
   let row='';
   for(const word of phrase.split(' ')) {
-   if((row+' '+word).trim().length>24 && row){rows.push(row);row=word;}
+   if((row+' '+word).trim().length>19 && row){rows.push(row);row=word;}
    else row=(row+' '+word).trim();
   }
   if(row)rows.push(row);
  }
- return <group ref={group}>{rows.map((s,i)=><PixelText key={i} text={s} position={[0,-i*.36,0]} height={.30} maxWidth={3.5}/>)}</group>;
+ return <group ref={group}>{rows.map((s,i)=><PixelText key={i} text={s} position={[0,-i*.48,0]} height={.42} maxWidth={3.5}/>)}</group>;
 };

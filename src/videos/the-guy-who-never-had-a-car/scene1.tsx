@@ -230,14 +230,14 @@ export const scene1 = storyScene(timing, {
       ...cam.push({ on: [-38.65, 1.4, 1], dist: 3, to: 2.6, yaw: 8, pitch: 6, fov: 36 }),
       zone: 'shop', look: 'warm-room',
       note: "answer: A dead-serious reaction gets more weight than the mundane answer deserves.",
-      stage: (t) => <Stage mode="answer" time={t} absolute={85} offset={-40} card={"IVE GOT WORK IN THE MORNING"} />,
+      stage: (t) => <Stage mode="answer" time={t} absolute={83.2} offset={-40} card={"IVE GOT WORK IN THE MORNING"} />,
     },
     {
       cue: '33',
       ...cam.push({ on: [-40, 1.5, 0.1], dist: 4.8, to: 4.4, yaw: 22, pitch: 8, fov: 44 }),
       zone: 'shop', look: 'warm-room',
       note: "pigeon: Advance the approved car-washing story through action and a motivated change of framing.",
-      stage: (t) => <Stage mode="pigeon" time={t} absolute={88} offset={-40} card={""} />,
+      stage: (t) => <Stage mode="pigeon" time={t} absolute={86} offset={-40} card={""} />,
     },
     {
       cue: '34',
