@@ -136,15 +136,14 @@ export const scene6 = storyScene(timing, {
       ...cam.push({ on: WIDE, dist: 3.4, to: 3.0, yaw: 14, pitch: 3, fov: 40 }),
       zone: "shop",
       look: "overworld-day",
-      note: "The year paying out: nine HUS and nine heads, a new one in the chair on every HUS, each one done.",
+      note: "The year paying out: nine HUS and three heads, a new one in the chair for every three, each one done.",
       stage: (t) => {
         let i = 0;
-        for (let n = 0; n < S9.length; n++) if (t >= S9[n]) i = n;
-        const next = i + 1 < S9.length ? S9[i + 1] : S9[i] + 0.16;
-        const k = Math.min(1, Math.max(0, (t - S9[i]) / (next - S9[i])));
+        for (let g = 0; g < 3; g++) if (t >= S9[g * 3] - 0.05) i = g;
+        const k = Math.min(1, Math.max(0, (t - S9[i * 3]) / (S9[i * 3 + 2] + 0.06 - S9[i * 3])));
         return (
           <>
-            <Person who={i + 1} top={k < 0.7 ? "bush" : "cut"} bush={1 - k / 0.7} position={SIT} pose={seatedPose(t)} face={k < 0.7 ? "scared" : "wow"} gaze={0} />
+            <Person who={i + 1} top={k < 0.95 ? "bush" : "cut"} bush={1 - k * 0.8} position={SIT} pose={seatedPose(t)} face={k < 0.95 ? "scared" : "wow"} gaze={0} />
             <Cape position={PLACE.chair} scale={0.95} color={["#2f4fa8", "#a82a2a", "#2f8a8a", "#6a3fa0"][i % 4]} />
             <Me t={t} fast={1} face="calm" />
             <HairFly position={SIT_TOP} t={t} at={S9} color={personOf(i + 1).hair} count={10} power={1.3} />

@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "the-barber-who-never-went-to-parties",
   "mix": "public/audio/the-barber-who-never-went-to-parties/mix.mp3",
-  "seconds": 97.0667,
+  "seconds": 79.6333,
   "built_from": {
-    "timing.json": "a78e2ec9057beef760524855d3a4541fc881d2e5",
-    "sound.json": "73ad22a55589646458634f9c8e9ca6f96ad966b1",
-    "narration.mp3": "b925b895ad137ec0dff291e622842977c85bae9e"
+    "timing.json": "cbc6304659a4423935fdc1221c491cbb3d87cffd",
+    "sound.json": "d0d95c9469b784308521774225d3b57d9b4bc76c",
+    "narration.mp3": "236f92824153004c5c68f5c670d5f1e6305825d9"
   },
-  "mix_sha1": "68a1bdd8dc9a5151e659cdfe1047e353be9ade4d",
+  "mix_sha1": "b65e450b11b478f7a7bbbe1b11edaab793fb0757",
   "music_sections": [
     {
       "from": "1.hus",
@@ -18,178 +18,189 @@
     {
       "from": "1.how",
       "mood": "none",
-      "at": 3.85
+      "at": 3.15
     },
     {
       "from": "2.paper",
       "mood": "curious",
-      "at": 4.7
+      "at": 3.9
     },
     {
       "from": "2.party",
       "mood": "party",
-      "at": 7.13
+      "at": 6.1
     },
     {
       "from": "2.weird",
       "mood": "none",
-      "at": 17.17
+      "at": 15.01
     },
     {
       "from": "3.tv",
       "mood": "wonder",
-      "at": 17.8
+      "at": 15.33
     },
     {
       "from": "3.wanted",
       "mood": "sneak",
-      "at": 23.65
+      "at": 20.57
     },
     {
       "from": "4.okay",
       "mood": "playful",
-      "at": 28.73
+      "at": 23.63
     },
     {
       "from": "4.hat",
       "mood": "sneak",
-      "at": 38.57
+      "at": 29.9
     },
     {
       "from": "5.hus",
       "mood": "grind",
-      "at": 40.87
+      "at": 30.67
     },
     {
       "from": "5.fixable",
       "mood": "hope",
-      "at": 55.79
+      "at": 44.97
     },
     {
       "from": "6.busiest",
       "mood": "town",
-      "at": 61.7
+      "at": 49.73
     },
     {
       "from": "6.beard",
       "mood": "none",
-      "at": 70.7
+      "at": 56.82
     },
     {
-      "from": "6.beard",
+      "from": "6.hus",
       "mood": "grind",
-      "at": 71.5
+      "at": 57.47
     },
     {
       "from": "6.forty",
       "mood": "none",
-      "at": 76.53
+      "at": 61.62
     },
     {
       "from": "7.help",
       "mood": "playful",
-      "at": 77.4
+      "at": 62.27
     },
     {
-      "from": "7.weirdone",
+      "from": "7.hus1",
       "mood": "grind",
-      "at": 84.1
+      "at": 68.0
     },
     {
       "from": "7.bro",
       "mood": "none",
-      "at": 87.27
+      "at": 70.91
     },
     {
       "from": "7.hus",
       "mood": "grind",
-      "at": 90.17
+      "at": 72.83
     },
     {
       "from": "7.coming",
       "mood": "party",
-      "at": 92.2
+      "at": 74.47
     },
     {
-      "from": "7.never",
-      "mood": "hope",
-      "at": 94.0
+      "from": "7.no",
+      "mood": "none",
+      "at": 75.4
+    },
+    {
+      "from": "7.end",
+      "mood": "grind",
+      "at": 77.1
     }
   ],
   "beds": 13,
   "measured": {
-    "musicUnderVoiceDb": 18.6,
-    "secondsWithoutMusic": 7.4,
-    "bedsUnderVoiceDb": 28.4,
-    "sfx": 255,
-    "sfxPerMinute": 157.6,
-    "sfxKinds": 43,
-    "longestGapSeconds": 2.0,
-    "longestGapAt": 87.3,
+    "musicUnderVoiceDb": 18.7,
+    "secondsWithoutMusic": 5.0,
+    "bedsUnderVoiceDb": 28.3,
+    "sfx": 274,
+    "sfxPerMinute": 206.4,
+    "sfxKinds": 41,
+    "longestGapSeconds": 1.8,
+    "longestGapAt": 6.4,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.3,
-    "voiceOverRestWorstDb": 5.9,
+    "voiceOverRestMedianDb": 12.3,
+    "voiceOverRestWorstDb": 4.7,
     "voiceOverRestWorst": [
       {
-        "db": 5.9,
-        "t": 74.4,
-        "cue": "6.forty",
-        "sounding": [
-          "count",
-          "register",
-          "step_wood"
-        ]
-      },
-      {
-        "db": 6.1,
-        "t": 6.5,
-        "cue": "2.paper",
-        "sounding": [
-          "paper",
-          "slide_down",
-          "whoosh"
-        ]
-      },
-      {
-        "db": 6.2,
-        "t": 0.5,
-        "cue": "1.hus",
+        "db": 4.7,
+        "t": 41.8,
+        "cue": "5.m5",
         "sounding": [
           "hair",
-          "snip"
+          "snip",
+          "splash"
         ]
       },
       {
-        "db": 6.2,
-        "t": 20.9,
-        "cue": "3.cry",
+        "db": 4.8,
+        "t": 43.0,
+        "cue": "5.m6",
         "sounding": [
-          "plink",
+          "buzz",
+          "slide_down",
+          "snip",
           "sparkle"
         ]
       },
       {
-        "db": 6.4,
-        "t": 62.9,
-        "cue": "6.busiest",
+        "db": 4.9,
+        "t": 67.9,
+        "cue": "7.weirdone",
         "sounding": [
-          "ding",
-          "step_stone"
+          "hair",
+          "snip",
+          "sting",
+          "thud"
         ]
       },
       {
-        "db": 6.6,
-        "t": 96.2,
-        "cue": "7.end",
+        "db": 4.9,
+        "t": 48.2,
+        "cue": "5.sat",
         "sounding": [
           "hair",
+          "slide_up",
+          "snip"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 39.8,
+        "cue": "5.m2",
+        "sounding": [
+          "rustle",
+          "snip"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 58.6,
+        "cue": "6.hus",
+        "sounding": [
+          "debris",
+          "hair",
+          "pop",
           "snip"
         ]
       }
     ],
-    "lufs": -15.7,
-    "truePeakDb": -1.2,
-    "limiterMaxDb": 6.2
+    "lufs": -15.5,
+    "truePeakDb": -1.5,
+    "limiterMaxDb": 6.6
   },
   "failures": []
 }
