@@ -32,6 +32,7 @@ import { film as inThisTownMyBrotherGotBitten } from "./videos/in-this-town-my-b
 import { film as inThisTownIHadNeverSeenTheSun } from "./videos/in-this-town-i-had-never-seen-the-sun/film";
 import { film as popcornTrainingArc } from "./videos/popcorn-training-arc/film";
 import { film as dishwasherTrainingArc } from "./videos/dishwasher-training-arc/film";
+import { film as oneCakeNoBrakes } from "./videos/one-cake-no-brakes/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -72,4 +73,5 @@ export const FILMS = [
   inThisTownIHadNeverSeenTheSun,
   popcornTrainingArc,
   dishwasherTrainingArc,
+  oneCakeNoBrakes,
 ];
