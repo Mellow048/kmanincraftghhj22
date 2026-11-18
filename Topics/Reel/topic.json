@@ -5,17 +5,17 @@
   "profile": "story",
   "film": {
     "seconds": [
-      100,
-      110
+      55,
+      75
     ],
     "hardMaxSeconds": 120,
     "shotSeconds": [
-      0.5,
-      6
+      0.3,
+      4
     ],
     "medianShotSeconds": [
-      1.5,
-      3.5
+      0.5,
+      1.8
     ],
     "captions": true
   },
@@ -34,7 +34,7 @@
   "state": "PROVISIONAL",
   "provisional": {
     "why": "Owner approved the car-reel script, then explicitly requested rebuilding the rejected standalone render in the existing Minecraft framework. This first framework version is not owner-approved.",
-    "from": "100\u2013110 seconds comes from the approved car outline. The camera minDist and pitch/yaw safety bounds come from the existing Minecraft framework; shot duration ranges are production targets, not measured claims about an approved reference.",
+    "from": "Owner requested a faster remaster after reviewing the 108-second cut: remove dead holds, fast-forward Almost, add actor movement and fix lagging subtitles. The revised 55\u201375 second range is a production target for that request, not a measured approved-reference claim. Camera safety bounds remain the shared framework bounds.",
     "whenTheReferenceArrives": "Measure the owner-approved recreation/reference before treating these production targets as the format rules."
   }
 }

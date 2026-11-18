@@ -1,47 +1,58 @@
-# Approved car reel — voice-20
+# Car reel remaster — approved wording, tighter performance/edit
 
-Audio edit is preserved. Cue boundaries are shot boundaries. Word positions within measured takes are approximate.
+Word timing is measured from the raw recordings; no equal-spacing fallback.
 
 ```narration
-[1] Huss! Huss! Huss! Huss!
-[2] Huss! Huss! Huss! Huss!
-[3] Huss! Huss! Huss! Huss! Huss!
+[1] HUS! HUS! HUS! HUS!
+[2] HUS! HUS! HUS! HUS!
+[3] HUS! HUS! HUS! HUS! HUS! HUS! HUS!
 [4] ...
-[5] Brooo! Get in! We're going to the lake! Bro, you don't
-[6] even have a car! Stop washing that thing!
-[7] In this town, everybody loved to drive. Every single
-[8] Friday, my friends would line up, and go somewhere.
-[9] I never had a car. I
-[10] had a sponge. And I had a different dream.
-[11] I didn't want to drive it. I wanted to
-[12] be the one who makes it shine.
-[13] Ahh! Almost!
-[14] Almost!
-[15] While my friends were out driving,
-[16] I was in that driveway
-[17] every single night. I ruined hundreds of paint jobs.
-[18] Went through thousands of sponges. And spent countless
-[19] nights, with a bucket, and a hose.
-[20] ...
-[21] ...
-[22] ...
-[23] ...
-[24] ...
-[25] Months passed. And eventually, I was ready.
-[26] One day, I finally got hired, by the biggest
-[27] dealership in town.
+[5] Brooo! Get in! We're going to the lake! Bro,
+[6] you don't even have a car! Stop washing that thing!
+[7] In this town, everybody loved to drive. Every
+[8] single Friday, my friends would
+[9] line up, and go somewhere. I
+[10] never had a car. I
+[11] had a sponge. And
+[12] I had a different dream.
+[13] I didn't want to drive it. I
+[14] wanted to be the one who makes it shine.
+[15] Ahh! Almost!
+[16] Almost!
+[17] While my friends were out driving, I
+[18] was in that driveway every single night. I
+[19] ruined hundreds of paint
+[20] jobs. Went
+[21] through thousands of sponges. And
+[22] spent countless nights, with
+[23] a bucket, and
+[24] a hose.
+[25] ...
+[26] ...
+[27] ...
 [28] ...
-[29] Wait. Is that him? Bro?! How
-[30] did you get so good at cars?!
-[31] Training. I've got
-[32] work in the morning.
-[33] ...
-[34] Huss! Huss! Huss! Huss!
-[35] Huss! Huss! Huss!
-[36] Huss! Huss! Huss!
-[37] Huss! Huss! Huss!
-[38] ...
-[39] ...
-[40] ...
-[41] ...
+[29] ...
+[30] ...
+[31] ...
+[32] Months
+[33] passed. And eventually, I
+[34] was ready. One
+[35] day, I finally got hired, by
+[36] the biggest dealership
+[37] in town. Wait.
+[38] Is that him? Bro?!
+[39] How did you
+[40] get so good at cars?!
+[41] Training. I've
+[42] got work in the morning.
+[43] ...
+[44] Huss! Huss! Huss!
+[45] Huss! Huss!
+[46] Huss! Huss!
+[47] Huss! Huss!
+[48] ...
+[49] ...
+[50] ...
+[51] ...
+[52] ...
 ```

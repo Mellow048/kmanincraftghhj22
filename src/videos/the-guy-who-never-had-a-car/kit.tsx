@@ -55,15 +55,45 @@ export const Car: React.FC<{position?:Vec3;color?:string;dirty?:number;foam?:boo
   {wreck && <group position={[.3,1.59,-.2]}><Block position={[0,.04,0]} size={[.48,.08,.48]} color="#171b1e"/><mesh position={[0,.29,0]}><coneGeometry args={[.2,.5,4]}/><meshStandardMaterial color="#f17820"/></mesh><Block position={[0,.28,0]} size={[.2,.08,.2]} color="white"/></group>}
 </group>;
 
-export const Worker: React.FC<{position?:Vec3;time:number;wash?:boolean;fast?:boolean;rotationY?:number;walk?:boolean;gloves?:boolean;holdSponge?:boolean}> = ({position=[1.35,0,1],time,wash=false,fast=false,rotationY=-.6,walk=false,gloves=true,holdSponge=false}) => {
- const p=getPose(walk?'walk':'idle',time);
- if(holdSponge){p.armR=[-1.0,0,0];}
- if(wash){p.armR=[-1.3+Math.sin(time*(fast?24:6))*.35,0,-.2];p.armL=[-.55,0,.12];p.bodyPitch=.16;p.head=[.2,0,0];}
- return <MinecraftAvatar position={position} rotationY={rotationY} outfit="hoodie" colors={{torso:'#247f7b',arms:'#247f7b',legs:'#293e64'}} face="calm" pose={p} blink={!fast} gaze={0} saccade={false} shoes="#252832" hair="#251b17" skin="#d9aa82">
- {gloves&&<Block position={[0,-.035,0]} size={[.245,.17,.25]} color="#ecbd29"/>}{(wash||holdSponge)&&<Sponge/>}
+export const Worker: React.FC<{position?:Vec3;time:number;wash?:boolean;fast?:boolean;rotationY?:number;walk?:boolean;gloves?:boolean;holdSponge?:boolean;action?:string}> = ({position=[1.35,0,1],time,wash=false,fast=false,rotationY=-.6,walk=false,gloves=true,holdSponge=false,action=''}) => {
+ const p=getPose(walk?'walk':action==='toothbrush'?'crouch':'idle',time);
+ if(holdSponge){p.armR=[-Math.min(1,time*5),0,-.08];p.head=[.05,Math.sin(time*5)*.08,0];}
+ if(wash){
+  // The opening keeps its approved choreography. Post-hook work is a real accelerated action.
+  const hz=action?(fast?30:17):(fast?24:6);
+  p.armR=[-1.3+Math.sin(time*hz)*(action?.62:.35),0,-.2];
+  p.armL=[-.55+ (action?Math.sin(time*hz+.8)*.28:0),0,.12];
+  p.bodyPitch=.16+(action?Math.sin(time*hz*.5)*.09:0);
+  p.bodyRoll=action?Math.sin(time*hz*.5)*.055:0;
+  p.head=[.2,action?Math.sin(time*hz*.4)*.06:0,0];
+  if(action==='toothbrush'){p.bodyY=-.44;p.bodyPitch=.42;p.armR=[-.9+Math.sin(time*35)*.32,0,-.18];}
+ }
+ if(action==='react'){
+  p.armR=[-1.2+Math.sin(time*25)*.65,0,-.5];p.armL=[-1.1+Math.sin(time*25+.8)*.65,0,.5];
+  p.bodyY=Math.abs(Math.sin(time*22))*.12;p.bodyPitch=Math.sin(time*22)*.15;p.head=[Math.sin(time*22)*.14,0,0];
+ }
+ if(action==='gloves'){
+  p.armR=[-1.05,0,-.25];p.armL=[-1.2+Math.sin(time*18)*.18,.1,.6];p.head=[.22,0,0];
+ }
+ if(action==='answer'){
+  p.bodyYaw=-.4*Math.max(0,1-time*8);p.head=[Math.sin(time*18)*.025,0,0];p.armR=[-.2,0,-.08];
+ }
+ if(action==='meal'){
+  p.bodyPitch=.28;p.armR=[-1.1+Math.sin(time*12)*.65,0,-.15];p.armL=[-.5,0,.15];p.head=[.13+Math.sin(time*12)*.06,0,0];
+ }
+ const face=action==='react'?'surprised':action==='answer'&&Math.sin(time*22)<0?'neutral':'calm';
+ return <MinecraftAvatar position={position} rotationY={rotationY} outfit="hoodie" colors={{torso:'#247f7b',arms:'#247f7b',legs:'#293e64'}} face={face} pose={p} blink={!fast} gaze={0} saccade={false} shoes="#252832" hair="#251b17" skin="#d9aa82">
+ {gloves&&<Block position={[0,-.035,0]} size={[.245,.17,.25]} color="#ecbd29"/>}
+ {(wash||holdSponge)&&action!=='toothbrush'&&<Sponge/>}
+ {action==='toothbrush'&&<group position={[0,-.16,.03]} rotation={[0,0,-.45]}><Block position={[-.13,0,0]} size={[.46,.035,.035]} color="#e2b32b"/><Block position={[-.37,.025,0]} size={[.12,.07,.08]} color="#f6f3e6"/></group>}
  </MinecraftAvatar>;
 };
-export const Friend: React.FC<{position:Vec3;time:number;blue?:boolean;surprise?:boolean;seated?:boolean;rotationY?:number}> = ({position,time,blue=false,surprise=false,seated=false,rotationY=-.25}) => <MinecraftAvatar position={position} rotationY={rotationY} outfit="tee" colors={{torso:blue?'#355fb5':'#b24938',arms:'skin',legs:'#2e313c'}} face={surprise?'wow':'smug'} animation={seated?'sit':surprise?'scared':'wave'} time={time} hair={blue?'#a77032':'#241815'}/>;
+export const Friend: React.FC<{position:Vec3;time:number;blue?:boolean;surprise?:boolean;seated?:boolean;rotationY?:number}> = ({position,time,blue=false,surprise=false,seated=false,rotationY=-.25}) => {
+ const p=getPose(seated?'sit':surprise?'scared':'wave',time*1.7);
+ if(seated){p.armR=[-1.1,0,-.1];p.armL=[-1.1,0,.1];p.head=[0,Math.sin(time*5)*.12,0];}
+ else if(surprise){p.armR=[-.8+Math.sin(time*12)*.4,0,-.3];p.armL=[-1+Math.sin(time*12+.7)*.3,0,.4];p.head=[0,Math.sin(time*7)*.22,0];p.bodyRoll=Math.sin(time*8)*.04;}
+ return <MinecraftAvatar position={position} rotationY={rotationY} outfit="tee" colors={{torso:blue?'#355fb5':'#b24938',arms:'skin',legs:'#2e313c'}} face={surprise?(Math.sin(time*18)>0?'wow':'surprised'):'smug'} pose={p} time={time} hair={blue?'#a77032':'#241815'}/>;
+};
 export const Card: React.FC<{text:string;position?:Vec3;offset?:number}> = ({text,offset=0}) => {
  const group=useRef<THREE.Group>(null);
  const camera=useThree(s=>s.camera) as THREE.PerspectiveCamera;
