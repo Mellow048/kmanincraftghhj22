@@ -10,7 +10,7 @@
  *   - doors have frames, beds have bedding
  *   - no 2D overlays, no postprocessing package
  *   - no Math.random / wall-clock time (renders must be deterministic)
- *   - total runtime <= 21s
+ *   - total runtime <= 21s (one named edit exception in AGENTS.md)
  *
  * It also warns (does not fail) on:
  *   - a camera jump across a scene boundary (position/target/FOV teleport);
@@ -541,9 +541,11 @@ for (const slug of filmDirs) {
     }
   }
 
-  if (total > 21) {
-    fail(`${slug}: runtime ${total.toFixed(1)}s exceeds the 21s ceiling`);
-  } else if (total > 20.5) {
+  // AGENTS.md §1.12: only the owner's extended dishwasher edit has this ceiling.
+  const ceiling = slug === "dishwasher-training-arc" ? 44 : 21;
+  if (total > ceiling) {
+    fail(`${slug}: runtime ${total.toFixed(1)}s exceeds the ${ceiling}s ceiling`);
+  } else if (ceiling === 21 && total > 20.5) {
     info(`${slug}: runtime ${total.toFixed(1)}s is over the 20.5s target`);
   }
 

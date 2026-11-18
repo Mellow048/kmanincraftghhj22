@@ -223,6 +223,15 @@ Add at least one of each: a `GodRay`, a `LightPool`, a `Glow`, and `Dust` in the
 ### 12. The short is ~20 seconds, not a scene from a feature
 Target 18–20 seconds. Hard ceiling 21 seconds. 4–7 scenes. One idea, one turn, one button. If you cannot say the story in one sentence, cut it.
 
+#### Dishwasher Training Arc — one dialogue-cut exception
+
+The owner's revision board calls for a two-second party opener, a complete doorway exchange and job interview, a
+whole-house mop montage, a return and hire, and a three-stroke ending. `dishwasher-training-arc` has a **44-second
+ceiling** to fit those specified beats intelligibly. It is a base-style, direct-dialogue comedy, not an *In This Town*
+storytime; reusing the music does not change the format. The cut at exactly 2.00 s and cuts of location/time in the
+montage are intentional. Keep the base camera, staging and sound-off review rules; no filler or CTA. Every other
+base film retains the 21-second ceiling.
+
 ### 13. The voice sounds like a person, not a summary
 Write every line the way you would say it to a 9-year-old. One teller, one tense. Short, concrete sentences. No action lists ("he stands, he walks, he opens the door"), no wise-old-man cadence ("and so it came to pass"), no fancy analogies, no AI-summary lines ("this wasn't just a door, it was a warning"). The image shows the action; the voice says what it means, what it costs, or what happens next. Read `docs/NARRATION-RULES.md` before writing a word.
 
@@ -453,7 +462,7 @@ A film is not done until all of these are true:
 - [ ] Faces are 8×8 pixel maps, never realistic.
 - [ ] The two leads contrast; extras are background, not leads.
 - [ ] No 2D overlays, HTML, images or postprocessing.
-- [ ] Total runtime ≤ 21 seconds.
+- [ ] Total runtime ≤ 21 seconds (44 seconds only for the dishwasher dialogue cut above).
 - [ ] `npm run typecheck` passes.
 - [ ] `npm run check` passes.
 - [ ] The last frame is a button.
