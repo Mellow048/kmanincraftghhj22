@@ -1,0 +1,143 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-paid-a-dolphin-to-find-my-dad",
+  "mix": "public/audio/in-this-town-i-paid-a-dolphin-to-find-my-dad/mix.mp3",
+  "seconds": 74.9,
+  "built_from": {
+    "timing.json": "43d6184cd166864a64b49ee56e18d3fb717ee37e",
+    "sound.json": "e267c1dffb06a96988448c372804c55cf1867dc2",
+    "narration.mp3": "b0b65e7170e2068597533b1e8f1deaeb33a7b11e"
+  },
+  "mix_sha1": "2155435514d998ac04c935cd36bd60bfa663f360",
+  "music_sections": [
+    {
+      "from": "1.pay",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "1.empty",
+      "mood": "sad",
+      "at": 2.9
+    },
+    {
+      "from": "1.stripe",
+      "mood": "hope",
+      "at": 7.37
+    },
+    {
+      "from": "2.search",
+      "mood": "curious",
+      "at": 13.23
+    },
+    {
+      "from": "3.hope",
+      "mood": "wonder",
+      "at": 21.8
+    },
+    {
+      "from": "4.red",
+      "mood": "sneak",
+      "at": 29.53
+    },
+    {
+      "from": "4.dad",
+      "mood": "hope",
+      "at": 36.2
+    },
+    {
+      "from": "5.beam",
+      "mood": "tense",
+      "at": 43.8
+    },
+    {
+      "from": "5.open",
+      "mood": "hope",
+      "at": 57.67
+    },
+    {
+      "from": "6.up",
+      "mood": "hope",
+      "at": 60.27
+    },
+    {
+      "from": "6.home",
+      "mood": "playful",
+      "at": 66.53
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 10,
+  "measured": {
+    "musicUnderVoiceDb": 19.2,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 24.7,
+    "sfx": 87,
+    "sfxPerMinute": 69.7,
+    "sfxKinds": 11,
+    "longestGapSeconds": 2.4,
+    "longestGapAt": 53.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.6,
+    "voiceOverRestWorstDb": 4.8,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.8,
+        "t": 21.4,
+        "cue": "2.dive",
+        "sounding": [
+          "splash",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 41.3,
+        "cue": "5.reef",
+        "sounding": [
+          "splash"
+        ]
+      },
+      {
+        "db": 8.4,
+        "t": 20.4,
+        "cue": "2.dive",
+        "sounding": [
+          "splash"
+        ]
+      },
+      {
+        "db": 8.9,
+        "t": 2.4,
+        "cue": "1.pay",
+        "sounding": [
+          "splash"
+        ]
+      },
+      {
+        "db": 9.2,
+        "t": 73.0,
+        "cue": "6.double",
+        "sounding": [
+          "splash"
+        ]
+      },
+      {
+        "db": 9.2,
+        "t": 46.6,
+        "cue": "5.pull",
+        "sounding": [
+          "scrape",
+          "thud"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.5,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}

@@ -452,7 +452,7 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
   const scene = useThree((s) => s.scene);
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
-  const cfg = resolve(settings);
+  const cfg = useMemo(() => resolve(settings), [settings]);
   const sunOnScreen = useSunOnScreen();
 
   const rig = useMemo(() => {

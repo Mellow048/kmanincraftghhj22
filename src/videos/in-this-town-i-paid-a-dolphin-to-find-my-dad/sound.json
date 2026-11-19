@@ -1,0 +1,848 @@
+{
+  "film": "in-this-town-i-paid-a-dolphin-to-find-my-dad",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.pay",
+        "mood": "curious",
+        "why": "The owner's track starts with the payment, never with a title card."
+      },
+      {
+        "from": "1.empty",
+        "mood": "sad",
+        "gain": -1,
+        "why": "Let the empty berth breathe under the first mention of Dad."
+      },
+      {
+        "from": "1.stripe",
+        "mood": "hope",
+        "why": "The brief warm memory supplies the clue and the bargain."
+      },
+      {
+        "from": "2.search",
+        "mood": "curious",
+        "gain": -1,
+        "why": "Broaden the world, keep the rowlock rhythm forward."
+      },
+      {
+        "from": "3.hope",
+        "mood": "wonder",
+        "gain": -3,
+        "why": "Submerge the bed and make space for bubbles and the hull creak."
+      },
+      {
+        "from": "4.red",
+        "mood": "sneak",
+        "gain": -5,
+        "why": "The first wooden tap should feel local, not like a sting."
+      },
+      {
+        "from": "4.dad",
+        "mood": "hope",
+        "gain": -2,
+        "why": "Return gradually under the recognition, still on the same track clock."
+      },
+      {
+        "from": "5.beam",
+        "mood": "tense",
+        "gain": -2,
+        "why": "The impacts describe the obstacle; the voice remains on top."
+      },
+      {
+        "from": "5.open",
+        "mood": "hope",
+        "gain": -3,
+        "why": "Leave space for the roll, landing and hinge separately."
+      },
+      {
+        "from": "6.up",
+        "mood": "hope",
+        "why": "Release after the hatch clears."
+      },
+      {
+        "from": "6.home",
+        "mood": "playful",
+        "why": "Same dock, two fish; the track carries the closing tag."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "bed": "village",
+      "from": "1.pay",
+      "to": "1.guess",
+      "trim": -2
+    },
+    {
+      "bed": "pool",
+      "from": "1.pay",
+      "to": "2.dive",
+      "trim": -3
+    },
+    {
+      "bed": "wind",
+      "from": "2.search",
+      "to": "2.dive",
+      "trim": -1
+    },
+    {
+      "bed": "pool",
+      "from": "3.hope",
+      "to": "3.leave",
+      "trim": -1
+    },
+    {
+      "bed": "cave",
+      "from": "3.hope",
+      "to": "3.leave",
+      "trim": -8
+    },
+    {
+      "bed": "pool",
+      "from": "4.red",
+      "to": "6.boat",
+      "trim": -1
+    },
+    {
+      "bed": "wind",
+      "from": "5.reef",
+      "to": "6.boat",
+      "trim": -6
+    },
+    {
+      "bed": "room",
+      "from": "4.hand",
+      "to": "5.cabin",
+      "trim": 1
+    },
+    {
+      "bed": "pool",
+      "from": "6.chest",
+      "to": "6.close",
+      "trim": -3
+    },
+    {
+      "bed": "village",
+      "from": "6.home",
+      "to": "6.close",
+      "trim": -2
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.pay",
+      "sfx": "splash",
+      "at": 0.33,
+      "dur": 0.32,
+      "trim": -3,
+      "pan": 0.29,
+      "why": "Water beads fall away as the dolphin breaks the surface."
+    },
+    {
+      "cue": "1.pay",
+      "sfx": "pop",
+      "at": 0.94,
+      "pitch": 0.8,
+      "trim": -2,
+      "pan": 0.04,
+      "why": "The first cod meets the snout."
+    },
+    {
+      "cue": "1.pay",
+      "sfx": "splash",
+      "at": 2.15,
+      "dur": 0.47,
+      "trim": -1,
+      "pan": 0.27,
+      "why": "Tail enters again beside the dock."
+    },
+    {
+      "cue": "1.empty",
+      "sfx": "splash",
+      "at": 0.4,
+      "dur": 0.26,
+      "trim": -5,
+      "pan": 0.22,
+      "why": "A low wave at the empty pilings."
+    },
+    {
+      "cue": "1.empty",
+      "sfx": "step_wood",
+      "at": 0.66,
+      "repeat": 3,
+      "every": 0.34,
+      "trim": -3,
+      "pan": -0.18,
+      "why": "The kid crosses the empty berth."
+    },
+    {
+      "cue": "1.empty",
+      "sfx": "rustle",
+      "at": 1.89,
+      "dur": 0.24,
+      "trim": -2,
+      "why": "The cut rope end brushes the outer board."
+    },
+    {
+      "cue": "1.half",
+      "sfx": "scrape",
+      "at": 0.39,
+      "dur": 0.28,
+      "trim": -2,
+      "pan": 0.09,
+      "why": "Wet oar first lifted off the planks."
+    },
+    {
+      "cue": "1.half",
+      "sfx": "plink",
+      "at": 1.2,
+      "pitch": 0.91,
+      "trim": -1,
+      "why": "A drip off the red wood."
+    },
+    {
+      "cue": "1.stripe",
+      "sfx": "scrape",
+      "at": 0.24,
+      "dur": 0.31,
+      "trim": -2,
+      "why": "First brush passes over the white stripe."
+    },
+    {
+      "cue": "1.stripe",
+      "sfx": "rustle",
+      "at": 1.24,
+      "dur": 0.32,
+      "trim": -2,
+      "pan": -0.2,
+      "why": "Dad steadies the whole oar as the kid finishes the bend."
+    },
+    {
+      "cue": "1.lunch",
+      "sfx": "splash",
+      "at": 0.52,
+      "trim": -4,
+      "dur": 0.28,
+      "pan": 0.3,
+      "why": "A smaller first splash in the memory."
+    },
+    {
+      "cue": "1.lunch",
+      "sfx": "pop",
+      "at": -0.02,
+      "word": "lunch",
+      "pitch": 0.76,
+      "trim": -2,
+      "pan": 0.13,
+      "why": "Dad’s routine cod payment."
+    },
+    {
+      "cue": "1.lunch",
+      "sfx": "splash",
+      "at": 0.24,
+      "word": "lunch",
+      "dur": 0.3,
+      "trim": -4,
+      "pan": 0.33,
+      "why": "Dolphin drops back into the harbor."
+    },
+    {
+      "cue": "1.guess",
+      "sfx": "splash",
+      "at": 0.24,
+      "dur": 0.32,
+      "trim": -0.5,
+      "pan": 0.25,
+      "why": "Last surface flick behind the departing fin."
+    },
+    {
+      "cue": "1.guess",
+      "sfx": "place",
+      "at": 1.0,
+      "trim": -1,
+      "pan": -0.22,
+      "why": "Painted half touches the forward seat."
+    },
+    {
+      "cue": "2.search",
+      "sfx": "splash",
+      "at": 0.28,
+      "dur": 0.29,
+      "repeat": 3,
+      "every": 0.55,
+      "trim": -4,
+      "pan": -0.28,
+      "why": "Oar blades feather and pull, three near strokes."
+    },
+    {
+      "cue": "2.search",
+      "sfx": "creak",
+      "at": 0.89,
+      "dur": 0.31,
+      "trim": -3,
+      "pan": 0.27,
+      "why": "The kid’s rowlock complains on the second pull."
+    },
+    {
+      "cue": "2.turn",
+      "sfx": "splash",
+      "at": 0.39,
+      "dur": 0.38,
+      "trim": -2,
+      "pan": 0.22,
+      "why": "The dolphin banks across the prow."
+    },
+    {
+      "cue": "2.turn",
+      "sfx": "gust",
+      "at": 0.81,
+      "dur": 0.47,
+      "trim": -2,
+      "why": "Wind opens up as the skiff turns across the channel."
+    },
+    {
+      "cue": "2.turn",
+      "sfx": "scrape",
+      "at": 1.41,
+      "dur": 0.32,
+      "trim": -2,
+      "pan": -0.21,
+      "why": "Paddle comes round the gunwale."
+    },
+    {
+      "cue": "2.turn",
+      "sfx": "splash",
+      "at": 2.05,
+      "dur": 0.34,
+      "trim": -1,
+      "why": "A hard pull toward the reef."
+    },
+    {
+      "cue": "2.tie",
+      "sfx": "creak",
+      "at": 0.34,
+      "dur": 0.52,
+      "trim": -2,
+      "pan": -0.17,
+      "why": "Rope pulls tight on the old wood."
+    },
+    {
+      "cue": "2.tie",
+      "sfx": "step_wood",
+      "at": 0.76,
+      "trim": -1,
+      "why": "Hull taps the side without another full impact."
+    },
+    {
+      "cue": "2.tie",
+      "sfx": "rustle",
+      "at": 1.1,
+      "dur": 0.25,
+      "trim": -2,
+      "why": "Free end winds round the post."
+    },
+    {
+      "cue": "2.dive",
+      "sfx": "splash",
+      "at": -0.1,
+      "word": "under",
+      "dur": 0.44,
+      "trim": -1,
+      "pan": 0.17,
+      "why": "The dolphin dives first."
+    },
+    {
+      "cue": "2.dive",
+      "sfx": "splash",
+      "at": 0.04,
+      "word": "after",
+      "dur": 0.51,
+      "trim": 1,
+      "pan": -0.19,
+      "why": "The kid falls in after it—a larger entry."
+    },
+    {
+      "cue": "3.hope",
+      "sfx": "whoosh_low",
+      "at": 0.17,
+      "dur": 0.37,
+      "trim": -3,
+      "why": "Water moves past his arms under the hull."
+    },
+    {
+      "cue": "3.hope",
+      "sfx": "plink",
+      "at": 0.65,
+      "repeat": 2,
+      "every": 0.28,
+      "pitch": 0.84,
+      "trim": -1,
+      "pan": -0.16,
+      "why": "Small rising bubble off his shoulder."
+    },
+    {
+      "cue": "3.chest",
+      "sfx": "creak",
+      "at": 0.25,
+      "dur": 0.36,
+      "trim": -2,
+      "why": "Chest lid ticks in the current."
+    },
+    {
+      "cue": "3.chest",
+      "sfx": "plink",
+      "at": 0.61,
+      "pitch": 0.76,
+      "trim": -1,
+      "pan": 0.18,
+      "why": "One soft bubble beside the dolphin’s snout."
+    },
+    {
+      "cue": "3.gold",
+      "sfx": "creak",
+      "at": 0.27,
+      "dur": 0.32,
+      "trim": -3,
+      "why": "The lid is already ajar and gently rocks against a stop."
+    },
+    {
+      "cue": "3.gold",
+      "sfx": "plink",
+      "at": 1.45,
+      "pitch": 1.04,
+      "trim": -2,
+      "why": "Tiny pocket of trapped air slips past the gold; no magic."
+    },
+    {
+      "cue": "3.leave",
+      "sfx": "whoosh_low",
+      "at": 0.53,
+      "dur": 0.44,
+      "trim": -3,
+      "pan": 0.12,
+      "why": "Hand withdraws; the swim stroke turns up toward the waterline."
+    },
+    {
+      "cue": "3.leave",
+      "sfx": "plink",
+      "at": 1.12,
+      "pitch": 0.8,
+      "trim": -2,
+      "why": "Last submerged exhale on the ascent."
+    },
+    {
+      "cue": "4.red",
+      "sfx": "splash",
+      "at": 0.04,
+      "dur": 0.37,
+      "trim": -2,
+      "pan": 0.26,
+      "why": "The kid gets a knee into the dinghy."
+    },
+    {
+      "cue": "4.red",
+      "sfx": "step_wood",
+      "at": -0.2,
+      "word": "red",
+      "trim": 1,
+      "pan": -0.28,
+      "why": "The oar bumps the broken slot on the way out."
+    },
+    {
+      "cue": "4.red",
+      "sfx": "scrape",
+      "at": 0.02,
+      "word": "slid",
+      "dur": 0.36,
+      "trim": -3,
+      "pan": -0.17,
+      "why": "The red shaft drags across the broken edge."
+    },
+    {
+      "cue": "4.match",
+      "sfx": "plink",
+      "at": 0.46,
+      "pitch": 0.89,
+      "trim": -1,
+      "pan": 0.04,
+      "why": "One wet beat over the visual comparison, not a reveal hit."
+    },
+    {
+      "cue": "4.match",
+      "sfx": "creak",
+      "at": 1.24,
+      "dur": 0.29,
+      "trim": -3,
+      "pan": 0.21,
+      "why": "Boat seat creaks under the kid as his eye goes back to the slot."
+    },
+    {
+      "cue": "4.hand",
+      "sfx": "scrape",
+      "at": -0.04,
+      "word": "moved",
+      "dur": 0.32,
+      "trim": -1,
+      "pan": -0.18,
+      "why": "Second short shaft movement reveals the fingers."
+    },
+    {
+      "cue": "4.hand",
+      "sfx": "rustle",
+      "at": 1.13,
+      "dur": 0.29,
+      "trim": -2,
+      "pan": -0.22,
+      "why": "Dad’s sleeve rubs the splintered timber."
+    },
+    {
+      "cue": "4.dad",
+      "sfx": "creak",
+      "at": 0.23,
+      "dur": 0.28,
+      "trim": -3,
+      "pan": -0.09,
+      "why": "A little shift of dry cabin wood as he comes to the gap."
+    },
+    {
+      "cue": "4.here",
+      "sfx": "rustle",
+      "at": 0.08,
+      "word": "hand",
+      "dur": 0.44,
+      "trim": -1,
+      "why": "The kid’s wet sleeve reaches through."
+    },
+    {
+      "cue": "4.here",
+      "sfx": "place",
+      "at": -0.04,
+      "word": "grabbed",
+      "trim": -3,
+      "why": "Their hands hit the sill together as Dad grabs."
+    },
+    {
+      "cue": "5.reef",
+      "sfx": "step_wood",
+      "at": 0.04,
+      "word": "hit",
+      "trim": -1,
+      "pan": 0.32,
+      "why": "Loose teal piece on the reef taps the wreckage."
+    },
+    {
+      "cue": "5.reef",
+      "sfx": "splash",
+      "at": 1.29,
+      "dur": 0.31,
+      "trim": -5,
+      "pan": 0.22,
+      "why": "Wash around the teal boat strake."
+    },
+    {
+      "cue": "5.cabin",
+      "sfx": "plink",
+      "at": 0.43,
+      "trim": -2,
+      "pitch": 0.77,
+      "pan": -0.14,
+      "why": "A drip just below the splintered gap."
+    },
+    {
+      "cue": "5.cabin",
+      "sfx": "creak",
+      "at": 1.17,
+      "dur": 0.54,
+      "trim": -3,
+      "why": "The dry cabin settles over the water."
+    },
+    {
+      "cue": "5.beam",
+      "sfx": "creak",
+      "at": 0.34,
+      "dur": 0.39,
+      "trim": -2,
+      "pan": 0.14,
+      "why": "Weight transfers from the skiff to the roof edge."
+    },
+    {
+      "cue": "5.beam",
+      "sfx": "step_wood",
+      "at": 1.19,
+      "trim": -1,
+      "why": "Knee and hand land on the roof top."
+    },
+    {
+      "cue": "5.pull",
+      "sfx": "creak",
+      "at": 0.02,
+      "word": "pulled",
+      "dur": 0.57,
+      "trim": -1,
+      "why": "The handle strains without lifting the hatch."
+    },
+    {
+      "cue": "5.pull",
+      "sfx": "scrape",
+      "at": 0,
+      "word": "slipped",
+      "dur": 0.28,
+      "trim": -1,
+      "pan": 0.23,
+      "why": "The kid’s shoe slips sideways."
+    },
+    {
+      "cue": "5.pull",
+      "sfx": "thud",
+      "at": 0.19,
+      "word": "slipped",
+      "trim": -5,
+      "why": "His weight drops back to the roof."
+    },
+    {
+      "cue": "5.push",
+      "sfx": "creak",
+      "at": 0.06,
+      "word": "pushed",
+      "dur": 0.47,
+      "trim": -1,
+      "why": "Dad loads the hatch from beneath."
+    },
+    {
+      "cue": "5.push",
+      "sfx": "step_wood",
+      "at": 0.78,
+      "trim": -1,
+      "why": "The trapped hatch gives one short knock."
+    },
+    {
+      "cue": "5.boat",
+      "sfx": "rustle",
+      "at": 0.28,
+      "dur": 0.36,
+      "trim": -1,
+      "why": "He bends over the seat for the painted piece."
+    },
+    {
+      "cue": "5.boat",
+      "sfx": "scrape",
+      "at": -0.14,
+      "word": "half",
+      "dur": 0.41,
+      "trim": -1,
+      "pan": 0.19,
+      "why": "The red piece comes off the boat seat."
+    },
+    {
+      "cue": "5.boat",
+      "sfx": "place",
+      "at": 1.65,
+      "trim": -2,
+      "why": "Its blade taps the skiff rail as he lifts it."
+    },
+    {
+      "cue": "5.under",
+      "sfx": "scrape",
+      "at": 0.13,
+      "dur": 0.44,
+      "trim": -1,
+      "pan": -0.18,
+      "why": "The tip noses along the beam’s underside."
+    },
+    {
+      "cue": "5.under",
+      "sfx": "step_wood",
+      "at": 0.2,
+      "word": "under",
+      "trim": -1,
+      "why": "The oar seats on the square fulcrum."
+    },
+    {
+      "cue": "5.now",
+      "sfx": "creak",
+      "at": -0.22,
+      "word": "leaned",
+      "dur": 0.69,
+      "trim": -1,
+      "pan": 0.11,
+      "why": "Pressure builds at the beam from both sides."
+    },
+    {
+      "cue": "5.now",
+      "sfx": "step_wood",
+      "at": -0.05,
+      "word": "pushed",
+      "trim": -2,
+      "pan": -0.14,
+      "why": "Dad’s shoulder seats below the shutter."
+    },
+    {
+      "cue": "5.open",
+      "sfx": "scrape",
+      "at": 0.28,
+      "dur": 0.47,
+      "trim": 1,
+      "pan": 0.14,
+      "why": "Beam rotates across the deck grain."
+    },
+    {
+      "cue": "5.open",
+      "sfx": "thud",
+      "at": 0.63,
+      "trim": -1,
+      "pan": 0.32,
+      "why": "Beam lands on the safe side of the hatch."
+    },
+    {
+      "cue": "5.open",
+      "sfx": "creak",
+      "at": 1.36,
+      "dur": 0.47,
+      "trim": 1,
+      "pan": -0.19,
+      "why": "The cleared hinge finally moves."
+    },
+    {
+      "cue": "6.up",
+      "sfx": "rustle",
+      "at": 0.28,
+      "dur": 0.37,
+      "trim": -1,
+      "why": "Both arms slide against the wet boards."
+    },
+    {
+      "cue": "6.up",
+      "sfx": "place",
+      "at": -0.03,
+      "word": "grab",
+      "trim": -2,
+      "why": "The kid gets a real grip on Dad’s forearm."
+    },
+    {
+      "cue": "6.up",
+      "sfx": "step_wood",
+      "at": 2.25,
+      "trim": -1,
+      "why": "Dad’s knee catches the top edge."
+    },
+    {
+      "cue": "6.boat",
+      "sfx": "splash",
+      "at": 0.82,
+      "dur": 0.38,
+      "trim": -2,
+      "pan": 0.28,
+      "why": "The rescued Dad’s weight rocks the boat."
+    },
+    {
+      "cue": "6.boat",
+      "sfx": "creak",
+      "at": 1.29,
+      "dur": 0.38,
+      "trim": -1,
+      "why": "Dad settles against the thwart."
+    },
+    {
+      "cue": "6.chest",
+      "sfx": "whoosh_low",
+      "at": 0.38,
+      "dur": 0.46,
+      "trim": -3,
+      "pan": 0.24,
+      "why": "A receding muffled tail past the open gold chest."
+    },
+    {
+      "cue": "6.chest",
+      "sfx": "plink",
+      "at": 0.94,
+      "trim": -1,
+      "pitch": 0.84,
+      "why": "One bubble over the undisturbed chest."
+    },
+    {
+      "cue": "6.home",
+      "sfx": "creak",
+      "at": 0.3,
+      "dur": 0.38,
+      "trim": -1,
+      "why": "The fish box lid opens between Dad and the kid."
+    },
+    {
+      "cue": "6.home",
+      "sfx": "place",
+      "at": 0.65,
+      "trim": -3,
+      "why": "It comes to rest on its hinges."
+    },
+    {
+      "cue": "6.first",
+      "sfx": "rustle",
+      "at": -0.13,
+      "word": "out",
+      "dur": 0.29,
+      "trim": -2,
+      "pan": -0.1,
+      "why": "Dad’s sleeve moves over the water with the first fish."
+    },
+    {
+      "cue": "6.first",
+      "sfx": "splash",
+      "at": 0.26,
+      "dur": 0.36,
+      "trim": -3,
+      "pan": 0.22,
+      "why": "The dolphin returns beside the pier but waits."
+    },
+    {
+      "cue": "6.second",
+      "sfx": "rustle",
+      "at": -0.1,
+      "word": "reached",
+      "dur": 0.33,
+      "trim": 0.5,
+      "pan": -0.17,
+      "why": "Dad reaches back into the fish box."
+    },
+    {
+      "cue": "6.second",
+      "sfx": "place",
+      "at": 0.01,
+      "word": "took",
+      "trim": -3,
+      "pan": -0.11,
+      "why": "A second cod clears the wooden lip."
+    },
+    {
+      "cue": "6.double",
+      "sfx": "splash",
+      "at": 0.1,
+      "dur": 0.31,
+      "trim": -3,
+      "pan": 0.3,
+      "why": "The dolphin lunges toward both visible fish."
+    },
+    {
+      "cue": "6.double",
+      "sfx": "pop",
+      "at": 0.4,
+      "repeat": 2,
+      "every": 0.23,
+      "pitch": 0.79,
+      "pitchStep": 1.18,
+      "trim": -1,
+      "pan": 0.11,
+      "why": "Two bites, the second one slightly higher."
+    },
+    {
+      "cue": "6.double",
+      "sfx": "splash",
+      "at": 0.96,
+      "dur": 0.42,
+      "trim": -1,
+      "pan": 0.33,
+      "why": "It leaves the dock, paid twice."
+    }
+  ]
+}

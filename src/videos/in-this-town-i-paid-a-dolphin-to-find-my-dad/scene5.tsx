@@ -1,0 +1,90 @@
+import { storyScene } from "../../engine";
+import { cue, timing, w } from "./kit";
+import { SlotPerformance } from "./clue";
+import { RescueWork } from "./rescue";
+
+export const scene5=storyScene(timing,{
+  id:"scene5",title:"What held him in",shots:[
+    {
+      cue:"5.reef",zone:"wreck",look:"overworld-day",fov:43,ease:"linear",
+      from:w(2.63,1.36,-1.26),
+      to:w(3.42,1.33,-.79),
+      target:w(2.82,.59,1.56),
+      targetTo:w(3.91,.41,3.59),
+      note:"Look along the slot and the kid's eyeline to the teal sheer strake of Dad's little fishing boat on the reef.",
+      stage:(t)=><SlotPerformance s={cue("5.reef").start+t} mode="reef" />,
+    },
+    {
+      cue:"5.cabin",zone:"wreck",look:"overworld-day",fov:48,ease:"linear",
+      from:w(1.22,.54,-2.025),
+      to:w(1.18,.58,-1.88),
+      target:w(1.22,.68,-.38),
+      targetTo:w(1.23,.70,-.37),
+      note:"View from the dry cabin. Dad and the sea below the ripped planks are on different levels of one wreck.",
+      stage:(t)=><SlotPerformance s={cue("5.cabin").start+t} mode="cabin" />,
+    },
+    {
+      cue:"5.beam",zone:"wreck",look:"overworld-day",fov:41,ease:"linear",
+      from:w(4.43,5.18,3.5),
+      to:w(3.80,4.31,3.06),
+      target:w(.91,1.07,.89),
+      targetTo:w(.62,1.25,1.01),
+      note:"Establish the obstacle from above on the climb: the heavy timber lies across the free edge of a hinged hatch.",
+      stage:(t)=><RescueWork s={cue("5.beam").start+t} beat="beam"/>,
+    },
+    {
+      cue:"5.pull",zone:"wreck",look:"overworld-day",fov:37,
+      from:w(-1.34,2.33,-.07),
+      to:w(-1.06,2.29,.03),
+      target:w(.95,1.64,1.48),
+      targetTo:w(1.03,1.54,1.48),
+      note:"Across the wet roof. Put the handle, sliding boot and his drop in a single action; the beam stays put.",
+      stage:(t)=><RescueWork s={cue("5.pull").start+t} beat="pull"/>,
+    },
+    {
+      cue:"5.push",zone:"wreck",look:"overworld-day",fov:47,ease:"linear",
+      from:w(1.40,.42,-.48),
+      to:w(1.37,.52,-.34),
+      target:w(.31,.75,1.07),
+      targetTo:w(.32,.84,1.08),
+      note:"Reverse below the hatch: Dad pushes both hands up against the same hardware; it only rattles.",
+      stage:(t)=><RescueWork s={cue("5.push").start+t} beat="push"/>,
+    },
+    {
+      cue:"5.boat",zone:"wreck",look:"overworld-day",fov:34,ease:"linear",
+      from:w(3.15,3.49,1.64),
+      to:w(3.04,3.18,1.40),
+      target:w(2.64,.49,.14),
+      targetTo:w(2.66,.76,.34),
+      note:"Look down into the skiff at the planted half. Follow it back into the kid's hands rather than cutting past the choice.",
+      stage:(t)=><RescueWork s={cue("5.boat").start+t} beat="boat"/>,
+    },
+    {
+      cue:"5.under",zone:"wreck",look:"overworld-day",fov:43,ease:"linear",
+      from:w(-.62,2.02,-1.88),
+      to:w(-.43,1.96,-1.72),
+      target:w(1.27,1.55,-.20),
+      targetTo:w(1.17,1.49,-.15),
+      note:"At deck level, lay out beam end, wood block and oar tip so the lever can be understood with no words.",
+      stage:(t)=><RescueWork s={cue("5.under").start+t} beat="wedge"/>,
+    },
+    {
+      cue:"5.now",zone:"wreck",look:"overworld-day",fov:37,ease:"linear",
+      from:w(3.57,2.36,1.06),
+      to:w(3.17,2.26,.99),
+      target:w(1.11,1.63,-.32),
+      targetTo:w(1.13,1.49,-.32),
+      note:"The kid leans down on the painted end while Dad bears up under the hatch, pressure in opposite directions.",
+      stage:(t)=><RescueWork s={cue("5.now").start+t} beat="wedge"/>,
+    },
+    {
+      cue:"5.open",zone:"wreck",look:"overworld-day",fov:42,ease:"linear",
+      from:w(2.50,3.72,2.72),
+      to:w(2.24,3.34,2.44),
+      target:w(.84,1.45,.87),
+      targetTo:w(.48,1.55,1.00),
+      note:"Keep the freed beam and the hinge in one image: the beam rolls sideways first, then the hatch swings up.",
+      stage:(t)=><RescueWork s={cue("5.open").start+t} beat="wedge"/>,
+    },
+  ],
+});
