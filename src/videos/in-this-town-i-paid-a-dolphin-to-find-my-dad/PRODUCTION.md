@@ -2,6 +2,7 @@
 
 A fisher’s kid gives a dolphin one fish and follows it to a shipwreck, where a stripe he painted gives him a better clue than the treasure does.
 
+- **Master:** [download MP4](https://github.com/Mellow048/kmanincraftghhj22/releases/download/render-243/in-this-town-i-paid-a-dolphin-to-find-my-dad.mp4) · 74.90 s, 1080×1920, 30 fps · [export checks and remaining weaknesses](REVIEW.md).
 - **Script:** [the approved narration](narration.md), recorded as six Finn clips, with Dad quoted by the same narrator. No line was added after approval.
 - **Hook options:** [fish payment, empty berth, and underwater chest fake-out](../../../Topics/InThisTown/outlines/ideas-2026-11-18.md). The payment wins: the trade is visible in the first second, without first explaining the storm or spoiling the chest.
 - **Picture:** [measured storyboard](STORYBOARD.md), 36 shots, median 2.00 seconds. Opening cool harbor → brief warm memory → clear day at the reef → submerged turquoise → dry, shadowed cabin → warm dock. No cold open of scenery alone.
@@ -31,4 +32,4 @@ python3 scripts/sound.py build in-this-town-i-paid-a-dolphin-to-find-my-dad
 npm run typecheck && npm run check
 ```
 
-Keep the six `public/audio/.../raw` recordings. The measured timing and voice/mix shipped with the film are the locked production files. Use the **Render short** workflow at scale `1` on the production branch, not the owner’s laptop. See [the export review](REVIEW.md) for what was checked and the limits of those checks.
+For a repeatable rebuild, keep the six `public/audio/.../raw` recordings and use the PocketSphinx aligner, NumPy and FFmpeg. The narration command uses 80 ms clip gaps and a 60 ms cue lead (its defaults). The measured timing and voice/mix shipped with the film are the locked production files. Use the **Render short** workflow at scale `1` on the production branch, not the owner’s laptop. See [the export review](REVIEW.md) for what was checked and the limits of those checks.

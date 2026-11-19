@@ -81,6 +81,22 @@ def inspect_video(mp4, expected):
             "opening_motion_mean_luma_delta": round(float(np.mean(changes[:89])), 3)}
 
 
+def frame_clock(mp4, expected):
+    # The render workflow joins .mov chunks. Container ticks can round at a join;
+    # check presentation time for every frame instead of trusting an averaged fps tag.
+    data = json.loads(run([ffprobe(), "-v", "error", "-select_streams", "v:0",
+                          "-show_entries", "packet=pts_time", "-of", "json", mp4],
+                         capture_output=True).stdout)
+    pts = np.array(sorted(float(p["pts_time"]) for p in data["packets"]))
+    require(len(pts)==expected, "wrong picture packet count")
+    offset = 1000 * np.abs(pts - np.arange(expected)/30)
+    step = 1000 * np.abs(np.diff(pts) - 1/30)
+    require(np.max(step) <= 2 and np.max(offset) <= 8,
+            f"picture clock drifts {offset.max():.2f} ms, with up to {step.max():.2f} ms per frame")
+    return {"max_picture_clock_error_ms":round(float(offset.max()),3),
+            "max_frame_interval_error_ms":round(float(step.max()),3)}
+
+
 def samples(file):
     data = run([ffmpeg(), "-v", "error", "-xerror", "-i", file, "-map", "0:a:0",
                 "-ac", "1", "-ar", str(RATE), "-f", "f32le", "-"], capture_output=True).stdout
@@ -155,12 +171,13 @@ def main():
     v, a = v[0], a[0]
     require((v["codec_name"],v["width"],v["height"]) == ("h264",1080,1920), "picture format is not 1080×1920 H.264")
     require(v["pix_fmt"] in ("yuv420p", "yuvj420p"), "not a 4:2:0 picture")
-    require(Fraction(v["avg_frame_rate"]) == Fraction(v["r_frame_rate"]) == 30, "not 30 fps")
-    require(abs(float(v["duration"]) - timing["duration"]) <= 0.001, "incorrect video duration")
+    require(Fraction(v["r_frame_rate"]) == 30 and abs(float(Fraction(v["avg_frame_rate"]))-30) < .01, "not 30 fps")
+    require(abs(float(v["duration"]) - timing["duration"]) <= 0.008, "incorrect video duration")
     require(abs(float(v.get("start_time",0))) <= 0.001, "non-zero video start timestamp")
     require(a["codec_name"]=="aac" and a["channels"]==2 and int(a["sample_rate"]) in (44100,48000), "not stereo 44.1/48 kHz AAC")
     atoms = mp4_atoms(mp4)
     require(b"moov" in atoms and b"mdat" in atoms and atoms.index(b"moov") < atoms.index(b"mdat"), "MP4 is not fast-start")
+    clock = frame_clock(mp4, expected)
     picture = inspect_video(mp4, expected)
     sync = compare_mix(mp4, mix, timing)
     lufs, peak = loudness(mp4)
@@ -172,7 +189,7 @@ def main():
     print(json.dumps({"file":str(mp4),"bytes":mp4.stat().st_size,"sha256":checksum,
                       "width":v["width"],"height":v["height"],"fps":30,"seconds":float(v["duration"]),
                       "pixel_format":v["pix_fmt"],"aac_sample_rate":int(a["sample_rate"]),
-                      **picture,"aac_sync_windows":sync,"lufs":lufs,"true_peak_db":peak}, indent=2))
+                      **picture,**clock,"aac_sync_windows":sync,"lufs":lufs,"true_peak_db":peak}, indent=2))
 
 
 if __name__ == "__main__":

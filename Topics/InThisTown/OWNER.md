@@ -362,4 +362,6 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
 
 - **2026-11-18, the dolphin concept.** The owner said "sounds good go make the dolphin short" to the outline.
   The complete [script](drafts/in-this-town-i-paid-a-dolphin-to-find-my-dad/narration.md) and
-  [estimated picture board](drafts/in-this-town-i-paid-a-dolphin-to-find-my-dad/STORYBOARD.md) are ready for the script-first review.
+  [estimated picture board](drafts/in-this-town-i-paid-a-dolphin-to-find-my-dad/STORYBOARD.md) were prepared for script-first approval. The owner approved the script.
+  [Render #243 and production files](../../src/videos/in-this-town-i-paid-a-dolphin-to-find-my-dad/PRODUCTION.md) were delivered for review: 74.90 s, 1080×1920 at 30 fps.
+  Frame and encoded-audio checks passed. Owner playback feedback and Studio data are not yet available.

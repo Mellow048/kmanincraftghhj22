@@ -3,7 +3,7 @@
 The owner's own words, kept so they are not lost between sessions. Build them in this order, **one at a time**
 (the owner, 2026-11-14: "You cant split your focus, focus on 1 thing first, finish it, then head to the other"):
 
-0. **Current single pitch (2026-11-18):** [`I Paid a Dolphin to Find My Dad`](ideas-2026-11-18.md), with a fresh Monster Village frame study. [Script drafted](../drafts/in-this-town-i-paid-a-dolphin-to-find-my-dad/narration.md); not built. Earlier batch (2026-11-17): [`ideas-2026-11-17.md`](ideas-2026-11-17.md). The five of `ideas-2026-11-16.md` are built and on `main`.
+0. **Delivered for review (2026-11-18):** [`I Paid a Dolphin to Find My Dad`](ideas-2026-11-18.md), with a fresh Monster Village frame study. [Production package and MP4](../../../src/videos/in-this-town-i-paid-a-dolphin-to-find-my-dad/PRODUCTION.md). Earlier batch (2026-11-17): [`ideas-2026-11-17.md`](ideas-2026-11-17.md). The five of `ideas-2026-11-16.md` are built and on `main`.
 
 1. **Monster Village, part 3**: DELIVERED 2026-11-15 (`reference/monster-village-part-3/`). His outline: `monster-village-part-3.md`.
 2. **The race** (his outline, below): part 1 BUILT as `src/videos/in-this-town-the-fastest-kid-wins/`. The script was
