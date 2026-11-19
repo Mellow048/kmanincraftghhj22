@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salt Air — A Pelican on a Bicycle</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#172c36;padding:clamp(0px,3vw,36px)}svg{display:block;width:min(100%,960px);height:auto;box-shadow:0 14px 45px #0007}.spin{transform-box:fill-box;transform-origin:center;animation:roll 1.65s linear infinite}@keyframes roll{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" role="img" aria-labelledby="title description">
+<title id="title">Salt Air</title><desc id="description">A white pelican with a long orange bill pedals a red bicycle along the seawall under a golden sun.</desc>
+<defs>
+  <pattern id="sea" width="103" height="27" patternUnits="userSpaceOnUse"><path d="M8 8h30m19 13h38" stroke="#f9ead2" opacity=".45" stroke-width="2"/></pattern>
+  <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0v5" stroke="#602f38" opacity=".26" stroke-width="2"/></pattern>
+  <g id="wheel">
+    <circle r="82" fill="none" stroke="#23333d" stroke-width="13"/>
+    <circle r="77" fill="none" stroke="#fcdfae" stroke-width="2"/>
+    <g class="spin" stroke="#304852" stroke-width="1.7">
+      <path d="M-74 0H74M0-74V74M-52-52 52 52M52-52-52 52M-68-28 68 28M-28-68 28 68M28-68-28 68M68-28-68 28"/>
+      <path d="M-5-73h10" stroke="#bd513f" stroke-width="5"/>
+    </g>
+    <circle r="7" fill="#f1bf69" stroke="#23333d" stroke-width="3"/>
+  </g>
+</defs>
+<rect width="960" height="680" fill="#f6e4c5"/>
+<path d="M23 23h914v634H23z" fill="none" stroke="#283d44" stroke-width="2"/>
+<g font-family="system-ui,sans-serif" font-size="13" font-weight="700" letter-spacing="4" fill="#283d44">
+  <text x="52" y="64">THE COASTAL CYCLING CLUB</text><text x="908" y="64" text-anchor="end">FIELD NOTES / 01</text>
+</g>
+<text x="44" y="173" fill="#283d44" font-family="Georgia,serif" font-size="111" font-weight="bold" letter-spacing="-8">Salt Air</text>
+<circle cx="747" cy="252" r="128" fill="#efb457"/>
+<path d="M654 223q12-11 24 0 11-11 23 0m109-43q10-9 20 0 10-9 20 0" fill="none" stroke="#283d44" stroke-width="3" stroke-linecap="round"/>
+<path d="M24 351q80 5 140-9 72-20 133-3 51 11 101-4 66-15 141 4 77 20 146 4 91-19 168 1 50 8 83 0v147H24z" fill="#789d96"/>
+<path d="M24 356h912v135H24z" fill="url(#sea)"/>
+<path d="M24 486h912v123H24z" fill="#d6a986"/><path d="M24 486h912m-912 12h912m-912 111h912" stroke="#283d44" stroke-width="3"/>
+<path d="M85 527h105m-63 22h43m593-25h105m-51 32h69M87 577h108m619 0h59" stroke="#f6dfbc" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="485" cy="577" rx="274" ry="14" fill="#8e655b" opacity=".44"/>
+<!-- Bicycle: wheels, chain, frame, fork and contact points. -->
+<use href="#wheel" x="314" y="487"/><use href="#wheel" x="658" y="487"/>
+<g stroke-linecap="round" stroke-linejoin="round">
+  <path d="m315 478 143-4a15 15 0 0 1 0 30l-143-8a9 9 0 0 1 0-18z" fill="none" stroke="#283d44" stroke-width="3"/>
+  <path d="m314 487 94-108 51 110-145-2m94-108 186 0-135 110m126-132 73 130m-250-108-14-28" fill="none" stroke="#28333d" stroke-width="16"/>
+  <path d="m314 487 94-108 51 110-145-2m94-108 186 0-135 110m126-132 73 130m-250-108-14-28" fill="none" stroke="#c94f3c" stroke-width="10"/>
+  <path d="m585 357-17-39 24-16h24m-240 49h48" fill="none" stroke="#28333d" stroke-width="11"/>
+  <path d="M582 301h29" stroke="#98694c" stroke-width="9"/>
+</g>
+<!-- Rider: far foot, body and folded wing, then the near crank and webbed foot. -->
+<g stroke="#293943" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m433 340 64 54-28 64-22-4 25-58-67-36z" fill="#b17c62"/>
+  <path d="M453 447q16 1 34 12l-7 7-35-5z" fill="#c68b58"/>
+  <path d="M350 326l-65-21 41 47-23-1 47 21z" fill="#364851"/>
+  <path d="M333 328q23-36 79-40 48 0 66-35 10-20 15-50 7-43 41-58 30-14 60 7 27 17 17 48-5 20-34 29-16 5-22 38-13 72-75 100-53 25-113 8-38-12-34-47z" fill="#fff4da"/>
+  <path d="M345 347q66 21 120-9 62-33 74-83 7-29 30-54l15 21q-21 8-29 45-13 72-75 100-53 25-113 8-25-8-32-26z" fill="#e6d1b1" stroke="none"/>
+  <path d="M537 150q11-17 30-18l-8 13m-37 12q5-15 17-21" fill="none"/>
+  <path d="M592 175q56-4 106 24l78 42q-17 18-104 4-55-9-85-37-15-15 5-33z" fill="#efa467"/>
+  <path d="M594 175q46-8 110 23l72 43q-20 4-66-11-77-26-123-35z" fill="#efbe67"/>
+  <path d="M604 205q30 24 84 35 49 10 80 6" fill="none" stroke="#bc6552" stroke-width="2"/>
+  <circle cx="572" cy="172" r="10" fill="#eeb05e" stroke="none"/><circle cx="574" cy="172" r="5.7" fill="#293943" stroke="none"/><circle cx="575.5" cy="170" r="1.7" fill="#fff" stroke="none"/>
+  <path d="M501 236q20 14 56 12l-4 16q-36 1-59-11z" fill="#c54f40"/>
+  <path d="M504 250q-40 4-76-17 9 17 24 24l-28 4q41 23 78 0z" fill="#c54f40"/>
+  <path d="M374 315q40-22 93-10 60 14 111-4 18-6 22 4-8 17-39 18-70 45-129 43-44 0-66-20 29 4 51-7-38 5-55-6 12-4 28-13z" fill="#fff4da"/>
+  <path d="M388 347q50 21 129-8-48 33-90 26-24-4-39-18z" fill="url(#hatch)" stroke="none"/>
+  <path d="M427 354q57-1 112-29" fill="none" stroke="#b48e75" stroke-width="2"/>
+  <circle cx="459" cy="489" r="15" fill="#f1bf69"/>
+  <path d="m459 489-15 32h-21" fill="none" stroke-width="6"/>
+  <path d="m417 371 35 58-22 72 14 5 28-80-32-61" fill="#dc945c"/>
+  <path d="M431 493q8 10 18 12l32 9q3 5-5 7h-55q-9-8 10-28z" fill="#efb766"/>
+  <path d="m441 510 17 5m-6-8 18 7" fill="none" stroke="#b36e55" stroke-width="2"/>
+</g>
+<g fill="#283d44" font-family="system-ui,sans-serif" font-size="12" font-weight="700" letter-spacing="3">
+  <text x="52" y="638">LOW TIDE · HIGH GEAR</text><text x="908" y="638" text-anchor="end">PELICANUS / BICYCLE CLUB</text>
+</g>
+</svg>
+</html>
