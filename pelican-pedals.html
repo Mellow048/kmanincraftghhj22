@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pelican on a Bicycle</title>
+<style>
+  :root {
+    --ink: #2b2226;
+    --card: #fdf6ea;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 28px 18px 40px;
+    font-family: ui-rounded, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 700px at 50% -10%, #3b3f52 0%, #23242f 45%, #16161d 100%);
+  }
+  .frame {
+    width: min(1120px, 100%);
+    background: var(--card);
+    border-radius: 22px;
+    padding: 14px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.5) inset,
+      0 30px 60px -20px rgba(0,0,0,.75),
+      0 8px 20px -8px rgba(0,0,0,.5);
+  }
+  .frame svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    background: #ffe4c4;
+  }
+  figcaption {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 14px 8px 4px;
+    font-size: clamp(13px, 1.5vw, 16px);
+    letter-spacing: .01em;
+  }
+  figcaption strong { font-weight: 700; }
+  figcaption span { opacity: .55; font-style: italic; }
+  @media (prefers-reduced-motion: reduce) {
+    .drift, .bob, .gull { animation: none !important; }
+  }
+  /* ambient scene motion (CSS) */
+  .drift { animation: drift 46s linear infinite; }
+  .drift.slow { animation-duration: 70s; }
+  .drift.fast { animation-duration: 32s; }
+  @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-260px); } }
+  .gull { animation: gull 12s ease-in-out infinite alternate; }
+  .gull.b { animation-duration: 16s; animation-delay: -3s; }
+  @keyframes gull { from { transform: translate(0,0); } to { transform: translate(26px,-12px); } }
+  .shimmer { animation: shimmer 5s ease-in-out infinite; }
+  .shimmer.b { animation-delay: -2.2s; animation-duration: 7s; }
+  @keyframes shimmer { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
+  .boatto { animation: boat 9s ease-in-out infinite alternate; }
+  @keyframes boat { from { transform: translateY(0) rotate(-.6deg); } to { transform: translateY(3px) rotate(.6deg); } }
+</style>
+</head>
+<body>
+<figure class="frame" style="margin:0">
+  <svg id="scene" viewBox="0 0 1200 800" role="img" aria-labelledby="ttl dsc" preserveAspectRatio="xMidYMid meet">
+    <title id="ttl">A pelican riding a bicycle along a seaside promenade</title>
+    <desc id="dsc">A white pelican with a long orange beak and pouch pedals a teal bicycle along a wooden
+    boardwalk at golden hour, while the wheels turn, its legs work the pedals, and gulls drift over a calm sea.</desc>
+
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f6b98f"/>
+        <stop offset="0.42" stop-color="#ffc79c"/>
+        <stop offset="0.76" stop-color="#ffb98d"/>
+        <stop offset="1" stop-color="#ffab80"/>
+      </linearGradient>
+      <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#fff8e2" stop-opacity=".95"/>
+        <stop offset="0.45" stop-color="#ffeec2" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#ffe6b0" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7fb7bd"/>
+        <stop offset="0.35" stop-color="#4f939f"/>
+        <stop offset="1" stop-color="#336f7f"/>
+      </linearGradient>
+      <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e7b183"/>
+        <stop offset="0.4" stop-color="#dda072"/>
+        <stop offset="1" stop-color="#c08659"/>
+      </linearGradient>
+      <linearGradient id="bodyGrad" x1="0.15" y1="0" x2="0.75" y2="1">
+        <stop offset="0" stop-color="#fffaf0"/>
+        <stop offset="0.5" stop-color="#f2e5cd"/>
+        <stop offset="1" stop-color="#d8c6a7"/>
+      </linearGradient>
+      <linearGradient id="neckGrad" x1="0.2" y1="1" x2="0.7" y2="0">
+        <stop offset="0" stop-color="#eadfc8"/>
+        <stop offset="0.6" stop-color="#faf4e6"/>
+        <stop offset="1" stop-color="#fffdf7"/>
+      </linearGradient>
+      <linearGradient id="beakGrad" x1="0" y1="0" x2="1" y2="0.4">
+        <stop offset="0" stop-color="#f7c46a"/>
+        <stop offset="0.55" stop-color="#f0a844"/>
+        <stop offset="1" stop-color="#dd8226"/>
+      </linearGradient>
+      <linearGradient id="pouchGrad" x1="0.1" y1="0" x2="0.6" y2="1">
+        <stop offset="0" stop-color="#fbd693"/>
+        <stop offset="0.6" stop-color="#f2b45f"/>
+        <stop offset="1" stop-color="#de8f3c"/>
+      </linearGradient>
+      <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#3d9a92"/>
+        <stop offset="0.6" stop-color="#2a7e7b"/>
+        <stop offset="1" stop-color="#1f6261"/>
+      </linearGradient>
+      <linearGradient id="wingGrad" x1="0" y1="0" x2="0.8" y2="1">
+        <stop offset="0" stop-color="#fbf4e4"/>
+        <stop offset="0.7" stop-color="#e7dac2"/>
+        <stop offset="1" stop-color="#d3c3a6"/>
+      </linearGradient>
+      <radialGradient id="shadowGrad" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#7c4b2a" stop-opacity=".38"/>
+        <stop offset="0.65" stop-color="#7c4b2a" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#7c4b2a" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="sunDisc" cx="0.42" cy="0.38" r="0.62">
+        <stop offset="0" stop-color="#fffdf3"/>
+        <stop offset="0.7" stop-color="#ffefcd"/>
+        <stop offset="1" stop-color="#ffdfa9"/>
+      </radialGradient>
+      <radialGradient id="vignette" cx="0.5" cy="0.46" r="0.78">
+        <stop offset="0.55" stop-color="#5a2f18" stop-opacity="0"/>
+        <stop offset="1" stop-color="#5a2f18" stop-opacity=".28"/>
+      </radialGradient>
+      <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="9"/>
+      </filter>
+      <filter id="soft2" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3"/>
+      </filter>
+    </defs>
+
+    <!-- ============ SKY ============ -->
+    <rect width="1200" height="460" fill="url(#sky)"/>
+    <circle cx="952" cy="196" r="230" fill="url(#sunGlow)"/>
+    <circle cx="952" cy="196" r="74" fill="url(#sunDisc)"/>
+
+    <!-- clouds -->
+    <g fill="#fff3dd" opacity=".85">
+      <g class="drift slow">
+        <g opacity=".9">
+          <ellipse cx="180" cy="132" rx="92" ry="24"/>
+          <ellipse cx="238" cy="118" rx="58" ry="26"/>
+          <ellipse cx="122" cy="126" rx="46" ry="18"/>
+        </g>
+        <g opacity=".7" transform="translate(320 74) scale(.78)">
+          <ellipse cx="120" cy="150" rx="86" ry="20"/>
+          <ellipse cx="172" cy="138" rx="52" ry="23"/>
+        </g>
+      </g>
+      <g class="drift">
+        <g opacity=".75">
+          <ellipse cx="640" cy="86" rx="78" ry="18"/>
+          <ellipse cx="690" cy="76" rx="46" ry="20"/>
+        </g>
+        <g opacity=".55" transform="translate(400 40) scale(.9)">
+          <ellipse cx="220" cy="196" rx="70" ry="15"/>
+          <ellipse cx="262" cy="188" rx="38" ry="17"/>
+        </g>
+      </g>
+      <g class="drift fast" opacity=".5">
+        <ellipse cx="900" cy="128" rx="64" ry="14"/>
+        <ellipse cx="944" cy="120" rx="34" ry="15"/>
+      </g>
+    </g>
+
+    <!-- gulls -->
+    <g stroke="#6b5b58" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7">
+      <g class="gull"><path d="M250 232 q11 -10 22 0 q11 -10 22 0"/><path d="M300 204 q8 -7 16 0 q8 -7 16 0" stroke-width="2.4"/></g>
+      <g class="gull b"><path d="M470 168 q9 -8 18 0 q9 -8 18 0" stroke-width="2.6"/></g>
+    </g>
+
+    <!-- ============ SEA ============ -->
+    <rect y="440" width="1200" height="236" fill="url(#sea)"/>
+    <g opacity=".55" fill="#f7e7cd">
+      <rect x="0" y="440" width="1200" height="3"/>
+    </g>
+    <!-- distant land -->
+    <path d="M0 442 L0 424 C40 418 66 428 96 420 C130 411 152 424 190 418 C222 413 240 424 262 424 L262 442 Z"
+          fill="#a86f63" opacity=".38"/>
+    <path d="M1010 442 L1200 442 L1200 422 C1150 414 1110 428 1074 424 C1042 420 1024 432 1010 442 Z"
+          fill="#a86f63" opacity=".28"/>
+
+    <!-- sun path on water -->
+    <g opacity=".4" fill="#ffe9c0" filter="url(#soft2)">
+      <ellipse cx="952" cy="452" rx="46" ry="3"/>
+      <ellipse cx="946" cy="470" rx="64" ry="3" opacity=".85"/>
+      <ellipse cx="958" cy="490" rx="40" ry="2.5" opacity=".7"/>
+      <ellipse cx="938" cy="512" rx="76" ry="2.5" opacity=".5"/>
+    </g>
+
+    <!-- waves -->
+    <g stroke="#dff0ee" stroke-linecap="round" fill="none">
+      <g class="shimmer" stroke-width="2.6" opacity=".55">
+        <path d="M96 472 q16 -7 32 0 q16 7 32 0"/>
+        <path d="M300 498 q18 -8 36 0 q18 8 36 0"/>
+        <path d="M196 540 q18 -8 36 0 q18 8 36 0"/>
+        <path d="M640 486 q20 -8 40 0 q20 8 40 0"/>
+      </g>
+      <g class="shimmer b" stroke-width="2.2" opacity=".4">
+        <path d="M470 522 q16 -7 32 0 q16 7 32 0"/>
+        <path d="M780 546 q18 -8 36 0 q18 8 36 0"/>
+        <path d="M120 590 q18 -8 36 0 q18 8 36 0"/>
+        <path d="M980 520 q16 -7 32 0 q16 7 32 0"/>
+      </g>
+    </g>
+
+    <!-- little sailboat -->
+    <g class="boatto" transform="translate(168 418)">
+      <path d="M0 12 L44 12 L38 22 L8 22 Z" fill="#4a4a58" opacity=".85"/>
+      <path d="M20 12 L20 -20 L38 10 Z" fill="#fdeed2"/>
+      <path d="M17 12 L17 -14 L4 10 Z" fill="#f7dfba"/>
+      <path d="M20 -21 L20 12" stroke="#4a4a58" stroke-width="1.8" opacity=".7"/>
+    </g>
+
+    <!-- ============ BOARDWALK ============ -->
+    <rect y="688" width="1200" height="112" fill="url(#board)"/>
+    <g stroke="#b87c50" stroke-width="2" opacity=".5">
+      <path d="M0 706 H1200"/><path d="M0 726 H1200"/><path d="M0 748 H1200"/>
+      <path d="M0 770 H1200"/><path d="M0 792 H1200"/>
+    </g>
+    <g stroke="#b87c50" stroke-width="1.5" opacity=".28">
+      <path d="M118 688 V706"/><path d="M392 706 V726"/><path d="M718 688 V706"/><path d="M986 706 V726"/>
+      <path d="M70 726 V748"/><path d="M306 726 V748"/><path d="M566 748 V770"/><path d="M866 748 V770"/>
+      <path d="M426 770 V792"/><path d="M156 792 V812"/><path d="M706 770 V792"/><path d="M1046 770 V792"/>
+    </g>
+    <rect y="688" width="1200" height="6" fill="#f0c79a" opacity=".9"/>
+    <rect y="694" width="1200" height="3" fill="#a56e45" opacity=".32"/>
+
+    <!-- cast shadow under the bike -->
+    <ellipse cx="600" cy="700" rx="300" ry="24" fill="url(#shadowGrad)"/>
+
+    <!-- ============================================================
+         RIDER + BIKE
+         ============================================================ -->
+    <g id="rig" transform="translate(-123 -105) scale(1.22)">
+
+      <!-- far leg (behind the frame) -->
+      <g id="leg-far">
+        <g stroke-linecap="round" fill="none">
+          <path id="far-thigh" stroke="#bc7429" stroke-width="19"/>
+          <path id="far-shin" stroke="#bc7429" stroke-width="9"/>
+        </g>
+        <circle id="far-knee" r="8" fill="#bc7429"/>
+        <g id="far-foot">
+          <path d="M-16 0 C-6 -8, 8 -8, 18 -2 Q 31 2, 27 9 Q 15 13, 2 11 L-15 11 Z"
+                fill="#bc7429" stroke="#8f5219" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M0 9 L3 15 M11 6 L14 13" stroke="#8f5219" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </g>
+      </g>
+
+      <!-- far crank arm -->
+      <line id="far-crank" x1="556" y1="556" x2="556" y2="556" stroke="#20514f" stroke-width="7" stroke-linecap="round"/>
+      <rect id="far-pedal" x="0" y="0" width="26" height="7" rx="3" fill="#26403f"/>
+
+      <!-- WHEELS -->
+      <!-- rear wheel -->
+      <g>
+        <circle cx="400" cy="560" r="92" fill="none" stroke="#2b2b33" stroke-width="11"/>
+        <circle cx="400" cy="560" r="83" fill="none" stroke="#cfc4b0" stroke-width="3"/>
+        <g id="spokes-rear" stroke="#b9ae99" stroke-width="2.2"></g>
+        <circle cx="400" cy="560" r="9" fill="#3a3a44"/>
+        <circle cx="400" cy="560" r="3.4" fill="#cfc4b0"/>
+      </g>
+      <!-- front wheel -->
+      <g>
+        <circle cx="760" cy="560" r="92" fill="none" stroke="#2b2b33" stroke-width="11"/>
+        <circle cx="760" cy="560" r="83" fill="none" stroke="#cfc4b0" stroke-width="3"/>
+        <g id="spokes-front" stroke="#b9ae99" stroke-width="2.2"></g>
+        <circle cx="760" cy="560" r="9" fill="#3a3a44"/>
+        <circle cx="760" cy="560" r="3.4" fill="#cfc4b0"/>
+      </g>
+
+      <!-- fenders -->
+      <path d="M310 508 A 104 104 0 0 1 490 508" fill="none" stroke="#f3e7d2" stroke-width="8" stroke-linecap="round"/>
+      <path d="M670 508 A 104 104 0 0 1 850 508" fill="none" stroke="#f3e7d2" stroke-width="8" stroke-linecap="round"/>
+
+      <!-- chain -->
+      <path d="M556 530 L400 547 A 13 13 0 0 0 400 573 L556 582 A 26 26 0 0 0 556 530 Z"
+            fill="none" stroke="#4b4a54" stroke-width="4" stroke-linejoin="round"/>
+      <!-- rear cog -->
+      <circle cx="400" cy="560" r="13" fill="#3a3a44"/>
+      <circle cx="400" cy="560" r="13" fill="none" stroke="#6b6a76" stroke-width="3" stroke-dasharray="3 3"/>
+
+      <!-- FRAME -->
+      <g fill="none" stroke="url(#frameGrad)" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M556 556 L400 560" stroke-width="11"/>                <!-- chainstay -->
+        <path d="M400 560 L496 432" stroke-width="9"/>                 <!-- seat stay -->
+        <path d="M556 556 L496 432" stroke-width="12"/>                <!-- seat tube -->
+        <path d="M496 432 L716 442" stroke-width="11"/>                <!-- top tube -->
+        <path d="M556 556 L730 486" stroke-width="13"/>                <!-- down tube -->
+        <path d="M716 442 L730 486" stroke-width="14"/>                <!-- head tube -->
+      </g>
+      <!-- fork -->
+      <path d="M730 486 C 744 512, 752 536, 760 558" fill="none" stroke="#2f8681" stroke-width="8" stroke-linecap="round"/>
+      <!-- seat post + saddle -->
+      <path d="M496 432 L487 416" stroke="#3a3a44" stroke-width="7" stroke-linecap="round"/>
+      <path d="M446 416 C 464 402, 506 398, 536 406 C 546 409, 542 419, 528 420 L 456 426 C 444 426, 438 421, 446 416 Z"
+            fill="#7a4f3c"/>
+      <path d="M452 413 C 468 404, 496 402, 512 408" fill="none" stroke="#9c6b52" stroke-width="3" opacity=".8"/>
+      <!-- stem + handlebar -->
+      <path d="M716 442 L704 424" stroke="#3a3a44" stroke-width="7" stroke-linecap="round"/>
+      <path d="M704 424 C 694 410, 678 404, 666 410"
+            fill="none" stroke="#2f8681" stroke-width="7" stroke-linecap="round"/>
+      <path d="M664 408 L 656 402" stroke="#2b2b33" stroke-width="11" stroke-linecap="round"/>
+      <!-- headlight -->
+      <circle cx="738" cy="470" r="7" fill="#ffe9b0" stroke="#2b2b33" stroke-width="2.5"/>
+      <!-- chainring -->
+      <circle cx="556" cy="556" r="26" fill="#cfc4b0" stroke="#8d8474" stroke-width="3"/>
+      <circle cx="556" cy="556" r="26" fill="none" stroke="#5d5a54" stroke-width="4" stroke-dasharray="3 4"/>
+      <circle cx="556" cy="556" r="6" fill="#3a3a44"/>
+
+      <!-- PELICAN -->
+      <g id="rider">
+        <!-- tail feathers sweeping back over the rear wheel -->
+        <g stroke="#cbb99b" stroke-width="1.6" stroke-linejoin="round">
+          <path d="M490 332 C 458 314, 426 304, 396 308 C 410 328, 438 348, 468 358 Z" fill="#f6efdf"/>
+          <path d="M492 346 C 458 334, 424 330, 392 336 C 410 356, 442 370, 472 370 Z" fill="#efe3cc"/>
+          <path d="M492 360 C 460 356, 430 358, 400 368 C 420 384, 452 390, 478 380 Z" fill="#e4d4b8"/>
+          <g fill="#463e3d" opacity=".82">
+            <path d="M396 308 C 406 322, 416 330, 428 336 C 416 330, 406 320, 400 310 Z"/>
+            <path d="M392 336 C 404 350, 414 358, 426 362 C 414 356, 402 346, 396 338 Z"/>
+            <path d="M400 368 C 412 380, 422 384, 432 386 C 420 380, 410 372, 404 370 Z"/>
+          </g>
+        </g>
+
+        <!-- NECK: thick S-curve up from the shoulders to the head -->
+        <path d="M578 336 C 552 288, 572 238, 608 214" fill="none"
+              stroke="url(#neckGrad)" stroke-width="53" stroke-linecap="round"/>
+        <!-- neck shading down the back of it -->
+        <path d="M566 300 C 552 274, 562 246, 586 228" fill="none"
+              stroke="#dfd2b9" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+        <path d="M584 296 C 574 272, 586 248, 608 232" fill="none"
+              stroke="#fffdf6" stroke-width="9" stroke-linecap="round" opacity=".7"/>
+
+        <!-- HEAD -->
+        <g id="head">
+          <circle cx="646" cy="199" r="35" fill="url(#neckGrad)" stroke="#d5c6ac" stroke-width="2"/>
+          <!-- crest feathers -->
+          <g stroke="#d6c8ac" stroke-width="5" stroke-linecap="round" fill="none">
+            <path d="M624 180 C 616 174, 610 172, 604 173"/>
+            <path d="M622 192 C 614 188, 608 188, 602 190"/>
+            <path d="M630 170 C 626 164, 621 160, 615 159"/>
+          </g>
+          <!-- cheek line -->
+          <path d="M620 214 C 632 228, 652 230, 665 220" fill="none" stroke="#e7dbc3" stroke-width="4" stroke-linecap="round"/>
+          <!-- rim light from the low sun -->
+          <path d="M666 172 C 682 178, 688 190, 684 202" fill="none" stroke="#ffe2b4" stroke-width="3.4" opacity=".85" stroke-linecap="round"/>
+
+          <!-- gular pouch (lower mandible skin), hanging low -->
+          <path d="M668 206 C 664 244, 682 276, 716 282
+                   C 752 288, 786 266, 806 232
+                   C 812 226, 818 220, 812 214
+                   C 794 234, 768 248, 738 246
+                   C 704 244, 678 228, 668 206 Z"
+                fill="url(#pouchGrad)" stroke="#cb8330" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M676 224 C 694 254, 722 268, 750 266" fill="none" stroke="#e9ab60" stroke-width="2.8" opacity=".8" stroke-linecap="round"/>
+          <path d="M686 240 C 704 260, 728 268, 750 266" fill="none" stroke="#d68f37" stroke-width="1.7" opacity=".45" stroke-linecap="round"/>
+          <path d="M700 262 C 714 272, 732 276, 746 274" fill="none" stroke="#e5a55c" stroke-width="2" opacity=".45" stroke-linecap="round"/>
+
+          <!-- the catch of the day, tail-first in the pouch -->
+          <g transform="translate(748 240) rotate(-16)">
+            <path d="M-26 4 C -12 -2, 8 -4, 20 2 C 24 4, 24 10, 20 12
+                     C 6 18, -12 16, -26 10 Z"
+                  fill="#9dc0c6" stroke="#4a707c" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 3 C 12 6, 12 9, 10 11" fill="none" stroke="#4a707c" stroke-width="1.2" opacity=".7"/>
+            <path d="M-24 7 L -34 -2 L -31 7 L -36 16 Z" fill="#8bb2ba" stroke="#4a707c" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-6 -1 C -2 -8, 4 -9, 8 -5 C 4 -4, 0 -2, -4 1 Z" fill="#b9d5d9" stroke="#4a707c" stroke-width="1.1"/>
+            <circle cx="16" cy="5" r="1.8" fill="#2f4a52"/>
+          </g>
+
+          <!-- upper mandible -->
+          <path d="M664 182 C 700 174, 766 190, 810 202
+                   C 820 205, 826 214, 818 220
+                   C 812 224, 804 220, 798 216
+                   C 760 204, 700 200, 664 202 Z"
+                fill="url(#beakGrad)" stroke="#c1731d" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M676 190 C 710 184, 762 196, 800 207" fill="none" stroke="#ffe3ab" stroke-width="2.8" opacity=".9" stroke-linecap="round"/>
+          <ellipse cx="690" cy="194" rx="4.6" ry="2.3" fill="#a95f18" opacity=".6"/>
+          <!-- hooked tip -->
+          <path d="M810 202 C 822 205, 828 214, 818 222" fill="none" stroke="#b0661a" stroke-width="3.4" stroke-linecap="round"/>
+
+          <!-- eye -->
+          <circle cx="651" cy="194" r="9.6" fill="#fdf7ea"/>
+          <circle cx="652" cy="194" r="6.4" fill="#2f2622"/>
+          <circle cx="649.4" cy="191.4" r="2.2" fill="#fffdf6"/>
+          <path d="M639 181 C 645 178, 654 179, 659 184" fill="none" stroke="#cdbb9c" stroke-width="2.8" stroke-linecap="round"/>
+        </g>
+
+        <!-- TORSO: seated on the saddle, breast forward, tail low at the back -->
+        <path id="torso" d="M456 338 C 448 296, 478 262, 522 258
+                 C 560 254, 590 282, 592 318 C 594 344, 582 368, 562 384
+                 C 540 402, 508 410, 486 398 C 464 386, 452 366, 456 338 Z"
+              fill="url(#bodyGrad)" stroke="#d7c8ae" stroke-width="2"/>
+        <path d="M512 268 C 546 254, 574 268, 588 294 C 596 308, 598 324, 596 338"
+              fill="none" stroke="#ffe2b4" stroke-width="4.5" opacity=".65" stroke-linecap="round"/>
+        <path d="M586 344 C 592 360, 588 376, 578 386"
+              fill="none" stroke="#ffe2b4" stroke-width="4" opacity=".5" stroke-linecap="round"/>
+        <!-- pale upper back -->
+        <path d="M466 338 C 458 302, 486 274, 522 268 C 548 264, 570 276, 580 296
+                 C 562 278, 530 274, 504 286 C 482 296, 470 316, 466 338 Z"
+              fill="#fffdf6" opacity=".7"/>
+        <!-- breast shading -->
+        <path d="M552 386 C 574 372, 587 348, 588 324 C 594 352, 578 388, 552 396 Z" fill="#ddcdb1" opacity=".75"/>
+        <path d="M562 296 C 583 300, 590 330, 584 356 C 580 372, 568 386, 556 392"
+              fill="none" stroke="#ffe6bd" stroke-width="3" opacity=".55" stroke-linecap="round"/>
+        <!-- hip / thigh covert feathers -->
+        <g fill="#efe4ce" stroke="#d3c2a4" stroke-width="1.3" stroke-linejoin="round">
+          <path d="M488 388 C 506 400, 530 404, 552 396 C 540 410, 512 414, 496 406 Z"/>
+          <path d="M516 398 C 534 406, 554 406, 570 398 C 558 410, 534 412, 518 406 Z" fill="#e6d8bd"/>
+        </g>
+
+        <!-- scapular feathers: the folded wing simplified to a few soft rows -->
+        <g>
+          <path d="M498 300 C 522 284, 552 292, 566 312 C 556 322, 532 326, 512 320 Z"
+                fill="#f2e8d3" stroke="#d3c3a4" stroke-width="1.6" stroke-linejoin="round" opacity=".9"/>
+          <g fill="none" stroke="#c8b592" stroke-width="2" stroke-linecap="round" opacity=".7">
+            <path d="M496 326 C 514 314, 540 318, 556 332"/>
+            <path d="M494 344 C 510 334, 532 336, 546 348"/>
+            <path d="M496 360 C 510 352, 528 354, 540 362"/>
+          </g>
+          <path d="M534 366 C 548 368, 558 360, 562 348 C 556 360, 544 366, 530 364 Z"
+                fill="#4a423f" opacity=".45"/>
+        </g>
+
+        <!-- near wing: tapered arm from shoulder to grip, primaries closed on the bar -->
+        <g id="wing-near">
+          <path d="M556 292 C 580 288, 600 306, 610 330
+                   C 620 356, 634 378, 650 392
+                   C 658 400, 654 410, 644 404
+                   C 620 390, 596 364, 578 336
+                   C 564 314, 548 300, 556 292 Z"
+                fill="url(#wingGrad)" stroke="#c3b08d" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M564 296 C 584 296, 598 310, 606 330" fill="none" stroke="#fdf7e8" stroke-width="2.6" opacity=".95" stroke-linecap="round"/>
+          <path d="M592 322 C 608 348, 626 374, 640 390" fill="none" stroke="#c0ad8a" stroke-width="1.6" opacity=".45" stroke-linecap="round"/>
+          <!-- three primaries curling round the grip -->
+          <g fill="#e3d5b8" stroke="#bda98a" stroke-width="1.4" stroke-linejoin="round">
+            <path d="M638 388 C 652 392, 662 400, 664 408 C 665 416, 655 417, 648 410 C 643 404, 638 396, 636 391 Z"/>
+            <path d="M630 384 C 644 390, 654 398, 656 406 C 657 414, 647 414, 640 406 C 636 401, 631 390, 629 386 Z" fill="#d9c9a9"/>
+          </g>
+          <path d="M640 398 C 646 404, 651 409, 652 413" fill="none" stroke="#b0a07c" stroke-width="1.6" opacity=".8"/>
+        </g>
+        <!-- the grip sits over the wing so the toes read as closed around it -->
+        <path d="M664 407 L 656 401" stroke="#2b2b33" stroke-width="11" stroke-linecap="round"/>
+        <path d="M660 405 L 656 402" stroke="#4a4a54" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+      </g>
+
+      <!-- near crank + pedal, tucked under the webbed foot -->
+      <line id="near-crank" x1="556" y1="556" x2="556" y2="556" stroke="#2f8681" stroke-width="8" stroke-linecap="round"/>
+      <rect id="near-pedal" x="0" y="0" width="30" height="8" rx="3.5" fill="#2f3f3f"/>
+
+      <!-- NEAR LEG (over the frame) -->
+      <g id="leg-near">
+        <g stroke-linecap="round" fill="none">
+          <path id="near-thigh" stroke="#e0913a" stroke-width="18"/>
+          <path id="near-shin" stroke="#e8a14a" stroke-width="9.5"/>
+        </g>
+        <circle id="near-knee" r="9.5" fill="#e8a14a"/>
+        <g id="near-foot">
+          <path d="M-17 0 C-6 -8, 8 -8, 18 -2 Q 32 2, 28 9 Q 15 13, 2 11 L-15 11 Z"
+                fill="#eb9f47" stroke="#c07b2f" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M0 9 L3 16 M11 6 L14 14" stroke="#c07b2f" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </g>
+      </g>
+
+    </g>
+
+    <!-- foreground grass (depth cue) -->
+    <g stroke="#4c6b45" stroke-linecap="round" fill="none" opacity=".8">
+      <path d="M28 800 C 36 770, 48 752, 68 738" stroke-width="6"/>
+      <path d="M54 800 C 54 774, 58 760, 72 748" stroke-width="4.5"/>
+      <path d="M78 800 C 82 778, 92 764, 108 754" stroke-width="5"/>
+      <path d="M6 800 C 8 784, 14 772, 26 764" stroke-width="3.5"/>
+    </g>
+    <g stroke="#5f8054" stroke-linecap="round" fill="none" opacity=".65">
+      <path d="M1108 800 C 1114 774, 1126 760, 1146 748" stroke-width="6"/>
+      <path d="M1140 800 C 1142 780, 1150 768, 1166 760" stroke-width="4.5"/>
+      <path d="M1176 800 C 1180 782, 1190 772, 1206 766" stroke-width="5"/>
+    </g>
+
+    <!-- warm vignette -->
+    <rect width="1200" height="800" fill="url(#vignette)" pointer-events="none"/>
+  </svg>
+
+  <figcaption>
+    <strong>Pelican on a Bicycle</strong>
+    <span>hand-built SVG &middot; wheels, cranks and pedal strokes are driven by live inverse kinematics &middot; prefers-reduced-motion respected</span>
+  </figcaption>
+</figure>
+
+<script>
+(function () {
+  "use strict";
+
+  // tiny rAF fallback so the still frame always paints, even in odd embeds
+  var raf = window.requestAnimationFrame
+    ? window.requestAnimationFrame.bind(window)
+    : function (cb) { return setTimeout(function () { cb(Date.now()); }, 16); };
+
+  var nowMs = window.performance && window.performance.now
+    ? function () { return performance.now(); }
+    : function () { return Date.now(); };
+
+  var NS = "http://www.w3.org/2000/svg";
+  var root = document.getElementById("scene");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------- wheels ---------------- */
+  function buildSpokes(id, cx, cy) {
+    var g = document.getElementById(id);
+    for (var i = 0; i < 14; i++) {
+      var a = (i / 14) * Math.PI * 2;
+      var line = document.createElementNS(NS, "line");
+      line.setAttribute("x1", (cx + Math.cos(a) * 8).toFixed(2));
+      line.setAttribute("y1", (cy + Math.sin(a) * 8).toFixed(2));
+      line.setAttribute("x2", (cx + Math.cos(a) * 80).toFixed(2));
+      line.setAttribute("y2", (cy + Math.sin(a) * 80).toFixed(2));
+      g.appendChild(line);
+    }
+    return g;
+  }
+  var spokesRear = buildSpokes("spokes-rear", 400, 560);
+  var spokesFront = buildSpokes("spokes-front", 760, 560);
+
+  /* ---------------- rig math ---------------- */
+  var BB = { x: 556, y: 556 };
+  var rider = document.getElementById("rider");
+  var CRANK = 29;
+
+  var legs = [
+    { hip: { x: 516, y: 392 }, L1: 100, L2: 104, offset: 0,
+      thigh: "near-thigh", shin: "near-shin", knee: "near-knee", foot: "near-foot",
+      crank: "near-crank", pedal: "near-pedal", footScale: 1 },
+    { hip: { x: 506, y: 384 }, L1: 98, L2: 102, offset: Math.PI,
+      thigh: "far-thigh", shin: "far-shin", knee: "far-knee", foot: "far-foot",
+      crank: "far-crank", pedal: "far-pedal", footScale: 0.96 }
+  ];
+  legs.forEach(function (l) {
+    l.el = {
+      thigh: document.getElementById(l.thigh),
+      shin: document.getElementById(l.shin),
+      knee: document.getElementById(l.knee),
+      foot: document.getElementById(l.foot),
+      crank: document.getElementById(l.crank),
+      pedal: document.getElementById(l.pedal)
+    };
+  });
+
+  function setLine(el, a, b) {
+    el.setAttribute("x1", a.x.toFixed(1));
+    el.setAttribute("y1", a.y.toFixed(1));
+    el.setAttribute("x2", b.x.toFixed(1));
+    el.setAttribute("y2", b.y.toFixed(1));
+  }
+
+  // two-bone IK; returns the knee position (picking the forward-bending solution)
+  function solveKnee(hip, target, L1, L2) {
+    var dx = target.x - hip.x, dy = target.y - hip.y;
+    var d = Math.hypot(dx, dy) || 0.0001;
+    var maxD = L1 + L2 - 0.6;
+    if (d > maxD) { var k = maxD / d; dx *= k; dy *= k; d = maxD; }
+    var ux = dx / d, uy = dy / d;
+    var a = (L1 * L1 - L2 * L2 + d * d) / (2 * d);
+    var h = Math.sqrt(Math.max(0, L1 * L1 - a * a));
+    var mx = hip.x + ux * a, my = hip.y + uy * a;
+    var px = -uy, py = ux;
+    var k1 = { x: mx + px * h, y: my + py * h };
+    var k2 = { x: mx - px * h, y: my - py * h };
+    // knee sits forward (to the right) of the hip→pedal line
+    return k1.x >= k2.x ? k1 : k2;
+  }
+
+  var wheelDeg = 0, crankDeg = 0, last = nowMs();
+
+  function place(el, x, y, deg, scale) {
+    el.setAttribute("transform",
+      "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") rotate(" + deg.toFixed(1) + ")" +
+      (scale && scale !== 1 ? " scale(" + scale + ")" : ""));
+  }
+
+  function draw(now) {
+    var theta = (crankDeg * Math.PI) / 180;
+
+    // spinning wheels
+    var w = wheelDeg.toFixed(1);
+    spokesRear.setAttribute("transform", "rotate(" + w + " 400 560)");
+    spokesFront.setAttribute("transform", "rotate(" + w + " 760 560)");
+
+    // body bob: two dips per crank revolution
+    rider.setAttribute("transform", "translate(0 " + (Math.sin(theta * 2) * 2.2).toFixed(2) + ")");
+
+    legs.forEach(function (l) {
+      var ang = theta + l.offset;
+      var pedal = {
+        x: BB.x + Math.cos(ang) * CRANK,
+        y: BB.y + Math.sin(ang) * CRANK
+      };
+      // crank arm
+      setLine(l.el.crank, BB, pedal);
+      // pedal platform (stays roughly flat)
+      l.el.pedal.setAttribute("x", (pedal.x - 14).toFixed(1));
+      l.el.pedal.setAttribute("y", (pedal.y - 3.5).toFixed(1));
+
+      var ankle = { x: pedal.x, y: pedal.y - 9 };
+      var knee = solveKnee(l.hip, ankle, l.L1, l.L2);
+
+      // thigh: a slight bow so it reads as flesh, not a stick
+      var midx = (l.hip.x + knee.x) / 2, midy = (l.hip.y + knee.y) / 2;
+      var bowx = midx + (knee.y - l.hip.y) * 0.10;
+      var bowy = midy - (knee.x - l.hip.x) * 0.10;
+      l.el.thigh.setAttribute("d",
+        "M" + l.hip.x + " " + l.hip.y + " Q" + bowx.toFixed(1) + " " + bowy.toFixed(1) +
+        " " + knee.x.toFixed(1) + " " + knee.y.toFixed(1));
+
+      var kmx = (knee.x + ankle.x) / 2, kmy = (knee.y + ankle.y) / 2;
+      var sbx = kmx + (ankle.y - knee.y) * 0.07;
+      var sby = kmy - (ankle.x - knee.x) * 0.07;
+      l.el.shin.setAttribute("d",
+        "M" + knee.x.toFixed(1) + " " + knee.y.toFixed(1) + " Q" + sbx.toFixed(1) + " " + sby.toFixed(1) +
+        " " + ankle.x.toFixed(1) + " " + ankle.y.toFixed(1));
+
+      l.el.knee.setAttribute("cx", knee.x.toFixed(1));
+      l.el.knee.setAttribute("cy", knee.y.toFixed(1));
+
+      // foot follows the pedal, heel dipping a touch as the crank comes over the top
+      var footTilt = -6 + Math.sin(ang) * 10;
+      place(l.el.foot, pedal.x, pedal.y - 4, footTilt, l.footScale);
+    });
+  }
+
+  function tick(now) {
+    var dt = Math.min(64, now - last) / 1000;
+    last = now;
+    wheelDeg = (wheelDeg + 300 * dt) % 360;   // ~0.83 rev/s at r=92
+    crankDeg = (crankDeg + 170 * dt) % 360;   // steady pedalling cadence
+    draw(now);
+    raf(tick);
+  }
+
+  // Initial layout (also the still frame, if motion is reduced or JS is paused)
+  draw(nowMs());
+  if (reduce) {
+    // settle on a strong pedalling pose and hold it
+    crankDeg = 34;
+    wheelDeg = 12;
+    draw(nowMs());
+  } else {
+    raf(tick);
+  }
+})();
+</script>
+</body>
+</html>
