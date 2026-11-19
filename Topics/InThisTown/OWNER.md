@@ -359,3 +359,7 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
   and 0:39 average view duration on an unnamed 1:18 Short. His latest Monster Village Part 1 benchmark is ~18k views
   and 83% stayed to watch. Study that cut again and pitch one idea. The [study and pitch](outlines/ideas-2026-11-18.md)
   keep the opening and mid-story checks separate; the owner did not supply the recent Short’s retention curve.
+
+- **2026-11-18, the dolphin concept.** The owner said "sounds good go make the dolphin short" to the outline.
+  The complete [script](drafts/in-this-town-i-paid-a-dolphin-to-find-my-dad/narration.md) and
+  [estimated picture board](drafts/in-this-town-i-paid-a-dolphin-to-find-my-dad/STORYBOARD.md) are ready for the script-first review.
