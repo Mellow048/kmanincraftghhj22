@@ -1,0 +1,110 @@
+{
+  "tool": "scripts/sound.py v2",
+  "film": "why-did-dream-and-technoblade-split-the-prize",
+  "mix": "public/audio/why-did-dream-and-technoblade-split-the-prize/mix.mp3",
+  "seconds": 70.7667,
+  "built_from": {
+    "timing.json": "bbdc19fe53aaa5af35369d476ac062db0971eb50",
+    "sound.json": "68736a483ab43b319e7701f9898288a3d3c743a5",
+    "narration.mp3": "60d80c3cbd57f272ae3ca5e7607ba2b50b4a77ef"
+  },
+  "mix_sha1": "1c5c72aa905ec5ae6f7a8176a0263be44715470d",
+  "music_sections": [
+    {
+      "from": "1.question",
+      "mood": "curious",
+      "at": 0.0
+    },
+    {
+      "from": "2.event",
+      "mood": "explain",
+      "at": 4.9
+    },
+    {
+      "from": "5.tie",
+      "mood": "tense",
+      "at": 31.1
+    },
+    {
+      "from": "6.agreement",
+      "mood": "hope",
+      "at": 47.13
+    }
+  ],
+  "sample_files": {
+    "Topics/SoundEffects/swoosh-sound-effects.mp3": "f70adee452c4eda520bfcc3446e166cbbbcac5ae",
+    "Topics/SoundEffects/pop-sound-effect_AsEdnw2.mp3": "29099dd3ac86d3b467fa0f6484558a51cea31575",
+    "Topics/SoundEffects/proper-ding_IbfMQYw.mp3": "7c4d50daa064ce6a1ce3aeb082fc6ebe1df727a2",
+    "Topics/SoundEffects/kaching-sound-fx.mp3": "ea4ff6e893fa9850b61c90bd38773e668dc588ef",
+    "Topics/SoundEffects/ta-da_yrvBrlS.mp3": "fe256ac6a10f3cb0edbd93f797676a5d9262a22a"
+  },
+  "beds": 1,
+  "measured": {
+    "musicUnderVoiceDb": 20.7,
+    "secondsWithoutMusic": 0.1,
+    "bedsUnderVoiceDb": 28.0,
+    "sfx": 56,
+    "sfxPerMinute": 47.5,
+    "sfxKinds": 39,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 67.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 18.8,
+    "voiceOverRestWorstDb": 10.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 10.4,
+        "t": 13.4,
+        "cue": "3.home",
+        "sounding": [
+          "thud"
+        ]
+      },
+      {
+        "db": 10.5,
+        "t": 61.0,
+        "cue": "7.recap",
+        "sounding": [
+          "count"
+        ]
+      },
+      {
+        "db": 11.4,
+        "t": 30.7,
+        "cue": "5.rule",
+        "sounding": [
+          "clank"
+        ]
+      },
+      {
+        "db": 12.4,
+        "t": 42.7,
+        "cue": "5.finish",
+        "sounding": [
+          "sampled-prize-flight",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 13.3,
+        "t": 42.0,
+        "cue": "5.finish",
+        "sounding": [
+          "sampled-final-score-ding",
+          "sparkle",
+          "stamp"
+        ]
+      },
+      {
+        "db": 13.4,
+        "t": 68.6,
+        "cue": "7.subscribe",
+        "sounding": []
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -3.1,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}

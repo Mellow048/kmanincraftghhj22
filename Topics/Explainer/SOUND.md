@@ -40,7 +40,13 @@ Change the music on the line where the explanation changes direction, not on a r
 
 ## Effects: the sounds of money and of numbers
 
-These were added for this topic. `python3 scripts/sound.py list` has all of them, with the story sounds.
+These were added for this topic. `python3 scripts/sound.py list` has all of them, with the story sounds. When a film has an owner-supplied sound file, the same sheet can place it on a cue or word; repository-relative files are supported and their hashes are locked with the mix. Example:
+
+```json
+{ "cue": "5.finish", "word": "six-four", "file": "Topics/SoundEffects/proper-ding_IbfMQYw.mp3", "name": "score-ding", "gain": -13, "why": "A small, sampled score confirmation." }
+```
+
+Use only samples that suit the pictured action; a sample must not imply an unverified live crowd reaction or an event that did not happen.
 
 | On screen | Effect |
 |---|---|

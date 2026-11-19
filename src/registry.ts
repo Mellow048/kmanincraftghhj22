@@ -34,6 +34,7 @@ import { film as theBarberWhoNeverWentToParties } from "./videos/the-barber-who-
 import { film as stillRushingTheThirdOne } from "./videos/still-rushing-the-third-one/film";
 import { film as thatsMeTheElbow } from "./videos/thats-me-the-elbow/film";
 import { film as theOneTripGroceryRun } from "./videos/the-one-trip-grocery-run/film";
+import { film as whyDidDreamAndTechnobladeSplitThePrize } from "./videos/why-did-dream-and-technoblade-split-the-prize/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -76,4 +77,5 @@ export const FILMS = [
   stillRushingTheThirdOne,
   thatsMeTheElbow,
   theOneTripGroceryRun,
+  whyDidDreamAndTechnobladeSplitThePrize,
 ];
