@@ -1,4 +1,5 @@
 import { defineFilm } from "../../engine";
+import { staticShaderSettings } from "../../engine/shaders";
 import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
@@ -16,7 +17,7 @@ export const film = defineFilm({
   cut: "short",
   look: "overworld-day",
   // Same topic shader chain; restrained glare so fish, hands and the dry cabin stay legible.
-  post: { exposure: 1.0, bloom: 0.84, shaders: { shafts: 0.035 } },
+  post: { exposure: 1.0, bloom: 0.84, shaders: staticShaderSettings({ shafts: 0.035 }) },
   audio: { src: "audio/in-this-town-i-paid-a-dolphin-to-find-my-dad/mix.mp3" },
   captions: { words: timing.words, y: 0.755, size: 0.91 },
   World,

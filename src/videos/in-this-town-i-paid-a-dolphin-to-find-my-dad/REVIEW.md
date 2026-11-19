@@ -12,6 +12,8 @@
 
 `npm run typecheck`, `npm run check`, and `python3 scripts/sound.py check in-this-town-i-paid-a-dolphin-to-find-my-dad` passed. To repeat the encoded-file checks, run `python3 src/videos/in-this-town-i-paid-a-dolphin-to-find-my-dad/check_export.py` from the repository root (requires NumPy and FFmpeg/ffprobe). The [timing](timing.json) was built from the recordings, not estimated.
 
+**Source compatibility.** Composer reuse is now opt-in for this film only. At 270×480, all 29 Dolphin stills matched the render-source shader path pixel for pixel, and all 29 sampled stills from the three legacy films with custom shader settings matched their original path. No export was re-encoded.
+
 ## Stage 6 — story and picture
 
 Read against [the owner's master prompt](../../../Topics/InThisTown/MASTERPROMPT.md), not against an assumed retention target. I used three passes of contact frames, then stepped through 141 frames of the locked picture without captions or sound at the payment, treasure, stripe, lift and two-fish beats. I also inspected 83 frames decoded from the verified MP4, including a frame from every shot and frames immediately before and after key contacts. These are frame and signal checks, not a continuous watch or listen.

@@ -410,11 +410,21 @@ export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   shafts: 0.3,
 };
 
+const staticProfiles = new WeakMap<ShaderSettings, Required<ShaderSettings>>();
+
+/** Reuse the composer across frames with an immutable shader profile.
+ * Plain settings keep their original resolution path for existing films. */
+export function staticShaderSettings(settings: ShaderSettings): ShaderSettings {
+  const profile = Object.freeze({ ...settings });
+  staticProfiles.set(profile, { ...DEFAULT_SHADERS, ...profile });
+  return profile;
+}
+
 const resolve = (s?: ShaderSettings | boolean): Required<ShaderSettings> | null => {
   if (!s) return null;
   if (s === true) return DEFAULT_SHADERS;
   if (s.enabled === false) return null;
-  return { ...DEFAULT_SHADERS, ...s };
+  return staticProfiles.get(s) ?? { ...DEFAULT_SHADERS, ...s };
 };
 
 /** Where the sun is on screen this frame, and whether it is worth drawing shafts for. */
@@ -452,7 +462,7 @@ export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ sett
   const scene = useThree((s) => s.scene);
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
-  const cfg = useMemo(() => resolve(settings), [settings]);
+  const cfg = resolve(settings);
   const sunOnScreen = useSunOnScreen();
 
   const rig = useMemo(() => {
