@@ -354,3 +354,8 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
      before that, with a flat sky. A new render of any of them will not match its mp4 until somebody has looked.
 
 - **2026-11-18, Dishwasher Training Arc.** The owner accepted Finn’s speaking-face correction in render #239. Keep that approved export; the fix was to the face animation, not a recut or a new voice.
+
+- **2026-11-18, the next In This Town idea.** The owner reported ~1.2k views, 648 engaged, 66.5% stayed to watch,
+  and 0:39 average view duration on an unnamed 1:18 Short. His latest Monster Village Part 1 benchmark is ~18k views
+  and 83% stayed to watch. Study that cut again and pitch one idea. The [study and pitch](outlines/ideas-2026-11-18.md)
+  keep the opening and mid-story checks separate; the owner did not supply the recent Short’s retention curve.
