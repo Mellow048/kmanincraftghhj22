@@ -21,6 +21,7 @@ export const Exhibit1: React.FC = () => {
   const finish = cueAfter("5.finish");
   const agreed = cueAfter("6.agreement");
   const callback = cueAfter("7.callback");
+  const winner = cueAfter("7.winner");
 
   const score = finish >= 0 ? "6-4" : final >= 0 ? "5-4?" : four >= 0 ? "4-4" : tied >= 0 ? "3-3" : rule >= 0 ? "2-1" : answer >= 0 ? "1-1" : first >= 0 ? "1-0" : "";
   const reveal = clamp01((agreed + 0.12) / 0.42);
@@ -45,7 +46,7 @@ export const Exhibit1: React.FC = () => {
       : event >= 0 ? event < 2.7 ? "walk" : "point"
         : now < 1.4 ? "point" : "talk";
   const technoAnimation = callback >= 0
-    ? callback < 0.9 ? "walk" : cueAfter("7.winner") >= 0 && cueAfter("7.winner") < 1.2 ? "cheer" : "idle"
+    ? callback < 0.9 ? "walk" : winner >= 0 && winner < 1.2 ? "cheer" : "idle"
     : inMatch
       ? technoHit > 0.2 ? "stagger" : technoStrike > 0.2 ? "reach" : "walk"
       : event >= 0 ? event < 2.7 ? "walk" : "point"
