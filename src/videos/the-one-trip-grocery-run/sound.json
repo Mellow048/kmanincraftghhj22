@@ -1,0 +1,902 @@
+{
+  "film": "the-one-trip-grocery-run",
+  "README": "Original Recreation sound sheet. Each effect is tied to an audible word and visible object action.",
+  "music": {
+    "gain": -16,
+    "duck": 3,
+    "sections": [
+      {
+        "from": "1.hus",
+        "mood": "playful",
+        "gain": 0,
+        "why": "Open on the absurdly serious grocery-carry sport, already in motion."
+      },
+      {
+        "from": "2.sat",
+        "mood": "town",
+        "gain": -1,
+        "why": "The sister makes a normal, sensible grocery run; daylight and domestic ease."
+      },
+      {
+        "from": "3.heavy",
+        "mood": "grind",
+        "gain": 1,
+        "why": "He starts training; each attempt has a measurable method."
+      },
+      {
+        "from": "4.door",
+        "mood": "playful",
+        "gain": 0,
+        "why": "The doorway test fails in a small, physical way; keep the egg-shell joke light."
+      },
+      {
+        "from": "5.scale",
+        "mood": "grind",
+        "gain": 1,
+        "why": "He changes the load plan and practises one successful carry."
+      },
+      {
+        "from": "6.neighbor",
+        "mood": "hope",
+        "gain": 0,
+        "why": "A real person needs help; the skill turns useful rather than merely obsessive."
+      },
+      {
+        "from": "7.ours",
+        "mood": "playful",
+        "gain": 0,
+        "why": "The family brings the groceries home; the trunk check starts the last comic turn."
+      },
+      {
+        "from": "7.potato",
+        "mood": "none",
+        "why": "Let the single potato sit in silence for a brief visual beat."
+      },
+      {
+        "from": "7.hus",
+        "mood": "grind",
+        "gain": 1,
+        "why": "The final HUS goes with the tiny extra carry; finish on the meme sound."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.hus",
+      "to": "2.contest",
+      "bed": "village"
+    },
+    {
+      "from": "3.heavy",
+      "to": "5.done",
+      "bed": "room"
+    },
+    {
+      "from": "6.neighbor",
+      "to": "6.door",
+      "bed": "room"
+    },
+    {
+      "from": "7.ours",
+      "to": "7.hus",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -1,
+      "why": "One footfall on this visible carry step."
+    },
+    {
+      "cue": "1.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step."
+    },
+    {
+      "cue": "1.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 1
+    },
+    {
+      "cue": "1.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 1
+    },
+    {
+      "cue": "1.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 2
+    },
+    {
+      "cue": "1.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 2
+    },
+    {
+      "cue": "3.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step."
+    },
+    {
+      "cue": "3.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step."
+    },
+    {
+      "cue": "3.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 1
+    },
+    {
+      "cue": "3.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 1
+    },
+    {
+      "cue": "3.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 2
+    },
+    {
+      "cue": "3.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 2
+    },
+    {
+      "cue": "4.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step."
+    },
+    {
+      "cue": "4.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step."
+    },
+    {
+      "cue": "4.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 1
+    },
+    {
+      "cue": "4.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 1
+    },
+    {
+      "cue": "4.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 2
+    },
+    {
+      "cue": "4.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 2
+    },
+    {
+      "cue": "5.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step."
+    },
+    {
+      "cue": "5.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step."
+    },
+    {
+      "cue": "5.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 1
+    },
+    {
+      "cue": "5.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 1
+    },
+    {
+      "cue": "5.hus",
+      "word": "HUS",
+      "sfx": "step_wood",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 2
+    },
+    {
+      "cue": "5.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 2
+    },
+    {
+      "cue": "6.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -5,
+      "why": "One footfall on this visible carry step."
+    },
+    {
+      "cue": "6.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -5,
+      "why": "The grocery handles and paper bags sway on this step."
+    },
+    {
+      "cue": "6.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -5,
+      "why": "One footfall on this visible carry step.",
+      "nth": 1
+    },
+    {
+      "cue": "6.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -5,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 1
+    },
+    {
+      "cue": "6.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -5,
+      "why": "One footfall on this visible carry step.",
+      "nth": 2
+    },
+    {
+      "cue": "6.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -5,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 2
+    },
+    {
+      "cue": "7.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -1,
+      "why": "One footfall on this visible carry step."
+    },
+    {
+      "cue": "7.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step."
+    },
+    {
+      "cue": "7.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 1
+    },
+    {
+      "cue": "7.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 1
+    },
+    {
+      "cue": "7.hus",
+      "word": "HUS",
+      "sfx": "step_stone",
+      "trim": -1,
+      "why": "One footfall on this visible carry step.",
+      "nth": 2
+    },
+    {
+      "cue": "7.hus",
+      "word": "HUS",
+      "sfx": "rustle",
+      "trim": -2,
+      "why": "The grocery handles and paper bags sway on this step.",
+      "nth": 2
+    },
+    {
+      "cue": "1.one",
+      "word": "trip.",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "The last step lands at the front door."
+    },
+    {
+      "cue": "1.bag",
+      "word": "eggs.",
+      "sfx": "clank",
+      "trim": -1.5,
+      "why": "The egg carton bumps lightly against the bags."
+    },
+    {
+      "cue": "1.bag",
+      "word": "bag.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The overloaded paper bags shift."
+    },
+    {
+      "cue": "1.how",
+      "word": "thing?",
+      "sfx": "blip",
+      "trim": -1.5,
+      "why": "The kid looks straight at the lens."
+    },
+    {
+      "cue": "2.sat",
+      "word": "four",
+      "sfx": "step_stone",
+      "trim": -1.5,
+      "why": "Four separate sensible trips, quick footsteps."
+    },
+    {
+      "cue": "2.sat",
+      "word": "trips",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "A bag is set down at the house."
+    },
+    {
+      "cue": "2.sat",
+      "word": "car.",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "The car hatch closes softly."
+    },
+    {
+      "cue": "2.one",
+      "word": "one.",
+      "sfx": "stamp",
+      "trim": -1.5,
+      "why": "He makes the one-trip rule."
+    },
+    {
+      "cue": "2.one",
+      "word": "said",
+      "sfx": "swish",
+      "trim": -1.5,
+      "why": "He turns to point at the sign."
+    },
+    {
+      "cue": "2.eggs",
+      "word": "eggs",
+      "sfx": "paper",
+      "trim": -1.5,
+      "why": "The sister lifts the egg carton."
+    },
+    {
+      "cue": "2.eggs",
+      "word": "agreed.",
+      "sfx": "blip",
+      "trim": -1.5,
+      "why": "Her skeptical look."
+    },
+    {
+      "cue": "2.contest",
+      "word": "plan.",
+      "sfx": "tick",
+      "trim": -1.5,
+      "why": "She has a plan."
+    },
+    {
+      "cue": "2.contest",
+      "word": "contest.",
+      "sfx": "stamp",
+      "trim": -1.5,
+      "why": "He has made it a contest."
+    },
+    {
+      "cue": "3.heavy",
+      "word": "arms.",
+      "sfx": "creak",
+      "trim": -1.5,
+      "why": "The bag handles take the weight."
+    },
+    {
+      "cue": "3.heavy",
+      "word": "bags",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "Groceries shift into his grip."
+    },
+    {
+      "cue": "3.bread",
+      "word": "head.",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "The loaf settles on his hood."
+    },
+    {
+      "cue": "3.bread",
+      "word": "bread",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The paper bread sleeve slides."
+    },
+    {
+      "cue": "3.swing",
+      "word": "cans",
+      "sfx": "clank",
+      "trim": -1.5,
+      "why": "Metal cans roll across the floor."
+    },
+    {
+      "cue": "3.swing",
+      "word": "left.",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "why": "A can bumps the cabinet toe-kick."
+    },
+    {
+      "cue": "3.swing",
+      "word": "oranges",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "Produce bounces on the kitchen floor."
+    },
+    {
+      "cue": "3.swing",
+      "word": "right.",
+      "sfx": "scrape",
+      "trim": -1.5,
+      "why": "An orange rolls away."
+    },
+    {
+      "cue": "3.catch",
+      "word": "caught",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "An orange lands in the crook of his arm."
+    },
+    {
+      "cue": "3.catch",
+      "word": "oranges.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "His sleeve brushes the cabinet."
+    },
+    {
+      "cue": "3.catch",
+      "word": "cans",
+      "sfx": "scrape",
+      "trim": -1.5,
+      "why": "The cans pass his shoes."
+    },
+    {
+      "cue": "3.wire",
+      "word": "handles",
+      "sfx": "creak",
+      "trim": -1.5,
+      "why": "The tight paper handles strain."
+    },
+    {
+      "cue": "4.door",
+      "word": "door",
+      "sfx": "creak",
+      "trim": -1.5,
+      "why": "The kitchen door begins to open."
+    },
+    {
+      "cue": "4.door",
+      "word": "foot,",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "why": "His shoe nudges the door while his hands stay full."
+    },
+    {
+      "cue": "4.door",
+      "word": "full.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The overloaded bags sway."
+    },
+    {
+      "cue": "4.open",
+      "word": "opened.",
+      "sfx": "creak",
+      "trim": -1.5,
+      "why": "The door reaches its stop."
+    },
+    {
+      "cue": "4.open",
+      "word": "carton",
+      "sfx": "crack",
+      "trim": -1.5,
+      "why": "The egg carton gives way."
+    },
+    {
+      "cue": "4.open",
+      "word": "too.",
+      "sfx": "plink",
+      "trim": -1.5,
+      "why": "An egg taps the floor."
+    },
+    {
+      "cue": "4.sis",
+      "word": "sister",
+      "sfx": "swish",
+      "trim": -1.5,
+      "why": "The sister points at the carton."
+    },
+    {
+      "cue": "4.sis",
+      "word": "carton.",
+      "sfx": "blip",
+      "trim": -1.5,
+      "why": "Her tiny practical correction."
+    },
+    {
+      "cue": "4.shoe",
+      "word": "egg",
+      "sfx": "plink",
+      "trim": -1.5,
+      "why": "An egg shell rolls from the shoe."
+    },
+    {
+      "cue": "4.shoe",
+      "word": "shoe.",
+      "sfx": "scrape",
+      "trim": -1.5,
+      "why": "The egg makes one last little roll."
+    },
+    {
+      "cue": "4.shoe",
+      "word": "morning,",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "why": "He notices it at the kitchen threshold."
+    },
+    {
+      "cue": "5.scale",
+      "word": "weighed",
+      "sfx": "tick",
+      "trim": -1.5,
+      "why": "The bathroom scale settles under the bag."
+    },
+    {
+      "cue": "5.scale",
+      "word": "bag.",
+      "sfx": "stamp",
+      "trim": -1.5,
+      "why": "The number is read."
+    },
+    {
+      "cue": "5.scale",
+      "word": "every",
+      "sfx": "paper",
+      "trim": -1.5,
+      "why": "He notes the next item."
+    },
+    {
+      "cue": "5.plan",
+      "word": "Cans",
+      "sfx": "place",
+      "trim": -1.5,
+      "why": "The heavy tins go close to his chest."
+    },
+    {
+      "cue": "5.plan",
+      "word": "top.",
+      "sfx": "place",
+      "trim": -1.5,
+      "why": "Soft food is placed above the tins."
+    },
+    {
+      "cue": "5.plan",
+      "word": "close.",
+      "sfx": "clank",
+      "trim": -1.5,
+      "why": "The cans meet gently."
+    },
+    {
+      "cue": "5.tote",
+      "word": "tote",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The spare tote opens."
+    },
+    {
+      "cue": "5.tote",
+      "word": "handles.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "It sleeves the paper handles."
+    },
+    {
+      "cue": "5.tote",
+      "word": "survived.",
+      "sfx": "blip",
+      "trim": -1.5,
+      "why": "He flexes his fingers."
+    },
+    {
+      "cue": "5.guess",
+      "word": "limit",
+      "sfx": "tick",
+      "trim": -1.5,
+      "why": "He checks a load, then abandons the guess."
+    },
+    {
+      "cue": "5.guess",
+      "word": "less.",
+      "sfx": "drop",
+      "trim": -1.5,
+      "why": "Guessing fails; he measures instead."
+    },
+    {
+      "cue": "5.done",
+      "word": "crossed",
+      "sfx": "step_wood",
+      "trim": -1.5,
+      "why": "The successful carry begins across the room."
+    },
+    {
+      "cue": "5.done",
+      "word": "trip.",
+      "sfx": "chime",
+      "trim": -1.5,
+      "why": "Every bag arrives intact."
+    },
+    {
+      "cue": "6.neighbor",
+      "word": "buzzer",
+      "sfx": "buzz",
+      "trim": -1.5,
+      "why": "Her hands block the apartment buzzer."
+    },
+    {
+      "cue": "6.neighbor",
+      "word": "full.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The bags pull against her elbows."
+    },
+    {
+      "cue": "6.load",
+      "word": "cans",
+      "sfx": "clank",
+      "trim": -1.5,
+      "why": "A tin can shifts inside one bag."
+    },
+    {
+      "cue": "6.load",
+      "word": "watermelon.",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "The heavy watermelon rests against the bags."
+    },
+    {
+      "cue": "6.load",
+      "word": "paper",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The paper bags crinkle."
+    },
+    {
+      "cue": "6.test",
+      "word": "door.",
+      "sfx": "tick",
+      "trim": -1.5,
+      "why": "The unopened door is just beyond reach."
+    },
+    {
+      "cue": "6.test",
+      "word": "test.",
+      "sfx": "blip",
+      "trim": -1.5,
+      "why": "He steps forward, dead serious."
+    },
+    {
+      "cue": "6.bags",
+      "word": "load.",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "The complete load settles against his arms."
+    },
+    {
+      "cue": "6.bags",
+      "word": "every",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "He gathers the last handle."
+    },
+    {
+      "cue": "6.bags",
+      "word": "grocery",
+      "sfx": "paper",
+      "trim": -1.5,
+      "why": "A bag swings once."
+    },
+    {
+      "cue": "6.elbow",
+      "word": "buzzer",
+      "sfx": "buzz",
+      "trim": -1.5,
+      "why": "The buzzer sounds under the spoken word."
+    },
+    {
+      "cue": "6.elbow",
+      "word": "elbow.",
+      "sfx": "tick",
+      "trim": -1.5,
+      "why": "The elbow presses the small button."
+    },
+    {
+      "cue": "6.elbow",
+      "word": "pressed",
+      "sfx": "swish",
+      "trim": -1.5,
+      "why": "His shoulder turns toward the button."
+    },
+    {
+      "cue": "6.door",
+      "word": "clicked.",
+      "sfx": "clank",
+      "trim": -1.5,
+      "why": "The lobby latch releases."
+    },
+    {
+      "cue": "6.door",
+      "word": "inside.",
+      "sfx": "step_stone",
+      "trim": -1.5,
+      "why": "The neighbour crosses the threshold."
+    },
+    {
+      "cue": "7.ours",
+      "word": "carried",
+      "sfx": "step_stone",
+      "trim": -1.5,
+      "why": "The family groceries come in."
+    },
+    {
+      "cue": "7.ours",
+      "word": "trip.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The final bag clears the doorway."
+    },
+    {
+      "cue": "7.ours",
+      "word": "ours",
+      "sfx": "thud",
+      "trim": -1.5,
+      "why": "The bags land in the kitchen."
+    },
+    {
+      "cue": "7.trunk",
+      "word": "checked",
+      "sfx": "creak",
+      "trim": -1.5,
+      "why": "The hatch lifts."
+    },
+    {
+      "cue": "7.trunk",
+      "word": "trunk.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The blanket moves."
+    },
+    {
+      "cue": "7.trunk",
+      "word": "sister",
+      "sfx": "swish",
+      "trim": -1.5,
+      "why": "She checks the empty space."
+    },
+    {
+      "cue": "7.empty",
+      "word": "blanket.",
+      "sfx": "rustle",
+      "trim": -1.5,
+      "why": "The blanket peels back."
+    },
+    {
+      "cue": "7.empty",
+      "word": "lifted",
+      "sfx": "creak",
+      "trim": -1.5,
+      "why": "The trunk lining rises."
+    },
+    {
+      "cue": "7.potato",
+      "word": "potato",
+      "sfx": "plink",
+      "trim": -1.5,
+      "why": "One small potato sits alone."
+    },
+    {
+      "cue": "7.potato",
+      "word": "alone.",
+      "sfx": "drop",
+      "trim": -1.5,
+      "why": "A tiny, slightly serious reveal."
+    },
+    {
+      "cue": "7.potato",
+      "word": "One",
+      "sfx": "tick",
+      "trim": -1.5,
+      "why": "Hold the quiet before the extra trip."
+    },
+    {
+      "cue": "7.back",
+      "word": "back",
+      "sfx": "swish",
+      "trim": -1.5,
+      "why": "He turns toward the car again."
+    },
+    {
+      "cue": "7.back",
+      "word": "it.",
+      "sfx": "step_stone",
+      "trim": -1.5,
+      "why": "One item means another trip."
+    }
+  ]
+}

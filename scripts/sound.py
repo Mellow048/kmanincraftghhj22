@@ -2,9 +2,8 @@
 """
 sound.py — the music and the sound effects, made in Python, cut to the voice.
 
-Nothing here is downloaded or sampled. Every note and every noise is computed
-with numpy, from a seed, so the same sheet always gives the same track, there is
-no licence to check, and a new film never has to build its sound from nothing.
+Built-in music, beds and effects are computed with numpy, from a seed. A sheet may also place a repository-owned
+sound sample with `sfx[].file`; the source is hashed into `sound.lock.json` so the mix remains reproducible.
 
     python3 scripts/sound.py list                 every effect, bed and mood, with one line on each
     python3 scripts/sound.py draft <film>         write a first sound.json from the film's scenes
@@ -77,7 +76,9 @@ except ImportError:  # pragma: no cover
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SR = 44100
-VERSION = 1
+VERSION = 2
+# Decoded owner-supplied sound effects, kept between events that reuse the same source file.
+SAMPLE_CACHE: dict[str, "np.ndarray"] = {}
 
 
 # ============================================================================= small maths
@@ -1896,15 +1897,39 @@ def read_sheet(p: dict, clock: Clock) -> dict:
     effects = []
     for i, part in enumerate(sheet.get("sfx", [])):
         try:
-            if part.get("sfx") not in SFX:
-                raise SheetError(f'unknown sfx "{part.get("sfx")}". Run: python3 scripts/sound.py list')
+            sample = part.get("file")
+            if sample:
+                if not isinstance(sample, str) or os.path.isabs(sample):
+                    raise SheetError("file must be a repository-relative audio path")
+                sample_path = os.path.realpath(os.path.join(ROOT, sample))
+                if os.path.commonpath([ROOT, sample_path]) != os.path.realpath(ROOT):
+                    raise SheetError("file must stay inside the repository")
+                if not os.path.isfile(sample_path):
+                    raise SheetError(f'no sample file at "{sample}"')
+                if "pitch" in part or "pitchStep" in part:
+                    raise SheetError("pitch and pitchStep are for synthesized effects; trim or choose another sample")
+                label = part.get("name") or os.path.splitext(os.path.basename(sample))[0]
+                spec = {"gain": float(part.get("gain", -12.0)), "align": part.get("align", "center")}
+            else:
+                if part.get("sfx") not in SFX:
+                    raise SheetError(f'unknown sfx "{part.get("sfx")}". Run: python3 scripts/sound.py list')
+                label = part["sfx"]
+                spec = SFX[label]
+                sample_path = None
+            if spec["align"] not in ("start", "center", "end"):
+                raise SheetError(f'unknown align "{spec["align"]}"')
             t = clock.when(part)
             for k in range(int(part.get("repeat", 1))):
-                one = {**part, "t": t + k * float(part.get("every", 0.3)), "n": k, "i": i}
-                if "pitchStep" in part:
+                one = {**part, "sfx": label, "t": t + k * float(part.get("every", 0.3)), "n": k, "i": i}
+                if sample_path:
+                    one["_sample_path"] = sample_path
+                    one["_sample_file"] = sample
+                    one["_sample_gain"] = spec["gain"]
+                    one["_sample_align"] = spec["align"]
+                elif "pitchStep" in part:
                     one["pitch"] = float(part.get("pitch", 1.0)) * float(part["pitchStep"]) ** k
                 effects.append(one)
-        except (SheetError, KeyError) as error:
+        except (SheetError, KeyError, ValueError, OSError) as error:
             problems.append(f"sfx[{i}] ({part.get('cue', '?')}): {error}")
 
     if problems:
@@ -2021,21 +2046,38 @@ def render(film: str, clock: Clock, sheet: dict, vox: dict):
     placed = []
     all_gain = float(sheet["raw"].get("sfxGain", 0.0))
     for part in sheet["sfx"]:
-        spec = SFX[part["sfx"]]
-        params = {k: v for k, v in part.items() if k in ("dur", "pitch", "note", "f", "ring", "lo", "hi")}
-        y = edges(norm(spec["fn"](rng_for(film, "sfx", part["i"], part["n"], part["sfx"]), **params)), 0.0004, 0.02)
+        if part.get("_sample_path"):
+            source = part["_sample_path"]
+            if source not in SAMPLE_CACHE:
+                SAMPLE_CACHE[source] = decode_stereo(source)
+            y = SAMPLE_CACHE[source]
+            trim_start = n_of(max(0.0, float(part.get("trimStart", 0.0)))) if part.get("trimStart") else 0
+            trim_end = len(y) - n_of(max(0.0, float(part.get("trimEnd", 0.0)))) if part.get("trimEnd") else len(y)
+            if part.get("dur") is not None:
+                trim_end = min(trim_end, trim_start + n_of(max(0.0, float(part["dur"]))))
+            y = y[trim_start:trim_end]
+            if len(y) == 0:
+                raise SheetError(f"sample {part['_sample_file']} is empty after trimming")
+            y = edges(norm(y), 0.0004, 0.02)
+            default_gain = part["_sample_gain"]
+            align = part["_sample_align"]
+        else:
+            spec = SFX[part["sfx"]]
+            params = {k: v for k, v in part.items() if k in ("dur", "pitch", "note", "f", "ring", "lo", "hi")}
+            y = edges(norm(spec["fn"](rng_for(film, "sfx", part["i"], part["n"], part["sfx"]), **params)), 0.0004, 0.02)
+            default_gain = spec["gain"]
+            align = part.get("align", spec["align"])
         as_heard, offset = loudest(heard(y))
         whole, _ = loudest(y.mean(axis=1) if y.ndim == 2 else y)
         # A thud is mostly below what a phone plays. Measured only "as heard" it would be turned up until it
         # shook a pair of headphones, so its whole level counts too, 4 dB down.
         level = max(as_heard, whole * db(-4.0))
-        gain = float(part.get("gain", spec["gain"])) + float(part.get("trim", 0.0)) + all_gain
+        gain = float(part.get("gain", default_gain)) + float(part.get("trim", 0.0)) + all_gain
         scale = v_level * db(gain) / max(level, 1e-9)
         capped = False
         if scale > v_peak * db(-1.0):  # never a louder sample than the voice's own loudest
             scale, capped = v_peak * db(-1.0), True
         seconds = len(y) / SR
-        align = part.get("align", spec["align"])
         start = part["t"] - (seconds if align == "end" else seconds / 2 if align == "center" else 0.0)
         place(effects, y, start, scale, float(part.get("pan", 0.0)))
         placed.append({
@@ -2259,6 +2301,10 @@ def stale(p: dict) -> list[str]:
     track = lock.get("music_file")
     if track and (not os.path.isfile(os.path.join(ROOT, track["path"])) or track.get("sha1") != file_hash(os.path.join(ROOT, track["path"]))):
         changed.append(f"{track['path']} (the music) changed after the mix was built")
+    for sample_path, digest in lock.get("sample_files", {}).items():
+        full_path = os.path.join(ROOT, sample_path)
+        if not os.path.isfile(full_path) or digest != file_hash(full_path):
+            changed.append(f"{sample_path} (a sampled effect) changed after the mix was built")
     if not os.path.exists(p["mix"]):
         changed.append("mix.mp3 is missing")
     elif lock.get("mix_sha1") != file_hash(p["mix"]):
@@ -2309,6 +2355,7 @@ def build(film: str, stems: bool, check_only: bool = False) -> int:
             "mix_sha1": file_hash(p["mix"]),
             "music_sections": [{"from": s["from"], "mood": s["mood"], "at": round(s["t"], 2)} for s in sheet["sections"]],
             **({"music_file": {"path": sheet["music"]["track"], "sha1": file_hash(os.path.join(ROOT, sheet["music"]["track"]))}} if sheet["music"].get("track") else {}),
+            "sample_files": {part["_sample_file"]: file_hash(part["_sample_path"]) for part in sheet["sfx"] if part.get("_sample_path")},
             "beds": len(sheet["beds"]),
             "measured": {**m, "lufs": lufs, "truePeakDb": peak, "limiterMaxDb": round(abs(to_db(float(gain.min()))), 1)},
             "failures": fails,

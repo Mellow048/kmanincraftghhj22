@@ -1,0 +1,130 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-one-trip-grocery-run",
+  "mix": "public/audio/the-one-trip-grocery-run/mix.mp3",
+  "seconds": 100.9,
+  "built_from": {
+    "timing.json": "900a31725ede91d28c6abe6f2924bfe1d5b8484e",
+    "sound.json": "9e920bf65bfb81beb444e3b5d406fc3fd671e452",
+    "narration.mp3": "3c9b932bf8f63f5cdf419bd965e50acb4afc302f"
+  },
+  "mix_sha1": "82daa96c38e329a2af64aafd08ec48db73c84d1e",
+  "music_sections": [
+    {
+      "from": "1.hus",
+      "mood": "playful",
+      "at": 0.0
+    },
+    {
+      "from": "2.sat",
+      "mood": "town",
+      "at": 9.7
+    },
+    {
+      "from": "3.heavy",
+      "mood": "grind",
+      "at": 19.27
+    },
+    {
+      "from": "4.door",
+      "mood": "playful",
+      "at": 35.33
+    },
+    {
+      "from": "5.scale",
+      "mood": "grind",
+      "at": 50.4
+    },
+    {
+      "from": "6.neighbor",
+      "mood": "hope",
+      "at": 67.43
+    },
+    {
+      "from": "7.ours",
+      "mood": "playful",
+      "at": 88.63
+    },
+    {
+      "from": "7.potato",
+      "mood": "none",
+      "at": 95.27
+    },
+    {
+      "from": "7.hus",
+      "mood": "grind",
+      "at": 98.23
+    }
+  ],
+  "beds": 4,
+  "measured": {
+    "musicUnderVoiceDb": 18.4,
+    "secondsWithoutMusic": 5.3,
+    "bedsUnderVoiceDb": 29.1,
+    "sfx": 113,
+    "sfxPerMinute": 67.2,
+    "sfxKinds": 18,
+    "longestGapSeconds": 3.3,
+    "longestGapAt": 5.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.4,
+    "voiceOverRestWorstDb": 4.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.7,
+        "t": 77.5,
+        "cue": "6.test",
+        "sounding": [
+          "rustle",
+          "step_stone"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 79.7,
+        "cue": "6.hus",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 94.8,
+        "cue": "7.empty",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 5.5,
+        "t": 1.2,
+        "cue": "1.hus",
+        "sounding": [
+          "rustle",
+          "step_stone"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 61.2,
+        "cue": "5.hus",
+        "sounding": [
+          "rustle",
+          "step_wood"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 78.7,
+        "cue": "6.hus",
+        "sounding": [
+          "rustle"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.7,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}

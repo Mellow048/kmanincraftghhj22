@@ -1,0 +1,452 @@
+{
+  "film": "why-did-dream-and-technoblade-split-the-prize",
+  "README": "Music and effects are cued to the aligned narration. Sampled effects come from Topics/SoundEffects and are hashed in sound.lock.json.",
+  "music": {
+    "gain": -18,
+    "sections": [
+      {
+        "from": "1.question",
+        "mood": "curious",
+        "why": "Open with a question and an empty score: curious, not melodramatic."
+      },
+      {
+        "from": "2.event",
+        "mood": "explain",
+        "why": "The format and alternating versions are clear factual setup."
+      },
+      {
+        "from": "5.tie",
+        "mood": "tense",
+        "why": "The score tightens and the final rounds approach."
+      },
+      {
+        "from": "6.agreement",
+        "mood": "hope",
+        "why": "The pre-agreed split reframes the prize and lowers the pressure."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.question",
+      "to": "7.subscribe",
+      "bed": "sky",
+      "gain": -28
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.question",
+      "word": "Dream",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-air-swish",
+      "gain": -17,
+      "why": "A soft sampled air pass introduces the two sides of the arena."
+    },
+    {
+      "cue": "1.question",
+      "word": "prize",
+      "sfx": "pop",
+      "gain": -15,
+      "why": "The physical prize board appears on the word prize."
+    },
+    {
+      "cue": "1.question",
+      "word": "hundred",
+      "sfx": "tick",
+      "gain": -14,
+      "why": "A restrained count begins under the amount."
+    },
+    {
+      "cue": "2.event",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-flight-swish",
+      "gain": -17,
+      "why": "Sampled whoosh for the camera's continuous reveal of the full arena."
+    },
+    {
+      "cue": "2.event",
+      "word": "ten",
+      "sfx": "count",
+      "dur": 0.8,
+      "gain": -17,
+      "why": "Ten physical round pavers come into view."
+    },
+    {
+      "cue": "2.event",
+      "word": "duels",
+      "sfx": "clank",
+      "gain": -19,
+      "why": "A quiet metallic accent for the tournament board."
+    },
+    {
+      "cue": "2.styles",
+      "word": "newer",
+      "sfx": "place",
+      "gain": -18,
+      "why": "The first version marker settles onto its pedestal."
+    },
+    {
+      "cue": "2.styles",
+      "word": "eight",
+      "file": "Topics/SoundEffects/pop-sound-effect_AsEdnw2.mp3",
+      "name": "sampled-marker-pop",
+      "gain": -17,
+      "why": "Sampled pop for the 1.8 marker, used consistently for physical markers."
+    },
+    {
+      "cue": "3.home",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-boundary-flight",
+      "gain": -17,
+      "why": "A sampled air swish follows the camera across the center seam."
+    },
+    {
+      "cue": "3.home",
+      "word": "home",
+      "sfx": "thud",
+      "gain": -12,
+      "why": "The dividing seam lands as neither player gets home turf."
+    },
+    {
+      "cue": "3.versions",
+      "word": "coin",
+      "sfx": "coin",
+      "pitch": 1.08,
+      "gain": -16,
+      "why": "The drawn coin begins its toss."
+    },
+    {
+      "cue": "3.versions",
+      "word": "opener",
+      "file": "Topics/SoundEffects/proper-ding_IbfMQYw.mp3",
+      "name": "sampled-ding",
+      "gain": -18,
+      "trimStart": 0.02,
+      "dur": 0.75,
+      "why": "A restrained sampled confirmation when the coin selects the opener."
+    },
+    {
+      "cue": "3.advantage",
+      "word": "switch",
+      "sfx": "slide_up",
+      "gain": -18,
+      "why": "The displayed combat advantage changes sides."
+    },
+    {
+      "cue": "3.advantage",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-version-flight",
+      "gain": -17,
+      "why": "A short sample tracks the camera's orbit across the two version markers."
+    },
+    {
+      "cue": "3.lead",
+      "word": "lead",
+      "sfx": "count",
+      "dur": 0.75,
+      "gain": -18,
+      "why": "A small count movement illustrates a changing lead, not match footage."
+    },
+    {
+      "cue": "3.lead",
+      "word": "next",
+      "sfx": "swish",
+      "gain": -18,
+      "why": "The style marker changes once more."
+    },
+    {
+      "cue": "4.first",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-flight-to-opening",
+      "gain": -17,
+      "why": "Sampled camera-flight sound into the opening exchange."
+    },
+    {
+      "cue": "4.first",
+      "word": "first",
+      "sfx": "hit",
+      "gain": -13,
+      "why": "A muted stylized contact accents the first point, without suggesting exact footage audio."
+    },
+    {
+      "cue": "4.first",
+      "word": "scored",
+      "file": "Topics/SoundEffects/proper-ding_IbfMQYw.mp3",
+      "name": "sampled-score-ding",
+      "gain": -18,
+      "trimStart": 0.02,
+      "dur": 0.75,
+      "why": "The score gets one small sampled confirmation."
+    },
+    {
+      "cue": "4.answer",
+      "word": "answered",
+      "sfx": "hit",
+      "gain": -14,
+      "why": "A second restrained stylized exchange beat."
+    },
+    {
+      "cue": "4.answer",
+      "word": "Techno",
+      "sfx": "coin",
+      "pitch": 0.92,
+      "gain": -18,
+      "why": "A soft counterpoint to the level score."
+    },
+    {
+      "cue": "5.rule",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-rule-flight",
+      "gain": -17,
+      "why": "Sampled swish as the lens moves from duel to the ten-round rule board."
+    },
+    {
+      "cue": "5.rule",
+      "word": "six",
+      "sfx": "count",
+      "dur": 0.7,
+      "gain": -17,
+      "why": "The six-win threshold illuminates."
+    },
+    {
+      "cue": "5.rule",
+      "word": "best-of-ten",
+      "sfx": "clank",
+      "gain": -19,
+      "why": "A quiet marker lands on the physical ten-round track."
+    },
+    {
+      "cue": "5.tie",
+      "word": "three-all",
+      "sfx": "tick",
+      "repeat": 3,
+      "every": 0.22,
+      "gain": -20,
+      "why": "Three even score beats, kept light under the line."
+    },
+    {
+      "cue": "5.tie",
+      "word": "either",
+      "file": "Topics/SoundEffects/pop-sound-effect_AsEdnw2.mp3",
+      "name": "sampled-score-marker",
+      "gain": -18,
+      "why": "Sampled pop as the score marker changes."
+    },
+    {
+      "cue": "5.four",
+      "word": "Four-four",
+      "sfx": "tick",
+      "repeat": 2,
+      "every": 0.28,
+      "gain": -19,
+      "why": "Two close, even score beats."
+    },
+    {
+      "cue": "5.four",
+      "word": "left",
+      "sfx": "heartbeat",
+      "gain": -13,
+      "why": "A single quiet pulse for the remaining rounds."
+    },
+    {
+      "cue": "5.next",
+      "word": "match",
+      "sfx": "riser",
+      "dur": 1.1,
+      "gain": -19,
+      "why": "A short restrained rise toward match point."
+    },
+    {
+      "cue": "5.next",
+      "word": "point",
+      "file": "Topics/SoundEffects/proper-ding_IbfMQYw.mp3",
+      "name": "sampled-match-point-ding",
+      "gain": -18,
+      "trimStart": 0.02,
+      "dur": 0.75,
+      "why": "A small sampled score marker, not a crowd reaction."
+    },
+    {
+      "cue": "5.final",
+      "word": "force",
+      "sfx": "swish",
+      "gain": -13,
+      "why": "The alternate path moves across the board."
+    },
+    {
+      "cue": "5.final",
+      "word": "five-all",
+      "sfx": "drop",
+      "gain": -18,
+      "why": "A low, brief falling accent for the hypothetical path only."
+    },
+    {
+      "cue": "5.finish",
+      "word": "Then",
+      "sfx": "heartbeat",
+      "gain": -13,
+      "why": "A brief pause immediately before the result."
+    },
+    {
+      "cue": "5.finish",
+      "word": "Six-four",
+      "sfx": "stamp",
+      "gain": -18,
+      "why": "The verified final score sets into the physical board."
+    },
+    {
+      "cue": "5.finish",
+      "word": "Six-four",
+      "file": "Topics/SoundEffects/proper-ding_IbfMQYw.mp3",
+      "name": "sampled-final-score-ding",
+      "gain": -17,
+      "trimStart": 0.02,
+      "dur": 0.75,
+      "why": "The same sampled ding marks the decisive score."
+    },
+    {
+      "cue": "5.finish",
+      "word": "Six-four",
+      "sfx": "sparkle",
+      "gain": -16,
+      "why": "Very soft shimmer on the finished score, not a celebration crowd."
+    },
+    {
+      "cue": "6.whole",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-prize-flight",
+      "gain": -17,
+      "why": "Sampled swish as the prize enters the composition."
+    },
+    {
+      "cue": "6.whole",
+      "word": "hundred",
+      "sfx": "coins",
+      "dur": 0.65,
+      "gain": -18,
+      "why": "A small coin texture accompanies the single chest, before the reveal of the agreement."
+    },
+    {
+      "cue": "6.whole",
+      "word": "promised",
+      "file": "Topics/SoundEffects/kaching-sound-fx.mp3",
+      "name": "sampled-cash-chime",
+      "gain": -15,
+      "trimStart": 0.02,
+      "dur": 0.8,
+      "why": "A low sampled cash-register accent for the prize mention."
+    },
+    {
+      "cue": "6.agreement",
+      "word": "agreed",
+      "sfx": "creak",
+      "gain": -18,
+      "why": "The chest lid begins to open on the pre-game agreement."
+    },
+    {
+      "cue": "6.agreement",
+      "word": "equally",
+      "sfx": "coins",
+      "dur": 0.8,
+      "gain": -17,
+      "why": "The single prize separates into equal halves."
+    },
+    {
+      "cue": "6.agreement",
+      "word": "regardless",
+      "file": "Topics/SoundEffects/pop-sound-effect_AsEdnw2.mp3",
+      "name": "sampled-share-pop",
+      "gain": -18,
+      "why": "Two physical shares are clearly established."
+    },
+    {
+      "cue": "6.pressure",
+      "word": "pressure",
+      "sfx": "drop",
+      "gain": -18,
+      "why": "The pressure eases when the advance agreement is explained."
+    },
+    {
+      "cue": "6.pressure",
+      "word": "enjoy",
+      "file": "Topics/SoundEffects/ta-da_yrvBrlS.mp3",
+      "name": "sampled-soft-ta-da",
+      "gain": -22,
+      "trimStart": 0.02,
+      "dur": 1.0,
+      "why": "A quiet, short sample accompanies the lighter explanation, not the victory."
+    },
+    {
+      "cue": "7.winner",
+      "word": "Techno",
+      "sfx": "ding",
+      "gain": -18,
+      "why": "Confirm the winner without implying an audience reaction."
+    },
+    {
+      "cue": "7.winner",
+      "word": "bigger",
+      "sfx": "slide_down",
+      "gain": -19,
+      "why": "The imagined unequal share falls away."
+    },
+    {
+      "cue": "7.callback",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-return-flight",
+      "gain": -17,
+      "why": "A sampled whoosh returns to the opening arena tableau."
+    },
+    {
+      "cue": "7.callback",
+      "word": "equal",
+      "file": "Topics/SoundEffects/kaching-sound-fx.mp3",
+      "name": "sampled-equal-share-chime",
+      "gain": -16,
+      "trimStart": 0.02,
+      "dur": 0.8,
+      "why": "A quiet cash chime under the equal chests, the same source as the first prize accent."
+    },
+    {
+      "cue": "7.recap",
+      "word": "ten",
+      "sfx": "count",
+      "dur": 0.8,
+      "gain": -13,
+      "why": "A compact count resolves the ten rounds."
+    },
+    {
+      "cue": "7.recap",
+      "word": "shared",
+      "sfx": "coins",
+      "dur": 0.75,
+      "gain": -18,
+      "why": "The prize is shared, not handed over as a surprise."
+    },
+    {
+      "cue": "7.reframe",
+      "file": "Topics/SoundEffects/swoosh-sound-effects.mp3",
+      "name": "sampled-final-pullback",
+      "gain": -18,
+      "why": "A final sampled air pass accompanies the quiet pullback."
+    },
+    {
+      "cue": "7.reframe",
+      "word": "settled",
+      "sfx": "stamp",
+      "gain": -14,
+      "why": "The settled pre-game agreement is underscored once."
+    },
+    {
+      "cue": "7.subscribe",
+      "word": "Subscribe",
+      "file": "Topics/SoundEffects/proper-ding_IbfMQYw.mp3",
+      "name": "sampled-end-ding",
+      "gain": -18,
+      "trimStart": 0.02,
+      "dur": 0.75,
+      "why": "A familiar, small sampled ding closes the final subscribe cue."
+    }
+  ]
+}
