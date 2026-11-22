@@ -46,7 +46,7 @@ export const Hero: React.FC<{
     shirt="#d63b2f"
     legs="#2e3b6e"
     scarf="#f2c14e"
-    arms={0.2}
+    arms={0}
     {...p}
   />
 );
@@ -60,6 +60,7 @@ export const ZombieKid: React.FC<{
   lookAt?: Vec3;
   shirt?: string;
   scarf?: string;
+  arms?: number;
   armPitch?: [number, number];
   tilt?: number;
   nod?: number;
@@ -69,7 +70,7 @@ export const ZombieKid: React.FC<{
   scale?: number;
   phase?: number;
 }> = ({ shirt = "#3a7d8c", ...p }) => (
-  <Zombie baby shirt={shirt} legs="#343b5c" arms={0.3} {...p} />
+  <Zombie baby shirt={shirt} legs="#343b5c" arms={0} {...p} />
 );
 
 /** Big zombie mums (tall adults with pink bows or scarves). */
@@ -91,8 +92,8 @@ export const ZombieMum: React.FC<{
   wave?: number;
   scale?: number;
   phase?: number;
-}> = ({ shirt = "#2a8c82", hat = "bow", ...p }) => (
-  <Zombie shirt={shirt} hat={hat} {...p} />
+}> = ({ shirt = "#2a8c82", hat = "bow", walk = 0, ...p }) => (
+  <Zombie shirt={shirt} hat={hat} walk={walk} arms={walk > 0 ? 0.15 : 0.75} {...p} />
 );
 
 /**

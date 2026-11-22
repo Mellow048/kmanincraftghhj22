@@ -21,7 +21,7 @@ const Village: React.FC<{ night: boolean }> = ({ night }) => (
     <Vox kind="cobble" position={[2.1, 1.1, -1.2]} size={[0.7, 2.2, 0.7]} />
     <Lantern position={[-2.1, 2.55, -1.2]} chain={0.35} light={3.2} reach={11} />
     <Lantern position={[2.1, 2.55, -1.2]} chain={0.35} light={3.2} reach={11} />
-    <Fence from={[-11, 0, -1.2]} to={[-2.4, 0, -1.2]} height={1.1} gap={1.8} />
+    <Fence from={[-5.1, 0, -1.2]} to={[-2.4, 0, -1.2]} height={1.1} gap={1.4} />
     <Fence from={[2.4, 0, -1.2]} to={[12, 0, -1.2]} height={1.1} gap={1.8} />
 
     {/* North houses: schoolhouse, break-door house, and the flat-roofed tall house with the rooftop nest */}
@@ -59,16 +59,16 @@ const Village: React.FC<{ night: boolean }> = ({ night }) => (
 
     {/* Climbing oak tree on the west side + bright lanterns */}
     <Tree position={GATE.climbTree} height={5.2} leaf="#376e2b" />
-    <LanternPost position={[-7.3, 0, -0.6]} light={3.2} seed={6} />
+    <LanternPost position={[-7.3, 0, -2.5]} light={3.2} seed={6} />
     <pointLight position={[-9.2, 4.0, 0.5]} intensity={3.8} distance={14} color="#ffdba8" />
-    <Vox kind="grass" tint="#2f6626" position={[-3.8, 0.55, 1.2]} size={[1.4, 1.1, 1.4]} />
+    <Vox kind="grass" tint="#2f6626" position={[-4.2, 0.55, 0.9]} size={[1.1, 1.1, 1.1]} />
 
     <Bell position={[3.6, 0, -2.5]} />
     <LanternLine from={[-5.5, 3.3, -1.2]} to={[5.5, 3.3, -1.2]} count={5} sag={0.45} lit={[0, 1, 2, 3, 4]} light={2.6} />
-    <LanternPost position={[-6.2, 0, 3.8]} light={3.0} seed={2} />
-    <LanternPost position={[6.5, 0, 3.8]} light={3.0} seed={3} />
-    <Torch position={[-2.6, 0, 2.8]} light={2.4} seed={12} />
-    <Torch position={[2.6, 0, 2.8]} light={2.4} seed={13} />
+    <LanternPost position={[-6.2, 0, 4.2]} light={3.0} seed={2} />
+    <LanternPost position={[6.5, 0, 4.2]} light={3.0} seed={3} />
+    <Torch position={[-3.2, 0, -1.8]} light={2.4} seed={12} />
+    <Torch position={[3.2, 0, -1.8]} light={2.4} seed={13} />
     <pointLight position={[0, 3.8, 3.2]} intensity={4.2} distance={18} color="#ffe0ad" />
 
     <Tree position={[-17, 0, -10]} height={4.8} leaf="#3b6e2d" />
@@ -138,7 +138,7 @@ const Cliff: React.FC<{ isSunrise: boolean }> = ({ isSunrise }) => (
 
     <LanternPost position={[-4.5, 4.5, 93.2]} light={3.2} seed={9} />
     <LanternPost position={[-1.8, 4.5, 93.2]} light={3.2} seed={10} />
-    <Torch position={[-3.2, 4.5, 96.4]} light={2.5} seed={14} />
+    <Torch position={[-3.2, 4.5, 93.2]} light={2.5} seed={14} />
     <pointLight position={[-3.0, 7.2, 97.5]} intensity={3.8} distance={16} color="#ffd99a" />
 
     {isSunrise ? (

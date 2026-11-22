@@ -10,21 +10,20 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.trip",
-      ...cam.truck({ on: [-7.0, 5.1, 95], by: [2.6, 0, 0], dist: 4.1, yaw: 20, pitch: 10, fov: 42 }),
+      ...cam.truck({ on: [-5.6, 5.2, 95], by: [2.4, 0, 0], dist: 4.5, yaw: 18, pitch: 10, fov: 44 }),
       handheld: 0.016,
       look: "overworld-night",
       zone: "cliff",
-      note: "Mountain road march: the whole zombie class hikes steadily uphill behind the mums with Hero bouncing on MumChicken.",
+      note: "Mountain hike: tight group marches uphill 1:1 with the tracking camera so every character stays centered.",
       stage: (t, { p }) => {
         const k = ease(p);
         return (
           <>
             <CliffBridge />
-            <ZombieMum position={[-5.4 + k * 2.4, CLIFF.ledgeY, 94.7]} rotationY={Math.PI / 2} walk={t * 2.0} shirt="#2d7a78" hat="bow" mood="happy" />
-            <ZombieMum position={[-5.7 + k * 2.4, CLIFF.ledgeY, 95.5]} rotationY={Math.PI / 2} walk={t * 2.0} shirt="#486a94" hat="straw" mood="happy" />
-            <ZombieKid position={[-6.7 + k * 2.4, CLIFF.ledgeY, 94.6]} rotationY={Math.PI / 2} walk={t * 2.3} shirt="#3a7d8c" mood="happy" />
-            <ZombieKid position={[-7.2 + k * 2.4, CLIFF.ledgeY, 95.4]} rotationY={Math.PI / 2} walk={t * 2.3} shirt="#548256" mood="happy" />
-            <MumChicken position={[-7.9 + k * 2.4, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2} walk={t * 2.5}>
+            <ZombieMum position={[-4.9 + k * 2.4, CLIFF.ledgeY, 94.7]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.2} shirt="#2d7a78" hat="bow" mood="happy" />
+            <ZombieKid position={[-5.4 + k * 2.4, CLIFF.ledgeY, 95.3]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.4} shirt="#3a7d8c" mood="happy" />
+            <ZombieKid position={[-5.9 + k * 2.4, CLIFF.ledgeY, 94.6]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.4} shirt="#548256" mood="happy" />
+            <MumChicken position={[-6.4 + k * 2.4, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.6} flap={0.35}>
               <Hero position={[0, 0, 0]} mood="happy" wave={0.5} />
             </MumChicken>
           </>
@@ -33,39 +32,39 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.forest",
-      ...cam.orbit({ on: [-4.2, 5.1, 93.8], dist: 3.4, distTo: 2.6, yaw: 24, yawTo: -12, pitch: 8, fov: 40 }),
+      ...cam.orbit({ on: [-4.0, 5.2, 94.8], onTo: [-2.8, 5.2, 94.8], dist: 3.8, distTo: 3.1, yaw: 18, yawTo: -10, pitch: 8, fov: 42 }),
       handheld: 0.016,
       look: "overworld-night",
       zone: "cliff",
-      note: "Pine woods wander: kids meander past the lantern-lit pines looking around playfully while time slips away.",
+      note: "Unobstructed pine trail: class strolls beneath tall pines as Hero looks playfully around on MumChicken.",
       stage: (t, { p }) => {
         const k = ease(p);
         return (
           <>
             <CliffBridge />
-            <ZombieMum position={[-3.0 + k * 1.4, CLIFF.ledgeY, 94.2]} rotationY={Math.PI / 2} walk={t * 1.4} shirt="#2d7a78" hat="bow" mood="calm" />
-            <MumChicken position={[-4.5 + k * 1.6, CLIFF.ledgeY, 93.6]} rotationY={0.7} walk={t * 1.8} peck={Math.sin(t * 5) * 0.2}>
+            <ZombieMum position={[-3.3 + k * 1.2, CLIFF.ledgeY, 94.4]} rotationY={Math.PI / 2 - 0.3} walk={t * 1.6} shirt="#2d7a78" hat="bow" mood="calm" />
+            <MumChicken position={[-4.2 + k * 1.3, CLIFF.ledgeY, 94.9]} rotationY={0.9} walk={t * 2.0} peck={Math.sin(t * 5) * 0.2}>
               <Hero position={[0, 0, 0]} mood="happy" turn={Math.sin(t * 2.5) * 0.35} />
             </MumChicken>
-            <ZombieKid position={[-3.7 + k * 1.7, CLIFF.ledgeY, 94.8]} rotationY={Math.PI / 2} walk={t * 1.8} shirt="#3a7d8c" mood="happy" />
+            <ZombieKid position={[-3.6 + k * 1.3, CLIFF.ledgeY, 95.4]} rotationY={Math.PI / 2 - 0.3} walk={t * 2.0} shirt="#3a7d8c" mood="happy" />
           </>
         );
       },
     },
     {
       cue: "4.orange",
-      ...cam.pan({ from: [-5.4, 6.2, 99.1], on: [-3.5, 5.6, 95], onTo: [5.5, 6.4, 92], fov: 42 }),
+      ...cam.pan({ from: [-4.2, 6.2, 98.8], on: [-2.6, 5.5, 95], onTo: [4.5, 6.3, 93], fov: 44 }),
       handheld: 0.018,
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Atmosphere shift to orange dawn: everybody whips their heads east as the horizon catches golden fire.",
+      note: "Dawn whip pan: everybody whips around as golden orange light floods the eastern pines.",
       stage: (t) => {
         const whip = ease(ramp(t, 0.1, 0.45));
         return (
           <>
             <CliffBridge />
-            <ZombieMum position={[-2.2, CLIFF.ledgeY, 95]} rotationY={0.4 + whip * 1.1} shirt="#2d7a78" hat="bow" mood="scared" lean={-0.1 * whip} />
-            <MumChicken position={[-3.6, CLIFF.ledgeY, 95]} rotationY={0.4 + whip * 1.1} flap={whip * 0.5}>
+            <ZombieMum position={[-2.1, CLIFF.ledgeY, 94.8]} rotationY={0.4 + whip * 0.9} shirt="#2d7a78" hat="bow" mood="scared" lean={-0.1 * whip} />
+            <MumChicken position={[-3.0, CLIFF.ledgeY, 95.1]} rotationY={0.4 + whip * 0.9} flap={whip * 0.5}>
               <Hero position={[0, 0, 0]} mood="scared" armPitch={whip > 0.5 ? [-1.5, -0.4] : [-0.2, -0.2]} />
             </MumChicken>
           </>
@@ -74,39 +73,39 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.burn",
-      ...cam.orbit({ on: [-2.8, 5.1, 95], dist: 3.1, distTo: 2.35, yaw: -22, yawTo: 18, pitch: 8, fov: 38 }),
+      ...cam.orbit({ on: [-2.5, 5.15, 95], dist: 3.6, distTo: 2.8, yaw: -16, yawTo: 14, pitch: 10, fov: 42 }),
       handheld: 0.022,
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Panic beat: zombie mums and kids recoil backward shielding their eyes from the rising sun as heat smoke rises.",
+      note: "Panic beat: zombie mums and kids recoil clutching eyes in the orange sun while heat smoke rises.",
       stage: (t) => (
         <>
           <CliffBridge />
-          <ZombieMum position={[-2.1 - hop(t, 0.3, 0.15, 0.4), CLIFF.ledgeY + hop(t, 0.3, 0.18, 0.35), 94.8]} rotationY={Math.PI / 2} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.4, -2.4]} lean={-0.15} />
-          <ZombieKid position={[-2.7, CLIFF.ledgeY + hop(t, 0.45, 0.2, 0.35), 95.6]} rotationY={Math.PI / 2} shirt="#3a7d8c" mood="scared" armPitch={[-2.4, -2.4]} />
-          <MumChicken position={[-3.3, CLIFF.ledgeY, 95.1]} rotationY={Math.PI / 2} flap={0.65}>
+          <ZombieMum position={[-2.0 - hop(t, 0.3, 0.15, 0.4), CLIFF.ledgeY + hop(t, 0.3, 0.18, 0.35), 94.7]} rotationY={Math.PI / 2 - 0.35} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.4, -2.4]} lean={-0.15} />
+          <ZombieKid position={[-2.5, CLIFF.ledgeY + hop(t, 0.45, 0.2, 0.35), 95.4]} rotationY={Math.PI / 2 - 0.35} shirt="#3a7d8c" mood="scared" armPitch={[-2.4, -2.4]} />
+          <MumChicken position={[-3.0, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2 - 0.35} flap={0.65}>
             <Hero position={[0, 0, 0]} mood="scared" armPitch={[-2.3, -2.3]} />
           </MumChicken>
-          <Puffs position={[-2.1, CLIFF.ledgeY + 1.8, 94.8]} color="#ffcf88" count={6} rise={0.7} spread={0.4} size={0.07} speed={1.5} opacity={0.65} />
+          <Puffs position={[-2.0, CLIFF.ledgeY + 1.8, 94.7]} color="#ffcf88" count={6} rise={0.7} spread={0.4} size={0.07} speed={1.5} opacity={0.65} />
         </>
       ),
     },
     {
       cue: "4.bridge",
-      ...cam.truck({ on: [-2.8, 5.1, 95], by: [2.6, 0, 0], dist: 4.1, yaw: 18, pitch: 10, fov: 42 }),
+      ...cam.truck({ on: [-1.8, 5.15, 95], by: [2.6, 0, 0], dist: 4.4, yaw: 16, pitch: 10, fov: 44 }),
       handheld: 0.024,
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Full-speed sprint: the entire class races onto the wooden bridge deck chasing the mums toward safety.",
+      note: "Full-speed tracked bridge sprint: camera tracks 1:1 beside the class racing onto the wooden planks.",
       stage: (t, { p }) => {
         const k = ease(p);
         return (
           <>
             <CliffBridge />
-            <ZombieMum position={[-1.4 + k * 2.5, CLIFF.ledgeY, 94.8]} rotationY={Math.PI / 2} walk={t * 3.4} lean={0.22} shirt="#2d7a78" hat="bow" mood="scared" />
-            <ZombieKid position={[-2.3 + k * 2.5, CLIFF.ledgeY, 94.5]} rotationY={Math.PI / 2} walk={t * 3.6} lean={0.22} shirt="#3a7d8c" mood="scared" />
-            <ZombieKid position={[-2.7 + k * 2.5, CLIFF.ledgeY, 95.5]} rotationY={Math.PI / 2} walk={t * 3.6} lean={0.22} shirt="#548256" mood="scared" />
-            <MumChicken position={[-3.5 + k * 2.5, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2} walk={t * 3.8} flap={0.7}>
+            <ZombieMum position={[-1.0 + k * 2.6, CLIFF.ledgeY, 94.7]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.4} lean={0.22} shirt="#2d7a78" hat="bow" mood="scared" />
+            <ZombieKid position={[-1.6 + k * 2.6, CLIFF.ledgeY, 94.5]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.6} lean={0.22} shirt="#3a7d8c" mood="scared" />
+            <ZombieKid position={[-1.9 + k * 2.6, CLIFF.ledgeY, 95.4]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.6} lean={0.22} shirt="#548256" mood="scared" />
+            <MumChicken position={[-2.4 + k * 2.6, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.8} flap={0.7}>
               <Hero position={[0, 0, 0]} mood="scared" lean={0.2} />
             </MumChicken>
           </>
@@ -115,12 +114,12 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.crack",
-      ...cam.orbit({ on: [1.2, 4.7, 95], dist: 3.4, distTo: 2.8, yaw: 28, yawTo: -10, pitch: 14, fov: 42 }),
+      ...cam.orbit({ on: [0.0, 4.9, 95], dist: 4.2, distTo: 3.4, yaw: 20, yawTo: -10, pitch: 14, fov: 44 }),
       handheld: 0.028,
       impacts: [{ at: snapAt, amp: 0.095, dur: 0.45 }],
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Disaster: the bridge planks snap downward into the ravine with flying wood bits while kids scramble backward.",
+      note: "Bridge snap: planks collapse center-right with flying wood bits while kids and mums scramble back on the left rim.",
       stage: (t) => {
         const broken = t >= snapAt;
         const dropT = broken ? Math.min(1.6, t - snapAt) : 0;
@@ -128,33 +127,33 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <CliffBridge broken={broken} dropT={dropT} />
-            <ZombieMum position={[-1.6 - recoil * 0.4, CLIFF.ledgeY + hop(t, snapAt, 0.22, 0.35), 94.6]} rotationY={Math.PI / 2} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.6, -2.6]} />
-            <ZombieKid position={[-1.9 - recoil * 0.5, CLIFF.ledgeY + hop(t, snapAt + 0.05, 0.25, 0.35), 95.5]} rotationY={Math.PI / 2} shirt="#3a7d8c" mood="scared" armPitch={[-2.5, -2.5]} />
-            <MumChicken position={[-2.6 - recoil * 0.3, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2} flap={broken ? 0.9 : 0.2}>
+            <ZombieMum position={[-1.25 - recoil * 0.3, CLIFF.ledgeY + hop(t, snapAt, 0.22, 0.35), 94.7]} rotationY={Math.PI / 2 - 0.25} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.6, -2.6]} />
+            <ZombieKid position={[-1.5 - recoil * 0.4, CLIFF.ledgeY + hop(t, snapAt + 0.05, 0.25, 0.35), 95.4]} rotationY={Math.PI / 2 - 0.25} shirt="#3a7d8c" mood="scared" armPitch={[-2.5, -2.5]} />
+            <MumChicken position={[-1.9 - recoil * 0.25, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.25} flap={broken ? 0.9 : 0.2}>
               <Hero position={[0, 0, 0]} mood="scared" />
             </MumChicken>
-            <Bits position={[1.6, 4.4, 95]} t={t - snapAt} color="#8a5e39" count={18} power={4.5} />
-            {broken && <Puffs position={[1.6, 4.5, 95]} color="#d8c3a5" count={8} spread={0.7} size={0.11} speed={1.8} opacity={0.75} />}
+            <Bits position={[1.2, 4.4, 95]} t={t - snapAt} color="#8a5e39" count={18} power={4.5} />
+            {broken && <Puffs position={[1.2, 4.5, 95]} color="#d8c3a5" count={8} spread={0.7} size={0.11} speed={1.8} opacity={0.75} />}
           </>
         );
       },
     },
     {
       cue: "4.heavy",
-      ...cam.push({ on: [-0.8, 5.1, 95], dist: 3.4, to: 2.5, yaw: 24, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [-1.4, 5.15, 95], dist: 3.6, to: 2.8, yaw: 20, pitch: 10, fov: 42 }),
       handheld: 0.024,
       impacts: [{ at: jumpAt + 0.3, amp: 0.085, dur: 0.35 }],
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Big zombie mum charges the gap, leaps forward, and skids back onto the stone rim in a cloud of dust.",
+      note: "Big zombie mum charges the broken edge, leaps, and drops heavy back onto the stone rim with flying pebbles.",
       stage: (t) => {
         const lunge = Math.sin(ramp(t, jumpAt, jumpAt + 0.65) * Math.PI);
         return (
           <>
             <CliffBridge broken dropT={1.5} />
             <ZombieMum
-              position={[-1.7 + lunge * 0.9, CLIFF.ledgeY + lunge * 0.52, 95]}
-              rotationY={Math.PI / 2}
+              position={[-1.7 + lunge * 0.85, CLIFF.ledgeY + lunge * 0.52, 95]}
+              rotationY={Math.PI / 2 - 0.25}
               walk={t * 2.5}
               shirt="#2d7a78"
               hat="bow"
@@ -162,7 +161,7 @@ export const scene4 = storyScene(timing, {
               lean={0.3 - lunge * 0.45}
               armPitch={[-2.6, -2.6]}
             />
-            <ZombieKid position={[-2.9, CLIFF.ledgeY + hop(t, jumpAt + 0.2, 0.2, 0.3), 95.6]} rotationY={Math.PI / 2} shirt="#3a7d8c" mood="scared" />
+            <ZombieKid position={[-2.4, CLIFF.ledgeY + hop(t, jumpAt + 0.2, 0.2, 0.3), 95.4]} rotationY={Math.PI / 2 - 0.25} shirt="#3a7d8c" mood="scared" />
             <Bits position={[-1.0, 4.6, 95]} t={t - (jumpAt + 0.3)} color="#7a828f" count={10} power={2.5} />
           </>
         );
@@ -170,21 +169,20 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.wings",
-      ...cam.orbit({ on: [-2.2, 5.2, 95], dist: 3.9, distTo: 2.9, yaw: 26, yawTo: -18, pitch: 12, fov: 42 }),
+      ...cam.orbit({ on: [-2.4, 5.2, 95], dist: 4.2, distTo: 3.3, yaw: 22, yawTo: -14, pitch: 12, fov: 44 }),
       handheld: 0.02,
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Desperate tick: a golden beam sweeps onto the pine cliff as panicked kids wave arms and huddle back.",
+      note: "Golden beam sweeps onto the cliff rim as panicked kids wave arms and huddle back.",
       stage: (t, { p }) => {
-        const sunX = 3.2 - ease(p) * 3.8;
+        const sunX = 2.8 - ease(p) * 3.8;
         return (
           <>
             <CliffBridge broken dropT={1.5} />
             <Block position={[sunX, 4.6, 95]} size={[3.4, 0.04, 5.2]} color="#ffe28a" />
-            <ZombieMum position={[-2.0, CLIFF.ledgeY + hop(t, 0.4, 0.14, 0.3), 94.5]} rotationY={Math.PI / 2} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.4, -1.8]} />
-            <ZombieKid position={[-2.6, CLIFF.ledgeY + hop(t, 0.7, 0.18, 0.3), 95.6]} rotationY={Math.PI / 2} shirt="#3a7d8c" mood="scared" armPitch={[-2.6, -2.6]} />
-            <ZombieKid position={[-3.1, CLIFF.ledgeY + hop(t, 1.0, 0.18, 0.3), 94.4]} rotationY={Math.PI / 2} shirt="#548256" mood="scared" armPitch={[-2.6, -2.6]} />
-            <MumChicken position={[-3.3, CLIFF.ledgeY, 95.1]} rotationY={Math.PI / 2} flap={0.45}>
+            <ZombieMum position={[-2.0, CLIFF.ledgeY + hop(t, 0.4, 0.14, 0.3), 94.6]} rotationY={Math.PI / 2 - 0.25} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.4, -1.8]} />
+            <ZombieKid position={[-2.4, CLIFF.ledgeY + hop(t, 0.7, 0.18, 0.3), 95.4]} rotationY={Math.PI / 2 - 0.25} shirt="#3a7d8c" mood="scared" armPitch={[-2.6, -2.6]} />
+            <MumChicken position={[-2.9, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2 - 0.25} flap={0.45}>
               <Hero position={[0, 0, 0]} mood="scared" tilt={Math.sin(t * 10) * 0.1} />
             </MumChicken>
           </>
