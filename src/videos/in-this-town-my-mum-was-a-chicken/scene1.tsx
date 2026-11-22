@@ -36,7 +36,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.chicken",
-      ...cam.orbit({ on: [0, 0.68, 0.7], dist: 2.35, distTo: 1.75, yaw: -16, yawTo: 20, pitch: 4, fov: 36 }),
+      ...cam.orbit({ on: [0, 0.78, 0.7], dist: 2.75, distTo: 2.25, yaw: -16, yawTo: 20, pitch: 6, fov: 40 }),
       handheld: 0.018,
       impacts: [{ at: 0.25, amp: 0.035, dur: 0.25 }],
       look: "overworld-night",

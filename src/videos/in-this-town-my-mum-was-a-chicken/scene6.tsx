@@ -29,7 +29,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.safe",
-      ...cam.orbit({ on: [2.2, 0.7, 95], dist: 2.8, distTo: 2.1, yaw: 18, yawTo: -16, pitch: 8, fov: 38 }),
+      ...cam.orbit({ on: [2.2, 0.85, 95], dist: 3.2, distTo: 2.4, yaw: 18, yawTo: -16, pitch: 8, fov: 40 }),
       handheld: 0.015,
       impacts: [{ at: 0.35, amp: 0.055, dur: 0.3 }],
       look: "overworld-sunset",
@@ -38,7 +38,7 @@ export const scene6 = storyScene(timing, {
       stage: (t, { p }) => {
         const land = ease(ramp(p, 0, 0.38));
         const hopOff = ease(ramp(p, 0.48, 0.85));
-        const y = 0.05 + (1 - land) * 1.45;
+        const y = 0.05 + (1 - land) * 0.72;
         return (
           <>
             <CliffBridge broken dropT={1.7} />

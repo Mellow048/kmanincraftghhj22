@@ -9,7 +9,7 @@ export const scene8 = storyScene(timing, {
   shots: [
     {
       cue: "8.sub",
-      ...cam.push({ on: [8.85, 6.18, -5.05], dist: 2.7, to: 2.2, yaw: 14, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [8.85, 6.32, -4.95], dist: 2.9, to: 2.35, yaw: 10, pitch: 8, fov: 42 }),
       handheld: 0.015,
       impacts: [{ at: hatchAt, amp: 0.055, dur: 0.3 }],
       look: "overworld-night",
@@ -21,8 +21,8 @@ export const scene8 = storyScene(timing, {
         const babyX = 8.75 + ease(ramp(t, hatchAt, hatchAt + 0.5)) * 0.15;
         return (
           <>
-            <Hero position={[9.28, GATE.roofTopY + 0.12, -4.95]} rotationY={SOUTH} mood="happy" wave={1} tilt={Math.sin(t * 5) * 0.08} />
-            <MumChicken position={[8.42, GATE.roofTopY + 0.12, -5.0]} rotationY={0.4} flap={hatched ? 0.65 : 0.15} />
+            <Hero position={[9.42, GATE.roofTopY + 0.12, -5.05]} rotationY={SOUTH} mood="happy" wave={1} tilt={Math.sin(t * 5) * 0.08} />
+            <MumChicken position={[8.35, GATE.roofTopY + 0.12, -5.05]} rotationY={0.4} flap={hatched ? 0.65 : 0.15} />
             <WhiteEgg position={[8.75, GATE.roofTopY + 0.13, -5.32]} wobble={hatched ? 0 : 1.1} cracked={hatched} />
             {hatched && (
               <>
@@ -32,7 +32,7 @@ export const scene8 = storyScene(timing, {
                 <SoundRings position={[8.75, 5.9, -5.32]} t={(t - hatchAt) * 1.4} color="#ffe08a" reach={0.85} />
               </>
             )}
-            <SubscribeSign position={[8.85, GATE.roofTopY + 1.0 + Math.sin(t * 5) * 0.04, -5.15]} scale={0.42 * pop(t, 0.12)} tilt={Math.sin(t * 3.5) * 0.04} />
+            <SubscribeSign position={[8.85, GATE.roofTopY + 1.32 + Math.sin(t * 5) * 0.04, -4.75]} scale={0.42 * pop(t, 0.12)} tilt={Math.sin(t * 3.5) * 0.04} />
           </>
         );
       },
