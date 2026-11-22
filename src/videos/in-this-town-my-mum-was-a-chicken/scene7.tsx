@@ -23,14 +23,14 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.under",
-      ...cam.orbit({ on: [-9.2, 0.65, -2.4], dist: 2.2, distTo: 1.75, yaw: -24, yawTo: 12, pitch: -8, fov: 36 }),
+      ...cam.orbit({ on: [-9.2, 1.1, -1.8], dist: 2.8, distTo: 2.2, yaw: -16, yawTo: 18, pitch: -10, fov: 40 }),
       look: "overworld-day",
       zone: "village",
       note: "Low reverse under the oak tree looking up with mum—she was always standing ready to catch him.",
       stage: (t, { p }) => (
         <>
-          <Hero position={[-9.2, 3.15, -2.6]} rotationY={SOUTH} mood="happy" wave={0.4 + p * 0.3} lookAt={[-9.2, 0.4, -2.4]} />
-          <MumChicken position={[-9.2, PATH_TOP, -2.4]} rotationY={0} headPitch={-0.12 - Math.sin(t * 2.4) * 0.08} lookAt={[-9.2, 3.3, -2.6]} />
+          <Hero position={[-9.2, 3.15, -1.9]} rotationY={SOUTH} mood="happy" wave={0.4 + p * 0.3} lookAt={[-9.2, 0.4, -1.75]} />
+          <MumChicken position={[-9.2, PATH_TOP, -1.75]} rotationY={0} headPitch={-0.12 - Math.sin(t * 2.4) * 0.08} lookAt={[-9.2, 3.3, -1.9]} />
         </>
       ),
     },

@@ -24,20 +24,43 @@ const Village: React.FC = () => (
     <Fence from={[-11, 0, -1.2]} to={[-2.4, 0, -1.2]} height={1.1} gap={1.8} />
     <Fence from={[2.4, 0, -1.2]} to={[12, 0, -1.2]} height={1.1} gap={1.8} />
 
-    {/* North houses: schoolhouse, break-door house, and the tall home with the rooftop nest */}
+    {/* North houses: schoolhouse, break-door house, and the flat-roofed tall house with the rooftop nest */}
     <Hut at={[-6.5, 0, -5]} w={6} h={3.6} wall="cobble" roof="#5a4a6a" windows={[-1.8, 1.8]} lit />
     <Hut at={[0, 0, -5.8]} w={8.5} d={6.5} h={4.4} roof="#6b3428" windows={[-2.6, 2.6]} lit />
-    <Hut at={GATE.tallHouse} w={6.4} d={6.4} h={GATE.roofTopY} tint="#b89864" roof="#3a5e3c" windows={[-1.8, 1.8]} lit />
-    {/* Flat roof platform + straw nest on the tallest roof */}
-    <Vox kind="planks" tint="#734c2b" position={[GATE.tallHouse[0], GATE.roofTopY - 0.15, GATE.tallHouse[2]]} size={[6.6, 0.3, 6.6]} />
+    {/* Flat-roofed tall house centered at GATE.tallHouse = [8.8, 0, -5] with terrace at y = GATE.roofTopY (5.4) */}
+    <group position={GATE.tallHouse}>
+      <Vox kind="cobble" position={[0, 0.5, 0]} size={[6.6, 1.0, 6.6]} />
+      <Vox kind="planks" tint="#b89864" position={[0, 3.05, 0]} size={[6.4, 4.1, 6.4]} />
+      <Vox kind="planks" tint="#734c2b" position={[0, GATE.roofTopY - 0.15, 0]} size={[6.7, 0.3, 6.7]} />
+      {/* Corner log pillars */}
+      {[-3.1, 3.1].map((cx) =>
+        [-3.1, 3.1].map((cz) => (
+          <Vox key={`${cx},${cz}`} kind="log" position={[cx, GATE.roofTopY / 2, cz]} size={[0.5, GATE.roofTopY + 0.1, 0.5]} />
+        )),
+      )}
+      {/* Low rooftop parapet posts on corners so the nest stays open to the sky */}
+      {[-3.1, 3.1].map((cx) =>
+        [-3.1, 3.1].map((cz) => (
+          <Vox key={`p${cx},${cz}`} kind="cobble" position={[cx, GATE.roofTopY + 0.25, cz]} size={[0.55, 0.5, 0.55]} />
+        )),
+      )}
+      {/* Warm glowing south & west windows */}
+      {[-1.6, 1.6].map((wx) => (
+        <Block key={`ws${wx}`} position={[wx, 2.6, 3.22]} size={[1.1, 1.1, 0.06]} color="#ffd982" emissive="#ffb940" emissiveIntensity={1.6} />
+      ))}
+      <Block position={[-3.22, 2.6, 0]} size={[0.06, 1.1, 1.2]} color="#ffd982" emissive="#ffb940" emissiveIntensity={1.6} />
+    </group>
     <StrawNest position={GATE.nest} scale={1.15} />
+    <LanternPost position={[11.1, GATE.roofTopY, -7.1]} light={2.8} seed={5} />
+    <LightPool position={[8.8, GATE.roofTopY + 0.02, -5.0]} width={5.8} depth={5.8} color="#ffd99a" opacity={0.22} />
 
     {/* South houses behind camera for reflections & reverse shots */}
     <Hut at={[-9, 0, 11]} w={6.5} roof="#3d5f9a" windows={[-1.8, 1.8]} turn={Math.PI} lit />
     <Hut at={[7, 0, 11.5]} w={7} tint="#c9aa76" roof="#7a3428" windows={[-2, 2]} turn={Math.PI} lit />
 
-    {/* Climbing oak tree on the west side */}
+    {/* Climbing oak tree on the west side + lantern near base */}
     <Tree position={GATE.climbTree} height={5.2} leaf="#376e2b" />
+    <LanternPost position={[-7.3, 0, -1.2]} light={2.2} seed={6} />
     {/* Corner hedge/bush for 1.corner */}
     <Vox kind="grass" tint="#2f6626" position={[-3.8, 0.55, 1.2]} size={[1.4, 1.1, 1.4]} />
 

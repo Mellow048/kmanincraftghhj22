@@ -9,7 +9,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "6.float",
-      ...cam.truck({ on: [0.3, 4.2, 95], by: [1.5, -1.8, 0], dist: 3.4, yaw: 24, pitch: 8, fov: 42 }),
+      ...cam.truck({ on: [0.3, 4.45, 95], by: [1.5, -1.8, 0], dist: 4.3, yaw: 26, pitch: 10, fov: 44 }),
       look: "overworld-sunset",
       zone: "cliff",
       note: "Sweeping mid-air glide past the canyon wall: white wings open wide and flap gently as they float downward instead of falling.",
@@ -30,18 +30,18 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.safe",
-      ...cam.push({ on: [2.2, 0.55, 95], dist: 2.3, to: 1.75, yaw: -26, pitch: -4, fov: 38 }),
+      ...cam.push({ on: [2.0, 0.65, 95], dist: 2.8, to: 2.1, yaw: 10, pitch: 6, fov: 40 }),
       look: "overworld-sunset",
       zone: "cliff",
       note: "Low valley floor shot: feather-soft touchdown on green grass with zero damage—Hero beams and pats her back.",
       stage: (t, { p }) => {
         const land = ease(ramp(p, 0, 0.45));
-        const y = 1.6 * (1 - land) + 0.05;
+        const y = 0.85 * (1 - land) + 0.05;
         const squash = jolt(t, 0.9, 0.14);
         return (
           <>
             <CliffBridge broken dropT={1.5} />
-            <MumChicken position={[2.2, y, 95]} rotationY={0.4} flap={land < 0.95 ? 1 : 0} crouch={Math.abs(squash)}>
+            <MumChicken position={[2.0, y, 95]} rotationY={0.2} flap={land < 0.95 ? 1 : 0} crouch={Math.abs(squash)}>
               <Hero position={[0, 0, 0]} mood="happy" wave={land > 0.95 ? 0.8 : 0} />
             </MumChicken>
           </>
@@ -69,7 +69,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.more",
-      ...cam.push({ on: [2.0, 1.4, 95], dist: 4.2, to: 3.2, yaw: -22, pitch: -14, fov: 42 }),
+      ...cam.push({ on: [2.0, 1.4, 95], dist: 4.2, to: 3.2, yaw: 12, pitch: -10, fov: 42 }),
       look: "overworld-sunset",
       zone: "cliff",
       note: "Low valley reverse looking up as she swoops down with Mia while rescued zombie kids cheer along the grass.",

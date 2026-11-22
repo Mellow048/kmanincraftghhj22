@@ -55,7 +55,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.homework",
-      ...cam.top({ on: [-0.9, 0.7, 44.2], height: 2.1, to: 1.55, spin: [0, 8], fov: 38 }),
+      ...cam.top({ on: [-0.9, 0.7, 44.3], height: 3.1, to: 2.35, spin: [0, 8], fov: 40 }),
       look: "lantern-night",
       zone: "school",
       note: "Top-down odd angle onto the wooden desk: mum hops up and gobbles the white homework sheet.",
@@ -114,18 +114,18 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.under",
-      ...cam.push({ on: [-9.2, 2.2, -3.5], dist: 4.5, to: 3.8, yaw: 24, pitch: 38, fov: 44 }),
+      ...cam.push({ on: [-9.2, 1.8, -1.85], dist: 4.8, to: 3.9, yaw: 24, pitch: 28, fov: 44 }),
       look: "overworld-night",
       zone: "village",
       note: "Odd high angle down past the oak branch: Hero climbs high and spots his chicken mum staring straight up from directly underneath.",
       stage: (t) => (
         <>
-          <Hero position={[-9.2, 3.15, -2.6]} rotationY={SOUTH} mood="calm" tilt={0.1} lookAt={[-9.2, 0.4, -2.4]} />
+          <Hero position={[-9.2, 3.15, -1.9]} rotationY={SOUTH} mood="calm" tilt={0.1} lookAt={[-9.2, 0.4, -1.75]} />
           <MumChicken
-            position={[-9.2, PATH_TOP, -2.4]}
+            position={[-9.2, PATH_TOP, -1.75]}
             rotationY={0}
             walk={t < underLook ? t * 0.8 : 0}
-            lookAt={[-9.2, 3.6, -2.6]}
+            lookAt={[-9.2, 3.6, -1.9]}
           />
         </>
       ),

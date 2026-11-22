@@ -59,7 +59,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.crates",
-      ...cam.push({ on: [0.0, 1.35, 0.8], dist: 2.9, to: 2.3, yaw: -22, pitch: 10, fov: 40 }),
+      ...cam.push({ on: [0.0, 1.55, 0.8], dist: 3.4, to: 2.75, yaw: -22, pitch: 10, fov: 40 }),
       look: "overworld-night",
       zone: "village",
       note: "Hero wobbles on top of two stacked wooden crates trying to look tall enough to walk through the gate.",
