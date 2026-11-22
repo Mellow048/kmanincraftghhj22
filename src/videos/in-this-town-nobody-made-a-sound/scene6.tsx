@@ -60,7 +60,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.grand",
-      ...cam.push({ on: [HER[0], PLACE.towerIn + 1.5, HER[2]], dist: 5.6, to: 4.6, yaw: 8, pitch: 3, fov: 40 }),
+      ...cam.push({ on: [HER[0] - 0.1, PLACE.towerIn + 2.5, HER[2] + 0.6], dist: 7.6, to: 6.4, yaw: 5, pitch: 1, fov: 42 }),
       zone: "tower",
       look: "overworld-night",
       note: "She is at the rope with her back half to us, the bell above her, and the moon through the open south side. The lens knows who it is before he does.",

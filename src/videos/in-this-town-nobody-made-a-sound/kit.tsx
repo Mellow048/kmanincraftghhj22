@@ -145,8 +145,8 @@ export const HungBell: React.FC<{ at: Vec3; swing?: number; blanket?: number; y?
     {/* the bell swings about the beam */}
     <group rotation={[0, 0, swing]} position={[0, 0.55, 0]}>
       <Block position={[0, -0.16, 0]} size={[0.14, 0.5, 0.14]} color="#5d4428" />
-      <Block position={[0, -0.62, 0]} size={[0.62, 0.5, 0.62]} color="#e8c44a" metalness={0.55} roughness={0.35} />
-      <Block position={[0, -0.98, 0]} size={[0.86, 0.26, 0.86]} color="#d9b23a" metalness={0.55} roughness={0.35} />
+      <Block position={[0, -0.62, 0]} size={[0.62, 0.5, 0.62]} color="#e8c44a" emissive="#4a3a10" emissiveIntensity={0.5} metalness={0.55} roughness={0.35} />
+      <Block position={[0, -0.98, 0]} size={[0.86, 0.26, 0.86]} color="#d9b23a" emissive="#4a3a10" emissiveIntensity={0.5} metalness={0.55} roughness={0.35} />
       <Block position={[0, -1.1, 0]} size={[0.96, 0.04, 0.96]} color="#b8952f" metalness={0.5} roughness={0.45} />
       <Block position={[0, -1.24, 0]} size={[0.16, 0.24, 0.16]} color="#8a6f22" />
       {/* the black blanket, thrown over it: `blanket` is how far down it has slid */}
@@ -205,9 +205,9 @@ export const ThingBelow: React.FC<{ at: Vec3; awake?: number; t?: number }> = ({
   return (
     <group position={at}>
       {/* the mass, rooted to the ground, wider than the lens */}
-      <Block position={[0, 1.5 + breath, -0.4]} size={[13, 3, 9]} color="#cdc4ae" roughness={1} />
-      <Block position={[0, 3.1 + breath, -1.6]} size={[10.4, 1.5, 7]} color="#d6cdb7" roughness={1} />
-      <Block position={[0, 4.0 + breath, -2.6]} size={[7.4, 1.2, 5]} color="#ded5bf" roughness={1} />
+      <Block position={[0, 1.5 + breath, -0.4]} size={[13, 3, 9]} color="#e6ddc6" roughness={1} />
+      <Block position={[0, 3.1 + breath, -1.6]} size={[10.4, 1.5, 7]} color="#efe6d0" roughness={1} />
+      <Block position={[0, 4.0 + breath, -2.6]} size={[7.4, 1.2, 5]} color="#f5ecd6" roughness={1} />
       {/* wool growing on it, in tufts */}
       {[
         [-4.6, 2.9, 3.0, 1.5],
@@ -229,7 +229,7 @@ export const ThingBelow: React.FC<{ at: Vec3; awake?: number; t?: number }> = ({
       {[-2.3, 2.3].map((x, i) => (
         <group key={i} position={[x, 3.0 + breath, 4.18]}>
           <Block position={[0, 0, 0]} size={[1.5, 1.5, 0.14]} color="#7d7566" roughness={1} />
-          <Block position={[0, 0, 0.1]} size={[1.14, 1.14 * eye, 0.1]} color="#8ef2de" roughness={0.6} />
+          <Block position={[0, 0, 0.1]} size={[1.14, 1.14 * eye, 0.1]} color="#8ef2de" emissive="#5fe8d0" emissiveIntensity={1.6} roughness={0.6} />
           <Block position={[0, 0, 0.16]} size={[0.44, 0.44 * eye, 0.08]} color="#16302c" roughness={0.5} />
           {/* the lid comes down over it */}
           <Block position={[0, 0.62 - 0.62 * eye * 0.5, 0.2]} size={[1.54, 0.62 * (1 - eye * 0.5) + 0.02 + lids * 0.04, 0.1]} color="#bdb49f" roughness={1} />
