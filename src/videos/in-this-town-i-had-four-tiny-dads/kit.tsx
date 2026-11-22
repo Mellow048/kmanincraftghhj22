@@ -99,9 +99,18 @@ export const posed = (clip: Parameters<typeof getPose>[0], t: number, patch: Par
 });
 
 // ----------------------------------------------------------------------------- Cast
+// NOTE: In Topics/InThisTown/monsters.tsx, Slime `size` is its width in METRES:
+//   - TinyDad        : 0.38 m (knee-high beside a 1.28 m kid)
+//   - BigSlimeDad    : 0.78 m (medium slime after 1st split)
+//   - GrandpaSlime   : 0.98 m (elder slime)
+//   - OriginalBigDad : 1.42 m (big slime dad — taller than a kid, fits cleanly in 9:16)
 
-/** Our human kid hero: warm amber-orange hoodie so he pops against lime slimes, cobble, night fog & deep water. */
-export const Hero: React.FC<MinecraftAvatarProps> = ({ scale = KID, ...props }) => (
+export const TINY_M = 0.38;
+export const MED_M = 0.78;
+export const BIG_M = 1.42;
+
+/** Human kid hero: warm amber-orange hoodie so he pops against green slimes, stone, night & water. */
+export const Hero: React.FC<MinecraftAvatarProps> = ({ scale = KID, face = "smile", ...props }) => (
   <MinecraftAvatar
     scale={scale}
     skin="#f1c29b"
@@ -109,7 +118,7 @@ export const Hero: React.FC<MinecraftAvatarProps> = ({ scale = KID, ...props }) 
     outfit="hoodie"
     colors={{ torso: "#f07c2e", arms: "#f07c2e", legs: "#314c6e" }}
     shoes="#f4f2ec"
-    face="smile"
+    face={face === "laugh" ? "grin" : face}
     blink
     {...props}
   />
@@ -123,21 +132,20 @@ export const BabyHero: React.FC<{ position?: Vec3; rotationY?: number; reach?: n
   cry = false,
 }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
-    {/* Warm patched blanket swaddle */}
-    <Vox kind="wool" tint="#e8833a" position={[0, 0.14, 0]} size={[0.32, 0.24, 0.36]} />
-    <Vox kind="wool" tint="#5da844" position={[0, 0.15, 0.04]} size={[0.34, 0.1, 0.22]} />
+    <Vox kind="wool" tint="#e8833a" position={[0, 0.14, 0]} size={[0.32, 0.22, 0.34]} />
+    <Vox kind="wool" tint="#3b78bd" position={[0, 0.15, 0.03]} size={[0.34, 0.1, 0.22]} />
     <MinecraftAvatar
       position={[0, 0.02, 0.02]}
-      scale={0.42}
+      scale={0.4}
       skin="#f1c29b"
       hair="#4a2e1b"
       outfit="gown"
-      colors={{ torso: "#f07c2e", arms: "#f07c2e", legs: "#e8833a" }}
-      face={cry ? "crying" : "wow"}
+      colors={{ torso: "#3b78bd", arms: "#3b78bd", legs: "#e8833a" }}
+      face={cry ? "crying" : "smile"}
       pose={{
         ...getPose("sit", 0),
-        armR: [-0.9 - reach * 0.7, 0, 0.2],
-        armL: [-0.85 - reach * 0.7, 0, -0.2],
+        armR: [-0.85 - reach * 0.65, 0, 0.2],
+        armL: [-0.8 - reach * 0.65, 0, -0.2],
       }}
     />
   </group>
@@ -145,17 +153,17 @@ export const BabyHero: React.FC<{ position?: Vec3; rotationY?: number; reach?: n
 
 export type DadId = 1 | 2 | 3 | 4;
 
-const DAD_STYLE: Record<
-  DadId,
-  { color: string; hat?: "straw" | "bow"; scarf?: string; tie?: boolean; specs?: boolean; phase: number }
-> = {
-  1: { color: "#6fd84a", hat: "straw", phase: 0.2 },
-  2: { color: "#63cc42", specs: true, phase: 1.4 },
-  3: { color: "#79df54", scarf: "#2f74d0", tie: true, phase: 2.6 },
-  4: { color: "#5bc43c", hat: "bow", scarf: "#f2c138", phase: 3.7 },
+const DAD_COLORS: Record<DadId, { color: string; phase: number }> = {
+  1: { color: "#6fd84a", phase: 0.2 },
+  2: { color: "#62cc40", phase: 1.4 },
+  3: { color: "#78df52", phase: 2.6 },
+  4: { color: "#5bc43c", phase: 3.7 },
 };
 
-/** One of our 4 distinct tiny slime dads (`size = 1` -> 0.5m cube). */
+/**
+ * One of our 4 distinct knee-high tiny slime dads (`0.38 m` cube):
+ *   #1 miniature straw hat · #2 dark spectacles · #3 crooked blue necktie · #4 red-and-gold cap
+ */
 export const TinyDad: React.FC<
   Omit<MonsterProps, "hat" | "scarf"> & {
     which: DadId;
@@ -163,39 +171,45 @@ export const TinyDad: React.FC<
     hop?: number;
   }
 > = ({ which, position = [0, 0, 0], rotationY = 0, scale = 1, squash = 0, hop = 0, mood = "happy", ...rest }) => {
-  const st = DAD_STYLE[which];
+  const st = DAD_COLORS[which];
   const sy = 1 - squash * 0.32;
-  const topY = 0.5 * sy;
+  const sx = 1 + squash * 0.2;
+  const topY = TINY_M * sy;
+  const frontZ = TINY_M * 0.505 * sx;
   return (
     <group position={[position[0], position[1] + Math.max(0, hop), position[2]]} rotation={[0, rotationY, 0]} scale={scale}>
-      <Slime
-        size={1}
-        color={st.color}
-        hat={st.hat}
-        scarf={st.scarf}
-        phase={st.phase}
-        squash={squash}
-        mood={mood}
-        {...rest}
-      />
-      {st.specs ? (
-        <group position={[0, topY * 0.62, 0.255 * (1 + squash * 0.22)]}>
-          <Block position={[-0.085, 0, 0]} size={[0.09, 0.065, 0.02]} color="#2b2118" />
-          <Block position={[0.085, 0, 0]} size={[0.09, 0.065, 0.02]} color="#2b2118" />
-          <Block position={[0, 0.01, 0]} size={[0.08, 0.02, 0.02]} color="#2b2118" />
+      <Slime size={TINY_M} color={st.color} phase={st.phase} squash={squash} mood={mood} {...rest} />
+      {which === 1 ? (
+        <group position={[0, topY, 0]}>
+          <Block position={[0, 0.015, 0]} size={[0.44, 0.03, 0.44]} color="#e5c158" />
+          <Block position={[0, 0.055, 0]} size={[0.26, 0.07, 0.26]} color="#d8b248" />
+          <Block position={[0, 0.032, 0]} size={[0.27, 0.022, 0.27]} color="#c93b2b" />
         </group>
       ) : null}
-      {st.tie ? (
-        <group position={[0.02, topY * 0.24, 0.26 * (1 + squash * 0.22)]} rotation={[0, 0, 0.16]}>
-          <Block position={[0, 0, 0]} size={[0.065, 0.14, 0.025]} color="#2563eb" />
-          <Block position={[0, 0.06, 0.005]} size={[0.085, 0.045, 0.025]} color="#1d4ed8" />
+      {which === 2 ? (
+        <group position={[0, topY * 0.62, frontZ]}>
+          <Block position={[-0.08, 0, 0]} size={[0.085, 0.06, 0.02]} color="#1f1916" />
+          <Block position={[0.08, 0, 0]} size={[0.085, 0.06, 0.02]} color="#1f1916" />
+          <Block position={[0, 0.01, 0]} size={[0.07, 0.018, 0.02]} color="#1f1916" />
+        </group>
+      ) : null}
+      {which === 3 ? (
+        <group position={[0.015, topY * 0.28, frontZ]} rotation={[0, 0, 0.18]}>
+          <Block position={[0, 0.048, 0]} size={[0.075, 0.036, 0.022]} color="#1d4ed8" />
+          <Block position={[0, -0.018, 0]} size={[0.055, 0.11, 0.02]} color="#2563eb" />
+        </group>
+      ) : null}
+      {which === 4 ? (
+        <group position={[0, topY, 0]}>
+          <Block position={[0, 0.032, 0]} size={[0.24, 0.06, 0.24]} color="#e04838" />
+          <Block position={[0, 0.015, 0.12]} size={[0.22, 0.022, 0.1]} color="#f2c138" />
         </group>
       ) : null}
     </group>
   );
 };
 
-/** All 4 tiny dads stacked in a wobbly vertical tower (~2.0m tall) to reach counters or pat the kid's head! */
+/** All 4 tiny dads stacked into a wobbling ~1.5 m totem (every face & accessory clearly separated!). */
 export const DadStack: React.FC<{
   position?: Vec3;
   rotationY?: number;
@@ -204,57 +218,124 @@ export const DadStack: React.FC<{
   mood?: Mood;
   topLean?: number;
 }> = ({ position = [0, 0, 0], rotationY = 0, sway = 0, squash = 0, mood = "happy", topLean = 0 }) => {
-  const step = 0.48 * (1 - squash * 0.22);
+  const step = 0.37 * (1 - squash * 0.2);
   return (
     <group position={position} rotation={[0, rotationY, 0]}>
-      <TinyDad which={1} position={[0, 0, 0]} squash={squash * 1.15} mood={mood} />
-      <TinyDad which={2} position={[sway * 0.06, step, 0]} squash={squash} mood={mood} />
-      <TinyDad which={3} position={[sway * 0.13, step * 2, 0.02]} squash={squash * 0.9} mood={mood} />
+      <TinyDad which={1} position={[0, 0, 0]} squash={squash * 1.1} mood={mood} />
+      <TinyDad which={2} position={[sway * 0.05, step, 0]} squash={squash} mood={mood} />
+      <TinyDad which={3} position={[sway * 0.1, step * 2, 0.01]} squash={squash * 0.9} mood={mood} />
       <TinyDad
         which={4}
-        position={[sway * 0.2, step * 3, 0.05 + topLean * 0.14]}
+        position={[sway * 0.15, step * 3, 0.03 + topLean * 0.1]}
         squash={squash * 0.85}
         mood={mood}
-        nod={topLean * 0.45}
+        nod={topLean * 0.35}
       />
     </group>
   );
 };
 
-/** Medium 2-block slime dad (two of these split into our 4 tiny dads during the golem attack). */
+/**
+ * Fused/Medium Big Slime Dad (`0.88 m` cube) wearing Dad #3's crooked blue necktie on his front chest!
+ * Supports `scale`, `nod`, and `cracked` for the bridge battle (`6.fuse`..`6.split`).
+ */
 export const BigSlimeDad: React.FC<{
   position?: Vec3;
   rotationY?: number;
   which?: 1 | 2;
+  scale?: number;
   squash?: number;
+  nod?: number;
+  cracked?: number;
   mood?: Mood;
-}> = ({ position = [0, 0, 0], rotationY = 0, which = 1, squash = 0, mood = "scared" }) => (
-  <Slime
-    position={position}
-    rotationY={rotationY}
-    size={2}
-    color={which === 1 ? "#69d446" : "#5cc63d"}
-    hat={which === 1 ? "straw" : undefined}
-    scarf={which === 1 ? "#3b7dd8" : "#d94e4e"}
-    squash={squash}
-    mood={mood}
-  />
-);
+}> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  which = 1,
+  scale = 1,
+  squash = 0,
+  nod = 0,
+  cracked = 0,
+  mood = "scared",
+}) => {
+  const s = 0.88;
+  const sy = 1 - squash * 0.32;
+  const sx = 1 + squash * 0.2;
+  const fz = s * 0.508 * sx;
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      <Slime
+        size={s}
+        color={which === 1 ? "#69d446" : "#5cc63d"}
+        squash={squash}
+        nod={nod}
+        mood={mood}
+      />
+      {/* Dad #3's crooked blue necktie right on Big Dad's chest */}
+      <group position={[0.03, s * 0.28 * sy, fz]} rotation={[0, 0, 0.18]}>
+        <Block position={[0, 0.09, 0]} size={[0.14, 0.065, 0.025]} color="#1d4ed8" />
+        <Block position={[0, -0.035, 0]} size={[0.1, 0.21, 0.022]} color="#2563eb" />
+      </group>
+      {cracked > 0.05 ? (
+        <group position={[0, s * 0.55 * sy, fz + 0.004]}>
+          <Block position={[-0.12, 0.08, 0]} rotation={[0, 0, 0.42]} size={[0.28 * cracked, 0.035, 0.02]} color="#d9ffd0" />
+          <Block position={[0.1, -0.06, 0]} rotation={[0, 0, -0.5]} size={[0.26 * cracked, 0.035, 0.02]} color="#d9ffd0" />
+        </group>
+      ) : null}
+    </group>
+  );
+};
 
-/** Original 2-block big slime dad (`size = 3.8` -> 1.9m cube) before he ever split! */
+/**
+ * Fake Big Slime "Jelly Suit" built out of slimeballs (`4.tie`, `4.melt`):
+ * wobbles with Dad #3's crooked blue tie on its chest, then slumps sideways into a puddle!
+ */
+export const JellySuitDad: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  melt?: number;
+  wobble?: number;
+}> = ({ position = [0, 0, 0], rotationY = 0, melt = 0, wobble = 0 }) => {
+  const s = 1.18;
+  const slumpY = Math.max(0.18, 1 - melt * 0.78);
+  const spreadX = 1 + melt * 0.85;
+  const tiltZ = melt * 0.38 + Math.sin(wobble * 6) * 0.05 * (1 - melt);
+  return (
+    <group position={position} rotation={[0, rotationY, 0]}>
+      <group scale={[spreadX, slumpY, spreadX]} rotation={[0, 0, -tiltZ]}>
+        <Slime size={s} color="#74e44e" squash={melt * 0.3} mood={melt > 0.35 ? "scared" : "happy"} />
+        <group position={[0.04, s * 0.3, s * 0.515]} rotation={[0, 0, 0.24 + melt * 0.5]}>
+          <Block position={[0, 0.11, 0]} size={[0.16, 0.075, 0.026]} color="#1d4ed8" />
+          <Block position={[0, -0.04, 0]} size={[0.11, 0.24, 0.024]} color="#2563eb" />
+        </group>
+      </group>
+    </group>
+  );
+};
+
+/** Original big two-block slime dad (`1.42 m` cube) before he ever split! */
 export const OriginalBigDad: React.FC<{
   position?: Vec3;
   rotationY?: number;
   squash?: number;
   mood?: Mood;
   nod?: number;
-}> = ({ position = [0, 0, 0], rotationY = 0, squash = 0, mood = "happy", nod = 0 }) => (
-  <group position={position} rotation={[0, rotationY, 0]}>
-    <Slime size={3.8} color="#66d244" hat="straw" scarf="#2f74d0" squash={squash} mood={mood} nod={nod} />
-  </group>
-);
+}> = ({ position = [0, 0, 0], rotationY = 0, squash = 0, mood = "happy", nod = 0 }) => {
+  const sy = 1 - squash * 0.32;
+  return (
+    <group position={position} rotation={[0, rotationY, 0]}>
+      <Slime size={BIG_M} color="#66d244" scarf="#2f74d0" squash={squash} mood={mood} nod={nod} />
+      {/* Proportional straw hat on top so it never umbrellas over the camera */}
+      <group position={[0, BIG_M * sy, 0]}>
+        <Block position={[0, 0.04, 0]} size={[1.15, 0.07, 1.15]} color="#e5c158" />
+        <Block position={[0, 0.15, 0]} size={[0.74, 0.18, 0.74]} color="#d8b248" />
+        <Block position={[0, 0.085, 0]} size={[0.76, 0.05, 0.76]} color="#2563eb" />
+      </group>
+    </group>
+  );
+};
 
-/** Neighbour kids' huge 2-block slime dads (`size = 3.6`). */
+/** Neighbour kids' big two-block slime dads (`1.36 m` cube). */
 export const NeighborBigDad: React.FC<{
   position?: Vec3;
   rotationY?: number;
@@ -268,9 +349,8 @@ export const NeighborBigDad: React.FC<{
     <Slime
       position={position}
       rotationY={rotationY}
-      size={3.6}
+      size={1.36}
       color={colors[variant]}
-      hat={variant === 1 ? "straw" : undefined}
       scarf={scarves[variant]}
       squash={squash}
       mood={mood}
@@ -278,7 +358,7 @@ export const NeighborBigDad: React.FC<{
   );
 };
 
-/** Wise elderly Grandpa Slime (`size = 2.6`) with white bushy brows/moustache (`2.splits`, `2.ball`). */
+/** Wise elderly Grandpa Slime (`0.98 m` cube) with crisp white brows & moustache on the front face (`2.splits`, `2.ball`). */
 export const GrandpaSlime: React.FC<{
   position?: Vec3;
   rotationY?: number;
@@ -286,19 +366,21 @@ export const GrandpaSlime: React.FC<{
   mood?: Mood;
   nod?: number;
 }> = ({ position = [0, 0, 0], rotationY = 0, squash = 0, mood = "calm", nod = 0 }) => {
-  const sy = 1 - squash * 0.3;
+  const s = 0.98;
+  const sy = 1 - squash * 0.32;
+  const sx = 1 + squash * 0.2;
+  const fz = s * 0.51 * sx;
   return (
     <group position={position} rotation={[0, rotationY, 0]}>
-      <Slime size={2.6} color="#58b942" scarf="#7a5a38" squash={squash} mood={mood} nod={nod} />
-      {/* White grandfather brows & moustache */}
-      <Block position={[-0.24, 0.92 * sy, 0.66]} size={[0.24, 0.08, 0.04]} color="#f0efe9" />
-      <Block position={[0.24, 0.92 * sy, 0.66]} size={[0.24, 0.08, 0.04]} color="#f0efe9" />
-      <Block position={[0, 0.44 * sy, 0.67]} size={[0.48, 0.1, 0.05]} color="#f0efe9" />
+      <Slime size={s} color="#58b942" scarf="#7a5a38" squash={squash} mood={mood} nod={nod} />
+      <Block position={[-0.2, s * 0.72 * sy, fz]} size={[0.2, 0.065, 0.03]} color="#f4f3ed" />
+      <Block position={[0.2, s * 0.72 * sy, fz]} size={[0.2, 0.065, 0.03]} color="#f4f3ed" />
+      <Block position={[0, s * 0.33 * sy, fz]} size={[0.42, 0.085, 0.035]} color="#f4f3ed" />
     </group>
   );
 };
 
-/** Damaged, vine-choked rogue Iron Golem lurking at the swamp bridge (`4.golem`..`6.pin`). */
+/** Damaged, vine-choked rogue Iron Golem lurking at the swamp bridge (`4.vine`..`6.sink`). */
 export const RogueGolem: React.FC<{
   position?: Vec3;
   rotationY?: number;
@@ -309,10 +391,9 @@ export const RogueGolem: React.FC<{
   headPitch?: number;
   headYaw?: number;
   bow?: number;
-}> = ({ position = [0, 0, 0], rotationY = 0, scale = 1.06, ...rest }) => (
+}> = ({ position = [0, 0, 0], rotationY = 0, scale = 1.0, ...rest }) => (
   <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
     <IronGolem {...rest} />
-    {/* Dark swamp moss, cracked iron scar across chest, and glowing red angry eye flare */}
     <Block position={[0.24, 1.72, 0.36]} size={[0.34, 0.08, 0.03]} color="#2b2623" />
     <Block position={[-0.42, 1.48, 0.36]} size={[0.18, 0.44, 0.04]} color="#2f6127" />
     <Block position={[0.46, 1.32, 0.36]} size={[0.16, 0.52, 0.04]} color="#295422" />
@@ -321,7 +402,7 @@ export const RogueGolem: React.FC<{
 
 // ----------------------------------------------------------------------------- Custom Story Props
 
-/** Wooden Minecraft wheelbarrow with stained slime-green tray and optional 4 tiny dads riding inside! */
+/** Wooden Minecraft wheelbarrow with stained slime-green tray and all 4 tiny dads peeking over the rim! */
 export const Wheelbarrow: React.FC<{
   position?: Vec3;
   rotationY?: number;
@@ -347,47 +428,40 @@ export const Wheelbarrow: React.FC<{
 }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
     <group rotation={[tilt, 0, 0]}>
-      {/* Front wooden wheel */}
-      <group position={[0, 0.24, 0.62]} rotation={[wheelSpin, 0, 0]}>
-        <Vox kind="darkPlanks" size={[0.14, 0.46, 0.46]} />
-        <Block size={[0.16, 0.14, 0.14]} color="#6e7075" />
+      <group position={[0, 0.22, 0.6]} rotation={[wheelSpin, 0, 0]}>
+        <Vox kind="darkPlanks" size={[0.13, 0.42, 0.42]} />
+        <Block size={[0.15, 0.13, 0.13]} color="#6e7075" />
       </group>
-      {/* Two long oak handles */}
       {[-0.28, 0.28].map((x) => (
-        <Vox key={x} kind="log" position={[x, 0.36, -0.1]} rotation={[0.12, 0, 0]} size={[0.09, 0.09, 1.45]} />
+        <Vox key={x} kind="log" position={[x, 0.34, -0.1]} rotation={[0.1, 0, 0]} size={[0.08, 0.08, 1.4]} />
       ))}
-      {/* Rear resting legs */}
       {[-0.26, 0.26].map((x) => (
-        <Vox key={`l${x}`} kind="darkPlanks" position={[x, 0.16, -0.42]} size={[0.08, 0.32, 0.08]} />
+        <Vox key={`l${x}`} kind="darkPlanks" position={[x, 0.15, -0.4]} size={[0.08, 0.3, 0.08]} />
       ))}
-      {/* Wooden tray */}
-      <Vox kind="planks" position={[0, 0.42, 0.08]} size={[0.76, 0.08, 0.96]} />
-      <Vox kind="planks" position={[-0.36, 0.58, 0.08]} size={[0.08, 0.28, 0.96]} />
-      <Vox kind="planks" position={[0.36, 0.58, 0.08]} size={[0.08, 0.28, 0.96]} />
-      <Vox kind="planks" position={[0, 0.6, 0.52]} rotation={[-0.22, 0, 0]} size={[0.76, 0.32, 0.08]} />
-      <Vox kind="planks" position={[0, 0.58, -0.36]} size={[0.76, 0.28, 0.08]} />
-      {/* Dried green slime stains inside & along the rim! */}
-      <Block position={[0.06, 0.465, 0.1]} size={[0.54, 0.018, 0.68]} color="#62cf40" />
-      <Block position={[-0.39, 0.62, 0.18]} size={[0.03, 0.14, 0.32]} color="#68d846" />
-      <Block position={[0.39, 0.59, -0.05]} size={[0.03, 0.12, 0.26]} color="#5ac23a" />
+      <Vox kind="planks" position={[0, 0.38, 0.08]} size={[0.78, 0.07, 0.94]} />
+      <Vox kind="planks" position={[-0.37, 0.5, 0.08]} size={[0.07, 0.2, 0.94]} />
+      <Vox kind="planks" position={[0.37, 0.5, 0.08]} size={[0.07, 0.2, 0.94]} />
+      <Vox kind="planks" position={[0, 0.51, 0.51]} rotation={[-0.2, 0, 0]} size={[0.78, 0.22, 0.07]} />
+      <Vox kind="planks" position={[0, 0.5, -0.35]} size={[0.78, 0.2, 0.07]} />
+      <Block position={[0.04, 0.42, 0.1]} size={[0.56, 0.016, 0.66]} color="#62cf40" />
 
-      {withSlimeBlock ? <SlimeBlockProp position={[0, 0.46, 0.08]} scale={0.72} /> : null}
+      {withSlimeBlock ? <SlimeBlockProp position={[0, 0.42, 0.08]} scale={0.62} /> : null}
 
       {covered ? (
         <group
-          position={[sheetFly * 1.1, 0.86 + sheetFly * 1.35, 0.08 - sheetFly * 0.9]}
+          position={[sheetFly * 1.25, 0.78 + sheetFly * 1.45, 0.08 - sheetFly * 0.8]}
           rotation={[sheetFly * 0.8, sheetFly * 0.5, sheetFly * 1.1]}
         >
-          <Vox kind="wool" tint="#e9e2cf" size={[0.88, 0.18, 1.04]} />
+          <Vox kind="wool" tint="#ebe4d2" size={[0.88, 0.14, 1.02]} />
         </group>
       ) : null}
 
       {withDads ? (
-        <group position={[0, 0.46, 0.08]}>
-          <TinyDad which={1} position={[-0.16, Math.abs(Math.sin(dadBounce)) * 0.08, 0.18]} scale={0.62} mood={dadMood} />
-          <TinyDad which={2} position={[0.16, Math.abs(Math.sin(dadBounce + 1.1)) * 0.08, 0.18]} scale={0.62} mood={dadMood} />
-          <TinyDad which={3} position={[-0.16, Math.abs(Math.sin(dadBounce + 2.2)) * 0.08, -0.16]} scale={0.62} mood={dadMood} />
-          <TinyDad which={4} position={[0.16, Math.abs(Math.sin(dadBounce + 3.3)) * 0.08, -0.16]} scale={0.62} mood={dadMood} />
+        <group position={[0, 0.42, 0.08]}>
+          <TinyDad which={1} position={[-0.17, Math.abs(Math.sin(dadBounce)) * 0.07, 0.19]} scale={0.72} mood={dadMood} />
+          <TinyDad which={2} position={[0.17, Math.abs(Math.sin(dadBounce + 1.1)) * 0.07, 0.19]} scale={0.72} mood={dadMood} />
+          <TinyDad which={3} position={[-0.17, Math.abs(Math.sin(dadBounce + 2.2)) * 0.07, -0.17]} scale={0.72} mood={dadMood} />
+          <TinyDad which={4} position={[0.17, Math.abs(Math.sin(dadBounce + 3.3)) * 0.07, -0.17]} scale={0.72} mood={dadMood} />
         </group>
       ) : null}
     </group>
@@ -412,7 +486,7 @@ export const ReedBasket: React.FC<{ position?: Vec3; rotationY?: number; withBab
   </group>
 );
 
-/** Ankle-high wooden dinner table (`0.34m` tall!) set with 5 steaming bowls of green slime-mushroom soup. */
+/** Ankle-high wooden dinner table (`0.34 m` tall) set with steaming bowls of green slime-mushroom soup. */
 export const LowSoupTable: React.FC<{ position?: Vec3; rotationY?: number; t?: number }> = ({
   position = [0, 0, 0],
   rotationY = 0,
@@ -428,9 +502,8 @@ export const LowSoupTable: React.FC<{ position?: Vec3; rotationY?: number; t?: n
     ].map(([x, z], i) => (
       <Vox key={i} kind="darkPlanks" position={[x, 0.15, z]} size={[0.1, 0.3, 0.1]} />
     ))}
-    {/* Big steaming central pot + 5 soup bowls */}
     <Vox kind="cobble" tint="#44484d" position={[0, 0.44, 0]} size={[0.34, 0.2, 0.34]} />
-    <Block position={[0, 0.53, 0]} size={[0.28, 0.04, 0.28]} color="#6ee048" emissive="#48b82e" emissiveIntensity={0.35} />
+    <Block position={[0, 0.53, 0]} size={[0.28, 0.04, 0.28]} color="#6ee048" emissive="#48b82e" emissiveIntensity={0.25} />
     {(
       [
         [0, 0.32],
@@ -442,16 +515,10 @@ export const LowSoupTable: React.FC<{ position?: Vec3; rotationY?: number; t?: n
     ).map(([x, z], i) => (
       <group key={`b${i}`} position={[x, 0.36, z]}>
         <Vox kind="planks" tint="#8a5a36" position={[0, 0.03, 0]} size={[0.2, 0.07, 0.2]} />
+        <Block position={[0, 0.065, 0]} size={[0.15, 0.025, 0.15]} color="#72e44c" emissive="#4cb830" emissiveIntensity={0.2} />
         <Block
-          position={[0, 0.065, 0]}
-          size={[0.15, 0.025, 0.15]}
-          color="#72e44c"
-          emissive="#4cb830"
-          emissiveIntensity={0.25}
-        />
-        <Block
-          position={[Math.sin(t * 2.4 + i) * 0.02, 0.16 + ((t * 0.25 + i * 0.2) % 0.18), 0]}
-          size={[0.05, 0.05, 0.05]}
+          position={[Math.sin(t * 2.4 + i) * 0.02, 0.15 + ((t * 0.22 + i * 0.2) % 0.16), 0]}
+          size={[0.045, 0.045, 0.045]}
           color="#e9f7e1"
         />
       </group>
@@ -459,101 +526,65 @@ export const LowSoupTable: React.FC<{ position?: Vec3; rotationY?: number; t?: n
   </group>
 );
 
-/** Knee-high mini slime door (`0.72m` high!) next to a low lintel where our growing human kid bumps his head! */
+/** Cottage interior wooden door (`1.65 m` high) with brass handle at `y = 0.92 m` so stacked tiny dads reach it! */
 export const TinyDoorway: React.FC<{ position?: Vec3; rotationY?: number; open?: number }> = ({
   position = [0, 0, 0],
   rotationY = 0,
   open = 0,
 }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
-    {/* Low wooden doorframe */}
-    <Vox kind="log" position={[-0.62, 0.85, 0]} size={[0.16, 1.7, 0.2]} />
-    <Vox kind="log" position={[0.62, 0.85, 0]} size={[0.16, 1.7, 0.2]} />
-    <Vox kind="log" position={[0, 1.62, 0]} size={[1.42, 0.18, 0.24]} />
-    {/* Knee-high slime-flap mini door */}
-    <group position={[-0.5, 0, 0.04]} rotation={[0, -open * 1.35, 0]}>
-      <Vox kind="darkPlanks" position={[0.26, 0.36, 0]} size={[0.52, 0.72, 0.09]} />
-      <Block position={[0.42, 0.38, 0.06]} size={[0.06, 0.06, 0.04]} color="#72e04e" />
+    <Vox kind="log" position={[-0.58, 0.9, 0]} size={[0.16, 1.8, 0.18]} />
+    <Vox kind="log" position={[0.58, 0.9, 0]} size={[0.16, 1.8, 0.18]} />
+    <Vox kind="log" position={[0, 1.74, 0]} size={[1.34, 0.16, 0.22]} />
+    <group position={[-0.48, 0, 0.04]} rotation={[0, -open * 1.1, 0]}>
+      <Vox kind="darkPlanks" position={[0.48, 0.84, 0]} size={[0.96, 1.66, 0.08]} />
+      <Block position={[0.82, 0.98, 0.06]} size={[0.09, 0.09, 0.05]} color="#f0c84b" />
     </group>
-    {/* Slime family emblem above the low lintel */}
-    <Block position={[0, 1.92, 0.06]} size={[0.34, 0.34, 0.06]} color="#68d644" />
-    <Block position={[-0.08, 1.96, 0.1]} size={[0.06, 0.06, 0.02]} color="#1b3016" />
-    <Block position={[0.08, 1.96, 0.1]} size={[0.06, 0.06, 0.02]} color="#1b3016" />
   </group>
 );
 
-/** Porch terracotta cactus pot — with optional fresh bite mark & glistening green slime drop! */
+/** Porch terracotta cactus pot for the funny excuse shot (`2.cactus`). */
 export const PottedCactus: React.FC<{ position?: Vec3; bitten?: number }> = ({ position = [0, 0, 0], bitten = 0 }) => (
   <group position={position}>
     <Vox kind="cobble" tint="#b35c3e" position={[0, 0.18, 0]} size={[0.46, 0.36, 0.46]} />
     <Vox kind="dirt" position={[0, 0.35, 0]} size={[0.38, 0.06, 0.38]} />
-    <Vox kind="leaves" tint="#358c32" position={[0, 0.76, 0]} size={[0.3, 0.82, 0.3]} />
-    <Block position={[-0.2, 0.78, 0]} size={[0.12, 0.32, 0.18]} color="#3e9d3a" />
+    <Vox kind="leaves" tint="#358c32" position={[0, 0.74, 0]} size={[0.28, 0.78, 0.28]} />
+    <Block position={[-0.19, 0.76, 0]} size={[0.12, 0.3, 0.16]} color="#3e9d3a" />
     {bitten > 0.05 ? (
       <>
-        {/* Bite notch missing out of side + bright slime drop */}
-        <Block position={[0.13, 0.66, 0.06]} size={[0.12 * bitten, 0.16 * bitten, 0.16]} color="#1f4d1c" />
-        <Block
-          position={[0.17, 0.56 - bitten * 0.05, 0.08]}
-          size={[0.07, 0.09, 0.07]}
-          color="#7dff56"
-          emissive="#58d638"
-          emissiveIntensity={0.45}
-        />
+        <Block position={[0.12, 0.66, 0.06]} size={[0.11 * bitten, 0.14 * bitten, 0.14]} color="#1f4d1c" />
+        <Block position={[0.16, 0.56 - bitten * 0.05, 0.08]} size={[0.06, 0.08, 0.06]} color="#7dff56" />
       </>
     ) : (
-      <Block position={[0.2, 0.72, 0]} size={[0.12, 0.28, 0.18]} color="#3e9d3a" />
+      <Block position={[0.19, 0.7, 0]} size={[0.12, 0.26, 0.16]} color="#3e9d3a" />
     )}
   </group>
 );
 
-/** Tiny torn orange-and-wool baby coat with iron claw tears & swamp moss from the chest. */
+/** Folded/carried torn blue baby coat (`4.barrow`). */
 export const TornBabyCoat: React.FC<{ position?: Vec3; rotation?: Vec3; scale?: number }> = ({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   scale = 1,
 }) => (
   <group position={position} rotation={rotation} scale={scale}>
-    <Vox kind="wool" tint="#e8792e" position={[0, 0.04, 0]} size={[0.46, 0.08, 0.54]} />
-    <Vox kind="wool" tint="#e8792e" position={[-0.28, 0.04, -0.06]} rotation={[0, 0.25, 0]} size={[0.18, 0.07, 0.34]} />
-    <Vox kind="wool" tint="#e8792e" position={[0.28, 0.04, -0.08]} rotation={[0, -0.32, 0]} size={[0.16, 0.07, 0.26]} />
-    {/* Jagged dark tear marks & dried green slime spot */}
-    <Block position={[0.04, 0.085, 0.05]} size={[0.26, 0.02, 0.05]} color="#2a1b14" />
-    <Block position={[-0.02, 0.085, -0.06]} size={[0.22, 0.02, 0.04]} color="#2a1b14" />
-    <Block position={[0.12, 0.086, 0.16]} size={[0.11, 0.02, 0.11]} color="#68d846" />
+    <Vox kind="wool" tint="#3b78bd" position={[0, 0.04, 0]} size={[0.44, 0.08, 0.5]} />
+    <Vox kind="wool" tint="#3b78bd" position={[-0.26, 0.04, -0.05]} rotation={[0, 0.25, 0]} size={[0.16, 0.07, 0.3]} />
+    <Vox kind="wool" tint="#3b78bd" position={[0.26, 0.04, -0.07]} rotation={[0, -0.32, 0]} size={[0.15, 0.07, 0.24]} />
+    <Block position={[0.04, 0.085, 0.05]} size={[0.24, 0.02, 0.05]} color="#221a16" />
+    <Block position={[0.11, 0.086, 0.14]} size={[0.09, 0.02, 0.09]} color="#68d846" />
   </group>
 );
 
-/** Glowing bouncy Minecraft slimeball. */
+/** Glowing bouncy Minecraft slimeball (`0.22 m`). */
 export const SlimeballProp: React.FC<{ position?: Vec3; scale?: number; squash?: number }> = ({
   position = [0, 0, 0],
   scale = 1,
   squash = 0,
 }) => (
   <group position={position} scale={[scale * (1 + squash * 0.24), scale * (1 - squash * 0.3), scale * (1 + squash * 0.24)]}>
-    <Block position={[0, 0.11, 0]} size={[0.22, 0.22, 0.22]} color="#7dff58" emissive="#4ec932" emissiveIntensity={0.45} />
+    <Block position={[0, 0.11, 0]} size={[0.22, 0.22, 0.22]} color="#78ef52" emissive="#4ec932" emissiveIntensity={0.35} />
     <Block position={[0, 0.11, 0]} size={[0.13, 0.13, 0.13]} color="#3fa527" />
-  </group>
-);
-
-/** Upright schoolyard height-measuring plank with tick notches and sliding wooden bar! */
-export const MeasuringPlank: React.FC<{ position?: Vec3; rotationY?: number; markerY?: number }> = ({
-  position = [0, 0, 0],
-  rotationY = 0,
-  markerY = 1.24,
-}) => (
-  <group position={position} rotation={[0, rotationY, 0]}>
-    <Vox kind="planks" tint="#b98b56" position={[0, 0.95, 0]} size={[0.32, 1.9, 0.08]} />
-    {[0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6].map((y, i) => (
-      <Block
-        key={y}
-        position={[0.05, y, 0.046]}
-        size={[i % 2 === 0 ? 0.16 : 0.1, 0.022, 0.015]}
-        color={y === 0.6 ? "#5ec93d" : "#3a2616"}
-      />
-    ))}
-    {/* Sliding horizontal measuring paddle */}
-    <Vox kind="darkPlanks" position={[0.16, markerY, 0.08]} size={[0.42, 0.055, 0.14]} />
   </group>
 );
 
@@ -562,31 +593,28 @@ export const SwampSign: React.FC<{ position?: Vec3; rotationY?: number }> = ({ p
   <group position={position} rotation={[0, rotationY, 0]}>
     <Vox kind="log" position={[0, 0.65, 0]} size={[0.14, 1.3, 0.14]} />
     <Vox kind="planks" tint="#9e7444" position={[0, 1.22, 0.09]} size={[1.05, 0.62, 0.08]} />
-    {/* Red forbidden slash */}
     <Block position={[0, 1.22, 0.14]} rotation={[0, 0, 0.55]} size={[0.72, 0.08, 0.02]} color="#c92b24" />
     <Block position={[0, 1.22, 0.14]} rotation={[0, 0, -0.55]} size={[0.72, 0.08, 0.02]} color="#c92b24" />
   </group>
 );
 
-/** Deep iron-golem fist craters smashed into the stone bridge deck (`5.craters`). */
+/** Deep iron-golem fist craters smashed into stone (`5.craters`). */
 export const FistCraters: React.FC<{ position?: Vec3 }> = ({ position = [0, 0, 0] }) => (
   <group position={position}>
     {[
       [0, 0],
       [0.62, -0.34],
-      [-0.48, 0.38],
     ].map(([x, z], i) => (
       <group key={i} position={[x, 0, z]}>
-        <Block position={[0, 0.015, 0]} size={[0.48, 0.03, 0.48]} color="#1d1f21" />
-        <Vox kind="cobble" tint="#5e6266" position={[-0.26, 0.06, 0.14]} rotation={[0.2, 0.4, 0]} size={[0.16, 0.1, 0.18]} />
-        <Vox kind="cobble" tint="#6a6e73" position={[0.24, 0.05, -0.16]} rotation={[-0.25, 0.2, 0]} size={[0.18, 0.09, 0.15]} />
-        <Block position={[0.04, 0.032, 0.02]} size={[0.18, 0.015, 0.18]} color="#5ac83c" />
+        <Block position={[0, 0.015, 0]} size={[0.46, 0.03, 0.46]} color="#1d1f21" />
+        <Vox kind="cobble" tint="#d8d8d0" position={[-0.24, 0.05, 0.12]} rotation={[0.2, 0.4, 0]} size={[0.16, 0.09, 0.16]} />
+        <Vox kind="cobble" tint="#e2e2da" position={[0.22, 0.05, -0.14]} rotation={[-0.25, 0.2, 0]} size={[0.16, 0.08, 0.14]} />
       </group>
     ))}
   </group>
 );
 
-/** Braided swamp-vine rope tossed over the broken bridge parapet (`6.rope`, `6.three`). */
+/** Braided swamp-vine rope (`6.rope`). */
 export const VineRope: React.FC<{ top: Vec3; length: number; sway?: number }> = ({ top, length, sway = 0 }) => {
   const segs = 7;
   const step = length / segs;
@@ -605,39 +633,30 @@ export const VineRope: React.FC<{ top: Vec3; length: number; sway?: number }> = 
   );
 };
 
-/** Authentic 1m x 1m translucent Minecraft Slime Block formed when all 4 tiny dads fuse underwater! */
+/** Authentic 1m x 1m translucent Minecraft Slime Block (`6.block`, `6.boing`, `7.roof`). */
 export const SlimeBlockProp: React.FC<{
   position?: Vec3;
   scale?: number;
   squash?: number;
   glow?: number;
-}> = ({ position = [0, 0, 0], scale = 1, squash = 0, glow = 0.7 }) => {
+}> = ({ position = [0, 0, 0], scale = 1, squash = 0, glow = 0.6 }) => {
   const sx = scale * (1 + squash * 0.34);
   const sy = Math.max(0.28, scale * (1 - squash * 0.42));
   return (
     <group position={position} scale={[sx, sy, sx]}>
-      {/* Dense inner slime core */}
-      <Block
-        position={[0, 0.5, 0]}
-        size={[0.62, 0.62, 0.62]}
-        color="#4ab930"
-        emissive="#3da826"
-        emissiveIntensity={0.45 * glow}
-      />
-      {/* Translucent outer jelly shell */}
+      <Block position={[0, 0.5, 0]} size={[0.62, 0.62, 0.62]} color="#4ab930" emissive="#3da826" emissiveIntensity={0.35 * glow} />
       <mesh position={[0, 0.5, 0]} castShadow receiveShadow>
-        <boxGeometry args={[1.04, 1.04, 1.04]} />
+        <boxGeometry args={[1.02, 1.02, 1.02]} />
         <meshStandardMaterial
           color="#7aff54"
           emissive="#58e038"
-          emissiveIntensity={0.55 * glow}
+          emissiveIntensity={0.4 * glow}
           transparent
-          opacity={0.68}
+          opacity={0.65}
           roughness={0.18}
         />
       </mesh>
-      {/* Crisp bright voxel rim highlights */}
-      <Block position={[0, 1.02, 0]} size={[0.96, 0.03, 0.96]} color="#b4ff96" emissive="#8cff68" emissiveIntensity={0.5 * glow} />
+      <Block position={[0, 1.01, 0]} size={[0.94, 0.025, 0.94]} color="#b4ff96" />
     </group>
   );
 };
@@ -663,12 +682,12 @@ export const TwinWhiteCraters: React.FC<{ position?: Vec3; rotationY?: number; f
   fresh = 1,
 }) => (
   <group position={position} rotation={[0, rotationY, 0]} scale={Math.max(0.01, fresh)}>
-    {[-0.36, 0.36].map((x) => (
+    {[-0.42, 0.42].map((x) => (
       <group key={x} position={[x, 0, 0]}>
-        <Block position={[0, 0.02, 0]} size={[0.42, 0.04, 0.42]} color="#dadad4" />
-        <Block position={[0, 0.042, 0]} size={[0.26, 0.025, 0.26]} color="#3a3d40" />
-        <Block position={[-0.18, 0.06, 0.14]} size={[0.11, 0.07, 0.11]} color="#e8e8e2" />
-        <Block position={[0.16, 0.055, -0.15]} size={[0.1, 0.06, 0.1]} color="#d6d7d0" />
+        <Block position={[0, 0.02, 0]} size={[0.5, 0.04, 0.5]} color="#e6e6de" />
+        <Block position={[0, 0.044, 0]} size={[0.3, 0.028, 0.3]} color="#2c2f33" />
+        <Block position={[-0.2, 0.065, 0.16]} size={[0.12, 0.075, 0.12]} color="#f2f2ea" />
+        <Block position={[0.18, 0.06, -0.16]} size={[0.11, 0.065, 0.11]} color="#dcdcd4" />
       </group>
     ))}
   </group>
@@ -681,13 +700,11 @@ export const BridgePinPost: React.FC<{
   pinOut?: number;
 }> = ({ position = [0, 0, 0], barLift = 0, pinOut = 0 }) => (
   <group position={position}>
-    <Vox kind="log" position={[-1.95, 0.65, 0]} size={[0.3, 1.3, 0.3]} />
-    <Vox kind="log" position={[1.95, 0.65, 0]} size={[0.3, 1.3, 0.3]} />
-    {/* Heavy wooden crossbar */}
+    <Vox kind="log" position={[-1.95, 0.65, 0]} size={[0.28, 1.3, 0.28]} />
+    <Vox kind="log" position={[1.95, 0.65, 0]} size={[0.28, 1.3, 0.28]} />
     <group position={[-1.95, 0.95, 0.16]} rotation={[0, 0, barLift * 1.1]}>
-      <Vox kind="darkPlanks" position={[1.95, 0, 0]} size={[4.2, 0.2, 0.14]} />
+      <Vox kind="darkPlanks" position={[1.95, 0, 0]} size={[4.2, 0.18, 0.13]} />
     </group>
-    {/* Knock-out oak locking pin */}
     <Vox
       kind="planks"
       tint="#d4a259"
@@ -698,21 +715,24 @@ export const BridgePinPost: React.FC<{
   </group>
 );
 
-/** Torn baby coat hanging on a wall peg beside the front door (`2.coat`, `5.list`). */
+/** Torn blue baby coat hanging on a wall peg (`2.coat`, `5.list`). */
 export const HangingBabyCoat: React.FC<{ position?: Vec3; rotationY?: number; sway?: number }> = ({
   position = [0, 0, 0],
   rotationY = 0,
   sway = 0,
 }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
-    <Vox kind="darkPlanks" position={[0, 0.28, 0.03]} size={[0.1, 0.1, 0.12]} />
-    <group position={[0, 0.26, 0.08]} rotation={[0, 0, sway]}>
-      <Vox kind="wool" tint="#3b78bd" position={[0, -0.22, 0]} size={[0.42, 0.48, 0.09]} />
-      <Vox kind="wool" tint="#3b78bd" position={[-0.25, -0.16, 0]} rotation={[0, 0, 0.28]} size={[0.14, 0.34, 0.08]} />
-      <Vox kind="wool" tint="#3b78bd" position={[0.25, -0.14, 0]} rotation={[0, 0, -0.35]} size={[0.14, 0.26, 0.08]} />
-      {/* Jagged tear across hem & green slime stain */}
-      <Block position={[0.05, -0.36, 0.05]} size={[0.24, 0.05, 0.02]} color="#221a16" />
-      <Block position={[-0.08, -0.26, 0.05]} size={[0.1, 0.1, 0.02]} color="#68d846" />
+    <Vox kind="darkPlanks" position={[0, 0.3, 0.03]} size={[0.1, 0.1, 0.12]} />
+    <group position={[0, 0.28, 0.08]} rotation={[0, 0, sway]}>
+      {/* Collar, chest, two sleeves, buttons, tear & dried slime fleck */}
+      <Vox kind="wool" tint="#f3ebd3" position={[0, -0.02, 0.01]} size={[0.26, 0.08, 0.1]} />
+      <Vox kind="wool" tint="#3b78bd" position={[0, -0.26, 0]} size={[0.42, 0.46, 0.09]} />
+      <Vox kind="wool" tint="#3b78bd" position={[-0.27, -0.18, 0]} rotation={[0, 0, 0.32]} size={[0.14, 0.34, 0.08]} />
+      <Vox kind="wool" tint="#3b78bd" position={[0.27, -0.16, 0]} rotation={[0, 0, -0.38]} size={[0.14, 0.26, 0.08]} />
+      <Block position={[0, -0.16, 0.05]} size={[0.04, 0.04, 0.02]} color="#f0c84b" />
+      <Block position={[0, -0.27, 0.05]} size={[0.04, 0.04, 0.02]} color="#f0c84b" />
+      <Block position={[0.06, -0.4, 0.05]} size={[0.22, 0.045, 0.02]} color="#1f1712" />
+      <Block position={[-0.1, -0.32, 0.05]} size={[0.07, 0.07, 0.02]} color="#68d846" />
     </group>
   </group>
 );

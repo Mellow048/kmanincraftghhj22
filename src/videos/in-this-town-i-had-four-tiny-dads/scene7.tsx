@@ -1,12 +1,12 @@
-import { cam, storyScene } from "../../engine";
+import { Vox, cam, storyScene } from "../../engine";
 import { PATH_Y } from "./marks";
 import {
   CHILD,
   EAST,
   GROUND_SIT,
   Hero,
-  NeighborBigDad,
   PixelHeart,
+  Puffs,
   ROBE,
   SOUTH,
   SlimeBlockProp,
@@ -23,90 +23,84 @@ import {
   w,
 } from "./kit";
 
-/**
- * Clips 07 & 08 — Emotional Payoff & Subscribe CTA (`07-payoff` + `08-sub`, 5 shots):
- *   Why being small was a gift all along (all four can hug him at once without hurting him),
- *   bouncing past the school bell tower next Friday, rolling proudly through the front school gate,
- *   and Dad #3 slipping one last time on the Subscribe sign!
- */
 export const scene7 = storyScene(timing, {
   id: "scene7",
-  title: "All Four At Once",
+  title: "Zero-Damage Hug & Subscribe",
   shots: [
     {
       cue: "7.hug",
-      zone: "bridge",
-      look: "overworld-night",
-      ...cam.push({ on: [0, 0.72, -7.8], dist: 2.35, to: 1.82, yaw: -36, pitch: 14, fov: 35 }),
-      note: "Quiet emotional breath on the mossy bank: Hero sits on the ground and opens his arms wide to all four tiny dads.",
-      stage: (t) => {
-        const inLap = tw(t, 0.15, w("7.hug", "hug") + 0.45);
-        return (
-          <>
-            <Hero
-              position={[0, 0.12 + GROUND_SIT, -7.85]}
-              rotationY={SOUTH}
-              pose={{ ...groundSitPose(t), ...openArmsPose(t, 1 - inLap * 0.45), kneeR: [0, 0, 0], kneeL: [0, 0, 0] }}
-              face="smile"
-              headPitch={0.18}
-            />
-            <TinyDad which={1} position={[-0.78 * (1 - inLap) - 0.18, 0.12, -7.15 - inLap * 0.42]} rotationY={Math.PI} hop={Math.sin(inLap * Math.PI) * 0.24} />
-            <TinyDad which={2} position={[0.78 * (1 - inLap) + 0.18, 0.12, -7.15 - inLap * 0.42]} rotationY={Math.PI} hop={Math.sin(inLap * Math.PI) * 0.24} />
-            <TinyDad which={3} position={[-0.45 * (1 - inLap) - 0.12, 0.12 + inLap * 0.32, -6.95 - inLap * 0.62]} rotationY={Math.PI} hop={Math.sin(inLap * Math.PI) * 0.28} />
-            <TinyDad which={4} position={[0.45 * (1 - inLap) + 0.12, 0.12 + inLap * 0.32, -6.95 - inLap * 0.62]} rotationY={Math.PI} hop={Math.sin(inLap * Math.PI) * 0.28} />
-          </>
-        );
-      },
+      zone: "village",
+      look: "overworld-sunset",
+      ...cam.push({ on: [0, 0.65, -10.5], dist: 4.5, to: 3.55, yaw: -18, pitch: 14, fov: 42 }),
+      note: "Payoff of 'cannot hurt a fly': Hero sits on the grass opening his arms wide as all four tiny dads hop in for a real hug!",
+      stage: (t, { p }) => (
+        <>
+          <Hero
+            position={[0, GROUND_SIT, -10.65]}
+            rotationY={SOUTH}
+            pose={openArmsPose(t)}
+            face="grin"
+          />
+          <TinyDad which={1} position={[-0.95 + p * 0.45, PATH_Y, -10.15 - p * 0.2]} rotationY={-0.35} hop={Math.abs(Math.sin(t * 6.5)) * 0.18} mood="happy" />
+          <TinyDad which={2} position={[-0.38 + p * 0.15, PATH_Y, -9.95 - p * 0.25]} rotationY={-0.12} hop={Math.abs(Math.sin(t * 6.5 + 1)) * 0.18} mood="happy" />
+          <TinyDad which={3} position={[0.38 - p * 0.15, PATH_Y, -9.95 - p * 0.25]} rotationY={0.12} hop={Math.abs(Math.sin(t * 6.5 + 2)) * 0.18} mood="happy" />
+          <TinyDad which={4} position={[0.95 - p * 0.45, PATH_Y, -10.15 - p * 0.2]} rotationY={0.35} hop={Math.abs(Math.sin(t * 6.5 + 3)) * 0.18} mood="happy" />
+        </>
+      ),
     },
     {
       cue: "7.hold",
-      zone: "bridge",
-      look: "overworld-night",
-      ...cam.orbit({ on: [0, 0.78, -7.75], dist: 1.85, distTo: 1.44, yaw: 24, yawTo: 8, pitch: 8, fov: 33 }),
-      note: "Payoff close-up: because they are tiny and deal zero damage, all four dads hug Hero's lap and cheeks at once!",
-      stage: (t) => {
-        const rise = tw(t, 0.1, 1.4);
-        return (
-          <>
-            <Hero
-              position={[0, 0.12 + GROUND_SIT, -7.85]}
-              rotationY={SOUTH}
-              pose={{ ...groundSitPose(t), armR: [-0.95, -0.35, 0.2], armL: [-0.95, 0.35, -0.2] }}
-              face="laugh"
-              headPitch={0.12}
-            />
-            <TinyDad which={1} position={[-0.22, 0.22, -7.52]} rotationY={Math.PI - 0.3} scale={0.78} squash={0.18 + Math.sin(t * 4) * 0.08} />
-            <TinyDad which={2} position={[0.22, 0.22, -7.52]} rotationY={Math.PI + 0.3} scale={0.78} squash={0.18 + Math.cos(t * 4) * 0.08} />
-            <TinyDad which={3} position={[-0.28, 0.62, -7.68]} rotationY={EAST * 0.7} scale={0.72} squash={0.2} />
-            <TinyDad which={4} position={[0.28, 0.62, -7.68]} rotationY={WEST * 0.7} scale={0.72} squash={0.2} />
-            <PixelHeart position={[-0.28, 1.15 + rise * 0.42, -7.65]} scale={0.75} />
-            <PixelHeart position={[0.26, 1.02 + rise * 0.48, -7.62]} scale={0.62} />
-          </>
-        );
-      },
+      zone: "village",
+      look: "overworld-sunset",
+      ...cam.push({ on: [0, 0.72, -10.55], dist: 3.65, to: 2.78, yaw: 16, pitch: 10, fov: 40 }),
+      note: "Heart-melting four-way zero-damage hug: all four tiny dads snuggle onto Hero's lap and shoulders at once!",
+      stage: (t) => (
+        <>
+          <Hero
+            position={[0, GROUND_SIT, -10.65]}
+            rotationY={SOUTH}
+            pose={groundSitPose(t, { armR: [-0.95, -0.35, -0.15], armL: [-0.95, 0.35, 0.15] })}
+            face="grin"
+          />
+          <TinyDad which={1} position={[-0.36, 0.18, -10.35]} rotationY={0.25} squash={0.18 + Math.sin(t * 4) * 0.05} mood="happy" />
+          <TinyDad which={2} position={[0.36, 0.18, -10.35]} rotationY={-0.25} squash={0.18 + Math.cos(t * 4) * 0.05} mood="happy" />
+          <TinyDad which={3} position={[0, 0.36, -10.28]} rotationY={SOUTH} squash={0.2 + Math.sin(t * 4.5) * 0.05} mood="happy" />
+          <TinyDad which={4} position={[-0.38, 0.68, -10.58]} rotationY={0.2} scale={0.82} squash={0.16} mood="happy" />
+          <PixelHeart position={[-0.32, 1.32 + Math.sin(t * 3) * 0.08, -10.45]} scale={0.85} />
+          <PixelHeart position={[0.35, 1.38 + Math.cos(t * 3) * 0.08, -10.45]} scale={0.75} />
+        </>
+      ),
     },
     {
       cue: "7.roof",
       zone: "village",
       look: "overworld-day",
-      ...cam.push({ on: [5.9, 4.4, 6.2], dist: 5.9, to: 4.55, yaw: -54, pitch: -14, fov: 45 }),
-      note: "Next Friday in the sunny schoolyard: Hero bounces off their Slime Block high past the school bell tower!",
+      ...cam.push({ on: [5.6, 3.25, 5.5], dist: 7.8, to: 6.3, yaw: -24, pitch: -4, fov: 47 }),
+      note: "Next Friday triumph: Hero bounces off their glowing Slime Block clear past the school roof onto the Bell Tower!",
       stage: (t) => {
-        const soar = tw(t, 0, w("7.roof", "tower") + 0.35);
-        const y = 2.6 + Math.sin(soar * Math.PI * 0.78) * 4.45;
+        const launchAt = w("7.roof", "bounced");
+        const flight = tw(t, launchAt - 0.15, w("7.roof", "tower") + 0.35);
+        const arc = Math.sin(flight * Math.PI) * 2.2;
+        const heroX = 4.4 + flight * 2.8;
+        const heroZ = 3.5 + flight * 4.3;
+        const heroY = PATH_Y + 0.95 + flight * 5.31 + arc;
+        const sq = pop(t, launchAt, 0.28);
         return (
           <>
-            <SlimeBlockProp position={[5.2, PATH_Y, 5.8]} scale={1.08} squash={pop(t, 0.08, 0.28) * 0.45} />
+            <SlimeBlockProp position={[4.4, PATH_Y, 3.5]} scale={0.92} squash={sq * 0.5} glow={0.85} />
             <Hero
-              position={[5.2 + soar * 0.45, y, 5.8 + soar * 0.55]}
-              rotationY={WEST}
-              animation="cheer"
-              face="laugh"
+              position={[heroX, heroY, heroZ]}
+              rotationY={flight > 0.85 ? SOUTH - 0.35 : 0.45}
+              animation={flight > 0.85 ? "cheer" : "jump"}
+              face="grin"
             />
-            <TinyDad which={1} position={[4.35, PATH_Y, 5.45]} rotationY={EAST} hop={Math.abs(Math.sin(t * 6)) * 0.22} />
-            <TinyDad which={2} position={[4.35, PATH_Y, 6.15]} rotationY={EAST} hop={Math.abs(Math.sin(t * 6 + 1)) * 0.22} />
-            <NeighborBigDad variant={0} position={[3.6, PATH_Y, 3.8]} rotationY={EAST} mood="happy" />
-            <Villager position={[4.3, PATH_Y, 4.35]} rotationY={EAST} scale={CHILD} robe={ROBE.farmer} nod={-0.38} />
+            <TinyDad which={1} position={[3.65, PATH_Y, 3.2]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5)) * 0.18} />
+            <TinyDad which={2} position={[5.15, PATH_Y, 3.2]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5 + 1)) * 0.18} />
+            <TinyDad which={3} position={[3.75, PATH_Y, 3.85]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5 + 2)) * 0.18} />
+            <TinyDad which={4} position={[5.05, PATH_Y, 3.85]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5 + 3)) * 0.18} />
+            <Villager position={[3.2, PATH_Y, 4.9]} rotationY={0.45} scale={CHILD} robe={ROBE.farmer} nod={-0.32 * flight} />
+            <Villager position={[5.45, PATH_Y, 5.0]} rotationY={-0.25} scale={CHILD} robe={ROBE.white} nod={-0.32 * flight} />
+            {t >= launchAt ? <Puffs position={[4.4, 1.0, 3.5]} count={9} color="#b4ff90" /> : null}
           </>
         );
       },
@@ -115,37 +109,25 @@ export const scene7 = storyScene(timing, {
       cue: "7.gate",
       zone: "village",
       look: "overworld-day",
-      ...cam.truck({
-        on: [2.1, 0.92, 3.5],
-        dist: 3.3,
-        yaw: -72,
-        pitch: 12,
-        by: [1.55, 0, 0],
-        fov: 38,
-      }),
-      note: "Reversal of 3.corner: Hero proudly rolls all four tiny dads straight through the front school gate!",
+      ...cam.push({ on: [0.25, 0.9, 2.2], dist: 5.2, to: 4.15, yaw: -28, pitch: 12, fov: 44 }),
+      note: "No more hiding at the corner: Hero rides proudly in the wheelbarrow right up to the school gate pushed by all four dads!",
       stage: (t, { p }) => {
-        const x = 1.15 + p * 1.85;
+        const z = 1.45 + p * 1.35;
         return (
           <>
+            <Wheelbarrow position={[0, PATH_Y, z]} rotationY={SOUTH} tilt={0.04} wheelSpin={p * 6.5} />
             <Hero
-              position={[x - 0.68, PATH_Y, 3.5]}
-              rotationY={EAST}
-              animation="walk"
-              arms="hold"
-              animDistance={p * 1.85}
-              plantFeet
+              position={[0, PATH_Y + 0.34 + GROUND_SIT, z + 0.16]}
+              rotationY={SOUTH}
+              pose={groundSitPose(t, { armR: [-2.35, 0, -0.25], armL: [-0.85, 0, 0.2] })}
               face="grin"
             />
-            <Wheelbarrow
-              position={[x + 0.28, PATH_Y, 3.5]}
-              rotationY={EAST}
-              tilt={-0.08}
-              wheelSpin={p * 7.2}
-              withDads
-              dadBounce={t * 6.5}
-            />
-            <Villager position={[3.55, PATH_Y, 2.35]} rotationY={SOUTH} scale={CHILD} robe={ROBE.white} nod={Math.sin(t * 6) * 0.14} />
+            <TinyDad which={1} position={[-0.45, PATH_Y, z - 0.82]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5)) * 0.16} />
+            <TinyDad which={2} position={[-0.15, PATH_Y, z - 0.88]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5 + 1)) * 0.16} />
+            <TinyDad which={3} position={[0.15, PATH_Y, z - 0.88]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5 + 2)) * 0.16} />
+            <TinyDad which={4} position={[0.45, PATH_Y, z - 0.82]} rotationY={SOUTH} hop={Math.abs(Math.sin(t * 6.5 + 3)) * 0.16} />
+            <Villager position={[1.45, PATH_Y, 3.1]} rotationY={WEST + 0.35} scale={CHILD} robe={ROBE.farmer} nod={Math.sin(t * 5) * 0.14} />
+            <Villager position={[-1.25, PATH_Y, 2.85]} rotationY={EAST - 0.35} scale={CHILD} robe={ROBE.white} nod={Math.cos(t * 5) * 0.14} />
           </>
         );
       },
@@ -153,37 +135,41 @@ export const scene7 = storyScene(timing, {
     {
       cue: "8.sub",
       zone: "village",
-      look: "overworld-day",
-      ...cam.push({ on: [0, 1.05, -5.2], dist: 3.15, to: 2.45, yaw: -14, pitch: 6, fov: 37 }),
-      note: "Closing Subscribe CTA: Dad #3 in the crooked blue tie slips sideways out of the four-dad tower right on 'slips'!",
+      look: "overworld-sunset",
+      ...cam.push({ on: [0, 1.08, -10.8], dist: 4.5, to: 3.6, yaw: 8, pitch: 6, fov: 42 }),
+      note: "Golden-hour CTA: Hero waves on the left, Subscribe button gleams above captions, and Dad #3 slips out of the stack on cue!",
       stage: (t) => {
+        const popIn = pop(t, w("8.sub", "subscribe"), 0.35);
         const slipAt = w("8.sub", "slips");
         const slip = tw(t, slipAt - 0.08, slipAt + 0.35);
         return (
           <>
             <Hero
-              position={[-0.62, PATH_Y, -5.25]}
+              position={[-0.82, PATH_Y, -10.8]}
               rotationY={0.18}
               animation="wave"
-              face="laugh"
-              headYaw={0.18 * slip}
+              face="grin"
+              headYaw={0.08 + Math.sin(t * 3) * 0.08}
             />
-            <SubscribeSign position={[0, PATH_Y, -5.85]} rotationY={0} scale={1.08} tilt={Math.sin(t * 3.5) * 0.04} />
-            {/* Four-dad stack beside the Subscribe sign—until #3 slips out! */}
-            <TinyDad which={1} position={[0.68, PATH_Y, -5.18]} rotationY={-0.2} squash={0.12} />
-            <TinyDad which={2} position={[0.68, PATH_Y + 0.46, -5.18]} rotationY={-0.2} squash={0.1} />
+            {/* Raised Subscribe button on a wooden post well above the y=0.72 caption band */}
+            <Vox kind="log" position={[0, 0.46, -10.65]} size={[0.16, 0.92, 0.16]} />
+            <SubscribeSign position={[0, 0.88, -10.65]} rotationY={SOUTH} scale={1 + popIn * 0.15} />
+            {/* Four-dad stack on the right—until #3 slips out on 'slips again'! */}
+            <TinyDad which={1} position={[0.82, PATH_Y, -10.8]} rotationY={-0.18} squash={0.1} />
+            <TinyDad which={2} position={[0.82, PATH_Y + 0.37, -10.8]} rotationY={-0.18} squash={0.1} />
             <TinyDad
               which={3}
-              position={[0.68 + slip * 0.58, PATH_Y + 0.92 * (1 - slip), -5.08 + slip * 0.25]}
-              rotationY={-0.2 + slip * 1.1}
-              squash={pop(t, slipAt + 0.25, 0.25) * 0.42}
-              mood={slip > 0.25 ? "scared" : "happy"}
+              position={[0.82 + slip * 0.52, PATH_Y + 0.74 * (1 - slip), -10.76 + slip * 0.18]}
+              rotationY={-0.18 + slip * 0.8}
+              squash={slip * 0.32}
+              mood={slip > 0.2 ? "scared" : "happy"}
             />
             <TinyDad
               which={4}
-              position={[0.68, PATH_Y + 1.38 - slip * 0.46, -5.18]}
-              rotationY={-0.2}
-              squash={pop(t, slipAt + 0.22, 0.25) * 0.3}
+              position={[0.82, PATH_Y + 1.11 - slip * 0.37, -10.8]}
+              rotationY={-0.18}
+              squash={0.1 + pop(t, slipAt + 0.2, 0.25) * 0.25}
+              mood="happy"
             />
           </>
         );
