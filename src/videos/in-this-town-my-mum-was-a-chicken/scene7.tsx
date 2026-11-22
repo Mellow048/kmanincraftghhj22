@@ -1,7 +1,8 @@
 import { cam, storyScene } from "../../engine";
-import { Bubble, GATE, Hero, MumChicken, PATH_TOP, SOUTH, WhiteEgg, ZombieKid, ease, pop, ramp, timing, wordAt } from "./kit";
+import { GATE, Hero, MumChicken, NORTH, PATH_TOP, Puffs, SOUTH, WhiteEgg, ZombieKid, ease, hop, pop, ramp, timing, wordAt } from "./kit";
 
-const eggShake = wordAt("7.egg", "shaking");
+const ownAt = wordAt("7.own", "own");
+const shakeAt = wordAt("7.egg", "shaking");
 
 export const scene7 = storyScene(timing, {
   id: "scene7",
@@ -9,96 +10,103 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "7.knew",
-      ...cam.push({ on: [8.8, 5.9, -5.0], dist: 4.6, to: 3.4, yaw: 20, pitch: 22, fov: 40 }),
-      look: "overworld-day",
+      ...cam.orbit({ on: [8.85, 6.0, -5.0], dist: 2.55, distTo: 1.85, yaw: 20, yawTo: -16, pitch: 12, fov: 38 }),
+      handheld: 0.014,
+      look: "overworld-night",
       zone: "village",
-      note: "Morning daylight reveals the rooftop nest from the same high vantage—now understood as a safe launching perch.",
+      note: "Callback to the rooftop nest: Hero walks warmly beside MumChicken in the straw nest smiling with pride.",
       stage: (t, { p }) => (
         <>
-          <MumChicken position={[GATE.nest[0] - 0.2, GATE.roofTopY + 0.12, GATE.nest[2]]} rotationY={-0.3} crouch={0.4 * (1 - p * 0.5)} flap={Math.max(0, Math.sin(t * 6)) * 0.25} />
-          <Hero position={[GATE.nest[0] + 0.35, GATE.roofTopY + 0.12, GATE.nest[2] + 0.1]} rotationY={-0.5} mood="happy" nod={Math.sin(t * 3) * 0.12} />
-          <WhiteEgg position={[GATE.nest[0], GATE.roofTopY + 0.13, GATE.nest[2] - 0.22]} />
-        </>
-      ),
-    },
-    {
-      cue: "7.under",
-      ...cam.orbit({ on: [-9.2, 1.1, -1.8], dist: 2.8, distTo: 2.2, yaw: -16, yawTo: 18, pitch: -10, fov: 40 }),
-      look: "overworld-day",
-      zone: "village",
-      note: "Low reverse under the oak tree looking up with mum—she was always standing ready to catch him.",
-      stage: (t, { p }) => (
-        <>
-          <Hero position={[-9.2, 3.15, -1.9]} rotationY={SOUTH} mood="happy" wave={0.4 + p * 0.3} lookAt={[-9.2, 0.4, -1.75]} />
-          <MumChicken position={[-9.2, PATH_TOP, -1.75]} rotationY={0} headPitch={-0.12 - Math.sin(t * 2.4) * 0.08} lookAt={[-9.2, 3.3, -1.9]} />
-        </>
-      ),
-    },
-    {
-      cue: "7.wait",
-      ...cam.push({ on: [8.85, 5.8, -5.0], dist: 1.9, to: 1.45, yaw: 18, pitch: 8, fov: 36 }),
-      look: "overworld-day",
-      zone: "village",
-      note: "Close warm payoff in the rooftop nest: Hero hugs his tiny chicken mum round the neck.",
-      stage: (t, { p }) => (
-        <>
-          <MumChicken position={[8.65 + p * 0.08, GATE.roofTopY + 0.12, -5.0]} rotationY={0.8} crouch={0.35} headPitch={Math.sin(t * 3.5) * 0.1} lookAt={[9.05, 5.9, -4.95]} />
-          <Hero position={[9.0 - p * 0.1, GATE.roofTopY + 0.12, -4.95]} rotationY={-1.1} mood="happy" armPitch={[-1.45, -1.45]} lean={0.18 + p * 0.14} lookAt={[8.65, 5.8, -5.0]} />
+          <Hero position={[9.25 - p * 0.15, GATE.roofTopY + 0.12, -4.95]} rotationY={-1.0} walk={t * 1.2} mood="happy" lookAt={[8.55, 5.9, -5.05]} />
+          <MumChicken position={[8.55, GATE.roofTopY + 0.12, -5.05]} rotationY={1.1} crouch={0.25} flap={0.25} lookAt={[9.15, 6.0, -4.95]} />
           <WhiteEgg position={[8.75, GATE.roofTopY + 0.13, -5.32]} />
         </>
       ),
     },
     {
-      cue: "7.next",
-      ...cam.truck({ on: [-1.4, 0.9, 0.0], by: [2.0, 0, 0], dist: 4.1, yaw: 16, pitch: 12, fov: 40 }),
+      cue: "7.under",
+      ...cam.push({ on: [-9.2, 2.0, -1.85], dist: 4.9, to: 3.4, yaw: 24, pitch: 26, fov: 44 }),
+      handheld: 0.015,
       look: "overworld-night",
       zone: "village",
-      note: "Next night at the school gate: a whole eager line of zombie kids crowd around begging mum for a ride.",
+      note: "Callback to the climbing tree: Hero leans down grinning from the high branch while MumChicken looks proudly up with gentle wing beats.",
       stage: (t) => (
         <>
-          {[-1.5, -0.7, 0.1, 0.9].map((x, i) => (
-            <ZombieKid
-              key={i}
-              position={[x, PATH_TOP, -0.3 + (i % 2) * 0.45]}
-              rotationY={0.4}
-              shirt={["#3a7d8c", "#548256", "#6e5482", "#826546"][i]}
-              mood="happy"
-              armPitch={[-2.2, -0.4]}
-              lookAt={[1.8, 0.7, 0.2]}
-            />
-          ))}
-          <Bubble dark text="RIDE!" position={[-0.7, 1.35, -0.3]} rotationY={0.25} scale={0.44 * pop(t, 0.35)} />
-          <MumChicken position={[1.75, PATH_TOP, 0.2]} rotationY={-0.6}>
-            <Hero position={[0, 0, 0]} mood="happy" />
+          <Hero position={[-9.2, 3.0, -1.9]} rotationY={SOUTH} mood="happy" wave={0.8} lookAt={[-9.2, 0.4, -1.75]} />
+          <MumChicken position={[-9.2, PATH_TOP + hop(t, 0.4, 0.14, 0.25), -1.75]} rotationY={0} flap={0.45} lookAt={[-9.2, 3.3, -1.9]} />
+        </>
+      ),
+    },
+    {
+      cue: "7.wait",
+      ...cam.orbit({ on: [0, 0.68, 0.7], dist: 2.35, distTo: 1.75, yaw: -20, yawTo: 18, pitch: 6, fov: 36 }),
+      handheld: 0.016,
+      look: "overworld-night",
+      zone: "village",
+      note: "Callback to riding her back: MumChicken struts forward proudly flaring her white wings while Hero rides grinning ear to ear.",
+      stage: (t, { p }) => (
+        <>
+          <MumChicken position={[0, PATH_TOP, 1.15 - ease(p) * 0.65]} rotationY={0.15} walk={t * 2.4} flap={0.75}>
+            <Hero position={[0, 0, 0]} mood="happy" wave={1} />
           </MumChicken>
         </>
       ),
     },
     {
-      cue: "7.own",
-      ...cam.push({ on: [1.75, 0.85, 0.2], dist: 2.0, to: 1.55, yaw: -24, pitch: -4, fov: 36 }),
+      cue: "7.next",
+      ...cam.orbit({ on: [0.0, 0.78, 0.3], dist: 3.8, distTo: 2.8, yaw: 20, yawTo: -16, pitch: 10, fov: 42 }),
+      handheld: 0.018,
       look: "overworld-night",
       zone: "village",
-      note: "Proud low angle on Hero sitting tall on his chicken mum's back, grinning at the camera.",
-      stage: () => (
-        <MumChicken position={[1.75, PATH_TOP, 0.2]} rotationY={-0.4} lookAt={[1.4, 0.8, 2.0]}>
-          <Hero position={[0, 0, 0]} mood="happy" armPitch={[-0.3, -1.7]} />
-        </MumChicken>
+      note: "Payoff at the school gate: eager zombie kids swarm around MumChicken waving both arms begging for a ride.",
+      stage: (t, { p }) => {
+        const crowd = ease(p);
+        return (
+          <>
+            <MumChicken position={[0, PATH_TOP, 0.2]} rotationY={0.2} flap={0.35}>
+              <Hero position={[0, 0, 0]} mood="happy" />
+            </MumChicken>
+            <ZombieKid position={[-1.4 + crowd * 0.55, PATH_TOP + hop(t, 0.2, 0.22, 0.3), 0.3]} rotationY={1.3} walk={crowd < 0.8 ? t * 2.5 : 0} shirt="#3a7d8c" mood="happy" wave={1} />
+            <ZombieKid position={[1.4 - crowd * 0.55, PATH_TOP + hop(t, 0.45, 0.22, 0.3), 0.25]} rotationY={-1.3} walk={crowd < 0.8 ? t * 2.5 : 0} shirt="#548256" mood="happy" wave={1} />
+            <ZombieKid position={[0.45, PATH_TOP + hop(t, 0.7, 0.22, 0.3), 1.4 - crowd * 0.45]} rotationY={NORTH} walk={crowd < 0.8 ? t * 2.5 : 0} shirt="#6e5482" mood="happy" wave={1} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "7.own",
+      ...cam.push({ on: [0.0, 0.75, 0.25], dist: 2.35, to: 1.7, yaw: 14, pitch: 8, fov: 36 }),
+      handheld: 0.016,
+      impacts: [{ at: ownAt, amp: 0.04, dur: 0.25 }],
+      look: "overworld-night",
+      zone: "village",
+      note: "Cheeky punchline: Hero crosses his arms proudly atop MumChicken and shoos the crowding kids away.",
+      stage: (t) => (
+        <>
+          <MumChicken position={[0, PATH_TOP, 0.2]} rotationY={0.15} flap={t >= ownAt ? 0.55 : 0.15}>
+            <Hero position={[0, 0, 0]} mood="happy" armPitch={t >= ownAt ? [-1.5, -1.5] : [-0.4, -0.4]} nod={Math.sin(t * 7) * 0.18} />
+          </MumChicken>
+          <ZombieKid position={[-0.9, PATH_TOP + hop(t, ownAt, 0.2, 0.28), 0.4]} rotationY={1.2} shirt="#3a7d8c" mood="sad" />
+          <ZombieKid position={[0.9, PATH_TOP + hop(t, ownAt + 0.08, 0.2, 0.28), 0.35]} rotationY={-1.2} shirt="#548256" mood="sad" />
+        </>
       ),
     },
     {
       cue: "7.egg",
-      ...cam.push({ on: [8.75, 5.72, -5.28], dist: 1.85, to: 1.32, yaw: 14, pitch: 18, fov: 36 }),
+      ...cam.orbit({ on: [8.75, 5.68, -5.25], dist: 1.65, distTo: 1.15, yaw: 20, yawTo: -12, pitch: 12, fov: 32 }),
+      handheld: 0.022,
+      impacts: [{ at: shakeAt, amp: 0.045, dur: 0.3 }],
       look: "overworld-night",
       zone: "village",
-      note: "Return to the rooftop nest: the planted white egg suddenly wobbles violently and shows a dark crack.",
+      note: "Surprise cliffhanger: tight on the straw nest as the white egg violently wobbles, bounces, and cracks open with light puffs.",
       stage: (t) => {
-        const wobble = t >= eggShake - 0.3 ? 1 : ease(ramp(t, 0.2, eggShake));
+        const shaking = t >= shakeAt - 0.15;
         return (
           <>
-            <MumChicken position={[8.5, GATE.roofTopY + 0.12, -5.0]} rotationY={0.7} lookAt={[8.75, 5.55, -5.32]} />
-            <Hero position={[9.1, GATE.roofTopY + 0.12, -5.0]} rotationY={-0.7} mood="scared" lookAt={[8.75, 5.55, -5.32]} />
-            <WhiteEgg position={[8.75, GATE.roofTopY + 0.13, -5.32]} wobble={wobble} cracked={t >= eggShake - 0.1} />
+            <Hero position={[9.25, GATE.roofTopY + 0.12 + hop(t, shakeAt, 0.15, 0.25), -4.95]} rotationY={-1.1} mood="scared" lookAt={[8.75, 5.55, -5.32]} />
+            <MumChicken position={[8.42, GATE.roofTopY + 0.12, -5.0]} rotationY={1.1} crouch={0.25} flap={shaking ? 0.65 : 0.15} lookAt={[8.75, 5.55, -5.32]} />
+            <WhiteEgg position={[8.75, GATE.roofTopY + 0.13, -5.32]} wobble={shaking ? 1.85 : 0.45} cracked={t >= shakeAt + 0.35} />
+            {shaking && <Puffs position={[8.75, 5.68, -5.32]} color="#fff5cc" count={5} spread={0.32} size={0.055} speed={1.2} opacity={0.75} />}
           </>
         );
       },

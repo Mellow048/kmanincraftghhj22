@@ -1,24 +1,41 @@
 import { cam, storyScene } from "../../engine";
-import { GATE, Hero, MumChicken, SubscribeSign, WhiteEgg, timing } from "./kit";
+import { Bits, GATE, Hero, MumChicken, Puffs, SOUTH, SoundRings, SubscribeSign, WhiteEgg, ease, hop, pop, ramp, timing, wordAt } from "./kit";
+
+const hatchAt = wordAt("8.sub", "hatches");
 
 export const scene8 = storyScene(timing, {
   id: "scene8",
-  title: "Before It Hatches",
+  title: "Subscribe Before It Hatches",
   shots: [
     {
       cue: "8.sub",
-      ...cam.push({ on: [8.8, 5.88, -5.0], dist: 2.65, to: 2.25, yaw: 14, pitch: 8, fov: 40 }),
+      ...cam.push({ on: [8.85, 6.18, -5.05], dist: 2.7, to: 2.2, yaw: 14, pitch: 8, fov: 40 }),
+      handheld: 0.015,
+      impacts: [{ at: hatchAt, amp: 0.055, dur: 0.3 }],
       look: "overworld-night",
       zone: "village",
-      note: "CTA button in the rooftop nest: Hero holds up the Subscribe sign right beside the shaking cracked egg.",
-      stage: () => (
-        <>
-          <MumChicken position={[8.38, GATE.roofTopY + 0.12, -5.02]} rotationY={0.65} lookAt={[8.75, 5.55, -5.32]} />
-          <Hero position={[9.18, GATE.roofTopY + 0.12, -4.96]} rotationY={-0.15} mood="happy" armPitch={[-1.4, -0.3]} />
-          <SubscribeSign position={[8.86, GATE.roofTopY + 1.02, -4.76]} rotationY={0.14} scale={0.42} />
-          <WhiteEgg position={[8.72, GATE.roofTopY + 0.13, -5.32]} wobble={1.25} cracked />
-        </>
-      ),
+      note: "Final punchy CTA: egg cracks open with golden sparks as tiny yellow chick hops out cheering and SubscribeSign pops crisp in frame.",
+      stage: (t) => {
+        const hatched = t >= hatchAt;
+        const hatchBounce = hatched ? hop(t, hatchAt, 0.25, 0.35) : 0;
+        const babyX = 8.75 + ease(ramp(t, hatchAt, hatchAt + 0.5)) * 0.15;
+        return (
+          <>
+            <Hero position={[9.28, GATE.roofTopY + 0.12, -4.95]} rotationY={SOUTH} mood="happy" wave={1} tilt={Math.sin(t * 5) * 0.08} />
+            <MumChicken position={[8.42, GATE.roofTopY + 0.12, -5.0]} rotationY={0.4} flap={hatched ? 0.65 : 0.15} />
+            <WhiteEgg position={[8.75, GATE.roofTopY + 0.13, -5.32]} wobble={hatched ? 0 : 1.1} cracked={hatched} />
+            {hatched && (
+              <>
+                <MumChicken position={[babyX, GATE.roofTopY + 0.15 + hatchBounce, -5.28]} rotationY={0.2} scale={0.46 * pop(t, hatchAt)} flap={0.9} peck={Math.sin(t * 14) * 0.25} />
+                <Bits position={[8.75, 5.85, -5.32]} t={t - hatchAt} color="#fff2a8" count={14} power={3.2} />
+                <Puffs position={[8.75, 5.85, -5.32]} color="#fff7cc" count={6} spread={0.4} size={0.07} speed={1.4} opacity={0.8} />
+                <SoundRings position={[8.75, 5.9, -5.32]} t={(t - hatchAt) * 1.4} color="#ffe08a" reach={0.85} />
+              </>
+            )}
+            <SubscribeSign position={[8.85, GATE.roofTopY + 1.0 + Math.sin(t * 5) * 0.04, -5.15]} scale={0.42 * pop(t, 0.12)} tilt={Math.sin(t * 3.5) * 0.04} />
+          </>
+        );
+      },
     },
   ],
 });
