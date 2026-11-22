@@ -1,0 +1,181 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-had-four-tiny-dads",
+  "mix": "public/audio/in-this-town-i-had-four-tiny-dads/mix.mp3",
+  "seconds": 110.4333,
+  "built_from": {
+    "timing.json": "71f475174608aec5455747d3ba8892d1ad7812a0",
+    "sound.json": "b97d20e3939525a227c0ed063c66fd5daa15d160",
+    "narration.mp3": "1c76620d233d25c3729801bdb770a21eada14b49"
+  },
+  "mix_sha1": "0702ed2e5151dcabeb8163fc9fbcfc04d395fbc9",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "1.reed",
+      "mood": "hope",
+      "at": 5.33
+    },
+    {
+      "from": "1.pat",
+      "mood": "playful",
+      "at": 8.73
+    },
+    {
+      "from": "2.bump",
+      "mood": "playful",
+      "at": 12.43
+    },
+    {
+      "from": "2.coat",
+      "mood": "curious",
+      "at": 29.13
+    },
+    {
+      "from": "3.corner",
+      "mood": "playful",
+      "at": 39.93
+    },
+    {
+      "from": "3.wish",
+      "mood": "sad",
+      "at": 49.7
+    },
+    {
+      "from": "4.sunset",
+      "mood": "sneak",
+      "at": 55.83
+    },
+    {
+      "from": "4.vine",
+      "mood": "tense",
+      "at": 59.63
+    },
+    {
+      "from": "5.stare",
+      "mood": "dark",
+      "at": 71.5
+    },
+    {
+      "from": "5.zero",
+      "mood": "none",
+      "at": 81.47
+    },
+    {
+      "from": "6.scoop",
+      "mood": "tense",
+      "at": 85.2
+    },
+    {
+      "from": "6.sink",
+      "mood": "playful",
+      "at": 90.4
+    },
+    {
+      "from": "6.rope",
+      "mood": "tense",
+      "at": 92.27
+    },
+    {
+      "from": "6.block",
+      "mood": "wonder",
+      "at": 95.6
+    },
+    {
+      "from": "7.hug",
+      "mood": "none",
+      "at": 99.93
+    },
+    {
+      "from": "7.hold",
+      "mood": "hope",
+      "at": 102.0
+    },
+    {
+      "from": "7.roof",
+      "mood": "town",
+      "at": 104.1
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 16,
+  "measured": {
+    "musicUnderVoiceDb": 18.4,
+    "secondsWithoutMusic": 5.6,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 154,
+    "sfxPerMinute": 83.7,
+    "sfxKinds": 42,
+    "longestGapSeconds": 3.1,
+    "longestGapAt": 20.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.3,
+    "voiceOverRestWorstDb": 5.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.5,
+        "t": 105.8,
+        "cue": "7.roof",
+        "sounding": [
+          "bell"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 98.9,
+        "cue": "6.boing",
+        "sounding": [
+          "power_up"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 61.0,
+        "cue": "4.vine",
+        "sounding": [
+          "sting",
+          "stomp"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 109.7,
+        "cue": "8.sub",
+        "sounding": [
+          "boing",
+          "ding",
+          "slide_down"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 88.6,
+        "cue": "6.drop",
+        "sounding": [
+          "drop"
+        ]
+      },
+      {
+        "db": 7.7,
+        "t": 23.3,
+        "cue": "2.clumsy",
+        "sounding": [
+          "bonk",
+          "slide_down",
+          "swish"
+        ]
+      }
+    ],
+    "lufs": -15.2,
+    "truePeakDb": -1.9,
+    "limiterMaxDb": 2.9
+  },
+  "failures": []
+}

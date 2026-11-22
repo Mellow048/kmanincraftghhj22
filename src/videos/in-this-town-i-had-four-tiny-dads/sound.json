@@ -1,0 +1,975 @@
+{
+  "film": "in-this-town-i-had-four-tiny-dads",
+  "README": "Sound sheet for In This Town, I Had Four Tiny Dads. Big slimes bounce with low boing + thud; tiny slime dads hop with high pitched plink/pop/boing; Dad #3 slipping is slide_down; the Iron Golem moves with clank + stomp + hit.",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "Sunny swamp-slime village hook."
+      },
+      {
+        "from": "1.reed",
+        "mood": "hope",
+        "gain": -2,
+        "why": "Warm flashback: finding the baby in the swamp basket."
+      },
+      {
+        "from": "1.pat",
+        "mood": "playful",
+        "why": "Sent flying across the room, and four dads in a wheelbarrow."
+      },
+      {
+        "from": "2.bump",
+        "mood": "playful",
+        "why": "Everyday comedy of four tiny dads: soup, stacked doors, excuses."
+      },
+      {
+        "from": "2.coat",
+        "mood": "curious",
+        "gain": -2,
+        "why": "The torn baby coat, barred sunset bridge, and Grandpa's warning."
+      },
+      {
+        "from": "3.corner",
+        "mood": "playful",
+        "gain": -2,
+        "why": "School Roof Jump Day and the two-inch seesaw flop."
+      },
+      {
+        "from": "3.wish",
+        "mood": "sad",
+        "gain": -2,
+        "why": "Wishing for one real dad; none of them bounce after that."
+      },
+      {
+        "from": "4.sunset",
+        "mood": "sneak",
+        "why": "Unbarring the forbidden bridge alone at sunset."
+      },
+      {
+        "from": "4.vine",
+        "mood": "tense",
+        "why": "Vines stand up into a towering Iron Golem; fists slam the rail."
+      },
+      {
+        "from": "5.stare",
+        "mood": "dark",
+        "gain": -2,
+        "why": "Four clues snap into place: twice Dad took that fist."
+      },
+      {
+        "from": "5.zero",
+        "mood": "none",
+        "why": "Dead silence as four tiny dads with zero splits stack in front of him."
+      },
+      {
+        "from": "6.scoop",
+        "mood": "tense",
+        "why": "Scooping them up, knocking the pin, dropping the bridge."
+      },
+      {
+        "from": "6.sink",
+        "mood": "playful",
+        "gain": -2,
+        "why": "Iron golem sinks straight down and stares at a fish."
+      },
+      {
+        "from": "6.rope",
+        "mood": "tense",
+        "why": "Pulled off the ledge toward the covered barrow."
+      },
+      {
+        "from": "6.block",
+        "mood": "wonder",
+        "why": "The sheet flies off their secret Slime Block\u2014BOING above the trees!"
+      },
+      {
+        "from": "7.hug",
+        "mood": "none",
+        "why": "Silence for a breath as he opens his arms on the grass."
+      },
+      {
+        "from": "7.hold",
+        "mood": "hope",
+        "why": "All four tiny dads hold him at once without hurting him."
+      },
+      {
+        "from": "7.roof",
+        "mood": "town",
+        "why": "Bouncing past the bell tower and rolling proudly through the gate."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "1.same",
+      "bed": "village"
+    },
+    {
+      "from": "1.reed",
+      "to": "1.tall",
+      "bed": "wind"
+    },
+    {
+      "from": "1.pat",
+      "to": "1.pat",
+      "bed": "room"
+    },
+    {
+      "from": "1.barrow",
+      "to": "2.shin",
+      "bed": "village"
+    },
+    {
+      "from": "2.dinner",
+      "to": "2.clumsy",
+      "bed": "room"
+    },
+    {
+      "from": "2.porch",
+      "to": "2.swamp",
+      "bed": "village"
+    },
+    {
+      "from": "2.coat",
+      "to": "2.coat",
+      "bed": "room"
+    },
+    {
+      "from": "2.bridge",
+      "to": "2.water",
+      "bed": "wind"
+    },
+    {
+      "from": "2.splits",
+      "to": "3.corner",
+      "bed": "village"
+    },
+    {
+      "from": "3.friday",
+      "to": "3.inch",
+      "bed": "crowd"
+    },
+    {
+      "from": "3.wish",
+      "to": "3.shed",
+      "bed": "village"
+    },
+    {
+      "from": "4.sunset",
+      "to": "4.ruins",
+      "bed": "wind"
+    },
+    {
+      "from": "4.vine",
+      "to": "6.drop",
+      "bed": "night"
+    },
+    {
+      "from": "6.sink",
+      "to": "6.sink",
+      "bed": "pool"
+    },
+    {
+      "from": "6.rope",
+      "to": "7.hold",
+      "bed": "night"
+    },
+    {
+      "from": "7.roof",
+      "to": "8.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "at": 0.05,
+      "sfx": "pop",
+      "why": "Hero pops into frame one."
+    },
+    {
+      "cue": "1.town",
+      "word": "big",
+      "pitch": 0.72,
+      "sfx": "boing",
+      "why": "Giant neighbour slime dads bounce past."
+    },
+    {
+      "cue": "1.town",
+      "word": "dad",
+      "sfx": "thud",
+      "trim": -3,
+      "why": "Heavy two-block landing."
+    },
+    {
+      "cue": "1.four",
+      "at": 0.02,
+      "sfx": "swish",
+      "why": "Snap down to knee height."
+    },
+    {
+      "cue": "1.four",
+      "at": 0.12,
+      "repeat": 4,
+      "every": 0.14,
+      "pitch": 1.4,
+      "sfx": "plink",
+      "why": "Four tiny dads pop-hop in one by one."
+    },
+    {
+      "cue": "1.four",
+      "word": "tiny",
+      "pitch": 1.45,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "Tiny jelly bounce."
+    },
+    {
+      "cue": "1.same",
+      "at": 0.05,
+      "repeat": 3,
+      "every": 0.12,
+      "pitch": 1.3,
+      "sfx": "pop",
+      "why": "Stacking into the four-high totem."
+    },
+    {
+      "cue": "1.same",
+      "word": "same",
+      "sfx": "blip",
+      "pitch": 1.25,
+      "why": "All four wave as one guy."
+    },
+    {
+      "cue": "1.reed",
+      "at": 0,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Flashback transition to the swamp reeds."
+    },
+    {
+      "cue": "1.reed",
+      "word": "basket",
+      "sfx": "rustle",
+      "why": "Baby reaches up in the woven basket."
+    },
+    {
+      "cue": "1.tall",
+      "word": "two",
+      "pitch": 0.7,
+      "sfx": "boing",
+      "why": "Two-block Dad bounces proudly."
+    },
+    {
+      "cue": "1.tall",
+      "word": "tall",
+      "sfx": "thud",
+      "trim": -3,
+      "why": "Big soft landing."
+    },
+    {
+      "cue": "1.pat",
+      "word": "pat",
+      "sfx": "boing",
+      "pitch": 0.85,
+      "why": "Affectionate pat."
+    },
+    {
+      "cue": "1.pat",
+      "word": "sent",
+      "sfx": "zip",
+      "why": "Kid launches across the floorboards."
+    },
+    {
+      "cue": "1.pat",
+      "word": "room",
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "Comedic tumble at the far side."
+    },
+    {
+      "cue": "1.barrow",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Back to sunny village street."
+    },
+    {
+      "cue": "1.barrow",
+      "at": 0.2,
+      "repeat": 4,
+      "every": 0.34,
+      "sfx": "creak",
+      "trim": -1,
+      "why": "Wooden wheelbarrow wheel rolling."
+    },
+    {
+      "cue": "1.barrow",
+      "word": "wheelbarrow",
+      "pitch": 1.4,
+      "sfx": "plink",
+      "why": "Four dads bouncing happily inside."
+    },
+    {
+      "cue": "2.bump",
+      "word": "knocks",
+      "sfx": "hit",
+      "trim": -2,
+      "why": "Big slime knocks villager off his feet."
+    },
+    {
+      "cue": "2.bump",
+      "word": "flat",
+      "sfx": "thud",
+      "why": "Villager lands flat on cobbles."
+    },
+    {
+      "cue": "2.shin",
+      "word": "tiny",
+      "pitch": 1.55,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "Tiny Dad #1 boings harmlessly off sneaker."
+    },
+    {
+      "cue": "2.shin",
+      "word": "fly",
+      "pitch": 1.5,
+      "sfx": "plink",
+      "why": "Zero damage jelly squish."
+    },
+    {
+      "cue": "2.dinner",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut indoors to low soup table."
+    },
+    {
+      "cue": "2.dinner",
+      "word": "yelled",
+      "repeat": 4,
+      "every": 0.12,
+      "pitch": 1.45,
+      "sfx": "blip",
+      "why": "Four tiny voices lecturing about carrots."
+    },
+    {
+      "cue": "2.soup",
+      "word": "slipped",
+      "sfx": "slide_down",
+      "why": "Dad #3 slips off the bowl rim."
+    },
+    {
+      "cue": "2.soup",
+      "word": "soup",
+      "sfx": "splash",
+      "trim": -1,
+      "why": "Plops straight into the green soup!"
+    },
+    {
+      "cue": "2.door",
+      "at": 0.1,
+      "repeat": 3,
+      "every": 0.15,
+      "pitch": 1.35,
+      "sfx": "pop",
+      "why": "Standing on his own head."
+    },
+    {
+      "cue": "2.door",
+      "word": "doors",
+      "sfx": "creak",
+      "trim": -2,
+      "why": "Reaching the brass latch."
+    },
+    {
+      "cue": "2.clumsy",
+      "word": "clumsy",
+      "sfx": "slide_down",
+      "trim": -4,
+      "why": "Four-dad stack wobbles and tumbles."
+    },
+    {
+      "cue": "2.clumsy",
+      "word": "clumsy",
+      "at": 0.25,
+      "sfx": "bonk",
+      "trim": -4,
+      "why": "Soft landing pile."
+    },
+    {
+      "cue": "2.porch",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut to porch stairs and twin craters."
+    },
+    {
+      "cue": "2.porch",
+      "word": "stairs",
+      "sfx": "thud",
+      "trim": -3,
+      "why": "Pointing at the suspicious twin craters."
+    },
+    {
+      "cue": "2.cactus",
+      "word": "walking",
+      "pitch": 1.4,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "Miming bumping into a cactus."
+    },
+    {
+      "cue": "2.cactus",
+      "word": "cactus",
+      "sfx": "pop",
+      "pitch": 1.3,
+      "why": "Tiny cactus gag."
+    },
+    {
+      "cue": "2.swamp",
+      "word": "No",
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "Deadpan: we live in a wet swamp, zero cacti!"
+    },
+    {
+      "cue": "2.coat",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut to the torn baby coat by the door."
+    },
+    {
+      "cue": "2.coat",
+      "word": "coat",
+      "sfx": "rustle",
+      "why": "Touching the ragged torn hem."
+    },
+    {
+      "cue": "2.bridge",
+      "at": 0,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Sunset at the swamp bridge."
+    },
+    {
+      "cue": "2.bridge",
+      "word": "barred",
+      "sfx": "stamp",
+      "why": "Heavy wooden bar drops into its slot."
+    },
+    {
+      "cue": "2.water",
+      "word": "dark",
+      "sfx": "plink",
+      "pitch": 0.8,
+      "why": "Drip into the dark swamp river below."
+    },
+    {
+      "cue": "2.splits",
+      "word": "warned",
+      "sfx": "sting",
+      "trim": -3,
+      "why": "Grandpa's solemn warning: zero splits left."
+    },
+    {
+      "cue": "2.ball",
+      "word": "hit",
+      "sfx": "tick",
+      "why": "Fragile stakes."
+    },
+    {
+      "cue": "2.ball",
+      "word": "slimeball",
+      "sfx": "plink",
+      "pitch": 0.9,
+      "why": "Lone slimeball on the stone curb."
+    },
+    {
+      "cue": "3.corner",
+      "at": 0,
+      "sfx": "school_bell",
+      "trim": -3,
+      "why": "Morning school bell."
+    },
+    {
+      "cue": "3.corner",
+      "word": "stop",
+      "sfx": "rustle",
+      "why": "Waving them back behind the corner."
+    },
+    {
+      "cue": "3.friday",
+      "word": "bounced",
+      "pitch": 0.78,
+      "sfx": "boing",
+      "why": "Big slime dad launches kid."
+    },
+    {
+      "cue": "3.friday",
+      "word": "roof",
+      "sfx": "cheer",
+      "trim": -2,
+      "why": "Kids cheer on the school roof."
+    },
+    {
+      "cue": "3.plank",
+      "word": "jumped",
+      "repeat": 4,
+      "every": 0.06,
+      "pitch": 1.45,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "All four tiny dads jump onto the seesaw plank."
+    },
+    {
+      "cue": "3.plank",
+      "word": "plank",
+      "sfx": "step_wood",
+      "why": "Tiny tap on the board."
+    },
+    {
+      "cue": "3.inch",
+      "word": "two",
+      "sfx": "slide_up",
+      "trim": -3,
+      "why": "Pathetic two-inch hop."
+    },
+    {
+      "cue": "3.inch",
+      "word": "inches",
+      "sfx": "bonk",
+      "trim": -2,
+      "why": "Immediate flat drop."
+    },
+    {
+      "cue": "3.inch",
+      "word": "laughed",
+      "sfx": "buzz",
+      "trim": -3,
+      "why": "Everyone laughs."
+    },
+    {
+      "cue": "3.wish",
+      "at": 0.15,
+      "repeat": 4,
+      "every": 0.42,
+      "sfx": "step_stone",
+      "trim": -2,
+      "why": "Slow lonely footsteps home at sunset."
+    },
+    {
+      "cue": "3.quiet",
+      "at": 0.08,
+      "sfx": "power_down",
+      "trim": -3,
+      "why": "All four tiny dads stop bouncing completely."
+    },
+    {
+      "cue": "3.shed",
+      "word": "shut",
+      "sfx": "creak",
+      "why": "Shutting the wooden shed."
+    },
+    {
+      "cue": "3.shed",
+      "word": "pressed",
+      "repeat": 3,
+      "every": 0.18,
+      "pitch": 1.15,
+      "sfx": "place",
+      "why": "Secretly pressing green slimeballs together."
+    },
+    {
+      "cue": "4.sunset",
+      "at": 0,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Sunset at the barred bridge."
+    },
+    {
+      "cue": "4.sunset",
+      "word": "unbarred",
+      "sfx": "scrape",
+      "why": "Lifting the heavy wooden crossbar."
+    },
+    {
+      "cue": "4.ruins",
+      "at": 0.15,
+      "repeat": 4,
+      "every": 0.38,
+      "sfx": "step_stone",
+      "trim": -2,
+      "why": "Crossing the stone bridge alone."
+    },
+    {
+      "cue": "4.vine",
+      "word": "vines",
+      "sfx": "crack",
+      "trim": -2,
+      "why": "Stone and vines cracking apart."
+    },
+    {
+      "cue": "4.vine",
+      "word": "stood",
+      "sfx": "clank",
+      "why": "Iron joints locking upright."
+    },
+    {
+      "cue": "4.golem",
+      "at": 0.05,
+      "sfx": "sting",
+      "trim": -1,
+      "why": "Reveal of the towering damaged Iron Golem."
+    },
+    {
+      "cue": "4.golem",
+      "word": "golem",
+      "sfx": "stomp",
+      "trim": -1,
+      "why": "Earth-shaking iron step."
+    },
+    {
+      "cue": "4.past",
+      "at": 0.2,
+      "repeat": 3,
+      "every": 0.55,
+      "sfx": "stomp",
+      "trim": -2,
+      "why": "Heavy iron footsteps lumbering right past him."
+    },
+    {
+      "cue": "4.past",
+      "at": 0.35,
+      "repeat": 2,
+      "every": 0.55,
+      "sfx": "clank",
+      "trim": -3,
+      "why": "Iron plates clanking."
+    },
+    {
+      "cue": "4.barrow",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Whip-pan to the village end of the bridge."
+    },
+    {
+      "cue": "4.barrow",
+      "word": "rolled",
+      "repeat": 3,
+      "every": 0.28,
+      "sfx": "creak",
+      "trim": -2,
+      "why": "Dads rolling up with the barrow and his coat."
+    },
+    {
+      "cue": "4.hunt",
+      "at": 0.08,
+      "sfx": "clank",
+      "pitch": 1.15,
+      "why": "Golem head snaps around onto the slimes."
+    },
+    {
+      "cue": "4.hunt",
+      "word": "hunts",
+      "sfx": "whoosh_low",
+      "why": "Both iron arms swing high overhead."
+    },
+    {
+      "cue": "4.slam",
+      "word": "slammed",
+      "sfx": "riser",
+      "trim": -2,
+      "why": "Arms hurtling down."
+    },
+    {
+      "cue": "4.slam",
+      "word": "slammed",
+      "sfx": "boom",
+      "trim": -2,
+      "why": "Both iron fists smash into the stone rail!"
+    },
+    {
+      "cue": "4.slam",
+      "word": "craters",
+      "sfx": "debris",
+      "why": "Broken stone chips scattering."
+    },
+    {
+      "cue": "5.stare",
+      "at": 0.1,
+      "sfx": "heartbeat",
+      "why": "Stunned realisation staring at the two white dents."
+    },
+    {
+      "cue": "5.craters",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Flashback cut: craters by our stairs."
+    },
+    {
+      "cue": "5.craters",
+      "word": "craters",
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "Clue #1 & #2 lock in."
+    },
+    {
+      "cue": "5.list",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Flashback cut: torn baby coat."
+    },
+    {
+      "cue": "5.list",
+      "word": "barred",
+      "sfx": "stamp",
+      "trim": -2,
+      "why": "Clue #3 & #4 lock in."
+    },
+    {
+      "cue": "5.never",
+      "at": 0,
+      "sfx": "whoosh",
+      "trim": -2,
+      "why": "Into the sunset flashback."
+    },
+    {
+      "cue": "5.never",
+      "word": "never",
+      "sfx": "whoosh_low",
+      "why": "Two-block Dad leaps in front of the baby basket."
+    },
+    {
+      "cue": "5.twice",
+      "word": "Twice",
+      "sfx": "hit",
+      "why": "First iron fist blow!"
+    },
+    {
+      "cue": "5.twice",
+      "word": "fist",
+      "sfx": "hit",
+      "why": "Second iron fist blow!"
+    },
+    {
+      "cue": "5.twice",
+      "word": "fist",
+      "at": 0.08,
+      "sfx": "break",
+      "why": "Splitting into four tiny slime dads!"
+    },
+    {
+      "cue": "5.zero",
+      "at": 0.15,
+      "sfx": "heartbeat",
+      "why": "Dead silence: zero splits left."
+    },
+    {
+      "cue": "5.front",
+      "word": "four",
+      "repeat": 4,
+      "every": 0.09,
+      "pitch": 1.4,
+      "sfx": "pop",
+      "why": "All four hop in front of his shoes and stack up!"
+    },
+    {
+      "cue": "5.front",
+      "word": "stacked",
+      "sfx": "stomp",
+      "trim": -2,
+      "why": "Golem steps up over them."
+    },
+    {
+      "cue": "6.scoop",
+      "word": "scooped",
+      "pitch": 1.35,
+      "sfx": "boing",
+      "why": "Scooping all four dads into his arms."
+    },
+    {
+      "cue": "6.scoop",
+      "word": "ran",
+      "repeat": 4,
+      "every": 0.22,
+      "sfx": "step_stone",
+      "why": "Sprinting back across the bridge."
+    },
+    {
+      "cue": "6.pin",
+      "word": "knocked",
+      "sfx": "hit",
+      "trim": -1,
+      "why": "Slamming the wooden locking pin out!"
+    },
+    {
+      "cue": "6.pin",
+      "word": "pin",
+      "sfx": "crack",
+      "why": "Timber release."
+    },
+    {
+      "cue": "6.drop",
+      "word": "fell",
+      "sfx": "drop",
+      "why": "The bridge gives way beneath the Iron Golem."
+    },
+    {
+      "cue": "6.drop",
+      "word": "swim",
+      "sfx": "splash",
+      "why": "Massive iron splash into the deep river!"
+    },
+    {
+      "cue": "6.sink",
+      "at": 0.18,
+      "sfx": "thud",
+      "why": "Golem thuds straight onto the riverbed."
+    },
+    {
+      "cue": "6.sink",
+      "word": "fish",
+      "sfx": "blink",
+      "why": "Golem stares blankly at a passing fish."
+    },
+    {
+      "cue": "6.rope",
+      "word": "snapping",
+      "sfx": "crack",
+      "why": "Vine rope snaps tight around his ankle!"
+    },
+    {
+      "cue": "6.rope",
+      "word": "pulled",
+      "sfx": "zip",
+      "why": "Yanked off the stone ledge!"
+    },
+    {
+      "cue": "6.three",
+      "word": "slipped",
+      "sfx": "slide_down",
+      "why": "Dad #3 slips out of his sleeve!"
+    },
+    {
+      "cue": "6.three",
+      "word": "wheelbarrow",
+      "pitch": 1.35,
+      "sfx": "boing",
+      "why": "Lands on the covered barrow below."
+    },
+    {
+      "cue": "6.block",
+      "word": "sheet",
+      "sfx": "whoosh",
+      "why": "Cloth cover whips into the air!"
+    },
+    {
+      "cue": "6.block",
+      "word": "slime",
+      "sfx": "sparkle",
+      "why": "Glowing green nine-slimeball Slime Block revealed!"
+    },
+    {
+      "cue": "6.boing",
+      "word": "hit",
+      "sfx": "riser",
+      "trim": -3,
+      "why": "Falling straight onto the Slime Block."
+    },
+    {
+      "cue": "6.boing",
+      "word": "hit",
+      "pitch": 0.88,
+      "sfx": "boing",
+      "why": "MASSIVE SLIME BLOCK BOING!"
+    },
+    {
+      "cue": "6.boing",
+      "word": "bounced",
+      "sfx": "power_up",
+      "why": "Rocketing safely above the swamp trees!"
+    },
+    {
+      "cue": "7.hug",
+      "word": "hug",
+      "repeat": 4,
+      "every": 0.12,
+      "pitch": 1.45,
+      "sfx": "plink",
+      "why": "All four tiny dads hop gently into his open arms."
+    },
+    {
+      "cue": "7.hold",
+      "word": "hold",
+      "sfx": "chime",
+      "why": "All four holding him at once with zero damage."
+    },
+    {
+      "cue": "7.hold",
+      "word": "once",
+      "sfx": "sparkle",
+      "trim": -2,
+      "why": "Floating pixel hearts."
+    },
+    {
+      "cue": "7.roof",
+      "at": 0,
+      "sfx": "swish",
+      "why": "Cut to sunny Friday schoolyard."
+    },
+    {
+      "cue": "7.roof",
+      "word": "bounced",
+      "pitch": 0.92,
+      "sfx": "boing",
+      "why": "Bouncing off their Slime Block!"
+    },
+    {
+      "cue": "7.roof",
+      "word": "tower",
+      "sfx": "bell",
+      "trim": -4,
+      "why": "Soaring right past the school bell tower!"
+    },
+    {
+      "cue": "7.gate",
+      "at": 0.15,
+      "repeat": 4,
+      "every": 0.34,
+      "sfx": "creak",
+      "trim": -4,
+      "why": "Rolling proudly right through the front school gate."
+    },
+    {
+      "cue": "7.gate",
+      "word": "gate",
+      "sfx": "cheer",
+      "trim": -4,
+      "why": "Schoolyard welcomes all five of them."
+    },
+    {
+      "cue": "8.sub",
+      "word": "subscribe",
+      "sfx": "ding",
+      "why": "Subscribe sign."
+    },
+    {
+      "cue": "8.sub",
+      "word": "slips",
+      "sfx": "slide_down",
+      "why": "Dad #3 slips out of the stack one last time!"
+    },
+    {
+      "cue": "8.sub",
+      "word": "again",
+      "pitch": 1.4,
+      "sfx": "boing",
+      "trim": -2,
+      "why": "Cute final squish."
+    }
+  ]
+}
