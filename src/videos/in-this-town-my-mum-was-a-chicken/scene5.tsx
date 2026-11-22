@@ -73,7 +73,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.step",
-      ...cam.orbit({ on: [-1.2, 4.95, 95], onTo: [0.1, 4.2, 95], dist: 3.4, distTo: 2.8, yaw: 18, yawTo: -14, pitch: 14, fov: 42 }),
+      ...cam.orbit({ on: [-1.2, 5.05, 95], onTo: [0.2, 4.45, 95], dist: 4.0, distTo: 3.6, yaw: 18, yawTo: -14, pitch: 14, fov: 44 }),
       handheld: 0.024,
       impacts: [{ at: stepOffAt, amp: 0.065, dur: 0.3 }],
       look: "overworld-sunset",

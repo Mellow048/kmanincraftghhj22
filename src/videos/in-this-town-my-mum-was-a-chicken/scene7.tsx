@@ -93,7 +93,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.egg",
-      ...cam.orbit({ on: [8.82, 5.7, -4.75], dist: 2.0, distTo: 1.5, yaw: 16, yawTo: -12, pitch: 16, fov: 36 }),
+      ...cam.orbit({ on: [8.82, 5.82, -4.8], dist: 2.4, distTo: 1.95, yaw: 16, yawTo: -12, pitch: 16, fov: 38 }),
       handheld: 0.022,
       impacts: [{ at: shakeAt, amp: 0.045, dur: 0.3 }],
       look: "overworld-night",

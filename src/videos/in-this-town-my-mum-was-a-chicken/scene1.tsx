@@ -34,7 +34,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.chicken",
-      ...cam.orbit({ on: [0, 0.9, 1.15], dist: 3.1, distTo: 2.45, yaw: -20, yawTo: 18, pitch: 6, fov: 42 }),
+      ...cam.orbit({ on: [0, 0.95, 1.15], dist: 3.35, distTo: 2.8, yaw: -20, yawTo: 18, pitch: 6, fov: 42 }),
       handheld: 0.018,
       impacts: [{ at: 0.25, amp: 0.035, dur: 0.25 }],
       look: "overworld-night",
@@ -117,7 +117,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.corner",
-      ...cam.truck({ on: [-1.8, 0.75, 2.0], by: [-1.8, 0, 0], dist: 3.5, yaw: 10, pitch: 10, fov: 42 }),
+      ...cam.truck({ on: [-2.2, 0.78, 2.0], by: [-1.8, 0, 0], dist: 3.8, yaw: 10, pitch: 10, fov: 42 }),
       handheld: 0.016,
       look: "overworld-night",
       zone: "village",
@@ -151,7 +151,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.horse",
-      ...cam.orbit({ on: [-1.85, 0.85, 2.0], dist: 2.9, distTo: 2.45, yaw: -26, yawTo: 18, pitch: 6, fov: 40 }),
+      ...cam.orbit({ on: [-1.85, 0.85, 2.0], dist: 3.45, distTo: 2.95, yaw: 20, yawTo: -10, pitch: 8, fov: 42 }),
       handheld: 0.016,
       look: "overworld-night",
       zone: "village",

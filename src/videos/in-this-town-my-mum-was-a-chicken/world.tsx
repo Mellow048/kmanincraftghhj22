@@ -112,7 +112,7 @@ const School: React.FC = () => (
     <Vox kind="planks" tint="#94653c" position={[-0.9, 0.72, 45.06]} size={[0.52, 0.55, 0.08]} />
 
     <Lantern position={[0, 3.55, 44.2]} chain={0.45} light={3.6} reach={12} />
-    <Lantern position={[-0.9, 2.3, 40.3]} chain={0.3} light={2.8} reach={9} />
+    <Lantern position={[0.65, 2.3, 40.3]} chain={0.3} light={2.8} reach={9} />
     <pointLight position={[0, 3.1, 45.5]} intensity={5.2} distance={15} color="#ffe2a8" />
     <LightPool position={[-0.4, 0.02, 44.4]} width={6.2} depth={5.2} color="#ffd99a" opacity={0.28} />
     <Dust position={[0, 1.7, 44.3]} area={[6, 2.8, 5]} count={55} size={0.04} color="#ffe9bd" opacity={0.6} seed={11} speed={0.2} />

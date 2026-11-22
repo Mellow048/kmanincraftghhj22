@@ -35,7 +35,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.walk",
-      ...cam.truck({ on: [-3.2, 0.78, 1.9], by: [2.6, 0, 0], dist: 3.7, yaw: 10, pitch: 8, fov: 42 }),
+      ...cam.truck({ on: [-3.1, 0.85, 1.85], by: [2.8, 0, 0], dist: 4.2, yaw: 10, pitch: 8, fov: 44 }),
       handheld: 0.015,
       look: "overworld-night",
       zone: "village",
@@ -70,7 +70,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.crates",
-      ...cam.orbit({ on: [0, 1.2, 1.8], dist: 3.8, distTo: 3.0, yaw: -22, yawTo: 14, pitch: 10, fov: 42 }),
+      ...cam.orbit({ on: [0, 1.4, 1.8], dist: 4.4, distTo: 3.7, yaw: -22, yawTo: 14, pitch: 10, fov: 44 }),
       handheld: 0.018,
       look: "overworld-night",
       zone: "village",
@@ -128,7 +128,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.caught",
-      ...cam.orbit({ on: [0, 0.8, 1.8], dist: 3.0, distTo: 2.35, yaw: 20, yawTo: -14, pitch: 6, fov: 40 }),
+      ...cam.orbit({ on: [0, 0.95, 1.8], dist: 3.55, distTo: 2.95, yaw: 20, yawTo: -14, pitch: 6, fov: 42 }),
       handheld: 0.015,
       impacts: [{ at: 0.14, amp: 0.06, dur: 0.32 }],
       look: "overworld-night",

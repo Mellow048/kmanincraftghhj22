@@ -13,7 +13,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.school",
-      ...cam.push({ on: [-0.45, 1.05, 43.0], dist: 4.8, to: 3.8, yaw: 20, pitch: 8, fov: 42 }),
+      ...cam.push({ on: [-0.35, 1.05, 43.0], dist: 5.5, to: 4.5, yaw: 20, pitch: 8, fov: 46 }),
       handheld: 0.015,
       impacts: [{ at: winPop, amp: 0.04, dur: 0.25 }],
       look: "lantern-night",
@@ -66,7 +66,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.homework",
-      ...cam.orbit({ on: [-0.95, 0.88, 44.3], dist: 2.7, distTo: 2.1, yaw: 44, yawTo: 16, pitch: 20, fov: 42 }),
+      ...cam.orbit({ on: [-1.05, 0.92, 44.35], dist: 3.15, distTo: 2.6, yaw: 34, yawTo: 12, pitch: 18, fov: 42 }),
       handheld: 0.015,
       impacts: [{ at: ateAt, amp: 0.035, dur: 0.25 }],
       look: "lantern-night",
@@ -135,7 +135,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.under",
-      ...cam.push({ on: [-8.6, 1.45, -2.4], dist: 5.2, to: 4.1, yaw: 18, pitch: 10, fov: 44 }),
+      ...cam.push({ on: [-8.6, 1.75, -2.4], dist: 5.5, to: 4.65, yaw: 18, pitch: 10, fov: 44 }),
       handheld: 0.015,
       look: "overworld-night",
       zone: "village",

@@ -114,7 +114,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.crack",
-      ...cam.orbit({ on: [0.0, 4.9, 95], dist: 4.2, distTo: 3.4, yaw: 20, yawTo: -10, pitch: 14, fov: 44 }),
+      ...cam.orbit({ on: [-0.35, 5.1, 95], dist: 4.8, distTo: 4.0, yaw: 20, yawTo: -10, pitch: 14, fov: 44 }),
       handheld: 0.028,
       impacts: [{ at: snapAt, amp: 0.095, dur: 0.45 }],
       look: "overworld-sunset",

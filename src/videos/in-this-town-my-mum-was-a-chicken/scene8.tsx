@@ -9,7 +9,7 @@ export const scene8 = storyScene(timing, {
   shots: [
     {
       cue: "8.sub",
-      ...cam.push({ on: [8.85, 6.32, -4.95], dist: 2.9, to: 2.35, yaw: 10, pitch: 8, fov: 42 }),
+      ...cam.push({ on: [8.88, 6.32, -4.95], dist: 3.25, to: 2.75, yaw: 10, pitch: 8, fov: 42 }),
       handheld: 0.015,
       impacts: [{ at: hatchAt, amp: 0.055, dur: 0.3 }],
       look: "overworld-night",

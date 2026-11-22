@@ -7,7 +7,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "6.float",
-      ...cam.orbit({ on: [0.0, 3.95, 95], onTo: [2.0, 1.75, 95], dist: 3.6, distTo: 2.9, yaw: 18, yawTo: -12, pitch: 10, fov: 42 }),
+      ...cam.orbit({ on: [0.0, 4.4, 95], onTo: [2.0, 2.35, 95], dist: 4.2, distTo: 3.6, yaw: 18, yawTo: -12, pitch: 10, fov: 44 }),
       handheld: 0.018,
       look: "overworld-sunset",
       zone: "cliff",
