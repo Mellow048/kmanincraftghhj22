@@ -1,5 +1,5 @@
 import { Vox, cam, storyScene } from "../../engine";
-import { Bits, Hero, MumChicken, NORTH, PATH_TOP, Puffs, SOUTH, ZombieKid, ease, hop, jolt, pop, ramp, timing, wordAt } from "./kit";
+import { Bits, Hero, MumChicken, PATH_TOP, Puffs, SOUTH, ZombieKid, ease, hop, jolt, pop, ramp, timing, wordAt } from "./kit";
 
 const sneezeAt = wordAt("3.normal", "sneezed");
 const brokeAt = wordAt("3.broke", "broke");
@@ -27,8 +27,7 @@ export const scene3 = storyScene(timing, {
               flap={sneezed ? 1 : 0.15}
               peck={sneezed ? jolt(t, sneezeAt, 0.9) : -0.25 * ease(ramp(t, 0.2, sneezeAt))}
             />
-            <Bits position={[-0.2, 0.75, 2.0]} t={t - sneezeAt} color="#f7f5f0" count={12} power={2.8} />
-            {sneezed && <Puffs position={[-0.2, 0.72, 2.0]} color="#ffffff" count={6} spread={0.4} size={0.07} speed={1.5} opacity={0.75} />}
+            <Bits position={[-0.2, 0.75, 2.0]} t={t - sneezeAt} color="#f7f5f0" count={10} power={2.6} />
           </>
         );
       },
@@ -40,16 +39,13 @@ export const scene3 = storyScene(timing, {
       look: "overworld-night",
       zone: "village",
       note: "Side-tracking march: Hero pumps arms & short legs marching right while taller zombie kids stride smoothly past behind him.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <Hero position={[-3.6 + k * 2.5, PATH_TOP, 2.1]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.0} mood="calm" lean={0.14} />
-            <ZombieKid position={[-3.8 + k * 3.9, PATH_TOP, 1.35]} rotationY={Math.PI / 2 - 0.2} walk={t * 2.4} shirt="#3a7d8c" mood="happy" scale={1.15} />
-            <ZombieKid position={[-2.9 + k * 4.1, PATH_TOP, 1.55]} rotationY={Math.PI / 2 - 0.2} walk={t * 2.5} shirt="#548256" mood="happy" scale={1.15} />
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <>
+          <Hero position={[-3.6 + p * 2.8, PATH_TOP, 2.1]} rotationY={Math.PI / 2 - 0.25} walk={p * 3.6} mood="calm" lean={0.14} />
+          <ZombieKid position={[-3.8 + p * 4.0, PATH_TOP, 1.35]} rotationY={Math.PI / 2 - 0.2} walk={p * 3.8} shirt="#3a7d8c" mood="happy" scale={1.15} />
+          <ZombieKid position={[-2.9 + p * 4.2, PATH_TOP, 1.55]} rotationY={Math.PI / 2 - 0.2} walk={p * 4.0} shirt="#548256" mood="happy" scale={1.15} />
+        </>
+      ),
     },
     {
       cue: "3.short",
@@ -58,15 +54,12 @@ export const scene3 = storyScene(timing, {
       look: "overworld-night",
       zone: "village",
       note: "Head-on tracking chase: Hero sprints straight down the road toward camera pumping tiny legs behind taller kids.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <Hero position={[-1.4 + k * 1.7, PATH_TOP + Math.abs(Math.sin(t * 14)) * 0.05, 1.85]} rotationY={Math.PI / 2 - 0.15} walk={t * 3.8} mood="sad" lean={0.2} />
-            <ZombieKid position={[0.2 + k * 1.4, PATH_TOP, 1.45]} rotationY={Math.PI / 2 - 0.1} walk={t * 2.6} shirt="#6e5482" />
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <>
+          <Hero position={[-1.4 + p * 1.9, PATH_TOP + Math.abs(Math.sin(t * 14)) * 0.04, 1.85]} rotationY={Math.PI / 2 - 0.15} walk={p * 4.2} mood="sad" lean={0.2} />
+          <ZombieKid position={[0.2 + p * 1.6, PATH_TOP, 1.45]} rotationY={Math.PI / 2 - 0.1} walk={p * 2.6} shirt="#6e5482" />
+        </>
+      ),
     },
     {
       cue: "3.crates",
@@ -74,7 +67,7 @@ export const scene3 = storyScene(timing, {
       handheld: 0.018,
       look: "overworld-night",
       zone: "village",
-      note: "Full-height crate tower: two wooden crates pop up and Hero leaps on top windmilling both arms to look tall.",
+      note: "Full-height steady crate tower: crates sit solid while Hero climbs on top windmilling both arms to balance.",
       stage: (t) => {
         const sway = Math.sin(t * 10) * 0.2;
         const hopUp = ease(ramp(t, 0.1, 0.45));
@@ -83,11 +76,11 @@ export const scene3 = storyScene(timing, {
             <group position={[0, PATH_TOP + 0.35, 1.8]} scale={pop(t, 0.05)}>
               <Vox kind="planks" tint="#9e6d3f" size={[0.72, 0.7, 0.72]} />
             </group>
-            <group position={[0.02, PATH_TOP + 1.05, 1.8]} rotation={[0, 0.1, sway * 0.5]} scale={pop(t, 0.18)}>
+            <group position={[0.02, PATH_TOP + 1.05, 1.8]} rotation={[0, 0.08, sway * 0.06]} scale={pop(t, 0.18)}>
               <Vox kind="planks" tint="#b5804c" size={[0.68, 0.7, 0.68]} />
             </group>
             <Hero
-              position={[0.02 + sway * 0.18, PATH_TOP + 0.7 + hopUp * 0.7 + hop(t, 0.15, 0.3, 0.3), 1.8]}
+              position={[0.02 + sway * 0.1, PATH_TOP + 0.7 + hopUp * 0.7 + hop(t, 0.15, 0.3, 0.3), 1.8]}
               rotationY={SOUTH}
               mood="happy"
               tilt={sway}
@@ -113,7 +106,7 @@ export const scene3 = storyScene(timing, {
             {t < brokeAt ? (
               <>
                 <Vox kind="planks" tint="#9e6d3f" position={[0, PATH_TOP + 0.35, 1.8]} size={[0.72, 0.7, 0.72]} />
-                <Vox kind="planks" tint="#b5804c" position={[0, PATH_TOP + 1.05, 1.8]} rotation={[0, 0, Math.sin(t * 16) * 0.12]} size={[0.68, 0.7, 0.68]} />
+                <Vox kind="planks" tint="#b5804c" position={[0, PATH_TOP + 1.05, 1.8]} size={[0.68, 0.7, 0.68]} />
               </>
             ) : (
               <>
@@ -133,18 +126,15 @@ export const scene3 = storyScene(timing, {
       impacts: [{ at: 0.14, amp: 0.06, dur: 0.32 }],
       look: "overworld-night",
       zone: "village",
-      note: "Soft feather rescue: MumChicken darts in from left under falling Hero, cushions the impact, and puffs feathers.",
+      note: "Soft feather rescue: MumChicken darts in from left under falling Hero and cushions the impact cleanly.",
       stage: (t, { p }) => {
         const drop = p < 0.22 ? (1 - p / 0.22) * 0.65 : 0;
         const squash = jolt(t, 0.22, 0.4);
-        const zip = ease(ramp(t, 0, 0.18));
+        const zip = ramp(t, 0, 0.22);
         return (
-          <>
-            <MumChicken position={[-1.0 + zip * 1.0, PATH_TOP, 1.8]} rotationY={0.25} flap={p < 0.45 ? 0.95 : 0.2} crouch={Math.abs(squash)}>
-              <Hero position={[0, drop, 0]} mood={p > 0.4 ? "calm" : "scared"} turn={p > 0.45 ? Math.sin(t * 6) * 0.25 : 0} />
-            </MumChicken>
-            {p > 0.18 && <Puffs position={[0, PATH_TOP + 0.12, 1.8]} color="#f7f5f0" count={6} spread={0.45} size={0.075} speed={1.4} opacity={0.7} />}
-          </>
+          <MumChicken position={[-1.1 + ease(zip) * 1.1, PATH_TOP, 1.8]} rotationY={0.25} walk={zip < 0.99 ? zip * 2.2 : 0} flap={p < 0.45 ? 0.95 : 0.2} crouch={Math.abs(squash)}>
+            <Hero position={[0, drop, 0]} mood={p > 0.4 ? "calm" : "scared"} turn={p > 0.45 ? Math.sin(t * 6) * 0.25 : 0} />
+          </MumChicken>
         );
       },
     },

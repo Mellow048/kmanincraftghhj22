@@ -3,17 +3,17 @@
   "README": "Sound sheet for In This Town, My Mum Was a Chicken. Times are cues and words.",
   "music": {
     "track": "Topics/InThisTown/InThisTownMusic.aac",
-    "gain": -18,
+    "gain": -14,
     "sections": [
       { "from": "1.mums", "mood": "town", "why": "Hook: town mums and chicken jockey reveal" },
       { "from": "2.school", "mood": "playful", "why": "School embarrassment montage" },
-      { "from": "2.roof", "mood": "curious", "gain": -1, "why": "Roof nest, standing under trees, mystery of the white egg" },
+      { "from": "2.roof", "mood": "curious", "why": "Roof nest, standing under trees, mystery of the white egg" },
       { "from": "3.normal", "mood": "playful", "why": "Trying to walk alone and stacking wooden crates" },
       { "from": "4.trip", "mood": "tense", "gain": 1, "why": "Mountain trip, orange sunrise, broken bridge panic" },
-      { "from": "5.step", "to": "6.float", "mood": "none", "why": "Silence for the step off the cliff before the wings open" },
       { "from": "6.float", "mood": "wonder", "gain": 1, "why": "Wings open, floating safely, eleven kids rescued" },
       { "from": "7.knew", "mood": "hope", "why": "Morning understanding, rooftop hug, kids lining up" },
-      { "from": "7.egg", "mood": "curious", "gain": -1, "why": "Shaking cracked egg and subscribe stinger" }
+      { "from": "7.egg", "mood": "curious", "why": "Shaking cracked egg and subscribe stinger" },
+      { "from": "8.sub", "mood": "hope", "gain": -1, "why": "Clear final CTA line over music" }
     ]
   },
   "beds": [
@@ -40,7 +40,7 @@
     { "cue": "2.school", "sfx": "school_bell", "why": "scene 2 school entrance" },
     { "cue": "2.school", "word": "window", "sfx": "whoosh", "why": "cut inside classroom window" },
     { "cue": "2.cluck", "sfx": "pop", "why": "CLUCK! bubble pops over desk" },
-    { "cue": "2.cluck", "word": "teacher", "sfx": "swish", "why": "teacher turns in alarm" },
+    { "cue": "2.cluck", "word": "teacher", "sfx": "swish", "trim": 3, "why": "teacher turns in alarm" },
     { "cue": "2.homework", "sfx": "paper", "why": "homework page on desk" },
     { "cue": "2.homework", "word": "ate", "sfx": "rustle", "why": "chicken pecks and shreds homework" },
     { "cue": "2.sleep", "sfx": "creak", "why": "chair creaks as she settles" },
@@ -48,8 +48,8 @@
     { "cue": "2.roof", "sfx": "whoosh", "why": "cut to highest rooftop nest" },
     { "cue": "2.roof", "word": "highest", "sfx": "gust", "why": "night breeze up on the roof" },
     { "cue": "2.view", "sfx": "swish", "why": "pan across rooftops" },
-    { "cue": "2.under", "sfx": "step_grass", "why": "climbing up the oak trunk" },
-    { "cue": "2.under", "word": "ran", "sfx": "zip", "why": "chicken sprints right under tree" },
+    { "cue": "2.under", "sfx": "step_grass", "trim": 3, "why": "climbing up the oak trunk" },
+    { "cue": "2.under", "word": "ran", "sfx": "zip", "trim": 3, "why": "chicken sprints right under tree" },
     { "cue": "2.asked", "sfx": "tick", "why": "quiet question beat" },
     { "cue": "2.egg", "sfx": "sparkle", "why": "glowing focus on white egg in straw" },
     { "cue": "2.quiet", "sfx": "swish", "why": "quiet turn away" },
@@ -58,9 +58,9 @@
     { "cue": "3.normal", "word": "flap", "sfx": "whoosh_low", "why": "sneeze blows feathers into wings flapping" },
     { "cue": "3.walk", "sfx": "step_stone", "why": "solo walk begins" },
     { "cue": "3.walk", "word": "own", "sfx": "step_stone", "why": "stubborn little stride" },
-    { "cue": "3.short", "sfx": "step_stone", "why": "short zombie legs scurrying" },
+    { "cue": "3.short", "sfx": "step_stone", "trim": 3, "why": "short zombie legs scurrying" },
     { "cue": "3.short", "word": "late", "sfx": "school_bell", "why": "bell rings while he is still far away" },
-    { "cue": "3.crates", "sfx": "place", "why": "first crate stacked" },
+    { "cue": "3.crates", "sfx": "place", "trim": 3, "why": "first crate stacked" },
     { "cue": "3.crates", "word": "tall", "sfx": "creak", "why": "tall crate tower wobbling" },
     { "cue": "3.broke", "sfx": "crack", "why": "crates splinter under feet" },
     { "cue": "3.broke", "word": "stones", "sfx": "drop", "why": "falling toward cobbles" },
@@ -68,8 +68,8 @@
     { "cue": "3.caught", "word": "underneath", "sfx": "blip", "why": "surprised double-take" },
 
     { "cue": "4.trip", "sfx": "whoosh", "why": "scene 4 mountain road" },
-    { "cue": "4.trip", "word": "mountain", "sfx": "step_grass", "why": "class marching uphill" },
-    { "cue": "4.forest", "sfx": "gust", "why": "deep dark pine woods" },
+    { "cue": "4.trip", "word": "mountain", "sfx": "step_grass", "trim": 3, "why": "class marching uphill" },
+    { "cue": "4.forest", "sfx": "gust", "trim": 3, "why": "deep dark pine woods" },
     { "cue": "4.orange", "sfx": "sting", "why": "horizon turns bright orange" },
     { "cue": "4.burn", "sfx": "fire_whoosh", "why": "sunlight danger cue" },
     { "cue": "4.burn", "word": "single", "sfx": "crackle", "why": "heat warning crackle" },
@@ -78,12 +78,12 @@
     { "cue": "4.crack", "sfx": "crack", "why": "bridge planks snap" },
     { "cue": "4.crack", "word": "snapped", "sfx": "debris", "why": "broken boards fall into canyon" },
     { "cue": "4.heavy", "sfx": "stomp", "why": "big zombie mum lunges at gap" },
-    { "cue": "4.heavy", "word": "heavy", "sfx": "thud", "why": "skids to halt at rim" },
+    { "cue": "4.heavy", "word": "heavy", "sfx": "thud", "trim": 4, "why": "skids to halt at rim" },
     { "cue": "4.wings", "sfx": "riser", "why": "sunbeam sweeping closer" },
-    { "cue": "4.wings", "word": "trees", "sfx": "heartbeat", "why": "panic beat before decision" },
+    { "cue": "4.wings", "word": "trees", "sfx": "heartbeat", "trim": 5, "why": "panic beat before decision" },
 
     { "cue": "5.edge", "sfx": "whoosh", "why": "scene 5 low shot at broken edge" },
-    { "cue": "5.edge", "word": "walked", "sfx": "step_wood", "why": "tiny feet stepping to edge" },
+    { "cue": "5.edge", "word": "walked", "sfx": "step_wood", "trim": 3, "why": "tiny feet stepping to edge" },
     { "cue": "5.mind", "sfx": "heartbeat", "why": "tight stunned close-up" },
     { "cue": "5.climb", "sfx": "rustle", "why": "crouching and climbing onto her back" },
     { "cue": "5.climb", "word": "back", "sfx": "place", "why": "seated firmly on mum" },
@@ -93,12 +93,12 @@
     { "cue": "6.float", "sfx": "whoosh_low", "why": "wings snap open" },
     { "cue": "6.float", "word": "wings", "sfx": "power_up", "why": "gliding lift activates" },
     { "cue": "6.float", "word": "fall", "sfx": "sparkle", "why": "weightless floating reveal" },
-    { "cue": "6.safe", "sfx": "thud", "gain": -7, "why": "feather-soft landing on valley grass" },
+    { "cue": "6.safe", "sfx": "thud", "gain": -2, "why": "feather-soft landing on valley grass" },
     { "cue": "6.safe", "word": "hurt", "sfx": "chime", "why": "zero fall damage relief" },
     { "cue": "6.eleven", "sfx": "whoosh_low", "why": "swooping down with Timmy" },
     { "cue": "6.eleven", "word": "Timmy", "sfx": "cheer", "why": "cheering below" },
     { "cue": "6.more", "sfx": "whoosh_low", "why": "gliding down with Mia" },
-    { "cue": "6.more", "word": "one", "sfx": "slide_up", "why": "lifting rescue arc" },
+    { "cue": "6.more", "word": "one", "sfx": "slide_up", "trim": 4, "why": "lifting rescue arc" },
     { "cue": "6.sun", "sfx": "fire_whoosh", "why": "sunlight sweeps over empty cliff" },
     { "cue": "6.sun", "word": "stone", "sfx": "boom", "why": "final kid clears the stone just in time" },
 
@@ -115,6 +115,6 @@
 
     { "cue": "8.sub", "at": -0.05, "sfx": "pop", "gain": -10, "why": "subscribe sign pops up before voice" },
     { "cue": "8.sub", "word": "hatches", "at": 0.44, "sfx": "ding", "gain": -10, "why": "subscribe bell chime rings right as final word ends" },
-    { "cue": "8.sub", "word": "hatches", "sfx": "crack", "gain": -10, "why": "final shell crack before cut" }
+    { "cue": "8.sub", "word": "hatches", "sfx": "crack", "gain": -5, "why": "final shell crack before cut" }
   ]
 }

@@ -5,10 +5,10 @@
   "seconds": 105.0667,
   "built_from": {
     "timing.json": "784635cf831fec0781c3170e24f6da8ecac3ad8a",
-    "sound.json": "aac133a064decc8608555dd4dee131f0fa160f91",
+    "sound.json": "ceedf9dd942cae321eeff98ab09609e2701643f4",
     "narration.mp3": "6953c2945fe9a61bf22be5bec3a62c29be91b066"
   },
-  "mix_sha1": "d29d72a413c5ed566a36de15894e9df92e970e7a",
+  "mix_sha1": "44232255c515502f3f4aca6015b24f1b29a9ddce",
   "music_sections": [
     {
       "from": "1.mums",
@@ -36,11 +36,6 @@
       "at": 46.57
     },
     {
-      "from": "5.step",
-      "mood": "none",
-      "at": 73.4
-    },
-    {
       "from": "6.float",
       "mood": "wonder",
       "at": 75.23
@@ -54,6 +49,11 @@
       "from": "7.egg",
       "mood": "curious",
       "at": 100.1
+    },
+    {
+      "from": "8.sub",
+      "mood": "hope",
+      "at": 102.83
     }
   ],
   "music_file": {
@@ -62,8 +62,8 @@
   },
   "beds": 6,
   "measured": {
-    "musicUnderVoiceDb": 19.5,
-    "secondsWithoutMusic": 2.1,
+    "musicUnderVoiceDb": 15.4,
+    "secondsWithoutMusic": 0.5,
     "bedsUnderVoiceDb": 25.5,
     "sfx": 84,
     "sfxPerMinute": 48.0,
@@ -71,38 +71,17 @@
     "longestGapSeconds": 3.2,
     "longestGapAt": 28.0,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 16.2,
-    "voiceOverRestWorstDb": 6.9,
+    "voiceOverRestMedianDb": 13.6,
+    "voiceOverRestWorstDb": 4.2,
     "voiceOverRestWorst": [
       {
-        "db": 6.9,
-        "t": 39.4,
-        "cue": "3.short",
-        "sounding": [
-          "place",
-          "school_bell"
-        ]
+        "db": 4.2,
+        "t": 103.0,
+        "cue": "8.sub",
+        "sounding": []
       },
       {
-        "db": 7.1,
-        "t": 90.7,
-        "cue": "7.knew",
-        "sounding": [
-          "boom",
-          "chime",
-          "swish"
-        ]
-      },
-      {
-        "db": 7.3,
-        "t": 51.1,
-        "cue": "4.orange",
-        "sounding": [
-          "sting"
-        ]
-      },
-      {
-        "db": 7.4,
+        "db": 5.1,
         "t": 62.4,
         "cue": "4.heavy",
         "sounding": [
@@ -111,23 +90,45 @@
         ]
       },
       {
-        "db": 7.6,
-        "t": 103.0,
-        "cue": "8.sub",
-        "sounding": []
-      },
-      {
-        "db": 7.8,
+        "db": 6.2,
         "t": 77.8,
         "cue": "6.float",
         "sounding": [
           "sparkle"
         ]
+      },
+      {
+        "db": 6.3,
+        "t": 39.4,
+        "cue": "3.short",
+        "sounding": [
+          "place",
+          "school_bell"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 4.3,
+        "cue": "1.doors",
+        "sounding": [
+          "break",
+          "swish"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 90.7,
+        "cue": "7.knew",
+        "sounding": [
+          "boom",
+          "chime",
+          "swish"
+        ]
       }
     ],
     "lufs": -14.7,
-    "truePeakDb": -1.9,
-    "limiterMaxDb": 0.2
+    "truePeakDb": -1.8,
+    "limiterMaxDb": 0.3
   },
   "failures": []
 }

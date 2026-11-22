@@ -1,4 +1,4 @@
-import { Block, cam, storyScene } from "../../engine";
+import { cam, storyScene } from "../../engine";
 import { Bits, CLIFF, CliffBridge, Hero, MumChicken, Puffs, ZombieKid, ZombieMum, ease, hop, ramp, timing, wordAt } from "./kit";
 
 const snapAt = wordAt("4.crack", "snapped");
@@ -15,20 +15,17 @@ export const scene4 = storyScene(timing, {
       look: "overworld-night",
       zone: "cliff",
       note: "Mountain hike: tight group marches uphill 1:1 with the tracking camera so every character stays centered.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <CliffBridge />
-            <ZombieMum position={[-4.9 + k * 2.4, CLIFF.ledgeY, 94.7]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.2} shirt="#2d7a78" hat="bow" mood="happy" />
-            <ZombieKid position={[-5.4 + k * 2.4, CLIFF.ledgeY, 95.3]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.4} shirt="#3a7d8c" mood="happy" />
-            <ZombieKid position={[-5.9 + k * 2.4, CLIFF.ledgeY, 94.6]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.4} shirt="#548256" mood="happy" />
-            <MumChicken position={[-6.4 + k * 2.4, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.6} flap={0.35}>
-              <Hero position={[0, 0, 0]} mood="happy" wave={0.5} />
-            </MumChicken>
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <>
+          <CliffBridge />
+          <ZombieMum position={[-4.9 + p * 2.4, CLIFF.ledgeY, 94.7]} rotationY={Math.PI / 2 - 0.25} walk={p * 2.4} shirt="#2d7a78" hat="bow" mood="happy" />
+          <ZombieKid position={[-5.4 + p * 2.4, CLIFF.ledgeY, 95.3]} rotationY={Math.PI / 2 - 0.25} walk={p * 2.6} shirt="#3a7d8c" mood="happy" />
+          <ZombieKid position={[-5.9 + p * 2.4, CLIFF.ledgeY, 94.6]} rotationY={Math.PI / 2 - 0.25} walk={p * 2.6} shirt="#548256" mood="happy" />
+          <MumChicken position={[-6.4 + p * 2.4, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2 - 0.25} walk={p * 2.8} flap={0.35}>
+            <Hero position={[0, 0, 0]} mood="happy" wave={0.5} />
+          </MumChicken>
+        </>
+      ),
     },
     {
       cue: "4.forest",
@@ -37,19 +34,16 @@ export const scene4 = storyScene(timing, {
       look: "overworld-night",
       zone: "cliff",
       note: "Unobstructed pine trail: class strolls beneath tall pines as Hero looks playfully around on MumChicken.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <CliffBridge />
-            <ZombieMum position={[-3.3 + k * 1.2, CLIFF.ledgeY, 94.4]} rotationY={Math.PI / 2 - 0.3} walk={t * 1.6} shirt="#2d7a78" hat="bow" mood="calm" />
-            <MumChicken position={[-4.2 + k * 1.3, CLIFF.ledgeY, 94.9]} rotationY={0.9} walk={t * 2.0} peck={Math.sin(t * 5) * 0.2}>
-              <Hero position={[0, 0, 0]} mood="happy" turn={Math.sin(t * 2.5) * 0.35} />
-            </MumChicken>
-            <ZombieKid position={[-3.6 + k * 1.3, CLIFF.ledgeY, 95.4]} rotationY={Math.PI / 2 - 0.3} walk={t * 2.0} shirt="#3a7d8c" mood="happy" />
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <>
+          <CliffBridge />
+          <ZombieMum position={[-3.3 + p * 1.2, CLIFF.ledgeY, 94.4]} rotationY={Math.PI / 2 - 0.3} walk={p * 1.6} shirt="#2d7a78" hat="bow" mood="calm" />
+          <MumChicken position={[-4.2 + p * 1.3, CLIFF.ledgeY, 94.9]} rotationY={0.9} walk={p * 2.0} peck={Math.sin(t * 5) * 0.2}>
+            <Hero position={[0, 0, 0]} mood="happy" turn={Math.sin(t * 2.5) * 0.35} />
+          </MumChicken>
+          <ZombieKid position={[-3.6 + p * 1.3, CLIFF.ledgeY, 95.4]} rotationY={Math.PI / 2 - 0.3} walk={p * 2.0} shirt="#3a7d8c" mood="happy" />
+        </>
+      ),
     },
     {
       cue: "4.orange",
@@ -97,20 +91,17 @@ export const scene4 = storyScene(timing, {
       look: "overworld-sunset",
       zone: "cliff",
       note: "Full-speed tracked bridge sprint: camera tracks 1:1 beside the class racing onto the wooden planks.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <CliffBridge />
-            <ZombieMum position={[-1.0 + k * 2.6, CLIFF.ledgeY, 94.7]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.4} lean={0.22} shirt="#2d7a78" hat="bow" mood="scared" />
-            <ZombieKid position={[-1.6 + k * 2.6, CLIFF.ledgeY, 94.5]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.6} lean={0.22} shirt="#3a7d8c" mood="scared" />
-            <ZombieKid position={[-1.9 + k * 2.6, CLIFF.ledgeY, 95.4]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.6} lean={0.22} shirt="#548256" mood="scared" />
-            <MumChicken position={[-2.4 + k * 2.6, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.25} walk={t * 3.8} flap={0.7}>
-              <Hero position={[0, 0, 0]} mood="scared" lean={0.2} />
-            </MumChicken>
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <>
+          <CliffBridge />
+          <ZombieMum position={[-1.0 + p * 2.6, CLIFF.ledgeY, 94.7]} rotationY={Math.PI / 2 - 0.25} walk={p * 3.4} lean={0.22} shirt="#2d7a78" hat="bow" mood="scared" />
+          <ZombieKid position={[-1.6 + p * 2.6, CLIFF.ledgeY, 94.5]} rotationY={Math.PI / 2 - 0.25} walk={p * 3.6} lean={0.22} shirt="#3a7d8c" mood="scared" />
+          <ZombieKid position={[-1.9 + p * 2.6, CLIFF.ledgeY, 95.4]} rotationY={Math.PI / 2 - 0.25} walk={p * 3.6} lean={0.22} shirt="#548256" mood="scared" />
+          <MumChicken position={[-2.4 + p * 2.6, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.25} walk={p * 3.8} flap={0.7}>
+            <Hero position={[0, 0, 0]} mood="scared" lean={0.2} />
+          </MumChicken>
+        </>
+      ),
     },
     {
       cue: "4.crack",
@@ -145,16 +136,18 @@ export const scene4 = storyScene(timing, {
       impacts: [{ at: jumpAt + 0.3, amp: 0.085, dur: 0.35 }],
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Big zombie mum charges the broken edge, leaps, and drops heavy back onto the stone rim with flying pebbles.",
+      note: "Big zombie mum charges forward to the broken edge, leaps, and lands heavy back onto the stone rim.",
       stage: (t) => {
+        const charge = ramp(t, 0, jumpAt);
         const lunge = Math.sin(ramp(t, jumpAt, jumpAt + 0.65) * Math.PI);
+        const x = -2.25 + charge * 0.55 + lunge * 0.85;
         return (
           <>
             <CliffBridge broken dropT={1.5} />
             <ZombieMum
-              position={[-1.7 + lunge * 0.85, CLIFF.ledgeY + lunge * 0.52, 95]}
+              position={[x, CLIFF.ledgeY + lunge * 0.52, 95]}
               rotationY={Math.PI / 2 - 0.25}
-              walk={t * 2.5}
+              walk={t < jumpAt ? charge * 1.4 : 0}
               shirt="#2d7a78"
               hat="bow"
               mood="scared"
@@ -173,21 +166,17 @@ export const scene4 = storyScene(timing, {
       handheld: 0.02,
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Golden beam sweeps onto the cliff rim as panicked kids wave arms and huddle back.",
-      stage: (t, { p }) => {
-        const sunX = 2.8 - ease(p) * 3.8;
-        return (
-          <>
-            <CliffBridge broken dropT={1.5} />
-            <Block position={[sunX, 4.6, 95]} size={[3.4, 0.04, 5.2]} color="#ffe28a" />
-            <ZombieMum position={[-2.0, CLIFF.ledgeY + hop(t, 0.4, 0.14, 0.3), 94.6]} rotationY={Math.PI / 2 - 0.25} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.4, -1.8]} />
-            <ZombieKid position={[-2.4, CLIFF.ledgeY + hop(t, 0.7, 0.18, 0.3), 95.4]} rotationY={Math.PI / 2 - 0.25} shirt="#3a7d8c" mood="scared" armPitch={[-2.6, -2.6]} />
-            <MumChicken position={[-2.9, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2 - 0.25} flap={0.45}>
-              <Hero position={[0, 0, 0]} mood="scared" tilt={Math.sin(t * 10) * 0.1} />
-            </MumChicken>
-          </>
-        );
-      },
+      note: "Panicked kids wave arms and huddle back on the cliff rim in the warm orange sunrise.",
+      stage: (t) => (
+        <>
+          <CliffBridge broken dropT={1.5} />
+          <ZombieMum position={[-2.0, CLIFF.ledgeY + hop(t, 0.4, 0.14, 0.3), 94.6]} rotationY={Math.PI / 2 - 0.25} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.4, -1.8]} />
+          <ZombieKid position={[-2.4, CLIFF.ledgeY + hop(t, 0.7, 0.18, 0.3), 95.4]} rotationY={Math.PI / 2 - 0.25} shirt="#3a7d8c" mood="scared" armPitch={[-2.6, -2.6]} />
+          <MumChicken position={[-2.9, CLIFF.ledgeY, 95.0]} rotationY={Math.PI / 2 - 0.25} flap={0.45}>
+            <Hero position={[0, 0, 0]} mood="scared" tilt={Math.sin(t * 10) * 0.1} />
+          </MumChicken>
+        </>
+      ),
     },
   ],
 });

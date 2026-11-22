@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { CLIFF, CliffBridge, Hero, MumChicken, Puffs, ZombieKid, ZombieMum, ease, hop, ramp, timing, wordAt } from "./kit";
+import { CLIFF, CliffBridge, Hero, MumChicken, ZombieKid, ZombieMum, ease, hop, ramp, timing, wordAt } from "./kit";
 
 const stepOffAt = wordAt("5.step", "stepped");
 
@@ -14,18 +14,15 @@ export const scene5 = storyScene(timing, {
       look: "overworld-sunset",
       zone: "cliff",
       note: "Tracked walk to the edge: MumChicken trots boldly past the stunned class up to the sheer drop.",
-      stage: (t, { p }) => {
-        const walkUp = ease(p);
-        return (
-          <>
-            <CliffBridge broken dropT={1.5} />
-            <ZombieMum position={[-2.7, CLIFF.ledgeY, 94.3]} rotationY={Math.PI / 2 - 0.3} shirt="#2d7a78" hat="bow" mood="scared" lookAt={[-1.3, 4.9, 95]} />
-            <ZombieKid position={[-2.9, CLIFF.ledgeY, 95.5]} rotationY={Math.PI / 2 - 0.3} shirt="#3a7d8c" mood="scared" lookAt={[-1.3, 4.9, 95]} />
-            <MumChicken position={[-2.9 + walkUp * 1.65, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.8} flap={0.35} />
-            <Hero position={[-3.3 + walkUp * 1.25, CLIFF.ledgeY, 95.2]} rotationY={Math.PI / 2 - 0.25} walk={t * 2.5} mood="scared" lookAt={[-1.2, 4.9, 95]} />
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <>
+          <CliffBridge broken dropT={1.5} />
+          <ZombieMum position={[-2.7, CLIFF.ledgeY, 94.3]} rotationY={Math.PI / 2 - 0.3} shirt="#2d7a78" hat="bow" mood="scared" lookAt={[-1.3, 4.9, 95]} />
+          <ZombieKid position={[-2.9, CLIFF.ledgeY, 95.5]} rotationY={Math.PI / 2 - 0.3} shirt="#3a7d8c" mood="scared" lookAt={[-1.3, 4.9, 95]} />
+          <MumChicken position={[-2.9 + p * 1.65, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.25} walk={p * 2.8} flap={0.35} />
+          <Hero position={[-3.3 + p * 1.25, CLIFF.ledgeY, 95.2]} rotationY={Math.PI / 2 - 0.25} walk={p * 2.4} mood="scared" lookAt={[-1.2, 4.9, 95]} />
+        </>
+      ),
     },
     {
       cue: "5.mind",
@@ -44,23 +41,33 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.climb",
-      ...cam.orbit({ on: [-1.55, 5.05, 95], dist: 2.9, distTo: 2.3, yaw: 14, yawTo: -18, pitch: 12, fov: 40 }),
+      ...cam.orbit({ on: [-1.55, 5.05, 95], dist: 3.1, distTo: 2.45, yaw: 14, yawTo: -18, pitch: 12, fov: 40 }),
       handheld: 0.016,
-      impacts: [{ at: 0.72, amp: 0.045, dur: 0.25 }],
+      impacts: [{ at: 0.78, amp: 0.045, dur: 0.25 }],
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Clean side-front mount: MumChicken crouches in the dirt; Hero sprints forward and leaps cleanly onto her back.",
+      note: "Real climb-onto-back animation: Hero steps in, grabs MumChicken's shoulders, scrambles hand-and-knee up onto her back, and settles.",
       stage: (t, { p }) => {
-        const crouch = ease(ramp(p, 0, 0.35)) * 0.75;
-        const hopUp = ease(ramp(p, 0.35, 0.78));
-        const arc = hopUp > 0 && hopUp < 1 ? Math.sin(hopUp * Math.PI) * 0.42 : 0;
+        const crouch = ease(ramp(p, 0, 0.3)) * 0.78;
+        const walkPre = ramp(p, 0, 0.28);
+        const climb = ramp(p, 0.28, 0.8);
+        const climbing = p >= 0.28 && p < 0.8;
+        const hx = p < 0.28 ? -2.05 + walkPre * 0.5 : -1.55 + ease(climb) * 0.3;
+        const hy = p < 0.28 ? CLIFF.ledgeY : CLIFF.ledgeY + ease(climb) * 0.58 + Math.sin(climb * Math.PI) * 0.18;
         return (
           <>
             <CliffBridge broken dropT={1.5} />
-            {p < 0.78 ? (
+            {p < 0.8 ? (
               <>
                 <MumChicken position={[-1.25, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.35} crouch={crouch} />
-                <Hero position={[-2.05 + hopUp * 0.8, CLIFF.ledgeY + arc, 95]} rotationY={Math.PI / 2 - 0.35} walk={p < 0.35 ? t * 2.5 : 0} mood="scared" lean={0.18} />
+                <Hero
+                  position={[hx, hy, 95]}
+                  rotationY={Math.PI / 2 - 0.35}
+                  walk={p < 0.28 ? walkPre * 1.4 : climbing ? climb * 3.6 : 0}
+                  mood="scared"
+                  lean={climbing ? 0.42 : 0.15}
+                  armPitch={climbing ? [-1.75 + Math.sin(t * 20) * 0.55, -1.75 - Math.sin(t * 20) * 0.55] : undefined}
+                />
               </>
             ) : (
               <MumChicken position={[-1.25, CLIFF.ledgeY, 95]} rotationY={Math.PI / 2 - 0.35} crouch={0.45} flap={0.45}>
@@ -78,19 +85,19 @@ export const scene5 = storyScene(timing, {
       impacts: [{ at: stepOffAt, amp: 0.065, dur: 0.3 }],
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Tracked step into open air: camera drops smoothly alongside MumChicken & Hero as they step off the cliff rim.",
+      note: "Tracked step into open air: camera drops smoothly alongside MumChicken & Hero as they step cleanly off the cliff rim.",
       stage: (t) => {
+        const preWalk = ramp(t, 0, stepOffAt);
         const drop = t >= stepOffAt ? ease(ramp(t, stepOffAt, stepOffAt + 0.7)) : 0;
-        const x = -1.25 + drop * 1.45;
+        const x = -1.6 + preWalk * 0.45 + drop * 1.45;
         const y = CLIFF.ledgeY - drop * 0.85;
         return (
           <>
             <CliffBridge broken dropT={1.5} />
             <ZombieMum position={[-2.2, CLIFF.ledgeY, 94.6]} rotationY={Math.PI / 2 - 0.3} shirt="#2d7a78" hat="bow" mood="scared" armPitch={[-2.5, -2.5]} />
-            <MumChicken position={[x, y, 95]} rotationY={Math.PI / 2 - 0.45} walk={drop < 0.25 ? t * 2.4 : 0} flap={drop > 0.1 ? 0.95 : 0.25} tilt={drop * 0.15}>
+            <MumChicken position={[x, y, 95]} rotationY={Math.PI / 2 - 0.45} walk={t < stepOffAt ? preWalk * 1.4 : 0} flap={drop > 0.1 ? 0.95 : 0.25} tilt={drop * 0.15}>
               <Hero position={[0, 0, 0]} mood="scared" armPitch={[-2.2, -2.2]} />
             </MumChicken>
-            {drop > 0.15 && <Puffs position={[x - 0.3, y + 0.2, 95]} color="#f7f5f0" count={5} spread={0.4} size={0.07} speed={1.4} opacity={0.7} />}
           </>
         );
       },

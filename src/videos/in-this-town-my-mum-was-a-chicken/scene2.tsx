@@ -1,5 +1,5 @@
 import { Block, cam, storyScene } from "../../engine";
-import { Bits, Bubble, GATE, Hero, MumChicken, NORTH, PATH_TOP, Puffs, SCHOOL, SOUTH, SoundRings, WhiteEgg, Zombie, ZombieMum, ease, hop, pop, ramp, timing, wordAt } from "./kit";
+import { Bits, Bubble, GATE, Hero, MumChicken, NORTH, PATH_TOP, SCHOOL, SOUTH, SoundRings, WhiteEgg, Zombie, ZombieMum, ease, hop, pop, ramp, timing, wordAt } from "./kit";
 
 const winPop = wordAt("2.school", "window");
 const cluckAt = wordAt("2.cluck", "clucked");
@@ -18,22 +18,22 @@ export const scene2 = storyScene(timing, {
       impacts: [{ at: winPop, amp: 0.04, dur: 0.25 }],
       look: "lantern-night",
       zone: "school",
-      note: "Unobstructed classroom diagonal: Hero walks into his seat left, teacher stands right, MumChicken leaps onto the window sill center.",
+      note: "Unobstructed classroom diagonal: Hero walks cleanly to his desk left, teacher stands right, MumChicken leaps onto window sill.",
       stage: (t) => {
-        const walkIn = ease(ramp(t, 0, 0.85));
-        const jumpSill = ease(ramp(t, winPop - 0.25, winPop + 0.18));
-        const cx = -2.1 + jumpSill * 1.2;
-        const cy = jumpSill > 0.1 ? Math.sin(jumpSill * Math.PI) * 0.45 + 1.09 * jumpSill : 0;
+        const walkIn = ramp(t, 0, 0.85);
+        const jumpSill = ramp(t, winPop - 0.25, winPop + 0.18);
+        const cx = -2.1 + ease(jumpSill) * 1.2;
+        const cy = jumpSill > 0.05 ? Math.sin(ease(jumpSill) * Math.PI) * 0.45 + 1.09 * ease(jumpSill) : 0;
         return (
           <>
-            <Hero position={[-1.15, 0, 44.85 - walkIn * 0.45]} rotationY={NORTH + 0.4} walk={walkIn < 0.95 ? t * 2.4 : 0} mood="sad" lookAt={SCHOOL.windowSill} />
-            <Zombie position={[0.7, 0, 42.9]} rotationY={-2.2} shirt="#574a7a" mood="calm" tilt={Math.sin(t * 3) * 0.08} lookAt={[-1.15, 0.9, 44.4]} />
+            <Hero position={[-1.15, 0, 45.3 - walkIn * 0.95]} rotationY={NORTH + 0.4} walk={walkIn < 0.99 ? walkIn * 2.2 : 0} mood="sad" lookAt={SCHOOL.windowSill} />
+            <Zombie position={[0.7, 0, 42.9]} rotationY={-2.2} shirt="#574a7a" mood="calm" tilt={Math.sin(t * 3) * 0.08} lookAt={[-1.15, 0.9, 44.35]} />
             <MumChicken
               position={[cx, cy, 41.45]}
               rotationY={0.25}
-              walk={jumpSill < 0.8 ? t * 3.0 : 0}
+              walk={jumpSill < 0.05 ? t * 2.0 : 0}
               flap={jumpSill > 0.05 && jumpSill < 0.95 ? 0.9 : 0.25}
-              lookAt={[-1.15, 0.8, 44.4]}
+              lookAt={[-1.15, 0.8, 44.35]}
             />
           </>
         );
@@ -46,7 +46,7 @@ export const scene2 = storyScene(timing, {
       impacts: [{ at: cluckAt, amp: 0.035, dur: 0.25 }],
       look: "lantern-night",
       zone: "school",
-      note: "Outside-in through the open window: MumChicken flaps clucking in foreground as angry teacher spins round inside behind her.",
+      note: "Outside-in through open window: MumChicken flaps clucking in foreground as angry teacher spins round inside behind her.",
       stage: (t) => {
         const turnTeacher = ease(ramp(t, 0.05, cluckAt));
         return (
@@ -97,7 +97,6 @@ export const scene2 = storyScene(timing, {
           <ZombieMum position={[-1.45, 0, 43.35]} rotationY={SOUTH + 0.2} shirt="#486a94" hat="straw" mood="calm" nod={Math.sin(t * 3.5) * 0.14} lean={0.12} />
           <Hero position={[-1.45, 0, 44.65]} rotationY={0.75} mood="sad" armPitch={[-2.0, -2.0]} tilt={Math.sin(t * 6) * 0.1} />
           <MumChicken position={[-0.88, 0.47, 44.85]} rotationY={0.15} crouch={0.6 + Math.sin(t * 3) * 0.15} asleep />
-          <Puffs position={[-0.88, 1.05, 44.85]} color="#dce8ff" count={4} rise={0.5} spread={0.15} size={0.055} speed={0.8} opacity={0.65} />
         </>
       ),
     },
@@ -107,13 +106,13 @@ export const scene2 = storyScene(timing, {
       handheld: 0.012,
       look: "overworld-night",
       zone: "village",
-      note: "Rooftop terrace at night: MumChicken flutters down onto her straw nest left while Hero paces right and WhiteEgg sits front.",
+      note: "Rooftop terrace at night: MumChicken flutters down onto her straw nest left while Hero watches beside her and WhiteEgg sits front.",
       stage: (t, { p }) => {
         const settle = ease(ramp(p, 0, 0.5));
         return (
           <>
             <MumChicken position={[8.45, GATE.roofTopY + 0.12 + (1 - settle) * 0.6, -5.05]} rotationY={0.5} flap={1 - settle * 0.8} crouch={settle * 0.45} />
-            <Hero position={[9.22 - p * 0.15, GATE.roofTopY + 0.12, -4.95]} rotationY={-0.6} walk={t * 1.6} mood="calm" lookAt={GATE.nest} />
+            <Hero position={[9.2, GATE.roofTopY + 0.12, -4.95]} rotationY={-0.65} mood="calm" tilt={Math.sin(t * 2.5) * 0.08} lookAt={GATE.nest} />
             <WhiteEgg position={[8.82, GATE.roofTopY + 0.13, -4.68]} />
           </>
         );
@@ -125,41 +124,49 @@ export const scene2 = storyScene(timing, {
       handheld: 0.014,
       look: "overworld-night",
       zone: "village",
-      note: "Hero walks to the south roof edge peering out; MumChicken scurries right beside him flapping anxiously.",
-      stage: (t, { p }) => (
-        <>
-          <Hero position={[8.4 + p * 0.45, GATE.roofTopY, -2.0]} rotationY={SOUTH} walk={t * 1.8} mood="calm" turn={Math.sin(t * 3.5) * 0.25} lean={0.18} lookAt={[8.6, 4.4, 3]} />
-          <MumChicken position={[9.2 - p * 0.3, GATE.roofTopY + hop(t, 0.6, 0.15, 0.25), -2.15]} rotationY={-0.3} walk={t * 2.4} flap={0.75} lookAt={[8.6, 5.8, -2.0]} />
-        </>
-      ),
+      note: "Hero walks cleanly to the south roof edge then stops peering down; MumChicken scurries beside him.",
+      stage: (t, { p }) => {
+        const walkP = ramp(p, 0, 0.72);
+        return (
+          <>
+            <Hero position={[8.1 + walkP * 0.95, GATE.roofTopY, -2.0]} rotationY={SOUTH} walk={walkP < 0.99 ? walkP * 1.9 : 0} mood="calm" turn={Math.sin(t * 3.5) * 0.25} lean={0.18} lookAt={[8.6, 4.4, 3]} />
+            <MumChicken position={[9.55 - walkP * 0.75, GATE.roofTopY + hop(t, 0.6, 0.15, 0.25), -2.15]} rotationY={-0.3} walk={walkP < 0.99 ? walkP * 2.3 : 0} flap={0.75} lookAt={[8.6, 5.8, -2.0]} />
+          </>
+        );
+      },
     },
     {
       cue: "2.under",
-      ...cam.push({ on: [-8.6, 1.75, -2.4], dist: 5.5, to: 4.65, yaw: 18, pitch: 10, fov: 44 }),
+      ...cam.orbit({ on: [-8.8, 1.6, -2.85], dist: 5.4, distTo: 4.65, yaw: 28, yawTo: 10, pitch: 10, fov: 44 }),
       handheld: 0.015,
       look: "overworld-night",
       zone: "village",
-      note: "Unobstructed branch shot: Hero climbs out on the south-east oak branch above while MumChicken runs underneath staring straight up.",
+      note: "Real tree climb: Hero scrambles hand-over-hand up the oak trunk onto the south-east branch while MumChicken sprints underneath staring up.",
       stage: (t, { p }) => {
-        const climb = ease(ramp(p, 0, 0.5));
-        const runUnder = ease(ramp(t, 0, Math.max(0.4, underLook)));
+        const climb = ramp(p, 0, 0.58);
+        const perch = ramp(p, 0.58, 0.76);
+        const climbing = climb < 0.99;
+        const hy = climbing ? 0.35 + climb * 2.15 : 2.5 + perch * 0.15;
+        const hx = -8.9 + perch * 0.3;
+        const hz = -3.1 + perch * 0.55;
+        const runUnder = ramp(t, 0, Math.max(0.4, underLook));
         return (
           <>
             <Hero
-              position={[-8.6, 2.35 + climb * 0.45, -2.5]}
-              rotationY={SOUTH}
-              walk={climb < 0.95 ? t * 2.6 : 0}
+              position={[hx, hy, hz]}
+              rotationY={climbing ? NORTH - 0.35 : SOUTH}
+              walk={climbing ? climb * 4.2 : 0}
               mood="calm"
-              tilt={0.1}
-              armPitch={climb < 0.95 ? [-2.2, -1.2] : [-0.4, -0.4]}
-              lookAt={[-8.6, 0.4, -2.3]}
+              lean={climbing ? 0.22 : 0.08}
+              armPitch={climbing ? [-2.5 + Math.sin(t * 16) * 0.65, -2.5 - Math.sin(t * 16) * 0.65] : [-0.3, -0.3]}
+              lookAt={climbing ? [-9.1, 3.2, -3.5] : [-8.6, 0.4, -2.3]}
             />
             <MumChicken
-              position={[-10.1 + runUnder * 1.5, PATH_TOP, -2.3]}
-              rotationY={runUnder < 0.95 ? Math.PI / 2 : 0.2}
-              walk={runUnder < 0.95 ? t * 2.8 : 0}
-              flap={runUnder < 0.95 ? 0.65 : 0.2}
-              lookAt={[-8.6, 3.0, -2.5]}
+              position={[-10.4 + runUnder * 1.8, PATH_TOP, -2.3]}
+              rotationY={runUnder < 0.99 ? Math.PI / 2 : 0.2}
+              walk={runUnder < 0.99 ? runUnder * 3.0 : 0}
+              flap={runUnder < 0.99 ? 0.65 : 0.2}
+              lookAt={[hx, hy + 0.4, hz]}
             />
           </>
         );
@@ -189,14 +196,14 @@ export const scene2 = storyScene(timing, {
       note: "Egg stacked low-center in foreground: MumChicken dips her beak toward the white egg, then snaps her eyes back up to Hero.",
       stage: (t) => {
         const lookBack = t > eggLook + 1.0;
-        const step = ease(ramp(t, 0.1, 0.6));
+        const step = ramp(t, 0.1, 0.55);
         return (
           <>
             <Hero position={[9.2, GATE.roofTopY + 0.12, -5.1]} rotationY={-0.85} mood="calm" nod={lookBack ? -0.1 : 0.15} lookAt={[8.82, 5.6, -4.68]} />
             <MumChicken
-              position={[8.4 + step * 0.14, GATE.roofTopY + 0.12, -5.1]}
+              position={[8.32 + step * 0.22, GATE.roofTopY + 0.12, -5.1]}
               rotationY={0.85}
-              walk={step < 0.95 ? t * 2.0 : 0}
+              walk={step < 0.99 ? step * 1.2 : 0}
               crouch={0.38}
               peck={lookBack ? 0 : Math.sin(t * 6) * 0.25}
               lookAt={lookBack ? [9.2, 6.1, -5.1] : [8.82, 5.6, -4.68]}
@@ -212,14 +219,17 @@ export const scene2 = storyScene(timing, {
       handheld: 0.012,
       look: "overworld-night",
       zone: "village",
-      note: "Emotional pull-back: Hero steps back looking down while MumChicken settles quietly beside the egg.",
-      stage: (t, { p }) => (
-        <>
-          <Hero position={[9.2 + p * 0.25, GATE.roofTopY + 0.12, -5.0 + p * 0.2]} rotationY={SOUTH - 0.3} walk={t * 1.4} mood="sad" lean={0.18} />
-          <MumChicken position={[8.45, GATE.roofTopY + 0.12, -5.05]} rotationY={0.4} crouch={0.4 + p * 0.3} />
-          <WhiteEgg position={[8.82, GATE.roofTopY + 0.13, -4.68]} />
-        </>
-      ),
+      note: "Emotional pull-back: Hero walks cleanly back looking down while MumChicken settles quietly beside the egg.",
+      stage: (t, { p }) => {
+        const walkOut = ramp(p, 0.12, 0.9);
+        return (
+          <>
+            <Hero position={[9.1 + walkOut * 0.65, GATE.roofTopY + 0.12, -5.0 + walkOut * 0.65]} rotationY={SOUTH - 0.3} walk={walkOut > 0.01 && walkOut < 0.99 ? walkOut * 1.8 : 0} mood="sad" lean={0.18} />
+            <MumChicken position={[8.45, GATE.roofTopY + 0.12, -5.05]} rotationY={0.4} crouch={0.4 + p * 0.3} />
+            <WhiteEgg position={[8.82, GATE.roofTopY + 0.13, -4.68]} />
+          </>
+        );
+      },
     },
   ],
 });

@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { CLIFF, CliffBridge, Hero, MumChicken, NORTH, Puffs, SOUTH, ZombieKid, ZombieMum, ease, hop, ramp, timing } from "./kit";
+import { CLIFF, CliffBridge, Hero, MumChicken, SOUTH, ZombieKid, ZombieMum, ease, hop, ramp, timing } from "./kit";
 
 export const scene6 = storyScene(timing, {
   id: "scene6",
@@ -22,7 +22,6 @@ export const scene6 = storyScene(timing, {
             <MumChicken position={[x, y, 95 + Math.sin(t * 3) * 0.12]} rotationY={0.75} wingsSpread={1} flap={0.9} tilt={Math.sin(t * 5) * 0.2}>
               <Hero position={[0, 0, 0]} mood="happy" wave={1} />
             </MumChicken>
-            <Puffs position={[x - 0.3, y + 0.2, 95]} color="#f7f5f0" count={5} spread={0.45} size={0.07} speed={1.4} opacity={0.7} />
           </>
         );
       },
@@ -34,7 +33,7 @@ export const scene6 = storyScene(timing, {
       impacts: [{ at: 0.35, amp: 0.055, dur: 0.3 }],
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Full-body canyon floor touchdown: MumChicken lands softly in feather puffs and Hero hops off beaming.",
+      note: "Full-body canyon floor touchdown: MumChicken lands softly and Hero hops off beaming.",
       stage: (t, { p }) => {
         const land = ease(ramp(p, 0, 0.38));
         const hopOff = ease(ramp(p, 0.48, 0.85));
@@ -52,7 +51,6 @@ export const scene6 = storyScene(timing, {
                 <Hero position={[2.0 + hopOff * 0.55, 0.05 + hop(t, 0.48, 0.3, 0.35), 95]} rotationY={SOUTH - 0.2} mood="happy" wave={1} />
               </>
             )}
-            {p > 0.32 && <Puffs position={[2.0, 0.2, 95]} color="#f7f5f0" count={6} spread={0.45} size={0.075} speed={1.4} opacity={0.7} />}
           </>
         );
       },
@@ -123,7 +121,6 @@ export const scene6 = storyScene(timing, {
             <Hero position={[2.6, 0.05 + hop(t, 0.3, 0.25, 0.32), 95.1]} rotationY={-0.5} mood="happy" wave={1} />
             <ZombieMum position={[1.35, 0.05 + drop * 0.7, 94.4]} rotationY={0.7} shirt="#2d7a78" hat="bow" mood="happy" wave={0.8} />
             <ZombieKid position={[2.45, 0.05 + hop(t, 0.5, 0.2, 0.3), 94.4]} rotationY={-0.7} shirt="#3a7d8c" mood="happy" />
-            <Puffs position={[2.0, 0.25, 95]} color="#ffe2a8" count={6} spread={0.55} size={0.08} speed={1.4} opacity={0.75} />
           </>
         );
       },

@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Bits, Bubble, Hero, MumChicken, NORTH, PATH_TOP, Puffs, SOUTH, WhiteEgg, WoodenDoor, ZombieKid, ZombieMum, ease, hop, jolt, pop, ramp, timing, wordAt } from "./kit";
+import { Bits, Bubble, Hero, MumChicken, NORTH, PATH_TOP, Puffs, SOUTH, WhiteEgg, WoodenDoor, ZombieKid, ZombieMum, ease, hop, pop, ramp, timing, wordAt } from "./kit";
 
 const smashAt = wordAt("1.doors", "break");
 const layAt = wordAt("1.egg", "egg");
@@ -17,20 +17,17 @@ export const scene1 = storyScene(timing, {
       look: "overworld-night",
       zone: "village",
       note: "Tight 9:16 hook: two zombie mums & waving kids walk forward in the narrow street slit while Hero rides MumChicken fast up the middle.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <ZombieMum position={[-0.78, PATH_TOP, 0.2 + k * 0.6]} rotationY={SOUTH} walk={t * 1.8} shirt="#2a8c82" hat="bow" mood="happy" wave={0.9} />
-            <ZombieKid position={[-0.38, PATH_TOP + hop(t, 0.3, 0.22, 0.3), 0.4 + k * 0.7]} rotationY={SOUTH} walk={t * 2.1} shirt="#3a7d8c" mood="happy" wave={0.8} />
-            <ZombieMum position={[0.78, PATH_TOP, 0.0 + k * 0.6]} rotationY={SOUTH} walk={t * 1.7} shirt="#486a94" hat="straw" mood="happy" />
-            <ZombieKid position={[0.42, PATH_TOP + hop(t, 0.7, 0.22, 0.3), 0.2 + k * 0.7]} rotationY={SOUTH} walk={t * 2.0} shirt="#548256" mood="happy" wave={0.8} />
-            <MumChicken position={[0, PATH_TOP + hop(t, 0.45, 0.16, 0.26), 2.1 - k * 0.7]} rotationY={0.2} walk={t * 2.6} flap={0.65}>
-              <Hero position={[0, 0, 0]} mood="happy" wave={1} />
-            </MumChicken>
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <>
+          <ZombieMum position={[-0.78, PATH_TOP, 0.0 + p * 1.1]} rotationY={SOUTH} walk={p * 2.2} shirt="#2a8c82" hat="bow" mood="happy" wave={0.9} />
+          <ZombieKid position={[-0.38, PATH_TOP + hop(t, 0.3, 0.22, 0.3), 0.2 + p * 1.2]} rotationY={SOUTH} walk={p * 2.5} shirt="#3a7d8c" mood="happy" wave={0.8} />
+          <ZombieMum position={[0.78, PATH_TOP, -0.2 + p * 1.1]} rotationY={SOUTH} walk={p * 2.1} shirt="#486a94" hat="straw" mood="happy" />
+          <ZombieKid position={[0.42, PATH_TOP + hop(t, 0.7, 0.22, 0.3), 0.0 + p * 1.2]} rotationY={SOUTH} walk={p * 2.4} shirt="#548256" mood="happy" wave={0.8} />
+          <MumChicken position={[0, PATH_TOP + hop(t, 0.45, 0.16, 0.26), 2.2 - p * 0.9]} rotationY={0.2} walk={p * 2.6} flap={0.65}>
+            <Hero position={[0, 0, 0]} mood="happy" wave={1} />
+          </MumChicken>
+        </>
+      ),
     },
     {
       cue: "1.chicken",
@@ -40,17 +37,11 @@ export const scene1 = storyScene(timing, {
       look: "overworld-night",
       zone: "village",
       note: "Full-body chicken jockey reveal: MumChicken struts forward flapping hard while Hero bounces and waves on her back.",
-      stage: (t, { p }) => {
-        const k = ease(p);
-        return (
-          <>
-            <MumChicken position={[0, PATH_TOP + hop(t, 0.2, 0.18, 0.28), 1.4 - k * 0.5]} rotationY={0.15} walk={t * 2.8} flap={0.95}>
-              <Hero position={[0, 0, 0]} mood="happy" wave={1} tilt={Math.sin(t * 10) * 0.12} />
-            </MumChicken>
-            <Puffs position={[0, PATH_TOP + 0.35, 1.1]} color="#f7f5f0" count={5} spread={0.35} size={0.07} speed={1.2} opacity={0.7} />
-          </>
-        );
-      },
+      stage: (t, { p }) => (
+        <MumChicken position={[0, PATH_TOP + hop(t, 0.2, 0.18, 0.28), 1.55 - p * 0.85]} rotationY={0.15} walk={p * 2.6} flap={0.95}>
+          <Hero position={[0, 0, 0]} mood="happy" wave={1} tilt={Math.sin(t * 10) * 0.12} />
+        </MumChicken>
+      ),
     },
     {
       cue: "1.doors",
@@ -59,10 +50,10 @@ export const scene1 = storyScene(timing, {
       impacts: [{ at: smashAt, amp: 0.09, dur: 0.42 }],
       look: "overworld-night",
       zone: "village",
-      note: "Unobstructed 3/4 side-front angle: big zombie mum sprints up the open porch and smashes straight through the wooden door.",
+      note: "Unobstructed 3/4 side-front angle: big zombie mum sprints up the open porch and stops cleanly as she smashes the door.",
       stage: (t) => {
         const broken = t >= smashAt;
-        const charge = broken ? 1 : ease(ramp(t, 0.05, smashAt));
+        const charge = broken ? 1 : ramp(t, 0.05, smashAt);
         const z = -0.15 - charge * 1.55;
         return (
           <>
@@ -70,7 +61,7 @@ export const scene1 = storyScene(timing, {
             <ZombieMum
               position={[-6.5, PATH_TOP + hop(t, smashAt - 0.15, 0.18, 0.25), z]}
               rotationY={NORTH}
-              walk={t * 3.0}
+              walk={broken ? 0 : charge * 2.8}
               lean={broken ? 0.15 : 0.34}
               armPitch={[-1.65, -1.65]}
               mood="angry"
@@ -101,7 +92,6 @@ export const scene1 = storyScene(timing, {
           <>
             <MumChicken position={[-0.36, PATH_TOP, 1.55]} rotationY={0.45} crouch={squat} flap={laid ? 0.65 : 0} />
             {laid && <WhiteEgg position={[0.05, eggY, 1.95]} scale={pop(t, layAt)} wobble={0.8} />}
-            {laid && <Puffs position={[0.05, PATH_TOP + 0.15, 1.95]} color="#f7f4eb" count={5} spread={0.35} size={0.07} speed={1.4} opacity={0.75} />}
             <Hero
               position={[0.35 + hopOff * 0.25, PATH_TOP + hop(t, layAt, 0.32, 0.35), 1.65]}
               rotationY={-0.35}
@@ -121,18 +111,18 @@ export const scene1 = storyScene(timing, {
       handheld: 0.016,
       look: "overworld-night",
       zone: "village",
-      note: "Unobstructed street tracking shot: Hero and MumChicken run west down the open lane; Hero halts her at the bush.",
+      note: "Unobstructed street tracking shot: Hero and MumChicken run west down the open lane; Hero halts cleanly at the bush.",
       stage: (t) => {
-        const reach = ease(ramp(t, 0, Math.max(0.4, stopAt + 0.2)));
+        const stopped = t >= stopAt;
+        const reach = ramp(t, 0, Math.max(0.4, stopAt));
         const mx = -1.4 - reach * 1.8;
         const hx = -2.0 - reach * 1.9;
-        const stopped = t >= stopAt;
         return (
           <>
             <Hero
               position={[hx, PATH_TOP + hop(t, stopAt, 0.16, 0.25), 2.05]}
               rotationY={stopped ? Math.PI / 2 - 0.3 : -Math.PI / 2 + 0.25}
-              walk={stopped ? 0 : t * 2.8}
+              walk={stopped ? 0 : reach * 2.6}
               mood="scared"
               armPitch={stopped ? [-1.5, -1.5] : undefined}
               lookAt={stopped ? [mx, 0.4, 1.95] : [-5, 0.5, 2.0]}
@@ -140,7 +130,7 @@ export const scene1 = storyScene(timing, {
             <MumChicken
               position={[mx, PATH_TOP, 1.9]}
               rotationY={-Math.PI / 2 + 0.25}
-              walk={stopped ? 0 : t * 2.8}
+              walk={stopped ? 0 : reach * 2.6}
               flap={stopped ? 0.55 : 0}
               headYaw={stopped ? Math.sin(t * 7) * 0.3 : 0}
               lookAt={[hx, 0.55, 2.05]}
@@ -155,16 +145,16 @@ export const scene1 = storyScene(timing, {
       handheld: 0.016,
       look: "overworld-night",
       zone: "village",
-      note: "Clean 3/4 front-angle gag: Hero runs to two kids on the right, HORSE? pops up, MumChicken pops out behind Hero flapping.",
+      note: "Clean 3/4 front-angle gag: Hero runs to two kids on the right, stops, HORSE? pops up, MumChicken pops out flapping.",
       stage: (t) => {
-        const dash = ease(ramp(t, 0, 0.55));
+        const dash = ramp(t, 0, 0.55);
         const jump = t >= horseAt;
         return (
           <>
             <Hero
-              position={[-2.55 + dash * 0.5, PATH_TOP, 2.05]}
+              position={[-2.65 + dash * 0.65, PATH_TOP, 2.05]}
               rotationY={0.85}
-              walk={dash < 0.95 ? t * 2.6 : 0}
+              walk={dash < 0.99 ? dash * 1.4 : 0}
               mood="happy"
               armPitch={[-1.4, -0.2]}
               nod={Math.sin(t * 8) * 0.15}
