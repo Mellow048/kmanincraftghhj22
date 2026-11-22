@@ -12,7 +12,9 @@ import {
   SoundRings,
   TinyDad,
   TornBabyCoat,
+  WEST,
   Wheelbarrow,
+  bridgeSurfaceY,
   jolt,
   posed,
   sceneImpact,
@@ -33,41 +35,39 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-sunset",
       ...cam.orbit({
-        on: [0, BRIDGE_Y + 0.65, -4.4],
-        onTo: [0, BRIDGE_Y + 0.72, -3.2],
-        dist: 4.55,
-        distTo: 3.55,
-        yaw: -42,
+        on: [0.55, BRIDGE_Y + 0.72, -4.35],
+        onTo: [0.15, BRIDGE_Y + 0.72, -2.85],
+        dist: 4.65,
+        distTo: 3.65,
+        yaw: -36,
         yawTo: 18,
         pitch: 16,
-        pitchTo: 8,
-        fov: 43,
+        pitchTo: 9,
+        fov: 44,
       }),
       impacts: [sceneImpact("4.sunset", "4.sunset", "unbarred", 0.045, 0.3)],
-      note: "3-beat action: Hero jogs up, rips the heavy crossbar off the post tossing it spinning aside, and strides onto the forbidden bridge!",
+      note: "Zero-phasing 3-beat action: Hero jogs up to the east locking pin, knocks it free so the crossbar swings vertical, then strides south onto the open bridge!",
       stage: (t) => {
         const liftAt = w("4.sunset", "unbarred");
-        const runIn = tw(t, 0, Math.max(0.22, liftAt - 0.12));
-        const toss = tw(t, Math.max(0.18, liftAt - 0.1), liftAt + 0.38);
-        const cross = tw(t, liftAt + 0.25, 1.45);
+        const runToPin = tw(t, 0, Math.max(0.2, liftAt - 0.08));
+        const openBar = tw(t, Math.max(0.16, liftAt - 0.06), liftAt + 0.34);
+        const cross = tw(t, liftAt + 0.28, 1.55);
+        const hx = (1.15 + runToPin * 0.22) * (1 - cross) + 0.1 * cross;
+        const hz = -5.25 + runToPin * 0.82 + cross * 2.35;
+        const hy = bridgeSurfaceY(hz);
         return (
           <>
-            <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={toss * 0.95} pinOut={toss * 0.65} />
-            {toss > 0.15 ? (
-              <Vox
-                kind="darkPlanks"
-                position={[-0.95 - toss * 1.15, BRIDGE_Y + 0.85 + Math.sin(toss * Math.PI) * 0.55 - toss * 0.55, -4.15]}
-                rotation={[toss * 1.8, toss * 1.2, toss * 2.4]}
-                size={[1.45, 0.14, 0.16]}
-              />
-            ) : null}
+            <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={openBar * 1.38} pinOut={openBar * 1.45} />
             <Hero
-              position={[0.45 * (1 - cross), BRIDGE_Y, -5.25 + runIn * 0.68 + cross * 2.05]}
-              rotationY={cross > 0.05 ? SOUTH : -0.35}
-              pose={cross > 0.08 ? posed("run", t * 2.4, {}) : shovePose(t, liftAt)}
+              position={[hx, hy, hz]}
+              rotationY={cross > 0.06 ? SOUTH - 0.22 * (1 - cross) : EAST - 0.35}
+              pose={cross > 0.06 ? posed("run", t * 2.3, {}) : shovePose(t, liftAt)}
+              plantFeet={cross > 0.06}
               face="brave"
             />
-            {toss > 0.1 && toss < 0.75 ? <Puffs position={[0, BRIDGE_Y + 0.72, -4.2]} count={7} color="#ffe7ba" /> : null}
+            {openBar > 0.08 && openBar < 0.78 ? (
+              <Puffs position={[1.85, BRIDGE_Y + 0.92, -4.02]} count={7} color="#ffe7ba" />
+            ) : null}
           </>
         );
       },
@@ -77,43 +77,42 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-sunset",
       ...cam.orbit({
-        on: [0, 0.78, 4.4],
-        onTo: [0.15, 0.68, 6.85],
+        on: [0, 0.85, 4.35],
+        onTo: [0.12, 0.55, 6.85],
         dist: 4.85,
         distTo: 3.75,
-        yaw: 52,
+        yaw: 48,
         yawTo: -22,
-        pitch: 15,
-        pitchTo: 7,
+        pitch: 16,
+        pitchTo: 8,
         fov: 44,
       }),
       handheld: 0.016,
-      note: "Sweeping parallax orbit past mossy ruin pillars as Hero creeps off the bridge into the ancient stone ruins, flushing glowing fireflies!",
+      note: "Sweeping parallax orbit down the exact south cobble ramp surface (`bridgeSurfaceY`) as Hero creeps into the stone ruins!",
       stage: (t, { p }) => {
-        const dist = p * 3.25;
-        const z = 3.85 + dist;
-        const y = z < 4.2 ? BRIDGE_Y : Math.max(0.12, BRIDGE_Y - ((z - 4.2) / 2.8) * 1.03);
+        const dist = p * 3.2;
+        const z = 3.8 + dist;
+        const y = bridgeSurfaceY(z);
         return (
           <>
-            {/* Foreground/midground ruin stones for rich lateral parallax */}
-            <Vox kind="cobble" tint="#5b6656" position={[-1.65, 0.62, 5.85]} size={[0.68, 1.24, 0.68]} />
-            <Vox kind="leaves" tint="#3b7d31" position={[-1.45, 0.95, 5.55]} size={[0.32, 0.55, 0.22]} />
-            <Vox kind="cobble" tint="#556050" position={[1.72, 0.48, 6.65]} size={[0.74, 0.96, 0.74]} />
-            {/* Glowing swamp fireflies flushing upward as Hero passes */}
+            {/* Wide flanking ruin stones (`|x| >= 1.85`) so Hero & camera never clip them */}
+            <Vox kind="cobble" tint="#5b6656" position={[-1.88, bridgeSurfaceY(5.85) + 0.52, 5.85]} size={[0.62, 1.04, 0.62]} />
+            <Vox kind="leaves" tint="#3b7d31" position={[-1.68, bridgeSurfaceY(5.65) + 0.78, 5.65]} size={[0.28, 0.5, 0.2]} />
+            <Vox kind="cobble" tint="#556050" position={[1.88, bridgeSurfaceY(6.75) + 0.46, 6.75]} size={[0.66, 0.92, 0.66]} />
             {[0, 1, 2, 3].map((i) => (
               <Block
                 key={i}
                 position={[
-                  (i % 2 ? 0.85 : -0.85) + Math.sin(t * 4 + i) * 0.25,
-                  0.45 + p * (0.9 + i * 0.25),
-                  5.6 + i * 0.45,
+                  (i % 2 ? 0.95 : -0.95) + Math.sin(t * 4 + i) * 0.22,
+                  0.55 + p * (0.85 + i * 0.22),
+                  5.55 + i * 0.45,
                 ]}
                 size={[0.07, 0.07, 0.07]}
                 color="#d8ff72"
               />
             ))}
             <Hero
-              position={[Math.sin(p * Math.PI) * 0.22, y, z]}
+              position={[Math.sin(p * Math.PI) * 0.18, y, z]}
               rotationY={SOUTH + Math.sin(t * 3.8) * 0.18}
               animation="creep"
               animDistance={dist * 1.25}
@@ -130,66 +129,70 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-sunset",
       ...cam.orbit({
-        on: [0.25, 1.15, 8.75],
-        onTo: [0.2, 1.85, 8.55],
+        on: [0.22, 1.18, 9.15],
+        onTo: [0.18, 1.78, 8.75],
         dist: 5.15,
-        distTo: 4.05,
-        yaw: 146,
+        distTo: 4.1,
+        yaw: 148,
         yawTo: 174,
-        pitch: 16,
-        pitchTo: 3,
+        pitch: 15,
+        pitchTo: 4,
         fov: 44,
       }),
       shake: 0.018,
       impacts: [sceneImpact("4.sunset", "4.vine", "stood", 0.065, 0.38)],
-      note: "Explosive awakening: a mossy stone ruin wall shatters outward as red eyes blaze to life and the Iron Golem rips free!",
+      note: "Explosive awakening on the flat ruins path (`y = 0.15`, zero ground/ramp phasing): crouched Golem rips upright shattering lateral mossy stones!",
       stage: (t) => {
         const burstAt = w("4.vine", "stood") - 0.12;
-        const rise = tw(t, 0.06, w("4.vine", "up") + 0.2);
-        const burst = tw(t, Math.max(0.08, burstAt), burstAt + 0.55);
+        const rise = tw(t, 0.04, w("4.vine", "up") + 0.18);
+        const burst = tw(t, Math.max(0.06, burstAt), burstAt + 0.55);
+        const hz = 7.95 - burst * 0.42;
+        const gz = 9.65 - rise * 0.65;
         return (
           <>
-            {/* Shattering mossy stone ruin blocks flying outward as Golem stands! */}
+            {/* Lateral mossy ruin blocks (`|x| >= 0.92`) blasting wide so they never intersect Golem or Hero! */}
             {[
-              [-0.65, 0.85, -1],
-              [0.75, 0.95, 1],
-              [-0.45, 1.55, -1],
-              [0.55, 1.62, 1],
+              [-0.95, 0.65, -1],
+              [1.02, 0.72, 1],
+              [-0.88, 1.35, -1],
+              [0.92, 1.42, 1],
             ].map(([ox, oy, dir], i) => (
               <Vox
                 key={i}
                 kind={i % 2 ? "cobble" : "leaves"}
                 tint={i % 2 ? "#5e6859" : "#3b7d31"}
                 position={[
-                  0.25 + ox * (1 + burst * 1.85),
-                  oy + Math.sin(burst * Math.PI) * 0.65 - burst * 0.55,
-                  8.65 - burst * 0.85,
+                  0.18 + ox * (1 + burst * 1.45),
+                  0.15 + oy + Math.sin(burst * Math.PI) * 0.55 - burst * 0.35,
+                  8.95 - burst * 0.55,
                 ]}
                 rotation={[burst * 2.2 * dir, burst * 1.5, burst * 1.9 * dir]}
-                size={[0.42, 0.42, 0.42]}
+                size={[0.38, 0.38, 0.38]}
               />
             ))}
-            <pointLight position={[0.25, 2.15, 8.2]} color="#ff2a2a" intensity={rise * 2.6} distance={5} decay={2} />
-            <Glow position={[0.25, 2.05, 8.45]} size={0.45 + rise * 0.35} color="#ff3b2f" opacity={0.18 * rise} />
+            <pointLight position={[0.18, 2.15, gz - 0.35]} color="#ff2a2a" intensity={rise * 2.5} distance={5} decay={2} />
+            <Glow position={[0.18, 2.05, gz - 0.25]} size={0.42 + rise * 0.32} color="#ff3b2f" opacity={0.16 * rise} />
             <Hero
-              position={[0.92 + burst * 0.35, 0.12, 6.95 - burst * 0.48]}
-              rotationY={-0.35}
+              position={[0.82 + burst * 0.28, bridgeSurfaceY(hz), hz]}
+              rotationY={-0.32}
               animation="stagger"
               animDistance={rise * 0.95}
+              plantFeet
               face="fear"
-              lookAt={[0.25, 1.2 + rise * 0.95, 8.8]}
+              lookAt={[0.18, 1.35 + rise * 0.75, gz]}
             />
             <RogueGolem
-              position={[0.25, -0.45 + rise * 0.57, 8.85]}
+              position={[0.18, bridgeSurfaceY(gz), gz]}
               rotationY={NORTH}
-              bow={0.62 * (1 - rise)}
-              armR={-0.25 - rise * 1.15}
-              armL={-0.25 - rise * 1.15}
+              walk={rise * 1.35}
+              bow={0.68 * (1 - rise)}
+              armR={-0.25 - rise * 1.25}
+              armL={-0.25 - rise * 1.25}
             />
             {burst > 0.05 ? (
               <>
-                <Bits position={[0.25, 1.25, 8.55]} t={t - Math.max(0.05, burstAt)} color="#9ab089" count={18} power={1.45} />
-                <Puffs position={[0.25, 0.45, 8.65]} count={10} color="#dce3d5" />
+                <Bits position={[0.18, 1.25, 8.95]} t={t - Math.max(0.04, burstAt)} color="#9ab089" count={18} power={1.45} />
+                <Puffs position={[0.18, 0.42, 8.95]} count={10} color="#dce3d5" />
               </>
             ) : null}
           </>
@@ -201,14 +204,14 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.orbit({
-        on: [0.15, 1.55, 8.05],
-        onTo: [0.15, 1.75, 6.75],
-        dist: 4.65,
-        distTo: 3.75,
+        on: [0.15, 1.65, 8.05],
+        onTo: [0.15, 2.05, 6.45],
+        dist: 4.75,
+        distTo: 3.85,
         yaw: -152,
         yawTo: -172,
-        pitch: 5,
-        pitchTo: 1,
+        pitch: 6,
+        pitchTo: 2,
         fov: 45,
       }),
       fovTo: 41,
@@ -217,33 +220,36 @@ export const scene4 = storyScene(timing, {
         sceneImpact("4.sunset", "4.golem", "golem", 0.065, 0.38),
         sceneImpact("4.sunset", "4.golem", "taller", 0.055, 0.32),
       ],
-      note: "Thunderous LOW-ANGLE advance: Golem takes two massive ground-shaking strides throwing its arms wide with a shockwave roar while Hero scrambles back!",
+      note: "Thunderous ramp-climbing advance (`bridgeSurfaceY` keeps every foot planted on top of the cobble slope!): Golem stomps up throwing both arms wide!",
       stage: (t, { p }) => {
-        const adv = p * 2.15;
+        const adv = p * 2.25;
+        const gz = 8.65 - adv;
+        const hz = 6.75 - p * 1.85;
         const roarAt = w("4.golem", "taller");
         const roar = tw(t, Math.max(0, roarAt - 0.15), roarAt + 0.35);
         return (
           <>
-            <pointLight position={[0.15, 2.3, 8.1 - adv]} color="#ff2e2e" intensity={2.8} distance={6} decay={2} />
+            <pointLight position={[0.15, bridgeSurfaceY(gz) + 2.15, gz - 0.35]} color="#ff2e2e" intensity={2.6} distance={6} decay={2} />
             <Hero
-              position={[0.98 + p * 0.25, 0.12 + p * 0.28, 6.65 - p * 1.35]}
+              position={[0.88 + p * 0.22, bridgeSurfaceY(hz), hz]}
               rotationY={-0.38}
               animation="stagger"
-              animDistance={p * 1.8}
+              animDistance={p * 1.85}
+              plantFeet
               face="fear"
-              lookAt={[0.15, 2.1, 8.5 - adv]}
+              lookAt={[0.15, bridgeSurfaceY(gz) + 2.0, gz]}
             />
             <RogueGolem
-              position={[0.15, 0.12, 8.65 - adv]}
+              position={[0.15, bridgeSurfaceY(gz), gz]}
               rotationY={NORTH}
-              walk={adv * 1.85}
-              armR={-0.45 - roar * 1.25}
-              armL={-0.45 - roar * 1.25}
-              bow={0.18 - roar * 0.26}
+              walk={adv * 2.1}
+              armR={-0.45 - roar * 1.35}
+              armL={-0.45 - roar * 1.35}
+              bow={0.18 - roar * 0.28}
             />
-            <Puffs position={[0.15, 0.22, 8.15 - adv]} count={9} color="#b8c4bc" />
+            <Puffs position={[0.15, bridgeSurfaceY(gz) + 0.12, gz - 0.35]} count={9} color="#b8c4bc" />
             {t >= roarAt ? (
-              <SoundRings position={[0.15, 2.25, 8.2 - adv]} t={t - roarAt} color="#ff5252" reach={2.2} />
+              <SoundRings position={[0.15, bridgeSurfaceY(gz) + 2.1, gz - 0.25]} t={t - roarAt} color="#ff5252" reach={2.2} />
             ) : null}
           </>
         );
@@ -256,20 +262,20 @@ export const scene4 = storyScene(timing, {
       ...cam.pan({
         from: [-2.95, BRIDGE_Y + 0.78, 2.25],
         on: [0.35, BRIDGE_Y + 1.28, 3.85],
-        onTo: [0.25, BRIDGE_Y + 1.22, 0.55],
+        onTo: [0.25, BRIDGE_Y + 1.22, 0.45],
         fov: 45,
         fovTo: 40,
       }),
       shake: 0.016,
       impacts: [sceneImpact("4.sunset", "4.past", "walked", 0.048, 0.3)],
-      note: "Heavy footstep `cam.pan`: Golem thunders past trembling Hero at arm's reach, kicking up dust puffs on every step without looking down.",
+      note: "Heavy footstep `cam.pan`: Golem thunders past trembling Hero at arm's reach, shaking pebbles off the planks without looking down.",
       stage: (t, { p }) => {
-        const z = 4.05 - p * 3.65;
-        const stepBounce = Math.abs(Math.sin(p * Math.PI * 3)) * 0.06;
+        const z = 4.05 - p * 3.75;
+        const stepBounce = Math.abs(Math.sin(p * Math.PI * 3)) * 0.05;
         return (
           <>
             <Hero
-              position={[-1.08, BRIDGE_Y + stepBounce * 0.5, 2.35]}
+              position={[-1.18, BRIDGE_Y + stepBounce * 0.4, 2.35]}
               rotationY={EAST - 0.2}
               pose={posed("cower", t, { head: [0.1, (0.5 - p) * 0.95, 0] })}
               face="fear"
@@ -277,9 +283,10 @@ export const scene4 = storyScene(timing, {
             <RogueGolem
               position={[0.38, BRIDGE_Y, z]}
               rotationY={NORTH}
-              walk={p * 3.4}
-              armR={Math.sin(p * 12) * 0.55}
-              armL={-Math.sin(p * 12) * 0.55}
+              walk={p * 3.6}
+              armR={Math.sin(p * 12) * 0.65}
+              armL={-Math.sin(p * 12) * 0.65}
+              headYaw={Math.sin(p * 6) * 0.12}
             />
             <Puffs position={[0.38, BRIDGE_Y + 0.14, z - 0.25]} count={6} color="#cfd8e3" />
           </>
@@ -291,31 +298,49 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.orbit({
-        on: [0, BRIDGE_Y + 0.52, -3.55],
-        onTo: [0, BRIDGE_Y + 0.48, -1.75],
-        dist: 4.35,
-        distTo: 3.25,
+        on: [0, BRIDGE_Y + 0.58, -3.35],
+        onTo: [-0.15, BRIDGE_Y + 0.55, -1.55],
+        dist: 4.45,
+        distTo: 3.45,
         yaw: 38,
-        yawTo: -16,
+        yawTo: -18,
         pitch: 16,
         pitchTo: 9,
-        fov: 42,
+        fov: 43,
       }),
       handheld: 0.016,
-      note: "Brisk 4-dad hustle: all four tiny dads hop rapidly pushing the covered wheelbarrow & waving Hero's baby coat onto the bridge!",
+      note: "Clean non-overlapping 4-dad hustle behind the wheelbarrow handles while Hero waves frantically ahead warning them to stop!",
       stage: (t, { p }) => {
-        const step = bridgePushRoute(p * 0.78);
-        const z = step.position[2];
-        const b = (ph: number) => slimeBounce(t, 2.9, 0.18, ph);
+        const step = bridgePushRoute(p * 0.72);
+        const wz = step.position[2] + 0.65;
+        const b = (ph: number) => slimeBounce(t, 3.1, 0.2, ph);
         return (
           <>
-            <Wheelbarrow position={[0, BRIDGE_Y, z + 0.58]} rotationY={SOUTH} wheelSpin={p * 9.5} tilt={Math.sin(t * 12) * 0.03} />
-            <Vox kind="wool" tint="#e8e2d0" position={[0, BRIDGE_Y + 0.46, z + 0.62]} size={[0.66, 0.22, 0.74]} />
-            <TornBabyCoat position={[0.12, BRIDGE_Y + 0.62 + Math.abs(Math.sin(t * 9)) * 0.05, z + 0.68]} rotation={[-1.15, 0.2, 0]} scale={0.82} />
-            <TinyDad which={1} position={[-0.38, BRIDGE_Y, z - 0.18]} rotationY={SOUTH} hop={b(0).hop} squash={b(0).squash} />
-            <TinyDad which={2} position={[0.38, BRIDGE_Y, z - 0.18]} rotationY={SOUTH} hop={b(0.25).hop} squash={b(0.25).squash} />
-            <TinyDad which={3} position={[-0.28, BRIDGE_Y, z - 0.62]} rotationY={SOUTH} hop={b(0.5).hop} squash={b(0.5).squash} />
-            <TinyDad which={4} position={[0.28, BRIDGE_Y, z - 0.62]} rotationY={SOUTH} hop={b(0.75).hop} squash={b(0.75).squash} />
+            <Wheelbarrow
+              position={[0, BRIDGE_Y, wz]}
+              rotationY={SOUTH}
+              wheelSpin={p * 10.5}
+              tilt={Math.sin(t * 12) * 0.03}
+              covered
+              withSlimeBlock
+            />
+            <TornBabyCoat
+              position={[0.08, BRIDGE_Y + 0.86 + Math.abs(Math.sin(t * 9)) * 0.04, wz + 0.08]}
+              rotation={[-0.12, 0.2, 0]}
+              scale={0.82}
+            />
+            {/* All 4 tiny dads spaced cleanly BEHIND the wheelbarrow handles (`wz - 0.98` and `wz - 1.48`) */}
+            <TinyDad which={1} position={[-0.36, BRIDGE_Y, wz - 0.98]} rotationY={SOUTH} hop={b(0).hop} squash={b(0).squash} />
+            <TinyDad which={2} position={[0.36, BRIDGE_Y, wz - 0.98]} rotationY={SOUTH} hop={b(0.25).hop} squash={b(0.25).squash} />
+            <TinyDad which={3} position={[-0.32, BRIDGE_Y, wz - 1.48]} rotationY={SOUTH} hop={b(0.5).hop} squash={b(0.5).squash} />
+            <TinyDad which={4} position={[0.32, BRIDGE_Y, wz - 1.48]} rotationY={SOUTH} hop={b(0.75).hop} squash={b(0.75).squash} />
+            <Hero
+              position={[-1.12, BRIDGE_Y, 0.55]}
+              rotationY={NORTH + 0.25}
+              animation="wave"
+              face="fear"
+              lookAt={[0, BRIDGE_Y + 0.4, wz]}
+            />
           </>
         );
       },
@@ -325,54 +350,51 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.orbit({
-        on: [0.05, BRIDGE_Y + 1.15, 0.45],
-        onTo: [0.05, BRIDGE_Y + 1.05, -0.85],
-        dist: 4.55,
-        distTo: 3.55,
-        yaw: -152,
-        yawTo: -176,
-        pitch: 7,
-        pitchTo: 1,
-        fov: 44,
+        on: [0.05, BRIDGE_Y + 1.05, 0.35],
+        onTo: [0.0, BRIDGE_Y + 0.88, -1.05],
+        dist: 4.85,
+        distTo: 3.75,
+        yaw: -146,
+        yawTo: -172,
+        pitch: 12,
+        pitchTo: 5,
+        fov: 45,
       }),
-      shake: 0.02,
-      impacts: [sceneImpact("4.sunset", "4.hunt", "hunts", 0.06, 0.34)],
-      note: "FRONT-FACING PREDATOR LOCK: Golem's glowing red eyes flare crimson, it roars (`SoundRings`), and CHARGES straight toward the hopping tiny dads!",
+      shake: 0.022,
+      impacts: [sceneImpact("4.sunset", "4.hunt", "hunts", 0.065, 0.36)],
+      note: "HIGH-KINETIC GOLEM VS SLIMES PURSUIT: Golem whip-turns with a shockwave roar and sprint-charges swinging alternating fists while all 4 tiny dads leap-scatter wide!",
       stage: (t) => {
         const snapAt = w("4.hunt", "hunts");
-        const snap = tw(t, 0.02, snapAt);
-        const charge = tw(t, Math.max(0.15, snapAt - 0.1), 1.45);
-        const gz = 1.45 - charge * 2.15;
+        const snap = tw(t, 0.02, Math.max(0.24, snapAt));
+        const charge = tw(t, Math.max(0.14, snapAt - 0.08), 1.65);
+        const gz = 2.05 - charge * 2.45;
+        // All 4 tiny dads actively leap-scatter outward in crisp arcs as Golem charges!
+        const s1 = slimeHopTo([-0.34, BRIDGE_Y, -1.45], [-1.28, BRIDGE_Y, -2.25], charge, 3, 0.42, 0);
+        const s2 = slimeHopTo([0.34, BRIDGE_Y, -1.45], [1.28, BRIDGE_Y, -2.15], charge, 3, 0.42, 25);
+        const s3 = slimeHopTo([-0.28, BRIDGE_Y, -1.95], [-0.72, BRIDGE_Y, -2.85], charge, 3, 0.46, 50);
+        const s4 = slimeHopTo([0.28, BRIDGE_Y, -1.95], [0.72, BRIDGE_Y, -2.85], charge, 3, 0.46, 75);
+        const swing = Math.sin(charge * Math.PI * 4);
         return (
           <>
-            <pointLight position={[0.15, BRIDGE_Y + 2.05, gz - 0.3]} color="#ff2424" intensity={1.2 + snap * 2.2} distance={6} decay={2} />
+            <pointLight position={[0.12, BRIDGE_Y + 2.05, gz - 0.3]} color="#ff2424" intensity={1.2 + snap * 2.0} distance={6} decay={2} />
             <RogueGolem
-              position={[0.15, BRIDGE_Y, gz]}
-              rotationY={NORTH}
-              walk={charge * 2.8}
-              headYaw={(1 - snap) * 0.75}
-              headPitch={0.2 * snap}
-              armR={-0.35 - snap * 1.25}
-              armL={-0.35 - snap * 1.25}
-              bow={0.22 * charge}
+              position={[0.12, BRIDGE_Y, gz]}
+              rotationY={NORTH + (1 - snap) * 0.85}
+              walk={charge * 3.8}
+              headYaw={(1 - snap) * 0.65}
+              headPitch={0.22 * snap}
+              armR={-0.55 - snap * 0.95 + swing * 0.65 * charge}
+              armL={-0.55 - snap * 0.95 - swing * 0.65 * charge}
+              bow={0.26 * charge}
             />
             {t >= snapAt - 0.05 ? (
-              <SoundRings position={[0.15, BRIDGE_Y + 2.0, gz - 0.35]} t={t - (snapAt - 0.05)} color="#ff4444" reach={1.9} />
+              <SoundRings position={[0.12, BRIDGE_Y + 1.98, gz - 0.35]} t={t - (snapAt - 0.05)} color="#ff4444" reach={2.0} />
             ) : null}
-            <TinyDad
-              which={1}
-              position={[-0.48 - charge * 0.25, BRIDGE_Y + Math.abs(Math.sin(t * 10)) * 0.18, -1.95]}
-              rotationY={SOUTH}
-              squash={0.22 * snap}
-              mood="scared"
-            />
-            <TinyDad
-              which={3}
-              position={[0.48 + charge * 0.25, BRIDGE_Y + Math.abs(Math.cos(t * 10)) * 0.18, -1.95]}
-              rotationY={SOUTH}
-              squash={0.22 * snap}
-              mood="scared"
-            />
+            <Puffs position={[0.12, BRIDGE_Y + 0.14, gz + 0.25]} count={8} color="#cfd8e3" />
+            <TinyDad which={1} position={s1.position} rotationY={NORTH - 0.4} hop={s1.hop} squash={s1.squash} mood="scared" />
+            <TinyDad which={2} position={s2.position} rotationY={NORTH + 0.4} hop={s2.hop} squash={s2.squash} mood="scared" />
+            <TinyDad which={3} position={s3.position} rotationY={SOUTH} hop={s3.hop} squash={s3.squash} mood="scared" />
+            <TinyDad which={4} position={s4.position} rotationY={SOUTH} hop={s4.hop} squash={s4.squash} mood="scared" />
           </>
         );
       },
@@ -381,44 +403,54 @@ export const scene4 = storyScene(timing, {
       cue: "4.slam",
       zone: "bridge",
       look: "overworld-night",
-      ...cam.push({
-        on: [-0.55, BRIDGE_Y + 1.05, 0.85],
-        onTo: [-0.85, BRIDGE_Y + 0.45, 0.8],
-        dist: 4.85,
-        to: 3.6,
-        yaw: 146,
-        pitch: 18,
-        fov: 44,
-        fovTo: 39,
+      ...cam.orbit({
+        on: [-0.35, BRIDGE_Y + 1.05, 0.75],
+        onTo: [-0.55, BRIDGE_Y + 0.58, 0.45],
+        dist: 4.95,
+        distTo: 3.75,
+        yaw: 142,
+        yawTo: 164,
+        pitch: 19,
+        pitchTo: 12,
+        fov: 45,
       }),
-      shake: 0.024,
+      fovTo: 40,
+      shake: 0.025,
       impacts: [sceneImpact("4.sunset", "4.slam", "slammed", 0.082, 0.44)],
       ease: "outCubic",
-      note: "Explosive rail smash: all four tiny dads dive-hop clear as Golem slams both fists into the bridge stone, blasting white craters & shockwaves!",
+      note: "EXPLOSIVE AERIAL RAIL SMASH: Golem leaps forward raising both fists overhead and slams the deck while all 4 tiny dads vault-dodge in high arcs over the shockwave!",
       stage: (t) => {
         const hitAt = w("4.slam", "slammed");
-        const wind = tw(t, Math.max(0, hitAt - 0.32), hitAt);
-        const smash = tw(t, hitAt, hitAt + 0.15);
-        const dive = tw(t, Math.max(0, hitAt - 0.14), hitAt + 0.45);
-        const h1 = slimeHopTo([-0.85, BRIDGE_Y, 0.55], [0.25, BRIDGE_Y, -0.55], dive, 1, 0.52);
-        const h2 = slimeHopTo([-0.55, BRIDGE_Y, 0.35], [0.65, BRIDGE_Y, -0.35], dive, 1, 0.58);
-        const arm = -1.72 * wind + smash * 1.42;
+        const wind = tw(t, 0, Math.max(0.22, hitAt));
+        const smash = tw(t, hitAt, hitAt + 0.16);
+        const recover = tw(t, hitAt + 0.35, hitAt + 0.95);
+        const dive = tw(t, Math.max(0, hitAt - 0.18), hitAt + 0.52);
+        // All 4 tiny dads vault clear in clean non-overlapping trajectories (`>= 0.55m` from Golem & each other)
+        const d1 = slimeHopTo([-0.95, BRIDGE_Y, 0.25], [-0.45, BRIDGE_Y, -0.95], dive, 1, 0.62);
+        const d2 = slimeHopTo([-0.42, BRIDGE_Y, 0.15], [0.25, BRIDGE_Y, -0.85], dive, 1, 0.68);
+        const d3 = slimeHopTo([0.15, BRIDGE_Y, 0.35], [1.05, BRIDGE_Y, -0.35], dive, 1, 0.58);
+        const d4 = slimeHopTo([0.55, BRIDGE_Y, 0.65], [1.38, BRIDGE_Y, 0.15], dive, 1, 0.54);
+        const golemHop = Math.sin(wind * Math.PI) * 0.34 * (1 - smash);
+        const arm = -2.35 * wind + smash * 2.05 - recover * 0.65;
         return (
           <>
             <RogueGolem
-              position={[-0.15 + jolt(t, hitAt, 0.15), BRIDGE_Y, 1.35]}
-              rotationY={NORTH + 0.55}
+              position={[-0.18 + jolt(t, hitAt, 0.14), BRIDGE_Y + golemHop, 1.85 - wind * 0.42]}
+              rotationY={NORTH + 0.52}
+              walk={wind * 1.4}
               armR={arm}
               armL={arm}
-              bow={0.36 * smash - 0.12 * wind}
+              bow={0.42 * smash - 0.16 * wind - 0.12 * recover}
             />
-            <TinyDad which={1} position={h1.position} rotationY={NORTH} hop={h1.hop} squash={h1.squash} mood="scared" />
-            <TinyDad which={2} position={h2.position} rotationY={NORTH} hop={h2.hop} squash={h2.squash} mood="scared" />
+            <TinyDad which={1} position={d1.position} rotationY={SOUTH} hop={d1.hop} squash={d1.squash} mood="scared" />
+            <TinyDad which={2} position={d2.position} rotationY={SOUTH} hop={d2.hop} squash={d2.squash} mood="scared" />
+            <TinyDad which={3} position={d3.position} rotationY={WEST} hop={d3.hop} squash={d3.squash} mood="scared" />
+            <TinyDad which={4} position={d4.position} rotationY={WEST} hop={d4.hop} squash={d4.squash} mood="angry" />
             {t >= hitAt ? (
               <>
-                <SoundRings position={[BRIDGE.craterStone[0], BRIDGE_Y + 0.12, BRIDGE.craterStone[2]]} t={t - hitAt} color="#ffffff" reach={1.8} />
-                <Bits position={BRIDGE.craterStone} t={t - hitAt} color="#eef2f7" count={22} power={1.65} />
-                <Puffs position={[BRIDGE.craterStone[0], BRIDGE_Y + 0.35, BRIDGE.craterStone[2]]} count={12} color="#dce3ec" />
+                <SoundRings position={[BRIDGE.craterStone[0], BRIDGE_Y + 0.1, BRIDGE.craterStone[2]]} t={t - hitAt} color="#ffffff" reach={2.1} />
+                <Bits position={BRIDGE.craterStone} t={t - hitAt} color="#eef2f7" count={24} power={1.7} />
+                <Puffs position={[BRIDGE.craterStone[0], BRIDGE_Y + 0.32, BRIDGE.craterStone[2]]} count={12} color="#dce3ec" />
               </>
             ) : null}
           </>

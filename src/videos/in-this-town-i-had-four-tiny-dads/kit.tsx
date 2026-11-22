@@ -98,6 +98,26 @@ export const posed = (clip: Parameters<typeof getPose>[0], t: number, patch: Par
   ...patch,
 });
 
+/**
+ * Exact top surface Y of `BridgeZone` (`world.tsx`) at any Z coordinate:
+ *   - `|z| <= 4.42` : flat wooden bridge deck (`BRIDGE_Y = 1.15`)
+ *   - `4.42 < |z| < 7.45` : sloped cobble approach ramp (`position=[0, 0.48, ±5.8], rot=∓0.28, size=[4.4, 0.36, 3.4]`)
+ *   - `|z| >= 7.45` : north/south swamp bank path (`top = 0.15`)
+ */
+export function bridgeSurfaceY(z: number): number {
+  const az = Math.abs(z);
+  if (az <= 4.6) return 1.15;
+  if (az >= 7.45) return 0.15;
+  const rampTop = 0.658 + 0.288 * (5.75 - az);
+  const deckBlend = clamp01((4.88 - az) / 0.28);
+  return Math.max(0.15, rampTop * (1 - deckBlend) + 1.15 * deckBlend);
+}
+
+/** Exact top Y of `<SlimeBlockProp position={[x, baseY, z]} scale={scale} squash={squash} />`. */
+export function slimeBlockTopY(baseY: number, scale = 1, squash = 0): number {
+  return baseY + 1.025 * Math.max(0.28, scale * (1 - squash * 0.42));
+}
+
 /** Exact scene-clock impact burst for `Shot.impacts` (Camera evaluates impacts against scene time). */
 export function sceneImpact(firstCueId: string, cueId: string, word?: string, amp = 0.045, dur = 0.34) {
   const first = timing.cues.find((c) => c.id === firstCueId);

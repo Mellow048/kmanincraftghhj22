@@ -1,5 +1,5 @@
-import { Glow, cam, storyScene } from "../../engine";
-import { PATH_Y, VILLAGE, villageWalkRoute } from "./marks";
+import { Glow, cam, clamp01, storyScene } from "../../engine";
+import { PATH_Y, PORCH_Y, VILLAGE, villageWalkRoute } from "./marks";
 import {
   Bits,
   CHILD,
@@ -274,13 +274,15 @@ export const scene3 = storyScene(timing, {
       stage: (t, { p }) => {
         const droop = tw(t, 0, 0.55);
         const glance = tw(t, 0.42, 0.92);
+        const hz = -10.8 - p * 1.55;
+        const hy = hz <= -11.8 ? PORCH_Y : PATH_Y + clamp01((-11.6 - hz) / 0.2) * (PORCH_Y - PATH_Y);
         return (
           <>
             <Hero
-              position={[0, PATH_Y + p * 0.08, -10.8 - p * 1.65]}
+              position={[0, hy, hz]}
               rotationY={3.14}
               animation="walk"
-              animDistance={p * 1.65}
+              animDistance={p * 1.55}
               plantFeet
               face="frown"
               headPitch={0.28}
@@ -299,34 +301,36 @@ export const scene3 = storyScene(timing, {
       look: "overworld-sunset",
       ...cam.orbit({
         on: [VILLAGE.shed[0], 0.52, -12.15],
-        dist: 4.15,
-        distTo: 2.85,
-        yaw: -44,
-        yawTo: 14,
+        dist: 4.25,
+        distTo: 3.05,
+        yaw: -42,
+        yawTo: 16,
         pitch: 22,
-        pitchTo: 11,
-        fov: 41,
+        pitchTo: 12,
+        fov: 42,
       }),
       impacts: [sceneImpact("3.corner", "3.shed", "pressed", 0.038, 0.28)],
-      note: "High-energy crafting huddle: all four tiny dads hop-slam nine glowing green slimeballs together in a shower of emerald sparks!",
+      note: "High-energy crafting huddle: four well-spaced tiny dads hop-press glowing slimeballs into a clean pyramid stack with zero overlap!",
       stage: (t) => {
         const pressAt = w("3.shed", "pressed");
         const press = tw(t, Math.max(0, pressAt - 0.3), w("3.shed", "together") + 0.15);
-        const h1 = slimeHopTo([-6.35, 0, -12.25], [-5.82, 0, -12.22], press, 3, 0.22);
-        const h2 = slimeHopTo([-4.45, 0, -12.25], [-4.98, 0, -12.22], press, 3, 0.22);
-        const h3 = slimeHopTo([-5.85, 0, -11.45], [-5.58, 0, -11.88], press, 3, 0.22);
-        const h4 = slimeHopTo([-4.95, 0, -11.45], [-5.22, 0, -11.88], press, 3, 0.22);
+        // Keep all 4 dads on a >=0.56m radius circle around [-5.4, 0, -12.15] so they never overlap each other or the central slimeballs!
+        const h1 = slimeHopTo([-6.42, 0, -12.28], [-6.02, 0, -12.22], press, 3, 0.22);
+        const h2 = slimeHopTo([-4.38, 0, -12.28], [-4.78, 0, -12.22], press, 3, 0.22);
+        const h3 = slimeHopTo([-6.05, 0, -11.35], [-5.74, 0, -11.62], press, 3, 0.22);
+        const h4 = slimeHopTo([-4.75, 0, -11.35], [-5.06, 0, -11.62], press, 3, 0.22);
         return (
           <>
-            <SlimeballProp position={[-5.4 - 0.34 * (1 - press), 0.06, -12.18]} scale={1.15 + press * 0.55} squash={press * 0.28} />
-            <SlimeballProp position={[-5.4 + 0.34 * (1 - press), 0.06, -12.18]} scale={1.15 + press * 0.55} squash={press * 0.28} />
-            <SlimeballProp position={[-5.4, 0.08 + press * 0.28, -12.05]} scale={1.15 + press * 0.55} squash={press * 0.28} />
-            <Glow position={[-5.4, 0.38, -12.15]} size={0.7 + press * 1.65} color="#8eff62" opacity={0.18 + press * 0.38} />
-            {press > 0.45 ? <Bits position={[-5.4, 0.35, -12.15]} t={t - pressAt * 0.6} color="#9dff70" count={14} power={1.05} /> : null}
-            <TinyDad which={1} position={h1.position} rotationY={0.55} hop={h1.hop} squash={h1.squash + 0.18 * press} mood="angry" />
-            <TinyDad which={2} position={h2.position} rotationY={-0.55} hop={h2.hop} squash={h2.squash + 0.18 * press} mood="angry" />
-            <TinyDad which={3} position={h3.position} rotationY={0.25} hop={h3.hop} squash={h3.squash + 0.18 * press} mood="happy" />
-            <TinyDad which={4} position={h4.position} rotationY={-0.25} hop={h4.hop} squash={h4.squash + 0.18 * press} mood="angry" />
+            {/* Distinct non-overlapping 3-slimeball cluster that fuses into a neat glowing block */}
+            <SlimeballProp position={[-5.4 - 0.24 * (1 - press * 0.45), 0.02, -12.18]} scale={1.05 + press * 0.35} squash={press * 0.22} />
+            <SlimeballProp position={[-5.4 + 0.24 * (1 - press * 0.45), 0.02, -12.18]} scale={1.05 + press * 0.35} squash={press * 0.22} />
+            <SlimeballProp position={[-5.4, 0.24 + press * 0.08, -12.15]} scale={0.95 + press * 0.42} squash={press * 0.22} />
+            <Glow position={[-5.4, 0.38, -12.15]} size={0.7 + press * 1.45} color="#8eff62" opacity={0.18 + press * 0.34} />
+            {press > 0.45 ? <Bits position={[-5.4, 0.38, -12.15]} t={t - pressAt * 0.6} color="#9dff70" count={14} power={1.05} /> : null}
+            <TinyDad which={1} position={h1.position} rotationY={0.55} hop={h1.hop} squash={h1.squash + 0.16 * press} mood="angry" />
+            <TinyDad which={2} position={h2.position} rotationY={-0.55} hop={h2.hop} squash={h2.squash + 0.16 * press} mood="angry" />
+            <TinyDad which={3} position={h3.position} rotationY={0.35} hop={h3.hop} squash={h3.squash + 0.16 * press} mood="happy" />
+            <TinyDad which={4} position={h4.position} rotationY={-0.35} hop={h4.hop} squash={h4.squash + 0.16 * press} mood="angry" />
           </>
         );
       },
