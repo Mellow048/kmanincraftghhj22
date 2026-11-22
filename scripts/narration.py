@@ -201,6 +201,7 @@ SAY = {
     "uncrossed": "AH N K R AO S T",
     "sixtysix": "S IH K S T IY S IH K S",
     "hus": "HH AH S",
+    "hiccupped": "HH IH K AH P T",
 }
 
 def assembled_spans(raw, count, length):

@@ -1,0 +1,172 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-nobody-made-a-sound",
+  "mix": "public/audio/in-this-town-nobody-made-a-sound/mix.mp3",
+  "seconds": 82.6667,
+  "built_from": {
+    "timing.json": "a728bb192ae225bf5712f79c5f745964f68215fc",
+    "sound.json": "402c7e233b86920364b7fa2b6a0c4ae9b1425798",
+    "narration.mp3": "1278e6156ba32d27bd6455480026f6ee81137d11"
+  },
+  "mix_sha1": "c22cf2eefea4aed414033b0d8b297d5ec1cd04c9",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.grand",
+      "mood": "curious",
+      "at": 13.37
+    },
+    {
+      "from": "4.only",
+      "mood": "sad",
+      "at": 22.27
+    },
+    {
+      "from": "6.door",
+      "mood": "sneak",
+      "at": 35.1
+    },
+    {
+      "from": "7.for",
+      "mood": "drone",
+      "at": 42.1
+    },
+    {
+      "from": "8.wrong",
+      "mood": "hope",
+      "at": 48.33
+    },
+    {
+      "from": "9.think2",
+      "mood": "curious",
+      "at": 54.47
+    },
+    {
+      "from": "9.actually",
+      "mood": "none",
+      "at": 55.67
+    },
+    {
+      "from": "9.bell2",
+      "mood": "drone",
+      "at": 57.97
+    },
+    {
+      "from": "10.mine",
+      "mood": "sneak",
+      "at": 59.6
+    },
+    {
+      "from": "11.loud",
+      "mood": "tense",
+      "at": 64.3
+    },
+    {
+      "from": "11.answer",
+      "mood": "none",
+      "at": 66.6
+    },
+    {
+      "from": "12.low",
+      "mood": "dark",
+      "at": 68.3
+    },
+    {
+      "from": "13.now",
+      "mood": "town",
+      "at": 72.0
+    },
+    {
+      "from": "14.answer",
+      "mood": "dark",
+      "at": 79.27
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 12,
+  "measured": {
+    "musicUnderVoiceDb": 20.2,
+    "secondsWithoutMusic": 4.1,
+    "bedsUnderVoiceDb": 28.4,
+    "sfx": 101,
+    "sfxPerMinute": 73.3,
+    "sfxKinds": 23,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 22.3,
+    "sfxBuried": 1,
+    "voiceOverRestMedianDb": 15.3,
+    "voiceOverRestWorstDb": 3.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.7,
+        "t": 66.0,
+        "cue": "11.one",
+        "sounding": [
+          "bell",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 3.8,
+        "t": 68.6,
+        "cue": "12.low",
+        "sounding": [
+          "bell",
+          "boom",
+          "drop",
+          "sting"
+        ]
+      },
+      {
+        "db": 4.8,
+        "t": 65.3,
+        "cue": "11.loud",
+        "sounding": [
+          "bell"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 80.6,
+        "cue": "14.answer",
+        "sounding": [
+          "bell",
+          "blink",
+          "riser"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 67.7,
+        "cue": "11.answer",
+        "sounding": [
+          "bell",
+          "drop",
+          "sting",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 81.6,
+        "cue": "14.sub",
+        "sounding": [
+          "bell",
+          "ding",
+          "rustle"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.0,
+    "limiterMaxDb": 1.6
+  },
+  "failures": []
+}
