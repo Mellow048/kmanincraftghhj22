@@ -1,6 +1,6 @@
 import type React from "react";
-import { Block, MinecraftAvatar, Vox, getPose } from "../../engine";
-import type { MinecraftAvatarProps, Pose, Timing, Vec3 } from "../../engine";
+import { Block, MinecraftAvatar, Vox, clamp01, gaitPose, getPose } from "../../engine";
+import type { FaceName, MinecraftAvatarProps, Pose, Timing, Vec3 } from "../../engine";
 import {
   ADULT,
   Bits,
@@ -98,10 +98,128 @@ export const posed = (clip: Parameters<typeof getPose>[0], t: number, patch: Par
   ...patch,
 });
 
+/** Exact scene-clock impact burst for `Shot.impacts` (Camera evaluates impacts against scene time). */
+export function sceneImpact(firstCueId: string, cueId: string, word?: string, amp = 0.045, dur = 0.34) {
+  const first = timing.cues.find((c) => c.id === firstCueId);
+  const cue = timing.cues.find((c) => c.id === cueId);
+  if (!first || !cue) throw new Error(`sceneImpact: missing cue ${firstCueId} or ${cueId}`);
+  const offset = word ? wordAt(cueId, word) : 0;
+  return { at: Math.max(0, cue.start - first.start + offset), amp, dur };
+}
+
+/**
+ * Authentic Minecraft slime hop cycle:
+ *   0.00–0.20 : crouch anticipation (`squash > 0`)
+ *   0.20–0.76 : crisp parabolic jump (`hop > 0`) with mid-air stretch (`squash < 0`) + forward lean
+ *   0.76–1.00 : juicy pancake landing (`squash > 0`) settling back to rest
+ */
+export function slimeBounce(t: number, rate = 1.65, height = 0.28, phase = 0): { hop: number; squash: number; lean: number } {
+  const cyc = (((t * rate + phase) % 1) + 1) % 1;
+  if (cyc < 0.2) {
+    const k = cyc / 0.2;
+    return { hop: 0, squash: Math.sin(k * Math.PI * 0.5) * 0.26, lean: 0.06 * k };
+  }
+  if (cyc < 0.76) {
+    const u = (cyc - 0.2) / 0.56;
+    const arc = 4 * u * (1 - u);
+    return {
+      hop: arc * height,
+      squash: -0.22 * arc + 0.14 * (1 - arc),
+      lean: (0.5 - u) * 0.22,
+    };
+  }
+  const s = (cyc - 0.76) / 0.24;
+  const settle = Math.sin(s * Math.PI) * (1 - s * 0.45);
+  return { hop: 0, squash: settle * 0.34, lean: -0.05 * settle };
+}
+
+/** Discrete multi-hop locomotion from `from` to `to` so moving slimes HOP across the ground instead of ice-skating! */
+export function slimeHopTo(
+  from: Vec3,
+  to: Vec3,
+  p: number,
+  hops = 3,
+  height = 0.24,
+  phase = 0,
+): { position: Vec3; hop: number; squash: number; lean: number } {
+  const cp = clamp01(p);
+  const f = cp * hops;
+  const idx = Math.min(hops - 1, Math.floor(f));
+  const sub = clamp01(f - idx);
+  // Hold briefly on ground for crouch, then travel during airborne window (0.18..0.82)
+  const air = clamp01((sub - 0.16) / 0.66);
+  const segStart = idx / hops;
+  const segEnd = (idx + 1) / hops;
+  const travel = segStart + (segEnd - segStart) * ease(air);
+  const b = slimeBounce(sub + phase * 0.01, 1, height, 0);
+  return {
+    position: [
+      from[0] + (to[0] - from[0]) * travel,
+      from[1] + (to[1] - from[1]) * travel,
+      from[2] + (to[2] - from[2]) * travel,
+    ],
+    hop: b.hop,
+    squash: b.squash,
+    lean: b.lean,
+  };
+}
+
+/** Running gait with both arms cradling tiny dads against the chest (`6.scoop`). */
+export const carryDadsPose = (dist: number): Pose => ({
+  ...gaitPose("run", dist),
+  armR: [-1.18, -0.34, -0.14],
+  armL: [-1.18, 0.34, 0.14],
+});
+
+/** Running gait hoisting the glowing Slime Block triumphantly overhead (`4.boast`). */
+export const carryBlockPose = (dist: number): Pose => ({
+  ...gaitPose("run", dist),
+  armR: [-2.75, 0.12, 0.1],
+  armL: [-2.75, -0.12, -0.1],
+});
+
+export const TEEN = 0.84;
+
+/** Wind-up -> two-handed shove -> recoil (`4.sunset`, `6.pin`). */
+export const shovePose = (t: number, hitAt: number): Pose => {
+  const wind = tw(t, Math.max(0, hitAt - 0.32), hitAt);
+  const push = tw(t, hitAt, hitAt + 0.22);
+  const settle = tw(t, hitAt + 0.22, hitAt + 0.65);
+  const armX = -0.55 - wind * 0.45 - push * 0.75 + settle * 0.55;
+  return {
+    ...getPose("idle", t),
+    bodyPitch: -0.14 * wind + 0.26 * push - 0.12 * settle,
+    bodyY: -0.05 * wind - 0.04 * push + 0.04 * settle,
+    armR: [armX, -0.18, 0.08],
+    armL: [armX, 0.18, -0.08],
+    legR: [0.28 * push, 0, 0],
+    legL: [-0.32 * push, 0, 0],
+  };
+};
+
+/** Mid-air joy pose for bouncing off the Slime Block (`6.boing`, `7.roof`). */
+export const skyJoyPose = (t: number): Pose => ({
+  ...getPose("jump", t),
+  bodyPitch: -0.1 + Math.sin(t * 5) * 0.06,
+  armR: [-2.65 + Math.sin(t * 8) * 0.18, 0, 0.28],
+  armL: [-2.65 + Math.cos(t * 8) * 0.18, 0, -0.28],
+  legR: [0.42, 0, 0.1],
+  legL: [-0.35, 0, -0.1],
+  kneeR: [0.45, 0, 0],
+  kneeL: [0.45, 0, 0],
+});
+
+const STORY_FACE_MAP: Partial<Record<FaceName, FaceName>> = {
+  laugh: "grin",
+  sad: "frown",
+  worried: "uneasy",
+  scared: "fear",
+};
+
 // ----------------------------------------------------------------------------- Cast
 // NOTE: In Topics/InThisTown/monsters.tsx, Slime `size` is its width in METRES:
 //   - TinyDad        : 0.38 m (knee-high beside a 1.28 m kid)
-//   - BigSlimeDad    : 0.78 m (medium slime after 1st split)
+//   - BigSlimeDad    : 0.88 m (medium slime after 1st split)
 //   - GrandpaSlime   : 0.98 m (elder slime)
 //   - OriginalBigDad : 1.42 m (big slime dad — taller than a kid, fits cleanly in 9:16)
 
@@ -109,7 +227,7 @@ export const TINY_M = 0.38;
 export const MED_M = 0.78;
 export const BIG_M = 1.42;
 
-/** Human kid hero: warm amber-orange hoodie so he pops against green slimes, stone, night & water. */
+/** Human kid hero: warm amber-orange hoodie + child story-face palette (`SHOTS.md` §7). */
 export const Hero: React.FC<MinecraftAvatarProps> = ({ scale = KID, face = "smile", ...props }) => (
   <MinecraftAvatar
     scale={scale}
@@ -118,7 +236,7 @@ export const Hero: React.FC<MinecraftAvatarProps> = ({ scale = KID, face = "smil
     outfit="hoodie"
     colors={{ torso: "#f07c2e", arms: "#f07c2e", legs: "#314c6e" }}
     shoes="#f4f2ec"
-    face={face === "laugh" ? "grin" : face}
+    face={STORY_FACE_MAP[face] ?? face}
     blink
     {...props}
   />
@@ -209,7 +327,7 @@ export const TinyDad: React.FC<
   );
 };
 
-/** All 4 tiny dads stacked into a wobbling ~1.5 m totem (every face & accessory clearly separated!). */
+/** All 4 tiny dads stacked into a wobbling ~1.5 m totem (`assemble` 0→1 hops #2, #3, #4 up onto #1!). */
 export const DadStack: React.FC<{
   position?: Vec3;
   rotationY?: number;
@@ -217,19 +335,41 @@ export const DadStack: React.FC<{
   squash?: number;
   mood?: Mood;
   topLean?: number;
-}> = ({ position = [0, 0, 0], rotationY = 0, sway = 0, squash = 0, mood = "happy", topLean = 0 }) => {
-  const step = 0.37 * (1 - squash * 0.2);
+  assemble?: number;
+}> = ({ position = [0, 0, 0], rotationY = 0, sway = 0, squash = 0, mood = "happy", topLean = 0, assemble = 1 }) => {
+  const k2 = ease(clamp01(assemble / 0.36));
+  const k3 = ease(clamp01((assemble - 0.28) / 0.36));
+  const k4 = ease(clamp01((assemble - 0.56) / 0.44));
+  const landBump =
+    (k2 > 0.85 && k2 < 1 ? 0.16 : 0) +
+    (k3 > 0.85 && k3 < 1 ? 0.18 : 0) +
+    (k4 > 0.85 && k4 < 1 ? 0.2 : 0);
+  const sq = squash + landBump;
+  const step = 0.37 * (1 - sq * 0.18);
+  const arc2 = Math.sin(k2 * Math.PI) * 0.28;
+  const arc3 = Math.sin(k3 * Math.PI) * 0.34;
+  const arc4 = Math.sin(k4 * Math.PI) * 0.4;
   return (
     <group position={position} rotation={[0, rotationY, 0]}>
-      <TinyDad which={1} position={[0, 0, 0]} squash={squash * 1.1} mood={mood} />
-      <TinyDad which={2} position={[sway * 0.05, step, 0]} squash={squash} mood={mood} />
-      <TinyDad which={3} position={[sway * 0.1, step * 2, 0.01]} squash={squash * 0.9} mood={mood} />
+      <TinyDad which={1} position={[0, 0, 0]} squash={sq * 1.15} mood={mood} />
+      <TinyDad
+        which={2}
+        position={[(1 - k2) * -0.46 + sway * 0.05 * k2, step * k2 + arc2, (1 - k2) * 0.12]}
+        squash={sq + (k2 > 0 && k2 < 0.9 ? -0.14 : 0)}
+        mood={mood}
+      />
+      <TinyDad
+        which={3}
+        position={[(1 - k3) * 0.48 + sway * 0.1 * k3, step * 2 * k3 + arc3, 0.01 + (1 - k3) * 0.14]}
+        squash={sq * 0.9 + (k3 > 0 && k3 < 0.9 ? -0.14 : 0)}
+        mood={mood}
+      />
       <TinyDad
         which={4}
-        position={[sway * 0.15, step * 3, 0.03 + topLean * 0.1]}
-        squash={squash * 0.85}
+        position={[(1 - k4) * -0.58 + sway * 0.15 * k4, step * 3 * k4 + arc4, (0.03 + topLean * 0.1) * k4 + (1 - k4) * -0.12]}
+        squash={sq * 0.85 + (k4 > 0 && k4 < 0.9 ? -0.16 : 0)}
         mood={mood}
-        nod={topLean * 0.35}
+        nod={topLean * 0.35 * k4}
       />
     </group>
   );
