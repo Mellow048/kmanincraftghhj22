@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-nobody-made-a-sound",
   "mix": "public/audio/in-this-town-nobody-made-a-sound/mix.mp3",
-  "seconds": 82.6667,
+  "seconds": 85.7333,
   "built_from": {
-    "timing.json": "a728bb192ae225bf5712f79c5f745964f68215fc",
-    "sound.json": "402c7e233b86920364b7fa2b6a0c4ae9b1425798",
-    "narration.mp3": "1278e6156ba32d27bd6455480026f6ee81137d11"
+    "timing.json": "1d4936bbef24054018628f08f2522793239b3a42",
+    "sound.json": "ad99dbb4a2a2777a05e773bc8b0ab336cdf0881e",
+    "narration.mp3": "b62c01ffb423571dc40404dd470f604849ec44c2"
   },
-  "mix_sha1": "c22cf2eefea4aed414033b0d8b297d5ec1cd04c9",
+  "mix_sha1": "3ecc46a83d9d2d3f7dc0ae441e9053079b04f8d6",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,72 +18,72 @@
     {
       "from": "3.grand",
       "mood": "curious",
-      "at": 13.37
+      "at": 12.47
     },
     {
       "from": "4.only",
       "mood": "sad",
-      "at": 22.27
+      "at": 21.0
     },
     {
       "from": "6.door",
       "mood": "sneak",
-      "at": 35.1
+      "at": 34.47
     },
     {
       "from": "7.for",
       "mood": "drone",
-      "at": 42.1
+      "at": 43.1
     },
     {
       "from": "8.wrong",
       "mood": "hope",
-      "at": 48.33
+      "at": 49.13
     },
     {
       "from": "9.think2",
       "mood": "curious",
-      "at": 54.47
+      "at": 55.4
     },
     {
       "from": "9.actually",
       "mood": "none",
-      "at": 55.67
+      "at": 56.83
     },
     {
       "from": "9.bell2",
       "mood": "drone",
-      "at": 57.97
+      "at": 59.33
     },
     {
       "from": "10.mine",
       "mood": "sneak",
-      "at": 59.6
+      "at": 61.47
     },
     {
       "from": "11.loud",
       "mood": "tense",
-      "at": 64.3
+      "at": 66.43
     },
     {
       "from": "11.answer",
       "mood": "none",
-      "at": 66.6
+      "at": 69.53
     },
     {
       "from": "12.low",
       "mood": "dark",
-      "at": 68.3
+      "at": 71.5
     },
     {
       "from": "13.now",
       "mood": "town",
-      "at": 72.0
+      "at": 75.8
     },
     {
       "from": "14.answer",
       "mood": "dark",
-      "at": 79.27
+      "at": 82.3
     }
   ],
   "music_file": {
@@ -92,81 +92,77 @@
   },
   "beds": 12,
   "measured": {
-    "musicUnderVoiceDb": 20.2,
-    "secondsWithoutMusic": 4.1,
+    "musicUnderVoiceDb": 20.3,
+    "secondsWithoutMusic": 4.6,
     "bedsUnderVoiceDb": 28.4,
-    "sfx": 101,
-    "sfxPerMinute": 73.3,
-    "sfxKinds": 23,
+    "sfx": 100,
+    "sfxPerMinute": 70.0,
+    "sfxKinds": 22,
     "longestGapSeconds": 3.4,
-    "longestGapAt": 22.3,
-    "sfxBuried": 1,
-    "voiceOverRestMedianDb": 15.3,
-    "voiceOverRestWorstDb": 3.7,
+    "longestGapAt": 21.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.8,
+    "voiceOverRestWorstDb": 3.1,
     "voiceOverRestWorst": [
       {
-        "db": 3.7,
-        "t": 66.0,
-        "cue": "11.one",
+        "db": 3.1,
+        "t": 38.2,
+        "cue": "6.up",
         "sounding": [
-          "bell",
-          "sparkle"
+          "step_stone",
+          "swish"
         ]
       },
       {
-        "db": 3.8,
+        "db": 3.5,
         "t": 68.6,
-        "cue": "12.low",
-        "sounding": [
-          "bell",
-          "boom",
-          "drop",
-          "sting"
-        ]
-      },
-      {
-        "db": 4.8,
-        "t": 65.3,
-        "cue": "11.loud",
+        "cue": "11.one",
         "sounding": [
           "bell"
         ]
       },
       {
-        "db": 5.1,
-        "t": 80.6,
-        "cue": "14.answer",
+        "db": 4.4,
+        "t": 31.7,
+        "cue": "5.sorry",
         "sounding": [
-          "bell",
-          "blink",
-          "riser"
+          "blip",
+          "rustle"
         ]
       },
       {
-        "db": 5.9,
-        "t": 67.7,
+        "db": 4.6,
+        "t": 4.1,
+        "cue": "1.kid",
+        "sounding": [
+          "blip"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 71.0,
         "cue": "11.answer",
         "sounding": [
           "bell",
+          "boom",
           "drop",
           "sting",
           "whoosh_low"
         ]
       },
       {
-        "db": 6.2,
-        "t": 81.6,
-        "cue": "14.sub",
+        "db": 6.1,
+        "t": 40.8,
+        "cue": "6.ring",
         "sounding": [
           "bell",
-          "ding",
           "rustle"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.0,
-    "limiterMaxDb": 1.6
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 1.0
   },
   "failures": []
 }

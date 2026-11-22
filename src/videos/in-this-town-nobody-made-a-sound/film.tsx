@@ -37,9 +37,7 @@ export const film = defineFilm({
   // The shader chain (painted sky and sun, bloom, tone mapping, grade): the owner asked for it on every film from
   // 2026-11-17 on. Read "With the shaders on" in Topics/InThisTown/PACK.md before lighting a shot.
   post: { shaders: true },
-  // The voice, until the sound is built (scripts/sound.py build): then this line becomes the mix, and `npm run check`
-  // holds the finished film to its mix.
-  audio: { src: "audio/in-this-town-nobody-made-a-sound/narration.mp3" },
+  audio: { src: "audio/in-this-town-nobody-made-a-sound/mix.mp3" },
   captions: { words: timing.words, y: 0.72, motion: "on-beat" },
   World,
   scenes: [
