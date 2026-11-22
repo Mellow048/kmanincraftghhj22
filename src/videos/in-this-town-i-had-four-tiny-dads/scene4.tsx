@@ -169,8 +169,8 @@ export const scene4 = storyScene(timing, {
                 size={[0.42, 0.42, 0.42]}
               />
             ))}
-            <pointLight position={[0.25, 2.15, 8.2]} color="#ff2a2a" intensity={rise * 14} distance={6} decay={2} />
-            <Glow position={[0.25, 1.95, 8.35]} size={0.8 + rise * 1.2} color="#ff3b2f" opacity={0.26 * rise} />
+            <pointLight position={[0.25, 2.15, 8.2]} color="#ff2a2a" intensity={rise * 2.6} distance={5} decay={2} />
+            <Glow position={[0.25, 2.05, 8.45]} size={0.45 + rise * 0.35} color="#ff3b2f" opacity={0.18 * rise} />
             <Hero
               position={[0.92 + burst * 0.35, 0.12, 6.95 - burst * 0.48]}
               rotationY={-0.35}
@@ -201,15 +201,15 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.orbit({
-        on: [0.2, 1.45, 8.2],
-        onTo: [0.15, 1.85, 6.85],
-        dist: 4.75,
+        on: [0.15, 1.55, 8.05],
+        onTo: [0.15, 1.75, 6.75],
+        dist: 4.65,
         distTo: 3.75,
-        yaw: 138,
-        yawTo: 164,
-        pitch: -3,
-        pitchTo: -7,
-        fov: 46,
+        yaw: -152,
+        yawTo: -172,
+        pitch: 5,
+        pitchTo: 1,
+        fov: 45,
       }),
       fovTo: 41,
       shake: 0.02,
@@ -217,14 +217,14 @@ export const scene4 = storyScene(timing, {
         sceneImpact("4.sunset", "4.golem", "golem", 0.065, 0.38),
         sceneImpact("4.sunset", "4.golem", "taller", 0.055, 0.32),
       ],
-      note: "Thunderous LOW WORM'S-EYE advance: Golem takes two massive ground-shaking strides throwing its arms wide with a shockwave roar while Hero scrambles back!",
+      note: "Thunderous LOW-ANGLE advance: Golem takes two massive ground-shaking strides throwing its arms wide with a shockwave roar while Hero scrambles back!",
       stage: (t, { p }) => {
         const adv = p * 2.15;
         const roarAt = w("4.golem", "taller");
         const roar = tw(t, Math.max(0, roarAt - 0.15), roarAt + 0.35);
         return (
           <>
-            <pointLight position={[0.15, 2.3, 8.1 - adv]} color="#ff2e2e" intensity={16} distance={7} decay={2} />
+            <pointLight position={[0.15, 2.3, 8.1 - adv]} color="#ff2e2e" intensity={2.8} distance={6} decay={2} />
             <Hero
               position={[0.98 + p * 0.25, 0.12 + p * 0.28, 6.65 - p * 1.35]}
               rotationY={-0.38}
@@ -329,23 +329,23 @@ export const scene4 = storyScene(timing, {
         onTo: [0.05, BRIDGE_Y + 1.05, -0.85],
         dist: 4.55,
         distTo: 3.55,
-        yaw: 154,
-        yawTo: -164,
-        pitch: 6,
-        pitchTo: -4,
+        yaw: -152,
+        yawTo: -176,
+        pitch: 7,
+        pitchTo: 1,
         fov: 44,
       }),
       shake: 0.02,
       impacts: [sceneImpact("4.sunset", "4.hunt", "hunts", 0.06, 0.34)],
       note: "FRONT-FACING PREDATOR LOCK: Golem's glowing red eyes flare crimson, it roars (`SoundRings`), and CHARGES straight toward the hopping tiny dads!",
-      stage: (t, { p }) => {
+      stage: (t) => {
         const snapAt = w("4.hunt", "hunts");
         const snap = tw(t, 0.02, snapAt);
         const charge = tw(t, Math.max(0.15, snapAt - 0.1), 1.45);
         const gz = 1.45 - charge * 2.15;
         return (
           <>
-            <pointLight position={[0.15, BRIDGE_Y + 2.05, gz - 0.3]} color="#ff2424" intensity={6 + snap * 16} distance={7} decay={2} />
+            <pointLight position={[0.15, BRIDGE_Y + 2.05, gz - 0.3]} color="#ff2424" intensity={1.2 + snap * 2.2} distance={6} decay={2} />
             <RogueGolem
               position={[0.15, BRIDGE_Y, gz]}
               rotationY={NORTH}

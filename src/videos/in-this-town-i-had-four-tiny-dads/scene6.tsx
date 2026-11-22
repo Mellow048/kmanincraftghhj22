@@ -343,20 +343,21 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.orbit({
-        on: [0.85, 0.82, -8.45],
-        dist: 4.55,
-        distTo: 3.45,
+        on: [0.85, 0.85, -8.45],
+        onTo: [0.85, 1.15, -8.45],
+        dist: 4.85,
+        distTo: 3.85,
         yaw: -142,
         yawTo: -168,
-        pitch: 20,
+        pitch: 18,
         pitchTo: 10,
-        fov: 43,
+        fov: 44,
       }),
       impacts: [sceneImpact("6.scoop", "6.block", "flew", 0.048, 0.3)],
       note: "Full-action reveal: wheelbarrow tips aside, the white sheet billows away, the Slime Block pops into place glowing bright emerald as Hero plummets in from above!",
       stage: (t) => {
         const fly = tw(t, 0.02, w("6.block", "flew") + 0.32);
-        const dropHero = tw(t, 0.25, 1.0);
+        const dropHero = tw(t, 0.05, 1.15);
         const b3 = slimeBounce(t, 3.0, 0.22, 0.1);
         return (
           <>
@@ -377,7 +378,7 @@ export const scene6 = storyScene(timing, {
             />
             <TinyDad which={3} position={[-0.08, 0.12, -8.35]} rotationY={2.5} hop={b3.hop} squash={b3.squash} mood="happy" />
             <Hero
-              position={[0.85, 3.15 - dropHero * 1.25, -8.45]}
+              position={[0.85, 2.65 - dropHero * 1.45, -8.45]}
               rotationY={2.8}
               animation="fall"
               face="wow"

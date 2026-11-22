@@ -80,14 +80,15 @@ export const scene5 = storyScene(timing, {
       zone: "village",
       look: "overworld-night",
       ...cam.orbit({
-        on: [1.35, 0.32, -11.75],
-        dist: 4.35,
-        distTo: 3.25,
-        yaw: -44,
-        yawTo: 18,
-        pitch: 26,
+        on: [1.35, 0.95, -11.15],
+        onTo: [1.35, 0.45, -11.65],
+        dist: 5.25,
+        distTo: 3.85,
+        yaw: -48,
+        yawTo: -14,
+        pitch: 19,
         pitchTo: 12,
-        fov: 42,
+        fov: 44,
       }),
       impacts: [sceneImpact("5.stare", "5.craters", "craters", 0.052, 0.32)],
       note: "Dynamic flashback match-cut: ghostly Golem fists slam into our porch stairs creating the twin white craters as the tiny cactus tips over!",
@@ -317,7 +318,7 @@ export const scene5 = storyScene(timing, {
         const build = tw(t, 0.02, w("5.front", "stacked") + 0.15);
         return (
           <>
-            <pointLight position={[0.18, BRIDGE_Y + 2.1, 0.85]} color="#ff2e2e" intensity={12} distance={6} decay={2} />
+            <pointLight position={[0.18, BRIDGE_Y + 2.1, 0.85]} color="#ff2e2e" intensity={2.6} distance={5} decay={2} />
             <Hero
               position={[-0.78, BRIDGE_Y, -2.05]}
               rotationY={0.28}
