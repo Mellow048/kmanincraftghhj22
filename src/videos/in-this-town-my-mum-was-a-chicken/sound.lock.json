@@ -1,0 +1,133 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-my-mum-was-a-chicken",
+  "mix": "public/audio/in-this-town-my-mum-was-a-chicken/mix.mp3",
+  "seconds": 105.0667,
+  "built_from": {
+    "timing.json": "784635cf831fec0781c3170e24f6da8ecac3ad8a",
+    "sound.json": "aac133a064decc8608555dd4dee131f0fa160f91",
+    "narration.mp3": "6953c2945fe9a61bf22be5bec3a62c29be91b066"
+  },
+  "mix_sha1": "d29d72a413c5ed566a36de15894e9df92e970e7a",
+  "music_sections": [
+    {
+      "from": "1.mums",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.school",
+      "mood": "playful",
+      "at": 11.43
+    },
+    {
+      "from": "2.roof",
+      "mood": "curious",
+      "at": 19.2
+    },
+    {
+      "from": "3.normal",
+      "mood": "playful",
+      "at": 32.83
+    },
+    {
+      "from": "4.trip",
+      "mood": "tense",
+      "at": 46.57
+    },
+    {
+      "from": "5.step",
+      "mood": "none",
+      "at": 73.4
+    },
+    {
+      "from": "6.float",
+      "mood": "wonder",
+      "at": 75.23
+    },
+    {
+      "from": "7.knew",
+      "mood": "hope",
+      "at": 89.3
+    },
+    {
+      "from": "7.egg",
+      "mood": "curious",
+      "at": 100.1
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 6,
+  "measured": {
+    "musicUnderVoiceDb": 19.5,
+    "secondsWithoutMusic": 2.1,
+    "bedsUnderVoiceDb": 25.5,
+    "sfx": 84,
+    "sfxPerMinute": 48.0,
+    "sfxKinds": 37,
+    "longestGapSeconds": 3.2,
+    "longestGapAt": 28.0,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.2,
+    "voiceOverRestWorstDb": 6.9,
+    "voiceOverRestWorst": [
+      {
+        "db": 6.9,
+        "t": 39.4,
+        "cue": "3.short",
+        "sounding": [
+          "place",
+          "school_bell"
+        ]
+      },
+      {
+        "db": 7.1,
+        "t": 90.7,
+        "cue": "7.knew",
+        "sounding": [
+          "boom",
+          "chime",
+          "swish"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 51.1,
+        "cue": "4.orange",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.4,
+        "t": 62.4,
+        "cue": "4.heavy",
+        "sounding": [
+          "riser",
+          "thud"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 103.0,
+        "cue": "8.sub",
+        "sounding": []
+      },
+      {
+        "db": 7.8,
+        "t": 77.8,
+        "cue": "6.float",
+        "sounding": [
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -1.9,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}

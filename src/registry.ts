@@ -33,6 +33,7 @@ import { film as inThisTownIHadNeverSeenTheSun } from "./videos/in-this-town-i-h
 import { film as theBarberWhoNeverWentToParties } from "./videos/the-barber-who-never-went-to-parties/film";
 import { film as stillRushingTheThirdOne } from "./videos/still-rushing-the-third-one/film";
 import { film as thatsMeTheElbow } from "./videos/thats-me-the-elbow/film";
+import { film as inThisTownMyMumWasAChicken } from "./videos/in-this-town-my-mum-was-a-chicken/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -74,4 +75,5 @@ export const FILMS = [
   theBarberWhoNeverWentToParties,
   stillRushingTheThirdOne,
   thatsMeTheElbow,
+  inThisTownMyMumWasAChicken,
 ];

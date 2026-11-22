@@ -175,6 +175,7 @@ SAY = {
     "creeper": "K R IY P ER",
     "purred": "P ER D",
     "purr": "P ER",
+    "clucked": "K L AH K T",
     "creepers": "K R IY P ER Z",
     "enderman": "EH N D ER M AE N",
     "endermen": "EH N D ER M EH N",
