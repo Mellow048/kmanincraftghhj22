@@ -5,7 +5,6 @@ import { TOWER, WOOL } from "./marks";
 const HER = PLACE.grannyAt;
 const NOT = wordAt("8.wrong", "not");
 const HEARS = wordAt("8.only", "hears");
-const PURPOSE = wordAt("8.purpose", "purpose");
 
 /** The town at night from the tower's open side: wool, lanterns, and not one person awake. */
 const TownBelow = ({ t }: { t: number }) => (
