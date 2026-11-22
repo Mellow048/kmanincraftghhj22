@@ -34,19 +34,19 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.push({
-        on: [0, BRIDGE_Y + 0.75, -1.75],
-        onTo: [0, BRIDGE_Y + 0.82, -3.45],
-        dist: 4.55,
-        to: 3.6,
-        yaw: 26,
-        pitch: 10,
+        on: [0, BRIDGE_Y + 0.85, -1.75],
+        onTo: [0, BRIDGE_Y + 0.88, -3.35],
+        dist: 4.35,
+        to: 3.55,
+        yaw: 158,
+        pitch: 12,
         fov: 43,
-        fovTo: 39,
+        fovTo: 40,
       }),
       shake: 0.018,
-      note: "Breathless sprint follow: Hero scoops all four tiny dads against his chest (`carryDadsPose`) and bolts back toward the post!",
+      note: "Front pursuit track: camera retreats ahead of Hero as he sprints TOWARD the lens cradling all four dads while the Golem chases behind!",
       stage: (_t, { p }) => {
-        const dist = p * 1.95;
+        const dist = p * 1.85;
         const z = -1.65 - dist;
         return (
           <>
@@ -61,7 +61,7 @@ export const scene6 = storyScene(timing, {
             <TinyDad which={2} position={[0.22, BRIDGE_Y + 0.76, z - 0.24]} rotationY={NORTH} scale={0.76} mood="scared" />
             <TinyDad which={3} position={[-0.14, BRIDGE_Y + 1.02, z - 0.22]} rotationY={NORTH} scale={0.76} mood="scared" />
             <TinyDad which={4} position={[0.16, BRIDGE_Y + 1.02, z - 0.22]} rotationY={NORTH} scale={0.76} mood="scared" />
-            <RogueGolem position={[0, BRIDGE_Y, 0.45 - p * 0.75]} rotationY={NORTH} walk={p * 1.4} armR={-0.85} armL={-0.85} />
+            <RogueGolem position={[0.25, BRIDGE_Y, 0.55 - p * 0.85]} rotationY={NORTH} walk={p * 1.4} armR={-0.85} armL={-0.85} />
           </>
         );
       },
@@ -103,30 +103,32 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.pan({
-        from: [-4.4, BRIDGE_Y + 2.25, -2.4],
-        on: [0, BRIDGE_Y + 0.95, -0.5],
-        onTo: [0, WATER_Y + 0.32, -0.2],
+        from: [-1.45, BRIDGE_Y + 2.15, -3.45],
+        on: [0.65, BRIDGE_Y + 1.15, 0.15],
+        onTo: [2.75, WATER_Y + 0.45, 0.25],
         fov: 46,
         fovTo: 42,
       }),
       impacts: [sceneImpact("6.scoop", "6.drop", "fell", 0.072, 0.42)],
-      note: "Wide disaster `cam.pan`: camera whips down from the collapsing bridge planks tracking the heavy Iron Golem plunging into the dark river!",
+      note: "Unobstructed disaster `cam.pan`: Golem pitches off the open east bridge edge into the dark river with a huge cyan splash!",
       stage: (t) => {
         const fallAt = w("6.drop", "fell");
         const fall = tw(t, Math.max(0, fallAt - 0.18), fallAt + 0.68);
+        const gx = 0.55 + fall * 2.25;
+        const gy = BRIDGE_Y + Math.sin(fall * Math.PI * 0.5) * 0.15 - fall * fall * 2.55;
         return (
           <>
             <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={0.85} pinOut={1} />
-            <Hero position={[-0.45, BRIDGE_Y, -4.55]} rotationY={SOUTH} animation="leanOver" face="wow" />
+            <Hero position={[0.85, BRIDGE_Y, -2.55]} rotationY={0.85} animation="leanOver" face="wow" />
             <RogueGolem
-              position={[0, BRIDGE_Y - fall * 2.35, -0.25]}
-              rotationY={NORTH + fall * 0.55}
+              position={[gx, gy, 0.2]}
+              rotationY={1.15 + fall * 0.65}
               armR={-1.55}
               armL={-1.55}
-              bow={-0.42 * fall}
+              bow={0.48 * fall}
             />
             {fall > 0.52 ? (
-              <Bits position={[0, WATER_Y + 0.2, -0.25]} t={t - fallAt} color="#8fe4ff" count={20} power={1.65} />
+              <Bits position={[2.8, WATER_Y + 0.22, 0.2]} t={t - fallAt} color="#8fe4ff" count={22} power={1.65} />
             ) : null}
           </>
         );
@@ -178,34 +180,34 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.push({
-        on: [0.15, BRIDGE_Y + 0.65, -4.15],
-        onTo: [0.85, BRIDGE_Y - 0.15, -3.55],
-        dist: 4.45,
-        to: 3.55,
-        yaw: 30,
-        pitch: 14,
+        on: [1.15, BRIDGE_Y + 0.72, -0.35],
+        onTo: [2.15, BRIDGE_Y - 0.05, -0.15],
+        dist: 4.35,
+        to: 3.45,
+        yaw: -142,
+        pitch: 15,
         fov: 43,
         fovTo: 40,
       }),
       impacts: [sceneImpact("6.scoop", "6.rope", "snapping", 0.055, 0.32)],
       ease: "outCubic",
-      note: "Cliffhanger yank: a snapping vine rope catches Hero's ankle and pulls him and all four dads off the broken bridge ledge!",
+      note: "Unobstructed east-gap cliffhanger: a snapping vine rope yanks Hero and all four dads right off the open broken bridge ledge!",
       stage: (t) => {
         const yankAt = w("6.rope", "pulled");
         const k = tw(t, Math.max(0, yankAt - 0.2), yankAt + 0.48);
         return (
           <>
-            <VineRope top={[1.25, BRIDGE_Y + 0.55, -3.65]} length={1.65} sway={0.45 + k * 0.65} />
+            <VineRope top={[2.05, BRIDGE_Y + 0.65, 0.25]} length={1.65} sway={0.45 + k * 0.65} />
             <Hero
-              position={[0.05 + k * 0.95, BRIDGE_Y - k * 0.75, -4.25 + k * 0.65]}
-              rotationY={0.55 + k * 0.45}
+              position={[1.05 + k * 1.15, BRIDGE_Y + Math.sin(k * Math.PI) * 0.22 - k * 0.55, -0.45 + k * 0.35]}
+              rotationY={1.25 + k * 0.45}
               animation="fall"
               face="fear"
             />
-            <TinyDad which={1} position={[-0.22 + k * 0.85, BRIDGE_Y + 0.62 - k * 0.68, -4.05 + k * 0.6]} rotationY={SOUTH} mood="scared" />
-            <TinyDad which={2} position={[0.32 + k * 0.85, BRIDGE_Y + 0.58 - k * 0.68, -4.05 + k * 0.6]} rotationY={SOUTH} mood="scared" />
-            <TinyDad which={3} position={[0.12 + k * 1.05, BRIDGE_Y + 0.42 - k * 0.82, -3.95 + k * 0.72]} rotationY={SOUTH} mood="scared" />
-            <TinyDad which={4} position={[-0.08 + k * 0.9, BRIDGE_Y + 0.78 - k * 0.65, -4.15 + k * 0.6]} rotationY={SOUTH} mood="scared" />
+            <TinyDad which={1} position={[0.78 + k * 1.05, BRIDGE_Y + 0.62 - k * 0.48, -0.25 + k * 0.3]} rotationY={SOUTH} mood="scared" />
+            <TinyDad which={2} position={[1.32 + k * 1.05, BRIDGE_Y + 0.58 - k * 0.48, -0.65 + k * 0.3]} rotationY={SOUTH} mood="scared" />
+            <TinyDad which={3} position={[1.15 + k * 1.25, BRIDGE_Y + 0.42 - k * 0.62, -0.15 + k * 0.35]} rotationY={SOUTH} mood="scared" />
+            <TinyDad which={4} position={[0.92 + k * 1.1, BRIDGE_Y + 0.78 - k * 0.45, -0.55 + k * 0.3]} rotationY={SOUTH} mood="scared" />
           </>
         );
       },
@@ -286,32 +288,32 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.pan({
-        from: [-2.45, 1.35, -11.4],
-        on: [0.85, 0.55, -8.45],
-        onTo: [0.55, 3.85, -8.85],
-        fov: 45,
-        fovTo: 40,
+        from: [-3.45, 1.85, -12.35],
+        on: [0.85, 0.85, -8.45],
+        onTo: [0.68, 3.65, -8.65],
+        fov: 46,
+        fovTo: 43,
       }),
       impacts: [sceneImpact("6.scoop", "6.boing", "bounced", 0.062, 0.36)],
-      note: "TRIUMPHANT BOING WHIP-UP (`cam.pan`): Hero and all four dads squish the Slime Block flat and rocket skyward above the trees!",
+      note: "TRIUMPHANT BOING WHIP-UP (`cam.pan`): Hero and all four dads squish the Slime Block flat and rocket skyward dead-centre in frame!",
       stage: (t) => {
         const boingAt = w("6.boing", "bounced") - 0.08;
         const drop = tw(t, 0, Math.max(0.16, boingAt));
-        const up = tw(t, Math.max(0.16, boingAt), Math.max(0.75, boingAt + 0.68));
-        const y = t < boingAt ? 1.85 - drop * 0.95 : 0.9 + up * 3.65 + Math.sin(up * Math.PI) * 0.95;
+        const up = tw(t, Math.max(0.16, boingAt), Math.max(0.88, boingAt + 0.82));
+        const y = t < boingAt ? 1.75 - drop * 0.85 : 0.9 + up * 2.55 + Math.sin(up * Math.PI) * 0.55;
         return (
           <>
             <SlimeBlockProp position={[0.85, 0.12, -8.45]} scale={1.02} glow={1} squash={pop(t, boingAt, 0.32) * 0.56} />
             <Hero
-              position={[0.85 - up * 0.25, y, -8.45 - up * 0.35]}
+              position={[0.85 - up * 0.18, y, -8.45 - up * 0.22]}
               rotationY={2.85}
               pose={t < boingAt ? posed("fall", t, {}) : skyJoyPose(t)}
               face={t < boingAt ? "wow" : "grin"}
             />
-            <TinyDad which={1} position={[0.35, y - 0.15, -8.35]} rotationY={2.8} squash={t >= boingAt ? -0.18 : 0.1} />
-            <TinyDad which={2} position={[1.35, y - 0.1, -8.35]} rotationY={-2.8} squash={t >= boingAt ? -0.18 : 0.1} />
-            <TinyDad which={3} position={[0.52, y + 0.45, -8.65]} rotationY={2.9} squash={t >= boingAt ? -0.18 : 0.1} />
-            <TinyDad which={4} position={[1.18, y + 0.48, -8.65]} rotationY={-2.9} squash={t >= boingAt ? -0.18 : 0.1} />
+            <TinyDad which={1} position={[0.35, y - 0.12, -8.35]} rotationY={2.8} squash={t >= boingAt ? -0.18 : 0.1} />
+            <TinyDad which={2} position={[1.35, y - 0.08, -8.35]} rotationY={-2.8} squash={t >= boingAt ? -0.18 : 0.1} />
+            <TinyDad which={3} position={[0.52, y + 0.42, -8.65]} rotationY={2.9} squash={t >= boingAt ? -0.18 : 0.1} />
+            <TinyDad which={4} position={[1.18, y + 0.45, -8.65]} rotationY={-2.9} squash={t >= boingAt ? -0.18 : 0.1} />
             {t >= boingAt ? <Puffs position={[0.85, 0.95, -8.45]} count={12} color="#c5ff9e" /> : null}
           </>
         );

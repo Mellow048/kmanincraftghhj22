@@ -56,18 +56,18 @@ export const scene5 = storyScene(timing, {
       zone: "village",
       look: "overworld-night",
       ...cam.top({
-        on: [1.35, 0.14, -11.65],
-        height: 3.05,
-        to: 2.15,
+        on: [1.05, 0.14, -11.85],
+        height: 4.35,
+        to: 3.35,
         spin: [-10, 8],
-        fov: 40,
+        fov: 42,
       }),
-      note: "Clue callback #1 (`cam.top` overhead spin): Hero steps to the porch edge pointing down at the EXACT same twin white fist craters!",
+      note: "Clue callback #1 (`cam.top` overhead spin): Hero steps to the porch edge pointing down at the twin white fist craters!",
       stage: (t) => {
         const reach = tw(t, 0.05, 0.65);
         return (
           <Hero
-            position={[0.52 + reach * 0.18, 0.12, -12.35]}
+            position={[0.45 + reach * 0.18, 0.12, -12.35]}
             rotationY={0.62}
             pose={posed("point", t, { head: [0.42, 0.15, 0] })}
             face="wow"
@@ -144,20 +144,20 @@ export const scene5 = storyScene(timing, {
       zone: "village",
       look: "overworld-night",
       ...cam.orbit({
-        on: [1.15, 0.78, -11.35],
-        dist: 5.1,
-        distTo: 3.95,
-        yaw: 34,
-        yawTo: 8,
-        pitch: 18,
-        pitchTo: 10,
-        fov: 43,
+        on: [0.95, 0.78, -11.45],
+        dist: 5.25,
+        distTo: 4.15,
+        yaw: -68,
+        yawTo: -42,
+        pitch: 20,
+        pitchTo: 12,
+        fov: 44,
       }),
       impacts: [
         sceneImpact("5.stare", "5.twice", "Twice", 0.068, 0.36),
         sceneImpact("5.stare", "5.twice", "fist", 0.072, 0.38),
       ],
-      note: "Double-split flashback payoff: Dad takes the Golem's iron fist TWICE—splitting from 1 big → 2 medium → 4 tiny dads to save Baby Hero!",
+      note: "Unobstructed side-front arc: Dad takes the Golem's iron fist TWICE—splitting from 1 big → 2 medium → 4 tiny dads to save Baby Hero!",
       stage: (t) => {
         const s1 = 0.22;
         const s2 = Math.max(0.68, w("5.twice", "fist"));
@@ -166,24 +166,24 @@ export const scene5 = storyScene(timing, {
         const arm = t < s1 ? -1.45 : t < s2 ? -0.35 - tw(t, s1 + 0.15, s2) * 1.15 : -0.25;
         return (
           <>
-            <ReedBasket position={[0.25, 0.12, -12.55]} rotationY={SOUTH} reach={0.95} />
-            <RogueGolem position={[1.35, 0, -9.95]} rotationY={NORTH} armR={arm} armL={arm} bow={0.22} />
+            <ReedBasket position={[0.15, 0.12, -12.45]} rotationY={SOUTH} reach={0.95} />
+            <RogueGolem position={[1.45, 0, -9.85]} rotationY={NORTH - 0.25} armR={arm} armL={arm} bow={0.22} />
             {t < s1 ? (
-              <OriginalBigDad position={[1.15, 0, -11.45]} rotationY={SOUTH} squash={0.28} mood="angry" />
+              <OriginalBigDad position={[0.95, 0, -11.45]} rotationY={SOUTH} squash={0.28} mood="angry" />
             ) : t < s2 ? (
               <>
-                <BigSlimeDad which={1} position={[1.15 - k1 * 0.55, Math.sin(k1 * Math.PI) * 0.42, -11.45]} rotationY={SOUTH} squash={pop(t, s1, 0.25) * 0.36} mood="angry" />
-                <BigSlimeDad which={2} position={[1.15 + k1 * 0.55, Math.sin(k1 * Math.PI) * 0.42, -11.45]} rotationY={SOUTH} squash={pop(t, s1, 0.25) * 0.36} mood="angry" />
-                <Bits position={[1.15, 0.65, -11.45]} t={t - s1} color="#7dff57" count={14} power={1.3} />
+                <BigSlimeDad which={1} position={[0.95 - k1 * 0.52, Math.sin(k1 * Math.PI) * 0.42, -11.45]} rotationY={SOUTH} squash={pop(t, s1, 0.25) * 0.36} mood="angry" />
+                <BigSlimeDad which={2} position={[0.95 + k1 * 0.52, Math.sin(k1 * Math.PI) * 0.42, -11.45]} rotationY={SOUTH} squash={pop(t, s1, 0.25) * 0.36} mood="angry" />
+                <Bits position={[0.95, 0.65, -11.45]} t={t - s1} color="#7dff57" count={14} power={1.3} />
               </>
             ) : (
               <>
-                <TinyDad which={1} position={[0.45, Math.sin(k2 * Math.PI) * 0.36, -11.65]} rotationY={SOUTH} mood="angry" />
-                <TinyDad which={2} position={[0.92, Math.sin(k2 * Math.PI) * 0.42, -11.55]} rotationY={SOUTH} mood="angry" />
-                <TinyDad which={3} position={[1.38, Math.sin(k2 * Math.PI) * 0.42, -11.55]} rotationY={SOUTH} mood="angry" />
-                <TinyDad which={4} position={[1.85, Math.sin(k2 * Math.PI) * 0.36, -11.65]} rotationY={SOUTH} mood="angry" />
-                <Bits position={[1.15, 0.52, -11.5]} t={t - s2} color="#7dff57" count={16} power={1.4} />
-                <Puffs position={[1.45, 0.15, -11.55]} count={8} color="#eef2f7" />
+                <TinyDad which={1} position={[0.28, Math.sin(k2 * Math.PI) * 0.36, -11.65]} rotationY={SOUTH} mood="angry" />
+                <TinyDad which={2} position={[0.72, Math.sin(k2 * Math.PI) * 0.42, -11.55]} rotationY={SOUTH} mood="angry" />
+                <TinyDad which={3} position={[1.18, Math.sin(k2 * Math.PI) * 0.42, -11.55]} rotationY={SOUTH} mood="angry" />
+                <TinyDad which={4} position={[1.62, Math.sin(k2 * Math.PI) * 0.36, -11.65]} rotationY={SOUTH} mood="angry" />
+                <Bits position={[0.95, 0.52, -11.5]} t={t - s2} color="#7dff57" count={16} power={1.4} />
+                <Puffs position={[1.35, 0.15, -11.55]} count={8} color="#eef2f7" />
               </>
             )}
           </>
@@ -223,38 +223,38 @@ export const scene5 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.orbit({
-        on: [0, BRIDGE_Y + 0.72, -1.35],
-        onTo: [0, BRIDGE_Y + 0.98, -1.35],
-        dist: 4.85,
-        distTo: 3.85,
-        yaw: 28,
-        yawTo: 6,
-        pitch: 8,
-        pitchTo: -4,
+        on: [0, BRIDGE_Y + 0.85, -0.85],
+        onTo: [0.05, BRIDGE_Y + 1.05, -0.65],
+        dist: 4.55,
+        distTo: 3.65,
+        yaw: -146,
+        yawTo: -166,
+        pitch: 10,
+        pitchTo: 2,
         fov: 43,
       }),
       shake: 0.014,
-      note: "Heroic LOW WORM'S-EYE stack: even with zero splits left, all four tiny dads hop onto each other's heads in front of Hero's shoes!",
+      note: "Heroic OTS worm's-eye stack: looking past Hero and the live-assembling four-dad stack straight at the red-eyed Iron Golem!",
       stage: (t) => {
         const build = tw(t, 0.02, w("5.front", "stacked") + 0.2);
         return (
           <>
             <Hero
-              position={[-0.58, BRIDGE_Y, -2.25]}
-              rotationY={0.18}
+              position={[-0.78, BRIDGE_Y, -2.05]}
+              rotationY={0.28}
               animation="reach"
               face="wow"
-              lookAt={[0, BRIDGE_Y + 0.85, -1.35]}
+              lookAt={[0.08, BRIDGE_Y + 0.85, -1.15]}
             />
             <DadStack
-              position={[0.08, BRIDGE_Y, -1.35]}
+              position={[0.08, BRIDGE_Y, -1.15]}
               rotationY={SOUTH}
               assemble={build}
               sway={Math.sin(t * 6.5) * 0.34}
               squash={0.1}
               mood="angry"
             />
-            <RogueGolem position={[0.15, BRIDGE_Y, 0.95]} rotationY={NORTH} armR={-0.95} armL={-0.95} bow={0.16} />
+            <RogueGolem position={[0.18, BRIDGE_Y, 1.15]} rotationY={NORTH} armR={-0.95} armL={-0.95} bow={0.16} />
           </>
         );
       },

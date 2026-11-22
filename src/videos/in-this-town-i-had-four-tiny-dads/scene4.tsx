@@ -137,30 +137,30 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.push({
-        on: [0.2, 1.45, 8.4],
-        onTo: [0.2, 2.05, 8.1],
-        dist: 5.8,
-        to: 4.55,
-        yaw: -158,
-        pitch: -8,
+        on: [0.25, 1.55, 8.55],
+        onTo: [0.25, 1.95, 8.15],
+        dist: 4.65,
+        to: 3.75,
+        yaw: 142,
+        pitch: -4,
         fov: 46,
         fovTo: 41,
       }),
       shake: 0.016,
       impacts: [sceneImpact("4.sunset", "4.golem", "golem", 0.06, 0.38)],
-      note: "Signature LOW WORM'S-EYE tilt-up (`pitch: -8`): towering vine-draped Iron Golem looms taller than a house!",
+      note: "Unobstructed LOW WORM'S-EYE tilt-up (`pitch: -4`): towering vine-draped Iron Golem looms taller than a house above cowering Hero!",
       stage: (t, { p }) => {
         const sw = Math.sin(t * 4) * 0.35;
         return (
           <>
             <Hero
-              position={[-0.95, 0.12, 6.55]}
-              rotationY={0.28}
+              position={[0.95, 0.12, 6.85]}
+              rotationY={-0.38}
               animation="cower"
               face="fear"
             />
             <RogueGolem
-              position={[0.25, 0.12, 8.55 - p * 0.65]}
+              position={[0.15, 0.12, 8.65 - p * 0.65]}
               rotationY={NORTH}
               walk={p * 0.95}
               armR={-0.55 + sw}
@@ -278,19 +278,19 @@ export const scene4 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-night",
       ...cam.push({
-        on: [-0.65, BRIDGE_Y + 0.85, 0.8],
-        onTo: [-0.95, BRIDGE_Y + 0.45, 0.8],
-        dist: 4.95,
-        to: 3.65,
-        yaw: 32,
-        pitch: 16,
+        on: [-0.55, BRIDGE_Y + 0.95, 0.85],
+        onTo: [-0.85, BRIDGE_Y + 0.48, 0.8],
+        dist: 4.85,
+        to: 3.75,
+        yaw: 146,
+        pitch: 18,
         fov: 44,
-        fovTo: 39,
+        fovTo: 40,
       }),
       shake: 0.022,
       impacts: [sceneImpact("4.sunset", "4.slam", "slammed", 0.078, 0.42)],
       ease: "outCubic",
-      note: "Seismic rail smash: Golem slams both iron fists into the west bridge rail, gouging twin white craters as the tiny dads dodge!",
+      note: "Unobstructed front-quarter smash: Golem slams both iron fists into the west bridge rail, gouging twin white craters as the tiny dads leap clear!",
       stage: (t) => {
         const hitAt = w("4.slam", "slammed");
         const wind = tw(t, Math.max(0, hitAt - 0.3), hitAt);
@@ -300,14 +300,14 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <RogueGolem
-              position={[-0.25 + jolt(t, hitAt, 0.12), BRIDGE_Y, 1.15]}
-              rotationY={WEST + 0.45}
+              position={[-0.15 + jolt(t, hitAt, 0.12), BRIDGE_Y, 1.35]}
+              rotationY={NORTH + 0.55}
               armR={arm}
               armL={arm}
               bow={0.32 * smash}
             />
-            <TinyDad which={1} position={[-0.85 + scatter * 0.95, BRIDGE_Y + Math.sin(scatter * Math.PI) * 0.42, 0.35 - scatter * 0.6]} rotationY={SOUTH} mood="scared" />
-            <TinyDad which={2} position={[-0.75 + scatter * 1.15, BRIDGE_Y + Math.sin(scatter * Math.PI) * 0.48, 0.95 + scatter * 0.4]} rotationY={NORTH} mood="scared" />
+            <TinyDad which={1} position={[-0.75 + scatter * 0.85, BRIDGE_Y + Math.sin(scatter * Math.PI) * 0.42, 0.35 - scatter * 0.75]} rotationY={NORTH} mood="scared" />
+            <TinyDad which={2} position={[-0.35 + scatter * 0.95, BRIDGE_Y + Math.sin(scatter * Math.PI) * 0.48, 0.25 - scatter * 0.65]} rotationY={NORTH} mood="scared" />
             {t >= hitAt ? (
               <>
                 <Bits position={BRIDGE.craterStone} t={t - hitAt} color="#eef2f7" count={18} power={1.5} />
