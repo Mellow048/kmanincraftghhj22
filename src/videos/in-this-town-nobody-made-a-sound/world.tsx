@@ -98,9 +98,9 @@ const Tower: React.FC<{ night: boolean }> = ({ night }) => (
     <Block position={[TOWER.at[0] - 1.2, TOWER.floorTop + 0.01, TOWER.at[2] - 1.2]} size={[1.5, 0.04, 1.2]} color="#0b0b0e" />
     <Lantern position={[TOWER.at[0] + 1.55, TOWER.floorTop + 2.5, TOWER.at[2] - 1.5]} chain={1.0} light={2} reach={5} seed={4} />
     {/* The room is small and the film is at night: the bell has to be lit or it is a black room. */}
-    <pointLight position={[TOWER.at[0] + 0.2, TOWER.floorTop + 3.3, TOWER.at[2] + 0.4]} color="#ffd39a" intensity={70} distance={13} decay={2} />
-    <pointLight position={[TOWER.at[0] - 1.4, TOWER.floorTop + 1.6, TOWER.at[2] + 0.9]} color="#ffb469" intensity={38} distance={9} decay={2} />
-    <pointLight position={[TOWER.at[0] + 1.2, TOWER.floorTop + 2.2, TOWER.at[2] + 2.2]} color="#9dbdff" intensity={34} distance={11} decay={2} />
+    <pointLight position={[TOWER.at[0] + 0.2, TOWER.floorTop + 3.3, TOWER.at[2] + 0.4]} color="#ffd39a" intensity={13} distance={11} decay={2} />
+    <pointLight position={[TOWER.at[0] - 1.4, TOWER.floorTop + 1.6, TOWER.at[2] + 0.9]} color="#ffb469" intensity={7} distance={8} decay={2} />
+    <pointLight position={[TOWER.at[0] + 1.2, TOWER.floorTop + 2.2, TOWER.at[2] + 2.2]} color="#9dbdff" intensity={6} distance={10} decay={2} />
     <Lantern position={[TOWER.at[0] - 1.55, TOWER.floorTop + 2.2, TOWER.at[2] - 1.9]} chain={0.8} light={1} reach={4} seed={9} />
     <GodRay position={[TOWER.at[0] + 0.4, 6.4, TOWER.at[2] + 0.2]} rotation={[0.2, 0, 0.1]} width={2.6} height={7} color="#cfe0ff" opacity={night ? 0.1 : 0.05} />
     <LightPool position={[TOWER.at[0], TOWER.floorTop + 0.02, TOWER.at[2] + 0.6]} width={4} depth={4} color="#ffe6b0" opacity={0.16} />
@@ -129,9 +129,9 @@ const Below: React.FC = () => (
     {/* the hole the town puts its bell-sound through: a shaft of nothing, straight down onto the mass */}
     <GodRay position={[0, 7.2, 60]} rotation={[0, 0, 0]} width={3.2} height={9} color="#c9d8ff" opacity={0.06} />
     {/* Under the town there is no sky at all: two lights do the whole reveal. */}
-    <pointLight position={[0, 8.2, BELOW.at[2] + 2.5]} color="#8fd8ea" intensity={90} distance={30} decay={2} />
-    <pointLight position={[0, 1.6, BELOW.at[2] + 9]} color="#f0c488" intensity={40} distance={22} decay={2} />
-    <pointLight position={[-9, 2.4, BELOW.at[2] - 4]} color="#2c3f5e" intensity={45} distance={26} decay={2} />
+    <pointLight position={[0, 8.2, BELOW.at[2] + 2.5]} color="#8fd8ea" intensity={26} distance={30} decay={2} />
+    <pointLight position={[0, 1.6, BELOW.at[2] + 9]} color="#f0c488" intensity={14} distance={22} decay={2} />
+    <pointLight position={[-9, 2.4, BELOW.at[2] - 4]} color="#2c3f5e" intensity={16} distance={26} decay={2} />
     <LightPool position={[0, 0.03, 62]} width={16} depth={10} color="#5f6f8a" opacity={0.1} />
     <Glow position={[0, 3.2, 64.4]} size={4.6} color="#8ef2de" opacity={0.1} />
     <Dust position={[0, 3, 60]} area={[18, 6, 14]} count={70} size={0.05} color="#b9c6d8" opacity={0.35} seed={12} speed={0.12} />
@@ -157,13 +157,13 @@ export const World: React.FC = () => {
           <Zone name="street">
             <Moon position={[20, 23, -34]} radius={5.4} glow={0.9} />
             <Stars center={[0, 30, 0]} radius={70} count={220} seed={5} />
-            <Moonlight on={[0, 1, 2]} from={[14, 22, -18]} radius={24} power={26} color="#b9cdf2" />
-            <pointLight position={[0, 4.4, 6]} color="#94b4e8" intensity={26} distance={26} decay={2} />
+            <Moonlight on={[0, 1, 2]} from={[14, 22, -18]} radius={24} power={7} color="#b9cdf2" />
+            <pointLight position={[0, 4.4, 6]} color="#94b4e8" intensity={9} distance={24} decay={2} />
           </Zone>
           <Zone name="tower">
             <Moon position={[4.6, 15.5, -30]} radius={4.6} glow={0.9} />
             <Stars center={[4, 26, -26]} radius={60} count={160} seed={7} />
-            <Moonlight on={[TOWER.at[0], TOWER.floorTop + 1.2, TOWER.at[2] + 0.6]} from={[8, 16, -20]} radius={10} power={18} color="#bdd0f5" />
+            <Moonlight on={[TOWER.at[0], TOWER.floorTop + 1.2, TOWER.at[2] + 0.6]} from={[8, 16, -20]} radius={10} power={9} color="#bdd0f5" />
           </Zone>
         </>
       )}
