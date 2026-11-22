@@ -1,6 +1,7 @@
 import { Glow, cam, storyScene } from "../../engine";
 import { PATH_Y, VILLAGE, villageWalkRoute } from "./marks";
 import {
+  Bits,
   CHILD,
   EAST,
   Hero,
@@ -258,24 +259,36 @@ export const scene3 = storyScene(timing, {
       cue: "3.quiet",
       zone: "village",
       look: "overworld-sunset",
-      ...cam.push({
-        on: [0, 0.34, -9.1],
-        dist: 3.45,
-        to: 2.62,
-        yaw: 24,
-        pitch: 15,
-        fov: 38,
-        fovTo: 35,
+      ...cam.orbit({
+        on: [0, 0.42, -10.2],
+        onTo: [-0.15, 0.36, -9.85],
+        dist: 3.65,
+        distTo: 2.75,
+        yaw: 28,
+        yawTo: -14,
+        pitch: 16,
+        pitchTo: 10,
+        fov: 40,
       }),
-      note: "Stillness contrast: after bouncing in every shot, all four tiny dads stop completely still and droop on the cobbles.",
-      stage: (t) => {
-        const droop = tw(t, 0, 0.85);
+      note: "Emotional contrast: Hero walks up onto the cottage porch in the background while all four tiny dads stop bouncing and exchange sad looks.",
+      stage: (t, { p }) => {
+        const droop = tw(t, 0, 0.55);
+        const glance = tw(t, 0.42, 0.92);
         return (
           <>
-            <TinyDad which={1} position={[-0.68, PATH_Y, -9.1]} rotationY={0.22} squash={0.12 + droop * 0.16} mood="sad" nod={0.2 * droop} />
-            <TinyDad which={2} position={[-0.22, PATH_Y, -9.02]} rotationY={0.08} squash={0.12 + droop * 0.16} mood="sad" nod={0.22 * droop} />
-            <TinyDad which={3} position={[0.24, PATH_Y, -9.05]} rotationY={-0.08} squash={0.14 + droop * 0.18} mood="sad" nod={0.24 * droop} />
-            <TinyDad which={4} position={[0.7, PATH_Y, -9.15]} rotationY={-0.22} squash={0.12 + droop * 0.16} mood="sad" nod={0.2 * droop} />
+            <Hero
+              position={[0, PATH_Y + p * 0.08, -10.8 - p * 1.65]}
+              rotationY={3.14}
+              animation="walk"
+              animDistance={p * 1.65}
+              plantFeet
+              face="frown"
+              headPitch={0.28}
+            />
+            <TinyDad which={1} position={[-0.72, PATH_Y, -9.65]} rotationY={0.25 - glance * 0.65} squash={0.14 + droop * 0.16} mood="sad" nod={0.2 * droop} />
+            <TinyDad which={2} position={[-0.24, PATH_Y, -9.55]} rotationY={0.1 + glance * 0.55} squash={0.14 + droop * 0.16} mood="sad" nod={0.22 * droop} />
+            <TinyDad which={3} position={[0.24, PATH_Y, -9.58]} rotationY={-0.1 - glance * 0.65} squash={0.16 + droop * 0.18} mood="sad" nod={0.24 * droop} />
+            <TinyDad which={4} position={[0.72, PATH_Y, -9.68]} rotationY={-0.25 - glance * 0.75} squash={0.14 + droop * 0.16} mood="sad" nod={0.2 * droop} />
           </>
         );
       },
@@ -285,32 +298,35 @@ export const scene3 = storyScene(timing, {
       zone: "village",
       look: "overworld-sunset",
       ...cam.orbit({
-        on: [VILLAGE.shed[0], 0.45, -12.3],
-        dist: 4.05,
-        distTo: 2.95,
-        yaw: -36,
-        yawTo: -14,
-        pitch: 20,
-        pitchTo: 13,
-        fov: 40,
+        on: [VILLAGE.shed[0], 0.52, -12.15],
+        dist: 4.15,
+        distTo: 2.85,
+        yaw: -44,
+        yawTo: 14,
+        pitch: 22,
+        pitchTo: 11,
+        fov: 41,
       }),
-      note: "Secretive arc outside the shed: all four tiny dads hop inward pressing glowing green slimeballs into a bright core!",
+      impacts: [sceneImpact("3.corner", "3.shed", "pressed", 0.038, 0.28)],
+      note: "High-energy crafting huddle: all four tiny dads hop-slam nine glowing green slimeballs together in a shower of emerald sparks!",
       stage: (t) => {
-        const press = tw(t, w("3.shed", "pressed") - 0.25, w("3.shed", "together") + 0.2);
-        const h1 = slimeHopTo([-6.15, 0, -12.32], [-5.82, 0, -12.32], press, 2, 0.16);
-        const h2 = slimeHopTo([-4.65, 0, -12.32], [-4.98, 0, -12.32], press, 2, 0.16);
-        const h3 = slimeHopTo([-5.72, 0, -11.75], [-5.58, 0, -11.98], press, 2, 0.16);
-        const h4 = slimeHopTo([-5.08, 0, -11.75], [-5.22, 0, -11.98], press, 2, 0.16);
+        const pressAt = w("3.shed", "pressed");
+        const press = tw(t, Math.max(0, pressAt - 0.3), w("3.shed", "together") + 0.15);
+        const h1 = slimeHopTo([-6.35, 0, -12.25], [-5.82, 0, -12.22], press, 3, 0.22);
+        const h2 = slimeHopTo([-4.45, 0, -12.25], [-4.98, 0, -12.22], press, 3, 0.22);
+        const h3 = slimeHopTo([-5.85, 0, -11.45], [-5.58, 0, -11.88], press, 3, 0.22);
+        const h4 = slimeHopTo([-4.95, 0, -11.45], [-5.22, 0, -11.88], press, 3, 0.22);
         return (
           <>
-            <SlimeballProp position={[-5.4 - 0.22 * (1 - press), 0.04, -12.32]} scale={1.1 + press * 0.4} squash={press * 0.24} />
-            <SlimeballProp position={[-5.4 + 0.22 * (1 - press), 0.04, -12.32]} scale={1.1 + press * 0.4} squash={press * 0.24} />
-            <SlimeballProp position={[-5.4, 0.04 + press * 0.18, -12.2]} scale={1.1 + press * 0.4} squash={press * 0.24} />
-            <Glow position={[-5.4, 0.28, -12.28]} size={0.6 + press * 1.1} color="#8eff62" opacity={0.14 + press * 0.28} />
-            <TinyDad which={1} position={h1.position} rotationY={0.55} hop={h1.hop} squash={h1.squash + 0.16 * press} mood="calm" />
-            <TinyDad which={2} position={h2.position} rotationY={-0.55} hop={h2.hop} squash={h2.squash + 0.16 * press} mood="calm" />
-            <TinyDad which={3} position={h3.position} rotationY={0.25} hop={h3.hop} squash={h3.squash + 0.16 * press} mood="calm" />
-            <TinyDad which={4} position={h4.position} rotationY={-0.25} hop={h4.hop} squash={h4.squash + 0.16 * press} mood="calm" />
+            <SlimeballProp position={[-5.4 - 0.34 * (1 - press), 0.06, -12.18]} scale={1.15 + press * 0.55} squash={press * 0.28} />
+            <SlimeballProp position={[-5.4 + 0.34 * (1 - press), 0.06, -12.18]} scale={1.15 + press * 0.55} squash={press * 0.28} />
+            <SlimeballProp position={[-5.4, 0.08 + press * 0.28, -12.05]} scale={1.15 + press * 0.55} squash={press * 0.28} />
+            <Glow position={[-5.4, 0.38, -12.15]} size={0.7 + press * 1.65} color="#8eff62" opacity={0.18 + press * 0.38} />
+            {press > 0.45 ? <Bits position={[-5.4, 0.35, -12.15]} t={t - pressAt * 0.6} color="#9dff70" count={14} power={1.05} /> : null}
+            <TinyDad which={1} position={h1.position} rotationY={0.55} hop={h1.hop} squash={h1.squash + 0.18 * press} mood="angry" />
+            <TinyDad which={2} position={h2.position} rotationY={-0.55} hop={h2.hop} squash={h2.squash + 0.18 * press} mood="angry" />
+            <TinyDad which={3} position={h3.position} rotationY={0.25} hop={h3.hop} squash={h3.squash + 0.18 * press} mood="happy" />
+            <TinyDad which={4} position={h4.position} rotationY={-0.25} hop={h4.hop} squash={h4.squash + 0.18 * press} mood="angry" />
           </>
         );
       },
