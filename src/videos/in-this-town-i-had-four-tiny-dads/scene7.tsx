@@ -136,8 +136,8 @@ export const scene7 = storyScene(timing, {
       cue: "8.sub",
       zone: "village",
       look: "overworld-sunset",
-      ...cam.push({ on: [0, 1.08, -10.8], dist: 4.5, to: 3.6, yaw: 8, pitch: 6, fov: 42 }),
-      note: "Golden-hour CTA: Hero waves on the left, Subscribe button gleams above captions, and Dad #3 slips out of the stack on cue!",
+      ...cam.push({ on: [0, 1.05, -10.8], dist: 4.85, to: 3.95, yaw: 6, pitch: 8, fov: 44 }),
+      note: "Golden-hour CTA: Hero waves on the left, compact Subscribe button gleams above captions, and Dad #3 slips out of the stack on cue!",
       stage: (t) => {
         const popIn = pop(t, w("8.sub", "subscribe"), 0.35);
         const slipAt = w("8.sub", "slips");
@@ -145,28 +145,28 @@ export const scene7 = storyScene(timing, {
         return (
           <>
             <Hero
-              position={[-0.82, PATH_Y, -10.8]}
+              position={[-0.92, PATH_Y, -10.8]}
               rotationY={0.18}
               animation="wave"
               face="grin"
               headYaw={0.08 + Math.sin(t * 3) * 0.08}
             />
-            {/* Raised Subscribe button on a wooden post well above the y=0.72 caption band */}
-            <Vox kind="log" position={[0, 0.46, -10.65]} size={[0.16, 0.92, 0.16]} />
-            <SubscribeSign position={[0, 0.88, -10.65]} rotationY={SOUTH} scale={1 + popIn * 0.15} />
+            {/* Compact Subscribe button on a wooden post well above the y=0.72 caption band, never covering Hero or the Dads */}
+            <Vox kind="log" position={[0, 0.54, -10.65]} size={[0.12, 1.08, 0.12]} />
+            <SubscribeSign position={[0, 1.04, -10.65]} rotationY={SOUTH} scale={0.44 + popIn * 0.08} />
             {/* Four-dad stack on the right—until #3 slips out on 'slips again'! */}
-            <TinyDad which={1} position={[0.82, PATH_Y, -10.8]} rotationY={-0.18} squash={0.1} />
-            <TinyDad which={2} position={[0.82, PATH_Y + 0.37, -10.8]} rotationY={-0.18} squash={0.1} />
+            <TinyDad which={1} position={[0.92, PATH_Y, -10.8]} rotationY={-0.18} squash={0.1} />
+            <TinyDad which={2} position={[0.92, PATH_Y + 0.37, -10.8]} rotationY={-0.18} squash={0.1} />
             <TinyDad
               which={3}
-              position={[0.82 + slip * 0.52, PATH_Y + 0.74 * (1 - slip), -10.76 + slip * 0.18]}
+              position={[0.92 + slip * 0.42, PATH_Y + 0.74 * (1 - slip), -10.76 + slip * 0.16]}
               rotationY={-0.18 + slip * 0.8}
               squash={slip * 0.32}
               mood={slip > 0.2 ? "scared" : "happy"}
             />
             <TinyDad
               which={4}
-              position={[0.82, PATH_Y + 1.11 - slip * 0.37, -10.8]}
+              position={[0.92, PATH_Y + 1.11 - slip * 0.37, -10.8]}
               rotationY={-0.18}
               squash={0.1 + pop(t, slipAt + 0.2, 0.25) * 0.25}
               mood="happy"

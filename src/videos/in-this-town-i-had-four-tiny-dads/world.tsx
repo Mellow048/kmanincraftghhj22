@@ -184,7 +184,6 @@ const RoomZone: React.FC<{ night: boolean }> = ({ night }) => (
       <Vox kind="wool" tint="#5bc940" position={[0, 0.31, 0.12]} size={[0.96, 0.12, 1.38]} />
       <Vox kind="wool" tint="#f5f1e6" position={[0, 0.34, -0.58]} size={[0.78, 0.14, 0.36]} />
     </group>
-    <Glow position={[0, 1.3, 0.2]} size={1.8} color="#ffe4b5" opacity={0.12} />
   </group>
 );
 

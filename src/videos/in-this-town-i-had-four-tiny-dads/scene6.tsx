@@ -205,12 +205,12 @@ export const scene6 = storyScene(timing, {
       cue: "6.boing",
       zone: "bridge",
       look: "overworld-night",
-      ...cam.push({ on: [0.85, 2.35, -6.25], dist: 6.4, to: 5.1, yaw: -22, pitch: -6, fov: 46 }),
+      ...cam.push({ on: [0.85, 1.85, -6.25], dist: 6.6, to: 5.3, yaw: -22, pitch: 6, fov: 46 }),
       note: "BOING! Hero and all four tiny dads hit the Slime Block with zero damage and rocket high into the moonlit sky!",
       stage: (t) => {
         const hitAt = w("6.boing", "hit");
         const flight = tw(t, hitAt, w("6.boing", "trees") + 0.35);
-        const yHero = hitAt > t ? 2.4 - (t / Math.max(0.15, hitAt)) * 1.55 : 0.85 + Math.sin(flight * Math.PI * 0.68) * 3.85;
+        const yHero = hitAt > t ? 2.2 - (t / Math.max(0.15, hitAt)) * 1.35 : 0.85 + Math.sin(flight * Math.PI * 0.72) * 2.15;
         const sq = pop(t, hitAt, 0.28);
         return (
           <>
@@ -221,10 +221,10 @@ export const scene6 = storyScene(timing, {
               animation={t < hitAt ? "fall" : "cheer"}
               face="grin"
             />
-            <TinyDad which={1} position={[0.15, yHero + 0.22, -6.15]} rotationY={-0.2} mood="happy" />
-            <TinyDad which={2} position={[1.55, yHero + 0.28, -6.15]} rotationY={-0.3} mood="happy" />
-            <TinyDad which={3} position={[0.35, yHero - 0.35, -6.05]} rotationY={-0.25} mood="happy" />
-            <TinyDad which={4} position={[1.38, yHero - 0.3, -6.05]} rotationY={-0.25} mood="happy" />
+            <TinyDad which={1} position={[0.2, yHero + 0.18, -6.15]} rotationY={-0.2} mood="happy" />
+            <TinyDad which={2} position={[1.5, yHero + 0.22, -6.15]} rotationY={-0.3} mood="happy" />
+            <TinyDad which={3} position={[0.35, yHero - 0.32, -6.05]} rotationY={-0.25} mood="happy" />
+            <TinyDad which={4} position={[1.35, yHero - 0.28, -6.05]} rotationY={-0.25} mood="happy" />
             {t >= hitAt ? <Puffs position={[0.85, 0.95, -6.25]} count={12} color="#b4ff90" /> : null}
           </>
         );

@@ -336,22 +336,22 @@ export const scene2 = storyScene(timing, {
       cue: "2.splits",
       zone: "village",
       look: "overworld-day",
-      ...cam.push({ on: [-2.45, 0.78, -3.35], dist: 4.35, to: 3.45, yaw: 22, pitch: 8, fov: 41 }),
-      note: "By the village well: wise white-browed Grandpa Slime warns Hero that tiny slimes have zero splits left.",
+      ...cam.push({ on: [-0.85, 0.78, -5.6], dist: 4.5, to: 3.6, yaw: 18, pitch: 10, fov: 42 }),
+      note: "On the open village lane: wise white-browed Grandpa Slime warns Hero that tiny slimes have zero splits left.",
       stage: (t) => {
         const nod = Math.sin(t * 3.4) * 0.12;
         return (
           <>
             <GrandpaSlime
-              position={[-3.18, 0, -3.35]}
-              rotationY={0.48}
+              position={[-1.45, PATH_Y, -5.65]}
+              rotationY={0.42}
               squash={0.1 + Math.abs(Math.sin(t * 2.6)) * 0.08}
               nod={0.12 + nod}
               mood="sad"
             />
             <Hero
-              position={[-1.72, PATH_Y, -3.3]}
-              rotationY={-0.48}
+              position={[-0.18, PATH_Y, -5.55]}
+              rotationY={-0.42}
               animation="idle"
               face="worried"
               headPitch={0.08}
@@ -365,24 +365,24 @@ export const scene2 = storyScene(timing, {
       cue: "2.ball",
       zone: "village",
       look: "overworld-day",
-      ...cam.push({ on: [-2.45, 0.55, -3.15], dist: 3.25, to: 2.48, yaw: -24, pitch: 22, fov: 39 }),
+      ...cam.push({ on: [-0.82, 0.52, -5.5], dist: 3.35, to: 2.55, yaw: -22, pitch: 22, fov: 40 }),
       note: "Solemn close-up: a lone green slimeball on a low wooden block between tiny Dad #3 and worried Hero.",
       stage: (t) => {
         const pulse = pop(t, w("2.ball", "slimeball"), 0.35);
         return (
           <>
-            <Vox kind="planks" position={[-2.52, 0.14, -3.12]} size={[0.42, 0.28, 0.42]} />
-            <SlimeballProp position={[-2.52, 0.28, -3.12]} scale={1.15} squash={pulse * 0.26} />
+            <Vox kind="planks" position={[-0.85, 0.14, -5.45]} size={[0.42, 0.28, 0.42]} />
+            <SlimeballProp position={[-0.85, 0.28, -5.45]} scale={1.15} squash={pulse * 0.26} />
             <TinyDad
               which={3}
-              position={[-3.08, 0, -3.18]}
+              position={[-1.42, PATH_Y, -5.52]}
               rotationY={0.35}
               squash={0.14 + pulse * 0.18}
               mood="sad"
               nod={0.15}
             />
             <Hero
-              position={[-1.82, PATH_Y, -3.15]}
+              position={[-0.18, PATH_Y, -5.48]}
               rotationY={-0.42}
               animation="idle"
               face="sad"

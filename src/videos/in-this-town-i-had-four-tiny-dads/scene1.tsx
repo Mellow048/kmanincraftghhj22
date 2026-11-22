@@ -160,8 +160,8 @@ export const scene1 = storyScene(timing, {
       cue: "1.tall",
       zone: "bridge",
       look: "overworld-sunset",
-      ...cam.push({ on: [-0.25, 0.88, -8.5], dist: 5.4, to: 4.35, yaw: 22, pitch: -3, fov: 44 }),
-      note: "Full-body low angle showing two-block OriginalBigDad standing proudly beside the tiny baby basket.",
+      ...cam.push({ on: [-0.35, 0.92, -8.5], dist: 5.3, to: 4.3, yaw: -22, pitch: 14, fov: 44 }),
+      note: "Full-body medium-wide showing two-block OriginalBigDad standing proudly beside the tiny baby basket.",
       stage: (t) => {
         const bounce = Math.abs(Math.sin(t * 3.8)) * 0.2;
         return (
@@ -181,7 +181,7 @@ export const scene1 = storyScene(timing, {
       cue: "1.pat",
       zone: "room",
       look: "overworld-day",
-      ...cam.push({ on: [0.1, 0.85, 0.1], dist: 5.3, to: 4.5, yaw: -14, pitch: 12, fov: 46 }),
+      ...cam.push({ on: [0.1, 0.82, 0.0], dist: 5.8, to: 4.85, yaw: 10, pitch: 14, fov: 46 }),
       note: "Inside the bright cottage room: one pat from big Dad sends young Hero sliding across the floorboards!",
       stage: (t) => {
         const hitAt = w("1.pat", "pat");
@@ -190,15 +190,15 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <OriginalBigDad
-              position={[-1.08 + bump * 0.55, 0, -0.15]}
-              rotationY={0.52}
+              position={[-0.92 + bump * 0.45, 0, -0.15]}
+              rotationY={0.48}
               squash={pop(t, hitAt, 0.26) * 0.3}
               mood={t > hitAt + 0.15 ? "scared" : "happy"}
             />
             <Hero
               scale={0.64}
-              position={[0.05 + slide * 1.45, Math.sin(slide * Math.PI) * 0.24, 0.15 + slide * 0.25]}
-              rotationY={-0.45 + slide * 0.5}
+              position={[0.05 + slide * 1.15, Math.sin(slide * Math.PI) * 0.22, 0.12 + slide * 0.2]}
+              rotationY={-0.38 + slide * 0.35}
               animation={t < hitAt ? "wave" : "stagger"}
               face={t < hitAt ? "grin" : "wow"}
             />

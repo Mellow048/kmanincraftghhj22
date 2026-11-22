@@ -54,11 +54,11 @@ export const scene3 = storyScene(timing, {
       cue: "3.friday",
       zone: "village",
       look: "overworld-day",
-      ...cam.push({ on: [5.6, 2.2, 3.4], dist: 7.2, to: 5.8, yaw: -26, pitch: 8, fov: 46 }),
-      note: "Roof Jump Day in the open schoolyard: big neighbour slime dads bounce kids high onto the schoolhouse roof!",
+      ...cam.push({ on: [5.35, 1.75, 3.3], dist: 7.6, to: 6.2, yaw: -26, pitch: 10, fov: 46 }),
+      note: "Roof Jump Day in the open schoolyard: big neighbour slime dads bounce kids high toward the schoolhouse roof!",
       stage: (t) => {
-        const launch = tw(t, w("3.friday", "bounced") - 0.1, w("3.friday", "roof") + 0.25);
-        const arc = Math.sin(launch * Math.PI * 0.72) * 4.1;
+        const launch = tw(t, w("3.friday", "bounced") - 0.1, w("3.friday", "roof") + 0.35);
+        const arc = Math.abs(Math.sin(t * 4.2)) * 2.15 + launch * 0.95;
         return (
           <>
             <NeighborBigDad
@@ -68,7 +68,7 @@ export const scene3 = storyScene(timing, {
               squash={pop(t, w("3.friday", "bounced"), 0.28) * 0.34}
             />
             <Villager
-              position={[5.45 + launch * 1.7, PATH_Y + arc, 2.5]}
+              position={[5.35 + launch * 1.15, PATH_Y + arc, 2.5]}
               rotationY={-0.4}
               scale={CHILD}
               robe={ROBE.farmer}
@@ -81,11 +81,11 @@ export const scene3 = storyScene(timing, {
               squash={pop(t, 0.15, 0.28) * 0.3}
             />
             <Hero
-              position={[3.4, PATH_Y, 3.6]}
+              position={[3.45, PATH_Y, 3.6]}
               rotationY={0.65}
               animation="lookAround"
               face="wow"
-              headPitch={-0.32 * launch}
+              headPitch={-0.28 * launch}
             />
           </>
         );

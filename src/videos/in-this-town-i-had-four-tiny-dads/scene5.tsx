@@ -70,7 +70,7 @@ export const scene5 = storyScene(timing, {
       zone: "village",
       look: "overworld-night",
       shake: 0.26,
-      ...cam.push({ on: [0.15, 0.95, -11.1], dist: 5.8, to: 4.65, yaw: -24, pitch: 12, fov: 45 }),
+      ...cam.push({ on: [0.05, 0.98, -11.1], dist: 6.4, to: 5.2, yaw: -20, pitch: 13, fov: 46 }),
       note: "Flashback #1 by our porch: Original Big Dad takes the Golem's iron punch for Baby Hero and splits into two!",
       stage: (t) => {
         const hitAt = w("5.never", "never") + 0.45;
@@ -78,20 +78,20 @@ export const scene5 = storyScene(timing, {
         const k = tw(t, hitAt, hitAt + 0.38);
         return (
           <>
-            <BabyHero position={[-1.25, PORCH_Y, -12.05]} rotationY={0.25} cry reach={0.8} />
+            <BabyHero position={[-1.08, PORCH_Y, -11.95]} rotationY={0.25} cry reach={0.8} />
             <RogueGolem
-              position={[1.05, 0, -10.35]}
-              rotationY={-0.55}
+              position={[0.88, 0, -10.45]}
+              rotationY={-0.48}
               armL={-1.85 + pop(t, hitAt, 0.3) * 1.4}
               armR={-0.8}
             />
             {!splitted ? (
-              <OriginalBigDad position={[-0.35, 0, -11.25]} rotationY={0.28} mood="angry" />
+              <OriginalBigDad position={[-0.32, 0, -11.25]} rotationY={0.28} mood="angry" />
             ) : (
               <>
-                <BigSlimeDad which={1} position={[-0.35 - k * 0.48, Math.sin(k * Math.PI) * 0.35, -11.2]} rotationY={0.32} squash={0.24} mood="angry" />
-                <BigSlimeDad which={2} position={[-0.35 + k * 0.48, Math.sin(k * Math.PI) * 0.35, -11.3]} rotationY={0.2} squash={0.24} mood="angry" />
-                <Puffs position={[-0.35, 0.55, -11.25]} count={10} color="#a4ff7e" />
+                <BigSlimeDad which={1} position={[-0.32 - k * 0.44, Math.sin(k * Math.PI) * 0.32, -11.2]} rotationY={0.32} squash={0.24} mood="angry" />
+                <BigSlimeDad which={2} position={[-0.32 + k * 0.44, Math.sin(k * Math.PI) * 0.32, -11.3]} rotationY={0.2} squash={0.24} mood="angry" />
+                <Puffs position={[-0.32, 0.55, -11.25]} count={10} color="#a4ff7e" />
               </>
             )}
           </>
