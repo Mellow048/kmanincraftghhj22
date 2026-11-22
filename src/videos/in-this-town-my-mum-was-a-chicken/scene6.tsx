@@ -28,16 +28,17 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.safe",
-      ...cam.orbit({ on: [2.2, 0.85, 95], dist: 2.75, distTo: 2.35, yaw: -32, yawTo: 12, pitch: 4, fov: 40 }),
+      ...cam.orbit({ on: [2.15, 0.95, 95], dist: 3.05, distTo: 2.75, yaw: -24, yawTo: 8, pitch: 6, fov: 42 }),
       handheld: 0.015,
       impacts: [{ at: 0.35, amp: 0.055, dur: 0.3 }],
       look: "overworld-sunset",
       zone: "cliff",
-      note: "Full-body canyon floor touchdown: MumChicken lands softly and Hero hops off beaming.",
+      note: "Full-body canyon floor touchdown: MumChicken lands softly and Hero hops cleanly off her back beside her beaming.",
       stage: (t, { p }) => {
         const land = ease(ramp(p, 0, 0.38));
-        const hopOff = ease(ramp(p, 0.48, 0.85));
+        const hopOff = ease(ramp(p, 0.48, 0.82));
         const y = 0.05 + (1 - land) * 0.65;
+        const heroY = 0.05 + (1 - hopOff) * 0.55 + Math.sin(hopOff * Math.PI) * 0.35;
         return (
           <>
             <CliffBridge broken dropT={1.7} />
@@ -47,8 +48,8 @@ export const scene6 = storyScene(timing, {
               </MumChicken>
             ) : (
               <>
-                <MumChicken position={[1.9, 0.05, 95]} rotationY={0.55} flap={0.2} />
-                <Hero position={[2.0 + hopOff * 0.55, 0.05 + hop(t, 0.48, 0.3, 0.35), 95]} rotationY={SOUTH - 0.2} mood="happy" wave={1} />
+                <MumChicken position={[2.0 - hopOff * 0.25, 0.05, 95]} rotationY={0.55} flap={0.2} />
+                <Hero position={[2.0 + hopOff * 0.75, heroY, 95 + hopOff * 0.25]} rotationY={SOUTH - 0.25} mood="happy" wave={1} />
               </>
             )}
           </>
@@ -104,7 +105,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.sun",
-      ...cam.push({ on: [2.1, 1.05, 95], dist: 2.8, to: 4.3, yaw: -24, pitch: 18, fov: 44 }),
+      ...cam.push({ on: [2.0, 1.05, 94.9], dist: 3.8, to: 4.8, yaw: -14, pitch: 15, fov: 46 }),
       handheld: 0.02,
       impacts: [{ at: 0.25, amp: 0.06, dur: 0.3 }],
       look: "overworld-sunset",
@@ -118,9 +119,9 @@ export const scene6 = storyScene(timing, {
             <MumChicken position={[1.95, 0.05 + drop, 95]} rotationY={0.4} flap={p < 0.45 ? 0.9 : 0.2}>
               {p < 0.45 ? <ZombieKid position={[0, 0, 0]} shirt="#4a7b58" mood="happy" /> : null}
             </MumChicken>
-            <Hero position={[2.6, 0.05 + hop(t, 0.3, 0.25, 0.32), 95.1]} rotationY={-0.5} mood="happy" wave={1} />
-            <ZombieMum position={[1.35, 0.05 + drop * 0.7, 94.4]} rotationY={0.7} shirt="#2d7a78" hat="bow" mood="happy" wave={0.8} />
-            <ZombieKid position={[2.45, 0.05 + hop(t, 0.5, 0.2, 0.3), 94.4]} rotationY={-0.7} shirt="#3a7d8c" mood="happy" />
+            <Hero position={[2.45, 0.05 + hop(t, 0.3, 0.25, 0.32), 95.25]} rotationY={-0.45} mood="happy" wave={1} />
+            <ZombieMum position={[1.48, 0.05 + drop * 0.7, 94.55]} rotationY={0.55} shirt="#2d7a78" hat="bow" mood="happy" wave={0.8} />
+            <ZombieKid position={[2.35, 0.05 + hop(t, 0.5, 0.2, 0.3), 94.45]} rotationY={-0.55} shirt="#3a7d8c" mood="happy" />
           </>
         );
       },

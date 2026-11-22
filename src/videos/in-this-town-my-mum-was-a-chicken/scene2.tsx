@@ -137,7 +137,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.under",
-      ...cam.orbit({ on: [-8.8, 1.6, -2.85], dist: 5.4, distTo: 4.65, yaw: 28, yawTo: 10, pitch: 10, fov: 44 }),
+      ...cam.orbit({ on: [-8.7, 2.05, -2.65], dist: 5.9, distTo: 5.4, yaw: 26, yawTo: 10, pitch: 8, fov: 46 }),
       handheld: 0.015,
       look: "overworld-night",
       zone: "village",

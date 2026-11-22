@@ -41,7 +41,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.climb",
-      ...cam.orbit({ on: [-1.55, 5.05, 95], dist: 3.1, distTo: 2.45, yaw: 14, yawTo: -18, pitch: 12, fov: 40 }),
+      ...cam.orbit({ on: [-1.5, 5.35, 95], onTo: [-1.3, 5.55, 95], dist: 3.8, distTo: 3.45, yaw: 14, yawTo: -16, pitch: 10, fov: 44 }),
       handheld: 0.016,
       impacts: [{ at: 0.78, amp: 0.045, dur: 0.25 }],
       look: "overworld-sunset",
@@ -80,7 +80,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.step",
-      ...cam.orbit({ on: [-1.2, 5.05, 95], onTo: [0.2, 4.45, 95], dist: 4.0, distTo: 3.6, yaw: 18, yawTo: -14, pitch: 14, fov: 44 }),
+      ...cam.orbit({ on: [-1.3, 5.3, 95], onTo: [0.05, 4.9, 95], dist: 4.5, distTo: 4.2, yaw: 14, yawTo: -8, pitch: 12, fov: 46 }),
       handheld: 0.024,
       impacts: [{ at: stepOffAt, amp: 0.065, dur: 0.3 }],
       look: "overworld-sunset",
@@ -89,7 +89,7 @@ export const scene5 = storyScene(timing, {
       stage: (t) => {
         const preWalk = ramp(t, 0, stepOffAt);
         const drop = t >= stepOffAt ? ease(ramp(t, stepOffAt, stepOffAt + 0.7)) : 0;
-        const x = -1.6 + preWalk * 0.45 + drop * 1.45;
+        const x = -1.5 + preWalk * 0.35 + drop * 1.35;
         const y = CLIFF.ledgeY - drop * 0.85;
         return (
           <>

@@ -17,7 +17,7 @@ export const scene7 = storyScene(timing, {
       note: "Callback to the rooftop nest: Hero stands proudly beside MumChicken smiling and nodding warmly, egg front-low.",
       stage: (t) => (
         <>
-          <Hero position={[9.18, GATE.roofTopY + 0.12, -5.0]} rotationY={-0.85} mood="happy" nod={Math.sin(t * 4) * 0.12} lookAt={[8.45, 5.9, -5.05]} />
+          <Hero position={[9.18, GATE.roofTopY + 0.12, -5.0]} rotationY={-0.55} mood="happy" turn={-0.25} nod={Math.sin(t * 4) * 0.08} />
           <MumChicken position={[8.45, GATE.roofTopY + 0.12, -5.05]} rotationY={0.95} crouch={0.25} flap={0.3} lookAt={[9.18, 6.0, -5.0]} />
           <WhiteEgg position={[8.82, GATE.roofTopY + 0.13, -4.68]} />
         </>
@@ -25,7 +25,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.under",
-      ...cam.push({ on: [-8.6, 1.75, -2.4], dist: 5.4, to: 4.6, yaw: 18, pitch: 12, fov: 44 }),
+      ...cam.push({ on: [-8.65, 2.15, -2.5], dist: 5.8, to: 5.3, yaw: 18, pitch: 8, fov: 46 }),
       handheld: 0.015,
       look: "overworld-night",
       zone: "village",
