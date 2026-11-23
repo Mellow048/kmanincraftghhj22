@@ -35,7 +35,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.stare",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [-0.55, BRIDGE_Y + 0.45, 0.95],
         onTo: [BRIDGE.craterStone[0], BRIDGE_Y + 0.22, BRIDGE.craterStone[2]],
@@ -78,7 +78,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.craters",
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [1.35, 0.95, -10.95],
         onTo: [1.35, 0.48, -11.55],
@@ -118,7 +118,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.list",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0, BRIDGE_Y + 0.65, -4.15],
         dist: 4.45,
@@ -156,7 +156,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.never",
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0.35, 0.92, -10.35],
         onTo: [0.4, 0.88, -10.05],
@@ -210,7 +210,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.twice",
       zone: "village",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0.35, 0.78, -10.55],
         dist: 5.35,
@@ -319,7 +319,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.zero",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0, BRIDGE_Y + 0.62, -0.95],
         dist: 4.35,
@@ -371,7 +371,7 @@ export const scene5 = storyScene(timing, {
     {
       cue: "5.front",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0, BRIDGE_Y + 0.88, -0.85],
         onTo: [0.05, BRIDGE_Y + 1.08, -0.55],

@@ -211,7 +211,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.golem",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0.15, 1.65, 8.05],
         onTo: [0.15, 2.05, 6.45],
@@ -267,7 +267,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.past",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.pan({
         from: [-2.95, BRIDGE_Y + 0.78, 2.25],
         on: [0.35, BRIDGE_Y + 1.28, 3.85],
@@ -305,7 +305,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.barrow",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0, BRIDGE_Y + 0.58, -3.35],
         onTo: [-0.15, BRIDGE_Y + 0.55, -1.55],
@@ -357,7 +357,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.hunt",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0.05, BRIDGE_Y + 1.05, 0.35],
         onTo: [0.0, BRIDGE_Y + 0.88, -1.05],
@@ -411,7 +411,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.slam",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [-0.35, BRIDGE_Y + 1.05, 0.75],
         onTo: [-0.55, BRIDGE_Y + 0.58, 0.45],

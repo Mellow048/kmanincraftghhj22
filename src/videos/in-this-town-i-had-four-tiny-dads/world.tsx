@@ -207,24 +207,28 @@ const BridgeZone: React.FC<{ night: boolean; sunset: boolean; cue: string }> = (
         />
       </mesh>
 
-      {/* North & South Swamp Muddy Banks */}
-      <Vox kind="grass" tint="#3b5e32" position={[0, -0.45, -17.5]} size={[80, 1.1, 23]} />
+      {/* North & South Swamp Banks + Deep 4m Open-Sky River Gorge */}
+      <Vox kind="grass" tint="#3b5e32" position={[-18.9, -0.45, -17.5]} size={[42.2, 1.1, 23]} />
+      <Vox kind="grass" tint="#3b5e32" position={[22.6, -0.45, -17.5]} size={[34.8, 1.1, 23]} />
+      <Vox kind="grass" tint="#3b5e32" position={[3.7, -0.45, -18.95]} size={[3.0, 1.1, 20.1]} />
       <Vox kind="grass" tint="#3b5e32" position={[0, -0.45, 17.5]} size={[80, 1.1, 23]} />
+      {/* Deep stone gorge cliff walls beneath upper banks (leaving x ∈ [2.25, 5.20], z ∈ [-8.85, -1.5] open to the sunset sky!) */}
+      <Vox kind="cobble" tint="#4d574a" position={[-18.9, -1.95, -17.5]} size={[42.2, 2.0, 23]} />
+      <Vox kind="cobble" tint="#4d574a" position={[22.6, -1.95, -17.5]} size={[34.8, 2.0, 23]} />
+      <Vox kind="cobble" tint="#4d574a" position={[3.7, -1.95, -18.95]} size={[3.0, 2.0, 20.1]} />
+      <Vox kind="cobble" tint="#4d574a" position={[0, -1.95, 17.5]} size={[80, 2.0, 23]} />
+      {/* Sheer mossy cliff face dropping from the broken east bridgehead (`x = 2.08`) down to the lower boardwalk! */}
+      <Vox kind="cobble" tint="#556052" position={[2.08, -0.88, -5.45]} size={[0.32, 3.82, 6.7]} />
+
       <Vox kind="path" tint="#695d46" position={[0, 0.1, -9.35]} size={[4.2, 0.1, 7.3]} />
       <Vox kind="path" tint="#695d46" position={[0, 0.1, 9.35]} size={[4.2, 0.1, 7.3]} />
 
-      {/* Lower Waterside Wooden Boat-Landing Dock (`top = DOCK_Y = 0.09`) right below the north-east bridge ledge */}
-      <group position={[3.35, 0, -3.55]}>
-        <Vox kind="planks" tint="#745636" position={[0, DOCK_Y - 0.07, 0]} size={[2.3, 0.14, 2.7]} />
-        {[
-          [-0.98, -1.18],
-          [0.98, -1.18],
-          [-0.98, 1.18],
-          [0.98, 1.18],
-        ].map(([px, pz], i) => (
-          <Vox key={`dp${i}`} kind="log" position={[px, -0.12, pz]} size={[0.18, 0.56, 0.18]} />
+      {/* Long Lower Gorge Waterside Boardwalk (`top = DOCK_Y = -2.68`, `z ∈ [-8.8, -1.6]`) so Dad #1 can sprint-push the cart! */}
+      <group position={[3.65, 0, -5.2]}>
+        <Vox kind="planks" tint="#7c5b38" position={[0, DOCK_Y - 0.08, 0]} size={[2.7, 0.16, 7.2]} />
+        {[-3.2, -1.6, 0, 1.6, 3.2].map((pz, i) => (
+          <Vox key={`dp${i}`} kind="log" position={[1.18, DOCK_Y - 0.36, pz]} size={[0.18, 0.42, 0.18]} />
         ))}
-        <Vox kind="log" position={[0.98, DOCK_Y + 0.24, -1.18]} size={[0.18, 0.48, 0.18]} />
       </group>
 
       {/* Smoothly Sloped Cobble Bridge Approaches:
@@ -261,10 +265,10 @@ const BridgeZone: React.FC<{ night: boolean; sunset: boolean; cue: string }> = (
         </>
       ) : null}
 
-      {/* Bridge support piers in the water */}
+      {/* Bridge support piers descending all the way into the 4m river gorge */}
       {[-3.2, 3.2].map((z) =>
         [-1.7, 1.7].map((x) => (
-          <Vox key={`${x}_${z}`} kind="cobble" tint="#586155" position={[x, 0.4, z]} size={[0.7, 1.6, 0.7]} />
+          <Vox key={`${x}_${z}`} kind="cobble" tint="#586155" position={[x, -0.92, z]} size={[0.74, 3.86, 0.74]} />
         )),
       )}
 
@@ -354,11 +358,11 @@ const RiverbedZone: React.FC = () => (
         <Vox kind="leaves" tint="#2e8e68" position={[0, h / 2, 0]} size={[0.18, h, 0.18]} />
       </group>
     ))}
-    <pointLight position={[0.8, 5.4, 3.2]} color="#9be6ff" intensity={6} distance={16} decay={2} />
-    <GodRay position={[-0.6, 3.8, -0.8]} rotation={[0, 0, 0.18]} width={3.6} height={7.5} color="#8fe4ff" opacity={0.14} />
-    <LightPool position={[0, 0.03, 0]} width={5.4} depth={5.4} color="#8fe4ff" opacity={0.22} />
-    <Glow position={[0, 1.5, -0.5]} size={2.6} color="#7fd8ff" opacity={0.16} />
-    <Dust position={[0, 2.6, 0]} area={[10, 5.5, 10]} count={85} size={0.05} color="#d4f6ff" opacity={0.68} seed={31} speed={0.3} />
+    <pointLight position={[0.8, 5.4, 3.2]} color="#ffe2ab" intensity={6.5} distance={16} decay={2} />
+    <GodRay position={[-0.6, 3.8, -0.8]} rotation={[0, 0, 0.18]} width={3.6} height={7.5} color="#ffdfa8" opacity={0.18} />
+    <LightPool position={[0, 0.03, 0]} width={5.4} depth={5.4} color="#ffd89c" opacity={0.22} />
+    <Glow position={[0, 1.5, -0.5]} size={2.6} color="#9bf0e4" opacity={0.18} />
+    <Dust position={[0, 2.6, 0]} area={[10, 5.5, 10]} count={85} size={0.05} color="#fff1d0" opacity={0.68} seed={31} speed={0.3} />
   </group>
 );
 

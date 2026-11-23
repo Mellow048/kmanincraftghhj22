@@ -133,6 +133,11 @@ export function slimeBlockTopY(baseY: number, scale = 1, squash = 0): number {
   return baseY + 1.025 * Math.max(0.28, scale * (1 - squash * 0.42));
 }
 
+/** Exact top Y of the Slime Block mounted inside `<Wheelbarrow position={[x, baseY, z]} withSlimeBlock slimeScale={scale} slimeSquash={squash} />`. */
+export function cartSlimeTopY(baseY: number, scale = 0.88, squash = 0): number {
+  return baseY + 0.42 + 1.025 * Math.max(0.28, scale * (1 - squash * 0.42));
+}
+
 /** Exact scene-clock impact burst for `Shot.impacts` (Camera evaluates impacts against scene time). */
 export function sceneImpact(firstCueId: string, cueId: string, word?: string, amp = 0.045, dur = 0.34) {
   const first = timing.cues.find((c) => c.id === firstCueId);
@@ -249,35 +254,36 @@ export const tripOverLedgePose = (t: number, trip: number, tumble: number): Pose
   const wSpin = Math.sin(t * 16) * (0.35 + 0.55 * trip);
   return {
     ...getPose("idle", t),
-    bodyPitch: 0.55 * trip + 0.55 * tumble,
-    bodyRoll: -0.22 * trip + Math.cos(t * 10) * 0.14 * tumble,
-    bodyY: -0.06 * trip,
-    torso: [0.18 * trip, Math.sin(t * 12) * 0.14 * trip, 0],
-    head: [-0.28 * trip + 0.35 * tumble, Math.sin(t * 9) * 0.18, 0],
-    armR: [-1.45 * trip + wSpin, -0.28, 0.42 * trip],
-    armL: [-1.45 * trip - wSpin, 0.28, -0.42 * trip],
-    legR: [-1.18 * trip + Math.sin(t * 14) * 0.35 * tumble, 0, 0.12 * trip],
-    kneeR: [0.92 * trip, 0, 0],
-    legL: [0.68 * trip - Math.sin(t * 14) * 0.35 * tumble, 0, -0.1 * trip],
-    kneeL: [0.48 * trip, 0, 0],
+    bodyPitch: 0.42 * trip * (1 - tumble * 0.5),
+    bodyRoll: -0.25 * trip + Math.cos(t * 14) * 0.22 * tumble,
+    bodyY: -0.05 * trip,
+    torso: [0.22 * trip, Math.sin(t * 15) * 0.2 * trip, 0],
+    head: [-0.45 * trip + 0.25 * tumble, Math.sin(t * 12) * 0.24, 0],
+    // Beat 1 (`trip` high, `tumble` low): desperate reach back for the crumbling cliff lip; Beat 2 (`tumble` high): full panicked flail!
+    armR: [-2.35 * trip + wSpin * 1.15, -0.34, 0.58 * trip],
+    armL: [-2.25 * trip - wSpin * 1.15, 0.34, -0.58 * trip],
+    legR: [-1.35 * trip + Math.sin(t * 18) * 0.65 * tumble, 0, 0.16 * trip],
+    kneeR: [1.05 * trip, 0, 0],
+    legL: [0.85 * trip - Math.sin(t * 18) * 0.65 * tumble, 0, -0.14 * trip],
+    kneeL: [0.62 * trip, 0, 0],
   };
 };
 
-/** Active windmilling limbs & kicking legs during freefall (`6.three`, `6.block`). */
+/** Frantic high-velocity freefall flailing limbs & kicking legs (`6.three`, `6.block`). */
 export const windmillFallPose = (t: number): Pose => {
-  const s = Math.sin(t * 15);
-  const c = Math.cos(t * 15);
+  const s = Math.sin(t * 21);
+  const c = Math.cos(t * 21);
   return {
     ...getPose("fall", t),
-    bodyPitch: 0.24 + Math.sin(t * 6) * 0.1,
-    bodyRoll: Math.cos(t * 7) * 0.14,
-    head: [0.42, Math.sin(t * 8) * 0.16, 0],
-    armR: [-1.85 + s * 0.78, -0.22, 0.44 + c * 0.18],
-    armL: [-1.85 - s * 0.78, 0.22, -0.44 - c * 0.18],
-    legR: [s * 0.62, 0, 0.1],
-    legL: [-s * 0.62, 0, -0.1],
-    kneeR: [0.38 + Math.max(0, -s) * 0.45, 0, 0],
-    kneeL: [0.38 + Math.max(0, s) * 0.45, 0, 0],
+    bodyPitch: 0.18 + Math.sin(t * 9) * 0.14,
+    bodyRoll: Math.cos(t * 10) * 0.18,
+    head: [-0.38, Math.sin(t * 12) * 0.24, 0],
+    armR: [-2.15 + s * 0.92, -0.28, 0.56 + c * 0.24],
+    armL: [-2.15 - s * 0.92, 0.28, -0.56 - c * 0.24],
+    legR: [s * 0.85, 0, 0.16],
+    legL: [-s * 0.85, 0, -0.16],
+    kneeR: [0.46 + Math.max(0, -s) * 0.58, 0, 0],
+    kneeL: [0.46 + Math.max(0, s) * 0.58, 0, 0],
   };
 };
 
@@ -627,6 +633,9 @@ export const Wheelbarrow: React.FC<{
   covered?: boolean;
   sheetFly?: number;
   withSlimeBlock?: boolean;
+  slimeScale?: number;
+  slimeSquash?: number;
+  slimeGlow?: number;
 }> = ({
   position = [0, 0, 0],
   rotationY = 0,
@@ -639,54 +648,64 @@ export const Wheelbarrow: React.FC<{
   covered = false,
   sheetFly = 0,
   withSlimeBlock = false,
-}) => (
-  <group position={position} rotation={[0, rotationY, 0]}>
-    <group rotation={[tilt, 0, rollZ]}>
-      {/* Front Lead Wheel (`z = +0.58`) */}
-      <group position={[0, 0.21, 0.58]} rotation={[wheelSpin, 0, 0]}>
-        <Vox kind="darkPlanks" size={[0.13, 0.42, 0.42]} />
-        <Block size={[0.16, 0.13, 0.13]} color="#6e7075" />
+  slimeScale = 0.62,
+  slimeSquash = 0,
+  slimeGlow = 0.75,
+}) => {
+  const sheetBaseY = Math.max(0.78, 0.42 + slimeScale * 1.05 + 0.08);
+  const sheetW = Math.max(0.88, slimeScale * 1.12);
+  const sheetD = Math.max(1.02, slimeScale * 1.18);
+  return (
+    <group position={position} rotation={[0, rotationY, 0]}>
+      <group rotation={[tilt, 0, rollZ]}>
+        {/* Front Lead Wheel (`z = +0.58`) */}
+        <group position={[0, 0.21, 0.58]} rotation={[wheelSpin, 0, 0]}>
+          <Vox kind="darkPlanks" size={[0.13, 0.42, 0.42]} />
+          <Block size={[0.16, 0.13, 0.13]} color="#6e7075" />
+        </group>
+        {/* Twin Rear Cart Wheels + Iron Axle (`z = -0.34`) */}
+        <Block position={[0, 0.2, -0.34]} size={[0.88, 0.06, 0.06]} color="#595d63" />
+        {[-0.42, 0.42].map((wx) => (
+          <group key={`rw${wx}`} position={[wx, 0.2, -0.34]} rotation={[wheelSpin, 0, 0]}>
+            <Vox kind="darkPlanks" size={[0.11, 0.4, 0.4]} />
+            <Block size={[0.14, 0.12, 0.12]} color="#6e7075" />
+          </group>
+        ))}
+        {[-0.28, 0.28].map((x) => (
+          <Vox key={x} kind="log" position={[x, 0.34, -0.1]} rotation={[0.06, 0, 0]} size={[0.08, 0.08, 1.4]} />
+        ))}
+        <Vox kind="planks" position={[0, 0.38, 0.08]} size={[0.78, 0.07, 0.94]} />
+        <Vox kind="planks" position={[-0.37, 0.5, 0.08]} size={[0.07, 0.2, 0.94]} />
+        <Vox kind="planks" position={[0.37, 0.5, 0.08]} size={[0.07, 0.2, 0.94]} />
+        <Vox kind="planks" position={[0, 0.51, 0.51]} rotation={[-0.2, 0, 0]} size={[0.78, 0.22, 0.07]} />
+        <Vox kind="planks" position={[0, 0.5, -0.35]} size={[0.78, 0.2, 0.07]} />
+        <Block position={[0.04, 0.42, 0.1]} size={[0.56, 0.016, 0.66]} color="#62cf40" />
+
+        {withSlimeBlock ? (
+          <SlimeBlockProp position={[0, 0.42, 0.08]} scale={slimeScale} squash={slimeSquash} glow={slimeGlow} />
+        ) : null}
+
+        {covered ? (
+          <group
+            position={[-sheetFly * 1.95, sheetBaseY + sheetFly * 1.65, 0.08 + sheetFly * 0.65]}
+            rotation={[sheetFly * 1.45, sheetFly * 1.15, sheetFly * 1.65]}
+          >
+            <Vox kind="wool" tint="#ebe4d2" size={[sheetW, 0.12, sheetD]} />
+          </group>
+        ) : null}
+
+        {withDads ? (
+          <group position={[0, 0.42, 0.08]}>
+            <TinyDad which={1} position={[-0.17, Math.abs(Math.sin(dadBounce)) * 0.07, 0.19]} scale={0.72} mood={dadMood} />
+            <TinyDad which={2} position={[0.17, Math.abs(Math.sin(dadBounce + 1.1)) * 0.07, 0.19]} scale={0.72} mood={dadMood} />
+            <TinyDad which={3} position={[-0.17, Math.abs(Math.sin(dadBounce + 2.2)) * 0.07, -0.17]} scale={0.72} mood={dadMood} />
+            <TinyDad which={4} position={[0.17, Math.abs(Math.sin(dadBounce + 3.3)) * 0.07, -0.17]} scale={0.72} mood={dadMood} />
+          </group>
+        ) : null}
       </group>
-      {/* Twin Rear Cart Wheels + Iron Axle (`z = -0.34`) */}
-      <Block position={[0, 0.2, -0.34]} size={[0.88, 0.06, 0.06]} color="#595d63" />
-      {[-0.42, 0.42].map((wx) => (
-        <group key={`rw${wx}`} position={[wx, 0.2, -0.34]} rotation={[wheelSpin, 0, 0]}>
-          <Vox kind="darkPlanks" size={[0.11, 0.4, 0.4]} />
-          <Block size={[0.14, 0.12, 0.12]} color="#6e7075" />
-        </group>
-      ))}
-      {[-0.28, 0.28].map((x) => (
-        <Vox key={x} kind="log" position={[x, 0.34, -0.1]} rotation={[0.06, 0, 0]} size={[0.08, 0.08, 1.4]} />
-      ))}
-      <Vox kind="planks" position={[0, 0.38, 0.08]} size={[0.78, 0.07, 0.94]} />
-      <Vox kind="planks" position={[-0.37, 0.5, 0.08]} size={[0.07, 0.2, 0.94]} />
-      <Vox kind="planks" position={[0.37, 0.5, 0.08]} size={[0.07, 0.2, 0.94]} />
-      <Vox kind="planks" position={[0, 0.51, 0.51]} rotation={[-0.2, 0, 0]} size={[0.78, 0.22, 0.07]} />
-      <Vox kind="planks" position={[0, 0.5, -0.35]} size={[0.78, 0.2, 0.07]} />
-      <Block position={[0.04, 0.42, 0.1]} size={[0.56, 0.016, 0.66]} color="#62cf40" />
-
-      {withSlimeBlock ? <SlimeBlockProp position={[0, 0.42, 0.08]} scale={0.62} /> : null}
-
-      {covered ? (
-        <group
-          position={[sheetFly * 1.25, 0.78 + sheetFly * 1.45, 0.08 - sheetFly * 0.8]}
-          rotation={[sheetFly * 0.8, sheetFly * 0.5, sheetFly * 1.1]}
-        >
-          <Vox kind="wool" tint="#ebe4d2" size={[0.88, 0.14, 1.02]} />
-        </group>
-      ) : null}
-
-      {withDads ? (
-        <group position={[0, 0.42, 0.08]}>
-          <TinyDad which={1} position={[-0.17, Math.abs(Math.sin(dadBounce)) * 0.07, 0.19]} scale={0.72} mood={dadMood} />
-          <TinyDad which={2} position={[0.17, Math.abs(Math.sin(dadBounce + 1.1)) * 0.07, 0.19]} scale={0.72} mood={dadMood} />
-          <TinyDad which={3} position={[-0.17, Math.abs(Math.sin(dadBounce + 2.2)) * 0.07, -0.17]} scale={0.72} mood={dadMood} />
-          <TinyDad which={4} position={[0.17, Math.abs(Math.sin(dadBounce + 3.3)) * 0.07, -0.17]} scale={0.72} mood={dadMood} />
-        </group>
-      ) : null}
     </group>
-  </group>
-);
+  );
+};
 
 /** Woven swamp-reed basket cradle where baby hero was found. */
 export const ReedBasket: React.FC<{ position?: Vec3; rotationY?: number; withBaby?: boolean; reach?: number }> = ({
@@ -984,3 +1003,32 @@ export const HangingBabyCoat: React.FC<{ position?: Vec3; rotationY?: number; sw
     </group>
   </group>
 );
+
+/** Vertical wind-rush speed streaks racing upward past plummeting Hero (`6.rope`, `6.three`, `6.block`). */
+export const FallStreaks: React.FC<{
+  position?: Vec3;
+  t: number;
+  count?: number;
+  radius?: number;
+  span?: number;
+}> = ({ position = [0, 0, 0], t, count = 10, radius = 0.88, span = 1.9 }) => (
+  <group position={position}>
+    {Array.from({ length: count }, (_, i) => {
+      const a = (i / count) * Math.PI * 2 + 0.42;
+      const r = radius * (0.78 + (i % 3) * 0.22);
+      const cyc = ((t * 4.4 + i * 0.21) % 1) - 0.5;
+      return (
+        <Block
+          key={i}
+          position={[Math.cos(a) * r, cyc * span, Math.sin(a) * r]}
+          size={[0.022, 0.46 + (i % 2) * 0.2, 0.022]}
+          color="#fff6e3"
+          emissive="#ffe2b0"
+          emissiveIntensity={0.45}
+          castShadow={false}
+        />
+      );
+    })}
+  </group>
+);
+

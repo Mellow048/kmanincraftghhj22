@@ -4,12 +4,13 @@ import {
   Bits,
   BridgePinPost,
   EAST,
+  FallStreaks,
   Fish,
   Hero,
   NORTH,
   Puffs,
   RogueGolem,
-  SlimeBlockProp,
+  SOUTH,
   SnappingBridgeRope,
   SoundRings,
   TinyDad,
@@ -17,12 +18,13 @@ import {
   Wheelbarrow,
   blendPose,
   carryDadsPose,
+  cartSlimeTopY,
   pop,
   sceneImpact,
   shovePose,
   skyJoyPose,
-  slimeBlockTopY,
   slimeBounce,
+  slimeHopTo,
   timing,
   tripOverLedgePose,
   tw,
@@ -32,12 +34,12 @@ import {
 
 export const scene6 = storyScene(timing, {
   id: "scene6",
-  title: "Dropping The Bridge & The Secret Slime Block",
+  title: "Dropping The Bridge & The Heroic Sunset Cart Catch",
   shots: [
     {
       cue: "6.scoop",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.push({
         on: [0, BRIDGE_Y + 0.85, -1.35],
         onTo: [0.15, BRIDGE_Y + 0.88, -3.35],
@@ -49,7 +51,7 @@ export const scene6 = storyScene(timing, {
         fovTo: 40,
       }),
       shake: 0.022,
-      note: "Full-sprint pursuit toward the north bridgehead while the 3-Wheel Covered Slime Cart waits down on the waterside dock!",
+      note: "Full-sprint sunset pursuit toward the north bridgehead while the covered cart sits parked far back up the lower boardwalk (`z = -7.45`)!",
       stage: (t, { p }) => {
         const dist = p * 2.15;
         const z = -1.35 - dist;
@@ -58,8 +60,14 @@ export const scene6 = storyScene(timing, {
         const gz = 0.55 - p * 2.15;
         return (
           <>
-            {/* Continuity plant: the dads' 3-Wheel Covered Cart parked down on the waterside dock! */}
-            <Wheelbarrow position={[3.28, DOCK_Y, -3.45]} rotationY={0.28} covered withSlimeBlock />
+            {/* Parked WAY back up the lower boardwalk (`z = -7.45`) — NOT magically sitting at the `-3.45` drop spot! */}
+            <Wheelbarrow
+              position={[3.55, DOCK_Y, -7.45]}
+              rotationY={SOUTH}
+              covered
+              withSlimeBlock
+              slimeScale={0.88}
+            />
             <Hero
               position={[0, BRIDGE_Y, z]}
               rotationY={NORTH}
@@ -79,7 +87,7 @@ export const scene6 = storyScene(timing, {
               armL={-1.15 - swing * 0.75}
               bow={0.24}
             />
-            <Puffs position={[0.2, BRIDGE_Y + 0.14, gz - 0.35]} count={7} color="#dce3ec" />
+            <Puffs position={[0.2, BRIDGE_Y + 0.14, gz - 0.35]} count={7} color="#ffe3ba" />
           </>
         );
       },
@@ -87,7 +95,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.pin",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [1.15, BRIDGE_Y + 0.78, -4.15],
         dist: 4.35,
@@ -100,14 +108,21 @@ export const scene6 = storyScene(timing, {
       }),
       shake: 0.02,
       impacts: [sceneImpact("6.scoop", "6.pin", "knocked", 0.068, 0.34)],
-      note: "Hero slams the wooden structural pin out of the east bridge post (`z = -4.58`, zero bar/post collision) as the Golem thunders onto the center span!",
+      note: "Hero slams the wooden structural pin out of the east bridge post as Dad #1 (straw hat) hops urgently down the north approach toward their cart!",
       stage: (t, { p }) => {
         const hitAt = w("6.pin", "knocked");
         const stepIn = tw(t, 0, Math.max(0.18, hitAt));
         const fly = tw(t, Math.max(0.12, hitAt - 0.04), hitAt + 0.42);
+        const d1Run = slimeHopTo([0.42, BRIDGE_Y, -4.85], [1.15, 0.85, -5.65], p, 3, 0.28);
         return (
           <>
-            <Wheelbarrow position={[3.28, DOCK_Y, -3.45]} rotationY={0.28} covered withSlimeBlock />
+            <Wheelbarrow
+              position={[3.55, DOCK_Y, -7.45]}
+              rotationY={SOUTH}
+              covered
+              withSlimeBlock
+              slimeScale={0.88}
+            />
             <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={1.42} pinOut={fly * 1.95} />
             <Hero
               position={[1.18 + stepIn * 0.18, BRIDGE_Y, -4.58]}
@@ -116,6 +131,8 @@ export const scene6 = storyScene(timing, {
               plantFeet
               face="brave"
             />
+            {/* Dad #1 already hopping down toward the riverside boardwalk cart! */}
+            <TinyDad which={1} position={d1Run.position} rotationY={NORTH + 0.4} hop={d1Run.hop} squash={d1Run.squash} mood="angry" />
             <RogueGolem
               position={[0.12, BRIDGE_Y, 0.35 - p * 1.25]}
               rotationY={NORTH}
@@ -137,42 +154,49 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.drop",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.pan({
-        from: [-2.35, BRIDGE_Y + 2.15, -3.65],
-        on: [0.35, BRIDGE_Y + 0.85, -0.35],
-        onTo: [0.45, WATER_Y + 0.55, 0.25],
+        from: [-2.55, BRIDGE_Y + 2.25, -3.85],
+        on: [0.35, BRIDGE_Y + 0.65, -0.35],
+        onTo: [0.45, WATER_Y + 0.95, 0.25],
         fov: 46,
         fovTo: 42,
       }),
-      shake: 0.025,
+      shake: 0.028,
       impacts: [
-        sceneImpact("6.scoop", "6.drop", "fell", 0.082, 0.44),
-        sceneImpact("6.scoop", "6.drop", "swim", 0.058, 0.34),
+        sceneImpact("6.scoop", "6.drop", "fell", 0.085, 0.45),
+        sceneImpact("6.scoop", "6.drop", "swim", 0.062, 0.35),
       ],
-      note: "TRUE BRIDGE COLLAPSE: the entire 6.5m center bridge span hinges down and crashes into the river out from under the flailing Iron Golem!",
+      note: "MASSIVE 4-METER SUNSET GORGE COLLAPSE: the 6.3m center bridge span drops away, plunging the flailing Iron Golem 4 meters down into the deep river canyon while Dad #1 reaches the cart handles far up the boardwalk!",
       stage: (t) => {
         const fallAt = w("6.drop", "fell");
         const dropSpan = tw(t, 0.02, Math.max(0.48, fallAt + 0.36));
-        const plunge = tw(t, 0.06, Math.max(0.62, fallAt + 0.65));
-        // Collapsing bridge span hinges at south pier `[0, BRIDGE_Y - 0.16, 4.35]` with negative X rotation so north end (`z = -2.1`) drops underwater!
-        const spanTilt = -dropSpan * 0.56;
-        const spanSink = dropSpan * 0.45;
-        // Golem stands at `z = 0.25` and plummets faster/above the dropping span into the open water (`y >= -0.40`, safely above `-0.50` stone floor!)
-        const gy = Math.max(-0.38, BRIDGE_Y + 0.12 * Math.sin(plunge * Math.PI) - plunge * plunge * 1.62);
+        const plunge = tw(t, 0.06, Math.max(0.68, fallAt + 0.72));
+        const spanTilt = -dropSpan * 0.68;
+        const spanSink = dropSpan * 1.65;
+        const gy = Math.max(WATER_Y + 0.15, BRIDGE_Y + 0.14 * Math.sin(plunge * Math.PI) - plunge * plunge * 4.05);
         const b = (ph: number) => slimeBounce(t, 3.0, 0.2, ph);
         return (
           <>
-            <Wheelbarrow position={[3.28, DOCK_Y, -3.45]} rotationY={0.28} covered withSlimeBlock />
+            {/* Far back up the lower boardwalk (`z = -7.45`), Dad #1 arrives behind the cart handles! */}
+            <Wheelbarrow
+              position={[3.55, DOCK_Y, -7.45]}
+              rotationY={SOUTH}
+              covered
+              withSlimeBlock
+              slimeScale={0.88}
+            />
+            <TinyDad which={1} position={[3.55, DOCK_Y, -8.52]} rotationY={SOUTH} hop={b(0).hop} squash={b(0).squash} mood="angry" />
+
             <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={1.42} pinOut={1.95} />
 
-            {/* Actual Collapsing Center Bridge Span (placed well below Golem's dropping feet so zero OBB collision!) */}
-            <group position={[0, BRIDGE_Y - 0.18 - spanSink - plunge * 0.35, 4.35]} rotation={[spanTilt, 0, 0]}>
+            {/* Collapsing 6.3m Center Bridge Span plunging into the 4m gorge */}
+            <group position={[0, BRIDGE_Y - 0.24 - spanSink - plunge * 0.85, 4.35]} rotation={[spanTilt, 0, 0]}>
               <Vox kind="darkPlanks" tint="#7c5d3b" position={[0, 0, -3.15]} size={[4.3, 0.28, 6.3]} />
               <Vox kind="planks" position={[-2.05, 0.58, -3.15]} size={[0.14, 0.1, 6.1]} />
             </group>
 
-            {/* Flying splintered breakaway planks off the sides (`|x| >= 1.45` away from Golem!) */}
+            {/* Splintered planks tumbling into the gorge */}
             {[-1.55, 1.55].map((sx, i) => (
               <Vox
                 key={i}
@@ -180,35 +204,41 @@ export const scene6 = storyScene(timing, {
                 tint="#7c5d3b"
                 position={[
                   sx * (1 + dropSpan * 0.25),
-                  BRIDGE_Y - 0.1 - dropSpan * dropSpan * 1.45,
+                  BRIDGE_Y - 0.1 - dropSpan * dropSpan * 3.15,
                   -1.65 + i * 0.35,
                 ]}
-                rotation={[-dropSpan * 1.35, sx * dropSpan * 0.4, sx * dropSpan * 0.65]}
+                rotation={[-dropSpan * 1.65, sx * dropSpan * 0.4, sx * dropSpan * 0.75]}
                 size={[0.68, 0.12, 0.42]}
               />
             ))}
 
-            {/* Hero & 4 tiny dads safe on the standing north bridgehead ledge (`z = -2.75`) */}
-            <Hero position={[0.48, BRIDGE_Y, -2.75]} rotationY={0.18} animation="leanOver" plantFeet face="wow" />
-            <TinyDad which={1} position={[-0.22, BRIDGE_Y, -2.85]} rotationY={0.22} hop={b(0).hop} squash={b(0).squash} />
-            <TinyDad which={2} position={[-0.74, BRIDGE_Y, -2.95]} rotationY={0.25} hop={b(0.25).hop} squash={b(0.25).squash} />
-            <TinyDad which={3} position={[1.12, BRIDGE_Y, -2.88]} rotationY={-0.18} hop={b(0.5).hop} squash={b(0.5).squash} />
-            <TinyDad which={4} position={[0.12, BRIDGE_Y, -3.38]} rotationY={0.15} hop={b(0.75).hop} squash={b(0.75).squash} />
+            {/* Taut groaning bridge rigging cable already visibly trailing behind Hero's boots! */}
+            <SnappingBridgeRope
+              anchor={[1.98, BRIDGE_Y + 0.18, -3.86]}
+              ankleTarget={[1.25, BRIDGE_Y + 0.1, -3.48]}
+              snap={0.05}
+            />
 
-            {/* Flailing Rogue Golem plummeting straight into the river! */}
+            {/* Hero & Dads #2, #3, #4 peering over the broken north bridgehead (`z = -2.75`) */}
+            <Hero position={[0.52, BRIDGE_Y, -2.75]} rotationY={0.18} animation="leanOver" plantFeet face="wow" />
+            <TinyDad which={2} position={[-0.58, BRIDGE_Y, -2.92]} rotationY={0.25} hop={b(0.25).hop} squash={b(0.25).squash} />
+            <TinyDad which={3} position={[1.22, BRIDGE_Y, -2.88]} rotationY={-0.18} hop={b(0.5).hop} squash={b(0.5).squash} />
+            <TinyDad which={4} position={[0.08, BRIDGE_Y, -3.38]} rotationY={0.15} hop={b(0.75).hop} squash={b(0.75).squash} />
+
+            {/* Flailing Rogue Golem plummeting 4 meters straight into the deep river gorge! */}
             <RogueGolem
               position={[0.25, gy, 0.35]}
-              rotationY={NORTH + plunge * 0.35}
-              walk={t * 5.8}
-              armR={-2.05 + Math.sin(t * 17) * 0.72}
-              armL={-2.05 - Math.sin(t * 17) * 0.72}
-              bow={-0.18 + plunge * 0.36}
+              rotationY={NORTH + plunge * 0.42}
+              walk={t * 6.2}
+              armR={-2.15 + Math.sin(t * 18) * 0.78}
+              armL={-2.15 - Math.sin(t * 18) * 0.78}
+              bow={-0.22 + plunge * 0.42}
             />
-            {plunge > 0.35 ? (
+            {plunge > 0.42 ? (
               <>
-                <SoundRings position={[0.25, WATER_Y + 0.08, 0.35]} t={plunge * 1.15} color="#9beeff" reach={2.5} />
-                <Bits position={[0.25, WATER_Y + 0.24, 0.35]} t={Math.max(0.02, t - 0.18)} color="#9beeff" count={30} power={1.95} />
-                <Puffs position={[0.25, WATER_Y + 0.36, 0.35]} count={16} color="#dff8ff" />
+                <SoundRings position={[0.25, WATER_Y + 0.08, 0.35]} t={plunge * 1.15} color="#ffd998" reach={2.8} />
+                <Bits position={[0.25, WATER_Y + 0.28, 0.35]} t={Math.max(0.02, t - 0.22)} color="#9beeff" count={34} power={2.25} />
+                <Puffs position={[0.25, WATER_Y + 0.42, 0.35]} count={18} color="#fff4dc" />
               </>
             ) : null}
           </>
@@ -218,7 +248,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.sink",
       zone: "riverbed",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0, 1.55, 0],
         onTo: [0.12, 1.15, 0.22],
@@ -231,7 +261,7 @@ export const scene6 = storyScene(timing, {
         fov: 42,
       }),
       impacts: [sceneImpact("6.scoop", "6.sink", "sank", 0.058, 0.36)],
-      note: "Comedy riverbed crash (`y = RIVERBED_Y`): Golem slams onto the silt floor and tracks three bright orange Fish swimming cleanly in front of its nose!",
+      note: "Sunset-lit riverbed crash: Golem slams onto the silt floor and blankly tracks three bright orange Fish swimming past its nose!",
       stage: (t) => {
         const land = tw(t, 0, 0.48);
         const swim = tw(t, 0.22, 1.0);
@@ -266,12 +296,12 @@ export const scene6 = storyScene(timing, {
                 key={i}
                 position={[-0.25 + (i - 2) * 0.18, 1.55 + (((t * 1.15 + i * 0.28) % 1) * 1.75), 0.52]}
                 size={[0.085, 0.085, 0.085]}
-                color="#c8f6ff"
+                color="#fff3d6"
               />
             ))}
             {land > 0.65 ? (
               <>
-                <Puffs position={[-0.25, 0.22, 0]} count={12} color="#8ecbe0" />
+                <Puffs position={[-0.25, 0.22, 0]} count={12} color="#ffe7ba" />
                 <Bits position={[-0.25, 0.18, 0]} t={Math.max(0, t - 0.32)} color="#9be8ff" count={14} power={1.1} />
               </>
             ) : null}
@@ -282,73 +312,140 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.rope",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
-        on: [1.95, 1.05, -3.25],
-        onTo: [2.85, 0.78, -3.42],
-        dist: 5.35,
-        distTo: 4.35,
-        yaw: -136,
-        yawTo: -158,
-        pitch: 24,
-        pitchTo: 15,
-        fov: 46,
+        on: [1.75, BRIDGE_Y + 0.52, -3.32],
+        onTo: [3.35, -0.58, -3.85],
+        dist: 4.15,
+        distTo: 5.55,
+        yaw: -144,
+        yawTo: -162,
+        pitch: 18,
+        pitchTo: 42,
+        fov: 45,
       }),
-      shake: 0.022,
+      fovTo: 48,
+      shake: 0.032,
       impacts: [
-        sceneImpact("6.scoop", "6.rope", "snapping", 0.064, 0.32),
-        sceneImpact("6.scoop", "6.rope", "pulled", 0.056, 0.3),
+        sceneImpact("6.scoop", "6.rope", "snapping", 0.082, 0.36),
+        sceneImpact("6.scoop", "6.rope", "pulled", 0.075, 0.36),
       ],
-      note: "BELIEVABLE ANKLE-SNAG TRIP + VISIBLE CART BELOW: snapping bridge rope whips Hero's ankle, tripping him head-over-heels off the north-east ledge directly toward the 3-Wheel Covered Cart on the waterside dock!",
-      stage: (t) => {
-        const snapAt = w("6.rope", "snapping");
-        const yankAt = Math.max(0.28, w("6.rope", "pulled"));
-        const snap = tw(t, 0.02, Math.max(0.24, snapAt + 0.16));
-        const trip = tw(t, Math.max(0.14, snapAt), yankAt + 0.22);
-        const over = tw(t, Math.max(0.24, yankAt - 0.06), yankAt + 0.56);
-        const drop = tw(t, yankAt + 0.38, yankAt + 0.88);
-        // Vault cleanly over `x = 2.20` (`hy >= BRIDGE_Y + 0.08` until `hx > 2.55`) directly above `[3.28, DOCK_Y, -3.45]`!
-        const hx = 1.38 + over * 1.52 + drop * 0.32;
-        const hy = BRIDGE_Y + Math.sin(over * Math.PI) * 0.56 - drop * drop * 0.48;
-        const hz = -3.12 - over * 0.28;
+      note: "HEART-STOPPING 'OH NO!!' CLIFF PLUNGE: snapping cable violently yanks Hero's ankle -> Hero grabs a crumbling cliff stone that RIPS LOOSE -> Hero pitches HEADFIRST (135° full-3D tumble + wind streaks!) over the 4m cliff toward EMPTY planks while Dad #1 frantically sprint-pushes the cart from `z = -7.35`!",
+      stage: (t, { p }) => {
+        const snapAt = Math.min(0.22, w("6.rope", "snapping"));
+        const yankAt = Math.max(0.26, Math.min(0.55, w("6.rope", "pulled")));
+        const snap = tw(t, 0.01, snapAt + 0.16);
+        const yank = tw(t, Math.max(0.06, snapAt - 0.04), yankAt + 0.16);
+        // Brief 0.18s cliff-edge grab stutter (`t = 0.28..0.46`) before the stone rips free and Hero plummets headfirst!
+        const plunge = tw(t, Math.max(0.36, yankAt), 1.44);
+        const vault = tw(t, Math.max(0.14, snapAt + 0.04), Math.max(0.62, yankAt + 0.34));
+
+        // Vault cleanly past `x = 2.24` cliff wall (`centerY >= 1.82` while `hx < 2.75`), then plummet 2.3m headfirst!
+        const hx = 1.48 + vault * 1.92 + plunge * 0.15;
+        const centerY =
+          BRIDGE_Y +
+          0.48 +
+          Math.sin(vault * Math.PI) * 0.44 -
+          plunge * plunge * 2.35;
+        const hz = -3.18 - vault * 0.27;
+
+        // Full 3D body somersault pitch: jerks forward (`+0.85 rad` on ankle yank), then pitches HEADFIRST (`+2.42 rad` / 139°)!
+        const tumblePitch = yank * 0.78 + plunge * 1.64;
+        const tumbleRoll = -yank * 0.18 + Math.sin(plunge * Math.PI * 1.5) * 0.34;
+
+        // Down on the boardwalk (`DOCK_Y = -2.68`), Dad #1 is FRANTICALLY sprint-shoving the cart from `z = -7.35` -> `-5.35`!
+        const cartZ = -7.35 + p * 2.0;
+        const pushHop = slimeBounce(t, 4.4, 0.16, 0);
+
+        // Crumbling cliff-edge cobble stone ripping free at `plunge > 0.05` and plummeting into the gorge!
+        const rockDrop = tw(t, Math.max(0.34, yankAt - 0.02), 1.42);
         return (
           <>
-            {/* The 3-Wheel Covered Slime Cart visibly waiting right below the ledge on the waterside dock! */}
-            <Wheelbarrow position={[3.28, DOCK_Y, -3.45]} rotationY={0.28} covered withSlimeBlock />
+            {/* Dad #1 (straw hat) racing at full speed down the boardwalk shoving the covered cart toward the empty drop zone! */}
+            <Wheelbarrow
+              position={[3.55, DOCK_Y, cartZ]}
+              rotationY={SOUTH}
+              wheelSpin={p * 16}
+              tilt={0.05 + Math.sin(t * 20) * 0.025}
+              covered
+              withSlimeBlock
+              slimeScale={0.88}
+            />
+            <TinyDad
+              which={1}
+              position={[3.55, DOCK_Y, cartZ - 1.06]}
+              rotationY={SOUTH}
+              hop={pushHop.hop}
+              squash={pushHop.squash + 0.12}
+              nod={0.22}
+              mood="angry"
+            />
+            <Puffs position={[3.55, DOCK_Y + 0.12, cartZ - 1.28]} count={7} color="#f5e1be" />
 
-            {/* Whipping bridge-rigging rope anchored outside actor box (`z = -3.72`) so zero OBB overlap while visibly lashing behind Hero's heel! */}
+            {/* Whipping snapped bridge cable lashing behind Hero's ankle on the bridgehead! */}
             <SnappingBridgeRope
-              anchor={[1.98, BRIDGE_Y + 0.22, -3.86]}
-              ankleTarget={[Math.min(2.15, hx - 0.24), BRIDGE_Y + 0.14, -3.52]}
+              anchor={[1.98, BRIDGE_Y + 0.22, -3.88]}
+              ankleTarget={[Math.min(2.18, hx - 0.32), BRIDGE_Y + 0.18, -3.56]}
               snap={snap}
             />
-            {snap > 0.18 && snap < 0.85 ? (
+            {snap > 0.12 && snap < 0.85 ? (
               <>
-                <Bits position={[1.72, BRIDGE_Y + 0.22, -3.38]} t={Math.max(0.02, t - 0.08)} color="#ffd97d" count={14} power={1.2} />
-                <Puffs position={[1.55, BRIDGE_Y + 0.14, -3.28]} count={6} color="#f5e6c4" />
+                <Bits position={[1.76, BRIDGE_Y + 0.24, -3.42]} t={Math.max(0.02, t - 0.04)} color="#ffcf6e" count={18} power={1.55} />
+                <Puffs position={[1.65, BRIDGE_Y + 0.16, -3.32]} count={8} color="#fff0cf" />
               </>
             ) : null}
 
-            {/* Hero actively trips (`legR` yanked back, arms windmilling wide) and tumbles over the east ledge! */}
-            <Hero
-              position={[hx, hy, hz]}
-              rotationY={EAST - 0.18 + over * 0.45}
-              pose={tripOverLedgePose(t, trip, over)}
-              plantFeet={trip < 0.18}
-              face={trip > 0.1 ? "fear" : "wow"}
-            />
+            {/* Ripped-free cliff-edge cobble block + falling rubble chunks tumbling down into the gorge! */}
+            {rockDrop > 0.02 ? (
+              <>
+                <Vox
+                  kind="cobble"
+                  tint="#6c7568"
+                  position={[2.48 + rockDrop * 0.35, BRIDGE_Y + 0.05 - rockDrop * rockDrop * 3.1, -2.55]}
+                  rotation={[rockDrop * 3.2, rockDrop * 2.1, rockDrop * 2.6]}
+                  size={[0.26, 0.22, 0.26]}
+                />
+                <Bits position={[2.22, BRIDGE_Y + 0.08, -2.85]} t={rockDrop * 0.9} color="#8e9688" count={14} power={1.3} />
+              </>
+            ) : null}
 
-            {/* All 4 tiny dads fly loose in clean non-overlapping trajectories — with #3 already slipping lower toward the cart! */}
-            <TinyDad which={1} position={[hx - 0.54, hy + 0.48, hz + 0.28]} rotationY={over * 2.4} squash={-0.16 * over} mood="scared" />
-            <TinyDad which={2} position={[hx - 0.48, hy + 0.56, hz - 0.42]} rotationY={-over * 2.2} squash={-0.16 * over} mood="scared" />
+            {/* Rushing vertical wind streaks once Hero pitches headfirst over the cliff! */}
+            {plunge > 0.18 ? <FallStreaks position={[hx, centerY, hz]} t={t} count={12} radius={0.86} span={2.1} /> : null}
+
+            {/* FULL 3D HEADFIRST TUMBLING HERO (`center-of-mass` group pitch + roll + frantic flailing limbs!) */}
+            <group position={[hx, centerY, hz]} rotation={[tumblePitch, EAST - 0.12 + plunge * 0.45, tumbleRoll]}>
+              <group position={[0, -0.47, 0]}>
+                <Hero
+                  position={[0, 0, 0]}
+                  rotationY={0}
+                  pose={tripOverLedgePose(t, yank, plunge)}
+                  face="fear"
+                />
+              </group>
+            </group>
+
+            {/* Dads #2, #3, #4 launched into panicked freefall arcs — with #3 diving steepest ahead! */}
             <TinyDad
-              which={3}
-              position={[hx + 0.46, Math.max(DOCK_Y + 0.96, hy + 0.22 - drop * 0.42), hz - 0.04]}
-              rotationY={over * 3.8}
-              squash={-0.2 * over}
+              which={2}
+              position={[Math.max(2.65, hx - 0.58), centerY + 0.58, hz - 0.52]}
+              rotationY={-plunge * 3.2}
+              squash={-0.22 * plunge}
               mood="scared"
             />
-            <TinyDad which={4} position={[hx + 0.48, hy + 0.62, hz + 0.36]} rotationY={-over * 2.6} squash={-0.16 * over} mood="scared" />
+            <TinyDad
+              which={3}
+              position={[hx + 0.58, centerY - 0.15 - plunge * 0.48, hz + 0.08]}
+              rotationY={plunge * 4.6}
+              squash={-0.26 * plunge}
+              mood="scared"
+            />
+            <TinyDad
+              which={4}
+              position={[hx + 0.54, centerY + 0.64, hz + 0.56]}
+              rotationY={-plunge * 3.6}
+              squash={-0.22 * plunge}
+              mood="scared"
+            />
           </>
         );
       },
@@ -356,67 +453,95 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.three",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
-        on: [3.22, 1.35, -3.45],
-        onTo: [3.28, 0.76, -3.45],
-        dist: 4.45,
-        distTo: 3.35,
-        yaw: 144,
-        yawTo: 168,
-        pitch: 24,
-        pitchTo: 13,
-        fov: 44,
+        on: [3.55, DOCK_Y + 1.65, -4.35],
+        onTo: [3.55, DOCK_Y + 1.25, -3.55],
+        dist: 5.35,
+        distTo: 4.15,
+        yaw: 142,
+        yawTo: 166,
+        pitch: 22,
+        pitchTo: 12,
+        fov: 46,
       }),
-      impacts: [sceneImpact("6.scoop", "6.three", "wheelbarrow", 0.052, 0.3)],
-      note: "CONTINUOUS WATERSIDE DOCK IMPACT: Dad #3 tumbles ahead of windmilling Hero, bounces squish-first off the top of the 3-Wheel Covered Cart, tipping the cart and popping the sheet loose!",
+      shake: 0.024,
+      impacts: [sceneImpact("6.scoop", "6.three", "wheelbarrow", 0.058, 0.32)],
+      note: "HEROIC CART INTERCEPT + #3 SHEET SNAG: Dad #1 sprints full-tilt behind the handles ramming the covered cart (`z: -5.35 -> -3.53`) right underneath headfirst-plummeting Hero as Dad #3 slams onto the sheet!",
       stage: (t) => {
         const hitAt = w("6.three", "wheelbarrow");
-        const fallIn = tw(t, 0, Math.max(0.32, hitAt));
-        const rebound = tw(t, Math.max(0.28, hitAt - 0.04), hitAt + 0.48);
-        // Dad #3 arcs down onto `y = DOCK_Y + 0.94` (cleanly on top of the wool cover at `DOCK_Y + 0.85` -> 0 OBB penetration!) then bounces off to `x = 2.42`!
-        const d3x = 3.22 - rebound * 0.82;
+        const pushIn = tw(t, 0, Math.max(0.45, hitAt));
+        const fallIn = tw(t, 0, Math.max(0.38, hitAt));
+        const rebound = tw(t, Math.max(0.32, hitAt - 0.04), hitAt + 0.48);
+
+        // Dad #1 rams the cart from `z = -5.35` straight into the catch bullseye `z = -3.53` (`slime center = -3.45`)!
+        const cartZ = -5.35 + pushIn * 1.82;
+        const pushBounce = slimeBounce(t, 4.6, 0.15 * (1 - rebound * 0.7), 0.1);
+
+        // Dad #3 plummets ahead of Hero, squishing onto the covered cart (`DOCK_Y + 1.62 = -1.06`, zero OBB hit!) and snagging the sheet!
+        const d3x = 3.55 - rebound * 1.08;
         const d3y =
           rebound <= 0.01
-            ? 2.25 - fallIn * 1.14
-            : (DOCK_Y + 1.02) * (1 - rebound) + DOCK_Y * rebound + Math.sin(rebound * Math.PI) * 0.42;
-        const d3z = -3.38 + rebound * 0.22;
+            ? 0.45 - fallIn * 1.51
+            : (DOCK_Y + 1.62) * (1 - rebound) + DOCK_Y * rebound + Math.sin(rebound * Math.PI) * 0.48;
+        const d3z = cartZ + 0.08 + rebound * 0.14;
+
+        // Hero hurtles fast & headfirst down through the sunset gorge (`centerY: +1.25 -> -0.12`) with continuous 3D tumble!
+        const heroCenterY = 1.25 - (fallIn * 0.88 + rebound * 0.49);
+        const tumblePitch = 2.42 + (fallIn + rebound) * 1.45;
+        const tumbleRoll = 0.24 * Math.cos(t * 9);
         return (
           <>
             <Wheelbarrow
-              position={[3.28 + rebound * 0.38, DOCK_Y, -3.45]}
-              rotationY={0.28 + rebound * 0.25}
-              rollZ={-rebound * 0.28}
-              wheelSpin={rebound * 3.8}
+              position={[3.55, DOCK_Y, cartZ]}
+              rotationY={SOUTH}
+              wheelSpin={pushIn * 15}
+              tilt={0.04 * (1 - rebound) - rebound * 0.06}
+              rollZ={-rebound * 0.08}
               covered
-              sheetFly={rebound * 0.38}
+              sheetFly={rebound * 0.34}
               withSlimeBlock
+              slimeScale={0.88}
+              slimeGlow={0.85}
             />
-            <Glow position={[3.28, DOCK_Y + 0.55, -3.45]} size={0.8 + rebound * 0.9} color="#8eff62" opacity={0.28 * rebound} />
+            <Glow position={[3.55, DOCK_Y + 0.88, cartZ + 0.08]} size={0.9 + rebound * 1.1} color="#8eff62" opacity={0.32 * rebound} />
 
+            {/* Dad #1 heroically pushing the cart handles all the way into the drop zone! */}
+            <TinyDad
+              which={1}
+              position={[3.55, DOCK_Y, cartZ - 1.06]}
+              rotationY={SOUTH}
+              hop={pushBounce.hop}
+              squash={pushBounce.squash + 0.14}
+              nod={0.2}
+              mood={rebound > 0.5 ? "happy" : "angry"}
+            />
+            {pushIn < 0.98 ? <Puffs position={[3.55, DOCK_Y + 0.12, cartZ - 1.3]} count={8} color="#f5e1be" /> : null}
+
+            {/* Dad #3 slamming onto the canvas cover and ripping it loose as he bounces clear! */}
             <TinyDad
               which={3}
               position={[d3x, d3y, d3z]}
-              rotationY={fallIn * 3.2 + rebound * 2.4}
-              squash={pop(t, hitAt, 0.26) * 0.44 - (1 - fallIn) * 0.18}
+              rotationY={fallIn * 3.8 + rebound * 2.6}
+              squash={pop(t, hitAt, 0.26) * 0.48 - (1 - fallIn) * 0.2}
               mood={rebound > 0.6 ? "happy" : "scared"}
             />
 
-            {/* Windmilling Hero & Dads #1, #2, #4 actively tumbling down right above the cart! */}
-            <Hero
-              position={[3.15, 3.05 - (fallIn * 0.65 + rebound * 0.48), -3.42]}
-              rotationY={2.75}
-              pose={windmillFallPose(t)}
-              face="wow"
-            />
-            <TinyDad which={1} position={[2.52, 3.18 - (fallIn * 0.62 + rebound * 0.45), -3.18]} rotationY={t * 3.5} squash={-0.16} mood="scared" />
-            <TinyDad which={2} position={[3.78, 3.24 - (fallIn * 0.62 + rebound * 0.45), -3.22]} rotationY={-t * 3.5} squash={-0.16} mood="scared" />
-            <TinyDad which={4} position={[3.18, 3.58 - (fallIn * 0.62 + rebound * 0.45), -3.88]} rotationY={t * 3.0} squash={-0.16} mood="scared" />
+            {/* Rushing speed streaks + headfirst-somersaulting Hero hurtling down overhead! */}
+            <FallStreaks position={[3.55, heroCenterY, -3.45]} t={t} count={12} radius={0.88} span={2.2} />
+            <group position={[3.55, heroCenterY, -3.45]} rotation={[tumblePitch, 2.75, tumbleRoll]}>
+              <group position={[0, -0.47, 0]}>
+                <Hero position={[0, 0, 0]} rotationY={0} pose={windmillFallPose(t)} face="fear" />
+              </group>
+            </group>
+
+            <TinyDad which={2} position={[2.82, heroCenterY + 0.48, -3.15]} rotationY={-t * 4.2} squash={-0.2} mood="scared" />
+            <TinyDad which={4} position={[4.28, heroCenterY + 0.56, -3.82]} rotationY={t * 4.2} squash={-0.2} mood="scared" />
 
             {rebound > 0.05 ? (
               <>
-                <Puffs position={[3.28, DOCK_Y + 0.92, -3.45]} count={8} color="#f5ebd4" />
-                <Bits position={[3.28, DOCK_Y + 0.88, -3.45]} t={Math.max(0.02, t - hitAt + 0.05)} color="#9dff70" count={12} power={1.1} />
+                <Puffs position={[3.55, DOCK_Y + 1.48, cartZ + 0.08]} count={9} color="#fff1d6" />
+                <Bits position={[3.55, DOCK_Y + 1.42, cartZ + 0.08]} t={Math.max(0.02, t - hitAt + 0.05)} color="#9dff70" count={14} power={1.2} />
               </>
             ) : null}
           </>
@@ -426,59 +551,71 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.block",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.orbit({
-        on: [3.22, DOCK_Y + 0.82, -3.45],
-        onTo: [3.22, DOCK_Y + 1.12, -3.45],
+        on: [3.55, DOCK_Y + 1.15, -3.55],
+        onTo: [3.55, DOCK_Y + 1.35, -3.45],
         dist: 4.65,
-        distTo: 3.75,
-        yaw: -144,
-        yawTo: -168,
+        distTo: 3.65,
+        yaw: -140,
+        yawTo: -166,
         pitch: 19,
-        pitchTo: 10,
-        fov: 44,
+        pitchTo: 9,
+        fov: 45,
       }),
-      impacts: [sceneImpact("6.scoop", "6.block", "flew", 0.048, 0.3)],
-      note: "SAME WATERSIDE DOCK REVEAL: the tipped 3-Wheel Cart rolls aside as the sheet whips off the glowing green Slime Block right beneath windmilling Hero!",
+      shake: 0.022,
+      impacts: [sceneImpact("6.scoop", "6.block", "flew", 0.055, 0.32)],
+      note: "SPLIT-SECOND UNVEIL INSIDE THE BRACED CART: Dad #1 locks the cart handles in place with wheel-skid puffs as the white sheet whips away, revealing the glowing Slime Block inside the cart milliseconds before tumbling Hero hits!",
       stage: (t) => {
-        const fly = tw(t, 0.02, w("6.block", "flew") + 0.32);
-        const dropHero = tw(t, 0.04, 1.18);
-        const b3 = slimeBounce(t, 3.1, 0.22, 0.1);
-        const sq = pop(t, 0.16, 0.28) * 0.26;
-        const scale = 0.9 + fly * 0.12;
-        const topY = slimeBlockTopY(DOCK_Y, scale, sq);
-        const heroY = Math.max(topY + 0.12, 2.55 - dropHero * 1.28);
+        const fly = tw(t, 0.02, w("6.block", "flew") + 0.34);
+        const dropHero = tw(t, 0.02, 1.35);
+        const b1 = slimeBounce(t, 3.0, 0.14, 0.0);
+        const b3 = slimeBounce(t, 3.2, 0.2, 0.35);
+        const sq = pop(t, 0.14, 0.28) * 0.24;
+        const topY = cartSlimeTopY(DOCK_Y, 0.88, sq);
+        // Hero hurtles through the final 1.9m of freefall (`centerY: +1.12 -> topY + 0.56 = -0.80`), completing his flip right above the Slime Block!
+        const heroCenterY = Math.max(topY + 0.56, 1.12 - dropHero * 1.92);
+        const tumblePitch = 4.25 + dropHero * 1.92;
         return (
           <>
-            {/* Tipped 3-Wheel Cart rolled safely clear (`x = 4.28`) */}
+            {/* THE SAME CART braced squarely on the catch mark (`[3.55, DOCK_Y, -3.53]`) with the glowing Slime Block gleaming inside! */}
             <Wheelbarrow
-              position={[4.18 + fly * 0.18, DOCK_Y, -3.62]}
-              rotationY={0.62}
-              rollZ={-0.42}
-              wheelSpin={4.2 + fly * 2.2}
+              position={[3.55, DOCK_Y, -3.53]}
+              rotationY={SOUTH}
+              tilt={-0.03 * (1 - fly)}
+              withSlimeBlock
+              slimeScale={0.88}
+              slimeSquash={sq}
+              slimeGlow={0.75 + fly * 0.45}
             />
-            <SlimeBlockProp position={[3.22, DOCK_Y, -3.45]} scale={scale} glow={0.55 + fly * 0.45} squash={sq} />
-            <Glow position={[3.22, DOCK_Y + 0.58, -3.45]} size={1.25 + fly * 1.35} color="#8eff62" opacity={0.2 + fly * 0.24} />
+            <Glow position={[3.55, DOCK_Y + 0.95, -3.45]} size={1.35 + fly * 1.35} color="#8eff62" opacity={0.24 + fly * 0.26} />
 
-            {/* White canvas sheet billowing high & clear (`y >= 1.45, x -> 1.35`) */}
+            {/* Dad #1 bracing the rear wooden handles (`z = -4.59`) + skid puffs from stopping just in time! */}
+            <TinyDad which={1} position={[3.55, DOCK_Y, -4.59]} rotationY={SOUTH} hop={b1.hop} squash={b1.squash + 0.1} mood="happy" />
+            {fly < 0.55 ? <Puffs position={[3.55, DOCK_Y + 0.12, -3.88]} count={7} color="#f5e1be" /> : null}
+
+            {/* White canvas sheet whipping dramatically clear across the left foreground (`x <= 2.55`, well clear of Hero!) */}
             <Vox
               kind="wool"
               tint="#ebe4d2"
-              position={[2.95 - fly * 1.85, 1.48 + fly * 1.15, -3.25 + fly * 0.75]}
-              rotation={[fly * 1.7, fly * 1.9, fly * 1.3]}
-              size={[0.84, 0.07, 0.92]}
+              position={[2.55 - fly * 1.65, DOCK_Y + 1.55 + fly * 1.35, -2.78 + fly * 0.65]}
+              rotation={[fly * 1.85, fly * 1.95, fly * 1.45]}
+              size={[0.96, 0.08, 1.04]}
             />
 
-            <TinyDad which={3} position={[2.32, DOCK_Y, -3.28]} rotationY={2.4} hop={b3.hop} squash={b3.squash} mood="happy" />
-            <Hero
-              position={[3.22, heroY, -3.45]}
-              rotationY={2.8}
-              pose={windmillFallPose(t)}
-              face="wow"
-            />
-            <TinyDad which={1} position={[2.62, heroY + 0.24, -3.22]} rotationY={2.7} squash={-0.16} mood="scared" />
-            <TinyDad which={2} position={[3.82, heroY + 0.28, -3.22]} rotationY={-2.7} squash={-0.16} mood="scared" />
-            <TinyDad which={4} position={[3.22, heroY + 0.58, -3.95]} rotationY={2.9} squash={-0.16} mood="scared" />
+            {/* Dad #3 cheering beside the cart (`x = 2.46`) */}
+            <TinyDad which={3} position={[2.46, DOCK_Y, -3.35]} rotationY={EAST - 0.25} hop={b3.hop} squash={b3.squash} mood="happy" />
+
+            {/* High-speed wind streaks + tumbling Hero hurtling straight down onto the Slime Block in the cart! */}
+            <FallStreaks position={[3.55, heroCenterY, -3.45]} t={t} count={10} radius={0.86} span={1.95} />
+            <group position={[3.55, heroCenterY, -3.45]} rotation={[tumblePitch, 2.8, Math.sin(t * 8) * 0.14]}>
+              <group position={[0, -0.47, 0]}>
+                <Hero position={[0, 0, 0]} rotationY={0} pose={windmillFallPose(t)} face="wow" />
+              </group>
+            </group>
+
+            <TinyDad which={2} position={[2.82, heroCenterY + 0.38, -3.12]} rotationY={-2.7} squash={-0.18} mood="scared" />
+            <TinyDad which={4} position={[4.28, heroCenterY + 0.44, -3.82]} rotationY={2.9} squash={-0.18} mood="scared" />
           </>
         );
       },
@@ -486,47 +623,83 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.boing",
       zone: "bridge",
-      look: "overworld-night",
+      look: "overworld-sunset",
       ...cam.pan({
-        from: [-0.85, 1.95, -7.85],
-        on: [3.22, DOCK_Y + 1.05, -3.45],
-        onTo: [1.85, 4.35, -5.25],
+        from: [-0.85, 1.45, -8.25],
+        on: [3.55, DOCK_Y + 1.35, -3.45],
+        onTo: [3.1, 4.75, -5.05],
         fov: 46,
-        fovTo: 43,
+        fovTo: 42,
       }),
-      impacts: [sceneImpact("6.scoop", "6.boing", "bounced", 0.072, 0.38)],
-      note: "SKY-HIGH RIVERSIDE DOCK CATAPULT: Hero & all 4 dads squash the glowing Slime Block on the dock and rocket in a high arc back above the bridge & swamp trees!",
+      shake: 0.024,
+      impacts: [sceneImpact("6.scoop", "6.boing", "bounced", 0.082, 0.4)],
+      note: "EPIC 7-METER SUNSET GORGE CATAPULT: Hero slams into the Slime Block inside Dad #1's cart, compressing it deep and rocketing Hero + all 4 tiny dads high out of the gorge and above the swamp trees!",
       stage: (t) => {
         const boingAt = Math.max(0.18, w("6.boing", "bounced") - 0.08);
-        const sq = pop(t, boingAt, 0.34) * 0.56;
-        const blockTop = slimeBlockTopY(DOCK_Y, 1.02, sq);
+        const sq = pop(t, boingAt, 0.34) * 0.58;
+        const blockTop = cartSlimeTopY(DOCK_Y, 0.88, sq);
         const drop = tw(t, 0, boingAt);
-        const up = tw(t, boingAt, Math.max(0.92, boingAt + 0.85));
+        const up = tw(t, boingAt, Math.max(0.95, boingAt + 0.92));
         const joyBlend = tw(t, Math.max(0, boingAt - 0.06), boingAt + 0.18);
-        const hx = 3.22 - up * 1.35;
-        const hz = -3.45 - up * 1.75;
-        const hy = t < boingAt ? blockTop + (1 - drop) * 0.58 : blockTop + up * 3.15 + Math.sin(up * Math.PI) * 0.78;
+        const hx = 3.55 - up * 0.45;
+        const hz = -3.45 - up * 1.65;
+        const hy =
+          t < boingAt
+            ? blockTop + 0.03 + (1 - drop) * 0.62
+            : blockTop + 0.03 + up * 6.35 + Math.sin(up * Math.PI) * 1.25;
         return (
           <>
-            {/* Wide-set swamp trees on the north bank framing the skyward bounce with zero leaf clipping! */}
-            <Tree position={[0.45, 0, -8.85]} height={2.95} leaf="#3b7830" />
-            <Tree position={[5.65, 0, -7.25]} height={3.15} leaf="#448537" />
-            <SlimeBlockProp position={[3.22, DOCK_Y, -3.45]} scale={1.02} glow={1} squash={sq} />
+            {/* Swamp trees on the upper north bank framing Hero soaring high above their crowns! */}
+            <Tree position={[0.35, 0, -8.95]} height={2.95} leaf="#3b7830" />
+            <Tree position={[6.15, 0, -7.25]} height={3.15} leaf="#448537" />
+
+            {/* Dad #1's Cart on the gorge boardwalk with the Slime Block squashing & rebounding on impact! */}
+            <Wheelbarrow
+              position={[3.55, DOCK_Y, -3.53]}
+              rotationY={SOUTH}
+              tilt={sq * 0.12}
+              withSlimeBlock
+              slimeScale={0.88}
+              slimeSquash={sq}
+              slimeGlow={1}
+            />
+
             <Hero
               position={[hx, hy, hz]}
               rotationY={2.85 + up * 0.35}
               pose={blendPose(windmillFallPose(t), skyJoyPose(t), joyBlend)}
-              face={joyBlend > 0.4 ? "grin" : "wow"}
+              face={joyBlend > 0.35 ? "grin" : "wow"}
             />
-            <TinyDad which={1} position={[hx - 0.68, hy + 0.06, hz + 0.14]} rotationY={2.8} squash={t >= boingAt ? -0.2 : 0.14} />
-            <TinyDad which={2} position={[hx + 0.68, hy + 0.08, hz + 0.14]} rotationY={-2.8} squash={t >= boingAt ? -0.2 : 0.14} />
-            <TinyDad which={3} position={[hx - 0.55, hy + 0.56, hz - 0.52]} rotationY={2.9} squash={t >= boingAt ? -0.2 : 0.14} />
-            <TinyDad which={4} position={[hx + 0.55, hy + 0.58, hz - 0.52]} rotationY={-2.9} squash={t >= boingAt ? -0.2 : 0.14} />
+
+            {/* Dads #1 & #3 launch up from beside the cart on the rebound wave to join #2 & #4 in the sunset sky! */}
+            <TinyDad
+              which={1}
+              position={[
+                3.55 * (1 - up) + (hx - 0.68) * up,
+                (DOCK_Y + (1 - up) * 0.02) * (1 - up) + (hy + 0.08) * up,
+                -4.59 * (1 - up) + (hz + 0.14) * up,
+              ]}
+              rotationY={2.8}
+              squash={t >= boingAt ? -0.22 : 0.16}
+            />
+            <TinyDad which={2} position={[hx + 0.68, hy + 0.08, hz + 0.14]} rotationY={-2.8} squash={t >= boingAt ? -0.22 : 0.14} />
+            <TinyDad
+              which={3}
+              position={[
+                2.46 * (1 - up) + (hx - 0.55) * up,
+                DOCK_Y * (1 - up) + (hy + 0.58) * up,
+                -3.35 * (1 - up) + (hz - 0.52) * up,
+              ]}
+              rotationY={2.9}
+              squash={t >= boingAt ? -0.22 : 0.16}
+            />
+            <TinyDad which={4} position={[hx + 0.55, hy + 0.58, hz - 0.52]} rotationY={-2.9} squash={t >= boingAt ? -0.22 : 0.14} />
+
             {t >= boingAt ? (
               <>
-                <SoundRings position={[3.22, blockTop, -3.45]} t={t - boingAt} color="#9dff70" reach={2.25} />
-                <Bits position={[3.22, blockTop, -3.45]} t={t - boingAt} color="#9dff70" count={18} power={1.4} />
-                <Puffs position={[3.22, blockTop, -3.45]} count={12} color="#c5ff9e" />
+                <SoundRings position={[3.55, blockTop, -3.45]} t={t - boingAt} color="#9dff70" reach={2.45} />
+                <Bits position={[3.55, blockTop, -3.45]} t={t - boingAt} color="#9dff70" count={22} power={1.65} />
+                <Puffs position={[3.55, blockTop, -3.45]} count={14} color="#c5ff9e" />
               </>
             ) : null}
           </>

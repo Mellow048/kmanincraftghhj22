@@ -39,7 +39,7 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.hug",
       zone: "village",
-      look: "overworld-day",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0, 0.72, -8.85],
         onTo: [0, 0.54, -9.25],
@@ -100,7 +100,7 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.hold",
       zone: "village",
-      look: "overworld-day",
+      look: "overworld-sunset",
       ...cam.orbit({
         on: [0, 0.64, -9.2],
         dist: 3.25,

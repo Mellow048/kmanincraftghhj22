@@ -4,8 +4,8 @@ import type { SetSolid, Vec3 } from "../../engine";
 export const PATH_Y = 0.04;
 export const PORCH_Y = 0.12;
 export const BRIDGE_Y = 1.15;
-export const DOCK_Y = 0.09;
-export const WATER_Y = -0.15;
+export const DOCK_Y = -2.68;
+export const WATER_Y = -2.85;
 export const RIVERBED_Y = 0;
 
 export const VILLAGE = {

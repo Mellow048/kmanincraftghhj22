@@ -438,16 +438,16 @@ export const scene2 = storyScene(timing, {
       look: "overworld-sunset",
       ...cam.orbit({
         on: [0.85, BRIDGE_Y + 0.55, -3.15],
-        onTo: [2.15, WATER_Y + 0.2, -1.95],
+        onTo: [2.05, -0.75, -2.05],
         dist: 5.2,
-        distTo: 4.4,
+        distTo: 4.95,
         yaw: -32,
-        yawTo: -52,
+        yawTo: -54,
         pitch: 20,
-        pitchTo: 33,
+        pitchTo: 36,
         fov: 45,
       }),
-      note: "High tilt-and-orbit over Hero's shoulder as he leans across the open bridge rail peering into the dark swamp water.",
+      note: "High tilt-and-orbit over Hero's shoulder as he leans across the open bridge rail peering into the deep sunset river gorge.",
       stage: (t) => {
         const b1 = slimeBounce(t, 1.5, 0.1, 0.2);
         return (
@@ -458,7 +458,7 @@ export const scene2 = storyScene(timing, {
               rotationY={0.62}
               animation="leanOver"
               face="uneasy"
-              lookAt={[2.6, WATER_Y, -1.8]}
+              lookAt={[2.6, -1.6, -1.8]}
             />
             <TinyDad which={1} position={[0.08, BRIDGE_Y, -3.35]} rotationY={0.45} hop={b1.hop} squash={b1.squash} mood="scared" />
           </>
