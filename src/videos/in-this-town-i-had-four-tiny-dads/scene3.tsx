@@ -17,6 +17,7 @@ import {
   pop,
   posed,
   sceneImpact,
+  seesawSurfaceY,
   slimeBounce,
   slimeHopTo,
   timing,
@@ -90,8 +91,10 @@ export const scene3 = storyScene(timing, {
         const bounceAt = w("3.friday", "bounced");
         const wind = tw(t, Math.max(0, bounceAt - 0.28), bounceAt);
         const launch = tw(t, bounceAt, w("3.friday", "roof") + 0.35);
-        const kidY = PATH_Y + launch * 3.15 + Math.sin(launch * Math.PI) * 1.15;
-        const kidX = 5.15 + launch * 1.65;
+        const dadSq = 0.28 * wind + pop(t, bounceAt, 0.3) * 0.38;
+        const dadTopY = PATH_Y + 1.36 * (1 - dadSq * 0.28);
+        const kidY = dadTopY + launch * 2.15 + Math.sin(launch * Math.PI) * 1.05;
+        const kidX = 4.85 + launch * 1.95;
         const b2 = slimeBounce(t, 1.7, 0.28, 0.35);
         return (
           <>
@@ -99,7 +102,7 @@ export const scene3 = storyScene(timing, {
               variant={0}
               position={[4.85, PATH_Y, 2.5]}
               rotationY={0.35}
-              squash={0.28 * wind + pop(t, bounceAt, 0.3) * 0.38}
+              squash={dadSq}
             />
             <Villager
               position={[kidX, kidY, 2.5]}
@@ -146,25 +149,30 @@ export const scene3 = storyScene(timing, {
       stage: (t) => {
         const jumpAt = w("3.plank", "jumped");
         const k = tw(t, Math.max(0, jumpAt - 0.32), jumpAt + 0.18);
-        const arcY = Math.sin(k * Math.PI) * 0.72 + (1 - k) * 0.15;
-        const zStart = 2.05;
+        const landed = k > 0.85;
+        const tilt = 0.13 - (landed ? 0.08 : 0);
+        const arcY = Math.sin(k * Math.PI) * 0.72;
+        const zStart = 1.62;
         const zLand = 2.65;
         const zCur = zStart + (zLand - zStart) * k;
-        const landed = k > 0.85;
+        const heroY = seesawSurfaceY(PATH_Y, 3.5, tilt, 4.42);
+        const dadFrontY = (1 - k) * PATH_Y + k * seesawSurfaceY(PATH_Y, 3.5, tilt, zLand - 0.12);
+        const dadBackY = (1 - k) * PATH_Y + k * seesawSurfaceY(PATH_Y, 3.5, tilt, zLand + 0.24);
         return (
           <>
-            <SeesawPlank position={[4.35, PATH_Y, 3.5]} tilt={-0.14 + (landed ? 0.2 : 0)} />
+            <SeesawPlank position={[4.35, PATH_Y, 3.5]} tilt={tilt} />
             <Hero
-              position={[4.35, PATH_Y + 0.22, 4.42]}
+              position={[4.35, heroY, 4.42]}
               rotationY={0.25}
               pose={posed("crouch", t, { head: [0.18, 0.25, 0] })}
+              plantFeet
               face="brave"
             />
-            <TinyDad which={1} position={[4.16, PATH_Y + 0.22 + arcY, zCur - 0.12]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
-            <TinyDad which={2} position={[4.54, PATH_Y + 0.22 + arcY, zCur - 0.12]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
-            <TinyDad which={3} position={[4.16, PATH_Y + 0.22 + arcY, zCur + 0.24]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
-            <TinyDad which={4} position={[4.54, PATH_Y + 0.22 + arcY, zCur + 0.24]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
-            {landed ? <Puffs position={[4.35, 0.32, 2.75]} count={6} color="#f3e6c8" /> : null}
+            <TinyDad which={1} position={[4.15, dadFrontY + arcY, zCur - 0.12]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
+            <TinyDad which={2} position={[4.55, dadFrontY + arcY, zCur - 0.12]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
+            <TinyDad which={3} position={[4.15, dadBackY + arcY, zCur + 0.24]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
+            <TinyDad which={4} position={[4.55, dadBackY + arcY, zCur + 0.24]} rotationY={SOUTH} squash={landed ? 0.34 : -0.16} />
+            {landed ? <Puffs position={[4.35, dadFrontY + 0.05, 2.75]} count={6} color="#f3e6c8" /> : null}
           </>
         );
       },
@@ -184,23 +192,27 @@ export const scene3 = storyScene(timing, {
         fov: 40,
       }),
       handheld: 0.014,
-      note: "Hero pops up two tiny inches and slumps in embarrassment while two schoolkids bounce-laugh behind him.",
+      note: "Hero pops up two tiny inches off the exact seesaw plane and slumps smoothly in embarrassment while two schoolkids bounce-laugh behind him.",
       stage: (t) => {
         const hop = Math.sin(tw(t, 0.04, 0.38) * Math.PI) * 0.08;
         const laugh = tw(t, w("3.inch", "laughed") - 0.15, w("3.inch", "laughed") + 0.35);
+        const tilt = 0.05;
         return (
           <>
-            <SeesawPlank position={[4.35, PATH_Y, 3.5]} tilt={0.05} />
+            <SeesawPlank position={[4.35, PATH_Y, 3.5]} tilt={tilt} />
             <Hero
-              position={[4.35, PATH_Y + 0.22 + hop, 4.42]}
+              position={[4.35, seesawSurfaceY(PATH_Y, 3.5, tilt, 4.42) + hop, 4.42]}
               rotationY={SOUTH - 0.15}
-              animation={laugh > 0.2 ? "ache" : "idle"}
+              animation="idle"
+              blendTo="ache"
+              blend={laugh}
+              plantFeet
               face="frown"
               gaze={0}
               headPitch={0.28 * laugh}
             />
-            <TinyDad which={1} position={[4.16, PATH_Y + 0.2, 2.58]} rotationY={SOUTH} squash={0.26} mood="sad" />
-            <TinyDad which={3} position={[4.54, PATH_Y + 0.2, 2.82]} rotationY={SOUTH} squash={0.28} mood="sad" />
+            <TinyDad which={1} position={[4.15, seesawSurfaceY(PATH_Y, 3.5, tilt, 2.58), 2.58]} rotationY={SOUTH} squash={0.26} mood="sad" />
+            <TinyDad which={3} position={[4.55, seesawSurfaceY(PATH_Y, 3.5, tilt, 2.82), 2.82]} rotationY={SOUTH} squash={0.28} mood="sad" />
             <Villager
               position={[5.42, PATH_Y + Math.abs(Math.sin(t * 8)) * 0.08 * laugh, 4.65]}
               rotationY={WEST + 0.35}

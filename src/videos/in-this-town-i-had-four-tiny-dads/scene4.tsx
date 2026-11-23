@@ -4,6 +4,7 @@ import {
   Bits,
   BridgePinPost,
   EAST,
+  FistCraters,
   Hero,
   NORTH,
   Puffs,
@@ -14,7 +15,9 @@ import {
   TornBabyCoat,
   WEST,
   Wheelbarrow,
+  blendPose,
   bridgeSurfaceY,
+  gaitPose,
   jolt,
   posed,
   sceneImpact,
@@ -46,23 +49,29 @@ export const scene4 = storyScene(timing, {
         fov: 44,
       }),
       impacts: [sceneImpact("4.sunset", "4.sunset", "unbarred", 0.045, 0.3)],
-      note: "Zero-phasing 3-beat action: Hero jogs up to the east locking pin, knocks it free so the crossbar swings vertical, then strides south onto the open bridge!",
+      note: "Smooth natural-paced bridge opening: Hero knocks the east pin free so the crossbar swings clear, then blends smoothly into a calm distance-matched walk onto the bridge!",
       stage: (t) => {
         const liftAt = w("4.sunset", "unbarred");
-        const runToPin = tw(t, 0, Math.max(0.2, liftAt - 0.08));
-        const openBar = tw(t, Math.max(0.16, liftAt - 0.06), liftAt + 0.34);
-        const cross = tw(t, liftAt + 0.28, 1.55);
-        const hx = (1.15 + runToPin * 0.22) * (1 - cross) + 0.1 * cross;
-        const hz = -5.25 + runToPin * 0.82 + cross * 2.35;
-        const hy = bridgeSurfaceY(hz);
+        const stepIn = tw(t, 0, Math.max(0.22, liftAt - 0.06));
+        const openBar = tw(t, Math.max(0.16, liftAt - 0.04), liftAt + 0.36);
+        const cross = tw(t, liftAt + 0.24, 1.88);
+        const walkBlend = tw(t, liftAt + 0.18, liftAt + 0.54);
+        const pinX = 1.24 + stepIn * 0.12;
+        const pinZ = -4.74 + stepIn * 0.14;
+        const hx = pinX * (1 - cross) + 0.12 * cross;
+        const hz = pinZ + cross * 2.05;
+        const hy = bridgeSurfaceY(hz, 0.18);
+        const walkDist = stepIn * 0.18 + Math.hypot(hx - pinX, hz - pinZ);
+        const rotStart = EAST - 0.38;
+        const rotEnd = 0; // SOUTH
         return (
           <>
-            <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={openBar * 1.38} pinOut={openBar * 1.45} />
+            <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={openBar * 1.42} pinOut={openBar * 1.45} />
             <Hero
               position={[hx, hy, hz]}
-              rotationY={cross > 0.06 ? SOUTH - 0.22 * (1 - cross) : EAST - 0.35}
-              pose={cross > 0.06 ? posed("run", t * 2.3, {}) : shovePose(t, liftAt)}
-              plantFeet={cross > 0.06}
+              rotationY={rotStart + (rotEnd - rotStart) * walkBlend}
+              pose={blendPose(shovePose(t, liftAt), gaitPose("walk", walkDist), walkBlend)}
+              plantFeet
               face="brave"
             />
             {openBar > 0.08 && openBar < 0.78 ? (
@@ -448,6 +457,7 @@ export const scene4 = storyScene(timing, {
             <TinyDad which={4} position={d4.position} rotationY={WEST} hop={d4.hop} squash={d4.squash} mood="angry" />
             {t >= hitAt ? (
               <>
+                <FistCraters position={BRIDGE.craterStone} />
                 <SoundRings position={[BRIDGE.craterStone[0], BRIDGE_Y + 0.1, BRIDGE.craterStone[2]]} t={t - hitAt} color="#ffffff" reach={2.1} />
                 <Bits position={BRIDGE.craterStone} t={t - hitAt} color="#eef2f7" count={24} power={1.7} />
                 <Puffs position={[BRIDGE.craterStone[0], BRIDGE_Y + 0.32, BRIDGE.craterStone[2]]} count={12} color="#dce3ec" />

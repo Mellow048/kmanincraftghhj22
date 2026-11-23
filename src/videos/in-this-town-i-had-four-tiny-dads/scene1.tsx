@@ -122,16 +122,16 @@ export const scene1 = storyScene(timing, {
       handheld: 0.012,
       note: "Low sneaker-height arc: all four tiny 38cm dads tumble-hop out from behind Hero's shoes in 1-2-3-4 rhythm!",
       stage: (t) => {
-        const h1 = slimeHopTo([-0.45, PATH_Y, -3.55], [-0.02, PATH_Y, -3.05], tw(t, 0.0, 0.36), 2, 0.28, 1);
-        const h2 = slimeHopTo([-0.35, PATH_Y, -3.65], [0.42, PATH_Y, -3.12], tw(t, 0.1, 0.48), 2, 0.3, 2);
-        const h3 = slimeHopTo([-0.25, PATH_Y, -3.72], [0.85, PATH_Y, -3.22], tw(t, 0.2, 0.6), 2, 0.32, 3);
-        const h4 = slimeHopTo([-0.15, PATH_Y, -3.78], [1.26, PATH_Y, -3.35], tw(t, 0.3, 0.72), 2, 0.34, 4);
+        const h1 = slimeHopTo([-0.08, PATH_Y, -3.86], [-0.08, PATH_Y, -3.05], tw(t, 0.0, 0.36), 2, 0.28, 1);
+        const h2 = slimeHopTo([0.38, PATH_Y, -3.92], [0.38, PATH_Y, -3.12], tw(t, 0.1, 0.48), 2, 0.3, 2);
+        const h3 = slimeHopTo([0.84, PATH_Y, -3.98], [0.84, PATH_Y, -3.22], tw(t, 0.2, 0.6), 2, 0.32, 3);
+        const h4 = slimeHopTo([1.30, PATH_Y, -4.04], [1.30, PATH_Y, -3.35], tw(t, 0.3, 0.72), 2, 0.34, 4);
         const idle = (ph: number) => slimeBounce(t, 1.9, 0.12, ph);
         const after = tw(t, 0.68, 1.0);
         return (
           <>
             <Hero
-              position={[-0.64, PATH_Y, -3.18]}
+              position={[-0.78, PATH_Y, -3.08]}
               rotationY={0.42}
               pose={posed("idle", t, {
                 bodyPitch: 0.12,
@@ -210,10 +210,10 @@ export const scene1 = storyScene(timing, {
       }),
       note: "Unobstructed north-bank sunset glide: OriginalBigDad hops in discrete bouncy arcs up to Baby Hero's reed basket.",
       stage: (_t, { p }) => {
-        const hop = slimeHopTo([0.95, 0.12, -9.25], [0.15, 0.12, -9.2], tw(p, 0, 0.85), 3, 0.28);
+        const hop = slimeHopTo([1.05, 0.15, -9.25], [0.34, 0.15, -9.2], tw(p, 0, 0.85), 3, 0.28);
         return (
           <>
-            <ReedBasket position={[-0.98, 0.12, -9.15]} rotationY={2.55} reach={0.3 + p * 0.7} />
+            <ReedBasket position={[-0.98, 0.15, -9.15]} rotationY={2.55} reach={0.3 + p * 0.7} />
             <OriginalBigDad
               position={[hop.position[0], hop.position[1] + hop.hop, hop.position[2]]}
               rotationY={-2.55}
@@ -245,9 +245,9 @@ export const scene1 = storyScene(timing, {
         const b = slimeBounce(t, 1.55, 0.26, 0.2);
         return (
           <>
-            <ReedBasket position={[-0.98, 0.12, -9.15]} rotationY={-2.55} reach={0.9} />
+            <ReedBasket position={[-0.98, 0.15, -9.15]} rotationY={-2.55} reach={0.9} />
             <OriginalBigDad
-              position={[0.18, 0.12 + b.hop, -9.22]}
+              position={[0.42, 0.15 + b.hop, -9.22]}
               rotationY={2.55}
               squash={b.squash}
               nod={0.14 + b.lean}
@@ -281,14 +281,14 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <OriginalBigDad
-              position={[-0.95 - wind * 0.14 + bump * 0.52, 0, -0.15]}
+              position={[-0.76 - wind * 0.12 + bump * 0.42, 0, -0.52]}
               rotationY={0.48}
               squash={-0.12 * wind + pop(t, hitAt, 0.26) * 0.34}
               mood={t > hitAt + 0.14 ? "scared" : "happy"}
             />
             <Hero
               scale={0.64}
-              position={[0.02 + slide * 1.18, Math.sin(slide * Math.PI) * 0.28, 0.12 + slide * 0.2]}
+              position={[0.24 + slide * 1.0, Math.sin(slide * Math.PI) * 0.28, 0.12 + slide * 0.2]}
               rotationY={-0.38 + slide * 0.45}
               animation={t < hitAt ? "wave" : "stagger"}
               animDistance={slide * 1.5}

@@ -221,9 +221,9 @@ export const scene7 = storyScene(timing, {
             <Hero
               position={[x - 0.64, PATH_Y, 3.5]}
               rotationY={EAST}
-              animation="run"
+              animation="walk"
               arms="hold"
-              animDistance={dist * 1.15}
+              animDistance={dist}
               plantFeet
               face="grin"
               gaze={0}
@@ -280,7 +280,9 @@ export const scene7 = storyScene(timing, {
             <Hero
               position={[-0.92, PATH_Y, -8.88]}
               rotationY={0.18}
-              animation={t < 0.9 ? "point" : "wave"}
+              animation="point"
+              blendTo="wave"
+              blend={tw(t, 0.78, 1.08)}
               plantFeet
               face="grin"
               gaze={0}

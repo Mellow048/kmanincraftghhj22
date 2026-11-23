@@ -14,7 +14,7 @@ import {
 } from "../../engine";
 import type { Vec3 } from "../../engine";
 import { Bell, Hut, Lantern, Moon, Room, Stars, Well } from "../../../Topics/InThisTown";
-import { BRIDGE, BRIDGE_Y, PATH_Y, PORCH_Y, RIVERBED_Y, ROOM_MARKS, VILLAGE, WATER_Y } from "./marks";
+import { BRIDGE, BRIDGE_Y, DOCK_Y, PATH_Y, PORCH_Y, RIVERBED_Y, ROOM_MARKS, VILLAGE, WATER_Y } from "./marks";
 import { EAST, FistCraters, HangingBabyCoat, SOUTH, SwampSign, TinyDoorway, TwinWhiteCraters, WEST } from "./kit";
 
 const KidFamilyDrawing: React.FC<{ position: Vec3 }> = ({ position }) => (
@@ -187,104 +187,143 @@ const RoomZone: React.FC<{ night: boolean }> = ({ night }) => (
   </group>
 );
 
-const BridgeZone: React.FC<{ night: boolean; sunset: boolean }> = ({ night, sunset }) => (
-  <group>
-    {/* Shimmering dark swamp water */}
-    <Vox kind="stone" tint="#0c1f1b" position={[0, WATER_Y - 0.6, 0]} size={[220, 1, 220]} />
-    <mesh position={[0, WATER_Y, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-      <planeGeometry args={[220, 220]} />
-      <meshStandardMaterial
-        color={night ? "#133430" : sunset ? "#2b4d40" : "#1f5446"}
-        emissive={night ? "#0b2420" : "#12332a"}
-        emissiveIntensity={0.28}
-        roughness={0.24}
+const COLLAPSED_BRIDGE_CUES = new Set(["6.drop", "6.rope", "6.three", "6.block", "6.boing"]);
+const CRATER_BRIDGE_CUES = new Set(["5.stare", "5.list", "5.zero", "5.front", "6.scoop", "6.pin"]);
+
+const BridgeZone: React.FC<{ night: boolean; sunset: boolean; cue: string }> = ({ night, sunset, cue }) => {
+  const collapsed = COLLAPSED_BRIDGE_CUES.has(cue);
+  const hasCraters = CRATER_BRIDGE_CUES.has(cue);
+  return (
+    <group>
+      {/* Shimmering dark swamp water */}
+      <Vox kind="stone" tint="#0c1f1b" position={[0, WATER_Y - 0.85, 0]} size={[220, 1, 220]} />
+      <mesh position={[0, WATER_Y, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <planeGeometry args={[220, 220]} />
+        <meshStandardMaterial
+          color={night ? "#133430" : sunset ? "#2b4d40" : "#1f5446"}
+          emissive={night ? "#0b2420" : "#12332a"}
+          emissiveIntensity={0.28}
+          roughness={0.24}
+        />
+      </mesh>
+
+      {/* North & South Swamp Muddy Banks */}
+      <Vox kind="grass" tint="#3b5e32" position={[0, -0.45, -17.5]} size={[80, 1.1, 23]} />
+      <Vox kind="grass" tint="#3b5e32" position={[0, -0.45, 17.5]} size={[80, 1.1, 23]} />
+      <Vox kind="path" tint="#695d46" position={[0, 0.1, -9.35]} size={[4.2, 0.1, 7.3]} />
+      <Vox kind="path" tint="#695d46" position={[0, 0.1, 9.35]} size={[4.2, 0.1, 7.3]} />
+
+      {/* Lower Waterside Wooden Boat-Landing Dock (`top = DOCK_Y = 0.09`) right below the north-east bridge ledge */}
+      <group position={[3.35, 0, -3.55]}>
+        <Vox kind="planks" tint="#745636" position={[0, DOCK_Y - 0.07, 0]} size={[2.3, 0.14, 2.7]} />
+        {[
+          [-0.98, -1.18],
+          [0.98, -1.18],
+          [-0.98, 1.18],
+          [0.98, 1.18],
+        ].map(([px, pz], i) => (
+          <Vox key={`dp${i}`} kind="log" position={[px, -0.12, pz]} size={[0.18, 0.56, 0.18]} />
+        ))}
+        <Vox kind="log" position={[0.98, DOCK_Y + 0.24, -1.18]} size={[0.18, 0.48, 0.18]} />
+      </group>
+
+      {/* Smoothly Sloped Cobble Bridge Approaches:
+          North ramp (`z = -5.9`, `rotX = -0.312`) rises UP from north bank (`y = 0.15`) to bridge (`y = 1.15`).
+          South ramp (`z = +5.9`, `rotX = +0.312`) slopes DOWN from bridge (`y = 1.15`) to south ruins (`y = 0.15`). */}
+      <Vox kind="cobble" tint="#6f776c" position={[0, 0.48, -5.9]} rotation={[-0.312, 0, 0]} size={[4.4, 0.34, 3.35]} />
+      <Vox kind="cobble" tint="#6f776c" position={[0, 0.48, 5.9]} rotation={[0.312, 0, 0]} size={[4.4, 0.34, 3.35]} />
+
+      {/* Standing North Bridgehead Ledge (`z ∈ [-4.4, -2.1]`) — remains standing after the center span drops! */}
+      <Vox kind="darkPlanks" tint="#7c5d3b" position={[0, BRIDGE_Y - 0.16, -3.25]} size={[4.4, 0.32, 2.3]} />
+      <Vox kind="cobble" tint="#687264" position={[-2.08, BRIDGE_Y + 0.08, -3.25]} size={[0.28, 0.16, 2.3]} />
+      {/* North-east ledge (`z ∈ [-3.75, -2.1]`) is open/unguarded right above the waterside dock! */}
+      <Vox kind="cobble" tint="#687264" position={[2.08, BRIDGE_Y + 0.08, -4.1]} size={[0.28, 0.16, 0.6]} />
+      {[-3.95, -2.25].map((z) => (
+        <Vox key={`wnp${z}`} kind="log" position={[-2.08, BRIDGE_Y + 0.38, z]} size={[0.18, 0.76, 0.18]} />
+      ))}
+      <Vox kind="planks" position={[-2.08, BRIDGE_Y + 0.72, -3.15]} size={[0.14, 0.1, 2.1]} />
+      <Vox kind="log" position={[2.08, BRIDGE_Y + 0.38, -3.95]} size={[0.18, 0.76, 0.18]} />
+
+      {/* Center & South Span (`z ∈ [-2.1, +4.4]`) — intact until `6.drop` knocks the pin out! */}
+      {!collapsed ? (
+        <>
+          <Vox kind="darkPlanks" tint="#7c5d3b" position={[0, BRIDGE_Y - 0.16, 1.15]} size={[4.4, 0.32, 6.5]} />
+          <Vox kind="cobble" tint="#687264" position={[-2.08, BRIDGE_Y + 0.08, 1.15]} size={[0.28, 0.16, 6.5]} />
+          <Vox kind="cobble" tint="#687264" position={[2.08, BRIDGE_Y + 0.08, 2.3]} size={[0.28, 0.16, 4.2]} />
+          {[-0.3, 1.75, 3.8].map((z) => (
+            <Vox key={`wsp${z}`} kind="log" position={[-2.08, BRIDGE_Y + 0.38, z]} size={[0.18, 0.76, 0.18]} />
+          ))}
+          <Vox kind="planks" position={[-2.08, BRIDGE_Y + 0.72, 1.05]} size={[0.14, 0.1, 6.3]} />
+          {[0.4, 2.1, 3.8].map((z) => (
+            <Vox key={`esp${z}`} kind="log" position={[2.08, BRIDGE_Y + 0.38, z]} size={[0.18, 0.76, 0.18]} />
+          ))}
+          <Vox kind="planks" position={[2.08, BRIDGE_Y + 0.72, 2.15]} size={[0.14, 0.1, 3.7]} />
+        </>
+      ) : null}
+
+      {/* Bridge support piers in the water */}
+      {[-3.2, 3.2].map((z) =>
+        [-1.7, 1.7].map((x) => (
+          <Vox key={`${x}_${z}`} kind="cobble" tint="#586155" position={[x, 0.4, z]} size={[0.7, 1.6, 0.7]} />
+        )),
+      )}
+
+      {/* South-Bank Mossy Ruin Pillars (wide at x = ±3.2 so center lane stays wide open) */}
+      <group position={[-3.2, 0.1, 7.8]}>
+        <Vox kind="cobble" tint="#5e6859" position={[0, 1.45, 0]} size={[1.1, 2.9, 1.1]} />
+        <Vox kind="leaves" tint="#3b7d31" position={[0.42, 1.55, -0.48]} size={[0.26, 1.8, 0.18]} />
+      </group>
+      <group position={[3.2, 0.1, 7.9]}>
+        <Vox kind="cobble" tint="#5e6859" position={[0, 1.2, 0]} size={[1.0, 2.4, 1.0]} />
+        <Vox kind="leaves" tint="#3b7d31" position={[-0.35, 1.2, -0.45]} size={[0.24, 1.5, 0.16]} />
+      </group>
+      {hasCraters && !collapsed ? <FistCraters position={BRIDGE.craterStone} /> : null}
+
+      <Lantern position={[-2.08, BRIDGE_Y + 1.05, -3.95]} chain={0.18} light={night || sunset ? 1.6 : 0.3} seed={21} />
+      {!collapsed ? (
+        <Lantern position={[-2.08, BRIDGE_Y + 1.05, 3.8]} chain={0.18} light={night || sunset ? 1.6 : 0.3} seed={29} />
+      ) : null}
+
+      {(
+        [
+          [-3.6, -1.8],
+          [-2.8, 2.2],
+          [3.6, -0.6],
+          [4.3, 1.9],
+          [2.7, 3.6],
+          [-4.4, 0.4],
+        ] as Array<[number, number]>
+      ).map(([x, z], i) => (
+        <Block key={`lp${i}`} position={[x, WATER_Y + 0.02, z]} size={[0.72, 0.03, 0.72]} color="#3b8232" />
+      ))}
+
+      {ring(40, 20, 48, 9).map(([x, z, h], i) => (
+        <Tree
+          key={`sw${i}`}
+          position={[x, Math.abs(z) < 6.5 ? -100 : 0, z]}
+          height={h + 0.6}
+          leaf={i % 2 ? "#35682d" : "#447c36"}
+        />
+      ))}
+
+      <GodRay
+        position={[-2.4, 6.0, -1.2]}
+        rotation={[0, 0, 0.36]}
+        width={5.2}
+        height={12}
+        color={night ? "#8fb9ff" : sunset ? "#ffad66" : "#dcffca"}
+        opacity={night ? 0.09 : 0.07}
       />
-    </mesh>
-
-    {/* North & South Swamp Muddy Banks */}
-    <Vox kind="grass" tint="#3b5e32" position={[0, -0.45, -17.5]} size={[80, 1.1, 23]} />
-    <Vox kind="grass" tint="#3b5e32" position={[0, -0.45, 17.5]} size={[80, 1.1, 23]} />
-    <Vox kind="path" tint="#695d46" position={[0, 0.1, -9.2]} size={[4.2, 0.1, 7.6]} />
-    <Vox kind="path" tint="#695d46" position={[0, 0.1, 9.2]} size={[4.2, 0.1, 7.6]} />
-
-    {/* Gentle Bridge Approaches & Plank-and-Stone Span (`BRIDGE_Y = 1.15`) */}
-    <Vox kind="cobble" tint="#6f776c" position={[0, 0.48, -5.8]} rotation={[0.28, 0, 0]} size={[4.4, 0.36, 3.4]} />
-    <Vox kind="cobble" tint="#6f776c" position={[0, 0.48, 5.8]} rotation={[-0.28, 0, 0]} size={[4.4, 0.36, 3.4]} />
-    <Vox kind="darkPlanks" tint="#7c5d3b" position={[0, BRIDGE_Y - 0.16, 0]} size={[4.4, 0.32, 8.8]} />
-    <Vox kind="cobble" tint="#687264" position={[-2.08, BRIDGE_Y + 0.08, 0]} size={[0.28, 0.16, 8.8]} />
-    <Vox kind="cobble" tint="#687264" position={[2.08, BRIDGE_Y + 0.08, -2.8]} size={[0.28, 0.16, 3.2]} />
-    <Vox kind="cobble" tint="#687264" position={[2.08, BRIDGE_Y + 0.08, 3.1]} size={[0.28, 0.16, 2.6]} />
-
-    {/* OPEN Wooden Posts & Thin Top Rail (never blocks camera sightlines like a solid stone wall!) */}
-    {[-3.8, -1.9, 0, 1.9, 3.8].map((z) => (
-      <Vox key={`wp${z}`} kind="log" position={[-2.08, BRIDGE_Y + 0.38, z]} size={[0.18, 0.76, 0.18]} />
-    ))}
-    <Vox kind="planks" position={[-2.08, BRIDGE_Y + 0.72, 0]} size={[0.14, 0.1, 8.2]} />
-    {/* East side has a clear broken gap in the middle (`z ∈ [-1.2, 1.8]`) */}
-    {[-3.8, -1.4, 2.0, 3.8].map((z) => (
-      <Vox key={`ep${z}`} kind="log" position={[2.08, BRIDGE_Y + 0.38, z]} size={[0.18, 0.76, 0.18]} />
-    ))}
-    <Vox kind="planks" position={[2.08, BRIDGE_Y + 0.72, -2.6]} size={[0.14, 0.1, 2.7]} />
-    <Vox kind="planks" position={[2.08, BRIDGE_Y + 0.72, 2.9]} size={[0.14, 0.1, 2.1]} />
-
-    {/* Bridge support piers in the water */}
-    {[-3.2, 3.2].map((z) =>
-      [-1.7, 1.7].map((x) => (
-        <Vox key={`${x}_${z}`} kind="cobble" tint="#586155" position={[x, 0.4, z]} size={[0.7, 1.6, 0.7]} />
-      )),
-    )}
-
-    {/* South-Bank & North-Bank Mossy Ruin Pillars (set wide at x = ±3.2 so center lane stays wide open!) */}
-    <group position={[-3.2, 0.1, 7.6]}>
-      <Vox kind="cobble" tint="#5e6859" position={[0, 1.45, 0]} size={[1.1, 2.9, 1.1]} />
-      <Vox kind="leaves" tint="#3b7d31" position={[0.42, 1.55, -0.48]} size={[0.26, 1.8, 0.18]} />
+      {!collapsed ? (
+        <LightPool position={[0, BRIDGE_Y + 0.02, 0]} width={4.0} depth={7.4} color={night ? "#95bcff" : "#ffb673"} opacity={0.14} />
+      ) : null}
+      <Glow position={[-2.08, BRIDGE_Y + 1.0, -3.95]} size={1.8} color={night ? "#ffbe6b" : "#bfff9c"} opacity={0.16} />
+      <Dust position={[0, BRIDGE_Y + 1.5, 0]} area={[16, 4.5, 18]} count={68} size={0.046} color={night ? "#cfe2ff" : "#ffd29d"} opacity={0.55} seed={13} speed={0.22} />
+      {night ? <Moon position={[18, 54, -82]} radius={7.5} /> : <Clouds y={46} center={[0, 0, 0]} />}
+      {night ? <Stars center={[0, 0, 0]} /> : null}
     </group>
-    <group position={[3.2, 0.1, 7.8]}>
-      <Vox kind="cobble" tint="#5e6859" position={[0, 1.2, 0]} size={[1.0, 2.4, 1.0]} />
-      <Vox kind="leaves" tint="#3b7d31" position={[-0.35, 1.2, -0.45]} size={[0.24, 1.5, 0.16]} />
-    </group>
-    <FistCraters position={BRIDGE.craterStone} />
-
-    <Lantern position={[-2.08, BRIDGE_Y + 1.05, -3.8]} chain={0.18} light={night || sunset ? 1.6 : 0.3} seed={21} />
-    <Lantern position={[-2.08, BRIDGE_Y + 1.05, 3.8]} chain={0.18} light={night || sunset ? 1.6 : 0.3} seed={29} />
-
-    {(
-      [
-        [-3.6, -1.8],
-        [-2.8, 2.2],
-        [3.4, -2.1],
-        [4.1, 1.8],
-        [2.7, 3.6],
-        [-4.4, 0.4],
-      ] as Array<[number, number]>
-    ).map(([x, z], i) => (
-      <Block key={`lp${i}`} position={[x, WATER_Y + 0.02, z]} size={[0.72, 0.03, 0.72]} color="#3b8232" />
-    ))}
-
-    {ring(40, 20, 48, 9).map(([x, z, h], i) => (
-      <Tree
-        key={`sw${i}`}
-        position={[x, Math.abs(z) < 6.5 ? -100 : 0, z]}
-        height={h + 0.6}
-        leaf={i % 2 ? "#35682d" : "#447c36"}
-      />
-    ))}
-
-    <GodRay
-      position={[-2.4, 6.0, -1.2]}
-      rotation={[0, 0, 0.36]}
-      width={5.2}
-      height={12}
-      color={night ? "#8fb9ff" : sunset ? "#ffad66" : "#dcffca"}
-      opacity={night ? 0.09 : 0.07}
-    />
-    <LightPool position={[0, BRIDGE_Y + 0.02, 0]} width={4.0} depth={7.4} color={night ? "#95bcff" : "#ffb673"} opacity={0.14} />
-    <Glow position={[-2.08, BRIDGE_Y + 1.0, -3.8]} size={1.8} color={night ? "#ffbe6b" : "#bfff9c"} opacity={0.16} />
-    <Dust position={[0, BRIDGE_Y + 1.5, 0]} area={[16, 4.5, 18]} count={68} size={0.046} color={night ? "#cfe2ff" : "#ffd29d"} opacity={0.55} seed={13} speed={0.22} />
-    {night ? <Moon position={[18, 54, -82]} radius={7.5} /> : <Clouds y={46} center={[0, 0, 0]} />}
-    {night ? <Stars center={[0, 0, 0]} /> : null}
-  </group>
-);
+  );
+};
 
 const RiverbedZone: React.FC = () => (
   <group>
@@ -326,6 +365,7 @@ const RiverbedZone: React.FC = () => (
 export const World: React.FC = () => {
   const active = useActiveShot();
   const look = active?.shot.look ?? "overworld-day";
+  const cue = active?.shot.cue ?? "";
   const night = look === "overworld-night";
   const sunset = look === "overworld-sunset";
   return (
@@ -339,7 +379,7 @@ export const World: React.FC = () => {
         <RoomZone night={night} />
       </Zone>
       <Zone name="bridge">
-        <BridgeZone night={night} sunset={sunset} />
+        <BridgeZone night={night} sunset={sunset} cue={cue} />
       </Zone>
       <Zone name="riverbed">
         <RiverbedZone />

@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, MinecraftAvatar, Vox, clamp01, gaitPose, getPose } from "../../engine";
+import { Block, MinecraftAvatar, Vox, blendPose, clamp01, gaitPose, getPose } from "../../engine";
 import type { FaceName, MinecraftAvatarProps, Pose, Timing, Vec3 } from "../../engine";
 import {
   ADULT,
@@ -85,6 +85,9 @@ export {
   ramp,
   villagerChest,
   villagerFace,
+  blendPose,
+  gaitPose,
+  getPose,
 };
 export type { Mood, MonsterProps, Pose, Vec3 };
 
@@ -100,17 +103,29 @@ export const posed = (clip: Parameters<typeof getPose>[0], t: number, patch: Par
 
 /**
  * Exact top surface Y of `BridgeZone` (`world.tsx`) at any Z coordinate:
- *   - `|z| <= 4.42` : flat wooden bridge deck (`BRIDGE_Y = 1.15`)
- *   - `4.42 < |z| < 7.45` : sloped cobble approach ramp (`position=[0, 0.48, ±5.8], rot=∓0.28, size=[4.4, 0.36, 3.4]`)
- *   - `|z| >= 7.45` : north/south swamp bank path (`top = 0.15`)
+ *   - `|z| <= 4.38` : flat wooden bridge deck (`BRIDGE_Y = 1.15`)
+ *   - `4.38 < |z| < 7.52` : sloped cobble approach ramp (`position=[0, 0.48, ∓5.9], rot=[∓0.312,0,0], size=[4.4, 0.34, 3.35]`)
+ *   - `|z| >= 7.52` : north/south swamp bank path (`top = 0.15`)
+ * Accounts for `footHalfDepth` so the uphill toe of a character's shoe/foot never clips the sloped cobble plane!
  */
-export function bridgeSurfaceY(z: number): number {
+function bridgePlaneAtAbsZ(az: number): number {
+  if (az <= 4.38) return 1.15;
+  if (az >= 7.52) return 0.15;
+  return Math.min(1.15, Math.max(0.15, 0.6418 + 0.3226 * (5.9522 - az)));
+}
+
+export function bridgeSurfaceY(z: number, footHalfDepth = 0.18): number {
   const az = Math.abs(z);
-  if (az <= 4.6) return 1.15;
-  if (az >= 7.45) return 0.15;
-  const rampTop = 0.658 + 0.288 * (5.75 - az);
-  const deckBlend = clamp01((4.88 - az) / 0.28);
-  return Math.max(0.15, rampTop * (1 - deckBlend) + 1.15 * deckBlend);
+  const azUphill = Math.max(0, az - footHalfDepth);
+  return Math.max(bridgePlaneAtAbsZ(az), bridgePlaneAtAbsZ(azUphill));
+}
+
+/** Exact top Y of `<SeesawPlank position={[x, baseY, centerZ]} tilt={tilt} />` at world `z`. */
+export function seesawSurfaceY(baseY: number, centerZ: number, tilt: number, z: number, footHalfDepth = 0.18): number {
+  const dz = z - centerZ;
+  const yCenter = baseY + 0.34 + 0.04 * Math.cos(tilt) - dz * Math.sin(tilt);
+  const yToe = yCenter + Math.abs(Math.sin(tilt)) * footHalfDepth;
+  return yToe + 0.01;
 }
 
 /** Exact top Y of `<SlimeBlockProp position={[x, baseY, z]} scale={scale} squash={squash} />`. */
@@ -228,6 +243,43 @@ export const skyJoyPose = (t: number): Pose => ({
   kneeR: [0.45, 0, 0],
   kneeL: [0.45, 0, 0],
 });
+
+/** Energetic ankle-snag trip -> head-over-heels ledge tumble (`6.rope`). */
+export const tripOverLedgePose = (t: number, trip: number, tumble: number): Pose => {
+  const wSpin = Math.sin(t * 16) * (0.35 + 0.55 * trip);
+  return {
+    ...getPose("idle", t),
+    bodyPitch: 0.55 * trip + 0.55 * tumble,
+    bodyRoll: -0.22 * trip + Math.cos(t * 10) * 0.14 * tumble,
+    bodyY: -0.06 * trip,
+    torso: [0.18 * trip, Math.sin(t * 12) * 0.14 * trip, 0],
+    head: [-0.28 * trip + 0.35 * tumble, Math.sin(t * 9) * 0.18, 0],
+    armR: [-1.45 * trip + wSpin, -0.28, 0.42 * trip],
+    armL: [-1.45 * trip - wSpin, 0.28, -0.42 * trip],
+    legR: [-1.18 * trip + Math.sin(t * 14) * 0.35 * tumble, 0, 0.12 * trip],
+    kneeR: [0.92 * trip, 0, 0],
+    legL: [0.68 * trip - Math.sin(t * 14) * 0.35 * tumble, 0, -0.1 * trip],
+    kneeL: [0.48 * trip, 0, 0],
+  };
+};
+
+/** Active windmilling limbs & kicking legs during freefall (`6.three`, `6.block`). */
+export const windmillFallPose = (t: number): Pose => {
+  const s = Math.sin(t * 15);
+  const c = Math.cos(t * 15);
+  return {
+    ...getPose("fall", t),
+    bodyPitch: 0.24 + Math.sin(t * 6) * 0.1,
+    bodyRoll: Math.cos(t * 7) * 0.14,
+    head: [0.42, Math.sin(t * 8) * 0.16, 0],
+    armR: [-1.85 + s * 0.78, -0.22, 0.44 + c * 0.18],
+    armL: [-1.85 - s * 0.78, 0.22, -0.44 - c * 0.18],
+    legR: [s * 0.62, 0, 0.1],
+    legL: [-s * 0.62, 0, -0.1],
+    kneeR: [0.38 + Math.max(0, -s) * 0.45, 0, 0],
+    kneeL: [0.38 + Math.max(0, s) * 0.45, 0, 0],
+  };
+};
 
 const STORY_FACE_MAP: Partial<Record<FaceName, FaceName>> = {
   laugh: "grin",
@@ -562,11 +614,12 @@ export const RogueGolem: React.FC<{
 
 // ----------------------------------------------------------------------------- Custom Story Props
 
-/** Wooden Minecraft wheelbarrow with stained slime-green tray and all 4 tiny dads peeking over the rim! */
+/** 3-Wheel Wooden Minecraft Slime Cart / Wheelbarrow with 1 front wheel + 2 rear axle wheels so tiny slimes can roll it smoothly! */
 export const Wheelbarrow: React.FC<{
   position?: Vec3;
   rotationY?: number;
   tilt?: number;
+  rollZ?: number;
   wheelSpin?: number;
   withDads?: boolean;
   dadBounce?: number;
@@ -578,6 +631,7 @@ export const Wheelbarrow: React.FC<{
   position = [0, 0, 0],
   rotationY = 0,
   tilt = 0,
+  rollZ = 0,
   wheelSpin = 0,
   withDads = false,
   dadBounce = 0,
@@ -587,16 +641,22 @@ export const Wheelbarrow: React.FC<{
   withSlimeBlock = false,
 }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
-    <group rotation={[tilt, 0, 0]}>
-      <group position={[0, 0.22, 0.6]} rotation={[wheelSpin, 0, 0]}>
+    <group rotation={[tilt, 0, rollZ]}>
+      {/* Front Lead Wheel (`z = +0.58`) */}
+      <group position={[0, 0.21, 0.58]} rotation={[wheelSpin, 0, 0]}>
         <Vox kind="darkPlanks" size={[0.13, 0.42, 0.42]} />
-        <Block size={[0.15, 0.13, 0.13]} color="#6e7075" />
+        <Block size={[0.16, 0.13, 0.13]} color="#6e7075" />
       </group>
-      {[-0.28, 0.28].map((x) => (
-        <Vox key={x} kind="log" position={[x, 0.34, -0.1]} rotation={[0.1, 0, 0]} size={[0.08, 0.08, 1.4]} />
+      {/* Twin Rear Cart Wheels + Iron Axle (`z = -0.34`) */}
+      <Block position={[0, 0.2, -0.34]} size={[0.88, 0.06, 0.06]} color="#595d63" />
+      {[-0.42, 0.42].map((wx) => (
+        <group key={`rw${wx}`} position={[wx, 0.2, -0.34]} rotation={[wheelSpin, 0, 0]}>
+          <Vox kind="darkPlanks" size={[0.11, 0.4, 0.4]} />
+          <Block size={[0.14, 0.12, 0.12]} color="#6e7075" />
+        </group>
       ))}
-      {[-0.26, 0.26].map((x) => (
-        <Vox key={`l${x}`} kind="darkPlanks" position={[x, 0.15, -0.4]} size={[0.08, 0.3, 0.08]} />
+      {[-0.28, 0.28].map((x) => (
+        <Vox key={x} kind="log" position={[x, 0.34, -0.1]} rotation={[0.06, 0, 0]} size={[0.08, 0.08, 1.4]} />
       ))}
       <Vox kind="planks" position={[0, 0.38, 0.08]} size={[0.78, 0.07, 0.94]} />
       <Vox kind="planks" position={[-0.37, 0.5, 0.08]} size={[0.07, 0.2, 0.94]} />
@@ -758,7 +818,7 @@ export const SwampSign: React.FC<{ position?: Vec3; rotationY?: number }> = ({ p
   </group>
 );
 
-/** Deep iron-golem fist craters smashed into stone (`5.craters`). */
+/** Deep iron-golem fist craters smashed into stone (`5.craters`) — low-profile rim so characters never clip shards! */
 export const FistCraters: React.FC<{ position?: Vec3 }> = ({ position = [0, 0, 0] }) => (
   <group position={position}>
     {[
@@ -766,13 +826,41 @@ export const FistCraters: React.FC<{ position?: Vec3 }> = ({ position = [0, 0, 0
       [0.62, -0.34],
     ].map(([x, z], i) => (
       <group key={i} position={[x, 0, z]}>
-        <Block position={[0, 0.015, 0]} size={[0.46, 0.03, 0.46]} color="#1d1f21" />
-        <Vox kind="cobble" tint="#d8d8d0" position={[-0.24, 0.05, 0.12]} rotation={[0.2, 0.4, 0]} size={[0.16, 0.09, 0.16]} />
-        <Vox kind="cobble" tint="#e2e2da" position={[0.22, 0.05, -0.14]} rotation={[-0.25, 0.2, 0]} size={[0.16, 0.08, 0.14]} />
+        <Block position={[0, 0.014, 0]} size={[0.46, 0.028, 0.46]} color="#1d1f21" />
+        <Block position={[-0.22, 0.024, 0.12]} size={[0.16, 0.048, 0.16]} color="#d8d8d0" />
+        <Block position={[0.21, 0.022, -0.14]} size={[0.16, 0.044, 0.14]} color="#e2e2da" />
       </group>
     ))}
   </group>
 );
+
+/** Taut bridge-rigging rope that snaps & whips around Hero's ankle (`6.rope`), visually tripping him off the ledge! */
+export const SnappingBridgeRope: React.FC<{
+  anchor: Vec3;
+  ankleTarget: Vec3;
+  snap: number;
+}> = ({ anchor, ankleTarget, snap }) => {
+  const segs = 8;
+  return (
+    <group>
+      {Array.from({ length: segs }, (_, i) => {
+        const u = (i + 0.5) / segs;
+        const whip = Math.sin(u * Math.PI) * Math.sin(snap * Math.PI * 2.5) * 0.24;
+        const x = anchor[0] + (ankleTarget[0] - anchor[0]) * u + whip * 0.35;
+        const y = anchor[1] + (ankleTarget[1] - anchor[1]) * u + Math.sin(u * Math.PI) * (snap > 0.15 ? 0.14 : -0.04);
+        const z = anchor[2] + (ankleTarget[2] - anchor[2]) * u + whip;
+        return (
+          <Block
+            key={i}
+            position={[x, y, z]}
+            size={[0.065, 0.065, 0.18]}
+            color={i % 2 === 0 ? "#b88c4a" : "#966d34"}
+          />
+        );
+      })}
+    </group>
+  );
+};
 
 /** Braided swamp-vine rope (`6.rope`). */
 export const VineRope: React.FC<{ top: Vec3; length: number; sway?: number }> = ({ top, length, sway = 0 }) => {
@@ -844,10 +932,10 @@ export const TwinWhiteCraters: React.FC<{ position?: Vec3; rotationY?: number; f
   <group position={position} rotation={[0, rotationY, 0]} scale={Math.max(0.01, fresh)}>
     {[-0.42, 0.42].map((x) => (
       <group key={x} position={[x, 0, 0]}>
-        <Block position={[0, 0.02, 0]} size={[0.5, 0.04, 0.5]} color="#e6e6de" />
-        <Block position={[0, 0.044, 0]} size={[0.3, 0.028, 0.3]} color="#2c2f33" />
-        <Block position={[-0.2, 0.065, 0.16]} size={[0.12, 0.075, 0.12]} color="#f2f2ea" />
-        <Block position={[0.18, 0.06, -0.16]} size={[0.11, 0.065, 0.11]} color="#dcdcd4" />
+        <Block position={[0, 0.016, 0]} size={[0.5, 0.032, 0.5]} color="#e6e6de" />
+        <Block position={[0, 0.034, 0]} size={[0.3, 0.024, 0.3]} color="#2c2f33" />
+        <Block position={[-0.2, 0.028, 0.16]} size={[0.12, 0.048, 0.12]} color="#f2f2ea" />
+        <Block position={[0.18, 0.026, -0.16]} size={[0.11, 0.044, 0.11]} color="#dcdcd4" />
       </group>
     ))}
   </group>

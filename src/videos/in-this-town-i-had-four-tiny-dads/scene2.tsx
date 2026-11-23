@@ -59,12 +59,12 @@ export const scene2 = storyScene(timing, {
           <>
             <NeighborBigDad
               variant={2}
-              position={[hopIn.position[0] + jolt(t, hit, 0.25), hopIn.position[1] + hopIn.hop, hopIn.position[2]]}
+              position={[hopIn.position[0] + jolt(t, hit, 0.12), hopIn.position[1] + hopIn.hop, hopIn.position[2]]}
               rotationY={0.55}
               squash={hopIn.squash + pop(t, hit, 0.24) * 0.3}
             />
             <Villager
-              position={[0.42 + fall * 1.15, PATH_Y + Math.sin(fall * Math.PI) * 0.28, 0.45]}
+              position={[0.48 + fall * 1.15, PATH_Y + Math.sin(fall * Math.PI) * 0.28, 0.45]}
               rotationY={-0.55}
               scale={ADULT}
               robe={ROBE.smith}
@@ -140,8 +140,8 @@ export const scene2 = storyScene(timing, {
           <>
             <LowSoupTable position={ROOM_MARKS.table} t={t} />
             <Hero
-              position={[-0.98, GROUND_SIT, 0.32]}
-              rotationY={0.65}
+              position={[-1.32, GROUND_SIT, -0.06]}
+              rotationY={0.72}
               pose={groundSitPose(t, {
                 head: [0.2, Math.sin(t * 4.2) * 0.24, 0],
                 armR: [-0.95 + Math.sin(t * 6) * 0.12, -0.2, 0],
@@ -151,7 +151,7 @@ export const scene2 = storyScene(timing, {
             <TinyDad which={1} position={[-0.78, 0, -0.58]} rotationY={0.2} hop={b1.hop} squash={b1.squash} mood="angry" />
             <TinyDad which={2} position={[-0.22, 0, -0.66]} rotationY={0.05} hop={b2.hop} squash={b2.squash} mood="angry" />
             <TinyDad which={3} position={[0.32, 0, -0.58]} rotationY={-0.15} hop={b3.hop} squash={b3.squash} mood="happy" />
-            <TinyDad which={4} position={[0.58, 0, 0.08]} rotationY={-0.55} hop={b4.hop} squash={b4.squash} mood="angry" />
+            <TinyDad which={4} position={[0.76, 0, 0.12]} rotationY={-0.55} hop={b4.hop} squash={b4.squash} mood="angry" />
           </>
         );
       },
@@ -177,14 +177,14 @@ export const scene2 = storyScene(timing, {
             <LowSoupTable position={ROOM_MARKS.table} t={t} />
             <TinyDad
               which={3}
-              position={[0.22 - k * 0.47, 0.36 + Math.sin(k * Math.PI) * 0.28 - k * 0.04, -0.18 + k * 0.33]}
+              position={[0.24 - k * 0.49, 0.36 + k * 0.2 + Math.sin(k * Math.PI) * 0.26, 0.38 - k * 0.23]}
               rotationY={-0.25 + k * 1.35}
               squash={pop(t, slipAt + 0.16, 0.28) * 0.48}
               mood={k > 0.25 ? "scared" : "happy"}
             />
-            <TinyDad which={1} position={[-0.86, 0, -0.42]} rotationY={0.55} lookAt={[-0.25, 0.45, 0.15]} mood="sad" />
-            <TinyDad which={2} position={[0.52, 0, -0.42]} rotationY={-0.55} lookAt={[-0.25, 0.45, 0.15]} mood="scared" />
-            <TinyDad which={4} position={[-0.25, 0, 0.72]} rotationY={3.14} lookAt={[-0.25, 0.45, 0.15]} mood="scared" />
+            <TinyDad which={1} position={[-0.86, 0, -0.56]} rotationY={0.55} lookAt={[-0.25, 0.45, 0.15]} mood="sad" />
+            <TinyDad which={2} position={[0.52, 0, -0.56]} rotationY={-0.55} lookAt={[-0.25, 0.45, 0.15]} mood="scared" />
+            <TinyDad which={4} position={[-0.25, 0, 0.84]} rotationY={3.14} lookAt={[-0.25, 0.45, 0.15]} mood="scared" />
             {t >= slipAt + 0.1 ? (
               <Bits position={[-0.25, 0.58, 0.15]} t={t - (slipAt + 0.1)} color="#7aff54" count={12} power={0.9} />
             ) : null}
@@ -424,10 +424,10 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <BridgePinPost position={[0, BRIDGE_Y, -4.2]} barLift={dropBar * 0.72} pinOut={dropBar * 0.35} />
-            <TinyDad which={1} position={[-1.25, BRIDGE_Y, -3.65]} rotationY={0.2} hop={b(0).hop} squash={b(0).squash} mood="angry" />
-            <TinyDad which={2} position={[-0.42, BRIDGE_Y, -3.55]} rotationY={0.1} hop={b(0.25).hop} squash={b(0.25).squash} mood="scared" />
-            <TinyDad which={3} position={[0.42, BRIDGE_Y, -3.55]} rotationY={-0.1} hop={b(0.5).hop} squash={b(0.5).squash} mood="scared" />
-            <TinyDad which={4} position={[1.25, BRIDGE_Y, -3.65]} rotationY={-0.2} hop={b(0.75).hop} squash={b(0.75).squash} mood="angry" />
+            <TinyDad which={1} position={[-1.12, BRIDGE_Y, -3.65]} rotationY={0.2} hop={b(0).hop} squash={b(0).squash} mood="angry" />
+            <TinyDad which={2} position={[-0.38, BRIDGE_Y, -3.55]} rotationY={0.1} hop={b(0.25).hop} squash={b(0.25).squash} mood="scared" />
+            <TinyDad which={3} position={[0.38, BRIDGE_Y, -3.55]} rotationY={-0.1} hop={b(0.5).hop} squash={b(0.5).squash} mood="scared" />
+            <TinyDad which={4} position={[1.12, BRIDGE_Y, -3.65]} rotationY={-0.2} hop={b(0.75).hop} squash={b(0.75).squash} mood="angry" />
           </>
         );
       },
