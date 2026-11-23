@@ -209,16 +209,16 @@ const BridgeZone: React.FC<{ night: boolean; sunset: boolean; cue: string }> = (
 
       {/* North & South Swamp Banks + Deep 4m Open-Sky River Gorge */}
       <Vox kind="grass" tint="#3b5e32" position={[-18.9, -0.45, -17.5]} size={[42.2, 1.1, 23]} />
-      <Vox kind="grass" tint="#3b5e32" position={[22.6, -0.45, -17.5]} size={[34.8, 1.1, 23]} />
-      <Vox kind="grass" tint="#3b5e32" position={[3.7, -0.45, -18.95]} size={[3.0, 1.1, 20.1]} />
+      <Vox kind="grass" tint="#3b5e32" position={[23.9, -0.45, -17.5]} size={[32.2, 1.1, 23]} />
+      <Vox kind="grass" tint="#3b5e32" position={[5.0, -0.45, -18.95]} size={[5.6, 1.1, 20.1]} />
       <Vox kind="grass" tint="#3b5e32" position={[0, -0.45, 17.5]} size={[80, 1.1, 23]} />
-      {/* Deep stone gorge cliff walls beneath upper banks (leaving x ∈ [2.25, 5.20], z ∈ [-8.85, -1.5] open to the sunset sky!) */}
+      {/* Deep stone gorge cliff walls beneath upper banks (leaving x ∈ [2.25, 7.80], z ∈ [-8.85, +6.0] wide open to sky & cameras!) */}
       <Vox kind="cobble" tint="#4d574a" position={[-18.9, -1.95, -17.5]} size={[42.2, 2.0, 23]} />
-      <Vox kind="cobble" tint="#4d574a" position={[22.6, -1.95, -17.5]} size={[34.8, 2.0, 23]} />
-      <Vox kind="cobble" tint="#4d574a" position={[3.7, -1.95, -18.95]} size={[3.0, 2.0, 20.1]} />
+      <Vox kind="cobble" tint="#4d574a" position={[23.9, -1.95, -17.5]} size={[32.2, 2.0, 23]} />
+      <Vox kind="cobble" tint="#4d574a" position={[5.0, -1.95, -18.95]} size={[5.6, 2.0, 20.1]} />
       <Vox kind="cobble" tint="#4d574a" position={[0, -1.95, 17.5]} size={[80, 2.0, 23]} />
       {/* Sheer mossy cliff face dropping from the broken east bridgehead (`x = 2.08`) down to the lower boardwalk! */}
-      <Vox kind="cobble" tint="#556052" position={[2.08, -0.88, -5.45]} size={[0.32, 3.82, 6.7]} />
+      <Vox kind="cobble" tint="#556052" position={[2.08, -0.88, -5.45]} size={[0.28, 3.82, 6.7]} />
 
       <Vox kind="path" tint="#695d46" position={[0, 0.1, -9.35]} size={[4.2, 0.1, 7.3]} />
       <Vox kind="path" tint="#695d46" position={[0, 0.1, 9.35]} size={[4.2, 0.1, 7.3]} />

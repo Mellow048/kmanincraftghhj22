@@ -94,7 +94,7 @@ export const scene1 = storyScene(timing, {
               walk={d * 1.15}
             />
             <Villager
-              position={[-2.35, PATH_Y, -5.2]}
+              position={[-2.62, PATH_Y, -5.2]}
               rotationY={0.95}
               scale={ADULT}
               robe={ROBE.brown}

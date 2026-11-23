@@ -92,7 +92,7 @@ export const scene3 = storyScene(timing, {
         const wind = tw(t, Math.max(0, bounceAt - 0.28), bounceAt);
         const launch = tw(t, bounceAt, w("3.friday", "roof") + 0.35);
         const dadSq = 0.28 * wind + pop(t, bounceAt, 0.3) * 0.38;
-        const dadTopY = PATH_Y + 1.36 * (1 - dadSq * 0.28);
+        const dadTopY = PATH_Y + 1.38 * (1 - dadSq * 0.08);
         const kidY = dadTopY + launch * 2.15 + Math.sin(launch * Math.PI) * 1.05;
         const kidX = 4.85 + launch * 1.95;
         const b2 = slimeBounce(t, 1.7, 0.28, 0.35);
@@ -136,10 +136,10 @@ export const scene3 = storyScene(timing, {
       ...cam.push({
         on: [4.35, 0.92, 2.85],
         onTo: [4.35, 0.48, 3.55],
-        dist: 4.55,
-        to: 3.45,
-        yaw: -44,
-        pitch: 22,
+        dist: 4.35,
+        to: 3.35,
+        yaw: -58,
+        pitch: 24,
         fov: 42,
         fovTo: 39,
       }),
@@ -183,12 +183,12 @@ export const scene3 = storyScene(timing, {
       look: "overworld-day",
       ...cam.orbit({
         on: [4.35, 0.88, 4.25],
-        dist: 4.25,
-        distTo: 3.4,
-        yaw: 34,
-        yawTo: 10,
-        pitch: 8,
-        pitchTo: 5,
+        dist: 3.95,
+        distTo: 3.25,
+        yaw: -38,
+        yawTo: -18,
+        pitch: 10,
+        pitchTo: 6,
         fov: 40,
       }),
       handheld: 0.014,

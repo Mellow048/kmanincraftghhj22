@@ -262,7 +262,7 @@ export const scene2 = storyScene(timing, {
             <TinyDad which={1} position={[-0.95, 0, -1.65]} rotationY={0.2} squash={tip * 0.32} />
             <TinyDad which={2} position={[-0.95 + tip * 0.48, 0.37 * (1 - tip) + Math.sin(tip * Math.PI) * 0.18, -1.6]} rotationY={0.55} squash={tip * 0.34} />
             <TinyDad which={3} position={[-0.95 - tip * 0.46, 0.74 * (1 - tip) + Math.sin(tip * Math.PI) * 0.22, -1.55]} rotationY={-0.45} mood="scared" />
-            <TinyDad which={4} position={[-0.95 + tip * 0.18, 1.11 * (1 - tip) + Math.sin(tip * Math.PI) * 0.26, -1.45]} rotationY={0.18} mood="happy" />
+            <TinyDad which={4} position={[-0.95 + tip * 0.14, 1.11 * (1 - tip) + Math.sin(tip * Math.PI) * 0.26, -1.45 + tip * 0.34]} rotationY={0.18} mood="happy" />
           </>
         );
       },

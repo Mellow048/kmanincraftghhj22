@@ -314,15 +314,15 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-sunset",
       ...cam.orbit({
-        on: [1.75, BRIDGE_Y + 0.52, -3.32],
-        onTo: [3.35, -0.58, -3.85],
-        dist: 4.15,
-        distTo: 5.55,
-        yaw: -144,
-        yawTo: -162,
-        pitch: 18,
-        pitchTo: 42,
-        fov: 45,
+        on: [2.15, BRIDGE_Y + 0.35, -3.35],
+        onTo: [3.25, -0.85, -4.65],
+        dist: 4.95,
+        distTo: 6.45,
+        yaw: 36,
+        yawTo: 20,
+        pitch: 20,
+        pitchTo: 28,
+        fov: 46,
       }),
       fovTo: 48,
       shake: 0.032,
@@ -330,7 +330,7 @@ export const scene6 = storyScene(timing, {
         sceneImpact("6.scoop", "6.rope", "snapping", 0.082, 0.36),
         sceneImpact("6.scoop", "6.rope", "pulled", 0.075, 0.36),
       ],
-      note: "HEART-STOPPING 'OH NO!!' CLIFF PLUNGE: snapping cable violently yanks Hero's ankle -> Hero grabs a crumbling cliff stone that RIPS LOOSE -> Hero pitches HEADFIRST (135° full-3D tumble + wind streaks!) over the 4m cliff toward EMPTY planks while Dad #1 frantically sprint-pushes the cart from `z = -7.35`!",
+      note: "UNOBSTRUCTED OPEN-GORGE CLIFF PLUNGE (`yaw: 36->20°` from the open river side!): snapping cable yanks Hero's ankle -> crumbling cliff stone rips free -> Hero pitches HEADFIRST over the 4m cliff while Dad #1 is visibly sprinting down the boardwalk below pushing the cart to catch him!",
       stage: (t, { p }) => {
         const snapAt = Math.min(0.22, w("6.rope", "snapping"));
         const yankAt = Math.max(0.26, Math.min(0.55, w("6.rope", "pulled")));
@@ -455,19 +455,19 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-sunset",
       ...cam.orbit({
-        on: [3.55, DOCK_Y + 1.65, -4.35],
-        onTo: [3.55, DOCK_Y + 1.25, -3.55],
-        dist: 5.35,
-        distTo: 4.15,
-        yaw: 142,
-        yawTo: 166,
-        pitch: 22,
-        pitchTo: 12,
+        on: [3.55, DOCK_Y + 2.05, -4.15],
+        onTo: [3.55, DOCK_Y + 1.65, -3.55],
+        dist: 5.55,
+        distTo: 4.45,
+        yaw: 34,
+        yawTo: 16,
+        pitch: 18,
+        pitchTo: 11,
         fov: 46,
       }),
       shake: 0.024,
       impacts: [sceneImpact("6.scoop", "6.three", "wheelbarrow", 0.058, 0.32)],
-      note: "HEROIC CART INTERCEPT + #3 SHEET SNAG: Dad #1 sprints full-tilt behind the handles ramming the covered cart (`z: -5.35 -> -3.53`) right underneath headfirst-plummeting Hero as Dad #3 slams onto the sheet!",
+      note: "WIDE-OPEN RIVER GORGE ANGLE (`yaw: 34->16°` looking straight up the boardwalk!): Dad #1 sprints full-tilt behind the handles ramming the covered cart right underneath headfirst-plummeting Hero as Dad #3 slams onto the sheet!",
       stage: (t) => {
         const hitAt = w("6.three", "wheelbarrow");
         const pushIn = tw(t, 0, Math.max(0.45, hitAt));
@@ -478,16 +478,16 @@ export const scene6 = storyScene(timing, {
         const cartZ = -5.35 + pushIn * 1.82;
         const pushBounce = slimeBounce(t, 4.6, 0.15 * (1 - rebound * 0.7), 0.1);
 
-        // Dad #3 plummets ahead of Hero, squishing onto the covered cart (`DOCK_Y + 1.62 = -1.06`, zero OBB hit!) and snagging the sheet!
-        const d3x = 3.55 - rebound * 1.08;
+        // Dad #3 plummets ahead of Hero, squishing onto the covered cart (`DOCK_Y + 1.76`, zero OBB hit!) and vaulting cleanly east!
+        const d3x = 3.55 + Math.sqrt(rebound) * 1.06;
         const d3y =
           rebound <= 0.01
-            ? 0.45 - fallIn * 1.51
-            : (DOCK_Y + 1.62) * (1 - rebound) + DOCK_Y * rebound + Math.sin(rebound * Math.PI) * 0.48;
-        const d3z = cartZ + 0.08 + rebound * 0.14;
+            ? 0.45 - fallIn * 1.35
+            : (DOCK_Y + 1.76) * (1 - rebound) + DOCK_Y * rebound + Math.sin(rebound * Math.PI) * 0.68;
+        const d3z = cartZ + 0.08 + rebound * 0.22;
 
-        // Hero hurtles fast & headfirst down through the sunset gorge (`centerY: +1.25 -> -0.12`) with continuous 3D tumble!
-        const heroCenterY = 1.25 - (fallIn * 0.88 + rebound * 0.49);
+        // Hero hurtles fast & headfirst down through the sunset gorge (`centerY: +0.78 -> +0.02`) inside the upper half of the 9:16 frame!
+        const heroCenterY = 0.78 - (fallIn * 0.52 + rebound * 0.24);
         const tumblePitch = 2.42 + (fallIn + rebound) * 1.45;
         const tumbleRoll = 0.24 * Math.cos(t * 9);
         return (
@@ -529,7 +529,7 @@ export const scene6 = storyScene(timing, {
 
             {/* Rushing speed streaks + headfirst-somersaulting Hero hurtling down overhead! */}
             <FallStreaks position={[3.55, heroCenterY, -3.45]} t={t} count={12} radius={0.88} span={2.2} />
-            <group position={[3.55, heroCenterY, -3.45]} rotation={[tumblePitch, 2.75, tumbleRoll]}>
+            <group position={[3.55, heroCenterY, -3.45]} rotation={[tumblePitch, 0.25, tumbleRoll]}>
               <group position={[0, -0.47, 0]}>
                 <Hero position={[0, 0, 0]} rotationY={0} pose={windmillFallPose(t)} face="fear" />
               </group>
@@ -553,28 +553,27 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-sunset",
       ...cam.orbit({
-        on: [3.55, DOCK_Y + 1.15, -3.55],
+        on: [3.55, DOCK_Y + 1.55, -3.55],
         onTo: [3.55, DOCK_Y + 1.35, -3.45],
-        dist: 4.65,
-        distTo: 3.65,
-        yaw: -140,
-        yawTo: -166,
-        pitch: 19,
+        dist: 4.95,
+        distTo: 3.85,
+        yaw: 24,
+        yawTo: -10,
+        pitch: 18,
         pitchTo: 9,
         fov: 45,
       }),
       shake: 0.022,
       impacts: [sceneImpact("6.scoop", "6.block", "flew", 0.055, 0.32)],
-      note: "SPLIT-SECOND UNVEIL INSIDE THE BRACED CART: Dad #1 locks the cart handles in place with wheel-skid puffs as the white sheet whips away, revealing the glowing Slime Block inside the cart milliseconds before tumbling Hero hits!",
+      note: "WIDE-OPEN RIVER CANYON REVEAL (`yaw: 24 -> -10°`): Dad #1 locks the cart handles in place with wheel-skid puffs as the white sheet whips away, revealing the glowing Slime Block inside the cart milliseconds before tumbling Hero hits!",
       stage: (t) => {
         const fly = tw(t, 0.02, w("6.block", "flew") + 0.34);
-        const dropHero = tw(t, 0.02, 1.35);
+        const dropHero = tw(t, 0.02, 1.65);
         const b1 = slimeBounce(t, 3.0, 0.14, 0.0);
         const b3 = slimeBounce(t, 3.2, 0.2, 0.35);
         const sq = pop(t, 0.14, 0.28) * 0.24;
         const topY = cartSlimeTopY(DOCK_Y, 0.88, sq);
-        // Hero hurtles through the final 1.9m of freefall (`centerY: +1.12 -> topY + 0.56 = -0.80`), completing his flip right above the Slime Block!
-        const heroCenterY = Math.max(topY + 0.56, 1.12 - dropHero * 1.92);
+        const heroCenterY = Math.max(topY + 0.56, 0.38 - dropHero * 1.18);
         const tumblePitch = 4.25 + dropHero * 1.92;
         return (
           <>
@@ -594,28 +593,28 @@ export const scene6 = storyScene(timing, {
             <TinyDad which={1} position={[3.55, DOCK_Y, -4.59]} rotationY={SOUTH} hop={b1.hop} squash={b1.squash + 0.1} mood="happy" />
             {fly < 0.55 ? <Puffs position={[3.55, DOCK_Y + 0.12, -3.88]} count={7} color="#f5e1be" /> : null}
 
-            {/* White canvas sheet whipping dramatically clear across the left foreground (`x <= 2.55`, well clear of Hero!) */}
+            {/* White canvas sheet whipping dramatically clear across the left (`x <= 2.55`, well clear of Hero & camera!) */}
             <Vox
               kind="wool"
               tint="#ebe4d2"
-              position={[2.55 - fly * 1.65, DOCK_Y + 1.55 + fly * 1.35, -2.78 + fly * 0.65]}
+              position={[2.55 - fly * 1.55, DOCK_Y + 1.55 + fly * 1.35, -3.25 - fly * 0.45]}
               rotation={[fly * 1.85, fly * 1.95, fly * 1.45]}
               size={[0.96, 0.08, 1.04]}
             />
 
-            {/* Dad #3 cheering beside the cart (`x = 2.46`) */}
-            <TinyDad which={3} position={[2.46, DOCK_Y, -3.35]} rotationY={EAST - 0.25} hop={b3.hop} squash={b3.squash} mood="happy" />
+            {/* Dad #3 cheering on the east side of the cart (`x = 4.58`) where he vaulted! */}
+            <TinyDad which={3} position={[4.58, DOCK_Y, -3.35]} rotationY={WEST + 0.25} hop={b3.hop} squash={b3.squash} mood="happy" />
 
             {/* High-speed wind streaks + tumbling Hero hurtling straight down onto the Slime Block in the cart! */}
             <FallStreaks position={[3.55, heroCenterY, -3.45]} t={t} count={10} radius={0.86} span={1.95} />
-            <group position={[3.55, heroCenterY, -3.45]} rotation={[tumblePitch, 2.8, Math.sin(t * 8) * 0.14]}>
+            <group position={[3.55, heroCenterY, -3.45]} rotation={[tumblePitch, 0.2, Math.sin(t * 8) * 0.14]}>
               <group position={[0, -0.47, 0]}>
                 <Hero position={[0, 0, 0]} rotationY={0} pose={windmillFallPose(t)} face="wow" />
               </group>
             </group>
 
-            <TinyDad which={2} position={[2.82, heroCenterY + 0.38, -3.12]} rotationY={-2.7} squash={-0.18} mood="scared" />
-            <TinyDad which={4} position={[4.28, heroCenterY + 0.44, -3.82]} rotationY={2.9} squash={-0.18} mood="scared" />
+            <TinyDad which={2} position={[2.82, heroCenterY + 0.38, -3.12]} rotationY={0.35} squash={-0.18} mood="scared" />
+            <TinyDad which={4} position={[4.28, heroCenterY + 0.44, -3.82]} rotationY={-0.35} squash={-0.18} mood="scared" />
           </>
         );
       },
@@ -625,28 +624,29 @@ export const scene6 = storyScene(timing, {
       zone: "bridge",
       look: "overworld-sunset",
       ...cam.pan({
-        from: [-0.85, 1.45, -8.25],
-        on: [3.55, DOCK_Y + 1.35, -3.45],
-        onTo: [3.1, 4.75, -5.05],
+        from: [6.45, 0.35, 1.35],
+        on: [3.55, DOCK_Y + 1.05, -3.45],
+        onTo: [3.15, 4.65, -4.85],
         fov: 46,
-        fovTo: 42,
+        fovTo: 43,
       }),
       shake: 0.024,
       impacts: [sceneImpact("6.scoop", "6.boing", "bounced", 0.082, 0.4)],
-      note: "EPIC 7-METER SUNSET GORGE CATAPULT: Hero slams into the Slime Block inside Dad #1's cart, compressing it deep and rocketing Hero + all 4 tiny dads high out of the gorge and above the swamp trees!",
+      note: "UNOBSTRUCTED OPEN-RIVER SUNSET CATAPULT (`from: [6.45, 0.35, 1.35]`): Hero slams into the Slime Block inside Dad #1's cart, squashing it deep and rocketing Hero + all 4 tiny dads smoothly up past the bridge and above the swamp trees!",
       stage: (t) => {
-        const boingAt = Math.max(0.18, w("6.boing", "bounced") - 0.08);
+        const boingAt = Math.max(0.22, w("6.boing", "bounced") - 0.06);
         const sq = pop(t, boingAt, 0.34) * 0.58;
         const blockTop = cartSlimeTopY(DOCK_Y, 0.88, sq);
         const drop = tw(t, 0, boingAt);
-        const up = tw(t, boingAt, Math.max(0.95, boingAt + 0.92));
-        const joyBlend = tw(t, Math.max(0, boingAt - 0.06), boingAt + 0.18);
-        const hx = 3.55 - up * 0.45;
-        const hz = -3.45 - up * 1.65;
+        // Span the full 2.25s shot so camera tilt and Hero's skyward climb stay locked together!
+        const up = tw(t, boingAt, 2.22);
+        const joyBlend = tw(t, Math.max(0, boingAt - 0.06), boingAt + 0.22);
+        const hx = 3.55 - up * 0.42;
+        const hz = -3.45 - up * 1.45;
         const hy =
           t < boingAt
-            ? blockTop + 0.03 + (1 - drop) * 0.62
-            : blockTop + 0.03 + up * 6.35 + Math.sin(up * Math.PI) * 1.25;
+            ? blockTop + 0.03 + (1 - drop) * 0.58
+            : blockTop + 0.03 + up * 5.35 + Math.sin(up * Math.PI) * 0.65;
         return (
           <>
             {/* Swamp trees on the upper north bank framing Hero soaring high above their crowns! */}
@@ -666,7 +666,7 @@ export const scene6 = storyScene(timing, {
 
             <Hero
               position={[hx, hy, hz]}
-              rotationY={2.85 + up * 0.35}
+              rotationY={0.35 - up * 0.15}
               pose={blendPose(windmillFallPose(t), skyJoyPose(t), joyBlend)}
               face={joyBlend > 0.35 ? "grin" : "wow"}
             />
@@ -679,10 +679,10 @@ export const scene6 = storyScene(timing, {
                 (DOCK_Y + (1 - up) * 0.02) * (1 - up) + (hy + 0.08) * up,
                 -4.59 * (1 - up) + (hz + 0.14) * up,
               ]}
-              rotationY={2.8}
+              rotationY={0.35}
               squash={t >= boingAt ? -0.22 : 0.16}
             />
-            <TinyDad which={2} position={[hx + 0.68, hy + 0.08, hz + 0.14]} rotationY={-2.8} squash={t >= boingAt ? -0.22 : 0.14} />
+            <TinyDad which={2} position={[hx + 0.68, hy + 0.08, hz + 0.14]} rotationY={-0.35} squash={t >= boingAt ? -0.22 : 0.14} />
             <TinyDad
               which={3}
               position={[
@@ -690,10 +690,10 @@ export const scene6 = storyScene(timing, {
                 DOCK_Y * (1 - up) + (hy + 0.58) * up,
                 -3.35 * (1 - up) + (hz - 0.52) * up,
               ]}
-              rotationY={2.9}
+              rotationY={0.4}
               squash={t >= boingAt ? -0.22 : 0.16}
             />
-            <TinyDad which={4} position={[hx + 0.55, hy + 0.58, hz - 0.52]} rotationY={-2.9} squash={t >= boingAt ? -0.22 : 0.14} />
+            <TinyDad which={4} position={[hx + 0.55, hy + 0.58, hz - 0.52]} rotationY={-0.4} squash={t >= boingAt ? -0.22 : 0.14} />
 
             {t >= boingAt ? (
               <>
