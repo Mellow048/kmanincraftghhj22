@@ -1,0 +1,203 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-monster-village",
+  "mix": "public/audio/in-this-town-monster-village/mix.mp3",
+  "seconds": 175.0333,
+  "built_from": {
+    "timing.json": "dea842d641ac7934c4fb3bbc03f3181febf8da35",
+    "sound.json": "d230951ac0c30142a5118425a386b01577caffbf",
+    "narration.mp3": "d400760b94f87635d7415beca01aa846e559a9f5"
+  },
+  "mix_sha1": "e0d345f12370386d673f5886d3ff72bd7fe4003b",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.sun",
+      "mood": "curious",
+      "at": 13.1
+    },
+    {
+      "from": "4.mo",
+      "mood": "sneak",
+      "at": 18.37
+    },
+    {
+      "from": "5.wall",
+      "mood": "playful",
+      "at": 25.9
+    },
+    {
+      "from": "6.every",
+      "mood": "hope",
+      "at": 38.8
+    },
+    {
+      "from": "7.sunset",
+      "mood": "curious",
+      "at": 50.33
+    },
+    {
+      "from": "8.night",
+      "mood": "sneak",
+      "at": 57.4
+    },
+    {
+      "from": "9.ring",
+      "mood": "drone",
+      "at": 61.4
+    },
+    {
+      "from": "10.players",
+      "mood": "tense",
+      "at": 69.57
+    },
+    {
+      "from": "12.mum",
+      "mood": "dark",
+      "at": 79.97
+    },
+    {
+      "from": "13.ran",
+      "mood": "tense",
+      "at": 84.7
+    },
+    {
+      "from": "14.quiet",
+      "mood": "none",
+      "at": 92.57
+    },
+    {
+      "from": "14.eyes",
+      "mood": "dark",
+      "at": 99.2
+    },
+    {
+      "from": "17.list",
+      "mood": "sad",
+      "at": 115.77
+    },
+    {
+      "from": "18.player",
+      "mood": "dark",
+      "at": 123.17
+    },
+    {
+      "from": "19.look",
+      "mood": "sneak",
+      "at": 131.47
+    },
+    {
+      "from": "19.hiss",
+      "mood": "playful",
+      "at": 134.53
+    },
+    {
+      "from": "20.gather",
+      "mood": "hope",
+      "at": 138.83
+    },
+    {
+      "from": "20.mo",
+      "mood": "sad",
+      "at": 143.63
+    },
+    {
+      "from": "20.mum",
+      "mood": "hope",
+      "at": 146.8
+    },
+    {
+      "from": "21.boom",
+      "mood": "tense",
+      "at": 152.83
+    },
+    {
+      "from": "22.back",
+      "mood": "sad",
+      "at": 164.7
+    },
+    {
+      "from": "22.armor",
+      "mood": "dark",
+      "at": 169.77
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 17.7,
+    "secondsWithoutMusic": 6.8,
+    "bedsUnderVoiceDb": 25.7,
+    "sfx": 254,
+    "sfxPerMinute": 87.1,
+    "sfxKinds": 40,
+    "longestGapSeconds": 3.2,
+    "longestGapAt": 127.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.1,
+    "voiceOverRestWorstDb": 4.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.7,
+        "t": 56.9,
+        "cue": "7.weak",
+        "sounding": [
+          "slide_down",
+          "swish"
+        ]
+      },
+      {
+        "db": 4.8,
+        "t": 92.9,
+        "cue": "14.quiet",
+        "sounding": [
+          "drop"
+        ]
+      },
+      {
+        "db": 4.8,
+        "t": 125.3,
+        "cue": "18.player",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 105.1,
+        "cue": "15.red",
+        "sounding": [
+          "plink",
+          "sting"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 69.8,
+        "cue": "10.players",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 162.5,
+        "cue": "21.order",
+        "sounding": [
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.0,
+    "limiterMaxDb": 1.0
+  },
+  "failures": []
+}

@@ -12,6 +12,7 @@ export * from "./Look";
 export * from "./math";
 export * from "./MinecraftAvatar";
 export * from "./props";
+export * from "./shaders";
 export * from "./story";
 export * from "./textures";
 export * from "./types";

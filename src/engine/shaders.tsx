@@ -7,7 +7,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
-import type { ShaderSettings, SkySettings } from "./types";
+import type { ShaderPreset, ShaderSettings, SkySettings } from "./types";
 
 /** The name the sky dome answers to, so the shaft pass can find the sun without a global. */
 const SKY_NAME = "shader-sky";
@@ -90,16 +90,17 @@ void main() {
   // Cloud: a flat layer overhead, thick where it is thick, thinning towards the horizon the way
   // a layer does when you look along it instead of up through it.
   if (uClouds > 0.001 && h > 0.0) {
-    vec3 cp = d / max(h, 0.22) * uCloudHeight;
+    vec3 cp = d / max(h, 0.18) * uCloudHeight;
     cp.x += uTime * 0.35;
     cp.z += uTime * 0.12;
     float cl = fbm(cp * uCloudScale);
-    cl = smoothstep(uCloudCover, uCloudCover + 0.30, cl);
-    cl *= smoothstep(0.06, 0.40, h);
-    // Lit from the sun side, and a bright rim where the sun is straight through it.
-    float lit = 0.35 + 0.65 * pow(sd, 3.0);
-    float rim = pow(cl, 0.6) * pow(sd, 24.0);
-    vec3 cloudCol = mix(uCloudShade, uSunColor, lit) + uSunColor * rim * 0.55;
+    float detail = vnoise(cp * uCloudScale * 2.8) * 0.14;
+    cl = smoothstep(uCloudCover, uCloudCover + 0.28, cl + detail);
+    cl *= smoothstep(0.015, 0.24, h);
+    // Lit from the sun side, and a bright silver/gold rim where the sun is straight through it.
+    float lit = 0.42 + 0.58 * pow(sd, 2.5);
+    float rim = pow(cl, 0.55) * pow(sd, 18.0);
+    vec3 cloudCol = mix(uCloudShade, uSunColor, lit) + uSunColor * rim * 0.65;
     col = mix(col, cloudCol, clamp(cl * uClouds, 0.0, 1.0));
   }
 
@@ -108,9 +109,10 @@ void main() {
   col += uSunColor * pow(sd, 7.0) * 0.30 * uSunPower;
   col += uSunColor * smoothstep(0.99930, 0.99975, sd) * 3.0;
 
-  // Haze thickens towards the horizon, as it does in the reference film.
-  float band = pow(1.0 - clamp(abs(h), 0.0, 1.0), 8.0);
-  col = mix(col, uHorizon, uHaze * band * 0.55);
+  // Haze thickens towards the horizon, plus warm Mie forward scatter near the sun direction.
+  float band = pow(1.0 - clamp(abs(h), 0.0, 1.0), 7.0);
+  vec3 horizonGlow = mix(uHorizon, uSunColor, 0.22 * pow(sd, 4.0));
+  col = mix(col, horizonGlow, uHaze * band * 0.58);
 
   // A gradient this wide bands on an 8-bit frame. Half a level of noise hides it, and it costs
   // nothing next to what banding costs a sky.
@@ -255,19 +257,20 @@ const GRADE_SHADER = {
   uniforms: {
     tDiffuse: { value: null },
     uTexel: { value: new THREE.Vector2(1 / 1080, 1 / 1920) },
-    uSat: { value: 1.45 },
-    uContrast: { value: 1.05 },
+    uSat: { value: 1.32 },
+    uVibrance: { value: 0.28 },
+    uContrast: { value: 1.06 },
     uShoulder: { value: 0.11 },
-    uLift: { value: 0.05 },
-    uWarm: { value: 0.95 },
-    uCool: { value: 0.5 },
-    uVignette: { value: 0.12 },
-    uDiffusion: { value: 0.14 },
+    uLift: { value: 0.045 },
+    uWarm: { value: 0.72 },
+    uCool: { value: 0.55 },
+    uVignette: { value: 0.10 },
+    uDiffusion: { value: 0.13 },
     uDiffRadius: { value: 6.0 },
     uDiffThreshold: { value: 0.86 },
-    uVeil: { value: 0.025 },
-    uGrain: { value: 0.011 },
-    uAberr: { value: 0.16 },
+    uVeil: { value: 0.022 },
+    uGrain: { value: 0.009 },
+    uAberr: { value: 0.12 },
     uTime: { value: 0 },
   },
   vertexShader: /* glsl */ `
@@ -281,6 +284,7 @@ void main() {
 uniform sampler2D tDiffuse;
 uniform vec2 uTexel;
 uniform float uSat;
+uniform float uVibrance;
 uniform float uContrast;
 uniform float uShoulder;
 uniform float uLift;
@@ -301,9 +305,13 @@ float lum(vec3 c) { return dot(c, vec3(0.2126, 0.7152, 0.0722)); }
 void main() {
   vec2 uv = vUv;
   vec2 d = uv - 0.5;
-  float r2 = dot(d, d);
+  // Aspect-corrected radius: in 9:16 vertical, uTexel.y / uTexel.x = 1080 / 1920 = 0.5625,
+  // so elliptical vignette frames the vertical viewport instead of muddying top sky corners.
+  float aspect = uTexel.y / max(uTexel.x, 1e-6);
+  vec2 dAsp = vec2(d.x * min(1.0, aspect), d.y * min(1.0, 1.0 / max(aspect, 1e-6)));
+  float r2 = dot(dAsp, dAsp);
 
-  // Lens fringing: zero in the centre, a pixel or two at the corners.
+  // Lens fringing: zero in the centre, subtle only at the far corners.
   float ab = uAberr * r2 * 0.006;
   vec3 c;
   c.r = texture2D(tDiffuse, uv + d * ab).r;
@@ -319,7 +327,7 @@ void main() {
             + texture2D(tDiffuse, uv + vec2( 0.0, 2.0) * uTexel).rgb
             + texture2D(tDiffuse, uv + vec2( 0.0,-2.0) * uTexel).rgb;
   float edge = abs(l0 - lum(ring * 0.25));
-  float soft = 1.0 - clamp((edge - 0.05) / 0.20, 0.0, 1.0);
+  float soft = 1.0 - clamp((edge - 0.04) / 0.18, 0.0, 1.0);
 
   // Pro-mist: light spread through glass. Two rings of taps, one ring weighted towards what is
   // bright (the mist) and one plain (veiling glare, which lifts the shadows).
@@ -327,7 +335,6 @@ void main() {
   vec2 step2 = uTexel * uDiffRadius * 2.1;
   vec3 allSum = vec3(0.0);
   vec3 hotSum = vec3(0.0);
-  float hotW = 0.0;
   for (int i = 0; i < 6; i++) {
     float a = float(i) * 1.0472; // six taps around the circle
     vec2 o1 = vec2(cos(a), sin(a));
@@ -338,41 +345,40 @@ void main() {
     float w1 = clamp((lum(s1) - uDiffThreshold) / (1.0 - uDiffThreshold), 0.0, 1.0) * soft;
     float w2 = clamp((lum(s2) - uDiffThreshold) / (1.0 - uDiffThreshold), 0.0, 1.0) * soft;
     hotSum += s1 * w1 + s2 * w2;
-    hotW += w1 + w2;
   }
-  c += (allSum / 12.0) * uVeil;
+  c += (allSum / 12.0) * uVeil * soft;
   c += (hotSum / 12.0) * uDiffusion;
 
   c = clamp(c, 0.0, 1.0);
 
-  // Saturation, then the filmic curve: contrast about the middle, and a shoulder so bright
-  // things roll off the way film does instead of turning into paper.
+  // Perceptual vibrance + saturation, then the filmic curve: contrast about the middle,
+  // and a shoulder so bright things roll off cleanly without clipping skin or captions.
   float l1 = lum(c);
-  c = l1 + (c - l1) * uSat;
+  float maxC = max(c.r, max(c.g, c.b));
+  float minC = min(c.r, min(c.g, c.b));
+  float vib = 1.0 + uVibrance * (1.0 - (maxC - minC));
+  c = l1 + (c - l1) * (uSat * vib);
   c = (c - 0.5) * uContrast + 0.5;
   c = c - uShoulder * pow(max(c, vec3(0.0)), vec3(3.0));
   c = clamp(c, 0.0, 1.0);
 
-  // Lift: film does not reach black, it reaches a dark warm grey. This is most of the difference
-  // between a picture that was rendered and one that was photographed.
+  // Lift: phone-readable shadows with a subtle slate-blue tint so dark nights stay crisp, not muddy.
   float l2 = lum(c);
-  vec3 tint = vec3(1.10, 1.00, 0.94);
-  c += uLift * tint * (1.0 - pow(clamp(l2 / 0.32, 0.0, 1.0), 1.3));
+  vec3 tint = vec3(0.96, 1.00, 1.08);
+  c += uLift * tint * (1.0 - pow(clamp(l2 / 0.34, 0.0, 1.0), 1.35));
 
-  // Split tone: warm from the midtones up, cool only in the deepest part of the range. Warming
-  // the highlights alone cools a dark film overall, which is the opposite of what it needs.
+  // Split tone: warm golden highlights against cool sapphire shadows, preserving neutral whites.
   float l3 = lum(c);
-  float hi = pow(clamp((l3 - 0.18) / 0.55, 0.0, 1.0), 1.15);
-  float lo = 1.0 - pow(clamp(l3 / 0.18, 0.0, 1.0), 1.4);
-  c += uWarm * vec3(0.105, 0.024, -0.070) * hi;
-  c += uWarm * uCool * vec3(-0.020, -0.002, 0.030) * lo;
+  float hi = pow(clamp((l3 - 0.22) / 0.55, 0.0, 1.0), 1.15) * (1.0 - pow(clamp((l3 - 0.85) / 0.15, 0.0, 1.0), 2.0));
+  float lo = 1.0 - pow(clamp(l3 / 0.22, 0.0, 1.0), 1.4);
+  c += uWarm * vec3(0.085, 0.022, -0.055) * hi;
+  c += uWarm * uCool * vec3(-0.024, -0.002, 0.042) * lo;
 
-  // Vignette.
-  float v = 1.0 - uVignette * pow(clamp((r2 * 2.6 - 0.06) / 0.9, 0.0, 1.0), 1.35);
+  // Aspect-corrected vignette.
+  float v = 1.0 - uVignette * pow(clamp((r2 * 3.1 - 0.14) / 0.88, 0.0, 1.0), 1.45);
   c *= v;
 
-  // Grain: strongest in the middle of the range, as film grain is, and it doubles as the dither
-  // that keeps a wide sky from banding.
+  // Grain: strongest in the middle of the range, doubles as gradient dither.
   float n = fract(sin(dot(uv * vec2(1.0, 1.7) + uTime * 0.37, vec2(12.9898, 78.233))) * 43758.5453);
   float weight = clamp(1.0 - abs(lum(c) - 0.45) / 0.6, 0.15, 1.0);
   c += (n - 0.5) * uGrain * weight;
@@ -384,34 +390,94 @@ void main() {
 
 export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   enabled: true,
-  // Tuned against a still render: 0.8 / 0.55 melted white sleeves and skin.
-  // Bloom is now only for things that are actually light — the sun, torches,
-  // lanterns, glow cards — not for pale materials in a bright room.
-  bloom: 0.55,
+  preset: "cinematic",
+  bloom: 0.52,
   // Threshold is in linear light, where a white caption is exactly 1.0 and the
   // sun disc is far above it. Set above 1 so words stay crisp and only light blooms.
   threshold: 1.25,
   radius: 0.6,
-  vignette: 0.12,
-  saturation: 1.45,
-  contrast: 1.05,
-  warmth: 0.95,
-  grain: 0.011,
-  aberration: 0.16,
-  // The rest were tuned with scripts/shader-sim.py against the reference film.
-  diffusion: 0.14,
-  veil: 0.025,
-  lift: 0.05,
+  vignette: 0.10,
+  saturation: 1.32,
+  vibrance: 0.28,
+  contrast: 1.06,
+  warmth: 0.72,
+  grain: 0.009,
+  aberration: 0.12,
+  diffusion: 0.13,
+  veil: 0.022,
+  lift: 0.045,
   shoulder: 0.11,
-  coolShadow: 0.5,
-  shafts: 0.3,
+  coolShadow: 0.55,
+  shafts: 0.32,
 };
 
-const resolve = (s?: ShaderSettings | boolean): Required<ShaderSettings> | null => {
+/** Named grade presets tuned for phone-screen readability and Complementary-style pop. */
+export const SHADER_PRESETS: Record<ShaderPreset, Required<ShaderSettings>> = {
+  cinematic: DEFAULT_SHADERS,
+  "vibrant-day": {
+    ...DEFAULT_SHADERS,
+    preset: "vibrant-day",
+    bloom: 0.48,
+    saturation: 1.26,
+    vibrance: 0.36,
+    contrast: 1.08,
+    warmth: 0.62,
+    vignette: 0.08,
+    lift: 0.035,
+    shafts: 0.36,
+  },
+  "warm-sunset": {
+    ...DEFAULT_SHADERS,
+    preset: "warm-sunset",
+    bloom: 0.62,
+    threshold: 1.18,
+    saturation: 1.24,
+    vibrance: 0.22,
+    contrast: 1.07,
+    warmth: 0.50,
+    vignette: 0.11,
+    shafts: 0.50,
+  },
+  moonlight: {
+    ...DEFAULT_SHADERS,
+    preset: "moonlight",
+    bloom: 0.68,
+    threshold: 1.04,
+    saturation: 1.18,
+    vibrance: 0.24,
+    contrast: 1.04,
+    warmth: 0.45,
+    coolShadow: 0.75,
+    lift: 0.065,
+    veil: 0.03,
+    vignette: 0.12,
+    shafts: 0.0,
+  },
+  "horror-noir": {
+    ...DEFAULT_SHADERS,
+    preset: "horror-noir",
+    bloom: 0.65,
+    threshold: 1.06,
+    saturation: 1.08,
+    vibrance: 0.14,
+    contrast: 1.12,
+    warmth: 0.30,
+    coolShadow: 0.85,
+    lift: 0.04,
+    vignette: 0.18,
+    aberration: 0.24,
+    grain: 0.015,
+    shafts: 0.0,
+  },
+};
+
+export const resolveShaders = (s?: ShaderSettings | ShaderPreset | boolean): Required<ShaderSettings> | null => {
   if (!s) return null;
   if (s === true) return DEFAULT_SHADERS;
+  if (typeof s === "string") return SHADER_PRESETS[s] ?? DEFAULT_SHADERS;
   if (s.enabled === false) return null;
-  return { ...DEFAULT_SHADERS, ...s };
+  const base = s.preset ? (SHADER_PRESETS[s.preset] ?? DEFAULT_SHADERS) : DEFAULT_SHADERS;
+  return { ...base, ...s };
 };
 
 /** Where the sun is on screen this frame, and whether it is worth drawing shafts for. */
@@ -444,10 +510,10 @@ const useSunOnScreen = () => {
  * R3F stops rendering the scene itself as soon as a `useFrame` callback with a
  * positive priority exists, so this component owns the frame from then on.
  */
-export const PostFX: React.FC<{ settings?: ShaderSettings | boolean }> = ({ settings }) => {
+export const PostFX: React.FC<{ settings?: ShaderSettings | ShaderPreset | boolean }> = ({ settings }) => {
   // Do not subscribe at positive priority when disabled: it takes over R3F's draw
   // even if the callback returns without drawing anything. Film config is stable.
-  const cfg = useMemo(() => resolve(settings), [settings]);
+  const cfg = useMemo(() => resolveShaders(settings), [settings]);
   return cfg ? <ComposedFrame cfg={cfg} /> : null;
 };
 
@@ -490,6 +556,7 @@ const ComposedFrame: React.FC<{ cfg: Required<ShaderSettings> }> = ({ cfg }) => 
     const u = grade.material.uniforms;
     u.uVignette!.value = cfg.vignette;
     u.uSat!.value = cfg.saturation;
+    u.uVibrance!.value = cfg.vibrance;
     u.uContrast!.value = cfg.contrast;
     u.uShoulder!.value = cfg.shoulder;
     u.uLift!.value = cfg.lift;

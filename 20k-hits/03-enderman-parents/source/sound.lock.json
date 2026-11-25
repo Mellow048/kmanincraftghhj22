@@ -1,0 +1,163 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-have-never-seen-my-mums-face",
+  "mix": "public/audio/in-this-town-i-have-never-seen-my-mums-face/mix.mp3",
+  "seconds": 105.5667,
+  "built_from": {
+    "timing.json": "6ca012fb2c11865cb67c4dd3504a0df2cc027314",
+    "sound.json": "6098e21085058d65d2f9376a5b3ccddeabacede9",
+    "narration.mp3": "0164ba80547d860df85e4e739c02a2a23fd80bda"
+  },
+  "mix_sha1": "eff6e6eb4993c6b41d7daac1c8658b6118c1893b",
+  "music_sections": [
+    {
+      "from": "1.face",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.knees",
+      "mood": "playful",
+      "at": 12.77
+    },
+    {
+      "from": "2.want",
+      "mood": "curious",
+      "at": 30.53
+    },
+    {
+      "from": "3.tried",
+      "mood": "playful",
+      "at": 33.17
+    },
+    {
+      "from": "3.drew",
+      "mood": "hope",
+      "at": 42.53
+    },
+    {
+      "from": "4.night",
+      "mood": "sneak",
+      "at": 48.0
+    },
+    {
+      "from": "4.stood",
+      "mood": "tense",
+      "at": 61.77
+    },
+    {
+      "from": "5.small",
+      "mood": "drone",
+      "at": 65.77
+    },
+    {
+      "from": "5.ran",
+      "mood": "playful",
+      "at": 71.07
+    },
+    {
+      "from": "6.left",
+      "mood": "curious",
+      "at": 81.27
+    },
+    {
+      "from": "6.knees",
+      "mood": "hope",
+      "at": 86.9
+    },
+    {
+      "from": "6.up",
+      "mood": "none",
+      "at": 88.83
+    },
+    {
+      "from": "7.already",
+      "mood": "hope",
+      "at": 91.47
+    },
+    {
+      "from": "8.dinner",
+      "mood": "town",
+      "at": 93.97
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 3,
+  "measured": {
+    "musicUnderVoiceDb": 18.3,
+    "secondsWithoutMusic": 2.8,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 182,
+    "sfxPerMinute": 103.4,
+    "sfxKinds": 33,
+    "longestGapSeconds": 2.4,
+    "longestGapAt": 29.9,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.0,
+    "voiceOverRestWorstDb": 5.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.5,
+        "t": 79.0,
+        "cue": "5.scream",
+        "sounding": [
+          "boom",
+          "step_grass"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 20.6,
+        "cue": "2.seek",
+        "sounding": [
+          "glitch",
+          "pop"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 48.5,
+        "cue": "4.night",
+        "sounding": [
+          "step_stone",
+          "sting"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 71.5,
+        "cue": "5.ran",
+        "sounding": [
+          "bonk",
+          "step_grass"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 54.7,
+        "cue": "4.pearls",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 80.2,
+        "cue": "5.fast",
+        "sounding": [
+          "boom",
+          "glitch",
+          "step_grass",
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -15.3,
+    "truePeakDb": -1.2,
+    "limiterMaxDb": 3.9
+  },
+  "failures": []
+}

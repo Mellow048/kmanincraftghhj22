@@ -28,11 +28,13 @@ const VERT = /* glsl */ `
 
 const FRAG = /* glsl */ `
   uniform sampler2D map;
+  uniform vec3 accent;
   varying vec2 vUv;
   void main() {
     vec4 c = texture2D(map, vUv);
     if (c.a < 0.5) discard;
-    gl_FragColor = vec4(c.rgb, 1.0);
+    vec3 tint = (c.r > 0.5 && c.g > 0.5 && c.b > 0.5) ? c.rgb * accent : c.rgb;
+    gl_FragColor = vec4(tint, 1.0);
   }
 `;
 
@@ -62,15 +64,35 @@ export function activeWord(words: CaptionWord[], t: number): CaptionWord | null 
   return t < holdUntil ? word : null;
 }
 
-export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1, letterCase = "upper", motion }) => {
+export const Captions: React.FC<CaptionSettings> = ({
+  words,
+  y = 0.72,
+  size = 1,
+  letterCase = "upper",
+  motion,
+  accentColor = "#ffd84d",
+  highlightWords,
+}) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = frame / fps;
 
+  const highlightSet = useMemo(() => {
+    const s = new Set<string>();
+    if (highlightWords) {
+      for (const w of highlightWords) s.add(captionText(w, letterCase));
+    }
+    return s;
+  }, [highlightWords, letterCase]);
+
   const material = useMemo(
     () =>
       new THREE.ShaderMaterial({
-        uniforms: { map: { value: null }, rect: { value: new THREE.Vector4(0, 0, 0, 0) } },
+        uniforms: {
+          map: { value: null },
+          rect: { value: new THREE.Vector4(0, 0, 0, 0) },
+          accent: { value: new THREE.Color("#ffffff") },
+        },
         vertexShader: VERT,
         fragmentShader: FRAG,
         transparent: true,
@@ -102,10 +124,13 @@ export const Captions: React.FC<CaptionSettings> = ({ words, y = 0.72, size = 1,
     rect = [0, 1 - 2 * (y - (beat?.lift ?? 0)), halfW, halfH];
   }
 
+  const isAccent = text.length > 0 && highlightSet.has(text);
+
   useFrame(() => {
     if (rect && tex) {
       material.uniforms.map.value = tex;
       (material.uniforms.rect.value as THREE.Vector4).set(rect[0], rect[1], rect[2], rect[3]);
+      (material.uniforms.accent.value as THREE.Color).set(isAccent ? accentColor : "#ffffff");
     }
   });
 

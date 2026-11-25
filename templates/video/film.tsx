@@ -21,7 +21,7 @@ export const film = defineFilm({
   width: 1080,
   height: 1920,
   look: "hospital-night",
-  post: { exposure: 1.16, bloom: 1.3 },
+  post: { exposure: 1.16, bloom: 1.3, shaders: "horror-noir" },
   fadeIn: 0.45,
   fadeOut: 0.7,
   World,

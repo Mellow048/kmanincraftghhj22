@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { useMemo } from "react";
 import type React from "react";
 import { useFilmTime } from "./defineFilm";
 import { Glow } from "./fx";
@@ -213,5 +214,50 @@ export const Clouds: React.FC<{ y?: number; color?: string; span?: number; cente
         </group>
       ))}
     </group>
+  );
+};
+
+/**
+ * Animated Minecraft water volume or surface.
+ * Clones the procedural water tile so UV scroll never mutates shared cached textures,
+ * and layers gentle surface bobbing with clear translucent blue colour.
+ */
+export const Water: React.FC<{
+  position?: Vec3;
+  size: Vec3;
+  tint?: string;
+  opacity?: number;
+  flowSpeed?: [number, number];
+}> = ({
+  position = [0, 0, 0],
+  size,
+  tint = "#2d7ee6",
+  opacity = 0.78,
+  flowSpeed = [0.16, 0.09],
+}) => {
+  const t = useFilmTime();
+  const [w, h, d] = size;
+  const geom = useMemo(() => voxGeometry([w, h, d], 1), [w, h, d]);
+  const map = useMemo(() => {
+    const cloned = blockTex("water", tint).clone();
+    cloned.needsUpdate = true;
+    return cloned;
+  }, [tint]);
+
+  map.offset.set((t * flowSpeed[0]) % 1, (t * flowSpeed[1]) % 1);
+  const surfaceBob = Math.sin(t * 2.1) * 0.015;
+
+  return (
+    <mesh position={[position[0], position[1] + surfaceBob, position[2]]} geometry={geom} receiveShadow>
+      <meshStandardMaterial
+        map={map}
+        transparent
+        opacity={opacity}
+        roughness={0.18}
+        metalness={0.08}
+        emissive={tint}
+        emissiveIntensity={0.12}
+      />
+    </mesh>
   );
 };

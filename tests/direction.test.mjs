@@ -171,3 +171,92 @@ test('every narrated starter scaffolds with its own identity; drafts rehearse bu
     for (const flag of ['--final', '--pre-render']) assert.match(run(process.execPath, [cli, id, flag], tmp, 1), /DRAFT: No fully aligned/);
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 });
+
+test('remaster v2: cam helpers, screenOffset, and shader presets behave deterministically', async () => {
+  const { pathToFileURL } = await import('node:url');
+  const out = path.join(root, 'out');
+  fs.mkdirSync(out, { recursive: true });
+  const scratch = fs.mkdtempSync(path.join(out, '.remaster-test-'));
+  try {
+    const outfile = path.join(scratch, 'engine-remaster.mjs');
+    await build({
+      stdin: {
+        contents: `export * from './src/engine/cam';\nexport { pickShot } from './src/engine/Camera';\nexport { resolveShaders, DEFAULT_SHADERS } from './src/engine/shaders';`,
+        resolveDir: root,
+      },
+      outfile,
+      platform: 'node',
+      format: 'esm',
+      target: 'node22',
+      packages: 'external',
+      bundle: true,
+      jsx: 'automatic',
+      logLevel: 'silent',
+    });
+    const { cam, pickShot, resolveShaders, DEFAULT_SHADERS } = await import(pathToFileURL(outfile));
+
+    const craneShot = {
+      at: 0,
+      dur: 2,
+      ...cam.crane({
+        on: [0, 1.2, 0],
+        dist: 4,
+        fromPitch: -10,
+        toPitch: 28,
+        fov: 38,
+        screenOffset: [0, 0.14],
+      }),
+      note: 'Rise from creeper feet to reveal street.',
+    };
+    assert.ok(craneShot.to[1] > craneShot.from[1]);
+    assert.deepEqual(craneShot.screenOffset, [0, 0.14]);
+
+    const whipShot = {
+      at: 2,
+      dur: 0.4,
+      ...cam.whip({
+        from: [3, 1.5, 4],
+        on: [0, 1.2, 0],
+        onTo: [-3, 1.2, -1],
+        fov: 40,
+      }),
+      note: 'Snap turn to cat on fence.',
+    };
+    assert.equal(whipShot.ease, 'outExpo');
+    assert.equal(pickShot([craneShot, whipShot], 2.1), whipShot);
+
+    const dz = {
+      at: 0,
+      dur: 2,
+      ...cam.dollyZoom({
+        on: [0, 1.2, 0],
+        dist: 5,
+        to: 2.8,
+        fov: 34,
+      }),
+      note: 'Dread trombone zoom.',
+    };
+    assert.ok((dz.fovTo ?? 0) > (dz.fov ?? 0));
+    assert.ok(dz.to[2] < dz.from[2]);
+
+    const ots = {
+      at: 0,
+      dur: 2,
+      ...cam.ots({
+        speaker: [0, 1.3, 0],
+        listener: [0, 1.3, 3],
+      }),
+      note: 'Two-shot over shoulder.',
+    };
+    assert.ok(Array.isArray(ots.from) && Array.isArray(ots.to) && Array.isArray(ots.target));
+
+    const fitDist = cam.fitHeight(2.9, 42, 0.72);
+    assert.ok(fitDist > 4 && fitDist < 7, `Enderman 2.9m fits nicely at ${fitDist}m`);
+
+    const vibrant = resolveShaders('vibrant-day');
+    assert.ok(vibrant && vibrant.vibrance > DEFAULT_SHADERS.vibrance && vibrant.enabled === true);
+    assert.equal(resolveShaders(undefined), null);
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+});

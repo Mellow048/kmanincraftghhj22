@@ -197,3 +197,67 @@ export const ContactShadow: React.FC<{
     <meshBasicMaterial map={glowTex()} color="#000000" transparent opacity={opacity} depthWrite={false} />
   </mesh>
 );
+
+/**
+ * Rising glowing embers — ideal near torches, campfires, lava, or high-tension
+ * nighttime climaxes. Fully deterministic via `useFilmTime()` and `mulberry32`.
+ */
+export const EmberDrift: React.FC<{
+  position?: Vec3;
+  area?: Vec3;
+  count?: number;
+  color?: string;
+  size?: number;
+  speed?: number;
+  opacity?: number;
+  seed?: number;
+}> = ({
+  position = [0, 0, 0],
+  area = [2.4, 2.8, 2.4],
+  count = 24,
+  color = "#ff8a2b",
+  size = 0.075,
+  speed = 0.85,
+  opacity = 0.85,
+  seed = 77,
+}) => {
+  const t = useFilmTime();
+  const particles = useMemo(() => {
+    const rand = mulberry32(seed);
+    return Array.from({ length: count }, () => ({
+      x: (rand() - 0.5) * area[0],
+      y0: rand(),
+      z: (rand() - 0.5) * area[2],
+      phase: rand() * Math.PI * 2,
+      swirl: 0.08 + rand() * 0.22,
+      rate: 0.7 + rand() * 0.7,
+    }));
+  }, [count, area[0], area[2], seed]);
+
+  const geometry = useMemo(() => new THREE.BufferGeometry(), []);
+  const positions = new Float32Array(count * 3);
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    const progress = (p.y0 + (t * speed * p.rate) / Math.max(0.5, area[1])) % 1;
+    positions[i * 3] = p.x + Math.sin(t * 2.2 + p.phase) * p.swirl;
+    positions[i * 3 + 1] = progress * area[1];
+    positions[i * 3 + 2] = p.z + Math.cos(t * 1.8 + p.phase) * p.swirl;
+  }
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+  return (
+    <points position={position} geometry={geometry} frustumCulled={false}>
+      <pointsMaterial
+        map={glowTex()}
+        color={color}
+        size={size}
+        sizeAttenuation
+        transparent
+        opacity={opacity}
+        depthWrite={false}
+        blending={THREE.AdditiveBlending}
+        toneMapped={false}
+      />
+    </points>
+  );
+};

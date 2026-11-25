@@ -19,7 +19,10 @@ import type { Shot } from "./types";
  * Spread the result into a shot. Add `note`, and `stage` in a story scene.
  */
 
-type Move = Pick<Shot, "from" | "to" | "path" | "target" | "targetTo" | "fov" | "fovTo" | "roll" | "rollTo" | "ease">;
+type Move = Pick<
+  Shot,
+  "from" | "to" | "path" | "target" | "targetTo" | "fov" | "fovTo" | "roll" | "rollTo" | "ease" | "screenOffset"
+>;
 
 const RAD = Math.PI / 180;
 
@@ -46,11 +49,19 @@ type Framing = {
   pitch?: number;
   /** Vertical field of view. Default 40. Close-ups 30–36, wides 48–58. */
   fov?: number;
+  /** Normalized 9:16 screen offset `[x, y]` (positive `y` moves subject up above captions). */
+  screenOffset?: [number, number];
 };
 
 export const cam = {
+  /** Minimum distance (metres) so a subject of `heightMetres` fits cleanly inside `fillRatio` of the 9:16 height. */
+  fitHeight(heightMetres: number, fov = 42, fillRatio = 0.72): number {
+    const span = heightMetres / Math.max(0.1, fillRatio);
+    return round(span / (2 * Math.tan((fov * RAD) / 2)));
+  },
+
   /** Dolly in (to < dist) or pull out (to > dist) along the lens axis. The workhorse. */
-  push(o: Framing & { to: number; onTo?: Vec3; fovTo?: number }): Move {
+  push(o: Framing & { to: number; onTo?: Vec3; fovTo?: number; ease?: Shot["ease"] }): Move {
     return {
       from: around(o.on, o.dist, o.yaw, o.pitch),
       to: around(o.onTo ?? o.on, o.to, o.yaw, o.pitch),
@@ -58,12 +69,13 @@ export const cam = {
       ...(o.onTo ? { targetTo: o.onTo } : {}),
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
-      ease: "inOutSine",
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
+      ease: o.ease ?? "inOutSine",
     };
   },
 
   /** Swing around the subject. yawTo/pitchTo/distTo are where the arc ends. */
-  orbit(o: Framing & { yawTo: number; pitchTo?: number; distTo?: number; onTo?: Vec3 }): Move {
+  orbit(o: Framing & { yawTo: number; pitchTo?: number; distTo?: number; onTo?: Vec3; ease?: Shot["ease"] }): Move {
     const steps = 5;
     const path: Vec3[] = [];
     for (let i = 0; i < steps; i++) {
@@ -86,18 +98,118 @@ export const cam = {
       target: o.on,
       ...(o.onTo ? { targetTo: o.onTo } : {}),
       fov: o.fov ?? 40,
-      ease: "inOutSine",
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
+      ease: o.ease ?? "inOutSine",
     };
   },
 
   /** The camera stays put and the look sweeps from one thing to another. */
-  pan(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number }): Move {
+  pan(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number; screenOffset?: [number, number] }): Move {
     return {
       from: o.from,
       target: o.on,
       targetTo: o.onTo,
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
+      ease: "inOutSine",
+    };
+  },
+
+  /** Fast snappy whip-pan (`outExpo` speed ramp) for comedy turns, reveals, and reaction snaps. */
+  whip(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number }): Move {
+    return {
+      from: o.from,
+      target: o.on,
+      targetTo: o.onTo,
+      fov: o.fov ?? 40,
+      ...(o.fovTo ? { fovTo: o.fovTo } : {}),
+      ease: "outExpo",
+    };
+  },
+
+  /**
+   * Hitchcock / Vertigo dolly-zoom: moves distance (`dist` → `to`) while compensating `fov` so the
+   * subject stays the same height on the phone screen while the background dramatically warps.
+   */
+  dollyZoom(o: Framing & { to: number }): Move {
+    const fov = o.fov ?? 40;
+    const halfH = o.dist * Math.tan((fov * RAD) / 2);
+    const fovTo = round(clampFov((2 * Math.atan(halfH / Math.max(0.4, o.to))) / RAD));
+    return {
+      from: around(o.on, o.dist, o.yaw, o.pitch),
+      to: around(o.on, o.to, o.yaw, o.pitch),
+      target: o.on,
+      fov,
+      fovTo,
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
+      ease: "inOutCubic",
+    };
+  },
+
+  /** Vertical crane up or down (e.g. from a kid's shoes up to a 2.9 m Enderman's eyes). */
+  crane(o: {
+    on: Vec3;
+    onTo?: Vec3;
+    dist: number;
+    toDist?: number;
+    yaw?: number;
+    fromPitch: number;
+    toPitch: number;
+    fov?: number;
+    screenOffset?: [number, number];
+  }): Move {
+    const dest = o.onTo ?? o.on;
+    return {
+      from: around(o.on, o.dist, o.yaw ?? 0, o.fromPitch),
+      to: around(dest, o.toDist ?? o.dist, o.yaw ?? 0, o.toPitch),
+      target: o.on,
+      ...(o.onTo ? { targetTo: o.onTo } : {}),
+      fov: o.fov ?? 40,
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
+      ease: "inOutCubic",
+    };
+  },
+
+  /**
+   * Over-the-shoulder framing tuned for the narrow 9:16 phone slit: keeps `speaker` cleanly off-axis
+   * at the edge of frame while aiming at `listener` with rule-of-thirds headroom.
+   */
+  ots(o: {
+    speaker: Vec3;
+    listener: Vec3;
+    side?: -1 | 1;
+    back?: number;
+    push?: number;
+    height?: number;
+    fov?: number;
+  }): Move {
+    const dx = o.listener[0] - o.speaker[0];
+    const dz = o.listener[2] - o.speaker[2];
+    const len = Math.hypot(dx, dz) || 1;
+    const nx = dx / len;
+    const nz = dz / len;
+    const side = o.side ?? 1;
+    const rx = -nz * side;
+    const rz = nx * side;
+    const back = o.back ?? 1.4;
+    const push = o.push ?? 0.35;
+    const h = o.height ?? 0.12;
+    const lat = 0.52;
+    return {
+      from: [
+        round(o.speaker[0] - nx * back + rx * lat),
+        round(o.speaker[1] + h),
+        round(o.speaker[2] - nz * back + rz * lat),
+      ],
+      to: [
+        round(o.speaker[0] - nx * (back - push) + rx * (lat * 0.9)),
+        round(o.speaker[1] + h),
+        round(o.speaker[2] - nz * (back - push) + rz * (lat * 0.9)),
+      ],
+      target: o.listener,
+      fov: o.fov ?? 38,
+      screenOffset: [0, 0.06],
       ease: "inOutSine",
     };
   },
@@ -111,6 +223,7 @@ export const cam = {
       target: o.on,
       targetTo: [round(o.on[0] + o.by[0]), round(o.on[1] + o.by[1]), round(o.on[2] + o.by[2])],
       fov: o.fov ?? 40,
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
       ease: "inOutSine",
     };
   },
@@ -129,3 +242,5 @@ export const cam = {
     };
   },
 };
+
+const clampFov = (deg: number) => Math.max(18, Math.min(85, deg));

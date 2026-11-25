@@ -103,6 +103,17 @@ Do not spend 8 seconds establishing. Do not reveal the monster at 19 seconds. Do
 - A cut should land on a new composition, not on the same frame with a different lens.
 - A camera move should reveal new information. If the frame looks the same at the end, the move is decoration.
 
+### Remastered camera toolkit (`src/engine/cam.ts` + `Shot.screenOffset`)
+
+Use these builders (spread into a `Shot` alongside `at`, `dur`, and `note`) instead of hand-typing repetitive 3D vectors:
+
+- **`screenOffset: [x, y]` on any `Shot`** (range `-0.5..0.5` of screen space): biases framing without breaking `target`! For example, `screenOffset: [0, 0.12]` lifts the subject into the upper third above bottom captions, or `screenOffset: [-0.14, 0.08]` puts a speaker on the vertical rule-of-thirds line looking across empty space.
+- **`cam.fitHeight(heightMetres, fov = 42, fillRatio = 0.72)`**: returns the minimum camera distance (metres) so a 1.05m kid, 1.8m villager, or 2.9m Enderman fills a predictable fraction of 9:16 height.
+- **`cam.whip({ from, on, onTo, fov, fovTo })`**: ultra-fast whip pan (`outExpo` speed ramp) for comedy reveals, jumpscares, or rapid cause-and-effect snaps.
+- **`cam.dollyZoom({ on, dist, to, yaw, pitch, fov, screenOffset })`**: Vertigo / Hitchcock trombone zoom where the subject stays the same screen height while `fov` → `fovTo` compresses or stretches the background in dread.
+- **`cam.crane({ on, onTo, dist, toDist, yaw, fromPitch, toPitch, fov, screenOffset })`**: vertical pedestal rise/drop (e.g. starting low beside a creeper's feet or cat and rising to reveal the full street or 2.9m Enderman).
+- **`cam.ots({ speaker, listener, side, back, push, height, fov })`**: instant over-the-shoulder two-shot grammar so dialogue never shoots flat front-on faces back to back.
+
 ---
 
 ## 5. 9:16 framing

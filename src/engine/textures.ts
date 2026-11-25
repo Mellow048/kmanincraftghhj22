@@ -26,7 +26,8 @@ function texture(
 
   const tex = new THREE.CanvasTexture(canvas);
   tex.magFilter = THREE.NearestFilter;
-  tex.minFilter = THREE.NearestMipmapLinearFilter;
+  tex.minFilter = THREE.NearestFilter;
+  tex.generateMipmaps = false;
   tex.wrapS = THREE.RepeatWrapping;
   tex.wrapT = THREE.RepeatWrapping;
   tex.repeat.set(repeat[0], repeat[1]);
@@ -759,7 +760,8 @@ export type BlockKind =
   | "basalt"
   | "obsidian"
   | "magma"
-  | "lava";
+  | "lava"
+  | "water";
 
 export const BLOCK_COLORS: Record<BlockKind, string> = {
   grass: "#5fa03c",
@@ -781,6 +783,7 @@ export const BLOCK_COLORS: Record<BlockKind, string> = {
   obsidian: "#1e172b",
   magma: "#2b1c1c",
   lava: "#ff7a14",
+  water: "#2d7ee6",
 };
 
 /** A tileable 16×16 block face. `tint` replaces the block's base colour (dyed wool, autumn leaves). */
@@ -930,6 +933,17 @@ export function blockTex(kind: BlockKind, tint?: string): THREE.CanvasTexture {
             const b = (y / N) * Math.PI * 2;
             const v = Math.sin(a + Math.sin(b) * 1.3) + Math.sin(b * 2 + Math.cos(a) * 1.1) + (rand() - 0.5) * 0.5;
             put(x, y, v > 1.0 ? "#ffe066" : v > 0.3 ? "#ffab1e" : v > -0.7 ? "#f5700f" : "#c93c08");
+          }
+        }
+        break;
+      case "water":
+        for (let y = 0; y < N; y++) {
+          for (let x = 0; x < N; x++) {
+            const a = (x / N) * Math.PI * 2;
+            const b = (y / N) * Math.PI * 2;
+            const ripple = Math.sin(a * 2 + b) * 0.5 + Math.cos(b * 2 - a) * 0.5;
+            const foam = ripple > 0.65 && rand() > 0.4;
+            put(x, y, foam ? shade(base, 0.38) : shade(base, ripple * 0.16 + (rand() - 0.5) * 0.08));
           }
         }
         break;

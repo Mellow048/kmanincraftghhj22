@@ -7,11 +7,27 @@ default in the engine**; the narrated topic starters now switch it **on** in `fi
 post: { shaders: true },
 ```
 
-or, to tune it:
+or pick a named preset for your scene's mood:
 
 ```ts
-post: { shaders: { bloom: 0.6, threshold: 1.25, vignette: 0.22, warmth: 0.45 } },
+post: { shaders: "vibrant-day" },   // bright saturated overworld Shorts look
+post: { shaders: "warm-sunset" },   // golden hour + stronger sun shafts
+post: { shaders: "moonlight" },     // crisp blue-tinted shadows readable on phones
+post: { shaders: "horror-noir" },   // deep tension with higher pro-mist bloom
+post: { shaders: "cinematic" },     // balanced remastered default (same as `true`)
 ```
+
+or fine-tune fields directly (including the new perceptual `vibrance` control):
+
+```ts
+post: { shaders: { preset: "vibrant-day", bloom: 0.55, warmth: 0.65, vibrance: 0.38 } },
+```
+
+## Remaster v2 Fixes (viewer's-eye calibration)
+
+- **Aspect-corrected 9:16 vignette (`uTexel` aspect ratio):** the previous vignette treated normalized `uv - 0.5` as a circle on 9:16 frames, crushing the top corners awkwardly. Vignette now scales horizontally vs vertically cleanly with lower default strength (`0.10` vs `0.22`).
+- **Horizon-visible clouds & golden preset:** sky cloud visibility now begins right above the horizon (`smoothstep(0.015, 0.24, h)`) with a secondary detail octave so eye-level vertical cameras actually see textured clouds instead of a washed sky; `overworld-golden` join-look (`Look.tsx`) gives punchy late-afternoon YouTube thumbnails.
+- **Perceptual Vibrance (`vibrance` uniform) + Sapphire night lift:** boosts muted grass/stone/skin tones without oversaturating already neon elements, while lifting crushed blacks into phone-readable slate-blue (`scenery-night-0020.png` previously measured `59.3%` pixels `< 24` luma).
 
 ## What it does, in order
 

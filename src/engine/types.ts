@@ -62,6 +62,12 @@ export type Shot = {
   rollTo?: number;
   /** Raise/lower the look point, for headroom in the 9:16 frame. */
   aim?: number;
+  /**
+   * Normalized 9:16 screen-space framing offset `[x, y]` in roughly `-0.5..0.5`
+   * (positive `y` shifts the subject up into the upper third, clear of captions;
+   * positive `x` puts the subject slightly right of centre for rule-of-thirds depth).
+   */
+  screenOffset?: [number, number];
 
   /** Lighting preset for this shot only. Falls back to the film's `look`. */
   look?: LookPreset;
@@ -90,6 +96,10 @@ export type CaptionSettings = {
   size?: number;
   /** "upper" (default) or "lower". */
   letterCase?: "upper" | "lower";
+  /** Accent tint for emphasised words (e.g. words with `!`, or listed in `highlightWords`). */
+  accentColor?: string;
+  /** Optional list of words (case-insensitive) to tint with `accentColor` for viewer hook retention. */
+  highlightWords?: string[];
 };
 
 export type SceneDef = {
@@ -119,6 +129,7 @@ export type LookPreset =
   | "overworld-storm"
   | "overworld-rain"
   | "overworld-sunset"
+  | "overworld-golden"
   | "lantern-night"
   | "lava-shore"
   | "warm-room"
@@ -161,9 +172,13 @@ export type SkySettings = {
   dither?: number;
 };
 
+export type ShaderPreset = "cinematic" | "vibrant-day" | "warm-sunset" | "moonlight" | "horror-noir";
+
 /** The post-processing controls exposed to a film. */
 export type ShaderSettings = {
   enabled?: boolean;
+  /** Optional named preset to start from before applying overrides. */
+  preset?: ShaderPreset;
   /** Bloom strength. 0.4–0.8 is a warm sunny day; 1.0+ starts to look like a game. */
   bloom?: number;
   /** Luminance above which pixels bloom. Lower = more of the sky glows. */
@@ -174,6 +189,8 @@ export type ShaderSettings = {
   vignette?: number;
   /** Colour saturation, 1 is neutral. */
   saturation?: number;
+  /** Perceptual colour vibrance (lifts muted hues without clipping saturated ones), 0 is neutral. */
+  vibrance?: number;
   /** Contrast around mid-grey, 1 is neutral. */
   contrast?: number;
   /** Warm highlights / cool shadows. 0 is neutral, 1 is a golden hour. */
@@ -201,8 +218,8 @@ export type PostSettings = {
   exposure?: number;
   /** Multiplier on every 3D glow card in the film. This is our fake bloom. */
   bloom?: number;
-  /** Real post: bloom, grade, vignette, grain. `true` for the defaults. */
-  shaders?: ShaderSettings | boolean;
+  /** Real post: bloom, grade, vignette, grain. `true` or a preset name (`"vibrant-day"`), or custom settings. */
+  shaders?: ShaderSettings | ShaderPreset | boolean;
 };
 
 export type FilmConfig = {

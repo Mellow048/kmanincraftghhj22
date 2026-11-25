@@ -74,6 +74,22 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
   const target = samplePath(shot.targetPath, shot.target, shot.targetTo, e, 0);
   target.y += shot.aim ?? 0;
 
+  // Screen-space framing offset (rule-of-thirds / caption-safe headroom) in normalized units.
+  // Positive Y shifts the subject UP in frame (camera aims slightly lower); positive X shifts subject RIGHT.
+  if (shot.screenOffset && (shot.screenOffset[0] !== 0 || shot.screenOffset[1] !== 0)) {
+    const fwd = target.clone().sub(position);
+    const dist = fwd.length();
+    if (dist > 1e-4) {
+      const fovRad = ((shot.focalLength != null ? focalMmToFov(shot.focalLength) : (shot.fov ?? 38)) * Math.PI) / 180;
+      const vSpan = 2 * dist * Math.tan(fovRad / 2);
+      const hSpan = vSpan * (9 / 16);
+      const right = new THREE.Vector3().crossVectors(fwd, new THREE.Vector3(0, 1, 0)).normalize();
+      const camUp = new THREE.Vector3().crossVectors(right, fwd).normalize();
+      target.addScaledVector(right, -shot.screenOffset[0] * hSpan);
+      target.addScaledVector(camUp, -shot.screenOffset[1] * vSpan);
+    }
+  }
+
   // Handheld instability: deterministic, subtle, applied to both ends of the look ray.
   if (shot.shake && shot.shake > 0) {
     const amp = shot.shake;

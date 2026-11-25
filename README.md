@@ -6,6 +6,9 @@ One folder per video. One TSX file per scene. One shared `world.tsx`. One camera
 
 This is not a template for "a Minecraft video". It is a director's framework with a working 20-second demo, a camera bible, a style bible, a scene contract and a lint script that fails lazy work.
 
+> **Remaster v2 & 20k+ Hit Archive:** Want to make a Short that actually hits **20k+ views** instead of stalling at 1.5k–2k?
+> Start with [`20k-hits/README.md`](20k-hits/README.md) (saved source code + shot logs + contact sheets for *Monster Village Part 1*, *Creeper Parents*, and *Enderman Parents*), [`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md), [`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md), and [`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md).
+>
 > **It makes more than one kind of video.** The 20-second short below is the base. A narrated one-to-three-minute
 > story that begins "In this town, …" is a different kind, a **topic**, with its own rules, pack, starter and
 > sound: see [Topics](#topics-more-than-one-kind-of-video). Decide which one you are making first.
@@ -214,15 +217,17 @@ A scene is just a shot list plus a `Component`. It does not own the room.
 
 ### The camera
 
-`Camera` interpolates `from` → `to` (or a Catmull-Rom `path`), `target` → `targetTo` (or `targetPath`), `fov` → `fovTo`, with easing, optional arc, roll and handheld shake. Every shot has a `note` that explains why it exists.
+`Camera` interpolates `from` → `to` (or a Catmull-Rom `path`), `target` → `targetTo` (or `targetPath`), `fov` → `fovTo` (or `focalLength`), `screenOffset` (rule-of-thirds & caption-safe offset), easing, arc, roll and handheld shake. `cam` helpers add `cam.fitHeight`, `cam.whip`, `cam.dollyZoom`, `cam.crane`, `cam.ots`, `cam.push`, `cam.orbit`, and `cam.fly`. Every shot has a `note` that explains why it exists.
 
-### The look
+### The look & shaders
 
-`Look.tsx` has six presets: `hospital-night`, `hallway-night`, `forest-night`, `street-day`, `warm-room`, `void`. Each has a background, fog, ambient/hemisphere, a shadow-casting key and 2–3 fills. The world adds practicals and atmosphere.
+`Look.tsx` has presets for overworld day/golden/sunset/storm/rain/night, `town-day`, `street-day`, `lava-shore`, `hospital-night`, `hallway-night`, `forest-night`, `warm-room`, `void`, and `lantern-night`. Each sets background, painted shader sky, fog, ambient/hemisphere, shadow-casting key and fills.
 
-`PostSettings` is only `{ exposure?, bloom? }`. The bloom look is made from 3D additive glow cards, not a screen-space pass. **Do not re-add `@react-three/postprocessing`** — it produced black frames under Remotion + software WebGL.
+`post.shaders` runs a native Three.js `EffectComposer` pass (`SkyDome` → `UnrealBloomPass` threshold > 1.0 → `OutputPass` ACES tone-mapping → radial sun shafts → perceptual `vibrance` / split-tone / aspect-corrected 9:16 vignette / grain). Use `post: { shaders: true }`, a named preset (`"vibrant-day" | "warm-sunset" | "moonlight" | "horror-noir" | "cinematic"`), or custom `ShaderSettings`. **Do not add `@react-three/postprocessing`** — only use the built-in `src/engine/shaders.tsx` pipeline.
 
-### The actors
+### The actors & world FX
+
+`MinecraftAvatar` is a classic 1.8m Minecraft rig with split thighs/shins and knee joints, optional `hairLayer` 3D cap, procedural pixel textures, outfit presets, 8×8 face maps, `faceGlow`, `rim` + `rimColor`, and head/hand animation. World components include `<Vox>`, animated `<Water>`, `<Torch>`, `<Clouds>`, `<GodRay>`, `<Dust>`, and `<EmberDrift>`.
 
 `MinecraftAvatar` is a classic 1.8m Minecraft rig with split thighs/shins and knee joints (so sitting is not a plank), procedural pixel textures, six outfit presets, 8×8 face maps, face glow, rim light and head/hand animation. `position` is the feet/ground point. `rotationY=0` faces +Z. 1 unit = 1 metre.
 
@@ -232,12 +237,17 @@ Story films also get `characters.tsx`, a ready-made duo + extra cast. The two le
 
 ## Docs
 
+- `20k-hits/README.md` — Source snapshots, shot logs, contact sheets, and analysis of the 3 × 20k+ hit videos.
+- `docs/WHY-THE-3-HITS-BLEW-UP.md` — Forensic study comparing the 20k+ winners vs 1.5k–2k shorts.
+- `docs/VIRAL-SHORTS-BLUEPRINT.md` — Step-by-step playbook for writing, framing, lighting, and cutting 20k+ Shorts.
+- `docs/FRAMEWORK-REVIEW-AND-REMASTER.md` — Full technical review and changelog of the Remaster v2 engine & shaders.
 - `AGENTS.md` — hard rules, workflow, review gate, render policy, anti-lazy table.
-- `docs/CAMERA-BIBLE.md` — Zack D camera grammar for 9:16 Minecraft: shot types, moves, framing, cuts, continuity, worked example.
+- `docs/CAMERA-BIBLE.md` — Zack D camera grammar + Remaster v2 `cam` helpers for 9:16 Minecraft.
 - `docs/STYLE.md` — palette, three-light recipe, materials, detail hierarchy, copy-paste scenery recipes.
 - `docs/SCENE-CONTRACT.md` — exact `film.tsx` / `world.tsx` / `sceneN.tsx` API.
 - `docs/NARRATION-RULES.md` — the voice contract: plain words, one teller, no robotic narration.
 - `docs/NARRATION.md` — hook-first writing, 20-second beat map, line bank, sync.
+- `Topics/Shared/SHADERS.md` — sky dome, bloom threshold rules, presets, and `scripts/look-metrics.py`.
 - `templates/cast/README.md` — how to cast a two-lead duo and repeat an extra.
 
 ---

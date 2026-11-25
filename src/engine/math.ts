@@ -42,8 +42,12 @@ export type EaseName =
   | "inOutCubic"
   | "outQuint"
   | "outExpo"
+  | "inOutExpo"
   | "inOutQuint"
+  | "inBack"
   | "outBack"
+  | "inOutBack"
+  | "snap"
   | "hold";
 
 export const easings: Record<EaseName, (t: number) => number> = {
@@ -56,11 +60,30 @@ export const easings: Record<EaseName, (t: number) => number> = {
   inOutCubic: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
   outQuint: (t) => 1 - Math.pow(1 - t, 5),
   outExpo: (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+  inOutExpo: (t) =>
+    t <= 0 ? 0 : t >= 1 ? 1 : t < 0.5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2,
   inOutQuint: (t) => (t < 0.5 ? 16 * t ** 5 : 1 - Math.pow(-2 * t + 2, 5) / 2),
+  inBack: (t) => {
+    const c1 = 1.70158;
+    const c3 = c1 + 1;
+    return c3 * t * t * t - c1 * t * t;
+  },
   outBack: (t) => {
     const c1 = 1.70158;
     const c3 = c1 + 1;
     return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  },
+  inOutBack: (t) => {
+    const c1 = 1.70158;
+    const c2 = c1 * 1.525;
+    return t < 0.5
+      ? (Math.pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2
+      : (Math.pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;
+  },
+  /** Punchy Shorts speed-ramp: snaps quickly onto the beat and settles smoothly. */
+  snap: (t) => {
+    const k = clamp01(t);
+    return 1 - Math.pow(1 - k, 4);
   },
   hold: () => 0,
 };
@@ -110,6 +133,9 @@ export function shade(hex: string, amount: number): string {
   const g = (n >> 8) & 255;
   const b = n & 255;
   const f = (v: number) =>
-    Math.round(amount >= 0 ? v + (255 - v) * amount : v * (1 + amount));
+    clamp(Math.round(amount >= 0 ? v + (255 - v) * amount : v * (1 + amount)), 0, 255);
   return `#${[f(r), f(g), f(b)].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
 }
+
+export const degToRad = (deg: number) => (deg * Math.PI) / 180;
+export const radToDeg = (rad: number) => (rad * 180) / Math.PI;

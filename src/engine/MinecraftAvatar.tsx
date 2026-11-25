@@ -90,6 +90,10 @@ export type MinecraftAvatarProps = {
   faceGlow?: number;
   /** Cheap rim silhouette for dark characters. 0 = none. */
   rim?: number;
+  /** Colour tint for `rim` glow (default `#12233f` cool rim, try `#285430` or `#3b1954` for mobs). */
+  rimColor?: string;
+  /** Subtle 3D outer hair cap over the top/back/sides of the head for Minecraft skin depth. */
+  hairLayer?: boolean;
 
   /**
    * A whole pose, set by the scene. Overrides `animation`, `blendTo` and `arms`: this is how a fight is
@@ -208,6 +212,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   shadowOpacity = 0.5,
   faceGlow = 0,
   rim = 0,
+  rimColor = "#12233f",
+  hairLayer = false,
   pose: posed,
   children,
   head,
@@ -274,12 +280,12 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     }
     if (rim > 0) {
       for (const m of [skinMat, hairMat, rightSideMat, leftSideMat, torsoMat, armMat, legMat]) {
-        m.emissive = new THREE.Color("#12233f");
+        m.emissive = new THREE.Color(rimColor);
         m.emissiveIntensity = rim;
       }
     }
     return { skinMat, hairMat, rightSideMat, leftSideMat, faceMat, torsoMat, armMat, legMat };
-  }, [skin, hair, face, faceGlow, outfit, rim, kit, colors?.torso, colors?.arms, colors?.legs]);
+  }, [skin, hair, face, faceGlow, outfit, rim, rimColor, kit, colors?.torso, colors?.arms, colors?.legs]);
 
   // Blink swaps the face map. Mutating the map keeps the material (and its shader)
   // alive; three only recompiles when the map goes null ↔ non-null.
@@ -378,6 +384,16 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           ]}>
             <boxGeometry args={[8 * PX, 8 * PX, 8 * PX]} />
           </mesh>
+          {hairLayer ? (
+            <group position={[0, 4 * PX, 0]}>
+              <mesh position={[0, 3.85 * PX, 0]} material={materials.hairMat} castShadow>
+                <boxGeometry args={[8.55 * PX, 1.3 * PX, 8.55 * PX]} />
+              </mesh>
+              <mesh position={[0, 0.3 * PX, -4.05 * PX]} material={materials.hairMat} castShadow>
+                <boxGeometry args={[8.55 * PX, 7.6 * PX, 0.7 * PX]} />
+              </mesh>
+            </group>
+          ) : null}
           {head ? <group position={[0, 4 * PX, 0]}>{head}</group> : null}
         </group>
 

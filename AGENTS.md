@@ -1,5 +1,11 @@
 # AGENTS.md — The Director's Contract
 
+> **REMASTER V2 & 20K+ HIT ARCHIVE (READ FIRST):**
+> - [`20k-hits/README.md`](20k-hits/README.md) — **Saved source code, shot logs, contact sheets, and metrics for the 3 × 20k+ hit videos** (*Monster Village Part 1*, *Creeper Parents*, *Enderman Parents*).
+> - [`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md) — Forensic comparison of why those 3 blew up to 20k+ while the rest stopped at 1.5k–2k.
+> - [`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md) — Repeatable 20k+ Shorts formula, first-1.5s hook rules, caption contrast, and original non-duplicate mob/family scripts.
+> - [`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md) — Technical audit of framework issues found & every v2 remaster upgrade (`screenOffset`, `cam.whip/crane/ots/dollyZoom/fitHeight`, 9:16 aspect-safe shaders, `<Water>`, `<EmberDrift>`, caption highlight words).
+
 ## 0. Before everything: read [`MASTERPROMPT-01.md`](MASTERPROMPT-01.md)
 
 The owner's standing brief, given 2026-11-11, the day Monster Village Part 1 passed 15,000 views. Read it at the
