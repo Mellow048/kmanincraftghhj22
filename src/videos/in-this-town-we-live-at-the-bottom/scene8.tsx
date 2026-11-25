@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { EAST, Healer, Hero, Mum, NORTH, WEST, room, timing } from "./kit";
+import { EAST, Healer, Hero, Mum, NORTH, WEST, room, ramp, timing } from "./kit";
 
 /**
  * 08 — The decision. Three short shots, and the film's whole engine starts here.
@@ -16,10 +16,10 @@ export const scene8 = storyScene(timing, {
       zone: "room",
       look: "warm-room",
       note: "He asks. She has been asked this before and her hands are already still: the answer is going to be a gesture, not a sentence.",
-      stage: () => (
+      stage: (t) => (
         <>
           <Hero position={room(-0.3, 0, -1.5)} rotationY={EAST} animation="talk" face="uneasy" headPitch={-0.1} />
-          <Healer position={room(0.9, 0, -1.3)} rotationY={WEST} hmm={0.3} lookAt={room(-0.3, 1.4, -1.5)} />
+          <Healer position={room(0.9, 0, -1.3)} rotationY={WEST} hmm={0.3 + 0.5 * ramp(t, 0.1, 0.9)} lookAt={room(-0.3, 1.4, -1.5)} />
         </>
       ),
     },

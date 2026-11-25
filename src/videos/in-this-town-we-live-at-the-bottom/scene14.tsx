@@ -36,9 +36,9 @@ export const scene14 = storyScene(timing, {
       zone: "top",
       look: "overworld-day",
       note: "The keeper counts the money with two fingers, the way you count something you already know the total of. The jar sits on the sill between them.",
-      stage: () => (
+      stage: (t) => (
         <>
-          <Keeper position={top(0.5, 0, -300.6)} rotationY={SOUTH} animation="reach" face="blank" headPitch={0.3} />
+          <Keeper position={top(0.5, 0, -300.6)} rotationY={SOUTH} animation="reach" face="blank" headPitch={0.3 + 0.12 * Math.sin(t * 3.4)} />
           <Hero position={top(-0.6, 0, -299.2)} rotationY={0} animation="idle" face="worried" />
           <Jar position={top(0, 1.05, -299.6)} fill={1} />
         </>

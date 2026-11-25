@@ -62,10 +62,10 @@ export const scene16 = storyScene(timing, {
       zone: "bottom",
       look: "overworld-rain",
       note: "The basket, at the end of the jetty, and him standing in it in the rain in his clean coat. He has come down twice in one year, which he has never done.",
-      stage: () => (
+      stage: (t) => (
         <>
-          <Basket position={[0, 0.5, 15]} rope={2.4} />
-          <Keeper position={[0, 0.5, 15]} rotationY={SOUTH} animation="idle" face="blank" />
+          <Basket position={[0, 0.5 + 0.05 * Math.sin(t * 2.2), 15]} rope={2.4 + 0.08 * Math.sin(t * 2.2 + 1)} />
+          <Keeper position={[0, 0.5 + 0.05 * Math.sin(t * 2.2), 15]} rotationY={SOUTH} animation="idle" face="blank" />
           <Hero position={[0.2, 0.5, 12.6]} rotationY={NORTH} animation="idle" face="surprised" headPitch={-0.2} />
         </>
       ),

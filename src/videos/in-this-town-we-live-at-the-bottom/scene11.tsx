@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, LightPool } from "../../engine";
 import { Jar, JETTY_CROWD, Hero, NORTH, SOUTH, Villager, ease, ramp, timing } from "./kit";
 
 /**
@@ -42,6 +42,7 @@ export const scene11 = storyScene(timing, {
             <Villager key={i} position={[x, 0.5, z]} rotationY={NORTH} strain={ease(ramp(t, 0.2 + i * 0.1, 1.0 + i * 0.1)) * 0.5} kid={i % 2 === 0} />
           ))}
           <Hero position={[0.6, 0.5, 11.6]} rotationY={NORTH} animation="idle" face="surprised" headPitch={-0.1} />
+          <LightPool position={[0, 0.52, 10.6]} width={8} depth={7} color="#ffb46b" opacity={0.26} />
         </>
       ),
     },
