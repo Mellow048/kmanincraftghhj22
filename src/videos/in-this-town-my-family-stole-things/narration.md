@@ -30,13 +30,13 @@ What is planted, and where it pays off:
 
 | Planted | Pays off |
 |---|---|
-| The main idea, said in the first four lines: berries on the sill, one boy paying us back (`1.berries`, `2.paying`) | `12.trade`, `12.want`: the price of the one thing that was never for sale |
-| "We carry one thing in our mouth, and we drop it to eat" (`3.rule`, `3.drop`) | `9.drop`, `9.ate`: he drops the flower for the berries, which is what taught the boy the trick |
+| The hook, done in eight seconds: we steal → a boy pays us back in berries → **I stole a gift** (`1.town`, `1.night`, `1.back`, `1.gift`) | `11.given`, `12.none`: a gift is the one thing a berry cannot buy back |
+| "We carry one thing in our mouth, and we drop it to eat" (`2.carry`) | `9.drop`, `9.ate`: the trick he taught the boy by accident, and the reason the flower was always going to be dropped |
 | The cup on the sill, the window open a hand's width (`4.window`, `4.cup`) | `12.second`: the window was never a way in. It was a counter |
-| The iron golem gives the boy the flower (`6.gave`) | `11.given`, `12.none`: a gift is the one thing a thief cannot put back |
+| The iron golem gives the boy the flower (`6.gave`) | `11.given`, `12.none`: why this one could not be bought |
 | "Nothing anybody is holding" — the family's own rule (`4.one`) | `7.said`: what he did was not stealing, it was taking a thing out of somebody's hands |
-| "The one thing he wanted was the one thing we never sold" (`12.want`) | `13.berry`: he answers it with a berry in the second cup |
-| "My dad took a sword once" (`1.dad`) | `14.sub`: the CTA asks the one question still open — what the boy wants for it |
+| "Every one. He counted every one." (`11.count`) | `13.berry`: the answer is one berry, put in the second cup |
+| "My dad took a sword once" (`3.dad`) | `14.sub`: the CTA asks the one question still open — what the boy wants for it |
 
 The lines below are the script. Cue ids are `<beat>.<word>`. One line is one shot; a fight or a run may be cut into
 more with `cut:`.
@@ -44,16 +44,15 @@ more with `cut:`.
 ```narration
 # clip 01-hook
 [1.town]     In this town, my family stole things.
-[1.dad]      My dad took a sword once, my sister took a whole cooked chicken,
-[1.me]       and I was the worst thief we ever had.
-[2.berries]  And every night there were berries on our sill.
-[2.paying]   One boy was paying us back for every single thing we took.
-[2.never]    We never once asked why.
-[3.rule]     Here's how it worked. We carry one thing in our mouth,
-[3.drop]     and if we find food, we drop it to eat.
-[3.trade]    He worked that out. He left food, we left the thing.
-[3.flower]   Then I took a red flower off his sill,
-[3.cant]     and that one couldn't be paid for.
+[1.night]    Every night, a boy left berries on our sill.
+[1.back]     He was buying back what we took.
+[1.gift]     Then I stole a gift.
+[2.why]      Here's how he did it.
+[2.carry]    We carry one thing in our mouth, and if we find food, we drop it to eat.
+[2.worked]   He worked that out. He left food, we left the thing.
+[3.dad]      My dad took a sword once. My sister took a whole cooked chicken.
+[3.me]       I was the worst thief we ever had.
+[3.flower]   So one night I took a red flower off his sill.
 
 # clip 02-rule
 [4.night]    On my first night alone my dad gave me the rules.
