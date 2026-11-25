@@ -49,23 +49,16 @@ export const FoxHead: React.FC<{ fur: string; half: number; top: number; mouth: 
         <Block position={[0, h * 0.42, h * 0.15]} size={[h * 0.22, h * 0.62, 0.014]} color={DARK} castShadow={false} />
       </group>
     ))}
-    {/* the white cheek ruff, on the face plane: the reason a fox reads as a fox at phone size */}
-    {[-1, 1].map((s) => (
-      <Block
-        key={s}
-        position={[s * h * 0.5, mouth + h * 0.16, h * 1.0]}
-        rotation={[0, s * 0.45, 0]}
-        size={[h * 0.34, h * 0.5, h * 0.16]}
-        color={WHITE}
-        castShadow={false}
-      />
-    ))}
-    {/* the snout: out of the face plane, pointed, black nose, and it sniffs */}
-    <group position={[0, mouth + h * 0.22 - sniff * 0.01, h * 1.06 + sniff * 0.015]}>
-      <Block position={[0, 0, h * 0.22]} size={[h * 0.4, h * 0.36, h * 0.5]} color={shade(fur, 0.1)} />
-      <Block position={[0, -h * 0.12, h * 0.5]} size={[h * 0.3, h * 0.22, h * 0.22]} color={WHITE} castShadow={false} />
-      <Block position={[0, h * 0.02, h * 0.66]} size={[h * 0.18, h * 0.16, h * 0.09]} color={DARK} castShadow={false} />
+    {/* the muzzle: one cream wedge under the eyes, black nose at the tip, and the mouth line — this is the snout,
+        and it sits BELOW eye height so it never reads as a brow */}
+    <group position={[0, mouth + h * 0.08 - sniff * 0.008, h * 1.0 + sniff * 0.02]}>
+      <Block position={[0, h * 0.02, h * 0.2]} size={[h * 0.5, h * 0.3, h * 0.46]} color={shade(fur, 0.06)} />
+      <Block position={[0, -h * 0.06, h * 0.46]} size={[h * 0.42, h * 0.26, h * 0.24]} color={WHITE} />
+      <Block position={[0, h * 0.02, h * 0.6]} size={[h * 0.19, h * 0.16, h * 0.08]} color={DARK} />
+      <Block position={[0, -h * 0.16, h * 0.42]} size={[h * 0.3, h * 0.04, h * 0.16]} color={DARK} castShadow={false} />
     </group>
+    {/* the ruff: white fur along the jaw and the throat, well under the face */}
+    <Block position={[0, mouth - h * 0.18, h * 0.86]} size={[h * 0.92, h * 0.26, h * 0.3]} color={WHITE} castShadow={false} />
   </>
 );
 

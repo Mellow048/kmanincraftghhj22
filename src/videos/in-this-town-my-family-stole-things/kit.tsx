@@ -27,6 +27,24 @@ import { Fox, Villager } from "../../../Topics/InThisTown";
 
 export const timing = timingJson as unknown as Timing;
 
+/**
+ * Where to aim the lens for a body standing at `p`. A fox is 1.4 m (0.6 scale) or 1.5 m for the father, a boy 1.2 m,
+ * a golem 2.7 m — nothing here is a 1.8 m player, so every camera distance in this film is measured from these:
+ *
+ *   at(p)            chest, for a full or medium shot
+ *   top(p)           the head, for a close-up
+ *   GROUND(3.0)      the whole body, with air above it
+ *   MEDIUM(2.4)      head to feet, filling the phone
+ *   CLOSE(1.5)       head and shoulders
+ *   FACE(1.05)       a face, at fov 34
+ */
+export const at = (p: Vec3, h = 0.62): Vec3 => [p[0], p[1] + h, p[2]];
+export const head = (p: Vec3, h = 1.16): Vec3 => [p[0], p[1] + h, p[2]];
+export const WIDE = 3.6;
+export const MEDIUM = 2.4;
+export const CLOSE = 1.5;
+export const FACE = 1.05;
+
 /** Seconds into its shot at which a word is said: `wordAt("3.bell", "bell")`. Hang every action on a word. */
 export const wordAt = wordClock(timing);
 
@@ -46,14 +64,14 @@ export const PLACE = {
    * The boy's house: its front wall is at z = -5, so the sill of its lit window is at z = -4.85 and y = 1.3.
    * The cup stands on it. A fox on the path below can reach it at full stretch.
    */
-  boyHouse: [-11, 0, -5] as Vec3,
-  sill: [-9.5, 1.5, -4.85] as Vec3,
+  boyHouse: [-11, 0, -4.8] as Vec3,
+  sill: [-9.1, 1.42, -4.8] as Vec3,
   /** The step under the sill, where the boy sits and cries. */
-  step: [-9.5, 0, -3.9] as Vec3,
+  step: [-9.1, 0, -3.85] as Vec3,
   /** The path in front of the boy's door: where a fox is caught in daylight. */
-  path: [-11, 0, -2.2] as Vec3,
+  path: [-10.4, 0, -2.4] as Vec3,
   /** The hedge across the street, where the teller watches the house. */
-  hedge: [-9.5, 0, 0.4] as Vec3,
+  hedge: [-10.2, 0, 0.5] as Vec3,
   /** The den: its own zone. Origin at the middle of its floor; the pile is against the north wall. */
   den: [0, 0, 60] as Vec3,
   /** The teller's room, if a beat needs one. */

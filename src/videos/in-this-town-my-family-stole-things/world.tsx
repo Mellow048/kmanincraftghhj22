@@ -54,6 +54,11 @@ const Street: React.FC = () => (
     <LightPool position={[0, 0.07, 1.5]} width={11} depth={9} color="#fff2c8" opacity={0.14} />
     <Glow position={[PLACE.bell[0], PLACE.bell[1] + 2.3, PLACE.bell[2]]} size={1.6} color="#ffe08a" opacity={0.35} />
     <Dust position={[0, 2.2, 1]} area={[30, 4, 14]} count={70} size={0.045} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
+    {/* the boy's window, and the pool of warm light it throws on the sill and the step: a fox at that sill is lit */}
+    <Glow position={[PLACE.sill[0], PLACE.sill[1] + 0.35, PLACE.sill[2] + 0.9]} size={2.6} color="#ffd9a0" opacity={0.55} />
+    <LightPool position={[PLACE.sill[0], 0.06, PLACE.sill[2] + 1.5]} width={6} depth={4.5} color="#ffcf8a" opacity={0.34} />
+    <Glow position={[PLACE.hedge[0], 1.1, PLACE.hedge[2] + 2.2]} size={3.2} color="#ffe6c0" opacity={0.4} />
+    <LightPool position={[PLACE.hedge[0], 0.06, PLACE.hedge[2] + 1.2]} width={7} depth={5} color="#ffe6c0" opacity={0.28} />
   </>
 );
 
@@ -85,7 +90,10 @@ const Den: React.FC = () => {
       {/* the hole of a door, with the night outside it */}
       <Vox kind="grass" position={[3.4, 0.01, 3.4]} size={[3.2, 0.06, 2.4]} />
       <Glow position={[3.4, 0.6, 3.6]} size={1.5} color="#7f8fd0" opacity={0.3} />
-      <LightPool position={[0.4, 0.05, 1.2]} width={7} depth={5} color="#ffd9a0" opacity={0.1} />
+      <LightPool position={[0.4, 0.05, 1.2]} width={7} depth={5} color="#ffd9a0" opacity={0.22} />
+      {/* the light that comes in with the camera, so the pile and the faces are readable in the dark */}
+      <Glow position={[0.4, 1.5, 3.2]} size={3.2} color="#ffe0b0" opacity={0.42} />
+      <LightPool position={[0.4, 0.06, 2.4]} width={8} depth={5.5} color="#ffe0b0" opacity={0.3} />
       <Dust position={[0, 1.4, 0]} area={[8, 3, 5]} count={40} size={0.04} color="#ffe6b8" opacity={0.4} seed={5} speed={0.12} />
     </group>
   );
@@ -108,3 +116,14 @@ export const World: React.FC = () => {
     </>
   );
 };
+
+/**
+ * THE LENS LIGHT. Not a lamp in the town — a light with the camera, so a fox on a dark night is a fox and not a
+ * silhouette. Every night set gets one; the day sets do not need it.
+ */
+const LensLight: React.FC<{ at?: [number, number, number]; warm?: string; power?: number }> = ({ at = [0, 0, 4], warm = "#ffe6c0", power = 1 }) => (
+  <>
+    <Glow position={at} size={3.4 * power} color={warm} opacity={0.5} />
+    <LightPool position={[at[0], 0.06, at[2]]} width={7} depth={6} color={warm} opacity={0.3} />
+  </>
+);
