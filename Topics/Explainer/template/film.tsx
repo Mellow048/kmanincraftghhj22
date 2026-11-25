@@ -1,38 +1,36 @@
 import { defineFilm } from "../../engine";
-import { timing, unbroken } from "./kit";
+import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
 
 /**
  * __TITLE__
  *
- * TODO: the film in two sentences. The question, and the answer a nine-year-old could repeat.
+ * A REMASTERED EXPLAINER FILM (Topics/Explainer):
+ * Read Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md before adding scenes.
  *
- * An EXPLAINER (Topics/Explainer): one question, answered in under a minute. The recorded narration is the
- * clock, every line of narration.md is one place the camera comes to rest, and the camera FLIES from each
- * to the next: it never teleports. Read Topics/Explainer/README.md before changing anything here.
+ * Core pillars:
+ *   1. Distinct channel cast: CitizenLead (Miles) vs EliteLead (Sterling) — NEVER InThisTown Hero/Villager.
+ *   2. Fast story cuts (`storyScene`, ~1.1–1.9s median cut) across grounded detailed <Zone> sets.
+ *   3. Composite multi-part props (DetailedBookshelf, RuleBoard, Crown, BallotBox, StoneBillboard) — zero bare box props.
+ *   4. Cold-open climax (Frame 0) -> 8 beats -> seamless mid-sentence loop ("..., and that's").
  */
 export const film = defineFilm({
   id: "__ID__",
   title: "__TITLE__",
   topic: "__TOPIC__",
   look: "overworld-day",
-  // Sound, in two steps. Add the line when its file exists:
-  //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },
-  //   the sound is built (scripts/sound.py build):          audio: { src: "audio/__ID__/mix.mp3" },
-  // A finished film plays the mix. `npm run check` fails one that does not.
   post: { shaders: true },
+  // Sound, in two steps:
+  //   voice recorded (scripts/narration.py build __ID__): audio: { src: "audio/__ID__/narration.mp3" },
+  //   sound mix built (scripts/sound.py build __ID__):    audio: { src: "audio/__ID__/mix.mp3" },
   captions: {
     words: timing.words,
     y: 0.67,
     motion: "on-beat",
-    highlightWords: ["TRUTH", "WHY", "PROOF"],
-    dangerWords: ["NEVER", "ZERO", "FALSE", "GONE"],
+    highlightWords: ["CROWN", "VOTE", "POWER", "EMERALD", "KING", "EMPEROR"],
+    dangerWords: ["EMPTY", "WAR", "BROKE", "TRAP", "NEVER", "ZERO", "CHAOS"],
   },
   World,
   scenes: [scene1],
 });
-
-// The promise of the format, checked every time the film is loaded: the camera never teleports. This throws,
-// naming the line, if a scene does not begin on the stop where the scene before it ended.
-unbroken(film.scenes, { maxCuts: 2 });

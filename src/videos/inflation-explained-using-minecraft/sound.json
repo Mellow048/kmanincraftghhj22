@@ -1,0 +1,94 @@
+{
+  "film": "inflation-explained-using-minecraft",
+  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build inflation-explained-using-minecraft",
+  "music": {
+    "track": "Topics/Explainer/explainer_bgm_loop.wav",
+    "gain": -19,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "explain",
+        "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.hook",
+      "to": "3.empty",
+      "bed": "sky"
+    },
+    {
+      "from": "4.sterling",
+      "to": "5.print",
+      "bed": "room"
+    },
+    {
+      "from": "5.cheer",
+      "to": "6.jump",
+      "bed": "sky"
+    },
+    {
+      "from": "7.work",
+      "to": "7.work",
+      "bed": "cave"
+    },
+    {
+      "from": "7.chart",
+      "to": "7.prices",
+      "bed": "sky"
+    },
+    {
+      "from": "8.first",
+      "to": "8.first",
+      "bed": "room"
+    },
+    {
+      "from": "8.loop",
+      "to": "8.loop",
+      "bed": "sky"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "2.bread",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "3.crisis",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.sterling",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "5.print",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time"
+    },
+    {
+      "cue": "6.same",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time"
+    },
+    {
+      "cue": "7.work",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time"
+    },
+    {
+      "cue": "8.first",
+      "sfx": "whoosh",
+      "why": "scene 8 starts: a new place or a new time"
+    },
+    {
+      "cue": "8.loop",
+      "sfx": "ding",
+      "why": "the subscribe line"
+    }
+  ]
+}

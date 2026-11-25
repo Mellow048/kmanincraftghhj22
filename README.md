@@ -14,6 +14,7 @@ This is not a template for "a Minecraft video". It is a director's framework wit
 > 2. **[`docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md`](docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md)** — Study why *Never Walk Alone After Dark* hit **5k views in 15h** (`~1.47s` median shot, `110` cuts, `0.7%` dark frames, literal 3D sight-gags + `<FloatingNumber>` + `<ChatToast>` + dual-color red/gold captions).
 > 3. **[`docs/VOICE-AND-TTS.md`](docs/VOICE-AND-TTS.md)** — **MANDATORY TTS SPEC (supersedes older voice notes):** must pick **Male, No Accent (Natural American), Energetic, Not Old, Not Too Serious**.
 > 4. **[`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md)** & **[`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md)** — Remaster v2 shaders, camera recipes, and checklists.
+> 5. **If building `--topic explainer`:** MUST read **[`Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md`](Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md)**! Always star **`CitizenLead` + `EliteLead`** (NEVER `InThisTown` default hero/Villager), use composite props (`DetailedBookshelf`, `RuleBoard`, `Crown`, `BallotBox`, `StoneBillboard` — zero bare-box laziness), cut fast (`storyScene`), and end on a seamless loop.
 >
 > **It makes more than one kind of video.** The 20-second short below is the base. A narrated one-to-three-minute
 > story that begins "In this town, …" is a different kind, a **topic**, with its own rules, pack, starter and

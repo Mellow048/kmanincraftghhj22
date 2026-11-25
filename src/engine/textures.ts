@@ -26,8 +26,7 @@ function texture(
 
   const tex = new THREE.CanvasTexture(canvas);
   tex.magFilter = THREE.NearestFilter;
-  tex.minFilter = THREE.NearestFilter;
-  tex.generateMipmaps = false;
+  tex.minFilter = THREE.NearestMipmapLinearFilter;
   tex.wrapS = THREE.RepeatWrapping;
   tex.wrapT = THREE.RepeatWrapping;
   tex.repeat.set(repeat[0], repeat[1]);
@@ -222,10 +221,10 @@ export function posterTex(opts: PosterOptions): THREE.CanvasTexture {
   });
 }
 
-/** Soft radial white glow. Used for light pools, lamp falloff, dust sprites. */
+/** Soft radial white glow. Used for light pools, lamp falloff, dust sprites. Uses LinearFilter so pools never band. */
 export function glowTex(): THREE.CanvasTexture {
   const key = "glow";
-  return texture(key, 64, 64, (ctx) => {
+  const tex = texture(key, 64, 64, (ctx) => {
     const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
     g.addColorStop(0, "rgba(255,255,255,1)");
     g.addColorStop(0.35, "rgba(255,255,255,0.5)");
@@ -233,12 +232,15 @@ export function glowTex(): THREE.CanvasTexture {
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, 64, 64);
   });
+  tex.magFilter = THREE.LinearFilter;
+  tex.minFilter = THREE.LinearMipmapLinearFilter;
+  return tex;
 }
 
-/** Soft vertical shaft, used for volumetric god-rays. */
+/** Soft vertical shaft, used for volumetric god-rays. Uses LinearFilter for smooth falloff. */
 export function beamTex(): THREE.CanvasTexture {
   const key = "beam";
-  return texture(key, 64, 128, (ctx) => {
+  const tex = texture(key, 64, 128, (ctx) => {
     const v = ctx.createLinearGradient(0, 0, 0, 128);
     v.addColorStop(0, "rgba(255,255,255,0.85)");
     v.addColorStop(0.55, "rgba(255,255,255,0.3)");
@@ -255,6 +257,9 @@ export function beamTex(): THREE.CanvasTexture {
     ctx.fillStyle = h;
     ctx.fillRect(0, 0, 64, 128);
   });
+  tex.magFilter = THREE.LinearFilter;
+  tex.minFilter = THREE.LinearMipmapLinearFilter;
+  return tex;
 }
 
 /** Emissive window pane with a faint cross-bar pattern. */
