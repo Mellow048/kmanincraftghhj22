@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-my-family-stole-things",
   "mix": "public/audio/in-this-town-my-family-stole-things/mix.mp3",
-  "seconds": 113.9333,
+  "seconds": 115.5,
   "built_from": {
-    "timing.json": "3fcd2199be593fb6288de4fe3b427bec488f6d23",
+    "timing.json": "62ab5b4873e4156e45ec6126773c745e94a8fd0e",
     "sound.json": "0cf0a59bd19fe2bab17e12c7734677ca80714d84",
-    "narration.mp3": "2dff13554f6f18cacc63b41f91406356e7002352"
+    "narration.mp3": "4bf97648a4394be5666165bd8e7bb8ebe0c6f0b7"
   },
-  "mix_sha1": "bb1c8df7ca4f0ac0508178175bc4e1c1beca8945",
+  "mix_sha1": "ae3d5d3593998f971bb2a5e3ed5cc7e8cc57a0ca",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,47 +18,47 @@
     {
       "from": "2.why",
       "mood": "explain",
-      "at": 6.53
+      "at": 6.73
     },
     {
       "from": "4.night",
       "mood": "sneak",
-      "at": 20.7
+      "at": 20.87
     },
     {
       "from": "6.hedge",
       "mood": "sad",
-      "at": 38.3
+      "at": 38.77
     },
     {
       "from": "8.walk",
       "mood": "tense",
-      "at": 57.93
+      "at": 58.8
     },
     {
       "from": "9.drop",
       "mood": "curious",
-      "at": 71.0
+      "at": 72.1
     },
     {
       "from": "11.corner",
       "mood": "dark",
-      "at": 80.33
+      "at": 81.57
     },
     {
       "from": "12.flower",
       "mood": "hope",
-      "at": 99.27
+      "at": 100.53
     },
     {
       "from": "13.berry",
       "mood": "none",
-      "at": 103.53
+      "at": 105.07
     },
     {
       "from": "13.only",
       "mood": "hope",
-      "at": 108.87
+      "at": 110.4
     }
   ],
   "music_file": {
@@ -71,25 +71,17 @@
     "secondsWithoutMusic": 5.4,
     "bedsUnderVoiceDb": 26.6,
     "sfx": 78,
-    "sfxPerMinute": 41.1,
+    "sfxPerMinute": 40.5,
     "sfxKinds": 32,
-    "longestGapSeconds": 3.8,
-    "longestGapAt": 51.7,
+    "longestGapSeconds": 3.9,
+    "longestGapAt": 52.3,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 16.4,
-    "voiceOverRestWorstDb": 5.9,
+    "voiceOverRestMedianDb": 16.5,
+    "voiceOverRestWorstDb": 5.8,
     "voiceOverRestWorst": [
       {
-        "db": 5.9,
-        "t": 28.6,
-        "cue": "4.width",
-        "sounding": [
-          "chime"
-        ]
-      },
-      {
-        "db": 7.3,
-        "t": 93.8,
+        "db": 5.8,
+        "t": 95.0,
         "cue": "12.none",
         "sounding": [
           "coin",
@@ -98,44 +90,50 @@
         ]
       },
       {
-        "db": 7.3,
-        "t": 111.1,
+        "db": 5.8,
+        "t": 111.6,
         "cue": "13.only",
         "sounding": [
-          "ding",
-          "whoosh"
+          "sparkle"
         ]
       },
       {
-        "db": 7.6,
-        "t": 103.2,
-        "cue": "12.second",
+        "db": 7.4,
+        "t": 73.0,
+        "cue": "9.drop",
         "sounding": [
-          "chime",
-          "place"
+          "rustle"
         ]
       },
       {
-        "db": 7.8,
-        "t": 51.8,
+        "db": 7.5,
+        "t": 56.2,
+        "cue": "7.said",
+        "sounding": [
+          "step_stone",
+          "sting"
+        ]
+      },
+      {
+        "db": 7.7,
+        "t": 53.5,
         "cue": "7.said",
         "sounding": [
           "sting"
         ]
       },
       {
-        "db": 8.0,
-        "t": 6.2,
-        "cue": "1.gift",
+        "db": 7.7,
+        "t": 52.3,
+        "cue": "7.sister",
         "sounding": [
-          "sparkle",
-          "swish"
+          "sting"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.2,
-    "limiterMaxDb": 0.2
+    "truePeakDb": -2.6,
+    "limiterMaxDb": 0.0
   },
   "failures": []
 }

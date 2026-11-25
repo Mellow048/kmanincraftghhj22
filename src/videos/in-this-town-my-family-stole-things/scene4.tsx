@@ -19,7 +19,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "8.walk",
-      ...cam.push({ on: [-8.5, 0.8, -1.8], dist: 3.5, to: 3.2, yaw: 74, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [-8.5, 0.8, -1.8], dist: 3.1, to: 2.85, yaw: 74, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-day",
       note: "'So I went back in the day': tracking beside him as he walks up the middle of the empty street in full sun, flower in his jaw, ears already back. The street is too bright and too open. That is the threat.",
@@ -29,7 +29,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.dogs",
-      ...cam.push({ on: [-9.0, 0.62, -1.4], dist: 2.4, to: 2.0, yaw: -18, pitch: 0, fov: 48 }),
+      ...cam.push({ on: [-9.0, 0.62, -1.4], dist: 3.1, to: 2.85, yaw: -18, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-day",
       note: "'Every dog in that town knew before I did': a dog, up on its feet, ears up, looking straight past the lens at him. Low and close so the audience is on the fox's side of the bark.",
@@ -42,7 +42,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.turn",
-      ...cam.push({ on: [-10.0, 1.25, -2.2], dist: 5.2, to: 4.3, yaw: 46, pitch: 8, fov: 46 }),
+      ...cam.push({ on: [-10.0, 1.25, -2.2], dist: 5.6, to: 4.8, yaw: 46, pitch: 10, fov: 46 }),
       zone: "street",
       look: "overworld-day",
       note: "On 'turned round': the golem on the path rotates to face him, and the crane up makes it double in height in one move. Halfway up the path is where he stops, and the audience should feel the exact inch of it.",
@@ -55,7 +55,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.ran",
-      ...cam.truck({ on: [-7.8, 0.7, -1.2], by: [-2.6, 0, 0], dist: 3.4, yaw: 82, pitch: 2, fov: 46 }),
+      ...cam.truck({ on: [-7.8, 0.7, -1.2], by: [-2.6, 0, 0], dist: 3.1, yaw: 82, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-day",
       note: "'So I ran with the flower still in my mouth': low and beside him at a full run, ears flat, the flower a red streak. Fast. This is the one shot in the film that should feel like a chase.",
@@ -65,7 +65,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.night",
-      ...cam.push({ on: [-9.1, 1.46, -4.85], dist: 2.3, to: 1.9, yaw: 4, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [-9.1, 1.46, -4.85], dist: 2.9, to: 2.6, yaw: 4, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'That night there were berries on the sill': the cup gone, and the pile of berries in its place. The berries were never a symbol; they are food, and they are enough for a fox.",
@@ -78,7 +78,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.drop",
-      ...cam.push({ on: [-9.0, 1.36, -4.7], dist: 1.8, to: 1.5, yaw: -12, pitch: 4, fov: 34 }),
+      ...cam.push({ on: [-9.0, 1.36, -4.7], dist: 2.9, to: 2.6, yaw: -12, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "On 'dropped': the flower leaves his jaw and lands on the sill, next to the berries. One movement, no cut. The drop is the engine of the film, so give it the only unhurried frame in the chase.",
@@ -95,7 +95,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.ate",
-      ...cam.push({ on: [-9.1, 1.4, -4.85], dist: 1.5, to: 1.3, yaw: 16, pitch: 2, fov: 32 }),
+      ...cam.push({ on: [-9.1, 1.4, -4.85], dist: 3.1, to: 2.85, yaw: 16, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'Because of course I ate them': his jaw working through the pile, the flower on the sill behind him, forgotten, still red. The joke and the damage in one frame, and the audience should laugh and then feel it.",
@@ -109,7 +109,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.nothing",
-      ...cam.push({ on: [-9.3, 0.9, -3.9], dist: 3.4, to: 3.0, yaw: 30, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [-9.3, 0.9, -3.9], dist: 3.1, to: 2.85, yaw: 30, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'Then I went home with nothing at all': wide, from behind him, walking away from the house with the sill still in frame — the flower on it, the cup empty, the window open a hand's width. He has failed, and the picture has to say so without a word.",

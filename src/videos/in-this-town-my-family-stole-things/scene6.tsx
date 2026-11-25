@@ -16,7 +16,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "13.berry",
-      ...cam.push({ on: [-8.7, 1.48, -4.8], dist: 1.9, to: 1.6, yaw: 14, pitch: 4, fov: 36 }),
+      ...cam.push({ on: [-8.7, 1.48, -4.8], dist: 2.9, to: 2.6, yaw: 14, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-day",
       note: "'So I put a berry in it': his muzzle comes up to the empty cup and a single berry goes in. It is a small, badly-made, completely serious gesture. This is the payoff of the whole film, so the camera does not move much and does not look away.",
@@ -33,7 +33,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "13.bad",
-      ...cam.push({ on: [-8.6, 0.85, -3.9], dist: 2.2, to: 1.9, yaw: 20, pitch: 0, fov: 34 }),
+      ...cam.push({ on: [-8.6, 0.85, -3.9], dist: 3.1, to: 2.85, yaw: 20, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-day",
       note: "'I'm a terrible thief': he looks straight at the lens for the only time in the film, and shrugs. A fox shrugging is the joke; a fox shrugging about giving something away is the ending.",
@@ -41,7 +41,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "13.sister",
-      ...cam.push({ on: [-9.4, 0.85, -3.7], dist: 2.8, to: 2.3, yaw: 40, pitch: 0, fov: 40 }),
+      ...cam.push({ on: [-9.4, 0.85, -3.7], dist: 3.1, to: 2.85, yaw: 40, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-day",
       note: "'My sister says it's the first thing I ever took worth anything': over her shoulder, her jaw empty for the first time in the film. She has nothing in her mouth. That is the whole gag, and it is also the approval.",
@@ -54,7 +54,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "13.only",
-      ...cam.push({ on: [-8.6, 1.45, -4.8], dist: 2.6, to: 2.2, yaw: 6, pitch: 6, fov: 40 }),
+      ...cam.push({ on: [-8.6, 1.45, -4.8], dist: 2.9, to: 2.6, yaw: 6, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-day",
       note: "'In this town my family stole things. I traded': both cups in frame, the flower and the berry, and the open window behind them. The family line comes back with one word changed, so it has to be the same shot as a wide of the sill, not a new idea.",
@@ -68,7 +68,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "14.sub",
-      ...cam.push({ on: [-8.8, 1.5, -4.8], dist: 2.4, to: 2.0, yaw: -10, pitch: 4, fov: 36 }),
+      ...cam.push({ on: [-8.8, 1.5, -4.8], dist: 2.9, to: 2.6, yaw: -10, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-golden",
       note: "'Subscribe before I find out what he wants for the sword': the sword comes back — Dad's sword, leaning against the sill next to the two cups, where the boy must have left it. The ask is a question the film really has not answered, so the question is in the frame, not just in the caption.",

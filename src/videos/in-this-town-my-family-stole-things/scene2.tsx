@@ -19,7 +19,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "4.night",
-      ...cam.push({ on: [-10.40, 0.68, -2.10], dist: 3.2, to: 2.7, yaw: 58, pitch: 0, fov: 42 }),
+      ...cam.push({ on: [-10.40, 0.68, -2.10], dist: 3.1, to: 2.85, yaw: 58, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "The father, over the teller's shoulder, at the foot of the path: the first night on his own. Dad's head is level with the boy's window behind him — the window is in the shot before anyone says so.",
@@ -32,7 +32,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.one",
-      ...cam.push({ on: [-9.40, 0.68, -2.20], dist: 2.4, to: 1.95, yaw: 26, pitch: 0, fov: 36 }),
+      ...cam.push({ on: [-9.40, 0.68, -2.20], dist: 3.1, to: 2.85, yaw: 26, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "On the word 'One': the father's face, close, and one paw up — the whole rule in a gesture. Push in as he says it so the last word lands on his eyes.",
@@ -42,7 +42,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.window",
-      ...cam.push({ on: [-9.40, 0.68, -2.20], dist: 3.2, to: 2.5, yaw: -14, pitch: 12, fov: 44 }),
+      ...cam.push({ on: [-9.40, 0.68, -2.20], dist: 2.9, to: 2.6, yaw: -14, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'Then I saw the window': crane up the wall from the teller's eyeline to the sill, so the audience finds the cup exactly when he does. The window is open a hand's width; the flower's red is the only colour.",
@@ -55,7 +55,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.width",
-      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 1.9, to: 1.6, yaw: -22, pitch: 4, fov: 34 }),
+      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 2.9, to: 2.6, yaw: -22, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "On the window itself: the gap, the sill, and the cup in it. Do not push into the room. The point is that the gap is the width of a paw and has been all night, every night.",
@@ -63,7 +63,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.cup",
-      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 1.15, to: 0.95, yaw: 12, pitch: 6, fov: 30 }),
+      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 2.9, to: 2.6, yaw: 12, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'And in the cup, one red flower': the closest shot in the film, and it is only a flower in a cup. This frame is the whole promise of the film. Hold it.",
@@ -71,7 +71,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.climb",
-      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 2.1, to: 1.8, yaw: 26, pitch: 0, fov: 40 }),
+      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 3.1, to: 2.85, yaw: 26, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'I didn't even have to climb': the teller's face arrives at the sill in one movement, no climb, no struggle — reachUp from the step, and he is already there. Comedy is in how little it took.",
@@ -81,7 +81,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.easy",
-      ...cam.push({ on: [-8.90, 0.68, -3.50], dist: 2.0, to: 2.4, yaw: -8, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [-8.90, 0.68, -3.50], dist: 3.1, to: 2.85, yaw: -8, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'Easiest thing I ever took. Not a sword. A flower': the flower goes in his mouth and he is already turning away with it, casually. Pull back so the emptiness of the cup and the flower in his jaw are in one frame.",
@@ -94,7 +94,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.thought",
-      ...cam.push({ on: [-8.85, 0.68, -3.40], dist: 2.3, to: 2.0, yaw: -34, pitch: 2, fov: 36 }),
+      ...cam.push({ on: [-8.85, 0.68, -3.40], dist: 3.1, to: 2.85, yaw: -34, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'I thought, this is a thing that matters': profile, the flower across his jaw, a small fox holding something that is not food for the first time. The orbit keeps the red flower on screen and the sky behind him.",
@@ -104,7 +104,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.home",
-      ...cam.truck({ on: [-7.6, 0.75, -3.4], by: [-2.2, 0, 0], dist: 4.0, yaw: 62, pitch: 4, fov: 42 }),
+      ...cam.truck({ on: [-7.6, 0.75, -3.4], by: [-2.2, 0, 0], dist: 3.1, yaw: 62, pitch: 0, fov: 40 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'I carried it home in my mouth': track with him as he trots out of frame, the flower lit by the lamp post. This is the last happy frame in the film; make it read as a win.",
