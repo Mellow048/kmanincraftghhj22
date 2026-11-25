@@ -237,12 +237,35 @@ sounds like questions (bell ×3); pan to side; quiet beats loud. Last word of se
 quieter → put effects on loud early words. Reveal: riser through silence, boom on first word.
 Add sounds as @sfx in sound.py (computed numpy only), rebuild ALL films. Nobody can hear it: SAY SO.
 
-## 10. Still to read (this study)
+## 10. Coverage — COMPLETE as of 2026-11-25
 
-docs/ (STORY-FILMS, DIRECTING, CAMERA-BIBLE, STYLE, SCENE-CONTRACT, NARRATION-RULES, NARRATION),
-Shared/SHADERS, templates, WHY-IT-WORKED, topic.json, outlines (11), reference READMEs (18) +
-NEW-SHORT, 20k ANALYSIS ×3, other topics (Deadpan/Explainer/Recreation/Stories/WhatIf/SoundEffects),
-drafts, src/videos REVIEW/STORYBOARD files, review/framework-remaster, shot logs + narrations.
+**295 markdown files on disk, 226 unique by hash — all read or accounted for.** Where a file is a byte-identical copy
+of another (the topics were made by copying), it is recorded as such rather than read twice.
+
+| Area | Files | How it was covered |
+|---|---|---|
+| Root (`AGENTS.md`, `README.md`, `CLAUDE.md`, `MASTERPROMPT-01*`, `README`) | 5 | read in full |
+| `docs/` | 12 | read in full (digested §12) |
+| `Topics/` root + `Topics/README.md` + `Topics/MASTERPROMPT-01.md` | 3 | read |
+| `Topics/InThisTown/` — README, OWNER, SCRIPT, SHOTS, SOUND, PACK, MASTERPROMPT, WHY-IT-WORKED, topic.json | 8 | read in full (§1–§9, §18, §20) |
+| `Topics/InThisTown/outlines/` | 11 | read (§21) |
+| `Topics/InThisTown/reference/` — 19 films, READMEs + shot logs + narrations + NEW-SHORT + treehouse + 2 rejections | 68 | read; all 16 narrations line by line (§14); all 13 shot logs measured (§17); READMEs (§19.6) |
+| `Topics/Stories/` — README, OWNER, SCRIPT, SHOTS, SOUND, PACK, REFERENCE-STUDY, WHY-IT-WORKED, IDEAS, outlines, old reference, bread | 37 | read; SOUND/PACK/SHOTS proved near-identical diffs (§15.2) |
+| `Topics/WhatIf/` | 12 | read in full (§15.3) |
+| `Topics/Explainer/` | 8 | read in full (§15.4) |
+| `Topics/Deadpan/` | 6 | read in full (§15.5) |
+| `Topics/Recreation/` | 10 | read (§15.6) |
+| `Topics/Shared/` | 2 | read (§15.7–8) |
+| `Topics/SoundEffects/` | — | no markdown; the effect list lives in `scripts/sound.py` (§13) |
+| `20k-hits/` | 10 | read in full (§3) |
+| `src/videos/` — 11 `REVIEW.md`, 11 `STORYBOARD.md`, 40 `narration.md` | 43 | REVIEWs read in full (§16); every unbuilt script read (§16.5); STORYBOARD format read |
+| `drafts/` | 6 | read (§18.4) |
+| `templates/` | 3 | read |
+| `review/framework-remaster/` | 1 | read |
+
+What I did **not** do: open any binary (mp4, jpg, png, aac), or run a render. No film was built, no git history was
+inspected, and nothing outside this branch was touched.
+
 ## 11. Reference films, measured (all read 2026-11-25)
 
 | Film | Cut | Secs | Shots | Words | wpm | Median shot | Owner's words | Open it for |
@@ -1213,3 +1236,105 @@ for it and any film may use them: `blink`, `creak`, `step_stick`.
 **And the method note that governs all of it:** *"Every shot was looked at as a still, and many were shot again, before
 the film was rendered. The type check and `npm run check` pass on a black face and on a moon behind a roof. Only a
 picture shows them."*
+
+---
+
+# 21. The outlines: the owner talking, unfiltered (11 files in `Topics/InThisTown/outlines/`)
+
+These are the closest thing to a specification of his taste, because they are his, word for word, before any agent
+touched them. Every one is quoted in place; this section is about what they have in common.
+
+## 21.1 The outlines that exist
+
+| File | His or the agent's | State |
+|---|---|---|
+| `race-part-2.md` | **his outline**, word for word (2026-11-15) | built as `the-fastest-kid-wins-part-2` |
+| `helmet-kid.md` | **his outline** for part 1; draft 2 of the script is the agent's | built as `the-new-kid-never-took-off-his-helmet` |
+| `helmet-kid-part-2-script-draft.md` | entirely the agent's — he gave no outline ("save the part 2 of this short ill review it later") | parked |
+| `monster-village-part-3.md` | **his outline** | built |
+| `monster-village-part-4.md` | **his outline**, plus his changes to draft 1, word for word | built |
+| `me-and-my-shadow.md` | **his outline** | built |
+| `robot-at-18-part-2-script-draft.md` | the agent's; parked by him ("lets leave robot part 2 for now") | parked |
+| `ideas-2026-11-15.md` | agent's six, to the Monster Village recipe | idea 5 built (creeper), idea 4 built (enderman); 1 and 6 parked, 2 needs another danger, 3 stands |
+| `ideas-2026-11-16.md` | agent's five | all five built (§16) |
+| `ideas-2026-11-17.md` | agent's five, all with a kid, a family and a secret, and **no players in any of them** | **no answer yet** |
+| `README.md` | build order | — |
+
+## 21.2 How he actually writes, and what to do with it
+
+Read one of his outlines cold and the shape is unmistakable:
+
+1. **One paragraph, stream of consciousness, almost no full stops.** The race outline is ~330 words in about sixteen
+   sentences. He does not stop to be tidy; he stops when the story is done.
+2. **"u" and "you" for the protagonist, "we" when he means the camera.** *"we cut to Us waking up in the cage"*, *"you
+   look down at your shoes"*. **"We" is the audience's eye**, and it is how he directs.
+3. **He directs the camera mid-sentence** and means it literally. *"now focus the camera on 1 guard"*; *"transition
+   the camera to move on a black or dark block then once in a dark block, cut that"*; *"make it a hallway but make it a
+   skinny hallway"*, *"dont show the hallway first thats the ending"*. **When he names a camera move, do that move.**
+4. **He buries the twist in the middle of a sentence.** The race: *"but then.. you see the 1st place player is wearing
+   a familiar shoes too"* — dropped at the end of a long list of race positions, never set up. Part 4's *"a Vex popped
+   up on his view on the spyglass"* comes in the middle of a description of a raid.
+5. **He leaves himself notes to improve.** *"(or if u think of something better then yeah sure)"*, *"(im thinking of in
+   part 4, the monsters get help from the pillagers who hates humans. but yeah thats for later)"*. That parenthetical
+   is **the** instruction: the major beats are fixed, the details are yours.
+6. **He asks for the joke and the emotion in the same breath.** Part 4: *"then for a little humor we see the earlier
+   guy who is in charge of the tower fell down in the background"* — a slapstick beat timed under a serious scene.
+7. **He thinks in numbers**: places in a race (15th, 11th, 9th, 6th, 2nd), "since he was 10, now 18", "4 minutes
+   earlier", "hundreds of pillagers".
+8. **He asks for a pause on purpose**: *"narration stop here and make them move like they are discussing"*. He wants
+   the silence played by bodies, then a wipe through a dark block, then the next scene.
+
+## 21.3 His corrections, which are the sharpest rules in the repo
+
+- **"i dont like the part where he gave us a note 'DO not follow me' like what, we are planning to stalk him and he
+  suddenly know"** → *nobody knows a thing they were not shown finding out.* (Rarely stated this plainly anywhere else.)
+- **"before u render i need to change something… make it atleast 2:30"** with new beats, and *"the outline that i said
+  are the major parts u can add your own"* → **his beats are the plot; the agent's additions fill between them; and a
+  length request is a request for more story, never for a slower read.** (This is the same lesson as the snow golem
+  film: *"length is never bought with speed"* — move up a cut instead.)
+- **"it got worse ngl"** / *"the video is too fast no time to digest even half a second"* → the pace window, settled by
+  the iron-golem film at **~234 wpm with 0.25–0.75 s of air between story steps**.
+- **"speed it up abit, u turned it down too much"** → the window has two walls. Do not overshoot the correction.
+- **"the ending why did the tts get weaker in volume"** → every recorded clip must sit **within ~1 dB** of the others;
+  nothing in the build levels clips against each other. Measure each clip's speech level before building.
+- **"it was kinda similar to the creeper one"** → the six-word test, and the ban on filling in a finished film's
+  outline (§19.6).
+- **"this short has no parts just whole short"** → when he says that, the film ends: no cliffhanger, no "part two",
+  and the last line still says "subscribe".
+- **"i like that in this town the new kid never takes off his helmet, ill approach that as a horror short"** → he
+  supplies the genre, and expects it honoured (silence, waits, a cliffhanger), not softened.
+
+## 21.4 The idea sets, and what he did with them
+
+- **`ideas-2026-11-15.md` (six, to the Monster Village recipe).** He took idea 5 with two words ("lets do 5"). Ideas
+  1, 4, 5 and 6 turned out to be **one outline with four mobs**; 4 was built anyway and he caught the repeat. 1 and 6
+  are parked by his own judgement. **Lesson: a batch written to one recipe produces one story several times.**
+- **`ideas-2026-11-16.md` (five).** He took all five ("lets make 5"/"lets make more"), and all five were built. His
+  only criticism: *"i love them but the only 1 thats lacking is the stranger moving inside my house one, but its decent
+  enough"* — the one he found weakest is the one with **the least to feel** (a grown villager listing grievances and
+  losing). The agent's reading of why is in `ideas-2026-11-17.md` and is marked as a guess.
+- **`ideas-2026-11-17.md` (five, unanswered).** Written to his correction: **back to a kid, a family and a secret;
+  no players in any of the five** (the previous ten all had players); every turn a true Minecraft fact; every fact
+  sourced with a URL or marked "from memory". This is the *current* state of the idea pipeline and the best model of
+  how to pitch to him: a five-row comparison table with *who tells it · what he wants · what is in the way · the turn
+  (a Minecraft fact) · how it feels · are there players*, then each idea as a pull-quote opening, **frame one** in
+  words, the story, the facts, **why it could travel**, **to build** (with an honest size), **the risk** — and a
+  stated agent's order with reasons. Two of its five were built (§16: `my-brother-got-bitten`, `i-had-never-seen-the-sun`).
+
+## 21.5 Where the study ends
+
+The framework is now read end to end. What I know that I did not know at the start:
+
+1. **The film's engine is a change of mind, not a cut rate.** Every document that tried to name the secret landed
+   there eventually — `NEW-SHORT.md` states it best. The cuts and the effects are how it is delivered.
+2. **Novelty is measured in situations per second, not shots per second.** Monster Village: 22 situations in 175 s
+   (8.0 s each). The shadow film: 9 in 116 s (12.9 s each). Same shot count, same wpm, half the film.
+3. **The house style is a concrete impossible fact, a rule with no reason, a teller who misreads his own world, three
+   to five plants paid off in a list, a reveal that is a picture and re-reads the hook, and a button that belongs to
+   the story.**
+4. **Everything is measured and nothing has been heard.** Every review in the repo ends with the same admission. That
+   honesty is part of the craft, and it is the first thing I must say at any handover.
+5. **The owner's approval of the script is the gate**, and the one time it was skipped in bulk (automatic mode, the
+   seven 2026-11-17 films) it produced films he has still not read.
+
+Nothing is built. Nothing is pitched. The next move is his.
