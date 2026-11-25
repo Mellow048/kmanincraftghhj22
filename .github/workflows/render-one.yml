@@ -50,6 +50,15 @@ jobs:
       - name: Size
         run: ls -la out/film.mp4 && ffprobe -hide_banner out/film.mp4 2>&1 | head -6 || true
 
+      - name: Keep the mp4 as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: film-mp4
+          path: out/film.mp4
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Commit it to the branch
         env:
           DEST: ${{ inputs.commit_to }}
@@ -58,6 +67,10 @@ jobs:
           git config user.email "arena-agent@users.noreply.github.com"
           mkdir -p "$(dirname "$DEST")"
           cp out/film.mp4 "$DEST"
-          git add "$DEST"
+          # *.mp4 is gitignored (renders are not source), so a plain `git add` refuses the file.
+          git add -f "$DEST"
           git commit -m "Deliver $(basename "$DEST" .mp4) render (1080x1920)" || echo "nothing to commit"
-          git push
+          git push origin "HEAD:${{ github.ref_name }}" || {
+            echo "::error::push failed: $(git push origin "HEAD:${{ github.ref_name }}" 2>&1 | tail -5 | tr '\n' ' ')";
+            exit 1;
+          }

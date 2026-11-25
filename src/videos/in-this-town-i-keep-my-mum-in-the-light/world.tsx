@@ -52,13 +52,13 @@ const House: React.FC<P & { door?: boolean; window?: boolean }> = ({ at, rotY = 
 );
 
 /** A street lamp: post, cross bar, glass box. The film's clock, and the thing that keeps her. */
-export const Lamp: React.FC<{ at: [number, number, number]; lit?: boolean }> = ({ at, lit = true }) => (
+export const Lamp: React.FC<{ at: [number, number, number]; lit?: boolean; light?: boolean }> = ({ at, lit = true, light = false }) => (
   <group position={at}>
     <Block position={[0, 0.15, 0]} size={[0.34, 0.3, 0.34]} color="#4a4038" />
     <Block position={[0, 1.5, 0]} size={[0.16, 2.7, 0.16]} color="#3f3730" />
     <Block position={[0, 3.0, 0]} size={[0.62, 0.1, 0.62]} color="#4a4038" />
     <Block position={[0, 3.28, 0]} size={[0.4, 0.44, 0.4]} color={lit ? "#ffd479" : "#5a5248"} />
-    {lit ? <pointLight position={[0, 3.28, 0]} color="#ffcf7a" intensity={9} distance={11} decay={2} /> : null}
+    {lit && light ? <pointLight position={[0, 3.28, 0]} color="#ffcf7a" intensity={11} distance={14} decay={2} /> : null}
   </group>
 );
 
@@ -136,11 +136,11 @@ export const World: React.FC = () => {
     {/* the seven lamps: street, yard, gate */}
     <Lamp at={[-3.7, 0, 4]} lit={lit} />
     <Lamp at={[3.7, 0, 4]} lit={lit} />
-    <Lamp at={[-3.7, 0, 14]} lit={lit} />
+    <Lamp at={[-3.7, 0, 14]} lit={lit} light />
     <Lamp at={[3.7, 0, 14]} lit={lit} />
     <Lamp at={[-3.7, 0, 23]} lit={lit} />
     <Lamp at={[3.7, 0, 23]} lit={lit} />
-    <Lamp at={[0, 0, 28.4]} lit={lit} />
+    <Lamp at={[0, 0, 28.4]} lit={lit} light />
 
     <WashingLine at={[0.6, 0, 25.4]} />
 
@@ -170,7 +170,7 @@ export const World: React.FC = () => {
       <Glow key={`g${x}-${z}`} position={[x, 3.28, z]} size={lit ? 2.1 : 0.6} color="#ffd479" opacity={lit ? 0.42 : 0.06} />
     )))}
     <Glow position={[0, 3.28, 28.4]} size={lit ? 2.4 : 0.7} color="#ffd479" opacity={lit ? 0.42 : 0.06} />
-    <Dust position={[0, 2.0, 16]} area={[9, 4, 26]} count={220} size={0.03} color="#ffe9c4" opacity={0.5} seed={7} speed={0.5} />
+    <Dust position={[0, 2.0, 16]} area={[9, 4, 26]} count={110} size={0.03} color="#ffe9c4" opacity={0.5} seed={7} speed={0.5} />
   </group>
   );
 };
