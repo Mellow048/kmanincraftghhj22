@@ -153,7 +153,7 @@ class Scene:
             i += L.k * lam * fall
         return i
 
-    def box(self, center, size, col, rot=None, emissive=0.0, cull=True, ground_shadow=False):
+    def box(self, center, size, col, rot=None, emissive=0.0, cull=True, ground_shadow=False, tex=None):
         c = np.array(center, float)
         s = np.array(size, float) * 0.5
         if rot is None:
@@ -191,11 +191,12 @@ class Scene:
                 cc = shade(col, min(2.6, k))
                 if emissive > 0:
                     cc = mix(cc, col, emissive)
-            self._poly(pts, cc)
+            self._poly(pts, cc, tex or kind_for(col), n)
 
-    def _poly(self, pts, col):
+    def _poly(self, pts, col, tex=None, nrm=None):
         self.faces.append((tuple(float(v) for v in pts[0]), tuple(float(v) for v in pts[1]),
-                          tuple(float(v) for v in pts[2]), tuple(float(v) for v in pts[3]), col))
+                          tuple(float(v) for v in pts[2]), tuple(float(v) for v in pts[3]),
+                          col, tex, tuple(float(v) for v in nrm) if nrm is not None else None))
 
     def add_glow(self, p, r, col, k=1.0):
         self.glow.append((np.array(p, float), r, col, k))
@@ -208,7 +209,7 @@ class Scene:
         d = ImageDraw.Draw(img)
         cam = self.cam
         out = []
-        for (p0, p1, p2, p3, col) in self.faces:
+        for (p0, p1, p2, p3, col, tex, nrm) in self.faces:
             vs = []
             ok = True
             for p in (p0, p1, p2, p3):
@@ -219,15 +220,45 @@ class Scene:
                 vs.append((cam.cx + v[0] * cam.f / v[2], cam.cy - v[1] * cam.f / v[2], v[2]))
             if not ok:
                 continue
-            xs = [v[0] for v in vs]
-            ys = [v[1] for v in vs]
+            xs = [q[0] for q in vs]
+            ys = [q[1] for q in vs]
             if max(xs) < -4 or min(xs) > CW + 4 or max(ys) < -4 or min(ys) > CH + 4:
                 continue
-            depth = sum(v[2] for v in vs) / 4.0
-            out.append((depth, [(v[0], v[1]) for v in vs], col))
+            depth = sum(q[2] for q in vs) / 4.0
+            out.append((depth, [q[:2] for q in vs], col, tex, nrm, (p0, p1, p2, p3),
+                        (max(xs) - min(xs)) * (max(ys) - min(ys))))
         out.sort(key=lambda f: -f[0])
-        for _d, pts, col in out:
-            d.polygon(pts, fill=col)
+
+        for _d, pts, col, tex, nrm, wpts, area in out:
+            if not tex or area < 700:
+                d.polygon(pts, fill=col)
+                continue
+            k = 5 if area > 9000 else 4 if area > 3000 else 3
+            tile = block_tile(tex, (col[0] // 8 * 8, col[1] // 8 * 8, col[2] // 8 * 8))
+            if nrm is None:
+                d.polygon(pts, fill=col)
+                continue
+            ax = max(range(3), key=lambda i: abs(nrm[i]))
+            ua, va = ((2, 1) if ax == 0 else (0, 2) if ax == 1 else (0, 1))
+            q0, q1, q2, q3 = wpts
+            for i in range(k):
+                a0, a1 = i / k, (i + 1) / k
+                for j in range(k):
+                    b0, b1 = j / k, (j + 1) / k
+                    quad = []
+                    for (a, b) in ((a0, b0), (a1, b0), (a1, b1), (a0, b1)):
+                        sx = ((1 - a) * (1 - b) * pts[0][0] + a * (1 - b) * pts[1][0]
+                              + a * b * pts[2][0] + (1 - a) * b * pts[3][0])
+                        sy = ((1 - a) * (1 - b) * pts[0][1] + a * (1 - b) * pts[1][1]
+                              + a * b * pts[2][1] + (1 - a) * b * pts[3][1])
+                        quad.append((sx, sy))
+                    am, bm = (a0 + a1) * 0.5, (b0 + b1) * 0.5
+                    wp = (np.array(q0) * (1 - am) * (1 - bm) + np.array(q1) * am * (1 - bm)
+                          + np.array(q2) * am * bm + np.array(q3) * (1 - am) * bm)
+                    u = wp[ua] - math.floor(wp[ua])
+                    v = wp[va] - math.floor(wp[va])
+                    c = tile[min(15, int(v * 16)), min(15, int(u * 16))]
+                    d.polygon(quad, fill=(int(c[0]), int(c[1]), int(c[2])))
         # glow onto the lightmap
         for (p, r, col, k) in self.glow:
             v = self.cam.view(p)
@@ -467,3 +498,150 @@ def smoke_puffs(sc, x, y, z, t, n=5, col=(64, 30, 30), spread=1.4, seed=1):
                 z + rnd.uniform(-spread, spread) * (0.4 + k)),
                (0.5 + k * 0.9, 0.4 + k * 0.7, 0.5 + k * 0.9),
                shade(col, 1.0 - k * 0.35))
+
+
+# ---------------------------------------------------------------- block textures
+# Ported from src/engine/textures.ts so the previz uses the pack's own 16x16 faces.
+
+import random as _random
+
+_TILES = {}
+
+
+def _shade_hex(hexcol, k):
+    c = tuple(int(hexcol[i:i + 2], 16) for i in (1, 3, 5))
+    return shade(c, 1.0 + k)
+
+
+def block_tile(kind, base):
+    key = (kind, base)
+    if key in _TILES:
+        return _TILES[key]
+    if len(_TILES) > 1200:
+        _TILES.clear()
+    rnd = _random.Random(hash(kind) & 0xFFFF)
+    N = 16
+    px = [[base for _ in range(N)] for _ in range(N)]
+
+    def put(x, y, c):
+        px[y % N][x % N] = c
+
+    def noise(amount):
+        for y in range(N):
+            for x in range(N):
+                put(x, y, shade(base, 1.0 + rnd.uniform(-amount, amount)))
+
+    def speckle(count, amount, colour=None):
+        for _ in range(count):
+            put(rnd.randrange(N), rnd.randrange(N), shade(colour or base, 1.0 + amount))
+
+    def stones(seeds, joint, fill):
+        pts = [(rnd.uniform(0, N), rnd.uniform(0, N), rnd.random()) for _ in range(seeds)]
+
+        def owner(x, y):
+            best, bd = 0, 1e9
+            for i, (px_, py_, _) in enumerate(pts):
+                dx = min(abs(x - px_), N - abs(x - px_))
+                dy = min(abs(y - py_), N - abs(y - py_))
+                d = dx * dx + dy * dy * 1.6
+                if d < bd:
+                    bd, best = d, i
+            return best
+
+        for y in range(N):
+            for x in range(N):
+                o = owner(x, y)
+                edge = owner(x + 1, y) != o or owner(x, y + 1) != o
+                put(x, y, joint if edge else shade(fill(o), 1.0 + (pts[o][2] - 0.5) * 0.22))
+
+    if kind == "bricks":
+        for y in range(N):
+            for x in range(N):
+                row = y // 4
+                mortar = y % 4 == 3 or (x + (row % 2) * 4) % 8 == 7
+                put(x, y, (201, 188, 174) if mortar else shade(base, 1.0 + rnd.uniform(-0.09, 0.09)))
+    elif kind == "basalt":
+        noise(0.10)
+        for x in range(N):
+            if rnd.random() > 0.55:
+                for y in range(N):
+                    if rnd.random() > 0.3:
+                        put(x, y, shade(base, 0.72))
+    elif kind == "netherrack":
+        noise(0.13)
+        speckle(30, -0.3)
+        speckle(16, 0.16)
+        for _ in range(5):
+            bx, by = rnd.randrange(N), rnd.randrange(N)
+            for dy in range(2):
+                for dx in range(2):
+                    put(bx + dx, by + dy, shade(base, 0.66))
+    elif kind == "glowstone":
+        noise(0.08)
+        for _ in range(9):
+            bx, by = rnd.randrange(N - 1), rnd.randrange(N - 1)
+            for dy in range(2):
+                for dx in range(2):
+                    put(bx + dx, by + dy, shade(base, 1.42))
+        speckle(10, 0.5, (255, 240, 196))
+    elif kind == "cobble":
+        stones(9, shade(base, 0.5), lambda i: base)
+    elif kind == "stone":
+        noise(0.06)
+    elif kind == "obsidian":
+        noise(0.12)
+        speckle(16, 0.9, (91, 63, 140))
+    elif kind == "magma":
+        stones(8, (255, 138, 30), lambda i: base)
+        speckle(10, 1.5, (255, 208, 74))
+    elif kind == "lava":
+        for y in range(N):
+            for x in range(N):
+                a = (x / N) * 6.283
+                b = (y / N) * 6.283
+                v = (math.sin(a + math.sin(b) * 1.3) + math.sin(b * 2 + math.cos(a) * 1.1)
+                     + (rnd.random() - 0.5) * 0.5)
+                put(x, y, (255, 224, 102) if v > 1.0 else (255, 171, 30) if v > 0.3
+                    else (245, 112, 15) if v > -0.7 else (201, 60, 8))
+    elif kind in ("planks", "darkPlanks"):
+        joints = [3, 11, 7, 14]
+        for y in range(N):
+            row = y // 4
+            tone = (((row * 7) % 5) - 2) * 0.03
+            for x in range(N):
+                seam = y % 4 == 3 or x == joints[row % 4]
+                put(x, y, shade(base, 0.66) if seam else shade(base, 1.0 + tone + rnd.uniform(-0.045, 0.045)))
+    elif kind == "stoneBrick":
+        for y in range(N):
+            for x in range(N):
+                row = y // 8
+                mortar = y % 8 == 7 or (x + row * 8) % 16 == 15
+                put(x, y, shade(base, 0.58) if mortar else shade(base, 1.0 + (0.12 if y % 8 == 0 else 0)))
+    elif kind == "grass":
+        noise(0.13)
+        speckle(26, 0.22)
+        speckle(22, -0.24)
+    elif kind == "dirt":
+        noise(0.1)
+        speckle(20, -0.25)
+    elif kind == "leaves":
+        noise(0.16)
+        speckle(40, -0.42)
+    elif kind == "hay":
+        for y in range(N):
+            for x in range(N):
+                put(x, y, shade(base, 1.0 + (-0.2 if y % 3 == 0 else 0.05) + rnd.uniform(-0.08, 0.08)))
+    else:
+        noise(0.09)
+
+    arr = np.array(px, dtype=np.uint8)
+    _TILES[key] = arr
+    return arr
+
+
+# which block face a flat palette colour should wear
+KIND_BY_COLOUR = {}
+
+
+def kind_for(col):
+    return KIND_BY_COLOUR.get(tuple(col))

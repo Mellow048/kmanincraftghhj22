@@ -5,6 +5,7 @@
   python3 scripts/animatic/render3.py --mp4
 """
 import argparse
+import gc
 import os
 import subprocess
 import sys
@@ -168,6 +169,43 @@ def sheets(table):
         print(p, len(chunk))
 
 
+def seg(table, out, f0, f1):
+    raw = subprocess.Popen(
+        [FFMPEG, "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24",
+         "-s", "%dx%d" % (K.W, K.H), "-r", str(FPS), "-i", "-",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+         "-profile:v", "high", "-level", "4.1", out], stdin=subprocess.PIPE)
+    t0 = time.time()
+    for i in range(f0, f0 + f1):
+        raw.stdin.write(render_frame(i / FPS, table).tobytes())
+        if (i - f0) % 120 == 0:
+            el = time.time() - t0
+            print("frame %4d/%d  %.0f%%  %.1f fps" % (i - f0, f1, 100.0 * (i - f0) / f1,
+                                                      (i - f0) / max(0.01, el)), flush=True)
+        if (i - f0) % 250 == 0:
+            gc.collect()
+    raw.stdin.close()
+    raw.wait()
+    print("segment done %.1f min -> %s" % ((time.time() - t0) / 60, out), flush=True)
+
+
+def mux(total, parts, out):
+    subprocess.run(
+        [FFMPEG, "-v", "error", "-y"] + sum([["-i", p] for p in parts], []) +
+        ["-i", os.path.join(ROOT, "public/audio", SLUG, "narration.mp3"),
+         "-i", os.path.join(ROOT, "Topics/InThisTown/InThisTownMusic.aac"),
+         "-filter_complex",
+         "[0:v]concat=n=%d:v=1:a=0[v];"
+         "[%d:a]aresample=48000,volume=1.0[a1];"
+         "[%d:a]aresample=48000,atrim=0:%f,asetpts=N/SR/TB,volume=0.15,"
+         "afade=t=in:st=0:d=2,afade=t=out:st=%f:d=2.5[a2];"
+         "[a1][a2]amix=inputs=2:duration=first:dropout_transition=0,alimiter=limit=0.95[aout]"
+         % (len(parts), len(parts), len(parts) + 1, total, max(0.1, total - 2.5)),
+         "-map", "[v]", "-map", "[aout]", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k",
+         "-ar", "48000", "-movflags", "+faststart", "-shortest", out], check=True)
+    print("muxed ->", out)
+
+
 def mp4(table, out):
     total = table[-1][1]
     raw = subprocess.Popen(
@@ -208,10 +246,20 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sheets", action="store_true")
     ap.add_argument("--mp4", action="store_true")
+    ap.add_argument("--seg", nargs=2, type=int, metavar=("FROM", "TO"))
+    ap.add_argument("--mux", action="store_true")
     a = ap.parse_args()
     table = TIMELINE
     if a.sheets:
         sheets(table)
+    total = table[-1][1]
+    frames = int(round(total * FPS))
+    if a.seg:
+        f0, f1 = a.seg
+        seg(table, "/tmp/at/seg%d.mp4" % f0, f0, min(f1, frames) - f0)
+    if a.mux:
+        parts = ["/tmp/at/seg0.mp4", "/tmp/at/seg%d.mp4" % (frames // 2)]
+        mux(total, parts, os.path.join(ROOT, "renders", SLUG + ".mp4"))
     if a.mp4:
         out = os.path.join(ROOT, "renders", SLUG + ".mp4")
         os.makedirs(os.path.dirname(out), exist_ok=True)

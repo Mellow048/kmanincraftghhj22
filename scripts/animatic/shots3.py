@@ -15,6 +15,29 @@ from boxkit import (NET, OVR, KID, MUM, DAD, WICK, BAKER, CROWD, Cam, Light,
                     chalk_wall, smoke_puffs)
 
 WARM = (255, 168, 90)
+
+# Every palette colour that is blocks gets a 16x16 face from the pack's own recipes.
+B.KIND_BY_COLOUR.update({
+    tuple(NET["rock"]): "netherrack", tuple(NET["rock2"]): "netherrack", tuple(NET["rock3"]): "netherrack",
+    tuple(NET["floor"]): "netherrack", tuple(NET["floor2"]): "netherrack",
+    tuple(NET["basalt"]): "basalt", tuple(NET["black"]): "obsidian",
+    tuple(NET["wood"]): "planks", tuple(NET["wood_d"]): "darkPlanks",
+    tuple(NET["iron"]): "stone", tuple(NET["gold"]): "stone",
+    tuple(NET["glow"]): "glowstone", tuple(NET["bone"]): "wool",
+    tuple(OVR["grass"]): "grass", tuple(OVR["grass2"]): "grass",
+    tuple(OVR["dirt"]): "dirt", tuple(OVR["stone"]): "stone",
+    tuple(OVR["wall"]): "stoneBrick", tuple(OVR["roof"]): "bricks",
+    tuple(OVR["window"]): "wool",
+})
+# shades of the same colours get matched at draw time
+def _nearest(col):
+    best, bd = None, 1e9
+    for c, kind in B.KIND_BY_COLOUR.items():
+        d = sum((c[i] - col[i]) ** 2 for i in range(3))
+        if d < bd:
+            bd, best = d, kind
+    return best if bd < 900 else None
+B.kind_for = _nearest
 LAVA_C = (255, 150, 56)
 
 
