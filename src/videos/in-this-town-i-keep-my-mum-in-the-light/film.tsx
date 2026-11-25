@@ -28,7 +28,7 @@ export const film = defineFilm({
   topic: "in-this-town",
   cut: "short",
   look: "overworld-day",
-  post: { exposure: 1.02, bloom: 0.9 },
+  post: { shaders: true },
   captions: { words: timing.words, y: 0.72, motion: "on-beat" },
   audio: { src: "audio/in-this-town-i-keep-my-mum-in-the-light/mix.mp3" },
   fadeIn: 0.35,

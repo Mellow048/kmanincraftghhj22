@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-i-keep-my-mum-in-the-light",
   "mix": "public/audio/in-this-town-i-keep-my-mum-in-the-light/mix.mp3",
-  "seconds": 91.5333,
+  "seconds": 91.6667,
   "built_from": {
-    "timing.json": "84f51e662cafd7749e8863bbc790129e2ce4a257",
-    "sound.json": "5ae9973b70624ea2082ad9aeab20c9c5309fb8a5",
+    "timing.json": "b71f2cd32e68e0902b2af4e616542de5606809db",
+    "sound.json": "4d190086c15e0bf08470df0a91e2cbfe714e221b",
     "narration.mp3": "ff179ff86deaa128e0dcffd015c794dc879518a0"
   },
-  "mix_sha1": "2a1f100b621b91136066104105117845221abf08",
+  "mix_sha1": "66b946e96e8808d83a3eb01f5770dc006ac1044f",
   "music_sections": [
     {
       "from": "1.keep",
@@ -23,7 +23,7 @@
     {
       "from": "3.mum",
       "mood": "hope",
-      "at": 39.03
+      "at": 38.6
     },
     {
       "from": "4.sky",
@@ -38,7 +38,7 @@
     {
       "from": "6.wash",
       "mood": "hope",
-      "at": 76.5
+      "at": 76.53
     }
   ],
   "music_file": {
@@ -48,20 +48,20 @@
   "beds": 6,
   "measured": {
     "musicUnderVoiceDb": 19.4,
-    "secondsWithoutMusic": 0.4,
+    "secondsWithoutMusic": 0.5,
     "bedsUnderVoiceDb": 25.8,
     "sfx": 100,
     "sfxPerMinute": 65.5,
     "sfxKinds": 24,
-    "longestGapSeconds": 3.5,
-    "longestGapAt": 59.6,
-    "sfxBuried": 1,
-    "voiceOverRestMedianDb": 16.3,
+    "longestGapSeconds": 3.7,
+    "longestGapAt": 48.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.2,
     "voiceOverRestWorstDb": 5.5,
     "voiceOverRestWorst": [
       {
         "db": 5.5,
-        "t": 58.8,
+        "t": 59.3,
         "cue": "4.dark",
         "sounding": [
           "sting",
@@ -69,25 +69,16 @@
         ]
       },
       {
-        "db": 6.0,
-        "t": 3.1,
-        "cue": "1.six",
+        "db": 7.7,
+        "t": 82.8,
+        "cue": "6.one",
         "sounding": [
-          "boom",
-          "tick"
+          "ding"
         ]
       },
       {
-        "db": 8.3,
-        "t": 17.5,
-        "cue": "2.evening",
-        "sounding": [
-          "scrape"
-        ]
-      },
-      {
-        "db": 8.7,
-        "t": 7.7,
+        "db": 8.4,
+        "t": 7.9,
         "cue": "1.chairs",
         "sounding": [
           "cheer",
@@ -95,26 +86,34 @@
         ]
       },
       {
-        "db": 8.9,
-        "t": 78.2,
+        "db": 8.7,
+        "t": 78.0,
         "cue": "6.wrung",
         "sounding": [
           "scrape"
         ]
       },
       {
-        "db": 9.0,
-        "t": 89.3,
-        "cue": "6.still",
+        "db": 8.8,
+        "t": 17.5,
+        "cue": "2.evening",
         "sounding": [
-          "pop",
-          "sparkle"
+          "scrape"
+        ]
+      },
+      {
+        "db": 9.0,
+        "t": 3.1,
+        "cue": "1.six",
+        "sounding": [
+          "boom",
+          "tick"
         ]
       }
     ],
     "lufs": -14.7,
-    "truePeakDb": -2.2,
-    "limiterMaxDb": 0.1
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.2
   },
   "failures": []
 }

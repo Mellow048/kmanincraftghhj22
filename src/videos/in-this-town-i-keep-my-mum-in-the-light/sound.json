@@ -279,7 +279,7 @@
       "cue": "3.awake",
       "repeat": 3,
       "every": 0.55,
-      "trim": -3,
+      "trim": 0,
       "sfx": "heartbeat",
       "why": "Too bright to sleep: his heart, not the house's."
     },
@@ -367,14 +367,14 @@
       "cue": "4.dark",
       "repeat": 4,
       "every": 0.2,
-      "trim": -2,
+      "trim": 1,
       "pitchStep": 0.95,
       "sfx": "tick",
       "why": "Each lamp dying."
     },
     {
       "cue": "4.mum",
-      "trim": -4,
+      "trim": -1,
       "sfx": "whoosh_low",
       "why": "She is in the doorway, and the sound is her breathing."
     },
@@ -422,7 +422,7 @@
     },
     {
       "cue": "5.quiet",
-      "trim": -8,
+      "trim": -5,
       "dur": 1.4,
       "sfx": "chime",
       "why": "The only gentle sound in the last thirty seconds."
@@ -442,7 +442,7 @@
       "cue": "6.wash",
       "repeat": 2,
       "every": 0.4,
-      "trim": -3,
+      "trim": 0,
       "sfx": "rustle",
       "why": "Sheets in her hands."
     },
