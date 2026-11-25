@@ -11,8 +11,9 @@ import { scene6 } from "./scene6";
 /**
  * In This Town, Nobody Turns On a Furnace (Snow Golem Parents)
  *
- * Bright daylight Frame-1 Snow Golem hook -> 100% vanilla mechanics comedy ->
- * daytime summer bakery blaze -> selfless melting rescue & joyful rebuild.
+ * Remastered on restored `74ba75f` engine: 46 crisp word-synced cuts,
+ * clean non-glare indoor kitchen framing, depth-stacked 9:16 composition,
+ * and 4-kid continuity through fire & rebuild.
  */
 export const film = defineFilm({
   id: "in-this-town-nobody-turns-on-a-furnace",
@@ -28,8 +29,8 @@ export const film = defineFilm({
     words: timing.words,
     y: 0.67,
     motion: "on-beat",
-    highlightWords: ["SNOW", "FURNACE", "DAD", "MUM", "PUMPKIN", "SAVE", "SNOWBALL", "GRINS"],
-    dangerWords: ["ZERO", "FROST", "FIRE", "TRAP", "MELTING", "FLAMES", "VANISH", "HURT"],
+    highlightWords: ["SNOW", "FURNACE", "DAD", "MUM", "PUMPKIN", "FROST", "SNOWBALL", "GRINS", "FREEZING"],
+    dangerWords: ["ZERO", "FIRE", "TRAPPED", "FLAMES", "VANISH", "MELTS", "HEAT"],
   },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6],

@@ -18,7 +18,7 @@ import {
 
 export const scene5 = storyScene(timing, {
   id: "scene5",
-  title: "Overtime Mining, Chart & Purchasing Power",
+  title: "Overtime Grind, Chart & Value Halved",
   shots: [
     {
       cue: "7.work",
@@ -29,12 +29,14 @@ export const scene5 = storyScene(timing, {
         yaw: 16,
         pitch: 10,
         fov: 40,
+        screenOffset: [0, 0.12],
       }),
+      look: "overworld-night",
       zone: "mine",
-      note: "Miles hacks late at night outside the torchlit mine entrance for overtime pay.",
+      note: "Miles mines late into night under torches at emerald shaft beside glowing OVERTIME tag.",
       stage: (t) => (
         <>
-          <CitizenLead position={on(PLACE.mine, -0.1, 0, 0.2)} rotationY={-0.35} animation="press" face="worried" time={t * 1.4}>
+          <CitizenLead position={on(PLACE.mine, -0.05, 0, 0.2)} rotationY={-0.3} animation="press" face="worried" time={t * 1.4}>
             <Pickaxe position={[0, -0.15, 0.22]} rotation={[1.2, 0, 0]} scale={0.9} />
           </CitizenLead>
           <FloatingNumber text="OVERTIME" color="#ff8e2b" position={on(PLACE.mine, 0, 2.1, 0.2)} height={0.5 * pop(t, 0.2)} />
@@ -44,38 +46,78 @@ export const scene5 = storyScene(timing, {
     {
       cue: "7.chart",
       ...cam.push({
-        on: on(PLACE.bakery, 0, 1.55, 0),
+        on: on(PLACE.bakery, 0, 1.45, 0),
         dist: 4.8,
         to: 4.1,
         yaw: 12,
-        pitch: 5,
+        pitch: 6,
         fov: 42,
+        screenOffset: [0, 0.12],
       }),
       zone: "bakery",
-      note: "BarChart: BREAD bar stays low while CASH shoots right past Miles's head.",
+      note: "Green CASH pillar shoots high beside foreground Miles inside 9:16 frame.",
       stage: (t) => (
         <>
-          <BarChart position={on(PLACE.bakery, 0.25, 0, -0.2)} values={[0.9, 2.8]} labels={["BREAD", "CASH"]} grow={[1, 0.35 + 0.65 * ease(ramp(t, 0.1, 1.2))]} />
-          <CitizenLead position={on(PLACE.bakery, -1.25, 0, 0.35)} rotationY={0.65} animation="lookAround" face="uneasy" time={t} />
+          <BarChart position={on(PLACE.bakery, 0.28, 0, -0.25)} values={[0.9, 2.8]} labels={["BREAD", "CASH"]} grow={[1, 0.35 + 0.65 * ease(ramp(t, 0.1, 1.1))]} />
+          <CitizenLead position={on(PLACE.bakery, -0.55, 0, 0.45)} rotationY={0.55} animation="lookAround" face="uneasy" time={t} />
+        </>
+      ),
+    },
+    {
+      cue: "7.flat",
+      ...cam.push({
+        on: on(PLACE.bakery, -0.2, 1.15, 0.1),
+        dist: 3.3,
+        to: 2.7,
+        yaw: -14,
+        pitch: 7,
+        fov: 38,
+        screenOffset: [0, 0.12],
+      }),
+      zone: "bakery",
+      note: "Close comparison of stunted low BREAD bar beside shrugging Miles.",
+      stage: (t) => (
+        <>
+          <BarChart position={on(PLACE.bakery, 0.25, 0, -0.35)} values={[0.9, 2.8]} labels={["BREAD", "CASH"]} grow={[1, 1]} />
+          <CitizenLead position={on(PLACE.bakery, -0.5, 0, 0.4)} rotationY={0.45} animation="shrug" face="frown" time={t} />
+          <FloatingNumber text="STILL 1" color="#ff8e2b" position={on(PLACE.bakery, -0.15, 1.5, -0.1)} height={0.48 * pop(t, 0.2)} />
         </>
       ),
     },
     {
       cue: "7.value",
       ...cam.orbit({
-        on: on(PLACE.bakery, 0, 1.25, 0),
-        dist: 4.5,
-        yaw: -16,
-        yawTo: 16,
+        on: on(PLACE.bakery, 0, 1.2, 0),
+        dist: 4.6,
+        yaw: -14,
+        yawTo: 14,
         pitch: 8,
-        fov: 40,
+        fov: 42,
+        screenOffset: [0, 0.12],
       }),
       zone: "bakery",
-      note: "Balance scales tip dramatically as 10 emeralds equal only 1 loaf.",
+      note: "Golden Balance scale cleanly framed inside 9:16 weighting 1 Bread against 10 emerald coins.",
+      stage: (t) => (
+        <Balance position={on(PLACE.bakery, 0, 0, 0)} tilt={-0.65 * ease(ramp(t, 0.1, 0.9))} left={<Bread scale={1.1} />} right={<CoinStack count={10} kind="emerald" />} />
+      ),
+    },
+    {
+      cue: "7.half",
+      ...cam.push({
+        on: on(PLACE.bakery, 0, 1.35, 0),
+        dist: 3.7,
+        to: 3.1,
+        yaw: 12,
+        pitch: 6,
+        fov: 40,
+        screenOffset: [0, 0.12],
+      }),
+      zone: "bakery",
+      note: "Red -50% VALUE warning pulses above the heavily tilted emerald side of scale.",
       stage: (t) => (
         <>
-          <Balance position={on(PLACE.bakery, 0, 0, 0)} tilt={-0.65 * ease(ramp(t, 0.1, 0.9))} left={<Bread scale={1.1} />} right={<CoinStack count={10} kind="emerald" />} />
-          <FloatingNumber text="-50% VALUE" color="#ff4f42" position={on(PLACE.bakery, 0.9, 2.1, 0)} height={0.56 * pop(t, 0.3)} />
+          <Balance position={on(PLACE.bakery, 0, 0, 0)} tilt={-0.65 - Math.sin(t * 4) * 0.05} left={<Bread scale={1.1} />} right={<CoinStack count={10} kind="emerald" />} />
+          <FloatingNumber text="-50% VALUE" color="#ff4f42" position={on(PLACE.bakery, 0.35, 2.05, 0.1)} height={0.55 * pop(t, 0.15)} />
         </>
       ),
     },

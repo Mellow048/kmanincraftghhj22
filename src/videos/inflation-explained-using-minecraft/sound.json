@@ -1,94 +1,96 @@
 {
   "film": "inflation-explained-using-minecraft",
-  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build inflation-explained-using-minecraft",
+  "README": "Explainer sound sheet (~58 SFX/min, mandatory explainer_bgm_loop.wav at gain -19). Rebuild with `python3 scripts/sound.py build inflation-explained-using-minecraft` after TTS.",
   "music": {
     "track": "Topics/Explainer/explainer_bgm_loop.wav",
     "gain": -19,
     "sections": [
-      {
-        "from": "1.hook",
-        "mood": "explain",
-        "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."
-      }
+      { "from": "1.hook", "mood": "explain", "why": "Upbeat Explainer background music kept ~19 dB below narrator." },
+      { "from": "3.crisis", "mood": "dark", "gain": -2, "why": "Drought shortage pulls music slightly back." },
+      { "from": "4.sterling", "mood": "hope", "gain": 0, "why": "Sterling enters promising an instant emerald fix." },
+      { "from": "5.print", "mood": "wonder", "gain": 0, "why": "Money printer blasts 10,000 fresh emerald bills." },
+      { "from": "6.problem", "mood": "tense", "gain": 0, "why": "Same 4 loaves meet 10x buyers; price spikes to 10." },
+      { "from": "7.history", "mood": "sad", "gain": -2, "why": "Real-world inflation prices climb beside cash stack." },
+      { "from": "8.final", "mood": "explain", "gain": 0, "why": "Brisk return for seamless replay loop." }
     ]
   },
   "beds": [
-    {
-      "from": "1.hook",
-      "to": "3.empty",
-      "bed": "sky"
-    },
-    {
-      "from": "4.sterling",
-      "to": "5.print",
-      "bed": "room"
-    },
-    {
-      "from": "5.cheer",
-      "to": "6.jump",
-      "bed": "sky"
-    },
-    {
-      "from": "7.work",
-      "to": "7.work",
-      "bed": "cave"
-    },
-    {
-      "from": "7.chart",
-      "to": "7.prices",
-      "bed": "sky"
-    },
-    {
-      "from": "8.first",
-      "to": "8.first",
-      "bed": "room"
-    },
-    {
-      "from": "8.loop",
-      "to": "8.loop",
-      "bed": "sky"
-    }
+    { "from": "1.hook", "to": "2.bread", "bed": "sky" },
+    { "from": "2.miles", "to": "2.miles", "bed": "cave" },
+    { "from": "2.happy", "to": "3.count", "bed": "sky" },
+    { "from": "4.sterling", "to": "5.chat", "bed": "room" },
+    { "from": "5.cheer", "to": "6.jump", "bed": "sky" },
+    { "from": "7.work", "to": "7.work", "bed": "cave" },
+    { "from": "7.chart", "to": "7.prices", "bed": "sky" },
+    { "from": "8.first", "to": "8.cheap", "bed": "room" },
+    { "from": "8.burn", "to": "8.loop", "bed": "sky" }
   ],
   "sfx": [
-    {
-      "cue": "2.bread",
-      "sfx": "whoosh",
-      "why": "scene 2 starts: a new place or a new time"
-    },
-    {
-      "cue": "3.crisis",
-      "sfx": "whoosh",
-      "why": "scene 3 starts: a new place or a new time"
-    },
-    {
-      "cue": "4.sterling",
-      "sfx": "whoosh",
-      "why": "scene 4 starts: a new place or a new time"
-    },
-    {
-      "cue": "5.print",
-      "sfx": "whoosh",
-      "why": "scene 5 starts: a new place or a new time"
-    },
-    {
-      "cue": "6.same",
-      "sfx": "whoosh",
-      "why": "scene 6 starts: a new place or a new time"
-    },
-    {
-      "cue": "7.work",
-      "sfx": "whoosh",
-      "why": "scene 7 starts: a new place or a new time"
-    },
-    {
-      "cue": "8.first",
-      "sfx": "whoosh",
-      "why": "scene 8 starts: a new place or a new time"
-    },
-    {
-      "cue": "8.loop",
-      "sfx": "ding",
-      "why": "the subscribe line"
-    }
+    { "cue": "1.hook", "word": "Inflation,", "sfx": "blip", "why": "Hook opener accent." },
+    { "cue": "1.hook", "word": "Minecraft.", "sfx": "pop", "why": "Bread tag flips 1->100." },
+    { "cue": "1.paradox", "word": "cash", "sfx": "coin", "why": "Emerald pile gleam." },
+    { "cue": "1.paradox", "word": "rich.", "sfx": "coins", "why": "Stack of cash optimism." },
+    { "cue": "1.reverse", "word": "reality,", "sfx": "tick", "why": "Snap twist setup." },
+    { "cue": "1.reverse", "word": "less.", "sfx": "slide_down", "why": "Bread shrinks on reality twist." },
+    { "cue": "2.bread", "sfx": "whoosh", "why": "Cut to sunlit bakery plinth." },
+    { "cue": "2.bread", "word": "emerald.", "sfx": "coin", "why": "Clean one-emerald baseline." },
+    { "cue": "2.miles", "sfx": "swish", "why": "Cut to Miles outside mine shaft." },
+    { "cue": "2.miles", "word": "pickaxe", "sfx": "hit", "why": "Pickaxe strikes emerald ore." },
+    { "cue": "2.happy", "word": "buys", "sfx": "step_stone", "why": "Miles walks home with loaf." },
+    { "cue": "2.happy", "word": "happy.", "sfx": "register", "why": "Fair day-one purchase." },
+    { "cue": "3.crisis", "sfx": "whoosh", "why": "Golden drought cut." },
+    { "cue": "3.crisis", "word": "drought", "sfx": "gust", "why": "Dry wind across empty square." },
+    { "cue": "3.empty", "word": "opens", "sfx": "creak", "why": "Chest lid lifts open." },
+    { "cue": "3.empty", "word": "zero", "sfx": "buzz", "why": "Zero emeralds inside chest." },
+    { "cue": "3.count", "sfx": "swish", "why": "Sweep down empty square chests." },
+    { "cue": "3.count", "word": "empty", "sfx": "drop", "why": "Empty row impact." },
+    { "cue": "4.sterling", "sfx": "whoosh", "why": "Cut into council throne hall." },
+    { "cue": "4.sterling", "word": "Sterling.", "sfx": "pop", "why": "President Sterling reveal." },
+    { "cue": "4.promise", "word": "instant", "sfx": "blip", "why": "Confident gold stack gesture." },
+    { "cue": "4.rules", "word": "marches", "sfx": "step_stone", "why": "Confident footsteps down carpet." },
+    { "cue": "4.charter", "word": "pins", "sfx": "paper", "why": "Bold new order unrolls." },
+    { "cue": "4.charter", "word": "wall.", "sfx": "stamp", "why": "Emerald printing charter stamped." },
+    { "cue": "5.print", "sfx": "whoosh", "why": "Cut to glowing emerald printer." },
+    { "cue": "5.print", "word": "speed.", "sfx": "power_up", "why": "Printer revs to max speed." },
+    { "cue": "5.chat", "word": "bills", "sfx": "coins", "why": "Green bills spray across room." },
+    { "cue": "5.chat", "word": "chat.", "sfx": "pop", "why": "Server broadcast toast pops." },
+    { "cue": "5.cheer", "sfx": "swish", "why": "Cut to cheering town plaza." },
+    { "cue": "5.cheer", "word": "cheers", "sfx": "cheer", "why": "Crowd celebrates fresh cash." },
+    { "cue": "5.miles2", "word": "thick", "sfx": "paper", "why": "Miles grabs emerald stack." },
+    { "cue": "5.sprint", "word": "sprints", "sfx": "step_stone", "why": "Fast run toward bakery." },
+    { "cue": "6.same", "sfx": "whoosh", "why": "Cut back to bakery counter." },
+    { "cue": "6.same", "word": "slaps", "sfx": "thud", "why": "Ten notes hit stone plinth." },
+    { "cue": "6.smile", "word": "smiles", "sfx": "chime", "why": "Optimistic moment before twist." },
+    { "cue": "6.problem", "word": "Wait.", "sfx": "sting", "why": "Wait twist hits." },
+    { "cue": "6.problem", "word": "yesterday", "sfx": "pop", "why": "Compare chests popup." },
+    { "cue": "6.ovens", "sfx": "swish", "why": "Orbit onto BreadShelf." },
+    { "cue": "6.ovens", "word": "four", "sfx": "blip", "why": "Same 4 loaves sit unchanged." },
+    { "cue": "6.bid", "sfx": "swish", "why": "Whip across competing crowd." },
+    { "cue": "6.bid", "word": "wave", "sfx": "paper", "why": "Buyers wave cash notes." },
+    { "cue": "6.jump", "word": "jumps", "sfx": "count", "why": "Price tag rockets up." },
+    { "cue": "6.jump", "word": "ten.", "sfx": "register", "why": "10x price explosion." },
+    { "cue": "7.work", "sfx": "whoosh", "why": "Cut to dark night mine." },
+    { "cue": "7.work", "word": "hacks", "sfx": "hit", "why": "Overtime mining strike." },
+    { "cue": "7.work", "word": "night", "sfx": "hit", "why": "Second late pickaxe strike." },
+    { "cue": "7.chart", "sfx": "whoosh", "why": "Cut to emerald BarChart." },
+    { "cue": "7.chart", "word": "shoots", "sfx": "slide_up", "why": "Green cash bar skyrockets." },
+    { "cue": "7.flat", "word": "barely", "sfx": "tick", "why": "Bread output sits stagnant." },
+    { "cue": "7.value", "sfx": "swish", "why": "Cut to Balance scale." },
+    { "cue": "7.value", "word": "loaf", "sfx": "place", "why": "One loaf weighs against 10 coins." },
+    { "cue": "7.half", "word": "cut", "sfx": "drop", "why": "Scale tips down -50% value." },
+    { "cue": "7.half", "word": "half.", "sfx": "buzz", "why": "Lost purchasing power buzz." },
+    { "cue": "7.history", "sfx": "whoosh", "why": "Cut to 1971 History Plaza." },
+    { "cue": "7.history", "word": "print", "sfx": "paper", "why": "Trillions printed." },
+    { "cue": "7.bills", "word": "floods", "sfx": "coins", "why": "Bills stack on plaza cobble." },
+    { "cue": "7.prices", "word": "climb", "sfx": "count", "why": "Food, rent, fuel bars rise." },
+    { "cue": "8.first", "sfx": "whoosh", "why": "Cut back to council hall." },
+    { "cue": "8.first", "word": "first,", "sfx": "register", "why": "First spender buys cheap." },
+    { "cue": "8.cheap", "word": "cheap", "sfx": "coin", "why": "Old 1-emerald tag paid." },
+    { "cue": "8.burn", "sfx": "swish", "why": "Cut to late buyers at market." },
+    { "cue": "8.burn", "word": "half", "sfx": "buzz", "why": "Late holders lose half value." },
+    { "cue": "8.final", "sfx": "whoosh", "why": "Cut to tired Miles holding bread." },
+    { "cue": "8.final", "word": "loaf,", "sfx": "step_stone", "why": "Miles trudges forward." },
+    { "cue": "8.loop", "word": "hundred,", "sfx": "pop", "why": "100 tag returns into loop." },
+    { "cue": "8.loop", "word": "that's", "sfx": "ding", "why": "Smooth chime back to Frame 0." }
   ]
 }

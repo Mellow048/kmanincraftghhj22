@@ -19,92 +19,114 @@ import {
 
 export const scene3 = storyScene(timing, {
   id: "scene3",
-  title: "Printing Ten Thousand Notes",
+  title: "Ten Thousand Printed Bills & Celebration",
   shots: [
     {
       cue: "5.print",
       ...cam.orbit({
         on: on(PLACE.hall, 0, 1.15, 0.8),
-        dist: 3.7,
-        yaw: -20,
+        dist: 3.8,
+        yaw: -16,
         yawTo: 12,
         pitch: 12,
         fov: 40,
+        screenOffset: [0, 0.12],
       }),
       zone: "hall",
-      note: "Sterling cranks on the emerald Printer pouring fresh banknotes across the carpet.",
+      note: "Sterling cranks emerald Printer to max speed while glowing +10,000 rises cleanly.",
       stage: (t) => (
         <>
-          <Printer position={on(PLACE.hall, 0.35, 0, 0.8)} rotationY={-0.25} running out={t * 7} sign="E" />
-          <EliteLead variant="pres" position={on(PLACE.hall, -0.85, 0, 0.9)} rotationY={0.75} animation="press" face="grin" time={t} />
-          <FloatingNumber text="+10,000" color="#3fd46a" position={on(PLACE.hall, 0.4, 1.65 + ease(ramp(t, 0.25, 1.3)) * 0.3, 0.8)} height={0.58 * pop(t, 0.25)} />
+          <Printer position={on(PLACE.hall, 0.35, 0, 0.8)} rotationY={-0.25} running out={t * 8} sign="E" />
+          <EliteLead variant="pres" position={on(PLACE.hall, -0.48, 0, 0.9)} rotationY={0.75} animation="press" face="grin" time={t} />
+          <FloatingNumber text="+10,000" color="#3fd46a" position={on(PLACE.hall, 0.35, 1.65 + ease(ramp(t, 0.2, 1.2)) * 0.25, 0.8)} height={0.55 * pop(t, 0.2)} />
         </>
       ),
     },
     {
-      cue: "5.print",
-      cut: 1.5,
+      cue: "5.chat",
       ...cam.push({
-        on: on(PLACE.hall, 0.2, 1.5, 0.7),
-        dist: 2.7,
-        to: 2.25,
+        on: on(PLACE.hall, 0, 1.5, 0.75),
+        dist: 2.9,
+        to: 2.4,
         yaw: 8,
         pitch: 4,
         fov: 38,
+        screenOffset: [0, 0.1],
       }),
       zone: "hall",
-      note: "Sub-cut insert on server ChatToast broadcasting +10,000 Emeralds while Printer runs.",
+      note: "Tight centered server broadcast ChatToast +10,000 Emeralds while Printer pours notes.",
       stage: (t) => (
         <>
           <Printer position={on(PLACE.hall, 0, 0, 0.7)} running out={t * 9} sign="E" />
-          <ChatToast text="[Treasury] +10,000 Emeralds" position={on(PLACE.hall, 0.15, 1.75, 0.85)} height={0.26 * pop(t, 0.08)} />
+          <ChatToast text="[Treasury] +10,000 Cash" position={on(PLACE.hall, 0, 1.85, 0.85)} height={0.22 * pop(t, 0.1)} />
         </>
       ),
     },
     {
       cue: "5.cheer",
       ...cam.crane({
-        on: on(PLACE.bakery, 0, 1.1, 0.4),
+        on: on(PLACE.bakery, 0, 1.15, 0.5),
         dist: 4.5,
         fromPitch: 6,
-        toPitch: 20,
-        yaw: -14,
+        toPitch: 19,
+        yaw: -12,
         fov: 42,
+        screenOffset: [0, 0.12],
       }),
       zone: "bakery",
-      note: "Town crowd cheers around overflowing gold-and-emerald open chests.",
+      note: "Depth-stacked citizen crowd cheers joyfully around gold-and-emerald open Chest.",
       stage: (t) => (
         <>
           <Chest position={on(PLACE.bakery, 0, 0, 0.2)} open={1} gold={1} kind="emerald" />
           <ExplainerCrowd
             positions={[
-              on(PLACE.bakery, -1.6, 0, 0.4),
-              on(PLACE.bakery, -1.0, 0, 1.5),
-              on(PLACE.bakery, 1.2, 0, 1.3),
-              on(PLACE.bakery, 1.7, 0, 0.3),
+              on(PLACE.bakery, -0.68, 0, 0.3),
+              on(PLACE.bakery, 0.68, 0, 0.35),
+              on(PLACE.bakery, -0.38, 0, 1.15),
+              on(PLACE.bakery, 0.42, 0, 1.1),
             ]}
             rotationY={0.1}
             animation="cheer"
             seed={5}
           />
-          <FloatingNumber text="+EMERALDS" color="#ffd84d" position={on(PLACE.bakery, 0, 1.5, 0.2 + t * 0.01)} height={0.56 * pop(t, 0.1)} />
+          <FloatingNumber text="+EMERALDS" color="#ffd84d" position={on(PLACE.bakery, 0, 1.55, 0.25 + t * 0.01)} height={0.55 * pop(t, 0.1)} />
         </>
       ),
     },
     {
       cue: "5.miles2",
       ...cam.push({
-        on: on(PLACE.bakery, -0.2, 1.25, 0.8),
-        dist: 3.7,
-        to: 3.0,
-        yaw: 16,
-        pitch: 8,
-        fov: 40,
+        on: on(PLACE.bakery, 0, 1.25, 0.4),
+        dist: 2.9,
+        to: 2.35,
+        yaw: -14,
+        pitch: 6,
+        fov: 38,
+        screenOffset: [0, 0.12],
       }),
       zone: "bakery",
-      note: "Miles sprints toward the bakery excitedly carrying a stacked emerald bundle.",
+      note: "Miles scoops up a thick stacked bundle of fresh green banknotes beaming.",
       stage: (t) => (
-        <CitizenLead position={on(PLACE.bakery, -0.8 + t * 0.85, 0, 1.1)} rotationY={0.45} animation="run" animDistance={t * 2.2} face="happy">
+        <CitizenLead position={on(PLACE.bakery, 0, 0, 0.4)} rotationY={0.2} animation="lift" face="grin" time={t}>
+          <BillStack position={[0, -0.04, 0.2]} count={10} />
+        </CitizenLead>
+      ),
+    },
+    {
+      cue: "5.sprint",
+      ...cam.truck({
+        on: on(PLACE.bakery, -0.2, 1.2, 0.8),
+        dist: 3.5,
+        yaw: 14,
+        pitch: 8,
+        by: [0.85, 0, 0],
+        fov: 40,
+        screenOffset: [0, 0.12],
+      }),
+      zone: "bakery",
+      note: "Miles sprints eagerly back toward the bakery counter carrying his green cash.",
+      stage: (t) => (
+        <CitizenLead position={on(PLACE.bakery, -0.35 + t * 0.9, 0, 0.9)} rotationY={0.45} animation="run" animDistance={t * 2.2} face="happy">
           <BillStack position={[0, -0.05, 0.2]} count={10} />
         </CitizenLead>
       ),

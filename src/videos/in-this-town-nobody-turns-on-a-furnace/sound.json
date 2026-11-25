@@ -1,99 +1,113 @@
 {
   "film": "in-this-town-nobody-turns-on-a-furnace",
-  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-nobody-turns-on-a-furnace",
+  "README": "Multi-act InThisTown sound sheet (~58 SFX/min, max gap <= 3s). Rebuild with `python3 scripts/sound.py build in-this-town-nobody-turns-on-a-furnace` after recording narration.",
   "music": {
     "track": "Topics/InThisTown/InThisTownMusic.aac",
     "gain": -16,
     "sections": [
-      {
-        "from": "1.town",
-        "mood": "town",
-        "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."
-      }
+      { "from": "1.town", "mood": "town", "why": "Bright, playful opening across snow-trail lawn and cold room." },
+      { "from": "3.school", "mood": "playful", "why": "School frost jokes, snowball sneeze gag, and goofy pumpkin grin." },
+      { "from": "5.forge", "mood": "curious", "why": "Warning sign when Dad steps close to blacksmith furnace." },
+      { "from": "6.cake", "mood": "tense", "gain": 0, "why": "Bakery furnace overheats, roof catches fire, four kids trapped." },
+      { "from": "7.dad", "mood": "hope", "gain": 0, "why": "Heroic Snow Golem rescue charge through the flames." },
+      { "from": "8.puddle", "mood": "none", "why": "Silent breath looking back at pumpkin and lone melting block." },
+      { "from": "9.cry", "mood": "hope", "gain": 0, "why": "Packing fresh white snow off the lawn and rebuilding Dad." },
+      { "from": "9.love", "mood": "town", "gain": 0, "why": "Goofy-grin family payoff and subscribe finale." }
     ]
   },
   "beds": [
-    {
-      "from": "1.town",
-      "to": "1.trail",
-      "bed": "village"
-    },
-    {
-      "from": "2.cold",
-      "to": "2.food",
-      "bed": "room"
-    },
-    {
-      "from": "3.school",
-      "to": "4.photo",
-      "bed": "village"
-    },
-    {
-      "from": "4.mum",
-      "to": "4.mum",
-      "bed": "room"
-    },
-    {
-      "from": "5.forge",
-      "to": "5.heat",
-      "bed": "village"
-    },
-    {
-      "from": "9.love",
-      "to": "10.sub",
-      "bed": "village"
-    }
+    { "from": "1.town", "to": "1.snow", "bed": "village" },
+    { "from": "2.cold", "to": "2.dark", "bed": "room" },
+    { "from": "2.potato", "to": "2.potato", "bed": "village" },
+    { "from": "2.food", "to": "2.food", "bed": "room" },
+    { "from": "3.school", "to": "4.photo", "bed": "village" },
+    { "from": "4.mum", "to": "4.lock", "bed": "room" },
+    { "from": "5.forge", "to": "6.cake", "bed": "village" },
+    { "from": "6.over", "to": "7.arms", "bed": "fire", "trim": -4 },
+    { "from": "8.clear", "to": "10.sub", "bed": "village" }
   ],
   "sfx": [
-    {
-      "cue": "2.cold",
-      "sfx": "whoosh",
-      "why": "scene 2 starts: a new place or a new time"
-    },
-    {
-      "cue": "3.school",
-      "sfx": "whoosh",
-      "why": "scene 3 starts: a new place or a new time"
-    },
-    {
-      "cue": "4.dad",
-      "sfx": "whoosh",
-      "why": "scene 4 starts: a new place or a new time"
-    },
-    {
-      "cue": "5.forge",
-      "sfx": "whoosh",
-      "why": "scene 5 starts: a new place or a new time"
-    },
-    {
-      "cue": "6.cake",
-      "sfx": "whoosh",
-      "why": "scene 6 starts: a new place or a new time"
-    },
-    {
-      "cue": "7.run",
-      "sfx": "whoosh",
-      "why": "scene 7 starts: a new place or a new time"
-    },
-    {
-      "cue": "8.clear",
-      "sfx": "whoosh",
-      "why": "scene 8 starts: a new place or a new time"
-    },
-    {
-      "cue": "9.cry",
-      "sfx": "whoosh",
-      "why": "scene 9 starts: a new place or a new time"
-    },
-    {
-      "cue": "10.sub",
-      "sfx": "whoosh",
-      "why": "scene 10 starts: a new place or a new time"
-    },
-    {
-      "cue": "10.sub",
-      "sfx": "ding",
-      "why": "the subscribe line"
-    }
+    { "cue": "1.town", "word": "nobody", "sfx": "blip", "why": "Premise turn on nobody." },
+    { "cue": "1.town", "word": "furnace.", "sfx": "pop", "why": "Hook emphasis on furnace." },
+    { "cue": "1.trail", "word": "parents", "sfx": "step_grass", "why": "Snow golem steps across lawn." },
+    { "cue": "1.trail", "word": "outside", "sfx": "step_grass", "why": "Second step into bright morning." },
+    { "cue": "1.snow", "word": "white", "sfx": "place", "why": "Snow trail patch stamps onto grass." },
+    { "cue": "1.snow", "word": "lawn.", "sfx": "place", "why": "Second snow tile appears." },
+    { "cue": "2.cold", "sfx": "whoosh", "why": "Hard cut indoors into kitchen." },
+    { "cue": "2.cold", "word": "zero", "sfx": "buzz", "why": "Zero heat popup over dark furnace." },
+    { "cue": "2.dark", "word": "torches,", "sfx": "step_wood", "why": "Step across wood planks." },
+    { "cue": "2.dark", "word": "fireplaces", "sfx": "tick", "why": "Quiet empty cold kitchen beat." },
+    { "cue": "2.potato", "sfx": "whoosh", "why": "Cut outside to warm school lunch." },
+    { "cue": "2.potato", "word": "potatoes", "sfx": "pop", "why": "Warm baked potatoes contrast." },
+    { "cue": "2.food", "sfx": "swish", "why": "Overhead cut to cold sweet berries." },
+    { "cue": "2.food", "word": "berries.", "sfx": "place", "why": "Plate of cold berries on table." },
+    { "cue": "3.school", "sfx": "whoosh", "why": "Cut to teasing kids in schoolyard." },
+    { "cue": "3.school", "word": "joke", "sfx": "school_bell", "why": "School bell cue." },
+    { "cue": "3.chill", "word": "Frost", "sfx": "pop", "why": "Ice Biome Kid ChatToast pops." },
+    { "cue": "3.chill", "word": "shakes", "sfx": "rustle", "why": "Hero shivers rubbing chilled arms." },
+    { "cue": "3.sneeze", "sfx": "swish", "why": "Dad winds up big sneeze." },
+    { "cue": "3.sneeze", "word": "sneezes,", "sfx": "bonk", "why": "Comic sneeze blast." },
+    { "cue": "3.ball", "word": "launches", "sfx": "zip", "why": "Snowball rockets across yard." },
+    { "cue": "3.ball", "word": "yard.", "sfx": "thud", "why": "Snowball thuds into grass." },
+    { "cue": "4.dad", "sfx": "whoosh", "why": "Family photo cut." },
+    { "cue": "4.dad", "word": "photos.", "sfx": "pop", "why": "Family portrait flash." },
+    { "cue": "4.mask", "word": "carved", "sfx": "rustle", "why": "Focus on pumpkin disguise." },
+    { "cue": "4.photo", "sfx": "swish", "why": "Pumpkin lifts off." },
+    { "cue": "4.photo", "word": "goofy", "sfx": "chime", "why": "Pumpkin-off goofy smile reveal." },
+    { "cue": "4.mum", "sfx": "whoosh", "why": "Cut indoors as Hero begs Mum." },
+    { "cue": "4.mum", "word": "campfire,", "sfx": "blip", "why": "Hero points asking for campfire." },
+    { "cue": "4.lock", "word": "locks", "sfx": "clank", "why": "Flint chest locked shut." },
+    { "cue": "4.lock", "word": "shut.", "sfx": "bonk", "why": "Mum firmly shakes pumpkin no." },
+    { "cue": "5.forge", "sfx": "whoosh", "why": "Cut to sunlit blacksmith corner." },
+    { "cue": "5.forge", "word": "walked", "sfx": "step_stone", "why": "Walking onto blacksmith cobbles." },
+    { "cue": "5.near", "word": "glowing", "sfx": "crackle", "why": "Roaring forge heat nearby." },
+    { "cue": "5.hurt", "word": "hissed", "sfx": "buzz", "why": "Heat hiss tick." },
+    { "cue": "5.hurt", "word": "steam", "sfx": "splash", "why": "Snow steaming near furnace." },
+    { "cue": "5.jump", "word": "hearts", "sfx": "hit", "why": "-1 HP damage popup." },
+    { "cue": "5.jump", "word": "jumped", "sfx": "boing", "why": "Dad jumps backward." },
+    { "cue": "5.heat", "sfx": "swish", "why": "Golden heatwave crane." },
+    { "cue": "5.heat", "word": "hottest", "sfx": "gust", "why": "Hot dry summer wind." },
+    { "cue": "5.dry", "word": "dry.", "sfx": "creak", "why": "Dry wooden leaves creaking." },
+    { "cue": "6.cake", "sfx": "whoosh", "why": "Cut to bakery double ovens." },
+    { "cue": "6.cake", "word": "furnace", "sfx": "crackle", "why": "Double bakery furnace lit." },
+    { "cue": "6.over", "word": "blast", "sfx": "fire_whoosh", "why": "Ovens blasted to max heat." },
+    { "cue": "6.spark", "word": "warning", "sfx": "pop", "why": "Baker chat warning popup." },
+    { "cue": "6.roof", "word": "spark", "sfx": "sparkle", "why": "Ember shoots onto oak rafters." },
+    { "cue": "6.roof", "word": "roof.", "sfx": "crackle", "why": "Timber rafters ignite." },
+    { "cue": "6.fire", "sfx": "fire_whoosh", "why": "Bakery roof bursts into flames." },
+    { "cue": "6.fire", "word": "explodes", "sfx": "boom", "why": "Major roof blaze impact." },
+    { "cue": "6.trap", "sfx": "swish", "why": "Cut behind counter with 4 kids." },
+    { "cue": "6.trap", "word": "crouch", "sfx": "sting", "why": "Four kids trapped inside." },
+    { "cue": "6.smoke", "word": "embers", "sfx": "crackle", "why": "Overhead falling sparks." },
+    { "cue": "7.run", "sfx": "whoosh", "why": "Cut outside to running villagers." },
+    { "cue": "7.run", "word": "buckets", "sfx": "clank", "why": "Buckets hit stone floor." },
+    { "cue": "7.charge", "word": "hesitates.", "sfx": "heartbeat", "why": "Hero watches doorway." },
+    { "cue": "7.dad", "sfx": "whoosh_low", "why": "Heroic Snow Golem sprint." },
+    { "cue": "7.dad", "word": "sprints", "sfx": "stomp", "why": "Dad charges forward." },
+    { "cue": "7.dad", "word": "doorway.", "sfx": "fire_whoosh", "why": "Dad enters burning doorway." },
+    { "cue": "7.melt", "word": "melts", "sfx": "splash", "why": "Snow sizzling inside bakery." },
+    { "cue": "7.hearts", "word": "heart", "sfx": "hit", "why": "-1 HP damage flash." },
+    { "cue": "7.hearts", "word": "chest.", "sfx": "heartbeat", "why": "Urgent racing heartbeat." },
+    { "cue": "7.shield", "sfx": "swish", "why": "OTS shield move." },
+    { "cue": "7.shield", "word": "shoves", "sfx": "thud", "why": "Pushing Hero toward door." },
+    { "cue": "7.throw", "word": "hurls", "sfx": "zip", "why": "Rapid snowball throw." },
+    { "cue": "7.throw", "word": "snowball", "sfx": "splash", "why": "Snowball splashes rafters." },
+    { "cue": "7.arms", "word": "arms", "sfx": "zip", "why": "Final rapid volley." },
+    { "cue": "7.arms", "word": "vanish", "sfx": "splash", "why": "Dousing final ceiling flame." },
+    { "cue": "8.clear", "sfx": "whoosh", "why": "Smoky roof fire dies out." },
+    { "cue": "8.kids", "word": "scramble", "sfx": "step_stone", "why": "All 4 kids rush onto cobbles." },
+    { "cue": "8.kids", "word": "outside.", "sfx": "rustle", "why": "Kids catch breath outdoors." },
+    { "cue": "8.puddle", "sfx": "drop", "why": "Silent look inside doorway." },
+    { "cue": "8.left", "word": "pumpkin", "sfx": "thud", "why": "Lone pumpkin on small snow slab." },
+    { "cue": "9.cry", "sfx": "whoosh", "why": "Hero runs for snowballs." },
+    { "cue": "9.cry", "word": "scoop", "sfx": "dig", "why": "Scooping snow off lawn." },
+    { "cue": "9.save", "word": "stack", "sfx": "place", "why": "Stacking bottom snow block." },
+    { "cue": "9.save", "word": "together", "sfx": "place", "why": "Stacking torso block." },
+    { "cue": "9.save", "word": "block.", "sfx": "chime", "why": "+2 HP Dad restored." },
+    { "cue": "9.love", "sfx": "whoosh", "why": "Sunlit square happy family." },
+    { "cue": "9.love", "word": "grins", "sfx": "sparkle", "why": "Goofy snow smile reveal." },
+    { "cue": "9.home", "word": "freezing", "sfx": "blip", "why": "Warm comedic smile on Hero." },
+    { "cue": "10.sub", "sfx": "pop", "why": "Subscribe sign pops cleanly." },
+    { "cue": "10.sub", "word": "expect", "sfx": "ding", "why": "Bright final bell on subscribe ask." }
   ]
 }

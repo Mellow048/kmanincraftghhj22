@@ -11,9 +11,9 @@ import { scene6 } from "./scene6";
 /**
  * Inflation Explained Using Minecraft
  *
- * Dual-lead Remastered Explainer (`Napoleon` & `Minimum Wage` cadence):
- *   - CitizenLead (Miles) vs EliteLead (President Sterling)
- *   - 40+ fast story cuts (`~1.5s`), composite props, cold-open climax -> seamless loop.
+ * Remastered on restored `74ba75f` engine: 37 word-synced visual cuts (~2.0s median),
+ * depth-stacked 9:16 composition, distinct Explainer channel cast (Miles & Sterling),
+ * mandatory explainer_bgm_loop.wav under narration, and seamless loop payoff.
  */
 export const film = defineFilm({
   id: "inflation-explained-using-minecraft",
@@ -28,8 +28,8 @@ export const film = defineFilm({
     words: timing.words,
     y: 0.67,
     motion: "on-beat",
-    highlightWords: ["INFLATION", "EMERALD", "EMERALDS", "STERLING", "MILES", "BREAD", "FOUR"],
-    dangerWords: ["LESS", "DRY", "ZERO", "SAME", "TEN", "HALF", "BILLS"],
+    highlightWords: ["INFLATION", "EMERALD", "EMERALDS", "STERLING", "MILES", "BREAD", "FOUR", "1971"],
+    dangerWords: ["LESS", "DROUGHT", "ZERO", "EMPTY", "TEN", "HALF", "HUNDRED", "BILLS"],
   },
   World,
   scenes: [scene1, scene2, scene3, scene4, scene5, scene6],

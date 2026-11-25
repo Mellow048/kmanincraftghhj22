@@ -13,47 +13,82 @@ import {
 
 export const scene2 = storyScene(timing, {
   id: "scene2",
-  title: "School Frost, Sneeze Gag & Pumpkin Secret",
+  title: "School Frost, Sneeze Gag & Pumpkin Grin",
   shots: [
     {
       cue: "3.school",
       ...cam.orbit({
-        on: [0, 1.1, 2.0],
-        dist: 3.9,
-        yaw: -14,
-        yawTo: 14,
+        on: [0.05, 1.15, 1.3],
+        dist: 4.1,
+        yaw: -10,
+        yawTo: 10,
         pitch: 6,
         fov: 40,
+        screenOffset: [0, 0.12],
       }),
       zone: "town",
-      note: "Kids laugh at frost on Hero's jacket while ChatToast pops Frost Boy.",
+      note: "Depth-stacked school square: Hero in front, teasing kids behind in depth, centered ChatToast inside 9:16 frame.",
       stage: (t) => (
         <>
-          <Hero position={[-0.4, 0, 2.0]} rotationY={0.4} animation="shrug" face="uneasy" time={t} />
-          <Player who={1} position={[1.0, 0, 1.7]} rotationY={-0.9} animation="laugh" face="laugh" time={t} />
-          <Player who={3} position={[1.5, 0, 2.4]} rotationY={-1.3} animation="point" face="grin" time={t} />
-          <ChatToast text="Ice Biome Kid!" sender="Kid" position={[0.9, 2.05, 1.8]} height={0.22 * pop(t, 0.35)} />
+          <Hero position={[-0.28, 0, 2.0]} rotationY={0.25} animation="shrug" face="uneasy" time={t} />
+          <Player who={1} position={[0.42, 0, 0.65]} rotationY={-0.35} animation="laugh" face="laugh" time={t} />
+          <Player who={3} position={[-0.55, 0, 0.1]} rotationY={0.25} animation="point" face="grin" time={t} />
+          <ChatToast text="Ice Biome Kid!" sender="Kid" position={[0.05, 2.05, 1.0]} height={0.2 * pop(t, 0.2)} />
         </>
+      ),
+    },
+    {
+      cue: "3.chill",
+      ...cam.push({
+        on: [-0.28, 1.15, 2.0],
+        dist: 2.35,
+        to: 1.85,
+        yaw: 12,
+        pitch: 4,
+        fov: 38,
+        screenOffset: [0, 0.14],
+      }),
+      zone: "town",
+      note: "Close reaction push on Hero shivering and rubbing his frosty hoodie sleeves.",
+      stage: (t) => (
+        <Hero position={[-0.28, 0, 2.0]} rotationY={0.2} animation="cower" face="ouch" time={t} />
       ),
     },
     {
       cue: "3.sneeze",
       ...cam.push({
-        on: [0.3, 1.15, 1.4],
-        dist: 3.7,
-        to: 3.1,
-        yaw: 12,
-        pitch: 7,
+        on: [-0.2, 1.25, 1.4],
+        dist: 3.4,
+        to: 2.8,
+        yaw: -14,
+        pitch: 5,
         fov: 40,
+        screenOffset: [0, 0.12],
       }),
       zone: "town",
-      note: "Vanilla Snow Golem comedy gag: Dad sneezes and launches a flying Snowball across the fence.",
+      note: "Snow Golem Dad winds up violently before letting out a massive sneeze.",
+      stage: (t) => (
+        <SnowGolem position={[-0.2, 0, 1.4]} rotationY={0.75} pumpkin armThrow={-0.35 - Math.sin(t * 7) * 0.25} walk={t * 0.2} />
+      ),
+    },
+    {
+      cue: "3.ball",
+      ...cam.pan({
+        from: [0.2, 1.35, 4.4],
+        on: [-0.1, 1.2, 1.4],
+        onTo: [1.5, 1.0, 1.4],
+        fov: 40,
+        screenOffset: [0, 0.1],
+      }),
+      zone: "town",
+      note: "Pan across the cobblestone yard following Dad's launched Snowball past a ducking neighbor.",
       stage: (t) => {
-        const fly = Math.max(0, t - 0.55);
+        const fly = t * 4.4;
         return (
           <>
-            <SnowGolem position={[-0.4, 0, 1.4]} rotationY={Math.PI / 2} pumpkin armThrow={fly > 0 ? -1.1 : 0} />
-            {fly > 0 ? <Snowball position={[0.1 + fly * 4.5, 1.25 - fly * 0.4, 1.4]} /> : null}
+            <SnowGolem position={[-0.35, 0, 1.4]} rotationY={Math.PI / 2} pumpkin armThrow={-1.1} />
+            <Snowball position={[0.15 + fly, 1.35 - t * 0.35, 1.4]} scale={1.15} />
+            <Player who={6} position={[1.45, 0, 1.0]} rotationY={-0.8} animation="crouch" face="wow" time={t} />
           </>
         );
       },
@@ -61,53 +96,95 @@ export const scene2 = storyScene(timing, {
     {
       cue: "4.dad",
       ...cam.push({
-        on: [0, 1.35, 1.3],
-        dist: 3.3,
-        to: 2.75,
-        yaw: -12,
+        on: [0, 1.2, 1.35],
+        dist: 3.6,
+        to: 3.05,
+        yaw: -10,
         pitch: 4,
         fov: 40,
+        screenOffset: [0, 0.12],
       }),
       zone: "town",
-      note: "Family photo framing: stiff Snow Golem Dad in his carved pumpkin beside Hero.",
+      note: "Family portrait: stiff carved-pumpkin Dad standing beside smiling Hero.",
       stage: (t) => (
         <>
-          <SnowGolem position={[-0.45, 0, 1.3]} rotationY={0.12} pumpkin walk={t * 0.1} />
-          <Hero position={[0.45, 0, 1.4]} rotationY={-0.1} animation="idle" face="smile" time={t} />
+          <SnowGolem position={[-0.36, 0, 1.3]} rotationY={0.12} pumpkin walk={t * 0.12} />
+          <Hero position={[0.36, 0, 1.4]} rotationY={-0.1} animation="idle" face="smile" time={t} />
         </>
+      ),
+    },
+    {
+      cue: "4.mask",
+      ...cam.push({
+        on: [0, 1.45, 1.3],
+        dist: 2.6,
+        to: 2.1,
+        yaw: 10,
+        pitch: 3,
+        fov: 38,
+        screenOffset: [0, 0.12],
+      }),
+      zone: "town",
+      note: "Tight push onto Dad's carved orange pumpkin head right before the reveal.",
+      stage: (t) => (
+        <SnowGolem position={[0, 0, 1.3]} rotationY={0.1 + Math.sin(t * 2) * 0.08} pumpkin walk={t * 0.2} />
       ),
     },
     {
       cue: "4.photo",
       ...cam.push({
-        on: [0, 1.5, 1.3],
-        dist: 2.5,
-        to: 2.0,
-        yaw: 10,
-        pitch: 2,
+        on: [0.1, 1.35, 1.3],
+        dist: 2.8,
+        to: 2.25,
+        yaw: -8,
+        pitch: 4,
         fov: 38,
+        screenOffset: [0, 0.12],
       }),
       zone: "town",
-      note: "Goofy pumpkin-off reveal showing Dad's signature derpy snowman smile underneath.",
-      stage: (t) => <SnowGolem position={[0, 0, 1.3]} rotationY={0.1} pumpkin={t < 0.55} walk={t * 0.15} />,
+      note: "Pumpkin-off reveal showing Dad's goofy derpy snowman grin beside laughing Hero.",
+      stage: (t) => (
+        <>
+          <SnowGolem position={[-0.22, 0, 1.3]} rotationY={0.15} pumpkin={false} walk={t * 0.18} />
+          <Hero position={[0.45, 0, 1.55]} rotationY={-0.25} animation="laugh" face="laugh" time={t} />
+        </>
+      ),
     },
     {
       cue: "4.mum",
       ...cam.push({
-        on: room(0.2, 1.15, -1.4),
-        dist: 3.4,
+        on: room(-0.1, 1.05, -0.7),
+        dist: 3.3,
         to: 2.8,
         yaw: 18,
         pitch: 8,
         fov: 40,
+        screenOffset: [0, 0.12],
       }),
       zone: "room",
-      note: "Mum gently refuses flint while Hero begs for a warm fire.",
+      note: "Inside the cool plank house: Hero reaches out begging Mum for a warm fire.",
       stage: (t) => (
         <>
-          <SnowGolem position={room(0.7, 0, -1.8)} rotationY={-0.6} pumpkin armThrow={0.4 * Math.sin(t * 2)} />
-          <Hero position={room(-0.5, 0, -1.2)} rotationY={0.8} animation="reach" face="worried" time={t} />
+          <SnowGolem position={room(0.4, 0, -1.1)} rotationY={-0.55} pumpkin armThrow={0.35 * Math.sin(t * 2.5)} />
+          <Hero position={room(-0.45, 0, -0.45)} rotationY={0.75} animation="reach" face="frown" time={t} />
         </>
+      ),
+    },
+    {
+      cue: "4.lock",
+      ...cam.push({
+        on: room(0.35, 1.25, -1.1),
+        dist: 2.35,
+        to: 1.9,
+        yaw: -12,
+        pitch: 4,
+        fov: 38,
+        screenOffset: [0, 0.12],
+      }),
+      zone: "room",
+      note: "Close shot of Snow Golem Mum firmly shaking her carved pumpkin head NO.",
+      stage: (t) => (
+        <SnowGolem position={room(0.35, 0, -1.1)} rotationY={-0.35 + Math.sin(t * 7) * 0.26} pumpkin armThrow={-0.4} />
       ),
     },
   ],
