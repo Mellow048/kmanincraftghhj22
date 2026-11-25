@@ -21,8 +21,8 @@ const LADDER_X = PLACE.firstStep[0];
 const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
   <group>
     <Vox kind="stone" position={[0, 6.5, -36]} size={[104, 13, 8]} tile={3} />
-    <Vox kind="stone" position={[-6, 17, -47]} size={[86, 30, 10]} tile={5} />
-    <Vox kind="mossy" position={[-6, 32.4, -47]} size={[86, 1.2, 10]} tile={3} />
+    <Vox kind="stone" position={[-8, 10, -62]} size={[78, 20, 12]} tile={6} />
+    <Vox kind="mossy" position={[-8, 20.4, -62]} size={[78, 1.2, 12]} tile={3} />
     <Vox kind="mossy" position={[0, 13.2, -36]} size={[104, 0.8, 8]} tile={2} />
     <Vox kind="grass" position={[0, 13.8, -40]} size={[104, 1.0, 12]} tile={3} />
     <Vox kind="mossy" position={[0, 0.4, -32.2]} size={[104, 1.2, 2.6]} tile={2} />

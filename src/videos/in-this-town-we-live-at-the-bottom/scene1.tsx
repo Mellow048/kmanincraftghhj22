@@ -13,7 +13,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [0, 2.4, 8.6], dist: 30, to: 26, yaw: 3, pitch: 10, fov: 48 }),
+      ...cam.push({ on: [0, 3.0, 8.6], dist: 30, to: 26, yaw: 3, pitch: 4, fov: 50 }),
       ease: "linear" as const,
       zone: "bottom",
       look: "overworld-day",
