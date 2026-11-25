@@ -137,10 +137,10 @@ export const scene1 = storyScene(timing, {
             time={t}
           />
           <ChatToast
-            title="[Vote] YES: 99%"
+            text="[Vote] YES: 99%"
             position={on(PLACE.hall, 1.45, 1.85, 1.15)}
             rotationY={-0.25}
-            scale={pop(t, 0.35) * 0.85}
+            height={0.26 * pop(t, 0.35)}
           />
         </>
       ),
