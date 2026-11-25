@@ -21,7 +21,7 @@ const Street: React.FC = () => (
 
     {/* North side, west to east. Fronts face south. The boy's house is the middle one. */}
     <Hut at={[-21, 0, -5]} w={7} windows={[-2, 2]} roof="#3f6b3a" />
-    <Hut at={[PLACE.boyHouse[0], 0, PLACE.boyHouse[2]]} w={6} h={3.4} tint="#d8c49a" roof="#8a3b2a" door={-1.4} windows={[1.5]} lit />
+    <Hut at={[PLACE.boyHouse[0], 0, PLACE.boyHouse[2]]} w={6} h={3.4} tint="#d8c49a" roof="#8a3b2a" door={-1.4} windows={[1.5]} />
     <Hut at={[20, 0, -5]} w={6} h={3.6} tint="#caa268" roof="#3d5f9a" door={1.2} windows={[-1.6]} />
 
     {/* South side: backs to the usual camera. */}
@@ -54,11 +54,9 @@ const Street: React.FC = () => (
     <LightPool position={[0, 0.07, 1.5]} width={11} depth={9} color="#fff2c8" opacity={0.14} />
     <Glow position={[PLACE.bell[0], PLACE.bell[1] + 2.3, PLACE.bell[2]]} size={1.6} color="#ffe08a" opacity={0.35} />
     <Dust position={[0, 2.2, 1]} area={[30, 4, 14]} count={70} size={0.045} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
-    {/* the boy's window, and the pool of warm light it throws on the sill and the step: a fox at that sill is lit */}
-    <Glow position={[PLACE.sill[0], PLACE.sill[1] + 0.35, PLACE.sill[2] + 0.9]} size={2.6} color="#ffd9a0" opacity={0.55} />
-    <LightPool position={[PLACE.sill[0], 0.06, PLACE.sill[2] + 1.5]} width={6} depth={4.5} color="#ffcf8a" opacity={0.34} />
-    <Glow position={[PLACE.hedge[0], 1.1, PLACE.hedge[2] + 2.2]} size={3.2} color="#ffe6c0" opacity={0.4} />
-    <LightPool position={[PLACE.hedge[0], 0.06, PLACE.hedge[2] + 1.2]} width={7} depth={5} color="#ffe6c0" opacity={0.28} />
+    {/* the warm light on the sill and the step, and on the hedge: a pool on the ground, never a lamp in the lens */}
+    <LightPool position={[PLACE.sill[0], 0.06, PLACE.sill[2] + 1.5]} width={6} depth={4.5} color="#ffcf8a" opacity={0.22} />
+    <LightPool position={[PLACE.hedge[0], 0.06, PLACE.hedge[2] + 1.2]} width={7} depth={5} color="#ffe6c0" opacity={0.18} />
   </>
 );
 
@@ -92,8 +90,7 @@ const Den: React.FC = () => {
       <Glow position={[3.4, 0.6, 3.6]} size={1.5} color="#7f8fd0" opacity={0.3} />
       <LightPool position={[0.4, 0.05, 1.2]} width={7} depth={5} color="#ffd9a0" opacity={0.22} />
       {/* the light that comes in with the camera, so the pile and the faces are readable in the dark */}
-      <Glow position={[0.4, 1.5, 3.2]} size={3.2} color="#ffe0b0" opacity={0.42} />
-      <LightPool position={[0.4, 0.06, 2.4]} width={8} depth={5.5} color="#ffe0b0" opacity={0.3} />
+      <LightPool position={[0.4, 0.06, 2.4]} width={8} depth={5.5} color="#ffe0b0" opacity={0.26} />
       <Dust position={[0, 1.4, 0]} area={[8, 3, 5]} count={40} size={0.04} color="#ffe6b8" opacity={0.4} seed={5} speed={0.12} />
     </group>
   );
