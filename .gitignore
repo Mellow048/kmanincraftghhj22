@@ -9,3 +9,6 @@ out
 .DS_Store
 __pycache__
 .venv/
+
+# The previz cut the owner asked to have on GitHub.
+!renders/in-this-town-nobody-has-ever-slept.mp4
