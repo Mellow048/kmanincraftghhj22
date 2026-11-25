@@ -104,7 +104,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.home",
-      ...cam.push({ on: [-7.6, 0.75, -3.4], dist: 4.2, to: 4.2, yaw: 62, pitch: 4, fov: 42 }),
+      ...cam.truck({ on: [-7.6, 0.75, -3.4], by: [-2.2, 0, 0], dist: 4.0, yaw: 62, pitch: 4, fov: 42 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'I carried it home in my mouth': track with him as he trots out of frame, the flower lit by the lamp post. This is the last happy frame in the film; make it read as a win.",

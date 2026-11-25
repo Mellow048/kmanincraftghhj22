@@ -55,7 +55,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.ran",
-      ...cam.push({ on: [-7.8, 0.7, -1.2], dist: 3.6, to: 3.6, yaw: 82, pitch: 2, fov: 46 }),
+      ...cam.truck({ on: [-7.8, 0.7, -1.2], by: [-2.6, 0, 0], dist: 3.4, yaw: 82, pitch: 2, fov: 46 }),
       zone: "street",
       look: "overworld-day",
       note: "'So I ran with the flower still in my mouth': low and beside him at a full run, ears flat, the flower a red streak. Fast. This is the one shot in the film that should feel like a chase.",
