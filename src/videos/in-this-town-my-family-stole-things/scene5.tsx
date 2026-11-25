@@ -89,11 +89,11 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.every",
-      ...cam.push({ on: [-1.0, 0.12, 58.95], dist: 1.25, to: 1.0, yaw: 8, pitch: 22, fov: 30 }),
+      ...cam.push({ on: [0.9, 0.08, 60.35], dist: 0.85, to: 0.72, yaw: 0, pitch: 46, fov: 34 }),
       zone: "den",
       look: "overworld-sunset",
       note: "'Every one. He counted every one': down on one berry, so close that the dirt around it is a landscape. This is the smallest shot in the film and the largest idea in it.",
-      stage: () => <Berries position={den(-1.0, 0.02, -0.62)} scale={1.5} count={1} />,
+      stage: () => <Berries position={den(0.9, 0.03, 0.35)} scale={1.5} count={1} />,
     },
     {
       cue: "11.gift",
