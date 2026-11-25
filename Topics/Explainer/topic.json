@@ -7,8 +7,9 @@
   "reference": {
     "film": "napoleon-explained-using-minecraft",
     "page": "Topics/Explainer/reference/napoleon/README.md",
+    "secondReference": "Topics/Explainer/reference/minimum-wage/README.md",
     "playbook": "Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md",
-    "owner": "replace/remaster explainer to match the Napoleon reference: 2 signature leads (not InThisTown default hero), detailed composite props, fast story cuts, and seamless loop payoff"
+    "owner": "replace/remaster explainer to match Napoleon & Minimum Wage references: 2 signature leads (not InThisTown default hero), detailed composite props, fast story cuts, mandatory explainer_bgm_loop.wav under narration, and seamless loop payoff"
   },
   "measuredFromReference": {
     "seconds": 80.93,
@@ -17,7 +18,14 @@
     "medianShotSeconds": 1.67,
     "meanShotSeconds": 1.84,
     "words": 286,
-    "wordsPerMinute": 212
+    "wordsPerMinute": 212,
+    "secondReferenceMinimumWage": {
+      "seconds": 78.79,
+      "shots": 36,
+      "medianShotSeconds": 2.12,
+      "words": 279,
+      "wordsPerMinute": 212
+    }
   },
   "castRule": {
     "distinctChannel": true,
@@ -29,7 +37,7 @@
     "guard": "",
     "maxHardCuts": 999,
     "legacyFlightFilms": ["what-is-a-dictator"],
-    "note": "Remastered Explainer uses storyScene() with fast ~1.5s cuts across grounded multi-zone sets, dynamic cam.* recipes, and intra-line `cut:` switches. Legacy film `what-is-a-dictator` stays checked as a flightScene."
+    "note": "Remastered Explainer uses storyScene() with fast ~1.5-2.0s cuts across grounded multi-zone sets, dynamic cam.* recipes, and intra-line `cut:` switches. Legacy film `what-is-a-dictator` stays checked as a flightScene."
   },
   "film": {
     "seconds": [55, 110],
@@ -37,7 +45,7 @@
     "hardMinSeconds": 35,
     "hardMinWords": 100,
     "shotSeconds": [0.4, 5.5],
-    "medianShotSeconds": [1.1, 1.9],
+    "medianShotSeconds": [1.1, 2.1],
     "wordsPerMinute": [205, 255],
     "words": [180, 420],
     "maxWordsPerShot": 16,
@@ -59,13 +67,24 @@
   "pack": "Topics/Explainer/PACK.md",
   "template": "Topics/Explainer/template",
   "models": {
-    "napoleon": "Topics/Explainer/reference/napoleon/README.md (target pacing, 2-lead contrast, composite props, and loop payoff)"
+    "napoleon": "Topics/Explainer/reference/napoleon/README.md (target pacing, 2-lead contrast, composite props, and loop payoff)",
+    "minimum-wage": "Topics/Explainer/reference/minimum-wage/README.md (3-option visual breakdown, twin before/after chests, balanced trade-off dilemma loop)"
   },
   "sound": {
     "required": true,
     "guide": "Topics/Explainer/SOUND.md",
+    "music": {
+      "file": "Topics/Explainer/explainer_bgm_loop.wav",
+      "owner": "mandatory background music for every Explainer short, levelled quietly under narration so it never overpowers the voice",
+      "since": "2026-11-25",
+      "guide": "Topics/Explainer/SOUND.md",
+      "gain": -19,
+      "minShare": 0.85,
+      "madeBefore": ["what-is-a-dictator"],
+      "note": "MANDATORY for every new Explainer: track = Topics/Explainer/explainer_bgm_loop.wav. Start gain at -19 (kept 17-25 dB below the narrator voice so it NEVER overpowers narration). scripts/sound.py build refuses any new Explainer sheet that omits it."
+    },
     "minMusicSections": 3,
-    "musicUnderVoiceDb": [15, 24],
+    "musicUnderVoiceDb": [17, 25],
     "maxSecondsWithoutMusic": 4,
     "minSfxPerMinute": 40,
     "maxGapSeconds": 6,

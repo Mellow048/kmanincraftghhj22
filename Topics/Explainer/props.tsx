@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { Block, Vox, mulberry32, pixelTex, plankTex, stripeTex, wordBitmap, wordTexture } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
 import { Icon } from "../Shared";
+import { Chest } from "./money";
 
 /**
  * DETAILED COMPOSITE PROPS FOR EXPLAINER FILMS
@@ -515,3 +516,72 @@ export const NameTag: React.FC<{
     </group>
   );
 };
+
+/** Beveled stack of iron/gold ingots (for iron farms, output comparisons, hauled wages). */
+export const IngotStack: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  count?: number;
+  kind?: "iron" | "gold";
+  scale?: number;
+}> = ({ position = [0, 0, 0], rotationY = 0, count = 4, kind = "iron", scale = 1 }) => {
+  const base = kind === "gold" ? "#ebc034" : "#d6dce2";
+  const top = kind === "gold" ? "#ffe066" : "#f2f5f8";
+  const layers = Math.max(1, Math.min(8, Math.round(count)));
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      {Array.from({ length: layers }, (_, i) => {
+        const col = i % 2;
+        const row = Math.floor(i / 2);
+        return (
+          <group key={i} position={[(col - 0.5) * 0.26, 0.045 + row * 0.095, (row % 2) * 0.04]} rotation={[0, (i % 3) * 0.08 - 0.08, 0]}>
+            <Block position={[0, 0, 0]} size={[0.22, 0.08, 0.4]} color={base} metalness={0.25} roughness={0.35} />
+            <Block position={[0, 0.042, 0]} size={[0.16, 0.015, 0.34]} color={top} castShadow={false} />
+          </group>
+        );
+      })}
+    </group>
+  );
+};
+
+/** Multi-part wooden-handled voxel Pickaxe (for mining / extra shifts). */
+export const Pickaxe: React.FC<{
+  position?: Vec3;
+  rotation?: Vec3;
+  headColor?: string;
+  scale?: number;
+}> = ({ position = [0, 0, 0], rotation = [0, 0, 0], headColor = "#8a94a0", scale = 1 }) => (
+  <group position={position} rotation={rotation} scale={scale}>
+    <Block position={[0, 0.32, 0]} size={[0.06, 0.64, 0.06]} map={plankTex("#7c532d")} />
+    <Block position={[0, 0.64, 0]} size={[0.42, 0.08, 0.08]} color={headColor} metalness={0.25} roughness={0.35} />
+    <Block position={[-0.22, 0.58, 0]} size={[0.09, 0.12, 0.075]} color={headColor} metalness={0.25} roughness={0.35} />
+    <Block position={[0.22, 0.58, 0]} size={[0.09, 0.12, 0.075]} color={headColor} metalness={0.25} roughness={0.35} />
+  </group>
+);
+
+/** Twin side-by-side comparison chests (`YESTERDAY` vs `TODAY` / `BEFORE` vs `AFTER`) with output piles. */
+export const CompareChestPair: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  leftLabel?: string;
+  rightLabel?: string;
+  leftCount?: number;
+  rightCount?: number;
+}> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  leftLabel = "YESTERDAY",
+  rightLabel = "TODAY",
+  leftCount = 4,
+  rightCount = 4,
+}) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Chest position={[-1.0, 0, 0]} open={0.8} gold={0.5} />
+    <StoneBillboard text={leftLabel} position={[-1.0, 1.5, -0.35]} width={1.7} height={0.58} bgColor="#5b4026" />
+    <IngotStack position={[-1.0, 0, 0.85]} count={leftCount} />
+
+    <Chest position={[1.0, 0, 0]} open={0.8} gold={0.5} />
+    <StoneBillboard text={rightLabel} position={[1.0, 1.5, -0.35]} width={1.7} height={0.58} bgColor="#5b4026" />
+    <IngotStack position={[1.0, 0, 0.85]} count={rightCount} />
+  </group>
+);

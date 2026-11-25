@@ -19,12 +19,13 @@ That gives you a complete remastered starter from [`template/`](template/): our 
 
 ## Read in this order
 
-1. **[`STUDY-NAPOLEON-EXPLAINER.md`](STUDY-NAPOLEON-EXPLAINER.md)** — Forensic breakdown of the reference (`80.9s`, `44 cuts`, `1.67s median`), the 8-beat loop architecture, and anti-box quality rules.
-2. **[`reference/napoleon/README.md`](reference/napoleon/README.md)** — Full transcript, contact sheets (`open`, `full`, `end`), and measured telemetry.
+1. **[`STUDY-NAPOLEON-EXPLAINER.md`](STUDY-NAPOLEON-EXPLAINER.md)** — Forensic breakdown of the references (`Napoleon` `80.9s`/`44 cuts` + `Minimum Wage` `78.8s`/`36 cuts`), the 8-beat loop architecture, and anti-box quality rules.
+2. **[`reference/napoleon/README.md`](reference/napoleon/README.md)** & **[`reference/minimum-wage/README.md`](reference/minimum-wage/README.md)** — Full transcripts, contact sheets, and measured telemetry.
 3. **[`SCRIPT.md`](SCRIPT.md)** — How to write an 8-beat looping explainer script with 2 contrasting characters.
 4. **[`SHOTS.md`](SHOTS.md)** — Fast story-cut cinematography (`storyScene`, `cam.*`, `cut:` sub-shots, motion in every frame).
 5. **[`PACK.md`](PACK.md)** — `CitizenLead`, `EliteLead`, `Official`, `ExplainerCrowd`, detailed composite props (`props.tsx`), money, charts, and goods.
-6. **[`docs/VOICE-AND-TTS.md`](../../docs/VOICE-AND-TTS.md)** — Mandatory young energetic American male TTS standard.
+6. **[`SOUND.md`](SOUND.md)** — **Mandatory BGM (`Topics/Explainer/explainer_bgm_loop.wav` at `gain: -19`, NEVER overpowering voice)** + `scripts/sound.py`.
+7. **[`docs/VOICE-AND-TTS.md`](../../docs/VOICE-AND-TTS.md)** — Mandatory young energetic American male TTS standard.
 
 ---
 

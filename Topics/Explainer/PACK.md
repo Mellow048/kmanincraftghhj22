@@ -49,6 +49,7 @@ import {
 | **`BallotBox`** | Oak chest on base with black voting slot, sticking white parchment ballot, front brass plate, extra slips | Replaces slotted plain cube |
 | **`StoneBillboard`** | Cobble architectural frame holding crisp dark signage (e.g. `"1799"`, `"99 PERCENT"`, `"DEBT x4"`) | Replaces text floating in empty void |
 | **`CastleGateWall`** | Stone-brick battlement wall with crenellations and iron-strapped oak gate doors | Replaces blank flat wall |
+| **`IngotStack` / `CompareChestPair` / `Pickaxe`** | Multi-bar beveled iron/gold ingots, twin `YESTERDAY` vs `TODAY` chests, wooden-handled pickaxe | Replaces unlabelled blocks in mining/output comparisons |
 | **`TopHat` / `PeakedCap` / `Spectacles`** | Multi-part 3D headwear & eyewear attached to `MinecraftAvatar` `head` prop | Instant silhouette differentiation |
 
 ---

@@ -263,7 +263,7 @@ test('remaster v2: cam helpers, screenOffset, and shader presets behave determin
       stdin: {
         contents: `export { wordTexture } from './src/engine/pixelfont';
 export { FloatingNumber, ChatToast, Chicken } from './src/engine/props';
-export { CitizenLead, EliteLead, Official, ExplainerCrowd, DetailedBookshelf, RuleBoard, RoyalThrone, Crown, CrownCushion, BallotBox, StoneBillboard, CastleGateWall, NameTag } from './Topics/Explainer';`,
+export { CitizenLead, EliteLead, Official, ExplainerCrowd, DetailedBookshelf, RuleBoard, RoyalThrone, Crown, CrownCushion, BallotBox, StoneBillboard, CastleGateWall, IngotStack, Pickaxe, CompareChestPair, NameTag } from './Topics/Explainer';`,
         resolveDir: root,
       },
       outfile: out2,
@@ -278,9 +278,12 @@ export { CitizenLead, EliteLead, Official, ExplainerCrowd, DetailedBookshelf, Ru
     const mod2 = await import(pathToFileURL(out2));
     const chatTex = mod2.wordTexture('<Dad> 100%: +2!');
     assert.ok(chatTex.image.width > 10 && chatTex.image.height === 11);
-    for (const sym of ['FloatingNumber', 'ChatToast', 'Chicken', 'CitizenLead', 'EliteLead', 'DetailedBookshelf', 'RuleBoard', 'RoyalThrone', 'Crown', 'BallotBox', 'StoneBillboard', 'NameTag']) {
+    for (const sym of ['FloatingNumber', 'ChatToast', 'Chicken', 'CitizenLead', 'EliteLead', 'DetailedBookshelf', 'RuleBoard', 'RoyalThrone', 'Crown', 'BallotBox', 'StoneBillboard', 'IngotStack', 'Pickaxe', 'CompareChestPair', 'NameTag']) {
       assert.equal(typeof mod2[sym], 'function', `${sym} should be exported`);
     }
+    const explainerCfg = JSON.parse(fs.readFileSync(path.join(root, 'Topics/Explainer/topic.json'), 'utf8'));
+    assert.equal(explainerCfg.sound.music.file, 'Topics/Explainer/explainer_bgm_loop.wav');
+    assert.ok(fs.existsSync(path.join(root, explainerCfg.sound.music.file)), 'explainer_bgm_loop.wav must exist');
   } finally {
     fs.rmSync(scratch, { recursive: true, force: true });
   }

@@ -1,7 +1,7 @@
 # How to Make a Viral Minecraft Explainer (The Napoleon Reference Playbook)
 
-This topic was completely remastered after studying our owner-chosen reference **`Napoleon, explained using Minecraft`** ([contact sheets & metrics](reference/napoleon/README.md)).  
-The old sky-island flying-camera format is retired for new films. Modern Explainers win by combining **sharp real-world ideas**, **two unmistakable contrasting characters**, **hyper-detailed multi-part Minecraft builds**, **fast `~1.5s` story cuts**, and a **seamless loop ending**.
+This topic was completely remastered after studying BOTH owner-chosen references: **`Napoleon, explained using Minecraft`** ([contact sheets & metrics](reference/napoleon/README.md)) AND **`Minimum wage, explained using Minecraft`** ([contact sheets & metrics](reference/minimum-wage/README.md)).  
+The old sky-island flying-camera format is retired for new films. Modern Explainers win by combining **sharp real-world ideas**, **two unmistakable contrasting characters**, **hyper-detailed multi-part Minecraft builds**, **fast `~1.5s–2.1s` story cuts**, **`explainer_bgm_loop.wav` sitting smoothly under narration (`-19 dB`)**, and a **seamless loop ending**.
 
 ---
 

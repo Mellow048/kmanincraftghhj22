@@ -210,7 +210,7 @@ if (topic) {
   console.log("");
   console.log(`This is a film of the topic "${topic.name}". Its rules are in ${topic.folder}/README.md: read it first.`);
   if (topic.id === "in-this-town") console.log(`Using Monster Village Part 1? Start with ${topic.folder}/reference/monster-village/NEW-SHORT.md (frames and transfer card).`);
-  if (topic.id === "explainer") console.log(`REMASTERED EXPLAINER RULES: Read Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md first! Use CitizenLead + EliteLead (never InThisTown default Hero/Villager), use detailed composite props (DetailedBookshelf, RuleBoard, Crown, BallotBox, StoneBillboard), cut at 1.1-1.9s median, and end on a seamless loop.`);
+  if (topic.id === "explainer") console.log(`REMASTERED EXPLAINER RULES: Read Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md + Topics/Explainer/SOUND.md first! Use CitizenLead + EliteLead (never InThisTown Hero/Villager), composite props (DetailedBookshelf, RuleBoard, Crown, BallotBox, StoneBillboard, CompareChestPair), MANDATORY BGM Topics/Explainer/explainer_bgm_loop.wav at gain -19 (never overpower narration), fast cuts, and seamless loop.`);
   console.log("The order of work, and each step needs the owner's yes before the next:");
   console.log(`  1. IDEAS, then the SCRIPT in narration.md (${topic.folder}/SCRIPT.md). Stop. The owner approves the script.`);
   console.log(`  2. VOICE: python3 scripts/narration.py clips ${slug}, record each clip, then python3 scripts/narration.py build ${slug} --require-alignment.`);
