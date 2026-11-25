@@ -68,7 +68,9 @@ const Den: React.FC = () => {
   const o = PLACE.den;
   return (
     <group position={o}>
-      <Vox kind="dirt" position={[0, -0.5, 0]} size={[11, 1, 8]} />
+      {/* the floor runs past the front of the lens: a den whose dirt stops at the camera shows the town's grass
+          underneath and instantly stops being underground */}
+      <Vox kind="dirt" position={[0, -0.47, 3.5]} size={[11.4, 1, 15]} />
       {/* the back wall of roots, and the two side walls */}
       <Vox kind="log" position={[0, 2.2, -3.2]} size={[11, 5.4, 1.2]} tint="#4a3524" />
       {[-1, 1].map((s) => (
@@ -86,7 +88,6 @@ const Den: React.FC = () => {
         />
       ))}
       {/* the hole of a door, with the night outside it */}
-      <Vox kind="grass" position={[3.4, 0.01, 3.4]} size={[3.2, 0.06, 2.4]} />
       <Glow position={[3.4, 0.6, 3.6]} size={1.5} color="#7f8fd0" opacity={0.3} />
       <LightPool position={[0.4, 0.05, 1.2]} width={7} depth={5} color="#ffd9a0" opacity={0.22} />
       {/* the light that comes in with the camera, so the pile and the faces are readable in the dark */}

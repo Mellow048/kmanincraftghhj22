@@ -23,7 +23,7 @@ const Pile: React.FC<{ reveal?: number }> = ({ reveal = 0 }) => (
       [1.2, -0.9],
     ].map(([x, z], i) => (
       <group key={i} visible={reveal > i / 5}>
-        <Berries position={den(x + 0.28, 0.01, z + 0.22)} scale={0.7} count={1} />
+        <Berries position={den(x + 0.24, 0.01, z + 0.52)} scale={1.3} count={1} />
       </group>
     ))}
   </group>
@@ -81,7 +81,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "11.count",
-      ...cam.truck({ on: [-1.0, 0.16, 58.95], by: [3.2, 0, 0.3], dist: 2.4, yaw: 24, pitch: 26, fov: 38 }),
+      ...cam.truck({ on: [-2.35, 0.18, 58.85], by: [3.4, 0, 0.05], dist: 2.9, yaw: 0, pitch: 20, fov: 46, screenOffset: [0, 0.14] }),
       zone: "den",
       look: "overworld-sunset",
       note: "'One berry under every single thing we ever took': track along the floor while the things pass in the top of the frame, and the berries pass underneath. One movement, one line, five berries, and the arithmetic is done for the audience.",
