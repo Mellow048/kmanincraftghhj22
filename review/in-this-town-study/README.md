@@ -1319,7 +1319,7 @@ Read one of his outlines cold and the shape is unmistakable:
   how to pitch to him: a five-row comparison table with *who tells it · what he wants · what is in the way · the turn
   (a Minecraft fact) · how it feels · are there players*, then each idea as a pull-quote opening, **frame one** in
   words, the story, the facts, **why it could travel**, **to build** (with an honest size), **the risk** — and a
-  stated agent's order with reasons. Two of its five were built (§16: `my-brother-got-bitten`, `i-had-never-seen-the-sun`).
+  stated agent's order with reasons. Two of its five were built: idea 1 as `my-brother-got-bitten` and idea 3 as `i-had-never-seen-the-sun` (§16).
 
 ## 21.5 Where the study ends
 
