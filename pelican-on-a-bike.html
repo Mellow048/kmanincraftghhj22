@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pelican on a Bike — Boardwalk, 6:42pm</title>
+<style>
+  :root {
+    --sky-1: #ffe2b8;
+    --sky-2: #ffbe8b;
+    --sky-3: #ff9a74;
+    --sea-1: #35788f;
+    --sea-2: #1c5265;
+    --deck: #bb8a5c;
+    --deck-dark: #94663f;
+    --ink: #3a2318;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 50% 0%, #2a1a14 0%, #150d0a 55%, #0b0706 100%);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 2vmin;
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes float {
+    from { transform: translateY(-6px); }
+    to   { transform: translateY(6px); }
+  }
+
+  .frame {
+    width: min(1200px, 96vw);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+      0 40px 90px -30px rgba(0, 0, 0, 0.85),
+      0 0 0 1px rgba(255, 226, 184, 0.12),
+      0 0 90px -30px rgba(255, 170, 110, 0.45);
+  }
+
+  svg { display: block; width: 100%; height: auto; }
+
+  /* ── the world moves under him ─────────────────────────────── */
+
+  .planks   { animation: roll 1.05s linear infinite; }
+  .posts    { animation: roll 2.1s linear infinite; }
+  .glitter  { animation: glitter 3.6s ease-in-out infinite alternate; }
+  .sun-glow { animation: breathe 7s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+
+  @keyframes roll {
+    to { transform: translateX(-80px); }
+  }
+
+  @keyframes roll-post {
+    to { transform: translateX(-150px); }
+  }
+
+  @keyframes glitter {
+    from { opacity: 0.28; }
+    to   { opacity: 0.62; }
+  }
+
+  @keyframes breathe {
+    from { transform: scale(0.96); opacity: 0.75; }
+    to   { transform: scale(1.04); opacity: 0.95; }
+  }
+
+  /* the deck posts tile at 150px, not 80 */
+  .posts { animation-name: roll-post; }
+
+  .cloud-a { animation: drift 46s linear infinite; }
+  .cloud-b { animation: drift 68s linear infinite; }
+  .gull-1  { animation: bob-gull 5.5s ease-in-out infinite alternate; }
+  .gull-2  { animation: bob-gull 7.2s ease-in-out infinite alternate; }
+  .gull-3  { animation: bob-gull 6.1s ease-in-out infinite alternate; }
+
+  @keyframes drift {
+    from { transform: translateX(0); }
+    to   { transform: translateX(340px); }
+  }
+
+  @keyframes bob-gull {
+    from { transform: translateY(-7px); }
+    to   { transform: translateY(7px); }
+  }
+
+  /* ── he rides ─────────────────────────────────────────────── */
+
+  .rig    { animation: bob 1.15s ease-in-out infinite alternate; }
+  .head   { animation: nod 2.3s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 30% 90%; }
+  .pouch  { animation: jiggle 0.78s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 6% 10%; }
+  .scarf-1{ animation: flap 0.44s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 96% 40%; }
+  .scarf-2{ animation: flap2 0.57s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 96% 40%; }
+  .fish   { animation: flip 0.62s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 20% 95%; }
+  .lid    { animation: blink 4.4s steps(1, end) infinite; transform-box: fill-box; transform-origin: center; }
+  .dust   { animation: puff 0.95s linear infinite; }
+  .dust-2 { animation-delay: 0.31s; }
+  .dust-3 { animation-delay: 0.62s; }
+
+  @keyframes bob {
+    from { transform: translateY(-2.5px); }
+    to   { transform: translateY(2.5px); }
+  }
+
+  @keyframes nod {
+    from { transform: translateY(2px) rotate(-1.2deg); }
+    to   { transform: translateY(-1px) rotate(1.4deg); }
+  }
+
+  @keyframes jiggle {
+    from { transform: scaleY(0.985) translateY(1px); }
+    to   { transform: scaleY(1.018) translateY(-1px); }
+  }
+
+  @keyframes flap {
+    from { transform: rotate(-9deg); }
+    to   { transform: rotate(11deg); }
+  }
+
+  @keyframes flap2 {
+    from { transform: rotate(7deg); }
+    to   { transform: rotate(-12deg); }
+  }
+
+  @keyframes flip {
+    from { transform: rotate(-13deg); }
+    to   { transform: rotate(9deg); }
+  }
+
+  @keyframes blink {
+    0%, 94%, 100% { transform: scaleY(0); }
+    95%, 98%      { transform: scaleY(1); }
+  }
+
+  @keyframes puff {
+    0%   { opacity: 0;    transform: translate(0, 0) scale(0.5); }
+    22%  { opacity: 0.55; }
+    100% { opacity: 0;    transform: translate(-74px, -16px) scale(1.7); }
+  }
+
+  .label {
+    font-size: 15px;
+    letter-spacing: 0.32em;
+    fill: #4a2c1c;
+    opacity: 0.55;
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .planks, .posts, .glitter, .sun-glow, .cloud-a, .cloud-b,
+    .gull-1, .gull-2, .gull-3, .rig, .head, .pouch, .scarf-1,
+    .scarf-2, .fish, .dust, .float { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="float">
+<div class="frame">
+<svg viewBox="0 0 1200 750" role="img" aria-label="A pelican in a teal scarf pedalling a red bicycle along a seaside boardwalk at sunset, with a basket of fish on the handlebars.">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#ffdcb0" />
+      <stop offset="0.45" stop-color="#ffc191" />
+      <stop offset="0.78" stop-color="#ffa87d" />
+      <stop offset="1"    stop-color="#ff9a74" />
+    </linearGradient>
+
+    <radialGradient id="sunglow">
+      <stop offset="0"   stop-color="#fff8e2" stop-opacity="0.95" />
+      <stop offset="0.4" stop-color="#ffe6ad" stop-opacity="0.45" />
+      <stop offset="1"   stop-color="#ffcf88" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#4d8ea1" />
+      <stop offset="0.5" stop-color="#2c6b82" />
+      <stop offset="1"   stop-color="#1b4f62" />
+    </linearGradient>
+
+    <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#c79563" />
+      <stop offset="0.5" stop-color="#bb8a5c" />
+      <stop offset="1"   stop-color="#a5764a" />
+    </linearGradient>
+
+    <linearGradient id="body" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0"   stop-color="#ffffff" />
+      <stop offset="0.55" stop-color="#f7f3ea" />
+      <stop offset="1"   stop-color="#e2dacb" />
+    </linearGradient>
+
+    <linearGradient id="beak" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0"   stop-color="#ffc266" />
+      <stop offset="0.7" stop-color="#f5a640" />
+      <stop offset="1"   stop-color="#e08a2c" />
+    </linearGradient>
+
+    <linearGradient id="pouchg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#ffd188" />
+      <stop offset="1"   stop-color="#ef9b3b" />
+    </linearGradient>
+
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6f4a30" />
+      <stop offset="1" stop-color="#52331f" />
+    </linearGradient>
+
+    <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.78">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0" />
+      <stop offset="1"    stop-color="#301509" stop-opacity="0.42" />
+    </radialGradient>
+
+    <radialGradient id="shadow">
+      <stop offset="0"   stop-color="#3a2318" stop-opacity="0.5" />
+      <stop offset="1"   stop-color="#3a2318" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- ───────────────────────── SKY ───────────────────────── -->
+  <rect width="1200" height="352" fill="url(#sky)" />
+  <circle class="sun-glow" cx="958" cy="188" r="150" fill="url(#sunglow)" />
+  <circle cx="958" cy="188" r="52" fill="#fff4d2" />
+
+  <g class="cloud-a" opacity="0.62" fill="#fff" fill-opacity="0.85">
+    <ellipse cx="240" cy="118" rx="76" ry="20" />
+    <ellipse cx="292" cy="104" rx="46" ry="17" />
+    <ellipse cx="196" cy="108" rx="38" ry="14" />
+  </g>
+  <g class="cloud-b" opacity="0.5" fill="#fff" fill-opacity="0.75">
+    <ellipse cx="740" cy="86" rx="96" ry="17" />
+    <ellipse cx="796" cy="74" rx="48" ry="13" />
+  </g>
+
+  <g class="gull-1" stroke="#7c4730" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8">
+    <path d="M180 214 q14 -11 27 0 M207 214 q14 -11 27 0" />
+  </g>
+  <g class="gull-2" stroke="#7c4730" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.62">
+    <path d="M432 158 q11 -9 21 0 M453 158 q11 -9 21 0" />
+  </g>
+  <g class="gull-3" stroke="#7c4730" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5">
+    <path d="M868 132 q9 -7 17 0 M885 132 q9 -7 17 0" />
+  </g>
+
+  <!-- ───────────────────────── SEA ───────────────────────── -->
+  <rect y="340" width="1200" height="150" fill="url(#sea)" />
+  <path d="M0 341 q60 -7 120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0"
+        fill="none" stroke="#ffe0b0" stroke-width="2.5" opacity="0.55" />
+  <g class="glitter" stroke="#ffe9c4" stroke-width="3" stroke-linecap="round" opacity="0.5">
+    <path d="M900 368 h58 M840 386 h92 M910 404 h44 M866 424 h66 M922 442 h52 M872 460 h38" />
+  </g>
+  <path d="M0 470 q150 16 300 0 q150 -16 300 0 q150 16 300 0 q150 -16 300 0 v30 H0 Z" fill="#20596e" opacity="0.75" />
+
+  <!-- ───────────────────── BOARDWALK: DECK ───────────────────── -->
+  <rect y="486" width="1200" height="264" fill="url(#deck)" />
+  <rect y="486" width="1200" height="12" fill="#8c6039" />
+
+  <g class="planks" stroke="#94663f" stroke-width="3" opacity="0.55">
+    <path d="M-160 498 V750 M-80 498 V750 M0 498 V750 M80 498 V750 M160 498 V750 M240 498 V750
+             M320 498 V750 M400 498 V750 M480 498 V750 M560 498 V750 M640 498 V750 M720 498 V750
+             M800 498 V750 M880 498 V750 M960 498 V750 M1040 498 V750 M1120 498 V750 M1200 498 V750
+             M1280 498 V750 M1360 498 V750" />
+  </g>
+  <g class="planks" stroke="#d3a777" stroke-width="1.5" opacity="0.35">
+    <path d="M-150 512 V750 M-70 512 V750 M10 512 V750 M90 512 V750 M170 512 V750 M250 512 V750
+             M330 512 V750 M410 512 V750 M490 512 V750 M570 512 V750 M650 512 V750 M730 512 V750
+             M810 512 V750 M890 512 V750 M970 512 V750 M1050 512 V750 M1130 512 V750 M1210 512 V750" />
+  </g>
+
+  <!-- ───────────────────── RAILING (behind) ───────────────────── -->
+  <g fill="url(#rail)">
+    <rect x="-40" y="404" width="1280" height="11" rx="5" />
+    <rect x="-40" y="452" width="1280" height="8" rx="4" opacity="0.85" />
+  </g>
+  <g class="posts" fill="url(#rail)">
+    <rect x="40"   y="396" width="15" height="86" rx="4" /><rect x="190"  y="396" width="15" height="86" rx="4" />
+    <rect x="340"  y="396" width="15" height="86" rx="4" /><rect x="490"  y="396" width="15" height="86" rx="4" />
+    <rect x="640"  y="396" width="15" height="86" rx="4" /><rect x="790"  y="396" width="15" height="86" rx="4" />
+    <rect x="940"  y="396" width="15" height="86" rx="4" /><rect x="1090" y="396" width="15" height="86" rx="4" />
+    <rect x="1240" y="396" width="15" height="86" rx="4" /><rect x="-110" y="396" width="15" height="86" rx="4" />
+  </g>
+  <g fill="#e8d3b6" opacity="0.75">
+    <rect x="36"   y="390" width="23" height="9" rx="4" /><rect x="186"  y="390" width="23" height="9" rx="4" />
+    <rect x="336"  y="390" width="23" height="9" rx="4" /><rect x="486"  y="390" width="23" height="9" rx="4" />
+    <rect x="636"  y="390" width="23" height="9" rx="4" /><rect x="786"  y="390" width="23" height="9" rx="4" />
+    <rect x="936"  y="390" width="23" height="9" rx="4" /><rect x="1086" y="390" width="23" height="9" rx="4" />
+  </g>
+
+  <!-- contact shadow -->
+  <ellipse cx="600" cy="628" rx="250" ry="26" fill="url(#shadow)" />
+
+  <!-- ═════════════════════ THE RIG ═════════════════════ -->
+  <g class="rig">
+
+    <!-- dust behind the back wheel -->
+    <g fill="#e8d3b6">
+      <circle class="dust"         cx="392" cy="606" r="9" />
+      <circle class="dust dust-2"  cx="386" cy="614" r="7" />
+      <circle class="dust dust-3"  cx="396" cy="598" r="6" />
+    </g>
+
+    <!-- ── rear wheel ── -->
+    <g>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 455 548" to="360 455 548" dur="1.15s" repeatCount="indefinite" />
+        <circle cx="455" cy="548" r="78" fill="none" stroke="#2b2724" stroke-width="11" />
+        <circle cx="455" cy="548" r="70" fill="none" stroke="#d9cbb4" stroke-width="4" opacity="0.9" />
+        <g stroke="#b9a98f" stroke-width="2.4" opacity="0.95">
+          <path d="M455 478 V618 M385 548 H525 M406 499 L504 597 M504 499 L406 597
+                   M430 483 L480 613 M480 483 L430 613 M392 520 L518 576 M518 520 L392 576" />
+        </g>
+        <circle cx="455" cy="548" r="8" fill="#8d7a5f" />
+      </g>
+    </g>
+
+    <!-- ── front wheel ── -->
+    <g>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 748 548" to="360 748 548" dur="1.15s" repeatCount="indefinite" />
+        <circle cx="748" cy="548" r="78" fill="none" stroke="#2b2724" stroke-width="11" />
+        <circle cx="748" cy="548" r="70" fill="none" stroke="#d9cbb4" stroke-width="4" opacity="0.9" />
+        <g stroke="#b9a98f" stroke-width="2.4" opacity="0.95">
+          <path d="M748 478 V618 M678 548 H818 M699 499 L797 597 M797 499 L699 597
+                   M723 483 L773 613 M773 483 L723 613 M685 520 L811 576 M811 520 L685 576" />
+        </g>
+        <circle cx="748" cy="548" r="8" fill="#8d7a5f" />
+      </g>
+    </g>
+
+    <!-- ── frame ── -->
+    <g stroke="#1f6f78" stroke-width="13" stroke-linecap="round" fill="none">
+      <path d="M455 548 L600 560" />           <!-- chainstay -->
+      <path d="M455 548 L528 456" />           <!-- seat stay -->
+      <path d="M528 456 L604 556" />           <!-- seat tube -->
+      <path d="M604 556 L706 436" />           <!-- down tube -->
+      <path d="M528 456 L704 432" />           <!-- top tube -->
+      <path d="M706 436 L748 548" />           <!-- fork -->
+    </g>
+    <g stroke="#e3564f" stroke-width="4" opacity="0.55" fill="none">
+      <path d="M528 456 L704 432" />
+    </g>
+
+    <!-- saddle -->
+    <g>
+      <path d="M500 452 q28 -14 56 -2 q6 12 -10 15 q-26 4 -48 -3 Z" fill="#57392a" />
+      <rect x="524" y="462" width="10" height="8" fill="#3d271c" />
+    </g>
+
+    <!-- handlebar + stem -->
+    <g stroke="#1f6f78" stroke-width="10" stroke-linecap="round" fill="none">
+      <path d="M706 436 L700 408" />
+      <path d="M700 408 q-26 -14 -50 -4" />
+    </g>
+    <path d="M652 404 q-10 8 -2 17 q16 8 30 -2" fill="#2b2724" opacity="0.9" />
+
+    <!-- chainring + chain -->
+    <circle cx="600" cy="560" r="23" fill="none" stroke="#4c4740" stroke-width="6" />
+    <circle cx="455" cy="548" r="11" fill="none" stroke="#4c4740" stroke-width="5" />
+    <g stroke="#4c4740" stroke-width="3" opacity="0.9">
+      <path d="M600 537 L455 537 M600 583 L455 559" />
+    </g>
+
+    <!-- ── crank + pedals (this is what the feet hang on) ── -->
+    <g>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 600 560" to="360 600 560" dur="2.3s" repeatCount="indefinite" />
+        <rect x="594" y="556" width="50" height="9" rx="4" fill="#3f3a34" transform="rotate(28 600 560)" />
+        <g transform="rotate(28 600 560) translate(648 560)"><rect x="-12" y="-5" width="24" height="10" rx="4" fill="#2b2724" /></g>
+        <g transform="rotate(208 600 560) translate(648 560)"><rect x="-12" y="-5" width="24" height="10" rx="4" fill="#2b2724" /></g>
+      </g>
+    </g>
+
+    <!-- far leg -->
+    <g stroke="#c2752c" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.92">
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="14 556 442" to="-14 556 442" dur="2.3s" repeatCount="indefinite" />
+        <path d="M556 442 L590 492" />
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="-20 590 492" to="20 590 492" dur="2.3s" repeatCount="indefinite" />
+          <path d="M590 492 L612 534" />
+        </g>
+      </g>
+    </g>
+
+    <!-- near leg -->
+    <g stroke="#e8933f" stroke-width="13" stroke-linecap="round" fill="none">
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="-14 566 446" to="14 566 446" dur="2.3s" repeatCount="indefinite" />
+        <path d="M566 446 L600 496" />
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="20 600 496" to="-20 600 496" dur="2.3s" repeatCount="indefinite" />
+          <path d="M600 496 L622 538" />
+        </g>
+      </g>
+    </g>
+
+    <!-- feet, riding the pedals exactly -->
+    <g>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 600 560" to="360 600 560" dur="2.3s" repeatCount="indefinite" />
+        <g transform="rotate(28 600 560) translate(648 560)">
+          <path d="M-11 -14 q15 -6 19 4 q3 10 -11 11 q-13 2 -8 -15 Z" fill="#e8933f" />
+        </g>
+      </g>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="180 600 560" to="540 600 560" dur="2.3s" repeatCount="indefinite" />
+        <g transform="rotate(28 600 560) translate(648 560)">
+          <path d="M-11 -14 q15 -6 19 4 q3 10 -11 11 q-13 2 -8 -15 Z" fill="#c2752c" />
+        </g>
+      </g>
+    </g>
+
+    <!-- tail -->
+    <path d="M470 396 q-38 -14 -58 4 q10 22 34 26 q18 4 24 -30 Z" fill="#e7dfd0" />
+
+    <!-- ── body ── -->
+    <g transform="rotate(-8 556 404)">
+      <ellipse cx="556" cy="404" rx="84" ry="64" fill="url(#body)" />
+      <path d="M484 424 q44 32 108 16 q-28 32 -78 24 q-26 -6 -30 -40 Z" fill="#e9e0d0" opacity="0.85" />
+      <path d="M596 356 q-60 8 -96 52 q28 26 78 18 q34 -8 48 -42 q-10 -22 -30 -28 Z" fill="#f4eee2" stroke="#e2d7c2" stroke-width="2.5" stroke-linejoin="round" />
+      <g stroke="#d8cdb9" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.9">
+        <path d="M588 370 q-44 10 -72 40 M576 394 q-34 8 -56 26 M570 414 q-24 4 -40 14" />
+      </g>
+      <path d="M596 356 q-52 6 -88 46 q24 16 56 10 q30 -6 42 -34 Z" fill="#ffffff" opacity="0.3" />
+    </g>
+
+    <!-- ── neck, drawn in front of the body so it reads as a neck ── -->
+    <path d="M574 366 q10 -48 52 -84 q22 -18 44 -6 q18 12 2 30 q-30 26 -40 66 Z" fill="url(#body)" />
+    <path d="M574 366 q6 -34 30 -60" stroke="#ded3bf" stroke-width="3" fill="none" opacity="0.55" stroke-linecap="round" />
+    <path d="M586 372 q14 -40 48 -70" stroke="#e9e0d0" stroke-width="3" fill="none" opacity="0.7" />
+
+    <!-- ── scarf: coral, so it does not disappear into the sea ── -->
+    <g>
+      <path d="M566 348 q46 -26 84 -10 q-6 24 -36 26 q-30 2 -48 -16 Z" fill="#d4513f" />
+      <path class="scarf-1" d="M568 350 q-52 -12 -92 8 l7 13 q40 -16 83 -8 Z" fill="#e2604f" />
+      <path class="scarf-2" d="M572 362 q-42 10 -68 38 l10 10 q28 -24 64 -32 Z" fill="#d4513f" opacity="0.95" />
+      <path d="M568 350 q-52 -12 -92 8" stroke="#f08b7a" stroke-width="2.2" fill="none" opacity="0.7" />
+    </g>
+
+    <!-- ── head ── -->
+    <g class="head">
+      <!-- crest: two feathers, outlined so they survive a white sky -->
+      <path d="M658 204 q-20 -16 -10 -28 q12 -12 26 2 q12 14 4 26 Z" fill="#e7dcc6" stroke="#c9b998" stroke-width="2.5" />
+      <path d="M668 198 q-12 -14 -4 -22 q10 -8 18 4 q6 12 0 20 Z" fill="#ffffff" opacity="0.9" />
+
+      <ellipse cx="688" cy="236" rx="40" ry="37" fill="url(#body)" transform="rotate(-6 688 238)" />
+      <!-- cheek + brow -->
+      <path d="M698 240 q20 2 22 15 q-2 13 -22 11 q-13 -2 -13 -13 q0 -11 13 -13 Z" fill="#f6efe0" opacity="0.9" />
+      <path d="M690 220 q16 -6 26 4" stroke="#d6c9b2" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8" />
+
+      <!-- upper mandible: a dark blade, with the hook beyond the pouch -->
+      <path d="M714 222 q88 3 154 17 q12 2 12 8 q-1 5 -12 3 q-80 -13 -154 -14 Z" fill="#dd8a2d" />
+      <path d="M876 245 q7 5 3 13 q-5 7 -9 -2 q-3 -8 6 -11 Z" fill="#c9781f" />
+      <path d="M714 234 q80 3 154 15" stroke="#b96f1c" stroke-width="1.8" fill="none" opacity="0.5" />
+
+      <!-- pouch: hangs under the blade, deepest at the throat, ends short of the tip -->
+      <g class="pouch">
+        <path d="M712 239 q78 3 144 16 q-3 8 -15 12 q-24 22 -58 25 q-42 3 -63 -21 q-15 -16 -8 -32 Z" fill="url(#pouchg)" />
+        <path d="M722 256 q62 7 112 16 M736 272 q50 12 92 8" stroke="#d9882c" stroke-width="2" fill="none" opacity="0.34" />
+      </g>
+
+      <!-- eye -->
+      <circle cx="705" cy="230" r="8" fill="#2b2724" />
+      <circle cx="707.5" cy="227" r="2.6" fill="#fff" />
+      <path class="lid" d="M694 226 a11 11 0 0 1 22 0 Z" fill="#f6efe0" />
+    </g>
+
+    <!-- rim light down the back, so he separates from the sea -->
+    <path d="M474 380 q34 -40 92 -44" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.55" stroke-linecap="round" />
+
+    <!-- ── basket of fish on the bars ── -->
+    <g>
+      <rect x="700" y="398" width="74" height="48" rx="8" fill="#b07c46" />
+      <g stroke="#8d5f33" stroke-width="3" opacity="0.8">
+        <path d="M708 410 H766 M708 424 H766 M708 438 H766 M722 400 V446 M748 400 V446" />
+      </g>
+      <rect x="696" y="392" width="82" height="9" rx="4" fill="#8d5f33" />
+
+      <g class="fish">
+        <path d="M716 396 q-3 -30 12 -34 q11 -3 11 9 q0 19 -11 25 Z" fill="#c3d1de" />
+        <path d="M737 356 l15 -8 -4 14 Z" fill="#a9bacb" />
+        <path d="M720 372 q7 4 7 11" stroke="#9fb0c2" stroke-width="2.2" fill="none" />
+        <circle cx="722" cy="374" r="2.7" fill="#33404c" />
+      </g>
+      <g class="fish" style="animation-delay:0.28s">
+        <path d="M704 396 q-6 -24 6 -28 q10 -3 10 8 q0 15 -8 20 Z" fill="#d5e0e9" />
+        <path d="M718 366 l12 -6 -3 11 Z" fill="#bccbda" />
+        <circle cx="709" cy="378" r="2.3" fill="#33404c" />
+      </g>
+    </g>
+
+    <!-- bell + front lamp -->
+    <circle cx="676" cy="400" r="7" fill="#d9cbb4" />
+    <circle cx="676" cy="398" r="3.4" fill="#9c8a6d" />
+    <circle cx="748" cy="470" r="8" fill="#ffe6a8" opacity="0.95" />
+
+    <!-- front mudguard highlight -->
+    <path d="M700 486 a78 78 0 0 1 92 22" stroke="#e8dcc6" stroke-width="5" fill="none" opacity="0.5" />
+  </g>
+
+  <!-- ───────────────────────── FOREGROUND ───────────────────────── -->
+  <rect y="486" width="1200" height="264" fill="url(#vignette)" />
+  <text class="label" x="42" y="712">PELICAN · BOARDWALK · 6:42 PM</text>
+</svg>
+</div>
+</div>
+</body>
+</html>
