@@ -20,9 +20,11 @@ const LADDER_X = PLACE.firstStep[0];
 /** The mountain: a wall of stone at the north end, with a ladder on its face and steps cut into the rock. */
 const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
   <group>
-    <Vox kind="stone" position={[0, 12, -36]} size={[104, 24, 8]} tile={3} />
-    <Vox kind="mossy" position={[0, 23.6, -36]} size={[104, 0.8, 8]} tile={2} />
-    <Vox kind="grass" position={[0, 24.6, -40]} size={[104, 1.0, 12]} tile={3} />
+    <Vox kind="stone" position={[0, 6.5, -36]} size={[104, 13, 8]} tile={3} />
+    <Vox kind="stone" position={[-6, 17, -47]} size={[86, 30, 10]} tile={5} />
+    <Vox kind="mossy" position={[-6, 32.4, -47]} size={[86, 1.2, 10]} tile={3} />
+    <Vox kind="mossy" position={[0, 13.2, -36]} size={[104, 0.8, 8]} tile={2} />
+    <Vox kind="grass" position={[0, 13.8, -40]} size={[104, 1.0, 12]} tile={3} />
     <Vox kind="mossy" position={[0, 0.4, -32.2]} size={[104, 1.2, 2.6]} tile={2} />
     {/* the mountain proper: a long way off, so it is a shape with sky over it, not a wall behind the town */}
     <Vox kind="stone" position={[-46, 15, -150]} size={[120, 30, 30]} tile={10} />
@@ -31,16 +33,16 @@ const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
     <Vox kind="stone" position={[-46, 38, -150]} size={[40, 16, 22]} tile={8} />
     <Vox kind="wool" tint="#f2f6ff" position={[-46, 47.5, -150]} size={[28, 3, 18]} tile={5} />
     {/* the ledge the rich kid stands on, a third of the way up */}
-    <Vox kind="stoneBrick" position={[6.4, 9.0, -31.6]} size={[7.5, 0.5, 3.0]} />
-    <Vox kind="stoneBrick" position={[-8.5, 15.0, -31.6]} size={[6.0, 0.5, 3.0]} />
+    <Vox kind="stoneBrick" position={[6.4, 5.6, -31.6]} size={[6.0, 0.4, 2.4]} />
+    <Vox kind="stoneBrick" position={[-7.5, 9.4, -31.6]} size={[5.0, 0.4, 2.4]} />
     {/* the ladder: rails and rungs, going up out of the top of frame */}
-    <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 11.6, -31.9]} size={[0.12, 23.2, 0.12]} />
-    <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 11.6, -31.9]} size={[0.12, 23.2, 0.12]} />
-    {Array.from({ length: 22 }, (_, i) => (
+    <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 6.6, -31.9]} size={[0.12, 13.2, 0.12]} />
+    <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 6.6, -31.9]} size={[0.12, 13.2, 0.12]} />
+    {Array.from({ length: 12 }, (_, i) => (
       <Vox key={i} kind="darkPlanks" position={[LADDER_X, 0.9 + i * 1.02, -31.9]} size={[0.9, 0.1, 0.1]} castShadow={false} />
     ))}
     {/* steps cut into the rock at the foot: the first twenty of nine thousand */}
-    {Array.from({ length: 22 }, (_, i) => (
+    {Array.from({ length: 12 }, (_, i) => (
       <Vox key={`s${i}`} kind="cobble" position={[LADDER_X, 0.25 + i * 0.5, -11 - i * 0.9]} size={[2.6, 0.5, 1.0]} />
     ))}
     <Torch position={[LADDER_X + 1.9, 0, -10.6]} light={lit} seed={7} />

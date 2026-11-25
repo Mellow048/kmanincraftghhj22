@@ -13,7 +13,7 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [0, 1.2, 8.6], dist: 17.5, to: 14.6, yaw: 3, pitch: 6, fov: 46 }),
+      ...cam.push({ on: [0, 2.4, 8.6], dist: 30, to: 26, yaw: 3, pitch: 10, fov: 48 }),
       ease: "linear" as const,
       zone: "bottom",
       look: "overworld-day",
@@ -35,15 +35,15 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.above",
-      ...cam.push({ on: [6.4, 9.6, -31.6], dist: 15, to: 12.6, yaw: -8, pitch: 6, fov: 40 }),
+      ...cam.push({ on: [6.4, 6.2, -31.6], dist: 15, to: 12.6, yaw: -8, pitch: 6, fov: 40 }),
       zone: "bottom",
       look: "overworld-golden",
       note: "On 'up there', cut to the ledge a third of the way up the mountain: three people in clean clothes in full sun, and the town a long way below them in shadow.",
       stage: () => (
         <>
-          <RichKid position={[5.6, 9.25, -31.2]} rotationY={0.2} animation="idle" face="blank" />
-          <RichKid position={[7.4, 9.25, -31.4]} rotationY={-0.3} animation="idle" face="smug" />
-          <Villager position={[6.5, 9.25, -32.0]} rotationY={0.1} robe="#f2f2ee" hat="none" />
+          <RichKid position={[5.6, 5.85, -31.2]} rotationY={0.2} animation="idle" face="blank" />
+          <RichKid position={[7.4, 5.85, -31.4]} rotationY={-0.3} animation="idle" face="smug" />
+          <Villager position={[6.5, 5.85, -32.0]} rotationY={0.1} robe="#f2f2ee" hat="none" />
         </>
       ),
     },
@@ -56,7 +56,7 @@ export const scene1 = storyScene(timing, {
       note: "Round to his face with the mountain behind it. On 'join them' he tips his head back at the top and the rod dips, forgotten.",
       stage: (t) => (
         <>
-          <Hero position={[0, 0.5, 10]} rotationY={NORTH} animation="idle" headPitch={-0.45} face={t > 1.1 ? "smile" : "neutral"} lookAt={[6, 30, -31]} />
+          <Hero position={[0, 0.5, 10]} rotationY={NORTH} animation="idle" headPitch={-0.45} face={t > 1.1 ? "smile" : "neutral"} lookAt={[6, 12, -31]} />
           <Rod position={[0.35, 0.95, 9.9]} rotationY={0.1} bend={0.55} />
         </>
       ),

@@ -35,10 +35,10 @@ export const scene4 = storyScene(timing, {
       note: "Tilt up from the town to the ledge: the shot looks past four people at a group in clean clothes who do not look back. Nobody down here is even in their frame.",
       stage: () => (
         <>
-          <Hero position={[0, 0.5, 10]} rotationY={SOUTH} animation="idle" headPitch={-0.5} face="neutral" lookAt={[6, 9.4, -31]} />
+          <Hero position={[0, 0.5, 10]} rotationY={SOUTH} animation="idle" headPitch={-0.5} face="neutral" lookAt={[6, 6.0, -31]} />
           <Villager position={[-1.2, 0.5, 9.4]} rotationY={NORTH} />
-          <RichKid position={[6.2, 9.25, -31.4]} rotationY={NORTH} animation="idle" face="blank" />
-          <RichKid position={[7.2, 9.25, -31.6]} rotationY={NORTH} animation="idle" face="blank" />
+          <RichKid position={[6.2, 5.85, -31.4]} rotationY={NORTH} animation="idle" face="blank" />
+          <RichKid position={[7.2, 5.85, -31.6]} rotationY={NORTH} animation="idle" face="blank" />
         </>
       ),
     },
@@ -55,7 +55,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Coin position={[0.5, y, 11.2]} spin={t * 9} />
             <Hero position={[0, 0.5, 10.6]} rotationY={SOUTH} animation="idle" face={t > 1.2 ? "surprised" : "neutral"} headPitch={t > 1.2 ? 0.4 : -0.2} lookAt={[0.5, Math.max(0.1, y), 11.2]} />
-            <RichKid position={[6.0, 9.25, -31.3]} rotationY={SOUTH} animation="wave" />
+            <RichKid position={[6.0, 5.85, -31.3]} rotationY={SOUTH} animation="wave" />
           </>
         );
       },

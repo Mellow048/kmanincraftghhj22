@@ -40,16 +40,16 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.two",
-      ...cam.push({ on: [6.2, 9.9, -31.4], dist: 7.4, to: 6.0, yaw: -6, pitch: 4, fov: 40 }),
+      ...cam.push({ on: [6.2, 6.2, -31.4], dist: 7.4, to: 6.0, yaw: -6, pitch: 4, fov: 40 }),
       zone: "bottom",
       look: "overworld-golden",
       note: "Two families on their own step up on the ledge, waving down at people they left behind six years ago. They wave at a town they cannot see well enough to name.",
       stage: (t) => (
         <>
-          <Villager position={[5.4, 9.25, -31.4]} rotationY={SOUTH} hat="straw" hmm={0} />
-          <Villager position={[6.2, 9.25, -31.2]} rotationY={SOUTH} kid />
-          <Villager position={[7.1, 9.25, -31.5]} rotationY={SOUTH} robe="#7a5a44" />
-          <Villager position={[7.8, 9.25, -31.3]} rotationY={SOUTH} kid />
+          <Villager position={[5.4, 5.85, -31.4]} rotationY={SOUTH} hat="straw" hmm={0} />
+          <Villager position={[6.2, 5.85, -31.2]} rotationY={SOUTH} kid />
+          <Villager position={[7.1, 5.85, -31.5]} rotationY={SOUTH} robe="#7a5a44" />
+          <Villager position={[7.8, 5.85, -31.3]} rotationY={SOUTH} kid />
         </>
       ),
     },

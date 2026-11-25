@@ -86,13 +86,13 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.up",
-      ...cam.push({ on: [6.4, 9.9, -31.4], dist: 6.2, to: 5.4, yaw: 6, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [6.4, 6.2, -31.4], dist: 6.2, to: 5.4, yaw: 6, pitch: 2, fov: 38 }),
       zone: "bottom",
       look: "overworld-golden",
       note: "Up on the ledge, the same bucket, the same fish, and a clean white cuff taking it. Ten emeralds, and nobody down there will ever see this board.",
       stage: () => (
         <>
-          <Keeper position={[6.4, 9.25, -31.8]} rotationY={SOUTH} animation="idle" face="blank" />
+          <Keeper position={[6.4, 5.85, -31.8]} rotationY={SOUTH} animation="idle" face="blank" />
           <Bucket position={[5.5, 9.5, -31.2]} scale={0.9} />
           <FishPile position={[5.4, 9.5, -31.2]} n={4} seed={7} />
         </>

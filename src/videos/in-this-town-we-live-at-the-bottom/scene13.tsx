@@ -31,23 +31,23 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.night",
-      ...cam.push({ on: [1.2, 9.2, -24], dist: 7.0, to: 6.0, yaw: -12, pitch: 6, fov: 44 }),
+      ...cam.push({ on: [1.2, 7.6, -24], dist: 7.0, to: 6.0, yaw: -12, pitch: 6, fov: 44 }),
       zone: "bottom",
       look: "overworld-night",
       note: "High on the face, a kid on a ladder in the dark, one hand and one boot visible, the rest of him in the stone's shadow. Somebody is still climbing at this hour.",
       stage: (t) => (
-        <Hero position={[1.2, 8.6, -24]} rotationY={NORTH} animation={t < 0.6 ? "reachUp" : "walk"} animDistance={t} face="blank" headPitch={-0.1} />
+        <Hero position={[1.2, 7.2, -24]} rotationY={NORTH} animation={t < 0.6 ? "reachUp" : "walk"} animDistance={t} face="blank" headPitch={-0.1} />
       ),
     },
     {
       cue: "13.small",
-      ...cam.push({ on: [1.2, 20.5, -28.4], dist: 9.0, to: 7.6, yaw: 8, pitch: -12, fov: 46 }),
+      ...cam.push({ on: [1.2, 11.4, -28.4], dist: 9.6, to: 8.2, yaw: 8, pitch: -14, fov: 46 }),
       zone: "bottom",
       look: "overworld-night",
       note: "From just under the top, looking back down: the whole town is a handful of orange lights, and the jetty is a line. On 'only lights' the mountain is bigger than the town, which is the point.",
       stage: () => (
         <>
-          <Hero position={[1.2, 19.4, -28.6]} rotationY={SOUTH} animation="idle" face="uneasy" headPitch={0.3} />
+          <Hero position={[1.2, 10.8, -28.6]} rotationY={SOUTH} animation="idle" face="uneasy" headPitch={0.3} />
         </>
       ),
     },
