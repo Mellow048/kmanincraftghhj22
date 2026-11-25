@@ -2,6 +2,11 @@ import { defineFilm } from "../../engine";
 import { timing } from "./kit";
 import { World } from "./world";
 import { scene1 } from "./scene1";
+import { scene2 } from "./scene2";
+import { scene3 } from "./scene3";
+import { scene4 } from "./scene4";
+import { scene5 } from "./scene5";
+import { scene6 } from "./scene6";
 
 /**
  * In This Town, My Family Stole Things
@@ -24,6 +29,7 @@ export const film = defineFilm({
   look: "overworld-day",
   // Remastered shader chain, per the owner's instruction of 2026-11-17: `true` keeps the cinematic defaults.
   post: { shaders: true },
+  audio: { src: "audio/in-this-town-my-family-stole-things/mix.mp3" },
   // Sound, in two steps. Add the line when its file exists:
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/in-this-town-my-family-stole-things/narration.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/in-this-town-my-family-stole-things/mix.mp3" },
@@ -38,5 +44,5 @@ export const film = defineFilm({
     dangerWords: ["DOGS", "NOON", "RAN", "WORST"],
   },
   World,
-  scenes: [scene1],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6],
 });

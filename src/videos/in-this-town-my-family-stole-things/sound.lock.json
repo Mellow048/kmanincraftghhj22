@@ -1,0 +1,140 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-my-family-stole-things",
+  "mix": "public/audio/in-this-town-my-family-stole-things/mix.mp3",
+  "seconds": 113.486,
+  "built_from": {
+    "timing.json": "ee4b063edfd745cf46b00256ff9399e78febc28d",
+    "sound.json": "0cf0a59bd19fe2bab17e12c7734677ca80714d84",
+    "narration.mp3": "2dff13554f6f18cacc63b41f91406356e7002352"
+  },
+  "mix_sha1": "1ade0dfd7a87e9f910ab69436cd582ff33d36a06",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.why",
+      "mood": "explain",
+      "at": 6.55
+    },
+    {
+      "from": "4.night",
+      "mood": "sneak",
+      "at": 20.69
+    },
+    {
+      "from": "6.hedge",
+      "mood": "sad",
+      "at": 38.3
+    },
+    {
+      "from": "8.walk",
+      "mood": "tense",
+      "at": 57.92
+    },
+    {
+      "from": "9.drop",
+      "mood": "curious",
+      "at": 71.0
+    },
+    {
+      "from": "11.corner",
+      "mood": "dark",
+      "at": 80.35
+    },
+    {
+      "from": "12.flower",
+      "mood": "hope",
+      "at": 99.27
+    },
+    {
+      "from": "13.berry",
+      "mood": "none",
+      "at": 103.53
+    },
+    {
+      "from": "13.only",
+      "mood": "hope",
+      "at": 108.87
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 4,
+  "measured": {
+    "musicUnderVoiceDb": 17.7,
+    "secondsWithoutMusic": 5.5,
+    "bedsUnderVoiceDb": 26.5,
+    "sfx": 78,
+    "sfxPerMinute": 41.2,
+    "sfxKinds": 32,
+    "longestGapSeconds": 3.8,
+    "longestGapAt": 51.7,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.4,
+    "voiceOverRestWorstDb": 5.9,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.9,
+        "t": 28.6,
+        "cue": "4.width",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 93.8,
+        "cue": "12.none",
+        "sounding": [
+          "coin",
+          "coins",
+          "sting"
+        ]
+      },
+      {
+        "db": 7.4,
+        "t": 111.1,
+        "cue": "13.only",
+        "sounding": [
+          "ding",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 103.2,
+        "cue": "12.second",
+        "sounding": [
+          "chime",
+          "place"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 72.0,
+        "cue": "9.drop",
+        "sounding": [
+          "rustle"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 51.8,
+        "cue": "7.said",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}

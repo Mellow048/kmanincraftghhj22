@@ -18,5 +18,6 @@ export * from "./pillagers";
 export * from "./mansion";
 export * from "./siege";
 export * from "./catsdogs";
+export * from "./foxes";
 export * from "./creepertown";
 export * from "./endertown";
