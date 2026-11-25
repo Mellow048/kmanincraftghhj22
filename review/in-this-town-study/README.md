@@ -821,3 +821,163 @@ second. Its own grammar, from the file:
   city → 2.1 s **seen from behind a dark sign** → 2.6 s low-angle close as he reads it → 1.8 s **cut back to the
   bright opening wide**, now meaning the opposite → 1.4 s the button, screaming at camera with a SUBSCRIBE plaque.
   **Delay, picture, reason, and then return to the first frame.**
+
+---
+
+# 18. `WHY-IT-WORKED.md`, the outside-video study, the camera distances, and the drafts
+
+## 18.1 WHY-IT-WORKED: the audit of the 5.5k film (read this second, after `OWNER.md`)
+
+Owner's question, 2026-11-12: *"that video got me like 5.5k views on shorts… i have no idea what i did there… i need
+you to study that short and make a similar one… increase our stayed to watch to atleast above 75%."*
+
+The audit compares Monster Village (5.5k) with the shadow film that followed:
+
+| | Monster Village | Shadow film |
+|---|---|---|
+| shots / words / length | 74 / 713 / 175 s | 62 / 489 / 116 s |
+| median shot | 2.37 s | 1.83 s |
+| **places / situations** | **22 acts** | **9 scenes** |
+| **seconds per new situation** | **8.0 s** | **12.9 s** |
+
+**The single biggest machine in these films is not the cut rate — it is the rate of new situations.** 22 in 175 s
+against 9 in 116 s, at almost the same shot count and the same words a minute. The shadow film sits in one classroom
+for its first third. *The target is a new place, character, object or idea every 7–9 seconds.*
+
+The other findings, as rules:
+
+- **The first seven seconds carry four lines and two questions**, both concrete and impossible, not riddles:
+  "I was the only one who was not a monster." / "My mum was a zombie. My dad was a skeleton." / "And I was a boy
+  they found in a basket."
+- **Every world line is a rule plus a punchline in under 3.5 s**: "Our neighbour Hiss was a creeper. He loved hugs.
+  Nobody wanted one." / "The school bus was a slime. You got in. You got out wet." Two of these in a row *promise*
+  the viewer a joke every few seconds, and that promise is why they stay past ten seconds.
+- **The second character is a puzzle, not an introduction**: Mo's straw hat, scarf to the nose, sitting in the sun,
+  carrying a lantern, eating bread, sneezing — five wrong notes, four filed without comment, then "Zombies do not eat
+  bread."
+- **The teller misreads the town and the viewer gets ahead of him** ("I thought it was because I was the weak one" →
+  eight seconds later they are standing in a ring facing out). Two beats of being smarter than the narrator is what
+  makes people comment, and comments are half of what pushes a short.
+- **Nine escalations**, each bigger and faster, and **the jokes get quieter as it goes**, so the turn to violence lands.
+- **The reveal is paid for by a list**: "The bread. The lantern. The sneeze. The sun." then the re-read, "Who do you
+  think carried the basket here?" — *the cheapest, most reliable emotional hit in the form.*
+- **Comedy becomes the weapon**: a monster wins a fight with the word "Hug.", a callback to the second act.
+- **The ask works because the story is visibly unfinished** — a bigger threat and the friend turning, then "Like and
+  subscribe for part two." A promise, not a beg.
+
+**The skeleton, verbatim** (copy the skeleton, never the plot):
+
+```
+HOOK      0:00–0:07   4 shots. A contradiction, a family, the self, a mystery object.
+WORLD     0:07–0:35   6–8 shots. Rule + punchline. 2.5 s each. Places change every shot.
+FRIEND    0:35–1:05   6–8 shots. A second character built out of 3–4 wrong details.
+RULE      1:05–1:20   3 shots. A town custom the hero explains wrongly.
+BREAK     1:20–1:30   3 shots. He breaks the rule and finds out what it was really for.
+THREAT    1:30–1:55   5 shots. Outsiders arrive. Fast cuts, 1.0–1.5 s.
+BRAVE     1:55–2:10   4 shots. The hero does the one thing he was scared of.
+PRICE     2:10–2:25   4 shots. The friend pays for it. An image, not a speech.
+LIST      2:25–2:35   3 shots. The planted details, restated, then re-read.
+REVERSE   2:35–2:45   3 shots. The threat turns out to be about the friend, not the town.
+BIGGER    2:45–3:00   3 shots. A bigger threat, someone stays behind, the promise of part two.
+```
+
+→ **700–760 words, 175–185 s, 74–80 shots, 244–252 wpm, median shot 2.2–2.5 s, shortest under 1 s, longest under
+5 s, 20–24 situations.**
+
+**The 75%-retention plan**, which is a different target from "good film" and is the point of the whole exercise:
+test shorter cuts (75% of 2:55 is 2:11 of attention; 75% of 1:50 is 1:22); **a loop point** so the last line hands
+back to the first and a rewatch is a full view; **never let a shot be furniture**; the hook is an impossible fact,
+not a feeling; one question on screen at all times, planted a shot before the last is answered; front-load the
+oddest image; **cut the abstractions** — no "it was a good life", no "nobody knew why".
+
+## 18.2 The outside reference, measured (`reference for new topic/STUDY.md`)
+
+*His Dad Kept Punching The Same Tree For An HOUR..* — 67.0 s, 720×1280 (the ReadME claims 1080), 37 cuts, median
+1.79 s, **longest shot 3.5 s**, 230 words = **206 wpm**, captions on screen 97.8% of the film, luma 66.9 → 98.0 →
+97.1, 0% flat, 0% black, warmth **R−B = +80**.
+
+| | Tree video | Monster Village | our Netherite film | our Blocks film |
+|---|---|---|---|---|
+| wpm | **206** | 253 | 237 | 254 |
+| cuts/s | 0.55 | 0.40 | 0.53 | 0.57 |
+| median shot | 1.79 s | 2.33 s | 1.80 s | 1.70 s |
+| longest shot | **3.5 s** | 6.4 s | 4.6 s | 4.9 s |
+| warmth (R−B) | **+80** | +10 | +54 | +21 |
+| flat / black | 0/0 | 0/0 | 0.1/1.5 | 0/1.5 |
+
+Three gaps: **warmth** (and it *rises with the feeling*: +53 hook, +96 low point, +104 rescue), **no shot allowed to
+last** (3.5 s ceiling in 67 s, against our 4.6–4.9), and **it is spoken more slowly than we speak** — 206 wpm, so the
+pictures carry more.
+
+Two findings a description cannot give: **the hook is the darkest act** (77.6 against a 95–105 body — it opens in the
+shade and comes up into the light), and **caption density falls by two thirds at the low point** (276 → 42). The
+words thin out exactly where the music does, so the defeat is carried by the picture.
+
+Its seven transferable rules: state the impossible thing and the human stake in the first two seconds, then show how
+it works; seal the obvious objection before the viewer can ask it; one turn from comedy to feeling at about a third
+in, marked by music; **take the music out entirely for the defeat**; let the person who was laughed at become the one
+who saves it; **upgrade the goal at the end** (not "he got what he wanted" but "they got more, together"); put the
+CTA on the peak, never over the story.
+
+It also has something we have never built: **in-world dialogue as dark translucent nametag boxes above the speaker**,
+separate from the caption track.
+
+## 18.3 The camera distances that work (from `SHOTS.md` §6)
+
+**A 9:16 frame with a 40° lens sees 23° across and 40° up and down — at three metres, a picture 1.2 m wide and 2.2 m
+tall.** One person, nothing beside them. Every framing mistake in the first film came from forgetting it.
+
+| Shot | `on` | `dist` → `to` | `fov` |
+|---|---|---|---|
+| Kid's face | face, y 1.2 | 1.9 → 1.4 | 36 |
+| Kid, waist up, holding something | chest, y 1.0 | 2.1 → 1.6 | 38–40 |
+| Kid, whole body | y 1.0 | 2.4 → 1.9 | 40 |
+| Adult's face | face, y 1.85 | 1.8 → 1.3 | 36 |
+| A thing in the hands | the thing | 1.6 → 1.2, pitch 30 | 38 |
+| A thing on a table/ground | the thing | 1.4 → 1.0 | 36–38 |
+| Two people, profile | between them | 4.7 → 4.2 | 40 |
+| A golem | chest y 2.0 | 5.6, low | 42 |
+| Straight down on a bed | the bed | height 3.6 → 2.9 | 44 |
+| The street from above | the middle of it | 27 → 21, pitch 21 | 50 |
+| Something bigger than the town | its middle | 46 → 41, low | 56 |
+
+Stack, do not line up: **by depth** (near thing low, far thing over it, pitch 15–30 to spread depth up the frame),
+**by height** (put one on something — the oldest woman on a raised porch), **from above** (`cam.top` turns a floor
+into a tall picture). Keep the near person off the lens axis. Check what is straight behind a close face.
+
+**Kid faces use the story set**: `smile grin laugh frown uneasy brave fear wow ouch calm`. The older names
+(`worried`, `angry`, `sad`) were drawn for horror films — a heavy brow that reads as a threat on a child.
+
+## 18.4 The owner's own outlines (`Topics/Stories/outlines/`) and the drafts
+
+- **The race**, word for word from the owner — this is the gold standard for how he writes: one long breath, no
+  punctuation discipline, every beat concrete, and the turn is a detail he buried at the start ("you see the 1st
+  place player is wearing a familiar shoes too"). *A clue placed in the middle of a paragraph, unpaid, is his
+  signature.*
+- **`drafts/in-this-town-the-only-house-with-a-door/`** — the most complete unbuilt In This Town script in the repo,
+  and a **loop + list + misread** executed perfectly: "every house has a door, nobody uses one"; the family stands
+  with its back to the door for four hours every night; the town has no doors "so that yours is the only one";
+  the list re-reads the key, the crack, Bea counting it every morning; the last line returns to the first with one
+  change ("Except when they use mine.").
+- **`drafts/in-this-town-one-birthday-older/`** — the best *emotional* premise unbuilt: every family gives up one
+  year to keep a child alive; the empty chair is the teller's own; he is "the year". Note the plant discipline: the
+  third plate, the worn cushion, the cupboard he may not open, "a present for every year I have been alive", the
+  thirteen candles for a twelve-year-old. Button: *"Like this video if somebody spent a year on you and never once
+  mentioned it."*
+- **`drafts/my-dad-has-died-four-hundred-times/`** — built to `REFERENCE-STUDY.md`, 62 s, and it is the cleanest
+  example of the mechanic-as-debt engine: dying is free, respawn is at the bed, so **breaking the bed** is the act of
+  love. *The payoff is an action on the world's rules, not a speech.*
+- **`drafts/the-one-trip-grocery-run/PITCH.md`** — the Recreation pitch format: title / topic / length / one-paragraph
+  log-line, then a table of beats with what we see. Note "no game mechanics" holds even here.
+
+## 18.5 The topic ladder as it now stands, and what it means for me
+
+- **In This Town is the only topic with 19 measured, owner-approved films**, and it is the parent of Stories (copy)
+  and of What If (same camera). Anything I learn here is the house style.
+- **The house style in one sentence:** a concrete impossible fact in frame one, a rule with no reason, a teller who
+  misreads his own world, three to five plants paid off in a list, a reveal that is a picture and re-reads the hook,
+  and a button that belongs to the story.
+- **What I may never do, gathered from every folder:** copy a premise, sentence, joke or twist from a finished film;
+  build before the owner approves the script; fill in a finished film's outline; hold a static shot; put a 2D
+  overlay anywhere; make a 20-second version of a story; run past 178 s (or 120 s in a short cut) or under the
+  word floor; play a third film of the "one odd kid in a town of one famous mob" shape.
