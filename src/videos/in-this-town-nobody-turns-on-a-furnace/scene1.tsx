@@ -19,21 +19,21 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.town",
       ...cam.push({
-        on: [0, 1.1, 1.6],
-        dist: 4.3,
-        to: 3.4,
-        yaw: 12,
-        pitch: 9,
+        on: [0, 1.15, 0.8],
+        dist: 4.5,
+        to: 3.7,
+        yaw: 10,
+        pitch: 7,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Frame-1 Teller + Premise: Hero faces camera first while Snow Golem Dad & Mum walk behind him on sunlit grass.",
+      note: "Frame-1 Teller + Village Home: Hero faces camera with his cozy plank/blue-roof house, flower boxes, bell, and Snow Golem parents behind.",
       stage: (t) => (
         <>
-          <Hero position={[0.18, 0, 2.25]} rotationY={0.14} animation="lookAround" face="uneasy" time={t} />
-          <SnowGolem position={[-0.55, 0, 0.35]} rotationY={0.2} pumpkin walk={t * 0.45} />
-          <SnowGolem position={[0.55, 0, -0.3]} rotationY={-0.15} pumpkin walk={t * 0.45 + 0.5} />
+          <Hero position={[0.15, 0, 1.85]} rotationY={0.14} animation="lookAround" face="uneasy" time={t} />
+          <SnowGolem position={[-0.6, 0, -0.35]} rotationY={0.2} pumpkin walk={t * 0.45} />
+          <SnowGolem position={[0.55, 0, -0.95]} rotationY={-0.15} pumpkin walk={t * 0.45 + 0.5} />
         </>
       ),
     },
@@ -80,20 +80,20 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.cold",
       ...cam.push({
-        on: room(-0.25, 1.05, -1.0),
-        dist: 3.6,
-        to: 3.0,
-        yaw: 22,
-        pitch: 8,
+        on: room(-0.15, 1.05, -1.05),
+        dist: 4.1,
+        to: 3.5,
+        yaw: 14,
+        pitch: 9,
         fov: 40,
-        screenOffset: [0, 0.14],
+        screenOffset: [0, 0.06],
       }),
       zone: "room",
-      note: "Indoor kitchen shot angled left away from window whiteout: Hero shivers beside the dark unlit stone Furnace.",
+      note: "Indoor kitchen shot cleanly inside frame: upright Hero shivers beside dark unlit stone Furnace and crisp 0 HEAT popup.",
       stage: (t) => (
         <>
-          <Hero position={room(-0.48, 0, -0.45)} rotationY={0.35} animation="cower" face="uneasy" time={t} />
-          <FloatingNumber text="0 HEAT" color="#66c8ff" position={room(-0.1, 1.55, -1.7)} height={0.45 * pop(t, 0.25)} />
+          <Hero position={room(-0.42, 0, -0.5)} rotationY={0.35} animation="shrug" face="uneasy" time={t} />
+          <FloatingNumber text="0 HEAT" color="#66c8ff" position={room(0.2, 1.5, -1.65)} height={0.28 * pop(t, 0.25)} />
         </>
       ),
     },
@@ -117,20 +117,20 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.potato",
       ...cam.push({
-        on: [0.35, 1.15, 1.5],
-        dist: 3.1,
-        to: 2.55,
-        yaw: -14,
-        pitch: 8,
-        fov: 38,
-        screenOffset: [0, 0.12],
+        on: [4.5, 1.15, -1.0],
+        dist: 3.5,
+        to: 2.9,
+        yaw: -24,
+        pitch: 7,
+        fov: 40,
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Other school kids happily enjoy warm lunch outside in bright daylight.",
+      note: "At the vibrant red-striped market Stall: school kids eat warm baked potatoes in a totally distinct corner of town.",
       stage: (t) => (
         <>
-          <Player who={6} scale={0.8} position={[0.1, 0, 1.6 - t * 0.12]} rotationY={0.25} animation="cheer" face="grin" time={t} />
-          <Player who={1} scale={0.8} position={[0.65, 0, 1.1]} rotationY={-0.3} headYaw={Math.sin(t * 3) * 0.2} animation="idle" face="smile" time={t} />
+          <Player who={6} scale={0.8} position={[4.1, 0, -0.6 - t * 0.1]} rotationY={0.3} animation="cheer" face="grin" time={t} />
+          <Player who={1} scale={0.8} position={[4.75, 0, -1.1]} rotationY={-0.35} headYaw={Math.sin(t * 3) * 0.2} animation="idle" face="smile" time={t} />
         </>
       ),
     },

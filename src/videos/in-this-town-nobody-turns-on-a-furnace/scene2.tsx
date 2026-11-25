@@ -18,40 +18,40 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.school",
       ...cam.orbit({
-        on: [0.05, 1.15, 1.3],
-        dist: 4.1,
-        yaw: -10,
-        yawTo: 10,
-        pitch: 6,
+        on: [-5.1, 1.15, 0.6],
+        dist: 4.3,
+        yaw: 14,
+        yawTo: 28,
+        pitch: 7,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Depth-stacked school square: Hero in front, teasing kids behind in depth, centered ChatToast inside 9:16 frame.",
+      note: "Distinct west village corner beside cobblestone Well, purple-roof Hut & oak Fence: Hero teased by classmates.",
       stage: (t) => (
         <>
-          <Hero position={[-0.28, 0, 2.0]} rotationY={0.25} animation="shrug" face="uneasy" time={t} />
-          <Player who={1} position={[0.42, 0, 0.65]} rotationY={-0.35} animation="laugh" face="laugh" time={t} />
-          <Player who={3} position={[-0.55, 0, 0.1]} rotationY={0.25} animation="point" face="grin" time={t} />
-          <ChatToast text="Ice Biome Kid!" sender="Kid" position={[0.05, 2.05, 1.0]} height={0.2 * pop(t, 0.2)} />
+          <Hero position={[-4.5, 0, 1.4]} rotationY={0.55} animation="shrug" face="uneasy" time={t} />
+          <Player who={1} position={[-5.1, 0, 0.2]} rotationY={0.15} animation="laugh" face="laugh" time={t} />
+          <Player who={3} position={[-5.8, 0, 0.65]} rotationY={0.45} animation="point" face="grin" time={t} />
+          <ChatToast text="Ice Biome Kid!" sender="Kid" position={[-4.9, 2.05, 0.7]} rotationY={0.35} height={0.13 * pop(t, 0.2)} />
         </>
       ),
     },
     {
       cue: "3.chill",
       ...cam.push({
-        on: [-0.28, 1.15, 2.0],
+        on: [-4.5, 1.15, 1.4],
         dist: 2.35,
         to: 1.85,
-        yaw: 12,
+        yaw: 24,
         pitch: 4,
         fov: 38,
-        screenOffset: [0, 0.14],
+        screenOffset: [0, 0.12],
       }),
       zone: "town",
-      note: "Close reaction push on Hero shivering and rubbing his frosty hoodie sleeves.",
+      note: "Close reaction push on Hero shivering beside village Fence and stone Well.",
       stage: (t) => (
-        <Hero position={[-0.28, 0, 2.0]} rotationY={0.2} animation="cower" face="ouch" time={t} />
+        <Hero position={[-4.5, 0, 1.4]} rotationY={0.45} animation="cower" face="ouch" time={t} />
       ),
     },
     {
@@ -96,20 +96,20 @@ export const scene2 = storyScene(timing, {
     {
       cue: "4.dad",
       ...cam.push({
-        on: [0, 1.2, 1.35],
-        dist: 3.6,
-        to: 3.05,
-        yaw: -10,
-        pitch: 4,
+        on: [0, 1.2, -3.2],
+        dist: 3.7,
+        to: 3.1,
+        yaw: -14,
+        pitch: 5,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Family portrait: stiff carved-pumpkin Dad standing beside smiling Hero.",
+      note: "Doorstep family portrait right in front of Hero's blue-roof Hut and Bell.",
       stage: (t) => (
         <>
-          <SnowGolem position={[-0.36, 0, 1.3]} rotationY={0.12} pumpkin walk={t * 0.12} />
-          <Hero position={[0.36, 0, 1.4]} rotationY={-0.1} animation="idle" face="smile" time={t} />
+          <SnowGolem position={[-0.36, 0, -3.3]} rotationY={0.12} pumpkin walk={t * 0.12} />
+          <Hero position={[0.36, 0, -3.1]} rotationY={-0.1} animation="idle" face="smile" time={t} />
         </>
       ),
     },

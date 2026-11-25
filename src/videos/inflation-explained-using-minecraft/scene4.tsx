@@ -66,14 +66,14 @@ export const scene4 = storyScene(timing, {
         yaw: -8,
         pitch: 14,
         fov: 42,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.06],
       }),
       zone: "bakery",
       note: "Twin CompareChestPair YESTERDAY vs TODAY cleanly framed inside 9:16 width.",
       stage: (t) => (
         <>
           <CompareChestPair position={on(PLACE.bakery, 0, 0, 0.3)} leftLabel="YESTERDAY" rightLabel="TODAY" leftCount={4} rightCount={4} />
-          <FloatingNumber text="SAME 4 LOAVES" color="#ffd84d" position={on(PLACE.bakery, 0, 2.25, 0.25 + t * 0.01)} height={0.52 * pop(t, 0.2)} />
+          <FloatingNumber text="SAME 4 LOAVES" color="#ffd84d" position={on(PLACE.bakery, 0, 2.05, 0.25 + t * 0.01)} height={0.28 * pop(t, 0.2)} />
         </>
       ),
     },
@@ -81,19 +81,19 @@ export const scene4 = storyScene(timing, {
       cue: "6.ovens",
       ...cam.orbit({
         on: on(PLACE.bakery, 0, 1.2, -1.1),
-        dist: 3.4,
+        dist: 3.6,
         yaw: -14,
         yawTo: 14,
         pitch: 9,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.06],
       }),
       zone: "bakery",
       note: "Orbit across BreadShelf holding strictly the exact same 4 warm bread loaves.",
       stage: (t) => (
         <>
           <BreadShelf position={on(PLACE.bakery, 0, 0, -1.15)} count={4} />
-          <FloatingNumber text="STILL 4" color="#ffd84d" position={on(PLACE.bakery, 0, 2.05 + t * 0.08, -1.0)} height={0.5 * pop(t, 0.2)} />
+          <FloatingNumber text="STILL 4" color="#ffd84d" position={on(PLACE.bakery, 0, 2.0 + t * 0.08, -1.0)} height={0.3 * pop(t, 0.2)} />
         </>
       ),
     },
@@ -130,22 +130,22 @@ export const scene4 = storyScene(timing, {
     {
       cue: "6.jump",
       ...cam.push({
-        on: on(PLACE.bakery, 0, 1.35, -0.45),
-        dist: 3.4,
-        to: 2.75,
-        yaw: -10,
+        on: on(PLACE.bakery, 0.05, 1.35, -0.35),
+        dist: 4.15,
+        to: 3.5,
+        yaw: -8,
         pitch: 8,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.04],
       }),
       zone: "bakery",
-      note: "PriceTag flips 1->10 in shock beside Miles staring up at red 10x PRICE.",
+      note: "PriceTag flips 1->10 cleanly above Bread while shocked Miles & 10x! sit completely inside 9:16 bounds.",
       stage: (t) => (
         <>
-          <Bread position={on(PLACE.bakery, -0.1, 0.96, -0.55)} scale={1.7} />
-          <PriceTag text={t > 0.75 ? "10" : "1"} position={on(PLACE.bakery, -0.1, 1.9, -0.5)} scale={1.25} swing={Math.sin(t * 9) * 0.16} />
-          <CitizenLead position={on(PLACE.bakery, 0.52, 0, 0.15)} rotationY={-0.6} animation="scared" face="wow" time={t} />
-          <FloatingNumber text="10x PRICE" color="#ff4f42" position={on(PLACE.bakery, -0.35, 2.0, -0.35)} height={0.55 * pop(t, 0.75)} />
+          <Bread position={on(PLACE.bakery, -0.15, 0.96, -0.55)} scale={1.25} />
+          <PriceTag text={t > 0.75 ? "10" : "1"} position={on(PLACE.bakery, -0.15, 2.25, -0.5)} scale={1.15} swing={Math.sin(t * 9) * 0.14} />
+          <CitizenLead position={on(PLACE.bakery, 0.45, 0, 0.3)} rotationY={-0.55} animation="scared" face="wow" time={t} />
+          <FloatingNumber text="10x!" color="#ff4f42" position={on(PLACE.bakery, -0.35, 2.1, -0.2)} height={0.3 * pop(t, 0.75)} />
         </>
       ),
     },

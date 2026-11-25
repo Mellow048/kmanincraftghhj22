@@ -18,16 +18,16 @@ export const scene3 = storyScene(timing, {
     {
       cue: "5.forge",
       ...cam.push({
-        on: [3.9, 1.0, 1.5],
-        dist: 3.6,
-        to: 3.0,
-        yaw: -18,
+        on: [4.1, 1.05, 1.5],
+        dist: 3.7,
+        to: 3.05,
+        yaw: -36,
         pitch: 9,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Dad walks cheerfully across the cobblestones toward the lit blacksmith corner.",
+      note: "Dad walks toward the lit blacksmith Furnace backed by the stone cobble smithy Hut.",
       stage: (t) => (
         <SnowGolem position={[3.0 + Math.min(0.7, t * 0.65), 0, 1.6]} rotationY={Math.PI / 2} pumpkin walk={t * 1.5} />
       ),
@@ -35,13 +35,13 @@ export const scene3 = storyScene(timing, {
     {
       cue: "5.near",
       ...cam.push({
-        on: [4.15, 0.7, 1.55],
-        dist: 2.2,
-        to: 1.75,
-        yaw: -24,
+        on: [4.2, 0.7, 1.55],
+        dist: 2.3,
+        to: 1.85,
+        yaw: -40,
         pitch: 8,
         fov: 38,
-        screenOffset: [0, 0.1],
+        screenOffset: [0, 0.08],
       }),
       zone: "town",
       note: "Tight insert on glowing furnace firelight right beside Dad's lower snow block.",
@@ -74,7 +74,7 @@ export const scene3 = storyScene(timing, {
             pumpkin
             melt={0.18 + Math.min(0.08, t * 0.05)}
           />
-          <FloatingNumber text="-1 HP" color="#ff4f42" position={[3.55, 1.95, 1.6]} height={0.55 * pop(t, 0.2)} />
+          <FloatingNumber text="-1 HP" color="#ff4f42" position={[3.55, 1.95, 1.6]} height={0.32 * pop(t, 0.2)} />
         </>
       ),
     },
@@ -113,7 +113,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Hero position={[0, 0, 1.5]} rotationY={0.18} animation="idle" face="uneasy" time={t} />
-          <FloatingNumber text="HEATWAVE" color="#ff8e2b" position={[0, 2.15 + ease(ramp(t, 0.1, 1.0)) * 0.2, 1.5]} height={0.55 * pop(t, 0.15)} />
+          <FloatingNumber text="HEATWAVE" color="#ff8e2b" position={[0, 2.05 + ease(ramp(t, 0.1, 1.0)) * 0.2, 1.5]} height={0.3 * pop(t, 0.15)} />
           <EmberDrift position={[0, 1.6, 1.5]} area={[4, 2.5, 4]} count={14} />
         </>
       ),

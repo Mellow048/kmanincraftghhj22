@@ -127,7 +127,7 @@ export const scene5 = storyScene(timing, {
         <>
           <SnowGolem position={[PLACE.bakery[0] + 0.15, 0, PLACE.bakery[2] - 0.35]} rotationY={Math.PI} pumpkin melt={0.5} walk={t * 0.2} />
           <Hero position={[PLACE.bakery[0] - 0.45, 0, PLACE.bakery[2] + 0.25]} rotationY={0.85} animation="reach" face="ouch" time={t} />
-          <FloatingNumber text="-1 HP" color="#ff4f42" position={[PLACE.bakery[0] + 0.15, 1.85, PLACE.bakery[2] - 0.35]} height={0.55 * pop(t, 0.15)} />
+          <FloatingNumber text="-1 HP" color="#ff4f42" position={[PLACE.bakery[0] + 0.15, 1.85, PLACE.bakery[2] - 0.35]} height={0.32 * pop(t, 0.15)} />
         </>
       ),
     },

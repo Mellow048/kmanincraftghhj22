@@ -69,7 +69,7 @@ export const scene6 = storyScene(timing, {
         <>
           <BillStack position={on(PLACE.history, -0.35, 0, 0.35)} count={12} />
           <BillStack position={on(PLACE.history, 0.35, 0, 0.2)} count={14} />
-          <FloatingNumber text="PRINT CASH" color="#3fd46a" position={on(PLACE.history, 0, 1.6 + t * 0.06, 0.25)} height={0.5 * pop(t, 0.15)} />
+          <FloatingNumber text="PRINT CASH" color="#3fd46a" position={on(PLACE.history, 0, 1.6 + t * 0.06, 0.25)} height={0.28 * pop(t, 0.15)} />
         </>
       ),
     },
@@ -120,19 +120,19 @@ export const scene6 = storyScene(timing, {
       cue: "8.cheap",
       ...cam.push({
         on: on(PLACE.bakery, 0, 1.25, -0.35),
-        dist: 3.1,
-        to: 2.55,
+        dist: 3.4,
+        to: 2.85,
         yaw: 12,
         pitch: 7,
         fov: 38,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.06],
       }),
       zone: "bakery",
-      note: "Sterling buys warm loaf first while PriceTag still sits low at 1.",
+      note: "Sterling buys warm loaf first while PriceTag sits cleanly above Bread at 1.",
       stage: (t) => (
         <>
-          <Bread position={on(PLACE.bakery, -0.2, 0.96, -0.55)} scale={1.5} />
-          <PriceTag text="1" position={on(PLACE.bakery, -0.2, 1.85, -0.55)} scale={1.15} />
+          <Bread position={on(PLACE.bakery, -0.2, 0.96, -0.55)} scale={1.25} />
+          <PriceTag text="1" position={on(PLACE.bakery, -0.2, 2.25, -0.55)} scale={1.1} />
           <EliteLead variant="pres" position={on(PLACE.bakery, 0.45, 0, -0.15)} rotationY={-0.75} animation="reach" face="smug" time={t} />
         </>
       ),
@@ -141,22 +141,22 @@ export const scene6 = storyScene(timing, {
       cue: "8.burn",
       ...cam.push({
         on: on(PLACE.bakery, 0, 1.25, -0.2),
-        dist: 3.3,
-        to: 2.75,
-        yaw: -14,
+        dist: 3.6,
+        to: 3.0,
+        yaw: -12,
         pitch: 8,
-        fov: 38,
-        screenOffset: [0, 0.12],
+        fov: 40,
+        screenOffset: [0, 0.06],
       }),
       zone: "bakery",
       note: "Miles arrives late holding his cash stack as price rises to 50.",
       stage: (t) => (
         <>
-          <PriceTag text="50" position={on(PLACE.bakery, 0.3, 1.85, -0.55)} scale={1.2} swing={Math.sin(t * 7) * 0.12} />
-          <CitizenLead position={on(PLACE.bakery, -0.4, 0, 0.1)} rotationY={0.45} animation="shrug" face="worried" time={t}>
+          <PriceTag text="50" position={on(PLACE.bakery, 0.3, 2.25, -0.55)} scale={1.15} swing={Math.sin(t * 7) * 0.12} />
+          <CitizenLead position={on(PLACE.bakery, -0.4, 0, 0.15)} rotationY={0.45} animation="shrug" face="worried" time={t}>
             <BillStack position={[0, -0.05, 0.2]} count={5} />
           </CitizenLead>
-          <FloatingNumber text="-50% CASH" color="#ff4f42" position={on(PLACE.bakery, -0.35, 2.2, 0.1)} height={0.5 * pop(t, 0.2)} />
+          <FloatingNumber text="-50%" color="#ff4f42" position={on(PLACE.bakery, -0.35, 2.2, 0.1)} height={0.28 * pop(t, 0.2)} />
         </>
       ),
     },
@@ -169,7 +169,7 @@ export const scene6 = storyScene(timing, {
         yaw: -12,
         pitch: 7,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.08],
       }),
       zone: "bakery",
       note: "Exhausted Miles trudges forward holding that exact same single loaf.",
@@ -188,25 +188,25 @@ export const scene6 = storyScene(timing, {
         const surge = ease(ramp(t, 0.12, 0.92));
         return (
           <>
-            <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.7} />
+            <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.25} />
             <PriceTag
               text={surge > 0.45 ? "100" : "1"}
-              position={on(PLACE.bakery, 0, 1.9, -0.5)}
-              scale={1.2 + surge * 0.25}
-              swing={Math.sin(t * 6) * 0.14}
+              position={on(PLACE.bakery, 0, 2.28, -0.5)}
+              scale={1.1 + surge * 0.15}
+              swing={Math.sin(t * 6) * 0.12}
             />
-            <Printer position={on(PLACE.bakery, -0.1, 0, -1.35)} rotationY={0.15} running out={t * 6} sign="E" />
+            <Printer position={on(PLACE.bakery, -0.42, 0, -1.45)} rotationY={0.22} running out={t * 6} sign="E" />
             <CitizenLead
-              position={on(PLACE.bakery, -0.52, 0, 0.45)}
-              rotationY={0.45}
-              animation="panic"
+              position={on(PLACE.bakery, -0.55, 0, 0.5)}
+              rotationY={0.4}
+              animation="scared"
               face="wow"
-              lookAt={on(PLACE.bakery, 0, 1.2, -0.55)}
+              lookAt={on(PLACE.bakery, 0, 1.5, -0.5)}
               time={t}
             />
             <EliteLead
               variant="pres"
-              position={on(PLACE.bakery, 0.52, 0, -0.85)}
+              position={on(PLACE.bakery, 0.55, 0, -0.75)}
               rotationY={-0.35}
               animation="cheer"
               face="smug"

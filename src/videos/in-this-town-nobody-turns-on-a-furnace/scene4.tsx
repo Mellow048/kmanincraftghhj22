@@ -76,7 +76,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <EmberDrift position={[PLACE.bakery[0] + 1.0, 1.7 + t * 0.2, PLACE.bakery[2] - 1.3]} area={[1.8, 2.2, 1.8]} count={28} />
-          <ChatToast text="STOP! TOO HOT!" sender="Baker" position={[PLACE.bakery[0] + 0.25, 2.05, PLACE.bakery[2] - 0.6]} height={0.2 * pop(t, 0.2)} />
+          <ChatToast text="STOP! TOO HOT!" sender="Baker" position={[PLACE.bakery[0] + 0.15, 2.05, PLACE.bakery[2] - 0.6]} height={0.13 * pop(t, 0.2)} />
         </>
       ),
     },
@@ -125,25 +125,25 @@ export const scene4 = storyScene(timing, {
     {
       cue: "6.trap",
       ...cam.push({
-        on: [PLACE.bakery[0], 1.15, PLACE.bakery[2] + 0.1],
-        dist: 3.8,
-        to: 3.15,
-        yaw: -8,
-        pitch: 9,
-        fov: 40,
-        screenOffset: [0, 0.12],
+        on: [PLACE.bakery[0], 1.15, PLACE.bakery[2] - 0.1],
+        dist: 4.3,
+        to: 3.6,
+        yaw: 12,
+        pitch: 13,
+        fov: 42,
+        screenOffset: [0, 0.05],
       }),
       look: "overworld-sunset",
       zone: "bakery",
-      note: "Exact 4-kid continuity: Hero and 3 other kids crouch behind the counter inside burning bakery.",
+      note: "Exact 4-kid continuity: all 4 upright panicking kids visible cleanly above low counter with blazing flames behind.",
       stage: (t) => (
         <>
-          <Hero position={[PLACE.bakery[0] - 0.34, 0, PLACE.bakery[2] + 0.05]} rotationY={0.2} animation="panic" face="fear" time={t} />
-          <Player who={2} scale={0.8} position={[PLACE.bakery[0] + 0.34, 0, PLACE.bakery[2] + 0.0]} rotationY={-0.25} animation="cower" face="fear" time={t} />
-          <Player who={1} scale={0.8} position={[PLACE.bakery[0] - 0.18, 0, PLACE.bakery[2] - 0.6]} rotationY={0.12} animation="panic" face="wow" time={t} />
-          <Player who={3} scale={0.8} position={[PLACE.bakery[0] + 0.28, 0, PLACE.bakery[2] - 0.65]} rotationY={-0.15} animation="cower" face="uneasy" time={t} />
-          <Blaze position={[PLACE.bakery[0], 2.6, PLACE.bakery[2] - 2.0]} size={2.8} height={1.6} />
-          <EmberDrift position={[PLACE.bakery[0], 1.4, PLACE.bakery[2]]} area={[2.6, 2.4, 2.6]} count={22} />
+          <Hero position={[PLACE.bakery[0] - 0.36, 0, PLACE.bakery[2] + 0.1]} rotationY={0.2} animation="panic" face="fear" time={t} />
+          <Player who={2} scale={0.8} position={[PLACE.bakery[0] + 0.36, 0, PLACE.bakery[2] + 0.05]} rotationY={-0.25} animation="scared" face="fear" time={t} />
+          <Player who={1} scale={0.8} position={[PLACE.bakery[0] - 0.22, 0, PLACE.bakery[2] - 0.55]} rotationY={0.12} animation="panic" face="wow" time={t} />
+          <Player who={3} scale={0.8} position={[PLACE.bakery[0] + 0.28, 0, PLACE.bakery[2] - 0.6]} rotationY={-0.15} animation="scared" face="uneasy" time={t} />
+          <Blaze position={[PLACE.bakery[0], 2.0, PLACE.bakery[2] - 1.65]} size={2.6} height={1.4} />
+          <EmberDrift position={[PLACE.bakery[0], 1.4, PLACE.bakery[2]]} area={[2.4, 2.2, 2.4]} count={22} />
         </>
       ),
     },

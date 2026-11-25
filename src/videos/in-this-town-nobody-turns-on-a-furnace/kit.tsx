@@ -8,7 +8,7 @@ export {
   DEG, EAST, KID, NORTH, SOUTH, WEST, ahead, beside, chestOf, ease, faceOf, hill, jolt, pop, ramp,
   ADULT, CHILD, IronGolem, Poppy, ROBE, Villager, golemHand, villagerChest, villagerFace,
   Player, Pumpkin,
-  BedBox, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Wisps,
+  BedBox, Bell, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Well, Wisps,
   Fence, Hut, LampPost, Room, Stall,
 } from "../../../Topics/InThisTown";
 

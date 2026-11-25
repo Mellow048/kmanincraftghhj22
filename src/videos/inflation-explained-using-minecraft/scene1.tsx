@@ -21,13 +21,13 @@ import {
 
 /** Shared Frame-0 & Final-Loop depth-stacked 9:16 composition (`1.hook` == `8.loop`). */
 export const CLIMAX_HOOK_OPT = {
-  on: on(PLACE.bakery, 0, 1.25, -0.35),
-  dist: 4.4,
-  to: 3.65,
-  yaw: 10,
+  on: on(PLACE.bakery, 0, 1.32, -0.4),
+  dist: 4.9,
+  to: 4.2,
+  yaw: 8,
   pitch: 8,
   fov: 42,
-  screenOffset: [0, 0.12] as [number, number],
+  screenOffset: [0, 0.05] as [number, number],
 };
 
 const mineHit = wordAt("2.miles", "pickaxe");
@@ -40,30 +40,30 @@ export const scene1 = storyScene(timing, {
       cue: "1.hook",
       ...cam.push(CLIMAX_HOOK_OPT),
       zone: "bakery",
-      note: "Frame-0 climax inside 9:16 bounds: price explodes 1->100 on Plinth while Miles panics left & Sterling cheers by Printer right.",
+      note: "Frame-0 climax inside 9:16 bounds: price explodes 1->100 cleanly ABOVE golden Bread while Miles & Sterling fit completely inside margins.",
       stage: (t) => {
         const surge = ease(ramp(t, 0.12, 0.92));
         return (
           <>
-            <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.7} />
+            <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.25} />
             <PriceTag
               text={surge > 0.45 ? "100" : "1"}
-              position={on(PLACE.bakery, 0, 1.9, -0.5)}
-              scale={1.2 + surge * 0.25}
-              swing={Math.sin(t * 6) * 0.14}
+              position={on(PLACE.bakery, 0, 2.28, -0.5)}
+              scale={1.1 + surge * 0.15}
+              swing={Math.sin(t * 6) * 0.12}
             />
-            <Printer position={on(PLACE.bakery, -0.1, 0, -1.35)} rotationY={0.15} running out={t * 6} sign="E" />
+            <Printer position={on(PLACE.bakery, -0.42, 0, -1.45)} rotationY={0.22} running out={t * 6} sign="E" />
             <CitizenLead
-              position={on(PLACE.bakery, -0.52, 0, 0.45)}
-              rotationY={0.45}
-              animation="panic"
+              position={on(PLACE.bakery, -0.55, 0, 0.5)}
+              rotationY={0.4}
+              animation="scared"
               face="wow"
-              lookAt={on(PLACE.bakery, 0, 1.2, -0.55)}
+              lookAt={on(PLACE.bakery, 0, 1.5, -0.5)}
               time={t}
             />
             <EliteLead
               variant="pres"
-              position={on(PLACE.bakery, 0.52, 0, -0.85)}
+              position={on(PLACE.bakery, 0.55, 0, -0.75)}
               rotationY={-0.35}
               animation="cheer"
               face="smug"
@@ -82,14 +82,14 @@ export const scene1 = storyScene(timing, {
         yawTo: 12,
         pitch: 12,
         fov: 42,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.08],
       }),
       zone: "bakery",
       note: "Miles cheers excitedly beside glowing green +CASH popup over CoinPile.",
       stage: (t) => (
         <>
           <CoinPile position={on(PLACE.bakery, 0.2, 0, 0.2)} count={18} kind="emerald" spread={0.65} />
-          <FloatingNumber text="+CASH" color="#3fd46a" position={on(PLACE.bakery, 0.15, 1.45, 0.2)} height={0.58 * pop(t, 0.15)} />
+          <FloatingNumber text="+CASH" color="#3fd46a" position={on(PLACE.bakery, 0.15, 1.45, 0.2)} height={0.3 * pop(t, 0.15)} />
           <CitizenLead position={on(PLACE.bakery, -0.45, 0, 0.45)} rotationY={0.5} animation="cheer" face="grin" time={t} />
         </>
       ),
@@ -98,40 +98,40 @@ export const scene1 = storyScene(timing, {
       cue: "1.reverse",
       ...cam.push({
         on: on(PLACE.bakery, 0, 1.25, 0.1),
-        dist: 3.5,
-        to: 2.8,
+        dist: 3.6,
+        to: 2.95,
         yaw: 12,
         pitch: 9,
         fov: 38,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.08],
       }),
       zone: "bakery",
       note: "Miles shrugs in dismay as the bread loaf shrinks beneath red -VALUE.",
       stage: (t) => (
         <>
-          <Bread position={on(PLACE.bakery, -0.25, 0.96, -0.45)} scale={Math.max(0.85, 1.7 - ease(ramp(t, 0.1, 1.0)) * 0.75)} />
+          <Bread position={on(PLACE.bakery, -0.25, 0.96, -0.45)} scale={Math.max(0.7, 1.25 - ease(ramp(t, 0.1, 1.0)) * 0.5)} />
           <CitizenLead position={on(PLACE.bakery, 0.42, 0, 0.3)} rotationY={-0.5} animation="shrug" face="worried" time={t} />
-          <FloatingNumber text="-VALUE" color="#ff4f42" position={on(PLACE.bakery, -0.2, 1.9, -0.4)} height={0.56 * pop(t, 0.2)} />
+          <FloatingNumber text="-VALUE" color="#ff4f42" position={on(PLACE.bakery, -0.2, 1.8, -0.4)} height={0.3 * pop(t, 0.2)} />
         </>
       ),
     },
     {
       cue: "2.bread",
       ...cam.push({
-        on: on(PLACE.bakery, 0.05, 1.25, -0.55),
-        dist: 3.1,
-        to: 2.55,
+        on: on(PLACE.bakery, 0.05, 1.35, -0.55),
+        dist: 3.3,
+        to: 2.75,
         yaw: -14,
-        pitch: 10,
+        pitch: 9,
         fov: 38,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.06],
       }),
       zone: "bakery",
-      note: "Day-one baseline: warm golden Bread loaf on Plinth with PriceTag 1 and spinning emerald.",
+      note: "Day-one baseline: warm golden Bread loaf on Plinth cleanly below PriceTag 1 and spinning emerald.",
       stage: (t) => (
         <>
-          <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.8} />
-          <PriceTag text="1" position={on(PLACE.bakery, 0, 1.85, -0.55)} scale={pop(t, 0.15) * 1.2} />
+          <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.35} />
+          <PriceTag text="1" position={on(PLACE.bakery, 0, 2.25, -0.55)} scale={pop(t, 0.15) * 1.15} />
           <Coin position={on(PLACE.bakery, 0.55, 1.28, -0.4)} kind="emerald" spin={t * 3.5} size={0.44} />
         </>
       ),

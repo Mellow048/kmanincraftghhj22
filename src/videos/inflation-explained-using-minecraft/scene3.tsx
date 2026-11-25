@@ -38,7 +38,7 @@ export const scene3 = storyScene(timing, {
         <>
           <Printer position={on(PLACE.hall, 0.35, 0, 0.8)} rotationY={-0.25} running out={t * 8} sign="E" />
           <EliteLead variant="pres" position={on(PLACE.hall, -0.48, 0, 0.9)} rotationY={0.75} animation="press" face="grin" time={t} />
-          <FloatingNumber text="+10,000" color="#3fd46a" position={on(PLACE.hall, 0.35, 1.65 + ease(ramp(t, 0.2, 1.2)) * 0.25, 0.8)} height={0.55 * pop(t, 0.2)} />
+          <FloatingNumber text="+10,000" color="#3fd46a" position={on(PLACE.hall, 0.35, 1.65 + ease(ramp(t, 0.2, 1.2)) * 0.25, 0.8)} height={0.3 * pop(t, 0.2)} />
         </>
       ),
     },
@@ -58,7 +58,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <Printer position={on(PLACE.hall, 0, 0, 0.7)} running out={t * 9} sign="E" />
-          <ChatToast text="[Treasury] +10,000 Cash" position={on(PLACE.hall, 0, 1.85, 0.85)} height={0.22 * pop(t, 0.1)} />
+          <ChatToast text="[Treasury] +10,000 Cash" position={on(PLACE.hall, 0, 1.85, 0.85)} height={0.13 * pop(t, 0.1)} />
         </>
       ),
     },
@@ -89,7 +89,7 @@ export const scene3 = storyScene(timing, {
             animation="cheer"
             seed={5}
           />
-          <FloatingNumber text="+EMERALDS" color="#ffd84d" position={on(PLACE.bakery, 0, 1.55, 0.25 + t * 0.01)} height={0.55 * pop(t, 0.1)} />
+          <FloatingNumber text="+EMERALDS" color="#ffd84d" position={on(PLACE.bakery, 0, 1.55, 0.25 + t * 0.01)} height={0.3 * pop(t, 0.1)} />
         </>
       ),
     },

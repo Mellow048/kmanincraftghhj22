@@ -140,7 +140,7 @@ export const scene6 = storyScene(timing, {
           <>
             <SnowGolem position={[PLACE.bakery[0] + 0.1, 0, PLACE.bakery[2]]} rotationY={0.15} pumpkin melt={0.92 * (1 - heal)} />
             <Hero position={[PLACE.bakery[0] - 0.65, 0, PLACE.bakery[2] + 0.35]} rotationY={0.8} animation="lift" face="happy" time={t} />
-            <FloatingNumber text="+2 HP" color="#3fd46a" position={[PLACE.bakery[0] + 0.1, 1.85, PLACE.bakery[2]]} height={0.58 * pop(t, 0.45)} />
+            <FloatingNumber text="+2 HP" color="#3fd46a" position={[PLACE.bakery[0] + 0.1, 1.85, PLACE.bakery[2]]} height={0.32 * pop(t, 0.45)} />
           </>
         );
       },
@@ -148,62 +148,62 @@ export const scene6 = storyScene(timing, {
     {
       cue: "9.love",
       ...cam.push({
-        on: [0, 1.2, 1.6],
-        dist: 4.0,
-        to: 3.3,
-        yaw: -10,
+        on: [1.5, 1.25, -1.2],
+        dist: 4.3,
+        to: 3.55,
+        yaw: -24,
         pitch: 6,
         fov: 40,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Sunlit town payoff: unmasked Dad grinning his goofy coal smile beside Mum & hugging Hero.",
+      note: "Village square payoff framed toward the cozy plank/blue-roof house, striped Stall & green oak trees.",
       stage: (t) => (
         <>
-          <SnowGolem position={[-0.55, 0, 1.45]} rotationY={0.2} pumpkin={false} walk={t * 0.15} />
-          <SnowGolem position={[0.58, 0, 1.4]} rotationY={-0.2} pumpkin walk={t * 0.15} />
-          <Hero position={[0, 0, 1.95]} rotationY={0.05} animation="hug" face="smile" time={t} />
+          <SnowGolem position={[0.9, 0, -1.1]} rotationY={0.35} pumpkin={false} walk={t * 0.15} />
+          <SnowGolem position={[1.95, 0, -1.5]} rotationY={-0.1} pumpkin walk={t * 0.15} />
+          <Hero position={[1.4, 0, -0.7]} rotationY={0.25} animation="hug" face="smile" time={t} />
         </>
       ),
     },
     {
       cue: "9.home",
       ...cam.push({
-        on: [-0.15, 1.32, 1.6],
-        dist: 2.8,
-        to: 2.3,
-        yaw: 12,
+        on: [1.2, 1.32, -0.9],
+        dist: 2.9,
+        to: 2.35,
+        yaw: -18,
         pitch: 4,
         fov: 38,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Close warm family look between pumpkin-free Dad and happily smiling Hero.",
+      note: "Close warm family look between grinning unmasked Dad and smiling Hero beside village square houses.",
       stage: (t) => (
         <>
-          <SnowGolem position={[-0.42, 0, 1.5]} rotationY={0.22} pumpkin={false} walk={t * 0.1} />
-          <Hero position={[0.28, 0, 1.75]} rotationY={-0.25} animation="idle" face="happy" time={t} />
+          <SnowGolem position={[0.9, 0, -1.05]} rotationY={0.35} pumpkin={false} walk={t * 0.1} />
+          <Hero position={[1.55, 0, -0.75]} rotationY={-0.15} animation="idle" face="happy" time={t} />
         </>
       ),
     },
     {
       cue: "10.sub",
       ...cam.push({
-        on: [0, 1.2, 1.8],
-        dist: 4.1,
-        to: 3.5,
-        yaw: 8,
+        on: [1.4, 1.25, -0.9],
+        dist: 4.2,
+        to: 3.6,
+        yaw: -22,
         pitch: 6,
         fov: 40,
-        screenOffset: [0, 0.1],
+        screenOffset: [0, 0.08],
       }),
       zone: "town",
-      note: "SubscribeSign pops cleanly above unmasked Dad and waving Hero on sunlit cobblestone.",
+      note: "SubscribeSign pops cleanly above unmasked Dad and waving Hero with sunlit houses behind.",
       stage: (t) => (
         <>
-          <SnowGolem position={[-0.45, 0, 1.55]} rotationY={0.18} pumpkin={false} walk={t * 0.15} />
-          <Hero position={[0.35, 0, 1.85]} rotationY={-0.12} animation="wave" face="grin" time={t} />
-          <SubscribeSign position={[0, 2.3, 1.4]} scale={pop(t, 0.15) * 0.9} />
+          <SnowGolem position={[0.9, 0, -1.05]} rotationY={0.35} pumpkin={false} walk={t * 0.15} />
+          <Hero position={[1.65, 0, -0.7]} rotationY={0.15} animation="wave" face="grin" time={t} />
+          <SubscribeSign position={[1.35, 2.35, -1.1]} rotationY={-0.35} scale={pop(t, 0.15) * 0.9} />
         </>
       ),
     },
