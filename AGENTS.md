@@ -11,6 +11,7 @@
 > 3. **[`docs/VOICE-AND-TTS.md`](docs/VOICE-AND-TTS.md) — MANDATORY TTS VOICE STANDARD (IGNORE OLD VOICE NOTES):**  
 >    You **MUST** pick a TTS voice that is **Male, Natural American / No Accent, Energetic, Young / Not Old, and Not Too Serious**. Ignore any older document mentioning old/monotone voices (`voice-00`, `voice-01`, `voice-08`, etc.) unless the clip passes every criterion in `docs/VOICE-AND-TTS.md`.
 > 4. **[`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md)** & **[`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md)** — Remaster v2 shaders, dual-color red/gold captions (`y: 0.67`), and `cam.*` camera helpers (`whip`, `crane`, `ots`, `dollyZoom`, `fitHeight`, `screenOffset`).
+> 5. **If building `--topic explainer`:** MUST read **[`Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md`](Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md)**. Always pair our 2 channel leads (**`CitizenLead` + `EliteLead`**, NEVER `InThisTown` default hero/Villager), build with multi-part detailed props (`DetailedBookshelf`, `RuleBoard`, `Crown`, `BallotBox`, `StoneBillboard` — NEVER single-box laziness), cut fast (~1.5s `storyScene`), and end on a seamless loop!
 
 ## 0. Before everything: read [`MASTERPROMPT-01.md`](MASTERPROMPT-01.md)
 
@@ -41,7 +42,7 @@ code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown
 | The request… | It is | Read | Start with |
 |---|---|---|---|
 | says "In This Town"; or tells a story that begins "In this town, …"; or asks for a film "like Same Face", "like the monster egg" or "like the treehouse video" | The topic **In This Town** | [`Topics/InThisTown/README.md`](Topics/InThisTown/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "In This Town, …" --topic in-this-town` |
-| asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", a money lesson, inflation; or asks a "What if …" that is answered with facts | The topic **Explainer** | [`Topics/Explainer/README.md`](Topics/Explainer/README.md): a continuous camera flight | `npm run new -- "Why Bread Costs More" --topic explainer` |
+| asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", historical/money/inflation parables | The topic **Explainer** | [`Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md`](Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md) & [`Topics/Explainer/README.md`](Topics/Explainer/README.md): fast story cuts, 2 channel leads (`CitizenLead` + `EliteLead`), composite props, loop payoff | `npm run new -- "Inflation Explained Using Minecraft" --topic explainer` |
 | asks for a first-person story, any world, without the town or power premise | **Stories** | [`Topics/Stories/README.md`](Topics/Stories/README.md) | `npm run new -- "…" --topic stories` |
 | asks for a mundane rule taken literally, told flat, with escalating costs | **Deadpan** | [`Topics/Deadpan/README.md`](Topics/Deadpan/README.md) | `npm run new -- "…" --topic deadpan` |
 | says "What if you could …"; or tells the story of a kid who gets a power | The topic **What If** | [`Topics/WhatIf/README.md`](Topics/WhatIf/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "What If You Could …" --topic what-if` |
@@ -56,8 +57,7 @@ short version is the topic's own `cut: "short"`: one to two minutes.
 
 **For a narrated film, follow the [directing pass](docs/DIRECTING.md) before calling it ready.** Pick the
 approved reference for the problem at hand, rehearse the word clock and blocking, then review the actual
-picture and sound. The current topic folders/`topic.json` decide routing: the factual flying camera is
-`explainer`; `stories`, `in-this-town`, `what-if` and `deadpan` use story cuts.
+picture and sound. Every active topic (`explainer`, `stories`, `in-this-town`, `what-if`, `deadpan`, `recreation`) uses dynamic `storyScene` cuts.
 
 What a topic gives a film, that the base does not:
 
@@ -503,7 +503,7 @@ npm install                 # once
 npm run dev                 # Remotion Studio
 npm run new -- "The Title"  # scaffold a base film folder + registry entry
 npm run new -- "In This Town, …" --topic in-this-town   # scaffold a topic film from the topic's own starter
-npm run new -- "Why Bread Costs More" --topic explainer # one question, a camera that flies
+npm run new -- "Inflation Explained Using Minecraft" --topic explainer # 2-lead story explainer, fast cuts, loop payoff
 npm run new -- "What If You Could …" --topic what-if    # …a "What if" story: a kid and one power
 npm run typecheck           # TypeScript
 npm run check               # director/contract lint

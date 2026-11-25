@@ -1,74 +1,46 @@
-# Writing an explainer
+# Writing a Remastered Explainer Script (`SCRIPT.md`)
 
-> **Provisional.** This beat sheet is a first setting. It has not been measured against a reference yet
-> ([`reference/`](reference/README.md)). When one arrives, its beats replace these.
+> Measured against **[`reference/napoleon/README.md`](reference/napoleon/README.md)** (`80.93s`, `286 words`, `212 WPM`, `44 cuts`, seamless loop).
 
-An explainer is one question and one answer. It is the hardest kind of script to write short, because the writer
-knows too much. The method below is how to throw things away.
+A great Minecraft Explainer uses a **parable inside a Minecraft server/town**, followed by the **real-world parallel**, stitched together by a **looping irony hook**.
+
+---
 
 ## Before a line is written
 
-Write these three things at the top of `narration.md`. If you cannot, stop and read more about the subject.
+Fill these four specs at the top of `narration.md`:
 
-1. **The question**, the way a nine-year-old would ask it. "Why does bread cost more every year?" Not "What is inflation?"
-2. **The answer, in one sentence the same child could repeat.** "There is more money than there used to be, so each
-   coin buys less."
-3. **The thing everybody knows.** One object with a price the viewer already has in their head: a loaf of bread.
-   Every number in the film is measured against it.
+1. **The Opening Line (`1.hook`):** `"<Concept>, explained using Minecraft."` (5–8 words max over the climax shot!)
+2. **Character 1 (`CitizenLead` — Miles / worker):** What does the everyday guy want, and what mistake does he make? *(e.g. "Miles just wants affordable bread, so he votes for free money.")*
+3. **Character 2 (`EliteLead` — Sterling / authority / rich):** How does the rich/powerful one solve it cleanly on the surface while hoarding control? *(e.g. "President Sterling turns on the emerald printer.")*
+4. **The Loop Closer (`last`):** End mid-clause so the last syllable runs straight back into Line 1!  
+   Example:  
+   `[last] Miles wanted cheap bread, voted for easy money, and that's` -> *(loops to Line 1)* `Inflation, explained using Minecraft.`
 
-Then fill in the table of what each line SHOWS. A line with nothing to point a camera at is a line to cut.
+---
 
-## The beat sheet
+## The 8-Beat Story Explainer Spine
 
-About 12–25 lines, 110–250 words, 30–58 seconds. One line is one stop of the camera.
+Target **180–420 words (`55–110s`)** across ~22–45 spoken cues (split long lines visually with `cut:` for `1.1–1.9s` median shots).
 
-| # | Beat | Lines | What it does | The picture |
-|---|---|---|---|---|
-| 1 | The question | 1 | The title, said. Ten words or fewer | The person it is a problem for, and the thing |
-| 2 | The thing you know | 1–2 | One loaf, one price. The anchor | The thing alone, and its price appearing on the word |
-| 3 | It was not always so | 1–2 | The same thing, earlier or elsewhere, at another price. Now there is something to explain | The same thing, a second time, with another tag |
-| 4 | The cause, step by step | 3–6 | One idea a line. Each line starts from the last one's ending: "so", "and then", "which means" | One island for each idea, joined by a bridge when the ideas are joined |
-| 5 | The part you did not know | 1–3 | The surprising consequence. The reason the film is worth watching | The biggest picture of the film: the scales tip, the bar passes his head |
-| 6 | The answer | 1 | The one sentence from the top of the page, nearly word for word | Back to the thing you know, changed |
-| 7 | You | 1–2 | What it means for the viewer. Then the subscribe line, which belongs to the explanation | The person again, with the thing; then the red sign |
+| Beat | Seconds | Job | Visual Anchor |
+|---|---|---|---|
+| **1. Cold Climax Hook** | `0–2s` | Speak `"<Concept>, explained using Minecraft."` | Frame-0 peak climax image (`EliteLead` crowning himself / vault overflowing / chart bursting) — **must match final frame**. |
+| **2. Contradiction Setup** | `2–6s` | Reveal the central paradox right away. | Hard cut to active rebellion/problem -> flash forward to irony. |
+| **3. Broken Status Quo** | `6–15s` | Show 3 visual receipts of chaos (NO abstract lecturing). | Messy `<RuleBoard mode="chaos" />`, empty `<Chest gold={0} />`, warring banners, bare shelves. |
+| **4. Meet the 2 Leads** | `15–23s` | Introduce Character 1 (`<NameTag>`) & Character 2 (`<NameTag>`). | Everyday guy staring up at problem -> rich/perfect leader striding cleanly ahead of results/troops. |
+| **5. The Clean Fix** | `23–34s` | Character 2 takes control and makes everything look better fast. | Swaps to `<RuleBoard mode="order" />`, full chests, organized shelves, calm roads. |
+| **6. Escalating Trap** | `34–47s` | The hidden catch happens while citizens cheer ("99% vote yes!"). | `<BallotBox>` + `<ChatToast>` poll, printing notes, debt gauge climbing behind Character 1. |
+| **7. Climax & Real-World Bridge** | `47–76s` | Iconic turn + explicit real-world date/event (`<StoneBillboard>`). | Snatches crown / vault locks -> cut to historical/real-world era (`1799`, `1971`, `2008`, etc.). |
+| **8. Full-Circle Irony Loop** | `76–81s` | Tie Character 1's mistake directly to the ending loop phrase. | Close reaction on `CitizenLead` -> Frame-0 climax push ending mid-sentence `"and that's"` -> loops seamlessly! |
 
-## The rules of a line
+---
 
-- **Present tense, to "you".** "You buy a loaf." Or about Sam: "Sam buys a loaf." Pick one for the film and keep it.
-- **6–14 words.** Over 18 is two stops: split it. `npm run check` says which lines are too long.
-- **One idea a line.** "The baker pays more for flour, so he charges more for bread" is two lines.
-- **One number at a time, and round.** "Twice as much", not "a 97% increase". Spell numbers out, so the voice and the
-  captions agree.
-- **No word that needs explaining.** If the word is the subject ("inflation"), say it once, late, as the NAME of what
-  the viewer has just watched. Never open with it.
-- **The first two words of a line may travel.** The camera takes about a second to reach the next thing. Start a line
-  with "So", "And when", "Which means", and put the noun after them, so that the thing is in the frame when it is named.
-- **Compare with things, not with ideas.** "Like a pizza cut into more slices" works only if the pizza is built and
-  shown. If it will not be shown, do not say it.
-- **No questions to the viewer after the first line**, no "but wait", no "here's the thing". Say the next fact.
-- **Every claim is true.** An explainer that is wrong is worse than none. If a fact is disputed, leave it out or say
-  who says so. When a film is handed over, list the claims it makes and where each came from.
+## Rules of every line
 
-## What the engine needs
-
-```narration
-# clip 01-question
-[1.ask]      Why does a loaf of bread cost more every year?
-[2.loaf]     Here is one loaf, and here is its price.
-```
-
-- Each `[cue]` line is one stop. Its id is `<beat>.<word>`: `4.flour`, `5.twice`.
-- Each `# clip` is one recording, 3–8 lines. Record it to `public/audio/<film>/raw/<clip>.mp3`.
-- `python3 scripts/narration.py build <film> --estimate` times the script from its word count. Without
-  `--estimate` it measures the recordings.
-- The last line contains "subscribe".
-
-## Before it goes to the owner
-
-- [ ] The question is in the first line, and the film answers that question and no other.
-- [ ] The answer at the top of the page is in the script, nearly word for word, in beat 6.
-- [ ] Every line has a picture in the table, and no picture is "Sam talks".
-- [ ] No line has two ideas. No line is over 18 words.
-- [ ] Every number is round, spelled out, and measured against the thing you know.
-- [ ] Read it aloud. Every sentence could be said to a nine-year-old without stopping to explain a word.
-- [ ] The claims are listed, with where each came from.
+- **Show-first verbs:** Every sentence must name something visible (`chest`, `crown`, `bread`, `ballot`, `bar`, `rules`).
+- **6–15 words per cue** (over 16? Split the line into two cues or split visually with `cut:`).
+- **One idea per beat.** Contrast fast: `"Empty chests. Broken rules. Rival clans."` beats a 22-word compound paragraph.
+- **No throat-clearing:** Never say *"Hey guys"*, *"In this video"*, *"Before we start"*, or *"But wait, here's the crazy thing"*.
+- **Spell out awkward symbols** or align digits carefully (`99%` -> `"ninety-nine percent"` in spoken audio if TTS misreads, or verify alignment in `timing.json`).
+- **Loop cleanly:** Test reading the last cue aloud immediately followed by the first cue (`"...and that's" + "Napoleon, explained using Minecraft."`). If there is a bumpy pause, trim the last word.

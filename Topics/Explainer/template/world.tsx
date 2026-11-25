@@ -1,61 +1,65 @@
 import type React from "react";
-import { Clouds, Dust, Glow, GodRay, LightPool, Tree } from "../../engine";
-import { Bridge, BreadShelf, Island, LampPost, PLACE, Plinth, Signpost, Sun, on } from "./kit";
-import { Exhibit1 } from "./scene1";
+import { Dust, Glow, GodRay, LightPool, Torch, Tree, Vox, Zone } from "../../engine";
+import {
+  BannerFlag,
+  CastleGateWall,
+  CouncilTable,
+  DetailedBookshelf,
+  PLACE,
+  RoyalCarpet,
+  RoyalThrone,
+  StoneBillboard,
+  on,
+} from "./kit";
 
 /**
- * THE WORLD OF AN EXPLAINER: a few islands in one sky, and everything that happens on them.
- *
- *   ask     the question: one person, one thing, one price
- *   cause   why
- *   …       one island for each idea. Add them in the order the film visits them (PLACE, in kit.tsx).
- *
- * Two kinds of thing are mounted here, and both are here for the WHOLE film, because the camera flies:
- * it still sees what it has left, and it sees what it is coming to.
- *   1. The sets: the islands and what is fixed on them. This file.
- *   2. The exhibits: the people and things that DO something. One `ExhibitN` in each sceneN.tsx, driven by
- *      the film's clock. Mount every one of them below.
- *
- * This is a STARTER. The parts come from the topic's pack (Topics/Explainer/PACK.md).
- * 1 unit = 1 block = 1 metre.
+ * THE WORLD OF AN EXPLAINER: grounded, richly detailed Minecraft sets divided by <Zone>.
+ * Never drop bare single cubes for shelves, thrones, or walls — compose real depth with
+ * DetailedBookshelf, RoyalThrone, BannerFlag, CastleGateWall, StoneBillboard, and lit pools.
  */
-
-const Sets: React.FC = () => (
-  <>
-    {/* ---- ask: a baker's corner ---- */}
-    <Island position={PLACE.ask} size={[9, 7]} seed={1} />
-    <Plinth position={on(PLACE.ask, 1.2, 0, 0.3)} height={1} />
-    <BreadShelf position={on(PLACE.ask, 2.6, 0, -2.2)} rotationY={-0.25} count={6} />
-    <Signpost text="BAKERY" position={on(PLACE.ask, -3.1, 0, -2.2)} rotationY={0.35} />
-    <Tree position={on(PLACE.ask, -3.4, 0, 1.6)} height={3.6} />
-    <LampPost position={on(PLACE.ask, 3.8, 0, 2.4)} seed={2} />
-
-    {/* ---- cause ---- */}
-    <Island position={PLACE.cause} size={[9, 7]} seed={2} />
-    <Signpost text="MINT" position={on(PLACE.cause, 2.6, 0, -2.4)} rotationY={-0.4} />
-    <Tree position={on(PLACE.cause, 3.4, 0, 1.8)} height={3.2} leaf="#4a8c33" />
-
-    {/* Two ideas that are joined get a bridge. Two that are not, get sky. */}
-    <Bridge from={on(PLACE.ask, 4.5, 0, -0.4)} to={on(PLACE.cause, -4.5, -1, 0.6)} />
-  </>
-);
 
 export const World: React.FC = () => (
   <>
-    <Sun />
-    <Clouds y={-14} center={[14, 0, -6]} span={160} opacity={0.9} />
-    <Clouds y={34} center={[14, 0, -30]} span={200} />
-    <Sets />
+    {/* ---- ZONE 1: Throne & Council Hall ---- */}
+    <Zone name="hall">
+      <Vox kind="stoneBrick" position={on(PLACE.hall, 0, -0.25, 0)} size={[16, 0.5, 16]} />
+      {/* Back & side stone walls */}
+      <Vox kind="stoneBrick" position={on(PLACE.hall, 0, 3.2, -5.5)} size={[14, 6.4, 0.8]} />
+      <Vox kind="stoneBrick" position={on(PLACE.hall, -6.5, 3.2, 0)} size={[0.8, 6.4, 12]} />
+      <Vox kind="stoneBrick" position={on(PLACE.hall, 6.5, 3.2, 0)} size={[0.8, 6.4, 12]} />
 
-    {/* Every exhibit of the film, mounted for the whole film. */}
-    <Exhibit1 />
+      {/* Royal throne + runner + banners */}
+      <RoyalThrone position={on(PLACE.hall, 0, 0, -3.5)} />
+      <RoyalCarpet position={on(PLACE.hall, 0, 0, 0.2)} length={5.4} width={1.7} />
+      <BannerFlag position={on(PLACE.hall, -2.8, 3.3, -5.0)} emblem="crown" />
+      <BannerFlag position={on(PLACE.hall, 2.8, 3.3, -5.0)} emblem="crown" />
 
-    {/* Atmosphere is not optional: a ray, a pool of light, a glow and dust on every island the lens rests on. */}
-    <GodRay position={on(PLACE.ask, -1.5, 5.5, -1)} rotation={[0, 0, 0.5]} width={4} height={11} color="#fff0c8" opacity={0.07} />
-    <LightPool position={on(PLACE.ask, 0.4, 0.03, 0.4)} width={6} depth={4.6} color="#fff2c8" opacity={0.16} />
-    <Glow position={on(PLACE.ask, 1.2, 1.6, 0.1)} size={1.8} color="#ffe08a" opacity={0.28} />
-    <Dust position={on(PLACE.ask, 0, 2, 0)} area={[9, 4, 7]} count={40} size={0.04} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
-    <LightPool position={on(PLACE.cause, -0.8, 0.03, 0.2)} width={6} depth={4.6} color="#fff2c8" opacity={0.16} />
-    <Dust position={on(PLACE.cause, 0, 2, 0)} area={[9, 4, 7]} count={40} size={0.04} color="#fff7d8" opacity={0.6} seed={5} speed={0.2} />
+      {/* Detailed bookshelves flanking the hall — never flat boxes */}
+      <DetailedBookshelf position={on(PLACE.hall, -5.6, 0, -3.2)} rotationY={Math.PI / 2} seed={1} />
+      <DetailedBookshelf position={on(PLACE.hall, 5.6, 0, -3.2)} rotationY={-Math.PI / 2} seed={2} />
+
+      {/* Council desk pushed to east side for dialogue/work beats */}
+      <CouncilTable position={on(PLACE.hall, 3.2, 0, 1.4)} rotationY={-0.35} messy={false} />
+
+      {/* Warm readable torches & pools */}
+      <Torch position={on(PLACE.hall, -1.6, 2.2, -4.95)} />
+      <Torch position={on(PLACE.hall, 1.6, 2.2, -4.95)} />
+      <GodRay position={on(PLACE.hall, 0, 5.5, -1.5)} rotation={[0, 0, 0.3]} width={4.2} height={11} color="#fff2ce" opacity={0.07} />
+      <LightPool position={on(PLACE.hall, 0, 0.03, -1.0)} width={7.5} depth={6.5} color="#fff2d0" opacity={0.22} />
+      <Glow position={on(PLACE.hall, 0, 2.6, -3.4)} size={2.2} color="#ffe28a" opacity={0.28} />
+      <Dust position={on(PLACE.hall, 0, 2.0, -1.0)} area={[8, 4, 8]} count={36} size={0.035} color="#fff6d4" opacity={0.55} seed={11} speed={0.18} />
+    </Zone>
+
+    {/* ---- ZONE 2: Castle Courtyard & Voting Plaza ---- */}
+    <Zone name="square">
+      <Vox kind="cobble" position={on(PLACE.square, 0, -0.25, 0)} size={[26, 0.5, 26]} />
+      <CastleGateWall position={on(PLACE.square, 0, 0, -6.5)} width={14} height={6.2} />
+      <StoneBillboard text="YEAR 1" position={on(PLACE.square, -4.4, 3.2, -5.9)} width={2.8} height={1.1} />
+      <Tree position={on(PLACE.square, 6.2, 0, -2.5)} height={4.2} />
+      <Tree position={on(PLACE.square, -6.5, 0, 2.0)} height={3.8} />
+
+      <LightPool position={on(PLACE.square, 0, 0.03, 0)} width={9} depth={8} color="#fff5d8" opacity={0.18} />
+      <Dust position={on(PLACE.square, 0, 2.2, 0)} area={[10, 4, 10]} count={32} size={0.035} color="#fff8de" opacity={0.5} seed={22} speed={0.22} />
+    </Zone>
   </>
 );

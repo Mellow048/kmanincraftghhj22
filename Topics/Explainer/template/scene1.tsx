@@ -1,50 +1,156 @@
-import type React from "react";
-import { Bread, LOAF, MINT, PriceTag, Printer, SAM, STOPS, Sam, clock, ease, flightScene, pop, ramp, timing } from "./kit";
+import {
+  BallotBox,
+  ChatToast,
+  Chest,
+  CitizenLead,
+  CouncilTable,
+  CrownCushion,
+  EliteLead,
+  Official,
+  PLACE,
+  RuleBoard,
+  cam,
+  ease,
+  on,
+  pop,
+  ramp,
+  storyScene,
+  timing,
+  wordAt,
+} from "./kit";
 
 /**
- * THE QUESTION. One person, one thing everybody knows the price of, and the question the film answers.
+ * STARTER SCENE — Demonstrates the Remastered Explainer Loop Pattern:
+ *   - Shot 1 (`1.hook`) & Shot 4 (`4.loop`) share the exact climax throne-room framing -> infinite loop!
+ *   - Shot 2 (`2.problem`) stages CitizenLead ("Miles") in the chaotic council plaza with composite props.
+ *   - Shot 3 (`3.leader`) introduces EliteLead ("Sterling") fixing rules & winning the vote.
  *
- * One scene file per BEAT of the script (Topics/Explainer/SCRIPT.md). A scene file holds two things:
- *
- *   ExhibitN   what the beat SHOWS. It is mounted by world.tsx for the whole film, because a camera that
- *              flies away from a thing still sees it. It is driven by the film's clock: it waits in its first
- *              state until its word is said, and keeps its last state afterwards.
- *   sceneN     where the camera GOES: one stop for each line of narration.md, flown to as the line begins.
- *
- * Copy this file to scene2.tsx, scene3.tsx…, add each scene to film.tsx and each exhibit to world.tsx.
- * `npm run check` tells you the next line that has no stop.
+ * Expand to 8 full beats (25–45 fast story shots, 1.1–1.9s median cut). Never use static empty-box sets.
  */
-export const Exhibit1: React.FC = () => {
-  // Seconds since a word was said. Negative before it: so `pop(…, 0)` is 0 until the word, and 1 after.
-  const price = clock.useSince("1.loaf", "price");
-  const asks = clock.useSince("1.ask");
-  // The machine on the next island is already running when the camera gets there.
-  const printing = clock.useSince("1.ask");
+
+const CLIMAX_CAM = cam.push({
+  on: on(PLACE.hall, 0, 1.45, -2.5),
+  dist: 3.4,
+  to: 2.75,
+  yaw: 12,
+  pitch: 5,
+  fov: 40,
+});
+
+const ClimaxCoronation: React.FC<{ t: number }> = ({ t }) => {
+  const lift = ease(ramp(t, 0.15, 0.85));
   return (
     <>
-      <Sam position={SAM} rotationY={0.5} animation="idle" blendTo="shrug" blend={1 - ease(ramp(asks, 0.3, 0.7))} face={price > 0 ? "wow" : "uneasy"} lookAt={price > 0 ? [LOAF[0], LOAF[1] + 0.3, LOAF[2]] : undefined} />
-      <Bread position={LOAF} rotationY={-0.3} scale={2} />
-      <PriceTag text="1" position={[LOAF[0] + 0.1, LOAF[1] + 1.5, LOAF[2] + 0.1]} rotationY={-0.2} scale={pop(price, 0) * 1.25} swing={Math.sin(price * 5) * 0.12 * Math.exp(-Math.max(0, price) * 1.5)} />
-      <Printer position={MINT} rotationY={0.35} out={Math.max(0, printing) * 3} />
+      <Official
+        role="mod"
+        position={on(PLACE.hall, -0.95, 0.32, -2.55)}
+        rotationY={0.85}
+        animation="hold"
+        lookAt={on(PLACE.hall, 0.1, 1.65, -2.55)}
+      >
+        <CrownCushion position={[0, 0.14, 0.25]} showCrown={false} />
+      </Official>
+      <EliteLead
+        variant="general"
+        nameTag={t < 0.8 ? undefined : "Sterling"}
+        position={on(PLACE.hall, 0.05, 0.32, -2.55)}
+        rotationY={0.1}
+        animation="reachUp"
+        blendTo="cheer"
+        blend={lift}
+        face="smug"
+        crown
+        time={t}
+      />
     </>
   );
 };
 
-export const scene1 = flightScene(timing, {
+const problemLook = wordAt("2.problem", "empty");
+const crownWord = wordAt("3.leader", "crowns");
+
+export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "The question",
-  // Scene 1 opens the film: `from` is where the first frame is. For scene 2 it is the LAST stop of scene 1.
-  from: STOPS.open,
+  title: "Cold Climax & Two-Lead Hook",
   shots: [
     {
-      cue: "1.ask",
-      to: STOPS.sam,
-      note: "TODO. The question, on the face of the person it is a problem for. Fly in from the whole island to Sam: small world, then one man.",
+      cue: "1.hook",
+      ...CLIMAX_CAM,
+      zone: "hall",
+      note: "Frame-0 cold climax hook: Sterling raises the gold crown over the throne carpet, matching the final loop shot.",
+      stage: (t) => <ClimaxCoronation t={t} />,
     },
     {
-      cue: "1.loaf",
-      to: STOPS.loaf,
-      note: "TODO. The one thing everybody knows the price of, and its price, popping on as the word is said. Every later number is measured against this one.",
+      cue: "2.problem",
+      ...cam.orbit({
+        on: on(PLACE.square, 0, 1.25, 0.6),
+        dist: 4.1,
+        yaw: -14,
+        yawTo: 12,
+        pitch: 10,
+        fov: 42,
+      }),
+      zone: "square",
+      note: "Introduce Character 1 (CitizenLead Miles) beside crooked chaos rules and an open empty chest in the courtyard.",
+      stage: (t) => (
+        <>
+          <RuleBoard position={on(PLACE.square, -0.9, 1.9, -1.6)} rotationY={0.25} mode="chaos" />
+          <Chest position={on(PLACE.square, 1.1, 0, 0.2)} rotationY={-0.35} open={ease(ramp(t, 0.1, problemLook + 0.2))} gold={0} kind="emerald" />
+          <CitizenLead
+            nameTag="Miles"
+            nameTagYaw={0.12}
+            position={on(PLACE.square, -0.45, 0, 0.9)}
+            rotationY={0.22}
+            animation="shrug"
+            face="frown"
+            lookAt={on(PLACE.square, 1.1, 0.4, 0.2)}
+            time={t}
+          />
+        </>
+      ),
+    },
+    {
+      cue: "3.leader",
+      ...cam.push({
+        on: on(PLACE.hall, 1.1, 1.35, 1.0),
+        dist: 3.9,
+        to: 3.1,
+        yaw: -22,
+        pitch: 7,
+        fov: 40,
+      }),
+      zone: "hall",
+      note: "Introduce Character 2 (EliteLead Sterling) imposing order beside the BallotBox and crisp vote toast.",
+      stage: (t) => (
+        <>
+          <RuleBoard position={on(PLACE.hall, 0.2, 2.0, -1.6)} rotationY={-0.15} mode="order" />
+          <CouncilTable position={on(PLACE.hall, 1.2, 0, 1.1)} messy={false} />
+          <BallotBox position={on(PLACE.hall, 1.2, 0.81, 1.1)} />
+          <EliteLead
+            variant="pres"
+            nameTag="Sterling"
+            crown={t >= crownWord}
+            position={on(PLACE.hall, 0.15, 0, 1.3)}
+            rotationY={0.18}
+            animation="point"
+            face="smile"
+            time={t}
+          />
+          <ChatToast
+            title="[Vote] YES: 99%"
+            position={on(PLACE.hall, 1.45, 1.85, 1.15)}
+            rotationY={-0.25}
+            scale={pop(t, 0.35) * 0.85}
+          />
+        </>
+      ),
+    },
+    {
+      cue: "4.loop",
+      ...CLIMAX_CAM,
+      zone: "hall",
+      note: "Seamless loop payoff returning to the exact Frame-0 coronation pose mid-clause ('...and that's').",
+      stage: (t) => <ClimaxCoronation t={t} />,
     },
   ],
 });

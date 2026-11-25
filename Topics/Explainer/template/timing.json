@@ -1,157 +1,189 @@
 {
  "film": "__ID__",
  "fps": 30,
- "duration": 6.1667,
+ "duration": 7.8629,
  "estimated": true,
+ "wordTiming": "estimated",
  "tempo": 1.0,
- "wordsPerMinute": 264.6,
+ "wordsPerMinute": 228.9,
  "audio": null,
  "clips": [],
  "cues": [
   {
-   "id": "1.ask",
+   "id": "1.hook",
    "start": 0.0,
-   "end": 2.2333,
-   "text": "Why does a loaf of bread cost more every year?"
+   "end": 1.2709,
+   "text": "__TITLE__, explained using Minecraft."
   },
   {
-   "id": "1.loaf",
-   "start": 2.2333,
-   "end": 4.1667,
-   "text": "Here is one loaf, and here is its price."
+   "id": "2.problem",
+   "start": 1.2709,
+   "end": 3.6968,
+   "text": "Miles wants rules that work while the chests sit empty."
   },
   {
-   "id": "9.sub",
-   "start": 4.1667,
-   "end": 6.1667,
-   "text": "Subscribe, before that costs more too."
+   "id": "3.leader",
+   "start": 3.6968,
+   "end": 5.822,
+   "text": "Sterling takes charge fast and crowns himself king."
+  },
+  {
+   "id": "4.loop",
+   "start": 5.822,
+   "end": 7.8629,
+   "text": "Miles thought a vote solved it, and that's"
   }
  ],
  "words": [
   {
-   "w": "Why",
+   "w": "__TITLE__,",
    "s": 0.0,
-   "e": 0.181
+   "e": 0.309
   },
   {
-   "w": "does",
-   "s": 0.181,
-   "e": 0.361
+   "w": "explained",
+   "s": 0.319,
+   "e": 0.627
   },
   {
-   "w": "a",
-   "s": 0.361,
-   "e": 0.542
+   "w": "using",
+   "s": 0.637,
+   "e": 0.862
   },
   {
-   "w": "loaf",
-   "s": 0.542,
-   "e": 0.723
+   "w": "Minecraft.",
+   "s": 0.872,
+   "e": 1.181
   },
   {
-   "w": "of",
-   "s": 0.723,
-   "e": 0.903
+   "w": "Miles",
+   "s": 1.271,
+   "e": 1.495
   },
   {
-   "w": "bread",
-   "s": 0.903,
-   "e": 1.084
+   "w": "wants",
+   "s": 1.505,
+   "e": 1.73
   },
   {
-   "w": "cost",
-   "s": 1.084,
-   "e": 1.265
-  },
-  {
-   "w": "more",
-   "s": 1.265,
-   "e": 1.445
-  },
-  {
-   "w": "every",
-   "s": 1.445,
-   "e": 1.894
-  },
-  {
-   "w": "year?",
-   "s": 1.894,
-   "e": 2.075
-  },
-  {
-   "w": "Here",
-   "s": 2.289,
-   "e": 2.469
-  },
-  {
-   "w": "is",
-   "s": 2.469,
-   "e": 2.65
-  },
-  {
-   "w": "one",
-   "s": 2.65,
-   "e": 2.831
-  },
-  {
-   "w": "loaf,",
-   "s": 2.831,
-   "e": 3.011
-  },
-  {
-   "w": "and",
-   "s": 3.105,
-   "e": 3.286
-  },
-  {
-   "w": "here",
-   "s": 3.286,
-   "e": 3.467
-  },
-  {
-   "w": "is",
-   "s": 3.467,
-   "e": 3.647
-  },
-  {
-   "w": "its",
-   "s": 3.647,
-   "e": 3.828
-  },
-  {
-   "w": "price.",
-   "s": 3.828,
-   "e": 4.009
-  },
-  {
-   "w": "Subscribe,",
-   "s": 4.223,
-   "e": 4.537
-  },
-  {
-   "w": "before",
-   "s": 4.631,
-   "e": 4.945
+   "w": "rules",
+   "s": 1.74,
+   "e": 1.965
   },
   {
    "w": "that",
-   "s": 4.945,
-   "e": 5.126
+   "s": 1.975,
+   "e": 2.199
   },
   {
-   "w": "costs",
-   "s": 5.126,
-   "e": 5.307
+   "w": "work",
+   "s": 2.209,
+   "e": 2.434
   },
   {
-   "w": "more",
-   "s": 5.307,
-   "e": 5.488
+   "w": "while",
+   "s": 2.444,
+   "e": 2.668
   },
   {
-   "w": "too.",
-   "s": 5.488,
-   "e": 5.668
+   "w": "the",
+   "s": 2.678,
+   "e": 2.903
+  },
+  {
+   "w": "chests",
+   "s": 2.913,
+   "e": 3.138
+  },
+  {
+   "w": "sit",
+   "s": 3.148,
+   "e": 3.372
+  },
+  {
+   "w": "empty.",
+   "s": 3.382,
+   "e": 3.607
+  },
+  {
+   "w": "Sterling",
+   "s": 3.697,
+   "e": 4.006
+  },
+  {
+   "w": "takes",
+   "s": 4.016,
+   "e": 4.24
+  },
+  {
+   "w": "charge",
+   "s": 4.25,
+   "e": 4.475
+  },
+  {
+   "w": "fast",
+   "s": 4.485,
+   "e": 4.709
+  },
+  {
+   "w": "and",
+   "s": 4.719,
+   "e": 4.944
+  },
+  {
+   "w": "crowns",
+   "s": 4.954,
+   "e": 5.179
+  },
+  {
+   "w": "himself",
+   "s": 5.189,
+   "e": 5.497
+  },
+  {
+   "w": "king.",
+   "s": 5.507,
+   "e": 5.732
+  },
+  {
+   "w": "Miles",
+   "s": 5.822,
+   "e": 6.047
+  },
+  {
+   "w": "thought",
+   "s": 6.057,
+   "e": 6.365
+  },
+  {
+   "w": "a",
+   "s": 6.375,
+   "e": 6.6
+  },
+  {
+   "w": "vote",
+   "s": 6.61,
+   "e": 6.835
+  },
+  {
+   "w": "solved",
+   "s": 6.845,
+   "e": 7.069
+  },
+  {
+   "w": "it,",
+   "s": 7.079,
+   "e": 7.304
+  },
+  {
+   "w": "and",
+   "s": 7.314,
+   "e": 7.538
+  },
+  {
+   "w": "that's",
+   "s": 7.548,
+   "e": 7.773
   }
  ]
 }

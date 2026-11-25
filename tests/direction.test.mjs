@@ -257,11 +257,13 @@ test('remaster v2: cam helpers, screenOffset, and shader presets behave determin
     assert.ok(vibrant && vibrant.vibrance > DEFAULT_SHADERS.vibrance && vibrant.enabled === true);
     assert.equal(resolveShaders(undefined), null);
 
-    // Check dual-color caption font & 3D sight-gag props export cleanly
+    // Check dual-color caption font, 3D sight-gag props, and Explainer Remaster cast/props export cleanly
     const out2 = path.join(scratch, 'props-font.mjs');
     await build({
       stdin: {
-        contents: `export { wordTexture } from './src/engine/pixelfont';\nexport { FloatingNumber, ChatToast, Chicken } from './src/engine/props';`,
+        contents: `export { wordTexture } from './src/engine/pixelfont';
+export { FloatingNumber, ChatToast, Chicken } from './src/engine/props';
+export { CitizenLead, EliteLead, Official, ExplainerCrowd, DetailedBookshelf, RuleBoard, RoyalThrone, Crown, CrownCushion, BallotBox, StoneBillboard, CastleGateWall, NameTag } from './Topics/Explainer';`,
         resolveDir: root,
       },
       outfile: out2,
@@ -273,12 +275,12 @@ test('remaster v2: cam helpers, screenOffset, and shader presets behave determin
       jsx: 'automatic',
       logLevel: 'silent',
     });
-    const { wordTexture, FloatingNumber, ChatToast, Chicken } = await import(pathToFileURL(out2));
-    const chatTex = wordTexture('<Dad> 100%: +2!');
+    const mod2 = await import(pathToFileURL(out2));
+    const chatTex = mod2.wordTexture('<Dad> 100%: +2!');
     assert.ok(chatTex.image.width > 10 && chatTex.image.height === 11);
-    assert.equal(typeof FloatingNumber, 'function');
-    assert.equal(typeof ChatToast, 'function');
-    assert.equal(typeof Chicken, 'function');
+    for (const sym of ['FloatingNumber', 'ChatToast', 'Chicken', 'CitizenLead', 'EliteLead', 'DetailedBookshelf', 'RuleBoard', 'RoyalThrone', 'Crown', 'BallotBox', 'StoneBillboard', 'NameTag']) {
+      assert.equal(typeof mod2[sym], 'function', `${sym} should be exported`);
+    }
   } finally {
     fs.rmSync(scratch, { recursive: true, force: true });
   }

@@ -103,6 +103,8 @@ export type MinecraftAvatarProps = {
 
   /** Anything parented to the right hand. */
   children?: React.ReactNode;
+  /** Anything attached to the chest/back (ties, coat buttons, sashes, satchels, capes). Origin is chest center. */
+  torso?: React.ReactNode;
   /**
    * Anything worn on the head: a hat, a mask, a pumpkin. It is parented to the head, with its origin
    * at the middle of the head cube, so it nods, turns and lies down with it. +Z is the face.
@@ -216,6 +218,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   hairLayer = false,
   pose: posed,
   children,
+  torso,
   head,
 }) => {
   const frame = useCurrentFrame();
@@ -363,6 +366,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           >
             <boxGeometry args={[8 * PX, 12 * PX, 4 * PX]} />
           </mesh>
+          {torso ? <group position={[0, 6 * PX + breathWave * 0.003 * breathAmt, 0]}>{torso}</group> : null}
         </group>
 
         {/* head */}

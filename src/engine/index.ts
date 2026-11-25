@@ -11,6 +11,7 @@ export * from "./locomotion";
 export * from "./Look";
 export * from "./math";
 export * from "./MinecraftAvatar";
+export * from "./pixelfont";
 export * from "./props";
 export * from "./shaders";
 export * from "./story";
