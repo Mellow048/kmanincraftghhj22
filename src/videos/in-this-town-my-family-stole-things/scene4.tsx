@@ -35,8 +35,8 @@ export const scene4 = storyScene(timing, {
       note: "'Every dog in that town knew before I did': a dog, up on its feet, ears up, looking straight past the lens at him. Low and close so the audience is on the fox's side of the bark.",
       stage: (t) => (
         <>
-          <DogVillager who={1} position={[PLACE.path[0] + 3.4, 0, PLACE.path[2] + 1.5]} rotationY={-0.664} scale={0.82} bark={1} tailUp={0.2} lookAt={[PLACE.path[0] + 2.2, 0.5, PLACE.path[2] - 0.2]} />
-          <Teller position={[PLACE.path[0] + 2.2, 0, PLACE.path[2] - 0.2]} rotationY={-0.664} animation="idle" face="fear" ears={1} tailUp={0} time={t} />
+          <DogVillager who={1} position={[PLACE.path[0] + 3.4, 0, PLACE.path[2] + 1.5]} rotationY={-0.314} scale={0.82} bark={1} tailUp={0.2} lookAt={[PLACE.path[0] + 2.2, 0.5, PLACE.path[2] - 0.2]} />
+          <Teller position={[PLACE.path[0] + 2.2, 0, PLACE.path[2] - 0.2]} rotationY={-0.594} animation="idle" face="fear" ears={1} tailUp={0} time={t} />
         </>
       ),
     },
@@ -48,8 +48,8 @@ export const scene4 = storyScene(timing, {
       note: "On 'turned round': the golem on the path rotates to face him, and the crane up makes it double in height in one move. Halfway up the path is where he stops, and the audience should feel the exact inch of it.",
       stage: (t) => (
         <>
-          <IronGolem position={[PLACE.path[0] - 0.2, 0, PLACE.path[2] - 1.6]} rotationY={0.453} armR={-0.5} armL={-0.4} headPitch={0.4} />
-          <Teller position={[PLACE.path[0] + 1.5, 0, PLACE.path[2] + 0.6]} rotationY={0.453} animation="idle" face={t > TURN ? "fear" : "brave"} ears={t > TURN ? 1 : 0.5} carry={<RedFlower scale={0.8} rotation={[0, 0, 1.5]} />} tailUp={0.05} time={t} />
+          <IronGolem position={[PLACE.path[0] - 0.2, 0, PLACE.path[2] - 1.6]} rotationY={0.803} armR={-0.5} armL={-0.4} headPitch={0.4} />
+          <Teller position={[PLACE.path[0] + 1.5, 0, PLACE.path[2] + 0.6]} rotationY={0.523} animation="idle" face={t > TURN ? "fear" : "brave"} ears={t > TURN ? 1 : 0.5} carry={<RedFlower scale={0.8} rotation={[0, 0, 1.5]} />} tailUp={0.05} time={t} />
         </>
       ),
     },
@@ -65,7 +65,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.night",
-      ...cam.push({ on: [-9.1, 1.46, -4.85], dist: 2.9, to: 2.6, yaw: 4, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [-8.78, 1.72, -4.7], dist: 2.9, to: 2.6, yaw: 4, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'That night there were berries on the sill': the cup gone, and the pile of berries in its place. The berries were never a symbol; they are food, and they are enough for a fox.",
@@ -78,7 +78,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "9.drop",
-      ...cam.push({ on: [-9.0, 1.36, -4.7], dist: 2.9, to: 2.6, yaw: -12, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [-8.78, 1.72, -4.7], dist: 2.9, to: 2.6, yaw: -12, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "On 'dropped': the flower leaves his jaw and lands on the sill, next to the berries. One movement, no cut. The drop is the engine of the film, so give it the only unhurried frame in the chase.",
@@ -88,7 +88,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Berries position={[PLACE.sill[0] - 0.28, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.08]} scale={1.2} count={9} t={t} />
             <RedFlower position={[PLACE.sill[0] + 0.16, PLACE.sill[1] + 0.12 - 0.1 * k, PLACE.sill[2] + 0.24 + 0.1 * k]} scale={0.8} rotation={[0, 0, 1.5 + 1.2 * k]} />
-            <Teller position={[PLACE.sill[0] + 0.4, 0, PLACE.sill[2] + 1.1]} rotationY={-0.559} animation={k < 1 ? "hold" : "idle"} face="calm" tailUp={0.45} time={t} />
+            <Teller position={[PLACE.sill[0] + 0.4, 0, PLACE.sill[2] + 1.1]} rotationY={-0.209} animation={k < 1 ? "hold" : "idle"} face="calm" tailUp={0.45} time={t} />
           </>
         );
       },
@@ -103,7 +103,7 @@ export const scene4 = storyScene(timing, {
         <>
           <Berries position={[PLACE.sill[0] - 0.2, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.1]} scale={1.1} count={4} t={t} />
           <RedFlower position={[PLACE.sill[0] + 0.5, PLACE.sill[1] + 0.1, PLACE.sill[2] + 0.3]} scale={0.8} rotation={[0, 0, 2.6]} wilt={0.4} />
-          <Teller position={[PLACE.sill[0] - 0.2, 0, PLACE.sill[2] + 1.0]} rotationY={-0.071} animation="hold" face="laugh" carry={<Berries scale={0.8} count={3} t={t} />} tailUp={0.55} time={t} />
+          <Teller position={[PLACE.sill[0] - 0.2, 0, PLACE.sill[2] + 1.0]} rotationY={0.279} animation="hold" face="laugh" carry={<Berries scale={0.8} count={3} t={t} />} tailUp={0.55} time={t} />
         </>
       ),
     },

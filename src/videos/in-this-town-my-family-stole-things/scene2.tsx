@@ -25,7 +25,7 @@ export const scene2 = storyScene(timing, {
       note: "The father, over the teller's shoulder, at the foot of the path: the first night on his own. Dad's head is level with the boy's window behind him — the window is in the shot before anyone says so.",
       stage: (t) => (
         <>
-          <Teller position={[-10.4, 0, -2.1]} rotationY={0.662} animation="idle" face="brave" tailUp={0.5} time={t} />
+          <Teller position={[-10.4, 0, -2.1]} rotationY={1.012} animation="idle" face="brave" tailUp={0.5} time={t} />
           <DadFox position={[-10.4, 0, -2.9]} rotationY={0} animation="talk" face="calm" tailUp={0.3} time={t} headPitch={0.18} />
         </>
       ),
@@ -42,20 +42,20 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.window",
-      ...cam.push({ on: [-9.40, 0.68, -2.20], dist: 2.9, to: 2.6, yaw: -14, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [-8.78, 1.72, -4.7], dist: 2.9, to: 2.6, yaw: -14, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'Then I saw the window': crane up the wall from the teller's eyeline to the sill, so the audience finds the cup exactly when he does. The window is open a hand's width; the flower's red is the only colour.",
       stage: (t) => (
         <>
           <SillCup position={[PLACE.sill[0], PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-          <Teller position={[-9.4, 0, -2.2]} rotationY={-0.594} animation="lookAround" face="wow" lookAt={PLACE.sill} tailUp={0.55} time={t} />
+          <Teller position={[-9.4, 0, -2.2]} rotationY={-0.244} animation="lookAround" face="wow" lookAt={PLACE.sill} tailUp={0.55} time={t} />
         </>
       ),
     },
     {
       cue: "4.width",
-      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 2.9, to: 2.6, yaw: -22, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [-8.78, 1.72, -4.7], dist: 2.9, to: 2.6, yaw: -22, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "On the window itself: the gap, the sill, and the cup in it. Do not push into the room. The point is that the gap is the width of a paw and has been all night, every night.",
@@ -63,7 +63,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.cup",
-      ...cam.push({ on: [-9.10, 0.68, -3.55], dist: 2.9, to: 2.6, yaw: 12, pitch: 4, fov: 38 }),
+      ...cam.push({ on: [-8.78, 1.72, -4.7], dist: 2.9, to: 2.6, yaw: 12, pitch: 4, fov: 38 }),
       zone: "street",
       look: "overworld-sunset",
       note: "'And in the cup, one red flower': the closest shot in the film, and it is only a flower in a cup. This frame is the whole promise of the film. Hold it.",
@@ -76,7 +76,7 @@ export const scene2 = storyScene(timing, {
       look: "overworld-sunset",
       note: "'I didn't even have to climb': the teller's face arrives at the sill in one movement, no climb, no struggle — reachUp from the step, and he is already there. Comedy is in how little it took.",
       stage: (t) => (
-        <Teller position={[-9.1, 0, -3.55]} rotationY={0.104} animation="reachUp" face={t > REACH ? "smile" : "uneasy"} lookAt={PLACE.sill} tailUp={0.7} time={t} />
+        <Teller position={[-9.1, 0, -3.55]} rotationY={0.454} animation="reachUp" face={t > REACH ? "smile" : "uneasy"} lookAt={PLACE.sill} tailUp={0.7} time={t} />
       ),
     },
     {
@@ -88,7 +88,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} />
-          <Teller position={[-8.9, 0, -3.5]} rotationY={-0.490} animation="idle" face="grin" carry={<FlowerInMouth />} tailUp={0.65} time={t} />
+          <Teller position={[-8.9, 0, -3.5]} rotationY={-0.140} animation="idle" face="grin" carry={<FlowerInMouth />} tailUp={0.65} time={t} />
         </>
       ),
     },
@@ -99,7 +99,7 @@ export const scene2 = storyScene(timing, {
       look: "overworld-sunset",
       note: "'I thought, this is a thing that matters': profile, the flower across his jaw, a small fox holding something that is not food for the first time. The orbit keeps the red flower on screen and the sky behind him.",
       stage: (t) => (
-        <Teller position={[-8.85, 0, -3.4]} rotationY={-0.943} animation="idle" face="calm" carry={<FlowerInMouth />} tailUp={0.5} time={t} headPitch={0.1} />
+        <Teller position={[-8.85, 0, -3.4]} rotationY={-0.593} animation="idle" face="calm" carry={<FlowerInMouth />} tailUp={0.5} time={t} headPitch={0.1} />
       ),
     },
     {
