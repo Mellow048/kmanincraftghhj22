@@ -30,13 +30,13 @@ What is planted, and where it pays off:
 
 | Planted | Pays off |
 |---|---|
-| The cup on the sill, and the window left open a hand's width (`4.window`, `4.cup`) | `10.open`, `12.flower`: the window was never a way in. It was a counter |
-| "We carry one thing in our mouth, and we drop it to eat" (`3.carry`, `3.drop`) | `9.drop`, `9.ate`: he drops the flower for the berries, which is the whole engine of the trade |
-| The den full of things, and the **eleven left boots** nobody explains (`3.den`, `3.rope`) | `11.list`, `11.count`: a berry under every thing they took, and the boots were never worth a berry |
-| "Nothing anybody is holding" — the family's own rule (`4.one`) | `7.not`: what he did was not stealing; it was taking a thing out of somebody's hands |
-| The iron golem walks the path at dawn (`6.golem`, `6.gave`) | `8.turn`: it is the thing that turns round at noon |
-| "In the day. That is the only way it counts" (`7.day`) | `8.walk`: he tries, and fails, and it costs him the whole day |
-| He is a terrible thief, said three times (`1.me`, `5.easy`, `13.bad`) | `13.sister`: it is the first thing he ever took that was worth anything |
+| The main idea, said in the first four lines: berries on the sill, one boy paying us back (`1.berries`, `2.paying`) | `12.trade`, `12.want`: the price of the one thing that was never for sale |
+| "We carry one thing in our mouth, and we drop it to eat" (`3.rule`, `3.drop`) | `9.drop`, `9.ate`: he drops the flower for the berries, which is what taught the boy the trick |
+| The cup on the sill, the window open a hand's width (`4.window`, `4.cup`) | `12.second`: the window was never a way in. It was a counter |
+| The iron golem gives the boy the flower (`6.gave`) | `11.given`, `12.none`: a gift is the one thing a thief cannot put back |
+| "Nothing anybody is holding" — the family's own rule (`4.one`) | `7.said`: what he did was not stealing, it was taking a thing out of somebody's hands |
+| "The one thing he wanted was the one thing we never sold" (`12.want`) | `13.berry`: he answers it with a berry in the second cup |
+| "My dad took a sword once" (`1.dad`) | `14.sub`: the CTA asks the one question still open — what the boy wants for it |
 
 The lines below are the script. Cue ids are `<beat>.<word>`. One line is one shot; a fight or a run may be cut into
 more with `cut:`.
@@ -44,18 +44,16 @@ more with `cut:`.
 ```narration
 # clip 01-hook
 [1.town]     In this town, my family stole things.
-[1.dad]      My dad took a sword once,
-[1.sis]      my sister took a whole cooked chicken,
+[1.dad]      My dad took a sword once, my sister took a whole cooked chicken,
 [1.me]       and I was the worst thief we ever had.
-[2.sister]   My sister could steal the pin out of a hat and hang it back up,
-[2.roof]     and I fell off a roof twice in one night.
-[3.den]      Our den was full of things, a bell rope, a hat,
-[3.rope]     eleven left boots, all eleven of them left,
-[3.boots]    and nobody ever explained the boots.
-[3.carry]    We carry one thing in our mouth, that's the rule,
-[3.drop]     and if we find food we drop it to eat.
-[3.good]     It was a good life.
-[3.but]      But I had never taken one thing that mattered.
+[2.berries]  And every night there were berries on our sill.
+[2.paying]   One boy was paying us back for every single thing we took.
+[2.never]    We never once asked why.
+[3.rule]     Here's how it worked. We carry one thing in our mouth,
+[3.drop]     and if we find food, we drop it to eat.
+[3.trade]    He worked that out. He left food, we left the thing.
+[3.flower]   Then I took a red flower off his sill,
+[3.cant]     and that one couldn't be paid for.
 
 # clip 02-rule
 [4.night]    On my first night alone my dad gave me the rules.
@@ -72,11 +70,11 @@ more with `cut:`.
 [6.hedge]    In the morning I watched the house from the hedge,
 [6.boy]      and the boy came out to the cup,
 [6.cried]    he looked in it, then he sat on the step and cried.
-[6.golem]    The iron golem came up the path and stopped,
+[6.golem]    The iron golem came up the path and stopped.
 [6.gave]     It gave him that flower. I worked that out later.
 [7.sister]   My sister found me in the hedge with a whole chicken in her mouth.
 [7.said]     "You took a thing that was a present," she said. "That's not stealing. That's hurting,"
-[7.day]      take it back in the day, that's the only way it counts."
+[7.day]      "take it back in the day. That's the only way it counts."
 
 # clip 04-daylight
 [8.walk]     So I went back in the day, a fox in a village at noon,
@@ -89,23 +87,23 @@ more with `cut:`.
 [9.nothing]  Then I went home with nothing at all.
 
 # clip 05-trade
-[10.next]    Next night, berries again, and a boot, the left one.
-[10.dropped] I dropped the boot.
+[10.next]    Next night, more berries than ever.
 [10.told]    "He's not scared of us," my sister said. "He's waiting."
-[11.corner]  So I looked in our den, and in the corner, behind all of it, berries.
-[11.count]   One berry under every single thing we ever took,
-[11.boots2]  eleven boots, ten berries, so the boots were never worth one.
-[11.buying]  He was buying his town back, one thing a night,
-[11.never]   and we never once asked why.
-[12.none]    He wasn't feeding me.
-[12.trade]   He was trading.
+[11.corner]  So I looked in our den, behind all of it, berries.
+[11.count]   One berry under every single thing we ever took.
+[11.every]   Every one. He counted every one.
+[11.gift]    Then I looked at the cup, and the golem, and the flower,
+[11.given]   and I got it. That flower wasn't stolen. It was given.
+[12.none]    So he couldn't buy it back.
+[12.trade]   He was paying us back, one thing a night,
+[12.want]    and the one thing he wanted was the one thing we never sold.
 [12.flower]  And in the cup that morning, a new flower,
-[12.second]  and a second cup beside it, empty.
+[12.second]  and a second cup beside it. Empty.
 
 # clip 06-button
 [13.berry]   So I put a berry in it.
 [13.bad]     I'm a terrible thief.
 [13.sister]  My sister says it's the first thing I ever took worth anything.
 [13.only]    In this town my family stole things. I traded.
-[14.sub]     Subscribe before I find out what the boots were for.
+[14.sub]     Subscribe before I find out what he wants for the sword.
 ```
