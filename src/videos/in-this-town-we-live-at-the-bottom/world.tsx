@@ -137,25 +137,25 @@ const LanternIn: React.FC<{ position: Vec3 }> = ({ position }) => (
 );
 
 const Top: React.FC<{ night: boolean }> = ({ night }) => (
-  <group position={PLACE.gate}>
-    <Vox kind="stoneBrick" position={[0, -0.5, -6]} size={[40, 1, 34]} tile={2} />
+  <group>
+    <Vox kind="stoneBrick" position={top(0, -0.5, -6)} size={[44, 1, 38]} tile={2} />
     {/* the wall the gate is set in */}
-    <Vox kind="stoneBrick" position={[-9.5, 3, 0]} size={[10, 6, 1.2]} tile={2} />
-    <Vox kind="stoneBrick" position={[9.5, 3, 0]} size={[10, 6, 1.2]} tile={2} />
-    <Vox kind="stoneBrick" position={[0, 5.6, 0]} size={[9, 1.2, 1.2]} tile={2} />
+    <Vox kind="stoneBrick" position={top(-9.5, 3, 0)} size={[10, 6, 1.2]} tile={2} />
+    <Vox kind="stoneBrick" position={top(9.5, 3, 0)} size={[10, 6, 1.2]} tile={2} />
+    <Vox kind="stoneBrick" position={top(0, 5.6, 0)} size={[9, 1.2, 1.2]} tile={2} />
     {/* the street behind the gate: a lamp, a bin, a bench, one thin tree */}
     <LampPost position={top(-2.4, 0, -4.5)} />
-    <Vox kind="darkPlanks" position={[top(0, 0, -5.6)[0] + 2.2, 0.5, top(0, 0, -5.6)[2]]} size={[0.9, 1.0, 0.9]} />
-    <Vox kind="planks" position={[top(0, 0, -5.6)[0] - 2.6, 0.45, top(0, 0, -5.6)[2] + 1.2]} size={[2.2, 0.12, 0.6]} />
-    <Vox kind="planks" position={[top(0, 0, -5.6)[0] - 3.4, 0.22, top(0, 0, -5.6)[2] + 1.2]} size={[0.14, 0.5, 0.5]} />
-    <Vox kind="planks" position={[top(0, 0, -5.6)[0] - 1.8, 0.22, top(0, 0, -5.6)[2] + 1.2]} size={[0.14, 0.5, 0.5]} />
-    <Tree position={[top(0, 0, -6)[0] + 5.5, 0, top(0, 0, -6)[2] - 3]} height={3.2} spread={0.7} />
+    <Vox kind="darkPlanks" position={top(2.2, 0.5, -5.6)} size={[0.9, 1.0, 0.9]} />
+    <Vox kind="planks" position={top(-2.6, 0.45, -4.4)} size={[2.2, 0.12, 0.6]} />
+    <Vox kind="planks" position={top(-3.4, 0.22, -4.4)} size={[0.14, 0.5, 0.5]} />
+    <Vox kind="planks" position={top(-1.8, 0.22, -4.4)} size={[0.14, 0.5, 0.5]} />
+    <Tree position={top(5.5, 0, -9)} height={3.2} spread={0.7} />
     {/* more street, going away: clean, plain, nobody in it */}
     {[-7.6, -9.4].map((x, i) => (
-      <Vox key={i} kind="stoneBrick" position={[top(0, 0, -6)[0] + x, 2.4, top(0, 0, -6)[2] - 4 - i * 3]} size={[4.5, 4.8, 5]} tile={2} />
+      <Vox key={i} kind="stoneBrick" position={top(x, 2.4, -10 - i * 3)} size={[4.5, 4.8, 5]} tile={2} />
     ))}
-    <LightPool position={[top(0, 0.05, -5)[0], 0.06, top(0, 0, -5)[2]]} width={8} depth={8} color={night ? "#cfe0ff" : "#fff2c8"} opacity={0.14} />
-    {night ? null : <GodRay position={[top(3, 9, -3)[0], 9, top(3, 0, -3)[2]]} rotation={[0, 0, 0.4]} width={6} height={14} color="#fff0c8" opacity={0.08} />}
+    <LightPool position={top(0, 0.05, -5)} width={8} depth={8} color={night ? "#cfe0ff" : "#fff2c8"} opacity={0.14} />
+    {night ? null : <GodRay position={top(3, 9, -3)} rotation={[0, 0, 0.4]} width={6} height={14} color="#fff0c8" opacity={0.08} />}
   </group>
 );
 
