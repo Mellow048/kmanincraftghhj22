@@ -686,3 +686,138 @@ Read for craft, not to be built. They show what the topic's voice sounds like at
 - He marks a film as "worse" for going too fast *and* too slow; the window is ~234–240 wpm with 0.25–0.75 s of air
   between story steps.
 - He notices reuse between films before he notices anything else, and it worries him for the channel's standing.
+
+---
+
+# 17. The shot logs, measured: every camera move in the topic, and what the numbers say
+
+Every approved film has a `shot-log.md` made by `node scripts/shot-log.mjs <film>`: start, hold, cue, words, zone,
+camera move, and the shot's own `note` (why this picture for these words). **The `note` column is the most valuable
+thing in the repo** — it is the director explaining, shot by shot, what a line was turned into. Read `same-face`'s,
+then `monster-village`'s for a night film.
+
+## 17.1 Camera moves, counted across all 780 logged shots
+
+| Film | Shots | push | truck | orbit | pan | top | hand-set |
+|---|---|---|---|---|---|---|---|
+| same-face (reference) | 57 | 42 | 3 | 3 | 2 | – | 7 |
+| nobody-looked-at-the-moon | 63 | 53 | 4 | – | 3 | 3 | – |
+| monster-egg (long) | 93 | 68 | 7 | 8 | 3 | 7 | – |
+| superpower-at-18 (long) | 90 | 62 | 6 | 3 | 2 | 9 | 8 |
+| robot-at-18 (fight) | 86 | 71 | 5 | 3 | – | 2 | 5 |
+| monster-village | 74 | 63 | 6 | 3 | 2 | – | – |
+| iron-golem | 61 | 49 | 2 | 2 | 7 | 1 | – |
+| pumpkin-heads | 58 | 42 | 4 | 2 | – | 6 | 4 |
+| monster-village-part-2 | 54 | 42 | 12 | – | – | – | – |
+| never-seen-my-mums-face | 52 | 47 | 4 | – | 1 | – | – |
+| everyone-runs-away-from-me | 50 | 39 | 5 | 4 | 2 | – | – |
+| we-are-all-cats | 42 | 20 | 7 | **10** | 3 | 2 | – |
+
+**`cam.push` is 68–90% of every film.** It is the language, not one of the options. `cam.truck` is the second
+(4–22%), and it is used for exactly one job: **travelling alongside somebody going somewhere** ("one take, flat out,
+the camera running beside him"). `cam.orbit` belongs to reveals of a *presence* — the camera swings out and someone
+was there all along (Mo catching the sword). `cam.top` is for smallness and for decisions made alone in a bed or over
+a bag. `cam.pan` is to move from a part to a whole, or from a thing to the face that cannot say it.
+
+`we-are-all-cats` is the outlier: 10 orbits in 42 shots. It is a *comedy*, and the orbit is the joke's timing device —
+swing round and the situation is worse/different than you thought.
+
+## 17.2 Shot length, counted
+
+| Film | n | median | min | max | <1 s | >3 s |
+|---|---|---|---|---|---|---|
+| same-face | 57 | **1.70** | 0.77 | 3.17 | 3 | 1 |
+| nobody-looked-at-the-moon | 63 | **1.73** | 0.77 | 3.23 | 7 | 2 |
+| superpower-at-18 | 90 | 1.77 | 0.73 | 3.40 | 9 | 8 |
+| monster-egg | 93 | 1.87 | 0.53 | 4.10 | 8 | 6 |
+| robot-at-18 | 86 | 1.89 | 0.58 | 4.43 | 9 | 15 |
+| pumpkin-heads | 58 | 1.90 | 0.87 | 3.53 | 3 | 4 |
+| never-seen-my-mums-face | 52 | 1.97 | 1.07 | 4.07 | 0 | 4 |
+| we-are-all-cats | 42 | 1.97 | 0.87 | 3.80 | 1 | 2 |
+| everyone-runs-away-from-me | 50 | 2.03 | 0.83 | 4.10 | 2 | 4 |
+| iron-golem | 61 | 2.23 | 0.93 | 3.50 | 1 | 6 |
+| monster-village-part-2 | 54 | 2.33 | 1.00 | 4.37 | 0 | 10 |
+| monster-village | 74 | 2.37 | 0.87 | 4.93 | 2 | 18 |
+
+- **The reference film's median (1.70 s) is the fastest in the topic, and the two films the owner called best
+  (monster-village, part 2) are the slowest (2.37, 2.33).** So median shot length is NOT the quality signal; the
+  variance is. Monster Village has 18 shots over 3 s and 2 under 1 s in the same film.
+- **Never plan a uniform cut rate.** Plan a *base* of ~2 s with deliberate outliers: sub-second flashes on a list or a
+  flashback (a 0.4 s shot of a dead city), and 4–5 s holds only at the elder's stare, the bag, the bed, the POV down.
+- A long cut (18 beats, 90+ shots) runs at 1.8–1.9 s median; a short cut (6 beats) also runs at ~2.0. The number of
+  shots grows with the story, not with the tempo.
+
+## 17.3 Zones: how many places a film really uses
+
+| Film | Distinct zone strings | Main / secondary / rest |
+|---|---|---|
+| same-face | 7 | village 31, lava-shore 16, room+night 5, hill 3, tunnel 1 |
+| monster-egg | 7 | town 53, night 16, lava-shore 10, storm 8, lake 5, bedroom 1 |
+| superpower-at-18 | 7 | house-storm 38, house 41, night 5 |
+| robot-at-18 | 7 | forest-sunset 42, village 20, night 8, sky 6, room 3 |
+| monster-village-part-2 | 7 | hide 20, night 12, dusk 12, rooms 9, pit 1 |
+| iron-golem | 4 | village 27, night 30, room 4 |
+| never-seen-my-mums-face | 4 | night 25, town 24, photo 2 |
+| everyone-runs-away-from-me | 4 | town 24, night 17, sunset 8, room 1 |
+| we-are-all-cats | 3 | village 32, sunset 6, night 4 |
+| monster-village | 3 | night 50, day 21, storm 3 |
+| nobody-looked-at-the-moon | 2 | village 58, fields 5 |
+| pumpkin-heads | 3 | night 28, village 26, room 4 |
+
+**A short cut of ours is 2–4 places, not six.** The reference uses 7 but 47 of its 57 shots are in two of them. The
+zone *string* is also the light: `village, overworld-night` and `village, overworld-sunset` are the same geometry
+under two looks, and that is how a film gets a day and a night out of one street for free.
+
+## 17.4 The reference film's beats, shot by shot (read this before writing a shot list)
+
+`same-face` is the model, and its notes are the grammar. What it does at each hinge:
+
+- **`1.face` + `1.me`**: the title as a picture — him low, a wall of identical faces stacked behind; then cut in to the
+  one different face. **The hook is two shots: the world, then the exception.**
+- **`2.from`**: a flashback is a *smaller him in the same grass*, one villager bending over him, and deliberately
+  nothing that explains it.
+- **`2.black`**: the word is "burned black", so the picture is the one black house in a bright town, him small in
+  front of it. **The adjective gets the frame, not the event.**
+- **`3.nose`**: the nose **wags when it is named**. A tour prop does a small action on its own cue.
+- **`3.arms`**: `cam.truck` travels at chest height so the folded sleeves stay centre and never unfold. **The tour's
+  absurdity is shown by holding still, not by moving.**
+- **`3.hmm`**: on the word, the one word they have pops between two noses and the other nods. **A vocabulary of one
+  word is a shot, not a line.**
+- **`5.rule`**: the hill from its foot, pushed in from below, step on step — "the rule, as a wall".
+- **`7.golem`**: `cam.truck` side-on, him a plank under one iron arm with his legs still going, neighbours watching.
+  **Comedy is a body that is still moving after it has been picked up.**
+- **`8.under`**: the boards break **on the word**; then inside the tunnel he punches at *us* and the dirt flies past
+  the lens.
+- **`9.wave`/`9.sleeves`**: the friend tries to wave and cannot; the shot then moves to the seam where the arms are
+  fused, and comes up to the face "which cannot say it either". **A goodbye that a body cannot perform.**
+- **`10.look`**: over the top of his head, a long lens down the valley, every roof he knows. **The look back is one
+  shot of the whole place, not a montage** — then `10.oneface` from above, nine identical faces waking up without him.
+- **`12.faces`**: "not one face was the same" — five strangers stacked up the steps, **the exact composition of shot
+  one, inverted**. That is the film's best idea: the opening picture, answered.
+- **`13.clear`**: over his shoulder, arm still up, the smoke parts like a curtain, the arm comes down slowly and the
+  roofs are burning behind the people. **Reveal by subtraction, in one unbroken move.**
+- **`14.waved`**: 3.00 s, held, closer — "he only looks, for as long as the sentence takes. Then, on the last two
+  words, the arm goes up." **The payoff of the whole film is a held shot with one gesture on the final two words.**
+- **`14.sub`**: him on the hilltop behind the red sign, **the golem's poppy stuck on the sign**, his own hand coming
+  slowly up. The subscribe line is the story's last action, not a card.
+
+## 17.5 The original reference video (treehouse), measured
+
+166.5 s, 87 shots, median 1.73 s, mean 1.91, longest 5.8 s, **31 cuts a minute**, 8.3 words a shot, 16 shots under a
+second. Its own grammar, from the file:
+
+- **The tour is fast and flat**: 0.5–2.5 s per thing, a flash of a cabin, a rope bridge panning, barrels, a fruit
+  picked, a vine climbed from behind and then from above. **Two angles of the same action in a row is a tour technique**
+  (climb from behind, climb from above) — the only place a repeat is right.
+- **The elder's warning is the slowest passage in the film**: 3.5 s of asking, 4.9 s of the stare, 0.8 s of him
+  walking away, then a 4.8 s **top-down rotating** shot of the hero awake in bed. Authority = long holds.
+- **The edge, in order**: a 3.1 s from behind at the end of the beam → 3.1 s from the front and high → 1.3 s he looks
+  back → **four shots of the town's nouns, 1.2–2.1 s each** (a person on a rope bridge, two children on a deck, a
+  campfire) → 2.2 s close on his quiet face → 1.5 s pulling a strap tight → 0.8 s a breath → 1.1 s his feet step off.
+  **Look back = the tour's nouns, one per shot.** Then three small body actions, then the act.
+- **The fall is three tumbling shots of 1.7–2.5 s and then three *flashes* (0.4/0.7/0.8 s) of the treehouse fading
+  into fog** — the place letting go of him. A flash-frame sequence can carry a whole idea.
+- **The reveal**: 0.8 s he smiles (a flash) → 3.2 s his face drops and he stares down → 1.9 s the wide of the dead
+  city → 2.1 s **seen from behind a dark sign** → 2.6 s low-angle close as he reads it → 1.8 s **cut back to the
+  bright opening wide**, now meaning the opposite → 1.4 s the button, screaming at camera with a SUBSCRIBE plaque.
+  **Delay, picture, reason, and then return to the first frame.**
