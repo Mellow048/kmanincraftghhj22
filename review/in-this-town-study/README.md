@@ -1090,3 +1090,126 @@ bends down hangs in front of its face **like a tongue**.
   were built by an agent in **automatic mode** and **he has not reviewed their scripts**; several were re-cut three
   times against Monster Village's numbers. They are the current state of the craft, not approved models.
 - **Nothing in this folder may be built without his yes on the script.** That is the rule that has held best.
+
+---
+
+# 20. `MASTERPROMPT.md`, the Roblox builder prompt, the treehouse transcript, and the night film's two craft pages
+
+## 20.1 `Topics/InThisTown/MASTERPROMPT.md` — the owner's own brief (2026-11-17)
+
+Given after Monster Village Part 1 passed 15,000 views. **His text, word for word; do not edit it.** It sits *above*
+the topic rules: `AGENTS.md` decides which kind of film is being made, this decides whether it will hold a viewer.
+Every `REVIEW.md` in `src/videos/` is written against its §6 list of eleven deliverables.
+
+Its performance snapshot, quoted: 7,047 views at export, 178.33 hours watch time, 21 subscribers attributed, **~91
+seconds of watch time per recorded view**, 1,321 views on Nov 14 and 5,726 on Nov 15, later reported past 15,000 and
+**81.1% stayed to watch**. It says explicitly: *these are reference results, not guaranteed outcomes; do not invent
+explanations about the algorithm.*
+
+The rules that are his, and that no other page states as plainly:
+
+- **The opening must not waste a second** on logos, greetings, channel intros, unnecessary explanations or empty
+  establishing shots.
+- **Minecraft is the visual medium, not the entire story.** The human element — family, friendship, secrets, fear,
+  curiosity, betrayal, embarrassment, unexpected consequences, survival — is what the story is made of.
+- **The video should be understood much of the way with the sound muted.**
+- **Do not interrupt an important story scene with a like-and-subscribe request.** The CTA comes after the payoff.
+- **No forced padding to reach a duration.** Maximum 175 s; "preferred duration: whatever the complete story actually
+  needs".
+- **Each video must work alone.** A connected world is fine, but the current video needs its own hook, conflict and
+  payoff — do not require Part 1.
+- **Stage 2: three hooks, each with what is seen, what is said, the question it creates, and why a viewer continues.**
+  **No generic phrases** ("You won't believe what happened").
+- **Stage 4 storyboard must give eight things per scene**: start/end, narration, visual action, characters present,
+  location, camera framing and movement, caption text, sound effects or music changes.
+- **Stage 5: do not substitute a written storyboard for a render when rendering tools exist; do not claim completion
+  unless the output file exists and has been checked.**
+- **§5 "Do not overfit to one video"** — no same family, no same conflict, no same scene order, no copied narration, no
+  monsters in every story just because the reference has them, no meaningless scenes to imitate its duration, and
+  **no assumption that more cuts mean better retention.**
+- **§6 the eleven deliverables** (the `REVIEW.md` table), and: *"Be honest about incomplete work and technical
+  limitations. Your objective is not simply to produce more videos."*
+
+`MASTERPROMPT-01.md` at the repo root is the same text with the line breaks counted differently, plus a header saying
+it is read at the start of every turn that touches a film. `MASTERPROMPT-01-REVIEW.md` is the review of it.
+
+## 20.2 The Roblox builder prompt (`treehouse/roblox-builder-prompt.md`)
+
+The owner supplied this with the reference video "so that you know what the video is showing". It is a **Roblox**
+prompt and is kept word for word as evidence, not as a build plan. Two things in it are wrong when measured: the voice
+is ~259 wpm not ~165, and the video has 87 shots, not the 23 "scenes" it lists.
+
+What is worth keeping from it, because it is a designer's account of *why* the format works:
+
+1. **Literal "See-Say" matching at 1.5–3.5 s.** "Every concrete noun or action in the voiceover must immediately
+   trigger a corresponding visual prop or camera angle" — barrels → water barrels; fruits → a hand on a mango; "a bag
+   with fruit, water, rope, knife" → a top-down shot of a bag containing exactly those four objects. (Our version of
+   this is the shot's `note`, and `same-face`'s `10.look` doing it in one shot rather than four.)
+2. **2D face swapping, zero lip-sync.** Six discrete faces: neutral, glare, happy, sweat, sleep, scream. *Convey all
+   emotion by swapping the decal across the cut.* Ours is the `face` prop with the story set (`smile grin laugh frown
+   uneasy brave fear wow ouch calm`), and the rule is the same: **the face changes on the cut, not during the shot.**
+3. **Camera motion carries ~70% of the energy.** Keep the bodies almost still and let dollies, pans and orbits do the
+   work. Our measured equivalent: **68–90% of every film's shots are a `cam.push`.**
+4. **"Jank-smart" shortcuts.** A mysterious shape under the clouds is one flat grey square sliding through the fog; the
+   final warning sign is shot **from behind the sign** looking at the protagonist's face so no text has to be rendered.
+   *Cheap is fine if it reads* — and our `10.look`-style "shoot past the thing" solves the same problem. Note that the
+   final warning sign in the original **is** legible to the viewer from behind (86 is the reverse of it), which is the
+   one place the shortcut is beaten by just writing the words in blocks.
+
+## 20.3 The treehouse transcript and beat split
+
+718 words, 54 sentences, 259 wpm, 2:46.5. It is the source of the 18 beats in `SCRIPT.md`. Two facts to keep:
+
+- **Nine of the 54 sentences are six words or fewer, and every single one is a turn:** *What was down there? · Then he
+  walked away. · That night, I couldn't sleep. · So, I decided to find out. · But there was still a problem. · "Then
+  I'll finally know," I replied. · Then, I pulled the cord. · The entire world below was dead. · Subscribe to save me.*
+  Read only those nine and you have the plot.
+- **Three spoken lines in 718 words**, each a hinge. Almost no dialogue.
+
+## 20.4 `nobody-looked-at-the-moon`: the night film's two craft pages (the best sound lessons in the repo)
+
+**The look.** `lantern-night`: the night is nearly black, the town is lit warm by its own lanterns, and **the moonlight
+is cold and lies on one place at a time** — it starts on the wheat, comes into town when the moon finds him, and goes
+back.
+
+**One place that directs the whole world.** `skyAt(cue, t)` in the film's `kit.tsx` answers, for any moment: where the
+moon is, whether it is an eye yet, what it stares at, which doors are open, how far the well lid has been pushed, how
+near the scarecrows have come. The world draws it; **the scenes stage only people.** *No shot sets the moon by hand, so
+no two shots can disagree.* That is the general pattern for any film with a world-level state: **one function, called
+by the world, never by a shot.**
+
+**Things planted in the picture and never said**: in each wide of the fields a scarecrow stands a little nearer than in
+the one before, and a golem walks its rounds. Nobody mentions either until the end.
+
+**The three picture lessons**, each found on a still and on nothing else:
+
+- **A face needs a lamp on the camera's side.** Looking down a lit street every lamp is *behind* the person and the face
+  is a black square. Stand a real `Lantern`, low, just beside the lens.
+- **A hat as wide as a door hides the face from above.** Put the lens under the chin and look up. (That is also *why*
+  nobody in that town sees the moon — the staging problem became the story.)
+- **Anything on the line from lens to moon covers the moon**: a roof, a line of lanterns, a head.
+
+**The sound lessons — this is the checklist when a mix fails and nobody can hear it:**
+
+1. **The last word of a sentence is 9–13 dB under the voice's own level** ("one.", "there.", "to look.", "night."). An
+   effect landing on it covers it. **Put the effect on a loud word early in the line**, not on the end.
+2. **A `sting` hangs for over a second at nearly full level.** Under the next line it covers the words. Shorten it with
+   `dur`, or use it where a pause follows. A `boom` drops 10 dB per quarter second and is not the problem.
+3. **Effects inside the same quarter second bury each other.** Three doors shutting on three `hit`s: only the first was
+   audible. Use one, on the loud word.
+4. **Turning an effect down to save the words can bury the effect** and fail the other limit. **Cut it.**
+5. **When a quiet line end still fails with effects gone, the music is what is left.** Lower that *one section's*
+   `gain` (−4.5 dB on one cue), not the whole film's.
+6. **The `town` mood has loud fills**; they landed on sentence ends, so that section runs 2 dB down.
+7. **An effect placed by guess misses the picture.** The scene already hangs the action on a word with `wordAt`; read
+   the scene and give the effect the same cue and word.
+8. **Read `out/sound/<film>/effects.txt`**, not the timeline picture. It lists every effect and how far it stands over
+   what plays under it.
+
+Its own cut list is instructive: removed a `sting`, a `swish`, a `rustle`, two of three `hit`s and two of three steps;
+turned down nine effects; left 13 faint ones in and named the weakest. Three sounds were added to `scripts/sound.py`
+for it and any film may use them: `blink`, `creak`, `step_stick`.
+
+**And the method note that governs all of it:** *"Every shot was looked at as a still, and many were shot again, before
+the film was rendered. The type check and `npm run check` pass on a black face and on a moon behind a roof. Only a
+picture shows them."*
