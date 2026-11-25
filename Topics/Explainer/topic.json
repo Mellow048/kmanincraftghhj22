@@ -3,49 +3,88 @@
   "name": "Explainer",
   "folder": "Topics/Explainer",
   "profile": "story",
-  "state": "PROVISIONAL",
-  "provisional": {
-    "why": "The owner asked for this topic to be built before its reference: \"reference which we will do later once youre done\". So the numbers in `film` and `sound` are NOT measured from anything. They are a first setting, chosen so that the lint has something to hold a film to.",
-    "from": "The camera is the framework's own Zack D grammar (docs/CAMERA-BIBLE.md: one world, a camera that never teleports). The voice, the captions and the sound are the story pipeline's (docs/STORY-FILMS.md). The subjects the owner named: money lessons, and what inflation is.",
-    "whenTheReferenceArrives": "Put it in Topics/Explainer/reference/<name>/, measure it (length, words, words a minute, seconds per stop, hard cuts, sound), and replace every number below that it disagrees with. Then delete this block and set `state` to \"MEASURED\"."
+  "state": "MEASURED",
+  "reference": {
+    "film": "napoleon-explained-using-minecraft",
+    "page": "Topics/Explainer/reference/napoleon/README.md",
+    "secondReference": "Topics/Explainer/reference/minimum-wage/README.md",
+    "playbook": "Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md",
+    "owner": "replace/remaster explainer to match Napoleon & Minimum Wage references: 2 signature leads (not InThisTown default hero), detailed composite props, fast story cuts, mandatory explainer_bgm_loop.wav under narration, and seamless loop payoff"
+  },
+  "measuredFromReference": {
+    "seconds": 80.93,
+    "shots": 44,
+    "cutsPerSecond": 0.54,
+    "medianShotSeconds": 1.67,
+    "meanShotSeconds": 1.84,
+    "words": 286,
+    "wordsPerMinute": 212,
+    "secondReferenceMinimumWage": {
+      "seconds": 78.79,
+      "shots": 36,
+      "medianShotSeconds": 2.12,
+      "words": 279,
+      "wordsPerMinute": 212
+    }
+  },
+  "castRule": {
+    "distinctChannel": true,
+    "leads": ["CitizenLead (Miles - struggling/mistake-maker)", "EliteLead (Sterling - rich/perfect/authority)"],
+    "note": "Explainer runs on a separate channel from InThisTown. Always use CitizenLead + EliteLead (+ Official/ExplainerCrowd), never InThisTown Hero or Villager clones."
   },
   "camera": {
-    "builder": "flightScene",
-    "continuous": true,
-    "guard": "unbroken",
-    "maxHardCuts": 2,
-    "note": "Scenes are built with flightScene(): one stop for each line, flown to. film.tsx calls unbroken(), which throws if the camera teleports. A film may declare at most `maxHardCuts` shots with `cut: true`."
+    "builder": "storyScene",
+    "guard": "",
+    "maxHardCuts": 999,
+    "legacyFlightFilms": ["what-is-a-dictator"],
+    "note": "Remastered Explainer uses storyScene() with fast ~1.5-2.0s cuts across grounded multi-zone sets, dynamic cam.* recipes, and intra-line `cut:` switches. Legacy film `what-is-a-dictator` stays checked as a flightScene."
   },
   "film": {
-    "seconds": [30, 58],
-    "hardMaxSeconds": 60,
-    "hardMinSeconds": 20,
-    "hardMinWords": 70,
-    "shotSeconds": [0.8, 7.0],
-    "medianShotSeconds": [1.8, 4.0],
-    "wordsPerMinute": [200, 268],
-    "words": [110, 250],
-    "maxWordsPerShot": 18,
-    "lastLineContains": "subscribe",
-    "captions": true
+    "seconds": [55, 110],
+    "hardMaxSeconds": 170,
+    "hardMinSeconds": 35,
+    "hardMinWords": 100,
+    "shotSeconds": [0.4, 5.5],
+    "medianShotSeconds": [1.1, 2.1],
+    "wordsPerMinute": [205, 255],
+    "words": [180, 420],
+    "maxWordsPerShot": 16,
+    "captions": true,
+    "loopRecommended": true
   },
   "cuts": {
+    "short": {
+      "seconds": [35, 65],
+      "hardMaxSeconds": 68,
+      "words": [110, 230]
+    },
     "long": {
-      "seconds": [60, 118],
-      "hardMaxSeconds": 120,
-      "words": [250, 500]
+      "seconds": [110, 168],
+      "hardMaxSeconds": 175,
+      "words": [400, 650]
     }
   },
   "pack": "Topics/Explainer/PACK.md",
   "template": "Topics/Explainer/template",
   "models": {
-    "note": "No APPROVED film yet. The first explainer is built and waiting for the owner: src/videos/why-does-bread-cost-more-every-year/. If he approves it, name it here: it becomes the model to build like."
+    "napoleon": "Topics/Explainer/reference/napoleon/README.md (target pacing, 2-lead contrast, composite props, and loop payoff)",
+    "minimum-wage": "Topics/Explainer/reference/minimum-wage/README.md (3-option visual breakdown, twin before/after chests, balanced trade-off dilemma loop)"
   },
   "sound": {
     "required": true,
     "guide": "Topics/Explainer/SOUND.md",
+    "music": {
+      "file": "Topics/Explainer/explainer_bgm_loop.wav",
+      "owner": "mandatory background music for every Explainer short, levelled quietly under narration so it never overpowers the voice",
+      "since": "2026-11-25",
+      "guide": "Topics/Explainer/SOUND.md",
+      "gain": -19,
+      "minShare": 0.85,
+      "madeBefore": ["what-is-a-dictator"],
+      "note": "MANDATORY for every new Explainer: track = Topics/Explainer/explainer_bgm_loop.wav. Start gain at -19 (kept 17-25 dB below the narrator voice so it NEVER overpowers narration). scripts/sound.py build refuses any new Explainer sheet that omits it."
+    },
     "minMusicSections": 3,
-    "musicUnderVoiceDb": [15, 24],
+    "musicUnderVoiceDb": [17, 25],
     "maxSecondsWithoutMusic": 4,
     "minSfxPerMinute": 40,
     "maxGapSeconds": 6,
@@ -61,6 +100,9 @@
     },
     "bedForZone": {
       "room": "room",
+      "hall": "room",
+      "council": "room",
+      "throne": "room",
       "bank": "room",
       "shop": "room",
       "cave": "cave",

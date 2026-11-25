@@ -257,20 +257,20 @@ const GRADE_SHADER = {
   uniforms: {
     tDiffuse: { value: null },
     uTexel: { value: new THREE.Vector2(1 / 1080, 1 / 1920) },
-    uSat: { value: 1.32 },
-    uVibrance: { value: 0.28 },
-    uContrast: { value: 1.06 },
+    uSat: { value: 1.45 },
+    uVibrance: { value: 0.0 },
+    uContrast: { value: 1.05 },
     uShoulder: { value: 0.11 },
-    uLift: { value: 0.045 },
-    uWarm: { value: 0.72 },
-    uCool: { value: 0.55 },
-    uVignette: { value: 0.10 },
-    uDiffusion: { value: 0.13 },
+    uLift: { value: 0.05 },
+    uWarm: { value: 0.95 },
+    uCool: { value: 0.5 },
+    uVignette: { value: 0.12 },
+    uDiffusion: { value: 0.14 },
     uDiffRadius: { value: 6.0 },
     uDiffThreshold: { value: 0.86 },
-    uVeil: { value: 0.022 },
-    uGrain: { value: 0.009 },
-    uAberr: { value: 0.12 },
+    uVeil: { value: 0.025 },
+    uGrain: { value: 0.011 },
+    uAberr: { value: 0.16 },
     uTime: { value: 0 },
   },
   vertexShader: /* glsl */ `
@@ -362,10 +362,11 @@ void main() {
   c = c - uShoulder * pow(max(c, vec3(0.0)), vec3(3.0));
   c = clamp(c, 0.0, 1.0);
 
-  // Lift: phone-readable shadows with a subtle slate-blue tint so dark nights stay crisp, not muddy.
+  // Lift: film does not reach black, it reaches a dark warm grey. This is most of the difference
+  // between a picture that was rendered and one that was photographed.
   float l2 = lum(c);
-  vec3 tint = vec3(0.96, 1.00, 1.08);
-  c += uLift * tint * (1.0 - pow(clamp(l2 / 0.34, 0.0, 1.0), 1.35));
+  vec3 tint = vec3(1.10, 1.00, 0.94);
+  c += uLift * tint * (1.0 - pow(clamp(l2 / 0.32, 0.0, 1.0), 1.3));
 
   // Split tone: warm golden highlights against cool sapphire shadows, preserving neutral whites.
   float l3 = lum(c);
@@ -391,24 +392,24 @@ void main() {
 export const DEFAULT_SHADERS: Required<ShaderSettings> = {
   enabled: true,
   preset: "cinematic",
-  bloom: 0.52,
+  bloom: 0.55,
   // Threshold is in linear light, where a white caption is exactly 1.0 and the
   // sun disc is far above it. Set above 1 so words stay crisp and only light blooms.
   threshold: 1.25,
   radius: 0.6,
-  vignette: 0.10,
-  saturation: 1.32,
-  vibrance: 0.28,
-  contrast: 1.06,
-  warmth: 0.72,
-  grain: 0.009,
-  aberration: 0.12,
-  diffusion: 0.13,
-  veil: 0.022,
-  lift: 0.045,
+  vignette: 0.12,
+  saturation: 1.45,
+  vibrance: 0.0,
+  contrast: 1.05,
+  warmth: 0.95,
+  grain: 0.011,
+  aberration: 0.16,
+  diffusion: 0.14,
+  veil: 0.025,
+  lift: 0.05,
   shoulder: 0.11,
-  coolShadow: 0.55,
-  shafts: 0.32,
+  coolShadow: 0.5,
+  shafts: 0.3,
 };
 
 /** Named grade presets tuned for phone-screen readability and Complementary-style pop. */

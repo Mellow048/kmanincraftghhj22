@@ -1,0 +1,99 @@
+{
+  "film": "in-this-town-nobody-turns-on-a-furnace",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-nobody-turns-on-a-furnace",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "TODO: one section per act. `python3 scripts/sound.py list` shows the moods."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "1.trail",
+      "bed": "village"
+    },
+    {
+      "from": "2.cold",
+      "to": "2.food",
+      "bed": "room"
+    },
+    {
+      "from": "3.school",
+      "to": "4.photo",
+      "bed": "village"
+    },
+    {
+      "from": "4.mum",
+      "to": "4.mum",
+      "bed": "room"
+    },
+    {
+      "from": "5.forge",
+      "to": "5.heat",
+      "bed": "village"
+    },
+    {
+      "from": "9.love",
+      "to": "10.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "2.cold",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "3.school",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.dad",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "5.forge",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time"
+    },
+    {
+      "cue": "6.cake",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time"
+    },
+    {
+      "cue": "7.run",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time"
+    },
+    {
+      "cue": "8.clear",
+      "sfx": "whoosh",
+      "why": "scene 8 starts: a new place or a new time"
+    },
+    {
+      "cue": "9.cry",
+      "sfx": "whoosh",
+      "why": "scene 9 starts: a new place or a new time"
+    },
+    {
+      "cue": "10.sub",
+      "sfx": "whoosh",
+      "why": "scene 10 starts: a new place or a new time"
+    },
+    {
+      "cue": "10.sub",
+      "sfx": "ding",
+      "why": "the subscribe line"
+    }
+  ]
+}

@@ -1,16 +1,19 @@
 /**
- * THE EXPLAINER PACK — everything a film of this topic is built from.
- * PACK.md is the catalogue, with a picture of each part.
+ * THE EXPLAINER PACK (Remastered v2) — Napoleon / Story-Driven Minecraft Explainers.
  *
- *   import { Island, Coin, BarChart, flightScene, stop } from "../../../Topics/Explainer";
+ *   import { CitizenLead, EliteLead, DetailedBookshelf, RoyalThrone, Crown, ChatToast, storyScene, cam } from "../../../Topics/Explainer";
  *
- * A film's kit.tsx imports from here and passes the names on, so its scenes import only from "./kit".
+ * A film's kit.tsx imports from here and passes the names on, so scenes import only from "./kit".
+ * Legacy `flightScene` / `stage` exports remain intact for older archived films.
  */
+export * from "./cast";
+export * from "./props";
 export * from "./flight";
 export * from "./stage";
 export * from "./money";
 export * from "./charts";
 export * from "./goods";
-// Shared with the other topics: the film's clock, numbers and icons in cubes, twelve people, the villagers
-// and their houses, a speech bubble, and the red sign every film ends on. See Topics/Shared/index.ts.
+// Engine props & story camera helpers ready directly inside Explainer kits
+export { cam, storyScene, ChatToast, FloatingNumber, Chicken, Water, EmberDrift } from "../../src/engine";
+// Shared with the other topics (keep using CitizenLead/EliteLead for Explainer leads instead of Villager/Hero!)
 export * from "../Shared";

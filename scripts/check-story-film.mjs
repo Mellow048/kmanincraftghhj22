@@ -352,11 +352,14 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
   // ---- 4. the scenes: one shot per script line ----------------------------
   // A topic may fly its camera (topic.json `camera`): its scenes are built with another builder, a shot names
   // the stop it lands on, and film.tsx calls a guard that throws if the camera ever teleports.
-  const builder = topic.camera?.builder ?? "storyScene";
+  // Legacy archived films listed in `legacyFlightFilms` keep their historical flightScene check.
+  const isLegacyFlight = Array.isArray(topic.camera?.legacyFlightFilms) && topic.camera.legacyFlightFilms.includes(slug);
+  const builder = isLegacyFlight ? "flightScene" : (topic.camera?.builder ?? "storyScene");
   const flies = builder !== "storyScene";
+  const guard = isLegacyFlight ? "unbroken" : topic.camera?.guard;
   const hardCuts = [];
-  if (topic.camera?.guard && !new RegExp(`\\b${topic.camera.guard}\\s*\\(`).test(film)) {
-    fail(`${tag}: film.tsx does not call ${topic.camera.guard}(film.scenes). In this topic the camera never teleports, and that call is what checks it.`);
+  if (guard && !new RegExp(`\\b${guard}\\s*\\(`).test(film)) {
+    fail(`${tag}: film.tsx does not call ${guard}(film.scenes). In this topic the camera never teleports, and that call is what checks it.`);
   }
   const used = [];
   for (const name of sceneNames) {
@@ -369,6 +372,14 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     const scene = fs.readFileSync(scenePath, "utf8");
     const label = `${slug}/${path.basename(scenePath, ".tsx")}`;
     if (TWO_D.test(scene)) fail(`${label}: 2D overlay found. Build the object in 3D.`);
+    if (topic.castRule?.distinctChannel && !isLegacyFlight) {
+      if (/\b(?:Hero|Villager|PLAYERS|ROBE)\b/.test(scene)) {
+        fail(`${label}: reuses InThisTown characters (Hero/Villager/PLAYERS). Explainer must use its own channel leads (CitizenLead & EliteLead from Topics/Explainer).`);
+      }
+      if (/<meshStandardMaterial\b(?![^>]*\bmap=)/.test(scene)) {
+        info(`${label}: raw untextured <meshStandardMaterial> detected. Use textured <Block>, <Vox>, or Topics/Explainer composite props instead of plain plastic boxes.`);
+      }
+    }
     if (flies) {
       if (!new RegExp(`\\b${builder}\\s*\\(`).test(scene)) fail(`${label}: a film of this topic builds its scenes with ${builder}(): the camera flies from stop to stop (${topic.folder}/SHOTS.md).`);
     } else if (!/\bstoryScene\s*\(/.test(scene)) fail(`${label}: a story film's scenes are built with storyScene().`);
@@ -393,7 +404,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
         if (/(^|[\s{,])cut\s*:\s*true\b/.test(body)) hardCuts.push(mark[1]);
         return;
       }
-      const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top)\s*\(/.test(body);
+      const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top|crane|whip|dollyZoom|ots)\s*\(/.test(body);
       // The camera as two points: written out (`from: [x, y, z]`) or from a place's own helper (`from: GYM.at(x, y, z)`).
       const literal = /(^|\n)\s*from:\s*[\[\w]/.test(body) && /(^|\n)\s*target:\s*[\[\w]/.test(body);
       if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give \`from:\` and \`target:\` (two points).`);
