@@ -36,7 +36,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.coat",
-      ...cam.push({ on: [0, 1.5, 14.6], dist: 2.6, to: 2.3, yaw: 6, pitch: 0, fov: 36, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [0, 1.5, 14.6], dist: 3.9, to: 3.4, yaw: 6, pitch: 0, fov: 36, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
       note: "The coat. White, dry, and about a metre from a town that smells of fish; the contrast is the entire class system in one frame.",
@@ -46,7 +46,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.touch",
-      ...cam.push({ on: [0.2, 1.15, 13.6], dist: 3.2, to: 2.8, yaw: -24, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [0.2, 1.15, 13.6], dist: 3.9, to: 3.4, yaw: -24, pitch: 2, fov: 38 }),
       zone: "bottom",
       look: "overworld-day",
       note: "The fish go hand to hand to hand and stop before him: he steps back rather than touch one, and somebody else puts it in his basket.",

@@ -44,7 +44,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.coin",
-      ...cam.push({ on: [0.2, 1.1, 10.6], dist: 2.2, to: 1.9, yaw: -4, pitch: -8, fov: 36 }),
+      ...cam.push({ on: [0.2, 1.1, 10.6], dist: 3.9, to: 3.4, yaw: -4, pitch: -8, fov: 36 }),
       zone: "bottom",
       look: "overworld-golden",
       note: "A coin comes down past the lens and hits the water beside the jetty. Above, a rich kid's arm is still out, and he is not looking at where it lands.",
@@ -62,7 +62,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.want",
-      ...cam.push({ on: [0, 1.42, 10.6], dist: 2.5, to: 2.2, yaw: 10, pitch: 1, fov: 34, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0, 1.42, 10.6], dist: 3.9, to: 3.4, yaw: 10, pitch: 1, fov: 34, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-golden",
       note: "His face, wet from the spray, looking up at a mountain he is not allowed to climb. On 'just once' he does not smile, which keeps the wish honest.",

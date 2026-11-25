@@ -13,7 +13,7 @@ export const scene18 = storyScene(timing, {
   shots: [
     {
       cue: "18.ate",
-      ...cam.push({ on: room(0, 1.1, -2.2), dist: 3.2, to: 2.8, yaw: -8, pitch: 4, fov: 40 }),
+      ...cam.push({ on: room(0, 1.1, -2.2), dist: 3.9, to: 3.4, yaw: -8, pitch: 4, fov: 40 }),
       zone: "room",
       look: "warm-room",
       note: "Midnight, one candle, her hands around a golden apple. On 'midnight' she takes the first bite and the room is the brightest it has been since she got ill.",
@@ -29,7 +29,7 @@ export const scene18 = storyScene(timing, {
     {
       cue: "18.ate",
       cut: 1.5,
-      ...cam.push({ on: room(0, 1.32, -2.3), dist: 2.2, to: 1.9, yaw: 10, pitch: 2, fov: 34, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: room(0, 1.32, -2.3), dist: 3.9, to: 3.4, yaw: 10, pitch: 2, fov: 34, screenOffset: [0, 0.08] }),
       zone: "room",
       look: "warm-room",
       note: "Morning light through the window on her face, and she is sitting up, breathing, annoyed about being fussed over. Alive people are allowed to be annoyed.",
@@ -42,7 +42,7 @@ export const scene18 = storyScene(timing, {
     },
     {
       cue: "18.jar",
-      ...cam.push({ on: room(-0.6, 1.3, -2.5), dist: 2.0, to: 1.7, yaw: 6, pitch: 6, fov: 32 }),
+      ...cam.push({ on: room(-0.6, 1.3, -2.5), dist: 3.9, to: 3.3, yaw: 6, pitch: 6, fov: 32 }),
       zone: "room",
       look: "warm-room",
       note: "The jar on the shelf, still full: eleven years of a whole town, and nobody in this house is going to spend it. It has stopped being money and become furniture.",
@@ -50,7 +50,7 @@ export const scene18 = storyScene(timing, {
     },
     {
       cue: "18.label",
-      ...cam.push({ on: room(-0.6, 1.32, -2.55), dist: 1.5, to: 1.3, yaw: -4, pitch: 4, fov: 30 }),
+      ...cam.push({ on: room(-0.6, 1.32, -2.55), dist: 3.9, to: 3.4, yaw: -4, pitch: 4, fov: 30 }),
       zone: "room",
       look: "warm-room",
       note: "A bare patch of glass where the label was, and four scratches of glue. Somebody peeled THE TOP off. That is the whole ending, and it is a picture.",

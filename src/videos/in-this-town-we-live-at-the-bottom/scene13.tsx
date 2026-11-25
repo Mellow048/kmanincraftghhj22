@@ -41,7 +41,7 @@ export const scene13 = storyScene(timing, {
     },
     {
       cue: "13.small",
-      ...cam.push({ on: [1.2, 11.4, -28.4], dist: 9.6, to: 8.2, yaw: 8, pitch: -14, fov: 46 }),
+      ...cam.push({ on: [1.2, 10.4, -27.4], dist: 5.6, to: 4.6, yaw: 10, pitch: -8, fov: 44 }),
       zone: "bottom",
       look: "overworld-night",
       note: "From just under the top, looking back down: the whole town is a handful of orange lights, and the jetty is a line. On 'only lights' the mountain is bigger than the town, which is the point.",

@@ -27,7 +27,7 @@ export const scene12 = storyScene(timing, {
     },
     {
       cue: "12.q",
-      ...cam.push({ on: [0.4, 1.42, -8.4], dist: 2.6, to: 2.3, yaw: 24, pitch: 0, fov: 36 }),
+      ...cam.push({ on: [0.4, 1.42, -8.4], dist: 3.9, to: 3.4, yaw: 24, pitch: 0, fov: 36 }),
       zone: "bottom",
       look: "overworld-day",
       note: "The friend asks it looking at the steps, not at him. On 'nothing up there' he finally looks at him, and the question is not a joke.",
@@ -40,7 +40,7 @@ export const scene12 = storyScene(timing, {
     },
     {
       cue: "12.a",
-      ...cam.push({ on: [0.9, 1.45, -8.8], dist: 2.5, to: 2.2, yaw: -18, pitch: -2, fov: 34, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [0.9, 1.45, -8.8], dist: 3.9, to: 3.4, yaw: -18, pitch: -2, fov: 34, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
       note: "His answer, straight down the lens, with the jar in his bag and the steps behind his head. He has already done the sum and he does not like it.",

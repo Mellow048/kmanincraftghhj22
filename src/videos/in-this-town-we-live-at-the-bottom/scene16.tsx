@@ -72,7 +72,7 @@ export const scene16 = storyScene(timing, {
     },
     {
       cue: "16.year",
-      ...cam.push({ on: [0, 1.5, 15], dist: 2.6, to: 2.2, yaw: 8, pitch: -2, fov: 36, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0, 1.5, 15], dist: 3.9, to: 3.3, yaw: 8, pitch: -2, fov: 36, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-rain",
       note: "His face on the price. On 'every fish we catch' he looks past the boy, at the pile, and does the sum: a year of fish is worth more than an apple, and he is the only one who thinks so.",

@@ -27,11 +27,15 @@ export const scene15 = storyScene(timing, {
     },
     {
       cue: "15.street",
-      ...cam.push({ on: top(0, 1.5, -305), dist: 5.0, to: 2.4, yaw: 2, pitch: 1, fov: 40 }),
+      ...cam.push({ on: top(0, 1.8, -308), dist: 13.0, to: 10.4, yaw: 0, pitch: 4, fov: 44 }),
       zone: "top",
       look: "overworld-sunset",
       note: "Through the bars, slowly, the whole of the top: a lamp, a bin, a bench, one thin tree, plaster walls. On 'just a street' the lens stops moving, because there is nothing else to show.",
-      stage: () => <></>,
+      stage: () => (
+        <>
+          <Gate position={top(0, 0, -300)} />
+        </>
+      ),
     },
   ],
 });

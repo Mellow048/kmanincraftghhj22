@@ -55,7 +55,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.why",
-      ...cam.push({ on: [2.1, 1.45, -9.2], dist: 2.6, to: 2.3, yaw: -6, pitch: 0, fov: 34, screenOffset: [0, 0.1] }),
+      ...cam.push({ on: [2.1, 1.45, -9.2], dist: 3.9, to: 3.4, yaw: -6, pitch: 0, fov: 34, screenOffset: [0, 0.1] }),
       zone: "bottom",
       look: "overworld-day",
       note: "On the question, straight to his face, the ladder filling the frame behind his head. Nobody answers him, so the film does not either: the shot just holds until the line is over.",

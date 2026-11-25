@@ -100,7 +100,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.jar",
-      ...cam.push({ on: [-0.6, 1.55, -2.4], dist: 2.2, to: 1.9, yaw: 8, pitch: 6, fov: 34 }),
+      ...cam.push({ on: [-0.6, 1.55, -2.4], dist: 3.9, to: 3.4, yaw: 8, pitch: 6, fov: 34 }),
       zone: "room",
       look: "warm-room",
       note: "In the room, at the shelf: her hand writing THE TOP on a scrap of cloth and pressing it to the glass. It is the whole plan of this family, and it is four letters long.",

@@ -27,7 +27,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.woman",
-      ...cam.push({ on: room(0.5, 1.4, -1.5), dist: 3.2, to: 2.8, yaw: 12, pitch: 2, fov: 38 }),
+      ...cam.push({ on: room(0.5, 1.4, -1.5), dist: 3.9, to: 3.4, yaw: 12, pitch: 2, fov: 38 }),
       zone: "room",
       look: "warm-room",
       note: "The woman who fixes everybody shakes her head at a bed she cannot fix. On 'shook her head' her head goes, once, slowly, and the kid watches it happen.",
@@ -42,7 +42,7 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.cure",
-      ...cam.push({ on: room(-2.4, 1.15, -2.2), dist: 2.2, to: 1.9, yaw: 4, pitch: 8, fov: 34 }),
+      ...cam.push({ on: room(-2.4, 1.15, -2.2), dist: 3.9, to: 3.4, yaw: 4, pitch: 8, fov: 34 }),
       zone: "room",
       look: "warm-room",
       note: "On the shelf, an old book open at a drawing of a golden apple. One picture is all the medicine the bottom of the mountain has ever had.",

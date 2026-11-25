@@ -13,7 +13,7 @@ export const scene17 = storyScene(timing, {
   shots: [
     {
       cue: "17.cold",
-      ...cam.push({ on: [0, 1.55, 15], dist: 2.5, to: 2.2, yaw: -8, pitch: 0, fov: 34, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0, 1.55, 15], dist: 3.9, to: 3.4, yaw: -8, pitch: 0, fov: 34, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-rain",
       note: "The keeper's face while the line says he did not do it for her. There is nothing on it at all, which is worse than cruelty.",
@@ -23,7 +23,7 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.sums",
-      ...cam.push({ on: [0.2, 0.9, 14.2], dist: 3.0, to: 2.6, yaw: 26, pitch: 18, fov: 40 }),
+      ...cam.push({ on: [0.2, 0.9, 14.2], dist: 3.9, to: 3.4, yaw: 26, pitch: 18, fov: 40 }),
       zone: "bottom",
       look: "overworld-rain",
       note: "The pile of fish, and the apple in his gloved hand above it. The whole argument of the film is two objects in one frame, and the fish are the bigger one.",
@@ -37,7 +37,7 @@ export const scene17 = storyScene(timing, {
     },
     {
       cue: "17.save",
-      ...cam.push({ on: [0.3, 1.45, 12.9], dist: 2.8, to: 2.4, yaw: 14, pitch: 0, fov: 34, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [0.3, 1.45, 12.9], dist: 3.9, to: 3.3, yaw: 14, pitch: 0, fov: 34, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-rain",
       note: "On 'the bottom did' the lens finds the town behind him, all of it, every rod still in the water. He is not the hero of this line; they are.",

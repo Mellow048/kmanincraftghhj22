@@ -13,7 +13,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "5.mum",
-      ...cam.push({ on: [-0.4, 1.35, -1.6], dist: 3.0, to: 2.6, yaw: -12, pitch: 2, fov: 38 }),
+      ...cam.push({ on: [-0.4, 1.35, -1.6], dist: 3.9, to: 3.4, yaw: -12, pitch: 2, fov: 38 }),
       zone: "room",
       look: "warm-room",
       note: "She takes the jar out of his hands and puts it back on the shelf. Not angry: practiced. He is holding nothing by the end of the line.",
@@ -27,7 +27,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.old",
-      ...cam.push({ on: [1.1, 1.5, -10.2], dist: 2.9, to: 2.5, yaw: 14, pitch: 3, fov: 36 }),
+      ...cam.push({ on: [1.1, 1.5, -10.2], dist: 3.9, to: 3.4, yaw: 14, pitch: 3, fov: 36 }),
       zone: "bottom",
       look: "overworld-day",
       note: "The oldest man in town, at the foot of the ladder he has never climbed, shaking his head with his eyes shut. He is not telling the kid a rule; he is remembering one.",
@@ -55,7 +55,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.more",
-      ...cam.push({ on: [2.0, 1.42, -9.2], dist: 2.4, to: 2.15, yaw: -14, pitch: 0, fov: 34, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [2.0, 1.42, -9.2], dist: 3.9, to: 3.5, yaw: -14, pitch: 0, fov: 34, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-day",
       note: "Back on his face, and he is not talked out of it: the jaw sets and the eyes go up. This is the shot that makes the climb his idea.",

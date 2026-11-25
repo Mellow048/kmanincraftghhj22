@@ -32,7 +32,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.count",
-      ...cam.push({ on: top(0, 1.2, -299.6), dist: 3.2, to: 2.8, yaw: -18, pitch: 6, fov: 38 }),
+      ...cam.push({ on: top(0, 1.2, -299.6), dist: 3.9, to: 3.4, yaw: -18, pitch: 6, fov: 38 }),
       zone: "top",
       look: "overworld-day",
       note: "The keeper counts the money with two fingers, the way you count something you already know the total of. The jar sits on the sill between them.",
@@ -46,7 +46,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.raise",
-      ...cam.push({ on: top(2.3, 1.4, -298.9), dist: 2.6, to: 2.3, yaw: -6, pitch: 2, fov: 36 }),
+      ...cam.push({ on: top(2.3, 1.4, -298.9), dist: 3.9, to: 3.4, yaw: -6, pitch: 2, fov: 36 }),
       zone: "top",
       look: "overworld-day",
       note: "The price board on the wall, with one more mark on it than last year. Nobody at the bottom has ever seen this board; that is the entire scam.",
@@ -59,7 +59,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.ask",
-      ...cam.push({ on: top(-0.3, 1.42, -299.1), dist: 2.4, to: 2.1, yaw: 12, pitch: 0, fov: 36 }),
+      ...cam.push({ on: top(-0.3, 1.42, -299.1), dist: 3.9, to: 3.4, yaw: 12, pitch: 0, fov: 36 }),
       zone: "top",
       look: "overworld-day",
       note: "He asks anyway. Chin up, both hands on the sill: a kid doing the bravest thing available to him, which is asking an adult a question.",
@@ -69,7 +69,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.no",
-      ...cam.push({ on: top(0.4, 1.5, -300.6), dist: 2.5, to: 2.2, yaw: -10, pitch: 0, fov: 36, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: top(0.4, 1.5, -300.6), dist: 3.9, to: 3.4, yaw: -10, pitch: 0, fov: 36, screenOffset: [0, 0.06] }),
       zone: "top",
       look: "overworld-day",
       note: "The keeper's face saying no. He is not enjoying it and he is not sorry; it is a policy, and he is the policy's mouth.",
@@ -79,7 +79,7 @@ export const scene14 = storyScene(timing, {
     },
     {
       cue: "14.eight",
-      ...cam.push({ on: top(0, 1.55, -300.9), dist: 2.8, to: 2.4, yaw: 4, pitch: -2, fov: 38 }),
+      ...cam.push({ on: top(0, 1.55, -300.9), dist: 3.9, to: 3.3, yaw: 4, pitch: -2, fov: 38 }),
       zone: "top",
       look: "overworld-day",
       note: "Behind the bars, on a stone shelf, one golden apple. Eight gold, and the boy in front of it has forty-one emeralds and a jar of a year's fish.",

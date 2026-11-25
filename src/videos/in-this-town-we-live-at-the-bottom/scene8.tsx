@@ -12,7 +12,7 @@ export const scene8 = storyScene(timing, {
   shots: [
     {
       cue: "8.where",
-      ...cam.push({ on: room(0.4, 1.35, -1.8), dist: 2.9, to: 2.6, yaw: -16, pitch: 2, fov: 38 }),
+      ...cam.push({ on: room(0.4, 1.35, -1.8), dist: 3.9, to: 3.5, yaw: -16, pitch: 2, fov: 38 }),
       zone: "room",
       look: "warm-room",
       note: "He asks. She has been asked this before and her hands are already still: the answer is going to be a gesture, not a sentence.",
@@ -25,7 +25,7 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.point",
-      ...cam.push({ on: room(0.9, 1.75, -1.3), dist: 1.9, to: 2.2, yaw: 6, pitch: -10, fov: 32 }),
+      ...cam.push({ on: room(0.9, 1.75, -1.3), dist: 3.9, to: 4.5, yaw: 6, pitch: -10, fov: 32 }),
       zone: "room",
       look: "warm-room",
       note: "Her finger, up. The window in the top of frame has the mountain in it, so the gesture points out of the house and out of the frame: the apple is not here.",

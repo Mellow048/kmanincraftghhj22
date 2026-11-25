@@ -47,7 +47,7 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.mum",
-      ...cam.push({ on: [-0.6, 1.35, 9.2], dist: 3.0, to: 2.6, yaw: 14, pitch: 1, fov: 38 }),
+      ...cam.push({ on: [-0.6, 1.35, 9.2], dist: 3.9, to: 3.4, yaw: 14, pitch: 1, fov: 38 }),
       zone: "bottom",
       look: "overworld-night",
       note: "Two neighbours he has known his whole life, saying her name. Neither of them looks at him while they do it, which is how you know it is a kindness.",
@@ -61,7 +61,7 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.jar",
-      ...cam.push({ on: [0, 1.15, 10.6], dist: 2.2, to: 1.9, yaw: -8, pitch: 8, fov: 36 }),
+      ...cam.push({ on: [0, 1.15, 10.6], dist: 3.9, to: 3.4, yaw: -8, pitch: 8, fov: 36 }),
       zone: "bottom",
       look: "overworld-night",
       note: "The jar, handed through four pairs of hands into his bag. The label faces the lens the whole way: THE TOP, in his mum's handwriting.",

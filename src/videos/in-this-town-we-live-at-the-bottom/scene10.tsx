@@ -58,7 +58,7 @@ export const scene10 = storyScene(timing, {
     },
     {
       cue: "10.count",
-      ...cam.push({ on: [0, 1.05, 8.6], dist: 2.0, to: 1.75, yaw: -6, pitch: 42, fov: 36 }),
+      ...cam.push({ on: [0, 1.05, 8.6], dist: 3.9, to: 3.4, yaw: -6, pitch: 42, fov: 36 }),
       zone: "bottom",
       look: "overworld-rain",
       note: "On the planks: forty-one emeralds in a fish bucket, counted twice, and one gap in the pile that is nine hundred and fifty-nine coins wide.",

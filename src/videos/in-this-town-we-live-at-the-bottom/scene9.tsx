@@ -27,7 +27,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.boot",
-      ...cam.push({ on: [0.6, 0.5, 4.2], dist: 2.0, to: 1.7, yaw: -30, pitch: 26, fov: 36 }),
+      ...cam.push({ on: [0.6, 0.5, 4.2], dist: 3.9, to: 3.3, yaw: -30, pitch: 26, fov: 36 }),
       zone: "bottom",
       look: "overworld-day",
       note: "On 'a boot' a boot comes up on the line. Then a stick, then a lily pad, all in the same shot: the joke is the pile, not any one thing.",
@@ -43,7 +43,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.other",
-      ...cam.push({ on: [0.5, 0.45, 4.0], dist: 1.6, to: 1.45, yaw: 24, pitch: 34, fov: 34 }),
+      ...cam.push({ on: [0.5, 0.45, 4.0], dist: 3.9, to: 3.5, yaw: 24, pitch: 34, fov: 34 }),
       zone: "bottom",
       look: "overworld-day",
       note: "The second boot, which matches the first one, and also has a hole in it. The camera holds on the hole: the joke needs one beat of silence.",
