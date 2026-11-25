@@ -26,12 +26,12 @@ Match the exact sweet spot measured across all three 20k+ hits (`cut: "short"` 9
 | Metric | Target Range (20k+ Sweet Spot) | Hard Red Flag (Do Not Ship) |
 |---|---|---|
 | Runtime | **95s–115s** (`short`) or **150s–176s** (`long`) | `>= 179s` (YouTube stops treating it as a Short!) |
-| Median shot duration | **1.8s–2.5s** (`0.40–0.52 cuts/s`) | `> 3.5s` median or `> 6.5s` single shot without fly-through |
+| Median shot duration | **1.4s–1.8s** (`0.55–0.65 cuts/s`) | `> 2.6s` median or two static talking-head shots in a row |
 | Longest unbroken still | **<= 0.7s** (`camera` always moving slightly) | `> 1.5s` freeze without deliberate photograph beat |
 | Opening luma (first 3s) | **100–160** (`overworld-day` or `overworld-golden`) | `< 75` luma on frame 1 (dark/night open) |
-| Dark frames (`lum < 24`) | **0.0%–3.0%** across whole film | `> 10%` dark frames (phone viewers scroll past black mud) |
+| Dark frames (`lum < 24`) | **0.0%–2.0%** (even in night towns — light the streets!) | `> 10%` dark frames (phone viewers scroll past black mud) |
 | Flat frames | **0.0%** | `> 2%` flat walls/void |
-| Caption coverage | **99.5%–100.0%** (`y: 0.72`, `motion: "on-beat"`) | Missing / unaligned captions (`highlightWords` optional gold pop) |
+| Caption coverage | **95%–100%** (`y: 0.67`, `motion: "on-beat"`) | Monochrome low captions or missing `dangerWords` / `highlightWords` |
 
 ---
 
@@ -72,18 +72,23 @@ Use the upgraded tools in `src/engine/` on every new film:
    - `cam.whip(...)` (`0.3–0.45s` `outExpo`) for comedy reactions (cutting cleanly when someone drops an item or a cat hisses).
    - `cam.dollyZoom(...)` on a single 1.5–2.0s moment of realization or dread.
    - `cam.fitHeight(height, fov, fillRatio)` so tall/short characters are never accidentally cropped.
-4. **Add life to every set:**
+4. **Add life & sight-gags to every funny/high-stakes line (see `COMPETITOR-STUDY-NEVER-WALK-ALONE.md`):**
+   - Never let two narration beats stand around on the same empty street. Give comedic facts a **0.8s–1.8s visual cutaway** and use the built-in 3D props:
+   - `<FloatingNumber text="212" color="#ff4f42" />` for big stakes, tolls, or countdowns over a chase.
+   - `<ChatToast sender="Dad" text="rails broken, walking" />` for in-world Minecraft chat storytelling.
+   - `<Chicken scarf="#d62828" flap={1} />` for cute animal mascots / slow-fall gags.
    - Use animated `<Water />` blocks in town wells, rivers, or moats (`src/engine/blocks.tsx`).
    - Place `<EmberDrift />` near torches, campfires, smithies, or boss fights (`src/engine/fx.tsx`).
    - Put `hairLayer` and `rimColor` on key characters (`src/engine/MinecraftAvatar.tsx`) so silhouettes pop cleanly off night/forest backgrounds.
-5. **Punch key caption nouns with `highlightWords`:**
-   - Pass `captions: { words: timing.words, y: 0.72, motion: "on-beat", highlightWords: ["CREEPER", "GUNPOWDER", "NEVER", "RUN"], accentColor: "#ffd84d" }` so pivotal story words flash bright gold while keeping the crisp `#000000` outline.
+5. **Punch danger & hero caption nouns with `dangerWords` + `highlightWords`:**
+   - Pass `captions: { words: timing.words, y: 0.67, motion: "on-beat", dangerWords: ["ALONE", "100", "BROKE", "GONE"], highlightWords: ["CREEPER", "SAVE", "GOLD"] }` so crisis words flash coral-red (`#ff4f42`) and hero words flash gold (`#ffd84d`).
 
 ---
 
-## 5. Sound & Voice Rules That Hold Retention
+## 5. Mandatory Voice, TTS & Sound Rules ([`docs/VOICE-AND-TTS.md`](VOICE-AND-TTS.md))
 
-1. **Hook line spoken within `0.0s–0.3s`** — zero breath gap before word 1.
-2. **Every cut on a stressed word or reaction beat**, keeping median shot around `1.9s–2.4s`.
-3. **Audible contrast:** quiet ambient bed + crisp foley (footsteps, hiss, portal hum, sword swing, door latch) synced in `sound.json` so muted vs unmuted both tell the story cleanly.
-4. **Ending button:** leave 0.6s–1.2s of warm music sustain + final emotional image (no abrupt audio chop mid-word, no `"LIKE AND SUBSCRIBE"` banner pasted across the climax).
+1. **Mandatory TTS Voice Profile (Ignore Older Notes):** **Male, Natural American / No Accent, Energetic, Young / Not Old, Not Too Serious**. Always audition 1 test sentence first and reject flat/old/accented voices (`docs/VOICE-AND-TTS.md`).
+2. **Hook line spoken within `0.0s–0.3s`** — zero breath gap before word 1.
+3. **Every cut on a stressed word or reaction beat**, keeping median shot around **`1.4s–1.8s`** (`~0.55–0.65 cuts/s`).
+4. **Audible contrast:** quiet ambient bed + crisp foley (footsteps, hiss, portal hum, sword swing, door latch) synced in `sound.json` so muted vs unmuted both tell the story cleanly.
+5. **Ending button:** leave 0.6s–1.2s of warm music sustain + final emotional image (no abrupt audio chop mid-word, no `"LIKE AND SUBSCRIBE"` banner pasted across the climax; tie ending line cleanly to `"and that's why"` loop if applicable).

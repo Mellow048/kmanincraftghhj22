@@ -72,18 +72,27 @@ export const Captions: React.FC<CaptionSettings> = ({
   motion,
   accentColor = "#ffd84d",
   highlightWords,
+  dangerColor = "#ff4f42",
+  dangerWords,
+  wordColors,
 }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = frame / fps;
 
-  const highlightSet = useMemo(() => {
-    const s = new Set<string>();
+  const colorLookup = useMemo(() => {
+    const map = new Map<string, string>();
     if (highlightWords) {
-      for (const w of highlightWords) s.add(captionText(w, letterCase));
+      for (const w of highlightWords) map.set(captionText(w, letterCase), accentColor);
     }
-    return s;
-  }, [highlightWords, letterCase]);
+    if (dangerWords) {
+      for (const w of dangerWords) map.set(captionText(w, letterCase), dangerColor);
+    }
+    if (wordColors) {
+      for (const [w, hex] of Object.entries(wordColors)) map.set(captionText(w, letterCase), hex);
+    }
+    return map;
+  }, [highlightWords, accentColor, dangerWords, dangerColor, wordColors, letterCase]);
 
   const material = useMemo(
     () =>
@@ -124,13 +133,13 @@ export const Captions: React.FC<CaptionSettings> = ({
     rect = [0, 1 - 2 * (y - (beat?.lift ?? 0)), halfW, halfH];
   }
 
-  const isAccent = text.length > 0 && highlightSet.has(text);
+  const wordHex = (text.length > 0 && colorLookup.get(text)) || "#ffffff";
 
   useFrame(() => {
     if (rect && tex) {
       material.uniforms.map.value = tex;
       (material.uniforms.rect.value as THREE.Vector4).set(rect[0], rect[1], rect[2], rect[3]);
-      (material.uniforms.accent.value as THREE.Color).set(isAccent ? accentColor : "#ffffff");
+      (material.uniforms.accent.value as THREE.Color).set(wordHex);
     }
   });
 

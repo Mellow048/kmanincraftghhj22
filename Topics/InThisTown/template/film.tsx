@@ -26,7 +26,15 @@ export const film = defineFilm({
   //   the voice is recorded (scripts/narration.py build):   audio: { src: "audio/__ID__/narration.mp3" },
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/__ID__/mix.mp3" },
   // A finished film plays the mix. `npm run check` fails one that does not.
-  captions: { words: timing.words, y: 0.72, motion: "on-beat" },
+  // Captions sit at y=0.67 (high enough to clear phone UI; flash danger/hook words in red & gold).
+  // Use dangerWords + highlightWords tailored to your story's stakes!
+  captions: {
+    words: timing.words,
+    y: 0.67,
+    motion: "on-beat",
+    highlightWords: ["CREEPER", "ENDERMAN", "SECRET", "SAVE"],
+    dangerWords: ["ALONE", "BURN", "RUN", "TRAP", "NEVER", "ZERO"],
+  },
   World,
   scenes: [scene1],
 });

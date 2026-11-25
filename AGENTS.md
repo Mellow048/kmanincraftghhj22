@@ -1,10 +1,16 @@
 # AGENTS.md — The Director's Contract
 
-> **REMASTER V2 & 20K+ HIT ARCHIVE (READ FIRST):**
-> - [`20k-hits/README.md`](20k-hits/README.md) — **Saved source code, shot logs, contact sheets, and metrics for the 3 × 20k+ hit videos** (*Monster Village Part 1*, *Creeper Parents*, *Enderman Parents*).
-> - [`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md) — Forensic comparison of why those 3 blew up to 20k+ while the rest stopped at 1.5k–2k.
-> - [`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md) — Repeatable 20k+ Shorts formula, first-1.5s hook rules, caption contrast, and original non-duplicate mob/family scripts.
-> - [`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md) — Technical audit of framework issues found & every v2 remaster upgrade (`screenOffset`, `cam.whip/crane/ots/dollyZoom/fitHeight`, 9:16 aspect-safe shaders, `<Water>`, `<EmberDrift>`, caption highlight words).
+> ## ⛔ MANDATORY ARENA AGENT STARTUP GATE (READ EVERY WORD BEFORE STARTING)
+>
+> **Do NOT pitch an idea, pick a voice, write a script line, or write a shot until you read these four required files:**
+>
+> 1. **[`20k-hits/README.md`](20k-hits/README.md) — MUST STUDY ALL THREE 20K+ HIT VIDEOS + SOURCE CODE:**  
+>    Read the source code, shot logs, contact sheets, and `ANALYSIS.md` for all three 20k+ hit winners (`01-monster-village-part-1`, `02-creeper-parents`, `03-enderman-parents`) AND [`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md) so we repeat the 20k+ hit formula automatically without the owner repeating himself.
+> 2. **[`docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md`](docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md) — FAST-CUT VISUAL PLAYBOOK (5k in 15h vs 1k):**  
+>    Cut at **`~1.4s–1.8s` median shot duration** (`0.55–0.64 cuts/s`, never sluggish `2.3s–2.6s` talking heads), put literal 3D visual sight-gags on every funny line (`<FloatingNumber>`, `<ChatToast>`, `<Chicken>`), and keep night frames bright and readable (`< 2%` dark frames).
+> 3. **[`docs/VOICE-AND-TTS.md`](docs/VOICE-AND-TTS.md) — MANDATORY TTS VOICE STANDARD (IGNORE OLD VOICE NOTES):**  
+>    You **MUST** pick a TTS voice that is **Male, Natural American / No Accent, Energetic, Young / Not Old, and Not Too Serious**. Ignore any older document mentioning old/monotone voices (`voice-00`, `voice-01`, `voice-08`, etc.) unless the clip passes every criterion in `docs/VOICE-AND-TTS.md`.
+> 4. **[`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md)** & **[`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md)** — Remaster v2 shaders, dual-color red/gold captions (`y: 0.67`), and `cam.*` camera helpers (`whip`, `crane`, `ots`, `dollyZoom`, `fitHeight`, `screenOffset`).
 
 ## 0. Before everything: read [`MASTERPROMPT-01.md`](MASTERPROMPT-01.md)
 

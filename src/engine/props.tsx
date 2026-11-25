@@ -22,6 +22,7 @@ import {
   wetFloorTex,
   windowTex,
 } from "./textures";
+import { wordTexture } from "./pixelfont";
 import { Glow } from "./fx";
 
 /** A textured box. The atom of the whole framework. */
@@ -857,3 +858,146 @@ export const WardWall: React.FC<{
 }> = ({ position = [0, 0, 0], size, color = "#3a5a72", repeat = [4, 2], rotationY = 0 }) => (
   <Block position={position} size={size} map={wardWallTex(color, repeat)} rotationY={rotationY} />
 );
+
+/**
+ * 3D floating pixel number/text in world space (e.g. a bright red "212" or "5" countdown over a chase).
+ * Uses `wordTexture` inside the WebGL scene — zero 2D HTML overlay.
+ */
+export const FloatingNumber: React.FC<{
+  text: string | number;
+  position?: Vec3;
+  rotationY?: number;
+  color?: string;
+  height?: number;
+  bob?: number;
+}> = ({
+  text,
+  position = [0, 3, 0],
+  rotationY = 0,
+  color = "#ff4f42",
+  height = 0.7,
+  bob = 0.08,
+}) => {
+  const t = useFilmTime();
+  const str = String(text);
+  const tex = wordTexture(str);
+  const { width: tw, height: th } = tex.image as { width: number; height: number };
+  const w = (tw / Math.max(1, th)) * height;
+  const dy = bob > 0 ? Math.sin(t * 3.1) * bob : 0;
+
+  return (
+    <mesh position={[position[0], position[1] + dy, position[2]]} rotation-y={rotationY}>
+      <planeGeometry args={[w, height]} />
+      <meshBasicMaterial
+        map={tex}
+        color={color}
+        transparent
+        alphaTest={0.5}
+        side={THREE.DoubleSide}
+        toneMapped={false}
+        fog={false}
+      />
+    </mesh>
+  );
+};
+
+/**
+ * In-world 3D Minecraft chat strip (`<Dad> rails broken, walking`), crisp on a translucent dark backing plate.
+ * Keeps screen-readable chat storytelling purely inside the 3D scene.
+ */
+export const ChatToast: React.FC<{
+  text: string;
+  sender?: string;
+  position?: Vec3;
+  rotationY?: number;
+  height?: number;
+  color?: string;
+}> = ({
+  text,
+  sender,
+  position = [0, 2.4, 0],
+  rotationY = 0,
+  height = 0.24,
+  color = "#ffffff",
+}) => {
+  const line = sender ? `<${sender}> ${text}` : text;
+  const tex = wordTexture(line);
+  const { width: tw, height: th } = tex.image as { width: number; height: number };
+  const w = (tw / Math.max(1, th)) * height;
+
+  return (
+    <group position={position} rotation-y={rotationY}>
+      <mesh position={[0, 0, -0.01]}>
+        <planeGeometry args={[w + height * 0.6, height * 1.45]} />
+        <meshBasicMaterial color="#000000" transparent opacity={0.58} side={THREE.DoubleSide} fog={false} />
+      </mesh>
+      <mesh>
+        <planeGeometry args={[w, height]} />
+        <meshBasicMaterial
+          map={tex}
+          color={color}
+          transparent
+          alphaTest={0.5}
+          side={THREE.DoubleSide}
+          toneMapped={false}
+          fog={false}
+        />
+      </mesh>
+    </group>
+  );
+};
+
+/**
+ * Compact Minecraft chicken companion with animated flapping wings, pecking/bobbing head, and optional scarf.
+ */
+export const Chicken: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  scale?: number;
+  flap?: number;
+  scarf?: string;
+}> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  scale = 1,
+  flap = 0,
+  scarf,
+}) => {
+  const t = useFilmTime();
+  const wingAngle = flap > 0 ? Math.sin(t * 18) * 0.95 * flap : Math.sin(t * 2.2) * 0.08;
+  const headNod = Math.sin(t * 3.4) * 0.09;
+
+  return (
+    <group position={position} rotation-y={rotationY} scale={scale}>
+      {/* feet & legs */}
+      <Block position={[-0.08, 0.14, 0]} size={[0.04, 0.28, 0.04]} color="#d8a23a" />
+      <Block position={[0.08, 0.14, 0]} size={[0.04, 0.28, 0.04]} color="#d8a23a" />
+      <Block position={[-0.08, 0.02, 0.04]} size={[0.08, 0.03, 0.12]} color="#e0a938" />
+      <Block position={[0.08, 0.02, 0.04]} size={[0.08, 0.03, 0.12]} color="#e0a938" />
+      {/* body */}
+      <Block position={[0, 0.42, 0]} size={[0.36, 0.34, 0.48]} color="#f6f6f6" />
+      {/* wings */}
+      <group position={[-0.21, 0.5, 0]} rotation-z={wingAngle}>
+        <Block position={[0, -0.09, 0]} size={[0.06, 0.24, 0.36]} color="#ececec" />
+      </group>
+      <group position={[0.21, 0.5, 0]} rotation-z={-wingAngle}>
+        <Block position={[0, -0.09, 0]} size={[0.06, 0.24, 0.36]} color="#ececec" />
+      </group>
+      {/* optional scarf */}
+      {scarf ? (
+        <group position={[0, 0.57, 0.19]}>
+          <Block position={[0, 0, 0]} size={[0.28, 0.08, 0.26]} color={scarf} />
+          <Block position={[0.1, -0.1, 0.1]} size={[0.07, 0.18, 0.05]} color={scarf} />
+        </group>
+      ) : null}
+      {/* head, beak, wattle, eyes */}
+      <group position={[0, 0.69, 0.21]} rotation-x={headNod}>
+        <Block position={[0, 0, 0]} size={[0.24, 0.3, 0.24]} color="#fafafa" />
+        <Block position={[0, -0.02, 0.17]} size={[0.2, 0.08, 0.12]} color="#ebb02d" />
+        <Block position={[0, -0.1, 0.15]} size={[0.1, 0.1, 0.08]} color="#d62828" />
+        <Block position={[-0.08, 0.04, 0.122]} size={[0.05, 0.05, 0.01]} color="#111111" />
+        <Block position={[0.08, 0.04, 0.122]} size={[0.05, 0.05, 0.01]} color="#111111" />
+      </group>
+    </group>
+  );
+};

@@ -96,10 +96,16 @@ export type CaptionSettings = {
   size?: number;
   /** "upper" (default) or "lower". */
   letterCase?: "upper" | "lower";
-  /** Accent tint for emphasised words (e.g. words with `!`, or listed in `highlightWords`). */
+  /** Accent tint for emphasised words (e.g. words listed in `highlightWords`). Default `#ffd84d`. */
   accentColor?: string;
   /** Optional list of words (case-insensitive) to tint with `accentColor` for viewer hook retention. */
   highlightWords?: string[];
+  /** Danger/cost/negative tint for high-stakes words listed in `dangerWords`. Default `#ff4f42`. */
+  dangerColor?: string;
+  /** Words to flash red/coral (`dangerColor`) — e.g. `["alone", "100", "broke", "gone"]`. */
+  dangerWords?: string[];
+  /** Optional per-word hex colour map (`{ word: "#55ff55" }`, matched case-insensitively). */
+  wordColors?: Record<string, string>;
 };
 
 export type SceneDef = {

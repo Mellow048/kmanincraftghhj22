@@ -18,8 +18,20 @@ Out of 40+ Shorts built in this framework, **three broke cleanly past 20,000+ vi
 
 ---
 
-## Read These Playbooks Before Making Any New Short
+## Read These Playbooks Before Making Any New Short (MANDATORY)
 
-1. **[`docs/WHY-THE-3-HITS-BLEW-UP.md`](../docs/WHY-THE-3-HITS-BLEW-UP.md)** — Deep forensic comparison showing why these three crossed 20k views while dark/sequel/generic-villager Shorts capped out at 1.5k–2k.
-2. **[`docs/VIRAL-SHORTS-BLUEPRINT.md`](../docs/VIRAL-SHORTS-BLUEPRINT.md)** — The repeatable 20k+ formula, 6-beat emotional misread curve, hook checklist, and original non-duplicate Minecraft mob concepts.
-3. **[`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](../docs/FRAMEWORK-REVIEW-AND-REMASTER.md)** — Technical flaws found in the v1 framework and the Remaster v2 engine, camera, and shader upgrades.
+1. **[`docs/WHY-THE-3-HITS-BLEW-UP.md`](../docs/WHY-THE-3-HITS-BLEW-UP.md)** — Forensic comparison showing why these three crossed 20k views while dark/sequel/generic-villager Shorts capped out at 1.5k–2k.
+2. **[`docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md`](../docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md)** — Breakdown of *Never Walk Alone After Dark* (`5k views in 15h`): `~1.47s` cuts, `<FloatingNumber>`, `<ChatToast>`, scarfed `<Chicken>`, dual-color red/gold captions, and bright night lighting.
+3. **[`docs/VOICE-AND-TTS.md`](../docs/VOICE-AND-TTS.md)** — **MANDATORY TTS STANDARD (ignores older notes):** Male, No Accent (Natural American), Energetic, Not Old, Not Too Serious.
+4. **[`docs/VIRAL-SHORTS-BLUEPRINT.md`](../docs/VIRAL-SHORTS-BLUEPRINT.md)** — The repeatable 20k+ formula, 6–8 beat curve, hook checklist, and original non-duplicate Minecraft mob concepts.
+5. **[`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](../docs/FRAMEWORK-REVIEW-AND-REMASTER.md)** — Technical fixes and all Remaster v2 engine, camera, prop, caption, and shader upgrades.
+
+---
+
+## Non-Negotiable Formula Across All Winners (Repeat This Every Time)
+
+- **Bright Frame-1 Mob/Hook Contrast (`lum >= 95`):** Never open on dark night or plain identical Steve villagers.
+- **100% Real Vanilla Minecraft Mechanics:** Creepers fearing cats, Zombies/Skeletons burning in sun, Endermen hating water/eye contact, light-level 0 spawns, slow-falling chickens — instant viewer recognition in 1 second.
+- **Fast Sight-Gag Pacing (`1.4s–1.8s` median shot):** Show absurd concrete cutaways (`<FloatingNumber>`, `<ChatToast>`, props), never two static street talks in a row.
+- **Warm Misunderstood Family/Underdog Core:** What feels scary/weird/mocked flips into protective love or hero payoff.
+- **Energetic Young Male Voice + Red/Gold Captions (`y: 0.67`):** `dangerWords` in `#ff4f42`, `highlightWords` in `#ffd84d`.

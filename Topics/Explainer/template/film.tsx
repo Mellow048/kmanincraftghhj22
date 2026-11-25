@@ -22,7 +22,13 @@ export const film = defineFilm({
   //   the sound is built (scripts/sound.py build):          audio: { src: "audio/__ID__/mix.mp3" },
   // A finished film plays the mix. `npm run check` fails one that does not.
   post: { shaders: true },
-  captions: { words: timing.words, y: 0.72, motion: "on-beat" },
+  captions: {
+    words: timing.words,
+    y: 0.67,
+    motion: "on-beat",
+    highlightWords: ["TRUTH", "WHY", "PROOF"],
+    dangerWords: ["NEVER", "ZERO", "FALSE", "GONE"],
+  },
   World,
   scenes: [scene1],
 });

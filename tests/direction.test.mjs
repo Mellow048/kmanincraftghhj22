@@ -256,6 +256,29 @@ test('remaster v2: cam helpers, screenOffset, and shader presets behave determin
     const vibrant = resolveShaders('vibrant-day');
     assert.ok(vibrant && vibrant.vibrance > DEFAULT_SHADERS.vibrance && vibrant.enabled === true);
     assert.equal(resolveShaders(undefined), null);
+
+    // Check dual-color caption font & 3D sight-gag props export cleanly
+    const out2 = path.join(scratch, 'props-font.mjs');
+    await build({
+      stdin: {
+        contents: `export { wordTexture } from './src/engine/pixelfont';\nexport { FloatingNumber, ChatToast, Chicken } from './src/engine/props';`,
+        resolveDir: root,
+      },
+      outfile: out2,
+      platform: 'node',
+      format: 'esm',
+      target: 'node22',
+      packages: 'external',
+      bundle: true,
+      jsx: 'automatic',
+      logLevel: 'silent',
+    });
+    const { wordTexture, FloatingNumber, ChatToast, Chicken } = await import(pathToFileURL(out2));
+    const chatTex = wordTexture('<Dad> 100%: +2!');
+    assert.ok(chatTex.image.width > 10 && chatTex.image.height === 11);
+    assert.equal(typeof FloatingNumber, 'function');
+    assert.equal(typeof ChatToast, 'function');
+    assert.equal(typeof Chicken, 'function');
   } finally {
     fs.rmSync(scratch, { recursive: true, force: true });
   }

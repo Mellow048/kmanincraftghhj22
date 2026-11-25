@@ -6,8 +6,14 @@ One folder per video. One TSX file per scene. One shared `world.tsx`. One camera
 
 This is not a template for "a Minecraft video". It is a director's framework with a working 20-second demo, a camera bible, a style bible, a scene contract and a lint script that fails lazy work.
 
-> **Remaster v2 & 20k+ Hit Archive:** Want to make a Short that actually hits **20k+ views** instead of stalling at 1.5k–2k?
-> Start with [`20k-hits/README.md`](20k-hits/README.md) (saved source code + shot logs + contact sheets for *Monster Village Part 1*, *Creeper Parents*, and *Enderman Parents*), [`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md), [`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md), and [`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md).
+> ## 🚨 STOP — MANDATORY READ FOR EVERY ARENA AGENT (20K+ HIT RULEBOOK)
+>
+> **If you are an agent starting a new Short in this repository, you MUST read these before writing anything (so the owner never has to repeat the winning formula again):**
+>
+> 1. **[`20k-hits/README.md`](20k-hits/README.md)** — Inspect **all 3 × 20k+ hit videos + full source code + shot logs** (*Monster Village Part 1*, *Creeper Parents*, *Enderman Parents*) and **[`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md)** so we consistently repeat what made them hit 20k+ instead of stalling at 1.5k.
+> 2. **[`docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md`](docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md)** — Study why *Never Walk Alone After Dark* hit **5k views in 15h** (`~1.47s` median shot, `110` cuts, `0.7%` dark frames, literal 3D sight-gags + `<FloatingNumber>` + `<ChatToast>` + dual-color red/gold captions).
+> 3. **[`docs/VOICE-AND-TTS.md`](docs/VOICE-AND-TTS.md)** — **MANDATORY TTS SPEC (supersedes older voice notes):** must pick **Male, No Accent (Natural American), Energetic, Not Old, Not Too Serious**.
+> 4. **[`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md)** & **[`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md)** — Remaster v2 shaders, camera recipes, and checklists.
 >
 > **It makes more than one kind of video.** The 20-second short below is the base. A narrated one-to-three-minute
 > story that begins "In this town, …" is a different kind, a **topic**, with its own rules, pack, starter and
