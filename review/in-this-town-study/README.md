@@ -981,3 +981,112 @@ into a tall picture). Keep the near person off the lens axis. Check what is stra
   build before the owner approves the script; fill in a finished film's outline; hold a static shot; put a 2D
   overlay anywhere; make a 20-second version of a story; run past 178 s (or 120 s in a short cut) or under the
   word floor; play a third film of the "one odd kid in a town of one famous mob" shape.
+
+---
+
+# 19. `monster-village/NEW-SHORT.md`: the newest director's readme, and the only real analytics we have
+
+**The owner, 2026-11-18: Part 1 ≈18,000 views, 100+ likes, 83% stayed to watch; one other Short ≈2k; most ≈1.4–1.5k.**
+That 83% is *stayed versus swiped* — not completion, not average percentage viewed, not the fraction still there at a
+known second. And the 18k is not attributable to any one shot. Keep both cautions; they are in the file.
+
+This page replaces the earlier guesswork in `monster-village/README.md` with a frame-level reading of the delivered
+cut, and it is the best thing to imitate in the whole repo. Its central idea:
+
+> **Borrow the change of mind, not the monster family.** At 0:54 the bar across the boy's door looks like a way to
+> keep him in. At 1:04 we see the backs of the people outside. They are looking *away* from him. The bar hasn't
+> changed; our idea of the people who put it there has.
+
+## 19.1 The hook, corrected
+
+The older study said "eleven cuts in two seconds". This page corrects it: **it is ONE shot, `1.town`, 2.73 s long,
+that keeps changing.** At frame 0 there is an empty sunny path behind the boy. At 0.40 s Mum is there; at 0.60 s a
+skeleton; by the word "only" (1.148 s) he has company; by "monster" (2.108 s) the crowd fills the space round his head.
+*"It's one shot, not eleven cuts; you needn't be able to count every partly hidden mob to get the joke."*
+
+That is a materially different instruction, and it is the one to build to: **stagger the arrivals inside a single held
+shot, each on its own sound, round a teller who stays easy to find.** The picture says "he fits here"; the voice says
+"I'm different". *Which should we believe?*
+
+## 19.2 The question ladder (the film's actual engine, timed)
+
+| Time / cues | What the viewer sees | The question that changes |
+|---|---|---|
+| 0:00–0:07 `1.town`, `1.mum`, `1.dad`, `1.me` | One shot that populates; then nearer views give two faces names a child would use (*Mum. Dad.*); then the camera looks **down** between them at the basket | Being different now costs somebody something. "How he joined this family" is told *without* saying who brought him |
+| 0:06–0:18 `2.hiss`–`3.me` | The creeper wants a hug; the bus is a slime and the boy comes out wet | These are **little stories with endings, not a tour of assets.** "Not every prop needs a secret" |
+| 0:18–0:50 `4.stare`, `5.bread`, `6.lamp` | Mo's scarf hides his mouth; his stare reads as dislike; but he **sits beside** him in the sun, blames the hat, breaks bread, needs a lantern, sneezes | Not "is Mo human" — a viewer can guess that early and still want **why he hides, and why he is kind to this boy.** "The bread is lunch before it is evidence; the sneeze is something they have in common before it is a clue" |
+| 0:50–1:10 `7.lock`–`9.out` | The outside bar looks like a cage; he climbs out; faces, then the reverse behind their backs. "Out" lands at 1:04.35 | "Why lock him in?" is answered **now** (they are guarding him) and immediately earns *from whom?* — "No extra speech explaining that Mum loves him" |
+| 1:10–1:40 `12.mum`, `13.front`, `14.trick` | Mum falls; he looks like a player, so he runs in with arms out: "I live here!"; the big player calls **him** a monster in disguise | **His choice follows from the first line. It costs him something and it does not work.** Now someone else must choose to be seen |
+| 1:40–2:11 `15.red`–`18.hunt` | Red on a blue sleeve; the scarf comes down; the wipe leaves a **patch** of skin, not a new face; then "I am human too" (1:55.18); bread, lantern, sneeze and sun named back; **the basket again, in Mo's arms** | The reveal answers more than species: the stare was recognition, he was not alone, and the raiders came for Mo. **Take the basket out of the opening and the later line loses its force** |
+| 2:11–2:33 `19.hiss`–`20.knew` | "Hug" at 2:16.65; empty-handed players flee, swords left on the path; Mo holds his hat low and **Mum puts it back on his head**; "Zombies do not eat bread" | Two rewards: the old joke changes the action, and **acceptance is a gesture, not a speech** |
+| 2:33–2:55 `21.army`–`22.sub` | The army arrives **only after** welcome; wide of Mo alone; close of hat off, iron on, sword up; subscribe at 2:53.17 | "Do I belong?" is paid. "What will Mo do?" belongs to Part 2. *If the story ends in one part, keep the earned ending — do not manufacture an army* |
+
+## 19.3 Word, action and sound on the same event
+
+Scrub 0:34.20 → 0:34.80 → 0:35.23: one tan loaf, hands apart with crumbs, two halves. The word clock puts "broke" at
+34.758; the frame reads BROKE; the sound sheet asks for a crack on that word.
+
+> *"A generic talking close-up with a loaf floating beside it would satisfy the noun and lose the verb."*
+
+And: **the caption helps you name it; it should not be the only place it happens.** The music is `none` from
+1:32.57–1:39.20 as his defence fails — not dead silence, speech and effects remain.
+
+## 19.4 The transfer card — fill this in before recording, answer it in REVIEW
+
+| Borrow one job | Before recording | In review |
+|---|---|---|
+| **Opening** | What can I point at in the first vertical frame? What changes **within** the first phrase? Give three hook options; choose one for the question it raises **about a person** | Your cue + frame 0, a frame inside the action, and the end of the phrase. Mute it; cover the caption; describe the change **without using the title**. If the answer is only "camera zooms", restage it |
+| **Change of mind** | "At ___ the teller thinks ___. The viewer can already see ___. Later ___ makes that same detail mean ___." Name the object/action and the word it lands on | Your before and after cues and the intervening action. **Is the evidence visible before the explanation, or only mentioned in the script?** |
+| **Choice and reward** | Who chooses, what might they lose, what is settled **before** the CTA? **Why could the last line not belong to either of the last two films?** | Your payoff and CTA times. Watch at phone size, then listen without following the script. A passed rehearsal or a silent sheet is **not** a listening pass |
+
+**Its worked example, which is a masterclass in adapting rather than copying**: borrow `9.out`'s *reverse*, not its
+ring of guards. A sign painter watches the market arrow swing toward his stall and blames the apprentice who keeps
+touching it; the early clue is a streak of fresh yellow on a passing cart hub; in the new reverse we see the hub
+**clip** the low arrow and the apprentice straighten it — **show wheel, blade and hand in that order on "clip"; if the
+axle is below the phone crop, the shot fails.** The painter then raises the arrow even though the queue goes the other
+way, and the payoff is the next cart passing without turning it. Different job, mistake, cost and comic ending.
+
+## 19.5 After upload: diagnose which problem you actually have
+
+Write **one prediction before upload**. Compare against one *named* ordinary Short over the **same age since
+publication** and traffic source (Shorts feed). Keep the Studio labels: shown in feed, stayed/swiped, engaged views,
+average view duration and percentage viewed, retention graph, likes.
+
+- **Lower stayed rate** → compare the first phrase muted and voiced. *What did a stranger have to wait for?* Change
+  that first, not the finale.
+- **Same stayed rate, earlier drop later** → mark the first sustained dip and the cue **just before** it. Was a clue
+  invisible, a choice delayed, or a question repeated instead of answered?
+- **Same rates, different views** → check feed exposure and audience mix before blaming the script. A spike can mean a
+  replay **or** confusion. If the graphs are not available, write "unknown"; do not invent a drop.
+
+## 19.6 The reference films' own "what it is good for" pages, in one place
+
+| Film | Take from it |
+|---|---|
+| `same-face` | The shape itself: 14 beats, 57 shots, 441 words, 1:44.7, 254 wpm; 36/19/44 in thirds; "nobody" three times before 0:12; music 11 sections with 4.5 s of silence before the reveal; 141 effects (81/min); voice 14.2 dB over everything |
+| `nobody-looked-at-the-moon` | A film at night: warm lantern light, and cold moonlight that **lies on one place at a time and moves like a character** (`skyAt()`); the densest sound sheet and what was cut from it |
+| `monster-egg` (long) | 18 beats over three minutes, three places in one world. **Voice only — it predates the sound rule. Do not copy that** |
+| `superpower-at-18` | The long cut with sound, from the owner's own outline |
+| `superpower-at-18-part-2` | The owner's favourite so far: fast action and **showing a process** |
+| `robot-at-18` | **A fight.** Bodies posed joint by joint, hit-freezes, cuts inside a line, flying poses (`scene6.tsx`, `fight.tsx`). "Beats 1 to 5 are not a model for motion" |
+| `pumpkin-heads` | A second short with sound; **an ending that is a picture, not the subscribe sign held to camera** |
+| `iron-golem` | **Pace**: 234 wpm with 0.25–0.75 s of air between story steps, and a premise that states its reason in five full sentences |
+| `we-are-all-cats` | **A funny film that ends in one part.** A fight where nobody touches anybody, told in pictures |
+| `everyone-runs-away-from-me` | **The recipe in 100 s**: famous mob + kid + wrong thing in daylight; two jokes by 0:10; the weakness becomes the weapon; a number carried through (the nine-block table); true facts as jokes *and* plot |
+| `never-seen-my-mums-face` | **Script first, done right** (he said yes and no line changed); a reveal held to the last twenty seconds with 0.5 s of silence; seven plants; a kid among people 2.9 m tall shot from his own 1.22 m eye height so the endermen are *legs* until the one tilt up |
+| `same-face` + `never-seen-my-mums-face` | **The warning**: `never-seen-my-mums-face` is `everyone-runs-away-from-me` with a different mob. Same teller, same family, same want, same "tries everything", same six players at night, same turn, same ending, same cut. He saw it in one message |
+
+**The enderman film's staging lesson, which applies to any tall frame**: put the kid **nearer the lens** than the tall
+thing, shoot from his height, and let the tall thing be legs unless its face is the point. A scarf on a tall thing that
+bends down hangs in front of its face **like a tongue**.
+
+## 19.7 Where the topic stands, 2026-11-25
+
+- 19 approved films, one reference (`same-face`), one rejected 20-second short kept as a warning twice over, two v1s.
+- The last owner-facing numbers: **Monster Village Part 1 ≈18k views / 83% stayed**; the rest ≈1.4–1.5k; the goal he
+  has stated is **70%+ stayed to watch** and out of "1k view jail".
+- The newest films of the topic (`we-lost-the-vote`, `i-was-told-to-sit`, `i-have-forty-minutes`,
+  `being-scared-is-my-job`, `a-stranger-moved-into-my-house`, `my-brother-got-bitten`, `i-had-never-seen-the-sun`)
+  were built by an agent in **automatic mode** and **he has not reviewed their scripts**; several were re-cut three
+  times against Monster Village's numbers. They are the current state of the craft, not approved models.
+- **Nothing in this folder may be built without his yes on the script.** That is the rule that has held best.
