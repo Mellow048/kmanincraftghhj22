@@ -1,0 +1,508 @@
+{
+  "film": "in-this-town-i-keep-my-mum-in-the-light",
+  "README": "The sound sheet: the owner's track, the street's air, and one effect for each thing that happens. Rules: Topics/InThisTown/SOUND.md. Build: python3 scripts/sound.py build in-this-town-i-keep-my-mum-in-the-light",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.keep",
+        "mood": "town",
+        "why": "The track from frame one: a street, a boy, an enormous mother."
+      },
+      {
+        "from": "2.dark",
+        "mood": "tense",
+        "gain": -4,
+        "why": "The rule, and the doorway empty. The track steps back."
+      },
+      {
+        "from": "3.mum",
+        "mood": "hope",
+        "gain": -3,
+        "why": "The glowstone works for a night. It has to sound like a win."
+      },
+      {
+        "from": "4.sky",
+        "mood": "tense",
+        "gain": -1,
+        "why": "The phantoms. Forward, and it stays forward to the roof."
+      },
+      {
+        "from": "5.still",
+        "mood": "drone",
+        "gain": -2,
+        "why": "He stands still. One low note and her."
+      },
+      {
+        "from": "6.wash",
+        "mood": "hope",
+        "why": "Morning, sheets, the list, out on the CTA."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.keep",
+      "to": "1.chairs",
+      "bed": "village"
+    },
+    {
+      "from": "2.light",
+      "to": "2.legs",
+      "bed": "village"
+    },
+    {
+      "from": "3.candles",
+      "to": "3.nights",
+      "bed": "night"
+    },
+    {
+      "from": "4.sky",
+      "to": "4.mum",
+      "bed": "wind"
+    },
+    {
+      "from": "5.still",
+      "to": "5.roof",
+      "bed": "night"
+    },
+    {
+      "from": "6.wash",
+      "to": "6.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.keep",
+      "sfx": "whoosh_low",
+      "why": "The push down the street: frame one is somewhere, not a title card."
+    },
+    {
+      "cue": "1.keep",
+      "trim": -6,
+      "sfx": "tick",
+      "why": "Her needles, left of frame, before we see what they belong to."
+    },
+    {
+      "cue": "1.spider",
+      "sfx": "boom",
+      "why": "The reveal, and the only boom in the film."
+    },
+    {
+      "cue": "1.spider",
+      "pitch": 1.2,
+      "trim": -4,
+      "sfx": "blip",
+      "why": "On the last syllable."
+    },
+    {
+      "cue": "1.six",
+      "repeat": 6,
+      "every": 0.13,
+      "pitchStep": 1.02,
+      "sfx": "tick",
+      "why": "Six needles: the number is the joke."
+    },
+    {
+      "cue": "1.jumper",
+      "dur": 0.4,
+      "sfx": "rustle",
+      "why": "The jumper, and the sleeves he is not wearing."
+    },
+    {
+      "cue": "1.evening",
+      "sfx": "swish",
+      "why": "Cut: the school at the bottom of the street."
+    },
+    {
+      "cue": "1.chairs",
+      "repeat": 3,
+      "every": 0.22,
+      "sfx": "scrape",
+      "why": "Three chairs, up on them."
+    },
+    {
+      "cue": "1.chairs",
+      "trim": -8,
+      "dur": 0.8,
+      "sfx": "cheer",
+      "why": "A room panicking politely."
+    },
+    {
+      "cue": "2.light",
+      "sfx": "whoosh",
+      "why": "New beat: the rule, stated once, in daylight."
+    },
+    {
+      "cue": "2.dark",
+      "trim": -3,
+      "sfx": "sting",
+      "why": "The film lowers its voice."
+    },
+    {
+      "cue": "2.dark",
+      "at": 0.35,
+      "sfx": "whoosh_low",
+      "why": "Same frame, night, empty doorway."
+    },
+    {
+      "cue": "2.knits",
+      "repeat": 4,
+      "every": 0.15,
+      "pitchStep": 0.98,
+      "sfx": "tick",
+      "why": "One jumper a minute, in close-up."
+    },
+    {
+      "cue": "2.sleeves",
+      "dur": 0.5,
+      "pan": 0.2,
+      "sfx": "rustle",
+      "why": "The sleeves swing."
+    },
+    {
+      "cue": "2.evening",
+      "repeat": 3,
+      "every": 0.3,
+      "trim": -2,
+      "sfx": "scrape",
+      "why": "The chairs again, as a memory."
+    },
+    {
+      "cue": "2.back",
+      "trim": -3,
+      "sfx": "whoosh",
+      "why": "Cut: dusk, and the doorway empty."
+    },
+    {
+      "cue": "2.back",
+      "trim": -4,
+      "sfx": "cheer",
+      "why": "The room is still in his ears."
+    },
+    {
+      "cue": "2.step",
+      "repeat": 2,
+      "every": 0.55,
+      "sfx": "step_wood",
+      "why": "Two steps to the threshold and no further."
+    },
+    {
+      "cue": "2.thought",
+      "trim": -5,
+      "sfx": "blip",
+      "why": "A thought he has had a hundred times."
+    },
+    {
+      "cue": "2.legs",
+      "dur": 0.7,
+      "trim": -2,
+      "sfx": "scrape",
+      "why": "Her legs flat across the frame."
+    },
+    {
+      "cue": "2.legs",
+      "at": 0.2,
+      "dur": 1.2,
+      "trim": -6,
+      "sfx": "riser",
+      "why": "Under the reveal."
+    },
+    {
+      "cue": "3.candles",
+      "sfx": "whoosh",
+      "why": "New beat: the plan."
+    },
+    {
+      "cue": "3.candles",
+      "repeat": 5,
+      "every": 0.28,
+      "sfx": "place",
+      "why": "Five candles, five windows."
+    },
+    {
+      "cue": "3.wind",
+      "dur": 1.4,
+      "sfx": "gust",
+      "why": "The wind takes the first, then all of them."
+    },
+    {
+      "cue": "3.lantern",
+      "trim": -2,
+      "sfx": "chime",
+      "why": "Something given."
+    },
+    {
+      "cue": "3.lantern",
+      "at": 0.7,
+      "trim": -4,
+      "sfx": "drop",
+      "why": "It comes off in the doorway."
+    },
+    {
+      "cue": "3.trade",
+      "dur": 0.5,
+      "trim": -4,
+      "sfx": "dig",
+      "why": "Everything he owned, dug up."
+    },
+    {
+      "cue": "3.trade",
+      "note": "E6",
+      "trim": -3,
+      "sfx": "ding",
+      "why": "The glowstone: the only thing that sounds expensive."
+    },
+    {
+      "cue": "3.hung",
+      "pitch": 1.1,
+      "sfx": "pop",
+      "why": "Up over her corner."
+    },
+    {
+      "cue": "3.mum",
+      "dur": 1.0,
+      "sfx": "sparkle",
+      "why": "It works. It has to sound like it works."
+    },
+    {
+      "cue": "3.mum",
+      "repeat": 6,
+      "every": 0.16,
+      "trim": -4,
+      "sfx": "tick",
+      "why": "She knits under it."
+    },
+    {
+      "cue": "3.awake",
+      "repeat": 3,
+      "every": 0.55,
+      "trim": -3,
+      "sfx": "heartbeat",
+      "why": "Too bright to sleep: his heart, not the house's."
+    },
+    {
+      "cue": "3.nights",
+      "repeat": 3,
+      "every": 0.5,
+      "pitchStep": 0.94,
+      "trim": 1,
+      "sfx": "tick",
+      "why": "One night, two, three."
+    },
+    {
+      "cue": "3.nights",
+      "trim": -5,
+      "sfx": "whoosh_low",
+      "why": "Cut: the doorway from down the street."
+    },
+    {
+      "cue": "4.sky",
+      "dur": 1.6,
+      "sfx": "riser",
+      "why": "New beat: the sky is the new character."
+    },
+    {
+      "cue": "4.sky",
+      "at": 0.4,
+      "trim": -3,
+      "sfx": "whoosh_low",
+      "why": "Three shapes over the roofs."
+    },
+    {
+      "cue": "4.three",
+      "dur": 0.9,
+      "trim": -2,
+      "sfx": "gust",
+      "why": "Wings, wide as doors, no faces."
+    },
+    {
+      "cue": "4.around",
+      "dur": 1.2,
+      "sfx": "whoosh_low",
+      "why": "The camera copies their circle."
+    },
+    {
+      "cue": "4.gate",
+      "trim": -3,
+      "sfx": "place",
+      "why": "A taper at the gate lamp."
+    },
+    {
+      "cue": "4.gate",
+      "dur": 1.0,
+      "trim": -6,
+      "sfx": "crackle",
+      "why": "The wick catches."
+    },
+    {
+      "cue": "4.gate",
+      "repeat": 4,
+      "every": 0.42,
+      "trim": -3,
+      "sfx": "step_grass",
+      "why": "Four steps, then he stops."
+    },
+    {
+      "cue": "4.hand",
+      "trim": -2,
+      "sfx": "hit",
+      "why": "Taken out of his hand, not blown out."
+    },
+    {
+      "cue": "4.hand",
+      "at": 0.1,
+      "trim": -2,
+      "sfx": "whoosh",
+      "why": "The wing over the lens."
+    },
+    {
+      "cue": "4.dark",
+      "sfx": "sting",
+      "why": "Seven lamps at once."
+    },
+    {
+      "cue": "4.dark",
+      "repeat": 4,
+      "every": 0.2,
+      "trim": -2,
+      "pitchStep": 0.95,
+      "sfx": "tick",
+      "why": "Each lamp dying."
+    },
+    {
+      "cue": "4.mum",
+      "trim": -4,
+      "sfx": "whoosh_low",
+      "why": "She is in the doorway, and the sound is her breathing."
+    },
+    {
+      "cue": "5.still",
+      "repeat": 2,
+      "every": 0.62,
+      "sfx": "heartbeat",
+      "why": "New beat: he does not run."
+    },
+    {
+      "cue": "5.door",
+      "repeat": 2,
+      "every": 0.5,
+      "trim": -1,
+      "sfx": "step_wood",
+      "why": "Out of the door she has not come out of in years."
+    },
+    {
+      "cue": "5.eight",
+      "dur": 1.2,
+      "sfx": "gust",
+      "why": "Eight legs, two wings, then feathers."
+    },
+    {
+      "cue": "5.eight",
+      "at": 0.5,
+      "trim": -2,
+      "sfx": "whoosh_low",
+      "why": "Above him."
+    },
+    {
+      "cue": "5.wind",
+      "dur": 1.4,
+      "trim": -3,
+      "pan": -0.3,
+      "sfx": "gust",
+      "why": "The wind of her, twice."
+    },
+    {
+      "cue": "5.gone",
+      "trim": -4,
+      "sfx": "swish",
+      "why": "And she was gone."
+    },
+    {
+      "cue": "5.quiet",
+      "trim": -8,
+      "dur": 1.4,
+      "sfx": "chime",
+      "why": "The only gentle sound in the last thirty seconds."
+    },
+    {
+      "cue": "5.roof",
+      "trim": 0,
+      "sfx": "blip",
+      "why": "She is on the roof, looking down the street, not at him."
+    },
+    {
+      "cue": "6.wash",
+      "sfx": "whoosh",
+      "why": "New beat: morning, the track back up."
+    },
+    {
+      "cue": "6.wash",
+      "repeat": 2,
+      "every": 0.4,
+      "trim": -3,
+      "sfx": "rustle",
+      "why": "Sheets in her hands."
+    },
+    {
+      "cue": "6.wrung",
+      "dur": 0.6,
+      "trim": 2,
+      "sfx": "scrape",
+      "why": "Wrung out over the cobbles."
+    },
+    {
+      "cue": "6.remembers",
+      "trim": -3,
+      "sfx": "blip",
+      "why": "She never remembers the night."
+    },
+    {
+      "cue": "6.told",
+      "trim": -4,
+      "sfx": "tick",
+      "why": "I have not told her."
+    },
+    {
+      "cue": "6.list",
+      "sfx": "pop",
+      "why": "The list is the street."
+    },
+    {
+      "cue": "6.one",
+      "note": "E5",
+      "trim": -2,
+      "sfx": "ding",
+      "why": "One: the lamps."
+    },
+    {
+      "cue": "6.two",
+      "note": "D5",
+      "trim": -2,
+      "sfx": "ding",
+      "why": "Two: do not run."
+    },
+    {
+      "cue": "6.still",
+      "trim": -3,
+      "sfx": "chime",
+      "why": "The answer, and it sounds like one."
+    },
+    {
+      "cue": "6.sub",
+      "pitch": 1.15,
+      "trim": -3,
+      "sfx": "pop",
+      "why": "The ask."
+    },
+    {
+      "cue": "6.sub",
+      "dur": 0.9,
+      "trim": 0,
+      "sfx": "sparkle",
+      "why": "The promise."
+    }
+  ]
+}

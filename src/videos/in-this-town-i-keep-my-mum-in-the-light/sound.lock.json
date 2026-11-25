@@ -1,0 +1,120 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-i-keep-my-mum-in-the-light",
+  "mix": "public/audio/in-this-town-i-keep-my-mum-in-the-light/mix.mp3",
+  "seconds": 91.5333,
+  "built_from": {
+    "timing.json": "84f51e662cafd7749e8863bbc790129e2ce4a257",
+    "sound.json": "5ae9973b70624ea2082ad9aeab20c9c5309fb8a5",
+    "narration.mp3": "ff179ff86deaa128e0dcffd015c794dc879518a0"
+  },
+  "mix_sha1": "2a1f100b621b91136066104105117845221abf08",
+  "music_sections": [
+    {
+      "from": "1.keep",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.dark",
+      "mood": "tense",
+      "at": 11.27
+    },
+    {
+      "from": "3.mum",
+      "mood": "hope",
+      "at": 39.03
+    },
+    {
+      "from": "4.sky",
+      "mood": "tense",
+      "at": 45.93
+    },
+    {
+      "from": "5.still",
+      "mood": "drone",
+      "at": 63.07
+    },
+    {
+      "from": "6.wash",
+      "mood": "hope",
+      "at": 76.5
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 6,
+  "measured": {
+    "musicUnderVoiceDb": 19.4,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 25.8,
+    "sfx": 100,
+    "sfxPerMinute": 65.5,
+    "sfxKinds": 24,
+    "longestGapSeconds": 3.5,
+    "longestGapAt": 59.6,
+    "sfxBuried": 1,
+    "voiceOverRestMedianDb": 16.3,
+    "voiceOverRestWorstDb": 5.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.5,
+        "t": 58.8,
+        "cue": "4.dark",
+        "sounding": [
+          "sting",
+          "tick"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 3.1,
+        "cue": "1.six",
+        "sounding": [
+          "boom",
+          "tick"
+        ]
+      },
+      {
+        "db": 8.3,
+        "t": 17.5,
+        "cue": "2.evening",
+        "sounding": [
+          "scrape"
+        ]
+      },
+      {
+        "db": 8.7,
+        "t": 7.7,
+        "cue": "1.chairs",
+        "sounding": [
+          "cheer",
+          "scrape"
+        ]
+      },
+      {
+        "db": 8.9,
+        "t": 78.2,
+        "cue": "6.wrung",
+        "sounding": [
+          "scrape"
+        ]
+      },
+      {
+        "db": 9.0,
+        "t": 89.3,
+        "cue": "6.still",
+        "sounding": [
+          "pop",
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.1
+  },
+  "failures": []
+}

@@ -1,4 +1,5 @@
 import { film as theSchedule } from "./videos/the-schedule/film";
+import { film as inThisTownIKeepMyMumInTheLight } from "./videos/in-this-town-i-keep-my-mum-in-the-light/film";
 import { film as theHallway } from "./videos/the-hallway/film";
 import { film as monsterEgg } from "./videos/in-this-town-monster-egg/film";
 import { film as sameFace } from "./videos/in-this-town-same-face/film";
@@ -70,6 +71,7 @@ export const FILMS = [
   inThisTownMeAndMyShadowDontGetAlong,
   whatIfYouCouldSmellALie,
   inThisTownMyBrotherGotBitten,
+  inThisTownIKeepMyMumInTheLight,
   inThisTownIHadNeverSeenTheSun,
   theBarberWhoNeverWentToParties,
   stillRushingTheThirdOne,
