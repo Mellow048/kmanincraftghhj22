@@ -20,16 +20,16 @@ const LADDER_X = PLACE.firstStep[0];
 /** The mountain: a wall of stone at the north end, with a ladder on its face and steps cut into the rock. */
 const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
   <group>
-    <Vox kind="stone" position={[0, 12, -36]} size={[150, 24, 8]} tile={3} />
-    <Vox kind="mossy" position={[0, 23.6, -36]} size={[150, 0.8, 8]} tile={2} />
-    <Vox kind="grass" position={[0, 24.6, -40]} size={[150, 1.0, 12]} tile={3} />
-    <Vox kind="mossy" position={[0, 0.4, -32.2]} size={[150, 1.2, 2.6]} tile={2} />
+    <Vox kind="stone" position={[0, 12, -36]} size={[104, 24, 8]} tile={3} />
+    <Vox kind="mossy" position={[0, 23.6, -36]} size={[104, 0.8, 8]} tile={2} />
+    <Vox kind="grass" position={[0, 24.6, -40]} size={[104, 1.0, 12]} tile={3} />
+    <Vox kind="mossy" position={[0, 0.4, -32.2]} size={[104, 1.2, 2.6]} tile={2} />
     {/* the mountain proper: a long way off, so it is a shape with sky over it, not a wall behind the town */}
-    <Vox kind="stone" position={[-26, 26, -96]} size={[150, 58, 26]} tile={10} />
-    <Vox kind="stone" position={[62, 20, -92]} size={[90, 44, 22]} tile={9} />
-    <Vox kind="grass" position={[-26, 55.4, -96]} size={[148, 1.2, 25]} tile={6} />
-    <Vox kind="stone" position={[-26, 63, -96]} size={[42, 16, 20]} tile={8} />
-    <Vox kind="wool" tint="#f2f6ff" position={[-26, 71.5, -96]} size={[30, 3, 16]} tile={5} />
+    <Vox kind="stone" position={[-46, 15, -150]} size={[120, 30, 30]} tile={10} />
+    <Vox kind="stone" position={[54, 11, -142]} size={[76, 22, 26]} tile={9} />
+    <Vox kind="grass" position={[-46, 30.4, -150]} size={[118, 1.2, 28]} tile={6} />
+    <Vox kind="stone" position={[-46, 38, -150]} size={[40, 16, 22]} tile={8} />
+    <Vox kind="wool" tint="#f2f6ff" position={[-46, 47.5, -150]} size={[28, 3, 18]} tile={5} />
     {/* the ledge the rich kid stands on, a third of the way up */}
     <Vox kind="stoneBrick" position={[6.4, 9.0, -31.6]} size={[7.5, 0.5, 3.0]} />
     <Vox kind="stoneBrick" position={[-8.5, 15.0, -31.6]} size={[6.0, 0.5, 3.0]} />
@@ -51,12 +51,12 @@ const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
 const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ night, warm, rain }) => (
   <group>
     {/* ground: a wet lane, and grass either side */}
-    <Vox kind="grass" position={[0, -0.5, -6]} size={[220, 1, 120]} />
+    <Vox kind="grass" position={[0, -0.5, -34]} size={[240, 1, 74]} />
     <Vox kind="path" position={[0, 0.02, -2.5]} size={[34, 0.06, 7.5]} />
     <Vox kind="sand" position={[0, 0.015, 3.4]} size={[34, 0.06, 3.0]} />
     {/* the water, and the shallow shelf where they fish */}
-    <Vox kind="water" position={[0, -0.28, 22]} size={[220, 0.4, 42]} tile={4} />
-    <Vox kind="sand" position={[0, -0.35, 8]} size={[220, 0.4, 10]} />
+    <Vox kind="water" position={[0, -0.06, 24]} size={[240, 0.3, 40]} tile={5} />
+    <Vox kind="sand" position={[0, -0.12, 8.6]} size={[240, 0.3, 12]} />
     {/* the jetty */}
     <Vox kind="planks" position={[PLACE.jetty[0], PLACE.jetty[1] - 0.09, PLACE.jetty[2]]} size={[2.6, 0.18, 16]} />
     {[3.2, 6.4, 9.6, 12.8, 15.8].map((z, i) => (
@@ -72,11 +72,11 @@ const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ ni
     <Stall position={PLACE.stall} />
     <Block position={[PLACE.stall[0] + 2.3, 1.1, PLACE.stall[2] + 0.2]} size={[0.9, 0.7, 0.08]} color="#e6dcc4" castShadow={false} />
     {/* the lane of huts, north side, doors facing the water */}
-    {[-12.5, -8.2, -3.4, 1.6, 6.6, 11.2].map((x, i) => (
-      <Hut key={x} at={[x, 0, -9.4 - (i % 2) * 1.4]} />
+    {[-13.6, -7.4, 2.6, 9.4].map((x, i) => (
+      <Hut key={x} at={[x, 0, -11.2 - (i % 2) * 2.2]} w={5} d={4.6} h={3.4} />
     ))}
     {/* home is the bigger one, second from the east */}
-    <Hut at={[PLACE.door[0] + 0.4, 0, PLACE.door[2] - 0.6]} w={6} />
+    <Hut at={[PLACE.door[0] + 0.4, 0, PLACE.door[2] - 1.4]} w={5.2} d={4.8} h={3.6} />
     {/* nets and floats on the sand: it is a fishing town */}
     {[[-3.2, 2.2], [2.6, 1.8], [-6.4, 2.6], [5.6, 2.4]].map(([x, z], i) => (
       <group key={i} position={[x, 0.1, z]}>
@@ -99,8 +99,8 @@ const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ ni
     {/* the sun's attention: a shaft on the mountain top, not on the town */}
     {night ? null : (
       <>
-        <GodRay position={[-22, 62, -92]} rotation={[0, 0, 0.32]} width={26} height={46} color={warm ? "#ffd9a0" : "#fff0c8"} opacity={warm ? 0.2 : 0.16} />
-        <GodRay position={[10, 30, -70]} rotation={[0, 0, 0.1]} width={12} height={40} color="#fff6d8" opacity={0.08} />
+        <GodRay position={[-44, 40, -146]} rotation={[0, 0, 0.3]} width={22} height={40} color={warm ? "#ffd9a0" : "#fff0c8"} opacity={warm ? 0.22 : 0.18} />
+        <GodRay position={[12, 22, -60]} rotation={[0, 0, 0.1]} width={12} height={34} color="#fff6d8" opacity={0.08} />
         <LightPool position={[0, 0.04, -2.5]} width={22} depth={6} color={night ? "#a9c0ff" : "#d8e6c0"} opacity={night ? 0.1 : 0.1} />
       </>
     )}
