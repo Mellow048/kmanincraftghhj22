@@ -15,7 +15,7 @@ export const scene15 = storyScene(timing, {
       cue: "15.sit",
       ...cam.push({ on: top(0.2, 1.1, -297.6), dist: 5.2, to: 4.2, yaw: -22, pitch: 8, fov: 42 }),
       zone: "top",
-      look: "overworld-sunset",
+      look: "overworld-day",
       note: "He sits down on the top step with his back to the gate and his jar beside him, and the shadow of the wall goes across him. The sun goes down on the richest place in the world.",
       stage: (t) => (
         <>
@@ -29,7 +29,7 @@ export const scene15 = storyScene(timing, {
       cue: "15.street",
       ...cam.push({ on: top(0, 1.8, -308), dist: 13.0, to: 10.4, yaw: 0, pitch: 4, fov: 44 }),
       zone: "top",
-      look: "overworld-sunset",
+      look: "overworld-day",
       note: "Through the bars, slowly, the whole of the top: a lamp, a bin, a bench, one thin tree, plaster walls. On 'just a street' the lens stops moving, because there is nothing else to show.",
       stage: () => (
         <>
