@@ -13,7 +13,7 @@ export const scene10 = storyScene(timing, {
   shots: [
     {
       cue: "10.night",
-      ...cam.push({ on: [0, 1.0, 10], dist: 5.6, to: 4.8, yaw: -14, pitch: 6, fov: 42 }),
+      ...cam.push({ on: [0, 1.2, 10], dist: 12.0, to: 10.2, yaw: -12, pitch: 6, fov: 46 }),
       zone: "bottom",
       look: "overworld-night",
       note: "One lantern on the jetty and a kid alone under it, the water black past the planks. The town is a line of dark roofs behind him.",

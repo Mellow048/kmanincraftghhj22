@@ -13,10 +13,10 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      ...cam.push({ on: [0, 1.0, 9], dist: 10.5, to: 8.4, yaw: 4, pitch: 7, fov: 46 }),
+      ...cam.push({ on: [0, 1.2, 8.6], dist: 17.5, to: 14.6, yaw: 3, pitch: 6, fov: 46 }),
       ease: "linear" as const,
       zone: "bottom",
-      look: "overworld-golden",
+      look: "overworld-day",
       note: "Frame one: wet planks, four rods, grey water, and the mountain filling the top of frame with the sun already on it. He is the orange shirt in the middle, and he is not looking at the fish.",
       stage: (t) => (
         <>

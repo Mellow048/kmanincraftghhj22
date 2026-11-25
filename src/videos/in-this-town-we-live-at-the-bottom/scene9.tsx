@@ -58,7 +58,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.laugh",
-      ...cam.push({ on: [0, 1.15, 9.0], dist: 5.4, to: 4.6, yaw: 6, pitch: 2, fov: 44 }),
+      ...cam.push({ on: [0, 1.2, 9.0], dist: 12.0, to: 10.2, yaw: 5, pitch: 4, fov: 46 }),
       zone: "bottom",
       look: "overworld-day",
       note: "The jetty, laughing: the town, his mum with her hand over her mouth, and him holding two boots up like a prize. On 'coughed' her face changes and so does the sound of the film.",

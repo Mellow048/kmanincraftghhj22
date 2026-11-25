@@ -20,15 +20,23 @@ const LADDER_X = PLACE.firstStep[0];
 /** The mountain: a wall of stone at the north end, with a ladder on its face and steps cut into the rock. */
 const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
   <group>
-    <Vox kind="stone" position={[0, 30, -36]} size={[150, 62, 8]} tile={3} />
+    <Vox kind="stone" position={[0, 12, -36]} size={[150, 24, 8]} tile={3} />
+    <Vox kind="mossy" position={[0, 23.6, -36]} size={[150, 0.8, 8]} tile={2} />
+    <Vox kind="grass" position={[0, 24.6, -40]} size={[150, 1.0, 12]} tile={3} />
     <Vox kind="mossy" position={[0, 0.4, -32.2]} size={[150, 1.2, 2.6]} tile={2} />
+    {/* the mountain proper: a long way off, so it is a shape with sky over it, not a wall behind the town */}
+    <Vox kind="stone" position={[-26, 26, -96]} size={[150, 58, 26]} tile={10} />
+    <Vox kind="stone" position={[62, 20, -92]} size={[90, 44, 22]} tile={9} />
+    <Vox kind="grass" position={[-26, 55.4, -96]} size={[148, 1.2, 25]} tile={6} />
+    <Vox kind="stone" position={[-26, 63, -96]} size={[42, 16, 20]} tile={8} />
+    <Vox kind="wool" tint="#f2f6ff" position={[-26, 71.5, -96]} size={[30, 3, 16]} tile={5} />
     {/* the ledge the rich kid stands on, a third of the way up */}
     <Vox kind="stoneBrick" position={[6.4, 9.0, -31.6]} size={[7.5, 0.5, 3.0]} />
     <Vox kind="stoneBrick" position={[-8.5, 15.0, -31.6]} size={[6.0, 0.5, 3.0]} />
     {/* the ladder: rails and rungs, going up out of the top of frame */}
-    <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 30, -31.9]} size={[0.12, 60, 0.12]} />
-    <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 30, -31.9]} size={[0.12, 60, 0.12]} />
-    {Array.from({ length: 58 }, (_, i) => (
+    <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 11.6, -31.9]} size={[0.12, 23.2, 0.12]} />
+    <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 11.6, -31.9]} size={[0.12, 23.2, 0.12]} />
+    {Array.from({ length: 22 }, (_, i) => (
       <Vox key={i} kind="darkPlanks" position={[LADDER_X, 0.9 + i * 1.02, -31.9]} size={[0.9, 0.1, 0.1]} castShadow={false} />
     ))}
     {/* steps cut into the rock at the foot: the first twenty of nine thousand */}
@@ -91,7 +99,8 @@ const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ ni
     {/* the sun's attention: a shaft on the mountain top, not on the town */}
     {night ? null : (
       <>
-        <GodRay position={[8, 46, -30]} rotation={[0, 0, 0.35]} width={10} height={40} color={warm ? "#ffd9a0" : "#fff0c8"} opacity={warm ? 0.16 : 0.12} />
+        <GodRay position={[-22, 62, -92]} rotation={[0, 0, 0.32]} width={26} height={46} color={warm ? "#ffd9a0" : "#fff0c8"} opacity={warm ? 0.2 : 0.16} />
+        <GodRay position={[10, 30, -70]} rotation={[0, 0, 0.1]} width={12} height={40} color="#fff6d8" opacity={0.08} />
         <LightPool position={[0, 0.04, -2.5]} width={22} depth={6} color={night ? "#a9c0ff" : "#d8e6c0"} opacity={night ? 0.1 : 0.1} />
       </>
     )}

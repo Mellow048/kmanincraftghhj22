@@ -13,7 +13,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.good",
-      ...cam.push({ on: [0, 1.0, 9.6], dist: 6.0, to: 5.0, yaw: -18, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [0, 1.2, 9.6], dist: 13.5, to: 11.6, yaw: -14, pitch: 6, fov: 46 }),
       zone: "bottom",
       look: "overworld-golden",
       note: "The good version of the same jetty: fish, laughing, a kid with his sleeves wet. Everybody in this shot is enjoying themselves, which is why the rest of the film can hurt.",

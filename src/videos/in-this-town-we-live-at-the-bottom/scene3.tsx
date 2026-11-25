@@ -49,7 +49,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.rain",
-      ...cam.push({ on: [0, 0.4, 8], dist: 5.0, to: 4.2, yaw: 20, pitch: 12, fov: 42 }),
+      ...cam.push({ on: [0, 1.0, 8], dist: 11.0, to: 9.4, yaw: 16, pitch: 11, fov: 46 }),
       zone: "bottom",
       look: "overworld-rain",
       note: "Rain on the water, and four floats going down at once. On 'so we fish in the rain' the whole jetty pulls together.",

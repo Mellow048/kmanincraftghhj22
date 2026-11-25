@@ -27,7 +27,7 @@ export const scene16 = storyScene(timing, {
     },
     {
       cue: "16.jetty",
-      ...cam.push({ on: [0, 1.0, 9], dist: 10.5, to: 8.6, yaw: -4, pitch: 6, fov: 48 }),
+      ...cam.push({ on: [0, 1.2, 9], dist: 16.5, to: 13.6, yaw: -4, pitch: 7, fov: 48 }),
       zone: "bottom",
       look: "overworld-rain",
       note: "The jetty, every rod in town on it, everybody soaked. Twenty people who do not own a boat between them, fishing in the rain, for her.",

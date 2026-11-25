@@ -13,7 +13,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.fish",
-      ...cam.push({ on: [0, 0.6, 8], dist: 5.2, to: 4.4, yaw: -14, pitch: -8, fov: 44 }),
+      ...cam.push({ on: [0, 1.0, 8], dist: 11.5, to: 9.6, yaw: -12, pitch: 8, fov: 46 }),
       zone: "bottom",
       look: "overworld-golden",
       note: "Down on the planks: hands, floats, the bucket of fish. Morning fishing, before the sun gets here, which the water says by being grey.",
