@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelican on a Bicycle — an original animated SVG</title>
+<style>
+  :root{
+    --ink:#33302e;
+    --paper:#fdf9f0;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    padding:28px 14px;
+    background:linear-gradient(180deg,#fef6e4 0%,#f3e7cf 100%);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+  }
+  .stage{ width:min(96vw,980px); }
+  header{ text-align:center; margin-bottom:16px; }
+  h1{
+    margin:0 0 6px;
+    font-size:clamp(24px,4.2vw,38px);
+    font-weight:800;
+    letter-spacing:.5px;
+  }
+  .tag{
+    margin:0;
+    font-size:clamp(13px,1.8vw,15px);
+    color:#6b6257;
+  }
+  .frame{
+    margin:0;
+    background:#fff;
+    border:3px solid var(--ink);
+    border-radius:22px;
+    padding:14px;
+    box-shadow:0 14px 0 rgba(51,48,46,.14), 0 24px 50px rgba(51,48,46,.16);
+  }
+  svg{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:14px;
+  }
+  figcaption{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    padding:12px 6px 2px;
+    font-size:14px;
+    color:#6b6257;
+  }
+  button{
+    font:inherit;
+    font-weight:700;
+    color:var(--ink);
+    background:#ffd93b;
+    border:2.5px solid var(--ink);
+    border-radius:999px;
+    padding:8px 18px;
+    cursor:pointer;
+    box-shadow:0 3px 0 var(--ink);
+    transition:transform .06s ease, box-shadow .06s ease;
+  }
+  button:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--ink); }
+</style>
+</head>
+<body>
+<main class="stage">
+  <header>
+    <h1>🚲 Pelican on a Bicycle</h1>
+    <p class="tag">One original pelican, drawn from scratch — pure SVG + SMIL. No images, no libraries, no other pelicans.</p>
+  </header>
+
+  <figure class="frame">
+    <svg id="scene" viewBox="0 0 900 600" role="img" aria-labelledby="sceneTitle sceneDesc" xmlns="http://www.w3.org/2000/svg">
+      <title id="sceneTitle">A cartoon pelican riding a teal bicycle</title>
+      <desc id="desc" >A white pelican wearing a fluttering red scarf pedals a teal bicycle along a sunny road. Its webbed feet follow the pedals, its knees bend, its pouch wobbles with a fish tail sticking out, and clouds, hills and bushes scroll past.</desc>
+
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#8fd3f4"/>
+          <stop offset="1" stop-color="#eaf8ff"/>
+        </linearGradient>
+
+        <!-- ============ MY OWN LEG RIG ============
+             Hip (388,292) · bottom bracket (398,448) · crank 38px
+             thigh 105px · shin 100px · knee solved by hand at every 30°
+             so the foot tracks the pedal circle all the way around. -->
+        <path id="legNear" fill="none" stroke-linecap="round" stroke-linejoin="round"
+              d="M 388 292 L 472.2 354.8 L 436 448">
+          <animate attributeName="d" dur="2s" repeatCount="indefinite" values="
+            M 388 292 L 472.2 354.8 L 436 448;
+            M 388 292 L 457.6 370.6 L 430.9 467;
+            M 388 292 L 439.6 383.5 L 417 480.9;
+            M 388 292 L 425.9 389.9 L 398 486;
+            M 388 292 L 422.9 391 L 379 480.9;
+            M 388 292 L 427.9 389.2 L 365.1 467;
+            M 388 292 L 437.4 384.7 L 360 448;
+            M 388 292 L 450.3 376.6 L 365.1 429;
+            M 388 292 L 464.8 363.6 L 379 415.1;
+            M 388 292 L 476.6 348.3 L 398 410;
+            M 388 292 L 481.9 339 L 417 415.1;
+            M 388 292 L 480.3 342.1 L 430.9 429;
+            M 388 292 L 472.2 354.8 L 436 448"/>
+        </path>
+        <path id="legFar" fill="none" stroke-linecap="round" stroke-linejoin="round"
+              d="M 388 292 L 437.4 384.7 L 360 448">
+          <animate attributeName="d" dur="2s" repeatCount="indefinite" values="
+            M 388 292 L 437.4 384.7 L 360 448;
+            M 388 292 L 450.3 376.6 L 365.1 429;
+            M 388 292 L 464.8 363.6 L 379 415.1;
+            M 388 292 L 476.6 348.3 L 398 410;
+            M 388 292 L 481.9 339 L 417 415.1;
+            M 388 292 L 480.3 342.1 L 430.9 429;
+            M 388 292 L 472.2 354.8 L 436 448;
+            M 388 292 L 457.6 370.6 L 430.9 467;
+            M 388 292 L 439.6 383.5 L 417 480.9;
+            M 388 292 L 425.9 389.9 L 398 486;
+            M 388 292 L 422.9 391 L 379 480.9;
+            M 388 292 L 427.9 389.2 L 365.1 467;
+            M 388 292 L 437.4 384.7 L 360 448"/>
+        </path>
+
+        <!-- bicycle frame tubes, drawn twice (outline + paint) -->
+        <path id="frameTubes" fill="none" stroke-linecap="round" stroke-linejoin="round"
+              d="M 280 435 L 398 448 M 280 435 L 370 320 M 398 448 L 370 320 M 370 320 L 524 316 M 398 448 L 540 356 M 540 356 Q 552 398 560 435"/>
+
+        <g id="cloud" fill="#ffffff">
+          <ellipse cx="0" cy="0" rx="34" ry="20"/>
+          <ellipse cx="26" cy="-9" rx="24" ry="16"/>
+          <ellipse cx="-27" cy="-5" rx="20" ry="14"/>
+          <rect x="-45" y="-2" width="90" height="18" rx="9"/>
+        </g>
+
+        <g id="hillRow" fill="#c2e6a0">
+          <ellipse cx="150" cy="500" rx="210" ry="78"/>
+          <ellipse cx="520" cy="500" rx="260" ry="98"/>
+          <ellipse cx="830" cy="500" rx="190" ry="62"/>
+        </g>
+
+        <g id="bushRow">
+          <g fill="#6faf4e">
+            <circle cx="90" cy="488" r="20"/><circle cx="112" cy="482" r="16"/><circle cx="70" cy="484" r="15"/>
+            <circle cx="350" cy="491" r="16"/><circle cx="368" cy="486" r="13"/><circle cx="334" cy="487" r="12"/>
+            <circle cx="760" cy="487" r="22"/><circle cx="785" cy="480" r="17"/><circle cx="738" cy="482" r="16"/>
+          </g>
+          <rect x="556" y="466" width="8" height="34" fill="#8a5a33"/>
+          <g fill="#5f9e44">
+            <circle cx="560" cy="452" r="24"/><circle cx="542" cy="462" r="16"/><circle cx="578" cy="462" r="16"/>
+          </g>
+        </g>
+
+        <g id="tuftRow">
+          <g fill="#5f9e44">
+            <path d="M 40 586 L 46 570 L 52 586 Z"/><path d="M 190 588 L 196 573 L 202 588 Z"/>
+            <path d="M 340 585 L 346 571 L 352 585 Z"/><path d="M 490 588 L 496 574 L 502 588 Z"/>
+            <path d="M 640 586 L 646 571 L 652 586 Z"/><path d="M 790 588 L 796 573 L 802 588 Z"/>
+          </g>
+          <g>
+            <circle cx="120" cy="577" r="3.5" fill="#ffffff"/><circle cx="120" cy="577" r="1.5" fill="#ffd93b"/>
+            <circle cx="420" cy="580" r="3.5" fill="#ffffff"/><circle cx="420" cy="580" r="1.5" fill="#ffd93b"/>
+            <circle cx="720" cy="577" r="3.5" fill="#ffffff"/><circle cx="720" cy="577" r="1.5" fill="#ffd93b"/>
+          </g>
+        </g>
+
+        <!-- one webbed foot, centred on the pedal spindle (436,448) -->
+        <g id="webFoot">
+          <path d="M 425 445 C 430 436 440 434 448 436 L 466 440 C 469 443 469 447 465 449 L 448 453 C 436 455 427 452 425 445 Z"
+                stroke="#33302e" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M 448 437 L 460 441 M 447 445 L 463 445 M 446 451 L 458 448"
+                fill="none" stroke="#33302e" stroke-width="1.5" opacity=".45" stroke-linecap="round"/>
+        </g>
+      </defs>
+
+      <!-- ================= SKY ================= -->
+      <rect x="0" y="0" width="900" height="600" fill="url(#skyGrad)"/>
+
+      <!-- sun with lazy rotating rays -->
+      <g>
+        <circle cx="790" cy="90" r="48" fill="#ffd93b" opacity=".3"/>
+        <g stroke="#ffd93b" stroke-width="5" stroke-linecap="round">
+          <animateTransform attributeName="transform" type="rotate" values="0 790 90;360 790 90" dur="36s" repeatCount="indefinite"/>
+          <path d="M 834 90 L 846 90 M 828.1 112 L 838.5 118 M 812 128.1 L 818 138.5 M 790 134 L 790 146 M 768 128.1 L 762 138.5 M 751.9 112 L 741.5 118 M 746 90 L 734 90 M 751.9 68 L 741.5 62 M 768 51.9 L 762 41.5 M 790 46 L 790 34 M 812 51.9 L 818 41.5 M 828.1 68 L 838.5 62"/>
+        </g>
+        <circle cx="790" cy="90" r="34" fill="#ffd93b" stroke="#f4b400" stroke-width="3"/>
+      </g>
+
+      <!-- clouds, two parallax layers, seamless 900px wrap -->
+      <g opacity=".95">
+        <animateTransform attributeName="transform" type="translate" values="0 0;-900 0" dur="34s" repeatCount="indefinite"/>
+        <use href="#cloud" transform="translate(140,85)"/>
+        <use href="#cloud" transform="translate(450,120) scale(.75)"/>
+        <use href="#cloud" transform="translate(740,65) scale(1.05)"/>
+        <use href="#cloud" transform="translate(1040,85)"/>
+        <use href="#cloud" transform="translate(1350,120) scale(.75)"/>
+        <use href="#cloud" transform="translate(1640,65) scale(1.05)"/>
+      </g>
+      <g opacity=".7">
+        <animateTransform attributeName="transform" type="translate" values="0 0;-900 0" dur="22s" repeatCount="indefinite"/>
+        <use href="#cloud" transform="translate(280,185) scale(.55)"/>
+        <use href="#cloud" transform="translate(630,165) scale(.5)"/>
+        <use href="#cloud" transform="translate(1180,185) scale(.55)"/>
+        <use href="#cloud" transform="translate(1530,165) scale(.5)"/>
+      </g>
+
+      <!-- far hills -->
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0;-900 0" dur="20s" repeatCount="indefinite"/>
+        <use href="#hillRow"/><use href="#hillRow" transform="translate(900,0)"/>
+      </g>
+
+      <!-- verge + near bushes -->
+      <rect x="0" y="486" width="900" height="14" fill="#86c05c"/>
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0;-900 0" dur="6.5s" repeatCount="indefinite"/>
+        <use href="#bushRow"/><use href="#bushRow" transform="translate(900,0)"/>
+      </g>
+
+      <!-- ================= ROAD ================= -->
+      <rect x="0" y="500" width="900" height="58" fill="#5b6270"/>
+      <line x1="0" y1="501.5" x2="900" y2="501.5" stroke="#49505c" stroke-width="3"/>
+      <line x1="0" y1="556.5" x2="900" y2="556.5" stroke="#49505c" stroke-width="3"/>
+      <line x1="0" y1="529" x2="900" y2="529" stroke="#f4d35e" stroke-width="5" stroke-dasharray="45 35">
+        <animate attributeName="stroke-dashoffset" values="0;80" dur="0.157s" repeatCount="indefinite"/>
+      </line>
+
+      <!-- foreground grass, scrolling at road speed -->
+      <rect x="0" y="558" width="900" height="42" fill="#79b851"/>
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0;-900 0" dur="1.76s" repeatCount="indefinite"/>
+        <use href="#tuftRow"/><use href="#tuftRow" transform="translate(900,0)"/>
+      </g>
+
+      <!-- contact shadow, breathing with the pedal stroke -->
+      <ellipse cx="420" cy="503" rx="215" ry="9" fill="#000000" opacity=".12">
+        <animate attributeName="rx" values="215;222;215" keyTimes="0;.5;1" dur="1s"
+                 calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/>
+      </ellipse>
+
+      <!-- dust puffs off the rear wheel -->
+      <g fill="#cfd8dc">
+        <circle cx="245" cy="490" r="3" opacity="0">
+          <animate attributeName="r" values="3;10" dur="0.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".5;0" dur="0.8s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-55 -6" dur="0.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="258" cy="496" r="3" opacity="0">
+          <animate attributeName="r" values="3;9" dur="0.8s" begin="0.4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".45;0" dur="0.8s" begin="0.4s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-50 -4" dur="0.8s" begin="0.4s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- speed lines -->
+      <g stroke="#ffffff" stroke-width="6" stroke-linecap="round">
+        <line x1="150" y1="205" x2="235" y2="205" opacity="0">
+          <animate attributeName="opacity" values="0;.85;0" keyTimes="0;.3;1" dur="0.7s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-85 0" dur="0.7s" repeatCount="indefinite"/>
+        </line>
+        <line x1="165" y1="250" x2="240" y2="250" opacity="0">
+          <animate attributeName="opacity" values="0;.85;0" keyTimes="0;.3;1" dur="0.7s" begin="0.23s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-85 0" dur="0.7s" begin="0.23s" repeatCount="indefinite"/>
+        </line>
+        <line x1="150" y1="295" x2="228" y2="295" opacity="0">
+          <animate attributeName="opacity" values="0;.85;0" keyTimes="0;.3;1" dur="0.7s" begin="0.46s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-85 0" dur="0.7s" begin="0.46s" repeatCount="indefinite"/>
+        </line>
+      </g>
+
+      <!-- ================= WHEELS ================= -->
+      <g>
+        <circle cx="280" cy="435" r="65" fill="none" stroke="#33302e" stroke-width="11"/>
+        <circle cx="280" cy="435" r="59" fill="none" stroke="#fdf9f0" stroke-width="3" opacity=".9"/>
+        <circle cx="280" cy="435" r="54" fill="none" stroke="#9aa0a6" stroke-width="4"/>
+        <g stroke="#b7bcc2" stroke-width="2.5">
+          <animateTransform attributeName="transform" type="rotate" values="0 280 435;360 280 435" dur="0.8s" repeatCount="indefinite"/>
+          <path d="M 280 380 L 280 490 M 225 435 L 335 435 M 241.1 396.1 L 318.9 473.9 M 241.1 473.9 L 318.9 396.1"/>
+          <circle cx="280" cy="388" r="3.5" fill="#d94f3d" stroke="none"/>
+        </g>
+        <circle cx="280" cy="435" r="8" fill="#55504b" stroke="#33302e" stroke-width="2"/>
+      </g>
+      <g>
+        <circle cx="560" cy="435" r="65" fill="none" stroke="#33302e" stroke-width="11"/>
+        <circle cx="560" cy="435" r="59" fill="none" stroke="#fdf9f0" stroke-width="3" opacity=".9"/>
+        <circle cx="560" cy="435" r="54" fill="none" stroke="#9aa0a6" stroke-width="4"/>
+        <g stroke="#b7bcc2" stroke-width="2.5">
+          <animateTransform attributeName="transform" type="rotate" values="0 560 435;360 560 435" dur="0.8s" repeatCount="indefinite"/>
+          <path d="M 560 380 L 560 490 M 505 435 L 615 435 M 521.1 396.1 L 598.9 473.9 M 521.1 473.9 L 598.9 396.1"/>
+          <circle cx="560" cy="388" r="3.5" fill="#d94f3d" stroke="none"/>
+        </g>
+        <circle cx="560" cy="435" r="8" fill="#55504b" stroke="#33302e" stroke-width="2"/>
+      </g>
+
+      <!-- ============ FAR SIDE: crank, leg, pedal+foot ============ -->
+      <g stroke="#55504b" stroke-width="7" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" values="180 398 448;540 398 448" dur="2s" repeatCount="indefinite"/>
+        <line x1="398" y1="448" x2="436" y2="448"/>
+      </g>
+      <use href="#legFar" stroke="#33302e" stroke-width="18"/>
+      <use href="#legFar" stroke="#c97a1a" stroke-width="12"/>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" values="180 398 448;540 398 448" dur="2s" repeatCount="indefinite"/>
+        <g>
+          <animateTransform attributeName="transform" type="rotate" values="-180 436 448;-540 436 448" dur="2s" repeatCount="indefinite"/>
+          <rect x="419" y="443" width="34" height="10" rx="4" fill="#33302e"/>
+          <use href="#webFoot" fill="#c97a1a"/>
+        </g>
+      </g>
+
+      <!-- ================= BICYCLE ================= -->
+      <use href="#frameTubes" stroke="#33302e" stroke-width="12"/>
+      <use href="#frameTubes" stroke="#2a9d8f" stroke-width="8"/>
+      <line x1="523" y1="312" x2="542" y2="360" stroke="#33302e" stroke-width="15" stroke-linecap="round"/>
+      <line x1="523" y1="312" x2="542" y2="360" stroke="#21867a" stroke-width="11" stroke-linecap="round"/>
+
+      <!-- stem, handlebar, grip, bell -->
+      <line x1="524" y1="314" x2="519" y2="296" stroke="#55504b" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 519 296 C 510 287 499 287 488 292" fill="none" stroke="#55504b" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="488" cy="292" r="6.5" fill="#5a4632" stroke="#33302e" stroke-width="2"/>
+      <circle cx="513" cy="287" r="5.5" fill="#e63946" stroke="#33302e" stroke-width="2"/>
+      <circle cx="513" cy="284" r="1.6" fill="#fdf9f0"/>
+      <g fill="none" stroke="#f4a261" stroke-width="2.5" stroke-linecap="round" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;.7;.76;.88;1" dur="3.2s" repeatCount="indefinite"/>
+        <path d="M 520 276 Q 526 270 524 262"/>
+        <path d="M 528 280 Q 536 272 533 260"/>
+      </g>
+
+      <!-- saddle + seatpost -->
+      <line x1="371" y1="306" x2="374" y2="322" stroke="#55504b" stroke-width="6" stroke-linecap="round"/>
+      <path d="M 334 305 Q 368 294 402 305 Q 400 315 368 313 Q 338 315 334 305 Z"
+            fill="#4a3f35" stroke="#33302e" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <!-- drivetrain: cog, chain (links actually crawl), chainring -->
+      <circle cx="280" cy="435" r="10" fill="none" stroke="#4a4a4a" stroke-width="4"/>
+      <line x1="280" y1="425" x2="398" y2="423" stroke="#4a4a4a" stroke-width="3.5" stroke-dasharray="5 3">
+        <animate attributeName="stroke-dashoffset" values="0;-16" dur="0.2s" repeatCount="indefinite"/>
+      </line>
+      <line x1="280" y1="445" x2="398" y2="473" stroke="#4a4a4a" stroke-width="3.5" stroke-dasharray="5 3">
+        <animate attributeName="stroke-dashoffset" values="0;16" dur="0.2s" repeatCount="indefinite"/>
+      </line>
+      <circle cx="398" cy="448" r="25" fill="none" stroke="#4a4a4a" stroke-width="5"/>
+      <circle cx="398" cy="448" r="15" fill="none" stroke="#4a4a4a" stroke-width="3"/>
+      <g fill="#4a4a4a">
+        <animateTransform attributeName="transform" type="rotate" values="0 398 448;360 398 448" dur="2s" repeatCount="indefinite"/>
+        <circle cx="414" cy="448" r="2.5"/><circle cx="402.9" cy="463.2" r="2.5"/><circle cx="385.1" cy="457.4" r="2.5"/>
+        <circle cx="385.1" cy="438.6" r="2.5"/><circle cx="402.9" cy="432.8" r="2.5"/>
+      </g>
+
+      <!-- ============ NEAR SIDE: crank arm, leg, pedal+foot ============ -->
+      <g stroke="#55504b" stroke-width="7" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" values="0 398 448;360 398 448" dur="2s" repeatCount="indefinite"/>
+        <line x1="398" y1="448" x2="436" y2="448"/>
+      </g>
+      <circle cx="398" cy="448" r="7" fill="#33302e"/>
+      <use href="#legNear" stroke="#33302e" stroke-width="21"/>
+      <use href="#legNear" stroke="#f2952f" stroke-width="14"/>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" values="0 398 448;360 398 448" dur="2s" repeatCount="indefinite"/>
+        <g>
+          <animateTransform attributeName="transform" type="rotate" values="0 436 448;-360 436 448" dur="2s" repeatCount="indefinite"/>
+          <rect x="419" y="443" width="34" height="10" rx="4" fill="#33302e"/>
+          <use href="#webFoot" fill="#f2952f"/>
+        </g>
+      </g>
+
+      <!-- ================= THE PELICAN (my own) ================= -->
+      <g>
+        <!-- effort bob, twice per crank revolution -->
+        <animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" keyTimes="0;.5;1"
+                          dur="1s" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/>
+
+        <!-- tail feathers -->
+        <path d="M 284 232 C 262 228 246 214 240 196 C 254 202 262 202 268 200 C 258 188 254 176 256 164 C 268 176 276 180 282 180 C 278 168 280 156 288 148 C 292 162 298 172 304 178 Z"
+              fill="#fdf9f0" stroke="#33302e" stroke-width="3" stroke-linejoin="round"/>
+
+        <!-- body -->
+        <path d="M 270 240 C 272 196 310 168 358 168 C 408 168 440 200 442 240 C 443 274 415 302 362 304 C 312 305 268 282 270 240 Z"
+              fill="#fdf9f0" stroke="#33302e" stroke-width="3"/>
+        <ellipse cx="358" cy="282" rx="58" ry="14" fill="#ece5d8"/>
+
+        <!-- neck (outline pass + paint pass) -->
+        <path d="M 408 224 C 444 206 448 178 452 152 C 455 134 460 124 470 120"
+              fill="none" stroke="#33302e" stroke-width="31" stroke-linecap="round"/>
+        <path d="M 408 224 C 444 206 448 178 452 152 C 455 134 460 124 470 120"
+              fill="none" stroke="#fdf9f0" stroke-width="25" stroke-linecap="round"/>
+
+        <!-- scarf ribbons, fluttering in the wind -->
+        <path fill="#e0472f" stroke="#33302e" stroke-width="2" stroke-linejoin="round"
+              d="M 440 156 C 415 150 398 158 376 148 C 392 168 418 170 441 166 Z">
+          <animate attributeName="d" dur="0.5s" repeatCount="indefinite" values="
+            M 440 156 C 415 150 398 158 376 148 C 392 168 418 170 441 166 Z;
+            M 440 156 C 418 162 400 150 380 158 C 396 172 420 166 441 166 Z;
+            M 440 156 C 415 150 398 158 376 148 C 392 168 418 170 441 166 Z"/>
+        </path>
+        <path fill="#c23a24" stroke="#33302e" stroke-width="2" stroke-linejoin="round"
+              d="M 441 162 C 424 168 410 178 394 176 C 408 186 428 180 443 170 Z">
+          <animate attributeName="d" dur="0.5s" begin="0.12s" repeatCount="indefinite" values="
+            M 441 162 C 424 168 410 178 394 176 C 408 186 428 180 443 170 Z;
+            M 441 162 C 426 174 412 170 398 182 C 412 188 430 178 443 170 Z;
+            M 441 162 C 424 168 410 178 394 176 C 408 186 428 180 443 170 Z"/>
+        </path>
+        <!-- scarf band -->
+        <path d="M 436 146 Q 452 158 468 148 L 466 162 Q 452 170 438 160 Z"
+              fill="#e0472f" stroke="#33302e" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <!-- wing reaching the handlebar, flexing with effort -->
+        <g>
+          <animateTransform attributeName="transform" type="rotate"
+                            values="0 490 294;-2 490 294;0 490 294;1.6 490 294;0 490 294"
+                            keyTimes="0;.25;.5;.75;1" dur="2s" repeatCount="indefinite"/>
+          <path d="M 340 214 C 372 204 404 222 424 246 C 448 262 470 276 492 287 C 499 291 499 297 492 299 C 486 300 481 297 477 299 C 481 302 479 306 473 306 C 464 306 452 300 441 293 C 414 279 384 262 364 246 C 350 235 340 226 340 214 Z"
+                fill="#fbf7ef" stroke="#33302e" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M 448 268 C 464 277 480 283 492 287 C 499 291 499 297 492 299 C 486 300 481 297 477 299 C 481 302 479 306 473 306 C 464 306 452 300 441 293 C 436 290 431 287 427 283 C 434 276 441 271 448 268 Z"
+                fill="#3f3a36"/>
+          <path d="M 366 228 C 388 238 406 252 420 264 M 356 238 C 376 250 392 262 404 272"
+                fill="none" stroke="#d8d2c6" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+
+        <!-- head, with a gentle nod -->
+        <g>
+          <animateTransform attributeName="transform" type="rotate"
+                            values="0 470 126;2.2 470 126;0 470 126;-1.4 470 126;0 470 126"
+                            keyTimes="0;.25;.5;.75;1" dur="2s" repeatCount="indefinite"/>
+
+          <!-- crest tuft -->
+          <path d="M 456 100 C 448 94 444 84 448 74 C 452 82 458 88 462 92 C 460 84 462 76 468 70 C 468 80 470 88 472 94 Z"
+                fill="#fdf9f0" stroke="#33302e" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="474" cy="120" r="23" fill="#fdf9f0" stroke="#33302e" stroke-width="3"/>
+
+          <!-- the famous pouch, wobbling -->
+          <path fill="#fcbf49" stroke="#33302e" stroke-width="2.5" stroke-linejoin="round"
+                d="M 492 132 C 530 162 575 172 620 153 C 600 190 545 196 512 170 C 500 160 493 146 492 132 Z">
+            <animate attributeName="d" dur="1s" repeatCount="indefinite"
+                     calcMode="spline" keyTimes="0;.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" values="
+              M 492 132 C 530 162 575 172 620 153 C 600 190 545 196 512 170 C 500 160 493 146 492 132 Z;
+              M 492 132 C 530 172 575 184 620 153 C 600 202 545 208 512 176 C 500 164 493 146 492 132 Z;
+              M 492 132 C 530 162 575 172 620 153 C 600 190 545 196 512 170 C 500 160 493 146 492 132 Z"/>
+          </path>
+
+          <!-- today's catch, flopping about -->
+          <g transform="translate(548,166)">
+            <g>
+              <animateTransform attributeName="transform" type="rotate" values="-12 0 0;14 0 0;-12 0 0"
+                                keyTimes="0;.5;1" dur="0.7s" repeatCount="indefinite"/>
+              <ellipse cx="0" cy="3" rx="7" ry="4" fill="#4cc9f0" stroke="#1d7fa8" stroke-width="2"/>
+              <path d="M 0 2 C -3 -6 -10 -12 -16 -16 C -8 -15 -4 -12 0 -7 C 4 -12 8 -15 16 -16 C 10 -12 3 -6 0 2 Z"
+                    fill="#4cc9f0" stroke="#1d7fa8" stroke-width="2" stroke-linejoin="round"/>
+            </g>
+          </g>
+
+          <!-- long upper mandible -->
+          <path d="M 490 112 L 626 146 C 630 148 630 152 626 153 L 620 154 L 491 131 Z"
+                fill="#f6a11f" stroke="#33302e" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="500" y1="118" x2="522" y2="122" stroke="#33302e" stroke-width="1.8" stroke-linecap="round"/>
+
+          <!-- determined eye, with a blink -->
+          <ellipse cx="482" cy="109" rx="6.5" ry="7" fill="#ffffff" stroke="#33302e" stroke-width="2">
+            <animate attributeName="ry" values="7;7;.6;7;7" keyTimes="0;.44;.48;.52;1" dur="4.2s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="484" cy="110" rx="3" ry="3.4" fill="#33302e">
+            <animate attributeName="ry" values="3.4;3.4;.3;3.4;3.4" keyTimes="0;.44;.48;.52;1" dur="4.2s" repeatCount="indefinite"/>
+          </ellipse>
+          <circle cx="485.5" cy="107.5" r="1.3" fill="#ffffff">
+            <animate attributeName="opacity" values="1;1;0;1;1" keyTimes="0;.44;.48;.52;1" dur="4.2s" repeatCount="indefinite"/>
+          </circle>
+          <path d="M 473 97 Q 482 93 491 98" fill="none" stroke="#33302e" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+      </g>
+    </svg>
+
+    <figcaption>
+      <span>Wheels spin, knees bend, the scarf flutters — and the fish in the pouch is not okay.</span>
+      <button id="toggle" type="button">⏸ Pause</button>
+    </figcaption>
+  </figure>
+</main>
+
+<script>
+  // Progressive enhancement only — the animation is 100% SMIL and runs without JS.
+  const svg = document.getElementById('scene');
+  const btn = document.getElementById('toggle');
+  let paused = false;
+  function setPaused(p){
+    paused = p;
+    if (p) { svg.pauseAnimations(); } else { svg.unpauseAnimations(); }
+    btn.textContent = p ? '▶ Ride' : '⏸ Pause';
+  }
+  btn.addEventListener('click', () => setPaused(!paused));
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) setPaused(true);
+</script>
+</body>
+</html>
