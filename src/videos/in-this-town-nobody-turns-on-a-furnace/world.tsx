@@ -15,15 +15,15 @@ import {
 } from "./kit";
 
 /**
- * WORLD: "In This Town, Nobody Turns On a Furnace"
- * Bright sunlit village square with white snow trails, cold indoor family room,
- * and the timber village bakery.
+ * WORLD: "In This Town, Nobody Turns On a Furnace" (XHigh Polish)
+ * Sunlit town with fresh white SnowTrails, blacksmith glowing forge, cool bedroom/kitchen,
+ * and timber village bakery.
  */
 export const World: React.FC = () => (
   <>
     <Zone name="town">
-      <Vox kind="grass" side="dirt" position={[0, -0.25, 0]} size={[36, 0.5, 34]} />
-      <Vox kind="cobble" position={[0, -0.22, 1.8]} size={[10, 0.5, 9]} />
+      <Vox kind="grass" side="dirt" position={[0, -0.25, 0]} size={[38, 0.5, 36]} />
+      <Vox kind="cobble" position={[0, -0.22, 1.8]} size={[11, 0.5, 9]} />
       <SnowTrail
         points={[
           [-2.2, 0, 2.2],
@@ -37,13 +37,15 @@ export const World: React.FC = () => (
       <Hut at={PLACE.home} wall="planks" door={0} windows={[-2, 2]} />
       <Hut at={[-10, 0, -5]} wall="darkPlanks" door={0} windows={[-2, 2]} />
       <Stall position={PLACE.stall} />
+      {/* Blacksmith glowing furnace corner on east edge */}
+      <Furnace position={[4.5, 0, 1.5]} rotationY={-0.6} lit />
       <Fence from={[-7, 0, -4.5]} to={[-3, 0, -4.5]} />
       <LampPost position={[-4.2, 0, 1.5]} seed={2} />
       <Tree position={[-8.5, 0, 3.0]} height={4.1} />
       <Tree position={[9.2, 0, 3.4]} height={3.8} leaf="#4b8d33" />
 
       <GodRay position={[-2, 6, 1]} rotation={[0, 0, 0.4]} width={5} height={12} color="#fff5d6" opacity={0.08} />
-      <LightPool position={[0, 0.04, 1.5]} width={9} depth={8} color="#fff4d8" opacity={0.22} />
+      <LightPool position={[0, 0.04, 1.5]} width={9.5} depth={8.5} color="#fff4d8" opacity={0.22} />
       <Glow position={[0, 2.2, 1.0]} size={2.2} color="#ffe8aa" opacity={0.24} />
       <Dust position={[0, 2.0, 1.5]} area={[12, 4, 12]} count={36} size={0.04} color="#fff9df" opacity={0.55} seed={3} speed={0.2} />
     </Zone>
@@ -60,11 +62,12 @@ export const World: React.FC = () => (
     </Zone>
 
     <Zone name="bakery">
-      <Vox kind="grass" side="dirt" position={[PLACE.bakery[0], -0.25, PLACE.bakery[2]]} size={[22, 0.5, 22]} />
-      <Vox kind="cobble" position={[PLACE.bakery[0], -0.22, PLACE.bakery[2] + 1.5]} size={[9, 0.5, 8]} />
+      <Vox kind="grass" side="dirt" position={[PLACE.bakery[0], -0.25, PLACE.bakery[2]]} size={[24, 0.5, 24]} />
+      <Vox kind="cobble" position={[PLACE.bakery[0], -0.22, PLACE.bakery[2] + 1.5]} size={[10, 0.5, 9]} />
       <Hut at={[PLACE.bakery[0], 0, PLACE.bakery[2] - 2.5]} wall="planks" door={0} windows={[-2, 2]} open />
       <Furnace position={[PLACE.bakery[0] + 1.4, 0, PLACE.bakery[2] - 1.2]} rotationY={-0.35} lit />
-      <LightPool position={[PLACE.bakery[0], 0.04, PLACE.bakery[2]]} width={7} depth={7} color="#ffe4b8" opacity={0.2} />
+      <Furnace position={[PLACE.bakery[0] + 2.4, 0, PLACE.bakery[2] - 1.2]} rotationY={-0.35} lit />
+      <LightPool position={[PLACE.bakery[0], 0.04, PLACE.bakery[2]]} width={7.5} depth={7.5} color="#ffe4b8" opacity={0.22} />
       <Dust position={[PLACE.bakery[0], 2.0, PLACE.bakery[2]]} area={[8, 4, 8]} count={28} size={0.035} color="#ffeac4" opacity={0.5} seed={7} speed={0.2} />
     </Zone>
   </>

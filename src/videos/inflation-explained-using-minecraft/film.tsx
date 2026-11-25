@@ -6,13 +6,14 @@ import { scene2 } from "./scene2";
 import { scene3 } from "./scene3";
 import { scene4 } from "./scene4";
 import { scene5 } from "./scene5";
+import { scene6 } from "./scene6";
 
 /**
  * Inflation Explained Using Minecraft
  *
- * Dual-lead Remastered Explainer: Miles (CitizenLead) works for bread while President Sterling
- * (EliteLead) turns on the emerald printer — doubling prices while goods stay flat.
- * Ends mid-clause on the exact Frame-0 price explosion for a seamless loop.
+ * Dual-lead Remastered Explainer (`Napoleon` & `Minimum Wage` cadence):
+ *   - CitizenLead (Miles) vs EliteLead (President Sterling)
+ *   - 40+ fast story cuts (`~1.5s`), composite props, cold-open climax -> seamless loop.
  */
 export const film = defineFilm({
   id: "inflation-explained-using-minecraft",
@@ -28,8 +29,8 @@ export const film = defineFilm({
     y: 0.67,
     motion: "on-beat",
     highlightWords: ["INFLATION", "EMERALD", "EMERALDS", "STERLING", "MILES", "BREAD", "FOUR"],
-    dangerWords: ["SHORT", "ZERO", "LESS", "WORTH", "CLIMB", "TEN", "BILLS"],
+    dangerWords: ["LESS", "DRY", "ZERO", "SAME", "TEN", "HALF", "BILLS"],
   },
   World,
-  scenes: [scene1, scene2, scene3, scene4, scene5],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6],
 });

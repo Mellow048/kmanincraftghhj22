@@ -6,13 +6,13 @@ import { scene2 } from "./scene2";
 import { scene3 } from "./scene3";
 import { scene4 } from "./scene4";
 import { scene5 } from "./scene5";
+import { scene6 } from "./scene6";
 
 /**
- * In This Town, Nobody Turns On a Furnace
+ * In This Town, Nobody Turns On a Furnace (Snow Golem Parents)
  *
- * Snow Golem Parents: bright daylight Frame-1 snow trails & carved pumpkin parents;
- * 100% vanilla snow-golem mechanics (melting near furnaces/fire, 0-damage snowballs);
- * fresh daytime bakery fire rescue climax instead of a night-raider repeat.
+ * Bright daylight Frame-1 Snow Golem hook -> 100% vanilla mechanics comedy ->
+ * daytime summer bakery blaze -> selfless melting rescue & joyful rebuild.
  */
 export const film = defineFilm({
   id: "in-this-town-nobody-turns-on-a-furnace",
@@ -28,9 +28,9 @@ export const film = defineFilm({
     words: timing.words,
     y: 0.67,
     motion: "on-beat",
-    highlightWords: ["SNOW", "FURNACE", "DAD", "MUM", "PUMPKIN", "SAVE", "SNOWBALL"],
-    dangerWords: ["ZERO", "FROST", "FIRE", "TRAP", "MELTING", "BLAZING", "VANISH"],
+    highlightWords: ["SNOW", "FURNACE", "DAD", "MUM", "PUMPKIN", "SAVE", "SNOWBALL", "GRINS"],
+    dangerWords: ["ZERO", "FROST", "FIRE", "TRAP", "MELTING", "FLAMES", "VANISH", "HURT"],
   },
   World,
-  scenes: [scene1, scene2, scene3, scene4, scene5],
+  scenes: [scene1, scene2, scene3, scene4, scene5, scene6],
 });

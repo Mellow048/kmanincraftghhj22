@@ -1,129 +1,113 @@
 import {
-  Balance,
-  Bar,
-  BarChart,
+  Bill,
+  BillStack,
   Bread,
+  BreadShelf,
   CitizenLead,
-  CoinStack,
+  CompareChestPair,
   ExplainerCrowd,
   FloatingNumber,
   PLACE,
+  PriceTag,
   cam,
-  ease,
   on,
   pop,
-  ramp,
   storyScene,
   timing,
 } from "./kit";
 
 export const scene4 = storyScene(timing, {
   id: "scene4",
-  title: "Purchasing Power & Real-World Proof",
+  title: "Same Four Loaves, Ten Times Price",
   shots: [
     {
-      cue: "7.chart",
+      cue: "6.same",
       ...cam.push({
-        on: on(PLACE.bakery, 0, 1.55, 0),
-        dist: 4.8,
-        to: 4.1,
-        yaw: 12,
-        pitch: 5,
-        fov: 42,
+        on: on(PLACE.bakery, 0, 1.25, -0.3),
+        dist: 3.3,
+        to: 2.75,
+        yaw: -14,
+        pitch: 10,
+        fov: 38,
       }),
       zone: "bakery",
-      note: "BarChart: BREAD bar stays flat while CASH bar shoots past Miles's head.",
+      note: "Miles slaps ten emerald bills onto the plinth beaming with excitement.",
       stage: (t) => (
         <>
-          <BarChart
-            position={on(PLACE.bakery, 0.25, 0, -0.2)}
-            values={[0.9, 2.8]}
-            labels={["BREAD", "CASH"]}
-            grow={[1, 0.35 + 0.65 * ease(ramp(t, 0.1, 1.2))]}
-          />
-          <CitizenLead
-            position={on(PLACE.bakery, -1.25, 0, 0.35)}
-            rotationY={0.65}
-            animation="lookAround"
-            face="uneasy"
-            time={t}
-          />
+          <BillStack position={on(PLACE.bakery, 0, 0.96, -0.6)} count={10} />
+          <CitizenLead position={on(PLACE.bakery, -0.85, 0, -0.2)} rotationY={0.85} animation="reach" face="grin" time={t} />
         </>
       ),
     },
     {
-      cue: "7.value",
+      cue: "6.problem",
       ...cam.orbit({
-        on: on(PLACE.bakery, 0, 1.25, 0),
+        on: on(PLACE.bakery, 0, 1.0, 0.3),
         dist: 4.5,
-        yaw: -16,
-        yawTo: 16,
-        pitch: 8,
-        fov: 40,
+        yaw: -14,
+        yawTo: 14,
+        pitch: 12,
+        fov: 42,
       }),
       zone: "bakery",
-      note: "Balance scales tip heavily as 10 emeralds buy only the exact same single Bread loaf.",
+      note: "Twin CompareChestPair (YESTERDAY vs TODAY) + BreadShelf proving bread output stayed flat at 4 loaves.",
       stage: (t) => (
         <>
-          <Balance
-            position={on(PLACE.bakery, 0, 0, 0)}
-            tilt={-0.65 * ease(ramp(t, 0.1, 0.9))}
-            left={<Bread scale={1.1} />}
-            right={<CoinStack count={10} kind="emerald" />}
-          />
-          <FloatingNumber text="-90% VALUE" color="#ff4f42" position={on(PLACE.bakery, 0.9, 2.1, 0)} height={0.55 * pop(t, 0.35)} />
+          <CompareChestPair position={on(PLACE.bakery, 0, 0, 0.3)} leftLabel="YESTERDAY" rightLabel="TODAY" leftCount={4} rightCount={4} />
+          <BreadShelf position={on(PLACE.bakery, 0, 0, -1.2)} count={4} />
+          <FloatingNumber text="SAME 4 LOAVES" color="#ffd84d" position={on(PLACE.bakery, 0, 2.35, -0.4 + t * 0.01)} height={0.52 * pop(t, 0.25)} />
         </>
       ),
     },
     {
-      cue: "7.history",
-      ...cam.push({
-        on: on(PLACE.history, 0, 1.85, -1.0),
-        dist: 5.5,
-        to: 4.4,
-        yaw: -10,
-        pitch: 6,
+      cue: "6.bid",
+      ...cam.whip({
+        from: on(PLACE.bakery, -2.5, 1.6, 3.3),
+        on: on(PLACE.bakery, -0.8, 1.25, -0.4),
+        onTo: on(PLACE.bakery, 0.4, 1.25, -0.5),
         fov: 42,
       }),
-      zone: "history",
-      note: "Real-world parallel in History Plaza under the 1971 StoneBillboard with top-hat crowd.",
+      zone: "bakery",
+      note: "Whip pan across rich townsfolk waving emerald bills around the last single loaf.",
       stage: (t) => (
-        <ExplainerCrowd
-          positions={[
-            on(PLACE.history, -1.6, 0, 0.2),
-            on(PLACE.history, -0.5, 0, 0.6),
-            on(PLACE.history, 0.6, 0, 0.5),
-            on(PLACE.history, 1.7, 0, 0.2),
-          ]}
-          style="historical"
-          animation="walk"
-          phaseStep={0.3 + t * 0.001}
-          seed={9}
-        />
+        <>
+          <Bread position={on(PLACE.bakery, 0, 0.96, -0.6)} scale={1.7} />
+          <ExplainerCrowd
+            positions={[
+              on(PLACE.bakery, -1.2, 0, 0.2),
+              on(PLACE.bakery, 1.25, 0, 0.25),
+              on(PLACE.bakery, -0.7, 0, 1.0),
+              on(PLACE.bakery, 0.75, 0, 1.05),
+            ]}
+            rotationY={Math.PI}
+            animation="reachUp"
+            seed={8}
+          />
+          <Bill position={on(PLACE.bakery, -0.45, 1.35 + Math.sin(t * 7) * 0.06, -0.1)} rotation={[0.4, 0.2, 0]} />
+          <Bill position={on(PLACE.bakery, 0.5, 1.35 + Math.cos(t * 7) * 0.06, -0.1)} rotation={[0.4, -0.2, 0]} />
+        </>
       ),
     },
     {
-      cue: "7.prices",
-      ...cam.crane({
-        on: on(PLACE.history, 0, 1.6, 0.2),
-        dist: 4.4,
-        fromPitch: 12,
-        toPitch: 2,
-        yaw: 15,
-        fov: 42,
+      cue: "6.jump",
+      ...cam.push({
+        on: on(PLACE.bakery, 0, 1.4, -0.55),
+        dist: 3.3,
+        to: 2.6,
+        yaw: -10,
+        pitch: 8,
+        fov: 38,
       }),
-      zone: "history",
-      note: "Three rising red/gold bars (FOOD, RENT, GAS) climbing together alongside cash.",
-      stage: (t) => {
-        const k = 0.4 + 0.6 * ease(ramp(t, 0.05, 1.2));
-        return (
-          <>
-            <Bar position={on(PLACE.history, -1.0, 0, 0.2)} height={2.0 * k} color="#d84238" label="FOOD" />
-            <Bar position={on(PLACE.history, 0, 0, 0.2)} height={2.5 * k} color="#e6842a" label="RENT" />
-            <Bar position={on(PLACE.history, 1.0, 0, 0.2)} height={2.2 * k} color="#d8b22a" label="GAS" />
-          </>
-        );
-      },
+      zone: "bakery",
+      note: "PriceTag flips from 1 to 10 in shock while red 10x PRICE pops beside Miles.",
+      stage: (t) => (
+        <>
+          <Bread position={on(PLACE.bakery, 0, 0.96, -0.6)} scale={1.7} />
+          <PriceTag text={t > 0.85 ? "10" : "1"} position={on(PLACE.bakery, 0, 1.9, -0.55)} scale={1.25} swing={Math.sin(t * 9) * 0.16} />
+          <CitizenLead position={on(PLACE.bakery, 1.0, 0, 0.25)} rotationY={-0.75} animation="scared" face="wow" time={t} />
+          <FloatingNumber text="10x PRICE" color="#ff4f42" position={on(PLACE.bakery, -0.8, 1.8, -0.4)} height={0.6 * pop(t, 0.85)} />
+        </>
+      ),
     },
   ],
 });

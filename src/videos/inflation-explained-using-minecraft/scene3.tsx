@@ -1,27 +1,98 @@
 import {
-  Bill,
   BillStack,
-  Bread,
-  BreadShelf,
+  ChatToast,
+  Chest,
   CitizenLead,
-  CompareChestPair,
+  EliteLead,
   ExplainerCrowd,
   FloatingNumber,
   PLACE,
-  PriceTag,
+  Printer,
   cam,
+  ease,
   on,
   pop,
+  ramp,
   storyScene,
   timing,
 } from "./kit";
 
 export const scene3 = storyScene(timing, {
   id: "scene3",
-  title: "Same Four Loaves, Ten Times Cash",
+  title: "Printing Ten Thousand Notes",
   shots: [
     {
-      cue: "6.same",
+      cue: "5.print",
+      ...cam.orbit({
+        on: on(PLACE.hall, 0, 1.15, 0.8),
+        dist: 3.7,
+        yaw: -20,
+        yawTo: 12,
+        pitch: 12,
+        fov: 40,
+      }),
+      zone: "hall",
+      note: "Sterling cranks on the emerald Printer pouring fresh banknotes across the carpet.",
+      stage: (t) => (
+        <>
+          <Printer position={on(PLACE.hall, 0.35, 0, 0.8)} rotationY={-0.25} running out={t * 7} sign="E" />
+          <EliteLead variant="pres" position={on(PLACE.hall, -0.85, 0, 0.9)} rotationY={0.75} animation="press" face="grin" time={t} />
+          <FloatingNumber text="+10,000" color="#3fd46a" position={on(PLACE.hall, 0.4, 1.65 + ease(ramp(t, 0.25, 1.3)) * 0.3, 0.8)} height={0.58 * pop(t, 0.25)} />
+        </>
+      ),
+    },
+    {
+      cue: "5.print",
+      cut: 1.5,
+      ...cam.push({
+        on: on(PLACE.hall, 0.2, 1.5, 0.7),
+        dist: 2.7,
+        to: 2.25,
+        yaw: 8,
+        pitch: 4,
+        fov: 38,
+      }),
+      zone: "hall",
+      note: "Sub-cut insert on server ChatToast broadcasting +10,000 Emeralds while Printer runs.",
+      stage: (t) => (
+        <>
+          <Printer position={on(PLACE.hall, 0, 0, 0.7)} running out={t * 9} sign="E" />
+          <ChatToast text="[Treasury] +10,000 Emeralds" position={on(PLACE.hall, 0.15, 1.75, 0.85)} height={0.26 * pop(t, 0.08)} />
+        </>
+      ),
+    },
+    {
+      cue: "5.cheer",
+      ...cam.crane({
+        on: on(PLACE.bakery, 0, 1.1, 0.4),
+        dist: 4.5,
+        fromPitch: 6,
+        toPitch: 20,
+        yaw: -14,
+        fov: 42,
+      }),
+      zone: "bakery",
+      note: "Town crowd cheers around overflowing gold-and-emerald open chests.",
+      stage: (t) => (
+        <>
+          <Chest position={on(PLACE.bakery, 0, 0, 0.2)} open={1} gold={1} kind="emerald" />
+          <ExplainerCrowd
+            positions={[
+              on(PLACE.bakery, -1.6, 0, 0.4),
+              on(PLACE.bakery, -1.0, 0, 1.5),
+              on(PLACE.bakery, 1.2, 0, 1.3),
+              on(PLACE.bakery, 1.7, 0, 0.3),
+            ]}
+            rotationY={0.1}
+            animation="cheer"
+            seed={5}
+          />
+          <FloatingNumber text="+EMERALDS" color="#ffd84d" position={on(PLACE.bakery, 0, 1.5, 0.2 + t * 0.01)} height={0.56 * pop(t, 0.1)} />
+        </>
+      ),
+    },
+    {
+      cue: "5.miles2",
       ...cam.push({
         on: on(PLACE.bakery, -0.2, 1.25, 0.8),
         dist: 3.7,
@@ -31,104 +102,11 @@ export const scene3 = storyScene(timing, {
         fov: 40,
       }),
       zone: "bakery",
-      note: "Miles runs back into the bakery square carrying a thick BillStack of ten emeralds.",
+      note: "Miles sprints toward the bakery excitedly carrying a stacked emerald bundle.",
       stage: (t) => (
-        <CitizenLead
-          position={on(PLACE.bakery, -0.8 + t * 0.85, 0, 1.1)}
-          rotationY={0.45}
-          animation="run"
-          animDistance={t * 2.2}
-          face="happy"
-        >
+        <CitizenLead position={on(PLACE.bakery, -0.8 + t * 0.85, 0, 1.1)} rotationY={0.45} animation="run" animDistance={t * 2.2} face="happy">
           <BillStack position={[0, -0.05, 0.2]} count={10} />
         </CitizenLead>
-      ),
-    },
-    {
-      cue: "6.problem",
-      ...cam.orbit({
-        on: on(PLACE.bakery, 0, 1.0, 0.3),
-        dist: 4.5,
-        yaw: -14,
-        yawTo: 14,
-        pitch: 12,
-        fov: 42,
-      }),
-      zone: "bakery",
-      note: "Twin CompareChestPair (YESTERDAY vs TODAY) + BreadShelf proving output stayed flat at 4 loaves.",
-      stage: (t) => (
-        <>
-          <CompareChestPair
-            position={on(PLACE.bakery, 0, 0, 0.3)}
-            leftLabel="YESTERDAY"
-            rightLabel="TODAY"
-            leftCount={4}
-            rightCount={4}
-          />
-          <BreadShelf position={on(PLACE.bakery, 0, 0, -1.2)} count={4} />
-          <FloatingNumber text="SAME 4 LOAVES" color="#ffd84d" position={on(PLACE.bakery, 0, 2.35, -0.4 + t * 0.01)} height={0.52 * pop(t, 0.25)} />
-        </>
-      ),
-    },
-    {
-      cue: "6.bid",
-      ...cam.whip({
-        from: on(PLACE.bakery, -2.5, 1.6, 3.3),
-        on: on(PLACE.bakery, -0.8, 1.25, -0.4),
-        onTo: on(PLACE.bakery, 0.4, 1.25, -0.5),
-        fov: 42,
-      }),
-      zone: "bakery",
-      note: "Whip pan across rich players waving banknotes and crowding around the single loaf on the plinth.",
-      stage: (t) => (
-        <>
-          <Bread position={on(PLACE.bakery, 0, 0.96, -0.6)} scale={1.7} />
-          <ExplainerCrowd
-            positions={[
-              on(PLACE.bakery, -1.2, 0, 0.2),
-              on(PLACE.bakery, 1.25, 0, 0.25),
-              on(PLACE.bakery, -0.7, 0, 1.0),
-              on(PLACE.bakery, 0.75, 0, 1.05),
-            ]}
-            rotationY={Math.PI}
-            animation="reachUp"
-            seed={8}
-          />
-          <Bill position={on(PLACE.bakery, -0.45, 1.35 + Math.sin(t * 7) * 0.06, -0.1)} rotation={[0.4, 0.2, 0]} />
-          <Bill position={on(PLACE.bakery, 0.5, 1.35 + Math.cos(t * 7) * 0.06, -0.1)} rotation={[0.4, -0.2, 0]} />
-        </>
-      ),
-    },
-    {
-      cue: "6.jump",
-      ...cam.push({
-        on: on(PLACE.bakery, 0, 1.4, -0.55),
-        dist: 3.3,
-        to: 2.6,
-        yaw: -10,
-        pitch: 8,
-        fov: 38,
-      }),
-      zone: "bakery",
-      note: "PriceTag flips from 1 to 10 in red-gold shock as Miles watches his wallet shrink.",
-      stage: (t) => (
-        <>
-          <Bread position={on(PLACE.bakery, 0, 0.96, -0.6)} scale={1.7} />
-          <PriceTag
-            text={t > 0.85 ? "10" : "1"}
-            position={on(PLACE.bakery, 0, 1.9, -0.55)}
-            scale={1.25}
-            swing={Math.sin(t * 9) * 0.16}
-          />
-          <CitizenLead
-            position={on(PLACE.bakery, 1.0, 0, 0.25)}
-            rotationY={-0.75}
-            animation="scared"
-            face="wow"
-            time={t}
-          />
-          <FloatingNumber text="10x PRICE" color="#ff4f42" position={on(PLACE.bakery, -0.8, 1.8, -0.4)} height={0.6 * pop(t, 0.85)} />
-        </>
       ),
     },
   ],

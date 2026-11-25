@@ -12,7 +12,7 @@ import {
 
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Snow Trails & Frozen Dinner",
+  title: "Snow Trails & Cold Kitchen",
   shots: [
     {
       cue: "1.town",
@@ -25,7 +25,7 @@ export const scene1 = storyScene(timing, {
         fov: 42,
       }),
       zone: "town",
-      note: "Bright daylight Frame-1 hook: Snow Golem Dad & Mum stand in sunlit square over crisp snow trails.",
+      note: "Bright daylight Frame-1 hook: Snow Golem Dad & Mum in carved pumpkins stand on crisp white snow tiles.",
       stage: (t) => (
         <>
           <SnowGolem position={[-0.9, 0, 1.4]} rotationY={0.25} pumpkin walk={t * 0.4} />
@@ -45,7 +45,7 @@ export const scene1 = storyScene(timing, {
         fov: 42,
       }),
       zone: "town",
-      note: "Orbit low across the fresh white SnowTrail tiles forming behind the walking parents.",
+      note: "Low orbit showing white SnowTrail patches appearing across green grass as Mum & Dad walk.",
       stage: (t) => (
         <>
           <SnowGolem position={[-1.4 + t * 0.75, 0, 1.5]} rotationY={Math.PI / 2} pumpkin walk={t * 1.4} />
@@ -64,7 +64,7 @@ export const scene1 = storyScene(timing, {
         fov: 40,
       }),
       zone: "room",
-      note: "Inside the cold room: Hero shivers beside the unlit stone Furnace with red ZERO HEAT popup.",
+      note: "Inside the house: Hero shivers next to dark unlit stone Furnace with icy 0 HEAT popup.",
       stage: (t) => (
         <>
           <Hero position={room(0.4, 0, -1.6)} rotationY={0.35} animation="cower" face="worried" time={t} />
@@ -83,11 +83,11 @@ export const scene1 = storyScene(timing, {
         fov: 38,
       }),
       zone: "room",
-      note: "Hero stares grimly down at frozen sweet-berry plates on the wooden table.",
+      note: "Hero frowns at frozen berries for dinner while Mum watches silently.",
       stage: (t) => (
         <>
           <Hero position={room(-0.7, 0, -0.1)} rotationY={0.65} animation="idle" face="frown" lookAt={room(0, 0.85, -0.5)} time={t} />
-          <SnowGolem position={room(0.95, 0, -0.7)} rotationY={-0.65} pumpkin={false} walk={t * 0.2} />
+          <SnowGolem position={room(0.95, 0, -0.7)} rotationY={-0.65} pumpkin walk={t * 0.2} />
         </>
       ),
     },

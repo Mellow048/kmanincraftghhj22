@@ -1,121 +1,99 @@
 import {
   Blaze,
+  ChatToast,
   EmberDrift,
-  FloatingNumber,
+  FireLight,
+  Hero,
   PLACE,
-  ROBE,
-  SnowGolem,
-  Snowball,
-  Villager,
+  Player,
+  Smoke,
   cam,
-  ease,
   pop,
-  ramp,
   storyScene,
   timing,
 } from "./kit";
 
 export const scene4 = storyScene(timing, {
   id: "scene4",
-  title: "Into the Fire",
+  title: "Bakery Overheat & Fire Trap",
   shots: [
     {
-      cue: "7.run",
-      ...cam.orbit({
-        on: [PLACE.bakery[0], 1.2, PLACE.bakery[2] + 1.5],
-        dist: 4.5,
-        yaw: -14,
-        yawTo: 14,
-        pitch: 10,
-        fov: 42,
-      }),
-      zone: "bakery",
-      note: "Villagers back away from the burning bakery while flames roar above.",
-      stage: (t) => (
-        <>
-          <Villager position={[PLACE.bakery[0] - 1.2, 0, PLACE.bakery[2] + 1.6 + t * 0.5]} robe={ROBE.smith} rotationY={Math.PI} walk={t * 1.6} />
-          <Villager position={[PLACE.bakery[0] + 1.1, 0, PLACE.bakery[2] + 1.8 + t * 0.5]} robe={ROBE.brown} rotationY={Math.PI} walk={t * 1.6 + 0.4} />
-          <Blaze position={[PLACE.bakery[0], 2.8, PLACE.bakery[2] - 2.2]} size={3.0} height={1.7} />
-        </>
-      ),
-    },
-    {
-      cue: "7.dad",
+      cue: "6.cake",
       ...cam.push({
-        on: [PLACE.bakery[0], 1.25, PLACE.bakery[2] + 0.6],
-        dist: 4.1,
-        to: 3.1,
+        on: [PLACE.bakery[0] + 1.2, 0.9, PLACE.bakery[2] - 0.9],
+        dist: 3.1,
+        to: 2.55,
         yaw: 16,
-        pitch: 5,
-        fov: 40,
-      }),
-      zone: "bakery",
-      note: "Snow Golem Dad charges straight past the retreating crowd into the burning doorway.",
-      stage: (t) => (
-        <>
-          <SnowGolem
-            position={[PLACE.bakery[0], 0, PLACE.bakery[2] + 2.4 - t * 1.6]}
-            rotationY={Math.PI}
-            pumpkin
-            walk={t * 2.8}
-          />
-          <Blaze position={[PLACE.bakery[0], 2.7, PLACE.bakery[2] - 2.0]} size={2.8} height={1.6} />
-          <EmberDrift position={[PLACE.bakery[0], 1.4, PLACE.bakery[2]]} area={[3, 2.5, 3]} count={18} />
-        </>
-      ),
-    },
-    {
-      cue: "7.melt",
-      ...cam.push({
-        on: [PLACE.bakery[0], 1.1, PLACE.bakery[2] - 0.5],
-        dist: 3.3,
-        to: 2.6,
-        yaw: -14,
-        pitch: 8,
+        pitch: 10,
         fov: 38,
       }),
       zone: "bakery",
-      note: "Dad visibly shrinks (`melt`) inside the flames as red -1 HP ticks above his pumpkin.",
-      stage: (t) => {
-        const melt = 0.25 + 0.45 * ease(ramp(t, 0.1, 1.8));
-        return (
-          <>
-            <SnowGolem position={[PLACE.bakery[0], 0, PLACE.bakery[2] - 0.4]} rotationY={Math.PI} pumpkin melt={melt} />
-            <Blaze position={[PLACE.bakery[0], 2.5, PLACE.bakery[2] - 2.0]} size={2.4} height={1.3} />
-            <FloatingNumber text="-1 HP" color="#ff4f42" position={[PLACE.bakery[0], 1.9, PLACE.bakery[2] - 0.4]} height={0.6 * pop(t, 0.2)} />
-          </>
-        );
-      },
+      note: "Passing Player cranks the bakery double-furnace to bake stacked cakes in hot dry air.",
+      stage: (t) => (
+        <>
+          <Player who={4} position={[PLACE.bakery[0] + 0.5, 0, PLACE.bakery[2] - 0.5]} rotationY={0.85} animation="press" face="grin" time={t} />
+          <EmberDrift position={[PLACE.bakery[0] + 1.6, 0.7, PLACE.bakery[2] - 0.8]} area={[1.4, 1.6, 1.4]} count={14} />
+        </>
+      ),
     },
     {
-      cue: "7.throw",
-      ...cam.orbit({
-        on: [PLACE.bakery[0], 1.15, PLACE.bakery[2] - 0.8],
-        dist: 3.6,
-        yaw: -18,
-        yawTo: 16,
-        pitch: 9,
+      cue: "6.spark",
+      ...cam.push({
+        on: [PLACE.bakery[0] + 1.3, 1.4, PLACE.bakery[2] - 1.2],
+        dist: 3.2,
+        to: 2.6,
+        yaw: -14,
+        pitch: -6,
         fov: 40,
       }),
       zone: "bakery",
-      note: "Rapid snowball barrage: Dad slings snowballs up into the Blaze flames as he melts further.",
-      stage: (t) => {
-        const cycle = (t * 2.5) % 1;
-        return (
-          <>
-            <SnowGolem
-              position={[PLACE.bakery[0], 0, PLACE.bakery[2] - 0.2]}
-              rotationY={Math.PI}
-              pumpkin
-              melt={0.62}
-              armThrow={-1.1 - Math.sin(t * 14) * 0.45}
-            />
-            <Snowball position={[PLACE.bakery[0], 1.0 + cycle * 1.8, PLACE.bakery[2] - 0.4 - cycle * 1.4]} />
-            <Snowball position={[PLACE.bakery[0] + 0.25, 1.2 + ((cycle + 0.5) % 1) * 1.6, PLACE.bakery[2] - 0.6 - ((cycle + 0.5) % 1) * 1.2]} />
-            <Blaze position={[PLACE.bakery[0], 2.5, PLACE.bakery[2] - 2.0]} size={2.0} height={0.9 * (1 - ease(ramp(t, 0.5, 2.2)))} />
-          </>
-        );
-      },
+      note: "Glowing sparks fly upward toward dry oak beams beside NO FIRE warning chat.",
+      stage: (t) => (
+        <>
+          <EmberDrift position={[PLACE.bakery[0] + 1.4, 1.6, PLACE.bakery[2] - 1.4]} area={[1.8, 2.2, 1.8]} count={26} />
+          <ChatToast text="STOP! TOO HOT!" sender="Baker" position={[PLACE.bakery[0] + 0.3, 1.85, PLACE.bakery[2] - 0.6]} height={0.22 * pop(t, 0.25)} />
+        </>
+      ),
+    },
+    {
+      cue: "6.fire",
+      ...cam.whip({
+        from: [PLACE.bakery[0] - 2.8, 2.6, PLACE.bakery[2] + 3.4],
+        on: [PLACE.bakery[0] - 0.8, 2.0, PLACE.bakery[2] - 1.5],
+        onTo: [PLACE.bakery[0] + 0.6, 2.8, PLACE.bakery[2] - 2.0],
+        fov: 42,
+      }),
+      zone: "bakery",
+      note: "Whip pan onto the bakery roof exploding into Blaze flames and thick rising Smoke.",
+      stage: (t) => (
+        <>
+          <Blaze position={[PLACE.bakery[0], 2.8, PLACE.bakery[2] - 2.2]} size={3.2} height={1.9} />
+          <Smoke position={[PLACE.bakery[0], 4.0, PLACE.bakery[2] - 2.2]} rise={2.5} count={14} />
+          <FireLight position={[PLACE.bakery[0], 2.5, PLACE.bakery[2] - 1.5]} power={2.2} />
+          <ChatToast text="ROOF ON FIRE!" sender="Baker" position={[PLACE.bakery[0], 2.0, PLACE.bakery[2] + 0.2 + t * 0.001]} height={0.25 * pop(t, 0.2)} />
+        </>
+      ),
+    },
+    {
+      cue: "6.trap",
+      ...cam.push({
+        on: [PLACE.bakery[0], 1.15, PLACE.bakery[2] + 0.4],
+        dist: 3.4,
+        to: 2.75,
+        yaw: -10,
+        pitch: 6,
+        fov: 40,
+      }),
+      zone: "bakery",
+      note: "Hero and three kids huddle trapped behind the burning wooden counter.",
+      stage: (t) => (
+        <>
+          <Hero position={[PLACE.bakery[0] - 0.4, 0, PLACE.bakery[2] - 0.1]} rotationY={0.15} animation="panic" face="scared" time={t} />
+          <Player who={2} scale={0.8} position={[PLACE.bakery[0] + 0.45, 0, PLACE.bakery[2] - 0.2]} rotationY={-0.2} animation="cower" face="fear" time={t} />
+          <Blaze position={[PLACE.bakery[0], 2.6, PLACE.bakery[2] - 2.0]} size={2.8} height={1.6} />
+          <EmberDrift position={[PLACE.bakery[0], 1.4, PLACE.bakery[2]]} area={[3, 2.5, 3]} count={20} />
+        </>
+      ),
     },
   ],
 });

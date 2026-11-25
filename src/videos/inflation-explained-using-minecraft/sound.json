@@ -15,7 +15,7 @@
   "beds": [
     {
       "from": "1.hook",
-      "to": "3.crisis",
+      "to": "3.empty",
       "bed": "sky"
     },
     {
@@ -25,12 +25,22 @@
     },
     {
       "from": "5.cheer",
+      "to": "6.jump",
+      "bed": "sky"
+    },
+    {
+      "from": "7.work",
+      "to": "7.work",
+      "bed": "cave"
+    },
+    {
+      "from": "7.chart",
       "to": "7.prices",
       "bed": "sky"
     },
     {
-      "from": "8.end",
-      "to": "8.end",
+      "from": "8.first",
+      "to": "8.first",
       "bed": "room"
     },
     {
@@ -66,12 +76,12 @@
       "why": "scene 6 starts: a new place or a new time"
     },
     {
-      "cue": "7.chart",
+      "cue": "7.work",
       "sfx": "whoosh",
       "why": "scene 7 starts: a new place or a new time"
     },
     {
-      "cue": "8.end",
+      "cue": "8.first",
       "sfx": "whoosh",
       "why": "scene 8 starts: a new place or a new time"
     },

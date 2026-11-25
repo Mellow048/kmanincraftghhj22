@@ -25,17 +25,7 @@
     },
     {
       "from": "3.school",
-      "to": "3.school",
-      "bed": "village"
-    },
-    {
-      "from": "3.why",
-      "to": "3.why",
-      "bed": "room"
-    },
-    {
-      "from": "4.dad",
-      "to": "4.dad",
+      "to": "4.photo",
       "bed": "village"
     },
     {
@@ -44,7 +34,7 @@
       "bed": "room"
     },
     {
-      "from": "5.heat",
+      "from": "5.forge",
       "to": "5.heat",
       "bed": "village"
     },
@@ -71,12 +61,12 @@
       "why": "scene 4 starts: a new place or a new time"
     },
     {
-      "cue": "5.heat",
+      "cue": "5.forge",
       "sfx": "whoosh",
       "why": "scene 5 starts: a new place or a new time"
     },
     {
-      "cue": "6.fire",
+      "cue": "6.cake",
       "sfx": "whoosh",
       "why": "scene 6 starts: a new place or a new time"
     },
@@ -91,7 +81,7 @@
       "why": "scene 8 starts: a new place or a new time"
     },
     {
-      "cue": "9.save",
+      "cue": "9.cry",
       "sfx": "whoosh",
       "why": "scene 9 starts: a new place or a new time"
     },
