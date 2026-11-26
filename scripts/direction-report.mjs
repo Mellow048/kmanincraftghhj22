@@ -10,7 +10,7 @@ function lens(s, end = false) {
 function framing(eye, target, aim, fov, roll) {
   const ray = eye.map((v, i) => v - target[i] - (i === 1 ? aim : 0));
   const distance = Math.hypot(...ray);
-  return { axis: ray.map(v => v / distance), span: 2 * distance * Math.tan(fov * rad / 2), roll };
+  return { axis: ray.map(v => v / distance), dist: distance, span: 2 * distance * Math.tan(fov * rad / 2), roll };
 }
 function similar(a, b) {
   return a && a.axis.reduce((d, v, i) => d + v * b.axis[i], 0) > Math.cos(9 * rad) &&
@@ -121,6 +121,11 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
             `${where}: small camera travel (${view.eyeDist.toFixed(2)}m, ${view.angDeg.toFixed(1)}deg). Give the move more travel so the frame carries real motion energy.`,
           );
         }
+      }
+      if (r.shots === 1 && view.start.dist > 11 && !s.locked) {
+        (isModern ? r.unfinished : r.review).push(
+          `${where}: opening hook camera starts ${view.start.dist.toFixed(1)}m from subject — lead characters read as specks on phones. Frame Frame 1 close (<= 8.5m) with immediate action.`,
+        );
       }
       if (s.locked && view.changes) r.errors.push(`${where}: shot says locked but the camera moves.`);
       alike = similar(prior, view.start) ? alike + 1 : 1;

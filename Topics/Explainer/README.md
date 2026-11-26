@@ -19,7 +19,7 @@ That gives you a complete remastered starter from [`template/`](template/): our 
 
 ## Read in this order
 
-1. **[`STUDY-NAPOLEON-EXPLAINER.md`](STUDY-NAPOLEON-EXPLAINER.md)** — Forensic breakdown of the references (`Napoleon` `80.9s`/`44 cuts` + `Minimum Wage` `78.8s`/`36 cuts`), the 8-beat loop architecture, and anti-box quality rules.
+1. **[`STUDY-NAPOLEON-EXPLAINER.md`](STUDY-NAPOLEON-EXPLAINER.md)** & **[`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md)** — Forensic breakdown of the references (`Napoleon` `80.9s`/`44 cuts` + `Minimum Wage` `78.8s`/`36 cuts`), the Hook/Retention/Payoff engine, Visual-Verbal Lockstep, and anti-box quality rules.
 2. **[`reference/napoleon/README.md`](reference/napoleon/README.md)** & **[`reference/minimum-wage/README.md`](reference/minimum-wage/README.md)** — Full transcripts, contact sheets, and measured telemetry.
 3. **[`SCRIPT.md`](SCRIPT.md)** — How to write an 8-beat looping explainer script with 2 contrasting characters.
 4. **[`SHOTS.md`](SHOTS.md)** — Fast story-cut cinematography (`storyScene`, `cam.*`, `cut:` sub-shots, motion in every frame).

@@ -94,6 +94,8 @@ test('an impressive recipe name or a time prop is not a camera move or proof of 
   assert.match(directionReport(modern).unfinished.join(), /camera resolves to a hold/);
   const microSlide = { fps: 30, captions: { motion: 'on-beat' }, scenes: [{ duration: 1, shots: [{ ...shot, to: [0, 1, 2.85] }], sampleStage: (i, t) => createElement(Rig, { position: [t, 0, 0] }) }] };
   assert.match(directionReport(microSlide).unfinished.join(), /barely moves/);
+  const distantHook = { fps: 30, captions: { motion: 'on-beat' }, scenes: [{ duration: 1, shots: [{ ...shot, from: [0, 2, 22], to: [0, 2, 14] }], sampleStage: (i, t) => createElement(Rig, { position: [t, 0, 0] }) }] };
+  assert.match(directionReport(distantHook).unfinished.join(), /opening hook camera starts/);
   const twoFrozen = {
     fps: 30,
     captions: { motion: 'on-beat' },

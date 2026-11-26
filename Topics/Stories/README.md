@@ -78,7 +78,7 @@ studied for its shape. The reference film is ours.
 
 ## Read in this order
 
-1. This page, then [`Old Reference/README.md`](Old Reference/README.md): which films the owner approved, and what each is
+1. This page, **[`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md)** (**Hook, Retention, Payoff, Visual-Verbal Lockstep & Motion contract**), then [`Old Reference/README.md`](Old Reference/README.md): which films the owner approved, and what each is
    for. Then the reference film's page, [`Old Reference/same-face/`](Old Reference/same-face/README.md), its contact sheet and
    its shot log.
 0. [`OWNER.md`](OWNER.md) — what the owner likes, what reviews said, and the rules that came out of them. It wins over the playbooks.

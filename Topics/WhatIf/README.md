@@ -47,7 +47,7 @@ If you cannot tell whether a "what if" is a story or an explanation, ask the own
 
 ## Read in this order
 
-1. This page.
+1. This page and **[`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md)** (**Hook, Retention, Payoff, Visual-Verbal Lockstep & Motion contract**).
 2. [`SCRIPT.md`](SCRIPT.md) — how a power story is written: the rule of the power, its limit, its price.
 3. [`SHOTS.md`](SHOTS.md) — how a power is SHOWN, and how to shoot a classroom in a tall frame. The rest of the
    camera is In This Town's: [`../InThisTown/SHOTS.md`](../InThisTown/SHOTS.md).
