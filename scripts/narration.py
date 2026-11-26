@@ -208,6 +208,17 @@ SAY = {
     "respawning": "R IY S P AO N IH NG",
     "pixelated": "P IH K S AH L EY T AH D",
     "unharmed": "AH N HH AA R M D",
+    "welled": "W EH L D",
+    "snuck": "S N AH K",
+    "rebuilt": "R IY B IH L T",
+    "cozy": "K OW Z IY",
+    "downstairs": "D AW N S T EH R Z",
+    "grinned": "G R IH N D",
+    "exhaling": "EH K S HH EY L IH NG",
+    "booted": "B UW T AH D",
+    "laptop": "L AE P T AA P",
+    "smiling": "S M AY L IH NG",
+    "minecraft": "M AY N K R AE F T",
 }
 
 def assembled_spans(raw, count, length):
