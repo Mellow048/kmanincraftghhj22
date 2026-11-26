@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "my-dad-kept-watching-me-play-minecraft",
   "mix": "public/audio/my-dad-kept-watching-me-play-minecraft/mix.mp3",
-  "seconds": 79.8667,
+  "seconds": 79.6,
   "built_from": {
-    "timing.json": "7c2fb0391e358bd22c2d75503bb51c5bf6907113",
+    "timing.json": "7a445f71191f3108d5ef84e3c10f979b495f9b40",
     "sound.json": "7ef3fdd53e6aaf202973d61aaa704b3335699e0a",
-    "narration.mp3": "b8000335ddd452f5a843a321521d44b6b22a4841"
+    "narration.mp3": "636f0097ec1b05efef2c1a603f0542b9273af95f"
   },
-  "mix_sha1": "78d3f7283e8f1df1fe72f90942edf7e377e8d3f8",
+  "mix_sha1": "59bdca7e6760943ff13331f14b3d9f677772b6f6",
   "music_sections": [
     {
       "from": "1.hook",
@@ -25,18 +25,18 @@
     {
       "from": "4.silence",
       "mood": "none",
-      "at": 42.17
+      "at": 42.13
     },
     {
       "from": "5.laugh",
       "mood": "hope",
-      "at": 44.2,
+      "at": 44.13,
       "track": "Topics/ServerLore/up_happy.m4a"
     },
     {
       "from": "7.rebuild",
       "mood": "wonder",
-      "at": 69.77,
+      "at": 69.5,
       "track": "Topics/ServerLore/up_happy.m4a"
     }
   ],
@@ -58,18 +58,18 @@
   "measured": {
     "musicUnderVoiceDb": 14.5,
     "secondsWithoutMusic": 3.1,
-    "bedsUnderVoiceDb": 27.6,
+    "bedsUnderVoiceDb": 27.7,
     "sfx": 71,
-    "sfxPerMinute": 53.3,
+    "sfxPerMinute": 53.5,
     "sfxKinds": 21,
     "longestGapSeconds": 3.0,
-    "longestGapAt": 72.6,
+    "longestGapAt": 72.4,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.1,
-    "voiceOverRestWorstDb": 3.7,
+    "voiceOverRestMedianDb": 13.2,
+    "voiceOverRestWorstDb": 4.6,
     "voiceOverRestWorst": [
       {
-        "db": 3.7,
+        "db": 4.6,
         "t": 31.7,
         "cue": "3.monitor",
         "sounding": [
@@ -77,7 +77,7 @@
         ]
       },
       {
-        "db": 6.9,
+        "db": 6.6,
         "t": 25.4,
         "cue": "2.froze",
         "sounding": [
@@ -86,7 +86,16 @@
         ]
       },
       {
-        "db": 7.1,
+        "db": 6.7,
+        "t": 16.6,
+        "cue": "2.fence",
+        "sounding": [
+          "blip",
+          "riser"
+        ]
+      },
+      {
+        "db": 7.4,
         "t": 67.0,
         "cue": "6.creeper2",
         "sounding": [
@@ -96,23 +105,14 @@
       },
       {
         "db": 7.5,
-        "t": 65.3,
-        "cue": "6.shield",
+        "t": 47.5,
+        "cue": "5.ask",
         "sounding": [
-          "place",
-          "riser"
+          "pop"
         ]
       },
       {
-        "db": 7.6,
-        "t": 16.6,
-        "cue": "2.fence",
-        "sounding": [
-          "blip"
-        ]
-      },
-      {
-        "db": 7.6,
+        "db": 8.0,
         "t": 33.1,
         "cue": "3.torn",
         "sounding": [
@@ -120,9 +120,9 @@
         ]
       }
     ],
-    "lufs": -14.8,
-    "truePeakDb": -2.2,
-    "limiterMaxDb": 0.2
+    "lufs": -14.7,
+    "truePeakDb": -2.0,
+    "limiterMaxDb": 0.5
   },
   "failures": []
 }
