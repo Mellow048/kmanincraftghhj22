@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Torch, Vox, Water, Zone, useActiveShot } from "../../engine";
+import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Torch, Vox, Water, Zone, useActiveShot, useFilmTime } from "../../engine";
 import type { Vec3 } from "../../engine";
 import { Hut, LampPost, Rain, Stall } from "./kit";
 import { PLACE, room, top } from "./kit";
@@ -199,7 +199,9 @@ const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
   </group>
 );
 
-const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ night, warm, rain }) => (
+const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ night, warm, rain }) => {
+  const t = useFilmTime();
+  return (
   <group>
     {/* ground: a wet lane, and grass either side */}
     <Vox kind="grass" position={[0, -0.5, -34]} size={[240, 1, 74]} />
@@ -260,14 +262,22 @@ const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ ni
       </>
     )}
     <Glow position={[0, 2.6, 6]} size={3.2} color={night ? "#c9a0ff" : "#fff0c0"} opacity={0.14} />
+    {/* Rich harbor overlook bridge near the jetty: where RichKid stands tossing a coin close enough to land by Hero */}
+    <group position={[3.2, 0, 7.6]}>
+      <Vox kind="stoneBrick" tint="#f4efe2" position={[0, 1.0, 0]} size={[3.2, 2.0, 3.0]} tile={2} />
+      <Vox kind="wool" tint="#f2c438" position={[-1.45, 2.25, 0]} size={[0.18, 0.5, 3.0]} />
+      <Vox kind="wool" tint="#f2c438" position={[0, 2.25, 1.4]} size={[3.0, 0.5, 0.18]} />
+    </group>
     <Dust position={[0, 2.2, 2]} area={[30, 4, 26]} count={60} size={0.04} color={night ? "#e0c8ff" : "#fff7d8"} opacity={0.5} seed={5} speed={0.18} />
     {night ? null : <Clouds y={52} center={[0, 0, 0]} />}
-    {rain ? <Rain center={[0, 0, 8]} t={0.4} area={[26, 24]} count={120} /> : null}
+    {rain ? <Rain center={[0, 0, 8]} t={t} area={[26, 24]} count={120} /> : null}
   </group>
-);
+  );
+};
 
 const Room: React.FC<{ night: boolean }> = ({ night }) => (
   <group position={PLACE.room}>
+    <pointLight position={[0, 2.5, 0.5]} color={night ? "#ffd49a" : "#fff4dc"} intensity={1.8} distance={9} />
     <Vox kind="planks" position={[0, -0.05, 0]} size={[7, 0.1, 6]} />
     <Vox kind="wool" tint="#cfc3a8" position={[0, 1.6, -3.05]} size={[7, 3.2, 0.2]} />
     <Vox kind="wool" tint="#c4b79c" position={[-3.5, 1.6, 0]} size={[0.2, 3.2, 6]} />

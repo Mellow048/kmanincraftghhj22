@@ -320,6 +320,13 @@ export const Guard: React.FC<A> = (p) => (
   />
 );
 
+/** Exact world [x, yTop, z] on stone mountain step `i` (0..27) matching world.tsx staircase so feet never sink into stairs. */
+export const stepPos = (i: number, dx = 0): Vec3 => [
+  PLACE.firstStep[0] + Math.sin(i * 0.28) * 1.4 + dx,
+  0.525 + i * 0.48,
+  -12.0 - i * 0.8,
+];
+
 /** Hero holding a fishing rod cleanly in his hand (no floating rod or telekinesis arms). */
 export const FishingHero: React.FC<A & { bend?: number }> = ({
   position = [0, 0, 0],
@@ -330,6 +337,21 @@ export const FishingHero: React.FC<A & { bend?: number }> = ({
   <group position={position} rotation={[0, rotationY, 0]}>
     <Hero position={[0, 0, 0]} rotationY={0} animation="hold" {...rest} />
     <Rod position={[-0.25, 0.92, 0.34]} rotationY={0} bend={bend} />
+  </group>
+);
+
+/** Villager holding a fishing rod tucked cleanly against his arms so rods never float detached. */
+export const FishingVillager: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  bend?: number;
+  strain?: number;
+  hat?: "none" | "straw" | "wide";
+  kid?: boolean;
+}> = ({ position = [0, 0, 0], rotationY = 0, bend = 0.35, strain = 0.35, hat = "none", kid = false }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Villager position={[0, 0, 0]} rotationY={0} strain={strain} walk={0} hat={hat} kid={kid} />
+    <Rod position={[0.24, kid ? 0.78 : 0.96, 0.22]} rotationY={0} bend={bend} />
   </group>
 );
 

@@ -1,5 +1,5 @@
 import { cam, storyScene, walkSegment } from "../../engine";
-import { EAST, FishPile, FishingHero, Gate, Guard, Hero, NORTH, RichKid, Rod, SOUTH, Villager, WEST, ease, ramp, timing } from "./kit";
+import { EAST, FishPile, FishingHero, FishingVillager, Gate, Guard, Hero, NORTH, RichKid, SOUTH, Villager, WEST, ease, ramp, stepPos, timing } from "./kit";
 
 export const scene2 = storyScene(timing, {
   id: "scene2",
@@ -25,8 +25,7 @@ export const scene2 = storyScene(timing, {
               time={t * 1.2}
             />
             <FishPile position={[1.7, 0.25 + pull * 0.85, 9.2]} n={5} seed={2} />
-            <Villager position={[-1.1, 0.5, 7.9]} rotationY={WEST} strain={0.4 + 0.3 * Math.abs(wave)} walk={0} />
-            <Rod position={[-1.3, 0.98, 7.9]} rotationY={WEST} bend={0.35 + wave * 0.14} />
+            <FishingVillager position={[-1.1, 0.5, 7.9]} rotationY={WEST} strain={0.4 + 0.3 * Math.abs(wave)} bend={0.35 + wave * 0.14} />
           </>
         );
       },
@@ -51,32 +50,34 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.dad",
-      ...cam.truck({ on: [0, 1.3, -13.2], by: [0, 0.85, -1.55], dist: 4.0, yaw: -24, pitch: 8, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.truck({ on: stepPos(2.0), by: [0, 0.8, -1.6], dist: 4.8, yaw: 68, pitch: 8, fov: 44, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Tracking climb: Dad strides up clear central stone mountain steps pointing toward the summit while Hero scrambles after him.",
+      note: "Open side-profile tracking climb: Dad and Hero climb with feet flush atop the stone mountain staircase.",
       stage: (t) => {
         const climb = ease(ramp(t, 0, 1.2));
+        const dadPos = stepPos(2.6 + climb * 2.0);
+        const heroPos = stepPos(0.8 + climb * 1.8);
         return (
           <>
-            <Villager position={[0, 0.75 + climb * 0.95, -13.2 - climb * 1.65]} rotationY={NORTH} strain={0.4 + 0.3 * Math.sin(t * 5)} walk={climb * 1.8} hat="straw" lookAt={[0, 1.2 + climb * 0.7, -12.0 - climb * 1.3]} />
-            <Hero position={[0, 0.25 + climb * 0.75, -12.1 - climb * 1.45]} rotationY={NORTH} animation={climb < 0.96 ? "walk" : "idle"} animDistance={climb * 1.6} face="uneasy" headPitch={-0.35} lookAt={[0, 1.8 + climb * 0.9, -14]} time={t * 1.4} />
+            <Villager position={dadPos} rotationY={NORTH} strain={0.35 + 0.25 * Math.sin(t * 5)} walk={climb * 1.8} hat="straw" />
+            <Hero position={heroPos} rotationY={NORTH} animation={climb < 0.96 ? "walk" : "idle"} animDistance={climb * 1.6} face="uneasy" headPitch={-0.18} time={t * 1.4} />
           </>
         );
       },
     },
     {
       cue: "2.why",
-      ...cam.orbit({ on: [0, 1.7, -13.6], dist: 4.4, distTo: 3.0, yaw: -28, yawTo: 22, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.orbit({ on: stepPos(2.2), dist: 4.6, distTo: 3.4, yaw: 58, yawTo: 84, pitch: 6, fov: 44, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Hero stops on the open stone steps and shrugs up the mountain as Dad marches higher without turning.",
+      note: "Hero stops with feet squarely on stone step facing side-front toward camera and shrugs as Dad climbs higher behind.",
       stage: (t) => {
         const ask = ease(ramp(t, 0, 1.3));
         return (
           <>
-            <Hero position={[0, 1.0, -13.3]} rotationY={NORTH} animation="shrug" face={t > 1.0 ? "frown" : "uneasy"} headPitch={-0.25} time={t * 1.3} />
-            <Villager position={[0, 1.9 + ask * 0.9, -15.0 - ask * 1.5]} rotationY={NORTH} walk={ask * 1.7} hat="straw" />
+            <Hero position={stepPos(2.2)} rotationY={EAST - 0.35} animation="shrug" face={t > 1.0 ? "frown" : "uneasy"} headPitch={-0.12} time={t * 1.3} />
+            <Villager position={stepPos(4.5 + ask * 2.0)} rotationY={NORTH} walk={ask * 1.7} hat="straw" />
           </>
         );
       },

@@ -1,5 +1,5 @@
 import { cam, storyScene, walkSegment } from "../../engine";
-import { Basket, FishPile, Hero, Jar, JETTY_CROWD, Keeper, Line, NORTH, Rod, SOUTH, Villager, ease, ramp, timing } from "./kit";
+import { Basket, FishPile, FishingVillager, Hero, Jar, JETTY_CROWD, Keeper, SOUTH, ease, ramp, stepPos, timing } from "./kit";
 
 export const scene16 = storyScene(timing, {
   id: "scene16",
@@ -7,17 +7,20 @@ export const scene16 = storyScene(timing, {
   shots: [
     {
       cue: "16.dawn",
-      ...cam.truck({ on: [0, 11.5, -25], dist: 6.4, yaw: 12, pitch: 8, fov: 46, by: [0, -1.8, 2.8], screenOffset: [0, 0.08] }),
+      ...cam.truck({ on: stepPos(18), dist: 6.4, yaw: 62, pitch: 8, fov: 46, by: [0, -1.8, 2.8], screenOffset: [0, 0.08] }),
       ease: "linear" as const,
       zone: "bottom",
       look: "overworld-golden",
-      note: "First dawn light catches Hero descending stone mountain steps fast clutching jar into sunlit orange haze.",
-      stage: (t) => (
-        <>
-          <Hero position={[0, 10.2 - t * 2.1, -21.5 + t * 1.4]} rotationY={SOUTH} animation="walk" animDistance={t * 1.9} face="uneasy" time={t} />
-          <Jar position={[0.35, 10.9 - t * 2.1, -21.7 + t * 1.4]} fill={1} scale={0.85} />
-        </>
-      ),
+      note: "Front view: first dawn light catches Hero descending stone mountain steps with feet flush clutching jar.",
+      stage: (t) => {
+        const p = stepPos(Math.max(4, 18 - t * 4.2));
+        return (
+          <>
+            <Hero position={p} rotationY={SOUTH} animation="walk" animDistance={t * 1.9} face="uneasy" time={t} />
+            <Jar position={[p[0] + 0.35, p[1] + 0.7, p[2] - 0.15]} fill={1} scale={0.85} />
+          </>
+        );
+      },
     },
     {
       cue: "16.jetty",
@@ -80,13 +83,15 @@ export const scene16 = storyScene(timing, {
   ],
 });
 
-/** A villager with a rod, actively reeling and rocking weight. */
+/** A villager with a rod held cleanly, actively reeling. */
 function renderVillagerRod(x: number, z: number, i: number, t: number, tired = false) {
   return (
-    <group key={i}>
-      <Villager position={[x, 0.5, z + Math.sin(t * 2 + i) * 0.08]} rotationY={NORTH} strain={tired ? 0.65 + 0.15 * Math.sin(t * 3) : 0.4 + 0.2 * Math.sin(t * 3 + i)} walk={0} />
-      <Rod position={[x + 0.3, 0.95, z - 0.1]} rotationY={0.15 * (i % 3)} bend={0.3 + Math.sin(t * 4 + i) * 0.1} />
-      <Line position={[x + 0.45, 0.85, z - 1.7]} length={1.3} bob={Math.sin(t * 7 + i) * 0.06} />
-    </group>
+    <FishingVillager
+      key={i}
+      position={[x, 0.5, z + Math.sin(t * 2 + i) * 0.08]}
+      rotationY={x < 0 ? SOUTH - 0.3 : SOUTH + 0.3}
+      strain={tired ? 0.65 + 0.15 * Math.sin(t * 3) : 0.4 + 0.2 * Math.sin(t * 3 + i)}
+      bend={0.3 + Math.sin(t * 4 + i) * 0.1}
+    />
   );
 }

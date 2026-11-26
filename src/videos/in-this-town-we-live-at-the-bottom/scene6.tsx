@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Basket, Bucket, FishPile, Hero, Keeper, LANE_CROWD, NORTH, PLACE, SOUTH, Villager, WEST, ease, ramp, timing } from "./kit";
+import { Basket, Bucket, EAST, FishPile, Hero, Keeper, LANE_CROWD, NORTH, PLACE, SOUTH, Villager, WEST, ease, ramp, timing } from "./kit";
 
 export const scene6 = storyScene(timing, {
   id: "scene6",
@@ -7,29 +7,29 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "6.basket",
-      ...cam.crane({ on: [0, 3.8, 15], onTo: [0, 1.0, 14.6], dist: 6.2, toDist: 4.4, yaw: 12, fromPitch: -6, toPitch: 12, fov: 44, screenOffset: [0, 0.06] }),
+      ...cam.crane({ on: [0, 3.8, 15], onTo: [0, 1.0, 14.6], dist: 6.4, toDist: 4.8, yaw: 62, fromPitch: -6, toPitch: 12, fov: 46, screenOffset: [0, 0.06] }),
       ease: "linear" as const,
       zone: "bottom",
       look: "overworld-day",
-      note: "Camera cranes smoothly down beside descending wooden basket landing on wet jetty planks as villagers step back.",
+      note: "Side-front crane beside descending wooden basket landing on wet jetty planks as Hero and villager look up amazed.",
       stage: (t) => {
         const drop = Math.min(1, t / 1.9);
         const y = 6.2 - drop * 5.7;
         return (
           <>
             <Basket position={[0, 0.5 + y, 15]} rope={y + 6} swing={Math.sin(t * 2.2) * 0.45} />
-            <Hero position={[0, 0.5, 12.6]} rotationY={NORTH} animation="lookAround" face="wow" headPitch={-0.4 + drop * 0.3} lookAt={[0, y + 0.5, 15]} time={t} />
-            <Villager position={[-1.1, 0.5, 12.1]} rotationY={NORTH} walk={0} lookAt={[0, y + 0.5, 15]} />
+            <Hero position={[-0.6, 0.5, 13.0]} rotationY={EAST - 0.3} animation="lookAround" face="wow" headPitch={-0.35 + drop * 0.25} time={t} />
+            <Villager position={[-1.3, 0.5, 12.3]} rotationY={EAST} walk={0} />
           </>
         );
       },
     },
     {
       cue: "6.coat",
-      ...cam.push({ on: [0, 1.42, 14.4], dist: 4.5, to: 3.1, yaw: 14, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [0, 1.42, 14.4], dist: 4.8, to: 3.4, yaw: 158, pitch: 4, fov: 44, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Spotless white-coated Keeper steps smoothly forward toward townsfolk out of basket brushing wet sleeve away.",
+      note: "Front view: spotless white-coated Keeper steps out of basket marching toward camera.",
       stage: (t) => {
         const step = ease(ramp(t, 0, 1.2));
         return (
@@ -58,10 +58,10 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.straight",
-      ...cam.truck({ on: [0.2, 1.25, 1.2], by: [0, 0, -2.6], dist: 5.5, yaw: 16, pitch: 8, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.truck({ on: [0.2, 1.25, 1.2], by: [0, 0, -2.6], dist: 5.8, yaw: 158, pitch: 8, fov: 46, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Camera trucks down wet village lane ahead of white-coated Keeper while lined crowds snap upright.",
+      note: "Front view: camera trucks down wet village lane facing Keeper as lined townsfolk snap upright.",
       stage: (t) => (
         <>
           {LANE_CROWD.map(([x, z], i) => (

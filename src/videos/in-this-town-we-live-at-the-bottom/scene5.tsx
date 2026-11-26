@@ -1,5 +1,5 @@
 import { cam, storyScene, walkSegment } from "../../engine";
-import { EAST, Hero, Jar, Mum, NORTH, SOUTH, Villager, WEST, ease, ramp, timing } from "./kit";
+import { EAST, Hero, Jar, Mum, SOUTH, Villager, WEST, ease, ramp, room, timing } from "./kit";
 
 export const scene5 = storyScene(timing, {
   id: "scene5",
@@ -7,17 +7,17 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "5.mum",
-      ...cam.push({ on: [-0.4, 1.32, -1.7], dist: 4.3, to: 3.1, yaw: -16, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: room(-0.4, 1.32, -1.7), dist: 5.0, to: 3.8, yaw: -14, pitch: 6, fov: 44, screenOffset: [0, 0.06] }),
       zone: "room",
       look: "warm-room",
-      note: "Mum gently lifts savings jar straight out of Hero's hands and places it cleanly back up on timber shelf.",
+      note: "Inside sunlit bedroom: Mum gently lifts savings jar straight out of Hero's hands and places it cleanly back up on timber shelf.",
       stage: (t) => {
         const back = ease(ramp(t, 0.2, 1.15));
         return (
           <>
-            <Mum position={[-1.0, 0, -1.9]} rotationY={EAST} animation={back < 0.7 ? "hold" : "reach"} face="worried" headPitch={0.12} lookAt={[0.1, 1.2, -1.8]} time={t} />
-            <Hero position={[0.35, 0, -1.8]} rotationY={WEST} animation={back < 0.6 ? "reach" : "shrug"} face="frown" headPitch={0.1} time={t} />
-            <Jar position={[-0.6, 1.1 + back * 0.2, -2.0 - back * 0.6]} fill={0.45} />
+            <Mum position={room(-1.0, 0, -1.9)} rotationY={EAST} animation={back < 0.7 ? "hold" : "reach"} face="worried" headPitch={0.12} lookAt={room(0.1, 1.2, -1.8)} time={t} />
+            <Hero position={room(0.35, 0, -1.8)} rotationY={WEST} animation={back < 0.6 ? "reach" : "shrug"} face="frown" headPitch={0.1} time={t} />
+            <Jar position={room(-0.6, 1.1 + back * 0.2, -2.0 - back * 0.6)} fill={0.45} />
           </>
         );
       },

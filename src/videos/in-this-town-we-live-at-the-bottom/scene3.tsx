@@ -1,7 +1,7 @@
 import { cam, storyScene } from "../../engine";
 import {
-  Boat, Bucket, Coin, EAST, FishPile, FishingHero, Gate, Hero, Jar, Keeper, Mum, NORTH, PLACE, PriceBoard, Rod, SOUTH,
-  Stall, Villager, WEST, ease, ramp, top, timing, wordAt,
+  Boat, Bucket, Coin, EAST, FishPile, FishingHero, FishingVillager, Gate, Hero, Jar, Keeper, Mum, NORTH, PLACE, PriceBoard, Rod, SOUTH,
+  Stall, Villager, WEST, ease, ramp, room, top, timing, wordAt,
 } from "./kit";
 
 const CUT_JETTY = wordAt("3.rods", "a");
@@ -90,15 +90,11 @@ export const scene3 = storyScene(timing, {
       note: "Driving rain across jetty as Hero & 3 villagers brace firmly yanking heavily bent Rods with bobbing lines together.",
       stage: (t) => (
         <>
-          <Hero position={[-0.1, 0.5, 9.4]} rotationY={EAST - 0.2} animation="push" face="grin" time={t * 1.5} />
-          <Rod position={[0.2, 0.98, 9.4]} rotationY={EAST - 0.2} bend={0.55 + Math.sin(t * 8) * 0.16} />
+          <FishingHero position={[-0.1, 0.5, 9.4]} rotationY={EAST - 0.2} bend={0.55 + Math.sin(t * 8) * 0.16} face="grin" time={t * 1.4} />
           {[[-1.1, 7.6], [0.9, 8.2], [-1.0, 11.0]].map(([x, z], i) => {
             const ry = x < 0 ? WEST + 0.1 : EAST - 0.1;
             return (
-              <group key={i}>
-                <Villager position={[x, 0.5, z]} rotationY={ry} strain={0.55 + 0.25 * Math.sin(t * 6 + i)} walk={0} />
-                <Rod position={[x + (x < 0 ? -0.22 : 0.22), 0.96, z]} rotationY={ry} bend={0.48 + Math.sin(t * 7 + i) * 0.14} />
-              </group>
+              <FishingVillager key={i} position={[x, 0.5, z]} rotationY={ry} strain={0.55 + 0.25 * Math.sin(t * 6 + i)} bend={0.48 + Math.sin(t * 7 + i) * 0.14} />
             );
           })}
         </>
@@ -106,26 +102,26 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.stall",
-      ...cam.push({ on: [-3.5, 1.1, -4.8], dist: 4.8, to: 2.9, yaw: 20, pitch: 6, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [-2.8, 1.15, -4.5], dist: 6.0, to: 4.8, yaw: 14, pitch: 8, fov: 46, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-rain",
-      note: "Hero marches up to wooden stall counter sliding heavy fish bucket across while merchant hands back one spinning Coin.",
+      note: "Wide 9:16 frame showing Hero sliding heavy fish bucket across the stall counter while merchant hands back a spinning Coin without edge cropping.",
       stage: (t) => {
         const slide = ease(ramp(t, 0.05, 1.35));
         return (
           <>
-            <Villager position={[-4.2, 0, -4.2]} rotationY={EAST} strain={0.25 + slide * 0.35} />
-            <Hero position={[-1.4 - slide * 1.35, 0, -4.6]} rotationY={WEST} animation={slide < 0.65 ? "walk" : "reach"} animDistance={slide * 1.4} face="neutral" time={t} />
-            <Bucket position={[-2.1 - slide * 1.35, 1.05, -4.7]} scale={0.95} />
-            <FishPile position={[-2.2 - slide * 1.35, 1.05, -4.8]} n={5} seed={4} />
-            <Coin position={[-3.7 + slide * 0.85, 1.15, -4.65]} spin={t * 6} />
+            <Villager position={[-3.9, 0, -4.2]} rotationY={EAST} strain={0.25 + slide * 0.35} />
+            <Hero position={[-1.4 - slide * 1.15, 0, -4.6]} rotationY={WEST} animation={slide < 0.65 ? "walk" : "reach"} animDistance={slide * 1.2} face="neutral" time={t} />
+            <Bucket position={[-2.1 - slide * 1.15, 1.05, -4.7]} scale={0.95} />
+            <FishPile position={[-2.2 - slide * 1.15, 1.05, -4.8]} n={5} seed={4} />
+            <Coin position={[-3.5 + slide * 0.85, 1.15, -4.65]} spin={t * 6} />
           </>
         );
       },
     },
     {
       cue: "3.up",
-      ...cam.orbit({ on: [6.4, 6.4, -31.2], dist: 6.4, distTo: 4.1, yaw: -20, yawTo: 24, pitch: 4, fov: 40 }),
+      ...cam.orbit({ on: [6.4, 6.4, -31.2], dist: 6.8, distTo: 4.6, yaw: -20, yawTo: 24, pitch: 4, fov: 44 }),
       zone: "bottom",
       look: "overworld-golden",
       note: "On sunlit Quartz Mansion terrace above town: Keeper struts briskly over to fish bucket dropping gleaming ten-coin payoff.",
@@ -143,33 +139,33 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.jar",
-      ...cam.push({ on: [-0.6, 1.45, -2.2], dist: 3.9, to: 2.3, yaw: 12, pitch: 6, fov: 36, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: room(-0.9, 1.4, -2.0), dist: 4.6, to: 3.4, yaw: 12, pitch: 6, fov: 42, screenOffset: [0, 0.08] }),
       zone: "room",
       look: "warm-room",
-      note: "Mum steps cleanly across bedroom pressing paper label THE TOP onto filled emerald glass jar.",
+      note: "Inside sunlit bedroom: Mum steps cleanly across the floor pressing paper label THE TOP onto filled emerald glass jar.",
       stage: (t) => {
         const press = ease(ramp(t, 0, 1.1));
         return (
           <>
-            <Mum position={[-1.7 + press * 0.65, 0, -1.8 - press * 0.25]} rotationY={EAST} animation={press < 0.5 ? "walk" : "hold"} animDistance={press * 0.7} face="smile" headPitch={0.25} lookAt={[-0.6, 1.3, -2.6]} time={t} />
-            <Jar position={[-0.6, 1.28, -2.6]} label={t > 0.45 ? 1 : 0.15} fill={0.5 + press * 0.18} />
+            <Mum position={room(-1.6 + press * 0.55, 0, -1.8 - press * 0.25)} rotationY={EAST} animation={press < 0.5 ? "walk" : "hold"} animDistance={press * 0.6} face="smile" headPitch={0.25} lookAt={room(-0.6, 1.3, -2.6)} time={t} />
+            <Jar position={room(-0.6, 1.28, -2.6)} label={t > 0.45 ? 1 : 0.15} fill={0.5 + press * 0.18} />
           </>
         );
       },
     },
     {
       cue: "3.price",
-      ...cam.push({ on: top(1.6, 1.4, 1.2), dist: 4.3, to: 2.5, yaw: -16, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: top(0.3, 1.35, 0.5), dist: 5.0, to: 3.8, yaw: 12, pitch: 4, fov: 44, screenOffset: [0, 0.08] }),
       zone: "top",
       look: "overworld-day",
-      note: "White-coated Keeper strides forward reaching high to slap a fifth black tally notch onto PriceBoard.",
+      note: "White-coated Keeper stands clearly beside the unobstructed PriceBoard slapping a fifth black tally notch on.",
       stage: (t) => {
         const slap = ease(ramp(t, 0.1, 1.55));
         return (
           <>
             <Gate position={top(0, 0, 0)} />
-            <PriceBoard position={top(2.3, 0, 1.4)} digits={slap > 0.6 ? [1, 0, 0, 0, 1] : [1, 0, 0, 0]} rotationY={-0.3} />
-            <Keeper position={top(1.1 + slap * 0.85, 0, 0.6)} rotationY={slap > 0.55 ? SOUTH : EAST} animation={slap > 0.55 ? "reachUp" : "walk"} animDistance={slap * 0.9} face="blank" time={t} />
+            <PriceBoard position={top(1.4, 0, 0.4)} digits={slap > 0.6 ? [1, 0, 0, 0, 1] : [1, 0, 0, 0]} rotationY={-0.3} />
+            <Keeper position={top(-1.0 + slap * 1.1, 0, 0.4)} rotationY={slap > 0.55 ? SOUTH : EAST} animation={slap > 0.55 ? "reachUp" : "walk"} animDistance={slap * 1.1} face="blank" time={t} />
           </>
         );
       },

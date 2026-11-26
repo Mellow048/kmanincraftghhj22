@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { EAST, Healer, Hero, Mum, NORTH, WEST, ease, ramp, room, timing } from "./kit";
+import { EAST, Healer, Hero, Mum, NORTH, SOUTH, WEST, ease, ramp, room, timing } from "./kit";
 
 export const scene8 = storyScene(timing, {
   id: "scene8",
@@ -39,16 +39,16 @@ export const scene8 = storyScene(timing, {
     },
     {
       cue: "8.decide",
-      ...cam.crane({ on: [1.2, 1.6, -9.8], onTo: [1.2, 2.8, -10.4], dist: 5.2, toDist: 3.4, yaw: 16, fromPitch: 16, toPitch: -8, fov: 44, screenOffset: [0, 0.06] }),
+      ...cam.crane({ on: [0, 1.5, -8.8], onTo: [0, 2.3, -9.8], dist: 5.4, toDist: 3.8, yaw: 72, fromPitch: 10, toPitch: -4, fov: 46, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-rain",
-      note: "Hero marches through pouring rain onto first wet stone rung grabbing ladder rail while Mum watches worriedly.",
+      note: "Side-front view in pouring rain: determined Hero turns toward Mountain Entrance Gate as Mum watches worriedly.",
       stage: (t) => {
         const step = ease(ramp(t, 0, 1.5));
         return (
           <>
-            <Hero position={[1.2, 0, -8.8 - step * 1.1]} rotationY={NORTH} animation={step > 0.65 ? "reachUp" : "walk"} animDistance={step * 1.2} face="brave" headPitch={-0.5} lookAt={[1.2, 22, -30]} time={t} />
-            <Mum position={[2.4, 0, -8.6]} rotationY={0.2} animation="cower" face="sad" headPitch={0.2} time={t} />
+            <Hero position={[0, 0, -8.2 + step * 1.1]} rotationY={SOUTH} animation="walk" animDistance={step * 1.2} face="brave" headPitch={-0.12} time={t} />
+            <Mum position={[1.4, 0, -8.4]} rotationY={-0.3} animation="cower" face="crying" headPitch={0.2} time={t} />
           </>
         );
       },
