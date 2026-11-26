@@ -1,0 +1,100 @@
+{
+  "film": "my-dad-kept-watching-me-play-minecraft",
+  "music": {
+    "track": "Topics/ServerLore/up_happy.m4a",
+    "gain": -14,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "gain": 0,
+        "why": "Beat 1-2: Up Happy (0:02+ pre-trimmed, boosted) scores Dad watching over shoulder & first clumsy tries"
+      },
+      {
+        "from": "3.house",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "gain": 2.2,
+        "why": "Beat 3-4: Crossfade cleanly into Up Sad as ruined house discovery & 'Ah sorry son' play out"
+      },
+      {
+        "from": "4.silence",
+        "mood": "none",
+        "why": "Beat 4 breath: 2-second quiet dramatic pause before wholesome laugh flip"
+      },
+      {
+        "from": "5.laugh",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "gain": 0.5,
+        "why": "Beat 5-6: Up Happy returns cleanly at 0:02+ right when Sam bursts out laughing & grabs laptop"
+      },
+      {
+        "from": "7.rebuild",
+        "mood": "wonder",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "gain": 1.0,
+        "why": "Beat 7: Rebuilt twin-bed cottage, 'best game we ever played', and story-locked Subscribe CTA"
+      }
+    ]
+  },
+  "beds": [
+    { "from": "1.hook", "to": "1.pc", "bed": "room" },
+    { "from": "1.loop", "to": "2.froze", "bed": "village" },
+    { "from": "3.house", "to": "3.house", "bed": "village" },
+    { "from": "3.enter", "to": "3.monitor", "bed": "room" },
+    { "from": "3.torn", "to": "3.torn", "bed": "village" },
+    { "from": "4.guilt", "to": "5.laptop", "bed": "room" },
+    { "from": "6.dual", "to": "6.dual", "bed": "room" },
+    { "from": "6.teach", "to": "7.cta", "bed": "village" }
+  ],
+  "sfx": [
+    { "cue": "1.hook", "sfx": "blip", "why": "Bedroom PC monitor illuminates MINECRAFT" },
+    { "cue": "1.watch", "word": "quietly", "sfx": "pop", "why": "Heart badge pops warmly above Dad" },
+    { "cue": "1.sat", "word": "sat", "sfx": "creak", "why": "Dad sits onto gaming chair" },
+    { "cue": "1.pc", "word": "world", "sfx": "pop", "why": "Dad joined the game toast" },
+    { "cue": "1.loop", "sfx": "whoosh", "why": "Cut into SMP survival clearing" },
+    { "cue": "1.loop", "word": "heart", "sfx": "sting", "why": "Foreshadowing broken-heart beat beside Creeper" },
+
+    { "cue": "2.controls", "word": "move", "sfx": "pop", "why": "Question badge pops overhead" },
+    { "cue": "2.tree", "word": "punch", "sfx": "swish", "why": "Dad whiffs punch beside oak trunk" },
+    { "cue": "2.fence", "word": "fences", "sfx": "thud", "why": "Dad bumps straight into wooden fence" },
+    { "cue": "2.creeper", "word": "hissed", "sfx": "crackle", "why": "Creeper fuse hiss begins behind Dad" },
+    { "cue": "2.creeper", "word": "behind", "sfx": "riser", "why": "Fuse tension rises toward blast" },
+    { "cue": "2.boom", "word": "Boom!", "sfx": "boom", "why": "Creeper explosion craters StarterHouse" },
+    { "cue": "2.respawn", "word": "walked", "sfx": "step_grass", "repeat": 3, "every": 0.32, "why": "Dad walks nervously down spawn path" },
+    { "cue": "2.froze", "word": "crater.", "sfx": "drop", "why": "Dad freezes in horror at blown porch" },
+
+    { "cue": "3.house", "sfx": "whoosh", "why": "High-angle crater sweep" },
+    { "cue": "3.enter", "word": "walked", "sfx": "step_wood", "repeat": 3, "every": 0.28, "why": "Sam walks across bedroom floorboards" },
+    { "cue": "3.monitor", "word": "screen.", "sfx": "sting", "why": "Shocking broken house on monitor" },
+    { "cue": "3.torn", "sfx": "whoosh", "why": "Orbit of ruined starter walls" },
+
+    { "cue": "4.guilt", "sfx": "swish", "why": "Cut back to Dad slumping guiltily" },
+    { "cue": "4.sorry", "word": "sorry,", "sfx": "pop", "why": "Soft SpeechCard appears overhead" },
+    { "cue": "4.silence", "sfx": "tick", "why": "Quiet held breath in bedroom" },
+
+    { "cue": "5.laugh", "sfx": "chime", "why": "Wholesome turnaround bright chime" },
+    { "cue": "5.ask", "word": "creeper?", "sfx": "pop", "why": "Comedy Creeper joke popup" },
+    { "cue": "5.relief", "word": "breath.", "sfx": "sparkle", "why": "Dad exhales smiling warmly" },
+    { "cue": "5.stairs", "word": "down", "sfx": "step_wood", "repeat": 4, "every": 0.22, "why": "Sam bounds quickly down wooden stairs" },
+    { "cue": "5.laptop", "word": "grabbed", "sfx": "place", "why": "Sam scoops silver Laptop off console table" },
+
+    { "cue": "6.dual", "sfx": "whoosh", "why": "Back upstairs to PC + Laptop co-op" },
+    { "cue": "6.dual", "word": "side.", "sfx": "pop", "why": "2P co-op screens ready" },
+    { "cue": "6.teach", "word": "showed", "sfx": "blip", "why": "Back in sunlit SMP clearing" },
+    { "cue": "6.wood", "word": "broke", "sfx": "hit", "why": "Clean iron axe chop into oak tree" },
+    { "cue": "6.wood", "word": "wood!", "sfx": "coin", "why": "Oak log item pops cleanly free" },
+    { "cue": "6.chest", "word": "opened", "sfx": "creak", "why": "Spawn Oak chest opens wide" },
+    { "cue": "6.shield", "word": "shield", "sfx": "place", "why": "Sam equips crafted WoodenShield onto Dad" },
+    { "cue": "6.creeper2", "word": "snuck", "sfx": "crackle", "why": "Second Creeper hisses near fence" },
+    { "cue": "6.block", "word": "blocked", "sfx": "clank", "why": "Iron shield deflects blast cleanly" },
+    { "cue": "6.block", "word": "blast.", "sfx": "sparkle", "why": "0 DMG cyan shield spark burst" },
+
+    { "cue": "7.rebuild", "sfx": "whoosh", "why": "Sweeping crane over rebuilt cozy house" },
+    { "cue": "7.cozy", "word": "lanterns", "sfx": "chime", "why": "Twin warm beds & golden lanterns glow" },
+    { "cue": "7.hearts", "word": "typed:", "sfx": "pop", "why": "<Dad> best game we ever played" },
+    { "cue": "7.cta", "word": "Subscribe", "sfx": "ding", "why": "Story-locked cozy Subscribe CTA bell" }
+  ]
+}

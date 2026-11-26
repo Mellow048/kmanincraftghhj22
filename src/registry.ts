@@ -37,6 +37,7 @@ import { film as inflationExplainedUsingMinecraft } from "./videos/inflation-exp
 import { film as inThisTownNobodyTurnsOnAFurnace } from "./videos/in-this-town-nobody-turns-on-a-furnace/film";
 import { film as inThisTownWeLiveAtTheBottom } from "./videos/in-this-town-we-live-at-the-bottom/film";
 import { film as thePlayerWhoBuiltOnlyHalfABridge } from "./videos/the-player-who-built-only-half-a-bridge/film";
+import { film as myDadKeptWatchingMePlayMinecraft } from "./videos/my-dad-kept-watching-me-play-minecraft/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -82,4 +83,5 @@ export const FILMS = [
   inThisTownNobodyTurnsOnAFurnace,
   inThisTownWeLiveAtTheBottom,
   thePlayerWhoBuiltOnlyHalfABridge,
+  myDadKeptWatchingMePlayMinecraft,
 ];
