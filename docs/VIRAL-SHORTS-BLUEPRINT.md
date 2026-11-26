@@ -56,7 +56,11 @@ The owner warned in [`never-seen-my-mums-face/README.md`](../Topics/InThisTown/r
 
 ---
 
-## 4. Camera, Framing & Visual Craft Rules (Remaster v2)
+## 4. Camera, Framing & Visual + Motion Rules (ZERO SLIDESHOWS)
+
+**VISUALS + MOTION IS A MUST:** Do NOT build pretty static PNG slides where characters stand still in `"idle"`!
+- **Show the verb on screen (`wordAt`):** Characters must walk, reach, flinch, throw, drop, mine, hand over props, or shift expression right on the spoken word. Avoid `stage: () =>` frozen callbacks (`rehearse --pre-render` fails 2+ frozen shots in a row).
+- **Bold camera momentum (`>= 0.6m` / `>= 20°`):** Never write `0.25m`–`0.35m` PowerPoint crawls (`dist: 3.1 -> 2.85`). Use real travel (`dist: 4.5 -> 3.1`), active `cam.truck` tracking walkers, `cam.orbit` (`-28 -> +24`), `cam.crane`, `cam.whip`, and `cam.ots`.
 
 Use the upgraded tools in `src/engine/` on every new film:
 

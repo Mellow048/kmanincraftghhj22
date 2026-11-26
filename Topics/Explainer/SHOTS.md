@@ -38,14 +38,16 @@ export const scene3 = storyScene(timing, {
 
 ---
 
-## 2. Camera Variety Inside Every Beat
+## 2. Visuals + Motion Is Mandatory (No Static PowerPoint Slides!)
 
-Use the full `cam.*` toolkit from `src/engine/cam.ts` (never repeat the exact same angle twice in a row):
+**Every single shot must show physical acting AND bold camera movement (`>= 0.65m` travel or `>= 22°` orbit):**
+- **Never freeze characters in `"idle"`, `"hold"`, `"point"`, or `stage: () =>` across a shot.** Actors must walk (`route(p)` / `animDistance`), lunge, hand over items, recoil on `wordAt`, react with expressions/head turns, and interact with flying/spawning props (`CoinStack`, `FloatingNumber`, `BreadShelf`, `Printer`).
+- **Use the full `cam.*` toolkit from `src/engine/cam.ts`** (never repeat the same angle twice in a row, and never write `< 0.45m` nudges):
 
-- **`cam.push` / `cam.whip`**: Open on climax (`dist: 3.8 -> 2.8`), punch into shock/discovery (`1.4 -> 1.0`), or whip-pan across rival armies.
-- **`cam.orbit`**: Swing smoothly around a council table (`yaw: -24 -> 18`), throne dais, or voting queue so the 3D set depth reads clearly.
-- **`cam.crane`**: Start low at `CitizenLead`'s shoulders and crane high up past castle battlements (`CastleGateWall`), OR drop from overhead plaza crowd straight down to `<BallotBox>`.
-- **`cam.ots`**: Over-the-shoulder shots during confrontations, bribes, crowning moments (`EliteLead` snatching `<Crown>` right over `Official`'s shoulder!).
+- **`cam.push` / `cam.whip`**: Open on climax (`dist: 4.2 -> 3.0`), track moving characters (`on: start, onTo: end`), punch into shock/discovery (`2.5 -> 1.6`), or whip-pan across rival armies (`>= 25°`).
+- **`cam.orbit`**: Swing boldly (`yaw: -28 -> 24`, `dist: 4.3 -> 3.4`) around a council table, throne dais, or voting queue so the 3D set depth visibly moves across frame.
+- **`cam.crane`**: Start low beside `CitizenLead` and crane up (`fromPitch: -10 -> toPitch: 24`, `dist: 4.5 -> 3.6`) to reveal battlements or towering piles of goods/coins.
+- **`cam.ots` / `cam.truck`**: Shoot dialogue over the shoulder (`push: 0.8`) or track linearly (`cam.truck`) alongside walking characters.
 - **`fitHeight` & `screenOffset`**: Keep the upper 55% framing the action cleanly above captions (`y: 0.67`). Leave bottom-left clean when `<ChatToast>` pops!
 
 ---

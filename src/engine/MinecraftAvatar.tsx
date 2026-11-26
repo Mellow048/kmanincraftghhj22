@@ -42,7 +42,7 @@ export type MinecraftAvatarProps = {
 
   /** Second clip to blend towards. */
   blendTo?: AnimName;
-  /** 0 = the `blendTo` pose, 1 = the `animation` pose. */
+  /** Blend factor: 0 = `blendTo` pose, 1 = `animation` pose (to morph A->B as k goes 0->1, use animation="B" blendTo="A" blend={k}). */
   blend?: number;
   /** Clock for the `blendTo` clip. Omit to reuse `time`/the scene clock. */
   blendTime?: number;
@@ -337,8 +337,8 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     pitch = clamp(-Math.atan2(dy, Math.hypot(dx, dz)), -0.7, 0.65);
   }
 
-  const pitchBody = pose.bodyPitch + breathWave * 0.004 * breathAmt;
-  const roll = pose.bodyRoll + shiftWave * 0.012 * shiftAmt;
+  const pitchBody = pose.bodyPitch + breathWave * 0.008 * breathAmt;
+  const roll = pose.bodyRoll + shiftWave * 0.016 * shiftAmt;
   const hip = plantFeet ? groundedHip(pose, [pitchBody, pose.bodyYaw, roll], !!shoes) : HIP + pose.bodyY;
   const shadowTex = glowTex();
 
@@ -352,7 +352,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
       )}
 
       <group
-        position={[shiftWave * 0.005 * shiftAmt, hip, 0]}
+        position={[shiftWave * 0.009 * shiftAmt, hip, 0]}
         rotation={[pitchBody, pose.bodyYaw, roll]}
       >
         {/* torso */}

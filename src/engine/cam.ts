@@ -60,7 +60,7 @@ export const cam = {
     return round(span / (2 * Math.tan((fov * RAD) / 2)));
   },
 
-  /** Dolly in (to < dist) or pull out (to > dist) along the lens axis. The workhorse. */
+  /** Dolly in (to < dist) or pull out (to > dist) along the lens axis. Defaults to `outSine` so short cuts move from frame 0. */
   push(o: Framing & { to: number; onTo?: Vec3; fovTo?: number; ease?: Shot["ease"] }): Move {
     return {
       from: around(o.on, o.dist, o.yaw, o.pitch),
@@ -70,7 +70,7 @@ export const cam = {
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: o.ease ?? "inOutSine",
+      ease: o.ease ?? "outSine",
     };
   },
 
@@ -99,12 +99,12 @@ export const cam = {
       ...(o.onTo ? { targetTo: o.onTo } : {}),
       fov: o.fov ?? 40,
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: o.ease ?? "inOutSine",
+      ease: o.ease ?? "outSine",
     };
   },
 
   /** The camera stays put and the look sweeps from one thing to another. */
-  pan(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number; screenOffset?: [number, number] }): Move {
+  pan(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number; screenOffset?: [number, number]; ease?: Shot["ease"] }): Move {
     return {
       from: o.from,
       target: o.on,
@@ -112,19 +112,19 @@ export const cam = {
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: "inOutSine",
+      ease: o.ease ?? "outSine",
     };
   },
 
   /** Fast snappy whip-pan (`outExpo` speed ramp) for comedy turns, reveals, and reaction snaps. */
-  whip(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number }): Move {
+  whip(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number; ease?: Shot["ease"] }): Move {
     return {
       from: o.from,
       target: o.on,
       targetTo: o.onTo,
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
-      ease: "outExpo",
+      ease: o.ease ?? "outExpo",
     };
   },
 
@@ -132,7 +132,7 @@ export const cam = {
    * Hitchcock / Vertigo dolly-zoom: moves distance (`dist` → `to`) while compensating `fov` so the
    * subject stays the same height on the phone screen while the background dramatically warps.
    */
-  dollyZoom(o: Framing & { to: number }): Move {
+  dollyZoom(o: Framing & { to: number; ease?: Shot["ease"] }): Move {
     const fov = o.fov ?? 40;
     const halfH = o.dist * Math.tan((fov * RAD) / 2);
     const fovTo = round(clampFov((2 * Math.atan(halfH / Math.max(0.4, o.to))) / RAD));
@@ -143,7 +143,7 @@ export const cam = {
       fov,
       fovTo,
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: "inOutCubic",
+      ease: o.ease ?? "inOutCubic",
     };
   },
 
@@ -158,6 +158,7 @@ export const cam = {
     toPitch: number;
     fov?: number;
     screenOffset?: [number, number];
+    ease?: Shot["ease"];
   }): Move {
     const dest = o.onTo ?? o.on;
     return {
@@ -167,13 +168,13 @@ export const cam = {
       ...(o.onTo ? { targetTo: o.onTo } : {}),
       fov: o.fov ?? 40,
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: "inOutCubic",
+      ease: o.ease ?? "outSine",
     };
   },
 
   /**
    * Over-the-shoulder framing tuned for the narrow 9:16 phone slit: keeps `speaker` cleanly off-axis
-   * at the edge of frame while aiming at `listener` with rule-of-thirds headroom.
+   * at the edge of frame while aiming at `listener` with dynamic push-in and rule-of-thirds headroom.
    */
   ots(o: {
     speaker: Vec3;
@@ -183,6 +184,7 @@ export const cam = {
     push?: number;
     height?: number;
     fov?: number;
+    ease?: Shot["ease"];
   }): Move {
     const dx = o.listener[0] - o.speaker[0];
     const dz = o.listener[2] - o.speaker[2];
@@ -192,10 +194,10 @@ export const cam = {
     const side = o.side ?? 1;
     const rx = -nz * side;
     const rz = nx * side;
-    const back = o.back ?? 1.4;
-    const push = o.push ?? 0.35;
-    const h = o.height ?? 0.12;
-    const lat = 0.52;
+    const back = o.back ?? 1.85;
+    const push = o.push ?? 0.72;
+    const h = o.height ?? 0.14;
+    const lat = 0.62;
     return {
       from: [
         round(o.speaker[0] - nx * back + rx * lat),
@@ -203,19 +205,19 @@ export const cam = {
         round(o.speaker[2] - nz * back + rz * lat),
       ],
       to: [
-        round(o.speaker[0] - nx * (back - push) + rx * (lat * 0.9)),
+        round(o.speaker[0] - nx * (back - push) + rx * (lat * 0.88)),
         round(o.speaker[1] + h),
-        round(o.speaker[2] - nz * (back - push) + rz * (lat * 0.9)),
+        round(o.speaker[2] - nz * (back - push) + rz * (lat * 0.88)),
       ],
       target: o.listener,
-      fov: o.fov ?? 38,
+      fov: o.fov ?? 40,
       screenOffset: [0, 0.06],
-      ease: "inOutSine",
+      ease: o.ease ?? "outSine",
     };
   },
 
-  /** Camera and look point slide together by `by`: tracking beside a walker, sliding along a row. */
-  truck(o: Framing & { by: Vec3 }): Move {
+  /** Camera and look point slide together by `by`: linear default matches steady walking/running speed. */
+  truck(o: Framing & { by: Vec3; ease?: Shot["ease"] }): Move {
     const from = around(o.on, o.dist, o.yaw, o.pitch);
     return {
       from,
@@ -224,12 +226,12 @@ export const cam = {
       targetTo: [round(o.on[0] + o.by[0]), round(o.on[1] + o.by[1]), round(o.on[2] + o.by[2])],
       fov: o.fov ?? 40,
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: "inOutSine",
+      ease: o.ease ?? "linear",
     };
   },
 
   /** Straight down on a thing on the floor. `spin` (degrees) turns the frame as it rises or sinks. */
-  top(o: { on: Vec3; height: number; to: number; spin?: [number, number]; fov?: number }): Move {
+  top(o: { on: Vec3; height: number; to: number; spin?: [number, number]; fov?: number; ease?: Shot["ease"] }): Move {
     // A hair off vertical so the camera always knows which way is up.
     const at = (h: number): Vec3 => [o.on[0], round(o.on[1] + h), round(o.on[2] + h * 0.02)];
     return {
@@ -238,7 +240,7 @@ export const cam = {
       target: o.on,
       fov: o.fov ?? 40,
       ...(o.spin ? { roll: o.spin[0] * RAD, rollTo: o.spin[1] * RAD } : {}),
-      ease: "inOutSine",
+      ease: o.ease ?? "outSine",
     };
   },
 };

@@ -70,9 +70,17 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
   // Camera position
   const position = samplePath(shot.path, shot.from, shot.to, e, shot.arc ?? 0);
 
-  // Where it looks
+  // Target & lens first so screenOffset uses the live interpolated FOV (even during dollyZoom).
   const target = samplePath(shot.targetPath, shot.target, shot.targetTo, e, 0);
   target.y += shot.aim ?? 0;
+
+  const baseFov = shot.focalLength != null ? focalMmToFov(shot.focalLength) : (shot.fov ?? 38);
+  const endFov =
+    shot.focalLength != null
+      ? focalMmToFov(shot.focalLengthTo ?? shot.focalLength)
+      : (shot.fovTo ?? baseFov);
+  const fov = baseFov + (endFov - baseFov) * e;
+  const roll = (shot.roll ?? 0) + ((shot.rollTo ?? shot.roll ?? 0) - (shot.roll ?? 0)) * e;
 
   // Screen-space framing offset (rule-of-thirds / caption-safe headroom) in normalized units.
   // Positive Y shifts the subject UP in frame (camera aims slightly lower); positive X shifts subject RIGHT.
@@ -80,7 +88,7 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
     const fwd = target.clone().sub(position);
     const dist = fwd.length();
     if (dist > 1e-4) {
-      const fovRad = ((shot.focalLength != null ? focalMmToFov(shot.focalLength) : (shot.fov ?? 38)) * Math.PI) / 180;
+      const fovRad = (fov * Math.PI) / 180;
       const vSpan = 2 * dist * Math.tan(fovRad / 2);
       const hSpan = vSpan * (9 / 16);
       const right = new THREE.Vector3().crossVectors(fwd, new THREE.Vector3(0, 1, 0)).normalize();
@@ -126,16 +134,6 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
       target.y += wobble(local * 29 + impact.at * 9, 24) * amp;
     }
   }
-
-  // Lens: millimetres win over degrees, so a shot can say "35mm" and keep the
-  // framing legible to a human. See focalMmToFov() for the sensor assumption.
-  const baseFov = shot.focalLength != null ? focalMmToFov(shot.focalLength) : (shot.fov ?? 38);
-  const endFov =
-    shot.focalLength != null
-      ? focalMmToFov(shot.focalLengthTo ?? shot.focalLength)
-      : (shot.fovTo ?? baseFov);
-  const fov = baseFov + (endFov - baseFov) * e;
-  const roll = (shot.roll ?? 0) + ((shot.rollTo ?? shot.roll ?? 0) - (shot.roll ?? 0)) * e;
 
   useFrame(() => {
     camera.position.copy(position);

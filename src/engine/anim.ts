@@ -197,28 +197,31 @@ export function getPose(name: AnimName, t: number): Pose {
 
   switch (name) {
     case "idle": {
-      p.bodyY = Math.sin(time * 1.4) * 0.012;
-      p.head = [0.04 + Math.sin(time * 0.7) * 0.03, Math.sin(time * 0.45) * 0.12, 0];
-      p.armR = [Math.sin(time * 1.4) * 0.04, 0, 0.03];
-      p.armL = [-Math.sin(time * 1.4) * 0.04, 0, -0.03];
-      p.torso = [0, Math.sin(time * 0.45) * 0.02, 0];
+      p.bodyY = Math.sin(time * 2.1) * 0.018;
+      p.bodyRoll = Math.sin(time * 1.1) * 0.032;
+      p.head = [0.04 + Math.sin(time * 1.3) * 0.06, Math.sin(time * 0.85) * 0.2, Math.sin(time * 0.6) * 0.04];
+      p.armR = [-0.06 + Math.sin(time * 1.5) * 0.11, 0, 0.05 + Math.cos(time * 1.1) * 0.03];
+      p.armL = [-0.06 - Math.sin(time * 1.5) * 0.09, 0, -0.05 - Math.cos(time * 1.1) * 0.03];
+      p.torso = [Math.sin(time * 1.1) * 0.025, Math.sin(time * 0.85) * 0.06, 0];
       return p;
     }
 
     case "lookAround": {
-      p.bodyY = Math.sin(time * 1.2) * 0.01;
-      p.head = [Math.sin(time * 0.8) * 0.05, Math.sin(time * 0.55) * 0.55, 0];
-      p.armR = [0.02, 0, 0.03];
-      p.armL = [0.02, 0, -0.03];
+      p.bodyY = Math.sin(time * 2.0) * 0.015;
+      p.bodyRoll = Math.sin(time * 1.3) * 0.028;
+      p.torso = [0, Math.sin(time * 0.9) * 0.14, 0];
+      p.head = [Math.sin(time * 1.4) * 0.09, Math.sin(time * 0.9) * 0.62, Math.sin(time * 1.1) * 0.05];
+      p.armR = [-0.14 + Math.sin(time * 1.8) * 0.12, 0, 0.08];
+      p.armL = [-0.14 - Math.sin(time * 1.8) * 0.12, 0, -0.08];
       return p;
     }
 
     case "talk": {
-      p.bodyY = Math.sin(time * 1.5) * 0.012;
-      p.head = [Math.sin(time * 3.2) * 0.045, Math.sin(time * 0.9) * 0.14, 0];
-      p.torso = [0, Math.sin(time * 0.9) * 0.04, 0];
-      p.armR = [-0.35 + Math.sin(time * 2.4) * 0.22, 0, 0.18];
-      p.armL = [-0.12 + Math.sin(time * 1.7) * 0.1, 0, -0.1];
+      p.bodyY = Math.abs(Math.sin(time * 3.4)) * 0.022;
+      p.head = [Math.sin(time * 4.5) * 0.08, Math.sin(time * 1.8) * 0.22, Math.sin(time * 2.1) * 0.05];
+      p.torso = [Math.sin(time * 2.6) * 0.04, Math.sin(time * 1.6) * 0.11, 0];
+      p.armR = [-0.52 + Math.sin(time * 3.8) * 0.36, 0, 0.22 + Math.cos(time * 2.4) * 0.1];
+      p.armL = [-0.28 + Math.sin(time * 2.9 + 1.2) * 0.26, 0, -0.14 - Math.cos(time * 2.1) * 0.08];
       return p;
     }
 
@@ -336,11 +339,13 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "reachUp": {
-      p.armR = [-2.6 + Math.sin(time * 1.3) * 0.08, 0, 0.2];
-      p.armL = [-0.2, 0, -0.08];
-      p.bodyPitch = -0.14;
-      p.head = [-0.28, 0, 0];
-      p.bodyY = Math.sin(time * 1.3) * 0.008;
+      const str = Math.sin(time * 3.2);
+      p.armR = [-2.55 - Math.abs(str) * 0.22, 0, 0.2];
+      p.armL = [-0.28 + str * 0.12, 0, -0.1];
+      p.bodyPitch = -0.16 - Math.abs(str) * 0.05;
+      p.torso = [0, str * 0.08, 0];
+      p.head = [-0.28 + str * 0.05, str * 0.08, 0];
+      p.bodyY = Math.abs(str) * 0.025;
       return p;
     }
 
@@ -436,21 +441,23 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "reach": {
-      p.bodyPitch = -0.05;
-      p.armR = [-1.55, 0, 0.18];
-      p.armL = [-0.15, 0, -0.08];
-      p.head = [-0.12, -0.1, 0];
-      p.bodyY = Math.sin(time * 1.4) * 0.01;
+      const lunge = Math.sin(time * 2.8);
+      p.bodyPitch = -0.08 - Math.abs(lunge) * 0.07;
+      p.armR = [-1.58 - Math.abs(lunge) * 0.22, 0, 0.18];
+      p.armL = [-0.22 + lunge * 0.14, 0, -0.1];
+      p.head = [-0.12, -0.1 + lunge * 0.08, 0];
+      p.bodyY = Math.sin(time * 2.2) * 0.016;
       return p;
     }
 
     case "point": {
-      p.bodyPitch = -0.04;
-      p.armR = [-1.7, 0, 0.12];
-      p.armL = [0.05, 0, -0.05];
-      p.head = [-0.06, -0.22, 0];
-      p.torso = [0, -0.1, 0];
-      p.bodyY = Math.sin(time * 1.4) * 0.008;
+      const jab = Math.sin(time * 4.2);
+      p.bodyPitch = -0.07 - Math.max(0, jab) * 0.04;
+      p.armR = [-1.68 - Math.max(0, jab) * 0.16, 0, 0.14];
+      p.armL = [0.06 + Math.sin(time * 2.1) * 0.12, 0, -0.08];
+      p.head = [-0.05 + Math.sin(time * 3.1) * 0.05, -0.2 + Math.sin(time * 1.4) * 0.1, 0];
+      p.torso = [0, -0.1 + Math.max(0, jab) * 0.05, 0];
+      p.bodyY = Math.abs(jab) * 0.015;
       return p;
     }
 
@@ -491,11 +498,13 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "hold": {
-      // Both hands out in front at belly height: carrying something that matters.
-      p.armR = [-0.78 + Math.sin(time * 1.4) * 0.02, 0, -0.16];
-      p.armL = [-0.78 - Math.sin(time * 1.4) * 0.02, 0, 0.16];
-      p.head = [0.14 + Math.sin(time * 0.7) * 0.03, Math.sin(time * 0.45) * 0.06, 0];
-      p.bodyY = Math.sin(time * 1.4) * 0.01;
+      // Both hands out in front at belly height with natural weight shift while holding an object.
+      p.bodyRoll = Math.sin(time * 1.5) * 0.028;
+      p.torso = [0, Math.sin(time * 1.3) * 0.06, 0];
+      p.armR = [-0.78 + Math.sin(time * 2.2) * 0.07, 0, -0.16];
+      p.armL = [-0.78 - Math.sin(time * 2.2) * 0.07, 0, 0.16];
+      p.head = [0.14 + Math.sin(time * 1.1) * 0.06, Math.sin(time * 0.85) * 0.14, 0];
+      p.bodyY = Math.sin(time * 2.0) * 0.015;
       return p;
     }
 
@@ -548,11 +557,12 @@ export function getPose(name: AnimName, t: number): Pose {
       return p;
     }
     case "shrug": {
-      const lift = 0.5 + 0.5 * Math.sin(time * 3.1);
-      p.armR = [-0.55, 0, 0.5 + lift * 0.25];
-      p.armL = [-0.55, 0, -0.5 - lift * 0.25];
-      p.bodyY = lift * 0.025;
-      p.head = [0.02, Math.sin(time * 1.6) * 0.35, 0.08];
+      const lift = 0.5 + 0.5 * Math.sin(time * 3.6);
+      p.bodyRoll = Math.sin(time * 1.8) * 0.04;
+      p.armR = [-0.58 - lift * 0.14, 0, 0.48 + lift * 0.34];
+      p.armL = [-0.58 - lift * 0.14, 0, -0.48 - lift * 0.34];
+      p.bodyY = lift * 0.032;
+      p.head = [0.04 - lift * 0.08, Math.sin(time * 1.8) * 0.38, 0.1 * Math.cos(time * 1.8)];
       return p;
     }
 

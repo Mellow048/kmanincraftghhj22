@@ -28,7 +28,8 @@ export const SnowGolem: React.FC<{
   scale = 1,
 }) => {
   const s = Math.max(0.18, 1 - melt * 0.72);
-  const bob = Math.abs(Math.sin(walk * 4.5)) * 0.04;
+  const bob = Math.abs(Math.sin(walk * 4.5)) * 0.045;
+  const swing = walk !== 0 ? Math.sin(walk * 4.5) * 0.42 : 0;
   return (
     <group position={position} rotation={[0, rotationY, 0]} scale={[scale, scale * s, scale]}>
       {/* Lower snow body */}
@@ -40,10 +41,10 @@ export const SnowGolem: React.FC<{
         <Block key={i} position={[0, y + bob, 0.31]} size={[0.09, 0.09, 0.03]} color="#1d2026" castShadow={false} />
       ))}
       {/* Stick arms */}
-      <group position={[0.38, 1.15 + bob, 0]} rotation={[armThrow, 0, -0.35]}>
+      <group position={[0.38, 1.15 + bob, 0]} rotation={[armThrow + swing, 0, -0.35]}>
         <Block position={[0.18, 0, 0]} size={[0.42, 0.08, 0.08]} color="#6b4a2b" />
       </group>
-      <group position={[-0.38, 1.15 + bob, 0]} rotation={[-armThrow * 0.4, 0, 0.35]}>
+      <group position={[-0.38, 1.15 + bob, 0]} rotation={[-armThrow * 0.4 - swing, 0, 0.35]}>
         <Block position={[-0.18, 0, 0]} size={[0.42, 0.08, 0.08]} color="#6b4a2b" />
       </group>
       {/* Head: carved pumpkin OR derpy snowman face */}

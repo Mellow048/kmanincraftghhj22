@@ -31,8 +31,9 @@ feel about them. He is almost always centred, waist up, looking near the lens.
 **The face changes on the cut.** The original swaps flat face pictures: bored, glaring, happy, nervous, asleep,
 screaming. There is no lip sync and nobody misses it. A new face with a new shot reads as a new thought.
 
-**Every shot moves.** A slow push in. A pull back. A small arc around a head. A pan along a bridge. The bodies barely
-move: an arm scratching a head, a wave. The camera carries the energy, and it never stops.
+**VISUALS + MOTION IS A MUST (Rule #1).** Every shot must BOTH look crisp AND show clear, readable physical motion matched to what the narrator is saying right now:
+- **Show the verb on screen (`wordAt`):** If the narrator says "ran", "opened", "dropped", "reached", "hid", "turned", or "gave", the character or prop physically performs the wind-up, travel, and reaction *during* that shot. Never freeze actors in `"idle"` or `stage: () =>` PowerPoint mannequins while the voiceover describes action!
+- **Every camera move must carry visible momentum (`>= 0.6m` travel, `>= 20°` orbit, or active `truck` / `crane` / `whip` / `dollyZoom`):** Microscopic `0.25m`–`0.35m` camera nudges look frozen on phones and fail `--pre-render`. Pair lively body/crowd acting with bold depth-revealing camera travel.
 
 **The long shots are the held breaths.** Four shots run over four seconds, and each is a moment of waiting: staring
 into the cloud, the old man deciding what to say, lying awake, the packed bag. Each still moves: the bed shot
@@ -128,18 +129,18 @@ an adult 1.8 m.
 
 | Shot | `on` | `dist` → `to` | `fov` | Example |
 |---|---|---|---|---|
-| Kid's face | face, y 1.2 | 1.9 → 1.4 | 36 | `9.not`, `4.but` |
-| Kid, waist up, holding something | chest, y 1.0 | 2.1 → 1.6 | 38–40 | `5.hold`, `1.eggs` |
-| Kid, whole body | y 1.0 | 2.4 → 1.9 | 40 | `1.me`, `8.decide` |
-| Adult's face | face, y 1.85 | 1.8 → 1.3 | 36 | `7.stare` |
-| A thing in the hands | the thing | 1.6 → 1.2, pitch 30 | 38 | `4.broken` |
-| A thing on a table or the ground | the thing | 1.4 → 1.0 | 36–38 | `8.alive`, `15.split` |
-| Two people, in profile | between them | 4.7 → 4.2 | 40 | `7.ask` |
-| A dragon and its rider | between them | 5.0 → 4.2 | 40 | `3.friend` |
-| A golem | its chest, y 2.0 | 5.6, low | 42 | `3.golem` |
-| Straight down on a bed | the bed | height 3.6 → 2.9 | 44 | `6.bed` |
-| The street from above | the middle of it | 27 → 21, pitch 21 | 50 | `3.town` |
-| Something bigger than the town | its middle | 46 → 41, low | 56 | `17.land` |
+| Kid's face | face, y 1.2 | 2.3 → 1.45 | 38 | `9.not`, `4.but` |
+| Kid, waist up, acting/holding | chest, y 1.0 | 2.7 → 1.75 | 40 | `5.hold`, `1.eggs` |
+| Kid, whole body acting/walking | y 1.0 | 3.4 → 2.2 | 42 | `1.me`, `8.decide` |
+| Adult's face / reaction | face, y 1.85 | 2.4 → 1.55 | 38 | `7.stare` |
+| A prop/clue in the hands | the thing | 2.1 → 1.35, pitch 28 | 40 | `4.broken` |
+| A thing on a table or the ground | the thing | 2.0 → 1.25 | 38–40 | `8.alive`, `15.split` |
+| Two people in `cam.ots` / profile | between them | 5.2 → 3.9 | 40–42 | `7.ask` |
+| Orbit reveal behind/around actor | between them | yaw `-28 -> +22`, dist `4.6 -> 3.8` | 42 | `3.friend` |
+| A golem / tall mob `cam.crane` | its chest, y 2.0 | dist `5.8 -> 4.6`, pitch `-16 -> +8` | 42 | `3.golem` |
+| Straight down on a bed (`cam.top`) | the bed | height 3.8 → 2.6, spin `[0, 12]` | 44 | `6.bed` |
+| The street from above | the middle of it | 26 → 18, pitch 22 | 50 | `3.town` |
+| Something bigger than the town | its middle | 46 → 34, low | 56 | `17.land` |
 
 ## 7. Faces
 

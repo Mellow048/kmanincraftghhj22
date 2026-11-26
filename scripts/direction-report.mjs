@@ -16,16 +16,32 @@ function similar(a, b) {
   return a && a.axis.reduce((d, v, i) => d + v * b.axis[i], 0) > Math.cos(9 * rad) &&
     Math.abs(Math.log(a.span / b.span)) < Math.log(1.18) && Math.abs(a.roll - b.roll) < 6 * rad;
 }
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
 function camera(s) {
   const eyes = points(s.path, s.from, s.to), targets = points(s.targetPath, s.target, s.targetTo);
   const start = framing(eyes[0], targets[0], s.aim ?? 0, lens(s), s.roll ?? 0);
   const end = framing(eyes.at(-1), targets.at(-1), s.aim ?? 0, lens(s, true), s.rollTo ?? start.roll);
   // With a stationary eye, moving its target directly along the look ray does NOT pan.
-  const changes = eyes.some(p => gap(p, eyes[0]) > .001) ||
-    targets.some(p => gap(framing(eyes[0], p, s.aim ?? 0, lens(s), start.roll).axis, start.axis) > .001) ||
-    Math.abs(lens(s) - lens(s, true)) > .01 || Math.abs(start.roll - end.roll) > .001 ||
-    s.shake > 0 || s.handheld > 0 || s.impacts?.some(i => i.amp > 0 && i.at < s.at + s.dur && i.at + (i.dur ?? .35) > s.at);
-  return { start, end, changes };
+  const eyeDist = Math.max(0, ...eyes.map(p => gap(p, eyes[0])));
+  const targetSweep = Math.max(
+    0,
+    ...targets.map(p => {
+      const f = framing(eyes[0], p, s.aim ?? 0, lens(s), start.roll);
+      return Math.acos(clamp(f.axis.reduce((d, v, i) => d + v * start.axis[i], 0), -1, 1)) / rad;
+    }),
+  );
+  const endAng = Math.acos(clamp(start.axis.reduce((d, v, i) => d + v * end.axis[i], 0), -1, 1)) / rad;
+  const angDeg = Math.max(endAng, targetSweep);
+  const spanRatio = Math.max(start.span / Math.max(1e-6, end.span), end.span / Math.max(1e-6, start.span));
+  const rollDeg = Math.abs(start.roll - end.roll) / rad;
+  const activeImpact = s.impacts?.some(i => i.amp > 0 && i.at < s.at + s.dur && i.at + (i.dur ?? .35) > s.at);
+  const changes = eyeDist > .001 || angDeg > .06 || Math.abs(lens(s) - lens(s, true)) > .01 ||
+    Math.abs(start.roll - end.roll) > .001 || s.shake > 0 || s.handheld > 0 || activeImpact;
+  const strongFx = s.shake >= .01 || s.impacts?.some(i => i.amp >= .015 && i.at < s.at + s.dur && i.at + (i.dur ?? .35) > s.at);
+  const micro = !strongFx && eyeDist < .25 && angDeg < 3 && spanRatio < 1.07 && rollDeg < 3;
+  const meaningful = strongFx || eyeDist >= .42 || angDeg >= 6 || spanRatio >= 1.14 || rollDeg >= 5;
+  return { start, end, changes, eyeDist, angDeg, spanRatio, rollDeg, micro, meaningful };
 }
 
 // A child can run its own animation clock. Don't call it here (it may use hooks),
@@ -79,6 +95,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
   const r = { shots: 0, sampled: 0, changing: 0, errors: [], unfinished: [], review: [] };
   const { fps } = film, covered = [];
   let prior, alike = 0, quiet = 0, frame = 0;
+  const isModern = timing?.wordTiming !== undefined || film.captions?.motion === 'on-beat';
   for (const scene of film.scenes) {
     const duration = Math.max(1, Math.round(scene.duration * fps));
     for (const [i, s] of scene.shots.entries()) {
@@ -93,7 +110,17 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
       if (![view.start, view.end].every(v => Number.isFinite(v.span) && v.span > 0)) r.errors.push(`${where}: lens has no valid view of its subject.`);
       if (last < first) r.errors.push(`${where}: this shot has no screen frames.`);
       if (scene.sampleStage && !view.changes && !s.locked) {
-        (timing?.wordTiming !== undefined || film.captions?.motion === 'on-beat' ? r.unfinished : r.review).push(`${where}: camera resolves to a hold. Change the endpoints, or for a deliberate photograph/POV set locked: true and explain it in the note.`);
+        (isModern ? r.unfinished : r.review).push(`${where}: camera resolves to a hold. Change the endpoints, or for a deliberate photograph/POV set locked: true and explain it in the note.`);
+      } else if (scene.sampleStage && view.changes && !s.locked) {
+        if (view.micro) {
+          (isModern ? r.unfinished : r.review).push(
+            `${where}: camera barely moves (${view.eyeDist.toFixed(2)}m, ${view.angDeg.toFixed(1)}deg). That reads like a PowerPoint slide. Push >=0.5m, orbit >=15deg, truck with the actor, or set locked: true.`,
+          );
+        } else if (!view.meaningful) {
+          r.review.push(
+            `${where}: small camera travel (${view.eyeDist.toFixed(2)}m, ${view.angDeg.toFixed(1)}deg). Give the move more travel so the frame carries real motion energy.`,
+          );
+        }
       }
       if (s.locked && view.changes) r.errors.push(`${where}: shot says locked but the camera moves.`);
       alike = similar(prior, view.start) ? alike + 1 : 1;
@@ -103,7 +130,14 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
       r.sampled++;
       const poses = new Set([0, .15, .5, .85, 1].map(p => stagePrint(scene.sampleStage(i, (first + Math.round(p * (last - first))) / fps - s.at))));
       if (poses.size > 1) { r.changing++; quiet = 0; }
-      else if (++quiet === 3 || r.shots === 1) r.review.push(`${where}: ${r.shots === 1 ? 'the opening sends' : 'three stages in a row send'} unchanged props (apart from clocks) at five samples. Check the child rig on screen; a moving lens alone is not acting.`);
+      else if (!s.locked) {
+        quiet++;
+        if (isModern && quiet >= 2) {
+          r.unfinished.push(`${where}: ${quiet} shots in a row send frozen unchanged props across 5 samples. Show physical acting, movement, faces, or changing props on the narrator's words (VISUALS + MOTION IS A MUST).`);
+        } else {
+          r.review.push(`${where}: ${r.shots === 1 ? 'the opening sends' : 'shot sends'} unchanged props (apart from clocks) at five samples. Check the child rig on screen; a moving lens alone is not acting.`);
+        }
+      }
     }
     frame += duration;
   }

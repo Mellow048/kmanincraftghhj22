@@ -59,7 +59,7 @@ export const World: React.FC = () => (
       <Stall position={[5.2, 0, -2.2]} />
       <Fence from={[-8.0, 0, -3.5]} to={[-4.8, 0, -3.5]} />
       <Fence from={[4.2, 0, -4.2]} to={[7.2, 0, -4.2]} />
-      <LampPost position={[-2.8, 0, 1.4]} seed={2} />
+      <LampPost position={[-4.4, 0, -1.6]} seed={2} />
       <LampPost position={[3.2, 0, -0.8]} seed={4} />
 
       {/* Blacksmith cobble smithy & glowing furnace on east edge */}

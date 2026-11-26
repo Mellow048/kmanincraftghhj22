@@ -1,0 +1,96 @@
+name: Render preview clip (10-15s proof)
+
+# Renders a >=10s frame range MP4 via GitHub Actions (never locally) to verify motion, acting, camera choreography, and visuals
+# even while narration is still --estimate (before Arena TTS recording). Enforces zero errors and zero static slideshow holds!
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: "Remotion composition id"
+        required: true
+      frames:
+        description: "Frame range to render (e.g. 0-359 = 12s at 30fps)"
+        required: false
+        default: "0-359"
+      scale:
+        description: "Scale factor (1 = 1080x1920, 0.75 = 810x1440)"
+        required: false
+        type: choice
+        default: "1"
+        options: ["1", "0.75", "0.5"]
+      concurrency:
+        description: "Remotion concurrency"
+        required: false
+        default: "4"
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Verify contract and motion gate
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+        run: |
+          npm run typecheck
+          npm run check
+          npm run test:direction
+          npm run rehearse -- "$COMPOSITION" --draft | tee rehearse.log
+          if grep -Eq "ERROR:|barely moves|resolves to a hold|shots in a row send frozen unchanged props" rehearse.log; then
+            echo "::error::Film failed motion or direction gate!"
+            exit 1
+          fi
+
+      - name: Render clip
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          FRAMES: ${{ inputs.frames }}
+          SCALE: ${{ inputs.scale }}
+          CONCURRENCY: ${{ inputs.concurrency }}
+        run: |
+          mkdir -p out
+          npx remotion render src/index.ts "$COMPOSITION" "out/${COMPOSITION}-preview.mp4" \
+            --frames="$FRAMES" --scale="$SCALE" \
+            --codec=h264 --crf=18 --concurrency="$CONCURRENCY" --gl=swangle --timeout=240000 \
+            2>&1 | tail -40
+          ls -la "out/${COMPOSITION}-preview.mp4"
+          npx remotion ffprobe -v error -show_entries format=duration,size -show_entries stream=width,height,nb_read_packets -of default=noprint_wrappers=1 "out/${COMPOSITION}-preview.mp4"
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "preview-${{ inputs.composition }}"
+          path: "out/${{ inputs.composition }}-preview.mp4"
+          retention-days: 14
+          compression-level: 0
+
+      - name: Publish preview release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "preview-${{ inputs.composition }}-${{ github.run_number }}"
+          target_commitish: ${{ github.sha }}
+          name: "${{ inputs.composition }} — preview clip ${{ github.run_number }}"
+          body: |
+            >=10s motion & camera preview clip rendered on GitHub Actions.
+            - Composition: `${{ inputs.composition }}`
+            - Frames: `${{ inputs.frames }}`
+            - Scale: `${{ inputs.scale }}`
+            - Commit: `${{ github.sha }}`
+          files: "out/${{ inputs.composition }}-preview.mp4"
+          token: ${{ secrets.GITHUB_TOKEN }}

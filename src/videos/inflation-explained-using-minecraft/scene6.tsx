@@ -1,5 +1,6 @@
 import {
   Bar,
+  Bill,
   BillStack,
   Bread,
   CitizenLead,
@@ -9,7 +10,6 @@ import {
   FloatingNumber,
   PLACE,
   PriceTag,
-  Printer,
   cam,
   ease,
   on,
@@ -18,7 +18,7 @@ import {
   storyScene,
   timing,
 } from "./kit";
-import { CLIMAX_HOOK_OPT } from "./scene1";
+import { CLIMAX_HOOK_OPT, renderClimaxLoop } from "./scene1";
 
 export const scene6 = storyScene(timing, {
   id: "scene6",
@@ -28,26 +28,26 @@ export const scene6 = storyScene(timing, {
       cue: "7.history",
       ...cam.push({
         on: on(PLACE.history, 0, 1.85, -1.0),
-        dist: 5.5,
-        to: 4.5,
-        yaw: -8,
-        pitch: 6,
+        dist: 5.8,
+        to: 4.0,
+        yaw: -14,
+        pitch: 7,
         fov: 42,
         screenOffset: [0, 0.1],
       }),
       zone: "history",
-      note: "History Plaza beneath massive 1971 StoneBillboard with depth-stacked top-hat citizens inside 9:16.",
+      note: "Top-hat citizens march boldly forward through 1971 Plaza as stone gates loom behind.",
       stage: (t) => (
         <ExplainerCrowd
           positions={[
-            on(PLACE.history, -0.68, 0, 0.15),
-            on(PLACE.history, -0.2, 0, 0.7),
-            on(PLACE.history, 0.28, 0, 0.6),
-            on(PLACE.history, 0.72, 0, 0.2),
+            on(PLACE.history, -0.72, 0, -0.35 + t * 0.9),
+            on(PLACE.history, -0.22, 0, 0.25 + t * 0.9),
+            on(PLACE.history, 0.28, 0, 0.15 + t * 0.9),
+            on(PLACE.history, 0.72, 0, -0.25 + t * 0.9),
           ]}
           style="historical"
           animation="walk"
-          phaseStep={0.3 + t * 0.001}
+          phaseStep={0.3 + t * 1.4}
           seed={9}
         />
       ),
@@ -56,43 +56,51 @@ export const scene6 = storyScene(timing, {
       cue: "7.bills",
       ...cam.orbit({
         on: on(PLACE.history, 0, 0.9, 0.2),
-        dist: 3.6,
-        yaw: -14,
-        yawTo: 14,
+        dist: 4.1,
+        distTo: 2.85,
+        yaw: -26,
+        yawTo: 24,
         pitch: 14,
         fov: 40,
         screenOffset: [0, 0.12],
       }),
       zone: "history",
-      note: "Stacks of paper bills pile up on stone plaza stairs in front of 1971 monument.",
-      stage: (t) => (
-        <>
-          <BillStack position={on(PLACE.history, -0.35, 0, 0.35)} count={12} />
-          <BillStack position={on(PLACE.history, 0.35, 0, 0.2)} count={14} />
-          <FloatingNumber text="PRINT CASH" color="#3fd46a" position={on(PLACE.history, 0, 1.6 + t * 0.06, 0.25)} height={0.28 * pop(t, 0.15)} />
-        </>
-      ),
+      note: "Bill stacks grow block by block in the plaza while swirling green notes rain down around PRINT CASH.",
+      stage: (t) => {
+        const pour = ease(ramp(t, 0, 1.3));
+        const drop = (t * 2.2) % 1;
+        return (
+          <>
+            <BillStack position={on(PLACE.history, -0.35, 0, 0.35)} count={4 + Math.round(pour * 10)} />
+            <BillStack position={on(PLACE.history, 0.35, 0, 0.2)} count={5 + Math.round(pour * 11)} />
+            <Bill position={on(PLACE.history, -0.2, 2.0 - drop * 1.2, 0.35)} rotation={[0.4, drop * 3, 0.2]} />
+            <Bill position={on(PLACE.history, 0.25, 2.1 - ((drop + 0.5) % 1) * 1.2, 0.2)} rotation={[-0.3, drop * 2, -0.2]} />
+            <FloatingNumber text="PRINT CASH" color="#3fd46a" position={on(PLACE.history, 0, 1.6 + pour * 0.25, 0.25)} height={0.3 * pop(t, 0.15)} />
+          </>
+        );
+      },
     },
     {
       cue: "7.prices",
       ...cam.crane({
-        on: on(PLACE.history, 0, 1.55, 0.2),
-        dist: 5.0,
-        fromPitch: 12,
-        toPitch: 2,
-        yaw: 12,
+        on: on(PLACE.history, 0, 1.45, 0.2),
+        dist: 5.2,
+        toDist: 3.7,
+        fromPitch: 16,
+        toPitch: -2,
+        yaw: 14,
         fov: 42,
         screenOffset: [0, 0.1],
       }),
       zone: "history",
-      note: "Three bold price pillars FOOD, RENT, FUEL spaced compactly inside 9:16 rising together.",
+      note: "Crane rises with surging FOOD, RENT, and FUEL price pillars shooting into sky.",
       stage: (t) => {
-        const k = 0.4 + 0.6 * ease(ramp(t, 0.05, 1.2));
+        const k = 0.25 + 0.75 * ease(ramp(t, 0.05, 1.25));
         return (
           <>
-            <Bar position={on(PLACE.history, -0.68, 0, 0.2)} height={2.0 * k} color="#d84238" label="FOOD" />
-            <Bar position={on(PLACE.history, 0, 0, 0.2)} height={2.5 * k} color="#e6842a" label="RENT" />
-            <Bar position={on(PLACE.history, 0.68, 0, 0.2)} height={2.2 * k} color="#d8b22a" label="FUEL" />
+            <Bar position={on(PLACE.history, -0.68, 0, 0.2)} height={2.1 * k} color="#d84238" label="FOOD" />
+            <Bar position={on(PLACE.history, 0, 0, 0.2)} height={2.6 * k} color="#e6842a" label="RENT" />
+            <Bar position={on(PLACE.history, 0.68, 0, 0.2)} height={2.3 * k} color="#d8b22a" label="FUEL" />
           </>
         );
       },
@@ -100,81 +108,112 @@ export const scene6 = storyScene(timing, {
     {
       cue: "8.first",
       ...cam.ots({
-        speaker: on(PLACE.hall, 0.2, 1.2, 0.2),
-        listener: on(PLACE.hall, -0.5, 1.2, -1.0),
+        speaker: on(PLACE.hall, 0.2, 1.2, 0.35),
+        listener: on(PLACE.hall, -0.55, 1.2, -1.0),
       }),
       screenOffset: [0, 0.12],
       zone: "hall",
-      note: "OTS Cantillon effect: Sterling walks off rich with fresh bread and gold emerald CoinPile.",
-      stage: (t) => (
-        <>
-          <EliteLead variant="pres" position={on(PLACE.hall, 0.2, 0, 0.2)} rotationY={-0.75} animation="idle" face="smug" time={t}>
-            <Bread position={[0, -0.05, 0.2]} scale={0.8} />
-          </EliteLead>
-          <CoinPile position={on(PLACE.hall, -0.65, 0, -0.75)} count={20} kind="emerald" spread={0.65} />
-          <CitizenLead position={on(PLACE.hall, -0.55, 0, -1.0)} rotationY={0.75} animation="idle" face="frown" time={t} />
-        </>
-      ),
+      note: "OTS shot: smug Sterling struts past clutching loaf and wealth while Miles lunges empty-handed.",
+      stage: (t) => {
+        const strut = ease(ramp(t, 0, 1.3));
+        return (
+          <>
+            <EliteLead
+              variant="pres"
+              position={on(PLACE.hall, 0.35 - strut * 0.25, 0, 0.05 + strut * 0.65)}
+              rotationY={-0.65}
+              animation="walk"
+              animDistance={strut * 0.85}
+              face="smug"
+            >
+              <Bread position={[0, -0.05, 0.2]} scale={0.85} />
+            </EliteLead>
+            <CoinPile position={on(PLACE.hall, -0.65, 0, -0.75)} count={20} kind="emerald" spread={0.65} />
+            <CitizenLead position={on(PLACE.hall, -0.55, 0, -1.1 + strut * 0.25)} rotationY={0.6} animation="reach" animDistance={strut * 0.35} face="frown" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "8.cheap",
       ...cam.push({
         on: on(PLACE.bakery, 0, 1.25, -0.35),
-        dist: 3.4,
-        to: 2.85,
-        yaw: 12,
+        dist: 3.9,
+        to: 2.55,
+        yaw: 16,
         pitch: 7,
         fov: 38,
         screenOffset: [0, 0.06],
       }),
       zone: "bakery",
-      note: "Sterling buys warm loaf first while PriceTag sits cleanly above Bread at 1.",
-      stage: (t) => (
-        <>
-          <Bread position={on(PLACE.bakery, -0.2, 0.96, -0.55)} scale={1.25} />
-          <PriceTag text="1" position={on(PLACE.bakery, -0.2, 2.25, -0.55)} scale={1.1} />
-          <EliteLead variant="pres" position={on(PLACE.bakery, 0.45, 0, -0.15)} rotationY={-0.75} animation="reach" face="smug" time={t} />
-        </>
-      ),
+      note: "Sterling walks briskly up, snatches low-price PriceTag 1 loaf cleanly off stone plinth.",
+      stage: (t) => {
+        const grab = ease(ramp(t, 0, 1.2));
+        return (
+          <>
+            <Bread position={on(PLACE.bakery, -0.2 + grab * 0.25, 0.96 + Math.max(0, grab - 0.5) * 0.35, -0.55 + grab * 0.15)} scale={1.25} />
+            <PriceTag text="1" position={on(PLACE.bakery, -0.2, 2.25, -0.55)} scale={1.1} swing={Math.sin(t * 5) * 0.08} />
+            <EliteLead
+              variant="pres"
+              position={on(PLACE.bakery, 0.65 - grab * 0.3, 0, 0.15 - grab * 0.35)}
+              rotationY={-0.75}
+              animation={grab < 0.55 ? "walk" : "reach"}
+              animDistance={grab * 0.45}
+              face="smug"
+              time={t}
+            />
+          </>
+        );
+      },
     },
     {
       cue: "8.burn",
       ...cam.push({
         on: on(PLACE.bakery, 0, 1.25, -0.2),
-        dist: 3.6,
-        to: 3.0,
-        yaw: -12,
+        dist: 3.9,
+        to: 2.65,
+        yaw: -14,
         pitch: 8,
         fov: 40,
         screenOffset: [0, 0.06],
       }),
       zone: "bakery",
-      note: "Miles arrives late holding his cash stack as price rises to 50.",
-      stage: (t) => (
-        <>
-          <PriceTag text="50" position={on(PLACE.bakery, 0.3, 2.25, -0.55)} scale={1.15} swing={Math.sin(t * 7) * 0.12} />
-          <CitizenLead position={on(PLACE.bakery, -0.4, 0, 0.15)} rotationY={0.45} animation="shrug" face="worried" time={t}>
-            <BillStack position={[0, -0.05, 0.2]} count={5} />
-          </CitizenLead>
-          <FloatingNumber text="-50%" color="#ff4f42" position={on(PLACE.bakery, -0.35, 2.2, 0.1)} height={0.28 * pop(t, 0.2)} />
-        </>
-      ),
+      note: "Miles runs up too late as PriceTag jumps to 50 and bills shrink visibly beneath red -50%.",
+      stage: (t) => {
+        const arrive = ease(ramp(t, 0, 1.2));
+        return (
+          <>
+            <PriceTag text={arrive > 0.35 ? "50" : "10"} position={on(PLACE.bakery, 0.3, 2.25, -0.55)} scale={1.15} swing={Math.sin(t * 8) * 0.14} />
+            <CitizenLead
+              position={on(PLACE.bakery, -0.75 + arrive * 0.35, 0, 0.5 - arrive * 0.35)}
+              rotationY={0.45}
+              animation={arrive < 0.5 ? "run" : "shrug"}
+              animDistance={arrive * 0.6}
+              face="worried"
+              time={t}
+            >
+              <BillStack position={[0, -0.05, 0.2]} count={Math.max(2, Math.round(8 - arrive * 5))} />
+            </CitizenLead>
+            <FloatingNumber text="-50%" color="#ff4f42" position={on(PLACE.bakery, -0.35, 2.15 + arrive * 0.18, 0.1)} height={0.28 * pop(t, 0.2)} />
+          </>
+        );
+      },
     },
     {
       cue: "8.final",
-      ...cam.push({
-        on: on(PLACE.bakery, 0, 1.3, 0.45),
-        dist: 3.1,
-        to: 2.55,
-        yaw: -12,
+      ...cam.truck({
+        on: on(PLACE.bakery, 0, 1.3, 0.15),
+        by: [0, 0, 1.1],
+        dist: 3.3,
+        yaw: -14,
         pitch: 7,
         fov: 40,
         screenOffset: [0, 0.08],
       }),
       zone: "bakery",
-      note: "Exhausted Miles trudges forward holding that exact same single loaf.",
+      note: "Tracking shot ahead of exhausted Miles trudging toward camera gripping that exact single loaf.",
       stage: (t) => (
-        <CitizenLead position={on(PLACE.bakery, 0, 0, 0.45)} rotationY={0.15} animation="stagger" face="ouch" time={t}>
+        <CitizenLead position={on(PLACE.bakery, 0, 0, -0.05 + t * 0.95)} rotationY={0.12} animation="stagger" animDistance={t * 1.1} face="ouch">
           <Bread position={[0, -0.05, 0.2]} scale={0.75} />
         </CitizenLead>
       ),
@@ -184,37 +223,7 @@ export const scene6 = storyScene(timing, {
       ...cam.push(CLIMAX_HOOK_OPT),
       zone: "bakery",
       note: "Exact match to Frame 0 climax shot for seamless mid-clause replay loop ('...and that's').",
-      stage: (t) => {
-        const surge = ease(ramp(t, 0.12, 0.92));
-        return (
-          <>
-            <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.25} />
-            <PriceTag
-              text={surge > 0.45 ? "100" : "1"}
-              position={on(PLACE.bakery, 0, 2.28, -0.5)}
-              scale={1.1 + surge * 0.15}
-              swing={Math.sin(t * 6) * 0.12}
-            />
-            <Printer position={on(PLACE.bakery, -0.42, 0, -1.45)} rotationY={0.22} running out={t * 6} sign="E" />
-            <CitizenLead
-              position={on(PLACE.bakery, -0.55, 0, 0.5)}
-              rotationY={0.4}
-              animation="scared"
-              face="wow"
-              lookAt={on(PLACE.bakery, 0, 1.5, -0.5)}
-              time={t}
-            />
-            <EliteLead
-              variant="pres"
-              position={on(PLACE.bakery, 0.55, 0, -0.75)}
-              rotationY={-0.35}
-              animation="cheer"
-              face="smug"
-              time={t}
-            />
-          </>
-        );
-      },
+      stage: (t) => renderClimaxLoop(t),
     },
   ],
 });

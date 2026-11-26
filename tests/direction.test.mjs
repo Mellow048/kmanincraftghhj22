@@ -92,6 +92,21 @@ test('an impressive recipe name or a time prop is not a camera move or proof of 
   }
   const modern = { fps: 30, captions: { motion: 'on-beat' }, scenes: [{ duration: 1, shots: [shot], sampleStage: onlyClock }] };
   assert.match(directionReport(modern).unfinished.join(), /camera resolves to a hold/);
+  const microSlide = { fps: 30, captions: { motion: 'on-beat' }, scenes: [{ duration: 1, shots: [{ ...shot, to: [0, 1, 2.85] }], sampleStage: (i, t) => createElement(Rig, { position: [t, 0, 0] }) }] };
+  assert.match(directionReport(microSlide).unfinished.join(), /barely moves/);
+  const twoFrozen = {
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    scenes: [{
+      duration: 2,
+      shots: [
+        { ...shot, dur: 1, to: [1, 1, 3] },
+        { ...shot, at: 1, dur: 1, to: [0, 1, 2.1] },
+      ],
+      sampleStage: onlyClock,
+    }],
+  };
+  assert.match(directionReport(twoFrozen).unfinished.join(), /frozen unchanged props/);
   assert.deepEqual(inspect({ locked: true }, onlyClock).review.filter(s => s.includes('resolves to a hold')), []);
   assert.match(inspect({ locked: true, to: [2, 1, 3] }, onlyClock).errors.join(), /says locked/);
   assert.match(inspect({ from: shot.target }, onlyClock).errors.join(), /no valid view/);

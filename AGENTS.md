@@ -2,7 +2,12 @@
 
 > ## ⛔ MANDATORY ARENA AGENT STARTUP GATE (READ EVERY WORD BEFORE STARTING)
 >
-> **Do NOT pitch an idea, pick a voice, write a script line, or write a shot until you read these four required files:**
+> **VISUALS + MOTION IS THE #1 NON-NEGOTIABLE RULE (ZERO SLIDESHOWS):**
+> Never make viewers guess what the narrator is describing while characters stand still like PowerPoint slides!
+> - **Every shot MUST physically show the spoken verb on screen (`wordAt`):** Characters must walk/run (`route(p)`, `animDistance`), reach, hand over, recoil, jump, craft, or react during the shot. Consecutive `stage: () =>` or static `idle` mannequins **FAIL** `rehearse --pre-render`.
+> - **Every non-locked camera MUST carry real travel (`>= 0.6m` push/crane/ots, `>= 20°` orbit/whip, or active `cam.truck`):** Tiny `0.25m`–`0.35m` camera nudges **FAIL** `rehearse --pre-render`.
+>
+> **Do NOT pitch an idea, pick a voice, write a script line, or write a shot until you read these five required items:**
 >
 > 1. **[`20k-hits/README.md`](20k-hits/README.md) — MUST STUDY ALL THREE 20K+ HIT VIDEOS + SOURCE CODE:**  
 >    Read the source code, shot logs, contact sheets, and `ANALYSIS.md` for all three 20k+ hit winners (`01-monster-village-part-1`, `02-creeper-parents`, `03-enderman-parents`) AND [`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md) so we repeat the 20k+ hit formula automatically without the owner repeating himself.
