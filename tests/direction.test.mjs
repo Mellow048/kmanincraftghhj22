@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
 import { Euler, PerspectiveCamera, Vector3 } from 'three';
 import { createElement } from 'react';
@@ -13,7 +13,17 @@ import { loadFilm } from '../scripts/rehearse.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const bundle = await build({ stdin: { contents: ['caption-beat', 'blocking', 'footing', 'anim', 'story', 'Camera', 'math'].map(s => `export * from './src/engine/${s}';`).join('\n'), resolveDir: root }, bundle: true, format: 'esm', write: false, packages: 'external' });
-const { beatFrames, captionBeat, captionPixel, blockedRoute, groundedHip, gaitPose, PX, walkSegment, shotEase, easings } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].contents).toString('base64'));
+const cacheDir = path.join(root, 'node_modules/.cache');
+fs.mkdirSync(cacheDir, { recursive: true });
+const bundleFile = path.join(cacheDir, `direction-test-${process.pid}.mjs`);
+fs.writeFileSync(bundleFile, bundle.outputFiles[0].contents);
+let mod;
+try {
+  mod = await import(pathToFileURL(bundleFile).href);
+} finally {
+  fs.rmSync(bundleFile, { force: true });
+}
+const { beatFrames, captionBeat, captionPixel, blockedRoute, groundedHip, gaitPose, PX, walkSegment, shotEase, easings } = mod;
 const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-8, `${a} != ${b}`);
 
 test('caption attack on the nearest output frame, release into silence, random-access sampling', () => {
@@ -153,7 +163,7 @@ test('every narrated starter scaffolds with its own identity; drafts rehearse bu
     fs.symlinkSync(path.join(root, 'src/engine'), path.join(tmp, 'src/engine'), 'dir');
     fs.symlinkSync(path.join(root, 'node_modules'), path.join(tmp, 'node_modules'), 'dir');
     for (const name of ['new-video.mjs', 'narration.py']) fs.copyFileSync(path.join(root, 'scripts', name), path.join(tmp, 'scripts', name));
-    for (const dir of ['InThisTown', 'Stories', 'Deadpan', 'Explainer', 'WhatIf', 'Recreation', 'ServerLore']) {
+    for (const dir of ['InThisTown', 'Stories', 'Deadpan', 'Explainer', 'WhatIf', 'Recreation', 'ServerLore', 'Shared']) {
       const dest = path.join(tmp, 'Topics', dir); fs.mkdirSync(dest);
       for (const f of fs.readdirSync(path.join(root, 'Topics', dir)).filter(f => f === 'template' || f === 'topic.json' || /\.tsx?$/.test(f))) {
         fs.symlinkSync(path.join(root, 'Topics', dir, f), path.join(dest, f), f === 'template' ? 'dir' : 'file');
