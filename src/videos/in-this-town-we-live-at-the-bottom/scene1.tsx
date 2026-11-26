@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, walkSegment } from "../../engine";
 import { Boat, EAST, Hero, NORTH, RichKid, Rod, Villager, WEST, ease, ramp, timing } from "./kit";
 
 export const scene1 = storyScene(timing, {
@@ -12,24 +12,22 @@ export const scene1 = storyScene(timing, {
       look: "overworld-day",
       note: "Bright foreground hook: Hero steps briskly along wet plank jetty hauling a flexing fishing rod over shimmering water beside oak Boat while sunlit Quartz & Gold Mansion crowns the towering mountain behind.",
       stage: (t) => {
-        const pull = ease(ramp(t, 0, 1.6));
+        const pull = ease(ramp(t, 0, 1.45));
         const tug = Math.sin(t * 4.5);
+        const heroWalk = walkSegment([-0.25, 0.5, 10.8], [-0.25, 0.5, 9.5], t, 0, 1.45, { yaw: EAST - 0.3 });
         return (
           <>
             <Hero
-              position={[-0.25, 0.5, 10.6 - pull * 1.15]}
-              rotationY={EAST - 0.3}
-              animation={pull < 0.55 ? "walk" : "push"}
-              animDistance={pull * 1.3}
+              {...heroWalk}
               headPitch={0.12 - tug * 0.14}
               face="smile"
               time={t * 1.2}
             />
-            <Rod position={[0.05, 1.02, 10.6 - pull * 1.15]} rotationY={EAST - 0.3} bend={0.32 + tug * 0.22} />
-            <Villager position={[-1.0, 0.5, 8.1 + Math.sin(t * 2.5) * 0.25]} rotationY={WEST + 0.3} walk={t * 1.1} strain={0.35 + 0.25 * Math.sin(t * 4)} />
-            <Rod position={[-1.2, 0.98, 8.1 + Math.sin(t * 2.5) * 0.25]} rotationY={WEST + 0.3} bend={0.3 + Math.sin(t * 4) * 0.15} />
-            <Villager position={[0.9, 0.5, 7.6 - t * 0.35]} rotationY={EAST} walk={t * 1.2} strain={0.4} />
-            <Rod position={[1.15, 0.98, 7.6 - t * 0.35]} rotationY={EAST} bend={0.35 + Math.cos(t * 3.5) * 0.15} />
+            <Rod position={[0.05, 1.02, heroWalk.position[2]]} rotationY={EAST - 0.3} bend={0.32 + tug * 0.22} />
+            <Villager position={[-1.0, 0.5, 8.1]} rotationY={WEST + 0.3} walk={0} strain={0.35 + 0.25 * Math.sin(t * 4)} />
+            <Rod position={[-1.2, 0.98, 8.1]} rotationY={WEST + 0.3} bend={0.3 + Math.sin(t * 4) * 0.15} />
+            <Villager position={[0.9, 0.5, 7.6 - pull * 1.05]} rotationY={EAST} walk={pull * 1.05} strain={0.4} />
+            <Rod position={[1.15, 0.98, 7.6 - pull * 1.05]} rotationY={EAST} bend={0.35 + Math.cos(t * 3.5) * 0.15} />
             <Boat position={[2.75, Math.sin(t * 2.8) * 0.05, 10.8]} rotationY={0.22 + Math.sin(t * 2.2) * 0.05} bail={0.35 + 0.3 * Math.sin(t * 5)} />
           </>
         );
@@ -37,17 +35,18 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.above",
-      ...cam.orbit({ on: [6.4, 7.4, -31.8], dist: 8.8, distTo: 6.1, yaw: -28, yawTo: 24, pitch: -4, fov: 44 }),
+      ...cam.orbit({ on: [6.4, 8.8, -32.7], dist: 10.8, distTo: 9.8, yaw: -13, yawTo: 13, pitch: -6, pitchTo: -3, fov: 52 }),
       zone: "bottom",
       look: "overworld-golden",
-      note: "Grand Quartz & Gold Cliffside Mansion gleams in sunlight behind marble balustrade terrace as smug RichKids strut boldly and wave down toward the shadowed town.",
+      note: "Wealth proof: low upward orbit (26 deg, 1.0m push) across the sunlit Quartz & Gold palace — a projecting gold-trimmed entrance bay, two floors of lit arched windows, cornices and a knee-high gold balustrade — as a RichKid struts across the carpet beside his cheering friend and robed servant.",
       stage: (t) => {
         const stroll = ease(ramp(t, 0, 1.35));
+        const kidWalk = walkSegment([5.0, 5.85, -28.8], [6.05, 5.85, -28.8], t, 0, 1.35, { yaw: 0.4 });
         return (
           <>
-            <RichKid position={[4.5 + stroll * 1.5, 5.85, -30.2]} rotationY={0.35} animation="walk" animDistance={stroll * 1.5} face="grin" time={t * 1.2} />
-            <RichKid position={[8.2 - stroll * 1.1, 5.85, -30.1]} rotationY={-0.35} animation="cheer" face="laugh" time={t * 1.4} />
-            <Villager position={[6.4, 5.85, -31.2 + stroll * 0.85]} rotationY={0.12} walk={stroll * 1.1} robe="#f4f2ea" hat="wide" />
+            <RichKid {...kidWalk} face="grin" time={t * 1.2} />
+            <RichKid position={[7.25, 5.85, -28.85]} rotationY={-0.35} animation="cheer" face="laugh" time={t * 1.4} />
+            <Villager position={[6.55, 5.85, -30.5 + stroll * 1.0]} rotationY={0.1} walk={stroll * 1.0} robe="#f4f2ea" hat="wide" />
           </>
         );
       },
@@ -70,7 +69,7 @@ export const scene1 = storyScene(timing, {
               animDistance={step * 1.6}
               headPitch={-0.48}
               face={t > 0.9 ? "brave" : "smile"}
-              lookAt={[6.4, 10, -32]}
+              lookAt={[6.4, 11.4, -33]}
               time={t}
             />
             <Rod position={[0.35, 0.95 - step * 0.25, z - 0.1]} rotationY={EAST - 0.2} bend={0.55 - step * 0.3} />
