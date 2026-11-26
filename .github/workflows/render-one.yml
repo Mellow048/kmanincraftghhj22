@@ -48,6 +48,7 @@ jobs:
           CONCURRENCY: ${{ inputs.concurrency }}
           FRAMES: ${{ inputs.frames }}
         run: |
+          set -o pipefail
           mkdir -p out
           FRAME_FLAG=""
           if [ -n "$FRAMES" ]; then FRAME_FLAG="--frames=$FRAMES"; fi
