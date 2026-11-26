@@ -122,7 +122,7 @@ export const scene7 = storyScene(timing, {
             <WoodenShield position={[-0.18, 0.05, 0.36]} scale={0.84} glowing />
           </Dad>
           <Son position={on(PLACE.server, 1.05, 0, 1.4)} rotationY={-0.25} animation="wave" face="grin" time={t} />
-          <SubscribeSign position={on(PLACE.server, 0, 0, 1.35)} />
+          <SubscribeSign position={on(PLACE.server, 0, 0.78, 1.35)} />
           <FloatingHeart position={on(PLACE.server, 0, 2.2, 1.3)} count={8} spread={2.6} t={t} seed={79} />
         </>
       ),
