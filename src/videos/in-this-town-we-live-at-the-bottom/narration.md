@@ -34,7 +34,7 @@ The words are the clock: `python3 scripts/narration.py build in-this-town-we-liv
 
 # clip 05-adults wait 0.3
 [5.mum]         My mum said no. The jar is not for one person.
-[5.old]         The oldest man on the ladder said worse.
+[5.old]         The oldest fisherman on the jetty said worse.
 [5.two]         "Two families paid for the top. They still wave at us. Six years."
 [5.more]        That only made me want it more.
 
@@ -75,7 +75,7 @@ The words are the clock: `python3 scripts/narration.py build in-this-town-we-liv
 [11.eleven]     Eleven years. Every family here.
 
 # clip 12-friend wait 0.35
-[12.walk]       My best friend walked me to the ladder.
+[12.walk]       My best friend walked me to the mountain gate.
 [12.q]          "What if you climb it and there is nothing up there?"
 [12.a]          "Then I will know what we were saving for."
 

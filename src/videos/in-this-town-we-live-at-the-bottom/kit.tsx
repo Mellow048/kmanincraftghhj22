@@ -46,8 +46,8 @@ export const PLACE = {
   stall: [-4.2, 0, -5.4] as Vec3,
   /** The teller's door. */
   door: [6.6, 0, -8.4] as Vec3,
-  /** The foot of the mountain's ladder: the first step. */
-  firstStep: [1.2, 0, -11] as Vec3,
+  /** The foot of the mountain gate: the first step. */
+  firstStep: [0, 0, -11] as Vec3,
   /** Where the ladder meets the wall, high up. */
   highStep: [1.2, 24, -30] as Vec3,
   /** The room: its own zone. */
@@ -304,6 +304,32 @@ export const Line: React.FC<{ position: Vec3; length?: number; bob?: number }> =
     <Vox kind="wool" tint="#f7f5f0" position={[0, -length / 2, 0]} size={[0.024, length, 0.024]} castShadow={false} />
     <Vox kind="wool" tint="#e23a3a" position={[0, -length + bob, 0]} size={[0.12, 0.11, 0.12]} castShadow={false} />
     <Vox kind="wool" tint="#ffffff" position={[0, -length + 0.08 + bob, 0]} size={[0.12, 0.05, 0.12]} castShadow={false} />
+  </group>
+);
+
+/** The mountain gate guard: dark iron armor, stern face, blocks entry until the lifetime fee is paid. */
+export const Guard: React.FC<A> = (p) => (
+  <MinecraftAvatar
+    scale={ADULT * 1.05}
+    outfit="suit"
+    skin="#d6a57c"
+    hair="#201a16"
+    colors={{ torso: "#4c535d", arms: "#5d6570", legs: "#353a42" }}
+    blink
+    {...p}
+  />
+);
+
+/** Hero holding a fishing rod cleanly in his hand (no floating rod or telekinesis arms). */
+export const FishingHero: React.FC<A & { bend?: number }> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  bend = 0.35,
+  ...rest
+}) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Hero position={[0, 0, 0]} rotationY={0} animation="hold" {...rest} />
+    <Rod position={[-0.25, 0.92, 0.34]} rotationY={0} bend={bend} />
   </group>
 );
 

@@ -24,14 +24,14 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.old",
-      ...cam.orbit({ on: [1.3, 1.35, -9.8], dist: 4.4, distTo: 3.2, yaw: -12, yawTo: 26, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.orbit({ on: [0.1, 1.85, 9.5], dist: 4.4, distTo: 3.1, yaw: -16, yawTo: 24, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Elder fisherman shakes wide-hatted head beside the wooden ladder while Hero pleads urgently.",
+      note: "Elder fisherman shakes wide-hatted head on the wooden jetty while Hero listens beside the water.",
       stage: (t) => (
         <>
-          <Villager position={[1.0, 0, -10.0]} rotationY={SOUTH} hmm={0.5 + 0.5 * Math.sin(t * 4)} walk={0} hat="wide" />
-          <Hero position={[2.0, 0, -9.2]} rotationY={-0.6} animation="talk" face="uneasy" time={t} />
+          <Villager position={[0.6, 0.5, 9.0]} rotationY={SOUTH} hmm={0.5 + 0.5 * Math.sin(t * 4)} walk={0} hat="wide" />
+          <Hero position={[-0.3, 0.5, 9.8]} rotationY={EAST - 0.3} animation="talk" face="uneasy" time={t} />
         </>
       ),
     },
@@ -57,14 +57,14 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.more",
-      ...cam.push({ on: [2.0, 1.38, -9.2], dist: 3.9, to: 2.25, yaw: -16, pitch: -4, fov: 36, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0, 1.85, 9.8], dist: 3.8, to: 2.25, yaw: 158, pitch: -4, fov: 36, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Aggressive push as Hero plants foot forward setting jaw hard while raising fist toward mountain top.",
+      note: "Front-side push as Hero plants foot forward on the jetty setting jaw hard with determined expression.",
       stage: (t) => {
         const firm = ease(ramp(t, 0, 1.0));
         return (
-          <Hero position={[2.0, 0, -9.0 - firm * 0.4]} rotationY={NORTH} animation={firm > 0.45 ? "reachUp" : "walk"} animDistance={firm * 0.5} face="brave" headPitch={-0.6} lookAt={[2, 30, -31]} time={t} />
+          <Hero position={[0, 0.5, 9.6 + firm * 0.4]} rotationY={SOUTH} animation={firm > 0.45 ? "point" : "walk"} animDistance={firm * 0.5} face="brave" headPitch={-0.15} time={t} />
         );
       },
     },

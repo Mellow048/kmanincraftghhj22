@@ -15,7 +15,7 @@ import { PLACE, room, top } from "./kit";
  *           place in the film with clean lines, and it is deliberately dull.
  */
 
-const LADDER_X = PLACE.firstStep[0];
+const GATE_X = PLACE.firstStep[0];
 
 /**
  * A lit arched window with a stepped gold frame. The 9:16 hook only sees the middle ~5 m of the palace, so this
@@ -170,18 +170,32 @@ const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
     <Vox kind="mossy" position={[6.4, 5.12, -31.4]} size={[19.5, 0.45, 6.9]} tile={2} />
     <RichMansion position={[6.4, 5.85, -33.2]} lit={lit > 0} />
     <Vox kind="stoneBrick" position={[-9.5, 9.4, -31.6]} size={[5.0, 0.4, 2.4]} />
-    {/* the ladder: rails and rungs, mounted cleanly on front face of cliff spur going up out of the top of frame */}
-    <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 6.6, -27.85]} size={[0.12, 13.2, 0.12]} />
-    <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 6.6, -27.85]} size={[0.12, 13.2, 0.12]} />
-    {Array.from({ length: 12 }, (_, i) => (
-      <Vox key={i} kind="darkPlanks" position={[LADDER_X, 0.9 + i * 1.02, -27.85]} size={[0.9, 0.1, 0.1]} castShadow={false} />
-    ))}
-    {/* steps cut into the rock at the foot: the first twenty of nine thousand */}
-    {Array.from({ length: 12 }, (_, i) => (
-      <Vox key={`s${i}`} kind="cobble" position={[LADDER_X, 0.25 + i * 0.5, -11 - i * 0.9]} size={[2.6, 0.5, 1.0]} />
-    ))}
-    <Torch position={[LADDER_X + 1.9, 0, -10.6]} light={lit} seed={7} />
-    {lit > 0 ? <LightPool position={[LADDER_X, 0.1, -12]} width={5} depth={6} color="#ffcf8a" opacity={0.16} /> : null}
+    {/* Mountain Entrance Gatehouse at the foot: stone arch, iron bars & lifetime-fee toll booth (no ladder!) */}
+    <group position={[GATE_X, 0, -10.8]}>
+      <Vox kind="stoneBrick" position={[-2.6, 1.8, 0]} size={[0.8, 3.6, 1.1]} tile={2} />
+      <Vox kind="stoneBrick" position={[2.6, 1.8, 0]} size={[0.8, 3.6, 1.1]} tile={2} />
+      <Vox kind="stoneBrick" position={[0, 3.8, 0]} size={[6.0, 0.7, 1.2]} tile={2} />
+      {/* Toll counter & emerald fee plaque beside gate */}
+      <Vox kind="darkPlanks" position={[-1.9, 0.55, 0.9]} size={[1.4, 1.1, 0.8]} />
+      <Block position={[-1.9, 1.25, 0.9]} size={[0.42, 0.42, 0.42]} color="#2fd868" emissive="#1a8e42" emissiveIntensity={0.35} castShadow={false} />
+      <Vox kind="planks" position={[2.6, 2.2, 0.65]} size={[1.5, 0.9, 0.1]} />
+      <Block position={[2.6, 2.2, 0.72]} size={[1.1, 0.25, 0.04]} color="#f4c430" castShadow={false} />
+    </group>
+    {/* Long winding stone mountain staircase climbing all the way up toward the sunlit summit */}
+    {Array.from({ length: 28 }, (_, i) => {
+      const z = -12.0 - i * 0.8;
+      const y = 0.25 + i * 0.48;
+      const xShift = Math.sin(i * 0.28) * 1.4;
+      return (
+        <group key={`step${i}`}>
+          <Vox kind="cobble" position={[GATE_X + xShift, y, z]} size={[3.2, 0.55, 1.05]} />
+          <Vox kind="stone" position={[GATE_X + xShift, y - 0.5, z]} size={[3.6, 0.8, 1.2]} />
+        </group>
+      );
+    })}
+    <Torch position={[GATE_X + 2.2, 0, -9.8]} light={lit} seed={7} />
+    <Torch position={[GATE_X - 2.2, 0, -9.8]} light={lit} seed={9} />
+    {lit > 0 ? <LightPool position={[GATE_X, 0.1, -12]} width={6} depth={7} color="#ffcf8a" opacity={0.18} /> : null}
   </group>
 );
 
@@ -212,8 +226,8 @@ const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ ni
     {/* the stall, and the price board */}
     <Stall position={PLACE.stall} />
     <Block position={[PLACE.stall[0] + 2.3, 1.1, PLACE.stall[2] + 0.2]} size={[0.9, 0.7, 0.08]} color="#e6dcc4" castShadow={false} />
-    {/* the lane of huts, north side, doors facing the water */}
-    {[-13.6, -7.4, 2.6, 9.4].map((x, i) => (
+    {/* the lane of huts, north side, clear of the center mountain gate corridor */}
+    {[-14.5, -8.2, 9.2, 15.2].map((x, i) => (
       <Hut key={x} at={[x, 0, -11.2 - (i % 2) * 2.2]} w={5} d={4.6} h={3.4} />
     ))}
     {/* home is the bigger one, second from the east */}

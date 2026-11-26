@@ -1,6 +1,6 @@
 import { cam, storyScene } from "../../engine";
 import {
-  Boat, Bucket, Coin, EAST, FishPile, Gate, Hero, Jar, Keeper, Mum, NORTH, PLACE, PriceBoard, Rod, SOUTH,
+  Boat, Bucket, Coin, EAST, FishPile, FishingHero, Gate, Hero, Jar, Keeper, Mum, NORTH, PLACE, PriceBoard, Rod, SOUTH,
   Stall, Villager, WEST, ease, ramp, top, timing, wordAt,
 } from "./kit";
 
@@ -21,8 +21,7 @@ export const scene3 = storyScene(timing, {
         const yank = Math.sin(t * 5.2);
         return (
           <>
-            <Hero position={[-0.25, 0.5, 9.6 - t * 0.55]} rotationY={EAST - 0.15} animation="push" animDistance={t * 0.8} face="brave" time={t * 1.3} />
-            <Rod position={[0.05, 1.02, 9.6 - t * 0.55]} rotationY={EAST - 0.15} bend={0.45 + yank * 0.28} />
+            <FishingHero position={[-0.25, 0.5, 9.6 - t * 0.55]} rotationY={EAST - 0.15} bend={0.45 + yank * 0.28} face="brave" time={t * 1.3} />
             <Villager position={[-0.95, 0.5, 8.1]} rotationY={WEST + 0.1} strain={0.45 + 0.25 * yank} walk={0} />
             <Rod position={[-1.2, 0.98, 8.1]} rotationY={WEST + 0.1} bend={0.4 + Math.cos(t * 5) * 0.22} />
             <Villager position={[0.85, 0.5, 10.9]} rotationY={EAST} strain={0.5} walk={0} />
@@ -160,7 +159,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.price",
-      ...cam.push({ on: [1.6, 1.4, -298.8], dist: 4.3, to: 2.5, yaw: -16, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: top(1.6, 1.4, 1.2), dist: 4.3, to: 2.5, yaw: -16, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
       zone: "top",
       look: "overworld-day",
       note: "White-coated Keeper strides forward reaching high to slap a fifth black tally notch onto PriceBoard.",
@@ -168,9 +167,9 @@ export const scene3 = storyScene(timing, {
         const slap = ease(ramp(t, 0.1, 1.55));
         return (
           <>
-            <Gate position={top(0, 0, -300)} />
-            <PriceBoard position={top(2.3, 0, -298.6)} digits={slap > 0.6 ? [1, 0, 0, 0, 1] : [1, 0, 0, 0]} rotationY={-0.3} />
-            <Keeper position={top(1.1 + slap * 0.85, 0, -299.4)} rotationY={SOUTH} animation={slap > 0.55 ? "reachUp" : "walk"} animDistance={slap * 0.9} face="blank" time={t} />
+            <Gate position={top(0, 0, 0)} />
+            <PriceBoard position={top(2.3, 0, 1.4)} digits={slap > 0.6 ? [1, 0, 0, 0, 1] : [1, 0, 0, 0]} rotationY={-0.3} />
+            <Keeper position={top(1.1 + slap * 0.85, 0, 0.6)} rotationY={SOUTH} animation={slap > 0.55 ? "reachUp" : "walk"} animDistance={slap * 0.9} face="blank" time={t} />
           </>
         );
       },

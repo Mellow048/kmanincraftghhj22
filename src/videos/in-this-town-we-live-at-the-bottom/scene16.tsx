@@ -7,15 +7,15 @@ export const scene16 = storyScene(timing, {
   shots: [
     {
       cue: "16.dawn",
-      ...cam.truck({ on: [1.2, 12, -26], dist: 6.4, yaw: 12, pitch: 8, fov: 46, by: [0, -1.8, 2.8], screenOffset: [0, 0.08] }),
+      ...cam.truck({ on: [0, 11.5, -25], dist: 6.4, yaw: 12, pitch: 8, fov: 46, by: [0, -1.8, 2.8], screenOffset: [0, 0.08] }),
       ease: "linear" as const,
       zone: "bottom",
       look: "overworld-golden",
-      note: "First dawn light catches Hero descending steep ladder steps fast clutching jar into sunlit orange haze.",
+      note: "First dawn light catches Hero descending stone mountain steps fast clutching jar into sunlit orange haze.",
       stage: (t) => (
         <>
-          <Hero position={[1.2, 10.6 - t * 2.1, -21.5 + t * 0.4]} rotationY={SOUTH} animation="walk" animDistance={t * 1.9} face="uneasy" time={t} />
-          <Jar position={[1.55, 11.3 - t * 2.1, -21.7 + t * 0.4]} fill={1} scale={0.85} />
+          <Hero position={[0, 10.2 - t * 2.1, -21.5 + t * 1.4]} rotationY={SOUTH} animation="walk" animDistance={t * 1.9} face="uneasy" time={t} />
+          <Jar position={[0.35, 10.9 - t * 2.1, -21.7 + t * 1.4]} fill={1} scale={0.85} />
         </>
       ),
     },
