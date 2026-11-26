@@ -203,6 +203,11 @@ SAY = {
     "hus": "HH AH S",
     "glowstone": "G L OW S T OW N",
     "lunchbox": "L AH N CH B AA K S",
+    "respawn": "R IY S P AO N",
+    "respawned": "R IY S P AO N D",
+    "respawning": "R IY S P AO N IH NG",
+    "pixelated": "P IH K S AH L EY T AH D",
+    "unharmed": "AH N HH AA R M D",
 }
 
 def assembled_spans(raw, count, length):
