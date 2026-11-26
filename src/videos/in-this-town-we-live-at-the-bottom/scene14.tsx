@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, walkSegment } from "../../engine";
 import { Gate, GoldenApple, Hero, Jar, Keeper, PriceBoard, SOUTH, ease, ramp, top, w, timing } from "./kit";
 
 export const scene14 = storyScene(timing, {
@@ -14,10 +14,11 @@ export const scene14 = storyScene(timing, {
       note: "Hero marches up onto top stone terrace beside imposing barred Gate as Keeper steps forward inside.",
       stage: (t) => {
         const march = ease(ramp(t, 0, 1.4));
+        const keeperWalk = walkSegment(top(0, 0, -301.8), top(0, 0, -301.1), t, 0, 1.4, { yaw: SOUTH });
         return (
           <>
             <Gate position={top(0, 0, -300)} />
-            <Keeper position={top(0, 0, -301.8 + march * 0.7)} rotationY={SOUTH} animation="walk" animDistance={march * 0.7} face="blank" time={t} />
+            <Keeper {...keeperWalk} face="blank" time={t} />
             <Hero position={top(0, 0, -297.2 - march * 1.4)} rotationY={0} animation={march < 0.8 ? "walk" : "lookAround"} animDistance={march * 1.4} face="uneasy" headPitch={-0.2} time={t} />
           </>
         );
@@ -101,11 +102,14 @@ export const scene14 = storyScene(timing, {
       look: "overworld-day",
       note: "Iron gate slams shut crisply on quick knocking Hero back step onto cold stone.",
       stage: (t) => {
-        const shut = ease(ramp(t, Math.max(0.15, w("14.shut", "quick") - 0.35), w("14.shut", "quick")));
+        const shutStart = Math.max(0.15, w("14.shut", "quick") - 0.35);
+        const shutEnd = w("14.shut", "quick");
+        const shut = ease(ramp(t, shutStart, shutEnd));
+        const keeperWalk = walkSegment(top(1.4, 0, -301), top(1.75, 0, -301.4), t, shutStart, shutEnd, { yaw: SOUTH });
         return (
           <>
             <Gate position={top(0, 0, -300)} open={1 - shut} />
-            <Keeper position={top(1.4 + shut * 0.35, 0, -301 - shut * 0.4)} rotationY={SOUTH} animation="walk" animDistance={shut * 0.5} face="blank" time={t} />
+            <Keeper {...keeperWalk} face="blank" time={t} />
             <Hero position={top(-1.6, 0, -298.6 + shut * 0.3)} rotationY={0} animation="scared" face="hurt" time={t} />
           </>
         );

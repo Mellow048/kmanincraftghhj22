@@ -16,7 +16,7 @@ export const scene10 = storyScene(timing, {
         return (
           <>
             <JettyLantern position={[-1.15, 0.5, 10.6]} lit={1.2 + Math.sin(t * 7) * 0.12} />
-            <Hero position={[0, 0.5, 10 - ease(ramp(t, 0, 1.5)) * 0.25]} rotationY={NORTH} animation={pull > 0 ? "reach" : "stagger"} face="blank" headPitch={0.2} time={t} />
+            <Hero position={[0, 0.5, 10 - ease(ramp(t, 0, 1.5)) * 0.25]} rotationY={NORTH} animation={pull > 0 ? "reach" : "cower"} face="blank" headPitch={0.2} time={t} />
             <Rod position={[0.35, 0.95, 9.9]} bend={0.3 + pull * 0.14} />
             <Line position={[0.5, 0.9, 8.6]} length={1.2} bob={pull * 0.06} />
           </>
@@ -32,10 +32,10 @@ export const scene10 = storyScene(timing, {
       note: "Storm winds rock tied boat violently as braced Hero fights bucking rod.",
       stage: (t) => (
         <>
-          <Hero position={[0, 0.5, 10]} rotationY={NORTH} animation="stagger" face="scared" headPitch={0.1} time={t * 1.6} />
+          <Hero position={[0, 0.5, 10]} rotationY={NORTH} animation="cower" face="scared" headPitch={0.1} time={t * 1.6} />
           <Rod position={[0.35, 0.95, 9.9]} bend={0.8 + Math.sin(t * 10) * 0.15} />
           <Line position={[0.6, 0.6, 8.2]} length={1.5} bob={Math.sin(t * 11) * 0.15} />
-          <Boat position={[3.1, Math.sin(t * 4.2) * 0.12, 12.4]} rotationY={0.3 + Math.sin(t * 2.2) * 0.18} bail={0.65} />
+          <Boat position={[3.1, 0.15 + Math.sin(t * 4.2) * 0.08, 12.4]} rotationY={0.3 + Math.sin(t * 2.2) * 0.18} bail={0.65} />
         </>
       ),
     },

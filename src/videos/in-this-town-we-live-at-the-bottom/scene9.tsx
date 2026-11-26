@@ -71,7 +71,7 @@ export const scene9 = storyScene(timing, {
           <>
             <Hero position={[-0.4, 0.5, 9.6]} rotationY={SOUTH} animation={t < cough ? "laugh" : "scared"} face={t < cough ? "laugh" : "worried"} time={t} />
             <Mum position={[1.0, 0.5, 9.9]} rotationY={SOUTH} animation={t < cough ? "laugh" : "ache"} face={t < cough ? "laugh" : "ouch"} time={t * 1.4} />
-            <Villager position={[-1.7, 0.5, 8.8]} rotationY={SOUTH} hmm={0.6} walk={t * 0.3} />
+            <Villager position={[-1.7, 0.5, 8.8]} rotationY={SOUTH} hmm={0.6} />
             <Villager position={[2.0, 0.5, 9.2]} rotationY={SOUTH} strain={0.4} kid />
             <FishPile position={[-0.4, 0.5, 8.7]} n={4} seed={6} />
           </>

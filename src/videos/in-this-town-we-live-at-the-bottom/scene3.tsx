@@ -23,9 +23,9 @@ export const scene3 = storyScene(timing, {
           <>
             <Hero position={[-0.25, 0.5, 9.6 - t * 0.55]} rotationY={EAST - 0.15} animation="push" animDistance={t * 0.8} face="brave" time={t * 1.3} />
             <Rod position={[0.05, 1.02, 9.6 - t * 0.55]} rotationY={EAST - 0.15} bend={0.45 + yank * 0.28} />
-            <Villager position={[-0.95, 0.5, 8.1]} rotationY={WEST + 0.1} strain={0.45 + 0.25 * yank} walk={t * 0.9} />
+            <Villager position={[-0.95, 0.5, 8.1]} rotationY={WEST + 0.1} strain={0.45 + 0.25 * yank} walk={0} />
             <Rod position={[-1.2, 0.98, 8.1]} rotationY={WEST + 0.1} bend={0.4 + Math.cos(t * 5) * 0.22} />
-            <Villager position={[0.85, 0.5, 10.9]} rotationY={EAST} strain={0.5} walk={t * 0.8} />
+            <Villager position={[0.85, 0.5, 10.9]} rotationY={EAST} strain={0.5} walk={0} />
             <Rod position={[1.1, 0.98, 10.9]} rotationY={EAST} bend={0.5 + yank * 0.2} />
           </>
         );
@@ -115,7 +115,6 @@ export const scene3 = storyScene(timing, {
         const slide = ease(ramp(t, 0.05, 1.35));
         return (
           <>
-            <Stall position={PLACE.stall} />
             <Villager position={[-4.2, 0, -4.2]} rotationY={EAST} strain={0.25 + slide * 0.35} />
             <Hero position={[-1.4 - slide * 1.35, 0, -4.6]} rotationY={WEST} animation={slide < 0.65 ? "walk" : "reach"} animDistance={slide * 1.4} face="neutral" time={t} />
             <Bucket position={[-2.1 - slide * 1.35, 1.05, -4.7]} scale={0.95} />

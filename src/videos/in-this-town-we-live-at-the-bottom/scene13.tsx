@@ -48,7 +48,7 @@ export const scene13 = storyScene(timing, {
         const turn = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <Hero position={[1.2, 10.8, -28.6]} rotationY={SOUTH * turn} animation={turn < 0.6 ? "stagger" : "leanOver"} face="uneasy" headPitch={0.35} time={t} />
+            <Hero position={[1.2, 10.8, -28.6]} rotationY={SOUTH * turn} animation={turn < 0.6 ? "cower" : "leanOver"} face="uneasy" headPitch={0.35} time={t} />
             <Jar position={[1.6, 10.95, -28.7]} fill={1} scale={0.85} />
           </>
         );

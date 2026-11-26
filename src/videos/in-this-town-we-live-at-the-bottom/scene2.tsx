@@ -28,7 +28,7 @@ export const scene2 = storyScene(timing, {
             />
             <Rod position={[0.1, 1.0 + wave * 0.06, hz]} rotationY={EAST - 0.25} bend={0.45 + wave * 0.25} />
             <FishPile position={[1.7, 0.25 + pull * 0.85, hz - 0.2]} n={5} seed={2} />
-            <Villager position={[-1.1, 0.5, 8.2 - pull * 0.9]} rotationY={WEST} strain={0.4 + 0.3 * Math.abs(wave)} walk={t * 1.1} />
+            <Villager position={[-1.1, 0.5, 8.2 - pull * 0.9]} rotationY={WEST} strain={0.4 + 0.3 * Math.abs(wave)} walk={pull * 0.9} />
             <Rod position={[-1.3, 0.98, 8.2 - pull * 0.9]} rotationY={WEST} bend={0.35 + wave * 0.14} />
           </>
         );
@@ -45,7 +45,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Hero position={[1.2, 1.9 + climb * 5.2, -31.45]} rotationY={NORTH} animation="reachUp" animDistance={climb * 4.0} face="brave" time={t * 1.8} />
-            <Villager position={[1.2, 0.6 + climb * 4.0, -31.45]} rotationY={NORTH} strain={0.5 + 0.3 * Math.sin(t * 7)} walk={t * 2.4} />
+            <Villager position={[1.2, 0.6 + climb * 4.0, -31.45]} rotationY={NORTH} strain={0.5 + 0.3 * Math.sin(t * 7)} walk={climb * 4.0} />
           </>
         );
       },

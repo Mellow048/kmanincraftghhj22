@@ -48,7 +48,7 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Keeper position={[0.45 + pass * 0.3, 0.5, 14.8 + pass * 0.4]} rotationY={SOUTH} animation={pass > 0.35 ? "shrug" : "walk"} animDistance={pass * 0.45} face="blank" time={t} />
-            <Villager position={[-0.9, 0.5, 13.4]} rotationY={NORTH} strain={0.4 + pass * 0.3} walk={pass * 0.3} />
+            <Villager position={[-0.9, 0.5, 13.4]} rotationY={NORTH} strain={0.4 + pass * 0.3} />
             <Villager position={[0.2, 0.5, 12.8]} rotationY={NORTH} kid />
             <Bucket position={[-0.35 + pass * 0.75, 1.0, 13.2 + pass * 0.8]} scale={0.9} />
             <FishPile position={[1.1, 0.55, 14.2]} n={6} seed={9} />

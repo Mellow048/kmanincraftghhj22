@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, walkSegment } from "../../engine";
 import { Coin, EAST, FishPile, Hero, NORTH, RichKid, Rod, SOUTH, Villager, ease, ramp, tw, timing } from "./kit";
 
 export const scene4 = storyScene(timing, {
@@ -32,11 +32,12 @@ export const scene4 = storyScene(timing, {
       note: "Crane surges skyward past gazing townsfolk right up to Quartz Mansion terrace where rich kids strut and shrug carelessly.",
       stage: (t) => {
         const turn = ease(ramp(t, 0, 1.3));
+        const kidWalk = walkSegment([5.4, 5.85, -30.4], [6.5, 5.85, -30.4], t, 0, 1.3, { yaw: NORTH });
         return (
           <>
             <Hero position={[0, 0.5, 10]} rotationY={SOUTH} animation="lookAround" headPitch={-0.5} face="neutral" lookAt={[6, 6.0, -31]} time={t} />
             <Villager position={[-1.1, 0.5, 9.4]} rotationY={NORTH} hmm={0.3 + turn * 0.2} />
-            <RichKid position={[5.4 + turn * 1.1, 5.85, -30.4]} rotationY={NORTH} animation="walk" animDistance={turn * 1.1} face="blank" time={t} />
+            <RichKid {...kidWalk} face="blank" time={t} />
             <RichKid position={[7.4 - turn * 0.8, 5.85, -30.6]} rotationY={NORTH} animation="shrug" face="blank" time={t} />
           </>
         );
