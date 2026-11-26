@@ -1,5 +1,5 @@
-import { cam, storyScene } from "../../engine";
-import { Berries, Boy, CookedChicken, EAST, Fox, PLACE, RedFlower, SillCup, Sword, Villager, WEST, ease, jolt, ramp, timing, wordAt } from "./kit";
+import { cam, storyScene, walkSegment } from "../../engine";
+import { Berries, Boy, CookedChicken, EAST, Fox, PLACE, RedFlower, SOUTH, SillCup, Sword, Villager, WEST, ease, jolt, ramp, timing, wordAt } from "./kit";
 
 const BUY_BACK = wordAt("1.back", "buying");
 const GIFT = wordAt("1.gift", "stole");
@@ -13,18 +13,18 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.town",
-      ...cam.truck({ on: [4.2, 0.88, 1.4], by: [-2.8, 0, 0.1], dist: 4.9, yaw: 16, pitch: 8, fov: 44, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [6.25, 1.0, 1.4], dist: 5.2, to: 6.4, yaw: 0, pitch: 12, fov: 54, ease: "linear", screenOffset: [0, 0.06] }),
       zone: "street",
       look: "overworld-golden",
-      note: "High-energy village street heist: Dad bolts west down lit cobblestones gripping stolen Sword while Sister dashes past Stall carrying CookedChicken, angry Villager chases, and Teller scrambles trailing.",
+      note: "Frame-one theft chase in one readable frame: Dad fox bolts south toward the lens with the stolen Sword across his mouth, Sister runs beside him with a whole CookedChicken, Teller trails on the right, and the robbed Villager pounds after them on the left with an arm raised — the lit market Stall, crates and hay fill the street behind.",
       stage: (t, { p }) => {
-        const d = ease(p) * 3.1;
+        const d = ease(p) * 2.2;
         return (
           <>
-            <Fox who={1} position={[4.5 - d, 0, 1.4]} rotationY={WEST + 0.12} scale={0.72} animation="run" animDistance={d * 1.4} shirt="#3a4f8a" carry={<Sword scale={0.58} rotation={[0, 0, 1.4]} />} tailUp={0.75} face="calm" time={t * 1.3} />
-            <Fox who={2} position={[5.3 - d, 0, 1.15]} rotationY={WEST - 0.1} scale={0.62} animation="run" animDistance={d * 1.4 + 0.3} shirt="#7a5a2a" carry={<CookedChicken scale={0.78} />} tailUp={0.65} face="grin" time={t * 1.3} />
-            <Fox who={0} position={[6.15 - d, 0, 1.55]} rotationY={WEST} scale={0.58} animation="run" animDistance={d * 1.3 + 0.5} shirt="#2f6f5a" tailUp={0.25} face="uneasy" time={t * 1.2} />
-            <Villager position={[6.8 - d * 0.55, 0, -0.3 + d * 0.35]} rotationY={WEST + 0.35} walk={d * 1.1} strain={0.75} robe="#8a4b2a" hat="straw" />
+            <Fox who={1} position={[6.5, 0, 1.2 + d]} rotationY={SOUTH + 0.08} scale={0.78} animation="run" animDistance={d + 0.15} shirt="#3a4f8a" carry={<Sword scale={1.0} rotation={[0, 0, 1.4]} />} tailUp={0.8} face="calm" time={t * 1.3} />
+            <Fox who={2} position={[5.7, 0, 1.35 + d]} rotationY={SOUTH - 0.06} scale={0.66} animation="run" animDistance={d + 0.05} shirt="#7a5a2a" carry={<CookedChicken scale={1.35} />} tailUp={0.65} face="grin" time={t * 1.3} />
+            <Fox who={0} position={[7.25, 0, 0.1 + d]} rotationY={SOUTH + 0.15} scale={0.58} animation="run" animDistance={d + 0.1} shirt="#2f6f5a" tailUp={0.25} face="uneasy" time={t * 1.2} />
+            <Villager position={[5.2, 0, -0.5 + d * 0.95]} rotationY={SOUTH - 0.05} walk={d * 0.95} arms={{ l: -2.2, r: -1.4 }} strain={0.9} robe="#8a4b2a" hat="straw" />
           </>
         );
       },
@@ -64,17 +64,17 @@ export const scene1 = storyScene(timing, {
       look: "overworld-sunset",
       note: "Live porch barter outside boyHouse: Dad trots to stone step, drops stolen Sword onto front step in exchange for SillCup berries, and darts away while Boy grabs his Sword.",
       stage: (t) => {
-        const swap = ease(ramp(t, 0, Math.max(0.45, BUY_BACK + 0.4)));
+        const endSwap = Math.max(0.45, BUY_BACK + 0.4);
+        const swap = ease(ramp(t, 0, endSwap));
+        const dadWalk = walkSegment([-8.4, 0, -2.6], [-9.5, 0, -3.2], t, 0, endSwap, { gait: swap < 0.55 ? "walk" : "run" });
         return (
           <>
             <SillCup position={[PLACE.sill[0], PLACE.sill[1] - 0.08, SILL_Z]} berry={swap < 0.55} t={t} />
             <Fox
               who={1}
-              position={[-8.4 - swap * 1.1, 0, -2.6 - swap * 0.6]}
+              {...dadWalk}
               rotationY={swap < 0.55 ? Math.PI - 0.2 : WEST}
               scale={0.72}
-              animation={swap < 0.55 ? "walk" : "run"}
-              animDistance={swap * 1.5}
               shirt="#3a4f8a"
               carry={swap < 0.5 ? <Sword scale={0.54} rotation={[0, 0, 1.4]} /> : <Berries scale={0.9} count={4} t={t} />}
               tailUp={0.55}

@@ -17,7 +17,7 @@ import { PLACE } from "./kit";
 const Street: React.FC = () => (
   <>
     <Vox kind="grass" position={[0, -0.5, 0]} size={[120, 1, 90]} />
-    <Vox kind="path" position={[3, 0.02, 2]} size={[60, 0.06, 4.6]} />
+    <Vox kind="path" position={[3, 0.02, 0.1]} size={[60, 0.06, 7.6]} />
 
     {/* North side, west to east. Fronts face south. The boy's house is the middle one. */}
     <Hut at={[-21, 0, -5]} w={7} windows={[-2, 2]} roof="#3f6b3a" />
@@ -31,6 +31,12 @@ const Street: React.FC = () => (
     <Bell position={PLACE.bell} />
     <Well position={PLACE.well} />
     <Stall position={PLACE.stall} />
+    {/* market clutter flanking the stall, so the chase has goods and depth behind it */}
+    <Vox kind="darkPlanks" position={[4.5, 0.32, -2.2]} size={[0.8, 0.64, 0.8]} />
+    <Vox kind="darkPlanks" position={[4.36, 0.96, -2.2]} size={[0.62, 0.6, 0.62]} rotation={[0, 0.3, 0]} />
+    <Vox kind="darkPlanks" position={[8.5, 0.3, -2.3]} size={[0.72, 0.6, 0.72]} />
+    <Vox kind="hay" position={[8.55, 0.55, -2.3]} size={[0.8, 0.5, 0.8]} />
+    <LightPool position={[6.4, 0.07, -2.2]} width={6} depth={4.5} color="#ffcf8a" opacity={0.2} />
 
     {(
       [
@@ -46,13 +52,15 @@ const Street: React.FC = () => (
       <Tree key={i} position={[x, 0, z]} height={height} leaf={i % 2 ? "#3f7f2d" : "#4a8c33"} />
     ))}
     <LampPost position={[-5.6, 0, -3.6]} seed={2} />
-    <LampPost position={[5.2, 0, 6.6]} seed={3} />
+    <LampPost position={[11.2, 0, 6.6]} seed={3} />
     <LampPost position={[15.6, 0, -3.4]} seed={4} />
+    <LampPost position={[9.2, 0, -4.4]} seed={6} />
+    <LampPost position={[0.8, 0, -4.2]} seed={7} />
     <Clouds y={48} center={[0, 0, 0]} />
 
     <GodRay position={[-3, 6.5, -3]} rotation={[0, 0, 0.5]} width={5} height={12} color="#fff0c8" opacity={0.06} />
     <LightPool position={[0, 0.07, 1.5]} width={11} depth={9} color="#fff2c8" opacity={0.14} />
-    <Glow position={[PLACE.bell[0], PLACE.bell[1] + 2.3, PLACE.bell[2]]} size={1.6} color="#ffe08a" opacity={0.35} />
+    <Glow position={[PLACE.bell[0], PLACE.bell[1] + 2.3, PLACE.bell[2]]} size={0.65} color="#ffe08a" opacity={0.22} />
     <Dust position={[0, 2.2, 1]} area={[30, 4, 14]} count={70} size={0.045} color="#fff7d8" opacity={0.6} seed={3} speed={0.2} />
     {/* the warm light on the sill and the step, and on the hedge: a pool on the ground, never a lamp in the lens */}
     <LightPool position={[PLACE.sill[0], 0.06, PLACE.sill[2] + 1.5]} width={6} depth={4.5} color="#ffcf8a" opacity={0.22} />
