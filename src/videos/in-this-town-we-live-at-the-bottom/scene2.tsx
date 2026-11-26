@@ -60,7 +60,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Villager position={[0, 0.75 + climb * 0.95, -13.2 - climb * 1.65]} rotationY={NORTH} strain={0.4 + 0.3 * Math.sin(t * 5)} walk={climb * 1.8} hat="straw" lookAt={[0, 1.2 + climb * 0.7, -12.0 - climb * 1.3]} />
-            <Hero position={[0, 0.25 + climb * 0.75, -12.1 - climb * 1.45]} rotationY={NORTH} animation="walk" animDistance={climb * 1.6} face="uneasy" headPitch={-0.35} lookAt={[0, 1.8 + climb * 0.9, -14]} time={t * 1.4} />
+            <Hero position={[0, 0.25 + climb * 0.75, -12.1 - climb * 1.45]} rotationY={NORTH} animation={climb < 0.96 ? "walk" : "idle"} animDistance={climb * 1.6} face="uneasy" headPitch={-0.35} lookAt={[0, 1.8 + climb * 0.9, -14]} time={t * 1.4} />
           </>
         );
       },

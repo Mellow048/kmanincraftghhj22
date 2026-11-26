@@ -169,7 +169,7 @@ export const scene3 = storyScene(timing, {
           <>
             <Gate position={top(0, 0, 0)} />
             <PriceBoard position={top(2.3, 0, 1.4)} digits={slap > 0.6 ? [1, 0, 0, 0, 1] : [1, 0, 0, 0]} rotationY={-0.3} />
-            <Keeper position={top(1.1 + slap * 0.85, 0, 0.6)} rotationY={SOUTH} animation={slap > 0.55 ? "reachUp" : "walk"} animDistance={slap * 0.9} face="blank" time={t} />
+            <Keeper position={top(1.1 + slap * 0.85, 0, 0.6)} rotationY={slap > 0.55 ? SOUTH : EAST} animation={slap > 0.55 ? "reachUp" : "walk"} animDistance={slap * 0.9} face="blank" time={t} />
           </>
         );
       },

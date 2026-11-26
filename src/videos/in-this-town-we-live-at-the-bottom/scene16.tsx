@@ -84,7 +84,7 @@ export const scene16 = storyScene(timing, {
 function renderVillagerRod(x: number, z: number, i: number, t: number, tired = false) {
   return (
     <group key={i}>
-      <Villager position={[x, 0.5, z + Math.sin(t * 2 + i) * 0.08]} rotationY={NORTH} strain={tired ? 0.65 + 0.15 * Math.sin(t * 3) : 0.4 + 0.2 * Math.sin(t * 3 + i)} walk={t * 0.5 + i} />
+      <Villager position={[x, 0.5, z + Math.sin(t * 2 + i) * 0.08]} rotationY={NORTH} strain={tired ? 0.65 + 0.15 * Math.sin(t * 3) : 0.4 + 0.2 * Math.sin(t * 3 + i)} walk={0} />
       <Rod position={[x + 0.3, 0.95, z - 0.1]} rotationY={0.15 * (i % 3)} bend={0.3 + Math.sin(t * 4 + i) * 0.1} />
       <Line position={[x + 0.45, 0.85, z - 1.7]} length={1.3} bob={Math.sin(t * 7 + i) * 0.06} />
     </group>

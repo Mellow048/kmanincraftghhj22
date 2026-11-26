@@ -277,7 +277,8 @@
     {
       "cue": "2.steps",
       "sfx": "whoosh",
-      "why": "The lens goes up the ladder with him."
+      "trim": 3,
+      "why": "The lens goes up the mountain gate and staircase."
     },
     {
       "cue": "2.steps",
@@ -743,6 +744,7 @@
       "cue": "18.label",
       "word": "off",
       "sfx": "swish",
+      "trim": 3,
       "why": "Somebody took the label off."
     },
     {

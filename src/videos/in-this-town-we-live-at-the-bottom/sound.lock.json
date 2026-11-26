@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-we-live-at-the-bottom",
   "mix": "public/audio/in-this-town-we-live-at-the-bottom/mix.mp3",
-  "seconds": 164.8,
+  "seconds": 157.4333,
   "built_from": {
-    "timing.json": "bb9a20ab10ae9d48c2e32d8910a0f2aa82919f0f",
-    "sound.json": "0b50fb6175f098a7648af0695c3451acba37ecd6",
-    "narration.mp3": "fae9ee67eb4c9c7cee17dc85cbdd0505b8b78448"
+    "timing.json": "868936860564bbf3dc19238002b8d20dc6d1a983",
+    "sound.json": "372d91892f5a1e5f1415ca63f5198ad7007a4b27",
+    "narration.mp3": "830e2c9db5931a3987104a20b657843b7e91f70b"
   },
-  "mix_sha1": "e871d529b5058740e31a9d2691bd38ad606c51fd",
+  "mix_sha1": "d312d83c24d6be1b9a04fef8834832ae08f833b7",
   "music_sections": [
     {
       "from": "1.town",
@@ -18,97 +18,97 @@
     {
       "from": "2.why",
       "mood": "curious",
-      "at": 12.13
+      "at": 10.63
     },
     {
       "from": "3.rods",
       "mood": "town",
-      "at": 14.4
+      "at": 12.9
     },
     {
       "from": "4.coin",
       "mood": "curious",
-      "at": 34.93
+      "at": 32.57
     },
     {
       "from": "5.two",
       "mood": "sad",
-      "at": 44.27
+      "at": 41.9
     },
     {
       "from": "6.basket",
       "mood": "dark",
-      "at": 49.13
+      "at": 47.23
     },
     {
       "from": "7.sick",
       "mood": "drone",
-      "at": 59.07
+      "at": 56.03
     },
     {
       "from": "7.gold",
       "mood": "curious",
-      "at": 65.0
+      "at": 61.8
     },
     {
       "from": "9.try",
       "mood": "playful",
-      "at": 72.87
+      "at": 68.77
     },
     {
       "from": "10.night",
       "mood": "grind",
-      "at": 82.97
+      "at": 79.37
     },
     {
       "from": "11.meet",
       "mood": "hope",
-      "at": 93.47
+      "at": 89.47
     },
     {
       "from": "12.q",
       "mood": "curious",
-      "at": 103.57
+      "at": 99.47
     },
     {
       "from": "13.steps",
       "mood": "tense",
-      "at": 107.4
+      "at": 102.87
     },
     {
       "from": "14.raise",
       "mood": "dark",
-      "at": 119.93
+      "at": 114.0
     },
     {
       "from": "14.shut",
       "mood": "none",
-      "at": 126.87
+      "at": 121.43
     },
     {
       "from": "15.street",
       "mood": "sad",
-      "at": 132.23
+      "at": 126.0
     },
     {
       "from": "16.jetty",
       "mood": "hope",
-      "at": 137.57
+      "at": 131.03
     },
     {
       "from": "17.cold",
       "mood": "dark",
-      "at": 148.93
+      "at": 141.6
     },
     {
       "from": "18.ate",
       "mood": "sad",
-      "at": 155.63
+      "at": 148.13
     },
     {
       "from": "18.jar",
       "mood": "town",
-      "at": 158.63
+      "at": 151.23
     }
   ],
   "music_file": {
@@ -117,74 +117,69 @@
   },
   "beds": 27,
   "measured": {
-    "musicUnderVoiceDb": 17.8,
-    "secondsWithoutMusic": 5.8,
+    "musicUnderVoiceDb": 17.4,
+    "secondsWithoutMusic": 5.0,
     "bedsUnderVoiceDb": 25.4,
     "sfx": 120,
-    "sfxPerMinute": 43.7,
-    "sfxKinds": 18,
-    "longestGapSeconds": 3.6,
-    "longestGapAt": 65.3,
+    "sfxPerMinute": 45.7,
+    "sfxKinds": 19,
+    "longestGapSeconds": 3.2,
+    "longestGapAt": 62.0,
     "sfxBuried": 0,
     "voiceOverRestMedianDb": 15.1,
-    "voiceOverRestWorstDb": 4.1,
+    "voiceOverRestWorstDb": 6.8,
     "voiceOverRestWorst": [
       {
-        "db": 4.1,
-        "t": 114.2,
+        "db": 6.8,
+        "t": 43.9,
+        "cue": "5.two",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 142.1,
+        "cue": "17.cold",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.4,
+        "t": 141.4,
+        "cue": "16.year",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 108.7,
         "cue": "13.small",
         "sounding": [
           "drop"
         ]
       },
       {
-        "db": 4.2,
-        "t": 59.8,
-        "cue": "7.sick",
-        "sounding": [
-          "sting"
-        ]
+        "db": 7.7,
+        "t": 64.1,
+        "cue": "7.gold",
+        "sounding": []
       },
       {
-        "db": 4.8,
-        "t": 31.7,
-        "cue": "4.good",
+        "db": 7.8,
+        "t": 79.2,
+        "cue": "9.laugh",
         "sounding": [
-          "chime",
-          "plink",
-          "sting"
-        ]
-      },
-      {
-        "db": 6.9,
-        "t": 35.8,
-        "cue": "4.coin",
-        "sounding": [
-          "sparkle"
-        ]
-      },
-      {
-        "db": 7.1,
-        "t": 46.3,
-        "cue": "5.two",
-        "sounding": [
-          "chime",
-          "riser",
-          "tick"
-        ]
-      },
-      {
-        "db": 7.2,
-        "t": 8.2,
-        "cue": "2.fish",
-        "sounding": [
+          "sting",
           "whoosh"
         ]
       }
     ],
     "lufs": -14.8,
     "truePeakDb": -2.2,
-    "limiterMaxDb": 0.2
+    "limiterMaxDb": 1.1
   },
   "failures": []
 }
