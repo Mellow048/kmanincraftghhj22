@@ -1,0 +1,959 @@
+{
+  "film": "in-this-town-we-live-at-the-bottom",
+  "README": "The sound sheet: which music, which air and which effect, tied to cues and words, never to seconds. Rules: Topics/InThisTown/SOUND.md. Build: python3 scripts/sound.py build in-this-town-we-live-at-the-bottom",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "town",
+        "why": "The hook: the town as he knows it, bright, with the sun on the top of the mountain."
+      },
+      {
+        "from": "2.why",
+        "mood": "curious",
+        "why": "Nobody answers him. The tune steps back to soft steps and a held breath."
+      },
+      {
+        "from": "3.rods",
+        "mood": "town",
+        "why": "The tour: rods, a jetty, a boat, one emerald a bucket. Busy and ordinary."
+      },
+      {
+        "from": "4.coin",
+        "mood": "curious",
+        "why": "The coin comes down and the want starts. The tune thins out."
+      },
+      {
+        "from": "5.two",
+        "mood": "sad",
+        "why": "Two families paid and still wave. The first time the film stops being funny."
+      },
+      {
+        "from": "6.basket",
+        "mood": "dark",
+        "why": "The man in the clean coat: the town stands straight. Low and still under him."
+      },
+      {
+        "from": "7.sick",
+        "mood": "drone",
+        "why": "The diagnosis: no tune, just one low note and the room's air. It has to be quiet, not empty.",
+        "gain": -8
+      },
+      {
+        "from": "7.gold",
+        "mood": "curious",
+        "why": "Eight gold, and no gold here. The problem sets."
+      },
+      {
+        "from": "9.try",
+        "mood": "playful",
+        "why": "The failure: three days, two boots, the town laughing. Oom-pah."
+      },
+      {
+        "from": "10.night",
+        "mood": "grind",
+        "why": "The work: night, rain, storm, selling the rod, selling the boat."
+      },
+      {
+        "from": "11.meet",
+        "mood": "hope",
+        "why": "The town on the jetty votes for his mum. Warm, rising, the only uncomplicated good moment."
+      },
+      {
+        "from": "12.q",
+        "mood": "curious",
+        "why": "What if there is nothing up there? The question goes under everything from here."
+      },
+      {
+        "from": "13.steps",
+        "mood": "tense",
+        "why": "Nine thousand steps in the dark: a pulse that climbs the whole way up."
+      },
+      {
+        "from": "14.raise",
+        "mood": "dark",
+        "why": "The price has gone up again and the gate says no. The truth of the top of the mountain."
+      },
+      {
+        "from": "14.shut",
+        "mood": "none",
+        "why": "The gate shuts. Silence is the sound of it: nothing after the clank."
+      },
+      {
+        "from": "15.street",
+        "mood": "sad",
+        "why": "It was a street. Just a street. Four notes, sinking."
+      },
+      {
+        "from": "16.jetty",
+        "mood": "hope",
+        "why": "The whole town in the rain, every rod out, for her. It comes back warm."
+      },
+      {
+        "from": "17.cold",
+        "mood": "dark",
+        "why": "He did the sums, not a kindness. Low and unmoving under the line."
+      },
+      {
+        "from": "18.ate",
+        "mood": "sad",
+        "why": "Midnight, and the apple. Quiet, one small turn of the tune."
+      },
+      {
+        "from": "18.jar",
+        "mood": "town",
+        "why": "The jar stays full, nobody wants the top. The film ends on the town's own tune."
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "to": "2.why",
+      "bed": "village"
+    },
+    {
+      "from": "2.steps",
+      "to": "2.steps",
+      "bed": "wind"
+    },
+    {
+      "from": "3.rods",
+      "to": "3.rods",
+      "bed": "village"
+    },
+    {
+      "from": "3.rain",
+      "to": "3.stall",
+      "bed": "wind"
+    },
+    {
+      "from": "3.up",
+      "to": "3.up",
+      "bed": "sky"
+    },
+    {
+      "from": "3.jar",
+      "to": "3.jar",
+      "bed": "room"
+    },
+    {
+      "from": "3.price",
+      "to": "3.price",
+      "bed": "wind"
+    },
+    {
+      "from": "4.good",
+      "to": "4.coin",
+      "bed": "village"
+    },
+    {
+      "from": "5.mum",
+      "to": "5.mum",
+      "bed": "room"
+    },
+    {
+      "from": "5.old",
+      "to": "5.two",
+      "bed": "wind"
+    },
+    {
+      "from": "5.more",
+      "to": "5.more",
+      "bed": "village"
+    },
+    {
+      "from": "6.basket",
+      "to": "6.straight",
+      "bed": "crowd"
+    },
+    {
+      "from": "7.sick",
+      "to": "7.cure",
+      "bed": "room"
+    },
+    {
+      "from": "7.gold",
+      "to": "7.gold",
+      "bed": "wind"
+    },
+    {
+      "from": "8.where",
+      "to": "8.point",
+      "bed": "room"
+    },
+    {
+      "from": "8.decide",
+      "to": "8.decide",
+      "bed": "wind"
+    },
+    {
+      "from": "9.try",
+      "to": "10.count",
+      "bed": "village"
+    },
+    {
+      "from": "10.night",
+      "to": "10.storm",
+      "bed": "night"
+    },
+    {
+      "from": "11.meet",
+      "to": "11.eleven",
+      "bed": "night"
+    },
+    {
+      "from": "12.walk",
+      "to": "12.a",
+      "bed": "village"
+    },
+    {
+      "from": "13.steps",
+      "to": "13.small",
+      "bed": "wind"
+    },
+    {
+      "from": "14.gate",
+      "to": "14.eight",
+      "bed": "wind"
+    },
+    {
+      "from": "15.sit",
+      "to": "15.street",
+      "bed": "wind"
+    },
+    {
+      "from": "16.dawn",
+      "to": "16.year",
+      "bed": "wind"
+    },
+    {
+      "from": "17.cold",
+      "to": "17.save",
+      "bed": "wind"
+    },
+    {
+      "from": "18.ate",
+      "to": "18.label",
+      "bed": "room"
+    },
+    {
+      "from": "18.sub",
+      "to": "18.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.town",
+      "sfx": "gust",
+      "trim": -2,
+      "why": "The mountain air and the water open the film."
+    },
+    {
+      "cue": "1.town",
+      "sfx": "plink",
+      "why": "Below the first line: water, because this is a fishing town."
+    },
+    {
+      "cue": "1.above",
+      "word": "rich",
+      "sfx": "pop",
+      "why": "Up there, the rich live: the one bright thing in the shot."
+    },
+    {
+      "cue": "1.going",
+      "sfx": "swish",
+      "why": "Cut to his face on 'one day'."
+    },
+    {
+      "cue": "2.fish",
+      "word": "morning",
+      "sfx": "plink",
+      "why": "Morning, before the sun: water, not light."
+    },
+    {
+      "cue": "2.steps",
+      "sfx": "whoosh",
+      "why": "The lens goes up the ladder with him."
+    },
+    {
+      "cue": "2.steps",
+      "word": "steps",
+      "sfx": "tick",
+      "why": "One step on the ladder, as the rungs go out of frame."
+    },
+    {
+      "cue": "2.dad",
+      "word": "dad",
+      "sfx": "blip",
+      "why": "His dad says it like a fact."
+    },
+    {
+      "cue": "2.dad",
+      "word": "nine",
+      "sfx": "tick",
+      "why": "The number."
+    },
+    {
+      "cue": "2.why",
+      "sfx": "swish",
+      "why": "In to his face for the question nobody answers.",
+      "trim": 4
+    },
+    {
+      "cue": "2.why",
+      "word": "Nobody",
+      "sfx": "drop",
+      "why": "Nobody answered: the tune thins out and the air goes with it."
+    },
+    {
+      "cue": "3.rods",
+      "sfx": "whoosh",
+      "why": "The tour begins: down over the whole operation."
+    },
+    {
+      "cue": "3.hole",
+      "word": "hole",
+      "sfx": "plink",
+      "why": "Water coming in through the hole in the boat."
+    },
+    {
+      "cue": "3.rain",
+      "sfx": "gust",
+      "why": "The rain arrives on the cut."
+    },
+    {
+      "cue": "3.rain",
+      "word": "faster",
+      "sfx": "swish",
+      "why": "The floats go down faster."
+    },
+    {
+      "cue": "3.stall",
+      "word": "emerald",
+      "sfx": "ding",
+      "why": "One emerald a bucket: the price of everything down here."
+    },
+    {
+      "cue": "3.up",
+      "word": "ten",
+      "sfx": "clank",
+      "why": "Ten at the top: the same bucket, a different world."
+    },
+    {
+      "cue": "3.jar",
+      "word": "jar",
+      "sfx": "pop",
+      "why": "The jar, and the label she wrote."
+    },
+    {
+      "cue": "3.jar",
+      "word": "top",
+      "sfx": "swish",
+      "why": "THE TOP, in his mum's handwriting."
+    },
+    {
+      "cue": "3.price",
+      "word": "up",
+      "sfx": "sting",
+      "why": "The price goes up, above his head, where nobody can see it.",
+      "trim": -3
+    },
+    {
+      "cue": "4.good",
+      "word": "good",
+      "sfx": "chime",
+      "why": "It was a good life. Under the words, never over them.",
+      "trim": -7
+    },
+    {
+      "cue": "4.care",
+      "word": "not",
+      "sfx": "whoosh_low",
+      "why": "The tilt up to people who never look down."
+    },
+    {
+      "cue": "4.coin",
+      "word": "coin",
+      "sfx": "sparkle",
+      "why": "The coin comes down past the lens."
+    },
+    {
+      "cue": "4.coin",
+      "word": "bird",
+      "sfx": "plink",
+      "why": "It hits the water beside the jetty."
+    },
+    {
+      "cue": "4.want",
+      "word": "top",
+      "sfx": "pop",
+      "why": "'But I wanted to see the top' is the promise of the whole film."
+    },
+    {
+      "cue": "5.mum",
+      "word": "no",
+      "sfx": "thud",
+      "why": "The jar goes back on the shelf."
+    },
+    {
+      "cue": "5.old",
+      "word": "worse",
+      "sfx": "clank",
+      "why": "The oldest man's head shake lands like a gate."
+    },
+    {
+      "cue": "5.two",
+      "word": "wave",
+      "sfx": "chime",
+      "why": "Families who paid, waving at people they left."
+    },
+    {
+      "cue": "5.more",
+      "word": "more",
+      "sfx": "riser",
+      "why": "That only made him want it more: it rises into the next beat."
+    },
+    {
+      "cue": "6.basket",
+      "word": "basket",
+      "sfx": "whoosh_low",
+      "why": "The basket comes down the rope."
+    },
+    {
+      "cue": "6.coat",
+      "word": "coat",
+      "sfx": "pop",
+      "why": "The clean coat against the mud."
+    },
+    {
+      "cue": "6.touch",
+      "word": "touch",
+      "sfx": "tick",
+      "why": "He does not touch the fish: one dry tick of refusal."
+    },
+    {
+      "cue": "6.straight",
+      "word": "straight",
+      "sfx": "swish",
+      "why": "The whole town stands up at once."
+    },
+    {
+      "cue": "7.sick",
+      "word": "sick",
+      "sfx": "sting",
+      "why": "The two words that turn the film."
+    },
+    {
+      "cue": "7.woman",
+      "word": "head",
+      "sfx": "drop",
+      "why": "The headshake, and the music leaves with it."
+    },
+    {
+      "cue": "7.cure",
+      "word": "apple",
+      "sfx": "chime",
+      "why": "A golden apple, in an old book."
+    },
+    {
+      "cue": "7.gold",
+      "word": "gold",
+      "sfx": "tick",
+      "why": "Eight gold, and there is no gold here."
+    },
+    {
+      "cue": "8.where",
+      "word": "where",
+      "sfx": "blip",
+      "why": "He asks."
+    },
+    {
+      "cue": "8.point",
+      "word": "up",
+      "sfx": "riser",
+      "why": "Her finger, up: the whole plot, pointing out of the frame."
+    },
+    {
+      "cue": "8.decide",
+      "sfx": "whoosh",
+      "why": "Out of the room and onto the mountain in one cut."
+    },
+    {
+      "cue": "9.try",
+      "sfx": "swish",
+      "why": "Three days in one frame."
+    },
+    {
+      "cue": "9.boot",
+      "word": "boot",
+      "sfx": "pop",
+      "why": "The first boot."
+    },
+    {
+      "cue": "9.boot",
+      "word": "stick",
+      "sfx": "plink",
+      "why": "Then a stick."
+    },
+    {
+      "cue": "9.boot",
+      "word": "pad",
+      "sfx": "blip",
+      "why": "Then a lily pad."
+    },
+    {
+      "cue": "9.other",
+      "word": "hole",
+      "sfx": "tick",
+      "why": "The second boot, also with a hole: the punchline needs one dry beat."
+    },
+    {
+      "cue": "9.laugh",
+      "word": "laughed",
+      "sfx": "chime",
+      "why": "The town laughing."
+    },
+    {
+      "cue": "9.laugh",
+      "word": "coughed",
+      "sfx": "sting",
+      "why": "And then she coughs, and the joke is over."
+    },
+    {
+      "cue": "10.night",
+      "sfx": "whoosh",
+      "why": "Night, one lantern, alone."
+    },
+    {
+      "cue": "10.storm",
+      "word": "storm",
+      "sfx": "hit",
+      "why": "The storm hits the jetty."
+    },
+    {
+      "cue": "10.rod",
+      "word": "rod",
+      "sfx": "clank",
+      "why": "The rod goes over the counter."
+    },
+    {
+      "cue": "10.rod",
+      "word": "boat",
+      "sfx": "whoosh_low",
+      "why": "Then the boat goes up the slip."
+    },
+    {
+      "cue": "10.count",
+      "word": "emeralds",
+      "sfx": "tick",
+      "why": "Forty-one counted twice."
+    },
+    {
+      "cue": "10.count",
+      "word": "enough",
+      "sfx": "drop",
+      "why": "It was not enough."
+    },
+    {
+      "cue": "11.meet",
+      "sfx": "whoosh_low",
+      "why": "The whole town arriving on the jetty at once."
+    },
+    {
+      "cue": "11.vote",
+      "word": "vote",
+      "sfx": "blip",
+      "why": "They did not vote for the top."
+    },
+    {
+      "cue": "11.mum",
+      "word": "mum",
+      "sfx": "chime",
+      "why": "They voted for his mum: the warmest sound in the film."
+    },
+    {
+      "cue": "11.jar",
+      "word": "bag",
+      "sfx": "thud",
+      "why": "Eleven years going into a kid's bag."
+    },
+    {
+      "cue": "11.eleven",
+      "word": "Eleven",
+      "sfx": "riser",
+      "why": "Eleven years, and it rises into the climb."
+    },
+    {
+      "cue": "12.walk",
+      "sfx": "swish",
+      "why": "Two kids walking to the foot of the ladder."
+    },
+    {
+      "cue": "12.q",
+      "word": "nothing",
+      "sfx": "tick",
+      "why": "What if there is nothing up there?"
+    },
+    {
+      "cue": "12.a",
+      "word": "know",
+      "sfx": "blip",
+      "why": "Then I will know what we were saving for."
+    },
+    {
+      "cue": "13.steps",
+      "sfx": "whoosh",
+      "why": "The climb starts: the lens goes up under him."
+    },
+    {
+      "cue": "13.steps",
+      "word": "counted",
+      "sfx": "tick",
+      "why": "He counts them."
+    },
+    {
+      "cue": "13.night",
+      "word": "night",
+      "sfx": "gust",
+      "why": "Climbing all night."
+    },
+    {
+      "cue": "13.small",
+      "word": "lights",
+      "sfx": "drop",
+      "why": "The town is only lights now."
+    },
+    {
+      "cue": "14.gate",
+      "word": "gate",
+      "sfx": "clank",
+      "why": "The gate, in a wall, at the top."
+    },
+    {
+      "cue": "14.count",
+      "word": "counted",
+      "sfx": "tick",
+      "why": "He counts their money."
+    },
+    {
+      "cue": "14.raise",
+      "word": "up",
+      "sfx": "sting",
+      "why": "The price has gone up. It goes up every year."
+    },
+    {
+      "cue": "14.no",
+      "word": "not",
+      "sfx": "hit",
+      "why": "We do not sell apples for emeralds."
+    },
+    {
+      "cue": "14.eight",
+      "word": "gold",
+      "sfx": "ding",
+      "why": "An apple is eight gold."
+    },
+    {
+      "cue": "14.shut",
+      "word": "shut",
+      "sfx": "clank",
+      "why": "The gate shuts, and it is the only quick thing up there."
+    },
+    {
+      "cue": "15.sit",
+      "word": "dark",
+      "sfx": "thud",
+      "why": "He sits down on the top step."
+    },
+    {
+      "cue": "15.street",
+      "word": "street",
+      "sfx": "boom",
+      "why": "It was a street. The one big sound in the film, on the smallest reveal."
+    },
+    {
+      "cue": "16.dawn",
+      "sfx": "whoosh",
+      "why": "Dawn, and the walk back down."
+    },
+    {
+      "cue": "16.jetty",
+      "word": "jetty",
+      "sfx": "chime",
+      "why": "The whole town, every rod, in the rain."
+    },
+    {
+      "cue": "16.allnight",
+      "word": "night",
+      "sfx": "swish",
+      "why": "They fished all night for her."
+    },
+    {
+      "cue": "16.basket",
+      "word": "basket",
+      "sfx": "whoosh_low",
+      "why": "The basket, and him in it, twice in one year."
+    },
+    {
+      "cue": "16.year",
+      "word": "year",
+      "sfx": "tick",
+      "why": "A year of fish. The price."
+    },
+    {
+      "cue": "17.cold",
+      "sfx": "sting",
+      "why": "He did not do it because she was sick."
+    },
+    {
+      "cue": "17.sums",
+      "word": "worth",
+      "sfx": "clank",
+      "why": "A year of fish is worth more than an apple."
+    },
+    {
+      "cue": "17.save",
+      "word": "bottom",
+      "sfx": "chime",
+      "why": "The top did not save my mum. The bottom did."
+    },
+    {
+      "cue": "18.ate",
+      "word": "midnight",
+      "sfx": "tick",
+      "why": "Midnight, and the apple."
+    },
+    {
+      "cue": "18.ate",
+      "word": "breathing",
+      "sfx": "chime",
+      "why": "By morning, she was breathing."
+    },
+    {
+      "cue": "18.jar",
+      "word": "full",
+      "sfx": "pop",
+      "why": "The jar is still full."
+    },
+    {
+      "cue": "18.label",
+      "word": "off",
+      "sfx": "swish",
+      "why": "Somebody took the label off."
+    },
+    {
+      "cue": "18.sub",
+      "word": "Subscribe",
+      "sfx": "ding",
+      "why": "The subscribe line, on one bright bell note."
+    },
+    {
+      "cue": "1.town",
+      "word": "live",
+      "sfx": "blip",
+      "why": "A small thought under the first line."
+    },
+    {
+      "cue": "1.going",
+      "word": "join",
+      "sfx": "pop",
+      "why": "One day, we were going to join them."
+    },
+    {
+      "cue": "2.steps",
+      "word": "many",
+      "sfx": "tick",
+      "why": "How many steps: one dry tick."
+    },
+    {
+      "cue": "2.dad",
+      "word": "thousand",
+      "sfx": "tick",
+      "why": "Nine thousand, said like a fact."
+    },
+    {
+      "cue": "3.rods",
+      "word": "jetty",
+      "sfx": "pop",
+      "why": "The jetty, pointed at like a list item."
+    },
+    {
+      "cue": "3.hole",
+      "word": "bucket",
+      "sfx": "plink",
+      "why": "The bucket that answers the hole."
+    },
+    {
+      "cue": "3.stall",
+      "word": "stall",
+      "sfx": "blip",
+      "why": "The stall, one emerald a bucket."
+    },
+    {
+      "cue": "3.up",
+      "word": "same",
+      "sfx": "swish",
+      "why": "The same bucket, ten emeralds."
+    },
+    {
+      "cue": "4.good",
+      "word": "wet",
+      "sfx": "plink",
+      "why": "Wet, but good."
+    },
+    {
+      "cue": "4.care",
+      "word": "think",
+      "sfx": "drop",
+      "why": "They did not think about us at all."
+    },
+    {
+      "cue": "5.mum",
+      "word": "person",
+      "sfx": "tick",
+      "why": "The jar is not for one person."
+    },
+    {
+      "cue": "5.old",
+      "word": "ladder",
+      "sfx": "clank",
+      "why": "The oldest man, on the ladder he never climbed."
+    },
+    {
+      "cue": "5.two",
+      "word": "Six",
+      "sfx": "tick",
+      "why": "Six years."
+    },
+    {
+      "cue": "6.basket",
+      "word": "year",
+      "sfx": "tick",
+      "why": "Once a year: one tick."
+    },
+    {
+      "cue": "6.coat",
+      "word": "catch",
+      "sfx": "pop",
+      "why": "He buys our whole catch."
+    },
+    {
+      "cue": "6.touch",
+      "word": "carries",
+      "sfx": "tick",
+      "why": "Somebody else carries them."
+    },
+    {
+      "cue": "7.woman",
+      "word": "fixes",
+      "sfx": "blip",
+      "why": "The woman who fixes everybody."
+    },
+    {
+      "cue": "7.gold",
+      "word": "Eight",
+      "sfx": "tick",
+      "why": "Eight gold."
+    },
+    {
+      "cue": "8.decide",
+      "word": "top",
+      "sfx": "pop",
+      "why": "I decided to see the top."
+    },
+    {
+      "cue": "9.try",
+      "word": "First",
+      "sfx": "swish",
+      "why": "First, the stream."
+    },
+    {
+      "cue": "10.night",
+      "word": "lantern",
+      "sfx": "plink",
+      "why": "A lantern on the jetty."
+    },
+    {
+      "cue": "10.rod",
+      "word": "sold",
+      "sfx": "clank",
+      "why": "I sold my rod."
+    },
+    {
+      "cue": "11.meet",
+      "word": "night",
+      "sfx": "whoosh",
+      "why": "That night, the town met on the jetty."
+    },
+    {
+      "cue": "11.eleven",
+      "word": "family",
+      "sfx": "riser",
+      "why": "Every family here."
+    },
+    {
+      "cue": "12.walk",
+      "word": "best",
+      "sfx": "swish",
+      "why": "My best friend walked me to the ladder."
+    },
+    {
+      "cue": "13.night",
+      "word": "climbed",
+      "sfx": "gust",
+      "why": "I climbed all night."
+    },
+    {
+      "cue": "14.count",
+      "word": "money",
+      "sfx": "tick",
+      "why": "He counted our money."
+    },
+    {
+      "cue": "14.ask",
+      "word": "sell",
+      "sfx": "blip",
+      "why": "Then sell me one golden apple."
+    },
+    {
+      "cue": "14.shut",
+      "word": "quick",
+      "sfx": "clank",
+      "why": "Up there it is the only quick thing."
+    },
+    {
+      "cue": "16.jetty",
+      "word": "rod",
+      "sfx": "pop",
+      "why": "Every rod on the jetty."
+    },
+    {
+      "cue": "16.year",
+      "word": "catch",
+      "sfx": "tick",
+      "why": "Every fish we catch."
+    },
+    {
+      "cue": "18.jar",
+      "word": "Nobody",
+      "sfx": "drop",
+      "why": "Nobody wants the top now."
+    },
+    {
+      "cue": "18.label",
+      "word": "Somebody",
+      "sfx": "swish",
+      "why": "Somebody took the label off."
+    },
+    {
+      "cue": "18.sub",
+      "word": "cast",
+      "sfx": "ding",
+      "why": "Cast one more line."
+    }
+  ]
+}

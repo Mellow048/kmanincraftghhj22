@@ -20,3 +20,4 @@ export * from "./siege";
 export * from "./catsdogs";
 export * from "./creepertown";
 export * from "./endertown";
+export * from "./foxes";
