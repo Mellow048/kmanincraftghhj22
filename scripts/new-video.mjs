@@ -203,10 +203,11 @@ if (topic) {
   if (run.status === 0) console.log(`Wrote src/videos/${slug}/timing.json (estimated from the placeholder script).`);
   else console.log(`Could not estimate the script (${run.error?.message ?? run.stderr.trim()}). Keeping the starter timing. After you change narration.md, run:\n  ${estimate}`);
   console.log("");
-  console.log("MANDATORY BEFORE STARTING (Read 20k+ Hit Winners & Voice Standard):");
-  console.log("  0a. MUST READ all 3 x 20k+ hit videos + source: 20k-hits/README.md + docs/WHY-THE-3-HITS-BLEW-UP.md");
-  console.log("  0b. MUST READ fast-cut 5k/15h teardown (~1.47s/shot, visual sight-gags): docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md");
-  console.log("  0c. MUST FOLLOW TTS RULE (Male, No Accent, Energetic, Not Old, Not Too Serious): docs/VOICE-AND-TTS.md");
+  console.log("MANDATORY BEFORE STARTING (Read Hook/Retention/Payoff + 20k+ Hit Winners + Voice Standard):");
+  console.log("  0a. MUST READ Hook, Retention, Payoff, Visual-Verbal Lockstep & Motion rules: docs/VIRAL-DIRECTION-MANUAL.md");
+  console.log("  0b. MUST READ all 3 x 20k+ hit videos + source: 20k-hits/README.md + docs/WHY-THE-3-HITS-BLEW-UP.md");
+  console.log("  0c. MUST READ fast-cut 5k/15h teardown (~1.47s/shot, visual sight-gags): docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md");
+  console.log("  0d. MUST FOLLOW TTS RULE (Male, No Accent, Energetic, Not Old, Not Too Serious): docs/VOICE-AND-TTS.md");
   console.log("");
   console.log(`This is a film of the topic "${topic.name}". Its rules are in ${topic.folder}/README.md: read it first.`);
   if (topic.id === "in-this-town") console.log(`Using Monster Village Part 1? Start with ${topic.folder}/reference/monster-village/NEW-SHORT.md (frames and transfer card).`);

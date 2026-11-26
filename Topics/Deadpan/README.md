@@ -46,8 +46,8 @@ button rather than a revelation. Do not bring a Deadpan premise to the Stories t
    number>."* If the number is not exact, it is not this topic.
 3. Fill the beat sheet in [`SCRIPT.md`](SCRIPT.md). Count the words; 340–420.
 4. `python3 scripts/narration.py build <film> --estimate` and cut it to length before recording a single line.
-5. Record with `voice-08`, one clip per `# clip` line, then `build` again.
-6. Build the film: the camera language is in [`SHOTS.md`](SHOTS.md); the sound in [`SOUND.md`](SOUND.md); the parts
+5. Audition & record matching [`docs/VOICE-AND-TTS.md`](../../docs/VOICE-AND-TTS.md) (young energetic American male, natural cadence — ignore stale `voice-08` notes), one clip per `# clip` line, then `build --require-alignment`.
+6. Build the film following [`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md): the camera language is in [`SHOTS.md`](SHOTS.md); the sound in [`SOUND.md`](SOUND.md); the parts
    you can reuse are in [`PACK.md`](PACK.md).
 7. `./node_modules/.bin/tsc --noEmit`, `npm run check`, the render, then watch a frame sheet before handing it over.
 
