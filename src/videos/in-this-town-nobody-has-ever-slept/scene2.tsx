@@ -58,19 +58,21 @@ export const scene2 = storyScene(timing, {
       note: "Camera sweeps past Mum slogging heavy glowing lava pail across to Dad tending giant crimson mushrooms.",
       stage: (t) => {
         const DAD = wordAt("2.mum", "dad");
+        const mumMove = ease(ramp(t, 0, DAD)) * 1.8;
+        const dadMove = ease(ramp(t, DAD, DAD + 1.1)) * 0.45;
         return (
           <>
             <Mum
-              position={[-2.2 - ease(ramp(t, 0, DAD)) * 1.8, 0, -0.8]}
+              position={[-2.2 - mumMove, 0, -0.8]}
               rotationY={WEST}
-              walk={t * 1.3}
+              walk={mumMove}
               strain={0.55 + 0.15 * Math.sin(t * 4)}
               carry={<LavaBucket position={[0, 0.44, 0]} scale={0.68} swing={Math.sin(t * 4) * 0.2} />}
             />
             <Dad
-              position={[-8.6, 0, -4.4 + ease(ramp(t, DAD, DAD + 1.1)) * 0.45]}
+              position={[-8.6, 0, -4.4 + dadMove]}
               rotationY={SOUTH - 0.3}
-              walk={t * 0.8}
+              walk={dadMove}
               nod={0.25 + 0.18 * Math.sin(t * 5)}
             />
           </>
@@ -117,7 +119,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Mum position={[-1.0, 0, -0.3]} rotationY={SOUTH - ease(ramp(t, 0, WHY)) * 0.65} hmm={0.25} turn={-0.3 * ramp(t, 0, 1)} />
-            <Villager robe={ROBE.brown} position={[0.4, 0, -0.7]} rotationY={SOUTH + 0.6 * ramp(t, 0.2, 1)} walk={t * 0.3} />
+            <Villager robe={ROBE.brown} position={[0.4, 0, -0.7]} rotationY={SOUTH + 0.6 * ramp(t, 0.2, 1)} hmm={0.2 * ramp(t, 0.2, 1)} />
             <Hero position={[-1.6, 0, 1.4]} rotationY={NORTH + 0.4} animation="shrug" face="uneasy" time={t} />
           </>
         );

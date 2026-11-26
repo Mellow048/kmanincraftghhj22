@@ -1,7 +1,7 @@
 import type React from "react";
 import { Clouds, Dust, Glow, GodRay, LightPool, Tree, Vox, Zone, useActiveShot, useFilmTime } from "../../engine";
 import { BedBox, Bell, Hut, LampPost, Lantern, LanternLine, Room, Smoke, Stall } from "../../../Topics/InThisTown";
-import { CellarGate, ChalkWall, GlowstoneCluster, LavaSurface, MushroomRow, PLACE, RuinedDoor, SoupCauldron } from "./kit";
+import { GlowstoneCluster, LavaSurface, MushroomRow, PLACE, RuinedDoor, SoupCauldron } from "./kit";
 
 /**
  * Three distinct Zones for "In This Town, Nobody Has Ever Slept":
@@ -31,9 +31,7 @@ const NetherTown: React.FC = () => {
       <GlowstoneCluster position={[PLACE.mushrooms[0], 2.9, PLACE.mushrooms[2] + 0.9]} light={2.2} pulse={t * 3} />
 
       <Bell position={PLACE.bell} />
-      <ChalkWall position={[PLACE.chalk[0], 0, PLACE.chalk[2]]} rows={3} cols={6} />
       <Stall position={[6.5, 0, -2.8]} />
-      <CellarGate position={[PLACE.cellar[0], 0, PLACE.cellar[2]]} />
       <Hut at={[17.5, 0, -5.5]} w={6.5} wall="cobble" tint="#502c36" roof="#7e2824" windows={[-1.8, 1.8]} lit />
 
       {/* Hanging glowstone & lanterns lining the lane */}

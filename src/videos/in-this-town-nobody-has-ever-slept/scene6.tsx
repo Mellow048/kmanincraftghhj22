@@ -80,7 +80,7 @@ export const scene6 = storyScene(timing, {
               [2.2, 1.2, ROBE.elder],
               [2.8, 2.5, ROBE.red],
             ].map(([vx, vz, r], i) => (
-              <Villager key={i} robe={r as string} position={[vx as number, 0, vz as number]} lookAt={[-1.4, 0.8, 2.3]} nod={t > COLD ? 0.15 : 0} walk={i * 0.3 + t * 0.15} />
+              <Villager key={i} robe={r as string} position={[vx as number, 0, vz as number]} lookAt={[-1.4, 0.8, 2.3]} nod={t > COLD ? 0.15 : 0} />
             ))}
           </>
         );

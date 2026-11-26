@@ -25,7 +25,7 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.tried",
-      ...cam.whip({ from: [2.4, 1.5, 5.2], on: [-1.4, 1.15, 2], onTo: [0.8, 1.15, 2], fov: 38 }),
+      ...cam.whip({ from: [2.4, 1.5, 5.2], on: [-1.4, 1.15, 2], onTo: [0.8, 1.15, 2], fov: 38, ease: "inOutSine" }),
       zone: "nether",
       look: "lava-shore",
       note: "Fast whip pan onto determined Hero pounding fist and sprinting forward to try sleeping.",
@@ -82,7 +82,7 @@ export const scene4 = storyScene(timing, {
             <Strider
               position={[1.05 - ramp(t, 0, LICK) * 0.45, 0, 2.1]}
               rotationY={WEST - 0.15}
-              walk={t * 1.4}
+              walk={ramp(t, 0, LICK) * 0.45}
               headTilt={0.28 + k * 0.25}
               lick={k}
             />

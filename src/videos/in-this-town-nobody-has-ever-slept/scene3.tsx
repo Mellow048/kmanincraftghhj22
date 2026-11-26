@@ -53,10 +53,12 @@ export const scene3 = storyScene(timing, {
       note: "Crane rises sharply above steaming lava shore as bucket brigade hauls glowing buckets uphill in lockstep.",
       stage: (t) => {
         const BUCKETS = wordAt("3.lava", "buckets");
+        const mumMove = ease(ramp(t, 0, 1.9)) * 1.9;
+        const smithMove = ease(ramp(t, 0.2, 2.1)) * 1.8;
         return (
           <>
-            <Mum position={[-2.2, 0, 7.1 - ease(ramp(t, 0, 1.9)) * 1.9]} rotationY={NORTH} walk={t * 1.4} strain={0.65} carry={<LavaBucket position={[0, 0.44, 0]} scale={0.7} swing={Math.sin(t * 5) * 0.25} />} />
-            <Villager robe={ROBE.smith} position={[0.4, 0, 7.4 - ease(ramp(t, 0.2, 2.1)) * 1.8]} rotationY={NORTH} walk={t * 1.3} carry={<LavaBucket position={[0, 0.44, 0]} scale={0.7} fill={t < BUCKETS ? 0.5 : 1} />} />
+            <Mum position={[-2.2, 0, 7.1 - mumMove]} rotationY={NORTH} walk={mumMove} strain={0.65} carry={<LavaBucket position={[0, 0.44, 0]} scale={0.7} swing={Math.sin(t * 5) * 0.25} />} />
+            <Villager robe={ROBE.smith} position={[0.4, 0, 7.4 - smithMove]} rotationY={NORTH} walk={smithMove} carry={<LavaBucket position={[0, 0.44, 0]} scale={0.7} fill={t < BUCKETS ? 0.5 : 1} />} />
             <Hero position={[2.2, 0, 6.7]} rotationY={WEST} animation="reach" face="worried" time={t} />
           </>
         );
@@ -89,10 +91,11 @@ export const scene3 = storyScene(timing, {
       note: "Slider track across tallies scratched thickly into basalt wall while Baker slashes another chalk shift mark.",
       stage: (t) => {
         const THOUS = wordAt("3.marks", "thousand");
+        const step = ramp(t, 0, 1.8) * 0.4;
         return (
           <>
             <ChalkWall position={[PLACE.chalk[0], 0, PLACE.chalk[2] + 0.35]} rows={4} cols={7} highlightProgress={0.55 + ease(ramp(t, 0, THOUS + 0.6)) * 0.45} />
-            <Baker position={[PLACE.chalk[0] + 0.9 - ramp(t, 0, 1.8) * 0.4, 0, PLACE.chalk[2] + 1.1]} rotationY={NORTH} walk={t * 0.7} nod={Math.sin(t * 7) * 0.18} />
+            <Baker position={[PLACE.chalk[0] + 0.9 - step, 0, PLACE.chalk[2] + 1.1]} rotationY={NORTH} walk={step} nod={Math.sin(t * 7) * 0.18} />
             <Bubble text="4,000" position={[PLACE.chalk[0] - 0.3, 2.45, PLACE.chalk[2] + 0.6]} dark rotationY={0.2} scale={pop(t, THOUS)} />
           </>
         );

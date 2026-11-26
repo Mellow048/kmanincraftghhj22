@@ -75,7 +75,7 @@ export const scene5 = storyScene(timing, {
               [-2.5, 3.7, ROBE.elder],
               [0.3, -1.2, ROBE.farmer],
             ].map(([vx, vz, r], i) => (
-              <Villager key={i} robe={r as string} position={[vx as number, 0, vz as number]} lookAt={[0, 1, 2]} walk={Math.min(1, t * 0.6) * 0.8} strain={0.25 * ramp(t, TOWN, TOWN + 0.5)} />
+              <Villager key={i} robe={r as string} position={[vx as number, 0, vz as number]} lookAt={[0, 1, 2]} strain={0.25 * ramp(t, TOWN, TOWN + 0.5)} />
             ))}
           </>
         );
@@ -127,7 +127,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.boom",
-      ...cam.whip({ from: [-1.8, 2.2, 7.0], on: [-1.2, 1.2, 2], onTo: [1.4, 1.4, 2], fov: 48 }),
+      ...cam.whip({ from: [-1.8, 2.2, 7.0], on: [-1.2, 1.2, 2], onTo: [1.4, 1.4, 2], fov: 48, ease: "inOutSine" }),
       impacts: [{ at: 0.55, amp: 0.16, dur: 0.65 }],
       zone: "nether",
       look: "lava-shore",
@@ -167,7 +167,7 @@ export const scene5 = storyScene(timing, {
             <Block position={[PLACE.soupShed[0] - lift * 0.8, 3.8 + lift * 2.9, PLACE.soupShed[2] + 1.4]} rotation={[lift * 0.8, lift * 1.1, lift * 0.5]} size={[2.2, 0.28, 1.4]} color="#7c2824" />
             <Block position={[PLACE.soupShed[0] + 1.1 + lift * 1.2, 3.5 + lift * 3.4, PLACE.soupShed[2] + 0.8]} rotation={[-lift * 0.7, lift * 0.9, -lift * 0.4]} size={[1.8, 0.24, 1.2]} color="#5e3229" />
             <Bits position={[PLACE.soupShed[0], 3.0, PLACE.soupShed[2] + 2]} t={t} color="#52261e" count={18} power={1.8} />
-            <Villager robe={ROBE.white} position={[PLACE.soupShed[0] + 2.8, 0, PLACE.soupShed[2] + 4.0]} rotationY={SOUTH} lean={-0.3} walk={t * 1.5} />
+            <Villager robe={ROBE.white} position={[PLACE.soupShed[0] + 2.8, 0, PLACE.soupShed[2] + 4.0 + t * 1.5]} rotationY={SOUTH} lean={-0.3} walk={t * 1.5} />
           </>
         );
       },

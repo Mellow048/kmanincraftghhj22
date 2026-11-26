@@ -43,7 +43,7 @@ export const scene9 = storyScene(timing, {
     },
     {
       cue: "9.lit",
-      ...cam.whip({ from: [-2.0, 2.2, -1.8], on: [-1.4, 1.8, -5.8], onTo: [1.0, 2.0, -6.5], fov: 42 }),
+      ...cam.whip({ from: [-2.0, 2.2, -1.8], on: [-1.4, 1.8, -5.8], onTo: [1.0, 2.0, -6.5], fov: 42, ease: "inOutSine" }),
       impacts: [{ at: 0.4, amp: 0.1, dur: 0.4 }],
       zone: "under",
       look: "lava-shore",
