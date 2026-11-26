@@ -15,6 +15,7 @@ export const film = defineFilm({
   topic: "server-lore",
   look: "overworld-golden",
   post: { shaders: true },
+  audio: { src: "audio/my-dad-kept-watching-me-play-minecraft/mix.mp3" },
   captions: {
     words: timing.words,
     y: 0.67,

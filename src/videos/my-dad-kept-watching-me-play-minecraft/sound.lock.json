@@ -1,0 +1,128 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "my-dad-kept-watching-me-play-minecraft",
+  "mix": "public/audio/my-dad-kept-watching-me-play-minecraft/mix.mp3",
+  "seconds": 79.8667,
+  "built_from": {
+    "timing.json": "7c2fb0391e358bd22c2d75503bb51c5bf6907113",
+    "sound.json": "7ef3fdd53e6aaf202973d61aaa704b3335699e0a",
+    "narration.mp3": "b8000335ddd452f5a843a321521d44b6b22a4841"
+  },
+  "mix_sha1": "78d3f7283e8f1df1fe72f90942edf7e377e8d3f8",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "hope",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.house",
+      "mood": "sad",
+      "at": 25.93,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "4.silence",
+      "mood": "none",
+      "at": 42.17
+    },
+    {
+      "from": "5.laugh",
+      "mood": "hope",
+      "at": 44.2,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "7.rebuild",
+      "mood": "wonder",
+      "at": 69.77,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 8,
+  "measured": {
+    "musicUnderVoiceDb": 14.5,
+    "secondsWithoutMusic": 3.1,
+    "bedsUnderVoiceDb": 27.6,
+    "sfx": 71,
+    "sfxPerMinute": 53.3,
+    "sfxKinds": 21,
+    "longestGapSeconds": 3.0,
+    "longestGapAt": 72.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.1,
+    "voiceOverRestWorstDb": 3.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.7,
+        "t": 31.7,
+        "cue": "3.monitor",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 25.4,
+        "cue": "2.froze",
+        "sounding": [
+          "drop",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 7.1,
+        "t": 67.0,
+        "cue": "6.creeper2",
+        "sounding": [
+          "crackle",
+          "riser"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 65.3,
+        "cue": "6.shield",
+        "sounding": [
+          "place",
+          "riser"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 16.6,
+        "cue": "2.fence",
+        "sounding": [
+          "blip"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 33.1,
+        "cue": "3.torn",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}
