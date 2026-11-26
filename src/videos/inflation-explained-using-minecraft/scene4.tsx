@@ -31,26 +31,26 @@ export const scene4 = storyScene(timing, {
       cue: "6.same",
       ...cam.push({
         on: on(PLACE.bakery, -0.05, 1.25, -0.3),
-        dist: 3.8,
-        to: 2.55,
-        yaw: -16,
-        pitch: 9,
-        fov: 38,
-        screenOffset: [0, 0.12],
+        dist: 5.0,
+        to: 4.1,
+        yaw: -14,
+        pitch: 10,
+        fov: 45,
+        screenOffset: [0, 0.06],
       }),
       impacts: [{ at: slapWord, amp: 0.025, dur: 0.22 }],
       zone: "bakery",
-      note: "Miles strides forward and slams thick 10-bill stack squarely onto the stone bakery plinth.",
+      note: "Miles slams thick 10-bill stack cleanly onto the bakery plinth from the left.",
       stage: (t) => {
         const slap = ease(ramp(t, 0, Math.max(0.25, slapWord)));
         return (
           <>
             <BillStack position={on(PLACE.bakery, 0.12, 0.96 + (1 - slap) * 0.45, -0.55)} count={Math.max(2, Math.round(slap * 10))} />
             <CitizenLead
-              position={on(PLACE.bakery, -0.82 + slap * 0.32, 0, -0.15)}
+              position={on(PLACE.bakery, -0.95 + slap * 0.25, 0, -0.15)}
               rotationY={0.85}
               animation={slap < 0.7 ? "walk" : "press"}
-              animDistance={slap * 0.45}
+              animDistance={slap * 0.4}
               face="grin"
               time={t}
             />
@@ -61,16 +61,16 @@ export const scene4 = storyScene(timing, {
     {
       cue: "6.smile",
       ...cam.push({
-        on: on(PLACE.bakery, -0.45, 1.32, -0.15),
-        dist: 2.95,
-        to: 1.75,
+        on: on(PLACE.bakery, -0.35, 1.32, -0.15),
+        dist: 4.6,
+        to: 3.8,
         yaw: 16,
-        pitch: 4,
-        fov: 38,
-        screenOffset: [0, 0.14],
+        pitch: 6,
+        fov: 44,
+        screenOffset: [0, 0.06],
       }),
       zone: "bakery",
-      note: "Miles pumps fists jumping happily before turning head nervously as trouble builds.",
+      note: "Miles celebrates happily in wide bakery courtyard before trouble hits.",
       stage: (t) => {
         const cheer = ease(ramp(t, 0, 1.2));
         return (
@@ -87,24 +87,23 @@ export const scene4 = storyScene(timing, {
     {
       cue: "6.problem",
       ...cam.orbit({
-        on: on(PLACE.bakery, 0, 1.0, 0.3),
-        dist: 5.1,
-        distTo: 3.9,
+        on: on(PLACE.history, 0, 1.05, 0.25),
+        dist: 5.6,
+        distTo: 4.7,
         yaw: -14,
         yawTo: 14,
         pitch: 14,
-        fov: 42,
+        fov: 46,
         screenOffset: [0, 0.06],
       }),
-      zone: "bakery",
-      note: "Sweeping orbit across YESTERDAY vs TODAY chests while Miles points urgently between identical loaves.",
+      zone: "history",
+      note: "Unobstructed YESTERDAY vs TODAY CompareChestPair in Plaza with SAME 4 LOAVES above.",
       stage: (t) => {
         const point = ease(ramp(t, 0, 1.3));
         return (
           <>
-            <CompareChestPair position={on(PLACE.bakery, 0, 0, 0.3)} leftLabel="YESTERDAY" rightLabel="TODAY" leftCount={4} rightCount={4} />
-            <CitizenLead position={on(PLACE.bakery, 0.0, 0, 1.15)} rotationY={Math.PI - 0.3} animation="point" face="wow" time={t} />
-            <FloatingNumber text="SAME 4 LOAVES" color="#ffd84d" position={on(PLACE.bakery, 0, 2.05 + point * 0.2, 0.25)} height={0.28 * pop(t, 0.2)} />
+            <CompareChestPair position={on(PLACE.history, 0, 0, 0.25)} leftLabel="YESTERDAY" rightLabel="TODAY" leftCount={4} rightCount={4} />
+            <FloatingNumber text="SAME 4 LOAVES" color="#ffd84d" position={on(PLACE.history, 0, 2.05 + point * 0.15, 0.25)} height={0.2 * pop(t, 0.2)} />
           </>
         );
       },
@@ -112,24 +111,23 @@ export const scene4 = storyScene(timing, {
     {
       cue: "6.ovens",
       ...cam.orbit({
-        on: on(PLACE.bakery, 0, 1.2, -1.1),
-        dist: 4.1,
-        distTo: 2.95,
-        yaw: -24,
-        yawTo: 24,
-        pitch: 9,
-        fov: 40,
+        on: on(PLACE.bakery, 0, 1.2, -1.15),
+        dist: 4.8,
+        distTo: 4.0,
+        yaw: -20,
+        yawTo: 20,
+        pitch: 10,
+        fov: 45,
         screenOffset: [0, 0.06],
       }),
       zone: "bakery",
-      note: "Orbit sweeps across BreadShelf while Miles leans forward counting all 4 warm loaves.",
+      note: "Clear BreadShelf close-up showing exact same 4 warm loaves under STILL 4 with zero character blocking.",
       stage: (t) => {
         const count = ease(ramp(t, 0, 1.3));
         return (
           <>
             <BreadShelf position={on(PLACE.bakery, 0, 0, -1.15)} count={4} />
-            <CitizenLead position={on(PLACE.bakery, -0.45, 0, -0.45)} rotationY={0.95} animation="leanOver" face="frown" time={t} />
-            <FloatingNumber text="STILL 4" color="#ffd84d" position={on(PLACE.bakery, 0, 2.0 + count * 0.18, -1.0)} height={0.3 * pop(t, 0.2)} />
+            <FloatingNumber text="STILL 4" color="#ffd84d" position={on(PLACE.bakery, 0, 2.05 + count * 0.12, -1.0)} height={0.22 * pop(t, 0.2)} />
           </>
         );
       },

@@ -138,24 +138,24 @@ export const scene6 = storyScene(timing, {
       cue: "8.cheap",
       ...cam.push({
         on: on(PLACE.bakery, 0, 1.25, -0.35),
-        dist: 3.9,
-        to: 2.55,
+        dist: 5.0,
+        to: 4.2,
         yaw: 16,
-        pitch: 7,
-        fov: 38,
-        screenOffset: [0, 0.06],
+        pitch: 10,
+        fov: 45,
+        screenOffset: [0, 0.05],
       }),
       zone: "bakery",
-      note: "Sterling walks briskly up, snatches low-price PriceTag 1 loaf cleanly off stone plinth.",
+      note: "Sterling snatches low-price PriceTag 1 loaf cleanly off stone plinth.",
       stage: (t) => {
         const grab = ease(ramp(t, 0, 1.2));
         return (
           <>
             <Bread position={on(PLACE.bakery, -0.2 + grab * 0.25, 0.96 + Math.max(0, grab - 0.5) * 0.35, -0.55 + grab * 0.15)} scale={1.25} />
-            <PriceTag text="1" position={on(PLACE.bakery, -0.2, 2.25, -0.55)} scale={1.1} swing={Math.sin(t * 5) * 0.08} />
+            <PriceTag text="1" position={on(PLACE.bakery, -0.2, 2.2, -0.55)} scale={1.0} swing={Math.sin(t * 5) * 0.08} />
             <EliteLead
               variant="pres"
-              position={on(PLACE.bakery, 0.65 - grab * 0.3, 0, 0.15 - grab * 0.35)}
+              position={on(PLACE.bakery, 0.85 - grab * 0.25, 0, 0.15 - grab * 0.25)}
               rotationY={-0.75}
               animation={grab < 0.55 ? "walk" : "reach"}
               animDistance={grab * 0.45}
@@ -170,31 +170,31 @@ export const scene6 = storyScene(timing, {
       cue: "8.burn",
       ...cam.push({
         on: on(PLACE.bakery, 0, 1.25, -0.2),
-        dist: 3.9,
-        to: 2.65,
+        dist: 5.2,
+        to: 4.3,
         yaw: -14,
-        pitch: 8,
-        fov: 40,
-        screenOffset: [0, 0.06],
+        pitch: 10,
+        fov: 46,
+        screenOffset: [0, 0.05],
       }),
       zone: "bakery",
-      note: "Miles runs up too late as PriceTag jumps to 50 and bills shrink visibly beneath red -50%.",
+      note: "Miles runs up too late as PriceTag jumps to 50 and -50% fits cleanly above.",
       stage: (t) => {
         const arrive = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <PriceTag text={arrive > 0.35 ? "50" : "10"} position={on(PLACE.bakery, 0.3, 2.25, -0.55)} scale={1.15} swing={Math.sin(t * 8) * 0.14} />
+            <PriceTag text={arrive > 0.35 ? "50" : "10"} position={on(PLACE.bakery, 0.35, 2.2, -0.55)} scale={1.0} swing={Math.sin(t * 8) * 0.14} />
             <CitizenLead
-              position={on(PLACE.bakery, -0.75 + arrive * 0.35, 0, 0.5 - arrive * 0.35)}
+              position={on(PLACE.bakery, -0.95 + arrive * 0.3, 0, 0.5 - arrive * 0.3)}
               rotationY={0.45}
               animation={arrive < 0.5 ? "run" : "shrug"}
-              animDistance={arrive * 0.6}
+              animDistance={arrive * 0.55}
               face="worried"
               time={t}
             >
               <BillStack position={[0, -0.05, 0.2]} count={Math.max(2, Math.round(8 - arrive * 5))} />
             </CitizenLead>
-            <FloatingNumber text="-50%" color="#ff4f42" position={on(PLACE.bakery, -0.35, 2.15 + arrive * 0.18, 0.1)} height={0.28 * pop(t, 0.2)} />
+            <FloatingNumber text="-50%" color="#ff4f42" position={on(PLACE.bakery, -0.45, 2.15 + arrive * 0.12, 0.1)} height={0.2 * pop(t, 0.2)} />
           </>
         );
       },
@@ -202,18 +202,18 @@ export const scene6 = storyScene(timing, {
     {
       cue: "8.final",
       ...cam.truck({
-        on: on(PLACE.bakery, 0, 1.3, 0.15),
+        on: on(PLACE.history, 0, 1.3, 0.15),
         by: [0, 0, 1.1],
-        dist: 3.3,
+        dist: 4.8,
         yaw: -14,
-        pitch: 7,
-        fov: 40,
-        screenOffset: [0, 0.08],
+        pitch: 10,
+        fov: 45,
+        screenOffset: [0, 0.06],
       }),
-      zone: "bakery",
-      note: "Tracking shot ahead of exhausted Miles trudging toward camera gripping that exact single loaf.",
+      zone: "history",
+      note: "Tracking shot ahead of exhausted Miles trudging through Plaza gripping single loaf.",
       stage: (t) => (
-        <CitizenLead position={on(PLACE.bakery, 0, 0, -0.05 + t * 0.95)} rotationY={0.12} animation="stagger" animDistance={t * 1.1} face="ouch">
+        <CitizenLead position={on(PLACE.history, 0, 0, -0.05 + t * 0.95)} rotationY={0.12} animation="stagger" animDistance={t * 1.1} face="ouch">
           <Bread position={[0, -0.05, 0.2]} scale={0.75} />
         </CitizenLead>
       ),

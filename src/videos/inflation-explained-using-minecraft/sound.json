@@ -3,7 +3,7 @@
   "README": "Explainer sound sheet (~58 SFX/min, mandatory explainer_bgm_loop.wav at gain -19). Rebuild with `python3 scripts/sound.py build inflation-explained-using-minecraft` after TTS.",
   "music": {
     "track": "Topics/Explainer/explainer_bgm_loop.wav",
-    "gain": -19,
+    "gain": -15.5,
     "sections": [
       { "from": "1.hook", "mood": "explain", "why": "Upbeat Explainer background music kept ~19 dB below narrator." },
       { "from": "3.crisis", "mood": "dark", "gain": -2, "why": "Drought shortage pulls music slightly back." },

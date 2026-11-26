@@ -27,32 +27,32 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.crisis",
       ...cam.crane({
-        on: on(PLACE.bakery, 0, 1.15, 0.2),
-        dist: 4.8,
-        toDist: 3.4,
-        fromPitch: 4,
-        toPitch: 20,
-        yaw: -16,
-        fov: 42,
-        screenOffset: [0, 0.12],
+        on: on(PLACE.history, 0, 1.15, 0.2),
+        dist: 5.8,
+        toDist: 4.8,
+        fromPitch: 18,
+        toPitch: 10,
+        yaw: -14,
+        fov: 46,
+        screenOffset: [0, 0.06],
       }),
-      zone: "bakery",
+      zone: "history",
       look: "overworld-golden",
-      note: "Citizens pace restlessly throwing hands up beside empty chests as -SUPPLY surges upward.",
+      note: "Wide drought Plaza: open empty chests spaced cleanly ahead of Miles with -SUPPLY overhead.",
       stage: (t) => {
         const pace = ease(ramp(t, 0, 1.4));
         return (
           <>
-            <Chest position={on(PLACE.bakery, -0.62, 0, 0.15)} open={0.4 + pace * 0.55} gold={0} kind="emerald" />
-            <Chest position={on(PLACE.bakery, 0.62, 0, 0.15)} open={0.4 + pace * 0.55} gold={0} kind="emerald" />
-            <CitizenLead position={on(PLACE.bakery, -0.55, 0, 0.85)} rotationY={0.4} animation="shrug" face="frown" time={t} />
+            <Chest position={on(PLACE.history, -1.05, 0, 0.2)} open={0.4 + pace * 0.55} gold={0} kind="emerald" />
+            <Chest position={on(PLACE.history, 1.05, 0, 0.2)} open={0.4 + pace * 0.55} gold={0} kind="emerald" />
+            <CitizenLead position={on(PLACE.history, 0, 0, -0.65)} rotationY={0.2} animation="shrug" face="frown" time={t} />
             <ExplainerCrowd
-              positions={[on(PLACE.bakery, 0.55, 0, 0.9)]}
+              positions={[on(PLACE.history, 1.45, 0, -0.55)]}
               animation="lookAround"
               phaseStep={0.4 + t}
               seed={2}
             />
-            <FloatingNumber text="-SUPPLY" color="#ff8e2b" position={on(PLACE.bakery, 0, 1.75 + pace * 0.25, 0.35)} height={0.28 * pop(t, 0.15)} />
+            <FloatingNumber text="-SUPPLY" color="#ff8e2b" position={on(PLACE.history, 0, 2.2 + pace * 0.15, 0.2)} height={0.2 * pop(t, 0.15)} />
           </>
         );
       },
@@ -60,32 +60,32 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.empty",
       ...cam.push({
-        on: on(PLACE.bakery, -0.1, 0.9, 0.4),
-        dist: 3.8,
-        to: 2.45,
-        yaw: 18,
-        pitch: 14,
-        fov: 40,
-        screenOffset: [0, 0.12],
+        on: on(PLACE.bakery, 0, 1.1, 0.25),
+        dist: 5.0,
+        to: 4.0,
+        yaw: 16,
+        pitch: 13,
+        fov: 45,
+        screenOffset: [0, 0.06],
       }),
       impacts: [{ at: zeroWord, amp: 0.022, dur: 0.24 }],
       look: "overworld-golden",
       zone: "bakery",
-      note: "Miles leans forward ripping emerald chest lid open and reels backward as 0 EMERALDS bursts red.",
+      note: "Miles opens empty chest from well left of chest as 0 EMERALDS bursts red clearly above.",
       stage: (t) => {
         const open = ease(ramp(t, 0.05, Math.max(0.25, zeroWord)));
         const step = ease(ramp(t, zeroWord, zeroWord + 0.45));
         return (
           <>
-            <Chest position={on(PLACE.bakery, 0.2, 0, 0.3)} open={open} gold={0} kind="emerald" />
+            <Chest position={on(PLACE.bakery, 0.55, 0, 0.2)} open={open} gold={0} kind="emerald" />
             <CitizenLead
-              position={on(PLACE.bakery, -0.42 - step * 0.32, 0, 0.45 + step * 0.25)}
+              position={on(PLACE.bakery, -0.75 - step * 0.25, 0, 0.35 + step * 0.2)}
               rotationY={0.75}
               animation={step > 0.25 ? "cower" : "reach"}
               face={step > 0.25 ? "ouch" : "worried"}
               time={t}
             />
-            <FloatingNumber text="0 EMERALDS" color="#ff4f42" position={on(PLACE.bakery, 0.15, 1.45 + step * 0.25, 0.3)} height={0.3 * pop(t, zeroWord)} />
+            <FloatingNumber text="0 EMERALDS" color="#ff4f42" position={on(PLACE.bakery, 0.35, 1.8 + step * 0.2, 0.2)} height={0.2 * pop(t, zeroWord)} />
           </>
         );
       },
@@ -93,22 +93,22 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.count",
       ...cam.pan({
-        from: on(PLACE.bakery, 0.9, 2.2, 3.8),
-        on: on(PLACE.bakery, -0.65, 0.6, 0.9),
-        onTo: on(PLACE.bakery, 0.65, 0.6, -1.1),
-        fov: 42,
-        screenOffset: [0, 0.1],
+        from: on(PLACE.history, 0.9, 2.5, 4.6),
+        on: on(PLACE.history, -0.65, 0.8, 0.8),
+        onTo: on(PLACE.history, 0.65, 0.8, -0.8),
+        fov: 45,
+        screenOffset: [0, 0.06],
       }),
       look: "overworld-golden",
-      zone: "bakery",
-      note: "Sweeping pan across empty chests snapping open one after another past trudging Miles.",
+      zone: "history",
+      note: "Sweeping pan over open Plaza showing rows of empty chests spaced cleanly clear of walking Miles.",
       stage: (t) => (
         <>
-          <Chest position={on(PLACE.bakery, -0.45, 0, -0.6)} open={ease(ramp(t, 0.4, 1.0))} gold={0} kind="emerald" />
-          <Chest position={on(PLACE.bakery, 0.45, 0, 0.15)} open={ease(ramp(t, 0.2, 0.8))} gold={0} kind="emerald" />
-          <Chest position={on(PLACE.bakery, -0.35, 0, 0.85)} open={ease(ramp(t, 0.0, 0.6))} gold={0} kind="emerald" />
-          <CitizenLead position={on(PLACE.bakery, 0.15, 0, 1.05 - t * 0.85)} rotationY={Math.PI} animation="walk" animDistance={t * 1.4} face="frown" />
-          <FloatingNumber text="EMPTY" color="#ff4f42" position={on(PLACE.bakery, 0, 1.45 + t * 0.18, 0.15)} height={0.28 * pop(t, 0.1)} />
+          <Chest position={on(PLACE.history, -1.05, 0, -0.6)} open={ease(ramp(t, 0.4, 1.0))} gold={0} kind="emerald" />
+          <Chest position={on(PLACE.history, 1.15, 0, 0.15)} open={ease(ramp(t, 0.2, 0.8))} gold={0} kind="emerald" />
+          <Chest position={on(PLACE.history, -1.0, 0, 0.85)} open={ease(ramp(t, 0.0, 0.6))} gold={0} kind="emerald" />
+          <CitizenLead position={on(PLACE.history, 0.05, 0, 1.2 - t * 0.95)} rotationY={Math.PI} animation="walk" animDistance={t * 1.4} face="frown" />
+          <FloatingNumber text="EMPTY" color="#ff4f42" position={on(PLACE.history, 0, 1.85 + t * 0.15, 0.15)} height={0.2 * pop(t, 0.1)} />
         </>
       ),
     },
