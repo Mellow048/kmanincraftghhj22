@@ -100,9 +100,14 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
   if (from["timing.json"] !== textHash(path.join(dir, "timing.json"))) changed.push("timing.json");
   if (from["sound.json"] !== textHash(sheetPath)) changed.push("sound.json");
   if (!fs.existsSync(voicePath) || from["narration.mp3"] !== fileHash(voicePath)) changed.push("narration.mp3");
-  // A mix that plays a recorded track was built from that file too.
+  // A mix that plays recorded track(s) was built from those files too.
+  const tracksToCheck = lock.music_files ?? (lock.music_file ? [lock.music_file] : []);
+  for (const t of tracksToCheck) {
+    if (t && (!fs.existsSync(path.join(root, t.path)) || t.sha1 !== fileHash(path.join(root, t.path)))) {
+      changed.push(`${t.path} (the music)`);
+    }
+  }
   const track = lock.music_file;
-  if (track && (!fs.existsSync(path.join(root, track.path)) || track.sha1 !== fileHash(path.join(root, track.path)))) changed.push(`${track.path} (the music)`);
   if (changed.length > 0) {
     fail(`${tag}: the mix is out of date: ${changed.join(", ")} changed after it was built. Run: ${build}`);
     return;
@@ -124,15 +129,16 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
   // sheet names it in `music.track`, and `scripts/sound.py build` refuses a sheet of that topic without it. A film
   // finished before the rule (`madeBefore`) keeps the music it was approved with.
   const own = rules.music?.file;
+  const allowedTracks = [own, ...(rules.music?.extraFiles ?? [])].filter(Boolean).map((p) => path.normalize(p));
   let sheetTrack = null;
   try {
     sheetTrack = JSON.parse(fs.readFileSync(sheetPath, "utf8")).music?.track ?? null;
   } catch {
     sheetTrack = null;
   }
-  const playsOwn = own && sheetTrack && path.normalize(sheetTrack) === path.normalize(own);
+  const playsOwn = allowedTracks.length > 0 && sheetTrack && allowedTracks.includes(path.normalize(sheetTrack));
   if (own && !playsOwn && !(rules.music.madeBefore ?? []).includes(slug)) {
-    info(`${tag}: its music is not the topic's track (${own}). The owner chose that track for this topic's films: add "track": "${own}" to "music" in sound.json; the next \`${build}\` will ask for it.${guide}`);
+    info(`${tag}: its music is not the topic's track (${allowedTracks.join(" or ")}). The owner chose that track for this topic's films: add "track": "${own}" to "music" in sound.json; the next \`${build}\` will ask for it.${guide}`);
   }
   // The sections are written with a track too: each one is a turn of the story (silence, or the track stepping back).
   if (rules.minMusicSections && sections.length < rules.minMusicSections) {

@@ -17,6 +17,7 @@
 >    You **MUST** pick a TTS voice that is **Male, Natural American / No Accent, Energetic, Young / Not Old, and Not Too Serious**. Ignore any older document mentioning old/monotone voices (`voice-00`, `voice-01`, `voice-08`, etc.) unless the clip passes every criterion in `docs/VOICE-AND-TTS.md`.
 > 4. **[`docs/VIRAL-DIRECTION-MANUAL.md`](docs/VIRAL-DIRECTION-MANUAL.md)**, **[`docs/VIRAL-SHORTS-BLUEPRINT.md`](docs/VIRAL-SHORTS-BLUEPRINT.md)** & **[`docs/FRAMEWORK-REVIEW-AND-REMASTER.md`](docs/FRAMEWORK-REVIEW-AND-REMASTER.md)** — Visual-Verbal Lockstep ("Say It -> Show It On Screen"), Environmental Proof (Mansions/Props instead of bare walls), Wall-Occlusion prevention, smooth `inOutSine`/`linear`/`outExpo` camera curves, dual-color red/gold captions (`y: 0.67`), and `cam.*` helpers.
 > 5. **If building `--topic explainer`:** MUST read **[`Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md`](Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md)** & [`Topics/Explainer/SOUND.md`](Topics/Explainer/SOUND.md). Always pair our 2 channel leads (**`CitizenLead` + `EliteLead`**, NEVER `InThisTown` default hero/Villager), build with multi-part detailed props (`DetailedBookshelf`, `RuleBoard`, `Crown`, `BallotBox`, `StoneBillboard`, `CompareChestPair` — NEVER single-box laziness), **ALWAYS use `Topics/Explainer/explainer_bgm_loop.wav` at quiet `gain: -19` (`musicUnderVoiceDb: [17, 25]`) so BGM never overpowers narration**, cut fast (`storyScene`), and end on a seamless loop!
+> 6. **If building `--topic server-lore`:** MUST read **[`Topics/ServerLore/README.md`](Topics/ServerLore/README.md)** & [`Topics/ServerLore/SOUND.md`](Topics/ServerLore/SOUND.md). Combines 50k wholesome SMP mystery + IRL cutaways + 3D SMP UI (`ServerPlayer` nametags, `ServerChatBox`, `ScoreboardWall`, `Clock3AM`) + our shaders & smooth `inOutSine` `cam.*` motion + dual-track **`up_happy.m4a` (`0:02+`, boosted)** & **`up_sad.m4a` (boosted)** mood switching!
 
 ## 0. Before everything: read [`MASTERPROMPT-01.md`](MASTERPROMPT-01.md)
 
@@ -48,6 +49,7 @@ code.** A film built to the wrong rules cannot be fixed afterwards. It is thrown
 |---|---|---|---|
 | says "In This Town"; or tells a story that begins "In this town, …"; or asks for a film "like Same Face", "like the monster egg" or "like the treehouse video" | The topic **In This Town** | [`Topics/InThisTown/README.md`](Topics/InThisTown/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "In This Town, …" --topic in-this-town` |
 | asks to explain one thing: "Explain …", "What is …", "Why does …", "How does … work", historical/money/inflation parables | The topic **Explainer** | [`Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md`](Topics/Explainer/STUDY-NAPOLEON-EXPLAINER.md) & [`Topics/Explainer/README.md`](Topics/Explainer/README.md): fast story cuts, 2 channel leads (`CitizenLead` + `EliteLead`), composite props, loop payoff | `npm run new -- "Inflation Explained Using Minecraft" --topic explainer` |
+| asks for a wholesome SMP legend / misunderstood player / Owner rescue / redstone-deep-dark server story | The topic **Server Lore** | [`Topics/ServerLore/README.md`](Topics/ServerLore/README.md), [`Topics/ServerLore/SCRIPT.md`](Topics/ServerLore/SCRIPT.md), [`Topics/ServerLore/SOUND.md`](Topics/ServerLore/SOUND.md) (Happy + Sad Up dual-track switching) | `npm run new -- "The Player Who…" --topic server-lore` |
 | asks for a first-person story, any world, without the town or power premise | **Stories** | [`Topics/Stories/README.md`](Topics/Stories/README.md) | `npm run new -- "…" --topic stories` |
 | asks for a mundane rule taken literally, told flat, with escalating costs | **Deadpan** | [`Topics/Deadpan/README.md`](Topics/Deadpan/README.md) | `npm run new -- "…" --topic deadpan` |
 | says "What if you could …"; or tells the story of a kid who gets a power | The topic **What If** | [`Topics/WhatIf/README.md`](Topics/WhatIf/README.md) and what it lists. From this file, only sections 9–11 | `npm run new -- "What If You Could …" --topic what-if` |
@@ -62,7 +64,7 @@ short version is the topic's own `cut: "short"`: one to two minutes.
 
 **For a narrated film, follow the [directing pass](docs/DIRECTING.md) before calling it ready.** Pick the
 approved reference for the problem at hand, rehearse the word clock and blocking, then review the actual
-picture and sound. Every active topic (`explainer`, `stories`, `in-this-town`, `what-if`, `deadpan`, `recreation`) uses dynamic `storyScene` cuts.
+picture and sound. Every active topic (`explainer`, `server-lore`, `stories`, `in-this-town`, `what-if`, `deadpan`, `recreation`) uses dynamic `storyScene` cuts.
 
 What a topic gives a film, that the base does not:
 
@@ -509,6 +511,7 @@ npm run dev                 # Remotion Studio
 npm run new -- "The Title"  # scaffold a base film folder + registry entry
 npm run new -- "In This Town, …" --topic in-this-town   # scaffold a topic film from the topic's own starter
 npm run new -- "Inflation Explained Using Minecraft" --topic explainer # 2-lead story explainer, fast cuts, loop payoff
+npm run new -- "The Player Who..." --topic server-lore # wholesome 50k SMP lore, IRL cutaways, Happy/Sad Up BGM
 npm run new -- "What If You Could …" --topic what-if    # …a "What if" story: a kid and one power
 npm run typecheck           # TypeScript
 npm run check               # director/contract lint

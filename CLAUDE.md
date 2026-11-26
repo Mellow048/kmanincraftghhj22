@@ -9,7 +9,9 @@ Then `AGENTS.md`, the contract for this repository, which opens with the one que
 - "In This Town", a story that begins "In this town, …"
   → the topic in `Topics/InThisTown/`. Start with `npm run new -- "In This Town, …" --topic in-this-town`.
 - "Explain …", "What is …", "Why does …", a money lesson, inflation
-  → `Topics/Explainer/`, `--topic explainer` (continuous camera).
+  → `Topics/Explainer/`, `--topic explainer` (2-lead story cuts + loop).
+- A wholesome SMP server story / misunderstood player / Owner rescue / IRL cutaway
+  → `Topics/ServerLore/`, `--topic server-lore` (50k 7-beat SMP structure + Happy/Sad Up BGM).
 - A first-person story in any world → `--topic stories`; a deadpan escalating joke → `--topic deadpan`.
 - "What if you could …", the story of a kid who gets a power
   → the topic in `Topics/WhatIf/`. Start with `npm run new -- "What If …" --topic what-if`.

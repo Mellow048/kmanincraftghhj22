@@ -1,0 +1,114 @@
+{
+  "id": "server-lore",
+  "name": "Server Lore",
+  "folder": "Topics/ServerLore",
+  "profile": "story",
+  "state": "MEASURED",
+  "premise": {
+    "oneLiner": "A wholesome, high-retention third-person Minecraft SMP mystery told like an emotional urban legend: strange server behavior -> public mislabeling/bullying -> cruel breaking point -> real-world human truth -> Owner/community Minecraft-engineered redemption -> story-tied CTA.",
+    "mustHave": [
+      "An immediate weird server statistic, timestamp, or rule violation in seconds 0-5 proven with crisp 3D server props/UI (chat toast, scoreboard, chest book, floating badge)",
+      "An open-loop reversal promise by 0:07-0:11 ('when they found out why...') so viewers stay past the dip",
+      "Cross-cut from the Minecraft SMP server into grounded 3D real-world sets (hospital shift, bedroom PC desk, classroom) revealing the human reason behind the player's behavior",
+      "An antagonistic mistake or cruel moment on the server that creates emotional heartbreak (sad Up theme)",
+      "Owner / server community stepping in using genuine clever Minecraft mechanics (sculk sensors, redstone lamps, signed books, campfire beacons) for a visible tear-jerking payoff (happy Up theme, started cleanly at 0:02+)",
+      "Our framework's full 3D visual quality: shaders, rich multi-part props, kinetic inOutSine camera moves, and full-body locomotion — NEVER static slideshow shots or 1-inch actor slides"
+    ],
+    "never": [
+      "Clone or 1:1 copy the 3 AM Mom or Deaf Eli reference stories: model their 7-beat structure and emotional retention engine for original SMP scenarios",
+      "Leave shots static, zoomed out (> 11m at Frame 0), or separated by blank background stone walls without depth/props",
+      "Skip the happy/sad dual-track Up score dynamics or leave raw un-trimmed 0:00-0:01 silence in Happy Up"
+    ]
+  },
+  "reference": {
+    "primary": "Topics/ServerLore/reference/3am-mom/README.md",
+    "secondary": "Topics/ServerLore/reference/deaf-creeper/README.md",
+    "note": "Studied two 50k+ Shorts from the owner's reference channel: 87.9s runtime, 36-48 cuts (~1.6-1.9s median shot), 7-beat SMP-to-IRL-to-redemption spine, server chat + nametag storytelling, and Up happy/sad theme switching."
+  },
+  "camera": {
+    "builder": "storyScene",
+    "guard": "docs/VIRAL-DIRECTION-MANUAL.md",
+    "maxHardCuts": 999,
+    "note": "Combine the 50k references' fast 1.5-1.9s visual cut rhythm and 3D SMP storytelling HUD props with our engine's smooth inOutSine camera choreography (cam.push, cam.orbit, cam.crane, cam.truck, cam.ots), shaders, and >= 0.65m travel / >= 22 deg orbits."
+  },
+  "film": {
+    "seconds": [
+      65,
+      110
+    ],
+    "hardMinSeconds": 50,
+    "hardMaxSeconds": 135,
+    "hardMinWords": 170,
+    "shotSeconds": [
+      0.4,
+      4.8
+    ],
+    "medianShotSeconds": [
+      1.2,
+      2.2
+    ],
+    "wordsPerMinute": [
+      155,
+      240
+    ],
+    "words": [
+      200,
+      340
+    ],
+    "maxWordsPerShot": 18,
+    "lastLineContains": "subscribe",
+    "captions": true,
+    "shortsRule": "Target 65-110s (~220-290 words) matching the two 87.9s 50k reference Shorts. Never exceed 2:58."
+  },
+  "pack": "Topics/ServerLore/PACK.md",
+  "template": "Topics/ServerLore/template",
+  "models": {
+    "3am-mom": "Topics/ServerLore/reference/3am-mom/README.md (87.87s, 36 cuts, median 1.9s)",
+    "deaf-creeper": "Topics/ServerLore/reference/deaf-creeper/README.md (87.91s, 48 cuts, median 1.57s)"
+  },
+  "sound": {
+    "required": true,
+    "guide": "Topics/ServerLore/SOUND.md",
+    "music": {
+      "file": "Topics/ServerLore/up_happy.m4a",
+      "extraFiles": [
+        "Topics/ServerLore/up_sad.m4a"
+      ],
+      "gain": -14,
+      "minShare": 0.8,
+      "note": "Two-track Up score mastered cleanly (~110% louder presence, Happy pre-trimmed past the silent 0:00-0:01 intro straight to 0:02.000). Switch tracks per scene via music.sections[].track between up_happy.m4a (hook/SMP discovery/Owner rally/payoff/CTA) and up_sad.m4a (IRL struggle/cruel breaking point)."
+    },
+    "minMusicSections": 4,
+    "musicUnderVoiceDb": [
+      11,
+      22
+    ],
+    "maxSecondsWithoutMusic": 6,
+    "minSfxPerMinute": 45,
+    "maxGapSeconds": 5,
+    "maxBuried": 0,
+    "minVoiceOverRestDb": 3,
+    "minVoiceOverRestMedianDb": 9,
+    "lufs": [
+      -16.5,
+      -13
+    ],
+    "maxTruePeakDb": -0.3,
+    "bedDefault": "village",
+    "moodDefault": "warm",
+    "bedForLook": {
+      "overworld-night": "night"
+    },
+    "bedForZone": {
+      "server": "village",
+      "town": "village",
+      "irl": "room",
+      "hospital": "room",
+      "classroom": "room",
+      "bedroom": "room",
+      "deepdark": "cave",
+      "cave": "cave",
+      "mine": "cave"
+    }
+  }
+}

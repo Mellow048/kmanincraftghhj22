@@ -29,6 +29,8 @@ export { Puffs, SoundRings, SubscribeSign } from "../InThisTown/creatures";
 // the people of a Minecraft village, and what a village is built from
 export { ADULT, CHILD, ROBE, Villager, villagerChest, villagerFace } from "../InThisTown/villagers";
 export type { VillagerProps } from "../InThisTown/villagers";
+export { Creeper, Skeleton, Zombie } from "../InThisTown/monsters";
+export type { Mood, MonsterProps } from "../InThisTown/monsters";
 export { Fence, Hut, LampPost, Room, Stall } from "../InThisTown/places";
 export { BedBox } from "../InThisTown/things";
 

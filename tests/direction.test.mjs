@@ -153,13 +153,13 @@ test('every narrated starter scaffolds with its own identity; drafts rehearse bu
     fs.symlinkSync(path.join(root, 'src/engine'), path.join(tmp, 'src/engine'), 'dir');
     fs.symlinkSync(path.join(root, 'node_modules'), path.join(tmp, 'node_modules'), 'dir');
     for (const name of ['new-video.mjs', 'narration.py']) fs.copyFileSync(path.join(root, 'scripts', name), path.join(tmp, 'scripts', name));
-    for (const dir of ['InThisTown', 'Stories', 'Deadpan', 'Explainer', 'WhatIf', 'Recreation']) {
+    for (const dir of ['InThisTown', 'Stories', 'Deadpan', 'Explainer', 'WhatIf', 'Recreation', 'ServerLore']) {
       const dest = path.join(tmp, 'Topics', dir); fs.mkdirSync(dest);
       for (const f of fs.readdirSync(path.join(root, 'Topics', dir)).filter(f => f === 'template' || f === 'topic.json' || /\.tsx?$/.test(f))) {
         fs.symlinkSync(path.join(root, 'Topics', dir, f), path.join(dest, f), f === 'template' ? 'dir' : 'file');
       }
     }
-    for (const topic of ['in-this-town', 'stories', 'deadpan', 'what-if', 'explainer', 'recreation']) {
+    for (const topic of ['in-this-town', 'stories', 'deadpan', 'what-if', 'explainer', 'recreation', 'server-lore']) {
       const id = 'probe-' + topic;
       run(process.execPath, ['scripts/new-video.mjs', id, '--topic', topic], tmp);
       const film = await loadFilm(tmp, id);

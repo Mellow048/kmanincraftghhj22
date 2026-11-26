@@ -8,7 +8,8 @@ its own references and its own kit. The engine in `src/engine/` is shared by all
 | [In This Town](InThisTown/README.md) | First-person town-rule story, no longer than three minutes | [Same Face and the reference index](InThisTown/reference/README.md) |
 | [Stories](Stories/README.md) | First-person story, any world; a cost, turn and visible payoff | `--topic stories` |
 | [What If](WhatIf/README.md) | A kid gets one impossible power | `--topic what-if` |
-| [Explainer](Explainer/README.md) | A factual question; fly to the exhibits without a cut | `--topic explainer` |
+| [Explainer](Explainer/README.md) | A factual question; 2 channel leads, fast story cuts, loop payoff | `--topic explainer` |
+| [Server Lore](ServerLore/README.md) | Wholesome 50k SMP mystery, IRL cutaways, Owner rally, Happy/Sad Up BGM | `--topic server-lore` |
 | [Deadpan](Deadpan/README.md) | A mundane rule taken literally; fast escalation and an ironic button | `--topic deadpan` |
 | [Recreation](Recreation/README.md) | Real-life meme stories in a block town, not game mechanics | [Hus hus reference: approved MP4 and source](Recreation/Hus%20hus%20reference/README.md) · `--topic recreation` |
 

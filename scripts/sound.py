@@ -1690,42 +1690,89 @@ def decode_stereo(path: str):
     return np.frombuffer(raw.stdout, dtype="<f4").astype(float).reshape(-1, 2)
 
 
+def _normalized_loop(path: str, start_sec: float, length: int, v_level: float, music_gain: float):
+    """Decode stereo track, trim start_sec, normalize overall loudness against voice, and loop to `length`."""
+    y = decode_stereo(path)
+    start = min(max(0, n_of(start_sec)), max(0, len(y) - 1))
+    y = y[start:]
+    if len(y) < min(SR, length):
+        sys.exit(f"music.track: {path} is too short after trackFrom")
+    frames = rms_frames(heard(y[: min(len(y), SR * 60)]), 0.05)
+    lit = frames[frames > frames.max() * 0.05] if frames.max() > 0 else frames
+    level = math.sqrt(float(np.mean(lit ** 2))) if len(lit) else 1.0
+    if level > 0:
+        y = y * (v_level * db(music_gain) / level)
+    while len(y) < length:
+        y = np.concatenate([y, y])
+    return y[:length].copy()
+
+
+def _section_curve(sections, i_set: set[int], clock, total: int, hop: float = 0.02) -> np.ndarray:
+    """Smooth 0.5s crossfade envelope that is 0 outside `i_set` and db(gain) inside active sections."""
+    steps = int(total / SR / hop) + 2
+    curve = np.zeros(steps)
+    for i, part in enumerate(sections):
+        if i not in i_set or part["mood"] == "none":
+            continue
+        end = sections[i + 1]["t"] if i + 1 < len(sections) else clock.duration
+        a, b = int(part["t"] / hop), int(end / hop) + 1
+        curve[a:b] = db(float(part.get("gain", 0.0)))
+    width = max(1, int(0.5 / hop))
+    curve = np.convolve(np.pad(curve, width, mode="edge"), np.ones(width) / width, mode="same")[width:-width]
+    return np.interp(np.arange(total) / SR, (np.arange(steps) + 0.5) * hop, curve)
+
+
 def track_music(track: str, sheet, sections, clock, total: int, v_level: float, music_gain: float):
     """
-    The music from a recorded file: `music.track` in the sound sheet. `music.trackFrom` is the second of
-    the file the film starts on. It loops if the film is longer. It is levelled like the written music
-    (`music.gain` dB against the voice), fades out with the film, and follows the sections: silence under
-    a "none" section, and each section's own `gain`, with half-second ramps between them.
+    Play recorded background track(s) (default `music.track`, plus optional per-section `track` overrides).
+    In single-track mode the track runs continuously against film time; in multi-track mode each contiguous
+    run of sections sharing a track starts cleanly at its section entrance and crossfades over 0.5s.
     """
     path = os.path.join(ROOT, track)
     if not os.path.exists(path):
         sys.exit(f"music.track: no file at {track}")
-    y = decode_stereo(path)
-    start = n_of(float(sheet["music"].get("trackFrom", 0.0)))
-    y = y[start:]
-    if len(y) < SR:
-        sys.exit(f"music.track: {track} is too short after trackFrom")
-    while len(y) < total:
-        y = np.concatenate([y, y])
-    y = y[:total].copy()
-    frames = rms_frames(heard(y), 0.05)
-    level = math.sqrt(float(np.mean(frames[frames > frames.max() * 0.05] ** 2))) if frames.max() > 0 else 1.0
-    y *= v_level * db(music_gain) / max(level, 1e-9)
-    # one gain per 20 ms, from the sections, then smoothed so a change is a ramp and not a click
-    hop = 0.02
-    steps = int(total / SR / hop) + 2
-    curve = np.ones(steps)
+    has_per_section_track = any(part.get("track") for part in sections)
+    if not has_per_section_track:
+        y = _normalized_loop(path, float(sheet["music"].get("trackFrom", 0.0)), total, v_level, music_gain)
+        if sections:
+            active = {i for i, part in enumerate(sections) if part["mood"] != "none"}
+            y *= _section_curve(sections, active, clock, total)[:, None]
+        y[: n_of(0.05)] *= np.linspace(0.0, 1.0, n_of(0.05))[:, None]
+        out = n_of(0.8)
+        y[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
+        return y
+
+    # Multi-track mode: group contiguous active sections using the same normalized track path (unless restarted).
+    runs: list[tuple[str, float, float, set[int]]] = []
+    cur_key = None
     for i, part in enumerate(sections):
-        end = sections[i + 1]["t"] if i + 1 < len(sections) else clock.duration
-        a, b = int(part["t"] / hop), int(end / hop) + 1
-        curve[a:b] = 0.0 if part["mood"] == "none" else db(float(part.get("gain", 0.0)))
-    width = int(0.5 / hop)
-    curve = np.convolve(np.pad(curve, width, mode="edge"), np.ones(width) / width, mode="same")[width:-width]
-    y *= np.interp(np.arange(total) / SR, (np.arange(steps) + 0.5) * hop, curve)[:, None]
-    y[: n_of(0.05)] *= np.linspace(0.0, 1.0, n_of(0.05))[:, None]
+        if part["mood"] == "none":
+            cur_key = None
+            continue
+        sec_track = os.path.normpath(part.get("track") or track)
+        sec_from = part.get("trackFrom")
+        if cur_key == sec_track and sec_from is None and not part.get("restart"):
+            runs[-1][3].add(i)
+        else:
+            start_off = float(sec_from if sec_from is not None else sheet["music"].get("trackFrom", 0.0) if i == 0 else 0.0)
+            runs.append((sec_track, part["t"], start_off, {i}))
+            cur_key = sec_track
+
+    y_mix = np.zeros((total, 2))
+    fade_margin = 0.3
+    for sec_track, run_t, start_off, idx_set in runs:
+        sec_path = os.path.join(ROOT, sec_track)
+        if not os.path.exists(sec_path):
+            sys.exit(f"music.sections.track: no file at {sec_track}")
+        env = _section_curve(sections, idx_set, clock, total)
+        start_idx = max(0, n_of(run_t - fade_margin))
+        seg = _normalized_loop(sec_path, start_off, total - start_idx, v_level, music_gain)
+        y_mix[start_idx : start_idx + len(seg)] += seg * env[start_idx : start_idx + len(seg), None]
+
+    y_mix[: n_of(0.05)] *= np.linspace(0.0, 1.0, n_of(0.05))[:, None]
     out = n_of(0.8)
-    y[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
-    return y
+    y_mix[-out:] *= np.linspace(1.0, 0.0, out)[:, None] ** 1.5
+    return y_mix
 
 
 def decode(path: str):
@@ -1874,9 +1921,13 @@ def read_sheet(p: dict, clock: Clock) -> dict:
             problems.append(f'music: section "{b["from"]}" does not come after "{a["from"]}"')
     if sections and sections[0]["t"] > 0.01:
         problems.append(f'music: the first section must start on the first cue ("{clock.order[0]}"). Use mood "none" for silence.')
-    # One recorded track, named by the sheet (`music.track`, a path from the top of the repository).
+    # One recorded track, named by the sheet (`music.track`, a path from the top of the repository),
+    # plus optional per-section `track` overrides for two-track mood switching (e.g. happy/sad).
     if music.get("track") and not os.path.isfile(os.path.join(ROOT, music["track"])):
         problems.append(f'music.track: there is no "{music["track"]}". The path starts at the top of the repository')
+    for i, part in enumerate(sections):
+        if part.get("track") and not os.path.isfile(os.path.join(ROOT, part["track"])):
+            problems.append(f'music.sections[{i}].track: there is no "{part["track"]}". The path starts at the top of the repository')
     if music.get("file"):
         problems.append(f'music.file is not read. Name the track in "track": "music": {{ "track": "{music["file"]}", … }}')
 
@@ -1933,21 +1984,29 @@ def voice_levels(voice):
 
 def topic_music(p: dict, film: str, clock: Clock, sheet: dict) -> list[str]:
     """
-    A topic can name ONE track for all its films (`sound.music.file` in its topic.json): the owner chose it.
-    Returns what is wrong with this sheet by that rule. Films finished before the rule are listed in
-    `sound.music.madeBefore`, and keep the music they were approved with.
+    A topic can name ONE track (`sound.music.file`) or a companion set (`extraFiles`, e.g. happy/sad tracks)
+    for all its films in topic.json. Returns what is wrong with this sheet by that rule. Films finished before
+    the rule are listed in `sound.music.madeBefore`, and keep the music they were approved with.
     """
     rule = topic_sound(p["video"]).get("music") or {}
     want = rule.get("file")
     if not want or film in rule.get("madeBefore", []):
         return []
+    allowed = [os.path.normpath(x) for x in [want, *(rule.get("extraFiles") or [])] if x]
     fix = (
         f'In sound.json: "music": {{ "track": "{want}", "gain": {rule.get("gain", -16)}, "sections": [ … ] }}. '
         + (f"See {rule['guide']}. " if rule.get("guide") else "")
         + "(A film that was finished before the rule keeps its music: add its id to sound.music.madeBefore in the topic's topic.json.)"
     )
-    if os.path.normpath(sheet["music"].get("track") or "") != os.path.normpath(want):
-        return [f"this topic's films play the owner's track, {want}, and this sheet does not. {fix}"]
+    main_track = os.path.normpath(sheet["music"].get("track") or "")
+    if main_track not in allowed:
+        return [f"this topic's films play the owner's track ({', '.join(allowed)}), and this sheet does not. {fix}"]
+    for i, part in enumerate(sheet["sections"]):
+        if part["mood"] == "none":
+            continue
+        sec_track = os.path.normpath(part.get("track") or main_track)
+        if sec_track not in allowed:
+            return [f"music.sections[{i}] plays {sec_track}, which is not one of this topic's tracks ({', '.join(allowed)}). {fix}"]
     sections = sheet["sections"]
     ends = [part["t"] for part in sections[1:]] + [clock.duration]
     played = sum(end - part["t"] for part, end in zip(sections, ends) if part["mood"] != "none")
@@ -2256,9 +2315,10 @@ def stale(p: dict) -> list[str]:
     for name, path, fn in (("timing.json", p["timing"], text_hash), ("sound.json", p["sheet"], text_hash), ("narration.mp3", p["voice"], file_hash)):
         if lock.get("built_from", {}).get(name) != fn(path):
             changed.append(f"{name} changed after the mix was built")
-    track = lock.get("music_file")
-    if track and (not os.path.isfile(os.path.join(ROOT, track["path"])) or track.get("sha1") != file_hash(os.path.join(ROOT, track["path"]))):
-        changed.append(f"{track['path']} (the music) changed after the mix was built")
+    tracks_to_check = list(lock.get("music_files") or ([lock["music_file"]] if lock.get("music_file") else []))
+    for track in tracks_to_check:
+        if track and (not os.path.isfile(os.path.join(ROOT, track["path"])) or track.get("sha1") != file_hash(os.path.join(ROOT, track["path"]))):
+            changed.append(f"{track['path']} (the music) changed after the mix was built")
     if not os.path.exists(p["mix"]):
         changed.append("mix.mp3 is missing")
     elif lock.get("mix_sha1") != file_hash(p["mix"]):
@@ -2300,6 +2360,10 @@ def build(film: str, stems: bool, check_only: bool = False) -> int:
                 break
             ceiling -= peak - TRUE_PEAK_DB + 0.1
         fails = report(film, m, placed, lufs, peak, lift, gain)
+        used_tracks = []
+        for candidate in [sheet["music"].get("track"), *(s.get("track") for s in sheet["sections"] if s.get("mood") != "none")]:
+            if candidate and candidate not in used_tracks:
+                used_tracks.append(candidate)
         lock = {
             "tool": f"scripts/sound.py v{VERSION}",
             "film": film,
@@ -2307,8 +2371,9 @@ def build(film: str, stems: bool, check_only: bool = False) -> int:
             "seconds": round(clock.duration, 4),
             "built_from": {"timing.json": text_hash(p["timing"]), "sound.json": text_hash(p["sheet"]), "narration.mp3": file_hash(p["voice"])},
             "mix_sha1": file_hash(p["mix"]),
-            "music_sections": [{"from": s["from"], "mood": s["mood"], "at": round(s["t"], 2)} for s in sheet["sections"]],
+            "music_sections": [{"from": s["from"], "mood": s["mood"], "at": round(s["t"], 2), **({"track": s["track"]} if s.get("track") else {})} for s in sheet["sections"]],
             **({"music_file": {"path": sheet["music"]["track"], "sha1": file_hash(os.path.join(ROOT, sheet["music"]["track"]))}} if sheet["music"].get("track") else {}),
+            **({"music_files": [{"path": tp, "sha1": file_hash(os.path.join(ROOT, tp))} for tp in used_tracks]} if len(used_tracks) > 1 else {}),
             "beds": len(sheet["beds"]),
             "measured": {**m, "lufs": lufs, "truePeakDb": peak, "limiterMaxDb": round(abs(to_db(float(gain.min()))), 1)},
             "failures": fails,
