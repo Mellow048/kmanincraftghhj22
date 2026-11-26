@@ -56,7 +56,7 @@ import {
   vlerp,
   wordClock,
 } from "../../../Topics/ServerLore";
-import { Dad, IronAxe, Laptop, LaptopSideTable, OakLogDrop, Son, SpeechCard, StaircaseHall, StarterHouse, WoodenShield } from "./props";
+import { Dad, DeathPuff, DroppedBlock, IronAxe, Laptop, LaptopSideTable, OakLogDrop, Son, SpeechCard, StaircaseHall, StarterHouse, WoodenShield } from "./props";
 import timingJson from "./timing.json";
 
 export {
@@ -68,7 +68,9 @@ export {
   Creeper,
   DEG,
   Dad,
+  DeathPuff,
   DeskSetup,
+  DroppedBlock,
   Dust,
   EAST,
   EmberDrift,

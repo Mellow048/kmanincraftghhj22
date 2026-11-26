@@ -44,7 +44,7 @@ Music: `Topics/ServerLore/up_happy.m4a` (`0:02+`, boosted) -> `Topics/ServerLore
 [6.teach]     This time I showed Dad every single survival control.
 [6.wood]      Dad swung his axe cleanly and broke real oak wood!
 [6.chest]     Then I opened my spawn chest beside the campfire
-[6.shield]    and handed Dad his own crafted wooden shield.
+[6.shield]    and handed Dad his own crafted shield.
 [6.creeper2]  When another creeper snuck behind our oak fence,
 [6.block]     Dad raised his shield and blocked the blast unharmed!
 

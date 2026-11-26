@@ -12,7 +12,7 @@ import {
   Vox,
 } from "../../../Topics/ServerLore";
 import type { ServerPlayerProps } from "../../../Topics/ServerLore";
-import { plankTex, wordBitmap, wordTexture } from "../../engine";
+import { plankTex, useFilmTime, wordBitmap, wordTexture } from "../../engine";
 import type { Vec3 } from "../../engine";
 
 /** Son protagonist ("Sam") in blue hoodie. */
@@ -67,6 +67,64 @@ export const IronAxe: React.FC<{
     <Block position={[0.22, 0.44, 0]} size={[0.14, 0.12, 0.085]} color="#aeb8c4" metalness={0.55} roughness={0.3} />
   </group>
 );
+
+/** Pickable bobbing/spinning dropped Minecraft wood plank or log block item in crater/forest. */
+export const DroppedBlock: React.FC<{
+  position?: Vec3;
+  kind?: "plank" | "log";
+  seed?: number;
+}> = ({ position = [0, 0.3, 0], kind = "plank", seed = 1 }) => {
+  const clock = useFilmTime();
+  const yBob = 0.32 + Math.sin(clock * 3.4 + seed * 1.7) * 0.11;
+  const spin = clock * 1.8 + seed * 1.1;
+  return (
+    <group position={[position[0], position[1] + yBob, position[2]]} rotation={[0.08, spin, 0.06]}>
+      <Block
+        position={[0, 0, 0]}
+        size={[0.34, 0.34, 0.34]}
+        map={plankTex(kind === "log" ? "#6b4928" : "#a87b4a")}
+      />
+      {kind === "log" ? <Block position={[0, 0.175, 0]} size={[0.26, 0.014, 0.26]} map={plankTex("#b88a55")} /> : null}
+      <Glow position={[0, 0, 0]} size={0.62} color="#ffe39a" opacity={0.18} />
+    </group>
+  );
+};
+
+/** Classic Minecraft white/gray death smoke puff burst when a player dies. */
+export const DeathPuff: React.FC<{
+  position?: Vec3;
+  age?: number;
+}> = ({ position = [0, 0, 0], age = 0 }) => {
+  if (age < 0 || age > 1.35) return null;
+  const p = Math.min(1, age / 0.9);
+  const fade = Math.max(0, 1 - Math.max(0, (age - 0.35) / 0.9));
+  if (fade <= 0.02) return null;
+  const puffs: [number, number, number, number][] = [
+    [0, 0.7, 0, 0.58],
+    [-0.45, 0.9, 0.32, 0.48],
+    [0.48, 0.85, -0.25, 0.5],
+    [-0.25, 1.35, -0.35, 0.44],
+    [0.32, 1.45, 0.35, 0.46],
+    [0, 1.85, 0, 0.4],
+    [-0.58, 0.5, -0.15, 0.42],
+    [0.55, 0.55, 0.28, 0.42],
+  ];
+  return (
+    <group position={position}>
+      {puffs.map(([ox, oy, oz, sz], i) => (
+        <Block
+          key={i}
+          position={[ox * (0.4 + p * 1.15), oy + p * (0.65 + (i % 3) * 0.25), oz * (0.4 + p * 1.15)]}
+          size={[sz * (1 + p * 0.45) * fade, sz * (1 + p * 0.45) * fade, sz * (1 + p * 0.45) * fade]}
+          color={i % 2 === 0 ? "#f2f4f7" : "#cfd6df"}
+          opacity={fade * 0.92}
+          transparent
+          castShadow={false}
+        />
+      ))}
+    </group>
+  );
+};
 
 /** Collectible floating oak log item dropped cleanly after chopping wood. */
 export const OakLogDrop: React.FC<{
@@ -162,10 +220,13 @@ export const StarterHouse: React.FC<{
         </>
       ) : (
         <>
-          {/* Blast crater floor hole + scorched rubble blocks + fallen door */}
+          {/* Blast crater floor hole + pickable bobbing/spinning Minecraft wood block drops */}
           <Vox kind="cobble" position={[-0.55, 0.04, 1.45]} size={[2.9, 0.18, 2.5]} tint="#2a2d34" />
-          <Block position={[-1.35, 0.22, 2.35]} rotation={[0.2, 0.4, 0.3]} size={[0.55, 0.35, 0.48]} map={plankTex("#59412b")} />
-          <Block position={[0.45, 0.16, 2.6]} rotation={[1.35, 0.3, 0.1]} size={[0.85, 0.12, 1.65]} map={plankTex("#694425")} />
+          <DroppedBlock position={[-1.35, 0.12, 2.25]} kind="plank" seed={1} />
+          <DroppedBlock position={[-0.45, 0.12, 1.85]} kind="log" seed={2} />
+          <DroppedBlock position={[0.35, 0.12, 2.45]} kind="plank" seed={3} />
+          <DroppedBlock position={[-1.15, 0.12, 0.85]} kind="plank" seed={4} />
+          <DroppedBlock position={[0.15, 0.12, 0.95]} kind="log" seed={5} />
           <Block position={[1.45, 0.85, 1.9]} size={[1.3, 1.5, 0.38]} map={plankTex("#8c6238")} />
           <Glow position={[-0.55, 0.35, 1.45]} size={1.8} color="#ff6828" opacity={0.18} />
         </>
@@ -203,24 +264,67 @@ export const StarterHouse: React.FC<{
   );
 };
 
-/** IRL two-story wooden staircase landing + downstairs console table holding spare Laptop. */
+/** IRL two-story cozy living-room staircase landing + wainscoting + paintings + bookshelf + console table. */
 export const StaircaseHall: React.FC<{
   position?: Vec3;
   rotationY?: number;
   withLaptop?: boolean;
 }> = ({ position = [0, 0, 0], rotationY = 0, withLaptop = true }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
-    <Block position={[0, -0.18, 0]} size={[11, 0.36, 11]} map={plankTex("#7c5938", [5, 5])} />
-    <Block position={[0, 2.4, -3.4]} size={[11, 4.8, 0.38]} color="#3a404f" />
-    {/* Wooden stair steps rising from y=0 (z=+0.4) up toward upper hall landing (y=2.1, z=-2.2) */}
+    {/* Warm hardwood floor + woven crimson living room rug */}
+    <Block position={[0, -0.18, 0]} size={[12, 0.36, 12]} map={plankTex("#7c5938", [5, 5])} />
+    <Block position={[0.5, 0.015, 1.75]} size={[3.6, 0.025, 2.2]} color="#7c2e2e" />
+    <Block position={[0.5, 0.022, 1.75]} size={[3.1, 0.02, 1.75]} color="#9e433c" />
+
+    {/* Cozy two-tone wainscoted back & right walls */}
+    <Block position={[0, 2.4, -3.4]} size={[12, 4.8, 0.38]} color="#d8cfbd" />
+    <Block position={[0, 0.65, -3.18]} size={[12, 1.3, 0.08]} map={plankTex("#5e3f26", [6, 1])} />
+    <Block position={[0, 1.32, -3.15]} size={[12, 0.08, 0.12]} map={plankTex("#472f1c", [6, 1])} />
+    <Block position={[3.8, 2.4, 0]} size={[0.38, 4.8, 12]} color="#cfc5b2" />
+    <Block position={[3.58, 0.65, 0]} size={[0.08, 1.3, 12]} map={plankTex("#5e3f26", [6, 1])} />
+
+    {/* Sunlit window with curtains on left back wall */}
+    <Block position={[-2.9, 2.35, -3.16]} size={[1.7, 1.55, 0.06]} color="#b8e2ff" emissive="#8ed0ff" emissiveIntensity={0.45} castShadow={false} />
+    <Block position={[-2.9, 2.35, -3.14]} size={[1.82, 0.08, 0.1]} map={plankTex("#472f1c")} />
+    <Block position={[-3.72, 2.35, -3.12]} size={[0.26, 1.7, 0.1]} color="#3a5e7c" />
+    <Block position={[-2.08, 2.35, -3.12]} size={[0.26, 1.7, 0.1]} color="#3a5e7c" />
+
+    {/* Wooden stair steps rising from y=0 (z=+0.55) up to upper landing + handrail & balusters */}
     {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-      <Block
-        key={i}
-        position={[-0.7, 0.16 + i * 0.3, 0.55 - i * 0.42]}
-        size={[2.1, 0.32, 0.46]}
-        map={plankTex("#8f6239", [2, 1])}
-      />
+      <group key={i}>
+        <Block
+          position={[-0.7, 0.16 + i * 0.3, 0.55 - i * 0.42]}
+          size={[2.1, 0.32, 0.46]}
+          map={plankTex("#8f6239", [2, 1])}
+        />
+        <Block
+          position={[0.3, 0.62 + i * 0.3, 0.55 - i * 0.42]}
+          size={[0.06, 0.72, 0.06]}
+          map={plankTex("#593a20")}
+        />
+      </group>
     ))}
+    <Block position={[0.3, 1.9, -0.7]} rotation={[0.62, 0, 0]} size={[0.1, 0.1, 3.2]} map={plankTex("#4c3018")} />
+
+    {/* Framed family paintings climbing along back wall */}
+    <Block position={[-1.4, 2.2, -3.18]} size={[0.72, 0.56, 0.05]} color="#4e3520" />
+    <Block position={[-1.4, 2.2, -3.15]} size={[0.56, 0.42, 0.03]} color="#68a85e" />
+    <Block position={[-0.2, 2.75, -3.18]} size={[0.82, 0.62, 0.05]} color="#4e3520" />
+    <Block position={[-0.2, 2.75, -3.15]} size={[0.66, 0.46, 0.03]} color="#5b8ec9" />
+
+    {/* Cozy tall oak bookshelf + colorful books + potted plant on right */}
+    <group position={[2.65, 0, -2.55]}>
+      <Block position={[0, 1.15, 0]} size={[1.35, 2.3, 0.52]} map={plankTex("#5a3b22")} />
+      <Block position={[-0.25, 0.85, 0.04]} size={[0.5, 0.28, 0.4]} color="#c94b4b" />
+      <Block position={[0.25, 0.85, 0.04]} size={[0.45, 0.3, 0.4]} color="#4c84c9" />
+      <Block position={[-0.1, 1.45, 0.04]} size={[0.65, 0.28, 0.4]} color="#e0b248" />
+      <Block position={[0.35, 1.45, 0.04]} size={[0.32, 0.26, 0.4]} color="#52a868" />
+    </group>
+    <group position={[2.85, 0, -0.45]}>
+      <Block position={[0, 0.25, 0]} size={[0.42, 0.5, 0.42]} color="#9e5332" />
+      <Block position={[0, 0.72, 0]} size={[0.58, 0.55, 0.58]} color="#3e8242" />
+    </group>
+
     {/* Downstairs hallway console oak table + warm hall light */}
     <group position={[1.35, 0, 1.15]}>
       <Block position={[0, 0.74, 0]} size={[1.45, 0.08, 0.75]} map={plankTex("#5e4028")} />
@@ -234,7 +338,7 @@ export const StaircaseHall: React.FC<{
       ))}
       {withLaptop ? <Laptop position={[0, 0.78, 0]} rotationY={-0.35} screenText="MC READY" screenColor="#5de8a0" scale={0.95} /> : null}
     </group>
-    <pointLight position={[0.4, 3.6, 1.4]} color="#ffe9c4" intensity={6} distance={13} decay={2} />
+    <pointLight position={[0.4, 3.6, 1.4]} color="#ffe9c4" intensity={6.5} distance={14} decay={2} />
   </group>
 );
 
@@ -247,7 +351,7 @@ export const LaptopSideTable: React.FC<{ position?: Vec3 }> = ({ position = [0, 
   </group>
 );
 
-/** Crisp clean floating 3D comic caption/speech placard in world space (zero HTML overlays). */
+/** Crisp clean floating 3D comic caption/speech placard sized safely inside 9:16 margins. */
 export const SpeechCard: React.FC<{
   text: string;
   position?: Vec3;
@@ -255,16 +359,19 @@ export const SpeechCard: React.FC<{
   color?: string;
   bg?: string;
   scale?: number;
-}> = ({ text, position = [0, 2.65, 0], rotationY = 0, color = "#ffffff", bg = "#141926", scale = 1 }) => {
+}> = ({ text, position = [0, 2.45, 0], rotationY = 0, color = "#ffffff", bg = "#141926", scale = 1 }) => {
   const tex = useMemo(() => wordTexture(text), [text]);
   const gw = useMemo(() => wordBitmap(text).width, [text]);
-  const textW = Math.max(0.8, ((gw + 6) / 11) * 0.22);
-  const bgW = textW + 0.36;
+  const rawW = Math.max(0.75, ((gw + 6) / 11) * 0.16);
+  const fit = Math.min(1, 1.85 / rawW);
+  const textW = rawW * fit;
+  const textH = 0.19 * fit;
+  const bgW = textW + 0.28;
   return (
     <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
-      <Block position={[0, 0, -0.02]} size={[bgW, 0.46, 0.04]} color={bg} />
+      <Block position={[0, 0, -0.02]} size={[bgW, 0.38, 0.04]} color={bg} />
       <mesh position={[0, 0, 0.01]}>
-        <planeGeometry args={[textW, 0.24]} />
+        <planeGeometry args={[textW, textH]} />
         <meshBasicMaterial map={tex} color={color} transparent alphaTest={0.5} side={THREE.DoubleSide} toneMapped={false} fog={false} />
       </mesh>
     </group>

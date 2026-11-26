@@ -92,9 +92,12 @@ export const scene7 = storyScene(timing, {
           <Son position={on(PLACE.server, 0.75, 0, 1.3)} rotationY={-0.45} animation="cheer" face="laugh" badge="heart" badgePopStart={0.3} time={t} />
           <FloatingHeart position={on(PLACE.server, 0, 2.1, 1.2)} count={10} spread={2.6} t={t} seed={77} />
           <ServerChatBox
-            position={on(PLACE.server, 0, 3.05, 0.6)}
-            scale={0.85 * pop(t, Math.max(0.15, chatWord - 0.1))}
-            lines={[{ sender: "Dad", text: "best game we ever played", color: "#ffe074" }]}
+            position={on(PLACE.server, 0, 2.85, 0.5)}
+            scale={0.62 * pop(t, Math.max(0.15, chatWord - 0.1))}
+            lines={[
+              { sender: "Dad", text: "best game", color: "#ffe074" },
+              { text: "we ever played", color: "#ffe074" },
+            ]}
           />
         </>
       ),

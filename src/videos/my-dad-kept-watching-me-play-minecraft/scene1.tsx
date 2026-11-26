@@ -32,22 +32,22 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.hook",
       ...cam.orbit({
-        on: on(PLACE.irl, 0, 1.15, -0.45),
-        dist: 4.8,
-        distTo: 4.1,
-        yaw: 24,
-        yawTo: -16,
-        pitch: 14,
-        fov: 44,
-        screenOffset: [0, 0.06],
+        on: on(PLACE.irl, -0.85, 1.28, -0.35),
+        dist: 3.3,
+        distTo: 2.9,
+        yaw: 142,
+        yawTo: 124,
+        pitch: 10,
+        fov: 48,
+        screenOffset: [0, 0.04],
       }),
       zone: "irl",
-      note: "Sam games happily at glowing MINECRAFT monitor while Dad stands softly smiling behind his shoulder.",
+      note: "Front-side hook: Sam smiles happily gaming at PC while Dad peeks curiously around the left doorway.",
       stage: (t) => (
         <>
           <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="MINECRAFT" screenColor="#4be08a" clockText="9:45 PM" />
           <Son position={on(PLACE.irl, 0, 0.08, -0.43)} rotationY={Math.PI} animation="sit" face="happy" time={t} />
-          <Dad position={on(PLACE.irl, 0.78, 0, -0.1)} rotationY={Math.PI + 0.35} animation="peek" headYaw={-0.25} face="smile" time={t} />
+          <Dad position={on(PLACE.irl, -2.55, 0, -0.15)} rotationY={Math.PI * 0.48} animation="peek" headYaw={0.2} face="wow" time={t} />
         </>
       ),
     },
@@ -121,7 +121,7 @@ export const scene1 = storyScene(timing, {
         <>
           <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="LOADING SMP" screenColor="#5cc8ff" clockText="4:11 PM" />
           <Dad position={on(PLACE.irl, 0, 0.08, -0.43)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
-          <ChatToast text="Dad joined the game" position={on(PLACE.irl, 0, 2.15, -1.0)} height={0.14 * pop(t, 0.25)} />
+          <ChatToast text="Dad joined the game" position={on(PLACE.irl, 0, 2.25, -0.9)} height={0.1 * pop(t, 0.25)} />
         </>
       ),
     },

@@ -68,7 +68,7 @@ export const scene5 = storyScene(timing, {
           <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="CREEPER?!" screenColor="#ffd84d" clockText="4:20 PM" lampOn />
           <Son position={on(PLACE.irl, -0.65, 0, -0.05)} rotationY={0.68} animation="point" face="grin" time={t} />
           <Dad position={on(PLACE.irl, 0.65, 0, -0.1)} rotationY={-0.75} animation="shrug" face="smile" time={t} />
-          <SpeechCard text="Did you die by a creeper?" position={on(PLACE.irl, -0.3, 2.6, -0.05)} scale={pop(t, Math.max(0.15, askWord - 0.5))} color="#ffd84d" />
+          <SpeechCard text="Did you die by a creeper?" position={on(PLACE.irl, 0, 2.45, -0.05)} scale={0.9 * pop(t, Math.max(0.15, askWord - 0.5))} color="#ffd84d" />
           <Creeper position={on(PLACE.irl, 1.55, 0, -0.8)} rotationY={-0.65} scale={0.55} />
         </>
       ),

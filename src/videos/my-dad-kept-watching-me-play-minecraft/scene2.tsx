@@ -3,6 +3,7 @@ import {
   ChatToast,
   Creeper,
   Dad,
+  DeathPuff,
   EmberDrift,
   FloatingNumber,
   Glow,
@@ -52,22 +53,22 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.tree",
       ...cam.orbit({
-        on: on(PLACE.server, 2.2, 1.35, 1.4),
+        on: on(PLACE.server, 2.35, 1.35, 1.45),
         dist: 5.2,
         distTo: 4.4,
-        yaw: -26,
+        yaw: -24,
         yawTo: 18,
         pitch: 13,
         fov: 44,
         screenOffset: [0, 0.05],
       }),
       zone: "server",
-      note: "Beside oak Tree, Dad swings arm completely missing the trunk.",
+      note: "Dad faces straight into oak Tree trunk swinging his fist against the bark.",
       stage: (t) => (
         <>
           <StarterHouse position={on(PLACE.server, 0, 0, -2.0)} state="intact" />
-          <Dad position={on(PLACE.server, 1.9, 0, 1.65)} rotationY={-0.3 + Math.sin(t * 7) * 0.22} animation="press" face="ouch" badge="?" badgePopStart={0.2} time={t * 1.4} />
-          <FloatingNumber text="MISS!" color="#ffd84d" position={on(PLACE.server, 2.35, 1.6 + ease(ramp(t, 0.2, 1.1)) * 0.35, 1.5)} height={0.26 * pop(t, 0.25)} />
+          <Dad position={on(PLACE.server, 2.15, 0, 1.5)} rotationY={Math.PI / 2} animation="press" face="ouch" badge="?" badgePopStart={0.2} time={t * 1.4} />
+          <FloatingNumber text="0 WOOD" color="#ffd84d" position={on(PLACE.server, 2.0, 2.55 + ease(ramp(t, 0.2, 1.1)) * 0.2, 1.5)} height={0.2 * pop(t, 0.25)} />
         </>
       ),
     },
@@ -101,24 +102,26 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.creeper",
       ...cam.orbit({
-        on: on(PLACE.server, -0.3, 1.15, 0.9),
-        dist: 5.4,
-        distTo: 4.5,
-        yaw: 24,
-        yawTo: -22,
-        pitch: 12,
-        fov: 44,
+        on: on(PLACE.server, -0.55, 1.15, 0.8),
+        dist: 5.8,
+        distTo: 4.7,
+        yaw: 16,
+        yawTo: -18,
+        pitch: 13,
+        fov: 45,
         screenOffset: [0, 0.05],
       }),
       zone: "server",
-      note: "Ominous Creeper puffs glowing behind Dad outside starter porch.",
+      note: "Green Creeper creeps in smoothly from left side sneaking right behind Dad before hissing.",
       stage: (t) => {
-        const fuse = ease(ramp(t, 0.15, 1.3));
+        const creep = ease(ramp(t, 0, 0.85));
+        const cx = -3.1 + creep * 2.45;
+        const fuse = ease(ramp(t, 0.5, 1.3));
         return (
           <>
             <StarterHouse position={on(PLACE.server, 0, 0, -2.0)} state="intact" />
-            <Dad position={on(PLACE.server, 0, 0, 1.2)} rotationY={0.2} animation="lookAround" face="fear" badge="!" badgePopStart={0.3} time={t} />
-            <Creeper position={on(PLACE.server, -0.65, 0, 0.35)} rotationY={0.55} fuse={fuse * 0.85} />
+            <Dad position={on(PLACE.server, 0.15, 0, 1.15)} rotationY={0.2} animation="lookAround" face="fear" badge="!" badgePopStart={0.65} time={t} />
+            <Creeper position={on(PLACE.server, cx, 0, 0.45)} rotationY={Math.PI * 0.45} fuse={fuse * 0.85} />
           </>
         );
       },
@@ -136,22 +139,25 @@ export const scene2 = storyScene(timing, {
       }),
       impacts: [{ at: boomWord, amp: 0.045, dur: 0.35 }],
       zone: "server",
-      note: "White-hot Creeper explosion tears front corner of StarterHouse leaving Dad knocked flat.",
+      note: "Creeper explodes: Dad disappears into white Minecraft death smoke puffs as crater opens StarterHouse.",
       stage: (t) => {
         const blown = t >= boomWord;
         return (
           <>
             <StarterHouse position={on(PLACE.server, 0, 0, -2.0)} state={blown ? "crater" : "intact"} />
             {!blown ? (
-              <Creeper position={on(PLACE.server, -0.6, 0, 0.35)} rotationY={0.4} fuse={1} />
+              <>
+                <Creeper position={on(PLACE.server, -0.6, 0, 0.45)} rotationY={Math.PI * 0.45} fuse={1} />
+                <Dad position={on(PLACE.server, 0.45, 0, 1.25)} rotationY={0.25} animation="panic" face="fear" time={t} />
+              </>
             ) : (
               <>
+                <DeathPuff position={on(PLACE.server, 0.45, 0, 1.25)} age={t - boomWord} />
                 <Glow position={on(PLACE.server, -0.6, 1.2, 0.2)} size={3.4} color="#ff8e3b" opacity={0.45 * (1 - ramp(t, boomWord, boomWord + 0.6))} />
                 <EmberDrift position={on(PLACE.server, -0.5, 0.6, 0.2)} area={[3.4, 2.5, 3.0]} count={26} seed={22} />
-                <ChatToast text="Dad was blown up by Creeper" position={on(PLACE.server, 0, 2.8, 0.8)} height={0.14 * pop(t, boomWord)} />
+                <ChatToast text="Dad blew up by Creeper" position={on(PLACE.server, 0, 2.55, 0.8)} height={0.095 * pop(t, boomWord)} />
               </>
             )}
-            <Dad position={on(PLACE.server, 0.5, blown ? 0.1 : 0, 1.35)} rotationY={0.25} animation={blown ? "collapse" : "panic"} face="ouch" time={t} />
           </>
         );
       },

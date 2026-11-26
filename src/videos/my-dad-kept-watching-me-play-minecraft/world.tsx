@@ -42,13 +42,13 @@ export const World: React.FC = () => (
     <Zone name="irl">
       <Block position={on(PLACE.irl, 0, -0.2, 0)} size={[12, 0.4, 12]} map={plankTex("#6d4e32", [5, 5])} />
       {/* Warm bedroom back & right walls + left open doorway frame at x=-3.1 */}
-      <Block position={on(PLACE.irl, 0, 2.15, -3.35)} size={[12, 4.3, 0.4]} color="#283040" />
-      <Block position={on(PLACE.irl, 3.4, 2.15, 0)} size={[0.4, 4.3, 12]} color="#232a38" />
-      <Block position={on(PLACE.irl, -3.3, 2.15, -2.1)} size={[0.38, 4.3, 2.4]} color="#252c3b" />
+      <Block position={on(PLACE.irl, 0, 2.15, -4.4)} size={[12, 4.3, 0.4]} color="#283040" />
+      <Block position={on(PLACE.irl, 3.8, 2.15, 0)} size={[0.4, 4.3, 12]} color="#232a38" />
+      <Block position={on(PLACE.irl, -3.3, 2.15, -2.6)} size={[0.38, 4.3, 3.4]} color="#252c3b" />
       <Block position={on(PLACE.irl, -3.3, 2.15, 2.2)} size={[0.38, 4.3, 2.8]} color="#252c3b" />
       {/* Bedroom poster & bookshelf on right/back wall */}
-      <Block position={on(PLACE.irl, 2.2, 0.9, -2.9)} size={[1.15, 1.8, 0.55]} map={plankTex("#593c23")} />
-      <Block position={on(PLACE.irl, -1.6, 2.1, -3.1)} size={[1.2, 1.5, 0.06]} color="#3a7a42" />
+      <Block position={on(PLACE.irl, 2.2, 0.9, -3.9)} size={[1.15, 1.8, 0.55]} map={plankTex("#593c23")} />
+      <Block position={on(PLACE.irl, -1.6, 2.1, -4.15)} size={[1.2, 1.5, 0.06]} color="#3a7a42" />
       <LightPool position={on(PLACE.irl, 0, 0.03, 0.2)} width={6.5} depth={6.5} color="#bcd8ff" opacity={0.18} />
       <pointLight position={on(PLACE.irl, 0, 3.6, 1.8)} color="#d8e8ff" intensity={6.5} distance={14} decay={2} />
     </Zone>

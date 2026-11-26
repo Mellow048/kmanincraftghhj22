@@ -39,7 +39,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="HOUSE GONE" screenColor="#ff5d4d" clockText="4:19 PM" lampOn={false} />
-          <Dad position={on(PLACE.irl, 0.65, 0, -0.1)} rotationY={-0.75} animation="cower" face="sad" tears={0.6} time={t} />
+          <Dad position={on(PLACE.irl, 0.65, 0, -0.1)} rotationY={-0.75} animation="cower" face="crying" tears={0.6} time={t} />
           <Son position={on(PLACE.irl, -0.75, 0, -0.05)} rotationY={0.75} animation="standUp" face="uneasy" time={t} />
         </>
       ),
@@ -103,7 +103,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="HOUSE GONE" screenColor="#ff5d4d" clockText="4:19 PM" lampOn={false} />
-          <Dad position={on(PLACE.irl, 0.65, 0, -0.1)} rotationY={-0.75} animation="cower" face="sad" tears={0.9} time={t} />
+          <Dad position={on(PLACE.irl, 0.65, 0, -0.1)} rotationY={-0.75} animation="cower" face="frown" tears={0.9} time={t} />
           <Son position={on(PLACE.irl, -0.75, 0, -0.05)} rotationY={0.75} animation="peek" face="calm" time={t} />
         </>
       ),

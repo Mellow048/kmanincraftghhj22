@@ -38,7 +38,7 @@ export const scene3 = storyScene(timing, {
         <>
           <StarterHouse position={on(PLACE.server, 0, 0, -2.0)} state="crater" />
           <EmberDrift position={on(PLACE.server, -0.4, 0.7, -0.4)} area={[3.4, 2.4, 2.8]} count={24} seed={31} />
-          <Dad position={on(PLACE.server, 0.65, 0, 1.85)} rotationY={Math.PI + 0.35} animation="cower" face="sad" time={t} />
+          <Dad position={on(PLACE.server, 0.65, 0, 1.85)} rotationY={Math.PI + 0.35} animation="cower" face="crying" tears={0.5} time={t} />
         </>
       ),
     },
@@ -64,7 +64,7 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="HOUSE GONE" screenColor="#ff5d4d" clockText="4:18 PM" lampOn={false} />
-            <Dad position={on(PLACE.irl, 0.65, 0, -0.25)} rotationY={-0.65} animation="cower" face="uneasy" time={t} />
+            <Dad position={on(PLACE.irl, 0.65, 0, -0.25)} rotationY={-0.65} animation="cower" face="frown" time={t} />
             <Son {...samWalk} face="wow" badge="!" badgePopStart={0.55} />
           </>
         );
@@ -87,7 +87,7 @@ export const scene3 = storyScene(timing, {
         <>
           <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="CREEPER BLAST" screenColor="#ff4d4d" clockText="4:18 PM" lampOn={false} />
           <Son position={on(PLACE.irl, -0.75, 0, -0.1)} rotationY={Math.PI - 0.35} animation="scared" face="wow" time={t} />
-          <Dad position={on(PLACE.irl, 0.75, 0, -0.2)} rotationY={-0.8} animation="shrug" face="sad" time={t} />
+          <Dad position={on(PLACE.irl, 0.75, 0, -0.2)} rotationY={-0.8} animation="shrug" face="crying" tears={0.4} time={t} />
         </>
       ),
     },

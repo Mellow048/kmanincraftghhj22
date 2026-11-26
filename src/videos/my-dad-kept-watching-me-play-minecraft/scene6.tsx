@@ -216,7 +216,7 @@ export const scene6 = storyScene(timing, {
               <>
                 <Glow position={on(PLACE.server, -0.25, 1.15, 1.15)} size={2.6} color="#63d8ff" opacity={0.55 * (1 - ramp(t, blockWord, blockWord + 0.7))} />
                 <EmberDrift position={on(PLACE.server, -0.5, 0.9, 1.0)} area={[2.4, 2.0, 2.2]} count={22} seed={68} />
-                <FloatingNumber text="BLOCKED 0 DMG" color="#5ce8ff" position={on(PLACE.server, 0.35, 2.55, 1.3)} height={0.3 * pop(t, blockWord)} />
+                <FloatingNumber text="BLOCKED 0" color="#5ce8ff" position={on(PLACE.server, 0.15, 2.4, 1.3)} height={0.22 * pop(t, blockWord)} />
               </>
             )}
             <Dad position={on(PLACE.server, 0.4, 0, 1.3)} rotationY={-Math.PI * 0.4} animation="guard" face="happy" time={t}>
