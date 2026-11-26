@@ -21,9 +21,8 @@ export const film = defineFilm({
   topic: "explainer",
   look: "overworld-day",
   post: { shaders: true },
-  // Arena TTS step: record clips (`scripts/narration.py clips inflation-explained-using-minecraft`),
-  // run `narration.py build ... --require-alignment`, `sound.py build ...`, then uncomment:
-  // audio: { src: "audio/inflation-explained-using-minecraft/mix.mp3" },
+  // audio track synthesized & mixed cleanly on GitHub Actions (`en-US-GuyNeural` +10%)
+  audio: { src: "audio/inflation-explained-using-minecraft/mix.mp3" },
   captions: {
     words: timing.words,
     y: 0.67,
