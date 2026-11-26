@@ -46,20 +46,20 @@ export const scene5 = storyScene(timing, {
     {
       cue: "7.chart",
       ...cam.push({
-        on: on(PLACE.bakery, 0, 1.45, -0.05),
-        dist: 5.5,
-        to: 4.8,
+        on: on(PLACE.bakery, -0.05, 1.35, -0.05),
+        dist: 5.8,
+        to: 5.1,
         yaw: 10,
         pitch: 6,
         fov: 42,
         screenOffset: [0, 0.04],
       }),
       zone: "bakery",
-      note: "Compact BarChart with full BREAD & CASH labels cleanly visible beside Miles inside 9:16.",
+      note: "Compact BarChart with full BREAD & CASH labels completely clear beside Miles inside 9:16.",
       stage: (t) => (
         <>
-          <BarChart position={on(PLACE.bakery, 0.35, 0, -0.35)} width={0.46} gap={0.22} labelHeight={0.22} values={[0.9, 2.8]} labels={["BREAD", "CASH"]} grow={[1, 0.35 + 0.65 * ease(ramp(t, 0.1, 1.1))]} />
-          <CitizenLead position={on(PLACE.bakery, -0.52, 0, 0.5)} rotationY={0.5} animation="lookAround" face="uneasy" time={t} />
+          <BarChart position={on(PLACE.bakery, 0.36, 0, -0.45)} width={0.44} gap={0.22} labelHeight={0.18} values={[0.65, 2.25]} labels={["BREAD", "CASH"]} grow={[1, 0.35 + 0.65 * ease(ramp(t, 0.1, 1.1))]} />
+          <CitizenLead position={on(PLACE.bakery, -0.62, 0, 0.5)} rotationY={0.5} animation="lookAround" face="uneasy" time={t} />
         </>
       ),
     },
@@ -67,8 +67,8 @@ export const scene5 = storyScene(timing, {
       cue: "7.flat",
       ...cam.push({
         on: on(PLACE.bakery, -0.1, 1.15, 0.1),
-        dist: 4.0,
-        to: 3.4,
+        dist: 4.3,
+        to: 3.65,
         yaw: -12,
         pitch: 7,
         fov: 40,
@@ -78,9 +78,9 @@ export const scene5 = storyScene(timing, {
       note: "Close comparison of stunted low BREAD bar beside shrugging Miles.",
       stage: (t) => (
         <>
-          <BarChart position={on(PLACE.bakery, 0.32, 0, -0.35)} width={0.46} gap={0.22} labelHeight={0.22} values={[0.9, 2.8]} labels={["BREAD", "CASH"]} grow={[1, 1]} />
-          <CitizenLead position={on(PLACE.bakery, -0.5, 0, 0.45)} rotationY={0.45} animation="shrug" face="frown" time={t} />
-          <FloatingNumber text="STILL 1" color="#ff8e2b" position={on(PLACE.bakery, -0.1, 1.65, -0.1)} height={0.28 * pop(t, 0.2)} />
+          <BarChart position={on(PLACE.bakery, 0.36, 0, -0.45)} width={0.44} gap={0.22} labelHeight={0.18} values={[0.65, 2.25]} labels={["BREAD", "CASH"]} grow={[1, 1]} />
+          <CitizenLead position={on(PLACE.bakery, -0.58, 0, 0.45)} rotationY={0.45} animation="shrug" face="frown" time={t} />
+          <FloatingNumber text="STILL 1" color="#ff8e2b" position={on(PLACE.bakery, -0.1, 1.65, -0.1)} height={0.26 * pop(t, 0.2)} />
         </>
       ),
     },

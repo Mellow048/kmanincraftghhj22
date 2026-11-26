@@ -38,7 +38,8 @@ export const scene5 = storyScene(timing, {
         <>
           <Villager position={[PLACE.bakery[0] - 0.65, 0, PLACE.bakery[2] + 1.4 + t * 0.65]} robe={ROBE.smith} rotationY={Math.PI} walk={t * 1.8} />
           <Villager position={[PLACE.bakery[0] + 0.65, 0, PLACE.bakery[2] + 1.7 + t * 0.65]} robe={ROBE.brown} rotationY={Math.PI} walk={t * 1.8 + 0.4} />
-          <Blaze position={[PLACE.bakery[0], 2.8, PLACE.bakery[2] - 2.2]} size={3.0} height={1.7} />
+          <Blaze position={[PLACE.bakery[0] - 0.7, 3.0, PLACE.bakery[2] - 2.3]} size={0.8} height={1.6} count={18} seed={1} />
+          <Blaze position={[PLACE.bakery[0] + 0.7, 3.0, PLACE.bakery[2] - 2.3]} size={0.8} height={1.6} count={18} seed={2} />
         </>
       ),
     },
@@ -80,7 +81,8 @@ export const scene5 = storyScene(timing, {
       stage: (t) => (
         <>
           <SnowGolem position={[PLACE.bakery[0], 0, PLACE.bakery[2] + 2.2 - t * 1.65]} rotationY={Math.PI} pumpkin walk={t * 3.0} />
-          <Blaze position={[PLACE.bakery[0], 2.7, PLACE.bakery[2] - 2.0]} size={2.8} height={1.6} />
+          <Blaze position={[PLACE.bakery[0] - 0.65, 3.0, PLACE.bakery[2] - 2.3]} size={0.75} height={1.5} count={18} seed={3} />
+          <Blaze position={[PLACE.bakery[0] + 0.65, 3.0, PLACE.bakery[2] - 2.3]} size={0.75} height={1.5} count={18} seed={4} />
           <EmberDrift position={[PLACE.bakery[0], 1.4, PLACE.bakery[2]]} area={[3, 2.5, 3]} count={18} />
         </>
       ),
@@ -104,7 +106,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <SnowGolem position={[PLACE.bakery[0], 0, PLACE.bakery[2] - 0.4]} rotationY={Math.PI} pumpkin melt={melt} />
-            <Blaze position={[PLACE.bakery[0], 2.5, PLACE.bakery[2] - 2.0]} size={2.4} height={1.3} />
+            <Blaze position={[PLACE.bakery[0], 2.9, PLACE.bakery[2] - 2.3]} size={0.75} height={1.4} count={20} seed={5} />
           </>
         );
       },
@@ -175,7 +177,7 @@ export const scene5 = storyScene(timing, {
               armThrow={-1.15 + cycle * 1.4}
             />
             <Snowball position={[PLACE.bakery[0], 1.1 + cycle * 1.6, PLACE.bakery[2] - 0.4 - cycle * 1.5]} scale={1.1} />
-            <Blaze position={[PLACE.bakery[0], 2.5, PLACE.bakery[2] - 2.0]} size={1.9} height={1.1} />
+            <Blaze position={[PLACE.bakery[0], 2.8, PLACE.bakery[2] - 2.2]} size={0.7} height={1.3} count={18} seed={6} />
           </>
         );
       },
@@ -183,9 +185,9 @@ export const scene5 = storyScene(timing, {
     {
       cue: "7.arms",
       ...cam.push({
-        on: [PLACE.bakery[0], 2.1, PLACE.bakery[2] - 1.6],
-        dist: 3.0,
-        to: 2.4,
+        on: [PLACE.bakery[0], 2.2, PLACE.bakery[2] - 1.6],
+        dist: 3.1,
+        to: 2.5,
         yaw: 12,
         pitch: -5,
         fov: 40,
@@ -198,9 +200,9 @@ export const scene5 = storyScene(timing, {
         const cycle = ((t + 0.3) * 2.8) % 1;
         return (
           <>
-            <Snowball position={[PLACE.bakery[0] - 0.22, 1.3 + cycle * 1.3, PLACE.bakery[2] - 1.0 - cycle * 0.9]} scale={1.2} />
-            <Snowball position={[PLACE.bakery[0] + 0.22, 1.5 + ((cycle + 0.5) % 1) * 1.1, PLACE.bakery[2] - 1.2 - ((cycle + 0.5) % 1) * 0.8]} scale={1.1} />
-            <Blaze position={[PLACE.bakery[0], 2.5, PLACE.bakery[2] - 2.0]} size={Math.max(0.4, 1.6 - t * 0.6)} height={0.85} />
+            <Snowball position={[PLACE.bakery[0] - 0.22, 1.4 + cycle * 1.4, PLACE.bakery[2] - 1.0 - cycle * 1.1]} scale={1.2} />
+            <Snowball position={[PLACE.bakery[0] + 0.22, 1.6 + ((cycle + 0.5) % 1) * 1.2, PLACE.bakery[2] - 1.2 - ((cycle + 0.5) % 1) * 0.9]} scale={1.1} />
+            <Blaze position={[PLACE.bakery[0], 2.9, PLACE.bakery[2] - 2.3]} size={Math.max(0.25, 0.75 - t * 0.35)} height={1.1} count={16} seed={7} />
           </>
         );
       },

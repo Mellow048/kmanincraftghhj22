@@ -80,20 +80,20 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.cold",
       ...cam.push({
-        on: room(-0.15, 1.05, -1.05),
-        dist: 4.1,
-        to: 3.5,
-        yaw: 14,
+        on: room(-0.22, 1.05, -1.05),
+        dist: 4.3,
+        to: 3.7,
+        yaw: 12,
         pitch: 9,
         fov: 40,
-        screenOffset: [0, 0.06],
+        screenOffset: [0, 0.05],
       }),
       zone: "room",
       note: "Indoor kitchen shot cleanly inside frame: upright Hero shivers beside dark unlit stone Furnace and crisp 0 HEAT popup.",
       stage: (t) => (
         <>
-          <Hero position={room(-0.42, 0, -0.5)} rotationY={0.35} animation="shrug" face="uneasy" time={t} />
-          <FloatingNumber text="0 HEAT" color="#66c8ff" position={room(0.2, 1.5, -1.65)} height={0.28 * pop(t, 0.25)} />
+          <Hero position={room(-0.36, 0, -0.5)} rotationY={0.35} animation="shrug" face="uneasy" time={t} />
+          <FloatingNumber text="0 HEAT" color="#66c8ff" position={room(0.15, 1.48, -1.65)} height={0.22 * pop(t, 0.25)} />
         </>
       ),
     },

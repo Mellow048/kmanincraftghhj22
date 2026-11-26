@@ -18,40 +18,40 @@ export const scene2 = storyScene(timing, {
     {
       cue: "3.school",
       ...cam.orbit({
-        on: [-5.1, 1.15, 0.6],
-        dist: 4.3,
-        yaw: 14,
-        yawTo: 28,
+        on: [-3.2, 1.15, 0.2],
+        dist: 4.4,
+        yaw: -14,
+        yawTo: 10,
         pitch: 7,
         fov: 40,
-        screenOffset: [0, 0.1],
+        screenOffset: [0, 0.08],
       }),
       zone: "town",
-      note: "Distinct west village corner beside cobblestone Well, purple-roof Hut & oak Fence: Hero teased by classmates.",
+      note: "Unobstructed west village path beside cobble Hut, Well & Fence: Hero teased by classmates with zero pillar occlusion.",
       stage: (t) => (
         <>
-          <Hero position={[-4.5, 0, 1.4]} rotationY={0.55} animation="shrug" face="uneasy" time={t} />
-          <Player who={1} position={[-5.1, 0, 0.2]} rotationY={0.15} animation="laugh" face="laugh" time={t} />
-          <Player who={3} position={[-5.8, 0, 0.65]} rotationY={0.45} animation="point" face="grin" time={t} />
-          <ChatToast text="Ice Biome Kid!" sender="Kid" position={[-4.9, 2.05, 0.7]} rotationY={0.35} height={0.13 * pop(t, 0.2)} />
+          <Hero position={[-3.25, 0, 1.05]} rotationY={0.22} animation="shrug" face="uneasy" time={t} />
+          <Player who={1} position={[-2.65, 0, -0.15]} rotationY={-0.35} animation="laugh" face="laugh" time={t} />
+          <Player who={3} position={[-3.75, 0, -0.35]} rotationY={0.3} animation="point" face="grin" time={t} />
+          <ChatToast text="Ice Kid!" sender="Kid" position={[-3.2, 2.08, 0.4]} height={0.12 * pop(t, 0.2)} />
         </>
       ),
     },
     {
       cue: "3.chill",
       ...cam.push({
-        on: [-4.5, 1.15, 1.4],
+        on: [-3.25, 1.15, 1.05],
         dist: 2.35,
         to: 1.85,
-        yaw: 24,
+        yaw: 14,
         pitch: 4,
         fov: 38,
-        screenOffset: [0, 0.12],
+        screenOffset: [0, 0.1],
       }),
       zone: "town",
-      note: "Close reaction push on Hero shivering beside village Fence and stone Well.",
+      note: "Close reaction push on Hero shivering beside village Fence and cobble cottage.",
       stage: (t) => (
-        <Hero position={[-4.5, 0, 1.4]} rotationY={0.45} animation="cower" face="ouch" time={t} />
+        <Hero position={[-3.25, 0, 1.05]} rotationY={0.25} animation="cower" face="ouch" time={t} />
       ),
     },
     {

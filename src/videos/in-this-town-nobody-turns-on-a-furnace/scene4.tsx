@@ -96,7 +96,7 @@ export const scene4 = storyScene(timing, {
       note: "Roof eaves ignite as dry oak beams catch expanding orange flame.",
       stage: (t) => (
         <>
-          <Blaze position={[PLACE.bakery[0] + 0.4, 2.7, PLACE.bakery[2] - 2.1]} size={1.4 + t * 0.65} height={1.1 + t * 0.35} />
+          <Blaze position={[PLACE.bakery[0] + 0.4, 3.2, PLACE.bakery[2] - 2.3]} size={0.65 + t * 0.25} height={1.2 + t * 0.25} count={20} />
           <EmberDrift position={[PLACE.bakery[0] + 0.3, 2.4, PLACE.bakery[2] - 1.9]} area={[2.2, 2.0, 2.0]} count={24} />
           <FireLight position={[PLACE.bakery[0], 2.3, PLACE.bakery[2] - 1.6]} power={2.2} />
         </>
@@ -106,18 +106,19 @@ export const scene4 = storyScene(timing, {
       cue: "6.fire",
       ...cam.whip({
         from: [PLACE.bakery[0] - 2.4, 2.4, PLACE.bakery[2] + 3.2],
-        on: [PLACE.bakery[0] - 0.5, 2.1, PLACE.bakery[2] - 1.6],
-        onTo: [PLACE.bakery[0] + 0.5, 2.6, PLACE.bakery[2] - 2.0],
+        on: [PLACE.bakery[0] - 0.5, 2.4, PLACE.bakery[2] - 2.0],
+        onTo: [PLACE.bakery[0] + 0.5, 2.9, PLACE.bakery[2] - 2.3],
         fov: 42,
       }),
       screenOffset: [0, 0.08],
       look: "overworld-sunset",
       zone: "bakery",
-      note: "Dramatic whip pan onto the timber bakery roof exploding in roaring Blaze and rising Smoke.",
+      note: "Dramatic whip pan onto the timber bakery roof exploding in crisp Minecraft flames and rising Smoke.",
       stage: (t) => (
         <>
-          <Blaze position={[PLACE.bakery[0], 2.8, PLACE.bakery[2] - 2.2]} size={3.0 + t * 0.25} height={1.85} />
-          <Smoke position={[PLACE.bakery[0], 4.0 + t * 0.4, PLACE.bakery[2] - 2.2]} rise={2.5} count={14} />
+          <Blaze position={[PLACE.bakery[0] - 0.6, 3.3, PLACE.bakery[2] - 2.3]} size={0.8 + t * 0.1} height={1.7} count={20} seed={1} />
+          <Blaze position={[PLACE.bakery[0] + 0.6, 3.3, PLACE.bakery[2] - 2.3]} size={0.8 + t * 0.1} height={1.7} count={20} seed={2} />
+          <Smoke position={[PLACE.bakery[0], 4.2 + t * 0.4, PLACE.bakery[2] - 2.3]} rise={2.5} count={14} />
           <FireLight position={[PLACE.bakery[0], 2.5, PLACE.bakery[2] - 1.5]} power={2.4} />
         </>
       ),
@@ -126,23 +127,24 @@ export const scene4 = storyScene(timing, {
       cue: "6.trap",
       ...cam.push({
         on: [PLACE.bakery[0], 1.15, PLACE.bakery[2] - 0.1],
-        dist: 4.3,
-        to: 3.6,
+        dist: 4.4,
+        to: 3.7,
         yaw: 12,
-        pitch: 13,
+        pitch: 12,
         fov: 42,
         screenOffset: [0, 0.05],
       }),
       look: "overworld-sunset",
       zone: "bakery",
-      note: "Exact 4-kid continuity: all 4 upright panicking kids visible cleanly above low counter with blazing flames behind.",
+      note: "Exact 4-kid continuity: all 4 upright panicking kids clearly visible above low counter with rooftop flames behind.",
       stage: (t) => (
         <>
           <Hero position={[PLACE.bakery[0] - 0.36, 0, PLACE.bakery[2] + 0.1]} rotationY={0.2} animation="panic" face="fear" time={t} />
           <Player who={2} scale={0.8} position={[PLACE.bakery[0] + 0.36, 0, PLACE.bakery[2] + 0.05]} rotationY={-0.25} animation="scared" face="fear" time={t} />
           <Player who={1} scale={0.8} position={[PLACE.bakery[0] - 0.22, 0, PLACE.bakery[2] - 0.55]} rotationY={0.12} animation="panic" face="wow" time={t} />
           <Player who={3} scale={0.8} position={[PLACE.bakery[0] + 0.28, 0, PLACE.bakery[2] - 0.6]} rotationY={-0.15} animation="scared" face="uneasy" time={t} />
-          <Blaze position={[PLACE.bakery[0], 2.0, PLACE.bakery[2] - 1.65]} size={2.6} height={1.4} />
+          <Blaze position={[PLACE.bakery[0] - 0.7, 3.0, PLACE.bakery[2] - 2.3]} size={0.75} height={1.5} count={18} seed={3} />
+          <Blaze position={[PLACE.bakery[0] + 0.7, 3.0, PLACE.bakery[2] - 2.3]} size={0.75} height={1.5} count={18} seed={4} />
           <EmberDrift position={[PLACE.bakery[0], 1.4, PLACE.bakery[2]]} area={[2.4, 2.2, 2.4]} count={22} />
         </>
       ),
