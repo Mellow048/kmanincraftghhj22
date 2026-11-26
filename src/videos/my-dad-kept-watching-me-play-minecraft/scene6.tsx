@@ -27,7 +27,7 @@ import {
 } from "./kit";
 
 const blockWord = wordAt("6.block", "blocked");
-const shieldGiveWord = wordAt("6.shield", "wooden");
+const shieldGiveWord = wordAt("6.shield", "shield");
 
 /**
  * Scene 6 — Side-by-Side Co-Op, Wood Breaking & First Shield (`Up Happy 0:02+`):
