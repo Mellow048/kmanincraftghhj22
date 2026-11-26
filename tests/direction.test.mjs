@@ -12,8 +12,8 @@ import { directionReport } from '../scripts/direction-report.mjs';
 import { loadFilm } from '../scripts/rehearse.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const bundle = await build({ stdin: { contents: ['caption-beat', 'blocking', 'footing', 'anim'].map(s => `export * from './src/engine/${s}';`).join('\n'), resolveDir: root }, bundle: true, format: 'esm', write: false });
-const { beatFrames, captionBeat, captionPixel, blockedRoute, groundedHip, gaitPose, PX } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].contents).toString('base64'));
+const bundle = await build({ stdin: { contents: ['caption-beat', 'blocking', 'footing', 'anim', 'story', 'Camera', 'math'].map(s => `export * from './src/engine/${s}';`).join('\n'), resolveDir: root }, bundle: true, format: 'esm', write: false, packages: 'external' });
+const { beatFrames, captionBeat, captionPixel, blockedRoute, groundedHip, gaitPose, PX, walkSegment, shotEase, easings } = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].contents).toString('base64'));
 const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-8, `${a} != ${b}`);
 
 test('caption attack on the nearest output frame, release into silence, random-access sampling', () => {
@@ -186,6 +186,18 @@ test('every narrated starter scaffolds with its own identity; drafts rehearse bu
     const cli = path.join(root, 'scripts/rehearse.mjs'), id = 'probe-in-this-town';
     assert.match(run(process.execPath, [cli, id], tmp), /3 shots/);
     for (const flag of ['--final', '--pre-render']) assert.match(run(process.execPath, [cli, id, flag], tmp, 1), /DRAFT: No fully aligned/);
+
+    // Single-pass strict tsc --noEmit across all 6 valid scaffolded starters.
+    // TODO(M2): include server-lore once Topics/ServerLore/template compiles.
+    const validStarters = ['in-this-town', 'stories', 'deadpan', 'what-if', 'explainer', 'recreation'];
+    const tsConfigPath = path.join(tmp, 'tsconfig.starters.json');
+    fs.writeFileSync(tsConfigPath, JSON.stringify({
+      extends: path.join(root, 'tsconfig.json'),
+      compilerOptions: { baseUrl: tmp },
+      include: validStarters.map(t => `src/videos/probe-${t}/**/*.ts`,).concat(validStarters.map(t => `src/videos/probe-${t}/**/*.tsx`)),
+      exclude: [],
+    }, null, 2));
+    run(path.join(root, 'node_modules/.bin/tsc'), ['--noEmit', '-p', tsConfigPath], tmp);
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 });
 
@@ -304,4 +316,202 @@ export { CitizenLead, EliteLead, Official, ExplainerCrowd, DetailedBookshelf, Ru
   } finally {
     fs.rmSync(scratch, { recursive: true, force: true });
   }
+});
+
+test('F2–F5: walkSegment, villagerWalk, ExplainerCrowd, shotEase, money geometry, and directionReport gates', async () => {
+  // F3: shotEase preserves short outExpo whips and prevents long-shot tail freezes
+  for (const p of [0, 0.25, 0.5, 0.75, 1]) near(shotEase('outExpo', p, 0.4), easings.outExpo(p));
+  near(shotEase('outExpo', 0, 2.0), 0);
+  near(shotEase('outExpo', 1, 2.0), 1);
+  assert.ok(shotEase('outExpo', 0.9, 2.0) - shotEase('outExpo', 0.5, 2.0) > 0.08);
+
+  // F2: walkSegment stays idle when stationary/vertical-only and blends cleanly to idle after stopping
+  const stillSeg = walkSegment([1, 0, 2], [1, 3, 2], 0.5, 0, 1);
+  assert.equal(stillSeg.animation, 'idle');
+  assert.equal(stillSeg.animDistance, 0);
+  const midSeg = walkSegment([0, 0, 0], [0, 0, 4], 0.7, 0.2, 1.2);
+  assert.equal(midSeg.animation, 'walk');
+  assert.equal(midSeg.blendTo, 'idle');
+  assert.ok(midSeg.animDistance > 0);
+  const stopSeg = walkSegment([0, 0, 0], [0, 0, 4], 1.3, 0.2, 1.2);
+  assert.equal(stopSeg.animation, 'idle');
+  assert.equal(stopSeg.blendTo, 'walk');
+  assert.ok(stopSeg.blend > 0 && stopSeg.blend < 1);
+  const settledSeg = walkSegment([0, 0, 0], [0, 0, 4], 1.6, 0.2, 1.2);
+  assert.equal(settledSeg.animation, 'idle');
+  near(settledSeg.blend, 1);
+
+  // Bundle Topics/InThisTown/villagers, Topics/Explainer/cast, Topics/Explainer/money, MinecraftAvatar types
+  const { pathToFileURL } = await import('node:url');
+  const out = path.join(root, 'out');
+  fs.mkdirSync(out, { recursive: true });
+  const scratch = fs.mkdtempSync(path.join(out, '.m1-unit-'));
+  try {
+    const outfile = path.join(scratch, 'm1-helpers.mjs');
+    await build({
+      stdin: {
+        contents: `export { villagerStride, villagerWalk } from './Topics/InThisTown/villagers';
+export { ExplainerCrowd } from './Topics/Explainer/cast';
+export { CoinStack, CoinPile, BillStack, Printer } from './Topics/Explainer/money';
+export { MinecraftAvatar } from './src/engine/MinecraftAvatar';`,
+        resolveDir: root,
+      },
+      outfile,
+      platform: 'node',
+      format: 'esm',
+      target: 'node22',
+      packages: 'external',
+      bundle: true,
+      jsx: 'automatic',
+      logLevel: 'silent',
+    });
+    const m1 = await import(pathToFileURL(outfile));
+    assert.equal(typeof m1.MinecraftAvatar, 'function');
+
+    // F2: villagerStride / villagerWalk
+    assert.equal(m1.villagerStride([0, 0, 0], [0, 4, 0], 0.5).walk, 0);
+    near(m1.villagerStride([0, 0, 0], [3, 0, 4], 0.5).walk, 2.5);
+    assert.equal(m1.villagerWalk([0, 0, 0], [0, 2, 0], 0.5, 0, 1).walk, 0);
+    const vMid = m1.villagerWalk([0, 0, 0], [0, 0, 4], 0.5, 0, 1);
+    const vStop = m1.villagerWalk([0, 0, 0], [0, 0, 4], 1.1, 0, 1);
+    const vDone = m1.villagerWalk([0, 0, 0], [0, 0, 4], 1.5, 0, 1);
+    assert.ok(vMid.walk > 0 && vMid.gaitWeight > 0.5);
+    near(vStop.walk, 4);
+    assert.ok(vStop.gaitWeight > 0 && vStop.gaitWeight < 1);
+    near(vDone.walk, 4);
+    near(vDone.gaitWeight, 0);
+
+    // F2: ExplainerCrowd forwards animDistance, time, blendTo, blend, plantFeet, face, lookAt
+    const crowdEl = m1.ExplainerCrowd({
+      positions: [[0, 0, 0], [2, 0, 0]],
+      animation: 'walk',
+      animDistance: [0.4, 1.1],
+      time: 0.85,
+      blendTo: 'idle',
+      blend: 0.6,
+      plantFeet: true,
+      face: 'happy',
+      lookAt: [0, 1.5, 3],
+    });
+    const children = crowdEl.props.children;
+    assert.equal(children.length, 2);
+    assert.equal(children[0].props.animDistance, 0.4);
+    assert.equal(children[1].props.animDistance, 1.1);
+    assert.equal(children[0].props.time, 0.85);
+    assert.equal(children[0].props.blendTo, 'idle');
+    assert.equal(children[0].props.blend, 0.6);
+    assert.equal(children[0].props.plantFeet, true);
+    assert.equal(children[0].props.face, 'happy');
+    assert.deepEqual(children[0].props.lookAt, [0, 1.5, 3]);
+
+    // F4: money.tsx z-fighting clearances
+    const stackEl = m1.CoinStack({ count: 3, radius: 0.16 });
+    const coinYs = stackEl.props.children.map(c => c.props.position[1]);
+    assert.ok(coinYs[1] - coinYs[0] >= 0.16 * 0.28 + 0.002 - 1e-9);
+    const pileEl = m1.CoinPile({ count: 12, radius: 0.14 });
+    for (const c of pileEl.props.children) {
+      const [rx, , rz] = c.props.tilt;
+      const minRimLift = Math.hypot(Math.sin(rx), Math.sin(rz)) * 0.14;
+      assert.ok(c.props.position[1] - minRimLift >= 0.0029);
+    }
+    const billsEl = m1.BillStack({ count: 6 });
+    const billNodes = billsEl.props.children[0];
+    const bandNode = billsEl.props.children[1];
+    assert.ok(billNodes[1].props.position[1] - billNodes[0].props.position[1] >= 0.019 - 1e-9);
+    const bandBottom = bandNode.props.position[1] - bandNode.props.size[1] / 2;
+    assert.ok(bandBottom >= -1e-9, `BillStack paper band must not clip below y=0 (got ${bandBottom})`);
+    const printerEl = m1.Printer({ out: 3.4 });
+    const trayBills = printerEl.props.children.flat().filter(n => n && n.type === m1.Printer ? false : n?.props?.rotationY === Math.PI / 2 || (typeof n?.props?.rotationY === 'number' && n?.props?.position?.[2] > 0.65));
+    assert.ok(trayBills.length >= 3);
+    assert.ok(trayBills[0].props.position[1] >= 0.382 - 1e-9);
+    assert.ok(trayBills[1].props.position[1] - trayBills[0].props.position[1] >= 0.019 - 1e-9);
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+
+  // F5: directionReport catches outExpo > 0.95s, stationary/frozen walks, and World-vs-Stage collisions
+  const Villager = () => null;
+  const Hero = () => null;
+  const Furnace = () => null;
+  const Boat = () => null;
+  const SnowTrail = () => null;
+  const Vox = () => null;
+  const Zone = ({ children }) => children;
+
+  const whipLong = directionReport({
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    scenes: [{
+      id: 's1',
+      duration: 2,
+      shots: [{ cue: '1.a', from: [0, 1.5, 4], target: [0, 1.2, 0], targetTo: [3, 1.2, 0], at: 0, dur: 2, ease: 'outExpo' }],
+      sampleStage: (_i, t) => createElement(Hero, { position: [t, 0, 0] }),
+    }],
+  });
+  assert.match(whipLong.unfinished.join('\n'), /freezes the tail/);
+
+  const whipShort = directionReport({
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    scenes: [{
+      id: 's1',
+      duration: 0.4,
+      shots: [{ cue: '1.a', from: [0, 1.5, 4], target: [0, 1.2, 0], targetTo: [3, 1.2, 0], at: 0, dur: 0.4, ease: 'outExpo' }],
+      sampleStage: (_i, t) => createElement(Hero, { position: [t, 0, 0] }),
+    }],
+  });
+  assert.equal(whipShort.unfinished.filter(m => m.includes('freezes the tail')).length, 0);
+
+  const badWalks = directionReport({
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    scenes: [{
+      id: 's1',
+      duration: 1.5,
+      shots: [{ cue: '1.a', from: [0, 1.5, 4], to: [0, 1.5, 2], target: [0, 1.2, 0], at: 0, dur: 1.5 }],
+      sampleStage: (_i, t) => createElement('group', null,
+        createElement(Villager, { position: [0, 0, 0], walk: t * 1.2 }),
+        createElement(Hero, { position: [1, 0, 0], animation: 'stagger' }),
+        createElement(Hero, { position: [Math.min(t, 0.4) * 2, 0, 1], animation: 'walk', animDistance: Math.min(t, 0.4) * 2 }),
+      ),
+    }],
+  });
+  assert.match(badWalks.unfinished.join('\n'), /plays walk cycle.*while stationary/);
+  assert.match(badWalks.unfinished.join('\n'), /without animDistance/);
+  assert.match(badWalks.unfinished.join('\n'), /freezes mid-stride/);
+
+  const cleanWalks = directionReport({
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    scenes: [{
+      id: 's1',
+      duration: 1.5,
+      shots: [{ cue: '1.a', from: [0, 1.5, 4], to: [0, 1.5, 2], target: [0, 1.2, 0], at: 0, dur: 1.5 }],
+      sampleStage: (_i, t) => createElement(Hero, { ...walkSegment([0, 0, 0], [0, 0, 2], t, 0, 0.6), time: t }),
+    }],
+  });
+  assert.deepEqual(cleanWalks.unfinished, []);
+
+  const collisions = directionReport({
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    World: () => createElement(Zone, { name: 'town' },
+      createElement(Vox, { kind: 'cobble', position: [0, -0.2, 0], size: [10, 0.5, 10] }),
+      createElement(SnowTrail, { points: [[0, 0, 0]] }),
+      createElement(Furnace, { position: [2, 0, 0] }),
+      createElement(Vox, { kind: 'darkPlanks', position: [4, 0.1, 4], size: [1.7, 0.2, 3.6] }),
+    ),
+    scenes: [{
+      id: 's1',
+      duration: 1,
+      shots: [{ cue: '1.a', zone: 'town', from: [0, 1.5, 6], to: [0, 1.5, 3], target: [0, 1, 0], at: 0, dur: 1 }],
+      sampleStage: (_i, t) => createElement('group', null,
+        createElement(Furnace, { position: [2, 0, 0], lit: t > 0.5 }),
+        createElement(Boat, { position: [4, 0, 4] }),
+      ),
+    }],
+  });
+  assert.match(collisions.unfinished.join('\n'), /World coplanar y=0\.050: Vox vs SnowTrail/);
+  assert.match(collisions.unfinished.join('\n'), /Dup World\+Stage <Furnace>/);
+  assert.match(collisions.unfinished.join('\n'), /Stage <Boat> intersects World <Vox>/);
 });

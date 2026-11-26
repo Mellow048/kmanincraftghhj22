@@ -249,6 +249,13 @@ export const ExplainerCrowd: React.FC<{
   rotationY?: number;
   style?: "citizen" | "historical" | "soldier";
   animation?: MinecraftAvatarProps["animation"];
+  animDistance?: number | number[];
+  blendTo?: MinecraftAvatarProps["blendTo"];
+  blend?: number;
+  plantFeet?: boolean;
+  face?: MinecraftAvatarProps["face"];
+  lookAt?: Vec3;
+  time?: number;
   phaseStep?: number;
   seed?: number;
 }> = ({
@@ -256,6 +263,13 @@ export const ExplainerCrowd: React.FC<{
   rotationY = 0,
   style = "citizen",
   animation = "idle",
+  animDistance,
+  blendTo,
+  blend,
+  plantFeet,
+  face,
+  lookAt,
+  time,
   phaseStep = 0.25,
   seed = 1,
 }) => {
@@ -280,6 +294,13 @@ export const ExplainerCrowd: React.FC<{
             hairLayer
             colors={{ torso: coat, arms: coat, legs: "#1d222e" }}
             animation={animation}
+            animDistance={Array.isArray(animDistance) ? animDistance[i] : animDistance}
+            blendTo={blendTo}
+            blend={blend}
+            plantFeet={plantFeet}
+            face={face}
+            lookAt={lookAt}
+            time={time}
             phase={i * phaseStep}
             head={
               style === "soldier" ? (

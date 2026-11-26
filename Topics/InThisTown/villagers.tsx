@@ -1,6 +1,6 @@
 import type React from "react";
-import { Block, Vox, clamp, shade, useFilmTime } from "../../src/engine";
-import type { Vec3 } from "../../src/engine";
+import { Block, Vox, clamp, clamp01, easings, shade, smoothstep, useFilmTime } from "../../src/engine";
+import type { EaseName, Vec3 } from "../../src/engine";
 import { beside } from "./staging";
 import { StrawHat } from "./things";
 
@@ -34,8 +34,13 @@ export type VillagerProps = {
   rotationY?: number;
   scale?: number;
   robe?: string;
-  /** Metres walked. Drives the waddle. */
+  /**
+   * Signed horizontal ground metres travelled (`Math.hypot(dx, dz)`).
+   * MUST remain `0` when stationary or climbing vertically — never pass `walk={t * k}` on a fixed `position`.
+   */
   walk?: number;
+  /** 0..1 gait amplitude scale (default 1). Use `villagerWalk(...)` so legs relax cleanly to 0 on stops. */
+  gaitWeight?: number;
   /** Head angles, radians. `nod` positive looks down. */
   nod?: number;
   turn?: number;
@@ -81,6 +86,7 @@ export const Villager: React.FC<VillagerProps> = ({
   scale = ADULT,
   robe = ROBE.brown,
   walk = 0,
+  gaitWeight = 1,
   nod = 0,
   turn = 0,
   tilt = 0,
@@ -100,10 +106,11 @@ export const Villager: React.FC<VillagerProps> = ({
 }) => {
   const t = useFilmTime();
   const u = U;
+  const weight = clamp(gaitWeight, 0, 1);
   const gait = walk * 5.4;
-  const swing = Math.sin(gait) * 0.55;
-  const bob = Math.abs(Math.sin(gait)) * 0.03 + Math.sin(t * 1.3 + phase) * 0.005;
-  const sway = Math.sin(gait) * 0.035;
+  const swing = Math.sin(gait) * 0.55 * weight;
+  const bob = Math.abs(Math.sin(gait)) * 0.03 * weight + Math.sin(t * 1.3 + phase) * 0.005;
+  const sway = Math.sin(gait) * 0.035 * weight;
 
   let yaw = turn;
   let pitch = nod;
@@ -210,6 +217,7 @@ export const Poppy: React.FC<{ position?: Vec3; rotation?: Vec3; scale?: number 
 
 /**
  * The iron golem. Feet on `position`, facing +Z, 2.7 m tall at scale 1.
+ * `walk` MUST equal signed horizontal ground metres travelled (0 when stationary or vertical-only).
  * `armR` / `armL` are arm angles in radians: 0 hangs, -1.5 points straight ahead.
  * Leave them out and the arms swing with the walk.
  */
@@ -217,7 +225,10 @@ export const IronGolem: React.FC<{
   position?: Vec3;
   rotationY?: number;
   scale?: number;
+  /** Signed horizontal ground metres travelled (`0` when stationary). */
   walk?: number;
+  /** 0..1 gait amplitude scale (default 1). */
+  gaitWeight?: number;
   armR?: number;
   armL?: number;
   headPitch?: number;
@@ -227,10 +238,11 @@ export const IronGolem: React.FC<{
   flower?: boolean;
   /** A straw hat as wide as a barn door. */
   hat?: boolean;
-}> = ({ position = [0, 0, 0], rotationY = 0, scale = 1, walk = 0, armR, armL, headPitch = 0, headYaw = 0, bow = 0, flower = false, hat = false }) => {
+}> = ({ position = [0, 0, 0], rotationY = 0, scale = 1, walk = 0, gaitWeight = 1, armR, armL, headPitch = 0, headYaw = 0, bow = 0, flower = false, hat = false }) => {
   const t = useFilmTime();
-  const swing = Math.sin(walk * 2.4) * 0.4;
-  const bob = Math.abs(Math.sin(walk * 2.4)) * 0.05 + Math.sin(t * 1.1) * 0.008;
+  const weight = clamp(gaitWeight, 0, 1);
+  const swing = Math.sin(walk * 2.4) * 0.4 * weight;
+  const bob = Math.abs(Math.sin(walk * 2.4)) * 0.05 * weight + Math.sin(t * 1.1) * 0.008;
   const angle = (s: number) => (s > 0 ? armR : armL) ?? -s * swing * 0.7;
   return (
     <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
@@ -270,3 +282,58 @@ export const IronGolem: React.FC<{
 /** Where the golem's right hand is, in the world, for an arm at `angle`. Put the thing it gives there. */
 export const golemHand = (p: Vec3, rotY: number, angle: number, scale = 1, side = 1): Vec3 =>
   beside(p, rotY, side * 0.69 * scale, (2.0 - 1.875 * Math.cos(angle)) * scale, -1.875 * Math.sin(angle) * scale);
+
+/**
+ * Movement-coupled stride helper for `Villager` / `IronGolem`.
+ * `walk` equals horizontal ground distance travelled (`0` when stationary or vertical-only).
+ */
+export function villagerStride(
+  from: Vec3,
+  to: Vec3,
+  p: number,
+  opts: { yaw?: number } = {},
+): { position: Vec3; rotationY: number; walk: number } {
+  const k = clamp01(p);
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1];
+  const dz = to[2] - from[2];
+  const horiz = Math.hypot(dx, dz);
+  return {
+    position: [from[0] + dx * k, from[1] + dy * k, from[2] + dz * k],
+    rotationY: opts.yaw ?? (horiz > 1e-4 ? Math.atan2(dx, dz) : 0),
+    walk: horiz > 1e-4 ? horiz * k : 0,
+  };
+}
+
+/**
+ * Time-windowed walk helper for `Villager` / `IronGolem`.
+ * Keeps `walk` phase constant after `end` while smoothly relaxing `gaitWeight` back to `0` over `settle`.
+ */
+export function villagerWalk(
+  from: Vec3,
+  to: Vec3,
+  t: number,
+  start: number,
+  end: number,
+  opts: { ease?: EaseName; settle?: number; yaw?: number } = {},
+): { position: Vec3; rotationY: number; walk: number; gaitWeight: number } {
+  const span = Math.max(1e-3, end - start);
+  const raw = clamp01((t - start) / span);
+  const k = easings[opts.ease ?? "inOutSine"](raw);
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1];
+  const dz = to[2] - from[2];
+  const horiz = Math.hypot(dx, dz);
+  const position: Vec3 = [from[0] + dx * k, from[1] + dy * k, from[2] + dz * k];
+  const rotationY = opts.yaw ?? (horiz > 1e-4 ? Math.atan2(dx, dz) : 0);
+  if (horiz < 1e-4 || t < start) {
+    return { position, rotationY, walk: 0, gaitWeight: 0 };
+  }
+  const walk = horiz * k;
+  const settle = Math.max(1e-3, opts.settle ?? 0.25);
+  if (t <= end) {
+    const rampIn = Math.max(1e-3, Math.min(0.16, span * 0.3));
+    return { position, rotationY, walk, gaitWeight: smoothstep(clamp01((t - start) / rampIn)) };
+  }
+  return { position, rotationY, walk, gaitWeight: 1 - smoothstep(clamp01((t - end) / settle)) };
+}

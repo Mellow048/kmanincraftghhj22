@@ -46,12 +46,12 @@ const FlatCoin: React.FC<{ position: Vec3; turn?: number; tilt?: Vec3; radius: n
   const thick = radius * 0.28;
   return (
     <group position={position} rotation={[tilt[0], turn, tilt[2]]}>
-      <mesh position={[0, thick / 2, 0]} castShadow receiveShadow>
-        <cylinderGeometry args={[radius, radius, thick, 8]} />
+      <mesh position={[0, thick * 0.43, 0]} castShadow receiveShadow>
+        <cylinderGeometry args={[radius, radius, thick * 0.86, 8]} />
         <meshStandardMaterial color={METAL[kind].face} roughness={0.5} metalness={0.2} />
       </mesh>
-      <mesh position={[0, thick / 2, 0]}>
-        <cylinderGeometry args={[radius * 0.72, radius * 0.72, thick * 1.12, 8]} />
+      <mesh position={[0, thick * 0.93, 0]}>
+        <cylinderGeometry args={[radius * 0.72, radius * 0.72, thick * 0.14, 8]} />
         <meshStandardMaterial color={METAL[kind].edge} roughness={0.6} metalness={0.2} />
       </mesh>
     </group>
@@ -65,13 +65,14 @@ const FlatCoin: React.FC<{ position: Vec3; turn?: number; tilt?: Vec3; radius: n
 export const CoinStack: React.FC<{ position?: Vec3; count: number; kind?: Metal; radius?: number; seed?: number }> = ({ position = [0, 0, 0], count, kind = "gold", radius = 0.16, seed = 1 }) => {
   const rand = mulberry32(seed * 131 + 7);
   const thick = radius * 0.28;
+  const step = thick + 0.002;
   const whole = Math.floor(count);
   const part = count - whole;
   const coins = Array.from({ length: whole + (part > 0.001 ? 1 : 0) }, (_, i) => ({ x: (rand() - 0.5) * radius * 0.16, z: (rand() - 0.5) * radius * 0.16, turn: rand() * 0.8 }));
   return (
     <group position={position}>
       {coins.map((coin, i) => (
-        <FlatCoin key={i} position={[coin.x, i * thick + (i === whole ? (1 - part) * 0.6 : 0), coin.z]} turn={coin.turn} radius={radius} kind={kind} />
+        <FlatCoin key={i} position={[coin.x, i * step + (i === whole ? (1 - part) * 0.6 : 0), coin.z]} turn={coin.turn} radius={radius} kind={kind} />
       ))}
     </group>
   );
@@ -93,7 +94,15 @@ export const CoinPile: React.FC<{ position?: Vec3; count?: number; kind?: Metal;
     const far = Math.sqrt(rand()) * spread;
     // The middle of a heap is higher: coins lie on coins.
     const level = Math.floor(Math.max(0, 1 - far / Math.max(spread, 0.01)) * Math.min(4, count / 5) * rand() * 1.6);
-    return { at: [Math.cos(angle) * far, level * thick, Math.sin(angle) * far] as Vec3, turn: rand() * 3, tilt: [(rand() - 0.5) * 0.5, 0, (rand() - 0.5) * 0.5] as Vec3, i };
+    const turn = rand() * 3;
+    const tilt: Vec3 = [(rand() - 0.5) * 0.5, 0, (rand() - 0.5) * 0.5];
+    const tiltLift = Math.hypot(Math.sin(tilt[0]), Math.sin(tilt[2])) * radius;
+    return {
+      at: [Math.cos(angle) * far, 0.003 + tiltLift + level * (thick + 0.004), Math.sin(angle) * far] as Vec3,
+      turn,
+      tilt,
+      i,
+    };
   });
   return (
     <group position={position}>
@@ -116,18 +125,20 @@ export const Bill: React.FC<{ position?: Vec3; rotation?: Vec3; rotationY?: numb
   </group>
 );
 
+const BILL_STEP = 0.019;
+
 /** A banded stack of `count` notes. `position` is the floor under it. `count` may be a fraction, to grow it. */
 export const BillStack: React.FC<{ position?: Vec3; rotationY?: number; count?: number; color?: string; seed?: number }> = ({ position = [0, 0, 0], rotationY = 0, count = 12, color = "#6fbf73", seed = 1 }) => {
   const rand = mulberry32(seed * 313 + 5);
   const n = Math.max(0, Math.ceil(count));
   const turns = Array.from({ length: n }, () => (rand() - 0.5) * 0.09);
-  const top = n * 0.014;
+  const stackH = n > 0 ? (n - 1) * BILL_STEP + 0.0175 : 0;
   return (
     <group position={position} rotation={[0, rotationY, 0]}>
       {turns.map((turn, i) => (
-        <Bill key={i} position={[0, i * 0.014, 0]} rotationY={turn} color={color} />
+        <Bill key={i} position={[0, i * BILL_STEP, 0]} rotationY={turn} color={color} />
       ))}
-      {n >= 4 ? <Block position={[0, top / 2, 0]} size={[0.07, top + 0.012, 0.236]} color="#f4efe0" castShadow={false} /> : null}
+      {n >= 4 ? <Block position={[0, stackH / 2 + 0.001, 0]} size={[0.07, stackH + 0.002, 0.236]} color="#f4efe0" castShadow={false} /> : null}
     </group>
   );
 };
@@ -210,9 +221,9 @@ export const Printer: React.FC<{ position?: Vec3; rotationY?: number; out?: numb
       <Figure text={sign} position={[0.28, 0.82, 0.44]} height={0.26} depth={0.4} color="#3d7a34" shadow={false} />
       {/* the notes */}
       {Array.from({ length: done }, (_, i) => (
-        <Bill key={i} position={[((i * 37) % 11) * 0.006 - 0.03, 0.38 + i * 0.013, 0.74 + ((i * 53) % 7) * 0.008 - 0.024]} rotationY={Math.PI / 2 + (((i * 29) % 9) - 4) * 0.03} color={color} />
+        <Bill key={i} position={[((i * 37) % 11) * 0.006 - 0.03, 0.382 + i * BILL_STEP, 0.74 + ((i * 53) % 7) * 0.008 - 0.024]} rotationY={Math.PI / 2 + (((i * 29) % 9) - 4) * 0.03} color={color} />
       ))}
-      {out < tray && sliding > 0.001 ? <Bill position={[0, 0.5 - 0.11 * sliding + done * 0.013 * sliding, 0.44 + 0.3 * sliding]} rotationY={Math.PI / 2} color={color} /> : null}
+      {out < tray && sliding > 0.001 ? <Bill position={[0, 0.5 * (1 - sliding) + (0.382 + done * BILL_STEP) * sliding, 0.44 + 0.3 * sliding]} rotationY={Math.PI / 2} color={color} /> : null}
     </group>
   );
 };

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
-import type { AnimName } from "./anim";
+import type { AnimName, GaitName } from "./anim";
 import { clamp, clamp01, easings, smoothstep } from "./math";
 import type { EaseName, Vec3 } from "./math";
 
@@ -34,6 +34,10 @@ export type WalkPathOptions = {
    * before the torso turns. Default 0.7.
    */
   lookAhead?: number;
+  /** Gait clip used while moving along the path. Default "walk". */
+  gait?: GaitName;
+  /** Seconds to blend back to "idle" after reaching the end of the path. Default 0.25. */
+  settle?: number;
 };
 
 export type WalkState = {
@@ -51,6 +55,12 @@ export type WalkState = {
   /** 0..1 along the whole walk. */
   progress: number;
   moving: boolean;
+  /** Deterministic animation clip that transitions cleanly from idle -> gait -> idle without mid-stride freezes. */
+  animation: AnimName;
+  /** Optional blend target clip for smooth start/stop transitions. */
+  blendTo?: AnimName;
+  /** Blend factor between `blendTo` (0) and `animation` (1). */
+  blend: number;
 };
 
 type Sample = { point: THREE.Vector3; tangent: THREE.Vector3; arc: number };
@@ -114,7 +124,18 @@ export function useWalkPath(options: WalkPathOptions): WalkState {
   const { fps } = useVideoConfig();
   const t = frame / fps;
 
-  const { points, duration, ease = "inOutSine", yaw, delay = 0, tail = 0, arc = 0, lookAhead = 0.7 } = options;
+  const {
+    points,
+    duration,
+    ease = "inOutSine",
+    yaw,
+    delay = 0,
+    tail = 0,
+    arc = 0,
+    lookAhead = 0.7,
+    gait = "walk",
+    settle = 0.25,
+  } = options;
 
   const { samples, total } = useMemo(() => buildSamples(points, 480), [points]);
 
@@ -151,6 +172,26 @@ export function useWalkPath(options: WalkPathOptions): WalkState {
     while (lead < -Math.PI) lead += Math.PI * 2;
     const headYaw = clamp(lead, -0.55, 0.55) * (moving ? 1 : 0.45);
 
+    let animation: AnimName = "idle";
+    let blendTo: AnimName | undefined;
+    let blend = 1;
+    if (total > 1e-4) {
+      if (t < delay) {
+        animation = "idle";
+        blendTo = undefined;
+        blend = 1;
+      } else if (t < delay + travel) {
+        animation = gait;
+        blendTo = "idle";
+        const rampIn = Math.max(1e-3, Math.min(0.18, travel * 0.3));
+        blend = smoothstep(clamp01((t - delay) / rampIn));
+      } else {
+        animation = "idle";
+        blendTo = gait;
+        blend = smoothstep(clamp01((t - (delay + travel)) / Math.max(1e-3, settle)));
+      }
+    }
+
     return {
       position,
       yaw: facing,
@@ -159,8 +200,11 @@ export function useWalkPath(options: WalkPathOptions): WalkState {
       headYaw,
       progress: now.eased,
       moving,
+      animation,
+      blendTo,
+      blend,
     };
-  }, [samples, total, t, duration, delay, tail, ease, yaw, arc, fps, lookAhead]);
+  }, [samples, total, t, duration, delay, tail, ease, yaw, arc, fps, lookAhead, gait, settle]);
 }
 
 export type PerformanceStep = {

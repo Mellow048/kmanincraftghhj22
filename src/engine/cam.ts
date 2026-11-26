@@ -116,14 +116,19 @@ export const cam = {
     };
   },
 
-  /** Fast snappy whip-pan (`outExpo` speed ramp) for comedy turns, reveals, and reaction snaps. */
-  whip(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number; ease?: Shot["ease"] }): Move {
+  /**
+   * Fast snappy whip-pan (`outExpo` speed ramp) for comedy turns, reveals, and reaction snaps.
+   * Keep `dur <= 0.85s` (or split with `cut:`) for the sharpest whips; longer shots receive
+   * `Camera.tsx` follow-through drift (or prefer `cam.pan` for `>0.95s` sweeps).
+   */
+  whip(o: { from: Vec3; on: Vec3; onTo: Vec3; fov?: number; fovTo?: number; screenOffset?: [number, number]; ease?: Shot["ease"] }): Move {
     return {
       from: o.from,
       target: o.on,
       targetTo: o.onTo,
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
       ease: o.ease ?? "outExpo",
     };
   },

@@ -36,13 +36,14 @@ if (!id || id.startsWith("--")) {
 const perChunk = Math.max(30, Number(opt("chunk", "270")) || 270);
 const maxChunks = Math.max(1, Number(opt("max", "20")) || 20);
 const scale = Number(opt("scale", "1")) || 1;
-const chrome = opt("chrome", process.env.REMOTION_CHROME ?? null);
+const chrome = opt("chrome", process.env.REMOTION_CHROME || null);
+const gl = opt("gl", process.env.REMOTION_GL || "swangle");
 
 const log = (...parts) => console.error(...parts);
 
 log(`Bundling to measure ${id}…`);
 const serveUrl = await bundle({ entryPoint: path.join(root, "src", "index.ts"), publicDir: path.join(root, "public") });
-const chromiumOptions = { gl: "swangle" };
+const chromiumOptions = { gl };
 const browser = await openBrowser("chrome", { browserExecutable: chrome, chromiumOptions });
 let composition;
 try {

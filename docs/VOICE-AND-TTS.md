@@ -42,3 +42,30 @@ Every narration TTS you pick or audition **MUST match ALL FIVE traits**:
 When running `python3 scripts/sound.py build <film>`:
 - Voice sits **13–17 dB** above the music/ambient bed (median), and **never drops below 3–4 dB** over any SFX burst (`sound.lock.json`).
 - **0.0s–0.3s:** Voice starts IMMEDIATELY on beat 1 of the video. No musical intro.
+
+---
+
+## 4. Generating & Aligning TTS on This Machine
+
+1. **Primary TTS (`edge-tts`, zero API keys required):**
+   - Use **`en-US-GuyNeural`** at **`--rate=+10%`** (same energetic young American male voice used in the remastered *Mountain* and *Fox* Shorts; keeps `narration.py` `atempo` cleanly inside `1.30x–1.45x`).
+   - Run the wrapper:
+     ```bash
+     python3 scripts/tts.py <slug> --voice en-US-GuyNeural --rate=+10%
+     ```
+     This reads `src/videos/<slug>/narration.md` via `narration.read_script(slug)` and writes `public/audio/<slug>/raw/<clip>.mp3`.
+   - **Offline fallback (`kokoro-onnx`):** If outbound `speech.platform.bing.com` is unavailable, use the cached local Kokoro v1.0 model (`~/.cache/hyperframes/tts/models/kokoro-v1.0.onnx` + `voices-v1.0.bin`):
+     ```bash
+     python3 scripts/tts.py <slug> --engine kokoro --voice am_puck
+     ```
+2. **Forced Alignment (`pocketsphinx` via cached `uv` environment):**
+   - `pocketsphinx` (`5.1.1`) and `numpy` (`2.5.5`) are pre-cached in `uv`'s Python `3.14` environment (rather than system `/usr/bin/python3`). Always run `narration.py build` through `uv run --offline`:
+     ```bash
+     uv run --offline --with numpy --with pocketsphinx python scripts/narration.py build <slug> --require-alignment
+     ```
+   - If any word in `narration.md` is missing from CMUdict, add its ARPAbet pronunciation to `SAY` in `scripts/narration.py` and re-run (`--require-alignment` aborts cleanly without replacing outputs).
+3. **Final Audio Mix (`sound.py`):**
+   ```bash
+   python3 scripts/sound.py build <slug>
+   ```
+   Writes `public/audio/<slug>/mix.mp3` and `src/videos/<slug>/sound.lock.json`. Ensure `film.tsx` sets `audio: { src: "audio/<slug>/mix.mp3" }` and re-run `npm run rehearse -- <slug> --final`.

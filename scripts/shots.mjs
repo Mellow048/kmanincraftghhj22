@@ -11,6 +11,7 @@
  *   --scale 0.5         output size (1 = full 1080×1920). Default 0.5.
  *   --out out/shots     where the JPGs go. Default out/shots/<film>.
  *   --chrome /path      browser to use. Default: REMOTION_CHROME, else Remotion's own.
+ *   --gl backend        Chromium GL backend (e.g. angle, swangle). Default: REMOTION_GL, else swangle.
  *
  * It bundles once and reuses one browser, so a still costs seconds, not the
  * twenty a fresh `remotion still` takes. Rendering is permission-only on the
@@ -53,7 +54,8 @@ const fractions = opt("at", "0.5")
   .split(",")
   .map(Number)
   .filter((n) => Number.isFinite(n));
-const chrome = opt("chrome", process.env.REMOTION_CHROME ?? null);
+const chrome = opt("chrome", process.env.REMOTION_CHROME || null);
+const gl = opt("gl", process.env.REMOTION_GL || "swangle");
 
 /** [{ frame, name }] */
 const jobs = [];
@@ -84,7 +86,7 @@ fs.mkdirSync(outDir, { recursive: true });
 const started = Date.now();
 console.log(`Bundling… (${jobs.length} still${jobs.length === 1 ? "" : "s"} of ${film}, scale ${scale})`);
 const serveUrl = await bundle({ entryPoint: path.join(root, "src", "index.ts"), publicDir: path.join(root, "public") });
-const chromiumOptions = { gl: "swangle" };
+const chromiumOptions = { gl };
 const browser = await openBrowser("chrome", { browserExecutable: chrome, chromiumOptions });
 const composition = await selectComposition({
   serveUrl,

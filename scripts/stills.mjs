@@ -25,6 +25,9 @@ if (frames.length === 0) {
 
 fs.mkdirSync(outDir, { recursive: true });
 
+const gl = process.env.REMOTION_GL || "swangle";
+const chrome = process.env.REMOTION_CHROME || null;
+
 for (const frame of frames) {
   const out = path.join(outDir, `${composition}-${String(frame).padStart(4, "0")}.png`);
   console.log(`\n▶ ${composition} frame ${frame} → ${out}`);
@@ -37,7 +40,8 @@ for (const frame of frames) {
       composition,
       out,
       `--frame=${frame}`,
-      "--gl=swangle",
+      `--gl=${gl}`,
+      ...(chrome ? [`--browser-executable=${chrome}`] : []),
       "--log=error",
     ],
     { stdio: "inherit" },

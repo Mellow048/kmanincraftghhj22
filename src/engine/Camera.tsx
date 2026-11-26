@@ -3,7 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import * as THREE from "three";
 import { clamp01, easings, focalMmToFov, wobble } from "./math";
-import type { Vec3 } from "./math";
+import type { EaseName, Vec3 } from "./math";
 import type { Shot } from "./types";
 
 /**
@@ -53,6 +53,20 @@ export function pickShot(shots: Shot[], t: number): Shot {
   return active;
 }
 
+/**
+ * Evaluate shot camera easing. Preserves crisp `outExpo` whip snaps on short shots (`dur <= 0.85`),
+ * while blending up to 25% linear follow-through drift on longer shots so the camera never freezes
+ * after ~0.4s.
+ */
+export function shotEase(ease: EaseName, p: number, dur: number): number {
+  const k = clamp01(p);
+  if (ease === "outExpo" && dur > 0.85) {
+    const drift = clamp01((dur - 0.85) / 0.6) * 0.25;
+    return (1 - drift) * easings.outExpo(k) + drift * k;
+  }
+  return easings[ease](k);
+}
+
 export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: string }> = ({
   shots,
   duration,
@@ -65,7 +79,7 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
 
   const shot = pickShot(shots, t);
   const p = clamp01((t - shot.at) / Math.max(shot.dur, 1e-6));
-  const e = easings[shot.ease ?? "inOutCubic"](p);
+  const e = shotEase(shot.ease ?? "inOutCubic", p, shot.dur);
 
   // Camera position
   const position = samplePath(shot.path, shot.from, shot.to, e, shot.arc ?? 0);

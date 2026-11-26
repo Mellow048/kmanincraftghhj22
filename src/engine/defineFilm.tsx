@@ -29,11 +29,15 @@ const ActiveShotContext = createContext<ActiveShot | null>(null);
 
 /** Which shot is on screen. Works in `World`, where `useTime()` has no scene. */
 export function useActiveShot(): ActiveShot | null {
+  const rs = (globalThis as { __REHEARSAL_SHOT__?: ActiveShot | null }).__REHEARSAL_SHOT__;
+  if (rs !== undefined) return rs;
   return useContext(ActiveShotContext);
 }
 
 /** Seconds since the start of the current scene. */
 export function useTime(): number {
+  const rt = (globalThis as { __REHEARSAL_TIME__?: number }).__REHEARSAL_TIME__;
+  if (rt !== undefined) return rt;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return frame / fps;

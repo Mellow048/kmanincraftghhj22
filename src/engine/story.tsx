@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 import type React from "react";
+import type { AnimName, GaitName } from "./anim";
 import { useActiveShot, useTime } from "./defineFilm";
-import { clamp01 } from "./math";
-import type { Vec3 } from "./math";
+import { clamp01, easings, smoothstep } from "./math";
+import type { EaseName, Vec3 } from "./math";
 import type { CaptionWord, SceneDef, Shot } from "./types";
 
 /**
@@ -157,5 +158,62 @@ export function stride(a: Vec3, b: Vec3, p: number): { position: Vec3; rotationY
     position: [a[0] + dx * k, a[1] + (b[1] - a[1]) * k, a[2] + dz * k],
     rotationY: Math.atan2(dx, dz),
     animDistance: Math.hypot(dx, dz) * k,
+  };
+}
+
+/**
+ * Time-windowed walk segment for `storyScene` stages. Spread into an avatar:
+ *   <Hero {...walkSegment(A, B, t, 0, 1.4)} face="happy" time={t} />
+ * Stationary/vertical-only segments stay `"idle"` (`animDistance: 0`), and stops
+ * blend cleanly back to `"idle"` over `settle` seconds (no mid-stride freeze).
+ */
+export function walkSegment(
+  a: Vec3,
+  b: Vec3,
+  t: number,
+  start: number,
+  end: number,
+  opts: { gait?: GaitName; ease?: EaseName; settle?: number; yaw?: number } = {},
+): {
+  position: Vec3;
+  rotationY: number;
+  animDistance: number;
+  animation: AnimName;
+  blendTo?: AnimName;
+  blend: number;
+} {
+  const span = Math.max(1e-3, end - start);
+  const raw = clamp01((t - start) / span);
+  const k = easings[opts.ease ?? "inOutSine"](raw);
+  const dx = b[0] - a[0];
+  const dy = b[1] - a[1];
+  const dz = b[2] - a[2];
+  const horiz = Math.hypot(dx, dz);
+  const position: Vec3 = [a[0] + dx * k, a[1] + dy * k, a[2] + dz * k];
+  const rotationY = opts.yaw ?? (horiz > 1e-4 ? Math.atan2(dx, dz) : 0);
+  if (horiz < 1e-4 || t < start) {
+    return { position, rotationY, animDistance: 0, animation: "idle", blend: 1 };
+  }
+  const gait = opts.gait ?? "walk";
+  const settle = Math.max(1e-3, opts.settle ?? 0.25);
+  const animDistance = horiz * k;
+  if (t <= end) {
+    const rampIn = Math.max(1e-3, Math.min(0.16, span * 0.3));
+    return {
+      position,
+      rotationY,
+      animDistance,
+      animation: gait,
+      blendTo: "idle",
+      blend: smoothstep(clamp01((t - start) / rampIn)),
+    };
+  }
+  return {
+    position,
+    rotationY,
+    animDistance,
+    animation: "idle",
+    blendTo: gait,
+    blend: smoothstep(clamp01((t - end) / settle)),
   };
 }

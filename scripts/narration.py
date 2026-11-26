@@ -202,6 +202,7 @@ SAY = {
     "sixtysix": "S IH K S T IY S IH K S",
     "hus": "HH AH S",
     "glowstone": "G L OW S T OW N",
+    "lunchbox": "L AH N CH B AA K S",
 }
 
 def assembled_spans(raw, count, length):

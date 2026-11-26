@@ -31,6 +31,8 @@ export type MinecraftAvatarProps = {
    * match the ground and a character never walks in place.
    */
   animDistance?: number;
+  /** Explicit opt-in to legacy clock-driven gait when `animDistance` is omitted. Default false (stationary actors never cycle legs). */
+  timeGait?: boolean;
   /** Grounded walks only: keep the lowest shin/shoe on position.y as the knees bend. Not for a jump. */
   plantFeet?: boolean;
 
@@ -188,6 +190,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   animSpeed = 1,
   phase = 0,
   animDistance,
+  timeGait = false,
   plantFeet = false,
   arms,
   blendTo,
@@ -228,7 +231,10 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   // Layered secondary motion. A body that only plays a walk cycle reads as a
   // puppet; a chest that breathes and hips that shift weight read as a person.
   // Both are damped while travelling so they never fight a gait.
-  const travelling = animDistance !== undefined && isGait(animation);
+  const hasTravel = animDistance !== undefined ? animDistance > 1e-4 : timeGait;
+  const travelling =
+    hasTravel &&
+    (isGait(animation) || (blendTo !== undefined && isGait(blendTo) && blend < 1));
   const breathAmt = breath * (travelling ? 0.4 : 1);
   const shiftAmt = weightShift * (travelling ? 0.18 : 1);
   const breathWave = Math.sin(clock * TAU * 0.26 + phase * 2.7);
@@ -303,20 +309,27 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   }, [materials, blinkClosed, face, skin, hair, faceGlow, gaze]);
 
   // Pose
-  let pose: Pose;
-  if (animDistance !== undefined && isGait(animation)) {
-    pose = gaitPose(animation, animDistance);
-  } else {
-    pose = getPose(animation, clock);
-  }
+  const resolvePose = (clip: AnimName, clipClock: number): Pose => {
+    if (isGait(clip)) {
+      if (animDistance !== undefined) {
+        const dist = Number.isFinite(animDistance) ? Math.max(0, animDistance) : 0;
+        if (dist <= 1e-4) return getPose("idle", clipClock);
+        const gp = gaitPose(clip, dist);
+        return dist < 0.12 ? blendPose(getPose("idle", clipClock), gp, dist / 0.12) : gp;
+      }
+      return timeGait ? gaitPose(clip, clipClock) : getPose("idle", clipClock);
+    }
+    return getPose(clip, clipClock);
+  };
+
+  let pose = resolvePose(animation, clock);
   if (blendTo) {
     const otherClock = blendTime !== undefined ? blendTime : clock;
-    const other =
-      animDistance !== undefined && isGait(blendTo) ? gaitPose(blendTo, animDistance) : getPose(blendTo, otherClock);
+    const other = resolvePose(blendTo, otherClock);
     pose = blendPose(other, pose, blend);
   }
   if (arms) {
-    const upper = getPose(arms, clock);
+    const upper = resolvePose(arms, clock);
     pose = { ...pose, armR: upper.armR, armL: upper.armL };
   }
 

@@ -1,7 +1,41 @@
-// Inspect a constructed film, not the names of recipes in its TSX. No renderer or hooks.
+// Inspect a constructed film, not the names of recipes in its TSX. No renderer or live hooks.
+import React from 'react';
+
 const rad = Math.PI / 180;
 const gap = (a, b) => Math.hypot(...a.map((v, i) => v - b[i]));
 const points = (path, from, to) => path?.length >= 2 ? path : [from, to ?? from];
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+const EASE = {
+  linear: (t) => t,
+  inSine: (t) => 1 - Math.cos((t * Math.PI) / 2),
+  outSine: (t) => Math.sin((t * Math.PI) / 2),
+  inOutSine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
+  inCubic: (t) => t * t * t,
+  outCubic: (t) => 1 - Math.pow(1 - t, 3),
+  inOutCubic: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+  outQuint: (t) => 1 - Math.pow(1 - t, 5),
+  outExpo: (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+  inOutExpo: (t) => (t <= 0 ? 0 : t >= 1 ? 1 : t < 0.5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2),
+  inOutQuint: (t) => (t < 0.5 ? 16 * t ** 5 : 1 - Math.pow(-2 * t + 2, 5) / 2),
+  inBack: (t) => { const c1 = 1.70158, c3 = c1 + 1; return c3 * t * t * t - c1 * t * t; },
+  outBack: (t) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); },
+  inOutBack: (t) => { const c1 = 1.70158, c2 = c1 * 1.525; return t < 0.5 ? (Math.pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2 : (Math.pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2; },
+  snap: (t) => 1 - Math.pow(1 - clamp(t, 0, 1), 4),
+  hold: () => 0,
+};
+const evalEase = (name, p) => (EASE[name] ?? EASE.inOutCubic)(clamp(p, 0, 1));
+const GAITS = new Set(['walk', 'run', 'creep', 'stagger']);
+const PRIMITIVES = new Set(['Block', 'Vox', 'Water', 'Glow', 'LightPool', 'Dust', 'FogCard', 'GodRay', 'ContactShadow', 'group', 'mesh', 'Fragment', 'component']);
+const WORLD_LEAF = new Set([
+  'Block', 'Vox', 'Water', 'Glow', 'LightPool', 'Dust', 'FogCard', 'GodRay', 'ContactShadow',
+  'Tree', 'Torch', 'Clouds', 'Hut', 'Room', 'LampPost', 'Lantern', 'LanternLine',
+  'Bell', 'Well', 'Fence', 'Stall', 'Furnace', 'CellarGate', 'ChalkWall', 'BedBox',
+  'Boat', 'SnowTrail', 'Plinth', 'RoyalCarpet', 'LavaSurface', 'MushroomRow',
+  'GlowstoneCluster', 'SoupCauldron', 'RuinedDoor', 'Hero', 'Mum', 'Dad', 'Baker',
+  'Villager', 'IronGolem', 'SnowGolem', 'CitizenLead', 'EliteLead', 'ExplainerCrowd', 'MinecraftAvatar',
+]);
+
 function lens(s, end = false) {
   if (s.focalLength == null) return (end ? s.fovTo ?? s.fov : s.fov) ?? 38;
   const mm = end ? s.focalLengthTo ?? s.focalLength : s.focalLength;
@@ -16,7 +50,6 @@ function similar(a, b) {
   return a && a.axis.reduce((d, v, i) => d + v * b.axis[i], 0) > Math.cos(9 * rad) &&
     Math.abs(Math.log(a.span / b.span)) < Math.log(1.18) && Math.abs(a.roll - b.roll) < 6 * rad;
 }
-const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
 function camera(s) {
   const eyes = points(s.path, s.from, s.to), targets = points(s.targetPath, s.target, s.targetTo);
@@ -41,8 +74,144 @@ function camera(s) {
   const strongFx = s.shake >= .01 || s.impacts?.some(i => i.amp >= .015 && i.at < s.at + s.dur && i.at + (i.dur ?? .35) > s.at);
   const micro = !strongFx && eyeDist < .35 && angDeg < 4 && spanRatio < 1.1 && rollDeg < 4;
   const meaningful = strongFx || eyeDist >= .6 || angDeg >= 8 || spanRatio >= 1.18 || rollDeg >= 6;
-  return { start, end, changes, eyeDist, angDeg, spanRatio, rollDeg, micro, meaningful };
+  return { start, end, changes, strongFx, eyeDist, angDeg, spanRatio, rollDeg, micro, meaningful };
 }
+
+const vecAdd = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+const elemName = (el) => (typeof el.type === 'string' ? el.type : (el.type?.displayName || el.type?.name || 'component'));
+const isVec3 = (v) => Array.isArray(v) && v.length >= 3 && v.slice(0, 3).every((n) => typeof n === 'number' && Number.isFinite(n));
+
+function collectActors(node, out, offset = [0, 0, 0]) {
+  if (!node || typeof node !== 'object') return;
+  if (Array.isArray(node)) { for (const c of node) collectActors(c, out, offset); return; }
+  if (!node.$$typeof || !node.props) return;
+  const name = elemName(node);
+  const p = node.props;
+  const nextOffset = name === 'group' && isVec3(p.position) ? vecAdd(offset, p.position) : offset;
+  if (typeof p.walk === 'number' || typeof p.animation === 'string') {
+    const pos = isVec3(p.position) ? vecAdd(p.position, offset) : [...offset];
+    out.push({ name, props: p, pos });
+  }
+  if (p.children) collectActors(p.children, out, nextOffset);
+}
+
+function collectStageItems(node, out, offset = [0, 0, 0]) {
+  if (!node || typeof node !== 'object') return;
+  if (Array.isArray(node)) { for (const c of node) collectStageItems(c, out, offset); return; }
+  if (!node.$$typeof || !node.props) return;
+  const name = elemName(node);
+  const p = node.props;
+  const nextOffset = name === 'group' && isVec3(p.position) ? vecAdd(offset, p.position) : offset;
+  const pos = isVec3(p.position) ? vecAdd(p.position, offset) : null;
+  if (pos || name === 'SnowTrail') out.push({ name, pos, offset, props: p });
+  if (p.children) collectStageItems(p.children, out, nextOffset);
+}
+
+function expandWorld(World) {
+  const items = [];
+  if (typeof World !== 'function') return items;
+  const internals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+  const prevH = internals?.H;
+  const prevTime = globalThis.__REHEARSAL_TIME__;
+  const prevShot = globalThis.__REHEARSAL_SHOT__;
+  try {
+    globalThis.__REHEARSAL_TIME__ = 0;
+    globalThis.__REHEARSAL_SHOT__ = null;
+    if (internals) {
+      internals.H = {
+        useMemo: (fn) => fn(),
+        useCallback: (fn) => fn,
+        useState: (init) => [typeof init === 'function' ? init() : init, () => {}],
+        useReducer: (_red, init, initFn) => [initFn ? initFn(init) : init, () => {}],
+        useRef: (v) => ({ current: v }),
+        useEffect: () => {},
+        useLayoutEffect: () => {},
+        useInsertionEffect: () => {},
+        useContext: (ctx) => ctx?._currentValue ?? null,
+        useId: () => 'rehearsal',
+        useTransition: () => [false, (fn) => fn()],
+        useDeferredValue: (v) => v,
+        useSyncExternalStore: (_sub, getSnap) => getSnap(),
+        use: (v) => v,
+      };
+    }
+    const visit = (node, offset = [0, 0, 0], zone = null, companions = []) => {
+      if (!node || typeof node !== 'object') return;
+      if (Array.isArray(node)) { for (const c of node) visit(c, offset, zone, companions); return; }
+      if (!node.$$typeof || !node.props) return;
+      const name = elemName(node);
+      const p = node.props;
+      if (name === 'Zone' && typeof p.name === 'string') {
+        visit(p.children, offset, p.name, Array.isArray(p.with) ? p.with : []);
+        return;
+      }
+      if (typeof node.type === 'function' && !WORLD_LEAF.has(name)) {
+        let rendered = null;
+        try { rendered = node.type(p); } catch { rendered = null; }
+        if (rendered) { visit(rendered, offset, zone, companions); return; }
+      }
+      const nextOffset = name === 'group' && isVec3(p.position) ? vecAdd(offset, p.position) : offset;
+      const pos = isVec3(p.position) ? vecAdd(p.position, offset) : null;
+      if (pos || name === 'SnowTrail') items.push({ name, pos, offset, props: p, zone, with: companions });
+      if (p.children) visit(p.children, nextOffset, zone, companions);
+    };
+    let rootTree = null;
+    try { rootTree = World({}); } catch { rootTree = null; }
+    visit(rootTree);
+  } finally {
+    if (internals) internals.H = prevH;
+    if (prevTime === undefined) delete globalThis.__REHEARSAL_TIME__;
+    else globalThis.__REHEARSAL_TIME__ = prevTime;
+    if (prevShot === undefined) delete globalThis.__REHEARSAL_SHOT__;
+    else globalThis.__REHEARSAL_SHOT__ = prevShot;
+  }
+  return items;
+}
+
+const zonesOverlap = (shotZone, item) => {
+  if (!shotZone || !item.zone) return true;
+  const active = shotZone.split('+');
+  return active.includes(item.zone) || (item.with ?? []).some((w) => active.includes(w));
+};
+
+const worldZonesOverlap = (a, b) => !a.zone || !b.zone || a.zone === b.zone ||
+  (a.with ?? []).includes(b.zone) || (b.with ?? []).includes(a.zone);
+
+const boxBounds = (pos, size) => {
+  const s = isVec3(size) ? size : [1, 1, 1];
+  return {
+    x0: pos[0] - s[0] / 2, x1: pos[0] + s[0] / 2,
+    y0: pos[1] - s[1] / 2, y1: pos[1] + s[1] / 2,
+    z0: pos[2] - s[2] / 2, z1: pos[2] + s[2] / 2,
+  };
+};
+
+const snowBoxes = (item) => {
+  const off = item.offset ?? [0, 0, 0];
+  const out = [];
+  if (Array.isArray(item.props.points)) {
+    for (const pt of item.props.points) {
+      if (!isVec3(pt)) continue;
+      const p = vecAdd(pt, off);
+      out.push({ x0: p[0] - 0.425, x1: p[0] + 0.425, y0: p[1], y1: p[1] + 0.05, z0: p[2] - 0.425, z1: p[2] + 0.425 });
+    }
+  } else if (isVec3(item.props.from) && isVec3(item.props.to)) {
+    const count = Math.max(1, item.props.count ?? 8);
+    const w = (item.props.width ?? 0.5) / 2;
+    for (let i = 0; i < count; i++) {
+      const k = count === 1 ? 0 : i / (count - 1);
+      const p = [
+        item.props.from[0] + (item.props.to[0] - item.props.from[0]) * k + off[0],
+        item.props.from[1] + (item.props.to[1] - item.props.from[1]) * k + off[1],
+        item.props.from[2] + (item.props.to[2] - item.props.from[2]) * k + off[2],
+      ];
+      out.push({ x0: p[0] - w, x1: p[0] + w, y0: p[1], y1: p[1] + 0.05, z0: p[2] - w, z1: p[2] + w });
+    }
+  }
+  return out;
+};
+
+const axisOverlap = (a0, a1, b0, b1) => Math.min(a1, b1) - Math.max(a0, b0);
 
 // A child can run its own animation clock. Don't call it here (it may use hooks),
 // and don't count passing t={t} to an inert child as proof that it moved.
@@ -96,6 +265,31 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
   const { fps } = film, covered = [];
   let prior, alike = 0, quiet = 0, frame = 0;
   const isModern = timing?.wordTiming !== undefined || film.captions?.motion === 'on-beat';
+  const bucket = isModern ? r.unfinished : r.review;
+  const worldItems = expandWorld(film.World);
+  const worldBoxes = worldItems.filter((w) => (w.name === 'Vox' || w.name === 'Block') && w.pos);
+  const seenSnowWorld = new Set();
+  for (const w of worldItems) {
+    if (w.name !== 'SnowTrail') continue;
+    const zKey = w.zone ?? '*';
+    for (const sb of snowBoxes(w)) {
+      for (const wb of worldBoxes) {
+        if (!worldZonesOverlap(w, wb)) continue;
+        const bb = boxBounds(wb.pos, wb.props.size);
+        if (axisOverlap(sb.x0, sb.x1, bb.x0, bb.x1) > 0.05 && axisOverlap(sb.z0, sb.z1, bb.z0, bb.z1) > 0.05 && Math.abs(sb.y1 - bb.y1) < 0.002) {
+          const key = `${zKey}:${wb.name}:${sb.y1.toFixed(3)}`;
+          if (!seenSnowWorld.has(key)) {
+            seenSnowWorld.add(key);
+            bucket.push(`World coplanar y=${sb.y1.toFixed(3)}: ${wb.name} vs SnowTrail (zone ${zKey}). Raise SnowTrail or lower base slab >=0.005m.`);
+          }
+        }
+      }
+    }
+  }
+  const seenDup = new Set();
+  const seenBoat = new Set();
+  const seenSnowStage = new Set();
+
   for (const scene of film.scenes) {
     const duration = Math.max(1, Math.round(scene.duration * fps));
     for (const [i, s] of scene.shots.entries()) {
@@ -105,15 +299,16 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
       const next = scene.shots[i + 1];
       const last = (next ? Math.ceil((next.at - 1e-6) * fps) : duration) - 1;
       const where = `[${s.cue ?? `${scene.id}/${i + 1}`}] frame ${frame + first}`;
+      const cueKey = s.cue ?? `${scene.id}/${i + 1}`;
       if (s.cue && covered.at(-1)?.id !== s.cue) covered.push({ id: s.cue, frame: frame + first });
       const view = camera(s);
       if (![view.start, view.end].every(v => Number.isFinite(v.span) && v.span > 0)) r.errors.push(`${where}: lens has no valid view of its subject.`);
       if (last < first) r.errors.push(`${where}: this shot has no screen frames.`);
       if (scene.sampleStage && !view.changes && !s.locked) {
-        (isModern ? r.unfinished : r.review).push(`${where}: camera resolves to a hold. Change the endpoints, or for a deliberate photograph/POV set locked: true and explain it in the note.`);
+        bucket.push(`${where}: camera resolves to a hold. Change the endpoints, or for a deliberate photograph/POV set locked: true and explain it in the note.`);
       } else if (scene.sampleStage && view.changes && !s.locked) {
         if (view.micro) {
-          (isModern ? r.unfinished : r.review).push(
+          bucket.push(
             `${where}: camera barely moves (${view.eyeDist.toFixed(2)}m, ${view.angDeg.toFixed(1)}deg). That reads like a PowerPoint slide. Push >=0.5m, orbit >=15deg, truck with the actor, or set locked: true.`,
           );
         } else if (!view.meaningful) {
@@ -122,8 +317,16 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
           );
         }
       }
+      if (s.dur > 0.95 && view.changes && !s.locked && !view.strongFx) {
+        const easeName = s.ease ?? 'inOutCubic';
+        if (easeName === 'outExpo' || evalEase(easeName, 0.5) >= 0.95) {
+          bucket.push(
+            `${where}: ${easeName} over ${s.dur.toFixed(2)}s finishes >95% of its move by halfway and freezes the tail. Keep cam.whip <= 0.85s or use "inOutSine".`,
+          );
+        }
+      }
       if (r.shots === 1 && view.start.dist > 11 && !s.locked) {
-        (isModern ? r.unfinished : r.review).push(
+        bucket.push(
           `${where}: opening hook camera starts ${view.start.dist.toFixed(1)}m from subject — lead characters read as specks on phones. Frame Frame 1 close (<= 8.5m) with immediate action.`,
         );
       }
@@ -133,7 +336,8 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
       prior = view.start;
       if (!scene.sampleStage || last < first) continue;
       r.sampled++;
-      const poses = new Set([0, .15, .5, .85, 1].map(p => stagePrint(scene.sampleStage(i, (first + Math.round(p * (last - first))) / fps - s.at))));
+      const sampleNodes = [0, .15, .5, .85, 1].map(p => scene.sampleStage(i, (first + Math.round(p * (last - first))) / fps - s.at));
+      const poses = new Set(sampleNodes.map(n => stagePrint(n)));
       if (poses.size > 1) { r.changing++; quiet = 0; }
       else if (!s.locked) {
         quiet++;
@@ -141,6 +345,131 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
           r.unfinished.push(`${where}: ${quiet} shots in a row send frozen unchanged props across 5 samples. Show physical acting, movement, faces, or changing props on the narrator's words (VISUALS + MOTION IS A MUST).`);
         } else {
           r.review.push(`${where}: ${r.shots === 1 ? 'the opening sends' : 'shot sends'} unchanged props (apart from clocks) at five samples. Check the child rig on screen; a moving lens alone is not acting.`);
+        }
+      }
+
+      // Stationary / post-stop / uncoupled walk detection across the 5 sampled stage trees
+      const actorSamples = sampleNodes.map((n) => {
+        const list = [];
+        collectActors(n, list);
+        return list;
+      });
+      if (actorSamples[0].length > 0 && actorSamples.every((list) => list.length === actorSamples[0].length)) {
+        for (let k = 0; k < actorSamples[0].length; k++) {
+          const name = actorSamples[0][k].name;
+          if (!actorSamples.every((list) => list[k].name === name)) continue;
+          const pts = actorSamples.map((list) => list[k]);
+          const maxMove = Math.max(0, ...pts.map((pt) => gap(pt.pos, pts[0].pos)));
+          const hasPos = pts.some((pt) => Array.isArray(pt.props.position));
+          const hasAlt = pts.some((pt) => pt.props.shift !== undefined || pt.props.at !== undefined || pt.props.positions !== undefined);
+
+          if (pts.every((pt) => typeof pt.props.walk === 'number') && pts.some((pt) => (pt.props.gaitWeight ?? 1) > 1e-4)) {
+            const walks = pts.map((pt) => pt.props.walk);
+            const walkSpan = Math.max(...walks) - Math.min(...walks);
+            if (walkSpan > 0.05 && (!hasAlt || hasPos)) {
+              if (maxMove < 0.05) {
+                bucket.push(`${where}: ${name} plays walk cycle (walk delta ${walkSpan.toFixed(2)}) while stationary (moved ${maxMove.toFixed(2)}m).`);
+              } else {
+                for (let j = 1; j < pts.length; j++) {
+                  if (Math.abs(walks[j] - walks[j - 1]) > 0.25 && gap(pts[j].pos, pts[j - 1].pos) < 0.02 && Math.max(pts[j].props.gaitWeight ?? 1, pts[j - 1].props.gaitWeight ?? 1) > 0.05) {
+                    bucket.push(`${where}: ${name} keeps cycling walk after stopping (walk delta ${Math.abs(walks[j] - walks[j - 1]).toFixed(2)} with <0.02m move).`);
+                    break;
+                  }
+                }
+              }
+            }
+          }
+
+          const gaitPts = pts.filter((pt) => GAITS.has(pt.props.animation) && (pt.props.blend ?? 1) >= 0.05);
+          if (gaitPts.length > 0) {
+            const missingDist = gaitPts.find((pt) => typeof pt.props.animDistance !== 'number');
+            if (missingDist && !gaitPts.some((pt) => pt.props.timeGait)) {
+              bucket.push(`${where}: ${name} uses gait animation "${missingDist.props.animation}" without animDistance.`);
+            } else if (gaitPts.every((pt) => typeof pt.props.animDistance === 'number')) {
+              const dists = gaitPts.map((pt) => pt.props.animDistance);
+              const distSpan = Math.max(...dists) - Math.min(...dists);
+              if (distSpan > 0.05 && maxMove < 0.05 && (!hasAlt || hasPos)) {
+                bucket.push(`${where}: ${name} advances animDistance (${distSpan.toFixed(2)}m) while stationary (moved ${maxMove.toFixed(2)}m).`);
+              } else if (pts.length >= 5) {
+                const p3 = pts[3], p4 = pts[4];
+                if (
+                  GAITS.has(p3.props.animation) &&
+                  GAITS.has(p4.props.animation) &&
+                  (p3.props.blend ?? 1) >= 0.95 &&
+                  (p4.props.blend ?? 1) >= 0.95 &&
+                  typeof p3.props.animDistance === 'number' &&
+                  typeof p4.props.animDistance === 'number' &&
+                  Math.abs(p4.props.animDistance - p3.props.animDistance) < 0.005 &&
+                  p4.props.animDistance > 0.01 &&
+                  gap(p4.pos, p3.pos) < 0.005
+                ) {
+                  bucket.push(`${where}: ${name} freezes mid-stride in "${p4.props.animation}" after stopping (animDistance=${p4.props.animDistance.toFixed(2)}). Use walkSegment/useWalkPath or blend back to "idle".`);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // World vs stage duplicate / coplanar / Boat-vs-Vox collisions (mid-shot sample)
+      if (worldItems.length > 0) {
+        const stageItems = [];
+        collectStageItems(sampleNodes[2], stageItems);
+        for (const st of stageItems) {
+          if (st.pos && !PRIMITIVES.has(st.name)) {
+            for (const wi of worldItems) {
+              if (wi.name !== st.name || !wi.pos || !zonesOverlap(s.zone, wi)) continue;
+              const d = gap(st.pos, wi.pos);
+              if (d < 0.5) {
+                const key = `${cueKey}:${st.name}`;
+                if (!seenDup.has(key)) {
+                  seenDup.add(key);
+                  bucket.push(`${where}: Dup World+Stage <${st.name}> in [${cueKey}] (d=${d.toFixed(2)}m). Remove static World copy or omit from stage.`);
+                }
+              }
+            }
+          }
+          if (st.name === 'Boat' && st.pos) {
+            const boatBox = {
+              x0: st.pos[0] - 0.78, x1: st.pos[0] + 0.78,
+              y0: st.pos[1] + 0.10, y1: st.pos[1] + 0.78,
+              z0: st.pos[2] - 1.65, z1: st.pos[2] + 1.65,
+            };
+            for (const wi of worldItems) {
+              if (wi.name !== 'Vox' || !wi.pos || !zonesOverlap(s.zone, wi)) continue;
+              const wb = boxBounds(wi.pos, wi.props.size);
+              if (
+                axisOverlap(boatBox.x0, boatBox.x1, wb.x0, wb.x1) > 0.3 &&
+                axisOverlap(boatBox.y0, boatBox.y1, wb.y0, wb.y1) > 0.01 &&
+                axisOverlap(boatBox.z0, boatBox.z1, wb.z0, wb.z1) > 0.3
+              ) {
+                const key = `${cueKey}:Boat`;
+                if (!seenBoat.has(key)) {
+                  seenBoat.add(key);
+                  bucket.push(`${where}: Stage <Boat> intersects World <Vox> in [${cueKey}]. Remove the static boat slab from World.`);
+                }
+              }
+            }
+          }
+          if (st.name === 'SnowTrail') {
+            for (const sb of snowBoxes(st)) {
+              for (const wb of worldBoxes) {
+                if (!zonesOverlap(s.zone, wb)) continue;
+                const bb = boxBounds(wb.pos, wb.props.size);
+                if (
+                  axisOverlap(sb.x0, sb.x1, bb.x0, bb.x1) > 0.05 &&
+                  axisOverlap(sb.z0, sb.z1, bb.z0, bb.z1) > 0.05 &&
+                  Math.abs(sb.y1 - bb.y1) < 0.002
+                ) {
+                  const key = `${cueKey}:${wb.name}:${sb.y1.toFixed(3)}`;
+                  if (!seenSnowStage.has(key)) {
+                    seenSnowStage.add(key);
+                    bucket.push(`${where}: Stage <SnowTrail> coplanar y=${sb.y1.toFixed(3)} with World <${wb.name}> in [${cueKey}].`);
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
