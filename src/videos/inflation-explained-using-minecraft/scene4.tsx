@@ -141,6 +141,7 @@ export const scene4 = storyScene(timing, {
         on: on(PLACE.bakery, -0.45, 1.25, -0.3),
         onTo: on(PLACE.bakery, 0.45, 1.25, -0.45),
         fov: 42,
+        ease: "inOutSine",
       }),
       screenOffset: [0, 0.12],
       zone: "bakery",

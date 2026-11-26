@@ -1,3 +1,4 @@
+import { walkSegment } from "../../engine";
 import {
   Bar,
   Bill,
@@ -47,6 +48,7 @@ export const scene6 = storyScene(timing, {
           ]}
           style="historical"
           animation="walk"
+          animDistance={t * 0.9}
           phaseStep={0.3 + t * 1.4}
           seed={9}
         />
@@ -116,14 +118,12 @@ export const scene6 = storyScene(timing, {
       note: "OTS shot: smug Sterling struts past clutching loaf and wealth while Miles lunges empty-handed.",
       stage: (t) => {
         const strut = ease(ramp(t, 0, 1.3));
+        const eliteWalk = walkSegment(on(PLACE.hall, 0.45, 0, -0.15), on(PLACE.hall, 0.05, 0, 0.85), t, 0, 1.3, { yaw: -0.65 });
         return (
           <>
             <EliteLead
               variant="pres"
-              position={on(PLACE.hall, 0.35 - strut * 0.25, 0, 0.05 + strut * 0.65)}
-              rotationY={-0.65}
-              animation="walk"
-              animDistance={strut * 0.85}
+              {...eliteWalk}
               face="smug"
             >
               <Bread position={[0, -0.05, 0.2]} scale={0.85} />
