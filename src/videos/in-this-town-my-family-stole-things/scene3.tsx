@@ -30,7 +30,7 @@ export const scene3 = storyScene(timing, {
       note: "Boy hurries out door to windowsill, peeks into empty cup and starts sharply.",
       stage: (t, { p }) => (
         <>
-          <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} />
+          <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} />
           <Boy position={[-10.4 + 1.3 * ease(p), 0, -3.65]} rotationY={-0.2 + ease(p) * 0.5} walk={1.8 * p} lookAt={PLACE.sill} />
         </>
       ),
@@ -46,7 +46,7 @@ export const scene3 = storyScene(timing, {
         const drop = ease(ramp(t, Math.max(0.05, SIT - 0.1), SIT + 0.3));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} />
             <Boy position={[-9.1, (1 - drop) * 0.12, -3.85]} rotationY={0.384} sit={drop > 0.2} nod={drop * 0.45} lean={0.04 + drop * 0.18} />
           </>
         );

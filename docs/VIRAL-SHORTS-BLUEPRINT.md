@@ -56,11 +56,12 @@ The owner warned in [`never-seen-my-mums-face/README.md`](../Topics/InThisTown/r
 
 ---
 
-## 4. Camera, Framing & Visual + Motion Rules (ZERO SLIDESHOWS)
+## 4. Camera, Framing & Visual + Motion Rules (ZERO SLIDESHOWS — Read [`docs/VIRAL-DIRECTION-MANUAL.md`](VIRAL-DIRECTION-MANUAL.md))
 
-**VISUALS + MOTION IS A MUST:** Do NOT build pretty static PNG slides where characters stand still in `"idle"`!
-- **Show the verb on screen (`wordAt`):** Characters must walk, reach, flinch, throw, drop, mine, hand over props, or shift expression right on the spoken word. Avoid `stage: () =>` frozen callbacks (`rehearse --pre-render` fails 2+ frozen shots in a row).
-- **Bold camera momentum (`>= 0.6m` / `>= 20°`):** Never write `0.25m`–`0.35m` PowerPoint crawls (`dist: 3.1 -> 2.85`). Use real travel (`dist: 4.5 -> 3.1`), active `cam.truck` tracking walkers, `cam.orbit` (`-28 -> +24`), `cam.crane`, `cam.whip`, and `cam.ots`.
+**VISUALS + MOTION IS A MUST:** Do NOT build pretty static PNG slides where characters stand still in `"idle"` or move only 1 inch!
+- **Visual-Verbal Lockstep (`wordAt` + `cut:`):** Every spoken noun and verb MUST be physically depicted on screen right as the narrator says it (if the script says *"rods, a jetty, one boat"*, show the flexing fishing rods + lines, the plank jetty, and the rocking boat — never just someone walking!). Use `cut:` splits whenever 2–3 distinct objects appear in one line.
+- **Architectural & Environmental Proof (Never Bare Walls):** Prove wealth/status/danger visually in the 3D set (a sunlit Quartz/Gold **Mansion** behind *"the rich on top"*, open lit huts/markets for thieves — NEVER bare stone walls or empty grass edges). Keep all exterior staging strictly outside solid `<Hut />` walls (`z >= wallZ + 0.35`).
+- **Real Body Displacement (`>= 1.0m–2.8m`) & Bold Camera Flow (`inOutSine` / `linear` / `outExpo`):** Never translate actors `0.25m` ("1 inch") or place hook cameras `22m` away from `1.4m` kids. Use `>= 0.9m` dolly/crane or `>= 25°` orbit with lively background crowds and atmospheric FX.
 
 Use the upgraded tools in `src/engine/` on every new film:
 

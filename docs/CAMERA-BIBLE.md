@@ -2,7 +2,7 @@
 
 This is the camera half of the framework. It assumes one continuous 3D world, one film, one camera that never teleports. The goal is not "cool drone shots". The goal is a 20-second story that a phone viewer cannot scroll past.
 
-Read this with `AGENTS.md`, `docs/STYLE.md` and `docs/SCENE-CONTRACT.md`.
+Read this with [`VIRAL-DIRECTION-MANUAL.md`](VIRAL-DIRECTION-MANUAL.md), `AGENTS.md`, `docs/STYLE.md` and `docs/SCENE-CONTRACT.md`.
 
 ---
 
@@ -107,7 +107,7 @@ Do not spend 8 seconds establishing. Do not reveal the monster at 19 seconds. Do
 
 Use these builders (spread into a `Shot` alongside `at`, `dur`, and `note`) instead of hand-typing repetitive 3D vectors:
 
-- **`screenOffset: [x, y]` on any `Shot`** (range `-0.5..0.5` of screen space): biases framing without breaking `target`! For example, `screenOffset: [0, 0.12]` lifts the subject into the upper third above bottom captions, or `screenOffset: [-0.14, 0.08]` puts a speaker on the vertical rule-of-thirds line looking across empty space.
+- **`screenOffset: [x, y]` on any `Shot`** (range `-0.5..0.5` of screen space): biases framing without breaking `target`! For example, `screenOffset: [0, 0.08]` lifts a talking face into the upper third above bottom captions. **Warning:** never apply positive `screenOffset[1]` alongside positive `pitch` on wide establishing or low-angle mountain/mansion shots — aiming lower tilts the camera toward the ground and crops tall landmarks off the top of frame!
 - **`cam.fitHeight(heightMetres, fov = 42, fillRatio = 0.72)`**: returns the minimum camera distance (metres) so a 1.05m kid, 1.8m villager, or 2.9m Enderman fills a predictable fraction of 9:16 height.
 - **`cam.whip({ from, on, onTo, fov, fovTo })`**: ultra-fast whip pan (`outExpo` speed ramp) for comedy reveals, jumpscares, or rapid cause-and-effect snaps.
 - **`cam.dollyZoom({ on, dist, to, yaw, pitch, fov, screenOffset })`**: Vertigo / Hitchcock trombone zoom where the subject stays the same screen height while `fov` → `fovTo` compresses or stretches the background in dread.

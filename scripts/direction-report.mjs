@@ -39,8 +39,8 @@ function camera(s) {
   const changes = eyeDist > .001 || angDeg > .06 || Math.abs(lens(s) - lens(s, true)) > .01 ||
     Math.abs(start.roll - end.roll) > .001 || s.shake > 0 || s.handheld > 0 || activeImpact;
   const strongFx = s.shake >= .01 || s.impacts?.some(i => i.amp >= .015 && i.at < s.at + s.dur && i.at + (i.dur ?? .35) > s.at);
-  const micro = !strongFx && eyeDist < .25 && angDeg < 3 && spanRatio < 1.07 && rollDeg < 3;
-  const meaningful = strongFx || eyeDist >= .42 || angDeg >= 6 || spanRatio >= 1.14 || rollDeg >= 5;
+  const micro = !strongFx && eyeDist < .35 && angDeg < 4 && spanRatio < 1.1 && rollDeg < 4;
+  const meaningful = strongFx || eyeDist >= .6 || angDeg >= 8 || spanRatio >= 1.18 || rollDeg >= 6;
   return { start, end, changes, eyeDist, angDeg, spanRatio, rollDeg, micro, meaningful };
 }
 

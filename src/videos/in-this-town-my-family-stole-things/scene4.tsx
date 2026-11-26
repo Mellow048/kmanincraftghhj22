@@ -77,8 +77,8 @@ export const scene4 = storyScene(timing, {
         const sneak = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} />
-            <Berries position={[PLACE.sill[0] - 0.1, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.08]} scale={1.25} count={9} t={t} />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} />
+            <Berries position={[PLACE.sill[0] - 0.1, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.26]} scale={1.25} count={9} t={t} />
             <Teller position={[-9.2, 0, -3.55 - sneak * 0.25]} rotationY={0.15} animation="reachUp" lookAt={PLACE.sill} carry={<RedFlower scale={0.8} rotation={[0, 0, 1.5]} />} face="wow" time={t} />
           </>
         );
@@ -95,7 +95,7 @@ export const scene4 = storyScene(timing, {
         const k = Math.min(1, Math.max(0, (t - DROP + 0.12) / 0.32));
         return (
           <>
-            <Berries position={[PLACE.sill[0] - 0.28, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.08]} scale={1.2} count={9} t={t} />
+            <Berries position={[PLACE.sill[0] - 0.28, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.26]} scale={1.2} count={9} t={t} />
             <RedFlower position={[PLACE.sill[0] + 0.16, PLACE.sill[1] + 0.14 - 0.12 * k + jolt(t, DROP, 0.15), PLACE.sill[2] + 0.24 + 0.1 * k]} scale={0.8} rotation={[0, 0, 1.5 + 1.2 * k]} />
             <Teller position={[PLACE.sill[0] + 0.4, 0, PLACE.sill[2] + 1.05 - k * 0.1]} rotationY={-0.21} animation={k < 0.8 ? "reachUp" : "leanOver"} face="smile" tailUp={0.55} time={t} />
           </>
@@ -112,7 +112,7 @@ export const scene4 = storyScene(timing, {
         const chomp = ease(ramp(t, 0, Math.max(0.4, ATE + 0.4)));
         return (
           <>
-            <Berries position={[PLACE.sill[0] - 0.2, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.1]} scale={1.1} count={Math.max(1, Math.round(7 - chomp * 5))} t={t} />
+            <Berries position={[PLACE.sill[0] - 0.2, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.26]} scale={1.1} count={Math.max(1, Math.round(7 - chomp * 5))} t={t} />
             <RedFlower position={[PLACE.sill[0] + 0.5, PLACE.sill[1] + 0.1, PLACE.sill[2] + 0.3]} scale={0.8} rotation={[0, 0, 2.6]} wilt={0.4 + chomp * 0.2} />
             <Teller position={[PLACE.sill[0] - 0.2, chomp * 0.05, PLACE.sill[2] + 1.0]} rotationY={0.28 + Math.sin(t * 9) * 0.14} animation="leanOver" face="laugh" carry={<Berries scale={0.8} count={Math.max(1, Math.round(3 - chomp * 2))} t={t} />} tailUp={0.65} time={t} />
           </>
@@ -127,7 +127,7 @@ export const scene4 = storyScene(timing, {
       note: "Teller trudges away west empty-mouthed with drooping tail while abandoned flower stays on empty sill.",
       stage: (t, { p }) => (
         <>
-          <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} />
+          <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} />
           <RedFlower position={[PLACE.sill[0] + 0.5, PLACE.sill[1] + 0.1, PLACE.sill[2] + 0.3]} scale={0.8} rotation={[0, 0, 2.6]} wilt={0.55} />
           <Teller position={[PLACE.sill[0] - 0.1 - 1.9 * ease(p), 0, PLACE.sill[2] + 1.1]} rotationY={-1.571} animation="stagger" animDistance={2.2 * p} face="frown" tailUp={0.05} time={t} />
         </>

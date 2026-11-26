@@ -19,8 +19,8 @@ export const scene6 = storyScene(timing, {
         const step = ease(ramp(t, 0, Math.max(0.3, BERRY)));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1], PLACE.sill[2] + 0.12]} berry={k >= 0.75} t={t} />
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
+            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1], PLACE.sill[2] + 0.26]} berry={k >= 0.75} t={t} />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} flower />
             <Teller
               position={[-8.05, 0, -3.55 - step * 0.35]}
               rotationY={0.24}
@@ -73,8 +73,8 @@ export const scene6 = storyScene(timing, {
         const strut = ease(ramp(t, 0, 1.3));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1], PLACE.sill[2] + 0.12]} berry t={t} />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} flower />
+            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1], PLACE.sill[2] + 0.26]} berry t={t} />
             <Teller position={[-8.8 + strut * 0.75, 0, -3.45]} rotationY={0.85} animation="walk" animDistance={strut * 0.85} face="happy" tailUp={0.55} time={t} />
           </>
         );
@@ -90,8 +90,8 @@ export const scene6 = storyScene(timing, {
         const hop = ease(ramp(t, 0.15, 1.25));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1], PLACE.sill[2] + 0.12]} berry t={t} />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} flower />
+            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1], PLACE.sill[2] + 0.26]} berry t={t} />
             <Sword position={[PLACE.sill[0] + 1.65, PLACE.sill[1] + 0.05 + hop * 0.06, PLACE.sill[2] + 0.2]} scale={0.62} rotation={[0, 0, 0.14]} />
             <Teller position={[-8.1, 0, -3.45]} rotationY={0.12} animation="cheer" face="grin" tailUp={0.7} time={t} />
           </>

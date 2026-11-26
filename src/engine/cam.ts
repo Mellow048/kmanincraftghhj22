@@ -60,7 +60,7 @@ export const cam = {
     return round(span / (2 * Math.tan((fov * RAD) / 2)));
   },
 
-  /** Dolly in (to < dist) or pull out (to > dist) along the lens axis. Defaults to `outSine` so short cuts move from frame 0. */
+  /** Dolly in (to < dist) or pull out (to > dist) along the lens axis. Smooth `inOutSine` curve matches classic 20k-hit camera flow. */
   push(o: Framing & { to: number; onTo?: Vec3; fovTo?: number; ease?: Shot["ease"] }): Move {
     return {
       from: around(o.on, o.dist, o.yaw, o.pitch),
@@ -70,7 +70,7 @@ export const cam = {
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: o.ease ?? "outSine",
+      ease: o.ease ?? "inOutSine",
     };
   },
 
@@ -99,7 +99,7 @@ export const cam = {
       ...(o.onTo ? { targetTo: o.onTo } : {}),
       fov: o.fov ?? 40,
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: o.ease ?? "outSine",
+      ease: o.ease ?? "inOutSine",
     };
   },
 
@@ -112,7 +112,7 @@ export const cam = {
       fov: o.fov ?? 40,
       ...(o.fovTo ? { fovTo: o.fovTo } : {}),
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: o.ease ?? "outSine",
+      ease: o.ease ?? "inOutSine",
     };
   },
 
@@ -168,7 +168,7 @@ export const cam = {
       ...(o.onTo ? { targetTo: o.onTo } : {}),
       fov: o.fov ?? 40,
       ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
-      ease: o.ease ?? "outSine",
+      ease: o.ease ?? "inOutSine",
     };
   },
 
@@ -212,7 +212,7 @@ export const cam = {
       target: o.listener,
       fov: o.fov ?? 40,
       screenOffset: [0, 0.06],
-      ease: o.ease ?? "outSine",
+      ease: o.ease ?? "inOutSine",
     };
   },
 
@@ -240,7 +240,7 @@ export const cam = {
       target: o.on,
       fov: o.fov ?? 40,
       ...(o.spin ? { roll: o.spin[0] * RAD, rollTo: o.spin[1] * RAD } : {}),
-      ease: o.ease ?? "outSine",
+      ease: o.ease ?? "inOutSine",
     };
   },
 };

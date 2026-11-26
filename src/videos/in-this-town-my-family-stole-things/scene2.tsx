@@ -3,6 +3,8 @@ import { Dad as DadFox, PLACE, RedFlower, SillCup, Teller, ease, ramp, timing, w
 
 const FlowerInMouth: React.FC = () => <RedFlower scale={0.8} rotation={[0, 0, 1.5]} />;
 
+const SILL_Z = PLACE.sill[2] + 0.26;
+
 const RULE = wordAt("4.one", "One");
 const REACH = wordAt("5.climb", "climb");
 const TOOK = wordAt("5.easy", "flower");
@@ -58,56 +60,56 @@ export const scene2 = storyScene(timing, {
         const sneak = ease(ramp(t, 0, 1.3));
         return (
           <>
-            <SillCup position={[PLACE.sill[0], PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-            <Teller position={[-9.5 + sneak * 0.35, 0, -2.4 - sneak * 0.65]} rotationY={-0.25} animation="creep" animDistance={sneak * 0.8} face="wow" lookAt={PLACE.sill} tailUp={0.55} time={t} />
+            <SillCup position={[PLACE.sill[0], PLACE.sill[1] - 0.08, SILL_Z]} flower />
+            <Teller position={[-9.8 + sneak * 0.65, 0, -2.0 - sneak * 1.35]} rotationY={-0.25} animation="creep" animDistance={sneak * 1.5} face="wow" lookAt={PLACE.sill} tailUp={0.55} time={t} />
           </>
         );
       },
     },
     {
       cue: "4.width",
-      ...cam.orbit({ on: [-8.78, 1.58, -4.65], dist: 3.1, distTo: 2.05, yaw: -28, yawTo: 16, pitch: 8, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-9.2, 1.48, SILL_Z], dist: 3.2, distTo: 2.05, yaw: -28, yawTo: 18, pitch: 8, fov: 38, screenOffset: [0, 0.06] }),
       zone: "street",
       look: "overworld-sunset",
-      note: "Orbit outside cracked narrow window gap as Teller's shadow and ears peek below the sill cup.",
+      note: "Orbit outside cracked narrow window gap as Teller creeps below exterior windowsill flower cup.",
       stage: (t) => {
         const peek = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-            <Teller position={[-8.85, peek * 0.12, -3.9]} rotationY={Math.PI} animation="peek" face="wow" lookAt={PLACE.sill} time={t} tailUp={0.45} />
+            <SillCup position={[PLACE.sill[0] + 0.28, PLACE.sill[1] - 0.08, SILL_Z]} flower />
+            <Teller position={[-9.15, peek * 0.14, -3.55 - peek * 0.25]} rotationY={Math.PI} animation="peek" face="wow" lookAt={PLACE.sill} time={t} tailUp={0.45} />
           </>
         );
       },
     },
     {
       cue: "4.cup",
-      ...cam.push({ on: [-8.78, 1.58, -4.68], dist: 2.9, to: 1.7, yaw: 14, pitch: 8, fov: 36, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [-9.1, 1.48, SILL_Z], dist: 2.95, to: 1.7, yaw: 14, pitch: 8, fov: 36, screenOffset: [0, 0.06] }),
       zone: "street",
       look: "overworld-sunset",
-      note: "Macro push straight toward glowing red flower inside cup while Teller's nose edges above sill rim.",
+      note: "Macro push straight toward glowing red flower inside cup while Teller reaches boldly upward over sill rim.",
       stage: (t) => {
         const rise = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-            <Teller position={[-8.78, rise * 0.2, -3.75]} rotationY={0.1} animation="reachUp" face="wow" lookAt={PLACE.sill} time={t} tailUp={0.65} />
+            <SillCup position={[PLACE.sill[0] + 0.28, PLACE.sill[1] - 0.08, SILL_Z]} flower />
+            <Teller position={[-9.1, rise * 0.24, -3.65]} rotationY={0.1} animation="reachUp" face="wow" lookAt={PLACE.sill} time={t} tailUp={0.65} />
           </>
         );
       },
     },
     {
       cue: "5.climb",
-      ...cam.crane({ on: [-9.1, 0.65, -3.55], onTo: [-8.95, 1.25, -4.2], dist: 3.4, toDist: 2.2, yaw: 24, fromPitch: -6, toPitch: 10, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.crane({ on: [-9.2, 0.65, -3.45], onTo: [-9.1, 1.32, SILL_Z], dist: 3.4, toDist: 2.2, yaw: 24, fromPitch: -6, toPitch: 10, fov: 40, screenOffset: [0, 0.08] }),
       zone: "street",
       look: "overworld-sunset",
-      note: "Teller bounds smoothly up onto wall reaching effortlessly toward window flower.",
+      note: "Teller bounds smoothly up onto stone step reaching effortlessly toward exterior windowsill flower.",
       stage: (t) => {
         const hop = ease(ramp(t, 0, Math.max(0.3, REACH + 0.25)));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-            <Teller position={[-9.1 + hop * 0.15, Math.sin(hop * Math.PI) * 0.32, -3.3 - hop * 0.55]} rotationY={0.35} animation="reachUp" face={t > REACH ? "smile" : "uneasy"} lookAt={PLACE.sill} tailUp={0.75} time={t} />
+            <SillCup position={[PLACE.sill[0] + 0.28, PLACE.sill[1] - 0.08, SILL_Z]} flower />
+            <Teller position={[-9.4 + hop * 0.3, Math.sin(hop * Math.PI) * 0.36, -2.95 - hop * 0.85]} rotationY={0.35} animation="reachUp" face={t > REACH ? "smile" : "uneasy"} lookAt={PLACE.sill} tailUp={0.75} time={t} />
           </>
         );
       },
@@ -122,7 +124,7 @@ export const scene2 = storyScene(timing, {
         const take = ease(ramp(t, 0.1, Math.max(0.4, TOOK + 0.25)));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower={take < 0.45} />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} flower={take < 0.45} />
             <Teller
               position={[-8.9 + take * 0.2, 0, -3.65 + take * 0.3]}
               rotationY={0.2 - take * 0.9}

@@ -353,3 +353,10 @@ Taken from the outlines he wrote himself (`outlines/`) and from what he said abo
      They were put back. **After any merge with `main`, diff those three files against what you had.**
   4. `main` now paints a sky with clouds behind every outdoor look (`src/engine/Look.tsx`). The five mp4s were rendered
      before that, with a flat sky. A new render of any of them will not match its mp4 until somebody has looked.
+
+- **2026-11-26, Mountain (`we-live-at-the-bottom`) & Fox (`my-family-stole-things`) chunk reviews & framework fix.**
+  Owner watched `chunk-00` and `chunk-01` renders and rejected PowerPoint motion, naked cliff stone walls, and mismatched narration/visuals:
+  1. **Visual-Verbal Lockstep (`docs/VIRAL-DIRECTION-MANUAL.md`):** Never show an empty walk when the line lists concrete nouns ("rods, a jetty, one boat") — cut/stage each named prop literally in focus.
+  2. **Architectural Proof:** "Up there, the rich live" must show an unmistakable sunlit Quartz & Gold Mansion (`RichMansion`), never bare stone walls.
+  3. **Zero 1-Inch Motion / No `outSine` Stalls / No Wall Clipping:** Actors must cover real ground (`>= 1.0m`), exterior house scenes must keep props/cameras cleanly outside solid `<Hut>` cubes (`z >= wallZ + 0.35`), and camera moves keep smooth `inOutSine` (`cam.ts`) + real travel.
+  4. **Single MP4 Delivery:** Clean up intermediate `chunk-*` artifacts after `deliver` joins `out/<composition>.mp4` and publishes the release asset.

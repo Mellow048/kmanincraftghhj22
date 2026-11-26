@@ -41,7 +41,7 @@ export const scene5 = storyScene(timing, {
         const pile = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <Berries position={[PLACE.sill[0] - 0.1, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.1]} scale={1.25 + pile * 0.2} count={Math.max(4, Math.round(6 + pile * 8))} t={t} />
+            <Berries position={[PLACE.sill[0] - 0.1, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.26]} scale={1.25 + pile * 0.2} count={Math.max(4, Math.round(6 + pile * 8))} t={t} />
             <RedFlower position={[PLACE.sill[0] + 0.55, PLACE.sill[1] + 0.08, PLACE.sill[2] + 0.32]} scale={0.8} rotation={[0, 0, 2.7]} wilt={0.8} />
           </>
         );
@@ -171,7 +171,7 @@ export const scene5 = storyScene(timing, {
         const nudge = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <Berries position={[PLACE.sill[0] - 0.1, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.1]} scale={1.3} count={12} t={t} />
+            <Berries position={[PLACE.sill[0] - 0.1, PLACE.sill[1] + 0.04, PLACE.sill[2] + 0.26]} scale={1.3} count={12} t={t} />
             <RedFlower position={[PLACE.sill[0] + 0.55 - nudge * 0.08, PLACE.sill[1] + 0.08, PLACE.sill[2] + 0.32]} scale={0.85} rotation={[0, 0, 2.7]} wilt={0.85} />
             <Teller position={[-8.4, 0, -3.55 - nudge * 0.15]} rotationY={-0.3} animation="reachUp" lookAt={PLACE.sill} face="frown" time={t} />
           </>
@@ -188,7 +188,7 @@ export const scene5 = storyScene(timing, {
         const rise = ease(ramp(t, 0, 1.1));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} flower />
             <Teller position={[-8.6, 0, -3.5 - rise * 0.25]} rotationY={-0.1} animation="lookAround" lookAt={PLACE.sill} face="wow" time={t} tailUp={0.45} />
           </>
         );
@@ -196,7 +196,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "12.second",
-      ...cam.pan({ from: [-8.55, 1.85, -2.5], on: [PLACE.sill[0] + 0.32, PLACE.sill[1] + 0.08, PLACE.sill[2] + 0.1], onTo: [PLACE.sill[0] + 1.05, PLACE.sill[1] + 0.08, PLACE.sill[2] + 0.12], fov: 36, screenOffset: [0, 0.08] }),
+      ...cam.pan({ from: [-8.55, 1.85, -2.5], on: [PLACE.sill[0] + 0.32, PLACE.sill[1] + 0.08, PLACE.sill[2] + 0.26], onTo: [PLACE.sill[0] + 1.05, PLACE.sill[1] + 0.08, PLACE.sill[2] + 0.26], fov: 36, screenOffset: [0, 0.08] }),
       zone: "street",
       look: "overworld-day",
       note: "Pan slides cleanly from flower cup onto the brand-new SECOND empty cup set deliberately beside it.",
@@ -204,8 +204,8 @@ export const scene5 = storyScene(timing, {
         const slide = ease(ramp(t, Math.max(0.05, SECOND - 0.15), SECOND + 0.35));
         return (
           <>
-            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.1]} flower />
-            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1] + (1 - slide) * 0.08, PLACE.sill[2] + 0.12]} />
+            <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} flower />
+            <SillCup position={[PLACE.sill[0] + 1.05, PLACE.sill[1] + (1 - slide) * 0.08, PLACE.sill[2] + 0.26]} />
           </>
         );
       },

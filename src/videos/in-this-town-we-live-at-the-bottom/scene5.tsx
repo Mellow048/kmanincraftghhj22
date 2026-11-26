@@ -40,18 +40,18 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.two",
-      ...cam.orbit({ on: [6.4, 6.2, -31.4], dist: 7.4, distTo: 5.2, yaw: -22, yawTo: 18, pitch: 6, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [6.4, 7.1, -31.0], dist: 7.8, distTo: 5.4, yaw: -24, yawTo: 22, pitch: -2, fov: 42 }),
       zone: "bottom",
       look: "overworld-golden",
-      note: "Two wealthy families stroll across high stone terrace waving stiffly downward toward invisible town.",
+      note: "Two wealthy families promenade along golden Quartz Mansion balcony waving condescendingly downward.",
       stage: (t) => {
         const wave = Math.sin(t * 4.5);
         return (
           <>
-            <Villager position={[5.4, 5.85, -31.4 + t * 0.2]} rotationY={SOUTH} hat="straw" walk={t * 0.6} hmm={0.2 * wave} />
-            <Villager position={[6.2, 5.85, -31.2]} rotationY={SOUTH} strain={0.4 + 0.3 * Math.abs(wave)} kid />
-            <Villager position={[7.1, 5.85, -31.5 - t * 0.15]} rotationY={SOUTH} walk={t * 0.4} robe="#7a5a44" />
-            <Villager position={[7.8, 5.85, -31.3]} rotationY={SOUTH} strain={0.3 + 0.2 * wave} kid />
+            <Villager position={[4.8 + t * 0.65, 5.85, -30.5]} rotationY={SOUTH} hat="straw" walk={t * 0.9} hmm={0.2 * wave} robe="#f2f2ee" />
+            <Villager position={[6.0, 5.85, -30.3]} rotationY={SOUTH} strain={0.4 + 0.3 * Math.abs(wave)} kid robe="#f0e8d0" />
+            <Villager position={[7.3 - t * 0.55, 5.85, -30.7]} rotationY={SOUTH} walk={t * 0.8} robe="#7a5a44" />
+            <Villager position={[8.0, 5.85, -30.4]} rotationY={SOUTH} strain={0.3 + 0.2 * wave} kid robe="#f0e8d0" />
           </>
         );
       },

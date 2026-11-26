@@ -33,6 +33,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   plan:
@@ -257,3 +258,12 @@ jobs:
             - Commit: `${{ github.sha }}`
           files: "out/${{ inputs.composition }}.mp4"
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove intermediate chunk artifacts
+        if: always() && success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh api "repos/${REPO}/actions/runs/${RUN_ID}/artifacts?per_page=100" --jq '.artifacts[] | select(.name | startswith("chunk-")) | .id' | xargs -r -I{} gh api -X DELETE "repos/${REPO}/actions/artifacts/{}" || true

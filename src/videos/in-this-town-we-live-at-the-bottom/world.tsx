@@ -1,5 +1,5 @@
 import type React from "react";
-import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Torch, Vox, Zone, useActiveShot } from "../../engine";
+import { Block, Clouds, Dust, Glow, GodRay, LightPool, Tree, Torch, Vox, Water, Zone, useActiveShot } from "../../engine";
 import type { Vec3 } from "../../engine";
 import { Hut, LampPost, Rain, Stall } from "./kit";
 import { PLACE, room, top } from "./kit";
@@ -17,24 +17,81 @@ import { PLACE, room, top } from "./kit";
 
 const LADDER_X = PLACE.firstStep[0];
 
-/** The mountain: a wall of stone at the north end, with a ladder on its face and steps cut into the rock. */
+/** Sunlit multi-story Quartz & Gold Villa/Mansion crowning the rich cliff ledge — unmistakable visual proof of wealth. */
+const RichMansion: React.FC<{ position: Vec3; lit: boolean }> = ({ position, lit }) => (
+  <group position={position}>
+    {/* Marble terrace floor & golden balustrade */}
+    <Vox kind="stoneBrick" tint="#f5f0e6" position={[0, -0.35, 1.4]} size={[18, 0.7, 6.2]} />
+    <Vox kind="wool" tint="#e8b828" position={[0, 0.08, 4.35]} size={[18, 0.16, 0.35]} />
+    {[-8, -5, -2, 2, 5, 8].map((x) => (
+      <Vox key={x} kind="wool" tint="#f0c83a" position={[x, 0.55, 4.35]} size={[0.32, 0.85, 0.32]} />
+    ))}
+    <Vox kind="wool" tint="#e8b828" position={[-5.2, 0.96, 4.35]} size={[6.6, 0.14, 0.24]} />
+    <Vox kind="wool" tint="#e8b828" position={[5.2, 0.96, 4.35]} size={[6.6, 0.14, 0.24]} />
+    {/* Royal red terrace carpet + gold chest & emerald stack */}
+    <Vox kind="wool" tint="#a8262e" position={[0, 0.03, 2.2]} size={[3.0, 0.06, 4.4]} castShadow={false} />
+    <Vox kind="cobble" tint="#f4c430" emissive="#c48a10" emissiveIntensity={0.22} position={[-3.4, 0.45, 2.2]} size={[0.9, 0.9, 0.9]} />
+    <Vox kind="cobble" tint="#2fd868" emissive="#1a8e42" emissiveIntensity={0.25} position={[3.6, 0.4, 2.3]} size={[0.8, 0.8, 0.8]} />
+    {/* Ground & upper white-quartz mansion wings */}
+    <Vox kind="stoneBrick" tint="#f6f1e7" position={[0, 2.6, -3.2]} size={[15.5, 5.2, 5.6]} />
+    <Vox kind="stoneBrick" tint="#f9f5ec" position={[0, 6.9, -3.6]} size={[10.5, 3.6, 4.6]} />
+    {/* Gold corner & arcade columns */}
+    {[-7.2, -3.4, 3.4, 7.2].map((x) => (
+      <Vox key={x} kind="wool" tint="#f2c438" position={[x, 2.6, -0.3]} size={[0.72, 5.2, 0.72]} />
+    ))}
+    {[-4.8, 4.8].map((x) => (
+      <Vox key={`u${x}`} kind="wool" tint="#f2c438" position={[x, 6.9, -1.2]} size={[0.62, 3.6, 0.62]} />
+    ))}
+    {/* Ornate double doors + warm glowing arched windows */}
+    <Vox kind="darkPlanks" tint="#58341e" position={[0, 1.75, -0.32]} size={[2.8, 3.5, 0.18]} />
+    <Block position={[-0.6, 1.75, -0.2]} size={[0.16, 0.22, 0.06]} color="#f8d24c" />
+    <Block position={[0.6, 1.75, -0.2]} size={[0.16, 0.22, 0.06]} color="#f8d24c" />
+    {[-5.2, 5.2].map((x) => (
+      <group key={`w1${x}`} position={[x, 2.8, -0.32]}>
+        <Block size={[1.8, 2.2, 0.16]} color="#f0c83a" />
+        <Block position={[0, 0, 0.04]} size={[1.4, 1.85, 0.12]} color="#ffe9a6" emissive="#ffd060" emissiveIntensity={lit ? 1.1 : 0.75} castShadow={false} />
+      </group>
+    ))}
+    {[-2.4, 0, 2.4].map((x) => (
+      <group key={`w2${x}`} position={[x, 7.0, -1.25]}>
+        <Block size={[1.45, 1.75, 0.16]} color="#f0c83a" />
+        <Block position={[0, 0, 0.04]} size={[1.1, 1.4, 0.12]} color="#fff0b8" emissive="#ffd874" emissiveIntensity={lit ? 1.15 : 0.85} castShadow={false} />
+      </group>
+    ))}
+    {/* Pitched emerald-teal & gold tiered mansion roofs */}
+    <Vox kind="wool" tint="#1f5e50" position={[0, 5.45, -3.1]} size={[17.2, 0.75, 7.0]} />
+    <Vox kind="wool" tint="#267362" position={[0, 9.0, -3.5]} size={[12.2, 0.7, 6.0]} />
+    <Vox kind="wool" tint="#2e8874" position={[0, 9.75, -3.5]} size={[8.4, 0.8, 4.4]} />
+    <Vox kind="wool" tint="#f4c430" position={[0, 10.45, -3.5]} size={[1.1, 0.9, 1.1]} emissive="#f4c430" emissiveIntensity={0.35} />
+    {/* Banners & warm balcony lanterns */}
+    {[-3.4, 3.4].map((x) => (
+      <group key={`b${x}`}>
+        <Vox kind="wool" tint="#1c7a4e" position={[x, 3.5, 0.15]} size={[0.55, 1.6, 0.08]} castShadow={false} />
+        <Vox kind="wool" tint="#ffd452" position={[x, 4.2, 0.18]} size={[0.62, 0.22, 0.1]} castShadow={false} />
+      </group>
+    ))}
+    <Glow position={[0, 4.2, 1.6]} size={5.2} color="#ffe398" opacity={0.28} />
+  </group>
+);
+
+/** The mountain: a wall of stone at the north end, with a ladder on its face, steps cut into the rock, and the Rich Mansion up on the sunlit cliff. */
 const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
   <group>
-    <Vox kind="stone" position={[0, 6.5, -36]} size={[104, 13, 8]} tile={3} />
-    <Vox kind="stone" position={[-8, 10, -62]} size={[78, 20, 12]} tile={6} />
-    <Vox kind="mossy" position={[-8, 20.4, -62]} size={[78, 1.2, 12]} tile={3} />
-    <Vox kind="mossy" position={[0, 13.2, -36]} size={[104, 0.8, 8]} tile={2} />
-    <Vox kind="grass" position={[0, 13.8, -40]} size={[104, 1.0, 12]} tile={3} />
+    <Vox kind="stone" position={[0, 6.5, -38]} size={[104, 13, 8]} tile={3} />
+    <Vox kind="stone" position={[-8, 12, -62]} size={[82, 24, 14]} tile={6} />
+    <Vox kind="mossy" position={[-8, 24.4, -62]} size={[82, 1.2, 14]} tile={3} />
+    <Vox kind="mossy" position={[0, 13.2, -38]} size={[104, 0.8, 8]} tile={2} />
+    <Vox kind="grass" position={[0, 13.8, -42]} size={[104, 1.0, 12]} tile={3} />
     <Vox kind="mossy" position={[0, 0.4, -32.2]} size={[104, 1.2, 2.6]} tile={2} />
-    {/* the mountain proper: a long way off, so it is a shape with sky over it, not a wall behind the town */}
-    <Vox kind="stone" position={[-46, 15, -150]} size={[120, 30, 30]} tile={10} />
-    <Vox kind="stone" position={[54, 11, -142]} size={[76, 22, 26]} tile={9} />
-    <Vox kind="grass" position={[-46, 30.4, -150]} size={[118, 1.2, 28]} tile={6} />
-    <Vox kind="stone" position={[-46, 38, -150]} size={[40, 16, 22]} tile={8} />
-    <Vox kind="wool" tint="#f2f6ff" position={[-46, 47.5, -150]} size={[28, 3, 18]} tile={5} />
-    {/* the ledge the rich kid stands on, a third of the way up */}
-    <Vox kind="stoneBrick" position={[6.4, 5.6, -31.6]} size={[6.0, 0.4, 2.4]} />
-    <Vox kind="stoneBrick" position={[-7.5, 9.4, -31.6]} size={[5.0, 0.4, 2.4]} />
+    {/* the mountain proper: closer steep sunlit upper peaks behind the cliff */}
+    <Vox kind="stone" position={[-22, 18, -96]} size={[95, 36, 26]} tile={8} />
+    <Vox kind="stone" position={[34, 15, -92]} size={[72, 30, 22]} tile={8} />
+    <Vox kind="grass" position={[-22, 36.4, -96]} size={[92, 1.2, 24]} tile={5} />
+    <Vox kind="wool" tint="#f2f6ff" position={[-22, 41.0, -96]} size={[32, 4, 18]} tile={5} />
+    {/* the rich terrace & gleaming Quartz+Gold Mansion overlooking the town */}
+    <Vox kind="stoneBrick" position={[6.4, 5.4, -31.8]} size={[18.2, 0.8, 6.8]} />
+    <RichMansion position={[6.4, 5.85, -33.2]} lit={lit > 0} />
+    <Vox kind="stoneBrick" position={[-9.5, 9.4, -31.6]} size={[5.0, 0.4, 2.4]} />
     {/* the ladder: rails and rungs, going up out of the top of frame */}
     <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 6.6, -31.9]} size={[0.12, 13.2, 0.12]} />
     <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 6.6, -31.9]} size={[0.12, 13.2, 0.12]} />
@@ -56,8 +113,8 @@ const Bottom: React.FC<{ night: boolean; warm: boolean; rain: boolean }> = ({ ni
     <Vox kind="grass" position={[0, -0.5, -34]} size={[240, 1, 74]} />
     <Vox kind="path" position={[0, 0.02, -2.5]} size={[34, 0.06, 7.5]} />
     <Vox kind="sand" position={[0, 0.015, 3.4]} size={[34, 0.06, 3.0]} />
-    {/* the water, and the shallow shelf where they fish */}
-    <Vox kind="water" position={[0, -0.06, 24]} size={[240, 0.3, 40]} tile={5} />
+    {/* the animated water, and the shallow shelf where they fish */}
+    <Water position={[0, -0.06, 24]} size={[240, 0.3, 40]} tint={night ? "#1a3c6e" : "#2b78d6"} opacity={0.82} flowSpeed={[0.14, 0.08]} />
     <Vox kind="sand" position={[0, -0.12, 8.6]} size={[240, 0.3, 12]} />
     {/* the jetty */}
     <Vox kind="planks" position={[PLACE.jetty[0], PLACE.jetty[1] - 0.09, PLACE.jetty[2]]} size={[2.6, 0.18, 16]} />

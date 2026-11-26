@@ -148,18 +148,35 @@ export const LANE_CROWD: Spot[] = [
 
 // ----------------------------------------------------------------------------- the equipment
 
-/** The boat, with the hole in its side. `bail` 0–1 rocks it as the bucket goes over the side. */
+/** The boat, with the hole in its side, oars out, and stepped oak prow. `bail` 0–1 rocks it as the bucket scoops. */
 export const Boat: React.FC<{ position: Vec3; rotationY?: number; bail?: number; hole?: boolean }> = ({
   position, rotationY = 0, bail = 0, hole = true,
 }) => (
-  <group position={position} rotation={[0, rotationY, 0]}>
-    <Vox kind="darkPlanks" position={[0, 0.28, 0]} size={[1.5, 0.12, 3.4]} />
-    <Vox kind="darkPlanks" position={[0, 0.46, 1.66]} size={[1.5, 0.5, 0.12]} />
-    <Vox kind="darkPlanks" position={[0, 0.46, -1.66]} size={[1.5, 0.5, 0.12]} />
-    <Vox kind="darkPlanks" position={[0.72, 0.46, 0]} size={[0.12, 0.5, 3.4]} />
-    <Vox kind="darkPlanks" position={[-0.72, 0.46, 0]} size={[0.12, 0.5, 3.4]} />
-    {hole ? <Vox kind="basalt" position={[0.74, 0.34, 0.5]} size={[0.06, 0.3, 0.4]} /> : null}
-    <Bucket position={[0.2 + bail * 0.3, 0.42, -0.4 + bail * 0.7]} swing={bail * 1.5} scale={0.8} />
+  <group position={position} rotation={[Math.sin(bail * Math.PI) * 0.04, rotationY, (bail - 0.5) * 0.08]}>
+    {/* Oak hull bottom + stepped bow & stern */}
+    <Vox kind="darkPlanks" position={[0, 0.24, 0]} size={[1.55, 0.14, 3.3]} />
+    <Vox kind="planks" position={[0, 0.34, 0.2]} size={[1.35, 0.08, 0.32]} />
+    <Vox kind="planks" position={[0, 0.34, -0.75]} size={[1.35, 0.08, 0.32]} />
+    <Vox kind="darkPlanks" position={[0, 0.52, 1.68]} size={[1.35, 0.52, 0.16]} />
+    <Vox kind="darkPlanks" position={[0, 0.56, 1.88]} size={[0.85, 0.44, 0.24]} />
+    <Vox kind="darkPlanks" position={[0, 0.52, -1.68]} size={[1.45, 0.52, 0.16]} />
+    <Vox kind="darkPlanks" position={[0.74, 0.52, 0]} size={[0.14, 0.52, 3.3]} />
+    <Vox kind="darkPlanks" position={[-0.74, 0.52, 0]} size={[0.14, 0.52, 3.3]} />
+    {/* Two wooden oars sticking cleanly out of the sides */}
+    {[-1, 1].map((s) => (
+      <group key={s} position={[s * 0.78, 0.76, 0.2]} rotation={[0.1 * bail, 0, -s * 0.34]}>
+        <Vox kind="planks" position={[s * 0.55, 0, 0]} size={[1.15, 0.07, 0.09]} />
+        <Vox kind="darkPlanks" position={[s * 1.12, -0.02, 0]} size={[0.42, 0.04, 0.24]} />
+      </group>
+    ))}
+    {/* Jagged leak hole in the starboard planking + bilge puddle */}
+    {hole ? (
+      <>
+        <Vox kind="wool" tint="#13161c" position={[0.77, 0.44, 0.45]} size={[0.12, 0.32, 0.48]} />
+        <Vox kind="water" position={[0, 0.32, 0.35]} size={[1.28, 0.04, 1.4]} opacity={0.85} />
+      </>
+    ) : null}
+    <Bucket position={[0.25 + bail * 0.35, 0.48, -0.35 + bail * 0.6]} swing={bail * 1.6} scale={0.95} />
   </group>
 );
 
@@ -266,19 +283,27 @@ export const PriceBoard: React.FC<{ position: Vec3; digits: number[]; rotationY?
   </group>
 );
 
-/** A fishing rod, held out over the water. `bend` 0–1 pulls the tip down. */
+/** A fishing rod held forward along local +Z, angled upward (`-0.42 rad`). `bend` 0–1 flexes tip & line down. */
 export const Rod: React.FC<{ position: Vec3; rotationY?: number; bend?: number }> = ({ position, rotationY = 0, bend = 0 }) => (
-  <group position={position} rotation={[0.5 + bend * 0.5, rotationY, 0]}>
-    <Vox kind="darkPlanks" size={[0.04, 0.04, 1.5]} rotation={[0.12, 0, 0]} castShadow={false} />
-    <Vox kind="wool" tint="#f4f1ea" position={[0, 0.1, 1.5]} size={[0.01, 0.01, 2.4]} rotation={[1.2, 0, 0]} castShadow={false} />
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <group rotation={[-0.45 + bend * 0.48, 0, 0]}>
+      <Vox kind="log" position={[0, 0, 0.22]} size={[0.07, 0.07, 0.44]} />
+      <Vox kind="darkPlanks" position={[0, 0.01, 0.96]} size={[0.055, 0.055, 1.18]} />
+      <Vox kind="planks" position={[0, -0.04 * bend, 1.64]} size={[0.04, 0.04, 0.45]} />
+      {/* Hanging line & red-and-white float bobber directly off rod tip */}
+      <Vox kind="wool" tint="#f7f5f0" position={[0, -0.78 - bend * 0.18, 1.84]} size={[0.025, 1.55, 0.025]} castShadow={false} />
+      <Vox kind="wool" tint="#e23a3a" position={[0, -1.52 - bend * 0.2, 1.84]} size={[0.12, 0.1, 0.12]} castShadow={false} />
+      <Vox kind="wool" tint="#ffffff" position={[0, -1.44 - bend * 0.2, 1.84]} size={[0.12, 0.05, 0.12]} castShadow={false} />
+    </group>
   </group>
 );
 
-/** The line going into the water: a thread and a float. */
+/** Standalone fishing line & float bobber for wide bay shots. */
 export const Line: React.FC<{ position: Vec3; length?: number; bob?: number }> = ({ position, length = 1.6, bob = 0 }) => (
   <group position={position}>
-    <Vox kind="wool" tint="#f4f1ea" position={[0, -length / 2, 0]} size={[0.012, length, 0.012]} castShadow={false} />
-    <Vox kind="wool" tint="#e23a3a" position={[0, -length + bob, 0]} size={[0.08, 0.08, 0.08]} castShadow={false} />
+    <Vox kind="wool" tint="#f7f5f0" position={[0, -length / 2, 0]} size={[0.024, length, 0.024]} castShadow={false} />
+    <Vox kind="wool" tint="#e23a3a" position={[0, -length + bob, 0]} size={[0.12, 0.11, 0.12]} castShadow={false} />
+    <Vox kind="wool" tint="#ffffff" position={[0, -length + 0.08 + bob, 0]} size={[0.12, 0.05, 0.12]} castShadow={false} />
   </group>
 );
 

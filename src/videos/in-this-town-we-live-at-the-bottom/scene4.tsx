@@ -1,5 +1,5 @@
 import { cam, storyScene } from "../../engine";
-import { Coin, FishPile, Hero, NORTH, RichKid, Rod, SOUTH, Villager, ease, ramp, tw, timing } from "./kit";
+import { Coin, EAST, FishPile, Hero, NORTH, RichKid, Rod, SOUTH, Villager, ease, ramp, tw, timing } from "./kit";
 
 export const scene4 = storyScene(timing, {
   id: "scene4",
@@ -7,37 +7,37 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.good",
-      ...cam.orbit({ on: [0, 1.2, 9.6], dist: 12.2, distTo: 8.2, yaw: -24, yawTo: 18, pitch: 8, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [0, 1.2, 9.6], dist: 8.6, distTo: 5.4, yaw: -24, yawTo: 22, pitch: 8, fov: 44, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-golden",
-      note: "Golden afternoon jetty buzzing with movement: Hero laughs bouncing beside proud kid reeling rod and neighbor hauling catch.",
+      note: "Golden afternoon jetty buzzing with movement: Hero walks laughing past kid reeling angled rod and neighbor hauling catch.",
       stage: (t) => {
         const sway = Math.sin(t * 3.5);
         return (
           <>
-            <Hero position={[0, 0.5, 9.8]} rotationY={NORTH} animation="laugh" face="laugh" time={t * 1.4} />
-            <FishPile position={[0.8, 0.5, 9.0]} n={11} seed={3} />
-            <Villager position={[-1.4, 0.5, 9.2 - t * 0.2]} rotationY={SOUTH} hmm={0.4 + 0.2 * sway} walk={t * 0.5} />
-            <Villager position={[1.6, 0.5, 10.6]} rotationY={NORTH} strain={0.3 + 0.2 * sway} kid />
-            <Rod position={[1.9, 0.95, 10.5]} bend={0.2 + sway * 0.1} />
+            <Hero position={[0, 0.5, 10.4 - t * 0.9]} rotationY={NORTH} animation="walk" animDistance={t * 1.0} face="laugh" time={t * 1.4} />
+            <FishPile position={[0.7, 0.52, 9.0]} n={11} seed={3} />
+            <Villager position={[-1.0, 0.5, 9.2 - t * 0.6]} rotationY={SOUTH} hmm={0.4 + 0.2 * sway} walk={t * 0.9} />
+            <Villager position={[0.9, 0.5, 10.6]} rotationY={EAST} strain={0.3 + 0.2 * sway} kid />
+            <Rod position={[1.15, 0.96, 10.6]} rotationY={EAST} bend={0.32 + sway * 0.14} />
           </>
         );
       },
     },
     {
       cue: "4.care",
-      ...cam.crane({ on: [0, 1.5, 9.6], onTo: [4.5, 5.2, -26], dist: 5.2, toDist: 8.5, yaw: 6, fromPitch: -18, toPitch: 4, fov: 44, screenOffset: [0, 0.06] }),
+      ...cam.crane({ on: [0, 1.5, 9.6], onTo: [5.5, 6.8, -30.5], dist: 5.2, toDist: 8.2, yaw: 6, fromPitch: -18, toPitch: 2, fov: 44 }),
       zone: "bottom",
       look: "overworld-golden",
-      note: "Crane surges skyward past gazing townsfolk right up to rich ledge where clean kids turn their backs.",
+      note: "Crane surges skyward past gazing townsfolk right up to Quartz Mansion terrace where rich kids strut and shrug carelessly.",
       stage: (t) => {
         const turn = ease(ramp(t, 0, 1.3));
         return (
           <>
             <Hero position={[0, 0.5, 10]} rotationY={SOUTH} animation="lookAround" headPitch={-0.5} face="neutral" lookAt={[6, 6.0, -31]} time={t} />
-            <Villager position={[-1.2, 0.5, 9.4]} rotationY={NORTH} hmm={0.3 + turn * 0.2} />
-            <RichKid position={[6.2 + turn * 0.3, 5.85, -31.4]} rotationY={NORTH} animation="walk" animDistance={turn * 0.4} face="blank" time={t} />
-            <RichKid position={[7.2 - turn * 0.2, 5.85, -31.6]} rotationY={NORTH} animation="shrug" face="blank" time={t} />
+            <Villager position={[-1.1, 0.5, 9.4]} rotationY={NORTH} hmm={0.3 + turn * 0.2} />
+            <RichKid position={[5.4 + turn * 1.1, 5.85, -30.4]} rotationY={NORTH} animation="walk" animDistance={turn * 1.1} face="blank" time={t} />
+            <RichKid position={[7.4 - turn * 0.8, 5.85, -30.6]} rotationY={NORTH} animation="shrug" face="blank" time={t} />
           </>
         );
       },

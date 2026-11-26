@@ -31,9 +31,11 @@ feel about them. He is almost always centred, waist up, looking near the lens.
 **The face changes on the cut.** The original swaps flat face pictures: bored, glaring, happy, nervous, asleep,
 screaming. There is no lip sync and nobody misses it. A new face with a new shot reads as a new thought.
 
-**VISUALS + MOTION IS A MUST (Rule #1).** Every shot must BOTH look crisp AND show clear, readable physical motion matched to what the narrator is saying right now:
-- **Show the verb on screen (`wordAt`):** If the narrator says "ran", "opened", "dropped", "reached", "hid", "turned", or "gave", the character or prop physically performs the wind-up, travel, and reaction *during* that shot. Never freeze actors in `"idle"` or `stage: () =>` PowerPoint mannequins while the voiceover describes action!
-- **Every camera move must carry visible momentum (`>= 0.6m` travel, `>= 20°` orbit, or active `truck` / `crane` / `whip` / `dollyZoom`):** Microscopic `0.25m`–`0.35m` camera nudges look frozen on phones and fail `--pre-render`. Pair lively body/crowd acting with bold depth-revealing camera travel.
+**VISUALS + MOTION IS A MUST (Rule #1 — Read [`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md)).** Every shot must BOTH look crisp AND show clear, readable physical motion matched to what the narrator is saying right now:
+- **Visual-Verbal Lockstep (`wordAt` + `cut:`):** If the narrator says *"rods, a jetty, one boat"*, those EXACT props (`<Rod />`, `<Line />`, jetty planks, `<Boat />`) MUST sit clearly in camera focus — never let an actor just walk down planks while ignoring spoken nouns! Use `cut:` splits inside a line whenever 2–3 distinct objects are listed.
+- **Architectural & Environmental Proof (Never Bare Walls):** If the script says *"Up there, the rich live"*, stage an ornate sunlit **Mansion/Villa** behind them with gold trim, columns, banners, and warm windows — NEVER plain stone walls. Never bury props/actors inside a solid `<Hut />` box (`z < wallZ`).
+- **Real Body Displacement (`>= 1.0m`–`2.8m`), Not 1-Inch Slides:** Never translate a walking/chasing character `0.2m–0.4m` ("1 inch"). Actors must walk, run, dash, snatch, drop, reach, recoil, or gesture dramatically across real metres, surrounded by lively crowds and atmospheric FX.
+- **Smooth & Bold Camera Momentum (`inOutSine` / `linear` / `outExpo`):** Keep lead subjects phone-sized (`2.2m–6.0m`, `cam.fitHeight`) with **`>= 0.9m` travel / `>= 25°` orbit**; never leave cameras `18m–25m` away in hooks, and avoid `screenOffset` downward tilt when tilting up at mountains or mansions.
 
 **The long shots are the held breaths.** Four shots run over four seconds, and each is a moment of waiting: staring
 into the cloud, the old man deciding what to say, lying awake, the packed bag. Each still moves: the bed shot
