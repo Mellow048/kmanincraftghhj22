@@ -45,7 +45,7 @@ export const scene2 = storyScene(timing, {
           <>
             <Chest position={on(PLACE.bakery, -0.62, 0, 0.15)} open={0.4 + pace * 0.55} gold={0} kind="emerald" />
             <Chest position={on(PLACE.bakery, 0.62, 0, 0.15)} open={0.4 + pace * 0.55} gold={0} kind="emerald" />
-            <CitizenLead position={on(PLACE.bakery, -0.65 + pace * 0.25, 0, 0.95 - pace * 0.2)} rotationY={0.4} animation="shrug" animDistance={pace * 0.4} face="frown" time={t} />
+            <CitizenLead position={on(PLACE.bakery, -0.55, 0, 0.85)} rotationY={0.4} animation="shrug" face="frown" time={t} />
             <ExplainerCrowd
               positions={[on(PLACE.bakery, 0.55, 0, 0.9)]}
               animation="lookAround"
@@ -161,10 +161,9 @@ export const scene2 = storyScene(timing, {
           <>
             <EliteLead
               variant="pres"
-              position={on(PLACE.hall, -0.45 + act * 0.25, 0, -1.9)}
+              position={on(PLACE.hall, -0.35, 0, -1.9)}
               rotationY={0.45}
               animation={act < 0.45 ? "point" : "cheer"}
-              animDistance={act * 0.35}
               face="smile"
               time={t}
             />

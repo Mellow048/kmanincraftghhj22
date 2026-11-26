@@ -103,7 +103,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <CompareChestPair position={on(PLACE.bakery, 0, 0, 0.3)} leftLabel="YESTERDAY" rightLabel="TODAY" leftCount={4} rightCount={4} />
-            <CitizenLead position={on(PLACE.bakery, -0.35 + point * 0.65, 0, 1.15)} rotationY={Math.PI - 0.3} animation="point" animDistance={point * 0.5} face="wow" time={t} />
+            <CitizenLead position={on(PLACE.bakery, 0.0, 0, 1.15)} rotationY={Math.PI - 0.3} animation="point" face="wow" time={t} />
             <FloatingNumber text="SAME 4 LOAVES" color="#ffd84d" position={on(PLACE.bakery, 0, 2.05 + point * 0.2, 0.25)} height={0.28 * pop(t, 0.2)} />
           </>
         );
@@ -128,7 +128,7 @@ export const scene4 = storyScene(timing, {
         return (
           <>
             <BreadShelf position={on(PLACE.bakery, 0, 0, -1.15)} count={4} />
-            <CitizenLead position={on(PLACE.bakery, -0.55 + count * 0.25, 0, -0.45)} rotationY={0.95} animation="leanOver" face="frown" time={t} />
+            <CitizenLead position={on(PLACE.bakery, -0.45, 0, -0.45)} rotationY={0.95} animation="leanOver" face="frown" time={t} />
             <FloatingNumber text="STILL 4" color="#ffd84d" position={on(PLACE.bakery, 0, 2.0 + count * 0.18, -1.0)} height={0.3 * pop(t, 0.2)} />
           </>
         );

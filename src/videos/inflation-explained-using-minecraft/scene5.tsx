@@ -102,7 +102,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <BarChart position={on(PLACE.bakery, 0.36, 0, -0.45)} width={0.44} gap={0.22} labelHeight={0.18} values={[0.65, 2.25]} labels={["BREAD", "CASH"]} grow={[1, 1]} />
-            <CitizenLead position={on(PLACE.bakery, -0.75 + tap * 0.25, 0, 0.45)} rotationY={0.55} animation={tap < 0.55 ? "point" : "shrug"} animDistance={tap * 0.35} face="frown" time={t} />
+            <CitizenLead position={on(PLACE.bakery, -0.65, 0, 0.45)} rotationY={0.55} animation={tap < 0.55 ? "point" : "shrug"} face="frown" time={t} />
             <FloatingNumber text="STILL 1" color="#ff8e2b" position={on(PLACE.bakery, -0.1, 1.55 + tap * 0.2, -0.1)} height={0.28 * pop(t, 0.2)} />
           </>
         );

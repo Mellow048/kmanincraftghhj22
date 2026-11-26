@@ -157,7 +157,7 @@ export const scene3 = storyScene(timing, {
       zone: "bakery",
       note: "Miles sprints full tilt right toward bakery counter clutching his fresh thick green cash stack.",
       stage: (t) => (
-        <CitizenLead position={on(PLACE.bakery, -0.65 + t * 1.45, 0, 0.9)} rotationY={0.45} animation="run" animDistance={t * 2.6} face="happy">
+        <CitizenLead position={on(PLACE.bakery, -0.65 + t * 1.45, 0, 0.65 + t * 0.45)} rotationY={Math.atan2(1.45, 0.45)} animation="run" animDistance={t * 2.6} face="happy">
           <BillStack position={[0, -0.05, 0.2]} count={10} />
         </CitizenLead>
       ),

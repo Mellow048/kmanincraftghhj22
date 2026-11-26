@@ -129,7 +129,7 @@ export const scene6 = storyScene(timing, {
               <Bread position={[0, -0.05, 0.2]} scale={0.85} />
             </EliteLead>
             <CoinPile position={on(PLACE.hall, -0.65, 0, -0.75)} count={20} kind="emerald" spread={0.65} />
-            <CitizenLead position={on(PLACE.hall, -0.55, 0, -1.1 + strut * 0.25)} rotationY={0.6} animation="reach" animDistance={strut * 0.35} face="frown" time={t} />
+            <CitizenLead position={on(PLACE.hall, -0.55, 0, -1.0)} rotationY={0.6} animation="reach" face="frown" time={t} />
           </>
         );
       },

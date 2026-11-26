@@ -104,16 +104,17 @@ export const scene1 = storyScene(timing, {
       note: "Miles runs excitedly up beside overflowing CoinPile tossing shiny green coins as citizens rush in.",
       stage: (t) => {
         const rush = ease(ramp(t, 0, Math.max(0.5, paradoxRich)));
+        const step = Math.min(1, rush / 0.7);
         return (
           <>
             <CoinPile position={on(PLACE.bakery, 0.22, 0, 0.2)} count={14 + Math.round(rush * 8)} kind="emerald" spread={0.65} />
             <Coin position={on(PLACE.bakery, 0.2, 1.2 + Math.sin(t * 7) * 0.25, 0.2)} kind="emerald" spin={t * 6} size={0.35} />
             <FloatingNumber text="+CASH" color="#3fd46a" position={on(PLACE.bakery, 0.15, 1.45 + rush * 0.3, 0.2)} height={0.3 * pop(t, 0.15)} />
             <CitizenLead
-              position={on(PLACE.bakery, -0.95 + rush * 0.5, 0, 0.65 - rush * 0.2)}
-              rotationY={0.5}
+              position={on(PLACE.bakery, -0.95 + step * 0.55, 0, 0.45 + step * 0.25)}
+              rotationY={rush < 0.7 ? Math.atan2(0.55, 0.25) : 0.45}
               animation={rush < 0.7 ? "run" : "jump"}
-              animDistance={rush * 0.9}
+              animDistance={step * 0.9}
               face="grin"
               time={t}
             />
@@ -147,10 +148,9 @@ export const scene1 = storyScene(timing, {
           <>
             <Bread position={on(PLACE.bakery, -0.25, 0.96, -0.45)} scale={Math.max(0.62, 1.3 - shrink * 0.68)} />
             <CitizenLead
-              position={on(PLACE.bakery, 0.65 - shrink * 0.3, 0, 0.45 - shrink * 0.15)}
+              position={on(PLACE.bakery, 0.55, 0, 0.4)}
               rotationY={-0.55}
               animation={shrink < 0.6 ? "reach" : "shrug"}
-              animDistance={shrink * 0.45}
               face={t > affordLess ? "ouch" : "worried"}
               time={t}
             />
@@ -180,7 +180,7 @@ export const scene1 = storyScene(timing, {
             <Bread position={on(PLACE.bakery, 0, 0.96, -0.55)} scale={1.35} />
             <PriceTag text="1" position={on(PLACE.bakery, 0, 2.25, -0.55)} scale={pop(t, 0.15) * 1.15} />
             <Coin position={on(PLACE.bakery, 0.75 - pay * 0.22, 1.25 + Math.sin(t * 4) * 0.08, -0.25 - pay * 0.15)} kind="emerald" spin={t * 4.5} size={0.44} />
-            <CitizenLead position={on(PLACE.bakery, -0.65 + pay * 0.2, 0, -0.05)} rotationY={0.85} animation="reach" face="smile" time={t} />
+            <CitizenLead position={on(PLACE.bakery, -0.55, 0, -0.05)} rotationY={0.85} animation="reach" face="smile" time={t} />
           </>
         );
       },
@@ -234,7 +234,7 @@ export const scene1 = storyScene(timing, {
       zone: "bakery",
       note: "Linear tracking camera follows Miles walking cheerfully right across the market cradling his warm loaf.",
       stage: (t) => (
-        <CitizenLead position={on(PLACE.bakery, -0.75 + t * 1.35, 0, 0.4)} rotationY={0.35} animation="walk" animDistance={t * 2.1} face="smile">
+        <CitizenLead position={on(PLACE.bakery, -0.75 + t * 1.35, 0, 0.25 + t * 0.45)} rotationY={Math.atan2(1.35, 0.45)} animation="walk" animDistance={t * 2.1} face="smile">
           <Bread position={[0, -0.05, 0.2]} scale={0.78} />
         </CitizenLead>
       ),
