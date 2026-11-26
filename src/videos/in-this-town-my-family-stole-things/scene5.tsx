@@ -1,4 +1,4 @@
-import { Block, cam, storyScene } from "../../engine";
+import { Block, cam, storyScene, walkSegment } from "../../engine";
 import { Berries, Dad, den, PLACE, RedFlower, SillCup, Sister, Sword, Teller, ease, ramp, timing, wordAt } from "./kit";
 
 const GOT = wordAt("11.given", "got");
@@ -71,10 +71,11 @@ export const scene5 = storyScene(timing, {
       note: "Teller creeps inside root den peeking behind hoard pile as hidden berries glint underneath.",
       stage: (t) => {
         const creep = ease(ramp(t, 0, 1.4));
+        const tellerCreep = walkSegment(den(2.4, 0, 0.7), den(1.75, 0, 0.35), t, 0, 1.4, { gait: "creep", yaw: -0.85 });
         return (
           <>
             <Pile reveal={0.2 + creep * 0.8} />
-            <Teller position={den(2.4 - creep * 0.65, 0, 0.7 - creep * 0.35)} rotationY={-0.85} animation="creep" animDistance={creep * 0.8} face="wow" lookAt={den(0, 0.3, -1)} tailUp={0.25} time={t} />
+            <Teller {...tellerCreep} face="wow" lookAt={den(0, 0.3, -1)} tailUp={0.25} time={t} />
           </>
         );
       },
@@ -150,13 +151,13 @@ export const scene5 = storyScene(timing, {
       look: "overworld-sunset",
       note: "Push across whole sleeping fox family beside counted berry hoard as Teller paces slowly behind.",
       stage: (t) => {
-        const walk = ease(ramp(t, 0, 1.3));
+        const tellerWalk = walkSegment(den(-1.2, 0, 0.7), den(-1.7, 0, 0.7), t, 0, 1.3, { yaw: -1.1 });
         return (
           <>
             <Pile reveal={1} />
             <Dad position={den(-3.4, 0, -0.2)} rotationY={0.244} animation="sleep" face="calm" tailUp={0} time={t} />
             <Sister position={den(-2.2, 0, 0.4)} rotationY={-0.036} animation="sleep" face="calm" tailUp={0} time={t} />
-            <Teller position={den(-1.2 - walk * 0.5, 0, 0.7)} rotationY={-1.1} animation="walk" animDistance={walk * 0.55} face={t > TRADE ? "wow" : "calm"} time={t} />
+            <Teller {...tellerWalk} face={t > TRADE ? "wow" : "calm"} time={t} />
           </>
         );
       },

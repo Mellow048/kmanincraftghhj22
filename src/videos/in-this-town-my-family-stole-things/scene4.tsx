@@ -22,7 +22,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "8.dogs",
-      ...cam.whip({ from: [-8.2, 0.85, 0.6], on: [PLACE.path[0] + 2.1, 0.6, PLACE.path[2] - 0.1], onTo: [PLACE.path[0] + 3.4, 0.65, PLACE.path[2] + 1.3], fov: 40 }),
+      ...cam.whip({ from: [-8.2, 0.85, 0.6], on: [PLACE.path[0] + 2.1, 0.6, PLACE.path[2] - 0.1], onTo: [PLACE.path[0] + 3.4, 0.65, PLACE.path[2] + 1.3], fov: 40, ease: "inOutSine" }),
       zone: "street",
       look: "overworld-day",
       note: "Whip pan onto snarling town dogs bounding up aggressively as Teller flinches backward in terror.",
@@ -48,8 +48,8 @@ export const scene4 = storyScene(timing, {
         const pivot = ease(ramp(t, Math.max(0.05, TURN - 0.15), TURN + 0.25));
         return (
           <>
-            <IronGolem position={[PLACE.path[0] - 0.2, 0, PLACE.path[2] - 1.6]} rotationY={0.15 + pivot * 0.85} armR={-0.5 - pivot * 0.5} armL={-0.4} headPitch={0.35} walk={pivot * 0.6} />
-            <Teller position={[PLACE.path[0] + 1.5 - pivot * 0.25, 0, PLACE.path[2] + 0.6]} rotationY={0.52} animation={pivot > 0.35 ? "scared" : "creep"} face={t > TURN ? "fear" : "brave"} ears={t > TURN ? 1 : 0.5} carry={<RedFlower scale={0.8} rotation={[0, 0, 1.5]} />} tailUp={0.05} time={t} />
+            <IronGolem position={[PLACE.path[0] - 0.2, 0, PLACE.path[2] - 1.6]} rotationY={0.15 + pivot * 0.85} armR={-0.5 - pivot * 0.5} armL={-0.4} headPitch={0.35} walk={0} />
+            <Teller position={[PLACE.path[0] + 1.5 - pivot * 0.25, 0, PLACE.path[2] + 0.6]} rotationY={0.52} animation={pivot > 0.35 ? "scared" : "creep"} animDistance={pivot * 0.25} face={t > TURN ? "fear" : "brave"} ears={t > TURN ? 1 : 0.5} carry={<RedFlower scale={0.8} rotation={[0, 0, 1.5]} />} tailUp={0.05} time={t} />
           </>
         );
       },

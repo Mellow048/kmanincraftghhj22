@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, walkSegment } from "../../engine";
 import { Dad as DadFox, PLACE, RedFlower, SillCup, Teller, ease, ramp, timing, wordAt } from "./kit";
 
 const FlowerInMouth: React.FC = () => <RedFlower scale={0.8} rotation={[0, 0, 1.5]} />;
@@ -57,11 +57,11 @@ export const scene2 = storyScene(timing, {
       look: "overworld-sunset",
       note: "Crane climbs cleanly from Teller sneaking across path up onto open windowsill holding one bright red flower.",
       stage: (t) => {
-        const sneak = ease(ramp(t, 0, 1.3));
+        const tellerWalk = walkSegment([-9.8, 0, -2.0], [-9.15, 0, -3.35], t, 0, 1.3, { gait: "creep", yaw: -0.25 });
         return (
           <>
             <SillCup position={[PLACE.sill[0], PLACE.sill[1] - 0.08, SILL_Z]} flower />
-            <Teller position={[-9.8 + sneak * 0.65, 0, -2.0 - sneak * 1.35]} rotationY={-0.25} animation="creep" animDistance={sneak * 1.5} face="wow" lookAt={PLACE.sill} tailUp={0.55} time={t} />
+            <Teller {...tellerWalk} face="wow" lookAt={PLACE.sill} tailUp={0.55} time={t} />
           </>
         );
       },
@@ -121,15 +121,18 @@ export const scene2 = storyScene(timing, {
       look: "overworld-sunset",
       note: "Red flower lifts right out of sill cup into Teller's smiling jaws as he spins casually back to street.",
       stage: (t) => {
-        const take = ease(ramp(t, 0.1, Math.max(0.4, TOOK + 0.25)));
+        const endEasy = Math.max(0.4, TOOK + 0.25);
+        const take = ease(ramp(t, 0.1, endEasy));
+        const easyWalk = walkSegment([-8.9, 0, -3.65], [-8.7, 0, -3.35], t, 0.1, endEasy);
         return (
           <>
             <SillCup position={[PLACE.sill[0] + 0.32, PLACE.sill[1], PLACE.sill[2] + 0.26]} flower={take < 0.45} />
             <Teller
-              position={[-8.9 + take * 0.2, 0, -3.65 + take * 0.3]}
+              {...easyWalk}
               rotationY={0.2 - take * 0.9}
-              animation={take > 0.5 ? "walk" : "reachUp"}
-              animDistance={take * 0.45}
+              animation={take > 0.5 ? easyWalk.animation : "reachUp"}
+              blendTo={take > 0.5 ? easyWalk.blendTo : undefined}
+              blend={take > 0.5 ? easyWalk.blend : 1}
               face="grin"
               carry={take >= 0.45 ? <FlowerInMouth /> : undefined}
               tailUp={0.7}
@@ -147,8 +150,9 @@ export const scene2 = storyScene(timing, {
       note: "Orbit sweeps around Teller proudly admiring bright red flower across his jaw under darkening sky.",
       stage: (t) => {
         const strut = ease(ramp(t, 0, 1.3));
+        const tellerWalk = walkSegment([-8.85, 0, -3.4], [-9.2, 0, -3.4], t, 0, 1.3);
         return (
-          <Teller position={[-8.85 - strut * 0.35, 0, -3.4]} rotationY={-0.6 - strut * 0.5} animation="walk" animDistance={strut * 0.6} face="calm" carry={<FlowerInMouth />} tailUp={0.65} time={t} headPitch={0.1} />
+          <Teller {...tellerWalk} rotationY={-0.6 - strut * 0.5} face="calm" carry={<FlowerInMouth />} tailUp={0.65} time={t} headPitch={0.1} />
         );
       },
     },

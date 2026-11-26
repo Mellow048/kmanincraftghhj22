@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, walkSegment } from "../../engine";
 import { Boy, CookedChicken, IronGolem, PLACE, Poppy, SillCup, Sister, Teller, ease, ramp, timing, wordAt } from "./kit";
 
 const SIT = wordAt("6.cried", "sat");
@@ -116,10 +116,10 @@ export const scene3 = storyScene(timing, {
       look: "overworld-day",
       note: "OTS over Sister as Teller squares shoulders bravely and steps out of the hedge toward sunlit street.",
       stage: (t) => {
-        const step = ease(ramp(t, 0.2, 1.3));
+        const tellerWalk = walkSegment([-10.2, 0, 0.5], [-9.95, 0, 0.1], t, 0.2, 1.3, { yaw: -0.6 });
         return (
           <>
-            <Teller position={[-10.2 + step * 0.25, 0, 0.5 - step * 0.4]} rotationY={-0.6} animation={step > 0.35 ? "walk" : "idle"} animDistance={step * 0.5} face={t > 0.3 ? "brave" : "uneasy"} time={t} tailUp={0.25} />
+            <Teller {...tellerWalk} face={t > 0.3 ? "brave" : "uneasy"} time={t} tailUp={0.25} />
             <Sister position={[-11.1, 0, 0.9]} rotationY={-0.87} animation="talk" face="frown" time={t} tailUp={0.45} />
           </>
         );

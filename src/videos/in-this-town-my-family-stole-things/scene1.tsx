@@ -176,12 +176,13 @@ export const scene1 = storyScene(timing, {
       note: "Boy peeks excitedly from porch as Dad fox leaves gleaming Sword beside Berries on exterior sill and darts off into shadow.",
       stage: (t) => {
         const trade = ease(ramp(t, 0, 1.25));
+        const dadRun = walkSegment([-9.0, 0, -3.4], [-10.45, 0, -3.0], t, 0, 1.25, { gait: "run", yaw: WEST });
         return (
           <>
             <SillCup position={[PLACE.sill[0] - 0.28, PLACE.sill[1] - 0.08, SILL_Z]} berry t={t} />
             <Berries position={[PLACE.sill[0] + 0.25, PLACE.sill[1] - 0.04, SILL_Z]} scale={1.2} count={Math.max(1, Math.round(7 - trade * 5))} t={t} />
             <Sword position={[PLACE.sill[0] + 0.62, PLACE.sill[1] - 0.04, SILL_Z + 0.05]} scale={0.48} rotation={[0, 0.2, 1.5]} />
-            <Fox who={1} position={[-9.0 - trade * 1.45, 0, -3.4 + trade * 0.4]} rotationY={WEST} scale={0.7} animation="run" animDistance={trade * 1.6} carry={<Berries scale={0.8} count={3} />} tailUp={0.65} face="smile" time={t} />
+            <Fox who={1} {...dadRun} scale={0.7} carry={<Berries scale={0.8} count={3} />} tailUp={0.65} face="smile" time={t} />
           </>
         );
       },
