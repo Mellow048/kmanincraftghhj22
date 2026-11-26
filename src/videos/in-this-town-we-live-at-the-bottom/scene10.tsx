@@ -1,5 +1,7 @@
 import { cam, storyScene } from "../../engine";
-import { Boat, Coin, EAST, FishPile, FishingHero, Hero, JettyLantern, Rod, SOUTH, Villager, ease, ramp, timing } from "./kit";
+import { Boat, EAST, EmeraldPile, FishingHero, Hero, JettyLantern, Rod, SOUTH, TOWN_ROBES, Villager, WEST, ease, ramp, timing, wordAt } from "./kit";
+
+const CUT_BOAT = wordAt("10.rod", "Then");
 
 export const scene10 = storyScene(timing, {
   id: "scene10",
@@ -7,67 +9,81 @@ export const scene10 = storyScene(timing, {
   shots: [
     {
       cue: "10.night",
-      ...cam.orbit({ on: [0, 1.2, 10], dist: 7.4, distTo: 4.8, yaw: 145, yawTo: 175, pitch: 8, fov: 46, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [0, 1.2, 10], dist: 6.4, distTo: 4.4, yaw: 32, yawTo: 68, pitch: 8, fov: 46, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-night",
-      note: "Front-3/4 shot: Hero holds fishing rod cleanly beneath warm jetty lantern over dark water.",
+      note: "Front-3/4 shot: stationary Hero holds fishing rod cleanly beneath warm jetty lantern over dark water.",
       stage: (t) => {
         const pull = Math.sin(t * 3.8);
         return (
           <>
-            <JettyLantern position={[-1.15, 0.5, 10.6]} lit={1.2 + Math.sin(t * 7) * 0.12} />
-            <FishingHero position={[0, 0.5, 10 - ease(ramp(t, 0, 1.5)) * 0.25]} rotationY={EAST - 0.25} bend={0.3 + pull * 0.14} face="uneasy" headPitch={0.1} time={t} />
+            <JettyLantern position={[-1.05, 0.5, 10.6]} lit={1.2 + Math.sin(t * 7) * 0.12} />
+            <FishingHero position={[-0.1, 0.5, 10.0]} rotationY={EAST - 0.25} bend={0.3 + pull * 0.14} face="uneasy" headPitch={0.1} time={t} />
           </>
         );
       },
     },
     {
       cue: "10.storm",
-      ...cam.push({ on: [0.6, 1.2, 10.5], dist: 6.0, to: 4.0, yaw: -135, pitch: 2, fov: 46, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [2.4, 1.2, 11.2], dist: 13.2, to: 11.8, yaw: 14, pitch: 10, fov: 58, screenOffset: [0, 0.08] }),
       impacts: [{ at: 0.4, amp: 0.025, dur: 0.35 }, { at: 1.0, amp: 0.025, dur: 0.35 }],
       zone: "bottom",
       look: "overworld-storm",
-      note: "Front-3/4 view from open water side: storm winds rock tied boat violently as braced Hero holds bucking rod.",
+      note: "Front-3/4 view from water side: Hero casts EAST into stormy bay with rocking Boat clear of jetty and pilings.",
       stage: (t) => (
         <>
-          <FishingHero position={[0, 0.5, 10]} rotationY={SOUTH - 0.3} bend={0.75 + Math.sin(t * 10) * 0.15} face="scared" headPitch={0.1} time={t * 1.6} />
-          <Boat position={[3.1, 0.15 + Math.sin(t * 4.2) * 0.08, 12.4]} rotationY={0.3 + Math.sin(t * 2.2) * 0.18} bail={0.65} />
+          <FishingHero position={[-0.15, 0.5, 10.0]} rotationY={EAST - 0.15} bend={0.75 + Math.sin(t * 10) * 0.15} face="scared" headPitch={0.1} time={t * 1.6} />
+          <Boat position={[3.7, 0.15 + Math.sin(t * 4.2) * 0.08, 12.2]} rotationY={0.3 + Math.sin(t * 2.2) * 0.18} bail={0.65} />
         </>
       ),
     },
     {
       cue: "10.rod",
-      ...cam.push({ on: [-2.4, 1.1, -4.5], dist: 5.4, to: 4.2, yaw: -16, pitch: 8, fov: 46, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-3.75, 1.15, -5.2], dist: 6.2, to: 5.3, yaw: -38, pitch: 8, fov: 48, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-rain",
-      note: "Wide 9:16 shot: Hero slides fishing rod across counter to merchant then watches empty boat.",
+      note: "Cut 1 ('I sold my rod'): Hero clear of stall hay bale slides rod onto stall counter to merchant.",
       stage: (t) => {
-        const give = ease(ramp(t, 0, 1.2));
+        const give = ease(ramp(t, 0, 0.9));
         return (
           <>
-            <Hero position={[-1.6, 0, -4.6]} rotationY={SOUTH} animation={give < 0.7 ? "reach" : "shrug"} face="frown" time={t} />
-            <Rod position={[-1.2 - give * 0.9, 1.0, -4.7]} bend={0.1} rotationY={1.2} />
-            <Villager position={[-3.2, 0, -4.4]} rotationY={SOUTH} strain={0.3 + give * 0.3} />
-            <Boat position={[3.1, 0, 12.4 - give * 1.4]} rotationY={0.6} hole bail={0.1} />
+            <Hero position={[-3.35, 0, -4.35]} rotationY={WEST + 0.35} animation={give < 0.7 ? "reach" : "idle"} face="frown" time={t} />
+            <Rod position={[-3.55 - give * 0.55, 1.06, -5.35]} bend={0.1} rotationY={WEST + 0.3} />
+            <Villager position={[-4.2, 0, -6.22]} rotationY={SOUTH} robe={TOWN_ROBES[3]} hmm={0.25 + give * 0.25} />
+          </>
+        );
+      },
+    },
+    {
+      cue: "10.rod",
+      cut: CUT_BOAT,
+      ...cam.orbit({ on: [2.3, 1.1, 11.2], dist: 12.6, distTo: 11.6, yaw: 10, yawTo: 2, pitch: 12, fov: 58, screenOffset: [0, 0.06] }),
+      zone: "bottom",
+      look: "overworld-rain",
+      note: "Cut 2 ('Then the boat'): distinct-robe buyer inspects Boat in bay while Hero watches regretfully from jetty.",
+      stage: (t) => {
+        const give = ease(ramp(t, 0, 0.9));
+        return (
+          <>
+            <Hero position={[-0.25, 0.5, 10.8]} rotationY={EAST - 0.25} animation="shrug" face="frown" time={t} />
+            <Villager position={[0.85, 0.5, 11.0]} rotationY={EAST} robe={TOWN_ROBES[0]} hmm={0.3 + 0.2 * give} />
+            <Boat position={[3.7, 0.02, 11.6 - give * 0.6]} rotationY={0.4} hole bail={0.1} />
           </>
         );
       },
     },
     {
       cue: "10.count",
-      ...cam.orbit({ on: [0, 0.85, 8.6], dist: 4.2, distTo: 2.8, yaw: 148, yawTo: 175, pitch: 28, fov: 42, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-0.2, 1.0, 9.6], dist: 4.8, distTo: 3.8, yaw: -18, yawTo: 16, pitch: 18, fov: 44, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-rain",
-      note: "Front view: Hero counts sparse spinning coins dropping onto planks beside empty gap.",
+      note: "Front-3/4 view: Hero leans directly over a green EmeraldPile on the planks looking at the emeralds.",
       stage: (t) => {
         const count = ease(ramp(t, 0, 1.3));
         return (
           <>
-            <Hero position={[-0.65, 0.5, 9.1]} rotationY={SOUTH - 0.3} animation="crouch" face="frown" lookAt={[0, 0.55, 8.6]} time={t} />
-            {Array.from({ length: Math.max(2, Math.round(count * 9)) }, (_, i) => (
-              <Coin key={i} position={[0.05 * (i % 3) - 0.05, 0.56 + Math.floor(i / 3) * 0.03, 8.6 + 0.05 * (i % 3)]} spin={i + t * 5} />
-            ))}
-            <FishPile position={[0.4, 0.52, 8.5]} n={3} seed={8} />
+            <Hero position={[-0.55, 0.5, 9.3]} rotationY={SOUTH + 0.35} animation="leanOver" face="frown" lookAt={[0.15, 0.62, 9.9]} time={t} />
+            <EmeraldPile position={[0.15, 0.52, 9.9]} n={Math.max(3, Math.round(count * 9))} scale={1.1} seed={8} />
           </>
         );
       },

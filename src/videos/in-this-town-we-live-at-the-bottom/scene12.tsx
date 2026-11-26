@@ -1,5 +1,5 @@
-import { cam, storyScene } from "../../engine";
-import { Friend, Gate, Guard, Hero, Jar, NORTH, SOUTH, ease, ramp, tw, timing } from "./kit";
+import { cam, storyScene, walkSegment } from "../../engine";
+import { EAST, Friend, Gate, Guard, Hero, Jar, NORTH, SOUTH, WEST, ease, ramp, tw, timing } from "./kit";
 
 export const scene12 = storyScene(timing, {
   id: "scene12",
@@ -7,52 +7,56 @@ export const scene12 = storyScene(timing, {
   shots: [
     {
       cue: "12.walk",
-      ...cam.truck({ on: [0, 1.1, -6.4], dist: 4.8, yaw: 48, pitch: 4, fov: 44, by: [0, 0, -2.2], screenOffset: [0, 0.08] }),
+      ...cam.truck({ on: [0, 1.1, -7.4], dist: 8.2, yaw: 44, pitch: 6, fov: 50, by: [0, 0, -2.2], screenOffset: [0, 0.08] }),
       ease: "linear" as const,
       zone: "bottom",
       look: "overworld-day",
-      note: "Hero and Friend walk quietly down the lane toward the guarded Mountain Entrance Gate.",
-      stage: (t) => (
-        <>
-          <Gate position={[0, 0, -10.8]} open={0} />
-          <Guard position={[0, 0, -9.8]} rotationY={SOUTH} animation="guard" face="blank" time={t} />
-          <Hero position={[0.45, 0, -6.2 - t * 1.1]} rotationY={NORTH} animation="walk" animDistance={t * 1.1} face="uneasy" time={t} />
-          <Friend position={[-0.45, 0, -6.0 - t * 1.1]} rotationY={NORTH} animation="walk" animDistance={t * 1.1 + 0.4} face="worried" time={t} />
-        </>
-      ),
+      note: "Side-front 3/4 view: Hero and Friend walk quietly down the lane toward Guard at unified Mountain Entrance Gate.",
+      stage: (t) => {
+        const hWalk = walkSegment([0.45, 0, -6.2], [0.45, 0, -8.4], t, 0, 1.9, { endYaw: NORTH });
+        const fWalk = walkSegment([-0.45, 0, -6.0], [-0.45, 0, -8.2], t, 0, 1.9, { endYaw: NORTH });
+        return (
+          <>
+            <Gate position={[0, 0, -10.8]} open={0} />
+            <Guard position={[0, 0, -9.8]} rotationY={SOUTH} animation="guard" face="blank" time={t} />
+            <Hero {...hWalk} face="uneasy" time={t} />
+            <Friend {...fWalk} face="worried" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "12.q",
-      ...cam.push({ on: [-0.2, 1.38, -8.4], dist: 3.9, to: 2.45, yaw: 26, pitch: 2, fov: 36, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0.05, 1.38, -8.8], dist: 5.2, to: 4.3, yaw: 20, pitch: 2, fov: 48, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Friend steps around facing Hero earnestly pointing upward at the tall stone mountain above the gate.",
+      note: "Friend faces Hero 3/4 pointing smoothly upward at the towering mountain peak.",
       stage: (t) => {
         const turn = ease(ramp(t, 0.4, 1.4));
         return (
           <>
             <Gate position={[0, 0, -10.8]} open={0} />
-            <Guard position={[0.9, 0, -9.8]} rotationY={SOUTH} animation="guard" face="blank" time={t} />
-            <Friend position={[-0.5 + turn * 0.15, 0, -8.2]} rotationY={SOUTH} animation={t > 0.5 ? "talk" : "point"} face="worried" headPitch={t > 1.2 ? 0.1 : -0.35} lookAt={[0.3, 1.4, -8.8]} time={t} />
-            <Hero position={[0.3, 0, -8.8]} rotationY={SOUTH} animation="idle" face="uneasy" time={t} />
+            <Guard position={[0.6, 0, -9.8]} rotationY={SOUTH} animation="guard" face="blank" time={t} />
+            <Friend position={[-0.45, 0, -8.2]} rotationY={EAST - 0.35 + turn * 0.15} animation={t > 0.65 ? "talk" : "point"} face="worried" headPitch={t > 1.2 ? 0.08 : -0.38} time={t} />
+            <Hero position={[0.35, 0, -8.6]} rotationY={WEST + 0.35} animation="idle" face="uneasy" time={t} />
           </>
         );
       },
     },
     {
       cue: "12.a",
-      ...cam.push({ on: [-0.2, 1.4, -9.2], dist: 4.0, to: 2.6, yaw: -22, pitch: -2, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-0.35, 1.35, -9.55], dist: 6.8, to: 6.1, yaw: -20, pitch: 4, fov: 54, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Hero sets the town's jar on the Guard's toll counter to pay the lifetime entry fee as the mountain gate swings open.",
+      note: "Side-front 3/4 view: Hero sets town's jar on the Guard's toll counter as the mountain gate swings open.",
       stage: (t) => {
         const pay = tw(t, 0.45, 1.35);
         return (
           <>
             <Gate position={[0, 0, -10.8]} open={pay} />
-            <Guard position={[1.1, 0, -9.8]} rotationY={-0.6} animation={pay > 0.5 ? "point" : "guard"} face="blank" time={t} />
-            <Hero position={[0, 0, -9.0]} rotationY={NORTH} animation={t < 0.8 ? "talk" : "reach"} face={pay > 0.5 ? "brave" : "frown"} time={t} />
-            <Jar position={[-1.9, 1.12, -9.9]} fill={1} scale={0.9} />
+            <Guard position={[0.65, 0, -9.8]} rotationY={-0.35} animation={pay > 0.5 ? "talk" : "guard"} lookAt={[-0.85, 1.1, -9.4]} face="blank" time={t} />
+            <Hero position={[-0.85, 0, -9.4]} rotationY={WEST + 0.45} animation={t < 0.7 ? "talk" : "reach"} face={pay > 0.5 ? "brave" : "frown"} time={t} />
+            <Jar position={[-1.55, 1.1, -9.75]} fill={1} scale={0.9} />
           </>
         );
       },

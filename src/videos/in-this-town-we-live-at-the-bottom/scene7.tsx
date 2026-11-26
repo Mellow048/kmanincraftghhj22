@@ -1,5 +1,5 @@
-import { cam, storyScene } from "../../engine";
-import { BedBox, Coin, GoldenApple, Healer, Hero, Mum, Villager, EAST, SOUTH, WEST, ease, ramp, room, timing } from "./kit";
+import { cam, storyScene, walkSegment } from "../../engine";
+import { BedBox, EAST, Healer, Hero, Mum, SOUTH, TOWN_ROBES, ThoughtBubble, Villager, WEST, ease, pop, ramp, room, sleepingPose, timing } from "./kit";
 
 export const scene7 = storyScene(timing, {
   id: "scene7",
@@ -7,50 +7,52 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "7.sick",
-      ...cam.push({ on: room(-0.2, 0.9, -1.7), dist: 3.7, to: 2.3, yaw: -16, pitch: 8, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: room(-0.6, 1.0, -1.5), dist: 4.8, to: 3.9, yaw: -16, pitch: 8, fov: 50, screenOffset: [0, 0.08] }),
       zone: "room",
       look: "warm-room",
-      note: "Hero hurries to bedside gripping mattress edge tenderly as weak Mum shivers underneath blanket.",
+      note: "Hero hurries to bedside clear of BedBox as sick Mum rests flush on the BedBox mattress and pillow inside room walls.",
       stage: (t) => {
-        const step = ease(ramp(t, 0, 1.1));
+        const heroWalk = walkSegment(room(-1.55, 0, -1.55), room(-1.25, 0, -1.4), t, 0, 0.75, { endYaw: EAST - 0.35 });
         return (
           <>
-            <BedBox position={room(0, 0, -2.2)} rotationY={0} />
-            <Mum position={room(0, 0.62 + Math.sin(t * 4) * 0.015, -2.4)} rotationY={SOUTH} animation="sleep" face="sleepy" time={t} />
-            <Hero position={room(-1.3 + step * 0.4, 0, -1.4 - step * 0.2)} rotationY={EAST} animation={step < 0.7 ? "walk" : "leanOver"} animDistance={step * 0.5} face="worried" headPitch={0.2} time={t} />
+            <BedBox position={room(0, 0, -1.8)} rotationY={0} />
+            <Mum position={room(0, 0.142, -1.75)} rotationY={SOUTH} pose={sleepingPose(t)} weightShift={0} face="sleepy" time={t} />
+            <Hero {...heroWalk} animation={t < 0.75 ? heroWalk.animation : "leanOver"} face="worried" headPitch={0.22} time={t} />
           </>
         );
       },
     },
     {
       cue: "7.woman",
-      ...cam.orbit({ on: room(0.4, 1.35, -1.5), dist: 3.9, distTo: 2.75, yaw: -10, yawTo: 26, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: room(0.0, 1.3, -1.15), dist: 4.5, distTo: 4.1, yaw: -6, yawTo: 12, pitch: 4, fov: 56, screenOffset: [0, 0.08] }),
       zone: "room",
       look: "warm-room",
-      note: "Village Healer turns slowly shaking her head NO as Hero recoils in panic beside Mum's bed.",
+      note: "Village Healer shakes her head NO smoothly clear of BedBox as Hero recoils beside grounded Mum.",
       stage: (t) => {
-        const shake = ease(ramp(t, 0.35, 1.0));
+        const shake = ease(ramp(t, 0.25, 0.95));
         return (
           <>
-            <Healer position={room(0.9, 0, -1.2)} rotationY={WEST + Math.sin(t * 7) * 0.25 * shake} hmm={0.2 + 0.8 * shake} strain={0.3} lookAt={room(0, 0.8, -2.3)} />
-            <Hero position={room(-0.3 - shake * 0.18, 0, -1.2)} rotationY={EAST} animation={shake > 0.4 ? "scared" : "idle"} face={t > 0.7 ? "scared" : "worried"} headPitch={0.15} time={t} />
-            <BedBox position={room(0, 0, -2.2)} />
-            <Mum position={room(0, 0.62, -2.4)} rotationY={SOUTH} animation="sleep" face="sleepy" time={t} />
+            <BedBox position={room(0, 0, -1.8)} />
+            <Mum position={room(0, 0.142, -1.75)} rotationY={SOUTH} pose={sleepingPose(t)} weightShift={0} face="sleepy" time={t} />
+            <Healer position={room(0.84, 0, -1.15)} rotationY={WEST + 0.15} turn={Math.sin(t * 5.5) * 0.35 * shake} hmm={0.25 * shake} />
+            <Hero position={room(-0.84, 0, -1.15)} rotationY={EAST} animation={shake > 0.4 ? "scared" : "idle"} face={t > 0.7 ? "scared" : "worried"} headPitch={0.12} time={t} />
           </>
         );
       },
     },
     {
       cue: "7.cure",
-      ...cam.push({ on: room(-2.3, 1.15, -2.2), dist: 3.8, to: 2.25, yaw: 12, pitch: 8, fov: 36, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: room(0.08, 1.48, -0.45), dist: 3.65, distTo: 3.3, yaw: -4, yawTo: 14, pitch: 4, fov: 62, screenOffset: [0, 0.02] }),
       zone: "room",
       look: "warm-room",
-      note: "Dark cramped shelf corner where Hero stands reaching toward single glowing GoldenApple beside wooden counter.",
+      note: "Healer explains the cure clear of BedBox with a voxel ThoughtBubble containing a glowing GoldenApple floating cleanly above her head inside frame.",
       stage: (t) => (
         <>
-          <Hero position={room(-2.0, 0, -1.7)} rotationY={WEST} animation="reach" face="surprised" headPitch={0.25} time={t} />
-          <GoldenApple position={room(-2.4, 1.32, -2.3)} scale={0.9 + Math.sin(t * 3) * 0.06} rotationY={0.8 + t * 0.8} />
-          <Coin position={room(-2.05, 1.32, -2.2)} spin={t * 4} />
+          <BedBox position={room(0, 0, -1.8)} />
+          <Mum position={room(0, 0.142, -1.75)} rotationY={SOUTH} pose={sleepingPose(t)} weightShift={0} face="sleepy" time={t} />
+          <Healer position={room(0.48, 0, -0.35)} rotationY={WEST + 0.55} arms={{ l: -0.35, r: -1.35 + Math.sin(t * 3) * 0.12 }} lookAt={room(-0.48, 1.2, -0.35)} />
+          <ThoughtBubble position={room(0.32, 2.24, -0.35)} scale={pop(t, 0.15, 0.28) * 0.78} appleRot={t * 1.4} />
+          <Hero position={room(-0.48, 0, -0.35)} rotationY={EAST - 0.35} animation="talk" face="surprised" lookAt={room(0.32, 2.24, -0.35)} time={t} />
         </>
       ),
     },
@@ -60,13 +62,14 @@ export const scene7 = storyScene(timing, {
       ease: "linear" as const,
       zone: "bottom",
       look: "overworld-rain",
-      note: "Rainy jetty: Hero drops hopelessly to knees slamming empty hands down before crane rises to sunlit mountain.",
+      note: "Rainy jetty: Hero drops hopelessly to knees before crane rises toward the towering mountain.",
       stage: (t) => {
         const drop = ease(ramp(t, 0, 1.1));
+        const vWalk = walkSegment([-0.85, 0.5, 7.6], [-0.85, 0.5, 8.2], t, 0, 1.1, { endYaw: SOUTH });
         return (
           <>
-            <Hero position={[0, 0.5, 10.2]} rotationY={SOUTH} animation={drop > 0.5 ? "cower" : "shrug"} face="frown" headPitch={-0.45} lookAt={[2, 30, -31]} time={t} />
-            <Villager position={[-0.9, 0.5, 7.8 + drop * 0.35]} rotationY={SOUTH} hmm={0.4} walk={drop * 0.4} />
+            <Hero position={[0, 0.5, 10.2]} rotationY={SOUTH} animation={drop > 0.5 ? "cower" : "shrug"} plantFeet face="frown" headPitch={-0.42 * (1 - drop) + 0.22 * drop} time={t} />
+            <Villager position={vWalk.position} rotationY={vWalk.rotationY} robe={TOWN_ROBES[1]} hmm={0.4} walk={vWalk.animDistance} />
           </>
         );
       },

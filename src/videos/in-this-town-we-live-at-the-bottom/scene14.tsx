@@ -1,5 +1,5 @@
 import { cam, storyScene, walkSegment } from "../../engine";
-import { Gate, GoldenApple, Hero, Jar, Keeper, PriceBoard, SOUTH, ease, ramp, top, w, timing } from "./kit";
+import { EAST, EmeraldPile, Gate, GoldenApple, Hero, Jar, Keeper, PriceBoard, SOUTH, ease, ramp, top, w, timing } from "./kit";
 
 export const scene14 = storyScene(timing, {
   id: "scene14",
@@ -7,103 +7,144 @@ export const scene14 = storyScene(timing, {
   shots: [
     {
       cue: "14.gate",
-      ...cam.crane({ on: top(0, 1.4, 0.6), onTo: top(0, 2.5, 0), dist: 8.5, toDist: 5.5, yaw: 0, fromPitch: 16, toPitch: -6, fov: 44, screenOffset: [0, 0.06] }),
+      ...cam.crane({ on: top(-0.15, 1.25, -0.1), onTo: top(-0.1, 1.45, -0.1), dist: 7.2, toDist: 6.0, yaw: 34, fromPitch: 8, toPitch: 2, fov: 50, screenOffset: [0, 0.06] }),
       ease: "linear" as const,
       zone: "top",
       look: "overworld-day",
-      note: "Hero marches up onto top stone terrace beside imposing barred Gate as Keeper steps forward inside.",
+      note: "Side-front 3/4 view: Hero approaches ornate barred Gate clear of stoop step as Keeper steps toward toll counter in front of upper-town street.",
       stage: (t) => {
-        const heroWalk = walkSegment(top(0, 0, 2.8), top(0, 0, 1.4), t, 0, 1.35);
-        const keeperWalk = walkSegment(top(0, 0, -1.8), top(0, 0, -1.0), t, 0, 1.35, { endYaw: SOUTH });
+        const heroWalk = walkSegment(top(-0.8, 0, 1.35), top(-0.4, 0, 0.8), t, 0, 1.35, { endYaw: EAST - 0.35 });
+        const keeperWalk = walkSegment(top(0.1, 0, -2.0), top(0.1, 0, -1.18), t, 0, 1.35, { endYaw: SOUTH + 0.15 });
         return (
           <>
-            <Gate position={top(0, 0, 0)} />
+            <Gate position={top(0, 0, 0)} open={0} />
             <Keeper {...keeperWalk} face="blank" time={t} />
-            <Hero {...heroWalk} face="uneasy" headPitch={-0.2} time={t} />
+            <Hero {...heroWalk} face="uneasy" headPitch={-0.12} time={t} />
           </>
         );
       },
     },
     {
       cue: "14.count",
-      ...cam.push({ on: top(0, 1.2, 0.4), dist: 4.3, to: 2.9, yaw: -20, pitch: 8, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: top(0.45, 1.2, -0.35), dist: 6.8, to: 6.1, yaw: 36, pitch: 8, fov: 50, screenOffset: [0, 0.06] }),
       zone: "top",
       look: "overworld-day",
-      note: "Keeper taps coins coldly inside jar on stone sill while breathless Hero holds breath.",
-      stage: (t) => (
-        <>
-          <Keeper position={top(0.5, 0, -0.5)} rotationY={SOUTH} animation="reach" face="blank" headPitch={0.3 + 0.14 * Math.sin(t * 4.5)} time={t * 1.4} />
-          <Hero position={top(-0.6, 0, 0.8)} rotationY={0} animation="shrug" face="worried" time={t} />
-          <Jar position={top(0, 1.05, 0.4)} fill={1} />
-        </>
-      ),
-    },
-    {
-      cue: "14.raise",
-      ...cam.push({ on: top(2.2, 1.4, 1.1), dist: 4.3, to: 2.8, yaw: -12, pitch: 4, fov: 40, screenOffset: [0, 0.06] }),
-      zone: "top",
-      look: "overworld-day",
-      note: "Keeper points coldly directly to raised fifth digit notched freshly onto PriceBoard.",
-      stage: (t) => (
-        <>
-          <PriceBoard position={top(2.3, 0, 1.1)} digits={[1, 0, 0, 0, 1]} rotationY={-0.4} />
-          <Keeper position={top(1.4, 0, -0.2)} rotationY={SOUTH} animation="point" face="blank" time={t} />
-        </>
-      ),
-    },
-    {
-      cue: "14.ask",
-      ...cam.push({ on: top(-0.3, 1.4, 0.9), dist: 4.2, to: 2.7, yaw: 16, pitch: 2, fov: 40, screenOffset: [0, 0.06] }),
-      zone: "top",
-      look: "overworld-day",
-      note: "Hero leans earnestly at the iron sill pleading upward with both hands.",
-      stage: (t) => (
-        <Hero position={top(-0.3, 0, 1.0)} rotationY={0} animation={t < 0.8 ? "talk" : "reach"} face="brave" headPitch={-0.12} time={t * 1.3} />
-      ),
-    },
-    {
-      cue: "14.no",
-      ...cam.push({ on: top(0.4, 1.5, -0.6), dist: 3.9, to: 2.35, yaw: -14, pitch: 2, fov: 36, screenOffset: [0, 0.08] }),
-      zone: "top",
-      look: "overworld-day",
-      note: "Keeper shakes expressionless head stiffly NO gesturing Hero back from gate.",
-      stage: (t) => (
-        <Keeper position={top(0.4, 0, -0.6)} rotationY={SOUTH + Math.sin(t * 6) * 0.22} animation="shrug" face="blank" headPitch={0.05} time={t * 1.3} />
-      ),
-    },
-    {
-      cue: "14.eight",
-      ...cam.orbit({ on: top(0, 1.55, -0.9), dist: 4.1, distTo: 2.8, yaw: -16, yawTo: 22, pitch: 2, fov: 38, screenOffset: [0, 0.08] }),
-      zone: "top",
-      look: "overworld-day",
-      note: "Orbit past iron bars framing gleaming GoldenApple while Hero grips bars trembling.",
+      note: "Gate swung inward (-Z) clear of lens: Keeper counts gleaming EmeraldPile continuously on stone toll counter while Hero watches the money from side-front 3/4.",
       stage: (t) => {
-        const grip = ease(ramp(t, 0, 1.2));
+        const countPose = {
+          bodyY: Math.sin(t * 3.8) * 0.01,
+          bodyPitch: 0.02,
+          bodyRoll: 0,
+          bodyYaw: 0,
+          torso: [0.02, Math.sin(t * 3.8) * 0.05, 0] as [number, number, number],
+          head: [0.24 + Math.sin(t * 5) * 0.05, -0.1, 0] as [number, number, number],
+          armR: [-1.45 + Math.sin(t * 7.5) * 0.06, 0, -0.16 + Math.cos(t * 3.8) * 0.1] as [number, number, number],
+          armL: [-1.42 - Math.sin(t * 7.5) * 0.05, 0, 0.14] as [number, number, number],
+          legR: [0, 0, 0] as [number, number, number],
+          legL: [0, 0, 0] as [number, number, number],
+          kneeR: [0, 0, 0] as [number, number, number],
+          kneeL: [0, 0, 0] as [number, number, number],
+        };
         return (
           <>
-            <Gate position={top(0, 0, 0)} />
-            <GoldenApple position={top(0, 1.5, -1.2)} scale={1.4} rotationY={t * 1.2} />
-            <Hero position={top(0, 0, 1.4 - grip * 0.25)} rotationY={0} animation="cower" face="crying" headPitch={-0.1} time={t} />
+            <Gate position={top(0, 0, 0)} open={0.95} />
+            <Keeper
+              position={top(1.18, 0, -1.48)}
+              rotationY={SOUTH}
+              pose={countPose}
+              face="blank"
+              lookAt={top(1.38, 0.96, -0.62)}
+              time={t}
+            />
+            <Hero
+              position={top(-0.25, 0, 0.65)}
+              rotationY={EAST - 0.15}
+              animation="idle"
+              face="worried"
+              lookAt={top(1.35, 0.98, -0.62)}
+              time={t}
+            />
+            <Jar position={top(0.92, 0.94, -0.65)} fill={1} scale={0.9} />
+            <EmeraldPile position={top(1.38, 0.955, -0.62)} n={Math.max(2, Math.round(ease(ramp(t, 0, 1.4)) * 7))} scale={0.85} seed={3} />
           </>
         );
       },
     },
     {
+      cue: "14.raise",
+      ...cam.push({ on: top(0.2, 1.3, 0.1), dist: 7.4, to: 6.8, yaw: 20, pitch: 6, fov: 50, screenOffset: [0, 0.06] }),
+      zone: "top",
+      look: "overworld-day",
+      note: "Uncropped 9:16 side-front framing of Gate, PriceBoard, gesturing Keeper clear of toll counter, and reacting Hero.",
+      stage: (t) => (
+        <>
+          <Gate position={top(0, 0, 0)} open={0.95} />
+          <PriceBoard position={top(1.0, 0, 0.65)} digits={[1, 0, 0, 0, 1]} rotationY={-0.55} />
+          <Keeper position={top(-0.05, 0, -0.95)} rotationY={SOUTH + 0.25} animation="point" face="blank" lookAt={top(1.0, 1.35, 0.65)} time={t} />
+          <Hero position={top(-0.55, 0, 0.68)} rotationY={EAST - 0.3} animation="scared" face="surprised" lookAt={top(1.0, 1.35, 0.65)} time={t} />
+        </>
+      ),
+    },
+    {
+      cue: "14.ask",
+      ...cam.push({ on: top(-0.05, 1.25, -0.15), dist: 5.8, to: 4.9, yaw: 36, pitch: 4, fov: 48, screenOffset: [0, 0.06] }),
+      zone: "top",
+      look: "overworld-day",
+      note: "3/4 front-side framing: Hero pleads toward Keeper inside gate (never staring at camera).",
+      stage: (t) => (
+        <>
+          <Gate position={top(0, 0, 0)} open={0.95} />
+          <Keeper position={top(0.05, 0, -1.12)} rotationY={SOUTH + 0.2} animation="idle" face="blank" time={t} />
+          <Hero position={top(-0.35, 0, 0.68)} rotationY={EAST - 0.4} animation={t < 0.8 ? "talk" : "reach"} face="brave" lookAt={top(0.05, 1.5, -1.12)} time={t * 1.3} />
+        </>
+      ),
+    },
+    {
+      cue: "14.no",
+      ...cam.orbit({ on: top(-0.05, 1.25, -0.1), dist: 5.5, distTo: 4.8, yaw: 16, yawTo: 32, pitch: 8, fov: 48, screenOffset: [0, 0.06] }),
+      zone: "top",
+      look: "overworld-day",
+      note: "Gate and Hero stay in 3/4 context as Keeper shakes head firmly NO clear of counter.",
+      stage: (t) => (
+        <>
+          <Gate position={top(0, 0, 0)} open={0.95} />
+          <Keeper position={top(0.15, 0, -0.95)} rotationY={SOUTH + 0.15} animation="guard" headYaw={Math.sin(t * 9) * 0.36} face="blank" time={t * 1.2} />
+          <Hero position={top(-0.35, 0, 0.7)} rotationY={EAST - 0.4} animation="idle" face="worried" lookAt={top(0.15, 1.5, -0.95)} time={t} />
+        </>
+      ),
+    },
+    {
+      cue: "14.eight",
+      ...cam.orbit({ on: top(-0.05, 1.25, -0.1), dist: 5.4, distTo: 4.6, yaw: 38, yawTo: 18, pitch: -2, fov: 46, screenOffset: [0, 0.06] }),
+      zone: "top",
+      look: "overworld-day",
+      note: "Keeper holds glowing GoldenApple cleanly in his right hand as upright Hero looks up in disbelief.",
+      stage: (t) => (
+        <>
+          <Gate position={top(0, 0, 0)} open={0.95} />
+          <Keeper position={top(0.18, 0, -1.0)} rotationY={SOUTH + 0.2} animation="reach" face="blank" time={t}>
+            <GoldenApple position={[0, -0.04, 0.08]} scale={1.15} rotationY={t * 1.2} />
+          </Keeper>
+          <Hero position={top(-0.38, 0, 0.7)} rotationY={EAST - 0.4} animation="scared" face="crying" lookAt={top(0.18, 1.35, -0.8)} time={t} />
+        </>
+      ),
+    },
+    {
       cue: "14.shut",
-      ...cam.push({ on: top(0, 1.4, 0.8), dist: 4.6, to: 3.1, yaw: 20, pitch: 6, fov: 42, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: top(-1.4, 1.35, 0.0), dist: 6.8, to: 5.8, yaw: 34, pitch: 6, fov: 48, screenOffset: [0, 0.06] }),
       impacts: [{ at: Math.max(0.25, w("14.shut", "quick") - 0.15), amp: 0.03, dur: 0.25 }],
       zone: "top",
       look: "overworld-day",
-      note: "Iron gate slams shut crisply on quick knocking Hero back step onto cold stone.",
+      note: "Both Keeper and Hero cleanly inside 9:16 frame and clear of piers and inward-closing (-Z) Gate arc.",
       stage: (t) => {
         const shutStart = Math.max(0.15, w("14.shut", "quick") - 0.35);
         const shutEnd = w("14.shut", "quick");
         const shut = ease(ramp(t, shutStart, shutEnd));
         return (
           <>
-            <Gate position={top(0, 0, 0)} open={1 - shut} />
-            <Keeper position={top(1.4, 0, -1.2)} rotationY={SOUTH} animation="reach" face="blank" time={t} />
-            <Hero position={top(-1.6, 0, 1.4)} rotationY={0} animation="scared" face="hurt" time={t} />
+            <Gate position={top(0, 0, 0)} open={0.95 * (1 - shut)} />
+            <Keeper position={top(-2.95, 0, -1.55)} rotationY={SOUTH + 0.55} animation="push" face="blank" time={t} />
+            <Hero position={top(-0.55, 0, 0.85 + shut * 0.35)} rotationY={EAST - 0.45} animation="scared" face="hurt" lookAt={top(-1.2, 1.5, 0)} time={t} />
           </>
         );
       },
