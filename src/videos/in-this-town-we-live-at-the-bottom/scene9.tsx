@@ -15,7 +15,7 @@ export const scene9 = storyScene(timing, {
         const yank = Math.sin(t * 4.5);
         return (
           <>
-            <Hero position={[0, 0.05, 5.2 - ease(ramp(t, 0, 1.4)) * 0.3]} rotationY={NORTH} animation={yank > 0 ? "reach" : "shrug"} face="frown" time={t * 1.3} />
+            <Hero position={[0, 0.05, 5.0]} rotationY={NORTH} animation={yank > 0 ? "reach" : "shrug"} face="frown" time={t * 1.3} />
             <Rod position={[0.3, 0.85, 5.0]} bend={0.3 + yank * 0.16} />
             <Line position={[0.5, 0.75, 3.9]} length={1.3} bob={yank * 0.08} />
           </>

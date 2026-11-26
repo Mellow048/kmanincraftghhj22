@@ -1,5 +1,8 @@
 // Inspect a constructed film, not the names of recipes in its TSX. No renderer or live hooks.
 import React from 'react';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const ReactCjs = (() => { try { return require('react'); } catch { return null; } })();
 
 const rad = Math.PI / 180;
 const gap = (a, b) => Math.hypot(...a.map((v, i) => v - b[i]));
@@ -110,31 +113,46 @@ function collectStageItems(node, out, offset = [0, 0, 0]) {
 function expandWorld(World) {
   const items = [];
   if (typeof World !== 'function') return items;
-  const internals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
-  const prevH = internals?.H;
+  const slots = [React?.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactCjs?.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE].filter(Boolean);
+  const prevHs = slots.map((s) => s.H);
   const prevTime = globalThis.__REHEARSAL_TIME__;
   const prevShot = globalThis.__REHEARSAL_SHOT__;
+  const hadDoc = 'document' in globalThis;
+  const prevDoc = globalThis.document;
+  const mockH = {
+    useMemo: (fn) => fn(),
+    useCallback: (fn) => fn,
+    useState: (init) => [typeof init === 'function' ? init() : init, () => {}],
+    useReducer: (_red, init, initFn) => [initFn ? initFn(init) : init, () => {}],
+    useRef: (v) => ({ current: v }),
+    useEffect: () => {},
+    useLayoutEffect: () => {},
+    useInsertionEffect: () => {},
+    useContext: (ctx) => ctx?._currentValue ?? null,
+    useId: () => 'rehearsal',
+    useTransition: () => [false, (fn) => fn()],
+    useDeferredValue: (v) => v,
+    useSyncExternalStore: (_sub, getSnap) => getSnap(),
+    use: (v) => v,
+  };
   try {
     globalThis.__REHEARSAL_TIME__ = 0;
     globalThis.__REHEARSAL_SHOT__ = null;
-    if (internals) {
-      internals.H = {
-        useMemo: (fn) => fn(),
-        useCallback: (fn) => fn,
-        useState: (init) => [typeof init === 'function' ? init() : init, () => {}],
-        useReducer: (_red, init, initFn) => [initFn ? initFn(init) : init, () => {}],
-        useRef: (v) => ({ current: v }),
-        useEffect: () => {},
-        useLayoutEffect: () => {},
-        useInsertionEffect: () => {},
-        useContext: (ctx) => ctx?._currentValue ?? null,
-        useId: () => 'rehearsal',
-        useTransition: () => [false, (fn) => fn()],
-        useDeferredValue: (v) => v,
-        useSyncExternalStore: (_sub, getSnap) => getSnap(),
-        use: (v) => v,
+    if (!globalThis.document) {
+      globalThis.document = {
+        createElement: () => ({
+          width: 64, height: 64,
+          getContext: () => ({
+            fillStyle: '', font: '', textBaseline: '',
+            fillRect() {}, clearRect() {}, fillText() {}, strokeRect() {},
+            measureText: () => ({ width: 8 }),
+            getImageData: (_x, _y, w, h) => ({ data: new Uint8ClampedArray((w || 64) * (h || 64) * 4) }),
+            putImageData() {},
+          }),
+        }),
       };
     }
+    for (const s of slots) s.H = mockH;
     const visit = (node, offset = [0, 0, 0], zone = null, companions = []) => {
       if (!node || typeof node !== 'object') return;
       if (Array.isArray(node)) { for (const c of node) visit(c, offset, zone, companions); return; }
@@ -159,11 +177,13 @@ function expandWorld(World) {
     try { rootTree = World({}); } catch { rootTree = null; }
     visit(rootTree);
   } finally {
-    if (internals) internals.H = prevH;
+    slots.forEach((s, idx) => { s.H = prevHs[idx]; });
     if (prevTime === undefined) delete globalThis.__REHEARSAL_TIME__;
     else globalThis.__REHEARSAL_TIME__ = prevTime;
     if (prevShot === undefined) delete globalThis.__REHEARSAL_SHOT__;
     else globalThis.__REHEARSAL_SHOT__ = prevShot;
+    if (!hadDoc) delete globalThis.document;
+    else globalThis.document = prevDoc;
   }
   return items;
 }
@@ -212,6 +232,70 @@ const snowBoxes = (item) => {
 };
 
 const axisOverlap = (a0, a1, b0, b1) => Math.min(a1, b1) - Math.max(a0, b0);
+
+const ACTING_ANIMS = new Set([
+  'wave', 'talk', 'laugh', 'cheer', 'clap', 'shrug', 'cower', 'lean', 'leanOver',
+  'lookAround', 'point', 'reach', 'reachUp', 'hold', 'crouch', 'hug', 'scared',
+  'panic', 'cry', 'sit', 'strain', 'rattle', 'push', 'hurt', 'jump', 'hop',
+]);
+const STANDING_POSES = new Set([
+  'idle', 'talk', 'shrug', 'lookAround', 'laugh', 'cheer', 'wave', 'hold',
+  'reach', 'lean', 'leanOver', 'point', 'sit', 'clap',
+]);
+
+function hasClockMotionProps(node) {
+  if (!node || typeof node !== 'object') return false;
+  if (Array.isArray(node)) return node.some(hasClockMotionProps);
+  if (!node.$$typeof || !node.props) return false;
+  const name = elemName(node);
+  const p = node.props;
+  if (ACTING_ANIMS.has(p.animation) && typeof (p.time ?? p.t) === 'number') return true;
+  if ((typeof p.rattle === 'number' && p.rattle > 0) || (typeof p.strain === 'number' && p.strain > 0) || (typeof p.jaw === 'number' && p.jaw > 0) || (typeof p.shake === 'number' && p.shake > 0) || (typeof p.wave === 'number' && p.wave > 0)) return true;
+  if (['FloatingHeart', 'SoundRings', 'Bits', 'EmberDrift', 'Puffs', 'Sparkle', 'ChatToast', 'ServerChatBox', 'BadgePop'].includes(name)) return true;
+  return p.children ? hasClockMotionProps(p.children) : false;
+}
+
+function blockerBoxes(w) {
+  if (!zonesOverlap) return [];
+  if (w.name === 'Vox' || w.name === 'Block') {
+    if (!w.pos) return [];
+    const sz = w.props.size ?? [1, 1, 1];
+    const bb = boxBounds(w.pos, sz);
+    if (sz[1] < 0.7 && bb.y1 <= 0.15) return [];
+    return [bb];
+  }
+  if (w.name === 'LampPost' && w.pos) {
+    return [boxBounds([w.pos[0], w.pos[1] + 1.4, w.pos[2]], [0.46, 2.8, 0.46])];
+  }
+  if (w.name === 'Torch' && w.pos) {
+    return [boxBounds([w.pos[0], w.pos[1] + 0.55, w.pos[2]], [0.36, 1.1, 0.36])];
+  }
+  if (w.name === 'Tree' && w.pos) {
+    const h = w.props.height ?? 4;
+    return [boxBounds([w.pos[0], w.pos[1] + h * 0.35, w.pos[2]], [0.6, h * 0.7, 0.6])];
+  }
+  return [];
+}
+
+function rayHitsBoxMid(eye, target, bb) {
+  let tMin = 0, tMax = 1;
+  for (let a = 0; a < 3; a++) {
+    const d = target[a] - eye[a];
+    const lo = a === 0 ? bb.x0 : a === 1 ? bb.y0 : bb.z0;
+    const hi = a === 0 ? bb.x1 : a === 1 ? bb.y1 : bb.z1;
+    if (Math.abs(d) < 1e-6) {
+      if (eye[a] <= lo + 0.04 || eye[a] >= hi - 0.04) return false;
+    } else {
+      let t0 = (lo - eye[a]) / d;
+      let t1 = (hi - eye[a]) / d;
+      if (t0 > t1) [t0, t1] = [t1, t0];
+      tMin = Math.max(tMin, t0);
+      tMax = Math.min(tMax, t1);
+      if (tMin >= tMax) return false;
+    }
+  }
+  return tMax > 0.12 && tMin < 0.88;
+}
 
 // A child can run its own animation clock. Don't call it here (it may use hooks),
 // and don't count passing t={t} to an inert child as proof that it moved.
@@ -338,17 +422,18 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
       r.sampled++;
       const sampleNodes = [0, .15, .5, .85, 1].map(p => scene.sampleStage(i, (first + Math.round(p * (last - first))) / fps - s.at));
       const poses = new Set(sampleNodes.map(n => stagePrint(n)));
-      if (poses.size > 1) { r.changing++; quiet = 0; }
+      const clockActing = sampleNodes.some(hasClockMotionProps);
+      if (poses.size > 1 || clockActing) { r.changing++; quiet = 0; }
       else if (!s.locked) {
         quiet++;
         if (isModern && quiet >= 2) {
-          r.unfinished.push(`${where}: ${quiet} shots in a row send frozen unchanged props across 5 samples. Show physical acting, movement, faces, or changing props on the narrator's words (VISUALS + MOTION IS A MUST).`);
+          r.unfinished.push(`${where}: ${quiet} shots in a row send frozen unchanged props across 5 samples (no acting, motion, or expression).`);
         } else {
           r.review.push(`${where}: ${r.shots === 1 ? 'the opening sends' : 'shot sends'} unchanged props (apart from clocks) at five samples. Check the child rig on screen; a moving lens alone is not acting.`);
         }
       }
 
-      // Stationary / post-stop / uncoupled walk detection across the 5 sampled stage trees
+      // Stationary / post-stop / uncoupled / sideways walk / standing-slide detection across the 5 sampled stage trees
       const actorSamples = sampleNodes.map((n) => {
         const list = [];
         collectActors(n, list);
@@ -360,12 +445,14 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
           if (!actorSamples.every((list) => list[k].name === name)) continue;
           const pts = actorSamples.map((list) => list[k]);
           const maxMove = Math.max(0, ...pts.map((pt) => gap(pt.pos, pts[0].pos)));
+          const totalHoriz = Math.hypot(pts[pts.length - 1].pos[0] - pts[0].pos[0], pts[pts.length - 1].pos[2] - pts[0].pos[2]);
+          const totalVert = Math.abs(pts[pts.length - 1].pos[1] - pts[0].pos[1]);
           const hasPos = pts.some((pt) => Array.isArray(pt.props.position));
           const hasAlt = pts.some((pt) => pt.props.shift !== undefined || pt.props.at !== undefined || pt.props.positions !== undefined);
+          const walks = pts.map((pt) => pt.props.walk ?? 0);
+          const walkSpan = pts.every((pt) => typeof pt.props.walk === 'number') ? Math.max(...walks) - Math.min(...walks) : 0;
 
           if (pts.every((pt) => typeof pt.props.walk === 'number') && pts.some((pt) => (pt.props.gaitWeight ?? 1) > 1e-4)) {
-            const walks = pts.map((pt) => pt.props.walk);
-            const walkSpan = Math.max(...walks) - Math.min(...walks);
             if (walkSpan > 0.05 && (!hasAlt || hasPos)) {
               if (maxMove < 0.05) {
                 bucket.push(`${where}: ${name} plays walk cycle (walk delta ${walkSpan.toFixed(2)}) while stationary (moved ${maxMove.toFixed(2)}m).`);
@@ -408,11 +495,64 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
               }
             }
           }
+
+          // Anti-sidewalk / anti-moonwalk & anti-standing-slide checks
+          if (isModern && totalHoriz >= 0.18 && totalVert < 0.25 && (!hasAlt || hasPos)) {
+            const activelyWalking = gaitPts.length > 0 || walkSpan > 0.15;
+            if (!activelyWalking) {
+              const standingBad = pts.every((pt) => STANDING_POSES.has(pt.props.animation ?? 'idle'));
+              if (standingBad) {
+                bucket.push(`${where}: ${name} slides ${totalHoriz.toFixed(2)}m while in standing pose "${pts[2].props.animation ?? 'idle'}". Keep feet planted when standing, or walk forward with gait.`);
+              }
+            } else if (totalHoriz >= 0.30) {
+              for (let j = 1; j < pts.length; j++) {
+                const stepDx = pts[j].pos[0] - pts[j - 1].pos[0];
+                const stepDz = pts[j].pos[2] - pts[j - 1].pos[2];
+                const stepH = Math.hypot(stepDx, stepDz);
+                const yaw = pts[j].props.rotationY ?? pts[j - 1].props.rotationY;
+                const stepWalk = gaitPts.includes(pts[j]) || Math.abs(walks[j] - walks[j - 1]) > 0.12;
+                if (stepWalk && stepH >= 0.14 && typeof yaw === 'number') {
+                  const moveYaw = Math.atan2(stepDx, stepDz);
+                  const diffDeg = Math.abs(Math.atan2(Math.sin(moveYaw - yaw), Math.cos(moveYaw - yaw))) * 180 / Math.PI;
+                  if (diffDeg > 55) {
+                    bucket.push(`${where}: ${name} walks sideways/backwards (travels ${Math.round(moveYaw * 180 / Math.PI)}deg, faces ${Math.round(yaw * 180 / Math.PI)}deg, diff ${Math.round(diffDeg)}deg). Face direction of travel!`);
+                    break;
+                  }
+                }
+              }
+            }
+          }
         }
       }
 
-      // World vs stage duplicate / coplanar / Boat-vs-Vox collisions (mid-shot sample)
+      // World vs stage duplicate / coplanar / Boat-vs-Vox / Camera-pillar obstruction checks
       if (worldItems.length > 0) {
+        const midEye = s.path?.length >= 2 ? s.path[Math.floor(s.path.length / 2)] : [
+          ((s.from?.[0] ?? 0) + (s.to?.[0] ?? s.from?.[0] ?? 0)) / 2,
+          ((s.from?.[1] ?? 0) + (s.to?.[1] ?? s.from?.[1] ?? 0)) / 2,
+          ((s.from?.[2] ?? 0) + (s.to?.[2] ?? s.from?.[2] ?? 0)) / 2,
+        ];
+        const midTarget = s.targetPath?.length >= 2 ? s.targetPath[Math.floor(s.targetPath.length / 2)] : [
+          ((s.target?.[0] ?? 0) + (s.targetTo?.[0] ?? s.target?.[0] ?? 0)) / 2,
+          ((s.target?.[1] ?? 0) + (s.targetTo?.[1] ?? s.target?.[1] ?? 0)) / 2,
+          ((s.target?.[2] ?? 0) + (s.targetTo?.[2] ?? s.target?.[2] ?? 0)) / 2,
+        ];
+        if (isModern) {
+          for (const wi of worldItems) {
+            if (!zonesOverlap(s.zone, wi)) continue;
+            for (const bb of blockerBoxes(wi)) {
+              if (rayHitsBoxMid(midEye, midTarget, bb)) {
+                const pos = wi.pos ?? [0, 0, 0];
+                const key = `${cueKey}:cam:${wi.name}:${Math.round(pos[0])},${Math.round(pos[2])}`;
+                if (!seenDup.has(key)) {
+                  seenDup.add(key);
+                  bucket.push(`${where}: Camera ray blocked by World <${wi.name}> near [${pos.map(n => Math.round(n * 10) / 10).join(', ')}]. Move pillar/lamp/wall or reposition camera.`);
+                }
+                break;
+              }
+            }
+          }
+        }
         const stageItems = [];
         collectStageItems(sampleNodes[2], stageItems);
         for (const st of stageItems) {

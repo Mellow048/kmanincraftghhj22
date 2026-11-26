@@ -161,11 +161,17 @@ export function stride(a: Vec3, b: Vec3, p: number): { position: Vec3; rotationY
   };
 }
 
+function lerpAngle(a: number, b: number, k: number): number {
+  const diff = Math.atan2(Math.sin(b - a), Math.cos(b - a));
+  return a + diff * k;
+}
+
 /**
  * Time-windowed walk segment for `storyScene` stages. Spread into an avatar:
  *   <Hero {...walkSegment(A, B, t, 0, 1.4)} face="happy" time={t} />
- * Stationary/vertical-only segments stay `"idle"` (`animDistance: 0`), and stops
- * blend cleanly back to `"idle"` over `settle` seconds (no mid-stride freeze).
+ * Stationary/vertical-only segments stay `"idle"` (`animDistance: 0`), feet always
+ * face the true direction of horizontal travel (`atan2(dx, dz)` — never crab-walking
+ * sideways), and after stopping you can turn smoothly toward `endYaw` during `settle`.
  */
 export function walkSegment(
   a: Vec3,
@@ -173,7 +179,7 @@ export function walkSegment(
   t: number,
   start: number,
   end: number,
-  opts: { gait?: GaitName; ease?: EaseName; settle?: number; yaw?: number } = {},
+  opts: { gait?: GaitName; ease?: EaseName; settle?: number; endYaw?: number; yaw?: number } = {},
 ): {
   position: Vec3;
   rotationY: number;
@@ -190,13 +196,16 @@ export function walkSegment(
   const dz = b[2] - a[2];
   const horiz = Math.hypot(dx, dz);
   const position: Vec3 = [a[0] + dx * k, a[1] + dy * k, a[2] + dz * k];
-  const rotationY = opts.yaw ?? (horiz > 1e-4 ? Math.atan2(dx, dz) : 0);
+  const finalYaw = opts.endYaw ?? opts.yaw;
+  const travelYaw = horiz > 1e-4 ? Math.atan2(dx, dz) : (finalYaw ?? 0);
   if (horiz < 1e-4 || t < start) {
-    return { position, rotationY, animDistance: 0, animation: "idle", blend: 1 };
+    return { position, rotationY: travelYaw, animDistance: 0, animation: "idle", blend: 1 };
   }
   const gait = opts.gait ?? "walk";
   const settle = Math.max(1e-3, opts.settle ?? 0.25);
   const animDistance = horiz * k;
+  const turnK = finalYaw !== undefined && t > end ? smoothstep(clamp01((t - end) / settle)) : 0;
+  const rotationY = finalYaw !== undefined ? lerpAngle(travelYaw, finalYaw, turnK) : travelYaw;
   if (t <= end) {
     const rampIn = Math.max(1e-3, Math.min(0.16, span * 0.3));
     return {

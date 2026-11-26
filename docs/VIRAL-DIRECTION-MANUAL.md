@@ -51,15 +51,18 @@ Check every `<Hut />`, `<Mansion />`, and `<Vox />` volume before choosing coord
 - `<Hut at={[hx, 0, hz]} w={w} d={d} h={h} />` is a **SOLID filled cube spanning `z = hz` back to `z = hz - d`**.
 - Putting clues, floor outlines, or camera arcs at `z < hz` buries them **INSIDE A SOLID WALL**! Always stage exterior action, steps, and windowsill props strictly in front (`z >= hz + 0.26`), keeping cameras on `+Z`.
 
-### Law 2 — REAL BODY DISPLACEMENT ("Move Bodies, Not 1 Inch")
-"Move 1 inch (`0.15m–0.35m`) and call it a day" makes expensive 3D characters read like PowerPoint / freeze-frame animation:
-- Walking, chasing, sneaking, or climbing actors must cross **real visible ground (`>= 1.0m` to `3.2m+`)** synced with `animDistance` or `route(p)` + `plantFeet`.
-- Anticipation → action → follow-through on `wordAt(cue, verb)` (`reachUp`, `point`, `shrug`, `cower`, `panic`, `run`, `jump`, `leanOver`), plus secondary world/crowd life (`Villager` workers, chasing townsfolk, rocking `<Boat>`, undulating `<Water>`, torches/lanterns, `<EmberDrift>`, `<Dust>`).
+### Law 2 — NEVER SLIDE STANDING ACTORS OR WALK SIDEWAYS
+"Fake movement" (`0.2m` floor slides while waving/shrugging/talking, or walking sideways `rotationY=EAST` while translating along `-Z` just to face the camera) ruins 3D craft immediately (compare `Monster Village Part 1`, `Creeper Parents`, and `Enderman Parents`):
+- **Standing acting stays PLANTED:** Characters talking, shrugging, crying, waving, leaning, or pointing keep fixed feet `[x, y, z]` and act with `animation` (`talk`, `wave`, `shrug`, `cower`, `lean`, `lookAround`, `cheer`), `headPitch`/`headYaw`/`lookAt`, `face`, and props/tears/hearts — NEVER slide their `[x, y, z]` across the floor while standing!
+- **Walking faces direction of travel:** When an actor actually walks or runs (`>= 0.9m` of real ground), `rotationY` MUST align with `atan2(dx, dz)`. Use `walkSegment(a, b, t, start, end, { endYaw })` so feet always point forward during travel and turn toward camera ONLY after coming to a stop.
 
-### Law 3 — SMOOTH CINEMATIC CAMERA FLOW (`inOutSine` / `linear` / `outExpo`)
-- **Default to `"inOutSine"`** (`cam.push`, `cam.orbit`, `cam.pan`, `cam.crane`, `cam.ots`, `cam.top`) so camera energy glides smoothly across the full cut — matching *Enderman Parents* and *Creeper Parents*. Use `"linear"` on tracking `cam.truck` and `"outExpo"` on `cam.whip`. Never default normal cuts to `outSine` (it decelerates prematurely and feels frozen at the tail).
-- **Substantial Travel:** **`>= 0.9m–2.5m` dolly/crane**, **`>= 25°–45°` orbit/pan**, or **`>= 1.4m–3.0m` track**.
-- **Subject Scale (`cam.fitHeight`) & `screenOffset` Caution:** Keep lead subjects at **`dist: 2.2m–6.4m`** (`fov: 36–46`) so faces and props dominate phones. Use `screenOffset: [0, 0.08]` on talking medium/close shots to clear captions, **never** pair downward `screenOffset[1] > 0` with high positive `pitch` when framing tall peaks/mansions.
+### Law 3 — CINEMATIC FRAMING (NEVER OVER-ZOOM OR CLIP PROPS)
+Follow the exact proven 9:16 lens grammar of `Monster Village Part 1` (`dist median 4.6m, fov 42°`), `Creeper Parents` (`dist 4.6m, fov 44°`), and `Enderman Parents` (`dist 5.6m, fov 46°`):
+- **Normal 1–2 Person Story Shots:** **`dist: 4.4m–6.4m`**, **`fov: 42°–48°`** so characters are readable head-to-toe AND the environment/background proof fills the frame cleanly!
+- **Establishing / Multi-Desk / Bridge / Crowd Shots:** **`dist: 8.5m–16.0m`**, **`fov: 46°–50°`**.
+- **Close-Ups (`dist: 2.6m–3.5m, fov: 38°–40°`):** Reserve strictly for tight face reactions, signs, chests, clocks, or hand details — NEVER shoot whole rooms, multi-character dialogue, or bridges at `dist < 3.8m` (`fov 36°` = 0.8m slit!).
+- **Line-of-Sight Clearance:** Check that NO `LampPost`, `Torch`, `Tree`, beam, or foreground shoulder intersects the `[eye -> target]` ray!
+- **Smooth Camera Flow (`inOutSine` / `linear` / `outExpo`):** Default to `"inOutSine"` (`cam.push`, `cam.orbit`, `cam.pan`, `cam.crane`, `cam.ots`, `cam.top`); `"linear"` on `cam.truck`; `"outExpo"` only on `cam.whip <= 0.85s`. Avoid unnecessary large `screenOffset` pushing subjects against frame edges or pillars.
 
 ### Law 4 — OPENING 15 SECONDS AUDIT CHECKLIST (CHUNK 00 + CHUNK 01)
 Before committing or dispatching a GitHub render:

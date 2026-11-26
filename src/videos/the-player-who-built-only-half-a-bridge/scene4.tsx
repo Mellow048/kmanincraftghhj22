@@ -29,12 +29,12 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.tnt",
-      ...cam.orbit({ on: [-2.2, 1.1, 0], dist: 4.4, distTo: 3.1, yaw: -24, yawTo: 16, pitch: 10, fov: 42, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-2.2, 1.15, 0], dist: 5.2, distTo: 3.9, yaw: -24, yawTo: 16, pitch: 10, fov: 44 }),
       zone: "server",
       look: "lantern-night",
-      note: "Thursday night: Rex sneaks onto Toby's dark torchlit bridge holding red TNT block.",
+      note: "Thursday night: Rex creeps onto Toby's dark torchlit bridge holding red TNT block.",
       stage: (t) => {
-        const rexWalk = walkSegment([-3.6, 0, -0.2], [-1.7, 0.1, 0], t, 0, 1.2, { gait: "creep", yaw: EAST });
+        const rexWalk = walkSegment([-3.6, 0, -0.2], [-1.7, 0.1, 0], t, 0, 1.2, { gait: "creep" });
         return (
           <>
             <CanyonBridge mode="half" />
@@ -49,13 +49,13 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.tnt",
       cut: CUT_TNT,
-      ...cam.push({ on: [-1.4, 0.75, 0], dist: 3.1, to: 1.85, yaw: 20, pitch: 14, fov: 38, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [-2.0, 1.0, 0], dist: 4.5, to: 3.2, yaw: 20, pitch: 14, fov: 42 }),
       zone: "server",
       look: "lantern-night",
-      note: "Rex sets down white-flashing lit TNT onto the oak planks and darts rapidly backward.",
+      note: "Rex sets down white-flashing lit TNT onto the oak planks and runs back down the lane.",
       stage: (t) => {
         const flash = Math.sin(t * 28) > 0;
-        const fleeWalk = walkSegment([-1.7, 0.1, 0], [-3.8, 0, -0.4], t, 0.15, 1.35, { gait: "run", yaw: WEST });
+        const fleeWalk = walkSegment([-1.7, 0.1, 0], [-4.1, 0, -0.3], t, 0.15, 1.35, { gait: "run" });
         return (
           <>
             <CanyonBridge mode="half" />
@@ -69,7 +69,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.blast",
-      ...cam.push({ on: [-1.8, 1.0, 0], dist: 4.8, to: 3.4, yaw: -16, pitch: 12, fov: 46, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-1.8, 1.1, 0], dist: 6.0, to: 4.5, yaw: -16, pitch: 12, fov: 48 }),
       impacts: [{ at: 0.15, amp: 0.14, dur: 0.55 }],
       zone: "server",
       look: "lantern-night",
@@ -86,12 +86,12 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.blast",
       cut: CUT_LEAVING,
-      ...cam.crane({ on: [-2.4, 0.7, 0], onTo: [-2.7, 1.2, 0], dist: 4.0, toDist: 2.7, yaw: 24, fromPitch: 16, toPitch: 4, fov: 42, screenOffset: [0, 0.08] }),
+      ...cam.crane({ on: [-2.6, 0.9, 0], onTo: [-2.9, 1.35, 0], dist: 5.2, toDist: 3.9, yaw: 24, fromPitch: 16, toPitch: 6, fov: 44 }),
       zone: "server",
       look: "overworld-night",
       note: "Smoke clears over jagged black scorched stone at the canyon lip as Toby arrives horrified.",
       stage: (t) => {
-        const tobyStep = walkSegment([-4.6, 0, 0.1], [-3.4, 0, 0.1], t, 0.1, 1.2, { yaw: EAST });
+        const tobyStep = walkSegment([-4.8, 0, 0.1], [-3.4, 0, 0.1], t, 0.1, 1.2);
         return (
           <>
             <CanyonBridge mode="crater" />
@@ -103,10 +103,10 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "4.cry",
-      ...cam.push({ on: [-3.3, 1.05, 0.1], dist: 3.1, to: 1.95, yaw: -22, pitch: 6, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-3.3, 1.15, 0.1], dist: 4.2, to: 3.0, yaw: -22, pitch: 8, fov: 42 }),
       zone: "server",
       look: "overworld-night",
-      note: "Close on Toby trembling and crying in front of the smoking crater.",
+      note: "Toby trembles and cries beside the smoking canyon crater.",
       stage: (t) => (
         <>
           <CanyonBridge mode="crater" />
@@ -118,7 +118,7 @@ export const scene4 = storyScene(timing, {
     {
       cue: "4.cry",
       cut: CUT_SHELL,
-      ...cam.orbit({ on: [-3.3, 1.4, 0.1], dist: 3.4, distTo: 2.35, yaw: -16, yawTo: 18, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-3.3, 1.4, 0.1], dist: 4.5, distTo: 3.3, yaw: -16, yawTo: 18, pitch: 6, fov: 42 }),
       zone: "server",
       look: "overworld-night",
       note: "Heartbreaking ServerChatBox message pops overhead: she'll think I quit.",

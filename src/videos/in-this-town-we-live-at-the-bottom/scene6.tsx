@@ -18,22 +18,22 @@ export const scene6 = storyScene(timing, {
         return (
           <>
             <Basket position={[0, 0.5 + y, 15]} rope={y + 6} swing={Math.sin(t * 2.2) * 0.45} />
-            <Hero position={[0, 0.5, 12.4 + drop * 0.3]} rotationY={NORTH} animation="lookAround" face="wow" headPitch={-0.4 + drop * 0.3} lookAt={[0, y + 0.5, 15]} time={t} />
-            <Villager position={[-1.1, 0.5, 12.0 + drop * 0.2]} rotationY={NORTH} walk={drop * 0.4} lookAt={[0, y + 0.5, 15]} />
+            <Hero position={[0, 0.5, 12.6]} rotationY={NORTH} animation="lookAround" face="wow" headPitch={-0.4 + drop * 0.3} lookAt={[0, y + 0.5, 15]} time={t} />
+            <Villager position={[-1.1, 0.5, 12.1]} rotationY={NORTH} walk={0} lookAt={[0, y + 0.5, 15]} />
           </>
         );
       },
     },
     {
       cue: "6.coat",
-      ...cam.push({ on: [0, 1.42, 14.6], dist: 4.1, to: 2.45, yaw: 14, pitch: 4, fov: 36, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [0, 1.42, 14.4], dist: 4.5, to: 3.1, yaw: 14, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Spotless white-coated Keeper steps smoothly forward out of basket brushing wet sleeve away.",
+      note: "Spotless white-coated Keeper steps smoothly forward toward townsfolk out of basket brushing wet sleeve away.",
       stage: (t) => {
         const step = ease(ramp(t, 0, 1.2));
         return (
-          <Keeper position={[0, 0.5, 15.2 - step * 0.65]} rotationY={SOUTH} animation={step < 0.7 ? "walk" : "point"} animDistance={step * 0.75} face="blank" headPitch={0.1} time={t} />
+          <Keeper position={[0, 0.5, 15.2 - step * 1.1]} rotationY={NORTH} animation={step < 0.7 ? "walk" : "point"} animDistance={step * 1.1} face="blank" headPitch={0.1} time={t} />
         );
       },
     },

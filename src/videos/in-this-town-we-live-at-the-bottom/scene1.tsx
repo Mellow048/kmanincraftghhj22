@@ -12,9 +12,8 @@ export const scene1 = storyScene(timing, {
       look: "overworld-day",
       note: "Bright foreground hook: Hero steps briskly along wet plank jetty hauling a flexing fishing rod over shimmering water beside oak Boat while sunlit Quartz & Gold Mansion crowns the towering mountain behind.",
       stage: (t) => {
-        const pull = ease(ramp(t, 0, 1.45));
         const tug = Math.sin(t * 4.5);
-        const heroWalk = walkSegment([-0.25, 0.5, 10.8], [-0.25, 0.5, 9.5], t, 0, 1.45, { yaw: EAST - 0.3 });
+        const heroWalk = walkSegment([-0.25, 0.5, 11.0], [-0.25, 0.5, 9.4], t, 0, 1.35, { endYaw: EAST - 0.3 });
         return (
           <>
             <Hero
@@ -23,11 +22,11 @@ export const scene1 = storyScene(timing, {
               face="smile"
               time={t * 1.2}
             />
-            <Rod position={[0.05, 1.02, heroWalk.position[2]]} rotationY={EAST - 0.3} bend={0.32 + tug * 0.22} />
+            <Rod position={[heroWalk.position[0] + 0.3 * Math.sin(heroWalk.rotationY), 1.02, heroWalk.position[2] + 0.3 * Math.cos(heroWalk.rotationY)]} rotationY={heroWalk.rotationY} bend={0.32 + tug * 0.22} />
             <Villager position={[-1.0, 0.5, 8.1]} rotationY={WEST + 0.3} walk={0} strain={0.35 + 0.25 * Math.sin(t * 4)} />
             <Rod position={[-1.2, 0.98, 8.1]} rotationY={WEST + 0.3} bend={0.3 + Math.sin(t * 4) * 0.15} />
-            <Villager position={[0.9, 0.5, 7.6 - pull * 1.05]} rotationY={EAST} walk={pull * 1.05} strain={0.4} />
-            <Rod position={[1.15, 0.98, 7.6 - pull * 1.05]} rotationY={EAST} bend={0.35 + Math.cos(t * 3.5) * 0.15} />
+            <Villager position={[0.9, 0.5, 7.2]} rotationY={EAST} walk={0} strain={0.4 + 0.25 * Math.cos(t * 3.5)} />
+            <Rod position={[1.15, 0.98, 7.2]} rotationY={EAST} bend={0.35 + Math.cos(t * 3.5) * 0.15} />
             <Boat position={[2.75, Math.sin(t * 2.8) * 0.05, 10.8]} rotationY={0.22 + Math.sin(t * 2.2) * 0.05} bail={0.35 + 0.3 * Math.sin(t * 5)} />
           </>
         );

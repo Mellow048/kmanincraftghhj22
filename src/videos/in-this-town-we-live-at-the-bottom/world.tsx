@@ -170,11 +170,11 @@ const Mountain: React.FC<{ lit: number }> = ({ lit }) => (
     <Vox kind="mossy" position={[6.4, 5.12, -31.4]} size={[19.5, 0.45, 6.9]} tile={2} />
     <RichMansion position={[6.4, 5.85, -33.2]} lit={lit > 0} />
     <Vox kind="stoneBrick" position={[-9.5, 9.4, -31.6]} size={[5.0, 0.4, 2.4]} />
-    {/* the ladder: rails and rungs, going up out of the top of frame */}
-    <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 6.6, -31.9]} size={[0.12, 13.2, 0.12]} />
-    <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 6.6, -31.9]} size={[0.12, 13.2, 0.12]} />
+    {/* the ladder: rails and rungs, mounted cleanly on front face of cliff spur going up out of the top of frame */}
+    <Vox kind="darkPlanks" position={[LADDER_X - 0.42, 6.6, -27.85]} size={[0.12, 13.2, 0.12]} />
+    <Vox kind="darkPlanks" position={[LADDER_X + 0.42, 6.6, -27.85]} size={[0.12, 13.2, 0.12]} />
     {Array.from({ length: 12 }, (_, i) => (
-      <Vox key={i} kind="darkPlanks" position={[LADDER_X, 0.9 + i * 1.02, -31.9]} size={[0.9, 0.1, 0.1]} castShadow={false} />
+      <Vox key={i} kind="darkPlanks" position={[LADDER_X, 0.9 + i * 1.02, -27.85]} size={[0.9, 0.1, 0.1]} castShadow={false} />
     ))}
     {/* steps cut into the rock at the foot: the first twenty of nine thousand */}
     {Array.from({ length: 12 }, (_, i) => (

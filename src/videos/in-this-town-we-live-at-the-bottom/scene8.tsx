@@ -10,13 +10,13 @@ export const scene8 = storyScene(timing, {
       ...cam.ots({ speaker: room(-0.3, 1.1, -1.5), listener: room(0.9, 1.3, -1.3), back: 1.85, push: 0.78 }),
       zone: "room",
       look: "warm-room",
-      note: "OTS onto Healer stepping reluctantly back while Hero urgently pleads forward.",
+      note: "OTS onto Healer shaking head while Hero urgently pleads forward.",
       stage: (t) => {
         const step = ease(ramp(t, 0, 1.0));
         return (
           <>
-            <Hero position={room(-0.45 + step * 0.25, 0, -1.5)} rotationY={EAST} animation="talk" animDistance={step * 0.3} face="uneasy" headPitch={-0.1} time={t} />
-            <Healer position={room(0.9 + step * 0.15, 0, -1.3)} rotationY={WEST} hmm={0.3 + 0.5 * step} lookAt={room(-0.3, 1.4, -1.5)} />
+            <Hero position={room(-0.35, 0, -1.5)} rotationY={EAST} animation="talk" face="uneasy" headPitch={-0.1} time={t} />
+            <Healer position={room(0.95, 0, -1.3)} rotationY={WEST} hmm={0.3 + 0.5 * step} lookAt={room(-0.3, 1.4, -1.5)} />
           </>
         );
       },

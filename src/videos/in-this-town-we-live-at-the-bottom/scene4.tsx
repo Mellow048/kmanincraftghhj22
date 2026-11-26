@@ -17,7 +17,7 @@ export const scene4 = storyScene(timing, {
           <>
             <Hero position={[0, 0.5, 10.4 - t * 0.9]} rotationY={NORTH} animation="walk" animDistance={t * 1.0} face="laugh" time={t * 1.4} />
             <FishPile position={[0.7, 0.52, 9.0]} n={11} seed={3} />
-            <Villager position={[-1.0, 0.5, 9.2 - t * 0.6]} rotationY={SOUTH} hmm={0.4 + 0.2 * sway} walk={t * 0.9} />
+            <Villager position={[-1.0, 0.5, 9.2 - t * 0.9]} rotationY={NORTH} hmm={0.4 + 0.2 * sway} walk={t * 0.9} />
             <Villager position={[0.9, 0.5, 10.6]} rotationY={EAST} strain={0.3 + 0.2 * sway} kid />
             <Rod position={[1.15, 0.96, 10.6]} rotationY={EAST} bend={0.32 + sway * 0.14} />
           </>
@@ -32,13 +32,13 @@ export const scene4 = storyScene(timing, {
       note: "Crane surges skyward past gazing townsfolk right up to Quartz Mansion terrace where rich kids strut and shrug carelessly.",
       stage: (t) => {
         const turn = ease(ramp(t, 0, 1.3));
-        const kidWalk = walkSegment([5.4, 5.85, -30.4], [6.5, 5.85, -30.4], t, 0, 1.3, { yaw: NORTH });
+        const kidWalk = walkSegment([5.0, 5.85, -30.4], [6.4, 5.85, -30.4], t, 0, 1.3, { endYaw: SOUTH });
         return (
           <>
             <Hero position={[0, 0.5, 10]} rotationY={SOUTH} animation="lookAround" headPitch={-0.5} face="neutral" lookAt={[6, 6.0, -31]} time={t} />
             <Villager position={[-1.1, 0.5, 9.4]} rotationY={NORTH} hmm={0.3 + turn * 0.2} />
             <RichKid {...kidWalk} face="blank" time={t} />
-            <RichKid position={[7.4 - turn * 0.8, 5.85, -30.6]} rotationY={NORTH} animation="shrug" face="blank" time={t} />
+            <RichKid position={[7.2, 5.85, -30.6]} rotationY={SOUTH} animation="shrug" face="blank" time={t} />
           </>
         );
       },
@@ -70,7 +70,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => {
         const resolve = tw(t, 0.35, 1.0);
         return (
-          <Hero position={[0, 0.5, 10.6 - resolve * 0.2]} rotationY={NORTH} animation={resolve > 0.5 ? "point" : "idle"} headPitch={-0.55} face={resolve > 0.5 ? "brave" : "uneasy"} lookAt={[2, 30, -31]} time={t} />
+          <Hero position={[0, 0.5, 10.6]} rotationY={NORTH} animation={resolve > 0.5 ? "point" : "idle"} headPitch={-0.55} face={resolve > 0.5 ? "brave" : "uneasy"} lookAt={[2, 30, -31]} time={t} />
         );
       },
     },

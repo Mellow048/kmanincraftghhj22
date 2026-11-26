@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, walkSegment } from "../../engine";
 import { Basket, FishPile, Hero, Jar, JETTY_CROWD, Keeper, Line, NORTH, Rod, SOUTH, Villager, ease, ramp, timing } from "./kit";
 
 export const scene16 = storyScene(timing, {
@@ -53,13 +53,16 @@ export const scene16 = storyScene(timing, {
       zone: "bottom",
       look: "overworld-rain",
       note: "Wooden basket drops swinging right onto planks with Keeper standing upright as Hero rushes closer.",
-      stage: (t) => (
-        <>
-          <Basket position={[0, 0.5 + 0.08 * Math.sin(t * 3.2), 15]} rope={2.4 + 0.08 * Math.sin(t * 3.2 + 1)} swing={Math.sin(t * 3) * 0.35} />
-          <Keeper position={[0, 0.5 + 0.08 * Math.sin(t * 3.2), 15]} rotationY={SOUTH} animation="talk" face="blank" time={t} />
-          <Hero position={[0.2, 0.5, 12.2 + ease(ramp(t, 0, 1.2)) * 0.6]} rotationY={NORTH} animation="walk" animDistance={t * 0.9} face="surprised" headPitch={-0.2} time={t} />
-        </>
-      ),
+      stage: (t) => {
+        const heroWalk = walkSegment([0.2, 0.5, 11.8], [0.2, 0.5, 13.0], t, 0, 1.2);
+        return (
+          <>
+            <Basket position={[0, 0.5 + 0.08 * Math.sin(t * 3.2), 15]} rope={2.4 + 0.08 * Math.sin(t * 3.2 + 1)} swing={Math.sin(t * 3) * 0.35} />
+            <Keeper position={[0, 0.5 + 0.08 * Math.sin(t * 3.2), 15]} rotationY={SOUTH} animation="talk" face="blank" time={t} />
+            <Hero {...heroWalk} face="surprised" headPitch={-0.2} time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "16.year",

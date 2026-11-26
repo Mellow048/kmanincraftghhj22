@@ -30,17 +30,17 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.hook",
-      ...cam.push({ on: [-1.4, 1.15, 0], dist: 4.5, to: 3.1, yaw: -24, pitch: 8, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-1.8, 1.15, 0], dist: 6.2, to: 4.8, yaw: -16, pitch: 12, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Frame-1 bright SMP hook: Toby sprints east out onto his half-finished oak bridge over the deep canyon river clutching an oak plank.",
+      note: "Frame-1 bright SMP hook: wide bridge view as Toby sprints east out over the deep canyon river clutching an oak plank.",
       stage: (t) => {
-        const tobyWalk = walkSegment([-3.0, 0.1, 0], [-0.9, 0.1, 0], t, 0, Math.max(0.5, CUT_STOPPED - 0.1), { gait: "run", yaw: EAST });
+        const tobyWalk = walkSegment([-3.1, 0.1, 0], [-0.95, 0.1, 0], t, 0, Math.max(0.5, CUT_STOPPED - 0.1), { gait: "run" });
         return (
           <>
             <CanyonBridge mode="half" />
             <WaitSign position={[-2.75, 0, 1.45]} rotationY={0.45} />
-            <ServerPlayer {...tobyWalk} role="hero" nameTag="Toby" nameTagYaw={-0.35} face="brave" time={t}>
+            <ServerPlayer {...tobyWalk} role="hero" nameTag="Toby" face="brave" time={t}>
               <OakPlankItem position={[0, 0.15, 0.25]} />
             </ServerPlayer>
           </>
@@ -50,7 +50,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.hook",
       cut: CUT_STOPPED,
-      ...cam.orbit({ on: [-0.7, 1.15, 0], dist: 3.6, distTo: 2.5, yaw: -16, yawTo: 22, pitch: 10, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-1.0, 1.15, 0], dist: 5.0, distTo: 3.9, yaw: -16, yawTo: 22, pitch: 10, fov: 44 }),
       zone: "server",
       look: "overworld-sunset",
       note: "Toby halts abruptly at the plank edge above the open canyon, turns back, and disconnects cleanly as a gold server logoff toast pops.",
@@ -63,27 +63,26 @@ export const scene1 = storyScene(timing, {
             <WaitSign position={[-2.75, 0, 1.45]} rotationY={0.45} />
             {!gone ? (
               <ServerPlayer
-                position={[-0.9, 0.1, 0]}
+                position={[-0.95, 0.1, 0]}
                 rotationY={EAST - turn * Math.PI}
                 role="hero"
                 nameTag="Toby"
-                nameTagYaw={0.2}
                 animation="idle"
                 face="calm"
                 time={t}
               />
             ) : null}
-            <ChatToast sender="Server" text="Toby left the game" position={[-0.8, 2.35, -0.4]} height={0.22 * pop(t, 1.05)} />
+            <ChatToast sender="Server" text="Toby left the game" position={[-0.95, 2.35, -0.4]} height={0.22 * pop(t, 1.05)} />
           </>
         );
       },
     },
     {
       cue: "1.stat",
-      ...cam.crane({ on: [-0.2, 0.4, 0], onTo: [0.3, -1.2, 0], dist: 5.2, toDist: 3.9, yaw: 14, fromPitch: 10, toPitch: 28, fov: 46, screenOffset: [0, 0.08] }),
+      ...cam.crane({ on: [0, 0.4, 0], onTo: [0.3, -1.0, 0], dist: 6.4, toDist: 5.0, yaw: 14, fromPitch: 12, toPitch: 28, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Crane drops slightly over the jagged west plank lip revealing the sheer drop straight down to the canyon river below.",
+      note: "Wide crane over the jagged west plank lip revealing the sheer drop straight down to the canyon river below.",
       stage: (t) => (
         <>
           <CanyonBridge mode="half" />
@@ -95,12 +94,12 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.stat",
       cut: CUT_SHY,
-      ...cam.push({ on: [0.1, 0.45, 0], dist: 4.1, to: 2.6, yaw: -20, pitch: 18, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: [0.1, 0.65, 0], dist: 5.0, to: 3.7, yaw: -20, pitch: 18, fov: 44 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Tight push straight into the empty single-block center gap just shy of the midpoint while Rex peeks mocking from the cliff.",
+      note: "Clear view across the single-block center gap just shy of midpoint while Rex walks up mocking from the cliff.",
       stage: (t) => {
-        const rexWalk = walkSegment([-4.4, 0, -1.2], [-3.1, 0, -0.9], t, 0, 1.2, { yaw: EAST });
+        const rexWalk = walkSegment([-4.4, 0, -1.2], [-3.1, 0, -0.9], t, 0, 1.2);
         return (
           <>
             <CanyonBridge mode="half" />
@@ -112,16 +111,16 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.mock",
-      ...cam.orbit({ on: [-6.4, 1.35, -3.2], dist: 5.0, distTo: 3.6, yaw: -18, yawTo: 18, pitch: 8, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-6.4, 1.35, -3.2], dist: 5.8, distTo: 4.5, yaw: -14, yawTo: 16, pitch: 8, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Spawn scoreboard wall reads BRIDGES: 0 while two mocking players walk past pointing and laughing.",
+      note: "Spawn scoreboard wall reads BRIDGES FINISHED clearly while mocking players walk past pointing and laughing.",
       stage: (t) => {
-        const mockWalk = walkSegment([-8.0, 0, -1.6], [-5.4, 0, -1.8], t, 0, 1.4, { yaw: EAST });
+        const mockWalk = walkSegment([-8.0, 0, -1.6], [-5.4, 0, -1.8], t, 0, 1.4, { endYaw: EAST });
         return (
           <>
             <CanyonBridge mode="half" />
-            <ScoreboardWall title="BRIDGES FINISHED" rows={[{ label: "TOBY", value: 0, color: "#ff5544" }, { label: "REX", value: 4, color: "#ffd84f" }]} position={[-6.4, 0, -3.6]} rotationY={0.25} />
+            <ScoreboardWall title="BRIDGES FINISHED" rows={[{ label: "TOBY", value: 0, color: "#ff5544" }, { label: "REX", value: 4, color: "#ffd84f" }]} position={[-6.4, 0, -3.6]} rotationY={0.18} />
             <ServerPlayer {...mockWalk} role="bully" nameTag="Rex" face="laugh" time={t} />
             <ServerPlayer position={[-4.9, 0, -2.5]} rotationY={WEST + 0.3} role="friendA" nameTag="Alex" animation="laugh" face="laugh" time={t} />
           </>
@@ -131,12 +130,12 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.mock",
       cut: CUT_SCARED,
-      ...cam.push({ on: [-4.2, 1.35, -0.4], dist: 4.3, to: 2.9, yaw: 18, pitch: 6, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-4.2, 1.35, -0.4], dist: 5.2, to: 3.9, yaw: 18, pitch: 6, fov: 44 }),
       zone: "server",
       look: "overworld-sunset",
-      note: "Floating 3D ServerChatBox pops mockery lines above Rex while Toby trudges back quietly down the cobble path.",
+      note: "Floating 3D ServerChatBox pops mockery lines above Rex while Toby walks quietly back down the cobble lane.",
       stage: (t) => {
-        const tobyBack = walkSegment([-3.1, 0, 0.2], [-4.8, 0, 0.4], t, 0, 1.3, { yaw: WEST });
+        const tobyBack = walkSegment([-3.1, 0, 0.2], [-4.8, 0, 0.4], t, 0, 1.3);
         return (
           <>
             <CanyonBridge mode="half" />
@@ -149,12 +148,12 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.loop",
-      ...cam.orbit({ on: [-3.0, 1.15, 0.5], dist: 4.4, distTo: 3.1, yaw: 24, yawTo: -12, pitch: 8, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-3.0, 1.15, 0.5], dist: 5.4, distTo: 4.1, yaw: 24, yawTo: -12, pitch: 8, fov: 44 }),
       zone: "server",
       look: "overworld-golden",
       note: "Open-loop promise: the crowned Owner strides up to the cliff edge sign, badge ! popping above his crown.",
       stage: (t) => {
-        const ownerWalk = walkSegment([-5.2, 0, 0.8], [-3.4, 0, 0.9], t, 0, 1.25, { yaw: EAST });
+        const ownerWalk = walkSegment([-5.2, 0, 0.8], [-3.4, 0, 0.9], t, 0, 1.25);
         return (
           <>
             <CanyonBridge mode="half" />
@@ -167,7 +166,7 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.loop",
       cut: CUT_SIGN,
-      ...cam.truck({ on: [-4.8, 1.1, 0.2], by: [2.2, 0, 0], dist: 4.9, yaw: 14, pitch: 8, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.truck({ on: [-4.8, 1.1, 0.2], by: [2.2, 0, 0], dist: 5.8, yaw: 14, pitch: 10, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
       note: "Fast preview flash of the whole server crowd sprinting past with golden oak planks in hand.",

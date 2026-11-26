@@ -502,6 +502,32 @@ export { MinecraftAvatar } from './src/engine/MinecraftAvatar';`,
   });
   assert.deepEqual(cleanWalks.unfinished, []);
 
+  // F6: Catch sideways/backward walks, standing floor-slides, and blocking World pillars, while allowing planted acting
+  const LampPost = () => null;
+  const sideAndSlide = directionReport({
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    World: () => createElement(Zone, { name: 'town' }, createElement(LampPost, { position: [0, 0, 2] })),
+    scenes: [{
+      id: 's1',
+      duration: 3,
+      shots: [
+        { cue: '1.a', zone: 'town', from: [0, 1.4, 5], to: [0.6, 1.4, 4.4], target: [0, 1.2, 0], at: 0, dur: 1 },
+        { cue: '1.b', zone: 'town', from: [0, 1.4, 5], to: [0.6, 1.4, 4.4], target: [0, 1.2, 0], at: 1, dur: 1 },
+        { cue: '1.c', zone: 'town', from: [2, 1.4, 5], to: [2, 1.4, 3.8], target: [2, 1.2, 0], at: 2, dur: 1 },
+      ],
+      sampleStage: (i, t) => i === 0
+        ? createElement(Hero, { position: [0, 0, -t * 1.5], rotationY: Math.PI / 2, animation: 'walk', animDistance: t * 1.5, time: t })
+        : i === 1
+          ? createElement(Hero, { position: [t * 0.4, 0, 0], rotationY: 0, animation: 'shrug', time: t })
+          : createElement(Hero, { position: [2, 0, 0], rotationY: 0, animation: 'wave', time: t }),
+    }],
+  });
+  assert.match(sideAndSlide.unfinished.join('\n'), /walks sideways\/backwards/);
+  assert.match(sideAndSlide.unfinished.join('\n'), /slides 0\.3\dm while in standing pose "shrug"/);
+  assert.match(sideAndSlide.unfinished.join('\n'), /Camera ray blocked by World <LampPost>/);
+  assert.equal(sideAndSlide.unfinished.filter(m => m.includes('[1.c]')).length, 0);
+
   const collisions = directionReport({
     fps: 30,
     captions: { motion: 'on-beat' },

@@ -33,10 +33,10 @@ export const scene7 = storyScene(timing, {
   shots: [
     {
       cue: "7.friday",
-      ...cam.push({ on: on(PLACE.irl, -1.9, 1.0, -1.75), dist: 2.3, to: 1.4, yaw: 16, pitch: 4, fov: 36, screenOffset: [0, 0.06] }),
+      ...cam.push({ on: on(PLACE.irl, -1.9, 1.0, -1.55), dist: 3.2, to: 2.2, yaw: 16, pitch: 6, fov: 40 }),
       zone: "irl",
       look: "warm-room",
-      note: "Tight push onto digital bedside clock ringing 6:00 PM as Friday evening arrives.",
+      note: "Push onto digital bedside clock ringing FRI 6:00 PM as Toby hears the chime.",
       stage: (t) => (
         <>
           <Clock3AM text="FRI 6:00 PM" alarm={0.55 + 0.45 * Math.sin(t * 14)} color="#ffd84f" position={on(PLACE.irl, -1.9, 0.8, -1.75)} rotationY={0.28} scale={0.78} />
@@ -47,12 +47,12 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.friday",
       cut: CUT_MAYA,
-      ...cam.push({ on: [1.6, 1.25, 0], dist: 3.9, to: 2.55, yaw: -20, pitch: 6, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [1.6, 1.25, 0], dist: 5.2, to: 4.0, yaw: -20, pitch: 8, fov: 44 }),
       zone: "server",
       look: "lantern-night",
-      note: "Maya joins onto the newly lit East bridge half carrying her oak plank, looking joyfully across the gap.",
+      note: "Maya joins onto the newly lit East bridge half carrying her oak plank, walking across toward center.",
       stage: (t) => {
-        const mayaWalk = walkSegment([2.6, 0.1, 0], [1.0, 0.1, 0], t, 0, 1.15, { yaw: WEST });
+        const mayaWalk = walkSegment([2.8, 0.1, 0], [1.0, 0.1, 0], t, 0, 1.15);
         return (
           <>
             <CanyonBridge mode="open-center" lampsLit={0.45} />
@@ -66,12 +66,12 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.join",
-      ...cam.orbit({ on: [-1.4, 1.25, 0], dist: 4.1, distTo: 2.75, yaw: 24, yawTo: -16, pitch: 6, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-1.4, 1.25, 0], dist: 5.4, distTo: 4.1, yaw: 24, yawTo: -16, pitch: 8, fov: 44 }),
       zone: "server",
       look: "lantern-night",
       note: "Toby spawns onto the West bridge half bursting into happy tears at the sight of the glowing tribute.",
       stage: (t) => {
-        const tobyWalk = walkSegment([-2.5, 0.1, 0], [-1.0, 0.1, 0], t, 0, 1.2, { yaw: EAST });
+        const tobyWalk = walkSegment([-2.7, 0.1, 0], [-1.0, 0.1, 0], t, 0, 1.2);
         return (
           <>
             <CanyonBridge mode="open-center" lampsLit={0.5} />
@@ -86,10 +86,10 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.join",
       cut: CUT_CRYING,
-      ...cam.crane({ on: [0, 1.1, 0], onTo: [0, 1.8, 0], dist: 6.8, toDist: 5.0, yaw: -18, fromPitch: 8, toPitch: 18, fov: 46, screenOffset: [0, 0.08] }),
+      ...cam.crane({ on: [0, 1.15, 0], onTo: [0, 1.85, 0], dist: 8.2, toDist: 6.2, yaw: -18, fromPitch: 10, toPitch: 20, fov: 48 }),
       zone: "server",
       look: "lantern-night",
-      note: "Crane climbs past Toby and Maya facing each other as the entire server crowd watches cheering along both cliffs.",
+      note: "Wide crane climbs past Toby and Maya facing each other as the entire server crowd watches cheering along both cliffs.",
       stage: (t) => (
         <>
           <CanyonBridge mode="open-center" lampsLit={0.55} />
@@ -108,13 +108,13 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.place",
-      ...cam.push({ on: [0, 0.9, 0], dist: 4.1, to: 2.7, yaw: 20, pitch: 10, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0, 1.0, 0], dist: 5.4, to: 4.1, yaw: 18, pitch: 10, fov: 44 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Toby and Maya step to the dead center edge together reaching forward with matching oak blocks.",
+      note: "Toby and Maya walk to the dead center edge together reaching forward with matching oak blocks.",
       stage: (t) => {
-        const wT = walkSegment([-1.2, 0.1, 0], [-0.55, 0.1, 0], t, 0, 0.9, { yaw: EAST });
-        const wM = walkSegment([1.2, 0.1, 0], [0.55, 0.1, 0], t, 0, 0.9, { yaw: WEST });
+        const wT = walkSegment([-1.6, 0.1, 0], [-0.55, 0.1, 0], t, 0, 0.9);
+        const wM = walkSegment([1.6, 0.1, 0], [0.55, 0.1, 0], t, 0, 0.9);
         return (
           <>
             <CanyonBridge mode="open-center" lampsLit={0.6} />
@@ -131,11 +131,11 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.place",
       cut: CUT_INTO,
-      ...cam.orbit({ on: [0, 0.75, 0], dist: 2.9, distTo: 1.95, yaw: 18, yawTo: -18, pitch: 12, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [0, 0.9, 0], dist: 4.4, distTo: 3.3, yaw: 18, yawTo: -18, pitch: 12, fov: 44 }),
       impacts: [{ at: 0.35, amp: 0.04, dur: 0.25 }],
       zone: "server",
       look: "overworld-golden",
-      note: "Tight center orbit as the keystone center oak block snaps seamlessly into place joining both halves.",
+      note: "Clear center orbit framing both siblings as the keystone oak block snaps cleanly into place.",
       stage: (t) => {
         const snap = ease(ramp(t, 0, 0.45));
         return (
@@ -149,45 +149,38 @@ export const scene7 = storyScene(timing, {
     },
     {
       cue: "7.glow",
-      ...cam.orbit({ on: [0, 1.3, 0], dist: 5.2, distTo: 3.7, yaw: -28, yawTo: 20, pitch: 8, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [0, 1.35, 0], dist: 6.8, distTo: 5.0, yaw: -28, yawTo: 20, pitch: 10, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Golden RedstoneLamps blaze from cliff to cliff as Toby and Maya step together cheering under rising voxel hearts.",
-      stage: (t) => {
-        const stepT = walkSegment([-0.85, 0.1, 0], [-0.45, 0.1, 0], t, 0, 0.75, { yaw: EAST });
-        const stepM = walkSegment([0.85, 0.1, 0], [0.45, 0.1, 0], t, 0, 0.75, { yaw: WEST });
-        return (
-          <>
-            <CanyonBridge mode="complete" lampsLit={1} />
-            <ServerPlayer {...stepT} role="hero" nameTag="Toby" badge="heart" badgePopStart={0.1} headPitch={-0.14 * ease(ramp(t, 0.2, 0.9))} face="happy" time={t} />
-            <ServerPlayer {...stepM} role="friendC" nameTag="Maya" badge="heart" badgePopStart={0.1} headPitch={-0.14 * ease(ramp(t, 0.2, 0.9))} face="happy" time={t} />
-            <FloatingHeart position={[0, 1.3, 0]} count={8} t={t} />
-          </>
-        );
-      },
+      note: "Golden RedstoneLamps blaze cliff-to-cliff while Toby and Maya stand cheering together under rising voxel hearts.",
+      stage: (t) => (
+        <>
+          <CanyonBridge mode="complete" lampsLit={1} />
+          <ServerPlayer position={[-0.55, 0.1, 0]} rotationY={EAST} role="hero" nameTag="Toby" badge="heart" badgePopStart={0.1} animation="cheer" face="happy" time={t} />
+          <ServerPlayer position={[0.55, 0.1, 0]} rotationY={WEST} role="friendC" nameTag="Maya" badge="heart" badgePopStart={0.1} animation="cheer" face="happy" time={t} />
+          <FloatingHeart position={[0, 1.3, 0]} count={8} t={t} />
+        </>
+      ),
     },
     {
       cue: "7.glow",
       cut: CUT_HEARTS,
-      ...cam.push({ on: [-5.8, 1.45, -3.4], dist: 4.1, to: 2.55, yaw: -16, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-5.8, 1.45, -3.4], dist: 5.4, to: 3.9, yaw: -12, pitch: 4, fov: 44 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Callback payoff: Spawn ScoreboardWall flips TOBY from 0 straight to 1 in glowing gold as Owner walks up cheering.",
-      stage: (t) => {
-        const ownerStep = walkSegment([-5.55, 0, -2.0], [-4.85, 0, -2.25], t, 0, 0.95, { yaw: EAST - 0.2 });
-        return (
-          <>
-            <CanyonBridge mode="complete" lampsLit={1} />
-            <ScoreboardWall title="BRIDGES FINISHED" rows={[{ label: "ALEX", value: 7, color: "#68f08a" }, { label: "REX", value: 4, color: "#ffd84f" }, { label: "TOBY", value: 1, color: "#ffd84f" }]} position={[-6.4, 0, -3.6]} rotationY={0.22} />
-            <ServerPlayer {...ownerStep} role="owner" nameTag="Owner" crown headPitch={-0.12 * Math.abs(Math.sin(t * 3))} face="happy" time={t} />
-            <FloatingHeart position={[-6.1, 1.8, -3.0]} count={6} t={t} />
-          </>
-        );
-      },
+      note: "Clear unobstructed ScoreboardWall flips TOBY straight to 1 in glowing gold beside cheering Owner.",
+      stage: (t) => (
+        <>
+          <CanyonBridge mode="complete" lampsLit={1} />
+          <ScoreboardWall title="BRIDGES FINISHED" rows={[{ label: "ALEX", value: 7, color: "#68f08a" }, { label: "REX", value: 4, color: "#ffd84f" }, { label: "TOBY", value: 1, color: "#ffd84f" }]} position={[-6.4, 0, -3.6]} rotationY={0.18} />
+          <ServerPlayer position={[-4.9, 0, -2.2]} rotationY={SOUTH - 0.3} role="owner" nameTag="Owner" crown animation="cheer" face="happy" time={t} />
+          <FloatingHeart position={[-6.1, 1.8, -3.0]} count={6} t={t} />
+        </>
+      ),
     },
     {
       cue: "7.cta",
-      ...cam.push({ on: [0, 1.25, 0], dist: 4.5, to: 3.15, yaw: 14, pitch: 6, fov: 42, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0, 1.35, 0], dist: 6.2, to: 4.5, yaw: 14, pitch: 8, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
       note: "Warm golden finale: Toby and Maya stand together at the glowing bridge center beside Owner & SubscribeSign.",

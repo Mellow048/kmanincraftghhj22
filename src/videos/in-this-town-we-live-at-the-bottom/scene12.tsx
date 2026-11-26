@@ -40,13 +40,13 @@ export const scene12 = storyScene(timing, {
       ...cam.push({ on: [0.9, 1.4, -8.8], dist: 3.8, to: 2.35, yaw: -20, pitch: -2, fov: 36, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Hero lifts jaw firmly clutching packed jar onto shoulder stepping toward first rung.",
+      note: "Hero lifts jaw firmly clutching packed jar onto shoulder beside first rung.",
       stage: (t) => {
         const step = tw(t, 0.5, 1.5);
         return (
           <>
-            <Hero position={[0.9, 0, -8.8 - step * 0.35]} rotationY={SOUTH} animation={t < 1.0 ? "talk" : "reach"} animDistance={step * 0.4} face={step > 0.5 ? "brave" : "sad"} time={t} />
-            <Jar position={[1.35, 0.85 + step * 0.15, -9.0 - step * 0.35]} fill={1} scale={0.9} />
+            <Hero position={[0.9, 0, -8.8]} rotationY={SOUTH} animation={t < 1.0 ? "talk" : "reach"} face={step > 0.5 ? "brave" : "sad"} time={t} />
+            <Jar position={[1.35, 0.85 + step * 0.22, -9.0]} fill={1} scale={0.9} />
           </>
         );
       },

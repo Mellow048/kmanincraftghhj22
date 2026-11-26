@@ -88,17 +88,17 @@ export const scene3 = storyScene(timing, {
       ...cam.orbit({ on: [0, 1.0, 8.8], dist: 8.6, distTo: 5.5, yaw: -22, yawTo: 28, pitch: 14, fov: 46, screenOffset: [0, 0.05] }),
       zone: "bottom",
       look: "overworld-rain",
-      note: "Driving rain across jetty as Hero & 3 villagers step forward yanking heavily bent Rods with bobbing lines together.",
+      note: "Driving rain across jetty as Hero & 3 villagers brace firmly yanking heavily bent Rods with bobbing lines together.",
       stage: (t) => (
         <>
-          <Hero position={[-0.1, 0.5, 9.6 - t * 0.6]} rotationY={EAST - 0.2} animation="push" animDistance={t * 0.9} face="grin" time={t * 1.5} />
-          <Rod position={[0.2, 0.98, 9.6 - t * 0.6]} rotationY={EAST - 0.2} bend={0.55 + Math.sin(t * 8) * 0.16} />
+          <Hero position={[-0.1, 0.5, 9.4]} rotationY={EAST - 0.2} animation="push" face="grin" time={t * 1.5} />
+          <Rod position={[0.2, 0.98, 9.4]} rotationY={EAST - 0.2} bend={0.55 + Math.sin(t * 8) * 0.16} />
           {[[-1.1, 7.6], [0.9, 8.2], [-1.0, 11.0]].map(([x, z], i) => {
             const ry = x < 0 ? WEST + 0.1 : EAST - 0.1;
             return (
               <group key={i}>
-                <Villager position={[x, 0.5, z - t * 0.35]} rotationY={ry} strain={0.55 + 0.25 * Math.sin(t * 6 + i)} walk={t * 1.1} />
-                <Rod position={[x + (x < 0 ? -0.22 : 0.22), 0.96, z - t * 0.35]} rotationY={ry} bend={0.48 + Math.sin(t * 7 + i) * 0.14} />
+                <Villager position={[x, 0.5, z]} rotationY={ry} strain={0.55 + 0.25 * Math.sin(t * 6 + i)} walk={0} />
+                <Rod position={[x + (x < 0 ? -0.22 : 0.22), 0.96, z]} rotationY={ry} bend={0.48 + Math.sin(t * 7 + i) * 0.14} />
               </group>
             );
           })}

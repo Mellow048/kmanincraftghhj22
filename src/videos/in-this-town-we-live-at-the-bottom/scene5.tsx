@@ -1,4 +1,4 @@
-import { cam, storyScene } from "../../engine";
+import { cam, storyScene, walkSegment } from "../../engine";
 import { EAST, Hero, Jar, Mum, NORTH, SOUTH, Villager, WEST, ease, ramp, timing } from "./kit";
 
 export const scene5 = storyScene(timing, {
@@ -7,7 +7,7 @@ export const scene5 = storyScene(timing, {
   shots: [
     {
       cue: "5.mum",
-      ...cam.push({ on: [-0.4, 1.32, -1.7], dist: 4.0, to: 2.6, yaw: -16, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-0.4, 1.32, -1.7], dist: 4.3, to: 3.1, yaw: -16, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
       zone: "room",
       look: "warm-room",
       note: "Mum gently lifts savings jar straight out of Hero's hands and places it cleanly back up on timber shelf.",
@@ -15,8 +15,8 @@ export const scene5 = storyScene(timing, {
         const back = ease(ramp(t, 0.2, 1.15));
         return (
           <>
-            <Mum position={[-1.0, 0, -1.9 - back * 0.25]} rotationY={EAST} animation={back < 0.7 ? "hold" : "reach"} face="worried" headPitch={0.12} lookAt={[0.1, 1.2, -1.8]} time={t} />
-            <Hero position={[0.35 + back * 0.18, 0, -1.8]} rotationY={WEST} animation={back < 0.6 ? "reach" : "shrug"} face="frown" headPitch={0.1} time={t} />
+            <Mum position={[-1.0, 0, -1.9]} rotationY={EAST} animation={back < 0.7 ? "hold" : "reach"} face="worried" headPitch={0.12} lookAt={[0.1, 1.2, -1.8]} time={t} />
+            <Hero position={[0.35, 0, -1.8]} rotationY={WEST} animation={back < 0.6 ? "reach" : "shrug"} face="frown" headPitch={0.1} time={t} />
             <Jar position={[-0.6, 1.1 + back * 0.2, -2.0 - back * 0.6]} fill={0.45} />
           </>
         );
@@ -24,33 +24,32 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "5.old",
-      ...cam.orbit({ on: [1.3, 1.35, -9.8], dist: 4.1, distTo: 2.85, yaw: -12, yawTo: 26, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [1.3, 1.35, -9.8], dist: 4.4, distTo: 3.2, yaw: -12, yawTo: 26, pitch: 4, fov: 42, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-day",
-      note: "Elder fisherman steps slowly back from wooden ladder shaking wide-hatted head as Hero pleads forward.",
-      stage: (t) => {
-        const step = ease(ramp(t, 0, 1.2));
-        return (
-          <>
-            <Villager position={[1.0, 0, -10.0 + step * 0.25]} rotationY={SOUTH} hmm={0.5 + 0.5 * Math.sin(t * 4)} walk={step * 0.3} hat="wide" />
-            <Hero position={[2.1 - step * 0.3, 0, -9.2 - step * 0.2]} rotationY={-0.6} animation="talk" face="uneasy" time={t} />
-          </>
-        );
-      },
+      note: "Elder fisherman shakes wide-hatted head beside the wooden ladder while Hero pleads urgently.",
+      stage: (t) => (
+        <>
+          <Villager position={[1.0, 0, -10.0]} rotationY={SOUTH} hmm={0.5 + 0.5 * Math.sin(t * 4)} walk={0} hat="wide" />
+          <Hero position={[2.0, 0, -9.2]} rotationY={-0.6} animation="talk" face="uneasy" time={t} />
+        </>
+      ),
     },
     {
       cue: "5.two",
       ...cam.orbit({ on: [6.4, 7.1, -31.0], dist: 7.8, distTo: 5.4, yaw: -24, yawTo: 22, pitch: -2, fov: 42 }),
       zone: "bottom",
       look: "overworld-golden",
-      note: "Two wealthy families promenade along golden Quartz Mansion balcony waving condescendingly downward.",
+      note: "Two wealthy families stroll along golden Quartz Mansion balcony waving condescendingly downward.",
       stage: (t) => {
         const wave = Math.sin(t * 4.5);
+        const w1 = walkSegment([4.5, 5.85, -30.5], [5.8, 5.85, -30.5], t, 0, 2.2);
+        const w2 = walkSegment([7.8, 5.85, -30.7], [6.5, 5.85, -30.7], t, 0, 2.2);
         return (
           <>
-            <Villager position={[4.8 + t * 0.65, 5.85, -30.5]} rotationY={SOUTH} hat="straw" walk={t * 0.9} hmm={0.2 * wave} robe="#f2f2ee" />
+            <Villager position={w1.position} rotationY={w1.rotationY} hat="straw" walk={w1.animDistance} hmm={0.2 * wave} lookAt={[6, 2, -20]} robe="#f2f2ee" />
             <Villager position={[6.0, 5.85, -30.3]} rotationY={SOUTH} strain={0.4 + 0.3 * Math.abs(wave)} kid robe="#f0e8d0" />
-            <Villager position={[7.3 - t * 0.55, 5.85, -30.7]} rotationY={SOUTH} walk={t * 0.8} robe="#7a5a44" />
+            <Villager position={w2.position} rotationY={w2.rotationY} walk={w2.animDistance} lookAt={[6, 2, -20]} robe="#7a5a44" />
             <Villager position={[8.0, 5.85, -30.4]} rotationY={SOUTH} strain={0.3 + 0.2 * wave} kid robe="#f0e8d0" />
           </>
         );

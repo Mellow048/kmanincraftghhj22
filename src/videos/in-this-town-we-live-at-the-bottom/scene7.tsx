@@ -45,17 +45,14 @@ export const scene7 = storyScene(timing, {
       ...cam.push({ on: room(-2.3, 1.15, -2.2), dist: 3.8, to: 2.25, yaw: 12, pitch: 8, fov: 36, screenOffset: [0, 0.08] }),
       zone: "room",
       look: "warm-room",
-      note: "Hero pulls GoldenApple idol and shiny gold Coin closer off shelf trembling at eight-gold price.",
-      stage: (t) => {
-        const reach = ease(ramp(t, 0, 1.1));
-        return (
-          <>
-            <Hero position={room(-1.9 - reach * 0.15, 0, -1.5 - reach * 0.35)} rotationY={WEST} animation="reach" animDistance={reach * 0.4} face="surprised" headPitch={0.25} time={t} />
-            <GoldenApple position={room(-2.4, 1.32, -2.3)} scale={0.9 + Math.sin(t * 3) * 0.06} rotationY={0.8 + t * 0.8} />
-            <Coin position={room(-2.05, 1.32, -2.2)} spin={t * 4} />
-          </>
-        );
-      },
+      note: "Dark cramped shelf corner where Hero stands reaching toward single glowing GoldenApple beside wooden counter.",
+      stage: (t) => (
+        <>
+          <Hero position={room(-2.0, 0, -1.7)} rotationY={WEST} animation="reach" face="surprised" headPitch={0.25} time={t} />
+          <GoldenApple position={room(-2.4, 1.32, -2.3)} scale={0.9 + Math.sin(t * 3) * 0.06} rotationY={0.8 + t * 0.8} />
+          <Coin position={room(-2.05, 1.32, -2.2)} spin={t * 4} />
+        </>
+      ),
     },
     {
       cue: "7.gold",

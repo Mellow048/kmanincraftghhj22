@@ -27,7 +27,7 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "6.ping",
-      ...cam.push({ on: [-3.8, 1.3, 0.3], dist: 3.7, to: 2.35, yaw: -22, pitch: 4, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-3.8, 1.35, 0.3], dist: 4.8, to: 3.5, yaw: -22, pitch: 6, fov: 44 }),
       zone: "server",
       look: "overworld-day",
       note: "Bright morning sunlight breaks as Owner types an urgent everyone ping in 3D ServerChatBox.",
@@ -42,7 +42,7 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.flood",
-      ...cam.orbit({ on: [-7.2, 1.4, -1.5], dist: 5.5, distTo: 3.9, yaw: -26, yawTo: 18, pitch: 10, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [-7.2, 1.4, -1.5], dist: 6.4, distTo: 4.8, yaw: -26, yawTo: 18, pitch: 10, fov: 46 }),
       zone: "server",
       look: "overworld-day",
       note: "Flood of joined the game toasts pops across Spawn as players pour out of huts together.",
@@ -75,10 +75,10 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.flood",
       cut: CUT_SPRINT,
-      ...cam.truck({ on: [-5.4, 1.0, 0.2], by: [2.4, 0, 0], dist: 4.8, yaw: 12, pitch: 8, fov: 44, screenOffset: [0, 0.08] }),
+      ...cam.truck({ on: [-5.4, 1.1, 0.2], by: [2.4, 0, 0], dist: 5.8, yaw: 12, pitch: 10, fov: 46 }),
       zone: "server",
       look: "overworld-day",
-      note: "Linear lateral track beside 5 sprinting friends carrying golden lamps & oak planks toward the canyon edge.",
+      note: "Linear lateral track beside sprinting friends carrying golden lamps & oak planks toward the canyon edge.",
       stage: (t) => {
         const runD = ease(ramp(t, 0, 1.6)) * 2.6;
         return (
@@ -100,13 +100,13 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.build",
-      ...cam.orbit({ on: [0, 0.9, 0], dist: 5.8, distTo: 4.3, yaw: -28, yawTo: 24, pitch: 14, fov: 46, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [0, 1.0, 0], dist: 7.4, distTo: 5.6, yaw: -28, yawTo: 24, pitch: 16, fov: 48 }),
       zone: "server",
       look: "overworld-day",
-      note: "Sweeping orbit over the canyon as builders lock both oak bridge halves into place from opposite cliffs.",
+      note: "Wide sweeping orbit over both canyon cliffs as builders lock both oak bridge halves into place.",
       stage: (t) => {
-        const w1 = walkSegment([-3.6, 0, -0.6], [-1.5, 0.1, -0.5], t, 0, 1.4, { yaw: EAST });
-        const w2 = walkSegment([3.6, 0, 0.5], [1.5, 0.1, 0.5], t, 0, 1.4, { yaw: WEST });
+        const w1 = walkSegment([-3.6, 0, -0.6], [-1.5, 0.1, -0.5], t, 0, 1.4);
+        const w2 = walkSegment([3.6, 0, 0.5], [1.5, 0.1, 0.5], t, 0, 1.4);
         return (
           <>
             <CanyonBridge mode="open-center" lampsLit={0} />
@@ -124,12 +124,12 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.build",
       cut: CUT_REDSTONE,
-      ...cam.truck({ on: [-1.4, 0.85, -0.9], by: [2.6, 0, 0], dist: 3.6, yaw: 16, pitch: 18, fov: 40, screenOffset: [0, 0.08] }),
+      ...cam.truck({ on: [-1.4, 0.95, -0.7], by: [2.6, 0, 0], dist: 4.8, yaw: 16, pitch: 18, fov: 44 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Low rail track as Owner wires glowing crimson redstone dust lines cleanly into each bridge post lamp.",
+      note: "Bridge rail track as Owner wires glowing crimson redstone dust lines cleanly into each bridge lamp.",
       stage: (t) => {
-        const ownerWalk = walkSegment([-2.5, 0.1, -0.5], [-0.8, 0.1, -0.5], t, 0, 1.4, { yaw: EAST });
+        const ownerWalk = walkSegment([-2.5, 0.1, -0.5], [-0.8, 0.1, -0.5], t, 0, 1.4);
         return (
           <>
             <CanyonBridge mode="open-center" lampsLit={ease(ramp(t, 0.4, 1.4)) * 0.4} />
@@ -140,10 +140,10 @@ export const scene6 = storyScene(timing, {
     },
     {
       cue: "6.gap",
-      ...cam.push({ on: [0, 0.85, 0], dist: 4.5, to: 3.1, yaw: -22, pitch: 12, fov: 42, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [0, 1.0, 0], dist: 5.8, to: 4.2, yaw: -22, pitch: 12, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
-      note: "Push onto Owner and friends halting cleanly opposite the empty single center block.",
+      note: "Readable two-cliff shot as Owner and friends halt cleanly opposite the empty single center block.",
       stage: (t) => (
         <>
           <CanyonBridge mode="open-center" lampsLit={0.35} />
@@ -156,7 +156,7 @@ export const scene6 = storyScene(timing, {
     {
       cue: "6.gap",
       cut: CUT_LEFT,
-      ...cam.orbit({ on: [0, 0.4, 0], dist: 2.8, distTo: 1.85, yaw: -16, yawTo: 24, pitch: 22, fov: 38, screenOffset: [0, 0.06] }),
+      ...cam.orbit({ on: [0, 0.5, 0], dist: 3.9, distTo: 2.8, yaw: -16, yawTo: 24, pitch: 22, fov: 42 }),
       zone: "server",
       look: "overworld-golden",
       note: "Crisp tight orbit right above the single open block gap overlooking the river below.",

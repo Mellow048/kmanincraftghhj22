@@ -13,13 +13,13 @@ export const scene11 = storyScene(timing, {
       look: "overworld-night",
       note: "Whole town gathers along torchlit narrow jetty squeezing inward around confused Hero.",
       stage: (t) => {
-        const crowd = ease(ramp(t, 0, 1.5));
+        const sway = Math.sin(t * 2.5);
         return (
           <>
             {JETTY_CROWD.map(([x, z], i) => (
-              <Villager key={i} position={[x, 0.5, z - crowd * 0.45]} rotationY={NORTH} walk={crowd * 0.6 + i} kid={i % 4 === 0} />
+              <Villager key={i} position={[x, 0.5, z]} rotationY={NORTH} walk={0} hmm={0.25 + 0.15 * Math.sin(t * 3 + i)} kid={i % 4 === 0} />
             ))}
-            <Hero position={[0, 0.5, 12.6 - crowd * 0.4]} rotationY={NORTH} animation="lookAround" face="uneasy" time={t} />
+            <Hero position={[0, 0.5, 12.4]} rotationY={NORTH} animation="lookAround" face="uneasy" headPitch={0.05 * sway} time={t} />
           </>
         );
       },
@@ -29,29 +29,29 @@ export const scene11 = storyScene(timing, {
       ...cam.orbit({ on: [0, 1.3, 11.2], dist: 4.5, distTo: 3.1, yaw: -26, yawTo: 18, pitch: 4, fov: 40, screenOffset: [0, 0.08] }),
       zone: "bottom",
       look: "overworld-night",
-      note: "Hands shoot skyward one by one across jetty crowd as Hero steps back stunned.",
+      note: "Hands shoot skyward one by one across jetty crowd as Hero stares stunned.",
       stage: (t) => (
         <>
           {JETTY_CROWD.slice(0, 5).map(([x, z], i) => (
             <Villager key={i} position={[x, 0.5, z]} rotationY={NORTH} strain={ease(ramp(t, 0.15 + i * 0.1, 0.9 + i * 0.1)) * 0.65} kid={i % 2 === 0} />
           ))}
-          <Hero position={[0.6, 0.5, 11.6 + ease(ramp(t, 0.4, 1.2)) * 0.25]} rotationY={NORTH} animation="lookAround" face="surprised" headPitch={-0.1} time={t} />
+          <Hero position={[0.6, 0.5, 11.7]} rotationY={NORTH} animation="lookAround" face="surprised" headPitch={-0.1} time={t} />
           <LightPool position={[0, 0.52, 10.6]} width={8} depth={7} color="#ffb46b" opacity={0.26} />
         </>
       ),
     },
     {
       cue: "11.mum",
-      ...cam.push({ on: [-0.4, 1.35, 9.4], dist: 3.9, to: 2.5, yaw: 18, pitch: 2, fov: 38, screenOffset: [0, 0.08] }),
+      ...cam.push({ on: [-0.4, 1.35, 9.4], dist: 4.2, to: 2.9, yaw: 18, pitch: 2, fov: 42, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-night",
-      note: "Neighbours step quietly pastHero nodding warmly as tears well on Hero's lowered face.",
+      note: "Neighbours stand nodding warmly beside weeping Hero as tears well on his face.",
       stage: (t) => {
         const step = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <Villager position={[-1.1 + step * 0.2, 0.5, 9.4]} rotationY={SOUTH} hmm={0.4 + 0.3 * step} walk={step * 0.3} />
-            <Villager position={[0.1, 0.5, 9.7 + step * 0.18]} rotationY={SOUTH} hat="straw" walk={step * 0.3} kid />
+            <Villager position={[-1.1, 0.5, 9.4]} rotationY={SOUTH} hmm={0.4 + 0.3 * step} walk={0} />
+            <Villager position={[0.1, 0.5, 9.7]} rotationY={SOUTH} hat="straw" walk={0} hmm={0.25 * step} kid />
             <Hero position={[0.9, 0.5, 10.4]} rotationY={NORTH} animation="cower" face="crying" headPitch={0.1} time={t} />
           </>
         );
@@ -59,7 +59,7 @@ export const scene11 = storyScene(timing, {
     },
     {
       cue: "11.jar",
-      ...cam.orbit({ on: [0, 1.15, 10.6], dist: 3.9, distTo: 2.5, yaw: -22, yawTo: 18, pitch: 10, fov: 36, screenOffset: [0, 0.08] }),
+      ...cam.orbit({ on: [0, 1.15, 10.6], dist: 4.2, distTo: 2.9, yaw: -22, yawTo: 18, pitch: 10, fov: 40, screenOffset: [0, 0.06] }),
       zone: "bottom",
       look: "overworld-night",
       note: "Glowing jar marked THE TOP passes from hand to hand across planks straight into Hero's arms.",
@@ -72,7 +72,7 @@ export const scene11 = storyScene(timing, {
             <group position={[-0.9 + k * 1.35, 1.05, 10.5 - k * 0.15]}>
               <Jar position={[0, 0, 0]} fill={1} />
             </group>
-            <Hero position={[1.15 - k * 0.25, 0.5, 10.6]} rotationY={SOUTH} animation={k > 0.6 ? "hold" : "reach"} face="crying" time={t} />
+            <Hero position={[1.0, 0.5, 10.6]} rotationY={SOUTH} animation={k > 0.6 ? "hold" : "reach"} face="crying" time={t} />
           </>
         );
       },

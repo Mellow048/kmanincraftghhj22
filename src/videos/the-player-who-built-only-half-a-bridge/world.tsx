@@ -53,14 +53,14 @@ export const World: React.FC = () => {
           <Tree key={i} position={on(PLACE.server, x, 0, z)} height={h} leaf={i % 2 ? "#3f7f2d" : "#4d8e35"} />
         ))}
 
-        {/* Warm bridge-head torches & spawn lamp posts */}
-        <Torch position={on(PLACE.server, -2.9, 0, -1.6)} light={night ? 1.9 : 0.7} seed={1} />
-        <Torch position={on(PLACE.server, -2.9, 0, 1.6)} light={night ? 1.9 : 0.7} seed={2} />
-        <Torch position={on(PLACE.server, 2.9, 0, -1.6)} light={night ? 1.6 : 0.5} seed={3} />
-        <Torch position={on(PLACE.server, 2.9, 0, 1.6)} light={night ? 1.6 : 0.5} seed={4} />
-        <LampPost position={on(PLACE.server, -6.2, 0, -2.2)} seed={5} />
+        {/* Warm bridge-head torches & spawn lamp posts (placed clear of Sign & ScoreboardWall lines of sight) */}
+        <Torch position={on(PLACE.server, -2.9, 0, -2.1)} light={night ? 1.9 : 0.7} seed={1} />
+        <Torch position={on(PLACE.server, -2.9, 0, 2.3)} light={night ? 1.9 : 0.7} seed={2} />
+        <Torch position={on(PLACE.server, 2.9, 0, -2.1)} light={night ? 1.6 : 0.5} seed={3} />
+        <Torch position={on(PLACE.server, 2.9, 0, 2.3)} light={night ? 1.6 : 0.5} seed={4} />
+        <LampPost position={on(PLACE.server, -9.2, 0, -3.2)} seed={5} />
         <LampPost position={on(PLACE.server, -10.8, 0, 2.4)} seed={6} />
-        <LampPost position={on(PLACE.server, 5.4, 0, -2.2)} seed={7} />
+        <LampPost position={on(PLACE.server, 5.4, 0, -2.5)} seed={7} />
 
         {/* Lighting & Volumetric Atmosphere */}
         <GodRay position={on(PLACE.server, -2.0, 6.8, -1.2)} rotation={[0, 0, 0.28]} width={5.2} height={13} color={night ? "#8bb6ff" : "#fff1c8"} opacity={night ? 0.08 : 0.14} />

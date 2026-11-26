@@ -49,9 +49,9 @@ export const scene10 = storyScene(timing, {
         const give = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <Hero position={[-1.6 - give * 0.25, 0, -4.6]} rotationY={SOUTH} animation={give < 0.7 ? "reach" : "shrug"} animDistance={give * 0.3} face="frown" time={t} />
+            <Hero position={[-1.6, 0, -4.6]} rotationY={SOUTH} animation={give < 0.7 ? "reach" : "shrug"} face="frown" time={t} />
             <Rod position={[-1.2 - give * 0.9, 1.0, -4.7]} bend={0.1} rotationY={1.2} />
-            <Villager position={[-3.2 + give * 0.2, 0, -4.4]} rotationY={SOUTH} strain={0.3 + give * 0.3} />
+            <Villager position={[-3.2, 0, -4.4]} rotationY={SOUTH} strain={0.3 + give * 0.3} />
             <Boat position={[3.1, 0, 12.4 - give * 1.4]} rotationY={0.6} hole bail={0.1} />
           </>
         );
