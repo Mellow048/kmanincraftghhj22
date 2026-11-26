@@ -51,7 +51,7 @@
   ],
   "sfx": [
     { "cue": "1.hook", "sfx": "blip", "why": "Bedroom PC monitor illuminates MINECRAFT" },
-    { "cue": "1.watch", "word": "quietly", "sfx": "pop", "why": "Heart badge pops warmly above Dad" },
+    { "cue": "1.watch", "word": "stood", "sfx": "pop", "why": "Heart badge pops warmly above Dad" },
     { "cue": "1.sat", "word": "sat", "sfx": "creak", "why": "Dad sits onto gaming chair" },
     { "cue": "1.pc", "word": "world", "sfx": "pop", "why": "Dad joined the game toast" },
     { "cue": "1.loop", "sfx": "whoosh", "why": "Cut into SMP survival clearing" },
