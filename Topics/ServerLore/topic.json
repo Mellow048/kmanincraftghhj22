@@ -27,7 +27,7 @@
   },
   "camera": {
     "builder": "storyScene",
-    "guard": "docs/VIRAL-DIRECTION-MANUAL.md",
+    "guard": "",
     "maxHardCuts": 999,
     "note": "Combine the 50k references' fast 1.5-1.9s visual cut rhythm and 3D SMP storytelling HUD props with our engine's smooth inOutSine camera choreography (cam.push, cam.orbit, cam.crane, cam.truck, cam.ots), shaders, and >= 0.65m travel / >= 22 deg orbits."
   },

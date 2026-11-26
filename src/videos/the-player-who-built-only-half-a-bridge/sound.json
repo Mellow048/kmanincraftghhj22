@@ -1,0 +1,130 @@
+{
+  "film": "the-player-who-built-only-half-a-bridge",
+  "music": {
+    "track": "Topics/ServerLore/up_happy.m4a",
+    "gain": -14,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "gain": 0,
+        "why": "Beat 1-2: Up Happy (0:02+ trimmed) carries weird SMP bridge mystery and spawn evidence"
+      },
+      {
+        "from": "3.cut",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "gain": 2.2,
+        "why": "Beat 3: Crossfade cleanly into Up Sad for IRL custody/empty desk truth"
+      },
+      {
+        "from": "4.tnt",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "gain": 1.8,
+        "why": "Beat 4: Bully blows up bridge with TNT; Toby logs off heartbroken"
+      },
+      {
+        "from": "5.owner",
+        "mood": "tense",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "gain": 1.5,
+        "why": "Beat 5: Soft somber drop as Owner walks alone onto smoky ledge"
+      },
+      {
+        "from": "5.clue",
+        "word": "Wait",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "gain": 0.5,
+        "why": "Beat 5->6: Up Happy enters cleanly the moment Owner reads Wait For Me"
+      },
+      {
+        "from": "7.friday",
+        "mood": "wonder",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "gain": 1.0,
+        "why": "Beat 7: Maya joins, last block placed, lamps glow, scoreboard hits 1 + CTA"
+      }
+    ]
+  },
+  "beds": [
+    { "from": "1.hook", "to": "2.chest", "bed": "village" },
+    { "from": "3.cut", "to": "3.promise", "bed": "room" },
+    { "from": "4.tnt", "to": "7.cta", "bed": "village" }
+  ],
+  "sfx": [
+    { "cue": "1.hook", "sfx": "place", "why": "Toby places final plank on half bridge" },
+    { "cue": "1.hook", "word": "stopped", "sfx": "step_wood", "why": "Toby halts at plank edge" },
+    { "cue": "1.hook", "word": "stopped", "sfx": "pop", "why": "Disconnection / logoff toast" },
+    { "cue": "1.stat", "sfx": "whoosh", "why": "Camera pans over canyon drop" },
+    { "cue": "1.stat", "word": "center", "sfx": "blip", "why": "Empty block gap highlighted" },
+    { "cue": "1.mock", "sfx": "pop", "why": "Mockery chat line pops" },
+    { "cue": "1.mock", "word": "scared", "sfx": "buzz", "why": "Bully laughs at zero" },
+    { "cue": "1.loop", "sfx": "swish", "why": "Owner steps up to sign" },
+    { "cue": "1.loop", "word": "planks", "sfx": "place", "why": "Oak planks grabbed" },
+
+    { "cue": "2.board", "sfx": "whoosh", "why": "Cut to Spawn ScoreboardWall" },
+    { "cue": "2.board", "word": "zero", "sfx": "stamp", "why": "Zero counter stamped" },
+    { "cue": "2.chat", "sfx": "pop", "why": "Server chat mockery line 1" },
+    { "cue": "2.chat", "word": "laughed", "sfx": "pop", "why": "Server chat mockery line 2" },
+    { "cue": "2.chat", "word": "drop", "sfx": "step_wood", "why": "Toby backs away quietly" },
+    { "cue": "2.sign", "sfx": "swish", "why": "Push onto oak sign" },
+    { "cue": "2.sign", "word": "Wait", "sfx": "blip", "why": "Sign reads Wait For Me" },
+    { "cue": "2.chest", "sfx": "creak", "why": "Oak chest lid hinges open" },
+    { "cue": "2.chest", "word": "two", "sfx": "place", "why": "Two oak planks sit neatly inside" },
+
+    { "cue": "3.cut", "sfx": "whoosh", "trim": 3, "why": "Hard cut from SMP to IRL bedroom" },
+    { "cue": "3.cut", "word": "desk", "sfx": "blip", "why": "Monitor glow illuminates Toby" },
+    { "cue": "3.sister", "sfx": "tick", "why": "Weekend clock tick" },
+    { "cue": "3.desk", "sfx": "whoosh", "trim": 2, "why": "Cut across town to Maya's dark desk" },
+    { "cue": "3.desk", "word": "empty", "sfx": "tick", "trim": 3, "why": "Lonely dark clock beat" },
+    { "cue": "3.desk", "word": "alone", "sfx": "sting", "trim": 1, "why": "Lonely dark monitor" },
+    { "cue": "3.promise", "sfx": "swish", "why": "Close on Toby promising" },
+    { "cue": "3.promise", "word": "placing", "sfx": "place", "trim": 3, "why": "Toby holds up promised oak plank" },
+    { "cue": "3.promise", "word": "together", "sfx": "chime", "why": "Sibling promise chime" },
+
+    { "cue": "4.tnt", "sfx": "whoosh", "trim": 2, "why": "Cut back to night bridge" },
+    { "cue": "4.tnt", "word": "lit", "sfx": "crackle", "why": "TNT fuse ignites" },
+    { "cue": "4.tnt", "word": "half", "sfx": "riser", "why": "Fuse climbs toward detonation" },
+    { "cue": "4.blast", "sfx": "boom", "why": "TNT shatters Toby's bridge" },
+    { "cue": "4.blast", "word": "canyon", "sfx": "debris", "why": "Splinters tumble into canyon" },
+    { "cue": "4.blast", "word": "black", "sfx": "crack", "why": "Smoking craters settle" },
+    { "cue": "4.cry", "sfx": "step_stone", "why": "Toby steps toward crater" },
+    { "cue": "4.cry", "word": "typed", "sfx": "pop", "why": "Heartbroken whisper chat" },
+    { "cue": "4.cry", "word": "quit", "sfx": "drop", "why": "Emotional drop" },
+    { "cue": "4.quit", "sfx": "power_down", "why": "Toby disconnects from server" },
+    { "cue": "4.quit", "word": "game", "sfx": "heartbeat", "trim": 2, "why": "Silent empty ledge beat" },
+
+    { "cue": "5.owner", "sfx": "step_stone", "why": "Owner footsteps on smoky stone" },
+    { "cue": "5.owner", "word": "alone", "sfx": "step_stone", "why": "Owner stops at crater edge" },
+    { "cue": "5.clue", "sfx": "swish", "why": "Camera pushes onto Wait For Me sign" },
+    { "cue": "5.clue", "word": "Wait", "sfx": "pop", "why": "Owner ! badge pops overhead" },
+
+    { "cue": "6.ping", "sfx": "ding", "why": "Owner pings whole server" },
+    { "cue": "6.ping", "word": "server", "sfx": "pop", "why": "Alert toast broadcast" },
+    { "cue": "6.flood", "sfx": "pop", "why": "Friends join toast flood" },
+    { "cue": "6.flood", "word": "sprinting", "sfx": "step_grass", "trim": 3, "why": "12 friends sprint out of spawn" },
+    { "cue": "6.build", "sfx": "place", "trim": 4, "why": "Oak planks placed rapidly" },
+    { "cue": "6.build", "word": "halves", "sfx": "place", "trim": 3, "why": "Second plank snap" },
+    { "cue": "6.build", "word": "redstone", "sfx": "power_up", "why": "Redstone dust & lamps wired" },
+    { "cue": "6.build", "word": "rail", "sfx": "place", "trim": 3, "why": "Bridge rails locked in" },
+    { "cue": "6.gap", "sfx": "step_wood", "trim": 3, "why": "Builders halt cleanly at center" },
+    { "cue": "6.gap", "word": "center", "sfx": "tick", "trim": 3, "why": "Builder step stops at center" },
+    { "cue": "6.gap", "word": "open", "sfx": "blip", "trim": 2, "why": "One center block left open" },
+    { "cue": "7.join", "word": "crying", "sfx": "sparkle", "why": "Tears turn to warm sparkle" },
+
+    { "cue": "7.friday", "sfx": "tick", "why": "Clock strikes 6:00 PM Friday" },
+    { "cue": "7.friday", "word": "joined", "sfx": "pop", "why": "Maya joined the game toast" },
+    { "cue": "7.join", "sfx": "step_wood", "trim": 4, "why": "Toby steps onto bridge crying happy tears" },
+    { "cue": "7.join", "word": "cliffs", "sfx": "cheer", "why": "Server crowd cheers along cliffs" },
+    { "cue": "7.place", "sfx": "place", "why": "Toby and Maya place center oak blocks" },
+    { "cue": "7.place", "word": "gap", "sfx": "stamp", "why": "Center bridge block locks shut" },
+    { "cue": "7.glow", "sfx": "power_up", "why": "Every RedstoneLamp ignites gold" },
+    { "cue": "7.glow", "word": "hearts", "sfx": "sparkle", "why": "Floating hearts fill sky" },
+    { "cue": "7.glow", "word": "one", "sfx": "chime", "why": "Scoreboard flips 0 to 1" },
+    { "cue": "7.cta", "sfx": "pop", "why": "Subscribe button beat" },
+    { "cue": "7.cta", "word": "two", "sfx": "ding", "why": "Final warm bell ring" }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-player-who-built-only-half-a-bridge",
+  "mix": "public/audio/the-player-who-built-only-half-a-bridge/mix.mp3",
+  "seconds": 86.5,
+  "built_from": {
+    "timing.json": "32c694a72b569b6cb4ec47e9e02df1b7e143c7d3",
+    "sound.json": "4a08d011bf808efd2b792d786fd515b430df787a",
+    "narration.mp3": "acb5af39c50a31628b272cee226535055437cb04"
+  },
+  "mix_sha1": "963d973fc58ed343ec18c6f8b430e6ffea065924",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "hope",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.cut",
+      "mood": "sad",
+      "at": 25.0,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "4.tnt",
+      "mood": "sad",
+      "at": 38.27,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.owner",
+      "mood": "tense",
+      "at": 51.17,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.clue",
+      "mood": "hope",
+      "at": 54.37,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "7.friday",
+      "mood": "wonder",
+      "at": 70.57,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 3,
+  "measured": {
+    "musicUnderVoiceDb": 14.6,
+    "secondsWithoutMusic": 1.6,
+    "bedsUnderVoiceDb": 26.5,
+    "sfx": 65,
+    "sfxPerMinute": 45.1,
+    "sfxKinds": 26,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 28.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.2,
+    "voiceOverRestWorstDb": 4.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.6,
+        "t": 62.6,
+        "cue": "6.flood",
+        "sounding": []
+      },
+      {
+        "db": 4.6,
+        "t": 30.5,
+        "cue": "3.sister",
+        "sounding": []
+      },
+      {
+        "db": 4.8,
+        "t": 34.1,
+        "cue": "3.desk",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.0,
+        "t": 16.6,
+        "cue": "2.chat",
+        "sounding": []
+      },
+      {
+        "db": 7.2,
+        "t": 5.3,
+        "cue": "1.stat",
+        "sounding": [
+          "blip"
+        ]
+      },
+      {
+        "db": 7.2,
+        "t": 65.8,
+        "cue": "6.build",
+        "sounding": [
+          "power_up"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}
