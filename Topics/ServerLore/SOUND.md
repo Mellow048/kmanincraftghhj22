@@ -20,21 +20,21 @@
     "sections": [
       {
         "from": "1.hook",
-        "mood": "warm",
+        "mood": "hope",
         "track": "Topics/ServerLore/up_happy.m4a",
         "gain": 0,
         "why": "Hook + weird habit + open loop: bright Up Happy starts cleanly at 0:02+"
       },
       {
         "from": "3.irl_truth",
-        "mood": "hollow",
+        "mood": "sad",
         "track": "Topics/ServerLore/up_sad.m4a",
         "gain": 0.5,
         "why": "Real-world cutaway reveals why they struggled -> switch smoothly to Up Sad"
       },
       {
         "from": "4.betrayal",
-        "mood": "hollow",
+        "mood": "sad",
         "track": "Topics/ServerLore/up_sad.m4a",
         "gain": -1,
         "why": "Griefing + player logs off heartbroken"
@@ -46,14 +46,14 @@
       },
       {
         "from": "6.rally",
-        "mood": "warm",
+        "mood": "hope",
         "track": "Topics/ServerLore/up_happy.m4a",
         "gain": 0.5,
         "why": "Entire server rejoins & builds the solution -> bright Up Happy enters cleanly!"
       },
       {
         "from": "7.payoff",
-        "mood": "triumph",
+        "mood": "wonder",
         "track": "Topics/ServerLore/up_happy.m4a",
         "gain": 1.0,
         "why": "Lamps light up / hearts burst / scoreboard resets -> Up swells to finale + CTA"
