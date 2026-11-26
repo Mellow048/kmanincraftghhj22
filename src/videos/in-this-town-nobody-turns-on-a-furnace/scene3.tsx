@@ -35,7 +35,7 @@ export const scene3 = storyScene(timing, {
       note: "Camera tracks briskly beside Dad walking right toward roaring blacksmith furnace beside stone smithy Hut.",
       stage: (t) => {
         const d = ease(ramp(t, 0, 1.5)) * 1.2;
-        return <SnowGolem position={[2.75 + d, 0, 1.6]} rotationY={Math.PI / 2} pumpkin walk={t * 2.4} />;
+        return <SnowGolem position={[2.75 + d, 0, 1.6]} rotationY={Math.PI / 2} pumpkin walk={d} />;
       },
     },
     {
@@ -55,7 +55,7 @@ export const scene3 = storyScene(timing, {
         const creep = ease(ramp(t, 0, 1.2)) * 0.45;
         return (
           <>
-            <SnowGolem position={[3.35 + creep, 0, 1.55]} rotationY={Math.PI / 2} pumpkin walk={t * 1.5} melt={creep * 0.12} />
+            <SnowGolem position={[3.35 + creep, 0, 1.55]} rotationY={Math.PI / 2} pumpkin walk={creep} melt={creep * 0.12} />
             <EmberDrift position={[4.1, 0.5, 1.55]} area={[1.0, 1.0, 1.0]} count={18} />
             <Smoke position={[3.85, 0.8 + t * 0.35, 1.55]} rise={1.2} count={8} opacity={0.45} />
           </>
@@ -89,7 +89,7 @@ export const scene3 = storyScene(timing, {
               pumpkin
               melt={0.14 + recoil * 0.12}
               armThrow={-1.1 * recoil}
-              walk={t * 1.8}
+              walk={recoil * 0.95}
             />
             <Smoke position={[3.6, 1.1 + t * 0.4, 1.6]} rise={1.5} count={10} opacity={0.5} />
             <FloatingNumber text="-1 HP" color="#ff4f42" position={[3.5, 1.95 + recoil * 0.2, 1.6]} height={0.32 * pop(t, hissWord)} />
@@ -123,7 +123,7 @@ export const scene3 = storyScene(timing, {
               face="wow"
               time={t * 1.4}
             />
-            <SnowGolem position={[3.1 - leap * 0.75, Math.sin(leap * Math.PI) * 0.32, 1.55]} rotationY={-Math.PI / 2} pumpkin walk={t * 2.5} />
+            <SnowGolem position={[3.1 - leap * 0.75, Math.sin(leap * Math.PI) * 0.32, 1.55]} rotationY={-Math.PI / 2} pumpkin walk={leap * 0.75} />
           </>
         );
       },

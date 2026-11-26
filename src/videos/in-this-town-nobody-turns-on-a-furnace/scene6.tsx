@@ -108,7 +108,7 @@ export const scene6 = storyScene(timing, {
         const reach = ease(ramp(t, 0, 1.2));
         return (
           <>
-            <SnowGolem position={[PLACE.bakery[0], 0, PLACE.bakery[2] - 0.1]} rotationY={0.1} pumpkin melt={0.95} walk={t * 0.3} />
+            <SnowGolem position={[PLACE.bakery[0], 0, PLACE.bakery[2] - 0.1]} rotationY={0.1} pumpkin melt={0.95} />
             <Hero position={[PLACE.bakery[0] - 0.9 + reach * 0.35, 0, PLACE.bakery[2] + 0.45 - reach * 0.15]} rotationY={0.9} animation={reach < 0.5 ? "crouch" : "reach"} face="frown" time={t} />
           </>
         );
@@ -157,7 +157,7 @@ export const scene6 = storyScene(timing, {
         const heal = ease(ramp(t, 0.1, 1.35));
         return (
           <>
-            <SnowGolem position={[PLACE.bakery[0] + 0.1, 0, PLACE.bakery[2]]} rotationY={0.15} pumpkin melt={0.92 * (1 - heal)} walk={t * 1.4} />
+            <SnowGolem position={[PLACE.bakery[0] + 0.1, 0, PLACE.bakery[2]]} rotationY={0.15} pumpkin melt={0.92 * (1 - heal)} />
             <Hero position={[PLACE.bakery[0] - 0.72, 0, PLACE.bakery[2] + 0.35]} rotationY={0.85} animation="lift" blendTo="reach" blend={1 - heal} face="happy" time={t} />
             <FloatingNumber text="+2 HP" color="#3fd46a" position={[PLACE.bakery[0] + 0.1, 1.85 + heal * 0.2, PLACE.bakery[2]]} height={0.34 * pop(t, 0.4)} />
           </>
@@ -182,8 +182,8 @@ export const scene6 = storyScene(timing, {
         const hug = ease(ramp(t, 0, 1.0));
         return (
           <>
-            <SnowGolem position={[0.75 + hug * 0.15, 0, -1.1]} rotationY={0.35} pumpkin={false} walk={t * 1.3} />
-            <SnowGolem position={[2.05 - hug * 0.15, 0, -1.4]} rotationY={-0.1} pumpkin walk={t * 1.3 + 0.4} />
+            <SnowGolem position={[0.75 + hug * 0.15, 0, -1.1]} rotationY={0.35} pumpkin={false} walk={hug * 0.15} />
+            <SnowGolem position={[2.05 - hug * 0.15, 0, -1.4]} rotationY={-0.1} pumpkin walk={hug * 0.15} />
             <Hero
               position={[1.4, 0, -0.35 - hug * 0.45]}
               rotationY={0.2}
@@ -231,7 +231,7 @@ export const scene6 = storyScene(timing, {
       note: "SubscribeSign bursts overhead as unmasked Dad tosses snowball up and Hero steps forward waving joyfully.",
       stage: (t) => (
         <>
-          <SnowGolem position={[0.9, 0, -1.05]} rotationY={0.35} pumpkin={false} walk={t * 1.6} armThrow={-0.6 + Math.sin(t * 7) * 0.5} />
+          <SnowGolem position={[0.9, 0, -1.05]} rotationY={0.35} pumpkin={false} armThrow={-0.6 + Math.sin(t * 7) * 0.5} />
           <Hero position={[1.65, 0, -0.9 + Math.min(0.45, t * 0.4)]} rotationY={0.15} animation="wave" face="grin" time={t} />
           <SubscribeSign position={[1.35, 2.35, -1.1]} rotationY={-0.35} scale={pop(t, 0.15) * 0.9} />
         </>

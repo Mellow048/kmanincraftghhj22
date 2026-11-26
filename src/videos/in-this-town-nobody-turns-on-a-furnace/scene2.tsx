@@ -112,7 +112,6 @@ export const scene2 = storyScene(timing, {
               rotationY={0.75 + blast * 0.25}
               pumpkin
               armThrow={0.55 * wind - 1.5 * blast}
-              walk={t * 0.8}
             />
             {blast > 0.1 ? <Wisps position={[0.25, 1.45, 1.75]} t={Math.max(0, t - sneezeWord)} reach={1.4} count={20} color="#ffffff" /> : null}
           </>
@@ -203,7 +202,6 @@ export const scene2 = storyScene(timing, {
             rotationY={-0.5 + spin * 0.8}
             pumpkin
             armThrow={-0.3 - Math.sin(t * 5) * 0.45}
-            walk={t * 0.9}
           />
         );
       },
@@ -226,7 +224,7 @@ export const scene2 = storyScene(timing, {
         const maskOff = t >= grinWord;
         return (
           <>
-            <SnowGolem position={[-0.25, 0, 1.3]} rotationY={0.18} pumpkin={!maskOff} armThrow={maskOff ? -0.9 : 0} walk={t * 1.1} />
+            <SnowGolem position={[-0.25, 0, 1.3]} rotationY={0.18} pumpkin={!maskOff} armThrow={maskOff ? -0.9 : 0} />
             <Hero
               position={[0.45, 0, 1.55]}
               rotationY={-0.25}
@@ -255,7 +253,7 @@ export const scene2 = storyScene(timing, {
         const run = ease(ramp(t, 0, 1.1));
         return (
           <>
-            <SnowGolem position={room(0.35 + run * 0.25, 0, -1.05 - run * 0.25)} rotationY={-0.55} pumpkin armThrow={0.45 * Math.sin(t * 4)} walk={run * 1.2} />
+            <SnowGolem position={room(0.35 + run * 0.25, 0, -1.05 - run * 0.25)} rotationY={-0.55} pumpkin armThrow={0.45 * Math.sin(t * 4)} walk={run * 0.35} />
             <Hero
               position={room(-0.95 + run * 0.55, 0, -0.25 - run * 0.35)}
               rotationY={0.75}
@@ -290,7 +288,7 @@ export const scene2 = storyScene(timing, {
             <group position={room(-0.15, 0.56 + (1 - shut) * 0.16, -1.1)} rotation={[-(1 - shut) * 0.85, 0, 0]}>
               <Vox kind="darkPlanks" size={[0.58, 0.14, 0.48]} />
             </group>
-            <SnowGolem position={room(0.45, 0, -1.05)} rotationY={-0.45 + Math.sin(t * 9) * 0.28} pumpkin armThrow={-0.85 * (1 - shut)} walk={t * 0.5} />
+            <SnowGolem position={room(0.45, 0, -1.05)} rotationY={-0.45 + Math.sin(t * 9) * 0.28} pumpkin armThrow={-0.85 * (1 - shut)} />
           </>
         );
       },

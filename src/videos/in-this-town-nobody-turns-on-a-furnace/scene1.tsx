@@ -3,7 +3,6 @@ import {
   Block,
   EmberDrift,
   FloatingNumber,
-  Furnace,
   Hero,
   Player,
   SnowGolem,
@@ -81,10 +80,10 @@ export const scene1 = storyScene(timing, {
       stage: (t) => {
         const d = ease(ramp(t, 0, 1.65));
         const trail = [
-          [-0.65, 0, -2.1] as [number, number, number],
-          [-0.65, 0, -1.2] as [number, number, number],
-          [0.65, 0, -2.0] as [number, number, number],
-          [0.65, 0, -1.1] as [number, number, number],
+          [-0.65, 0.06, -2.1] as [number, number, number],
+          [-0.65, 0.06, -1.2] as [number, number, number],
+          [0.65, 0.06, -2.0] as [number, number, number],
+          [0.65, 0.06, -1.1] as [number, number, number],
         ].slice(0, Math.max(1, Math.ceil(d * 4)));
         return (
           <>
@@ -116,10 +115,10 @@ export const scene1 = storyScene(timing, {
         const slip = jolt(t, trailSlip, 0.22);
         const stamped = (
           [
-            [-1.3, 0, 1.3],
-            [-0.45, 0, 1.3],
-            [0.4, 0, 1.3],
-            [1.25, 0, 1.3],
+            [-1.3, 0.06, 1.3],
+            [-0.45, 0.06, 1.3],
+            [0.4, 0.06, 1.3],
+            [1.25, 0.06, 1.3],
           ] as Array<[number, number, number]>
         ).filter((_, i) => prog * 3.8 >= i);
         return (
@@ -181,6 +180,7 @@ export const scene1 = storyScene(timing, {
         on: room(-1.4, 1.05, -1.5),
         onTo: room(0.45, 0.9, -1.75),
         fov: 42,
+        ease: "inOutSine",
       }),
       screenOffset: [0, 0.08],
       zone: "room",
@@ -197,7 +197,6 @@ export const scene1 = storyScene(timing, {
               face="ouch"
               time={t}
             />
-            <Furnace position={room(0.2, 0, -1.85)} lit={false} />
           </>
         );
       },

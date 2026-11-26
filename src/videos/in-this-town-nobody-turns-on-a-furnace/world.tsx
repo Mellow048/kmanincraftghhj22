@@ -32,12 +32,12 @@ export const World: React.FC = () => (
       {/* Crisp morning SnowTrail curving down from Hero's house across town square */}
       <SnowTrail
         points={[
-          [-0.4, 0, -2.0],
-          [0.2, 0, -1.1],
-          [-0.3, 0, -0.1],
-          [0.4, 0, 0.8],
-          [-0.2, 0, 1.7],
-          [0.6, 0, 2.3],
+          [-0.4, 0.06, -2.0],
+          [0.2, 0.06, -1.1],
+          [-0.3, 0.06, -0.1],
+          [0.4, 0.06, 0.8],
+          [-0.2, 0.06, 1.7],
+          [0.6, 0.06, 2.3],
         ]}
       />
 

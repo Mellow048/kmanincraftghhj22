@@ -153,6 +153,7 @@ export const scene4 = storyScene(timing, {
         on: [PLACE.bakery[0] - 0.6, 2.4, PLACE.bakery[2] - 2.0],
         onTo: [PLACE.bakery[0] + 0.6, 3.0, PLACE.bakery[2] - 2.3],
         fov: 42,
+        ease: "inOutSine",
       }),
       impacts: [{ at: boomWord, amp: 0.035, dur: 0.3 }],
       screenOffset: [0, 0.08],

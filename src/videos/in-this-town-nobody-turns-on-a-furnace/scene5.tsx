@@ -68,7 +68,7 @@ export const scene5 = storyScene(timing, {
         return (
           <>
             <Hero position={[PLACE.bakery[0] - 0.25, 0, PLACE.bakery[2] + 0.05]} rotationY={0.18 - dash * 0.25} animation={dash > 0.5 ? "reach" : "lookAround"} face="wow" time={t} />
-            <SnowGolem position={[PLACE.bakery[0] + 0.2, 0, PLACE.bakery[2] + 2.6 - dash * 1.4]} rotationY={Math.PI} pumpkin walk={t * 3.0} />
+            <SnowGolem position={[PLACE.bakery[0] + 0.2, 0, PLACE.bakery[2] + 2.6 - dash * 1.4]} rotationY={Math.PI} pumpkin walk={dash * 1.4} />
             <EmberDrift position={[PLACE.bakery[0], 1.5, PLACE.bakery[2]]} area={[2.2, 2.0, 2.2]} count={20} />
           </>
         );
@@ -141,7 +141,7 @@ export const scene5 = storyScene(timing, {
         const pull = ease(ramp(t, 0.1, 1.1));
         return (
           <>
-            <SnowGolem position={[PLACE.bakery[0] + 0.15, 0, PLACE.bakery[2] - 0.35]} rotationY={Math.PI} pumpkin melt={0.45 + pull * 0.15} walk={t * 1.4} />
+            <SnowGolem position={[PLACE.bakery[0] + 0.15, 0, PLACE.bakery[2] - 0.35]} rotationY={Math.PI} pumpkin melt={0.45 + pull * 0.15} />
             <Hero position={[PLACE.bakery[0] - 0.75 + pull * 0.35, 0, PLACE.bakery[2] + 0.4 - pull * 0.25]} rotationY={0.85} animation="reach" face="ouch" time={t * 1.3} />
             <FloatingNumber text="-1 HP" color="#ff4f42" position={[PLACE.bakery[0] + 0.15, 1.85 + pull * 0.25, PLACE.bakery[2] - 0.35]} height={0.32 * pop(t, Math.min(0.2, hitWord))} />
           </>
@@ -163,7 +163,7 @@ export const scene5 = storyScene(timing, {
         const push = ease(ramp(t, Math.max(0.05, shoveWord - 0.1), 1.4));
         return (
           <>
-            <SnowGolem position={[PLACE.bakery[0], 0, PLACE.bakery[2] - 0.25]} rotationY={Math.PI} pumpkin melt={0.52} armThrow={-0.65 - push * 0.7} walk={t * 1.2} />
+            <SnowGolem position={[PLACE.bakery[0], 0, PLACE.bakery[2] - 0.25]} rotationY={Math.PI} pumpkin melt={0.52} armThrow={-0.65 - push * 0.7} />
             <Hero position={[PLACE.bakery[0] - 0.38, 0, PLACE.bakery[2] + 0.35 + push * 1.1]} rotationY={0} animation="run" animDistance={t * 1.8} face="fear" />
             <EmberDrift position={[PLACE.bakery[0], 1.5, PLACE.bakery[2] - 0.3]} area={[2, 2.2, 2]} count={22} />
           </>
@@ -195,7 +195,6 @@ export const scene5 = storyScene(timing, {
               pumpkin
               melt={0.56 + Math.min(0.24, t * 0.14)}
               armThrow={-1.25 + cycle * 1.6}
-              walk={t * 2.2}
             />
             <Snowball position={[PLACE.bakery[0], 1.1 + cycle * 1.7, PLACE.bakery[2] - 0.4 - cycle * 1.5]} scale={1.15} />
             <Blaze position={[PLACE.bakery[0], 2.8, PLACE.bakery[2] - 2.2]} size={0.7} height={1.3} count={18} seed={6} />
