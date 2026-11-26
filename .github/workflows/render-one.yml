@@ -8,8 +8,13 @@ on:
         description: "Remotion composition id"
         required: true
       commit_to:
-        description: "renders/<name>.mp4 to commit back to the branch"
-        required: true
+        description: "renders/<name>.mp4 to commit back to the branch (leave empty to upload artifact instead)"
+        required: false
+        default: ""
+      frames:
+        description: "Optional frame range e.g. 0-140 for partial clip renders"
+        required: false
+        default: ""
       concurrency:
         description: "Remotion concurrency (2 is safe on software GL)"
         required: false
@@ -41,16 +46,28 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
           CONCURRENCY: ${{ inputs.concurrency }}
+          FRAMES: ${{ inputs.frames }}
         run: |
           mkdir -p out
+          FRAME_FLAG=""
+          if [ -n "$FRAMES" ]; then FRAME_FLAG="--frames=$FRAMES"; fi
           npx remotion render src/index.ts "$COMPOSITION" out/film.mp4 \
-            --codec=h264 --crf=20 --concurrency=$CONCURRENCY --gl=swangle --timeout=240000 \
+            --codec=h264 --crf=20 --concurrency=$CONCURRENCY --gl=swangle --timeout=240000 $FRAME_FLAG \
             2>&1 | tail -40
 
       - name: Size
         run: ls -la out/film.mp4 && ffprobe -hide_banner out/film.mp4 2>&1 | head -6 || true
 
+      - name: Upload clip artifact
+        if: inputs.commit_to == ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.composition }}-clip
+          path: out/film.mp4
+          retention-days: 3
+
       - name: Commit it to the branch
+        if: inputs.commit_to != ''
         env:
           DEST: ${{ inputs.commit_to }}
         run: |

@@ -5,10 +5,10 @@
   "seconds": 79.6,
   "built_from": {
     "timing.json": "7a445f71191f3108d5ef84e3c10f979b495f9b40",
-    "sound.json": "7ef3fdd53e6aaf202973d61aaa704b3335699e0a",
+    "sound.json": "98568538e10603343dbbb8479440b7478db1d062",
     "narration.mp3": "636f0097ec1b05efef2c1a603f0542b9273af95f"
   },
-  "mix_sha1": "59bdca7e6760943ff13331f14b3d9f677772b6f6",
+  "mix_sha1": "d9821b0bfd0ea1149e468de30c8c53f832b7e012",
   "music_sections": [
     {
       "from": "1.hook",
@@ -56,8 +56,8 @@
   ],
   "beds": 8,
   "measured": {
-    "musicUnderVoiceDb": 14.5,
-    "secondsWithoutMusic": 3.1,
+    "musicUnderVoiceDb": 13.7,
+    "secondsWithoutMusic": 3.3,
     "bedsUnderVoiceDb": 27.7,
     "sfx": 71,
     "sfxPerMinute": 53.5,
@@ -65,7 +65,7 @@
     "longestGapSeconds": 3.0,
     "longestGapAt": 72.4,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 13.2,
+    "voiceOverRestMedianDb": 12.4,
     "voiceOverRestWorstDb": 4.6,
     "voiceOverRestWorst": [
       {
@@ -74,6 +74,14 @@
         "cue": "3.monitor",
         "sounding": [
           "sting"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 47.5,
+        "cue": "5.ask",
+        "sounding": [
+          "pop"
         ]
       },
       {
@@ -87,15 +95,6 @@
       },
       {
         "db": 6.7,
-        "t": 16.6,
-        "cue": "2.fence",
-        "sounding": [
-          "blip",
-          "riser"
-        ]
-      },
-      {
-        "db": 7.4,
         "t": 67.0,
         "cue": "6.creeper2",
         "sounding": [
@@ -104,24 +103,26 @@
         ]
       },
       {
-        "db": 7.5,
-        "t": 47.5,
-        "cue": "5.ask",
+        "db": 6.7,
+        "t": 16.6,
+        "cue": "2.fence",
         "sounding": [
-          "pop"
+          "blip",
+          "riser"
         ]
       },
       {
-        "db": 8.0,
-        "t": 33.1,
-        "cue": "3.torn",
+        "db": 7.5,
+        "t": 65.0,
+        "cue": "6.shield",
         "sounding": [
-          "sting"
+          "place",
+          "riser"
         ]
       }
     ],
     "lufs": -14.7,
-    "truePeakDb": -2.0,
+    "truePeakDb": -2.1,
     "limiterMaxDb": 0.5
   },
   "failures": []

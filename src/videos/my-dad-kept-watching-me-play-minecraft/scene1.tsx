@@ -32,41 +32,41 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.hook",
       ...cam.orbit({
-        on: on(PLACE.irl, -0.85, 1.28, -0.35),
-        dist: 3.3,
-        distTo: 2.9,
-        yaw: 142,
-        yawTo: 124,
-        pitch: 10,
+        on: on(PLACE.irl, -0.85, 1.38, -0.35),
+        dist: 3.5,
+        distTo: 3.05,
+        yaw: 146,
+        yawTo: 128,
+        pitch: 6,
         fov: 48,
         screenOffset: [0, 0.04],
       }),
       zone: "irl",
-      note: "Front-side hook: Sam smiles happily gaming at PC while Dad peeks curiously around the left doorway.",
+      note: "Front-side hook: Sam smiles happily gaming at PC (desk lamp off so zero glare, tags hidden for clean framing) while Dad peeks curiously around the left doorway.",
       stage: (t) => (
         <>
-          <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="MINECRAFT" screenColor="#4be08a" clockText="9:45 PM" />
-          <Son position={on(PLACE.irl, 0, 0.08, -0.43)} rotationY={Math.PI} animation="sit" face="happy" time={t} />
-          <Dad position={on(PLACE.irl, -2.55, 0, -0.15)} rotationY={Math.PI * 0.48} animation="peek" headYaw={0.2} face="wow" time={t} />
+          <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="MINECRAFT" screenColor="#4be08a" clockText="9:45 PM" lampOn={false} />
+          <Son position={on(PLACE.irl, 0, 0.08, -0.43)} rotationY={Math.PI} animation="sit" face="happy" nameTag="" time={t} />
+          <Dad position={on(PLACE.irl, -2.55, 0, -0.15)} rotationY={Math.PI * 0.48} animation="peek" headYaw={0.2} face="wow" nameTag="" time={t} />
         </>
       ),
     },
     {
       cue: "1.watch",
       ...cam.push({
-        on: on(PLACE.irl, 0.35, 1.35, -0.35),
-        dist: 4.4,
-        to: 3.6,
-        yaw: -26,
-        pitch: 11,
-        fov: 42,
+        on: on(PLACE.irl, -0.45, 1.32, -0.30),
+        dist: 4.7,
+        to: 3.9,
+        yaw: -18,
+        pitch: 10,
+        fov: 46,
         screenOffset: [0, 0.05],
       }),
       zone: "irl",
-      note: "Over-shoulder angle highlighting Dad beaming warmly as Sam mines glowing blocks on screen.",
+      note: "Over-shoulder angle cleanly framing BOTH Dad beaming warmly beside the chair and Sam mining blocks on screen.",
       stage: (t) => (
         <>
-          <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="SURVIVAL" screenColor="#4be08a" clockText="10:15 PM" />
+          <DeskSetup position={on(PLACE.irl, 0, 0, -1.25)} screenText="SURVIVAL" screenColor="#4be08a" clockText="10:15 PM" lampOn={false} />
           <Son position={on(PLACE.irl, 0, 0.08, -0.43)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
           <Dad position={on(PLACE.irl, -0.82, 0, -0.15)} rotationY={Math.PI - 0.35} animation="lookAround" face="bearded" badge="heart" badgePopStart={0.2} time={t} />
         </>

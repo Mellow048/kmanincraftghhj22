@@ -27,14 +27,14 @@
         "from": "5.laugh",
         "mood": "hope",
         "track": "Topics/ServerLore/up_happy.m4a",
-        "gain": 0.5,
+        "gain": 2.2,
         "why": "Beat 5-6: Up Happy returns cleanly at 0:02+ right when Sam bursts out laughing & grabs laptop"
       },
       {
         "from": "7.rebuild",
         "mood": "wonder",
         "track": "Topics/ServerLore/up_happy.m4a",
-        "gain": 1.0,
+        "gain": 2.6,
         "why": "Beat 7: Rebuilt twin-bed cottage, 'best game we ever played', and story-locked Subscribe CTA"
       }
     ]
@@ -92,18 +92,18 @@
     { "cue": "5.laugh", "sfx": "chime", "why": "Wholesome turnaround bright chime" },
     { "cue": "5.laugh", "word": "laughing.", "sfx": "pop", "why": "Heart badge pops above Sam" },
     { "cue": "5.ask", "word": "grinned", "sfx": "blip", "why": "Playful grin toward Dad" },
-    { "cue": "5.ask", "word": "creeper?", "sfx": "pop", "why": "Comedy Creeper joke popup" },
+    { "cue": "5.ask", "word": "creeper?", "sfx": "pop", "trim": 3, "why": "Comedy Creeper joke popup" },
     { "cue": "5.relief", "word": "breath.", "sfx": "sparkle", "trim": 3, "why": "Dad exhales smiling warmly" },
     { "cue": "5.stairs", "word": "down", "sfx": "step_wood", "repeat": 4, "every": 0.22, "why": "Sam bounds quickly down wooden stairs" },
     { "cue": "5.laptop", "word": "grabbed", "sfx": "place", "why": "Sam scoops silver Laptop off console table" },
 
     { "cue": "6.dual", "sfx": "whoosh", "why": "Back upstairs to PC + Laptop co-op" },
     { "cue": "6.dual", "word": "side.", "sfx": "pop", "why": "2P co-op screens ready" },
-    { "cue": "6.teach", "word": "showed", "sfx": "blip", "why": "Back in sunlit SMP clearing" },
-    { "cue": "6.teach", "word": "control.", "sfx": "pop", "why": "Warm teaching confirmation" },
+    { "cue": "6.teach", "word": "showed", "sfx": "blip", "trim": 3, "why": "Back in sunlit SMP clearing" },
+    { "cue": "6.teach", "word": "control.", "sfx": "pop", "trim": 3, "why": "Warm teaching confirmation" },
     { "cue": "6.wood", "word": "broke", "sfx": "hit", "why": "Clean iron axe chop into oak tree" },
     { "cue": "6.wood", "word": "wood!", "sfx": "coin", "why": "Oak log item pops cleanly free" },
-    { "cue": "6.chest", "word": "opened", "sfx": "creak", "why": "Spawn Oak chest opens wide" },
+    { "cue": "6.chest", "word": "opened", "sfx": "creak", "trim": 3, "why": "Spawn Oak chest opens wide" },
     { "cue": "6.shield", "word": "handed", "sfx": "swish", "trim": 3, "why": "Shield lifted from chest" },
     { "cue": "6.shield", "word": "shield", "sfx": "place", "why": "Sam equips crafted WoodenShield onto Dad" },
     { "cue": "6.creeper2", "word": "snuck", "sfx": "crackle", "why": "Second Creeper hisses near fence" },
