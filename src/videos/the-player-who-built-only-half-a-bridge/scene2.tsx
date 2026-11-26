@@ -27,7 +27,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "2.board",
-      ...cam.crane({ on: [-6.4, 1.25, -3.4], onTo: [-6.4, 1.85, -3.4], dist: 5.6, toDist: 4.3, yaw: -12, fromPitch: 10, toPitch: -2, fov: 44 }),
+      ...cam.crane({ on: [-6.3, 1.35, -3.4], onTo: [-6.3, 1.75, -3.4], dist: 7.4, toDist: 6.2, yaw: -8, fromPitch: 10, toPitch: 2, fov: 48 }),
       zone: "server",
       look: "overworld-golden",
       note: "Crane rises cleanly before the open Spawn ScoreboardWall while Rex walks past pointing at Toby's zero rank.",
@@ -45,7 +45,7 @@ export const scene2 = storyScene(timing, {
     {
       cue: "2.board",
       cut: CUT_STUCK,
-      ...cam.push({ on: [-5.8, 1.35, -3.2], dist: 4.6, to: 3.4, yaw: 12, pitch: 4, fov: 42 }),
+      ...cam.push({ on: [-6.1, 1.35, -3.2], dist: 6.8, to: 5.8, yaw: 10, pitch: 4, fov: 46 }),
       zone: "server",
       look: "overworld-sunset",
       note: "Readable shot of TOBY: 0 on ScoreboardWall beside Toby shrugging helplessly in the foreground.",

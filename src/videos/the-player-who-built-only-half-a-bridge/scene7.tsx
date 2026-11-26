@@ -165,7 +165,7 @@ export const scene7 = storyScene(timing, {
     {
       cue: "7.glow",
       cut: CUT_HEARTS,
-      ...cam.push({ on: [-5.8, 1.45, -3.4], dist: 5.4, to: 3.9, yaw: -12, pitch: 4, fov: 44 }),
+      ...cam.push({ on: [-5.7, 1.45, -3.2], dist: 7.2, to: 6.0, yaw: -8, pitch: 4, fov: 46 }),
       zone: "server",
       look: "overworld-golden",
       note: "Clear unobstructed ScoreboardWall flips TOBY straight to 1 in glowing gold beside cheering Owner.",
