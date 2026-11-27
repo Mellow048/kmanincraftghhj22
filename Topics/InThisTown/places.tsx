@@ -359,3 +359,51 @@ export const Fence: React.FC<{ from: Vec3; to: Vec3; height?: number; gap?: numb
     </group>
   );
 };
+
+
+/**
+ * Full 56m-long multi-angle Minecraft village street (like viral references).
+ * Houses line BOTH sides (x = -8.2 and x = +8.2) with narrow alleys between them,
+ * sidewalks, and a distant hill so cameras shooting North, South, East, West,
+ * into alleys, or high cranes ALWAYS see rich depth instead of one flat wall.
+ */
+export const VillageStreet: React.FC<{ position?: Vec3; night?: boolean }> = ({
+  position = [0, 0, 0],
+  night = false,
+}) => {
+  const leftHouses: Array<{ z: number; wall: BlockKind; tint: string; roof: string }> = [
+    { z: -18, wall: "bricks", tint: "#b85c4b", roof: "#5a3122" },
+    { z: -8, wall: "planks", tint: "#c9965b", roof: "#3b5980" },
+    { z: 3, wall: "stoneBrick", tint: "#9aa0a8", roof: "#6e3c22" },
+    { z: 14, wall: "planks", tint: "#b8824c", roof: "#2d7a4f" },
+  ];
+  const rightHouses: Array<{ z: number; wall: BlockKind; tint: string; roof: string }> = [
+    { z: -16, wall: "planks", tint: "#d4b483", roof: "#7a3b2a" },
+    { z: -5, wall: "bricks", tint: "#a85244", roof: "#2e4f73" },
+    { z: 6, wall: "planks", tint: "#c48d52", roof: "#5e3622" },
+    { z: 17, wall: "stoneBrick", tint: "#a39f96", roof: "#356e4b" },
+  ];
+  return (
+    <group position={position}>
+      <Vox kind="grass" position={[0, -0.25, 0]} size={[64, 0.5, 76]} />
+      <Vox kind="cobble" position={[0, 0.02, 0]} size={[6.2, 0.08, 60]} />
+      <Vox kind="stoneBrick" position={[-4.0, 0.06, 0]} size={[1.8, 0.12, 60]} />
+      <Vox kind="stoneBrick" position={[4.0, 0.06, 0]} size={[1.8, 0.12, 60]} />
+      {leftHouses.map((h, i) => (
+        <Hut key={`L${i}`} at={[-8.2, 0, h.z]} w={6.4} d={6.0} h={4.2} wall={h.wall} tint={h.tint} roof={h.roof} turn={Math.PI / 2} lit={night} windows={[-1.6, 1.6]} />
+      ))}
+      {rightHouses.map((h, i) => (
+        <Hut key={`R${i}`} at={[8.2, 0, h.z]} w={6.4} d={6.0} h={4.2} wall={h.wall} tint={h.tint} roof={h.roof} turn={-Math.PI / 2} lit={night} windows={[-1.6, 1.6]} />
+      ))}
+      {[-14, 0, 14].flatMap((z, zi) => [
+        <LampPost key={`LP_L${zi}`} position={[-3.5, 0, z]} seed={zi * 2 + 1} />,
+        <LampPost key={`LP_R${zi}`} position={[3.5, 0, z]} seed={zi * 2 + 2} />,
+      ])}
+      <LightPool position={[0, 0.05, 0]} width={12} depth={42} color={night ? "#ffd68a" : "#fff6dc"} opacity={night ? 0.28 : 0.18} />
+      <GodRay position={[0, 7.5, -10]} rotation={[0, 0, 0.16]} width={6.0} height={14} color="#fff3d4" opacity={night ? 0.03 : 0.07} />
+      <Dust position={[0, 2.4, 0]} area={[14, 5, 36]} count={48} size={0.038} color="#fff7df" opacity={0.45} seed={41} speed={0.18} />
+      <Vox kind="grass" position={[0, 1.6, -34]} size={[34, 3.2, 10]} />
+      <Vox kind="grass" position={[0, 3.4, -36]} size={[20, 2.2, 6]} />
+    </group>
+  );
+};

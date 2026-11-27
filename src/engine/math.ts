@@ -139,3 +139,31 @@ export function shade(hex: string, amount: number): string {
 
 export const degToRad = (deg: number) => (deg * Math.PI) / 180;
 export const radToDeg = (rad: number) => (rad * 180) / Math.PI;
+
+
+/**
+ * Zero-math A->B character locomotion helper (designed for small models).
+ * Computes exact position, facing `rotationY`, foot-planted `animDistance`, and `moving` flag
+ * so characters NEVER slide sideways, moonwalk, or walk-freeze after arriving.
+ */
+export function moveBetween(
+  from: Vec3,
+  to: Vec3,
+  t: number,
+  startSec = 0,
+  endSec = 1.2,
+): { position: Vec3; rotationY: number; animDistance: number; moving: boolean } {
+  const span = Math.max(0.001, endSec - startSec);
+  const raw = clamp01((t - startSec) / span);
+  const u = smoothstep(raw);
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1];
+  const dz = to[2] - from[2];
+  const totalDist = Math.hypot(dx, dy, dz);
+  return {
+    position: [from[0] + dx * u, from[1] + dy * u, from[2] + dz * u],
+    rotationY: totalDist > 1e-4 ? Math.atan2(dx, dz) : 0,
+    animDistance: totalDist * u,
+    moving: t >= startSec && t < endSec - 0.04 && totalDist > 0.05,
+  };
+}

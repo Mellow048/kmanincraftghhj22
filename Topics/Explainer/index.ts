@@ -17,3 +17,5 @@ export * from "./goods";
 export { cam, storyScene, ChatToast, FloatingNumber, Chicken, Water, EmberDrift } from "../../src/engine";
 // Shared with the other topics (keep using CitizenLead/EliteLead for Explainer leads instead of Villager/Hero!)
 export * from "../Shared";
+
+export { VillageStreet } from "../InThisTown/places";

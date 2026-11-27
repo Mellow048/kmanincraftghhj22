@@ -777,3 +777,47 @@ export const OrbitingItemRing: React.FC<{
     })}
   </group>
 );
+
+
+/**
+ * 3D Minecraft Money/Item Printer machine (Explainer Reference 0:57 prop).
+ * Spits animated green bills/emeralds out of a glowing front slot as `t` advances.
+ */
+export const MoneyPrinter: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  t?: number;
+  billColor?: string;
+  count?: number;
+}> = ({ position = [0, 0, 0], rotationY = 0, t = 0, billColor = "#38d66b", count = 8 }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    {/* Heavy dark grey machine body + feed tray */}
+    <Block position={[0, 0.55, 0]} size={[1.45, 1.1, 1.05]} color="#3a3f4a" metalness={0.35} roughness={0.5} />
+    <Block position={[0, 1.16, -0.1]} size={[1.1, 0.16, 0.7]} color="#262a33" />
+    {/* Glowing output slot */}
+    <Block position={[0, 0.62, 0.54]} size={[0.96, 0.18, 0.06]} color="#14171c" />
+    <Block position={[0, 0.44, 0.68]} rotation={[0.25, 0, 0]} size={[0.98, 0.08, 0.45]} color="#525968" />
+    {/* Indicator lights */}
+    <Block position={[-0.5, 0.9, 0.54]} size={[0.12, 0.12, 0.04]} color="#4be08a" emissive="#4be08a" emissiveIntensity={0.9} castShadow={false} />
+    <Block position={[-0.3, 0.9, 0.54]} size={[0.12, 0.12, 0.04]} color="#ffd84d" emissive="#ffd84d" emissiveIntensity={0.8} castShadow={false} />
+    {/* Animated bills shooting out of the slot */}
+    {Array.from({ length: count }, (_, i) => {
+      const phase = ((t * 1.6 + i / count) % 1);
+      const z = 0.58 + phase * 1.45;
+      const y = 0.62 + Math.sin(phase * Math.PI) * 0.65 - phase * 0.45;
+      const x = ((i % 3) - 1) * 0.24 * (0.4 + phase);
+      return (
+        <Block
+          key={i}
+          position={[x, Math.max(0.08, y), z]}
+          rotation={[phase * 1.4, (i - count / 2) * 0.25, phase * 0.6]}
+          size={[0.32, 0.04, 0.18]}
+          color={billColor}
+          emissive={billColor}
+          emissiveIntensity={0.22}
+          castShadow={false}
+        />
+      );
+    })}
+  </group>
+);

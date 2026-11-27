@@ -1,4 +1,8 @@
 # Start Here: Read `AGENTS.md`
+> **SMALL MODELS START HERE:** Read [`SMALL-MODEL-CHEATSHEET.md`](SMALL-MODEL-CHEATSHEET.md) (5 copy-paste recipes: `<VillageStreet />`, `moveBetween()`, `cam.track/sweep/heroLow`, `CitizenLead variant`, and 1-command `sound.py draft`).
+
+> **REMASTER v5 HARD GATES:** Read [`docs/REMASTER-V5-REFERENCE-STANDARD.md`](docs/REMASTER-V5-REFERENCE-STANDARD.md) — `direction-report.mjs` now HARD FAILS wall-spam (>4 same-axis shots), lazy cameras (<1m travel), and static mannequin staging (<20% A→B locomotion). Use `<VillageStreet>`, `cam.track`, `cam.sweep`, `cam.heroLow`, `cam.streetOverview`, and `CitizenLead variant`.
+
 
 > **REMASTER v4 MANDATORY:** Before writing or rendering any Short, read [`docs/CRITIQUE-V4-QUALITY-GATES.md`](docs/CRITIQUE-V4-QUALITY-GATES.md) (natural `+0%` TTS + `0.42s` breath gaps, louder BGM `-12`/`-13`, 9:16-safe `dist >= 6.0` unclipped framing, continuous A→B motion, background crowds, zero ServerLore scoreboards).
 

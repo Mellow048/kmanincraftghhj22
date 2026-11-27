@@ -87,7 +87,7 @@ def read_script(slug: str):
 
 def spoken_words(text: str):
     """The words as they are said: split on spaces, punctuation stays attached for the pause model."""
-    return [w for w in text.split() if re.search(r"[A-Za-z0-9]", w)]
+    return [w for w in re.sub(r"[—–]+", " ", text).split() if re.search(r"[A-Za-z0-9]", w)]
 
 
 def bare(word: str) -> str:
@@ -147,12 +147,12 @@ def speech_span(x, rate: int):
     if n == 0:
         return 0, len(x)
     rms = np.sqrt(np.mean(x[: n * hop].reshape(n, hop) ** 2, axis=1) + 1e-12)
-    floor = max(rms.max() * 10 ** (-48 / 20), 10 ** (-56 / 20))
+    floor = max(rms.max() * 10 ** (-38 / 20), 10 ** (-52 / 20))
     loud = np.where(rms > floor)[0]
     if len(loud) == 0:
         return 0, len(x)
     a = max(0, (loud[0] - 3) * hop)
-    b = min(len(x), (loud[-1] + 28) * hop)
+    b = min(len(x), (loud[-1] + 6) * hop)
     return int(a), int(b)
 
 
@@ -219,37 +219,7 @@ SAY = {
     "booted": "B UW T AH D",
     "laptop": "L AE P T AA P",
     "smiling": "S M AY L IH NG",
-    "minecraft": "M AY N K R AE F T",
-    "midsentence": "M IH D S EH N T AH N S",
-    "messaged": "M EH S AH JH D",
-    "moo": "M UW",
-    "toby": "T OW B IY",
-    "milked": "M IH L K T",
-    "palette": "P AE L AH T",
-    "tossed": "T AO S T",
-    "straps": "S T R AE P S",
-    "postman": "P OW S T M AE N",
-    "hugged": "HH AH G D",
-    "baron": "B EH R AH N",
-    "afk": "EY EH F K EY",
-    "griefer": "G R IY F ER",
-    "splinters": "S P L IH N T ER Z",
-    "autotyped": "AO T OW T AY P T",
-    "maya": "M AY AH",
-    "jake": "JH EY K",
-    "creepers": "K R IY P ER Z",
-    "firefly": "F AY ER F L AY",
-    "fireflies": "F AY ER F L AY Z",
-    "mailman": "M EY L M AE N",
-    "windstorm": "W IH N D S T AO R M",
-    "puddle": "P AH D AH L",
-    "mods": "M AA D Z",
-    "groans": "G R OW N Z",
-    "waiteight": "W EY T EY T",
-    "playerstotally": "P L EY ER Z T OW T AH L IY",
-    "sorryshe": "S AA R IY SH IY",
-    "tnt": "T IY EH N T IY",
-    "disconnected": "D IH S K AH N EH K T IH D",
+    "minecraft": "M AY N K R AE F T",    "midsentence": "M IH D S EH N T AH N S",    "messaged": "M EH S AH JH D",    "moo": "M UW",    "toby": "T OW B IY",    "milked": "M IH L K T",    "palette": "P AE L AH T",    "tossed": "T AO S T",    "straps": "S T R AE P S",    "postman": "P OW S T M AE N",    "hugged": "HH AH G D",    "baron": "B EH R AH N",    "afk": "EY EH F K EY",    "griefer": "G R IY F ER",    "splinters": "S P L IH N T ER Z",    "autotyped": "AO T OW T AY P T",    "maya": "M AY AH",    "jake": "JH EY K",    "firefly": "F AY ER F L AY",    "fireflies": "F AY ER F L AY Z",    "mailman": "M EY L M AE N",    "windstorm": "W IH N D S T AO R M",    "puddle": "P AH D AH L",    "mods": "M AA D Z",    "groans": "G R OW N Z",    "waiteight": "W EY T EY T",    "playerstotally": "P L EY ER Z T OW T AH L IY",    "sorryshe": "S AA R IY SH IY",    "disconnected": "D IH S K AH N EH K T IH D",
 }
 
 def assembled_spans(raw, count, length):
@@ -279,51 +249,43 @@ def align(pcm16k, words, *, strict=False, interpolated=None):
     except ImportError:
         return None
     # Wide beams: this is not recognition. The words are known; only their times are wanted.
-    def run_decoder(beam, wbeam, pbeam):
-        decoder = Decoder(samprate=SR_ALIGN, beam=beam, wbeam=wbeam, pbeam=pbeam)
-        tokens = []
+    def _run_pass(beam, wbeam, pbeam):
+        dec = Decoder(samprate=SR_ALIGN, beam=beam, wbeam=wbeam, pbeam=pbeam)
+        toks = []
         for w in words:
             t = bare(w)
-            if decoder.lookup_word(t) is None:
+            if dec.lookup_word(t) is None:
                 base = re.sub(r"(?:'s|s)$", "", t)
-                phones = decoder.lookup_word(base) if base != t else None
+                phones = dec.lookup_word(base) if base != t else None
                 if phones is None and t in SAY:
-                    decoder.add_word(t, SAY[t], True)
-                    tokens.append(t)
+                    dec.add_word(t, SAY[t], True)
+                    toks.append(t)
                     continue
                 if phones is None:
                     print(f"    aligner does not know the word '{t}'; this clip falls back to an estimate")
-                    return None, None
-                decoder.add_word(t, phones + (" S" if phones.split()[-1] in ("P", "T", "K", "F", "TH") else " Z"), True)
-            tokens.append(t)
-        # Air before and after: the aligner cannot finish the last word if the sound stops with it.
-        pad = 0.3
+                    return None
+                dec.add_word(t, phones + (" S" if phones.split()[-1] in ("P", "T", "K", "F", "TH") else " Z"), True)
+            toks.append(t)
+        pad = 0.35
         air = (np.arange(int(pad * SR_ALIGN)) % 7 - 3).astype(np.float32) * 1e-5
         pcm = np.concatenate([air, np.clip(pcm16k, -1, 1), air])
         try:
-            decoder.set_align_text(" ".join(tokens))
-            decoder.start_utt()
-            decoder.process_raw((pcm * 32767).astype(np.int16).tobytes(), full_utt=True)
-            decoder.end_utt()
-            segs = [(s.word, s.start_frame / 100.0 - pad, (s.end_frame + 1) / 100.0 - pad) for s in decoder.seg()]
-        except Exception as error:  # the aligner raises on audio it cannot fit to the text
-            print(f"    aligner failed ({error}); this clip falls back to an estimate")
-            return tokens, None
+            dec.set_align_text(" ".join(toks))
+            dec.start_utt()
+            dec.process_raw((pcm * 32767).astype(np.int16).tobytes(), full_utt=True)
+            dec.end_utt()
+            segs = [(seg.word, seg.start_frame / 100.0 - pad, (seg.end_frame + 1) / 100.0 - pad) for seg in dec.seg()]
+        except Exception as error:
+            print(f"    aligner failed ({error}); trying fallback beam")
+            return None
         length = len(pcm16k) / SR_ALIGN
-        return tokens, [(re.sub(r"\(\d+\)$", "", w), max(0.0, a), min(length, b)) for (w, a, b) in segs if not w.startswith("<")]
+        found = [(re.sub(r"\(\d+\)$", "", w), max(0.0, a), min(length, b)) for (w, a, b) in segs if not w.startswith("<")]
+        return match_spans(toks, found, length, strict=strict, interpolated=interpolated)
 
-    length = len(pcm16k) / SR_ALIGN
-    tokens, found = run_decoder(1e-120, 1e-90, 1e-120)
-    if tokens is None:
-        return None
-    if found is None or [w for w, _, _ in found] != tokens:
-        # Tighter beam avoids active-list pruning into <sil> on long clips or soft endings.
-        _, alt = run_decoder(1e-80, 1e-60, 1e-80)
-        if alt is not None and (found is None or len(alt) > len(found)):
-            found = alt
-    if found is None:
-        return None
-    return match_spans(tokens, found, length, strict=strict, interpolated=interpolated)
+    res = _run_pass(1e-120, 1e-90, 1e-120)
+    if res is None:
+        res = _run_pass(1e-80, 1e-60, 1e-80)
+    return res
 
 
 def match_spans(tokens, found, length, *, strict=False, interpolated=None):

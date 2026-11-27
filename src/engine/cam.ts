@@ -323,6 +323,115 @@ export const cam = {
     };
   },
 
+  /**
+   * True tracking shot alongside a walking/running character from `from` to `to`.
+   * Glides smoothly down a street or path so motion reads like a real animated film.
+   */
+  track(o: {
+    from: Vec3;
+    to: Vec3;
+    sideDist?: number;
+    side?: -1 | 1;
+    height?: number;
+    lead?: number;
+    fov?: number;
+    ease?: Shot["ease"];
+  }): Move {
+    const dx = o.to[0] - o.from[0];
+    const dz = o.to[2] - o.from[2];
+    const len = Math.hypot(dx, dz) || 1;
+    const ux = dx / len;
+    const uz = dz / len;
+    const side = o.side ?? 1;
+    const sd = o.sideDist ?? 5.8;
+    const lead = o.lead ?? 1.8;
+    const h = o.height ?? 1.65;
+    const px = -uz * sd * side + ux * lead;
+    const pz = ux * sd * side + uz * lead;
+    return {
+      from: [round(o.from[0] + px), round(o.from[1] + h), round(o.from[2] + pz)],
+      to: [round(o.to[0] + px), round(o.to[1] + h), round(o.to[2] + pz)],
+      target: [round(o.from[0]), round(o.from[1] + 1.25), round(o.from[2])],
+      targetTo: [round(o.to[0]), round(o.to[1] + 1.25), round(o.to[2])],
+      fov: o.fov ?? 44,
+      ease: o.ease ?? "inOutSine",
+    };
+  },
+
+  /**
+   * Dramatic parallax orbit sweep (default 34° arc) around a subject or prop.
+   * Shifts background houses, trees, and sky visibly so the camera feels alive.
+   */
+  sweep(o: {
+    on: Vec3;
+    dist?: number;
+    distTo?: number;
+    fromYaw?: number;
+    toYaw?: number;
+    pitch?: number;
+    fov?: number;
+    ease?: Shot["ease"];
+  }): Move {
+    const dist = o.dist ?? 6.4;
+    const fromYaw = o.fromYaw ?? -18;
+    const toYaw = o.toYaw ?? 16;
+    return cam.orbit({
+      on: o.on,
+      dist,
+      distTo: o.distTo ?? round(Math.max(4.8, dist - 0.8)),
+      yaw: fromYaw,
+      yawTo: toYaw,
+      pitch: o.pitch ?? 8,
+      fov: o.fov ?? 44,
+      ease: o.ease ?? "inOutSine",
+    });
+  },
+
+  /**
+   * Low-angle dramatic upward tilt for towering monsters, statues, or villains.
+   */
+  heroLow(o: {
+    on: Vec3;
+    dist?: number;
+    yaw?: number;
+    fov?: number;
+    ease?: Shot["ease"];
+  }): Move {
+    const dist = o.dist ?? 6.2;
+    return cam.orbit({
+      on: [o.on[0], round(o.on[1] + 1.5), o.on[2]],
+      dist,
+      distTo: round(Math.max(4.6, dist - 1.1)),
+      yaw: o.yaw ?? -12,
+      yawTo: (o.yaw ?? -12) + 14,
+      pitch: -12,
+      pitchTo: -4,
+      fov: o.fov ?? 46,
+      ease: o.ease ?? "inOutSine",
+    });
+  },
+
+  /**
+   * High crane / aerial sweep looking down a full village street or crowd.
+   */
+  streetOverview(o: {
+    from: Vec3;
+    to: Vec3;
+    height?: number;
+    fov?: number;
+    ease?: Shot["ease"];
+  }): Move {
+    const h = o.height ?? 6.5;
+    return {
+      from: [round(o.from[0]), round(o.from[1] + h), round(o.from[2])],
+      to: [round(o.to[0]), round(o.to[1] + Math.max(2.6, h - 2.4)), round(o.to[2])],
+      target: [round(o.from[0]), round(o.from[1] + 1.1), round(o.from[2] - 8)],
+      targetTo: [round(o.to[0]), round(o.to[1] + 1.1), round(o.to[2] - 6)],
+      fov: o.fov ?? 48,
+      ease: o.ease ?? "inOutSine",
+    };
+  },
+
   /** Straight down on a thing on the floor. `spin` (degrees) turns the frame as it rises or sinks. */
   top(o: { on: Vec3; height: number; to: number; spin?: [number, number]; fov?: number; ease?: Shot["ease"] }): Move {
     // A hair off vertical so the camera always knows which way is up.

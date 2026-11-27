@@ -2460,12 +2460,27 @@ def draft(film: str, force: bool) -> int:
             beds.append(run)
 
     effects, last_scene = [], None
-    for cue_id in clock.order:
+    cycle = ["pop", "plink", "swish", "whoosh", "chime"]
+    for idx, cue_id in enumerate(clock.order):
         scene = cue_id.split(".")[0]
         if last_scene is not None and scene != last_scene:
             effects.append({"cue": cue_id, "sfx": "whoosh", "why": f"scene {scene} starts: a new place or a new time"})
+        elif idx < len(clock.order) - 1:
+            effects.append({"cue": cue_id, "sfx": cycle[idx % len(cycle)], "why": "keep beat-level audio energy alive"})
         last_scene = scene
-    effects.append({"cue": clock.order[-1], "sfx": "ding", "why": "the subscribe line"})
+    effects.append({"cue": clock.order[-1], "sfx": "ding", "why": "final payoff / subscribe line"})
+    # Ensure drafted sheet comfortably clears topic minSfxPerMinute without buried trims
+    min_rate = float(rules.get("minSfxPerMinute", 40))
+    need = int(round((clock.duration / 60.0) * min_rate * 1.15)) + 2
+    if len(effects) < need:
+        for idx, cue_id in enumerate(clock.order):
+            if len(effects) >= need:
+                break
+            cue = clock.cues[cue_id]
+            cwords = [w["w"] for w in clock.words if cue["start"] - 0.05 <= w["s"] < cue["end"]]
+            if len(cwords) >= 3:
+                mid_word = cwords[len(cwords) // 2]
+                effects.append({"cue": cue_id, "word": mid_word, "sfx": cycle[(idx + 2) % len(cycle)], "why": "mid-shot accent"})
 
     own = rules.get("music") or {}
     first = rules.get("moodDefault", "town") if rules.get("moodDefault", "town") in MOODS else "town"
@@ -2473,7 +2488,7 @@ def draft(film: str, force: bool) -> int:
     if own.get("file") and film not in own.get("madeBefore", []):
         # The topic has ONE track for all its films: the owner chose it. The sections still say where the story turns:
         # a "none" section is silence, and a section's `gain` lifts or lowers the track.
-        music = {"track": own["file"], "gain": own.get("gain", -16), "sections": music["sections"]}
+        music = {"track": own["file"], "gain": own.get("gain", -13), **({"trackFrom": 2.5} if "up_happy" in own["file"] else {}), "sections": music["sections"]}
     sheet = {
         "film": film,
         "README": f"The sound sheet. {guide} Times are cues and words, never seconds. Then: python3 scripts/sound.py build {film}",

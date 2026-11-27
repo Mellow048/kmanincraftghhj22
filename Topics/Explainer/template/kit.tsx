@@ -1,4 +1,5 @@
 import type { Timing, Vec3 } from "../../engine";
+export { moveBetween } from "../../engine";
 import {
   // Channel-distinct cast (NEVER InThisTown Hero or Villager)
   CitizenLead,
@@ -25,6 +26,8 @@ import {
   Pickaxe,
   PriceBillboard,
   ShopStall,
+  VillageStreet,
+  MoneyPrinter,
   CommandBoard,
   EmeraldFountain,
   FloatingItemPyramid,
@@ -106,6 +109,8 @@ export {
   Pickaxe,
   PriceBillboard,
   ShopStall,
+  VillageStreet,
+  MoneyPrinter,
   CommandBoard,
   EmeraldFountain,
   FloatingItemPyramid,

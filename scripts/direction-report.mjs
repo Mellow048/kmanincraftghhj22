@@ -353,7 +353,8 @@ function narration(film, timing, topic, script, covered, frames, r, replayLegacy
 export function directionReport(film, timing, topic, script, { replayLegacy = false } = {}) {
   const r = { shots: 0, sampled: 0, changing: 0, errors: [], unfinished: [], review: [] };
   const { fps } = film, covered = [];
-  let prior, alike = 0, quiet = 0, frame = 0, orbitShots = 0;
+  let prior, alike = 0, quiet = 0, frame = 0, orbitShots = 0, lazyCamShots = 0, nonLockedShots = 0, locomotionShots = 0, prevZone = null, prevYawDeg = null, sameAxisStreak = 0, maxSameAxisStreak = 0;
+  const yawBins = new Map();
   const isModern = timing?.wordTiming !== undefined || film.captions?.motion === 'on-beat';
   const bucket = isModern ? r.unfinished : r.review;
   const worldItems = expandWorld(film.World);
@@ -385,6 +386,35 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
     for (const [i, s] of scene.shots.entries()) {
       r.shots++;
       if (s.path?.length >= 3) orbitShots++;
+      {
+        const e0 = s.path?.length >= 2 ? s.path[0] : (s.from ?? [0, 0, 0]);
+        const e1 = s.path?.length >= 2 ? s.path[s.path.length - 1] : (s.to ?? e0);
+        const t0 = s.targetPath?.length >= 2 ? s.targetPath[0] : (s.target ?? [0, 0, 0]);
+        const t1 = s.targetPath?.length >= 2 ? s.targetPath[s.targetPath.length - 1] : (s.targetTo ?? t0);
+        const eyeTravel = Math.hypot((e1[0] ?? 0) - (e0[0] ?? 0), (e1[1] ?? 0) - (e0[1] ?? 0), (e1[2] ?? 0) - (e0[2] ?? 0));
+        const yaw0 = Math.atan2((t0[0] ?? 0) - (e0[0] ?? 0), (t0[2] ?? 0) - (e0[2] ?? 0)) * (180 / Math.PI);
+        const yaw1 = Math.atan2((t1[0] ?? 0) - (e1[0] ?? 0), (t1[2] ?? 0) - (e1[2] ?? 0)) * (180 / Math.PI);
+        let dYaw = Math.abs(yaw1 - yaw0);
+        if (dYaw > 180) dYaw = 360 - dYaw;
+        if (!s.locked) {
+          nonLockedShots++;
+          if (eyeTravel < 1.0 && dYaw < 8) lazyCamShots++;
+        }
+        const yawBin = Math.round(((yaw0 + 360) % 360) / 30) % 12;
+        yawBins.set(yawBin, (yawBins.get(yawBin) ?? 0) + 1);
+        let stepYaw = prevYawDeg === null ? 999 : Math.abs(yaw0 - prevYawDeg);
+        if (stepYaw > 180) stepYaw = 360 - stepYaw;
+        if (s.zone === prevZone && stepYaw <= 22) {
+          sameAxisStreak++;
+          if (sameAxisStreak > maxSameAxisStreak) maxSameAxisStreak = sameAxisStreak;
+        } else {
+          sameAxisStreak = 1;
+        }
+        prevZone = s.zone;
+        prevYawDeg = yaw0;
+        const stageSrc = typeof s.stage === "function" ? s.stage.toString() : "";
+        if (/animDistance|animation:\s*["'](?:walk|run)["']/.test(stageSrc)) locomotionShots++;
+      }
       // Same threshold as pickShot: the earliest output frame that actually selects it.
       const first = Math.max(0, Math.ceil((s.at - 1e-6) * fps));
       const next = scene.shots[i + 1];
@@ -738,8 +768,20 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
     }
     frame += duration;
   }
-  if (isModern && r.shots >= 8 && orbitShots / r.shots > 0.4) {
-    r.review.push(`Camera overuse: ${orbitShots}/${r.shots} shots (${Math.round((orbitShots / r.shots) * 100)}%) use orbits. 20k+ hits use ~75–85% cam.push/cam.front; reserve orbits for real reveals.`);
+  if (isModern && r.shots >= 10) {
+    if (maxSameAxisStreak >= 5) {
+      r.unfinished.push(`Background wall spam: ${maxSameAxisStreak} consecutive shots share the same zone and camera yaw (±22°). Switch camera axis (cam.track, cam.sweep, cam.heroLow, cam.streetOverview, reverse/alley angle, or interior).`);
+    }
+    const maxBinCount = Math.max(0, ...yawBins.values());
+    if (maxBinCount / r.shots > 0.72) {
+      r.unfinished.push(`Monotonous single-axis framing: ${Math.round((maxBinCount / r.shots) * 100)}% of shots face the same direction. Use <VillageStreet> and shoot from 4+ distinct camera axes.`);
+    }
+    if (nonLockedShots >= 8 && lazyCamShots / nonLockedShots > 0.35) {
+      r.unfinished.push(`Lazy camera motion: ${lazyCamShots}/${nonLockedShots} shots barely move (<1.0m travel and <8° sweep). Use cam.track(), cam.sweep(), cam.truck(), or cam.heroLow() for active reference-grade camera motion.`);
+    }
+    if (r.shots >= 12 && locomotionShots / r.shots < 0.2) {
+      r.unfinished.push(`Stiff/static staging: only ${locomotionShots}/${r.shots} shots show real A->B actor locomotion (walk/run with animDistance). Show characters physically moving between locations instead of waving on one spot.`);
+    }
   }
   if (topic?.film?.captions) narration(film, timing, topic, script, covered, frame, r, replayLegacy);
   return r;

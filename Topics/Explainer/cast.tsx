@@ -21,7 +21,19 @@ import { Crown, NameTag, PeakedCap, Spectacles, TopHat } from "./props";
 
 type AvatarBase = Partial<MinecraftAvatarProps>;
 
+export type CitizenVariant = "leo" | "sam" | "alex" | "maya" | "builder";
+
+const CITIZEN_VARIANTS: Record<CitizenVariant, { skin: string; hair: string; torso: string; arms: string; legs: string; glasses: boolean }> = {
+  leo: { skin: "#efc29f", hair: "#7a361a", torso: "#c85537", arms: "#b5482c", legs: "#333f52", glasses: true },
+  sam: { skin: "#d9a47c", hair: "#211d1a", torso: "#2b7a78", arms: "#236361", legs: "#2c3340", glasses: false },
+  alex: { skin: "#f0c8a8", hair: "#c26c2d", torso: "#3b8248", arms: "#316e3c", legs: "#3b2f28", glasses: false },
+  maya: { skin: "#e3b28e", hair: "#3d2314", torso: "#6c48a6", arms: "#5a3b8c", legs: "#273347", glasses: true },
+  builder: { skin: "#e8ba92", hair: "#523620", torso: "#d49b2a", arms: "#b88421", legs: "#384252", glasses: false },
+};
+
 export type CitizenLeadProps = AvatarBase & {
+  /** Distinct citizen look so two citizens in one scene are NEVER identical clones. */
+  variant?: CitizenVariant;
   /** Render round wire spectacles on his face. Default true. */
   glasses?: boolean;
   /** Carry a leather satchel strap across his torso. Default true. */
@@ -34,7 +46,8 @@ export type CitizenLeadProps = AvatarBase & {
 
 /** Character 1: The relatable everyday / struggling / mistake-maker lead. */
 export const CitizenLead: React.FC<CitizenLeadProps> = ({
-  glasses = true,
+  variant = "leo",
+  glasses,
   satchel = true,
   nameTag,
   nameTagYaw,
@@ -43,23 +56,26 @@ export const CitizenLead: React.FC<CitizenLeadProps> = ({
   position = [0, 0, 0],
   scale = 1,
   ...rest
-}) => (
+}) => {
+  const v = CITIZEN_VARIANTS[variant];
+  const showGlasses = glasses ?? v.glasses;
+  return (
   <group>
     <MinecraftAvatar
       position={position}
       scale={scale}
       outfit="hoodie"
-      skin="#efc29f"
-      hair="#7a361a"
+      skin={v.skin}
+      hair={v.hair}
       hairLayer
-      colors={{ torso: "#c85537", arms: "#b5482c", legs: "#333f52" }}
+      colors={{ torso: v.torso, arms: v.arms, legs: v.legs }}
       shoes="#ebe4d3"
       rim={0.08}
       rimColor="#1c273b"
       blink
       head={
         <>
-          {glasses ? <Spectacles /> : null}
+          {showGlasses ? <Spectacles /> : null}
           {head}
         </>
       }
@@ -90,6 +106,7 @@ export const CitizenLead: React.FC<CitizenLeadProps> = ({
     ) : null}
   </group>
 );
+};
 
 export type EliteVariant = "pres" | "general" | "tycoon";
 
