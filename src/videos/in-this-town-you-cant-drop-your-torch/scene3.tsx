@@ -1,240 +1,205 @@
+import type React from "react";
 import {
-  Bits,
   ChiefFlint,
   FireflyJar,
   FireflySwarm,
   FloatingNumber,
-  Glow,
-  HandTorch,
-  Hero,
+  Kai,
   PipFirefly,
-  Player,
   ShadowCreature,
-  Sign,
   Smoke,
+  Townie,
+  WindStreaks,
   cam,
-  ease,
-  pop,
-  ramp,
+  clamp01,
+  lerp,
+  moveBetween,
   storyScene,
   timing,
-  wordAt,
 } from "./kit";
 
-/** Scene 3 (Beats 5–6): Windstorm Blows Out Every Torch + Kai's Living-Glow Twist + 50 Fireflies! */
+/**
+ * Scene 3 (13 shots): The howling windstorm extinguishes every torch,
+ * shadows invade the square, and Kai unleashes Pip + 50 glowing fireflies!
+ */
 export const scene3 = storyScene(timing, {
   id: "scene3",
-  title: "The Windstorm & Firefly Swarm",
+  title: "Scene 3",
   shots: [
     {
       cue: "5.wind",
-      ...cam.push({ on: [0, 1.5, 1.2], dist: 7.7, to: 6.4, yaw: 10, pitch: 8, fov: 48 }),
-      zone: "town",
       look: "overworld-storm",
-      note: "A howling windstorm slams the village square as townsfolk brace against the blast.",
+      note: "Stormy crane sweeps down the 56m street as howling wind streaks slam through town.",
+      ...cam.streetOverview({ from: [-2.4, 0, 12.6], to: [1.6, 0, 6.2], height: 5.4, fov: 48 }),
       stage: (t) => (
         <>
-          <Player who={2} position={[-1.6, 0, 1.6]} rotationY={0.2} animation="cower" face="fear" time={t}>
-            <HandTorch position={[0, -0.04, 0.14]} lit />
-          </Player>
-          <Player who={4} position={[1.6, 0, 1.6]} rotationY={-0.2} animation="cower" face="fear" time={t}>
-            <HandTorch position={[0, -0.04, 0.14]} lit />
-          </Player>
-          <Hero position={[0, 0, 2.0]} rotationY={0} animation="cower" face="surprised" time={t}>
-            <FireflyJar position={[0, -0.04, 0.14]} t={t} />
-          </Hero>
+          <WindStreaks t={t} center={[0, 2.2, 1.0]} />
+          <Townie who={1} position={[-2.2, 0, 1.6]} rotationY={0.4} animation="cower" face="scared" torch time={t} />
+          <Townie who={3} position={[2.2, 0, 1.8]} rotationY={-0.4} animation="cower" face="scared" torch time={t} />
+          <Kai position={[0, 0, 2.4]} animation="idle" face="worried" time={t} />
         </>
       ),
     },
     {
       cue: "5.out2",
-      ...cam.twoShot({ a: [-1.2, 0, 1.6], b: [1.2, 0, 1.6], facing: 0, dist: 6.7, to: 5.6, side: -12, pitch: 8, fov: 46 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "WHOOSH! Every single wooden torch on the street blows out in unison!",
-      stage: (t) => {
-        const outAt = Math.max(0.15, wordAt("5.out2", "out") - 0.1);
-        const out = t >= outAt;
-        return (
-          <>
-            <Player who={2} position={[-1.2, 0, 1.6]} rotationY={0.2} animation={out ? "cower" : "wave"} face={out ? "fear" : "surprised"} time={t}>
-              <HandTorch position={[0, -0.04, 0.14]} lit={!out} />
-            </Player>
-            <Player who={4} position={[1.2, 0, 1.6]} rotationY={-0.2} animation={out ? "cower" : "wave"} face={out ? "fear" : "surprised"} time={t}>
-              <HandTorch position={[0, -0.04, 0.14]} lit={!out} />
-            </Player>
-            {out && <Smoke position={[0, 1.4, 1.6]} />}
-          </>
-        );
-      },
+      look: "overworld-storm",
+      note: "Wide storm sweep as every single torch on the street blows out in puffs of smoke.",
+      ...cam.sweep({ on: [0, 1.35, 1.6], dist: 5.6, fromYaw: -40, toYaw: 40, pitch: 9, fov: 44 }),
+      stage: (t) => (
+        <>
+          <WindStreaks t={t} center={[0, 2.0, 1.2]} />
+          <Townie who={1} position={[-2.2, 0, 1.6]} rotationY={0.4} animation="cower" face="scared" time={t} />
+          <Townie who={3} position={[2.2, 0, 1.8]} rotationY={-0.4} animation="cower" face="scared" time={t} />
+          <Smoke position={[-2.2, 1.3, 1.6]} count={10} />
+          <Smoke position={[2.2, 1.3, 1.8]} count={10} />
+        </>
+      ),
     },
     {
       cue: "5.lock",
-      ...cam.front({ actor: [1.2, 0, 1.0], facing: 0, dist: 6.5, to: 5.4, side: 14, pitch: 8, fov: 44 }),
-      zone: "town",
       look: "overworld-storm",
-      note: "Chief Flint slams his iron door and jacks storm lanterns to 200 emeralds!",
+      note: "Low dramatic angle on Chief Flint slamming his shop shut and demanding two hundred emeralds.",
+      ...cam.heroLow({ on: [3.8, 0, -2.5], dist: 5.0, yaw: -24, fov: 44 }),
       stage: (t) => (
         <>
-          <ChiefFlint position={[1.2, 0, 1.0]} rotationY={0} animation="point" face="angry" time={t} />
-          <Sign title="CLOSED!" subtitle="200 EMERALDS" width={1.45} position={[2.8, 1.0, 0.9]} rotationY={-0.25} />
-          <FloatingNumber text="200!" color="#ff4f42" position={[1.2, 2.75, 1.0]} height={0.82 * pop(t, 0.12)} />
+          <WindStreaks t={t} center={[3.2, 2.0, -2.0]} />
+          <ChiefFlint position={[3.8, 0, -2.5]} rotationY={-1.3} animation="laugh" face="smug" torch light={3.2} time={t} />
+          <FloatingNumber text="200 EMERALDS!" position={[3.6, 2.2, -2.5]} color="#ff4444" height={0.4} />
         </>
       ),
     },
     {
       cue: "5.creep",
-      ...cam.push({ on: [0, 1.4, 1.0], dist: 7.5, to: 6.2, yaw: -10, pitch: 8, fov: 46 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "Tall black ShadowCreatures creep straight onto the dark cobble square!",
+      look: "overworld-storm",
+      note: "Tracking camera glides alongside three tall living shadows advancing onto the cobble square.",
+      ...cam.track({ from: [0, 0, -10.5], to: [0, 0, -3.2], sideDist: 5.0, side: -1, height: 1.6, fov: 44 }),
       stage: (t) => {
-        const s = ease(ramp(t, 0, 1.1));
+        const adv = moveBetween([0, 0, -10.5], [0, 0, -3.2], t, 0, 2.2);
         return (
           <>
-            <ShadowCreature position={[-1.7 + s * 0.5, 0, 0.2 + s * 1.0]} rotationY={0.25} t={t} />
-            <ShadowCreature position={[0, 0, -0.2 + s * 1.1]} rotationY={0} t={t} />
-            <ShadowCreature position={[1.7 - s * 0.5, 0, 0.2 + s * 1.0]} rotationY={-0.25} t={t} />
+            <WindStreaks t={t} center={[0, 2.0, adv.position[2]]} />
+            <ShadowCreature position={[adv.position[0] - 2.0, 0, adv.position[2]]} rotationY={0.15} scale={1.2} t={t} />
+            <ShadowCreature position={[adv.position[0], 0, adv.position[2] - 0.8]} rotationY={0} scale={1.3} t={t} />
+            <ShadowCreature position={[adv.position[0] + 2.0, 0, adv.position[2]]} rotationY={-0.15} scale={1.2} t={t} />
           </>
         );
       },
     },
     {
       cue: "5.trap",
-      ...cam.twoShot({ a: [-1.2, 0, 1.6], b: [1.2, 0, 1.6], facing: 0, dist: 6.7, to: 5.6, side: 10, pitch: 8, fov: 45 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "Neighbors back up waving cold dead sticks in panic.",
+      look: "overworld-storm",
+      note: "Cross-square sweep as terrified neighbors back up waving dead cold sticks in panic.",
+      ...cam.sweep({ on: [0, 1.3, 1.4], dist: 6.2, fromYaw: 38, toYaw: -34, pitch: 12, fov: 44 }),
       stage: (t) => (
         <>
-          <Player who={2} position={[-1.2, 0, 1.6]} rotationY={0.2} animation="cower" face="fear" time={t}>
-            <HandTorch position={[0, -0.04, 0.14]} lit={false} />
-          </Player>
-          <Player who={5} position={[1.2, 0, 1.6]} rotationY={-0.2} animation="cower" face="fear" time={t}>
-            <HandTorch position={[0, -0.04, 0.14]} lit={false} />
-          </Player>
+          <WindStreaks t={t} center={[0, 2.0, 1.0]} />
+          <Townie who={1} position={[-2.2, 0, 1.6]} rotationY={0.4} animation="cower" face="scared" time={t} />
+          <Townie who={3} position={[2.2, 0, 1.8]} rotationY={-0.4} animation="cower" face="scared" time={t} />
+          <Townie who={5} position={[-3.4, 0, 3.2]} rotationY={0.6} animation="shrug" face="worried" time={t} />
+          <ShadowCreature position={[-2.4, 0, -2.4]} rotationY={0.25} scale={1.2} t={t} />
+          <ShadowCreature position={[2.6, 0, -2.2]} rotationY={-0.25} scale={1.2} t={t} />
         </>
       ),
     },
     {
       cue: "5.broke",
-      ...cam.front({ actor: [0, 0, 1.6], facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: 8, fov: 44 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "Villager shrugs with empty pockets — nobody can afford 200 emeralds.",
+      look: "overworld-storm",
+      note: "Tight tense sweep across the trapped villagers with empty pockets as shadows close in.",
+      ...cam.sweep({ on: [0, 1.35, 1.6], dist: 5.0, fromYaw: -28, toYaw: 24, pitch: 7, fov: 40 }),
       stage: (t) => (
         <>
-          <Player who={3} position={[0, 0, 1.6]} rotationY={0} animation="shrug" face="sad" time={t} />
-          <FloatingNumber text="0 EMERALDS" color="#ff6b57" position={[0, 2.6, 1.6]} height={0.62 * pop(t, 0.12)} />
+          <Townie who={1} position={[-1.6, 0, 1.6]} rotationY={0.4} animation="shrug" face="sad" time={t} />
+          <Townie who={3} position={[1.6, 0, 1.6]} rotationY={-0.4} animation="shrug" face="worried" time={t} />
+          <Kai position={[0, 0, 1.8]} animation="idle" face="worried" time={t} />
+          <FireflyJar position={[0.35, 1.15, 1.95]} hasPip t={t} />
         </>
       ),
     },
     {
       cue: "6.rule",
-      ...cam.front({ actor: [0, 0, 1.6], facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 7, fov: 42 }),
-      zone: "town",
-      look: "overworld-golden",
-      note: "Hero twist! Golden lightbulb moment as Kai grins and points up.",
+      look: "overworld-storm",
+      note: "Hero low-angle shot on Kai realizing the one simple rule everyone in town forgot.",
+      ...cam.heroLow({ on: [0, 0, 1.8], dist: 4.4, yaw: -20, fov: 42 }),
       stage: (t) => (
         <>
-          <Hero position={[0, 0, 1.6]} rotationY={0} animation="point" face="grin" time={t}>
-            <FireflyJar position={[0, -0.04, 0.16]} t={t} />
-          </Hero>
-          <Glow position={[0, 2.35, 1.6]} size={1.6} color="#ffe066" opacity={0.45 * pop(t, 0.1)} />
-          <FloatingNumber text="!" color="#ffd84d" position={[0, 2.45, 1.6]} height={0.85 * pop(t, 0.1)} />
+          <Kai position={[0, 0, 1.8]} animation="idle" face="brave" time={t} />
+          <FireflyJar position={[0.35, 1.15, 1.95]} hasPip t={t} />
         </>
       ),
     },
     {
       cue: "6.fire",
-      ...cam.front({ actor: [0, 0.8, 1.6], facing: 0, dist: 6.2, to: 5.0, side: -14, pitch: 8, fov: 42 }),
-      zone: "town",
       look: "overworld-storm",
-      note: "Close-up of a wooden torch flame blowing out immediately in the wind.",
-      stage: (t) => {
-        const outAt = Math.max(0.2, wordAt("6.fire", "fire") - 0.05);
-        return (
-          <>
-            <HandTorch position={[0, 0.4, 1.6]} scale={2.2} lit={t < outAt} />
-            <FloatingNumber text="BLOWN OUT" color="#ff6b57" position={[0, 2.0, 1.6]} height={0.58 * pop(t, outAt)} />
-          </>
-        );
-      },
+      note: "Quick arc showing wind streaks snuffing out a smoking torch in half a second.",
+      ...cam.sweep({ on: [-1.8, 1.3, 1.6], dist: 4.6, fromYaw: 30, toYaw: -26, pitch: 8, fov: 40 }),
+      stage: (t) => (
+        <>
+          <WindStreaks t={t} center={[-1.8, 1.8, 1.6]} />
+          <Townie who={1} position={[-1.8, 0, 1.6]} animation="cower" face="scared" time={t} />
+          <Smoke position={[-1.8, 1.3, 1.6]} count={12} />
+        </>
+      ),
     },
     {
       cue: "6.bug",
-      ...cam.front({ actor: [0, 0.9, 1.6], facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 8, fov: 42 }),
-      zone: "town",
-      look: "overworld-golden",
-      note: "Close-up of Pip's FireflyJar glowing steady and bright — wind can't blow out living glow!",
+      look: "overworld-storm",
+      note: "Glowing close-up sweep on Pip shining steadily inside the glass jar despite the storm.",
+      ...cam.sweep({ on: [0.35, 1.25, 1.9], dist: 3.8, fromYaw: -28, toYaw: 28, pitch: 6, fov: 36 }),
       stage: (t) => (
         <>
-          <FireflyJar position={[0, 0.45, 1.6]} scale={2.2} t={t} />
-          <FloatingNumber text="LIVING GLOW!" color="#ffe066" position={[0, 2.05, 1.6]} height={0.62 * pop(t, 0.12)} />
+          <WindStreaks t={t} center={[0, 2.2, 1.4]} />
+          <Kai position={[0, 0, 1.8]} animation="idle" face="brave" time={t} />
+          <FireflyJar position={[0.35, 1.2, 1.95]} hasPip t={t} />
         </>
       ),
     },
     {
       cue: "6.open",
-      ...cam.front({ actor: [0, 0, 1.6], facing: 0, dist: 6.2, to: 5.0, side: -12, pitch: 7, fov: 44 }),
-      zone: "town",
-      look: "overworld-golden",
-      note: "Kai pops Pip's jar lid open and holds it high above his head!",
+      look: "overworld-storm",
+      note: "Dramatic low hero angle as Kai pops Pip's cork lid open and raises the jar skyward.",
+      ...cam.heroLow({ on: [0, 0.2, 1.8], dist: 4.4, yaw: 24, fov: 42 }),
       stage: (t) => (
         <>
-          <Hero position={[0, 0, 1.6]} rotationY={0} animation="reachUp" face="grin" time={t}>
-            <FireflyJar position={[0, -0.04, 0.16]} empty={t > 0.35} t={t} />
-          </Hero>
-          {t > 0.35 && <PipFirefly position={[0, 2.1 + (t - 0.35) * 1.4, 1.6]} scale={1.1} t={t} />}
+          <Kai position={[0, 0, 1.8]} animation="reachUp" face="brave" time={t} />
+          <FireflyJar position={[0.35, 1.75, 1.95]} open={clamp01(t / 0.8)} hasPip t={t} />
         </>
       ),
     },
     {
       cue: "6.fly",
-      ...cam.push({ on: [0, 2.8, 1.6], dist: 7.1, to: 5.8, yaw: 12, pitch: -8, fov: 46 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "Pip shoots straight upward like a bright golden star lighting the night sky!",
-      stage: (t) => {
-        const rise = ease(ramp(t, 0, 1.0));
-        return (
-          <>
-            <Hero position={[0, 0, 1.6]} rotationY={0} animation="cheer" face="grin" time={t} />
-            <PipFirefly position={[0, 1.8 + rise * 2.4, 1.6]} scale={1.35} t={t} />
-            <Bits position={[0, 2.2 + rise * 2.0, 1.6]} count={14} color="#ffe066" t={t} />
-          </>
-        );
-      },
+      look: "overworld-storm",
+      note: "Upward sweeping tilt following Pip rocketing skyward like a tiny golden star.",
+      ...cam.sweep({ on: [0, 3.2, 1.6], dist: 5.4, fromYaw: -28, toYaw: 26, pitch: -8, fov: 44 }),
+      stage: (t) => (
+        <>
+          <Kai position={[0, 0, 1.8]} animation="reachUp" face="wow" time={t} />
+          <PipFirefly position={[0, lerp(1.65, 4.4, clamp01(t / 1.5)), 1.6]} scale={1.45} t={t} />
+        </>
+      ),
     },
     {
       cue: "6.call",
-      ...cam.front({ actor: [0, 2.8, 1.4], facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: -6, fov: 44 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "Pip blinks brightly three times toward the dark pine woods!",
-      stage: (t) => {
-        const pulse = Math.abs(Math.sin(t * 9)) * 0.65;
-        return (
-          <>
-            <PipFirefly position={[0, 2.8, 1.4]} scale={1.3 + pulse * 0.4} t={t} />
-            <Glow position={[0, 2.8, 1.4]} size={2.2 + pulse * 1.4} color="#fff066" opacity={0.45 + pulse * 0.3} />
-          </>
-        );
-      },
+      look: "overworld-storm",
+      note: "High crane past hovering Pip blinking three golden signals toward the dark pine woods.",
+      ...cam.streetOverview({ from: [1.8, 0, 4.2], to: [-1.4, 0, -1.6], height: 4.6, fov: 46 }),
+      stage: (t) => (
+        <>
+          <Kai position={[0, 0, 1.8]} rotationY={Math.PI} animation="idle" face="brave" time={t} />
+          <PipFirefly position={[0, 4.2, -1.5]} scale={1.55} t={t} pulse={0.6 + 0.8 * Math.abs(Math.sin(t * 9))} />
+        </>
+      ),
     },
     {
       cue: "6.swarm",
-      ...cam.push({ on: [0, 2.0, 1.4], dist: 7.9, to: 6.4, yaw: 10, pitch: 6, fov: 48 }),
-      zone: "town",
-      look: "overworld-golden",
-      note: "Fifty glowing golden fireflies burst into the square flooding everything with warm light!",
+      look: "lantern-night",
+      note: "Epic high crane descending over the square as fifty glowing fireflies flood the entire street.",
+      ...cam.streetOverview({ from: [-2.8, 0, 11.4], to: [2.2, 0, 6.0], height: 5.6, fov: 48 }),
       stage: (t) => (
         <>
-          <Hero position={[0, 0, 1.8]} rotationY={0} animation="cheer" face="grin" time={t} />
-          <Player who={2} position={[-1.6, 0, 1.7]} rotationY={0.2} animation="cheer" face="grin" time={t} />
-          <Player who={4} position={[1.6, 0, 1.7]} rotationY={-0.2} animation="cheer" face="grin" time={t} />
-          <FireflySwarm position={[0, 2.2, 1.2]} count={20} t={t} />
-          <FloatingNumber text="50 FIREFLIES!" color="#ffe066" position={[0, 3.3, 1.2]} height={0.68 * pop(t, 0.1)} />
+          <FireflySwarm center={[0, 2.2, 0]} count={36} spread={10.5} t={t} />
+          <Kai position={[0, 0, 1.8]} animation="cheer" face="happy" time={t} />
+          <Townie who={1} position={[-2.4, 0, 2.0]} rotationY={0.4} animation="cheer" face="wow" time={t} />
+          <Townie who={3} position={[2.4, 0, 2.0]} rotationY={-0.4} animation="cheer" face="happy" time={t} />
         </>
       ),
     },

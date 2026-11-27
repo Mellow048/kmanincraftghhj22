@@ -1,211 +1,229 @@
+import type React from "react";
 import {
   Block,
-  ChatToast,
-  FloatingNumber,
+  Crater,
   Glow,
+  IRL_POS,
   Jake,
   Maya,
-  PLACE,
+  PencilProp,
+  SCHOOL_POS,
+  ServerChatBox,
   ServerPlayer,
+  Sister,
   SpawnBench,
   TntBlock,
   cam,
-  ease,
-  on,
-  pop,
-  ramp,
+  clamp01,
+  moveBetween,
   storyScene,
   timing,
-  wordAt,
 } from "./kit";
 
-/** Scene 2 (Beats 3–4): Jake Blows Up the Bench -> Maya Types 'sorry' -> Sister Reveals IRL Truth. */
+/**
+ * Scene 2 (14 shots): Jake's TNT grief, Maya's quiet "sorry" & disconnect,
+ * and the emotional IRL bedroom + school classroom reveal.
+ */
 export const scene2 = storyScene(timing, {
   id: "scene2",
-  title: "The TNT Grief & IRL Reveal",
+  title: "Scene 2",
   shots: [
     {
       cue: "3.jake",
-      ...cam.front({ actor: on(PLACE.server, 0.8, 0, 1.0), facing: 0, dist: 6.3, to: 5.2, side: 14, pitch: 8, fov: 44 }),
-      zone: "server",
-      note: "Jake stomps toward the spawn bench looking annoyed and angry.",
+      note: "Tracking shot follows angry griefer Jake marching down the street straight toward Maya's bench.",
+      ...cam.track({ from: [5.8, 0, 7.0], to: [1.5, 0, 1.9], sideDist: 4.6, side: -1, height: 1.6, fov: 44 }),
       stage: (t) => {
-        const w = ease(ramp(t, 0, 0.9));
+        const j = moveBetween([5.8, 0, 7.0], [1.5, 0, 1.9], t, 0, 2.0);
         return (
-          <Jake position={on(PLACE.server, 1.8 - w * 1.0, 0, 1.0)} rotationY={w < 0.96 ? -Math.PI / 2 : -0.2} animation={w < 0.96 ? "walk" : "point"} animDistance={w * 1.0} face="angry" time={t} />
+          <>
+            <SpawnBench position={[0, 0, 1.2]} />
+            <Maya position={[0, 0.2, 1.38]} animation="sit" face="worried" time={t} />
+            <Jake position={j.position} rotationY={j.rotationY} animation={j.moving ? "walk" : "point"} animDistance={j.animDistance} face="angry" badge="!" badgePopStart={0.35} time={t} />
+          </>
         );
       },
     },
     {
       cue: "3.tnt",
-      ...cam.twoShot({ a: on(PLACE.server, -0.7, 0, 0.6), b: on(PLACE.server, 0.9, 0, 1.0), facing: 0, dist: 6.5, to: 5.4, side: -12, pitch: 8, fov: 44 }),
-      zone: "server",
-      note: "Jake drops a flashing red TNT block right beside Maya's wooden bench!",
-      stage: (t) => (
-        <>
-          <SpawnBench position={on(PLACE.server, -0.7, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, -0.7, 0.35, 0.55)} rotationY={0.3} animation="cower" face="surprised" time={t} />
-          <Jake position={on(PLACE.server, 1.1, 0, 1.0)} rotationY={-0.45} animation="press" face="smug" time={t} />
-          <TntBlock position={on(PLACE.server, 0.25, 0, 0.85)} flash={Math.floor(t * 8) % 2 === 0} />
-        </>
-      ),
+      note: "Low dramatic angle as Jake plants flashing red TNT beneath the wooden oak bench and backs away.",
+      ...cam.heroLow({ on: [0.3, 0, 1.2], dist: 5.0, yaw: -24, fov: 44 }),
+      stage: (t) => {
+        const back = moveBetween([1.2, 0, 1.8], [2.4, 0, 3.2], t, 0.6, 2.0);
+        return (
+          <>
+            <SpawnBench position={[0, 0, 1.2]} />
+            <TntBlock position={[0.2, 0.45, 1.2]} fuse={clamp01(t / 1.8)} />
+            <Maya position={[0, 0.2, 1.38]} animation="cower" face="scared" time={t} />
+            <Jake position={back.position} rotationY={back.moving ? back.rotationY : -0.7} animation={back.moving ? "walk" : "press"} animDistance={back.animDistance} face="smug" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "3.boom",
-      ...cam.push({ on: on(PLACE.server, 0, 1.2, 0.6), dist: 7.3, to: 6.0, yaw: 10, pitch: 8, fov: 46 }),
-      zone: "server",
-      note: "BOOM! Orange flash and oak splinters fly across the spawn square leaving a crater.",
+      note: "Sweeping blast pull-back as the TNT explodes and oak splinters fly across the spawn square.",
+      ...cam.sweep({ on: [0, 1.2, 1.2], dist: 4.6, distTo: 7.4, fromYaw: 12, toYaw: -34, pitch: 12, fov: 46 }),
       stage: (t) => {
-        const boomAt = Math.max(0.12, wordAt("3.boom", "Boom") + 0.04);
-        const hit = t >= boomAt;
+        const flash = clamp01(1 - t / 0.85);
         return (
           <>
-            <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state={hit ? "crater" : "plain"} />
-            {hit && (
-              <>
-                <Glow position={on(PLACE.server, 0, 1.1, 0.5)} size={3.6} color="#ff8844" opacity={0.65} />
-                <Block position={on(PLACE.server, -0.7, 1.4 + (t - boomAt) * 1.6, 0.8)} size={[0.38, 0.18, 0.24]} color="#9c7042" />
-                <Block position={on(PLACE.server, 0.8, 1.2 + (t - boomAt) * 1.8, 0.6)} size={[0.34, 0.16, 0.22]} color="#7a5630" />
-              </>
-            )}
+            <Crater position={[0, 0, 1.2]} debris={1} />
+            {flash > 0.05 ? (
+              <group position={[0, 1.2, 1.2]}>
+                <Glow size={5.2 * flash + 1.2} color="#ffaa3b" opacity={0.85 * flash} />
+                <Block size={[2.2 * flash, 2.2 * flash, 2.2 * flash]} color="#fff2c4" emissive="#ff7b24" emissiveIntensity={2.0} />
+              </group>
+            ) : null}
+            <Maya position={[0, 0, 1.2]} animation="cower" face="scared" time={t} />
+            <Jake position={[2.2, 0, 2.8]} rotationY={-0.6} animation="laugh" face="laugh" time={t} />
           </>
         );
       },
     },
     {
       cue: "3.type",
-      ...cam.front({ actor: on(PLACE.server, 0.6, 0, 1.0), facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 7, fov: 42 }),
-      zone: "server",
-      note: "Jake laughs pointing at the crater with a cruel ChatToast above him.",
+      note: "Cross-angle sweep onto Jake laughing and typing go actually play the game in server chat.",
+      ...cam.sweep({ on: [2.0, 1.5, 2.4], dist: 4.8, fromYaw: 34, toYaw: -12, pitch: 6, fov: 40 }),
       stage: (t) => (
         <>
-          <Jake position={on(PLACE.server, 0.6, 0, 1.0)} rotationY={0} animation="laugh" face="smug" time={t} />
-          <ChatToast sender="Jake" text="go actually play the game" position={on(PLACE.server, 0.6, 2.55, 1.0)} height={0.24 * pop(t, 0.1)} color="#ff4f42" />
+          <Crater position={[0, 0, 1.2]} debris={1} />
+          <Maya position={[0, 0, 1.2]} animation="idle" face="sad" time={t} />
+          <Jake position={[2.2, 0, 2.8]} rotationY={-0.6} animation="laugh" face="laugh" time={t} />
+          <ServerChatBox position={[1.8, 2.55, 2.6]} lines={[{ sender: "Jake", text: "go actually play the game", color: "#ff9e8a" }]} />
         </>
       ),
     },
     {
       cue: "3.stand",
-      ...cam.front({ actor: on(PLACE.server, 0, 0, 0.6), facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: 8, fov: 44 }),
-      zone: "server",
-      look: "overworld-golden",
-      note: "Heartbreaking beat: Maya stands quietly in the empty crater looking down.",
+      look: "overworld-rain",
+      note: "Rainy crane sweeps down onto Maya standing alone and crying inside the blast crater.",
+      ...cam.streetOverview({ from: [-2.8, 0, 7.2], to: [-0.8, 0, 4.6], height: 4.2, fov: 44 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="crater" />
-          <Maya position={on(PLACE.server, 0, 0, 0.6)} rotationY={0} animation="cower" face="sad" time={t} />
+          <Crater position={[0, 0, 1.2]} debris={1} />
+          <Maya position={[0, 0, 1.2]} animation="idle" face="crying" tears={1} time={t} />
         </>
       ),
     },
     {
       cue: "3.sorry",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.1, 0.6), facing: 0, dist: 6.2, to: 5.0, side: 12, pitch: 7, fov: 42 }),
-      zone: "server",
-      look: "overworld-golden",
-      note: "Maya's single quiet word 'sorry' floats gently above her in chat.",
+      look: "overworld-rain",
+      note: "Intimate rainy arc around Maya as tears fall and she slowly types sorry in chat.",
+      ...cam.sweep({ on: [0, 1.5, 1.2], dist: 4.4, fromYaw: 24, toYaw: -22, pitch: 5, fov: 38 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="crater" />
-          <Maya position={on(PLACE.server, 0, 0, 0.6)} rotationY={0} animation="shrug" face="sad" time={t} />
-          <ChatToast sender="Maya" text="sorry" position={on(PLACE.server, 0, 2.45, 0.6)} height={0.28 * pop(t, 0.12)} color="#cbd5e1" />
+          <Crater position={[0, 0, 1.2]} debris={1} />
+          <Maya position={[0, 0, 1.2]} animation="idle" face="crying" tears={1} time={t} />
+          <ServerChatBox position={[0, 2.45, 1.2]} lines={[{ sender: "Maya", text: "sorry", color: "#d8e6ff" }]} typing={clamp01(t / 1.4)} />
         </>
       ),
     },
     {
       cue: "3.left",
-      ...cam.push({ on: on(PLACE.server, 0, 1.0, 0.6), dist: 6.9, to: 5.8, yaw: -10, pitch: 10, fov: 44 }),
-      zone: "server",
-      look: "overworld-night",
-      note: "Maya vanishes leaving only the dark empty crater and 'Maya left the game' toast.",
+      look: "overworld-rain",
+      note: "Crane pulls high and away from the empty crater as Maya left the game appears in chat.",
+      ...cam.streetOverview({ from: [0, 0, 4.6], to: [3.4, 0, 9.2], height: 3.4, fov: 46 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="crater" />
-          <ChatToast text="Maya left the game" position={on(PLACE.server, 0, 2.1, 0.6)} height={0.26 * pop(t, 0.1)} color="#ffe066" />
+          <Crater position={[0, 0, 1.2]} debris={1} />
+          <ServerChatBox position={[0, 2.2, 1.2]} lines={[{ text: "Maya left the game", color: "#ffe97d" }]} />
         </>
       ),
     },
     {
       cue: "4.days",
-      ...cam.push({ on: on(PLACE.server, 0, 1.1, 0.6), dist: 7.1, to: 6.0, yaw: 12, pitch: 10, fov: 45 }),
-      zone: "server",
-      note: "Three days pass — the empty bench spot sits quiet with a 3 DAYS LATER label.",
-      stage: (t) => (
-        <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="crater" />
-          <FloatingNumber text="3 DAYS LATER" color="#cbd5e1" position={on(PLACE.server, 0, 2.35, 0.6)} height={0.55 * pop(t, 0.1)} />
-        </>
-      ),
+      look: "overworld-sunset",
+      note: "Long golden-sunset sweep across the quiet spawn avenue showing the empty bench crater.",
+      ...cam.sweep({ on: [0, 0.9, 1.2], dist: 6.6, fromYaw: -42, toYaw: 42, pitch: 14, fov: 44 }),
+      stage: () => <Crater position={[0, 0, 1.2]} debris={1} />,
     },
     {
       cue: "4.join",
-      ...cam.front({ actor: on(PLACE.server, 0, 0, 0.6), facing: 0, dist: 6.3, to: 5.2, side: 14, pitch: 8, fov: 44 }),
-      zone: "server",
-      note: "Maya's avatar appears in the square as her older sister types a message in chat.",
+      zone: "irl",
+      look: "overworld-day",
+      note: "Bedroom cutaway sweep onto Maya's older sister typing on the glowing SMP computer desk.",
+      ...cam.sweep({ on: [IRL_POS[0], 1.35, IRL_POS[2] - 1.2], dist: 4.6, fromYaw: 108, toYaw: 74, pitch: 10, fov: 42 }),
       stage: (t) => (
-        <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="crater" />
-          <Maya position={on(PLACE.server, 0, 0, 0.6)} rotationY={0} animation="point" face="worried" time={t} />
-          <ChatToast sender="Maya (Sister)" text="Hey, this is Maya's sister..." position={on(PLACE.server, 0, 2.55, 0.6)} height={0.24 * pop(t, 0.12)} color="#93c5fd" />
-        </>
+        <group position={IRL_POS}>
+          <Sister position={[0.35, 0, -0.75]} rotationY={Math.PI} animation="press" face="sad" time={t} />
+          <Maya position={[-0.75, 0, -0.45]} rotationY={Math.PI - 0.35} animation="idle" face="uneasy" nameTag="" time={t} />
+          <ServerChatBox
+            position={[0.1, 2.25, -1.35]}
+            lines={[
+              { text: "Maya joined the game", color: "#ffe97d" },
+              { sender: "Maya", text: "hi this is her sister...", color: "#9bf2b0" },
+            ]}
+            typing={clamp01(t / 1.6)}
+          />
+        </group>
       ),
     },
     {
       cue: "4.hands",
-      ...cam.front({ actor: on(PLACE.irl, 0, 0.4, -0.3), facing: 0, dist: 6.2, to: 5.0, side: -14, pitch: 8, fov: 42 }),
       zone: "irl",
-      note: "IRL bedroom cutaway: Maya sits at her desk trying gently to hold the mouse.",
+      look: "overworld-day",
+      note: "Low empathetic angle on Maya beside her sister showing why she cannot hold a mouse.",
+      ...cam.heroLow({ on: [IRL_POS[0] - 0.3, 0, IRL_POS[2] - 0.8], dist: 4.2, yaw: 102, fov: 40 }),
       stage: (t) => (
-        <Maya position={on(PLACE.irl, 0, 0.25, -0.1)} rotationY={0.25} animation="sit" headYaw={Math.sin(t * 2.5) * 0.18} face="worried" time={t} />
+        <group position={IRL_POS}>
+          <Sister position={[0.35, 0, -0.75]} rotationY={Math.PI} animation="idle" face="sad" time={t} />
+          <Maya position={[-0.75, 0, -0.45]} rotationY={Math.PI - 0.35} animation="press" face="uneasy" nameTag="" time={t} />
+        </group>
       ),
     },
     {
       cue: "4.keys",
-      ...cam.front({ actor: on(PLACE.irl, 0, 0.4, -0.3), facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 8, fov: 42 }),
       zone: "irl",
-      note: "Maya gently presses two keys on her keyboard at her desk with a quiet smile.",
+      look: "overworld-day",
+      note: "Side-to-side desk sweep focusing on Maya carefully pressing two keyboard keys at once.",
+      ...cam.sweep({ on: [IRL_POS[0] - 0.2, 1.15, IRL_POS[2] - 1.2], dist: 4.0, fromYaw: 110, toYaw: 78, pitch: 12, fov: 40 }),
       stage: (t) => (
-        <>
-          <Maya position={on(PLACE.irl, 0, 0.25, -0.1)} rotationY={0} animation="press" face="calm" time={t} />
-          <FloatingNumber text="2 KEYS" color="#93c5fd" position={on(PLACE.irl, 0, 2.45, -0.1)} height={0.58 * pop(t, 0.12)} />
-        </>
+        <group position={IRL_POS}>
+          <Sister position={[0.35, 0, -0.75]} rotationY={Math.PI} animation="idle" face="calm" time={t} />
+          <Maya position={[-0.75, 0, -0.45]} rotationY={Math.PI - 0.35 + Math.sin(t * 2.5) * 0.06} animation="press" face="calm" nameTag="" time={t} />
+        </group>
       ),
     },
     {
       cue: "4.desk",
-      ...cam.twoShot({ a: on(PLACE.school, -0.9, 0, 0.6), b: on(PLACE.school, 1.0, 0, 0.6), facing: 0, dist: 6.5, to: 5.4, side: -10, pitch: 8, fov: 44 }),
       zone: "school",
-      note: "IRL classroom cutaway: Maya looks down sadly at her desk while classmates point.",
-      stage: (t) => (
-        <>
-          <Maya position={on(PLACE.school, -0.9, 0, 0.6)} rotationY={0.2} animation="cower" face="sad" time={t} />
-          <ServerPlayer role="friendA" position={on(PLACE.school, 1.0, 0, 0.6)} rotationY={-0.35} animation="point" face="uneasy" time={t} />
-        </>
-      ),
+      look: "overworld-day",
+      note: "Classroom sweep across student desks as Maya's yellow pencil drops and classmates stare.",
+      ...cam.sweep({ on: [SCHOOL_POS[0], 1.1, SCHOOL_POS[2]], dist: 5.2, fromYaw: -34, toYaw: 24, pitch: 12, fov: 42 }),
+      stage: (t) => {
+        const drop = clamp01((t - 0.35) / 0.7);
+        return (
+          <group position={SCHOOL_POS}>
+            <Maya position={[0, 0, 0.35]} rotationY={Math.PI} animation="sit" face="crying" tears={0.85} nameTag="" time={t} />
+            <PencilProp position={[0.35, 0.78 - drop * 0.74, -0.15 + drop * 0.32]} rotation={[0, 0.5 + drop * 0.9, 0]} />
+            <ServerPlayer role="bully" position={[-2.2, 0, 0.35]} rotationY={1.2} animation="sit" face="smug" badge="?" badgePopStart={0.5} time={t} />
+            <ServerPlayer role="friendC" position={[2.2, 0, 0.35]} rotationY={-1.2} animation="sit" face="surprised" time={t} />
+          </group>
+        );
+      },
     },
     {
       cue: "4.only",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.2, 0.6), facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 7, fov: 42 }),
-      zone: "server",
-      look: "overworld-golden",
-      note: "Warm flashback to Maya smiling peacefully on the oak spawn bench.",
+      look: "overworld-sunset",
+      note: "Warm sunset flashback crane over the spawn bench where nobody ever stared at Maya.",
+      ...cam.streetOverview({ from: [-3.2, 0, 8.2], to: [1.6, 0, 4.8], height: 4.6, fov: 44 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="wave" face="smile" time={t} />
+          <SpawnBench position={[0, 0, 1.2]} />
+          <Maya position={[0, 0.2, 1.38]} animation="sit" face="smile" time={t} />
         </>
       ),
     },
     {
       cue: "4.loved",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.2, 0.6), facing: 0, dist: 6.2, to: 5.0, side: -14, pitch: 7, fov: 42 }),
-      zone: "server",
       look: "overworld-golden",
-      note: "Warm 'hi! welcome back!' chat floats above Maya's smiling face.",
+      note: "Golden-hour sweep around Maya waving happily as her favorite part of the day plays out.",
+      ...cam.sweep({ on: [0, 1.4, 1.2], dist: 5.0, fromYaw: 32, toYaw: -28, pitch: 8, fov: 40 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="cheer" face="grin" time={t} />
-          <ChatToast sender="Maya" text="hi! welcome back!" position={on(PLACE.server, 0, 2.5, 0.55)} height={0.26 * pop(t, 0.1)} color="#6ee7b7" />
+          <SpawnBench position={[0, 0, 1.2]} />
+          <Maya position={[0, 0.2, 1.38]} animation="wave" face="happy" time={t} />
+          <ServerChatBox position={[0, 2.45, 1.2]} lines={[{ sender: "Maya", text: "hi everyone!", color: "#9bf2b0" }]} />
         </>
       ),
     },

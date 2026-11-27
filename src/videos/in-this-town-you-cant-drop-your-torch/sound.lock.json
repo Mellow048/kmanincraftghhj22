@@ -5,10 +5,10 @@
   "seconds": 102.8667,
   "built_from": {
     "timing.json": "703ee6c2f9de27c3bd899ca70a185800b56de78c",
-    "sound.json": "d6f335626a8d9b8a48ed534363aac797870a3753",
+    "sound.json": "931da9cd86197404c7e93f2fdcbf40c2302212b7",
     "narration.mp3": "7511d108740ba6936576a7a8935139a8e3bd775f"
   },
-  "mix_sha1": "f2816b808be7c436bda8412ea030e6fca43b42bc",
+  "mix_sha1": "7e13311a3da0e0b059215b809c6adb8496fa5c1a",
   "music_sections": [
     {
       "from": "1.town",
@@ -45,75 +45,70 @@
     "path": "Topics/InThisTown/InThisTownMusic.aac",
     "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
   },
-  "beds": 5,
+  "beds": 2,
   "measured": {
     "musicUnderVoiceDb": 16.5,
     "secondsWithoutMusic": 0.4,
-    "bedsUnderVoiceDb": 30.5,
-    "sfx": 86,
-    "sfxPerMinute": 50.2,
-    "sfxKinds": 23,
-    "longestGapSeconds": 3.1,
-    "longestGapAt": 62.3,
+    "bedsUnderVoiceDb": 33.0,
+    "sfx": 90,
+    "sfxPerMinute": 52.5,
+    "sfxKinds": 6,
+    "longestGapSeconds": 1.7,
+    "longestGapAt": 47.0,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 14.2,
-    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestMedianDb": 15.0,
+    "voiceOverRestWorstDb": 7.7,
     "voiceOverRestWorst": [
       {
-        "db": 4.0,
-        "t": 55.9,
-        "cue": "5.lock",
+        "db": 7.7,
+        "t": 31.4,
+        "cue": "3.flint",
         "sounding": [
-          "coin"
+          "chime"
         ]
       },
       {
-        "db": 5.6,
-        "t": 41.0,
-        "cue": "4.hundred",
-        "sounding": [
-          "coins",
-          "ding"
-        ]
-      },
-      {
-        "db": 7.1,
+        "db": 7.8,
         "t": 85.9,
         "cue": "7.mud",
         "sounding": [
-          "splash"
+          "chime"
         ]
       },
       {
-        "db": 7.3,
-        "t": 95.5,
-        "cue": "7.hug",
+        "db": 8.1,
+        "t": 36.7,
+        "cue": "4.mine",
+        "sounding": []
+      },
+      {
+        "db": 9.5,
+        "t": 17.0,
+        "cue": "2.school",
         "sounding": [
-          "ding",
-          "sparkle"
+          "chime"
         ]
       },
       {
-        "db": 7.5,
-        "t": 1.2,
-        "cue": "1.town",
+        "db": 9.7,
+        "t": 97.2,
+        "cue": "7.closed",
         "sounding": [
-          "fire_whoosh"
+          "chime"
         ]
       },
       {
-        "db": 7.6,
-        "t": 19.7,
-        "cue": "2.mail",
+        "db": 9.9,
+        "t": 9.1,
+        "cue": "1.out",
         "sounding": [
-          "gust",
-          "power_down"
+          "chime"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.0,
-    "limiterMaxDb": 1.0
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.2
   },
   "failures": []
 }
