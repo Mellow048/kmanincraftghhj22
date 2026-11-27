@@ -34,12 +34,12 @@ export const scene2 = storyScene(timing, {
       ...cam.track({ from: [1.2, 0, 10.5], to: [-1.4, 0, 6.2], sideDist: 5.8, side: -1, height: 1.5, lead: 1.6, fov: 44 }),
       zone: "town",
       look: "overworld-golden",
-      note: "Lateral tracking shot: kid pulls his hood low and hurries home fast down the golden afternoon street.",
+      note: "Lateral tracking shot: kid pulls his OWN SUNNY YELLOW HOOD low and hurries home fast down the golden afternoon street.",
       stage: (t, { dur }) => {
         const walk = walkSegment([1.2, 0, 10.5], [-1.4, 0, 6.2], t, 0, dur, { gait: "run" });
         return (
           <>
-            <Hero {...walk} animDistance={walk.animDistance} blueHood hoodLow face="sad" headPitch={0.28} />
+            <Hero {...walk} animDistance={walk.animDistance} yellowHood hoodLow face="frown" headPitch={0.28} />
             <Player who={6} position={[2.2, 0, 8.2]} rotationY={WEST} animation="idle" face="calm" />
           </>
         );
@@ -56,7 +56,7 @@ export const scene2 = storyScene(timing, {
         const emptyAt = w("2.chair", "empty");
         return (
           <group position={ROOM_POS}>
-            <Hero position={[-1.4, 0, -0.4]} rotationY={EAST} animation="sit" face="sad" lookAt={on(ROOM_POS, 1.4, 0.9, -0.4)} />
+            <Hero position={[-1.4, 0, -0.4]} rotationY={EAST} animation="sit" face="frown" lookAt={on(ROOM_POS, 1.4, 0.9, -0.4)} />
             {t >= emptyAt ? <FloatingNumber text="EMPTY" position={[1.45, 1.75, -0.4]} color="#ff4f42" height={0.38} /> : null}
           </group>
         );
@@ -64,16 +64,23 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "2.shame",
-      ...cam.front({ actor: on(ROOM_POS, -1.1, 0, 0.6), facing: SOUTH, dist: 5.4, to: 4.3, side: 14, pitch: 6 }),
+      ...cam.front({ actor: on(ROOM_POS, -1.4, 0.25, -0.4), facing: SOUTH, dist: 5.0, to: 3.9, side: 18, pitch: 6 }),
       zone: "room",
       look: "overworld-night",
       hud: { clock: "8:05 PM" },
-      note: "Close emotional front push on the kid dropping his gaze in shame as ghostly blue invisibility swirls drift over Dad's empty chair.",
+      note: "Heartbreaking close push on the kid (continuous seated position [-1.4, 0, -0.4]!) with downturned frown, tears, and drooping head.",
       stage: (t) => {
         const shameAt = w("2.shame", "shame");
         return (
           <group position={ROOM_POS}>
-            <Hero position={[-1.1, 0, 0.6]} rotationY={SOUTH} animation={t > shameAt ? "ache" : "idle"} face="sad" headPitch={0.14 + ease(ramp(t, shameAt - 0.1, shameAt + 0.5)) * 0.28} />
+            <Hero
+              position={[-1.4, 0, -0.4]}
+              rotationY={26 * DEG}
+              animation={t > shameAt ? "ache" : "sit"}
+              face="frown"
+              tears={0.85}
+              headPitch={0.18 + ease(ramp(t, shameAt - 0.1, shameAt + 0.5)) * 0.24}
+            />
             <PotionSwirl position={[1.4, 1.0, -0.4]} t={t} intensity={0.75} />
           </group>
         );
@@ -162,35 +169,35 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.baker",
-      ...cam.frameDuo({ a: [-1.2, 0, -10.5], b: [1.7, 0, -10.5], fromYaw: -20, toYaw: 16, pitch: 8 }),
+      ...cam.sweep({ on: [2.8, 1.3, -9.8], dist: 6.2, distTo: 5.0, fromYaw: -76, toYaw: -52, pitch: 9, fov: 46 }),
       zone: "town",
       look: "overworld-day",
-      note: "9:16-safe two-shot: sick baker steps out in disbelief as ten golden loaves appear neatly beside his doorway.",
+      note: "Brick Bakery & raised wooden front porch: baker steps onto his porch in delight as 10 golden loaves sit neatly ON the waist-high bread stand!",
       stage: (t) => {
         const tenAt = w("3.baker", "ten");
         return (
           <>
-            <Player who={8} position={[1.7, 0, -10.5]} rotationY={WEST} animation={t > tenAt ? "wave" : "idle"} face="grin" />
-            <LoafPile position={[0.5, 0, -10.5]} count={10} />
-            <Hero position={[-1.2, 0, -10.2]} rotationY={EAST} animation="idle" face="wow" />
-            {t >= tenAt ? <FloatingNumber text="10 LOAF" position={[0.5, 1.9, -10.5]} color="#ffd84d" height={0.42} /> : null}
+            <Player who={8} position={[3.8, 0.24, -10.5]} rotationY={WEST} animation={t > tenAt ? "wave" : "idle"} face="grin" />
+            <LoafPile position={[3.42, 1.02, -9.05]} rotationY={-Math.PI / 2} count={10} />
+            <Hero position={[0.45, 0, -11.4]} rotationY={115 * DEG} animation="idle" face="wow" />
+            {t >= tenAt ? <FloatingNumber text="10 LOAF" position={[3.42, 2.35, -9.05]} color="#ffd84d" height={0.42} /> : null}
           </>
         );
       },
     },
     {
       cue: "3.porch",
-      ...cam.front({ actor: [0.5, 0, -10.5], facing: WEST, dist: 5.8, to: 4.5, side: -24, pitch: 14 }),
+      ...cam.front({ actor: [3.42, 0.72, -9.05], facing: WEST, dist: 5.4, to: 4.2, side: -22, pitch: 10 }),
       zone: "town",
       look: "overworld-day",
-      note: "Close angled push on the neat stack of golden bread loaves as the baker reaches down and cheers on 'porch'.",
+      note: "Close angled push on the wooden Bakery bread stand & front porch (EXACT locked actor coordinates from 3.baker — zero teleport!).",
       stage: (t) => {
         const porchAt = w("3.porch", "porch");
         return (
           <>
-            <LoafPile position={[0.5, 0, -10.5]} count={10} />
-            <Player who={8} position={[1.55, 0, -10.5]} rotationY={WEST} animation={t > porchAt ? "cheer" : "reach"} face="grin" />
-            <Hero position={[-1.4, 0, -9.8]} rotationY={EAST} animation={t > porchAt ? "point" : "idle"} face="smile" />
+            <LoafPile position={[3.42, 1.02, -9.05]} rotationY={-Math.PI / 2} count={10} />
+            <Player who={8} position={[3.8, 0.24, -10.5]} rotationY={-125 * DEG} animation={t > porchAt ? "cheer" : "reach"} face="grin" />
+            <Hero position={[0.45, 0, -11.4]} rotationY={115 * DEG} animation={t > porchAt ? "point" : "idle"} face="smile" />
           </>
         );
       },

@@ -1,7 +1,7 @@
 import {
+  BakeryDoor,
   DEG,
   EAST,
-  FloatingNumber,
   Hero,
   LoafPile,
   NORTH,
@@ -15,8 +15,10 @@ import {
   TraderLlama,
   WEST,
   cam,
+  ease,
   on,
   pop,
+  ramp,
   storyScene,
   timing,
   w,
@@ -64,52 +66,59 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "6.door",
-      ...cam.front({ actor: [-2.1, 0, -4.6], facing: EAST, dist: 6.2, to: 4.9, side: 20, pitch: 8 }),
+      ...cam.sweep({ on: [2.6, 1.35, -10.4], dist: 6.2, distTo: 5.0, fromYaw: -56, toYaw: -36, pitch: 8, fov: 46 }),
       zone: "night",
       look: "lantern-night",
-      note: "Cut to the alley doorway: the sick baker steps out onto the cobbles and freezes in shock seeing Dad.",
+      note: "Lit night Brick Bakery & porch: the actual wooden Bakery front door swings open as the baker steps onto his front porch and freezes seeing Dad!",
       stage: (t, { dur }) => {
-        const stepOut = walkSegment([-2.5, 0, -4.6], [-1.7, 0, -4.6], t, 0, Math.min(0.9, dur), { gait: "walk", endYaw: EAST });
+        const doorAt = w("6.door", "opened");
+        const doorOpen = ease(ramp(t, Math.max(0, doorAt - 0.15), doorAt + 0.4));
+        const stepOut = walkSegment([4.75, 0.24, -10.5], [3.65, 0.24, -10.5], t, Math.max(0, doorAt - 0.05), Math.min(dur, doorAt + 0.75), { gait: "walk", endYaw: WEST });
         return (
           <>
+            <BakeryDoor position={[5.02, 0.24, -10.5]} rotationY={-Math.PI / 2} open={doorOpen} />
             <Player who={8} {...stepOut} animDistance={stepOut.animDistance} face="wow" />
-            <TraderDad position={[0.4, 0, -4.6]} rotationY={WEST} animation="scared" face="surprised" milkWet />
-            <Hero position={[0.9, 0, -3.5]} rotationY={WEST} animation="idle" face="surprised" />
+            <TraderDad position={[0.6, 0, -11.4]} rotationY={110 * DEG} animation="scared" face="surprised" milkWet />
+            <Hero position={[-0.35, 0, -10.1]} rotationY={85 * DEG} animation="idle" face="surprised" />
+            <TraderLlama position={[-0.8, 0, -12.6]} rotationY={EAST} loaded />
           </>
         );
       },
     },
     {
       cue: "6.saw",
-      ...cam.frameDuo({ a: [-1.5, 0, -4.6], b: [0.6, 0, -4.6], fromYaw: -20, toYaw: 16, pitch: 8 }),
+      ...cam.frameDuo({ a: [0.6, 0, -11.4], b: [3.65, 0.24, -10.5], fromYaw: -22, toYaw: 14, pitch: 8 }),
       zone: "night",
       look: "lantern-night",
-      note: "9:16-safe reverse two-shot: baker stares at milk-soaked Dad, the kid, and both bread-loaded llamas behind them.",
+      note: "9:16-safe reverse two-shot on the lit night Bakery porch (EXACT locked coordinates from 6.door — zero teleport!).",
       stage: (t) => {
-        const breadAt = w("6.saw", "milk");
+        const milkAt = w("6.saw", "milk");
         return (
           <>
-            <Player who={8} position={[-1.5, 0, -4.6]} rotationY={EAST} animation={t > breadAt ? "point" : "idle"} face="wow" />
-            <TraderDad position={[0.5, 0, -4.6]} rotationY={WEST} animation={t > breadAt ? "shrug" : "idle"} face="uneasy" milkWet />
-            <Hero position={[1.4, 0, -3.9]} rotationY={WEST} animation="idle" face="uneasy" />
-            <TraderLlama position={[1.6, 0, -5.9]} rotationY={WEST} loaded />
+            <BakeryDoor position={[5.02, 0.24, -10.5]} rotationY={-Math.PI / 2} open={1} />
+            <Player who={8} position={[3.65, 0.24, -10.5]} rotationY={WEST} animation={t > milkAt ? "point" : "idle"} face="wow" />
+            <TraderDad position={[0.6, 0, -11.4]} rotationY={110 * DEG} animation={t > milkAt ? "shrug" : "idle"} face="uneasy" milkWet />
+            <Hero position={[-0.35, 0, -10.1]} rotationY={85 * DEG} animation="idle" face="uneasy" />
+            <TraderLlama position={[-0.8, 0, -12.6]} rotationY={EAST} loaded />
           </>
         );
       },
     },
     {
       cue: "6.quiet",
-      ...cam.sweep({ on: [-0.3, 1.25, -4.6], dist: 6.4, distTo: 5.1, fromYaw: 16, toYaw: -22, pitch: 9, fov: 44 }),
+      ...cam.sweep({ on: [2.1, 1.3, -10.7], dist: 6.2, distTo: 5.0, fromYaw: -58, toYaw: -34, pitch: 8, fov: 45 }),
       zone: "night",
       look: "lantern-night",
-      note: "Hushed sweeping beat in the quiet alley — then the baker's stunned face softens into a huge warm grin.",
+      note: "Hushed sweeping beat at the night Bakery porch (EXACT locked coordinates — zero teleport!) as the baker's stunned face softens into a huge grin.",
       stage: (t) => {
         const quietAt = w("6.quiet", "quiet");
         return (
           <>
-            <Player who={8} position={[-1.4, 0, -4.6]} rotationY={EAST} animation={t > quietAt ? "cheer" : "idle"} face={t > quietAt ? "grin" : "wow"} />
-            <TraderDad position={[0.6, 0, -4.6]} rotationY={WEST} animation="idle" face={t > quietAt ? "smile" : "uneasy"} milkWet />
-            <Hero position={[1.3, 0, -3.7]} rotationY={WEST} animation="idle" face="grin" />
+            <BakeryDoor position={[5.02, 0.24, -10.5]} rotationY={-Math.PI / 2} open={1} />
+            <Player who={8} position={[3.65, 0.24, -10.5]} rotationY={WEST} animation={t > quietAt ? "cheer" : "idle"} face={t > quietAt ? "grin" : "wow"} />
+            <TraderDad position={[0.6, 0, -11.4]} rotationY={110 * DEG} animation="idle" face={t > quietAt ? "smile" : "uneasy"} milkWet />
+            <Hero position={[-0.35, 0, -10.1]} rotationY={85 * DEG} animation="idle" face="grin" />
+            <TraderLlama position={[-0.8, 0, -12.6]} rotationY={EAST} loaded />
           </>
         );
       },
@@ -120,13 +129,13 @@ export const scene5 = storyScene(timing, {
       zone: "town",
       look: "overworld-day",
       hud: { clock: "NEXT MORNING" },
-      note: "Bright joyful morning: Dad steps behind his wooden Dead Bush stall expecting another empty day.",
+      note: "Bright joyful morning: Dad steps behind his wooden Dead Bush stall expecting another empty day while Kid stands beside him in his yellow hoodie.",
       stage: (t, { dur }) => {
         const step = walkSegment([1.8, 0, 6.6], [0.9, 0, 5.2], t, 0, Math.min(1.0, dur), { gait: "walk", endYaw: WEST });
         return (
           <>
             <TraderDad {...step} animDistance={step.animDistance} face="calm" />
-            <Hero position={[0.9, 0, 6.7]} rotationY={WEST} blueHood animation="wave" face="grin" />
+            <Hero position={[0.9, 0, 6.6]} rotationY={WEST} animation="wave" face="grin" />
           </>
         );
       },
@@ -136,13 +145,13 @@ export const scene5 = storyScene(timing, {
       ...cam.streetOverview({ from: [0, 0, 15.5], to: [0, 0, 7.0], on: [0, 1.2, 5.2], onTo: [0, 1.2, 3.0], height: 6.4, fov: 48 }),
       zone: "town",
       look: "overworld-day",
-      note: "Grand overhead sweep locked onto the sunlit village street: the ENTIRE town is lined up eagerly toward Dad's stall!",
+      note: "Grand overhead sweep locked onto the sunlit village street (EXACT locked Dad [0.9, 0, 5.2] & Hero [0.9, 0, 6.6]!): the ENTIRE town lines up!",
       stage: (t, { dur }) => {
-        const front = walkSegment([-1.0, 0, 7.0], [-0.9, 0, 5.4], t, 0, dur, { gait: "walk", endYaw: EAST });
+        const front = walkSegment([-1.0, 0, 7.0], [-0.95, 0, 5.2], t, 0, dur, { gait: "walk", endYaw: EAST });
         return (
           <>
             <TraderDad position={[0.9, 0, 5.2]} rotationY={WEST} animation="wave" face="wow" />
-            <Hero position={[0.9, 0, 6.6]} rotationY={WEST} blueHood animation="cheer" face="grin" />
+            <Hero position={[0.9, 0, 6.6]} rotationY={WEST} animation="cheer" face="grin" />
             <Player who={8} {...front} animDistance={front.animDistance} face="grin" />
             <Player who={1} position={[-1.2, 0, 3.6]} rotationY={SOUTH} animation="wave" face="grin" />
             <Player who={2} position={[-1.1, 0, 1.8]} rotationY={SOUTH} animation="cheer" face="grin" />
@@ -155,19 +164,18 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "6.buy",
-      ...cam.frameDuo({ a: [-0.95, 0, 5.2], b: [0.9, 0, 5.2], fromYaw: -16, toYaw: 18, pitch: 8 }),
+      ...cam.frameDuo({ a: [-0.95, 0, 5.2], b: [0.9, 0, 5.2], fromYaw: -20, toYaw: 16, pitch: 8 }),
       zone: "town",
       look: "overworld-day",
       hud: { banner: { text: "+5 EMERALDS!", color: "#5ce075", sub: "WORTH EVERY ONE" } },
-      note: "9:16-safe warm two-shot: the baker happily holds out 5 gleaming emeralds for Dad's dead bush while '+5 EMERALDS!' pops!",
+      note: "9:16-safe warm front two-shot (EXACT locked Baker [-0.95, 0, 5.2], Dad [0.9, 0, 5.2], Hero [0.9, 0, 6.6] — zero duplicate 3D +5 EM!).",
       stage: (t) => {
         const fiveAt = w("6.buy", "five");
         return (
           <>
-            <Player who={8} position={[-0.95, 0, 5.2]} rotationY={EAST} animation="reach" face="grin" />
-            <TraderDad position={[0.9, 0, 5.2]} rotationY={WEST} animation="wave" face="grin" />
-            <Hero position={[0.2, 0, 6.5]} rotationY={NORTH} blueHood animation="cheer" face="grin" />
-            {t >= fiveAt ? <FloatingNumber text="+5 EM" position={[0.0, 2.55, 5.2]} color="#5ce075" height={0.48} /> : null}
+            <Player who={8} position={[-0.95, 0, 5.2]} rotationY={EAST} animation={t > fiveAt ? "cheer" : "reach"} face="grin" />
+            <TraderDad position={[0.9, 0, 5.2]} rotationY={WEST} animation={t > fiveAt ? "cheer" : "wave"} face="grin" />
+            <Hero position={[0.9, 0, 6.6]} rotationY={-30 * DEG} animation="cheer" face="grin" />
           </>
         );
       },

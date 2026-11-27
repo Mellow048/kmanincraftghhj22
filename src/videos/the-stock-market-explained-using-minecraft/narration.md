@@ -12,13 +12,13 @@ Topic: `Topics/Explainer`. Cold-open climax -> 8-beat visual metaphor parable ->
 [2.split]    So Sam splits his shop into ten share tickets.
 [2.price]    Each ticket costs ten emeralds.
 [2.share]    And each one owns ten percent of the forge.
-[2.leo]      Leo buys one ticket.
+[2.leo]      Felint buys one ticket.
 [2.maya]     Maya buys one too, until all ten sell out.
 [2.build]    Sam takes the emeralds and builds furnace two.
 [2.iron]     Now his chests overflow with bright iron ingots.
 [3.crowd]    Every player in town wants a ticket now.
-[3.jump]     Leo's ten emerald ticket shoots straight to twenty five.
-[3.smile]    Leo never swung a pickaxe, yet his money doubled.
+[3.jump]     Felint's ten emerald ticket shoots straight to twenty five.
+[3.smile]    Felint never swung a pickaxe, yet his money doubled.
 
 # clip 02-crash wait 0.35
 [4.rich]     Then along walks Sterling, the richest trader here.
@@ -29,7 +29,7 @@ Topic: `Topics/Explainer`. Cold-open climax -> 8-beat visual metaphor parable ->
 [4.panic]    The whole town panics on the spot.
 [5.dump]     Everyone sprints to dump their tickets fast.
 [5.crash]    In ten seconds, the green chart crashes to six.
-[5.leo]      Leo panics too and sells at a painful loss.
+[5.leo]      Felint panics too and sells at a painful loss.
 [5.floor]    Guess who quietly buys every cheap ticket?
 [5.grin]     Sterling. Grinning right under his shiny top hat.
 

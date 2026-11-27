@@ -88,32 +88,32 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.rich",
-      ...cam.streetOverview({ from: [0, 0, 4.0], to: [0, 0, -4.0], on: [0, 2.0, -10.0], onTo: [0, 2.0, -13.0], height: 7.2, fov: 50 }),
+      ...cam.streetOverview({ from: [0, 0, 6.2], to: [0, 0, -1.5], on: [0, 4.4, -14.5], onTo: [0, 4.8, -15.5], height: 5.2, fov: 50 }),
       zone: "smp",
       look: "overworld-day",
-      note: "High sweeping overview locked onto the server's towering stone castles and brick mansions on the back hill.",
+      note: "High sweeping overview locked squarely onto the server's towering stone castles and brick mansions on the back hill.",
       stage: (t, { dur }) => {
-        const w1 = walkSegment([-1.2, 0, 3.5], [-1.2, 0, -0.5], t, 0, dur, { gait: "walk", endYaw: NORTH });
+        const w1 = walkSegment([-1.2, 0, 2.5], [-1.2, 0, -1.5], t, 0, dur, { gait: "walk", endYaw: NORTH });
         return (
           <>
             <ServerPlayer role="friendB" {...w1} animDistance={w1.animDistance} face="grin" />
-            <ServerPlayer role="friendC" position={[1.5, 0, -1.5]} rotationY={SOUTH} animation="wave" face="grin" />
+            <ServerPlayer role="friendC" position={[1.5, 0, -1.8]} rotationY={SOUTH} animation="wave" face="grin" />
           </>
         );
       },
     },
     {
       cue: "2.tiny",
-      ...cam.track({ from: [-1.5, 0, 7.2], to: [-1.5, 0, 2.8], sideDist: 6.0, side: 1, height: 1.6, lead: 1.6, fov: 44 }),
+      ...cam.sweep({ on: [-0.1, 1.4, 3.0], dist: 6.4, distTo: 5.2, fromYaw: -20, toYaw: 16, pitch: 9, fov: 46 }),
       zone: "smp",
       look: "overworld-day",
-      note: "Tracking down the cobble lane lined with Sam's tiny identical oak huts right beside the grand builds.",
+      note: "Unobstructed open-street front sweep as Sam walks south toward camera down the cobble lane lined with tiny oak huts — zero wall clipping.",
       stage: (t, { dur }) => {
-        const walk = walkSegment([-1.5, 0, 7.2], [-1.5, 0, 2.8], t, 0, dur, { gait: "walk", endYaw: NORTH });
+        const walk = walkSegment([-0.8, 0, 1.4], [-0.8, 0, 5.2], t, 0, dur, { gait: "walk", endYaw: SOUTH });
         return (
           <>
             <ServerPlayer role="hero" nameTag="Sam" {...walk} animDistance={walk.animDistance} face="calm" />
-            <OakCottage position={[2.2, 0, 3.0]} rotationY={WEST} flower />
+            <OakCottage position={[2.3, 0, 2.2]} rotationY={WEST} flower />
           </>
         );
       },

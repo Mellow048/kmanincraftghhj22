@@ -30,24 +30,24 @@ import {
   walkSegment,
 } from "./kit";
 
-/** Scene 1 — Hook -> Meet Sam at his forge -> Needs 100 emeralds -> Splits into 10 share tickets -> Leo & Maya buy! */
+/** Scene 1 — Hook -> Meet Sam at his forge -> Needs 100 emeralds -> Splits into 10 share tickets -> Felint & Maya buy! */
 export const scene1 = storyScene(timing, {
   id: "scene1",
   title: "Sam splits his forge into ten share tickets",
   shots: [
     {
       cue: "1.hook",
-      ...cam.sweep({ on: [0, 1.35, 2.0], dist: 7.8, distTo: 6.5, fromYaw: -16, toYaw: 14, pitch: 8, fov: 44 }),
+      ...cam.sweep({ on: [0, 1.35, 2.0], dist: 8.0, distTo: 6.7, fromYaw: -15, toYaw: 14, pitch: 8, fov: 45 }),
       zone: "forge",
       look: "overworld-day",
-      note: "Bright daylight Frame-1 hook (and exact loop match for 8.loop): Sam beside his roaring forge, rising green stock chart, Leo holding a share ticket, Sterling smirking.",
+      note: "Bright daylight Frame-1 hook (and exact loop match for 8.loop): Sam beside his roaring forge, rising green stock chart, Felint holding a share ticket, Sterling smirking cleanly inside 9:16.",
       stage: (t) => {
         const k = ease(ramp(t, 0.1, 1.4));
         return (
           <>
-            <CitizenLead variant="sam" nameTag="Sam" position={[0.55, 0, 2.2]} rotationY={-12 * DEG} animation="wave" face="grin" />
-            <CitizenLead variant="leo" nameTag="Leo" position={[-1.05, 0, 2.6]} rotationY={18 * DEG} animation="cheer" face="grin" />
-            <EliteLead variant="tycoon" nameTag="Sterling" position={[1.35, 0, 3.65]} rotationY={-25 * DEG} animation="idle" face="smug" />
+            <CitizenLead variant="sam" nameTag="Sam" position={[0.45, 0, 2.1]} rotationY={-12 * DEG} animation="wave" face="grin" />
+            <CitizenLead variant="leo" nameTag="Felint" position={[-1.05, 0, 2.6]} rotationY={18 * DEG} animation="cheer" face="grin" />
+            <EliteLead variant="tycoon" nameTag="Sterling" position={[1.15, 0, 3.15]} rotationY={-25 * DEG} animation="idle" face="smug" />
             <BarChart position={[-0.45, 0, -0.4]} values={[1.1, 1.6, 2.3, 0.7, 2.8]} grow={k} colors={["#37c967", "#37c967", "#37c967", "#e84848", "#37c967"]} />
             <ShareTicket position={[-0.48, 1.18, 2.95]} rotationY={15 * DEG} scale={0.82} />
             <EmberDrift position={[2.8, 1.4, 1.0]} count={16} />
@@ -184,12 +184,12 @@ export const scene1 = storyScene(timing, {
       ...cam.track({ from: on(EXCHANGE_POS, -2.6, 0, 2.6), to: on(EXCHANGE_POS, -0.9, 0, 0.8), sideDist: 5.8, side: 1, height: 1.5, lead: 1.4, fov: 44 }),
       zone: "exchange",
       look: "overworld-day",
-      note: "Tracking Leo walking eagerly across the plaza to buy his very first Share Ticket from Sam.",
+      note: "Tracking Felint walking eagerly across the plaza to buy his very first Share Ticket from Sam.",
       stage: (t, { dur }) => {
         const walk = walkSegment([-2.6, 0, 2.6], [-0.9, 0, 0.8], t, 0, dur, { gait: "walk", endYaw: EAST });
         return (
           <group position={EXCHANGE_POS}>
-            <CitizenLead variant="leo" nameTag="Leo" {...walk} animDistance={walk.animDistance} face="grin" />
+            <CitizenLead variant="leo" nameTag="Felint" {...walk} animDistance={walk.animDistance} face="grin" />
             <CitizenLead variant="sam" nameTag="Sam" position={[1.1, 0, 0.8]} rotationY={WEST} animation="reach" face="grin" />
             <ShareTicket position={[0.2, 1.25, 0.8]} rotationY={t * 1.4} scale={1.0} />
           </group>

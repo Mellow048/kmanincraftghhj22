@@ -1,5 +1,4 @@
 import {
-  Bubble,
   ChestGridUI,
   DEG,
   EAST,
@@ -56,14 +55,11 @@ export const scene3 = storyScene(timing, {
         chat: [{ sender: "Owner", text: "Sam, tell me what happened.", color: "#7ce8ff", whisper: true }],
         typing: true,
       },
-      note: "Server Owner in gold crown steps forward with a gleaming '!' badge whispering directly to Sam in HUD chat.",
+      note: "Server Owner in gold crown steps forward with a clean unobstructed '!' badge whispering directly to Sam in HUD chat.",
       stage: (t) => {
         const msgAt = w("5.owner", "messaged");
         return (
-          <>
-            <ServerPlayer role="owner" crown nameTag="Owner" badge="!" badgePopStart={0.1} position={[0, 0, 1.4]} rotationY={SOUTH} animation={t > msgAt ? "talk" : "idle"} face="calm" />
-            <Bubble text="TELL ME" position={[0, 2.85, 1.4]} scale={pop(t, msgAt) * 0.72} />
-          </>
+          <ServerPlayer role="owner" crown nameTag="Owner" badge="!" badgePopStart={0.1} position={[0, 0, 1.4]} rotationY={SOUTH} animation={t > msgAt ? "talk" : "idle"} face="calm" />
         );
       },
     },
@@ -159,32 +155,32 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.lode",
-      ...cam.front({ actor: on(SPAWN_POS, 0, 0.5, -2.6), facing: SOUTH, dist: 5.8, to: 4.5, side: 18, pitch: 10 }),
+      ...cam.front({ actor: on(SPAWN_POS, -0.3, 0.55, -1.9), facing: SOUTH, dist: 6.2, to: 4.9, side: 12, pitch: 9 }),
       zone: "spawn",
       look: "overworld-day",
-      note: "Owner kneels right in front of the porch setting the glowing purple-enchanted Lodestone cleanly into place!",
+      note: "Owner framed cleanly in 9:16 kneeling beside the porch setting the glowing purple-enchanted Lodestone into place!",
       stage: (t) => {
         const lodeAt = w("6.lode", "lodestone");
         const k = pop(t, lodeAt);
         return (
           <group position={SPAWN_POS}>
-            <ServerPlayer role="owner" crown nameTag="Owner" position={[-1.4, 0, -2.0]} rotationY={58 * DEG} animation={t > lodeAt ? "cheer" : "crouch"} face="grin" />
-            <LodestoneBlock position={[0, 0.14, -2.6]} scale={0.7 + k * 0.35} />
-            {t >= lodeAt ? <Puffs position={[0, 0.8, -2.6]} color="#d49bff" /> : null}
+            <ServerPlayer role="owner" crown nameTag="Owner" position={[-0.95, 0, -1.6]} rotationY={52 * DEG} animation={t > lodeAt ? "cheer" : "crouch"} face="grin" />
+            <LodestoneBlock position={[0.5, 0.14, -2.0]} scale={0.7 + k * 0.35} />
+            {t >= lodeAt ? <Puffs position={[0.5, 0.8, -2.0]} color="#d49bff" /> : null}
           </group>
         );
       },
     },
     {
       cue: "6.fact",
-      ...cam.sweep({ on: on(SPAWN_POS, 0, 1.35, -1.2), dist: 6.0, distTo: 4.7, fromYaw: -20, toYaw: 20, pitch: 8, fov: 44 }),
+      ...cam.sweep({ on: on(SPAWN_POS, 0, 1.15, -0.4), dist: 6.4, distTo: 5.2, fromYaw: -14, toYaw: 14, pitch: 8, fov: 45 }),
       zone: "spawn",
       look: "overworld-day",
-      note: "Part 1: Crystal-clear Minecraft mechanic showcase — enchanted Lodestone Compass locks magnetically onto the Lodestone!",
+      note: "Part 1: Crystal-clear Minecraft mechanic showcase — enchanted Lodestone Compass and Lodestone both framed cleanly inside 9:16!",
       stage: (t) => (
         <group position={SPAWN_POS}>
-          <LodestoneBlock position={[1.1, 0.14, -1.6]} scale={0.95} />
-          <LodestoneCompass position={[-1.0, 1.45, -1.0]} needleAngle={-Math.PI / 2 + Math.sin(t * 9) * 0.08} scale={1.6} />
+          <LodestoneBlock position={[0.85, 0.14, -0.4]} scale={0.92} />
+          <LodestoneCompass position={[-0.78, 1.4, -0.4]} needleAngle={-Math.PI / 2 + Math.sin(t * 9) * 0.08} scale={1.45} />
         </group>
       ),
     },

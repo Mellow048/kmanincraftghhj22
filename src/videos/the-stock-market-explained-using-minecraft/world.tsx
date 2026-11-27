@@ -12,36 +12,36 @@ import {
   Glow,
   GodRay,
   IronAnvil,
+  IronworkersMarket,
   LampPost,
   LightPool,
   OFFICE_POS,
   ShopStall,
   SolidBox,
   StoneBillboard,
-  VillageStreet,
   Vox,
   Zone,
   on,
 } from "./kit";
 
 /**
- * Three rich persistent worlds with mandatory atmosphere (GodRay, LightPool, Glow, Dust)
+ * Three 100% distinct persistent worlds with mandatory atmosphere (GodRay, LightPool, Glow, Dust)
  * and Remaster v7 <SolidBox> collision / camera anti-clip at non-overlapping zone offsets:
- *  - "forge" ([0,0,0]): sunlit v7 village street featuring Sam's open-front Blacksmith Forge & anvil on the right sidewalk.
+ *  - "forge" ([0,0,0]): BRAND-NEW Ironworkers' Stone-and-Terracotta Market Town (2-story stone/birch townhouses, clocktower, fountain, alpine pines — zero village reuse!) featuring Sam's open-front Blacksmith Forge.
  *  - "exchange" (EXCHANGE_POS): grand sunlit cobblestone Market Exchange Plaza with emerald banners & stone ticker wall.
  *  - "office" (OFFICE_POS): Sterling's luxury oak-and-gold tycoon parlor with tall enclosing walls, bookshelves, desk, and emerald vault piles.
  */
 export const World: React.FC = () => (
   <>
     <Zone name="forge">
-      <VillageStreet night={false} />
-      <Clouds y={24} />
+      <IronworkersMarket />
+      <Clouds y={25} />
       <group position={[2.8, 0, 2.0]}>
         <Vox kind="cobble" position={[0, 0.06, 0]} size={[3.6, 0.12, 5.2]} />
-        <Vox kind="planks" tint="#7b522a" position={[1.45, 1.5, 0]} size={[0.25, 3.0, 5.0]} />
-        <Vox kind="planks" tint="#6a4522" position={[0, 3.1, 0]} size={[3.8, 0.26, 5.4]} />
-        <Vox kind="planks" tint="#5e3c1d" position={[-1.55, 1.5, -2.35]} size={[0.22, 3.0, 0.22]} />
-        <Vox kind="planks" tint="#5e3c1d" position={[-1.55, 1.5, 2.35]} size={[0.22, 3.0, 0.22]} />
+        <Vox kind="stoneBrick" tint="#7c8591" position={[1.45, 1.5, 0]} size={[0.28, 3.0, 5.0]} />
+        <Vox kind="planks" tint="#5c3a1e" position={[0, 3.1, 0]} size={[3.8, 0.26, 5.4]} />
+        <Vox kind="planks" tint="#4d2f18" position={[-1.55, 1.5, -2.35]} size={[0.22, 3.0, 0.22]} />
+        <Vox kind="planks" tint="#4d2f18" position={[-1.55, 1.5, 2.35]} size={[0.22, 3.0, 0.22]} />
         <ForgeFurnace position={[0.45, 0.12, -1.1]} rotationY={-Math.PI / 2} lit />
         <IronAnvil position={[-0.75, 0.12, 1.35]} rotationY={Math.PI / 2} />
       </group>

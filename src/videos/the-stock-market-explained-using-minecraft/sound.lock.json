@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "the-stock-market-explained-using-minecraft",
   "mix": "public/audio/the-stock-market-explained-using-minecraft/mix.mp3",
-  "seconds": 81.1,
+  "seconds": 81.0667,
   "built_from": {
-    "timing.json": "3791b731ea6d6a9d558b26479cb8c2e6827db8d6",
-    "sound.json": "e431d7f15265367e7598f516799903393b17378a",
-    "narration.mp3": "2c67bb80f52b345722c784a2c885ffe17e2f68c8"
+    "timing.json": "8d82e51acd0ff1bddb1c11a3d08e80b8f2772701",
+    "sound.json": "63d452a5e0dcb63e677dd5f0d2b143bf8831b61d",
+    "narration.mp3": "f3cac104cc888155fd08c4ea65c93a30bc7827b7"
   },
-  "mix_sha1": "90c348d19016961f54e359a14f525ac6c9e03f10",
+  "mix_sha1": "3babf09ba9c90b87edca12800a0c5167b758d53d",
   "music_sections": [
     {
       "from": "1.hook",
@@ -18,22 +18,22 @@
     {
       "from": "4.rich",
       "mood": "sneak",
-      "at": 31.03
+      "at": 31.13
     },
     {
       "from": "5.crash",
       "mood": "none",
-      "at": 45.1
+      "at": 45.47
     },
     {
       "from": "5.leo",
       "mood": "dark",
-      "at": 47.53
+      "at": 48.13
     },
     {
       "from": "6.dawn",
       "mood": "explain",
-      "at": 55.13
+      "at": 55.77
     }
   ],
   "music_file": {
@@ -42,73 +42,73 @@
   },
   "beds": 20,
   "measured": {
-    "musicUnderVoiceDb": 18.1,
-    "secondsWithoutMusic": 2.1,
+    "musicUnderVoiceDb": 17.1,
+    "secondsWithoutMusic": 2.4,
     "bedsUnderVoiceDb": 26.2,
     "sfx": 57,
     "sfxPerMinute": 42.2,
     "sfxKinds": 28,
-    "longestGapSeconds": 3.1,
-    "longestGapAt": 31.7,
+    "longestGapSeconds": 3.2,
+    "longestGapAt": 31.8,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 15.3,
-    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestMedianDb": 14.8,
+    "voiceOverRestWorstDb": 3.4,
     "voiceOverRestWorst": [
       {
-        "db": 4.0,
-        "t": 65.5,
+        "db": 3.4,
+        "t": 66.0,
         "cue": "6.back",
         "sounding": [
+          "blip",
           "ding",
           "power_up",
           "whoosh"
         ]
       },
       {
-        "db": 5.3,
-        "t": 1.7,
-        "cue": "1.hook",
-        "sounding": [
-          "sparkle"
-        ]
-      },
-      {
-        "db": 6.1,
-        "t": 70.1,
+        "db": 6.8,
+        "t": 70.3,
         "cue": "7.fear",
         "sounding": [
           "slide_down"
         ]
       },
       {
-        "db": 6.3,
-        "t": 16.3,
-        "cue": "2.leo",
-        "sounding": [
-          "coin",
-          "register"
-        ]
-      },
-      {
-        "db": 7.3,
-        "t": 7.4,
+        "db": 7.0,
+        "t": 8.2,
         "cue": "1.cost",
         "sounding": [
           "coins"
         ]
       },
       {
-        "db": 7.5,
-        "t": 42.5,
-        "cue": "4.panic",
+        "db": 7.3,
+        "t": 25.4,
+        "cue": "3.crowd",
         "sounding": [
-          "bell"
+          "cheer"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 39.8,
+        "cue": "4.rumor",
+        "sounding": [
+          "sting"
+        ]
+      },
+      {
+        "db": 7.8,
+        "t": 19.4,
+        "cue": "2.maya",
+        "sounding": [
+          "chime"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.3,
-    "limiterMaxDb": 0.5
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.3
   },
   "failures": []
 }

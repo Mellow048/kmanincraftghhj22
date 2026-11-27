@@ -118,42 +118,55 @@ export {
 };
 export type { AnimName, FaceName, Vec3 };
 
-/** Kid teller: sunny yellow tunic, bright expressive face, optional blue Wandering Trader hood. */
+/** Kid teller: sunny yellow hoodie with optional pulled-up YELLOW hood (`yellowHood`) OR Dad's proud blue hood (`blueHood`, keeping yellow hoodie body so Kid never looks like Dad!). */
 export const Hero: React.FC<
-  Partial<MinecraftAvatarProps> & { blueHood?: boolean; hoodLow?: boolean }
-> = ({ blueHood = false, hoodLow = false, head, ...rest }) => (
-  <MinecraftAvatar
-    scale={KID}
-    outfit="hoodie"
-    skin="#f3c69f"
-    hair="#3b2414"
-    hairLayer
-    colors={{
-      torso: blueHood ? "#1c52a8" : "#f2c12e",
-      arms: blueHood ? "#194794" : "#e0af22",
-      legs: "#2f4361",
-    }}
-    shoes="#3a281d"
-    rim={0.1}
-    rimColor="#1d2b45"
-    blink
-    head={
-      <>
-        {blueHood ? (
-          <group position={[0, hoodLow ? -0.03 : 0.02, 0]}>
-            <Block position={[0, 0.25, -0.02]} size={[0.56, 0.1, 0.56]} color="#1c52a8" />
-            <Block position={[0, 0.04, -0.26]} size={[0.56, 0.44, 0.08]} color="#16428a" />
-            <Block position={[-0.26, 0.04, -0.02]} size={[0.07, 0.44, 0.52]} color="#194999" />
-            <Block position={[0.26, 0.04, -0.02]} size={[0.07, 0.44, 0.52]} color="#194999" />
-            <Block position={[0, 0.23, 0.25]} size={[0.56, 0.06, 0.06]} color="#eab93a" />
-          </group>
-        ) : null}
-        {head}
-      </>
-    }
-    {...rest}
-  />
-);
+  Partial<MinecraftAvatarProps> & { blueHood?: boolean; yellowHood?: boolean; hoodLow?: boolean; tears?: number }
+> = ({ blueHood = false, yellowHood = false, hoodLow = false, tears = 0, head, ...rest }) => {
+  const showHood = yellowHood || blueHood;
+  const hoodMain = yellowHood ? "#f2c12e" : "#1c52a8";
+  const hoodBack = yellowHood ? "#d9a71c" : "#16428a";
+  const hoodSide = yellowHood ? "#e3b324" : "#194999";
+  const hoodTrim = yellowHood ? "#fff2a8" : "#eab93a";
+  return (
+    <MinecraftAvatar
+      scale={KID}
+      outfit="hoodie"
+      skin="#f3c69f"
+      hair="#3b2414"
+      hairLayer
+      colors={{
+        torso: "#f2c12e",
+        arms: "#e0af22",
+        legs: "#2f4361",
+      }}
+      shoes="#3a281d"
+      rim={0.1}
+      rimColor="#1d2b45"
+      blink
+      head={
+        <>
+          {showHood ? (
+            <group position={[0, hoodLow ? -0.02 : 0.02, 0]}>
+              <Block position={[0, 0.25, -0.02]} size={[0.56, 0.1, 0.56]} color={hoodMain} />
+              <Block position={[0, 0.04, -0.26]} size={[0.56, 0.44, 0.08]} color={hoodBack} />
+              <Block position={[-0.26, 0.04, -0.02]} size={[0.07, 0.44, 0.52]} color={hoodSide} />
+              <Block position={[0.26, 0.04, -0.02]} size={[0.07, 0.44, 0.52]} color={hoodSide} />
+              <Block position={[0, 0.23, 0.25]} size={[0.56, 0.06, 0.06]} color={hoodTrim} />
+            </group>
+          ) : null}
+          {tears > 0.05 ? (
+            <>
+              <Block position={[-0.12, -0.04, 0.265]} size={[0.055, 0.12 * tears, 0.02]} color="#7ce3ff" emissive="#4cc9ff" emissiveIntensity={0.45} castShadow={false} />
+              <Block position={[0.12, -0.04, 0.265]} size={[0.055, 0.12 * tears, 0.02]} color="#7ce3ff" emissive="#4cc9ff" emissiveIntensity={0.45} castShadow={false} />
+            </>
+          ) : null}
+          {head}
+        </>
+      }
+      {...rest}
+    />
+  );
+};
 
 /** Wandering Trader Dad: royal blue robe, gold trim, blue hood, optional milk drips and visibility fade. */
 export const TraderDad: React.FC<
@@ -414,7 +427,70 @@ export const DeadBushStall: React.FC<{ position?: Vec3; rotationY?: number; show
       <Block position={[0, 0, 0]} size={[0.28, 0.3, 0.28]} color="#9ca5b0" />
       <Block position={[0, 0.15, 0]} size={[0.22, 0.05, 0.22]} color="#e6cf8b" />
     </group>
-    <Sign title="DEAD BUSH 5E" position={[0, 0.05, 0.72]} />
+    <Sign title="DEAD BUSH 5E" position={[0, 0.54, 0.5]} width={1.08} height={0.58} />
+  </group>
+);
+
+/** Brick Bakery building with raised oak front porch, red-and-cream awning, glowing windows, front door, and waist-high wooden bread stand! */
+export const BakeryBuilding: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  night?: boolean;
+}> = ({ position = [0, 0, 0], rotationY = 0, night = false }) => {
+  const winColor = night ? "#ffd278" : "#9bd6ff";
+  const winEmissive = night ? "#ffa63a" : "#000000";
+  const winInt = night ? 0.95 : 0;
+  return (
+    <group position={position} rotation={[0, rotationY, 0]}>
+      {/* Main brick bakery facade & warm pitched roof */}
+      <Vox kind="bricks" tint="#b55946" position={[0, 2.2, -2.2]} size={[5.2, 4.4, 4.4]} />
+      <Vox kind="planks" tint="#5e3620" position={[0, 4.65, -2.2]} size={[5.7, 0.56, 4.9]} />
+      <Vox kind="planks" tint="#4d2b18" position={[0, 5.15, -2.2]} size={[4.6, 0.48, 3.8]} />
+      {/* Stone bakery oven chimney */}
+      <Vox kind="stoneBrick" position={[1.7, 5.8, -3.1]} size={[0.95, 1.8, 0.95]} />
+      {/* Front bakery windows on either side of the front door */}
+      <Block position={[-1.65, 2.05, 0.04]} size={[1.15, 1.1, 0.08]} color={winColor} emissive={winEmissive} emissiveIntensity={winInt} />
+      <Block position={[1.65, 2.05, 0.04]} size={[1.15, 1.1, 0.08]} color={winColor} emissive={winEmissive} emissiveIntensity={winInt} />
+      <Vox kind="planks" tint="#5e381d" position={[-1.65, 1.44, 0.08]} size={[1.28, 0.14, 0.18]} />
+      <Vox kind="planks" tint="#5e381d" position={[1.65, 1.44, 0.08]} size={[1.28, 0.14, 0.18]} />
+      {/* Framed bakery front doorway (warm interior backing so opening the door reveals cozy glow!) */}
+      <Block position={[0, 1.45, 0.03]} size={[1.22, 2.38, 0.06]} color={night ? "#ffbf5e" : "#4a2c16"} emissive={night ? "#ff9c2a" : "#000000"} emissiveIntensity={night ? 0.85 : 0} />
+      <Vox kind="planks" tint="#6e4422" position={[-0.66, 1.45, 0.08]} size={[0.14, 2.48, 0.14]} />
+      <Vox kind="planks" tint="#6e4422" position={[0.66, 1.45, 0.08]} size={[0.14, 2.48, 0.14]} />
+      <Vox kind="planks" tint="#6e4422" position={[0, 2.72, 0.08]} size={[1.46, 0.16, 0.16]} />
+      {/* Raised wooden front porch deck + steps + porch posts */}
+      <Vox kind="planks" tint="#8f6336" position={[0, 0.12, 1.05]} size={[5.1, 0.24, 2.1]} />
+      <Vox kind="planks" tint="#7c5329" position={[0, 0.06, 2.25]} size={[2.2, 0.12, 0.36]} />
+      <Vox kind="planks" tint="#6b4520" position={[-2.35, 1.52, 1.95]} size={[0.16, 2.7, 0.16]} />
+      <Vox kind="planks" tint="#6b4520" position={[2.35, 1.52, 1.95]} size={[0.16, 2.7, 0.16]} />
+      {/* Striped red-and-cream bakery awning */}
+      {[-1.95, -1.3, -0.65, 0, 0.65, 1.3, 1.95].map((x, i) => (
+        <Block key={i} position={[x, 2.86, 1.15]} rotation={[0.18, 0, 0]} size={[0.65, 0.12, 2.15]} color={i % 2 === 0 ? "#c93b2b" : "#f7ebd2"} />
+      ))}
+      <Sign title="BAKERY" position={[0, 3.45, 0.16]} width={1.85} height={0.58} bg="#f5e6c8" fg="#4a2810" accent="#c93b2b" />
+      {/* Waist-high wooden bakery bread stand / display counter tucked cleanly beside the porch steps so the front door stays unobstructed! */}
+      <group position={[1.45, 0.24, 1.68]}>
+        <Vox kind="planks" tint="#8a5e32" position={[0, 0.36, 0]} size={[1.55, 0.72, 0.68]} />
+        <Vox kind="planks" tint="#a87643" position={[0, 0.74, 0]} size={[1.68, 0.08, 0.8]} />
+      </group>
+      {night ? <Torch position={[-0.92, 2.18, 0.22]} light={4.0} /> : null}
+      {night ? <Torch position={[0.92, 2.18, 0.22]} light={4.0} /> : null}
+    </group>
+  );
+};
+
+/** Hinged wooden bakery front door panel (swings open smoothly on `open` 0..1!). */
+export const BakeryDoor: React.FC<{ position?: Vec3; rotationY?: number; open?: number }> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  open = 0,
+}) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <group position={[-0.56, 0, 0]} rotation={[0, -open * 1.45, 0]}>
+      <Vox kind="planks" tint="#734721" position={[0.56, 1.16, 0]} size={[1.12, 2.28, 0.1]} />
+      <Block position={[0.95, 1.12, 0.08]} size={[0.1, 0.1, 0.08]} color="#eab93a" />
+      <Block position={[0.56, 1.72, 0.06]} size={[0.66, 0.56, 0.04]} color="#d6ecff" opacity={0.85} />
+    </group>
   </group>
 );
 
@@ -436,9 +512,13 @@ export const MuddyPrints: React.FC<{ from: Vec3; to: Vec3; count?: number }> = (
   </group>
 );
 
-/** Golden loaves stacked neatly on the sick baker's porch. */
-export const LoafPile: React.FC<{ position?: Vec3; count?: number }> = ({ position = [0, 0, 0], count = 10 }) => (
-  <group position={position}>
+/** Golden loaves stacked neatly on the sick baker's porch stand. */
+export const LoafPile: React.FC<{ position?: Vec3; rotationY?: number; count?: number }> = ({
+  position = [0, 0, 0],
+  rotationY = 0,
+  count = 10,
+}) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
     <Vox kind="planks" tint="#8c6134" position={[0, 0.08, 0]} size={[1.1, 0.16, 0.72]} />
     {Array.from({ length: Math.min(10, count) }, (_, i) => {
       const row = Math.floor(i / 4);

@@ -1,6 +1,10 @@
 name: Render one film (single job)
 
-# A fallback renderer: one runner, no chunk planning. Use it when the chunked workflow's plan step fails.
+# Fallback single-job renderer AND parallel surgical snip-render-and-glue splicer!
+# Pass `frames` as either:
+#   - "" or "0-140"                                      -> single-job render (original behavior)
+#   - "SPLICE:<release-tag>:<from1>-<to1>,<from2>-<to2>" -> parallel render of ONLY changed ranges,
+#     frame-accurately spliced into the lossless master from <release-tag> + fresh mix.mp3 audio!
 on:
   workflow_dispatch:
     inputs:
@@ -12,35 +16,242 @@ on:
         required: false
         default: ""
       frames:
-        description: "Optional frame range e.g. 0-140 for partial clip renders"
+        description: "Optional frame range e.g. 0-140 OR SPLICE:<tag>:<r1>,<r2>,..."
         required: false
         default: ""
       concurrency:
-        description: "Remotion concurrency (2 is safe on software GL)"
+        description: "Remotion concurrency (4 is optimal on ubuntu-latest swangle)"
         required: false
-        default: "2"
+        default: "4"
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
-  render:
+  plan:
+    name: Verify and plan
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 20
+    outputs:
+      mode: ${{ steps.parse.outputs.mode }}
+      base_release: ${{ steps.parse.outputs.base_release }}
+      matrix: ${{ steps.parse.outputs.matrix }}
+      segments: ${{ steps.parse.outputs.segments }}
+
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-
       - run: npm ci
 
-      - name: Verify
+      - name: Verify contract
         env:
           COMPOSITION: ${{ inputs.composition }}
         run: npm run typecheck && npm run check && npm run test:direction && npm run rehearse -- "$COMPOSITION" --pre-render
+
+      - name: Parse render plan
+        id: parse
+        env:
+          FRAMES: ${{ inputs.frames }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          spec = os.environ.get("FRAMES", "").strip()
+          out_path = os.environ["GITHUB_OUTPUT"]
+          if spec.startswith("SPLICE:"):
+              parts = spec.split(":", 2)
+              if len(parts) != 3 or not parts[1] or not parts[2]:
+                  sys.exit(f"Invalid SPLICE spec: {spec!r}")
+              base_release = parts[1]
+              raw_ranges = [r.strip() for r in parts[2].split(",") if r.strip()]
+              include = []
+              for idx, r in enumerate(raw_ranges):
+                  a_s, b_s = r.split("-", 1)
+                  include.append({"index": f"{idx:02d}", "from": int(a_s), "to": int(b_s)})
+              with open(out_path, "a") as fh:
+                  fh.write("mode=splice\n")
+                  fh.write(f"base_release={base_release}\n")
+                  fh.write(f"segments={len(include)}\n")
+                  fh.write(f"matrix={json.dumps({'include': include})}\n")
+          else:
+              with open(out_path, "a") as fh:
+                  fh.write("mode=single\n")
+                  fh.write("base_release=\n")
+                  fh.write("segments=0\n")
+                  fh.write("matrix={\"include\":[]}\n")
+          PY
+
+  render_ranges:
+    name: Splice ${{ matrix.from }}-${{ matrix.to }}
+    needs: plan
+    if: needs.plan.outputs.mode == 'splice'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: true
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Render changed range ${{ matrix.from }}-${{ matrix.to }}
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          CONCURRENCY: ${{ inputs.concurrency }}
+          INDEX: ${{ matrix.index }}
+          FROM: ${{ matrix.from }}
+          TO: ${{ matrix.to }}
+        run: |
+          set -o pipefail
+          mkdir -p out
+          npx remotion render src/index.ts "$COMPOSITION" "out/seg-${INDEX}_${FROM}-${TO}.mov" \
+            --frames="${FROM}-${TO}" --codec=h264 --crf=18 --audio-codec=pcm-16 --enforce-audio-track \
+            --concurrency="$CONCURRENCY" --gl=swangle --timeout=240000 2>&1 | tail -40
+
+      - name: Upload rendered range
+        uses: actions/upload-artifact@v4
+        with:
+          name: splice-seg-${{ matrix.index }}
+          path: out/seg-${{ matrix.index }}_${{ matrix.from }}-${{ matrix.to }}.mov
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+  splice_deliver:
+    name: Splice into master and deliver
+    needs: [plan, render_ranges]
+    if: needs.plan.outputs.mode == 'splice'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download base 1080x1920 master from release ${{ needs.plan.outputs.base_release }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_RELEASE: ${{ needs.plan.outputs.base_release }}
+        run: |
+          mkdir -p base
+          gh release download "$BASE_RELEASE" --pattern "*.mp4" --dir base
+          ls -la base/
+
+      - name: Download rendered ranges
+        uses: actions/download-artifact@v4
+        with:
+          pattern: splice-seg-*
+          path: clips
+          merge-multiple: true
+
+      - name: Frame-accurate splice + audio mux
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          SEGMENTS: ${{ needs.plan.outputs.segments }}
+        run: |
+          set -euo pipefail
+          master=$(ls base/*.mp4 | head -n 1)
+          audio="public/audio/${COMPOSITION}/mix.mp3"
+          args=(--master "$master" --audio "$audio" --out "out/${COMPOSITION}.mp4" --crf 18)
+          count=0
+          for f in $(ls clips/seg-*.mov | sort); do
+            base_name=$(basename "$f" .mov)
+            rng="${base_name#*_}"
+            args+=(--clip "${rng}:${f}")
+            count=$((count + 1))
+          done
+          if [ "$count" -ne "$SEGMENTS" ]; then
+            echo "Expected $SEGMENTS splice segments, found $count" >&2
+            exit 1
+          fi
+          python3 scripts/splice-video.py "${args[@]}"
+          ls -la "out/${COMPOSITION}.mp4"
+
+      - name: Upload spliced master artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ inputs.composition }}-mp4"
+          path: "out/${{ inputs.composition }}.mp4"
+          retention-days: 30
+          compression-level: 0
+
+      - name: Commit a copy to the current branch
+        if: ${{ inputs.commit_to != '' && github.ref_name != 'main' }}
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+          DESTINATION: ${{ inputs.commit_to }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          master="out/$COMPOSITION.mp4"
+          copy="out/copy-to-commit.mp4"
+          MAX_MB=45
+          note="1080x1920 spliced"
+          if [ "$(stat -c %s "$master")" -le $((MAX_MB * 1024 * 1024)) ]; then
+            cp "$master" "$copy"
+          else
+            seconds=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$master" | tr -dc '0-9.')
+            video_k=$(awk -v mb="$MAX_MB" -v s="$seconds" 'BEGIN { printf "%d", mb * 8192 * 0.94 / s - 128 }')
+            if [ "$video_k" -ge 3000 ]; then wide=1080; else wide=720; fi
+            echo "Spliced master over ${MAX_MB} MB: re-encoding branch copy at ${video_k}k (width <= $wide)."
+            ffmpeg -hide_banner -loglevel error -y -i "$master" \
+              -vf "scale='min($wide,iw)':-2" -c:v libx264 -preset slow \
+              -b:v "${video_k}k" -maxrate "$((video_k * 3 / 2))k" -bufsize "$((video_k * 3))k" \
+              -c:a aac -b:a 128k -movflags +faststart "$copy"
+            note="1080x1920 spliced master, branch copy <= ${MAX_MB} MB"
+          fi
+          ls -la "$copy"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet --depth=1 origin "$REF_NAME"
+            git checkout --quiet --detach FETCH_HEAD
+            mkdir -p "$(dirname "$DESTINATION")"
+            cp "$copy" "$DESTINATION"
+            git add -f -- "$DESTINATION"
+            if git diff --cached --quiet; then
+              echo "The branch already has this exact file."; exit 0
+            fi
+            git commit --quiet -m "Deliver ${COMPOSITION} spliced render (${note})"
+            if git push origin "HEAD:refs/heads/${REF_NAME}"; then exit 0; fi
+            echo "Push refused (attempt $attempt); retrying on new tip..."
+            sleep 5
+          done
+          exit 1
+
+      - name: Publish full-quality spliced master release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "splice-${{ github.run_number }}-${{ github.run_id }}"
+          target_commitish: ${{ github.sha }}
+          name: "${{ inputs.composition }} — spliced master ${{ github.run_number }} (1080x1920)"
+          body: |
+            Surgical snip-render-and-glue 1080x1920 master spliced onto `${{ needs.plan.outputs.base_release }}`.
+            - Composition: `${{ inputs.composition }}`
+            - Replaced ranges: `${{ inputs.frames }}`
+            - Commit: `${{ github.sha }}`
+          files: "out/${{ inputs.composition }}.mp4"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  render:
+    name: Single render
+    needs: plan
+    if: needs.plan.outputs.mode == 'single'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
 
       - name: Render
         env:

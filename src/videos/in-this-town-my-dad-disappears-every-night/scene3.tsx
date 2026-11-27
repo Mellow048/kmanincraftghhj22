@@ -66,16 +66,16 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "3.wait",
-      ...cam.front({ actor: [-1.1, 0, -9.0], facing: SOUTH, dist: 5.8, to: 4.5, side: -18, pitch: 5 }),
+      ...cam.front({ actor: [-1.1, 0, -8.8], facing: SOUTH, dist: 5.8, to: 4.5, side: -18, pitch: 5 }),
       zone: "town",
       look: "overworld-day",
-      note: "Front push-in on the kid as the realization hits on 'llamas' with a pop bubble overhead.",
+      note: "Front push-in on the kid (continuous position [-1.1, 0, -8.8] from 3.prints!) as the realization hits on 'llamas'.",
       stage: (t) => {
         const llamasAt = w("3.wait", "llamas");
         return (
           <>
-            <Hero position={[-1.1, 0, -9.0]} rotationY={SOUTH} animation={t > llamasAt ? "point" : "idle"} face={t > llamasAt ? "surprised" : "wow"} />
-            <Bubble text="LLAMAS?!" position={[-1.1, 2.05, -9.0]} scale={pop(t, llamasAt) * 0.72} />
+            <Hero position={[-1.1, 0, -8.8]} rotationY={SOUTH} animation={t > llamasAt ? "point" : "idle"} face={t > llamasAt ? "surprised" : "wow"} />
+            <Bubble text="LLAMAS?!" position={[-1.1, 2.05, -8.8]} scale={pop(t, llamasAt) * 0.72} />
             <MuddyPrints from={[0.5, 0, -7.8]} to={[0.5, 0, -11.0]} count={5} />
           </>
         );
@@ -99,18 +99,18 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.milk",
-      ...cam.front({ actor: on(ROOM_POS, 0.3, 0, 1.2), facing: SOUTH, dist: 5.4, to: 4.2, side: 16, pitch: 6 }),
+      ...cam.front({ actor: on(ROOM_POS, 0.4, 0, 1.4), facing: SOUTH, dist: 5.4, to: 4.2, side: 16, pitch: 6 }),
       zone: "room",
       look: "lantern-night",
       hud: { clock: "12:02 AM", banner: { text: "MILK BUCKET", color: "#ffffff", sub: "CANCELS INVISIBILITY" } },
-      note: "Hero raises a gleaming iron Milk Bucket right in front of camera on 'milk'.",
+      note: "Hero (exact continuous position [0.4, 0, 1.4] from 4.night!) raises a gleaming iron Milk Bucket right in front of camera on 'milk'.",
       stage: (t) => {
         const milkAt = w("4.milk", "milk");
         const lift = ease(ramp(t, milkAt - 0.1, milkAt + 0.35));
         return (
           <group position={ROOM_POS}>
-            <Hero position={[0.3, 0, 1.2]} rotationY={SOUTH} animation={t > milkAt ? "reachUp" : "idle"} face="grin" />
-            <MilkBucket position={[0.72, 0.85 + lift * 0.45, 1.55]} scale={1.25} />
+            <Hero position={[0.4, 0, 1.4]} rotationY={SOUTH} animation={t > milkAt ? "reachUp" : "idle"} face="grin" />
+            <MilkBucket position={[0.82, 0.85 + lift * 0.45, 1.75]} scale={1.25} />
           </group>
         );
       },
@@ -190,19 +190,19 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.hammer",
-      ...cam.sweep({ on: [-0.8, 1.6, -4.6], dist: 6.4, distTo: 5.1, fromYaw: -22, toYaw: 20, pitch: 4, fov: 44 }),
+      ...cam.sweep({ on: [-0.4, 1.55, -4.6], dist: 6.4, distTo: 5.1, fromYaw: -22, toYaw: 20, pitch: 4, fov: 44 }),
       zone: "night",
       look: "lantern-night",
-      note: "Sweeping past the alley porch as an invisible oak hammer swings on its own, banging sparks off fresh roof planks!",
+      note: "Sweeping past the alley porch as an invisible oak hammer swings on its own while Hero freezes at [1.1, 0, -2.0] (locked into 5.thief!).",
       stage: (t) => {
         const swing = Math.sin(t * 12) * 0.65;
         return (
           <>
-            <Torch position={[0.45, 1.45, -4.3]} light={3.8} />
-            <OakHammer position={[-0.4, 1.65, -4.6]} rotation={[swing, 0, 0.35]} scale={1.35} />
-            <PotionSwirl position={[-0.2, 1.1, -4.6]} t={t} intensity={0.75} />
-            <Puffs position={[-0.6, 1.85, -4.6]} color="#ffe099" />
-            <Hero position={[1.4, 0, -2.4]} rotationY={-145 * DEG} animation="idle" face="surprised" />
+            <Torch position={[-0.2, 1.45, -4.8]} light={3.8} />
+            <OakHammer position={[-0.45, 1.65, -4.8]} rotation={[swing, 0, 0.35]} scale={1.35} />
+            <PotionSwirl position={[-0.2, 1.1, -4.8]} t={t} intensity={0.75} />
+            <Puffs position={[-0.6, 1.85, -4.8]} color="#ffe099" />
+            <Hero position={[1.1, 0, -2.0]} rotationY={-152 * DEG} animation="idle" face="surprised" />
           </>
         );
       },

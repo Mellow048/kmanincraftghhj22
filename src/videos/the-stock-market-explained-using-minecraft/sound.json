@@ -3,12 +3,12 @@
   "README": "Hand-scored Explainer soundtrack using mandatory explainer_bgm_loop.wav under narration, crisp trading/register/chart/panic/rebound SFX synced to exact words.",
   "music": {
     "track": "Topics/Explainer/explainer_bgm_loop.wav",
-    "gain": -16,
+    "gain": -15.4,
     "sections": [
       { "from": "1.hook", "mood": "explain", "gain": 0, "why": "Energetic clean explainer groove under Sam's forge setup and share-ticket split" },
-      { "from": "4.rich", "mood": "sneak", "gain": -2, "why": "Sterling arrives in his top hat and drops the sneaky chat rumor" },
+      { "from": "4.rich", "mood": "sneak", "gain": -0.5, "why": "Sterling arrives in his top hat and drops the sneaky chat rumor" },
       { "from": "5.crash", "mood": "none", "why": "Sharp dramatic pause right as the green chart crashes to six!" },
-      { "from": "5.leo", "mood": "dark", "gain": -2, "why": "Leo panic-sells while Sterling scoops up cheap tickets" },
+      { "from": "5.leo", "mood": "dark", "gain": -0.5, "why": "Felint panic-sells while Sterling scoops up cheap tickets" },
       { "from": "6.dawn", "mood": "explain", "gain": 0, "why": "Crisp morning reveal as both furnaces roar and the seamless loop finishes" }
     ]
   },
@@ -78,8 +78,8 @@
     { "cue": "6.full", "word": "packed", "sfx": "clank", "why": "Chests overflowing with iron" },
     { "cue": "6.truth", "word": "never", "sfx": "stamp", "trim": -2, "why": "100% OK stamp on Sam's forge" },
     { "cue": "6.feel", "word": "feelings", "sfx": "bonk", "trim": -1, "why": "Realization hits: only feelings broke" },
-    { "cue": "6.back", "word": "shoots", "sfx": "power_up", "trim": -2, "why": "Chart rockets past 30 emeralds!" },
-    { "cue": "6.back", "word": "emeralds", "at": 0.25, "sfx": "ding", "trim": -1, "why": "Clean 30+ EM rebound bell after words" },
+    { "cue": "6.back", "word": "shoots", "sfx": "power_up", "trim": -4, "why": "Chart rockets past 30 emeralds!" },
+    { "cue": "6.back", "word": "emeralds", "at": 0.25, "sfx": "ding", "trim": -3, "why": "Clean 30+ EM rebound bell after words" },
     { "cue": "7.real", "sfx": "whoosh", "why": "Cut to Hope vs Fear balance scale" },
     { "cue": "7.real", "word": "real", "sfx": "blip", "trim": 1, "why": "Real world connection beat" },
     { "cue": "7.hope", "word": "hope", "sfx": "slide_up", "trim": 3, "why": "Green HOPE surge" },

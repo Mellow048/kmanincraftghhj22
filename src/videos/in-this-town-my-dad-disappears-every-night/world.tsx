@@ -1,5 +1,6 @@
 import type React from "react";
 import {
+  BakeryBuilding,
   Block,
   Clouds,
   DeadBushStall,
@@ -22,8 +23,8 @@ import {
 /**
  * Four persistent worlds with full cinematic atmosphere (GodRay, LightPool, Glow, Dust)
  * and Remaster v7 <SolidBox> collision / camera anti-clip at non-overlapping zone offsets:
- *  - "town" ([0,0,0]): sunlit village street (v7 dirt path + outer ±4.7 lampposts + house SolidBoxes) + Dad's market stall.
- *  - "night" ([0,0,0]): lantern-lit midnight village street for the stealth Milk Bucket chase & reveal.
+ *  - "town" ([0,0,0]): sunlit village street + Dad's market stall + Brick Bakery w/ raised porch & bread stand.
+ *  - "night" ([0,0,0]): lantern-lit midnight village street + the exact same Brick Bakery w/ warm glowing night windows & porch!
  *  - "room" (ROOM_POS): warm home dining room with oak dinner table, Dad's empty chair, and solid walls.
  *  - "school" (SCHOOL_POS): bright schoolyard lawn behind wooden oak fences with oak trees and brick schoolhouse.
  */
@@ -33,6 +34,9 @@ export const World: React.FC = () => (
       <VillageStreet night={false} />
       <Clouds y={24} />
       <DeadBushStall position={[2.65, 0, 5.2]} rotationY={-Math.PI / 2} />
+      {/* Persistent Brick Bakery + wooden front porch + waist-high bread stand on right street side (z = -10.5) */}
+      <BakeryBuilding position={[5.1, 0, -10.5]} rotationY={-Math.PI / 2} night={false} />
+      <SolidBox name="town-bakery" position={[7.2, 2.2, -10.5]} size={[4.5, 4.4, 5.2]} />
       {/* Sunbeams & drifting golden dust across the village road */}
       <GodRay position={[0, 6.2, 4.0]} rotation={[0.14, 0, -0.18]} width={3.6} height={11} color="#fff1c4" opacity={0.14} />
       <GodRay position={[-1.4, 6.4, -7.0]} rotation={[0.12, 0, -0.2]} width={3.4} height={11} color="#ffebc2" opacity={0.12} />
@@ -43,9 +47,13 @@ export const World: React.FC = () => (
 
     <Zone name="night">
       <VillageStreet night />
+      {/* Same Brick Bakery lit warmly at night for the baker front-door reveal! */}
+      <BakeryBuilding position={[5.1, 0, -10.5]} rotationY={-Math.PI / 2} night />
+      <SolidBox name="night-bakery" position={[7.2, 2.2, -10.5]} size={[4.5, 4.4, 5.2]} />
       {/* Warm lantern ground pools & misty night dust (v7 VillageStreet lampposts at ±4.7 keep faces clear) */}
       <LightPool position={[-2.9, 0.04, 6.0]} width={4.4} depth={4.4} color="#ffb95a" opacity={0.34} />
       <LightPool position={[2.9, 0.04, 0.5]} width={4.4} depth={4.4} color="#ffb95a" opacity={0.34} />
+      <LightPool position={[2.4, 0.04, -10.5]} width={5.2} depth={5.2} color="#ffc266" opacity={0.38} />
       <LightPool position={[-2.9, 0.04, -4.5]} width={4.6} depth={4.6} color="#ffb95a" opacity={0.36} />
       <Glow position={[-4.5, 3.1, -3.0]} size={1.9} color="#ffc978" opacity={0.3} />
       <Glow position={[4.5, 3.1, 9.0]} size={1.8} color="#ffc978" opacity={0.28} />

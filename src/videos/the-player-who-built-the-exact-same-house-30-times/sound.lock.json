@@ -5,15 +5,21 @@
   "seconds": 88.4,
   "built_from": {
     "timing.json": "5a3846e432b89b655c95f4a650517d896f460d56",
-    "sound.json": "f6f01fcf6357bbd3c5ac830f791722435dabcaeb",
+    "sound.json": "ec31add2ea34052780a8d00d0b717f5336fb0e89",
     "narration.mp3": "d0fb2dbbb69742197696e14260d9981f24b91787"
   },
-  "mix_sha1": "1371ae179d8026329e6e5c63cec58ff3bd504da5",
+  "mix_sha1": "a4eeb6a1d17ef18a2665ec92fc0db56d70ece751",
   "music_sections": [
     {
       "from": "1.hook",
       "mood": "hope",
       "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "2.rich",
+      "mood": "hope",
+      "at": 6.2,
       "track": "Topics/ServerLore/up_happy.m4a"
     },
     {
@@ -62,7 +68,7 @@
   ],
   "beds": 7,
   "measured": {
-    "musicUnderVoiceDb": 16.9,
+    "musicUnderVoiceDb": 14.6,
     "secondsWithoutMusic": 3.5,
     "bedsUnderVoiceDb": 25.7,
     "sfx": 71,
@@ -71,11 +77,25 @@
     "longestGapSeconds": 2.9,
     "longestGapAt": 52.3,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 14.3,
-    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestMedianDb": 12.9,
+    "voiceOverRestWorstDb": 3.2,
     "voiceOverRestWorst": [
       {
-        "db": 4.0,
+        "db": 3.2,
+        "t": 3.4,
+        "cue": "1.label",
+        "sounding": []
+      },
+      {
+        "db": 3.3,
+        "t": 67.2,
+        "cue": "6.path",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 3.5,
         "t": 5.8,
         "cue": "1.loop",
         "sounding": [
@@ -85,7 +105,7 @@
         ]
       },
       {
-        "db": 4.1,
+        "db": 3.5,
         "t": 78.5,
         "cue": "7.open",
         "sounding": [
@@ -93,34 +113,19 @@
         ]
       },
       {
-        "db": 4.5,
-        "t": 67.2,
-        "cue": "6.path",
+        "db": 4.0,
+        "t": 32.9,
+        "cue": "3.bend",
         "sounding": [
-          "sparkle"
+          "pop"
         ]
       },
       {
-        "db": 4.5,
+        "db": 4.3,
         "t": 82.1,
         "cue": "7.porch",
         "sounding": [
           "chime"
-        ]
-      },
-      {
-        "db": 4.8,
-        "t": 3.4,
-        "cue": "1.label",
-        "sounding": []
-      },
-      {
-        "db": 4.8,
-        "t": 34.8,
-        "cue": "3.safe",
-        "sounding": [
-          "chime",
-          "sparkle"
         ]
       }
     ],

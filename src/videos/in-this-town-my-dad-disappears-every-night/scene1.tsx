@@ -15,6 +15,7 @@ import {
   Sign,
   TraderDad,
   TraderLlama,
+  Vox,
   WEST,
   cam,
   ease,
@@ -109,15 +110,15 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.sand",
-      ...cam.sweep({ on: [0.2, 1.35, 5.2], dist: 6.4, distTo: 5.2, fromYaw: 72, toYaw: 112, pitch: 10, fov: 44 }),
+      ...cam.sweep({ on: [0.1, 1.35, 5.2], dist: 6.4, distTo: 5.2, fromYaw: -112, toYaw: -76, pitch: 9, fov: 44 }),
       zone: "town",
       look: "overworld-day",
       hud: { banner: { text: "3 EMERALDS", color: "#5ce075", sub: "BUCKET OF SAND" } },
-      note: "Sweeping from the stall front as a puzzled villager shakes his head at the 3-emerald bucket of sand and walks away.",
+      note: "Front-3/4 sweep facing Dad behind his stall as the puzzled villager (exact continuous start at [-1.1, 0, 5.2]) shakes his head and walks away.",
       stage: (t, { dur }) => {
         const sandAt = w("1.sand", "sand");
         const threeAt = w("1.sand", "three");
-        const leave = walkSegment([-1.0, 0, 5.2], [-2.5, 0, 2.6], t, sandAt, dur, { gait: "walk" });
+        const leave = walkSegment([-1.1, 0, 5.2], [-2.5, 0, 2.6], t, sandAt, dur, { gait: "walk" });
         return (
           <>
             <TraderDad position={[0.9, 0, 5.2]} rotationY={WEST} animation="wave" face="grin" />
@@ -151,7 +152,7 @@ export const scene1 = storyScene(timing, {
       zone: "town",
       look: "overworld-golden",
       hud: { clock: "6:01 PM", banner: { text: "VANISHED!", color: "#7ce8ff" } },
-      note: "Reverse sweep as blue swirls explode on 'poof' and Dad vanishes completely into thin air, leaving the kid staring.",
+      note: "Reverse sweep as blue swirls explode on 'poof' and Dad vanishes completely into thin air, leaving the kid locked at [-1.7, 0, 3.2].",
       stage: (t) => {
         const poofAt = w("1.poof", "poof");
         const vanish = ramp(t, poofAt, poofAt + 0.42);
@@ -160,7 +161,7 @@ export const scene1 = storyScene(timing, {
             <TraderDad position={[0, 0, 2.0]} rotationY={SOUTH} animation="idle" vanish={vanish} />
             <PotionSwirl position={[0, 1.0, 2.0]} t={t} intensity={1} />
             {t >= poofAt ? <Puffs position={[0, 1.1, 2.0]} color="#9beeff" /> : null}
-            <Hero position={[-1.65, 0, 3.3]} rotationY={42 * DEG} animation={t > poofAt ? "panic" : "idle"} face={t > poofAt ? "surprised" : "uneasy"} />
+            <Hero position={[-1.7, 0, 3.2]} rotationY={40 * DEG} animation={t > poofAt ? "panic" : "idle"} face={t > poofAt ? "surprised" : "uneasy"} />
           </>
         );
       },
@@ -170,33 +171,34 @@ export const scene1 = storyScene(timing, {
       ...cam.frameDuo({ a: [-1.4, 0, -2.5], b: [1.5, 0, -2.5], fromYaw: -18, toYaw: 20, pitch: 8 }),
       zone: "town",
       look: "overworld-day",
-      note: "9:16-safe two-shot on daytime street: two emerald-vest rich merchants point and laugh right in Dad's face.",
+      hud: { chat: [{ sender: "Rich Merchant", text: "HAHAHAHA! Look at those trades!", color: "#ffdd57" }] },
+      note: "9:16-safe two-shot on daytime street: two emerald-vest rich merchants point and laugh right in Dad's face with crisp HUD taunt.",
       stage: (t) => {
         const laughAt = w("2.rich", "laugh");
         return (
           <>
-            <TraderDad position={[-1.4, 0, -2.5]} rotationY={EAST} animation="idle" face="sad" />
-            <RichMerchant variant={0} position={[0.7, 0, -2.4]} rotationY={WEST} animation={t > laughAt ? "point" : "laugh"} face="grin" />
-            <RichMerchant variant={1} position={[1.8, 0, -3.1]} rotationY={WEST} animation="laugh" face="grin" />
-            <Bubble text="HAHAHA!" position={[1.1, 2.35, -2.4]} scale={pop(t, laughAt) * 0.72} />
+            <TraderDad position={[-1.4, 0, -2.5]} rotationY={EAST} animation="idle" face="frown" />
+            <RichMerchant variant={0} position={[0.7, 0, -2.4]} rotationY={WEST} animation={t > laughAt ? "point" : "laugh"} face="laugh" />
+            <RichMerchant variant={1} position={[1.8, 0, -3.1]} rotationY={WEST} animation="laugh" face="laugh" />
           </>
         );
       },
     },
     {
       cue: "2.sign",
-      ...cam.front({ actor: [0.2, 0, -6.5], facing: SOUTH, dist: 6.2, to: 4.9, side: -18, pitch: 8 }),
+      ...cam.front({ actor: [0.0, 0.4, -6.5], facing: SOUTH, dist: 6.2, to: 4.9, side: -16, pitch: 6 }),
       zone: "town",
       look: "overworld-day",
       hud: { chat: [{ sender: "Merchant", text: "worst trader alive lol", color: "#ff8c82" }], typing: true },
-      note: "Tighter front push on a cruel wooden sign staked in the cobbles: WORST TRADER, while a merchant struts off and taunts in HUD chat.",
+      note: "Raised chest-high wooden signpost staked cleanly ABOVE ground: WORST TRADER, while a merchant struts off and taunts in HUD chat.",
       stage: (t, { dur }) => {
-        const strut = walkSegment([0.8, 0, -6.5], [2.4, 0, -9.0], t, 0.2, dur, { gait: "walk" });
+        const strut = walkSegment([1.0, 0, -6.5], [2.4, 0, -9.0], t, 0.2, dur, { gait: "walk" });
         return (
           <>
-            <Sign title="WORST TRADER" position={[0.0, 0.05, -6.5]} />
-            <RichMerchant variant={0} {...strut} animDistance={strut.animDistance} face="grin" />
-            <Hero position={[-1.5, 0, -6.2]} rotationY={60 * DEG} animation="idle" face="sad" />
+            <Vox kind="planks" tint="#6e4a26" position={[0.0, 0.56, -6.54]} size={[0.14, 1.12, 0.14]} />
+            <Sign title="WORST TRADER" subtitle="ALIVE" position={[0.0, 1.48, -6.5]} width={1.26} height={0.96} />
+            <RichMerchant variant={0} {...strut} animDistance={strut.animDistance} face="laugh" />
+            <Hero position={[-1.5, 0, -6.2]} rotationY={60 * DEG} animation="idle" face="frown" />
           </>
         );
       },

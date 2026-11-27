@@ -120,12 +120,12 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.bend",
-      ...cam.track({ from: [0.8, 0, 4.5], to: [0.8, 0, 0.6], sideDist: 6.0, side: -1, height: 1.6, lead: 1.6, fov: 44 }),
+      ...cam.sweep({ on: [-0.2, 1.4, 2.0], dist: 6.6, distTo: 5.4, fromYaw: 20, toYaw: -16, pitch: 9, fov: 46 }),
       zone: "smp",
       look: "overworld-day",
-      note: "Sweet sunlit track: Sam hurries down the path lovingly placing identical cozy OakCottages around every bend!",
+      note: "Unobstructed sunlit front sweep down the open cobble street as Sam walks toward camera placing an identical cozy OakCottage around the bend!",
       stage: (t, { dur }) => {
-        const walk = walkSegment([0.8, 0, 4.5], [0.8, 0, 0.6], t, 0, dur, { gait: "walk", endYaw: NORTH });
+        const walk = walkSegment([0.8, 0, 0.8], [0.8, 0, 4.2], t, 0, dur, { gait: "walk", endYaw: SOUTH });
         const bendAt = w("3.bend", "house");
         const popK = pop(t, bendAt);
         return (
