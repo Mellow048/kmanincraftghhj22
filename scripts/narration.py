@@ -147,12 +147,12 @@ def speech_span(x, rate: int):
     if n == 0:
         return 0, len(x)
     rms = np.sqrt(np.mean(x[: n * hop].reshape(n, hop) ** 2, axis=1) + 1e-12)
-    floor = max(rms.max() * 10 ** (-38 / 20), 10 ** (-52 / 20))
+    floor = max(rms.max() * 10 ** (-48 / 20), 10 ** (-56 / 20))
     loud = np.where(rms > floor)[0]
     if len(loud) == 0:
         return 0, len(x)
     a = max(0, (loud[0] - 3) * hop)
-    b = min(len(x), (loud[-1] + 14) * hop)
+    b = min(len(x), (loud[-1] + 28) * hop)
     return int(a), int(b)
 
 

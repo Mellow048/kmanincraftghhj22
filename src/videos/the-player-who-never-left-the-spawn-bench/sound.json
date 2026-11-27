@@ -87,7 +87,8 @@
     {
       "cue": "3.jake",
       "word": "Jake",
-      "sfx": "step_stone"
+      "sfx": "step_stone",
+      "trim": 6
     },
     {
       "cue": "3.tnt",
@@ -192,7 +193,7 @@
     {
       "cue": "1.hi",
       "sfx": "plink",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "1.chat",
@@ -217,17 +218,17 @@
     {
       "cue": "2.wave",
       "sfx": "plink",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "2.bot",
       "sfx": "step_stone",
-      "trim": -4
+      "trim": 0
     },
     {
       "cue": "2.why",
       "sfx": "swish",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "3.jake",
@@ -267,17 +268,17 @@
     {
       "cue": "4.days",
       "sfx": "plink",
-      "trim": -4
+      "trim": 3
     },
     {
       "cue": "4.join",
       "sfx": "step_stone",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "4.hands",
       "sfx": "swish",
-      "trim": -4
+      "trim": 3
     },
     {
       "cue": "4.keys",
@@ -302,7 +303,7 @@
     {
       "cue": "5.quiet",
       "sfx": "swish",
-      "trim": -4
+      "trim": 2
     },
     {
       "cue": "5.jake2",
@@ -327,7 +328,7 @@
     {
       "cue": "6.plate",
       "sfx": "swish",
-      "trim": -4
+      "trim": 2
     },
     {
       "cue": "6.auto",
@@ -352,12 +353,12 @@
     {
       "cue": "7.flowers",
       "sfx": "swish",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "7.glad",
       "sfx": "whoosh",
-      "trim": -4
+      "trim": 0
     },
     {
       "cue": "7.home",
@@ -367,7 +368,7 @@
     {
       "cue": "7.cta",
       "sfx": "plink",
-      "trim": -4
+      "trim": 4
     },
     {
       "cue": "1.bench",
@@ -409,7 +410,7 @@
       "cue": "2.walk",
       "word": "Players",
       "sfx": "swish",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "2.wave",
@@ -421,7 +422,7 @@
       "cue": "2.bot",
       "word": "People",
       "sfx": "pop",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "2.why",
@@ -433,7 +434,7 @@
       "cue": "3.jake",
       "word": "Then",
       "sfx": "step_stone",
-      "trim": -4
+      "trim": 2
     },
     {
       "cue": "3.tnt",
@@ -457,7 +458,7 @@
       "cue": "3.stand",
       "word": "Maya",
       "sfx": "plink",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "3.sorry",
@@ -469,13 +470,13 @@
       "cue": "3.left",
       "word": "Then",
       "sfx": "swish",
-      "trim": -4
+      "trim": 0
     },
     {
       "cue": "4.days",
       "word": "Three",
       "sfx": "whoosh",
-      "trim": -4
+      "trim": 1
     },
     {
       "cue": "4.join",
@@ -487,7 +488,7 @@
       "cue": "4.hands",
       "word": "Maya's",
       "sfx": "plink",
-      "trim": -4
+      "trim": 2
     },
     {
       "cue": "4.keys",

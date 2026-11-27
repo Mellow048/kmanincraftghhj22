@@ -1,0 +1,118 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-player-who-never-left-the-spawn-bench",
+  "mix": "public/audio/the-player-who-never-left-the-spawn-bench/mix.mp3",
+  "seconds": 83.2667,
+  "built_from": {
+    "timing.json": "c541b35e683382f9d2656360d791f8d7df5f8c1b",
+    "sound.json": "5edb19e94b403c0e6cca25b5b87df7d28fdc450b",
+    "narration.mp3": "1521a2e0e21efb9be55e83bcd5c41dcecc60a7fa"
+  },
+  "mix_sha1": "ee7fdd9a3651f3751d770b1c27876b15748b5277",
+  "music_sections": [
+    {
+      "from": "1.bench",
+      "mood": "hope",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.stand",
+      "mood": "sad",
+      "at": 30.6,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.owner",
+      "mood": "hope",
+      "at": 56.7,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "7.back2",
+      "mood": "wonder",
+      "at": 69.93,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 4,
+  "measured": {
+    "musicUnderVoiceDb": 16.9,
+    "secondsWithoutMusic": 0.9,
+    "bedsUnderVoiceDb": 30.6,
+    "sfx": 84,
+    "sfxPerMinute": 60.5,
+    "sfxKinds": 12,
+    "longestGapSeconds": 2.6,
+    "longestGapAt": 50.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 16.2,
+    "voiceOverRestWorstDb": 5.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.7,
+        "t": 71.5,
+        "cue": "7.back2",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 3.8,
+        "cue": "1.four",
+        "sounding": [
+          "chime",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 80.9,
+        "cue": "7.home",
+        "sounding": [
+          "ding",
+          "plink"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 66.5,
+        "cue": "6.auto",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 7.1,
+        "t": 57.4,
+        "cue": "5.owner",
+        "sounding": []
+      },
+      {
+        "db": 7.9,
+        "t": 11.5,
+        "cue": "2.hut",
+        "sounding": []
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.5,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}
