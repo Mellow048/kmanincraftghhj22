@@ -35,7 +35,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => {
         const w = ease(ramp(t, 0, 0.85));
         return (
-          <ChiefFlint position={[1.4 - w * 1.0, 0, 1.4]} rotationY={-0.3} animation="walk" animDistance={w * 1.0} face="angry" time={t}>
+          <ChiefFlint position={[1.4 - w * 1.0, 0, 1.4]} rotationY={w < 0.96 ? -Math.PI / 2 : -0.25} animation={w < 0.96 ? "walk" : "point"} animDistance={w * 1.0} face="angry" time={t}>
             <HandTorch position={[0, -0.04, 0.16]} lit />
           </ChiefFlint>
         );
@@ -99,11 +99,12 @@ export const scene4 = storyScene(timing, {
       note: "All 30 missing townsfolk walk safely out of the forest cheering under the fireflies!",
       stage: (t) => {
         const w = ease(ramp(t, 0, 1.0));
+        const anim = w > 0.02 && w < 0.98 ? "walk" : "cheer";
         return (
           <>
-            <Player who={2} position={[-1.7, 0, 0.6 + w * 1.1]} rotationY={0.15} animation="walk" animDistance={w * 1.1} face="grin" time={t} />
-            <Player who={3} position={[0, 0, 0.4 + w * 1.2]} rotationY={0} animation="cheer" face="grin" time={t} />
-            <Player who={5} position={[1.7, 0, 0.6 + w * 1.1]} rotationY={-0.15} animation="walk" animDistance={w * 1.1} face="grin" time={t} />
+            <Player who={2} position={[-1.7, 0, 0.6 + w * 1.1]} rotationY={0.15} animation={anim} animDistance={w * 1.1} face="grin" time={t} />
+            <Player who={3} position={[0, 0, 0.4 + w * 1.2]} rotationY={0} animation={anim} animDistance={w * 1.2} face="grin" time={t} />
+            <Player who={5} position={[1.7, 0, 0.6 + w * 1.1]} rotationY={-0.15} animation={anim} animDistance={w * 1.1} face="grin" time={t} />
             <FireflySwarm position={[0, 2.4, 1.2]} count={14} t={t} />
             <FloatingNumber text="30 SAFE!" color="#4be08a" position={[0, 3.1, 1.2]} height={0.72 * pop(t, 0.1)} />
           </>
@@ -120,7 +121,7 @@ export const scene4 = storyScene(timing, {
         const w = ease(ramp(t, 0, 0.95));
         return (
           <>
-            <Mom position={[0, 0, 0.5 + w * 1.1]} rotationY={0} animation="walk" animDistance={w * 1.1} face="grin" time={t} />
+            <Mom position={[0, 0, 0.5 + w * 1.1]} rotationY={0} animation={w > 0.02 && w < 0.98 ? "walk" : "wave"} animDistance={w * 1.1} face="grin" time={t} />
             <PipFirefly position={[0.65, 1.7, 1.5]} t={t} />
           </>
         );
@@ -163,10 +164,11 @@ export const scene4 = storyScene(timing, {
       note: "Happy glowing town square where everyone walks freely under golden fireflies.",
       stage: (t) => {
         const w = ease(ramp(t, 0, 1.0));
+        const anim = w > 0.02 && w < 0.98 ? "walk" : "cheer";
         return (
           <>
-            <Player who={2} position={[-1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation="walk" animDistance={w * 0.9} face="grin" time={t} />
-            <Player who={4} position={[1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation="walk" animDistance={w * 0.9} face="grin" time={t} />
+            <Player who={2} position={[-1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation={anim} animDistance={w * 0.9} face="grin" time={t} />
+            <Player who={4} position={[1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation={anim} animDistance={w * 0.9} face="grin" time={t} />
             <FireflySwarm position={[0, 2.2, 1.5]} count={16} t={t} />
           </>
         );

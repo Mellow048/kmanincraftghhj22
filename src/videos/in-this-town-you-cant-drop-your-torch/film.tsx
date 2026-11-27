@@ -11,6 +11,7 @@ export const film = defineFilm({
   title: "In This Town, You Can't Drop Your Torch",
   topic: "in-this-town",
   cut: "short",
+  audio: { src: "audio/in-this-town-you-cant-drop-your-torch/mix.mp3" },
   look: "overworld-day",
   post: { shaders: "vibrant-day" },
   captions: {

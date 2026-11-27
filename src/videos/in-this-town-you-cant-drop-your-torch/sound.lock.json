@@ -1,0 +1,119 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-you-cant-drop-your-torch",
+  "mix": "public/audio/in-this-town-you-cant-drop-your-torch/mix.mp3",
+  "seconds": 102.8667,
+  "built_from": {
+    "timing.json": "703ee6c2f9de27c3bd899ca70a185800b56de78c",
+    "sound.json": "d6f335626a8d9b8a48ed534363aac797870a3753",
+    "narration.mp3": "7511d108740ba6936576a7a8935139a8e3bd775f"
+  },
+  "mix_sha1": "f2816b808be7c436bda8412ea030e6fca43b42bc",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "2.barber",
+      "mood": "playful",
+      "at": 11.4,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "4.thirty",
+      "mood": "tense",
+      "at": 43.8,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "6.rule",
+      "mood": "hope",
+      "at": 64.4,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "7.momback",
+      "mood": "wonder",
+      "at": 91.97,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 16.5,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 30.5,
+    "sfx": 86,
+    "sfxPerMinute": 50.2,
+    "sfxKinds": 23,
+    "longestGapSeconds": 3.1,
+    "longestGapAt": 62.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.2,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 55.9,
+        "cue": "5.lock",
+        "sounding": [
+          "coin"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 41.0,
+        "cue": "4.hundred",
+        "sounding": [
+          "coins",
+          "ding"
+        ]
+      },
+      {
+        "db": 7.1,
+        "t": 85.9,
+        "cue": "7.mud",
+        "sounding": [
+          "splash"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 95.5,
+        "cue": "7.hug",
+        "sounding": [
+          "ding",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 1.2,
+        "cue": "1.town",
+        "sounding": [
+          "fire_whoosh"
+        ]
+      },
+      {
+        "db": 7.6,
+        "t": 19.7,
+        "cue": "2.mail",
+        "sounding": [
+          "gust",
+          "power_down"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.0,
+    "limiterMaxDb": 1.0
+  },
+  "failures": []
+}

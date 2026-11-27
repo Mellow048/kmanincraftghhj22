@@ -28,12 +28,13 @@ export const scene1 = storyScene(timing, {
       note: "Hook: Every villager walks through town gripping a blazing wooden torch!",
       stage: (t) => {
         const w = ease(ramp(t, 0, 1.0));
+        const anim = w > 0.02 && w < 0.98 ? "walk" : "wave";
         return (
           <>
-            <Player who={2} position={[-1.4, 0, 0.8 + w * 1.1]} rotationY={0} animation="walk" animDistance={w * 1.1} face="calm" time={t}>
+            <Player who={2} position={[-1.4, 0, 0.8 + w * 1.1]} rotationY={0} animation={anim} animDistance={w * 1.1} face="calm" time={t}>
               <HandTorch position={[0, -0.04, 0.14]} lit />
             </Player>
-            <Player who={4} position={[1.4, 0, 0.9 + w * 1.0]} rotationY={0} animation="walk" animDistance={w * 1.0} face="calm" time={t}>
+            <Player who={4} position={[1.4, 0, 0.9 + w * 1.0]} rotationY={0} animation={anim} animDistance={w * 1.0} face="calm" time={t}>
               <HandTorch position={[0, -0.04, 0.14]} lit />
             </Player>
           </>
@@ -128,12 +129,13 @@ export const scene1 = storyScene(timing, {
       note: "Runners sprint laps holding blazing torches like glow sticks!",
       stage: (t) => {
         const s = ease(ramp(t, 0, 1.0));
+        const anim = s > 0.02 && s < 0.98 ? "run" : "cheer";
         return (
           <>
-            <Player who={2} position={[-1.8 + s * 2.8, 0, 1.5]} rotationY={Math.PI / 2} animation="run" animDistance={s * 2.8} face="grin" time={t}>
+            <Player who={2} position={[-1.8 + s * 2.8, 0, 1.5]} rotationY={s < 0.98 ? Math.PI / 2 : 0.25} animation={anim} animDistance={s * 2.8} face="grin" time={t}>
               <HandTorch position={[0, -0.04, 0.14]} lit />
             </Player>
-            <Player who={5} position={[-0.4 + s * 2.6, 0, 1.9]} rotationY={Math.PI / 2} animation="run" animDistance={s * 2.6} face="smile" time={t}>
+            <Player who={5} position={[-0.4 + s * 2.6, 0, 1.9]} rotationY={s < 0.98 ? Math.PI / 2 : -0.25} animation={anim} animDistance={s * 2.6} face="smile" time={t}>
               <HandTorch position={[0, -0.04, 0.14]} lit />
             </Player>
           </>
