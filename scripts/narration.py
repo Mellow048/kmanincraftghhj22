@@ -231,6 +231,20 @@ SAY = {
     "postman": "P OW S T M AE N",
     "hugged": "HH AH G D",
     "baron": "B EH R AH N",
+    "afk": "EY EH F K EY",
+    "griefer": "G R IY F ER",
+    "splinters": "S P L IH N T ER Z",
+    "autotyped": "AO T OW T AY P T",
+    "maya": "M AY AH",
+    "jake": "JH EY K",
+    "creepers": "K R IY P ER Z",
+    "firefly": "F AY ER F L AY",
+    "fireflies": "F AY ER F L AY Z",
+    "mailman": "M EY L M AE N",
+    "windstorm": "W IH N D S T AO R M",
+    "puddle": "P AH D AH L",
+    "mods": "M AA D Z",
+    "groans": "G R OW N Z",
 }
 
 def assembled_spans(raw, count, length):
@@ -521,7 +535,7 @@ if __name__ == "__main__":
     b = sub.add_parser("build"); b.add_argument("film")
     b.add_argument("--wpm", type=float, default=255.0, help="target pace; the voice is sped up to reach it (default 255)")
     b.add_argument("--tempo", default="auto", help="'auto' (reach --wpm, at most x1.6), or a number such as 1.3")
-    b.add_argument("--gap", type=float, default=0.08, help="seconds of air between two clips (default 0.08)")
+    b.add_argument("--gap", type=float, default=0.42, help="seconds of air between two clips (default 0.42 for natural breath pauses)")
     b.add_argument("--estimate", action="store_true", help="no recordings yet: time the words from --wpm alone")
     b.add_argument("--require-alignment", action="store_true", help="stop before replacing any output if any recorded word needs an estimate")
     b.add_argument("--fps", type=int, default=30)

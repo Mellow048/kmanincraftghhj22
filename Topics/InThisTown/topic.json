@@ -130,9 +130,9 @@
       "owner": "the music is used thats the new backround music for the in this town shorts",
       "since": "2026-11-13",
       "guide": "Topics/InThisTown/SOUND.md",
-      "gain": -16,
+      "gain": -13,
       "minShare": 0.8,
-      "note": "The owner's own track is the background music of every In This Town short from this date. A film's sound.json names it in `music.track`; `scripts/sound.py build` refuses a sheet that does not, or one where it plays under less than `minShare` of the film (a `none` section is silence); `draft` writes it in. `gain` is the level to start from: -16, the level of Superpower part 2, the first film that played it.",
+      "note": "The owner's own track is the background music of every In This Town short from this date. A film's sound.json names it in `music.track`; `scripts/sound.py build` refuses a sheet that does not, or one where it plays under less than `minShare` of the film (a `none` section is silence); `draft` writes it in. `gain` is the level to start from: -13 (the v4 level; Superpower part 2, the first film that played it, used -16).",
       "madeBefore": [
         "in-this-town-same-face",
         "in-this-town-pumpkin-heads",

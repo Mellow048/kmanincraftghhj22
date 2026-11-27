@@ -882,12 +882,15 @@ export const FloatingNumber: React.FC<{
   const str = String(text);
   const tex = wordTexture(str);
   const { width: tw, height: th } = tex.image as { width: number; height: number };
-  const w = (tw / Math.max(1, th)) * height;
+  const rawW = (tw / Math.max(1, th)) * height;
+  const scaleClamp = rawW > 2.15 ? 2.15 / rawW : 1;
+  const w = rawW * scaleClamp;
+  const effH = height * scaleClamp;
   const dy = bob > 0 ? Math.sin(t * 3.1) * bob : 0;
 
   return (
     <mesh position={[position[0], position[1] + dy, position[2]]} rotation-y={rotationY}>
-      <planeGeometry args={[w, height]} />
+      <planeGeometry args={[w, effH]} />
       <meshBasicMaterial
         map={tex}
         color={color}
@@ -923,16 +926,19 @@ export const ChatToast: React.FC<{
   const line = sender ? `<${sender}> ${text}` : text;
   const tex = wordTexture(line);
   const { width: tw, height: th } = tex.image as { width: number; height: number };
-  const w = (tw / Math.max(1, th)) * height;
+  const rawW = (tw / Math.max(1, th)) * height;
+  const scaleClamp = rawW > 2.25 ? 2.25 / rawW : 1;
+  const w = rawW * scaleClamp;
+  const effH = height * scaleClamp;
 
   return (
     <group position={position} rotation-y={rotationY}>
       <mesh position={[0, 0, -0.01]}>
-        <planeGeometry args={[w + height * 0.6, height * 1.45]} />
+        <planeGeometry args={[w + effH * 0.6, effH * 1.45]} />
         <meshBasicMaterial color="#000000" transparent opacity={0.58} side={THREE.DoubleSide} fog={false} />
       </mesh>
       <mesh>
-        <planeGeometry args={[w, height]} />
+        <planeGeometry args={[w, effH]} />
         <meshBasicMaterial
           map={tex}
           color={color}

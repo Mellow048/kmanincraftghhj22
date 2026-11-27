@@ -89,8 +89,8 @@ export const cam = {
   }): Move {
     const on: Vec3 = [o.actor[0], round(o.actor[1] + (o.height ?? 1.25)), o.actor[2]];
     const yaw = round(((o.facing ?? 0) / RAD) + (o.side ?? 18));
-    const dist = o.dist ?? 4.6;
-    const to = o.to ?? round(Math.max(2.6, dist - 0.7));
+    const dist = o.dist ?? 6.2;
+    const to = o.to ?? round(Math.max(4.4, dist - 1.0));
     return cam.push({
       on,
       dist,

@@ -1,0 +1,492 @@
+{
+  "film": "the-player-who-never-left-the-spawn-bench",
+  "music": {
+    "track": "Topics/ServerLore/up_happy.m4a",
+    "trackFrom": 2.5,
+    "gain": -12,
+    "sections": [
+      {
+        "from": "1.bench",
+        "mood": "warm",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.5
+      },
+      {
+        "from": "3.stand",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a"
+      },
+      {
+        "from": "5.owner",
+        "mood": "triumph",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.5
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.bench",
+      "bed": "sky",
+      "gain": -30
+    },
+    {
+      "from": "4.hands",
+      "bed": "room",
+      "gain": -30
+    },
+    {
+      "from": "4.desk",
+      "bed": "classroom",
+      "gain": -30
+    },
+    {
+      "from": "4.only",
+      "bed": "sky",
+      "gain": -30
+    }
+  ],
+  "effects": [
+    {
+      "cue": "1.bench",
+      "word": "bench",
+      "sfx": "pop"
+    },
+    {
+      "cue": "1.four",
+      "word": "four",
+      "sfx": "chime"
+    },
+    {
+      "cue": "1.chat",
+      "word": "hi",
+      "sfx": "blip"
+    },
+    {
+      "cue": "1.back",
+      "word": "welcome",
+      "sfx": "blip"
+    },
+    {
+      "cue": "2.walk",
+      "word": "ran",
+      "sfx": "step_stone"
+    },
+    {
+      "cue": "2.bot",
+      "word": "bot",
+      "sfx": "plink"
+    },
+    {
+      "cue": "3.jake",
+      "word": "Jake",
+      "sfx": "step_stone"
+    },
+    {
+      "cue": "3.tnt",
+      "word": "TNT",
+      "sfx": "place"
+    },
+    {
+      "cue": "3.boom",
+      "word": "Boom",
+      "sfx": "boom"
+    },
+    {
+      "cue": "3.type",
+      "word": "typed",
+      "sfx": "blip"
+    },
+    {
+      "cue": "3.sorry",
+      "word": "sorry",
+      "sfx": "blip"
+    },
+    {
+      "cue": "3.left",
+      "word": "disconnected",
+      "sfx": "power_down"
+    },
+    {
+      "cue": "4.join",
+      "word": "joined",
+      "sfx": "blip"
+    },
+    {
+      "cue": "4.keys",
+      "word": "keys",
+      "sfx": "plink"
+    },
+    {
+      "cue": "5.owner",
+      "word": "planks",
+      "sfx": "ding"
+    },
+    {
+      "cue": "6.forty",
+      "word": "Forty",
+      "sfx": "whoosh"
+    },
+    {
+      "cue": "6.build",
+      "word": "rebuilt",
+      "sfx": "place"
+    },
+    {
+      "cue": "6.plate",
+      "word": "plate",
+      "sfx": "plink"
+    },
+    {
+      "cue": "6.auto",
+      "word": "welcome",
+      "sfx": "ding"
+    },
+    {
+      "cue": "7.back2",
+      "word": "logged",
+      "sfx": "chime"
+    },
+    {
+      "cue": "7.line",
+      "word": "cheering",
+      "sfx": "cheer"
+    },
+    {
+      "cue": "7.flowers",
+      "word": "flowers",
+      "sfx": "pop"
+    },
+    {
+      "cue": "7.glad",
+      "word": "back",
+      "sfx": "blip"
+    },
+    {
+      "cue": "7.home",
+      "word": "home",
+      "sfx": "ding"
+    },
+    {
+      "cue": "7.cta",
+      "word": "Subscribe",
+      "sfx": "ding"
+    },
+    {
+      "cue": "1.bench",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "1.four",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "1.hi",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "1.chat",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "1.back",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "2.hut",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "2.walk",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "2.wave",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "2.bot",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "2.why",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "3.jake",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "3.tnt",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "3.boom",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "3.type",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "3.stand",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "3.sorry",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "3.left",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "4.days",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "4.join",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "4.hands",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "4.keys",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "4.desk",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "4.only",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "4.loved",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "5.quiet",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "5.jake2",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "5.owner",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "6.forty",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "6.build",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "6.plate",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "6.auto",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "6.town",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "7.back2",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "7.line",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "7.flowers",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "7.glad",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "7.home",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "7.cta",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "1.bench",
+      "word": "There",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "1.four",
+      "word": "Every",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "1.hi",
+      "word": "She",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "1.chat",
+      "word": "All",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "1.back",
+      "word": "And",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "2.hut",
+      "word": "She",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "2.walk",
+      "word": "Players",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "2.wave",
+      "word": "Maya",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "2.bot",
+      "word": "People",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "2.why",
+      "word": "Nobody",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "3.jake",
+      "word": "Then",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "3.tnt",
+      "word": "dropped",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "3.boom",
+      "word": "Wood",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "3.type",
+      "word": "Jake",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "3.stand",
+      "word": "Maya",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "3.sorry",
+      "word": "She",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "3.left",
+      "word": "Then",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "4.days",
+      "word": "Three",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "4.join",
+      "word": "Then",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "4.hands",
+      "word": "Mayas",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "4.keys",
+      "word": "She",
+      "sfx": "step_stone",
+      "trim": -4
+    }
+  ]
+}

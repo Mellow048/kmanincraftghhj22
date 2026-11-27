@@ -30,7 +30,7 @@ if SCRIPT_DIR not in sys.path:
 import narration  # noqa: E402
 
 DEFAULT_EDGE_VOICE = "en-US-GuyNeural"
-DEFAULT_EDGE_RATE = "+10%"
+DEFAULT_EDGE_RATE = "+0%"
 DEFAULT_KOKORO_VOICE = "am_puck"
 DEFAULT_KOKORO_MODEL = os.path.expanduser("~/.cache/hyperframes/tts/models/kokoro-v1.0.onnx")
 DEFAULT_KOKORO_VOICES = os.path.expanduser("~/.cache/hyperframes/tts/voices/voices-v1.0.bin")

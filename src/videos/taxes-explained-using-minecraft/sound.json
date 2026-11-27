@@ -1,0 +1,405 @@
+{
+  "film": "taxes-explained-using-minecraft",
+  "music": {
+    "track": "Topics/Explainer/explainer_bgm_loop.wav",
+    "gain": -13,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "explain",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      },
+      {
+        "from": "2.night",
+        "mood": "tense",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      },
+      {
+        "from": "4.mods",
+        "mood": "explain",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      },
+      {
+        "from": "5.greedy",
+        "mood": "tense",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      },
+      {
+        "from": "6.real",
+        "mood": "explain",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.hook",
+      "bed": "sky",
+      "gain": -30
+    },
+    {
+      "from": "3.rule",
+      "bed": "room",
+      "gain": -30
+    },
+    {
+      "from": "6.real",
+      "bed": "sky",
+      "gain": -30
+    }
+  ],
+  "effects": [
+    {
+      "cue": "1.hook",
+      "word": "Minecraft",
+      "sfx": "pop"
+    },
+    {
+      "cue": "1.ten",
+      "word": "ten",
+      "sfx": "coin"
+    },
+    {
+      "cue": "1.dark",
+      "word": "zero",
+      "sfx": "plink"
+    },
+    {
+      "cue": "2.night",
+      "word": "creepers",
+      "sfx": "whoosh_low"
+    },
+    {
+      "cue": "2.boom",
+      "word": "Boom",
+      "sfx": "boom"
+    },
+    {
+      "cue": "2.again",
+      "word": "blast",
+      "sfx": "hit"
+    },
+    {
+      "cue": "3.two",
+      "word": "two",
+      "sfx": "coin"
+    },
+    {
+      "cue": "3.twenty",
+      "word": "twenty",
+      "sfx": "ding"
+    },
+    {
+      "cue": "4.mods",
+      "word": "open",
+      "sfx": "creak"
+    },
+    {
+      "cue": "4.wall",
+      "word": "wall",
+      "sfx": "place"
+    },
+    {
+      "cue": "4.torch",
+      "word": "torches",
+      "sfx": "pop"
+    },
+    {
+      "cue": "4.safe",
+      "word": "bounce",
+      "sfx": "boing"
+    },
+    {
+      "cue": "4.win",
+      "word": "beats",
+      "sfx": "ding"
+    },
+    {
+      "cue": "5.greedy",
+      "word": "mod",
+      "sfx": "whoosh"
+    },
+    {
+      "cue": "5.six",
+      "word": "six",
+      "sfx": "hit"
+    },
+    {
+      "cue": "5.statue",
+      "word": "statue",
+      "sfx": "chime"
+    },
+    {
+      "cue": "5.dark2",
+      "word": "dark",
+      "sfx": "power_down"
+    },
+    {
+      "cue": "6.good",
+      "word": "Good",
+      "sfx": "ding"
+    },
+    {
+      "cue": "6.bad",
+      "word": "Bad",
+      "sfx": "hit"
+    },
+    {
+      "cue": "7.ask",
+      "word": "server",
+      "sfx": "pop"
+    },
+    {
+      "cue": "7.loop",
+      "word": "that's",
+      "sfx": "whoosh"
+    },
+    {
+      "cue": "1.hook",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "1.ten",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "1.keep",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "1.dark",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "1.roads",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "2.night",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "2.boom",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "2.again",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "2.broke",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "3.meet",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "3.rule",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "3.two",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "3.twenty",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "3.groan",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "4.mods",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "4.wall",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "4.torch",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "4.road",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "4.safe",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "4.math",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "4.win",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "5.but",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "5.greedy",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "5.six",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "5.wait",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "5.statue",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "5.dark2",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "6.real",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "6.good",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "6.bad",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "6.same",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "7.ask",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "7.free",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "7.pay",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "7.loop",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "1.hook",
+      "word": "Taxes",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "1.ten",
+      "word": "Leo",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "1.keep",
+      "word": "rules",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "1.dark",
+      "word": "Sounds",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "1.roads",
+      "word": "Zero",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "2.night",
+      "word": "Then",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "2.boom",
+      "word": "Leos",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "2.again",
+      "word": "The",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "2.broke",
+      "word": "Nobody",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "3.meet",
+      "word": "the",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "3.rule",
+      "word": "They",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "3.two",
+      "word": "Out",
+      "sfx": "pop",
+      "trim": -4
+    }
+  ]
+}

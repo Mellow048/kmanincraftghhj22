@@ -12,7 +12,7 @@
       "Cross-cut from the Minecraft SMP server into grounded 3D real-world sets (hospital shift, bedroom PC desk, classroom) revealing the human reason behind the player's behavior",
       "An antagonistic mistake or cruel moment on the server that creates emotional heartbreak (sad Up theme)",
       "Owner / server community stepping in using genuine clever Minecraft mechanics (sculk sensors, redstone lamps, signed books, campfire beacons) for a visible tear-jerking payoff (happy Up theme, started cleanly at 0:02+)",
-      "Our framework's full 3D visual quality: shaders, rich multi-part props, kinetic inOutSine camera moves, and full-body locomotion — NEVER static slideshow shots or 1-inch actor slides"
+      "Our framework's full 3D visual quality: shaders, rich multi-part props, kinetic inOutSine camera moves, and full-body locomotion \u2014 NEVER static slideshow shots or 1-inch actor slides"
     ],
     "never": [
       "Clone or 1:1 copy the 3 AM Mom or Deaf Eli reference stories: model their 7-beat structure and emotional retention engine for original SMP scenarios",
@@ -74,7 +74,7 @@
       "extraFiles": [
         "Topics/ServerLore/up_sad.m4a"
       ],
-      "gain": -14,
+      "gain": -12,
       "minShare": 0.8,
       "note": "Two-track Up score mastered cleanly (~110% louder presence, Happy pre-trimmed past the silent 0:00-0:01 intro straight to 0:02.000). Switch tracks per scene via music.sections[].track between up_happy.m4a (hook/SMP discovery/Owner rally/payoff/CTA) and up_sad.m4a (IRL struggle/cruel breaking point)."
     },

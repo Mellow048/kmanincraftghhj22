@@ -1,0 +1,483 @@
+{
+  "film": "in-this-town-you-cant-drop-your-torch",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -13,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "bright",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
+        "from": "4.thirty",
+        "mood": "tense",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
+        "from": "6.rule",
+        "mood": "triumph",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "bed": "sky",
+      "gain": -30
+    },
+    {
+      "from": "1.sleep",
+      "bed": "room",
+      "gain": -30
+    },
+    {
+      "from": "2.barber",
+      "bed": "sky",
+      "gain": -30
+    },
+    {
+      "from": "2.school",
+      "bed": "classroom",
+      "gain": -30
+    },
+    {
+      "from": "2.mail",
+      "bed": "sky",
+      "gain": -30
+    }
+  ],
+  "effects": [
+    {
+      "cue": "1.town",
+      "word": "torch",
+      "sfx": "fire_whoosh"
+    },
+    {
+      "cue": "1.town",
+      "word": "drop",
+      "sfx": "pop"
+    },
+    {
+      "cue": "1.dark",
+      "word": "shadows",
+      "sfx": "whoosh_low"
+    },
+    {
+      "cue": "1.light",
+      "word": "flame",
+      "sfx": "fire_whoosh"
+    },
+    {
+      "cue": "1.light",
+      "word": "back",
+      "sfx": "hit"
+    },
+    {
+      "cue": "1.out",
+      "word": "out",
+      "sfx": "power_down"
+    },
+    {
+      "cue": "1.out",
+      "word": "drag",
+      "sfx": "whoosh"
+    },
+    {
+      "cue": "1.sleep",
+      "word": "crib",
+      "sfx": "pop"
+    },
+    {
+      "cue": "2.barber",
+      "word": "cuts",
+      "sfx": "snip"
+    },
+    {
+      "cue": "2.jog",
+      "word": "sprint",
+      "sfx": "step_stone"
+    },
+    {
+      "cue": "2.school",
+      "word": "desk",
+      "sfx": "place"
+    },
+    {
+      "cue": "2.mail",
+      "word": "sneezed",
+      "sfx": "gust"
+    },
+    {
+      "cue": "2.mail",
+      "word": "out",
+      "sfx": "power_down"
+    },
+    {
+      "cue": "2.fifth",
+      "word": "fifth",
+      "sfx": "ding"
+    },
+    {
+      "cue": "2.fifth",
+      "word": "mailman",
+      "sfx": "pop"
+    },
+    {
+      "cue": "3.kai",
+      "word": "Kai",
+      "sfx": "pop"
+    },
+    {
+      "cue": "3.pip",
+      "word": "firefly",
+      "sfx": "sparkle"
+    },
+    {
+      "cue": "3.pip",
+      "word": "Pip",
+      "sfx": "chime"
+    },
+    {
+      "cue": "3.laugh",
+      "word": "yell",
+      "sfx": "pop"
+    },
+    {
+      "cue": "3.flint",
+      "word": "Chief",
+      "sfx": "hit"
+    },
+    {
+      "cue": "3.flint",
+      "word": "Flint",
+      "sfx": "coin"
+    },
+    {
+      "cue": "3.quote",
+      "word": "bug",
+      "sfx": "plink"
+    },
+    {
+      "cue": "3.gone",
+      "word": "gust",
+      "sfx": "gust"
+    },
+    {
+      "cue": "4.mine",
+      "word": "coal",
+      "sfx": "dig"
+    },
+    {
+      "cue": "4.ten",
+      "word": "Ten",
+      "sfx": "coin"
+    },
+    {
+      "cue": "4.hundred",
+      "word": "hundred",
+      "sfx": "ding"
+    },
+    {
+      "cue": "4.hundred",
+      "word": "emeralds",
+      "sfx": "coins"
+    },
+    {
+      "cue": "4.pile",
+      "word": "coal",
+      "sfx": "thud"
+    },
+    {
+      "cue": "4.thirty",
+      "word": "Thirty",
+      "sfx": "hit"
+    },
+    {
+      "cue": "4.thirty",
+      "word": "vanished",
+      "sfx": "whoosh_low"
+    },
+    {
+      "cue": "4.mom",
+      "word": "mom",
+      "sfx": "pop"
+    },
+    {
+      "cue": "4.mom",
+      "word": "Pip",
+      "sfx": "sparkle"
+    },
+    {
+      "cue": "5.wind",
+      "word": "windstorm",
+      "sfx": "gust"
+    },
+    {
+      "cue": "5.wind",
+      "word": "slammed",
+      "sfx": "boom"
+    },
+    {
+      "cue": "5.out2",
+      "word": "Whoosh",
+      "sfx": "gust"
+    },
+    {
+      "cue": "5.out2",
+      "word": "out",
+      "sfx": "power_down"
+    },
+    {
+      "cue": "5.lock",
+      "word": "slammed",
+      "sfx": "hit"
+    },
+    {
+      "cue": "5.lock",
+      "word": "hundred",
+      "sfx": "coin"
+    },
+    {
+      "cue": "5.creep",
+      "word": "shadows",
+      "sfx": "whoosh_low"
+    },
+    {
+      "cue": "5.creep",
+      "word": "square",
+      "sfx": "thud"
+    },
+    {
+      "cue": "5.trap",
+      "word": "sticks",
+      "sfx": "plink"
+    },
+    {
+      "cue": "5.broke",
+      "word": "hundred",
+      "sfx": "coin"
+    },
+    {
+      "cue": "6.rule",
+      "word": "rule",
+      "sfx": "ding"
+    },
+    {
+      "cue": "6.fire",
+      "word": "fire",
+      "sfx": "gust"
+    },
+    {
+      "cue": "6.bug",
+      "word": "glow",
+      "sfx": "sparkle"
+    },
+    {
+      "cue": "6.bug",
+      "word": "never",
+      "sfx": "ding"
+    },
+    {
+      "cue": "6.open",
+      "word": "popped",
+      "sfx": "pop"
+    },
+    {
+      "cue": "6.fly",
+      "word": "shot",
+      "sfx": "whoosh"
+    },
+    {
+      "cue": "6.fly",
+      "word": "star",
+      "sfx": "sparkle"
+    },
+    {
+      "cue": "6.call",
+      "word": "blinked",
+      "sfx": "chime"
+    },
+    {
+      "cue": "6.swarm",
+      "word": "Fifty",
+      "sfx": "sparkle"
+    },
+    {
+      "cue": "6.swarm",
+      "word": "flooded",
+      "sfx": "power_up"
+    },
+    {
+      "cue": "7.flint2",
+      "word": "marched",
+      "sfx": "step_stone"
+    },
+    {
+      "cue": "7.gust",
+      "word": "gust",
+      "sfx": "gust"
+    },
+    {
+      "cue": "7.gust",
+      "word": "out",
+      "sfx": "power_down"
+    },
+    {
+      "cue": "7.mud",
+      "word": "puddle",
+      "sfx": "splash"
+    },
+    {
+      "cue": "7.chase",
+      "word": "chased",
+      "sfx": "whoosh"
+    },
+    {
+      "cue": "7.chase",
+      "word": "trees",
+      "sfx": "sparkle"
+    },
+    {
+      "cue": "7.return",
+      "word": "thirty",
+      "sfx": "cheer"
+    },
+    {
+      "cue": "7.return",
+      "word": "safely",
+      "sfx": "chime"
+    },
+    {
+      "cue": "7.momback",
+      "word": "Mom",
+      "sfx": "ding"
+    },
+    {
+      "cue": "7.hug",
+      "word": "hugged",
+      "sfx": "pop"
+    },
+    {
+      "cue": "7.hug",
+      "word": "danced",
+      "sfx": "sparkle"
+    },
+    {
+      "cue": "7.closed",
+      "word": "shut",
+      "sfx": "hit"
+    },
+    {
+      "cue": "7.free",
+      "word": "hundred",
+      "sfx": "coin"
+    },
+    {
+      "cue": "7.cta",
+      "word": "Subscribe",
+      "sfx": "ding"
+    },
+    {
+      "cue": "1.town",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "1.dark",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "1.light",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "1.out",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "1.sleep",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "2.barber",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "2.jog",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "2.school",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "2.mail",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "2.fifth",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "3.kai",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "3.pip",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "3.laugh",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "3.flint",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "3.quote",
+      "sfx": "swish",
+      "trim": -4
+    },
+    {
+      "cue": "3.gone",
+      "sfx": "whoosh",
+      "trim": -4
+    },
+    {
+      "cue": "4.mine",
+      "sfx": "pop",
+      "trim": -4
+    },
+    {
+      "cue": "4.ten",
+      "sfx": "plink",
+      "trim": -4
+    },
+    {
+      "cue": "4.hundred",
+      "sfx": "step_stone",
+      "trim": -4
+    },
+    {
+      "cue": "4.pile",
+      "sfx": "swish",
+      "trim": -4
+    }
+  ]
+}

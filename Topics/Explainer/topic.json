@@ -29,39 +29,71 @@
   },
   "castRule": {
     "distinctChannel": true,
-    "leads": ["CitizenLead (Miles - struggling/mistake-maker)", "EliteLead (Sterling - rich/perfect/authority)"],
+    "leads": [
+      "CitizenLead (Miles - struggling/mistake-maker)",
+      "EliteLead (Sterling - rich/perfect/authority)"
+    ],
     "note": "Explainer runs on a separate channel from InThisTown. Always use CitizenLead + EliteLead (+ Official/ExplainerCrowd), never InThisTown Hero or Villager clones."
   },
   "camera": {
     "builder": "storyScene",
     "guard": "",
     "maxHardCuts": 999,
-    "legacyFlightFilms": ["what-is-a-dictator"],
+    "legacyFlightFilms": [
+      "what-is-a-dictator"
+    ],
     "note": "Remastered Explainer uses storyScene() with fast ~1.5-2.0s cuts across grounded multi-zone sets, dynamic cam.* recipes, and intra-line `cut:` switches. Legacy film `what-is-a-dictator` stays checked as a flightScene."
   },
   "film": {
-    "seconds": [55, 110],
+    "seconds": [
+      55,
+      110
+    ],
     "hardMaxSeconds": 170,
     "hardMinSeconds": 35,
     "hardMinWords": 100,
-    "shotSeconds": [0.4, 5.5],
-    "medianShotSeconds": [1.1, 2.1],
-    "wordsPerMinute": [205, 255],
-    "words": [180, 420],
+    "shotSeconds": [
+      0.4,
+      5.5
+    ],
+    "medianShotSeconds": [
+      1.1,
+      2.1
+    ],
+    "wordsPerMinute": [
+      205,
+      255
+    ],
+    "words": [
+      180,
+      420
+    ],
     "maxWordsPerShot": 16,
     "captions": true,
     "loopRecommended": true
   },
   "cuts": {
     "short": {
-      "seconds": [35, 65],
+      "seconds": [
+        35,
+        65
+      ],
       "hardMaxSeconds": 68,
-      "words": [110, 230]
+      "words": [
+        110,
+        230
+      ]
     },
     "long": {
-      "seconds": [110, 168],
+      "seconds": [
+        110,
+        168
+      ],
       "hardMaxSeconds": 175,
-      "words": [400, 650]
+      "words": [
+        400,
+        650
+      ]
     }
   },
   "pack": "Topics/Explainer/PACK.md",
@@ -78,20 +110,28 @@
       "owner": "mandatory background music for every Explainer short, levelled quietly under narration so it never overpowers the voice",
       "since": "2026-11-25",
       "guide": "Topics/Explainer/SOUND.md",
-      "gain": -19,
+      "gain": -13,
       "minShare": 0.85,
-      "madeBefore": ["what-is-a-dictator"],
-      "note": "MANDATORY for every new Explainer: track = Topics/Explainer/explainer_bgm_loop.wav. Start gain at -19 (kept 17-25 dB below the narrator voice so it NEVER overpowers narration). scripts/sound.py build refuses any new Explainer sheet that omits it."
+      "madeBefore": [
+        "what-is-a-dictator"
+      ],
+      "note": "MANDATORY for every new Explainer: track = Topics/Explainer/explainer_bgm_loop.wav. Start gain at -13 (loud enough on phone speakers, still under the narrator voice so it NEVER overpowers narration). scripts/sound.py build refuses any new Explainer sheet that omits it."
     },
     "minMusicSections": 3,
-    "musicUnderVoiceDb": [17, 25],
+    "musicUnderVoiceDb": [
+      17,
+      25
+    ],
     "maxSecondsWithoutMusic": 4,
     "minSfxPerMinute": 40,
     "maxGapSeconds": 6,
     "maxBuried": 0,
     "minVoiceOverRestDb": 3,
     "minVoiceOverRestMedianDb": 10,
-    "lufs": [-16.5, -13],
+    "lufs": [
+      -16.5,
+      -13
+    ],
     "maxTruePeakDb": -0.3,
     "bedDefault": "sky",
     "moodDefault": "explain",

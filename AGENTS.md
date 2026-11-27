@@ -1,5 +1,8 @@
 # AGENTS.md — Director's Contract (Remaster v3)
 
+> **REMASTER v4 MANDATORY:** Before writing or rendering any Short, read [`docs/CRITIQUE-V4-QUALITY-GATES.md`](docs/CRITIQUE-V4-QUALITY-GATES.md) (natural `+0%` TTS + `0.42s` breath gaps, louder BGM `-12`/`-13`, 9:16-safe `dist >= 6.0` unclipped framing, continuous A→B motion, background crowds, zero ServerLore scoreboards).
+
+
 Keep this simple: **you do NOT need to read 20 docs before starting.** Read this file, pick the matching topic below, read that topic's `README.md`, and open **one** approved reference film if you need a structural example.
 
 ## 1. Pick the Film Type First
