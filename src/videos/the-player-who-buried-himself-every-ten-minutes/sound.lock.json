@@ -5,10 +5,10 @@
   "seconds": 82.1,
   "built_from": {
     "timing.json": "075570dbc405c8098ccc2043c60ae3cd68e34837",
-    "sound.json": "8c4fcbb76e3d1bdfe1e762e1abb989f50629600a",
+    "sound.json": "44959dd7f3c2554f7f8d72e6240bdb62e860edae",
     "narration.mp3": "b8213cdd37e5c4154ef4fdca6668a7879565ddec"
   },
-  "mix_sha1": "eeb13de771a5a330736d9f6c81a0e8b826ec3bd3",
+  "mix_sha1": "613cb6c14b153a47247eeb9dcc2b940b44c050a1",
   "music_sections": [
     {
       "from": "1.hook",
@@ -62,8 +62,8 @@
   ],
   "beds": 4,
   "measured": {
-    "musicUnderVoiceDb": 17.4,
-    "secondsWithoutMusic": 3.2,
+    "musicUnderVoiceDb": 14.2,
+    "secondsWithoutMusic": 3.1,
     "bedsUnderVoiceDb": 27.0,
     "sfx": 75,
     "sfxPerMinute": 54.8,
@@ -71,28 +71,17 @@
     "longestGapSeconds": 3.5,
     "longestGapAt": 38.1,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 15.6,
-    "voiceOverRestWorstDb": 5.8,
+    "voiceOverRestMedianDb": 12.7,
+    "voiceOverRestWorstDb": 4.4,
     "voiceOverRestWorst": [
       {
-        "db": 5.8,
+        "db": 4.4,
         "t": 71.5,
         "cue": "6.join",
-        "sounding": [
-          "chime"
-        ]
+        "sounding": []
       },
       {
-        "db": 8.1,
-        "t": 79.7,
-        "cue": "6.hug",
-        "sounding": [
-          "ding",
-          "pop"
-        ]
-      },
-      {
-        "db": 8.5,
+        "db": 5.1,
         "t": 30.5,
         "cue": "3.burn",
         "sounding": [
@@ -100,7 +89,7 @@
         ]
       },
       {
-        "db": 8.7,
+        "db": 6.4,
         "t": 75.1,
         "cue": "6.drop",
         "sounding": [
@@ -108,7 +97,15 @@
         ]
       },
       {
-        "db": 9.9,
+        "db": 6.4,
+        "t": 73.2,
+        "cue": "6.glow",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.8,
         "t": 11.3,
         "cue": "2.wood",
         "sounding": [
@@ -116,17 +113,18 @@
         ]
       },
       {
-        "db": 10.5,
-        "t": 54.7,
-        "cue": "5.note",
+        "db": 7.1,
+        "t": 79.7,
+        "cue": "6.hug",
         "sounding": [
-          "ding"
+          "ding",
+          "pop"
         ]
       }
     ],
     "lufs": -14.8,
-    "truePeakDb": -2.6,
-    "limiterMaxDb": 0.0
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.5
   },
   "failures": []
 }

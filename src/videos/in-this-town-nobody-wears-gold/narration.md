@@ -16,21 +16,21 @@
 [2.paint] Even our blacksmith painted his yellow sign grey.
 
 # clip 03-hero
-[3.toby] I am Toby, and I keep this dented gold helmet on.
-[3.grandpa] Grandpa gave it to me right before he vanished.
-[3.never] He whispered one rule, never take it off.
+[3.toby] I am Toby, and I found this dented gold helmet by the mine.
+[3.grandpa] Everyone warned me the piglins would hunt me down.
+[3.never] Even Grandpa vanished last winter when raids got bad.
 [3.laugh] Kids point down Main Street yelling, butter head!
-[3.vance] Mayor Vance laughs outside his huge brick vault.
+[3.vance] Mayor Vance grins outside his huge brick vault.
 [3.cursed] Gold is cursed, kid, ditch that shiny junk.
 
 # clip 04-villain
-[4.locked] Mayor Vance locked every bar of gold inside his vault.
-[4.iron] Instead, he sells plain iron armor at his stall.
+[4.locked] Vance locked every gold bar in his vault so nobody could wear it.
+[4.iron] Why? Because scared villagers buy his overpriced iron armor instead!
 [4.fifty] Fifty emeralds a chestplate on a clear day.
 [4.hundred] After the sunset bell, one hundred emeralds each.
-[4.twenty] Twenty neighbors could not pay and vanished into the pines.
-[4.clue] Wait, last Friday I missed curfew wearing my helmet.
-[4.sniff] A huge piglin walked past, sniffed, and never touched me.
+[4.twenty] Twenty neighbors could not pay and fled into the pines.
+[4.clue] Wait, last Friday I tested my helmet right near the portal.
+[4.sniff] A huge piglin sniffed my gold, lowered his sword, and walked away!
 
 # clip 05-crisis wait 0.45
 [5.bell] Tonight, the sunset bell rang three loud times.
@@ -41,23 +41,23 @@
 [5.corner] Our whole town backed into the square with nowhere left.
 
 # clip 06-loophole wait 0.5
-[6.wait] Then I remembered two Minecraft rules everyone forgot.
-[6.calm] Piglins never attack anyone wearing one piece of gold.
+[6.wait] That is when I put the whole puzzle together!
+[6.calm] Piglins never attack anyone wearing one piece of gold!
 [6.trade] Toss them gold ingots, and they stop fighting to trade!
 [6.sprint] I sprinted up the vault stairs in my gold helmet.
-[6.walk] Three piglins stared at me and stepped right aside!
-[6.lever] I pulled the lever and threw the vault door open!
+[6.walk] Three piglins stared at my helmet and stepped right aside!
+[6.lever] I pulled the lever and threw Vance's vault door open!
 [6.rain] One hundred shining gold ingots rained down the street!
 
 # clip 07-payoff wait 0.45
 [7.freeze] Every piglin froze mid swing and dropped his sword.
 [7.pearls] They scooped up gold and tossed glowing ender pearls back!
 [7.mayor] Mayor Vance marched out in iron yelling, gold is cursed!
-[7.six] Three piglins spotted his iron suit. He made six blocks.
+[7.six] Three piglins spotted his iron suit. He ran six blocks.
 [7.boots] Next morning, everyone put on shiny gold boots.
 [7.pines] We walked straight into the pines without a scratch.
 [7.back2] Out walked all twenty missing neighbors, Grandpa last.
-[7.tap] Grandpa tapped my helmet and grinned, told you so.
+[7.tap] Grandpa tapped my helmet and grinned, you figured it out!
 [7.shop] The mayor's iron stall shut down for good.
-[7.cta] Subscribe if you would keep Grandpa's gold helmet on, too.
+[7.cta] Subscribe if you would wear gold in this town, too!
 ```

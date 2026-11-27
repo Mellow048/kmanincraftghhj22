@@ -77,8 +77,10 @@ export class CollisionWorld {
           nx = id < other.id ? -1 : 1;
           nz = 0;
         }
-        // Gentle half-push (each actor yields ~55% of overlap)
-        const push = (minDist - d) * 0.55;
+        // Smooth eased half-push (zero snap discontinuity at boundary)
+        const overlap = minDist - d;
+        const t = Math.min(1, overlap / Math.max(0.12, minDist));
+        const push = overlap * 0.5 * (t * t * (3 - 2 * t));
         x += nx * push;
         z += nz * push;
       }
@@ -98,9 +100,9 @@ export class CollisionWorld {
         const penX = hx - Math.abs(dx);
         const penZ = hz - Math.abs(dz);
         if (penX < penZ) {
-          x += (dx >= 0 ? 1 : -1) * (penX + 0.03);
+          x += (dx >= 0 ? 1 : -1) * penX;
         } else {
-          z += (dz >= 0 ? 1 : -1) * (penZ + 0.03);
+          z += (dz >= 0 ? 1 : -1) * penZ;
         }
       }
     }

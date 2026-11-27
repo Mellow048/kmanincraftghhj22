@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "tariffs-explained-using-minecraft",
   "mix": "public/audio/tariffs-explained-using-minecraft/mix.mp3",
-  "seconds": 87.4667,
+  "seconds": 82.6,
   "built_from": {
-    "timing.json": "737674218f4920e892d852900b4f0e5675e1e6d1",
-    "sound.json": "d7e5ba5646cf8cdd3e093357056f8b0ad7026c77",
-    "narration.mp3": "65836521020fc25c434fe397d8515e9a5091cf62"
+    "timing.json": "c690edb2e78f9f48ea9d357330c8360870136719",
+    "sound.json": "cced9454e2f392f828f1dbcd0c0837fb74d53e64",
+    "narration.mp3": "12a3fdb3050d0a8575cde6a3b459742d6ea6d9b8"
   },
-  "mix_sha1": "339e0206d508b0c9ae7f4e00dede8d0968bba229",
+  "mix_sha1": "3d38fae4c9bf20f575f8105ee38bfcb68eaa9c9b",
   "music_sections": [
     {
       "from": "1.hook",
@@ -18,22 +18,22 @@
     {
       "from": "3.beg",
       "mood": "tense",
-      "at": 28.57
+      "at": 27.6
     },
     {
       "from": "4.wait",
-      "mood": "none",
-      "at": 45.2
+      "mood": "tense",
+      "at": 43.1
     },
     {
       "from": "4.notblue",
       "mood": "dark",
-      "at": 47.7
+      "at": 45.57
     },
     {
       "from": "5.three",
       "mood": "explain",
-      "at": 66.4
+      "at": 63.0
     }
   ],
   "music_file": {
@@ -42,74 +42,74 @@
   },
   "beds": 4,
   "measured": {
-    "musicUnderVoiceDb": 21.2,
-    "secondsWithoutMusic": 2.4,
+    "musicUnderVoiceDb": 17.3,
+    "secondsWithoutMusic": 0.2,
     "bedsUnderVoiceDb": 26.2,
     "sfx": 93,
-    "sfxPerMinute": 63.8,
+    "sfxPerMinute": 67.6,
     "sfxKinds": 26,
     "longestGapSeconds": 2.5,
-    "longestGapAt": 45.2,
+    "longestGapAt": 80.1,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 17.5,
-    "voiceOverRestWorstDb": 5.6,
+    "voiceOverRestMedianDb": 15.4,
+    "voiceOverRestWorstDb": 6.9,
     "voiceOverRestWorst": [
       {
-        "db": 5.6,
-        "t": 25.4,
+        "db": 6.9,
+        "t": 24.7,
         "cue": "2.empty",
         "sounding": [
-          "creak"
-        ]
-      },
-      {
-        "db": 7.4,
-        "t": 31.9,
-        "cue": "3.idea",
-        "sounding": [
-          "stamp",
+          "creak",
           "swish"
         ]
       },
       {
-        "db": 7.8,
-        "t": 10.8,
-        "cue": "1.special",
+        "db": 7.2,
+        "t": 17.0,
+        "cue": "2.cross",
         "sounding": [
-          "sparkle",
-          "whoosh"
+          "step_wood",
+          "swish"
         ]
       },
       {
-        "db": 8.6,
-        "t": 84.5,
+        "db": 7.5,
+        "t": 21.1,
+        "cue": "2.deal",
+        "sounding": [
+          "coins",
+          "ding",
+          "zip"
+        ]
+      },
+      {
+        "db": 8.2,
+        "t": 72.5,
+        "cue": "5.gov",
+        "sounding": [
+          "coins"
+        ]
+      },
+      {
+        "db": 8.8,
+        "t": 19.2,
+        "cue": "2.five",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 8.9,
+        "t": 79.7,
         "cue": "5.tell",
         "sounding": [
           "ding",
           "whoosh"
         ]
-      },
-      {
-        "db": 8.8,
-        "t": 83.3,
-        "cue": "5.or",
-        "sounding": [
-          "sparkle",
-          "swish"
-        ]
-      },
-      {
-        "db": 9.6,
-        "t": 77.0,
-        "cue": "5.gov",
-        "sounding": [
-          "coins",
-          "swish"
-        ]
       }
     ],
     "lufs": -14.7,
-    "truePeakDb": -2.9,
+    "truePeakDb": -2.4,
     "limiterMaxDb": 0.0
   },
   "failures": []

@@ -74,6 +74,9 @@ export const LightPool: React.FC<{
       transparent
       opacity={opacity * g}
       depthWrite={false}
+      polygonOffset
+      polygonOffsetFactor={-3}
+      polygonOffsetUnits={-3}
       blending={THREE.AdditiveBlending}
       toneMapped={false}
     />

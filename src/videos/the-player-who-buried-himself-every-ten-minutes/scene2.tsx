@@ -1,13 +1,12 @@
 import type React from "react";
 import {
   Bubble,
-  DirtPit,
-  FloatingNumber,
-  ObsidianLavaPit,
+  LavaBucket,
   PLACE,
   Puffs,
-  ServerChatBox,
+  SURFACE_Y,
   ServerPlayer,
+  ShaftCap,
   cam,
   ease,
   moveBetween,
@@ -19,102 +18,113 @@ import {
   wordAt,
 } from "./kit";
 
-/** Scene 2 (Beat 3): Cruel Breaking Point — Nighttime Lava Griefing & Milo Logs Off. */
+/**
+ * Scene 2 (Beat 3): Cruel Breaking Point — Moonlit Forest Stalking & Lava Poured STRAIGHT DOWN Into Milo's Sunken Hole!
+ */
 export const scene2 = storyScene(timing, {
   id: "scene2",
   title: "Lava Over The Dirt Pit",
   shots: [
     {
       cue: "3.lava",
-      ...cam.track({ from: on(PLACE.smp, 0, 0, -5.0), to: on(PLACE.smp, 0, 0, -11.5), sideDist: 6.0, side: 1, lead: 1.4, height: 1.7 }),
-      zone: "smp",
+      ...cam.track({ from: on(PLACE.forest, 0, SURFACE_Y, 6.5), to: on(PLACE.forest, 0, SURFACE_Y, 1.5), sideDist: 7.2, side: 1, lead: 1.4, height: 1.9 }),
+      zone: "forest",
       look: "overworld-night",
-      note: "Moonlit night tracking shot: Milo walks quietly toward the pine edge while the bully sneaks right behind him.",
+      note: "Moonlit forest tracking shot: Milo walks quietly toward his forest clearing while the bully creeps behind him with a glowing lava bucket.",
       stage: (t) => {
-        const milo = moveBetween(on(PLACE.smp, -0.5, 0, -5.5), on(PLACE.smp, -0.5, 0, -11.5), t, 0, 1.7);
-        const bully = moveBetween(on(PLACE.smp, 0.8, 0, -3.2), on(PLACE.smp, 0.8, 0, -9.0), t, 0, 1.7);
+        const milo = moveBetween(on(PLACE.forest, -0.5, SURFACE_Y, 6.2), on(PLACE.forest, -0.5, SURFACE_Y, 1.2), t, 0, 1.7);
+        const bully = moveBetween(on(PLACE.forest, 0.9, SURFACE_Y, 8.6), on(PLACE.forest, 0.9, SURFACE_Y, 3.6), t, 0, 1.7);
         return (
           <>
             <ServerPlayer role="hero" nameTag="Milo" position={milo.position} rotationY={milo.rotationY} animation={milo.moving ? "walk" : "cower"} animDistance={milo.animDistance} face="uneasy" time={t} />
-            <ServerPlayer role="bully" nameTag="Bully" position={bully.position} rotationY={bully.rotationY} animation={bully.moving ? "walk" : "point"} animDistance={bully.animDistance} face="grin" time={t} />
+            <ServerPlayer role="bully" nameTag="Bully" position={bully.position} rotationY={bully.rotationY} animation={bully.moving ? "walk" : "point"} animDistance={bully.animDistance} face="grin" time={t}>
+              <LavaBucket />
+            </ServerPlayer>
           </>
         );
       },
     },
     {
       cue: "3.hole",
-      ...cam.front({ actor: on(PLACE.smp, -0.4, 0, -11.5), facing: 0, dist: 5.8, to: 4.5, side: -24, pitch: 8, fov: 44 }),
-      zone: "smp",
+      ...cam.sweep({ on: on(PLACE.forest, 0.4, SURFACE_Y + 0.9, 0), dist: 7.2, distTo: 5.8, fromYaw: -22, toYaw: 18, pitch: 20, fov: 46 }),
+      zone: "forest",
       look: "overworld-night",
-      note: "Right on the 10-minute mark, Milo drops straight down into his safe dirt pit in the dark clearing.",
+      note: "Right on the 10-minute mark, Milo drops straight down into his sunken dirt shaft in the moonlit forest while the bully watches.",
       stage: (t) => {
         const drop = ease(ramp(t, 0.1, 0.95));
         return (
           <>
-            <DirtPit position={on(PLACE.smp, -0.4, 0, -11.5)} lid={drop} />
-            <ServerPlayer role="hero" position={on(PLACE.smp, -0.4, -drop * 1.0, -11.5)} rotationY={0} animation="cower" face="worried" time={t} />
-            <ServerPlayer role="bully" position={on(PLACE.smp, 1.8, 0, -10.6)} rotationY={-0.7} animation="talk" face="grin" time={t} />
+            <ShaftCap position={on(PLACE.forest, 0, 0, 0)} lid={drop} />
+            <ServerPlayer role="hero" position={on(PLACE.forest, 0, SURFACE_Y - drop * 1.85, 0)} rotationY={0} animation="cower" face="worried" time={t} />
+            <ServerPlayer role="bully" position={on(PLACE.forest, 2.0, SURFACE_Y, 0.8)} rotationY={-0.8} animation="talk" face="grin" time={t}>
+              <LavaBucket />
+            </ServerPlayer>
           </>
         );
       },
     },
     {
       cue: "3.pour",
-      ...cam.sweep({ on: on(PLACE.smp, -0.2, 1.0, -11.5), dist: 5.8, distTo: 4.5, fromYaw: 28, toYaw: -22, pitch: 10, fov: 44 }),
-      zone: "smp",
+      ...cam.sweep({ on: on(PLACE.forest, 0.4, SURFACE_Y + 1.0, 0), dist: 6.8, distTo: 5.4, fromYaw: 24, toYaw: -18, pitch: 20, fov: 46 }),
+      zone: "forest",
       look: "overworld-night",
-      note: "Cruel griefing climax: the bully grins leaning over the pit and pours glowing molten lava straight onto the top.",
+      note: "Cruel griefing climax: the bully leans over the sunken forest hole tipping his glowing LavaBucket straight onto the dirt lid!",
       stage: (t) => {
         const lk = ease(ramp(t, wordAt("3.pour", "poured") - 0.1, wordAt("3.pour", "top") + 0.25));
         return (
           <>
-            <DirtPit position={on(PLACE.smp, -0.4, 0, -11.5)} lid={1} lava={lk} />
-            <ServerPlayer role="bully" position={on(PLACE.smp, 1.3, 0, -11.2)} rotationY={-1.1} animation="reach" face="grin" time={t} />
-            <Bubble text="HAHAHA!" dark position={on(PLACE.smp, 1.3, 2.35, -11.2)} rotationY={-0.3} scale={0.46 * pop(t, wordAt("3.pour", "grinned"))} />
+            <ShaftCap position={on(PLACE.forest, 0, 0, 0)} lid={1} lava={lk} />
+            <ServerPlayer role="bully" position={on(PLACE.forest, 1.5, SURFACE_Y, 0.2)} rotationY={-1.35} animation="reach" face="grin" time={t}>
+              <LavaBucket />
+            </ServerPlayer>
+            <Bubble text="HAHAHA!" dark position={on(PLACE.forest, 1.5, SURFACE_Y + 2.35, 0.2)} rotationY={-0.3} scale={0.44 * pop(t, wordAt("3.pour", "grinned"))} />
           </>
         );
       },
     },
     {
       cue: "3.burn",
-      ...cam.heroLow({ on: on(PLACE.smp, -0.4, 1.2, -11.5), dist: 6.2, yaw: -18, fov: 46 }),
-      zone: "smp",
+      ...cam.sweep({ on: on(PLACE.forest, 0, SURFACE_Y + 1.1, 1.4), dist: 7.0, distTo: 5.6, fromYaw: -22, toYaw: 18, pitch: 12, fov: 46 }),
+      zone: "forest",
       look: "overworld-night",
-      note: "Heartbreaking grief aftermath: Milo pops up surrounded by embers losing all his hard-earned diamond gear.",
+      hud: { banner: { text: "DIAMOND GEAR LOST!", color: "#ff5548" } },
+      note: "Heartbreaking grief aftermath: Milo stumbles back up out of the glowing lava-filled shaft losing all his diamond gear.",
       stage: (t) => (
         <>
-          <ObsidianLavaPit position={on(PLACE.smp, -0.4, 0, -12.6)} size={2.2} />
-          <ServerPlayer role="hero" nameTag="Milo" badge="broken" tears={1} position={on(PLACE.smp, -0.4, 0, -9.8)} rotationY={0} animation="cower" face="sad" time={t} />
-          <Puffs position={on(PLACE.smp, -0.4, 1.0, -10.5)} color="#ff7a29" count={7} size={0.2} />
-          <FloatingNumber text="GEAR LOST" color="#ff4f42" position={on(PLACE.smp, -0.4, 2.85, -9.8)} height={0.56 * pop(t, wordAt("3.burn", "lost"))} />
+          <ShaftCap position={on(PLACE.forest, 0, 0, 0)} lid={1} lava={1} />
+          <ServerPlayer role="hero" nameTag="Milo" badge="broken" tears={1} position={on(PLACE.forest, 0, SURFACE_Y, 2.1)} rotationY={0} animation="cower" face="sad" time={t} />
+          <Puffs position={on(PLACE.forest, 0, SURFACE_Y + 0.8, 1.2)} color="#ff7a29" count={8} size={0.22} />
         </>
       ),
     },
     {
       cue: "3.chat2",
-      ...cam.front({ actor: on(PLACE.smp, 0, 0, -9.8), facing: 0, dist: 5.4, to: 4.2, side: 20, pitch: 5, fov: 42 }),
-      zone: "smp",
+      ...cam.front({ actor: on(PLACE.forest, 0, SURFACE_Y, 2.2), facing: 0, dist: 5.8, to: 4.6, side: 20, pitch: 6, fov: 44 }),
+      zone: "forest",
       look: "overworld-night",
       hud: {
         typing: true,
         chat: [{ sender: "Milo", text: "sorry guys", color: "#c9d4e8" }],
       },
-      note: "Quiet heartbreak close-up: tears fall down Milo's face as '<Milo> sorry guys' types softly into server chat.",
+      note: "Quiet heartbreak close-up: tears fall down Milo's face in the moonlit woods as '<Milo> sorry guys' types softly into server chat.",
       stage: (t) => (
-        <ServerPlayer role="hero" nameTag="Milo" tears={1} position={on(PLACE.smp, 0, 0, -9.8)} rotationY={0} animation="cower" face="sad" time={t} />
+        <ServerPlayer role="hero" nameTag="Milo" tears={1} position={on(PLACE.forest, 0, SURFACE_Y, 2.2)} rotationY={0} animation="cower" face="sad" time={t} />
       ),
     },
     {
       cue: "3.quit",
-      ...cam.sweep({ on: on(PLACE.smp, 0, 1.3, -9.8), dist: 6.0, distTo: 4.8, fromYaw: -22, toYaw: 24, pitch: 8, fov: 44 }),
-      zone: "smp",
+      ...cam.sweep({ on: on(PLACE.forest, 0, SURFACE_Y + 1.2, 2.0), dist: 6.8, distTo: 5.4, fromYaw: -20, toYaw: 22, pitch: 10, fov: 46 }),
+      zone: "forest",
       look: "overworld-night",
       hud: {
         chat: [{ text: "Milo left the game", color: "#ffeb5c" }],
       },
-      note: "Empty moonlit clearing where Milo stood as yellow 'Milo left the game' fades into the silent server chat.",
+      note: "Empty moonlit forest clearing beside the cooling lava pit as 'Milo left the game' fades into the silent server chat.",
       stage: (t) => (
-        <Puffs position={on(PLACE.smp, 0, 0.9, -9.8)} color="#99b0cc" count={6} size={0.18} />
+        <>
+          <ShaftCap position={on(PLACE.forest, 0, 0, 0)} lid={1} lava={0.65} />
+          <Puffs position={on(PLACE.forest, 0, SURFACE_Y + 0.9, 2.0)} color="#99b0cc" count={6} size={0.18} />
+        </>
       ),
     },
   ],

@@ -113,40 +113,34 @@ const mix = (a: string, b: string, k: number): string => {
 
 // ----------------------------------------------------------------------------- Gold & Story Props
 
-/** Bright gleaming Minecraft Gold Helmet with Grandpa's signature little dent on the brow. Mount in `head` prop. */
+/** Bright gleaming Minecraft Gold Helmet with Toby's signature little dent on the brow. Mount in `head` prop. */
 export const GoldHelmet: React.FC<{ position?: Vec3; scale?: number; dented?: boolean }> = ({
   position = [0, 0, 0],
   scale = 1,
   dented = true,
 }) => (
   <group position={position} scale={scale}>
-    {/* Crown top */}
     <Block
-      position={[0, 0.25, 0]}
-      size={[0.56, 0.1, 0.56]}
+      position={[0, 0.255, 0]}
+      size={[0.57, 0.1, 0.57]}
       color="#ffd23f"
       emissive="#f5b31a"
       emissiveIntensity={0.28}
-      metalness={0.35}
-      roughness={0.3}
+      metalness={0.38}
+      roughness={0.28}
     />
-    {/* Rim band */}
     <Block
-      position={[0, 0.17, 0.27]}
+      position={[0, 0.17, 0.275]}
       size={[0.56, 0.14, 0.06]}
       color="#f7c42d"
       emissive="#e09f14"
       emissiveIntensity={0.22}
     />
-    {/* Nose guard */}
-    <Block position={[0, 0.09, 0.28]} size={[0.1, 0.12, 0.05]} color="#ffe57a" />
-    {/* Cheek guards */}
-    <Block position={[-0.27, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#e8b21f" />
-    <Block position={[0.27, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#e8b21f" />
-    {/* Back plate */}
-    <Block position={[0, 0.08, -0.27]} size={[0.56, 0.34, 0.06]} color="#d9a116" />
-    {/* Grandpa's tiny dent notch */}
-    {dented ? <Block position={[0.13, 0.2, 0.295]} size={[0.09, 0.05, 0.03]} color="#7a5710" /> : null}
+    <Block position={[0, 0.09, 0.285]} size={[0.1, 0.12, 0.05]} color="#ffe57a" />
+    <Block position={[-0.275, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#e8b21f" />
+    <Block position={[0.275, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#e8b21f" />
+    <Block position={[0, 0.08, -0.275]} size={[0.56, 0.34, 0.06]} color="#d9a116" />
+    {dented ? <Block position={[0.13, 0.2, 0.305]} size={[0.09, 0.05, 0.03]} color="#7a5710" /> : null}
   </group>
 );
 
@@ -156,12 +150,38 @@ export const IronHelmet: React.FC<{ position?: Vec3; scale?: number }> = ({
   scale = 1,
 }) => (
   <group position={position} scale={scale}>
-    <Block position={[0, 0.25, 0]} size={[0.56, 0.1, 0.56]} color="#c9cfd6" metalness={0.3} roughness={0.35} />
-    <Block position={[0, 0.17, 0.27]} size={[0.56, 0.14, 0.06]} color="#b4bcc6" />
-    <Block position={[0, 0.09, 0.28]} size={[0.1, 0.12, 0.05]} color="#dce2e8" />
-    <Block position={[-0.27, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#a7b0bb" />
-    <Block position={[0.27, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#a7b0bb" />
-    <Block position={[0, 0.08, -0.27]} size={[0.56, 0.34, 0.06]} color="#99a3af" />
+    <Block position={[0, 0.255, 0]} size={[0.57, 0.1, 0.57]} color="#c9cfd6" metalness={0.3} roughness={0.35} />
+    <Block position={[0, 0.17, 0.275]} size={[0.56, 0.14, 0.06]} color="#b4bcc6" />
+    <Block position={[0, 0.09, 0.285]} size={[0.1, 0.12, 0.05]} color="#dce2e8" />
+    <Block position={[-0.275, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#a7b0bb" />
+    <Block position={[0.275, 0.08, 0.01]} size={[0.06, 0.34, 0.54]} color="#a7b0bb" />
+    <Block position={[0, 0.08, -0.275]} size={[0.56, 0.34, 0.06]} color="#99a3af" />
+  </group>
+);
+
+/** Mayor Vance's signature tall black Top Hat with gold ribbon + crisp white handlebar mustache! */
+export const MayorHatAndMustache: React.FC<{ ironSuit?: boolean }> = ({ ironSuit = false }) => (
+  <group>
+    {/* Crisp sculpted white handlebar mustache sitting right under the nose (+Z face is at z=0.25) */}
+    <Block position={[0, -0.055, 0.278]} size={[0.28, 0.068, 0.052]} color="#f4f6fa" />
+    <Block position={[-0.145, -0.078, 0.274]} size={[0.09, 0.065, 0.048]} color="#e6ebf2" />
+    <Block position={[0.145, -0.078, 0.274]} size={[0.09, 0.065, 0.048]} color="#e6ebf2" />
+    {/* White bushy eyebrows */}
+    <Block position={[-0.11, 0.095, 0.268]} size={[0.13, 0.036, 0.032]} color="#eef1f6" />
+    <Block position={[0.11, 0.095, 0.268]} size={[0.13, 0.036, 0.032]} color="#eef1f6" />
+    {ironSuit ? (
+      <IronHelmet />
+    ) : (
+      <group position={[0, 0.255, 0]}>
+        {/* Wide formal black top hat brim */}
+        <Block position={[0, 0.03, 0]} size={[0.72, 0.06, 0.72]} color="#1d1e24" />
+        {/* Silk gold ribbon band */}
+        <Block position={[0, 0.1, 0]} size={[0.52, 0.08, 0.52]} color="#f5c838" emissive="#c99310" emissiveIntensity={0.22} />
+        {/* Tall black top hat crown */}
+        <Block position={[0, 0.28, 0]} size={[0.48, 0.3, 0.48]} color="#23252e" />
+        <Block position={[0, 0.44, 0]} size={[0.5, 0.04, 0.5]} color="#181920" />
+      </group>
+    )}
   </group>
 );
 
@@ -242,31 +262,28 @@ export const IronArmorStand: React.FC<{ position?: Vec3; rotationY?: number }> =
 }) => (
   <group position={position} rotation={[0, rotationY, 0]}>
     <Block position={[0, 0.06, 0]} size={[0.7, 0.12, 0.7]} color="#8b8e94" />
-    <Block position={[0, 0.72, 0]} size={[0.12, 1.3, 0.12]} color="#7c5632" />
+    <Block position={[0, 0.72, 0]} size={[0.12, 1.24, 0.12]} color="#7c5632" />
     <Block position={[0, 1.32, 0]} size={[0.85, 0.1, 0.12]} color="#7c5632" />
-    {/* Iron chestplate */}
     <Block position={[0, 1.15, 0]} size={[0.56, 0.64, 0.34]} color="#c4cbd4" metalness={0.32} roughness={0.35} />
     <Block position={[0, 1.24, 0.18]} size={[0.34, 0.22, 0.04]} color="#dde3ea" />
     <IronHelmet position={[0, 1.65, 0]} scale={0.85} />
   </group>
 );
 
-/** Pair of shiny gold boots displayed on a rack or ground. */
+/** Pair of detailed 3D Minecraft Gold Armor Boots displayed on the ground. */
 export const GoldBootPair: React.FC<{ position?: Vec3; rotationY?: number; scale?: number }> = ({
   position = [0, 0, 0],
   rotationY = 0,
   scale = 1,
 }) => (
   <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
-    {[-0.16, 0.16].map((x) => (
-      <Block
-        key={x}
-        position={[x, 0.14, 0]}
-        size={[0.24, 0.28, 0.28]}
-        color="#ffd23f"
-        emissive="#f5b31a"
-        emissiveIntensity={0.28}
-      />
+    {[-0.19, 0.19].map((x) => (
+      <group key={x} position={[x, 0, 0]}>
+        <Block position={[0, 0.03, 0.03]} size={[0.26, 0.06, 0.34]} color="#855204" />
+        <Block position={[0, 0.13, 0.04]} size={[0.25, 0.14, 0.32]} color="#ffd23f" emissive="#c48a00" emissiveIntensity={0.26} metalness={0.55} roughness={0.28} />
+        <Block position={[0, 0.25, -0.02]} size={[0.24, 0.16, 0.22]} color="#f6c92e" emissive="#b88200" emissiveIntensity={0.22} metalness={0.55} roughness={0.28} />
+        <Block position={[0, 0.33, -0.02]} size={[0.26, 0.04, 0.24]} color="#b87c0a" />
+      </group>
     ))}
   </group>
 );
@@ -279,18 +296,15 @@ export const NetherPortal: React.FC<{ position?: Vec3; lit?: number }> = ({
   const t = useFilmTime();
   return (
     <group position={position}>
-      {/* Stone dais steps */}
-      <Vox kind="cobble" position={[0, 0.25, 0.6]} size={[6.2, 0.5, 3.6]} />
-      {/* Obsidian frame facing +Z */}
+      <Vox kind="cobble" position={[0, 0.24, 0.6]} size={[6.2, 0.52, 3.6]} />
       <Vox kind="obsidian" position={[0, 0.9, 0]} size={[5, 0.9, 1.1]} />
       <Vox kind="obsidian" position={[0, 5.6, 0]} size={[5, 0.9, 1.1]} />
-      <Vox kind="obsidian" position={[-2.0, 3.25, 0]} size={[1, 4.0, 1.1]} />
-      <Vox kind="obsidian" position={[2.0, 3.25, 0]} size={[1, 4.0, 1.1]} />
-      {/* Swirling purple portal curtain */}
+      <Vox kind="obsidian" position={[-2.0, 3.25, 0]} size={[0.98, 3.8, 1.08]} />
+      <Vox kind="obsidian" position={[2.0, 3.25, 0]} size={[0.98, 3.8, 1.08]} />
       {lit > 0.02 ? (
         <>
           <mesh position={[0, 3.25, 0]}>
-            <boxGeometry args={[3.1, 3.9, 0.22]} />
+            <boxGeometry args={[3.04, 3.8, 0.22]} />
             <meshBasicMaterial
               color={mix("#5a1fb8", "#c278ff", 0.35 + 0.28 * Math.sin(t * 4.5))}
               transparent
@@ -337,16 +351,16 @@ export const BrickVault: React.FC<{ position?: Vec3; open?: number; lever?: numb
   const doorAngle = clamp01(open) * 1.95;
   return (
     <group position={position}>
-      {/* Wide stone steps */}
-      <Vox kind="stoneBrick" position={[0, 0.25, 1.4]} size={[7.6, 0.5, 2.8]} />
-      <Vox kind="stoneBrick" position={[0, 0.55, 0.6]} size={[6.6, 0.3, 1.4]} />
-      {/* Left, right, top brick walls (recessed doorway so gold interior shines through!) */}
-      <Vox kind="bricks" position={[-2.6, 2.8, -1.6]} size={[2.6, 4.6, 3.6]} />
-      <Vox kind="bricks" position={[2.6, 2.8, -1.6]} size={[2.6, 4.6, 3.6]} />
-      <Vox kind="bricks" position={[0, 4.3, -1.6]} size={[2.8, 1.6, 3.6]} />
-      <Vox kind="stoneBrick" position={[0, 5.25, -1.6]} size={[8.2, 0.5, 4.0]} />
+      {/* Non-overlapping wide stone steps */}
+      <Vox kind="stoneBrick" position={[0, 0.24, 1.4]} size={[7.6, 0.52, 2.8]} />
+      <Vox kind="stoneBrick" position={[0, 0.65, 0.55]} size={[6.6, 0.3, 1.3]} />
+      {/* Non-overlapping left, right, top brick walls */}
+      <Vox kind="bricks" position={[-2.62, 2.8, -1.6]} size={[2.56, 4.6, 3.56]} />
+      <Vox kind="bricks" position={[2.62, 2.8, -1.6]} size={[2.56, 4.6, 3.56]} />
+      <Vox kind="bricks" position={[0, 4.32, -1.6]} size={[2.64, 1.56, 3.56]} />
+      <Vox kind="stoneBrick" position={[0, 5.36, -1.6]} size={[8.2, 0.5, 4.0]} />
       {/* Vault dark back wall */}
-      <Vox kind="cobble" position={[0, 2.4, -3.5]} size={[3.0, 4.0, 0.4]} />
+      <Vox kind="cobble" position={[0, 2.4, -3.55]} size={[3.0, 4.0, 0.36]} />
       {/* Massive stacks of gleaming Gold Blocks visible inside when opened */}
       {[-0.75, 0, 0.75].flatMap((gx, gi) =>
         [1.15, 1.95].map((gy, gj) => (
@@ -367,14 +381,14 @@ export const BrickVault: React.FC<{ position?: Vec3; open?: number; lever?: numb
         </>
       ) : null}
       {/* Heavy iron doorway frame */}
-      <Block position={[-1.22, 2.2, 0.12]} size={[0.24, 3.0, 0.32]} color="#4e5560" />
-      <Block position={[1.22, 2.2, 0.12]} size={[0.24, 3.0, 0.32]} color="#4e5560" />
-      <Block position={[0, 3.62, 0.12]} size={[2.68, 0.24, 0.32]} color="#4e5560" />
+      <Block position={[-1.22, 2.2, 0.2]} size={[0.24, 2.96, 0.28]} color="#4e5560" />
+      <Block position={[1.22, 2.2, 0.2]} size={[0.24, 2.96, 0.28]} color="#4e5560" />
+      <Block position={[0, 3.68, 0.2]} size={[2.72, 0.24, 0.3]} color="#4e5560" />
       {/* Hinged iron vault door */}
-      <group position={[-1.08, 0.7, 0.16]} rotation={[0, -doorAngle, 0]}>
-        <Block position={[1.08, 1.4, 0]} size={[2.16, 2.8, 0.18]} color="#7e8794" metalness={0.35} roughness={0.4} />
-        <Block position={[1.08, 1.4, 0.1]} size={[1.7, 2.2, 0.05]} color="#68717d" />
-        <Block position={[1.72, 1.4, 0.14]} size={[0.38, 0.38, 0.08]} color="#ffd23f" />
+      <group position={[-1.08, 0.7, 0.22]} rotation={[0, -doorAngle, 0]}>
+        <Block position={[1.08, 1.4, 0]} size={[2.14, 2.76, 0.16]} color="#7e8794" metalness={0.35} roughness={0.4} />
+        <Block position={[1.08, 1.4, 0.1]} size={[1.7, 2.2, 0.04]} color="#68717d" />
+        <Block position={[1.72, 1.4, 0.14]} size={[0.38, 0.38, 0.06]} color="#ffd23f" />
       </group>
       {/* Wall lever on the right brick pillar */}
       <group position={[1.65, 1.85, 0.26]}>
@@ -392,7 +406,7 @@ export const BrickVault: React.FC<{ position?: Vec3; open?: number; lever?: numb
 
 type A = Partial<MinecraftAvatarProps>;
 
-/** Toby — loud coral-red tunic, wearing Grandpa's dented Gold Helmet (+ optional Gold Boots). */
+/** Toby — loud coral-red tunic, blue trousers, dented Gold Helmet, and REAL 3D Gold Armor Boots when worn! */
 export const Hero: React.FC<A & { helmet?: boolean; goldBoots?: boolean }> = ({
   helmet = true,
   goldBoots = false,
@@ -406,33 +420,34 @@ export const Hero: React.FC<A & { helmet?: boolean; goldBoots?: boolean }> = ({
     colors={{
       torso: "#e03c31",
       arms: "skin",
-      legs: goldBoots ? "#f2c12e" : "#2e3c66",
+      legs: "#2e3c66",
     }}
+    boots={goldBoots ? "gold" : undefined}
     head={helmet ? <GoldHelmet /> : undefined}
     blink
     {...p}
   />
 );
 
-/** Mayor Vance — greedy purple-charcoal coat villain, or full shiny Iron Suit for the climax karma beat. */
+/** Mayor Vance — greedy purple-charcoal formal coat, tall Top Hat + white handlebar mustache (or Iron Suit!). */
 export const MayorVance: React.FC<A & { ironSuit?: boolean }> = ({ ironSuit = false, ...p }) => (
   <MinecraftAvatar
     scale={1.04}
     outfit="suit"
     skin="#d9a07a"
-    hair="#2a2028"
+    hair="#cfd4dc"
     colors={
       ironSuit
         ? { torso: "#c2cad4", arms: "#b4bcc7", legs: "#9ca5b2" }
         : { torso: "#48265e", arms: "#3a1e4d", legs: "#262836" }
     }
-    head={ironSuit ? <IronHelmet /> : undefined}
+    head={<MayorHatAndMustache ironSuit={ironSuit} />}
     blink
     {...p}
   />
 );
 
-/** Grandpa — silver-haired elder in warm forest-green sweater. */
+/** Grandpa — silver-haired elder in warm forest-green sweater + REAL 3D Gold Armor Boots when worn! */
 export const Grandpa: React.FC<A & { goldBoots?: boolean }> = ({ goldBoots = false, ...p }) => (
   <MinecraftAvatar
     scale={0.98}
@@ -442,8 +457,9 @@ export const Grandpa: React.FC<A & { goldBoots?: boolean }> = ({ goldBoots = fal
     colors={{
       torso: "#2f6b47",
       arms: "#26593b",
-      legs: goldBoots ? "#f2c12e" : "#4a3f35",
+      legs: "#4a3f35",
     }}
+    boots={goldBoots ? "gold" : undefined}
     blink
     {...p}
   />
@@ -457,6 +473,7 @@ export const IronGuard: React.FC<A> = (p) => (
     skin="#cfa07c"
     hair="#473325"
     colors={{ torso: "#b5bec9", arms: "#a3adb9", legs: "#6e7785" }}
+    boots="iron"
     head={<IronHelmet />}
     blink
     {...p}
@@ -474,7 +491,7 @@ const PIG = {
 
 /**
  * Minecraft Piglin — snout, tusks, flap ears with gold ring, golden sword, expressive brow.
- * `calm: 1` relaxes angry eyebrows & lowers sword when Toby walks past in gold!
+ * `calm: 1` relaxes angry eyebrows & lowers sword when Toby wears gold!
  */
 export const Piglin: React.FC<{
   position: Vec3;
