@@ -1,0 +1,116 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "tariffs-explained-using-minecraft",
+  "mix": "public/audio/tariffs-explained-using-minecraft/mix.mp3",
+  "seconds": 87.4667,
+  "built_from": {
+    "timing.json": "737674218f4920e892d852900b4f0e5675e1e6d1",
+    "sound.json": "d7e5ba5646cf8cdd3e093357056f8b0ad7026c77",
+    "narration.mp3": "65836521020fc25c434fe397d8515e9a5091cf62"
+  },
+  "mix_sha1": "339e0206d508b0c9ae7f4e00dede8d0968bba229",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "explain",
+      "at": 0.0
+    },
+    {
+      "from": "3.beg",
+      "mood": "tense",
+      "at": 28.57
+    },
+    {
+      "from": "4.wait",
+      "mood": "none",
+      "at": 45.2
+    },
+    {
+      "from": "4.notblue",
+      "mood": "dark",
+      "at": 47.7
+    },
+    {
+      "from": "5.three",
+      "mood": "explain",
+      "at": 66.4
+    }
+  ],
+  "music_file": {
+    "path": "Topics/Explainer/explainer_bgm_loop.wav",
+    "sha1": "a513987a318cf0558b5aa950d8b6634594e7fa83"
+  },
+  "beds": 4,
+  "measured": {
+    "musicUnderVoiceDb": 21.2,
+    "secondsWithoutMusic": 2.4,
+    "bedsUnderVoiceDb": 26.2,
+    "sfx": 93,
+    "sfxPerMinute": 63.8,
+    "sfxKinds": 26,
+    "longestGapSeconds": 2.5,
+    "longestGapAt": 45.2,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.5,
+    "voiceOverRestWorstDb": 5.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 5.6,
+        "t": 25.4,
+        "cue": "2.empty",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 7.4,
+        "t": 31.9,
+        "cue": "3.idea",
+        "sounding": [
+          "stamp",
+          "swish"
+        ]
+      },
+      {
+        "db": 7.8,
+        "t": 10.8,
+        "cue": "1.special",
+        "sounding": [
+          "sparkle",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 8.6,
+        "t": 84.5,
+        "cue": "5.tell",
+        "sounding": [
+          "ding",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 8.8,
+        "t": 83.3,
+        "cue": "5.or",
+        "sounding": [
+          "sparkle",
+          "swish"
+        ]
+      },
+      {
+        "db": 9.6,
+        "t": 77.0,
+        "cue": "5.gov",
+        "sounding": [
+          "coins",
+          "swish"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.9,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}

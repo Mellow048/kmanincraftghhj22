@@ -1,0 +1,125 @@
+{
+  "film": "the-player-who-buried-himself-every-ten-minutes",
+  "README": "Dual-track Up Server Lore sound sheet: up_happy.m4a (0:02.5+) <-> up_sad.m4a + silence drop before Owner ! rally.",
+  "music": {
+    "track": "Topics/ServerLore/up_happy.m4a",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.5,
+        "gain": 0,
+        "why": "Bright intriguing Up Happy starts cleanly past silence at 0:02.5 for the SMP mystery."
+      },
+      {
+        "from": "3.lava",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "gain": 0,
+        "why": "Cruel lava griefing + late-night IRL bedroom struggle switches smoothly to Up Sad."
+      },
+      {
+        "from": "5.read",
+        "mood": "none",
+        "why": "2.2s dead silence as the Server Owner reads Milo's signed book and freezes."
+      },
+      {
+        "from": "5.note",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "gain": -1,
+        "why": "Soft piano chord returns under Milo's note."
+      },
+      {
+        "from": "5.ping",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.5,
+        "gain": 0.5,
+        "why": "Owner sends golden server alert (!) — Up Happy swells cleanly into the overnight build rally."
+      },
+      {
+        "from": "6.glow",
+        "mood": "wonder",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.5,
+        "gain": 0.5,
+        "why": "Lantern-lit Safe Booths, Iron Golems, floating hearts, bully apology, and subscribe CTA."
+      }
+    ]
+  },
+  "beds": [
+    { "from": "1.hook", "to": "2.laugh", "bed": "village" },
+    { "from": "3.lava", "to": "3.quit", "bed": "night" },
+    { "from": "4.desk", "to": "5.note", "bed": "room" },
+    { "from": "5.ping", "to": "6.cta", "bed": "village" }
+  ],
+  "sfx": [
+    { "cue": "1.hook", "sfx": "dig", "why": "Milo digs straight down on Frame 1." },
+    { "cue": "1.hook", "word": "buried", "sfx": "place", "why": "Dirt blocks seal above Milo." },
+    { "cue": "1.mid", "sfx": "swish", "why": "Cut to boss fight clearing." },
+    { "cue": "1.mid", "word": "boss", "sfx": "hit", "trim": -2, "why": "Mid-fight sword clash interrupted." },
+    { "cue": "1.lid", "sfx": "dig", "repeat": 3, "every": 0.34, "trim": 1, "why": "Three quick blocks dug straight down." },
+    { "cue": "1.chat", "sfx": "pop", "why": "Server chat explodes with laughs and question marks." },
+    { "cue": "1.chat", "word": "laughs", "sfx": "blip", "pitch": 1.2, "why": "Chat message pop." },
+    { "cue": "1.loop", "sfx": "whoosh", "why": "Open-loop tease cut." },
+
+    { "cue": "2.wood", "sfx": "swish", "why": "Cut to noon wood chopping." },
+    { "cue": "2.wood", "word": "chopping", "sfx": "break", "why": "Oak log breaks cleanly." },
+    { "cue": "2.dig", "sfx": "dig", "repeat": 3, "every": 0.28, "trim": 1, "why": "Three fast clicks vanishing underground." },
+    { "cue": "2.raid", "sfx": "whoosh", "why": "Cut to dungeon raid." },
+    { "cue": "2.raid", "word": "vanished", "sfx": "zip", "why": "Milo drops under the grass mid-swing." },
+    { "cue": "2.still", "sfx": "tick", "repeat": 3, "every": 0.45, "trim": 1, "why": "Three silent minutes ticking underground." },
+    { "cue": "2.back", "sfx": "break", "why": "Dirt lid breaks open as Milo climbs out." },
+    { "cue": "2.back", "word": "sorry", "sfx": "blip", "why": "Sorry message appears in chat." },
+    { "cue": "2.mock", "sfx": "swish", "why": "Cut to bully squad mocking Milo." },
+    { "cue": "2.mock", "word": "Dirt", "sfx": "pop", "why": "'DIRT BOY!' taunt pops." },
+    { "cue": "2.laugh", "sfx": "swish", "why": "Clock strikes ten." },
+    { "cue": "2.laugh", "word": "ten", "sfx": "tick", "pitch": 1.25, "why": "10:00 timer chimes as bullies laugh." },
+
+    { "cue": "3.lava", "sfx": "whoosh_low", "why": "Night cut into moonlit woods." },
+    { "cue": "3.lava", "word": "followed", "sfx": "step_grass", "repeat": 2, "every": 0.42, "why": "Bully creeps behind Milo." },
+    { "cue": "3.hole", "sfx": "dig", "repeat": 2, "every": 0.34, "why": "Milo drops into dirt shelter on cue." },
+    { "cue": "3.pour", "sfx": "swish", "why": "Bully leans over the pit." },
+    { "cue": "3.pour", "word": "lava", "sfx": "fire_whoosh", "dur": 0.65, "why": "Glowing lava pours over the dirt cap." },
+    { "cue": "3.burn", "sfx": "crackle", "dur": 0.55, "why": "Milo pops out losing diamond gear." },
+    { "cue": "3.burn", "word": "lost", "sfx": "drop", "trim": -2, "why": "Heartbreaking loss drop." },
+    { "cue": "3.chat2", "sfx": "blip", "pitch": 0.85, "why": "'sorry guys' sad chat line." },
+    { "cue": "3.quit", "sfx": "power_down", "trim": -1, "why": "'Milo left the game' disconnect." },
+
+    { "cue": "4.desk", "sfx": "whoosh", "why": "Transition into late-night IRL bedroom." },
+    { "cue": "4.mom", "sfx": "swish", "why": "Warm lamp glow in bedroom." },
+    { "cue": "4.mom", "word": "shifts", "sfx": "tick", "trim": -2, "why": "Late night bedroom clock ticks." },
+    { "cue": "4.crib", "sfx": "swish", "why": "Pan across from desk to baby sister's crib." },
+    { "cue": "4.cry", "word": "crying", "sfx": "pop", "pitch": 1.3, "why": "Alert pops over baby crib." },
+    { "cue": "4.run", "sfx": "step_wood", "repeat": 3, "every": 0.32, "why": "Milo jumps up and runs to rock her." },
+    { "cue": "4.safe", "sfx": "place", "why": "Quiet dirt shelter explained." },
+    { "cue": "4.sad", "sfx": "plink", "pitch": 0.85, "why": "Soft emotional beat." },
+
+    { "cue": "5.check", "sfx": "whoosh", "why": "Cut to Milo's cozy cabin." },
+    { "cue": "5.check", "word": "owner", "sfx": "step_wood", "repeat": 2, "every": 0.4, "why": "Owner walks into Milo's cabin." },
+    { "cue": "5.chest", "word": "chest", "sfx": "creak", "why": "Wooden chest lid creaks open revealing signed book." },
+    { "cue": "5.read", "word": "opened", "sfx": "paper", "why": "Book page opens in dead silence." },
+    { "cue": "5.note", "word": "sister", "sfx": "plink", "pitch": 0.9, "why": "Emotional realization reading Milo's note." },
+    { "cue": "5.ping", "sfx": "ding", "note": "E6", "why": "Golden Owner (!) alert pings every player." },
+    { "cue": "5.rally", "word": "twenty", "sfx": "pop", "repeat": 3, "every": 0.28, "pitchStep": 1.08, "why": "Twenty players log back onto the server." },
+
+    { "cue": "6.build", "sfx": "whoosh", "why": "Montage sweep across overnight build." },
+    { "cue": "6.build", "word": "built", "sfx": "place", "repeat": 3, "every": 0.32, "why": "Blocks placing rapidly across the hills." },
+    { "cue": "6.wood2", "sfx": "swish", "trim": 1, "why": "Safe booths appear every 50 blocks." },
+    { "cue": "6.wood2", "word": "booths", "sfx": "place", "why": "Warm oak safe booth completes." },
+    { "cue": "6.lamp", "word": "lanterns", "sfx": "sparkle", "dur": 0.45, "why": "Warm lanterns illuminate inside the booth." },
+    { "cue": "6.lamp", "word": "door", "sfx": "clank", "f": 720, "why": "Protective iron door clicks into place." },
+    { "cue": "6.golem", "sfx": "stomp", "repeat": 2, "every": 0.45, "trim": 2, "why": "Friendly Iron Golem stands guard outside." },
+    { "cue": "6.sign", "word": "sign", "sfx": "stamp", "why": "'SAFE FOR MILO' sign hangs above door." },
+    { "cue": "6.join", "sfx": "blip", "pitch": 1.15, "why": "'Milo joined the game' toast." },
+    { "cue": "6.glow", "sfx": "chime", "why": "Lantern-lit hills glow golden." },
+    { "cue": "6.drop", "word": "armor", "sfx": "sparkle", "dur": 0.5, "why": "Friends toss fresh diamond armor and poppies." },
+    { "cue": "6.cry2", "word": "hearts", "sfx": "chime", "trim": -1, "why": "Happy pink hearts float up around Milo." },
+    { "cue": "6.hug", "word": "home", "sfx": "pop", "why": "Bully's apology chat box appears." },
+    { "cue": "6.cta", "sfx": "pop", "why": "Subscribe sign pops over Milo & Iron Golem." },
+    { "cue": "6.cta", "word": "subscribe", "sfx": "ding", "note": "E6", "why": "Story-tied subscribe chime." }
+  ]
+}

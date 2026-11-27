@@ -1,0 +1,130 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-nobody-wears-gold",
+  "mix": "public/audio/in-this-town-nobody-wears-gold/mix.mp3",
+  "seconds": 100.3333,
+  "built_from": {
+    "timing.json": "6efc2bb8c41f87584f8b19db4008e1b0311f3567",
+    "sound.json": "23d2c888a13d7be7ea9a8744f4b4d5683c203a0e",
+    "narration.mp3": "1d1bc3be175f024c9f67d337409381747eefa977"
+  },
+  "mix_sha1": "8a0dbde6a0372a70d3735b62915d44fc01838eed",
+  "music_sections": [
+    {
+      "from": "1.gold",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.grandpa",
+      "mood": "hope",
+      "at": 23.33
+    },
+    {
+      "from": "3.vance",
+      "mood": "curious",
+      "at": 28.47
+    },
+    {
+      "from": "4.twenty",
+      "mood": "sneak",
+      "at": 41.57
+    },
+    {
+      "from": "5.bell",
+      "mood": "tense",
+      "at": 49.17
+    },
+    {
+      "from": "6.wait",
+      "mood": "none",
+      "at": 63.53
+    },
+    {
+      "from": "6.calm",
+      "mood": "wonder",
+      "at": 65.67
+    },
+    {
+      "from": "7.boots",
+      "mood": "town",
+      "at": 87.5
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 18.5,
+    "secondsWithoutMusic": 2.2,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 122,
+    "sfxPerMinute": 73.0,
+    "sfxKinds": 35,
+    "longestGapSeconds": 2.8,
+    "longestGapAt": 75.2,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.3,
+    "voiceOverRestWorstDb": 6.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 6.0,
+        "t": 50.9,
+        "cue": "5.bell",
+        "sounding": [
+          "bell",
+          "riser"
+        ]
+      },
+      {
+        "db": 7.1,
+        "t": 37.7,
+        "cue": "4.fifty",
+        "sounding": [
+          "register"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 0.2,
+        "cue": "1.gold",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 69.4,
+        "cue": "6.trade",
+        "sounding": [
+          "sparkle",
+          "step_stone",
+          "zip"
+        ]
+      },
+      {
+        "db": 8.5,
+        "t": 5.3,
+        "cue": "1.helmet",
+        "sounding": [
+          "sparkle",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 8.7,
+        "t": 42.0,
+        "cue": "4.twenty",
+        "sounding": [
+          "sting"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}
