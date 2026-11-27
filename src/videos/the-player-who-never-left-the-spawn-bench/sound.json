@@ -253,7 +253,7 @@
     {
       "cue": "3.stand",
       "sfx": "swish",
-      "trim": -4
+      "trim": 0
     },
     {
       "cue": "3.sorry",
@@ -318,12 +318,12 @@
     {
       "cue": "6.forty",
       "sfx": "plink",
-      "trim": -4
+      "trim": 2
     },
     {
       "cue": "6.build",
       "sfx": "step_stone",
-      "trim": -4
+      "trim": 0
     },
     {
       "cue": "6.plate",
@@ -428,7 +428,7 @@
       "cue": "2.why",
       "word": "Nobody",
       "sfx": "plink",
-      "trim": -4
+      "trim": 0
     },
     {
       "cue": "3.jake",

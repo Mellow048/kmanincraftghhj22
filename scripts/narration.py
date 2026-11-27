@@ -279,37 +279,50 @@ def align(pcm16k, words, *, strict=False, interpolated=None):
     except ImportError:
         return None
     # Wide beams: this is not recognition. The words are known; only their times are wanted.
-    decoder = Decoder(samprate=SR_ALIGN, beam=1e-120, wbeam=1e-90, pbeam=1e-120)
-    tokens = []
-    for w in words:
-        t = bare(w)
-        if decoder.lookup_word(t) is None:
-            base = re.sub(r"(?:'s|s)$", "", t)
-            phones = decoder.lookup_word(base) if base != t else None
-            if phones is None and t in SAY:
-                decoder.add_word(t, SAY[t], True)
-                tokens.append(t)
-                continue
-            if phones is None:
-                print(f"    aligner does not know the word '{t}'; this clip falls back to an estimate")
-                return None
-            decoder.add_word(t, phones + (" S" if phones.split()[-1] in ("P", "T", "K", "F", "TH") else " Z"), True)
-        tokens.append(t)
-    # Air before and after: the aligner cannot finish the last word if the sound stops with it.
-    pad = 0.3
-    air = (np.arange(int(pad * SR_ALIGN)) % 7 - 3).astype(np.float32) * 1e-5
-    pcm = np.concatenate([air, np.clip(pcm16k, -1, 1), air])
-    try:
-        decoder.set_align_text(" ".join(tokens))
-        decoder.start_utt()
-        decoder.process_raw((pcm * 32767).astype(np.int16).tobytes(), full_utt=True)
-        decoder.end_utt()
-        segs = [(s.word, s.start_frame / 100.0 - pad, (s.end_frame + 1) / 100.0 - pad) for s in decoder.seg()]
-    except Exception as error:  # the aligner raises on audio it cannot fit to the text
-        print(f"    aligner failed ({error}); this clip falls back to an estimate")
-        return None
+    def run_decoder(beam, wbeam, pbeam):
+        decoder = Decoder(samprate=SR_ALIGN, beam=beam, wbeam=wbeam, pbeam=pbeam)
+        tokens = []
+        for w in words:
+            t = bare(w)
+            if decoder.lookup_word(t) is None:
+                base = re.sub(r"(?:'s|s)$", "", t)
+                phones = decoder.lookup_word(base) if base != t else None
+                if phones is None and t in SAY:
+                    decoder.add_word(t, SAY[t], True)
+                    tokens.append(t)
+                    continue
+                if phones is None:
+                    print(f"    aligner does not know the word '{t}'; this clip falls back to an estimate")
+                    return None, None
+                decoder.add_word(t, phones + (" S" if phones.split()[-1] in ("P", "T", "K", "F", "TH") else " Z"), True)
+            tokens.append(t)
+        # Air before and after: the aligner cannot finish the last word if the sound stops with it.
+        pad = 0.3
+        air = (np.arange(int(pad * SR_ALIGN)) % 7 - 3).astype(np.float32) * 1e-5
+        pcm = np.concatenate([air, np.clip(pcm16k, -1, 1), air])
+        try:
+            decoder.set_align_text(" ".join(tokens))
+            decoder.start_utt()
+            decoder.process_raw((pcm * 32767).astype(np.int16).tobytes(), full_utt=True)
+            decoder.end_utt()
+            segs = [(s.word, s.start_frame / 100.0 - pad, (s.end_frame + 1) / 100.0 - pad) for s in decoder.seg()]
+        except Exception as error:  # the aligner raises on audio it cannot fit to the text
+            print(f"    aligner failed ({error}); this clip falls back to an estimate")
+            return tokens, None
+        length = len(pcm16k) / SR_ALIGN
+        return tokens, [(re.sub(r"\(\d+\)$", "", w), max(0.0, a), min(length, b)) for (w, a, b) in segs if not w.startswith("<")]
+
     length = len(pcm16k) / SR_ALIGN
-    found = [(re.sub(r"\(\d+\)$", "", w), max(0.0, a), min(length, b)) for (w, a, b) in segs if not w.startswith("<")]
+    tokens, found = run_decoder(1e-120, 1e-90, 1e-120)
+    if tokens is None:
+        return None
+    if found is None or [w for w, _, _ in found] != tokens:
+        # Tighter beam avoids active-list pruning into <sil> on long clips or soft endings.
+        _, alt = run_decoder(1e-80, 1e-60, 1e-80)
+        if alt is not None and (found is None or len(alt) > len(found)):
+            found = alt
+    if found is None:
+        return None
     return match_spans(tokens, found, length, strict=strict, interpolated=interpolated)
 
 
