@@ -1,0 +1,128 @@
+{
+  "music": {
+    "track": "Topics/Explainer/explainer_bgm_loop.wav",
+    "gain": -19,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "explain",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      },
+      {
+        "from": "3.walk",
+        "mood": "tense",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      },
+      {
+        "from": "5.name",
+        "mood": "explain",
+        "track": "Topics/Explainer/explainer_bgm_loop.wav"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.hook",
+      "bed": "sky",
+      "gain": -30
+    },
+    {
+      "from": "4.why",
+      "bed": "room",
+      "gain": -30
+    },
+    {
+      "from": "6.real",
+      "bed": "sky",
+      "gain": -30
+    }
+  ],
+  "effects": [
+    {
+      "cue": "1.hook",
+      "sfx": "pop",
+      "word": "Minecraft"
+    },
+    {
+      "cue": "1.two",
+      "sfx": "coin",
+      "word": "two"
+    },
+    {
+      "cue": "2.rich",
+      "sfx": "creak",
+      "word": "chest"
+    },
+    {
+      "cue": "2.buy1",
+      "sfx": "hit",
+      "word": "shuts"
+    },
+    {
+      "cue": "2.buy2",
+      "sfx": "hit",
+      "word": "knocks"
+    },
+    {
+      "cue": "3.flip",
+      "sfx": "ding",
+      "word": "fifteen"
+    },
+    {
+      "cue": "3.what",
+      "sfx": "whoosh",
+      "word": "happened"
+    },
+    {
+      "cue": "4.pay",
+      "sfx": "coin",
+      "word": "pays"
+    },
+    {
+      "cue": "4.price",
+      "sfx": "whoosh",
+      "word": "shoot"
+    },
+    {
+      "cue": "5.name",
+      "sfx": "ding",
+      "word": "monopoly"
+    },
+    {
+      "cue": "5.half",
+      "sfx": "hit",
+      "word": "one"
+    },
+    {
+      "cue": "5.vault",
+      "sfx": "coin",
+      "word": "rain"
+    },
+    {
+      "cue": "6.rivals",
+      "sfx": "plink",
+      "word": "zero"
+    },
+    {
+      "cue": "6.power",
+      "sfx": "pop",
+      "word": "power"
+    },
+    {
+      "cue": "6.trap",
+      "sfx": "whoosh",
+      "word": "quit"
+    },
+    {
+      "cue": "7.fault",
+      "sfx": "ding",
+      "word": "mods"
+    },
+    {
+      "cue": "7.loop",
+      "sfx": "pop",
+      "word": "that's"
+    }
+  ],
+  "film": "monopolies-explained-using-minecraft"
+}

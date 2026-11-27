@@ -38,6 +38,9 @@ import { film as inThisTownNobodyTurnsOnAFurnace } from "./videos/in-this-town-n
 import { film as inThisTownWeLiveAtTheBottom } from "./videos/in-this-town-we-live-at-the-bottom/film";
 import { film as thePlayerWhoBuiltOnlyHalfABridge } from "./videos/the-player-who-built-only-half-a-bridge/film";
 import { film as myDadKeptWatchingMePlayMinecraft } from "./videos/my-dad-kept-watching-me-play-minecraft/film";
+import { film as thePlayerWhoOnlyBuiltInGreyWool } from "./videos/the-player-who-only-built-in-grey-wool/film";
+import { film as monopoliesExplainedUsingMinecraft } from "./videos/monopolies-explained-using-minecraft/film";
+import { film as inThisTownEverybodyCarriesABucketOfMilk } from "./videos/in-this-town-everybody-carries-a-bucket-of-milk/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -84,4 +87,7 @@ export const FILMS = [
   inThisTownWeLiveAtTheBottom,
   thePlayerWhoBuiltOnlyHalfABridge,
   myDadKeptWatchingMePlayMinecraft,
+  thePlayerWhoOnlyBuiltInGreyWool,
+  monopoliesExplainedUsingMinecraft,
+  inThisTownEverybodyCarriesABucketOfMilk,
 ];

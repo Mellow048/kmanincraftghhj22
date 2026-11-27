@@ -1,0 +1,195 @@
+{
+  "music": {
+    "track": "Topics/ServerLore/up_happy.m4a",
+    "gain": -14,
+    "sections": [
+      {
+        "from": "1.grey",
+        "mood": "warm",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.0
+      },
+      {
+        "from": "3.lazy",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a"
+      },
+      {
+        "from": "5.dm",
+        "mood": "none"
+      },
+      {
+        "from": "5.idea",
+        "mood": "warm",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.0
+      },
+      {
+        "from": "7.return",
+        "mood": "bright",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.0
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.grey",
+      "bed": "village",
+      "gain": -28
+    },
+    {
+      "from": "3.lazy",
+      "bed": "room",
+      "gain": -30
+    },
+    {
+      "from": "4.prank",
+      "bed": "night",
+      "gain": -28
+    },
+    {
+      "from": "5.dm",
+      "bed": "village",
+      "gain": -28
+    },
+    {
+      "from": "6.join",
+      "bed": "night",
+      "gain": -28
+    },
+    {
+      "from": "7.return",
+      "bed": "village",
+      "gain": -27
+    }
+  ],
+  "effects": [
+    {
+      "cue": "1.grey",
+      "sfx": "place",
+      "word": "grey"
+    },
+    {
+      "cue": "1.ugly",
+      "sfx": "blip",
+      "word": "ugliest"
+    },
+    {
+      "cue": "1.promise",
+      "sfx": "chime",
+      "word": "color"
+    },
+    {
+      "cue": "2.sign",
+      "sfx": "hit",
+      "word": "sign"
+    },
+    {
+      "cue": "2.laugh",
+      "sfx": "blip",
+      "word": "laughed"
+    },
+    {
+      "cue": "3.shades",
+      "sfx": "whoosh",
+      "word": "grey"
+    },
+    {
+      "cue": "3.desk",
+      "sfx": "plink",
+      "word": "desk"
+    },
+    {
+      "cue": "4.prank",
+      "sfx": "step_stone",
+      "word": "snuck"
+    },
+    {
+      "cue": "4.swap",
+      "sfx": "pop",
+      "word": "pink"
+    },
+    {
+      "cue": "4.chat",
+      "sfx": "blip",
+      "word": "chat"
+    },
+    {
+      "cue": "4.cant",
+      "sfx": "blip",
+      "word": "typed"
+    },
+    {
+      "cue": "4.left",
+      "sfx": "whoosh",
+      "word": "logged"
+    },
+    {
+      "cue": "5.dm",
+      "sfx": "blip",
+      "word": "messaged"
+    },
+    {
+      "cue": "5.idea",
+      "sfx": "ding",
+      "word": "knew"
+    },
+    {
+      "cue": "5.texture",
+      "sfx": "pop",
+      "word": "pattern"
+    },
+    {
+      "cue": "6.join",
+      "sfx": "blip",
+      "word": "logged"
+    },
+    {
+      "cue": "6.wall",
+      "sfx": "place",
+      "word": "wall"
+    },
+    {
+      "cue": "6.labels",
+      "sfx": "creak",
+      "word": "chest"
+    },
+    {
+      "cue": "6.rebuild",
+      "sfx": "chime",
+      "word": "lanterns"
+    },
+    {
+      "cue": "7.return",
+      "sfx": "blip",
+      "word": "logged"
+    },
+    {
+      "cue": "7.chest",
+      "sfx": "creak",
+      "word": "chest"
+    },
+    {
+      "cue": "7.tears",
+      "sfx": "chime",
+      "word": "color"
+    },
+    {
+      "cue": "7.typed",
+      "sfx": "blip",
+      "word": "typed"
+    },
+    {
+      "cue": "7.gallery",
+      "sfx": "ding",
+      "word": "Gallery"
+    },
+    {
+      "cue": "7.cta",
+      "sfx": "chime",
+      "word": "Subscribe"
+    }
+  ],
+  "film": "the-player-who-only-built-in-grey-wool"
+}

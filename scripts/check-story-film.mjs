@@ -433,7 +433,7 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
         if (/(^|[\s{,])cut\s*:\s*true\b/.test(body)) hardCuts.push(mark[1]);
         return;
       }
-      const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top|crane|whip|dollyZoom|ots)\s*\(/.test(body);
+      const recipe = /\.\.\.cam\.(push|orbit|pan|truck|top|crane|whip|dollyZoom|ots|front|twoShot|fitWidth)\s*\(/.test(body) || /\.\.\.[A-Z0-9_]+CAM\b/.test(body);
       // The camera as two points: written out (`from: [x, y, z]`) or from a place's own helper (`from: GYM.at(x, y, z)`).
       const literal = /(^|\n)\s*from:\s*[\[\w]/.test(body) && /(^|\n)\s*target:\s*[\[\w]/.test(body);
       if (!recipe && !literal) fail(`${shot}: no camera. Spread a cam.* recipe, or give \`from:\` and \`target:\` (two points).`);

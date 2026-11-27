@@ -1,0 +1,363 @@
+{
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -16,
+    "sections": [
+      {
+        "from": "1.town",
+        "mood": "bright",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
+        "from": "4.forty8",
+        "mood": "tense",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
+        "from": "6.rule",
+        "mood": "triumph",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.town",
+      "bed": "sky",
+      "gain": -30
+    },
+    {
+      "from": "2.kids",
+      "bed": "room",
+      "gain": -30
+    },
+    {
+      "from": "2.baker",
+      "bed": "sky",
+      "gain": -30
+    }
+  ],
+  "effects": [
+    {
+      "cue": "1.town",
+      "sfx": "pop",
+      "word": "bucket"
+    },
+    {
+      "cue": "1.town",
+      "sfx": "plink",
+      "word": "milk"
+    },
+    {
+      "cue": "1.noon",
+      "sfx": "whoosh",
+      "word": "Witch"
+    },
+    {
+      "cue": "1.noon",
+      "sfx": "ding",
+      "word": "overhead"
+    },
+    {
+      "cue": "1.splash",
+      "sfx": "whoosh",
+      "word": "drops"
+    },
+    {
+      "cue": "1.splash",
+      "sfx": "hit",
+      "word": "potions"
+    },
+    {
+      "cue": "1.sip",
+      "sfx": "pop",
+      "word": "sip"
+    },
+    {
+      "cue": "1.sip",
+      "sfx": "ding",
+      "word": "clears"
+    },
+    {
+      "cue": "1.none",
+      "sfx": "whoosh",
+      "word": "float"
+    },
+    {
+      "cue": "2.mayor",
+      "sfx": "pop",
+      "word": "drinks"
+    },
+    {
+      "cue": "2.post",
+      "sfx": "plink",
+      "word": "four"
+    },
+    {
+      "cue": "2.kids",
+      "sfx": "hit",
+      "word": "desk"
+    },
+    {
+      "cue": "2.baker",
+      "sfx": "pop",
+      "word": "water"
+    },
+    {
+      "cue": "2.sixth",
+      "sfx": "ding",
+      "word": "sixth"
+    },
+    {
+      "cue": "2.sixth",
+      "sfx": "whoosh",
+      "word": "baker"
+    },
+    {
+      "cue": "3.me",
+      "sfx": "pop",
+      "word": "Toby"
+    },
+    {
+      "cue": "3.moo",
+      "sfx": "pop",
+      "word": "cow"
+    },
+    {
+      "cue": "3.moo",
+      "sfx": "ding",
+      "word": "Moo"
+    },
+    {
+      "cue": "3.laugh",
+      "sfx": "pop",
+      "word": "yell"
+    },
+    {
+      "cue": "3.baron",
+      "sfx": "hit",
+      "word": "Baron"
+    },
+    {
+      "cue": "3.baron",
+      "sfx": "coin",
+      "word": "Cream"
+    },
+    {
+      "cue": "3.quote",
+      "sfx": "plink",
+      "word": "cow"
+    },
+    {
+      "cue": "3.float1",
+      "sfx": "whoosh",
+      "word": "float"
+    },
+    {
+      "cue": "4.shop",
+      "sfx": "coin",
+      "word": "stall"
+    },
+    {
+      "cue": "4.ten",
+      "sfx": "coin",
+      "word": "ten"
+    },
+    {
+      "cue": "4.hundred",
+      "sfx": "ding",
+      "word": "hundred"
+    },
+    {
+      "cue": "4.hundred",
+      "sfx": "coin",
+      "word": "emeralds"
+    },
+    {
+      "cue": "4.throne",
+      "sfx": "coin",
+      "word": "thousand"
+    },
+    {
+      "cue": "4.forty8",
+      "sfx": "hit",
+      "word": "forty"
+    },
+    {
+      "cue": "4.forty8",
+      "sfx": "whoosh",
+      "word": "floated"
+    },
+    {
+      "cue": "4.dad",
+      "sfx": "pop",
+      "word": "dad"
+    },
+    {
+      "cue": "4.dad",
+      "sfx": "whoosh",
+      "word": "collar"
+    },
+    {
+      "cue": "5.storm",
+      "sfx": "whoosh",
+      "word": "purple"
+    },
+    {
+      "cue": "5.witch",
+      "sfx": "whoosh",
+      "word": "Witch"
+    },
+    {
+      "cue": "5.witch",
+      "sfx": "ding",
+      "word": "potions"
+    },
+    {
+      "cue": "5.lock",
+      "sfx": "hit",
+      "word": "slammed"
+    },
+    {
+      "cue": "5.lock",
+      "sfx": "coin",
+      "word": "hundred"
+    },
+    {
+      "cue": "5.hit",
+      "sfx": "hit",
+      "word": "smashed"
+    },
+    {
+      "cue": "5.rise",
+      "sfx": "ding",
+      "word": "Five"
+    },
+    {
+      "cue": "5.rise",
+      "sfx": "ding",
+      "word": "Ten"
+    },
+    {
+      "cue": "5.rise",
+      "sfx": "ding",
+      "word": "Fifteen"
+    },
+    {
+      "cue": "5.empty",
+      "sfx": "plink",
+      "word": "empty"
+    },
+    {
+      "cue": "6.rule",
+      "sfx": "ding",
+      "word": "Minecraft"
+    },
+    {
+      "cue": "6.once",
+      "sfx": "plink",
+      "word": "single"
+    },
+    {
+      "cue": "6.infinite",
+      "sfx": "ding",
+      "word": "infinite"
+    },
+    {
+      "cue": "6.infinite",
+      "sfx": "pop",
+      "word": "forever"
+    },
+    {
+      "cue": "6.grab",
+      "sfx": "whoosh",
+      "word": "throw"
+    },
+    {
+      "cue": "6.milk",
+      "sfx": "pop",
+      "word": "milked"
+    },
+    {
+      "cue": "6.milk",
+      "sfx": "plink",
+      "word": "ten"
+    },
+    {
+      "cue": "6.chain",
+      "sfx": "whoosh",
+      "word": "tossed"
+    },
+    {
+      "cue": "6.catch",
+      "sfx": "pop",
+      "word": "caught"
+    },
+    {
+      "cue": "6.catch",
+      "sfx": "hit",
+      "word": "landed"
+    },
+    {
+      "cue": "7.karma",
+      "sfx": "step_stone",
+      "word": "Baron"
+    },
+    {
+      "cue": "7.splash2",
+      "sfx": "hit",
+      "word": "hit"
+    },
+    {
+      "cue": "7.refuse",
+      "sfx": "whoosh",
+      "word": "floated"
+    },
+    {
+      "cue": "7.rescue",
+      "sfx": "whoosh",
+      "word": "cast"
+    },
+    {
+      "cue": "7.rescue",
+      "sfx": "pop",
+      "word": "forty"
+    },
+    {
+      "cue": "7.return",
+      "sfx": "pop",
+      "word": "drank"
+    },
+    {
+      "cue": "7.return",
+      "sfx": "hit",
+      "word": "down"
+    },
+    {
+      "cue": "7.dadback",
+      "sfx": "ding",
+      "word": "dad"
+    },
+    {
+      "cue": "7.hug",
+      "sfx": "pop",
+      "word": "hugged"
+    },
+    {
+      "cue": "7.closed",
+      "sfx": "hit",
+      "word": "shut"
+    },
+    {
+      "cue": "7.cows",
+      "sfx": "coin",
+      "word": "hundred"
+    },
+    {
+      "cue": "7.cta",
+      "sfx": "ding",
+      "word": "Subscribe"
+    }
+  ],
+  "film": "in-this-town-everybody-carries-a-bucket-of-milk"
+}
