@@ -36,8 +36,8 @@ export const scene4 = storyScene(timing, {
         return (
           <BaronCream
             position={[1.4 - w * 1.0, 0, 1.4]}
-            rotationY={-0.3}
-            animation="walk"
+            rotationY={w < 0.96 ? -Math.PI / 2 : -0.25}
+            animation={w < 0.96 ? "walk" : "point"}
             animDistance={w * 1.0}
             face="angry"
             time={t}
@@ -188,11 +188,12 @@ export const scene4 = storyScene(timing, {
       note: "Happy town square where everyone walks with friendly baby cows instead of paying 100 emeralds.",
       stage: (t) => {
         const w = ease(ramp(t, 0, 1.0));
+        const anim = w > 0.02 && w < 0.98 ? "walk" : "cheer";
         return (
           <>
-            <Player who={2} position={[-1.8, 0, 1.1 + w * 0.9]} rotationY={0} animation="walk" animDistance={w * 0.9} face="grin" time={t} />
+            <Player who={2} position={[-1.8, 0, 1.1 + w * 0.9]} rotationY={0} animation={anim} animDistance={w * 0.9} face="grin" time={t} />
             <BabyCow position={[-0.9, 0, 1.2 + w * 0.9]} rotationY={0} scale={0.68} t={t} />
-            <Player who={4} position={[1.1, 0, 1.1 + w * 0.9]} rotationY={0} animation="walk" animDistance={w * 0.9} face="grin" time={t} />
+            <Player who={4} position={[1.1, 0, 1.1 + w * 0.9]} rotationY={0} animation={anim} animDistance={w * 0.9} face="grin" time={t} />
             <BabyCow position={[2.0, 0, 1.2 + w * 0.9]} rotationY={0} scale={0.68} t={t} />
           </>
         );

@@ -38,7 +38,7 @@ export const scene2 = storyScene(timing, {
         const w = ease(ramp(t, 0, 0.9));
         return (
           <>
-            <Hero position={[-0.7, 0, 0.8 + w * 1.1]} rotationY={0} animation="walk" animDistance={w * 1.1} face="grin" time={t} />
+            <Hero position={[-0.7, 0, 0.8 + w * 1.1]} rotationY={0} animation={w > 0.02 && w < 0.98 ? "walk" : "cheer"} animDistance={w * 1.1} face="grin" time={t} />
             <BabyCow position={[0.7, 0, 0.9 + w * 1.1]} rotationY={0} t={t} />
           </>
         );

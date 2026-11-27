@@ -30,15 +30,16 @@ export const scene1 = storyScene(timing, {
       note: "Bright Frame-1 hook: townsfolk walk toward camera holding bright white MilkBuckets in sunny square.",
       stage: (t) => {
         const w = ease(ramp(t, 0, 1.0));
+        const anim = w > 0.02 && w < 0.98 ? "walk" : "cheer";
         return (
           <>
-            <Hero position={[0, 0, 1.2 + w * 1.1]} rotationY={0} animation="walk" animDistance={w * 1.1} face="grin" time={t}>
+            <Hero position={[0, 0, 1.2 + w * 1.1]} rotationY={0} animation={anim} animDistance={w * 1.1} face="grin" time={t}>
               <MilkBucket position={[0, -0.05, 0.14]} scale={0.9} />
             </Hero>
-            <Player who={1} position={[-1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation="walk" animDistance={w * 0.9} face="smile" time={t}>
+            <Player who={1} position={[-1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation={anim} animDistance={w * 0.9} face="smile" time={t}>
               <MilkBucket position={[0, -0.05, 0.14]} scale={0.9} />
             </Player>
-            <Player who={3} position={[1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation="walk" animDistance={w * 0.9} face="smile" time={t}>
+            <Player who={3} position={[1.6, 0, 1.0 + w * 0.9]} rotationY={0} animation={anim} animDistance={w * 0.9} face="smile" time={t}>
               <MilkBucket position={[0, -0.05, 0.14]} scale={0.9} />
             </Player>
           </>
@@ -114,7 +115,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => {
         const w = ease(ramp(t, 0, 1.0));
         return (
-          <Player who={7} position={[-1.4 + w * 2.8, 0, 1.8]} rotationY={Math.PI / 2} animation="walk" animDistance={w * 2.8} face="calm" time={t}>
+          <Player who={7} position={[-1.4 + w * 2.8, 0, 1.8]} rotationY={w > 0.02 && w < 0.98 ? Math.PI / 2 : 0.25} animation={w > 0.02 && w < 0.98 ? "walk" : "wave"} animDistance={w * 2.8} face="calm" time={t}>
             <MilkBucket position={[0, -0.05, 0.14]} scale={0.85} />
             <MilkBucket position={[0, 0.22, 0.14]} scale={0.85} />
           </Player>

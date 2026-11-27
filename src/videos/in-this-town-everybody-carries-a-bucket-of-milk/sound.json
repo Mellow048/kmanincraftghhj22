@@ -9,6 +9,11 @@
         "track": "Topics/InThisTown/InThisTownMusic.aac"
       },
       {
+        "from": "2.mayor",
+        "mood": "playful",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
         "from": "4.forty8",
         "mood": "tense",
         "track": "Topics/InThisTown/InThisTownMusic.aac"
@@ -16,6 +21,11 @@
       {
         "from": "6.rule",
         "mood": "hope",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
+        "from": "7.dadback",
+        "mood": "wonder",
         "track": "Topics/InThisTown/InThisTownMusic.aac"
       }
     ]

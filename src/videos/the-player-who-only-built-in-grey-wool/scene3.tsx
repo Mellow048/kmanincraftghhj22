@@ -43,7 +43,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.told",
-      ...cam.front({ actor: on(PLACE.irl, 0, 0, -0.38), facing: Math.PI, dist: 4.4, to: 3.6, side: 38, pitch: 10, fov: 44 }),
+      ...cam.front({ actor: on(PLACE.irl, 0, 0, -0.38), facing: Math.PI, dist: 4.0, to: 3.3, side: 58, pitch: 10, fov: 44 }),
       zone: "irl",
       look: "overworld-night",
       note: "Front-side IRL cutaway: Sam cries at desk while whispering back to the Owner.",
@@ -176,7 +176,7 @@ export const scene3 = storyScene(timing, {
           <>
             <SamHouse position={HOUSE} state="rebuilt" />
             <PaletteWall position={on(PLACE.server, -3.4, 0, -1.6)} rotationY={0.35} />
-            <ServerPlayer role="hero" nameTag="Sam" position={on(PLACE.server, -0.8 - w * 1.1, 0, 2.0 - w * 0.9)} rotationY={-0.65} animation={w < 0.9 ? "walk" : "wave"} animDistance={w * 1.4} face="wow" time={t} />
+            <ServerPlayer role="hero" nameTag="Sam" position={on(PLACE.server, -0.8 - w * 1.1, 0, 2.0 - w * 0.9)} rotationY={w < 0.9 ? Math.atan2(-1.1, -0.9) : -0.35} animation={w < 0.9 ? "walk" : "wave"} animDistance={w * 1.4} face="wow" time={t} />
             <ServerChatBox lines={[{ text: "Sam joined the game" }]} position={on(PLACE.server, -1.2, 2.6, 1.0)} scale={0.85 * pop(t, 0.1)} />
           </>
         );

@@ -1,0 +1,119 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-everybody-carries-a-bucket-of-milk",
+  "mix": "public/audio/in-this-town-everybody-carries-a-bucket-of-milk/mix.mp3",
+  "seconds": 91.0,
+  "built_from": {
+    "timing.json": "1b846987fa543b045ee1172534d3a07127bf51fd",
+    "sound.json": "89f6aa501eaed71ff4ef005e8878eaf5a36a12ac",
+    "narration.mp3": "274ca65b0327db3e78d83e93d50f755cae0f51d3"
+  },
+  "mix_sha1": "bd5723ea9f498c0ed723e1ae96c8566c550ce204",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "2.mayor",
+      "mood": "playful",
+      "at": 10.63,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "4.forty8",
+      "mood": "tense",
+      "at": 39.67,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "6.rule",
+      "mood": "hope",
+      "at": 57.93,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    },
+    {
+      "from": "7.dadback",
+      "mood": "wonder",
+      "at": 81.73,
+      "track": "Topics/InThisTown/InThisTownMusic.aac"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 3,
+  "measured": {
+    "musicUnderVoiceDb": 17.5,
+    "secondsWithoutMusic": 0.5,
+    "bedsUnderVoiceDb": 30.6,
+    "sfx": 64,
+    "sfxPerMinute": 42.2,
+    "sfxKinds": 7,
+    "longestGapSeconds": 3.0,
+    "longestGapAt": 71.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.8,
+    "voiceOverRestWorstDb": 6.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 6.0,
+        "t": 36.7,
+        "cue": "4.hundred",
+        "sounding": [
+          "coin",
+          "ding"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 3.4,
+        "cue": "1.noon",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 46.8,
+        "cue": "5.witch",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 23.5,
+        "cue": "3.moo",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 8.2,
+        "t": 54.0,
+        "cue": "5.rise",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 9.0,
+        "t": 20.4,
+        "cue": "2.sixth",
+        "sounding": [
+          "ding",
+          "pop",
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.0,
+    "limiterMaxDb": 1.0
+  },
+  "failures": []
+}

@@ -42,7 +42,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.only",
-      ...cam.push({ on: on(PLACE.server, 0, 1.4, -0.8), dist: 6.2, to: 5.2, yaw: -14, pitch: 9, fov: 46 }),
+      ...cam.push({ on: on(PLACE.server, 0, 1.4, -0.8), dist: 6.2, to: 5.2, yaw: 24, pitch: 9, fov: 46 }),
       zone: "server",
       note: "Front push on Sam stacking another grey block beside his plain grey wool wall.",
       stage: (t) => {
@@ -50,7 +50,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <SamHouse position={HOUSE} state="grey" />
-            <ServerPlayer role="hero" nameTag="Sam" position={on(PLACE.server, -0.8 + step * 0.7, 0, 1.0)} rotationY={0.45} animation={step < 0.9 ? "walk" : "press"} animDistance={step * 0.7} face="calm" time={t} />
+            <ServerPlayer role="hero" nameTag="Sam" position={on(PLACE.server, -0.8 + step * 0.7, 0, 1.0)} rotationY={step < 0.9 ? Math.PI / 2 : 0.2} animation={step < 0.9 ? "walk" : "press"} animDistance={step * 0.7} face="calm" time={t} />
             <Block position={on(PLACE.server, 0.9, 0.35, 0.9)} size={[0.7, 0.7, 0.7]} color="#767a82" />
             <Block position={on(PLACE.server, 0.9, 1.05 * pop(t, 0.3), 0.9)} size={[0.7, 0.7, 0.7]} color="#999da6" />
           </>

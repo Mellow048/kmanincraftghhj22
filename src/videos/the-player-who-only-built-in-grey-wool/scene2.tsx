@@ -24,7 +24,7 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "3.lazy",
-      ...cam.front({ actor: on(PLACE.irl, 0, 0, -0.38), facing: Math.PI, dist: 4.5, to: 3.7, side: 38, pitch: 10, fov: 44 }),
+      ...cam.front({ actor: on(PLACE.irl, 0, 0, -0.38), facing: Math.PI, dist: 4.1, to: 3.4, side: 58, pitch: 10, fov: 44 }),
       zone: "irl",
       look: "overworld-night",
       note: "Front-side IRL cutaway: Sam sits at his PC desk looking sad at the screen.",
@@ -34,7 +34,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.blind",
-      ...cam.front({ actor: on(PLACE.irl, 0, 0, -0.38), facing: Math.PI, dist: 3.9, to: 3.2, side: -35, pitch: 8, fov: 42 }),
+      ...cam.front({ actor: on(PLACE.irl, 0, 0, -0.38), facing: Math.PI, dist: 3.9, to: 3.2, side: -58, pitch: 8, fov: 42 }),
       zone: "irl",
       look: "overworld-night",
       note: "Closer front-side angle on Sam's eyes squinting at his monitor with subtle tears.",
@@ -109,7 +109,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <SamHouse position={HOUSE} state="grey" />
-            <ServerPlayer role="griefer" nameTag="Efe" position={on(PLACE.server, -1.8 + creep * 1.4, 0, 1.6 - creep * 0.6)} rotationY={0.95} animation="creep" animDistance={creep * 1.5} face="smug" time={t}>
+            <ServerPlayer role="griefer" nameTag="Efe" position={on(PLACE.server, -1.8 + creep * 1.4, 0, 1.6 - creep * 0.6)} rotationY={creep < 0.96 ? Math.atan2(1.4, -0.6) : 0.3} animation={creep < 0.96 ? "creep" : "laugh"} animDistance={creep * 1.5} face="smug" time={t}>
               <Block position={[0, -0.1, 0.15]} size={[0.35, 0.35, 0.35]} color="#f24cb4" />
             </ServerPlayer>
           </>

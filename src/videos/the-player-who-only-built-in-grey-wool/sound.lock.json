@@ -1,0 +1,129 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-player-who-only-built-in-grey-wool",
+  "mix": "public/audio/the-player-who-only-built-in-grey-wool/mix.mp3",
+  "seconds": 66.8333,
+  "built_from": {
+    "timing.json": "7a53235d12fa1f6b6eb268c8869252f48f362033",
+    "sound.json": "90be37bdcc3a604b792add055cac2f2c3e16034e",
+    "narration.mp3": "0e97e087d4ff24818eb1b25b433dfdd4e55b6e97"
+  },
+  "mix_sha1": "16de35741aaeca65c7e7372fce65e2ad43ae69b6",
+  "music_sections": [
+    {
+      "from": "1.grey",
+      "mood": "hope",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.lazy",
+      "mood": "sad",
+      "at": 16.77,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.dm",
+      "mood": "none",
+      "at": 39.0
+    },
+    {
+      "from": "5.idea",
+      "mood": "hope",
+      "at": 41.83,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "7.return",
+      "mood": "wonder",
+      "at": 55.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 6,
+  "measured": {
+    "musicUnderVoiceDb": 17.2,
+    "secondsWithoutMusic": 3.2,
+    "bedsUnderVoiceDb": 28.7,
+    "sfx": 66,
+    "sfxPerMinute": 59.3,
+    "sfxKinds": 21,
+    "longestGapSeconds": 2.4,
+    "longestGapAt": 19.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.5,
+    "voiceOverRestWorstDb": 3.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.5,
+        "t": 42.5,
+        "cue": "5.idea",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 4.2,
+        "t": 60.0,
+        "cue": "7.tears",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 6.7,
+        "cue": "1.promise",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 24.7,
+        "cue": "3.school",
+        "sounding": [
+          "rustle",
+          "school_bell"
+        ]
+      },
+      {
+        "db": 6.3,
+        "t": 61.0,
+        "cue": "7.typed",
+        "sounding": [
+          "blip",
+          "chime"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 63.8,
+        "cue": "7.gallery",
+        "sounding": [
+          "cheer",
+          "ding"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.8
+  },
+  "failures": []
+}

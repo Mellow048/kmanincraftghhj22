@@ -9,6 +9,7 @@ export const film = defineFilm({
   id: "the-player-who-only-built-in-grey-wool",
   title: "The Player Who Only Built In Grey Wool",
   topic: "server-lore",
+  audio: { src: "audio/the-player-who-only-built-in-grey-wool/mix.mp3" },
   look: "overworld-day",
   post: { shaders: "vibrant-day" },
   captions: {

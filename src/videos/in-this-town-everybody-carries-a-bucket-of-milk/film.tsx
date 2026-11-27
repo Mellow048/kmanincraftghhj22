@@ -11,6 +11,7 @@ export const film = defineFilm({
   title: "In This Town, Everybody Carries A Bucket Of Milk",
   topic: "in-this-town",
   cut: "short",
+  audio: { src: "audio/in-this-town-everybody-carries-a-bucket-of-milk/mix.mp3" },
   look: "overworld-day",
   post: { shaders: "vibrant-day" },
   captions: {
