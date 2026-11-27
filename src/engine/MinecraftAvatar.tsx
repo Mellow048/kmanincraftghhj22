@@ -117,6 +117,7 @@ export type MinecraftAvatarProps = {
 const HIP = 12 * PX;
 
 const GAITS: AnimName[] = ["walk", "run", "creep", "stagger"];
+const warnedMissingAnimDist = new Set<string>();
 
 const isGait = (name: AnimName): name is GaitName => GAITS.includes(name);
 
@@ -317,7 +318,14 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
         const gp = gaitPose(clip, dist);
         return dist < 0.12 ? blendPose(getPose("idle", clipClock), gp, dist / 0.12) : gp;
       }
-      return timeGait ? gaitPose(clip, clipClock) : getPose("idle", clipClock);
+      if (!timeGait) {
+        if (!warnedMissingAnimDist.has(clip)) {
+          warnedMissingAnimDist.add(clip);
+          console.warn(`[MinecraftAvatar] animation="${clip}" has no animDistance and falls back to idle. Use walkSegment(...), stride(...), or pass animDistance.`);
+        }
+        return getPose("idle", clipClock);
+      }
+      return gaitPose(clip, clipClock);
     }
     return getPose(clip, clipClock);
   };

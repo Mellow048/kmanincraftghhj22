@@ -45,6 +45,25 @@ export function loadTopics(root) {
   return topics;
 }
 
+const mediaPresence = new Map();
+/** True when audio binaries have been restored into this checkout. */
+function hasAudioMedia(root) {
+  if (mediaPresence.has(root)) return mediaPresence.get(root);
+  let found = false;
+  const walk = (dir) => {
+    if (found || !fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (found) return;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (/\.(mp3|wav|m4a|aac)$/i.test(entry.name)) found = true;
+    }
+  };
+  walk(path.join(root, "public", "audio"));
+  mediaPresence.set(root, found);
+  return found;
+}
+
 const sha1 = (data) => crypto.createHash("sha1").update(data).digest("hex");
 /** The same hashes scripts/sound.py writes into sound.lock.json. Text is hashed without its line endings, so git cannot change it. */
 const textHash = (file) => sha1(Buffer.from(fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n").trim(), "utf8"));
@@ -91,7 +110,11 @@ function checkSound({ root, slug, dir, film, topic, tag, timing, complete, fail,
   }
   const mixPath = path.join(root, lock.mix ?? "");
   if (!lock.mix || !fs.existsSync(mixPath)) {
-    fail(`${tag}: the mix (${lock.mix ?? "?"}) is missing. Run: ${build}`);
+    if (!hasAudioMedia(root)) {
+      info(`${tag}: audio is not restored in this code-only checkout. Run: bash scripts/restore-assets.sh`);
+    } else {
+      fail(`${tag}: the mix (${lock.mix ?? "?"}) is missing. Run: ${build}`);
+    }
     return;
   }
   const voicePath = path.join(root, "public", "audio", slug, "narration.mp3");

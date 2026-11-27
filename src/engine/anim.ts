@@ -393,8 +393,10 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "lie": {
+      // HIP is 12*PX (0.675m). Head half-depth is 4*PX (0.225m), so bodyY = -8*PX (-0.45m)
+      // rests the back of the head/body flush on position[1] (floor y=0 or bed mattress top) without floating.
       p.bodyPitch = -Math.PI / 2;
-      p.bodyY = -0.125;
+      p.bodyY = -0.45;
       p.armR = [0, 0, 0.18];
       p.armL = [0, 0, -0.18];
       p.legR = [0, 0, 0.03];
@@ -404,8 +406,9 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "sleep": {
+      // Rests flush on position[1] (floor y=0 or mattress top y=0.55) with subtle breathing lift.
       p.bodyPitch = -Math.PI / 2;
-      p.bodyY = -0.125 + Math.sin(time * 1.1) * 0.006;
+      p.bodyY = -0.45 + Math.sin(time * 1.1) * 0.006;
       p.armR = [0, 0, 0.22];
       p.armL = [0, 0, -0.22];
       p.legR = [0, 0, 0.02];

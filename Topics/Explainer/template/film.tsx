@@ -26,7 +26,7 @@ export const film = defineFilm({
   //   sound mix built (scripts/sound.py build __ID__):    audio: { src: "audio/__ID__/mix.mp3" },
   captions: {
     words: timing.words,
-    y: 0.67,
+    y: 0.72,
     motion: "on-beat",
     highlightWords: ["CROWN", "VOTE", "POWER", "EMERALD", "KING", "EMPEROR"],
     dangerWords: ["EMPTY", "WAR", "BROKE", "TRAP", "NEVER", "ZERO", "CHAOS"],

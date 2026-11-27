@@ -1,6 +1,7 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { Block, Vox, mulberry32, pixelTex, plankTex, stripeTex, wordBitmap, wordTexture } from "../../src/engine";
+import { Block, Glow, Torch, Vox, clamp01, mulberry32, pixelTex, plankTex, stripeTex, wordBitmap, wordTexture } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
 import { Icon } from "../Shared";
 import { Chest } from "./money";
@@ -583,5 +584,196 @@ export const CompareChestPair: React.FC<{
     <Chest position={[1.0, 0, 0]} open={0.8} gold={0.5} />
     <StoneBillboard text={rightLabel} position={[1.0, 1.5, -0.35]} width={1.7} height={0.58} bgColor="#5b4026" />
     <IngotStack position={[1.0, 0, 0.85]} count={rightCount} />
+  </group>
+);
+
+/** Large wooden Minecraft shop price billboard (e.g. `10` + emerald gem, flips cleanly to `20` on a beat). */
+export const PriceBillboard: React.FC<{
+  price: string | number;
+  gemColor?: string;
+  position?: Vec3;
+  rotationY?: number;
+  scale?: number;
+}> = ({ price, gemColor = "#2ee06e", position = [0, 0, 0], rotationY = 0, scale = 1 }) => {
+  const text = String(price);
+  const tex = useMemo(() => wordTexture(text), [text]);
+  const w = Math.min(1.1, Math.max(0.45, (wordBitmap(text).width / 11) * 0.45));
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      {/* Twin oak posts */}
+      <Block position={[-0.92, 0.9, 0]} size={[0.14, 1.8, 0.14]} map={plankTex("#7c5630")} />
+      <Block position={[0.92, 0.9, 0]} size={[0.14, 1.8, 0.14]} map={plankTex("#7c5630")} />
+      {/* Plank sign board */}
+      <Block position={[0, 1.85, 0]} size={[2.2, 1.05, 0.14]} map={plankTex("#a87b48")} />
+      <Block position={[0, 1.85, 0.06]} size={[2.06, 0.92, 0.04]} map={plankTex("#c69860")} castShadow={false} />
+      {/* Bold price number */}
+      <mesh position={[-0.36, 1.85, 0.092]}>
+        <planeGeometry args={[w, 0.48]} />
+        <meshBasicMaterial map={tex} color="#2c1c0f" transparent alphaTest={0.5} toneMapped={false} fog={false} />
+      </mesh>
+      {/* Faceted Minecraft emerald / currency gem */}
+      <group position={[0.56, 1.85, 0.11]} rotation={[0, 0, Math.PI / 4]}>
+        <Block position={[0, 0, 0]} size={[0.36, 0.36, 0.08]} color={gemColor} emissive={gemColor} emissiveIntensity={0.28} />
+        <Block position={[0, 0, 0.045]} size={[0.2, 0.2, 0.04]} color="#b8ffd0" emissive={gemColor} emissiveIntensity={0.35} castShadow={false} />
+      </group>
+    </group>
+  );
+};
+
+/** Complete Minecraft trader stall: plank counter, twin torches, PriceBillboard, and spinning floating Pickaxe. */
+export const ShopStall: React.FC<{
+  price?: string | number;
+  position?: Vec3;
+  rotationY?: number;
+  t?: number;
+  showPickaxe?: boolean;
+}> = ({ price = 10, position = [0, 0, 0], rotationY = 0, t = 0, showPickaxe = true }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    {/* Wooden counter */}
+    <Block position={[0, 0.45, 0.65]} size={[2.25, 0.9, 0.68]} map={plankTex("#9a6d3c")} />
+    <Block position={[0, 0.92, 0.65]} size={[2.35, 0.08, 0.76]} map={plankTex("#7c5328")} />
+    {/* Twin front torches */}
+    <Torch position={[-0.98, 0.96, 0.92]} light={0} />
+    <Torch position={[0.98, 0.96, 0.92]} light={0} />
+    {/* Price billboard behind stall */}
+    <PriceBillboard price={price} position={[0, 0.7, -0.65]} />
+    {/* Spinning floating Diamond Pickaxe above counter */}
+    {showPickaxe ? (
+      <group position={[0, 1.55 + Math.sin(t * 3.2) * 0.08, 0.65]} rotation={[0, t * 1.4, 0]}>
+        <Pickaxe scale={1.15} />
+        <Glow position={[0, 0.15, 0]} size={1.1} color="#4ce6ff" opacity={0.22} />
+      </group>
+    ) : null}
+  </group>
+);
+
+/** Dark slate Minecraft server console board (`> /give @mods emerald 1000`) with typewriter reveal (`progress: 0..1`). */
+export const CommandBoard: React.FC<{
+  lines: string[];
+  progress?: number;
+  position?: Vec3;
+  rotationY?: number;
+  width?: number;
+}> = ({ lines, progress = 1, position = [0, 0, 0], rotationY = 0, width = 3.2 }) => {
+  const full = lines.join("\n");
+  const count = Math.floor(full.length * clamp01(progress));
+  const shown = full.slice(0, count) + (progress < 0.99 ? "_" : "");
+  const rows = shown.split("\n");
+  const rendered = useMemo(
+    () =>
+      rows.map((text) => {
+        const safe = text.length > 0 ? text : " ";
+        return {
+          tex: wordTexture(safe),
+          w: Math.min(width - 0.35, Math.max(0.1, (wordBitmap(safe).width / 11) * 0.2)),
+        };
+      }),
+    [shown, width],
+  );
+  const h = Math.max(1.2, 0.45 + lines.length * 0.34);
+
+  return (
+    <group position={position} rotation={[0, rotationY, 0]}>
+      <Block position={[-width / 2 + 0.14, h / 2 + 0.5, -0.06]} size={[0.16, h + 1.0, 0.16]} color="#4a4e58" />
+      <Block position={[width / 2 - 0.14, h / 2 + 0.5, -0.06]} size={[0.16, h + 1.0, 0.16]} color="#4a4e58" />
+      <Block position={[0, h / 2 + 1.0, 0]} size={[width, h, 0.14]} color="#1d2028" />
+      <Block position={[0, h / 2 + 1.0, 0.06]} size={[width - 0.18, h - 0.18, 0.04]} color="#12141a" castShadow={false} />
+      {rendered.map((r, i) => (
+        <mesh key={i} position={[-width / 2 + 0.24 + r.w / 2, h + 0.72 - i * 0.32, 0.095]}>
+          <planeGeometry args={[r.w, 0.2]} />
+          <meshBasicMaterial map={r.tex} color={i === 0 ? "#a9b8d4" : "#5ef28e"} transparent alphaTest={0.5} toneMapped={false} fog={false} />
+        </mesh>
+      ))}
+    </group>
+  );
+};
+
+/** High-energy exploding fountain of spinning emeralds/bills shooting up and raining down (`t` = seconds since burst). */
+export const EmeraldFountain: React.FC<{
+  position?: Vec3;
+  t?: number;
+  count?: number;
+  spread?: number;
+  height?: number;
+  color?: string;
+  seed?: number;
+}> = ({ position = [0, 1.2, 0], t = 0, count = 24, spread = 2.6, height = 3.2, color = "#2ee06e", seed = 7 }) => {
+  const items = useMemo(() => {
+    const rand = mulberry32(seed * 317 + 13);
+    return Array.from({ length: count }, () => ({
+      vx: (rand() - 0.5) * spread,
+      vz: (rand() - 0.5) * spread * 0.65,
+      vy: height * (0.65 + rand() * 0.55),
+      delay: rand() * 0.45,
+      spin: (rand() - 0.5) * 9,
+      scale: 0.75 + rand() * 0.45,
+    }));
+  }, [count, spread, height, seed]);
+
+  if (t <= 0) return null;
+  const g = 6.8;
+  return (
+    <group position={position}>
+      {items.map((it, i) => {
+        const lt = t - it.delay;
+        if (lt <= 0) return null;
+        const y = Math.max(-position[1] + 0.08, it.vy * lt - 0.5 * g * lt * lt);
+        const x = it.vx * Math.min(lt, 1.4);
+        const z = it.vz * Math.min(lt, 1.4);
+        return (
+          <group key={i} position={[x, y, z]} rotation={[lt * it.spin * 0.5, lt * it.spin, Math.PI / 4]} scale={it.scale}>
+            <Block position={[0, 0, 0]} size={[0.16, 0.22, 0.05]} color={color} emissive={color} emissiveIntensity={0.35} castShadow={false} />
+          </group>
+        );
+      })}
+    </group>
+  );
+};
+
+/** Growing 1->3->6->10 floating pyramid of emeralds/coins above a saver's head (visual metaphor for saving up). */
+export const FloatingItemPyramid: React.FC<{
+  count: number;
+  position?: Vec3;
+  color?: string;
+  t?: number;
+  scale?: number;
+}> = ({ count, position = [0, 2.35, 0], color = "#2ee06e", t = 0, scale = 1 }) => {
+  const shown = Math.max(0, Math.min(10, Math.round(count)));
+  // 4-row pyramid: bottom 4, next 3, next 2, top 1
+  const slots: Array<[number, number]> = [
+    [-0.42, 0], [-0.14, 0], [0.14, 0], [0.42, 0],
+    [-0.28, 0.28], [0, 0.28], [0.28, 0.28],
+    [-0.14, 0.56], [0.14, 0.56],
+    [0, 0.84],
+  ];
+  return (
+    <group position={[position[0], position[1] + Math.sin(t * 2.8) * 0.05, position[2]]} scale={scale}>
+      {slots.slice(0, shown).map(([x, y], i) => (
+        <group key={i} position={[x, y, 0]} rotation={[0, t * 2 + i * 0.4, Math.PI / 4]}>
+          <Block position={[0, 0, 0]} size={[0.18, 0.18, 0.06]} color={color} emissive={color} emissiveIntensity={0.3} castShadow={false} />
+        </group>
+      ))}
+    </group>
+  );
+};
+
+/** Ring of orbiting emeralds/coins floating cleanly in front of a character to visualize purchasing power. */
+export const OrbitingItemRing: React.FC<{
+  count?: number;
+  radius?: number;
+  position?: Vec3;
+  color?: string;
+  t?: number;
+  scale?: number;
+}> = ({ count = 10, radius = 0.65, position = [0, 1.35, 0.5], color = "#2ee06e", t = 0, scale = 1 }) => (
+  <group position={position} scale={scale}>
+    {Array.from({ length: count }).map((_, i) => {
+      const a = (i / Math.max(1, count)) * Math.PI * 2 + t * 1.6;
+      return (
+        <group key={i} position={[Math.cos(a) * radius, Math.sin(a) * radius, 0]} rotation={[0, t * 2.5, Math.PI / 4]}>
+          <Block position={[0, 0, 0]} size={[0.16, 0.2, 0.05]} color={color} emissive={color} emissiveIntensity={0.32} castShadow={false} />
+        </group>
+      );
+    })}
   </group>
 );

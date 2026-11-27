@@ -1,6 +1,5 @@
 import {
-  BadgePop,
-  ChatToast,
+  ChestGridUI,
   DeskSetup,
   FloatingHeart,
   OpeningChest,
@@ -24,12 +23,12 @@ import {
 } from "./kit";
 
 /**
- * SERVER LORE STARTER SCENE — 5 kinetic beats showing the full 50k SMP template:
- *   1.hook  : Tight night/golden bridge proof + Noah stopping + ServerChatBox
- *   2.mock  : Orbit past ScoreboardWall & bullies mocking + Owner (?) open loop
- *   3.irl   : Hard cutaway to IRL DeskSetup + TearDrops (triggers Up Sad theme)
- *   4.rally : Owner (!) + ServerCrowd placing SculkSensor & RedstoneLamp trail (triggers Up Happy 0:02+)
- *   5.cta   : Glowing redstone trail payoff + FloatingHeart + SubscribeSign
+ * SERVER LORE STARTER SCENE (Remaster v3.5) — 5 kinetic front-facing beats:
+ *   1.hook  : Front-facing bridge reveal + Noah stopping + live typewriter ServerChatBox
+ *   2.mock  : Auto-fitted two-shot of bullies mocking + Owner (?) open loop
+ *   3.irl   : Front-side IRL DeskSetup cutaway (monitor + Noah's tearing face clearly visible, zero chair phasing)
+ *   4.rally : Front-angle tracking shot of Owner (!) + ServerCrowd sprinting TOWARD camera with torches
+ *   5.cta   : Glowing redstone trail + OpeningChest + ChestGridUI payoff + FloatingHeart + SubscribeSign
  */
 
 const ownerSpotWord = wordAt("2.mock", "Owner");
@@ -41,42 +40,42 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.hook",
-      ...cam.push({
-        on: on(PLACE.server, 0, 1.35, -0.5),
-        onTo: on(PLACE.server, 0, 1.4, -2.0),
-        dist: 4.5,
-        to: 3.1,
-        yaw: -14,
+      ...cam.front({
+        actor: on(PLACE.server, 0, 0, -0.2),
+        facing: 0,
+        dist: 5.2,
+        to: 4.3,
+        side: -16,
         pitch: 7,
-        fov: 42,
-        screenOffset: [0, 0.06],
+        fov: 44,
       }),
       zone: "server",
-      note: "Noah walks onto the bridge then stops suddenly ahead of dark unlit edge as ServerChatBox logs arrival.",
+      note: "Front 3/4 push: Noah walks forward toward camera, stops ahead of unlit redstone lamps, and live typewriter ServerChatBox logs arrival.",
       stage: (t) => {
         const walk = ease(ramp(t, 0, 0.55));
-        const pos = on(PLACE.server, 0, 0, 1.2 - walk * 1.4);
+        const pos = on(PLACE.server, 0, 0, -1.5 + walk * 1.3);
         return (
           <>
             <ServerPlayer
               role="hero"
               nameTag="Noah"
               position={pos}
-              rotationY={Math.PI}
+              rotationY={0}
               animation="walk"
               blendTo="scared"
               blend={1 - ease(ramp(t, 0.45, 0.72))}
-              animDistance={walk * 1.4}
+              animDistance={walk * 1.3}
               face={walk > 0.75 ? "worried" : "neutral"}
+              headYaw={walk > 0.7 ? Math.sin(t * 6) * 0.25 : 0}
               time={t}
             />
-            <RedstoneLamp position={on(PLACE.server, -1.2, 0.45, -3.5)} lit={0} />
-            <RedstoneLamp position={on(PLACE.server, 1.2, 0.45, -3.5)} lit={0} />
+            <RedstoneLamp position={on(PLACE.server, -1.2, 0.45, -2.8)} lit={0} />
+            <RedstoneLamp position={on(PLACE.server, 1.2, 0.45, -2.8)} lit={0} />
             <ServerChatBox
               lines={[{ text: "Noah joined the game" }, { sender: "Alex", text: "why did he stop lol" }]}
-              position={on(PLACE.server, -1.5, 2.3, -1.2)}
-              rotationY={0.25}
-              scale={pop(t, 0.2)}
+              typing={ramp(t, 0.15, 0.9)}
+              position={on(PLACE.server, -0.85, 2.5, -1.0)}
+              scale={0.85 * pop(t, 0.15)}
             />
           </>
         );
@@ -84,18 +83,18 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.mock",
-      ...cam.orbit({
-        on: on(PLACE.server, -0.4, 1.35, -0.8),
-        dist: 4.8,
-        distTo: 3.6,
-        yaw: -26,
-        yawTo: 24,
-        pitch: 9,
-        fov: 42,
-        screenOffset: [0, 0.06],
+      ...cam.twoShot({
+        a: on(PLACE.server, -0.8, 0, -0.2),
+        b: on(PLACE.server, 1.3, 0, 0.2),
+        facing: 0,
+        dist: 5.6,
+        to: 4.8,
+        side: 12,
+        pitch: 8,
+        fov: 46,
       }),
       zone: "server",
-      note: "Orbit past snickering bullies while Server Owner enters behind with (?) open-loop reaction.",
+      note: "Clean 9:16 front two-shot: Alex mocks cowering Noah while Server Owner steps in from left with (?) open-loop reaction.",
       stage: (t) => {
         const ownerStep = ease(ramp(t, ownerSpotWord - 0.15, ownerSpotWord + 0.6));
         return (
@@ -104,7 +103,7 @@ export const scene1 = storyScene(timing, {
               role="hero"
               nameTag="Noah"
               position={on(PLACE.server, 0, 0, -0.2)}
-              rotationY={Math.PI}
+              rotationY={0.25}
               animation="cower"
               face="sad"
               time={t}
@@ -112,10 +111,11 @@ export const scene1 = storyScene(timing, {
             <ServerPlayer
               role="bully"
               nameTag="Alex"
-              position={on(PLACE.server, 1.4, 0, 0.6)}
-              rotationY={-2.5}
+              position={on(PLACE.server, 1.3, 0, 0.2)}
+              rotationY={-0.75}
               animation="laugh"
               face="smug"
+              lookAt={on(PLACE.server, 0, 1.3, -0.2)}
               time={t}
             />
             <ServerPlayer
@@ -124,68 +124,64 @@ export const scene1 = storyScene(timing, {
               crown
               badge={t >= ownerSpotWord ? "?" : undefined}
               badgePopStart={ownerSpotWord}
-              position={on(PLACE.server, -1.9 + ownerStep * 0.9, 0, -1.8 + ownerStep * 0.6)}
-              rotationY={0.85}
+              position={on(PLACE.server, -2.1 + ownerStep * 0.9, 0, -0.9 + ownerStep * 0.5)}
+              rotationY={0.65}
               animation="walk"
               blendTo="idle"
               blend={1 - ownerStep}
-              animDistance={ownerStep * 1.1}
+              animDistance={ownerStep * 1.05}
               lookAt={on(PLACE.server, 0, 1.4, -0.2)}
               face="worried"
               time={t}
             />
-            <Sign title="COWARD" position={on(PLACE.server, 1.3, 1.1, -1.6)} rotationY={-0.35} />
+            <Sign title="COWARD" position={on(PLACE.server, 1.3, 1.1, -1.4)} rotationY={-0.25} />
           </>
         );
       },
     },
     {
       cue: "3.irl",
-      ...cam.push({
-        on: on(PLACE.irl, 0, 1.25, -0.9),
-        dist: 3.6,
-        to: 2.35,
-        yaw: 18,
-        yawTo: 8,
-        pitch: 8,
-        fov: 38,
-        screenOffset: [0, 0.05],
+      ...cam.front({
+        actor: on(PLACE.irl, 0, 0, -0.38),
+        facing: Math.PI,
+        dist: 4.4,
+        to: 3.6,
+        side: 38,
+        pitch: 10,
+        fov: 44,
       }),
       zone: "irl",
       look: "overworld-night",
-      note: "Hard cutaway to IRL DeskSetup showing Noah quietly hurting in chair under screen glow (Sad Up section).",
-      stage: (t) => {
-        const lean = ease(ramp(t, 0, 1.0));
-        return (
-          <>
-            <DeskSetup position={on(PLACE.irl, 0, 0, -1.2)} screenText="CANNOT REACH KEYS" screenColor="#ff5f52" lampOn={false} />
-            <ServerPlayer
-              role="hero"
-              position={on(PLACE.irl, 0.05 * lean, 0.05, -0.45)}
-              rotationY={Math.PI}
-              animation="sit"
-              face="sad"
-              tears={0.95}
-              lookAt={on(PLACE.irl, 0, 1.2, -1.4)}
-              time={t}
-            />
-          </>
-        );
-      },
+      note: "Front-side IRL DeskSetup cutaway: shows Noah's crying face clearly past the glowing monitor (Sad Up section, zero chair phasing).",
+      stage: (t) => (
+        <>
+          <DeskSetup position={on(PLACE.irl, 0, 0, -1.2)} screenText="CANNOT REACH KEYS" screenColor="#ff5f52" lampOn={false} />
+          <ServerPlayer
+            role="hero"
+            position={on(PLACE.irl, 0, 0, -0.38)}
+            rotationY={Math.PI}
+            animation="sit"
+            face="sad"
+            tears={0.95}
+            headPitch={0.12 + Math.sin(t * 2.5) * 0.06}
+            lookAt={on(PLACE.irl, 0, 1.24, -1.4)}
+            time={t}
+          />
+        </>
+      ),
     },
     {
       cue: "4.rally",
       ...cam.truck({
-        on: on(PLACE.server, 0, 1.25, 1.4),
-        dist: 5.2,
-        yaw: 34,
+        on: on(PLACE.server, 0, 1.25, -1.8),
+        dist: 5.8,
+        yaw: 18,
         pitch: 12,
-        by: [0, 0, -3.6],
-        fov: 42,
-        screenOffset: [0, 0.05],
+        by: [0, 0, 3.2],
+        fov: 46,
       }),
       zone: "server",
-      note: "Community sprint down the walkway wiring glowing SculkSensor & RedstoneLamps cleanly together (Happy Up 0:02+).",
+      note: "Front-angle tracking shot: Owner (!) and ServerCrowd sprint TOWARD camera with torches lighting SculkSensor & RedstoneLamps (Happy Up 0:02+).",
       stage: (t) => {
         const sprint = ease(ramp(t, 0, 1.2));
         const wired = t >= rallyLitWord ? ease(ramp(t, rallyLitWord, rallyLitWord + 0.5)) : 0;
@@ -201,19 +197,19 @@ export const scene1 = storyScene(timing, {
               nameTag="Owner"
               crown
               badge="!"
-              position={on(PLACE.server, -1.1, 0, 1.5 - sprint * 3.8)}
-              rotationY={Math.PI}
+              position={on(PLACE.server, -0.8, 0, -3.2 + sprint * 3.4)}
+              rotationY={0}
               animation="run"
-              animDistance={sprint * 3.8}
+              animDistance={sprint * 3.4}
               torch
               light={1.5}
               time={t}
             />
             <ServerCrowd
               members={[
-                { role: "friendA", nameTag: "Mia", position: on(PLACE.server, 1.3, 0, 2.0 - sprint * 3.6), rotationY: Math.PI, animation: "run", animDistance: sprint * 3.6, torch: true },
-                { role: "friendB", nameTag: "Leo", position: on(PLACE.server, -2.0, 0, 2.6 - sprint * 3.4), rotationY: Math.PI, animation: "run", animDistance: sprint * 3.4, torch: true },
-                { role: "friendC", nameTag: "Zuri", position: on(PLACE.server, 2.1, 0, 2.9 - sprint * 3.5), rotationY: Math.PI, animation: "run", animDistance: sprint * 3.5, torch: true },
+                { role: "friendA", nameTag: "Mia", position: on(PLACE.server, 1.1, 0, -3.5 + sprint * 3.2), rotationY: 0, animation: "run", animDistance: sprint * 3.2, torch: true },
+                { role: "friendB", nameTag: "Leo", position: on(PLACE.server, -1.9, 0, -4.1 + sprint * 3.1), rotationY: 0, animation: "run", animDistance: sprint * 3.1, torch: true },
+                { role: "friendC", nameTag: "Zuri", position: on(PLACE.server, 2.0, 0, -4.3 + sprint * 3.0), rotationY: 0, animation: "run", animDistance: sprint * 3.0, torch: true },
               ]}
               time={t}
             />
@@ -223,53 +219,39 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "5.cta",
-      ...cam.orbit({
-        on: on(PLACE.server, 0, 1.45, -3.2),
-        dist: 4.3,
-        distTo: 3.1,
-        yaw: 22,
-        yawTo: -16,
-        pitch: 7,
-        fov: 40,
-        screenOffset: [0, 0.06],
+      ...cam.front({
+        actor: on(PLACE.server, 0, 0, -1.8),
+        facing: 0,
+        dist: 5.4,
+        to: 4.6,
+        side: 14,
+        pitch: 9,
+        fov: 46,
       }),
       zone: "server",
-      note: "Noah walks joyfully across the glowing RedstoneLamp bridge surrounded by friends, FloatingHeart burst & SubscribeSign.",
+      note: "Front payoff push: Noah beams beside OpeningChest & filling ChestGridUI surrounded by FloatingHeart burst and SubscribeSign.",
       stage: (t) => {
-        const stride = ease(ramp(t, 0, 1.4));
+        const stride = ease(ramp(t, 0, 1.1));
         const signPop = pop(t, Math.max(0.2, timing.cues[4].end - timing.cues[4].start - 1.6));
         return (
           <>
             <SculkSensor position={on(PLACE.server, 0, 0, -1.5)} active={1} />
             <RedstoneLamp position={on(PLACE.server, -1.2, 0.45, -3.5)} lit={1} />
             <RedstoneLamp position={on(PLACE.server, 1.2, 0.45, -3.5)} lit={1} />
-            <OpeningChest position={on(PLACE.server, -0.9, 0, -4.4)} rotationY={0.4} open={0.85} contents="books" />
+            <OpeningChest position={on(PLACE.server, -1.0, 0, -2.2)} rotationY={0.35} open={ease(ramp(t, 0.1, 0.7))} contents="books" />
+            <ChestGridUI filled={Math.round(ramp(t, 0.25, 1.2) * 27)} position={on(PLACE.server, -1.0, 2.05, -2.2)} scale={0.75 * pop(t, 0.2)} />
             <ServerPlayer
               role="hero"
               nameTag="Noah"
-              position={on(PLACE.server, 0, 0, -1.6 - stride * 1.9)}
-              rotationY={Math.PI}
-              animation="walk"
-              animDistance={stride * 1.9}
-              face="happy"
+              position={on(PLACE.server, 0.3, 0, -3.0 + stride * 1.4)}
+              rotationY={0}
+              animation={stride < 0.95 ? "walk" : "cheer"}
+              animDistance={stride * 1.4}
+              face="grin"
               time={t}
             />
-            <ServerPlayer
-              role="owner"
-              nameTag="Owner"
-              crown
-              position={on(PLACE.server, 1.35, 0, -3.4)}
-              rotationY={-1.1}
-              animation="cheer"
-              face="happy"
-              time={t}
-            />
-            <BadgePop kind="heart" position={on(PLACE.server, 0, 2.75, -3.5)} scale={1.1} t={t} />
-            <FloatingHeart position={on(PLACE.server, 0, 1.8, -3.2)} count={8} t={t} />
-            <ChatToast text="<Noah> thank you guys" position={on(PLACE.server, -1.4, 2.35, -3.3)} rotationY={0.15} height={0.22 * pop(t, 0.45)} />
-            {signPop > 0.02 ? (
-              <SubscribeSign position={on(PLACE.server, 0, 2.35, -5.0)} rotationY={0.1} scale={0.75 * signPop} />
-            ) : null}
+            <FloatingHeart position={on(PLACE.server, 0.3, 2.0, -1.6)} count={8} t={t} />
+            <SubscribeSign position={on(PLACE.server, 1.35, 1.2, -1.4)} rotationY={-0.2} scale={0.9 * signPop} />
           </>
         );
       },

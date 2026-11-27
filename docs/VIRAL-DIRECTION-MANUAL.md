@@ -1,4 +1,6 @@
-# Viral Direction, Hook, Retention & Payoff Manual (Mandatory Before Writing or Staging)
+# Viral Direction, Hook, Retention & Payoff Manual (Optional Deep Dive)
+
+> **Optional reference.** `AGENTS.md` already contains the core rules. Open this only if you want deeper narrative or staging examples.
 
 This guide defines BOTH the **Story Retention Engine** (Hook → Escalation → Payoff) AND the **3D Execution Rules** that separate **1k-view PowerPoint flops** from **20k+–100k+ YouTube Shorts** (`Monster Village Part 1`, `Creeper Parents`, `Enderman Parents`, `Bread/Minimum Wage Explainers`, and `Never Walk Alone`).
 

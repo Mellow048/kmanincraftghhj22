@@ -24,22 +24,29 @@ export const ServerChatBox: React.FC<{
   rotationY?: number;
   lineHeight?: number;
   scale?: number;
-}> = ({ lines, position = [0, 2.0, 0], rotationY = 0, lineHeight = 0.21, scale = 1 }) => {
+  /** Optional 0..1 typewriter reveal on the final line (adds blinking '_' cursor while typing). */
+  typing?: number;
+}> = ({ lines, position = [0, 2.0, 0], rotationY = 0, lineHeight = 0.21, scale = 1, typing }) => {
   const rendered = useMemo(
     () =>
-      lines.map((entry) => {
-        const line = entry.whisper && entry.sender
+      lines.map((entry, idx) => {
+        const full = entry.whisper && entry.sender
           ? `${entry.sender} whispers to you: ${entry.text}`
           : entry.sender
             ? `<${entry.sender}> ${entry.text}`
             : entry.text;
+        const isLast = idx === lines.length - 1;
+        const line =
+          isLast && typing !== undefined && typing < 0.999
+            ? full.slice(0, Math.max(1, Math.floor(full.length * clamp01(typing)))) + "_"
+            : full;
         const tex = wordTexture(line);
         const { width: gw } = wordBitmap(line);
         const textW = Math.max(0.45, ((gw + 2) / 11) * lineHeight);
         const color = entry.color ?? (entry.whisper ? "#d38aff" : entry.sender ? "#ffffff" : "#ffeb5c");
         return { tex, textW, color };
       }),
-    [lines, lineHeight],
+    [lines, lineHeight, typing],
   );
 
   if (rendered.length === 0) return null;
@@ -329,6 +336,108 @@ export const ObsidianLavaPit: React.FC<{
       <Glow position={[0, 0.9, 0]} size={size * 1.4} color="#ff6d1f" opacity={0.35} />
       <pointLight position={[0, 0.8, 0]} color="#ff6d1f" intensity={5.5} distance={8} decay={2} />
       <EmberDrift position={[0, 0.25, 0]} area={[size * 0.8, 2.4, size * 0.8]} count={20} color="#ff8e2b" speed={0.7} />
+    </group>
+  );
+};
+
+/** 3D open Minecraft book page (`Page 1 of 1`) with typewriter text reveal — ideal for secret notes & reveals. */
+export const OpenBookPage: React.FC<{
+  lines: string[];
+  header?: string;
+  /** 0..1 typewriter progress across all lines. Default 1 (fully revealed). */
+  progress?: number;
+  position?: Vec3;
+  rotationY?: number;
+  scale?: number;
+}> = ({ lines, header = "Page 1 of 1", progress = 1, position = [0, 1.5, 0], rotationY = 0, scale = 1 }) => {
+  const full = lines.join("\n");
+  const shownCount = Math.floor(full.length * clamp01(progress));
+  const shown = full.slice(0, shownCount) + (progress < 0.99 ? "_" : "");
+  const shownLines = shown.split("\n");
+  const headerTex = useMemo(() => wordTexture(header), [header]);
+  const headerW = Math.max(0.45, (wordBitmap(header).width / 11) * 0.12);
+  const rendered = useMemo(
+    () =>
+      shownLines.map((text) => {
+        const safe = text.length > 0 ? text : " ";
+        return {
+          tex: wordTexture(safe),
+          w: Math.min(1.38, Math.max(0.08, (wordBitmap(safe).width / 11) * 0.13)),
+        };
+      }),
+    [shown],
+  );
+
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      {/* Leather book border + warm parchment page */}
+      <Block position={[0, 0, -0.03]} size={[1.76, 2.08, 0.05]} color="#6b341e" />
+      <Block position={[0, 0, 0]} size={[1.58, 1.9, 0.03]} color="#f6eed4" castShadow={false} />
+      {/* Binding spine rings on left margin */}
+      {[-0.68, -0.34, 0, 0.34, 0.68].map((y, i) => (
+        <Block key={i} position={[-0.77, y, 0.025]} size={[0.08, 0.06, 0.04]} color="#8c4d2b" castShadow={false} />
+      ))}
+      {/* Header */}
+      <mesh position={[0.35, 0.76, 0.022]}>
+        <planeGeometry args={[headerW, 0.12]} />
+        <meshBasicMaterial map={headerTex} color="#5a4a35" transparent alphaTest={0.5} toneMapped={false} fog={false} />
+      </mesh>
+      {/* Body lines */}
+      {rendered.map((r, i) => (
+        <mesh key={i} position={[-0.66 + r.w / 2, 0.48 - i * 0.22, 0.022]}>
+          <planeGeometry args={[r.w, 0.13]} />
+          <meshBasicMaterial map={r.tex} color="#261c14" transparent alphaTest={0.5} toneMapped={false} fog={false} />
+        </mesh>
+      ))}
+    </group>
+  );
+};
+
+/** 3D Minecraft Chest Inventory Grid popping up and filling slot-by-slot (`filled: 0..27`) for payoff reveals. */
+export const ChestGridUI: React.FC<{
+  title?: string;
+  filled?: number;
+  itemColor?: string;
+  position?: Vec3;
+  rotationY?: number;
+  scale?: number;
+}> = ({ title = "Chest", filled = 27, itemColor = "#8a3624", position = [0, 1.6, 0], rotationY = 0, scale = 1 }) => {
+  const titleTex = useMemo(() => wordTexture(title), [title]);
+  const titleW = Math.max(0.35, (wordBitmap(title).width / 11) * 0.13);
+  const count = Math.max(0, Math.min(27, Math.round(filled)));
+  const cols = 9;
+  const rows = 3;
+  const cell = 0.2;
+  const startX = -((cols - 1) * cell) / 2;
+  const startY = 0.24;
+
+  return (
+    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+      {/* Classic Minecraft light-grey GUI frame */}
+      <Block position={[0, 0, -0.03]} size={[2.08, 1.18, 0.05]} color="#3a3a3a" />
+      <Block position={[0, 0, 0]} size={[1.98, 1.08, 0.03]} color="#c6c6c6" castShadow={false} />
+      <mesh position={[-0.88 + titleW / 2, 0.44, 0.022]}>
+        <planeGeometry args={[titleW, 0.13]} />
+        <meshBasicMaterial map={titleTex} color="#363636" transparent alphaTest={0.5} toneMapped={false} fog={false} />
+      </mesh>
+      {Array.from({ length: rows * cols }).map((_, idx) => {
+        const c = idx % cols;
+        const r = Math.floor(idx / cols);
+        const x = startX + c * cell;
+        const y = startY - r * cell;
+        const hasItem = idx < count;
+        return (
+          <group key={idx} position={[x, y, 0.02]}>
+            <Block position={[0, 0, 0]} size={[0.17, 0.17, 0.015]} color="#8b8b8b" castShadow={false} />
+            {hasItem ? (
+              <group position={[0, 0, 0.018]}>
+                <Block position={[0, 0, 0]} size={[0.11, 0.13, 0.02]} color={itemColor} castShadow={false} />
+                <Block position={[0.01, 0, 0.012]} size={[0.08, 0.1, 0.01]} color="#f4ecd2" castShadow={false} />
+              </group>
+            ) : null}
+          </group>
+        );
+      })}
     </group>
   );
 };

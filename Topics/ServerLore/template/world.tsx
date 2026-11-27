@@ -16,8 +16,8 @@ export const World: React.FC = () => (
       <Block position={on(PLACE.server, 0, 0.04, -5.5)} size={[3.2, 0.12, 8.5]} map={plankTex("#8c6239", [2, 4])} />
 
       {/* Background SMP houses & spawn scoreboard */}
-      <Hut position={on(PLACE.server, -5.6, 0, -4.5)} rotationY={0.3} />
-      <Hut position={on(PLACE.server, 5.8, 0, -3.5)} rotationY={-0.4} />
+      <Hut at={on(PLACE.server, -5.6, 0, -4.5)} />
+      <Hut at={on(PLACE.server, 5.8, 0, -3.5)} />
       <ScoreboardWall
         title="SERVER LOGS"
         rows={[
@@ -42,8 +42,8 @@ export const World: React.FC = () => (
 
     {/* ---- ZONE 2: Deep Dark / Lava Pit ---- */}
     <Zone name="cave">
-      <Vox kind="deepslate" position={on(PLACE.cave, 0, -0.25, 0)} size={[22, 0.5, 22]} />
-      <Vox kind="deepslate" position={on(PLACE.cave, 0, 3.0, -5.5)} size={[18, 6, 1.2]} />
+      <Vox kind="stone" position={on(PLACE.cave, 0, -0.25, 0)} size={[22, 0.5, 22]} />
+      <Vox kind="stone" position={on(PLACE.cave, 0, 3.0, -5.5)} size={[18, 6, 1.2]} />
       <ObsidianLavaPit position={on(PLACE.cave, 0, 0, -1.6)} size={2.5} />
       <LightPool position={on(PLACE.cave, 0, 0.03, 0)} width={7} depth={7} color="#28e8d8" opacity={0.18} />
       <Glow position={on(PLACE.cave, 0, 2.0, -1.6)} size={2.0} color="#ff7029" opacity={0.26} />

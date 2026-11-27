@@ -198,8 +198,7 @@ test('every narrated starter scaffolds with its own identity; drafts rehearse bu
     for (const flag of ['--final', '--pre-render']) assert.match(run(process.execPath, [cli, id, flag], tmp, 1), /DRAFT: No fully aligned/);
 
     // Single-pass strict tsc --noEmit across all 6 valid scaffolded starters.
-    // TODO(M2): include server-lore once Topics/ServerLore/template compiles.
-    const validStarters = ['in-this-town', 'stories', 'deadpan', 'what-if', 'explainer', 'recreation'];
+    const validStarters = ['in-this-town', 'stories', 'deadpan', 'what-if', 'explainer', 'recreation', 'server-lore'];
     const tsConfigPath = path.join(tmp, 'tsconfig.starters.json');
     fs.writeFileSync(tsConfigPath, JSON.stringify({
       extends: path.join(root, 'tsconfig.json'),
@@ -322,7 +321,11 @@ export { CitizenLead, EliteLead, Official, ExplainerCrowd, DetailedBookshelf, Ru
     }
     const explainerCfg = JSON.parse(fs.readFileSync(path.join(root, 'Topics/Explainer/topic.json'), 'utf8'));
     assert.equal(explainerCfg.sound.music.file, 'Topics/Explainer/explainer_bgm_loop.wav');
-    assert.ok(fs.existsSync(path.join(root, explainerCfg.sound.music.file)), 'explainer_bgm_loop.wav must exist');
+    const bgm = path.join(root, explainerCfg.sound.music.file);
+    // The code-only mirror ships no media; scripts/restore-assets.sh brings this back.
+    if (fs.existsSync(bgm) || !fs.existsSync(path.join(root, 'CODE_ONLY.md'))) {
+      assert.ok(fs.existsSync(bgm), 'explainer_bgm_loop.wav must exist');
+    }
   } finally {
     fs.rmSync(scratch, { recursive: true, force: true });
   }
@@ -496,7 +499,7 @@ export { MinecraftAvatar } from './src/engine/MinecraftAvatar';`,
     scenes: [{
       id: 's1',
       duration: 1.5,
-      shots: [{ cue: '1.a', from: [0, 1.5, 4], to: [0, 1.5, 2], target: [0, 1.2, 0], at: 0, dur: 1.5 }],
+      shots: [{ cue: '1.a', from: [0, 1.5, 4], to: [0, 1.5, 2], target: [0, 1.2, 2], at: 0, dur: 1.5 }],
       sampleStage: (_i, t) => createElement(Hero, { ...walkSegment([0, 0, 0], [0, 0, 2], t, 0, 0.6), time: t }),
     }],
   });
@@ -550,4 +553,93 @@ export { MinecraftAvatar } from './src/engine/MinecraftAvatar';`,
   assert.match(collisions.unfinished.join('\n'), /World coplanar y=0\.050: Vox vs SnowTrail/);
   assert.match(collisions.unfinished.join('\n'), /Dup World\+Stage <Furnace>/);
   assert.match(collisions.unfinished.join('\n'), /Stage <Boat> intersects World <Vox>/);
+});
+
+test('Remaster v3: grounded lie/sleep, cam.front/twoShot/fitWidth, anti-back, lens occlusion, 9:16 over-zoom, phasing & passive mannequin gate', async () => {
+  // 1. Grounded lie & sleep poses (HIP=0.675, bodyY=-0.45 => hip=0.225 = 4*PX, head back flush at y=0)
+  const { getPose } = mod;
+  assert.equal(getPose('lie', 0).bodyY, -0.45);
+  assert.ok(Math.abs(getPose('sleep', 0).bodyY - (-0.45)) < 0.01);
+
+  // 2. cam.front, cam.twoShot, cam.fitWidth
+  const { pathToFileURL } = await import('node:url');
+  const out = path.join(root, 'out');
+  fs.mkdirSync(out, { recursive: true });
+  const scratch = fs.mkdtempSync(path.join(out, '.v3-cam-'));
+  try {
+    const outfile = path.join(scratch, 'cam-v3.mjs');
+    await build({
+      stdin: { contents: `export * from './src/engine/cam';`, resolveDir: root },
+      outfile,
+      platform: 'node',
+      format: 'esm',
+      target: 'node22',
+      packages: 'external',
+      bundle: true,
+      logLevel: 'silent',
+    });
+    const { cam } = await import(pathToFileURL(outfile));
+    const f = cam.front({ actor: [0, 0, 0], facing: Math.PI });
+    assert.ok(f.from[2] < 0, 'cam.front for actor facing -Z (Math.PI) must stand on the -Z front side');
+    const tw = cam.twoShot({ a: [-1.2, 0, 0], b: [1.2, 0, 0], facing: 0 });
+    assert.ok(tw.from[2] > 4.4, 'cam.twoShot must auto-fit wide enough for 9:16');
+    assert.ok(cam.fitWidth(2.4, 44, 0.82) > 5.0);
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+
+  // 3. directionReport v3 gates
+  const Hero = () => null;
+  const Dad = () => null;
+  const Sign = () => null;
+  const Vox = () => null;
+  const Zone = ({ children }) => children;
+
+  const v3Bad = directionReport({
+    fps: 30,
+    captions: { motion: 'on-beat' },
+    World: () => createElement(Zone, { name: 'room' }, createElement(Vox, { position: [5, 1.5, 0], size: [2, 3, 2] })),
+    scenes: [{
+      id: 's1',
+      duration: 5,
+      shots: [
+        // Back-of-head shot without behind/OTS note
+        { cue: '1.back', zone: 'room', from: [0, 1.5, 5], to: [0, 1.5, 4], target: [0, 1.2, 0], at: 0, dur: 1, note: 'Dad looking at desk.' },
+        // Actor blocking lens between camera (z=5) and target (z=0)
+        { cue: '1.block', zone: 'room', from: [0, 1.5, 5], to: [0, 1.5, 4], target: [0, 1.2, 0], at: 1, dur: 1, note: 'Hero talks.' },
+        // Over-zoomed 9:16 with 2 actors + Sign
+        { cue: '1.zoom', zone: 'room', from: [0, 1.4, 1.8], to: [0, 1.4, 1.3], target: [0, 1.2, 0], fov: 36, at: 2, dur: 1, note: 'Two actors and sign.' },
+        // Actor phasing into World wall + two actors phasing into each other
+        { cue: '1.phase', zone: 'room', from: [5, 1.5, 5], to: [5, 1.5, 4], target: [5, 1.2, 0], at: 3, dur: 1, note: 'Phasing test.' },
+        // Passive sit + time={t} must NOT count as acting when repeated
+        { cue: '1.hop', zone: 'room', from: [0, 1.5, 5], to: [0, 1.5, 4], target: [0, 1.2, 0], at: 4, dur: 1, note: 'Cartoon hop recoil.' },
+      ],
+      sampleStage: (i, t) => {
+        if (i === 0) return createElement(Dad, { position: [0, 0, 0], rotationY: Math.PI, animation: 'wave', time: t });
+        if (i === 1) return createElement('group', null,
+          createElement(Hero, { position: [0, 0, 0], rotationY: 0, animation: 'wave', time: t }),
+          createElement(Dad, { position: [0, 0, 2.5], rotationY: 0, animation: 'idle' }),
+        );
+        if (i === 2) return createElement('group', null,
+          createElement(Hero, { position: [-0.6, 0, 0], rotationY: 0, animation: 'wave', time: t }),
+          createElement(Dad, { position: [0.6, 0, 0], rotationY: 0, animation: 'wave', time: t }),
+          createElement(Sign, { position: [0, 1.6, 0] }),
+        );
+        if (i === 3) return createElement('group', null,
+          createElement(Hero, { position: [5, 0, 0], rotationY: 0, animation: 'wave', time: t }),
+          createElement(Dad, { position: [5.1, 0, 0], rotationY: 0, animation: 'wave', time: t }),
+        );
+        // Cartoon hop arc that starts & ends at y=0 must NOT trigger standing-slide error
+        const hopY = Math.sin(Math.PI * t) * 0.4;
+        return createElement(Hero, { position: [t * 0.5, hopY, 0], rotationY: 0, animation: 'idle', time: t });
+      },
+    }],
+  });
+  const msg = v3Bad.unfinished.join('\n');
+  assert.match(msg, /Camera shoots the back of Dad/);
+  assert.match(msg, /Actor <Dad>.*blocks the camera view/);
+  assert.match(msg, /Over-zoomed for 9:16/);
+  assert.match(msg, /Actors <Hero> and <Dad> phase into each other/);
+  assert.match(msg, /Actor <Hero>.*phases inside World <Vox>/);
+  assert.equal(v3Bad.unfinished.filter(m => m.includes('[1.hop]') && m.includes('slides')).length, 0, 'hop arc must not be flagged as standing slide');
 });

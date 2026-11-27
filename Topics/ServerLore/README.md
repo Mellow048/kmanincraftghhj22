@@ -1,29 +1,28 @@
-# Server Lore — Wholesome 50k+ SMP Storytelling
+# Server Lore — Wholesome SMP Playbook (Remaster v3.5)
 
-Emotional, high-retention third-person Minecraft SMP stories (`65–110s` Shorts) built around a **misunderstood player**, a **real-world human secret**, a **cruel breaking point**, and a **whole-server Minecraft-engineered redemption** — underscored by dynamically switched **Up Happy (`0:02+`, boosted)** and **Up Sad (boosted)** themes.
+Build emotional, high-retention 3rd-person Minecraft SMP Shorts (`65–110s`) inspired by the 3 AM Mom / misunderstood-player formula: **mystery hook -> cruel misunderstanding -> IRL human secret -> heartbreak -> Owner `!` rally -> whole-server Minecraft redemption -> story-tied CTA**.
 
-It combines:
-1. **The 50k Reference Formula** ([`reference/3am-mom/`](reference/3am-mom/README.md) & [`reference/deaf-creeper/`](reference/deaf-creeper/README.md)): 7-beat mystery -> real-world cutaway -> heartbreak -> Owner `!` rally -> clever Minecraft mechanics -> counter/chest callback -> story-tied CTA.
-2. **Our Framework's Visual Quality & Shaders**: grounded multi-part 3D SMP & IRL sets, volumetric god rays, bloom, floating 3D player nametags, crisp 3D server chat boxes, sculk/redstone lighting, and crying/heart particles (zero flat HTML overlays).
-3. **Old-Framework Smooth `inOutSine` Camera Choreography** ([`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md)): sweeping `cam.push`, `cam.orbit`, `cam.crane`, `cam.truck`, and `cam.ots` moves with zero static slides or 1-inch actor nudges.
-
----
-
-## Start Here
-
+Start with:
 ```bash
-npm run new -- "The Player Who Built Only Half A Bridge" --topic server-lore
+npm run new -- "The Player Who…" --topic server-lore
 ```
 
-This creates a ready-to-build film folder from [`template/`](template/) wired to [`Topics/ServerLore`](index.ts) with [`up_happy.m4a`](up_happy.m4a) + [`up_sad.m4a`](up_sad.m4a) multi-track switching configured.
+## 1. Visual & Storytelling Formula (Beat the Reference)
+1. **Always show FACES, never backs:** Use `cam.front({ actor, facing: rotY })` and `cam.twoShot({ a, b, facing })`. In IRL PC desk scenes (`DeskSetup`), place the camera at the **front-side of the monitor** looking into the character's face — NEVER behind their chair!
+2. **Tell half the story through 3D SMP UI & Props (`Topics/ServerLore/props.tsx`):**
+   * **`ServerChatBox`** with **`typing={ramp(t, 0.1, 0.9)}`** — live typewriter join/chat/whisper messages (`Anna joined the game`, `<Efe> griefer caught`, `You whisper to Leo: hey buddy, you ok?`).
+   * **`OpeningChest`** + **`ChestGridUI`** (`filled={Math.round(ramp(t, 0.1, 1.0) * 27)}`) — open the chest lid, then pop the 27-slot Minecraft chest GUI filling up slot-by-slot for the payoff!
+   * **`OpenBookPage`** (`progress={ramp(t, 0.1, 0.9)}`) — parchment `Page 1 of 1` with live typewriter note text.
+   * **`Clock3AM`** — flip `2:59 AM` -> `3:00 AM` on the exact spoken word (`wordAt`).
+   * **`BadgePop`** (`"!"`, `"?"`, `"heart"`, `"broken"`) & **`TearDrops`** (`tears={1}`) & **`FloatingHeart`** — nametags and badges auto-face the camera automatically.
+3. **Clean IRL Cutaways (`Topics/ServerLore/places.tsx`):**
+   * **`HospitalCorridor`** — character walks **toward** camera (`rotationY={0}`, front view!).
+   * **`BedroomSet`** — bed mattress top sits at `y = 0.56`; place sleeping character at `position={[bedX, 0.56, bedZ]}` with `animation="sleep"` (rests flush, zero floating!).
+   * **`DeskSetup`** — chair seat sits at `z + 0.82`; keep seated actor at `z + 0.78` facing the monitor, and shoot from the **front-side (`yaw ≈ 140°` or `cam.front`)** so both screen and face read cleanly!
+4. **Camera & Pacing:**
+   * **75–85% `cam.front` / `cam.push` / `cam.twoShot` / `cam.truck`** at `dist: 4.4–6.2m, fov: 44–46°` (plus `dist: 10–14m` high-angle wides for whole-server torch rallies).
+   * Cut every **`1.4–1.8s`**, switch day/night `look` cleanly on time-lapse beats (`overworld-night` / `lantern-night` -> `overworld-day`), and never blanket-apply `screenOffset`.
+5. **Dual-Track Up Audio (`Topics/ServerLore/SOUND.md`):**
+   * Switch cleanly between `up_happy.m4a` (`0:02+`) for mystery/rally/payoff and `up_sad.m4a` for the IRL secret & heartbreak beat.
 
----
-
-## Read in Order Before Writing a Word
-
-1. **[`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md)** — Mandatory camera travel, `inOutSine` motion, visual-verbal lockstep, and retention/payoff contract.
-2. **References ([`3am-mom/`](reference/3am-mom/README.md), [`deaf-creeper/`](reference/deaf-creeper/README.md))** — Forensics + contact sheets + transcripts explaining why both format anchors clear 50k+ views reliably.
-3. **[`SCRIPT.md`](SCRIPT.md)** — The 7-beat Wholesome SMP Lore spine, open-loop teaser timing (`0:07–0:11`), and how to invent an original scenario without cloning the references.
-4. **[`SHOTS.md`](SHOTS.md)** — Mixing fast `1.5–1.9s` cuts (`cut:`), 3D SMP UI beats (nametags, chat, scoreboards), IRL cutaways, and bold moving cameras.
-5. **[`PACK.md`](PACK.md)** — Every ready-to-use 3D cast member, IRL environment (`HospitalCorridor`, `ClassroomRoom`, `DeskSetup`), and SMP prop (`ServerChatBox`, `ScoreboardWall`, `OpeningChest`, `SculkSensor`, `RedstoneLamp`, `Clock3AM`).
-6. **[`SOUND.md`](SOUND.md)** — Exact setup for **Happy Up (`up_happy.m4a`, starts at `0:02`, boosted)** vs **Sad Up (`up_sad.m4a`, boosted)** switching inside `sound.json`.
+*Optional deep dives: `Topics/ServerLore/SOUND.md`, `Topics/ServerLore/PACK.md`, `Topics/ServerLore/SCRIPT.md`.*

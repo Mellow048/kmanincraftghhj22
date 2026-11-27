@@ -27,7 +27,7 @@ export const film = defineFilm({
   //      -> audio: { src: "audio/__ID__/mix.mp3" }
   captions: {
     words: timing.words,
-    y: 0.67,
+    y: 0.72,
     motion: "on-beat",
     highlightWords: ["OWNER", "HEART", "THREE", "LIGHT", "FRIEND", "SUBSCRIBE"],
     dangerWords: ["GRIEFER", "WORST", "LAVA", "GONE", "EMPTY", "QUIT"],

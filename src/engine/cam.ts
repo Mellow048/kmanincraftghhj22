@@ -60,6 +60,94 @@ export const cam = {
     return round(span / (2 * Math.tan((fov * RAD) / 2)));
   },
 
+  /** Minimum distance (metres) so a horizontal span (two actors or 3D text/sign) fits cleanly inside the narrow 9:16 width. */
+  fitWidth(widthMetres: number, fov = 44, fillRatio = 0.82): number {
+    const span = widthMetres / Math.max(0.1, fillRatio);
+    return round(span / (2 * Math.tan((fov * RAD) / 2) * (9 / 16)));
+  },
+
+  /**
+   * Facing-aware 3/4 FRONT push shot. Pass the actor's feet `actor` and `facing` (`rotationY` in radians)
+   * so the camera ALWAYS shoots their face/front instead of the back of their head, at a phone-safe 9:16 distance.
+   */
+  front(o: {
+    actor: Vec3;
+    /** Actor's `rotationY` in radians (0 = +Z, Math.PI = -Z). */
+    facing?: number;
+    /** Height above actor's feet to aim at. Default 1.25 (chest/face). */
+    height?: number;
+    /** Start distance in metres. Default 4.6 (20k-hit sweet spot). */
+    dist?: number;
+    /** End distance in metres. Default 3.9. */
+    to?: number;
+    /** Degrees off the actor's front nose axis (3/4 angle). Default 18. */
+    side?: number;
+    pitch?: number;
+    fov?: number;
+    screenOffset?: [number, number];
+    ease?: Shot["ease"];
+  }): Move {
+    const on: Vec3 = [o.actor[0], round(o.actor[1] + (o.height ?? 1.25)), o.actor[2]];
+    const yaw = round(((o.facing ?? 0) / RAD) + (o.side ?? 18));
+    const dist = o.dist ?? 4.6;
+    const to = o.to ?? round(Math.max(2.6, dist - 0.7));
+    return cam.push({
+      on,
+      dist,
+      to,
+      yaw,
+      pitch: o.pitch ?? 6,
+      fov: o.fov ?? 44,
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
+      ease: o.ease ?? "inOutSine",
+    });
+  },
+
+  /**
+   * Auto-fitted 9:16 two-shot (two actors, or an actor + 3D sign/prop). Computes the minimum safe distance
+   * via `fitWidth` so neither subject nor 3D text gets cropped off the narrow 9:16 edges.
+   */
+  twoShot(o: {
+    a: Vec3;
+    b: Vec3;
+    /** Optional facing angle in radians for the front side of the pair (default: perpendicular front). */
+    facing?: number;
+    height?: number;
+    /** Extra margin beyond auto-fitted distance. */
+    dist?: number;
+    to?: number;
+    side?: number;
+    pitch?: number;
+    fov?: number;
+    screenOffset?: [number, number];
+    ease?: Shot["ease"];
+  }): Move {
+    const fov = o.fov ?? 46;
+    const mid: Vec3 = [
+      round((o.a[0] + o.b[0]) / 2),
+      round((o.a[1] + o.b[1]) / 2 + (o.height ?? 1.25)),
+      round((o.a[2] + o.b[2]) / 2),
+    ];
+    const sep = Math.hypot(o.b[0] - o.a[0], o.b[2] - o.a[2]);
+    const minSafe = Math.max(4.4, cam.fitWidth(sep + 1.15, fov, 0.84));
+    const dist = Math.max(minSafe, o.dist ?? round(minSafe + 0.6));
+    const to = Math.max(minSafe * 0.9, o.to ?? round(dist - 0.7));
+    const baseYaw =
+      o.facing !== undefined
+        ? o.facing / RAD
+        : Math.atan2(-(o.b[2] - o.a[2]), o.b[0] - o.a[0]) / RAD;
+    return cam.push({
+      on: mid,
+      dist,
+      to,
+      yaw: round(baseYaw + (o.side ?? 14)),
+      pitch: o.pitch ?? 8,
+      fov,
+      ...(o.screenOffset ? { screenOffset: o.screenOffset } : {}),
+      ease: o.ease ?? "inOutSine",
+    });
+  },
+
   /** Dolly in (to < dist) or pull out (to > dist) along the lens axis. Smooth `inOutSine` curve matches classic 20k-hit camera flow. */
   push(o: Framing & { to: number; onTo?: Vec3; fovTo?: number; ease?: Shot["ease"] }): Move {
     return {
@@ -199,10 +287,10 @@ export const cam = {
     const side = o.side ?? 1;
     const rx = -nz * side;
     const rz = nx * side;
-    const back = o.back ?? 1.85;
+    const back = o.back ?? 2.35;
     const push = o.push ?? 0.72;
-    const h = o.height ?? 0.14;
-    const lat = 0.62;
+    const h = o.height ?? 0.22;
+    const lat = 0.85;
     return {
       from: [
         round(o.speaker[0] - nx * back + rx * lat),
@@ -215,8 +303,8 @@ export const cam = {
         round(o.speaker[2] - nz * (back - push) + rz * (lat * 0.88)),
       ],
       target: o.listener,
-      fov: o.fov ?? 40,
-      screenOffset: [0, 0.06],
+      fov: o.fov ?? 44,
+      screenOffset: [0, 0.04],
       ease: o.ease ?? "inOutSine",
     };
   },

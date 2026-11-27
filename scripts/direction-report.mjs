@@ -233,11 +233,17 @@ const snowBoxes = (item) => {
 
 const axisOverlap = (a0, a1, b0, b1) => Math.min(a1, b1) - Math.max(a0, b0);
 
+// Only genuinely active expressive clips satisfy clock-only motion; passive poses
+// (sit, lookAround, hold, crouch, lean) must also animate head/face/props/position.
 const ACTING_ANIMS = new Set([
-  'wave', 'talk', 'laugh', 'cheer', 'clap', 'shrug', 'cower', 'lean', 'leanOver',
-  'lookAround', 'point', 'reach', 'reachUp', 'hold', 'crouch', 'hug', 'scared',
-  'panic', 'cry', 'sit', 'strain', 'rattle', 'push', 'hurt', 'jump', 'hop',
+  'wave', 'talk', 'laugh', 'cheer', 'clap', 'shrug', 'cower',
+  'point', 'reach', 'reachUp', 'hug', 'scared',
+  'panic', 'cry', 'strain', 'rattle', 'push', 'hurt', 'jump', 'hop',
 ]);
+const TEXT_STAGE_PROPS = new Set([
+  'Sign', 'ChatToast', 'ServerChatBox', 'RuleBoard', 'StoneBillboard', 'FloatingNumber', 'DeskSetup',
+]);
+const BEHIND_NOTE_RE = /\b(behind|back|backs|over[- ]the[- ]shoulder|over[- ]shoulder|ots|pov|follows|following|from behind|walks away|runs away|facing away|receding|silhouette)\b/i;
 const STANDING_POSES = new Set([
   'idle', 'talk', 'shrug', 'lookAround', 'laugh', 'cheer', 'wave', 'hold',
   'reach', 'lean', 'leanOver', 'point', 'sit', 'clap',
@@ -347,7 +353,7 @@ function narration(film, timing, topic, script, covered, frames, r, replayLegacy
 export function directionReport(film, timing, topic, script, { replayLegacy = false } = {}) {
   const r = { shots: 0, sampled: 0, changing: 0, errors: [], unfinished: [], review: [] };
   const { fps } = film, covered = [];
-  let prior, alike = 0, quiet = 0, frame = 0;
+  let prior, alike = 0, quiet = 0, frame = 0, orbitShots = 0;
   const isModern = timing?.wordTiming !== undefined || film.captions?.motion === 'on-beat';
   const bucket = isModern ? r.unfinished : r.review;
   const worldItems = expandWorld(film.World);
@@ -378,6 +384,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
     const duration = Math.max(1, Math.round(scene.duration * fps));
     for (const [i, s] of scene.shots.entries()) {
       r.shots++;
+      if (s.path?.length >= 3) orbitShots++;
       // Same threshold as pickShot: the earliest output frame that actually selects it.
       const first = Math.max(0, Math.ceil((s.at - 1e-6) * fps));
       const next = scene.shots[i + 1];
@@ -446,7 +453,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
           const pts = actorSamples.map((list) => list[k]);
           const maxMove = Math.max(0, ...pts.map((pt) => gap(pt.pos, pts[0].pos)));
           const totalHoriz = Math.hypot(pts[pts.length - 1].pos[0] - pts[0].pos[0], pts[pts.length - 1].pos[2] - pts[0].pos[2]);
-          const totalVert = Math.abs(pts[pts.length - 1].pos[1] - pts[0].pos[1]);
+          const totalVert = Math.max(0, ...pts.map((pt) => Math.abs(pt.pos[1] - pts[0].pos[1])));
           const hasPos = pts.some((pt) => Array.isArray(pt.props.position));
           const hasAlt = pts.some((pt) => pt.props.shift !== undefined || pt.props.at !== undefined || pt.props.positions !== undefined);
           const walks = pts.map((pt) => pt.props.walk ?? 0);
@@ -519,6 +526,122 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
                     break;
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+
+      // Remaster v3 checks (modern films): back-of-character, actor blocking camera, 9:16 over-zoom, phasing
+      if (isModern) {
+        const midEye = s.path?.length >= 2 ? s.path[Math.floor(s.path.length / 2)] : [
+          ((s.from?.[0] ?? 0) + (s.to?.[0] ?? s.from?.[0] ?? 0)) / 2,
+          ((s.from?.[1] ?? 0) + (s.to?.[1] ?? s.from?.[1] ?? 0)) / 2,
+          ((s.from?.[2] ?? 0) + (s.to?.[2] ?? s.from?.[2] ?? 0)) / 2,
+        ];
+        const midTarget = s.targetPath?.length >= 2 ? s.targetPath[Math.floor(s.targetPath.length / 2)] : [
+          ((s.target?.[0] ?? 0) + (s.targetTo?.[0] ?? s.target?.[0] ?? 0)) / 2,
+          ((s.target?.[1] ?? 0) + (s.targetTo?.[1] ?? s.target?.[1] ?? 0)) / 2,
+          ((s.target?.[2] ?? 0) + (s.targetTo?.[2] ?? s.target?.[2] ?? 0)) / 2,
+        ];
+        const midActors = actorSamples[2] ?? [];
+        const midStageItems = [];
+        collectStageItems(sampleNodes[2], midStageItems);
+
+        // 4a. Back-of-character ("back fetish") check: flag when all framed foreground actors face away from camera
+        const framedWithYaw = midActors.filter((a) => {
+          const dTarget = Math.hypot(a.pos[0] - midTarget[0], a.pos[2] - midTarget[2]);
+          return typeof a.props.rotationY === 'number' && dTarget <= 2.6 && a.props.animation !== 'lie' && a.props.animation !== 'sleep';
+        });
+        if (framedWithYaw.length > 0 && !BEHIND_NOTE_RE.test(s.note ?? '')) {
+          const allBack = framedWithYaw.every((a) => {
+            const toCamX = midEye[0] - a.pos[0];
+            const toCamZ = midEye[2] - a.pos[2];
+            const len = Math.hypot(toCamX, toCamZ);
+            if (len < 0.2) return false;
+            const fx = Math.sin(a.props.rotationY);
+            const fz = Math.cos(a.props.rotationY);
+            const dot = (fx * toCamX + fz * toCamZ) / len;
+            return dot < -0.55;
+          });
+          if (allBack) {
+            bucket.push(
+              `${where}: Camera shoots the back of ${framedWithYaw.map(a => a.name).join(', ')}. Use cam.front({ actor, facing }) or face the actor toward the camera (or explain "behind/OTS/POV" in note).`,
+            );
+          }
+        }
+
+        // 4b. Character blocking the camera lens (standing on camera->target ray or right in front of eye)
+        const rayX = midTarget[0] - midEye[0];
+        const rayY = midTarget[1] - midEye[1];
+        const rayZ = midTarget[2] - midEye[2];
+        const rayHorizSq = rayX * rayX + rayZ * rayZ;
+        if (rayHorizSq > 0.25) {
+          for (const a of midActors) {
+            const ax = a.pos[0] - midEye[0];
+            const az = a.pos[2] - midEye[2];
+            const proj = (ax * rayX + az * rayZ) / rayHorizSq;
+            if (proj > 0.06 && proj < 0.78) {
+              const px = midEye[0] + rayX * proj;
+              const py = midEye[1] + rayY * proj;
+              const pz = midEye[2] + rayZ * proj;
+              const perpDist = Math.hypot(a.pos[0] - px, a.pos[2] - pz);
+              const actorTop = a.pos[1] + 1.8 * (a.props.scale ?? 1);
+              if (perpDist < 0.34 && py >= a.pos[1] - 0.1 && py <= actorTop + 0.1) {
+                bucket.push(
+                  `${where}: Actor <${a.name}> at [${a.pos.map(n => Math.round(n * 10) / 10).join(', ')}] blocks the camera view to target. Offset camera or move actor off the sightline.`,
+                );
+                break;
+              }
+            }
+          }
+        }
+
+        // 4c. 9:16 Over-Zoom / Text & Two-Shot Cropping check
+        const hasTextProp = midStageItems.some((st) => TEXT_STAGE_PROPS.has(st.name));
+        const endHSpan = view.end.span * (9 / 16);
+        if ((midActors.length >= 2 || hasTextProp) && endHSpan < 1.15 && view.end.dist < 2.8) {
+          bucket.push(
+            `${where}: Over-zoomed for 9:16 (frame width only ${endHSpan.toFixed(2)}m at dist ${view.end.dist.toFixed(2)}m with ${midActors.length} actor(s)${hasTextProp ? ' + 3D text/prop' : ''}). Pull back to dist 4.4–6.2m or use cam.twoShot / cam.fitWidth.`,
+          );
+        }
+
+        // 4d. Actor-vs-Actor phasing check
+        for (let ai = 0; ai < midActors.length; ai++) {
+          for (let aj = ai + 1; aj < midActors.length; aj++) {
+            const A = midActors[ai], B = midActors[aj];
+            if (A.props.animation === 'hug' || B.props.animation === 'hug') continue;
+            if ((A.props.scale ?? 1) < 0.55 || (B.props.scale ?? 1) < 0.55) continue;
+            const hd = Math.hypot(A.pos[0] - B.pos[0], A.pos[2] - B.pos[2]);
+            const vd = Math.abs(A.pos[1] - B.pos[1]);
+            if (hd < 0.30 && vd < 0.9) {
+              bucket.push(
+                `${where}: Actors <${A.name}> and <${B.name}> phase into each other (gap ${hd.toFixed(2)}m). Keep at least 0.5m separation.`,
+              );
+            }
+          }
+        }
+
+        // 4e. Actor-vs-World solid wall phasing check
+        if (worldItems.length > 0) {
+          for (const a of midActors) {
+            if (a.props.animation === 'lie' || a.props.animation === 'sleep') continue;
+            const actorY0 = a.pos[1] + 0.15;
+            const actorY1 = a.pos[1] + 1.65 * (a.props.scale ?? 1);
+            for (const wi of worldItems) {
+              if ((wi.name !== 'Vox' && wi.name !== 'Block') || !wi.pos || !zonesOverlap(s.zone, wi)) continue;
+              const sz = wi.props.size ?? [1, 1, 1];
+              const bb = boxBounds(wi.pos, sz);
+              if (sz[1] < 0.7 && bb.y1 <= 0.18) continue; // floor slab
+              if (
+                a.pos[0] > bb.x0 + 0.08 && a.pos[0] < bb.x1 - 0.08 &&
+                a.pos[2] > bb.z0 + 0.08 && a.pos[2] < bb.z1 - 0.08 &&
+                axisOverlap(actorY0, actorY1, bb.y0, bb.y1) > 0.25
+              ) {
+                bucket.push(
+                  `${where}: Actor <${a.name}> at [${a.pos.map(n => Math.round(n * 10) / 10).join(', ')}] phases inside World <${wi.name}>. Move actor outside the wall/block.`,
+                );
+                break;
               }
             }
           }
@@ -614,6 +737,9 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
       }
     }
     frame += duration;
+  }
+  if (isModern && r.shots >= 8 && orbitShots / r.shots > 0.4) {
+    r.review.push(`Camera overuse: ${orbitShots}/${r.shots} shots (${Math.round((orbitShots / r.shots) * 100)}%) use orbits. 20k+ hits use ~75–85% cam.push/cam.front; reserve orbits for real reveals.`);
   }
   if (topic?.film?.captions) narration(film, timing, topic, script, covered, frame, r, replayLegacy);
   return r;

@@ -1,6 +1,7 @@
 import type React from "react";
 import { useMemo } from "react";
 import {
+  Bed,
   Block,
   Carpet,
   CeilingLight,
@@ -185,3 +186,27 @@ export const ClassroomRoom: React.FC<{
     </group>
   );
 };
+
+/** Grounded IRL bedroom cutaway: Bed (mattress top at y=0.56 so `animation="sleep"` rests flush), nightstand + Clock3AM, doorway for parent peek. */
+export const BedroomSet: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  clockText?: string;
+  alarm?: number;
+  doorOpen?: number;
+}> = ({ position = [0, 0, 0], rotationY = 0, clockText = "3:00 AM", alarm = 0, doorOpen = 0.45 }) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Block position={[0, -0.15, 0]} size={[6.5, 0.3, 6.5]} map={plankTex("#8c653e", [4, 4])} />
+    <WardWall position={[0, 1.75, -2.6]} size={[6.5, 3.5, 0.35]} color="#1d5f8a" repeat={[3, 2]} />
+    <WardWall position={[-3.0, 1.75, 0]} size={[0.35, 3.5, 6.5]} color="#174e73" repeat={[3, 2]} />
+    {/* Doorway in back wall for parent/friend entrance */}
+    <DoorFrame position={[1.4, 0, -2.38]} width={1.05} height={2.25} color="#4e321b" />
+    <Door position={[0.88, 0, -2.38]} rotationY={-doorOpen * 1.2} width={1.0} height={2.2} color="#6b4423" />
+    {/* Bed placed left-center; mattress top sits cleanly at y=0.56 */}
+    <Bed position={[-1.15, 0, -0.8]} width={1.2} length={2.15} blanket="#2f7fd4" />
+    {/* Nightstand + alarm clock */}
+    <Block position={[0.1, 0.32, -1.55]} size={[0.62, 0.64, 0.56]} map={plankTex("#6e4928")} />
+    <Clock3AM text={clockText} alarm={alarm} position={[0.1, 0.64, -1.52]} rotationY={0.18} scale={0.85} />
+    <pointLight position={[0.1, 2.4, -0.6]} color="#cbe0ff" intensity={3.8} distance={8} decay={2} />
+  </group>
+);

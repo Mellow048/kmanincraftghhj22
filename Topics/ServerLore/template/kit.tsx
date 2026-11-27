@@ -2,6 +2,9 @@ import type { Timing, Vec3 } from "../../engine";
 import {
   BadgePop,
   Bed,
+  BedroomSet,
+  ChestGridUI,
+  OpenBookPage,
   ChatToast,
   ClassroomRoom,
   Clock3AM,
@@ -69,6 +72,9 @@ import timingJson from "./timing.json";
 export {
   BadgePop,
   Bed,
+  BedroomSet,
+  ChestGridUI,
+  OpenBookPage,
   ChatToast,
   ClassroomRoom,
   Clock3AM,

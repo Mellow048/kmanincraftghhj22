@@ -1,5 +1,6 @@
 import type React from "react";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Block, Glow, MinecraftAvatar, Torch, clamp01, mulberry32, useFilmTime, wordBitmap, wordTexture } from "../../src/engine";
 import type { MinecraftAvatarProps, OutfitName, Vec3 } from "../../src/engine";
@@ -135,13 +136,21 @@ export const ServerNameTag: React.FC<{
   rotationY?: number;
   scale?: number;
   color?: string;
-}> = ({ text, position = [0, 2.24, 0], rotationY = 0, scale = 1, color = "#ffffff" }) => {
+}> = ({ text, position = [0, 2.24, 0], rotationY, scale = 1, color = "#ffffff" }) => {
+  const ref = useRef<THREE.Group>(null);
   const tex = useMemo(() => wordTexture(text), [text]);
   const { width: gw } = useMemo(() => wordBitmap(text), [text]);
   const textW = Math.max(0.42, ((gw + 4) / 11) * 0.21);
   const bgW = textW + 0.24;
+  useFrame(({ camera }) => {
+    if (rotationY === undefined && ref.current) {
+      const wp = new THREE.Vector3();
+      ref.current.getWorldPosition(wp);
+      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+    }
+  });
   return (
-    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+    <group ref={ref} position={position} rotation={[0, rotationY ?? 0, 0]} scale={scale}>
       <mesh position={[0, 0, -0.01]}>
         <planeGeometry args={[bgW, 0.32]} />
         <meshBasicMaterial color="#0b0e16" transparent opacity={0.76} side={THREE.DoubleSide} fog={false} />
@@ -164,13 +173,21 @@ export const BadgePop: React.FC<{
   scale?: number;
   popStart?: number;
   t?: number;
-}> = ({ kind = "!", position = [0, 2.68, 0], rotationY = 0, scale = 1, popStart, t }) => {
+}> = ({ kind = "!", position = [0, 2.68, 0], rotationY, scale = 1, popStart, t }) => {
+  const ref = useRef<THREE.Group>(null);
   const now = useFilmTime();
   const s = popStart !== undefined ? pop(t ?? now, popStart) : 1;
+  useFrame(({ camera }) => {
+    if (rotationY === undefined && ref.current) {
+      const wp = new THREE.Vector3();
+      ref.current.getWorldPosition(wp);
+      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+    }
+  });
   if (s <= 0.01) return null;
   const color = kind === "!" ? "#ffd83b" : kind === "?" ? "#5cc8ff" : kind === "heart" ? "#ff4d6d" : "#ff4d3b";
   return (
-    <group position={position} rotation={[0, rotationY, 0]} scale={scale * s}>
+    <group ref={ref} position={position} rotation={[0, rotationY ?? 0, 0]} scale={scale * s}>
       <Block position={[0, 0, -0.025]} size={[0.36, 0.42, 0.04]} color="#121622" />
       <Block position={[0, 0, -0.01]} size={[0.31, 0.37, 0.025]} color="#1f2536" castShadow={false} />
       {kind === "heart" ? (
@@ -277,7 +294,7 @@ export const ServerPlayer: React.FC<ServerPlayerProps> = ({
   role = "friendA",
   nameTag,
   nameTagColor = "#ffffff",
-  nameTagYaw = 0,
+  nameTagYaw,
   badge,
   badgePopStart,
   tears = 0,

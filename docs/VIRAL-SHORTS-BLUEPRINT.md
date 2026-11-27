@@ -1,4 +1,6 @@
-# Viral Shorts Blueprint — How to Consistently Hit 20k+ Views
+# Viral Shorts Blueprint (Optional Deep Dive)
+
+> **Optional reference.** Start with `AGENTS.md` (the single source of truth). Open this only when brainstorming fresh story engines.
 
 Read [`WHY-THE-3-HITS-BLEW-UP.md`](WHY-THE-3-HITS-BLEW-UP.md) first, then follow this production checklist on every new Short. Never skip Step 1 (Premise Gate) or Step 6 (Visual Audit).
 
@@ -31,7 +33,7 @@ Match the exact sweet spot measured across all three 20k+ hits (`cut: "short"` 9
 | Opening luma (first 3s) | **100–160** (`overworld-day` or `overworld-golden`) | `< 75` luma on frame 1 (dark/night open) |
 | Dark frames (`lum < 24`) | **0.0%–2.0%** (even in night towns — light the streets!) | `> 10%` dark frames (phone viewers scroll past black mud) |
 | Flat frames | **0.0%** | `> 2%` flat walls/void |
-| Caption coverage | **95%–100%** (`y: 0.67`, `motion: "on-beat"`) | Monochrome low captions or missing `dangerWords` / `highlightWords` |
+| Caption coverage | **95%–100%** (`y: 0.72`, `motion: "on-beat"`) | Monochrome low captions or missing `dangerWords` / `highlightWords` |
 
 ---
 
@@ -61,7 +63,7 @@ The owner warned in [`never-seen-my-mums-face/README.md`](../Topics/InThisTown/r
 **VISUALS + MOTION IS A MUST:** Do NOT build pretty static PNG slides where characters stand still in `"idle"` or move only 1 inch!
 - **Visual-Verbal Lockstep (`wordAt` + `cut:`):** Every spoken noun and verb MUST be physically depicted on screen right as the narrator says it (if the script says *"rods, a jetty, one boat"*, show the flexing fishing rods + lines, the plank jetty, and the rocking boat — never just someone walking!). Use `cut:` splits whenever 2–3 distinct objects appear in one line.
 - **Architectural & Environmental Proof (Never Bare Walls):** Prove wealth/status/danger visually in the 3D set (a sunlit Quartz/Gold **Mansion** behind *"the rich on top"*, open lit huts/markets for thieves — NEVER bare stone walls or empty grass edges). Keep all exterior staging strictly outside solid `<Hut />` walls (`z >= wallZ + 0.35`).
-- **Real Body Displacement (`>= 1.0m–2.8m`) & Bold Camera Flow (`inOutSine` / `linear` / `outExpo`):** Never translate actors `0.25m` ("1 inch") or place hook cameras `22m` away from `1.4m` kids. Use `>= 0.9m` dolly/crane or `>= 25°` orbit with lively background crowds and atmospheric FX.
+- **Real Body Displacement (`>= 1.0m–2.8m`) & Bold Camera Flow (`inOutSine` / `linear` / `outExpo`):** Never translate actors `0.25m` ("1 inch") or place hook cameras `22m` away from `1.4m` kids. Use `>= 0.5m` dolly/truck or `>= 15°` orbit (prefer `cam.front` / `cam.push` / `cam.twoShot` for 75–85% of shots) with lively background crowds and atmospheric FX.
 
 Use the upgraded tools in `src/engine/` on every new film:
 
@@ -70,7 +72,7 @@ Use the upgraded tools in `src/engine/` on every new film:
    - Warm/emotional afternoon: `look: "overworld-golden"` + `post: { shaders: "warm-sunset" }`
    - Night danger without black crush: `look: "lantern-night"` (or `overworld-night`) + `post: { shaders: "moonlight" }` (or `"horror-noir"`)
 2. **Use `screenOffset` on talking & close shots:**
-   - Captions sit at `y = 0.72` (lower third). Set `screenOffset: [0, 0.10]` or `[0, 0.14]` on medium/close shots so faces sit cleanly in the **upper third** and never collide with big pixel captions!
+   - Captions sit at `y = 0.72` (lower third). Use `screenOffset: [0, 0.08]` ONLY on tight close-ups where captions actually overlap the face (do not blanket-apply on wide or medium shots) so faces sit cleanly in the **upper third** and never collide with big pixel captions!
 3. **Break static symmetry with `cam` recipes:**
    - `cam.crane(...)` to establish height gaps (kid at `1.05m` looking up at a `2.9m` Enderman or `2.7m` Iron Golem).
    - `cam.ots(...)` for two-person conversations instead of flat frontal ping-pong cuts.
@@ -86,7 +88,7 @@ Use the upgraded tools in `src/engine/` on every new film:
    - Place `<EmberDrift />` near torches, campfires, smithies, or boss fights (`src/engine/fx.tsx`).
    - Put `hairLayer` and `rimColor` on key characters (`src/engine/MinecraftAvatar.tsx`) so silhouettes pop cleanly off night/forest backgrounds.
 5. **Punch danger & hero caption nouns with `dangerWords` + `highlightWords`:**
-   - Pass `captions: { words: timing.words, y: 0.67, motion: "on-beat", dangerWords: ["ALONE", "100", "BROKE", "GONE"], highlightWords: ["CREEPER", "SAVE", "GOLD"] }` so crisis words flash coral-red (`#ff4f42`) and hero words flash gold (`#ffd84d`).
+   - Pass `captions: { words: timing.words, y: 0.72, motion: "on-beat", dangerWords: ["ALONE", "100", "BROKE", "GONE"], highlightWords: ["CREEPER", "SAVE", "GOLD"] }` so crisis words flash coral-red (`#ff4f42`) and hero words flash gold (`#ffd84d`).
 
 ---
 
