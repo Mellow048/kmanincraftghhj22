@@ -1,0 +1,132 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-player-who-built-the-exact-same-house-30-times",
+  "mix": "public/audio/the-player-who-built-the-exact-same-house-30-times/mix.mp3",
+  "seconds": 88.4,
+  "built_from": {
+    "timing.json": "5a3846e432b89b655c95f4a650517d896f460d56",
+    "sound.json": "f6f01fcf6357bbd3c5ac830f791722435dabcaeb",
+    "narration.mp3": "d0fb2dbbb69742197696e14260d9981f24b91787"
+  },
+  "mix_sha1": "1371ae179d8026329e6e5c63cec58ff3bd504da5",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "hope",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.not",
+      "mood": "sad",
+      "at": 21.43,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "4.night",
+      "mood": "sad",
+      "at": 35.8,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.quiet",
+      "mood": "none",
+      "at": 53.97
+    },
+    {
+      "from": "5.owner",
+      "mood": "hope",
+      "at": 55.83,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "6.rally",
+      "mood": "wonder",
+      "at": 61.13,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 7,
+  "measured": {
+    "musicUnderVoiceDb": 16.9,
+    "secondsWithoutMusic": 3.5,
+    "bedsUnderVoiceDb": 25.7,
+    "sfx": 71,
+    "sfxPerMinute": 48.2,
+    "sfxKinds": 27,
+    "longestGapSeconds": 2.9,
+    "longestGapAt": 52.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.3,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 5.8,
+        "cue": "1.loop",
+        "sounding": [
+          "ding",
+          "sparkle",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.1,
+        "t": 78.5,
+        "cue": "7.open",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 67.2,
+        "cue": "6.path",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 82.1,
+        "cue": "7.porch",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 4.8,
+        "t": 3.4,
+        "cue": "1.label",
+        "sounding": []
+      },
+      {
+        "db": 4.8,
+        "t": 34.8,
+        "cue": "3.safe",
+        "sounding": [
+          "chime",
+          "sparkle"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.9
+  },
+  "failures": []
+}

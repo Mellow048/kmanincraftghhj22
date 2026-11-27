@@ -1,0 +1,118 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-my-dad-disappears-every-night",
+  "mix": "public/audio/in-this-town-my-dad-disappears-every-night/mix.mp3",
+  "seconds": 107.6333,
+  "built_from": {
+    "timing.json": "48890a35064ecd480601c765c181a8f74d11b783",
+    "sound.json": "aaa30d3c7cc5968c4de9f0f9d1658aa24c436504",
+    "narration.mp3": "986d674b19b98a108d51a873eaad3f17db10e688"
+  },
+  "mix_sha1": "bcc9ce353a4026277f1b33668c9b856559757a87",
+  "music_sections": [
+    {
+      "from": "1.dad",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.chair",
+      "mood": "sad",
+      "at": 24.03
+    },
+    {
+      "from": "2.wrong",
+      "mood": "curious",
+      "at": 28.93
+    },
+    {
+      "from": "4.night",
+      "mood": "sneak",
+      "at": 50.9
+    },
+    {
+      "from": "5.splash",
+      "mood": "none",
+      "at": 70.2
+    },
+    {
+      "from": "5.poof",
+      "mood": "hope",
+      "at": 72.3
+    },
+    {
+      "from": "6.stall",
+      "mood": "town",
+      "at": 96.7
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 10,
+  "measured": {
+    "musicUnderVoiceDb": 16.0,
+    "secondsWithoutMusic": 2.2,
+    "bedsUnderVoiceDb": 26.6,
+    "sfx": 72,
+    "sfxPerMinute": 40.1,
+    "sfxKinds": 33,
+    "longestGapSeconds": 3.1,
+    "longestGapAt": 77.3,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.1,
+    "voiceOverRestWorstDb": 3.5,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.5,
+        "t": 20.9,
+        "cue": "2.school",
+        "sounding": []
+      },
+      {
+        "db": 4.3,
+        "t": 105.1,
+        "cue": "6.hood",
+        "sounding": []
+      },
+      {
+        "db": 4.9,
+        "t": 90.5,
+        "cue": "6.night",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 7.9,
+        "cue": "1.bush",
+        "sounding": [
+          "coins"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 12.0,
+        "cue": "1.sunset",
+        "sounding": [
+          "power_up"
+        ]
+      },
+      {
+        "db": 6.9,
+        "t": 96.2,
+        "cue": "6.quiet",
+        "sounding": [
+          "chime",
+          "whoosh"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.2
+  },
+  "failures": []
+}

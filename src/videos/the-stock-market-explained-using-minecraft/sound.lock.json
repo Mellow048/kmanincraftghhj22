@@ -1,0 +1,114 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-stock-market-explained-using-minecraft",
+  "mix": "public/audio/the-stock-market-explained-using-minecraft/mix.mp3",
+  "seconds": 81.1,
+  "built_from": {
+    "timing.json": "3791b731ea6d6a9d558b26479cb8c2e6827db8d6",
+    "sound.json": "e431d7f15265367e7598f516799903393b17378a",
+    "narration.mp3": "2c67bb80f52b345722c784a2c885ffe17e2f68c8"
+  },
+  "mix_sha1": "90c348d19016961f54e359a14f525ac6c9e03f10",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "explain",
+      "at": 0.0
+    },
+    {
+      "from": "4.rich",
+      "mood": "sneak",
+      "at": 31.03
+    },
+    {
+      "from": "5.crash",
+      "mood": "none",
+      "at": 45.1
+    },
+    {
+      "from": "5.leo",
+      "mood": "dark",
+      "at": 47.53
+    },
+    {
+      "from": "6.dawn",
+      "mood": "explain",
+      "at": 55.13
+    }
+  ],
+  "music_file": {
+    "path": "Topics/Explainer/explainer_bgm_loop.wav",
+    "sha1": "a513987a318cf0558b5aa950d8b6634594e7fa83"
+  },
+  "beds": 20,
+  "measured": {
+    "musicUnderVoiceDb": 18.1,
+    "secondsWithoutMusic": 2.1,
+    "bedsUnderVoiceDb": 26.2,
+    "sfx": 57,
+    "sfxPerMinute": 42.2,
+    "sfxKinds": 28,
+    "longestGapSeconds": 3.1,
+    "longestGapAt": 31.7,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 15.3,
+    "voiceOverRestWorstDb": 4.0,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.0,
+        "t": 65.5,
+        "cue": "6.back",
+        "sounding": [
+          "ding",
+          "power_up",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 1.7,
+        "cue": "1.hook",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 70.1,
+        "cue": "7.fear",
+        "sounding": [
+          "slide_down"
+        ]
+      },
+      {
+        "db": 6.3,
+        "t": 16.3,
+        "cue": "2.leo",
+        "sounding": [
+          "coin",
+          "register"
+        ]
+      },
+      {
+        "db": 7.3,
+        "t": 7.4,
+        "cue": "1.cost",
+        "sounding": [
+          "coins"
+        ]
+      },
+      {
+        "db": 7.5,
+        "t": 42.5,
+        "cue": "4.panic",
+        "sounding": [
+          "bell"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}

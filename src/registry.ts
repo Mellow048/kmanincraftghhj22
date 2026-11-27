@@ -44,6 +44,9 @@ import { film as inThisTownEverybodyCarriesABucketOfMilk } from "./videos/in-thi
 import { film as thePlayerWhoNeverLeftTheSpawnBench } from "./videos/the-player-who-never-left-the-spawn-bench/film";
 import { film as taxesExplainedUsingMinecraft } from "./videos/taxes-explained-using-minecraft/film";
 import { film as inThisTownYouCantDropYourTorch } from "./videos/in-this-town-you-cant-drop-your-torch/film";
+import { film as inThisTownMyDadDisappearsEveryNight } from "./videos/in-this-town-my-dad-disappears-every-night/film";
+import { film as theStockMarketExplainedUsingMinecraft } from "./videos/the-stock-market-explained-using-minecraft/film";
+import { film as thePlayerWhoBuiltTheExactSameHouse30Times } from "./videos/the-player-who-built-the-exact-same-house-30-times/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -96,4 +99,7 @@ export const FILMS = [
   thePlayerWhoNeverLeftTheSpawnBench,
   taxesExplainedUsingMinecraft,
   inThisTownYouCantDropYourTorch,
+  inThisTownMyDadDisappearsEveryNight,
+  theStockMarketExplainedUsingMinecraft,
+  thePlayerWhoBuiltTheExactSameHouse30Times,
 ];
