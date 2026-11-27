@@ -63,6 +63,12 @@ is a copy of both, kept beside the page that explains it.
 The treehouse video in `reference/treehouse/` is where the format came from. It is a Roblox video by someone else,
 studied for its shape. The reference film is ours.
 
+## What the Owner Wants / Doesn't Want / Loves (In This Town v8 Standard)
+
+- **Loves:** Real vanilla Minecraft mechanics driving both sight gags and the twist (e.g., [`reference/nobody-wears-gold/`](reference/nobody-wears-gold/README.md): Piglins ignoring gold & bartering Ender Pearls), protagonists discovering the loophole themselves, villains with unmistakable silhouettes and clear motives (`MayorVance` in black top hat & white mustache running an iron-armor scam), real 3D armor pieces (`boots="gold"`), and multi-layer emotional + comedic payoffs.
+- **Wants:** Premise on screen in Frame 1, bright crisp non-Z-fighting streets/plazas/forests, wide 9:16-safe two-shots (`cam.frameDuo`), `InThisTownMusic.aac` leveled clearly inside `[15, 24]` dB under voice (~15.4 dB) with **0 buried SFX**, strict `<= 2:58` ceiling, and visual contact-sheet audit before delivery.
+- **Doesn't want:** Flickering Z-fighting ground slabs, clipped 3D text or overlapping HUD banners, off-screen deus-ex-machina discoveries, copy-pasted mob-family outlines, static talking mannequins, or buried SFX.
+
 ## Read in this order
 
 1. This page, **[`docs/VIRAL-DIRECTION-MANUAL.md`](../../docs/VIRAL-DIRECTION-MANUAL.md)** (**Hook, Retention, Payoff, Visual-Verbal Lockstep & Motion contract**), then [`reference/README.md`](reference/README.md): which films the owner approved, and what each is
