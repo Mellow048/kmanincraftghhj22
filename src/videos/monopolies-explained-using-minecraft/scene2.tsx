@@ -36,7 +36,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <ShopStall price={2} position={on(PLACE.square, 0.6, 0, -1.6)} t={t} showPickaxe={false} />
-            <CitizenLead nameTag="Miles" position={on(PLACE.square, -1.6 + w * 1.2, 0, 1.2 - w * 0.4)} rotationY={0.65} animation="walk" animDistance={w * 1.3} face="smile" time={t} />
+            <CitizenLead nameTag="Miles" position={on(PLACE.square, -1.6 + w * 1.2, 0, 1.2 - w * 0.4)} rotationY={w < 0.98 ? Math.atan2(1.2, -0.4) : 0.35} animation={w < 0.98 ? "walk" : "point"} animDistance={w * 1.3} face="smile" time={t} />
           </>
         );
       },

@@ -9,6 +9,7 @@ export const film = defineFilm({
   id: "monopolies-explained-using-minecraft",
   title: "Monopolies Explained Using Minecraft",
   topic: "explainer",
+  audio: { src: "audio/monopolies-explained-using-minecraft/mix.mp3" },
   look: "overworld-day",
   post: { shaders: "vibrant-day" },
   captions: {

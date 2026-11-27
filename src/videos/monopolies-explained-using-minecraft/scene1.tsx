@@ -35,7 +35,7 @@ export const LoopMarketStage: React.FC<{ t: number }> = ({ t }) => (
     <ShopStall price={2} position={on(PLACE.square, 0, 0, -1.6)} t={t} showPickaxe={false} />
     <ShopStall price={2} position={on(PLACE.square, 2.6, 0, -1.6)} t={t} showPickaxe={false} />
     <Bread position={on(PLACE.square, 0, 1.35 + Math.sin(t * 3.5) * 0.08, -0.95)} scale={1.4} />
-    <CitizenLead nameTag="Miles" position={on(PLACE.square, -1.1, 0, 1.1)} rotationY={0.25} animation="point" face="grin" time={t} />
+    <CitizenLead nameTag="Miles" position={on(PLACE.square, -1.1, 0, 1.1)} rotationY={0.25} headYaw={Math.sin(t * 2.5) * 0.2} animation="point" face="grin" time={t} />
     <EmeraldFountain position={on(PLACE.square, 0, 1.6, -1.0)} t={Math.max(0, t - 0.1)} count={16} />
   </>
 );
@@ -95,7 +95,7 @@ export const scene1 = storyScene(timing, {
           <>
             <ShopStall price={2} position={on(PLACE.square, 0, 0, -1.6)} t={t} showPickaxe={false} />
             <FloatingItemPyramid count={6} position={on(PLACE.square, -1.2 + w * 1.1, 2.25, 1.1)} t={t} />
-            <CitizenLead nameTag="Miles" position={on(PLACE.square, -1.2 + w * 1.1, 0, 1.1)} rotationY={0.45} animation={w < 0.9 ? "walk" : "cheer"} animDistance={w * 1.1} face="grin" time={t} />
+            <CitizenLead nameTag="Miles" position={on(PLACE.square, -1.2 + w * 1.1, 0, 1.1)} rotationY={w < 0.9 ? Math.PI / 2 : 0.25} animation={w < 0.9 ? "walk" : "cheer"} animDistance={w * 1.1} face="grin" time={t} />
           </>
         );
       },
@@ -111,7 +111,7 @@ export const scene1 = storyScene(timing, {
           <>
             <ShopStall price={5} position={on(PLACE.square, -2.4, 0, -1.6)} t={t} showPickaxe={false} />
             <ShopStall price={2} position={on(PLACE.square, 0.8, 0, -1.6)} t={t} showPickaxe={false} />
-            <CitizenLead nameTag="Miles" position={on(PLACE.square, -2.0 + w * 2.6, 0, 0.6)} rotationY={Math.PI / 2} animation="walk" animDistance={w * 2.6} face="smile" time={t} />
+            <CitizenLead nameTag="Miles" position={on(PLACE.square, -2.0 + w * 2.6, 0, 0.6)} rotationY={w > 0.02 && w < 0.98 ? Math.PI / 2 : 0.2} animation={w > 0.02 && w < 0.98 ? "walk" : "point"} animDistance={w * 2.6} face="smile" time={t} />
           </>
         );
       },

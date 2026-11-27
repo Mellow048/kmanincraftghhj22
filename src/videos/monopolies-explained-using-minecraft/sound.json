@@ -37,16 +37,62 @@
       "gain": -30
     }
   ],
-  "effects": [
+  "film": "monopolies-explained-using-minecraft",
+  "sfx": [
+    {
+      "cue": "1.hook",
+      "sfx": "whoosh",
+      "word": "Monopolies"
+    },
     {
       "cue": "1.hook",
       "sfx": "pop",
       "word": "Minecraft"
     },
     {
+      "cue": "1.three",
+      "sfx": "bell",
+      "word": "Three"
+    },
+    {
+      "cue": "1.three",
+      "sfx": "step_stone",
+      "word": "square"
+    },
+    {
       "cue": "1.two",
       "sfx": "coin",
       "word": "two"
+    },
+    {
+      "cue": "1.two",
+      "sfx": "plink",
+      "word": "emeralds"
+    },
+    {
+      "cue": "1.save",
+      "sfx": "step_wood",
+      "word": "Miles"
+    },
+    {
+      "cue": "1.save",
+      "sfx": "coins",
+      "word": "day"
+    },
+    {
+      "cue": "1.best",
+      "sfx": "slide_up",
+      "word": "raises"
+    },
+    {
+      "cue": "1.best",
+      "sfx": "step_stone",
+      "word": "walks"
+    },
+    {
+      "cue": "2.rich",
+      "sfx": "whoosh",
+      "word": "Sterling"
     },
     {
       "cue": "2.rich",
@@ -55,13 +101,48 @@
     },
     {
       "cue": "2.buy1",
+      "sfx": "coins",
+      "word": "buys"
+    },
+    {
+      "cue": "2.buy1",
       "sfx": "hit",
       "word": "shuts"
     },
     {
       "cue": "2.buy2",
-      "sfx": "hit",
+      "sfx": "coins",
+      "word": "buys"
+    },
+    {
+      "cue": "2.buy2",
+      "sfx": "break",
       "word": "knocks"
+    },
+    {
+      "cue": "2.one",
+      "sfx": "whoosh_low",
+      "word": "morning"
+    },
+    {
+      "cue": "2.one",
+      "sfx": "thud",
+      "word": "left"
+    },
+    {
+      "cue": "3.walk",
+      "sfx": "step_stone",
+      "word": "walks"
+    },
+    {
+      "cue": "3.walk",
+      "sfx": "rustle",
+      "word": "loaf"
+    },
+    {
+      "cue": "3.flip",
+      "sfx": "paper",
+      "word": "flips"
     },
     {
       "cue": "3.flip",
@@ -69,9 +150,34 @@
       "word": "fifteen"
     },
     {
+      "cue": "3.same",
+      "sfx": "blip",
+      "word": "bread"
+    },
+    {
+      "cue": "3.same",
+      "sfx": "stomp",
+      "word": "Fifteen"
+    },
+    {
       "cue": "3.what",
       "sfx": "whoosh",
       "word": "happened"
+    },
+    {
+      "cue": "3.choice",
+      "sfx": "plink",
+      "word": "three"
+    },
+    {
+      "cue": "3.choice",
+      "sfx": "power_down",
+      "word": "one"
+    },
+    {
+      "cue": "4.pay",
+      "sfx": "step_wood",
+      "word": "wants"
     },
     {
       "cue": "4.pay",
@@ -79,14 +185,74 @@
       "word": "pays"
     },
     {
+      "cue": "4.cheap",
+      "sfx": "power_down",
+      "word": "stops"
+    },
+    {
+      "cue": "4.cheap",
+      "sfx": "thud",
+      "word": "altogether"
+    },
+    {
+      "cue": "4.stale",
+      "sfx": "rustle",
+      "word": "crumbs"
+    },
+    {
+      "cue": "4.stale",
+      "sfx": "drop",
+      "word": "loaves"
+    },
+    {
+      "cue": "4.why",
+      "sfx": "whoosh_low",
+      "word": "nobody"
+    },
+    {
       "cue": "4.price",
-      "sfx": "whoosh",
+      "sfx": "slide_up",
       "word": "shoot"
+    },
+    {
+      "cue": "4.price",
+      "sfx": "slide_down",
+      "word": "floor"
     },
     {
       "cue": "5.name",
       "sfx": "ding",
       "word": "monopoly"
+    },
+    {
+      "cue": "5.rule",
+      "sfx": "stamp",
+      "word": "owns"
+    },
+    {
+      "cue": "5.rule",
+      "sfx": "whoosh",
+      "word": "alone"
+    },
+    {
+      "cue": "5.gone",
+      "sfx": "power_down",
+      "word": "disappears"
+    },
+    {
+      "cue": "5.scale",
+      "sfx": "coins",
+      "word": "Fifteen"
+    },
+    {
+      "cue": "5.scale",
+      "sfx": "pop",
+      "word": "seven"
+    },
+    {
+      "cue": "5.half",
+      "sfx": "clank",
+      "word": "fifteen"
     },
     {
       "cue": "5.half",
@@ -96,7 +262,22 @@
     {
       "cue": "5.vault",
       "sfx": "coin",
+      "word": "emeralds"
+    },
+    {
+      "cue": "5.vault",
+      "sfx": "coins",
       "word": "rain"
+    },
+    {
+      "cue": "6.real",
+      "sfx": "whoosh",
+      "word": "life"
+    },
+    {
+      "cue": "6.real",
+      "sfx": "stomp",
+      "word": "giant"
     },
     {
       "cue": "6.rivals",
@@ -104,9 +285,54 @@
       "word": "zero"
     },
     {
+      "cue": "6.rivals",
+      "sfx": "thud",
+      "word": "left"
+    },
+    {
       "cue": "6.power",
       "sfx": "pop",
       "word": "power"
+    },
+    {
+      "cue": "6.power",
+      "sfx": "power_up",
+      "word": "town"
+    },
+    {
+      "cue": "6.ticket",
+      "sfx": "paper",
+      "word": "ticket"
+    },
+    {
+      "cue": "6.ticket",
+      "sfx": "blip",
+      "word": "app"
+    },
+    {
+      "cue": "6.stuck",
+      "sfx": "whoosh_low",
+      "word": "nowhere"
+    },
+    {
+      "cue": "6.stuck",
+      "sfx": "coin",
+      "word": "pay"
+    },
+    {
+      "cue": "6.new",
+      "sfx": "bell",
+      "word": "new"
+    },
+    {
+      "cue": "6.new",
+      "sfx": "hit",
+      "word": "crushes"
+    },
+    {
+      "cue": "6.trap",
+      "sfx": "slide_down",
+      "word": "drops"
     },
     {
       "cue": "6.trap",
@@ -119,10 +345,24 @@
       "word": "mods"
     },
     {
+      "cue": "7.fault",
+      "sfx": "break",
+      "word": "break"
+    },
+    {
+      "cue": "7.or",
+      "sfx": "chime",
+      "word": "win"
+    },
+    {
+      "cue": "7.or",
+      "sfx": "sparkle",
+      "word": "square"
+    },
+    {
       "cue": "7.loop",
-      "sfx": "pop",
+      "sfx": "whoosh",
       "word": "that's"
     }
-  ],
-  "film": "monopolies-explained-using-minecraft"
+  ]
 }

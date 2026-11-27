@@ -99,13 +99,16 @@ export const scene3 = storyScene(timing, {
       ...cam.twoShot({ a: on(PLACE.square, -1.8, 0, 0.4), b: on(PLACE.square, 1.4, 0, 0.4), facing: 0, dist: 6.0, to: 5.1, side: 10, pitch: 8, fov: 46 }),
       zone: "square",
       note: "Sterling temporarily drops his price to 1 emerald until the new baker quits!",
-      stage: (t) => (
-        <>
-          <ShopStall price={1} position={on(PLACE.square, 1.4, 0, -1.6)} t={t} showPickaxe={false} />
-          <EliteLead variant="tycoon" nameTag="Sterling" crown position={on(PLACE.square, 1.4, 0, 0.4)} rotationY={-0.2} animation="laugh" face="smug" time={t} />
-          <Official role="mod" position={on(PLACE.square, -1.8 - ease(ramp(t, 0.3, 0.9)) * 1.4, 0, 0.4)} rotationY={-Math.PI / 2} animation="walk" animDistance={ease(ramp(t, 0.3, 0.9)) * 1.4} face="sad" time={t} />
-        </>
-      ),
+      stage: (t) => {
+        const w = ease(ramp(t, 0.25, 0.95));
+        return (
+          <>
+            <ShopStall price={1} position={on(PLACE.square, 1.4, 0, -1.6)} t={t} showPickaxe={false} />
+            <EliteLead variant="tycoon" nameTag="Sterling" crown position={on(PLACE.square, 1.4, 0, 0.4)} rotationY={-0.2} animation="laugh" face="smug" time={t} />
+            <Official role="mod" position={on(PLACE.square, -1.8 - w * 1.4, 0, 0.4)} rotationY={-Math.PI / 2} animation={w > 0.02 && w < 0.98 ? "walk" : "cower"} animDistance={w * 1.4} face="sad" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "7.fault",

@@ -5,7 +5,7 @@
     "sections": [
       {
         "from": "1.town",
-        "mood": "bright",
+        "mood": "town",
         "track": "Topics/InThisTown/InThisTownMusic.aac"
       },
       {
@@ -15,7 +15,7 @@
       },
       {
         "from": "6.rule",
-        "mood": "triumph",
+        "mood": "hope",
         "track": "Topics/InThisTown/InThisTownMusic.aac"
       }
     ]
@@ -37,7 +37,8 @@
       "gain": -30
     }
   ],
-  "effects": [
+  "film": "in-this-town-everybody-carries-a-bucket-of-milk",
+  "sfx": [
     {
       "cue": "1.town",
       "sfx": "pop",
@@ -358,6 +359,5 @@
       "sfx": "ding",
       "word": "Subscribe"
     }
-  ],
-  "film": "in-this-town-everybody-carries-a-bucket-of-milk"
+  ]
 }

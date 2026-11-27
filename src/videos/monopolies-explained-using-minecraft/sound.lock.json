@@ -1,0 +1,106 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "monopolies-explained-using-minecraft",
+  "mix": "public/audio/monopolies-explained-using-minecraft/mix.mp3",
+  "seconds": 61.5667,
+  "built_from": {
+    "timing.json": "62e677bd3595e025b434d6348755713024f3a571",
+    "sound.json": "cd426f5d158455c9ac65bc6468396408ce95b25c",
+    "narration.mp3": "774951a74f2b631a2440700dc67293528c91b476"
+  },
+  "mix_sha1": "b643fb0dab50d504f2a57537457de007599c02ca",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "explain",
+      "at": 0.0,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    },
+    {
+      "from": "3.walk",
+      "mood": "tense",
+      "at": 15.13,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    },
+    {
+      "from": "5.name",
+      "mood": "explain",
+      "at": 34.4,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/Explainer/explainer_bgm_loop.wav",
+    "sha1": "a513987a318cf0558b5aa950d8b6634594e7fa83"
+  },
+  "beds": 3,
+  "measured": {
+    "musicUnderVoiceDb": 20.5,
+    "secondsWithoutMusic": 0.2,
+    "bedsUnderVoiceDb": 31.0,
+    "sfx": 65,
+    "sfxPerMinute": 63.3,
+    "sfxKinds": 27,
+    "longestGapSeconds": 1.9,
+    "longestGapAt": 18.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 14.3,
+    "voiceOverRestWorstDb": 6.9,
+    "voiceOverRestWorst": [
+      {
+        "db": 6.9,
+        "t": 38.2,
+        "cue": "5.gone",
+        "sounding": [
+          "power_down"
+        ]
+      },
+      {
+        "db": 7.9,
+        "t": 1.7,
+        "cue": "1.hook",
+        "sounding": [
+          "bell"
+        ]
+      },
+      {
+        "db": 8.0,
+        "t": 54.7,
+        "cue": "6.new",
+        "sounding": [
+          "bell",
+          "hit"
+        ]
+      },
+      {
+        "db": 8.2,
+        "t": 17.8,
+        "cue": "3.flip",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 8.5,
+        "t": 34.8,
+        "cue": "5.name",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 8.6,
+        "t": 2.6,
+        "cue": "1.three",
+        "sounding": [
+          "bell",
+          "step_stone"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.3
+  },
+  "failures": []
+}

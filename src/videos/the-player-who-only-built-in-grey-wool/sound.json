@@ -5,7 +5,7 @@
     "sections": [
       {
         "from": "1.grey",
-        "mood": "warm",
+        "mood": "hope",
         "track": "Topics/ServerLore/up_happy.m4a",
         "trackFrom": 2.0
       },
@@ -20,13 +20,13 @@
       },
       {
         "from": "5.idea",
-        "mood": "warm",
+        "mood": "hope",
         "track": "Topics/ServerLore/up_happy.m4a",
         "trackFrom": 2.0
       },
       {
         "from": "7.return",
-        "mood": "bright",
+        "mood": "wonder",
         "track": "Topics/ServerLore/up_happy.m4a",
         "trackFrom": 2.0
       }
@@ -64,11 +64,27 @@
       "gain": -27
     }
   ],
-  "effects": [
+  "film": "the-player-who-only-built-in-grey-wool",
+  "sfx": [
     {
       "cue": "1.grey",
       "sfx": "place",
       "word": "grey"
+    },
+    {
+      "cue": "1.grey",
+      "sfx": "thud",
+      "word": "blocks"
+    },
+    {
+      "cue": "1.only",
+      "sfx": "rustle",
+      "word": "wood"
+    },
+    {
+      "cue": "1.only",
+      "sfx": "place",
+      "word": "wool"
     },
     {
       "cue": "1.ugly",
@@ -76,9 +92,39 @@
       "word": "ugliest"
     },
     {
+      "cue": "1.ugly",
+      "sfx": "thud",
+      "word": "build"
+    },
+    {
+      "cue": "1.promise",
+      "sfx": "whoosh",
+      "word": "why"
+    },
+    {
       "cue": "1.promise",
       "sfx": "chime",
       "word": "color"
+    },
+    {
+      "cue": "2.rainbow",
+      "sfx": "pop",
+      "word": "bright"
+    },
+    {
+      "cue": "2.rainbow",
+      "sfx": "sparkle",
+      "word": "castles"
+    },
+    {
+      "cue": "2.box",
+      "sfx": "step_grass",
+      "word": "sat"
+    },
+    {
+      "cue": "2.box",
+      "sfx": "place",
+      "word": "box"
     },
     {
       "cue": "2.sign",
@@ -86,9 +132,44 @@
       "word": "sign"
     },
     {
+      "cue": "2.sign",
+      "sfx": "paper",
+      "word": "boring"
+    },
+    {
       "cue": "2.laugh",
       "sfx": "blip",
       "word": "laughed"
+    },
+    {
+      "cue": "2.laugh",
+      "sfx": "thud",
+      "word": "walls"
+    },
+    {
+      "cue": "2.quiet",
+      "sfx": "step_wood",
+      "word": "argued"
+    },
+    {
+      "cue": "2.quiet",
+      "sfx": "place",
+      "word": "building"
+    },
+    {
+      "cue": "3.lazy",
+      "sfx": "whoosh_low",
+      "word": "lazy"
+    },
+    {
+      "cue": "3.blind",
+      "sfx": "heartbeat",
+      "word": "born"
+    },
+    {
+      "cue": "3.blind",
+      "sfx": "power_down",
+      "word": "colorblind"
     },
     {
       "cue": "3.shades",
@@ -101,9 +182,39 @@
       "word": "desk"
     },
     {
+      "cue": "3.desk",
+      "sfx": "paper",
+      "word": "guess"
+    },
+    {
+      "cue": "3.school",
+      "sfx": "school_bell",
+      "word": "Kids"
+    },
+    {
+      "cue": "3.school",
+      "sfx": "rustle",
+      "word": "sky"
+    },
+    {
+      "cue": "3.here",
+      "sfx": "place",
+      "word": "grey"
+    },
+    {
+      "cue": "3.here",
+      "sfx": "ding",
+      "word": "wrong"
+    },
+    {
       "cue": "4.prank",
       "sfx": "step_stone",
       "word": "snuck"
+    },
+    {
+      "cue": "4.swap",
+      "sfx": "place",
+      "word": "swapped"
     },
     {
       "cue": "4.swap",
@@ -116,9 +227,34 @@
       "word": "chat"
     },
     {
+      "cue": "4.chat",
+      "sfx": "hit",
+      "word": "house"
+    },
+    {
+      "cue": "4.stare",
+      "sfx": "creak",
+      "word": "morning"
+    },
+    {
+      "cue": "4.stare",
+      "sfx": "step_wood",
+      "word": "doorway"
+    },
+    {
       "cue": "4.cant",
       "sfx": "blip",
       "word": "typed"
+    },
+    {
+      "cue": "4.cant",
+      "sfx": "power_down",
+      "word": "tell"
+    },
+    {
+      "cue": "4.quiet2",
+      "sfx": "whoosh_low",
+      "word": "quiet"
     },
     {
       "cue": "4.left",
@@ -126,9 +262,19 @@
       "word": "logged"
     },
     {
+      "cue": "4.left",
+      "sfx": "thud",
+      "word": "back"
+    },
+    {
       "cue": "5.dm",
       "sfx": "blip",
       "word": "messaged"
+    },
+    {
+      "cue": "5.told",
+      "sfx": "paper",
+      "word": "told"
     },
     {
       "cue": "5.idea",
@@ -141,9 +287,29 @@
       "word": "pattern"
     },
     {
+      "cue": "5.brick",
+      "sfx": "place",
+      "word": "Bricks"
+    },
+    {
+      "cue": "5.brick",
+      "sfx": "sparkle",
+      "word": "shines"
+    },
+    {
       "cue": "6.join",
       "sfx": "blip",
       "word": "logged"
+    },
+    {
+      "cue": "6.join",
+      "sfx": "step_grass",
+      "word": "server"
+    },
+    {
+      "cue": "6.wall",
+      "sfx": "place",
+      "word": "giant"
     },
     {
       "cue": "6.wall",
@@ -156,6 +322,16 @@
       "word": "chest"
     },
     {
+      "cue": "6.labels",
+      "sfx": "paper",
+      "word": "sign"
+    },
+    {
+      "cue": "6.rebuild",
+      "sfx": "place",
+      "word": "rebuilt"
+    },
+    {
       "cue": "6.rebuild",
       "sfx": "chime",
       "word": "lanterns"
@@ -166,9 +342,19 @@
       "word": "logged"
     },
     {
+      "cue": "7.return",
+      "sfx": "sparkle",
+      "word": "wall"
+    },
+    {
       "cue": "7.chest",
       "sfx": "creak",
       "word": "chest"
+    },
+    {
+      "cue": "7.chest",
+      "sfx": "paper",
+      "word": "sign"
     },
     {
       "cue": "7.tears",
@@ -176,9 +362,19 @@
       "word": "color"
     },
     {
+      "cue": "7.tears",
+      "sfx": "sparkle",
+      "word": "first"
+    },
+    {
       "cue": "7.typed",
       "sfx": "blip",
       "word": "typed"
+    },
+    {
+      "cue": "7.typed",
+      "sfx": "ding",
+      "word": "color"
     },
     {
       "cue": "7.gallery",
@@ -186,10 +382,19 @@
       "word": "Gallery"
     },
     {
+      "cue": "7.gallery",
+      "sfx": "cheer",
+      "word": "Sam's"
+    },
+    {
       "cue": "7.cta",
       "sfx": "chime",
       "word": "Subscribe"
+    },
+    {
+      "cue": "7.cta",
+      "sfx": "sparkle",
+      "word": "color"
     }
-  ],
-  "film": "the-player-who-only-built-in-grey-wool"
+  ]
 }
