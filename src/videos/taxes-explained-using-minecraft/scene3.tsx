@@ -6,12 +6,14 @@ import {
   EliteLead,
   FloatingNumber,
   GoldStatue,
+  MoneyPrinter,
   Official,
   PLACE,
   StoneBillboard,
   Torch,
   Vox,
   cam,
+  moveBetween,
   on,
   pop,
   storyScene,
@@ -19,109 +21,114 @@ import {
 } from "./kit";
 import { LOOP_CAM, LoopTaxStage } from "./scene1";
 
-/** Scene 3 (Beats 6–7): Real-World Bridge + Comment Debate + Seamless Loop back to 1.hook. */
+/** Scene 3 (Beats 6–7): Real-World Bridge with MoneyPrinter -> Comment Debate -> Seamless Loop. */
 export const scene3 = storyScene(timing, {
   id: "scene3",
   title: "Real World & Debate",
   shots: [
     {
       cue: "6.real",
-      ...cam.front({ actor: on(PLACE.history, 0, 0.4, 0), facing: 0, dist: 6.7, to: 5.6, side: 14, pitch: 8, fov: 44 }),
-      zone: "history",
-      note: "Real-world bridge: Town Chest stands beside a crisp GOVERNMENT StoneBillboard.",
+      ...cam.sweep({ on: on(PLACE.real, 0, 1.5, 0), dist: 6.8, fromYaw: -22, toYaw: 18, pitch: 9 }),
+      zone: "real",
+      note: "Real-world Civic Plaza: Town Chest stands beside the GOVERNMENT StoneBillboard & MoneyPrinter!",
       stage: (t) => (
         <>
-          <StoneBillboard text="TOWN CHEST = GOVT" position={on(PLACE.history, 0, 0, -0.8)} />
-          <Chest position={on(PLACE.history, 0, 0, 0.8)} open={0.85} />
+          <StoneBillboard text="TOWN CHEST = GOVT" position={on(PLACE.real, 0, 0, -2.0)} />
+          <Chest position={on(PLACE.real, -1.2, 0, 0.8)} open={0.85} />
+          <MoneyPrinter position={on(PLACE.real, 1.4, 0, 0.6)} rotationY={-0.25} t={t} />
         </>
       ),
     },
     {
       cue: "6.good",
-      ...cam.front({ actor: on(PLACE.history, 0, 0, 0.8), facing: 0, dist: 6.5, to: 5.4, side: -14, pitch: 8, fov: 44 }),
-      zone: "history",
-      note: "Good taxes: clean roads, schools, and bright streetlights keep everyone smiling.",
-      stage: (t) => (
-        <>
-          <Official position={on(PLACE.history, -0.8, 0, 0.8)} rotationY={0.25} animation="cheer" face="grin" time={t} />
-          <CitizenLead nameTag="Leo" position={on(PLACE.history, 0.8, 0, 0.8)} rotationY={-0.25} animation="wave" face="grin" time={t} />
-          <Torch position={on(PLACE.history, 0, 0.6, 0.2)} light={2.2} />
-          <ChatToast text="ROADS + SCHOOLS + WATER" position={on(PLACE.history, 0, 2.7, 0.5)} height={0.26 * pop(t, 0.12)} color="#4be08a" />
-        </>
-      ),
+      ...cam.track({ from: on(PLACE.real, -2.5, 0, 3), to: on(PLACE.real, 2.2, 0, 3), sideDist: 6.0, side: 1, lead: 1.0 }),
+      zone: "real",
+      note: "Good taxes: citizens stroll past bright lights, clean roads, and the brick civic school!",
+      stage: (t) => {
+        const w = moveBetween(on(PLACE.real, -2.5, 0, 3), on(PLACE.real, 2.2, 0, 3), t, 0, 1.8);
+        return (
+          <>
+            <Official position={on(PLACE.real, -1.8, 0, 0.5)} rotationY={0.25} animation="cheer" face="grin" time={t} />
+            <CitizenLead variant="maya" nameTag="Maya" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "wave"} animDistance={w.animDistance} face="grin" time={t} />
+            <Torch position={on(PLACE.real, 0, 0.6, 0.5)} light={2.2} />
+            <ChatToast text="ROADS + SCHOOLS + WATER" position={on(PLACE.real, 0, 2.8, 0.5)} height={0.24 * pop(t, 0.12)} color="#4be08a" />
+          </>
+        );
+      },
     },
     {
       cue: "6.bad",
-      ...cam.front({ actor: on(PLACE.history, 0, 0.5, 0.6), facing: 0, dist: 6.9, to: 5.8, side: 14, pitch: 8, fov: 44 }),
-      zone: "history",
-      note: "Bad taxes: Greedy Mod laughs beside his miniature gold statue.",
+      ...cam.heroLow({ on: on(PLACE.real, 0, 0.6, 0), dist: 6.6, yaw: 18 }),
+      zone: "real",
+      note: "Bad taxes: Greedy Mod laughs beside his gold statue and roaring MoneyPrinter!",
       stage: (t) => (
         <>
-          <EliteLead nameTag="Greedy Mod" position={on(PLACE.history, -0.9, 0, 0.8)} rotationY={0.25} animation="laugh" face="smug" time={t} />
-          <GoldStatue position={on(PLACE.history, 1.0, 0, 0.2)} scale={0.55} />
-          <ChatToast text="WASTED ON THE BOSS" position={on(PLACE.history, 0, 2.75, 0.6)} height={0.26 * pop(t, 0.12)} color="#ff4f42" />
+          <EliteLead nameTag="Greedy Mod" position={on(PLACE.real, -1.4, 0, 0.8)} rotationY={0.25} animation="laugh" face="smug" time={t} />
+          <GoldStatue position={on(PLACE.real, 1.3, 0, -0.4)} scale={0.62} />
+          <ChatToast text="WASTED ON THE BOSS" position={on(PLACE.real, 0, 2.85, 0.4)} height={0.24 * pop(t, 0.12)} color="#ff4f42" />
         </>
       ),
     },
     {
       cue: "6.same",
-      ...cam.twoShot({ a: on(PLACE.history, -1.2, 0, 0.8), b: on(PLACE.history, 1.2, 0, 0.8), facing: 0, dist: 6.9, to: 5.8, side: -10, pitch: 8, fov: 45 }),
-      zone: "history",
+      ...cam.sweep({ on: on(PLACE.real, 0, 1.3, 0.8), dist: 6.8, fromYaw: 20, toYaw: -20, pitch: 9 }),
+      zone: "real",
       note: "Side-by-side split: same diamonds, same players, totally different worlds.",
       stage: (t) => (
         <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.history, -1.2, 0, 0.8)} rotationY={0.25} animation="point" face="calm" time={t} />
-          <EliteLead nameTag="Greedy Mod" position={on(PLACE.history, 1.2, 0, 0.8)} rotationY={-0.25} animation="shrug" face="smug" time={t} />
-          <FloatingNumber text="GOOD vs BAD" color="#ffd84d" position={on(PLACE.history, 0, 2.75, 0.8)} height={0.62 * pop(t, 0.1)} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.real, -1.6, 0, 0.8)} rotationY={0.25} animation="point" face="calm" time={t} />
+          <EliteLead nameTag="Greedy Mod" position={on(PLACE.real, 1.6, 0, 0.8)} rotationY={-0.25} animation="shrug" face="smug" time={t} />
+          <FloatingNumber text="GOOD vs BAD" color="#ffd84d" position={on(PLACE.real, 0, 2.8, 0.8)} height={0.58 * pop(t, 0.1)} />
         </>
       ),
     },
     {
       cue: "7.ask",
-      ...cam.front({ actor: on(PLACE.square, 0, 0, 0.8), facing: 0, dist: 6.2, to: 5.0, side: 12, pitch: 7, fov: 42 }),
-      zone: "square",
+      ...cam.sweep({ on: on(PLACE.street, 0, 1.3, 1), dist: 6.2, fromYaw: -18, toYaw: 16, pitch: 8 }),
+      zone: "street",
       note: "Comment-bait debate question: Leo looks straight into camera pointing at the viewer.",
       stage: (t) => (
         <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, 0, 0, 0.8)} rotationY={0} animation="point" face="smile" time={t} />
-          <FloatingNumber text="WHICH SERVER?" color="#ffd84d" position={on(PLACE.square, 0, 2.65, 0.8)} height={0.62 * pop(t, 0.1)} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, 0, 0, 1)} rotationY={0} animation="point" face="smile" time={t} />
+          <FloatingNumber text="WHICH SERVER?" color="#ffd84d" position={on(PLACE.street, 0, 2.65, 1)} height={0.58 * pop(t, 0.1)} />
         </>
       ),
     },
     {
       cue: "7.free",
-      ...cam.twoShot({ a: on(PLACE.square, -0.9, 0, 0.8), b: on(PLACE.square, 0.9, 0, 0.8), facing: 0, dist: 6.5, to: 5.4, side: -12, pitch: 8, fov: 44 }),
-      zone: "square",
+      ...cam.heroLow({ on: on(PLACE.street, 0, 0.3, 1), dist: 6.4, yaw: 72 }),
+      zone: "street",
       look: "overworld-night",
-      note: "Option A: 0% tax with a hungry green Creeper right outside your door.",
+      note: "Option A: 0% tax with a hungry green Creeper right outside Leo's door.",
       stage: (t) => (
         <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, -0.9, 0, 0.8)} rotationY={0.25} animation="cower" face="fear" time={t} />
-          <Creeper position={on(PLACE.square, 0.9, 0, 0.8)} rotationY={-0.3} swell={0.45} />
-          <FloatingNumber text="0% + CREEPERS" color="#ff4f42" position={on(PLACE.square, 0, 2.7, 0.8)} height={0.58 * pop(t, 0.1)} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.0, 0, 1.0)} rotationY={0.35} animation="cower" face="fear" time={t} />
+          <Creeper position={on(PLACE.street, 1.0, 0, 1.0)} rotationY={-0.35} swell={0.48} />
+          <FloatingNumber text="0% + CREEPERS" color="#ff4f42" position={on(PLACE.street, 0, 2.75, 1.0)} height={0.56 * pop(t, 0.1)} />
         </>
       ),
     },
     {
       cue: "7.pay",
-      ...cam.front({ actor: on(PLACE.square, 0, 0, 0.8), facing: 0, dist: 6.5, to: 5.4, side: 14, pitch: 8, fov: 44 }),
-      zone: "square",
-      note: "Option B: 2 diamonds a day for bright torches and safe stone walls.",
+      ...cam.sweep({ on: on(PLACE.street, 0, 1.4, -2), dist: 6.8, fromYaw: -20, toYaw: 20, pitch: 8 }),
+      zone: "street",
+      note: "Option B: 2 diamonds a day for bright torches and safe stone walls with Leo & Sam cheering.",
       stage: (t) => (
         <>
-          <Vox kind="stoneBrick" position={on(PLACE.square, 0, 1.3, -1.2)} size={[5.8, 2.6, 0.6]} />
-          <Torch position={on(PLACE.square, -1.6, 2.7, -1.2)} light={2.2} />
-          <Torch position={on(PLACE.square, 1.6, 2.7, -1.2)} light={2.2} />
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, 0, 0, 0.8)} rotationY={0} animation="cheer" face="grin" time={t} />
-          <FloatingNumber text="2/DAY + SAFE" color="#4be08a" position={on(PLACE.square, 0, 2.75, 0.8)} height={0.58 * pop(t, 0.1)} />
+          <Vox kind="stoneBrick" position={on(PLACE.street, 0, 1.3, -4.5)} size={[7.6, 2.6, 0.6]} />
+          <Torch position={on(PLACE.street, -2.0, 2.7, -4.5)} light={2.2} />
+          <Torch position={on(PLACE.street, 2.0, 2.7, -4.5)} light={2.2} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.1, 0, -1.5)} rotationY={0.15} animation="cheer" face="grin" time={t} />
+          <CitizenLead variant="sam" nameTag="Sam" position={on(PLACE.street, 1.1, 0, -1.5)} rotationY={-0.15} animation="cheer" face="grin" time={t} />
+          <FloatingNumber text="2/DAY + SAFE" color="#4be08a" position={on(PLACE.street, 0, 2.85, -1.5)} height={0.56 * pop(t, 0.1)} />
         </>
       ),
     },
     {
       cue: "7.loop",
       ...LOOP_CAM,
-      zone: "square",
-      note: "Seamless loop back to Frame-0 camera & stage: 'And that's— [Taxes explained using Minecraft!]'",
+      zone: "street",
+      note: "Seamless loop back to Frame-0 street crane & stage: 'And that's— [Taxes explained using Minecraft!]'",
       stage: (t) => <LoopTaxStage t={t} />,
     },
   ],

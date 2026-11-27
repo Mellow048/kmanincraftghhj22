@@ -1,179 +1,172 @@
+import type React from "react";
 import {
   ChiefFlint,
-  CoalMountain,
   FireflyJar,
   FloatingNumber,
-  HandTorch,
-  Hero,
+  Kai,
   Mom,
-  Player,
   ShadowCreature,
-  Sign,
+  Townie,
   cam,
-  ease,
-  pop,
-  ramp,
+  moveBetween,
   storyScene,
   timing,
-  wordAt,
 } from "./kit";
 
-/** Scene 2 (Beats 3–4): Meet Kai & Pip + Chief Flint Coal Villain + 30 Missing + Mom Lost. */
+/**
+ * Scene 2 (12 shots): Hero Kai & Pip the firefly, Chief Flint's coal monopoly,
+ * 10 vs 100 emerald gouging, Coal Mountain, and Mom's disappearance.
+ */
 export const scene2 = storyScene(timing, {
   id: "scene2",
-  title: "Kai, Pip & Chief Flint",
+  title: "Scene 2",
   shots: [
     {
       cue: "3.kai",
-      ...cam.front({ actor: [0, 0, 1.6], facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 7, fov: 44 }),
-      zone: "town",
-      note: "Meet Kai waving cheerfully with empty hands instead of a wooden torch.",
-      stage: (t) => <Hero position={[0, 0, 1.6]} rotationY={0} animation="wave" face="grin" time={t} />,
+      look: "lantern-night",
+      note: "Side tracking camera glides beside Kai walking down the avenue with zero wooden torches.",
+      ...cam.track({ from: [-3.8, 0, 6.4], to: [0, 0, 1.8], sideDist: 4.6, side: 1, height: 1.5, fov: 42 }),
+      stage: (t) => {
+        const k = moveBetween([-3.8, 0, 6.4], [0, 0, 1.8], t, 0, 1.9);
+        return (
+          <>
+            <Kai position={k.position} rotationY={k.rotationY} animation={k.moving ? "walk" : "idle"} animDistance={k.animDistance} face="smile" time={t} />
+            <FireflyJar position={[k.position[0] + 0.42, 1.15, k.position[2] + 0.25]} hasPip t={t} />
+          </>
+        );
+      },
     },
     {
       cue: "3.pip",
-      ...cam.front({ actor: [0, 0, 1.6], facing: 0, dist: 6.2, to: 5.0, side: -14, pitch: 7, fov: 42 }),
-      zone: "town",
-      look: "overworld-golden",
-      note: "Kai holds up his glowing glass FireflyJar with golden firefly Pip inside!",
+      look: "lantern-night",
+      note: "Intimate glowing sweep around Kai holding up his glass jar with golden firefly Pip inside.",
+      ...cam.sweep({ on: [0.3, 1.25, 1.8], dist: 4.2, fromYaw: 28, toYaw: -26, pitch: 6, fov: 38 }),
       stage: (t) => (
-        <Hero position={[0, 0, 1.6]} rotationY={0} animation="cheer" face="grin" time={t}>
-          <FireflyJar position={[0, -0.04, 0.16]} scale={1.15} t={t} />
-        </Hero>
+        <>
+          <Kai position={[0, 0, 1.8]} animation="reachUp" face="happy" time={t} />
+          <FireflyJar position={[0.38, 1.32, 1.95]} hasPip t={t} />
+        </>
       ),
     },
     {
       cue: "3.laugh",
-      ...cam.twoShot({ a: [-1.2, 0, 1.6], b: [1.2, 0, 1.6], facing: 0, dist: 6.7, to: 5.6, side: 10, pitch: 8, fov: 45 }),
-      zone: "town",
-      note: "Kids point and laugh calling Kai 'bug boy' while he holds Pip's jar close.",
+      look: "lantern-night",
+      note: "Cross-street sweep showing two kids pointing and yelling bug boy at Kai's glowing jar.",
+      ...cam.sweep({ on: [0, 1.3, 2.0], dist: 5.4, fromYaw: -36, toYaw: 26, pitch: 9, fov: 42 }),
       stage: (t) => (
         <>
-          <Player who={2} scale={0.8} position={[-1.3, 0, 1.6]} rotationY={0.45} animation="laugh" face="smug" time={t} />
-          <Player who={4} scale={0.8} position={[-0.3, 0, 1.4]} rotationY={0.35} animation="point" face="grin" time={t} />
-          <Hero position={[1.2, 0, 1.6]} rotationY={-0.3} animation="shrug" face="frown" time={t}>
-            <FireflyJar position={[0, -0.04, 0.14]} t={t} />
-          </Hero>
+          <Kai position={[0, 0, 1.8]} animation="idle" face="uneasy" time={t} />
+          <FireflyJar position={[0.42, 1.15, 2.0]} hasPip t={t} />
+          <Townie who={1} position={[-2.2, 0, 2.6]} rotationY={1.1} animation="laugh" face="laugh" scale={0.82} torch time={t} />
+          <Townie who={3} position={[2.2, 0, 2.5]} rotationY={-1.1} animation="point" face="smug" scale={0.82} torch time={t} />
         </>
       ),
     },
     {
       cue: "3.flint",
-      ...cam.front({ actor: [1.8, 0, 0.8], facing: 0, dist: 6.5, to: 5.4, side: -16, pitch: 8, fov: 44 }),
-      zone: "town",
-      note: "Villain intro: Chief Flint laughs smugly outside his COAL SHOP sign.",
+      look: "lantern-night",
+      note: "Low hero angle looking up at Chief Flint laughing outside his brick Flint Coal shop.",
+      ...cam.heroLow({ on: [3.6, 0, -2.5], dist: 5.0, yaw: -22, fov: 44 }),
       stage: (t) => (
-        <>
-          <ChiefFlint position={[1.8, 0, 0.8]} rotationY={0} animation="laugh" face="smug" time={t} />
-          <Sign title="COAL SHOP" subtitle="FLINT" width={1.45} position={[3.3, 1.0, 0.6]} rotationY={-0.25} />
-        </>
+        <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.2} animation="laugh" face="smug" torch light={3.2} time={t} />
       ),
     },
     {
       cue: "3.quote",
-      ...cam.twoShot({ a: [0.9, 0, 1.4], b: [-0.9, 0, 1.4], facing: 0, dist: 6.5, to: 5.4, side: 12, pitch: 8, fov: 44 }),
-      zone: "town",
-      note: "Chief Flint points mockingly down at Kai's tiny firefly jar.",
+      look: "lantern-night",
+      note: "Sharp arc around smug Chief Flint pointing down the road and mocking Kai's tiny bug.",
+      ...cam.sweep({ on: [3.6, 1.5, -2.5], dist: 4.8, fromYaw: -48, toYaw: -115, pitch: 8, fov: 40 }),
       stage: (t) => (
-        <>
-          <ChiefFlint position={[0.9, 0, 1.4]} rotationY={-0.45} animation="point" face="smug" time={t} />
-          <Hero position={[-0.9, 0, 1.4]} rotationY={0.45} animation="cower" face="uneasy" time={t}>
-            <FireflyJar position={[0, -0.04, 0.14]} t={t} />
-          </Hero>
-        </>
+        <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.2} animation="point" face="smug" torch light={3.2} time={t} />
       ),
     },
     {
       cue: "3.gone",
-      ...cam.front({ actor: [0.9, 0, 1.4], facing: 0, dist: 6.2, to: 5.0, side: -14, pitch: 7, fov: 42 }),
-      zone: "town",
-      note: "Chief Flint waves a blazing torch chuckling that one gust makes Kai shadow food.",
-      stage: (t) => (
-        <ChiefFlint position={[0.9, 0, 1.4]} rotationY={0} animation="laugh" face="smug" time={t}>
-          <HandTorch position={[0, -0.04, 0.16]} lit />
-        </ChiefFlint>
-      ),
-    },
-    {
-      cue: "4.mine",
-      ...cam.push({ on: [1.0, 1.3, 0.8], dist: 7.3, to: 6.0, yaw: 12, pitch: 9, fov: 46 }),
-      zone: "town",
-      note: "Chief Flint proudly shows off his coal shop lined with blazing torches.",
+      look: "lantern-night",
+      note: "Reverse-angle sweep back onto Kai holding Pip's jar tight while a shadow looms behind.",
+      ...cam.sweep({ on: [0, 1.3, 1.8], dist: 5.2, fromYaw: 34, toYaw: -30, pitch: 10, fov: 42 }),
       stage: (t) => (
         <>
-          <ChiefFlint position={[1.0, 0, 0.8]} rotationY={0} animation="wave" face="smug" time={t} />
-          <HandTorch position={[-0.2, 0.2, 1.4]} lit scale={1.3} />
-          <HandTorch position={[2.2, 0.2, 1.4]} lit scale={1.3} />
-          <Sign title="COAL MINE" width={1.45} position={[2.8, 1.0, 0.8]} rotationY={-0.2} />
+          <Kai position={[0, 0, 1.8]} animation="idle" face="worried" time={t} />
+          <FireflyJar position={[0.42, 1.15, 2.0]} hasPip t={t} />
+          <ShadowCreature position={[-2.0, 0, -4.5]} rotationY={0.3} t={t} />
         </>
       ),
     },
     {
+      cue: "4.mine",
+      look: "lantern-night",
+      note: "High crane sweeps across Chief Flint's brick Coal Shop and towering black Coal Mountain.",
+      ...cam.streetOverview({ from: [1.5, 0, 4.4], to: [3.5, 0, -1.2], height: 5.4, fov: 46 }),
+      stage: (t) => (
+        <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.2 + Math.sin(t * 2) * 0.08} animation="idle" face="smug" torch light={3.2} time={t} />
+      ),
+    },
+    {
       cue: "4.ten",
-      ...cam.front({ actor: [0, 0, 1.4], facing: 0, dist: 6.3, to: 5.2, side: 14, pitch: 8, fov: 44 }),
-      zone: "town",
-      note: "Green 10 FloatingNumber pops over Chief Flint on a clear calm night.",
+      look: "lantern-night",
+      note: "Sweep across the shop counter as a villager pays ten emeralds for a single wooden torch.",
+      ...cam.sweep({ on: [2.8, 1.45, -2.4], dist: 5.0, fromYaw: -28, toYaw: 24, pitch: 8, fov: 42 }),
       stage: (t) => (
         <>
-          <ChiefFlint position={[0, 0, 1.4]} rotationY={0} animation="point" face="smile" time={t} />
-          <FloatingNumber text="10" color="#4be08a" position={[0, 2.75, 1.4]} height={0.75 * pop(t, 0.1)} />
+          <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.3} animation="idle" face="smug" torch light={3.2} time={t} />
+          <Townie who={1} position={[1.9, 0, -2.3]} rotationY={1.4 + Math.sin(t * 2.5) * 0.08} animation="idle" face="worried" torch time={t} />
+          <FloatingNumber text="10 EMERALDS" position={[2.8, 2.1, -2.4]} color="#5ce68a" height={0.34} />
         </>
       ),
     },
     {
       cue: "4.hundred",
-      ...cam.front({ actor: [0, 0, 1.4], facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: 8, fov: 44 }),
-      zone: "town",
       look: "overworld-storm",
-      note: "Price spikes to bright coral-red 100! when the wind blows.",
+      note: "Stormy low angle as Chief Flint hikes the price to one hundred emeralds while a villager cowers.",
+      ...cam.heroLow({ on: [3.0, 0, -2.4], dist: 5.0, yaw: -26, fov: 44 }),
       stage: (t) => (
         <>
-          <ChiefFlint position={[0, 0, 1.4]} rotationY={0} animation="laugh" face="smug" time={t} />
-          <FloatingNumber text="100!" color="#ff4f42" position={[0, 2.75, 1.4]} height={0.82 * pop(t, 0.1)} />
+          <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.3} animation="laugh" face="smug" torch light={3.2} time={t} />
+          <Townie who={3} position={[1.9, 0, -2.3]} rotationY={1.4} animation="cower" face="scared" time={t} />
+          <FloatingNumber text="100 EMERALDS!" position={[2.8, 2.15, -2.4]} color="#ff5252" height={0.38} />
         </>
       ),
     },
     {
       cue: "4.pile",
-      ...cam.front({ actor: [0, 0.9, 0.8], facing: 0, dist: 6.7, to: 5.5, side: 16, pitch: 9, fov: 44 }),
-      zone: "town",
-      note: "Chief Flint sits smugly atop his giant CoalMountain counting profits.",
+      look: "lantern-night",
+      note: "Dramatic low-angle upward tilt on Chief Flint laughing atop his giant mountain of black coal.",
+      ...cam.sweep({ on: [5.6, 4.2, -8.5], dist: 6.2, fromYaw: -38, toYaw: 16, pitch: 8, fov: 46 }),
       stage: (t) => (
-        <>
-          <CoalMountain position={[0, 0, 0.8]} />
-          <ChiefFlint position={[0, 1.05, 0.8]} rotationY={0} animation="sit" headYaw={Math.sin(t * 2.5) * 0.2} face="smug" time={t} />
-        </>
+        <ChiefFlint position={[5.6, 3.45, -8.5]} animation="laugh" face="smug" torch light={3.5} time={t} />
       ),
     },
     {
       cue: "4.thirty",
-      ...cam.push({ on: [0, 1.6, 1.0], dist: 7.9, to: 6.6, yaw: 0, pitch: 9, fov: 48 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "Dramatic red 30 hovers over the dark street as ShadowCreatures lead townsfolk away.",
-      stage: (t) => (
-        <>
-          <FloatingNumber text="30" color="#ff4f42" position={[0, 2.75, 1.0]} height={0.88 * pop(t, 0.1)} />
-          <ShadowCreature position={[-1.8, 0, 0.8]} rotationY={0.2} t={t} />
-          <ShadowCreature position={[1.8, 0, 0.8]} rotationY={-0.2} t={t} />
-          <Player who={3} position={[0, 0, 1.5]} rotationY={0} animation="cower" face="fear" time={t} />
-        </>
-      ),
+      look: "lantern-night",
+      note: "Tracking camera follows frightened townsfolk who could not pay vanishing into the pine woods.",
+      ...cam.track({ from: [0, 0, -5.2], to: [0, 0, -14.2], sideDist: 6.2, side: -1, height: 2.6, fov: 44 }),
+      stage: (t) => {
+        const a = moveBetween([-0.9, 0, -5.2], [-1.4, 0, -14.2], t, 0, 2.2);
+        const b = moveBetween([1.4, 0, -6.0], [1.8, 0, -14.6], t, 0, 2.2);
+        return (
+          <>
+            <Townie who={1} position={a.position} rotationY={a.rotationY} animation="walk" animDistance={a.animDistance} face="scared" time={t} />
+            <Townie who={3} position={b.position} rotationY={b.rotationY} animation="walk" animDistance={b.animDistance} face="scared" time={t} />
+            <ShadowCreature position={[-3.2, 0, -13.5]} rotationY={0.4} t={t} />
+            <ShadowCreature position={[3.0, 0, -13.8]} rotationY={-0.4} t={t} />
+          </>
+        );
+      },
     },
     {
       cue: "4.mom",
-      ...cam.twoShot({ a: [-0.8, 0, 1.5], b: [0.8, 0, 1.5], facing: 0, dist: 6.3, to: 5.2, side: 12, pitch: 8, fov: 44 }),
-      zone: "town",
-      look: "overworld-golden",
-      note: "Emotional beat: Mom hands Pip's glowing jar to Kai before stepping back into the dark woods.",
+      look: "lantern-night",
+      note: "Tender sweep as Mom hands Pip's glowing jar to young Kai before walking off into the dark.",
+      ...cam.sweep({ on: [0, 1.35, 1.1], dist: 4.8, fromYaw: -30, toYaw: 28, pitch: 8, fov: 40 }),
       stage: (t) => {
-        const leave = ease(ramp(t, Math.max(0.2, wordAt("4.mom", "Pip") - 0.1), 1.0));
+        const leave = moveBetween([0.6, 0, 1.0], [0.8, 0, -3.5], t, 1.1, 2.4);
         return (
           <>
-            <Hero position={[-0.8, 0, 1.5]} rotationY={0.4} animation="reachUp" face="sad" time={t}>
-              <FireflyJar position={[0, -0.04, 0.16]} t={t} />
-            </Hero>
-            <Mom position={[0.8 + leave * 1.6, 0, 1.5 - leave * 1.2]} rotationY={-0.35} animation={leave > 0.1 ? "walk" : "wave"} animDistance={leave * 2.0} face="sad" time={t} />
+            <Kai position={[-0.7, 0, 1.2]} rotationY={0.8} animation="idle" face="crying" time={t} />
+            <FireflyJar position={[-0.2, 1.15, 1.2]} hasPip t={t} />
+            <Mom position={leave.position} rotationY={leave.moving ? leave.rotationY : -1.1} animation={leave.moving ? "walk" : "wave"} animDistance={leave.animDistance} face="sad" time={t} />
           </>
         );
       },

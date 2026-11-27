@@ -1,188 +1,174 @@
+import type React from "react";
 import {
+  BabyCrib,
   Block,
-  FloatingNumber,
-  HandTorch,
-  Player,
+  Kai,
+  ROOM_POS,
+  SchoolDesk,
   ShadowCreature,
-  Sign,
+  Smoke,
+  Torch,
+  Townie,
   cam,
-  ease,
-  pop,
-  ramp,
-  room,
+  moveBetween,
   storyScene,
   timing,
-  wordAt,
 } from "./kit";
 
-/** Scene 1 (Beats 1–2): Hook + Living Shadows Rule + Torch Sight Gags. */
+/**
+ * Scene 1 (10 shots): Hook & visual comedy gags (baby crib, barber, joggers, school, mailman).
+ * Full multi-axis framing + continuous A->B locomotion via moveBetween().
+ */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "Never Drop Your Torch",
+  title: "Scene 1",
   shots: [
     {
       cue: "1.town",
-      ...cam.twoShot({ a: [-1.4, 0, 1.6], b: [1.4, 0, 1.6], facing: 0, dist: 7.1, to: 5.8, side: 10, pitch: 8, fov: 46 }),
-      zone: "town",
-      look: "overworld-golden",
-      note: "Hook: Every villager walks through town gripping a blazing wooden torch!",
+      look: "lantern-night",
+      note: "High crane glides down the dark 56m village avenue as torch-carrying townsfolk guard the road.",
+      ...cam.streetOverview({ from: [0, 0, 13.0], to: [0, 0, 6.2], height: 5.6, fov: 46 }),
       stage: (t) => {
-        const w = ease(ramp(t, 0, 1.0));
-        const anim = w > 0.02 && w < 0.98 ? "walk" : "wave";
+        const w = moveBetween([-3.2, 0, 4.4], [-2.8, 0, -2.6], t, 0, 2.2);
         return (
           <>
-            <Player who={2} position={[-1.4, 0, 0.8 + w * 1.1]} rotationY={0} animation={anim} animDistance={w * 1.1} face="calm" time={t}>
-              <HandTorch position={[0, -0.04, 0.14]} lit />
-            </Player>
-            <Player who={4} position={[1.4, 0, 0.9 + w * 1.0]} rotationY={0} animation={anim} animDistance={w * 1.0} face="calm" time={t}>
-              <HandTorch position={[0, -0.04, 0.14]} lit />
-            </Player>
+            <Townie who={1} position={[0, 0, 0.2]} animation="idle" face="brave" torch light={3} time={t} />
+            <Townie who={3} position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} torch time={t} />
+            <Townie who={5} position={[3.4, 0, -2.2]} rotationY={-0.6} animation="idle" torch time={t} />
+            <ShadowCreature position={[-2.4, 0, -7.5]} rotationY={0.2} t={t} />
+            <ShadowCreature position={[2.8, 0, -8.2]} rotationY={-0.3} t={t} />
           </>
         );
       },
     },
     {
       cue: "1.dark",
-      ...cam.push({ on: [0, 1.5, 0.8], dist: 7.5, to: 6.2, yaw: -12, pitch: 8, fov: 46 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "At dusk, tall black ShadowCreatures with glowing purple eyes creep out of the trees!",
-      stage: (t) => {
-        const s = ease(ramp(t, 0, 1.1));
-        return (
-          <>
-            <ShadowCreature position={[-1.6 + s * 0.6, 0, 0.4 + s * 0.8]} rotationY={0.2} t={t} />
-            <ShadowCreature position={[1.6 - s * 0.6, 0, 0.5 + s * 0.8]} rotationY={-0.2} t={t} />
-          </>
-        );
-      },
+      look: "lantern-night",
+      note: "Low-angle horror shot looking up at tall living shadows creeping off the dark pine forest.",
+      ...cam.heroLow({ on: [0, 0, -11.5], dist: 6.2, yaw: -18, fov: 46 }),
+      stage: (t) => (
+        <>
+          <ShadowCreature position={[-2.4, 0, -11.2]} rotationY={0.2} scale={1.15} t={t} />
+          <ShadowCreature position={[0.2, 0, -12.8]} rotationY={0} scale={1.25} t={t} />
+          <ShadowCreature position={[2.8, 0, -11.5]} rotationY={-0.2} scale={1.12} t={t} />
+        </>
+      ),
     },
     {
       cue: "1.light",
-      ...cam.twoShot({ a: [-1.1, 0, 1.5], b: [1.2, 0, 1.5], facing: 0, dist: 6.7, to: 5.6, side: 12, pitch: 8, fov: 45 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "A townsfolk thrusts a bright torch forward pushing the ShadowCreature straight back!",
+      look: "lantern-night",
+      note: "Dynamic cross-street sweep as a bright handheld torch flame pushes two shadows straight back.",
+      ...cam.sweep({ on: [0, 1.35, 0.2], dist: 5.2, fromYaw: 34, toYaw: -28, pitch: 8, fov: 42 }),
       stage: (t) => {
-        const push = ease(ramp(t, 0.1, 0.9));
+        const recoil = moveBetween([0, 0, -4.0], [0, 0, -8.5], t, 0.2, 1.8);
         return (
           <>
-            <Player who={3} position={[-1.1, 0, 1.5]} rotationY={0.45} animation="point" face="brave" time={t}>
-              <HandTorch position={[0, -0.04, 0.16]} lit scale={1.2} />
-            </Player>
-            <ShadowCreature position={[0.9 + push * 1.3, 0, 1.5]} rotationY={-0.4} t={t} />
+            <Townie who={1} position={[0, 0, 0.2]} animation="reachUp" face="brave" torch light={4} time={t} />
+            <ShadowCreature position={[-1.8, 0, recoil.position[2]]} rotationY={0.2} t={t} />
+            <ShadowCreature position={[1.8, 0, recoil.position[2] - 0.5]} rotationY={-0.2} t={t} />
           </>
         );
       },
     },
     {
       cue: "1.out",
-      ...cam.front({ actor: [0, 0, 1.5], facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: 8, fov: 44 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "Torch goes out — ShadowCreature looms behind the startled villager!",
+      look: "lantern-night",
+      note: "Side tracking camera follows a living shadow dragging an unlit villager back toward the dark alley.",
+      ...cam.track({ from: [-2.2, 0, 2.2], to: [-4.6, 0, -5.4], sideDist: 4.8, side: 1, height: 1.6, fov: 44 }),
       stage: (t) => {
-        const outAt = Math.max(0.15, wordAt("1.out", "out") - 0.05);
-        const dark = t >= outAt;
+        const drag = moveBetween([-2.2, 0, 2.2], [-4.6, 0, -5.4], t, 0, 2.1);
         return (
           <>
-            <Player who={5} position={[0, 0, 1.6]} rotationY={0} animation={dark ? "cower" : "wave"} face={dark ? "fear" : "calm"} time={t}>
-              <HandTorch position={[0, -0.04, 0.14]} lit={!dark} />
-            </Player>
-            {dark && <ShadowCreature position={[0.9, 0, 0.9]} rotationY={-0.3} t={t} />}
+            <Townie who={3} position={drag.position} rotationY={drag.rotationY + Math.PI} animation="cower" face="scared" time={t} />
+            <ShadowCreature position={[drag.position[0] - 0.5, 0, drag.position[2] - 0.9]} rotationY={0.2} scale={1.15} t={t} />
           </>
         );
       },
     },
     {
       cue: "1.sleep",
-      ...cam.front({ actor: room(0, 0.2, 0.4), facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 10, fov: 44 }),
       zone: "room",
-      note: "Visual sight gag: kid sleeps cozily in bed right beside a giant blazing torch!",
-      stage: (t) => (
-        <>
-          <Block position={room(0, 0.3, 0.2)} size={[1.4, 0.5, 2.2]} color="#d94646" />
-          <Player who={2} scale={0.75} position={room(0, 0.56, 0.2)} rotationY={0} animation="wave" face="smile" time={t}>
-            <HandTorch position={[0, -0.04, 0.14]} lit />
-          </Player>
-        </>
+      look: "lantern-night",
+      note: "Cozy interior sweep around a real wooden baby crib with slatted rails and a lit corner torch.",
+      ...cam.sweep({ on: [ROOM_POS[0], 0.85, ROOM_POS[2] - 0.6], dist: 4.2, fromYaw: -34, toYaw: 28, pitch: 14, fov: 42 }),
+      stage: () => (
+        <group position={ROOM_POS}>
+          <BabyCrib position={[0, 0, -0.6]} lit />
+        </group>
       ),
     },
     {
       cue: "2.barber",
-      ...cam.twoShot({ a: [-0.8, 0, 1.5], b: [0.8, 0, 1.5], facing: 0, dist: 6.3, to: 5.2, side: -12, pitch: 8, fov: 44 }),
-      zone: "town",
-      note: "Comedy beat: barber trims hair while gripping a blazing torch in his other hand.",
+      look: "lantern-night",
+      note: "Comedic arc around the town barber carefully cutting hair while gripping a blazing torch.",
+      ...cam.sweep({ on: [-1.4, 1.35, 1.2], dist: 4.8, fromYaw: -32, toYaw: 24, pitch: 8, fov: 40 }),
       stage: (t) => (
         <>
-          <Player who={4} position={[-0.7, 0, 1.5]} rotationY={0.4} animation="press" face="grin" time={t}>
-            <HandTorch position={[0, -0.04, 0.14]} lit />
-          </Player>
-          <Player who={3} position={[0.7, 0, 1.5]} rotationY={-0.3} animation="sit" headYaw={Math.sin(t * 2.5) * 0.18} face="uneasy" time={t} />
+          <Block position={[-1.4, 0.35, 1.2]} size={[0.75, 0.7, 0.75]} color="#8a2e2e" />
+          <Townie who={1} position={[-1.4, 0.2, 1.2]} animation="sit" face="uneasy" time={t} />
+          <Townie who={5} position={[-2.2, 0, 1.1]} rotationY={1.4 + Math.sin(t * 3) * 0.12} animation="press" face="grin" torch light={3} time={t} />
         </>
       ),
     },
     {
       cue: "2.jog",
-      ...cam.truck({ on: [0, 1.1, 1.5], dist: 6.7, yaw: 0, pitch: 8, by: [1.5, 0, 0], fov: 45 }),
-      zone: "town",
-      note: "Runners sprint laps holding blazing torches like glow sticks!",
+      look: "lantern-night",
+      note: "Fast side tracking shot keeping pace with two joggers sprinting laps holding lit torches.",
+      ...cam.track({ from: [-5.8, 0, 3.4], to: [5.8, 0, 3.4], sideDist: 5.0, side: 1, height: 1.6, fov: 44 }),
       stage: (t) => {
-        const s = ease(ramp(t, 0, 1.0));
-        const anim = s > 0.02 && s < 0.98 ? "run" : "cheer";
+        const a = moveBetween([-5.8, 0, 3.4], [5.8, 0, 3.4], t, 0, 2.2);
+        const b = moveBetween([6.0, 0, 5.0], [-5.6, 0, 5.0], t, 0, 2.2);
         return (
           <>
-            <Player who={2} position={[-1.8 + s * 2.8, 0, 1.5]} rotationY={s < 0.98 ? Math.PI / 2 : 0.25} animation={anim} animDistance={s * 2.8} face="grin" time={t}>
-              <HandTorch position={[0, -0.04, 0.14]} lit />
-            </Player>
-            <Player who={5} position={[-0.4 + s * 2.6, 0, 1.9]} rotationY={s < 0.98 ? Math.PI / 2 : -0.25} animation={anim} animDistance={s * 2.6} face="smile" time={t}>
-              <HandTorch position={[0, -0.04, 0.14]} lit />
-            </Player>
+            <Townie who={1} position={a.position} rotationY={a.rotationY} animation="run" animDistance={a.animDistance} face="happy" torch light={2.6} time={t} />
+            <Townie who={3} position={b.position} rotationY={b.rotationY} animation="run" animDistance={b.animDistance} face="grin" torch light={2.6} time={t} />
           </>
         );
       },
     },
     {
       cue: "2.school",
-      ...cam.twoShot({ a: room(-1.0, 0, 0.6), b: room(1.0, 0, 0.6), facing: 0, dist: 6.5, to: 5.4, side: 10, pitch: 9, fov: 44 }),
       zone: "room",
-      note: "Classroom sight gag: every kid balances a lit torch on top of their wooden desk!",
+      look: "lantern-night",
+      note: "Classroom sweep across wooden desks as two students balance blazing torches beside their books.",
+      ...cam.sweep({ on: [ROOM_POS[0], 1.05, ROOM_POS[2] - 0.2], dist: 4.8, fromYaw: 112, toYaw: 78, pitch: 12, fov: 42 }),
       stage: (t) => (
-        <>
-          <Block position={room(-1.0, 0.45, 0.9)} size={[1.1, 0.85, 0.7]} color="#9c7042" />
-          <HandTorch position={room(-1.0, 0.88, 0.9)} lit />
-          <Player who={2} scale={0.78} position={room(-1.0, 0, 0.2)} rotationY={0} animation="wave" face="smile" time={t} />
-          <Block position={room(1.0, 0.45, 0.9)} size={[1.1, 0.85, 0.7]} color="#9c7042" />
-          <HandTorch position={room(1.0, 0.88, 0.9)} lit />
-          <Player who={4} scale={0.78} position={room(1.0, 0, 0.2)} rotationY={0} animation="wave" face="grin" time={t} />
-        </>
+        <group position={ROOM_POS}>
+          <SchoolDesk position={[-1.1, 0, -0.4]} />
+          <SchoolDesk position={[1.1, 0, -0.4]} />
+          <Torch position={[-0.85, 0.82, -0.4]} />
+          <Torch position={[1.35, 0.82, -0.4]} />
+          <Townie who={1} position={[-1.1, 0, 0.25]} rotationY={Math.PI} animation="sit" face="calm" scale={0.76} time={t} />
+          <Townie who={3} position={[1.1, 0, 0.25]} rotationY={Math.PI + Math.sin(t * 2) * 0.08} animation="sit" face="smile" scale={0.76} time={t} />
+        </group>
       ),
     },
     {
       cue: "2.mail",
-      ...cam.front({ actor: [0, 0, 1.5], facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 8, fov: 44 }),
-      zone: "town",
-      look: "overworld-night",
-      note: "The mailman sneezes his torch out on Tuesday looking shocked!",
+      look: "lantern-night",
+      note: "Tracking shot follows the mailman jogging down the cobble street until he sneezes his torch out.",
+      ...cam.track({ from: [5.2, 0, 5.4], to: [-1.2, 0, 2.4], sideDist: 4.6, side: -1, height: 1.55, fov: 44 }),
       stage: (t) => {
-        const sneezeAt = Math.max(0.18, wordAt("2.mail", "sneezed") - 0.05);
-        const out = t >= sneezeAt;
+        const m = moveBetween([5.2, 0, 5.4], [-1.2, 0, 2.4], t, 0, 2.0);
+        const out = t >= 1.15;
         return (
-          <Player who={3} position={[0, 0, 1.5]} rotationY={0} animation={out ? "cower" : "walk"} animDistance={0.3} face={out ? "surprised" : "smile"} time={t}>
-            <HandTorch position={[0, -0.04, 0.14]} lit={!out} />
-          </Player>
+          <>
+            <Townie who={5} position={m.position} rotationY={m.rotationY} animation={out ? "cower" : "walk"} animDistance={m.animDistance} face={out ? "scared" : "smile"} torch={!out} light={out ? 0 : 2.5} time={t} />
+            {out ? <Smoke position={[m.position[0], 1.2, m.position[2]]} count={10} /> : null}
+          </>
         );
       },
     },
     {
       cue: "2.fifth",
-      ...cam.front({ actor: [0, 0.4, 1.4], facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: 8, fov: 44 }),
-      zone: "town",
-      note: "Punchline gag: 'MAILMAN #5' sign pops with a giant 5 FloatingNumber!",
+      look: "lantern-night",
+      note: "High street crane looks down on two shrugging townsfolk as Kai steps forward in the foreground.",
+      ...cam.streetOverview({ from: [2.2, 0, 8.2], to: [-1.8, 0, 5.2], height: 4.0, fov: 44 }),
       stage: (t) => (
         <>
-          <Sign title="MAILMAN #5" subtitle="HIRING" width={1.4} position={[0, 0.9, 1.2]} />
-          <FloatingNumber text="#5" color="#ff4f42" position={[0, 2.55, 1.2]} height={0.78 * pop(t, 0.1)} />
+          <Townie who={1} position={[-1.4, 0, 1.4]} rotationY={0.3} animation="shrug" face="uneasy" torch time={t} />
+          <Townie who={3} position={[1.4, 0, 1.2]} rotationY={-0.3} animation="wave" face="worried" torch time={t} />
+          <Kai position={[0.9, 0, 2.3]} rotationY={-0.2} animation="idle" face="smile" time={t} />
         </>
       ),
     },

@@ -17,3 +17,6 @@ export * from "./shaders";
 export * from "./story";
 export * from "./textures";
 export * from "./types";
+
+export * from "./Hud";
+export * from "./collision";

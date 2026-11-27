@@ -9,9 +9,9 @@ export const film = defineFilm({
   id: "the-player-who-never-left-the-spawn-bench",
   title: "The Player Who Never Left The Spawn Bench",
   topic: "server-lore",
-  audio: { src: "audio/the-player-who-never-left-the-spawn-bench/mix.mp3" },
   look: "overworld-day",
   post: { shaders: "vibrant-day" },
+  audio: { src: "audio/the-player-who-never-left-the-spawn-bench/mix.mp3" },
   captions: {
     words: timing.words,
     y: 0.72,

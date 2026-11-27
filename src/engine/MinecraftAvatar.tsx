@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useId, useMemo } from "react";
 import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import type { AnimName, GaitName, Pose } from "./anim";
@@ -8,6 +8,7 @@ import { blinkFaceTexture, faceTexture, headSideTexture } from "./face";
 import { groundedHip, metres, PX, shin, sole, trainer } from "./footing";
 import { clamp, TAU, wobble } from "./math";
 import type { Vec3 } from "./math";
+import { useCollisionWorld } from "./collision";
 import { glowTex, pixelTex, stripeTex } from "./textures";
 
 export type OutfitName = "gown" | "pajamas" | "hoodie" | "tee" | "shadow" | "suit";
@@ -363,8 +364,23 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const hip = plantFeet ? groundedHip(pose, [pitchBody, pose.bodyYaw, roll], !!shoes) : HIP + pose.bodyY;
   const shadowTex = glowTex();
 
+  const actorId = useId();
+  const collision = useCollisionWorld();
+  const actorRadius = 0.34 * scale;
+  const actorHeight = 1.85 * scale;
+  if (collision) {
+    collision.updateActor({ id: actorId, position, radius: actorRadius, height: actorHeight });
+  }
+  useEffect(() => {
+    if (!collision) return;
+    return () => collision.unregisterActor(actorId);
+  }, [collision, actorId]);
+  const resolvedPos: Vec3 = collision
+    ? collision.resolveActor(actorId, position, actorRadius, actorHeight)
+    : position;
+
   return (
-    <group position={position} rotation-y={rotationY} scale={scale}>
+    <group position={resolvedPos} rotation-y={rotationY} scale={scale}>
       {shadow && (
         <mesh position={[0, 0.014, 0]} rotation-x={-Math.PI / 2} renderOrder={1}>
           <planeGeometry args={[0.95, 0.6]} />

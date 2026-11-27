@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
 import type { Vec3 } from "./math";
 import { mulberry32 } from "./math";
 import { useFlicker } from "./Look";
@@ -873,11 +875,12 @@ export const FloatingNumber: React.FC<{
 }> = ({
   text,
   position = [0, 3, 0],
-  rotationY = 0,
+  rotationY,
   color = "#ff4f42",
   height = 0.7,
   bob = 0.08,
 }) => {
+  const ref = useRef<THREE.Mesh>(null);
   const t = useFilmTime();
   const str = String(text);
   const tex = wordTexture(str);
@@ -887,9 +890,16 @@ export const FloatingNumber: React.FC<{
   const w = rawW * scaleClamp;
   const effH = height * scaleClamp;
   const dy = bob > 0 ? Math.sin(t * 3.1) * bob : 0;
+  useFrame(({ camera }) => {
+    if (rotationY === undefined && ref.current) {
+      const wp = new THREE.Vector3();
+      ref.current.getWorldPosition(wp);
+      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+    }
+  });
 
   return (
-    <mesh position={[position[0], position[1] + dy, position[2]]} rotation-y={rotationY}>
+    <mesh ref={ref} position={[position[0], position[1] + dy, position[2]]} rotation-y={rotationY ?? 0}>
       <planeGeometry args={[w, effH]} />
       <meshBasicMaterial
         map={tex}
@@ -919,10 +929,11 @@ export const ChatToast: React.FC<{
   text,
   sender,
   position = [0, 2.4, 0],
-  rotationY = 0,
+  rotationY,
   height = 0.24,
   color = "#ffffff",
 }) => {
+  const ref = useRef<THREE.Group>(null);
   const line = sender ? `<${sender}> ${text}` : text;
   const tex = wordTexture(line);
   const { width: tw, height: th } = tex.image as { width: number; height: number };
@@ -930,9 +941,16 @@ export const ChatToast: React.FC<{
   const scaleClamp = rawW > 2.25 ? 2.25 / rawW : 1;
   const w = rawW * scaleClamp;
   const effH = height * scaleClamp;
+  useFrame(({ camera }) => {
+    if (rotationY === undefined && ref.current) {
+      const wp = new THREE.Vector3();
+      ref.current.getWorldPosition(wp);
+      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+    }
+  });
 
   return (
-    <group position={position} rotation-y={rotationY}>
+    <group ref={ref} position={position} rotation-y={rotationY ?? 0}>
       <mesh position={[0, 0, -0.01]}>
         <planeGeometry args={[w + effH * 0.6, effH * 1.45]} />
         <meshBasicMaterial color="#000000" transparent opacity={0.58} side={THREE.DoubleSide} fog={false} />

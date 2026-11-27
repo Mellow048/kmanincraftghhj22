@@ -479,6 +479,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
       });
       let shotHasLocomotion = false;
       if (actorSamples[0].length > 0 && actorSamples.every((list) => list.length === actorSamples[0].length)) {
+        let shotHasLocomotion = false;
         for (let k = 0; k < actorSamples[0].length; k++) {
           const name = actorSamples[0][k].name;
           if (!actorSamples.every((list) => list[k].name === name)) continue;
@@ -539,6 +540,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
             }
           }
 
+          if ((gaitPts.length > 0 || walkSpan > 0.15) && maxMove >= 0.05) shotHasLocomotion = true;
           // Anti-sidewalk / anti-moonwalk & anti-standing-slide checks
           if (isModern && totalHoriz >= 0.18 && totalVert < 0.25 && (!hasAlt || hasPos)) {
             const activelyWalking = gaitPts.length > 0 || walkSpan > 0.15;
@@ -566,6 +568,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
             }
           }
         }
+        if (shotHasLocomotion) locomotionShots++;
       }
       if (isModern && shotHasLocomotion && !srcHasLocomotion) locomotionShots++;
       if (isModern) {

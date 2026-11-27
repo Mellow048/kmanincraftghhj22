@@ -1,5 +1,6 @@
 {
   "film": "taxes-explained-using-minecraft",
+  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build taxes-explained-using-minecraft",
   "music": {
     "track": "Topics/Explainer/explainer_bgm_loop.wav",
     "gain": -17,
@@ -34,372 +35,454 @@
   "beds": [
     {
       "from": "1.hook",
-      "bed": "sky",
-      "gain": -30
+      "to": "1.keep",
+      "bed": "sky"
+    },
+    {
+      "from": "1.dark",
+      "to": "2.again",
+      "bed": "night"
+    },
+    {
+      "from": "2.broke",
+      "to": "3.meet",
+      "bed": "sky"
     },
     {
       "from": "3.rule",
-      "bed": "room",
-      "gain": -30
+      "to": "3.rule",
+      "bed": "room"
+    },
+    {
+      "from": "3.two",
+      "to": "3.two",
+      "bed": "sky"
+    },
+    {
+      "from": "3.twenty",
+      "to": "3.twenty",
+      "bed": "room"
+    },
+    {
+      "from": "3.groan",
+      "to": "4.road",
+      "bed": "sky"
+    },
+    {
+      "from": "4.safe",
+      "to": "4.safe",
+      "bed": "night"
+    },
+    {
+      "from": "4.math",
+      "to": "5.six",
+      "bed": "room"
+    },
+    {
+      "from": "5.wait",
+      "to": "5.statue",
+      "bed": "sky"
+    },
+    {
+      "from": "5.dark2",
+      "to": "5.dark2",
+      "bed": "night"
     },
     {
       "from": "6.real",
-      "bed": "sky",
-      "gain": -30
+      "to": "7.ask",
+      "bed": "sky"
+    },
+    {
+      "from": "7.free",
+      "to": "7.free",
+      "bed": "night"
+    },
+    {
+      "from": "7.pay",
+      "to": "7.loop",
+      "bed": "sky"
     }
   ],
   "sfx": [
     {
       "cue": "1.hook",
-      "word": "Minecraft",
-      "sfx": "pop"
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
     },
     {
       "cue": "1.ten",
-      "word": "ten",
-      "sfx": "coin"
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.keep",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
     },
     {
       "cue": "1.dark",
-      "word": "zero",
-      "sfx": "plink"
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.roads",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
     },
     {
       "cue": "2.night",
-      "word": "creepers",
-      "sfx": "whoosh_low"
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
     },
     {
       "cue": "2.boom",
-      "word": "Boom",
-      "sfx": "boom"
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.again",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.broke",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.meet",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time"
+    },
+    {
+      "cue": "3.rule",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.two",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.twenty",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.groan",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.mods",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.wall",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.torch",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.road",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.safe",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.math",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.win",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.but",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time"
+    },
+    {
+      "cue": "5.greedy",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.six",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.wait",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.statue",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.dark2",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.real",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time"
+    },
+    {
+      "cue": "6.good",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.bad",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.same",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.ask",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time"
+    },
+    {
+      "cue": "7.free",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.pay",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.loop",
+      "sfx": "ding",
+      "why": "final payoff / subscribe line"
+    },
+    {
+      "cue": "1.hook",
+      "word": "using",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.ten",
+      "word": "diamonds",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.keep",
+      "word": "so",
+      "sfx": "chime",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.dark",
+      "word": "spawn",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.roads",
+      "word": "just",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.night",
+      "word": "three",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.boom",
+      "word": "and",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "2.again",
       "word": "blast",
-      "sfx": "hit"
+      "sfx": "chime",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.broke",
+      "word": "giant",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.meet",
+      "word": "meets",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.rule",
+      "word": "deal",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.two",
       "word": "two",
-      "sfx": "coin"
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.twenty",
-      "word": "twenty",
-      "sfx": "ding"
+      "word": "is",
+      "sfx": "chime",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.groan",
+      "word": "diamonds",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.mods",
       "word": "open",
-      "sfx": "creak"
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.wall",
-      "word": "wall",
-      "sfx": "place"
+      "word": "raise",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.torch",
-      "word": "torches",
-      "sfx": "pop"
-    },
-    {
-      "cue": "4.safe",
-      "word": "bounce",
-      "sfx": "boing"
-    },
-    {
-      "cue": "4.win",
-      "word": "beats",
-      "sfx": "ding"
-    },
-    {
-      "cue": "5.greedy",
-      "word": "mod",
-      "sfx": "whoosh"
-    },
-    {
-      "cue": "5.six",
-      "word": "six",
-      "sfx": "hit"
-    },
-    {
-      "cue": "5.statue",
-      "word": "statue",
-      "sfx": "chime"
-    },
-    {
-      "cue": "5.dark2",
-      "word": "dark",
-      "sfx": "power_down"
-    },
-    {
-      "cue": "6.good",
-      "word": "Good",
-      "sfx": "ding"
-    },
-    {
-      "cue": "6.bad",
-      "word": "Bad",
-      "sfx": "hit"
-    },
-    {
-      "cue": "7.ask",
-      "word": "server",
-      "sfx": "pop"
-    },
-    {
-      "cue": "7.loop",
-      "word": "that's",
-      "sfx": "whoosh"
-    },
-    {
-      "cue": "1.hook",
+      "word": "path",
       "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "1.ten",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "1.keep",
-      "sfx": "plink",
-      "trim": 5
-    },
-    {
-      "cue": "1.dark",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "1.roads",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "2.night",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "2.boom",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "2.again",
-      "sfx": "plink",
-      "trim": -4
-    },
-    {
-      "cue": "2.broke",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "3.meet",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "3.rule",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "3.two",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "3.twenty",
-      "sfx": "plink",
-      "trim": -4
-    },
-    {
-      "cue": "3.groan",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "4.mods",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "4.wall",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "4.torch",
-      "sfx": "pop",
-      "trim": -4
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.road",
-      "sfx": "plink",
-      "trim": 4
+      "word": "roads",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.safe",
-      "sfx": "step_stone",
-      "trim": 4
+      "word": "the",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.math",
-      "sfx": "swish",
-      "trim": 4
+      "word": "diamonds",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.win",
-      "sfx": "whoosh",
-      "trim": -4
+      "word": "five",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.but",
-      "sfx": "pop",
-      "trim": -4
+      "word": "Now",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.greedy",
-      "sfx": "plink",
-      "trim": -4
+      "word": "the",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.six",
-      "sfx": "step_stone",
-      "trim": -4
+      "word": "from",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.wait",
-      "sfx": "swish",
-      "trim": -4
+      "word": "walls",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.statue",
-      "sfx": "whoosh",
-      "trim": -4
+      "word": "giant",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.dark2",
-      "sfx": "pop",
-      "trim": -4
+      "word": "and",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.real",
-      "sfx": "plink",
-      "trim": -4
+      "word": "the",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.good",
-      "sfx": "step_stone",
-      "trim": -4
+      "word": "roads,",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.bad",
-      "sfx": "swish",
-      "trim": -4
+      "word": "the",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.same",
-      "sfx": "whoosh",
-      "trim": -4
+      "word": "players\u2014totally",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.ask",
-      "sfx": "pop",
-      "trim": -4
+      "word": "you",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.free",
-      "sfx": "plink",
-      "trim": 5
+      "word": "blowing",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.pay",
-      "sfx": "step_stone",
-      "trim": 4
-    },
-    {
-      "cue": "7.loop",
-      "sfx": "swish",
-      "trim": 4
-    },
-    {
-      "cue": "1.hook",
-      "word": "Taxes",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "1.ten",
-      "word": "Leo",
+      "word": "day",
       "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "1.keep",
-      "word": "rules",
-      "sfx": "plink",
-      "trim": 5
-    },
-    {
-      "cue": "1.dark",
-      "word": "Sounds",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "1.roads",
-      "word": "Zero",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "2.night",
-      "word": "Then",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "2.boom",
-      "word": "Leo's",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "2.again",
-      "word": "The",
-      "sfx": "plink",
-      "trim": -4
-    },
-    {
-      "cue": "2.broke",
-      "word": "Nobody",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "3.meet",
-      "word": "the",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "3.rule",
-      "word": "They",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "3.two",
-      "word": "Out",
-      "sfx": "pop",
-      "trim": -4
+      "why": "mid-shot accent"
     }
   ]
 }

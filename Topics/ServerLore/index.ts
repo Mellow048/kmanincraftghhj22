@@ -41,3 +41,5 @@ export {
 export type { Timing, Vec3, AnimName, FaceName } from "../../src/engine";
 
 export * from "../Shared";
+
+export { VillageStreet } from "../InThisTown/places";

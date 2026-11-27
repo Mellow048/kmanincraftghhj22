@@ -89,13 +89,15 @@ export const Glow: React.FC<{
   opacity?: number;
 }> = ({ position = [0, 0, 0], size = 1, color = "#ffb066", opacity = 0.5 }) => {
   const g = useGlowScale();
+  const s = Math.min(size, 2.0);
+  const op = Math.min(0.32, opacity * 0.42) * g;
   return (
-  <sprite position={position} scale={[size, size, 1]}>
+  <sprite position={position} scale={[s, s, 1]}>
     <spriteMaterial
       map={glowTex()}
       color={color}
       transparent
-      opacity={opacity * g}
+      opacity={op}
       depthWrite={false}
       blending={THREE.AdditiveBlending}
       toneMapped={false}
