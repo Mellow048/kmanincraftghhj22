@@ -1,0 +1,115 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "taxes-explained-using-minecraft",
+  "mix": "public/audio/taxes-explained-using-minecraft/mix.mp3",
+  "seconds": 78.3667,
+  "built_from": {
+    "timing.json": "8156f9cb6c430b21879df59ac66bd7d258946f41",
+    "sound.json": "4abadabaac82b3a61e204c2acbc16ea54591bbab",
+    "narration.mp3": "2f63ee91ecf1aa28fc04692c025af1778ed9840f"
+  },
+  "mix_sha1": "f3233d17f89b2864e9cf78811d94e8cb77dfc2e4",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "explain",
+      "at": 0.0,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    },
+    {
+      "from": "2.night",
+      "mood": "tense",
+      "at": 12.33,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    },
+    {
+      "from": "4.mods",
+      "mood": "explain",
+      "at": 32.43,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    },
+    {
+      "from": "5.greedy",
+      "mood": "tense",
+      "at": 50.6,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    },
+    {
+      "from": "6.real",
+      "mood": "explain",
+      "at": 61.63,
+      "track": "Topics/Explainer/explainer_bgm_loop.wav"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/Explainer/explainer_bgm_loop.wav",
+    "sha1": "a513987a318cf0558b5aa950d8b6634594e7fa83"
+  },
+  "beds": 3,
+  "measured": {
+    "musicUnderVoiceDb": 18.3,
+    "secondsWithoutMusic": 0.2,
+    "bedsUnderVoiceDb": 30.8,
+    "sfx": 68,
+    "sfxPerMinute": 52.1,
+    "sfxKinds": 15,
+    "longestGapSeconds": 2.8,
+    "longestGapAt": 68.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 17.6,
+    "voiceOverRestWorstDb": 8.8,
+    "voiceOverRestWorst": [
+      {
+        "db": 8.8,
+        "t": 29.0,
+        "cue": "3.twenty",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 9.2,
+        "t": 46.1,
+        "cue": "4.win",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 9.2,
+        "t": 63.8,
+        "cue": "6.good",
+        "sounding": [
+          "ding",
+          "step_stone"
+        ]
+      },
+      {
+        "db": 9.3,
+        "t": 63.1,
+        "cue": "6.real",
+        "sounding": []
+      },
+      {
+        "db": 9.7,
+        "t": 58.3,
+        "cue": "5.statue",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 10.5,
+        "t": 54.0,
+        "cue": "5.six",
+        "sounding": [
+          "hit"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.1
+  },
+  "failures": []
+}

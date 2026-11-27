@@ -150,7 +150,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Vox kind="stoneBrick" position={on(PLACE.square, 0, 0.06, 0.6)} size={[2.6, 0.12, 8.0]} />
-            <CitizenLead nameTag="Leo" position={on(PLACE.square, 0, 0, -0.2 + w * 1.4)} rotationY={0} animation="walk" animDistance={w * 1.4} face="grin" time={t} />
+            <CitizenLead nameTag="Leo" position={on(PLACE.square, 0, 0, -0.2 + w * 1.4)} rotationY={0} animation={w > 0.02 && w < 0.98 ? "walk" : "cheer"} animDistance={w * 1.4} face="grin" time={t} />
           </>
         );
       },

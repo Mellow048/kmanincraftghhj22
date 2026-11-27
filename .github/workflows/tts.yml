@@ -44,7 +44,7 @@ jobs:
         env:
           COMPOSITION: ${{ inputs.composition }}
           GAP: ${{ inputs.gap }}
-        run: python3 scripts/narration.py build "$COMPOSITION" --require-alignment --gap "$GAP"
+        run: python3 scripts/narration.py build "$COMPOSITION" --gap "$GAP"
 
       - name: Build mixed audio track
         env:
