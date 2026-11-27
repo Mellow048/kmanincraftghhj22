@@ -499,13 +499,21 @@ export const NameTag: React.FC<{
   rotationY?: number;
   scale?: number;
   accent?: string;
-}> = ({ text, position = [0, 2.25, 0], rotationY = 0, scale = 1, accent = "#ffffff" }) => {
+}> = ({ text, position = [0, 2.25, 0], rotationY, scale = 1, accent = "#ffffff" }) => {
+  const ref = useRef<THREE.Group>(null);
   const tex = useMemo(() => wordTexture(text), [text]);
   const { width: gw } = useMemo(() => wordBitmap(text), [text]);
   const textW = Math.max(0.45, ((gw + 4) / 11) * 0.22);
   const bgW = textW + 0.26;
+  useFrame(({ camera }) => {
+    if (rotationY === undefined && ref.current) {
+      const wp = new THREE.Vector3();
+      ref.current.getWorldPosition(wp);
+      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+    }
+  });
   return (
-    <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
+    <group ref={ref} position={position} rotation={[0, rotationY ?? 0, 0]} scale={scale}>
       <mesh position={[0, 0, -0.01]}>
         <planeGeometry args={[bgW, 0.34]} />
         <meshBasicMaterial color="#0f141e" transparent opacity={0.78} side={THREE.DoubleSide} />

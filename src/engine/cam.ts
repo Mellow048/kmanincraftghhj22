@@ -417,19 +417,68 @@ export const cam = {
   streetOverview(o: {
     from: Vec3;
     to: Vec3;
+    on?: Vec3;
+    onTo?: Vec3;
     height?: number;
     fov?: number;
     ease?: Shot["ease"];
   }): Move {
     const h = o.height ?? 6.5;
+    const tgt: Vec3 = o.on ?? [round(o.from[0]), round(o.from[1] + 1.2), round(o.from[2] - 8)];
+    const tgtTo: Vec3 = o.onTo ?? o.on ?? [round(o.to[0]), round(o.to[1] + 1.2), round(o.to[2] - 6)];
     return {
       from: [round(o.from[0]), round(o.from[1] + h), round(o.from[2])],
       to: [round(o.to[0]), round(o.to[1] + Math.max(2.6, h - 2.4)), round(o.to[2])],
-      target: [round(o.from[0]), round(o.from[1] + 1.1), round(o.from[2] - 8)],
-      targetTo: [round(o.to[0]), round(o.to[1] + 1.1), round(o.to[2] - 6)],
+      target: tgt,
+      targetTo: tgtTo,
       fov: o.fov ?? 48,
       ease: o.ease ?? "inOutSine",
     };
+  },
+
+
+  /**
+   * Computes the minimum camera distance needed to fit `spanMeters` horizontally
+   * inside a 9:16 vertical phone frame (`aspect = 0.5625`) with breathing margin.
+   */
+  fitDist9x16(spanMeters: number, fov = 44, margin = 1.32): number {
+    const halfSpan = Math.max(0.6, (spanMeters * margin) / 2);
+    const halfV = Math.tan(((fov * RAD) / 2));
+    const halfH = halfV * (9 / 16);
+    return round(halfSpan / Math.max(0.12, halfH));
+  },
+
+  /**
+   * 9:16-safe two-shot framing: guarantees BOTH characters (`a` and `b`) stay 100%
+   * inside the narrow vertical phone frame with smooth parallax sweep.
+   */
+  frameDuo(o: {
+    a: Vec3;
+    b: Vec3;
+    fromYaw?: number;
+    toYaw?: number;
+    pitch?: number;
+    fov?: number;
+    ease?: Shot["ease"];
+  }): Move {
+    const mid: Vec3 = [
+      round((o.a[0] + o.b[0]) / 2),
+      round((o.a[1] + o.b[1]) / 2 + 1.25),
+      round((o.a[2] + o.b[2]) / 2),
+    ];
+    const span = Math.hypot(o.a[0] - o.b[0], o.a[2] - o.b[2]) + 1.1;
+    const fov = o.fov ?? 44;
+    const dist = Math.max(5.2, cam.fitDist9x16(span, fov, 1.35));
+    return cam.sweep({
+      on: mid,
+      dist,
+      distTo: round(Math.max(4.6, dist - 0.6)),
+      fromYaw: o.fromYaw ?? -22,
+      toYaw: o.toYaw ?? 20,
+      pitch: o.pitch ?? 8,
+      fov,
+      ease: o.ease ?? "inOutSine",
+    });
   },
 
   /** Straight down on a thing on the floor. `spin` (degrees) turns the frame as it rises or sinks. */

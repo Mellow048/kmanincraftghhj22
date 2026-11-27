@@ -1,6 +1,6 @@
 import type React from "react";
 import { Block, Dust, Glow, GodRay, LightPool, Torch, Tree, Vox, Zone, plankTex } from "../../engine";
-import { DeskSetup, Hut, ObsidianLavaPit, PLACE, ScoreboardWall, on } from "./kit";
+import { DeskSetup, Hut, ObsidianLavaPit, PLACE, on } from "./kit";
 
 /**
  * Starter World for a Server Lore Short — three clean zones (`server`, `cave`, `irl`)
@@ -15,19 +15,9 @@ export const World: React.FC = () => (
       <Vox kind="cobble" position={on(PLACE.server, 0, 0.02, 0)} size={[9, 0.08, 12]} />
       <Block position={on(PLACE.server, 0, 0.04, -5.5)} size={[3.2, 0.12, 8.5]} map={plankTex("#8c6239", [2, 4])} />
 
-      {/* Background SMP houses & spawn scoreboard */}
+      {/* Background SMP houses lining spawn */}
       <Hut at={on(PLACE.server, -5.6, 0, -4.5)} />
       <Hut at={on(PLACE.server, 5.8, 0, -3.5)} />
-      <ScoreboardWall
-        title="SERVER LOGS"
-        rows={[
-          { label: "ALEX", value: 2 },
-          { label: "SAM", value: 1 },
-        ]}
-        position={on(PLACE.server, -3.4, 0, -1.6)}
-        rotationY={0.45}
-      />
-
       <Tree position={on(PLACE.server, -7.2, 0, 2.4)} height={4.5} />
       <Tree position={on(PLACE.server, 7.2, 0, 2.0)} height={4.2} />
       <Torch position={on(PLACE.server, -1.8, 1.6, 1.5)} />

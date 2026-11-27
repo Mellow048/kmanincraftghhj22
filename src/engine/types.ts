@@ -5,7 +5,24 @@ import type { EaseName, Vec3 } from "./math";
  * A SHOT is a single, motivated camera move inside a scene.
  * Every shot must fill in `note` with the storytelling reason for the move.
  */
+
+export type HudChatLine = {
+  sender?: string;
+  text: string;
+  color?: string;
+  whisper?: boolean;
+};
+
+export type ShotHud = {
+  chat?: HudChatLine[];
+  typing?: boolean;
+  clock?: string;
+  banner?: { text: string; color?: string; sub?: string };
+  subscribe?: boolean;
+};
+
 export type Shot = {
+  hud?: ShotHud;
   /** Seconds into the scene when this shot begins. 0 for the first shot. */
   at: number;
   /** Duration of this shot in seconds. */
