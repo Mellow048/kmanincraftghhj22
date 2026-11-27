@@ -7,7 +7,7 @@
     "sections": [
       {
         "from": "1.bench",
-        "mood": "warm",
+        "mood": "hope",
         "track": "Topics/ServerLore/up_happy.m4a",
         "trackFrom": 2.5
       },
@@ -18,7 +18,13 @@
       },
       {
         "from": "5.owner",
-        "mood": "triumph",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "trackFrom": 2.5
+      },
+      {
+        "from": "7.back2",
+        "mood": "wonder",
         "track": "Topics/ServerLore/up_happy.m4a",
         "trackFrom": 2.5
       }
@@ -46,7 +52,7 @@
       "gain": -30
     }
   ],
-  "effects": [
+  "sfx": [
     {
       "cue": "1.bench",
       "word": "bench",
@@ -478,7 +484,7 @@
     },
     {
       "cue": "4.hands",
-      "word": "Mayas",
+      "word": "Maya's",
       "sfx": "plink",
       "trim": -4
     },

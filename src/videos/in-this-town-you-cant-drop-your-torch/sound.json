@@ -2,11 +2,16 @@
   "film": "in-this-town-you-cant-drop-your-torch",
   "music": {
     "track": "Topics/InThisTown/InThisTownMusic.aac",
-    "gain": -13,
+    "gain": -15,
     "sections": [
       {
         "from": "1.town",
-        "mood": "bright",
+        "mood": "town",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
+        "from": "2.barber",
+        "mood": "playful",
         "track": "Topics/InThisTown/InThisTownMusic.aac"
       },
       {
@@ -16,7 +21,12 @@
       },
       {
         "from": "6.rule",
-        "mood": "triumph",
+        "mood": "hope",
+        "track": "Topics/InThisTown/InThisTownMusic.aac"
+      },
+      {
+        "from": "7.momback",
+        "mood": "wonder",
         "track": "Topics/InThisTown/InThisTownMusic.aac"
       }
     ]
@@ -48,7 +58,7 @@
       "gain": -30
     }
   ],
-  "effects": [
+  "sfx": [
     {
       "cue": "1.town",
       "word": "torch",

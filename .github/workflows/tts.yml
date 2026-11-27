@@ -14,6 +14,10 @@ on:
         description: "Edge TTS speaking rate"
         required: false
         default: "+0%"
+      gap:
+        description: "Air gap between narration clips in seconds"
+        required: false
+        default: "0.08"
 
 jobs:
   tts:

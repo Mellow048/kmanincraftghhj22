@@ -9,8 +9,8 @@ export const World: React.FC = () => (
     <Zone name="server">
       <Vox kind="grass" position={on(PLACE.server, 0, -0.25, 0)} size={[42, 0.5, 42]} />
       <Vox kind="cobble" position={on(PLACE.server, 0, 0.02, 1.2)} size={[12, 0.08, 13]} />
-      <Hut at={on(PLACE.server, -7.0, 0, -4.5)} wall="#c98e52" roof="#5e3a22" />
-      <Hut at={on(PLACE.server, 7.0, 0, -4.5)} wall="#d6c7a9" roof="#3d6cb8" />
+      <Hut at={on(PLACE.server, -7.0, 0, -4.5)} tint="#c98e52" roof="#5e3a22" />
+      <Hut at={on(PLACE.server, 7.0, 0, -4.5)} tint="#d6c7a9" roof="#3d6cb8" />
       <Tree position={on(PLACE.server, -9.5, 0, 2.5)} height={4.8} />
       <Tree position={on(PLACE.server, 9.5, 0, 2.2)} height={4.6} />
       <Torch position={on(PLACE.server, -3.5, 1.4, 3.6)} light={0} />

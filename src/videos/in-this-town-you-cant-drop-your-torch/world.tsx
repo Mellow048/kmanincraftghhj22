@@ -9,9 +9,9 @@ export const World: React.FC = () => (
     <Zone name="town">
       <Vox kind="grass" position={[0, -0.25, 0]} size={[44, 0.5, 44]} />
       <Vox kind="cobble" position={[0, 0.02, 2]} size={[14, 0.08, 16]} />
-      <Hut at={[-7.2, 0, -4.5]} wall="#c98e52" roof="#6e3c22" />
-      <Hut at={[0, 0, -5.2]} wall="#d4c7ad" roof="#3d5a80" />
-      <Hut at={[7.2, 0, -4.5]} wall="#3b3e4a" roof="#1c1d24" />
+      <Hut at={[-7.2, 0, -4.5]} tint="#c98e52" roof="#6e3c22" />
+      <Hut at={[0, 0, -5.2]} tint="#d4c7ad" roof="#3d5a80" />
+      <Hut at={[7.2, 0, -4.5]} tint="#3b3e4a" roof="#1c1d24" />
       <Tree position={[-10.2, 0, 2.2]} height={5.0} />
       <Tree position={[10.2, 0, 2.0]} height={4.8} />
       <Torch position={[-3.6, 1.4, 4.2]} light={1.8} />

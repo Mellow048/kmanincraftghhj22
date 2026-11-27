@@ -2,7 +2,7 @@
   "film": "taxes-explained-using-minecraft",
   "music": {
     "track": "Topics/Explainer/explainer_bgm_loop.wav",
-    "gain": -13,
+    "gain": -17,
     "sections": [
       {
         "from": "1.hook",
@@ -48,7 +48,7 @@
       "gain": -30
     }
   ],
-  "effects": [
+  "sfx": [
     {
       "cue": "1.hook",
       "word": "Minecraft",
@@ -367,7 +367,7 @@
     },
     {
       "cue": "2.boom",
-      "word": "Leos",
+      "word": "Leo's",
       "sfx": "pop",
       "trim": -4
     },

@@ -9,9 +9,9 @@ export const World: React.FC = () => (
     <Zone name="square">
       <Vox kind="grass" position={on(PLACE.square, 0, -0.25, 0)} size={[42, 0.5, 42]} />
       <Vox kind="cobble" position={on(PLACE.square, 0, 0.02, 0.8)} size={[11, 0.08, 12]} />
-      <Hut at={on(PLACE.square, -6.8, 0, -5.2)} wall="#c98e52" roof="#3d6cb8" />
-      <Hut at={on(PLACE.square, 6.8, 0, -5.2)} wall="#d6c7a9" roof="#b84338" />
-      <Hut at={on(PLACE.square, 0, 0, -8.5)} wall="#b59469" roof="#2d8a5e" />
+      <Hut at={on(PLACE.square, -6.8, 0, -5.2)} tint="#c98e52" roof="#3d6cb8" />
+      <Hut at={on(PLACE.square, 6.8, 0, -5.2)} tint="#d6c7a9" roof="#b84338" />
+      <Hut at={on(PLACE.square, 0, 0, -8.5)} tint="#b59469" roof="#2d8a5e" />
       <Tree position={on(PLACE.square, -9.8, 0, -1.5)} height={4.6} />
       <Tree position={on(PLACE.square, 8.5, 0, -2.8)} height={4.5} />
       <GodRay position={on(PLACE.square, 0, 6.2, -2.0)} rotation={[0, 0, 0.18]} width={4.8} height={11} color="#fff4d6" opacity={0.07} />
