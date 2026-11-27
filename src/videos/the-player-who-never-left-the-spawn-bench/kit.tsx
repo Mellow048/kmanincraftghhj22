@@ -12,7 +12,7 @@ import {
   clamp01,
   lerp,
   vlerp,
-  ServerChatBox,
+  ServerChatBox as BaseServerChatBox,
   BadgePop,
   TearDrops,
   FloatingHeart,
@@ -48,7 +48,6 @@ export {
   vlerp,
   moveBetween,
   VillageStreet,
-  ServerChatBox,
   BadgePop,
   TearDrops,
   FloatingHeart,
@@ -71,6 +70,18 @@ export const timing = timingJson as Timing;
 export const SERVER_POS: Vec3 = [0, 0, 0];
 export const IRL_POS: Vec3 = [80, 0, 0];
 export const SCHOOL_POS: Vec3 = [160, 0, 0];
+
+/** Bench sits along the left side of the spawn pathway (never blocking the center road). */
+export const BENCH_POS: Vec3 = [-2.4, 0, 1.2];
+export const BENCH_ROT = 0.35;
+export const BENCH_SEAT: Vec3 = [-2.34, 0.2, 1.37];
+
+/** Compact 9:16-safe Minecraft chat box scaled to fit cleanly above character nametags. */
+export const ServerChatBox: React.FC<React.ComponentProps<typeof BaseServerChatBox>> = ({
+  scale = 0.48,
+  position = [BENCH_POS[0], 2.95, BENCH_POS[2]],
+  ...rest
+}) => <BaseServerChatBox scale={scale} position={position} {...rest} />;
 
 /* ─────────────────────────── DISTINCT CAST (ZERO CLONES) ─────────────────────────── */
 
@@ -151,7 +162,7 @@ export const SpawnBench: React.FC<{
   rotationY?: number;
   upgraded?: boolean;
   platePressed?: number;
-}> = ({ position = [0, 0, 1.2], rotationY = 0, upgraded = false, platePressed = 0 }) => {
+}> = ({ position = BENCH_POS, rotationY = BENCH_ROT, upgraded = false, platePressed = 0 }) => {
   const pressY = 0.04 - clamp01(platePressed) * 0.025;
   return (
     <group position={position} rotation={[0, rotationY, 0]}>
@@ -220,7 +231,7 @@ export const TntBlock: React.FC<{ position?: Vec3; fuse?: number }> = ({
 };
 
 export const Crater: React.FC<{ position?: Vec3; debris?: number }> = ({
-  position = [0, 0, 1.2],
+  position = BENCH_POS,
   debris = 1,
 }) => (
   <group position={position}>
