@@ -220,6 +220,17 @@ SAY = {
     "laptop": "L AE P T AA P",
     "smiling": "S M AY L IH NG",
     "minecraft": "M AY N K R AE F T",
+    "midsentence": "M IH D S EH N T AH N S",
+    "messaged": "M EH S AH JH D",
+    "moo": "M UW",
+    "toby": "T OW B IY",
+    "milked": "M IH L K T",
+    "palette": "P AE L AH T",
+    "tossed": "T AO S T",
+    "straps": "S T R AE P S",
+    "postman": "P OW S T M AE N",
+    "hugged": "HH AH G D",
+    "baron": "B EH R AH N",
 }
 
 def assembled_spans(raw, count, length):
