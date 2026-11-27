@@ -34,3 +34,9 @@ Remaster v3 keeps all Remaster v2 visual/shader upgrades (`vibrant-day`, horizon
   * Added 6 physical 3D visual-metaphor props in `Topics/Explainer/props.tsx`: `PriceBillboard`, `ShopStall` (counter + torches + spinning Pickaxe + billboard), `CommandBoard` (typewriter console), `EmeraldFountain`, `FloatingItemPyramid`, and `OrbitingItemRing`.
   * Made `NameTag` auto-billboard toward the camera when `rotationY` is omitted.
   * Rebuilt `Topics/Explainer/template/scene1.tsx` around physical metaphors + seamless Frame-0 loop + `cam.twoShot` (`y: 0.72` captions) and condensed `Topics/Explainer/README.md` into a concise ~35-line Visual Metaphor Playbook.
+
+## 5. Reference Script & Hook/Retention/Payoff Studies + Free TTS Lock (v3.6)
+* **ServerLore (`Topics/ServerLore/REFERENCE-SCRIPTS.md`):** Added both full 50k+ reference transcripts (*3 AM Mom*, *Never Heard A Creeper*), the Grade 3–4 plain-English formula (`So / But / And / Because`, 8–12 words/sentence), a banned "wise old man / AI slop" rewrite table, and the 9-beat hook-to-CTA skeleton.
+* **Explainer (`Topics/Explainer/REFERENCE-STUDY.md`):** Added the *Inflation, explained using Minecraft* study (`75.8s`, `237 words`) covering its 8-step loopable flow, physical character motion, lateral pan/truck camera grammar, debate-bait ending, and seamless Frame-0 loop.
+* **InThisTown (`docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md`):** Added the clean transcript, plain-English concrete-number cadence study, and 4-layer stacked payoff anatomy (*Loophole Rescue + Comedy -> Villain Karma -> 212 Resurrection + Scarf Callback -> Direct Heart + Loop*), and aligned caption `y: 0.72`.
+* **Free TTS Lock (`AGENTS.md`, `docs/VOICE-AND-TTS.md`):** Explicitly locked free `edge-tts` (`python3 scripts/tts.py <id> --voice en-US-GuyNeural --rate=+10%`, offline fallback `kokoro`) and banned paid ElevenLabs.

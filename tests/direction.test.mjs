@@ -481,7 +481,7 @@ export { MinecraftAvatar } from './src/engine/MinecraftAvatar';`,
     scenes: [{
       id: 's1',
       duration: 1.5,
-      shots: [{ cue: '1.a', from: [0, 1.5, 4], to: [0, 1.5, 2], target: [0, 1.2, 0], at: 0, dur: 1.5 }],
+      shots: [{ cue: '1.a', from: [0, 1.5, 5], to: [0, 1.5, 3.6], target: [0, 1.2, 2], at: 0, dur: 1.5 }],
       sampleStage: (_i, t) => createElement('group', null,
         createElement(Villager, { position: [0, 0, 0], walk: t * 1.2 }),
         createElement(Hero, { position: [1, 0, 0], animation: 'stagger' }),

@@ -25,4 +25,6 @@ npm run new -- "The Player Who…" --topic server-lore
 5. **Dual-Track Up Audio (`Topics/ServerLore/SOUND.md`):**
    * Switch cleanly between `up_happy.m4a` (`0:02+`) for mystery/rally/payoff and `up_sad.m4a` for the IRL secret & heartbreak beat.
 
+**Before writing the script:** Read [`REFERENCE-SCRIPTS.md`](REFERENCE-SCRIPTS.md) — plain 9-year-old English, short `So / But / And / Because` sentences (~250 words), zero wise-old-man analogies.
+
 *Optional deep dives: `Topics/ServerLore/SOUND.md`, `Topics/ServerLore/PACK.md`, `Topics/ServerLore/SCRIPT.md`.*

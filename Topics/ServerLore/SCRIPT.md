@@ -32,9 +32,11 @@ Do **NOT** repeat the 3 AM night-shift mother (`3am-mom`) or the deaf boy saved 
 
 ---
 
-## Voice & Word Rules
+## Voice & Word Rules (9-Year-Old Plain English — See [`REFERENCE-SCRIPTS.md`](REFERENCE-SCRIPTS.md))
 
 - **Third-person empathetic narrator** ("Nobody knew why Leo...", "And every night at three...", "Until the server Owner checked...").
 - **Short punchy beats (6–14 words per cue).** Split long reveals across two lines or two `cut:` shots.
 - **Words paint concrete props & UI:** Always write the name of the chat line, sign text, scoreboard counter, block, or room in plain words so `wordAt(cue, word)` can pop the exact UI card at that syllable!
 - **Last line ends with a story-tied `subscribe`** hook (enforced by `topic.json`).
+
+- **Zero wise-old-man / AI-essay prose:** No poetic metaphors or fancy analogies (*"it wasn't just X, it was Y"*, *"beneath the facade"*). Use Grade 3–4 words, 8–12 words per sentence, connected with `So`, `But`, `And`, `Because` (see [`REFERENCE-SCRIPTS.md`](REFERENCE-SCRIPTS.md)).

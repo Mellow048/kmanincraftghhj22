@@ -1,3 +1,5 @@
+> **5k-in-10h Pacing & Payoff Study:** Read [`docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md`](../../docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md) for the exact hook, 1.47s cut rhythm, concrete-number stakes, and 4-layer stacked payoff + loop anatomy.
+
 # In This Town — Minecraft storytime
 
 A kid tells you about the strange town he grew up in, the one rule nobody would explain, and what happened when he

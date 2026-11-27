@@ -47,7 +47,7 @@ When running `python3 scripts/sound.py build <film>`:
 
 ## 4. Generating & Aligning TTS on This Machine
 
-1. **Primary TTS (`edge-tts`, zero API keys required):**
+1. **Primary TTS (`edge-tts`, 100% FREE, zero API keys — NEVER use paid ElevenLabs):**
    - Use **`en-US-GuyNeural`** at **`--rate=+10%`** (same energetic young American male voice used in the remastered *Mountain* and *Fox* Shorts; keeps `narration.py` `atempo` cleanly inside `1.30x–1.45x`).
    - Run the wrapper:
      ```bash

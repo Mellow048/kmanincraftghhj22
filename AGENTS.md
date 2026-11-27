@@ -51,7 +51,7 @@ A 9:16 phone frame is a narrow vertical slit (`width = height * 9/16`). Zooming 
 * **Pacing:** Median shot **`1.4–1.8s`**. Hook spoken and visually proven in `< 1.5s` (bright Frame 1, `lum >= 95`, subject at `dist <= 8.5m`, no dark/empty openers).
 * **Shaders & lighting:** Always enable `post: { shaders: "vibrant-day" }` (day), `"warm-sunset"` (golden), or `"moonlight"` (readable night, `< 2%` dark frames). Strictly 3D — no 2D HTML overlays or `@react-three/postprocessing`.
 * **Captions:** `captions: { words: timing.words, y: 0.72, motion: "on-beat", dangerWords: [...], highlightWords: [...] }`.
-* **Voice & sound:** Male, young, energetic, natural American TTS (`docs/VOICE-AND-TTS.md`). Every finished film has music + foley built via `scripts/sound.py`.
+* **Voice & sound (FREE `edge-tts` ONLY — NEVER ElevenLabs):** Run `python3 scripts/tts.py <id> --voice en-US-GuyNeural --rate=+10%` (free `edge-tts`, offline fallback `--engine kokoro`; see `docs/VOICE-AND-TTS.md`). Every finished film has music + foley built via `scripts/sound.py`.
 
 ### 7. Story Spine & Workflow
 1. **Hook -> Escalation -> Emotional Twist -> Payoff -> CTA last.** Every spoken noun/verb must appear on screen (`wordAt` + intra-line `cut:` splits for lists).
@@ -64,6 +64,7 @@ A 9:16 phone frame is a narrow vertical slit (`width = height * 9/16`). Zooming 
 npm run typecheck                           # TypeScript check
 npm run check                               # Contract & topic lint
 npm run rehearse -- <film-id> --final       # Camera, motion, framing, phasing & audio gate
+python3 scripts/tts.py <id> --voice en-US-GuyNeural --rate=+10%  # FREE edge-tts (never ElevenLabs)
 python3 scripts/narration.py build <id> --require-alignment
 python3 scripts/sound.py draft <id> && python3 scripts/sound.py build <id>
 # Permission-only on user's machine:

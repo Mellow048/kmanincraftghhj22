@@ -22,4 +22,6 @@ npm run new -- "Inflation Explained Using Minecraft" --topic explainer
 * **Cold-Open -> Seamless Loop:** Open Frame 0 on the signature visual (`ShopStall` + `10` emeralds + `"<Topic>, explained using Minecraft."`). End mid-clause (`"And that's..."`) on the **exact same Frame-0 camera and stage** so YouTube Shorts loops seamlessly.
 * **Captions & Audio (`Topics/Explainer/SOUND.md`):** `y: 0.72`, `motion: "on-beat"`, `dangerWords` + `highlightWords`. Always use `Topics/Explainer/explainer_bgm_loop.wav` at quiet `gain: -19` (`musicUnderVoiceDb: [17, 25]`) so BGM never overpowers the voice.
 
+**Before writing the script or shots:** Read [`REFERENCE-STUDY.md`](REFERENCE-STUDY.md) — exact 8-step loopable flow, plain 9-year-old English, physical character motion, and lateral pan/truck camera grammar.
+
 *Optional deep dives: `Topics/Explainer/SOUND.md`, `Topics/Explainer/PACK.md`, `Topics/Explainer/SCRIPT.md`.*
