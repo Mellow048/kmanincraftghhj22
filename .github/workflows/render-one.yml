@@ -1,10 +1,12 @@
 name: Render one film (single job)
 
 # Fallback single-job renderer AND parallel surgical snip-render-and-glue splicer!
-# Pass `frames` as either:
+# Pass `frames` as one of:
 #   - "" or "0-140"                                      -> single-job render (original behavior)
 #   - "SPLICE:<release-tag>:<from1>-<to1>,<from2>-<to2>" -> parallel render of ONLY changed ranges,
 #     frame-accurately spliced into the lossless master from <release-tag> + fresh mix.mp3 audio!
+#   - "GLUE:<release-tag>:<source-run-id>"               -> re-splice already-rendered splice-seg-*
+#     artifacts from <source-run-id> onto <release-tag> + fresh mix.mp3 audio (no re-rendering)!
 on:
   workflow_dispatch:
     inputs:
@@ -16,7 +18,7 @@ on:
         required: false
         default: ""
       frames:
-        description: "Optional frame range e.g. 0-140 OR SPLICE:<tag>:<r1>,<r2>,..."
+        description: "Optional frame range e.g. 0-140 OR SPLICE:<tag>:<r1>,<r2>,... OR GLUE:<tag>:<run_id>"
         required: false
         default: ""
       concurrency:
@@ -36,22 +38,11 @@ jobs:
     outputs:
       mode: ${{ steps.parse.outputs.mode }}
       base_release: ${{ steps.parse.outputs.base_release }}
+      source_run_id: ${{ steps.parse.outputs.source_run_id }}
       matrix: ${{ steps.parse.outputs.matrix }}
       segments: ${{ steps.parse.outputs.segments }}
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-
-      - name: Verify contract
-        env:
-          COMPOSITION: ${{ inputs.composition }}
-        run: npm run typecheck && npm run check && npm run test:direction && npm run rehearse -- "$COMPOSITION" --pre-render
-
       - name: Parse render plan
         id: parse
         env:
@@ -74,15 +65,44 @@ jobs:
               with open(out_path, "a") as fh:
                   fh.write("mode=splice\n")
                   fh.write(f"base_release={base_release}\n")
+                  fh.write("source_run_id=\n")
                   fh.write(f"segments={len(include)}\n")
                   fh.write(f"matrix={json.dumps({'include': include})}\n")
+          elif spec.startswith("GLUE:"):
+              parts = spec.split(":", 2)
+              if len(parts) != 3 or not parts[1] or not parts[2]:
+                  sys.exit(f"Invalid GLUE spec: {spec!r}")
+              base_release, source_run_id = parts[1], parts[2]
+              with open(out_path, "a") as fh:
+                  fh.write("mode=glue\n")
+                  fh.write(f"base_release={base_release}\n")
+                  fh.write(f"source_run_id={source_run_id}\n")
+                  fh.write("segments=0\n")
+                  fh.write("matrix={\"include\":[]}\n")
           else:
               with open(out_path, "a") as fh:
                   fh.write("mode=single\n")
                   fh.write("base_release=\n")
+                  fh.write("source_run_id=\n")
                   fh.write("segments=0\n")
                   fh.write("matrix={\"include\":[]}\n")
           PY
+
+      - uses: actions/checkout@v4
+        if: steps.parse.outputs.mode != 'glue'
+      - uses: actions/setup-node@v4
+        if: steps.parse.outputs.mode != 'glue'
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        if: steps.parse.outputs.mode != 'glue'
+
+      - name: Verify contract
+        if: steps.parse.outputs.mode != 'glue'
+        env:
+          COMPOSITION: ${{ inputs.composition }}
+        run: npm run typecheck && npm run check && npm run test:direction && npm run rehearse -- "$COMPOSITION" --pre-render
 
   render_ranges:
     name: Splice ${{ matrix.from }}-${{ matrix.to }}
@@ -112,9 +132,13 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p out
-          npx remotion render src/index.ts "$COMPOSITION" "out/seg-${INDEX}_${FROM}-${TO}.mov" \
+          if ! npx remotion render src/index.ts "$COMPOSITION" "out/seg-${INDEX}_${FROM}-${TO}.mov" \
             --frames="${FROM}-${TO}" --codec=h264 --crf=18 --audio-codec=pcm-16 --enforce-audio-track \
-            --concurrency="$CONCURRENCY" --gl=swangle --timeout=240000 2>&1 | tail -40
+            --concurrency="$CONCURRENCY" --gl=swangle --timeout=240000 2>&1 | tee render.log; then
+            MSG=$(grep -v "Rendered\|Encoded\|Stitching" render.log | tail -c 2500 | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+            echo "::error title=Splice range $FROM-$TO failed::$MSG"
+            exit 1
+          fi
 
       - name: Upload rendered range
         uses: actions/upload-artifact@v4
@@ -128,12 +152,20 @@ jobs:
   splice_deliver:
     name: Splice into master and deliver
     needs: [plan, render_ranges]
-    if: needs.plan.outputs.mode == 'splice'
+    if: ${{ !cancelled() && needs.plan.result == 'success' && (needs.plan.outputs.mode == 'glue' || (needs.plan.outputs.mode == 'splice' && needs.render_ranges.result == 'success')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Ensure ffmpeg and ffprobe are available
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version | head -n 2
+          ffprobe -version | head -n 1
 
       - name: Download base 1080x1920 master from release ${{ needs.plan.outputs.base_release }}
         env:
@@ -144,35 +176,60 @@ jobs:
           gh release download "$BASE_RELEASE" --pattern "*.mp4" --dir base
           ls -la base/
 
-      - name: Download rendered ranges
+      - name: Download rendered ranges (same run)
+        if: needs.plan.outputs.mode == 'splice'
         uses: actions/download-artifact@v4
         with:
           pattern: splice-seg-*
           path: clips
           merge-multiple: true
 
+      - name: Download rendered ranges (from run ${{ needs.plan.outputs.source_run_id }})
+        if: needs.plan.outputs.mode == 'glue'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_RUN_ID: ${{ needs.plan.outputs.source_run_id }}
+        run: |
+          mkdir -p clips
+          gh run download "$SOURCE_RUN_ID" --pattern "splice-seg-*" --dir clips
+          find clips -type f | sort
+
       - name: Frame-accurate splice + audio mux
         env:
           COMPOSITION: ${{ inputs.composition }}
           SEGMENTS: ${{ needs.plan.outputs.segments }}
+          MODE: ${{ needs.plan.outputs.mode }}
         run: |
-          set -euo pipefail
-          master=$(ls base/*.mp4 | head -n 1)
-          audio="public/audio/${COMPOSITION}/mix.mp3"
-          args=(--master "$master" --audio "$audio" --out "out/${COMPOSITION}.mp4" --crf 18)
-          count=0
-          for f in $(ls clips/seg-*.mov | sort); do
-            base_name=$(basename "$f" .mov)
-            rng="${base_name#*_}"
-            args+=(--clip "${rng}:${f}")
-            count=$((count + 1))
-          done
-          if [ "$count" -ne "$SEGMENTS" ]; then
-            echo "Expected $SEGMENTS splice segments, found $count" >&2
+          set -o pipefail
+          {
+            set -euo pipefail
+            master=$(ls base/*.mp4 | head -n 1)
+            audio="public/audio/${COMPOSITION}/mix.mp3"
+            args=(--master "$master" --audio "$audio" --out "out/${COMPOSITION}.mp4" --crf 18)
+            count=0
+            while IFS= read -r f; do
+              [ -n "$f" ] || continue
+              base_name=$(basename "$f" .mov)
+              rng="${base_name#*_}"
+              args+=(--clip "${rng}:${f}")
+              count=$((count + 1))
+            done < <(find clips -type f -name 'seg-*.mov' | sort)
+            echo "Found $count splice clip(s) (mode=$MODE, expected=$SEGMENTS)"
+            if [ "$count" -eq 0 ]; then
+              echo "No seg-*.mov clips found under clips/" >&2
+              exit 1
+            fi
+            if [ "$MODE" = "splice" ] && [ "$count" -ne "$SEGMENTS" ]; then
+              echo "Expected $SEGMENTS splice segments, found $count" >&2
+              exit 1
+            fi
+            python3 scripts/splice-video.py "${args[@]}"
+            ls -la "out/${COMPOSITION}.mp4"
+          } 2>&1 | tee splice.log || {
+            MSG=$(tail -c 3000 splice.log | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+            echo "::error title=Splice failed::$MSG"
             exit 1
-          fi
-          python3 scripts/splice-video.py "${args[@]}"
-          ls -la "out/${COMPOSITION}.mp4"
+          }
 
       - name: Upload spliced master artifact
         uses: actions/upload-artifact@v4
@@ -234,7 +291,7 @@ jobs:
           body: |
             Surgical snip-render-and-glue 1080x1920 master spliced onto `${{ needs.plan.outputs.base_release }}`.
             - Composition: `${{ inputs.composition }}`
-            - Replaced ranges: `${{ inputs.frames }}`
+            - Spec: `${{ inputs.frames }}`
             - Commit: `${{ github.sha }}`
           files: "out/${{ inputs.composition }}.mp4"
           token: ${{ secrets.GITHUB_TOKEN }}

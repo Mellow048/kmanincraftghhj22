@@ -6,18 +6,28 @@ Takes an existing full-resolution master MP4, a list of newly rendered partial f
 (rendered with `remotion render --frames=A-B`), and an audio mix MP3, and produces a
 frame-exact spliced 1080x1920 MP4 preserving every untouched frame from the master.
 
+Architecture (low-memory, FFmpeg 4/5/6/7/8/9 compatible):
+  1. Verify master frame count and every replacement clip's exact frame count.
+  2. Build an ordered timeline of keep spans (from master) + replacement clips.
+  3. Normalize each segment independently into a temp directory using identical H.264
+     codec / pixel-format / fps / timescale parameters (zero multi-stream split buffering)
+     and verify every segment's exact frame count.
+  4. Stream-copy concatenate all segments via the concat demuxer while muxing the fresh
+     `mix.mp3` audio track trimmed/padded to exact duration.
+  5. Verify final output frame count equals master frame count.
+
 Usage:
   python3 scripts/splice-video.py \
     --master master.mp4 \
     --audio public/audio/<slug>/mix.mp3 \
     --out out/<slug>.mp4 \
-    --clip 186-319:clips/seg-0.mov \
-    --clip 939-1006:clips/seg-1.mov
+    --clip 186-319:clips/seg-00_186-319.mov \
+    --clip 939-1006:clips/seg-01_939-1006.mov
 """
 import argparse
 import os
 import subprocess
-import sys
+import tempfile
 
 
 def count_frames(ffprobe: str, path: str) -> int:
@@ -43,6 +53,12 @@ def count_frames(ffprobe: str, path: str) -> int:
     return int(digits)
 
 
+def run_cmd(cmd: list[str]) -> None:
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    if res.returncode != 0:
+        raise RuntimeError(f"Command failed (exit {res.returncode}): {' '.join(cmd)}\n{res.stdout}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--master", required=True)
@@ -56,7 +72,7 @@ def main() -> None:
     args = ap.parse_args()
 
     total_frames = count_frames(args.ffprobe, args.master)
-    print(f"Master: {args.master} ({total_frames} frames)")
+    print(f"Master: {args.master} ({total_frames} frames)", flush=True)
 
     clips: list[tuple[int, int, str]] = []
     for spec in args.clip:
@@ -69,75 +85,92 @@ def main() -> None:
         actual = count_frames(args.ffprobe, path)
         if actual != expected:
             raise RuntimeError(f"Clip {path} ({a}-{b}) has {actual} frames, expected {expected}")
-        print(f"  Replace [{a}..{b}] ({expected}f) <- {path}")
+        print(f"  Replace [{a}..{b}] ({expected}f) <- {path}", flush=True)
         clips.append((a, b, path))
 
     clips.sort(key=lambda x: x[0])
     for i in range(1, len(clips)):
         if clips[i][0] <= clips[i - 1][1]:
-            raise ValueError(f"Overlapping clip ranges: {clips[i-1][:2]} and {clips[i][:2]}")
+            raise ValueError(f"Overlapping clip ranges: {clips[i - 1][:2]} and {clips[i][:2]}")
 
-    # Build ordered timeline of master keep spans + replacement clips
-    cmd = [args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.master]
-    for _, _, path in clips:
-        cmd.extend(["-i", path])
-    audio_idx = 1 + len(clips)
-    cmd.extend(["-i", args.audio])
-
-    filter_parts: list[str] = []
-    concat_labels: list[str] = []
-    seg_idx = 0
+    # Build ordered timeline of ('keep', start, end_exclusive) and ('clip', start, end_exclusive, path)
+    timeline: list[tuple] = []
     cursor = 0
-
-    for clip_i, (a, b, _) in enumerate(clips):
+    for a, b, path in clips:
         if cursor < a:
-            lbl = f"v{seg_idx}"
-            filter_parts.append(
-                f"[0:v]trim=start_frame={cursor}:end_frame={a},setpts=PTS-STARTPTS,format=yuv420p[{lbl}]"
-            )
-            concat_labels.append(f"[{lbl}]")
-            print(f"  Keep    [{cursor}..{a-1}] ({a - cursor}f) <- master")
-            seg_idx += 1
-        lbl = f"v{seg_idx}"
-        in_idx = 1 + clip_i
-        filter_parts.append(f"[{in_idx}:v]setpts=PTS-STARTPTS,format=yuv420p[{lbl}]")
-        concat_labels.append(f"[{lbl}]")
-        seg_idx += 1
+            timeline.append(("keep", cursor, a))
+        timeline.append(("clip", a, b + 1, path))
         cursor = b + 1
-
     if cursor < total_frames:
-        lbl = f"v{seg_idx}"
-        filter_parts.append(
-            f"[0:v]trim=start_frame={cursor}:end_frame={total_frames},setpts=PTS-STARTPTS,format=yuv420p[{lbl}]"
-        )
-        concat_labels.append(f"[{lbl}]")
-        print(f"  Keep    [{cursor}..{total_frames-1}] ({total_frames - cursor}f) <- master")
-        seg_idx += 1
+        timeline.append(("keep", cursor, total_frames))
 
-    duration_s = total_frames / float(args.fps)
-    filter_parts.append(f"{''.join(concat_labels)}concat=n={seg_idx}:v=1:a=0[vout]")
-    filter_parts.append(f"[{audio_idx}:a]apad,atrim=0:{duration_s:.6f},asetpts=PTS-STARTPTS[aout]")
-    filter_complex = ";".join(filter_parts)
+    common_v = [
+        "-an",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "medium",
+        "-crf",
+        str(args.crf),
+        "-r",
+        str(args.fps),
+        "-video_track_timescale",
+        "15360",
+        "-pix_fmt",
+        "yuv420p",
+    ]
 
-    os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
-    cmd.extend(
-        [
-            "-filter_complex",
-            filter_complex,
+    with tempfile.TemporaryDirectory(prefix="splice-parts-") as tmpdir:
+        part_paths: list[str] = []
+        for idx, item in enumerate(timeline):
+            part_path = os.path.join(tmpdir, f"part-{idx:03d}.mp4")
+            kind = item[0]
+            start_f, end_f = item[1], item[2]
+            expected_f = end_f - start_f
+            if kind == "keep":
+                print(f"  [{idx:02d}] Keep    [{start_f}..{end_f - 1}] ({expected_f}f) <- master", flush=True)
+                vf = f"trim=start_frame={start_f}:end_frame={end_f},setpts=PTS-STARTPTS,format=yuv420p"
+                cmd = [args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", args.master, "-vf", vf, *common_v, part_path]
+            else:
+                clip_path = item[3]
+                print(f"  [{idx:02d}] Replace [{start_f}..{end_f - 1}] ({expected_f}f) <- {os.path.basename(clip_path)}", flush=True)
+                vf = "setpts=PTS-STARTPTS,format=yuv420p"
+                cmd = [args.ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", clip_path, "-vf", vf, *common_v, part_path]
+            run_cmd(cmd)
+            got_f = count_frames(args.ffprobe, part_path)
+            if got_f != expected_f:
+                raise RuntimeError(f"Part {idx} ({kind} {start_f}..{end_f - 1}) has {got_f} frames, expected {expected_f}")
+            part_paths.append(part_path)
+
+        list_txt = os.path.join(tmpdir, "list.txt")
+        with open(list_txt, "w") as fh:
+            for p in part_paths:
+                fh.write(f"file '{p}'\n")
+
+        duration_s = total_frames / float(args.fps)
+        os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
+        mux_cmd = [
+            args.ffmpeg,
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-y",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            list_txt,
+            "-i",
+            args.audio,
             "-map",
-            "[vout]",
+            "0:v:0",
             "-map",
-            "[aout]",
+            "1:a:0",
             "-c:v",
-            "libx264",
-            "-preset",
-            "medium",
-            "-crf",
-            str(args.crf),
-            "-r",
-            str(args.fps),
-            "-pix_fmt",
-            "yuv420p",
+            "copy",
+            "-af",
+            f"apad,atrim=0:{duration_s:.6f},asetpts=PTS-STARTPTS",
             "-c:a",
             "aac",
             "-b:a",
@@ -146,16 +179,14 @@ def main() -> None:
             "+faststart",
             args.out,
         ]
-    )
-
-    print(f"Splicing {seg_idx} segments into {args.out} ({total_frames}f @ {args.fps}fps)...")
-    subprocess.check_call(cmd)
+        print(f"Concatenating {len(part_paths)} parts + muxing {args.audio} ({duration_s:.3f}s)...", flush=True)
+        run_cmd(mux_cmd)
 
     out_frames = count_frames(args.ffprobe, args.out)
     if out_frames != total_frames:
         raise RuntimeError(f"Output frame count mismatch: got {out_frames}, expected {total_frames}")
     size_mb = os.path.getsize(args.out) / (1024 * 1024)
-    print(f"SUCCESS: {args.out} -> {out_frames} frames ({size_mb:.1f} MB)")
+    print(f"SUCCESS: {args.out} -> {out_frames} frames ({size_mb:.1f} MB)", flush=True)
 
 
 if __name__ == "__main__":
