@@ -23,8 +23,13 @@ npm run new -- "The Player Who…" --topic server-lore
    * **75–85% `cam.front` / `cam.push` / `cam.twoShot` / `cam.truck`** at `dist: 4.4–6.2m, fov: 44–46°` (plus `dist: 10–14m` high-angle wides for whole-server torch rallies).
    * Cut every **`1.4–1.8s`**, switch day/night `look` cleanly on time-lapse beats (`overworld-night` / `lantern-night` -> `overworld-day`), and never blanket-apply `screenOffset`.
 5. **Dual-Track Up Audio (`Topics/ServerLore/SOUND.md`):**
-   * Switch cleanly between `up_happy.m4a` (`0:02+`) for mystery/rally/payoff and `up_sad.m4a` for the IRL secret & heartbreak beat.
+   * Switch cleanly between `up_happy.m4a` (`trackFrom: 2.5`, past the silent intro) for mystery/rally/payoff and `up_sad.m4a` for the IRL secret & heartbreak beat (`gain: -12.8` -> ~14 dB under voice inside `[11, 22]`, with a short 2–3 s emotional silence on the climax reveal and **0 buried SFX**).
 
-**Before writing the script:** Read [`REFERENCE-SCRIPTS.md`](REFERENCE-SCRIPTS.md) — plain 9-year-old English, short `So / But / And / Because` sentences (~250 words), zero wise-old-man analogies.
+## 2. What the Owner Wants / Doesn't Want / Loves (Server Lore v8 Standard)
+* **Loves:** Bespoke grounded environments for EVERY beat (see [`reference/buried-himself-every-ten-minutes/`](reference/buried-himself-every-ten-minutes/README.md): carved forest dirt shaft + choppable oak tree, torch-lit flaming `DungeonBoss` arena, underground ant-farm cutaway with prowling zombies overhead, warm lantern Safe Booths + full-frame friendly Iron Golems, cozy IRL bedroom, and centered `OpenBookPage` reveal).
+* **Wants:** Wide 9:16 framing so Iron Golems, booths, IRL rooms, and handwritten books never crop; single clean HUD (chat/clock/banner) without colliding 3D `FloatingNumber`s; genuine Minecraft details (poppies, tools, lava pours); and emotional dual-track `up_happy` ↔ `up_sad` scoring.
+* **Doesn't want:** Fake dirt boxes sitting on top of a cobblestone street, clipped `OpenBookPage` text, overlapping 3D+2D UI clutter, scoreboards (`<ScoreboardWall>` is banned), ground Z-fighting, or buried SFX.
+
+**Before writing the script or shots:** Open our approved full source + MP4 reference [`reference/buried-himself-every-ten-minutes/`](reference/buried-himself-every-ten-minutes/README.md) (and [`reference/README.md`](reference/README.md)) plus [`REFERENCE-SCRIPTS.md`](REFERENCE-SCRIPTS.md) — plain 9-year-old English, short `So / But / And / Because` sentences (~250–300 words), zero wise-old-man analogies.
 
 *Optional deep dives: `Topics/ServerLore/SOUND.md`, `Topics/ServerLore/PACK.md`, `Topics/ServerLore/SCRIPT.md`.*

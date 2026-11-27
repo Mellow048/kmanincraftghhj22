@@ -892,9 +892,13 @@ export const FloatingNumber: React.FC<{
   const dy = bob > 0 ? Math.sin(t * 3.1) * bob : 0;
   useFrame(({ camera }) => {
     if (rotationY === undefined && ref.current) {
-      const wp = new THREE.Vector3();
-      ref.current.getWorldPosition(wp);
-      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+      if (ref.current.parent) {
+        const pq = new THREE.Quaternion();
+        ref.current.parent.getWorldQuaternion(pq);
+        ref.current.quaternion.copy(pq.invert()).multiply(camera.quaternion);
+      } else {
+        ref.current.quaternion.copy(camera.quaternion);
+      }
     }
   });
 

@@ -99,6 +99,7 @@
   "pack": "Topics/Explainer/PACK.md",
   "template": "Topics/Explainer/template",
   "models": {
+    "tariffs-explained-using-minecraft": "OUR APPROVED FULL REFERENCE (source + MP4 + contact sheet + shot log): 1:22.6, 44 shots, 325 words, 238 WPM. Separate Red/Blue islands over ocean bridge, StoneBillboard shop prices, elevated StandingRuleSign, twin BEFORE/AFTER chests, seamless Frame-0 loop, continuous BGM, 0 buried SFX. The owner (2026-11-27): 'Love your work, Please put them into the reference with their source code and mp4, i actually liked this alot.' Page, source and mp4: Topics/Explainer/reference/tariffs-explained.",
     "napoleon": "Topics/Explainer/reference/napoleon/README.md (target pacing, 2-lead contrast, composite props, and loop payoff)",
     "minimum-wage": "Topics/Explainer/reference/minimum-wage/README.md (3-option visual breakdown, twin before/after chests, balanced trade-off dilemma loop)"
   },

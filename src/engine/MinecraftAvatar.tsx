@@ -66,6 +66,8 @@ export type MinecraftAvatarProps = {
   /** Shoes: a colour for a pair of trainers drawn over the feet. `shoeGlow` 0–1 makes them light up. */
   shoes?: string;
   shoeGlow?: number;
+  /** Chunky 3D Minecraft armor boots worn over the lower shins & feet (keeps trousers visible!). */
+  boots?: "gold" | "iron" | "diamond";
 
   /** Additive head aim, radians. */
   headYaw?: number;
@@ -206,6 +208,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   colors,
   shoes,
   shoeGlow = 0,
+  boots,
   headYaw = 0,
   headPitch = 0,
   headRoll = 0,
@@ -366,7 +369,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
 
   const actorId = useId();
   const collision = useCollisionWorld();
-  const actorRadius = 0.34 * scale;
+  const actorRadius = 0.26 * scale;
   const actorHeight = 1.85 * scale;
   if (collision) {
     collision.updateActor({ id: actorId, position, radius: actorRadius, height: actorHeight });
@@ -379,12 +382,30 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
     ? collision.resolveActor(actorId, position, actorRadius, actorHeight)
     : position;
 
+  const bootPalette =
+    boots === "gold"
+      ? { main: "#f6c92e", trim: "#b87c0a", sole: "#855204", emissive: "#b88200" }
+      : boots === "diamond"
+        ? { main: "#46e0d2", trim: "#1c9c92", sole: "#145c63", emissive: "#1b7870" }
+        : boots === "iron"
+          ? { main: "#d6dce4", trim: "#8c94a0", sole: "#565d68", emissive: "#38404a" }
+          : null;
+
   return (
     <group position={resolvedPos} rotation-y={rotationY} scale={scale}>
       {shadow && (
-        <mesh position={[0, 0.014, 0]} rotation-x={-Math.PI / 2} renderOrder={1}>
+        <mesh position={[0, 0.022, 0]} rotation-x={-Math.PI / 2} renderOrder={1}>
           <planeGeometry args={[0.95, 0.6]} />
-          <meshBasicMaterial map={shadowTex} color="#000000" transparent opacity={shadowOpacity} depthWrite={false} />
+          <meshBasicMaterial
+            map={shadowTex}
+            color="#000000"
+            transparent
+            opacity={shadowOpacity}
+            depthWrite={false}
+            polygonOffset
+            polygonOffsetFactor={-4}
+            polygonOffsetUnits={-4}
+          />
         </mesh>
       )}
 
@@ -483,6 +504,30 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
                 </mesh>
               </>
             ) : null}
+            {bootPalette ? (
+              <group>
+                {/* Chunky Minecraft armor boot cuff around lower shin */}
+                <mesh castShadow position={[0, -4.1 * PX, 0]}>
+                  <boxGeometry args={[4.45 * PX, 3.8 * PX, 4.8 * PX]} />
+                  <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.22} roughness={0.28} metalness={0.58} />
+                </mesh>
+                {/* Engraved boot collar rim */}
+                <mesh castShadow position={[0, -2.15 * PX, 0]}>
+                  <boxGeometry args={[4.7 * PX, 0.7 * PX, 5.05 * PX]} />
+                  <meshStandardMaterial color={bootPalette.trim} roughness={0.35} metalness={0.62} />
+                </mesh>
+                {/* Armored toe cap protruding forward */}
+                <mesh castShadow position={[0, -5.05 * PX, 0.7 * PX]}>
+                  <boxGeometry args={[4.5 * PX, 1.9 * PX, 4.6 * PX]} />
+                  <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.25} roughness={0.25} metalness={0.62} />
+                </mesh>
+                {/* Heavy metallic sole */}
+                <mesh position={[0, -5.85 * PX, 0.35 * PX]}>
+                  <boxGeometry args={[4.6 * PX, 0.42 * PX, 5.35 * PX]} />
+                  <meshStandardMaterial color={bootPalette.sole} roughness={0.48} metalness={0.5} />
+                </mesh>
+              </group>
+            ) : null}
           </group>
         </group>
 
@@ -506,6 +551,30 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
                   <meshStandardMaterial color="#f4f4f4" roughness={0.8} />
                 </mesh>
               </>
+            ) : null}
+            {bootPalette ? (
+              <group>
+                {/* Chunky Minecraft armor boot cuff around lower shin */}
+                <mesh castShadow position={[0, -4.1 * PX, 0]}>
+                  <boxGeometry args={[4.45 * PX, 3.8 * PX, 4.8 * PX]} />
+                  <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.22} roughness={0.28} metalness={0.58} />
+                </mesh>
+                {/* Engraved boot collar rim */}
+                <mesh castShadow position={[0, -2.15 * PX, 0]}>
+                  <boxGeometry args={[4.7 * PX, 0.7 * PX, 5.05 * PX]} />
+                  <meshStandardMaterial color={bootPalette.trim} roughness={0.35} metalness={0.62} />
+                </mesh>
+                {/* Armored toe cap protruding forward */}
+                <mesh castShadow position={[0, -5.05 * PX, 0.7 * PX]}>
+                  <boxGeometry args={[4.5 * PX, 1.9 * PX, 4.6 * PX]} />
+                  <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.25} roughness={0.25} metalness={0.62} />
+                </mesh>
+                {/* Heavy metallic sole */}
+                <mesh position={[0, -5.85 * PX, 0.35 * PX]}>
+                  <boxGeometry args={[4.6 * PX, 0.42 * PX, 5.35 * PX]} />
+                  <meshStandardMaterial color={bootPalette.sole} roughness={0.48} metalness={0.5} />
+                </mesh>
+              </group>
             ) : null}
           </group>
         </group>

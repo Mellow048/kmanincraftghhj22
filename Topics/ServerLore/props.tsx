@@ -355,14 +355,14 @@ export const OpenBookPage: React.FC<{
   const shown = full.slice(0, shownCount) + (progress < 0.99 ? "_" : "");
   const shownLines = shown.split("\n");
   const headerTex = useMemo(() => wordTexture(header), [header]);
-  const headerW = Math.max(0.45, (wordBitmap(header).width / 11) * 0.12);
+  const headerW = Math.min(1.22, Math.max(0.45, (wordBitmap(header).width / 11) * 0.11));
   const rendered = useMemo(
     () =>
       shownLines.map((text) => {
         const safe = text.length > 0 ? text : " ";
         return {
           tex: wordTexture(safe),
-          w: Math.min(1.38, Math.max(0.08, (wordBitmap(safe).width / 11) * 0.13)),
+          w: Math.min(1.28, Math.max(0.08, (wordBitmap(safe).width / 11) * 0.12)),
         };
       }),
     [shown],
@@ -371,21 +371,21 @@ export const OpenBookPage: React.FC<{
   return (
     <group position={position} rotation={[0, rotationY, 0]} scale={scale}>
       {/* Leather book border + warm parchment page */}
-      <Block position={[0, 0, -0.03]} size={[1.76, 2.08, 0.05]} color="#6b341e" />
+      <Block position={[0, 0, -0.04]} size={[1.76, 2.08, 0.05]} color="#6b341e" />
       <Block position={[0, 0, 0]} size={[1.58, 1.9, 0.03]} color="#f6eed4" castShadow={false} />
       {/* Binding spine rings on left margin */}
       {[-0.68, -0.34, 0, 0.34, 0.68].map((y, i) => (
         <Block key={i} position={[-0.77, y, 0.025]} size={[0.08, 0.06, 0.04]} color="#8c4d2b" castShadow={false} />
       ))}
-      {/* Header */}
-      <mesh position={[0.35, 0.76, 0.022]}>
-        <planeGeometry args={[headerW, 0.12]} />
+      {/* Header cleanly centered within page margins */}
+      <mesh position={[0.04, 0.74, 0.024]}>
+        <planeGeometry args={[headerW, 0.11]} />
         <meshBasicMaterial map={headerTex} color="#5a4a35" transparent alphaTest={0.5} toneMapped={false} fog={false} />
       </mesh>
       {/* Body lines */}
       {rendered.map((r, i) => (
-        <mesh key={i} position={[-0.66 + r.w / 2, 0.48 - i * 0.22, 0.022]}>
-          <planeGeometry args={[r.w, 0.13]} />
+        <mesh key={i} position={[-0.62 + r.w / 2, 0.44 - i * 0.24, 0.024]}>
+          <planeGeometry args={[r.w, 0.125]} />
           <meshBasicMaterial map={r.tex} color="#261c14" transparent alphaTest={0.5} toneMapped={false} fog={false} />
         </mesh>
       ))}

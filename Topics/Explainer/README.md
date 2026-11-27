@@ -20,8 +20,13 @@ npm run new -- "Inflation Explained Using Minecraft" --topic explainer
 * **Front-facing & 9:16-safe:** Use **`cam.front({ actor, facing })`** and **`cam.twoShot({ a, b, facing })`** at `dist: 4.6–6.5m, fov: 44–46°` so giant signs (`PriceBillboard`, `CommandBoard`), floating emerald pyramids, and both characters NEVER get cropped off the narrow 9:16 edges.
 * **75–85% `cam.push` / `cam.front` / `cam.twoShot` / `cam.truck`.** Avoid dizzying orbits and do not blanket-apply `screenOffset`.
 * **Cold-Open -> Seamless Loop:** Open Frame 0 on the signature visual (`ShopStall` + `10` emeralds + `"<Topic>, explained using Minecraft."`). End mid-clause (`"And that's..."`) on the **exact same Frame-0 camera and stage** so YouTube Shorts loops seamlessly.
-* **Captions & Audio (`Topics/Explainer/SOUND.md`):** `y: 0.72`, `motion: "on-beat"`, `dangerWords` + `highlightWords`. Always use `Topics/Explainer/explainer_bgm_loop.wav` at quiet `gain: -19` (`musicUnderVoiceDb: [17, 25]`) so BGM never overpowers the voice.
+* **Captions & Audio (`Topics/Explainer/SOUND.md`):** `y: 0.72`, `motion: "on-beat"`, `dangerWords` + `highlightWords`. Always use `Topics/Explainer/explainer_bgm_loop.wav` leveled clearly inside `musicUnderVoiceDb: [17, 25]` (`gain: -15.4` in our approved `tariffs-explained` reference -> 17.3 dB under voice, **0 buried SFX**) so BGM drives energy without overpowering the voice.
 
-**Before writing the script or shots:** Read [`REFERENCE-STUDY.md`](REFERENCE-STUDY.md) — exact 8-step loopable flow, plain 9-year-old English, physical character motion, and lateral pan/truck camera grammar.
+## 3. What the Owner Wants / Doesn't Want / Loves (Explainer v8 Standard)
+* **Loves:** Literal geography & physical economy metaphors (e.g., [`reference/tariffs-explained/`](reference/tariffs-explained/README.md): separate Red/Blue Islands across real ocean water + oak bridge, `StoneBillboard` shop price readouts, twin `BEFORE`/`AFTER` chests, relatable lead `Felint` vs contrasting elites, seamless Frame-0 loop).
+* **Wants:** Elevated unclipped signs (`StandingRuleSign` — NEVER submerged in ground), wide 9:16-safe framing so both chests/leads fit cleanly, balanced `overworld-golden` lighting (zero white sun washout), lively acting on every shot, and continuous BGM with 0 buried SFX.
+* **Doesn't want:** Coplanar ground Z-fighting, overlapping 3D text + 2D HUD banners, cropped signs/people, generic village-street backdrops pretending to be two countries/islands, or weak/missing music.
+
+**Before writing the script or shots:** Open our approved full source + MP4 reference [`reference/tariffs-explained/`](reference/tariffs-explained/README.md) (and [`reference/README.md`](reference/README.md)) plus [`REFERENCE-STUDY.md`](REFERENCE-STUDY.md) — exact 8-step loopable flow, plain 9-year-old English, physical character motion, and lateral pan/truck camera grammar.
 
 *Optional deep dives: `Topics/Explainer/SOUND.md`, `Topics/Explainer/PACK.md`, `Topics/Explainer/SCRIPT.md`.*

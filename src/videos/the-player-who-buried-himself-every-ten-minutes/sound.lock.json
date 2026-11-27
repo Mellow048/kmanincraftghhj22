@@ -1,0 +1,130 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-player-who-buried-himself-every-ten-minutes",
+  "mix": "public/audio/the-player-who-buried-himself-every-ten-minutes/mix.mp3",
+  "seconds": 82.1,
+  "built_from": {
+    "timing.json": "075570dbc405c8098ccc2043c60ae3cd68e34837",
+    "sound.json": "44959dd7f3c2554f7f8d72e6240bdb62e860edae",
+    "narration.mp3": "b8213cdd37e5c4154ef4fdca6668a7879565ddec"
+  },
+  "mix_sha1": "613cb6c14b153a47247eeb9dcc2b940b44c050a1",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "hope",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.lava",
+      "mood": "sad",
+      "at": 23.27,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.read",
+      "mood": "none",
+      "at": 50.8
+    },
+    {
+      "from": "5.note",
+      "mood": "sad",
+      "at": 52.63,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.ping",
+      "mood": "hope",
+      "at": 54.83,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "6.glow",
+      "mood": "wonder",
+      "at": 71.93,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 4,
+  "measured": {
+    "musicUnderVoiceDb": 14.2,
+    "secondsWithoutMusic": 3.1,
+    "bedsUnderVoiceDb": 27.0,
+    "sfx": 75,
+    "sfxPerMinute": 54.8,
+    "sfxKinds": 26,
+    "longestGapSeconds": 3.5,
+    "longestGapAt": 38.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.7,
+    "voiceOverRestWorstDb": 4.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.4,
+        "t": 71.5,
+        "cue": "6.join",
+        "sounding": []
+      },
+      {
+        "db": 5.1,
+        "t": 30.5,
+        "cue": "3.burn",
+        "sounding": [
+          "drop"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 75.1,
+        "cue": "6.drop",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 73.2,
+        "cue": "6.glow",
+        "sounding": [
+          "sparkle"
+        ]
+      },
+      {
+        "db": 6.8,
+        "t": 11.3,
+        "cue": "2.wood",
+        "sounding": [
+          "dig"
+        ]
+      },
+      {
+        "db": 7.1,
+        "t": 79.7,
+        "cue": "6.hug",
+        "sounding": [
+          "ding",
+          "pop"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}

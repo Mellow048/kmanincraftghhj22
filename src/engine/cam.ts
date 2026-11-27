@@ -466,13 +466,13 @@ export const cam = {
       round((o.a[1] + o.b[1]) / 2 + 1.25),
       round((o.a[2] + o.b[2]) / 2),
     ];
-    const span = Math.hypot(o.a[0] - o.b[0], o.a[2] - o.b[2]) + 1.1;
-    const fov = o.fov ?? 44;
-    const dist = Math.max(5.2, cam.fitDist9x16(span, fov, 1.35));
+    const span = Math.hypot(o.a[0] - o.b[0], o.a[2] - o.b[2]) + 1.45;
+    const fov = o.fov ?? 46;
+    const dist = Math.max(6.4, cam.fitDist9x16(span, fov, 1.52));
     return cam.sweep({
       on: mid,
       dist,
-      distTo: round(Math.max(4.6, dist - 0.6)),
+      distTo: round(Math.max(5.6, dist - 0.65)),
       fromYaw: o.fromYaw ?? -22,
       toYaw: o.toYaw ?? 20,
       pitch: o.pitch ?? 8,

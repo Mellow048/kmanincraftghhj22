@@ -41,9 +41,9 @@ export const Hut: React.FC<{
       <Vox kind={wall} tint={burnt ? SOOT : tint} position={[0, (h + 1) / 2, -d / 2]} size={[w, h - 1, d]} />
       <Vox kind="cobble" tint={burnt ? "#4d4845" : undefined} position={[0, 0.5, -d / 2]} size={[w + 0.12, 1, d + 0.12]} />
       {[-1, 1].map((s) => (
-        <Vox key={s} kind="log" tint={burnt ? "#262019" : undefined} position={[s * (w / 2), h / 2, 0.06]} size={[0.5, h, 0.5]} />
+        <Vox key={s} kind="log" tint={burnt ? "#262019" : undefined} position={[s * (w / 2), h / 2, 0.06]} size={[0.48, h, 0.46]} />
       ))}
-      <Vox kind="log" tint={burnt ? "#262019" : undefined} position={[0, h + 0.05, 0.06]} size={[w + 0.5, 0.4, 0.5]} />
+      <Vox kind="log" tint={burnt ? "#262019" : undefined} position={[0, h + 0.05, 0.06]} size={[w + 0.52, 0.4, 0.52]} />
       {Array.from({ length: layers }, (_, i) => {
         const lw = w + 1 - i * 1.8;
         if (lw < 0.9) return null;
@@ -75,7 +75,7 @@ export const Hut: React.FC<{
               <Block position={[door + 0.36, 1.05, 0.15]} size={[0.08, 0.08, 0.06]} color="#e8c44a" />
             </>
           )}
-          <Vox kind="stone" position={[door, 0.06, 0.62]} size={[1.5, 0.12, 0.9]} />
+          <Vox kind="stone" position={[door, 0.05, 0.62]} size={[1.5, 0.16, 0.9]} />
         </>
       )}
       {windows.map((x) => (
@@ -91,8 +91,8 @@ export const Hut: React.FC<{
           />
           {burnt ? null : (
             <>
-              <Block position={[0, 0, 0.09]} size={[1.02, 0.07, 0.03]} color="#5c3f24" castShadow={false} />
-              <Block position={[0, 0, 0.09]} size={[0.07, 1.02, 0.03]} color="#5c3f24" castShadow={false} />
+              <Block position={[0, 0, 0.09]} size={[1.02, 0.07, 0.028]} color="#5c3f24" castShadow={false} />
+              <Block position={[0, 0, 0.095]} size={[0.07, 1.02, 0.028]} color="#5c3f24" castShadow={false} />
             </>
           )}
           {burnt || ablaze ? null : (
@@ -385,11 +385,11 @@ export const VillageStreet: React.FC<{ position?: Vec3; night?: boolean }> = ({
   ];
   return (
     <group position={position}>
-      <Vox kind="grass" position={[0, -0.25, 0]} size={[72, 0.5, 82]} />
-      {/* Warm Minecraft dirt-path village road with clean stone curbs (matches InThisTown Reference) */}
-      <Vox kind="planks" tint="#b9935a" position={[0, 0.02, 0]} size={[6.4, 0.08, 60]} />
-      <Vox kind="stoneBrick" position={[-4.1, 0.06, 0]} size={[1.8, 0.12, 60]} />
-      <Vox kind="stoneBrick" position={[4.1, 0.06, 0]} size={[1.8, 0.12, 60]} />
+      <Vox kind="grass" position={[0, -0.29, 0]} size={[72, 0.5, 82]} />
+      {/* Warm Minecraft dirt-path village road with clean non-overlapping stone curbs */}
+      <Vox kind="planks" tint="#b9935a" position={[0, -0.02, 0]} size={[6.32, 0.04, 60]} />
+      <Vox kind="stoneBrick" position={[-4.12, 0.01, 0]} size={[1.72, 0.1, 60]} />
+      <Vox kind="stoneBrick" position={[4.12, 0.01, 0]} size={[1.72, 0.1, 60]} />
       {leftHouses.map((h, i) => (
         <React.Fragment key={`L${i}`}>
           <Hut at={[-8.6, 0, h.z]} w={6.4} d={6.0} h={4.2} wall={h.wall} tint={h.tint} roof={h.roof} turn={Math.PI / 2} lit={night} windows={[-1.6, 1.6]} />
@@ -407,14 +407,14 @@ export const VillageStreet: React.FC<{ position?: Vec3; night?: boolean }> = ({
         <LampPost key={`LP_L${zi}`} position={[-4.7, 0, z]} seed={zi * 2 + 1} />,
         <LampPost key={`LP_R${zi}`} position={[4.7, 0, z]} seed={zi * 2 + 2} />,
       ])}
-      <LightPool position={[0, 0.05, 0]} width={12} depth={42} color={night ? "#ffd68a" : "#fff6dc"} opacity={night ? 0.24 : 0.15} />
+      <LightPool position={[0, 0.08, 0]} width={12} depth={42} color={night ? "#ffd68a" : "#fff6dc"} opacity={night ? 0.24 : 0.15} />
       <GodRay position={[0, 7.5, -10]} rotation={[0, 0, 0.16]} width={6.0} height={14} color="#fff3d4" opacity={night ? 0.03 : 0.07} />
       <Dust position={[0, 2.4, 0]} area={[14, 5, 36]} count={48} size={0.038} color="#fff7df" opacity={0.42} seed={41} speed={0.18} />
-      {/* Natural stepped Minecraft hillside on the horizon (never a flat green wall) */}
-      <Vox kind="grass" position={[0, 0.5, -31]} size={[28, 1.0, 10]} />
-      <Vox kind="grass" position={[-2, 1.5, -34]} size={[18, 1.0, 7]} />
-      <Vox kind="grass" position={[4, 1.5, -35]} size={[14, 1.0, 7]} />
-      <Vox kind="grass" position={[0, 2.5, -37]} size={[11, 1.0, 5]} />
+      {/* Natural stepped Minecraft hillside on the horizon (strictly non-overlapping tiers) */}
+      <Vox kind="grass" position={[0, 0.48, -31]} size={[28, 1.0, 10]} />
+      <Vox kind="grass" position={[-5.5, 1.48, -34]} size={[11, 1.0, 7]} />
+      <Vox kind="grass" position={[6.5, 1.48, -34.5]} size={[11, 1.0, 7]} />
+      <Vox kind="grass" position={[0, 2.48, -37]} size={[11, 1.0, 5]} />
     </group>
   );
 };

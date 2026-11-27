@@ -412,9 +412,10 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
         }
         prevZone = s.zone;
         prevYawDeg = yaw0;
-        const stageSrc = typeof s.stage === "function" ? s.stage.toString() : "";
-        if (/animDistance|animation:\s*["'](?:walk|run)["']/.test(stageSrc)) locomotionShots++;
       }
+      const stageSrc = typeof s.stage === "function" ? s.stage.toString() : "";
+      const srcHasLocomotion = isModern && /animDistance|animation:\s*["'](?:walk|run)["']/.test(stageSrc);
+      if (srcHasLocomotion) locomotionShots++;
       // Same threshold as pickShot: the earliest output frame that actually selects it.
       const first = Math.max(0, Math.ceil((s.at - 1e-6) * fps));
       const next = scene.shots[i + 1];
@@ -476,6 +477,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
         collectActors(n, list);
         return list;
       });
+      let shotHasLocomotion = false;
       if (actorSamples[0].length > 0 && actorSamples.every((list) => list.length === actorSamples[0].length)) {
         let shotHasLocomotion = false;
         for (let k = 0; k < actorSamples[0].length; k++) {
@@ -495,6 +497,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
               if (maxMove < 0.05) {
                 bucket.push(`${where}: ${name} plays walk cycle (walk delta ${walkSpan.toFixed(2)}) while stationary (moved ${maxMove.toFixed(2)}m).`);
               } else {
+                shotHasLocomotion = true;
                 for (let j = 1; j < pts.length; j++) {
                   if (Math.abs(walks[j] - walks[j - 1]) > 0.25 && gap(pts[j].pos, pts[j - 1].pos) < 0.02 && Math.max(pts[j].props.gaitWeight ?? 1, pts[j - 1].props.gaitWeight ?? 1) > 0.05) {
                     bucket.push(`${where}: ${name} keeps cycling walk after stopping (walk delta ${Math.abs(walks[j] - walks[j - 1]).toFixed(2)} with <0.02m move).`);
@@ -515,7 +518,10 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
               const distSpan = Math.max(...dists) - Math.min(...dists);
               if (distSpan > 0.05 && maxMove < 0.05 && (!hasAlt || hasPos)) {
                 bucket.push(`${where}: ${name} advances animDistance (${distSpan.toFixed(2)}m) while stationary (moved ${maxMove.toFixed(2)}m).`);
-              } else if (pts.length >= 5) {
+              } else if (distSpan > 0.05 && maxMove >= 0.05) {
+                shotHasLocomotion = true;
+              }
+              if (pts.length >= 5) {
                 const p3 = pts[3], p4 = pts[4];
                 if (
                   GAITS.has(p3.props.animation) &&
@@ -564,8 +570,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
         }
         if (shotHasLocomotion) locomotionShots++;
       }
-
-      // Remaster v3 checks (modern films): back-of-character, actor blocking camera, 9:16 over-zoom, phasing
+      if (isModern && shotHasLocomotion && !srcHasLocomotion) locomotionShots++;
       if (isModern) {
         const midEye = s.path?.length >= 2 ? s.path[Math.floor(s.path.length / 2)] : [
           ((s.from?.[0] ?? 0) + (s.to?.[0] ?? s.from?.[0] ?? 0)) / 2,

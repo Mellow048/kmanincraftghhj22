@@ -63,6 +63,7 @@
   "pack": "Topics/ServerLore/PACK.md",
   "template": "Topics/ServerLore/template",
   "models": {
+    "the-player-who-buried-himself-every-ten-minutes": "OUR APPROVED FULL REFERENCE (source + MP4 + contact sheet + shot log): 1:22.1, 42 shots, 302 words, 222 WPM. 6 grounded environments (forest with carved sunken shaft, dungeon boss arena, underground burrow cutaway with prowling zombies overhead, smp village + Safe Booths + Iron Golems, spacious irl bedroom, centered OpenBookPage cabin), dual-track Up score, 0 buried SFX. The owner (2026-11-27): 'Love your work, Please put them into the reference with their source code and mp4, i actually liked this alot.' Page, source and mp4: Topics/ServerLore/reference/buried-himself-every-ten-minutes.",
     "3am-mom": "Topics/ServerLore/reference/3am-mom/README.md (87.87s, 36 cuts, median 1.9s)",
     "deaf-creeper": "Topics/ServerLore/reference/deaf-creeper/README.md (87.91s, 48 cuts, median 1.57s)"
   },
