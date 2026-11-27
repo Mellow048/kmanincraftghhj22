@@ -328,13 +328,14 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "press": {
-      const k = clamp01(time / 0.5);
-      const press = Math.sin(k * Math.PI);
-      p.armR = [-1.35 - press * 0.3, 0, 0.1];
-      p.armL = [-0.1, 0, -0.06];
-      p.bodyPitch = -0.06 - press * 0.04;
-      p.head = [-0.14, -0.08, 0];
-      p.bodyY = -press * 0.01;
+      const tapR = Math.sin(time * 9.5);
+      const tapL = Math.sin(time * 9.5 + 1.9);
+      p.bodyY = Math.sin(time * 3.2) * 0.015;
+      p.bodyPitch = 0.08 + Math.sin(time * 4.5) * 0.03;
+      p.torso = [0.05, Math.sin(time * 2.2) * 0.07, 0];
+      p.armR = [-1.15 - Math.max(0, tapR) * 0.24, 0, 0.08];
+      p.armL = [-1.12 - Math.max(0, tapL) * 0.22, 0, -0.08];
+      p.head = [0.16 + Math.sin(time * 4.2) * 0.05, Math.sin(time * 2.1) * 0.1, 0];
       return p;
     }
 
@@ -368,13 +369,15 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "fall": {
-      p.bodyPitch = 0.12 + Math.sin(time * 3.1) * 0.05;
-      p.bodyRoll = Math.sin(time * 2.3) * 0.09;
-      p.armR = [-2.5 + Math.sin(time * 5.1) * 0.12, 0, 0.45];
-      p.armL = [-2.5 - Math.sin(time * 5.1) * 0.12, 0, -0.45];
-      p.legR = [-0.2, 0, 0.18];
-      p.legL = [-0.35, 0, -0.18];
-      p.head = [-0.12, 0, 0];
+      const kick = Math.sin(time * 7.2);
+      p.bodyY = -0.56 + Math.abs(kick) * 0.025;
+      p.bodyPitch = -1.32 + Math.sin(time * 3.5) * 0.05;
+      p.bodyRoll = Math.sin(time * 2.8) * 0.09;
+      p.armR = [-1.35 + kick * 0.35, 0, 0.65];
+      p.armL = [-1.35 - kick * 0.35, 0, -0.65];
+      p.legR = [-0.35 + kick * 0.28, 0, 0.16];
+      p.legL = [-0.35 - kick * 0.28, 0, -0.16];
+      p.head = [0.35 + Math.sin(time * 4.1) * 0.08, Math.sin(time * 3.2) * 0.16, 0];
       return p;
     }
 
@@ -465,10 +468,13 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "wave": {
-      p.armR = [-0.2, 0, 2.35 + Math.sin(time * 6.2) * 0.28];
-      p.armL = [0.02, 0, -0.05];
-      p.head = [0, Math.sin(time * 1.4) * 0.08, 0.06];
-      p.bodyY = Math.sin(time * 1.5) * 0.01;
+      const sw = Math.sin(time * 6.8);
+      p.bodyY = Math.abs(Math.sin(time * 3.4)) * 0.032;
+      p.bodyRoll = sw * 0.045;
+      p.torso = [Math.sin(time * 2.8) * 0.04, Math.sin(time * 1.9) * 0.14, 0];
+      p.armR = [-0.28 + Math.cos(time * 6.8) * 0.12, 0, 2.25 + sw * 0.36];
+      p.armL = [-0.14 - Math.sin(time * 3.4) * 0.14, 0, -0.12 - sw * 0.06];
+      p.head = [-0.04 + Math.sin(time * 3.4) * 0.06, Math.sin(time * 1.7) * 0.18, sw * 0.07];
       return p;
     }
 
@@ -522,21 +528,27 @@ export function getPose(name: AnimName, t: number): Pose {
     }
 
     case "hug": {
-      // Arms closed around something held to the chest, head bowed over it.
-      p.armR = [-1.02, 0, -0.5];
-      p.armL = [-1.02, 0, 0.5];
-      p.bodyPitch = 0.04;
-      p.head = [0.2, 0, 0.05];
-      p.bodyY = Math.sin(time * 1.2) * 0.008;
+      const sway = Math.sin(time * 2.4);
+      p.bodyY = Math.sin(time * 2.4) * 0.022;
+      p.bodyRoll = sway * 0.06;
+      p.bodyPitch = 0.09 + Math.sin(time * 1.8) * 0.03;
+      p.armR = [-1.08 + sway * 0.08, 0, -0.44 - Math.abs(sway) * 0.08];
+      p.armL = [-1.08 - sway * 0.08, 0, 0.44 + Math.abs(sway) * 0.08];
+      p.head = [0.18 + Math.sin(time * 1.8) * 0.05, sway * 0.1, sway * 0.08];
       return p;
     }
 
     case "cheer": {
-      const bounce = Math.abs(Math.sin(time * 5.2));
-      p.bodyY = bounce * 0.07;
-      p.armR = [-2.75 + Math.sin(time * 5.2) * 0.2, 0, 0.3];
-      p.armL = [-2.75 - Math.sin(time * 5.2) * 0.2, 0, -0.3];
-      p.head = [-0.15, Math.sin(time * 2) * 0.1, 0];
+      const bounce = Math.abs(Math.sin(time * 6.2));
+      const pump = Math.sin(time * 6.2);
+      p.bodyY = bounce * 0.11;
+      p.bodyRoll = Math.sin(time * 3.1) * 0.055;
+      p.torso = [-0.04 + bounce * 0.05, Math.sin(time * 3.1) * 0.14, 0];
+      p.armR = [-2.55 + pump * 0.34, 0, 0.28 + bounce * 0.14];
+      p.armL = [-2.55 - pump * 0.34, 0, -0.28 - bounce * 0.14];
+      p.legR = [pump * 0.18, 0, 0.05];
+      p.legL = [-pump * 0.18, 0, -0.05];
+      p.head = [-0.14 + bounce * 0.06, Math.sin(time * 2.6) * 0.18, Math.sin(time * 3.1) * 0.06];
       return p;
     }
 

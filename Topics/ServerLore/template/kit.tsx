@@ -1,4 +1,5 @@
 import type { Timing, Vec3 } from "../../engine";
+export { moveBetween } from "../../engine";
 import {
   BadgePop,
   Bed,
@@ -22,6 +23,7 @@ import {
   GodRay,
   HospitalCorridor,
   Hut,
+  VillageStreet,
   Icon,
   LightPool,
   NORTH,
@@ -92,6 +94,7 @@ export {
   GodRay,
   HospitalCorridor,
   Hut,
+  VillageStreet,
   Icon,
   LightPool,
   NORTH,

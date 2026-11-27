@@ -1,5 +1,6 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
+export { moveBetween } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
 import { KID, wordClock } from "../../../Topics/InThisTown";
 import timingJson from "./timing.json";

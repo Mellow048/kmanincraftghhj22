@@ -1,5 +1,6 @@
 {
   "film": "in-this-town-you-cant-drop-your-torch",
+  "README": "The sound sheet. Read Topics/InThisTown/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-you-cant-drop-your-torch",
   "music": {
     "track": "Topics/InThisTown/InThisTownMusic.aac",
     "gain": -15,
@@ -33,462 +34,512 @@
   },
   "beds": [
     {
-      "from": "1.town",
-      "bed": "sky",
-      "gain": -30
-    },
-    {
       "from": "1.sleep",
-      "bed": "room",
-      "gain": -30
-    },
-    {
-      "from": "2.barber",
-      "bed": "sky",
-      "gain": -30
+      "to": "1.sleep",
+      "bed": "room"
     },
     {
       "from": "2.school",
-      "bed": "classroom",
-      "gain": -30
-    },
-    {
-      "from": "2.mail",
-      "bed": "sky",
-      "gain": -30
+      "to": "2.school",
+      "bed": "room"
     }
   ],
   "sfx": [
     {
       "cue": "1.town",
-      "word": "torch",
-      "sfx": "fire_whoosh"
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.dark",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.light",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.out",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.sleep",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.barber",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "2.jog",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.school",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.mail",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.fifth",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.kai",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time"
+    },
+    {
+      "cue": "3.pip",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.laugh",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.flint",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.quote",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.gone",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.mine",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.ten",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.hundred",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.pile",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.thirty",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.mom",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.wind",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time"
+    },
+    {
+      "cue": "5.out2",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.lock",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.creep",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.trap",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.broke",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.rule",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time"
+    },
+    {
+      "cue": "6.fire",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.bug",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.open",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.fly",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.call",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.swarm",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.flint2",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time"
+    },
+    {
+      "cue": "7.gust",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.mud",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.chase",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.return",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.momback",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.hug",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.closed",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.free",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.cta",
+      "sfx": "ding",
+      "why": "final payoff / subscribe line"
     },
     {
       "cue": "1.town",
-      "word": "drop",
-      "sfx": "pop"
+      "word": "can",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "1.dark",
       "word": "shadows",
-      "sfx": "whoosh_low"
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "1.light",
-      "word": "flame",
-      "sfx": "fire_whoosh"
-    },
-    {
-      "cue": "1.light",
-      "word": "back",
-      "sfx": "hit"
+      "word": "every",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "1.out",
-      "word": "out",
-      "sfx": "power_down"
-    },
-    {
-      "cue": "1.out",
-      "word": "drag",
-      "sfx": "whoosh"
+      "word": "the",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "1.sleep",
-      "word": "crib",
-      "sfx": "pop"
+      "word": "a",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "2.barber",
-      "word": "cuts",
-      "sfx": "snip"
+      "word": "while",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 5
     },
     {
       "cue": "2.jog",
-      "word": "sprint",
-      "sfx": "step_stone"
+      "word": "two",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "2.school",
-      "word": "desk",
-      "sfx": "place"
+      "word": "lit",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "2.mail",
-      "word": "sneezed",
-      "sfx": "gust"
-    },
-    {
-      "cue": "2.mail",
-      "word": "out",
-      "sfx": "power_down"
+      "word": "his",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "2.fifth",
       "word": "fifth",
-      "sfx": "ding"
-    },
-    {
-      "cue": "2.fifth",
-      "word": "mailman",
-      "sfx": "pop"
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.kai",
-      "word": "Kai",
-      "sfx": "pop"
+      "word": "don't",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.pip",
-      "word": "firefly",
-      "sfx": "sparkle"
-    },
-    {
-      "cue": "3.pip",
-      "word": "Pip",
-      "sfx": "chime"
+      "word": "with",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.laugh",
-      "word": "yell",
-      "sfx": "pop"
+      "word": "jar",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.flint",
-      "word": "Chief",
-      "sfx": "hit"
-    },
-    {
-      "cue": "3.flint",
-      "word": "Flint",
-      "sfx": "coin"
+      "word": "outside",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.quote",
-      "word": "bug",
-      "sfx": "plink"
+      "word": "you",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "3.gone",
-      "word": "gust",
-      "sfx": "gust"
+      "word": "and",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.mine",
-      "word": "coal",
-      "sfx": "dig"
+      "word": "only",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.ten",
-      "word": "Ten",
-      "sfx": "coin"
+      "word": "on",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.hundred",
-      "word": "hundred",
-      "sfx": "ding"
-    },
-    {
-      "cue": "4.hundred",
-      "word": "emeralds",
-      "sfx": "coins"
+      "word": "one",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.pile",
-      "word": "coal",
-      "sfx": "thud"
+      "word": "giant",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.thirty",
-      "word": "Thirty",
-      "sfx": "hit"
-    },
-    {
-      "cue": "4.thirty",
-      "word": "vanished",
-      "sfx": "whoosh_low"
+      "word": "and",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "4.mom",
-      "word": "mom",
-      "sfx": "pop"
-    },
-    {
-      "cue": "4.mom",
-      "word": "Pip",
-      "sfx": "sparkle"
+      "word": "right",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.wind",
-      "word": "windstorm",
-      "sfx": "gust"
-    },
-    {
-      "cue": "5.wind",
-      "word": "slammed",
-      "sfx": "boom"
+      "word": "a",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.out2",
-      "word": "Whoosh",
-      "sfx": "gust"
-    },
-    {
-      "cue": "5.out2",
-      "word": "out",
-      "sfx": "power_down",
-      "trim": 3
+      "word": "on",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.lock",
-      "word": "slammed",
-      "sfx": "hit"
-    },
-    {
-      "cue": "5.lock",
-      "word": "hundred",
-      "sfx": "coin"
+      "word": "door",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.creep",
-      "word": "shadows",
-      "sfx": "whoosh_low"
-    },
-    {
-      "cue": "5.creep",
-      "word": "square",
-      "sfx": "thud"
+      "word": "straight",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.trap",
-      "word": "sticks",
-      "sfx": "plink"
+      "word": "cold",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "5.broke",
-      "word": "hundred",
-      "sfx": "coin"
+      "word": "to",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.rule",
-      "word": "rule",
-      "sfx": "ding"
+      "word": "simple",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.fire",
       "word": "fire",
-      "sfx": "gust"
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.bug",
-      "word": "glow",
-      "sfx": "sparkle"
-    },
-    {
-      "cue": "6.bug",
-      "word": "never",
-      "sfx": "ding"
+      "word": "out",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.open",
-      "word": "popped",
-      "sfx": "pop"
+      "word": "open",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.fly",
-      "word": "shot",
-      "sfx": "whoosh"
-    },
-    {
-      "cue": "6.fly",
-      "word": "star",
-      "sfx": "sparkle"
+      "word": "a",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.call",
-      "word": "blinked",
-      "sfx": "chime"
+      "word": "toward",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "6.swarm",
-      "word": "Fifty",
-      "sfx": "sparkle"
-    },
-    {
-      "cue": "6.swarm",
-      "word": "flooded",
-      "sfx": "power_up"
+      "word": "out",
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.flint2",
-      "word": "marched",
-      "sfx": "step_stone"
+      "word": "yelling,",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.gust",
-      "word": "gust",
-      "sfx": "gust"
-    },
-    {
-      "cue": "7.gust",
-      "word": "out",
-      "sfx": "power_down"
+      "word": "his",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.mud",
-      "word": "puddle",
-      "sfx": "splash"
+      "word": "mud",
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.chase",
-      "word": "chased",
-      "sfx": "whoosh"
-    },
-    {
-      "cue": "7.chase",
-      "word": "trees",
-      "sfx": "sparkle"
-    },
-    {
-      "cue": "7.return",
-      "word": "thirty",
-      "sfx": "cheer"
+      "word": "shadow",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.return",
       "word": "safely",
-      "sfx": "chime"
+      "sfx": "plink",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.momback",
-      "word": "Mom",
-      "sfx": "ding"
+      "word": "into",
+      "sfx": "swish",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.hug",
-      "word": "hugged",
-      "sfx": "pop"
-    },
-    {
-      "cue": "7.hug",
-      "word": "danced",
-      "sfx": "sparkle"
+      "word": "while",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.closed",
       "word": "shut",
-      "sfx": "hit"
+      "sfx": "chime",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.free",
-      "word": "hundred",
-      "sfx": "coin"
+      "word": "emeralds",
+      "sfx": "pop",
+      "why": "mid-shot accent"
     },
     {
       "cue": "7.cta",
-      "word": "Subscribe",
-      "sfx": "ding"
-    },
-    {
-      "cue": "1.town",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "1.dark",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "1.light",
+      "word": "Pip",
       "sfx": "plink",
-      "trim": -4
-    },
-    {
-      "cue": "1.out",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "1.sleep",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "2.barber",
-      "sfx": "whoosh",
-      "trim": -4
-    },
-    {
-      "cue": "2.jog",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "2.school",
-      "sfx": "plink",
-      "trim": -4
-    },
-    {
-      "cue": "2.mail",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "2.fifth",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "3.kai",
-      "sfx": "whoosh",
-      "trim": 5
-    },
-    {
-      "cue": "3.pip",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "3.laugh",
-      "sfx": "plink",
-      "trim": -4
-    },
-    {
-      "cue": "3.flint",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "3.quote",
-      "sfx": "swish",
-      "trim": -4
-    },
-    {
-      "cue": "3.gone",
-      "sfx": "whoosh",
-      "trim": 4
-    },
-    {
-      "cue": "4.mine",
-      "sfx": "pop",
-      "trim": -4
-    },
-    {
-      "cue": "4.ten",
-      "sfx": "plink",
-      "trim": 4
-    },
-    {
-      "cue": "4.hundred",
-      "sfx": "step_stone",
-      "trim": -4
-    },
-    {
-      "cue": "4.pile",
-      "sfx": "swish",
-      "trim": -4
+      "why": "mid-shot accent"
     }
   ]
 }

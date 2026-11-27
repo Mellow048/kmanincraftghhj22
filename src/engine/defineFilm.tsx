@@ -4,6 +4,8 @@ import { ThreeCanvas } from "@remotion/three";
 import * as THREE from "three";
 import { Camera, pickShot } from "./Camera";
 import { Captions } from "./Captions";
+import { HudOverlay } from "./Hud";
+import { CollisionProvider } from "./collision";
 import { GlowProvider, Look } from "./Look";
 import { PostFX } from "./shaders";
 import type { FilmConfig, SceneDef, Shot } from "./types";
@@ -136,6 +138,7 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
           toneMappingExposure: 1.05,
         }}
       >
+        <CollisionProvider>
         <GlowProvider value={config.post?.bloom ?? 1}>
         <ActiveShotContext.Provider value={active}>
           <Look preset={active.shot.look ?? config.look} post={config.post} focus={active.shot.target} />
@@ -156,7 +159,9 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
           {config.captions ? <Captions {...config.captions} /> : null}
         </ActiveShotContext.Provider>
         </GlowProvider>
+        </CollisionProvider>
       </ThreeCanvas>
+      <HudOverlay hud={active.shot.hud} localT={active.t} />
 
       {config.audio ? (
         <Audio src={staticFile(config.audio.src)} volume={config.audio.volume ?? 1} />

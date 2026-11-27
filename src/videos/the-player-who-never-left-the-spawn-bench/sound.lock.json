@@ -5,10 +5,10 @@
   "seconds": 82.9333,
   "built_from": {
     "timing.json": "44eab397d603a8eaeaa3c11bc82dade2ee6f4628",
-    "sound.json": "44694242af77bd35cfa219d2a23bfd0e83fd353d",
+    "sound.json": "1dbdbcd725406966c3fd1a879a49127f3ff2dd15",
     "narration.mp3": "7aeffd8c62cc32e790fef7a18ab208a4523017a4"
   },
-  "mix_sha1": "56a424a6b03569dc9beac043fd15f675b0c9d035",
+  "mix_sha1": "45630643e16ee9b7c437811b1f7a3511e65bad90",
   "music_sections": [
     {
       "from": "1.bench",
@@ -49,71 +49,70 @@
       "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
     }
   ],
-  "beds": 4,
+  "beds": 5,
   "measured": {
-    "musicUnderVoiceDb": 17.1,
-    "secondsWithoutMusic": 0.9,
-    "bedsUnderVoiceDb": 30.6,
-    "sfx": 84,
-    "sfxPerMinute": 60.8,
-    "sfxKinds": 12,
-    "longestGapSeconds": 2.7,
-    "longestGapAt": 50.1,
+    "musicUnderVoiceDb": 17.3,
+    "secondsWithoutMusic": 1.2,
+    "bedsUnderVoiceDb": 26.3,
+    "sfx": 75,
+    "sfxPerMinute": 54.3,
+    "sfxKinds": 6,
+    "longestGapSeconds": 2.1,
+    "longestGapAt": 67.6,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 16.5,
-    "voiceOverRestWorstDb": 4.2,
+    "voiceOverRestMedianDb": 14.7,
+    "voiceOverRestWorstDb": 4.1,
     "voiceOverRestWorst": [
       {
-        "db": 4.2,
+        "db": 4.1,
         "t": 60.5,
         "cue": "6.forty",
         "sounding": [
-          "ding"
-        ]
-      },
-      {
-        "db": 5.6,
-        "t": 3.8,
-        "cue": "1.four",
-        "sounding": [
-          "chime",
           "whoosh"
         ]
       },
       {
-        "db": 6.2,
-        "t": 11.5,
-        "cue": "2.hut",
+        "db": 5.1,
+        "t": 3.8,
+        "cue": "1.four",
         "sounding": [
           "swish"
         ]
       },
       {
-        "db": 6.9,
-        "t": 71.3,
-        "cue": "7.back2",
+        "db": 5.8,
+        "t": 57.1,
+        "cue": "5.owner",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 11.5,
+        "cue": "2.hut",
+        "sounding": []
+      },
+      {
+        "db": 8.1,
+        "t": 72.7,
+        "cue": "7.line",
+        "sounding": [
+          "pop"
+        ]
+      },
+      {
+        "db": 8.4,
+        "t": 9.4,
+        "cue": "1.back",
         "sounding": [
           "chime"
         ]
-      },
-      {
-        "db": 7.8,
-        "t": 79.9,
-        "cue": "7.home",
-        "sounding": [
-          "ding"
-        ]
-      },
-      {
-        "db": 8.2,
-        "t": 57.1,
-        "cue": "5.owner",
-        "sounding": []
       }
     ],
     "lufs": -14.7,
     "truePeakDb": -2.3,
-    "limiterMaxDb": 0.2
+    "limiterMaxDb": 0.1
   },
   "failures": []
 }

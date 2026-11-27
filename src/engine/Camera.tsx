@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { clamp01, easings, focalMmToFov, wobble } from "./math";
 import type { EaseName, Vec3 } from "./math";
 import type { Shot } from "./types";
+import { useCollisionWorld } from "./collision";
 
 /**
  * Drives the render camera from a list of SHOTS.
@@ -73,6 +74,7 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
   sceneId,
 }) => {
   const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
+  const collision = useCollisionWorld();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -87,6 +89,10 @@ export const Camera: React.FC<{ shots: Shot[]; duration: number; sceneId?: strin
   // Target & lens first so screenOffset uses the live interpolated FOV (even during dollyZoom).
   const target = samplePath(shot.targetPath, shot.target, shot.targetTo, e, 0);
   target.y += shot.aim ?? 0;
+  if (collision) {
+    const safe = collision.resolveCamera([target.x, target.y, target.z], [position.x, position.y, position.z]);
+    position.set(safe[0], safe[1], safe[2]);
+  }
 
   const baseFov = shot.focalLength != null ? focalMmToFov(shot.focalLength) : (shot.fov ?? 38);
   const endFov =

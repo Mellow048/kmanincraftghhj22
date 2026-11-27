@@ -1,136 +1,292 @@
-import type React from "react";
-import { Block, ChatToast, FloatingNumber, Glow, MinecraftAvatar, Sign, Torch, Vox, cam, plankTex, storyScene } from "../../engine";
-import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
-import { ClassroomRoom, DeskSetup, ServerPlayer } from "../../../Topics/ServerLore";
-import { Hut } from "../../../Topics/InThisTown";
-import { ease, pop, ramp, wordClock } from "../../../Topics/Shared";
+import React from "react";
+import {
+  Block,
+  Glow,
+  LightPool,
+  RedstoneLamp,
+  RedstoneLine,
+  ServerPlayer,
+  Sign,
+  Vox,
+  cam,
+  clamp01,
+  lerp,
+  vlerp,
+  ServerChatBox as BaseServerChatBox,
+  BadgePop,
+  TearDrops,
+  FloatingHeart,
+  DeskSetup,
+  ClassroomRoom,
+  ServerCrowd,
+  Tree,
+  Torch,
+  Clouds,
+  Dust,
+  EmberDrift,
+  GodRay,
+  Zone,
+  storyScene,
+} from "../../../Topics/ServerLore";
+import type { AnimName, FaceName, Timing, Vec3 } from "../../../Topics/ServerLore";
+import { VillageStreet } from "../../../Topics/InThisTown";
+import { moveBetween } from "../../engine";
 import timingJson from "./timing.json";
 
 export {
   Block,
-  ChatToast,
-  ClassroomRoom,
-  DeskSetup,
-  FloatingNumber,
   Glow,
-  Hut,
+  LightPool,
+  RedstoneLamp,
+  RedstoneLine,
   ServerPlayer,
   Sign,
-  Torch,
   Vox,
   cam,
-  ease,
-  pop,
-  ramp,
+  clamp01,
+  lerp,
+  vlerp,
+  moveBetween,
+  VillageStreet,
+  BadgePop,
+  TearDrops,
+  FloatingHeart,
+  DeskSetup,
+  ClassroomRoom,
+  ServerCrowd,
+  Tree,
+  Torch,
+  Clouds,
+  Dust,
+  EmberDrift,
+  GodRay,
+  Zone,
   storyScene,
 };
+export type { AnimName, FaceName, Timing, Vec3 };
 
-export const timing = timingJson as unknown as Timing;
-export const wordAt = wordClock(timing);
+export const timing = timingJson as Timing;
 
-export const PLACE = {
-  server: [0, 0, 0] as Vec3,
-  irl: [0, 0, 75] as Vec3,
-  school: [0, 0, 150] as Vec3,
-};
-export const on = (base: Vec3, x: number, y: number, z: number): Vec3 => [base[0] + x, base[1] + y, base[2] + z];
+export const SERVER_POS: Vec3 = [0, 0, 0];
+export const IRL_POS: Vec3 = [80, 0, 0];
+export const SCHOOL_POS: Vec3 = [160, 0, 0];
 
-type A = Partial<MinecraftAvatarProps>;
+/** Bench sits along the left side of the spawn pathway (never blocking the center road). */
+export const BENCH_POS: Vec3 = [-2.4, 0, 1.2];
+export const BENCH_ROT = 0.35;
+export const BENCH_SEAT: Vec3 = [-2.34, 0.2, 1.37];
 
-/** Maya — soft sky-blue hoodie so she stands out warmly on the oak spawn bench. */
-export const Maya: React.FC<A> = (p) => (
-  <MinecraftAvatar
-    outfit="hoodie"
-    skin="#edc3a2"
-    hair="#3b2619"
-    hairLayer
-    colors={{ torso: "#53a8e6", arms: "#4494cf", legs: "#2e3c54" }}
-    shoes="#f0f0f0"
-    blink
-    {...p}
+/** Compact 9:16-safe Minecraft chat box scaled to fit cleanly above character nametags. */
+export const ServerChatBox: React.FC<React.ComponentProps<typeof BaseServerChatBox>> = ({
+  scale = 0.48,
+  position = [BENCH_POS[0], 2.95, BENCH_POS[2]],
+  ...rest
+}) => <BaseServerChatBox scale={scale} position={position} {...rest} />;
+
+/* ─────────────────────────── DISTINCT CAST (ZERO CLONES) ─────────────────────────── */
+
+export const Maya: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  animation?: AnimName;
+  animDistance?: number;
+  face?: FaceName;
+  time?: number;
+  nameTag?: string;
+  badge?: "!" | "?" | "heart" | "broken";
+  badgePopStart?: number;
+  tears?: number;
+}> = ({ nameTag = "Maya", ...props }) => (
+  <ServerPlayer
+    role="hero"
+    shirtColor="#8a5ec9"
+    nameTag={nameTag}
+    nameTagColor="#e8d8ff"
+    {...props}
   />
 );
 
-/** Jake — crimson jacket griefer who redeems himself with red flowers. */
-export const Jake: React.FC<A> = (p) => (
-  <MinecraftAvatar
-    outfit="hoodie"
-    skin="#e0ae86"
-    hair="#1d1c22"
-    hairLayer
-    colors={{ torso: "#c93838", arms: "#a82d2d", legs: "#262830" }}
-    shoes="#1a1a1f"
-    blink
-    {...p}
+export const Sister: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  animation?: AnimName;
+  animDistance?: number;
+  face?: FaceName;
+  time?: number;
+}> = (props) => (
+  <ServerPlayer role="mom" shirtColor="#2f8f83" {...props} />
+);
+
+export const Jake: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  animation?: AnimName;
+  animDistance?: number;
+  face?: FaceName;
+  time?: number;
+  badge?: "!" | "?" | "heart" | "broken";
+  badgePopStart?: number;
+  tears?: number;
+}> = (props) => (
+  <ServerPlayer
+    role="griefer"
+    nameTag="Jake"
+    nameTagColor="#ffb0a0"
+    {...props}
   />
 );
 
-/** Server Owner — bright gold/emerald tunic with subtle crown accent. */
-export const Owner: React.FC<A> = (p) => (
-  <MinecraftAvatar
-    outfit="suit"
-    skin="#e8ba92"
-    hair="#4d321c"
-    hairLayer
-    colors={{ torso: "#298552", arms: "#216e43", legs: "#273342" }}
-    shoes="#241c16"
-    blink
-    head={<Block position={[0, 0.27, 0]} size={[0.54, 0.14, 0.54]} color="#ffd84d" metalness={0.5} roughness={0.25} />}
-    {...p}
+export const Owner: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  animation?: AnimName;
+  animDistance?: number;
+  face?: FaceName;
+  time?: number;
+  badge?: "!" | "?" | "heart" | "broken";
+  badgePopStart?: number;
+}> = (props) => (
+  <ServerPlayer
+    role="owner"
+    crown
+    nameTag="Owner"
+    nameTagColor="#ffe47a"
+    {...props}
   />
 );
 
-/** Oak spawn bench with 3 story states: plain, blown-up crater, or rebuilt with lanterns + pressure plate. */
-export const SpawnBench: React.FC<{ position?: Vec3; state?: "plain" | "crater" | "rebuilt" }> = ({
-  position = [0, 0, 0],
-  state = "plain",
-}) => {
-  if (state === "crater") {
-    return (
-      <group position={position}>
-        <Block position={[0, 0.04, 0]} size={[3.0, 0.08, 2.2]} color="#2c2b29" />
-        <Block position={[-0.9, 0.14, 0.3]} size={[0.45, 0.14, 0.25]} color="#8f673c" />
-        <Block position={[0.8, 0.12, -0.2]} size={[0.5, 0.12, 0.22]} color="#7a5630" />
-      </group>
-    );
-  }
+/* ─────────────────────────── STORY PROPS ─────────────────────────── */
+
+export const SpawnBench: React.FC<{
+  position?: Vec3;
+  rotationY?: number;
+  upgraded?: boolean;
+  platePressed?: number;
+}> = ({ position = BENCH_POS, rotationY = BENCH_ROT, upgraded = false, platePressed = 0 }) => {
+  const pressY = 0.04 - clamp01(platePressed) * 0.025;
   return (
-    <group position={position}>
-      {/* Bench seat + backrest + legs */}
-      <Block position={[0, 0.44, 0]} size={[2.2, 0.14, 0.72]} map={plankTex("#9c7042")} />
-      <Block position={[0, 0.88, -0.3]} size={[2.2, 0.72, 0.12]} map={plankTex("#855d34")} />
-      <Block position={[-0.92, 0.22, 0]} size={[0.16, 0.44, 0.66]} color="#6b4928" />
-      <Block position={[0.92, 0.22, 0]} size={[0.16, 0.44, 0.66]} color="#6b4928" />
-      {state === "rebuilt" && (
+    <group position={position} rotation={[0, rotationY, 0]}>
+      {/* Oak seat slab & backrest */}
+      <Vox kind="planks" position={[0, 0.48, 0]} size={[2.3, 0.16, 0.78]} />
+      <Vox kind="planks" position={[0, 0.94, -0.34]} size={[2.3, 0.44, 0.12]} />
+      {/* Dark oak legs & armrests */}
+      <Vox kind="darkPlanks" position={[-0.98, 0.24, 0]} size={[0.18, 0.48, 0.72]} />
+      <Vox kind="darkPlanks" position={[0.98, 0.24, 0]} size={[0.18, 0.48, 0.72]} />
+      <Vox kind="darkPlanks" position={[-1.08, 0.72, -0.04]} size={[0.14, 0.28, 0.76]} />
+      <Vox kind="darkPlanks" position={[1.08, 0.72, -0.04]} size={[0.14, 0.28, 0.76]} />
+
+      {upgraded ? (
         <>
-          {/* Warm oak lantern posts flanking the bench */}
-          {[-1.45, 1.45].map((x, i) => (
-            <group key={i} position={[x, 0, -0.1]}>
-              <Block position={[0, 1.05, 0]} size={[0.18, 2.1, 0.18]} color="#6b4928" />
-              <Block position={[0, 2.18, 0]} size={[0.34, 0.42, 0.34]} color="#ffd86b" emissive="#ffbe3b" emissiveIntensity={0.85} />
-              <Glow position={[0, 2.2, 0.15]} size={1.6} color="#ffe082" opacity={0.35} />
+          {/* Cozy lantern posts flanking the rebuilt bench */}
+          {[-1.55, 1.55].map((lx) => (
+            <group key={lx} position={[lx, 0, -0.1]}>
+              <Vox kind="darkPlanks" position={[0, 1.15, 0]} size={[0.18, 2.3, 0.18]} />
+              <Vox kind="darkPlanks" position={[lx < 0 ? 0.24 : -0.24, 2.22, 0]} size={[0.52, 0.14, 0.14]} />
+              <Block
+                position={[lx < 0 ? 0.42 : -0.42, 1.92, 0]}
+                size={[0.3, 0.36, 0.3]}
+                color="#ffd966"
+                emissive="#ffae34"
+                emissiveIntensity={1.6}
+              />
+              <Glow position={[lx < 0 ? 0.42 : -0.42, 1.92, 0]} size={1.6} color="#ffcf5c" opacity={0.42} />
+              <pointLight
+                position={[lx < 0 ? 0.42 : -0.42, 1.85, 0]}
+                color="#ffc152"
+                intensity={3.4}
+                distance={6.5}
+                decay={2}
+              />
             </group>
           ))}
-          {/* Golden auto-greeting pressure plate right in front of the seat */}
-          <Block position={[0, 0.05, 0.82]} size={[0.72, 0.06, 0.72]} color="#f5c736" metalness={0.45} roughness={0.28} />
+          {/* Auto-greeting pressure plate + redstone wire + lamp */}
+          <Block position={[0.55, pressY, 0.72]} size={[0.72, 0.06, 0.72]} color="#d6ad5a" />
+          <RedstoneLine from={[0.9, 0.01, 0.72]} to={[1.75, 0.01, 0.72]} lit={platePressed > 0.2 ? 1 : 0.25} />
+          <RedstoneLamp position={[2.1, 0.46, 0.72]} size={0.86} lit={platePressed > 0.2 ? 1 : 0.2} />
+          <LightPool position={[0, 0.02, 0.4]} width={8.4} depth={8.4} color="#ffd578" opacity={0.34} />
         </>
-      )}
+      ) : null}
     </group>
   );
 };
 
-/** Iconic Minecraft TNT block. */
-export const TntBlock: React.FC<{ position?: Vec3; flash?: boolean }> = ({ position = [0, 0, 0], flash = false }) => (
+export const TntBlock: React.FC<{ position?: Vec3; fuse?: number }> = ({
+  position = [0, 0.45, 1.2],
+  fuse = 0,
+}) => {
+  const flash = fuse > 0.05 && Math.floor(fuse * 14) % 2 === 0;
+  const s = 1 + clamp01(fuse) * 0.12;
+  return (
+    <group position={position} scale={s}>
+      <Block
+        size={[0.88, 0.88, 0.88]}
+        color={flash ? "#ffffff" : "#d9342b"}
+        emissive={flash ? "#fff0b3" : "#440808"}
+        emissiveIntensity={flash ? 1.2 : 0.2}
+      />
+      <Block position={[0, 0, 0]} size={[0.9, 0.28, 0.9]} color="#f4efe4" />
+      <Block position={[0, 0.45, 0]} size={[0.86, 0.04, 0.86]} color="#3b2c22" />
+    </group>
+  );
+};
+
+export const Crater: React.FC<{ position?: Vec3; debris?: number }> = ({
+  position = BENCH_POS,
+  debris = 1,
+}) => (
   <group position={position}>
-    <Block position={[0, 0.35, 0]} size={[0.66, 0.66, 0.66]} color={flash ? "#ffffff" : "#d9342b"} />
-    <Block position={[0, 0.35, 0]} size={[0.68, 0.22, 0.68]} color="#f2efe6" />
+    <Block position={[0, 0.02, 0]} size={[3.4, 0.06, 2.6]} color="#252328" />
+    <Block position={[0, 0.05, 0]} size={[2.2, 0.05, 1.7]} color="#161418" />
+    {debris > 0.1
+      ? [
+          [-1.35, 0.14, 0.65, 0.3],
+          [1.25, 0.12, -0.55, -0.5],
+          [-0.65, 0.1, -0.95, 0.8],
+          [0.95, 0.15, 0.85, -0.2],
+          [0.15, 0.11, -0.4, 1.1],
+        ].map(([x, y, z, r], i) => (
+          <Vox
+            key={i}
+            kind="planks"
+            position={[x!, y!, z!]}
+            rotation={[0.2, r!, 0.15]}
+            size={[0.52, 0.12, 0.22]}
+          />
+        ))
+      : null}
   </group>
 );
 
-/** Bright red Minecraft poppy flower. */
-export const RedFlower: React.FC<{ position?: Vec3; scale?: number }> = ({ position = [0, 0, 0], scale = 1 }) => (
+export const RedFlower: React.FC<{ position?: Vec3; scale?: number }> = ({
+  position = [0, 0, 0],
+  scale = 1,
+}) => (
   <group position={position} scale={scale}>
-    <Block position={[0, 0.18, 0]} size={[0.06, 0.36, 0.06]} color="#3a8c3a" />
-    <Block position={[0, 0.4, 0]} size={[0.2, 0.18, 0.2]} color="#e62e2e" emissive="#c91e1e" emissiveIntensity={0.18} />
+    <Block position={[0, 0.2, 0]} size={[0.07, 0.4, 0.07]} color="#3c913b" />
+    <Block position={[0.08, 0.14, 0]} size={[0.12, 0.07, 0.07]} color="#4aa848" />
+    <Block position={[0, 0.44, 0]} size={[0.24, 0.22, 0.24]} color="#e6332e" emissive="#a81b18" emissiveIntensity={0.22} />
+    <Block position={[0, 0.48, 0]} size={[0.1, 0.1, 0.1]} color="#281c18" />
+  </group>
+);
+
+export const PencilProp: React.FC<{ position?: Vec3; rotation?: Vec3 }> = ({
+  position = [0, 0.04, 0],
+  rotation = [0, 0.4, 0],
+}) => (
+  <group position={position} rotation={rotation}>
+    <Block position={[0, 0, 0]} size={[0.42, 0.055, 0.055]} color="#f2c438" />
+    <Block position={[-0.24, 0, 0]} size={[0.08, 0.058, 0.058]} color="#f08aa0" />
+    <Block position={[0.24, 0, 0]} size={[0.07, 0.045, 0.045]} color="#e6cfa8" />
+    <Block position={[0.29, 0, 0]} size={[0.04, 0.025, 0.025]} color="#22252c" />
+  </group>
+);
+
+export const SubPlaque: React.FC<{ position?: Vec3; rotationY?: number }> = ({
+  position = [0, 2.55, -0.5],
+  rotationY = 0,
+}) => (
+  <group position={position} rotation={[0, rotationY, 0]}>
+    <Block size={[2.2, 0.62, 0.14]} color="#d92626" emissive="#a81818" emissiveIntensity={0.35} />
+    <Sign title="SUBSCRIBE" position={[0, 0, 0.09]} width={1.9} height={0.44} />
   </group>
 );

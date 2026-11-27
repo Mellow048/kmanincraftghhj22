@@ -1,159 +1,193 @@
+import type React from "react";
 import {
-  Block,
-  ChatToast,
-  FloatingNumber,
+  BENCH_POS,
+  BENCH_ROT,
+  BENCH_SEAT,
+  BadgePop,
   Maya,
-  PLACE,
+  ServerChatBox,
   ServerPlayer,
   SpawnBench,
   cam,
-  ease,
-  on,
-  pop,
-  ramp,
+  clamp01,
+  moveBetween,
   storyScene,
   timing,
 } from "./kit";
 
-/** Scene 1 (Beats 1–2): Maya Sits on the Spawn Bench Greeting Everyone While Players Call Her an AFK Bot. */
+/**
+ * Scene 1 (10 shots): Hook & mystery at the roadside spawn bench on the 56m VillageStreet.
+ */
 export const scene1 = storyScene(timing, {
   id: "scene1",
-  title: "The Spawn Bench",
+  title: "Scene 1",
   shots: [
     {
       cue: "1.bench",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.2, 0.6), facing: 0, dist: 6.5, to: 5.3, side: 14, pitch: 8, fov: 44 }),
-      zone: "server",
-      note: "Hook: Maya sits happily on the oak spawn bench waving warmly to the square.",
-      stage: (t) => (
-        <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="wave" face="smile" time={t} />
-          <ServerPlayer role="friendA" position={on(PLACE.server, -3.2, 0, -1.8)} rotationY={0.4} animation="wave" face="smile" time={t} />
-          <ServerPlayer role="friendB" position={on(PLACE.server, 3.1, 0, -1.6)} rotationY={-0.35} animation="cheer" face="grin" time={t} />
-        </>
-      ),
+      note: "High crane glides down the 56m SMP spawn avenue toward Maya seated on her roadside oak bench.",
+      ...cam.streetOverview({ from: [-0.8, 0, 12.2], to: [-1.8, 0, 5.6], height: 5.4, fov: 46 }),
+      stage: (t) => {
+        const f = moveBetween([0.6, 0, -3.5], [1.0, 0, 0.2], t, 0, 1.8);
+        return (
+          <>
+            <SpawnBench />
+            <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="sit" face="smile" time={t} />
+            <ServerPlayer role="friendA" position={f.position} rotationY={f.rotationY} animation={f.moving ? "walk" : "idle"} animDistance={f.animDistance} time={t} />
+            <ServerPlayer role="friendB" position={[2.2, 0, 4.8]} rotationY={-0.6} animation="idle" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "1.four",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.2, 0.6), facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: 8, fov: 44 }),
-      zone: "server",
-      note: "4:00 PM tag pops above Maya as she joins the server and sits on the bench.",
-      stage: (t) => (
-        <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="sit" headYaw={Math.sin(t * 2.4) * 0.22} face="smile" time={t} />
-          <FloatingNumber text="4:00 PM" color="#ffd84d" position={on(PLACE.server, 0, 2.55, 0.55)} height={0.62 * pop(t, 0.12)} />
-        </>
-      ),
+      note: "Side tracking camera glides beside Maya as she walks to her roadside oak bench and sits down.",
+      ...cam.track({ from: [-4.0, 0, 6.2], to: [-2.2, 0, 1.6], sideDist: 4.8, side: 1, height: 1.7, fov: 44 }),
+      stage: (t) => {
+        const w = moveBetween([-4.0, 0, 6.2], [-2.2, 0, 1.6], t, 0, 1.8);
+        return (
+          <>
+            <SpawnBench />
+            <Maya
+              position={w.moving ? w.position : BENCH_SEAT}
+              rotationY={w.moving ? w.rotationY : BENCH_ROT}
+              animation={w.moving ? "walk" : "sit"}
+              animDistance={w.animDistance}
+              face="smile"
+              time={t}
+            />
+          </>
+        );
+      },
     },
     {
       cue: "1.hi",
-      ...cam.twoShot({ a: on(PLACE.server, -1.1, 0, 0.8), b: on(PLACE.server, 1.1, 0, 0.8), facing: 0, dist: 6.7, to: 5.6, side: 12, pitch: 8, fov: 45 }),
-      zone: "server",
-      note: "Maya waves gently while a glowing diamond block sits untouched beside her.",
-      stage: (t) => (
-        <>
-          <SpawnBench position={on(PLACE.server, -0.7, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, -0.7, 0.35, 0.55)} rotationY={0.15} animation="wave" face="calm" time={t} />
-          <Block position={on(PLACE.server, 1.3, 0.4, 0.8)} size={[0.75, 0.75, 0.75]} color="#4ce8ff" emissive="#22b8d6" emissiveIntensity={0.25} />
-        </>
-      ),
+      note: "Cross-street parallax sweep around Maya peacefully sitting on the sidewalk while players jog past on the road.",
+      ...cam.sweep({ on: [-2.0, 1.35, 1.2], dist: 5.4, fromYaw: -18, toYaw: 34, pitch: 8, fov: 42 }),
+      stage: (t) => {
+        const passer = moveBetween([1.2, 0, -4.5], [0.8, 0, 4.5], t, 0, 2.4);
+        return (
+          <>
+            <SpawnBench />
+            <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="sit" face="calm" time={t} />
+            <ServerPlayer role="friendA" position={passer.position} rotationY={passer.rotationY} animation="walk" animDistance={passer.animDistance} time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "1.chat",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.3, 0.6), facing: 0, dist: 6.2, to: 5.0, side: 12, pitch: 7, fov: 42 }),
-      zone: "server",
-      note: "Warm ChatToast pops right above Maya: '<Maya> hi'.",
+      note: "Warm 3/4 sweep highlighting Maya waving as her compact floating chat box types hi above her nametag.",
+      ...cam.sweep({ on: [-2.3, 1.65, 1.2], dist: 4.8, fromYaw: 34, toYaw: -10, pitch: 6, fov: 40 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="wave" face="grin" time={t} />
-          <ChatToast sender="Maya" text="hi" position={on(PLACE.server, 0, 2.45, 0.55)} height={0.28 * pop(t, 0.1)} color="#6ee7b7" />
+          <SpawnBench />
+          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="grin" time={t} />
+          <ServerChatBox
+            position={[-2.3, 2.95, 1.2]}
+            lines={[{ sender: "Maya", text: "hi", color: "#9bf2b0" }]}
+            typing={clamp01(t / 1.3)}
+          />
         </>
       ),
     },
     {
       cue: "1.back",
-      ...cam.twoShot({ a: on(PLACE.server, -0.9, 0, 0.7), b: on(PLACE.server, 1.1, 0, 1.1), facing: 0, dist: 6.5, to: 5.4, side: -12, pitch: 8, fov: 44 }),
-      zone: "server",
-      note: "Another player walks into spawn and Maya waves with 'welcome back' in chat.",
+      note: "Tracking camera follows a returning player jogging up the road while Maya types welcome back.",
+      ...cam.track({ from: [1.4, 0, 9.2], to: [0.4, 0, 2.6], sideDist: 5.2, side: -1, height: 1.75, fov: 44 }),
       stage: (t) => {
-        const w = ease(ramp(t, 0, 1.0));
+        const runner = moveBetween([1.4, 0, 9.2], [0.4, 0, 2.6], t, 0, 2.1);
         return (
           <>
-            <SpawnBench position={on(PLACE.server, -0.9, 0, 0.4)} state="plain" />
-            <Maya position={on(PLACE.server, -0.9, 0.35, 0.55)} rotationY={0.35} animation="wave" face="grin" time={t} />
-            <ServerPlayer role="friendA" position={on(PLACE.server, 1.8 - w * 0.9, 0, 1.2)} rotationY={w < 0.96 ? -Math.PI / 2 : -0.35} animation={w < 0.96 ? "walk" : "wave"} animDistance={w * 0.9} face="smile" time={t} />
-            <ChatToast sender="Maya" text="welcome back" position={on(PLACE.server, -0.6, 2.5, 0.6)} height={0.26 * pop(t, 0.12)} color="#6ee7b7" />
+            <SpawnBench />
+            <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="grin" time={t} />
+            <ServerPlayer
+              role="friendB"
+              nameTag="Sam"
+              position={runner.position}
+              rotationY={runner.rotationY}
+              animation={runner.moving ? "run" : "wave"}
+              animDistance={runner.animDistance}
+              face="grin"
+              time={t}
+            />
+            <ServerChatBox
+              position={[-1.0, 3.05, 1.6]}
+              lines={[
+                { text: "Sam joined the game", color: "#ffe97d" },
+                { sender: "Maya", text: "welcome back", color: "#9bf2b0" },
+              ]}
+              typing={clamp01(t / 1.5)}
+            />
           </>
         );
       },
     },
     {
       cue: "2.hut",
-      ...cam.push({ on: on(PLACE.server, 0, 1.2, 0.6), dist: 7.3, to: 6.1, yaw: 12, pitch: 9, fov: 46 }),
-      zone: "server",
-      note: "Wide view of Maya on her simple oak bench with empty grass where a house would be.",
+      note: "Front-side sweep across the roadside bench showing the open spawn square beside her.",
+      ...cam.sweep({ on: [-2.2, 1.2, 1.2], dist: 5.8, fromYaw: 95, toYaw: 55, pitch: 12, fov: 44 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="sit" headYaw={Math.sin(t * 2.2) * 0.25} face="calm" time={t} />
+          <SpawnBench />
+          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="sit" face="calm" time={t} />
         </>
       ),
     },
     {
       cue: "2.walk",
-      ...cam.twoShot({ a: on(PLACE.server, -1.2, 0, 0.8), b: on(PLACE.server, 1.2, 0, 1.4), facing: 0, dist: 6.9, to: 5.8, side: -10, pitch: 8, fov: 45 }),
-      zone: "server",
-      note: "Fast armored players sprint right past Maya's bench without stopping.",
+      note: "Low-angle street shot as two diamond-armored players sprint down the open road past Maya's roadside bench.",
+      ...cam.heroLow({ on: [-0.6, 0, 2.4], dist: 6.2, yaw: -18, fov: 44 }),
       stage: (t) => {
-        const s = ease(ramp(t, 0, 1.1));
+        const a = moveBetween([0.2, 0, -4.8], [0.2, 0, 6.8], t, 0, 2.2);
+        const b = moveBetween([1.6, 0, 6.8], [1.6, 0, -4.8], t, 0, 2.2);
         return (
           <>
-            <SpawnBench position={on(PLACE.server, -1.1, 0, 0.4)} state="plain" />
-            <Maya position={on(PLACE.server, -1.1, 0.35, 0.55)} rotationY={0.3} animation="wave" face="smile" time={t} />
-            <ServerPlayer role="friendB" position={on(PLACE.server, -2.0 + s * 4.2, 0, 1.9)} rotationY={Math.PI / 2} animation={s > 0.02 && s < 0.98 ? "run" : "idle"} animDistance={s * 4.2} face="calm" time={t} />
+            <SpawnBench />
+            <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="sit" face="smile" time={t} />
+            <ServerPlayer role="friendA" shirtColor="#4be3e8" nameTag="Kai" position={a.position} rotationY={a.rotationY} animation="run" animDistance={a.animDistance} face="grin" time={t} />
+            <ServerPlayer role="friendC" shirtColor="#39c9d4" nameTag="Leo" position={b.position} rotationY={b.rotationY} animation="run" animDistance={b.animDistance} face="grin" time={t} />
           </>
         );
       },
     },
     {
       cue: "2.wave",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.2, 0.6), facing: 0, dist: 6.2, to: 5.0, side: 14, pitch: 7, fov: 42 }),
-      zone: "server",
-      note: "Close front view of Maya smiling warmly and waving from her oak bench.",
+      note: "Gentle arc across the roadside oak bench as Maya stays seated and waves warmly to passersby.",
+      ...cam.sweep({ on: [-2.3, 1.35, 1.2], dist: 4.8, fromYaw: -14, toYaw: 34, pitch: 7, fov: 40 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="wave" face="smile" time={t} />
+          <SpawnBench />
+          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="smile" time={t} />
         </>
       ),
     },
     {
       cue: "2.bot",
-      ...cam.twoShot({ a: on(PLACE.server, -1.1, 0, 1.0), b: on(PLACE.server, 1.1, 0, 1.0), facing: 0, dist: 6.7, to: 5.6, side: 10, pitch: 8, fov: 45 }),
-      zone: "server",
-      note: "Two players laugh and point calling Maya an AFK bot while she sits quietly.",
-      stage: (t) => (
-        <>
-          <SpawnBench position={on(PLACE.server, -1.2, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, -1.2, 0.35, 0.55)} rotationY={0.25} animation="sit" headYaw={0.25 + Math.sin(t * 2) * 0.1} face="uneasy" time={t} />
-          <ServerPlayer role="friendC" position={on(PLACE.server, 1.0, 0, 1.2)} rotationY={-0.5} animation="laugh" face="smug" time={t} />
-          <ChatToast text="LAZY AFK BOT LOL" position={on(PLACE.server, 1.0, 2.55, 1.2)} height={0.25 * pop(t, 0.12)} color="#ff6b57" />
-        </>
-      ),
+      note: "Tracking shot following two mocking players walking down the road past Maya's bench.",
+      ...cam.track({ from: [-0.4, 0, 5.4], to: [1.6, 0, 4.0], sideDist: 5.0, side: 1, height: 1.7, fov: 44 }),
+      stage: (t) => {
+        const m1 = moveBetween([-0.4, 0, 5.4], [1.6, 0, 4.0], t, 0, 2.2);
+        const m2 = moveBetween([-1.2, 0, 6.2], [0.8, 0, 4.8], t, 0, 2.2);
+        return (
+          <>
+            <SpawnBench />
+            <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="sit" face="uneasy" time={t} />
+            <ServerPlayer role="bully" nameTag="Zed" position={m1.position} rotationY={m1.rotationY} animation={m1.moving ? "walk" : "laugh"} animDistance={m1.animDistance} face="smug" badge="?" badgePopStart={0.35} time={t} />
+            <ServerPlayer role="friendC" position={m2.position} rotationY={m2.rotationY} animation={m2.moving ? "walk" : "point"} animDistance={m2.animDistance} face="laugh" time={t} />
+            <ServerChatBox position={[0.4, 2.98, 4.2]} lines={[{ sender: "Zed", text: "lol afk bot", color: "#ffcf7d" }]} />
+          </>
+        );
+      },
     },
     {
       cue: "2.why",
-      ...cam.front({ actor: on(PLACE.server, 0, 0.2, 0.6), facing: 0, dist: 6.2, to: 5.0, side: -14, pitch: 7, fov: 42 }),
-      zone: "server",
-      look: "overworld-golden",
-      note: "Quiet golden-hour shot of Maya alone on her bench — nobody asked why she never moved.",
+      note: "High crane pulls back over the spawn avenue as a question mark pops above Maya's head.",
+      ...cam.streetOverview({ from: [-0.8, 0, 6.2], to: [-3.2, 0, 10.6], height: 4.6, fov: 46 }),
       stage: (t) => (
         <>
-          <SpawnBench position={on(PLACE.server, 0, 0, 0.4)} state="plain" />
-          <Maya position={on(PLACE.server, 0, 0.35, 0.55)} rotationY={0} animation="sit" headYaw={Math.sin(t * 1.8) * 0.18} face="sad" time={t} />
+          <SpawnBench />
+          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="sit" face="uneasy" time={t} />
+          <BadgePop kind="?" position={[BENCH_POS[0], 2.55, BENCH_POS[2]]} popStart={0.25} t={t} />
         </>
       ),
     },

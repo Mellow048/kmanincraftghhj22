@@ -13,36 +13,34 @@ import {
   PLACE,
   Vox,
   cam,
-  ease,
+  moveBetween,
   on,
   pop,
-  ramp,
   storyScene,
   timing,
   wordAt,
 } from "./kit";
 
 /** Shared Frame-0 & Final-Loop camera and stage for a seamless Shorts loop. */
-export const LOOP_CAM = cam.push({
-  on: on(PLACE.square, 0, 1.4, -0.4),
-  dist: 7.3,
-  to: 6.1,
-  yaw: 10,
-  pitch: 9,
-  fov: 45,
+export const LOOP_CAM = cam.streetOverview({
+  from: on(PLACE.street, 0, 0, 11),
+  to: on(PLACE.street, 0, 0, 5.5),
+  height: 5.4,
+  fov: 46,
 });
 
 export const LoopTaxStage: React.FC<{ t: number }> = ({ t }) => (
   <>
-    <CitizenLead nameTag="Leo" position={on(PLACE.square, -0.9, 0, 0.6)} rotationY={0.2} animation="cheer" face="grin" time={t} />
-    <Chest position={on(PLACE.square, 1.1, 0, 0.4)} open={0.75} />
-    <EmeraldFountain position={on(PLACE.square, 1.1, 0.9, 0.4)} t={Math.max(0, t - 0.08)} count={16} color="#4ce8ff" />
-    <FloatingItemPyramid count={10} position={on(PLACE.square, -0.9, 2.35, 0.6)} color="#4ce8ff" t={t} />
-    <ExplainerCrowd positions={[on(PLACE.square, -3.0, 0, -2.2), on(PLACE.square, 2.8, 0, -2.0), on(PLACE.square, -2.2, 0, -3.4)]} animation="wave" time={t} />
+    <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.2, 0, 0.5)} rotationY={0.2} animation="cheer" face="grin" time={t} />
+    <CitizenLead variant="sam" nameTag="Sam" position={on(PLACE.street, 2.2, 0, -2.5)} rotationY={-0.3} animation="wave" face="smile" time={t} />
+    <CitizenLead variant="alex" position={on(PLACE.street, -2.4, 0, -4.0)} rotationY={0.35} animation="wave" face="grin" time={t} />
+    <Chest position={on(PLACE.street, 1.2, 0, 0.4)} open={0.8} />
+    <EmeraldFountain position={on(PLACE.street, 1.2, 0.9, 0.4)} t={Math.max(0, t - 0.08)} count={18} color="#4ce8ff" />
+    <FloatingItemPyramid count={10} position={on(PLACE.street, -1.2, 2.35, 0.5)} color="#4ce8ff" t={t} />
   </>
 );
 
-/** Scene 1 (Beats 1–2): Zero Taxes -> Dark Grass -> Creepers Blow Up Leo's House. */
+/** Scene 1 (Beats 1–2): Zero Taxes -> Dark Village Street -> Creepers March Out of Alley & Blast Leo's House. */
 export const scene1 = storyScene(timing, {
   id: "scene1",
   title: "Zero Taxes & Creepers",
@@ -50,98 +48,104 @@ export const scene1 = storyScene(timing, {
     {
       cue: "1.hook",
       ...LOOP_CAM,
-      zone: "square",
-      note: "Loopable Frame-0 hook: Leo cheers beside a glowing diamond fountain and town chest.",
+      zone: "street",
+      note: "High crane street overview hook: Leo cheers beside diamond fountain & chest with villagers along the 56m street.",
       stage: (t) => <LoopTaxStage t={t} />,
     },
     {
       cue: "1.ten",
-      ...cam.front({ actor: on(PLACE.square, 0, 0, 0.8), facing: 0, dist: 6.3, to: 5.2, side: 14, pitch: 8, fov: 44 }),
-      zone: "square",
-      note: "Leo proudly holds up 10 orbiting cyan diamonds every single day.",
-      stage: (t) => (
-        <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, 0, 0, 0.8)} rotationY={0} animation="cheer" face="grin" time={t} />
-          <OrbitingItemRing count={10} radius={0.85} position={on(PLACE.square, 0, 1.35, 0.8)} color="#4ce8ff" t={t} />
-          <FloatingNumber text="10" color="#4ce8ff" position={on(PLACE.square, 0, 2.7, 0.8)} height={0.75 * pop(t, 0.1)} />
-        </>
-      ),
+      ...cam.track({ from: on(PLACE.street, -1.5, 0, 8), to: on(PLACE.street, -1.5, 0, 1.5), sideDist: 5.6, side: 1, lead: 2.0 }),
+      zone: "street",
+      note: "Tracking shot down the street: Leo walks home carrying 10 orbiting cyan diamonds!",
+      stage: (t) => {
+        const w = moveBetween(on(PLACE.street, -1.5, 0, 8), on(PLACE.street, -1.5, 0, 1.5), t, 0, 1.9);
+        return (
+          <>
+            <CitizenLead variant="leo" nameTag="Leo" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "cheer"} animDistance={w.animDistance} face="grin" time={t} />
+            <OrbitingItemRing count={10} radius={0.85} position={[w.position[0], 1.35, w.position[2]]} color="#4ce8ff" t={t} />
+            <FloatingNumber text="10" color="#4ce8ff" position={[w.position[0], 2.75, w.position[2]]} height={0.62 * pop(t, 0.1)} />
+          </>
+        );
+      },
     },
     {
       cue: "1.keep",
-      ...cam.front({ actor: on(PLACE.square, 0, 0, 0.8), facing: 0, dist: 6.3, to: 5.2, side: -14, pitch: 8, fov: 44 }),
-      zone: "square",
-      note: "No king, no rules — Leo laughs proudly keeping all 10 diamonds in his own chest.",
+      ...cam.sweep({ on: on(PLACE.street, -2.5, 1.3, 0), dist: 6.4, fromYaw: 75, toYaw: 112, pitch: 8 }),
+      zone: "street",
+      note: "Cross-street parallax sweep facing Leo's house: Leo laughs stashing all 10 diamonds in his own chest.",
       stage: (t) => (
         <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, -0.5, 0, 0.8)} rotationY={0.2} animation="laugh" face="grin" time={t} />
-          <Chest position={on(PLACE.square, 0.9, 0, 0.8)} open={0.85} />
-          <FloatingItemPyramid count={10} position={on(PLACE.square, 0.9, 1.45, 0.8)} color="#4ce8ff" t={t} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -3.0, 0, 0.6)} rotationY={Math.PI / 2} animation="laugh" face="grin" time={t} />
+          <Chest position={on(PLACE.street, -3.0, 0, -0.8)} rotationY={Math.PI / 2} open={0.85} />
+          <FloatingItemPyramid count={10} position={on(PLACE.street, -3.0, 1.45, -0.8)} color="#4ce8ff" t={t} />
         </>
       ),
     },
     {
       cue: "1.dark",
-      ...cam.push({ on: on(PLACE.square, 0, 1.3, 0.5), dist: 7.7, to: 6.4, yaw: 12, pitch: 9, fov: 46 }),
-      zone: "square",
+      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, -6), to: on(PLACE.street, 0, 0, 4), height: 5.5, fov: 48 }),
+      zone: "street",
       look: "overworld-night",
-      note: "Hard cut to dark night: Leo shrugs in pitch-dark spawn with zero torches.",
+      note: "Reverse-angle crane down the dark night street: Leo shrugs in pitch darkness with 0 torches.",
       stage: (t) => (
         <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, 0, 0, 0.8)} rotationY={0} animation="shrug" face="uneasy" time={t} />
-          <FloatingNumber text="0 TORCHES" color="#ff6b57" position={on(PLACE.square, 0, 2.55, 0.8)} height={0.62 * pop(t, 0.15)} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, 0, 0, -2)} rotationY={Math.PI} animation="shrug" face="uneasy" time={t} />
+          <FloatingNumber text="0 TORCHES" color="#ff6b57" position={on(PLACE.street, 0, 2.6, -2)} height={0.58 * pop(t, 0.15)} />
         </>
       ),
     },
     {
       cue: "1.roads",
-      ...cam.truck({ on: on(PLACE.square, 0, 1.1, 0.2), dist: 7.7, yaw: 0, pitch: 12, by: [1.4, 0, 0], fov: 46 }),
-      zone: "square",
+      ...cam.sweep({ on: on(PLACE.street, 0, 1.2, -5), dist: 7.4, fromYaw: -35, toYaw: 10, pitch: 12 }),
+      zone: "street",
       look: "overworld-night",
-      note: "Empty dark grass with Leo's small lonely oak house and zero walls around it.",
+      note: "Wide night sweep across the unprotected street as Leo and Sam look around nervously.",
       stage: (t) => (
         <>
-          <Vox kind="planks" position={on(PLACE.square, 0, 1.1, -1.6)} size={[3.2, 2.2, 3.0]} />
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, 0, 0, 0.8)} rotationY={0} animation="cower" face="worried" time={t} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.6, 0, -4)} rotationY={0.2} animation="cower" face="worried" time={t} />
+          <CitizenLead variant="sam" nameTag="Sam" position={on(PLACE.street, 1.8, 0, -5)} rotationY={-0.3} animation="shrug" face="uneasy" time={t} />
         </>
       ),
     },
     {
       cue: "2.night",
-      ...cam.twoShot({ a: on(PLACE.square, -1.4, 0, 0.8), b: on(PLACE.square, 1.4, 0, 0.8), facing: 0, dist: 7.1, to: 5.8, side: -10, pitch: 8, fov: 46 }),
-      zone: "square",
+      ...cam.heroLow({ on: on(PLACE.street, -2.5, 0, -1.5), dist: 6.4, yaw: 65 }),
+      zone: "street",
       look: "overworld-night",
-      note: "Three green Creepers creep forward out of the dark grass toward Leo's house!",
+      note: "Low-angle alley shot: 3 green Creepers physically march out of the dark gap between houses!",
       stage: (t) => {
-        const step = ease(ramp(t, 0, 1.1));
+        const c1 = moveBetween(on(PLACE.street, -7.5, 0, -2.5), on(PLACE.street, -1.5, 0, -2.5), t, 0, 1.8);
+        const c2 = moveBetween(on(PLACE.street, -8.2, 0, -1.0), on(PLACE.street, -2.2, 0, -1.0), t, 0.1, 1.9);
+        const c3 = moveBetween(on(PLACE.street, -7.8, 0, 0.4), on(PLACE.street, -1.8, 0, 0.4), t, 0.2, 2.0);
         return (
           <>
-            <Creeper position={on(PLACE.square, -1.5, 0, -0.4 + step * 1.1)} rotationY={0.15} swell={step * 0.4} />
-            <Creeper position={on(PLACE.square, 0, 0, -0.8 + step * 1.2)} rotationY={0} swell={step * 0.5} />
-            <Creeper position={on(PLACE.square, 1.5, 0, -0.4 + step * 1.1)} rotationY={-0.15} swell={step * 0.4} />
+            <Creeper position={c1.position} rotationY={c1.rotationY} swell={0.35} />
+            <Creeper position={c2.position} rotationY={c2.rotationY} swell={0.45} />
+            <Creeper position={c3.position} rotationY={c3.rotationY} swell={0.35} />
           </>
         );
       },
     },
     {
       cue: "2.boom",
-      ...cam.front({ actor: on(PLACE.square, 0, 0.4, 0.8), facing: 0, dist: 6.7, to: 5.6, side: 14, pitch: 8, fov: 46 }),
-      zone: "square",
+      ...cam.sweep({ on: on(PLACE.street, 0, 1.4, 0), dist: 6.8, fromYaw: -22, toYaw: 18, pitch: 8 }),
+      zone: "street",
       look: "overworld-night",
-      note: "BOOM! Creeper blasts Leo's roof as -5 diamonds flash bright coral-red!",
+      note: "BOOM! Creeper explodes beside Leo as debris flies and -5 diamonds flashes coral-red!",
       stage: (t) => {
         const boomAt = Math.max(0.15, wordAt("2.boom", "Boom") + 0.05);
         const hit = t >= boomAt;
         return (
           <>
-            <CitizenLead nameTag="Leo" position={on(PLACE.square, -1.1, 0, 1.0)} rotationY={0.35} animation="cower" face="fear" time={t} />
+            <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.6, 0, 0.8)} rotationY={0.45} animation="cower" face="fear" time={t} />
             {!hit ? (
-              <Creeper position={on(PLACE.square, 0.8, 0, 0.8)} rotationY={-0.25} swell={0.9} />
+              <Creeper position={on(PLACE.street, 0.8, 0, 0.5)} rotationY={-0.35} swell={0.92} />
             ) : (
               <>
-                <Glow position={on(PLACE.square, 0.8, 1.2, 0.8)} size={3.6} color="#ff8844" opacity={0.65} />
-                <Block position={on(PLACE.square, 0.5, 1.8 + (t - boomAt) * 1.6, 0.7)} size={[0.45, 0.45, 0.45]} color="#8c6239" />
-                <FloatingNumber text="-5" color="#ff4f42" position={on(PLACE.square, 0.8, 2.6, 0.8)} height={0.85 * pop(t, boomAt)} />
+                <Glow position={on(PLACE.street, 0.8, 1.3, 0.5)} size={4.0} color="#ff8844" opacity={0.7} />
+                <Block position={on(PLACE.street, 0.4, 1.8 + (t - boomAt) * 1.6, 0.5)} size={[0.45, 0.45, 0.45]} color="#8c6239" />
+                <Block position={on(PLACE.street, 1.3, 1.5 + (t - boomAt) * 1.9, 0.2)} size={[0.38, 0.38, 0.38]} color="#6b4928" />
+                <FloatingNumber text="-5" color="#ff4f42" position={on(PLACE.street, 0.8, 2.75, 0.5)} height={0.72 * pop(t, boomAt)} />
               </>
             )}
           </>
@@ -150,29 +154,30 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.again",
-      ...cam.twoShot({ a: on(PLACE.square, -1.1, 0, 0.8), b: on(PLACE.square, 1.1, 0, 0.8), facing: 0, dist: 6.7, to: 5.6, side: -12, pitch: 8, fov: 45 }),
-      zone: "square",
+      ...cam.sweep({ on: on(PLACE.street, 2.5, 1.3, 4), dist: 6.8, fromYaw: -105, toYaw: -68, pitch: 8 }),
+      zone: "street",
       look: "overworld-night",
-      note: "Next night, a Creeper blasts Leo's friend's house too while both players panic.",
+      note: "Cross-street angle on Sam's side: distinct teal-hoodie Sam & Leo panic as another Creeper swells!",
       stage: (t) => (
         <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, -1.2, 0, 1.0)} rotationY={0.2} animation="cower" face="sad" time={t} />
-          <CitizenLead nameTag="Sam" position={on(PLACE.square, 1.2, 0, 1.0)} rotationY={-0.2} animation="cower" face="fear" time={t} />
-          <Creeper position={on(PLACE.square, 0, 0, -0.4)} rotationY={0} swell={0.65} />
-          <Glow position={on(PLACE.square, 0, 1.2, -0.4)} size={2.6} color="#ff8844" opacity={0.35} />
+          <CitizenLead variant="sam" nameTag="Sam" position={on(PLACE.street, 3.0, 0, 3.0)} rotationY={-Math.PI / 2} animation="cower" face="fear" time={t} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, 3.0, 0, 5.2)} rotationY={-Math.PI / 2} animation="cower" face="sad" time={t} />
+          <Creeper position={on(PLACE.street, 1.2, 0, 4.1)} rotationY={Math.PI / 2} swell={0.72} />
+          <Glow position={on(PLACE.street, 1.2, 1.2, 4.1)} size={2.8} color="#ff8844" opacity={0.38} />
         </>
       ),
     },
     {
       cue: "2.broke",
-      ...cam.front({ actor: on(PLACE.square, 0, 0, 0.8), facing: 0, dist: 6.3, to: 5.2, side: 14, pitch: 8, fov: 44 }),
-      zone: "square",
-      note: "Leo shrugs helplessly beside one tiny stone block — nobody can afford a whole wall alone.",
+      ...cam.sweep({ on: on(PLACE.street, 0, 1.3, 2), dist: 6.4, fromYaw: 15, toYaw: -20, pitch: 9 }),
+      zone: "street",
+      note: "Morning after: Leo, Sam, and Alex shrug around one lonely stone block — too expensive alone.",
       stage: (t) => (
         <>
-          <CitizenLead nameTag="Leo" position={on(PLACE.square, -0.5, 0, 0.8)} rotationY={0.15} animation="shrug" face="sad" time={t} />
-          <Vox kind="stoneBrick" position={on(PLACE.square, 0.9, 0.45, 0.8)} size={[0.9, 0.9, 0.9]} />
-          <FloatingNumber text="TOO EXPENSIVE" color="#ff6b57" position={on(PLACE.square, 0.2, 2.65, 0.8)} height={0.55 * pop(t, 0.15)} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.5, 0, 2.0)} rotationY={0.3} animation="shrug" face="sad" time={t} />
+          <CitizenLead variant="alex" nameTag="Alex" position={on(PLACE.street, 1.6, 0, 2.0)} rotationY={-0.3} animation="shrug" face="worried" time={t} />
+          <Vox kind="stoneBrick" position={on(PLACE.street, 0, 0.45, 1.8)} size={[0.9, 0.9, 0.9]} />
+          <FloatingNumber text="TOO MUCH!" color="#ff6b57" position={on(PLACE.street, 0, 2.55, 1.8)} height={0.56 * pop(t, 0.12)} />
         </>
       ),
     },

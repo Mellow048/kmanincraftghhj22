@@ -9,9 +9,9 @@ export const film = defineFilm({
   id: "taxes-explained-using-minecraft",
   title: "Taxes Explained Using Minecraft",
   topic: "explainer",
-  audio: { src: "audio/taxes-explained-using-minecraft/mix.mp3" },
   look: "overworld-day",
   post: { shaders: "vibrant-day" },
+  audio: { src: "audio/taxes-explained-using-minecraft/mix.mp3" },
   captions: {
     words: timing.words,
     y: 0.72,
