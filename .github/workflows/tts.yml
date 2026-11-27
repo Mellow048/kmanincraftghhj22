@@ -17,7 +17,7 @@ on:
       gap:
         description: "Air gap between narration clips in seconds"
         required: false
-        default: "0.08"
+        default: "0.42"
 
 jobs:
   tts:
@@ -38,7 +38,7 @@ jobs:
           COMPOSITION: ${{ inputs.composition }}
           VOICE: ${{ inputs.voice }}
           RATE: ${{ inputs.rate }}
-        run: python3 scripts/tts.py "$COMPOSITION" --voice "$VOICE" --rate "$RATE"
+        run: python3 scripts/tts.py "$COMPOSITION" --voice "$VOICE" --rate="$RATE"
 
       - name: Align narration words and build timing.json
         env:

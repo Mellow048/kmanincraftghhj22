@@ -245,6 +245,11 @@ SAY = {
     "puddle": "P AH D AH L",
     "mods": "M AA D Z",
     "groans": "G R OW N Z",
+    "waiteight": "W EY T EY T",
+    "playerstotally": "P L EY ER Z T OW T AH L IY",
+    "sorryshe": "S AA R IY SH IY",
+    "tnt": "T IY EH N T IY",
+    "disconnected": "D IH S K AH N EH K T IH D",
 }
 
 def assembled_spans(raw, count, length):
