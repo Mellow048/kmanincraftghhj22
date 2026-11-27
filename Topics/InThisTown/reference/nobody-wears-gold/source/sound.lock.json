@@ -1,0 +1,130 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-nobody-wears-gold",
+  "mix": "public/audio/in-this-town-nobody-wears-gold/mix.mp3",
+  "seconds": 103.2333,
+  "built_from": {
+    "timing.json": "5b4fd171c128307021235f180a64400ef2381242",
+    "sound.json": "42aef4806d5c691b504109a808827cd60698f8ff",
+    "narration.mp3": "32be454611ba98fd2b82beca768bcd243f58b87c"
+  },
+  "mix_sha1": "90cdd596551ef8dc2c8aa5c20c64a099304e8c60",
+  "music_sections": [
+    {
+      "from": "1.gold",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.never",
+      "mood": "hope",
+      "at": 25.73
+    },
+    {
+      "from": "3.vance",
+      "mood": "curious",
+      "at": 30.2
+    },
+    {
+      "from": "4.twenty",
+      "mood": "sneak",
+      "at": 43.33
+    },
+    {
+      "from": "5.bell",
+      "mood": "tense",
+      "at": 51.77
+    },
+    {
+      "from": "6.wait",
+      "mood": "none",
+      "at": 65.9
+    },
+    {
+      "from": "6.calm",
+      "mood": "wonder",
+      "at": 67.5
+    },
+    {
+      "from": "7.boots",
+      "mood": "town",
+      "at": 90.17
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 9,
+  "measured": {
+    "musicUnderVoiceDb": 15.4,
+    "secondsWithoutMusic": 1.5,
+    "bedsUnderVoiceDb": 26.4,
+    "sfx": 121,
+    "sfxPerMinute": 70.3,
+    "sfxKinds": 35,
+    "longestGapSeconds": 2.6,
+    "longestGapAt": 77.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.6,
+    "voiceOverRestWorstDb": 4.7,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.7,
+        "t": 53.5,
+        "cue": "5.bell",
+        "sounding": [
+          "bell",
+          "riser"
+        ]
+      },
+      {
+        "db": 4.7,
+        "t": 19.2,
+        "cue": "2.paint",
+        "sounding": [
+          "scrape"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 29.8,
+        "cue": "3.laugh",
+        "sounding": [
+          "stamp",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 5.5,
+        "t": 87.4,
+        "cue": "7.mayor",
+        "sounding": [
+          "buzz",
+          "zip"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 5.3,
+        "cue": "1.helmet",
+        "sounding": [
+          "sparkle",
+          "whoosh_low"
+        ]
+      },
+      {
+        "db": 5.7,
+        "t": 31.7,
+        "cue": "3.vance",
+        "sounding": [
+          "swish"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.3,
+    "limiterMaxDb": 0.0
+  },
+  "failures": []
+}
