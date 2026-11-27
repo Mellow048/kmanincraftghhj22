@@ -1,7 +1,7 @@
 {
   "music": {
     "track": "Topics/ServerLore/up_happy.m4a",
-    "gain": -14,
+    "gain": -16,
     "sections": [
       {
         "from": "1.grey",
@@ -79,7 +79,8 @@
     {
       "cue": "1.only",
       "sfx": "rustle",
-      "word": "wood"
+      "word": "wood",
+      "trim": 5
     },
     {
       "cue": "1.only",
@@ -149,7 +150,8 @@
     {
       "cue": "2.quiet",
       "sfx": "step_wood",
-      "word": "argued"
+      "word": "argued",
+      "trim": 5
     },
     {
       "cue": "2.quiet",
@@ -179,7 +181,8 @@
     {
       "cue": "3.desk",
       "sfx": "plink",
-      "word": "desk"
+      "word": "desk",
+      "trim": 5
     },
     {
       "cue": "3.desk",
@@ -204,7 +207,8 @@
     {
       "cue": "3.here",
       "sfx": "ding",
-      "word": "wrong"
+      "word": "wrong",
+      "trim": -3
     },
     {
       "cue": "4.prank",
@@ -279,7 +283,8 @@
     {
       "cue": "5.idea",
       "sfx": "ding",
-      "word": "knew"
+      "word": "knew",
+      "trim": -7
     },
     {
       "cue": "5.texture",
@@ -354,7 +359,8 @@
     {
       "cue": "7.chest",
       "sfx": "paper",
-      "word": "sign"
+      "word": "sign",
+      "trim": 5
     },
     {
       "cue": "7.tears",
@@ -364,7 +370,8 @@
     {
       "cue": "7.tears",
       "sfx": "sparkle",
-      "word": "first"
+      "word": "first",
+      "trim": 5
     },
     {
       "cue": "7.typed",
@@ -374,12 +381,14 @@
     {
       "cue": "7.typed",
       "sfx": "ding",
-      "word": "color"
+      "word": "color",
+      "trim": -3
     },
     {
       "cue": "7.gallery",
       "sfx": "ding",
-      "word": "Gallery"
+      "word": "Gallery",
+      "trim": -3
     },
     {
       "cue": "7.gallery",

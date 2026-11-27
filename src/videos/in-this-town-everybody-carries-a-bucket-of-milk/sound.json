@@ -167,7 +167,8 @@
     {
       "cue": "4.hundred",
       "sfx": "ding",
-      "word": "hundred"
+      "word": "hundred",
+      "trim": -3
     },
     {
       "cue": "4.hundred",
@@ -212,7 +213,8 @@
     {
       "cue": "5.witch",
       "sfx": "ding",
-      "word": "potions"
+      "word": "potions",
+      "trim": -5
     },
     {
       "cue": "5.lock",
