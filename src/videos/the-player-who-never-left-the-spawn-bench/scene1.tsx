@@ -81,7 +81,7 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench />
-          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="happy" time={t} />
+          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="grin" time={t} />
           <ServerChatBox
             position={[-2.3, 2.95, 1.2]}
             lines={[{ sender: "Maya", text: "hi", color: "#9bf2b0" }]}
@@ -99,7 +99,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <SpawnBench />
-            <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="happy" time={t} />
+            <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="grin" time={t} />
             <ServerPlayer
               role="friendB"
               nameTag="Sam"
@@ -107,7 +107,7 @@ export const scene1 = storyScene(timing, {
               rotationY={runner.rotationY}
               animation={runner.moving ? "run" : "wave"}
               animDistance={runner.animDistance}
-              face="happy"
+              face="grin"
               time={t}
             />
             <ServerChatBox
@@ -145,7 +145,7 @@ export const scene1 = storyScene(timing, {
             <SpawnBench />
             <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="sit" face="smile" time={t} />
             <ServerPlayer role="friendA" shirtColor="#4be3e8" nameTag="Kai" position={a.position} rotationY={a.rotationY} animation="run" animDistance={a.animDistance} face="grin" time={t} />
-            <ServerPlayer role="friendC" shirtColor="#39c9d4" nameTag="Leo" position={b.position} rotationY={b.rotationY} animation="run" animDistance={b.animDistance} face="happy" time={t} />
+            <ServerPlayer role="friendC" shirtColor="#39c9d4" nameTag="Leo" position={b.position} rotationY={b.rotationY} animation="run" animDistance={b.animDistance} face="grin" time={t} />
           </>
         );
       },

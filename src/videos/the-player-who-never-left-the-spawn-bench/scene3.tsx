@@ -114,7 +114,7 @@ export const scene3 = storyScene(timing, {
             <SpawnBench upgraded />
             <ServerPlayer role="friendA" position={b1.position} rotationY={b1.rotationY} animation={b1.moving ? "walk" : "press"} animDistance={b1.animDistance} torch time={t} />
             <ServerPlayer role="friendB" position={b2.position} rotationY={b2.rotationY} animation={b2.moving ? "walk" : "press"} animDistance={b2.animDistance} torch time={t} />
-            <Owner position={[-2.4, 0, -0.4]} rotationY={BENCH_ROT} animation="cheer" face="happy" time={t} />
+            <Owner position={[-2.4, 0, -0.4]} rotationY={BENCH_ROT} animation="cheer" face="grin" time={t} />
           </>
         );
       },
@@ -127,7 +127,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench upgraded platePressed={0.2} />
-          <Owner position={[-1.4, 0, 1.92]} rotationY={0} animation="press" face="happy" time={t} />
+          <Owner position={[-1.4, 0, 1.92]} rotationY={0} animation="press" face="grin" time={t} />
         </>
       ),
     },
@@ -139,7 +139,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench upgraded platePressed={1} />
-          <Owner position={[-1.4, 0, 1.92]} rotationY={0} animation="cheer" face="happy" time={t} />
+          <Owner position={[-1.4, 0, 1.92]} rotationY={0} animation="cheer" face="grin" time={t} />
           <ServerChatBox position={[-1.4, 2.98, 1.6]} lines={[{ sender: "Maya", text: "welcome back!", color: "#9bf2b0" }]} typing={clamp01(t / 1.2)} />
         </>
       ),
@@ -189,7 +189,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench upgraded />
-          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="sit" face="happy" time={t} />
+          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="sit" face="grin" time={t} />
           <ServerCrowd
             members={[
               { role: "owner", position: [1.8, 0, 3.6], rotationY: -0.8, animation: "cheer", face: "happy" },
@@ -213,7 +213,7 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <SpawnBench upgraded />
-            <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="sit" face="happy" time={t} />
+            <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="sit" face="grin" time={t} />
             <Jake position={j.position} rotationY={j.rotationY} animation={j.moving ? "walk" : "press"} animDistance={j.animDistance} face="smile" time={t} />
             {t > 1.1 ? (
               <>
@@ -234,7 +234,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench upgraded />
-          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="sit" face="happy" time={t} />
+          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="sit" face="grin" time={t} />
           <Jake position={[-1.85, 0.2, 1.55]} rotationY={BENCH_ROT - 0.15} animation="sit" face="smile" time={t} />
           <RedFlower position={[-2.1, 0, 2.25]} />
           <RedFlower position={[-1.7, 0, 2.35]} scale={0.92} />
@@ -250,7 +250,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench upgraded platePressed={1} />
-          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="wave" face="happy" time={t} />
+          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="wave" face="grin" time={t} />
           <Jake position={[-1.85, 0.2, 1.55]} rotationY={BENCH_ROT - 0.15} animation="sit" face="smile" time={t} />
           <RedFlower position={[-2.1, 0, 2.25]} />
           <RedFlower position={[-1.7, 0, 2.35]} scale={0.92} />
@@ -267,8 +267,8 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench upgraded platePressed={1} />
-          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="wave" face="happy" time={t} />
-          <Jake position={[-1.85, 0.2, 1.55]} rotationY={BENCH_ROT - 0.15} animation="wave" face="happy" time={t} />
+          <Maya position={[-2.65, 0.2, 1.25]} rotationY={BENCH_ROT} animation="wave" face="grin" time={t} />
+          <Jake position={[-1.85, 0.2, 1.55]} rotationY={BENCH_ROT - 0.15} animation="wave" face="grin" time={t} />
           <RedFlower position={[-2.1, 0, 2.25]} />
           <RedFlower position={[-1.7, 0, 2.35]} scale={0.92} />
           <ServerCrowd

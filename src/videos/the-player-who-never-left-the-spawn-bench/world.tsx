@@ -41,11 +41,10 @@ export const World: React.FC = () => (
 
     <Zone name="irl">
       <group position={IRL_POS}>
-      {/* Cozy bedroom walls & floor framing the desk */}
-      <Vox kind="planks" tint="#7d5938" position={[0, -0.15, 0]} size={[11, 0.3, 10]} />
-      <Block position={[0, 2.2, -3.4]} size={[11, 4.4, 0.35]} color="#2b4b68" />
-      <Block position={[-4.8, 2.2, 0.5]} size={[0.35, 4.4, 10]} color="#233e57" />
-      <Block position={[4.8, 2.2, 0.5]} size={[0.35, 4.4, 10]} color="#233e57" />
+      {/* Cozy bedroom walls & floor framing the desk (open +X/+Z side for cameras) */}
+      <Vox kind="planks" tint="#7d5938" position={[0, -0.15, 0]} size={[14, 0.3, 12]} />
+      <Block position={[0, 3.25, -3.4]} size={[14, 6.5, 0.35]} color="#2b4b68" />
+      <Block position={[-4.8, 3.25, 1.5]} size={[0.35, 6.5, 12]} color="#233e57" />
       {/* Bedroom window letting in warm afternoon light */}
       <Block position={[-2.6, 2.3, -3.18]} size={[1.8, 1.4, 0.1]} color="#8fd4ff" emissive="#7ac8ff" emissiveIntensity={0.45} />
       <DeskSetup
@@ -61,6 +60,10 @@ export const World: React.FC = () => (
     <Zone name="school">
       <group position={SCHOOL_POS}>
         <ClassroomRoom position={[0, 0, 0]} boardText="MATH 101" />
+        {/* Full classroom wall extensions so front/side sweeps never show outside sky */}
+        <Block position={[-4.8, 3.0, 2.0]} size={[0.4, 6.0, 16]} color="#dbd3be" />
+        <Block position={[0, 3.0, 5.4]} size={[12, 6.0, 0.4]} color="#e3dcc8" />
+        <Block position={[0, 5.0, -4.4]} size={[12, 2.0, 0.4]} color="#e3dcc8" />
       </group>
     </Zone>
   </>

@@ -176,7 +176,7 @@ export const scene2 = storyScene(timing, {
       zone: "irl",
       look: "overworld-day",
       note: "Close front-side angle on Maya seated at the desk, her hand shaking visibly over the mouse.",
-      ...cam.heroLow({ on: [IRL_POS[0] + 0.25, 0.95, IRL_POS[2] - 1.45], dist: 3.4, yaw: 108, fov: 40 }),
+      ...cam.sweep({ on: [IRL_POS[0] + 0.18, 1.05, IRL_POS[2] - 1.45], dist: 3.3, fromYaw: 94, toYaw: 66, pitch: 12, fov: 42 }),
       stage: (t) => (
         <group position={IRL_POS}>
           <Maya
@@ -251,7 +251,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <SpawnBench />
-          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="happy" time={t} />
+          <Maya position={BENCH_SEAT} rotationY={BENCH_ROT} animation="wave" face="grin" time={t} />
           <ServerChatBox position={[-2.3, 2.98, 1.2]} lines={[{ sender: "Maya", text: "hi everyone!", color: "#9bf2b0" }]} />
         </>
       ),
