@@ -35,7 +35,8 @@ export const scene2 = storyScene(timing, {
   shots: [
     {
       cue: "3.meet",
-      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, 10), to: on(PLACE.street, 0, 0, 3), height: 5.8, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, 10), to: on(PLACE.street, 0, 0, 3), on: on(PLACE.street, 0, 1.2, 0.5),
+        height: 5.8, fov: 46 }),
       zone: "street",
       note: "High crane down the lively street as the whole server gathers around the community chest!",
       stage: (t) => (
@@ -78,6 +79,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.twenty",
+      hud: { banner: { text: "20% TAX", color: "#5ce68a", sub: "2 of 10 Diamonds" } },
       ...cam.sweep({ on: on(PLACE.hall, 0, 1.3, 0), dist: 6.2, fromYaw: 24, toYaw: -18, pitch: 9 }),
       zone: "hall",
       note: "Parallax orbit around the glowing Treasury Chest as 20% TAX pops overhead.",
@@ -85,7 +87,6 @@ export const scene2 = storyScene(timing, {
         <>
           <Chest position={on(PLACE.hall, 0, 0, 0)} open={0.88} />
           <OrbitingItemRing count={6} radius={0.75} position={on(PLACE.hall, 0, 1.3, 0)} color="#4ce8ff" t={t} />
-          <FloatingNumber text="20% TAX" color="#4be08a" position={on(PLACE.hall, 0, 2.6, 0)} height={0.65 * pop(t, 0.1)} />
         </>
       ),
     },
@@ -134,12 +135,13 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.torch",
-      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, 12), to: on(PLACE.street, 0, 0, 2), height: 4.8, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, 12), to: on(PLACE.street, 0, 0, 2), on: on(PLACE.street, 0, 1.2, 0.5),
+        height: 4.8, fov: 46 }),
       zone: "street",
       look: "overworld-golden",
       note: "Golden sunset sweep down the entire village road as warm bright torches light both sidewalks!",
       stage: (t) => {
-        const w = moveBetween(on(PLACE.street, 0, 0, -2), on(PLACE.street, 0, 0, 6), t, 0, 1.8);
+        const w = moveBetween(on(PLACE.street, 0, 0, -4), on(PLACE.street, 0, 0, 2.5), t, 0, 1.8);
         return (
           <>
             {[-3.2, 3.2].flatMap((x, xi) =>
@@ -225,7 +227,6 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.hall, 0, 0, 1)} rotationY={0} animation="point" face="worried" time={t} />
-          <ChatToast text="WHEN TAXES BREAK..." position={on(PLACE.hall, 0, 2.6, 1)} height={0.24 * pop(t, 0.12)} color="#ff6b57" />
         </>
       ),
     },
@@ -255,12 +256,6 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <EliteLead nameTag="Greedy Mod" position={on(PLACE.hall, 0, 0, 0.5)} rotationY={0} animation="point" face="smug" time={t} />
-            <FloatingNumber
-              text={six ? "6 / 10 (60%!)" : "2 / 10"}
-              color={six ? "#ff4f42" : "#4be08a"}
-              position={on(PLACE.hall, 0, 2.75, 0.5)}
-              height={0.62 * pop(t, six ? flipAt : 0.08)}
-            />
           </>
         );
       },
@@ -293,7 +288,8 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.dark2",
-      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, 8), to: on(PLACE.street, 0, 0, 1), height: 5.2, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, 8), to: on(PLACE.street, 0, 0, 1), on: on(PLACE.street, 0, 1.2, 0.5),
+        height: 5.2, fov: 46 }),
       zone: "street",
       look: "overworld-night",
       note: "Night crane: torches go dark and Creepers march right back down the street toward Leo!",

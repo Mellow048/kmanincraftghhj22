@@ -30,7 +30,7 @@ export const scene3 = storyScene(timing, {
       cue: "5.wind",
       look: "overworld-storm",
       note: "Stormy crane sweeps down the 56m street as howling wind streaks slam through town.",
-      ...cam.streetOverview({ from: [-2.4, 0, 12.6], to: [1.6, 0, 6.2], height: 5.4, fov: 48 }),
+      ...cam.streetOverview({ from: [-2.2, 0, 10.6], to: [1.4, 0, 5.8], on: [0, 1.3, 1.8], height: 4.8, fov: 46 }),
       stage: (t) => (
         <>
           <WindStreaks t={t} center={[0, 2.2, 1.0]} />
@@ -57,6 +57,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.lock",
+      hud: { banner: { text: "200 EMERALDS!", color: "#ff4444" } },
       look: "overworld-storm",
       note: "Low dramatic angle on Chief Flint slamming his shop shut and demanding two hundred emeralds.",
       ...cam.heroLow({ on: [3.8, 0, -2.5], dist: 5.0, yaw: -24, fov: 44 }),
@@ -64,7 +65,6 @@ export const scene3 = storyScene(timing, {
         <>
           <WindStreaks t={t} center={[3.2, 2.0, -2.0]} />
           <ChiefFlint position={[3.8, 0, -2.5]} rotationY={-1.3} animation="laugh" face="smug" torch light={3.2} time={t} />
-          <FloatingNumber text="200 EMERALDS!" position={[3.6, 2.2, -2.5]} color="#ff4444" height={0.4} />
         </>
       ),
     },
@@ -181,7 +181,7 @@ export const scene3 = storyScene(timing, {
       cue: "6.call",
       look: "overworld-storm",
       note: "High crane past hovering Pip blinking three golden signals toward the dark pine woods.",
-      ...cam.streetOverview({ from: [1.8, 0, 4.2], to: [-1.4, 0, -1.6], height: 4.6, fov: 46 }),
+      ...cam.streetOverview({ from: [2.2, 0, 4.6], to: [-1.8, 0, 2.2], on: [0, 3.9, -1.5], height: 4.4, fov: 44 }),
       stage: (t) => (
         <>
           <Kai position={[0, 0, 1.8]} rotationY={Math.PI} animation="idle" face="brave" time={t} />
@@ -193,7 +193,7 @@ export const scene3 = storyScene(timing, {
       cue: "6.swarm",
       look: "lantern-night",
       note: "Epic high crane descending over the square as fifty glowing fireflies flood the entire street.",
-      ...cam.streetOverview({ from: [-2.8, 0, 11.4], to: [2.2, 0, 6.0], height: 5.6, fov: 48 }),
+      ...cam.streetOverview({ from: [-2.6, 0, 10.2], to: [2.0, 0, 5.8], on: [0, 1.8, 1.4], height: 4.8, fov: 46 }),
       stage: (t) => (
         <>
           <FireflySwarm center={[0, 2.2, 0]} count={36} spread={10.5} t={t} />

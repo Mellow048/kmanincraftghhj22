@@ -294,3 +294,15 @@ export const WindStreaks: React.FC<{ t: number; center?: Vec3 }> = ({ t, center 
     })}
   </group>
 );
+
+/** Dark brown Minecraft mud puddle (never neon blue!). */
+export const MudPuddle: React.FC<{ position?: Vec3; size?: [number, number] }> = ({
+  position = [0, 0.02, 0],
+  size = [2.4, 1.8],
+}) => (
+  <group position={position}>
+    <Block position={[0, 0, 0]} size={[size[0], 0.04, size[1]]} color="#4d341f" roughness={0.28} />
+    <Block position={[0.15, 0.025, -0.1]} size={[size[0] * 0.72, 0.025, size[1] * 0.68]} color="#382414" roughness={0.18} />
+    <Block position={[-0.45, 0.025, 0.3]} size={[0.55, 0.025, 0.45]} color="#3e2817" roughness={0.22} />
+  </group>
+);

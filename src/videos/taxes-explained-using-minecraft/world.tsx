@@ -1,6 +1,6 @@
 import type React from "react";
 import { Block, Dust, Glow,
-  GodRay, LightPool, Torch, Tree, Vox, Zone, plankTex } from "../../engine";
+  GodRay, LightPool, SolidBox, Torch, Tree, Vox, Zone, plankTex } from "../../engine";
 import { Hut } from "../../../Topics/InThisTown";
 import { PLACE, VillageStreet, on } from "./kit";
 
@@ -19,6 +19,9 @@ export const World: React.FC = () => (
     <Zone name="hall">
       <Block position={on(PLACE.hall, 0, -0.2, 0)} size={[16, 0.4, 16]} map={plankTex("#7a5836", [5, 5])} />
       <Vox kind="stoneBrick" position={on(PLACE.hall, 0, 2.6, -5.5)} size={[16, 5.2, 0.6]} />
+      <SolidBox name="hall-back" position={on(PLACE.hall, 0, 2.6, -5.5)} size={[16, 5.2, 0.6]} />
+      <SolidBox name="hall-left" position={on(PLACE.hall, -7.5, 2.6, 0)} size={[0.6, 5.2, 16]} />
+      <SolidBox name="hall-right" position={on(PLACE.hall, 7.5, 2.6, 0)} size={[0.6, 5.2, 16]} />
       <Vox kind="stoneBrick" position={on(PLACE.hall, -7.5, 2.6, 0)} size={[0.6, 5.2, 16]} />
       <Vox kind="stoneBrick" position={on(PLACE.hall, 7.5, 2.6, 0)} size={[0.6, 5.2, 16]} />
       <Torch position={on(PLACE.hall, -3.5, 2.3, -5.0)} light={2.2} />
