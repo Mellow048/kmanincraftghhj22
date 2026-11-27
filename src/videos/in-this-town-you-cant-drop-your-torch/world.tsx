@@ -15,6 +15,7 @@ import {
   Zone,
   ROOM_POS,
 } from "./kit";
+import { SolidBox } from "../../engine";
 
 /**
  * Multi-angle InThisTown world:
@@ -46,6 +47,8 @@ export const World: React.FC = () => (
       />
       <Sign title="FLINT COAL" position={[4.1, 2.35, -2.5]} rotationY={-Math.PI / 2} width={2.1} height={0.55} />
       <CoalMountain position={[5.6, 0, -8.5]} />
+      <SolidBox name="flint-shop" position={[6.4, 2.1, -2.5]} size={[5.6, 4.2, 5.6]} />
+      <SolidBox name="coal-mountain" position={[5.6, 1.8, -8.5]} size={[4.2, 3.6, 3.6]} />
       {/* Dark pine woods framing the far north end of the avenue */}
       <ForestEdge from={[-18, 0, -20]} to={[18, 0, -20]} back={[0, 0, -28]} count={22} />
       <Moon position={[-12, 22, -26]} />
@@ -54,6 +57,9 @@ export const World: React.FC = () => (
 
     <Zone name="room">
       <Room at={ROOM_POS} night />
+      <SolidBox name="room-back" position={[ROOM_POS[0], 2.0, ROOM_POS[2] - 3.2]} size={[7.0, 4.0, 0.4]} />
+      <SolidBox name="room-left" position={[ROOM_POS[0] - 3.3, 2.0, ROOM_POS[2]]} size={[0.4, 4.0, 7.0]} />
+      <SolidBox name="room-right" position={[ROOM_POS[0] + 3.3, 2.0, ROOM_POS[2]]} size={[0.4, 4.0, 7.0]} />
     </Zone>
   </>
 );

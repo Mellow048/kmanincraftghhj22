@@ -97,34 +97,34 @@ export const scene2 = storyScene(timing, {
       cue: "4.mine",
       look: "lantern-night",
       note: "High crane sweeps across Chief Flint's brick Coal Shop and towering black Coal Mountain.",
-      ...cam.streetOverview({ from: [1.5, 0, 4.4], to: [3.5, 0, -1.2], height: 5.4, fov: 46 }),
+      ...cam.streetOverview({ from: [0.5, 0, 4.6], to: [1.8, 0, 1.2], on: [3.8, 1.6, -3.5], height: 4.8, fov: 46 }),
       stage: (t) => (
-        <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.2 + Math.sin(t * 2) * 0.08} animation="idle" face="smug" torch light={3.2} time={t} />
+        <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.2 + Math.sin(t * 2) * 0.15} animation="idle" face="smug" torch light={3.2 + Math.sin(t * 12) * 0.35} time={t} />
       ),
     },
     {
       cue: "4.ten",
+      hud: { banner: { text: "10 EMERALDS", color: "#5ce68a", sub: "Calm Night Price" } },
       look: "lantern-night",
       note: "Sweep across the shop counter as a villager pays ten emeralds for a single wooden torch.",
-      ...cam.sweep({ on: [2.8, 1.45, -2.4], dist: 5.0, fromYaw: -28, toYaw: 24, pitch: 8, fov: 42 }),
+      ...cam.sweep({ on: [2.7, 1.45, -2.4], dist: 6.4, fromYaw: -22, toYaw: 18, pitch: 8, fov: 45 }),
       stage: (t) => (
         <>
-          <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.3} animation="idle" face="smug" torch light={3.2} time={t} />
-          <Townie who={1} position={[1.9, 0, -2.3]} rotationY={1.4 + Math.sin(t * 2.5) * 0.08} animation="idle" face="worried" torch time={t} />
-          <FloatingNumber text="10 EMERALDS" position={[2.8, 2.1, -2.4]} color="#5ce68a" height={0.34} />
+          <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.3 + Math.sin(t * 2.5) * 0.12} animation="idle" face="smug" torch light={3.2 + Math.sin(t * 12) * 0.35} time={t} />
+          <Townie who={1} position={[1.9, 0, -2.3]} rotationY={1.4 + Math.sin(t * 3) * 0.15} animation="idle" face="worried" torch time={t} />
         </>
       ),
     },
     {
       cue: "4.hundred",
+      hud: { banner: { text: "100 EMERALDS!", color: "#ff5252", sub: "Storm Price" } },
       look: "overworld-storm",
       note: "Stormy low angle as Chief Flint hikes the price to one hundred emeralds while a villager cowers.",
-      ...cam.heroLow({ on: [3.0, 0, -2.4], dist: 5.0, yaw: -26, fov: 44 }),
+      ...cam.heroLow({ on: [2.7, 0, -2.4], dist: 6.4, yaw: -20, fov: 46 }),
       stage: (t) => (
         <>
           <ChiefFlint position={[3.6, 0, -2.5]} rotationY={-1.3} animation="laugh" face="smug" torch light={3.2} time={t} />
           <Townie who={3} position={[1.9, 0, -2.3]} rotationY={1.4} animation="cower" face="scared" time={t} />
-          <FloatingNumber text="100 EMERALDS!" position={[2.8, 2.15, -2.4]} color="#ff5252" height={0.38} />
         </>
       ),
     },
@@ -132,7 +132,7 @@ export const scene2 = storyScene(timing, {
       cue: "4.pile",
       look: "lantern-night",
       note: "Dramatic low-angle upward tilt on Chief Flint laughing atop his giant mountain of black coal.",
-      ...cam.sweep({ on: [5.6, 4.2, -8.5], dist: 6.2, fromYaw: -38, toYaw: 16, pitch: 8, fov: 46 }),
+      ...cam.heroLow({ on: [5.6, 3.6, -8.5], dist: 5.8, yaw: -25, fov: 46 }),
       stage: (t) => (
         <ChiefFlint position={[5.6, 3.45, -8.5]} animation="laugh" face="smug" torch light={3.5} time={t} />
       ),
@@ -141,10 +141,10 @@ export const scene2 = storyScene(timing, {
       cue: "4.thirty",
       look: "lantern-night",
       note: "Tracking camera follows frightened townsfolk who could not pay vanishing into the pine woods.",
-      ...cam.track({ from: [0, 0, -5.2], to: [0, 0, -14.2], sideDist: 6.2, side: -1, height: 2.6, fov: 44 }),
+      ...cam.track({ from: [0, 0, -5.2], to: [0, 0, -14.2], sideDist: 5.2, side: -1, height: 2.6, fov: 44 }),
       stage: (t) => {
-        const a = moveBetween([-0.9, 0, -5.2], [-1.4, 0, -14.2], t, 0, 2.2);
-        const b = moveBetween([1.4, 0, -6.0], [1.8, 0, -14.6], t, 0, 2.2);
+        const a = moveBetween([-0.7, 0, -5.2], [-0.9, 0, -14.2], t, 0, 2.2);
+        const b = moveBetween([0.9, 0, -6.0], [1.1, 0, -14.6], t, 0, 2.2);
         return (
           <>
             <Townie who={1} position={a.position} rotationY={a.rotationY} animation="walk" animDistance={a.animDistance} face="scared" time={t} />

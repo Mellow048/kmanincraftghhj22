@@ -5,7 +5,7 @@ import {
   Kai,
   Mom,
   PipFirefly,
-  Puddle,
+  MudPuddle,
   ShadowCreature,
   Sign,
   Smoke,
@@ -30,7 +30,7 @@ export const scene4 = storyScene(timing, {
       cue: "7.flint2",
       look: "lantern-night",
       note: "Tracking camera follows furious Chief Flint marching out yelling bugs aren't legal light.",
-      ...cam.track({ from: [4.2, 0, -2.5], to: [1.4, 0, 0.2], sideDist: 4.8, side: 1, height: 1.55, fov: 44 }),
+      ...cam.track({ from: [4.2, 0, -2.5], to: [1.4, 0, 0.2], sideDist: 4.6, side: -1, height: 1.55, fov: 44 }),
       stage: (t) => {
         const m = moveBetween([4.2, 0, -2.5], [1.4, 0, 0.2], t, 0, 1.8);
         return (
@@ -63,7 +63,7 @@ export const scene4 = storyScene(timing, {
       stage: (t) => (
         <>
           <FireflySwarm center={[0, 2.2, 0]} count={26} spread={10} t={t} />
-          <Puddle position={[1.5, 0.02, 0.6]} size={[2.2, 1.6]} />
+          <MudPuddle position={[1.5, 0.02, 0.6]} size={[2.2, 1.6]} />
           <ChiefFlint position={[1.5, 0, 0.6]} rotationY={-0.4} animation="fall" face="ouch" time={t} />
           <Kai position={[-0.8, 0, 1.4]} rotationY={0.8} animation="laugh" face="laugh" time={t} />
         </>
@@ -89,17 +89,16 @@ export const scene4 = storyScene(timing, {
       cue: "7.return",
       look: "overworld-golden",
       note: "Golden-hour tracking camera follows all thirty missing townsfolk walking safely out of the woods.",
-      ...cam.track({ from: [0, 0, -11.0], to: [0, 0, -2.2], sideDist: 6.0, side: -1, height: 2.6, fov: 44 }),
+      ...cam.track({ from: [0, 0, -11.0], to: [0, 0, -2.2], sideDist: 4.8, side: 1, height: 2.6, fov: 44 }),
       stage: (t) => {
-        const a = moveBetween([-1.6, 0, -11.0], [-1.4, 0, -2.2], t, 0, 2.2);
-        const b = moveBetween([1.6, 0, -11.5], [1.4, 0, -2.5], t, 0, 2.2);
-        const c = moveBetween([0, 0, -12.6], [0, 0, -3.8], t, 0, 2.2);
+        const a = moveBetween([-0.8, 0, -11.0], [-0.6, 0, -2.2], t, 0, 2.2);
+        const b = moveBetween([0.9, 0, -11.5], [0.8, 0, -2.5], t, 0, 2.2);
         return (
           <>
             <FireflySwarm center={[0, 2.4, -5.0]} count={24} spread={9} t={t} />
             <Townie who={1} position={a.position} rotationY={a.rotationY} animation={a.moving ? "walk" : "cheer"} animDistance={a.animDistance} face="happy" time={t} />
             <Townie who={3} position={b.position} rotationY={b.rotationY} animation={b.moving ? "walk" : "cheer"} animDistance={b.animDistance} face="grin" time={t} />
-            <Townie who={5} position={c.position} rotationY={c.rotationY} animation={c.moving ? "walk" : "cheer"} animDistance={c.animDistance} face="smile" time={t} />
+            <Townie who={5} position={[0, 0, a.position[2] - 1.6]} animation={a.moving ? "walk" : "wave"} animDistance={a.animDistance} face="smile" time={t} />
           </>
         );
       },
@@ -127,8 +126,8 @@ export const scene4 = storyScene(timing, {
       ...cam.sweep({ on: [0, 1.35, 1.1], dist: 4.6, fromYaw: -34, toYaw: 34, pitch: 8, fov: 40 }),
       stage: (t) => (
         <>
-          <Mom position={[-0.32, 0, 1.1]} rotationY={1.35} animation="cheer" face="happy" time={t} />
-          <Kai position={[0.32, 0, 1.1]} rotationY={-1.35} animation="cheer" face="happy" time={t} />
+          <Mom position={[-0.46, 0, 1.1]} rotationY={1.45} animation="hug" face="happy" time={t} />
+          <Kai position={[0.46, 0, 1.1]} rotationY={-1.45} animation="hug" face="happy" time={t} />
           <PipFirefly position={[Math.cos(t * 3.8) * 1.1, 1.85 + Math.sin(t * 5) * 0.25, 1.1 + Math.sin(t * 3.8) * 1.1]} scale={1.3} t={t} />
         </>
       ),
@@ -149,7 +148,7 @@ export const scene4 = storyScene(timing, {
       cue: "7.free",
       look: "overworld-day",
       note: "Joyful daytime crane gliding over the bright happy town square celebrating together.",
-      ...cam.streetOverview({ from: [-2.4, 0, 11.2], to: [1.8, 0, 6.0], height: 4.8, fov: 46 }),
+      ...cam.streetOverview({ from: [-2.2, 0, 9.8], to: [1.6, 0, 5.8], on: [0, 1.35, 1.4], height: 4.4, fov: 46 }),
       stage: (t) => (
         <>
           <Kai position={[0, 0, 1.4]} animation="wave" face="happy" time={t} />
@@ -162,6 +161,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "7.cta",
+      hud: { subscribe: true },
       look: "overworld-golden",
       note: "Warm golden sweep framing Kai, Mom, and dancing Pip under the wooden Subscribe sign.",
       ...cam.sweep({ on: [0, 1.65, 1.2], dist: 5.4, distTo: 6.4, fromYaw: 24, toYaw: -24, pitch: 8, fov: 42 }),

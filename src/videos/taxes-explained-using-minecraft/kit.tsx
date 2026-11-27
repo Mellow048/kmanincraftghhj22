@@ -1,3 +1,4 @@
+import { Creeper as PackCreeper } from "../../../Topics/InThisTown";
 import type React from "react";
 import { Block, ChatToast, FloatingNumber, Glow,
   GodRay, Sign, Torch, Vox, cam, moveBetween, storyScene } from "../../engine";
@@ -67,33 +68,15 @@ export const PLACE = {
 
 export const on = (base: Vec3, x: number, y: number, z: number): Vec3 => [base[0] + x, base[1] + y, base[2] + z];
 
-/** Blocky green Minecraft Creeper that swells & flashes before exploding. */
-export const Creeper: React.FC<{ position?: Vec3; rotationY?: number; swell?: number }> = ({
+/** Real articulated pack Creeper from Topics/InThisTown/monsters.tsx (never a scratch box mob!). */
+export const Creeper: React.FC<{ position?: Vec3; rotationY?: number; swell?: number; walk?: number }> = ({
   position = [0, 0, 0],
   rotationY = 0,
   swell = 0,
-}) => {
-  const s = 1 + swell * 0.16;
-  const flash = swell > 0.55;
-  const bodyCol = flash ? "#eef5ee" : "#3da63a";
-  const darkCol = flash ? "#c8e0c8" : "#267324";
-  return (
-    <group position={position} rotation={[0, rotationY, 0]} scale={s}>
-      {[[-0.16, 0.14], [0.16, 0.14], [-0.16, -0.14], [0.16, -0.14]].map(([x, z], i) => (
-        <Block key={i} position={[x!, 0.22, z!]} size={[0.2, 0.44, 0.2]} color={darkCol} />
-      ))}
-      <Block position={[0, 0.88, 0]} size={[0.42, 0.88, 0.28]} color={bodyCol} />
-      <group position={[0, 1.56, 0]}>
-        <Block position={[0, 0, 0]} size={[0.5, 0.5, 0.5]} color={bodyCol} />
-        <Block position={[-0.11, 0.08, 0.26]} size={[0.12, 0.12, 0.03]} color="#101410" castShadow={false} />
-        <Block position={[0.11, 0.08, 0.26]} size={[0.12, 0.12, 0.03]} color="#101410" castShadow={false} />
-        <Block position={[0, -0.04, 0.26]} size={[0.12, 0.14, 0.03]} color="#101410" castShadow={false} />
-        <Block position={[-0.08, -0.12, 0.26]} size={[0.08, 0.12, 0.03]} color="#101410" castShadow={false} />
-        <Block position={[0.08, -0.12, 0.26]} size={[0.08, 0.12, 0.03]} color="#101410" castShadow={false} />
-      </group>
-    </group>
-  );
-};
+  walk = 0,
+}) => (
+  <PackCreeper position={position} rotationY={rotationY} fuse={swell} walk={walk} mood={swell > 0.2 ? "angry" : "calm"} />
+);
 
 /** Giant gaudy gold statue of the greedy mod. */
 export const GoldStatue: React.FC<{ position?: Vec3; scale?: number }> = ({ position = [0, 0, 0], scale = 1 }) => (

@@ -41,6 +41,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.good",
+      hud: { banner: { text: "ROADS + SCHOOLS + WATER", color: "#5ce68a" } },
       ...cam.track({ from: on(PLACE.real, -2.5, 0, 3), to: on(PLACE.real, 2.2, 0, 3), sideDist: 6.0, side: 1, lead: 1.0 }),
       zone: "real",
       note: "Good taxes: citizens stroll past bright lights, clean roads, and the brick civic school!",
@@ -51,13 +52,13 @@ export const scene3 = storyScene(timing, {
             <Official position={on(PLACE.real, -1.8, 0, 0.5)} rotationY={0.25} animation="cheer" face="grin" time={t} />
             <CitizenLead variant="maya" nameTag="Maya" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "wave"} animDistance={w.animDistance} face="grin" time={t} />
             <Torch position={on(PLACE.real, 0, 0.6, 0.5)} light={2.2} />
-            <ChatToast text="ROADS + SCHOOLS + WATER" position={on(PLACE.real, 0, 2.8, 0.5)} height={0.24 * pop(t, 0.12)} color="#4be08a" />
           </>
         );
       },
     },
     {
       cue: "6.bad",
+      hud: { banner: { text: "WASTED ON THE BOSS", color: "#ff4f42" } },
       ...cam.heroLow({ on: on(PLACE.real, 0, 0.6, 0), dist: 6.6, yaw: 18 }),
       zone: "real",
       note: "Bad taxes: Greedy Mod laughs beside his gold statue and roaring MoneyPrinter!",
@@ -65,12 +66,12 @@ export const scene3 = storyScene(timing, {
         <>
           <EliteLead nameTag="Greedy Mod" position={on(PLACE.real, -1.4, 0, 0.8)} rotationY={0.25} animation="laugh" face="smug" time={t} />
           <GoldStatue position={on(PLACE.real, 1.3, 0, -0.4)} scale={0.62} />
-          <ChatToast text="WASTED ON THE BOSS" position={on(PLACE.real, 0, 2.85, 0.4)} height={0.24 * pop(t, 0.12)} color="#ff4f42" />
         </>
       ),
     },
     {
       cue: "6.same",
+      hud: { banner: { text: "GOOD vs BAD TAXES", color: "#ffdd57" } },
       ...cam.sweep({ on: on(PLACE.real, 0, 1.3, 0.8), dist: 6.8, fromYaw: 20, toYaw: -20, pitch: 9 }),
       zone: "real",
       note: "Side-by-side split: same diamonds, same players, totally different worlds.",
@@ -78,7 +79,6 @@ export const scene3 = storyScene(timing, {
         <>
           <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.real, -1.6, 0, 0.8)} rotationY={0.25} animation="point" face="calm" time={t} />
           <EliteLead nameTag="Greedy Mod" position={on(PLACE.real, 1.6, 0, 0.8)} rotationY={-0.25} animation="shrug" face="smug" time={t} />
-          <FloatingNumber text="GOOD vs BAD" color="#ffd84d" position={on(PLACE.real, 0, 2.8, 0.8)} height={0.58 * pop(t, 0.1)} />
         </>
       ),
     },
@@ -90,7 +90,6 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, 0, 0, 1)} rotationY={0} animation="point" face="smile" time={t} />
-          <FloatingNumber text="WHICH SERVER?" color="#ffd84d" position={on(PLACE.street, 0, 2.65, 1)} height={0.58 * pop(t, 0.1)} />
         </>
       ),
     },
@@ -104,7 +103,6 @@ export const scene3 = storyScene(timing, {
         <>
           <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.0, 0, 1.0)} rotationY={0.35} animation="cower" face="fear" time={t} />
           <Creeper position={on(PLACE.street, 1.0, 0, 1.0)} rotationY={-0.35} swell={0.48} />
-          <FloatingNumber text="0% + CREEPERS" color="#ff4f42" position={on(PLACE.street, 0, 2.75, 1.0)} height={0.56 * pop(t, 0.1)} />
         </>
       ),
     },
@@ -120,7 +118,6 @@ export const scene3 = storyScene(timing, {
           <Torch position={on(PLACE.street, 2.0, 2.7, -4.5)} light={2.2} />
           <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.1, 0, -1.5)} rotationY={0.15} animation="cheer" face="grin" time={t} />
           <CitizenLead variant="sam" nameTag="Sam" position={on(PLACE.street, 1.1, 0, -1.5)} rotationY={-0.15} animation="cheer" face="grin" time={t} />
-          <FloatingNumber text="2/DAY + SAFE" color="#4be08a" position={on(PLACE.street, 0, 2.85, -1.5)} height={0.56 * pop(t, 0.1)} />
         </>
       ),
     },

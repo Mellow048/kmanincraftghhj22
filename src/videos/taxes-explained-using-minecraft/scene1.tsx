@@ -23,9 +23,10 @@ import {
 
 /** Shared Frame-0 & Final-Loop camera and stage for a seamless Shorts loop. */
 export const LOOP_CAM = cam.streetOverview({
-  from: on(PLACE.street, 0, 0, 11),
-  to: on(PLACE.street, 0, 0, 5.5),
-  height: 5.4,
+  from: on(PLACE.street, 0, 0, 7.2),
+  to: on(PLACE.street, 0, 0, 5.0),
+  on: on(PLACE.street, 0, 1.2, 0.5),
+  height: 3.4,
   fov: 46,
 });
 
@@ -83,14 +84,14 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.dark",
-      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, -6), to: on(PLACE.street, 0, 0, 4), height: 5.5, fov: 48 }),
+      ...cam.streetOverview({ from: on(PLACE.street, 0, 0, -6), to: on(PLACE.street, 0, 0, 4), on: on(PLACE.street, 0, 1.2, 0.5),
+        height: 5.5, fov: 48 }),
       zone: "street",
       look: "overworld-night",
       note: "Reverse-angle crane down the dark night street: Leo shrugs in pitch darkness with 0 torches.",
       stage: (t) => (
         <>
-          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, 0, 0, -2)} rotationY={Math.PI} animation="shrug" face="uneasy" time={t} />
-          <FloatingNumber text="0 TORCHES" color="#ff6b57" position={on(PLACE.street, 0, 2.6, -2)} height={0.58 * pop(t, 0.15)} />
+          <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, 0, 0, -2)} rotationY={0.15} animation="shrug" face="uneasy" time={t} />
         </>
       ),
     },
@@ -177,7 +178,6 @@ export const scene1 = storyScene(timing, {
           <CitizenLead variant="leo" nameTag="Leo" position={on(PLACE.street, -1.5, 0, 2.0)} rotationY={0.3} animation="shrug" face="sad" time={t} />
           <CitizenLead variant="alex" nameTag="Alex" position={on(PLACE.street, 1.6, 0, 2.0)} rotationY={-0.3} animation="shrug" face="worried" time={t} />
           <Vox kind="stoneBrick" position={on(PLACE.street, 0, 0.45, 1.8)} size={[0.9, 0.9, 0.9]} />
-          <FloatingNumber text="TOO MUCH!" color="#ff6b57" position={on(PLACE.street, 0, 2.55, 1.8)} height={0.56 * pop(t, 0.12)} />
         </>
       ),
     },

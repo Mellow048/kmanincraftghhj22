@@ -27,7 +27,7 @@ export const scene1 = storyScene(timing, {
       cue: "1.town",
       look: "lantern-night",
       note: "High crane glides down the dark 56m village avenue as torch-carrying townsfolk guard the road.",
-      ...cam.streetOverview({ from: [0, 0, 13.0], to: [0, 0, 6.2], height: 5.6, fov: 46 }),
+      ...cam.streetOverview({ from: [0, 0, 10.6], to: [0, 0, 5.8], on: [0, 1.25, 0.2], height: 4.8, fov: 46 }),
       stage: (t) => {
         const w = moveBetween([-3.2, 0, 4.4], [-2.8, 0, -2.6], t, 0, 2.2);
         return (
@@ -90,7 +90,7 @@ export const scene1 = storyScene(timing, {
       zone: "room",
       look: "lantern-night",
       note: "Cozy interior sweep around a real wooden baby crib with slatted rails and a lit corner torch.",
-      ...cam.sweep({ on: [ROOM_POS[0], 0.85, ROOM_POS[2] - 0.6], dist: 4.2, fromYaw: -34, toYaw: 28, pitch: 14, fov: 42 }),
+      ...cam.sweep({ on: [ROOM_POS[0], 0.8, ROOM_POS[2] - 0.6], dist: 3.0, fromYaw: -22, toYaw: 20, pitch: 14, fov: 44 }),
       stage: () => (
         <group position={ROOM_POS}>
           <BabyCrib position={[0, 0, -0.6]} lit />
@@ -105,8 +105,8 @@ export const scene1 = storyScene(timing, {
       stage: (t) => (
         <>
           <Block position={[-1.4, 0.35, 1.2]} size={[0.75, 0.7, 0.75]} color="#8a2e2e" />
-          <Townie who={1} position={[-1.4, 0.2, 1.2]} animation="sit" face="uneasy" time={t} />
-          <Townie who={5} position={[-2.2, 0, 1.1]} rotationY={1.4 + Math.sin(t * 3) * 0.12} animation="press" face="grin" torch light={3} time={t} />
+          <Townie who={1} position={[-1.4, 0.2, 1.2]} rotationY={Math.sin(t * 2) * 0.12} animation="sit" face="uneasy" time={t} />
+          <Townie who={5} position={[-2.2, 0, 1.1]} rotationY={1.4 + Math.sin(t * 4) * 0.15} animation="press" face="grin" torch light={3 + Math.sin(t * 14) * 0.4} time={t} />
         </>
       ),
     },
@@ -131,15 +131,15 @@ export const scene1 = storyScene(timing, {
       zone: "room",
       look: "lantern-night",
       note: "Classroom sweep across wooden desks as two students balance blazing torches beside their books.",
-      ...cam.sweep({ on: [ROOM_POS[0], 1.05, ROOM_POS[2] - 0.2], dist: 4.8, fromYaw: 112, toYaw: 78, pitch: 12, fov: 42 }),
+      ...cam.sweep({ on: [ROOM_POS[0], 1.0, ROOM_POS[2] - 0.1], dist: 2.75, fromYaw: 18, toYaw: -18, pitch: 12, fov: 46 }),
       stage: (t) => (
         <group position={ROOM_POS}>
-          <SchoolDesk position={[-1.1, 0, -0.4]} />
-          <SchoolDesk position={[1.1, 0, -0.4]} />
-          <Torch position={[-0.85, 0.82, -0.4]} />
-          <Torch position={[1.35, 0.82, -0.4]} />
-          <Townie who={1} position={[-1.1, 0, 0.25]} rotationY={Math.PI} animation="sit" face="calm" scale={0.76} time={t} />
-          <Townie who={3} position={[1.1, 0, 0.25]} rotationY={Math.PI + Math.sin(t * 2) * 0.08} animation="sit" face="smile" scale={0.76} time={t} />
+          <SchoolDesk position={[-1.1, 0, 0.25]} />
+          <SchoolDesk position={[1.1, 0, 0.25]} />
+          <Torch position={[-0.85, 0.82, 0.25]} light={1.5 + Math.sin(t * 10) * 0.25} />
+          <Torch position={[1.35, 0.82, 0.25]} light={1.5 + Math.cos(t * 10) * 0.25} />
+          <Townie who={1} position={[-1.1, 0, -0.4]} rotationY={0.1} animation="sit" face="calm" scale={0.76} time={t} />
+          <Townie who={3} position={[1.1, 0, -0.4]} rotationY={-0.1} animation="sit" face="smile" scale={0.76} time={t} />
         </group>
       ),
     },
@@ -163,12 +163,12 @@ export const scene1 = storyScene(timing, {
       cue: "2.fifth",
       look: "lantern-night",
       note: "High street crane looks down on two shrugging townsfolk as Kai steps forward in the foreground.",
-      ...cam.streetOverview({ from: [2.2, 0, 8.2], to: [-1.8, 0, 5.2], height: 4.0, fov: 44 }),
+      ...cam.streetOverview({ from: [2.0, 0, 7.6], to: [-1.6, 0, 5.2], on: [0, 1.25, 1.6], height: 3.8, fov: 44 }),
       stage: (t) => (
         <>
           <Townie who={1} position={[-1.4, 0, 1.4]} rotationY={0.3} animation="shrug" face="uneasy" torch time={t} />
           <Townie who={3} position={[1.4, 0, 1.2]} rotationY={-0.3} animation="wave" face="worried" torch time={t} />
-          <Kai position={[0.9, 0, 2.3]} rotationY={-0.2} animation="idle" face="smile" time={t} />
+          <Kai position={[0, 0, 2.2]} animation="idle" face="smile" time={t} />
         </>
       ),
     },
