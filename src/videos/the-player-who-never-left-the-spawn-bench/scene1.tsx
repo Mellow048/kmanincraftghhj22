@@ -84,7 +84,7 @@ export const scene1 = storyScene(timing, {
           <>
             <SpawnBench position={on(PLACE.server, -0.9, 0, 0.4)} state="plain" />
             <Maya position={on(PLACE.server, -0.9, 0.35, 0.55)} rotationY={0.35} animation="wave" face="grin" time={t} />
-            <ServerPlayer role="friendA" position={on(PLACE.server, 1.8 - w * 0.9, 0, 1.2)} rotationY={-0.6} animation="walk" animDistance={w * 0.9} face="smile" time={t} />
+            <ServerPlayer role="friendA" position={on(PLACE.server, 1.8 - w * 0.9, 0, 1.2)} rotationY={w < 0.96 ? -Math.PI / 2 : -0.35} animation={w < 0.96 ? "walk" : "wave"} animDistance={w * 0.9} face="smile" time={t} />
             <ChatToast sender="Maya" text="welcome back" position={on(PLACE.server, -0.6, 2.5, 0.6)} height={0.26 * pop(t, 0.12)} color="#6ee7b7" />
           </>
         );
@@ -113,7 +113,7 @@ export const scene1 = storyScene(timing, {
           <>
             <SpawnBench position={on(PLACE.server, -1.1, 0, 0.4)} state="plain" />
             <Maya position={on(PLACE.server, -1.1, 0.35, 0.55)} rotationY={0.3} animation="wave" face="smile" time={t} />
-            <ServerPlayer role="friendB" position={on(PLACE.server, -2.0 + s * 4.2, 0, 1.9)} rotationY={Math.PI / 2} animation="run" animDistance={s * 4.2} face="calm" time={t} />
+            <ServerPlayer role="friendB" position={on(PLACE.server, -2.0 + s * 4.2, 0, 1.9)} rotationY={Math.PI / 2} animation={s > 0.02 && s < 0.98 ? "run" : "idle"} animDistance={s * 4.2} face="calm" time={t} />
           </>
         );
       },

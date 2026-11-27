@@ -3,7 +3,7 @@
   "music": {
     "track": "Topics/ServerLore/up_happy.m4a",
     "trackFrom": 2.5,
-    "gain": -12,
+    "gain": -16,
     "sections": [
       {
         "from": "1.bench",
@@ -61,7 +61,8 @@
     {
       "cue": "1.four",
       "word": "four",
-      "sfx": "chime"
+      "sfx": "chime",
+      "trim": -3
     },
     {
       "cue": "1.chat",

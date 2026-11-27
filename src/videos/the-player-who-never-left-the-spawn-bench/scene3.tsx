@@ -70,8 +70,8 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <Owner position={on(PLACE.server, 0, 0, 0.6)} rotationY={0} animation="cheer" face="grin" time={t} />
-            <ServerPlayer role="friendA" position={on(PLACE.server, -2.0 + w * 0.6, 0, 1.1)} rotationY={0.3} animation="run" animDistance={w * 0.6} face="grin" time={t} />
-            <ServerPlayer role="friendB" position={on(PLACE.server, 2.0 - w * 0.6, 0, 1.1)} rotationY={-0.3} animation="run" animDistance={w * 0.6} face="grin" time={t} />
+            <ServerPlayer role="friendA" position={on(PLACE.server, -2.0 + w * 0.6, 0, 1.1)} rotationY={w < 0.96 ? Math.PI / 2 : 0.3} animation={w < 0.96 ? "run" : "cheer"} animDistance={w * 0.6} face="grin" time={t} />
+            <ServerPlayer role="friendB" position={on(PLACE.server, 2.0 - w * 0.6, 0, 1.1)} rotationY={w < 0.96 ? -Math.PI / 2 : -0.3} animation={w < 0.96 ? "run" : "cheer"} animDistance={w * 0.6} face="grin" time={t} />
             <Jake position={on(PLACE.server, 1.0, 0, 1.6)} rotationY={-0.2} animation="wave" face="calm" time={t} />
             <FloatingNumber text="40 PLAYERS" color="#4be08a" position={on(PLACE.server, 0, 2.8, 0.6)} height={0.65 * pop(t, 0.1)} />
           </>
@@ -175,7 +175,7 @@ export const scene3 = storyScene(timing, {
           <>
             <SpawnBench position={on(PLACE.server, -0.7, 0, 0.4)} state="rebuilt" />
             <Maya position={on(PLACE.server, -0.7, 0.35, 0.55)} rotationY={0.3} animation="wave" face="smile" time={t} />
-            <Jake position={on(PLACE.server, 1.5 - w * 0.6, 0, 1.1)} rotationY={-0.45} animation="walk" animDistance={w * 0.6} face="smile" time={t} />
+            <Jake position={on(PLACE.server, 1.5 - w * 0.6, 0, 1.1)} rotationY={w < 0.96 ? -Math.PI / 2 : -0.4} animation={w < 0.96 ? "walk" : "press"} animDistance={w * 0.6} face="smile" time={t} />
             <RedFlower position={on(PLACE.server, 0.1, 0.04, 1.1)} scale={1.1 * pop(t, 0.35)} />
             <RedFlower position={on(PLACE.server, 0.35, 0.04, 1.25)} scale={1.0 * pop(t, 0.45)} />
           </>

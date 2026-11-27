@@ -32,7 +32,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => {
         const w = ease(ramp(t, 0, 0.9));
         return (
-          <Jake position={on(PLACE.server, 1.8 - w * 1.0, 0, 1.0)} rotationY={-0.3} animation="walk" animDistance={w * 1.0} face="angry" time={t} />
+          <Jake position={on(PLACE.server, 1.8 - w * 1.0, 0, 1.0)} rotationY={w < 0.96 ? -Math.PI / 2 : -0.2} animation={w < 0.96 ? "walk" : "point"} animDistance={w * 1.0} face="angry" time={t} />
         );
       },
     },

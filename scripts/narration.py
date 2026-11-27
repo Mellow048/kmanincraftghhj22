@@ -152,7 +152,7 @@ def speech_span(x, rate: int):
     if len(loud) == 0:
         return 0, len(x)
     a = max(0, (loud[0] - 3) * hop)
-    b = min(len(x), (loud[-1] + 6) * hop)
+    b = min(len(x), (loud[-1] + 14) * hop)
     return int(a), int(b)
 
 
