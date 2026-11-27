@@ -44,9 +44,8 @@
         "from": "6.glow",
         "mood": "wonder",
         "track": "Topics/ServerLore/up_happy.m4a",
-        "trackFrom": 2.5,
         "gain": 0.5,
-        "why": "Lantern-lit Safe Booths, Iron Golems, floating hearts, bully apology, and subscribe CTA."
+        "why": "Lantern-lit Safe Booths, Iron Golems, floating hearts, bully apology, and subscribe CTA (continuous from 5.ping)."
       }
     ]
   },

@@ -95,16 +95,13 @@ export const scene2 = storyScene(timing, {
       ...cam.front({ actor: on(PLACE.smp, 0, 0, -9.8), facing: 0, dist: 5.4, to: 4.2, side: 20, pitch: 5, fov: 42 }),
       zone: "smp",
       look: "overworld-night",
+      hud: {
+        typing: true,
+        chat: [{ sender: "Milo", text: "sorry guys", color: "#c9d4e8" }],
+      },
       note: "Quiet heartbreak close-up: tears fall down Milo's face as '<Milo> sorry guys' types softly into server chat.",
       stage: (t) => (
-        <>
-          <ServerPlayer role="hero" nameTag="Milo" tears={1} position={on(PLACE.smp, 0, 0, -9.8)} rotationY={0} animation="cower" face="sad" time={t} />
-          <ServerChatBox
-            position={on(PLACE.smp, 0, 2.75, -9.8)}
-            typing={ease(ramp(t, 0.1, 1.2))}
-            lines={[{ sender: "Milo", text: "sorry guys", color: "#c9d4e8" }]}
-          />
-        </>
+        <ServerPlayer role="hero" nameTag="Milo" tears={1} position={on(PLACE.smp, 0, 0, -9.8)} rotationY={0} animation="cower" face="sad" time={t} />
       ),
     },
     {
@@ -112,16 +109,12 @@ export const scene2 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.smp, 0, 1.3, -9.8), dist: 6.0, distTo: 4.8, fromYaw: -22, toYaw: 24, pitch: 8, fov: 44 }),
       zone: "smp",
       look: "overworld-night",
+      hud: {
+        chat: [{ text: "Milo left the game", color: "#ffeb5c" }],
+      },
       note: "Empty moonlit clearing where Milo stood as yellow 'Milo left the game' fades into the silent server chat.",
       stage: (t) => (
-        <>
-          <Puffs position={on(PLACE.smp, 0, 0.9, -9.8)} color="#99b0cc" count={6} size={0.18} />
-          <ServerChatBox
-            position={on(PLACE.smp, 0, 2.2, -9.8)}
-            typing={ease(ramp(t, 0.1, 1.3))}
-            lines={[{ text: "Milo left the game", color: "#ffeb5c" }]}
-          />
-        </>
+        <Puffs position={on(PLACE.smp, 0, 0.9, -9.8)} color="#99b0cc" count={6} size={0.18} />
       ),
     },
   ],

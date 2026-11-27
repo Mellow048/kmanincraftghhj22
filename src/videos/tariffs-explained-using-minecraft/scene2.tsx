@@ -94,6 +94,7 @@ export const scene2 = storyScene(timing, {
       ...cam.heroLow({ on: on(PLACE.bridge, 0, 2.0, -1.0), dist: 6.8, yaw: 20, fov: 45 }),
       zone: "bridge",
       look: "overworld-day",
+      hud: { banner: { text: "THAT'S A TARIFF", color: "#ffd84d", sub: "BORDER TAX ON IMPORTS" } },
       note: "Bold signature title beat: giant golden 'TARIFF' pops crisp above the striped red border gate.",
       stage: (t) => (
         <>
@@ -124,6 +125,7 @@ export const scene2 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.bridge, 0, 1.5, 1.8), dist: 6.2, distTo: 4.9, fromYaw: -26, toYaw: 22, pitch: 8, fov: 44 }),
       zone: "bridge",
       look: "overworld-day",
+      hud: { banner: { text: "5 + 10 = 15 EMERALDS", color: "#ff5548" } },
       note: "Shop counter reveal: Blue sword price snaps violently to 15 emeralds as Leo recoils in shock.",
       stage: (t) => (
         <>

@@ -17,7 +17,7 @@ import {
   on,
   plankTex,
 } from "./kit";
-import { useFilmTime } from "../../engine";
+import { SolidBox, useFilmTime } from "../../engine";
 
 /**
  * 3-Zone Server Lore World:
@@ -45,36 +45,38 @@ export const World: React.FC = () => {
         <pointLight position={on(PLACE.smp, 0, 5.5, 2)} color={night ? "#9ec0ff" : "#fff0d0"} intensity={night ? 9 : 4} distance={24} decay={1.6} />
       </Zone>
 
-      {/* ---- ZONE 2: Late-Night IRL Bedroom Cutaway (Monitor faces +Z cleanly) ---- */}
+      {/* ---- ZONE 2: Late-Night IRL Bedroom Cutaway (Monitor faces +Z cleanly; open +X/+Z camera side) ---- */}
       <Zone name="irl">
-        {/* Warm hardwood bedroom floor & navy-blue bedroom walls open toward +Z */}
-        <Block position={on(PLACE.irl, 0, -0.15, 0)} size={[9.0, 0.3, 9.0]} map={plankTex("#755233", [5, 5])} />
-        <Block position={on(PLACE.irl, 0, 2.0, -3.2)} size={[9.0, 4.3, 0.3]} color="#1d3552" />
-        <Block position={on(PLACE.irl, -4.3, 2.0, 0)} size={[0.3, 4.3, 9.0]} color="#162940" />
-        <Block position={on(PLACE.irl, 4.3, 2.0, 0)} size={[0.3, 4.3, 9.0]} color="#162940" />
+        {/* Warm hardwood bedroom floor & tall navy-blue bedroom walls open toward +X/+Z */}
+        <Block position={on(PLACE.irl, 0, -0.15, 0.8)} size={[14.0, 0.3, 12.0]} map={plankTex("#755233", [6, 5])} />
+        <Block position={on(PLACE.irl, 0, 3.25, -3.2)} size={[14.0, 6.5, 0.35]} color="#1d3552" />
+        <SolidBox name="irl-back-wall" position={on(PLACE.irl, 0, 3.25, -3.2)} size={[14.0, 6.5, 0.4]} />
+        <Block position={on(PLACE.irl, -4.6, 3.25, 1.0)} size={[0.35, 6.5, 12.0]} color="#162940" />
+        <SolidBox name="irl-left-wall" position={on(PLACE.irl, -4.6, 3.25, 1.0)} size={[0.4, 6.5, 12.0]} />
         {/* Moonlit bedroom window on back wall */}
-        <Block position={on(PLACE.irl, 1.8, 2.2, -3.02)} size={[1.7, 1.4, 0.06]} color="#2d5284" emissive="#4d7ec2" emissiveIntensity={0.45} />
-        <Block position={on(PLACE.irl, 1.8, 2.2, -2.97)} size={[1.8, 0.08, 0.08]} color="#4e341e" />
-        <Block position={on(PLACE.irl, 1.8, 2.2, -2.97)} size={[0.08, 1.5, 0.08]} color="#4e341e" />
+        <Block position={on(PLACE.irl, 1.8, 2.2, -3.0)} size={[1.7, 1.4, 0.06]} color="#2d5284" emissive="#4d7ec2" emissiveIntensity={0.45} />
+        <Block position={on(PLACE.irl, 1.8, 2.2, -2.95)} size={[1.8, 0.08, 0.08]} color="#4e341e" />
+        <Block position={on(PLACE.irl, 1.8, 2.2, -2.95)} size={[0.08, 1.5, 0.08]} color="#4e341e" />
         {/* Grounded PC DeskSetup positioned left-of-center with monitor facing +Z */}
         <DeskSetup position={on(PLACE.irl, -1.0, 0, -1.2)} screenText="MC SMP" screenColor="#4be08a" clockText="11:10 PM" lampOn />
-        <Glow position={on(PLACE.irl, 0.4, 2.4, -1.0)} size={3.2} color="#9bc0ff" opacity={0.2} />
+        <Glow position={on(PLACE.irl, 0.4, 2.4, -1.0)} size={2.0} color="#9bc0ff" opacity={0.22} />
         <LightPool position={on(PLACE.irl, 0, 0.04, 0.2)} width={6.5} depth={6.0} color="#ffdba8" opacity={0.16} />
         <Dust position={on(PLACE.irl, 0, 1.8, 0)} area={[6.5, 3.2, 6.0]} count={32} size={0.03} color="#ffe8c4" opacity={0.42} seed={29} speed={0.14} />
         <pointLight position={on(PLACE.irl, 0.5, 3.0, 1.4)} color="#ffd9a0" intensity={8.5} distance={14} decay={1.6} />
       </Zone>
 
-      {/* ---- ZONE 3: Milo's Small Wooden SMP Cabin Interior ---- */}
+      {/* ---- ZONE 3: Milo's Small Wooden SMP Cabin Interior (tall walls, open +X/+Z camera side) ---- */}
       <Zone name="cabin">
-        <Block position={on(PLACE.cabin, 0, -0.15, 0)} size={[8.0, 0.3, 8.0]} map={plankTex("#966c41", [4, 4])} />
-        <Vox kind="planks" position={on(PLACE.cabin, 0, 2.0, -3.0)} size={[8.0, 4.0, 0.35]} />
-        <Vox kind="darkPlanks" position={on(PLACE.cabin, -3.8, 2.0, 0)} size={[0.35, 4.0, 7.6]} />
-        <Vox kind="darkPlanks" position={on(PLACE.cabin, 3.8, 2.0, 0)} size={[0.35, 4.0, 7.6]} />
+        <Block position={on(PLACE.cabin, 0, -0.15, 0.5)} size={[13.0, 0.3, 11.0]} map={plankTex("#966c41", [5, 5])} />
+        <Vox kind="planks" position={on(PLACE.cabin, 0, 3.0, -3.2)} size={[13.0, 6.0, 0.35]} />
+        <SolidBox name="cabin-back-wall" position={on(PLACE.cabin, 0, 3.0, -3.2)} size={[13.0, 6.0, 0.4]} />
+        <Vox kind="darkPlanks" position={on(PLACE.cabin, -4.4, 3.0, 0.8)} size={[0.35, 6.0, 11.0]} />
+        <SolidBox name="cabin-left-wall" position={on(PLACE.cabin, -4.4, 3.0, 0.8)} size={[0.4, 6.0, 11.0]} />
         {/* Warm crafting table & cobble furnace along back corners */}
         <Vox kind="planks" position={on(PLACE.cabin, -2.4, 0.48, -2.1)} size={[0.95, 0.95, 0.95]} />
         <Vox kind="cobble" position={on(PLACE.cabin, 2.4, 0.48, -2.1)} size={[0.95, 0.95, 0.95]} />
         <Block position={on(PLACE.cabin, 2.4, 0.35, -1.6)} size={[0.5, 0.35, 0.04]} color="#ff8524" emissive="#ff6b14" emissiveIntensity={1.1} />
-        <Glow position={on(PLACE.cabin, 0, 2.4, -1.2)} size={3.0} color="#ffd98c" opacity={0.24} />
+        <Glow position={on(PLACE.cabin, 0, 2.4, -1.2)} size={2.0} color="#ffd98c" opacity={0.24} />
         <LightPool position={on(PLACE.cabin, 0, 0.04, 0)} width={6.5} depth={6.0} color="#ffe2a8" opacity={0.2} />
         <Dust position={on(PLACE.cabin, 0, 1.8, 0)} area={[6.0, 3.2, 6.0]} count={30} size={0.032} color="#fff0c8" opacity={0.44} seed={47} speed={0.14} />
         <pointLight position={on(PLACE.cabin, 0, 3.0, 1.0)} color="#ffdca0" intensity={9.5} distance={14} decay={1.6} />

@@ -29,6 +29,7 @@ export const scene1 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.smp, 0, 1.0, 2.0), dist: 6.2, distTo: 4.9, fromYaw: -26, toYaw: 20, pitch: 10, fov: 44 }),
       zone: "smp",
       look: "overworld-day",
+      hud: { clock: "EVERY 10 MIN" },
       note: "Bright daylight Frame-1 visual contradiction: Milo drops straight down into a fresh dirt pit and seals a grass lid overhead.",
       stage: (t) => {
         const drop = ease(ramp(t, 0.15, wordAt("1.hook", "buried") + 0.35));
@@ -80,23 +81,22 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.chat",
-      ...cam.twoShot({ a: on(PLACE.smp, -1.5, 0, 5.2), b: on(PLACE.smp, 1.5, 0, 5.2), facing: 0, dist: 6.4, to: 5.2, side: 18, pitch: 8, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.smp, -1.6, 0, 5.4), b: on(PLACE.smp, 1.6, 0, 5.4), fromYaw: -18, toYaw: 20, pitch: 8, fov: 44 }),
       zone: "smp",
       look: "overworld-day",
-      note: "Server chat box pops high in frame filled with laughing players and question marks over Milo's dirt pit.",
+      hud: {
+        typing: true,
+        chat: [
+          { sender: "Bully", text: "bro why did Milo bury himself??", color: "#ff7a7a" },
+          { sender: "Sam", text: "LOL again?? ???", color: "#ffeb5c" },
+        ],
+      },
+      note: "Server chat box pops cleanly in screen HUD filled with laughing players and question marks over Milo's dirt pit.",
       stage: (t) => (
         <>
           <DirtPit position={on(PLACE.smp, 0, 0, 3.6)} lid={1} />
           <ServerPlayer role="bully" badge="?" position={on(PLACE.smp, -1.6, 0, 5.4)} rotationY={0.35} animation="laugh" face="grin" time={t} />
           <ServerPlayer role="friendB" badge="?" position={on(PLACE.smp, 1.6, 0, 5.4)} rotationY={-0.35} animation="laugh" face="grin" time={t} />
-          <ServerChatBox
-            position={on(PLACE.smp, 0, 2.75, 4.4)}
-            typing={ease(ramp(t, 0.1, 1.5))}
-            lines={[
-              { sender: "Bully", text: "bro why did Milo bury himself??", color: "#ff7070" },
-              { sender: "Sam", text: "LOL again?? ???", color: "#ffeb5c" },
-            ]}
-          />
         </>
       ),
     },
@@ -118,6 +118,7 @@ export const scene1 = storyScene(timing, {
       ...cam.track({ from: on(PLACE.smp, -1.2, 0, -10.0), to: on(PLACE.smp, -1.2, 0, -14.0), sideDist: 5.8, side: 1, lead: 1.5, height: 1.6 }),
       zone: "smp",
       look: "overworld-day",
+      hud: { clock: "12:10 PM" },
       note: "Side tracking shot toward the pine edge: Milo walks up to chop oak wood then stops dead on the noon clock.",
       stage: (t) => {
         const w = moveBetween(on(PLACE.smp, -1.2, 0, -10.0), on(PLACE.smp, -1.2, 0, -13.5), t, 0, 1.2);
@@ -182,27 +183,29 @@ export const scene1 = storyScene(timing, {
       ...cam.front({ actor: on(PLACE.smp, 0, 0, 1.5), facing: 0, dist: 5.6, to: 4.4, side: 20, pitch: 6, fov: 44 }),
       zone: "smp",
       look: "overworld-day",
-      note: "Milo climbs politely back out of the dirt pit waving apologetically as '<Milo> sorry!' appears in chat.",
+      hud: {
+        typing: true,
+        chat: [{ sender: "Milo", text: "sorry everyone, im back!", color: "#a8f5c2" }],
+      },
+      note: "Milo climbs politely back out of the dirt pit waving apologetically as '<Milo> sorry!' types into server chat.",
       stage: (t) => {
         const rise = ease(ramp(t, 0.1, 0.9));
         return (
           <>
             <DirtPit position={on(PLACE.smp, 0, 0, 1.5)} lid={1 - rise} />
             <ServerPlayer role="hero" nameTag="Milo" position={on(PLACE.smp, 0, -0.8 + rise * 0.8, 1.5)} rotationY={0} animation="wave" face="worried" time={t} />
-            <ServerChatBox
-              position={on(PLACE.smp, 0, 2.8, 1.5)}
-              typing={ease(ramp(t, wordAt("2.back", "sorry") - 0.1, wordAt("2.back", "sorry") + 0.5))}
-              lines={[{ sender: "Milo", text: "sorry everyone, im back!", color: "#a8f5c2" }]}
-            />
           </>
         );
       },
     },
     {
       cue: "2.mock",
-      ...cam.twoShot({ a: on(PLACE.smp, -1.6, 0, 7.0), b: on(PLACE.smp, 1.4, 0, 7.0), facing: 0, dist: 6.4, to: 5.1, side: -22, pitch: 7, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.smp, -1.6, 0, 7.0), b: on(PLACE.smp, 1.5, 0, 7.0), fromYaw: -20, toYaw: 18, pitch: 7, fov: 44 }),
       zone: "smp",
       look: "overworld-day",
+      hud: {
+        chat: [{ sender: "Bully", text: "lol DIRT BOY is back!!", color: "#ff7a7a" }],
+      },
       note: "Bully squad crowds down Main Street pointing and laughing while 'DIRT BOY!' pops above.",
       stage: (t) => (
         <>
@@ -215,7 +218,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.laugh",
-      ...cam.streetOverview({ from: on(PLACE.smp, 0, 0, 12.5), to: on(PLACE.smp, 0, 0, 5.5), height: 5.0, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.smp, 0, 0, 11.8), to: on(PLACE.smp, 0, 0, 10.4), on: on(PLACE.smp, 0, 1.1, 2.5), onTo: on(PLACE.smp, -0.5, 1.1, 5.0), height: 4.8, fov: 46 }),
       zone: "smp",
       look: "overworld-sunset",
       note: "Sunset crane down Main Street as Milo walks away quietly while bullies keep mocking behind him.",

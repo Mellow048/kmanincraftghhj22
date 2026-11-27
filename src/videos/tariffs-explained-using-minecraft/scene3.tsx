@@ -56,9 +56,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.leopays",
-      ...cam.twoShot({ a: on(PLACE.red, -1.2, 0, 2.0), b: on(PLACE.red, 1.2, 0, 2.0), facing: 0, dist: 6.0, to: 4.8, side: 20, pitch: 6, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.red, -1.0, 0, 2.0), b: on(PLACE.red, 1.3, 0, 2.0), fromYaw: -18, toYaw: 20, pitch: 6, fov: 44 }),
       zone: "red",
       look: "overworld-day",
+      hud: { banner: { text: "THE BUYER PAYS IT", color: "#ff5548" } },
       note: "Leo hands a tall 12-emerald stack over to Sam looking shocked at how much extra he paid.",
       stage: (t) => {
         const pay = moveBetween(on(PLACE.red, -2.4, 0, 2.2), on(PLACE.red, -1.0, 0, 2.0), t, 0, 1.2);
@@ -146,6 +147,7 @@ export const scene3 = storyScene(timing, {
       ...cam.top({ on: on(PLACE.bridge, 0, 0.8, 0), height: 10.6, to: 8.2, spin: [16, -16], fov: 50 }),
       zone: "bridge",
       look: "overworld-sunset",
+      hud: { clock: "TRADE WAR", banner: { text: "BOTH SIDES TAX!", color: "#ff5548" } },
       note: "Spinning overhead reveal of BOTH red and blue border gates slammed shut across the bridge in a full trade war.",
       stage: (t) => (
         <>

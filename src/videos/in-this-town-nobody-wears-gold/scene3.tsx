@@ -62,9 +62,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.twelve",
-      ...cam.streetOverview({ from: on(PLACE.village, 0, 0, -3.5), to: on(PLACE.village, 0, 0, -10.5), height: 5.8, fov: 48 }),
+      ...cam.streetOverview({ from: on(PLACE.village, 0, 0, -3.5), to: on(PLACE.village, 0, 0, -10.5), on: on(PLACE.village, 0, 1.3, -18.5), onTo: on(PLACE.village, 0, 1.3, -15.5), height: 5.8, fov: 48 }),
       zone: "village",
       look: "overworld-night",
+      hud: { banner: { text: "12 PIGLINS!", color: "#ff5548" } },
       note: "High sweeping crane down Main Street: a charging army of twelve Piglins storms down the cobble road swinging golden swords.",
       stage: (t) => {
         const charge = ease(ramp(t, 0, 2.2)) * 5.0;
@@ -110,9 +111,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.back",
-      ...cam.track({ from: on(PLACE.village, 0, 0, -4.5), to: on(PLACE.village, 0, 0, 0.5), sideDist: 6.0, side: 1, lead: -1.4, height: 1.7 }),
+      ...cam.track({ from: on(PLACE.village, 0, 0, -4.5), to: on(PLACE.village, 0, 0, 0.5), sideDist: 3.8, side: 1, lead: -1.4, height: 1.7 }),
       zone: "village",
       look: "overworld-night",
+      hud: { clock: "RETREAT!" },
       note: "Lateral action tracking shot: iron guards retreat down the cobble street as Piglins push them back from ten blocks to two.",
       stage: (t) => {
         const g1 = moveBetween(on(PLACE.village, -1.1, 0, -5.0), on(PLACE.village, -1.1, 0, 0.4), t, 0, 2.6);
@@ -167,9 +169,10 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "6.calm",
-      ...cam.twoShot({ a: on(PLACE.village, -1.0, 0, 2.2), b: on(PLACE.village, 1.1, 0, 2.2), facing: 0, dist: 6.0, to: 4.8, side: 26, pitch: 6, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.village, -1.0, 0, 2.2), b: on(PLACE.village, 1.1, 0, 2.2), fromYaw: -22, toYaw: 24, pitch: 6, fov: 44 }),
       zone: "village",
       look: "overworld-night",
+      hud: { banner: { text: "1 GOLD = SAFE", color: "#ffd84d" } },
       note: "Clear visual rule proof: Toby stands smiling in his gold helmet while a Piglin lowers its sword calmly right beside him.",
       stage: (t) => (
         <>

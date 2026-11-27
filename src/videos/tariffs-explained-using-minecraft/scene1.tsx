@@ -55,6 +55,7 @@ export const scene1 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.blue, 0, 1.5, 1.6), dist: 6.2, distTo: 4.9, fromYaw: 28, toYaw: -20, pitch: 8, fov: 44 }),
       zone: "blue",
       look: "overworld-day",
+      hud: { banner: { text: "5 → 15 EMERALDS", color: "#ff5548", sub: "OVERNIGHT!" } },
       note: "Dramatic parallax sweep as the sword billboard violently snaps to '15' and red '15 EMERALDS' pops overhead.",
       stage: (t) => {
         const jump = t >= wordAt("1.fifteen", "jumps");
@@ -86,7 +87,7 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.special",
-      ...cam.twoShot({ a: on(PLACE.bridge, -2.0, 0, 1.5), b: on(PLACE.bridge, 2.0, 0, 1.5), facing: 0, dist: 7.4, to: 6.0, side: 16, pitch: 8, fov: 46 }),
+      ...cam.frameDuo({ a: on(PLACE.bridge, -1.9, 0, 1.4), b: on(PLACE.bridge, 1.9, 0, 1.4), fromYaw: -18, toYaw: 18, pitch: 8, fov: 46 }),
       zone: "bridge",
       look: "overworld-day",
       note: "Split showcase on the bridge: Red baker Maya holds warm bread beside a bakery shelf while Blue smith Alex holds a diamond sword.",
@@ -102,9 +103,10 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.leo",
-      ...cam.streetOverview({ from: on(PLACE.red, 0, 0, 10.5), to: on(PLACE.red, 0, 0, 3.5), height: 4.8, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.red, 0, 0, 10.5), to: on(PLACE.red, 0, 0, 8.8), on: on(PLACE.red, -0.3, 1.1, 2.2), onTo: on(PLACE.red, -0.3, 1.1, 3.6), height: 4.4, fov: 46 }),
       zone: "red",
       look: "overworld-day",
+      hud: { clock: "RED VILLAGE" },
       note: "Bright crane down Red Village Main Street as Leo walks forward waving cheerfully.",
       stage: (t) => {
         const w = moveBetween(on(PLACE.red, -1.1, 0, 0.5), on(PLACE.red, -1.1, 0, 4.2), t, 0, 1.4);
@@ -160,9 +162,10 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.five",
-      ...cam.twoShot({ a: on(PLACE.blue, -1.4, 0, 3.0), b: on(PLACE.blue, 1.4, 0, 2.2), facing: 0, dist: 6.4, to: 5.1, side: -22, pitch: 7, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.blue, -1.5, 0, 3.0), b: on(PLACE.blue, 1.6, 0, 2.2), fromYaw: -22, toYaw: 18, pitch: 7, fov: 44 }),
       zone: "blue",
       look: "overworld-day",
+      hud: { banner: { text: "BLUE: 5 vs RED: 12", color: "#52a8ff" } },
       note: "Blue Village smith Alex beams beside his 5-emerald sword stall as Leo stares in delight.",
       stage: (t) => (
         <>

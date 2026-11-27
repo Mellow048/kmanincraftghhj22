@@ -1,4 +1,5 @@
 import type React from "react";
+import { SolidBox } from "../../engine";
 import {
   BannerFlag,
   Clouds,
@@ -54,9 +55,13 @@ export const World: React.FC = () => (
       <Vox kind="darkPlanks" position={on(PLACE.bridge, 3.7, 0.45, 0)} size={[0.35, 0.9, 16]} />
       {/* Red Village cottages framing south bank, Blue Village workshops framing north bank */}
       <Hut at={on(PLACE.bridge, -9.5, 0.3, 12)} w={6.2} d={5.6} h={4.0} wall="bricks" tint="#b85b4a" roof="#962820" turn={Math.PI / 2} />
+      <SolidBox name="bridge-hut-SL" position={on(PLACE.bridge, -9.5, 2.3, 12)} size={[5.6, 4.0, 6.2]} />
       <Hut at={on(PLACE.bridge, 9.5, 0.3, 12)} w={6.2} d={5.6} h={4.0} wall="planks" tint="#cc9a64" roof="#962820" turn={-Math.PI / 2} />
+      <SolidBox name="bridge-hut-SR" position={on(PLACE.bridge, 9.5, 2.3, 12)} size={[5.6, 4.0, 6.2]} />
       <Hut at={on(PLACE.bridge, -9.5, 0.3, -12)} w={6.4} d={5.6} h={4.2} wall="stoneBrick" tint="#9aa5b4" roof="#244a8a" turn={Math.PI / 2} />
+      <SolidBox name="bridge-hut-NL" position={on(PLACE.bridge, -9.5, 2.4, -12)} size={[5.6, 4.2, 6.4]} />
       <Hut at={on(PLACE.bridge, 9.5, 0.3, -12)} w={6.4} d={5.6} h={4.2} wall="stoneBrick" tint="#9ea8b8" roof="#244a8a" turn={-Math.PI / 2} />
+      <SolidBox name="bridge-hut-NR" position={on(PLACE.bridge, 9.5, 2.4, -12)} size={[5.6, 4.2, 6.4]} />
       <BannerFlag position={on(PLACE.bridge, -4.4, 2.4, 9.5)} color="#b5332a" trim="#f0c232" emblem="crown" />
       <BannerFlag position={on(PLACE.bridge, 4.4, 2.4, 9.5)} color="#b5332a" trim="#f0c232" emblem="crown" />
       <BannerFlag position={on(PLACE.bridge, -4.4, 2.4, -9.5)} color="#27549c" trim="#57f2f2" emblem="gem" />
@@ -78,8 +83,11 @@ export const World: React.FC = () => (
       <Vox kind="cobble" position={on(PLACE.blue, 0, 0.02, 2)} size={[15, 0.08, 22]} />
       <Vox kind="path" position={on(PLACE.blue, 0, 0.03, 16)} size={[6, 0.06, 16]} />
       <Hut at={on(PLACE.blue, -9.8, 0, 0)} w={6.6} d={5.8} h={4.4} wall="stoneBrick" tint="#95a3b8" roof="#1e4488" turn={Math.PI / 2} />
+      <SolidBox name="blue-hut-L" position={on(PLACE.blue, -9.8, 2.2, 0)} size={[5.8, 4.4, 6.6]} />
       <Hut at={on(PLACE.blue, 9.8, 0, 0)} w={6.6} d={5.8} h={4.4} wall="stoneBrick" tint="#99a8bd" roof="#1e4488" turn={-Math.PI / 2} />
+      <SolidBox name="blue-hut-R" position={on(PLACE.blue, 9.8, 2.2, 0)} size={[5.8, 4.4, 6.6]} />
       <Hut at={on(PLACE.blue, 0, 0, -11.5)} w={9.0} d={6.0} h={5.2} wall="stoneBrick" tint="#8d9cb2" roof="#1b347a" />
+      <SolidBox name="blue-hut-N" position={on(PLACE.blue, 0, 2.6, -11.5)} size={[9.0, 5.2, 6.0]} />
       <BannerFlag position={on(PLACE.blue, -3.2, 3.2, -8.3)} color="#1b347a" trim="#57f2f2" emblem="gem" />
       <BannerFlag position={on(PLACE.blue, 3.2, 3.2, -8.3)} color="#1b347a" trim="#57f2f2" emblem="gem" />
       <Tree position={on(PLACE.blue, -10.5, 0, 10)} height={4.8} />

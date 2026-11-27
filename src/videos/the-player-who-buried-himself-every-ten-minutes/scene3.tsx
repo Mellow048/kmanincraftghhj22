@@ -30,6 +30,7 @@ export const scene3 = storyScene(timing, {
       ...cam.front({ actor: on(PLACE.irl, -0.8, 0.3, -0.4), facing: 0, dist: 5.0, to: 3.9, side: 18, pitch: 8, fov: 44 }),
       zone: "irl",
       look: "overworld-night",
+      hud: { clock: "11:10 PM" },
       note: "Real-world cutaway shooting the front of Milo's glowing bedroom PC monitor and tired face in warm desk lamp light.",
       stage: (t) => (
         <>
@@ -73,6 +74,7 @@ export const scene3 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.irl, 1.55, 0.8, -0.9), dist: 4.8, distTo: 3.7, fromYaw: 24, toYaw: -18, pitch: 10, fov: 42 }),
       zone: "irl",
       look: "overworld-night",
+      hud: { clock: "11:20 PM" },
       note: "Ten-minute clock strikes and the baby sister wakes up crying in the crib with a bright alert badge.",
       stage: (t) => (
         <>
@@ -179,6 +181,7 @@ export const scene3 = storyScene(timing, {
       ...cam.front({ actor: on(PLACE.cabin, 0.35, 1.5, -0.3), facing: 0, dist: 4.0, to: 3.1, side: 14, pitch: 3, fov: 40 }),
       zone: "cabin",
       look: "overworld-night",
+      hud: { banner: { text: "FOR HIS BABY SISTER", color: "#ffe082" } },
       note: "Close emotional read on Milo's handwritten Minecraft book note as Owner tears up.",
       stage: (t) => (
         <>
@@ -197,23 +200,22 @@ export const scene3 = storyScene(timing, {
       ...cam.heroLow({ on: on(PLACE.smp, 0, 1.5, 2.0), dist: 6.0, yaw: -20, fov: 45 }),
       zone: "smp",
       look: "overworld-night",
+      hud: {
+        clock: "MIDNIGHT",
+        typing: true,
+        chat: [{ sender: "OWNER", text: "EVERYONE LOG ON NOW! HELP MILO!", color: "#ffd84d" }],
+      },
       note: "Heroic turning point: Owner raises hand sending a glowing golden '!' server-wide alert broadcast.",
       stage: (t) => (
-        <>
-          <ServerPlayer role="owner" nameTag="Owner" crown badge="!" position={on(PLACE.smp, 0, 0, 2.0)} rotationY={0} animation="cheer" face="brave" time={t} />
-          <ServerChatBox
-            position={on(PLACE.smp, 0, 3.05, 2.0)}
-            typing={ease(ramp(t, 0.1, 1.2))}
-            lines={[{ sender: "OWNER", text: "EVERYONE LOG ON NOW! HELP MILO!", color: "#ffd84d" }]}
-          />
-        </>
+        <ServerPlayer role="owner" nameTag="Owner" crown badge="!" position={on(PLACE.smp, 0, 0, 2.0)} rotationY={0} animation="cheer" face="brave" time={t} />
       ),
     },
     {
       cue: "5.rally",
-      ...cam.streetOverview({ from: on(PLACE.smp, 0, 0, 12.0), to: on(PLACE.smp, 0, 0, 4.5), height: 5.0, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.smp, 0, 0, 11.2), to: on(PLACE.smp, 0, 0, 9.4), on: on(PLACE.smp, 0, 1.1, 1.5), onTo: on(PLACE.smp, 0, 1.1, 3.5), height: 4.8, fov: 46 }),
       zone: "smp",
       look: "overworld-night",
+      hud: { banner: { text: "20 PLAYERS ONLINE!", color: "#4ce87a" } },
       note: "Wholesome server rally crane: players stream onto Main Street holding lanterns and oak planks under '+20 ONLINE!'.",
       stage: (t) => {
         const w1 = moveBetween(on(PLACE.smp, -1.7, 0, -2.5), on(PLACE.smp, -1.7, 0, 3.5), t, 0, 1.5);

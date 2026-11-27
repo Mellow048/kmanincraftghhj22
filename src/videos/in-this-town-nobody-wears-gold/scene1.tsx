@@ -33,9 +33,10 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.gold",
-      ...cam.streetOverview({ from: on(PLACE.village, 0, 0, 12.5), to: on(PLACE.village, 0, 0, 5.5), height: 5.2, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.village, 0, 0, 9.8), to: on(PLACE.village, 0, 0, 8.6), on: on(PLACE.village, 0, 1.1, 2.2), onTo: on(PLACE.village, 0, 1.1, 3.6), height: 3.8, fov: 46 }),
       zone: "village",
       look: "overworld-day",
+      hud: { clock: "NO GOLD TOWN" },
       note: "Bright daylight Frame-1 hook: crane sweeps down Main Street as Toby walks proudly in his gleaming gold helmet while crowds scatter.",
       stage: (t) => {
         const w = moveBetween(on(PLACE.village, 0, 0, 1.5), on(PLACE.village, 0, 0, 4.5), t, 0, 1.45);
@@ -118,9 +119,10 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "2.rule",
-      ...cam.twoShot({ a: on(PLACE.vault, -0.8, 0, 5.2), b: on(PLACE.vault, 1.6, 0, 5.2), facing: 0.45, dist: 6.4, to: 5.2, side: 18, pitch: 7, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.vault, -0.6, 0, 5.2), b: on(PLACE.vault, 1.8, 0, 5.2), fromYaw: -18, toYaw: 20, pitch: 8, fov: 44 }),
       zone: "vault",
       look: "overworld-day",
+      hud: { banner: { text: "NO GOLD RULE", color: "#ffd84d", sub: "IRON ARMOR ONLY" } },
       note: "Mayor Vance lectures sternly in front of his vault plaza pointing at a crossed-out gold helmet sign while villagers listen.",
       stage: (t) => (
         <>

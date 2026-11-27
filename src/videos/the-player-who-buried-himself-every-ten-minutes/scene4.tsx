@@ -46,7 +46,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.wood2",
-      ...cam.track({ from: on(PLACE.smp, 0, 0, -2.0), to: on(PLACE.smp, 0, 0, -11.0), sideDist: 6.0, side: 1, lead: 1.5, height: 1.8 }),
+      ...cam.track({ from: on(PLACE.smp, 0, 0, -2.0), to: on(PLACE.smp, 0, 0, -11.0), sideDist: 3.8, side: 1, lead: 1.5, height: 1.8 }),
       zone: "smp",
       look: "overworld-night",
       note: "Tracking shot along the road showcasing warm oak Safe Booths spaced neatly down the village path.",
@@ -97,6 +97,7 @@ export const scene4 = storyScene(timing, {
       ...cam.front({ actor: on(PLACE.smp, 0, 1.7, 1.2), facing: 0, dist: 5.4, to: 4.1, side: 18, pitch: 4, fov: 42 }),
       zone: "smp",
       look: "overworld-golden",
+      hud: { banner: { text: "SAFE FOR MILO", color: "#ffd84d", sub: "NEVER DIG ALONE" } },
       note: "Warm golden dawn: Server Owner hangs the wooden sign reading 'SAFE FOR MILO' above the glowing booth.",
       stage: (t) => (
         <>
@@ -107,23 +108,24 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.join",
-      ...cam.track({ from: on(PLACE.smp, 0, 0, 8.5), to: on(PLACE.smp, 0, 0, 4.5), sideDist: 5.6, side: -1, lead: 1.4, height: 1.5 }),
+      ...cam.track({ from: on(PLACE.smp, 0, 0, 8.5), to: on(PLACE.smp, 0, 0, 4.5), sideDist: 3.8, side: -1, lead: 1.4, height: 1.5 }),
       zone: "smp",
       look: "overworld-golden",
+      hud: {
+        clock: "NEXT EVENING",
+        chat: [{ text: "Milo joined the game", color: "#ffeb5c" }],
+      },
       note: "Golden evening tracking shot as Milo logs back in with empty pockets walking hesitantly down Main Street.",
       stage: (t) => {
         const w = moveBetween(on(PLACE.smp, 0, 0, 8.5), on(PLACE.smp, 0, 0, 4.5), t, 0, 1.6);
         return (
-          <>
-            <ServerPlayer role="hero" nameTag="Milo" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "shrug"} animDistance={w.animDistance} face="uneasy" time={t} />
-            <ServerChatBox position={on(PLACE.smp, 0, 2.9, 6.2)} lines={[{ text: "Milo joined the game", color: "#ffeb5c" }]} />
-          </>
+          <ServerPlayer role="hero" nameTag="Milo" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "shrug"} animDistance={w.animDistance} face="uneasy" time={t} />
         );
       },
     },
     {
       cue: "6.glow",
-      ...cam.streetOverview({ from: on(PLACE.smp, 0, 0, 11.5), to: on(PLACE.smp, 0, 0, 3.0), height: 5.0, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.smp, 0, 0, 11.2), to: on(PLACE.smp, 0, 0, 7.2), on: on(PLACE.smp, 0, 1.2, 2.0), onTo: on(PLACE.smp, 0, 1.2, 0.8), height: 5.0, fov: 46 }),
       zone: "smp",
       look: "overworld-golden",
       note: "Breathtaking golden reveal crane: warm glowing Safe Booths and friendly Iron Golems line both sides of the sunlit road.",
@@ -138,7 +140,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.drop",
-      ...cam.twoShot({ a: on(PLACE.smp, -1.2, 0, 4.0), b: on(PLACE.smp, 1.2, 0, 4.0), facing: 0, dist: 6.0, to: 4.8, side: 20, pitch: 6, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.smp, -1.2, 0, 4.0), b: on(PLACE.smp, 1.5, 0, 4.0), fromYaw: 34, toYaw: -10, pitch: 6, fov: 44 }),
       zone: "smp",
       look: "overworld-golden",
       note: "Joyful friendship payoff: Owner and friends step forward tossing gleaming flowers and fresh gear to Milo.",
@@ -169,9 +171,13 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "6.hug",
-      ...cam.twoShot({ a: on(PLACE.smp, -1.1, 0, 4.2), b: on(PLACE.smp, 1.1, 0, 4.2), facing: 0, dist: 5.8, to: 4.6, side: -20, pitch: 6, fov: 44 }),
+      ...cam.frameDuo({ a: on(PLACE.smp, -1.1, 0, 4.2), b: on(PLACE.smp, 1.2, 0, 4.2), fromYaw: -20, toYaw: 18, pitch: 6, fov: 44 }),
       zone: "smp",
       look: "overworld-golden",
+      hud: {
+        typing: true,
+        chat: [{ sender: "Bully", text: "sorry Milo, welcome home!", color: "#9bf5a6" }],
+      },
       note: "Redemption beat: the bully walks over holding a flower as '<Bully> sorry, welcome home' types into chat.",
       stage: (t) => {
         const step = moveBetween(on(PLACE.smp, 2.4, 0, 4.2), on(PLACE.smp, 1.0, 0, 4.2), t, 0, 1.1);
@@ -180,11 +186,6 @@ export const scene4 = storyScene(timing, {
             <ServerPlayer role="hero" nameTag="Milo" position={on(PLACE.smp, -1.1, 0, 4.2)} rotationY={0.5} animation="wave" face="grin" time={t} />
             <ServerPlayer role="bully" nameTag="Bully" position={step.position} rotationY={step.rotationY} animation={step.moving ? "walk" : "reach"} animDistance={step.animDistance} face="smile" time={t} />
             <PoppyFlower position={on(PLACE.smp, 0.2, 0.9, 4.2)} scale={1.15} />
-            <ServerChatBox
-              position={on(PLACE.smp, 0, 2.85, 4.2)}
-              typing={ease(ramp(t, 0.15, 1.25))}
-              lines={[{ sender: "Bully", text: "sorry Milo, welcome home!", color: "#9bf5a6" }]}
-            />
           </>
         );
       },
@@ -194,6 +195,7 @@ export const scene4 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.smp, 0, 1.4, 3.2), dist: 6.2, distTo: 4.8, fromYaw: -18, toYaw: 18, pitch: 6, fov: 44 }),
       zone: "smp",
       look: "overworld-day",
+      hud: { subscribe: true },
       note: "Wholesome final button: Milo, Owner, and the friendly Iron Golem wave beside Milo's glowing Safe Booth beneath the Subscribe sign.",
       stage: (t) => (
         <>

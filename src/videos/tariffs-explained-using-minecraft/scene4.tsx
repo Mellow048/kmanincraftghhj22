@@ -33,6 +33,7 @@ export const scene4 = storyScene(timing, {
       ...cam.front({ actor: on(PLACE.bridge, 0, 0.8, 0), facing: 0, dist: 7.4, to: 6.0, side: 18, pitch: 8, fov: 46 }),
       zone: "bridge",
       look: "overworld-day",
+      hud: { banner: { text: "3 REAL EFFECTS", color: "#ffd84d" } },
       note: "Crisp daylight reset on the bridge introducing the three huge Minecraft tariff effects.",
       stage: (t) => (
         <>
@@ -75,7 +76,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.three2",
-      ...cam.twoShot({ a: on(PLACE.bridge, -1.6, 0, 0.5), b: on(PLACE.bridge, 1.6, 0, 0.5), facing: 0, dist: 7.0, to: 5.8, side: -20, pitch: 8, fov: 46 }),
+      ...cam.frameDuo({ a: on(PLACE.bridge, -1.6, 0, 0.6), b: on(PLACE.bridge, 1.6, 0, 0.6), fromYaw: -20, toYaw: 18, pitch: 8, fov: 46 }),
       zone: "bridge",
       look: "overworld-day",
       note: "Effect #3: Mayor Sterling and Mayor Cobalt point angrily across twin tariff gates beneath '3. HIT BACK'.",

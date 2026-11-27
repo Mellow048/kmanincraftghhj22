@@ -111,9 +111,10 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "7.boots",
-      ...cam.streetOverview({ from: on(PLACE.village, 0, 0, 11.5), to: on(PLACE.village, 0, 0, 4.5), height: 4.8, fov: 46 }),
+      ...cam.streetOverview({ from: on(PLACE.village, 0, 0, 11.5), to: on(PLACE.village, 0, 0, 4.5), on: on(PLACE.village, 0, 1.1, 3.2), onTo: on(PLACE.village, 0, 1.1, 2.2), height: 4.8, fov: 46 }),
       zone: "village",
       look: "overworld-day",
+      hud: { clock: "NEXT MORNING" },
       note: "Bright golden morning crane down Main Street: the whole town cheers while putting on shiny matching gold boots.",
       stage: (t) => (
         <>
@@ -152,6 +153,7 @@ export const scene4 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.pines, 0, 1.2, 4.5), dist: 7.0, distTo: 5.6, fromYaw: -28, toYaw: 24, pitch: 8, fov: 45 }),
       zone: "pines",
       look: "overworld-golden",
+      hud: { banner: { text: "20 NEIGHBORS SAFE!", color: "#4ce87a" } },
       note: "Emotional reunion sweep: missing neighbors walk out of the sunlit pines waving, with Grandpa walking calmly out last.",
       stage: (t) => {
         const gr = moveBetween(on(PLACE.pines, 0, 0, 0.5), on(PLACE.pines, 0, 0, 4.8), t, 0, 1.9);
@@ -201,6 +203,7 @@ export const scene4 = storyScene(timing, {
       ...cam.sweep({ on: on(PLACE.village, 0, 1.35, 3.0), dist: 5.8, distTo: 4.5, fromYaw: -18, toYaw: 16, pitch: 6, fov: 44 }),
       zone: "village",
       look: "overworld-day",
+      hud: { subscribe: true },
       note: "Final joyful button on Main Street: Toby and Grandpa wave under the red Subscribe sign flanked by cheering neighbors and friendly Piglins.",
       stage: (t) => (
         <>

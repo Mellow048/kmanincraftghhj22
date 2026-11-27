@@ -6,6 +6,7 @@ import {
   GodRay,
   LightPool,
   Sign,
+  SolidBox,
   Tree,
   Vox,
   Zone,
@@ -54,9 +55,13 @@ export const World: React.FC = () => {
         <Vox kind="path" position={on(PLACE.vault, 0, 0.03, 18)} size={[6, 0.06, 18]} />
         {/* Neighboring brick & plank cottages framing both flanks */}
         <Hut at={on(PLACE.vault, -10.5, 0, 1.5)} w={6.2} d={5.6} h={4.0} wall="planks" tint="#c99a60" roof="#3d5e80" turn={Math.PI / 2} lit={night} />
+        <SolidBox name="vault-hut-L1" position={on(PLACE.vault, -10.5, 2.0, 1.5)} size={[5.6, 4.0, 6.2]} />
         <Hut at={on(PLACE.vault, 10.5, 0, 2.0)} w={6.2} d={5.6} h={4.0} wall="stoneBrick" tint="#9da4ad" roof="#6e3a24" turn={-Math.PI / 2} lit={night} />
+        <SolidBox name="vault-hut-R1" position={on(PLACE.vault, 10.5, 2.0, 2.0)} size={[5.6, 4.0, 6.2]} />
         <Hut at={on(PLACE.vault, -9.5, 0, 13)} w={5.8} d={5.2} h={3.8} wall="bricks" tint="#b55d4a" roof="#386641" turn={Math.PI / 2} lit={night} />
+        <SolidBox name="vault-hut-L2" position={on(PLACE.vault, -9.5, 1.9, 13)} size={[5.2, 3.8, 5.8]} />
         <Hut at={on(PLACE.vault, 9.5, 0, 13)} w={5.8} d={5.2} h={3.8} wall="planks" tint="#cfa976" roof="#5a3322" turn={-Math.PI / 2} lit={night} />
+        <SolidBox name="vault-hut-R2" position={on(PLACE.vault, 9.5, 1.9, 13)} size={[5.2, 3.8, 5.8]} />
         <Stall position={on(PLACE.vault, 4.8, 0, 5.2)} />
         <Sign position={on(PLACE.vault, 4.8, 1.85, 5.95)} title="IRON ARMOR" />
         <Tree position={on(PLACE.vault, -8.5, 0, -7.5)} height={4.6} />
