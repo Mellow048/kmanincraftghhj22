@@ -1,6 +1,7 @@
 import type React from "react";
 import { Block, Glow, LightPool, Vox, cam, defineFilm, storyScene } from "./engine";
 import { Hut } from "../Topics/InThisTown";
+import { BRANDING } from "./branding";
 
 /**
  * SCENERY — a shader test bench, not a film.
@@ -138,4 +139,4 @@ export const sceneryNight = defineFilm({
   scenes: [SCENE],
 });
 
-export const SCENERY = [sceneryDay, scenerySunset, sceneryNight];
+export const SCENERY = [sceneryDay, scenerySunset, sceneryNight, ...BRANDING];
