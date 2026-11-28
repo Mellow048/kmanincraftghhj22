@@ -29,7 +29,7 @@ export const scene5 = storyScene(timing, {
       stage: (t) => {
         const w = moveBetween(at(V, 0, 0, -11.0), at(V, 0, 0, -4.5), t, 0, 1.35);
         return (
-          <Teller position={w.position} rotationY={w.rotationY} animation="run" animDistance={w.animDistance} face="brave" time={t}>
+          <Teller position={w.position} rotationY={w.rotationY} animation={w.moving ? "run" : "idle"} animDistance={w.animDistance} face="brave" time={t}>
             <FounderCrest position={[0, 0.02, 0.24]} scale={1.1} />
           </Teller>
         );
@@ -122,12 +122,12 @@ export const scene5 = storyScene(timing, {
       note: "Nobody shoves, nobody hides—Teller proudly takes the very first step onto the sunlit bridge.",
       stage: (t) => {
         const w = moveBetween(at(B, -4.8, 0.25, -0.5), at(B, 0.2, 0.25, -0.5), t, 0, 1.4);
-        return <Teller position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="grin" time={t} />;
+        return <Teller position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="grin" time={t} />;
       },
     },
     {
       cue: "6.sam2",
-      ...cam.twoShot({ a: at(B, 0.5, 0.25, -0.6), b: at(B, 0.5, 0.25, 0.6), facing: Math.PI / 2, dist: 5.0, height: 1.5, fov: 42 }),
+      ...cam.twoShot({ a: at(B, 0.5, 0.25, -0.6), b: at(B, 0.5, 0.25, 0.6), facing: 0, dist: 5.0, height: 1.5, fov: 42 }),
       zone: "bridge",
       look: "overworld-day",
       note: "Sam steps right beside Teller—not second anymore, walking side by side across the water.",
@@ -136,8 +136,8 @@ export const scene5 = storyScene(timing, {
         const w2 = moveBetween(at(B, -1.2, 0.25, 0.6), at(B, 2.2, 0.25, 0.6), t, 0, 1.4);
         return (
           <>
-            <Teller position={w1.position} rotationY={w1.rotationY} animation="walk" animDistance={w1.animDistance} face="grin" time={t} />
-            <Sam position={w2.position} rotationY={w2.rotationY} animation="walk" animDistance={w2.animDistance} face="grin" time={t + 0.15} />
+            <Teller position={w1.position} rotationY={w1.rotationY} animation={w1.moving ? "walk" : "idle"} animDistance={w1.animDistance} face="grin" time={t} />
+            <Sam position={w2.position} rotationY={w2.rotationY} animation={w2.moving ? "walk" : "idle"} animDistance={w2.animDistance} face="grin" time={t + 0.15} />
           </>
         );
       },
@@ -153,8 +153,8 @@ export const scene5 = storyScene(timing, {
         const w2 = moveBetween(at(B, -5.5, 0.25, 0.6), at(B, 0.5, 0.25, 0.6), t, 0, 1.5);
         return (
           <>
-            <Player who={1} scale={0.88} position={w1.position} rotationY={w1.rotationY} animation="walk" animDistance={w1.animDistance} face="grin" time={t} />
-            <Player who={3} scale={0.88} position={w2.position} rotationY={w2.rotationY} animation="walk" animDistance={w2.animDistance} face="grin" time={t + 0.2} />
+            <Player who={1} scale={0.88} position={w1.position} rotationY={w1.rotationY} animation={w1.moving ? "walk" : "idle"} animDistance={w1.animDistance} face="grin" time={t} />
+            <Player who={3} scale={0.88} position={w2.position} rotationY={w2.rotationY} animation={w2.moving ? "walk" : "idle"} animDistance={w2.animDistance} face="grin" time={t + 0.2} />
             <Player who={4} scale={0.88} position={at(B, 2.8, 0.25, 0)} rotationY={Math.PI / 2} animation="cheer" face="grin" time={t} />
           </>
         );
@@ -168,7 +168,7 @@ export const scene5 = storyScene(timing, {
       note: "Even the silver-haired Oldest Man smiles and walks near the front of the town.",
       stage: (t) => {
         const w = moveBetween(at(B, 0.2, 0.25, 0), at(B, 2.4, 0.25, 0), t, 0, 1.3);
-        return <Elder position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} time={t} />;
+        return <Elder position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} time={t} />;
       },
     },
     {

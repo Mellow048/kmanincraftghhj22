@@ -139,7 +139,7 @@ export const scene5 = storyScene(timing, {
       ...cam.sweep({ on: at(S, -0.2, 1.15, -1.6), dist: 3.1, fromYaw: -20, toYaw: 16, pitch: 8, fov: 40 }),
       zone: "school",
       look: "overworld-sunset",
-      note: "Kid steps up to the quiet sunset windowsill and stops dead still.",
+      note: "OTS behind Kid: he steps up to the quiet sunset windowsill and stops dead still.",
       stage: (t) => (
         <>
           <Kid position={at(S, -0.6, 0, -0.7)} rotationY={Math.PI - 0.3} animation="idle" face="sad" time={t} />
@@ -152,9 +152,12 @@ export const scene5 = storyScene(timing, {
       ...cam.sweep({ on: at(S, 0, 1.12, -2.18), dist: 2.8, fromYaw: -16, toYaw: 16, pitch: 8, fov: 36 }),
       zone: "school",
       look: "overworld-sunset",
-      note: "Tight quiet close-up on his little bee resting completely still on the windowsill—its wings stopped.",
+      note: "OTS tight quiet close-up on his little bee resting completely still on the windowsill—its wings stopped.",
       stage: (t) => (
-        <BeeMob position={at(S, 0, 1.06, -2.18)} rotationY={0.4} scale={1.05} still time={t} />
+        <>
+          <BeeMob position={at(S, 0, 1.06 + Math.sin(t * 2.5) * 0.015, -2.18)} rotationY={0.4} scale={1.05} still time={t} />
+          <Kid position={at(S, -0.8, 0, -0.9)} rotationY={2.5} animation="ache" face="sad" time={t} />
+        </>
       ),
     },
   ],

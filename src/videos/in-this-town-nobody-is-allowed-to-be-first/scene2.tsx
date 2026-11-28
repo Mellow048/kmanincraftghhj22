@@ -34,7 +34,7 @@ export const scene2 = storyScene(timing, {
       cue: "2.table",
       ...cam.sweep({ on: at(V, -5.2, 1.2, 2.2), dist: 5.2, fromYaw: -20, toYaw: 20, pitch: 12, fov: 44 }),
       zone: "village",
-      note: "Three villagers hover awkwardly beside the dinner table, nobody sitting down first.",
+      note: "OTS: Three villagers hover awkwardly beside the dinner table, nobody sitting down first.",
       stage: (t) => (
         <>
           <Player who={3} scale={0.88} position={at(V, -6.2, 0, 3.2)} rotationY={Math.PI} animation="shrug" face="uneasy" time={t} />
@@ -61,29 +61,29 @@ export const scene2 = storyScene(timing, {
       note: "The Oldest Man strolls calmly behind everyone else, always going dead last.",
       stage: (t) => {
         const w = moveBetween(at(V, -3.5, 0, 3.5), at(V, 0.5, 0, 3.5), t, 0, 1.5);
-        return <Elder position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} time={t} />;
+        return <Elder position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} time={t} />;
       },
     },
     {
       cue: "2.itch",
-      ...cam.front({ actor: at(V, 0, 0, -4.5), dist: 4.4, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.sweep({ on: at(V, 0, 1.1, -4.0), dist: 4.5, fromYaw: 110, toYaw: 145, pitch: 10, fov: 42 }),
       zone: "village",
       note: "Teller walks toward the edge of the trees, staring curiously toward the hills.",
       stage: (t) => {
         const w = moveBetween(at(V, 0, 0, -3.2), at(V, 0, 0, -4.8), t, 0, 1.2);
-        return <Teller position={w.position} rotationY={0.25} animation="walk" animDistance={w.animDistance} face="uneasy" time={t} />;
+        return <Teller position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="uneasy" time={t} />;
       },
     },
     {
       cue: "2.cave",
-      ...cam.heroLow({ on: at(V, 0, 2.0, -12.0), dist: 6.4, yaw: -16, fov: 44 }),
+      ...cam.heroLow({ on: at(V, 0, 2.0, -9.5), dist: 5.4, yaw: 18, fov: 44 }),
       zone: "village",
-      note: "Low dramatic tilt up at the dark timber-framed cave mouth beyond the trees.",
+      note: "OTS low dramatic tilt up at the dark timber-framed cave mouth beyond the trees.",
       stage: (t) => <Teller position={at(V, -1.2, 0, -8.5)} rotationY={Math.PI} animation="idle" face="surprised" time={t} />,
     },
     {
       cue: "2.warn",
-      ...cam.twoShot({ a: at(V, -1.0, 0, -8.2), b: at(V, 0.9, 0, -8.2), dist: 4.8, height: 1.5, fov: 42 }),
+      ...cam.twoShot({ a: at(V, -1.0, 0, -8.2), b: at(V, 0.9, 0, -8.2), facing: 0.3, dist: 3.6, height: 1.5, fov: 42 }),
       zone: "village",
       hud: { chat: [{ sender: "Elder", text: "Never go first.", color: "#ffdd57" }] },
       note: "The Oldest Man steps up beside Teller and whispers a stark warning.",
@@ -104,7 +104,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <Teller position={at(V, -1.0, 0, -8.2)} rotationY={0.8} animation="idle" face="uneasy" time={t} />
-            <Elder position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} time={t} />
+            <Elder position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} time={t} />
           </>
         );
       },

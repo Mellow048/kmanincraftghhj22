@@ -22,27 +22,31 @@ export const scene3 = storyScene(timing, {
   shots: [
     {
       cue: "3.try",
-      ...cam.front({ actor: at(V, -4.8, 0, -0.8), dist: 4.5, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.sweep({ on: at(V, -4.8, 1.0, -0.5), dist: 4.5, fromYaw: 40, toYaw: 70, pitch: 10, fov: 42 }),
       zone: "village",
       note: "Kid sneaks up to the unsmoked bee hive wearing an upside-down iron bucket on his head.",
-      stage: (t) => (
-        <Kid
-          position={at(V, -4.8, 0, -0.8)}
-          rotationY={0.2}
-          animation="creep"
-          face="grin"
-          time={t}
-          head={<Block position={[0, 0.16, 0]} size={[0.56, 0.44, 0.56]} color="#9ea8b4" />}
-        >
-          <WoodenSpoon position={[0, 0, 0.24]} scale={1.05} />
-        </Kid>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(V, -4.8, 0, 0.2), at(V, -4.8, 0, -0.8), t, 0, 1.2);
+        return (
+          <Kid
+            position={w.position}
+            rotationY={w.rotationY}
+            animation={w.moving ? "creep" : "idle"}
+            animDistance={w.animDistance}
+            face="grin"
+            time={t}
+            head={<Block position={[0, 0.16, 0]} size={[0.56, 0.44, 0.56]} color="#9ea8b4" />}
+          >
+            <WoodenSpoon position={[0, 0, 0.24]} scale={1.05} />
+          </Kid>
+        );
+      },
     },
     {
       cue: "3.reach",
       ...cam.sweep({ on: at(V, -4.8, 1.4, -1.6), dist: 4.6, fromYaw: -20, toYaw: 20, pitch: 10, fov: 42 }),
       zone: "village",
-      note: "With zero campfire smoke, Kid reaches his wooden spoon straight into the wooden hive slot.",
+      note: "OTS behind Kid: with zero campfire smoke, Kid reaches his wooden spoon straight into the wooden hive slot.",
       stage: (t) => (
         <Kid
           position={at(V, -4.8, 0, -1.1)}
@@ -96,7 +100,7 @@ export const scene3 = storyScene(timing, {
         const w = moveBetween(at(V, -4.5, 0, 1.2), at(V, 3.8, 0, 2.8), t, 0, 1.5);
         return (
           <>
-            <Kid position={w.position} rotationY={w.rotationY} animation="run" animDistance={w.animDistance} face="scared" time={t} />
+            <Kid position={w.position} rotationY={w.rotationY} animation={w.moving ? "run" : "idle"} animDistance={w.animDistance} face="scared" time={t} />
             {[1, 2, 3, 4, 5].map((n) => (
               <BeeMob
                 key={n}

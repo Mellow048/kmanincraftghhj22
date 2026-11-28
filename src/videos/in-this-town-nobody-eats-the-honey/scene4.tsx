@@ -19,21 +19,14 @@ export const scene4 = storyScene(timing, {
   shots: [
     {
       cue: "4.golden",
-      ...cam.track({
-        from: at(V, -1.8, 0, -0.5),
-        to: at(V, -4.4, 0, -1.2),
-        sideDist: 5.0,
-        lead: 0.9,
-        height: 1.6,
-        fov: 42,
-      }),
+      ...cam.sweep({ on: at(V, -3.1, 1.1, -0.8), dist: 4.8, fromYaw: -20, toYaw: 20, pitch: 12, fov: 42 }),
       zone: "village",
       look: "overworld-golden",
       note: "Golden-hour creep back to the wooden hive with his wooden spoon.",
       stage: (t) => {
         const w = moveBetween(at(V, -1.8, 0, -0.5), at(V, -4.4, 0, -1.2), t, 0, 1.4);
         return (
-          <Kid position={w.position} rotationY={w.rotationY} animation="creep" animDistance={w.animDistance} face="uneasy" time={t}>
+          <Kid position={w.position} rotationY={w.rotationY} animation={w.moving ? "creep" : "idle"} animDistance={w.animDistance} face="uneasy" time={t}>
             <WoodenSpoon position={[0, 0, 0.24]} scale={1.1} />
           </Kid>
         );
@@ -90,7 +83,7 @@ export const scene4 = storyScene(timing, {
       note: "Kid staggers backward clutching his stung hand as green Poison II flashes.",
       stage: (t) => {
         const w = moveBetween(at(V, -4.4, 0, -1.1), at(V, -2.8, 0, 0.2), t, 0, 1.4);
-        return <Kid position={w.position} rotationY={w.rotationY} animation="stagger" animDistance={w.animDistance} face="hurt" time={t} />;
+        return <Kid position={w.position} rotationY={w.rotationY} animation={w.moving ? "stagger" : "crouch"} animDistance={w.animDistance} face="hurt" time={t} />;
       },
     },
     {
@@ -123,7 +116,7 @@ export const scene4 = storyScene(timing, {
         const w = moveBetween(at(V, 4.5, 0, 1.0), at(V, -1.1, 0, 0.9), t, 0, 1.35);
         return (
           <>
-            <Mayor position={w.position} rotationY={w.rotationY} animation="run" animDistance={w.animDistance} face="worried" time={t} />
+            <Mayor position={w.position} rotationY={w.rotationY} animation={w.moving ? "run" : "idle"} animDistance={w.animDistance} face="worried" time={t} />
             <Kid position={at(V, -2.2, 0, 0.8)} rotationY={1.2} animation="crouch" face="hurt" time={t} />
           </>
         );

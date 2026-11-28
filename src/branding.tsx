@@ -153,7 +153,24 @@ const ExplainerNightWorld: React.FC = () => (
   </>
 );
 
-export const explainerBannerV1 = defineFilm({
+function withBannerOverlay(
+  film: ReturnType<typeof defineFilm>,
+  overlay: React.ReactNode,
+) {
+  const Inner = film.Component;
+  return {
+    ...film,
+    Component: () => (
+      <AbsoluteFill>
+        <Inner />
+        {overlay}
+      </AbsoluteFill>
+    ),
+  };
+}
+
+export const explainerBannerV1 = withBannerOverlay(
+  defineFilm({
   id: "explainer-banner-v1",
   title: "Explainer Banner V1",
   fps: 30,
@@ -182,18 +199,19 @@ export const explainerBannerV1 = defineFilm({
           note: "Explainer V1 sunlit market banner",
         },
       ],
-      Component: () => (
-        <BannerTitle
-          title="EXPLAINER"
-          subtitle="SYSTEMS • ECONOMIES • IN BLOCKS"
-          accent="#52f081"
-        />
-      ),
+      Component: () => null,
     }),
   ],
-});
+  }),
+  <BannerTitle
+    title="EXPLAINER"
+    subtitle="SYSTEMS • ECONOMIES • IN BLOCKS"
+    accent="#52f081"
+  />,
+);
 
-export const explainerBannerV2 = defineFilm({
+export const explainerBannerV2 = withBannerOverlay(
+  defineFilm({
   id: "explainer-banner-v2",
   title: "Explainer Banner V2",
   fps: 30,
@@ -222,17 +240,17 @@ export const explainerBannerV2 = defineFilm({
           note: "Explainer V2 dark vault banner",
         },
       ],
-      Component: () => (
-        <BannerTitle
-          title="EXPLAINER"
-          subtitle="BIG IDEAS IN MINECRAFT"
-          accent="#4ce8ff"
-          bgBadge="rgba(8, 12, 22, 0.8)"
-        />
-      ),
+      Component: () => null,
     }),
   ],
-});
+  }),
+  <BannerTitle
+    title="EXPLAINER"
+    subtitle="BIG IDEAS IN MINECRAFT"
+    accent="#4ce8ff"
+    bgBadge="rgba(8, 12, 22, 0.8)"
+  />,
+);
 
 export const explainerPfpV1 = defineFilm({
   id: "explainer-pfp-v1",
@@ -340,7 +358,8 @@ const ServerLoreDeskWorld: React.FC = () => (
   </>
 );
 
-export const serverLoreBannerV1 = defineFilm({
+export const serverLoreBannerV1 = withBannerOverlay(
+  defineFilm({
   id: "serverlore-banner-v1",
   title: "ServerLore Banner V1",
   fps: 30,
@@ -369,18 +388,19 @@ export const serverLoreBannerV1 = defineFilm({
           note: "ServerLore V1 golden cherry cabin banner",
         },
       ],
-      Component: () => (
-        <BannerTitle
-          title="SERVER LORE"
-          subtitle="TRUE STORIES FROM THE SMP"
-          accent="#ffb86c"
-        />
-      ),
+      Component: () => null,
     }),
   ],
-});
+  }),
+  <BannerTitle
+    title="SERVER LORE"
+    subtitle="TRUE STORIES FROM THE SMP"
+    accent="#ffb86c"
+  />,
+);
 
-export const serverLoreBannerV2 = defineFilm({
+export const serverLoreBannerV2 = withBannerOverlay(
+  defineFilm({
   id: "serverlore-banner-v2",
   title: "ServerLore Banner V2",
   fps: 30,
@@ -409,17 +429,17 @@ export const serverLoreBannerV2 = defineFilm({
           note: "ServerLore V2 late-night SMP room banner",
         },
       ],
-      Component: () => (
-        <BannerTitle
-          title="SERVER LORE"
-          subtitle="4:20 AM • UNTOLD CHRONICLES"
-          accent="#5ce69a"
-          bgBadge="rgba(8, 16, 24, 0.8)"
-        />
-      ),
+      Component: () => null,
     }),
   ],
-});
+  }),
+  <BannerTitle
+    title="SERVER LORE"
+    subtitle="4:20 AM • UNTOLD CHRONICLES"
+    accent="#5ce69a"
+    bgBadge="rgba(8, 16, 24, 0.8)"
+  />,
+);
 
 export const serverLorePfpV1 = defineFilm({
   id: "serverlore-pfp-v1",

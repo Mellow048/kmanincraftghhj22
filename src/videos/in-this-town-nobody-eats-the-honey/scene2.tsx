@@ -29,7 +29,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => {
         const w = moveBetween(at(V, -4.0, 0, 2.5), at(V, 1.5, 0, 2.5), t, 0, 1.5);
         return (
-          <Dad position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="smile" time={t}>
+          <Dad position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="smile" time={t}>
             <PoppyFlower position={[0, -0.02, 0.24]} scale={1.1} />
           </Dad>
         );
@@ -44,7 +44,7 @@ export const scene2 = storyScene(timing, {
         const w = moveBetween(at(V, -1.5, 0, 2.5), at(V, 2.5, 0, 2.5), t, 0, 1.5);
         return (
           <>
-            <Dad position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="grin" time={t}>
+            <Dad position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="grin" time={t}>
               <PoppyFlower position={[0, -0.02, 0.24]} scale={1.1} />
             </Dad>
             {[1, 2, 3, 4, 5, 6].map((n) => (
@@ -69,7 +69,7 @@ export const scene2 = storyScene(timing, {
         <>
           <BeeHiveBox position={at(V, -4.8, 0, -2.2)} smoke time={t} />
           <BeeHiveBox position={at(V, -2.8, 0, -2.2)} smoke time={t + 0.4} />
-          <Mayor position={at(V, -3.8, 0, -0.4)} rotationY={Math.PI} animation="reach" face="calm" time={t} />
+          <Mayor position={at(V, -2.0, 0, -1.2)} rotationY={-0.7} animation="reach" face="calm" time={t} />
         </>
       ),
     },
@@ -92,7 +92,7 @@ export const scene2 = storyScene(timing, {
       ...cam.twoShot({ a: at(S, -1.2, 0, 0.2), b: at(S, 1.2, 0, 0.2), dist: 5.0, height: 1.5, fov: 44 }),
       zone: "school",
       look: "warm-room",
-      note: "Planted gag: the whole classroom stands facing one tiny bee sitting on the sunlit windowsill.",
+      note: "OTS planted gag: the whole classroom stands facing one tiny bee sitting on the sunlit windowsill.",
       stage: (t) => (
         <>
           <BeeMob position={at(S, 0, 1.25, -2.1)} rotationY={0} scale={1.05} time={t} />

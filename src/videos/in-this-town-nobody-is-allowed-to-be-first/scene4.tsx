@@ -31,14 +31,14 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.step",
-      ...cam.track({ from: at(V, 0, 0, -9.2), to: at(V, 0, 0, -12.0), sideDist: 5.0, lead: 0.9, height: 1.6, fov: 42 }),
+      ...cam.sweep({ on: at(V, 0, 1.1, -10.5), dist: 5.0, fromYaw: -35, toYaw: -65, pitch: 12, fov: 42 }),
       zone: "village",
       look: "overworld-sunset",
-      note: "Nobody stands ahead of him—Teller takes the brave first step straight into the cave mouth.",
+      note: "OTS: Nobody stands ahead of him—Teller takes the brave first step straight into the cave mouth.",
       stage: (t) => {
         const w = moveBetween(at(V, 0, 0, -9.2), at(V, 0, 0, -12.0), t, 0, 1.4);
         return (
-          <Teller position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="brave" time={t}>
+          <Teller position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="brave" time={t}>
             <HandTorch position={[0, 0.02, 0.24]} scale={1.1} />
           </Teller>
         );
@@ -46,14 +46,14 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.dark",
-      ...cam.track({ from: at(C, 0, 0, 4.5), to: at(C, 0, 0, -1.5), sideDist: 2.6, lead: 0.9, height: 1.5, fov: 44 }),
+      ...cam.sweep({ on: at(C, 0, 1.2, 1.5), dist: 3.4, fromYaw: -18, toYaw: 18, pitch: 8, fov: 44 }),
       zone: "cave",
       look: "lantern-night",
-      note: "Inside the echoing stone tunnel, orange torchlight flickers along the damp walls.",
+      note: "OTS inside the echoing stone tunnel, orange torchlight flickers along the damp walls.",
       stage: (t) => {
         const w = moveBetween(at(C, 0, 0, 4.5), at(C, 0, 0, -1.5), t, 0, 1.5);
         return (
-          <Teller position={w.position} rotationY={w.rotationY} animation="creep" animDistance={w.animDistance} face="worried" time={t}>
+          <Teller position={w.position} rotationY={w.rotationY} animation={w.moving ? "creep" : "idle"} animDistance={w.animDistance} face="worried" time={t}>
             <HandTorch position={[0, 0.04, 0.26]} scale={1.1} />
           </Teller>
         );
@@ -64,7 +64,7 @@ export const scene4 = storyScene(timing, {
       ...cam.sweep({ on: at(C, 0, 1.1, -4.8), dist: 3.4, fromYaw: -16, toYaw: 16, pitch: 8, fov: 42 }),
       zone: "cave",
       look: "lantern-night",
-      note: "Deep inside the chamber, Teller freezes as his boot bumps against old bones.",
+      note: "OTS: Deep inside the chamber, Teller freezes as his boot bumps against old bones.",
       stage: (t) => (
         <Teller position={at(C, 0, 0, -4.6)} rotationY={Math.PI} animation="scared" face="surprised" time={t}>
           <HandTorch position={[0, 0.04, 0.26]} scale={1.1} />
@@ -76,7 +76,7 @@ export const scene4 = storyScene(timing, {
       ...cam.sweep({ on: at(C, 0, 0.9, -7.2), dist: 4.0, fromYaw: -20, toYaw: 20, pitch: 8, fov: 40 }),
       zone: "cave",
       look: "lantern-night",
-      note: "Picture-first reveal: the dusty seated skeleton of the founder slumped beside a rusted pickaxe.",
+      note: "OTS picture-first reveal: the dusty seated skeleton of the founder slumped beside a rusted pickaxe.",
       stage: (t) => (
         <Teller position={at(C, -1.4, 0, -5.2)} rotationY={Math.PI + 0.4} animation="idle" face="surprised" time={t}>
           <HandTorch position={[0, 0.04, 0.26]} scale={1.1} />
@@ -112,9 +112,9 @@ export const scene4 = storyScene(timing, {
       zone: "cave",
       look: "lantern-night",
       hud: { filter: "sepia", banner: { text: "100 YEARS AGO", color: "#ffdd57" } },
-      note: "Sepia flashback: the town's founder had walked into this cave first a century ago.",
+      note: "OTS sepia flashback: the town's founder had walked into this cave first a century ago.",
       stage: (t) => (
-        <Teller position={at(C, -1.2, 0, -5.4)} rotationY={Math.PI + 0.3} animation="idle" face="sad" time={t} />
+        <Teller position={at(C, -1.2, 0, -5.4)} rotationY={Math.PI + 0.3} animation="point" face="sad" time={t} />
       ),
     },
     {
@@ -123,9 +123,9 @@ export const scene4 = storyScene(timing, {
       zone: "cave",
       look: "lantern-night",
       hud: { filter: "sepia" },
-      note: "Collapsed boulders trapped the founder inside so he never returned to the village.",
+      note: "OTS: Collapsed boulders trapped the founder inside so he never returned to the village.",
       stage: (t) => (
-        <Teller position={at(C, 1.2, 0, -5.2)} rotationY={Math.PI - 0.3} animation="idle" face="sad" time={t} />
+        <Teller position={at(C, 1.2, 0, -5.2)} rotationY={Math.PI - 0.3} animation="ache" face="sad" time={t} />
       ),
     },
     {
@@ -136,7 +136,7 @@ export const scene4 = storyScene(timing, {
       hud: { counter: { label: "PASSED DOWN", from: 1, to: 100, suffix: " YEARS", startAt: 0.08, dur: 1.25, color: "#ffdd57" } },
       note: "The rule was never a law—just a hundred years of grief and fear passed down.",
       stage: (t) => (
-        <Teller position={at(C, 0, 0, -5.4)} rotationY={0} animation="idle" face="brave" time={t}>
+        <Teller position={at(C, 0, 0, -5.4)} rotationY={0} animation="reachUp" face="brave" time={t}>
           <FounderCrest position={[0, 0.04, 0.26]} scale={1.15} />
         </Teller>
       ),

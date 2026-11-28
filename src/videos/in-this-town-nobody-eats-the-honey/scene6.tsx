@@ -43,7 +43,10 @@ export const scene6 = storyScene(timing, {
         },
       },
       note: "List payoff: truck along the glowing memorial wall as every planted clue clicks into place.",
-      stage: (t) => <Kid position={at(H, 0, 0, 1.0)} rotationY={Math.PI} animation="idle" face="sad" time={t} />,
+      stage: (t) => {
+        const w = moveBetween(at(H, -1.6, 0, 1.0), at(H, 1.4, 0, 1.0), t, 0, 1.5);
+        return <Kid position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="sad" time={t} />;
+      },
     },
     {
       cue: "6.sting",
@@ -101,11 +104,12 @@ export const scene6 = storyScene(timing, {
       zone: "hall",
       look: "overworld-sunset",
       hud: { banner: { text: "SPOON", color: "#ffdd57", sub: "EMPTY MEMORIAL JAR" } },
-      note: "Mayor places one empty glass jar on the shelf labeled SPOON beside Kid's wooden spoon.",
-      stage: () => (
+      note: "OTS: Mayor places one empty glass jar on the shelf labeled SPOON beside Kid's wooden spoon.",
+      stage: (t) => (
         <>
           <HoneyJar position={at(H, 0, 1.5, -2.1)} scale={1.15} empty />
           <WoodenSpoon position={at(H, 0.45, 1.52, -2.1)} scale={1.0} />
+          <Mayor position={at(H, 0.9, 0, -1.1)} rotationY={-2.5} animation="reach" face="sad" time={t} />
         </>
       ),
     },
@@ -115,9 +119,10 @@ export const scene6 = storyScene(timing, {
       zone: "hall",
       look: "overworld-sunset",
       note: "Kid realizes the honey that saved his life came from his own little bee's hive.",
-      stage: (t) => (
-        <Kid position={at(H, 0, 0, 0.8)} rotationY={0} animation="idle" face="crying" time={t} />
-      ),
+      stage: (t) => {
+        const s = ease(ramp(t, 0, 1.0));
+        return <Kid position={at(H, 0, 0, 0.8 - s * 0.4)} rotationY={0} animation="ache" face="crying" time={t} />;
+      },
     },
     {
       cue: "6.plant",
@@ -125,12 +130,15 @@ export const scene6 = storyScene(timing, {
       zone: "school",
       look: "overworld-day",
       note: "Bright morning: Kid kneels and plants his red poppy gently beneath the windowsill.",
-      stage: (t) => (
-        <>
-          <Kid position={at(S, -0.5, 0, -0.5)} rotationY={0.8} animation="crouch" face="smile" time={t} />
-          <PoppyFlower position={at(S, 0.3, 0, -0.5)} scale={1.2} />
-        </>
-      ),
+      stage: (t) => {
+        const s = ease(ramp(t, 0, 1.0));
+        return (
+          <>
+            <Kid position={at(S, -0.5, 0, -0.5)} rotationY={0.8} animation="reach" face="smile" time={t} />
+            <PoppyFlower position={at(S, 0.3, 0, -0.5)} scale={0.7 + s * 0.5} />
+          </>
+        );
+      },
     },
     {
       cue: "6.rally",
@@ -144,13 +152,13 @@ export const scene6 = storyScene(timing, {
       zone: "meadow",
       look: "overworld-day",
       hud: { counter: { label: "FLOWERS PLANTED", from: 1, to: 400, startAt: 0.08, dur: 1.4, color: "#55ff55" } },
-      note: "Whole-town community rally: everyone kneels across the sunlit meadow planting 400 flowers.",
+      note: "OTS whole-town community rally: everyone kneels across the sunlit meadow planting 400 flowers.",
       stage: (t) => {
         const p = ease(ramp(t, 0, 1.45));
         return (
           <>
             <FlowerRallyRows position={at(M, 0, 0, 0)} progress={p} />
-            <Kid position={at(M, 0, 0, 2.2)} rotationY={Math.PI} animation="crouch" face="smile" time={t} />
+            <Kid position={at(M, -0.9, 0, 2.2)} rotationY={2.6} animation="crouch" face="smile" time={t} />
             <Dad position={at(M, -2.0, 0, 2.0)} rotationY={Math.PI} animation="crouch" face="smile" time={t} />
             <Mayor position={at(M, 2.0, 0, 2.0)} rotationY={Math.PI} animation="crouch" face="smile" time={t} />
             <Player who={1} scale={0.85} position={at(M, -3.5, 0, 0.5)} rotationY={0.6} animation="crouch" face="smile" time={t} />
@@ -204,7 +212,7 @@ export const scene6 = storyScene(timing, {
       hud: { subscribe: true },
       note: "Seamless Frame-0 loop + story-locked CTA: back in Honey Hall holding a poppy beside the 400 glowing jars.",
       stage: (t) => {
-        const w = moveBetween(at(H, 0, 0, 1.6), at(H, 0, 0, 0.8), t, 0, 0.8);
+        const w = moveBetween(at(H, 0, 0, 0.4), at(H, 0, 0, 1.2), t, 0, 0.8);
         return (
           <>
             <SubscribeSign position={at(H, 0, 3.6, -1.2)} />

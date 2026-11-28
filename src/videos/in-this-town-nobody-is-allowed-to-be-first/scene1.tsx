@@ -23,7 +23,7 @@ export const scene1 = storyScene(timing, {
       zone: "village",
       note: "Frame-0 hook: Teller stands right at the wooden doorway threshold while Sam and villagers wait nervously behind him.",
       stage: (t) => {
-        const w = moveBetween(at(V, 0, 0, -0.4), at(V, 0, 0, -1.3), t, 0, 1.0);
+        const w = moveBetween(at(V, 0, 0, -2.0), at(V, 0, 0, -1.1), t, 0, 1.0);
         return (
           <>
             <Teller position={w.position} rotationY={0} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="uneasy" time={t} />
@@ -76,7 +76,7 @@ export const scene1 = storyScene(timing, {
       zone: "village",
       note: "The silver-haired Oldest Man stands quietly at the very back of the village path.",
       stage: (t) => (
-        <Elder position={at(V, -1.4, 0, 2.2)} rotationY={0.15} animation="idle" time={t} />
+        <Elder position={at(V, -1.4, 0, 2.2)} rotationY={0.15} animation="wave" time={t} />
       ),
     },
   ],

@@ -24,22 +24,22 @@ export const scene3 = storyScene(timing, {
       note: "Comedy attempt #1: Teller sprints full speed toward the market stall trying to be first.",
       stage: (t) => {
         const w = moveBetween(at(V, 1.2, 0, 2.2), at(V, 4.8, 0, 2.2), t, 0, 1.35);
-        return <Teller position={w.position} rotationY={w.rotationY} animation="run" animDistance={w.animDistance} face="grin" time={t} />;
+        return <Teller position={w.position} rotationY={w.rotationY} animation={w.moving ? "run" : "idle"} animDistance={w.animDistance} face="grin" time={t} />;
       },
     },
     {
       cue: "3.shove",
-      ...cam.sweep({ on: at(V, 4.2, 1.2, 2.2), dist: 5.8, fromYaw: -22, toYaw: 20, pitch: 12, fov: 44 }),
+      ...cam.sweep({ on: at(V, 4.2, 1.2, 2.6), dist: 5.8, fromYaw: -22, toYaw: 20, pitch: 12, fov: 44 }),
       zone: "village",
       note: "Five neighbors sprint past him shoving to grab second place!",
       stage: (t) => {
-        const w1 = moveBetween(at(V, 2.0, 0, 1.4), at(V, 5.2, 0, 1.4), t, 0, 1.2);
-        const w2 = moveBetween(at(V, 1.8, 0, 3.0), at(V, 5.4, 0, 3.0), t, 0, 1.2);
+        const w1 = moveBetween(at(V, 2.0, 0, 2.9), at(V, 5.2, 0, 2.9), t, 0, 1.2);
+        const w2 = moveBetween(at(V, 1.8, 0, 3.6), at(V, 5.4, 0, 3.6), t, 0, 1.2);
         return (
           <>
-            <Teller position={at(V, 3.8, 0, 2.2)} rotationY={Math.PI / 2} animation="stagger" face="surprised" time={t} />
-            <Player who={1} scale={0.88} position={w1.position} rotationY={w1.rotationY} animation="run" animDistance={w1.animDistance} face="grin" time={t} />
-            <Player who={3} scale={0.88} position={w2.position} rotationY={w2.rotationY} animation="run" animDistance={w2.animDistance} face="grin" time={t + 0.15} />
+            <Teller position={at(V, 3.8, 0, 2.2)} rotationY={Math.PI / 2} animation="panic" face="surprised" time={t} />
+            <Player who={1} scale={0.88} position={w1.position} rotationY={w1.rotationY} animation={w1.moving ? "run" : "idle"} animDistance={w1.animDistance} face="grin" time={t} />
+            <Player who={3} scale={0.88} position={w2.position} rotationY={w2.rotationY} animation={w2.moving ? "run" : "idle"} animDistance={w2.animDistance} face="grin" time={t + 0.15} />
           </>
         );
       },
@@ -94,7 +94,7 @@ export const scene3 = storyScene(timing, {
       cue: "4.sit",
       ...cam.sweep({ on: at(V, -5.2, 1.1, 2.2), dist: 4.8, fromYaw: 20, toYaw: -20, pitch: 10, fov: 42 }),
       zone: "village",
-      note: "Plant #2: At lunch, Sam waits until Teller sits so he always sits second.",
+      note: "OTS Plant #2: At lunch, Sam waits until Teller sits so he always sits second.",
       stage: (t) => (
         <>
           <Teller position={at(V, -5.8, 0, 3.1)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
@@ -112,8 +112,8 @@ export const scene3 = storyScene(timing, {
         const w2 = moveBetween(at(B, -5.4, 0.25, 0), at(B, 1.4, 0.25, 0), t, 0, 1.5);
         return (
           <>
-            <Teller position={w1.position} rotationY={w1.rotationY} animation="walk" animDistance={w1.animDistance} face="smile" time={t} />
-            <Sam position={w2.position} rotationY={w2.rotationY} animation="walk" animDistance={w2.animDistance} face="worried" time={t + 0.2} />
+            <Teller position={w1.position} rotationY={w1.rotationY} animation={w1.moving ? "walk" : "idle"} animDistance={w1.animDistance} face="smile" time={t} />
+            <Sam position={w2.position} rotationY={w2.rotationY} animation={w2.moving ? "walk" : "idle"} animDistance={w2.animDistance} face="worried" time={t + 0.2} />
           </>
         );
       },
@@ -128,8 +128,8 @@ export const scene3 = storyScene(timing, {
         const w2 = moveBetween(at(V, -4.2, 0, 3.2), at(V, 2.1, 0, 3.2), t, 0, 1.45);
         return (
           <>
-            <Teller position={w1.position} rotationY={w1.rotationY} animation="run" animDistance={w1.animDistance} face="grin" time={t} />
-            <Sam position={w2.position} rotationY={w2.rotationY} animation="walk" animDistance={w2.animDistance} face="calm" time={t} />
+            <Teller position={w1.position} rotationY={w1.rotationY} animation={w1.moving ? "run" : "idle"} animDistance={w1.animDistance} face="grin" time={t} />
+            <Sam position={w2.position} rotationY={w2.rotationY} animation={w2.moving ? "walk" : "idle"} animDistance={w2.animDistance} face="calm" time={t} />
           </>
         );
       },

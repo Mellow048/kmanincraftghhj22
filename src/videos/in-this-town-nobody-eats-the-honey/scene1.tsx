@@ -73,7 +73,7 @@ export const scene1 = storyScene(timing, {
       zone: "hall",
       note: "Kid steps forward staring longingly at the jars, raising his wooden spoon as the bee watches.",
       stage: (t) => {
-        const w = moveBetween(at(H, 0, 0, 1.3), at(H, 0, 0, 0.5), t, 0, 1.1);
+        const w = moveBetween(at(H, 0, 0, 0.5), at(H, 0, 0, 1.3), t, 0, 1.1);
         return (
           <>
             <Kid position={w.position} rotationY={0} animation={w.moving ? "walk" : "reach"} animDistance={w.animDistance} face="smile" time={t}>
