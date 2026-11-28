@@ -415,6 +415,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
         const stageSrc = typeof s.stage === "function" ? s.stage.toString() : "";
         if (/animDistance|animation:\s*["'](?:walk|run)["']/.test(stageSrc)) locomotionShots++;
       }
+      let shotHasLocomotion = false;
       // Same threshold as pickShot: the earliest output frame that actually selects it.
       const first = Math.max(0, Math.ceil((s.at - 1e-6) * fps));
       const next = scene.shots[i + 1];
@@ -538,6 +539,7 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
           // Anti-sidewalk / anti-moonwalk & anti-standing-slide checks
           if (isModern && totalHoriz >= 0.18 && totalVert < 0.25 && (!hasAlt || hasPos)) {
             const activelyWalking = gaitPts.length > 0 || walkSpan > 0.15;
+            if (activelyWalking && totalHoriz >= 0.30) shotHasLocomotion = true;
             if (!activelyWalking) {
               const standingBad = pts.every((pt) => STANDING_POSES.has(pt.props.animation ?? 'idle'));
               if (standingBad) {
@@ -561,6 +563,9 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
               }
             }
           }
+        }
+        if (shotHasLocomotion && !(typeof s.stage === "function" && /animDistance|animation:\s*["'](?:walk|run)["']/.test(s.stage.toString()))) {
+          locomotionShots++;
         }
       }
 
@@ -678,6 +683,9 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
             }
           }
         }
+        if (shotHasLocomotion && !(typeof s.stage === "function" && /animDistance|animation:\s*["'](?:walk|run)["']/.test(s.stage.toString()))) {
+          locomotionShots++;
+        }
       }
 
       // World vs stage duplicate / coplanar / Boat-vs-Vox / Camera-pillar obstruction checks
@@ -765,6 +773,9 @@ export function directionReport(film, timing, topic, script, { replayLegacy = fa
               }
             }
           }
+        }
+        if (shotHasLocomotion && !(typeof s.stage === "function" && /animDistance|animation:\s*["'](?:walk|run)["']/.test(s.stage.toString()))) {
+          locomotionShots++;
         }
       }
     }

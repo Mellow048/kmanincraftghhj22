@@ -173,16 +173,18 @@ export const Hero: React.FC<
 /** Wandering Trader Dad: royal blue robe, gold trim, blue hood, optional milk drips and visibility fade. */
 export const TraderDad: React.FC<
   Partial<MinecraftAvatarProps> & { vanish?: number; milkWet?: boolean; holdingPotion?: boolean; holdingHammer?: boolean }
-> = ({ vanish = 0, milkWet = false, holdingPotion = false, holdingHammer = false, position = [0, 0, 0], head, torso, ...rest }) => {
+> = ({ vanish = 0, milkWet = false, holdingPotion = false, holdingHammer = false, position = [0, 0, 0], scale = 1, head, torso, ...rest }) => {
   const hidden = vanish >= 0.92;
-  const sc = hidden ? 0.001 : Math.max(0.05, 1 - vanish * 0.9);
+  const sc = (hidden ? 0.001 : Math.max(0.05, 1 - vanish * 0.9)) * scale;
+  if (hidden) {
+    return vanish > 0.05 ? <group position={position}><PotionSwirl t={vanish * 3} intensity={1} /></group> : null;
+  }
   return (
-    <group position={position}>
-      {!hidden ? (
-        <group scale={[sc, sc, sc]}>
-          <MinecraftAvatar
-            position={[0, 0, 0]}
-            outfit="suit"
+    <>
+      <MinecraftAvatar
+        position={position}
+        scale={sc}
+        outfit="suit"
             skin="#e8b891"
             hair="#5c3e26"
             hairLayer
@@ -217,14 +219,18 @@ export const TraderDad: React.FC<
                 {torso}
               </>
             }
-            {...rest}
-          />
-          {holdingPotion ? <PotionBottle position={[0.38, 1.05, 0.34]} /> : null}
-          {holdingHammer ? <OakHammer position={[0.38, 1.12, 0.36]} /> : null}
+        {...rest}
+      />
+      {(holdingPotion || holdingHammer || vanish > 0.05) ? (
+        <group position={position}>
+          <group scale={[sc, sc, sc]}>
+            {holdingPotion ? <PotionBottle position={[0.38, 1.05, 0.34]} /> : null}
+            {holdingHammer ? <OakHammer position={[0.38, 1.12, 0.36]} /> : null}
+          </group>
+          {vanish > 0.05 ? <PotionSwirl t={vanish * 3} intensity={1} /> : null}
         </group>
       ) : null}
-      {vanish > 0.05 ? <PotionSwirl t={vanish * 3} intensity={1} /> : null}
-    </group>
+    </>
   );
 };
 
