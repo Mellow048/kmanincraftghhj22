@@ -1,0 +1,110 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-stock-market-explained-using-minecraft",
+  "mix": "public/audio/the-stock-market-explained-using-minecraft/mix.mp3",
+  "seconds": 81.0667,
+  "built_from": {
+    "timing.json": "8d82e51acd0ff1bddb1c11a3d08e80b8f2772701",
+    "sound.json": "592b8717c5e451b78045ef2486337c1882decfa4",
+    "narration.mp3": "f3cac104cc888155fd08c4ea65c93a30bc7827b7"
+  },
+  "mix_sha1": "f3cac65978802a3543064ddb229f4c9478c648e1",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "explain",
+      "at": 0.0
+    },
+    {
+      "from": "4.rich",
+      "mood": "sneak",
+      "at": 31.13
+    },
+    {
+      "from": "5.crash",
+      "mood": "none",
+      "at": 45.47
+    },
+    {
+      "from": "5.leo",
+      "mood": "dark",
+      "at": 48.13
+    },
+    {
+      "from": "6.dawn",
+      "mood": "explain",
+      "at": 55.77
+    }
+  ],
+  "music_file": {
+    "path": "Topics/Explainer/explainer_bgm_loop.wav",
+    "sha1": "a513987a318cf0558b5aa950d8b6634594e7fa83"
+  },
+  "beds": 20,
+  "measured": {
+    "musicUnderVoiceDb": 12.6,
+    "secondsWithoutMusic": 2.4,
+    "bedsUnderVoiceDb": 26.2,
+    "sfx": 55,
+    "sfxPerMinute": 40.7,
+    "sfxKinds": 27,
+    "longestGapSeconds": 3.2,
+    "longestGapAt": 31.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 11.5,
+    "voiceOverRestWorstDb": 3.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.1,
+        "t": 66.0,
+        "cue": "6.back",
+        "sounding": [
+          "blip",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 4.0,
+        "t": 8.2,
+        "cue": "1.cost",
+        "sounding": [
+          "coins"
+        ]
+      },
+      {
+        "db": 4.1,
+        "t": 33.1,
+        "cue": "4.rich",
+        "sounding": []
+      },
+      {
+        "db": 4.7,
+        "t": 25.4,
+        "cue": "3.crowd",
+        "sounding": [
+          "cheer"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 19.4,
+        "cue": "2.maya",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 5.1,
+        "t": 53.0,
+        "cue": "5.grin",
+        "sounding": [
+          "register"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.8
+  },
+  "failures": []
+}
