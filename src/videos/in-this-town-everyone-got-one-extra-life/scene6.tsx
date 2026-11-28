@@ -27,59 +27,59 @@ export const scene6 = storyScene(timing, {
   shots: [
     {
       cue: "7.sunset",
-      ...cam.twoShot({ a: at(H, -0.8, 0, 0.8), b: at(H, 1.0, 0, 0.8), dist: 4.8, height: 1.5, fov: 42 }),
+      ...cam.twoShot({ a: at(H, -0.8, 0, 1.6), b: at(H, 1.0, 0, 1.6), dist: 4.8, height: 1.5, fov: 42 }),
       zone: "home",
       look: "overworld-sunset",
       note: "Quiet golden sunset inside home as Dad sets the glass jar with the cracked gold wing onto the table.",
       stage: (t) => (
         <>
-          <Dad position={at(H, -0.9, 0, 0.8)} rotationY={1.1} animation="point" face="smile" time={t} />
-          <Leo position={at(H, 1.1, 0, 0.8)} rotationY={-1.1} animation="idle" face="uneasy" time={t} />
+          <Dad position={at(H, -0.9, 0, 1.6)} rotationY={1.1} animation="point" face="smile" time={t} />
+          <Leo position={at(H, 1.1, 0, 1.6)} rotationY={-1.1} animation="idle" face="uneasy" time={t} />
           <GlassJarWing position={at(H, 0.1, 0.92, 0.6)} />
         </>
       ),
     },
     {
       cue: "7.band",
-      ...cam.front({ actor: at(H, -0.9, 0, 0.8), dist: 4.0, fov: 38, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(H, -0.9, 0, 1.6), dist: 4.0, fov: 38, screenOffset: [0, 0.06] }),
       zone: "home",
       look: "overworld-sunset",
       note: "Emotional close-up on Dad lifting his bandaged left hand and looking warmly at Leo.",
       stage: (t) => (
-        <Dad position={at(H, -0.9, 0, 0.8)} rotationY={0.25} animation="wave" face="smile" time={t} />
+        <Dad position={at(H, -0.9, 0, 1.6)} rotationY={0.25} animation="wave" face="smile" time={t} />
       ),
     },
     {
       cue: "7.two",
-      ...cam.twoShot({ a: at(H, -0.9, 0, 0.8), b: at(H, 1.0, 0, 0.8), dist: 4.6, height: 1.4, fov: 42 }),
+      ...cam.twoShot({ a: at(H, -0.9, 0, 1.6), b: at(H, 1.0, 0, 1.6), dist: 4.6, height: 1.4, fov: 42 }),
       zone: "home",
       look: "overworld-sunset",
       note: "Leo's eyes widen as Dad reveals he was never born with zero extra lives.",
       stage: (t) => (
         <>
-          <Dad position={at(H, -0.9, 0, 0.8)} rotationY={1.2} animation="idle" face="smile" time={t} />
-          <Leo position={at(H, 1.0, 0, 0.8)} rotationY={-1.2} animation="panic" face="surprised" time={t} />
+          <Dad position={at(H, -0.9, 0, 1.6)} rotationY={1.2} animation="idle" face="smile" time={t} />
+          <Leo position={at(H, 1.0, 0, 1.6)} rotationY={-1.2} animation="panic" face="surprised" time={t} />
           <GlassJarWing position={at(H, 0.1, 0.92, 0.6)} />
         </>
       ),
     },
     {
       cue: "7.slip",
-      ...cam.sweep({ on: at(H, 0, 1.1, 0.6), dist: 4.6, fromYaw: -18, toYaw: 18, pitch: 12, fov: 42 }),
+      ...cam.sweep({ on: at(H, 0, 1.1, 1.65), dist: 4.6, fromYaw: -18, toYaw: 18, pitch: 12, fov: 42 }),
       zone: "home",
       look: "overworld-sunset",
       hud: { filter: "sepia", banner: { text: "AGE 2", color: "#ffdd57" } },
       note: "Sepia flashback moment showing Dad holding tiny 2-year-old Leo safe.",
       stage: (t) => (
         <>
-          <Dad position={at(H, -0.6, 0, 0.6)} rotationY={0.7} animation="hug" face="surprised" time={t} />
-          <Leo scale={0.55} position={at(H, 0.45, 0, 0.6)} rotationY={-0.7} animation="hug" face="sad" time={t} />
+          <Dad position={at(H, -0.6, 0, 1.65)} rotationY={0.7} animation="hug" face="surprised" time={t} />
+          <Leo scale={0.55} position={at(H, 0.45, 0, 1.65)} rotationY={-0.7} animation="hug" face="sad" time={t} />
         </>
       ),
     },
     {
       cue: "7.held",
-      ...cam.front({ actor: at(H, 0, 0, 0.6), dist: 4.4, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(H, 0, 0, 1.65), dist: 4.4, fov: 40, screenOffset: [0, 0.06] }),
       zone: "home",
       look: "overworld-sunset",
       note: "Golden Totem sparks bloom in memory as Dad and Leo hug warmly.",
@@ -87,9 +87,9 @@ export const scene6 = storyScene(timing, {
         const p = ramp(t, 0.15, 1.3);
         return (
           <>
-            <Dad position={at(H, -0.65, 0, 0.6)} rotationY={1.0} animation="hug" face="smile" time={t} />
-            <Leo position={at(H, 0.65, 0, 0.6)} rotationY={-1.0} animation="hug" face="smile" time={t} />
-            <TotemBurst position={at(H, 0, 1.0, 0.6)} progress={p} />
+            <Dad position={at(H, -0.65, 0, 1.65)} rotationY={1.0} animation="hug" face="smile" time={t} />
+            <Leo position={at(H, 0.65, 0, 1.65)} rotationY={-1.0} animation="hug" face="smile" time={t} />
+            <TotemBurst position={at(H, 0, 1.0, 1.65)} progress={p} />
           </>
         );
       },

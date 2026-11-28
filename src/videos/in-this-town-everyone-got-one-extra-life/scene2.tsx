@@ -38,14 +38,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.step",
-      ...cam.track({
-        from: at(V, -6.9, 2.5, 2.2),
-        to: at(V, -6.9, 0, 5.2),
-        sideDist: 5.4,
-        lead: 0.8,
-        height: 1.6,
-        fov: 44,
-      }),
+      ...cam.sweep({ on: at(V, -6.9, 1.4, 4.2), dist: 5.2, fromYaw: 35, toYaw: 65, pitch: 14, fov: 44 }),
       zone: "village",
       note: "Leo walks carefully step-by-step down the wooden school stairs clutching his Water Bucket.",
       stage: (t) => {
@@ -54,7 +47,7 @@ export const scene2 = storyScene(timing, {
           <Leo
             position={at(V, -6.9, 2.5 * (1 - s), 2.2 + s * 3.0)}
             rotationY={0}
-            animation="walk"
+            animation={s < 0.99 ? "walk" : "idle"}
             animDistance={s * 3.8}
             face="neutral"
             time={t}
@@ -77,7 +70,7 @@ export const scene2 = storyScene(timing, {
             <Leo
               position={at(H, -1.9, 1.8 * (1 - s), -0.4 + s * 2.2)}
               rotationY={0.2}
-              animation="walk"
+              animation={s < 0.99 ? "walk" : "idle"}
               animDistance={s * 2.6}
               face="smile"
               time={t}
@@ -85,7 +78,7 @@ export const scene2 = storyScene(timing, {
             <Dad
               position={at(H, -0.5, 0.9 * (1 - s), 0.2 + s * 1.8)}
               rotationY={-0.15}
-              animation="walk"
+              animation={s < 0.99 ? "walk" : "idle"}
               animDistance={s * 2.1}
               face="smile"
               time={t + 0.2}
@@ -109,7 +102,7 @@ export const scene2 = storyScene(timing, {
       ...cam.sweep({ on: at(H, 1.0, 2.0, -2.1), dist: 3.4, fromYaw: -22, toYaw: 20, pitch: 12, fov: 38 }),
       zone: "home",
       look: "warm-room",
-      note: "Planted Clue #2: Slow parallax sweep past the glass jar on the shelf holding the cracked gold Totem wing.",
+      note: "OTS behind Leo: slow parallax sweep past the glass jar on the shelf holding the cracked gold Totem wing.",
       stage: (t) => (
         <Leo
           position={at(H, 0.4, 0, -0.5)}
@@ -135,7 +128,7 @@ export const scene2 = storyScene(timing, {
             <Dad
               position={w.position}
               rotationY={w.rotationY}
-              animation="walk"
+              animation={w.moving ? "walk" : "idle"}
               animDistance={w.animDistance}
               face="neutral"
               time={t}

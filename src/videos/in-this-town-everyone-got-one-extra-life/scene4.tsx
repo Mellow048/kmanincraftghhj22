@@ -59,7 +59,7 @@ export const scene4 = storyScene(timing, {
         on: at(C, -3.0, 21.0, -7.0),
         by: [6.0, 0, 0],
         dist: 5.6,
-        yaw: 0,
+        yaw: 35,
         pitch: 8,
         fov: 44,
       }),
@@ -133,7 +133,7 @@ export const scene4 = storyScene(timing, {
           <Leo
             position={w.position}
             rotationY={w.rotationY}
-            animation="run"
+            animation={w.moving ? "run" : "idle"}
             animDistance={w.animDistance}
             face="surprised"
             time={t}
@@ -145,7 +145,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.vex",
-      ...cam.front({ actor: at(C, 8.2, 20.0, -7.4), dist: 4.8, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(C, 8.2, 20.0, -7.4), dist: 4.8, facing: -0.66, fov: 42, screenOffset: [0, 0.06] }),
       zone: "canyon",
       look: "overworld-golden",
       hud: { chat: [{ sender: "Mr. Vex", text: "Hahaha! Jump anyway!", color: "#d580ff" }] },
@@ -156,7 +156,7 @@ export const scene4 = storyScene(timing, {
     },
     {
       cue: "5.leap",
-      ...cam.sweep({ on: at(C, 0, 18.5, -4.5), dist: 10.5, fromYaw: -22, toYaw: 22, pitch: 12, fov: 46 }),
+      ...cam.sweep({ on: at(C, 0, 18.5, -4.5), dist: 10.5, fromYaw: 25, toYaw: 60, pitch: 12, fov: 46 }),
       zone: "canyon",
       look: "overworld-golden",
       note: "All thirty kids step off the 40-block cliff ledge into open canyon air.",

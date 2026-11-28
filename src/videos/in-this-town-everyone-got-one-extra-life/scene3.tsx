@@ -52,8 +52,8 @@ export const scene3 = storyScene(timing, {
             <MrVex position={at(S, 0, 0, -1.1)} rotationY={0} animation="wave" face="grin" time={t}>
               <TotemOfUndying position={[0, 0.04, 0.24]} scale={1.0} mode="gold" />
             </MrVex>
-            <Player who={1} scale={0.82} position={w1.position} rotationY={w1.rotationY} animation="walk" animDistance={w1.animDistance} face="grin" time={t} />
-            <Player who={3} scale={0.82} position={w2.position} rotationY={w2.rotationY} animation="walk" animDistance={w2.animDistance} face="smile" time={t + 0.2} />
+            <Player who={1} scale={0.82} position={w1.position} rotationY={w1.rotationY} animation={w1.moving ? "walk" : "idle"} animDistance={w1.animDistance} face="grin" time={t} />
+            <Player who={3} scale={0.82} position={w2.position} rotationY={w2.rotationY} animation={w2.moving ? "walk" : "idle"} animDistance={w2.animDistance} face="smile" time={t + 0.2} />
           </>
         );
       },
@@ -85,7 +85,7 @@ export const scene3 = storyScene(timing, {
       stage: (t) => {
         const w = moveBetween(at(S, -4.0, 0, 2.5), at(S, -7.0, 0, 1.2), t, 0, 1.45);
         return (
-          <Leo position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="neutral" time={t}>
+          <Leo position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="neutral" time={t}>
             <WaterBucket position={[0, -0.06, 0.22]} scale={1.0} />
           </Leo>
         );

@@ -41,7 +41,7 @@ export const scene5 = storyScene(timing, {
             <Leo
               position={at(C, -2.0 * (1 - f), 19.5 - f * 7.8, -6.5 + f * 4.5)}
               rotationY={0}
-              animation="run"
+              animation="cheer"
               face="brave"
               time={t}
             >
@@ -82,7 +82,7 @@ export const scene5 = storyScene(timing, {
           <Leo
             position={at(C, 0, 11.5 - f * 7.0, -1.5 + f * 1.1)}
             rotationY={0}
-            animation="run"
+            animation="cheer"
             face="brave"
             time={t}
           >
@@ -259,7 +259,7 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "6.bin",
-      ...cam.front({ actor: at(C, 8.0, 0, 2.5), height: 0.7, dist: 4.8, fov: 42, screenOffset: [0, 0.08] }),
+      ...cam.front({ actor: at(C, 8.0, 0, 2.5), height: 2.0, dist: 5.0, fov: 44, screenOffset: [0, 0.08] }),
       zone: "canyon",
       look: "overworld-golden",
       note: "Mr. Vex sprawls in the mud beside a plain wooden Totem while pigs stare at him.",

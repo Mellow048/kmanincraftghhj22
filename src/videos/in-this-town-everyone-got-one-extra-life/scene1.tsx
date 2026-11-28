@@ -24,11 +24,11 @@ export const scene1 = storyScene(timing, {
   shots: [
     {
       cue: "1.tower",
-      ...cam.heroLow({ on: at(V, 0, 8.0, -9.2), dist: 12.5, yaw: 14, fov: 44 }),
+      ...cam.heroLow({ on: at(V, 0, 11.4, -8.4), dist: 7.4, yaw: 14, fov: 44 }),
       zone: "village",
       note: "Bright daylight heroLow up at the sunlit clocktower as three kids sprint toward the ledge holding glowing Totems.",
       stage: (t) => {
-        const s = ease(ramp(t, 0, 1.5));
+        const s = ease(ramp(t, 0, 1.9));
         return (
           <>
             {[-1.1, 0, 1.1].map((kx, i) => (
@@ -36,10 +36,10 @@ export const scene1 = storyScene(timing, {
                 key={i}
                 who={[1, 3, 4, 5, 6][i % 5]}
                 scale={0.82}
-                position={at(V, kx, 11.0, -11.4 + s * 2.1)}
+                position={at(V, kx, 11.0, -8.8 + s * 1.4)}
                 rotationY={0}
-                animation="run"
-                animDistance={s * 2.2}
+                animation={s < 0.99 ? "run" : "idle"}
+                animDistance={s * 1.5}
                 face="grin"
                 time={t + i * 0.15}
               >
@@ -137,18 +137,18 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "1.bucket",
-      ...cam.sweep({ on: at(V, 0, 1.1, 2.3), dist: 4.5, fromYaw: 18, toYaw: -18, pitch: 12, fov: 40 }),
+      ...cam.sweep({ on: at(V, 0, 1.1, 2.3), dist: 4.5, fromYaw: 52, toYaw: 22, pitch: 12, fov: 40 }),
       zone: "village",
       note: "Leo lifts his plain iron Water Bucket with bright blue water in front of camera.",
       stage: (t) => (
-        <Leo position={at(V, 0, 0, 2.3)} rotationY={0.15} animation="point" face="neutral" time={t}>
+        <Leo position={at(V, 0, 0, 2.3)} rotationY={0.45} animation="point" face="neutral" time={t}>
           <WaterBucket position={[0, -0.06, 0.24]} scale={1.05} />
         </Leo>
       ),
     },
     {
       cue: "2.stairs",
-      ...cam.sweep({ on: at(V, -10.5, 2.4, 5.2), dist: 6.4, fromYaw: -20, toYaw: 18, pitch: 12, fov: 44 }),
+      ...cam.sweep({ on: at(V, -10.5, 2.4, 5.2), dist: 6.4, fromYaw: -52, toYaw: -26, pitch: 12, fov: 44 }),
       zone: "village",
       note: "Visual-verbal gag #1: a kid leaps straight out of the 2nd-story school window and pops a Totem instead of using stairs.",
       stage: (t) => {
@@ -175,9 +175,9 @@ export const scene1 = storyScene(timing, {
     {
       cue: "2.mail",
       ...cam.track({
-        from: at(V, 6.4, 0, 2.5),
-        to: at(V, 11.8, 0, 2.5),
-        sideDist: 5.6,
+        from: at(V, 5.2, 0, 3.6),
+        to: at(V, 9.6, 0, 3.6),
+        sideDist: 5.4,
         lead: 1.0,
         height: 2.0,
         fov: 44,
@@ -185,7 +185,7 @@ export const scene1 = storyScene(timing, {
       zone: "village",
       note: "Visual-verbal gag #2: mailman strolls straight through the glowing Lava Fountain, popping a Totem casually.",
       stage: (t) => {
-        const w = moveBetween(at(V, 6.4, 0, 2.5), at(V, 11.8, 0, 2.5), t, 0, 1.5);
+        const w = moveBetween(at(V, 5.2, 0, 3.6), at(V, 9.6, 0, 3.6), t, 0, 1.5);
         const popP = ramp(t, 0.55, 1.45);
         return (
           <>
@@ -194,12 +194,12 @@ export const scene1 = storyScene(timing, {
               scale={0.95}
               position={w.position}
               rotationY={w.rotationY}
-              animation="walk"
+              animation={w.moving ? "walk" : "idle"}
               animDistance={w.animDistance}
               face="grin"
               time={t}
             />
-            <TotemBurst position={at(V, 9.2, 0.9, 2.5)} progress={popP} />
+            <TotemBurst position={at(V, 7.6, 0.9, 3.6)} progress={popP} />
           </>
         );
       },
