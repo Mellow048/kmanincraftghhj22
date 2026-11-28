@@ -1,0 +1,357 @@
+{
+  "film": "rules-explained-using-minecraft",
+  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build rules-explained-using-minecraft",
+  "music": {
+    "track": "Topics/Explainer/explainer_bgm_loop.wav",
+    "gain": -12,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "explain",
+        "why": "Act 1"
+      },
+      {
+        "from": "3.r2",
+        "mood": "tense",
+        "why": "Act 2"
+      },
+      {
+        "from": "5.mods",
+        "mood": "hope",
+        "why": "Act 3"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.hook",
+      "to": "1.break",
+      "bed": "sky"
+    },
+    {
+      "from": "2.chest",
+      "to": "2.chest",
+      "bed": "night"
+    },
+    {
+      "from": "2.lose",
+      "to": "5.ban",
+      "bed": "sky"
+    },
+    {
+      "from": "5.mods",
+      "to": "5.mods",
+      "bed": "night"
+    },
+    {
+      "from": "5.scale",
+      "to": "7.loop",
+      "bed": "sky"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.hook",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "1.board",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "1.server",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.griefer",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.break",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4.0
+    },
+    {
+      "cue": "2.chest",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "2.lose",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.same",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.watch",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time"
+    },
+    {
+      "cue": "3.r1",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 2.4
+    },
+    {
+      "cue": "3.again",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.r2",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.r3",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.r100",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.locks",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.mean",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "4.about",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "4.one",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.why",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.write",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "5.keep",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time"
+    },
+    {
+      "cue": "5.ninety",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.ban",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "5.mods",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.scale",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 1.8
+    },
+    {
+      "cue": "6.real",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time",
+      "trim": 2.5
+    },
+    {
+      "cue": "6.class",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.5
+    },
+    {
+      "cue": "6.kid",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4.5
+    },
+    {
+      "cue": "6.rule",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "6.same2",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.fault",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "7.grief",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.mod",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.when",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.loop",
+      "sfx": "ding",
+      "why": "final payoff / subscribe line"
+    },
+    {
+      "cue": "1.hook",
+      "word": "using",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "1.board",
+      "word": "spawn",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.server",
+      "word": "with",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "1.griefer",
+      "word": "Griefer",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.break",
+      "word": "break",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 4.0
+    },
+    {
+      "cue": "2.chest",
+      "word": "the",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "2.lose",
+      "word": "and",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.same",
+      "word": "chest.",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 2.0
+    },
+    {
+      "cue": "3.watch",
+      "word": "hundred",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.r1",
+      "word": "Rule",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.again",
+      "word": "smashes",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.r2",
+      "word": "Rule",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.r3",
+      "word": "up",
+      "sfx": "chime",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.r100",
+      "word": "one",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "3.locks",
+      "word": "shut",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.mean",
+      "word": "trying",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 3.5
+    },
+    {
+      "cue": "4.about",
+      "word": "never",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    }
+  ]
+}

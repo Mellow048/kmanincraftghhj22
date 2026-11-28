@@ -14,6 +14,7 @@ import {
   ROOM_POS,
   SOUTH,
   Torch,
+  Vox,
   cam,
   ease,
   on,
@@ -145,8 +146,9 @@ export const scene3 = storyScene(timing, {
         const sneak = walkSegment([-1.4, 0, 12.0], [-0.2, 0, 8.2], t, 0, dur, { gait: "creep" });
         return (
           <>
-            <Hero {...sneak} animDistance={sneak.animDistance} face="uneasy" />
-            <MilkBucket position={[sneak.position[0] + 0.32, 0.72, sneak.position[2] - 0.18]} />
+            <Hero {...sneak} animDistance={sneak.animDistance} face="uneasy">
+              <MilkBucket scale={0.65} />
+            </Hero>
           </>
         );
       },
@@ -163,8 +165,9 @@ export const scene3 = storyScene(timing, {
         return (
           <>
             <MuddyPrints from={[0, 0, 7.2]} to={[0, 0, -2.2]} count={8} />
-            <Hero {...follow} animDistance={follow.animDistance} face="wow" headPitch={0.3} />
-            <MilkBucket position={[follow.position[0] + 0.34, 0.72, follow.position[2] - 0.12]} />
+            <Hero {...follow} animDistance={follow.animDistance} face="wow" headPitch={0.3}>
+              <MilkBucket scale={0.65} />
+            </Hero>
           </>
         );
       },
@@ -190,19 +193,24 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "4.hammer",
-      ...cam.sweep({ on: [-0.4, 1.55, -4.6], dist: 6.4, distTo: 5.1, fromYaw: -22, toYaw: 20, pitch: 4, fov: 44 }),
+      ...cam.sweep({ on: [-0.4, 1.55, -4.6], dist: 7.2, distTo: 6.0, fromYaw: -22, toYaw: 20, pitch: 4, fov: 46 }),
       zone: "night",
       look: "lantern-night",
-      note: "Sweeping past the alley porch as an invisible oak hammer swings on its own while Hero freezes at [1.1, 0, -2.0] (locked into 5.thief!).",
+      note: "Sweeping past the alley repair site as an invisible oak hammer nails fresh oak planks onto a wooden wall frame while Hero watches.",
       stage: (t) => {
         const swing = Math.sin(t * 12) * 0.65;
         return (
           <>
+            <Vox kind="planks" tint="#6e4a26" position={[-0.6, 1.2, -5.25]} size={[2.2, 2.4, 0.24]} />
+            <Vox kind="planks" tint="#e5b462" position={[-0.45, 1.55, -5.08]} size={[1.5, 0.24, 0.14]} />
+            <Vox kind="planks" tint="#e5b462" position={[-0.45, 1.22, -5.08]} size={[1.5, 0.24, 0.14]} />
             <Torch position={[-0.2, 1.45, -4.8]} light={3.8} />
             <OakHammer position={[-0.45, 1.65, -4.8]} rotation={[swing, 0, 0.35]} scale={1.35} />
             <PotionSwirl position={[-0.2, 1.1, -4.8]} t={t} intensity={0.75} />
             <Puffs position={[-0.6, 1.85, -4.8]} color="#ffe099" />
-            <Hero position={[1.1, 0, -2.0]} rotationY={-152 * DEG} animation="idle" face="surprised" />
+            <Hero position={[1.1, 0, -2.0]} rotationY={-152 * DEG} animation="idle" face="surprised">
+              <MilkBucket scale={0.65} />
+            </Hero>
           </>
         );
       },

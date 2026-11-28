@@ -41,8 +41,9 @@ export const scene4 = storyScene(timing, {
         const lift = ease(ramp(t, thiefAt - 0.1, thiefAt + 0.35));
         return (
           <>
-            <Hero position={[1.1, 0, -2.0]} rotationY={NORTH} animation={t > thiefAt ? "point" : "crouch"} face="angry" />
-            <MilkBucket position={[1.48, 0.8 + lift * 0.25, -2.2]} scale={1.1} />
+            <Hero position={[1.1, 0, -2.0]} rotationY={NORTH} animation={t > thiefAt ? "point" : "crouch"} face="angry">
+              <MilkBucket scale={0.65} />
+            </Hero>
             <Torch position={[-0.2, 1.45, -4.8]} light={3.5} />
           </>
         );
@@ -58,8 +59,9 @@ export const scene4 = storyScene(timing, {
         const run = walkSegment([1.1, 0, -2.0], [0.25, 0, -3.5], t, 0, dur, { gait: "run", endYaw: NORTH });
         return (
           <>
-            <Hero {...run} animDistance={run.animDistance} face="angry" />
-            <MilkBucket position={[run.position[0] + 0.25, 0.98, run.position[2] - 0.35]} rotation={[-0.4, 0, 0]} scale={1.15} />
+            <Hero {...run} animDistance={run.animDistance} face="angry">
+              <MilkBucket scale={0.65} />
+            </Hero>
             <Torch position={[-0.2, 1.45, -4.8]} light={3.5} />
           </>
         );

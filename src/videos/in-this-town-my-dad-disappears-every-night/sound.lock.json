@@ -2,13 +2,13 @@
   "tool": "scripts/sound.py v1",
   "film": "in-this-town-my-dad-disappears-every-night",
   "mix": "public/audio/in-this-town-my-dad-disappears-every-night/mix.mp3",
-  "seconds": 107.6333,
+  "seconds": 103.8667,
   "built_from": {
-    "timing.json": "48890a35064ecd480601c765c181a8f74d11b783",
-    "sound.json": "fdc6c6ad2060442b3caebfaf75d979e232e2f8fd",
-    "narration.mp3": "986d674b19b98a108d51a873eaad3f17db10e688"
+    "timing.json": "06991730e7b172204e431e2f7ab54ea2bd01a49d",
+    "sound.json": "d0addfdacdcc7e09864819b880d92096c083a7bc",
+    "narration.mp3": "fd7e8c8db59f9449da178620df2cdb9173e6b067"
   },
-  "mix_sha1": "df9e32d6fa96d2b371fc63de176dcd2a8b8268ee",
+  "mix_sha1": "04eff412dbe67b16feb91009446841b4e3a6ad33",
   "music_sections": [
     {
       "from": "1.dad",
@@ -18,32 +18,32 @@
     {
       "from": "2.chair",
       "mood": "sad",
-      "at": 24.03
+      "at": 23.2
     },
     {
       "from": "2.wrong",
       "mood": "curious",
-      "at": 28.93
+      "at": 27.9
     },
     {
       "from": "4.night",
       "mood": "sneak",
-      "at": 50.9
+      "at": 49.1
     },
     {
       "from": "5.splash",
       "mood": "none",
-      "at": 70.2
+      "at": 67.77
     },
     {
       "from": "5.poof",
       "mood": "hope",
-      "at": 72.3
+      "at": 69.8
     },
     {
       "from": "6.stall",
       "mood": "town",
-      "at": 96.7
+      "at": 93.33
     }
   ],
   "music_file": {
@@ -52,68 +52,73 @@
   },
   "beds": 10,
   "measured": {
-    "musicUnderVoiceDb": 14.2,
+    "musicUnderVoiceDb": 14.3,
     "secondsWithoutMusic": 2.2,
     "bedsUnderVoiceDb": 26.6,
-    "sfx": 73,
-    "sfxPerMinute": 40.7,
+    "sfx": 72,
+    "sfxPerMinute": 41.6,
     "sfxKinds": 33,
-    "longestGapSeconds": 3.5,
-    "longestGapAt": 89.4,
+    "longestGapSeconds": 3.4,
+    "longestGapAt": 86.3,
     "sfxBuried": 0,
-    "voiceOverRestMedianDb": 12.8,
-    "voiceOverRestWorstDb": 3.3,
+    "voiceOverRestMedianDb": 12.3,
+    "voiceOverRestWorstDb": 4.2,
     "voiceOverRestWorst": [
       {
-        "db": 3.3,
-        "t": 105.1,
-        "cue": "6.hood",
-        "sounding": []
-      },
-      {
-        "db": 3.6,
-        "t": 20.9,
-        "cue": "2.school",
-        "sounding": []
-      },
-      {
-        "db": 4.8,
-        "t": 96.2,
-        "cue": "6.quiet",
+        "db": 4.2,
+        "t": 24.7,
+        "cue": "2.chair",
         "sounding": [
-          "chime",
-          "whoosh"
+          "drop"
         ]
       },
       {
-        "db": 5.2,
-        "t": 36.7,
-        "cue": "3.fixed",
-        "sounding": [
-          "chime",
-          "place"
-        ]
-      },
-      {
-        "db": 5.6,
-        "t": 39.8,
+        "db": 4.3,
+        "t": 38.4,
         "cue": "3.baker",
         "sounding": [
           "sparkle"
         ]
       },
       {
-        "db": 6.2,
-        "t": 76.6,
+        "db": 4.7,
+        "t": 99.4,
+        "cue": "6.buy",
+        "sounding": [
+          "coins",
+          "register",
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 11.8,
+        "cue": "1.sunset",
+        "sounding": [
+          "power_up",
+          "sparkle"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 48.7,
+        "cue": "3.wait",
+        "sounding": [
+          "creak"
+        ]
+      },
+      {
+        "db": 5.6,
+        "t": 73.9,
         "cue": "5.llamas",
         "sounding": [
           "chime"
         ]
       }
     ],
-    "lufs": -14.7,
+    "lufs": -14.8,
     "truePeakDb": -2.2,
-    "limiterMaxDb": 0.3
+    "limiterMaxDb": 1.7
   },
   "failures": []
 }

@@ -66,28 +66,28 @@ export const scene5 = storyScene(timing, {
     },
     {
       cue: "6.door",
-      ...cam.sweep({ on: [2.6, 1.35, -10.4], dist: 6.2, distTo: 5.0, fromYaw: -56, toYaw: -36, pitch: 8, fov: 46 }),
+      ...cam.sweep({ on: [2.2, 1.35, -11.6], dist: 7.2, distTo: 5.8, fromYaw: -56, toYaw: -36, pitch: 8, fov: 47 }),
       zone: "night",
       look: "lantern-night",
       note: "Lit night Brick Bakery & porch: the actual wooden Bakery front door swings open as the baker steps onto his front porch and freezes seeing Dad!",
       stage: (t, { dur }) => {
         const doorAt = w("6.door", "opened");
         const doorOpen = ease(ramp(t, Math.max(0, doorAt - 0.15), doorAt + 0.4));
-        const stepOut = walkSegment([4.75, 0.24, -10.5], [3.65, 0.24, -10.5], t, Math.max(0, doorAt - 0.05), Math.min(dur, doorAt + 0.75), { gait: "walk", endYaw: WEST });
+        const stepOut = walkSegment([4.25, 0.24, -11.8], [3.15, 0.24, -11.8], t, Math.max(0, doorAt - 0.05), Math.min(dur, doorAt + 0.75), { gait: "walk", endYaw: WEST });
         return (
           <>
-            <BakeryDoor position={[5.02, 0.24, -10.5]} rotationY={-Math.PI / 2} open={doorOpen} />
+            <BakeryDoor position={[4.52, 0.24, -11.8]} rotationY={-Math.PI / 2} open={doorOpen} />
             <Player who={8} {...stepOut} animDistance={stepOut.animDistance} face="wow" />
-            <TraderDad position={[0.6, 0, -11.4]} rotationY={110 * DEG} animation="scared" face="surprised" milkWet />
-            <Hero position={[-0.35, 0, -10.1]} rotationY={85 * DEG} animation="idle" face="surprised" />
-            <TraderLlama position={[-0.8, 0, -12.6]} rotationY={EAST} loaded />
+            <TraderDad position={[0.6, 0, -12.4]} rotationY={110 * DEG} animation="scared" face="surprised" milkWet />
+            <Hero position={[-0.35, 0, -11.1]} rotationY={85 * DEG} animation="idle" face="surprised" />
+            <TraderLlama position={[-0.8, 0, -13.6]} rotationY={EAST} loaded />
           </>
         );
       },
     },
     {
       cue: "6.saw",
-      ...cam.frameDuo({ a: [0.6, 0, -11.4], b: [3.65, 0.24, -10.5], fromYaw: -22, toYaw: 14, pitch: 8 }),
+      ...cam.frameDuo({ a: [0.6, 0, -12.4], b: [3.15, 0.24, -11.8], fromYaw: -22, toYaw: 14, pitch: 8 }),
       zone: "night",
       look: "lantern-night",
       note: "9:16-safe reverse two-shot on the lit night Bakery porch (EXACT locked coordinates from 6.door — zero teleport!).",
@@ -95,11 +95,11 @@ export const scene5 = storyScene(timing, {
         const milkAt = w("6.saw", "milk");
         return (
           <>
-            <BakeryDoor position={[5.02, 0.24, -10.5]} rotationY={-Math.PI / 2} open={1} />
-            <Player who={8} position={[3.65, 0.24, -10.5]} rotationY={WEST} animation={t > milkAt ? "point" : "idle"} face="wow" />
-            <TraderDad position={[0.6, 0, -11.4]} rotationY={110 * DEG} animation={t > milkAt ? "shrug" : "idle"} face="uneasy" milkWet />
-            <Hero position={[-0.35, 0, -10.1]} rotationY={85 * DEG} animation="idle" face="uneasy" />
-            <TraderLlama position={[-0.8, 0, -12.6]} rotationY={EAST} loaded />
+            <BakeryDoor position={[4.52, 0.24, -11.8]} rotationY={-Math.PI / 2} open={1} />
+            <Player who={8} position={[3.15, 0.24, -11.8]} rotationY={WEST} animation={t > milkAt ? "point" : "idle"} face="wow" />
+            <TraderDad position={[0.6, 0, -12.4]} rotationY={110 * DEG} animation={t > milkAt ? "shrug" : "idle"} face="uneasy" milkWet />
+            <Hero position={[-0.35, 0, -11.1]} rotationY={85 * DEG} animation="idle" face="uneasy" />
+            <TraderLlama position={[-0.8, 0, -13.6]} rotationY={EAST} loaded />
           </>
         );
       },

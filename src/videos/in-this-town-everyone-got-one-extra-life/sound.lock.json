@@ -1,0 +1,109 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-everyone-got-one-extra-life",
+  "mix": "public/audio/in-this-town-everyone-got-one-extra-life/mix.mp3",
+  "seconds": 102.4,
+  "built_from": {
+    "timing.json": "3a76584fbc8168d1a640080459c1d8aea1a3d168",
+    "sound.json": "9ed94cdbc01d0fcf50217daff49ef14264eed9dc",
+    "narration.mp3": "c942d5a6c46b81b437d5225447df9c1cec112f06"
+  },
+  "mix_sha1": "3c2f1858316798a1c9789b1f4d5f4cf4bd3ef3a2",
+  "music_sections": [
+    {
+      "from": "1.tower",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "3.step",
+      "mood": "curious",
+      "at": 17.47
+    },
+    {
+      "from": "4.splash",
+      "mood": "sad",
+      "at": 38.7
+    },
+    {
+      "from": "5.nothing",
+      "mood": "sneak",
+      "at": 60.07
+    },
+    {
+      "from": "6.bin",
+      "mood": "hope",
+      "at": 80.87
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 0,
+  "measured": {
+    "musicUnderVoiceDb": 12.9,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": null,
+    "sfx": 74,
+    "sfxPerMinute": 43.4,
+    "sfxKinds": 6,
+    "longestGapSeconds": 2.4,
+    "longestGapAt": 76.6,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.1,
+    "voiceOverRestWorstDb": 3.9,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.9,
+        "t": 80.6,
+        "cue": "6.pig",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 4.0,
+        "t": 37.4,
+        "cue": "4.drop",
+        "sounding": [
+          "pop"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 15.8,
+        "cue": "3.mock",
+        "sounding": [
+          "pop"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 35.5,
+        "cue": "4.shed",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 91.4,
+        "cue": "7.slip",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 78.2,
+        "cue": "6.karma",
+        "sounding": []
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.9
+  },
+  "failures": []
+}

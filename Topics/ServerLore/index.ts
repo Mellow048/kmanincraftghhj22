@@ -1,7 +1,7 @@
 /**
  * THE SERVER LORE PACK — Wholesome high-retention Minecraft SMP storytelling.
  *
- *   import { ServerPlayer, ServerChatBox, ScoreboardWall, DeskSetup, SculkSensor, RedstoneLamp, cam, storyScene } from "../../../Topics/ServerLore";
+ *   import { ServerPlayer, CherryCabinMap, SpawnHubMap, ComputerRoomMap, DeskSetup, SculkSensor, RedstoneLamp, cam, storyScene } from "../../../Topics/ServerLore";
  *
  * Combines 50k SMP lore format + IRL cutaways + clever Minecraft mechanics with
  * our engine's shaders, smooth inOutSine camera moves, and happy/sad Up track switching.

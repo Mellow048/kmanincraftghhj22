@@ -36,7 +36,7 @@ export const PlainsVillageMap: React.FC<{ position?: Vec3; night?: boolean }> = 
     {/* Central cobblestone village well & meeting bell */}
     <Well position={[-3.2, 0, -2.5]} roof />
     <Bell position={[3.2, 0, -1.8]} />
-    <SolidBox name="plains-well" position={[-3.2, 1.0, -2.5]} size={[2.2, 2.0, 2.2]} blocksCamera={false} />
+    <SolidBox name="plains-well" position={[position[0] - 3.2, position[1] + 1.0, position[2] - 2.5]} size={[2.2, 2.0, 2.2]} blocksCamera={false} />
 
     {/* Authentic Minecraft irrigated wheat farm plots */}
     {[-1, 1].map((side) => (
@@ -60,7 +60,7 @@ export const PlainsVillageMap: React.FC<{ position?: Vec3; night?: boolean }> = 
     ].map((h, i) => (
       <React.Fragment key={i}>
         <Hut at={h.at} w={6.2} d={5.6} h={4.0} wall={h.wall} tint={h.tint} roof={h.roof} turn={h.turn} lit={night} windows={[-1.4, 1.4]} />
-        <SolidBox name={`plains-hut-${i}`} position={[h.at[0], 2.0, h.at[2]]} size={[6.0, 4.0, 6.0]} />
+        <SolidBox name={`plains-hut-${i}`} position={[position[0] + h.at[0], position[1] + 2.0, position[2] + h.at[2]]} size={[6.0, 4.0, 6.0]} />
       </React.Fragment>
     ))}
 
@@ -124,7 +124,7 @@ export const DarkOakVillageMap: React.FC<{ position?: Vec3; night?: boolean }> =
     ].map((h, i) => (
       <React.Fragment key={i}>
         <Hut at={h.at} w={6.2} d={5.8} h={4.2} wall={h.wall} tint={h.tint} roof={h.roof} turn={h.turn} lit={night} windows={[-1.4, 1.4]} />
-        <SolidBox name={`darkoak-hut-${i}`} position={[h.at[0], 2.1, h.at[2]]} size={[6.0, 4.2, 6.0]} />
+        <SolidBox name={`darkoak-hut-${i}`} position={[position[0] + h.at[0], position[1] + 2.1, position[2] + h.at[2]]} size={[6.0, 4.2, 6.0]} />
       </React.Fragment>
     ))}
 

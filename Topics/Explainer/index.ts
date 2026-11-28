@@ -13,6 +13,7 @@ export * from "./stage";
 export * from "./money";
 export * from "./charts";
 export * from "./goods";
+export * from "./maps";
 // Engine props & story camera helpers ready directly inside Explainer kits
 export { cam, storyScene, ChatToast, FloatingNumber, Chicken, Water, EmberDrift } from "../../src/engine";
 // Shared with the other topics (keep using CitizenLead/EliteLead for Explainer leads instead of Villager/Hero!)

@@ -47,7 +47,7 @@ export const CherryCabinMap: React.FC<{ position?: Vec3; night?: boolean }> = ({
     <Vox kind="planks" tint="#c29c5c" position={[-1.8, -0.005, 3]} size={[3.6, 0.05, 42]} />
     {/* Cozy two-story dark-oak SMP timber cabin */}
     <Hut at={[5.6, 0, -4.5]} w={7.6} d={6.4} h={5.2} wall="darkPlanks" tint="#543822" roof="#2d1c12" turn={-Math.PI / 2} lit={night} windows={[-1.8, 1.8]} />
-    <SolidBox name="cherry-cabin" position={[5.6, 2.6, -4.5]} size={[6.6, 5.2, 7.6]} />
+    <SolidBox name="cherry-cabin" position={[position[0] + 5.6, position[1] + 2.6, position[2] - 4.5]} size={[6.6, 5.2, 7.6]} />
     {/* Crafting table + double chest + torch by the path */}
     <CraftingStation position={[1.4, 0, 2.2]} rotationY={-0.3} />
     {/* Crystal lilypad pond on the right */}
@@ -88,8 +88,8 @@ export const TropicalIslandMap: React.FC<{ position?: Vec3; night?: boolean }> =
     {/* Thatched straw-roof beach huts */}
     <Hut at={[6.8, 0, -3.2]} w={5.8} d={5.2} h={3.8} wall="planks" tint="#9e6d3b" roof="#d8bd54" turn={-Math.PI / 2} lit={night} windows={[-1.2, 1.2]} />
     <Hut at={[-6.8, 0, -5.5]} w={5.4} d={4.8} h={3.6} wall="planks" tint="#8f6134" roof="#ccb049" turn={Math.PI / 2} lit={night} windows={[-1.0, 1.0]} />
-    <SolidBox name="island-hut-R" position={[6.8, 1.9, -3.2]} size={[5.4, 3.8, 5.8]} />
-    <SolidBox name="island-hut-L" position={[-6.8, 1.8, -5.5]} size={[5.0, 3.6, 5.4]} />
+    <SolidBox name="island-hut-R" position={[position[0] + 6.8, position[1] + 1.9, position[2] - 3.2]} size={[5.4, 3.8, 5.8]} />
+    <SolidBox name="island-hut-L" position={[position[0] - 6.8, position[1] + 1.8, position[2] - 5.5]} size={[5.0, 3.6, 5.4]} />
     {/* Cherry blossom tree on left shore + palm trees & tall bamboo */}
     <CherryTree position={[-9.5, 0, 3.2]} scale={1.05} />
     {[
@@ -165,7 +165,7 @@ export const SpawnHubMap: React.FC<{ position?: Vec3; night?: boolean }> = ({
     ].map((b, i) => (
       <React.Fragment key={i}>
         <Hut at={b.at} w={7.0} d={6.4} h={b.h} wall={b.wall} tint={b.tint} roof={b.roof} turn={b.turn} lit={night} windows={[-1.6, 1.6]} />
-        <SolidBox name={`hub-bldg-${i}`} position={[b.at[0], b.h / 2, b.at[2]]} size={[6.8, b.h, 6.8]} />
+        <SolidBox name={`hub-bldg-${i}`} position={[position[0] + b.at[0], position[1] + b.h / 2, position[2] + b.at[2]]} size={[6.8, b.h, 6.8]} />
       </React.Fragment>
     ))}
 

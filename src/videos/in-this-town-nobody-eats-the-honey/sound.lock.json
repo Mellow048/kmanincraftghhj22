@@ -1,0 +1,108 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-nobody-eats-the-honey",
+  "mix": "public/audio/in-this-town-nobody-eats-the-honey/mix.mp3",
+  "seconds": 102.4667,
+  "built_from": {
+    "timing.json": "c3427632b85170988a65083ae331723d4ac3d1f9",
+    "sound.json": "e630e419b44aa5104a81a0ba1de628525424e336",
+    "narration.mp3": "52b6756dd87150d1a89d17aa2ff19c118c3a042d"
+  },
+  "mix_sha1": "d42fa93a03359e4a5dc3f3ec2f1a8f8e7b08cf61",
+  "music_sections": [
+    {
+      "from": "1.town",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.calm",
+      "mood": "curious",
+      "at": 17.8
+    },
+    {
+      "from": "3.soft",
+      "mood": "sad",
+      "at": 38.13
+    },
+    {
+      "from": "5.hall",
+      "mood": "sneak",
+      "at": 56.8
+    },
+    {
+      "from": "6.why",
+      "mood": "hope",
+      "at": 80.33
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 2,
+  "measured": {
+    "musicUnderVoiceDb": 13.8,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 26.0,
+    "sfx": 71,
+    "sfxPerMinute": 41.6,
+    "sfxKinds": 6,
+    "longestGapSeconds": 4.2,
+    "longestGapAt": 74.4,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 13.1,
+    "voiceOverRestWorstDb": 4.8,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.8,
+        "t": 67.2,
+        "cue": "5.dusk",
+        "sounding": []
+      },
+      {
+        "db": 5.0,
+        "t": 75.8,
+        "cue": "6.list",
+        "sounding": []
+      },
+      {
+        "db": 5.0,
+        "t": 34.8,
+        "cue": "3.well",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 5.2,
+        "t": 99.8,
+        "cue": "6.sorry2",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 6.5,
+        "t": 45.4,
+        "cue": "4.land",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.7,
+        "t": 38.9,
+        "cue": "3.soft",
+        "sounding": [
+          "chime",
+          "plink"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.1,
+    "limiterMaxDb": 1.4
+  },
+  "failures": []
+}

@@ -1,0 +1,114 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-player-who-kept-asking-where-his-house-was",
+  "mix": "public/audio/the-player-who-kept-asking-where-his-house-was/mix.mp3",
+  "seconds": 86.4,
+  "built_from": {
+    "timing.json": "a6c60bcd01626c0c4f193cf013ab3165bdd5f3f6",
+    "sound.json": "b04d60b73bebbbc982dc41b9aba6ddc3fe700f4f",
+    "narration.mp3": "5ab746ca1fce57639b4b1f4c75d4971c7ad2da01"
+  },
+  "mix_sha1": "79969089e9a85b0c1191a499b80774a7bdd21c43",
+  "music_sections": [
+    {
+      "from": "1.ask",
+      "mood": "town",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.note",
+      "mood": "sad",
+      "at": 19.83,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "5.owner",
+      "mood": "tense",
+      "at": 42.3,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "6.fill",
+      "mood": "hope",
+      "at": 63.93,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 12.8,
+    "secondsWithoutMusic": 1.8,
+    "bedsUnderVoiceDb": 26.2,
+    "sfx": 68,
+    "sfxPerMinute": 47.2,
+    "sfxKinds": 6,
+    "longestGapSeconds": 2.7,
+    "longestGapAt": 74.8,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 11.6,
+    "voiceOverRestWorstDb": 4.1,
+    "voiceOverRestWorst": [
+      {
+        "db": 4.1,
+        "t": 5.5,
+        "cue": "1.mock",
+        "sounding": []
+      },
+      {
+        "db": 5.6,
+        "t": 33.8,
+        "cue": "4.wander",
+        "sounding": []
+      },
+      {
+        "db": 6.0,
+        "t": 1.2,
+        "cue": "1.ask",
+        "sounding": []
+      },
+      {
+        "db": 6.1,
+        "t": 26.9,
+        "cue": "4.rain",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.1,
+        "t": 49.4,
+        "cue": "5.ping",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 60.2,
+        "cue": "6.road",
+        "sounding": [
+          "chime"
+        ]
+      }
+    ],
+    "lufs": -14.8,
+    "truePeakDb": -2.1,
+    "limiterMaxDb": 0.6
+  },
+  "failures": []
+}

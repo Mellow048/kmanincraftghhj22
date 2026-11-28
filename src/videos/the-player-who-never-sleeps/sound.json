@@ -1,0 +1,411 @@
+{
+  "film": "the-player-who-never-sleeps",
+  "README": "The sound sheet. Read Topics/ServerLore/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build the-player-who-never-sleeps",
+  "music": {
+    "track": "Topics/ServerLore/up_happy.m4a",
+    "gain": -13,
+    "trackFrom": 2.5,
+    "sections": [
+      {
+        "from": "1.never",
+        "mood": "town",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "why": "Hook"
+      },
+      {
+        "from": "3.not",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "why": "Reveal"
+      },
+      {
+        "from": "4.left",
+        "mood": "tense",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "why": "Turn"
+      },
+      {
+        "from": "7.join",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "why": "Payoff"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.never",
+      "to": "1.open",
+      "bed": "village"
+    },
+    {
+      "from": "2.three",
+      "to": "2.roof",
+      "bed": "night"
+    },
+    {
+      "from": "3.not",
+      "to": "3.bro",
+      "bed": "village"
+    },
+    {
+      "from": "3.irl",
+      "to": "3.irl",
+      "bed": "room"
+    },
+    {
+      "from": "3.awake",
+      "to": "3.awake",
+      "bed": "night"
+    },
+    {
+      "from": "3.safe",
+      "to": "3.safe",
+      "bed": "room"
+    },
+    {
+      "from": "4.bully",
+      "to": "4.left",
+      "bed": "night"
+    },
+    {
+      "from": "5.msg",
+      "to": "7.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.never",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.vamp",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "1.open",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 6.5
+    },
+    {
+      "cue": "2.three",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "2.sky",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.fight",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.roof",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.not",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "3.bro",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.irl",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "3.awake",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "3.safe",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.bully",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.mock",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.hurt",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.left",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "5.msg",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time"
+    },
+    {
+      "cue": "5.tell",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.idea",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.one",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "6.ping",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4
+    },
+    {
+      "cue": "6.build",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "6.fifty",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4
+    },
+    {
+      "cue": "7.join",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time",
+      "trim": 4
+    },
+    {
+      "cue": "7.wait",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.chat",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.all",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.sleep",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4
+    },
+    {
+      "cue": "7.dawn",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4
+    },
+    {
+      "cue": "7.sub",
+      "sfx": "ding",
+      "why": "final payoff / subscribe line",
+      "trim": -2.5
+    },
+    {
+      "cue": "1.never",
+      "word": "bed",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 3.6
+    },
+    {
+      "cue": "1.vamp",
+      "word": "called",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "1.open",
+      "word": "everyone",
+      "sfx": "chime",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.three",
+      "word": "and",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.sky",
+      "word": "out",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "2.fight",
+      "word": "AM,",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 4.6
+    },
+    {
+      "cue": "2.roof",
+      "word": "cabin",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.not",
+      "word": "vampire",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 2.5
+    },
+    {
+      "cue": "3.bro",
+      "word": "brother",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.irl",
+      "word": "brother",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 2.1
+    },
+    {
+      "cue": "3.awake",
+      "word": "awake",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 4.0
+    },
+    {
+      "cue": "3.safe",
+      "word": "his",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "4.bully",
+      "word": "laughed",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 2.1
+    },
+    {
+      "cue": "4.mock",
+      "word": "just",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "4.hurt",
+      "word": "and",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.left",
+      "word": "logged",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "5.msg",
+      "word": "him",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "5.tell",
+      "word": "about",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 1.7
+    },
+    {
+      "cue": "5.idea",
+      "word": "knew",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 4
+    },
+    {
+      "cue": "6.one",
+      "word": "Minecraft",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "6.ping",
+      "word": "to",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 4.4
+    },
+    {
+      "cue": "6.build",
+      "word": "one",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "6.fifty",
+      "word": "fifty",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 2.6
+    },
+    {
+      "cue": "7.join",
+      "word": "joined",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "7.wait",
+      "word": "smiling",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 5.6
+    }
+  ]
+}

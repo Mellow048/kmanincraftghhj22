@@ -1,0 +1,109 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "in-this-town-nobody-is-allowed-to-be-first",
+  "mix": "public/audio/in-this-town-nobody-is-allowed-to-be-first/mix.mp3",
+  "seconds": 101.3667,
+  "built_from": {
+    "timing.json": "68e9ed7d463966b2c189cc8ab675dd5b021d9b5d",
+    "sound.json": "dc5efc2690d1366c51586b7e5cf90832554cb6b8",
+    "narration.mp3": "1b2ad0d1d7d9d38ca20020df8cb6e5c70c1e9339"
+  },
+  "mix_sha1": "124c857423fb156d6dbc8fdb6308b03c4636470a",
+  "music_sections": [
+    {
+      "from": "1.door",
+      "mood": "town",
+      "at": 0.0
+    },
+    {
+      "from": "2.itch",
+      "mood": "curious",
+      "at": 18.07
+    },
+    {
+      "from": "4.friend",
+      "mood": "sad",
+      "at": 36.97
+    },
+    {
+      "from": "5.deep",
+      "mood": "sneak",
+      "at": 56.63
+    },
+    {
+      "from": "6.list",
+      "mood": "hope",
+      "at": 76.53
+    }
+  ],
+  "music_file": {
+    "path": "Topics/InThisTown/InThisTownMusic.aac",
+    "sha1": "ac78c0596b68de45928fe2e3eb7d6179c70a8b8d"
+  },
+  "beds": 6,
+  "measured": {
+    "musicUnderVoiceDb": 12.8,
+    "secondsWithoutMusic": 0.4,
+    "bedsUnderVoiceDb": 25.5,
+    "sfx": 71,
+    "sfxPerMinute": 42.0,
+    "sfxKinds": 6,
+    "longestGapSeconds": 3.9,
+    "longestGapAt": 76.5,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.0,
+    "voiceOverRestWorstDb": 3.4,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.4,
+        "t": 99.1,
+        "cue": "6.free",
+        "sounding": [
+          "ding"
+        ]
+      },
+      {
+        "db": 5.0,
+        "t": 84.5,
+        "cue": "6.tell",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 5.4,
+        "t": 52.3,
+        "cue": "5.step",
+        "sounding": []
+      },
+      {
+        "db": 5.7,
+        "t": 61.0,
+        "cue": "5.skel",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 5.8,
+        "t": 25.2,
+        "cue": "2.walk",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.0,
+        "t": 97.2,
+        "cue": "6.old2",
+        "sounding": [
+          "chime"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.7
+  },
+  "failures": []
+}

@@ -5,100 +5,571 @@
     "track": "Topics/InThisTown/InThisTownMusic.aac",
     "gain": -12.5,
     "sections": [
-      { "from": "1.dad", "mood": "town", "gain": -1, "why": "Bright energetic village hook and Wandering Trader setup" },
-      { "from": "2.chair", "mood": "sad", "gain": -1, "why": "Lonely dinner table staring at Dad's empty chair" },
-      { "from": "2.wrong", "mood": "curious", "gain": 0, "why": "Morning miracles around town — Nora's roof, baker's loaves, sheep fence" },
-      { "from": "4.night", "mood": "sneak", "gain": -1, "why": "Midnight Milk Bucket stealth mission down lantern alley" },
-      { "from": "5.splash", "mood": "none", "why": "Breathless silence right as the Milk Bucket splashes onto the invisible figure" },
-      { "from": "5.poof", "mood": "hope", "gain": -0.5, "why": "Dad revealed soaked with bread-loaded llamas; heartfelt truth unfolds" },
-      { "from": "6.stall", "mood": "town", "gain": -2.0, "why": "Joyful triumphant morning as the whole village lines up to pay 5 emeralds for a dead bush" }
+      {
+        "from": "1.dad",
+        "mood": "town",
+        "gain": -1,
+        "why": "Bright energetic village hook and Wandering Trader setup"
+      },
+      {
+        "from": "2.chair",
+        "mood": "sad",
+        "gain": -1,
+        "why": "Lonely dinner table staring at Dad's empty chair"
+      },
+      {
+        "from": "2.wrong",
+        "mood": "curious",
+        "gain": 0,
+        "why": "Morning miracles around town \u2014 Nora's roof, baker's loaves, sheep fence"
+      },
+      {
+        "from": "4.night",
+        "mood": "sneak",
+        "gain": -1,
+        "why": "Midnight Milk Bucket stealth mission down lantern alley"
+      },
+      {
+        "from": "5.splash",
+        "mood": "none",
+        "why": "Breathless silence right as the Milk Bucket splashes onto the invisible figure"
+      },
+      {
+        "from": "5.poof",
+        "mood": "hope",
+        "gain": -0.5,
+        "why": "Dad revealed soaked with bread-loaded llamas; heartfelt truth unfolds"
+      },
+      {
+        "from": "6.stall",
+        "mood": "town",
+        "gain": -2.0,
+        "why": "Joyful triumphant morning as the whole village lines up to pay 5 emeralds for a dead bush"
+      }
     ]
   },
   "beds": [
-    { "from": "1.dad", "to": "2.sign", "bed": "village" },
-    { "from": "2.school", "to": "2.school", "bed": "crowd" },
-    { "from": "2.hood", "to": "2.hood", "bed": "village" },
-    { "from": "2.chair", "to": "2.shame", "bed": "room" },
-    { "from": "2.wrong", "to": "3.wait", "bed": "village" },
-    { "from": "4.night", "to": "4.fact", "bed": "room" },
-    { "from": "4.sneak", "to": "6.why", "bed": "night" },
-    { "from": "6.merch", "to": "6.nobody", "bed": "village" },
-    { "from": "6.night", "to": "6.quiet", "bed": "night" },
-    { "from": "6.stall", "to": "6.sub", "bed": "village" }
+    {
+      "from": "1.dad",
+      "to": "2.sign",
+      "bed": "village"
+    },
+    {
+      "from": "2.school",
+      "to": "2.school",
+      "bed": "crowd"
+    },
+    {
+      "from": "2.hood",
+      "to": "2.hood",
+      "bed": "village"
+    },
+    {
+      "from": "2.chair",
+      "to": "2.shame",
+      "bed": "room"
+    },
+    {
+      "from": "2.wrong",
+      "to": "3.wait",
+      "bed": "village"
+    },
+    {
+      "from": "4.night",
+      "to": "4.fact",
+      "bed": "room"
+    },
+    {
+      "from": "4.sneak",
+      "to": "6.why",
+      "bed": "night"
+    },
+    {
+      "from": "6.merch",
+      "to": "6.nobody",
+      "bed": "village"
+    },
+    {
+      "from": "6.night",
+      "to": "6.quiet",
+      "bed": "night"
+    },
+    {
+      "from": "6.stall",
+      "to": "6.sub",
+      "bed": "village"
+    }
   ],
   "sfx": [
-    { "cue": "1.dad", "word": "disappears", "sfx": "sparkle", "why": "Dad shimmers into blue potion swirls on the hook" },
-    { "cue": "1.trader", "sfx": "step_stone", "trim": 1, "why": "Dad strides proudly down the cobbles" },
-    { "cue": "1.llamas", "word": "spit", "sfx": "splash", "trim": -1, "why": "Llamas spit right at the laughing merchant" },
-    { "cue": "1.bush", "word": "five", "sfx": "pop", "why": "5 EM price tag pops over the tiny dead bush" },
-    { "cue": "1.bush", "word": "emeralds", "sfx": "coins", "trim": -1, "why": "Emerald trade clink" },
-    { "cue": "1.sand", "word": "three", "sfx": "buzz", "trim": -1, "why": "Terrible sand trade rejected" },
-    { "cue": "1.sunset", "word": "drinks", "sfx": "power_up", "trim": -1, "why": "Dad drinks glowing cyan Invisibility Potion" },
-    { "cue": "1.poof", "word": "poof", "sfx": "sparkle", "trim": 1, "why": "Dad vanishes into thin air" },
-    { "cue": "1.poof", "word": "air", "sfx": "whoosh", "why": "Empty spot whoosh" },
-    { "cue": "2.rich", "sfx": "whoosh", "why": "Cut to daytime plaza with rich merchants" },
-    { "cue": "2.rich", "word": "laugh", "sfx": "bonk", "why": "Rich merchants mock Dad" },
-    { "cue": "2.sign", "word": "sign", "sfx": "place", "why": "WORST TRADER sign planted in the cobbles" },
-    { "cue": "2.sign", "word": "worst", "sfx": "pop", "why": "Chat toast pops up" },
-    { "cue": "2.school", "sfx": "school_bell", "trim": -2, "why": "Cut to schoolyard" },
-    { "cue": "2.school", "word": "dirt", "sfx": "pop", "why": "Classmates tease SOLD DIRT?" },
-    { "cue": "2.hood", "word": "pull", "sfx": "rustle", "trim": 0, "why": "Kid pulls hood low and rushes home" },
-    { "cue": "2.hood", "word": "fast", "sfx": "step_stone", "trim": 1, "why": "Hurrying footsteps" },
-    { "cue": "2.chair", "sfx": "creak", "why": "Cut inside dining room" },
-    { "cue": "2.chair", "word": "empty", "sfx": "drop", "trim": -1, "why": "Empty chair punch" },
-    { "cue": "2.shame", "word": "shame", "sfx": "sting", "trim": -3, "why": "Emotional sting of shame" },
-    { "cue": "2.wrong", "sfx": "whoosh", "why": "Bright morning twist transition" },
-    { "cue": "2.wrong", "word": "wrong", "sfx": "bell", "trim": -2, "why": "Town morning wake-up bell" },
-    { "cue": "3.weird", "sfx": "swish", "trim": 2, "why": "Curious morning walk" },
-    { "cue": "3.weird", "word": "strange", "sfx": "blip", "trim": 1, "why": "Mystery starts" },
-    { "cue": "3.hole", "word": "hole", "sfx": "crack", "why": "Old Nora's broken roof gap" },
-    { "cue": "3.fixed", "word": "patched", "sfx": "place", "trim": 1, "why": "Fresh oak planks pop neatly into place" },
-    { "cue": "3.fixed", "word": "oak", "sfx": "chime", "trim": 4, "why": "Miracle chime as Nora cheers" },
-    { "cue": "3.baker", "word": "ten", "sfx": "pop", "why": "10 LOAF pops above warm bread" },
-    { "cue": "3.baker", "word": "loaves", "sfx": "sparkle", "trim": 3, "why": "Warm gift sparkle" },
-    { "cue": "3.porch", "word": "porch", "sfx": "place", "why": "Bread loaves on porch" },
-    { "cue": "3.sheep", "word": "fence", "sfx": "place", "why": "Fresh oak fence pen" },
-    { "cue": "3.sheep", "word": "sheep", "sfx": "boing", "trim": 1, "why": "Fluffy sheep hops happily" },
-    { "cue": "3.guard", "word": "guards", "sfx": "clank", "why": "Town guards shrug" },
-    { "cue": "3.prints", "sfx": "whoosh", "why": "Crane down onto muddy tracks" },
-    { "cue": "3.prints", "word": "prints", "sfx": "blip", "trim": 1, "why": "Clue discovered!" },
-    { "cue": "3.wait", "word": "llamas", "sfx": "ding", "trim": -1, "why": "Eureka realization: LLAMAS?!" },
-    { "cue": "4.night", "sfx": "creak", "why": "Cut to midnight bedroom" },
-    { "cue": "4.night", "word": "sleep", "sfx": "tick", "trim": 2, "why": "Midnight clock tick" },
-    { "cue": "4.milk", "word": "milk", "sfx": "clank", "why": "Iron Milk Bucket lifted" },
-    { "cue": "4.fact", "word": "cancels", "sfx": "splash", "trim": -1, "why": "Milk clears potion mechanic" },
-    { "cue": "4.fact", "word": "potion", "sfx": "sparkle", "why": "Blue swirls dissolve" },
-    { "cue": "4.sneak", "sfx": "step_stone", "trim": 2, "why": "Stealth footsteps down night street" },
-    { "cue": "4.track", "sfx": "step_stone", "trim": 2, "why": "Following muddy prints" },
-    { "cue": "4.track", "word": "alley", "sfx": "heartbeat", "trim": -1, "why": "Suspense builds entering alley" },
-    { "cue": "4.torch", "word": "floated", "sfx": "crackle", "trim": 2, "why": "Hovering torch crackles in midair" },
-    { "cue": "4.hammer", "word": "hammer", "sfx": "hit", "trim": -2, "why": "Invisible hammer strikes planks" },
-    { "cue": "4.hammer", "word": "planks", "sfx": "place", "trim": 1, "why": "Roof board nailed in" },
-    { "cue": "5.thief", "word": "thief", "sfx": "riser", "trim": -2, "why": "Tension rises before sprint" },
-    { "cue": "5.run", "sfx": "step_stone", "trim": 2, "why": "Sprint footsteps toward floating torch" },
-    { "cue": "5.run", "word": "sprinted", "sfx": "zip", "trim": 4, "why": "Fast rush forward" },
-    { "cue": "5.splash", "word": "splash", "sfx": "splash", "trim": 1, "why": "HUGE milk bucket splash in silence!" },
-    { "cue": "5.poof", "word": "dad", "sfx": "boom", "trim": -1, "why": "Emotional twist boom as Dad appears soaked!" },
-    { "cue": "5.poof", "word": "popped", "sfx": "sparkle", "why": "Invisibility potion shatters" },
-    { "cue": "5.llamas", "word": "bread", "sfx": "chime", "why": "Reveal of both llamas loaded with planks and bread" },
-    { "cue": "5.drop", "word": "dropped", "sfx": "thud", "trim": -1, "why": "Oak hammer drops to cobbles" },
-    { "cue": "5.shh", "word": "whispered", "sfx": "pop", "why": "SHH bubble pops" },
-    { "cue": "6.why", "word": "explained", "sfx": "blip", "trim": 1, "why": "Gentle beat as Dad opens up" },
-    { "cue": "6.merch", "sfx": "whoosh", "why": "Flashback cut to daytime market" },
-    { "cue": "6.merch", "word": "crush", "sfx": "thud", "trim": -2, "why": "Rich merchants shove stall keeper" },
-    { "cue": "6.act", "word": "terrible", "sfx": "bonk", "trim": -1, "why": "Dad plays goofy to stay off their radar" },
-    { "cue": "6.nobody", "word": "alone", "sfx": "swish", "trim": 2, "why": "Rich merchants walk straight past" },
-    { "cue": "6.night", "sfx": "step_stone", "trim": 2, "why": "Night footsteps with bread-loaded llamas" },
-    { "cue": "6.door", "word": "door", "sfx": "creak", "trim": 3, "why": "Alley doorway opens behind them" },
-    { "cue": "6.saw", "word": "milk", "sfx": "blip", "trim": 1, "why": "Baker sees the loaves and milk-soaked Dad" },
-    { "cue": "6.quiet", "word": "quiet", "sfx": "chime", "trim": 4, "why": "Warm unspoken bond forms" },
-    { "cue": "6.stall", "sfx": "whoosh", "why": "Cut to bright morning market" },
-    { "cue": "6.stall", "word": "morning", "sfx": "pop", "trim": 2, "why": "Morning stall opens" },
-    { "cue": "6.line", "word": "entire", "sfx": "cheer", "trim": 1, "why": "Whole village cheers in line at Dad's stall!" },
-    { "cue": "6.buy", "word": "five", "sfx": "register", "trim": -2, "why": "Cha-ching! Baker buys a dead bush for 5 emeralds!" },
-    { "cue": "6.buy", "word": "bush", "sfx": "coins", "trim": -1, "why": "Emeralds clink onto the counter" },
-    { "cue": "6.hood", "sfx": "whoosh", "why": "Cut to sunlit schoolyard strut" },
-    { "cue": "6.hood", "word": "wear", "sfx": "sparkle", "trim": 1, "why": "Wearing Dad's royal blue hood with pride" },
-    { "cue": "6.sub", "word": "subscribe", "at": 0.4, "sfx": "ding", "trim": 1, "why": "Clean crisp subscribe bell on the beat after voice" }
+    {
+      "cue": "1.dad",
+      "word": "disappears",
+      "sfx": "sparkle",
+      "why": "Dad shimmers into blue potion swirls on the hook"
+    },
+    {
+      "cue": "1.trader",
+      "sfx": "step_stone",
+      "trim": 2.8,
+      "why": "Dad strides proudly down the cobbles"
+    },
+    {
+      "cue": "1.llamas",
+      "word": "spit",
+      "sfx": "splash",
+      "trim": -1,
+      "why": "Llamas spit right at the laughing merchant"
+    },
+    {
+      "cue": "1.bush",
+      "word": "five",
+      "sfx": "pop",
+      "why": "5 EM price tag pops over the tiny dead bush"
+    },
+    {
+      "cue": "1.bush",
+      "word": "emeralds",
+      "sfx": "coins",
+      "trim": 3,
+      "why": "Emerald trade clink"
+    },
+    {
+      "cue": "1.sand",
+      "word": "three",
+      "sfx": "buzz",
+      "trim": 3,
+      "why": "Terrible sand trade rejected"
+    },
+    {
+      "cue": "1.sunset",
+      "word": "drinks",
+      "sfx": "power_up",
+      "trim": -1,
+      "why": "Dad drinks glowing cyan Invisibility Potion"
+    },
+    {
+      "cue": "1.poof",
+      "word": "poof",
+      "sfx": "sparkle",
+      "trim": 1,
+      "why": "Dad vanishes into thin air"
+    },
+    {
+      "cue": "1.poof",
+      "word": "air",
+      "sfx": "whoosh",
+      "why": "Empty spot whoosh"
+    },
+    {
+      "cue": "2.rich",
+      "sfx": "whoosh",
+      "why": "Cut to daytime plaza with rich merchants",
+      "trim": 4
+    },
+    {
+      "cue": "2.rich",
+      "word": "laugh",
+      "sfx": "bonk",
+      "why": "Rich merchants mock Dad"
+    },
+    {
+      "cue": "2.sign",
+      "word": "sign",
+      "sfx": "place",
+      "why": "WORST TRADER sign planted in the cobbles"
+    },
+    {
+      "cue": "2.sign",
+      "word": "worst",
+      "sfx": "pop",
+      "why": "Chat toast pops up"
+    },
+    {
+      "cue": "2.school",
+      "sfx": "school_bell",
+      "trim": -2,
+      "why": "Cut to schoolyard"
+    },
+    {
+      "cue": "2.school",
+      "word": "dirt",
+      "sfx": "pop",
+      "why": "Classmates tease SOLD DIRT?"
+    },
+    {
+      "cue": "2.hood",
+      "word": "pull",
+      "sfx": "rustle",
+      "trim": 1.6,
+      "why": "Kid pulls hood low and rushes home"
+    },
+    {
+      "cue": "2.hood",
+      "word": "fast",
+      "sfx": "step_stone",
+      "trim": 3.6,
+      "why": "Hurrying footsteps"
+    },
+    {
+      "cue": "2.chair",
+      "sfx": "creak",
+      "why": "Cut inside dining room"
+    },
+    {
+      "cue": "2.chair",
+      "word": "empty",
+      "sfx": "drop",
+      "trim": 3,
+      "why": "Empty chair punch"
+    },
+    {
+      "cue": "2.shame",
+      "word": "shame",
+      "sfx": "sting",
+      "trim": -3,
+      "why": "Emotional sting of shame"
+    },
+    {
+      "cue": "2.wrong",
+      "sfx": "whoosh",
+      "why": "Bright morning twist transition",
+      "trim": 2.8
+    },
+    {
+      "cue": "2.wrong",
+      "word": "wrong",
+      "sfx": "bell",
+      "trim": -2,
+      "why": "Town morning wake-up bell"
+    },
+    {
+      "cue": "3.weird",
+      "sfx": "swish",
+      "trim": 4.1,
+      "why": "Curious morning walk"
+    },
+    {
+      "cue": "3.weird",
+      "word": "strange",
+      "sfx": "blip",
+      "trim": 5,
+      "why": "Mystery starts"
+    },
+    {
+      "cue": "3.hole",
+      "word": "hole",
+      "sfx": "crack",
+      "why": "Old Nora's broken roof gap"
+    },
+    {
+      "cue": "3.fixed",
+      "word": "patched",
+      "sfx": "place",
+      "trim": 1,
+      "why": "Fresh oak planks pop neatly into place"
+    },
+    {
+      "cue": "3.fixed",
+      "word": "oak",
+      "sfx": "chime",
+      "trim": 4,
+      "why": "Miracle chime as Nora cheers"
+    },
+    {
+      "cue": "3.baker",
+      "word": "ten",
+      "sfx": "pop",
+      "why": "10 LOAF pops above warm bread"
+    },
+    {
+      "cue": "3.baker",
+      "word": "loaves",
+      "sfx": "sparkle",
+      "trim": 3,
+      "why": "Warm gift sparkle"
+    },
+    {
+      "cue": "3.porch",
+      "word": "porch",
+      "sfx": "place",
+      "why": "Bread loaves on porch"
+    },
+    {
+      "cue": "3.sheep",
+      "word": "fence",
+      "sfx": "place",
+      "why": "Fresh oak fence pen"
+    },
+    {
+      "cue": "3.sheep",
+      "word": "sheep",
+      "sfx": "boing",
+      "trim": 1,
+      "why": "Fluffy sheep hops happily"
+    },
+    {
+      "cue": "3.guard",
+      "word": "guards",
+      "sfx": "clank",
+      "why": "Town guards shrug",
+      "trim": 3.9
+    },
+    {
+      "cue": "3.prints",
+      "sfx": "whoosh",
+      "why": "Crane down onto muddy tracks"
+    },
+    {
+      "cue": "3.prints",
+      "word": "prints",
+      "sfx": "blip",
+      "trim": 1,
+      "why": "Clue discovered!"
+    },
+    {
+      "cue": "4.night",
+      "sfx": "creak",
+      "why": "Cut to midnight bedroom"
+    },
+    {
+      "cue": "4.night",
+      "word": "sleep",
+      "sfx": "tick",
+      "trim": 2,
+      "why": "Midnight clock tick"
+    },
+    {
+      "cue": "4.milk",
+      "word": "milk",
+      "sfx": "clank",
+      "why": "Iron Milk Bucket lifted"
+    },
+    {
+      "cue": "4.fact",
+      "word": "cancels",
+      "sfx": "splash",
+      "trim": 3,
+      "why": "Milk clears potion mechanic"
+    },
+    {
+      "cue": "4.fact",
+      "word": "potion",
+      "sfx": "sparkle",
+      "why": "Blue swirls dissolve"
+    },
+    {
+      "cue": "4.sneak",
+      "sfx": "step_stone",
+      "trim": 2,
+      "why": "Stealth footsteps down night street"
+    },
+    {
+      "cue": "4.track",
+      "sfx": "step_stone",
+      "trim": 2,
+      "why": "Following muddy prints"
+    },
+    {
+      "cue": "4.track",
+      "word": "alley",
+      "sfx": "heartbeat",
+      "trim": 5.3,
+      "why": "Suspense builds entering alley"
+    },
+    {
+      "cue": "4.torch",
+      "word": "floated",
+      "sfx": "crackle",
+      "trim": 2,
+      "why": "Hovering torch crackles in midair"
+    },
+    {
+      "cue": "4.hammer",
+      "word": "hammer",
+      "sfx": "hit",
+      "trim": 2,
+      "why": "Invisible hammer strikes planks"
+    },
+    {
+      "cue": "4.hammer",
+      "word": "planks",
+      "sfx": "place",
+      "trim": 1,
+      "why": "Roof board nailed in"
+    },
+    {
+      "cue": "5.thief",
+      "word": "thief",
+      "sfx": "riser",
+      "trim": -2,
+      "why": "Tension rises before sprint"
+    },
+    {
+      "cue": "5.run",
+      "sfx": "step_stone",
+      "trim": 2,
+      "why": "Sprint footsteps toward floating torch"
+    },
+    {
+      "cue": "5.run",
+      "word": "sprinted",
+      "sfx": "zip",
+      "trim": 4,
+      "why": "Fast rush forward"
+    },
+    {
+      "cue": "5.splash",
+      "word": "splash",
+      "sfx": "splash",
+      "trim": 1,
+      "why": "HUGE milk bucket splash in silence!"
+    },
+    {
+      "cue": "5.poof",
+      "word": "dad",
+      "sfx": "boom",
+      "trim": 3,
+      "why": "Emotional twist boom as Dad appears soaked!"
+    },
+    {
+      "cue": "5.poof",
+      "word": "popped",
+      "sfx": "sparkle",
+      "why": "Invisibility potion shatters",
+      "trim": 4
+    },
+    {
+      "cue": "5.llamas",
+      "word": "bread",
+      "sfx": "chime",
+      "why": "Reveal of both llamas loaded with planks and bread"
+    },
+    {
+      "cue": "5.drop",
+      "word": "dropped",
+      "sfx": "thud",
+      "trim": 3,
+      "why": "Oak hammer drops to cobbles"
+    },
+    {
+      "cue": "5.shh",
+      "word": "whispered",
+      "sfx": "pop",
+      "why": "SHH bubble pops"
+    },
+    {
+      "cue": "6.why",
+      "word": "explained",
+      "sfx": "blip",
+      "trim": 5,
+      "why": "Gentle beat as Dad opens up"
+    },
+    {
+      "cue": "6.merch",
+      "sfx": "whoosh",
+      "why": "Flashback cut to daytime market"
+    },
+    {
+      "cue": "6.merch",
+      "word": "crush",
+      "sfx": "thud",
+      "trim": 2,
+      "why": "Rich merchants shove stall keeper"
+    },
+    {
+      "cue": "6.act",
+      "word": "terrible",
+      "sfx": "bonk",
+      "trim": 0.9,
+      "why": "Dad plays goofy to stay off their radar"
+    },
+    {
+      "cue": "6.nobody",
+      "word": "alone",
+      "sfx": "swish",
+      "trim": 2,
+      "why": "Rich merchants walk straight past"
+    },
+    {
+      "cue": "6.night",
+      "sfx": "step_stone",
+      "trim": 2,
+      "why": "Night footsteps with bread-loaded llamas"
+    },
+    {
+      "cue": "6.door",
+      "word": "door",
+      "sfx": "creak",
+      "trim": 3,
+      "why": "Alley doorway opens behind them"
+    },
+    {
+      "cue": "6.saw",
+      "word": "milk",
+      "sfx": "blip",
+      "trim": 1,
+      "why": "Baker sees the loaves and milk-soaked Dad"
+    },
+    {
+      "cue": "6.quiet",
+      "word": "quiet",
+      "sfx": "chime",
+      "trim": 4,
+      "why": "Warm unspoken bond forms"
+    },
+    {
+      "cue": "6.stall",
+      "sfx": "whoosh",
+      "why": "Cut to bright morning market",
+      "trim": 4
+    },
+    {
+      "cue": "6.stall",
+      "word": "morning",
+      "sfx": "pop",
+      "trim": 2,
+      "why": "Morning stall opens"
+    },
+    {
+      "cue": "6.line",
+      "word": "entire",
+      "sfx": "cheer",
+      "trim": 1,
+      "why": "Whole village cheers in line at Dad's stall!"
+    },
+    {
+      "cue": "6.buy",
+      "word": "five",
+      "sfx": "register",
+      "trim": -2,
+      "why": "Cha-ching! Baker buys a dead bush for 5 emeralds!"
+    },
+    {
+      "cue": "6.buy",
+      "word": "bush",
+      "sfx": "coins",
+      "trim": 3,
+      "why": "Emeralds clink onto the counter"
+    },
+    {
+      "cue": "6.hood",
+      "sfx": "whoosh",
+      "why": "Cut to sunlit schoolyard strut"
+    },
+    {
+      "cue": "6.hood",
+      "word": "wear",
+      "sfx": "sparkle",
+      "trim": 5,
+      "why": "Wearing Dad's royal blue hood with pride"
+    },
+    {
+      "cue": "6.sub",
+      "word": "subscribe",
+      "at": 0.4,
+      "sfx": "ding",
+      "trim": 1,
+      "why": "Clean crisp subscribe bell on the beat after voice"
+    }
   ]
 }

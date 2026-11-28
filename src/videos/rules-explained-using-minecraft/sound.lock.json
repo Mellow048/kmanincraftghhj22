@@ -1,0 +1,100 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "rules-explained-using-minecraft",
+  "mix": "public/audio/rules-explained-using-minecraft/mix.mp3",
+  "seconds": 72.8333,
+  "built_from": {
+    "timing.json": "bfa83d61412a5e15ac2df049b1a7a50e731e397b",
+    "sound.json": "95e812f1ead13ee4d34ce7ec210aab40fc73c743",
+    "narration.mp3": "3b6a87839802ac2933a67fce5ef03d8bb27bbd16"
+  },
+  "mix_sha1": "6dfdb8f4c0f69863eeff59ac16084f18fca7d730",
+  "music_sections": [
+    {
+      "from": "1.hook",
+      "mood": "explain",
+      "at": 0.0
+    },
+    {
+      "from": "3.r2",
+      "mood": "tense",
+      "at": 23.8
+    },
+    {
+      "from": "5.mods",
+      "mood": "hope",
+      "at": 48.53
+    }
+  ],
+  "music_file": {
+    "path": "Topics/Explainer/explainer_bgm_loop.wav",
+    "sha1": "a513987a318cf0558b5aa950d8b6634594e7fa83"
+  },
+  "beds": 5,
+  "measured": {
+    "musicUnderVoiceDb": 12.8,
+    "secondsWithoutMusic": 0.2,
+    "bedsUnderVoiceDb": 28.0,
+    "sfx": 52,
+    "sfxPerMinute": 42.8,
+    "sfxKinds": 6,
+    "longestGapSeconds": 2.7,
+    "longestGapAt": 61.7,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 11.9,
+    "voiceOverRestWorstDb": 3.8,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.8,
+        "t": 5.0,
+        "cue": "1.server",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 4.5,
+        "t": 47.8,
+        "cue": "5.ban",
+        "sounding": []
+      },
+      {
+        "db": 4.7,
+        "t": 15.4,
+        "cue": "2.same",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 5.3,
+        "t": 61.4,
+        "cue": "6.rule",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 8.2,
+        "cue": "1.break",
+        "sounding": [
+          "chime",
+          "plink"
+        ]
+      },
+      {
+        "db": 6.2,
+        "t": 20.4,
+        "cue": "3.r1",
+        "sounding": [
+          "chime"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.5
+  },
+  "failures": []
+}

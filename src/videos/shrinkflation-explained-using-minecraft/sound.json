@@ -1,0 +1,385 @@
+{
+  "film": "shrinkflation-explained-using-minecraft",
+  "README": "The sound sheet. Read Topics/Explainer/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build shrinkflation-explained-using-minecraft",
+  "music": {
+    "track": "Topics/Explainer/explainer_bgm_loop.wav",
+    "gain": -12,
+    "sections": [
+      {
+        "from": "1.hook",
+        "mood": "explain",
+        "why": "Act 1"
+      },
+      {
+        "from": "4.slam",
+        "mood": "tense",
+        "why": "Act 2"
+      },
+      {
+        "from": "5.after",
+        "mood": "hope",
+        "why": "Act 3"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.hook",
+      "to": "7.loop",
+      "bed": "sky"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.hook",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "1.box",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "1.slice",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 1.8
+    },
+    {
+      "cue": "1.price",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "2.day1",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "2.five",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "2.buy",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "2.share",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4.3
+    },
+    {
+      "cue": "3.costs",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "3.farm",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.raise",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.walk",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.1
+    },
+    {
+      "cue": "3.zero",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "4.slam",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "4.cheer",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 1.8
+    },
+    {
+      "cue": "4.back",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.cut",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "4.tall",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "4.new",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "4.pile",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.w1",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "4.w2",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.8
+    },
+    {
+      "cue": "4.w3",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.w4",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "5.chests",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "5.before",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.after",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.scale",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "5.punch1",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.punch2",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "5.punch3",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.real",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time"
+    },
+    {
+      "cue": "6.chips",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5.3
+    },
+    {
+      "cue": "6.hide",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.inside",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.5
+    },
+    {
+      "cue": "7.felint",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time"
+    },
+    {
+      "cue": "7.sterling",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.check",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.3
+    },
+    {
+      "cue": "7.stay",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.loop",
+      "sfx": "ding",
+      "why": "final payoff / subscribe line",
+      "trim": 5
+    },
+    {
+      "cue": "1.hook",
+      "word": "using",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "1.box",
+      "word": "off",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.slice",
+      "word": "slice",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 2.8
+    },
+    {
+      "cue": "1.price",
+      "word": "Same",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.day1",
+      "word": "a",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 3.3
+    },
+    {
+      "cue": "2.five",
+      "word": "five",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 2.4
+    },
+    {
+      "cue": "2.buy",
+      "word": "in",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.share",
+      "word": "home",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "3.costs",
+      "word": "milk",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "3.farm",
+      "word": "climb",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "3.raise",
+      "word": "cake",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.walk",
+      "word": "around",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.zero",
+      "word": "straight",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "4.slam",
+      "word": "sign",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.cheer",
+      "word": "cheered",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.back",
+      "word": "stepped",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "4.cut",
+      "word": "clean",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 1.6
+    },
+    {
+      "cue": "4.tall",
+      "word": "an",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 1.8
+    },
+    {
+      "cue": "4.new",
+      "word": "across",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 5
+    }
+  ]
+}

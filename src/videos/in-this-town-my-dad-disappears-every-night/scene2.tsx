@@ -6,6 +6,7 @@ import {
   Fence,
   FloatingNumber,
   Hero,
+  Hut,
   LoafPile,
   Player,
   PotionSwirl,
@@ -124,80 +125,76 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.hole",
-      ...cam.heroLow({ on: [-2.4, 0.8, -5.0], dist: 6.4, yaw: 68, fov: 46 }),
+      ...cam.heroLow({ on: [-4.0, 1.8, -5.0], dist: 7.4, yaw: 68, fov: 48 }),
       zone: "town",
       look: "overworld-day",
-      note: "Low angle looking up at Old Nora pointing anxiously up at the broken dark gap in her wooden roof.",
+      note: "Low angle looking up at Old Nora pointing anxiously up at the broken dark gap in her cottage roof.",
       stage: (t) => {
         const holeAt = w("3.hole", "hole");
         return (
           <>
-            <Player who={7} position={[-2.2, 0, -5.0]} rotationY={EAST} animation={t > holeAt ? "point" : "shrug"} face="sad" headPitch={-0.25 - ramp(t, holeAt, holeAt + 0.4) * 0.25} />
-            <group position={[-4.2, 3.3, -5.0]}>
-              <Vox kind="planks" tint="#7c5328" position={[-0.7, 0, 0]} size={[1.1, 0.18, 2.6]} />
-              <Vox kind="planks" tint="#7c5328" position={[0.7, 0, 0]} size={[1.1, 0.18, 2.6]} />
-              <Block position={[0, 0.04, 0]} size={[0.7, 0.16, 1.3]} color="#16141a" />
-            </group>
+            <Hut at={[-4.8, 0, -5.0]} w={3.6} d={3.4} h={3.2} wall="planks" tint="#c79a5b" roof="#6e4b2a" turn={EAST} />
+            <Player who={7} position={[-2.0, 0, -5.0]} rotationY={EAST} animation={t > holeAt ? "point" : "shrug"} face="sad" headPitch={-0.25 - ramp(t, holeAt, holeAt + 0.4) * 0.25} />
+            <Block position={[-4.4, 3.42, -5.0]} size={[1.1, 0.35, 1.4]} color="#16141a" />
           </>
         );
       },
     },
     {
       cue: "3.fixed",
-      ...cam.sweep({ on: [-2.4, 2.2, -5.0], dist: 6.6, distTo: 5.3, fromYaw: 52, toYaw: 94, pitch: -4, fov: 45 }),
+      ...cam.sweep({ on: [-3.6, 2.2, -5.0], dist: 7.6, distTo: 6.2, fromYaw: 52, toYaw: 94, pitch: -4, fov: 48 }),
       zone: "town",
       look: "overworld-day",
-      note: "Sweeping up to Nora's roof as fresh golden oak planks pop cleanly into the hole on 'patched' and Nora cheers!",
+      note: "Sweeping up to Nora's cottage roof as fresh golden oak planks pop cleanly into the hole on 'patched' and Nora cheers!",
       stage: (t) => {
         const patchAt = w("3.fixed", "patched");
         const k = ease(ramp(t, patchAt, patchAt + 0.35));
         return (
           <>
-            <Player who={7} position={[-2.2, 0, -5.0]} rotationY={EAST} animation={t > patchAt ? "cheer" : "idle"} face={t > patchAt ? "grin" : "wow"} />
+            <Hut at={[-4.8, 0, -5.0]} w={3.6} d={3.4} h={3.2} wall="planks" tint="#c79a5b" roof="#6e4b2a" turn={EAST} />
+            <Player who={7} position={[-2.0, 0, -5.0]} rotationY={EAST} animation={t > patchAt ? "cheer" : "idle"} face={t > patchAt ? "grin" : "wow"} />
             <Hero position={[0.2, 0, -4.6]} rotationY={WEST} animation="point" face="wow" />
-            <group position={[-4.2, 3.3, -5.0]}>
-              <Vox kind="planks" tint="#7c5328" position={[-0.7, 0, 0]} size={[1.1, 0.18, 2.6]} />
-              <Vox kind="planks" tint="#7c5328" position={[0.7, 0, 0]} size={[1.1, 0.18, 2.6]} />
-              {k > 0.02 ? (
-                <Vox kind="planks" tint="#e5b462" position={[0, 0.05 + (1 - k) * 0.5, 0]} size={[0.82 * k, 0.22, 1.4]} />
-              ) : null}
-            </group>
-            {t >= patchAt ? <Puffs position={[-3.8, 3.4, -5.0]} color="#fff0c4" /> : null}
+            {k > 0.02 ? (
+              <Vox kind="planks" tint="#e5b462" position={[-4.4, 3.45 + (1 - k) * 0.5, -5.0]} size={[1.15 * k, 0.28, 1.45]} />
+            ) : (
+              <Block position={[-4.4, 3.42, -5.0]} size={[1.1, 0.35, 1.4]} color="#16141a" />
+            )}
+            {t >= patchAt ? <Puffs position={[-4.4, 3.6, -5.0]} color="#fff0c4" /> : null}
           </>
         );
       },
     },
     {
       cue: "3.baker",
-      ...cam.sweep({ on: [2.8, 1.3, -9.8], dist: 6.2, distTo: 5.0, fromYaw: -76, toYaw: -52, pitch: 9, fov: 46 }),
+      ...cam.sweep({ on: [2.7, 1.35, -11.4], dist: 7.4, distTo: 6.2, fromYaw: -84, toYaw: -56, pitch: 8, fov: 48 }),
       zone: "town",
       look: "overworld-day",
-      note: "Brick Bakery & raised wooden front porch: baker steps onto his porch in delight as 10 golden loaves sit neatly ON the waist-high bread stand!",
+      note: "Brick Bakery & raised wooden front porch: baker waves in delight as 10 golden loaves sit neatly IN FRONT of the bread stand with 10+ LOAF clearly visible!",
       stage: (t) => {
         const tenAt = w("3.baker", "ten");
         return (
           <>
-            <Player who={8} position={[3.8, 0.24, -10.5]} rotationY={WEST} animation={t > tenAt ? "wave" : "idle"} face="grin" />
-            <LoafPile position={[3.42, 1.02, -9.05]} rotationY={-Math.PI / 2} count={10} />
-            <Hero position={[0.45, 0, -11.4]} rotationY={115 * DEG} animation="idle" face="wow" />
-            {t >= tenAt ? <FloatingNumber text="10 LOAF" position={[3.42, 2.35, -9.05]} color="#ffd84d" height={0.42} /> : null}
+            <Player who={8} position={[3.3, 0.24, -11.8]} rotationY={WEST} animation={t > tenAt ? "wave" : "idle"} face="grin" />
+            <LoafPile position={[2.65, 0.96, -11.8]} rotationY={-Math.PI / 2} count={10} />
+            <Hero position={[0.2, 0, -12.6]} rotationY={115 * DEG} animation="idle" face="wow" />
+            {t >= tenAt ? <FloatingNumber text="10+ LOAF" position={[2.65, 2.25, -11.8]} color="#ffd84d" height={0.44} /> : null}
           </>
         );
       },
     },
     {
       cue: "3.porch",
-      ...cam.front({ actor: [3.42, 0.72, -9.05], facing: WEST, dist: 6.4, to: 5.2, side: -22, pitch: 10, fov: 45 }),
+      ...cam.front({ actor: [2.8, 0.85, -11.8], facing: WEST, dist: 7.4, to: 6.2, side: 20, pitch: 9, fov: 47 }),
       zone: "town",
       look: "overworld-day",
-      note: "Close angled push on the wooden Bakery bread stand & front porch (EXACT locked actor coordinates from 3.baker — zero teleport!).",
+      note: "Wide angled push on the wooden Bakery bread stand & front porch with loaves and characters clearly framed.",
       stage: (t) => {
         const porchAt = w("3.porch", "porch");
         return (
           <>
-            <LoafPile position={[3.42, 1.02, -9.05]} rotationY={-Math.PI / 2} count={10} />
-            <Player who={8} position={[3.8, 0.24, -10.5]} rotationY={-125 * DEG} animation={t > porchAt ? "cheer" : "reach"} face="grin" />
-            <Hero position={[0.45, 0, -11.4]} rotationY={115 * DEG} animation={t > porchAt ? "point" : "idle"} face="smile" />
+            <LoafPile position={[2.65, 0.96, -11.8]} rotationY={-Math.PI / 2} count={10} />
+            <Player who={8} position={[3.3, 0.24, -11.8]} rotationY={-125 * DEG} animation={t > porchAt ? "cheer" : "reach"} face="grin" />
+            <Hero position={[0.2, 0, -12.6]} rotationY={115 * DEG} animation={t > porchAt ? "point" : "idle"} face="smile" />
           </>
         );
       },

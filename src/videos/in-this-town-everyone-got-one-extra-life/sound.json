@@ -1,0 +1,472 @@
+{
+  "film": "in-this-town-everyone-got-one-extra-life",
+  "README": "The sound sheet. The format is at the top of scripts/sound.py. Times are cues and words, never seconds. Then: python3 scripts/sound.py build in-this-town-everyone-got-one-extra-life",
+  "music": {
+    "track": "Topics/InThisTown/InThisTownMusic.aac",
+    "gain": -12,
+    "sections": [
+      {
+        "from": "1.tower",
+        "mood": "town",
+        "why": "Act 1"
+      },
+      {
+        "from": "3.step",
+        "mood": "curious",
+        "why": "Act 2"
+      },
+      {
+        "from": "4.splash",
+        "mood": "sad",
+        "why": "Act 3"
+      },
+      {
+        "from": "5.nothing",
+        "mood": "sneak",
+        "why": "Act 4"
+      },
+      {
+        "from": "6.bin",
+        "mood": "hope",
+        "why": "Act 5"
+      }
+    ]
+  },
+  "beds": [],
+  "sfx": [
+    {
+      "cue": "1.tower",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.burst",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.8
+    },
+    {
+      "cue": "1.pop",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.zero",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "1.bucket",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 0.2
+    },
+    {
+      "cue": "2.stairs",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "2.mail",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "2.baker",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 2.5
+    },
+    {
+      "cue": "3.mock",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time"
+    },
+    {
+      "cue": "3.step",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.dad",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "3.hand",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.jar",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "3.never",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.once",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.shop",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "4.price",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.shed",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "4.drop",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5.1
+    },
+    {
+      "cue": "4.splash",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.wood",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.scam",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 2.5
+    },
+    {
+      "cue": "5.annual",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time",
+      "trim": 10
+    },
+    {
+      "cue": "5.line",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.count",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.yell",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.vex",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.3
+    },
+    {
+      "cue": "5.leap",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.peel",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.nothing",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4.4
+    },
+    {
+      "cue": "6.dive",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time"
+    },
+    {
+      "cue": "6.fall",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.blocks",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.4
+    },
+    {
+      "cue": "6.splash",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "6.pool",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.safe",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.sticks",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.karma",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.pig",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 10
+    },
+    {
+      "cue": "6.bin",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4.7
+    },
+    {
+      "cue": "7.sunset",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time",
+      "trim": -6
+    },
+    {
+      "cue": "7.band",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 0.3
+    },
+    {
+      "cue": "7.two",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 1.5
+    },
+    {
+      "cue": "7.slip",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": -0.4
+    },
+    {
+      "cue": "7.held",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 1.3
+    },
+    {
+      "cue": "7.board",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": -3.0
+    },
+    {
+      "cue": "7.porch",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": -3.5
+    },
+    {
+      "cue": "7.trust",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": -1.7
+    },
+    {
+      "cue": "7.sub",
+      "sfx": "ding",
+      "why": "final payoff / subscribe line",
+      "trim": -0.7
+    },
+    {
+      "cue": "1.tower",
+      "word": "kid",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 2.5
+    },
+    {
+      "cue": "1.burst",
+      "word": "off",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.pop",
+      "word": "green",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 0.9
+    },
+    {
+      "cue": "1.zero",
+      "word": "born",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "1.bucket",
+      "word": "a",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 3.8
+    },
+    {
+      "cue": "2.stairs",
+      "word": "town",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.mail",
+      "word": "through",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.mock",
+      "word": "me",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 10
+    },
+    {
+      "cue": "3.step",
+      "word": "stair",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 2.9
+    },
+    {
+      "cue": "3.dad",
+      "word": "every",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 10
+    },
+    {
+      "cue": "3.hand",
+      "word": "bandage",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.jar",
+      "word": "a",
+      "sfx": "chime",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.never",
+      "word": "that",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.once",
+      "word": "once",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 10
+    },
+    {
+      "cue": "4.shop",
+      "word": "ones",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 10
+    },
+    {
+      "cue": "4.price",
+      "word": "a",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.shed",
+      "word": "past",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 4.4
+    },
+    {
+      "cue": "4.drop",
+      "word": "rolled",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 10
+    },
+    {
+      "cue": "4.splash",
+      "word": "with",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.wood",
+      "word": "off,",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.scam",
+      "word": "fifty-emerald",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "5.annual",
+      "word": "annual",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": -0.8
+    },
+    {
+      "cue": "5.line",
+      "word": "ridge",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "5.count",
+      "word": "countdown:",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "5.yell",
+      "word": "cliff",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 3.1
+    }
+  ]
+}

@@ -1,0 +1,475 @@
+{
+  "film": "the-player-who-kept-asking-where-his-house-was",
+  "README": "The sound sheet. Read Topics/ServerLore/SOUND.md first. Times are cues and words, never seconds. Then: python3 scripts/sound.py build the-player-who-kept-asking-where-his-house-was",
+  "music": {
+    "track": "Topics/ServerLore/up_happy.m4a",
+    "gain": -12.5,
+    "trackFrom": 2.5,
+    "sections": [
+      {
+        "from": "1.ask",
+        "mood": "town",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "why": "Hook"
+      },
+      {
+        "from": "3.note",
+        "mood": "sad",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "why": "Reveal"
+      },
+      {
+        "from": "5.owner",
+        "mood": "tense",
+        "track": "Topics/ServerLore/up_sad.m4a",
+        "why": "Turn"
+      },
+      {
+        "from": "6.fill",
+        "mood": "hope",
+        "track": "Topics/ServerLore/up_happy.m4a",
+        "why": "Payoff"
+      }
+    ]
+  },
+  "beds": [
+    {
+      "from": "1.ask",
+      "to": "2.rex",
+      "bed": "village"
+    },
+    {
+      "from": "3.desk",
+      "to": "3.note",
+      "bed": "room"
+    },
+    {
+      "from": "3.sam",
+      "to": "7.door",
+      "bed": "village"
+    },
+    {
+      "from": "7.found",
+      "to": "7.found",
+      "bed": "room"
+    },
+    {
+      "from": "7.sub",
+      "to": "7.sub",
+      "bed": "village"
+    }
+  ],
+  "sfx": [
+    {
+      "cue": "1.ask",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "1.close",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5.3
+    },
+    {
+      "cue": "1.mock",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.3
+    },
+    {
+      "cue": "1.tease",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "2.signs",
+      "sfx": "whoosh",
+      "why": "scene 2 starts: a new place or a new time"
+    },
+    {
+      "cue": "2.blue",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "2.past",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 6.5
+    },
+    {
+      "cue": "2.rex",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "3.desk",
+      "sfx": "whoosh",
+      "why": "scene 3 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "3.note",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 3.0
+    },
+    {
+      "cue": "3.sam",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "3.place",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "4.rain",
+      "sfx": "whoosh",
+      "why": "scene 4 starts: a new place or a new time"
+    },
+    {
+      "cue": "4.break",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.cobble",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4
+    },
+    {
+      "cue": "4.wander",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.stop",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.sorry",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "4.left",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "5.owner",
+      "sfx": "whoosh",
+      "why": "scene 5 starts: a new place or a new time",
+      "trim": 2.2
+    },
+    {
+      "cue": "5.chest",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.book",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "5.ping",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 1.7
+    },
+    {
+      "cue": "6.join",
+      "sfx": "whoosh",
+      "why": "scene 6 starts: a new place or a new time",
+      "trim": 5
+    },
+    {
+      "cue": "6.lode",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive",
+      "trim": 2.1
+    },
+    {
+      "cue": "6.comp",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "6.roof",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.road",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.place2",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "6.fill",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.back",
+      "sfx": "whoosh",
+      "why": "scene 7 starts: a new place or a new time",
+      "trim": 4
+    },
+    {
+      "cue": "7.open",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.snap",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5.6
+    },
+    {
+      "cue": "7.walk",
+      "sfx": "whoosh",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.cheer",
+      "sfx": "chime",
+      "why": "keep beat-level audio energy alive"
+    },
+    {
+      "cue": "7.sam2",
+      "sfx": "pop",
+      "why": "keep beat-level audio energy alive",
+      "trim": 4
+    },
+    {
+      "cue": "7.door",
+      "sfx": "plink",
+      "why": "keep beat-level audio energy alive",
+      "trim": 2.2
+    },
+    {
+      "cue": "7.found",
+      "sfx": "swish",
+      "why": "keep beat-level audio energy alive",
+      "trim": 5
+    },
+    {
+      "cue": "7.sub",
+      "sfx": "ding",
+      "why": "final payoff / subscribe line"
+    },
+    {
+      "cue": "1.ask",
+      "word": "his",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "1.close",
+      "word": "from",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "1.tease",
+      "word": "why,",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.signs",
+      "word": "oak",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "2.blue",
+      "word": "toward",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 2.2
+    },
+    {
+      "cue": "2.past",
+      "word": "he",
+      "sfx": "whoosh",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "2.rex",
+      "word": "followed",
+      "sfx": "chime",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.desk",
+      "word": "was",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.note",
+      "word": "taped:",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 3.2
+    },
+    {
+      "cue": "3.sam",
+      "word": "that",
+      "sfx": "swish",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "3.place",
+      "word": "could",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "4.rain",
+      "word": "pulled",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 2.6
+    },
+    {
+      "cue": "4.break",
+      "word": "wooden",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "4.cobble",
+      "word": "blue",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "4.wander",
+      "word": "past",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 4
+    },
+    {
+      "cue": "4.stop",
+      "word": "in",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "4.sorry",
+      "word": "cannot",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 4
+    },
+    {
+      "cue": "4.left",
+      "word": "Chat",
+      "sfx": "pop",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "5.owner",
+      "word": "into",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "5.chest",
+      "word": "and",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 4
+    },
+    {
+      "cue": "5.book",
+      "word": "roof,",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 4
+    },
+    {
+      "cue": "5.ping",
+      "word": "pinged",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 4
+    },
+    {
+      "cue": "6.join",
+      "word": "players",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "6.lode",
+      "word": "never",
+      "sfx": "plink",
+      "why": "mid-shot accent"
+    },
+    {
+      "cue": "6.roof",
+      "word": "his",
+      "sfx": "whoosh",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "6.road",
+      "word": "lantern",
+      "sfx": "chime",
+      "why": "mid-shot accent",
+      "trim": 5
+    },
+    {
+      "cue": "6.place2",
+      "word": "right",
+      "sfx": "pop",
+      "why": "mid-shot accent",
+      "trim": 2.5
+    },
+    {
+      "cue": "6.fill",
+      "word": "with",
+      "sfx": "plink",
+      "why": "mid-shot accent",
+      "trim": 4
+    },
+    {
+      "cue": "7.back",
+      "word": "joined",
+      "sfx": "swish",
+      "why": "mid-shot accent",
+      "trim": 4.3
+    }
+  ]
+}

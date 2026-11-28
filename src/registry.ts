@@ -49,6 +49,13 @@ import { film as tariffsExplainedUsingMinecraft } from "./videos/tariffs-explain
 import { film as thePlayerWhoBuriedHimselfEveryTenMinutes } from "./videos/the-player-who-buried-himself-every-ten-minutes/film";
 import { film as inThisTownMyDadDisappearsEveryNight } from "./videos/in-this-town-my-dad-disappears-every-night/film";
 import { film as theStockMarketExplainedUsingMinecraft } from "./videos/the-stock-market-explained-using-minecraft/film";
+import { film as inThisTownEveryoneGotOneExtraLife } from "./videos/in-this-town-everyone-got-one-extra-life/film";
+import { film as inThisTownNobodyEatsTheHoney } from "./videos/in-this-town-nobody-eats-the-honey/film";
+import { film as inThisTownNobodyIsAllowedToBeFirst } from "./videos/in-this-town-nobody-is-allowed-to-be-first/film";
+import { film as shrinkflationExplainedUsingMinecraft } from "./videos/shrinkflation-explained-using-minecraft/film";
+import { film as rulesExplainedUsingMinecraft } from "./videos/rules-explained-using-minecraft/film";
+import { film as thePlayerWhoKeptAskingWhereHisHouseWas } from "./videos/the-player-who-kept-asking-where-his-house-was/film";
+import { film as thePlayerWhoNeverSleeps } from "./videos/the-player-who-never-sleeps/film";
 
 /**
  * Every film in the project, registered for Remotion.
@@ -106,4 +113,11 @@ export const FILMS = [
   thePlayerWhoBuriedHimselfEveryTenMinutes,
   inThisTownMyDadDisappearsEveryNight,
   theStockMarketExplainedUsingMinecraft,
+  inThisTownEveryoneGotOneExtraLife,
+  inThisTownNobodyEatsTheHoney,
+  inThisTownNobodyIsAllowedToBeFirst,
+  shrinkflationExplainedUsingMinecraft,
+  rulesExplainedUsingMinecraft,
+  thePlayerWhoKeptAskingWhereHisHouseWas,
+  thePlayerWhoNeverSleeps,
 ];

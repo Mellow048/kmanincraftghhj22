@@ -65,7 +65,7 @@ export const ShopStand: React.FC<{
     <Sign title={title} position={[0, 2.95, 0.62]} width={2.1} height={0.5} />
     <Torch position={[-1.3, 1.45, 0.56]} />
     <Torch position={[1.3, 1.45, 0.56]} />
-    <SolidBox name={`shop-${title}`} position={[0, 0.55, 0]} size={[2.8, 1.1, 1.1]} blocksCamera={false} />
+    <SolidBox name={`shop-${title}`} position={[position[0], position[1] + 0.55, position[2]]} size={[2.8, 1.1, 1.1]} blocksCamera={false} />
   </group>
 );
 
@@ -96,7 +96,7 @@ export const CastleKeep: React.FC<{
     ))}
     <Torch position={[-2.1, 2.5, 0.96]} />
     <Torch position={[2.1, 2.5, 0.96]} />
-    <SolidBox name="castle-wall" position={[0, 2.8, 0]} size={[13.6, 5.6, 2.2]} />
+    <SolidBox name="castle-wall" position={[position[0], position[1] + 2.8, position[2]]} size={[13.6, 5.6, 2.2]} />
   </group>
 );
 
@@ -123,7 +123,7 @@ export const KitchenCounterSet: React.FC<{
     ))}
     {/* Window above sink */}
     <Block position={[-0.8, 2.25, -3.4]} size={[1.8, 1.2, 0.1]} color="#a3dcff" emissive="#88d0ff" emissiveIntensity={0.35} />
-    <SolidBox name="kitchen-back" position={[0, 2.1, -3.6]} size={[12, 4.2, 0.4]} />
+    <SolidBox name="kitchen-back" position={[position[0], position[1] + 2.1, position[2] - 3.6]} size={[12, 4.2, 0.4]} />
   </group>
 );
 

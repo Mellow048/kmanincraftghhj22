@@ -1,0 +1,118 @@
+{
+  "tool": "scripts/sound.py v1",
+  "film": "the-player-who-never-sleeps",
+  "mix": "public/audio/the-player-who-never-sleeps/mix.mp3",
+  "seconds": 66.7,
+  "built_from": {
+    "timing.json": "072f7f09d85998d38c1586fae9e36b24d73b703f",
+    "sound.json": "37f502fb6266d75e5a6f1f848fab8e26b4795cbd",
+    "narration.mp3": "591890eb5adb39e0184d82313818a422326f2253"
+  },
+  "mix_sha1": "c06c1dbfa5c4405b209920ada476fdff5e548a99",
+  "music_sections": [
+    {
+      "from": "1.never",
+      "mood": "town",
+      "at": 0.0,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    },
+    {
+      "from": "3.not",
+      "mood": "sad",
+      "at": 15.27,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "4.left",
+      "mood": "tense",
+      "at": 32.37,
+      "track": "Topics/ServerLore/up_sad.m4a"
+    },
+    {
+      "from": "7.join",
+      "mood": "hope",
+      "at": 49.23,
+      "track": "Topics/ServerLore/up_happy.m4a"
+    }
+  ],
+  "music_file": {
+    "path": "Topics/ServerLore/up_happy.m4a",
+    "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+  },
+  "music_files": [
+    {
+      "path": "Topics/ServerLore/up_happy.m4a",
+      "sha1": "28d561ce5e592a6d1e7e8c41f7b301d52bb88421"
+    },
+    {
+      "path": "Topics/ServerLore/up_sad.m4a",
+      "sha1": "c580671a30b702c0676494f96fc28dbe5b32fca7"
+    }
+  ],
+  "beds": 8,
+  "measured": {
+    "musicUnderVoiceDb": 13.3,
+    "secondsWithoutMusic": 1.1,
+    "bedsUnderVoiceDb": 26.5,
+    "sfx": 55,
+    "sfxPerMinute": 49.5,
+    "sfxKinds": 6,
+    "longestGapSeconds": 4.5,
+    "longestGapAt": 60.1,
+    "sfxBuried": 0,
+    "voiceOverRestMedianDb": 12.1,
+    "voiceOverRestWorstDb": 3.6,
+    "voiceOverRestWorst": [
+      {
+        "db": 3.6,
+        "t": 55.2,
+        "cue": "7.chat",
+        "sounding": []
+      },
+      {
+        "db": 5.6,
+        "t": 24.5,
+        "cue": "3.safe",
+        "sounding": [
+          "whoosh"
+        ]
+      },
+      {
+        "db": 5.9,
+        "t": 15.8,
+        "cue": "3.not",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 48.0,
+        "cue": "6.fifty",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.4,
+        "t": 37.7,
+        "cue": "5.tell",
+        "sounding": [
+          "chime"
+        ]
+      },
+      {
+        "db": 6.6,
+        "t": 64.6,
+        "cue": "7.hug",
+        "sounding": [
+          "ding"
+        ]
+      }
+    ],
+    "lufs": -14.7,
+    "truePeakDb": -2.2,
+    "limiterMaxDb": 0.3
+  },
+  "failures": []
+}
