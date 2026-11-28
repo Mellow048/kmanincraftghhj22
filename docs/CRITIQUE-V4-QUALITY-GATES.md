@@ -1,7 +1,5 @@
 # Remaster v4 — Owner Critique & Mandatory Quality Gates
 
-> **v8 Update (2026-11-27):** See Section **0A** of [`AGENTS.md`](../AGENTS.md) for the complete **Owner Wants / Doesn't Want / Loves** checklist and our 3 approved v8 full `source/` + `.mp4` reference benchmarks (`nobody-wears-gold`, `tariffs-explained`, `buried-himself-every-ten-minutes`).
-
 > **READ THIS BEFORE BUILDING OR RENDERING ANY SHORT.**
 > These rules come directly from side-by-side reviews comparing rendered Shorts against our 3 viral reference videos (`Explainer Reference.mp4`, `InThisTown Reference.mp4`, `ServerLore Reference.mp4`). Violating any of these keeps videos stuck at 1–2k views.
 

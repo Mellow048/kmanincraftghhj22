@@ -64,10 +64,10 @@ export class CollisionWorld {
       const dx = x - other.position[0];
       const dz = z - other.position[2];
       const minDist = radius + other.radius;
+      const softDist = minDist + 0.24;
       const d2 = dx * dx + dz * dz;
-      if (d2 < minDist * minDist) {
+      if (d2 < softDist * softDist) {
         const d = Math.sqrt(d2);
-        // Deterministic push direction even at exact overlap
         let nx = 1;
         let nz = 0;
         if (d > 1e-4) {
@@ -77,10 +77,10 @@ export class CollisionWorld {
           nx = id < other.id ? -1 : 1;
           nz = 0;
         }
-        // Smooth eased half-push (zero snap discontinuity at boundary)
-        const overlap = minDist - d;
-        const t = Math.min(1, overlap / Math.max(0.12, minDist));
-        const push = overlap * 0.5 * (t * t * (3 - 2 * t));
+        // Smoothstep ramp across [minDist, minDist + 0.24] — eliminates any sudden 1-inch snap/pop!
+        const k = Math.max(0, Math.min(1, (softDist - d) / (softDist - minDist + 0.12)));
+        const smooth = k * k * (3 - 2 * k);
+        const push = Math.min(0.26, smooth * Math.max(0.06, (minDist - d) * 0.5 + 0.04));
         x += nx * push;
         z += nz * push;
       }
@@ -100,9 +100,9 @@ export class CollisionWorld {
         const penX = hx - Math.abs(dx);
         const penZ = hz - Math.abs(dz);
         if (penX < penZ) {
-          x += (dx >= 0 ? 1 : -1) * penX;
+          x += (dx >= 0 ? 1 : -1) * (penX + 0.03);
         } else {
-          z += (dz >= 0 ? 1 : -1) * penZ;
+          z += (dz >= 0 ? 1 : -1) * (penZ + 0.03);
         }
       }
     }

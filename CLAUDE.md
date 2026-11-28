@@ -1,9 +1,4 @@
 # Start Here: Read `AGENTS.md`
-> **OWNER'S STANDING PREFERENCES & v8 BENCHMARKS (READ FIRST):** Open Section **0A** of [`AGENTS.md`](AGENTS.md) for the exact list of **What the Owner WANTS, DOESN'T WANT, and LOVES**, and study our 3 owner-approved v8 reference Shorts (full `source/` + `.mp4` + contact sheets):
-> - `Topics/InThisTown/reference/nobody-wears-gold/`
-> - `Topics/Explainer/reference/tariffs-explained/`
-> - `Topics/ServerLore/reference/buried-himself-every-ten-minutes/`
-
 > **SMALL MODELS START HERE:** Read [`SMALL-MODEL-CHEATSHEET.md`](SMALL-MODEL-CHEATSHEET.md) (5 copy-paste recipes: `<VillageStreet />`, `moveBetween()`, `cam.track/sweep/heroLow`, `CitizenLead variant`, and 1-command `sound.py draft`).
 
 > **REMASTER v5 HARD GATES:** Read [`docs/REMASTER-V5-REFERENCE-STANDARD.md`](docs/REMASTER-V5-REFERENCE-STANDARD.md) — `direction-report.mjs` now HARD FAILS wall-spam (>4 same-axis shots), lazy cameras (<1m travel), and static mannequin staging (<20% A→B locomotion). Use `<VillageStreet>`, `cam.track`, `cam.sweep`, `cam.heroLow`, `cam.streetOverview`, and `CitizenLead variant`.

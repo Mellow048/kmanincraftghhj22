@@ -1,7 +1,5 @@
 # Remaster v5 — Hard-Enforced Reference-Grade Direction Standard
 
-> **v8 Update (2026-11-27):** Also read Section **0A** of [`AGENTS.md`](../AGENTS.md) (Owner's Standing Preferences: Wants / Don't Wants / Loves) and study our 3 owner-approved v8 full `source/` + `.mp4` references (`Topics/InThisTown/reference/nobody-wears-gold/`, `Topics/Explainer/reference/tariffs-explained/`, `Topics/ServerLore/reference/buried-himself-every-ten-minutes/`) for zero-Z-fighting bespoke sets, 3D armor/costume silhouettes, non-overlapping HUD, and 0-buried-SFX mixes.
-
 > **THIS IS ENFORCED BY CODE (`scripts/direction-report.mjs`), NOT JUST ADVICE.**
 > `npm run rehearse -- <slug> --final` will **HARD FAIL** any film that violates the camera-motion, multi-angle staging, or A→B locomotion gates below.
 

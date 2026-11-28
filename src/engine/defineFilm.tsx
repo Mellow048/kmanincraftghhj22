@@ -8,8 +8,14 @@ import { HudOverlay } from "./Hud";
 import { CollisionProvider } from "./collision";
 import { GlowProvider, Look } from "./Look";
 import { PostFX } from "./shaders";
-import type { FilmConfig, SceneDef, Shot } from "./types";
+import type { FilmConfig, HudFilter, SceneDef, Shot } from "./types";
 import { clamp01 } from "./math";
+
+const CANVAS_FILTER_CSS: Record<HudFilter, string> = {
+  sepia: "sepia(0.88) contrast(1.06) brightness(0.95)",
+  bw: "grayscale(1) contrast(1.12)",
+  vintage: "sepia(0.55) saturate(0.75) contrast(1.08)",
+};
 
 type SceneInfo = { id: string; title: string; index: number; duration: number; elapsed: number };
 
@@ -118,50 +124,54 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
     };
   }, [sequences, frame, fps]);
 
+  const canvasFilter = active.shot.hud?.filter ? CANVAS_FILTER_CSS[active.shot.hud.filter] : undefined;
+
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
-      <ThreeCanvas
-        width={width}
-        height={height}
-        shadows
-        dpr={1}
-        camera={{
-          fov: 38,
-          near: 0.22,
-          far: 140,
-          position: [0, 1.5, 5],
-        }}
-        gl={{
-          antialias: true,
-          alpha: false,
-          toneMapping: THREE.ACESFilmicToneMapping,
-          toneMappingExposure: 1.05,
-        }}
-      >
-        <CollisionProvider>
-        <GlowProvider value={config.post?.bloom ?? 1}>
-        <ActiveShotContext.Provider value={active}>
-          <Look preset={active.shot.look ?? config.look} post={config.post} focus={active.shot.target} />
-          {config.post?.shaders ? <PostFX settings={config.post.shaders} /> : null}
-          {config.World ? <config.World /> : null}
+      <AbsoluteFill style={canvasFilter ? { filter: canvasFilter } : undefined}>
+        <ThreeCanvas
+          width={width}
+          height={height}
+          shadows
+          dpr={1}
+          camera={{
+            fov: 38,
+            near: 0.22,
+            far: 140,
+            position: [0, 1.5, 5],
+          }}
+          gl={{
+            antialias: true,
+            alpha: false,
+            toneMapping: THREE.ACESFilmicToneMapping,
+            toneMappingExposure: 1.05,
+          }}
+        >
+          <CollisionProvider>
+          <GlowProvider value={config.post?.bloom ?? 1}>
+          <ActiveShotContext.Provider value={active}>
+            <Look preset={active.shot.look ?? config.look} post={config.post} focus={active.shot.target} />
+            {config.post?.shaders ? <PostFX settings={config.post.shaders} /> : null}
+            {config.World ? <config.World /> : null}
 
-          {sequences.map(({ scene, index, from, durationInFrames }) => (
-          <Sequence
-            key={scene.id}
-            from={from}
-            durationInFrames={durationInFrames}
-            layout="none"
-            name={`${scene.id} · ${scene.title}`}
-          >
-              <SceneMount def={scene} index={index} />
-            </Sequence>
-          ))}
-          {config.captions ? <Captions {...config.captions} /> : null}
-        </ActiveShotContext.Provider>
-        </GlowProvider>
-        </CollisionProvider>
-      </ThreeCanvas>
+            {sequences.map(({ scene, index, from, durationInFrames }) => (
+            <Sequence
+              key={scene.id}
+              from={from}
+              durationInFrames={durationInFrames}
+              layout="none"
+              name={`${scene.id} · ${scene.title}`}
+            >
+                <SceneMount def={scene} index={index} />
+              </Sequence>
+            ))}
+          </ActiveShotContext.Provider>
+          </GlowProvider>
+          </CollisionProvider>
+        </ThreeCanvas>
+      </AbsoluteFill>
       <HudOverlay hud={active.shot.hud} localT={active.t} />
+      {config.captions ? <Captions {...config.captions} /> : null}
 
       {config.audio ? (
         <Audio src={staticFile(config.audio.src)} volume={config.audio.volume ?? 1} />

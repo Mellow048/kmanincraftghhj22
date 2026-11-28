@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import * as THREE from "three";
-import { useCurrentFrame, useVideoConfig } from "remotion";
 import { useFilmTime } from "./defineFilm";
 import { mulberry32 } from "./math";
 import type { Vec3 } from "./math";
@@ -77,9 +76,6 @@ export const LightPool: React.FC<{
       transparent
       opacity={opacity * g}
       depthWrite={false}
-      polygonOffset
-      polygonOffsetFactor={-3}
-      polygonOffsetUnits={-3}
       blending={THREE.AdditiveBlending}
       toneMapped={false}
     />

@@ -1,42 +1,21 @@
 import { useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
-import { useCurrentFrame, useVideoConfig } from "remotion";
-import * as THREE from "three";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { clamp01 } from "./math";
 import { beatFrames, captionBeat, captionPixel } from "./caption-beat";
-import { wordTexture } from "./pixelfont";
+import { GLYPH_ROWS, wordBitmap } from "./pixelfont";
 import type { CaptionSettings, CaptionWord } from "./types";
 
 /**
  * One word on screen at a time, cut to the voice.
  *
- * It is a quad drawn in screen space INSIDE the 3D canvas (same WebGL context,
- * no HTML layer), so it survives every renderer the film does. The letters come
- * from a bit table (pixelfont.ts), so no font has to be installed anywhere.
+ * Rendered as a crisp 2D pixel-art SVG overlay OUTSIDE <ThreeCanvas> so
+ * UnrealBloomPass / PostFX NEVER makes the subtitles glow or smear, and
+ * scene filters (like sepia flashbacks) keep captions razor-sharp.
+ * The letters come from the same 5x7 bit table (pixelfont.ts), so no system
+ * font has to be installed anywhere.
  *
  * Films do not mount this. Pass `captions` to defineFilm.
  */
-
-const VERT = /* glsl */ `
-  uniform vec4 rect; // centre x, centre y, half width, half height — all in clip space
-  varying vec2 vUv;
-  void main() {
-    vUv = uv;
-    gl_Position = vec4(rect.xy + position.xy * rect.zw, 0.0, 1.0);
-  }
-`;
-
-const FRAG = /* glsl */ `
-  uniform sampler2D map;
-  uniform vec3 accent;
-  varying vec2 vUv;
-  void main() {
-    vec4 c = texture2D(map, vUv);
-    if (c.a < 0.5) discard;
-    vec3 tint = (c.r > 0.5 && c.g > 0.5 && c.b > 0.5) ? c.rgb * accent : c.rgb;
-    gl_FragColor = vec4(tint, 1.0);
-  }
-`;
 
 /** What a word looks like on screen: no punctuation, one case. */
 export function captionText(word: string, letterCase: "upper" | "lower" = "upper"): string {
@@ -64,6 +43,58 @@ export function activeWord(words: CaptionWord[], t: number): CaptionWord | null 
   return t < holdUntil ? word : null;
 }
 
+type WordPaths = { w: number; h: number; outlineD: string; glyphD: string };
+const PATH_CACHE = new Map<string, WordPaths>();
+
+function wordSvgPaths(text: string): WordPaths {
+  const hit = PATH_CACHE.get(text);
+  if (hit) return hit;
+
+  const { width, rows } = wordBitmap(text);
+  const pad = 2; // 1px outline + 1px drop shadow
+  const w = width + pad * 2;
+  const h = GLYPH_ROWS + pad * 2;
+  const lit = (x: number, y: number) => x >= 0 && y >= 0 && x < width && y < GLYPH_ROWS && rows[y][x] === 1;
+
+  const outlineParts: string[] = [];
+  const glyphParts: string[] = [];
+
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const gx = x - pad;
+      const gy = y - pad;
+      if (lit(gx, gy)) {
+        glyphParts.push(`M${x},${y}h1v1h-1z`);
+      } else {
+        let black = false;
+        outer: for (let dy = -1; dy <= 1; dy++) {
+          for (let dx = -1; dx <= 1; dx++) {
+            if (lit(gx + dx, gy + dy)) {
+              black = true;
+              break outer;
+            }
+          }
+        }
+        if (!black && (lit(gx - 2, gy - 2) || lit(gx - 1, gy - 2) || lit(gx - 2, gy - 1))) {
+          black = true;
+        }
+        if (black) {
+          outlineParts.push(`M${x},${y}h1v1h-1z`);
+        }
+      }
+    }
+  }
+
+  const result: WordPaths = {
+    w,
+    h,
+    outlineD: outlineParts.join(""),
+    glyphD: glyphParts.join(""),
+  };
+  PATH_CACHE.set(text, result);
+  return result;
+}
+
 export const Captions: React.FC<CaptionSettings> = ({
   words,
   y = 0.72,
@@ -77,7 +108,7 @@ export const Captions: React.FC<CaptionSettings> = ({
   wordColors,
 }) => {
   const frame = useCurrentFrame();
-  const { fps, width, height } = useVideoConfig();
+  const { fps, width } = useVideoConfig();
   const t = frame / fps;
 
   const colorLookup = useMemo(() => {
@@ -94,58 +125,48 @@ export const Captions: React.FC<CaptionSettings> = ({
     return map;
   }, [highlightWords, accentColor, dangerWords, dangerColor, wordColors, letterCase]);
 
-  const material = useMemo(
-    () =>
-      new THREE.ShaderMaterial({
-        uniforms: {
-          map: { value: null },
-          rect: { value: new THREE.Vector4(0, 0, 0, 0) },
-          accent: { value: new THREE.Color("#ffffff") },
-        },
-        vertexShader: VERT,
-        fragmentShader: FRAG,
-        transparent: true,
-        depthTest: false,
-        depthWrite: false,
-        fog: false,
-        toneMapped: false,
-      }),
-    [],
-  );
-
-  const starts = useMemo(() => motion === "on-beat" ? beatFrames(words, fps) : null, [motion, words, fps]);
+  const starts = useMemo(() => (motion === "on-beat" ? beatFrames(words, fps) : null), [motion, words, fps]);
   const beat = starts ? captionBeat(words, starts, frame, fps) : null;
   const word = motion === "on-beat" ? beat?.word : activeWord(words, t);
   const text = word ? captionText(word.w, letterCase) : "";
 
-  let rect: [number, number, number, number] | null = null;
-  let tex: THREE.DataTexture | null = null;
-  if (word && text.length > 0) {
-    tex = wordTexture(text);
-    const texW = (tex.image as { width: number }).width;
-    const texH = (tex.image as { height: number }).height;
-    // One font pixel is 1/86 of the frame width; long words shrink to fit 88%.
-    const px = captionPixel(width, texW, size, !!beat);
-    // A two-frame pop on the cut to each word. It is what makes the eye follow.
-    const pop = beat?.scale ?? (1 + 0.2 * Math.pow(1 - clamp01((t - word.s) / 0.1), 2));
-    const halfW = ((texW * px) / width) * pop;
-    const halfH = ((texH * px) / height) * pop;
-    rect = [0, 1 - 2 * (y - (beat?.lift ?? 0)), halfW, halfH];
-  }
+  if (!word || text.length === 0) return null;
 
-  const wordHex = (text.length > 0 && colorLookup.get(text)) || "#ffffff";
-
-  useFrame(() => {
-    if (rect && tex) {
-      material.uniforms.map.value = tex;
-      (material.uniforms.rect.value as THREE.Vector4).set(rect[0], rect[1], rect[2], rect[3]);
-      (material.uniforms.accent.value as THREE.Color).set(wordHex);
-    }
-  });
+  const { w: texW, h: texH, outlineD, glyphD } = wordSvgPaths(text);
+  // One font pixel is 1/86 of the frame width; long words shrink to fit 88%.
+  const px = captionPixel(width, texW, size, !!beat);
+  // A two-frame pop on the cut to each word.
+  const pop = beat?.scale ?? 1 + 0.2 * Math.pow(1 - clamp01((t - word.s) / 0.1), 2);
+  const svgW = texW * px;
+  const svgH = texH * px;
+  const topPct = (y - (beat?.lift ?? 0)) * 100;
+  const wordHex = colorLookup.get(text) || "#ffffff";
 
   return (
-    <mesh frustumCulled={false} renderOrder={9999} visible={rect !== null} material={material}>
-      <planeGeometry args={[2, 2]} />
-    </mesh>
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: `${topPct}%`,
+          transform: `translate(-50%, -50%) scale(${pop})`,
+          transformOrigin: "center center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <svg
+          width={svgW}
+          height={svgH}
+          viewBox={`0 0 ${texW} ${texH}`}
+          shapeRendering="crispEdges"
+          style={{ display: "block", overflow: "visible" }}
+        >
+          <path d={outlineD} fill="#000000" />
+          <path d={glyphD} fill={wordHex} />
+        </svg>
+      </div>
+    </AbsoluteFill>
   );
 };

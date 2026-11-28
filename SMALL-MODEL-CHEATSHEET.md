@@ -40,7 +40,7 @@ Never use the same yaw 5 shots in a row, and never use tiny `<1m` moves. Mix the
 ...cam.sweep({ on: [0, 1.4, 0], dist: 6.4, fromYaw: -20, toYaw: 18 })          // 38° parallax reveal
 ...cam.heroLow({ on: [0, 0, 0], dist: 6.2, yaw: -12 })                         // Dramatic low tilt
 ```
-*(For `Hut`, pass `wall="planks" | "brick" | "stoneBrick"` and `tint="#hex"`.)*
+*(For `Hut`, pass `wall="planks" | "bricks" | "stoneBrick"` and `tint="#hex"`.)*
 
 ---
 
@@ -86,3 +86,10 @@ NEVER reuse `<VillageStreet />` for every channel. Pick the matching biome/serve
   - `<MineEntrance />` — Timber-framed stone mine arch with rails & torches
   - `<IslandBridge />` — Two distinct grass islands separated by real water with a wooden bridge
   - `<CampfireProp />`, `<CraftingStation />`, plus `<PlainsVillageMap />` & `<DarkOakVillageMap />`
+  - `<SchoolCampusMap />` — Open-roof brick schoolhouse (9 desks + chalkboard) + pillared college + twin-smokestack factory
+
+## 15. Explainer v10 HUD Devices (`shot.hud`)
+- `hud.checklist`: Minecraft grey inventory checklist modal (`{ title, rows: [{ text, at, done, doneAt }], footer }`)
+- `hud.counter`: Live rolling counter (`{ label, from, to, prefix, suffix, startAt, dur, color }`)
+- `hud.stamp`: Slanted slam-in alert stamp (`{ text: "GONE", color: "#ff3b30", at: 0.3 }`)
+- `hud.filter`: `"sepia" | "bw" | "vintage"` flashback grade on the 3D canvas (keeps 2D HUD crisp)

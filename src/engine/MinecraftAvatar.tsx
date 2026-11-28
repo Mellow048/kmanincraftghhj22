@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import type { AnimName, GaitName, Pose } from "./anim";
@@ -8,7 +8,6 @@ import { blinkFaceTexture, faceTexture, headSideTexture } from "./face";
 import { groundedHip, metres, PX, shin, sole, trainer } from "./footing";
 import { clamp, TAU, wobble } from "./math";
 import type { Vec3 } from "./math";
-import { useCollisionWorld } from "./collision";
 import { glowTex, pixelTex, stripeTex } from "./textures";
 
 export type OutfitName = "gown" | "pajamas" | "hoodie" | "tee" | "shadow" | "suit";
@@ -200,6 +199,7 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   blendTo,
   blend = 1,
   blendTime,
+  boots,
   time,
   face = "neutral",
   skin = "#e8b78d",
@@ -208,7 +208,6 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   colors,
   shoes,
   shoeGlow = 0,
-  boots,
   headYaw = 0,
   headPitch = 0,
   headRoll = 0,
@@ -366,22 +365,6 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const roll = pose.bodyRoll + shiftWave * 0.016 * shiftAmt;
   const hip = plantFeet ? groundedHip(pose, [pitchBody, pose.bodyYaw, roll], !!shoes) : HIP + pose.bodyY;
   const shadowTex = glowTex();
-
-  const actorId = useId();
-  const collision = useCollisionWorld();
-  const actorRadius = 0.26 * scale;
-  const actorHeight = 1.85 * scale;
-  if (collision) {
-    collision.updateActor({ id: actorId, position, radius: actorRadius, height: actorHeight });
-  }
-  useEffect(() => {
-    if (!collision) return;
-    return () => collision.unregisterActor(actorId);
-  }, [collision, actorId]);
-  const resolvedPos: Vec3 = collision
-    ? collision.resolveActor(actorId, position, actorRadius, actorHeight)
-    : position;
-
   const bootPalette =
     boots === "gold"
       ? { main: "#f6c92e", trim: "#b87c0a", sole: "#855204", emissive: "#b88200" }
@@ -392,20 +375,11 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
           : null;
 
   return (
-    <group position={resolvedPos} rotation-y={rotationY} scale={scale}>
+    <group position={position} rotation-y={rotationY} scale={scale}>
       {shadow && (
-        <mesh position={[0, 0.022, 0]} rotation-x={-Math.PI / 2} renderOrder={1}>
+        <mesh position={[0, 0.026, 0]} rotation-x={-Math.PI / 2} renderOrder={2}>
           <planeGeometry args={[0.95, 0.6]} />
-          <meshBasicMaterial
-            map={shadowTex}
-            color="#000000"
-            transparent
-            opacity={shadowOpacity}
-            depthWrite={false}
-            polygonOffset
-            polygonOffsetFactor={-4}
-            polygonOffsetUnits={-4}
-          />
+          <meshBasicMaterial map={shadowTex} color="#000000" transparent opacity={shadowOpacity} depthWrite={false} polygonOffset polygonOffsetFactor={-2} polygonOffsetUnits={-2} />
         </mesh>
       )}
 
@@ -506,22 +480,18 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
             ) : null}
             {bootPalette ? (
               <group>
-                {/* Chunky Minecraft armor boot cuff around lower shin */}
                 <mesh castShadow position={[0, -4.1 * PX, 0]}>
                   <boxGeometry args={[4.45 * PX, 3.8 * PX, 4.8 * PX]} />
                   <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.22} roughness={0.28} metalness={0.58} />
                 </mesh>
-                {/* Engraved boot collar rim */}
                 <mesh castShadow position={[0, -2.15 * PX, 0]}>
                   <boxGeometry args={[4.7 * PX, 0.7 * PX, 5.05 * PX]} />
                   <meshStandardMaterial color={bootPalette.trim} roughness={0.35} metalness={0.62} />
                 </mesh>
-                {/* Armored toe cap protruding forward */}
                 <mesh castShadow position={[0, -5.05 * PX, 0.7 * PX]}>
                   <boxGeometry args={[4.5 * PX, 1.9 * PX, 4.6 * PX]} />
                   <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.25} roughness={0.25} metalness={0.62} />
                 </mesh>
-                {/* Heavy metallic sole */}
                 <mesh position={[0, -5.85 * PX, 0.35 * PX]}>
                   <boxGeometry args={[4.6 * PX, 0.42 * PX, 5.35 * PX]} />
                   <meshStandardMaterial color={bootPalette.sole} roughness={0.48} metalness={0.5} />
@@ -554,22 +524,18 @@ export const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
             ) : null}
             {bootPalette ? (
               <group>
-                {/* Chunky Minecraft armor boot cuff around lower shin */}
                 <mesh castShadow position={[0, -4.1 * PX, 0]}>
                   <boxGeometry args={[4.45 * PX, 3.8 * PX, 4.8 * PX]} />
                   <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.22} roughness={0.28} metalness={0.58} />
                 </mesh>
-                {/* Engraved boot collar rim */}
                 <mesh castShadow position={[0, -2.15 * PX, 0]}>
                   <boxGeometry args={[4.7 * PX, 0.7 * PX, 5.05 * PX]} />
                   <meshStandardMaterial color={bootPalette.trim} roughness={0.35} metalness={0.62} />
                 </mesh>
-                {/* Armored toe cap protruding forward */}
                 <mesh castShadow position={[0, -5.05 * PX, 0.7 * PX]}>
                   <boxGeometry args={[4.5 * PX, 1.9 * PX, 4.6 * PX]} />
                   <meshStandardMaterial color={bootPalette.main} emissive={bootPalette.emissive} emissiveIntensity={0.25} roughness={0.25} metalness={0.62} />
                 </mesh>
-                {/* Heavy metallic sole */}
                 <mesh position={[0, -5.85 * PX, 0.35 * PX]}>
                   <boxGeometry args={[4.6 * PX, 0.42 * PX, 5.35 * PX]} />
                   <meshStandardMaterial color={bootPalette.sole} roughness={0.48} metalness={0.5} />

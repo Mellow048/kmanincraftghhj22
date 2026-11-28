@@ -6,17 +6,9 @@ One folder per video. One TSX file per scene. One shared `world.tsx`. One camera
 
 This is not a template for "a Minecraft video". It is a director's framework with a working 20-second demo, a camera bible, a style bible, a scene contract and a lint script that fails lazy work.
 
-> ## 🚨 STOP — MANDATORY READ FOR EVERY ARENA AGENT (OWNER PREFERENCES + v8 BENCHMARKS + 20K+ HIT RULEBOOK)
+> ## 🚨 STOP — MANDATORY READ FOR EVERY ARENA AGENT (20K+ HIT RULEBOOK)
 >
-> **Read Section 0A of [`AGENTS.md`](AGENTS.md) first** so the owner never has to repeat what he **wants**, **doesn't want**, and **loves**:
-> - **What he LOVES (Approved v8 Full `source/` + `.mp4` References):**
->   - *In This Town*: [`Topics/InThisTown/reference/nobody-wears-gold/`](Topics/InThisTown/reference/nobody-wears-gold/README.md) (real Minecraft Piglin gold-barter twist, hero self-discovery, Mayor Vance top-hat/mustache silhouette + iron-scam motive, real 3D gold boots, 0 buried SFX).
->   - *Explainer*: [`Topics/Explainer/reference/tariffs-explained/`](Topics/Explainer/reference/tariffs-explained/README.md) (genuinely separate Red/Blue Islands across an ocean bridge, `StoneBillboard` shop prices, elevated `StandingRuleSign`, twin `BEFORE`/`AFTER` chests, consistent lead `Felint`, seamless Frame-0 loop).
->   - *Server Lore*: [`Topics/ServerLore/reference/buried-himself-every-ten-minutes/`](Topics/ServerLore/reference/buried-himself-every-ten-minutes/README.md) (6 bespoke grounded zones — carved forest shaft + choppable oak tree, torch-lit flaming Dungeon Boss arena, underground ant-farm cutaway with prowling zombies above, lantern Safe Booths + Iron Golems, spacious IRL bedroom, centered `OpenBookPage` — plus dual-track `up_happy` ↔ `up_sad` score).
-> - **What he WANTS:** Pitch → approval first; literal custom sets for every named place/noun; zero Z-fighting (`polygonOffset`, non-overlapping terrain slabs); wide 9:16-safe framing (`cam.frameDuo`, unclipped signs/golems); natural energetic male American voice; louder balanced topic BGM + **0 buried SFX**; ≤ 2:58 Shorts ceiling; visual contact-sheet audit of rendered MP4s before delivery.
-> - **What he DOES NOT WANT:** Ground Z-fighting/flicker; fake dirt boxes on generic streets standing in for forests/dungeons/islands; overlapping 3D text + 2D HUD banners; clipped signs/books/limbs; blinding white sun glare; static mannequins or 1-inch slides/teleports; whisper-quiet BGM or buried SFX; plot holes or copy-pasted outlines; `ServerLore` scoreboards; local laptop renders without permission.
->
-> **Also study these foundational docs:**
+> **If you are an agent starting a new Short in this repository, you MUST read these before writing anything (so the owner never has to repeat the winning formula again):**
 >
 > 1. **[`20k-hits/README.md`](20k-hits/README.md)** — Inspect **all 3 × 20k+ hit videos + full source code + shot logs** (*Monster Village Part 1*, *Creeper Parents*, *Enderman Parents*) and **[`docs/WHY-THE-3-HITS-BLEW-UP.md`](docs/WHY-THE-3-HITS-BLEW-UP.md)** so we consistently repeat what made them hit 20k+ instead of stalling at 1.5k.
 > 2. **[`docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md`](docs/COMPETITOR-STUDY-NEVER-WALK-ALONE.md)** — Study why *Never Walk Alone After Dark* hit **5k views in 15h** (`~1.47s` median shot, `110` cuts, `0.7%` dark frames, literal 3D sight-gags + `<FloatingNumber>` + `<ChatToast>` + dual-color red/gold captions).

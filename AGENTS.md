@@ -1,33 +1,5 @@
 # AGENTS.md — The Director's Contract
 
-## 0A. Owner's Standing Preferences — What the Owner WANTS, DOESN'T WANT, and LOVES (v8 Standard, 2026-11-27)
-
-Read this BEFORE pitching, writing, staging, or rendering any Short so the owner never has to explain these again.
-
-### What the Owner LOVES (Benchmark Standard — Study These 3 Approved v8 References First)
-Each approved v8 reference has full `source/`, rendered `1080×1920` `.mp4`, one-frame-per-shot contact sheet, and `shot-log.md`:
-- **In This Town:** [`Topics/InThisTown/reference/nobody-wears-gold/`](Topics/InThisTown/reference/nobody-wears-gold/README.md) — Piglin gold-barter Minecraft mechanic as twist & payoff, hero self-discovery, explicit villain motive (Mayor Vance in custom black top hat & white mustache), real 3D gold armor boots (`boots="gold"`), and a 4-layer payoff.
-- **Explainer:** [`Topics/Explainer/reference/tariffs-explained/`](Topics/Explainer/reference/tariffs-explained/README.md) — genuinely separate Red & Blue Islands across an ocean bridge, dark `StoneBillboard` shop readouts, elevated `StandingRuleSign`, twin `BEFORE`/`AFTER` chests, consistent relatable lead (`Felint`), and seamless Frame-0 loop.
-- **Server Lore:** [`Topics/ServerLore/reference/buried-himself-every-ten-minutes/`](Topics/ServerLore/reference/buried-himself-every-ten-minutes/README.md) — 6 literal custom worlds (`forest` with real carved sunken shaft & choppable oak tree, torch-lit `dungeon` with 3.2 m flaming `DungeonBoss`, underground `burrow` ant-farm cutaway with prowling zombies overhead, `smp` lantern Safe Booths + full-frame Iron Golems, spacious `irl` bedroom, centered `OpenBookPage` `cabin`) + dual-track `up_happy` ↔ `up_sad` emotional score.
-
-### What the Owner WANTS (Do Every Time)
-1. **Pitch → Script/Voice Approval → Build → Visual Audit:** Pitch distinct ideas first, get approval, use a natural, energetic, non-old, unaccented male American voice (auditioned via Arena TTS or free `edge-tts` per topic), and visually inspect contact-sheet frames from the rendered MP4 before delivering.
-2. **Literal Custom Sets Matching Every Spoken Word:** Never fake a forest, dungeon, underground cave, or twin islands on a generic street. Carve real sunken shafts in elevated terrain, build real boss arenas and underground cutaways, and separate islands across real ocean water.
-3. **Zero Z-Fighting, Zero Clipped Text, Zero Sun-Glare Washout:** Strictly non-overlapping terrain slabs; `polygonOffset` on contact shadows & `LightPool`s; elevated signs (`StandingRuleSign`, `StoneBillboard`); centered `OpenBookPage`; balanced `overworld-golden` lighting instead of blinding white glare.
-4. **Tight Logic, Self-Discovery & Memorable Silhouettes:** Heroes discover rules/loopholes themselves (no off-screen magic fixes); villains have clear motives and recognizable silhouettes (hats, mustaches, 3D armor boots/helmets).
-5. **Wide 9:16-Safe Framing & Single Clean HUD:** Frame two-shots (`cam.frameDuo`), tall mobs/Iron Golems, booths, and twin chests cleanly (`dist: 5.8–8.6 m, fov: 44–48°`) so zero heads, arms, or letters get cropped. Never collide 3D `FloatingNumber` text with 2D `shot.hud` banners.
-6. **Balanced Louder Music & 0 Buried SFX:** Keep continuous topic-authentic music clearly audible on phone speakers (`InThisTown` ~15–18 dB under voice; `Explainer` ~17–19 dB; `ServerLore` ~13–16 dB with `up_happy.m4a` trimmed past silent intro via `trackFrom: 2.5`), **0 buried SFX**, and ~−14.7 to −15.2 LUFS. Always disclose that an AI agent cannot physically listen to audio.
-7. **Strict Shorts Ceiling (≤ 2:58 / 178 s) & Reference Archiving:** Never exceed 3 minutes. When the owner approves Shorts, archive full `source/` + byte-for-byte `.mp4` + one-frame-per-shot contact sheet + `shot-log.md` + `README.md` into `Topics/<Topic>/reference/` and update `topic.json`.
-
-### What the Owner DOES NOT WANT (Immediate Rejections)
-- **NO** flickering ground Z-fighting or coplanar overlapping slabs/shadows.
-- **NO** fake box props standing in for real environments (e.g., a dirt cube sitting on top of a street instead of a real carved hole in a meadow).
-- **NO** overlapping 2D HUD + 3D floating text, clipped signs/books, submerged `RuleBoard`s, unreadable top-down tilted text, or cropped limbs/golems at 9:16 phone edges.
-- **NO** stiff static mannequins, 1-inch floor slides, sideways moonwalking, or hard snap-teleports on actor collision.
-- **NO** whisper-quiet BGM, accidental multi-second music gaps, buried SFX, or scoreboards in `ServerLore`.
-- **NO** plot holes, off-screen deus-ex-machina reveals, or copy-pasting an earlier mob-family outline.
-- **NO** local renders on the owner's machine without permission — always render single joined MP4s via `.github/workflows/render.yml`.
-
 ## 0. Before everything: read [`MASTERPROMPT-01.md`](MASTERPROMPT-01.md)
 
 The owner's standing brief, given 2026-11-11, the day Monster Village Part 1 passed 15,000 views. Read it at the
@@ -552,25 +524,25 @@ If they cannot, the film is not done — no matter how many props are in the roo
 
 ---
 
-## 13. Engine v7–v8 Upgrades (Directing Soul + Smooth Pushback + Zero Z-Fighting + 3D Boots + 9:16 Framing + 2D HUD)
+## 13. Engine v7 Upgrades (Directing Soul + Valve Soft-Pushback + 9:16 Framing + 2D HUD)
 
 These upgrades extend the Director's Contract above without replacing it — **"Stage the verb, then place the lens"** and **`wordAt()` word-locked acting** remain law:
 
 1. **Stage the Verb First (`wordAt()` + `useWalkPath()` / `moveBetween()`):**
-   - Never park a character waving on one spot for 2+ seconds. Every shot stages a concrete physical verb (chopping a notched oak tree with an `IronAxe`, fighting a `DungeonBoss`, dropping down a real carved shaft, handing over emeralds, throwing a vault lever) timed to the spoken word via `wordAt(timing, cue, word)`.
+   - Never park a character waving on one spot for 2+ seconds. Every shot stages a concrete physical verb (walking A→B, dropping TNT, handing over emeralds, opening a chest, recoiling from shadows) timed to the spoken word via `wordAt(timing, cue, word)`.
    - Use `useWalkPath()` / `blockedRoute()` or `moveBetween()` so feet match metres travelled (`animDistance`).
 2. **9:16 Phone-Width Safe Framing (`cam.frameDuo` & `cam.fitDist9x16`):**
-   - Vertical 9:16 (`aspect = 0.5625`) has roughly **half** the horizontal field of view of 16:9. `cam.frameDuo` enforces `min dist 6.4`, `fov 46`, and wide span margin so two characters, booths, Iron Golems, or comparison chests never clip off phone edges.
-   - Always pass `on: [x, y, z]` to `cam.streetOverview` so cranes stay locked on the action.
-3. **Zero Z-Fighting, Smooth Pushback & 3D Armor Boots (`src/engine/`):**
-   - `LightPool` (`fx.tsx`) and `MinecraftAvatar` contact shadows carry `polygonOffset`, and `VillageStreet` (`Topics/InThisTown/places.tsx`) uses non-overlapping terrain slabs so ground planes never flicker.
-   - `CollisionWorld` (`collision.tsx`) uses a smooth cubic separation ramp (no 1-inch snap-teleports), and `SolidBox` registers walls for spring-arm camera protection (`Camera.tsx`).
-   - `MinecraftAvatar` supports chunky 3D `boots?: "gold" | "iron" | "diamond"` armor meshes on both animated shins, and `FloatingNumber` billboards to the full parent-adjusted `camera.quaternion` so top-down text stays upright and legible.
-4. **Clean 2D Screen-Space HUD (`shot.hud` via `src/engine/Hud.tsx`):**
-   - Put Minecraft chat (`hud.chat` + `typing: true`), clock badges (`hud.clock`), callout banners (`hud.banner`), and the CTA pill (`hud.subscribe: true`) in `shot.hud`. **Never overlap a 3D `FloatingNumber` with a `shot.hud` banner on the same shot.** (Base 20-second films remain strictly 3D.)
-5. **ServerLore Clean UI & Voice Discipline:**
-   - `server-lore` (`Topics/ServerLore`) NEVER uses `<ScoreboardWall>`. Use bespoke zones + `ServerPlayer`, `BadgePop`, `TearDrops`, `FloatingHeart`, centered `OpenBookPage`, and `shot.hud.chat`.
-   - Use auditioned Arena TTS (`add_voice` / `generate_speech`) or free `edge-tts` (`--gap 0.42`, natural speed) — never paid ElevenLabs. Always disclose that an agent cannot physically listen to audio.
+   - Vertical 9:16 (`aspect = 0.5625`) has roughly **half** the horizontal field of view of 16:9. Never zoom so close that two characters or a prop get sliced off the left/right edges of the phone.
+   - Use `cam.frameDuo({ a, b })` for two-character shots, and always pass `on: [x, y, z]` to `cam.streetOverview` so cranes stay locked on the action instead of drifting over empty ground.
+3. **Deterministic Actors, Deterministic Camera & Non-Blooming 2D Captions (v11):**
+   - Actors and cameras stay 100% locked to their authored coordinates from frame 0 onward (zero frame-1 collision pops, zero raycast camera flicking). Keep characters spaced >= 0.9m apart when staging pairs.
+   - `<Captions>` renders as a crisp 2D pixel-art SVG overlay outside `<ThreeCanvas>`, so WebGL `UnrealBloomPass` and sepia filters never make subtitles glow.
+4. **2D Screen-Space HUD (`shot.hud` via `src/engine/Hud.tsx`):**
+   - For narrated topic Shorts (`server-lore`, `explainer`, `in-this-town`), put Minecraft chat (`hud.chat` + `typing: true`), clock badges (`hud.clock`), big callout banners (`hud.banner`), and the CTA pill (`hud.subscribe: true`) in `shot.hud` so UI is always crisp, horizontal, and 100% readable on a phone. (Base 20-second films remain strictly 3D.)
+5. **ServerLore Topic & Free Edge-TTS Default:**
+   - `server-lore` (`Topics/ServerLore`) NEVER uses `<ScoreboardWall>`. Use real SMP server maps (`<CherryCabinMap />`, `<TropicalIslandMap />`, `<CherryCampfireMap />`, `<SpawnHubMap />`) + IRL maps (`<ComputerRoomMap />`, `<HouseLivingRoomMap />`, `<ClassroomHallMap />`), `ServerPlayer`, `BadgePop`, `TearDrops`, `FloatingHeart`, and `shot.hud.chat`.
+   - All voiceovers use free `edge-tts` (`--gap 0.42`, natural speed `+0%`/`-2%`/`+3%`) — never ElevenLabs.
+
 
 ## 14. Multi-Map & Universal Set-Piece Catalog (v9 — Stop Reusing One Map!)
 
@@ -590,3 +562,32 @@ NEVER reuse `<VillageStreet />` for every channel. Pick the matching biome/serve
   - `<MineEntrance />` — Timber-framed stone mine arch with rails & torches
   - `<IslandBridge />` — Two distinct grass islands separated by real water with a wooden bridge
   - `<CampfireProp />`, `<CraftingStation />`, plus `<PlainsVillageMap />` & `<DarkOakVillageMap />`
+
+## 15. Explainer Superpowers (v10 — Checklist Modal, Rolling Counters, Alert Stamps, Sepia Flashbacks & School Campus)
+
+Inside `shot.hud`, Explainer (and any narrated topic Short) now supports 4 high-retention visual devices:
+
+- **`hud.checklist`** — Authentic Minecraft grey inventory modal with progressive word-timed rows & green `✓` / red `✕` stamps:
+  ```tsx
+  hud: {
+    checklist: {
+      title: "THE PLAN",
+      rows: [
+        { text: "1. Go to School", at: 0.1, done: true, doneAt: 0.5 },
+        { text: "2. Go to College", at: 0.9, done: true, doneAt: 1.3 },
+        { text: "3. Get a Safe Job", at: 1.7, done: "fail", doneAt: 2.2 },
+      ],
+      footer: "DEBT: 500 EMERALDS",
+    },
+  }
+  ```
+- **`hud.counter`** — Smooth ease-out rolling numeric counter (`12 YEARS`, `DEBT: 500`, `DAY 1000`, `+2,778`):
+  ```tsx
+  hud: { counter: { label: "DAY", from: 1, to: 1000, startAt: 0.1, dur: 1.4, color: "#55ff55" } }
+  ```
+- **`hud.stamp`** — Slanted rubber-stamp callout that slams onto the frame (`"TEST!"`, `"GONE"`, `"FAILED"`):
+  ```tsx
+  hud: { stamp: { text: "GONE", color: "#ff3b30", at: 0.35, angle: -11 } }
+  ```
+- **`hud.filter`** — Applies `"sepia"` | `"bw"` | `"vintage"` to the 3D scene while keeping 2D HUD text razor-sharp (ideal for `"200 YEARS AGO — FACTORY AGE"` flashbacks).
+- **`<SchoolCampusMap />`** (`Topics/Explainer/maps.tsx`, exported in `Topics/Explainer` and `Topics/Explainer/template/kit.tsx`) — Open-roof brick schoolhouse (9 desks + green chalkboard + teacher lectern) + classical white-pillared College hall + red-brick Factory with twin smokestacks, all with `<SolidBox>` walls and zero z-fighting.

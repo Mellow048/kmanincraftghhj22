@@ -70,6 +70,9 @@ export const Block: React.FC<{
   >
     <boxGeometry args={size} />
     <meshStandardMaterial
+        polygonOffset={size[1] <= 0.25}
+        polygonOffsetFactor={-1}
+        polygonOffsetUnits={-1}
       color={color}
       map={map ?? null}
       emissive={emissive ?? "#000000"}
@@ -196,7 +199,7 @@ export const Sign: React.FC<{
   fg = "#1b2028",
   accent = "#c8402f",
   grid = false,
-  lit = 0.22,
+  lit = 0.04,
   frame = true,
 }) => {
   const tex = posterTex({ title, subtitle, lines, bg, fg, accent, grid });
@@ -892,13 +895,7 @@ export const FloatingNumber: React.FC<{
   const dy = bob > 0 ? Math.sin(t * 3.1) * bob : 0;
   useFrame(({ camera }) => {
     if (rotationY === undefined && ref.current) {
-      if (ref.current.parent) {
-        const pq = new THREE.Quaternion();
-        ref.current.parent.getWorldQuaternion(pq);
-        ref.current.quaternion.copy(pq.invert()).multiply(camera.quaternion);
-      } else {
-        ref.current.quaternion.copy(camera.quaternion);
-      }
+      ref.current.quaternion.copy(camera.quaternion);
     }
   });
 
@@ -935,7 +932,7 @@ export const ChatToast: React.FC<{
   position = [0, 2.4, 0],
   rotationY,
   height = 0.24,
-  color = "#ffffff",
+  color = "#d6dbe2",
 }) => {
   const ref = useRef<THREE.Group>(null);
   const line = sender ? `<${sender}> ${text}` : text;
@@ -947,9 +944,7 @@ export const ChatToast: React.FC<{
   const effH = height * scaleClamp;
   useFrame(({ camera }) => {
     if (rotationY === undefined && ref.current) {
-      const wp = new THREE.Vector3();
-      ref.current.getWorldPosition(wp);
-      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+      ref.current.quaternion.copy(camera.quaternion);
     }
   });
 

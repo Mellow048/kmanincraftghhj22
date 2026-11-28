@@ -13,12 +13,69 @@ export type HudChatLine = {
   whisper?: boolean;
 };
 
+export type HudChecklistRow = {
+  text: string;
+  /** Seconds into the shot when this row appears (default staggered by 0.28s). */
+  at?: number;
+  /** Show a crisp green checkmark (true), red X ("fail"), or empty box (false). */
+  done?: boolean | "fail";
+  /** Seconds into the shot when the checkmark / X stamps in (default `at + 0.18`). */
+  doneAt?: number;
+};
+
+export type HudChecklist = {
+  title: string;
+  rows: HudChecklistRow[];
+  /** Optional footer callout inside the modal (e.g. "DEBT: 500 EMERALDS"). */
+  footer?: string;
+  footerColor?: string;
+  /** Vertical placement: "top" (default, sits in upper half clear of captions) or "center". */
+  position?: "top" | "center";
+};
+
+export type HudCounter = {
+  label?: string;
+  from: number;
+  to: number;
+  /** Optional prefix/suffix (e.g. prefix: "+", suffix: " YEARS" or " EMERALDS"). */
+  prefix?: string;
+  suffix?: string;
+  /** Seconds into the shot when the roll starts (default 0.1). */
+  startAt?: number;
+  /** Roll duration in seconds (default 1.2). */
+  dur?: number;
+  /** Accent colour (default "#ffdd57"). */
+  color?: string;
+  /** Screen anchor: "top-left" | "top-right" | "top-center" (default "top-center"). */
+  align?: "top-left" | "top-right" | "top-center";
+};
+
+export type HudStamp = {
+  text: string;
+  /** Stamp colour (default "#ff3b30" red alert; use "#55ff55" for approved, "#ffdd57" for warning). */
+  color?: string;
+  /** Seconds into the shot when the stamp slams onto the screen (default 0.15). */
+  at?: number;
+  /** Tilt angle in degrees (default -11). */
+  angle?: number;
+};
+
+export type HudFilter = "sepia" | "bw" | "vintage";
+
 export type ShotHud = {
   chat?: HudChatLine[];
   typing?: boolean;
   clock?: string;
   banner?: { text: string; color?: string; sub?: string };
   subscribe?: boolean;
+  /** Minecraft-style grey inventory checklist modal (e.g. "THE PLAN" with progressive checkmarks). */
+  checklist?: HudChecklist;
+  /** Live rolling numeric counter (e.g. "12 YEARS", "DEBT: 500", "DAY 1000", "+2778"). */
+  counter?: HudCounter;
+  /** Slanted rubber-stamp callout that slams onto the frame (e.g. "TEST!", "GONE", "FAILED"). */
+  stamp?: HudStamp;
+  /** Scene-level colour filter applied to the 3D canvas while keeping 2D HUD text crisp ("sepia" for flashbacks). */
+  filter?: HudFilter;
 };
 
 export type Shot = {

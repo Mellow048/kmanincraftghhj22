@@ -187,10 +187,6 @@ SAY = {
     "rebooting": "R IY B UW T IH NG",
     "piglin": "P IH G L IH N",
     "piglins": "P IH G L IH N Z",
-    "felint": "F EH L IH N T",
-    "felint's": "F EH L IH N T S",
-    "vance's": "V AE N S IH Z",
-    "vances": "V AE N S IH Z",
     "evokers": "IH V OW K ER Z",
     "evoker": "IH V OW K ER",
     "vindicators": "V IH N D IH K EY T ER Z",
@@ -223,7 +219,7 @@ SAY = {
     "booted": "B UW T AH D",
     "laptop": "L AE P T AA P",
     "smiling": "S M AY L IH NG",
-    "minecraft": "M AY N K R AE F T",    "midsentence": "M IH D S EH N T AH N S",    "messaged": "M EH S AH JH D",    "moo": "M UW",    "toby": "T OW B IY",    "milked": "M IH L K T",    "palette": "P AE L AH T",    "tossed": "T AO S T",    "straps": "S T R AE P S",    "postman": "P OW S T M AE N",    "hugged": "HH AH G D",    "baron": "B EH R AH N",    "afk": "EY EH F K EY",    "griefer": "G R IY F ER",    "splinters": "S P L IH N T ER Z",    "autotyped": "AO T OW T AY P T",    "maya": "M AY AH",    "jake": "JH EY K",    "firefly": "F AY ER F L AY",    "fireflies": "F AY ER F L AY Z",    "mailman": "M EY L M AE N",    "windstorm": "W IH N D S T AO R M",    "puddle": "P AH D AH L",    "mods": "M AA D Z",    "groans": "G R OW N Z",    "waiteight": "W EY T EY T",    "playerstotally": "P L EY ER Z T OW T AH L IY",    "sorryshe": "S AA R IY SH IY",    "disconnected": "D IH S K AH N EH K T IH D",
+    "minecraft": "M AY N K R AE F T",
 }
 
 def assembled_spans(raw, count, length):
