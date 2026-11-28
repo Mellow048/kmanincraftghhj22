@@ -31,12 +31,15 @@ export const scene2 = storyScene(timing, {
       zone: "smp",
       look: "overworld-rain",
       note: "Cruel breaking point: rainy night as Rex creeps toward Arthur's lane with a smug grin.",
-      stage: (t) => (
-        <>
-          <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="blue" />
-          <ServerPlayer role="bully" nameTag="Rex" position={at(S, -1.2, 0, 6.2)} rotationY={0.3} animation="creep" face="smug" time={t} />
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(S, -2.5, 0, 6.2), at(S, -1.0, 0, 6.2), t, 0, 1.3);
+        return (
+          <>
+            <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="blue" />
+            <ServerPlayer role="bully" nameTag="Rex" position={w.position} rotationY={w.rotationY} animation={w.moving ? "creep" : "idle"} animDistance={w.animDistance} face="smug" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "4.break",
@@ -72,7 +75,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="cobble" />
-            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="sad" time={t} />
+            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="sad" time={t} />
           </>
         );
       },
@@ -115,16 +118,16 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "5.owner",
-      ...cam.track({ from: at(C, 0, 0, 2.2), to: at(C, 0, 0, -0.8), sideDist: 2.8, lead: 0.8, height: 1.5, fov: 42 }),
+      ...cam.sweep({ on: at(C, 0, 1.1, 0.5), dist: 3.4, fromYaw: -20, toYaw: 20, pitch: 10, fov: 42 }),
       zone: "cabin",
       look: "warm-room",
-      note: "2.5s emotional hush: Server Owner steps quietly inside Arthur's empty cottage.",
+      note: "OTS 2.5s emotional hush: Server Owner steps quietly inside Arthur's empty cottage.",
       stage: (t) => {
         const w = moveBetween(at(C, 0, 0, 2.2), at(C, 0, 0, -0.8), t, 0, 1.3);
         return (
           <>
             <OpeningChest position={at(C, 1.6, 0, -2.2)} open={0} contents="book" />
-            <ServerPlayer role="owner" nameTag="Owner" crown position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="worried" time={t} />
+            <ServerPlayer role="owner" nameTag="Owner" crown position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="worried" time={t} />
           </>
         );
       },
@@ -245,12 +248,16 @@ export const scene2 = storyScene(timing, {
       zone: "smp",
       look: "lantern-night",
       note: "Wide crane down the glowing blue wool & sea-lantern highway leading straight to Arthur's door.",
-      stage: () => (
-        <>
-          <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="glowing" />
-          <BlueLanternRoad position={at(S, 0, 0, 2.5)} />
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(S, 0, 0, 0.5), at(S, 0, 0, 5.5), t, 0, 1.4);
+        return (
+          <>
+            <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="glowing" />
+            <BlueLanternRoad position={at(S, 0, 0, 2.5)} />
+            <ServerPlayer role="owner" nameTag="Owner" crown position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="smile" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "6.place2",

@@ -76,10 +76,11 @@ export const scene3 = storyScene(timing, {
       note: "All fifty players lie down in their beds at the exact same second.",
       stage: (t) => (
         <>
-          <ServerPlayer role="hero" nameTag="Marcus" position={at(H, 0, 0.58, 1.2)} rotationY={0} animation="sleep" face="sleepy" time={t} />
+          <FloatingHeart position={at(H, 0, 2.0, 0.8)} count={6} t={t} />
+          <ServerPlayer role="hero" nameTag="Marcus" position={at(H, -0.9, 0.58, 1.2)} rotationY={0} animation="sleep" face="sleepy" time={t} />
           <ServerCrowd
             members={[
-              { role: "owner", position: at(H, -1.8, 0.58, 1.2), rotationY: 0, animation: "sleep" },
+              { role: "owner", position: at(H, -2.2, 0.58, 1.2), rotationY: 0, animation: "sleep" },
               { role: "friendA", position: at(H, 1.8, 0.58, 1.2), rotationY: 0, animation: "sleep" },
               { role: "mom", position: at(H, -3.6, 0.58, -1.2), rotationY: 0, animation: "sleep" },
               { role: "bully", position: at(H, 3.6, 0.58, -1.2), rotationY: 0, animation: "sleep" },
@@ -110,9 +111,12 @@ export const scene3 = storyScene(timing, {
       look: "overworld-golden",
       hud: { clock: "6:00 AM · SUNRISE" },
       note: "Bright golden morning breaks over the Cherry Blossom Cabin with zero Phantoms in the sky.",
-      stage: (t) => (
-        <ServerPlayer role="hero" nameTag="Marcus" position={at(C, 0, 0, 3.2)} rotationY={0} animation="cheer" face="grin" time={t} />
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(C, 0, 0, 2.2), at(C, 0, 0, 3.6), t, 0, 1.1);
+        return (
+          <ServerPlayer role="hero" nameTag="Marcus" position={w.position} rotationY={0} animation={w.moving ? "walk" : "cheer"} animDistance={w.animDistance} face="grin" time={t} />
+        );
+      },
     },
     {
       cue: "7.hug",
@@ -120,13 +124,16 @@ export const scene3 = storyScene(timing, {
       zone: "cabin",
       look: "overworld-golden",
       note: "His little brother runs out the cabin door grinning and hugs Marcus tight.",
-      stage: (t) => (
-        <>
-          <FloatingHeart position={at(C, 0, 2.2, 3.2)} count={8} t={t} />
-          <ServerPlayer role="hero" nameTag="Marcus" position={at(C, -0.65, 0, 3.2)} rotationY={1.0} animation="hug" face="grin" time={t} />
-          <ServerPlayer role="friendA" nameTag="Little Bro" scale={0.78} position={at(C, 0.65, 0, 3.2)} rotationY={-1.0} animation="hug" face="grin" time={t} />
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(C, 1.8, 0, 3.2), at(C, 0.65, 0, 3.2), t, 0, 0.8);
+        return (
+          <>
+            <FloatingHeart position={at(C, 0, 2.2, 3.2)} count={8} t={t} />
+            <ServerPlayer role="hero" nameTag="Marcus" position={at(C, -0.65, 0, 3.2)} rotationY={1.0} animation="hug" face="grin" time={t} />
+            <ServerPlayer role="friendA" nameTag="Little Bro" scale={0.78} position={w.position} rotationY={w.moving ? w.rotationY : -1.0} animation={w.moving ? "run" : "hug"} animDistance={w.animDistance} face="grin" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "7.sub",

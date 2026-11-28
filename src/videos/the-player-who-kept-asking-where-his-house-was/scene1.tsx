@@ -27,12 +27,15 @@ export const scene1 = storyScene(timing, {
         typing: true,
       },
       note: "Hook: Silver-haired Arthur turns confused 10 blocks from his blue-roofed cottage while chat types.",
-      stage: (t) => (
-        <>
-          <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="blue" />
-          <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={at(S, 0, 0, 2.2)} rotationY={0} animation="lookAround" face="worried" badge="?" time={t} />
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(S, 0, 0, 1.2), at(S, 0, 0, 2.2), t, 0, 0.9);
+        return (
+          <>
+            <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="blue" />
+            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={0} animation={w.moving ? "walk" : "shrug"} animDistance={w.animDistance} face="worried" badge="?" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "1.close",
@@ -86,7 +89,7 @@ export const scene1 = storyScene(timing, {
             <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="blue" />
             <TrailSign position={at(S, 1.8, 0, 0.5)} title="MY HOUSE ->" />
             <TrailSign position={at(S, 1.8, 0, 5.0)} title="BLUE ROOF" />
-            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="calm" time={t} />
+            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="calm" time={t} />
           </>
         );
       },
@@ -113,7 +116,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="blue" />
-            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="worried" time={t} />
+            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="worried" time={t} />
           </>
         );
       },
@@ -136,7 +139,7 @@ export const scene1 = storyScene(timing, {
       ...cam.sweep({ on: at(I, 0, 1.2, -1.9), dist: 3.0, fromYaw: -52, toYaw: -34, pitch: 8, fov: 40 }),
       zone: "irl",
       look: "warm-room",
-      note: "Human truth reveal: 72-year-old Arthur sits quietly at his warm lamp-lit IRL computer desk.",
+      note: "OTS human truth reveal: 72-year-old Arthur sits quietly at his warm lamp-lit IRL computer desk.",
       stage: (t) => (
         <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" position={at(I, 0, 0, -1.6)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
       ),
@@ -147,9 +150,9 @@ export const scene1 = storyScene(timing, {
       zone: "irl",
       look: "warm-room",
       hud: { banner: { text: "FIND THE BLUE ROOF", color: "#ffe066" } },
-      note: "Close sweep on the yellow sticky note taped to Arthur's monitor: FIND THE BLUE ROOF.",
+      note: "OTS close sweep on the yellow sticky note taped to Arthur's monitor: FIND THE BLUE ROOF.",
       stage: (t) => (
-        <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" position={at(I, 0, 0, -1.6)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
+        <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" position={at(I, 0, 0, -1.6)} rotationY={Math.PI} animation="point" face="calm" time={t} />
       ),
     },
     {

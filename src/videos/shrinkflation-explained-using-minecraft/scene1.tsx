@@ -58,7 +58,9 @@ export const scene1 = storyScene(timing, {
       ...cam.sweep({ on: at(B, 0, 1.45, -2.0), dist: 3.4, fromYaw: -20, toYaw: 20, pitch: 18, fov: 38 }),
       zone: "bakery",
       note: "Tight sweep into the oversized box revealing one tiny sad slice of cake surrounded by empty air.",
-      stage: () => <ShinyCakeBox position={at(B, 0, 1.09, -2.0)} lidOpen={1} tall slices={1} />,
+      stage: (t) => (
+        <ShinyCakeBox position={at(B, 0, 1.09, -2.0)} lidOpen={0.6 + ease(ramp(t, 0, 0.8)) * 0.4} tall slices={1} />
+      ),
     },
     {
       cue: "1.price",

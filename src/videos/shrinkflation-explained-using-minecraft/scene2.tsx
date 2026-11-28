@@ -31,7 +31,7 @@ export const scene2 = storyScene(timing, {
       stage: (t) => (
         <>
           <FloatingNumber text="1 -> 3" position={at(M, -4.0, 2.4, -2.0)} color="#ff4f42" />
-          <EliteLead variant="pres" nameTag="Sterling" position={at(M, -4.0, 0, 0.2)} rotationY={Math.PI} animation="panic" face="worried" time={t} />
+          <EliteLead variant="pres" nameTag="Sterling" position={at(M, -4.0, 0, 0.2)} rotationY={-0.4} animation="panic" face="worried" time={t} />
         </>
       ),
     },
@@ -68,14 +68,14 @@ export const scene2 = storyScene(timing, {
         const w = moveBetween(at(B, 0, 0, 0.6), at(B, 0, 0, 5.4), t, 0, 1.4);
         return (
           <>
-            <CitizenLead variant="leo" nameTag="Felint" position={w.position} rotationY={0} animation="walk" animDistance={w.animDistance} face="frown" time={t} />
+            <CitizenLead variant="leo" nameTag="Felint" position={w.position} rotationY={0} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="frown" time={t} />
             <ExplainerCrowd
               positions={[
                 [w.position[0] - 1.6, 0, w.position[2] + 0.4],
                 [w.position[0] + 1.6, 0, w.position[2] + 0.5],
               ]}
               rotationY={0}
-              animation="walk"
+              animation={w.moving ? "walk" : "idle"}
               animDistance={w.animDistance}
               face="frown"
               time={t}
@@ -116,14 +116,14 @@ export const scene2 = storyScene(timing, {
         const w = moveBetween(at(B, 0, 0, 5.2), at(B, 0, 0, 0.6), t, 0, 1.35);
         return (
           <>
-            <CitizenLead variant="leo" nameTag="Felint" position={w.position} rotationY={Math.PI} animation="run" animDistance={w.animDistance} face="grin" time={t} />
+            <CitizenLead variant="leo" nameTag="Felint" position={w.position} rotationY={Math.PI} animation={w.moving ? "run" : "cheer"} animDistance={w.animDistance} face="grin" time={t} />
             <ExplainerCrowd
               positions={[
                 [w.position[0] - 1.6, 0, w.position[2] + 0.5],
                 [w.position[0] + 1.6, 0, w.position[2] + 0.4],
               ]}
               rotationY={Math.PI}
-              animation="run"
+              animation={w.moving ? "run" : "cheer"}
               animDistance={w.animDistance}
               face="grin"
               time={t}
@@ -153,7 +153,7 @@ export const scene2 = storyScene(timing, {
       ...cam.sweep({ on: at(W, 0, 1.2, -2.6), dist: 3.6, fromYaw: -20, toYaw: 20, pitch: 14, fov: 40 }),
       zone: "workshop",
       look: "warm-room",
-      note: "Sterling slices two full pieces cleanly off the seven-slice cake.",
+      note: "OTS: Sterling slices two full pieces cleanly off the seven-slice cake.",
       stage: (t) => (
         <>
           <EliteLead variant="pres" nameTag="Sterling" position={at(W, 0.9, 0, -1.4)} rotationY={-2.4} animation="press" face="smug" time={t} />
@@ -163,10 +163,10 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.tall",
-      ...cam.sweep({ on: at(W, 0, 1.4, -2.6), dist: 3.8, fromYaw: 20, toYaw: -20, pitch: 12, fov: 40 }),
+      ...cam.sweep({ on: at(W, 0, 1.4, -2.6), dist: 3.8, fromYaw: -55, toYaw: -25, pitch: 12, fov: 40 }),
       zone: "workshop",
       look: "warm-room",
-      note: "He slides the shrunken cake into an even taller, flashier red-and-white box.",
+      note: "OTS: He slides the shrunken cake into an even taller, flashier red-and-white box.",
       stage: (t) => (
         <>
           <EliteLead variant="pres" nameTag="Sterling" position={at(W, 1.2, 0, -1.4)} rotationY={-2.5} animation="point" face="grin" time={t} />
@@ -200,33 +200,48 @@ export const scene2 = storyScene(timing, {
           <MinecraftCake position={at(W, -1.2, 0.99, -2.7)} slices={5} />
           <MinecraftCake position={at(W, 0.2, 0.99, -2.7)} slices={5} />
           <MinecraftCake position={at(W, 1.6, 0.99, -2.7)} slices={4} />
-          <EliteLead variant="pres" nameTag="Sterling" position={at(W, 0, 0, -1.3)} rotationY={0} animation="cheer" face="grin" time={t} />
+          <EliteLead variant="pres" nameTag="Sterling" position={at(W, 2.2, 0, -1.3)} rotationY={-0.5} animation="cheer" face="grin" time={t} />
         </>
       ),
     },
     {
       cue: "4.w1",
-      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.2, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.2, facing: 0.6, fov: 40, screenOffset: [0, 0.06] }),
       zone: "bakery",
       hud: { clock: "WEEK 1", banner: { text: "7 SLICES · 5 EMERALDS", color: "#55ff55" } },
       note: "Rapid proof montage: Week 1 — full 7-slice cake for 5 emeralds.",
-      stage: () => <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={7} scale={1.15} />,
+      stage: (t) => (
+        <>
+          <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={7} scale={1.15} />
+          <CitizenLead variant="leo" nameTag="Felint" position={at(B, -1.4, 0, -0.4)} rotationY={0.4} animation="wave" face="smile" time={t} />
+        </>
+      ),
     },
     {
       cue: "4.w2",
-      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.2, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.sweep({ on: at(B, 0, 1.1, -1.6), dist: 4.2, fromYaw: 35, toYaw: 65, pitch: 10, fov: 40 }),
       zone: "bakery",
       hud: { clock: "WEEK 2", banner: { text: "5 SLICES · 5 EMERALDS", color: "#ffdd57" } },
       note: "Rapid proof montage: Week 2 — 5 slices for the same 5 emeralds.",
-      stage: () => <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={5} scale={1.15} />,
+      stage: (t) => (
+        <>
+          <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={5} scale={1.15} />
+          <CitizenLead variant="leo" nameTag="Felint" position={at(B, -1.4, 0, -0.4)} rotationY={0.4} animation="shrug" face="uneasy" time={t} />
+        </>
+      ),
     },
     {
       cue: "4.w3",
-      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.2, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.sweep({ on: at(B, 0, 1.1, -1.6), dist: 4.2, fromYaw: 35, toYaw: 65, pitch: 10, fov: 40 }),
       zone: "bakery",
       hud: { clock: "WEEK 3", banner: { text: "3 SLICES · 5 EMERALDS", color: "#ff922b" } },
       note: "Rapid proof montage: Week 3 — 3 slices for the same 5 emeralds.",
-      stage: () => <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={3} scale={1.15} />,
+      stage: (t) => (
+        <>
+          <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={3} scale={1.15} />
+          <CitizenLead variant="leo" nameTag="Felint" position={at(B, -1.4, 0, -0.4)} rotationY={0.4} animation="point" face="frown" time={t} />
+        </>
+      ),
     },
     {
       cue: "4.w4",
@@ -234,7 +249,12 @@ export const scene2 = storyScene(timing, {
       zone: "bakery",
       hud: { clock: "WEEK 4", banner: { text: "1 SLICE · 5 EMERALDS!", color: "#ff4f42" } },
       note: "Rapid proof montage: Week 4 — one tiny slice while the 5-emerald price never budged.",
-      stage: () => <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={1} scale={1.15} />,
+      stage: (t) => (
+        <>
+          <MinecraftCake position={at(B, 0, 1.09, -2.0)} slices={1} scale={1.15} />
+          <CitizenLead variant="leo" nameTag="Felint" position={at(B, -1.4, 0, -0.4)} rotationY={0.4} animation="panic" face="surprised" time={t} />
+        </>
+      ),
     },
   ],
 });

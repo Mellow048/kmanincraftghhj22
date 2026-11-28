@@ -24,7 +24,7 @@ export const scene3 = storyScene(timing, {
       cue: "3.try",
       ...cam.sweep({ on: at(V, -4.8, 1.0, -0.5), dist: 4.5, fromYaw: 40, toYaw: 70, pitch: 10, fov: 42 }),
       zone: "village",
-      note: "Kid sneaks up to the unsmoked bee hive wearing an upside-down iron bucket on his head.",
+      note: "OTS: Kid sneaks up to the unsmoked bee hive wearing an upside-down iron bucket on his head.",
       stage: (t) => {
         const w = moveBetween(at(V, -4.8, 0, 0.2), at(V, -4.8, 0, -0.8), t, 0, 1.2);
         return (

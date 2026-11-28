@@ -7,6 +7,7 @@ import {
   at,
   cam,
   ease,
+  moveBetween,
   ramp,
   storyScene,
   timing,
@@ -29,14 +30,17 @@ export const scene1 = storyScene(timing, {
         counter: { label: "DAYS AWAKE", from: 1, to: 200, startAt: 0.05, dur: 1.2, color: "#ffdd57" },
       },
       note: "Hook: Big brother stands awake outside the cherry cabin beside an untouched bed as the 200-day counter rolls up.",
-      stage: (t) => (
-        <>
-          <MinecraftBed position={at(C, 1.8, 0, 3.0)} color="#e03131" />
-          <ServerPlayer role="hero" nameTag="Marcus" position={at(C, 0, 0, 3.2)} rotationY={0} animation="guard" face="brave" time={t}>
-            <DiamondSword position={[0, 0.04, 0.24]} scale={1.1} />
-          </ServerPlayer>
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(C, 0, 0, 2.4), at(C, 0, 0, 3.4), t, 0, 1.0);
+        return (
+          <>
+            <MinecraftBed position={at(C, 1.8, 0, 3.0)} color="#e03131" />
+            <ServerPlayer role="hero" nameTag="Marcus" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "guard"} animDistance={w.animDistance} face="brave" time={t}>
+              <DiamondSword position={[0, 0.04, 0.24]} scale={1.1} />
+            </ServerPlayer>
+          </>
+        );
+      },
     },
     {
       cue: "1.vamp",
@@ -95,7 +99,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <PhantomMob position={at(C, -1.2 + d * 1.4, 4.4 - d * 2.2, 2.2 + d * 1.2)} rotationY={0.3} scale={1.15} time={t} />
-            <ServerPlayer role="hero" nameTag="Marcus" position={at(C, 0, 0, 3.4)} rotationY={Math.PI} animation="guard" face="brave" time={t}>
+            <ServerPlayer role="hero" nameTag="Marcus" position={at(C, 0, 0, 3.4)} rotationY={0.2} animation="guard" face="brave" time={t}>
               <DiamondSword position={[0, 0.04, 0.24]} scale={1.1} />
             </ServerPlayer>
           </>
@@ -136,9 +140,10 @@ export const scene1 = storyScene(timing, {
       zone: "cabin",
       look: "lantern-night",
       note: "Human truth: Marcus lowers his sword—he was never a vampire or tryhard.",
-      stage: (t) => (
-        <ServerPlayer role="hero" nameTag="Marcus" position={at(C, 0, 0, 3.2)} rotationY={0} animation="idle" face="calm" time={t} />
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(C, 0, 0, 2.4), at(C, 0, 0, 3.4), t, 0, 1.2);
+        return <ServerPlayer role="hero" nameTag="Marcus" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="calm" time={t} />;
+      },
     },
     {
       cue: "3.bro",
@@ -155,12 +160,12 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.irl",
-      ...cam.front({ actor: at(I, 0, 0.4, -2.8), dist: 3.8, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(I, 0, 0, -1.6), dist: 3.8, fov: 42, screenOffset: [0, 0.06] }),
       zone: "irl",
       look: "warm-room",
-      note: "IRL house cutaway: his little brother hugs his knees on the couch, afraid of the dark.",
+      note: "IRL house cutaway: his little brother hugs his knees on the floor beside the couch, afraid of the dark.",
       stage: (t) => (
-        <ServerPlayer role="friendA" scale={0.78} position={at(I, 0, 0.42, -2.8)} rotationY={0} animation="cower" face="scared" time={t} />
+        <ServerPlayer role="friendA" scale={0.78} position={at(I, 0, 0, -1.6)} rotationY={0} animation="cower" face="scared" time={t} />
       ),
     },
     {
@@ -180,12 +185,12 @@ export const scene1 = storyScene(timing, {
     },
     {
       cue: "3.safe",
-      ...cam.front({ actor: at(I, 0, 0.4, -2.8), dist: 3.8, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(I, 0, 0, -1.6), dist: 3.8, fov: 42, screenOffset: [0, 0.06] }),
       zone: "irl",
       look: "warm-room",
       note: "Inside the warm lamp-lit house, his little brother smiles peacefully playing safe.",
       stage: (t) => (
-        <ServerPlayer role="friendA" scale={0.78} position={at(I, 0, 0.42, -2.8)} rotationY={0} animation="cheer" face="grin" time={t} />
+        <ServerPlayer role="friendA" scale={0.78} position={at(I, 0, 0, -1.6)} rotationY={0} animation="cheer" face="grin" time={t} />
       ),
     },
   ],

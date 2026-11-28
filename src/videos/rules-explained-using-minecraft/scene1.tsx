@@ -52,19 +52,22 @@ export const scene1 = storyScene(timing, {
       zone: "spawn",
       hud: { counter: { label: "ONLINE NOW", from: 1, to: 100, startAt: 0.05, dur: 1.1, color: "#55ff55" } },
       note: "Wide crane over the bright Server Spawn filled with friendly players waving.",
-      stage: (t) => (
-        <>
-          <SpawnChest position={at(S, 0, 0.04, -0.4)} />
-          <CitizenLead variant="leo" nameTag="Felint" position={at(S, -1.6, 0, 1.2)} rotationY={0.2} animation="cheer" face="grin" time={t} />
-          <ExplainerCrowd
-            positions={[at(S, -3.2, 0, 2.2), at(S, 1.6, 0, 1.4), at(S, 3.2, 0, 2.0), at(S, 0, 0, 2.8)]}
-            rotationY={0}
-            animation="cheer"
-            face="grin"
-            time={t}
-          />
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(S, -3.0, 0, 1.2), at(S, -1.4, 0, 1.2), t, 0, 1.2);
+        return (
+          <>
+            <SpawnChest position={at(S, 0, 0.04, -0.4)} />
+            <CitizenLead variant="leo" nameTag="Felint" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "cheer"} animDistance={w.animDistance} face="grin" time={t} />
+            <ExplainerCrowd
+              positions={[at(S, -3.2, 0, 2.2), at(S, 1.6, 0, 1.4), at(S, 3.2, 0, 2.0), at(S, 0, 0, 2.8)]}
+              rotationY={0}
+              animation="cheer"
+              face="grin"
+              time={t}
+            />
+          </>
+        );
+      },
     },
     {
       cue: "1.griefer",
@@ -77,7 +80,7 @@ export const scene1 = storyScene(timing, {
         return (
           <>
             <SpawnChest position={at(S, 0, 0.04, -0.4)} />
-            <Griefer position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="smug" time={t} />
+            <Griefer position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="smug" time={t} />
           </>
         );
       },
@@ -114,13 +117,16 @@ export const scene1 = storyScene(timing, {
       zone: "spawn",
       look: "overworld-day",
       note: "Ninety-nine players log back on and gasp over the shattered empty spawn chest.",
-      stage: (t) => (
-        <>
-          <SpawnChest position={at(S, 0, 0.04, -0.4)} broken />
-          <CitizenLead variant="leo" nameTag="Felint" position={at(S, -1.4, 0, 0.6)} rotationY={0.8} animation="panic" face="surprised" time={t} />
+      stage: (t) => {
+        const w = moveBetween(at(S, -3.2, 0, 0.6), at(S, -1.4, 0, 0.6), t, 0, 1.1);
+        return (
+          <>
+            <SpawnChest position={at(S, 0, 0.04, -0.4)} broken />
+            <CitizenLead variant="leo" nameTag="Felint" position={w.position} rotationY={w.rotationY} animation={w.moving ? "run" : "panic"} animDistance={w.animDistance} face="surprised" time={t} />
           <ExplainerCrowd positions={[at(S, 1.4, 0, 0.6), at(S, 2.5, 0, 1.4)]} rotationY={-0.8} animation="panic" face="sad" time={t} />
         </>
-      ),
+        );
+      },
     },
     {
       cue: "2.same",

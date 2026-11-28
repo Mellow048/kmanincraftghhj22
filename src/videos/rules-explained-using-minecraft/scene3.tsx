@@ -41,7 +41,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.ninety",
-      ...cam.sweep({ on: at(S, 0, 1.0, 0.2), dist: 5.8, fromYaw: -20, toYaw: 20, pitch: 12, fov: 44 }),
+      ...cam.sweep({ on: at(S, 0, 1.0, 0.2), dist: 5.8, fromYaw: 20, toYaw: 55, pitch: 12, fov: 44 }),
       zone: "spawn",
       hud: { banner: { text: "99 KEEP THEIR GEAR", color: "#55ff55" } },
       note: "The 99 players cheer happily beside their row of locked spawn chests.",
@@ -73,7 +73,7 @@ export const scene3 = storyScene(timing, {
       ...cam.sweep({ on: at(S, 0, 1.6, -1.2), dist: 5.0, fromYaw: 18, toYaw: -18, pitch: 10, fov: 42 }),
       zone: "spawn",
       look: "overworld-night",
-      note: "Meanwhile, Mods spend all night typing rules on the CommandBoard instead of actually playing.",
+      note: "OTS: Meanwhile, Mods spend all night typing rules on the CommandBoard instead of actually playing.",
       stage: (t) => (
         <>
           <CommandBoard
@@ -110,9 +110,9 @@ export const scene3 = storyScene(timing, {
       stage: (t) => (
         <>
           <EliteLead variant="pres" nameTag="Teacher" position={at(C, 0, 0.06, -2.0)} rotationY={0} animation="talk" face="calm" time={t} />
-          <CitizenLead variant="leo" position={at(C, -3.0, 0.06, 0.05)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
-          <CitizenLead variant="sam" position={at(C, 0, 0.06, 0.05)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
-          <CitizenLead variant="alex" position={at(C, 3.0, 0.06, 0.05)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
+          <CitizenLead variant="leo" position={at(C, -3.0, 0.06, 0.72)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
+          <CitizenLead variant="sam" position={at(C, 0, 0.06, 0.72)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
+          <CitizenLead variant="alex" position={at(C, 3.0, 0.06, 0.72)} rotationY={Math.PI} animation="sit" face="calm" time={t} />
         </>
       ),
     },
@@ -120,12 +120,12 @@ export const scene3 = storyScene(timing, {
       cue: "6.class",
       ...cam.truck({ on: at(C, -2.5, 1.3, 0.4), by: [5.0, 0, 0], dist: 4.8, yaw: 0, pitch: 14, fov: 44 }),
       zone: "campus",
-      note: "Lateral truck across the seated class—99% of students just want a normal day.",
+      note: "OTS lateral truck across the seated class—99% of students just want a normal day.",
       stage: (t) => (
         <>
-          <CitizenLead variant="leo" position={at(C, -3.0, 0.06, 0.05)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
-          <CitizenLead variant="sam" position={at(C, 0, 0.06, 0.05)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
-          <CitizenLead variant="alex" position={at(C, 3.0, 0.06, 0.05)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
+          <CitizenLead variant="leo" position={at(C, -3.0, 0.06, 0.72)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
+          <CitizenLead variant="sam" position={at(C, 0, 0.06, 0.72)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
+          <CitizenLead variant="alex" position={at(C, 3.0, 0.06, 0.72)} rotationY={Math.PI} animation="sit" face="smile" time={t} />
         </>
       ),
     },
@@ -138,7 +138,7 @@ export const scene3 = storyScene(timing, {
         const f = ease(ramp(t, 0.1, 1.3));
         return (
           <>
-            <Griefer position={at(C, 3.0, 0.06, 2.0)} rotationY={Math.PI - 0.3} animation="push" face="grin" time={t} />
+            <Griefer position={at(C, 3.6, 0.06, 2.7)} rotationY={Math.PI - 0.3} animation="push" face="grin" time={t} />
             <PaperAirplane position={at(C, 2.5 - f * 5.2, 2.0 + Math.sin(f * Math.PI) * 0.6, 1.4 - f * 4.5)} rotationY={Math.PI + 0.5} />
             <EliteLead variant="pres" nameTag="Teacher" position={at(C, 0, 0.06, -2.0)} rotationY={0} animation="panic" face="surprised" time={t} />
           </>

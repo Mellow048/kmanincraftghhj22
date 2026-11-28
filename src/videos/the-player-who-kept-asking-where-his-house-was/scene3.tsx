@@ -83,7 +83,7 @@ export const scene3 = storyScene(timing, {
             <BlueLanternRoad position={at(S, 0, 0, 2.5)} />
             <BlueRoofCottage position={at(S, 0, 0, 10.5)} roofMode="glowing" />
             <LodestoneBlock position={at(S, 1.6, 0, 7.6)} />
-            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="grin" time={t}>
+            <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" nameTag="Arthur" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="grin" time={t}>
               <EnchantedCompass position={[0, 0.04, 0.24]} scale={1.1} />
             </ServerPlayer>
           </>
@@ -148,7 +148,7 @@ export const scene3 = storyScene(timing, {
         chat: [{ sender: "Arthur", text: "I found it.", color: "#55ff55" }],
         typing: true,
       },
-      note: "Warm IRL cutaway: 72-year-old Arthur smiles at his monitor and types 'I found it.'",
+      note: "OTS warm IRL cutaway: 72-year-old Arthur smiles at his monitor and types 'I found it.'",
       stage: (t) => (
         <ServerPlayer role="friendA" hair="#d6dbe2" shirtColor="#4a6fa5" position={at(I, 0, 0, -1.6)} rotationY={Math.PI} animation="press" face="grin" time={t} />
       ),

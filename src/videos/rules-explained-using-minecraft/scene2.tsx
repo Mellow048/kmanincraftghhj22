@@ -35,7 +35,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.r1",
-      ...cam.sweep({ on: at(S, 0, 1.8, -2.6), dist: 4.6, fromYaw: -18, toYaw: 18, pitch: 8, fov: 42 }),
+      ...cam.sweep({ on: at(S, 0, 1.8, -2.6), dist: 4.6, fromYaw: 35, toYaw: 65, pitch: 8, fov: 42 }),
       zone: "spawn",
       hud: { banner: { text: "RULE #1: NO STEALING", color: "#ffdd57" } },
       note: "Mod nails up Rule #1 onto the Spawn RuleBoard.",
@@ -51,12 +51,15 @@ export const scene2 = storyScene(timing, {
       ...cam.sweep({ on: at(S, 0, 0.9, -0.4), dist: 4.4, fromYaw: 20, toYaw: -20, pitch: 12, fov: 42 }),
       zone: "spawn",
       note: "Five minutes later, Griefer walks right back and smashes another chest anyway!",
-      stage: (t) => (
-        <>
-          <SpawnChest position={at(S, 0, 0.04, -0.4)} broken={t > 0.3} />
-          <Griefer position={at(S, -1.1, 0, -0.2)} rotationY={1.3} animation="push" face="grin" time={t} />
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(S, -2.8, 0, -0.2), at(S, -1.1, 0, -0.2), t, 0, 0.9);
+        return (
+          <>
+            <SpawnChest position={at(S, 0, 0.04, -0.4)} broken={t > 0.9} />
+            <Griefer position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "push"} animDistance={w.animDistance} face="grin" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "3.r2",
@@ -73,7 +76,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.r3",
-      ...cam.sweep({ on: at(S, 0, 1.2, -0.6), dist: 5.0, fromYaw: -20, toYaw: 20, pitch: 14, fov: 44 }),
+      ...cam.sweep({ on: at(S, 0, 1.2, -0.6), dist: 5.0, fromYaw: -60, toYaw: -30, pitch: 14, fov: 44 }),
       zone: "spawn",
       hud: { banner: { text: "RULE #3: NO LAVA", color: "#ff922b" } },
       note: "Griefer pours glowing lava on the spawn cobbles—so Rule #3 slams onto the board!",
@@ -116,7 +119,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.about",
-      ...cam.twoShot({ a: at(S, -1.2, 0, 0.4), b: at(S, 1.2, 0, 0.4), dist: 5.0, height: 1.5, fov: 42 }),
+      ...cam.twoShot({ a: at(S, -1.2, 0, 0.4), b: at(S, 1.2, 0, 0.4), facing: 0.65, dist: 5.0, height: 1.5, fov: 42 }),
       zone: "spawn",
       note: "Clarity punch #2: the 100 rules were never really about the 99 honest players.",
       stage: (t) => (
@@ -136,7 +139,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.why",
-      ...cam.sweep({ on: at(S, 0, 1.8, -2.6), dist: 5.0, fromYaw: -20, toYaw: 20, pitch: 8, fov: 42 }),
+      ...cam.sweep({ on: at(S, 0, 1.8, -2.6), dist: 5.0, fromYaw: 35, toYaw: 65, pitch: 8, fov: 42 }),
       zone: "spawn",
       note: "Sweep across the spawn RuleBoard showing why every server ends up with written rules.",
       stage: () => <RuleBoard position={at(S, 0, 1.8, -2.6)} mode="order" width={3.0} height={1.5} />,
@@ -151,7 +154,7 @@ export const scene2 = storyScene(timing, {
         return (
           <>
             <RuleBoard position={at(S, 0, 1.8, -2.6)} mode="order" width={3.0} height={1.5} />
-            <EliteLead variant="pres" nameTag="Mod" position={w.position} rotationY={w.rotationY} animation="walk" animDistance={w.animDistance} face="calm" time={t} />
+            <EliteLead variant="pres" nameTag="Mod" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="calm" time={t} />
           </>
         );
       },

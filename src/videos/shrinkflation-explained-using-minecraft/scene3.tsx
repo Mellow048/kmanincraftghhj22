@@ -10,6 +10,7 @@ import {
   at,
   cam,
   ease,
+  moveBetween,
   ramp,
   storyScene,
   timing,
@@ -27,14 +28,17 @@ export const scene3 = storyScene(timing, {
       ...cam.sweep({ on: at(M, 0, 1.2, 1.2), dist: 5.8, fromYaw: -20, toYaw: 20, pitch: 12, fov: 44 }),
       zone: "market",
       note: "Twin CompareChestPair comparing BEFORE vs AFTER emerald cost for one full cake.",
-      stage: () => (
-        <CompareChestPair
-          position={at(M, 0, 0, 1.2)}
-          leftLabel="BEFORE: 5E"
-          rightLabel="AFTER: 15E"
-          leftCount={5}
-          rightCount={15}
-        />
+      stage: (t) => (
+        <>
+          <CompareChestPair
+            position={at(M, 0, 0, 1.2)}
+            leftLabel="BEFORE: 5E"
+            rightLabel="AFTER: 15E"
+            leftCount={5}
+            rightCount={15}
+          />
+          <CitizenLead variant="leo" nameTag="Felint" position={at(M, -2.4, 0, 1.4)} rotationY={0.8} animation="point" face="surprised" time={t} />
+        </>
       ),
     },
     {
@@ -82,7 +86,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.punch1",
-      ...cam.front({ actor: at(B, 1.4, 0, -1.2), dist: 4.2, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(B, 1.4, 0, -1.2), dist: 4.2, facing: -0.65, fov: 40, screenOffset: [0, 0.06] }),
       zone: "bakery",
       hud: { banner: { text: "PRICE: SAME", color: "#ffdd57" } },
       note: "Clarity punch #1: the price tag never went up.",
@@ -102,7 +106,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.punch3",
-      ...cam.sweep({ on: at(B, 0, 1.35, -2.0), dist: 3.4, fromYaw: -18, toYaw: 18, pitch: 14, fov: 38 }),
+      ...cam.sweep({ on: at(B, 0, 1.35, -2.0), dist: 3.4, fromYaw: 35, toYaw: 65, pitch: 14, fov: 38 }),
       zone: "bakery",
       hud: { stamp: { text: "SHRINKFLATION", color: "#ff3b30", at: 0.25, angle: -8 } },
       note: "Clarity punch #3: the cake shrank—SHRINKFLATION stamp slams in.",
@@ -113,9 +117,10 @@ export const scene3 = storyScene(timing, {
       ...cam.truck({ on: at(M, 7.8, 1.8, -1.8), by: [3.4, 0, 0], dist: 4.6, yaw: 0, pitch: 6, fov: 42 }),
       zone: "market",
       note: "Real-world bridge: lateral truck along the grocery aisle shelf.",
-      stage: (t) => (
-        <CitizenLead variant="leo" nameTag="Felint" position={at(M, 8.2, 0, 0.2)} rotationY={Math.PI} animation="idle" face="uneasy" time={t} />
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(M, 6.8, 0, 0.2), at(M, 9.2, 0, 0.2), t, 0, 1.4);
+        return <CitizenLead variant="leo" nameTag="Felint" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "idle"} animDistance={w.animDistance} face="uneasy" time={t} />;
+      },
     },
     {
       cue: "6.chips",
@@ -132,7 +137,9 @@ export const scene3 = storyScene(timing, {
         },
       },
       note: "Checklist modal highlights half-empty chip bags, smaller cereal boxes, and thinner candy bars.",
-      stage: () => null,
+      stage: (t) => (
+        <CitizenLead variant="leo" nameTag="Felint" position={at(M, 9.5, 0, 0.2)} rotationY={-0.3} animation="point" face="surprised" time={t} />
+      ),
     },
     {
       cue: "6.hide",

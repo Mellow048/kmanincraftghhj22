@@ -24,12 +24,15 @@ export const scene2 = storyScene(timing, {
       zone: "cabin",
       look: "overworld-night",
       note: "Cruel turning point: bully Kyle walks right up to Marcus laughing in his face.",
-      stage: (t) => (
-        <>
-          <ServerPlayer role="bully" nameTag="Kyle" position={at(C, -1.1, 0, 3.4)} rotationY={1.1} animation="laugh" face="laugh" time={t} />
-          <ServerPlayer role="hero" nameTag="Marcus" position={at(C, 1.1, 0, 3.4)} rotationY={-1.1} animation="idle" face="sad" time={t} />
-        </>
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(C, -2.8, 0, 3.4), at(C, -1.1, 0, 3.4), t, 0, 1.0);
+        return (
+          <>
+            <ServerPlayer role="bully" nameTag="Kyle" position={w.position} rotationY={w.rotationY} animation={w.moving ? "walk" : "laugh"} animDistance={w.animDistance} face="laugh" time={t} />
+            <ServerPlayer role="hero" nameTag="Marcus" position={at(C, 1.1, 0, 3.4)} rotationY={-1.1} animation="idle" face="sad" time={t} />
+          </>
+        );
+      },
     },
     {
       cue: "4.mock",
@@ -76,9 +79,12 @@ export const scene2 = storyScene(timing, {
         typing: true,
       },
       note: "Emotional silence breath: Owner privately messages Marcus asking what happened.",
-      stage: (t) => (
-        <ServerPlayer role="owner" nameTag="Owner" crown position={at(C, 0, 0, 3.0)} rotationY={0} animation="press" face="worried" time={t} />
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(C, -1.5, 0, 3.0), at(C, 0, 0, 3.0), t, 0, 1.1);
+        return (
+          <ServerPlayer role="owner" nameTag="Owner" crown position={w.position} rotationY={w.moving ? w.rotationY : 0} animation={w.moving ? "walk" : "press"} animDistance={w.animDistance} face="worried" time={t} />
+        );
+      },
     },
     {
       cue: "5.tell",
@@ -90,7 +96,7 @@ export const scene2 = storyScene(timing, {
       },
       note: "Marcus opens up privately to the Owner about protecting his little brother.",
       stage: (t) => (
-        <ServerPlayer role="owner" nameTag="Owner" crown position={at(C, 0, 0, 3.0)} rotationY={0} animation="idle" face="surprised" time={t} />
+        <ServerPlayer role="owner" nameTag="Owner" crown position={at(C, 0, 0, 3.0)} rotationY={0} animation="shrug" face="surprised" time={t} />
       ),
     },
     {
@@ -111,7 +117,7 @@ export const scene2 = storyScene(timing, {
       hud: { banner: { text: "1 BED SKIPS THE NIGHT", color: "#55ff55" } },
       note: "Vanilla Minecraft mechanic: sleeping skips the entire night so zero Phantoms spawn.",
       stage: (t) => (
-        <ServerPlayer role="owner" nameTag="Owner" crown position={at(H, 0, 0, 1.8)} rotationY={Math.PI} animation="point" face="grin" time={t} />
+        <ServerPlayer role="owner" nameTag="Owner" crown position={at(H, -1.6, 0, 0.5)} rotationY={0.6} animation="point" face="grin" time={t} />
       ),
     },
     {
@@ -121,9 +127,12 @@ export const scene2 = storyScene(timing, {
       look: "warm-room",
       hud: { chat: [{ sender: "Owner", text: "@everyone BRING A BED TO SPAWN HALL!", color: "#55ff55" }] },
       note: "Owner rallies the entire server to bring wool and oak planks to the grand hall.",
-      stage: (t) => (
-        <ServerPlayer role="owner" nameTag="Owner" crown position={at(H, 0, 0, 2.2)} rotationY={0} animation="cheer" face="grin" time={t} />
-      ),
+      stage: (t) => {
+        const w = moveBetween(at(H, 0, 0, 1.2), at(H, 0, 0, 2.2), t, 0, 0.9);
+        return (
+          <ServerPlayer role="owner" nameTag="Owner" crown position={w.position} rotationY={0} animation={w.moving ? "walk" : "cheer"} animDistance={w.animDistance} face="grin" time={t} />
+        );
+      },
     },
     {
       cue: "6.build",
