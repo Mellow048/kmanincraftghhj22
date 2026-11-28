@@ -75,13 +75,13 @@
       "extraFiles": [
         "Topics/ServerLore/up_sad.m4a"
       ],
-      "gain": -12,
+      "gain": -11,
       "minShare": 0.8,
       "note": "Two-track Up score mastered cleanly (~110% louder presence, Happy pre-trimmed past the silent 0:00-0:01 intro straight to 0:02.000). Switch tracks per scene via music.sections[].track between up_happy.m4a (hook/SMP discovery/Owner rally/payoff/CTA) and up_sad.m4a (IRL struggle/cruel breaking point)."
     },
     "minMusicSections": 4,
     "musicUnderVoiceDb": [
-      11,
+      9,
       22
     ],
     "maxSecondsWithoutMusic": 6,

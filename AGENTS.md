@@ -571,3 +571,22 @@ These upgrades extend the Director's Contract above without replacing it — **"
 5. **ServerLore Clean UI & Voice Discipline:**
    - `server-lore` (`Topics/ServerLore`) NEVER uses `<ScoreboardWall>`. Use bespoke zones + `ServerPlayer`, `BadgePop`, `TearDrops`, `FloatingHeart`, centered `OpenBookPage`, and `shot.hud.chat`.
    - Use auditioned Arena TTS (`add_voice` / `generate_speech`) or free `edge-tts` (`--gap 0.42`, natural speed) — never paid ElevenLabs. Always disclose that an agent cannot physically listen to audio.
+
+## 14. Multi-Map & Universal Set-Piece Catalog (v9 — Stop Reusing One Map!)
+
+NEVER reuse `<VillageStreet />` for every channel. Pick the matching biome/server/IRL map, and stage EVERY prop the narration names using the universal zero-z-fighting kit (`Topics/Shared/universal.tsx`):
+
+- **InThisTown (`Topics/InThisTown`):**
+  - `<VillageStreet />` — Classic reference town avenue (warm path, houses both sides, stepped hill)
+  - `<PlainsVillageMap />` — Authentic Minecraft Plains Village (cobblestone well, bell, irrigated wheat farms, oak/cobble cottages)
+  - `<DarkOakVillageMap />` — Authentic Minecraft Dark Oak Forest Village (2×2 thick dark oaks, giant red/brown mushrooms, mossy timber huts, amber lanterns)
+- **ServerLore (`Topics/ServerLore`) — STOP using `<VillageStreet />`; use real SMP Server + IRL maps (ZERO scoreboards!):**
+  - **SMP Server Maps:** `<CherryCabinMap />` (cherry grove + cabin + crafting table/chest + lilypad pond), `<TropicalIslandMap />` (turquoise lagoon + thatched beach huts + palms/bamboo + dock), `<CherryCampfireMap />` (cherry canopy + glowing campfire + petals), `<SpawnHubMap />` (grand medieval SMP plaza + towering emerald Beacon beam + spawn shop)
+  - **IRL Cutaway Maps:** `<ComputerRoomMap />` (gaming PC + dual monitors + bed), `<HouseLivingRoomMap />` (couch + coffee table + rug + front door), `<ClassroomRoom />` (chalkboard + desks), `<ClassroomHallMap />` (school hallway + blue lockers + classroom door), `<HospitalCorridor />`
+- **Explainer (`Topics/Explainer`) & Universal Set Pieces (`Topics/Shared/universal.tsx`, exported in ALL topics):**
+  - `<ShopStand title="..." awningColor="#d93829" itemColor="#4ce8ff" />` — Market stall with striped awning, display item, non-submerged sign
+  - `<CastleKeep />` — Medieval stone-brick battlements, towers, banners, arched gate
+  - `<KitchenCounterSet />` — Indoor kitchen with sink, faucet, dish stack, window (for habit/psychology Explainers)
+  - `<MineEntrance />` — Timber-framed stone mine arch with rails & torches
+  - `<IslandBridge />` — Two distinct grass islands separated by real water with a wooden bridge
+  - `<CampfireProp />`, `<CraftingStation />`, plus `<PlainsVillageMap />` & `<DarkOakVillageMap />`

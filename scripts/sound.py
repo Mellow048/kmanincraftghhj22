@@ -2056,9 +2056,9 @@ def render(film: str, clock: Clock, sheet: dict, vox: dict):
     else:
         music = reverb(music, 1.1, 0.16, 300, 6000, 3)[:total]
         music = filt(music, 60, 13000, 2)
-    music = tilt_eq(music, 2200.0, -3.0, 0.9)  # a pocket where the voice lives
+    music = tilt_eq(music, 2200.0, -1.5, 0.9)  # a pocket where the voice lives
     # The music steps back a little while the voice is speaking, and comes up in a real pause.
-    duck = float(sheet["music"].get("duck", 2.0))
+    duck = float(sheet["music"].get("duck", 1.2))
     smooth = np.convolve(speaking.astype(float), np.ones(35) / 35, mode="same")
     curve = np.interp(np.arange(total) / SR, (np.arange(len(smooth)) + 0.5) * 0.02, smooth)
     music = music * db(-duck * curve)[:, None]

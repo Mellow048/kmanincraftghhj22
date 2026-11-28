@@ -507,6 +507,30 @@ export function checkStoryFilm({ root, slug, dir, film, topic, fail, info, TWO_D
     // A flown film is one place: the camera sees what it has left and what it is coming to, so nothing is hidden by zone.
     if (!topic.camera?.continuous && !/<Zone\b/.test(world)) info(`${tag}: world.tsx has no <Zone>. A long film should not draw every set in every shot.`);
     if (TWO_D.test(world)) fail(`${tag}: world.tsx contains a 2D overlay`);
+
+    // Narrative-to-Stage Prop Grounding: never gaslight the viewer by naming a place/prop that isn't built!
+    const narPath = path.join(dir, "narration.md");
+    if (fs.existsSync(narPath)) {
+      const narTxt = fs.readFileSync(narPath, "utf8");
+      const allFilmCode = fs.readdirSync(dir)
+        .filter((f) => f.endsWith(".tsx"))
+        .map((f) => fs.readFileSync(path.join(dir, f), "utf8"))
+        .join("\n");
+      const propPairs = [
+        [/\b(shop|stall|market)\b/i, /(ShopStand|Stall|Shop|Counter|Hut|SpawnHubMap)/, "shop/stall (use <ShopStand />)"],
+        [/\b(castle|fortress)\b/i, /(CastleKeep|Castle|Tower|Wall)/, "castle (use <CastleKeep />)"],
+        [/\b(mine|tunnel|cave)\b/i, /(MineEntrance|Tunnel|Cave|Pit|Hole|CoalMountain)/i, "mine/cave (use <MineEntrance />)"],
+        [/\b(kitchen|dishes|sink)\b/i, /(KitchenCounterSet|Kitchen|Stove|Counter)/, "kitchen (use <KitchenCounterSet />)"],
+        [/\b(bridge|island)\b/i, /(IslandBridge|TropicalIslandMap|Bridge|Water)/, "bridge/island (use <IslandBridge />)"],
+        [/\b(campfire|bonfire)\b/i, /(CampfireProp|CherryCampfireMap|Campfire|Blaze)/, "campfire (use <CampfireProp /> or <CherryCampfireMap />)"],
+        [/\b(hallway|lockers)\b/i, /(ClassroomHallMap|HospitalCorridor|Locker|Hall)/, "hallway/lockers (use <ClassroomHallMap />)"],
+      ];
+      for (const [narRe, codeRe, label] of propPairs) {
+        if (narRe.test(narTxt) && !codeRe.test(allFilmCode)) {
+          info(`${tag}: narration mentions ${label} but no matching set/prop was found in world/scenes — stage what the voice names!`);
+        }
+      }
+    }
   }
 
   // ---- 6. the pack and the sound -------------------------------------------

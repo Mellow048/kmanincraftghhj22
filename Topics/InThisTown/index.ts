@@ -21,3 +21,5 @@ export * from "./catsdogs";
 export * from "./creepertown";
 export * from "./endertown";
 export * from "./foxes";
+export * from "./maps";
+export * from "../Shared/universal";

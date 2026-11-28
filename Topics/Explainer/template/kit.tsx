@@ -1,5 +1,5 @@
 import type { Timing, Vec3 } from "../../engine";
-export { moveBetween } from "../../engine";
+export { moveBetween, SolidBox } from "../../engine";
 import {
   // Channel-distinct cast (NEVER InThisTown Hero or Villager)
   CitizenLead,
@@ -27,6 +27,15 @@ import {
   PriceBillboard,
   ShopStall,
   VillageStreet,
+  PlainsVillageMap,
+  DarkOakVillageMap,
+  ShopStand,
+  CastleKeep,
+  KitchenCounterSet,
+  MineEntrance,
+  IslandBridge,
+  CampfireProp,
+  CraftingStation,
   MoneyPrinter,
   CommandBoard,
   EmeraldFountain,
@@ -110,6 +119,15 @@ export {
   PriceBillboard,
   ShopStall,
   VillageStreet,
+  PlainsVillageMap,
+  DarkOakVillageMap,
+  ShopStand,
+  CastleKeep,
+  KitchenCounterSet,
+  MineEntrance,
+  IslandBridge,
+  CampfireProp,
+  CraftingStation,
   MoneyPrinter,
   CommandBoard,
   EmeraldFountain,

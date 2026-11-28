@@ -25,8 +25,8 @@ export const World: React.FC = () => (
       <Vox kind="stoneBrick" position={on(PLACE.hall, 0, -0.25, 0)} size={[16, 0.5, 16]} />
       {/* Back & side stone walls */}
       <Vox kind="stoneBrick" position={on(PLACE.hall, 0, 3.2, -5.5)} size={[14, 6.4, 0.8]} />
-      <Vox kind="stoneBrick" position={on(PLACE.hall, -6.5, 3.2, 0)} size={[0.8, 6.4, 12]} />
-      <Vox kind="stoneBrick" position={on(PLACE.hall, 6.5, 3.2, 0)} size={[0.8, 6.4, 12]} />
+      <Vox kind="stoneBrick" position={on(PLACE.hall, -6.6, 3.2, 0.45)} size={[0.8, 6.4, 11.0]} />
+      <Vox kind="stoneBrick" position={on(PLACE.hall, 6.6, 3.2, 0.45)} size={[0.8, 6.4, 11.0]} />
 
       {/* Royal throne + runner + banners */}
       <RoyalThrone position={on(PLACE.hall, 0, 0, -3.5)} />

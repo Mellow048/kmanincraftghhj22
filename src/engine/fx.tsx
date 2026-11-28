@@ -34,6 +34,9 @@ export const GodRay: React.FC<{
       transparent
       opacity={opacity * g}
       depthWrite={false}
+      polygonOffset
+      polygonOffsetFactor={-2}
+      polygonOffsetUnits={-2}
       blending={THREE.AdditiveBlending}
       side={THREE.DoubleSide}
       toneMapped={false}

@@ -37,3 +37,4 @@ export { BedBox } from "../InThisTown/things";
 // ---- written for every topic ----------------------------------------------
 export * from "./clock";
 export * from "./voxel";
+export * from "./universal";

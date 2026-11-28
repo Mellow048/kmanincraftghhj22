@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 import { useMemo } from "react";
 import {
   Bed,
@@ -18,6 +18,7 @@ import {
   wordBitmap,
   wordTexture,
 } from "../../src/engine";
+import { SolidBox } from "../../src/engine";
 import type { Vec3 } from "../../src/engine";
 import { Clock3AM, WritableBook } from "./props";
 
@@ -208,5 +209,79 @@ export const BedroomSet: React.FC<{
     <Block position={[0.1, 0.32, -1.55]} size={[0.62, 0.64, 0.56]} map={plankTex("#6e4928")} />
     <Clock3AM text={clockText} alarm={alarm} position={[0.1, 0.64, -1.52]} rotationY={0.18} scale={0.85} />
     <pointLight position={[0.1, 2.4, -0.6]} color="#cbe0ff" intensity={3.8} distance={8} decay={2} />
+  </group>
+);
+
+
+/** IRL Map 1: Full Enclosed Gaming / Computer Room (dual monitors, RGB PC tower, bed, window, SolidBox walls). */
+export const ComputerRoomMap: React.FC<{
+  position?: Vec3;
+  screenText?: string;
+  clockText?: string;
+}> = ({ position = [0, 0, 0], screenText = "MC SMP", clockText = "3:00 AM" }) => (
+  <group position={position}>
+    <Block position={[0, -0.18, 0]} size={[14, 0.34, 12]} map={plankTex("#7d5938", [5, 5])} />
+    <Block position={[0, 2.2, -4.4]} size={[14, 4.4, 0.35]} color="#26435e" />
+    <Block position={[-6.82, 2.2, 0.9]} size={[0.35, 4.4, 10.2]} color="#1f3850" />
+    <Block position={[6.82, 2.2, 0.9]} size={[0.35, 4.4, 10.2]} color="#1f3850" />
+    {/* Glowing window & Minecraft Creeper poster */}
+    <Block position={[-3.2, 2.35, -4.18]} size={[2.0, 1.4, 0.1]} color="#8fd4ff" emissive="#6ec0ff" emissiveIntensity={0.42} />
+    <Block position={[2.8, 2.4, -4.18]} size={[1.1, 1.1, 0.06]} color="#3ea83a" />
+    <DeskSetup position={[0, 0, -2.5]} screenText={screenText} clockText={clockText} lampOn />
+    {/* RGB Gaming PC tower beside desk */}
+    <Block position={[1.45, 0.42, -2.5]} size={[0.38, 0.72, 0.62]} color="#181c24" />
+    <Block position={[1.45, 0.42, -2.18]} size={[0.26, 0.56, 0.02]} color="#42e8ff" emissive="#42e8ff" emissiveIntensity={1.2} />
+    <Bed position={[-4.2, 0, -1.2]} width={1.3} length={2.2} blanket="#3678c9" />
+    <SolidBox name="pcroom-back" position={[0, 2.2, -4.4]} size={[14, 4.4, 0.4]} />
+    <SolidBox name="pcroom-left" position={[-6.8, 2.2, 0]} size={[0.4, 4.4, 12]} />
+    <SolidBox name="pcroom-right" position={[6.8, 2.2, 0]} size={[0.4, 4.4, 12]} />
+  </group>
+);
+
+/** IRL Map 2: Cozy Family House Living Room (couch, coffee table, warm rug, front door, window). */
+export const HouseLivingRoomMap: React.FC<{ position?: Vec3 }> = ({ position = [0, 0, 0] }) => (
+  <group position={position}>
+    <Block position={[0, -0.18, 0]} size={[14, 0.34, 12]} map={plankTex("#8c653e", [5, 5])} />
+    <Block position={[0, 2.2, -4.4]} size={[14, 4.4, 0.35]} color="#e6dfd1" />
+    <Block position={[-6.82, 2.2, 0.9]} size={[0.35, 4.4, 10.2]} color="#dbd3c3" />
+    <Block position={[6.82, 2.2, 0.9]} size={[0.35, 4.4, 10.2]} color="#dbd3c3" />
+    {/* Warm area rug (y=+0.02, zero z-fighting) */}
+    <Block position={[0, 0.02, -0.8]} size={[4.6, 0.04, 3.2]} color="#9e3838" />
+    {/* Family sofa & coffee table */}
+    <Block position={[0, 0.42, -3.2]} size={[3.6, 0.84, 1.1]} color="#42678a" />
+    <Block position={[0, 0.96, -3.65]} size={[3.6, 0.62, 0.24]} color="#355573" />
+    <Block position={[0, 0.35, -1.2]} size={[1.8, 0.14, 1.0]} map={plankTex("#6e4928")} />
+    {[-0.78, 0.78].map((lx) => [-1.58, -0.82].map((lz) => <Block key={`${lx}_${lz}`} position={[lx, 0.14, lz]} size={[0.12, 0.28, 0.12]} map={plankTex("#593a1e")} />))}
+    {/* Front door & sunlit window */}
+    <DoorFrame position={[4.2, 0, -4.18]} width={1.1} height={2.3} color="#4e321b" />
+    <Door position={[3.65, 0, -4.18]} width={1.05} height={2.25} color="#6b4423" />
+    <Block position={[-3.4, 2.35, -4.18]} size={[2.2, 1.4, 0.1]} color="#a3dcff" emissive="#88d0ff" emissiveIntensity={0.4} />
+    <SolidBox name="house-back" position={[0, 2.2, -4.4]} size={[14, 4.4, 0.4]} />
+  </group>
+);
+
+/** IRL Map 3: School Classroom Hallway (blue lockers lining both walls, classroom doors, bulletin board, tiled corridor). */
+export const ClassroomHallMap: React.FC<{ position?: Vec3; length?: number }> = ({
+  position = [0, 0, 0],
+  length = 18,
+}) => (
+  <group position={position}>
+    <Block position={[0, -0.18, 0]} size={[6.4, 0.34, length]} color="#cfd6de" />
+    <Block position={[-3.1, 2.0, 0]} size={[0.35, 4.0, length]} color="#e3dccb" />
+    <Block position={[3.1, 2.0, 0]} size={[0.35, 4.0, length]} color="#e3dccb" />
+    <Block position={[0, 2.0, -length / 2]} size={[5.8, 4.0, 0.35]} color="#d8d0be" />
+    {/* Rows of blue metal school lockers along both walls */}
+    {[-5.5, -3.0, -0.5, 2.0, 4.5].map((z, i) => (
+      <React.Fragment key={i}>
+        <Block position={[-2.62, 1.05, z]} size={[0.56, 2.1, 0.92]} color="#3a6ea5" />
+        <Block position={[2.62, 1.05, z]} size={[0.56, 2.1, 0.92]} color="#3a6ea5" />
+      </React.Fragment>
+    ))}
+    {/* Classroom door at end of hallway */}
+    <DoorFrame position={[0, 0, -length / 2 + 0.22]} width={1.4} height={2.35} color="#5c3a1e" />
+    <Door position={[-0.7, 0, -length / 2 + 0.22]} width={1.3} height={2.3} color="#7d502a" />
+    <SolidBox name="hall-left" position={[-3.1, 2.0, 0]} size={[0.4, 4.0, length]} />
+    <SolidBox name="hall-right" position={[3.1, 2.0, 0]} size={[0.4, 4.0, length]} />
+    <SolidBox name="hall-back" position={[0, 2.0, -length / 2]} size={[5.8, 4.0, 0.4]} />
   </group>
 );

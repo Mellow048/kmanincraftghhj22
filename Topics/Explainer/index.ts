@@ -19,3 +19,4 @@ export { cam, storyScene, ChatToast, FloatingNumber, Chicken, Water, EmberDrift 
 export * from "../Shared";
 
 export { VillageStreet } from "../InThisTown/places";
+export { PlainsVillageMap, DarkOakVillageMap } from "../InThisTown/maps";

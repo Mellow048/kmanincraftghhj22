@@ -127,8 +127,8 @@ const FilmView: React.FC<{ config: FilmConfig }> = ({ config }) => {
         dpr={1}
         camera={{
           fov: 38,
-          near: 0.05,
-          far: 200,
+          near: 0.22,
+          far: 140,
           position: [0, 1.5, 5],
         }}
         gl={{

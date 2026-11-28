@@ -507,9 +507,7 @@ export const NameTag: React.FC<{
   const bgW = textW + 0.26;
   useFrame(({ camera }) => {
     if (rotationY === undefined && ref.current) {
-      const wp = new THREE.Vector3();
-      ref.current.getWorldPosition(wp);
-      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+      ref.current.quaternion.copy(camera.quaternion);
     }
   });
   return (

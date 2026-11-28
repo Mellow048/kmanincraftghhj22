@@ -22,7 +22,7 @@ const Village: React.FC = () => (
   <>
     <Vox kind="grass" position={[0, -0.5, 0]} size={[120, 1, 90]} />
     <Vox kind="path" position={[3, 0.02, 2]} size={[60, 0.06, 4.6]} />
-    <Vox kind="path" position={[0, pathTop - .03, 1.5]} size={[13, 0.06, 12]} />
+    <Vox kind="path" position={[0, pathTop - .018, 1.5]} size={[13, 0.06, 12]} />
 
     {/* North side, west to east. Fronts face south. */}
     <Hut at={[-21, 0, -5]} w={7} windows={[-2, 2]} roof="#3f6b3a" />

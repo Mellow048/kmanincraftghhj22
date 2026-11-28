@@ -89,7 +89,7 @@ export const cam = {
   }): Move {
     const on: Vec3 = [o.actor[0], round(o.actor[1] + (o.height ?? 1.25)), o.actor[2]];
     const yaw = round(((o.facing ?? 0) / RAD) + (o.side ?? 18));
-    const dist = o.dist ?? 6.2;
+    const dist = Math.max(5.4, o.dist ?? 6.6);
     const to = o.to ?? round(Math.max(4.4, dist - 1.0));
     return cam.push({
       on,
@@ -343,7 +343,7 @@ export const cam = {
     const ux = dx / len;
     const uz = dz / len;
     const side = o.side ?? 1;
-    const sd = o.sideDist ?? 5.8;
+    const sd = Math.max(5.2, o.sideDist ?? 6.4);
     const lead = o.lead ?? 1.8;
     const h = o.height ?? 1.65;
     const px = -uz * sd * side + ux * lead;
@@ -353,7 +353,7 @@ export const cam = {
       to: [round(o.to[0] + px), round(o.to[1] + h), round(o.to[2] + pz)],
       target: [round(o.from[0]), round(o.from[1] + 1.25), round(o.from[2])],
       targetTo: [round(o.to[0]), round(o.to[1] + 1.25), round(o.to[2])],
-      fov: o.fov ?? 44,
+      fov: Math.max(44, o.fov ?? 48),
       ease: o.ease ?? "inOutSine",
     };
   },
@@ -372,7 +372,7 @@ export const cam = {
     fov?: number;
     ease?: Shot["ease"];
   }): Move {
-    const dist = o.dist ?? 6.4;
+    const dist = Math.max(5.2, o.dist ?? 6.8);
     const fromYaw = o.fromYaw ?? -18;
     const toYaw = o.toYaw ?? 16;
     return cam.orbit({
@@ -382,7 +382,7 @@ export const cam = {
       yaw: fromYaw,
       yawTo: toYaw,
       pitch: o.pitch ?? 8,
-      fov: o.fov ?? 44,
+      fov: Math.max(44, o.fov ?? 48),
       ease: o.ease ?? "inOutSine",
     });
   },
@@ -397,7 +397,7 @@ export const cam = {
     fov?: number;
     ease?: Shot["ease"];
   }): Move {
-    const dist = o.dist ?? 6.2;
+    const dist = Math.max(5.4, o.dist ?? 6.6);
     return cam.orbit({
       on: [o.on[0], round(o.on[1] + 1.5), o.on[2]],
       dist,

@@ -393,13 +393,13 @@ export const VillageStreet: React.FC<{ position?: Vec3; night?: boolean }> = ({
       {leftHouses.map((h, i) => (
         <React.Fragment key={`L${i}`}>
           <Hut at={[-8.6, 0, h.z]} w={6.4} d={6.0} h={4.2} wall={h.wall} tint={h.tint} roof={h.roof} turn={Math.PI / 2} lit={night} windows={[-1.6, 1.6]} />
-          <SolidBox name={`street-house-L${i}`} position={[position[0] - 8.6, position[1] + 2.1, position[2] + h.z]} size={[6.0, 4.2, 6.4]} />
+          <SolidBox name={`street-house-L${i}`} position={[-8.6, 2.1, h.z]} size={[6.0, 4.2, 6.4]} />
         </React.Fragment>
       ))}
       {rightHouses.map((h, i) => (
         <React.Fragment key={`R${i}`}>
           <Hut at={[8.6, 0, h.z]} w={6.4} d={6.0} h={4.2} wall={h.wall} tint={h.tint} roof={h.roof} turn={-Math.PI / 2} lit={night} windows={[-1.6, 1.6]} />
-          <SolidBox name={`street-house-R${i}`} position={[position[0] + 8.6, position[1] + 2.1, position[2] + h.z]} size={[6.0, 4.2, 6.4]} />
+          <SolidBox name={`street-house-R${i}`} position={[8.6, 2.1, h.z]} size={[6.0, 4.2, 6.4]} />
         </React.Fragment>
       ))}
       {/* Lamp posts tucked on outer sidewalk edge (±4.7) so poles never slice across faces */}

@@ -1,6 +1,6 @@
 import type React from "react";
 import { MinecraftAvatar } from "../../engine";
-export { moveBetween } from "../../engine";
+export { moveBetween, SolidBox } from "../../engine";
 import type { MinecraftAvatarProps, Timing, Vec3 } from "../../engine";
 import { KID, wordClock } from "../../../Topics/InThisTown";
 import timingJson from "./timing.json";
@@ -31,6 +31,7 @@ export {
   KidDrawing, KitchenCounter, KitchenGone, KitchenShelf, KitchenStove, KnockedPumpkin, PearlSign, PhotoBorder, Puddle, PumpkinHat, PumpkinPlayer, PumpkinView, Rain,
   // things
   BedBox, Bits, Blaze, Bubble, FireLight, Hole, Smoke, SmokeBank, SubscribeSign, Wisps,
+  VillageStreet, PlainsVillageMap, DarkOakVillageMap, ShopStand, MineEntrance, CampfireProp,
 } from "../../../Topics/InThisTown";
 
 export const timing = timingJson as unknown as Timing;

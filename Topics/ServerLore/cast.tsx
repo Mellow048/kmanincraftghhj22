@@ -144,9 +144,7 @@ export const ServerNameTag: React.FC<{
   const bgW = textW + 0.24;
   useFrame(({ camera }) => {
     if (rotationY === undefined && ref.current) {
-      const wp = new THREE.Vector3();
-      ref.current.getWorldPosition(wp);
-      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+      ref.current.quaternion.copy(camera.quaternion);
     }
   });
   return (
@@ -179,9 +177,7 @@ export const BadgePop: React.FC<{
   const s = popStart !== undefined ? pop(t ?? now, popStart) : 1;
   useFrame(({ camera }) => {
     if (rotationY === undefined && ref.current) {
-      const wp = new THREE.Vector3();
-      ref.current.getWorldPosition(wp);
-      ref.current.rotation.y = Math.atan2(camera.position.x - wp.x, camera.position.z - wp.z);
+      ref.current.quaternion.copy(camera.quaternion);
     }
   });
   if (s <= 0.01) return null;

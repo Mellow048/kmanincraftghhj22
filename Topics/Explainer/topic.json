@@ -111,17 +111,17 @@
       "owner": "mandatory background music for every Explainer short, levelled quietly under narration so it never overpowers the voice",
       "since": "2026-11-25",
       "guide": "Topics/Explainer/SOUND.md",
-      "gain": -13,
+      "gain": -12,
       "minShare": 0.85,
       "madeBefore": [
         "what-is-a-dictator"
       ],
-      "note": "MANDATORY for every new Explainer: track = Topics/Explainer/explainer_bgm_loop.wav. Start gain at -13 (loud enough on phone speakers, still under the narrator voice so it NEVER overpowers narration). scripts/sound.py build refuses any new Explainer sheet that omits it."
+      "note": "MANDATORY for every new Explainer: track = Topics/Explainer/explainer_bgm_loop.wav. Start gain at -12 (kept 9-21 dB below the narrator voice so it NEVER overpowers narration). scripts/sound.py build refuses any new Explainer sheet that omits it."
     },
     "minMusicSections": 3,
     "musicUnderVoiceDb": [
-      17,
-      25
+      9,
+      21
     ],
     "maxSecondsWithoutMusic": 4,
     "minSfxPerMinute": 40,
