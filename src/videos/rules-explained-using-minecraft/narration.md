@@ -22,8 +22,8 @@
 [3.r1]       So they nail up Rule One: no stealing.
 [3.again]    Five minutes later, Griefer smashes another chest anyway!
 [3.r2]       So mods nail up Rule Two: lock chests.
-[3.r3]       Griefer pours lava—so up goes Rule Three!
-[3.r100]     Rule ten, rule fifty—one hundred rules total!
+[3.r3]       Griefer pours lava — so up goes Rule Three!
+[3.r100]     Rule ten, rule fifty — one hundred rules total!
 [3.locks]    Ninety-nine iron locks snap shut across every chest.
 
 # clip 04-clarity

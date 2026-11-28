@@ -47,19 +47,19 @@
 [5.banner]  Pinned to his chest was our founder's gold crest.
 [5.truth]   Our founder walked in first a hundred years ago.
 [5.never]   Rocks collapsed behind him. He never came back.
-[5.fear]    It was never a law—just a century of fear.
+[5.fear]    It was never a law — just a century of fear.
 
 # clip 06-payoff wait 0.45
 [6.run]     I sprinted back holding the founder's gold crest.
 [6.sam]     Sam stood waiting right at the forest edge.
 [6.list]    The standing behind. The sitting second. The crossing second.
-[6.scared]  Sam wasn't shy—he was scared too, protecting me.
+[6.scared]  Sam wasn't shy — he was scared too, protecting me.
 [6.tell]    I showed the oldest man and told everyone.
 [6.bridge2] Next morning, the whole town walked to the bridge.
 [6.first]   Nobody shoved. Nobody hid. I stepped across first.
-[6.sam2]    Sam stepped beside me—not second, side by side.
+[6.sam2]    Sam stepped beside me — not second, side by side.
 [6.crowd]   One by one, the whole village followed laughing.
 [6.old2]    Even the oldest man smiled near the front.
 [6.free]    A hundred years of fear ended with one step.
-[6.sub]     Subscribe to go first—because in this town...
+[6.sub]     Subscribe to go first — because in this town...
 ```

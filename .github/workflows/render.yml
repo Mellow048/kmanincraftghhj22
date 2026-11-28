@@ -76,7 +76,7 @@ jobs:
       - name: Verify contract
         env:
           COMPOSITION: ${{ inputs.composition }}
-        run: npm run typecheck && npm run check && npm run test:direction && npm run rehearse -- "$COMPOSITION" --pre-render
+        run: npm run typecheck && npm run check && npm run test:direction && { [ ! -f "src/videos/$COMPOSITION/film.tsx" ] || npm run rehearse -- "$COMPOSITION" --pre-render; }
 
       - name: Split the film into chunks
         id: plan

@@ -36,12 +36,12 @@
 [5.owner]   The server owner walked into Arthur's empty cottage.
 [5.chest]   He opened the chest and found one book.
 [5.book]    One line read: blue roof, Sam built it.
-[5.ping]    The owner froze—then pinged the whole server!
+[5.ping]    The owner froze — then pinged the whole server!
 
 # clip 06-rally
 [6.join]    Within minutes, twenty-five players flooded back online.
 [6.lode]    Because one Minecraft block never forgets where home is.
-[6.comp]    Tap a compass on a Lodestone—it locks forever.
+[6.comp]    Tap a compass on a Lodestone — it locks forever.
 [6.roof]    All night, they rebuilt his glowing blue wool roof.
 [6.road]    They built a blue lantern highway straight from spawn.
 [6.place2]  They set a Lodestone right beside his front door.
@@ -52,7 +52,7 @@
 [7.open]    He opened the chest and lifted a purple compass.
 [7.snap]    The red needle snapped straight down the blue road.
 [7.walk]    Arthur followed the glowing lanterns to his blue porch.
-[7.cheer]   Twenty-five cheering players waited—even Rex dropping flowers.
+[7.cheer]   Twenty-five cheering players waited — even Rex dropping flowers.
 [7.sam2]    Then chat pinged once more: Sam joined the game!
 [7.door]    His grandson stepped out the front door smiling wide.
 [7.found]   Arthur smiled at his screen and typed: I found it.

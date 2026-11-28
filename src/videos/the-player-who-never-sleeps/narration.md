@@ -32,7 +32,7 @@
 # clip 05-owner wait 0.50
 [5.msg]     The server owner messaged him asking what happened.
 [5.tell]    Marcus told him everything about his little brother.
-[5.idea]    The owner stared—and knew exactly what to do!
+[5.idea]    The owner stared — and knew exactly what to do!
 
 # clip 06-rally
 [6.one]     Because one bed in Minecraft skips the whole night.

@@ -48,7 +48,7 @@
 [5.red]     All ten hearts flashed red. I gasped awake.
 [5.dusk]    Outside, the sun sank over the sunflower fields.
 [5.home]    Every single bee flew home to its hive.
-[5.mine]    I checked the sill—my bee never went home.
+[5.mine]    I checked the sill — my bee never went home.
 [5.still]   Its tiny wings slowed down, then stopped completely.
 
 # clip 06-payoff wait 0.45
@@ -63,5 +63,5 @@
 [6.rally]   The whole town knelt planting four hundred flowers.
 [6.crops]   Bees drifted across the fields making crops bloom.
 [6.sorry2]  Nobody laughed when the whole town whispered sorry.
-[6.sub]     Subscribe, and plant one too—because in this town...
+[6.sub]     Subscribe, and plant one too — because in this town...
 ```

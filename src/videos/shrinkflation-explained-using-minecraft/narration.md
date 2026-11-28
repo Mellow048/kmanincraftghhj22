@@ -35,7 +35,7 @@
 [4.w1]       Week one: seven full slices for five emeralds.
 [4.w2]       Week two: five slices for five emeralds.
 [4.w3]       Week three: three slices for five emeralds.
-[4.w4]       Week four: one slice—while five never budged once.
+[4.w4]       Week four: one slice — while five never budged once.
 
 # clip 05-compare
 [5.chests]   Look at both chests side by side.
@@ -47,7 +47,7 @@
 [5.punch3]   The cake did. That is shrinkflation.
 
 # clip 06-bridge
-[6.real]     Walk down any grocery aisle—same exact trick.
+[6.real]     Walk down any grocery aisle — same exact trick.
 [6.chips]    Half-empty chip bags, thinner bars, smaller cereal boxes.
 [6.hide]     Companies know you spot a bigger price tag fast.
 [6.inside]   So they hide the hike quietly inside the box.
