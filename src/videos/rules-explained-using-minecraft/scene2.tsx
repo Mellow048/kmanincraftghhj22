@@ -48,7 +48,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.again",
-      ...cam.sweep({ on: at(S, 0, 0.9, -0.4), dist: 4.4, fromYaw: 20, toYaw: -20, pitch: 12, fov: 42 }),
+      ...cam.sweep({ on: at(S, 0, 0.9, -0.4), dist: 4.4, fromYaw: -65, toYaw: -35, pitch: 12, fov: 42 }),
       zone: "spawn",
       note: "Five minutes later, Griefer walks right back and smashes another chest anyway!",
       stage: (t) => {
@@ -90,7 +90,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "3.r100",
-      ...cam.heroLow({ on: at(S, 0, 2.2, -2.6), dist: 5.6, yaw: 14, fov: 44 }),
+      ...cam.heroLow({ on: at(S, 0, 2.2, -2.6), dist: 5.6, yaw: 55, fov: 44 }),
       zone: "spawn",
       hud: { counter: { label: "SERVER RULES", from: 1, to: 100, startAt: 0.05, dur: 1.2, color: "#ff4f42" } },
       note: "Counter rolls rapidly 1 -> 100 as the RuleBoard towers over Spawn.",
@@ -112,14 +112,14 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.mean",
-      ...cam.front({ actor: at(S, 0, 0, 0.2), dist: 4.4, fov: 42, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(S, 0, 0, 0.2), dist: 4.4, facing: -0.75, fov: 42, screenOffset: [0, 0.06] }),
       zone: "spawn",
       note: "Clarity punch #1: Mods aren't just trying to be mean.",
       stage: (t) => <EliteLead variant="pres" nameTag="Mod" position={at(S, 0, 0, 0.2)} rotationY={0} animation="shrug" face="calm" time={t} />,
     },
     {
       cue: "4.about",
-      ...cam.twoShot({ a: at(S, -1.2, 0, 0.4), b: at(S, 1.2, 0, 0.4), facing: 0.65, dist: 5.0, height: 1.5, fov: 42 }),
+      ...cam.twoShot({ a: at(S, -1.2, 0, 0.4), b: at(S, 1.2, 0, 0.4), facing: 0.85, dist: 5.0, height: 1.5, fov: 42 }),
       zone: "spawn",
       note: "Clarity punch #2: the 100 rules were never really about the 99 honest players.",
       stage: (t) => (
@@ -131,7 +131,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.one",
-      ...cam.front({ actor: at(S, 0, 0, 0.4), dist: 4.2, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(S, 0, 0, 0.4), dist: 4.2, facing: -0.75, fov: 40, screenOffset: [0, 0.06] }),
       zone: "spawn",
       hud: { banner: { text: "1 BROKE IT FOR 99", color: "#ff4f42" } },
       note: "Clarity punch #3: one single player broke trust for 99 others.",

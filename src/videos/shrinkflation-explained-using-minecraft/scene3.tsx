@@ -86,7 +86,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.punch1",
-      ...cam.front({ actor: at(B, 1.4, 0, -1.2), dist: 4.2, facing: -0.65, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(B, 1.4, 0, -1.2), dist: 4.2, facing: -0.85, fov: 40, screenOffset: [0, 0.06] }),
       zone: "bakery",
       hud: { banner: { text: "PRICE: SAME", color: "#ffdd57" } },
       note: "Clarity punch #1: the price tag never went up.",
@@ -96,7 +96,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.punch2",
-      ...cam.front({ actor: at(B, -1.2, 0, -0.4), dist: 4.2, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(B, -1.2, 0, -0.4), dist: 4.2, facing: 0.75, fov: 40, screenOffset: [0, 0.06] }),
       zone: "bakery",
       hud: { banner: { text: "EMERALDS: SAME", color: "#55ff55" } },
       note: "Clarity punch #2: your emeralds never shrank.",
@@ -106,7 +106,7 @@ export const scene3 = storyScene(timing, {
     },
     {
       cue: "5.punch3",
-      ...cam.sweep({ on: at(B, 0, 1.35, -2.0), dist: 3.4, fromYaw: 35, toYaw: 65, pitch: 14, fov: 38 }),
+      ...cam.sweep({ on: at(B, 0, 1.35, -2.0), dist: 3.4, fromYaw: 50, toYaw: 80, pitch: 14, fov: 38 }),
       zone: "bakery",
       hud: { stamp: { text: "SHRINKFLATION", color: "#ff3b30", at: 0.25, angle: -8 } },
       note: "Clarity punch #3: the cake shrank—SHRINKFLATION stamp slams in.",

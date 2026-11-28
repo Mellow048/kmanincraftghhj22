@@ -206,7 +206,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.w1",
-      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.2, facing: 0.6, fov: 40, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.2, facing: -0.75, fov: 40, screenOffset: [0, 0.06] }),
       zone: "bakery",
       hud: { clock: "WEEK 1", banner: { text: "7 SLICES · 5 EMERALDS", color: "#55ff55" } },
       note: "Rapid proof montage: Week 1 — full 7-slice cake for 5 emeralds.",
@@ -219,7 +219,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.w2",
-      ...cam.sweep({ on: at(B, 0, 1.1, -1.6), dist: 4.2, fromYaw: 35, toYaw: 65, pitch: 10, fov: 40 }),
+      ...cam.sweep({ on: at(B, 0, 1.1, -1.6), dist: 4.2, fromYaw: 50, toYaw: 80, pitch: 10, fov: 40 }),
       zone: "bakery",
       hud: { clock: "WEEK 2", banner: { text: "5 SLICES · 5 EMERALDS", color: "#ffdd57" } },
       note: "Rapid proof montage: Week 2 — 5 slices for the same 5 emeralds.",
@@ -232,7 +232,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.w3",
-      ...cam.sweep({ on: at(B, 0, 1.1, -1.6), dist: 4.2, fromYaw: 35, toYaw: 65, pitch: 10, fov: 40 }),
+      ...cam.sweep({ on: at(B, 0, 1.1, -1.6), dist: 4.2, fromYaw: 45, toYaw: 75, pitch: 10, fov: 40 }),
       zone: "bakery",
       hud: { clock: "WEEK 3", banner: { text: "3 SLICES · 5 EMERALDS", color: "#ff922b" } },
       note: "Rapid proof montage: Week 3 — 3 slices for the same 5 emeralds.",
@@ -245,7 +245,7 @@ export const scene2 = storyScene(timing, {
     },
     {
       cue: "4.w4",
-      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.0, fov: 38, screenOffset: [0, 0.06] }),
+      ...cam.front({ actor: at(B, 0, 0, -1.2), dist: 4.0, facing: 0.75, fov: 38, screenOffset: [0, 0.06] }),
       zone: "bakery",
       hud: { clock: "WEEK 4", banner: { text: "1 SLICE · 5 EMERALDS!", color: "#ff4f42" } },
       note: "Rapid proof montage: Week 4 — one tiny slice while the 5-emerald price never budged.",
